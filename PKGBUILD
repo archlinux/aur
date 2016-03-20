@@ -1,6 +1,6 @@
 # Maintainer: superlex
 
-# Based on Parabola GNU/Linux-libre iceweasel-libre PKGBUILD :
+# Based on Parabola GNU/Linux-libre iceweasel PKGBUILD :
 
 # Maintainer: André Silva <emulatorman@parabola.nu>
 # Contributor: Márcio Silva <coadde@parabola.nu>
@@ -25,14 +25,15 @@ _pgo=false
 
 # We're getting this from Debian Sid
 _debname=firefox
-_debver=45.0
+_debver=45.0.1
 _debrel=1
 _debrepo=http://ftp.debian.org/debian/pool/main/f
 _parabolarepo=https://repo.parabola.nu/other/iceweasel
-_brandingrel=1
+_brandingver=45.0
+_brandingrel=2
 
 pkgname=iceweasel
-pkgver=$_debver.deb$_debrel
+pkgver=${_debver}.deb${_debrel}
 pkgrel=1
 pkgdesc="Debian Browser based on Mozilla Firefox, with Parabola GNU/Linux-libre branding"
 arch=('i686' 'x86_64')
@@ -48,32 +49,34 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 			'upower: Battery API'
 			'ffmpeg: H264/AAC/MP3 decoding'
             'iceweasel-extension-archsearch: Iceweasel Arch search engines')
-url="https://packages.debian.org/source/sid/iceweasel"
+url="https://wiki.debian.org/it/Iceweasel"
 install=iceweasel.install
 provides=("$pkgname"="$_debver")
 source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.xz"
 		"${_debrepo}/${_debname}/${_debname}_${_debver}-${_debrel}.debian.tar.xz"
-		"$_parabolarepo/${pkgname}_$_debver-$_brandingrel.branding.tar.xz"
-        mozconfig
-        iceweasel.desktop
-        iceweasel-install-dir.patch
-        vendor.js
-		iceweasel-fixed-loading-icon.png)
-md5sums=('f5e07751e3df66044a1dc9b3c6e21b6b'
-         'f94e8c63d20f08830a550a67931859cd'
-         'aa8cee1d3731faf031a522dec8e1471d'
+		"${_parabolarepo}/${pkgname}_${_brandingver}-${_brandingrel}.branding.tar.xz"
+		mozconfig
+		iceweasel.desktop
+		iceweasel-install-dir.patch
+		vendor.js
+		iceweasel-fixed-loading-icon.png
+		no-libnotify.patch)
+md5sums=('a095e3270ad0d38d0f0fb1706a189fab'
+         '882aa168857d6c15c7fddcb49578c75b'
+         '18ddaa5f1b70cbf12110471d50746339'
          '9f8cd36718fa474ce593c90979d14b38'
          '7b9e5996dd9fe0b186a43a297db1c6b5'
          '1c42509891cf6843660a5f3c69896e80'
          '35adf69c840aadeb138d1b0be3af63b5'
-         '6e335a517c68488941340ee1c23f97b0')
+         '6e335a517c68488941340ee1c23f97b0'
+         '8efbf7973a21aa01038bf2315f3384a9')
 
 prepare() {
   cd "$srcdir/$_debname-$_debver"
   mv "$srcdir/debian" .
-  mv "$srcdir/$pkgname-$_debver/branding" debian
-  mv "$srcdir/$pkgname-$_debver/patches/iceweasel-branding" debian/patches
-  cat "$srcdir/$pkgname-$_debver/patches/series" >> debian/patches/series
+  mv "$srcdir/$pkgname-$_brandingver/branding" debian
+  mv "$srcdir/$pkgname-$_brandingver/patches/iceweasel-branding" debian/patches
+  cat "$srcdir/$pkgname-$_brandingver/patches/series" >> debian/patches/series
   
   export QUILT_PATCHES=debian/patches
   export QUILT_REFRESH_ARGS='-p ab --no-timestamps --no-index'
@@ -86,6 +89,10 @@ prepare() {
 
   # Install to /usr/lib/$pkgname
   patch -Np1 -i "$srcdir/iceweasel-install-dir.patch"
+
+  # Notifications with libnotify are broken
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1236150
+  patch -Np1 -i "$srcdir/no-libnotify.patch"
 
   # Load our build config
   cp "$srcdir/mozconfig" .mozconfig
@@ -157,12 +164,6 @@ package() {
   ln -sf $pkgname "$pkgdir/usr/lib/$pkgname/$pkgname-bin"
   
     
-  # Searchplugins section
-  
-  # According to debian choices, we prefer to use /etc/icewasel/searchplugins
-  install -d "$pkgdir/etc/${pkgname}/searchplugins/common"
-  
-  # Add common web searchplugins
-  install -Dm644 "$srcdir/$_debname-$_debver/debian/debsearch.xml" "$pkgdir/etc/${pkgname}/searchplugins/common/debsearch.xml" 
+  # Add Debian searchplugin
+  install -Dm644 "$srcdir/$_debname-$_debver/debian/debsearch.xml" "${pkgdir}/usr/lib/$pkgname/browser/searchplugins"
 }
-
