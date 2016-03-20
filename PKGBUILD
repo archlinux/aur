@@ -1,14 +1,14 @@
 # Maintainer: Caleb Johnson <me@calebj.io>
 _pkgname=pcgen
 pkgname=${_pkgname}-git
-provides=pcgen
+provides=(pcgen)
 pkgrel=1
 pkgver=6.07.00_SNAPSHOT.gd3540f8
-conflicts=pcgen
+conflicts=(pcgen)
 pkgdesc="An RPG Character Generator."
 arch=(any)
 url=http://pcgen.org
-license=LGPL2
+license=(LGPL2)
 depends=(sh java-runtime gtk-update-icon-cache desktop-file-utils shared-mime-info)
 makedepends=(git gradle java-environment)
 source=("${pkgname}"::'git+http://github.com/PCGen/pcgen.git'
