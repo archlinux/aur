@@ -7,7 +7,6 @@ pkgbase = python-infinity
 	license = BSD
 	makedepends = python
 	depends = python
-	depends = python-total-ordering
 	source = https://pypi.python.org/packages/source/i/infinity/infinity-1.3.tar.gz
 	md5sums = 0aa8feadec140b7d091bac142411e6d9
 
