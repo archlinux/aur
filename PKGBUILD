@@ -6,7 +6,7 @@
 # Contributor: Ben <ben@benmazer.net>
 
 pkgname=mpd-light
-pkgver=0.19.13
+pkgver=0.19.14
 pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi, smbclient'
 url='http://www.musicpd.org/'
@@ -21,15 +21,22 @@ replaces=('mpd')
 source=("http://www.musicpd.org/download/mpd/${pkgver%.*}/mpd-${pkgver}.tar.xz"
         'mpd.tmpfile'
         'mpd.conf')
-sha1sums=('1bbd8a9d80018d47867b205ea00e76bef9bbc351'
+sha1sums=('2faf8664ae5c9183e73185c9dcfe0be50579f5e8'
           'f4d5922abb69abb739542d8e93f4dfd748acdad7'
           'fd581b976f4931abf9b849224dcb38a73af14af0')
 backup=('etc/mpd.conf')
 install=mpd.install
 
+prepare() {
+	# Temporary; see FS#48372
+	install -d "${srcdir}"/pkg-config
+	ln -s /usr/lib/pkgconfig/libsystemd.pc "${srcdir}"/pkg-config/libsystemd-daemon.pc
+}
+
 build() {
 	cd "${srcdir}/mpd-${pkgver}"
 
+	export PKG_CONFIG_PATH="${srcdir}"/pkg-config
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \
