@@ -1,0 +1,15 @@
+pkgbase = python-intervals
+	pkgdesc = Python tools for handling intervals (ranges of comparable objects).
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/kvesteri/intervals
+	arch = any
+	license = custom:UNLICENSE
+	makedepends = python
+	depends = python
+	depends = python-infinity
+	source = https://pypi.python.org/packages/source/i/intervals/intervals-0.7.1.tar.gz
+	md5sums = 0aa8feadec140b7d091bac142411e6d9
+
+pkgname = python-intervals
+
