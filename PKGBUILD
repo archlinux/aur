@@ -13,6 +13,8 @@ depends=('ghostscript' 'poppler-glib' 'djvulibre' 'desktop-file-utils' 'gsetting
 # For caja: caja-extensions-common
 # For nemo: nemo
 makedepends=('git' 'mate-common')
+optdepends=('nemo: nemo extension'
+    'caja-extensions-common: caja extension')
 provides=($_pkgname)
 conflicts=('xreader')
 url='https://github.com/linuxmint/xreader'
