@@ -6,14 +6,14 @@
 # https://bugzilla.novell.com/765524
 
 # _kver=3.11
-_kver=4.2
+_kver=4.4
 _gitroot=git://repo.or.cz/linux.git
 _gitcommit=linux-$_kver.y
 _cur_kernel="$(uname -r)"
 
 pkgname=synaptics-led
 pkgver=$_kver
-pkgrel=2
+pkgrel=1
 arch=(i686 x86_64)
 license=(GPL2)
 url="https://github.com/mmonaco/PKGBUILDs"
@@ -24,7 +24,7 @@ install="$pkgname.install"
 
 source=(
 	SHA256SUMS_for_3.11
-	SHA256SUMS_for_4.2
+	SHA256SUMS_for_4.4
 	"$pkgname.install"
 	0001-input-Add-LED-support-to-Synaptics-device.patch
 	0002-synaptics-add-debugging-to-synaptics_has_led.patch
@@ -32,7 +32,7 @@ source=(
 )
 
 sha256sums=('448b8b052247a081fd99bd4500313cb1bf24687c42c7ac6c178681bbc5c64352'
-            '7dca7e600cb0600b6f29a3e64c57bdcaff3eb98a3d32d76c61520ab3c9818c2c'
+            '7084e7e07a9a12c1125c94e50ebdb89a043fe54492333abdce26fd57719b83ec'
             'b46af61822e8ec8639faa1b60dd3b6b1a64e24854611902499b9f81d2691e22c'
             '4ce194fd0283affb0be2eef6d61aaeae134837af2d204ddd765008d081809e07'
             '790b80dc08e22e91fc315c5439cec5d65a1ee523f7d22aba509e39bb8abc7a6f'
@@ -49,7 +49,7 @@ build() {
 
 	msg2 "Performing Integrity Check"
 #	sha256sum --quiet -c "$srcdir/SHA256SUMS_for_3.11"
-	sha256sum --quiet -c "$srcdir/SHA256SUMS_for_4.2"
+	sha256sum --quiet -c "$srcdir/SHA256SUMS_for_4.4"
 
 	msg2 "Patching source"
 #	patch -p4 -i "$srcdir/0001-input-Add-LED-support-to-Synaptics-device.patch"
