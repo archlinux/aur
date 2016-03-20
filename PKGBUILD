@@ -1,8 +1,8 @@
-# Contributor: Joe Davison <joe@warhaggis.com>
+# Maintainer: Joe Davison <joe@warhaggis.com>
 
 pkgname=irssistats
 pkgver=0.75
-pkgrel=3
+pkgrel=4
 pkgdesc='Parses irssi log files as stats presented in HTML'
 url='http://royale.zerezo.com/irssistats/'
 license=(GPL)
@@ -20,7 +20,7 @@ build() {
 
 package() {    
 	install -D -m 755 $srcdir/$pkgname-$pkgver/$pkgname \
-		$pkgdir/usr/bin
+		$pkgdir/usr/bin/$pkgname
 
 	install -D -m 755 $srcdir/$pkgname-$pkgver/sample.nickfile \
 		$pkgdir/etc/irssistats/sample.nickfile
