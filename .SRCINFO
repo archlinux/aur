@@ -1,0 +1,15 @@
+pkgbase = sddm-stellar-theme
+	pkgdesc = A minimalistic sddm greeter theme that features a milky way background, credential panel, session and layout manager.
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://github.com/sgerbino
+	install = sddm-stellar-theme.install
+	arch = any
+	license = Copyright Steve Gerbino
+	makedepends = git
+	depends = sddm
+	source = sddm-stellar-theme::git://github.com/sgerbino/stellar.git
+	md5sums = SKIP
+
+pkgname = sddm-stellar-theme
+
