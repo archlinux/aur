@@ -1,11 +1,12 @@
 --- makepkg-optimize.conf
 +++ makepkg-optimize.conf
-@@ -83,6 +83,8 @@
+@@ -83,6 +83,9 @@
  #-- ccache:   Use ccache to cache compilation
  #-- check:    Run the check() function if present in the PKGBUILD
  #-- sign:     Generate PGP signature file
-+#-- lto:      Use link-time optimization to reduce compiled binary size and possibly improve performance
-+#-- pgo:      Generate or use profile guided optimization to reduce compile binary size and improve performance
++#-- lto:      Use link-time optimization
++#-- pgo:      Generate or utilize profile guided optimization
++#-- graphite: Use Graphite loop optimizations
  #
  BUILDENV=(!distcc color !ccache !check !sign)
  #
