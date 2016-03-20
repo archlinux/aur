@@ -1,25 +1,26 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-headless-addrindex-git
-pkgver=20151115
-pkgrel=2
+pkgver=20160227
+pkgrel=1
 pkgdesc="Bitcoin Core headless P2P wallet with addrindex"
 arch=('i686' 'x86_64')
 url="https://github.com/btcdrak/bitcoin"
 depends=('boost'
          'boost-libs'
-         'miniupnpc'
-         'openssl')
+         'zeromq')
 makedepends=('autoconf'
              'automake'
              'binutils'
              'gcc'
              'git'
              'libtool'
+             'm4'
              'make'
              'pkg-config')
+optdepends=('miniupnpc: build with support for UPnP')
 license=('MIT')
-source=(${pkgname%%-*}::git+https://github.com/btcdrak/bitcoin#branch=addrindex-0.11)
+source=(${pkgname%%-*}::git+https://github.com/btcdrak/bitcoin#branch=addrindex-0.12)
 sha256sums=('SKIP')
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx')
 conflicts=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-qt' 'bitcoin-tx')
