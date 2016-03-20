@@ -1,45 +1,57 @@
-# Maintainer: ava1ar - <mail(at)ava1ar(dot)me>
+# Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgname=softethervpn-git
 pkgver=v4.19.9605.beta
 pkgrel=1
-pkgdesc="Multi-protocol VPN Program from University of Tsukuba"
+pkgdesc="Multi-protocol VPN software from University of Tsukuba"
+url="http://www.softether.org/"
 arch=('i686' 'x86_64')
-source=('git+https://github.com/SoftEtherVPN/SoftEtherVPN.git' 
-		'softethervpn-bridge.service' 
+source=('softethervpn-bridge.service' 
 		'softethervpn-client.service' 
 		'softethervpn-server.service'
 		'disable_sslv3.patch')
-sha1sums=('SKIP'
-          'e3d0c38be26123bb533e80f0a595e9867e9cf6ad'
-          'efd246e8176683237609b7dae2e12300169b297f'
-          'cdfb0c943128286bb318b5c044e5ca53c1dcffff'
+sha1sums=('12a3919aabcdd7531320056a4b43072892232925'
+          'ba594c7defb52548369726c56e2cad633019abef'
+          '06cd320553daf0dffdf6a81a22d630fbe211fc33'
           'ed10141565efe05dbe7ff9aae713dc4bef84e1c5')
-license=('GPL')
+license=('GPL2')
+depends=('bash' 'openssl' 'zlib')
 makedepends=('git')
-url="http://www.softether.org/"
+
+prepare() {
+  # clean existing sources if any
+  rm -rf "${srcdir}"/SoftEtherVPN
+
+  # cloning only master branch, since complete repository is pretty heavy
+  git clone https://github.com/SoftEtherVPN/SoftEtherVPN.git --single-branch
+}
 
 pkgver() {
-  cd "SoftEtherVPN"
+  cd "${srcdir}"/SoftEtherVPN
   git log | grep -o -m1 'v[0-9].*' | tr '-' '.'
 }
 
-build(){
+build() {
   cd "${srcdir}"/SoftEtherVPN
+
   if [ "${CARCH}" == "i686" ]; then 
     cp src/makefiles/linux_32bit.mak Makefile
   elif [ "${CARCH}" == "x86_64" ]; then 
     cp src/makefiles/linux_64bit.mak Makefile
   fi
-  # small patch to disable SSLv3 for client
+
+  # small patch to disable SSLv3
   patch --binary -p1 < "${srcdir}"/disable_sslv3.patch
+
   make
 }
 
 package(){
   cd "${srcdir}"/SoftEtherVPN
+
   install -Dm644 bin/vpnserver/hamcore.se2 "${pkgdir}"/usr/lib/softethervpn/hamcore.se2
   install -d "${pkgdir}"/usr/bin
+
   for inst in vpnclient vpnserver vpnbridge vpncmd
   do
     install -Dm755 bin/${inst}/${inst} "${pkgdir}"/usr/lib/softethervpn/${inst}/${inst}
@@ -49,6 +61,7 @@ package(){
     echo 'exit $?' >> "${pkgdir}"/usr/bin/${inst}
     chmod 755 "${pkgdir}"/usr/bin/${inst}
   done
+
   install -d "${pkgdir}"/usr/lib/systemd/system
   install -Dm644 "${srcdir}"/*.service "${pkgdir}"/usr/lib/systemd/system
 }
