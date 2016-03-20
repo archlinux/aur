@@ -1,0 +1,19 @@
+pkgbase = stellar
+	pkgdesc = Stellar is a tool for creating and restoring database snapshots
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/fastmonkeys/stellar
+	arch = any
+	license = BSD
+	makedepends = python3
+	depends = python
+	depends = python-yaml
+	depends = python-sqlalchemy
+	depends = python-humanize
+	depends = python-psutil
+	depends = python-click
+	source = https://pypi.python.org/packages/source/s/stellar/stellar-0.4.3.tar.gz
+	md5sums = 17fd85dbcf97f4c3b0fdd5ad7aca433b
+
+pkgname = stellar
+
