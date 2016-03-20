@@ -3,19 +3,19 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=libkscreen
-pkgver=5.5.5
+pkgver=5.6.0
 pkgrel=1
 pkgdesc='KDE screen management software'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/extragear/libs/libkscreen'
 license=('LGPL')
-depends=('qt5-x11extras' 'libxrandr')
+depends=('qt5-x11extras' 'libxrandr' 'kwayland')
 makedepends=('extra-cmake-modules')
 conflicts=('libkscreen-frameworks')
 replaces=('libkscreen-frameworks')
 provides=('libkscreen-frameworks')
 source=("http://download.kde.org/stable/plasma/${pkgver}/libkscreen-$pkgver.tar.xz")
-md5sums=('981b99beb45af1a11a3d13d0e100bc3a')
+md5sums=('78424f1562b2aea71ec5b384ef01c3ae')
 
 prepare() {
   mkdir -p build
