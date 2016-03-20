@@ -12,13 +12,13 @@ depends=('tar' 'gzip')
 license=('GPL')
 # source=("https://github.com/NREL/EnergyPlus/archive/v$pkgver.$pkgrel.tar.gz")
 # md5sums=('761fc37599eb6e83af0e133472959dd8')
-source=("https://github.com/NREL/EnergyPlus/releases/download/v$pkgver.$pkgrel/EnergyPlus-$pkgver.$pkgrel-$_relcode-Linux-x86_64.sh")
+source=("https://github.com/NREL/EnergyPlus/releases/download/v$pkgver/EnergyPlus-$pkgver-$_relcode-Linux-x86_64.sh")
 md5sums=('198a74169b5127379d33cc7002350f1e')
 
-install_script=EnergyPlus-$pkgver.$pkgrel-$_relcode-Linux-x86_64.sh
+install_script=EnergyPlus-$pkgver-$_relcode-Linux-x86_64.sh
 
 package() {
-package_name="EnergyPlus-${pkgver/./-}-$pkgrel"
+package_name="EnergyPlus-${pkgver/./-}"
 install_directory="/opt"
 mkdir -p ${pkgdir}${install_directory}
  
