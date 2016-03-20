@@ -1,0 +1,16 @@
+pkgbase = subdomain-analyzer
+	pkgdesc = Get full detailed information of selected domain
+	pkgver = 20150518
+	pkgrel = 1
+	url = https://github.com/El3ct71k/SubDomain-Analyzer
+	arch = any
+	license = GPL3
+	depends = python2
+	depends = python2-gevent
+	depends = python2-dnspython
+	depends = python2-prettytable
+	source = https://github.com/El3ct71k/SubDomain-Analyzer/archive/master.zip
+	md5sums = SKIP
+
+pkgname = subdomain-analyzer
+
