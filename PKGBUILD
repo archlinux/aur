@@ -7,7 +7,7 @@ pkgname=('houdini' 'houdini-maya-engine' 'python2-hqueue')
 pkgbase=houdini
 _pkgver_major=15
 _pkgver_minor=0
-_pkgver_build=313
+_pkgver_build=416
 pkgver=${_pkgver_major}.${_pkgver_minor}.${_pkgver_build}
 pkgrel=1
 pkgdesc="High-end 3D animation package"
@@ -27,7 +27,7 @@ _validgccs=(4.8)
 
 # The file needs to be downloaded manually
 source=(file://${pkgname}-${pkgver}-linux_x86_64_gcc${_gccver}.tar.gz)
-[[ "$_gccver" == 4.8 ]] && sha1sums=('7ba7e43cad39019d7b9cdaa125c5849514200fe2')
+[[ "$_gccver" == 4.8 ]] && sha1sums=('a74634756bcf870af1145a92b3e3a698636b4443')
 
 source+=('LICENSE' 'sesinetd.service')
 sha1sums+=('3b639ee438fdb390b8b302000987d80df100a3c9' 'b6eca8f67aeedb9c5b7a5863c3d24edaf2b93cf3')
