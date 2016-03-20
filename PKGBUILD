@@ -5,7 +5,7 @@
 pkgname=popcorntime-git
 _pkgname=popcorntime
 _gitname=popcorn-desktop
-pkgver=r5866.c51420e
+pkgver=r5880.70671ae
 pkgrel=1
 pkgdesc="Stream movies and TV shows from torrents"
 arch=('i686' 'x86_64')
@@ -17,9 +17,15 @@ conflicts=('popcorntime' 'popcorn-time-ce')
 provides=('popcorntime')
 options=('!strip')
 install=popcorntime.install
-source=("git+https://github.com/popcorn-official/${_gitname}.git"
+source=("git+https://github.com/popcorn-official/${_gitname}.git#branch=master"
+        "https://popcorntime.sh/package.json"
+        "https://popcorntime.sh/torrent_collection.js"
+        "https://popcorntime.sh/ysubs.js"
         "${_pkgname}.desktop")
 sha256sums=('SKIP'
+            'cb1eea1c8e40b8d65014ffe126039221da813aa5bdfc838b998513bdce47cb0c'
+            '7f8b20c80506d58dd989039f8768751f5d251291b254c1b45b01c20e38e7097b'
+            'a8e7de405dceddfbfe5072feab2c3d2b2af553e40873737581891d84dcbc57d9'
             '7e22d234a2e7dd1e632e094154c44b31be7f93962df93dd865f3775b8e644c05')
 
 [ "$CARCH" = "i686" ]   && _platform=linux32
@@ -32,6 +38,9 @@ pkgver() {
 
 prepare() {
   cd "${_gitname}"
+  cp "$srcdir/package.json" "package.json"
+  cp "$srcdir/torrent_collection.js" "src/app/lib/views/torrent_collection.js"
+  cp "$srcdir/ysubs.js" "src/app/lib/providers/ysubs.js"
   npm install
 }
 

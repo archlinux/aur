@@ -1,6 +1,6 @@
 pkgbase = popcorntime-git
 	pkgdesc = Stream movies and TV shows from torrents
-	pkgver = r5866.c51420e
+	pkgver = r5880.70671ae
 	pkgrel = 1
 	url = https://popcorntime.sh
 	install = popcorntime.install
@@ -24,9 +24,15 @@ pkgbase = popcorntime-git
 	conflicts = popcorntime
 	conflicts = popcorn-time-ce
 	options = !strip
-	source = git+https://github.com/popcorn-official/popcorn-desktop.git
+	source = git+https://github.com/popcorn-official/popcorn-desktop.git#branch=master
+	source = https://popcorntime.sh/package.json
+	source = https://popcorntime.sh/torrent_collection.js
+	source = https://popcorntime.sh/ysubs.js
 	source = popcorntime.desktop
 	sha256sums = SKIP
+	sha256sums = cb1eea1c8e40b8d65014ffe126039221da813aa5bdfc838b998513bdce47cb0c
+	sha256sums = 7f8b20c80506d58dd989039f8768751f5d251291b254c1b45b01c20e38e7097b
+	sha256sums = a8e7de405dceddfbfe5072feab2c3d2b2af553e40873737581891d84dcbc57d9
 	sha256sums = 7e22d234a2e7dd1e632e094154c44b31be7f93962df93dd865f3775b8e644c05
 
 pkgname = popcorntime-git
