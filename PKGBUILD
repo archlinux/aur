@@ -22,6 +22,17 @@ md5sums=('432fa500829c7890a9278966dd65cb2a'
 BUILD_GTK=true
 BUILD_QT=true
 
+if [ "$BUILD_GTK" = false ] && [ "$BUILD_QT" = false ]
+then
+  pkgname=('transmission-sequential-cli')
+elif [ "$BUILD_GTK" = true ] && [ "$BUILD_QT" = false ]
+then
+  pkgname=('transmission-sequential-cli' 'transmission-sequential-gtk')
+elif [ "$BUILD_GTK" = false ] && [ "$BUILD_QT" = true ]
+then
+  pkgname=('transmission-sequential-cli' 'transmission-sequential-qt')
+fi
+
 prepare() {
   cd transmission-$pkgver-seq
   echo ${svnrev} > REVISION
