@@ -1,0 +1,23 @@
+pkgbase = gpvdm
+	pkgdesc = A numerical device model for the simulation of solar cells and OLEDs.
+	pkgver = 4.40
+	pkgrel = 1
+	url = http://www.gpvdm.com
+	install = gpvdm.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python2-oslo-i18n
+	depends = python2-numpy
+	depends = python2-matplotlib
+	depends = pywebkitgtk
+	depends = python2-dbus
+	depends = python2-notify
+	depends = umfpack
+	depends = libzip
+	depends = gsl
+	source = http://gpvdm.com/download_src/gpvdm-4.40.tar.gz
+	md5sums = a757b8e06686a9b41086bf7cbf897936
+
+pkgname = gpvdm
+
