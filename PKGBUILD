@@ -1,26 +1,22 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
 pkgname=zoom
-pkgver=1.1.38634.0127
+pkgver=1.1.44485.0317
 pkgrel=1
 pkgdesc="Video Conferencing and Web Conferencing Service"
 arch=('i686' 'x86_64')
 license=('custom')
 url="https://zoom.us/"
-depends=('desktop-file-utils' 'gstreamer0.10-base' 'xcb-util-cursor')
-depends_i686+=('lib32-libxml2' 'lib32-libsm' 'lib32-sqlite' 'lib32-libxrender'
-	'lib32-fontconfig' 'lib32-libxcomposite' 'lib32-libxi' 'lib32-libgl' 'lib32-openssl'
-	'lib32-libxslt' 'lib32-libpulse' 'lib32-glib2' 'lib32-libxcb')
-depends_x86_64+=('libxml2' 'libsm' 'sqlite' 'libxrender'
-	'fontconfig' 'libxcomposite' 'libxi' 'libgl' 'openssl'
-	'libxslt' 'libpulse' 'glib2' 'libxcb')
+depends=('desktop-file-utils' 'gstreamer0.10-base' 'xcb-util-cursor' 'libxml2'
+	'libsm' 'sqlite' 'libxrender' 'fontconfig' 'libxcomposite' 'libxi' 'libgl'
+	'openssl' 'libxslt' 'libpulse' 'glib2' 'libxcb')
 # The dependencies were reconstructed in order to fit the ones from debian
 options=(!strip)
 install=${pkgname}.install
 source_i686=("https://zoom.us/client/latest/zoom_${pkgver}_i386.deb")
 source_x86_64=("https://zoom.us/client/latest/zoom_${pkgver}_amd64.deb")
-md5sums_i686=('04a048120906b08af9cdd97f5152513d')
-md5sums_x86_64=('006f07c7294a9fbaadef6ee3543dbeaf')
+md5sums_i686=('df467cf71f69efc99aef87a0d9f5090e')
+md5sums_x86_64=('bbd2491960ba8af8b315bb53b5094a40')
 
 package() {
 	bsdtar xf data.tar.xz
