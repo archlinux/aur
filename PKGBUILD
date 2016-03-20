@@ -2,10 +2,10 @@
 
 pkgname=php-ast
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Extension exposing PHP 7 abstract syntax tree."
 url="https://github.com/nikic/php-ast"
-license="CUSTOM"
+license=("BSD")
 arch=("any")
 depends=("php>=7")
 makedepends=("php>=7")
