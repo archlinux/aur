@@ -1,18 +1,20 @@
 # Maintainer: ava1ar - <mail(at)ava1ar(dot)me>
 
 pkgname=softethervpn-git
-pkgver=v4.19.9599.beta
+pkgver=v4.19.9605.beta
 pkgrel=1
 pkgdesc="Multi-protocol VPN Program from University of Tsukuba"
 arch=('i686' 'x86_64')
 source=('git+https://github.com/SoftEtherVPN/SoftEtherVPN.git' 
 		'softethervpn-bridge.service' 
 		'softethervpn-client.service' 
-		'softethervpn-server.service')
+		'softethervpn-server.service'
+		'disable_sslv3.patch')
 sha1sums=('SKIP'
           'e3d0c38be26123bb533e80f0a595e9867e9cf6ad'
           'efd246e8176683237609b7dae2e12300169b297f'
-          'cdfb0c943128286bb318b5c044e5ca53c1dcffff')
+          'cdfb0c943128286bb318b5c044e5ca53c1dcffff'
+          'ed10141565efe05dbe7ff9aae713dc4bef84e1c5')
 license=('GPL')
 makedepends=('git')
 url="http://www.softether.org/"
@@ -29,6 +31,8 @@ build(){
   elif [ "${CARCH}" == "x86_64" ]; then 
     cp src/makefiles/linux_64bit.mak Makefile
   fi
+  # small patch to disable SSLv3 for client
+  patch --binary -p1 < "${srcdir}"/disable_sslv3.patch
   make
 }
 
