@@ -7,8 +7,8 @@
 # Contributor: Praekon <praekon@googlemail.com>
 
 pkgname=plex-media-server
-pkgver=0.9.15.6.1714
-_pkgsum=7be11e1
+pkgver=0.9.16.2.1827
+_pkgsum=df572f6
 pkgrel=1
 pkgdesc='Plex Media Server'
 arch=('arm' 'armv7h' 'i686' 'x86_64')
@@ -31,10 +31,10 @@ source_x86_64=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}
 sha256sums=('7ab1ee8da9012d257b7f473fb79d76b201ca592cbe3722f977a43b58bfad180e'
             '9da45cc3951ae03086ec663e6273c2de0183495fd15dc34ddd9aa100346d4d3a'
             '7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a')
-sha256sums_arm=('77792714279505e8b3fda046f841d0ed0c9bcee181678ffff27c49bde9e43e27')
-sha256sums_armv7h=('e23b3248cc599c8f99213e213df48edef0d44afd5ef1f32404ccd5c8ee84560c')
-sha256sums_i686=('73cdaa48714c95d9cae7f8411f50b4632e0a6f425ded6bd681d0d5008dea9397')
-sha256sums_x86_64=('0f283dd125589f6b094cd1bd4737172703c7526ae3ea68f72a1cd5657120d3cf')
+sha256sums_arm=('2fc08e45dbed372261fd027c12f936267ed8c6c0044ebbfcf7aede6f08cb82d1')
+sha256sums_armv7h=('816946900c062225925cf8842191ff4c2752b86f5d192ba6b0ab563576412cb1')
+sha256sums_i686=('17aecca2e4b1352294e98889840ccb1c1a79283a9e5f2e1904507db90ee0a4a9')
+sha256sums_x86_64=('f24b9f9cbef8b1522c7f9bd021f4642dff40aeaa58ff89d766585e5c48843d55')
 
 prepare() {
 
