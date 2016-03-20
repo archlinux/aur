@@ -7,7 +7,7 @@ url=http://atomicgameengine.com/
 license=(MIT)
 
 pkgver=r1839.e8ab6b0
-pkgrel=1
+pkgrel=2
 
 arch=(i686 x86_64)
 _name=AtomicGameEngine
@@ -28,13 +28,19 @@ build() {
 }
 
 package() {
-  _bin="/usr/bin/AtomicEditor"
   _dest="/opt/AtomicEditor"
+  _cef="$_dest/CEF"
+  _bindir=/usr/bin
+  _bin="$_bindir/atomic-editor"
 
   install -Dm644 "$_name/Resources/CoreData/Images/AtomicLogo32.png" "$pkgdir/usr/share/pixmaps/$_name.png"
 
-  install -d "$pkgdir/usr/bin"
-  ln -s "$_dest/AtomicEditor" "$pkgdir/$_bin"
+  install -d "$pkgdir/$_bindir"
+  cat > "$pkgdir/$_bin" <<EOF
+#!/bin/sh
+LD_PRELOAD="$_cef/libcef.so" "$_dest/AtomicEditor"
+EOF
+  chmod +x "$pkgdir/$_bin"
 
   install -d "$pkgdir/usr/share/applications"
   cat > "$pkgdir/usr/share/applications/$_name.desktop" <<EOF
@@ -50,6 +56,7 @@ Terminal=false
 Categories=Development;Building;IDE;Game;
 EOF
 
-  install -d "$pkgdir/$_dest"
+  install -Dm644 "$_name/Submodules/CEF/Linux/Release/libcef.so" "$pkgdir/$_cef/libcef.so"
+  cp -r "$_name/Submodules/CEF/Linux/Release//"* "$pkgdir/$_cef"
   cp -r "$_name/Artifacts/AtomicEditor/"* "$pkgdir/$_dest"
 }
