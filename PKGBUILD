@@ -8,12 +8,11 @@
 
 # Build instructions:
 
-# This PKGBUILD does not automatically download files. Basis does not make
-# the files available as direct links. It is not necessary to have a license
-# to download, Install, and run Pro/5. Without a license you get nag screens.
+# This PKGBUILD does not automatically download all files. Basis does not make
+# all files available as direct links. It is not necessary to have a license
+# to download, install, and run Pro/5. Without a license you get nag screens.
 
 # At the Basis web site click Products, Downloads
-# Choose a BASIS product: Standalone PRO/5 BLM files, Linux 1245 and 6245. No info needed.
 # Choose a BASIS product: Pro/5
 #   Platform: Linux
 #   OS Level: Linux Kernel 2.6.17-1.2142_FC4+ AND glibc v2.3+ [Port 1045]
@@ -24,7 +23,8 @@
 #   Repeat for 64 bit: Linux Kernel v2.6+ AND glibc v2.3+ [Port 6045] - 64-bit
 # Choose a BASIS product: Pro/5 Data Server
 #   Repeat above for 1245 & 6245
-# Place the 6 files in with PKGBUILD
+# Place the 4 files in with PKGBUILD
+# The BLM is downloaded automatically.
 
 # If you already have license files, run "makepkg -oc" and place them
 # in the appropriate z folders. This allows them to be built into the package
@@ -40,15 +40,15 @@
 
 # It is not necessary to have a functioning BLM server to try Pro/5. You can
 # test suitability, functionality, run, extract data, and edit programs.
-# Once your BLM server is up and running you can point your Pro/5 installs to
-# it and they will become fully functional without nag screens.
+# Once your BLM server is licensed and running you can point your Pro/5
+# installs to it and they will become fully functional without nag screens.
 
-# While the BLM license is locked to the BLM server the HostID was generated on,
-# BLM license checkout is not machine locked, platform or or OS specific.
-# You can run Pro/5 on as many different machines and OS as you like.
-# You can try other platforms to see if they are better suited to your needs.
-# All you need is a BLM server with available licenses to point to. This
-# PKGBUILD only handles Arch Linux.
+# While the BLM license is locked to the BLM server the HostID was generated
+# on, BLM license checkout for Pro/5 instances are not machine locked,
+# platform or OS specific. You can run Pro/5 on as many different machines
+# and OS as you like. You can try other platforms to see if they are better
+# suited to your needs. All you need is a BLM server with available licenses
+# to point to. This PKGBUILD only handles Arch Linux.
 
 # BLM License file security content may improve over time. Newer revisions
 # of Pro/5 may require features not found in old license files or BLM servers.
@@ -59,7 +59,7 @@
 # Developer only licenses are available at a low yearly price.
 # This is highly recommended for active developers.
 # * You get get all features enabled. Good for testing to determine
-#   whether a better license would be worthwhile.
+#   whether a better licenses for production would be worthwhile.
 # * You don't get kicked when the production BLM servers restart,
 #   crash, or run out of licenses.
 # * You don't consume one or more full licenses needed for users
@@ -68,56 +68,59 @@
 #   Pro/5 SERVER configuration so your runs use licenses from
 #   the BLM serving your developers license.
 
-# For your first install you won't have a license file. Here are quick start
-# instructions for using the Basis installer needed in the next section.
+# Install instructions
 
-# Look for 'install' in /usr/local/basis or /usr/share/basis # '
-# after the basis-pro5 is installed.
-# You can just run it for the menu or specify top level menu items
-# install                 # for menu
-# install BLM             # starts BLM menu
-# install PRO5            # starts PRO5 menu
-# install BLM PRO5 PRO5DS # starts BLM menu, then continues on to the PRO5 and PRO5DS menu
-# The submenu items (REG, SERVER, ...) are not accepted on the command line
+# Quick:
+# * Purchase license
+# * install basis-pro5 package
+# * run BLM installer
+# * install basis-pro5 package
+# * start the BLM service
+# * configure Pro/5 installations to use BLM server
+# * copy the licenses to the PKGBUILD folder
+# * remake the package with the licenses inside
 
-# How to get a full license for the Basis License Manager (BLM).
-# 1. You call Basis to purchase a license. Basis sends you license info with
-# your purchased specifications as BBX######.htm in an email.
-# This is not an activated BLM license file and does not make your BLM functional.
+# There are two installers. "./install" is found in /usr/local/basis.
+# The "BLM installer" is in the build folder. Some functionality is offered
+# by both installers but only works properly in one of them.
+
+# 1. Purchase a license from Basis or a reseller. You are sent:
+#    A. Order confirmation
+#    B. Instructions with Serial and Authorization.
 #
-# 2. You Install the basis-pro5 package and run the installer (see above).
-# The installer must be run on the machine that will be running the BLM.
-# Select BLM, REG
-# Enter your information from the emailed .htm file.
+# 2. Install the basis-pro5 package.
 #
-# If you don't have sendmail installed and configured, the EMAIL option won't
-# work. Select OTHER as your delivery type and a file will be generated that
-# you can fax, email, or submit in the web registration tool. This file
-# contains a HostID derived from the machine BLM REG is run from. You must
-# BLM REG on the server that will be running the BLM. The host ID code is not
-# affected by changes to hard drive models or ethernet cards and is tolerant
-# to some variations in OS such as Arch Linux vs CentOS. The HostID is the
-# same for the 32 and 64 bit versions.
+# 3. Run the BLM installer.
+# The BLM installer requires the Oracle Java JDK.
+# Oracle JRE is not recommended and OpenJDK will not work.
+# The right version will be installed by the basis-pro5 package.
+# The BLM installer will run in GUI or Text mode.
+#   sudo java -jar BLM1600_03-11-2016_1203.jar
 #
-# To send the license by email you must compose as text only. A HTML email
-# will not be accepted.
+# You can overwrite the files in /usr/local/basis/blmgr
+# The server should be provided Internet access. The BLM installer will
+# submit the serial and auth and retrieve the license.
+# Stop at step "Configure BLM Startup"
 
 # The first time the license is activated, the activated license for your BLM
 # can be returned in as little as two minutes. If the license has already been
-# activated and you're changing the BLM server to another system, you must call
-# Basis to have your activation reset. This may require an active SAM plan
-# or a one time fee. A license request without an activation reset will get you
-# a license but it's only good for 7 days as a emergency license.
+# activated and you're changing the BLM server to another system, you may need
+# to call Basis to have your activation reset. This may require an active SAM
+# plan or a one time fee. A license request without an activation reset will
+# get you a license but it's only good for 7 days as a emergency license. Check
+# your expiry date and if it's 7 days, plan on some time on the phone to get
+# the licensing straightened out before the nag screens come up again.
 
-# Note: AutoLic is Windows only and is not available for Linux.
+# Note: Some licenses require periodic reactivation and Internet access to the
+# server. See http://documentation.basis.com/BASISHelp/WebHelp/inst/basis_license_types.htm
 #
-# 3. Basis sends you a BLM license "BASIS BBJ License.txt" in an email. Place
-# this in an easy to find location on the new BLM server with a short name.
-# From the installer select: BLM, INSTALL
-# Specify the .txt file you received. Enable and start your BLM with the 
+# 4. Install the basis-pro5 package again to replace some patched files
+# overwritten by the BLM installer.
+# If you submitted by email, from ./install select: BLM, INSTALL
+# Specify the .txt file you received. Enable and start your BLM with the
 # systemctl commands below.
 #
-# 4. On all your Pro/5 installations run the installer and select
+# 5. On all your Pro/5 installations run ./install and select
 # PRO5, SERVER
 # and specify the IP or DNS name of your running BLM server.
 
@@ -135,7 +138,7 @@ _opt_pro5_exe='bbx4'     # default: pro5, this link will be created in /usr/bin 
                          # Pro/5 is in the path. Select a name that minimizes the number of
                          # scripts you must modify.
 
-# Up to 3 package can be created
+# Up to 3 packages can be created
 #   i686 for 32 bit systems
 #   x86_64 for 64 bit systems
 #   any for 64 bit systems running multilib
@@ -151,7 +154,8 @@ _opt_pro5_exe='bbx4'     # default: pro5, this link will be created in /usr/bin 
 # To build 32 bit multilib package on 64 bit system
 # makepkg -sCcf CARCH=any
 
-# Once installed with an activated license you can enable and start the BLM service.
+# Once installed with an activated license you can enable and
+# start the BLM service.
 
 #   systemctl enable basis_lmgrd
 #   systemctl start basis_lmgrd
@@ -168,7 +172,7 @@ _opt_pro5_exe='bbx4'     # default: pro5, this link will be created in /usr/bin 
 # with the Basis install.
 # If you have license nags check the logs at /var/log/basis/
 # Check the status with
-#   systemctl status basis_lmgrd
+#   systemctl status basis_lmgrd.service
 
 # The setup for a fully functioning Basis BBx Progression Pro/5 environment
 # is extensive and not covered here.
@@ -183,43 +187,40 @@ _opt_pro5_exe='bbx4'     # default: pro5, this link will be created in /usr/bin 
 # root can't edit them. If you want to customize an included utility, make
 # a copy with a new name.
 
-# UnInstall cleanup: rm -rf /var/log/basis
+# Uninstall cleanup: rm -rf /var/log/basis /usr/local/basis
 
 set -u
 pkgname='basis-pro5'
 pkgver='15.01'
-pkgrel='1'
-pkgdesc=('BASIS BBx Progression Pro/5 Business BASIC eXtended for BBj')
+pkgrel='2'
+pkgdesc='BASIS BBx Progression Pro/5 Business BASIC eXtended for BBj'
 url='http://www.basis.com/'
 license=('custom')
-depends=('glibc')
+depends=('glibc' 'jdk' 'wget') # The Windows install recommends jdk over jre so we do to. OpenJDK does not work.
 options=('!docs' 'emptydirs' '!strip') # strip is so poorly implemented that it changes the content and date on executables, even when there's nothing to strip! What were they thinking?
 install="${pkgname}-install.sh" # I can find no way to get makepkg to delete this when done
 #_verwatch=("${url}availability" '<td class="revision".*">\([0-9\.]\+\).*' 'f') # Almost works
-source=('basis_dummy_file') # this is to correct a bug in updpkgsums where at least one non arch source must exist so makepkg can detect something other than md5sums
+_blmjar='BLM1600_03-11-2016_1203.jar'
+source=("http://public.basis.com/blm/jar/${_blmjar}")
 
 _file='@::file://@' # convince the git submission that these files aren't on the web and don't need to be supplied
 # 32-bit Rev 15.00 Linux Kernel 2.6.17-1.2142_FC4+ AND glibc v2.3+
-# 10455xxxxblm111010.Z = BLM              Port 1045
 # 10455yyyy.Z          = Pro/5            Port 1045
 # 12455yyyy.Z          = Pro/5 DataServer Port 1245
-for _src in '104551200blm111010.Z' '104551501.Z' '124551500.Z'; do
+for _src in '104551501.Z' '124551500.Z'; do
   source_i686+=("${_file//@/${_src}}")
 done
 
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
-sha256sums_i686=('8ef89b8e7425c19cf5c33a5fd78ed4f3cb03857d22b6f1bb2d38ef26c146b6a3'
-                 '505080b9283ca5037453a844ea9781f047d5bfd6bcec2bd9a7e028497fb6dfdb'
+sha256sums=('89e6ef508b4ce3b7859078ff5f6592aeee2f263e09fbf7120efebe922e72c9da')
+sha256sums_i686=('505080b9283ca5037453a844ea9781f047d5bfd6bcec2bd9a7e028497fb6dfdb'
                  '55052c4bcb1628017f051b18880de686c544144adf002dc2fdd1adc30b1e2e24')
-sha256sums_x86_64=('a37bb259b8bce8a3aca333e69ea678997e829b120ebd1ba52f569df025c131e7'
-                   '42f1d5143249df9672069bc2d64754ccd17a573cfce756dd8caf5056e4f5abd9'
+sha256sums_x86_64=('42f1d5143249df9672069bc2d64754ccd17a573cfce756dd8caf5056e4f5abd9'
                    'fe1114e619755bed70255e08bad2f9830887cf336bb5f013cc271314dc631604')
 
-for _src in '604551200blm111010.Z' '604551501.Z' '624551500.Z'; do
+for _src in '604551501.Z' '624551500.Z'; do
   source_x86_64+=("${_file//@/${_src}}")
 done
 # 64-bit Rev 15.00 Linux Kernel v2.6+ and glibc v2.3+
-# 60455xxxxblm111010.Z = BLM              Port 6045
 # 60455xxxx.Z          = Pro/5            Port 6045
 # 62455yyyy.Z          = Pro/5 DataServer Port 6245
 unset _src
@@ -229,9 +230,9 @@ if [ "${CARCH:-}" != 'any' ]; then
   arch=('i686' 'x86_64')
 else
   # This allows us to build an i686, x86_64, and any package all with the same name so pacman thinks it's an upgrade.
-  :;source=("${source_i686[@]}")
+  :;source+=("${source_i686[@]}")
   unset source_i686 source_x86_64
-  :;sha256sums=("${sha256sums_i686[@]}")
+  :;sha256sums+=("${sha256sums_i686[@]}")
   unset sha256sums_i686 sha256sums_x86_64
   arch=('any')
   depends+=('lib32-glibc')
@@ -256,6 +257,39 @@ prepare() {
   eval 'cd "${star''tdir}"' # keep git-aurcheck from complaining
   mkdir -p 'zblmgr' 'zpro5'
   chmod 644 *.Z zblmgr/* zpro5/* 2>/dev/null || :
+  cd "${srcdir}"
+
+  # unpack most of the new BLM, removing files customized by the BLM installer
+  # for seamless reinstalls and upgrades.
+  rm -rf 'blmgr' 'com' 'org' 'META-INF' 'blminstall.xml'
+  mkdir 'blmgr' 'Archtemp'
+  cd 'Archtemp'
+  bsdtar -x -f '../package_blm.jar'
+  declare -A _arch=([any]='32' [i686]='32' [x86_64]='64')
+  mv 'unix'/* "2145/blm/${_arch[${CARCH}]}"/* '../blmgr'
+  mv '../blmgr/bin/basisrunlm' '../blmgr'
+  rm -f '../blmgr/bin/unixautostart'
+  mv '../blmgr/bin/admin' '../blmgr/bin/blmadmin'
+  cd ..
+  rm -rf 'Archtemp'
+  mkdir 'Archtemp'
+  cd 'Archtemp'
+  bsdtar -x -f '../package_install.jar' 'lib/' 'unix'
+  rm -f 'unix/images'/*.png 'unix/images/BasisB.xpm' 'unix'/*.directory 'unix'/*.menu 'unix/bin/.envsetup'
+  local _df
+  for _df in 'unix'/*/; do
+    local _df2="${_df%/}"
+    mv "${_df2}"/* "../blmgr/${_df2##*/}"
+    rmdir "${_df2}"
+  done
+  rmdir 'unix'
+  mv * '../blmgr'
+  cd '../blmgr'
+  bsdtar -x -f '../package_native_2145.jar'
+  rm -rf 'META-INF'
+  mkdir -p 'cfg' 'log' 'uninstall/com/basis/install/'
+  rm -f "${srcdir}"/*.jar
+  rmdir "${srcdir}/Archtemp"
   cd "${srcdir}"
 
   # The permissions on these files are horrendous
@@ -355,7 +389,7 @@ package() {
     if [ ! -h "${_basis_pkg}" ]; then
       mv "${_basis_pkg}" "${pkgdir}${_basedir}/"
       # bring in license files if provided
-      if [ -d "${pkgdir}${_basedir}/${_basis_pkg}/" -a -d "${srcdir}/../z${_basis_pkg}/" ]; then
+      if [ -d "${pkgdir}${_basedir}/${_basis_pkg}/" ] && [ -d "${srcdir}/../z${_basis_pkg}/" ]; then
         install -pm644 "../z${_basis_pkg}/"* -t "${pkgdir}${_basedir}/${_basis_pkg}/" || : # ignore error on copy
       fi
     fi
