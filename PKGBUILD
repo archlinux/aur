@@ -1,8 +1,8 @@
 # Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=rkt-bin
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="App container runtime"
 arch=('x86_64')
 url="https://github.com/coreos/rkt"
@@ -16,7 +16,7 @@ source=(
   "https://github.com/coreos/rkt/releases/download/v${pkgver}/rkt-v${pkgver}.tar.gz.sig"
 )
 sha256sums=('SKIP' 'SKIP')
-validpgpkeys=('BECE2BD4B68D2071255A7A4E3689AD7F72EBB080')
+validpgpkeys=('18AD5014C99EF7E3BA5F6CE950BDD3E0FC8A365E')
 install="${pkgname}.install"
 _pkgname=rkt
 
