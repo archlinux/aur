@@ -2,7 +2,7 @@
 
 pkgname=gincamalarm
 pkgver=0.0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Gin server to manage camera with motion"
 arch=('any')
 url="https://github.com/Chipsterjulien/gincamalarm"
@@ -81,4 +81,4 @@ package() {
         "$pkgdir"/usr/bin/$pkgname || return 1
 }
 
-sha512sums=('ece19676d82d7ef810e627e9b03343c31b868e42878be09d429648f9d02d303742bcf04db2a49cc2c103f300655c5065131c7ce6d1c63d3a616129dcbebfb169')
+sha512sums=('e8b76619ee7b1671cf5175d3b23257385da38a182a9852cfa152c4954f458369a1c077c38d5afc62ead6366b43141d05b602a53fbbb24e39f908d7ced41d74f6')
