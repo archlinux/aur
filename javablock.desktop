@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=JavaBlock
+GenericName=Flowchart simulator
+Comment=Free Java Flowchart simulator / interpreter
+Icon=javablock
+Categories=Development
+Exec=javablock

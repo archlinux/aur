@@ -1,0 +1,20 @@
+pkgbase = javablock
+	pkgdesc = Free Java Flowchart simulator / interpreter
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://javablock.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = freeware/GPL
+	depends = java-runtime
+	source = http://sourceforge.net/projects/javablock/files/0.6/0.6.1/install.zip/download
+	source = javablock.png
+	source = javablock.desktop
+	source = javablock
+	md5sums = 244c8975247941198389e1bf02712c85
+	md5sums = 61e167a071d787a7a93a48347e9292a1
+	md5sums = db8f696ee85b1444d8176eb45d3373f3
+	md5sums = b7093a88b12344924668dc6c348ef8dd
+
+pkgname = javablock
+
