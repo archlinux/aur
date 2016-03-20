@@ -11,6 +11,7 @@ depends=('clutter-gtk' 'clutter-gst' 'xplayer-plparser-git'
     'libpeas' 'gsettings-desktop-schemas'
     'python2-gobject' 'gst-plugins-base' 'gst-plugins-good')
 makedepends=('git' 'gnome-common' 'gtk-doc' 'gobject-introspection')
+optdepends=('gst-libav: Extra media codec support')
 provides=($_pkgname)
 conflicts=('xplayer' $_pkgname)
 url='https://github.com/linuxmint/xplayer'
