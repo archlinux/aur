@@ -2,9 +2,9 @@
 # Previous maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=rr
-pkgver=4.1.0
+pkgver=4.2.0
 pkgrel=1
-pkgdesc='a nondeterministic debugger'
+pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64)
 url='http://rr-project.org/'
 license=('custom')
@@ -12,7 +12,7 @@ depends=('python2-pexpect' 'gdb')
 makedepends=('git' 'cmake' 'gdb')
 [ "$CARCH" = 'x86_64' ] && makedepends+=('gcc-multilib')
 source=(https://github.com/mozilla/${pkgname}/archive/${pkgver}.tar.gz)
-sha1sums=('7deadfa13cb4f08e2907aa9efe00184422ee7da5')
+sha1sums=('625148bcdbf27a1b94ddf1cb1737bcf0176deb1d')
 
 prepare() {
 	cd $pkgname-$pkgver
