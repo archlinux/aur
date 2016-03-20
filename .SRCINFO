@@ -5,7 +5,6 @@ pkgbase = adaway
 	url = https://bitbucket.org/NjlsShade/adaway
 	arch = any
 	license = Apache
-	source = AdAway.sh
 	md5sums = a8e41cd808af4dca000a49298d222bb1
 
 pkgname = adaway
