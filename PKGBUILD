@@ -9,7 +9,7 @@ url="https://www.openstudio.net"
 depends=('ruby')
 # optdep=('energyplus')
 license=('LGPL')
-source=("https://openstudio-builds.s3.amazonaws.com/$pkgver.$pkgrel/OpenStudio-$pkgver.$pkgrel.$_relvar-Linux.deb" 'patch_desktop.patch')
+source=("https://openstudio-builds.s3.amazonaws.com/$pkgver/OpenStudio-$pkgver.$_relvar-Linux.deb" 'patch_desktop.patch')
 md5sums=('a8e6e053398efbf69874613977d1ba30' '5afef8d61b5af033c69a26daa5959508')
 
 package() {
