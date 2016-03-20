@@ -2,8 +2,7 @@
 
 pkgname=qlcplus-qt5
 _pkgname=qlcplus
-pkgver=4.10.2b
-_pkgver=4.10.2
+pkgver=4.10.3
 pkgrel=1
 pkgdesc="Q Light Controller Plus - The open DMX lighting desk software for controlling professional lighting fixtures."
 arch=('i686' 'x86_64')
@@ -15,16 +14,16 @@ optdepends=('ola: Open Lighting Architecture plugin')
 provides=("$_pkgname=$pkgver")
 conflicts=('qlcplus' 'qlc' 'qlc-svn')
 install=${_pkgname}.install
-source=("http://www.qlcplus.org/downloads/${_pkgver}/qlcplus_${pkgver}.tar.gz")
-md5sums=('0e6adfd8e329775a3d5482b49f935c2e')
+source=("http://www.qlcplus.org/downloads/${pkgver}/qlcplus_${pkgver}.tar.gz")
+md5sums=('defed3668792643ab973d356d05fbb8e')
 
 build() {
-  cd "${srcdir}/qlcplus-${_pkgver}"
+  cd "${srcdir}/qlcplus-${pkgver}"
   qmake-qt5
   make
 }
 
 package() {
-  cd "${srcdir}/qlcplus-${_pkgver}"
+  cd "${srcdir}/qlcplus-${pkgver}"
   make INSTALL_ROOT="${pkgdir}/" install
 }
