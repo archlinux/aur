@@ -7,7 +7,7 @@
 # TODO: Allow selection of patches in PKGBUILD.
 pkgname=telegram-desktop-patched
 pkgver=0.9.33
-pkgrel=1
+pkgrel=2
 _qtver=5.5.1
 pkgdesc='Telegram Desktop with bigger sticker panel and dark colour scheme patches.'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ depends=('ffmpeg' 'icu' 'jasper' 'libexif' 'libmng' 'libwebp' 'libxkbcommon-x11'
 makedepends=('git' 'patch' 'libunity' 'libappindicator-gtk2')
 provides=('telegram-desktop')
 conflicts=('telegram-desktop')
-source=("tdesktop::git+https://git.mel.vin/melvin/telegram-desktop.git#tag=v0.9.33-1"
+source=("tdesktop::git+https://git.mel.vin/melvin/telegram-desktop.git#tag=v${pkgver}-${pkgrel}"
 	"http://download.qt.io/official_releases/qt/${_qtver%.*}/$_qtver/single/qt-everywhere-opensource-src-$_qtver.tar.xz"
 	"breakpad::git+https://chromium.googlesource.com/breakpad/breakpad"
 	"breakpad-lss::git+https://chromium.googlesource.com/linux-syscall-support"
