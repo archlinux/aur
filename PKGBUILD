@@ -49,7 +49,7 @@ build() {
 package(){
   cd "${srcdir}"/SoftEtherVPN
 
-  install -Dm644 bin/vpnserver/hamcore.se2 "${pkgdir}"/usr/lib/softethervpn/hamcore.se2
+  install -Dm444 bin/vpnserver/hamcore.se2 "${pkgdir}"/usr/lib/softethervpn/hamcore.se2
   install -d "${pkgdir}"/usr/bin
 
   for inst in vpnclient vpnserver vpnbridge vpncmd
