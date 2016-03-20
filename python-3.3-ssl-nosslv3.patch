@@ -1,0 +1,15 @@
+diff --git a/Modules/_ssl.c b/Modules/_ssl.c
+index 499e8ba..00a47d7 100644
+--- a/Modules/_ssl.c
++++ b/Modules/_ssl.c
+@@ -1746,8 +1746,10 @@ context_new(PyTypeObject *type, PyObject *args, PyObject *kwds)
+     PySSL_BEGIN_ALLOW_THREADS
+     if (proto_version == PY_SSL_VERSION_TLS1)
+         ctx = SSL_CTX_new(TLSv1_method());
++#ifndef OPENSSL_NO_SSL3
+     else if (proto_version == PY_SSL_VERSION_SSL3)
+         ctx = SSL_CTX_new(SSLv3_method());
++#endif
+ #ifndef OPENSSL_NO_SSL2
+     else if (proto_version == PY_SSL_VERSION_SSL2)
+         ctx = SSL_CTX_new(SSLv2_method());
