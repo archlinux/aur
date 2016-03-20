@@ -19,11 +19,8 @@ source=("https://github.com/Mikayex/transmission/archive/${pkgver}-seq.tar.gz" t
 md5sums=('432fa500829c7890a9278966dd65cb2a'
          'bcb54fdb9fec00992960d9bd3b449d4d')
 
-_inarray() {
-  local e
-  for e in "${@:2}"; do [[ "$e" == "$1" ]] && return 0; done
-  return 1
-}
+BUILD_GTK=true
+BUILD_QT=true
 
 prepare() {
   cd transmission-$pkgver-seq
@@ -33,17 +30,14 @@ prepare() {
 
 build() {
   cd transmission-$pkgver-seq
-
-#Don't build if not needed since long to build
-  if _inarray 'transmission-sequential-gtk' "${pkgname[@]}"; then
+  if [ "$BUILD_GTK" = true ] ; then
     ./autogen.sh --prefix=/usr
   else
     ./autogen.sh --prefix=/usr --without-gtk
   fi
   make
 
-#Don't build if not needed since long to build
-  if _inarray 'transmission-sequential-qt' "${pkgname[@]}"; then
+  if [ "$BUILD_QT" = true ] ; then
     cd qt
     qmake qtr.pro
     make
