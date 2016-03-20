@@ -1,0 +1,5 @@
+.AURINFO
+pkg/
+src/
+tracktion-6-*.pkg.tar.xz
+TracktionInstall_*_Linux_??Bit.deb
