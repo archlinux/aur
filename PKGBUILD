@@ -10,7 +10,7 @@ makedepends=('python')
 license=('custom:UNLICENSE')
 arch=('any')
 source=("https://pypi.python.org/packages/source/i/${_name}/${_name}-${pkgver}.tar.gz")
-md5sums=('0aa8feadec140b7d091bac142411e6d9')
+md5sums=('d8e5abe117f3323b2de6568d1182ae57')
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
