@@ -6,7 +6,7 @@
 pkgname=oscam-git
 pkgver=11213
 _gitrev=64c739f95fe4f6f9dbf0d6693606743185c15ff6
-pkgrel=2
+pkgrel=3
 pkgdesc="Open Source Conditional Access Module software"
 url="http://www.streamboard.tv/oscam"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h')
@@ -32,7 +32,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/oscam-mirror"
-  patch -p1 -i "$srcdir/oscam-replace-sslv3.diff"
+  patch -p1 -i "$srcdir/oscam-remove-sslv3.diff"
 }
 
 build() {
