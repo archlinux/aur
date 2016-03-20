@@ -1,0 +1,20 @@
+--- makepkg-optimize.conf
++++ makepkg-optimize.conf
+@@ -83,6 +83,8 @@
+ #-- ccache:   Use ccache to cache compilation
+ #-- check:    Run the check() function if present in the PKGBUILD
+ #-- sign:     Generate PGP signature file
++#-- lto:      Use link-time optimization to reduce compiled binary size and possibly improve performance
++#-- pgo:      Generate or use profile guided optimization to reduce compile binary size and improve performance
+ #
+ BUILDENV=(!distcc color !ccache !check !sign)
+ #
+@@ -142,6 +144,8 @@
+ #SRCDEST=/home/sources
+ #-- Source packages: specify a fixed directory where all src packages will be placed
+ #SRCPKGDEST=/home/srcpackages
++#-- Profile cache: specify a fixed directory where profiles will be stored
++#PROFDEST=/home/sources
+ #-- Log files: specify a fixed directory where all log files will be placed
+ #LOGDEST=/home/makepkglogs
+ #-- Packager: name/email of the person or organization building packages

@@ -1,0 +1,21 @@
+--- makepkg-optimize.conf
++++ makepkg-optimize.conf
+@@ -83,6 +83,8 @@
+ #-- emptydirs:  Leave empty directories in packages
+ #-- zipman:     Compress manual (man and info) pages in MAN_DIRS with gzip
+ #-- purge:      Remove files specified by PURGE_TARGETS
++#-- upx:        Compress binary executable files using UPX
++#-- optipng:    Optimize PNG images with optipng
+ #-- debug:      Add debugging flags as specified in DEBUG_* variables
+ #
+ OPTIONS=(strip docs !libtool !staticlibs emptydirs zipman purge !optipng !upx !debug)
+@@ -126,6 +129,8 @@
+ DOC_DIRS=(usr/{,local/}{,share/}{doc,gtk-doc} opt/*/{doc,gtk-doc})
+ #-- Files to be removed from all packages (if purge is specified)
+ PURGE_TARGETS=(usr/{,share}/info/dir .packlist *.pod)
++#-- Compression parameters for UPX
++UPXFLAGS="--ultra-brute"
+ 
+ #########################################################################
+ # PACKAGE OUTPUT
+
