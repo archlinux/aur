@@ -1,32 +1,32 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-addrindex-git
-pkgver=20151115
-pkgrel=3
+pkgver=20160227
+pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node with addrindex"
 arch=('i686' 'x86_64')
 url="https://github.com/btcdrak/bitcoin"
 depends=('boost'
          'boost-libs'
-         'miniupnpc'
-         'openssl')
+         'zeromq')
 makedepends=('autoconf'
              'automake'
              'binutils'
-             'expect'
              'gcc'
              'git'
              'libtool'
+             'm4'
              'make'
              'pkg-config')
+optdepends=('miniupnpc: build with support for UPnP')
 license=('MIT')
-source=(git+https://github.com/btcdrak/bitcoin#branch=addrindex-0.11
+source=(git+https://github.com/btcdrak/bitcoin#branch=addrindex-0.12
         bitcoin.conf
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service)
 sha256sums=('SKIP'
-            '8a56413f8946861390a9992411a3730bc085ee02b852c27371cacfa5ec50e939'
+            '6321809cfc8b5d30b368d495c38450c40f0ab419f0640c111d6c68141569142e'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '5e45f2ceaeb7bfa60aeb66ca4167068191eb4358af03f95ac70fd96d9b006349'
             '10ad0b8c356559886634eaf658992004045853ec26cddee143d16125cb75e8f1')
