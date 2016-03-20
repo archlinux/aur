@@ -3,7 +3,7 @@
 _pkgname=bashmarks
 pkgname=${_pkgname}-git
 pkgver=43
-pkgrel=2
+pkgrel=3
 pkgdesc='A shell script that allows you to save and jump to commonly used directories'
 arch=('any')
 url="https://github.com/huyng/${_pkgname}"
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-install=("$pkgname.install")
+install="$pkgname.install"
 source=("git://github.com/huyng/${_pkgname}.git")
 md5sums=('SKIP')
 
