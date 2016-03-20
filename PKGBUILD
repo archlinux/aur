@@ -2,7 +2,7 @@
 # Contributor: Julien MISCHKOWITZ <wain@archlinux.fr>
  
 pkgname=yaourt-git
-pkgver=1.8
+pkgver=1.8.1.r11.g153c1f3
 pkgrel=1
 pkgdesc="A pacman wrapper with extended features and AUR support"
 arch=('any')
@@ -22,7 +22,7 @@ _gitname=yaourt
  
 pkgver () {
   cd $_gitname/src
-  echo $(git describe --always | sed 's/-/./g')
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
  
 build() {
