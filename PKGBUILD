@@ -9,7 +9,7 @@ url="http://www.capanalysis.net/"
 license=('GPL')
 depends=('glibc' 'libpcap' 'libpqxx' 'sqlite' 'openssl' 'zlib' 'wireshark-cli' 'apache' 'php-apache' 'php-sqlite' 'php-pgsql' 'postgresql')
 makedepends=(xxd xplico)
-source=('capanalysis::git+https://github.com/M0Rf30/CapAnalysis.git'
+source=('capanalysis::git+https://github.com/xplico/CapAnalysis.git'
 	capanalysis.service
 	capana.conf)
 install=capanalysis.install
