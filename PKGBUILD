@@ -1,14 +1,14 @@
 # Maintainer: danb <danielbusch1992@googlemail.com>
 
 pkgname=makefontpkg
-pkgver=20150624
+pkgver=20160320
 pkgrel=1
 pkgdesc="Tool for creating packages from TrueType and OpenType fonts"
-arch=('x86_64' 'i686')
+arch=(x86_64 i686)
 url='http://github.com/misterdanb/makefontpkg'
-license=('GPLv3')
-depends=('python3')
-makedepends=('git')
+license=(Beerware)
+depends=(python3)
+makedepends=(git)
 options=('!strip' '!emptydirs')
 source=('makefontpkg::git://github.com/misterdanb/makefontpkg.git')
 md5sums=('SKIP')
