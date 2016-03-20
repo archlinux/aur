@@ -1,12 +1,12 @@
 model="9330cdw"
 pkgname="brother-mfc-$model"
 pkgver="1.1.2"
-pkgrel=1
+pkgrel=2
 _revision=1
 pkgdesc="LPR and CUPS driver for the Brother MFC-9330CDW"
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 arch=('i686' 'x86_64')
-license='unknown'
+license=('unknown')
 install="brother-mfc-${model}.install"
 depends=('tcsh' 'deb2targz' 'perl' 'a2ps')
 source=("http://www.brother.com/pub/bsc/linux/dlf/mfc${model}lpr-${pkgver}-${_revision}.i386.deb"
