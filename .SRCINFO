@@ -1,0 +1,15 @@
+pkgbase = jtyr-oh-my-zsh-theme-git
+	pkgdesc = A jtyr oh-my-zsh shell theme
+	pkgver = r1.12164f2
+	pkgrel = 1
+	url = https://gist.github.com/jtyr/97f05d4ce1e027094ae7
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = zsh
+	depends = oh-my-zsh-git
+	source = git+https://gist.github.com/97f05d4ce1e027094ae7.git
+	sha256sums = SKIP
+
+pkgname = jtyr-oh-my-zsh-theme-git
+
