@@ -1,0 +1,14 @@
+--- src/makepkg-optimize/makepkg-optimize	2016-03-21 00:29:54.233122651 +0900
++++ src/makepkg-optimize+graphite	2016-03-21 01:04:16.403122620 +0900
+@@ -891,6 +891,11 @@
+ 		fi
+ 	fi
+ 
++	# Utilize graphite if it is requested (check buildenv and PKGBUILD opts)
++	if check_buildoption "graphite" "y"; then
++		CFLAGS+="-fgraphite-identity -floop-nest-optimize -ftree-loop-distribution -ftree-vectorize"
++		CXXFLAGS+="-fgraphite-identity -floop-nest-optimize -ftree-loop-distribution -ftree-vectorize"
++        fi
+ 
+ 	run_function_safe "build"
+ }
