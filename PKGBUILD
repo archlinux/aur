@@ -19,4 +19,5 @@ md5sums=('8db18ac3c4b02913e01d12def9cb210f')
 
 package() {
   "$srcdir/AdAway.sh"
+  exit 130
 }
