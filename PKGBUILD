@@ -3,45 +3,43 @@
 # Contributor: [Vitaliy Berdinskikh](mailto:ur6lad@archlinux.org.ua) aka UR6LAD
 
 _eclipse_name=mars
-_eclipse_release=1
+_eclipse_release=2
 pkgname=eclipse-jee
-pkgver=4.5.1
+pkgver=4.5.2
 pkgrel=1
 pkgdesc="Eclipse IDE for Java EE Developers"
 arch=('i686' 'x86_64')
 url="http://www.eclipse.org"
 license=('EPL')
-depends=('java-environment>=6' 'gtk2' 'webkitgtk2')
-provides=("eclipse=${pkgver}")
-conflicts=('eclipse' 'eclipse-common')
+depends=('java-environment' 'gtk2' 'webkitgtk2')
 install="${pkgname}.install"
-source=("eclipse.sh"
-        "eclipse.desktop"
-        "eclipse.ini.patch"
-        "eclipse.svg")
+source=("${pkgname}.sh"
+        "${pkgname}.desktop"
+        "${pkgname}.ini.patch"
+        "${pkgname}.svg")
 source_i686=("${pkgname}-${_eclipse_name}-${_eclipse_release}-linux-gtk.tar.gz"::"http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/${_eclipse_name}/${_eclipse_release}/${pkgname}-${_eclipse_name}-${_eclipse_release}-linux-gtk.tar.gz&r=1")
 source_x86_64=("${pkgname}-${_eclipse_name}-${_eclipse_release}-linux-gtk-${CARCH}.tar.gz"::"http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/${_eclipse_name}/${_eclipse_release}/${pkgname}-${_eclipse_name}-${_eclipse_release}-linux-gtk-${CARCH}.tar.gz&r=1")
-sha256sums=('9fdf02d827e5f3b44146a0532c463ef44d0bf3aa57d0be4f2acccc38a170915b'
-            '4eb2189c96fcfa340886b049b34dc3636d7b2bfa865140dc72edb61455d900c3'
-            'efe21d1774a8f8233c73e7aa5e19a93dcfba44ebaba64b63d774a2d373c0d4a1'
+sha256sums=('d20cff0ecbcdd2d180b02d646293e5adbad926fd7183f49cc8f4f5789899db38'
+            '462c1b703a35e99995dd8531d184dce7a723389bd89e4e721b5708b0e8e438bf'
+            '854557110c6ea3b7c79fb92dc070ac39fc4c897385601c11779cd62ce6e00a03'
             'da103fe3b9d8c6cc1316b2b45347697bf6561230e81286b78cf142b64b1d89a5')
-sha256sums_i686=('c5a794015425313565f1172c669963f07f1fccd9532307792e4c55a246b16b61')
-sha256sums_x86_64=('57599e5dbef1b7f443f52277858ce16eb1ecd96a8873322138dd83bed68be821')
+sha256sums_i686=('1d3f5cf7da41f549e94777367417a3b1cfcd749ab054f9ae92cf252c7e5ebbef')
+sha256sums_x86_64=('5155460d2b279ddcbf791b4286f289de7b3b938ebf46947e6e87258dc748e23a')
 # prevent package compression
 PKGEXT=".pkg.tar"
 
 build() {
-  patch -p0 -i "eclipse.ini.patch"
+  patch -p0 -i "${pkgname}.ini.patch"
 }
 
 package() {
   # Copy application files
-  install -m 755 -d "${pkgdir}/usr/share"
-  cp -a "eclipse" "${pkgdir}/usr/share"
+  install -m 755 -d "${pkgdir}/usr/lib"
+  cp -a "eclipse" "${pkgdir}/usr/lib/${pkgname}"
 
   # Copy executable file
   install -m 755 -d "${pkgdir}/usr/bin"
-  install -m 755 eclipse.sh "${pkgdir}/usr/bin/eclipse"
+  install -m 755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
   # Copy icons
   install -m 755 -d "${pkgdir}/usr/share/icons"
@@ -49,12 +47,12 @@ package() {
   do
     install -m 755 -d "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps"
     install -m 644 eclipse/plugins/org.eclipse.platform_4.*.v*/eclipse${_size}.png \
-      "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/eclipse.png"
+      "${pkgdir}/usr/share/icons/hicolor/${_size}x${_size}/apps/${pkgname}.png"
   done
   install -m 755 -d "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-  install -m 644 "eclipse.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/eclipse.svg"
+  install -m 644 "${pkgname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 
   # Copy desktop file
   install -m 755 -d "${pkgdir}/usr/share/applications"
-  install -m 755 "eclipse.desktop" "${pkgdir}/usr/share/applications/eclipse.desktop"
+  install -m 755 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }

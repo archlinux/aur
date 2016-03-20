@@ -14,4 +14,4 @@ diff -Naur eclipse.orig/eclipse.ini eclipse/eclipse.ini
  -XX:MaxPermSize=256m
  -Xms256m
  -Xmx1024m
-+-Dosgi.configuration.area=@user.home/.config/eclipse
++-Dosgi.configuration.area=@user.home/.config/eclipse-jee

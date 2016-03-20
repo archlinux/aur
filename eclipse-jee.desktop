@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Eclipse for Java EE
+Comment=A Java EE Development Environment
+Exec=eclipse-jee
+Icon=eclipse-jee
+Terminal=false
+Type=Application
+Categories=Java;Development;IDE;
+StartupNotify=true
