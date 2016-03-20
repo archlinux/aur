@@ -2,10 +2,11 @@
 # Maintainer: Karl-Felix Glatzer <karl.glatzer@gmx.de>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Yamashita Ren <lemaitre.lotus@gmail.com>
+# Contributor: Martchus <martchus@gmx.net>
 
 pkgname=mingw-w64-dcadec
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='DTS Coherent Acoustics decoder with support for HD extensions (mingw-w64)'
 arch=('any')
 url='https://github.com/foo86/dcadec.git'
@@ -21,11 +22,13 @@ build() {
   for _arch in ${_architectures}; do
     cp -r "${srcdir}/dcadec-${pkgver}" "${srcdir}"/build-${_arch} && cd "${srcdir}"/build-${_arch}
 
-    export CONFIG_SHARED='TRUE'
     export CONFIG_WINDOWS='TRUE'
+    export AR="${_arch}-ar"
     export CC="${_arch}-gcc"
 
     make
+    CONFIG_SHARED='TRUE' make
+
   done
 }
 
@@ -33,14 +36,15 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}"/build-${_arch}
 
-    export CONFIG_SHARED='TRUE'
     export CONFIG_WINDOWS='TRUE'
+    export AR="${_arch}-ar"
     export CC="${_arch}-gcc"
     export PREFIX="/usr/${_arch}"
 
     make DESTDIR="${pkgdir}" install
+    CONFIG_SHARED='TRUE' make DESTDIR="${pkgdir}" install
     mv "${pkgdir}"/usr/${_arch}/lib/*.dll "${pkgdir}"/usr/${_arch}/bin/
-    mv "${srcdir}/build-${_arch}/libdcadec/libdcadec.dll.a" "${pkgdir}"/usr/${_arch}/lib/
+    mv "${srcdir}"/build-${_arch}/libdcadec/*.a "${pkgdir}"/usr/${_arch}/lib/
     rm "${pkgdir}"/usr/${_arch}/bin/*.exe
 
     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
@@ -49,4 +53,3 @@ package() {
 }
 
 # vim: ts=2 sw=2 et:
-
