@@ -2,7 +2,7 @@
 
 pkgname=easyrpg-player
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="FLOSS RPG Maker 2000/2003 and EasyRPG games interpreter"
 arch=('i686' 'x86_64')
 url="https://easy-rpg.org/"
@@ -12,7 +12,7 @@ depends=("liblcf>=$pkgver" 'sdl2_mixer' 'pixman' 'freetype2')
 optdepends=('wine: for installing the run time packages (RTP)')
 install=$pkgname.install
 source=("https://easy-rpg.org/downloads/player/$pkgname-$pkgver.tar.gz")
-sha256sums=('d1b61c3a85cd4540ace9c22e19618cdfdbe160cd9149b841f8184e91c33f9bf6')
+sha256sums=('e839c5676867d3c88c996b81268f82c74dcaae5cdc5069b812154bcf73dd188b')
 
 build () {
   cd $pkgname-$pkgver
