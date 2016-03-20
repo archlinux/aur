@@ -3,8 +3,8 @@
 
 # Please comment unwanted cmdpack tools in "_utils" section.
 
-pkgbase='cmdpack'
-groups="$pkgbase"
+pkgbase=cmdpack
+groups=($pkgbase)
 _utils=(
 # Like below, add # at the beginning of unwanted tools' line.
 # 'unwantedtool'
@@ -30,7 +30,7 @@ _utils=(
 )
 for _tool in ${_utils[@]}; do pkgname+=("$pkgbase-$_tool"); done
 pkgver=1.05
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of command line utilities, most for emulation or disk images. (${_utils[*]})"
 arch=('i686' 'x86_64')
 url="https://github.com/chungy/cmdpack"
