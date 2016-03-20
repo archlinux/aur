@@ -1,13 +1,13 @@
 # Maintainer: Kai Yuan <kent.yuan @t gmail d@t com>
 pkgname=zhuaxia-git
-pkgver=r264.9996e92
-pkgrel=2
+pkgver=r268.54e91f4
+pkgrel=1
 pkgdesc="cli tool to download mp3 from xiami.com and music.163.com"
 arch=('any')
 url="https://github.com/sk1418/zhuaxia/tree/bleeding"
 license=('MIT')
 makedepends=('git')
-depends=('python2-requests' 'mutagen' 'python2-beautifulsoup4' 'python2-setuptools')
+depends=('python2-crypto' 'python2-requests' 'mutagen' 'python2-beautifulsoup4' 'python2-setuptools')
 conflicts=('python2-mutagen')
 sha256sums=('SKIP')
 sha512sums=('SKIP')
