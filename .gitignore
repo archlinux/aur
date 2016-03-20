@@ -1,0 +1,4 @@
+pkg
+src
+go_appengine_sdk*
+google-appengine-go*

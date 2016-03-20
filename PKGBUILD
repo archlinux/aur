@@ -1,9 +1,10 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Joshua Marsh <joshua@themarshians.com>
+# Contributor: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: Richard Hoffman <coverslide@gmail.com>
 # Contributor: Max <fuzymonkey@gmail.com>
 
 pkgname=google-appengine-go
-pkgver=1.9.31
+pkgver=1.9.34
 pkgrel=1
 pkgdesc='Google App Engine SDK for Go'
 arch=('x86_64' 'i686')
@@ -16,8 +17,8 @@ optdepends=('mysql-python: MySQL support for Python 2'
             'python2-imaging: Image processing capabilities for Python')
 source_i686=("https://commondatastorage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_386-$pkgver.zip")
 source_x86_64=("https://commondatastorage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_amd64-$pkgver.zip")
-md5sums_x86_64=('86355929faf77ca986ef50b730aad2ae')
-md5sums_i686=('e9e305027ed6da1e678e8dbc2e209a16')
+md5sums_x86_64=('9c3b5331c93a356f09bd39b24a89e02a')
+md5sums_i686=('11a7c507742967b7cf29f78b7415e696')
 # Get the name of the zip file
 _source=$(echo source_$CARCH)
 noextract=("$(basename ${!_source})")
