@@ -8,13 +8,13 @@
 +	if check_buildoption "pgo" "y"; then
 +		if [ ! -d "$PROFDEST/$pkgbase.gen" ]; then
 +			mkdir "$PROFDEST/$pkgbase.gen"
-+			CFLAGS+="-fprofile-generate -fprofile-dir=$PROFDEST/$pkgbase.gen"
-+			CXXFLAGS+="-fprofile-generate -fprofile-dir=$PROFDEST/$pkgbase.gen"
-+			LDFLAGS+="-lgcov"
++			CFLAGS+=" -fprofile-generate -fprofile-dir=$PROFDEST/$pkgbase.gen"
++			CXXFLAGS+=" -fprofile-generate -fprofile-dir=$PROFDEST/$pkgbase.gen"
++			LDFLAGS+=" -lgcov"
 +		else
 +			[[ ! -d "$PROFDEST/$pkgbase.used" ]] && mv "$PROFDEST/$pkgbase.gen" "$PROFDEST/$pkgbase.used"
-+			CFLAGS+="-fprofile-correction -fprofile-use -fprofile-dir=$PROFDEST/$pkgbase.used"
-+			CXXFLAGS+="-fprofile-correction -fprofile-use -fprofile-dir=$PROFDEST/$pkgbase.used"
++			CFLAGS+=" -fprofile-correction -fprofile-use -fprofile-dir=$PROFDEST/$pkgbase.used"
++			CXXFLAGS+=" -fprofile-correction -fprofile-use -fprofile-dir=$PROFDEST/$pkgbase.used"
 +		fi
 +	fi
 +

@@ -6,8 +6,8 @@
  
 +	# Utilize graphite if it is requested (check buildenv and PKGBUILD opts)
 +	if check_buildoption "graphite" "y"; then
-+		CFLAGS+="-fgraphite-identity -floop-nest-optimize -ftree-loop-distribution -ftree-vectorize"
-+		CXXFLAGS+="-fgraphite-identity -floop-nest-optimize -ftree-loop-distribution -ftree-vectorize"
++		CFLAGS+=" -fgraphite-identity -floop-nest-optimize -ftree-loop-distribution -ftree-vectorize"
++		CXXFLAGS+=" -fgraphite-identity -floop-nest-optimize -ftree-loop-distribution -ftree-vectorize"
 +        fi
  
  	run_function_safe "build"
