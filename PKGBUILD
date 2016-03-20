@@ -2,7 +2,7 @@
 # Maintainer: Aaron Baker <aa{last name}99{at}gmail{dt}org>
 
 pkgname=sra-tools
-pkgver=2.5.7
+pkgver=2.5.8
 pkgrel=1
 pkgdesc="The SRA Toolkit and SDK from NCBI is a collection of tools and libraries for using data in the INSDC Sequence Read Archives."
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('fuse: mount remote genome reference files')
 provides=('sra-tools')
 license=('custom:PublicDomain')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ncbi/sra-tools/archive/$pkgver.tar.gz")
-sha256sums=('854a23da7ca49026adf4ca7adee65e9387389d6a55568c403be87442cec32361')
+sha256sums=('7527585226fd1255cc662209309e4aebf38136082034ba25e1d79506bdfb8a57')
 
 prepare(){
   cd $pkgname-$pkgver
@@ -24,7 +24,7 @@ prepare(){
 
 build(){
   cd "${pkgname}-${pkgver}"
-  ./configure --prefix="$pkgdir/usr/" --with-ngs-sdk-prefix=/usr --with-ncbi-vdb-sources="/usr/src/ncbi-vdb-2.5.7"
+  ./configure --prefix="$pkgdir/usr/" --with-ngs-sdk-prefix=/usr --with-ncbi-vdb-sources="/usr/src/ncbi-vdb-$pkgver"
   make
 }
 
