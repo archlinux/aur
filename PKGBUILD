@@ -1,7 +1,7 @@
 # Maintainer: Veeti Paananen <veeti.paananen@rojekti.fi>
 
 pkgname=manuale
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A fully manual Let's Encrypt client"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/veeti/manuale"
 license=('MIT')
 depends=('python-setuptools' 'python-cryptography' 'python-requests')
 source=("https://pypi.python.org/packages/source/m/manuale/manuale-${pkgver}.tar.gz")
-sha256sums=('65301fada6d4afd765f64e2d9f609ae39bfd7997c23d8a21381dbf8ab7806fb4')
+sha256sums=('778d37673a602305b9860b9218226c8dbccadc8366ae852c1fb6695b8cce48e7')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
