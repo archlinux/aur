@@ -1,31 +1,31 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-addrindex
-pkgver=0.11.2
-pkgrel=3
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node with addrindex"
 arch=('i686' 'x86_64')
 url="https://github.com/btcdrak/bitcoin"
 depends=('boost'
          'boost-libs'
-         'miniupnpc'
-         'openssl')
+         'zeromq')
 makedepends=('autoconf'
              'automake'
              'binutils'
-             'expect'
              'gcc'
              'libtool'
+             'm4'
              'make'
              'pkg-config')
+optdepends=('miniupnpc: build with support for UPnP')
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/btcdrak/${pkgname%%-*}/tar.gz/v$pkgver-addrindex
         bitcoin.conf
         bitcoin.logrotate
         bitcoin.service
         bitcoin-reindex.service)
-sha256sums=('e3c3bd7b887b5486df8991c2ca651145b1bf50edec7f1bb5519e2dcc70cb076b'
-            '8a56413f8946861390a9992411a3730bc085ee02b852c27371cacfa5ec50e939'
+sha256sums=('f1b6b185e868bd4bec942b562757485e2a10eafceef88e53dc750df5c049730c'
+            '6321809cfc8b5d30b368d495c38450c40f0ab419f0640c111d6c68141569142e'
             '8f05207b586916d489b7d25a68eaacf6e678d7cbb5bfbac551903506b32f904f'
             '5e45f2ceaeb7bfa60aeb66ca4167068191eb4358af03f95ac70fd96d9b006349'
             '10ad0b8c356559886634eaf658992004045853ec26cddee143d16125cb75e8f1')
@@ -92,7 +92,4 @@ package() {
   msg2 'Installing bash completion...'
   install -Dm 644 contrib/bitcoind.bash-completion \
     "$pkgdir/usr/share/bash-completion/completions/bitcoind"
-
-  msg2 'Cleaning up pkgdir...'
-  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
