@@ -16,6 +16,7 @@ md5sums=('146da3e5508be6273b0a9169326286f2')
 
 build() {
   cd "$srcdir/$_srcname-$pkgver"
+  sed -i -r "s|^#!/usr/bin/env python|#!/usr/bin/env python2|" *.py
   python2 setup.py build
 }
 
