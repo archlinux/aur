@@ -317,7 +317,6 @@ form_item_readonly_color = (BLACK,WHITE,OFF)' > ~/.dialogrc
 				echo -e $GREEN"Press any key to exit"$ENDCOLOR
 				read
 				clear
-				exit 130
 			else
 				clear
 				echo -e $GREENB"AdAway configuration files have been detected, but, AdAway binary is missing."$ENDCOLOR
