@@ -7,9 +7,9 @@ pkgdesc="Multi-protocol VPN software from University of Tsukuba"
 url="http://www.softether.org/"
 arch=('i686' 'x86_64')
 source=('softethervpn-bridge.service' 
-		'softethervpn-client.service' 
-		'softethervpn-server.service'
-		'disable_sslv3.patch')
+        'softethervpn-client.service' 
+        'softethervpn-server.service'
+        'disable_sslv3.patch')
 sha1sums=('12a3919aabcdd7531320056a4b43072892232925'
           'ba594c7defb52548369726c56e2cad633019abef'
           '06cd320553daf0dffdf6a81a22d630fbe211fc33'
@@ -22,8 +22,8 @@ prepare() {
   # clean existing sources if any
   rm -rf "${srcdir}"/SoftEtherVPN
 
-  # cloning only master branch, since complete repository is pretty heavy
-  git clone https://github.com/SoftEtherVPN/SoftEtherVPN.git --single-branch
+  # cloning only last commit of master branch, since complete repository is pretty heavy
+  git clone https://github.com/SoftEtherVPN/SoftEtherVPN.git --single-branch --depth 1
 }
 
 pkgver() {
