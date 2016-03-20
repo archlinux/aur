@@ -2,12 +2,13 @@
 # Contributor: Stefan Hackl <stef.hackl [at the] gmail [dot] com>
 # Contributor: Eric Le Bras <eric.lebras [at the] gmail [dot] com>
 # Contributor: Jeroen Op 't Eynde <jeroen [at the] xprsyrslf [dot] be>
+# Contributor: Maxqia <contrib [at the] maxqia [dot] com
 
 pkgname=('cnijfilter-common')
 _pkgname=cnijfilter
 
 pkgver=4.00
-pkgrel=1
+pkgrel=2
 _pkgreview=1
 
 pkgdesc="Canon IJ Printer Driver (Common Package)"
@@ -59,17 +60,15 @@ package() {
   make PACKAGEDIR=${pkgdir} installcommon
   
   install -d ${pkgdir}/usr/lib32/bjlib
-  if [ "${CARCH}" = 'x86_64' ]; then
-    install -d ${pkgdir}/usr/lib
-    ln -s /usr/lib32/bjlib ${pkgdir}/usr/lib/bjlib
-  fi
   install -m 644 com/ini/cnnet.ini ${pkgdir}/usr/lib32/bjlib
   install -s -m 755 com/libs_bin32/lib*.so.* ${pkgdir}/usr/lib32
   install -D LICENSE-cnijfilter-${pkgver}EN.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-cnijfilter-${pkgver}EN.txt
   if [ "${CARCH}" = 'x86_64' ]; then
+    install -d ${pkgdir}/usr/lib
+    ln -s /usr/lib32/bjlib ${pkgdir}/usr/lib/bjlib
     mv ${pkgdir}/usr/lib/cups/backend ${pkgdir}/usr/lib32/cups/
     install -d ${pkgdir}/usr/lib/cups/backend
-    ln -s /usr/lib32/cups/backend/* ${pkgdir}/usr/lib/cups/backend/
+    ln -rs ${pkgdir}/usr/lib32/cups/backend/* ${pkgdir}/usr/lib/cups/backend/
     install -d ${pkgdir}/usr/lib/cups/filter
     ln -s /usr/lib32/cups/filter/pstocanonij ${pkgdir}/usr/lib/cups/filter/
   fi
