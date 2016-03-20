@@ -1,0 +1,12 @@
+pkgbase = adaway
+	pkgdesc = AdAway, hosts file blacklisting for linux
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://bitbucket.org/NjlsShade/adaway
+	arch = any
+	license = Apache
+	source = AdAway.sh
+	md5sums = a8e41cd808af4dca000a49298d222bb1
+
+pkgname = adaway
+
