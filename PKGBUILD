@@ -2,12 +2,12 @@
 
 pkgname=corebird-without-video
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Native GTK+ Twitter Client without the gstreamer dependencies."
 arch=('i686' 'x86_64')
 license=('GPL')
-url="https://github.com/baedert/corebird"
-conflicts=("corebird")
+url="http://corebird.baedert.org/"
+conflicts=("corebird" "corebird-git")
 depends=('gtk3>=3.14'
     'glib2>=2.40'
     'rest>=0.7'
