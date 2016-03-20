@@ -1,6 +1,6 @@
 pkgname=dwm-git
 _pkgname=dwm
-pkgver=6.1
+pkgver=6.1.2.g3465bed
 pkgver(){
   cd $_pkgname
   git describe --tags |sed 's/-/./g'
