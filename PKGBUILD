@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
 
 pkgname=matrix-synapse
-_pkgver=0.13.3
+_pkgver=0.14.0-rc1
 pkgver="${_pkgver//-/.}"
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
@@ -22,7 +22,7 @@ source=("git://github.com/matrix-org/synapse#tag=v$_pkgver"
 		'deps-relax-pynacl-check.patch')
 md5sums=('SKIP'
          'dfbffdd307c5559357a2ff51a1906700'
-         'e98392881f1af244632c6886d01d5634')
+         'a2b653d523161a33a36e931b60a234f2')
 backup=('etc/synapse/log_config.yaml')
 install='synapse.install'
 

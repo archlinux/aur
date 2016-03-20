@@ -1,4 +1,4 @@
-From c31453a0d2491518eb2ebd1970b0fe0577c762ae Mon Sep 17 00:00:00 2001
+From 90351fd4504223fa677f8c6516b6e1d1ca27bb7c Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Thu, 11 Feb 2016 22:55:01 +0300
 Subject: [PATCH] python_dependencies.py: relax versioned dep on pynacl.
@@ -8,11 +8,11 @@ Subject: [PATCH] python_dependencies.py: relax versioned dep on pynacl.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/synapse/python_dependencies.py b/synapse/python_dependencies.py
-index 75bf3d1..b36c4de 100644
+index 0a6043a..d7afe48 100644
 --- a/synapse/python_dependencies.py
 +++ b/synapse/python_dependencies.py
 @@ -22,7 +22,7 @@ REQUIREMENTS = {
-     "unpaddedbase64>=1.0.1": ["unpaddedbase64>=1.0.1"],
+     "unpaddedbase64>=1.1.0": ["unpaddedbase64>=1.1.0"],
      "canonicaljson>=1.0.0": ["canonicaljson>=1.0.0"],
      "signedjson>=1.0.0": ["signedjson>=1.0.0"],
 -    "pynacl==0.3.0": ["nacl==0.3.0", "nacl.bindings"],
@@ -21,5 +21,5 @@ index 75bf3d1..b36c4de 100644
      "Twisted>=15.1.0": ["twisted>=15.1.0"],
      "pyopenssl>=0.14": ["OpenSSL>=0.14"],
 -- 
-2.7.1
+2.7.4
 
