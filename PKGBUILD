@@ -1,13 +1,13 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=bettercap-git
-pkgver=1.4.5.684.322501b
+pkgver=1.5.1.752.29d4382
 pkgrel=1
 pkgdesc='Complete, modular, portable and easily extensible MITM framework'
 url='https://github.com/evilsocket/bettercap'
 arch=('any')
 license=('GPL3')
-depends=('ruby' 'ruby-network_interface' 'ruby-pcaprub' 'ruby-packetfu' 'ruby-colorize' 'ruby-net-dns') # 'ruby-rubydns'
+depends=('ruby' 'ruby-network_interface' 'ruby-pcaprub' 'ruby-packetfu' 'ruby-colorize' 'ruby-net-dns'  'ruby-em-proxy') # 'ruby-rubydns'
 makedepends=('git')
 provides=('bettercap')
 conflicts=('bettercap')
@@ -28,7 +28,7 @@ build() {
 
 package() {
   cd ${pkgname}
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  local _gemdir="$(gem env gemdir)"
   gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" bettercap*.gem
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
