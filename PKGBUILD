@@ -2,9 +2,9 @@
 # Previous maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=rr-git
-pkgver=4.0.2.r105.g4ad2055
+pkgver=4.2.0.r9.gd6babd0
 pkgrel=1
-pkgdesc='a nondeterministic debugger'
+pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64)
 url='http://rr-project.org/'
 license=('custom')
