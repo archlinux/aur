@@ -19,5 +19,4 @@ md5sums=('a8e41cd808af4dca000a49298d222bb1')
 
 package() {
   "$srcdir/AdAway.sh"
-  kill -SIGINT $$
 }
