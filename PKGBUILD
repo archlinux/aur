@@ -2,7 +2,7 @@
 # Contributor: Giacomo <giacomogiorgianni at gmail dot com>
 
 pkgname=vokoscreen
-_pkgver=2.4.17-beta
+_pkgver=2.4.18-beta
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='An easy to use screencast creator. Qt5 UI.'
@@ -22,15 +22,20 @@ install=${pkgname}.install
 
 source=(
 	"${pkgname}-${_pkgver}.tar.gz::https://github.com/vkohaupt/${pkgname}/archive/${_pkgver}.tar.gz"
+	'lrelease_qt5_fix.patch'
 	'desktop_file.patch'
 )
 sha512sums=(
-	'f097d30a403aec1fa572af19f6c75f2a9c76d37e552b81cd42955388b865d860080386e45982d7db05259c6774ee159c95f3d0f0165cdc7856a09819d9f44a21'
+	'1f0717c34e625cad57141f24369420a2a4fdbb7ebe7a2fb9e6ad1c6e107b546259247c39dd472815161f4942dabde001a6592615339e1016b81b8615d0e9d649'
+	'f85d0c1c2fb264ef201870cfc595042b5ef1e5ec8884c46dbc7b1ff19808d934179de3fca23d5b208fa4913f475dd52e7a86cc13d4a62a89bcfd91b5141dd87c'
 	'3ddc567f831b9f6e2672997a77a099cf8fdd5a6a1d79157738c1670c9106fd6c4e09d74287a770c19bac23dcb73a19ce69cc1ac893d4988f75c7ac35668f7a90'
 )
 
 prepare() {
 	cd "${srcdir}"/${pkgname}-${_pkgver}
+
+	# lrelease fix
+	patch -Np1 < ../lrelease_qt5_fix.patch
 	
 	# Desktop file description
 	patch -Np1 < ../desktop_file.patch
