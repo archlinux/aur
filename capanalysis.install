@@ -11,17 +11,13 @@ pre_install() {
             mv /opt/capanalysis/cfg/canalysis.cfg /opt/capanalysis/cfg/canalysis.cfg.last
             cp /opt/capanalysis/cfg/canalysis.cfg.backup /opt/capanalysis/cfg/canalysis.cfg
   fi
-    mkdir -p /opt/capanalysis/www/app/tmp/cache/persistent
-    mkdir -p /opt/capanalysis/www/app/tmp/cache/models/
-    mkdir -p  /opt/capanalysis/www/app/tmp/cache/views/
-    mkdir -p  /opt/capanalysis/www/app/tmp/sessions/
-    mkdir -p  /opt/capanalysis/www/app/tmp/logs/
+
     chown -R http:http /opt/capanalysis
     echo "Rember to paste this line"
     echo "   # Capanalysis"
     echo "   Include conf/extra/httpd-capana.conf"
     echo "in /etc/httpd/conf/httpd.conf"
-    echo "Uncomment sqlite, pear and gettext in /etc/php/php.ini"
+    echo "Uncomment sqlite, pear, pdo_pgsql and gettext in /etc/php/php.ini"
 }
 
 post_remove(){
