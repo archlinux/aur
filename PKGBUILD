@@ -3,13 +3,13 @@
 pkgname=wireshark-gtk2
 _pkgbase=wireshark
 pkgver=2.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='a free network protocol analyzer for Unix/Linux and Windows - GTK2 frontend'
 arch=('i686' 'x86_64')
 url='http://www.wireshark.org/'
 license=('GPL2')
 
-depends=('c-ares' 'krb5' 'libgcrypt' 'libcap' 'libpcap' 'bash' 'gnutls' 'glib2' 'lua52' 'portaudio' 'gtk2' 'desktop-file-utils' 'hicolor-icon-theme')
+depends=('c-ares' 'geoip' 'krb5' 'libgcrypt' 'libcap' 'libpcap' 'bash' 'gnutls' 'glib2' 'lua52' 'portaudio' 'gtk2' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python')
 
 provides=('wireshark-cli' 'wireshark-gtk')
@@ -34,9 +34,9 @@ build() {
 		--with-ssl \
 		--with-krb5 \
 		--with-c-ares \
+		--with-geoip \
 		--without-adns \
 		--without-libsmi \
-		--without-geoip \
 		--without-sbc
 	make all
 }
