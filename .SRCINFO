@@ -1,0 +1,16 @@
+pkgbase = python-furl
+	pkgdesc = Python library that makes manipulating URLs simple.
+	pkgver = 0.4.92
+	pkgrel = 1
+	url = https://github.com/gruns/furl
+	arch = any
+	license = custom:UNLICENSE
+	makedepends = python
+	depends = python
+	depends = python-six
+	depends = python-orderedmultidict
+	source = https://pypi.python.org/packages/source/f/furl/furl-0.4.92.tar.gz
+	md5sums = c6304750cba9db15ecbdea034a80e221
+
+pkgname = python-furl
+
