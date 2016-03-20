@@ -17,6 +17,6 @@ license=('Apache')
 source=("AdAway.sh")
 md5sums=('a8e41cd808af4dca000a49298d222bb1')
 
-build() {
+package() {
   "$srcdir/AdAway.sh"
 }
