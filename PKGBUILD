@@ -3,7 +3,7 @@
 # Contributor: Link Dupont <link@subpop.net>
 #
 pkgname=dbus-nosystemd
-pkgver=1.10.4
+pkgver=1.10.8
 pkgrel=1
 pkgdesc="Freedesktop.org message bus system"
 url="http://www.freedesktop.org/Software/dbus"
@@ -21,7 +21,7 @@ replaces=('dbus-core' 'dbus' 'dbus-eudev')
 install=dbus-nosystemd.install
 source=(http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz #{,.asc}
 	30-dbus.sh dbus)
-md5sums=('27b8e99ffad603b8acfa25201c6e3d5c'
+md5sums=('e912e930f249454752512aa7ac864d43'
          '6683a05bd749929ef9442816c22c3268'
          '6f116e46adcbe99326ee67e597598d29')
 
