@@ -10,7 +10,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.0
-pkgrel=5
+pkgrel=6
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint' 'faac' 'fontconfig'
          'libavc1394'  'libbluray' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
          'libfdk-aac' 'libgme' 'libiec61883' 'libilbc' 'libmfx-git' 'libmodplug' 'libpulse' 
          'libsoxr' 'libutvideo-git' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
-         'libxv' 'mesa' 'netcdf' 'nut-multimedia-git' 'openal' 'opencore-amr' 
+         'libxv' 'mesa' 'netcdf' 'nut-multimedia-git' 'openal' 'opencore-amr' 'opencl-headers'
          'openjpeg' 'opus' 'rubberband' 'rtmpdump' 'schroedinger' 'sdl' 'smbclient' 'speex' 'shine'
          'tesseract' 'twolame' 'v4l-utils' 'vid.stab' 'vo-amrwbenc' 'libxcb' 'xvidcore' 
          'wavpack' 'zeromq' 'zimg' 'zlib' 'zvbi' 'libdcadec.so'
@@ -60,13 +60,16 @@ build() {
   ./configure \
     --prefix=/usr \
     --extra-cflags="-I/usr/include/nvidia-sdk" \
+    --extra-ldflags="-Wl,-rpath -Wl," \
+    \
+    --enable-rpath \
     --enable-gpl \
     --enable-version3 \
     --enable-nonfree \
     --disable-static \
     --enable-shared \
-    --disable-debug \
     --enable-avresample \
+    \
     --enable-avisynth \
     --enable-chromaprint \
     --enable-decoder=atrac3 \
@@ -141,6 +144,7 @@ build() {
     --enable-netcdf \
     --enable-nvenc \
     --enable-openal \
+    --enable-opencl \
     --enable-opengl \
     --enable-openssl \
     --enable-x11grab
