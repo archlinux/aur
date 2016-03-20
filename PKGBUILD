@@ -2,7 +2,7 @@
 
 pkgname=makepkg-optimize
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc='Additional package optimization routines for makepkg'
 arch=('x86_64')
 license=('GPL')
@@ -24,7 +24,7 @@ sha512sums=('67fb9359cd5dc52413ad2ca7e91b445826d7cf6b7ad3db0d2b3845310ab0bdfc41c
             'dd609146c46b36bf3b9d7ed81935b64708cc5a37210f39e54162c603f1cae2bc9d8110dec92d61939c63245549b0a4548b17a15f9746abdd64faa65421288a2e'
             'cef2f8f3e82fa668c490f305bb01a344391958ca3f0be95da09e6008b30ecf996803dfda863a73e340c71937c7691d115bfe7e109c71d71eb65b5052bb179504'
             '6df2ac2133f72ac2f3533fa9e3cc9337849dd5afbba2fd66b5d4d8b0b65a892c04771ceb6407eac357755fef87ac940d7848ccad915c387e465ad46b1ed496a3'
-            '9e04d88c43cc25d21854ffc536cf9fd682d150fed08440a44a60b4e67285c28163cb069182355e718b2a6b6df8d536d8b32dcaac76f04d346cd658850b46769d')
+            '5f89de376c1ce101f1bdd99eb15c611cb2f3e75d53c30962ff76946222594cdcbf543cc14819088fbc0dc00f8d0a32c227c7657c0b225548d3bcbdd1f874f189')
 
 prepare() {
   # Use the user's currently installed versions of both
