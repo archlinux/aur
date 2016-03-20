@@ -1,7 +1,7 @@
 # Maintainer: Adrian Perez <aperez@igalia.com>
 # Co-Maintainer: Giancarlo Razzolini <grazzolini@gmail.com>
 pkgname='tinyssh'
-pkgver='20160301'
+pkgver='20160318'
 pkgrel='1'
 pkgdesc='Small SSH server using NaCl / TweetNaCl'
 url='http://tinyssh.org'
@@ -11,7 +11,7 @@ makedepends=('gcc' 'make')
 install='tinyssh.install'
 source=("https://mojzis.com/software/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
 	tinyssh@.socket tinyssh@.service tinysshgenkeys.service)
-sha512sums=('c66efc5df65f3c9b2eb3885598c9e004e47e69c76b5e41a880b938717c211322c91b95b54a15ea75953c08239dd68ed4393d7c0f06b088532d3507f6766c44fd'
+sha512sums=('a993a36f5a89c2d1780d3ff17e0936ab7815ced041c8f8b7891c245b9dd1b4fb9320204bd42b58ff5a20dc8600158f6526a2ee1163569a0bff745ef79abccb9e'
             '9fbc5ae3b6d1df6d78eedf812fdd8fe115e81fc0811f4799d541e37239d53db22203e691026ed479a38c9f17043e52d43b44054be51ae03c2f12f3f235c5b83a'
             '9c9ba78c5b61f64f42f59cfe556519d9ab2c3e4d45f36d6f78c5e7728b050c494673239630dae66398006f3f20fb3a26f22899cd0728ed17e61c655b372236b3'
             '415cdfe649eedcbb11a263938c0a66bef42432210baa2e2c9e428d5e8e486fb4dedad53b9fdb9086bf97ca506909d3b3054aaca56f02c063e0b8d5fab4e56198')
