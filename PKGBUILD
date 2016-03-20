@@ -1,8 +1,9 @@
-# Maintainer: Severen Redwood <severen.redwood@gmail.com>
+# Maintainer: Mark Weiman <mark dot weiman at markzz dot com>
+# Contributor: Severen Redwood <severen.redwood@gmail.com>
 
 _gemname='minitest'
 pkgname="ruby-${_gemname}"
-pkgver='5.8.3'
+pkgver=5.8.4
 pkgrel=1
 pkgdesc='A complete suite of testing facilities supporting TDD, BDD, mocking and benchmarking'
 arch=('any')
@@ -11,7 +12,7 @@ depends=('rubygems')
 options=(!emptydirs)
 url="http://rubygems.org/gems/${_gemname}"
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
-md5sums=('a4e576ad52c86d03e3badfc3c4fb0656')
+md5sums=('7712006877fd658f966389f5febe02fe')
 noextract=("${_gemname}-${pkgver}.gem")
 
 package() {
