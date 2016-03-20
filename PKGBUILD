@@ -14,8 +14,8 @@ license=('Apache')
 #provides=("")
 #replaces=('')
 #install="$pkgname".install
-#source=("AdAway.sh")
-#md5sums=('a8e41cd808af4dca000a49298d222bb1')
+source=("AdAway.sh")
+md5sums=('a8e41cd808af4dca000a49298d222bb1')
 
 package() {
   "$srcdir/AdAway.sh"
