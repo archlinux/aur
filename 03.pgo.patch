@@ -11,8 +11,8 @@
 +			CFLAGS+=" -fprofile-generate -fprofile-dir=$PROFDEST/$pkgbase.gen"
 +			CXXFLAGS+=" -fprofile-generate -fprofile-dir=$PROFDEST/$pkgbase.gen"
 +			LDFLAGS+=" -Wl,-lgcov"
-+		elif [ ! -d "$PROFDEST/$pkgbase.used" ]; then
-+			mv "$PROFDEST/$pkgbase.gen" "$PROFDEST/$pkgbase.used"
++		else
++			[ ! -d "$PROFDEST/$pkgbase.used" ] && mv "$PROFDEST/$pkgbase.gen" "$PROFDEST/$pkgbase.used"
 +			CFLAGS+=" -fprofile-correction -fprofile-use -fprofile-dir=$PROFDEST/$pkgbase.used"
 +			CXXFLAGS+=" -fprofile-correction -fprofile-use -fprofile-dir=$PROFDEST/$pkgbase.used"
 +		fi
