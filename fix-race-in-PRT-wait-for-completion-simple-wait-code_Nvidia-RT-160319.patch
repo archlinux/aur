@@ -1,3 +1,10 @@
+From: Joakim Hernberg <jhernberg@alchemy.lu>
+Date: Sat, 19 Mar 2016 13:03:55 +0100
+Subject: [PATCH] Fix a race in the PRT wait for completion simple wait code
+ for NVIDIA on the rt patch
+
+-Note refactored again 160319.
+
 -NOTE: this patch is a rebase of John Blackwood's patch. On his kernel, he must be using 
 -an older simple wait patch - as his applies to kernel/sched/core.c, while the simple wait
 -completion code lives in kernel/sched/completion.c ... I have ported this to test with 
@@ -27,33 +34,42 @@ waiting again in schedule_timeout().
 
 Fix-by: John Blackwood <john.blackwood@ccur.com>
 
---- linux-3.14/kernel/sched/completion.c	2014-05-22 14:01:03.879734869 -0400
-+++ linux-3.14/kernel/sched/completion.c	2014-05-22 14:13:59.181688658 -0400
-@@ -61,11 +61,19 @@
+---
+ kernel/sched/completion.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/kernel/sched/completion.c b/kernel/sched/completion.c
+index b62cf64..c01bbd8 100644
+--- a/kernel/sched/completion.c
++++ b/kernel/sched/completion.c
+@@ -61,11 +61,19 @@ static inline long __sched
  do_wait_for_common(struct completion *x,
  		   long (*action)(long), long timeout, int state)
  {
-+        int again = 0;
++	int again = 0;
 +
  	if (!x->done) {
- 		DEFINE_SWAITER(wait);
+ 		DECLARE_SWAITQUEUE(wait);
  
- 		swait_prepare_locked(&x->wait, &wait);
+ 		__prepare_to_swait(&x->wait, &wait);
  		do {
-+                       /* Check to see if we lost race for 'done' and are
-+                        * no longer in the wait list.
-+                        */
-+                       if (unlikely(again) && list_empty(&wait.node))
-+                               swait_prepare_locked(&x->wait, &wait);
++			/* Check to see if we lost race for 'done' and are
++			* no longer in the wait list.
++			*/
++			if (unlikely(again) && list_empty(&wait.task_list))
++				__prepare_to_swait(&x->wait, &wait);
 +
  			if (signal_pending_state(state, current)) {
  				timeout = -ERESTARTSYS;
  				break;
-@@ -74,6 +82,7 @@
+@@ -74,6 +82,7 @@ do_wait_for_common(struct completion *x,
  			raw_spin_unlock_irq(&x->wait.lock);
  			timeout = action(timeout);
  			raw_spin_lock_irq(&x->wait.lock);
-+                        again = 1;
++			again = 1;
  		} while (!x->done && timeout);
- 		swait_finish_locked(&x->wait, &wait);
+ 		__finish_swait(&x->wait, &wait);
  		if (!x->done)
+-- 
+2.7.2
+
