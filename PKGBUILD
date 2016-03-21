@@ -5,8 +5,9 @@
 _pkgname=wwwoffle
 pkgname="${_pkgname}-svn"
 # _pkgver=2.9i
-pkgver=2.9j.r2220
-pkgrel=5
+epoch=1
+pkgver=2.9i+svn2221
+pkgrel=1
 pkgdesc="Simple caching proxy server with special features (request, recursive fetch, abonnement, modify HTML, ...) for use with dial-up internet links. Includes startup scripts for OpenRC, System V init, systemd."
 arch=('i686' 'x86_64' 'arm' 'arm64')
 url="http://www.gedanken.org.uk/software/wwwoffle/"
@@ -63,12 +64,23 @@ sha256sums=(
 
 _pgmver() {
   _unpackeddir="${srcdir}/${_pkgname}"
+  
+  # # Well, this _is_ useless use of cat, but to make it more clear to see in which order things are going on I do the cat first and then the grep.
+  # _ver="$(cat "${_unpackeddir}/conf/wwwoffle.conf.template" | \
+  #           grep -E '^#.*WWWOFFLE.*[Vv]ersion' | \
+  #           head -n 1 | \
+  #           sed 's|.* \([^ ]*\)$|\1|g' | \
+  #           sed 's|\.$||g'
+  #        )"
+  
   # Well, this _is_ useless use of cat, but to make it more clear to see in which order things are going on I do the cat first and then the grep.
-  _ver="$(cat "${_unpackeddir}/conf/wwwoffle.conf.template" | \
-            grep -E '^#.*WWWOFFLE.*[Vv]ersion' | \
-            head -n 1 | \
-            sed 's|.* \([^ ]*\)$|\1|g' | \
-            sed 's|\.$||g')"
+  _ver="$(cat "${_unpackeddir}/src/version.h" | \
+            grep -E '^[[:space:]]*#define[[:space:]]+WWWOFFLE_VERSION' | \
+            awk '{print $3}' | \
+            tr -d \'\" | \
+            awk -F+ '{print $1}'
+        )"
+
   
   echo "${_ver}"
   
@@ -90,7 +102,7 @@ _svnrelease() {
 
 pkgver() {
   _unpackeddir="${srcdir}/${_pkgname}"
-  # Format: RELEASE.rREVISION, e.g. 2.9j.r2202
+  
   _ver="$(_pgmver)"
   _rev="$(_svnrelease)"
   
@@ -108,7 +120,7 @@ pkgver() {
     return 1
   fi
   
-  echo "${_ver}.r${_rev}"
+  echo "${_ver}+svn${_rev}"
 }
 
 prepare() {
@@ -118,18 +130,18 @@ prepare() {
     msg "Applying patch '${_patch}' ..."
     patch -p1 < "${_patch}" || exit "$?"
   done
-}
-
-build() {
-  _unpackeddir="${srcdir}/${_pkgname}"
-  cd "${_unpackeddir}"
   
   ### Update version.h to the actual version.
   _ver="$(_pgmver)"
   _rev="$(_svnrelease)"
   msg "Updating version in src/version.h to ${_ver}+svn${_rev}..."
   sed -i 's|^\([[:space:]]*#define[[:space:]]*WWWOFFLE_VERSION[[:space:]]*\).*$|/*+ +*/\n/*+ The following line was automatically upgraded by the Arch Linux PKGBUILD (package build script) +*/\n/*+ in order to match the version as in conf/wwwoffle.conf.template and the SVN revision. +*/\n\1"'"${_ver}+svn${_rev}"'"|' \
-    'src/version.h'
+    "${_unpackeddir}/src/version.h"
+}
+
+build() {
+  _unpackeddir="${srcdir}/${_pkgname}"
+  cd "${_unpackeddir}"
   
   ### Make the ./configure-script.
   # libtoolize --force
