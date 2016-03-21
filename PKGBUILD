@@ -2,7 +2,7 @@
 
 _gemname=eventmachine
 pkgname=ruby-$_gemname
-pkgver=1.0.9.1
+pkgver=1.2.0.1
 pkgrel=1
 pkgdesc='Ruby/EventMachine library'
 arch=(any)
@@ -12,7 +12,7 @@ depends=('ruby')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('5cbc178c604fe9a21850c298f7a5b6f904573f5e1db9e07fee599c5700841c52ec0311a6e50192eff9c1bb45cf30a9dd81d2150fe9d04cabd24cc7c9c32c5df0')
+sha512sums=('a861a2c5172b7cf2720bdb54f52ea96c311c10efdb2f54970054901674e044a72307a5b32210efbbdb78d0472a9b3fb6e898640e1c0b406bdad8b581970e30aa')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
