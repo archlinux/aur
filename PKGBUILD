@@ -1,7 +1,7 @@
 # Maintainer: Ossi Saukko <osaukko at gmail dot com>
 _name=ocp
 pkgname=ocp-git
-pkgver=0.1.22.r68.849cc42
+pkgver=0.1.22.r71.58094b1
 pkgrel=1
 pkgdesc="Open Cubic Player (GIT Version)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,8 @@ url="http://stian.cubic.org/project-ocp.php"
 license=('GPL')
 depends=('hicolor-icon-theme'
          'libxpm'
-         'libxxf86vm')
+         'libxxf86vm'
+         'timidity++')
 optdepends=('adplug: for OPL formats support'
             'alsa-lib: for ALSA output'
             'flac: for FLAC audio support'
@@ -32,9 +33,9 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_name}"
-    ./configure --prefix=/usr --sysconfdir=/etc
-
-    cd "${srcdir}/${_name}"
+    git submodule init
+    git submodule update
+    ./configure --prefix=/usr --sysconfdir=/etc --with-timidity-default-path=/etc/timidity++/
     make
 }
 
