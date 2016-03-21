@@ -27,11 +27,11 @@ prepare() {
   # Fix compatibility with Clutter 1.22
   patch -Np1 -i ../0001-Set-windowing-backend-to-X11.patch
   patch -Np1 -i ../clutter-gst3.patch
+  autoreconf -fi
 }
 
 build() {
   cd $_pkgname-$pkgver
-  autoreconf -fi
   ./configure --prefix=/usr
   make
 }
