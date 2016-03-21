@@ -5,7 +5,7 @@
 
 pkgname=panda3d-git
 pkgver=git
-pkgrel=3
+pkgrel=4
 pkgdesc="A 3D game engine with Python bindings. SDK package. Git Version. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
 arch=('i686' 'x86_64')
@@ -67,7 +67,7 @@ sha256sums=('SKIP')
 JOBS=$(nproc)
 
 build() {
-  cd $srcdir/$pkgname
+  cd $srcdir/panda3d
   # disable broken extensions
   # you can use PANDAFLAGS and BUILD_THREADS to control building
   # building is very memory intensive so you might want to use less threads
@@ -75,7 +75,7 @@ build() {
 }
 
 package() {
-  cd $srcdir/$pkgname
+  cd $srcdir/panda3d
   python2 makepanda/installpanda.py --prefix=/usr --destdir="$pkgdir"
   install -D -m644 "$srcdir/$pkgname/doc/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
@@ -96,7 +96,7 @@ post_remove() {
   update-desktop-database -q
 }
 
-pkgver() {
-  cd "$pkgname"
-  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
+#pkgver() {
+#  cd "$pkgname"
+#  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+#}
