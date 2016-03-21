@@ -1,0 +1,16 @@
+pkgbase = uxpload
+	pkgdesc = UnixPorn.org screenshot uploader
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://github.com/OscarHolst/UnixPorn
+	arch = any
+	license = GPL
+	depends = bash
+	depends = scrot
+	depends = curl
+	depends = screenfetch
+	source = https://raw.githubusercontent.com/OscarHolst/UnixPorn/master/uxpload.sh
+	md5sums = 6d0280b28123764643e87a5516629c51
+
+pkgname = uxpload
+
