@@ -94,6 +94,10 @@ package() {
   install -Dm644 $_pkg/kernel/nvidia-modeset.ko \
          "$pkgdir"/usr/lib/modules/$_extramodules/nvidia-modeset.ko
 
+  # Install DRM module ("registers as a DRM driver with both PRIME and DRM KMS support")
+  install -Dm644 $_pkg/kernel/nvidia-drm.ko \
+         "$pkgdir"/usr/lib/modules/$_extramodules/nvidia-drm.ko
+
   # Compress
   gzip "$pkgdir"/usr/lib/modules/$_extramodules/nvidia*.ko
 
