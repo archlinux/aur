@@ -2,7 +2,7 @@
 
 pkgname=makepkg-optimize
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc='Additional package optimization routines for makepkg'
 arch=('x86_64')
 license=('GPL')
