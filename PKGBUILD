@@ -3,7 +3,7 @@
 pkgdesc="ROS - Some basic robot controllers for use with robot_controllers_interface."
 url='http://www.ros.org/'
 
-pkgname='ros-jade-hardware-interface'
+pkgname='ros-jade-controller-interface'
 pkgver='0.10.0'
 arch=('any')
 pkgrel=1
