@@ -1,13 +1,13 @@
 # Maintainer: Thomas Wood <grand.edgemaster@gmail.com>
 pkgname=emojione-color-font
 pkgver=1.0_beta3
-pkgrel=1
+pkgrel=2
 pkgdesc="A color and B&W emoji SVG-in-OpenType font with support for ZWJ, skin tone modifiers and country flags."
 arch=('any')
 url="https://github.com/eosrei/emojione-color-font"
 license=('custom:CCPL:by-4.0' 'MIT')
 
-depends=(fontconfig)
+depends=(fontconfig ttf-bitstream-vera)
 
 _pkgver=${pkgver//_/-}
 
