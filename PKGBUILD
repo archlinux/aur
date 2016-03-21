@@ -19,12 +19,12 @@ sha256sums=('4b66c10d15ae5421a9f30bb2c10cdcc136544efce7677dcfd7637c0c2a7cc6b3'
 prepare() {
   cd $pkgname-$pkgver
   patch -Np1 -i ../gee-0.8.patch
+  autoreconf -fi
+  intltoolize --force
 }
 
 build() {
   cd $pkgname-$pkgver
-  autoreconf -fi
-  intltoolize --force
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
               --disable-static --disable-schemas-compile
   make -j1
