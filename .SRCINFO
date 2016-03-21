@@ -1,22 +1,22 @@
 pkgbase = postgresql-jdbc
 	pkgdesc = The official JDBC driver for PostgreSQL. Contains JDBC 4.0 and 4.1 drivers.
-	pkgver = 9.4.1206
-	pkgrel = 2
+	pkgver = 9.4.1208
+	pkgrel = 1
 	url = http://jdbc.postgresql.org/
 	arch = any
 	license = Custom: BSD
 	depends = java-runtime
-	noextract = postgresql-9.4.1206.jdbc4.jar
-	noextract = postgresql-9.4.1206.jdbc41.jar
-	noextract = postgresql-9.4.1206.jdbc41.jar
+	noextract = postgresql-9.4.1208.jdbc4.jar
+	noextract = postgresql-9.4.1208.jdbc41.jar
+	noextract = postgresql-9.4.1208.jdbc41.jar
 	source = LICENSE
-	source = postgresql-jdbc-9.4.1206.jdbc4.jar::http://jdbc.postgresql.org/download/postgresql-9.4-1206-jdbc4.jar
-	source = postgresql-jdbc-9.4.1206.jdbc41.jar::http://jdbc.postgresql.org/download/postgresql-9.4-1206-jdbc41.jar
-	source = postgresql-jdbc-9.4.1206.jdbc42.jar::http://jdbc.postgresql.org/download/postgresql-9.4-1206-jdbc42.jar
+	source = postgresql-jdbc-9.4.1208.jdbc4.jar::http://jdbc.postgresql.org/download/postgresql-9.4.1208.jre6.jar
+	source = postgresql-jdbc-9.4.1208.jdbc41.jar::http://jdbc.postgresql.org/download/postgresql-9.4.1208.jre7.jar
+	source = postgresql-jdbc-9.4.1208.jdbc42.jar::http://jdbc.postgresql.org/download/postgresql-9.4.1208.jar
 	md5sums = da7e6f8b26deefe7c03b391454732a0d
-	md5sums = e10623c543e68efa015a45d368700118
-	md5sums = dcfde5d6cb368d753bc34624da1cfb33
-	md5sums = f09af18b424758866c6601846040c3ae
+	md5sums = ad222fd5d73c16db63aed7bc19396019
+	md5sums = e23f33f6bac5638842ed0f810590e3d4
+	md5sums = 19c06fdfc4fe514acf0bfacd1f8afd6a
 
 pkgname = postgresql-jdbc
 
