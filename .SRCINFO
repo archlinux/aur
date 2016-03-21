@@ -1,15 +1,14 @@
 pkgbase = mkbold-mkitalic
-	pkgdesc = Make X11 BDF font bold and italic
+	pkgdesc = Make X11 BDF fonts bold and/or italic
 	pkgver = 0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hp.vector.co.jp/authors/VA013651/freeSoftware/mkbold-mkitalic.html
 	arch = i686
 	arch = x86_64
 	license = custom:X11
-	depends = glibc
 	source = http://hp.vector.co.jp/authors/VA013651/lib/mkbold-mkitalic-0.11.tar.bz2
 	md5sums = 2384f0eb2e0d2d8f70ee292b81522619
-	sha1sums = 293e60e632abd924c93a16a07a6232c08a8f5e16
+	sha384sums = d4b2369ab90c3105873055f0f240f70daea8b713279172b9e28d51b9b7d6aacfcdb856a989ef60f3a5cbcec6f83066f7
 
 pkgname = mkbold-mkitalic
 
