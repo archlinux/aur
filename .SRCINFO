@@ -1,0 +1,17 @@
+pkgbase = kevin
+	pkgdesc = Kevin-CI: a simple-stupid self-hosted continuous integration service
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/SFTtech/kevin
+	arch = any
+	license = AGPL3
+	depends = python
+	depends = python-requests
+	depends = python-tornado
+	conflicts = kevin-git
+	options = !emptydirs
+	source = kevin-0.2.tar.gz::https://github.com/SFTtech/kevin/archive/v0.2.tar.gz
+	sha256sums = 01e84ee9a5f3f9ee8d2b0c74b1fb2b31047d25037079b7ee85bf8b3fbada81e3
+
+pkgname = kevin
+
