@@ -21,6 +21,7 @@ pkgver() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
+    rm 'beetsplug/__init__.py'
     python2 setup.py install --root="$pkgdir/" --optimize=1
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/doc/${pkgname%-git}/README.md"
