@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url="https://launchpad.net/indicator-cpufreq"
 license=('GPL')
 depends=('cpupower' 'libappindicator3' 'python2' 'python2-dbus' 'python2-gobject' 'pygtk' 'polkit-gnome' 'indicator-application')
+optdepends=('x86_energy_perf_policy' 'hdparm' 'nvidia-utils' 'iw' 'ethtool')
 makedepends=('python2-distutils-extra')
 provides=('indicator-cpufreq' 'indicator-cpufreq-bzr')
 conflicts=('indicator-cpufreq' 'indicator-cpufreq-bzr')

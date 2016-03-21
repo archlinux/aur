@@ -54,15 +54,15 @@ while (( "$#" )); do
       esac
 
       # Hyperthreads
-      for i in /sys/devices/system/cpu/cpu*/online; do  [[ -f "${i}" ]] && \
-      [[ "$(printf "${i}" | tr -cd [:digit:])" -ge "${CORES}" ]] && \
-        printf "${HYPERTHREADS}" > "${i}" & done &
+      for i in /sys/devices/system/cpu/cpu*/online; do \
+        [[ "$(printf "${i}" | tr -cd [:digit:])" -ge "${CORES}" ]] && \
+          printf "${HYPERTHREADS}" > "${i}" & done &
 
       # CPU Governor
-      for i in /sys/bus/cpu/drivers/processor/cpu*/cpufreq/scaling_governor; do [[ -f "${i}" ]] && \
-      [[ "${HYPERTHREADS}" == "0" && \
-      "$(printf "${i}" | tr -cd [:digit:])" -ge "${CORES}" ]] && \
-        continue ; printf "${GOVERNOR}" > "${i}" & done &
+      for i in /sys/bus/cpu/drivers/processor/cpu*/cpufreq/scaling_governor; do \
+        [[ "${HYPERTHREADS}" == "0" && \
+          "$(printf ${i} | tr -cd [:digit:])" -ge "${CORES}" ]] && \
+            continue ; [[ "$(cat ${i})" == "${GOVERNOR}" ]] || printf "${GOVERNOR}" > "${i}" & done &
 
       # Disable Intel P-State Turbo
       [[ -f /sys/devices/system/cpu/intel_pstate/no_turbo ]] && \
@@ -73,17 +73,21 @@ while (( "$#" )); do
         x86_energy_perf_policy "${ENERGYPERF}" &
 
       # Backlight
-      for i in /sys/class/backlight/acpi_video*/brightness; do [[ -f "${i}" ]] && \
-        printf $BACKLIGHT > "${i}" & done &
+      [[ -f /sys/class/backlight/acpi_video0 ]] && \
+        for i in /sys/class/backlight/acpi_video*/brightness; do \
+          printf "${BACKLIGHT}" > "${i}" & done &
 
       # Virtual Memory (Swap)
-      printf "${LAPTOP}" > /proc/sys/vm/laptop_mode &
-      printf "${DIRTYWBC}" > /proc/sys/vm/dirty_writeback_centisecs &
-      printf "${DIRTYWBC}" > /proc/sys/vm/dirty_expire_centisecs &
+      [[ "$(sysctl -n vm.laptop_mode)" == "${LAPTOP}" ]] || \
+        printf "${LAPTOP}" > /proc/sys/vm/laptop_mode &
+      [[ "$(sysctl -n vm.dirty_writeback_centisecs)" == "${DIRTYWBC}" ]] || \
+        printf "${DIRTYWBC}" > /proc/sys/vm/dirty_writeback_centisecs &
+      [[ "$(sysctl -n vm.dirty_expire_centisecs)" == "${DIRTYWBC}" ]] || \
+        printf "${DIRTYWBC}" > /proc/sys/vm/dirty_expire_centisecs &
 
       # NMI watchdog
       [[ -f /proc/sys/kernel/watchdog ]] && \
-        printf "${NMIDOG}" > /proc/sys/kernel/watchdog &
+          printf "${NMIDOG}" > /proc/sys/kernel/watchdog &
 
       # SATA link power management
       for i in /sys/class/scsi_host/host*/link_power_management_policy; do [[ -f "${i}" ]] && \
@@ -94,31 +98,46 @@ while (( "$#" )); do
         hdparm -qB "${APM}" -qM "${AAM}" /dev/[hs]d[a-z] 2> /dev/null &
 
       # Runtime power management for devices (with exceptions for devices by VID:PID)
-      for i in /sys/{class/*,bus/*/devices}/*/power/control; do [[ -f "${i}" ]]  && \
-        printf "${CONTROL}" > "${i}" & done &
+      # Timing the switch with hyperthread cores going up or down is tricky.
+      for i in /sys/{class/*,bus/*/devices}/*/power/control; do \
+        [[ "${CONTROL}" == "auto" ]] && \
+          [[ -n "$(printf ${i} | grep msr[${CORES}-$((${CORES} * 2 - 1))])" || \
+             -n "$(printf ${i} | grep machinecheck[${CORES}-$((${CORES} * 2 - 1))])" || \
+             -n "$(ls $(printf ${i} | sed 's|power.*||g')/*/ | grep 046D\:C52B)" || \
+             -n "$(ls $(printf ${i} | sed 's|power.*||g')/*/ | grep 054C\:0268)" || \
+             -f "$(printf ${i} | sed 's|/power.*|/idVendor|g')" && \
+             "$(cat $(printf ${i} | sed 's|/power.*|/idVendor|g'))" == "0424" && \
+             "$(cat $(printf ${i} | sed 's|/power.*|/idProduct|g'))" == "a700" ]] && \
+               continue || [[ "$(cat ${i})" == "${CONTROL}" ]] || printf "${CONTROL}" > "${i}" & done &
 
       # USB Autosuspend (with exceptions for devices by VID:PID)
-      for i in /sys/bus/usb/devices/*/power/autosuspend{,_delay_ms}; do [[ -f "${i}" ]] && \
-        printf -- "${AUTOSUSPEND}" > "${i}" & done &
+      for i in /sys/bus/usb/devices/*/power/autosuspend{,_delay_ms}; do \
+        [[ "${AUTOSUSPEND}" == "1" ]] && \
+          [[ -n "$(ls $(printf ${i} | sed 's|power.*||g')/*/ | grep 046D\:C52B)" || \
+             -n "$(ls $(printf ${i} | sed 's|power.*||g')/*/ | grep 054C\:0268)" || \
+             -f "$(printf ${i} | sed 's|/power.*|/idVendor|g')" && \
+             "$(cat $(printf ${i} | sed 's|/power.*|/idVendor|g'))" == "0424" && \
+             "$(cat $(printf ${i} | sed 's|/power.*|/idProduct|g'))" == "a700" ]] && \
+               continue ; [[ "$(cat ${i})" == "${AUTOSUSPEND}" ]] || printf -- "${AUTOSUSPEND}" > "${i}" & done &
 
       # Powersaving for modules
       for i in /sys/module/*/parameters/power_save; do \
-        printf "${POWERSAVE}" > "${i}" & done &
+        [[ "$(cat ${i})" == "${POWERSAVE}" ]] || printf "${POWERSAVE}" > "${i}" & done &
       for i in /sys/module/*/parameters/power_save_controller; do \
-        printf "${CONTROLLER}" > "${i}" & done &
+        [[ "$(cat ${i})" == "${CONTROLLER}" ]] || printf "${CONTROLLER}" > "${i}" & done &
 
       # Network powersaving
-      for i in /sys/class/net/wl*; do [[ -d "${i}" ]] && \
+      for i in /sys/class/net/wl*; do \
         [[ -n "$(command -v iw)" ]] && \
-          iw dev "$(printf "${i}" | sed 's/^.*wl/wl/')" set power_save "${WLPOWERSAVE}" 2> /dev/null & done &
-      for i in /sys/class/net/e*; do [[ -d "${i}" ]] && \
+          iw dev "$(printf ${i} | sed 's/^.*wl/wl/')" set power_save "${WLPOWERSAVE}" 2> /dev/null & done &
+      for i in /sys/class/net/e*; do \
         [[ -n "$(command -v ethtool)" ]] && \
-          ethtool -s "$(printf "${i}" | sed 's/^.*e/e/')" wol "${WOLA}" 2> /dev/null & done &
-      for i in /sys/class/net/*/device/power/wakeup; do [[ -f "${i}" ]] && \
+          ethtool -s "$(printf ${i} | sed 's/^.*e/e/')" wol "${WOLA}" 2> /dev/null & done &
+      for i in /sys/class/net/*/device/power/wakeup; do \
         printf "${WOLB}" > "${i}" & done &
 
       # LEDs
-      for i in /sys/class/leds/*/brightness; do [[ -f "${i}" ]] && \
+      for i in /sys/class/leds/*/brightness; do \
         printf "${LEDBRIGHT}" > "${i}" & done &
 
       # Nvidia PowerMizer
@@ -141,8 +160,7 @@ while (( "$#" )); do
           off|powersave) HYPERTHREADS="0"; SHIFT="2" ;; esac
       [[ -z "${HYPERTHREADS}" ]] && \
         printf "${0} ht {on,off} - Hyperthreads\n" || \
-      for i in /sys/devices/system/cpu/cpu*/online; do  [[ -f "${i}" ]] && \
-        [[ "$(printf "${i}" | tr -cd [:digit:])" -ge "${CORES}" ]] && \
+      for i in /sys/devices/system/cpu/cpu*/online; do [[ "$(printf "${i}" | tr -cd [:digit:])" -ge "${CORES}" ]] && \
           printf "${HYPERTHREADS}" > "${i}" & done &
       [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
       wait
@@ -158,7 +176,7 @@ while (( "$#" )); do
           cut|powersave) GOVERNOR="powersave"; SHIFT="2" ;; esac
       [[ -z "${GOVERNOR}" ]] && \
         printf "${0} gov {cut,full} - CPU Governor\n" || \
-      for i in /sys/bus/cpu/drivers/processor/cpu*/cpufreq/scaling_governor; do [[ -f "${i}" ]] && \
+      for i in /sys/bus/cpu/drivers/processor/cpu*/cpufreq/scaling_governor; do \
         printf "${GOVERNOR}" > "${i}" & done &
       [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
       wait
@@ -187,7 +205,7 @@ while (( "$#" )); do
        2|performance) BACKLIGHT="2"; SHIFT="2" ;; esac
       [[ -z "${BACKLIGHT}" ]] && \
         printf "${0} backlight {0,1,2} - Backlight brightness\n" || \
-        for i in /sys/class/backlight/acpi_video*/brightness; do [[ -f "${i}" ]] && \
+        for i in /sys/class/backlight/acpi_video*/brightness; do \
           printf "${BACKLIGHT}" > "${i}" & done &
       [[ -n "${SHIFT}" ]] && shift "${SHIFT}" || shift
       wait
@@ -212,12 +230,12 @@ while (( "$#" )); do
     ;;
     check)
       printf "\nHyperthreads\n/sys/devices/system/cpu/cpu*/online\n"
-      for i in /sys/devices/system/cpu/cpu*/online; do [[ -f "${i}" ]] && \
+      for i in /sys/devices/system/cpu/cpu*/online; do \
         [[ $(printf "${i}" | tr -cd [:digit:]) -ge "$CORES" ]] && \
           printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/devices/system/cpu/||g; s|/.*||g; N;s|\n|\t|'
 
       printf "\nCPU Governor\n/sys/bus/cpu/drivers/processor/cpu*/cpufreq/scaling_governor\n"
-      for i in /sys/bus/cpu/drivers/processor/cpu*/cpufreq/scaling_governor; do [[ -f "${i}" ]] && \
+      for i in /sys/bus/cpu/drivers/processor/cpu*/cpufreq/scaling_governor; do \
         printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/bus/cpu/drivers/processor/||g; s|/.*||g; N;s|\n|\t|'
 
       [[ -f /sys/devices/system/cpu/intel_pstate/no_turbo ]] && \
@@ -229,7 +247,7 @@ while (( "$#" )); do
         x86_energy_perf_policy -r #SUID
 
       printf "\nBacklight\n/sys/class/backlight/\n"
-      for i in /sys/class/backlight/acpi_video*/brightness; do [[ -f "${i}" ]] && \
+      for i in /sys/class/backlight/acpi_video*/brightness; do \
         printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/class/backlight/||g; s|/.*||g; N;s|\n|\t|'
 
       echo -e "\nVirtual Memory (Swap)\n/proc/sys/vm/\n"\
@@ -242,7 +260,7 @@ while (( "$#" )); do
                 "/proc/sys/kernel/watchdog\t$(cat /proc/sys/kernel/watchdog)"
 
       printf "\nSATA link power management\n/sys/class/scsi_host/host*/link_power_management_policy\n"
-      for i in /sys/class/scsi_host/host*/link_power_management_policy; do [[ -f "${i}" ]] && \
+      for i in /sys/class/scsi_host/host*/link_power_management_policy; do \
         printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/class/scsi_host/||g; s|/.*||g; N;s|\n|\t|'
 
       [[ -n "$(command -v hdparm)" ]] && \
@@ -250,29 +268,29 @@ while (( "$#" )); do
         hdparm -B -M /dev/[hs]d[a-z] 2> /dev/null | sed 'N;s|\n||g; s|/dev/||g; s|\t| |g;' #SUID
 
       printf "\nRuntime power management\n/sys/{class,bus}/*/{*,devices/*}/power/control\n"
-      for i in /sys/{class,bus}/*/{*,devices/*}/power/control; do [[ -f "${i}" ]] && \
+      for i in /sys/{class,bus}/*/{*,devices/*}/power/control; do \
         printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/class/||g; s|/sys/bus/||g; s|/devices||g; s|/power/control||g; N;s|\n|\t|'
 
       printf "\nUSB Autosuspend\n/sys/bus/usb/devices/*/power/autosuspend{,_delay_ms}\n"
-      for i in /sys/bus/usb/devices/*/power/autosuspend{,_delay_ms}; do [[ -f "${i}" ]] && \
+      for i in /sys/bus/usb/devices/*/power/autosuspend{,_delay_ms}; do \
         printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/bus/usb/devices/||g; s|/.*||g; N;s|\n|\t|'
 
       printf "\nPower saving for modules\n/sys/module/*/parameters/power_save{,_controller}\n"
-      for i in /sys/module/*/parameters/power_save{,_controller}; do [[ -f "${i}" ]] && \
+      for i in /sys/module/*/parameters/power_save{,_controller}; do \
         printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/module/||g; s|/parameters/.*||g; s|/.*||g; N;s|\n|\t|'
 
       printf "\nNetwork device powersaving\n/sys/class/net/{wl*,e*,*/device/power/wakeup}\n";
       [[ -n "$(command -v iw)" ]] && \
-        for i in /sys/class/net/wl*; do [[ -d "${i}" ]] && \
+        for i in /sys/class/net/wl*; do \
         printf " ${i}\n$(iw dev $(printf ${i} | sed 's/^.*wl/wl/') get power_save)"; done | sed 's|^\t|  |g;s|/sys/class/net/||g; s|/.*||g'
       [[ -n "$(command -v ethtool)" ]] && \
-        for i in /sys/class/net/e*; do [[ -d "${i}" ]] && \
+        for i in /sys/class/net/e*; do \
         printf " ${i}\n$(ethtool $(printf ${i} | sed 's/^.*e/e/') | grep Wake-on)"; done | sed 's|^\t|  |g;s|/sys/class/net/||g; s|/.*||g'
-      for i in /sys/class/net/*/device/power/wakeup; do [[ -f "${i}" ]] && \
+      for i in /sys/class/net/*/device/power/wakeup; do \
         printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/class/net/||g; s|/device/power/wakeup||g; s|/.*||g; N;s|\n|\t|'
 
       printf "\nLEDs\n/sys/class/leds/*/brightness\n"
-      for i in /sys/class/leds/*/brightness; do [[ -f "${i}" ]] && \
+      for i in /sys/class/leds/*/brightness; do \
         printf " ${i}\n$(cat ${i})\n"; done | sed 's|/sys/class/leds/||g; s|/brightness||g; s|/.*||g; N;s|\n|\t|'
 
       [[ -n "$(command -v nvidia-settings)" ]] && \
