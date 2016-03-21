@@ -2,11 +2,11 @@
 
 pkgname=erebus
 pkgver=0.15
-pkgrel=1
+pkgrel=2
 pkgdesc="2D real-time role-playing game."
 arch=('i686' 'x86_64')
 url="http://erebusrpg.sourceforge.net/"
-license=("GPLv3")
+license=("GPL3")
 depends=('sfml')
 makedepends=('qt4')
 source=("$pkgname-$pkgver::http://launchpad.net/erebus/trunk/$pkgver/+download/erebussrc.zip"
