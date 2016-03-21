@@ -4,7 +4,7 @@
 # Contributor: Hubert Grzeskowiak <arch at nemesis13 de>
 
 pkgname=panda3d-git
-pkgver=git_HEAD
+pkgver=git
 pkgrel=3
 pkgdesc="A 3D game engine with Python bindings. SDK package. Git Version. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
