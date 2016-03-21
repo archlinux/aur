@@ -121,6 +121,7 @@ package_lib32-nvidia-utils-beta() {
   install -Dm755 libEGL.so.1 "$pkgdir"/usr/lib32/nvidia/libEGL.so.1
   install -Dm755 libEGL_nvidia.so.$pkgver "$pkgdir"/usr/lib32/libEGL_nvidia.so.$pkgver
   install -Dm755 libnvidia-eglcore.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-eglcore.so.$pkgver
+  install -Dm755 libnvidia-egl-wayland.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-egl-wayland.so.$pkgver
 
   # OpenGL ES
   install -Dm755 libGLESv1_CM.so.1 "$pkgdir"/usr/lib32/nvidia/libGLESv1_CM.so.1
