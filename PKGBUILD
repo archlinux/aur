@@ -2,7 +2,7 @@
 
 pkgname=k2pdfopt
 pkgver=2.34a
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool that optimizes PDF files for viewing on mobile readers"
 arch=('i686' 'x86_64')
 url="http://www.willus.com/k2pdfopt/"
@@ -20,7 +20,7 @@ source=("http://www.willus.com/k2pdfopt/src/${pkgname}_v${pkgver}_src.zip"
     "http://downloads.sourceforge.net/project/openjpeg.mirror/2.1.0/openjpeg-2.1.0.tar.gz"
 	"k2pdfopt.patch"
 	"tesseract.patch")
-md5sums=('907484805a16d4961be58f06f49bc0c7'
+md5sums=('4c074b9588d714cb7bfc7b58f22d8d0a'
          'bdca1b23bb81d23e515faf5260c44599'
          '3205256d78d8524d67dd2a47c7a345fa'
          '645a21effcf2825a3473849d72a7fd90'
