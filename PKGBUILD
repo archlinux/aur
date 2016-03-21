@@ -77,7 +77,7 @@ build() {
 package() {
   cd $srcdir/panda3d
   python2 makepanda/installpanda.py --prefix=/usr --destdir="$pkgdir"
-  install -D -m644 "$srcdir/$pkgname/doc/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 "$srcdir/panda3d/doc/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 post_install() {
