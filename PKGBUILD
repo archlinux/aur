@@ -4,7 +4,7 @@
 
 _pkgname=mailnag
 pkgname=$_pkgname-git
-pkgver=20160224.r543.337176f
+pkgver=20160319.r547.2022960
 pkgrel=1
 pkgdesc='An extensible mail notification daemon'
 arch=('any')
