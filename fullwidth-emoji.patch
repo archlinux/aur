@@ -12,3 +12,33 @@
          if (G_LIKELY (utf8_ambiguous_width == 1))
                  return 1;
          if (G_UNLIKELY (g_unichar_iswide_cjk (c)))
+--- a/vte-ng-0.42.4.a/src/vteseq.cc	2016-03-21 22:23:38.886288772 +0800
++++ b/vte-ng-0.42.4.a/src/vteseq.cc	2016-03-21 23:02:19.447553445 +0800
+@@ -1533,12 +1533,23 @@
+ static void
+ vte_sequence_handler_backspace (VteTerminal *terminal, GValueArray *params)
+ {
++        struct termios tio;
+         _vte_terminal_ensure_cursor_is_onscreen(terminal);
+-
+-        if (terminal->pvt->screen->cursor.col > 0) {
+-		/* There's room to move left, so do so. */
++        g_assert(tcgetattr(vte_pty_get_fd(terminal->pvt->pty), &tio) == 0);
++        if (tio.c_lflag & ICANON && tio.c_iflag & IUTF8) {
++                VteRowData *rowdata = _vte_terminal_ensure_row(terminal);
++                int col = terminal->pvt->screen->cursor.col;
++                if (col == 0)
++                        ;
++                else if (col > rowdata->len)
++                        col--;
++                else
++                        col = MAX(col - rowdata->cells[col-1].attr.columns, 0);
++                terminal->pvt->screen->cursor.col = col;
++        } else if (terminal->pvt->screen->cursor.col > 0) {
++                /* There's room to move left, so do so. */
+                 terminal->pvt->screen->cursor.col--;
+-	}
++        }
+ }
+ 
+ /* Cursor left N columns. */
