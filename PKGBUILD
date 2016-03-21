@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1
 
 pkgname=chewing-editor-git
-pkgver=0.0.2.r17.gd9b7f53
-pkgrel=2
+pkgver=0.0.2.r37.gc883415
+pkgrel=1
 pkgdesc="Cross platform chewing user phrase editor"
 arch=('i686' 'x86_64')
 url="http://chewing.im"
