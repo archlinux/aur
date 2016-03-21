@@ -15,11 +15,11 @@
  #-- Files to be removed from all packages (if purge is specified)
  PURGE_TARGETS=(usr/{,share}/info/dir .packlist *.pod)
 +#-- Compression parameters for UPX
-+UPXFLAGS="--ultra-brute"
++#UPXFLAGS="--ultra-brute"
 +#-- Compression parameters for optiPNG
-+OPTIPNGFLAGS=" -o7 -zm1-9"
++#OPTIPNGFLAGS=" -o7 -zm1-9"
 +#-- Compression parameters for SVGO
-+SVGOFLAGS="--multipass"
++#SVGOFLAGS="--multipass"
  
  #########################################################################
  # PACKAGE OUTPUT
