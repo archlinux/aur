@@ -1,8 +1,9 @@
 # Maintainer: wordofglass <wordofglass@users.noreply.github.com>
 
 pkgname=beets-copyartifacts-git
-pkgver=v0.1.2.r24.dac4a16
+pkgver=0.1.2.r24.dac4a16
 pkgrel=1
+epoch=1 # had the versioning messed up initially...
 pkgdesc="A beets plugin that moves non-music files during the import process."
 arch=('any')
 url="https://github.com/sbarakat/${pkgname%-git}"
@@ -16,7 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/${pkgname%-git}"
-    printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+    printf "%s" "$(git describe --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 package() {
