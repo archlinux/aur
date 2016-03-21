@@ -14,7 +14,9 @@ makedepends=('python-distutils-extra' 'python-setuptools')
 optdepends=('gnome-main-menu: for openSUSE panel layout'
             'mate-applet-dock: for Mutiny panel layout'
             'mate-menu: to enable advanced menu'
+            'mate-netbook: to undecorate maximized windows'
             'plank: for Cupertino panel layout'
+            'synapse: to enable launcher'
             'topmenu-gtk: for Mutiny panel layout')
 source=("$pkgname-$pkgver.tar.gz::https://bitbucket.org/ubuntu-mate/$pkgname/get/$pkgver.tar.gz"
         "https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-mate-settings_$_umsver.tar.xz"
