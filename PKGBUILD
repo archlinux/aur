@@ -2,7 +2,7 @@
 # code adapted from: Meow < a.li.devtty at gmail dot com >
 
 pkgname=rstudio-desktop-preview-bin
-pkgver=0.99.879
+pkgver=0.99.893
 pkgrel=1
 pkgdesc="A new integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ optdepends=('pandoc-bin'
 provides=("rstudio-desktop-preview=${pkgver}")
 #options=(!strip)
 
-_x86md5=afde330661f9565445c522983c2caa8f
-_x64md5=64aa9c53f930d415e4a3dac019cf2c5f
+_x86md5=602be348a65af48dcacf7b55dca083cf
+_x64md5=dd8679eb9c3d13d922e2793b14b9c786
 
 case "$CARCH" in
 	'i686')
