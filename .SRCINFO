@@ -1,6 +1,6 @@
 pkgbase = lib32-kmod
 	pkgdesc = Linux kernel module handling
-	pkgver = 21
+	pkgver = 22
 	pkgrel = 1
 	url = http://git.kernel.org/?p=utils/kernel/kmod/kmod.git;a=summary
 	arch = x86_64
@@ -9,8 +9,8 @@ pkgbase = lib32-kmod
 	depends = lib32-zlib
 	depends = lib32-xz
 	options = !libtool
-	source = ftp://ftp.kernel.org/pub/linux/utils/kernel/kmod/kmod-21.tar.xz
-	md5sums = ee246fab2e1cba9fbdcad6a86ec31531
+	source = ftp://ftp.kernel.org/pub/linux/utils/kernel/kmod/kmod-22.tar.xz
+	md5sums = 4371b847f3fbfaa4e9aa890ad616748f
 
 pkgname = lib32-kmod
 
