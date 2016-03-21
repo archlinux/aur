@@ -1,0 +1,23 @@
+pkgbase = ros-jade-controller-manager-msgs
+	pkgdesc = ROS - Some basic robot controllers for use with robot_controllers_interface.
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-std-msgs
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-message-runtime
+	depends = ros-jade-catkin
+	depends = ros-jade-std-msgs
+	depends = ros-jade-message-generation
+	depends = ros-jade-message-runtime
+	source = controller_manager_msgs/controller_manager_msgs::git+https://github.com/ros-controls/ros_control.git#tag=0.10.0
+	md5sums = SKIP
+
+pkgname = ros-jade-controller-manager-msgs
+
