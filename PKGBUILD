@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
-pkgdesc="ROS - Some basic robot controllers for use with robot_controllers_interface."
-url='http://www.ros.org/'
+pkgdesc="Generic and simple controls framework for ROS"
+url='http://wiki.ros.org/ros_control'
 
 pkgname='ros-jade-controller-manager-msgs'
 pkgver='0.10.0'
