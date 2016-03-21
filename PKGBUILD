@@ -1,7 +1,7 @@
 # Maintainer: Jan Trejbal <jan.trejbal@gmail.com>
 pkgname=gnome-shell-extension-docker-integration-git
-pkgver=20160320
-pkgrel=1
+pkgver=20160321
+pkgrel=2
 pkgdesc="Base Docker&Docker compose integration (start, stop, log, up), hide Docker network (veth*)"
 arch=('any')
 url="https://github.com/Trejjam/Gnome-Docker-integration"
