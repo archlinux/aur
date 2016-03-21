@@ -1,7 +1,7 @@
 pkgbase = lrs-git
 	pkgdesc = An experimental standard library for rust
 	pkgver = r334.8262295
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lrs-lang
 	install = install.sh
 	arch = x86_64
