@@ -11,8 +11,8 @@ depends=('ncurses' 'boost' 'boost-libs')
 source=(http://www.ant.uni-bremen.de/whomes/rinas/sinfo/download/$pkgname-$pkgver.tar.gz sinfod.service)
 url="http://www.ant.uni-bremen.de/whomes/rinas/sinfo/"
 #
-md5sums=('5e92a5c94ff69a68b64b7b776c75d4bf'
-         '5bf5ea9334d10165dfdc2612b6a84688')
+sha256sums=('4b6360f863c408e96ca04092ea6bdd61ee14a9e9151b85f64e12ece541b1933f'
+            '805612dad011f7194cba49a2886a1ed68ec412bfac6e441ec44ebbf61693efe3')
 #
 build() {
   cd ${startdir}/src/$pkgname-$pkgver
