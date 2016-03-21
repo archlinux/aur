@@ -1,0 +1,14 @@
+--- a/vte-ng-0.42.4.a/src/vte.cc	2016-03-21 19:49:00.390775386 +0800
++++ b/vte-ng-0.42.4.a/src/vte.cc	2016-03-21 19:50:22.627904117 +0800
+@@ -206,6 +206,11 @@
+                 return 0;
+         if (G_UNLIKELY (g_unichar_iswide (c)))
+                 return 2;
++        if (G_UNLIKELY(0x25a0 <= c && c < 0x27c0 || // Geometric Shapes, Miscellaneous Symbols, Dingbats
++                       0x2b00 <= c && c < 0x2c00 || // Miscellaneous Symbols and Arrows
++                       0x1f300 <= c && c < 0x1f700 || // Miscellaneous Symbols and Pictographs ... Geometric Shapes Extended
++                       0))
++                return 2;
+         if (G_LIKELY (utf8_ambiguous_width == 1))
+                 return 1;
+         if (G_UNLIKELY (g_unichar_iswide_cjk (c)))
