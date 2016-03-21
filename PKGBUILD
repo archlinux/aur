@@ -4,17 +4,17 @@
 # Contributor: Guten Ye <ywzhaifei [at] gmail [dot] com>
 
 pkgname=ruby-build-git
-pkgver=v20141225.r7.g4aeeac2
+pkgver=v20160228.r5.g522f3ba
 pkgrel=1
 pkgdesc="Compile and install Ruby"
 arch=('any')
-url="http://github.com/sstephenson/ruby-build"
+url="http://github.com/rbenv/ruby-build"
 license=("MIT")
 makedepends=('git')
 provides=('ruby-build')
 conflicts=('ruby-build')
 _gitname="ruby-build"
-source=("git://github.com/sstephenson/ruby-build.git")
+source=("git://github.com/rbenv/ruby-build.git")
 sha1sums=('SKIP')
 
 pkgver() {
@@ -32,3 +32,5 @@ package() {
   cp share/ruby-build/* "$pkgdir"/usr/share/ruby-build
   install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/"$_gitname"/LICENSE
 }
+
+# vim:set ts=2 sw=2 et:
