@@ -15,9 +15,11 @@ options=()
 install=${pkgname}.install
 source=("https://github.com/InfraArcana/ia/archive/v${pkgver}.zip"
 		"${pkgname}.install"
+		"${pkgname}.desktop"
 		"${pkgname}.sh")
 md5sums=('fc6561591d30b7af0d86390ee547bd4a'
-         '16afb02e73700171bb2b88e03ef9a5ea'
+         '2bc0fb64e8593e25009b1dc50e642cd8'
+         '2e28c2803d7d2cd4376dcd3aa6512774'
          '87294b81f5a2f98a78d318a5dcec7caf')
 
 build() {
@@ -57,4 +59,6 @@ package() {
         #install icon
         install -Dm644 "icon/icon.ico" \
           "$pkgdir/usr/share/icons/hicolor/128x128/apps/${pkgname}.png"
+        install -Dm644 "${srcdir}/${pkgname}.desktop" \
+          "$pkgdir/usr/share/applications/${pkgname}.desktop"
 }

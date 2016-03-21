@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Infra Arcana
+Comment=Roguelike game inspired by H.P. Lovecraft
+Exec=infra-arcana
+Icon=infra-arcana
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=Game;
