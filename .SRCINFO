@@ -1,6 +1,6 @@
 pkgbase = lxd
 	pkgdesc = REST API, command line tool and OpenStack integration plugin for LXC.
-	pkgver = 2.0.0.rc3
+	pkgver = 2.0.0.rc4
 	pkgrel = 1
 	url = https://github.com/lxc/lxd
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = lxd
 	optdepends = linux-user-ns-enabled: kernel with CONFIG_USER_NS enabled
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/lxc/lxd/archive/lxd-2.0.0.rc3.tar.gz
+	source = https://github.com/lxc/lxd/archive/lxd-2.0.0.rc4.tar.gz
 	source = lxd.service
-	md5sums = efe70a09010fad4b6184ce2c73bcf6ee
+	md5sums = 2b21613e90a26bf61ad1ce7728977519
 	md5sums = b1780c0e01e404895e35ac277aa597c4
 
 pkgname = lxd
