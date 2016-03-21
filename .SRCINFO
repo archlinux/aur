@@ -2,14 +2,14 @@
 # Tue Feb 23 20:32:34 UTC 2016
 pkgbase = swiftenv
 	pkgdesc = Swift Version Manager
-	pkgver = 0.5.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://swiftenv.fuller.li/
 	arch = any
 	license = custom
 	depends = bash
-	source = https://github.com/kylef/swiftenv/archive/0.5.0.tar.gz
-	sha1sums = f5f856dfe40c58718b1a42cc8fb0ddcc1fbc4f6a
+	source = https://github.com/kylef/swiftenv/archive/1.0.0.tar.gz
+	sha1sums = a81f1b3838b2da1fd2fbdea43406f05cdee5d7b0
 
 pkgname = swiftenv
 
