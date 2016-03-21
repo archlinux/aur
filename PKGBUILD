@@ -3,18 +3,18 @@
 
 pkgname=xcursor-breeze
 epoch=1
-pkgver=1.0
+pkgver=5.5
 pkgrel=1
 pkgdesc="Breeze cursor theme (KDE Plasma 5)"
 arch=('any')
-url="http://gnome-look.org/content/show.php/Breeze+Serie?content=169316"
+url="https://quickgit.kde.org/?p=breeze.git"
 license=('GPL')
 depends=('libxcursor')
-makedepends=('unzip')
-source=("Breeze-Default-${pkgver}.tgz::https://copy.com/FzUgqqvKfo3mLpeB/Breeze-Default.tgz?download=1")
-md5sums=('5563f9d94c1896d606db260f0e809f76')
+conflicts=('breeze')
+source=("breeze-cursors-${pkgver}.tgz::https://quickgit.kde.org/?p=breeze.git&a=snapshot&h=9b142a15d494c4d9d8cc48cb051357d39b508cd6&f=cursors%2FBreeze%2FBreeze&fmt=tgz")
+md5sums=('SKIP')
 
 package() {
   install -dm755 "$pkgdir"/usr/share/icons/
-  cp -r "$srcdir"/Breeze-Default/ "$pkgdir"/usr/share/icons/Breeze-Default
+  cp -r "$srcdir"/breeze/cursors/Breeze/Breeze/ "$pkgdir"/usr/share/icons/
 }
