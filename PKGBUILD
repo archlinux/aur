@@ -4,7 +4,7 @@
 
 pkgname=panda3d
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
 arch=('i686' 'x86_64')
@@ -67,7 +67,7 @@ build() {
   cd "$srcdir/panda3d-$pkgver"
 
   # disable broken extensions
-  python2 makepanda/makepanda.py --everything --no-opencv --no-opencv --no-maya2012 --no-fmodex --no-gles --no-gles2 --threads $JOBS
+  python2 makepanda/makepanda.py --everything --no-opencv --no-opencv --no-maya2012 --no-fmodex --no-gles --no-gles2 --no-ffmpeg --threads $JOBS
 }
 
 package() {
