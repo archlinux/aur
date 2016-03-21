@@ -4,7 +4,7 @@
 #   graysky <graysky@archlinux.us>
 
 pkgname=(linux-lts318-ck linux-lts318-ck-headers)
-pkgver=3.18.28
+pkgver=3.18.29
 pkgrel=1
 arch=(i686 x86_64)
 url="https://www.kernel.org/"
@@ -29,7 +29,7 @@ source=(
 )
 
 sha512sums=(
-    "b0d634c7c49b3ccc0bc47814f5c94391727b674ebdbb0d7f13eb8dc65f89c5eeec708048ee498e5d6efa52f6062417d23c79920a020f65ecd6fcf53182c63e30"
+    "5e77dde66c4cf6221af340be740c04ba8679ce3110ae3c31414685e2d4863ba02be11bd0de3626a455f1b126c23143b6b4558dc7c5d835cf5e00167ec3ce434e"
 
     "SKIP"
     "c1ffbbc641cf9ef3c666a1fe5ddff1ab9ed02eb2d8d229d5ce4c11487609ef81beee456c211a658355c2061a108042929b9ad62914395a22077754ade4eb6a23"
