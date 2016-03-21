@@ -1,0 +1,2 @@
+#!/bin/sh
+PKG_CONFIG_LIBDIR=/usr/aarch64-unknown-cloudabi/lib/pkgconfig pkg-config "$@"
