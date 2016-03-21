@@ -1,12 +1,12 @@
-diff -aur tesseract-ocr/api/Makefile.am tesseract-ocr.new/api/Makefile.am
---- tesseract-ocr/api/Makefile.am	2012-10-09 14:18:39.000000000 -0300
-+++ tesseract-ocr.new/api/Makefile.am	2014-03-20 18:43:13.926030341 -0300
-@@ -36,7 +36,7 @@
+diff -aur tesseract-3.04.01/api/Makefile.am tesseract-3.04.01.new/api/Makefile.am
+--- tesseract-3.04.01/api/Makefile.am	2016-02-16 18:27:01.000000000 -0300
++++ tesseract-3.04.01.new/api/Makefile.am	2016-03-20 22:04:24.928955673 -0300
+@@ -42,7 +42,7 @@
  if VISIBILITY
  libtesseract_api_la_CPPFLAGS += -DTESS_EXPORTS
  endif
--libtesseract_api_la_SOURCES = baseapi.cpp capi.cpp
-+libtesseract_api_la_SOURCES = baseapi.cpp capi.cpp tesscapi.cpp
+-libtesseract_api_la_SOURCES = baseapi.cpp capi.cpp renderer.cpp pdfrenderer.cpp
++libtesseract_api_la_SOURCES = baseapi.cpp capi.cpp renderer.cpp pdfrenderer.cpp tesscapi.cpp
  
  lib_LTLIBRARIES += libtesseract.la
  libtesseract_la_LDFLAGS = 

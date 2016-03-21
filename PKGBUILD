@@ -1,43 +1,46 @@
 # Maintainer: Facundo Tuesca <facutuesca at gmail dot com>
 
 pkgname=k2pdfopt
-pkgver=2.33
-pkgrel=2
+pkgver=2.34a
+pkgrel=1
 pkgdesc="A tool that optimizes PDF files for viewing on mobile readers"
 arch=('i686' 'x86_64')
 url="http://www.willus.com/k2pdfopt/"
 license=('GPL3')
 makedepends=('cmake')
-depends=('mupdf>=1.7'
+depends=('mupdf>=1.8'
 	'djvulibre>=3.5.25.3'
 	'netpbm>=10.61.02'
-	'leptonica>=1.69')
+	'leptonica>=1.72')
 source=("http://www.willus.com/k2pdfopt/src/${pkgname}_v${pkgver}_src.zip"
-    "http://www.mupdf.com/downloads/archive/mupdf-1.7a-source.tar.gz"
-	"http://tesseract-ocr.googlecode.com/files/tesseract-ocr-3.02.02.tar.gz"
+    "http://www.willus.com/k2pdfopt/src/${pkgname}_v2.34_src.zip"
+    "http://www.mupdf.com/downloads/archive/mupdf-1.8-source.tar.gz"
+	"https://github.com/tesseract-ocr/tesseract/archive/3.04.01.tar.gz"
 	"http://www-e.uni-magdeburg.de/jschulen/ocr/gocr-0.49.tar.gz"
     "http://downloads.sourceforge.net/project/openjpeg.mirror/2.1.0/openjpeg-2.1.0.tar.gz"
 	"k2pdfopt.patch"
 	"tesseract.patch")
-md5sums=('c2a67f7e8386808c9d5717dffa8860c0'
-         '319fda2cc5301bb3ec2e1d82c3329986'
-         '26adc8154f0e815053816825dde246e6'
+md5sums=('907484805a16d4961be58f06f49bc0c7'
+         'bdca1b23bb81d23e515faf5260c44599'
+         '3205256d78d8524d67dd2a47c7a345fa'
+         '645a21effcf2825a3473849d72a7fd90'
          '4e527bc4bdd97c2be15fdd818857507f'
          'f6419fcc233df84f9a81eb36633c6db6'
-         '82d4856430c32fd9a0194401662afd71'
-         '0e85e48aed62771dfc090787c079359d')
+         '75dcbbac103eafe5374e14120ff591aa'
+         '3442e31f2f6302cf17dcc3a4a8cef40a')
 
 prepare() {
+    cp -r ${srcdir}/${pkgname}_v2.34/* "${srcdir}/${pkgname}_v${pkgver}"
 	cd "${srcdir}/${pkgname}_v${pkgver}"
 	rm -f "include_mod/gocr.h"
-	cp mupdf_mod/font.c mupdf_mod/string.c mupdf_mod/filter-dct.c mupdf_mod/load-* mupdf_mod/time.c "${srcdir}/mupdf-1.7a-source/source/fitz/"
-	cp mupdf_mod/pdf-* "${srcdir}/mupdf-1.7a-source/source/pdf/"
-	rm -rf ${srcdir}/mupdf-1.7a-source/thirdparty/{curl,freetype,jpeg,zlib,openjpeg}
-	cp tesseract_mod/dawg.cpp "${srcdir}/tesseract-ocr/dict/"
-	cp tesseract_mod/tessdatamanager.cpp "${srcdir}/tesseract-ocr/ccutil/"
-	cp tesseract_mod/tessedit.cpp "${srcdir}/tesseract-ocr/ccmain/"
-	cp tesseract_mod/tesscapi.cpp "${srcdir}/tesseract-ocr/api"
-	cp include_mod/tesseract.h include_mod/leptonica.h "${srcdir}/tesseract-ocr/api/"
+	cp mupdf_mod/font.c mupdf_mod/string.c mupdf_mod/filter-dct.c mupdf_mod/load-* "${srcdir}/mupdf-1.8-source/source/fitz/"
+	cp mupdf_mod/pdf-* "${srcdir}/mupdf-1.8-source/source/pdf/"
+	rm -rf ${srcdir}/mupdf-1.8-source/thirdparty/{curl,freetype,jpeg,zlib,openjpeg}
+	cp tesseract_mod/dawg.cpp "${srcdir}/tesseract-3.04.01/dict/"
+	cp tesseract_mod/tessdatamanager.cpp "${srcdir}/tesseract-3.04.01/ccutil/"
+	cp tesseract_mod/tessedit.cpp "${srcdir}/tesseract-3.04.01/ccmain/"
+	cp tesseract_mod/tesscapi.cpp "${srcdir}/tesseract-3.04.01/api"
+	cp include_mod/tesseract.h include_mod/leptonica.h "${srcdir}/tesseract-3.04.01/api/"
 	cd "${srcdir}"
 	patch -p0 -i "${srcdir}/tesseract.patch"
 	patch -p1 -i "${srcdir}/k2pdfopt.patch"
@@ -45,10 +48,10 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/mupdf-1.7a-source/"
+	cd "${srcdir}/mupdf-1.8-source/"
 	make prefix="${srcdir}/patched_libraries" install
         install -Dm644 build/debug/libmujs.a "${srcdir}/patched_libraries/lib/"
-	cd "${srcdir}/tesseract-ocr/"
+	cd "${srcdir}/tesseract-3.04.01/"
 	./autogen.sh
 	./configure --prefix="${srcdir}/patched_libraries" --disable-shared
 	make install
