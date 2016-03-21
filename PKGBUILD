@@ -1,7 +1,7 @@
 # Maintainer: Nuew <archlinux at nuew dot net>
 pkgname=lrs-git
 pkgver=r334.8262295
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental standard library for rust"
 arch=('x86_64')
 url="https://github.com/lrs-lang"
@@ -51,15 +51,11 @@ build() {
 }
 
 package() {
-  mkdir -p $pkgdir/usr/bin $pkgdir/usr/lib/lrs $pkgdir/usr/share/licenses/lrs
+  mkdir -p $pkgdir/usr/bin $pkgdir/usr/lib $pkgdir/usr/share/licenses/lrs
   cp "$srcdir/driver/lrsc" "$pkgdir/usr/bin/lrsc"
   cp ${srcdir}/rust-nightly-x86_64-unknown-linux-gnu/rustc/lib/*.so "$pkgdir/usr/lib"
   cp ${srcdir}/rust-nightly-x86_64-unknown-linux-gnu/LICENSE-* \
     "$srcdir/rust-nightly-x86_64-unknown-linux-gnu/COPYRIGHT" \
     "$srcdir/lib/LICENSE" $pkgdir/usr/share/licenses/lrs
-  for d in ${srcdir}/lib/obj; do
-    if [[ -d "$d" ]] && [[ $(basename $d) -ne "obj" ]]; then
-      cp -r $d/*.a $d/*.rlib $d/*.so "$pkgdir/usr/lib/lrs/$(basename $d)"
-    fi
-  done 
+  cp -r "$srcdir/lib/obj/" "$pkgdir/usr/lib/lrs"
 }
