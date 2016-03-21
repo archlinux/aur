@@ -1,4 +1,4 @@
-# Maintainer Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
+# Maintainer: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 # Contributor: AlexanderR <alexander r at gmx com>
 # Contributor: Eric Forgeot < http://ifiction.free.fr >
 pkgname=fizmo
