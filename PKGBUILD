@@ -1,7 +1,7 @@
 pkgname=sabnzbd
 _pkgname=SABnzbd
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A web-interface based binary newsgrabber with NZB file support"
 url="http://www.sabnzbd.org"
 arch=("any")
@@ -21,7 +21,7 @@ md5sums=('003c758eafb6b9407cc3b2592a8ea4d6'
          '2a49c07b1e3e6448eabe92644315f983'
          'fdc878dd0f6f25617e627b04409abbbd'
          '11fb2cd1451e3725b08bfc2bd045be54'
-         '7da9222f3b86abfed590950f48dc2e77'
+         'da07971fa3790ea4824ed4ce611b38f3'
          '8fc2607a7961fc643ef4f6640166322a')
 
 package() {
