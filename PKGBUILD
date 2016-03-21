@@ -14,7 +14,7 @@ makedepends=('python-distutils-extra' 'python-setuptools')
 optdepends=('gnome-main-menu: for openSUSE panel layout'
             'mate-applet-dock: for Mutiny panel layout'
             'mate-menu: to enable advanced menu'
-            'mate-netbook: to undecorate maximized windows'
+            'mate-netbook: for Netbook panel layout'
             'plank: for Cupertino panel layout'
             'synapse: to enable launcher'
             'topmenu-gtk: for Mutiny panel layout')
