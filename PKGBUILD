@@ -1,7 +1,8 @@
-# Maintainer: Vladislav Odobesku positivcheg94@gmail.com
+# Maintainer: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
+# Contributor: Vladislav Odobesku positivcheg94@gmail.com
 
 pkgname=python-tensorflow-git
-pkgver=0.7
+pkgver=0.7.1.r1480.gf58acff
 pkgrel=1
 
 pkgdesc="Open source software library for numerical computation using data flow graphs."
@@ -14,11 +15,21 @@ provides=('tensorflow')
 conflicts=('tensorflow' 'tensorflow-git', 'python-tensorflow')
 depends=('python-numpy' 'swig' 'python-wheel' 'python-protobuf3')
 makedepends=('git' 'python-pip' 'bazel')
+source=("git+https://github.com/tensorflow/tensorflow"
+        "git+https://github.com/google/protobuf")
+md5sums=('SKIP'
+         'SKIP')
 
-
+pkgver() {
+  cd "$srcdir/tensorflow"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+}
 
 prepare() {
-  git clone --recurse-submodules https://github.com/tensorflow/tensorflow -b r0.7
+  cd "$srcdir/tensorflow"
+  git submodule init
+  git config submodule.google/protobuf.url $srcdir/protobuf
+  git submodule update
   mkdir -p "$srcdir/tmp"
 }
 
@@ -40,3 +51,5 @@ package() {
   pip install --ignore-installed --upgrade --root $pkgdir/ $TMP_PKG --no-dependencies
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+# vim:set ts=2 sw=2 et:
