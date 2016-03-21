@@ -2,7 +2,7 @@
 
 pkgname=gopreload-git
 _gitname=gopreload
-pkgver=r30.3f5d2de
+pkgver=r49.ebb83fe
 pkgrel=1
 pkgdesc="Preloads files needed for given programs"
 arch=('any')
@@ -28,10 +28,12 @@ build() {
 
   mv README "usr/share/${_gitname}/"
 
-  cd "usr/share/${_gitname}/mapandlock.source"
+#  cd "usr/share/${_gitname}/mapandlock.source"
+  cd "usr/share/${_gitname}/fmlock.source"
   ./compile.sh && ./install.sh
 
   rm -R  ../mapandlock.source
+  rm -R  ../fmlock.source
 }
 
 package() { 
