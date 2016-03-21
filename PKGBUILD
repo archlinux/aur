@@ -7,7 +7,7 @@
 
 _pkgname=vice
 pkgname=$_pkgname-gnomeui-devel
-pkgver=2.4.25
+pkgver=2.4.26
 pkgrel=1
 pkgdesc='Versatile Commodore Emulator (development release with the Gnome UI)'
 arch=('i686' 'x86_64')
@@ -28,17 +28,15 @@ source=(
   'no-fc-cache-no-lib64.patch'
   'zlib-1.2.7.patch'
   'notexi-notxt.patch'
-  'debugcart.h'
 )
 sha512sums=(
-  '9b28b281ae3ace719bebc5ed2425f1aec84130ab0761987717ade1a220376608fb1001ef9060e3cfcb60e9784507da92065e45804e1aef318dc330bf1696630b'
+  'ede6d47466ff618e21563235e5583a4567c677562c875794803020d7294d180c33a2989caf40ee813921b276a1ffbffaa57239d34f0f2d5e657c485547ec73c8'
   '1433ed9e88f5eab34e53f89201df62c0c3a6aa4b61e6855823bb1ff833886a3058bdfeb9ea79c0f8658c2ec744314638524db6e0194783b4bf04d86824f19cdf'
   'dc96b8658fac1a6f605b8f0052c11a5abb653da4b9deb3401d8b8177b14a664c0b3a5ed9e7c5c3013b0bc18b831045244f2f9187de9ff8b25b90f0b1cfa0cd8a'
   '77260d30312b44a50287cae55d57b5e8bfcee7b693ca87f206affff5bdc5d1717cc9260d4c9372a098c2b83028061222c36061d67559ba05859213cf640a9563'
   'c22cc0816230b83be646e5ef826c83a2e2c15c9f46e4d0f2b4d703b2dfa6e32e611584a6f195517808cc6fc64dd641b3ab2cf353b3b4ed3dd13a38b74f537d85'
   'd37544313037fa75971bab198b37d3824571a3e82d4e87bbe23b01d8a847fcf3f6652a23e4bc58cec6ae43deccc9322db2f77d046641b521f275e368aca940dd'
   '1e59cb6c038e2537e0a01eed6213b6d6a16c0e42dd3967b2653d5ed414ae764dfe227d000dd673d7d0b4590f07197f63d65d81825ae09baf2df36d7f1e409ca0'
-  '923ca57c319b8fcf065f9555d820e9a5fc42367d4b882c3afa8fb221c3cc0f9f32defb15af4b50fb3ecd0037a5dbdc1e1def3adede1688ed90fc0a4a07c9e2b6'
 )
 
 prepare() {
@@ -48,10 +46,6 @@ prepare() {
   patch -Np1 -i ../no-fc-cache-no-lib64.patch
   patch -Np1 -i ../zlib-1.2.7.patch
   patch -Np1 -i ../notexi-notxt.patch
-
-  # Copy missing header file
-  printf '%s ' 'Copy missing header file into the project...'
-  install -Dm644 ../debugcart.h src/c64/cart/debugcart.h
 
   # Convert MS-DOS linebreaks to Unix style ones
   printf '%s ' 'Converting MS-DOS format linebreaks to Unix format...'
