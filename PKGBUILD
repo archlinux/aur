@@ -1,7 +1,7 @@
 # Maintainer: Nuew <archlinux at nuew dot net>
 pkgname=lrs-git
 pkgver=r334.8262295
-pkgrel=3
+pkgrel=4
 pkgdesc="An experimental standard library for rust"
 arch=('x86_64')
 url="https://github.com/lrs-lang"
@@ -28,9 +28,9 @@ prepare() {
     "${srcdir}/rust-nightly-x86_64-unknown-linux-gnu/rustc/lib/rustlib/x86_64-unknown-linux-gnu"
 
   mkdir -p $srcdir/lib/obj/aarch64-lkern-kernel
-  sed -i "s|rustc|${srcdir}/rust-nightly-x86_64-unknown-linux-gnu/rustc/bin/rustc|" \
+  sed -i "s|rustc|${srcdir}/rust-nightly-x86_64-unknown-linux-gnu/rustc/bin/rustc -O|" \
     $srcdir/driver/Makefile $srcdir/lib/make_plugin.sh $srcdir/lib/targets.sh
-  sed -i "s|lrsc|${srcdir}/driver/lrsc|" \
+  sed -i "s|lrsc|${srcdir}/driver/lrsc -O|" \
     $srcdir/lib/Makefile $srcdir/lib/make_libtest.sh
 }
 
