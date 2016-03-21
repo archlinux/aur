@@ -68,9 +68,9 @@ build() {
 
 
 
- ${srcdir}/${_basedir}/configure --prefix=/usr --exec-prefix=/usr/gcc49 \
+ ${srcdir}/${_basedir}/configure --prefix=/usr/gcc49 --exec-prefix=/usr/gcc49 \
       --libdir=/usr/gcc49/lib --libexecdir=/usr/gcc49/lib \
-      --mandir=/usr/share/man --infodir=/usr/share/info \
+      --mandir=/usr/gcc49/share/man --infodir=/usr/gcc49/share/info \
       --with-bugurl=https://bugs.archlinux.org/ \
       --enable-languages=c,c++,lto \
       --enable-shared --enable-threads=posix \
@@ -171,8 +171,8 @@ package_gcc49-alternative-libs-multilib()
 #    make -C $CHOST/$lib DESTDIR=${pkgdir} install-info
 #  done
 
-  rm ${pkgdir}/usr/share/locale/de/LC_MESSAGES/libstdc++.mo
-  rm ${pkgdir}/usr/share/locale/fr/LC_MESSAGES/libstdc++.mo
+#  rm ${pkgdir}/usr/gcc49/share/locale/de/LC_MESSAGES/libstdc++.mo
+#  rm ${pkgdir}/usr/gcc49/share/locale/fr/LC_MESSAGES/libstdc++.mo
 
   # remove stuff in lib32-gcc-libs
   #rm -r ${pkgdir}/usr/lib32
@@ -211,8 +211,8 @@ package_gcc49-alternative-multilib()
   make -C $CHOST/32/libstdc++-v3/include DESTDIR=${pkgdir} install
   make -C $CHOST/32/libstdc++-v3/libsupc++ DESTDIR=${pkgdir} install
 
-  install -d $pkgdir/usr/share/gdb/auto-load/usr/lib
-  mv $pkgdir/usr/gcc49/lib/libstdc++.so.6.*-gdb.py  $pkgdir/usr/share/gdb/auto-load/usr/lib/
+  install -d $pkgdir/usr/gcc49/share/gdb/auto-load/usr/lib
+  mv $pkgdir/usr/gcc49/lib/libstdc++.so.6.*-gdb.py  $pkgdir/usr/gcc49/share/gdb/auto-load/usr/lib/
 
   rm ${pkgdir}/usr/gcc49/lib{,32}/libstdc++.so*
 
@@ -284,17 +284,17 @@ EOF
 
 
 
-  mv ${pkgdir}/usr/share/man/man1/gcc.1 ${pkgdir}/usr/share/man/man1/gcc-4.9.1
-  mv ${pkgdir}/usr/share/man/man1/g++.1 ${pkgdir}/usr/share/man/man1/g++-4.9.1
-  mv ${pkgdir}/usr/share/man/man1/cpp.1 ${pkgdir}/usr/share/man/man1/cpp-4.9.1
-  mv ${pkgdir}/usr/share/man/man1/gcov.1 ${pkgdir}/usr/share/man/man1/gcov-4.9.1
-  mv ${pkgdir}/usr/share/info/cpp.info ${pkgdir}/usr/share/man/man1/cpp-4.9.info
-  mv ${pkgdir}/usr/share/info/gcc.info ${pkgdir}/usr/share/man/man1/gcc-4.9.info
-  mv ${pkgdir}/usr/share/info/cppinternals.info ${pkgdir}/usr/share/man/man1/cppinternals-4.9.info
-  mv ${pkgdir}/usr/share/info/gccinstall.info ${pkgdir}/usr/share/man/man1/gccinstall-4.9.info
-  mv ${pkgdir}/usr/share/info/gccint.info ${pkgdir}/usr/share/man/man1/gccint-4.9.info
+  mv ${pkgdir}/usr/gcc49/share/man/man1/gcc.1 ${pkgdir}/usr/gcc49/share/man/man1/gcc-4.9.1
+  mv ${pkgdir}/usr/gcc49/share/man/man1/g++.1 ${pkgdir}/usr/gcc49/share/man/man1/g++-4.9.1
+  mv ${pkgdir}/usr/gcc49/share/man/man1/cpp.1 ${pkgdir}/usr/gcc49/share/man/man1/cpp-4.9.1
+  mv ${pkgdir}/usr/gcc49/share/man/man1/gcov.1 ${pkgdir}/usr/gcc49/share/man/man1/gcov-4.9.1
+  mv ${pkgdir}/usr/gcc49/share/info/cpp.info ${pkgdir}/usr/gcc49/share/man/man1/cpp-4.9.info
+  mv ${pkgdir}/usr/gcc49/share/info/gcc.info ${pkgdir}/usr/gcc49/share/man/man1/gcc-4.9.info
+  mv ${pkgdir}/usr/gcc49/share/info/cppinternals.info ${pkgdir}/usr/gcc49/share/man/man1/cppinternals-4.9.info
+  mv ${pkgdir}/usr/gcc49/share/info/gccinstall.info ${pkgdir}/usr/gcc49/share/man/man1/gccinstall-4.9.info
+  mv ${pkgdir}/usr/gcc49/share/info/gccint.info ${pkgdir}/usr/gcc49/share/man/man1/gccint-4.9.info
 
-  rm -r ${pkgdir}/usr/share/locale/
+  rm -r ${pkgdir}/usr/gcc49/share/locale/
 
   install -d ${pkgdir}/usr/bin
 
@@ -314,24 +314,24 @@ EOF
 
 
 
-  rm -r ${pkgdir}/usr/include/libiberty
-  rm  ${pkgdir}/usr/share/man/man3/Numeric_arrays.3
-  rm  ${pkgdir}/usr/share/man/man3/Pointer_abstractions.3
-  rm  ${pkgdir}/usr/share/man/man3/SGIextensions.3
-  rm  ${pkgdir}/usr/share/man/man3/__gnu_cxx.3
-  rm  ${pkgdir}/usr/share/man/man3/__gnu_debug.3
-  rm  ${pkgdir}/usr/share/man/man3/__gnu_internal.3
-  rm  ${pkgdir}/usr/share/man/man3/__gnu_parallel.3
-  rm  ${pkgdir}/usr/share/man/man3/__gnu_pbds.3
-#  rm  ${pkgdir}/usr/share/man/man3/random.3
-#  rm  ${pkgdir}/usr/share/man/man3/regex.3
-  rm  ${pkgdir}/usr/share/man/man7/fsf-funding.7
-  rm  ${pkgdir}/usr/share/man/man7/gfdl.7
-  rm  ${pkgdir}/usr/share/man/man7/gpl.7
+#  rm -r ${pkgdir}/usr/gcc49/include/libiberty
+#  rm  ${pkgdir}/usr/gcc49/share/man/man3/Numeric_arrays.3
+#  rm  ${pkgdir}/usr/gcc49/share/man/man3/Pointer_abstractions.3
+#  rm  ${pkgdir}/usr/gcc49/share/man/man3/SGIextensions.3
+#  rm  ${pkgdir}/usr/gcc49/share/man/man3/__gnu_cxx.3
+#  rm  ${pkgdir}/usr/gcc49/share/man/man3/__gnu_debug.3
+#  rm  ${pkgdir}/usr/gcc49/share/man/man3/__gnu_internal.3
+#  rm  ${pkgdir}/usr/gcc49/share/man/man3/__gnu_parallel.3
+#  rm  ${pkgdir}/usr/gcc49/share/man/man3/__gnu_pbds.3
+#  rm  ${pkgdir}/usr/gcc49/share/man/man3/random.3
+#  rm  ${pkgdir}/usr/gcc49/share/man/man3/regex.3
+#  rm  ${pkgdir}/usr/gcc49/share/man/man7/fsf-funding.7
+#  rm  ${pkgdir}/usr/gcc49/share/man/man7/gfdl.7
+#  rm  ${pkgdir}/usr/gcc49/share/man/man7/gpl.7
 
   # Install Runtime Library Exception
-  install -d ${pkgdir}/usr/share/licenses/gcc-multilib/
-#  ln -s ../gcc-libs-multilib/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/share/licenses/gcc-multilib/
+  install -d ${pkgdir}/usr/gcc49/share/licenses/gcc-multilib/
+#  ln -s ../gcc-libs-multilib/RUNTIME.LIBRARY.EXCEPTION ${pkgdir}/usr/gcc49/share/licenses/gcc-multilib/
 }
 
 
