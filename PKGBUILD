@@ -2,7 +2,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust2-git
-pkgver=6851.845ebda
+pkgver=7052.ab323b4
 pkgrel=1
 pkgdesc="The latest development version of Faust featuring additional backends for LLVM, C, Java, JavaScript etc."
 arch=('i686' 'x86_64')
