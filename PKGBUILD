@@ -2,9 +2,9 @@
 
 pkgname=makepkg-optimize
 pkgver=1
-pkgrel=4
+pkgrel=5
 pkgdesc='Additional package optimization routines for makepkg'
-arch=('x86_64')
+arch=('i686' 'x86_64')
 license=('GPL')
 url='https://projects.archlinux.org/pacman.git/'
 depends=('pacman' 'upx' 'optipng' 'nodejs-svgo')
@@ -26,18 +26,20 @@ sha512sums=('67fb9359cd5dc52413ad2ca7e91b445826d7cf6b7ad3db0d2b3845310ab0bdfc41c
             'dd609146c46b36bf3b9d7ed81935b64708cc5a37210f39e54162c603f1cae2bc9d8110dec92d61939c63245549b0a4548b17a15f9746abdd64faa65421288a2e'
             'b35f66b48912b1904c54205ea70e83a526790bb6e1424c4a2a4f11637f41fe6800effeb179284a3c73031fe2496ab5245e39e31d7e2eb400287b531d0ba89c97'
             '6df2ac2133f72ac2f3533fa9e3cc9337849dd5afbba2fd66b5d4d8b0b65a892c04771ceb6407eac357755fef87ac940d7848ccad915c387e465ad46b1ed496a3'
-            '1a147b4fdeaed571d6714af5443649e1f92512ef12bf3f66f77a13aa221318eff959f3c2fcbab4cb4196ebbf4ce33f8e6998f9bde0131b3c3b8a53f367dda31f')
+            '201b66c83bf45f4d8c7e2c2464276731f4ae27b768746d77e60e5b81bf489c81386197241454d104d705ee14cec95a1ab0e5a920dbcf96e34c35795864193607')
 
 prepare() {
   # Use the user's currently installed versions of both
   #cp /usr/bin/makepkg ./makepkg-optimize
   #cp /etc/makepkg.conf ./makepkg-optimize.conf
 
+
   # Replace with above after pacman update
   mkdir $pkgname
   cd $pkgname
   cp ../makepkg makepkg-optimize
   cp ../makepkg.conf makepkg-optimize.conf
+  sed -i "s|@ARCH@|"$(uname -m)"|g;s|@HOST@|"$(uname -m)\-$(uname -i)\-$OSTYPE"|g"  makepkg-optimize.conf
 
   # Separate config file
   patch -Np0 < ../opticonf.patch
@@ -60,7 +62,7 @@ package() {
   #Uncomment once dropped from pacman.
   #install -m755 ../optipng.sh $pkgdir/usr/share/makepkg/tidy/optipng.sh
   #install -m755 ../upx.sh $pkgdir/usr/share/makepkg/tidy/upx.sh
-  #install -m755 ../upx.sh $pkgdir/usr/share/makepkg/tidy/svgo.sh
+  install -m755 ../svgo.sh $pkgdir/usr/share/makepkg/tidy/svgo.sh
   mkdir -p $pkgdir/etc/
   install -m644 makepkg-optimize.conf $pkgdir/etc/
 }
