@@ -100,13 +100,14 @@ Build and Test
 If you'd like to try out changes to the package, these commands offer a start:
 
 ````
-rm -rf pkg src *.xz *.gz && makepkg -f
+rm -rf pkg src *.xz *.zip && makepkg -f
 namcap -m *.xz
 sudo pacman -U *.xz
 sudo systemctl daemon-reload
 sudo systemctl start ibcontroller@fdemo.service
 sudo systemctl status ibcontroller@fdemo.service
 sudo systemctl stop ibcontroller@fdemo.service
-rm -f *.gz && mksrcinfo
-burp -c daemons *.gz
+mksrcinfo
+git add
+git push
 ````
