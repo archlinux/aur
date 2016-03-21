@@ -1,0 +1,21 @@
+pkgbase = ros-jade-realtime-tools
+	pkgdesc = ROS - Some basic robot controllers for use with robot_controllers_interface.
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-rospy
+	depends = ros-jade-catkin
+	depends = ros-jade-roscpp
+	depends = ros-jade-rospy
+	source = realtime_tools::git+https://github.com/ros-controls/realtime_tools.git#tag=1.9.1
+	md5sums = SKIP
+
+pkgname = ros-jade-realtime-tools
+
