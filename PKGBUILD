@@ -2,8 +2,8 @@
 # Contributor: Jörg Hansen (joerg dot hansen at gmx dot net)
 
 pkgname=eventlircd
-_gitrev=8245391b53d03865049074d4227f2904b3984f4c
-pkgver=r43.8245391
+_gitrev=7faaf9d98c892d32b2b8c320ee5d77373749ad41
+pkgver=r54.7faaf9d
 pkgrel=1
 pkgdesc="A GNU/Linux daemon for simplifying udev based hotplugging of remote control devices."
 arch=('i686' 'x86_64')
@@ -22,11 +22,6 @@ sha256sums=('SKIP'
 pkgver() {
   cd $pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd $pkgname
-  sed -i 's/\s\-Werror//' configure.ac
 }
 
 build() {
