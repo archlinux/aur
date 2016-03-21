@@ -10,12 +10,16 @@
  #-- debug:      Add debugging flags as specified in DEBUG_* variables
  #
  OPTIONS=(strip docs !libtool !staticlibs emptydirs zipman purge !optipng !upx !debug)
-@@ -126,6 +129,8 @@
+@@ -126,6 +129,12 @@
  DOC_DIRS=(usr/{,local/}{,share/}{doc,gtk-doc} opt/*/{doc,gtk-doc})
  #-- Files to be removed from all packages (if purge is specified)
  PURGE_TARGETS=(usr/{,share}/info/dir .packlist *.pod)
 +#-- Compression parameters for UPX
 +UPXFLAGS="--ultra-brute"
++#-- Compression parameters for optiPNG
++OPTIPNGFLAGS=" -o7 -zm1-9"
++#-- Compression parameters for SVGO
++SVGOFLAGS="--multipass"
  
  #########################################################################
  # PACKAGE OUTPUT
