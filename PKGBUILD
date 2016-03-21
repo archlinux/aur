@@ -1,12 +1,14 @@
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Maintainer: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
+# Contributor: Simon Legner <Simon.Legner@gmail.com>
 pkgname=bazel-git
-pkgver=r2293.ab4abc4
+pkgver=r4663.9bc5c34
 pkgrel=1
 pkgdesc="Correct, reproducible, and fast builds for everyone"
 arch=('i686' 'x86_64')
 url="http://bazel.io/"
 license=('Apache')
 depends=('java-environment=8' 'libarchive' 'zip' 'unzip')
+provides=('bazel')
 makedepends=('git' 'protobuf')
 install=bazel.install
 options=('!strip')
