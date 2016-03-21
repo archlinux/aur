@@ -16,7 +16,7 @@ Sphinx>=1.1.3,<1.3
 guzzle_sphinx_theme>=0.7.10,<0.8
 
 #requirements.txt
-tox==1.4
+tox>=2.3.1,<3.0.0
 python-dateutil>=2.1,<3.0.0
 nose==1.3.0
 mock==1.3.0
@@ -43,7 +43,7 @@ set -u
 _pyver="python"
 _pybase='botocore'
 pkgname="${_pyver}-${_pybase}-git"
-pkgver=1.4.4.r2743.g4ad5e7b
+pkgver=1.4.5.r2749.g7384364
 pkgrel=1
 pkgdesc='A low-level interface to a number of Amazon Web Services. This is the foundation for the AWS CLI as well as boto3'
 arch=('any')
@@ -53,8 +53,8 @@ _pydepends=( # See setup.py, README.rst, and requirements.txt for version depend
   "${_pyver}-bcdoc<0.15.0"    # AUR
   "${_pyver}-wheel>=0.24.0"   # AUR ==
   "${_pyver}-jmespath"{'>=0.7.1','<1.0.0'} # AUR == is possible for repositories. Makes upgrades impossible in AUR.
-  "${_pyver}-tox>=1.4"        # COM == is possible because this is from a repository. Unfortunatley Arch isn"t the primary dev environment for botocore/aws so our packages are likely to be newer.
-  "${_pyver}-dateutil"{">=2.1","<3.0.0"} # COM
+  "${_pyver}-tox"{'>=2.3.1','<3.0.0'}      # COM == is possible because this is from a repository. Unfortunatley Arch isn"t the primary dev environment for botocore/aws so our packages are likely to be newer.
+  "${_pyver}-dateutil"{">=2.1","<3.0.0"}   # COM
   "${_pyver}-nose>=1.3.0"     # COM ==
   "${_pyver}-mock>=1.3.0"     # COM ==
   "${_pyver}-docutils>=0.10"  # COM
@@ -68,7 +68,7 @@ depends=("${_pyver}" "${_pydepends[@]}")
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 options=('!strip')
 source=("${_pybase}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('3f03cfcb1244537b703e74e1cb97cd227d791de3fd8d7f88657e7de58f89b4f9')
+sha256sums=('d56072da33eb8558f992f3f762d8b1c798ad097c5e09559249a008fcb8736880')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   _srcdir="${_pybase}"
