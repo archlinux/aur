@@ -1,27 +1,22 @@
-# Maintainer: TingPing <tingping@tingping.se>
+# Maintainer: Tom Richards <tom@tomrichards.net>
+# Contributor: TingPing <tingping@tingping.se>
 
 pkgname=retro-gtk
-pkgver=0.4
-pkgrel=3
+pkgver=0.6
+pkgrel=1
 pkgdesc='Toolkit to write Gtk+ 3 based libretro frontends'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url='https://github.com/Kekun/retro-gtk'
-depends=('gtk3' 'retro-gobject' 'libpulse' 'clutter-gtk')
-makedepends=('intltool' 'libtool' 'gobject-introspection')
-source=("https://github.com/Kekun/retro-gtk/releases/download/${pkgver}/retro-gtk-${pkgver}-fixed.tar.gz")
-sha256sums=('9b3d25490972278ed95cbd9913aaaea6450747aab42c0c89720748f34c9a4b7f')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-
-	sed -i 's/jsk-0.1//' retro-gtk/retro-gtk-0.4.deps
-}
+depends=('cairo' 'clutter-gtk' 'glib2' 'gtk3' 'libpulse' 'retro-gobject')
+makedepends=('cairo' 'clutter-gtk' 'gobject-introspection' 'glib2' 'gtk3' 'intltool' 'libtool' 'libpulse' 'retro-gobject' 'vala')
+source=("https://github.com/Kekun/retro-gtk/archive/${pkgver}.tar.gz")
+sha256sums=('c6c75c2077016162293d590ba31eb72884e41f446f6d75d0c1052feabe0a15e6')
 
 build() {
 	cd "$pkgname-$pkgver"
 
-	./configure --prefix=/usr --enable-introspection
+	./autogen.sh --prefix=/usr --enable-introspection
 	make
 }
 
