@@ -1,0 +1,18 @@
+pkgbase = kevin-git
+	pkgdesc = Kevin-CI: a simple-stupid self-hosted continuous integration service
+	pkgver = v0.2.r0.gf978fbd
+	pkgrel = 1
+	url = https://github.com/SFTtech/kevin
+	arch = any
+	license = AGPL3
+	makedepends = git
+	depends = python
+	depends = python-requests
+	depends = python-tornado
+	provides = kevin
+	conflicts = kevin
+	source = kevin::git+https://github.com/SFTtech/kevin
+	sha256sums = SKIP
+
+pkgname = kevin-git
+
