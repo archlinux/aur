@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ktorrent-git
-pkgver=5.0.0.r2208.dd8732e
+pkgver=5.0.0.r2234.19da8bf
 pkgrel=1
 pkgdesc="A powerful BitTorrent client. (GIT version)"
 arch=('i686' 'x86_64')
@@ -21,6 +21,7 @@ makedepends=('extra-cmake-modules'
              'geoip'
              'plasma-workspace'
              'kdnssd'
+             'kross'
              )
 optdepends=('taglib: for mediaplayer plugin'
             'geoip: for infowidget plugin'
@@ -48,7 +49,7 @@ build() {
   cmake ../ktorrent \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF \
     -DWITH_SYSTEM_GEOIP=ON
