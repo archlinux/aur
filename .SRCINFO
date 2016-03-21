@@ -1,14 +1,14 @@
 pkgbase = flmsg
 	pkgdesc = Forms management editor for Amateur Radio standard message formats
-	pkgver = 2.0.12
+	pkgver = 2.0.15
 	pkgrel = 2
 	url = http://www.w1hkj.com/flmsg-help/index.html
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = fldigi
-	source = http://downloads.sourceforge.net/project/fldigi/flmsg/flmsg-2.0.12.tar.gz
-	md5sums = e1e52679332f7bacdf5fcd4dd5cee8f5
+	source = http://downloads.sourceforge.net/project/fldigi/flmsg/flmsg-2.0.15.tar.gz
+	md5sums = c28483b0694833fde01afa7b9b699558
 
 pkgname = flmsg
 
