@@ -2,10 +2,10 @@
 
 _pkgname=farbfeld
 pkgname=${_pkgname}-git
-pkgver=r80.9320489
+pkgver=2.r6.g265ded6
 pkgver() {
-	cd ${_pkgname}
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "${_pkgname}"
+	 git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 pkgrel=1
 pkgdesc="conversion tools for the suckless image format"
@@ -16,7 +16,6 @@ depends=('libjpeg-turbo' 'libpng')
 makedepends=('git')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
-epoch=1
 source=("$_pkgname::git+http://git.suckless.org/${_pkgname}")
 sha512sums=('SKIP')
 
