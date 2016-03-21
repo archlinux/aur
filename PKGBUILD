@@ -2,7 +2,7 @@
 
 _pkgname=syncthing
 pkgname=$_pkgname-discosrv
-pkgver=20151201.r58.d770b46
+pkgver=20160318.r63.b4c36ae
 pkgrel=1
 pkgdesc='Discover server for the syncthing P2P synchronization utility'
 url='http://syncthing.net'
@@ -11,7 +11,6 @@ install=$pkgname.install
 depends=('glibc')
 makedepends=('git' 'go' 'godep' 'mercurial')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
-_gourl=
 
 source=(
   'git+https://github.com/syncthing/discosrv.git'
