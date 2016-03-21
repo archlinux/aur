@@ -1,0 +1,19 @@
+pkgbase = ros-jade-hardware-interface
+	pkgdesc = ROS - Some basic robot controllers for use with robot_controllers_interface.
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-roscpp
+	depends = ros-jade-catkin
+	depends = ros-jade-roscpp
+	source = hardware-interface/hardware_interface::git+https://github.com/ros-controls/ros_control.git#tag=0.10.0
+	md5sums = SKIP
+
+pkgname = ros-jade-hardware-interface
+
