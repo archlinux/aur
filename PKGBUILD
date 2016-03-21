@@ -2,37 +2,36 @@
 # Maintainer: Balló György <ballogyor+arch at gmail dot com>
 
 pkgname=mate-tweak
-pkgver=3.5.7
-_umsver=16.04.3
-_umsver2=16.04.2
+pkgver=3.5.8
+_umsver=16.04.4
 pkgrel=1
 pkgdesc="Tweak tool for MATE, a fork of mintDesktop"
 arch=('any')
 url="https://bitbucket.org/ubuntu-mate/mate-tweak"
 license=('GPL')
 depends=('gtk3' 'libnotify' 'mate-applets' 'python-configobj' 'python-gobject' 'python-psutil')
-makedepends=('git' 'python-distutils-extra' 'python-setuptools')
+makedepends=('python-distutils-extra' 'python-setuptools')
 optdepends=('gnome-main-menu: for openSUSE panel layout'
             'mate-applet-dock: for Mutiny panel layout'
             'mate-menu: to enable advanced menu'
             'plank: for Cupertino panel layout'
             'topmenu-gtk: for Mutiny panel layout')
-source=("$pkgname-$pkgver::git+https://bitbucket.org/ubuntu-mate/$pkgname.git#tag=$pkgver"
+source=("$pkgname-$pkgver.tar.gz::https://bitbucket.org/ubuntu-mate/$pkgname/get/$pkgver.tar.gz"
         "https://launchpad.net/ubuntu/+archive/primary/+files/ubuntu-mate-settings_$_umsver.tar.xz"
         "fix-mutiny-fresh.patch")
-md5sums=('SKIP'
-         '97fa25906e39bcd09114e79b6f462f76'
-         'e389460b0f34dc6da6622830efa05273')
+sha256sums=('3d3f73704439378702801fc0b7f2c68fc29131e822209c20d81aa934037e38dc'
+            '7d45f72f3bd0adc1200a3feccdc7593890eb4439fc4df43fc3577cb79ce42cb9'
+            'ac2ade84a532486c50245a176d370f0815330f13df07fd62e133afe0383db5fc')
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd ubuntu-mate-$pkgname-*
   sed -i 's|/usr/lib/mate-applets/topmenu-mate-panel-applet|/usr/lib/topmenu-gtk/topmenu-mate-panel-applet|' mate-tweak
-  cd ../ubuntu-mate-settings-$_umsver2
+  cd ../ubuntu-mate-settings-*
   patch -Np1 -i ../fix-mutiny-fresh.patch
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd ubuntu-mate-$pkgname-*
   python3 setup.py install --root="$pkgdir" --optimize=1
-  cp -r "$srcdir/ubuntu-mate-settings-$_umsver2/usr/share/mate-panel" "$pkgdir/usr/share"
+  cp -r "$srcdir"/ubuntu-mate-settings-*/usr/share/mate-panel "$pkgdir/usr/share"
 }
