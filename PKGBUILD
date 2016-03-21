@@ -1,6 +1,6 @@
 pkgbase=swift-development
 pkgname=(swift-development swift-lldb-development)
-_swiftver=DEVELOPMENT-SNAPSHOT-2016-03-01-a
+_swiftver=DEVELOPMENT-SNAPSHOT-2016-03-16-a
 pkgver=${_swiftver//-/.}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger - latest development snapshot"
@@ -28,16 +28,16 @@ source=(
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "swift-no-docs.patch"
 )
-sha256sums=('8af4d4a1eed2084520a5b320668e0ba328068f12b3751f880869442b2cbdb313'
-            '8640340e20a1367a28b8457b38cbd3d036d6f714f7ceaf872b073078eb984280'
-            '10242a391a0aad00982310cceb17b523e631e1e4c6ddd415839d4dde0f6dcd39'
-            'dc12005b49b9702d994c5bcc3ce8dbd08762857d86ded7c3780ae391507261ea'
-            'a9c787264b58c00c335b242deb6ef9939510282295cf805315ac11c8b43cb6ef'
-            'b7379613e079679e5ee1fc023badf659041ec9630fed4827fdec80316584c9a3'
-            '26e9ad151bcf8d73c52f16b64e11e20ce18e6a6f410590915393c84c97aaabd1'
-            'cd42bc7c9d72a2f6212d265066a890135ff7225322fc078f8ed0eba4214a0fee'
-            'fc269fd6b47067af45809a5c7a116f334bf04f2ef2849dff3ae1ab7ea8dd197e'
-            '7fe7045f04e8fd442b9536fa3dff7dad36a7d1e08a5ad36abbf97015ba1fdf1b'
+sha256sums=('9fee69b57f4a49c3f5f29a8bc58e48e155c984733e56b0fdafab101be0c93fe2'
+            '2b4bb6cd370f701db94ba1d2ec156a360203be88f0091343d6eaefa33448c3c6'
+            'aa41e96c4035110ab8399dbee38ccf577aa5379a746d33c9c8e9ed74df100915'
+            'f9481851db1b01f4206691957e0484c721fc3d641120ce9519b4da5c853a07c7'
+            '32e8f86400af44db4e217767555e2724f50f861b41ea23a90ff276792c116f75'
+            'c146c9475e646de3bc9644a951c3067440b352fe8d23de59e9d8793e13c6c224'
+            '5833e69d4d158949a9b4986eced73806e10d597ebb5db8549ba3c7962d6f3c32'
+            '65e3ef58877c8bbec926177a6d7ce790de98cf76cabb808a46a735e6945554d6'
+            '2ef008a1fd32b9d1c34eb242c7a13569e1f2e83ef127a964260b1cfcee6f82e3'
+            '5bd49df6c4b852b0300b2343d086497a563a5b977ffa4c7f20ce5fffdafd7dfc'
             '1a8663c48a1a203d1825ae62a7e4191e4980a2dad461d4d88152221ad9e2171d')
 
 prepare() {
