@@ -15,7 +15,7 @@
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.79085.g48bda6c
+pkgver=N.79100.g8f66a2d
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -69,15 +69,17 @@ prepare() {
 build() {
 	cd "${srcdir}/${pkgname}"
 	
-	# Add cuda to the build if architecture is x86_64 (cuda is x86_64 only)
+	# Add x86_64 depends and optdepends to the build if architecture is x86_64
 	if [ "$CARCH" = "x86_64" ]; then
 	    _cuda="--enable-cuda"
 	    _cudainc="-I/opt/cuda/include"
 	    _cudalib="-L/opt/cuda/lib64"
+	    _intelsdklib="-Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
 	else
 	    _cuda=""
 	    _cudainc=""
 	    _cudalib=""
+	    _intelsdklib=""
 	fi
 	
 	msg2 "Running ffmpeg configure script. Please wait..."
@@ -88,7 +90,7 @@ build() {
 	                        ${_cudainc} \
 	                        -I/usr/lib/jvm/java-8-openjdk/include \
 	                        -I/usr/lib/jvm/java-8-openjdk/include/linux" \
-	        --extra-ldflags="${_cudalib} -Wl,-rpath -Wl,/opt/intel/mediasdk/lib64" \
+	        --extra-ldflags="${_cudalib} ${_intelsdklib}" \
 	        \
 	        --enable-rpath \
 	        --enable-gpl \
