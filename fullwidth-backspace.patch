@@ -1,0 +1,37 @@
+--- a/tmux-2.1/screen-write.c	2016-03-22 01:39:12.909169226 +0800
++++ b/tmux-2.1/screen-write.c	2016-03-22 01:39:57.147655122 +0800
+@@ -18,8 +18,11 @@
+ 
+ #include <sys/types.h>
+ 
++#include <assert.h>
++#include <fcntl.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <unistd.h>
+ 
+ #include "tmux.h"
+ 
+@@ -488,8 +491,20 @@
+ 			s->cy--;
+ 			s->cx = screen_size_x(s) - 1;
+ 		}
+-	} else
+-		s->cx--;
++	} else {
++		struct termios tio;
++                int fd = open(ctx->wp->tty, O_RDONLY);
++		assert(tcgetattr(fd, &tio) == 0);
++                close(fd);
++		if (tio.c_lflag & ICANON && tio.c_iflag & IUTF8) {
++			gl = &s->grid->linedata[s->grid->hsize + s->cy];
++			if (s->cx >= 2 && grid_cell_width(&gl->celldata[s->cx-2]) == 2)
++				s->cx -= 2;
++			else
++				s->cx--;
++		} else
++				s->cx--;
++	}
+ }
+ 
+ /* VT100 alignment test. */
