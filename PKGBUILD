@@ -10,7 +10,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.0
-pkgrel=6
+pkgrel=7
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -31,6 +31,7 @@ depends_x86_64=('cuda')
 makedepends=('hardening-wrapper' 'libvdpau' 'nvidia-sdk' 'yasm')
 optdepends=('avxsynth-git: for Avisynth support'
             'chromaprint-fftw: for chromaprint which uses fftw for FFT calculations')
+optdepends_x86_64=('intel-media-sdk: for Intel QSV support (Experimental! See PKGBUILD of that package for additional info)')
 conflicts=('ffmpeg' 'ffmpeg-full' 'ffmpeg-git' 'ffmpeg-full-git' 'ffmpeg-full-extra')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
@@ -45,22 +46,24 @@ sha256sums=('f19ff77a2f7f736a41dd1499eef4784bf3cb7461f07c13a268164823590113c0'
 build() {
   cd $_pkgbasename-$pkgver
 
-  # Add cuda to the build if architecture is x86_64 (cuda is x86_64 only)
+  # Add x86_64 (opt)depends to the build
   if [ "$CARCH" = "x86_64" ]; then
       _cuda="--enable-cuda"
       _cudainc="-I/opt/cuda/include"
       _cudalib="-L/opt/cuda/lib64"
+      _intelsdklib="-Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
   else
       _cuda=""
       _cudainc=""
       _cudalib=""
+     _intelsdklib=""
   fi
 
   msg "Starting configure..."
   ./configure \
     --prefix=/usr \
     --extra-cflags="-I/usr/include/nvidia-sdk" \
-    --extra-ldflags="-Wl,-rpath -Wl," \
+    --extra-ldflags="${_intelsdklib}" \
     \
     --enable-rpath \
     --enable-gpl \
