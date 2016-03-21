@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Porn Time
+Comment=Watch porn movies instantly
+Exec=porntime %U
+Icon=porntime
+MimeType=application/x-bittorrent;x-scheme-handler/magnet;
+Terminal=false
+Type=Application
+Categories=AudioVideo;Video;Network;Player;P2P;
