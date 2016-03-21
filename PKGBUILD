@@ -1,7 +1,7 @@
 # Maintainer: Damien Guihal <dguihal@gmail.com>
 pkgname=soapui
 pkgver=5.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical Java program for inspecting, invoking, monitoring, simulating/mocking and functional/load/compliance/surveillance testing of REST/WADL and SOAP/WSDL-based Web Services over HTTP."
 arch=('i686' 'x86_64')
 url="http://www.soapui.org/"
@@ -43,6 +43,8 @@ package() {
   sed -i -e "s/#SOAPUIVER#/${pkgver}/" ${pkgdir}/usr/bin/soapui
   
   chmod 0755 ${pkgdir}/usr/share/soapui/bin/soapui.sh
+  chmod 0755 ${pkgdir}/usr/share/soapui/wsi-test-tools/analyzerV10.sh
+  chmod 0755 ${pkgdir}/usr/share/soapui/wsi-test-tools/analyzerV11.sh
   cd ${pkgdir}/usr/share/soapui
   ln -sf bin/starter-page.html .
 }
