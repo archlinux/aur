@@ -1,0 +1,20 @@
+pkgbase = gr-dvbt-git
+	pkgdesc = Opensource implementation of DVB-T encoder/decoder according to ETSI 300 744 using gnuradio
+	pkgver = r464.58165b9
+	pkgrel = 1
+	url = https://github.com/BogdanDIA/gr-dvbt
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	depends = gnuradio
+	depends = python2
+	provides = gr-dvbt
+	conflicts = gr-dvbt
+	source = git+http://github.com/BogdanDIA/gr-dvbt
+	md5sums = SKIP
+
+pkgname = gr-dvbt-git
+
