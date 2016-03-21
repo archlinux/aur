@@ -4,12 +4,12 @@
 
 pkgname=polkit-consolekit
 pkgver=0.113
-pkgrel=2
+pkgrel=3
 pkgdesc="PolicyKit with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
 license=('LGPL')
 url="http://www.freedesktop.org/wiki/Software/polkit"
-depends=('glib2' 'pam' 'expat' 'js185')
+depends=('glib2' 'pam' 'expat' 'js')
 makedepends=('intltool' 'gtk-doc' 'gobject-introspection')
 provides=("polkit=$pkgver")
 conflicts=('polkit')
