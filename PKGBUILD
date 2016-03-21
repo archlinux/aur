@@ -4,42 +4,45 @@
 
 pkgname=byzanz
 pkgver=0.3.0.1
-pkgrel=1
+_gitrev=81235d235d12c9687897f7fc6ec0de1feaed6623
+pkgrel=2
 pkgdesc="Record what's happening on your desktop"
 arch=('i686' 'x86_64')
-url="http://git.gnome.org/browse/byzanz/"
+url="http://git.gnome.org/browse/byzanz"
 license=('GPL')
 depends=('gtk3' 'gst-plugins-base' 'gst-plugins-good')
-makedepends=('git' 'gnome-common' 'gnome-panel' 'intltool')
+makedepends=('gnome-common' 'gnome-panel' 'intltool')
 optdepends=('gnome-panel: panel applet'
             'gst-libav: save into FLV format')
 install=$pkgname.install
-source=(git://git.gnome.org/byzanz#commit=78fb3de3
+source=(https://git.gnome.org/browse/byzanz/snapshot/$pkgname-$_gitrev.tar.xz
         0001-Port-to-libpanel-applet-5.patch
         flv-audio.patch)
-md5sums=('SKIP'
-         '39e44b82a042a07349997f5847e780ee'
-         '1150232a7a49cf3748b8b7fe8a90fae1')
+sha256sums=('05709c980b876df015b16e22d0299630708d09ec94c319e5dbceee4bfcf6ae0e'
+            'abebbc8116294a8a2a2a43fc9389e075a1d4b0a88731be224e6532daa6ca3577'
+            'e45e15f9c52f9bd72e5f362f0494ebee65e1d2c99ea5b0ca446547c11d6ab4d2')
 
 prepare() {
-  cd $pkgname
+  cd $pkgname-$_gitrev
 
   # Port to libpanel-applet 5
   patch -Np1 -i ../0001-Port-to-libpanel-applet-5.patch
 
   # Fix flv audio
   patch -Np1 -i ../flv-audio.patch
+
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $pkgname
-  export CFLAGS="$CFLAGS -Wno-error"
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/$pkgname \
-               --disable-schemas-compile
+  cd $pkgname-$_gitrev
+  CFLAGS+=" -Wno-error"
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/$pkgname \
+              --disable-schemas-compile
   make
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname-$_gitrev
   make DESTDIR="$pkgdir" install
 }
