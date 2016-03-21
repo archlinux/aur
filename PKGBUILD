@@ -52,7 +52,7 @@ _pyverother='python'
 fi
 pkgver=1.10.14
 # Generally when this version changes, the version of botocore also changes
-pkgrel=1
+pkgrel=2
 pkgdesc='Universal Command Line Interface for Amazon Web Services awscli'
 arch=('any')
 url="https://github.com/aws/${_pybase}"
@@ -60,10 +60,8 @@ license=('Apache') # Apache License 2.0
 _pydepends=( # See setup.py, README.rst, and requirements.txt for version dependencies
   "${_pyver}-bcdoc"           # AUR
   "${_pyver}-botocore>=1.4.5" # AUR == would make upgrades from AUR impossible. See below.
-  #"${_pyver}-colorama"{">=0.2.5","<=0.3.3"}   # COM
-  "${_pyver}-colorama>=0.2.5"   # COM requested by phw
-  #"${_pyver}-rsa-3.1.2"{">=3.1.2","<=3.3.0"} # AUR
-  "${_pyver}-rsa"{'>=3.2','<=3.3.0'}        # COM
+  "${_pyver}-colorama>=0.2.5" #,"<=0.3.3"}   # COM requested by phw
+  "${_pyver}-rsa>=3.2" # ','<=3.3.0'}        # COM requested by supermario & jsteel
   "${_pyver}-s3transfer>=0.0.1" # AUR
 
   ### These are from python-botocore
