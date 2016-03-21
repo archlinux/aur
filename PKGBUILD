@@ -5,7 +5,7 @@
 # https://github.com/michaellass/AUR
 
 pkgname=openafs
-pkgver=1.6.16
+pkgver=1.6.17
 pkgrel=1
 pkgdesc="Open source implementation of the AFS distributed file system"
 arch=('i686' 'x86_64' 'armv7h')
@@ -27,11 +27,11 @@ source=(http://openafs.org/dl/${pkgver}/${pkgname}-${pkgver}-src.tar.bz2
         0002-Add-configure-option-to-not-install-kauth.patch
         0003-Do-not-install-kauth-manpages-when-kauth-is-disabled.patch
         tmpfiles.d-openafs.conf)
-sha256sums=('3431702bdcbd1b27833060c50869e618a192495877ebb0a66e4610de0b48eb81'
-            '4916a5e155a4419186dd166e5eff4f30881399e81a255f7d3f43942a0b5bbcba'
-            '96840e24b136c686b251f04a42ddf9ae496d69cdb4179adea3651e2c15a1c445'
-            'ca443f1c0e4e4eb2498f28754ef5820c036b86f0766c6732eeb2c4eba9676132'
-            '07cad93b33ac232105103b7e1edaa92df3e03e34b07e385821463f62d3658ef8'
+sha256sums=('96413a2dbffdc9170cc5dde6aa5ad0ae2383c6106994285ed8f186928813a398'
+            '803e895f9a5dc4c74866e8de20e07a8b7b972ee48b1603fab215b49116117921'
+            'b6184308e873b3ba1269c032591c83833422b47c55b4fa2a765ec8aae5475c59'
+            '8adb2f8a29a1b88500618a635a0164a5e3bc16edfb55ac40ed3b3047ec56262b'
+            '92fb869dd3a1a1280b11585b8538eef3ed00b93070c42f99c86c8be6e730f36e'
             '5ef549180d1ac4e9530b65df7ddbdc1eceac6d6d6398fb2f32b06e96c1d9b5f0')
 
 # If you need the kauth tools set this to 1. But be aware that these tools
