@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Encoding=UTF-8
+Name=Horseshoes
+GenericName=Audio based game of horseshoes
+Comment=Audio based game of horseshoes
+Path=/opt/horseshoes
+Exec=horseshoes
+Terminal=false
+StartupNotify=true
+Categories=Application;Game;ArcadeGame

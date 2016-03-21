@@ -1,0 +1,14 @@
+update()
+{
+gtk-update-icon-cache /usr/share/icons/hicolor
+}
+
+post_install()
+{
+update
+}
+
+post_remove()
+{
+update
+}
