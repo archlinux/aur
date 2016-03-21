@@ -1,6 +1,6 @@
 pkgbase = xorg-server-dev
 	pkgver = 1.18.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://xorg.freedesktop.org
 	arch = i686
 	arch = x86_64
