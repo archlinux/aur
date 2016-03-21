@@ -1,8 +1,8 @@
 pkgbase = ros-jade-controller-manager-msgs
-	pkgdesc = ROS - Some basic robot controllers for use with robot_controllers_interface.
+	pkgdesc = Generic and simple controls framework for ROS
 	pkgver = 0.10.0
 	pkgrel = 1
-	url = http://www.ros.org/
+	url = http://wiki.ros.org/ros_control
 	arch = any
 	license = BSD
 	makedepends = cmake
