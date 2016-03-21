@@ -2,7 +2,7 @@
 # Tue Jan 26 10:11:39 UTC 2016
 pkgbase = gopreload-git
 	pkgdesc = Preloads files needed for given programs
-	pkgver = r30.3f5d2de
+	pkgver = r49.ebb83fe
 	pkgrel = 1
 	url = http://forums.gentoo.org/viewtopic-t-622085-highlight-preload.html
 	install = gopreload.install
