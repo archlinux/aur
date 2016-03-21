@@ -1,7 +1,7 @@
 # Maintainer: oi_wtf <brainpower at mailbox dot org>
 
 pkgname=dosbox-daum
-pkgver=20150103
+pkgver=20150125
 pkgrel=1
 pkgdesc="Emulator with builtin DOS for running DOS Games (Daum version)"
 arch=('i686' 'x86_64')
@@ -14,8 +14,7 @@ makedepends=('dos2unix' 'gendesk' 'mesa')
 provides=("dosbox")
 conflicts=("dosbox")
 
-source=('https://www.dropbox.com/s/lf4yo4sqc3fl9kv/source.7z'
-        #'http://ykhwong.x-y.net/downloads/dosbox/patch/source.7z'
+source=("source-${pkgver}.7z::http://ykhwong.x-y.net/downloads/dosbox/patch/source.7z"
         '0001-fix_missing_stdlib_include.patch'
         '0002-fix_gcc_51_stumbling_over_lambda.patch'
         '0003-intel-tbb-needs-new-cpp-std-and-ld-lookup.patch'
@@ -48,9 +47,9 @@ prepare(){
 
 	patch -p0 -i "$srcdir"/0005-fix-MIN.patch
 
-	gendesk --pkgname "dosbox" --pkgdesc "$pkgdesc"
+	gendesk -f --pkgname "dosbox" --pkgdesc "$pkgdesc"
 
-	mkdir include/GL
+	mkdir -p include/GL
 	cp /usr/include/GL/gl.h include/GL/gl.h
 	sed -i 's/ifndef GL_ARB_multitexture/if 0/g' include/GL/gl.h
 }
