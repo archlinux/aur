@@ -1,21 +1,21 @@
 # Maintainer: Jake <ja.ke@posteo.de>
 pkgname=script-communicator
-_fullname=ScriptCommunicator_04_03_source
-pkgver=4.03
+_fullname=ScriptCommunicator_04_08_source
+pkgver=4.08
 pkgrel=1
 pkgdesc="Scriptable terminal with Serial/TCP/UDP/SPI/CAN support"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/scriptcommunicator/"
 license=('GPL3')
 depends=('qt5-script' 'qt5-serialport')
-makedepends=('qt5-tools' 'dos2unix')
+makedepends=('qt5-tools' 'dos2unix' 'icoutils')
 
 source=("http://sourceforge.net/projects/scriptcommunicator/files/Source/${_fullname}.zip" 
 	"qmake.patch"
 	"$pkgname.desktop")
-md5sums=('c124c95110988c7a870b35ef43a5bddd'
+md5sums=('7a1b304ac45004cb57a19e50ab02982d'
          'efe580480b123884895d7aadad495921'
-         'f1b6721b942570e9f5349acbef5992b0')
+         '2178766b1e5dcccffe29d666625d111a')
 
 
 prepare() {
@@ -33,7 +33,9 @@ build() {
 
 package() {
 	install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
-	cd "${_fullname}"
+	cd "${_fullname}"	
+	
+	icotool -x images/main.ico -i 1 -o images/main.png
 	install -Dm644 "images/main.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
 	
 	mkdir -p "$pkgdir/opt/$pkgname"
