@@ -2,7 +2,7 @@
 
 pkgname=gohufont-powerline
 _gitname=$pkgname
-pkgver=0.1.r2.g1243b5b
+pkgver=0.2
 pkgrel=1
 depends=()
 makedepends=('xorg-bdftopcf')
