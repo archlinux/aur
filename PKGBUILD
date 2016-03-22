@@ -1,8 +1,8 @@
-# Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgbase=python-frozendict
 pkgname=(python2-frozendict)
-pkgver=0.4
+pkgver=0.6
 pkgrel=1
 pkgdesc='An immutable dictionary'
 license=('MIT')
@@ -10,7 +10,7 @@ arch=('any')
 url='https://pypi.python.org/pypi/frozendict/'
 makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/f/frozendict/frozendict-${pkgver}.tar.gz")
-md5sums=('1a89e2f6c42997358dcaa6bbbeac0819')
+md5sums=('d8d6c488b81987356f674fb1c9a68ebb')
 
 build() {
 	cd "frozendict-$pkgver"
