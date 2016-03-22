@@ -1,7 +1,7 @@
 # Maintainer: Bart De Vries <devriesb@gmail.com>
 
 pkgname=snapcast
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Synchronous multi-room audio player"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -22,7 +22,7 @@ changelog=
 source=("https://github.com/badaix/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}-systemd.patch")
 noextract=()
-md5sums=('ee13041c5e8a9b84fc00b03ba4d713cf'
+md5sums=('9954a155b1634be79dc906da5666d8e7'
          '156ea081ab151786ca8e508636f07f45')
 validpgpkeys=()
 
