@@ -2,7 +2,7 @@
 
 pkgbase=python-matrix-angular-sdk-git
 pkgname=('python2-matrix-angular-sdk-git')
-pkgver=0.6.7.r5.gb01743c
+pkgver=0.6.8.r0.g84b0b64
 pkgrel=1
 pkgdesc="AngularJS services for implementing the Client-Server API on Matrix"
 license=('Apache')
