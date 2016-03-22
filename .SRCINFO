@@ -1,0 +1,26 @@
+pkgbase = ros-jade-gazebo-ros-control
+	pkgdesc = ROS - Interface for using ROS with the Gazebo simulator.
+	pkgver = 2.5.2
+	pkgrel = 1
+	url = http://gazebosim.org/tutorials?cat=connect_ros
+	arch = any
+	license = BSD,LGPL,Apache 2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	depends = ros-jade-angles
+	depends = ros-jade-control-toolbox
+	depends = ros-jade-controller-manager
+	depends = ros-jade-gazebo-ros
+	depends = ros-jade-hardware-interface
+	depends = ros-jade-joint-limits-interface
+	depends = ros-jade-pluginlib
+	depends = ros-jade-roscpp
+	depends = ros-jade-std-msgs
+	depends = ros-jade-transmission-interface
+	depends = ros-jade-urdf
+	source = ros-jade-gazebo-ros-control-2.5.2-0.tar.gz::https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/jade/gazebo_ros_control/2.5.2-0.tar.gz
+	md5sums = df6b8615c57e1045a247dec1d518c9cd
+
+pkgname = ros-jade-gazebo-ros-control
+
