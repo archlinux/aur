@@ -3,15 +3,15 @@
 # Contributer: Alex Ogier <alex.ogier@gmail.com>
 pkgname=ruby-build
 pkgver=20160228
-pkgrel=2
+pkgrel=3
 _file="${pkgname}-v${pkgver}.tar.gz"
 pkgdesc="Compile and install Ruby"
 arch=('any')
-url="${_file}::https://github.com/sstephenson/ruby-build"
+url="${_file}::https://github.com/rbenv/ruby-build"
 license=('MIT')
 depends=('bash')
 optdepends=('git: install ruby from git')
-source=($url/tarball/v$pkgver)
+source=($url/tarball/v$pkgver.tar.gz)
 sha1sums=('51313b557f8bcf161fc615eb33fa0406a8a1b905')
 
 build() {
