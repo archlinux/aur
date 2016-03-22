@@ -50,8 +50,8 @@ build() {
   # gtk gui breaks keymappings at the moment
   ./configure --prefix=/usr --sysconfdir=/etc \
               --python=/usr/bin/python2 --smbd=/usr/bin/smbd \
-              --enable-docs --libexecdir=/usr/lib/qemu \
-              --disable-gtk --enable-linux-aio --enable-seccomp \
+              --disable-docs --libexecdir=/usr/lib/qemu \
+              --disable-gtk --disable-snappy --disable-lzo --enable-linux-aio --enable-seccomp \
               --localstatedir=/var \
               --enable-tpm \
               --enable-modules --enable-curl
