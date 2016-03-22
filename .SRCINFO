@@ -1,23 +1,23 @@
 pkgbase = eclipse-testng
 	pkgdesc = A testing framework inspired from JUnit and NUnit
-	pkgver = 6.8.5
+	pkgver = 6.9.10
 	pkgrel = 1
 	url = http://testng.org/
 	arch = any
 	license = APACHE
-	depends = eclipse>=3.4
-	noextract = artifacts.jar
-	noextract = content.jar
+	depends = eclipse>=4.5.0
 	noextract = features.jar
 	noextract = plugins.jar
-	source = artifacts.jar::http://beust.com/eclipse-old/eclipse-6.8.5.20130517_2211/artifacts.jar
-	source = content.jar::http://beust.com/eclipse-old/eclipse-6.8.5.20130517_2211/content.jar
-	source = features.jar::http://beust.com/eclipse-old/eclipse-6.8.5.20130517_2211/features/org.testng.eclipse_6.8.5.20130517_2211.jar
-	source = plugins.jar::http://beust.com/eclipse-old/eclipse-6.8.5.20130517_2211/plugins/org.testng.eclipse_6.8.5.20130517_2211.jar
-	sha1sums = ca71c805778833145ec9350a4e18ac2b39ac4494
-	sha1sums = 17c2f8110805bc7dc4d741643590c332d5b45c75
-	sha1sums = 84474455723c830f221e473cd478865a23c1dc17
-	sha1sums = 6d7fddc2a0c78250841acecbdfe373feecaae52d
+	noextract = features2.jar
+	noextract = plugins2.jar
+	source = features.jar::http://beust.com/eclipse//features/org.testng.eclipse_6.9.10.201512240000.jar
+	source = plugins.jar::http://beust.com/eclipse//plugins/org.testng.eclipse_6.9.10.201512240000.jar
+	source = features2.jar::http://beust.com/eclipse//features/org.testng.eclipse.maven.feature_6.9.10.201512240000.jar
+	source = plugins2.jar::http://beust.com/eclipse//plugins/org.testng.eclipse.maven_6.9.10.201512240000.jar
+	sha256sums = f66093bbc84fd457dc863b40aafb5c85f874592ca74bedf789c7e1a90f84a11f
+	sha256sums = 7ea3fa3b164d64f50fc459650208bec08d71438e4e27533872e1911a0b0fe3f3
+	sha256sums = ba0ef5a84629946a7ffeab44e97ff9e0a1d0ed17f23821350dab386f7d275f7a
+	sha256sums = fdfb8e6f6a9c5d59215812b0e7cd60f9b3c567ad98f8bb3c0cb054e88900714d
 
 pkgname = eclipse-testng
 
