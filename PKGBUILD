@@ -5,11 +5,11 @@ pkgver=2009.03.07
 pkgrel=3
 install=pt3-drv.install
 pkgdesc="Japanese Driver for Earthsoft PT3 cards"
+groups=('earthsoft')
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('b25')
+depends=('b25' 'recpt1')
 #makedepends=()
-groups=('earthsoft')
 url="http://eco.senritu.net/ubuntu13-10-pt3-epgrec/"
 source=(git+https://github.com/m-tsudo/pt3.git
         thatfix)
