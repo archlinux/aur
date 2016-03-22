@@ -6,9 +6,9 @@
 
 pkgbase=linux-mptcp
 _srcname=mptcp
-_mptcpv=0.90
-pkgver=0.90.487573.41341ce
-pkgrel=2
+_mptcpv=0.91
+pkgver=0.91.525000.c6ba013
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.multipath-tcp.org/"
 license=('GPL2')
@@ -21,8 +21,8 @@ source=("git://github.com/multipath-tcp/mptcp#branch=mptcp_v${_mptcpv}"
         'linux.preset'
         'change-default-console-loglevel.patch')
 md5sums=('SKIP'
-         '9833eaf0d4c476454d3981b62a21506b'
-         'bd42ba55663f7ae8e6aba34e52139ca6'
+         'c4300a2b9efdb107dddcb11dc9a79bf4'
+         'ac8ddda9b061b9191f48ce3dfe89508c'
          'eb14dcfd80c00852ef81ded6e826826a'
          '92562f0a5d8cc0e5972ab58523dbe0a4')
 
@@ -35,9 +35,6 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-
-  # add latest fixes from stable queue, if needed
-  # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
@@ -91,7 +88,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules with Multipath TCP support (based on linux 3.18.26)"
+  pkgdesc="The Linux kernel and modules with Multipath TCP support (based on linux 4.1.20)"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country'
@@ -133,8 +130,6 @@ _package() {
   rm -f "${pkgdir}"/lib/modules/${_kernver}/{source,build}
   # remove the firmware
   rm -rf "${pkgdir}/lib/firmware"
-  # gzip -9 all modules to save 100MB of space
-  find "${pkgdir}" -name '*.ko' -exec gzip -9 {} \;
   # make room for external modules
   ln -s "../extramodules-${_basekernel}${_kernelname:--ARCH}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
   # add real version for building modules and running depmod from post_install/upgrade
