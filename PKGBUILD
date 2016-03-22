@@ -1,6 +1,6 @@
 # Maintainer: Nigel Michki <nigeil@yahoo.com>
 pkgname=sonic-pi-git
-pkgver=v2.9.0.r373.gd11147f
+pkgver=v2.9.0.r375.gea20740
 pkgrel=1
 pkgdesc="A music-centric programming environment, originally built for the raspberry pi."
 arch=('i686' 
@@ -21,11 +21,12 @@ makedepends=('cmake'
         'qt5-tools')
 optdepends=('qjackctl: for graphical jackd spawning/configuration'
 	    'jack2: better jackd if you want to use without gui'
+       'sc3-plugins-git: plugins for supercollider'
 	    'pulseaudio-jack: support for jack2-pulseaudio integration')
 source=('sonic-pi::git+https://github.com/samaaron/sonic-pi.git'
-	'launcher.sh'
-   'sonic-pi-git.png'
-   'sonic-pi-git.desktop')
+	     'launcher.sh'
+        'sonic-pi-git.png'
+        'sonic-pi-git.desktop')
 md5sums=('SKIP'
          '298e2729cda0c33c9cec7f7f721c1bbd'
          'ba86680be610cc3d6f12d4a89b0f434d'
@@ -60,7 +61,7 @@ package() {
   mkdir $pkgdir/opt/
   mkdir $pkgdir/opt/sonic-pi
   cp -R $srcdir/sonic-pi/* $pkgdir/opt/sonic-pi/
-  ln -s $pkgdir/opt/sonic-pi/app/server $pkgdir/opt/sonic-pi/server
+  ln -s -r $pkgdir/opt/sonic-pi/app/server $pkgdir/opt/sonic-pi/server
 #Add a launcher script to /usr/bin
   mkdir $pkgdir/usr
   mkdir $pkgdir/usr/bin
