@@ -3,7 +3,7 @@
 arch=(i686 x86_64)
 pkgname=fnfx
 pkgver=0.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Enables owners of Toshiba laptops to change the LCD brightness, control the internal fan and use the special keys on their keyboard (Fn-x combinations, hotkeys)."
 url="http://fnfx.sourceforge.net/"
 license=('GPL2')
@@ -12,8 +12,8 @@ sha512sums=('62e5c7f6457eabc02b2162cb365fd496982a33b83564d98b16abde54c876ec93273
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc
-  make || return 1
+  ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --bindir=/usr/bin --libdir=/usr/lib --libexecdir=/usr/lib
+  make 
 }
 
 package(){
