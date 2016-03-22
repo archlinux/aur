@@ -1,8 +1,8 @@
 pkgbase = python-themer-git
 	pkgdesc = Themer is a colorscheme generator and manager for your desktop.
 	pkgver = 0.0.0
-	pkgrel = 2
-	url = https://github.com/s0lll0s/themer
+	pkgrel = 3
+	url = https://github.com/s-ol/themer
 	install = themer.install
 	arch = any
 	license = MIT
