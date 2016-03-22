@@ -1,0 +1,22 @@
+pkgbase = ros-jade-control-toolbox
+	pkgdesc = ROS - The control toolbox contains modules that are useful across all controllers.
+	pkgver = 1.13.2
+	pkgrel = 1
+	url = http://wiki.ros.org/control_toolbox
+	arch = any
+	license = BSD,LGPL,Apache 2.0
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-cmake-modules
+	makedepends = ros-jade-roscpp
+	depends = ros-jade-dynamic-reconfigure
+	depends = ros-jade-message-generation
+	depends = ros-jade-message-runtime
+	depends = ros-jade-realtime-tools
+	depends = ros-jade-std-msgs
+	source = ros-jade-control-toolbox-1.13.2.tar.gz::https://github.com/ros-controls/control_toolbox/archive/1.13.2.tar.gz
+	sha256sums = 270f9df4c8f64b629b873ada6dec202c90da24f3060c8e0e337e9e2528c29064
+
+pkgname = ros-jade-control-toolbox
+
