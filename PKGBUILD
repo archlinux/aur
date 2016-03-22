@@ -8,7 +8,7 @@ pkgbase=linux-mptcp
 _srcname=mptcp
 _mptcpv=0.91
 pkgver=0.91.525000.c6ba013
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.multipath-tcp.org/"
 license=('GPL2')
@@ -92,7 +92,8 @@ _package() {
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country'
-              'net-tools-mptcp: for Multipath TCP support in netstat')
+              'net-tools-mptcp: for Multipath TCP support in netstat'
+              'iproute-mptcp: for Multipath TCP support in iproute2')
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
