@@ -23,13 +23,14 @@ _static_build=false
 _build_from_head=false
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 
+# PKGBUILD
+
+pkgrel=3
+_piver=2
+
 _pkgvermajmin="5.7"
 pkgver="${_pkgvermajmin}.0"
 
-pkgrel=2
-
-# PKGBUILD
-_piver=3
 pkgname="qt-sdk-raspberry-pi${_piver}"
 
 if $_static_build; then
