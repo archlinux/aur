@@ -48,7 +48,7 @@ depends=("zarafa-libical>=7.2.0"
          'mariadb')
 makedepends=('gcc<=4.9.2'
              'gcc-libs<=4.9.2'
-             'binutils<=2.25'
+             'binutils<=2.26'
              'pkg-config<=0.29.1')
 optdepends=('zarafa-webaccess'
 	    'zarafa-webapp'
