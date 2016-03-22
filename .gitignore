@@ -6,3 +6,4 @@ pkg
 src
 fcitx-mozc-*.patch
 mozc-*
+jsr305-*

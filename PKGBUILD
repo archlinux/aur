@@ -52,9 +52,9 @@
 ## Mozc compile option
 _bldtype=Release
 
-_zipcode_rel=201511
+_zipcode_rel=201603
 _mozcver=2.17.2315.102
-_utdicver=20160317
+_utdicver=20160419
 _protobuf_rev=172019c40bf548908ab09bfd276074c929d48415
 _gyp_rev=e2e928bacd07fead99a18cb08d64cb24e131d3e5
 _jsoncpp_rev=11086dd6a7eba04289944367ca82cea71299ed70
@@ -68,7 +68,7 @@ pkgname=fcitx-mozc-ut
 pkgdesc="Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)"
 pkgver=${_mozcver}.${_utdicver}
 _fcitx_patchver=2.17.2313.102.1
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
 license=('custom')
@@ -81,10 +81,10 @@ source=(mozc-${_mozcver}::git+https://github.com/google/mozc.git#commit=${_mozc_
         git+https://chromium.googlesource.com/external/gyp#commit=${_gyp_rev}
         git+https://github.com/google/protobuf.git#commit=${_protobuf_rev}
         fontTools::git+https://github.com/googlei18n/fonttools.git#commit=${_fonttools_rev}
-        "x-ken-all-${_zipcode_rel}.zip::http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=naoina&DownloadId=1527310&FileTime=130941443058430000&Build=21031"
-        "edict-${_utdicver}.gz::http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=naoina&DownloadId=1527309&FileTime=130945321365000000&Build=21031"
-        "jigyosyo-${_zipcode_rel}.zip::http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=naoina&DownloadId=1527311&FileTime=130941443059370000&Build=21031"
-        mozcdic-ut-${_utdicver}.tar.bz2::https://osdn.jp/frs/chamber_redir.php?f=%2Fusers%2F10%2F10032%2Fmozcdic-ut-${_utdicver}.tar.bz2
+        "x-ken-all-${_zipcode_rel}.zip::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1563797&FileTime=131055899132200000&Build=21031"
+        "edict-${_utdicver}.gz::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1563799&FileTime=131055899135630000&Build=21031"
+        "jigyosyo-${_zipcode_rel}.zip::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1563798&FileTime=131055899133630000&Build=21031"
+        mozcdic-ut-${_utdicver}.tar.bz2::https://osdn.jp/frs/chamber_redir.php?f=%2Fusers%2F10%2F10777%2Fmozcdic-ut-${_utdicver}.tar.bz2
         EDICT_license.html
         mod-generate-mozc-ut.sh
         http://findbugs.googlecode.com/svn/repos/release-repository/com/google/code/findbugs/jsr305/$_jsr305_ver/jsr305-$_jsr305_ver.jar
@@ -190,12 +190,12 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'bacb68bc64dd62322d332f38babf3c9933bf4a113081d795c8bc7e33a8e8e4e3e47320fd520f522c55830f519337c828c115ddb3275ace3076ebff4480b20805'
-            '35c8c0b283e53f9c249b1a66e668acfe439223cabe4e0ba83fdc5fcc250c53ce2cf9df20f0e74cc66ee670f6684286f316f7dd855620aa14248a74e516366293'
-            '9ebc0565366533ade36c5af19e47165641bb4d75393f87ba971e27d5bed038795731cb7426d769740ebf6cc3b91ca7c1f5cab200ac82097a3f880414a220d166'
-            'fc375df668be82743adb1ced3803008b5324ee426dd5804c7f564d4fb03a4e7de8d8df9af0028ad991319c6f45f1269a614be582005be8f967caa7014de1babb'
+            'faa70a8454cc59aae23f137b7789975e3733f06811056b9132d281ade67c98f93229785fca55aa3ffa1484d4109241c708a084e01173c8ba67cce310e551daa1'
+            '1eda172040227f56c4f4702457d49d14be85dc1b3d0208da04a3ff9b7936a995119d33929159a6f1d06ca09d7a2d7ca08cc485dee8620217199fa350388299fb'
+            '744559bb7ca5159f57cc51f435b6661a4eb3bdaf5c268e4fc05c017e30820091fbb797b894d6072f6d095c03f75fd573e9232d12e3b397800d30901c90f28cd8'
+            '29e36fd857ed34ab27257cc40fd8bd6a666a267b57b5b3037c4ce6f10092999c78000489950758a84cf9a0265c5e4fda9ac388ada651d81e75d5df74d3307195'
             '4899c7ee01e387c7c5c628356a0b32e7ba28643580701b779138361ca657864ec17ae0f38d298d60e44093e52a3dfe37d922f780b791e3bd17fc4f056f22dbbb'
-            '5e014b3238539d4f7887a1086e15baf27f5c32363d5881dffdf5882a24ff1e28b4f2b36614f7c0b7534d92a5313bc900e89de1256f3ed4169960aa32b7bf73dd'
+            '3b8d49eb8f6fff7443de48f10d6af122c08cef89c9ddf33857ba13b294fbad3e727a26067196cd249fe61ab4dd0d9ca8d7f8c64226a7f59580e5bd21e7b208eb'
             'b3b832489ef9249b22d8a0b9d6eee1895c9d93ef53d5968724a65184cb3f04e17cc74938128b98916da7829c6566be0bc6d60fa8801248cc24620730a060eac6'
             'a9a3ca5dba636c84d216a0a3574e5132d0e6ca69e913ccd5f1a1716af238ea34d5100a4b5d42bbd0c12649780b6009f4533e848e86050e51c22dc8859badd615'
             '5507c637e5a65c44ccf6e32118b6d16647ece865171b9a77dd3c78e6790fbd97e6b219e68d2e27750e22074eb536bccf8d553c295d939066b72994b86b2f251a')
