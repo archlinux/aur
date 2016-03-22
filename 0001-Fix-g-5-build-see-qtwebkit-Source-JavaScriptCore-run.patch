@@ -1,0 +1,28 @@
+From 548715948276124472a63343515ff9eb3f01ec28 Mon Sep 17 00:00:00 2001
+From: aur <aur>
+Date: Tue, 10 Nov 2015 17:59:28 +0100
+Subject: [PATCH] Fix g++ >= 5 build, see
+ qtwebkit/Source/JavaScriptCore/runtime/JSObject.cpp
+
+---
+ qtwebkit/Source/JavaScriptCore/runtime/JSObject.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/qtwebkit/Source/JavaScriptCore/runtime/JSObject.cpp b/qtwebkit/Source/JavaScriptCore/runtime/JSObject.cpp
+index e6f95bd..61baed8 100644
+--- a/qtwebkit/Source/JavaScriptCore/runtime/JSObject.cpp
++++ b/qtwebkit/Source/JavaScriptCore/runtime/JSObject.cpp
+@@ -1922,6 +1922,10 @@ void JSObject::putByIndexBeyondVectorLengthWithoutAttributes(ExecState* exec, un
+     }
+ }
+ 
++template void JSObject::putByIndexBeyondVectorLengthWithoutAttributes<Int32Shape>(ExecState* exec, unsigned i, JSValue value);
++template void JSObject::putByIndexBeyondVectorLengthWithoutAttributes<DoubleShape>(ExecState* exec, unsigned i, JSValue value);
++template void JSObject::putByIndexBeyondVectorLengthWithoutAttributes<ContiguousShape>(ExecState* exec, unsigned i, JSValue value);
++
+ void JSObject::putByIndexBeyondVectorLengthWithArrayStorage(ExecState* exec, unsigned i, JSValue value, bool shouldThrow, ArrayStorage* storage)
+ {
+     JSGlobalData& globalData = exec->globalData();
+-- 
+2.6.2
+

@@ -24,7 +24,7 @@ pkgname=('qt51-base'
          'qt51-x11extras'
          'qt51-xmlpatterns')
 pkgver=5.1.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
@@ -37,9 +37,15 @@ makedepends=('libxcb' 'xcb-proto' 'xcb-util' 'xcb-util-image' 'xcb-util-wm' 'xcb
 groups=('qt51')
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
 source=("http://download.qt-project.org/official_releases/qt/5.1/${pkgver}/single/${_pkgfqn}.tar.xz"
-        'assistant-qt51.desktop' 'designer-qt51.desktop' 'linguist-qt51.desktop' 'qdbusviewer-qt51.desktop'
+        'assistant-qt51.desktop'
+        'designer-qt51.desktop'
+        'linguist-qt51.desktop'
+        'qdbusviewer-qt51.desktop'
         'use-python2.patch'
-        'bison3.patch' 'CVE-2013-4549.patch' 'libmng2.patch'
+        'bison3.patch'
+        'CVE-2013-4549.patch'
+        'libmng2.patch'
+        '0001-Fix-g-5-build-see-qtwebkit-Source-JavaScriptCore-run.patch'
         'qt51.PATH')
 md5sums=('697b7b8768ef8895e168366ab6b44760'
          'd6fd35a4858c2519385d13c04985a947'
@@ -50,6 +56,7 @@ md5sums=('697b7b8768ef8895e168366ab6b44760'
          '6b162cd2bc104f0ae83ca039401be7bf'
          'e59ba552e12408dcc9486cdbb1f233e3'
          '478647fa057d190a7d789cf78995167b'
+         '27b294a3b24eae2c001f85961133eadb'
          '28f4755e54ba1df5a89d60a73f6d1a9e')
 
 prepare() {
@@ -74,6 +81,9 @@ prepare() {
 
   cd ../qtimageformats
   patch -p1 -i "${srcdir}"/libmng2.patch
+
+  cd ..
+  patch -p1 -i "${srcdir}"/0001-Fix-g-5-build-see-qtwebkit-Source-JavaScriptCore-run.patch
 }
 
 build() {
@@ -87,7 +97,7 @@ build() {
     -prefix /opt/$pkgbase \
     -plugin-sql-{psql,mysql,sqlite,odbc,ibase} \
     -system-sqlite \
-    -openssl-linked \
+    --no-openssl \
     -nomake examples \
     -no-rpath \
     -optimized-qmake \
