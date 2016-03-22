@@ -3,7 +3,7 @@
 # Please report issues at https://github.com/jojosch/pkgbuilds
 
 pkgname=php-box
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="An application for building and managing Phars"
 url="https://github.com/box-project/box2"
@@ -13,12 +13,15 @@ depends=("php>=5.3.3")
 install="${pkgname}.install"
 source=(
   "https://github.com/box-project/box2/releases/download/${pkgver}/box-${pkgver}.phar"
+  "https://github.com/box-project/box2/releases/download/${pkgver}/box-${pkgver}.phar.sig"
   "https://raw.github.com/box-project/box2/${pkgver}/LICENSE"
 )
 sha256sums=(
-  "62d708f343e1a48cca8d373a4c3a7aa10379b19db19e8ba58a3125834c4d175b"
+  "a8228cfd115691a3a1608450989ccbadc9cd94f931917a8b9ff17d25a10a76e9"
+  "SKIP"
   "ba2dfc30b9659262549c839894838d9a1fe78ca533d0338cebc2f4f634b3bb12"
 )
+validpgpkeys=("32E4B74757B1D65234FC389F293D771241515FE8")
 
 package() {
   install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
