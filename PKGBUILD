@@ -1,8 +1,8 @@
-# Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgbase=python-matrix-angular-sdk
 pkgname=('python2-matrix-angular-sdk')
-pkgver=0.6.7
+pkgver=0.6.8
 pkgrel=1
 pkgdesc="AngularJS services for implementing the Client-Server API on Matrix"
 license=('Apache')
@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/matrix-org/matrix-angular-sdk"
 makedepends=('python2-setuptools')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/matrix-org/matrix-angular-sdk/archive/v${pkgver}.tar.gz")
-md5sums=('3dc5aaa49cf4fbbe672ab43182c7280c')
+md5sums=('9cf2dd16d1fd34dc24c64a7efcdb2efd')
 
 build() {
 	cd "matrix-angular-sdk-$pkgver"
