@@ -1,0 +1,12 @@
+pkgbase = optiprime
+	pkgdesc = Primusrun with vblank_mode=0 parameter (vsync disabled, higher framerate, no mouse lag).
+	pkgver = 1
+	pkgrel = 2
+	url = http://askubuntu.com/questions/297596/vblank-mode-0-primusrun-in-application-desktop-file
+	arch = any
+	provides = optiprime
+	source = optiprime
+	md5sums = e2ae018cba879eac3b52baef0b3700c6
+
+pkgname = optiprime
+
