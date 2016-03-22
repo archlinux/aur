@@ -1,7 +1,7 @@
 pkgbase = monogame-git
 	pkgdesc = Open Source implementation of the Microsoft XNA 4 Framework.
 	pkgver = 3.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.monogame.net/
 	arch = any
 	groups = any
@@ -10,7 +10,6 @@ pkgbase = monogame-git
 	makedepends = nvidia-texture-tools
 	makedepends = dos2unix
 	makedepends = monodevelop
-	makedepends = sharpfonts
 	makedepends = assimp-net
 	depends = freeimage
 	depends = ffmpeg
