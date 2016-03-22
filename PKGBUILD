@@ -90,6 +90,13 @@ fi
 
 #end sanity check
 
+# callbacks
+finish() {
+    cd ${startdir}
+    git checkout qpi.install
+}
+trap finish EXIT
+
 if $_static_build || $_skip_web_engine || [[ ${_piver} = "1" ]] || [[ ${_piver} = "3" ]]; then
   _device_configure_flags="$_device_configure_flags -skip qtwebengine -no-icu"
 fi
