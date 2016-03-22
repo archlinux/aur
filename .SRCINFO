@@ -1,0 +1,22 @@
+pkgbase = ros-jade-transmission-interface
+	pkgdesc = ROS - Generic and simple controls framework
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = http://wiki.ros.org/ros_control
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-roscpp
+	makedepends = ros-jade-cmake-modules
+	depends = ros-jade-catkin
+	depends = ros-jade-hardware-interface
+	depends = ros-jade-pluginlib
+	depends = ros-jade-resource-retriever
+	source = transmission_interface/transmission_interface::git+https://github.com/ros-controls/ros_control.git#tag=0.10.0
+	md5sums = SKIP
+
+pkgname = ros-jade-transmission-interface
+
