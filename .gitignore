@@ -1,5 +1,5 @@
-keratin-git-*.src.tar.gz
-keratin-git-*.pkg.tar.xz
-keratin/
-src/
-pkg/
+*
+!PKGBUILD
+!.SRCINFO
+!*.install
+!.gitignore

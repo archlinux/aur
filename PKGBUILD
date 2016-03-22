@@ -2,16 +2,16 @@
 
 pkgname=keratin-git
 _gitname=keratin
-pkgver=1.0.0.r20.g9f96e94
+pkgver=1.0.0.r19.gf7e558b
 pkgrel=1
-pkgdesc='a fork of clipmenu, a simple clipboard manager using dmenu and xsel/xclip'
-url='https://github.com/llybin/keratin'
+pkgdesc='A fork of clipmenu, a simple clipboard manager using dmenu and xsel/xclip'
+url='https://github.com/WammKD/keratin'
 arch=('any')
 license=('ISC')
 depends=('dmenu' 'xsel')
 
-source=(git+https://github.com/llybin/keratin.git)
-md5sums=(SKIP)
+source=(git+https://github.com/WammKD/keratin.git)
+md5sums=('SKIP')
 
 pkgver() {
     cd "${_gitname}"
