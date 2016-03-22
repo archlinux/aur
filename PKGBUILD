@@ -16,7 +16,6 @@ makedepends=('pixman' 'glib2'
              'gnutls' 'util-linux' 'curl' 'libsasl'
              'libcap-ng' 'libaio' 'libseccomp'
              'python2'
-             'lzo' 'snappy'
              'dtc' 'git' 'texi2html' 'perl')
 source=(git://git.qemu.org/qemu.git
         qemu.sysusers
@@ -61,7 +60,7 @@ build() {
 
 package() {
   pkgdesc='A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation. Minimal Git version.'
-  depends=('pixman' 'gnutls' 'lzo' 'snappy' 'dtc')
+  depends=('pixman' 'gnutls' 'dtc')
   optdepends=('ovmf: Tianocore UEFI firmware for qemu'
               'samba: SMB/CIFS server support'
               'qemu-arch-extra-git: extra architectures support'
