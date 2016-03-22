@@ -1,7 +1,7 @@
 pkgbase = vncdesk-git
 	pkgdesc = Runs applications via VNC. Useful for scaling on high DPI (HiDPI) screens.
 	pkgver = 1.1.0.r0.ga0b4396
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/feklee/vncdesk
 	arch = any
 	license = custom:WTFPL
