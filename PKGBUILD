@@ -1,9 +1,9 @@
-# Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgbase=python-pynacl
 pkgname=($pkgbase python2-pynacl)
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Python binding to the Networking and Cryptography (NaCl) library'
 license=('Apache')
 arch=('i686' 'x86_64')
@@ -19,6 +19,8 @@ prepare() {
 }
 
 build() {
+	export SODIUM_INSTALL=system
+
 	cd "$srcdir/PyNaCl-$pkgver"
 	python setup.py build
 
@@ -27,6 +29,8 @@ build() {
 }
 
 package_python-pynacl() {
+	export SODIUM_INSTALL=system
+
 	depends+=('python' 'python-six')
 
 	cd "PyNaCl-$pkgver"
@@ -34,6 +38,8 @@ package_python-pynacl() {
 }
 
 package_python2-pynacl() {
+	export SODIUM_INSTALL=system
+
 	depends+=('python2' 'python2-six')
 
 	cd "PyNaCl-$pkgver-python2"
