@@ -1,8 +1,8 @@
-# Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgbase=python-setuptools_trial
 pkgname=('python2-setuptools_trial')
-pkgver=0.5.12
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Setuptools plugin that makes unit tests execute with trial instead of pyunit"
 arch=('any')
@@ -10,7 +10,7 @@ license=('SPL')
 url="http://pypi.python.org/pypi/setuptools_trial"
 makedepends=('python2-setuptools' 'python2-twisted')
 source=("http://pypi.python.org/packages/source/s/setuptools_trial/setuptools_trial-${pkgver}.tar.gz")
-md5sums=('f16f4237c9ee483a0cd13208849d96ad')
+md5sums=('bca42190adf631b213846c2b33f3676f')
 
 build() {
 	cd "${srcdir}/setuptools_trial-${pkgver}"
