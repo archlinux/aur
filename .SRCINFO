@@ -1,6 +1,6 @@
 pkgbase = factorio
 	pkgdesc = A 2D game about building and maintaining factories.
-	pkgver = 0.12.26
+	pkgver = 0.12.28
 	pkgrel = 1
 	url = http://www.factorio.com/
 	arch = i686
