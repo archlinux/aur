@@ -1,0 +1,11 @@
+post_install() {
+    echo "The easiest way to start the two-finger daemon is by running:"
+    echo "    twofing --wait /dev/input/xxx"
+    echo "where /dev/input/xxx refers to the multitouch input device."
+}
+
+post_upgrade() {
+    echo "The easiest way to start the two-finger daemon is by running:"
+    echo "    twofing --wait /dev/input/xxx"
+    echo "where /dev/input/xxx refers to the multitouch input device."
+}
