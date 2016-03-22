@@ -8,7 +8,7 @@ pkgbase=linux-mptcp
 _srcname=mptcp
 _mptcpv=0.91
 pkgver=0.91.525000.c6ba013
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.multipath-tcp.org/"
 license=('GPL2')
@@ -21,8 +21,8 @@ source=("git://github.com/multipath-tcp/mptcp#branch=mptcp_v${_mptcpv}"
         'linux.preset'
         'change-default-console-loglevel.patch')
 md5sums=('SKIP'
-         'c4300a2b9efdb107dddcb11dc9a79bf4'
-         'ac8ddda9b061b9191f48ce3dfe89508c'
+         '2bee4eac2d886588394301fa45e5b273'
+         '5a205fb97e8eff2856def5cdd8779978'
          'eb14dcfd80c00852ef81ded6e826826a'
          '92562f0a5d8cc0e5972ab58523dbe0a4')
 
