@@ -7,11 +7,11 @@ pkgrel=2
 pkgdesc="Runs applications via VNC. Useful for scaling on high DPI (HiDPI) screens."
 arch=('any')
 url="https://github.com/feklee/vncdesk"
-license='custom:WTFPL'
+license=('custom:WTFPL')
 depends=('tigervnc' 'gtk-vnc' 'python' 'python-gobject')
 makedepends=('git' 'python-setuptools')
-source='git://github.com/feklee/vncdesk'
-md5sums='SKIP'
+source=('git://github.com/feklee/vncdesk')
+md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/$_gitname"
