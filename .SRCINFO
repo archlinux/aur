@@ -3,7 +3,7 @@
 pkgbase = libsepol
 	pkgdesc = SELinux binary policy manipulation library
 	pkgver = 2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://userspace.selinuxproject.org
 	arch = i686
 	arch = x86_64
@@ -12,11 +12,13 @@ pkgbase = libsepol
 	license = GPL
 	makedepends = flex
 	depends = glibc
-	provides = selinux-usr-libsepol=2.5-1
+	provides = selinux-usr-libsepol=2.5-2
 	conflicts = selinux-usr-libsepol
 	options = staticlibs
 	source = https://raw.githubusercontent.com/wiki/SELinuxProject/selinux/files/releases/20160223/libsepol-2.5.tar.gz
+	source = 0001-libsepol-cil-fix-bug-when-resetting-class-permission.patch
 	sha256sums = 2bdeec56d0a08b082b93b40703b4b3329cc5562152f7254d8f6ef6b56afe850a
+	sha256sums = 5928a0feee0495d830b612175a6c57f7fc867306f04d022ba816bdee4606cfea
 
 pkgname = libsepol
 
