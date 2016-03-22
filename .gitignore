@@ -1,0 +1,6 @@
+pkg
+src
+rover/
+*.tar.gz
+*.pkg.tar
+*.pkg.tar.xz
