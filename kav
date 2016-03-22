@@ -1,6 +1,6 @@
 #!/bin/bash
 xhost +local:
-mount --bind /run/media/ /opt/kav/rootfs/discs/D:
+mount --bind / /opt/kav/rootfs/discs/D:
 cat /opt/kav/rootfs/etc/bash/bashrc | sed 's/^export\ DISPLAY.*/export\ DISPLAY='$DISPLAY'/g' > /opt/kav/root/etc/bash/bashrc
 systemd-nspawn -D /opt/kav/rootfs --bind /tmp/.X11-unix:/tmp/.X11-unix --machine=kav
 umount /opt/kav/rootfs/discs/D:
