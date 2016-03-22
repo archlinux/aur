@@ -1,0 +1,68 @@
+diff --git a/gdrivefs/config/__init__.py b/gdrivefs/config/__init__.py
+index f8c4749..3646db3 100644
+--- a/gdrivefs/config/__init__.py
++++ b/gdrivefs/config/__init__.py
+@@ -1,4 +1,5 @@
+ import os
+ 
+ IS_DEBUG = bool(int(os.environ.get('GD_DEBUG', '0')))
++NO_THREADS = bool(int(os.environ.get('GD_NOTHREADS', '1')))
+ DO_LOG_FUSE_MESSAGES = bool(int(os.environ.get('GD_DO_LOG_FUSE_MESSAGES', '0')))
+diff --git a/gdrivefs/resources/README.rst b/gdrivefs/resources/README.rst
+index 6e25a7c..f7400d2 100644
+--- a/gdrivefs/resources/README.rst
++++ b/gdrivefs/resources/README.rst
+@@ -225,6 +225,20 @@ Just set the `GD_DEBUG` environment variable to "1"::
+        flags=0x00000011
+ 
+ 
++Multi-threading FUSE
++====================
++
++It used to be that GDFS mounting used FUSE with no threads, only when running in
++debugging-mode, and actually if not in debugging-mode, FUSE was always used
++with threads.
++
++Currently, using FUSE with threads corrupts data reads, once mounted.  Then now
++multi-threading is decoupled from debugging-mode, and by default set to no threads.
++
++To enable threads back when mounting GDFS, just set the `GD_NOTHREADS` environment
++variable to "0" (1 by default).
++
++
+ Troubleshooting Steps
+ =====================
+ 
+diff --git a/gdrivefs/resources/scripts/gdfs b/gdrivefs/resources/scripts/gdfs
+index b001787..a8673ff 100755
+--- a/gdrivefs/resources/scripts/gdfs
++++ b/gdrivefs/resources/scripts/gdfs
+@@ -40,7 +40,7 @@ def main():
+         auth_storage_filepath=args.auth_storage_file, 
+         mountpoint=args.mountpoint, 
+         debug=gdrivefs.config.IS_DEBUG, 
+-        nothreads=gdrivefs.config.IS_DEBUG, 
++        nothreads=gdrivefs.config.NO_THREADS, 
+         option_string=option_string)
+ 
+ if __name__ == '__main__':
+diff --git a/gdrivefs/resources/scripts/gdfstool b/gdrivefs/resources/scripts/gdfstool
+index da2820e..52aaf66 100755
+--- a/gdrivefs/resources/scripts/gdfstool
++++ b/gdrivefs/resources/scripts/gdfstool
+@@ -68,7 +68,7 @@ def _handle_mountpoint(args):
+         auth_storage_filepath=args.auth_storage_file, 
+         mountpoint=args.mountpoint, 
+         debug=gdrivefs.config.IS_DEBUG, 
+-        nothreads=gdrivefs.config.IS_DEBUG, 
++        nothreads=gdrivefs.config.NO_THREADS, 
+         option_string=option_string)
+ 
+ def main():
+@@ -122,4 +122,4 @@ def main():
+         raise Exception("Invalid option.")
+ 
+ if __name__ == '__main__':
+-    main()
+\ No newline at end of file
++    main()

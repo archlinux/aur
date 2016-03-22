@@ -1,0 +1,24 @@
+diff -Naur GDriveFS-0.14.3-orig/gdrivefs/gdfs/opened_file.py GDriveFS-0.14.3/gdrivefs/gdfs/opened_file.py
+--- GDriveFS-0.14.3-orig/gdrivefs/gdfs/opened_file.py	2016-03-20 20:40:04.593869779 -0600
++++ GDriveFS-0.14.3/gdrivefs/gdfs/opened_file.py	2016-03-20 20:40:55.907851581 -0600
+@@ -197,7 +197,7 @@
+         self.__is_loaded = False
+         self.__is_dirty = False
+ 
+-        temp_filename = self.__entry_id.encode('ASCII')
++        temp_filename = self.__entry_id.encode('utf8')
+         om = get_om()
+         self.__temp_filepath = os.path.join(om.temp_path, temp_filename)
+ 
+diff -Naur GDriveFS-0.14.3-orig/gdrivefs/gdtool/normal_entry.py GDriveFS-0.14.3/gdrivefs/gdtool/normal_entry.py
+--- GDriveFS-0.14.3-orig/gdrivefs/gdtool/normal_entry.py	2016-03-20 20:40:04.593869779 -0600
++++ GDriveFS-0.14.3/gdrivefs/gdtool/normal_entry.py	2016-03-20 20:41:27.672855022 -0600
+@@ -213,7 +213,7 @@
+             return data
+ 
+     def get_data(self):
+-            original = dict([(key.encode('ASCII'), value) 
++            original = dict([(key.encode('utf8'), value) 
+                                 for key, value 
+                                 in self.__raw_data.iteritems()])
+ 
