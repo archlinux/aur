@@ -1,0 +1,15 @@
+--- pt1-c44e16dbb0e2/arib25/src/Makefile	2009-11-18 13:12:44.000000000 +0900
++++ pt1-c44e16dbb0e2/arib25/src/Makefile.new	2012-09-07 01:21:53.183970444 +0900
+@@ -38,11 +38,10 @@
+ 	$(CC) -MM $(OBJS:.o=.c) $(CPPFLAGS) > $@
+ 
+ install: $(TARGET) install-headers
+-	install -m755 b25 $(PREFIX)/bin
++	install -m755 b25 $(PREFIX)/bin/b25
+ 	install -m755 $(TARGET_LIB) $(PREFIX)/lib/$(TARGET_LIB).$(VER)
+ 	ln -sf $(PREFIX)/lib/$(TARGET_LIB).$(VER) $(PREFIX)/lib/$(TARGET_LIB).$(MAJOR)
+ 	ln -sf $(PREFIX)/lib/$(TARGET_LIB).$(MAJOR) $(PREFIX)/lib/$(TARGET_LIB)
+-	ldconfig
+ 
+ install-headers:
+ 	mkdir -p $(DEST_HEADER)
