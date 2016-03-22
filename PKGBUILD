@@ -2,7 +2,7 @@
 
 pkgname=twelf
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An implementation of the logical framework LF'
 url='http://twelf.org/'
 license=('BSD')
@@ -22,6 +22,10 @@ build() {
 
 package() {
   cd "$pkgname"
+  cat > ./bin/twelf-server <<EOF
+#!/bin/sh
+exec "sml" @SMLload="/opt/twelf/bin/.heap/twelf-server.x86-linux" @SMLdebug=/dev/null
+EOF
   install -d -m755 $pkgdir/opt/twelf $pkgdir/usr/bin
   cp -r . $pkgdir/opt/twelf
   ln -s /opt/twelf/bin/twelf-server $pkgdir/usr/bin/twelf-server
