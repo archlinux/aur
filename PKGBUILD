@@ -7,7 +7,7 @@ pkgdesc="a swiss-army knife for multimedia streaming, notably used for netradios
 arch=('i686' 'x86_64')
 url="http://savonet.sourceforge.net/"
 license=('GPL')
-depends=('faad2' 'ffmpeg' 'gavl' 'gd' 'giflib' 'gst-plugins-base-libs' 'libao' 'libfdk-aac' 'liblo' 'libmad' 'libxpm' 
+depends=('faad2' 'ffmpeg2.8' 'gavl' 'gd' 'giflib' 'gst-plugins-base-libs' 'libao' 'libfdk-aac' 'liblo' 'libmad' 'libxpm' 
 'ocaml-camomile' 'portaudio' 'sdl_image' 'sdl_ttf' 'soundtouch' 'taglib')
 makedepends=('dssi' 'frei0r-plugins' 'ladspa' 'libxml-perl' 'ocaml-gd4o' 'ocaml-ocamlsdl' 'ocaml-pcre' 'ocaml-xmlm' 'ocaml-yojson' 'perl-xml-dom')
 source=(https://github.com/savonet/$pkgname/releases/download/$pkgver/$pkgname-$pkgver-full.tar.bz2
