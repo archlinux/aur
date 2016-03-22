@@ -59,7 +59,31 @@ cd "$srcdir/$pkgname/build"
 
 #TODO: detect arch to make this work on x86 automatically
 #for now change this manually on 32 bit systems
-cd "${srcdir}/cubicsdr-git/build/x64"
+
+
+
+#DONE
+
+
+#get architecture using uname
+#arch="$(uname -m)"
+
+
+#if arch is x86_64 set to 64 bits, otherwise set to 32 bits
+#if [ "$arch" = "x86_64" ]; then
+#	bits="x64"
+#else
+#	bits="x86"
+
+
+#fi
+
+
+
+
+
+
+cd "${srcdir}/cubicsdr-git/build/x*"
 
 	install -Dm755 CubicSDR "${pkgdir}/usr/share/cubicsdr/cubicsdr"
 
