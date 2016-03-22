@@ -5,12 +5,12 @@
 #
 pkgname="utext"
 pkgver="0.3.9"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="An application to work with markdown files."
 arch=('i686' 'x86_64')
 url="http://www.atareao.es/tag/utext/"
 license=('GPL3')
-depends=('gobject-introspection' 'python' 'shared-mime-info' 'python-beautifulsoup4' 'python-jinja' 'python-markdown' 'python-requests' 'wkhtmltopdf')
+depends=('gobject-introspection' 'gtkspell3' 'gvfs' 'imagemagick' 'python' 'shared-mime-info' 'python-beautifulsoup4' 'python-jinja' 'python-markdown' 'python-requests' 'wkhtmltopdf')
 makedepends=('python2-distutils-extra' 'python2-polib')
 provides=("${pkgname}")
 source=("https://launchpad.net/~atareao/+archive/ubuntu/${pkgname}/+files/${pkgname}_${pkgver}-0extras15.04.0.tar.xz")
