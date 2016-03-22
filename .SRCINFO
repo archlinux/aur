@@ -1,12 +1,11 @@
 pkgbase = libreoffice-extension-vrt-network-equipment
 	pkgdesc = This extension provides galleries of network equipment shapes for LibreOffice, designed in a similar style to those offered by Microsoft Visio®.
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.vrt.com.au/downloads/vrt-network-equipment
 	arch = any
 	groups = libreoffice-extensions
 	license = CC-by-sa-v3
-	makedepends = unzip
 	depends = libreoffice
 	noextract = vrtnetworkequipment_1-2-0-lo.oxt
 	source = http://extensions.libreoffice.org/extension-center/vrt-network-equipment/releases/1.2.0/vrtnetworkequipment_1-2-0-lo.oxt
