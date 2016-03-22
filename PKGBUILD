@@ -1,7 +1,7 @@
 # Maintainer: Andrew Stubbs <andrew.stubbs@gmail.com>
 pkgname=mimic-git
 pkgver=r28.8e28e5b
-pkgrel=1
+pkgrel=2
 pkgdesc="Text-to-speech voice synthesis from the Mycroft project."
 arch=(x86_64 i686)
 url="https://mimic.mycroft.ai/"
@@ -33,6 +33,10 @@ pkgver() {
 }
 
 build() {
+	# mimic does not support building with BUILDDIR set
+	# (yaourt does this)
+	unset BUILDDIR
+
 	cd "$srcdir/${pkgname%-git}"
 	#./configure --prefix=/usr --with-audio=pulseaudio
 	./configure --prefix=/usr --with-audio=alsa
