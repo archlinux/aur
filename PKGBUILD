@@ -1,7 +1,6 @@
 # Maintainer: xpt <user.xpt@gmail.com>
-
 pkgname=kodi-addon-quasar
-pkgver=0.9.32
+pkgver=0.9.33
 pkgrel=1
 pkgdesc='Quasar is an torrent finding and streaming engine for Kodi (fork of Pulsar add-on)'
 classname=plugin.video.quasar
@@ -21,11 +20,11 @@ source_armv7h=("https://github.com/scakemyer/plugin.video.quasar/releases/downlo
 source_i686=("https://github.com/scakemyer/plugin.video.quasar/releases/download/v${pkgver}/plugin.video.quasar-${pkgver}.linux_x64.zip")
 source_x86_64=("https://github.com/scakemyer/plugin.video.quasar/releases/download/v${pkgver}/plugin.video.quasar-${pkgver}.linux_x86.zip")
 
-md5sums_arm=('73ce191de2b6d33071352fa21801fb8a')
-md5sums_armv6h=('73ce191de2b6d33071352fa21801fb8a')
-md5sums_armv7h=('a9ee51fb6f1cd67eef6ae82509497837')
-md5sums_i686=('45a59bf1d5ae06ee3b69412214c99652') 
-md5sums_x86_64=('cba047f97541d8f5988e376f63f571c7') 
+md5sums_arm=('e2ef50ef1f271fd079cf7d1a117df5ba')
+md5sums_armv6h=('e2ef50ef1f271fd079cf7d1a117df5ba6h')
+md5sums_armv7h=('e2ef50ef1f271fd079cf7d1a117df5ba7h')
+md5sums_i686=('3304a6a44cf58743850b1fc29bc1e52b')
+md5sums_x86_64=('47196cc5dbbb6526b4dff1ee85e337cf')
 
 install=kodi-addon-quasar.install
 
