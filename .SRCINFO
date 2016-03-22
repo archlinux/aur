@@ -1,8 +1,8 @@
 pkgbase = ros-jade-realtime-tools
-	pkgdesc = ROS - Some basic robot controllers for use with robot_controllers_interface.
+	pkgdesc = ROS - A set of tools that can be used from a hard realtime thread, without breaking the realtime behavior.
 	pkgver = 1.9.1
 	pkgrel = 1
-	url = http://www.ros.org/
+	url = http://wiki.ros.org/realtime_tools
 	arch = any
 	license = BSD
 	makedepends = cmake

@@ -1,7 +1,7 @@
 # Script generated with import_catkin_packages.py
 # For more information: https://github.com/bchretien/arch-ros-stacks
-pkgdesc="ROS - Some basic robot controllers for use with robot_controllers_interface."
-url='http://www.ros.org/'
+pkgdesc="ROS - A set of tools that can be used from a hard realtime thread, without breaking the realtime behavior."
+url='http://wiki.ros.org/realtime_tools'
 
 pkgname='ros-jade-realtime-tools'
 pkgver='1.9.1'
