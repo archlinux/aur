@@ -22,8 +22,8 @@ source=("ftp://ftp.stat.math.ethz.ch/Software/R/R-devel.tar.gz"
 	'r.desktop'
 	'r.png'
 	'R.conf')
-sha1sums=('SKIP'
-          'd7fa521345b230a4187d60d07d06ce4b6d573e3f'
+sha1sums=('be3bd5f00318e5b3883b280ad4367d95b2050278'
+          'f5a9e7f53d1a45a5be4e61bad0f2727ea35d6b92'
           'a69a07ec363440efc18ce0a7f2af103375dea978'
           'a2a2d672b4b123d8305666444680cb4f6909261b')
 
@@ -37,13 +37,13 @@ prepare() {
 
 build() {
    cd R-devel
-   ./configure  --prefix=/usr/local \
-		--libdir=/usr/local/lib \
+   ./configure  --prefix=/opt/r-devel \
+		--libdir=/opt/r-devel/lib \
 		--sysconfdir=/etc/R-devel \
-		--datarootdir=/usr/local/share \
-		  rsharedir=/usr/local/share/R/ \
-		  rincludedir=/usr/local/include/R/ \
-		  rdocdir=/usr/local/share/doc/R/ \
+		--datarootdir=/opt/r-devel/share \
+		  rsharedir=/opt/r-devel/share/R/ \
+		  rincludedir=/opt/r-devel/include/R/ \
+		  rdocdir=/opt/r-devel/share/doc/R/ \
                 --with-x \
 		--enable-R-shlib \
                 --with-lapack \
@@ -66,24 +66,27 @@ package() {
    make DESTDIR="${pkgdir}" install
 
    #  Fixup R wrapper scripts.
-   sed -i "s|${pkgdir} ||" "${pkgdir}/usr/local/bin/R"
-   # rm "${pkgdir}/usr/local/lib/R/bin/R"
-   cd "${pkgdir}/usr/local/lib/R/bin"
+   sed -i "s|${pkgdir} ||" "${pkgdir}/opt/r-devel/bin/R"
+   # rm "${pkgdir}/opt/r-devel/lib/R/bin/R"
+   cd "${pkgdir}/opt/r-devel/lib/R/bin"
 
    #ln -s ../../../local/bin/R-devel
    #rename bin
-   mv "${pkgdir}/usr/local/bin/R" "${pkgdir}/usr/local/bin/R-devel"
-   mv "${pkgdir}/usr/local/bin/Rscript" "${pkgdir}/usr/local/bin/Rscript-devel"
+   mv "${pkgdir}/opt/r-devel/bin/R" "${pkgdir}/opt/r-devel/bin/R-devel"
+   mv "${pkgdir}/opt/r-devel/bin/Rscript" "${pkgdir}/opt/r-devel/bin/Rscript-devel"
+   mkdir -p "${pkgdir}/usr/bin/"
+   ln -s /opt/r-devel/bin/R-devel "${pkgdir}/usr/bin/R-devel"
+   ln -s /opt/r-devel/bin/Rscript-devel "${pkgdir}/usr/bin/Rscript-devel"
 
   # install some freedesktop.org compatibility
   install -Dm644 "${srcdir}/r.desktop" \
-	"${pkgdir}/usr/local/share/applications/r.desktop"
+	"${pkgdir}/usr/share/applications/r-devel.desktop"
   install -Dm644 "${srcdir}/r.png" \
-	"${pkgdir}/usr/local/share/pixmaps/r.png"
+	"${pkgdir}/usr/share/pixmaps/r-devel.png"
 
   # move the config directory to /etc and create symlinks
   install -d "${pkgdir}/etc/R-devel"
-  cd "${pkgdir}/usr/local/lib/R/etc"
+  cd "${pkgdir}/opt/r-devel/lib/R/etc"
   for i in *; do
     mv -f ${i} "${pkgdir}/etc/R-devel"
     ln -s /etc/R/${i} ${i}
