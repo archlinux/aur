@@ -6,12 +6,12 @@
 _gemname=activesupport
 pkgname=ruby-$_gemname
 pkgver=4.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A toolkit of support libraries and Ruby core extensions extracted from the Rails framework.'
 arch=(any)
 url='https://rubygems.org/gems/activesupport/'
 license=(MIT)
-depends=(ruby ruby-i18n ruby-json ruby-tzinfo ruby-minitest ruby-thread_safe)
+depends=(ruby ruby-i18n ruby-json ruby-tzinfo ruby-thread_safe)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
