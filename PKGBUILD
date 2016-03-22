@@ -10,16 +10,15 @@
 
 pkgname=alsaequal
 pkgver=0.6
-pkgrel=13
+pkgrel=14
 
 pkgdesc='Real-time adjustable equalizer plugin for ALSA sound server'
 url='http://www.thedigitalmachine.net/alsaequal.html'
 license=('GPL2')
 arch=('i686' 'x86_64')
 
-depends=('alsa-lib' 'ladspa')
-optdepends=('caps: to use the Eq CAPS equalizer (10-band)'
-            'swh-plugins: to use the mbeq equalizer (15-band)')
+depends=('alsa-lib' 'caps')
+optdepends=('swh-plugins: to use the mbeq equalizer (15-band)')
 install=alsaequal.install
 
 source=("http://www.thedigitalmachine.net/tools/alsaequal-$pkgver.tar.bz2"
