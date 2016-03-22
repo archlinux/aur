@@ -6,14 +6,14 @@
 
 pkgname="memaker"
 pkgver="1.5"
-pkgrel="8"
+pkgrel="9"
 pkgdesc="An application to create avatars from themed packages"
 arch=('i686' 'x86_64')
 url="http://memaker.org/"
 license=('GPL')
 depends=('python2-notify' 'python2-xdg' 'python2-numpy' 'gnome-python-desktop')
 optdepends=('python2-pillow: for better thumbnails'
-            'launchpadlib: Allow Memaker to use a launchpad account')
+            'python2-launchpadlib: Allow Memaker to use a launchpad account')
 provides=("${pkgname}")
 source=("http://launchpad.net/memaker/trunk/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.desktop"
