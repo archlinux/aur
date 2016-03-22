@@ -1,6 +1,6 @@
 pkgname=pantheon-bzr-meta
-pkgver=20160319
-pkgrel=3
+pkgver=20160322
+pkgrel=1
 pkgdesc='Meta package for the complete Pantheon desktop & apps'
 arch=(any)
 url='http://elementary.io'
@@ -26,6 +26,7 @@ depends=(appcenter-bzr
 	screenshot-tool-bzr
 	slingshot-launcher-bzr
 	switchboard-bzr
+	switchboard-plug-a11y-bzr
 	switchboard-plug-about-bzr
 	switchboard-plug-applications-bzr
 	switchboard-plug-datetime-bzr
@@ -33,12 +34,16 @@ depends=(appcenter-bzr
 	switchboard-plug-display-bzr
 	switchboard-plug-elementary-tweaks-bzr
 	switchboard-plug-keyboard-bzr
+	switchboard-plug-locale-bzr
 	switchboard-plug-mouse-touchpad-bzr
 	switchboard-plug-network-bzr
 	switchboard-plug-notifications-bzr
+	switchboard-plug-parental-controls-bzr
 	switchboard-plug-power-bzr
 	switchboard-plug-printers-bzr
+	switchboard-plug-security-privacy-bzr
 	switchboard-plug-sharing-bzr
+	switchboard-plug-useraccounts-bzr
 	wingpanel-bzr
 	wingpanel-indicator-bluetooth-bzr
 	wingpanel-indicator-datetime-bzr
