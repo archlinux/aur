@@ -2,8 +2,8 @@
 
 pkgname=1pass-hg
 _pkgname=1pass
-pkgver=r44.2150bce729df
-pkgrel=3
+pkgver=r47.f22acd5889f3
+pkgrel=1
 pkgdesc="1Password-compatible password management tool for Linux"
 arch=('i686' 'x86_64')
 license=('zlib')
@@ -17,7 +17,9 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "${_pkgname}"
-  printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  local rev="$(hg identify -n)"
+  local commit="$(hg identify -i)"
+  printf "r%s.%s" ${rev//+/} ${commit//+/}
 }
 
 prepare() {
