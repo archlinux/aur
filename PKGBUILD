@@ -4,7 +4,7 @@
 
 _pkgname=utox
 pkgname=utox-git
-pkgver=0.3.2.r155.g42a8193
+pkgver=0.7.0.r1.g9524f98
 pkgrel=1
 pkgdesc='Lightweight Tox client'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -21,7 +21,7 @@ depends=('desktop-file-utils'
          'toxcore'
          'v4l-utils')
 makedepends=('git')
-optdepends=('gtk2: GTK file picker')
+optdepends=('gtk3: GTK file picker')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+https://github.com/GrayHatter/uTox")
