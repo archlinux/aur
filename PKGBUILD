@@ -1,13 +1,14 @@
 # Maintainer: Nigel Michki <nigeil@yahoo.com>
 pkgname=sonic-pi-git
-pkgver=v2.5.0.r342.gdeb449e
-pkgrel=3
+pkgver=v2.9.0.r373.gd11147f
+pkgrel=1
 pkgdesc="A music-centric programming environment, originally built for the raspberry pi."
 arch=('i686' 
       'x86_64')
 url="http://sonic-pi.net/"
 license=('MIT')
 groups=()
+conflicts=('sonic-pi')
 depends=('sed'
 	 'ruby'
 	 'libffi'
@@ -19,21 +20,21 @@ makedepends=('cmake'
 	     'supercollider'
         'qt5-tools')
 optdepends=('qjackctl: for graphical jackd spawning/configuration'
-	    'jack2: better jackd if you want to use without gui')
+	    'jack2: better jackd if you want to use without gui'
+	    'pulseaudio-jack: support for jack2-pulseaudio integration')
 source=('sonic-pi::git+https://github.com/samaaron/sonic-pi.git'
 	'launcher.sh'
    'sonic-pi-git.png'
    'sonic-pi-git.desktop')
 md5sums=('SKIP'
-         '9c6a820718f549d9c49dfb3d9a8b102e'
+         '298e2729cda0c33c9cec7f7f721c1bbd'
          'ba86680be610cc3d6f12d4a89b0f434d'
-         'f283c44f25e1297008a34f42af3588bc')
+         'fd330b2be9b52e9bee2fb9922141e2ca')
 
 prepare() {
   msg2 "Fix wrongly-named (on Arch) QT library"
-  cd $srcdir/sonic-pi
-  find . -type f -name "*" -exec sed -i 's/lqscintilla2/lqt5scintilla2/g' {} +
-
+  cd $srcdir/sonic-pi/app/gui/qt
+  find . -type f -name "*" -exec sed -i 's/lqt5scintilla2/lqscintilla2-qt5/g' {} +
 }
 
 build() {
@@ -44,9 +45,9 @@ build() {
   ./compile-extensions.rb
   cd ../../gui/qt
   ./rp-build-app
-#Remove object files
-  #cd $srcdir
-  #rm -r *.o
+  #Cleaning up object files
+  cd $srcdir
+  find . -type f -name "*.o" -exec rm {} +
 }
 
 pkgver() {
@@ -57,8 +58,9 @@ pkgver() {
 package() {
 #Install sources to /opt/
   mkdir $pkgdir/opt/
-  mkdir $pkgdir/opt/sonic-pi-git
-  cp -R $srcdir/sonic-pi $pkgdir/opt/sonic-pi-git/
+  mkdir $pkgdir/opt/sonic-pi
+  cp -R $srcdir/sonic-pi/* $pkgdir/opt/sonic-pi/
+  ln -s $pkgdir/opt/sonic-pi/app/server $pkgdir/opt/sonic-pi/server
 #Add a launcher script to /usr/bin
   mkdir $pkgdir/usr
   mkdir $pkgdir/usr/bin
@@ -73,5 +75,5 @@ package() {
 #Install the license to /usr/share/licenses
   mkdir $pkgdir/usr/share/licenses
   mkdir $pkgdir/usr/share/licenses/sonic-pi-git
-  install -Dm644 "$srcdir/sonic-pi/app/gui/qt/info/LICENSE.html" "$pkgdir/usr/share/licenses/sonic-pi-git/LICENSE.html" 
+  install -Dm644 "$srcdir/sonic-pi/app/gui/qt/info/LICENSE.html" "$pkgdir/usr/share/licenses/sonic-pi/LICENSE.html" 
 }
