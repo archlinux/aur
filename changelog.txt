@@ -1,3 +1,42 @@
+Version 2.3.0 - 20 Mar 2016
+- Fix for adapter_thehexfilesnet missing chapter text.
+- Fixes for finestories.com, now shares code with storiesonline.net, thanks
+  davidfor for this.
+- Allow ini keyword universe_as_series in finestories.com as well as
+  storiesonline.net.
+- Fix for fimfiction.net site update -- thanks Facedeer
+- New site: [url]www.artemis-fowl.com[/url] - Thanks gcomyn!
+- New site: [url]www.naiceanilme.net[/url] - Thanks gcomyn!
+- New site: fanfiction.lucifael.com - Thanks gcomyn!
+- New site: buffygiles.velocitygrass. - Thanks gcomyn!
+- New site: [url]www.andromeda-web.com[/url] - Thanks gcomyn!
+- New site: [url]www.therabidreader.com[/url] - Thanks gcomyn!
+- Performance improvements (extra caching) for complex metadata manipulation.
+- Changes to all plugin logging output (debug) to add datetime and reduce
+  inadvertent smilies. ("FFF:DEBUG")
+- Additional ini options for base_xenforoforum adapters.
+- Add storyUrl ini section feature.  Add custom configuration for individual
+  stories by adding personal.ini sections specifically for them.
+- Fixes for quotev.com, author and chapter list.
+- Add 'averrating' and tweak description: adapter_literotica
+- Fix adapter_literotica setDescription
+- Make HTTP 410 StoryDoesNotExist in tthfanfic.org, make conn fail trace
+  debug, not error level.
+- Allow a second kind of 'chapter missing' for portkey.org.
+- Change fanfiction.mugglenet.com to base_efiction after site update.
+- Hide user/pass in debug log, add 'View Safe personal.ini' option that also
+  hides user/pass.
+- Re-organize personal.ini config tab in plugin.
+- Yet more fixes for quotev.com changes.
+- Find and include chapter specific images for quotev.com.
+- Fix for a bug on a TtH story (empty category tag).
+- Add site specific reads, reviews for hpfandom.net.
+- Fix for base_efiction_adapter stories with spans w/o class attr.
+- Add support for 'This story has not been validated' in base_efiction_adapter
+- Some mcstoriescom stories include <h3> tags that aren't
+  title/chapter/byline.
+- Update translations.
+
 Version 2.2.18 - 18 Feb 2016
 - Fix for quotev.com change to story image.
 - Fix for tthfanfic.org author story list change. (Manifests as 'Adult
@@ -25,17 +64,3 @@ Version 2.2.18 - 18 Feb 2016
 - Add new AccessDenied exception for one line output in CLI.
 - Allow Pairing w/o Centered category -> chars in TtH.
 - Update translations.
-
-Version 2.2.17 - 18 Jan 2016
-- Fixes for problems with urlparse.parse_qs in adapters and new unique_list
-  with authorId. Also BS4 fixes to adapter_spikeluvercom.py
-- Adding additional metadata collection, potionsandsnitches &
-  walkingtheplankorg
-- Allow Anonymous author for quotev.com.
-- Skip (instead of error) if asked to UnNew non-FFF epubs.
-- Update translations.
-- Update base_xenforoforum for SV threadmark change.
-- Fix so ships_CHARS and sort_ships_splits work together.
-- Remove defunct sg1-heliopolis.com site after down for +1 month.
-- Update quotev.com adapter.
-- Fix for TtH Story-42 matching Story-421 while searching auth pages.
