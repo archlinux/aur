@@ -1,7 +1,7 @@
 # Maintainer: OscarHolst <oscar.holst@linux.com>
 pkgname=uxpload
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="UnixPorn.org screenshot uploader"
 arch=('any')
 url="https://github.com/OscarHolst/UnixPorn"
@@ -14,7 +14,7 @@ depends=(
   
 )
 source=('https://raw.githubusercontent.com/OscarHolst/UnixPorn/master/uxpload.sh')
-md5sums=('6d0280b28123764643e87a5516629c51')
+md5sums=('11baca90f2d0b2ba08c1c1c61c5c5fc2')
 
 package() {
   cd "${srcdir}"
