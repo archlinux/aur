@@ -2,8 +2,8 @@
 # Contributor: Bitwig GmbH <support at bitwig dot com>
 
 pkgname='bitwig-studio-demo'
-pkgver='1.3.6'
-pkgrel='3'
+pkgver='1.3.8'
+pkgrel='1'
 pkgdesc='Music production system for production, remixing and performance'
 arch=('x86_64')
 url='http://www.bitwig.com/'
@@ -19,7 +19,7 @@ conflicts=('bitwig-studio-demo-rc')
 options=(!strip)
 source=("https://downloads.bitwig.com/stable/${pkgver}/bitwig-studio-${pkgver}.deb"
         'bitwig-studio.launcher')
-md5sums=('c13c82d87a319bf2fccad8456910875b'
+md5sums=('062f57caa81af1e1168680f24ec12370'
          '32411d3b742f15addef7b86681825fee')
 
 package() {
@@ -32,16 +32,6 @@ package() {
 
   # Unpack package contents
   bsdtar -xf ${srcdir}/data.tar.gz -C ${pkgdir}/
-
-  # Fix icon cache bug
-  local hicolor="${pkgdir}/usr/share/icons/hicolor"
-  if [[ -f ${hicolor}/scalable/apps/bitwig-modular.sh ]]; then
-    # Rename .sh to .svg
-    mv ${hicolor}/scalable/apps/bitwig-modular.{sh,svg}
-  fi
-
-  # Fix directory permission bug
-  chmod -R 755 ${pkgdir}/usr/bin
 
   # Install launcher (replacing default symlink)
   install -m755 ${srcdir}/bitwig-studio.launcher ${pkgdir}/usr/bin/bitwig-studio
