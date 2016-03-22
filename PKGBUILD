@@ -1,18 +1,18 @@
 # Maintainer: holos
 
 pkgname=flycheck
-pkgver=0.23
+pkgver=0.25
 pkgrel=1
 pkgdesc='Modern on-the-fly syntax checking extension for GNU Emacs'
 arch=('any')
-url="http://flycheck.readthedocs.org/"
+url="http://www.flycheck.org/"
 license=('GPL')
 # groups=('emacs-plugins')
 depends=('emacs' 'emacs-dash')
 makedepends=('emacs' 'texinfo')
 install=flycheck.install
 source=("https://github.com/flycheck/flycheck/archive/$pkgver.tar.gz")
-sha256sums=('edda4967780f3566842c87b7a5d7f2630be593b9029a7909e5c02f68c82ee9e3')
+sha256sums=('dc85d1e67a83020aafc63df980aa6bbb07595f6ef32d8888089066b8f62ad34a')
 
 build() {
   cd "$pkgname-$pkgver"
