@@ -5,7 +5,7 @@
 # Contributor: Alexandre Courbot <gnurou@gmail.com>
 
 _pkgname="launchpadlib"
-pkgname="pyhton2-${_pkgname}"
+pkgname="python2-${_pkgname}"
 pkgver="1.10.3"
 pkgrel="1"
 pkgdesc="A free Python library for scripting Launchpad through its web services interface."
