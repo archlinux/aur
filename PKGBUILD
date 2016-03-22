@@ -30,6 +30,11 @@ build() {
 
 package() {
   mkdir -p "${pkgdir}/usr/share/java/binnavi"
+  mkdir -p "${pkgdir}/usr/share/licenses/binnavi"
+  mkdir -p "${pkgdir}/usr/share/binnavi"
+  cd "${srcdir}/$_pkgname/"
+  mv README.md "${pkgdir}/usr/share/binnavi/"
+  mv LICENSE "${pkgdir}/usr/share/licenses/binnavi"
   cd "${srcdir}/$_pkgname/target/"
   mv binnavi-all.jar "${pkgdir}/usr/share/java/binnavi/"
   install -D -m755 "${srcdir}/binnavi.sh" "${pkgdir}/usr/bin/binnavi"
