@@ -19,8 +19,8 @@ pkgbase = ros-jade-gazebo-ros-control
 	depends = ros-jade-std-msgs
 	depends = ros-jade-transmission-interface
 	depends = ros-jade-urdf
-	source = ros-jade-gazebo-ros-control-2.5.2-0.tar.gz::https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/jade/gazebo_ros_control/2.5.2-0.tar.gz
-	md5sums = df6b8615c57e1045a247dec1d518c9cd
+	source = ros-jade-gazebo-ros-control-2.5.2-0.tar.gz::https://github.com/ros-simulation/gazebo_ros_pkgs/archive/2.5.2.tar.gz
+	md5sums = 7f2b57fc77374472d2041c010dbeef7f
 
 pkgname = ros-jade-gazebo-ros-control
 

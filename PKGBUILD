@@ -34,9 +34,9 @@ depends=(${ros_depends[@]})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="gazebo_ros_pkgs-release-release-jade-gazebo_ros_control-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/jade/gazebo_ros_control/${pkgver}-${_pkgver_patch}.tar.gz")
-md5sums=('df6b8615c57e1045a247dec1d518c9cd')
+_dir="gazebo_ros_pkgs-${pkgver}/gazebo_ros_control"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-simulation/gazebo_ros_pkgs/archive/${pkgver}.tar.gz")
+md5sums=('7f2b57fc77374472d2041c010dbeef7f')
 
 build() {
   # Use ROS environment variables
