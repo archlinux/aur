@@ -2,7 +2,7 @@
 
 pkgname=liquidsoap
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a swiss-army knife for multimedia streaming, notably used for netradios and webtvs"
 arch=('i686' 'x86_64')
 url="http://savonet.sourceforge.net/"
