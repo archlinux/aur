@@ -1,6 +1,6 @@
 # Contributor: Spider.007 <archlinux AT spider007 DOT net>
 pkgname=kibana
-pkgver=4.4.1
+pkgver=4.4.2
 pkgrel=1
 pkgdesc="browser based analytics and search dashboard for Elasticsearch. Please note; this package replaces the distributed precompiled binary 'node'"
 arch=('any')
@@ -13,7 +13,7 @@ install=kibana.install
 source=(
 	"https://download.elasticsearch.org/kibana/kibana/$pkgname-$pkgver-linux-x64.tar.gz"
 	kibana.service)
-sha256sums=('fb536696b27b9807507c5d9014c90722e7b28cb2e068a80879cc9bb861316be1'
+sha256sums=('ce0504d7a9440200b49851a64e010ddf8a8ed7b881135f6121d594ba1c0d6cfd'
 			'SKIP')
 
 package() {
