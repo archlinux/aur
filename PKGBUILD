@@ -4,12 +4,13 @@
 _pkgname=pylzma
 pkgname=python2-$_pkgname
 pkgver=0.4.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Platform independent python bindings for the LZMA compression library"
 url="http://www.joachim-bauch.de/projects/python/pylzma"
-license="LGPL"
+license=("LGPL2.1")
 arch=(i686 x86_64)
 depends=('python2')
+makedepends=('python2-setuptools')
 provides=("pylzma=$pkgver")
 replaces=('pylzma')
 conflicts=('pylzma')
