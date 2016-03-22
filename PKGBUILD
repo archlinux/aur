@@ -1,15 +1,15 @@
 # Based on a PKGBUILD by Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-parental-controls-bzr
-pkgver=r113
-pkgrel=1
+pkgver=r115
+pkgrel=2
 pkgdesc='Parental controls plug for Switchboard'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard-plug-parental-controls'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3'
-         'libgranite.so' 'libswitchboard-2.0.so')
+         'granite' 'switchboard' 'accountsservice')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('switchboard-plug-parental-controls')
 conflicts=('switchboard-plug-parental-controls')
@@ -41,6 +41,12 @@ package() {
   cd switchboard-plug-parental-controls/build
 
   make DESTDIR="${pkgdir}" install
+
+  # Move the systemd service in place.
+  cd ${pkgdir}
+  mkdir -p usr/lib/systemd/system
+  mv lib/systemd/system/pantheon-parental-controls.service usr/lib/systemd/system/
+  rm -r lib
 }
 
 # vim: ts=2 sw=2 et:
