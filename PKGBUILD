@@ -68,12 +68,12 @@ pkgname=fcitx-mozc-ut
 pkgdesc="Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)"
 pkgver=${_mozcver}.${_utdicver}
 _fcitx_patchver=2.17.2313.102.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
 license=('custom')
 depends=('qt4' 'fcitx' 'zinnia')
-makedepends=('pkg-config' 'python2' 'curl' 'gtk2' 'mesa' 'subversion' 'ninja' 'ruby' 'git' 'clang')
+makedepends=('pkg-config' 'python2' 'curl' 'gtk2' 'mesa' 'subversion' 'ninja' 'ruby' 'git' 'clang' 'unzip' 'wget')
 replaces=('mozc-fcitx' 'fcitx-mozc')
 conflicts=('mozc' 'mozc-server' 'mozc-utils-gui' 'mozc-fcitx' 'mozc-ut' 'fcitx-mozc')
 source=(mozc-${_mozcver}::git+https://github.com/google/mozc.git#commit=${_mozc_rev}
