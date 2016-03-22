@@ -1,4 +1,4 @@
-# Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
+# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgbase=python-signedjson
 pkgname=($pkgbase python2-signedjson)
