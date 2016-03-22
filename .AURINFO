@@ -1,0 +1,15 @@
+pkgbase = figa
+	pkgdesc = Che schifo la figa, meglio Linux!
+	pkgver = 1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = free
+	makedepends = git
+	provides = figa
+	conflicts = figa
+	source = git://github.com/crisbal/kslf.git
+
+pkgname = figa
+
