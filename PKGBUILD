@@ -5,6 +5,7 @@ pkgver=0.2.4
 _foldername=pt1-c44e16dbb0e2
 pkgrel=1
 pkgdesc="ARIB B25 test program for Linux , based on a test program written by Kazuhiro MOGI."
+groups=('earthsoft')
 arch=('i686' 'x86_64')
 url="http://hg.honeyplanet.jp/pt1/"
 license=('custom')
