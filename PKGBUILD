@@ -2,15 +2,16 @@
 
 pkgname=switchboard-plug-a11y-bzr
 pkgver=r44
-pkgrel=1
+pkgrel=2
 pkgdesc='Accessibility plug for Switchboard'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/switchboard-plug-a11y'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3'
-         'libgranite.so' 'libswitchboard-2.0.so')
+         'granite' 'switchboard')
 makedepends=('bzr' 'cmake' 'vala')
+optdepends=('onboard: On-screen keyboard')
 provides=('switchboard-plug-a11y')
 conflicts=('switchboard-plug-a11y')
 source=('bzr+lp:switchboard-plug-a11y')
