@@ -3,7 +3,7 @@
 
 pkgbase="ptpython"
 pkgname=("ptpython" "ptpython2")
-pkgver="0.30"
+pkgver="0.31"
 pkgrel="1"
 pkgdesc="Python REPL build on top of prompt_toolkit"
 arch=("any")
@@ -14,7 +14,7 @@ makedepends=(
     "python2-setuptools"
 )
 source=("https://pypi.python.org/packages/source/${pkgbase:0:1}/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('50efef571dbfc12c2b33c0b9ac29407e380ffb9dda948a0650aa382588736e72')
+sha256sums=('a70ac512efc7b3c3e1ed6adba56f7214d5ed48729f9dac474e9a73472152006f')
 
 prepare() {
     cp -a "${srcdir}/${pkgbase}-${pkgver}" "${srcdir}/${pkgbase}2-${pkgver}"
@@ -31,7 +31,7 @@ package_ptpython() {
     depends=(
         "python-docopt"
         "python-jedi>=0.9.0"
-        "python-prompt_toolkit=0.59"
+        "python-prompt_toolkit=0.60"
         "python-pygments"
     )
     optdepends=(
@@ -46,7 +46,7 @@ package_ptpython2() {
     depends=(
         "python2-docopt"
         "python2-jedi>=0.9.0"
-        "python2-prompt_toolkit=0.59"
+        "python2-prompt_toolkit=0.60"
         "python2-pygments"
     )
     optdepends=(
