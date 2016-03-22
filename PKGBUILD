@@ -8,7 +8,7 @@ pkgbase=linux-mptcp
 _srcname=mptcp
 _mptcpv=0.90
 pkgver=0.90.487573.41341ce
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.multipath-tcp.org/"
 license=('GPL2')
@@ -91,7 +91,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules"
+  pkgdesc="The Linux kernel and modules with Multipath TCP support (based on linux 3.18.26)"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country'
@@ -290,8 +290,5 @@ for _p in ${pkgname[@]}; do
     _package${_p#${pkgbase}}
   }"
 done
-
-# Global pkdesc to be picked up by AUR
-pkgdesc="Linux kernel, modules, headers and docs with MultiPath TCP support"
 
 # vim:set ts=8 sts=2 sw=2 et:
