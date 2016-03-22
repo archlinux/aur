@@ -11,7 +11,9 @@ url="http://homepage.hispeed.ch/david.frey/"
 license=('GPL2')
 depends=('readline')
 makedepends=('bison' 'flex' 'gettext' 'ed')
-source=("http://ftp.de.debian.org/debian/pool/main/r/${pkgname}/${pkgname}_${pkgver}.tar.gz")
+#source=("http://ftp.de.debian.org/debian/pool/main/r/${pkgname}/${pkgname}_${pkgver}.tar.gz")
+#source=("http://www-cs.stanford.edu/pub/mirrors/ubuntu/ubuntu/pool/universe/r/rpncalc/rpncalc_$pkgver.tar.gz")
+source=("http://old-releases.ubuntu.com/ubuntu/pool/universe/r/rpncalc/rpncalc_$pkgver.tar.gz")
 md5sums=('53c56b3cc539f214c2c26d5af62d878d')
 
 build() {
