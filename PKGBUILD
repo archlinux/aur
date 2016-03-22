@@ -2,7 +2,7 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=cheese
-pkgver=3.18.1
+pkgver=3.20.0
 pkgrel=1
 pkgdesc="Use your webcam to take photos and videos, apply fancy special effects and share the fun with others"
 arch=(i686 x86_64)
@@ -15,7 +15,7 @@ options=('!emptydirs')
 url="http://www.gnome.org/projects/cheese/"
 install=cheese.install
 source=(https://download.gnome.org/sources/$pkgname/${pkgver:0:4}/$pkgname-$pkgver.tar.xz)
-sha256sums=('fc9d8798b1f0c6b35731f063869a32c6910bab6d0386b9ea36386ebda0d57177')
+sha256sums=('41e2b16f0ad9bbc0f81b082fb42dc7978e52306be486637eaacb8d8f5a80caac')
 
 build() {
   cd $pkgname-$pkgver
