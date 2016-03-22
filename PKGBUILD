@@ -1,6 +1,6 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 
-_git=09093f7028ead90f172315eff4114d3de665468f
+_git=0d178fdaa14f1d0982a5338fa18f04afee8c852d
 _repo=papirus-suite
 pkgbase=papirus
 pkgname=(
@@ -22,7 +22,7 @@ pkgname=(
     'smplayer-theme-papirus'
     'libreoffice-style-papirus'
 )
-pkgver=20160308
+pkgver=20160322
 pkgrel=1
 arch=('any')
 url="https://github.com/varlesh/${_repo}"
@@ -30,7 +30,7 @@ license=('CCPL:by-sa')
 
 options=('!strip')
 source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('fa86ee74e09741604f492753db3af6c0c4822029d6862075490d1033272799af')
+sha256sums=('ca2476b9153e506325fc65e22550148ec5d7a35018ae85cf224c7368d560c53e')
 
 package_papirus(){
     pkgdesc="Meta-package for modified and adaptive Papirus theme"
