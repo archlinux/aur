@@ -1,0 +1,22 @@
+pkgbase = ros-jade-forward-command-controller
+	pkgdesc = ROS - Some basic robot controllers for use with robot_controllers_interface.
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = http://www.ros.org/
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-roscpp
+	depends = ros-jade-catkin
+	depends = ros-jade-controller-interface
+	depends = ros-jade-hardware-interface
+	depends = ros-jade-realtime-tools
+	depends = ros-jade-std-msgs
+	source = forward_command_controller/forward_command_controller::git+https://github.com/ros-controls/ros_controllers.git#tag=0.10.0
+	md5sums = SKIP
+
+pkgname = ros-jade-forward-command-controller
+
