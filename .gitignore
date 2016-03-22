@@ -1,0 +1,5 @@
+output
+pkg
+src
+pigpio
+*.tar.xz
