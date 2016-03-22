@@ -83,7 +83,7 @@ cd "$srcdir/$pkgname/build"
 
 
 
-cd "${srcdir}/cubicsdr-git/build/x*"
+cd ${srcdir}/cubicsdr-git/build/x*
 
 	install -Dm755 CubicSDR "${pkgdir}/usr/share/cubicsdr/cubicsdr"
 
