@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 pkgname=xplico
 pkgver=v1.1.2
-pkgrel=2
+pkgrel=3
 arch=(i686 x86_64)
 pkgdesc="Internet Traffic Decoder. Network Forensic Analysis Tool (NFAT)"
 url="http://www.xplico.org/"
@@ -22,6 +22,7 @@ depends=(
 	php56-pear
 	php56-sqlite
 	python-httplib2
+	python-psycopg2
 	recode
 	sox
 	sqlite3
