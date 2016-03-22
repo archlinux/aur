@@ -1,7 +1,7 @@
 # Maintainer: Troy Engel <troyengel+arch@gmail.com>
 
 pkgname=cmusfm
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Last.fm scrobbler for cmus music player"
 url="https://github.com/Arkq/cmusfm"
@@ -12,7 +12,7 @@ install=cmusfm.install
 
 source=(cmusfm-"$pkgver".tar.gz::https://github.com/Arkq/cmusfm/archive/v"$pkgver".tar.gz)
 
-sha256sums=('2239e1a8e4bf9eab4b198ab39bd23eead9ae2faa0bf9dfdc93cc0bea680918e2')
+sha256sums=('359a46e60c59940d53b2c25093298d518f520be6aa2f4ee2363174ead6542e09')
 
 build() {
 	cd cmusfm-"$pkgver"
