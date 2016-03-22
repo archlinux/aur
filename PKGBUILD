@@ -2,13 +2,13 @@
 
 pkgbase=vmware-horizon-client
 pkgname=('vmware-horizon-client' 'vmware-horizon-pcoip' 'vmware-horizon-rtav' 'vmware-horizon-smartcard' 'vmware-horizon-usb' 'vmware-horizon-virtual-printing')
-pkgver=3.5.0
-_build=2999900
-_cart='CART15Q3'
-pkgrel=4
+pkgver=4.0.0
+_build=3617666
+_cart='CART16Q1'
+pkgrel=1
 pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop'
 arch=('i686' 'x86_64')
-url='https://my.vmware.com/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_clients/3_0'
+url='https://my.vmware.com/web/vmware/info/slug/desktop_end_user_computing/vmware_horizon_clients/4_0'
 license=('custom')
 makedepends=('libxslt')
 source=('http://sources.gentoo.org/cgi-bin/viewvc.cgi/gentoo-x86/eclass/vmware-bundle.eclass'
@@ -25,8 +25,8 @@ sha256sums=('d8794c22229afdeb698dae5908b7b2b3880e075b19be38e0b296bb28f4555163'
             '5e737d69e49ea7e039bc94f358b45c8e6d9071b7c041a53800555d3dc21c8dac'
             'ec763930dd50d6e77a31c40c939909752cfb124cafb0a4ca4f76860375a14d75'
             'e47e770a1e19ed321de7c2765b2d682f59ac466aef92b2e4ea5e65cacf56de36')
-sha256sums_x86_64=('7088096fb001695784f65606b145522f37bae7630b7b77bb7ee1a8a0b5eff120')
-sha256sums_i686=('9a92d844305a6a38f9fa09df170e9780112211e4d43f0a8bca30595f61fa8caf')
+sha256sums_x86_64=('09fa04fd10e0a82759945ef1dc5f5d61236d8d082666d52db50d5bc87b5849f7')
+sha256sums_i686=('6b7ca09906a02569b4eefcb35cf99fe8a931a9461e88654a94a35401e74a924d')
 
 # VMware bundles old versions of openssl. Usually we can use system openssl.
 # If things break because VMware relies on legacy or buggy code you can use
@@ -65,8 +65,8 @@ build() {
 	#	libcrypto.so.1.0.[12] -> libcrypto.so.1.0.0
 	#
 	# for bundled openssl - we use uncommon name to make sure no other application will care:
-	#	libssl.so.1.0.[12] -> libssl-vmw.so
-	#	libcrypto.so.1.0.[12] -> libcrypto-vmw.so
+	#	libssl.so.1.0.[12] -> libssl-vmw.so.0
+	#	libcrypto.so.1.0.[12] -> libcrypto-vmw.so.0
 
 	for bundle in "${pkgname[@]}"; do
 		for FILE in $(find "${bundle}" -type f); do
@@ -90,8 +90,8 @@ build() {
 			else
 				# Some files link against openssl...
 				# Use the bundled version there.
-				sed -i -e 's/libssl.so.1.0.[12]/libssl-vmw.so\x0\x0/' \
-					-e 's/libcrypto.so.1.0.[12]/libcrypto-vmw.so\x0\x0/' \
+				sed -i -e 's/libssl.so.1.0.[012]/libssl-vmw.so.0/' \
+					-e 's/libcrypto.so.1.0.[012]/libcrypto-vmw.so.0/' \
 					"${FILE}"
 			fi
 		done
@@ -102,10 +102,10 @@ build() {
 	if [ ${_USE_BUNDLED_OPENSSL:=0} -eq 0 ]; then
 		rm -f "${srcdir}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/lib{crypto,ssl}.so.1.0.2
 
-		ln -sf ../../lib/libcrypto.so.1.0.0 "${pkgdir}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/libcrypto.so.1.0.0
-		ln -sf ../../lib/libssl.so.1.0.0 "${pkgdir}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/libssl.so.1.0.0
+		ln -sf ../libcrypto.so.1.0.0 "${srcdir}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/libcrypto.so.1.0.0
+		ln -sf ../libssl.so.1.0.0 "${srcdir}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/libssl.so.1.0.0
 	else
-		rename -- '.so.1.0.2' '-vmw.so' \
+		rename -- '.so.1.0.2' '-vmw.so.0' \
 			"${srcdir}"/extract/vmware-horizon-pcoip/pcoip/lib/vmware/lib{crypto,ssl}.so.1.0.2
 	fi
 }
