@@ -6,7 +6,7 @@
 # Contributor: teratomata <teratomat@gmail.com>
 
 pkgname=mathematica
-pkgver=10.3.1
+pkgver=10.4.0
 pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="http://www.wolfram.com/mathematica/"
 license=('proprietary')
 depends=('ttf-bitstream-vera' 'libxcursor' 'alsa-lib' 'libxml2')
 source=("file://Mathematica_${pkgver}_LINUX.sh")
-md5sums=('4af9ca41e354419c71884597d46d75e4')
+md5sums=('fdc04160ef3cfcb120766393306b5c5f')
 install='mathematica.install'
 options=('!strip')
 
@@ -36,7 +36,7 @@ build() {
 
 package() {
     # https://reference.wolfram.com/language/tutorial/InstallingMathematica.html#650929293
-    ${srcdir}/Mathematica_${pkgver}_LINUX.sh -- -execdir=${pkgdir}/usr/bin -targetdir=${pkgdir}/opt/Mathematica -auto
+    ${srcdir}/Mathematica_${pkgver}_LINUX.sh -- -execdir=${pkgdir}/usr/bin -targetdir=${pkgdir}/opt/Mathematica -auto # -user
     
     echo "Fixing symbolic symlinks"
     cd ${pkgdir}/usr/bin
