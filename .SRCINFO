@@ -1,0 +1,11 @@
+pkgbase = python-pigpio-git
+	pkgver = r89.399eb5a
+	pkgrel = 1
+	url = http://abyz.co.uk/rpi/pigpio/
+	arch = any
+	license = custom:UNLICENSE
+	source = git+https://github.com/joan2937/pigpio.git
+	sha1sums = SKIP
+
+pkgname = python-pigpio-git
+
