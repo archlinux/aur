@@ -5,25 +5,25 @@ pkgver=1.3.0
 pkgrel=1
 pkgdesc='GNS3 topology converter (git version).'
 arch=('any')
-url='https://github.com/GNS3/gns3-converter'
+url="https://github.com/GNS3/${pkgname%-git}"
 license=('GPL3')
 groups=('gns3')
 provides=('gns3-converter')
 conflicts=('gns3-converter')
 makedepends=('git' 'python-setuptools')
 depends=('python-configobj' 'python-cx_freeze')
-source=("git+https://github.com/GNS3/${pkgname}.git")
+source=("git+https://github.com/GNS3/${pkgname%-git}.git")
 md5sums=('SKIP')
 
 prepare() {
-  cd ${srcdir}/${pkgname}
+  cd ${srcdir}/${pkgname%-git}
   git checkout v${pkgver}
 }
 
 package() {
-  cd ${srcdir}/${pkgname}
+  cd ${srcdir}/${pkgname%-git}
   python setup.py install --root=${pkgdir} --optimize=1
-  install -Dm644 ${srcdir}/${pkgname}/COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 ${srcdir}/${pkgname%-git}/COPYING ${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
