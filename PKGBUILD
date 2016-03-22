@@ -3,7 +3,7 @@
 pkgname=brother-dcpj562dw
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Driver for the Brother DCP-J562DW wifi multifuncional printer"
+pkgdesc="Driver for the Brother DCP-J562DW wifi multifunctional printer"
 url="http://solutions.brother.com/linux/en_us/index.html"
 license=('custom:brother')
 depends=('a2ps' 'cups')
