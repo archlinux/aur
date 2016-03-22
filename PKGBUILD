@@ -1,6 +1,7 @@
 # Maintainer: Erhan SAHIN < erhan@ssahin.net >
 
-pkgname="python2-pysaml2"
+pkgbase="python2-pysaml2"
+pkgname="python2-pysaml2-old"
 pkgver=2.4.0
 pkgrel=1
 pkgdesc="Python implementation of SAML Version 2"
@@ -17,7 +18,7 @@ build() {
   python2 setup.py build
 }
 
-package_python2-pysaml2() {
+package_python2-pysaml2-old() {
   depends=('python2-repoze.who-openstack' 'python2-pyasn1' 'xmlsec' 'python2-mako' 'memcached' 'python2-memcached')
   cd "${srcdir}/pysaml2-${pkgver}/"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
