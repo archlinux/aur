@@ -3,13 +3,13 @@
 _pkgname="pass-manager"
 pkgname="firefox-${_pkgname}"
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="Replace the default Firefox and Thunderbird password manager with zx2c4's pass"
 url="https://github.com/gekmihesg/pass-manager"
 arch=('i686' 'x86_64')
 license=('GPLv3')
 depends=('firefox')
-makedeps=('make automake')
+makedeps=('make automake zip unzip')
 source=("${_pkgname}::git+https://github.com/gekmihesg/pass-manager.git")
 sha1sums=('SKIP')
 
