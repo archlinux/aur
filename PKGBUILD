@@ -2,7 +2,7 @@
 
 pkgname=telegram-purple
 pkgver=1.2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Adds support for Telegram to Pidgin, Adium, Finch and other Libpurple based messengers."
 arch=('i686' 'x86_64')
 url="https://github.com/majn/telegram-purple"
@@ -15,7 +15,7 @@ sha256sums=('f643d56da0c2ab4ffe603542e3a485cd10d45936d8f6e7dfafec862aa81f2dbb')
 
 build() {
   cd "${srcdir}/${pkgname}"
-  ./configure
+  ./configure --prefix=/usr
   make
 }
 
