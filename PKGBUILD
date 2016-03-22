@@ -46,10 +46,12 @@ depends=("zarafa-libical>=7.2.0"
 	 'kyotocabinet'
          'krb5'
          'mariadb')
+# compile gcc from https://git.pietma.com/pietma-aur/gcc
+# makepkg -scCi
 makedepends=('gcc<=4.9.2'
              'gcc-libs<=4.9.2'
-             'binutils<=2.26'
-             'pkg-config<=0.29.1')
+             'binutils'
+             'pkg-config')
 optdepends=('zarafa-webaccess'
 	    'zarafa-webapp'
 	    'sabre-zarafa'
