@@ -17,7 +17,7 @@ source=("http://ftp.debian.org/debian/pool/main/b/bb/${pkgname}_$pkgver.orig.tar
         "http://ftp.debian.org/debian/pool/main/b/bb/${pkgname}_$pkgver-8.diff.gz"
         'http://downloads.sourceforge.net/sourceforge/xaos/xaos-3.5.tar.gz'
         'xaos-3.5-libpng15.patch'
-	'xaos-3.5-build-fix-i686.patch')
+        'xaos-3.5-build-fix-i686.patch')
 sha256sums=('9355b9e0e73863aa473d312b40bb4b071e1d50a8f1c3db553ddf31e814e296c8'
             '918bed052b438e1b81f2f8dd960659d5ea73626254b530efe1dc8679b9b76df5'
             '471fa752154a8e4c4687797fe1241df1b3f82400b2ef4e6a603969a27cd74842'
