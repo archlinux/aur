@@ -1,6 +1,6 @@
 # Maintainer: Christoph Steinacker <archologist.linuxATgooglemailDOTcom>
 pkgname=jes
-pkgver=1.01.02
+pkgver=1.01.24
 pkgrel=1
 pkgdesc="A java-based tool for german cash method of accounting (Einnahme-Überschuss-Rechnung)"
 arch=('any')
@@ -8,8 +8,8 @@ url="http://www.jes-eur.de"
 license=('custom')
 #install="${pkgname}.install"
 depends=('java-runtime' 'x-server' 'xdg-utils')
-source=(http://jes-eur.de/userfiles/downloads/jes/jes_10102.zip
-        ${pkgname}.desktop
+source=(http://www.jes-eur.de/userfiles/downloads/jes/jes_10124.zip
+    ${pkgname}.desktop
 	${pkgname}.sh.new
 	LICENSE
 )
@@ -29,7 +29,7 @@ package() {
   # Installing the icons
   install -D -m644 ${pkgname}.png ${pkgdir}/usr/share/icons/hicolor/128x128/apps/${pkgname}.png
 }
-md5sums=('0d60a5e0eb83a1dd302cd3d268337aaa'
-	 'fb13c662b57cf5a59ba54004de735b82'
-	 '611c2047318cbad2e5ae2f186f26593d'
-   '7d5b1e5c39c18e5f943bb35f6bccd62a')
+sha512sums=('d7a831c1251e5c2dbf962d2e2ded99ae6c302df009ec2c2c68e74fd5a280c22920b99d00b9749142cd633bfb4ad0aea76350d4bf61225b0566bf082f35ec0e64'
+            '947316e50858cc0d00f853b17a11fdca733aa6c13c9dc6f0c901a70515bb8eefd8151eba68c39e1bf4e0f6d0f6f252e16d078786ff2b05074584e79714762eed'
+            '869bb56593aeb13e804df88981c83af55f291d7f7531ec8cd1c4847a4fdbed52d4cc11ec7604c07a729504155f25a3f4741f16b444b8dd77249d42299e8bfec0'
+            '7e5cb765fed87f9035bd81c238f3de87b82dfb52197528dd8b647c299cbc11ffe9c0b6fc69cee03a02a0e861dca016a45a2fe8b20c7668725c2009a0c461277f')
