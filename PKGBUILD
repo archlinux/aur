@@ -5,7 +5,7 @@ pkgver=1.2
 pkgrel=2
 pkgdesc="Stable version of Viper the Binary Analysis Framework"
 arch=("any")
-url=("https://github.com/botherder/viper")
+url="https://github.com/botherder/viper"
 license=("BSD")
 depends=(
 "python2-pyexiftool" "python2-pylzma" "python2-bottle" "python2-pyelftools" 
