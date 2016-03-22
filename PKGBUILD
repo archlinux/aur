@@ -1,7 +1,7 @@
 # Based on a PKGBUILD by Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-useraccounts-bzr
-pkgver=r222
+pkgver=r224
 pkgrel=1
 pkgdesc='User accounts plug for Switchboard'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url='https://launchpad.net/switchboard-plug-useraccounts'
 license=('GPL3')
 groups=('pantheon-unstable')
 depends=('glib2' 'glibc' 'gtk3'
-         'libgranite.so' 'libswitchboard-2.0.so')
+         'granite' 'switchboard' 'libpwquality')
 makedepends=('bzr' 'cmake' 'vala')
 provides=('switchboard-plug-useraccounts')
 conflicts=('switchboard-plug-useraccounts')
