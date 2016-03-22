@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <dcelasun[at]gmail[dot]com>
 
 pkgname=snowflake-client
-pkgver=2.7.36
+pkgver=2.7.47
 pkgrel=1
 pkgdesc="Snowflake Database command line and JDBC client"
 arch=('i686' 'x86_64')
