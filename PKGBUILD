@@ -1,7 +1,7 @@
 # Maintainer: lilydjwg <lilydjwg@gmail.com>
 pkgname=you-get-git
 pkgdesc="A YouTube/Youku/Sohu/Tudou/QQ/Sina/PPTV/Xiami/Vimeo/ifeng/AcFun/bilibili/CNTV/... video downloader written in Python 3."
-pkgver=0.4.350.20160319
+pkgver=0.4.350.20160321.1211
 pkgrel=1
 arch=('any')
 url="http://www.soimort.org/you-get/"
@@ -19,7 +19,8 @@ pkgver() {
   cd "$srcdir/$_repo_name"
   _author_ver=$(git describe | sed -e 's/-.*//' -e 's/v//')
   _last_commit_date=$(git log -1 --pretty='%cd' --date=short | tr -d '-')
-  echo $_author_ver.$_last_commit_date
+  _commit_count="$(git rev-list --count HEAD)"
+  echo $_author_ver.$_last_commit_date.$_commit_count
 }
 
 build() {
