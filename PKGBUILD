@@ -8,6 +8,7 @@ pkgdesc="Python interface to Graphviz's Dot Language, updated version"
 url="https://github.com/pydot/pydot-ng"
 depends=('python-pyparsing' 'python-pygraphviz')
 makedepends=('python-setuptools')
+conflicts=('python-pydot')
 #checkdepends=('python-unittest2py3k' 'python-pytest') Test doesn't work current release
 license=('MIT')
 arch=('any')
