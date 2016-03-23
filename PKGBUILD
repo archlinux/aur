@@ -26,13 +26,13 @@
 
 pkgname=catalyst-total-hd234k
 pkgver=13.1
-pkgrel=33.2
+pkgrel=34
 pkgdesc="AMD/ATI legacy drivers. catalyst-hook + catalyst-utils + lib32-catalyst-utils"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('linux>=3.0' 'linux<4.5' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.13.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
+depends=('linux>=3.0' 'linux<4.6' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.13.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
@@ -75,7 +75,7 @@ source=(
     ati_make.sh
     makefile_compat.patch
     catalyst-hook.service
-    
+
     3.5-do_mmap.patch
     arch-fglrx-3.7.patch
     gentoo_linux-3.10-proc.diff
@@ -85,7 +85,7 @@ source=(
     cold-fglrx-3.14-current_euid.patch
     fglrx_gpl_symbol.patch
     kolasa-3.19-get_cpu_var.patch
-    
+
     ubuntu_buildfix_kernel_4.0.patch
     ubuntu_buildfix_kernel_4.1.patch
     arch-fglrx-acpi_handle.patch
@@ -94,7 +94,7 @@ source=(
     4.2-kolasa-fpu_save_init.patch
     4.3-kolasa-seq_printf.patch
     4.3-gentoo-mtrr.patch
-    
+
     gcc5-something_something_the_dark_side.patch
     4.4-arch-block_signals.patch)
 
@@ -123,7 +123,7 @@ md5sums=('c07fd1332abe4c742a9a0d0e0d0a90de'
 	 'ba33b6ef10896d3e1b5e4cd96390b771'
 	 'ef97fc080ce7e5a275fe0c372bc2a418'
 	 '3aa45013515b724a71bbd8e01f98ad99'
-	 
+
 	 '40aaf97acae268f8f7949e0fecb926d9'
 	 '34f818673aec1eb2edb5f913b071ba08'
 	 '645422762125052a0f13ecd03d7bf9dd'
@@ -132,7 +132,7 @@ md5sums=('c07fd1332abe4c742a9a0d0e0d0a90de'
 	 'ccfdf4784735a742c53bdc1309f49a51'
 	 'cdea2b2055df7d843b6096615e82d030'
 	 '98828e3eeaec2b3795e584883cc1b746'
-	 
+
 	 'af80a9eb2016811ab79717c2bd370a25'
 	 'd200e156e941ec7b0227e399fd20a9c2')
 
