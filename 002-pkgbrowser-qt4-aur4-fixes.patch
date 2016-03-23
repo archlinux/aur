@@ -1,0 +1,634 @@
+diff -aur a/pkgbrowser/backend.py b/pkgbrowser/backend.py
+--- a/pkgbrowser/backend.py	2015-03-29 10:41:41.000000000 -0700
++++ b/pkgbrowser/backend.py	2016-03-23 14:13:05.226042675 -0700
+@@ -1,9 +1,9 @@
+-# Copyright (C) 2010-2015, kachelaqa <kachelaqa@gmail.com>
++# Copyright (C) 2010-2016, kachelaqa <kachelaqa@gmail.com>
+ 
+ import sys, os, re, glob, copy, errno, socket, json
+ import urllib.request, urllib.error, http.client
+ from zipfile import ZipFile, BadZipfile
+-from html.parser import HTMLParser, HTMLParseError
++from html.parser import HTMLParser
+ from traceback import format_exception
+ from functools import cmp_to_key
+ from collections import defaultdict
+@@ -11,19 +11,19 @@
+ from threading import Thread
+ from queue import Queue
+ from pkgbrowser import alpm, conf, utils
+-from pkgbrowser.enum import State, Source, Category
++from pkgbrowser.enum import State, Source
+ 
+ 
+ AUR_DOM = os.environ.get('AUR_DOM', 'https://aur.archlinux.org')
+ AUR_RPC = AUR_DOM + '/rpc.php'
+ AUR_HTM = AUR_DOM + '/packages.php'
+-AUR_PKG = AUR_DOM + '%s/PKGBUILD'
++AUR_SRC = AUR_DOM + '/cgit/aur.git/plain/.SRCINFO'
+ PACNET_DOM = ('http://pacnet.karbownicki.com',
+               'http://pacnet.archlinux.pl')
+ PACNET_CAT = '/api/categories/'
+ PACNET_LIST = '/api/category/%s/'
+-ARM_DOM = os.environ.get('ARM_DOM', 'http://repo-arm.archlinuxcn.org')
+-ARM_SEARCH = ARM_DOM + '/search'
++ALA_DOM = os.environ.get('ALA_DOM', 'https://archive.archlinux.org')
++ALA_LIST = ALA_DOM + '/packages/%s/%s/'
+ ARCH_PKG = 'https://www.archlinux.org/packages/%s/%s/%s'
+ 
+ _arch_repos = set([
+@@ -199,24 +199,28 @@
+                             source.extend(entry.decode('utf-8').splitlines())
+             except (IOError, BadZipfile):
+                 cls.clear(key)
+-        if not cls._offline and ARM_DOM:
+-            compare = cmp_to_key(lambda a, b:
+-                alpm.pkg_vercmp(conf.match_pkgfile(b).group(2),
+-                                conf.match_pkgfile(a).group(2)))
+-            urls = [utils.make_url(ARM_SEARCH,
+-                    arch=architectures[0], pkgname=name)
++        if not cls._offline and ALA_DOM:
++            parser = AlaParser()
++            urls = [utils.make_url(ALA_LIST % (name[0], name))
+                     for name in names]
+             downloads = Downloader.download(urls)
+             for index, url in enumerate(urls):
+                 data = downloads.get(url)
+-                if data is not None:
+-                    data = data.decode('utf-8', 'replace')
+-                    for line in data.strip().splitlines():
+-                        try:
+-                            sources[index].append(line.split('|')[4])
+-                        except IndexError:
+-                            pass
+-                    sources[index].sort(key=compare)
++                if data is None:
++                    continue
++                source = sources[index]
++                data = parser.read(data)
++                for arch in architectures:
++                    path = '%s/%s' % (names[index], arch)
++                    if path not in data:
++                        continue
++                    for package in data[path]:
++                        source.append(os.path.join(url, package))
++        compare = cmp_to_key(
++            lambda a, b, cmp=alpm.pkg_vercmp, match=conf.match_pkgfile:
++                cmp(match(b).group(2), match(a).group(2)))
++        for source in sources:
++            source.sort(key=compare)
+         return sources
+ 
+     @classmethod
+@@ -275,6 +279,34 @@
+                 self._tasks.task_done()
+ 
+ 
++class AlaParser(HTMLParser):
++    def __init__(self):
++        HTMLParser.__init__(self)
++
++    def read(self, data):
++        self._link = False
++        self._info = defaultdict(list)
++        self.reset()
++        try:
++            self.feed(data.decode('utf-8', 'replace'))
++        except AssertionError:
++            pass
++        return self._info
++
++    def handle_starttag(self, tag, attrs):
++        self._link = tag == 'a'
++
++    def handle_data(self, data):
++        if self._link:
++            data = data.strip()
++            match = conf.match_pkgfile(data)
++            if match is not None:
++                self._info['%s/%s' % match.group(1, 3)].append(data)
++
++    def handle_endtag(self, tag):
++        self._link = False
++
++
+ class AurParser(HTMLParser):
+     def __init__(self):
+         HTMLParser.__init__(self)
+@@ -286,7 +318,7 @@
+         self.reset()
+         try:
+             self.feed(data.decode('utf-8', 'replace'))
+-        except (HTMLParseError, AssertionError):
++        except AssertionError:
+             pass
+         return self._info
+ 
+@@ -565,10 +597,11 @@
+                 targets['multiinfo'].append(alpm.pkg_get_name(package))
+             for info in self._fetch_packages(targets):
+                 items.append((info['Name'], (
+-                    info['ID'],
+-                    info['URLPath'],
++                    info['PackageBase'],
+                     info['Version'],
+                     info['Maintainer'] or '',
++                    info['NumVotes'],
++                    info['Popularity'],
+                     )))
+         return items
+ 
+@@ -673,7 +706,7 @@
+             def pkg_get_maintainer(item):
+                 name = alpm.pkg_get_name(item)
+                 if name in self._rpcs:
+-                    return self._rpcs[name][3]
++                    return self._rpcs[name][2]
+                 return alpm.pkg_get_packager(item)
+             dispatch = {
+                 'name': alpm.pkg_get_name,
+@@ -697,70 +730,62 @@
+                     key, limit = 'arg[]', 300
+                 else:
+                     key, limit = 'arg', 1
+-                query = defaultdict(list, type=mode, v=2)
++                query = defaultdict(list, type=mode, v=4)
+                 for index, target in enumerate(targets, 1):
+                     query[key].append(target)
+                     if not index % limit or index == last:
+                         urls.append(utils.make_url(AUR_RPC, **query))
+-                        query = defaultdict(list, type=mode, v=2)
++                        query = defaultdict(list, type=mode, v=4)
+             for url, data in Downloader.download(urls).items():
+                 data = json.loads(data.decode('utf-8', 'replace'))
+                 if data['type'] == 'error':
+-                    raise NetworkError(url, data['results'])
++                    raise NetworkError(url, data['error'])
+                 elif data['resultcount']:
+-                    if data['type'] == 'info':
+-                        packages.append(data['results'])
+-                    else:
+-                        packages.extend(data['results'])
++                    packages.extend(data['results'])
+         return packages
+ 
+-    def _fetch_package(self, identifier, urlpath=None, update=False):
++    def _fetch_package(self, name, basename=None, update=False):
+         if not self._offline:
+             info = None
+-            urls = {'rpc': utils.make_url(
+-                    AUR_RPC, type='info', arg=identifier, v=2)}
++            urls = {
++                'rpc': utils.make_url(AUR_RPC, type='info', arg=name, v=4),
++                'htm': utils.make_url(AUR_HTM, N=name),
++                }
+             while True:
+-                if urlpath:
+-                    urls['pkg'] = utils.make_url(
+-                        AUR_PKG % os.path.dirname(urlpath))
+-                    urls['htm'] = utils.make_url(
+-                        AUR_HTM, ID=identifier)
++                if basename:
++                    urls['src'] = utils.make_url(AUR_SRC, h=basename)
+                 downloads = Downloader.download(urls.values())
+-                if info is None:
++                if 'rpc' in urls:
+                     url = urls.pop('rpc')
+                     data = downloads.get(url)
+                     if data is not None:
+                         data = json.loads(data.decode('utf-8', 'replace'))
+                         if data['type'] == 'error':
+-                            raise NetworkError(url, data['results'])
++                            raise NetworkError(url, data['error'])
+                         elif data['resultcount']:
+-                            info = data['results']
+-                            if not urlpath:
+-                                identifier = info['ID']
+-                                urlpath = info['URLPath']
++                            info = data['results'][0]
++                            data = downloads.get(urls.pop('htm'))
++                            if data is not None:
++                                info.update(self._aurparser.read(data))
++                            if not basename:
++                                basename = info['PackageBase']
+                                 continue
+                 if info is not None:
+-                    data = downloads.get(urls['htm'])
+-                    if data is not None:
+-                        info.update(self._aurparser.read(data))
+-                    data = downloads.get(urls['pkg'])
++                    data = downloads.get(urls['src'])
+                     if data is not None:
+-                        pkgbuild = conf.load_pkgbuild(data)[0]
+-                        if pkgbuild:
+-                            info.update(pkgbuild)
++                        info.update(conf.load_srcinfo(name, data))
+                     return AurPackage(info, update=update)
+                 break
+-        return NullPackage(identifier)
++        return NullPackage(name)
+ 
+     def get_package(self, target, location=None, state=State.Unknown):
+         if isinstance(target, Summary):
+             state = target.state
+             if state & State.AUR and not state & State.Installed:
+-                location = target.urlpath
+-                target = target.identifier
++                location = target.basename
+             else:
+                 location = target.repository
+-                target = target.name
++            target = target.name
+         update = bool(state & State.Update)
+         if state & State.AUR and not state & State.Installed:
+             return self._fetch_package(target, location, update)
+@@ -782,10 +807,11 @@
+                         return NullPackage(target)
+             if (local is not None and
+                (not locations or state & State.Installed)):
+-                if state & State.Foreign or state & State.Unknown:
++                if ((state & State.Foreign or state & State.Unknown) and
++                    not state & State.Database):
+                     rpc = self._rpcs.get(target)
+                     if rpc is not None:
+-                        aur = self._fetch_package(rpc[0], rpc[1], update)
++                        aur = self._fetch_package(target, rpc[0], update)
+                         return Package(local, aur)
+                 return Package(local)
+             elif not locations and state & State.Unknown:
+@@ -795,7 +821,8 @@
+                 replacer = alpm.db_find_replacer(target, 0)
+                 if replacer is not None:
+                     return Package(replacer)
+-                return self._fetch_package(target, None, update)
++                if not state & State.Database:
++                    return self._fetch_package(target, None, update)
+         return NullPackage(target)
+ 
+     def find(self, text, filters=0, keys=()):
+@@ -864,8 +891,9 @@
+                 summary.version = package['Version']
+                 summary.repository = 'aur'
+                 summary.state = State.NonInstalled | State.AUR
+-                summary.identifier = package['ID']
+-                summary.urlpath = package['URLPath']
++                summary.basename = package['PackageBase']
++                summary.votes = package['NumVotes']
++                summary.popularity = package['Popularity']
+                 output.append(summary)
+         return output
+ 
+@@ -907,12 +935,12 @@
+                 if summary.repository in (local, 'aur'):
+                     rpc = self._rpcs.get(summary.name)
+                     if rpc is not None:
+-                        identifier, urlpath, version = rpc[:3]
+                         summary.repository = 'aur'
+-                        summary.identifier = identifier
+-                        summary.urlpath = urlpath
+-                        summary.version = version
++                        summary.basename = rpc[0]
++                        summary.version = rpc[1]
+                         summary.state |= State.AUR
++                        summary.votes = rpc[3]
++                        summary.popularity = rpc[4]
+                     elif summary.repository == local:
+                         summary.repository = alpm.pkg_get_repository(package)
+                 if filters & State.Update:
+@@ -937,17 +965,18 @@
+         return self._call([['_list_targets', targets]])
+ 
+     def _list_targets(self, targets):
+-        aur = []
++        unknown = []
+         packages = []
+-        for target in targets:
+-            package = self.get_package(target)
+-            state = package['state']
+-            if state & State.AUR and not state & State.Installed:
+-                aur.append(package.base())
+-            elif not state & State.Unknown:
++        for target in set(targets):
++            package = self.get_package(
++                target, state=(State.Database | State.Unknown))
++            if package['state'] & State.Unknown:
++                unknown.append(target)
++            else:
+                 packages.append((package['repository'], package.base()))
+         items = self._filter_packages(packages)
+-        items.extend(self._filter_aur(aur))
++        items.extend(self._filter_aur(
++            self._fetch_packages({'multiinfo': unknown})))
+         return items
+ 
+     def list_packages(self, filters=0, location=None):
+@@ -1034,11 +1063,12 @@
+     name = ''
+     version = ''
+     repository = ''
+-    identifier = ''
+-    urlpath = ''
++    basename = ''
+     state = 0
+     date = 0
+     size = -1
++    votes = -1
++    popularity = -1
+ 
+ 
+ class BasePackage(object):
+@@ -1282,14 +1312,14 @@
+                 pass
+         elif key == 'votes':
+             try:
+-                return str(int(self._base.get('NumVotes')))
++                return int(self._base.get('NumVotes'))
+             except (ValueError, TypeError):
+                 pass
+-        elif key == 'category':
++        elif key == 'popularity':
+             try:
+-                return int(self._base.get('CategoryID'))
++                return float(self._base.get('Popularity'))
+             except (ValueError, TypeError):
+-                return Category.Unknown
++                pass
+         elif key == 'repository':
+             return 'aur'
+         elif key == 'installed':
+diff -aur a/pkgbrowser/conf.py b/pkgbrowser/conf.py
+--- a/pkgbrowser/conf.py	2015-03-29 10:41:40.000000000 -0700
++++ b/pkgbrowser/conf.py	2016-03-23 11:06:00.000000000 -0700
+@@ -122,62 +122,45 @@
+             zip.writestr(path, '\n'.join(filenames).encode('utf-8'))
+     return ZipFile(temp)
+ 
+-def load_pkgbuild(data):
+-    pkgbuild = {}
+-    errors = None
+-    if data:
+-        if b'\r' in data:
+-            data = b'\n'.join(data.splitlines())
+-        cwd = tempfile.mkdtemp()
+-        env = dict(os.environ)
+-        env['PATH'] = ''
+-        env['CARCH'] = os.uname()[4]
+-        process = Popen(['/bin/bash', '--noprofile', '--norc', '-r'],
+-                        stdin=PIPE, stdout=PIPE, stderr=PIPE,
+-                        env=env, cwd=cwd)
+-        output, errors = process.communicate(data + br"""
+-            print_args() {
+-                if [ -n "$2" ]; then
+-                    echo "$1"
+-                    shift
+-                    for arg in "$@"; do
+-                        echo -e "\t$arg"
+-                    done
+-                    echo
+-                fi
+-            }
+-            echo -ne "\f\n"
+-            print_args '@name' "${pkgname[@]}"
+-            print_args '^version' "${pkgver:+$pkgver${pkgrel:+-$pkgrel}}"
+-            print_args '^description' "$pkgdesc"
+-            print_args '^url' "$url"
+-            print_args '@license' "${license[@]}"
+-            print_args '@groups' "${groups[@]}"
+-            print_args '@arch' "${arch[@]}"
+-            print_args '@conflicts' "${conflicts[@]}"
+-            print_args '@depends' "${depends[@]}"
+-            print_args '@makedepends' "${makedepends[@]}"
+-            print_args '@optdepends' "${optdepends[@]}"
+-            print_args '@provides' "${provides[@]}"
+-            print_args '@replaces' "${replaces[@]}"
+-            """)
+-        output = output.decode('utf-8', 'replace').partition('\f\n')[-1]
+-        for line in output.splitlines(True):
+-            start = line[0]
+-            line = line[1:].strip()
+-            if start == '^':
+-                key, value = line, ''
+-            elif start == '@':
+-                key, value = line, []
+-            elif start == '\t':
+-                if isinstance(value, list):
+-                    value.append(line)
++def load_srcinfo(pkgname, data):
++    if isinstance(data, bytes):
++        data = data.decode('utf-8', 'replace')
++    keys = {
++        'name': True,
++        'version': False,
++        'description': False,
++        'url': False,
++        'license': True,
++        'groups': True,
++        'arch': True,
++        'conflicts': True,
++        'depends': True,
++        'makedepends': True,
++        'optdepends': True,
++        'provides': True,
++        'replaces': True,
++        }
++    pkgbase = {}
++    srcinfo = {}
++    info = None
++    for line in data.splitlines():
++        key, sep, value = [part.strip() for part in line.partition('=')]
++        if line.startswith('\t'):
++            if info is not None and key in keys:
++                if keys[key]:
++                    if key in info:
++                        info[key].append(value)
++                    else:
++                        info[key] = [value]
+                 else:
+-                    value = line
+-            else:
+-                pkgbuild[key] = value
+-        shutil.rmtree(cwd, True)
+-    return pkgbuild, errors or None
++                    info[key] = value
++        elif key == 'pkgbase':
++            pkgbase.clear()
++            info = pkgbase
++        elif key == 'pkgname' and value == pkgname:
++            info = srcinfo
++    srcinfo.update(pkgbase)
++    return srcinfo
+ 
+ def _process_archive(args):
+     path, root, urls, comment = args
+diff -aur a/pkgbrowser/enum.py b/pkgbrowser/enum.py
+--- a/pkgbrowser/enum.py	2015-03-29 10:41:40.000000000 -0700
++++ b/pkgbrowser/enum.py	2016-03-23 11:06:00.000000000 -0700
+@@ -17,6 +17,7 @@
+     Group = alpm.PKG_STATUS_MAX << 1
+     Category = alpm.PKG_STATUS_MAX << 2
+     Unknown = alpm.PKG_STATUS_MAX << 3
++    Database = alpm.PKG_STATUS_MAX << 4
+     del alpm
+ 
+ 
+@@ -44,26 +45,3 @@
+     Foreign = 4
+     Group = 8
+     AUR = 16
+-
+-
+-class Category(object):
+-    Unknown = 1
+-    Daemons = 2
+-    Development = 3
+-    Editors = 4
+-    Emulators = 5
+-    Games = 6
+-    Gnome = 7
+-    I18n = 8
+-    KDE = 9
+-    Libraries = 10
+-    Modules = 11
+-    Multimedia = 12
+-    Network = 13
+-    Office = 14
+-    Science = 15
+-    System = 16
+-    X11 = 17
+-    Xfce = 18
+-    Kernels = 19
+-    Fonts = 20
+diff -aur a/pkgbrowser/fmt.py b/pkgbrowser/fmt.py
+--- a/pkgbrowser/fmt.py	2015-03-29 10:41:40.000000000 -0700
++++ b/pkgbrowser/fmt.py	2016-03-23 11:06:00.000000000 -0700
+@@ -3,7 +3,7 @@
+ import os
+ from datetime import datetime
+ from email.utils import parsedate
+-from pkgbrowser.enum import State, Validation, Category, Backup
++from pkgbrowser.enum import State, Validation, Backup
+ 
+ 
+ class Format(object):
+@@ -22,6 +22,14 @@
+         return '%.*f GiB' % (precision, size / 1024)
+ 
+     @staticmethod
++    def number(number, precision=2, signed=False):
++        if signed or number >= 0:
++            if isinstance(number, float):
++                return '%.*f' % (precision, number)
++            return str(number)
++        return ''
++
++    @staticmethod
+     def date(date, locale=True):
+         result = ''
+         if isinstance(date, str):
+@@ -111,8 +119,8 @@
+             rows.append(('state', self.tr('Status')))
+             rows.append(('repository', self.tr('Repository')))
+             if state & State.AUR:
+-                rows.append(('category', self.tr('Category')))
+                 rows.append(('votes', self.tr('Votes')))
++                rows.append(('popularity', self.tr('Popularity')))
+                 rows.append(('outdated', self.tr('Out Of Date')))
+             rows.append(('groups', self.tr('Groups')))
+             rows.append(('provides', self.tr('Provides')))
+@@ -223,6 +231,9 @@
+         dates = set((
+             'installed', 'built', 'submitted', 'modified', 'outdated',
+             ))
++        numbers = set((
++            'votes', 'popularity',
++            ))
+         flagged = dates.union((
+             'name', 'version', 'description', 'packager',
+             ))
+@@ -272,11 +283,11 @@
+                             value = self.tr('Yes')
+                         else:
+                             value = self.tr('No')
+-                    elif key == 'category':
+-                        value = self.category(value)
+                     else:
+                         if key == 'size' or key == 'download':
+                             value = self.size(value)
++                        elif key in numbers:
++                            value = self.number(value)
+                         elif key in dates:
+                             value = self.date(value)
+                         if not value:
+@@ -408,45 +419,3 @@
+         if not string:
+             string = self.tr('Unknown')
+         return string
+-
+-    def category(self, identifier):
+-        if identifier == Category.Daemons:
+-            return self.tr('Daemons')
+-        elif identifier == Category.Development:
+-            return self.tr('Development')
+-        elif identifier == Category.Editors:
+-            return self.tr('Editors')
+-        elif identifier == Category.Emulators:
+-            return self.tr('Emulators')
+-        elif identifier == Category.Games:
+-            return self.tr('Games')
+-        elif identifier == Category.Gnome:
+-            return self.tr('Gnome')
+-        elif identifier == Category.I18n:
+-            return self.tr('I18n')
+-        elif identifier == Category.KDE:
+-            return self.tr('KDE')
+-        elif identifier == Category.Kernels:
+-            return self.tr('Kernels')
+-        elif identifier == Category.Libraries:
+-            return self.tr('Libraries')
+-        elif identifier == Category.Modules:
+-            return self.tr('Modules')
+-        elif identifier == Category.Multimedia:
+-            return self.tr('Multimedia')
+-        elif identifier == Category.Network:
+-            return self.tr('Network')
+-        elif identifier == Category.Office:
+-            return self.tr('Office')
+-        elif identifier == Category.Science:
+-            return self.tr('Science')
+-        elif identifier == Category.System:
+-            return self.tr('System')
+-        elif identifier == Category.X11:
+-            return self.tr('X11')
+-        elif identifier == Category.Xfce:
+-            return self.tr('Xfce')
+-        elif identifier == Category.Fonts:
+-            return self.tr('Fonts')
+-        else:
+-            return self.tr('Unknown')
+diff -aur a/pkgbrowser/window.py b/pkgbrowser/window.py
+--- a/pkgbrowser/window.py	2015-03-29 10:45:16.000000000 -0700
++++ b/pkgbrowser/window.py	2016-03-23 11:06:00.000000000 -0700
+@@ -71,6 +71,8 @@
+             self.tr('Status'),
+             self.tr('Date'),
+             self.tr('Size'),
++            self.tr('Votes'),
++            self.tr('Popularity'),
+             ])
+         self.packages.setModel(model)
+         self.packages.header().setMovable(False)
+@@ -1081,9 +1083,14 @@
+                 QStandardItem(status, self.format.status(item.state, False)),
+                 QStandardItem(self.format.date(item.date, False)),
+                 QStandardItem(self.format.size(item.size)),
++                QStandardItem(self.format.number(item.votes)),
++                QStandardItem(self.format.number(item.popularity)),
+                 )
+             row[0].setData(item, Qt.UserRole)
++            row[4].setData(item.date, Qt.UserRole)
+             row[5].setData(item.size, Qt.UserRole)
++            row[6].setData(item.votes, Qt.UserRole)
++            row[7].setData(item.popularity, Qt.UserRole)
+             if item.state & State.NonInstalled:
+                 row[5].setForeground(disabled)
+             if item.state & State.Group:

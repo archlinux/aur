@@ -6,8 +6,8 @@
 pkgname=pkgbrowser-qt4
 _pkgname=pkgbrowser
 pkgver=0.18.1
-pkgrel=2
-pkgdesc="A utility for browsing pacman databases and the AUR (Qt4 Version)"
+pkgrel=3
+pkgdesc="A utility for browsing pacman databases and the AUR (Qt4 version)"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/kachelaqa/pkgbrowser"
 license=('GPL2')
@@ -17,14 +17,18 @@ conflicts=($_pkgname)
 replaces=($_pkgname)
 install=pkgbrowser.install
 source=("$url/downloads/$_pkgname-$pkgver.tar.gz"
-        '001-pkgbrowser-qt4-fixes.patch')
+        '001-pkgbrowser-qt4-build-fixes.patch'
+        '002-pkgbrowser-qt4-aur4-fixes.patch')
 sha256sums=('5edcb712ac97b0a616a2bfbee07a4549b4cc8f5e2d777b2e0d12015554e2189b'
-            '9de7d8bcd20177e2c978a6df88948b6a1c19704e211f3a7a2d9378a797631aea')
+            'dbf6b6883759a5a05cfe88f2dab510cf8d1ce1a258bb1f9087eb351fffe0b9b1'
+            'dc5bb5cbe809183648f44861f779fc1fa1d88217f357c423198acff0c10d3911')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
   # fixes to enable building Qt4 version - see https://bbs.archlinux.org/viewtopic.php?pid=1578506#p1578506
-  patch -Np1 -i ../001-pkgbrowser-qt4-fixes.patch
+  patch -Np1 -i ../001-pkgbrowser-qt4-build-fixes.patch
+  # fixes for AUR4 and Arch Linux Archive
+  patch -Np1 -i ../002-pkgbrowser-qt4-aur4-fixes.patch
 }
 
 build() {

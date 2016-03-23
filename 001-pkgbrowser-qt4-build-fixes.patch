@@ -20,24 +20,3 @@ diff -aur a/Makefile b/Makefile
  	install -m 644 $(APPNAME).desktop $(DESKTOPDIR)
  	install -m 644 icons/app.png $(ICONDIR)/$(APPNAME).png
  	install -m 755 $(APPNAME).sh $(BINDIR)/$(APPNAME)
-diff -aur a/pkgbrowser/backend.py b/pkgbrowser/backend.py
---- a/pkgbrowser/backend.py	2015-03-29 10:41:41.000000000 -0700
-+++ b/pkgbrowser/backend.py	2015-11-13 20:15:15.105038000 -0700
-@@ -3,7 +3,7 @@
- import sys, os, re, glob, copy, errno, socket, json
- import urllib.request, urllib.error, http.client
- from zipfile import ZipFile, BadZipfile
--from html.parser import HTMLParser, HTMLParseError
-+from html.parser import HTMLParser
- from traceback import format_exception
- from functools import cmp_to_key
- from collections import defaultdict
-@@ -286,7 +286,7 @@
-         self.reset()
-         try:
-             self.feed(data.decode('utf-8', 'replace'))
--        except (HTMLParseError, AssertionError):
-+        except AssertionError:
-             pass
-         return self._info
- 
