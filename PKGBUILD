@@ -42,6 +42,6 @@ pkgver() {
 }
 
 package() {
-    install -d ${pkgdir}/usr/share/themes
-    cp --no-preserve=mode -r ${srcdir}/*/ ${pkgdir}/usr/share/themes
+  install -d ${pkgdir}/usr/share/themes
+  cp --no-preserve=mode -r ${srcdir}/*/ ${pkgdir}/usr/share/themes
 } 
