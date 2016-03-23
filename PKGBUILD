@@ -1,8 +1,8 @@
 # Maintainer: valvetime <valvetimepackages@gmail.com>
 pkgname=telive
-pkgver=20151213_2
+pkgver=r94.278086d
 pkgrel=1
-epoch=2
+epoch=3
 pkgdesc="application for monitoring and listening to TETRA voice channels"
 arch=('any')
 url="https://github.com/sq5bpf/telive"
@@ -23,11 +23,19 @@ source=(${pkgname}::"git+https://github.com/sq5bpf/telive")
 noextract=()
 md5sums=('SKIP')
 
+
 build() {
  cd "$srcdir/$pkgname"
 
-  make
+  make -j4
 }
+
+
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 
 package() {
 
