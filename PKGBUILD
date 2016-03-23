@@ -1,5 +1,5 @@
 pkgname=openvr-git
-pkgver=33.f7540f6
+pkgver=36.ab6a7e4
 pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware from multiple vendors. Contains API and samples. The runtime is under SteamVR in Tools on Steam. Note: There's no compositor for linux, so try with hellovr -nocompositor"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('custom')
 depends=('libgl' 'sdl2' 'glew')
 optdepends=("oculus-udev: Udev rule to make the rift sensors usable to the user \"plugdev\""
             "steam: For SteamVR (Duh)")
-makedepends=('git' 'cmake')
+makedepends=('git' 'cmake' 'qt5-base') #qt5 for the overlayexample
 provides=("openvr")
 options=('!strip' 'staticlibs')
 
@@ -21,24 +21,23 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-prepare() {
-  cd "$srcdir/openvr"
-}
-
 build() {
   #export CXX=clang++
   #export CC=clang
 
   mkdir -p build
-  rm -rf build/*
+  #rm -rf build/*
   cd build
 
   #TODO: rpath will be set to build tree
   # it would be cleared by make install, but I have no install target yet. But it's not a problem, so I leave it be
   # http://www.cmake.org/Wiki/CMake_RPATH_handling#Always_full_RPATH
-  cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=Release  ../openvr
+  cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=Release ../openvr
   make
 
+  cd "$srcdir/openvr/samples/helloworldoverlay"
+  qmake-qt5 helloworldoverlay.pro
+  make
 }
 
 package() {
@@ -52,6 +51,8 @@ package() {
   install "$srcdir/openvr/headers"/* "$pkgdir/usr/include/"
   install -m 555 "$srcdir/openvr/lib/linux64/libopenvr_api.so" "$pkgdir/usr/lib"
   install -m 755 "$srcdir/build/samples/hellovr_opengl/hellovr" "$pkgdir/usr/bin"
+
+  install -m 755 "$srcdir/openvr/samples/bin/win32/HelloWorldOverlay" "$pkgdir/usr/bin/openvr-HelloWorldOverlay"
 }
 
 # vim:set ts=2 sw=2 et:
