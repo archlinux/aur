@@ -1,4 +1,4 @@
-# Maintainer: Lit Wakefield <noct[at]openmailbox[dot]org>
+# Maintainer: Fox Kiester <noct[at]openmailbox[dot]org>
 _pkgname=zscroll
 pkgname=zscroll-git
 pkgver=0.1.r5.gd42dc2c
