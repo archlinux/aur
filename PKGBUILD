@@ -15,13 +15,13 @@ _kernver=`uname -r`
 
 pkgname=catalyst
 pkgver=15.9
-pkgrel=9
+pkgrel=10
 _amdver=15.201.1151
 pkgdesc="AMD/ATI Catalyst drivers for linux. fglrx kernel module only. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
-depends=('linux>=3.0' 'linux<4.5' 'catalyst-utils')
+depends=('linux>=3.0' 'linux<4.6' 'catalyst-utils')
 makedepends=('gcc-libs' 'gcc>4.0.0' 'make' 'linux-headers')
 conflicts=('catalyst-test')
 install=catalyst.install

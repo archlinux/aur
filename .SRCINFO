@@ -1,7 +1,7 @@
 pkgbase = catalyst
 	pkgdesc = AMD/ATI Catalyst drivers for linux. fglrx kernel module only. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED
 	pkgver = 15.9
-	pkgrel = 9
+	pkgrel = 10
 	url = http://www.amd.com
 	install = catalyst.install
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = catalyst
 	makedepends = make
 	makedepends = linux-headers
 	depends = linux>=3.0
-	depends = linux<4.5
+	depends = linux<4.6
 	depends = catalyst-utils
 	conflicts = catalyst-test
 	source = http://www2.ati.com/drivers/linux/amd-catalyst-15.9-linux-installer-15.201.1151-x86.x86_64.zip
