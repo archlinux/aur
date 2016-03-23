@@ -9,11 +9,14 @@ arch=('any')
 url="http://opendesktop.org/content/show.php?content=170523"
 license=('GPL3')
 optdepends=("gtk-engine-murrine: for GTK2 themes")
-source=("http://gnome-look.org/CONTENT/content-files/${url##*=}-Dark-Aurora.tar.gz")
-sha256sums=('506332ec0d86b90f0e41be79875fa7b40bb923caf01c1412cf02020a6d056f28')
+source=("version.html::$url"
+        "http://gnome-look.org/CONTENT/content-files/${url##*=}-Dark-Aurora.tar.gz")
+sha256sums=('68991e89036a271fec7f8b6408416a6c2817f298ef326365117fe41b1b5222b5'
+            '506332ec0d86b90f0e41be79875fa7b40bb923caf01c1412cf02020a6d056f28')
 
 pkgver() {
-  echo -n "3.18."
+  sed -n 's/.*<h1.*>Dark Aurora<\/h1>.*<span class="contentdata">\([^<]\+\)<\/span>.*/\1/p' \
+    version.html | tr '\n' '.'
   while read -rd $'\0'
   do
     if [[ "$REPLY" -gt "$max" ]]
