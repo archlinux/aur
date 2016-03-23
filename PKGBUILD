@@ -3,16 +3,16 @@
 # Based on [r-devel@AUR](https://aur.archlinux.org/packages/r-devel) by Florian Breitwieser <florian.bw@gmail.com>
 
 pkgname=r-devel-svn
-pkgver=r68565
+pkgver=r70364
 pkgrel=1
 pkgdesc="Language and environment for statistical computing and graphics - development version (SVN)"
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://www.r-project.org/'
-depends=('blas' 'lapack' 'bzip2'  'libpng' 'libjpeg' 'libtiff'
+depends=('blas' 'lapack' 'bzip2' 'libpng' 'libjpeg' 'libtiff'
          'ncurses' 'pcre' 'readline' 'zlib' 'perl' 'gcc-libs'
          'tk' 'libxt' 'libxmu' 'pango' 'xz')
-makedepends=('gcc-fortran')
+makedepends=('gcc-fortran' 'subversion')
 conflicts=('r-devel') # r-devel.{png,desktop}, etc/r-devel /usr/bin entries
 backup=("etc/r-devel/Makeconf" "etc/r-devel/Renviron" "etc/r-devel/ldpaths" "etc/r-devel/repositories")
 options=('!makeflags')
