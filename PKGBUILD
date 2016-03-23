@@ -6,7 +6,7 @@
 # untrue.
 
 pkgname=adsf
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='A tiny web server that you can launch instantly in any directory.'
 arch=(any)
@@ -19,7 +19,7 @@ conflicts=(ruby-adsf)
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${pkgname}-${pkgver}.gem")
 noextract=("${pkgname}-${pkgver}.gem")
-sha256sums=('a92d7310c3c27418ee5f6126df9cd20a95d3e4c277c1f7f24a4cc7102e720b62')
+sha256sums=('f033c96db152c917bdfdc8ac9d31a35cc80a5170536abba08e90f4543c3899a8')
 
 package() {
   # install gem
