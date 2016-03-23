@@ -1,6 +1,6 @@
 # Maintainer: McLenin <mclenin at gooogles email>
 pkgname=texlive-acrotex
-pkgver=7.7g
+pkgver=7.7h
 pkgrel=1
 license=('GPL')
 depends=('texlive-core')
@@ -9,11 +9,11 @@ url="http://www.ctan.org/tex-archive/macros/latex/contrib/acrotex"
 arch=('any')
 install=texlive-acrotex.install
 source=(http://mirrors.ctan.org/macros/latex/contrib/acrotex.zip)
-md5sums=('479035c2ef622a5d7c4d27684c1aa8fc')
-sha1sums=('b8d9d2ee96c1e4fae7a80bee23283ed106a82919')
-sha256sums=('671229ec74a79e029163fe29ecac11cb3037bd5461f614060dd58455ff362d94')
-sha384sums=('6aabf3aef7ee99ae2ce220d8e230695337ca41ac5b7a43b51fcc071bf97f17e34431ba1210aa594e2e165662caa053a2')
-sha512sums=('e3a9b3a756fcd28471031b42e521701abd0d5294734f18184520db9da60381bb673ee708655ca339a57e9ce5926d324acfc6ac533ce06a3a411bffb540fc5668')
+md5sums=('1beceecb5782954f405992f8f93047d0')
+sha1sums=('54997de0cc5b421780f9bb2591daacc8acef8235')
+sha256sums=('2ffec0649bc5adcdfcd46f9932a78c4ddaba48ebba1fdb27f9ac03b2648b62d6')
+sha384sums=('11ee2e2197396593030cf719257fedee2e21f81aee92e3c935b23188f8987f82c124172fe1ff84c9ceb14cb03897a670')
+sha512sums=('03e82b6bf02e5d572d54856189d852fb05e748ae42541a2e8b26b9bc90ea6db830bed2e35f4e0760d1a297a2c6d6c6a6fc4aa20099770ec1cb7532ef319e71aa')
 
 build()
 {
