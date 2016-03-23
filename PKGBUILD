@@ -2,7 +2,7 @@
 pkgname=ttf-sparks-ffa
 _realname=Amerika
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Free sparks scrapbook miniatures" 
 arch=('any')
 license=('custom')
@@ -15,7 +15,7 @@ md5sums=('2ade7bd63b79739ef51862c2824b2062')
 
 package() {
   cd $srcdir
-  mv 'SPARKS Free-for-All.TTF' sparks-ffa.ttf
+  mv 'SPARKS Scrapbook.TTF' sparks-scrapbook.ttf
   install -d $pkgdir/usr/share/fonts/TTF/
   install -m644 *.ttf $pkgdir/usr/share/fonts/TTF/ || return 1
   install -Dm644 *.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
