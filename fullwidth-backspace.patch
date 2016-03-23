@@ -35,3 +35,16 @@
  }
  
  /* VT100 alignment test. */
+--- a/tmux-2.1/utf8.c	2016-03-24 00:05:38.096784610 +0800
++++ b/tmux-2.1/utf8.c	2016-03-24 00:07:48.045489630 +0800
+@@ -193,6 +193,10 @@
+ 	{ 0x02060, 0x02063, 0, NULL, NULL },
+ 	{ 0x00c3e, 0x00c40, 0, NULL, NULL },
+ 	{ 0x10a05, 0x10a06, 0, NULL, NULL },
++
++	{ 0x025a0, 0x027c0, 2, NULL, NULL },
++	{ 0x02b00, 0x02c00, 2, NULL, NULL },
++	{ 0x1f300, 0x1f700, 2, NULL, NULL },
+ };
+ 
+ struct utf8_width_entry	*utf8_width_root = NULL;

@@ -15,7 +15,7 @@ provides=('tmux')
 conflicts=('tmux')
 md5sums=('74a2855695bccb51b6e301383ad4818c'
          '71601bc37fa44e4395580b321963018e'
-         'b9ff3b7e4f214d13aaaea0629dae4689')
+         'b1377bfcce58b627c5cfa32913493cf6')
 
 prepare() {
 	patch -p1 < ../fullwidth-backspace.patch
