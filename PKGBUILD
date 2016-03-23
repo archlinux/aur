@@ -10,14 +10,17 @@ url="http://g95.sourceforge.net"
 license=("GPL")
 depends=('blas' 'lapack' 'gcc-libs' )
 provides=('g95')
-if [ "$CARCH" == "i686" ]; then
-source=(http://ftp.g95.org/g95-x86-linux.tgz g95.install)
-md5sums=('815ca0a16198e6334e8661cd276bd5a4'
-         '852098b27f3b5b8154bcb38a2350a7bb')
+
+if [ "$CARCH" = "i686" ]; then
+  source=(http://ftp.g95.org/g95-x86-linux.tgz g95.install)
+  md5sums=('663c7cc38029ab13f6d87ec21295e1fc'
+	   '852098b27f3b5b8154bcb38a2350a7bb')
 fi
 
-if [ "$CARCH" == "x86_64" ]; then
-source=(http://ftp.g95.org/g95-x86_64-64-linux.tgz g95.install)
+if [ "$CARCH" = "x86_64" ]; then
+  source=(http://ftp.g95.org/g95-x86_64-64-linux.tgz g95.install)
+  md5sums=('815ca0a16198e6334e8661cd276bd5a4'
+	   '852098b27f3b5b8154bcb38a2350a7bb')
 fi 
 
 build() {
