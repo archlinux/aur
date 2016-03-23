@@ -6,9 +6,9 @@ pkgbase = aurora-themes
 	arch = any
 	license = GPL3
 	optdepends = gtk-engine-murrine: for GTK2 themes
-	source = version.html::http://opendesktop.org/content/show.php?content=170523
+	source = version::version://opendesktop.org/content/show.php?content=170523
 	source = http://gnome-look.org/CONTENT/content-files/170523-Dark-Aurora.tar.gz
-	sha256sums = 68991e89036a271fec7f8b6408416a6c2817f298ef326365117fe41b1b5222b5
+	sha256sums = 6f34484abaf76f7175264de32610a92447408d63c06a91dfb6e5744023e8d831
 	sha256sums = 506332ec0d86b90f0e41be79875fa7b40bb923caf01c1412cf02020a6d056f28
 
 pkgname = aurora-themes
