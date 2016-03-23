@@ -1,7 +1,7 @@
-# Maintainer: Carl George < arch at cgtx dot us >
+# Maintainer: David McInnis <davidm@eagles.ewu.edu>
+# Contributer: Carl George < arch at cgtx dot us >
 
 _name="traceback2"
-
 pkgname=("python-traceback2")
 pkgver="1.4.0"
 pkgrel="2"
