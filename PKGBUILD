@@ -3,7 +3,7 @@
 pkgname=('python-pydot-ng')
 _module='pydot_ng'
 pkgver='1.0.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface to Graphviz's Dot Language, updated version"
 url="https://github.com/pydot/pydot-ng"
 depends=('python-pyparsing' 'python-pygraphviz')
