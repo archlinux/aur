@@ -1,9 +1,9 @@
 # Maintainer: valvetime <valvetimepackages@gmail.com>
 
 pkgname=osmo-tetra-sq5bpf-git
-pkgver=20151213
+pkgver=7c1a853
 pkgrel=1
-epoch=2
+epoch=3
 pkgdesc="TETRA receiver / decoder (sq5bpf's fork). Uses gnuradio. See http://www.rtl-sdr.com/rtl-sdr-tutorial-listening-tetra-radio-channels/ for usage instructions."
 arch=('any')
 url="https://github.com/sq5bpf/osmo-tetra-sq5bpf"
@@ -14,6 +14,7 @@ makedepends=('git')
 source=(${pkgname}::"git+https://github.com/sq5bpf/osmo-tetra-sq5bpf")
 sha256sums=('SKIP')
 
+
 build() {        
 
 #the actual building
@@ -23,7 +24,10 @@ cd "${srcdir}/${pkgname}/src"
         make -j4
 
 
-
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 
 #we need to apply patches because currently gnuradio has no support for python 3, however arch ships it as default
