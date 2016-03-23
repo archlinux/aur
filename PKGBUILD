@@ -25,7 +25,7 @@ _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 
 # PKGBUILD
 
-pkgrel=3
+pkgrel=4
 _piver=3
 
 _pkgvermajmin="5.7"
@@ -108,9 +108,6 @@ fi
 if $_build_from_head; then
   _device_configure_flags="$_device_configure_flags -skip qt3d -skip qtsystems -skip qttools -skip qtwebkit"
 fi
-
-# bug(s) in Qt 5.7.0-alpha
-_device_configure_flags="$_device_configure_flags -skip qtlocation"
 
 build() {
   local _srcdir="${srcdir}/${_source_unpackaged_name}"
