@@ -10,11 +10,11 @@ url="http://www.ubuntukylin.com/applications/showimg.php?lang=cn&id=21"
 depends=('qt4' 'zlib' 'freetype2' 'libsm' 'libxrender' 'libxext' 'bzip2' 'icu' 'rtmpdump' 'crypto++' 'nss' 'libqxt')
 
 if [ "$CARCH" = "i686" ]; then
-    source="http://archive.ubuntukylin.com:10006/ubuntukylin/pool/main/k/kuaipan4uk/kuaipan4uk_2.0.0.5_i386.deb"
-    md5sums='a0ab89a03317d75d9c2cf2baa884e679'
+    source=("http://archive.ubuntukylin.com:10006/ubuntukylin/pool/main/k/kuaipan4uk/kuaipan4uk_2.0.0.5_i386.deb")
+    md5sums=('a0ab89a03317d75d9c2cf2baa884e679')
 elif [ "$CARCH" = "x86_64" ]; then
-    source="http://archive.ubuntukylin.com:10006/ubuntukylin/pool/main/k/kuaipan4uk/kuaipan4uk_2.0.0.5_amd64.deb"
-    md5sums='bdc0c8fd53b22239f49b67c48aa31abc'
+    source=("http://archive.ubuntukylin.com:10006/ubuntukylin/pool/main/k/kuaipan4uk/kuaipan4uk_2.0.0.5_amd64.deb")
+    md5sums=('bdc0c8fd53b22239f49b67c48aa31abc')
 fi
 
 #Check if libcurl exists
