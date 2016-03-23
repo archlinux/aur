@@ -1,14 +1,14 @@
 pkgbase = catalyst-test
 	pkgdesc = AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. PRE-GCN Radeons ARE NOT SUPPORTED
 	pkgver = 15.12
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.amd.com
 	install = catalyst-test.install
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = linux>=3.0
-	depends = linux<4.5
+	depends = linux<4.6
 	depends = linux-headers
 	depends = xorg-server>=1.7.0
 	depends = xorg-server<1.18.0
