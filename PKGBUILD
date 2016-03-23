@@ -5,10 +5,14 @@
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
 
 pkgname=acroread-fonts-systemwide
+epoch=1
 _cloudver=DC
-_ver=2015.007.20033
+_ver=2015.010.20060
+_fontpackver=2015.007.20033
 _shortver=${_ver:2}
 _nodotver=${_shortver//.}
+_fpshortver=${_fontpackver:2}
+_fpnodotver=${_fpshortver//.}
 pkgver=${_cloudver}_${_ver}
 pkgrel=1
 pkgdesc="Fonts from Adobe Acrobat Reader ${_cloudver}"
@@ -23,9 +27,9 @@ conflicts=('ttf-adobe-fonts'
            'acroread-font-chinese-simplified')
 install=$pkgname.install
 source=("http://ardownload.adobe.com/pub/adobe/reader/win/Acrobat${_cloudver}/${_nodotver}/AcroRdr${_cloudver}${_nodotver}_en_US.exe"
-        "http://ardownload.adobe.com/pub/adobe/reader/win/Acrobat${_cloudver}/misc/FontPack${_nodotver}_XtdAlf_Lang_${_cloudver}.msi")
+        "http://ardownload.adobe.com/pub/adobe/reader/win/Acrobat${_cloudver}/misc/FontPack${_fpnodotver}_XtdAlf_Lang_${_cloudver}.msi")
 noextract=("AcroRdr${_cloudver}${_nodotver}_en_US.exe")
-sha256sums=('95ed14e72dac27d727fc0844706396b9694d44c0ef5e466b088497c7c262baf8'
+sha256sums=('9d534e8736426b811ec35cef7d25b8f26099f355003362d969c74beaf8025f7e'
             '38ca687a30e3b40a9e8ba24275e4619db9914a572b7b6a5d6de1df452e0a7a47')
 
 prepare() {
@@ -34,7 +38,7 @@ prepare() {
   7z -i!Data1.cab e AcroRdr${_cloudver}${_nodotver}_en_US.exe
   7z -i!*.otf e Data1.cab
   7z -i!license.html19 e Data1.cab
-  7z -i\!*.o* e FontPack${_nodotver}_XtdAlf_Lang_${_cloudver}.msi
+  7z -i\!*.o* e FontPack${_fpnodotver}_XtdAlf_Lang_${_cloudver}.msi
   mv adobedevanagari_bolditalic.o adobedevanagari_bolditalic.otf
 }
 
