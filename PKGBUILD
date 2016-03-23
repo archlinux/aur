@@ -1,4 +1,4 @@
-# Maintainer: Lit Wakefield <noct[at]openmailbox[dot]org>
+# Maintainer: Fox Kiester <noct[at]openmailbox[dot]org>
 
 _pkgname=tdrop
 pkgname=tdrop-git
