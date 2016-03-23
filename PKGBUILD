@@ -19,9 +19,11 @@ backup=()
 options=()
 install=
 changelog=
-source=('horizon-launcher-git::git+https://github.com/horizonlauncher/client.git')
+source=('horizon-launcher-git::git+https://github.com/horizonlauncher/client.git'
+	'horizon-launcher.desktop')
 noextract=()
-md5sums=('SKIP')
+sha256sums=('SKIP'
+	'cfae40664d6fca23ae03721142f88bb3b65f0ebd5b7dd1fdb141ce91f9130d30')
 validpgpkeys=()
 
 pkgver() {
@@ -44,8 +46,12 @@ build() {
 
 package() {
 	cd "$pkgname"
+
+	# The application
 	install -Dm755 build/HorizonLauncher "$pkgdir/usr/bin/horizon-launcher"
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 
-	cd .. && rm -rf build
+	# .desktop file and icon
+	install -Dm644 "$srcdir/horizon-launcher.desktop" "$pkgdir"/usr/share/applications/horizon-launcher.desktop
+	install -Dm644 Resource/Icons/Horizon_Icon.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/horizon-launcher.png
 }
