@@ -1,23 +1,22 @@
-# Maintainer: James W. Barnett <jbarnet4 at tulane dot edu>
+# Maintainer: jerry73204 <jerry73204@gmail.com>
 pkgname=msjnc
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="MadScientist's JNC Session Manager"
-arch=('x86_64')
-url="https://github.com/madscientist/msjnc"
+arch=('any')
+url='https://github.com/madscientist/msjnc'
 license=()
 depends=('gtk2-perl'
          'glib-perl'
          'unzip'
-		 'lib32-zlib'
-		 'net-tools'
-		 'glib-perl'
-		 'perl-libwww')
-source=(https://raw.github.com/madscientist/msjnc/master/msjnc)
-md5sums=('553ddad65b7c591b8e3b591846bafecd')
+	 'lib32-zlib'
+	 'net-tools'
+	 'glib-perl'
+	 'perl-libwww')
+source=('https://github.com/madscientist/msjnc/archive/v2.5.tar.gz')
+sha1sums=('079c066a91332b9a01cf0b687742817d1b53868a')
 
 package() {
-  mkdir -p ${pkgdir}/usr/bin
-  install -m 755 ${srcdir}/msjnc ${pkgdir}/usr/bin/
+  mkdir -p "${pkgdir}/usr/bin"
+  install -m 755 "${srcdir}/${pkgname}-${pkgver}/msjnc" "${pkgdir}/usr/bin/"
 }
-
