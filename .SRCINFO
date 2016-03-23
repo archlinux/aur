@@ -1,5 +1,5 @@
-pkgbase = weston
-	pkgdesc = Reference implementation of a Wayland compositor
+pkgbase = weston-eglstream
+	pkgdesc = Reference implementation of a Wayland compositor with EGLStream support
 	pkgver = 1.10.0
 	pkgrel = 1
 	url = http://wayland.freedesktop.org
@@ -17,8 +17,24 @@ pkgbase = weston
 	depends = glu
 	depends = pango
 	depends = colord
+	provides = weston
+	conflicts = weston
 	source = http://wayland.freedesktop.org/releases/weston-1.10.0.tar.xz
+	source = 0001-gl-renderer-Renaming-of-things-and-minor-improvement.patch
+	source = 0002-gl-renderer-Refactor-gl_renderer_output_window_creat.patch
+	source = 0003-gl-renderer-Implement-use-check_extension.patch
+	source = 0004-gl-renderer-Add-support-for-EGLDevice-EGLOutput.patch
+	source = 0005-compositor-drm-Gracefully-handle-vblank-and-flip-inv.patch
+	source = 0006-compositor-drm-Renaming-of-gbm-fields.patch
+	source = 0007-compositor-drm-Add-support-for-EGLDevice-EGLOutput.patch
 	sha1sums = c9c2c8e2e798b25e7bf6b31bf0c4ef08724a7ebb
+	sha1sums = c623cdf628a20a4bde5a98cc40867c32a8300e79
+	sha1sums = 3441d0a7da0ae64835a5b29545caab4bc7977417
+	sha1sums = f6742fadb973ec6c2b55e5500127309e70579312
+	sha1sums = 31e3a447a1209712d604d739d0ac7e5b1925e940
+	sha1sums = b483f21b3f880d3978cc678bf5f97802f7ddddaf
+	sha1sums = 13d217d76a0811f5eb8d7180d31ec7a69fbbaabd
+	sha1sums = 6bab10ac02a7e69b1bb1bf1982b5804e87870e0e
 
-pkgname = weston
+pkgname = weston-eglstream
 
