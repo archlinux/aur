@@ -5,7 +5,7 @@
 # Contributor: Magnus Therning <magnus@therning.org>
 
 pkgname=ocaml-pcre
-pkgver=7.1.6
+pkgver=7.2.3
 pkgrel=1
 pkgdesc="Perl compatible regular expressions for OCaml"
 arch=('i686' 'x86_64')
@@ -17,19 +17,21 @@ replaces=('pcre-ocaml')
 conflicts=('pcre-ocaml')
 options=('!strip' 'staticlibs')
 source=("https://github.com/mmottl/pcre-ocaml/releases/download/v$pkgver/pcre-ocaml-$pkgver.tar.gz")
-md5sums=('d5c2230bc8123ed382d018737f26a0d5')
+md5sums=('90b503355160d7422a7c3ef1623e6444')
 
 build() {
-  cd "$srcdir/pcre-ocaml-$pkgver"
+  cd "${srcdir}/pcre-ocaml-${pkgver}"
 
-  ./configure --disable-debug --prefix /usr --destdir "$pkgdir"
+  ./configure --disable-debug --prefix /usr --destdir "${pkgdir}"
   make all
 }
 
 package() {
-  cd "$srcdir/pcre-ocaml-$pkgver"
-  export OCAMLFIND_DESTDIR="$pkgdir$(ocamlfind printconf destdir)"
-  install -dm 755 "$OCAMLFIND_DESTDIR/stublibs"
+  cd "${srcdir}/pcre-ocaml-${pkgver}"
+
+  export OCAMLFIND_DESTDIR="${pkgdir}$(ocamlfind printconf destdir)"
+  install -dm 755 "${OCAMLFIND_DESTDIR}/stublibs"
   make install
-  install -Dm 644 COPYING.txt "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  mv "${pkgdir}/usr/share/doc/pcre" "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
