@@ -1,0 +1,24 @@
+diff -ur gevent-socketio-0.3.6/socketio/handler.py gevent-socketio-0.3.6.orig/socketio/handler.py
+--- gevent-socketio-0.3.6/socketio/handler.py	2016-03-23 15:06:17.311727069 -0600
++++ gevent-socketio-0.3.6.orig/socketio/handler.py	2014-02-02 22:03:25.000000000 -0700
+@@ -74,7 +74,7 @@
+             ("Access-Control-Allow-Origin", self.environ.get('HTTP_ORIGIN', '*')),
+             ("Access-Control-Allow-Credentials", "true"),
+             ("Access-Control-Allow-Methods", "POST, GET, OPTIONS"),
+-            ("Access-Control-Max-Age", 3600),
++            ("Access-Control-Max-Age", "3600"),
+             ("Content-Type", "text/plain"),
+         ])
+         self.result = [data]
+diff -ur gevent-socketio-0.3.6/socketio/transports.py gevent-socketio-0.3.6.orig/socketio/transports.py
+--- gevent-socketio-0.3.6/socketio/transports.py	2016-03-23 15:06:29.674636377 -0600
++++ gevent-socketio-0.3.6.orig/socketio/transports.py	2014-02-02 22:03:25.000000000 -0700
+@@ -21,7 +21,7 @@
+             ("Access-Control-Allow-Origin", "*"),
+             ("Access-Control-Allow-Credentials", "true"),
+             ("Access-Control-Allow-Methods", "POST, GET, OPTIONS"),
+-            ("Access-Control-Max-Age", 3600),
++            ("Access-Control-Max-Age", "3600"),
+         ]
+         self.handler = handler
+         self.config = config
