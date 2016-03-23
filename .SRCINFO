@@ -1,0 +1,24 @@
+pkgbase = weston
+	pkgdesc = Reference implementation of a Wayland compositor
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = http://wayland.freedesktop.org
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = wayland-protocols
+	depends = wayland
+	depends = libxkbcommon
+	depends = libinput
+	depends = libunwind
+	depends = poppler-glib
+	depends = mtdev
+	depends = libxcursor
+	depends = glu
+	depends = pango
+	depends = colord
+	source = http://wayland.freedesktop.org/releases/weston-1.10.0.tar.xz
+	sha1sums = c9c2c8e2e798b25e7bf6b31bf0c4ef08724a7ebb
+
+pkgname = weston
+
