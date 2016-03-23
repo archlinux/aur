@@ -1,7 +1,8 @@
 # Maintainer: Dennis Hamester <dennis.hamester@startmail.com>
 
+_commit='4a95995c1fbf9927560cfee43402832087732b8a'
 pkgname=scraw
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Steam Controller C library"
 arch=(i686 x86_64)
@@ -10,12 +11,11 @@ license=('custom:ISC')
 makedepends=('cmake' 'doxygen')
 depends=('libusb')
 source=("scraw-v$pkgver.tar.gz::https://gitlab.com/dennis-hamester/scraw/repository/archive.tar.gz?ref=v$pkgver")
-sha256sums=('00feb3e4e954df9240dce10402453e5d5c5fe04d4d52e2535662265d0416d71a')
+sha256sums=('f16fd502484a41ddcc2a92c72500ba2d80c7f44bfd2f1e7b9bc9672309ae8e5e')
 
 build() {
-  cd $pkgname-v$pkgver-*
+  cd ${pkgname}-v${pkgver}-${_commit}
   mkdir build && cd build
-  echo `pwd`
   cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SCRAW_INFO=ON \
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-v$pkgver-*/build
+  cd ${pkgname}-v${pkgver}-${_commit}/build
   make DESTDIR="${pkgdir}" install
-  install -Dm644 "$srcdir"/$pkgname-v$pkgver-*/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
