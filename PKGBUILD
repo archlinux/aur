@@ -15,6 +15,7 @@ optdepends=("pacman>=5: to use aurbranch without a .SRCINFO argument, $(
             )makepkg-expanded and graph-templates"
             'git: for offbranch, aurbranch and aurremote')
 replaces=('makepkg-expanded')
+_gvdir='usr/share/graphviz'
 
 makedepends+=('git')
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
@@ -30,12 +31,14 @@ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 
 find_executables() {
   cd $_gitname
-  executables=($(find -mindepth 1 -maxdepth 1 -executable -type f))
+  executables=($(find -mindepth 1 -maxdepth 1 \
+    -executable -type f \! -iname '*.gvpr'))
   executables=("${executables[@]#./}")
 }
 
 build() {
   find_executables
+  sed -i "s|\\([[:alpha:]]\\+\\)\\.gvpr|/$_gvdir/\\1|" *.md
   ronn --roff ${executables[@]/%/.md}
 }
 
@@ -45,6 +48,12 @@ package() {
   install -Dt "$pkgdir/usr/bin" ${executables[@]}
   install -Dm644 -t "$pkgdir/usr/share/man/man1" *.1
 
-  IFS=: eval 'GLOBIGNORE="${executables[*]/%/.md}"'
+  install -d "$pkgdir/$_gvdir"
+  for gvpr in *.gvpr
+  do
+    install "$gvpr" "$pkgdir/$_gvdir/${gvpr%.gvpr}"
+  done
+
+  IFS=: eval 'GLOBIGNORE="${executables[*]/%/.md}:*.gvpr"'
   install -Dm655 -t "$pkgdir/usr/share/doc/${pkgname%-git}" *.md
 }
