@@ -1,0 +1,16 @@
+pkgbase = ttf-sparks-ffa
+	pkgdesc = Free sparks miniature font by J. Ross
+	pkgver = 1
+	pkgrel = 1
+	url = http://www222.pair.com/sjohn/sparks.htm
+	install = ttf.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://www222.pair.com/sjohn/free/sprkffa.zip
+	md5sums = 4423fc211c636eadecbb3c4c0ef7f499
+
+pkgname = ttf-sparks-ffa
+
