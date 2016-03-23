@@ -1,0 +1,13 @@
+pkgbase = neveralone-hib
+	pkgdesc = atmospheric puzzle platformer for 1-players or 2-players built in partnership with the Alaska Native community (humblebundle version)
+	pkgver = 2016.03.22
+	pkgrel = 1
+	url = http://neveralonegame.com/
+	arch = x86_64
+	license = commercial
+	options = !strip
+	source = hib://NeverAlone_ArcticCollection.v1.0.tar.gz
+	md5sums = fe1ca15db6cfe6c1db877e33ace378fa
+
+pkgname = neveralone-hib
+
