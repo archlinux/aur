@@ -1,0 +1,8 @@
+post_install() {
+  fusiondirectory-setup --update-cache --update-locales
+}
+
+post_remove() {
+  fusiondirectory-setup --update-cache --update-locales
+}
+
