@@ -6,7 +6,7 @@
 # Contributor: Stefan Tatschner <stefan@sevenbyte.org>
 
 pkgname=gitlab-shell
-pkgver=2.6.10
+pkgver=2.6.11
 pkgrel=1
 pkgdesc="Self hosted Git management software. Replacement for gitolite"
 arch=('any')
@@ -24,7 +24,7 @@ backup=(
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/gitlab-org/gitlab-shell/repository/archive.tar.gz?ref=v${pkgver}"
 	gitlab-shell.tmpfiles.d
 	)
-sha512sums=('3aa0b48f8ca11021c0da60d78c1f6c238c9d042114c809b6519a82d5d71dcb960174b4abf3c5db2585e51d3f82f791c4a9ef2b01b63ed553c51afb960244bb14'
+sha512sums=('f5abb0c2d5b0dae97e0bf0619f579422aea853f46d9b20067d042bdfe66b576f62340ad24fffc1163bd660b573c90bbebb795c019d6bc6d6af7c7c21da55edc1'
 	'f5d82441b1bb4992dcde5b95830496a1511299de5e2e85ac434021d00d20f88af5d206da2cb43a7d264a5c3d922559f205749bfa76d945ce9eae420de392c5b9')
 _homedir='/var/lib/gitlab'
 _datadir="/usr/share/webapps/${pkgname}"
