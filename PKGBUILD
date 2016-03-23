@@ -26,7 +26,7 @@ _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 # PKGBUILD
 
 pkgrel=3
-_piver=2
+_piver=3
 
 _pkgvermajmin="5.7"
 pkgver="${_pkgvermajmin}.0"
@@ -117,6 +117,7 @@ build() {
   local _basedir="${_srcdir}/qtbase"
   local _waylanddir="${_srcdir}/qtwayland"
   local _webenginedir="${_srcdir}/qtwebengine"
+  local _locationdir="${_srcdir}/qtlocation"
   local _bindir="${_srcdir}"
   local _mkspec_dir="${_basedir}/mkspecs/devices/${_mkspec}"
 
@@ -164,6 +165,8 @@ fi
   cd ${_webenginedir}
   patch -p1 < ${_patch_dir}/0001-Include-neon-support-for-any-fpu-.-neon.patch
   patch -p1 < ${_patch_dir}/0001-Always-define-arm_thumb.patch
+  cd ${_locationdir}
+  patch -p1 < ${_patch_dir}/0001-Remove-inconsistent-qreal-double-co-mingling-compari.patch
 
   # end patch
 

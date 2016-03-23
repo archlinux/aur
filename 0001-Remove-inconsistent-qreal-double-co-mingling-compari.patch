@@ -1,0 +1,39 @@
+From 63b951ffdd582c6e10466e4dc4809b331860992e Mon Sep 17 00:00:00 2001
+From: Donald Carr <sirspudd@gmail.com>
+Date: Wed, 23 Mar 2016 14:25:31 -0700
+Subject: [PATCH] Remove inconsistent qreal/double co-mingling/comparison
+
+Fixes build breakage on machines where qreal = float (many ARM devices).
+Avoid needless float to double conversion before assignment back to a
+float.
+
+Change-Id: Ia11c9dc912361f5aa05c4e01dec45c0d7b477609
+---
+ src/imports/location/qdeclarativegeomap.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/imports/location/qdeclarativegeomap.cpp b/src/imports/location/qdeclarativegeomap.cpp
+index b39f38c..c72e566 100644
+--- a/src/imports/location/qdeclarativegeomap.cpp
++++ b/src/imports/location/qdeclarativegeomap.cpp
+@@ -586,7 +586,7 @@ void QDeclarativeGeoMap::setMinimumZoomLevel(qreal minimumZoomLevel)
+         qreal oldMinimumZoomLevel = this->minimumZoomLevel();
+ 
+         if (m_map) {
+-            minimumZoomLevel = qBound(m_map->cameraCapabilities().minimumZoomLevel(), minimumZoomLevel, maximumZoomLevel());
++            minimumZoomLevel = qBound(qreal(m_map->cameraCapabilities().minimumZoomLevel()), minimumZoomLevel, maximumZoomLevel());
+             double minimumViewportZoomLevel = m_map->minimumZoomForMapSize(width(),height());
+             if (minimumZoomLevel < minimumViewportZoomLevel)
+                 minimumZoomLevel = minimumViewportZoomLevel;
+@@ -637,7 +637,7 @@ void QDeclarativeGeoMap::setMaximumZoomLevel(qreal maximumZoomLevel)
+         qreal oldMaximumZoomLevel = this->maximumZoomLevel();
+ 
+         if (m_map)
+-            maximumZoomLevel = qBound(minimumZoomLevel(), double(maximumZoomLevel), m_map->cameraCapabilities().maximumZoomLevel());
++            maximumZoomLevel = qBound(minimumZoomLevel(), maximumZoomLevel, qreal(m_map->cameraCapabilities().maximumZoomLevel()));
+ 
+         m_gestureArea->setMaximumZoomLevel(maximumZoomLevel);
+ 
+-- 
+2.7.4
+
