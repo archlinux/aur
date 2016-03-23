@@ -9,7 +9,8 @@ pkgdesc="A modern desktop theme suite. Its design is mostly flat with a minimal 
 arch=('any')
 url="http://samuelhewitt.com/paper/theme"
 license=('GPL3')
-depends=('gtk-engine-murrine')
+optdepends=("gtk-egnine-murrine: gtk2 bindings"
+	"gtk3: gtk3 bindings")
 # Optional dependencies for developers
 #optdepends=("python: scripts to simplify the rendering process"
 #	"inkscape: edit theme assets")
