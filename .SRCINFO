@@ -1,0 +1,16 @@
+pkgbase = imdbpy-git
+	pkgdesc = Python bindings for the Internet Movie Database (IMDb)
+	pkgver = 5.0.22.gc4137d9
+	pkgrel = 1
+	url = http://imdbpy.sourceforge.net/
+	arch = any
+	license = GPL
+	depends = python2
+	provides = imdbpy
+	replaces = imdbpy
+	options = !emptydirs
+	source = imdbpy::git+https://github.com/alberanid/imdbpy.git
+	md5sums = SKIP
+
+pkgname = imdbpy-git
+
