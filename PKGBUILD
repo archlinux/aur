@@ -1,28 +1,19 @@
 # Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=tophat
-pkgver=2.1.0
-pkgrel=3
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="fast splice junction mapper for RNA-Seq reads"
 arch=('x86_64' 'i686')
 url="http://ccb.jhu.edu/software/tophat/index.shtml"
 license=('custom')
 depends=('boost-libs' 'bowtie2' 'python2')
 makedepends=('boost')
-source=("http://ccb.jhu.edu/software/tophat/downloads/tophat-$pkgver.tar.gz"
-        'https://github.com/seqan/seqan/archive/seqan-v1.4.2.tar.gz'
-        'fix_build_w_seqan1.4.patch')
-md5sums=('34afa379b030c6672a31bbe3689745bc'
-         '7b0080b01feeb223e054dabef53d6fc5'
-         '93d47e54408b7b5eb4132d65f5dd5085')
+source=("http://ccb.jhu.edu/software/tophat/downloads/tophat-$pkgver.tar.gz")
+md5sums=('4b2391de46457ba6b2b7268a9da593e4')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
-
-  sed -e 's|-gdwarf-2||' \
-      -e '/define.*esyscmd/d' \
-      -e 's/svnversion/Unversioned directory/' \
-      -i configure.ac
 
   sed -e 's|make $(SAMPROG)|make -e $(SAMPROG)|' \
       -i src/Makefile.am
@@ -31,16 +22,8 @@ prepare() {
       -i src/bed_to_juncs \
          src/contig_to_chr_coords \
          src/sra_to_solid \
-         src/tophat.py \
-         src/tophat-fusion-post
-
-  # fixes seqan issues
-  rm -rf src/SeqAn-1.3
-  patch -Np1 -i $srcdir/fix_build_w_seqan1.4.patch
-  sed -e "s|-I./SeqAn-1.3|-I$srcdir/seqan-seqan-v1.4.2/core/include|" \
-      -i configure.ac
-
-  autoreconf -fi
+         src/tophat-fusion-post \
+         src/tophat.py
 }
 
 build() {
