@@ -44,7 +44,8 @@ depends[125]=gnome-shell
 package_20_version() {
   local compatibles=($(\
     find -path ./pkg -type d -prune -o \
-    -name metadata.json -exec grep -Pzo '(?s)(?<="shell-version": \[)[^\[\]]*(?=\])' '{}' \; | \
+    -name metadata.json -exec cat '{}' \; | \
+    tr -d '\n' | grep -Po '(?<="shell-version": \[)[^\[\]]*(?=\])' | \
     tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
   depends+=("gnome-shell>=3.${compatibles[0]}")
   local max="${compatibles[-1]}"
