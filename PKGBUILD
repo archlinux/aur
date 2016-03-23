@@ -42,6 +42,12 @@ pkgver() {
 }
 
 package() {
+  extend-optdepends
   install -d ${pkgdir}/usr/share/themes
   cp --no-preserve=mode -r ${srcdir}/*/ ${pkgdir}/usr/share/themes
 } 
+
+# Hidden in a subfunction not to show up in the .SRCINFO.
+extend-optdepends() {
+  optdepends+=("gnome-shell=$(cat version): for gnome-shell themes")
+}
