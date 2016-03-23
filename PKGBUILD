@@ -2,7 +2,7 @@
 
 pkgname=albiononline
 pkgver=20160304095919
-pkgrel=1
+pkgrel=2
 pkgdesc="The first true cross-platform Sandbox MMO"
 url="https://albiononline.com/"
 arch=('x86_64')
@@ -21,7 +21,9 @@ package() {
   # this fixes a bug in how the dirs are unpacked
   mv ${pkgdir}/opt/albiononline/launcher ${pkgdir}/opt/albiononline/launcher.extra
   mv ${pkgdir}/opt/albiononline/launcher.extra/launcher ${pkgdir}/opt/albiononline/launcher
-  
+ 
+  mkdir ${pkgdir}/opt/albiononline/staging_x64
+  chmod 777 ${pkgdir}/opt/albiononline/staging_x64
   # link exe
   mkdir -p ${pkgdir}/usr/bin
   ln -s /opt/albiononline/Albion-Online ${pkgdir}/usr/bin/albiononline 
