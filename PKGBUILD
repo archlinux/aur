@@ -1,7 +1,7 @@
 # Maintainer: One
 pkgname=kav
-pkgver=0.1
-pkgrel=3
+pkgver=0.2
+pkgrel=1
 pkgdesc="Antivirus scanner from kaspersky rescue disk"
 url=" "
 arch=('x86_64' 'i686')
