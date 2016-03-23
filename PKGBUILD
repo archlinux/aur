@@ -3,25 +3,19 @@
 # Contributor: Aleix Pol <aleixpol@kde.org>
 
 pkgname=miranda
-_pkgname=miranda
 pkgver=2.042
-pkgrel=1
-pkgdesc="Miranda"
-url="http://miranda.org.uk/"
-arch=('i686', 'x86_64')
+pkgrel=2
+pkgdesc='Miranda programming language'
+url='http://miranda.org.uk/'
 license=('custom')
-depends=()
-makedepends=('pkgconfig' 'wget' 'tar')
-# conflicts('')
-provides=('miranda')
-
-source=()
-md5sums=()
-
-_name=mira-2042-i686-Linux.tgz
+arch=('i686' 'x86_64')
+source=("https://www.cs.kent.ac.uk/people/staff/dat/miranda/downloads/linux/mira-2042-i686-Linux.tgz")
+md5sums=('1fc2340187480251b63fc1f855f678d2')
 
 build() {
   cd $srcdir
-  wget http://www.cs.kent.ac.uk/people/staff/dat/ccount/click.php?id=2 -O $_name
-  tar xzvf $_name -C $pkgdir
+}
+
+package() {
+  cp -r $srcdir/usr $pkgdir
 }
