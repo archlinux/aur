@@ -25,11 +25,11 @@ package() {
     # Webapp
     install -D -m644 server.py "$pkgdir/usr/share/webapps/${_pkgname}/server.py"
 
-    install -d -m644 "$pkgdir/usr/share/webapps/${_pkgname}/templates"
+    install -d -m755 "$pkgdir/usr/share/webapps/${_pkgname}/templates"
     for file in $(find templates -type f ); do
         install -D -m644 "${file}" "$pkgdir/usr/share/webapps/${_pkgname}/templates"
     done
-    install -d -m644 "$pkgdir/usr/share/webapps/${_pkgname}/static"
+    install -d -m755 "$pkgdir/usr/share/webapps/${_pkgname}/static"
     for file in $(find static -type f ); do
         install -D -m644 "${file}" "$pkgdir/usr/share/webapps/${_pkgname}/static"
     done
