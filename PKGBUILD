@@ -2,7 +2,7 @@
 
 _gitname=wget
 pkgname=$_gitname-git
-pkgver=1.17.1.r22.g7cb9efa
+pkgver=1.17.1.r25.g76ef65b
 pkgrel=1
 pkgdesc="A network utility to retrieve files from the Web"
 arch=('i686' 'x86_64')
