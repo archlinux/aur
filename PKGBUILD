@@ -6,11 +6,12 @@ pkgname=gtk-theme-iris-light-git
 _pkgname=iris-light
 pkgver=105.aca7c34
 pkgrel=1
-pkgdesc="A flat theme that uses varying shades and tones to create distinction and a modern experience. It supports Gtk 3.10, Gtk 3.12 and Gtk 2 (using the Murrine engine)."
+pkgdesc="A flat theme that uses varying shades and tones to create distinction and a modern experience."
 arch=('any')
 url="http://thevirtualdragon.deviantart.com/art/Iris-Light-Beta-428948909"
 license=('GPL3')
-depends=('gtk3' 'gtk-engine-murrine')
+optdepends=("gtk-engine-murrine: gtk2 bindings"
+	"gtk3: gtk3 bindings")
 makedepends=('git')
 provides=('gtk-theme-iris-light')
 conflicts=('gtk-theme-iris-light')
