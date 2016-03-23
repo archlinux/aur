@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.0.0.r2222.gc14971b
+pkgver=1.0.0.r2246.g05027a7
 pkgrel=1
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
@@ -11,19 +11,15 @@ makedepends=('git' 'syslinux' 'libisoburn' 'mtools' 'xz')
 provides=('ipxe')
 conflicts=('ipxe')
 install=ipxe.install
-source=('git://git.ipxe.org/ipxe.git'
-	'0001-git-version.patch'
-	'0002-banner.patch'
-	'0003-allow-to-build-ISO-image-with-EFI-support.patch'
-	'0004-fix-no-pie-workaround.patch'
+source=('git://github.com/ipxe/ipxe.git'
+	'0001-git-version.patch::https://github.com/eworm-de/ipxe/commit/3386cf39.patch'
+	'0002-banner.patch::https://github.com/eworm-de/ipxe/commit/59dec952.patch'
 	'grub'
 	'chain-default.ipxe'
 	'chain-default-3928.ipxe')
 sha256sums=('SKIP'
             'a72ebfc3ab294cdf0d2a495597e84e87feba0fb48b618b504c1a8fc277b7366d'
             'e60a4c6569e426a6ce7298a17c4f062d73391aa00aff5085694fee98a2618c8f'
-            '4ca57ee43c53b6e15404dd8673e4657504074e67154ac338145e8124d8453904'
-            'bbf03ca532be2ec36cd45420acc34815a03e321ebd435950a30ba052e3e7a2cc'
             'ead8e9b386206bc0e95838a6e074c218e038cd3fa1ca5cff2b73e34b40d5552f'
             'f7ec78e26671f4df90d89440d8b2a69473c15cb6b25dda32c773023378fec42a'
             'e26a54b4e99816b34baebcb7a15d99d57c9395c9689ffbae2329cc675248f9b9')
@@ -46,9 +42,6 @@ pkgver() {
 prepare() {
 	cd ipxe/src/
 
-	# fix build
-	git revert -n 40a9a0f0
-
 	# git version
 	patch -Np2 < "${srcdir}/0001-git-version.patch"
 
@@ -56,10 +49,10 @@ prepare() {
 	patch -Np2 < "${srcdir}/0002-banner.patch"
 
 	# ISO image with EFI support
-	patch -Np2 < "${srcdir}/0003-allow-to-build-ISO-image-with-EFI-support.patch"
+	git cherry-pick -n ff8c8dc5
 
-	# build fix
-	patch -Np2 < "${srcdir}/0004-fix-no-pie-workaround.patch"
+	# build fixes
+	git cherry-pick -n 6eb2017e
 
 	# read and set keymap
 	[ -s /etc/vconsole.conf ] && source /etc/vconsole.conf
