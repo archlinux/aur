@@ -1,7 +1,7 @@
 pkgbase = catalyst-generator
 	pkgdesc = AMD/ATI drivers. Generator of catalyst-{kernver} packages with fglrx module inside.
 	pkgver = 15.9
-	pkgrel = 9
+	pkgrel = 10
 	url = http://www.amd.com
 	install = catalyst-generator.install
 	arch = i686
@@ -13,7 +13,7 @@ pkgbase = catalyst-generator
 	depends = make
 	depends = patch
 	depends = linux>=3.0
-	depends = linux<4.5
+	depends = linux<4.6
 	depends = linux-headers
 	optdepends = linux-headers: to build the fglrx module for the linux kernel
 	optdepends = linux-lts-headers: to build the fglrx module for the linux-lts kernel
