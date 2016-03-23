@@ -1,14 +1,13 @@
 pkgbase = go-gpm
 	pkgdesc = Barebones dependency manager for Go.
-	pkgver = 1.3.2.r10.g7db809e
-	pkgrel = 1
+	pkgver = 1.4.0
+	pkgrel = 2
 	url = https://github.com/pote/gpm
 	arch = any
 	license = MIT
-	makedepends = git
 	depends = go
-	source = go-gpm::git+https://github.com/pote/gpm.git
-	md5sums = SKIP
+	source = gpm-1.4.0.tar.gz::https://github.com/pote/gpm/archive/v1.4.0.tar.gz
+	sha256sums = 2e213abbb1a12ecb895c3f02b74077d3440b7ae3221b4b524659c2ea9065b02a
 
 pkgname = go-gpm
 

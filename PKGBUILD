@@ -1,39 +1,24 @@
-# Maintainer: philanecros <philanecros@gmail.com>
+# Maintainer: Pierce Lopez <pierce.lopez@gmail.com>
 
 pkgname=go-gpm
-pkgver=1.3.2.r10.g7db809e
-pkgrel=1
+pkgver=1.4.0
+pkgrel=2
 pkgdesc="Barebones dependency manager for Go."
 arch=("any")
 url="https://github.com/pote/gpm"
 license=('MIT')
-groups=()
 depends=("go")
-makedepends=('git')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-source=("$pkgname::git+https://github.com/pote/gpm.git")
-md5sums=('SKIP')
-noextract=()
-
-pkgver() {
-  cd "$pkgname"
-  # cutting off 'v' prefix that presents in the git tag
-  git describe --tags --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
-}
+source=("gpm-${pkgver}.tar.gz::https://github.com/pote/gpm/archive/v${pkgver}.tar.gz")
+sha256sums=('2e213abbb1a12ecb895c3f02b74077d3440b7ae3221b4b524659c2ea9065b02a')
 
 build() {
-  cd "$srcdir/${pkgname}"
-  ./configure --prefix=/usr
+  cd gpm-$pkgver
+  # avoid conflict with existing core/gpm package
+  ./configure --prefix=/usr --exec=go-gpm
   make
 }
 
 package() {
-  cd "$srcdir/${pkgname}"
-  # avoid conflict with existing core/gpm package
-  make DESTDIR="$pkgdir/" exec="go-gpm" install
+  cd gpm-$pkgver
+  make DESTDIR="$pkgdir" install
 }
