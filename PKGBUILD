@@ -3,13 +3,14 @@
 _pkgname=scrawpp
 pkgname=$_pkgname-git
 pkgver=0.1.0.r0.g09a158c
-pkgrel=1
+pkgrel=2
 pkgdesc="Steam Controller C++ library (git version)"
 arch=('any')
 url="https://gitlab.com/dennis-hamester/scrawpp"
 license=('custom:ISC')
 makedepends=('cmake')
-depends=('scraw')
+depends=('scraw-git')
+provides=('scrawpp')
 source=("git+https://gitlab.com/dennis-hamester/scrawpp.git")
 sha256sums=('SKIP')
 
