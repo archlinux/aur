@@ -6,7 +6,6 @@ pkgbase = gnome-shell-theme-copernico-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = gtk3
 	depends = gnome-shell
 	provides = gnome-shell-theme-copernico
 	conflicts = gnome-shell-theme-copernico
@@ -14,4 +13,3 @@ pkgbase = gnome-shell-theme-copernico-git
 	sha256sums = SKIP
 
 pkgname = gnome-shell-theme-copernico-git
-
