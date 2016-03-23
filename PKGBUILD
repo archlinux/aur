@@ -11,9 +11,9 @@ url="https://github.com/dffischer/pkgrepotools"
 license=('GPL')
 depends=('bash' 'sed')
 makedepends=('ruby-ronn')
-optdepends=('pacman: for makepkg-expanded'
-            'git: for offbranch, aurbranch and aurremote'
-            'pkgbuild-introspection: to run aurbranch without a .SRCINFO argument')
+optdepends=("pacman>=5: to use aurbranch without a .SRCINFO argument, $(
+            )makepkg-expanded and graph-templates"
+            'git: for offbranch, aurbranch and aurremote')
 replaces=('makepkg-expanded')
 
 makedepends+=('git')

@@ -11,9 +11,8 @@ pkgbase = pkgrepotools-git
 	makedepends = git
 	depends = bash
 	depends = sed
-	optdepends = pacman: for makepkg-expanded
+	optdepends = pacman>=5: to use aurbranch without a .SRCINFO argument, makepkg-expanded and graph-templates
 	optdepends = git: for offbranch, aurbranch and aurremote
-	optdepends = pkgbuild-introspection: to run aurbranch without a .SRCINFO argument
 	provides = pkgrepotools=r0
 	conflicts = pkgrepotools
 	replaces = makepkg-expanded
