@@ -1,6 +1,6 @@
 pkgbase = krakatau-git
 	pkgdesc = Java decompiler, assembler, and disassembler
-	pkgver = r352.dd5cf12
+	pkgver = r406.bff6992
 	pkgrel = 1
 	url = https://github.com/Storyyeller/Krakatau
 	arch = any
