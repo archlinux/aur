@@ -9,7 +9,7 @@ url="http://launchhorizon.com"
 license=('MIT')
 groups=()
 depends=('qt5-base' 'qt5-tools' 'qt5-webkit')
-makedepends=('git' 'cmake' 'make')
+makedepends=('git' 'cmake' 'make' 'boost')
 checkdepends=()
 optdepends=()
 provides=('horizon-launcher')
@@ -38,7 +38,7 @@ build() {
 	mkdir build && cd build
 
 	cmake ..
-	make -j$(expr $(nproc) + 1) -l$(nproc)
+	make $MAKEFLAGS
 }
 
 
