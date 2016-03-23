@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Language and environment for statistical computing and graphics - development version (SVN)"
 arch=('i686' 'x86_64')
 license=('GPL')
-url=('http://www.r-project.org/')
+url='http://www.r-project.org/'
 depends=('blas' 'lapack' 'bzip2'  'libpng' 'libjpeg' 'libtiff'
          'ncurses' 'pcre' 'readline' 'zlib' 'perl' 'gcc-libs'
          'tk' 'libxt' 'libxmu' 'pango' 'xz')
