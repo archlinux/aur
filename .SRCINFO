@@ -1,0 +1,16 @@
+pkgbase = ttf-sparks-ffa
+	pkgdesc = Free sparks scrapbook miniatures
+	pkgver = 1
+	pkgrel = 1
+	url = http://www222.pair.com/sjohn/sparks.htm
+	install = ttf.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://www222.pair.com/sjohn/free/scrapbook.zip
+	md5sums = 2ade7bd63b79739ef51862c2824b2062
+
+pkgname = ttf-sparks-ffa
+
