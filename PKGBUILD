@@ -163,7 +163,7 @@ fi
   patch -p1 < ${_patch_dir}/0001-Include-neon-support-for-any-fpu-.-neon.patch
   patch -p1 < ${_patch_dir}/0001-Always-define-arm_thumb.patch
   cd ${_locationdir}
-  patch -p1 < ${_patch_dir}/0001-Remove-inconsistent-qreal-double-co-mingling-compari.patch
+  patch -p1 < ${_patch_dir}/0001-Fix-qreal-double-mingling.patch
 
   # end patch
 
