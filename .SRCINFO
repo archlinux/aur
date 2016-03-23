@@ -1,7 +1,7 @@
 pkgbase = catalyst-firepro
 	pkgdesc = AMD/ATI beta drivers for FirePro/GL/MV brand cards. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport.
 	pkgver = 15.201.2401
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.amd.com
 	install = catalyst-firepro.install
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = catalyst-firepro
 	license = custom
 	makedepends = unzip
 	depends = linux>=3.0
-	depends = linux<4.5
+	depends = linux<4.6
 	depends = linux-headers
 	depends = xorg-server>=1.7.0
 	depends = xorg-server<1.18.0
