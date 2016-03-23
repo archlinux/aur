@@ -1,20 +1,19 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=pyhenkan-git
-pkgver=r69.0bdaa36
+pkgver=r83.2b4fb75
 pkgrel=1
 pkgdesc='Transcoding suite built around VapourSynth and FFmpeg'
 arch=('any')
 url='https://github.com/alucryd/pyhenkan'
 license=('GPL3')
 depends=('ffmpeg' 'python-gobject' 'python-lxml' 'python-pymediainfo'
-         'vapoursynth')
+         'vapoursynth' 'vapoursynth-plugin-lsmashsource')
 makedepends=('git' 'python-setuptools')
 optdepends=('ffmpeg-full: More codecs'
-            'vapoursynth-plugin-flash3kyuu_deband-git: f3kdb deband filter'
+            'vapoursynth-plugin-f3kdb: f3kdb deband filter'
             'vapoursynth-plugin-fluxsmooth: FluxSmooth denoise filters'
             'vapoursynth-plugin-ffms2: ffms2 source filter'
-            'vapoursynth-plugin-lsmashsource: L-SMASH source filters'
             'vapoursynth-plugin-temporalsoften-git: TemporalSoften denoise filter')
 provides=('pyhenkan')
 conflicts=('pyhenkan')
