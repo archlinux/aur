@@ -6,16 +6,16 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gitlab
-pkgver=8.5.7
+pkgver=8.6.0
 pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
 url="http://gitlab.org/gitlab-ce"
 license=('MIT')
-depends=('ruby2.1' 'git>=2.7.3' 'ruby2.1-bundler>=1.5.2' 'gitlab-shell=2.6.10' 'openssh' 'redis>=2.8' 'libxslt' 'icu' 'nodejs')
+depends=('ruby2.1' 'git>=2.7.4' 'ruby2.1-bundler>=1.5.2' 'gitlab-shell=2.6.11' 'openssh' 'redis>=2.8' 'libxslt' 'icu' 'nodejs')
 makedepends=('cmake')
 optdepends=(
-	'gitlab-workhorse=0.6.4: for http(s) access'
+	'gitlab-workhorse=0.7.1: for http(s) access'
 	'mariadb: database backend'
 	'postgresql>=9.1: database backend'
 	'mysql>=5.5.14: database backend'
@@ -48,7 +48,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/gitlabhq/gitlabhq/archive/v
 	nginx-ssl.conf.example
 	lighttpd.conf.example)
 install='gitlab.install'
-sha512sums=('44468b7eb3bf0b2ac3d2d99e3d1993e15186aedf713f1621053a897e1f16ae5e769c49c924a48446d2cde519a662511904b7b2924879e85ce0e6627195dab229'
+sha512sums=('9d5ad5cb92873a2c0401f68d5e32b8e0cf74aa27943d402f625ea41ea22a882586a6951e3f01f09c7aba324106cc649f62843a322363f98ba160825330550718'
 	'5dd7a940eee6a84095478af514dcc98c4fc6c4a214de1ddfa4a1e727d4ba34984d66d51affd7844ffebb75fed8f781b38a0da80fba6a5b8fa832948ab39b2249'
 	'2c9d8c650a1808d730bb0f6c45ea8fe2f354d56a5bea1da7eb17dc687ec06b731472af842f4cce0704bf738b5a88001a06e1907d18a35d363e88c4dd6f3e9c7d'
 	'c22439ee4cb34adf42de7619a2b83b02359cada38cbe99dd3031e6e72225ec4b2c2d6306331eadfc1c2044609b7a7e8bceddf7be213b5d4dbcaff86b35fe1ce7'
@@ -57,10 +57,10 @@ sha512sums=('44468b7eb3bf0b2ac3d2d99e3d1993e15186aedf713f1621053a897e1f16ae5e769
 	'c519a51d31300074ea12594fbcc8e9610d991ef04b1dac94d93a2b201df3465999cc7c6ac7f3896e02b117c2366d61dea1ef2f6b9cd7b18998385a7f26e5700f'
 	'4fe532dabea64189bf25d271cccc11481b22451704e10efac01c7ca4ad76a532fce82088b5eea9546aa80c1141d716820bb23de81c9093dac87f70c94910fb02'
 	'a1f52d6ca36b32580062dede23ccdde5633238310b28c6c47deb2ce4496f4e5ffea0de2a49bcb1e0e38fc82b66b0cc91a5e86854716c7e848127769b43eb5067'
-	'122ac76000c6ff251eecd9438180352d4be16ec2330594d3a84382e152ef0f69f822be6fc64bdcd6d66c9c9200fc4784b15562a8ac47094f9bf7dd04068eca8b'
-	'403a53e9f8b1b337a47f388bc5bf1efb4c86d258f5df98b8adb1bff5db80c7eb0bbc0ec3a43657de53e735e8ae777c5f12bdc9282a352ce801c22e5cc20292f0'
-	'33105cacb8ea125934c1bf6a0dba469c3921f4c7d9005794e009a465a022367380289f93fb9e6f148c13b4902b57726acc7702caf2c3f59a12c8a7158bb257d0'
-	'013fb0d35ba50fe65ec3b9b54e01460a8156db6dcc44de306138d90e92390e2ec16c3e5e600d9b88bbe36bc54682245da4784d41617c0952dde79e4beb887f75'
+	'aebff70d764b16352980ab00a964122a78d57170ff1f8c86687a75770d44de03c9d02009481745c4d68cf30cad6f0158c51a1c47276e73bbc05109948a3a2c26'
+	'8025a9d8543b31d57bc54ee3d668ebf8840d4447d8a4ab3ef22597e9ca95f3d3571a71a749ca357670fc09f2c1c4c8cf79d8d603084a4142e7e088bab6dbf99c'
+	'e42d4cc00dd2de2c9512c86e977cc50487fde623b33fb020fcf0246679c6401b3fc9cb041b94377d2fcec620623d7726e1757e3a3b9a8871d78dfdc2ddb0151d'
+	'b3cf3ac82abb776962ff1151989181f2b678ad07bb4d4c1d88058c0f82f8f5fe5782e76fbb2434efa39775e63657c27329eb62d8940da5f50cadf47275ae9b3e'
 	'e2cb969128b91eec6d435954dad3f3d76c6f6467d5a118043d530b7fdcf8657b1724abe406a20fc60702fcae4b5d02a0a3c782dcbc518db436a6c7bf874beb2f'
 	'31d0ba225105f43f04befdf01cf8978b0cdfe4900d40e30c9427674b1ef70f534b44a8558a9474ae01b833f68d2e505f45faf9b70fdf2c8898b07cbb293ef779'
 	'c78b6f46abcf603d8db6e38cf50868e14145928422ddfe17c88e2f006b5b910dddf456ec5d6d724b250994530643963809688a98f7e12ebd5b5dabf7f96f0e06')
@@ -100,7 +100,7 @@ prepare() {
 		-e "s|/home/git/gitlab-shell|/usr/share/webapps/gitlab-shell|" \
 		-e "s|tmp/backups|${_homedir}/backups|" \
 		config/gitlab.yml.example > config/gitlab.yml
-	msg2 "Patching paths in unicorn.rb..."
+	msg2 "Patching paths and timeout in unicorn.rb..."
 	sed -e "s|/home/git/gitlab/tmp/.*/|/run/gitlab/|g" \
 		-e "s|/var/run/|/run/|g" \
 		-e "s|/home/git/gitlab|${_datadir}|g" \
