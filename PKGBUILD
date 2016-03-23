@@ -1,8 +1,8 @@
 # Contributor: Sara <sara at archlinux dot us>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=fbpad-git
-pkgver=0.r250.3d7ca84
-pkgrel=3
+pkgver=0.r261.d11a8ba
+pkgrel=1
 pkgdesc="A small linux framebuffer virtual terminal."
 arch=('i686' 'x86_64')
 url="http://repo.or.cz/w/fbpad.git"
@@ -23,15 +23,15 @@ source=("$pkgname::git://repo.or.cz/fbpad.git"
         'LICENSE')
 noextract=()
 md5sums=('SKIP'
-         'cdc8e8c4582768dd90b954a143f805d2'
+         'd81cdedda7b34c160212273e1554e2ac'
          '185b9d6ec1c539213226a3e2509c7ccd'
          'ec67f29a7dec10f86ef31515ed657a91')
 sha1sums=('SKIP'
-          '85cbf626883ec0febb714c7226e4de0685985f69'
+          '5db81b84caf6a4509f088619bfa700a6b438f600'
           'dbb816fe37faf0acb4e1a916d7493787c2b647fc'
           '76a535243054e1fdd9caaa46a1571cd381d74353')
 sha256sums=('SKIP'
-            '10347e990c1fe1316b69c47170a7d7b4e9e53a9cabe1417269da769647a78445'
+            '8ca0f3f42e4ae83ad3ca7766c948bfa303f9501662558c76b6db684b61a9d13e'
             'fb8ae049aa7d41fb285cbf7aa4487b28014273ebcfceefb4d58fb07018312e9c'
             '0ea8d51c57a3a59ca57428b6fe9b47fdb1fde281fc1b095c9832872e85b09a72')
 
