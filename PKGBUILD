@@ -6,13 +6,13 @@
 pkgbase=linux-pf-lts
 _major=3
 _minor=14
-_patchlevel=61
+_patchlevel=65
 _pfpatchlevel=33
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_basekernel}
 _pfrel=6
-pkgrel=2
+pkgrel=1
 _kernelname=-pf
 _pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
 _pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
@@ -796,4 +796,8 @@ sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             'd7b39272e4ee7b11d4593f84179b09508b91232edf29f92667f5e5fc60162d6b'
             'a2a3a81e20ed3bbc0bed32c94ef7d0afd3164a34a3b681c17e3ae2ab2056d011'
             'b9b07391aecd9610b3f802bcd0d51dccc90f6b68a9f77349e57ea3c0580e96a8'
+            '23d1e0fe61e421f5e61c59a7b35a38ca505f10f7eb367954e5102503b377a3e5'
+            '3788b4149635aeadaee1a78a2706ac0477004729527fbe9cb0ad53fdd8a58f5a'
+            'aaa6ecbbacd0d292c98a29be20a355f5764f69ae4a63c32e00439ff01a7b3fd7'
+            'da7ee7a2866e089b05aefc831326083e752937c650ee4186bff5574f48f27f40'
             'a2789e82f980cb886ccea88d2d94e622ecde47b4eb006b94ceb6b944ed4c7833')
