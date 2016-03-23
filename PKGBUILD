@@ -2,9 +2,9 @@
 
 pkgname=jaspersoftstudio
 _pkgname=JaspersoftStudio
-_binname="Jaspersoft\\ Studio"
+_binname="Jaspersoft Studio"
 pkgver=6.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Eclipse based Jasper Reports generator"
 arch=('i686' 'x86_64')
 url="http://community.jaspersoft.com/project/jaspersoft-studio"
