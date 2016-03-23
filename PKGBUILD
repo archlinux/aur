@@ -15,14 +15,14 @@
 
 pkgname=catalyst-hook
 pkgver=15.9
-pkgrel=9
+pkgrel=10
 _amdver=15.201.1151
 pkgdesc="AMD/ATI drivers. Auto re-compile fglrx module while shutdown/reboot."
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux>=3.0' 'linux<4.5' 'linux-headers')
+depends=('catalyst-utils' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'linux>=3.0' 'linux<4.6' 'linux-headers')
 optdepends=('linux-lts-headers: to build the fglrx module for the linux-lts kernel')
 conflicts=('catalyst-test' 'catalyst-daemon' 'catalyst' 'catalyst-generator' 'catalyst-dkms')
 provides=("catalyst=${pkgver}")
