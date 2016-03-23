@@ -1,8 +1,7 @@
 # Maintainer: Moritz Schönherr <moritz.schoenherr@gmail.com>
 pkgname=ttf-sparks-scrapbook
-_realname=Amerika
 pkgver=1
-pkgrel=3
+pkgrel=1
 pkgdesc="Free sparks scrapbook miniatures" 
 arch=('any')
 license=('custom')

@@ -1,4 +1,4 @@
-pkgbase = ttf-sparks-ffa
+pkgbase = ttf-sparks-scrapbook
 	pkgdesc = Free sparks scrapbook miniatures
 	pkgver = 1
 	pkgrel = 1
@@ -12,5 +12,5 @@ pkgbase = ttf-sparks-ffa
 	source = http://www222.pair.com/sjohn/free/scrapbook.zip
 	md5sums = 2ade7bd63b79739ef51862c2824b2062
 
-pkgname = ttf-sparks-ffa
+pkgname = ttf-sparks-scrapbook
 
