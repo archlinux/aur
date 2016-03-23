@@ -1,6 +1,5 @@
 # Maintainer: Moritz Schönherr <moritz.schoenherr@gmail.com>
 pkgname=ttf-sparks-ffa
-_realname=Amerika
 pkgver=1
 pkgrel=1
 pkgdesc="Free sparks miniature font by J. Ross"
