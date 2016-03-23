@@ -2,7 +2,7 @@
 # Contributor: Riley Trautman <asonix@tamu.edu>
 
 pkgname=pantheon-mail-bzr
-pkgver=r1992
+pkgver=r2024
 pkgrel=1
 pkgdesc='The Pantheon Mail Client'
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ depends=('cairo' 'gcr' 'gdk-pixbuf2' 'glib2' 'glibc' 'gmime' 'gnome-keyring'
          'gtk3' 'libcanberra' 'libgee' 'libnotify' 'libsecret' 'libxml2'
          'pango' 'sqlite' 'webkitgtk'
          'libgranite.so')
-makedepends=('bzr' 'cmake' 'gnome-doc-utils' 'gobject-introspection' 'intltool'
-             'vala')
+makedepends=('bzr' 'cmake' 'gnome-doc-utils' 'gobject-introspection'
+             'granite-bzr' 'intltool' 'vala')
 provides=('pantheon-mail')
 conflicts=('pantheon-mail')
 install='pantheon-mail.install'
