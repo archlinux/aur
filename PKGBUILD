@@ -12,7 +12,7 @@
 #
 
 pkgname=splitter
-pkgver=r429
+pkgver=r435
 pkgrel=1
 pkgdesc='Utility for splitting OpenStreetMap maps into tiles.'
 url='http://www.mkgmap.org.uk/'
@@ -21,7 +21,7 @@ arch=(any)
 depends=(java-runtime sh libcups)
 source=("http://www.mkgmap.org.uk/snapshots/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}")
-sha256sums=('cc12cd87ab8ed17dca50022d905e3012c3eacd6ed84cf8146f9ebf84edfd4ee8'
+sha256sums=('00024b224a796e57e409e185c549ed8f3fa0964786b63073c939437ac71eb567'
             '40f984bc54a946678eeb3d554a84fad32d6a41038d42990d5336d4b1bdfbc63d')
 
 package() {
