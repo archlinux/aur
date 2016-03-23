@@ -3,7 +3,7 @@
 
 pkgname=aurora-themes
 pkgver=3.18.20160421
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy On The Eyes GNOME Shell, GTK2, GTK3 and Cinnamon themes"
 arch=('any')
 url="http://opendesktop.org/content/show.php?content=170523"
@@ -24,7 +24,7 @@ sha256sums=('6f34484abaf76f7175264de32610a92447408d63c06a91dfb6e5744023e8d831'
 DLAGENTS=("version::/usr/bin/bash -c $(
   printf '%s\n' "${DLAGENTS[@]}" | sed -n 's/http::\(.*\)/\1/p' \
     | sed 's/-[^ ] %o //' | sed 's/ /\\ /g' | sed 's/%u/$(echo\\ %u\\ |\\ sed\\ "s\/^version\/http\/")/'
-)\ |\ grep\ -Po\ '(?<=GNOME\ )[[:digit:].]+(?=\ Theme)'\ >\ %o"
+)\ |\ grep\ -Po\ '(?<=GTK\ )[[:digit:].]+(?=\ Theme)'\ >\ %o"
 "${DLAGENTS[@]}")
 
 pkgver() {
