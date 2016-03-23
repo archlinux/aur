@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 pkgname=reportbug
 _python=python2
-pkgver=6.6.4
+pkgver=6.6.6
 pkgrel=1
 pkgdesc="report bugs in the Debian distribution + python modules"
 arch=('any')
@@ -14,7 +14,7 @@ conflicts=('python2-reportbug')
 options=(!emptydirs)
 backup=('etc/reportbug.conf')
 source=(http://ftp.debian.org/debian/pool/main/r/$pkgname/${pkgname}_$pkgver.tar.bz2)
-sha256sums=('6484a59cc6cc02d4f27d3f6611a5232ec74b3c443529bf2702f0da45e06cf7b3')
+sha256sums=('d9667bde27f8a275a96c200dd7492fd4318ca3924c86abcd4413d95eb2261e35')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
