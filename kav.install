@@ -16,7 +16,7 @@ rmdir /tmp/ext3mount
 }
 
 pre_upgrade() {
-	rm -rf /opt/kav/rootfs
+	rm -rf /opt/kav
 }
 
 
