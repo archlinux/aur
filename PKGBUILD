@@ -3,7 +3,7 @@
 
 pkgbase=python-kombu
 pkgname=('python-kombu' 'python2-kombu')
-pkgver=3.0.34
+pkgver=3.0.35
 pkgrel=1
 pkgdesc='A messaging library for Python'
 arch=('any')
@@ -23,10 +23,10 @@ prepare() {
 }
 
 check() {
-  cd kombu
+  cd "$srcdir"/kombu
   nosetests3 -v
 
-  cd ../kombu-py2
+  cd "$srcdir"/kombu-py2
   nosetests2 -v
 }
 
@@ -46,9 +46,9 @@ package_python-kombu() {
               # 'python-librabbitmq: C optimization for AMQP transport' Not available for python 3 yet
               # 'python-beanstalkc: for Beanstalk Support' Not available for python 3 yet
 
-  cd "$srcdir/kombu"
-  python setup.py install --root="$pkgdir/" --optimize=1
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir"/kombu
+  python setup.py install --root="$pkgdir" --optimize=1
+  install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 package_python2-kombu() {
@@ -67,9 +67,9 @@ package_python2-kombu() {
               # 'python2-kazoo: for Zookeeper support': Not packaged yet
               # 'python2-beanstalkc: for Beanstalk Support' Not packaged yet
 
-  cd "$srcdir/kombu-py2"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir"/kombu-py2
+  python2 setup.py install --root="$pkgdir" --optimize=1
+  install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
