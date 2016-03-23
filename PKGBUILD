@@ -2,7 +2,7 @@
 # Contributor: Kuro <kurokarazu@gmail.com>
 pkgname=kuaipan4uk
 pkgver=2.0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Kingsoft KuaiPan is one of the most popular cloud storage service in China. The aim of this project is to provide an easy-to-use KuaiPan client for UbuntuKylin and all Linux users."
 arch=('i686' 'x86_64')
 license=("GPL")
@@ -30,6 +30,9 @@ build_libcurl()
     cd ${srcdir}
     tar xf ${curl_ver}.tar.gz
     cd ${curl_ver}
+
+    sed -i '105,107d' ./lib/cyassl.c
+    sed -i 's/req_method = SSLv3_client_method()/return CURLE_SSL_CONNECT_ERROR/' ./lib/ssluse.c
 
     ./configure \
         --prefix=/ \

@@ -1,7 +1,7 @@
 pkgbase = kuaipan4uk
 	pkgdesc = Kingsoft KuaiPan is one of the most popular cloud storage service in China. The aim of this project is to provide an easy-to-use KuaiPan client for UbuntuKylin and all Linux users.
 	pkgver = 2.0.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ubuntukylin.com/applications/showimg.php?lang=cn&id=21
 	arch = i686
 	arch = x86_64
