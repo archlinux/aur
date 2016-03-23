@@ -1,5 +1,5 @@
 pkgbase = gtk-theme-iris-dark-git
-	pkgdesc = A flat theme that uses varying shades and tones to create distinction and a modern experience. It supports Gtk 3.10, Gtk 3.12 and Gtk 2 (using the Murrine engine).
+	pkgdesc = A flat theme that uses varying shades and tones to create distinction and a modern experience.
 	pkgver = 106.5bc5245
 	pkgrel = 1
 	url = http://thevirtualdragon.deviantart.com/art/Iris-Dark-Gtk-Theme-v1-9-429628194
@@ -7,8 +7,8 @@ pkgbase = gtk-theme-iris-dark-git
 	arch = any
 	license = GPL3
 	makedepends = git
-	depends = gtk3
-	depends = gtk-engine-murrine
+	optdepends = gtk-engine-murrine: gtk2 bindings
+	optdepends = gtk3: gtk3 bindings
 	provides = gtk-theme-iris-dark
 	conflicts = gtk-theme-iris-dark
 	source = iris-dark::git+https://github.com/xyl0n/iris.git
