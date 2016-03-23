@@ -1,0 +1,12 @@
+pkgbase = else_heart.break-hib
+	pkgdesc = game about friendship, love and technology in a place where bits have replaced atoms. humblebundle version
+	pkgver = 2016.03.23
+	pkgrel = 1
+	url = http://elseheartbreak.com/
+	arch = any
+	license = commercial
+	source = hib://ElseHeartbreakLinux.tgz
+	md5sums = 7030450cadac6234676967ae41f2a732
+
+pkgname = else_heart.break-hib
+
