@@ -1,8 +1,5 @@
-src/
-pkg/
-*.tar.xz
-*.tar.gz
-*.pkg.tar*
-*.zip
-*.sig
-*.log*
+*
+!PKGBUILD
+!.SRCINFO
+!*.install
+!.gitignore
