@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=mlterm-hg
-pkgver=r2485.113c827fa29c
+pkgver=r2576.13f324611e64
 pkgrel=1
 epoch=
 pkgdesc="Multi Lingual TERMinal emulator on X"
@@ -43,7 +43,7 @@ build() {
               --with-type-engines=xft,cairo,xcore \
               --with-gtk=2.0,3.0 \
               --with-scrollbars \
-              --with-tools=mlconfig,mlterm-zoom,mlterm-menu,mlclient,mlcc \
+              --with-tools=mlconfig,mlterm-zoom,mlterm-menu,mlclient,mlcc,mlfc \
               --with-imagelib=gdk-pixbuf
   make
 }
