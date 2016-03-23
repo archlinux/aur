@@ -2,8 +2,8 @@
 
 pkgname=firefox-beta-zh-cn
 _pkgname=firefox-beta
-pkgver=46.0b2
-pkgrel=3
+pkgver=46.0b4
+pkgrel=2
 pkgdesc="Chinese Simplified For Firefox Beta"
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/zh-CN/firefox/channel/#beta"
@@ -23,8 +23,8 @@ source_i686=("https://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/
 source_x86_64=("https://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/build$pkgrel/linux-x86_64/zh-CN/firefox-$pkgver.tar.bz2")
 sha512sums=('SKIP'
             'SKIP')
-sha512sums_i686=('99ee14f28dafb9edf5b7feda4580d96877b23a58e8e11bac085ebb73d83e6e890ffc323cedbe88301ddfd59e543bb1e089d8b3ade6a8f6625021b0b285930b22')
-sha512sums_x86_64=('9f9163f46da64d2b5d758d3b81155f7962b38069b86741fdc80db36d3d09aca8b43a7efd1f70c36d780789bc6648f58c22c846543ea6b4d03783997f4837ab7e')
+sha512sums_i686=('60e19e92fecbd6e9b6151a5f1b7c2796ad096a7fd3b1e45942e8c8945ec650d725a5feefc8a80663d573faf6aab9eff386ff00e0c0ebe371bc3f2f75cdc231d1')
+sha512sums_x86_64=('877d282c00bd101ab75f7d1d4f98d0faa835fa255ba52ee14927fe6a68fd2a51c28ce0097dead6558523c6baee6b07bc521f12a48dd682d2407ef11f6b710d88')
 
 package() {
   # Create directories
