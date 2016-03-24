@@ -4,7 +4,7 @@ pkgdesc="ROS - A set of message filters which take in messages and may output th
 url='http://ros.org/wiki/message_filters'
 
 pkgname='ros-indigo-message-filters'
-pkgver='1.11.16'
+pkgver='1.11.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -16,7 +16,7 @@ ros_makedepends=(ros-indigo-rosunit
   ros-indigo-catkin
   ros-indigo-rosconsole
   ros-indigo-xmlrpcpp)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost)
 
@@ -25,10 +25,16 @@ ros_depends=(ros-indigo-rosconsole
   ros-indigo-xmlrpcpp)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/message_filters/${pkgver}-${_pkgver_patch}
-_dir=message_filters
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/message_filters/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-indigo-message_filters-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/message_filters/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('805309d5d60d1e501c3358f3d8ab0ade74f37db38a9e57b8acbd8de5f6bc466f')
 
 build() {
   # Use ROS environment variables
