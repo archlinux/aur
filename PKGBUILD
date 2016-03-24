@@ -4,7 +4,7 @@
 
 pkgbase="zfs-dkms-git"
 pkgname=("zfs-dkms-git" "zfs-utils-dkms-git")
-pkgver=0.6.5_r180_gc352ec2
+pkgver=0.6.5_r189_g541a090
 pkgrel=1
 license=('CDDL')
 makedepends=("git" "spl-dkms-git")
@@ -76,9 +76,8 @@ package_zfs-utils-dkms-git() {
     rm -r "${pkgdir}"/lib
 
     install -D -m644 "${srcdir}"/zfs.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
+    install -D -m644 "${srcdir}"/zfs.initcpio.install "${pkgdir}"/usr/lib/initcpio/install/zfs
     install -D -m644 "${srcdir}"/zfs.bash-completion-r1 "${pkgdir}"/usr/share/bash-completion/completions/zfs
 
     mkdir -p "${pkgdir}"/usr/lib/initcpio/install
-    sed -e "s|##VERMARKER##|${pkgver}|" "${srcdir}"/zfs.initcpio.install > "${pkgdir}"/usr/lib/initcpio/install/zfs
-    chmod 644 "${pkgdir}"/usr/lib/initcpio/install/zfs
 }
