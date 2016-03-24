@@ -55,8 +55,8 @@ prepare() {
   fi
 
   # make sure the proxy variables are in all caps, otherwise bazel ignores them
-  export HTTP_PROXY=`echo -e $http_proxy | sed -e 's/\/$//'`
-  export HTTPS_PROXY=`echo -e $http_proxy | sed -e 's/\/$//'`
+  export HTTP_PROXY=`echo $http_proxy | sed -e 's/\/$//'`
+  export HTTPS_PROXY=`echo $https_proxy | sed -e 's/\/$//'`
 }
 
 build() {
