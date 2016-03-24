@@ -4,7 +4,7 @@ pkgdesc="ROS - Contains nodelets for processing depth images such as those produ
 url='http://ros.org/wiki/depth_image_proc'
 
 pkgname='ros-indigo-depth-image-proc'
-pkgver='1.12.15'
+pkgver='1.12.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -22,7 +22,7 @@ ros_makedepends=(ros-indigo-tf2-ros
   ros-indigo-message-filters
   ros-indigo-tf2
   ros-indigo-nodelet)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost)
 
@@ -36,10 +36,16 @@ ros_depends=(ros-indigo-tf2-ros
 depends=(${ros_depends[@]}
   boost)
 
-_tag=release/indigo/depth_image_proc/${pkgver}-${_pkgver_patch}
-_dir=depth_image_proc
-source=("${_dir}"::"git+https://github.com/ros-gbp/image_pipeline-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/depth_image_proc/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/image_pipeline-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="image_pipeline-release-release-indigo-depth_image_proc-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/indigo/depth_image_proc/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('c0edd15108ebe34847dc7b4571df7ceb34dbabc3d643536cab040fc00b647e33')
 
 build() {
   # Use ROS environment variables
