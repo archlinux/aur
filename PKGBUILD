@@ -63,7 +63,7 @@ build() {
 #}
 
 package_umlet-standalone() {
-    pkgdesc="Free UML Tool for Fast UML Diagrams (Standalone Version)"
+    pkgdesc="${pkgdesc} (Standalone Version)"
     install -dm755 "$pkgdir/usr/share/applications/"
     install -dm755 "$pkgdir/usr/bin/"
     install -dm755 "$pkgdir/opt/"
@@ -73,7 +73,7 @@ package_umlet-standalone() {
 }
 
 package_umlet-eclipse-plugin() {
-    pkgdesc="Free UML Tool for Fast UML Diagrams (Eclipse Plugin Version)"
+    pkgdesc="${pkgdesc} (Eclipse Plugin Version)"
     optdepends=('eclipse')
     install -dm755 "$pkgdir/usr/share/eclipse/plugins"
     install -Dm644 "$srcdir/umlet-${_date}_UMLet_v${pkgver}/umlet-eclipse-plugin/target/com.umlet.plugin-${pkgver}.jar" "$pkgdir/usr/share/eclipse/plugins"
