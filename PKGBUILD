@@ -37,7 +37,7 @@ package_jdk-docs() {
 }
 
 package_javafx-docs() {
-  _minor=77
+  _minor=72
   pkgver=${_major}u${_minor}
 
   # Install
