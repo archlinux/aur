@@ -4,23 +4,29 @@ pkgdesc="ROS - This package provides a set of simple math utilities to work with
 url='http://ros.org/wiki/angles'
 
 pkgname='ros-indigo-angles'
-pkgver='1.9.9'
+pkgver='1.9.10'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=()
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/angles/${pkgver}-${_pkgver_patch}
-_dir=angles
-source=("${_dir}"::"git+https://github.com/ros-gbp/geometry_angles_utils-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/angles/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry_angles_utils-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="geometry_angles_utils-release-release-indigo-angles-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry_angles_utils-release/archive/release/indigo/angles/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('aa8703bb9b54a690ceb0d9c2795648fbda0dba92b53a7d669f5dfd8ddadd8e70')
 
 build() {
   # Use ROS environment variables
@@ -42,6 +48,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
