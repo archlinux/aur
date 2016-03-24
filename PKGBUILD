@@ -7,7 +7,7 @@
 _targets="i686-pc-msdosdjgpp"
 
 pkgname=djgpp-binutils
-pkgver=2.25.1
+pkgver=2.26
 pkgrel=1
 pkgdesc="Cross binutils for the djgpp cross-compiler"
 arch=('i686' 'x86_64')
@@ -16,8 +16,15 @@ license=('GPL')
 groups=('djgpp-toolchain' 'djgpp')
 depends=('zlib')
 options=('!libtool' '!emptydirs')
-source=("http://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.gz")
-sha512sums=('af9fced0813551ea9196f1be3a9b4f7f70fc02aa369e042fa1077878c42bb3a8bc17defc4db5d75dac42c81fb53b5015db9d89d92ef6dc9363798a3c94323aba')
+source=(
+	"http://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2"
+	"http://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2.sig"
+)
+sha512sums=(
+	'e77e1b8dbbcbaf9ac2fae95c4403615808af3be03b2e1d32448cd3a7d32c43273f8bcace3f2de84ec120a982879295673029da306e2885dbf5f990584932cfc7'
+	'SKIP'
+)
+validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93') # Tristan Gingold <adacore dot com, gingold>
 
 prepare() {
   cd ${srcdir}/binutils-${pkgver}
@@ -34,8 +41,9 @@ build() {
     msg "Building ${_target} cross binutils"
     mkdir -p ${srcdir}/binutils-${_target} && cd "${srcdir}/binutils-${_target}"
     $srcdir/binutils-${pkgver}/configure --prefix=/usr \
-        --target=${_target} \
-        --infodir=/usr/share/info/${_target} \
+        --target="${_target}" \
+        --infodir="/usr/share/info/${_target}" \
+        --datadir="/usr/${_target}/share" \
         --disable-lto --enable-plugins \
         --disable-multilib --disable-nls \
         --disable-werror

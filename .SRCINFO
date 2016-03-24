@@ -1,6 +1,6 @@
 pkgbase = djgpp-binutils
 	pkgdesc = Cross binutils for the djgpp cross-compiler
-	pkgver = 2.25.1
+	pkgver = 2.26
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils
 	arch = i686
@@ -11,8 +11,11 @@ pkgbase = djgpp-binutils
 	depends = zlib
 	options = !libtool
 	options = !emptydirs
-	source = http://ftp.gnu.org/gnu/binutils/binutils-2.25.1.tar.gz
-	sha512sums = af9fced0813551ea9196f1be3a9b4f7f70fc02aa369e042fa1077878c42bb3a8bc17defc4db5d75dac42c81fb53b5015db9d89d92ef6dc9363798a3c94323aba
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.26.tar.bz2
+	source = http://ftp.gnu.org/gnu/binutils/binutils-2.26.tar.bz2.sig
+	validpgpkeys = EAF1C276A747E9ED86210CBAC3126D3B4AE55E93
+	sha512sums = e77e1b8dbbcbaf9ac2fae95c4403615808af3be03b2e1d32448cd3a7d32c43273f8bcace3f2de84ec120a982879295673029da306e2885dbf5f990584932cfc7
+	sha512sums = SKIP
 
 pkgname = djgpp-binutils
 
