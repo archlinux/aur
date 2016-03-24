@@ -3,7 +3,7 @@
 pkgname=synology-cloud-station-drive
 pkgver=4203
 pkgrel=1
-pkgdesc="Cloud Station Drive is an application which sync files between your computers and Synology NAS"
+pkgdesc="An application which sync files between your computers and Synology NAS"
 arch=('i686' 'x86_64')
 url="http://www.synology.com"
 license=('unknown')
