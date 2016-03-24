@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_common_plugins metapackage provides ROS backend graphical too
 url='http://ros.org/wiki/rqt_common_plugins'
 
 pkgname='ros-indigo-rqt-common-plugins'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rqt-top
@@ -37,10 +37,16 @@ ros_depends=(ros-indigo-rqt-top
   ros-indigo-rqt-py-console)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/rqt_common_plugins/${pkgver}-${_pkgver_patch}
-_dir=rqt_common_plugins
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rqt_common_plugins/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-indigo-rqt_common_plugins-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/indigo/rqt_common_plugins/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('6b7513bf1f8325dd410db2a130b62cd9cf3e88fa28cd1f244fae2b6a40d81661')
 
 build() {
   # Use ROS environment variables
