@@ -4,10 +4,10 @@ pkgdesc="ROS - 3D visualization tool for ROS."
 url='http://ros.org/wiki/rviz'
 
 pkgname='ros-indigo-rviz'
-pkgver='1.11.10'
+pkgver='1.11.12'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD, Creative Commons')
 
 ros_makedepends=(ros-indigo-geometry-msgs
@@ -34,10 +34,10 @@ ros_makedepends=(ros-indigo-geometry-msgs
   ros-indigo-image-transport
   ros-indigo-roslib
   ros-indigo-message-filters)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   qt4
-  "ogre>=1.9"
+  ogre
   assimp
   eigen3
   tinyxml
@@ -69,17 +69,23 @@ ros_depends=(ros-indigo-geometry-msgs
   ros-indigo-message-filters)
 depends=(${ros_depends[@]}
   qt4
-  "ogre>=1.9"
+  ogre
   assimp
   eigen3
   tinyxml
   mesa
   yaml-cpp)
 
-_tag=release/indigo/rviz/${pkgver}-${_pkgver_patch}
-_dir=rviz
-source=("${_dir}"::"git+https://github.com/ros-gbp/rviz-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rviz/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rviz-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rviz-release-release-indigo-rviz-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rviz-release/archive/release/indigo/rviz/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('484db3107ae988e545c3d2338331fea05b2225e79b970a689f75e220e7beb5ad')
 
 build() {
   # Use ROS environment variables
