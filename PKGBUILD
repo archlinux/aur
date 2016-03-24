@@ -4,7 +4,7 @@ pkgdesc="ROS - roscpp is a C++ implementation of ROS."
 url='http://ros.org/wiki/roscpp'
 
 pkgname='ros-indigo-roscpp'
-pkgver='1.11.16'
+pkgver='1.11.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -21,7 +21,7 @@ ros_makedepends=(ros-indigo-roslang
   ros-indigo-roscpp-traits
   ros-indigo-rosgraph-msgs
   ros-indigo-xmlrpcpp)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   pkg-config)
 
@@ -36,10 +36,16 @@ ros_depends=(ros-indigo-roscpp-serialization
   ros-indigo-xmlrpcpp)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/roscpp/${pkgver}-${_pkgver_patch}
-_dir=roscpp
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/roscpp/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-indigo-roscpp-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/roscpp/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('14644388129abf4ea41ce98a3ae57664d7c0f77bff56b72f2f69f820d2be004b')
 
 build() {
   # Use ROS environment variables
