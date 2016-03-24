@@ -3,7 +3,7 @@
 
 pkgname=rakudo-git
 pkgver=20160324
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl6 on MoarVM and the JVM"
 arch=('i686' 'x86_64')
 depends=('java-runtime' 'moarvm' 'nqp')
@@ -39,5 +39,6 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
-  find "$pkgdir" -type f -print0 | xargs -0 sed -i "s,$pkgdir\|\|$srcdir,,g"
+  find "$pkgdir/usr/share/perl6/precomp" -type f -name "*.deps" -exec \
+    sed -i "s,$pkgdir,,g" '{}' \;
 }
