@@ -2,14 +2,14 @@
 # Wed Mar 23 18:11:52 UTC 2016
 pkgbase = pachook
 	pkgdesc = simple administrator pacman hooks
-	pkgver = 0.1.1.r7.a833abff
+	pkgver = 0.1.2.r0.ga833abf
 	pkgrel = 1
 	url = https://github.com/papajoker/pachook
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = pacman
-	source = pachook::git+http://github.com/papajoker/pachook#branch=master
+	source = pachook::git+https://github.com/papajoker/pachook
 	md5sums = SKIP
 
 pkgname = pachook

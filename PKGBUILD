@@ -1,6 +1,6 @@
 # Maintainer: Papajoker <papajoke [at] archlinux [dot] info>
 pkgname=pachook
-pkgver=0.1.1.r7.a833abff
+pkgver=0.1.2.r0.ga833abf
 pkgrel=1
 pkgdesc="simple administrator pacman hooks"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/papajoker/pachook"
 license=('GPL')
 depends=('pacman')
 makedepends=('git')
-source=("$pkgname::git+http://github.com/papajoker/pachook#branch=master")
+source=("$pkgname::git+https://github.com/papajoker/pachook")
 md5sums=('SKIP')
 
 pkgver() {
