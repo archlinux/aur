@@ -26,7 +26,7 @@ makedepends=('maven' 'unzip')
 # Package Relations
 #provides=()
 #conflicts=()
-replaces=('eclipse-umlet')
+#replaces=()
 
 # Others
 #backup=()
@@ -76,7 +76,8 @@ package_umlet-standalone() {
 
 package_umlet-eclipse-plugin() {
     pkgdesc="${pkgdesc} (Eclipse Plugin Version)"
-    optdepends=('eclipse')
+    depends=('eclipse')
+    replaces=('eclipse-umlet')
     install -dm755 "$pkgdir/usr/share/eclipse/plugins"
     install -Dm644 "$srcdir/umlet-${_date}_UMLet_v${pkgver}/umlet-eclipse-plugin/target/com.umlet.plugin-${pkgver}.jar" "$pkgdir/usr/share/eclipse/plugins"
 }
