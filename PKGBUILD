@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=wiredtiger-git
-pkgver=2.7.0.1.g0932de9.16686
+pkgver=2.8.0.17811
 pkgrel=1
 pkgdesc="High performance, scalable, production quality, NoSQL, Open Source extensible platform for data management"
 arch=('x86_64')
