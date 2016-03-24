@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_console provides a GUI plugin for displaying and filtering RO
 url='http://ros.org/wiki/rqt_console'
 
 pkgname='ros-indigo-rqt-console'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-roslib
@@ -22,10 +22,16 @@ ros_depends=(ros-indigo-roslib
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/indigo/rqt_console/${pkgver}-${_pkgver_patch}
-_dir=rqt_console
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rqt_console/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-indigo-rqt_console-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/indigo/rqt_console/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('88cf5410a70e281c23fd5604de130a82e37b691823bfcb24da399fa4d1883815')
 
 build() {
   # Use ROS environment variables
