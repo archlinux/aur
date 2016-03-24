@@ -10,7 +10,8 @@ source=(git+https://github.com/seletskiy/mcabber-autojoin)
 md5sums=(SKIP)
 
 pkgver() {
-    cd "${pkgname}"
+    cd "$srcdir/mcabber-autojoin"
+
     echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
