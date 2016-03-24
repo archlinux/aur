@@ -1,19 +1,23 @@
 pkgbase = djgpp-djcrx
 	pkgdesc = Headers and utilities for the djgpp cross-compiler
-	pkgver = 2.0.3
+	pkgver = 2.05
 	pkgrel = 1
 	url = http://www.delorie.com/djgpp/
+	install = info.install
 	arch = i686
 	arch = x86_64
-	groups = djgpp-toolchain
-	groups = djgpp
 	license = GPL
 	license = LGPL
-	license = custom
+	license = custom:djgpp
 	depends = glibc
+	options = !buildflags
 	options = !strip
-	source = http://www.delorie.com/pub/djgpp/current/v2/djcrx203.zip
-	sha512sums = e6e932b85fc0656df078f75854f8458c18f0cc1c0995e51fa49be3dea1834ed449cb282cb97bb905c6753828a15c82063e9eabcdc7032c96e678616a938ac6e6
+	source = http://www.delorie.com/pub/djgpp/current/v2/djcrx205.zip
+	source = http://www.delorie.com/pub/djgpp/current/v2/djlsr205.zip
+	source = info.install
+	sha512sums = 248034a3c026971eeaa6421ef40f44d03873c62d4edf97490e98c71ac76662eaed531eb734e137a38a644483a34065c3ffc70d3d739682d53c8863bf7b521b90
+	sha512sums = 5d2b9c155b926284138c01221c783c4808020865fa91600749d63a2039f5acd076eec5b25c38cb38b4aa73ae6b998f1614baa7e98818bc3816bc2a5f67f8229c
+	sha512sums = 9030c041274b96a6bea6447974000f84e22b9e6a3d2b610961bc4474aadc5dfe9de36a7ff2ecfa50bcd0b3226c4fa5a3f4534379c8be85d9e39938fa868061db
 
 pkgname = djgpp-djcrx
 
