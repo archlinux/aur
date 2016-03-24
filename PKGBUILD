@@ -1,10 +1,10 @@
 #Original software from Jukka Isohatala (JI) - PKGBUILD release: José Luis Garrido Labrador (JoseluCross) - Company: JKA Network
 pkgname=xbcg
 pkgver=0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A gamma-contrast-brightness modifier of Linux's laptops"
 arch=('any')
-license=('GPL3')
+license=('GPL2')
 #groups=()
 depends=('libx11' 'libxxf86vm')
 makedepends=()

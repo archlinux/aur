@@ -1,9 +1,9 @@
 pkgbase = xbcg
 	pkgdesc = A gamma-contrast-brightness modifier of Linux's laptops
 	pkgver = 0.12
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
-	license = GPL3
+	license = GPL2
 	depends = libx11
 	depends = libxxf86vm
 	options = !emptydirs
