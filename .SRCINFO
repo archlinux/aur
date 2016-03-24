@@ -1,0 +1,18 @@
+pkgbase = riemann-c-client
+	pkgdesc = Riemann C driver library and CLI client
+	pkgver = 1.8.1
+	pkgrel = 1
+	url = https://github.com/algernon/riemann-c-client
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = BSD
+	makedepends = git automake autoconf
+	depends = glibc
+	depends = zlib
+        depends = protobuf-c
+	source = git+https://github.com/algernon/riemann-c-client#tag=1.8.1
+	sha256sums = SKIP
+
+pkgname = riemann-c-client
+
