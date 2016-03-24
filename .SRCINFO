@@ -1,6 +1,6 @@
 pkgbase = pacaur
 	pkgdesc = An AUR helper that minimizes user interaction
-	pkgver = 4.5.5
+	pkgver = 4.5.6
 	pkgrel = 1
 	url = https://github.com/rmarquis/pacaur
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = pacaur
 	depends = sudo
 	depends = git
 	backup = etc/xdg/pacaur/config
-	source = https://github.com/rmarquis/pacaur/archive/4.5.5.tar.gz
-	md5sums = 2ec788d0acaabdee9eed3bf8908fc075
+	source = https://github.com/rmarquis/pacaur/archive/4.5.6.tar.gz
+	md5sums = de4a1fa9170e64205c2778bb5309b6e5
 
 pkgname = pacaur
 
