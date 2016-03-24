@@ -4,24 +4,30 @@ pkgdesc="ROS - rosmake is a ros dependency aware build tool which can be used to
 url='http://ros.org/wiki/rosmake'
 
 pkgname='ros-indigo-rosmake'
-pkgver='1.11.11'
+pkgver='1.11.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-catkin)
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/indigo/rosmake/${pkgver}-${_pkgver_patch}
-_dir=rosmake
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rosmake/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros-release-release-indigo-rosmake-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/indigo/rosmake/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('79dc4fe4c19223cff3bb4cb92ca2ef4e42e58d980ca7b7a2044d57b564a1de80')
 
 build() {
   # Use ROS environment variables
