@@ -4,24 +4,30 @@ pkgdesc="ROS - roslang is a common package that all ROS client libraries depend 
 url='http://ros.org/wiki/roslang'
 
 pkgname='ros-indigo-roslang'
-pkgver='1.11.11'
+pkgver='1.11.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-genmsg
   ros-indigo-catkin)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/roslang/${pkgver}-${_pkgver_patch}
-_dir=roslang
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/roslang/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros-release-release-indigo-roslang-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/indigo/roslang/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('ad65109c7bbba369edef15432b8933e0d4ec33d9780489c1402de81e35ff2285')
 
 build() {
   # Use ROS environment variables
