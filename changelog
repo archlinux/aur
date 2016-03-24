@@ -1,0 +1,5 @@
+New in UMLet 14.1.1 stand-alone and UMLet 14.1 Eclipse plugin
+- New custom elements
+- New sequence all-in-one
+- OS-specific config dir handling
+- Many additional fixes; see current github issue tracker
