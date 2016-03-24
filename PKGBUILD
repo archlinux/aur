@@ -1,8 +1,8 @@
 # Maintainer: Chris Oelmueller <chris.oelmueller@gmail.com>
 
 pkgname=python-openopt
-_pythonname=OpenOpt
-pkgver=0.45
+_pythonname=openopt
+pkgver=0.5625
 pkgrel=1
 arch=('any')
 url='http://www.openopt.org'
@@ -10,14 +10,14 @@ license=('BSD')
 pkgdesc='Optimization library'
 depends=('python' 'python-numpy')
 conflicts=('python2-openopt')
-source=("http://openopt.org/images/3/33/${_pythonname}.zip")
+source=("https://pypi.python.org/packages/source/o/${_pythonname}/${_pythonname}-${pkgver}.tar.gz")
 
 package() {
-  cd "$srcdir/${_pythonname}"
+  cd "$srcdir/${_pythonname}-${pkgver}"
 
   python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
   install -D -m 644 COPYING.txt "$pkgdir/usr/share/licenses/$pkgname/COPYING.txt"
 }
 
-md5sums=('214517cf319eb75a2515fe4f3bcc0684')
-sha256sums=('3f777a523c593e259ca0211d90d403d890822a6ccb67557479f03b4c172a569d')
+md5sums=('513f4f08d786310bbad6285d375ebe4d')
+sha256sums=('80dd41ee5b9cbb6b1249d5c585d190d54e1557c5cc8e639d1c8755500161daf0')
