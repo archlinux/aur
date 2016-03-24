@@ -4,24 +4,30 @@ pkgdesc="ROS - rosclean: cleanup filesystem resources (e.g."
 url='http://ros.org/wiki/rosclean'
 
 pkgname='ros-indigo-rosclean'
-pkgver='1.11.11'
+pkgver='1.11.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=()
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/indigo/rosclean/${pkgver}-${_pkgver_patch}
-_dir=rosclean
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rosclean/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros-release-release-indigo-rosclean-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/indigo/rosclean/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('35740867a800d84c3606ac435e42ea7669c21374d7cac5d10b4a872feb716bba')
 
 build() {
   # Use ROS environment variables
