@@ -1,0 +1,11 @@
+pkgbase = gimp-font-rendering-fix
+	pkgdesc = Fixes subpixel font rendering when using infinality fontconfig
+	pkgver = 1
+	pkgrel = 1
+	url = https://bbs.archlinux.org/viewtopic.php?id=195315
+	arch = any
+	license = unknown
+	depends = gimp
+
+pkgname = gimp-font-rendering-fix
+
