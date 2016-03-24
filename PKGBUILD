@@ -7,7 +7,8 @@ pkgdesc="A library for making high-quality scientific graphics"
 arch=('i686' 'x86_64')
 url="http://${pkgname}.sourceforge.net"
 license=('GPL3')
-depends=('libpng' 'libgl' 'libharu' 'python2' 'hdf5' 'texlive-bin' 'texlive-core' 'python2-numpy' 'freeglut')
+depends=('libpng' 'libharu' 'python2' 'hdf5' 'texlive-bin' 'texlive-core' 'python2-numpy' 
+        'freeglut' 'gsl' 'wxgtk' 'qt5-base' )
 makedepends=( 'cmake' 'swig')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}%20${pkgver}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('64c804690e82570cc05b89df9e7c39d4')
