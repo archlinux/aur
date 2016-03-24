@@ -40,6 +40,9 @@ package() {
   mkdir -p "${pkgdir}/opt/${pkgname}"
   cp -a Bus_Pirate-${pkgver}/* "${pkgdir}/opt/${pkgname}/."
 
+  mkdir -p "${pkgdir}/etc/udev/rules.d/"
+  cp 25_busBirate.rules "${pkgdir}/etc/udev/rules.d/."
+
   msg2 "packaging pyBusPirateLite"
   cd "${srcdir}/Bus_Pirate-${pkgver}/scripts/pyBusPirateLite"
   python2 setup.py install --root="$pkgdir/" --optimize=1
