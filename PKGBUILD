@@ -14,7 +14,7 @@ _tag="${_date}_UMLet_v${pkgver}"
 pkgdesc="Free UML Tool for Fast UML Diagrams"
 arch=('any')
 url="http://www.umlet.com/"
-license=('GPLv3')
+license=('GPL3')
 #groups=()
 
 # Dependencies
