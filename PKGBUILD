@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_action provides a feature to introspect all available ROS act
 url='http://ros.org/wiki/rqt_action'
 
 pkgname='ros-indigo-rqt-action'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rqt-msg
@@ -19,10 +19,16 @@ ros_depends=(ros-indigo-rqt-msg
   ros-indigo-rqt-py-common)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/rqt_action/${pkgver}-${_pkgver_patch}
-_dir=rqt_action
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rqt_action/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-indigo-rqt_action-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/indigo/rqt_action/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('0b8b23b4a8c4394e96232cf5fba028bd5d718fef28721348bc047d2be6954903')
 
 build() {
   # Use ROS environment variables
