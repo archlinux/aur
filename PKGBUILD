@@ -8,13 +8,13 @@
 # The build script generates and updates the pkgver and _kernel* variables.
 #
 pkgname="zfs-utils-lts"
-pkgver=0.6.5.5_4.1.20_1
+pkgver=0.6.5.6_4.1.20_1
 pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("spl-lts")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
-source=("http://archive.zfsonlinux.org/downloads/zfsonlinux/zfs/zfs-0.6.5.5.tar.gz"
+source=("http://archive.zfsonlinux.org/downloads/zfsonlinux/zfs/zfs-0.6.5.6.tar.gz"
         "zfs-utils.bash-completion-r1"
         "zfs-utils.initcpio.install"
         "zfs-utils.initcpio.hook"
@@ -25,7 +25,7 @@ provides=("zfs-utils")
 conflicts=("zfs-utils" "zfs-utils-git")
 
 build() {
-    cd "${srcdir}/zfs-0.6.5.5"
+    cd "${srcdir}/zfs-0.6.5.6"
     ./autogen.sh
 
     ./configure --prefix=/usr \
@@ -36,13 +36,13 @@ build() {
                 --datadir=/usr/share \
                 --includedir=/usr/include \
                 --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-0.6.5.5 \
+                --libexecdir=/usr/lib/zfs-0.6.5.6 \
                 --with-config=user
     make
 }
 
 package() {
-    cd "${srcdir}/zfs-0.6.5.5"
+    cd "${srcdir}/zfs-0.6.5.6"
     make DESTDIR="${pkgdir}" install
 
     # Remove uneeded files
@@ -57,7 +57,7 @@ package() {
     install -D -m644 "${srcdir}"/zfs-utils.initcpio.install "${pkgdir}"/usr/lib/initcpio/install/zfs
     install -D -m644 "${srcdir}"/zfs-utils.bash-completion-r1 "${pkgdir}"/usr/share/bash-completion/completions/zfs
 }
-sha256sums=('4f5cac060c087f088f8b4e1f43cb7aacd0b97f4a4b3df852fe600aad0a03a262'
+sha256sums=('c349d46d86b4f61cd53a0891acad916cfc3f0d6754127db7f60a0bd98185aeff'
             'b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540'
             '1e20071fa61a33874505dae0f2d71bb560f43e7faaea735cbde770ea10c133df'
             '438a1399d1df5ef20eff37b4d775595fae9943d0c5c105c7bc286b2babcd759e')
