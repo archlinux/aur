@@ -1,7 +1,7 @@
 pkgbase = debops
 	pkgdesc = A collection of Ansible playbooks, scalable from one container to an entire data center.
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://debops.org/
 	arch = any
 	license = GPL3

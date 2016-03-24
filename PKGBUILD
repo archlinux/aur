@@ -3,7 +3,7 @@
 
 pkgname=debops
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of Ansible playbooks, scalable from one container to an entire data center."
 arch=('any')
 url="http://debops.org/"
@@ -21,5 +21,5 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	python2 setup.py install
+	python2 setup.py install --root="$pkgdir" --optimize=1
 }
