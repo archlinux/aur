@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_graph provides a GUI plugin for visualizing the ROS computati
 url='http://ros.org/wiki/rqt_graph'
 
 pkgname='ros-indigo-rqt-graph'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rosservice
@@ -27,10 +27,16 @@ ros_depends=(ros-indigo-rosservice
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/indigo/rqt_graph/${pkgver}-${_pkgver_patch}
-_dir=rqt_graph
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rqt_graph/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-indigo-rqt_graph-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/indigo/rqt_graph/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('6e6d0c2bfd2addb60a1255d0f5d44f73d6e7a6a83053b45fbc8cf1a06334d924')
 
 build() {
   # Use ROS environment variables
