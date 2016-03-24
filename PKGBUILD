@@ -4,14 +4,14 @@ pkgdesc="ROS - Underlying data libraries for roscpp messages."
 url='http://www.ros.org/wiki/roscpp_core'
 
 pkgname='ros-indigo-roscpp-core'
-pkgver='0.5.6'
+pkgver='0.5.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-roscpp-serialization
@@ -20,10 +20,16 @@ ros_depends=(ros-indigo-roscpp-serialization
   ros-indigo-roscpp-traits)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/roscpp_core/${pkgver}-${_pkgver_patch}
-_dir=roscpp_core
-source=("${_dir}"::"git+https://github.com/ros-gbp/roscpp_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/roscpp_core/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/roscpp_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="roscpp_core-release-release-indigo-roscpp_core-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/indigo/roscpp_core/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('f37e078f78a827053aae01ef37833496761160cc2767a0be344de38418254eff')
 
 build() {
   # Use ROS environment variables
