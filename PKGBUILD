@@ -4,14 +4,14 @@ pkgdesc="ROS - rosservice contains the rosservice command-line tool for listing 
 url='http://ros.org/wiki/rosservice'
 
 pkgname='ros-indigo-rosservice'
-pkgver='1.11.16'
+pkgver='1.11.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rosgraph
@@ -21,10 +21,16 @@ ros_depends=(ros-indigo-rosgraph
   ros-indigo-rosmsg)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/rosservice/${pkgver}-${_pkgver_patch}
-_dir=rosservice
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rosservice/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-indigo-rosservice-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosservice/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('6c47436fef0ab8b8ca4c1122276f1e28ea12b0314ea12d3ebe43c997ab702fe9')
 
 build() {
   # Use ROS environment variables
