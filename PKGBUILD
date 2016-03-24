@@ -1,11 +1,12 @@
 # Maintainer: Konstantin Stepanov <me@kstep.me>
+# Maintainer: Alan Beale <the [dot] mrabz [at] gmail [dot] com>
 
 pkgname=ajenti-git
-pkgver=1.2.21.32.g83672a0
+pkgver=1.2.22.202.gbdab2be
 pkgrel=1
 pkgdesc='An easy server administration frontend.'
 arch=(any)
-url="http://github.com/Eugeny/ajenti/"
+url="http://github.com/ajenti/ajenti/"
 license=(LGPL)
 depends=(python2-gevent-socketio python2-lxml python2-passlib python2-psutil python2-daemon
          python2-catcher python2-reconfigure python2-pyopenssl python2-pillow python2-exconsole)
@@ -15,7 +16,7 @@ optdepends=(
     'python2-dbus: Services Management using Upstart and/or SystemD'
 )
 install=ajenti.install
-source=("$pkgname::git+https://github.com/Eugeny/ajenti.git#branch=master")
+source=("$pkgname::git+https://github.com/ajenti/ajenti.git")
 md5sums=(SKIP)
 backup=(etc/ajenti/config.json)
 
