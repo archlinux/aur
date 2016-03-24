@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_robot_monitor displays diagnostics_agg topics messages that a
 url='http://ros.org/wiki/rqt_robot_monitor'
 
 pkgname='ros-indigo-rqt-robot-monitor'
-pkgver='0.4.2'
+pkgver='0.4.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rqt-gui
@@ -26,10 +26,16 @@ ros_depends=(ros-indigo-rqt-gui
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/indigo/rqt_robot_monitor/${pkgver}-${_pkgver_patch}
-_dir=rqt_robot_monitor
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rqt_robot_monitor/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_robot_plugins-release-release-indigo-rqt_robot_monitor-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_robot_plugins-release/archive/release/indigo/rqt_robot_monitor/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('ca67b646e4e22d9879f2c6bf816c84e49420b3650080c28b5dba3e14a7ac3fbf')
 
 build() {
   # Use ROS environment variables
