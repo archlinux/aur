@@ -8,7 +8,7 @@
 # The build script generates and updates the pkgver and _kernel* variables.
 #
 pkgname="spl-lts"
-pkgver=0.6.5.5_4.1.20_1
+pkgver=0.6.5.6_4.1.20_1
 pkgrel=1
 
 # Used incase the i686 and x86_64 linux packages get out of sync with the
@@ -32,7 +32,7 @@ depends=("spl-utils-lts" "linux-lts=${_kernel_version}")
 makedepends=("linux-lts-headers=${_kernel_version}")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
-source=("http://archive.zfsonlinux.org/downloads/zfsonlinux/spl/spl-0.6.5.5.tar.gz")
+source=("http://archive.zfsonlinux.org/downloads/zfsonlinux/spl/spl-0.6.5.6.tar.gz")
 groups=("archzfs-lts")
 license=("GPL")
 install=spl.install
@@ -40,7 +40,7 @@ provides=("spl")
 conflicts=("spl" "spl-git")
 
 build() {
-    cd "${srcdir}/spl-0.6.5.5"
+    cd "${srcdir}/spl-0.6.5.6"
     ./autogen.sh
 
     _at_enable=""
@@ -57,10 +57,10 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/spl-0.6.5.5"
+    cd "${srcdir}/spl-0.6.5.6"
     make DESTDIR="${pkgdir}" install
 
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
     sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/${_kernel_version_full}-lts/Module.symvers
 }
-sha256sums=('c5d909000d34de20743cca5959a12d21ea4bcd545c0dfd90df7935f138570e1e')
+sha256sums=('167595fe76eb5497c3a1ffe396b6300155d0cbe46d06824a710099ca1ae1b8bd')
