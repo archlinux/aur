@@ -4,10 +4,10 @@
 
 pkgname=('jdk-docs' 'javafx-docs')
 _major=8
-_minor=74
-_build=b02
+_minor=77
+_build=b03
 pkgver=${_major}u${_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc="Documentation for Oracle Java Development Kit"
 arch=('any')
 url="http://www.oracle.com/technetwork/java/javase/downloads/index.html"
@@ -20,7 +20,7 @@ source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/jdk-$pkgver
         'http://download.oracle.com/otn-pub/java/javafx/8.0.72-b15/javafx-8u72-apidocs.zip'
         'LICENSE-Documentation'
         'LICENSE-Oracle-Legal-Notices')
-md5sums=('d98ad2762c2c7e48af3a93272764b5ce'
+md5sums=('80a1a7ffa2e33bd38f061f2f8070849c'
          '1a97e0c6e666cfcb11c52a76a43be96b'
          '4d54057ca75b691366977dab2277e869'
          '3137397f4dba13f4a79157819af583a3')
@@ -37,7 +37,7 @@ package_jdk-docs() {
 }
 
 package_javafx-docs() {
-  _minor=72
+  _minor=77
   pkgver=${_major}u${_minor}
 
   # Install
