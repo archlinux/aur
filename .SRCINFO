@@ -1,7 +1,7 @@
 pkgbase = xlax
 	pkgdesc = multi window input software
 	pkgver = 2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://hea-www.harvard.edu/~fine/Tech/xlax.html
 	arch = i686
 	arch = x86_64
