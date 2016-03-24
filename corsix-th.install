@@ -1,0 +1,6 @@
+
+post_install() {
+  echo "=> If you do not have a copy of Theme Hospital,"
+  echo "=> you can download the data files of the demo:"
+  echo "=> http://th.corsix.org/Demo.zip"
+}

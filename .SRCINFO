@@ -1,0 +1,26 @@
+pkgbase = corsix-th-git
+	pkgdesc = Reimplementation of the game engine of Theme Hospital, git version
+	pkgver = 0.50.r228.ge8bb00e
+	pkgrel = 1
+	url = https://github.com/CorsixTH/CorsixTH
+	install = corsix-th.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	makedepends = cmake
+	depends = lua
+	depends = lua-lpeg
+	depends = lua-filesystem
+	depends = sdl2_mixer
+	depends = ffmpeg
+	depends = timidity-freepats
+	source = git+https://github.com/CorsixTH/CorsixTH.git
+	source = CorsixTH.desktop
+	source = corsix-th.sh
+	sha256sums = SKIP
+	sha256sums = 71f882fc453f3df2ebda089ab9994f7698f212c98686098944743aedc1b882ea
+	sha256sums = 3614197a30498774fff4055ee54d82a812a8b88eba353b70c3288a09ff700158
+
+pkgname = corsix-th-git
+

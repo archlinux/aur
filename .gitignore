@@ -1,0 +1,4 @@
+CorsixTH/
+*.tar.*
+src/
+pkg/
