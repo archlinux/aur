@@ -4,7 +4,7 @@ pkgdesc="ROS - Tools for directing, throttling, selecting, and otherwise messing
 url='http://ros.org/wiki/topic_tools'
 
 pkgname='ros-indigo-topic-tools'
-pkgver='1.11.16'
+pkgver='1.11.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -20,7 +20,7 @@ ros_makedepends=(ros-indigo-rosunit
   ros-indigo-rosconsole
   ros-indigo-cpp-common
   ros-indigo-xmlrpcpp)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-roscpp
@@ -31,10 +31,16 @@ ros_depends=(ros-indigo-roscpp
   ros-indigo-xmlrpcpp)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/topic_tools/${pkgver}-${_pkgver_patch}
-_dir=topic_tools
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/topic_tools/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-indigo-topic_tools-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/topic_tools/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('9d515bb2cddcf312c3393cd96d121e04710aca6542db317007a5463dac95362e')
 
 build() {
   # Use ROS environment variables
