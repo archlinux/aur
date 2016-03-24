@@ -4,7 +4,7 @@ pkgdesc="ROS - A simple viewer for ROS image topics."
 url='http://www.ros.org/wiki/image_view'
 
 pkgname='ros-indigo-image-view'
-pkgver='1.12.15'
+pkgver='1.12.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -23,7 +23,7 @@ ros_makedepends=(ros-indigo-nodelet
   ros-indigo-camera-calibration-parsers
   ros-indigo-dynamic-reconfigure
   ros-indigo-message-filters)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   gtk2)
 
@@ -41,19 +41,21 @@ depends=(${ros_depends[@]}
   python2-numpy
   gtk2)
 
-_tag=release/indigo/image_view/${pkgver}-${_pkgver_patch}
-_dir=image_view
-source=("${_dir}"::"git+https://github.com/ros-gbp/image_pipeline-release.git"#tag=${_tag}
-        "dynamic_reconfigure.patch")
-sha256sums=('SKIP'
-            'f8c49fe1e62ec86ba46a0bdce1ced50aec74b4c4e495865534a2959fea0444f3')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/image_view/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/image_pipeline-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="image_pipeline-release-release-indigo-image_view-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/indigo/image_view/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('299f32b896c09715bc777b7d368c84a3f17035f05068155cca82befd6cf95b44')
 
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/indigo/setup.bash ] && source /opt/ros/indigo/setup.bash
-
-  git -C "${srcdir}/${_dir}" apply "${srcdir}/dynamic_reconfigure.patch"
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
