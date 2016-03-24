@@ -4,14 +4,14 @@ pkgdesc="ROS - rosbuild contains scripts for managing the CMake-based build syst
 url='http://ros.org/wiki/rosbuild'
 
 pkgname='ros-indigo-rosbuild'
-pkgver='1.11.11'
+pkgver='1.11.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   pkg-config)
 
@@ -20,10 +20,16 @@ ros_depends=(ros-indigo-message-generation
   ros-indigo-catkin)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/rosbuild/${pkgver}-${_pkgver_patch}
-_dir=rosbuild
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rosbuild/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros-release-release-indigo-rosbuild-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/indigo/rosbuild/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('d68b4ee4c71c0ab471d4b6f1c4b869fc2be61bd8ca36174ae1c6a53943167a90')
 
 build() {
   # Use ROS environment variables
