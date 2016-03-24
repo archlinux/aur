@@ -63,13 +63,12 @@ md5sums_x86_64=('8b08dc3b85ae39e81309fe1fad6108e6')
 package() {
     install -dm755 "$pkgdir/usr/share/applications/"
     install -dm755 "$pkgdir/usr/bin/"
-    install -dm755 "$pkgdir/opt/"
+    install -dm755 "$pkgdir/opt/actor"
     install -Dm755 "$srcdir/actor-messenger.desktop" "$pkgdir/usr/share/applications/"
 if [[ "$CARCH" == "i686" ]]; then
-    mv "$srcdir/Actor-linux-ia32" "$srcdir/actor-messenger"
+    cp -ru "$srcdir/Actor-linux-ia32/*" "$pkgdir/opt/actor/"
 elif [[ "$CARCH" == "x86_64" ]]; then
-    mv "$srcdir/Actor-linux-x64" "$srcdir/actor-messenger"
+    cp -ru "$srcdir/Actor-linux-x64/*" "$pkgdir/opt/actor/"
 fi
-    cp -r "$srcdir/actor-messenger" "$pkgdir/opt"
     ln -s "/opt/actor-messenger/Actor" "${pkgdir}/usr/bin/actor"
 }

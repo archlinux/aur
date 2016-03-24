@@ -6,7 +6,7 @@ stages:
 job_makepkg:
   stage: build
   script:
-    - makepkg -srf
+    - makepkg -srf --noconfirm --noprogressbar
   tags:
     - shell
     - arch
