@@ -66,9 +66,9 @@ package() {
     install -dm755 "$pkgdir/opt/actor"
     install -Dm755 "$srcdir/actor-messenger.desktop" "$pkgdir/usr/share/applications/"
 if [[ "$CARCH" == "i686" ]]; then
-    cp -ru "$srcdir/Actor-linux-ia32/*" "$pkgdir/opt/actor/"
+    cp -ru $srcdir/Actor-linux-ia32/* "$pkgdir/opt/actor/"
 elif [[ "$CARCH" == "x86_64" ]]; then
-    cp -ru "$srcdir/Actor-linux-x64/*" "$pkgdir/opt/actor/"
+    cp -ru $srcdir/Actor-linux-x64/* "$pkgdir/opt/actor/"
 fi
     ln -s "/opt/actor-messenger/Actor" "${pkgdir}/usr/bin/actor"
 }
