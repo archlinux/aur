@@ -105,12 +105,12 @@ Comment[vi]=Truy cập Internet
 Comment[zh_CN]=访问互联网
 Comment[zh_HK]=連線到網際網路
 Comment[zh_TW]=連線到網際網路
-StartupNotify=yes
+StartupNotify=true
 StartupWMClass=Brave
-TryExec=/opt/brave-browser-bin/Brave
-Exec=/usr/bin/env LD_LIBRARY_PATH="/opt/brave-browser-bin:/usr/lib" /opt/brave-browser-bin/Brave %U
+TryExec=brave
+Exec=brave %U
 Terminal=false
-Icon=brave-browser-bin
+Icon=brave
 Type=Application
 Categories=Network;WebBrowser;
 MimeType=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
