@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_web is a simple web content viewer for rqt."
 url='http://ros.org/wiki/rqt_web'
 
 pkgname='ros-indigo-rqt-web'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rqt-gui-py
@@ -21,10 +21,16 @@ ros_depends=(ros-indigo-rqt-gui-py
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/indigo/rqt_web/${pkgver}-${_pkgver_patch}
-_dir=rqt_web
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rqt_web/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-indigo-rqt_web-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/indigo/rqt_web/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('1e95851949e59e26f290b5d8266c66630add261877d67c8a7c90ab8e000dba36')
 
 build() {
   # Use ROS environment variables
