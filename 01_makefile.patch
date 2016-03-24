@@ -1,0 +1,14 @@
+--- Makefile
++++ Makefile
+
+# Simply said: data/COPYING doesn't exist
+
+@@ -45,7 +45,7 @@
+ 	cp $(TEMP_TARGET) $(TARGET)
+ 	chmod +x $(TARGET)
+ 
+-	cp $(TEMP_DATA) $(DATA)
++	#cp $(TEMP_DATA) $(DATA)
+ 
+ uninstall:
+ 	rm -rf $(TARGET)
