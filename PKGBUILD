@@ -1,5 +1,7 @@
 # Maintainer=rafaelsoaresbr <rafaelsoaresbr@gmail.com>
-# Package name
+# modelio-bin
+# Contributing: https://gitlab.com/aur-ci/modelio-bin.git
+# Builds: https://gitlab.com/aur-ci/modelio-bin/builds
 #pkgbase=
 pkgname=modelio-bin
 
