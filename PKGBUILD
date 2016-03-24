@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_plot provides a GUI plugin visualizing numeric values in a 2D
 url='http://ros.org/wiki/rqt_plot'
 
 pkgname='ros-indigo-rqt-plot'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rqt-gui
@@ -22,13 +22,19 @@ ros_depends=(ros-indigo-rqt-gui
   ros-indigo-qt-gui-py-common)
 depends=(${ros_depends[@]}
   python2-rospkg
-  pyqwt
-  python2-matplotlib)
+  python2-matplotlib
+  python2-pyqwt)
 
-_tag=release/indigo/rqt_plot/${pkgver}-${_pkgver_patch}
-_dir=rqt_plot
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rqt_plot/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-indigo-rqt_plot-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/indigo/rqt_plot/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('af80549b2bc71ed09fbef212375adb9623c4eadc25c45b67afe17ca52b4dfebc')
 
 build() {
   # Use ROS environment variables
