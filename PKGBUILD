@@ -4,14 +4,14 @@ pkgdesc="ROS - image_pipeline fills the gap between getting raw images from a ca
 url='http://www.ros.org/wiki/image_pipeline'
 
 pkgname='ros-indigo-image-pipeline'
-pkgver='1.12.15'
+pkgver='1.12.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-image-rotate
@@ -22,10 +22,16 @@ ros_depends=(ros-indigo-image-rotate
   ros-indigo-camera-calibration)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/image_pipeline/${pkgver}-${_pkgver_patch}
-_dir=image_pipeline
-source=("${_dir}"::"git+https://github.com/ros-gbp/image_pipeline-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/image_pipeline/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/image_pipeline-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="image_pipeline-release-release-indigo-image_pipeline-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/indigo/image_pipeline/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('8799a679412ba2310ce0300a4b953733369b4247c4083e6069afa25fc6e9bee2')
 
 build() {
   # Use ROS environment variables
