@@ -4,14 +4,14 @@
 
 pkgbase="spl-dkms"
 pkgname=("spl-dkms" "spl-utils")
-pkgver=0.6.5.5
+pkgver=0.6.5.6
 pkgrel=1
 license=('GPL')
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/spl-${pkgver}.tar.gz"
         "spl-utils.hostid")
-sha256sums=('c5d909000d34de20743cca5959a12d21ea4bcd545c0dfd90df7935f138570e1e'
+sha256sums=('167595fe76eb5497c3a1ffe396b6300155d0cbe46d06824a710099ca1ae1b8bd'
             'ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e')
 
 build() {
