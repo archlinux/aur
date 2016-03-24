@@ -4,23 +4,29 @@ pkgdesc="ROS - A collection of .mk include files for building ROS architectural 
 url='http://www.ros.org/wiki/ROS'
 
 pkgname='ros-indigo-mk'
-pkgver='1.11.11'
+pkgver='1.11.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rosbuild)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/mk/${pkgver}-${_pkgver_patch}
-_dir=mk
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/mk/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros-release-release-indigo-mk-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/indigo/mk/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('bdd5afcab10cc03d3145b9254c9f63f010443915606413d2e20595d33079fe81')
 
 build() {
   # Use ROS environment variables
