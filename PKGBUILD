@@ -4,7 +4,7 @@ pkgdesc="ROS - The opencv_apps package, most of code is taken from https://githu
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-opencv-apps'
-pkgver='1.11.11'
+pkgver='1.11.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,7 +18,7 @@ ros_makedepends=(ros-indigo-nodelet
   ros-indigo-catkin
   ros-indigo-image-transport
   ros-indigo-dynamic-reconfigure)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-nodelet
@@ -32,14 +32,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/opencv_apps/${pkgver}-${_pkgver_patch}
-# _dir=opencv_apps
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/vision_opencv-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="vision_opencv-release-release-indigo-opencv_apps-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/ros-gbp/vision_opencv-release/archive/release/indigo/opencv_apps/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2a8a74749b8eec323c8a86c787273549fa0fc4775a5d0e6561c3b7bff59afa4a')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/indigo/opencv_apps/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('9b644731f38a6ba39ac8c76f651c894dc8d2c9276e701ac1957c17ad749357bf')
 
 build() {
   # Use ROS environment variables
