@@ -4,7 +4,7 @@ pkgdesc="ROS - This contains CvBridge, which converts between ROS Image messages
 url='http://www.ros.org/wiki/cv_bridge'
 
 pkgname='ros-indigo-cv-bridge'
-pkgver='1.11.11'
+pkgver='1.11.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,7 +13,7 @@ license=('BSD')
 ros_makedepends=(ros-indigo-rosconsole
   ros-indigo-catkin
   ros-indigo-sensor-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   opencv
   python2-numpy
@@ -30,14 +30,14 @@ depends=(${ros_depends[@]}
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/cv_bridge/${pkgver}-${_pkgver_patch}
-# _dir=cv_bridge
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/vision_opencv-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="vision_opencv-release-release-indigo-cv_bridge-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/ros-gbp/vision_opencv-release/archive/release/indigo/cv_bridge/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('42bef11fc64cf0daae49da83601a18e19db9dfd02181ce31f90f02db0c2763b4')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/indigo/cv_bridge/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('daf4c222b741d1c4360f613525b60469ace274b4a26f3e4baac9ad147ef8a179')
 
 build() {
   # Use ROS environment variables
