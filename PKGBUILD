@@ -30,6 +30,9 @@ build() {
 }
 
 check() {
+  # Needed for the tests, especially when building in clean chroot
+  [[ ${LANG} = C ]] && export LANG=en_US.UTF8
+
   cd "${srcdir}/${_pkgname}-${pkgver}"
   export PYTHONPATH="${srcdir}/${_pkgname}-${pkgver}/build/lib:${PYTHONPATH}"
   py.test
