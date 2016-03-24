@@ -56,7 +56,7 @@ md5sums=('b3c7031bc65c28c2340302065e7d00d3'
          '8f0ebcead2aecad67fbd12ef8ced1503'
          'a4a21b064ff9f3c3f3fdb95edf5ac6f3'
          '98245ddb13914a74f0cc5a028fffddca')
-md5sums_i686=('5e73453a8b6fda591d99820eae293594')
+md5sums_i686=('e5bac32e2a7ab5cf9068ba92ba084472')
 md5sums_x86_64=('ee501bef73ba7fac255f0593e595d8eb')
 ## Alternative mirror, if your local one is throttled:
 #source_x86_64=("http://ftp.wsisiz.edu.pl/pub/pc/pozyteczne%20oprogramowanie/java/$pkgname-$pkgver-linux-x64.gz")

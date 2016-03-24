@@ -58,7 +58,7 @@ pkgbase = jdk
 	md5sums = a4a21b064ff9f3c3f3fdb95edf5ac6f3
 	md5sums = 98245ddb13914a74f0cc5a028fffddca
 	source_i686 = http://download.oracle.com/otn-pub/java/jdk/8u77-b03/jdk-8u77-linux-i586.tar.gz
-	md5sums_i686 = 5e73453a8b6fda591d99820eae293594
+	md5sums_i686 = e5bac32e2a7ab5cf9068ba92ba084472
 	source_x86_64 = http://download.oracle.com/otn-pub/java/jdk/8u77-b03/jdk-8u77-linux-x64.tar.gz
 	md5sums_x86_64 = ee501bef73ba7fac255f0593e595d8eb
 
