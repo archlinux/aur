@@ -1,7 +1,7 @@
 # Maintainer: Facundo Tuesca <facutuesca at gmail dot com>
 pkgname=briss
 pkgver=0.9
-pkgrel=4
+pkgrel=5
 pkgdesc="Java tool to crop pages of PDF documents to one or more regions selected with a GUI."
 arch=('any')
 url="http://sourceforge.net/projects/briss/"
@@ -18,9 +18,8 @@ package() {
   cp * $pkgdir/usr/share/$pkgname/
   mkdir -p $pkgdir/usr/bin
   cat >> $pkgdir/usr/bin/$pkgname << EOF 
-#!/bin/bash
-java -jar /usr/share/$pkgname/$pkgname-$pkgver.jar "\$@"
-exit \$? 
+#!/bin/sh
+exec java -jar /usr/share/$pkgname/$pkgname-$pkgver.jar "\$@"
 EOF
   chmod a+x $pkgdir/usr/bin/$pkgname
   mkdir -p $pkgdir/usr/share/applications
