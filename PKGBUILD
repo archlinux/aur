@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_publisher provides a GUI plugin for publishing arbitrary mess
 url='http://ros.org/wiki/rqt_publisher'
 
 pkgname='ros-indigo-rqt-publisher'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rqt-gui
@@ -23,10 +23,16 @@ ros_depends=(ros-indigo-rqt-gui
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/indigo/rqt_publisher/${pkgver}-${_pkgver_patch}
-_dir=rqt_publisher
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rqt_publisher/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-indigo-rqt_publisher-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/indigo/rqt_publisher/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('92cdfc9b3049b34d5420597e4a29b69c90d469555dc6105fb87285bd5bb19a8b')
 
 build() {
   # Use ROS environment variables
