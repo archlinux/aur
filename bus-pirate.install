@@ -1,0 +1,28 @@
+# arg 1:  the new package version
+# arg 2:  the old package version
+
+usage () {
+  echo "Un- then re-plug the USB for your Bus Pirate, you should now find it at /dev/bus_pirate0"
+  echo "bus-pirate-gui will launch a gui for your Bus Pirate."
+  echo "pirate-loader is the command to use to flash new firmware"
+  echo ""
+  echo "To flash a firmware file, you might:"
+  echo " 1. Short the PGC and PGD pins (right two) of the ICSP header"
+  echo " 2. Un- then re-plug the USB for your Bus Pirate"
+  echo " 3. pirate-loader --dev=/dev/bus_pirate0 --hex=/opt/bus-pirate/package/BPv4-firmware/BPv4-firmware-v6.3-r2151.hex"
+  echo " 4. Disconnect the PGC and PGD pins (right two) of the ICSP header"
+  echo " 5. Un- then re-plug the USB for your Bus Pirate"
+  echo " 6. Verify your firmware version:"
+  echo " 6a. echo -e 'i' > /dev/bus_pirate0"
+  echo " 6b. head -n5 < /dev/bus_pirate0"
+}
+
+post_install () {
+  usage
+  udevadm control --reload
+}
+
+post_upgrade() {
+  usage
+  udevadm control --reload
+}

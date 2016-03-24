@@ -1,0 +1,1 @@
+SUBSYSTEMS=="usb", ATTRS{manufacturer}=="Dangerous Prototypes", MODE="0666", SYMLINK+="bus_pirate%n"
