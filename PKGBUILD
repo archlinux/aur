@@ -4,14 +4,14 @@ pkgdesc="ROS - cpp_common contains C++ code for doing things that are not necess
 url='http://www.ros.org/wiki/cpp_common'
 
 pkgname='ros-indigo-cpp-common'
-pkgver='0.5.6'
+pkgver='0.5.7'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost
   console-bridge)
@@ -21,10 +21,16 @@ depends=(${ros_depends[@]}
   boost
   console-bridge)
 
-_tag=release/indigo/cpp_common/${pkgver}-${_pkgver_patch}
-_dir=cpp_common
-source=("${_dir}"::"git+https://github.com/ros-gbp/roscpp_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/cpp_common/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/roscpp_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="roscpp_core-release-release-indigo-cpp_common-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/indigo/cpp_common/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('83a1bdfe7d1a3b768641b16d9c50e2e22c099708f72f49af982df46d4ba47680')
 
 build() {
   # Use ROS environment variables
