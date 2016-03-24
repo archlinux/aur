@@ -1,24 +1,20 @@
 #Maintainer: zpydr <zpydr at openmailbox dot org>
 pkgname=gnome-shell-extension-taskbar
-pkgver=47.0
+pkgver=50.0
 pkgrel=1
-_gitname=gnome-shell-extension-taskbar
 pkgdesc="GNOME Shell Extension TaskBar"
 arch=('any')
-url="https://github.com/zpydr/gnome-shell-extension-taskbar"
+url="https://extensions.gnome.org/extension/584/taskbar/"
 license=('GPL')
 depends=('gnome-shell')
-makedepends=('git')
-source=('git://github.com/zpydr/gnome-shell-extension-taskbar.git')
+source=('https://github.com/zpydr/gnome-shell-extension-taskbar/archive/50.0.tar.gz')
 md5sums=('SKIP')
- 
+prepare() {
+  tar -xvf $pkgver.tar.gz
+}	
 package() {
-  cd gnome-shell-extension-taskbar 
-  mkdir -p "$pkgdir/usr/share/gnome-shell/extensions/TaskBar@zpydr"
-  cp -a extension.js  images  lib.js  LICENSE  locale  metadata.json  prefs.js  README  schemas  stylesheet.css  TaskBar.pot  windows34.js  windows.js "$pkgdir/usr/share/gnome-shell/extensions/TaskBar@zpydr/"
+  rm $pkgver.tar.gz
+  cd $pkgname-$pkgver
+  mkdir -p "$pkgdir/usr/share/gnome-shell/extensions/TaskBar@zpydr/"
+  cp -a extension.js  images  lib.js  LICENSE  locale  metadata.json  prefs.js  README  schemas  stylesheet.css  TaskBar.pot windows.js "$pkgdir/usr/share/gnome-shell/extensions/TaskBar@zpydr/"
 } 
-
-pkgver() {
-  cd $_gitname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
