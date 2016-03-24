@@ -4,10 +4,10 @@ pkgdesc="ROS - This package attempts to show the features of ROS step-by-step, i
 url='http://www.ros.org/wiki/roscpp_tutorials'
 
 pkgname='ros-indigo-roscpp-tutorials'
-pkgver='0.5.4'
+pkgver='0.5.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp-serialization
@@ -17,7 +17,7 @@ ros_makedepends=(ros-indigo-roscpp-serialization
   ros-indigo-catkin
   ros-indigo-message-generation
   ros-indigo-rosconsole)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-roscpp-serialization
@@ -28,10 +28,16 @@ ros_depends=(ros-indigo-roscpp-serialization
   ros-indigo-rosconsole)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/roscpp_tutorials/${pkgver}-${_pkgver_patch}
-_dir=roscpp_tutorials
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_tutorials-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/roscpp_tutorials/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_tutorials-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_tutorials-release-release-indigo-roscpp_tutorials-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_tutorials-release/archive/release/indigo/roscpp_tutorials/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('104e08d6816d07efe92262eb1394ad471bdcae6ebac9299e667f99cb7dacb8c2')
 
 build() {
   # Use ROS environment variables
