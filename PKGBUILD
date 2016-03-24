@@ -4,15 +4,15 @@ pkgdesc="ROS - The class_loader package is a ROS-independent package for loading
 url='http://ros.org/wiki/class_loader'
 
 pkgname='ros-indigo-class-loader'
-pkgver='0.3.1'
-_pkgver_patch=0
+pkgver='0.3.3'
+_pkgver_patch=1
 arch=('any')
-pkgrel=5
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-indigo-cmake-modules
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   poco
   boost
@@ -24,10 +24,16 @@ depends=(${ros_depends[@]}
   boost
   console-bridge)
 
-_tag=release/indigo/class_loader/${pkgver}-${_pkgver_patch}
-_dir=class_loader
-source=("${_dir}"::"git+https://github.com/ros-gbp/class_loader-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/class_loader/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/class_loader-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="class_loader-release-release-indigo-class_loader-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/class_loader-release/archive/release/indigo/class_loader/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('fd7b1af474b55f10f22b6cb91d31e931e9de40e2ee2ddf98570c2815d00965dd')
 
 build() {
   # Use ROS environment variables
