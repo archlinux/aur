@@ -1,7 +1,7 @@
 # Maintainer: Tobias Frilling <tobias@frilling-online.de>
 # Contributor: Martino Visintin <vise890@gmail.com>
 pkgname=boot
-pkgver=2.5.3
+pkgver=2.5.5
 pkgrel=1
 pkgdesc="A Clojure build framework and ad-hoc Clojure script evaluator"
 arch=('any')
