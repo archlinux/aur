@@ -2,7 +2,7 @@
 # Contributor: Vladislav Odobesku positivcheg94@gmail.com
 
 pkgname=python-tensorflow-git
-pkgver=0.7.1.r1504.gf952246
+pkgver=0.7.1.r1614.g005386d
 pkgrel=1
 
 pkgdesc="Open source software library for numerical computation using data flow graphs."
@@ -55,8 +55,8 @@ prepare() {
   fi
 
   # make sure the proxy variables are in all caps, otherwise bazel ignores them
-  export HTTP_PROXY=${http_proxy}
-  export HTTPS_PROXY=${https_proxy}
+  export HTTP_PROXY=`echo -e $http_proxy | sed -e 's/\/$//'`
+  export HTTPS_PROXY=`echo -e $http_proxy | sed -e 's/\/$//'`
 }
 
 build() {
