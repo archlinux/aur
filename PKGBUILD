@@ -32,7 +32,7 @@ build() {
 
   mkdir -p build
   cd build
-  cmake -DCMAKE_BUILD_TYPE=Debug ..
+  cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/usr ..
   make all g2
 }
 
@@ -40,9 +40,9 @@ package() {
   cd "$srcdir/$pkgname"
 
   # Standard OpenRCT2 distribution files.
-  install -Dm755 build/openrct2 "$pkgdir/usr/bin/openrct2"
-  install -Dm644 build/g2.dat "$pkgdir/usr/share/openrct2/g2.dat"
-  cp -r data/* "$pkgdir/usr/share/openrct2"
+  pushd build
+  make DESTDIR="$pkgdir" install
+  popd
 
   # ArchLinux-specific stuff (.desktop file and icon).
   install -Dm644 "$srcdir/openrct2.desktop" "$pkgdir/usr/share/applications/openrct2.desktop"
