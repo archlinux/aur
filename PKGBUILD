@@ -2,7 +2,7 @@
 # Contributor: Ner0 (based on chromium-pepperflash-dev PKGBUILD)
 
 pkgname=chromium-widevine-dev
-pkgver=1.4.8.884
+pkgver=1.4.8.885
 pkgrel=1
 pkgdesc="The Widevine Media Optimizer is a browser plugin designed for the viewing of premium video content (Only for chromium-dev)"
 arch=('x86_64')
