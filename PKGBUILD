@@ -1,13 +1,13 @@
 # Author: Adrian Perez de Castro <aperez@igalia.com>
 pkgname='signify'
-pkgver='14'
+pkgver='17'
 pkgrel='1'
 pkgdesc='OpenBSD tool to signs and verify signatures on files. Portable version.'
 url='https://github.com/aperezdc/signify'
 license=('BSD')
 arch=('i686' 'x86_64' 'arm')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/aperezdc/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('81aeb8f176bef1a3a141741ec2e98c670330d7c3ac7292458adb73b09a807d9fab80cc7aabeaa3106cdafadee5dda0a7b2cf8d5ad86990525391286b09b9dcee')
+sha512sums=('2b20e2c2d073c1ff695b6ec0b9b90e0870c6bd60dc107b428090f3c66f8e215473779d824fcd5c3b0ade429071b99336ce066c3254e286be2aa4e4a312742404')
 depends=('libbsd>=0.7')
 
 build () {
