@@ -35,8 +35,6 @@ package() {
 
   make DESTDIR="$pkgdir/" install
   install -Dm655 "${srcdir}/shellinabox@.service"  "${pkgdir}/usr/lib/systemd/system/shellinabox@.service"
-
-  install -Dm644 GPL-2 "${pkgdir}/usr/share/licenses/${pkgname}/GPL-2"
 }
 
 # vim:set ts=2 sw=2 et:
