@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_service_caller provides a GUI plugin for calling arbitrary se
 url='http://ros.org/wiki/rqt_service_caller'
 
 pkgname='ros-indigo-rqt-service-caller'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rosservice
@@ -21,10 +21,16 @@ ros_depends=(ros-indigo-rosservice
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/indigo/rqt_service_caller/${pkgver}-${_pkgver_patch}
-_dir=rqt_service_caller
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rqt_service_caller/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-indigo-rqt_service_caller-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/indigo/rqt_service_caller/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('2ffd3ef0bed50008239b9b349ee5ff18467dad31b5ff76f71f7f469915e712df')
 
 build() {
   # Use ROS environment variables
