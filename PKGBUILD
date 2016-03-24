@@ -2,7 +2,7 @@
 
 _plug=mvtools_sf
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=test12.2.gfb08881
+pkgver=test14.1.g58801a8
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('vapoursynth'
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/IFeelBloated/MVTools_SF.git")
+source=("${_plug}::git+https://github.com/IFeelBloated/vapoursynth-mvtools-sf")
 sha1sums=('SKIP')
 
 _sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
@@ -26,12 +26,18 @@ pkgver() {
 
 prepare() {
   cd "${_plug}"
+
+  rm -fr src/VapourSynth.h src/VSHelper.h
+
   ./autogen.sh
 }
 
 build() {
   cd "${_plug}"
-  ./configure --libdir=/usr/lib/vapoursynth
+  CXXFLAGS+=" $(pkg-config --cflags vapoursynth)" \
+  ./configure \
+    --prefix=/usr \
+    --libdir=/usr/lib/vapoursynth
   make
 }
 
