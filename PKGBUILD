@@ -1,7 +1,7 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgdesc='Neural networks package for Torch7'
 pkgname='torch7-nn-git'
-pkgver=r1118.65d55fe
+pkgver=r1289.7ade68f
 pkgrel=1
 makedepends=('cmake')
 depends=('torch7-git>=r819')
@@ -34,7 +34,7 @@ package () {
 
 	# Move Lua C module
 	mkdir -p "${pkgdir}/usr/lib/lua/5.1"
-	mv "${pkgdir}/usr/lib/libnn.so" "${pkgdir}/usr/lib/lua/5.1/"
+	mv "${pkgdir}/usr/lib/libTHNN.so" "${pkgdir}/usr/lib/lua/5.1/"
 
 	# Move pure Lua modules
 	mkdir -p "${pkgdir}/usr/share/lua/5.1"
