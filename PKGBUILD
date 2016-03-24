@@ -11,7 +11,6 @@ depends=('flex')
 install=libmatheval.install
 source=("http://ftp.gnu.org/gnu/libmatheval/$pkgname-$pkgver.tar.gz"
         "removeifndefs.patch")
-noextract=()
 md5sums=('595420ea60f6ddd75623847f46ca45c4'
          'b340ca489388a8c7986654f4be8127f4')
 
