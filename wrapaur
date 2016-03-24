@@ -558,10 +558,10 @@ check_all_depends()
 			line=$(echo "$line" | sed -e "s/>=[^=]*$//g" -e "s/<=[^=]*$//g" -e "s/<[^<]*$//g" -e "s/>[^>]*$//g")
 			pacman -Qi $line &>/dev/null
 			if [[ $? == 1 ]]; then
-				sudo pacman -S --needed $line
+				sudo pacman -S --needed --asdeps $line
 				if [[ $? == 1 ]]; then
 					check_all_depends $line
-					aur_git_install $line
+					aur_git_install $line --asdeps
 				fi
 			fi
 		done 
@@ -606,7 +606,7 @@ aur_git_install()
 			if [ "$echoice" == "y" ] || [ "$echoice" == "Y" ] || [[ -z $echoice ]]; then
 				$EDITOR PKGBUILD
 			fi			
-			makepkg -si
+			makepkg -si $2
 			cd $HOME/.wrapaur
 			raprompt=$(echo -e "${color1}:: ${color2}Remove source folder? [Y/n] ${color3}")
 			rachoice=z
