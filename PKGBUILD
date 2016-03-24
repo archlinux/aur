@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=nqp-git
-pkgver=20160210
+pkgver=20160324
 pkgrel=1
 pkgdesc="Lightweight Perl6-like environment for virtual machines, with MoarVM and JVM support"
 arch=('i686' 'x86_64')
@@ -33,8 +33,4 @@ package() {
 
   msg2 'Installing...'
   make DESTDIR="$pkgdir" install
-
-  msg2 'Cleaning up pkgdir...'
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
-  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
