@@ -4,7 +4,7 @@ pkgdesc="ROS - turtlesim is a tool made for teaching ROS and ROS packages."
 url='http://www.ros.org/wiki/turtlesim'
 
 pkgname='ros-indigo-turtlesim'
-pkgver='0.5.4'
+pkgver='0.5.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -20,7 +20,7 @@ ros_makedepends=(ros-indigo-roscpp-serialization
   ros-indigo-rosconsole
   ros-indigo-roslib
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   qt4)
 
@@ -36,10 +36,16 @@ ros_depends=(ros-indigo-roscpp-serialization
 depends=(${ros_depends[@]}
   qt4)
 
-_tag=release/indigo/turtlesim/${pkgver}-${_pkgver_patch}
-_dir=turtlesim
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_tutorials-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/turtlesim/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_tutorials-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_tutorials-release-release-indigo-turtlesim-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_tutorials-release/archive/release/indigo/turtlesim/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('2a8d0ebe99d1a23c6f1ef5cca8d28ab90be67a3bf9e9c4a8221f27b42b361fda')
 
 build() {
   # Use ROS environment variables
