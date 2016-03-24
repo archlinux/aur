@@ -1,6 +1,6 @@
 pkgbase = mailnag
 	pkgdesc = An extensible mail notification daemon
-	pkgver = 1.1.0
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/pulb/mailnag
 	install = mailnag.install
@@ -14,13 +14,13 @@ pkgbase = mailnag
 	depends = gst-plugins-base
 	depends = gtk3
 	depends = gdk-pixbuf2
-	optdepends = networkmanager: for connectivity detection,
-	optdepends = libgnome-keyring: for save password storage in GNOME 3,
-	optdepends = gnome-keyring: for save password storage in GNOME 3,
-	optdepends = mailnag-goa-plugin: for GNOME Online Accounts integration,
-	optdepends = mailnag-gnome-shell: for a tighter GNOME 3 integration
-	source = https://github.com/pulb/mailnag/archive/v1.1.0.tar.gz
-	md5sums = 479bc76816797cf0578c5b92849d2012
+	optdepends = networkmanager: connectivity detection,
+	optdepends = libgnome-keyring: safe password storage in GNOME 3,
+	optdepends = gnome-keyring: safe password storage in GNOME 3,
+	optdepends = mailnag-goa-plugin: GNOME Online Accounts integration,
+	optdepends = mailnag-gnome-shell: tighter GNOME 3 integration
+	source = https://github.com/pulb/mailnag/archive/v1.2.0.tar.gz
+	md5sums = afde260255bd8e2ceb72ebe562a1f4ae
 
 pkgname = mailnag
 
