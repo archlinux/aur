@@ -2,7 +2,7 @@
 # Comaintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/vorbote>
 pkgname=brave
 pkgver=0.8.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('x86_64')
 url='https://www.brave.com/'
