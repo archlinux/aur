@@ -4,24 +4,30 @@ pkgdesc="ROS - roscreate contains a tool that assists in the creation of ROS fil
 url='http://ros.org/wiki/roscreate'
 
 pkgname='ros-indigo-roscreate'
-pkgver='1.11.11'
+pkgver='1.11.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=()
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/indigo/roscreate/${pkgver}-${_pkgver_patch}
-_dir=roscreate
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/roscreate/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros-release-release-indigo-roscreate-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/indigo/roscreate/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('eb70f63448bab818d54d382d67173bc4d15ee069f6b4cbab129b5366f0fa4dd2')
 
 build() {
   # Use ROS environment variables
