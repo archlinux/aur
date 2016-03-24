@@ -2,7 +2,8 @@
 pkgname=openrct2-git
 pkgver=r6604.14f79ad
 pkgrel=1
-pkgdesc='Open source re-implementation of Roller Coaster Tycoon 2'
+pkgdesc='Open source re-implementation of Roller Coaster Tycoon 2 (requires full
+         copy of the game)'
 arch=('i686' 'x86_64')
 url='https://github.com/OpenRCT2/OpenRCT2'
 license=('GPL3')
