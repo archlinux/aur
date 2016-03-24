@@ -9,8 +9,7 @@ url="http://www.synology.com"
 license=('unknown')
 depends=('qt5-base')
 optdepends=('nautilus: For nautilus integration')
-conflicts=('cloudstation-beta')
-install=cloud-station-drive.install
+install=synology-cloud-station-drive.install
 
 source_x86_64=(http://global.download.synology.com/download/Tools/CloudStationDrive/4.0-${pkgver}/Ubuntu/Installer/x86_64/synology-cloud-station-drive-${pkgver}.x86_64.deb)
 md5sums_i686=('f024335ded2e3fbada54013c2a948dfc')
