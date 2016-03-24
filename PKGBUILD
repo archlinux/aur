@@ -17,6 +17,8 @@ depends=('desktop-file-utils' 'shared-mime-info'
          'python')
 makedepends=('bison' 'cmake' 'git')
 
+# PYTHON NOTICE: To use the old python2 bindings switch all python references to python2
+
 # NOTICE: please read http://www.panda3d.org/manual/index.php/Dependencies for
 # more information. Optdepends you want your package to support need to be
 # installed during compiletime! You don't need to change anything in the
