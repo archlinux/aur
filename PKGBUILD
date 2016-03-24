@@ -8,7 +8,7 @@
 # The build script generates and updates the pkgver and _kernel* variables.
 #
 pkgname="zfs-git"
-pkgver=0.6.5.5_r0_g504ff59_4.4.5_1
+pkgver=0.6.5.6_r0_g21f21fe_4.4.5_1
 pkgrel=1
 license=('CDDL')
 
@@ -33,7 +33,7 @@ depends=("spl-git" "zfs-utils-git" "linux=${_kernel_version}")
 makedepends=("git" "linux-headers=${_kernel_version}")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
-source=("git+https://github.com/zfsonlinux/zfs.git#commit=504ff597")
+source=("git+https://github.com/zfsonlinux/zfs.git#commit=21f21fe8")
 groups=("archzfs-git")
 md5sums=('SKIP')
 replaces=("zfs")
