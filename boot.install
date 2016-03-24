@@ -1,0 +1,3 @@
+post_upgrade() {
+	 echo "Run boot -u to update boot.jar"
+}
