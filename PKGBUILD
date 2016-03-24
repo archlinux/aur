@@ -4,14 +4,14 @@ pkgdesc="ROS - RQT plugin for monitoring ROS processes."
 url='http://ros.org/wiki/rqt_top'
 
 pkgname='ros-indigo-rqt-top'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rqt-gui-py
@@ -20,10 +20,16 @@ ros_depends=(ros-indigo-rqt-gui-py
 depends=(${ros_depends[@]}
   python2-psutil)
 
-_tag=release/indigo/rqt_top/${pkgver}-${_pkgver_patch}
-_dir=rqt_top
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rqt_top/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-indigo-rqt_top-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/indigo/rqt_top/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('843252002bc9298f819d41c601298e6ea3f93a37284b7c84c8a0fa0b2a3f1511')
 
 build() {
   # Use ROS environment variables
