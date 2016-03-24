@@ -4,14 +4,14 @@ pkgdesc="ROS - A Python GUI plugin for introspecting available ROS message types
 url='http://ros.org/wiki/rqt_srv'
 
 pkgname='ros-indigo-rqt-srv'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rqt-gui-py
@@ -21,10 +21,16 @@ ros_depends=(ros-indigo-rqt-gui-py
   ros-indigo-rosmsg)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/rqt_srv/${pkgver}-${_pkgver_patch}
-_dir=rqt_srv
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rqt_srv/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-indigo-rqt_srv-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/indigo/rqt_srv/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('a1ade48ac520953feab652cb16d5a369d9e01c0cf8b312e2dc47c61e412c1754')
 
 build() {
   # Use ROS environment variables
