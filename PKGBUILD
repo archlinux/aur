@@ -5,7 +5,7 @@
 
 pkgname=panda3d-git
 pkgver=git
-pkgrel=4
+pkgrel=5
 pkgdesc="A 3D game engine with Python bindings. SDK package. Git Version. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=('panda3d')
 conflicts=('panda3d')
 
 depends=('desktop-file-utils' 'shared-mime-info'
-         'python2')
+         'python')
 makedepends=('bison' 'cmake' 'git')
 
 # NOTICE: please read http://www.panda3d.org/manual/index.php/Dependencies for
@@ -27,7 +27,7 @@ optdepends=(# Pretty much required
             'libgl: OpenGL support for X11'
             # Recommended
             #'python2: Python2 bindings.'
-            'python: Experimental Python3 bindings'
+            'python: Python3 bindings'
             'openssl: Provides some networking and encryption support'
             'libjpeg: Required to read and write jpeg images'
             'libpng: Required to read and write png images'
@@ -71,7 +71,7 @@ build() {
   # disable broken extensions
   # you can use PANDAFLAGS and BUILD_THREADS to control building
   # building is very memory intensive so you might want to use less threads
-  python2 makepanda/makepanda.py --everything --no-opencv --no-maya2012 --no-fmodex --no-gles --no-gles2 --no-ffmpeg ${PANDAFLAGS} --threads ${BUILD_THREADS:-$JOBS}
+  python makepanda/makepanda.py --everything --no-opencv --no-maya2012 --no-fmodex --no-gles --no-gles2 --no-ffmpeg ${PANDAFLAGS} --threads ${BUILD_THREADS:-$JOBS}
 }
 
 package() {
