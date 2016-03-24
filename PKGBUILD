@@ -1,7 +1,7 @@
 # Maintainer: PyroPeter <abi1789 @ googlemail . com>
 # Contributor: DarkHeart <fumbles@ymail.com>
 pkgname=bluej
-pkgver=3.1.6
+pkgver=3.1.7
 pkgrel=1
 pkgdesc="An integrated Java environment specifically designed for introductory teaching"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('libarchive')
 source=(http://www.bluej.org/download/files/bluej-${pkgver//.}.jar
         bluej
         bluej.desktop)
-md5sums=('56bc28043633c0d89893b9ae70a819d9'
+md5sums=('9d88cdde41ed852fa4a869afae40c26a'
          '94b9bc934a337ed44e2239dd362520f6'
          '6cfbab36d21971e09bd0dc8a470c52e5')
 
