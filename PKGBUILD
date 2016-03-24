@@ -4,14 +4,14 @@ pkgdesc="ROS - camera_calibration allows easy calibration of monocular or stereo
 url='http://www.ros.org/wiki/camera_calibration'
 
 pkgname='ros-indigo-camera-calibration'
-pkgver='1.12.15'
+pkgver='1.12.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-image-geometry
@@ -20,13 +20,18 @@ ros_depends=(ros-indigo-image-geometry
   ros-indigo-std-srvs
   ros-indigo-sensor-msgs
   ros-indigo-message-filters)
-depends=(${ros_depends[@]}
-  opencv)
+depends=(${ros_depends[@]})
 
-_tag=release/indigo/camera_calibration/${pkgver}-${_pkgver_patch}
-_dir=camera_calibration
-source=("${_dir}"::"git+https://github.com/ros-gbp/image_pipeline-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/camera_calibration/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/image_pipeline-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="image_pipeline-release-release-indigo-camera_calibration-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/indigo/camera_calibration/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('1e4576b8e88b15c863822d46824eeee2014f335b3101ad32fa517069932f812b')
 
 build() {
   # Use ROS environment variables
