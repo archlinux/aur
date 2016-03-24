@@ -4,14 +4,14 @@ pkgdesc="ROS - A Python and C++ implementation of the LZ4 streaming format."
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-roslz4'
-pkgver='1.11.16'
+pkgver='1.11.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   lz4)
 
@@ -19,10 +19,16 @@ ros_depends=()
 depends=(${ros_depends[@]}
   lz4)
 
-_tag=release/indigo/roslz4/${pkgver}-${_pkgver_patch}
-_dir=roslz4
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/roslz4/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-indigo-roslz4-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/roslz4/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('1b1d40029237331bc3f81268842fdb8658e53feb095dbbb1f0c08cdbdffe8782')
 
 build() {
   # Use ROS environment variables
