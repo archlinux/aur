@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_robot_dashboard provides an infrastructure for building robot
 url='http://ros.org/wiki/rqt_robot_dashboard'
 
 pkgname='ros-indigo-rqt-robot-dashboard'
-pkgver='0.4.2'
+pkgver='0.4.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rqt-gui
@@ -25,10 +25,16 @@ ros_depends=(ros-indigo-rqt-gui
   ros-indigo-rqt-gui-py)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/rqt_robot_dashboard/${pkgver}-${_pkgver_patch}
-_dir=rqt_robot_dashboard
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rqt_robot_dashboard/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_robot_plugins-release-release-indigo-rqt_robot_dashboard-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_robot_plugins-release/archive/release/indigo/rqt_robot_dashboard/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('cef50d500b0ffe1c97472a25e26b456c5e585e6edc6b3578534ea70c901121e3')
 
 build() {
   # Use ROS environment variables
