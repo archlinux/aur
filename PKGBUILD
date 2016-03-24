@@ -2,7 +2,7 @@
 
 pkgname=lustache-cli
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A command-line interface to lustache (mustache templates for lua)."
 arch=("any")
 url="https://github.com/djmattyg007/lustache-cli"
