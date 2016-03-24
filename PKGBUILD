@@ -16,17 +16,17 @@ md5sums=('595420ea60f6ddd75623847f46ca45c4'
          'b340ca489388a8c7986654f4be8127f4')
 
 prepare() {
-	cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   patch -p1 -i "$srcdir/removeifndefs.patch"
 }
 
 build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
+  cd "$pkgname-$pkgver"
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
 }
