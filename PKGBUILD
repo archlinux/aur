@@ -4,10 +4,10 @@ pkgdesc="ROS - The actionlib stack provides a standardized interface for interfa
 url='http://www.ros.org/wiki/actionlib'
 
 pkgname='ros-indigo-actionlib'
-pkgver='1.11.3'
+pkgver='1.11.5'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
@@ -17,7 +17,7 @@ ros_makedepends=(ros-indigo-roscpp
   ros-indigo-catkin
   ros-indigo-message-generation
   ros-indigo-actionlib-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost)
 
@@ -30,10 +30,16 @@ ros_depends=(ros-indigo-roscpp
 depends=(${ros_depends[@]}
   boost)
 
-_tag=release/indigo/actionlib/${pkgver}-${_pkgver_patch}
-_dir=actionlib
-source=("${_dir}"::"git+https://github.com/ros-gbp/actionlib-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/actionlib/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/actionlib-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="actionlib-release-release-indigo-actionlib-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/actionlib-release/archive/release/indigo/actionlib/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('19e1cbb94e05ab31e1d87aa3422df9bdc00b4fc64e3da5c2ba97806442d2d349')
 
 build() {
   # Use ROS environment variables
