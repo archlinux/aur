@@ -1,7 +1,7 @@
 # Maintainer: David Phillips <dbphillipsnz at _remove this part if you want_ gmail dot com>
 
 pkgname=abduco
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 conflicts=(${pkgname}-git)
 pkgdesc="Tool for session {at,de}tach support which allows a process to run independently from its controlling terminal"
@@ -10,7 +10,7 @@ url="http://www.brain-dump.org/projects/${pkgname}/"
 license=('GPL')
 source=("http://www.brain-dump.org/projects/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 #        "config.h")
-sha512sums=('e0772b8eecc1fb6f16c7516a6956825b9bda4149f00f56b34e68ec3544f74c2270ba8cc2642599de26ae34d11ed78b8bba70497bfc9a79f3008f50de02ce49d8')
+sha512sums=('3b70a5cc10f0a2743dcbdf6eebdcfcee0e4f4ff8c6ce0bf0aa9f55c3fa85ab43aa659997735e063eab36aba69f91be7bb5519f3f632bff1b9098f5179165c1f2')
 #            'SKIP')
 
 prepare () {
@@ -26,7 +26,7 @@ build () {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	make all
 }
-	
+
 package () {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	make install PREFIX="${pkgdir}/usr"
