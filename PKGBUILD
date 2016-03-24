@@ -3,11 +3,11 @@
 pkgname=franz
 pkgver=0.9.9
 _pkgver_dash=0-9-9
-pkgrel=1
+pkgrel=2
 pkgdesc="A free messaging app for WhatsApp, Facebook Messenger, Telegram, Slack and more."
 arch=('i686' 'x86_64')
 url="http://meetfranz.com/"
-license=("Copyright (c) 2014 GitHub Inc")
+license=("custom:github")
 
 #Sources
 source=("$pkgname.sh" "$pkgname.desktop" "$pkgname.png")
