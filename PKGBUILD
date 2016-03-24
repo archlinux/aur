@@ -1,7 +1,7 @@
 # Maintainer: Tobias Frilling <tobias@frilling-online.de>
 pkgname=guvcview-git
 _gitname=guvcview-git-master
-pkgver=v2.0.1.r43.g8f6cc14
+pkgver=v2.0.3.r32.gaa07ea1
 pkgrel=1
 pkgdesc="A video viewer and capturer for the linux uvc driver"
 arch=('i686' 'x86_64')
@@ -13,20 +13,24 @@ optdepends=('pulseaudio: for PulseAudio support')
 provides=('guvcview')
 conflicts=('guvcview')
 source=("$pkgname::git://git.code.sf.net/p/guvcview/git-master"
-        "v4l2_core.patch")
+        "pix_fmt.patch")
 sha1sums=('SKIP'
-          'b92920fc6545209045fe8203ee23678549ad749b')
+          '6e1f8b0dbf9f4a301e3024f7d30010609bb2de89')
 
 pkgver() {
   cd "$srcdir/$pkgname"
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd $srcdir
+  patch -p1 -i pix_fmt.patch
+}
+
 build() {
   cd "$srcdir/$pkgname"
   export CPPFLAGS+=" -O2 "
   ./bootstrap.sh --prefix=/usr
-  patch -p1 -i $startdir/v4l2_core.patch
   make
 }
 
