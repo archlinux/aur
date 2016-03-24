@@ -4,7 +4,7 @@ pkgdesc="ROS - Single image rectification and color processing."
 url='http://www.ros.org/wiki/image_proc'
 
 pkgname='ros-indigo-image-proc'
-pkgver='1.12.15'
+pkgver='1.12.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,9 +18,8 @@ ros_makedepends=(ros-indigo-image-geometry
   ros-indigo-sensor-msgs
   ros-indigo-dynamic-reconfigure
   ros-indigo-nodelet)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
-  opencv
   boost)
 
 ros_depends=(ros-indigo-image-geometry
@@ -30,13 +29,18 @@ ros_depends=(ros-indigo-image-geometry
   ros-indigo-sensor-msgs
   ros-indigo-dynamic-reconfigure
   ros-indigo-nodelet)
-depends=(${ros_depends[@]}
-  opencv)
+depends=(${ros_depends[@]})
 
-_tag=release/indigo/image_proc/${pkgver}-${_pkgver_patch}
-_dir=image_proc
-source=("${_dir}"::"git+https://github.com/ros-gbp/image_pipeline-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/image_proc/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/image_pipeline-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="image_pipeline-release-release-indigo-image_proc-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/indigo/image_proc/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('a282be8358109e4ab5e2b0d8628c0f0d243871a4de8216436cd1ed603e21e068')
 
 build() {
   # Use ROS environment variables
