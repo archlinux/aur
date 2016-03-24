@@ -1,12 +1,13 @@
-# Maintainer:  jyantis <yantis@yantis.net>
+# Contributor:  jyantis <yantis@yantis.net>
 # Contributor: Erik Johnson <palehose at gmail dot com>
 
-pkgname=fasd-git
-pkgver=1.0.1.r300.61ce53b
-pkgrel=2
+_pkgname=fasd
+pkgname=${_pkgname}-git
+pkgver=1.0.1.r7.g90b531a
+pkgrel=1
 pkgdesc='Command-line productivity booster, offers quick access to files and directories'
 arch=('any')
-url='https://github.com/Neki/fasd'
+url='https://github.com/clvv/fasd'
 license=('MIT')
 source=('git+https://github.com/clvv/fasd.git' 'fasd-git.install')
 install="fasd-git.install"
@@ -15,28 +16,22 @@ depends=('bash')
 makedepends=('git')
 provides=('fasd')
 conflicts=('fasd')
-epoch=1
+
 
 pkgver() {
-  cd fasd
-  _version=$(grep -F version fasd | awk -F\" '{print $4}')
-  printf "%s.r%s.%s" "${_version}"  "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-  cd fasd
-
-  # We don't need anything related to git in the package
-  rm -rf .git*
-
-  # Install License
-  # MIT/X11 license
-  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-  # Install Documentation
-  install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  cd "$_pkgname"
 
   make DESTDIR="${pkgdir}" PREFIX=/usr install
+
+  # Install License
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Install Documentation
+  install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
 
 # vim:set ts=2 sw=2 et:
