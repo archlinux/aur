@@ -35,14 +35,14 @@ replaces=('eclipse-umlet')
 changelog=changelog
 
 # Sources
-source=("umlet.desktop" "https://github.com/umlet/umlet/archive/${_tag}.tar.gz")
+source=("umlet.sh" "umlet.desktop" "https://github.com/umlet/umlet/archive/${_tag}.tar.gz")
 #source_i686=("")
 #source_x86_64=("")
 #noextract=()
 #validpgpkeys=()
 
 # Integrity
-md5sums=('SKIP' '86d2987ad76522e926584a9b4532fc50')
+md5sums=('SKIP' 'SKIP' '86d2987ad76522e926584a9b4532fc50')
 #md5sums_i686=('')
 #md5sums_x86_64=('')
 #sha1sums=()
@@ -69,7 +69,9 @@ package_umlet-standalone() {
     install -dm755 "$pkgdir/opt/"
     unzip "$srcdir/umlet-${_date}_UMLet_v${pkgver}/umlet-standalone/target/umlet-standalone-${pkgver}.zip" -d "$pkgdir/opt"
     rm "$pkgdir/opt/Umlet/umlet.desktop"
+    rm "$pkgdir/opt/Umlet/umlet.sh"
     install -Dm644 "$srcdir/umlet.desktop" "$pkgdir/usr/share/applications/"
+    install -Dm755 "$srcdir/umlet.sh" "$pkgdir/usr/bin/"
 }
 
 package_umlet-eclipse-plugin() {
