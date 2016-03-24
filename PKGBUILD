@@ -4,10 +4,10 @@ pkgdesc="ROS - The nodelet package is designed to provide a way to run multiple 
 url='http://ros.org/wiki/nodelet'
 
 pkgname='ros-indigo-nodelet'
-pkgver='1.9.3'
+pkgver='1.9.4'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
@@ -19,7 +19,7 @@ ros_makedepends=(ros-indigo-roscpp
   ros-indigo-rosconsole
   ros-indigo-cmake-modules
   ros-indigo-pluginlib)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   util-linux
   boost
@@ -36,10 +36,16 @@ depends=(${ros_depends[@]}
   boost
   tinyxml)
 
-_tag=release/indigo/nodelet/${pkgver}-${_pkgver_patch}
-_dir=nodelet
-source=("${_dir}"::"git+https://github.com/ros-gbp/nodelet_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/nodelet/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/nodelet_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="nodelet_core-release-release-indigo-nodelet-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/nodelet_core-release/archive/release/indigo/nodelet/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('ab3dacbfd6bae9ec82ec233a6fd745401e699dfe35eba9821b7ef691271d1ce8')
 
 build() {
   # Use ROS environment variables
