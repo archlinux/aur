@@ -4,24 +4,30 @@ pkgdesc="ROS - Nodelet Core Metapackage."
 url='http://www.ros.org/wiki/nodelet_core'
 
 pkgname='ros-indigo-nodelet-core'
-pkgver='1.9.3'
+pkgver='1.9.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-nodelet
   ros-indigo-nodelet-topic-tools)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/nodelet_core/${pkgver}-${_pkgver_patch}
-_dir=nodelet_core
-source=("${_dir}"::"git+https://github.com/ros-gbp/nodelet_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/nodelet_core/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/nodelet_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="nodelet_core-release-release-indigo-nodelet_core-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/nodelet_core-release/archive/release/indigo/nodelet_core/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('44bd358b65fb9cc2e5fe21b4228fa098cc306ca221133715756b33c73eb13634')
 
 build() {
   # Use ROS environment variables
