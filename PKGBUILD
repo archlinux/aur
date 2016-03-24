@@ -7,7 +7,7 @@
 _targets="i686-pc-msdosdjgpp"
 
 pkgname=djgpp-gcc
-pkgver=5.2.0
+pkgver=5.3.0
 _islver=0.12.2
 _cloogver=0.18.1
 pkgrel=1
@@ -27,7 +27,7 @@ source=("ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
 	"http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
 	"http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz"
 	'gcc-make-xmmintrin-header-cplusplus-compatible.patch')
-sha512sums=('844120349ec04465dcea52d8ec747f1cbbc9d76a39fe3d8ef5e6b93614e63d718862d60d0a1c1cbf59ffc7815562287d0a2e536a6b220cebcd0b8de4ba35e715'
+sha512sums=('d619847383405fd389f5a2d7225f97fedb01f81478dbb8339047ccba7561a5c20045ab500a8744bffd19ea51892ce09fc37f862f2cfcb42de0f0f8cd8f8da37a'
             'b5dea4d6b504fac22f2d8cd9c47d6896994d3966635a514d45010243db44cfbc009574b808f3587f35d91de629110bc11b52941d4075e21f8646c59656e62aea'
             '0b12d9f3c39a2425e28e1d7c0a2b3787287fe3e6e3052f094d2ab6cffeb205ce19044100cbfd805659b3e6b3d21ac2f5a3c92848f476de54edfe6b1cbd2172e9'
             '7aa9bd2ad82e4ee2e20c45303f0d3df8c040f4ce9854d24e20b920f52de9ab3986e4170224d68672a0f3ab883fea61c6b93380a87bed9cb63d9b865b43765602')
@@ -69,7 +69,7 @@ package() {
     cd ${srcdir}/gcc-build-${_target}
     make DESTDIR=${pkgdir} install
     strip ${pkgdir}/usr/bin/${_target}-*
-    strip ${pkgdir}/usr/lib/gcc/${_target}/${pkgver}/{cc1*,collect2,f951,lto*}
+    strip ${pkgdir}/usr/lib/gcc/${_target}/${pkgver}/{cc1*,collect2,lto*}
     ln -s ${_target}-gcc $pkgdir/usr/bin/${_target}-cc
     # mv dlls
     mkdir -p $pkgdir/usr/${_target}/bin/
