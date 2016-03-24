@@ -1,6 +1,6 @@
 # Maintainer: Moritz Schoenherr <moritz.schoenherr[at]gmail[dot]com>
 pkgname=notmuch-addrlookup-c
-pkgver=v6
+pkgver=v7
 pkgrel=1
 pkgdesc="A tool to query the notmuch database for addresses."
 url="https://github.com/aperezdc/notmuch-addrlookup-c"
