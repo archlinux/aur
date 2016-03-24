@@ -4,14 +4,14 @@ pkgdesc="ROS - An rqt-based tool that assists monitoring tasks for MoveIt! motio
 url='http://ros.org/wiki/rqt_moveit'
 
 pkgname='ros-indigo-rqt-moveit'
-pkgver='0.4.2'
+pkgver='0.4.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rqt-gui
@@ -24,10 +24,16 @@ ros_depends=(ros-indigo-rqt-gui
   ros-indigo-rosnode)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/rqt_moveit/${pkgver}-${_pkgver_patch}
-_dir=rqt_moveit
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rqt_moveit/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_robot_plugins-release-release-indigo-rqt_moveit-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_robot_plugins-release/archive/release/indigo/rqt_moveit/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('2452b205bc9354fb3254fc525f64a1ef56ecf4468b14ee4478549e6db99c357c')
 
 build() {
   # Use ROS environment variables
