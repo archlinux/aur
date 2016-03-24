@@ -4,18 +4,18 @@ pkgdesc="ROS - The pluginlib package provides tools for writing and dynamically 
 url='http://www.ros.org/wiki/pluginlib'
 
 pkgname='ros-indigo-pluginlib'
-pkgver='1.10.1'
+pkgver='1.10.2'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
-license=('BSD, Boost Software License')
+pkgrel=1
+license=('BSD')
 
 ros_makedepends=(ros-indigo-roslib
   ros-indigo-cmake-modules
   ros-indigo-rosconsole
   ros-indigo-catkin
   ros-indigo-class-loader)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost
   tinyxml)
@@ -27,10 +27,16 @@ depends=(${ros_depends[@]}
   boost
   tinyxml)
 
-_tag=release/indigo/pluginlib/${pkgver}-${_pkgver_patch}
-_dir=pluginlib
-source=("${_dir}"::"git+https://github.com/ros-gbp/pluginlib-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/pluginlib/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/pluginlib-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="pluginlib-release-release-indigo-pluginlib-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/pluginlib-release/archive/release/indigo/pluginlib/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('271ae7f924231acf49b59bcb04a2dfaa175b5787f3ed9146de2285bfb04ef0af')
 
 build() {
   # Use ROS environment variables
