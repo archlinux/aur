@@ -6,19 +6,19 @@
 # Contributor: jht <stefano@inventati.org>
 
 pkgname=wxglade
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc='GUI designer for wxWidgets that can generate Python, C++, Perl, Lisp and XRC code'
 arch=('any')
 license=('MIT')
 url='http://wxglade.sourceforge.net/'
-depends=('wxpython' 'desktop-file-utils')
-makedepends=('python2' 'gendesk' 'imagemagick')
+depends=('python2' 'wxpython' 'desktop-file-utils')
+makedepends=('gendesk' 'imagemagick')
 install="$pkgname.install"
 source=("http://downloads.sourceforge.net/sourceforge/wxglade/wxGlade-$pkgver.tar.gz"
-        'wxglade.sh' )
-sha256sums=('07fa3d1f09fa54af4a6a0d8ec7f60bd27b1f873b9289ae5ffb797e8e90e3a8b5'
-            '4549c2034453475f06265fa1c845db3b4c006ab9b17d0386aecd2a276577a6e0' )
+        'wxglade.sh')
+sha256sums=('8936d8e3ee0c212ed9f928c2d523bae77270fbcedd5a97d85e2ab4426b54ce0e'
+            '4549c2034453475f06265fa1c845db3b4c006ab9b17d0386aecd2a276577a6e0')
 
 prepare() {
   gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --exec 'wxglade %F' \
