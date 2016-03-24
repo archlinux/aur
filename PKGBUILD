@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_nav_view provides a gui for viewing navigation maps and paths
 url='http://ros.org/wiki/rqt_nav_view'
 
 pkgname='ros-indigo-rqt-nav-view'
-pkgver='0.4.2'
+pkgver='0.4.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rqt-gui
@@ -25,10 +25,16 @@ ros_depends=(ros-indigo-rqt-gui
   ros-indigo-nav-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/rqt_nav_view/${pkgver}-${_pkgver_patch}
-_dir=rqt_nav_view
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rqt_nav_view/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_robot_plugins-release-release-indigo-rqt_nav_view-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_robot_plugins-release/archive/release/indigo/rqt_nav_view/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('cbef9987be9ca713fc98f11a7f23f6f78144252fb7e109bb1e2786467f0e056f')
 
 build() {
   # Use ROS environment variables
