@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_image_view provides a GUI plugin for displaying images using 
 url='http://ros.org/wiki/rqt_image_view'
 
 pkgname='ros-indigo-rqt-image-view'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-rqt-gui-cpp
@@ -16,7 +16,7 @@ ros_makedepends=(ros-indigo-rqt-gui-cpp
   ros-indigo-catkin
   ros-indigo-image-transport
   ros-indigo-sensor-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rqt-gui-cpp
@@ -26,10 +26,16 @@ ros_depends=(ros-indigo-rqt-gui-cpp
   ros-indigo-cv-bridge)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/rqt_image_view/${pkgver}-${_pkgver_patch}
-_dir=rqt_image_view
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rqt_image_view/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-indigo-rqt_image_view-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/indigo/rqt_image_view/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('41f7caf42ffefb670e2c0bd5a42bc5cb5de4cd7918b0486dfb8a182e9ad116d5')
 
 build() {
   # Use ROS environment variables
