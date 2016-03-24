@@ -1,6 +1,24 @@
 diff -Nru pwauth-2.3.11.orig/config.h pwauth-2.3.11/config.h
 --- pwauth-2.3.11.orig/config.h	2013-10-04 15:59:08.000000000 +0200
 +++ pwauth-2.3.11/config.h	2015-02-13 10:32:52.162650590 +0100
+@@ -123,7 +123,7 @@
+ 
+ /* #define SHADOW_NONE		/**/
+ /* #define SHADOW_BSD		/* FreeBSD, NetBSD, OpenBSD, BSDI, OS X */
+-#define SHADOW_SUN		/* Linux, Solaris, IRIX */
++/* #define SHADOW_SUN		/* Linux, Solaris, IRIX */
+ /* #define SHADOW_JFH		/**/
+ /* #define SHADOW_MDW		/**/
+ /* #define SHADOW_AIX		/* AIX (see also AUTHENTICATE_AIX) */
+@@ -131,7 +131,7 @@
+ 
+    /* HIGH-LEVEL OPTIONS */
+ 
+-/* #define PAM			/* Linux PAM or OpenPAM */
++#define PAM			/* Linux PAM or OpenPAM */
+ /* #define PAM_OLD_OS_X		/* PAM on OS X version 10.5 or older */
+ /* #define PAM_SOLARIS		/* PAM on Solaris other than 2.6 */
+ /* #define PAM_SOLARIS_26	/* PAM on Solaris 2.6 */
 @@ -279,7 +279,7 @@
   * to change the uid list.
   */

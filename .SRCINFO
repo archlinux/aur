@@ -1,19 +1,24 @@
 pkgbase = pwauth
 	pkgdesc = An authenticator designed to be used for web authentication
 	pkgver = 2.3.11
-	pkgrel = 4
+	pkgrel = 5
 	url = http://code.google.com/p/pwauth/
 	install = pwauth.install
 	arch = x86_64
 	arch = i686
 	license = BSD
+	depends = pam
 	source = http://pwauth.googlecode.com/files/pwauth-2.3.11.tar.gz
 	source = pwauth.install
 	source = http_uid.patch
+	source = makefile.patch
+	source = pwauth
 	source = LICENSE
 	md5sums = 2b7812724653bb0d238c1e0dfd5affdf
 	md5sums = be1bdc32c7f3b8fce10ff23bb0731326
-	md5sums = 850e3b228c00102bc88ef56722520bf9
+	md5sums = f0bc2063fb68f2b2c59f103e10c6ba20
+	md5sums = 6db798700fd9f1bb1ed3b66b7924b1f2
+	md5sums = f4d1219470c9225a2693371a8dcbb480
 	md5sums = ba32eb75e91477479ae6eba0bb5c40d0
 
 pkgname = pwauth

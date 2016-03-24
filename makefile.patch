@@ -1,0 +1,17 @@
+--- Makefile.ori	2011-10-05 15:45:04.000000000 +0200
++++ Makefile	2016-03-01 15:21:01.339101140 +0100
+@@ -7,11 +7,11 @@
+ 
+ # Settings for author's system (Redhat 6.1)
+ CC=gcc
+-LIB= -lcrypt
+-LOCALFLAGS= -g 
++#LIB= -lcrypt
++LOCALFLAGS= -g
+ 
+ # For PAM on Redhat Linux
+-# LIB=-lpam -ldl
++LIB=-lpam -ldl
+ 
+ # For PAM on Solaris or OS X
+ # LIB=-lpam
