@@ -4,7 +4,7 @@ pkgdesc="ROS - Python ROS message and service generators."
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-genpy'
-pkgver='0.5.7'
+pkgver='0.5.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,16 +12,22 @@ license=('BSD')
 
 ros_makedepends=(ros-indigo-genmsg
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-genmsg)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/genpy/${pkgver}-${_pkgver_patch}
-_dir=genpy
-source=("${_dir}"::"git+https://github.com/ros-gbp/genpy-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/genpy/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/genpy-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="genpy-release-release-indigo-genpy-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/genpy-release/archive/release/indigo/genpy/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('42c23847d9dd3241e451ebea373f8b928da0e43566724113f8bbf5ea55de6e39')
 
 build() {
   # Use ROS environment variables
