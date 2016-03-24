@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS console output library."
 url='http://www.ros.org/wiki/rosconsole'
 
 pkgname='ros-indigo-rosconsole'
-pkgver='1.11.16'
+pkgver='1.11.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-indigo-rosunit
   ros-indigo-rostime
   ros-indigo-cpp-common
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   apr
   apr-util
@@ -29,10 +29,16 @@ depends=(${ros_depends[@]}
   apr-util
   log4cxx)
 
-_tag=release/indigo/rosconsole/${pkgver}-${_pkgver_patch}
-_dir=rosconsole
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rosconsole/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-indigo-rosconsole-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosconsole/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('3cd7db07504c23f3ce1ef36e3797f23dd8a973b3461f7325b6662db77666d207')
 
 build() {
   # Use ROS environment variables
