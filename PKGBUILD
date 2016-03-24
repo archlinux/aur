@@ -1,5 +1,7 @@
 # Maintainer=rafaelsoaresbr <rafaelsoaresbr@gmail.com>
-# Package name
+# umlet
+# Contributing: https://gitlab.com/aur-ci/umlet.git
+# Builds: https://gitlab.com/aur-ci/umlet/builds
 pkgbase="umlet"
 pkgname=($pkgbase{-standalone,-eclipse-plugin})
 
