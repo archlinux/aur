@@ -1,0 +1,13 @@
+post_install() {
+  ln -s /opt/kraken/kraken /usr/bin/kraken
+  echo "contents installed to /opt/kraken/"
+}
+
+pre_remove() {
+  rm -f /usr/bin/kraken
+}
+
+post_upgrade() {
+  pre_remove
+  post_install
+}
