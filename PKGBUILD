@@ -4,7 +4,7 @@ pkgdesc="ROS - image_geometry contains C++ and Python libraries for interpreting
 url='http://www.ros.org/wiki/image_geometry'
 
 pkgname='ros-indigo-image-geometry'
-pkgver='1.11.11'
+pkgver='1.11.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,7 +12,7 @@ license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin
   ros-indigo-sensor-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   opencv
   python2-numpy)
@@ -24,14 +24,14 @@ depends=(${ros_depends[@]}
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/image_geometry/${pkgver}-${_pkgver_patch}
-# _dir=image_geometry
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/vision_opencv-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="vision_opencv-release-release-indigo-image_geometry-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/ros-gbp/vision_opencv-release/archive/release/indigo/image_geometry/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ae5ca0e8d70b234395fc4a5ab8a1fc8997c78ecff168758771d29833c62234c2')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/indigo/image_geometry/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('d07733a6ce0793979427eb48bfa0b12faf160d928d2c81844b5766dbf65a4f65')
 
 build() {
   # Use ROS environment variables
