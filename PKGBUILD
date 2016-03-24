@@ -1,9 +1,9 @@
 # Maintainer: Rafał Kozdrój <rafal.kozdroj+aur@gmail.com>
 
-_with_nautilus_plugin=1
+_with_nautilus_extension=1
 
 pkgname=('megasync-qt5')
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Sync your files to your Mega account (qt5 version)"
 arch=('i686' 'x86_64')
@@ -11,13 +11,13 @@ url="https://mega.nz/#sync"
 license=('custom')
 depends=('qt5-base' 'hicolor-icon-theme' 'openssl' 'sqlite' 'c-ares' 'crypto++' 'ca-certificates' 'libpng' 'curl' 'libuv')
 makedepends=('git' 'qt5-tools' 'qtchooser')
-source=("git+https://github.com/meganz/MEGAsync.git#commit=fd9cafb46ca9287ae2871aca24ea336a99fc9363"
-        "git+https://github.com/meganz/sdk.git#commit=ad50d1188a8ea0d87c4d2425e446c0600638bb3c")
+source=("git+https://github.com/meganz/MEGAsync.git#tag=v2_8_0_0_Linux"
+        "git+https://github.com/meganz/sdk.git")
 md5sums=('SKIP'
          'SKIP')
-_qmake_config="release"
 
-if [ $_with_nautilus_plugin = 1 ]; then
+_qmake_config="release"
+if [ $_with_nautilus_extension = 1 ]; then
     pkgname+=('nautilus-megasync-qt5')
     makedepends+=('libnautilus-extension')
     _qmake_config+=" with_ext"

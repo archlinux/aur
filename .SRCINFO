@@ -1,6 +1,6 @@
 pkgbase = megasync-qt5
 	pkgdesc = Sync your files to your Mega account (qt5 version)
-	pkgver = 2.7.1
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://mega.nz/#sync
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = megasync-qt5
 	depends = libpng
 	depends = curl
 	depends = libuv
-	source = git+https://github.com/meganz/MEGAsync.git#commit=fd9cafb46ca9287ae2871aca24ea336a99fc9363
-	source = git+https://github.com/meganz/sdk.git#commit=ad50d1188a8ea0d87c4d2425e446c0600638bb3c
+	source = git+https://github.com/meganz/MEGAsync.git#tag=v2_8_0_0_Linux
+	source = git+https://github.com/meganz/sdk.git
 	md5sums = SKIP
 	md5sums = SKIP
 
