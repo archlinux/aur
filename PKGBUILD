@@ -25,7 +25,7 @@ sha256sums=('6dfb9de14201b9804974b1f221573cfb3e24fd657ec3bf132bf3c75de02565f5'
             'ba9220e61971a55d13f501dc30f452a5c272e4d897b444a5220f2e23dbbfc2f8'
             'b562fee1963900c86fed016408e3acbb63500a3603f4af70928c11ce376b9a72'
             '09c8da18c37f32cd0eb82b252a172481f5403c1bc6ab5740f92e87f8d1e79991'
-            '83d9d99b635bbc6b95d52b645df97140d5596cfb746001d67bf9e8d5824fb339')
+            '1a8663c48a1a203d1825ae62a7e4191e4980a2dad461d4d88152221ad9e2171d')
 
 # Set this to 1 to enable the experimental parts (swiftpm, corelibs)
 # Otherwise, the standard libraries, llbuild, and swiftpm will NOT be available
