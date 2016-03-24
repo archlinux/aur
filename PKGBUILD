@@ -2,7 +2,7 @@
 
 pkgname=storm-launcher
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Software to control Dream Cheeky O.I.C Storm & Thunder USB Missile Launchers"
 arch=('i686' 'x86_64')
 url="https://github.com/7CTech/stormLauncher"
@@ -16,7 +16,7 @@ depends=('python'
 	'gksu')
 provides=('stormLauncher')
 conflicts=('storm-launcher-git')
-source=("$pkgname::https://github.com/7CTech/stormLauncher/archive/$pkgver.zip")
+source=("$pkgname.zip::https://github.com/7CTech/stormLauncher/archive/$pkgver.zip")
 sha256sums=('e437acbfff569ed4ac8cfc0de676408972fe40b9a364c99c3f0a2ca5c909f07b')
 
 build() {
