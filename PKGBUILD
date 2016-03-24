@@ -4,15 +4,15 @@ pkgdesc="ROS - Time and Duration implementations for C++ libraries, including ro
 url='http://ros.org/wiki/rostime'
 
 pkgname='ros-indigo-rostime'
-pkgver='0.5.6'
+pkgver='0.5.7'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-cpp-common
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost)
 
@@ -20,10 +20,16 @@ ros_depends=(ros-indigo-cpp-common)
 depends=(${ros_depends[@]}
   boost)
 
-_tag=release/indigo/rostime/${pkgver}-${_pkgver_patch}
-_dir=rostime
-source=("${_dir}"::"git+https://github.com/ros-gbp/roscpp_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rostime/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/roscpp_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="roscpp_core-release-release-indigo-rostime-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/indigo/rostime/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('efa36dda7be798d9ebad0b64bdceedd24dd9d428ff738f904058cf172beb3c28')
 
 build() {
   # Use ROS environment variables
