@@ -4,7 +4,7 @@ pkgdesc="ROS - XmlRpc++ is a C++ implementation of the XML-RPC protocol."
 url='http://xmlrpcpp.sourceforge.net'
 
 pkgname='ros-indigo-xmlrpcpp'
-pkgver='1.11.16'
+pkgver='1.11.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,16 +12,22 @@ license=('LGPL-2.1')
 
 ros_makedepends=(ros-indigo-cpp-common
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-cpp-common)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/xmlrpcpp/${pkgver}-${_pkgver_patch}
-_dir=xmlrpcpp
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/xmlrpcpp/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-indigo-xmlrpcpp-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/xmlrpcpp/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('1c8fac742653c5867b0490609b4406b5765830c9fb70ae0347f18f24f72defbc')
 
 build() {
   # Use ROS environment variables
