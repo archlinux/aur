@@ -1,6 +1,6 @@
 pkgbase = bluej
 	pkgdesc = An integrated Java environment specifically designed for introductory teaching
-	pkgver = 3.1.6
+	pkgver = 3.1.7
 	pkgrel = 1
 	url = http://www.bluej.org
 	arch = any
@@ -10,10 +10,10 @@ pkgbase = bluej
 	depends = sh
 	depends = java-runtime
 	depends = java-environment
-	source = http://www.bluej.org/download/files/bluej-316.jar
+	source = http://www.bluej.org/download/files/bluej-317.jar
 	source = bluej
 	source = bluej.desktop
-	md5sums = 56bc28043633c0d89893b9ae70a819d9
+	md5sums = 9d88cdde41ed852fa4a869afae40c26a
 	md5sums = 94b9bc934a337ed44e2239dd362520f6
 	md5sums = 6cfbab36d21971e09bd0dc8a470c52e5
 
