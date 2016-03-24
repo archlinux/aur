@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_bag provides a GUI plugin for displaying and replaying ROS ba
 url='http://ros.org/wiki/rqt_bag'
 
 pkgname='ros-indigo-rqt-bag-plugins'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rqt-gui
@@ -28,10 +28,16 @@ depends=(${ros_depends[@]}
   python2-pillow
   python2-cairo)
 
-_tag=release/indigo/rqt_bag_plugins/${pkgver}-${_pkgver_patch}
-_dir=rqt_bag_plugins
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rqt_bag_plugins/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-indigo-rqt_bag_plugins-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/indigo/rqt_bag_plugins/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('6275b6ee9af9756df89fce2649a23a9b7df640b461ed4a3c17d294b63cb13b7a')
 
 build() {
   # Use ROS environment variables
