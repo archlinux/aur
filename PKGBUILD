@@ -4,7 +4,7 @@
 
 pkgbase="zfs-dkms"
 pkgname=("zfs-dkms" "zfs-utils")
-pkgver=0.6.5.5
+pkgver=0.6.5.6
 pkgrel=1
 license=('CDDL')
 makedepends=("spl-dkms=${pkgver}")
@@ -14,7 +14,7 @@ source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-$
         "zfs.bash-completion-r1"
         "zfs.initcpio.install"
         "zfs.initcpio.hook")
-sha256sums=('4f5cac060c087f088f8b4e1f43cb7aacd0b97f4a4b3df852fe600aad0a03a262'
+sha256sums=('c349d46d86b4f61cd53a0891acad916cfc3f0d6754127db7f60a0bd98185aeff'
             'b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540'
             '1e20071fa61a33874505dae0f2d71bb560f43e7faaea735cbde770ea10c133df'
             '250f1232c464a81cc9c8b8ee05f21d752ebeebbc8614fae1c6d0bc600e816ac1')
@@ -70,9 +70,8 @@ package_zfs-utils() {
     rm -r "${pkgdir}"/lib
 
     install -D -m644 "${srcdir}"/zfs.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
+    install -D -m644 "${srcdir}"/zfs.initcpio.install "${pkgdir}"/usr/lib/initcpio/install/zfs
     install -D -m644 "${srcdir}"/zfs.bash-completion-r1 "${pkgdir}"/usr/share/bash-completion/completions/zfs
 
     mkdir -p "${pkgdir}"/usr/lib/initcpio/install
-    sed -e "s|##VERMARKER##|${pkgver}|" "${srcdir}"/zfs.initcpio.install > "${pkgdir}"/usr/lib/initcpio/install/zfs
-    chmod 644 "${pkgdir}"/usr/lib/initcpio/install/zfs
 }
