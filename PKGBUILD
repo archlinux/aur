@@ -8,15 +8,9 @@ url="https://github.com/shellinabox/shellinabox"
 license=('GPL2')
 depends=('pam' 'openssl')
 makedepends=('git' 'gcc' 'autoconf' 'automake')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
+backup=('usr/lib/systemd/system/shellinabox@.service')
 source=('shellinabox@.service'
         'git+https://github.com/shellinabox/shellinabox')
-noextract=()
 md5sums=('9778d64973cd9dd7cf2225cd9af0cd09'
          'SKIP')
 
