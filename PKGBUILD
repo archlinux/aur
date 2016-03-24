@@ -3,7 +3,7 @@
 pkgname=synology-cloud-station-backup
 pkgver=4203
 pkgrel=1
-pkgdesc="Cloud Station Backup is a backup service that allows you to back up your files from multiple client computers to a centralized Synology NAS"
+pkgdesc="A backup service that allows you to back up your files from multiple client computers to a centralized Synology NAS"
 arch=('i686' 'x86_64')
 url="http://www.synology.com"
 license=('unknown')
