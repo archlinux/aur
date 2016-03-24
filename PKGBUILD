@@ -4,14 +4,14 @@ pkgdesc="ROS - ROS communications-related packages, including core client librar
 url='http://www.ros.org/wiki/ros_comm'
 
 pkgname='ros-indigo-ros-comm'
-pkgver='1.11.16'
+pkgver='1.11.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rosout
@@ -42,10 +42,16 @@ if test "$CARCH" == x86_64 || test "$CARCH" == i686 ; then
   ros_depends+=('ros-indigo-roslisp')
 fi
 
-_tag=release/indigo/ros_comm/${pkgver}-${_pkgver_patch}
-_dir=ros_comm
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/ros_comm/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-indigo-ros_comm-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/ros_comm/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('a833a7c36ba87985e84165f0ffac45fd69fa8fd7f154bd3e0a9bc45ae347b84d')
 
 build() {
   # Use ROS environment variables
