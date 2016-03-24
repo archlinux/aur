@@ -4,7 +4,7 @@ pkgdesc="ROS - This is a set of tools for recording from and playing back ROS me
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-rosbag-storage'
-pkgver='1.11.16'
+pkgver='1.11.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -16,7 +16,7 @@ ros_makedepends=(ros-indigo-roscpp-serialization
   ros-indigo-cpp-common
   ros-indigo-roscpp-traits
   ros-indigo-roslz4)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   bzip2
   boost
@@ -32,10 +32,16 @@ depends=(${ros_depends[@]}
   boost
   console-bridge)
 
-_tag=release/indigo/rosbag_storage/${pkgver}-${_pkgver_patch}
-_dir=rosbag_storage
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rosbag_storage/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-indigo-rosbag_storage-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosbag_storage/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('a1e504f929d64e3be4d3d6754645fef2ec8c4462114bed616a0b6faab662c887')
 
 build() {
   # Use ROS environment variables
