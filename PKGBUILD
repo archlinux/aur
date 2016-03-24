@@ -4,7 +4,7 @@ pkgdesc="ROS - Low-level build system macros and infrastructure for ROS."
 url='http://www.ros.org/wiki/catkin'
 
 pkgname='ros-indigo-catkin'
-pkgver='0.6.17'
+pkgver='0.6.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="catkin-release-release-indigo-catkin-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/catkin-release/archive/release/indigo/catkin/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c5ad714e4592e0f0f6b978841e05e9611bf5da2cd5f4293136b2dd7c8e639efe')
+sha256sums=('f81e0b7a905040088c5742d07a294eccf5c328265ce838cd94204f09d2087d15')
 
 build() {
   # Use ROS environment variables
