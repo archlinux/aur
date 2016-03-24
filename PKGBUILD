@@ -4,23 +4,29 @@ pkgdesc="ROS - ROS Master implementation."
 url='http://ros.org/wiki/rosmaster'
 
 pkgname='ros-indigo-rosmaster'
-pkgver='1.11.16'
+pkgver='1.11.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rosgraph)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/rosmaster/${pkgver}-${_pkgver_patch}
-_dir=rosmaster
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rosmaster/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-indigo-rosmaster-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosmaster/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('6efe26d2836092e620f413519c9de6f0911068779bf8f2daf90639e70d4dc971')
 
 build() {
   # Use ROS environment variables
