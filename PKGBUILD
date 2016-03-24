@@ -2,7 +2,7 @@
 pkgname=upass-git
 _pyname=upass
 _gitname=upass
-pkgver=0.1.6.r1.g8a977f2
+pkgver=0.1.7.r1.g6a3ee7d
 pkgrel=1
 pkgdesc='Console UI for pass (git version)'
 arch=('any')

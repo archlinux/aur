@@ -1,6 +1,6 @@
 pkgbase = upass-git
 	pkgdesc = Console UI for pass (git version)
-	pkgver = 0.1.6.r1.g8a977f2
+	pkgver = 0.1.7.r1.g6a3ee7d
 	pkgrel = 1
 	url = https://github.com/Kwpolska/upass
 	arch = any
