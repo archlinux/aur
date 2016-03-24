@@ -1,8 +1,8 @@
 pkgbase = qtermwidget
 	pkgdesc = A terminal widget for Qt
 	pkgver = 0.6.0
-	pkgrel = 1
-	url = https://github.com/qterminal/qtermwidget
+	pkgrel = 2
+	url = https://github.com/lxde/qtermwidget
 	arch = i686
 	arch = x86_64
 	license = GPL2

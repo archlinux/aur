@@ -2,15 +2,15 @@
 
 pkgname=qtermwidget
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal widget for Qt"
 arch=("i686" "x86_64")
-url="https://github.com/qterminal/qtermwidget"
+url="https://github.com/lxde/qtermwidget"
 license=("GPL2")
 depends=("qt5-base" "libsm" "libxkbcommon-x11")
 makedepends=("cmake")
 source=("https://github.com/qterminal/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('1ea148e67c3e28a53ca24a3c91532507ddd6c5d28611467e7a67334d945cd010')
+sha256sums=("1ea148e67c3e28a53ca24a3c91532507ddd6c5d28611467e7a67334d945cd010")
 
 
 build() {
