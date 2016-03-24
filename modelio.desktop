@@ -2,7 +2,7 @@
 Name=Modelio
 Version=3.4.1
 Comment=The opensource modeling environment
-Exec=/opt/modelio/modelio
+Exec=/opt/modelio/modelio %u
 Icon=/opt/modelio/icon.xpm
 Type=Application
 Categories=Development;UML;

@@ -62,8 +62,7 @@ md5sums_x86_64=('715bf11e8b935254795c8d6f8086131b')
 
 package() {
     install -dm755 "$pkgdir/usr/share/applications/"
-    install -dm755 "$pkgdir/opt/"
+    install -dm755 "$pkgdir/opt/modelio"
     install -Dm755 "$srcdir/modelio.desktop" "$pkgdir/usr/share/applications/"
-    mv "$srcdir/Modelio 3.4" "$srcdir/modelio"
-	cp -r "$srcdir/modelio/" "$pkgdir/opt/"
+    cp -ru $srcdir/Modelio\ 3.4/* "$pkgdir/opt/modelio/"
 }
