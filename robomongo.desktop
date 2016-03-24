@@ -7,4 +7,4 @@ Categories=Development;
 Exec=robomongo
 Terminal=false
 StartupNotify=true
-Icon=robomongo.png
+Icon=robomongo
