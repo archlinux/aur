@@ -4,7 +4,7 @@ pkgdesc="ROS - This package attempts to show the features of ROS python API step
 url='http://www.ros.org/wiki/rospy_tutorials'
 
 pkgname='ros-indigo-rospy-tutorials'
-pkgver='0.5.4'
+pkgver='0.5.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-indigo-message-generation
   ros-indigo-rostest
   ros-indigo-catkin
   ros-indigo-std-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-std-msgs
@@ -22,10 +22,16 @@ ros_depends=(ros-indigo-std-msgs
   ros-indigo-rospy)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/rospy_tutorials/${pkgver}-${_pkgver_patch}
-_dir=rospy_tutorials
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_tutorials-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rospy_tutorials/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_tutorials-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_tutorials-release-release-indigo-rospy_tutorials-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_tutorials-release/archive/release/indigo/rospy_tutorials/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('df586ba5bf848aa42811bae4df1deca7ad3072490e9ecb47599fb7918abd307d')
 
 build() {
   # Use ROS environment variables
