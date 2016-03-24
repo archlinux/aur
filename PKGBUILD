@@ -1,11 +1,13 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Maintainer: Eli Schwartz <eschwartz93@gmail.com>
 
+# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
+
 _pkgname=https-everywhere
 pkgname=firefox-extension-${_pkgname}
-pkgver=5.1.4
+pkgver=5.1.5
 pkgrel=1
-_file=403754
+_file=415888
 pkgdesc="Plugin for firefox which ensures you are using https whenever it's possible."
 license=('GPL2')
 arch=('any')
@@ -14,7 +16,7 @@ depends=("firefox")
 makedepends=("unzip")
 source=("${_pkgname}-${pkgver}.xpi::https://addons.mozilla.org/firefox/downloads/file/${_file}/${_pkgname/-/_}-${pkgver}-an+tb+sm+fx.xpi")
 noextract=("${_pkgname}-${pkgver}.xpi")
-sha256sums=('0e2cd19dfa5fedfbfa374971d804951ce4177a6ce44a048c6b43e19bbecf4534')
+sha256sums=('68c9cf2d7d1b144a19a925b56421aca34194ab86250c4c6725493d387dbc7a5d')
 
 prepare() {
   cd "$srcdir"
