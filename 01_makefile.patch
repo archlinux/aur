@@ -1,0 +1,26 @@
+--- ethereum-serpent-2.0.2/Makefile
++++ ethereum-serpent-2.0.2/Makefile
+@@ -8,6 +8,7 @@
+ COMMON_OBJS = keccak-tiny.o bignum.o util.o tokenize.o lllparser.o parser.o opcodes.o optimize.o functions.o rewriteutils.o preprocess.o rewriter.o compiler.o funcs.o
+ HEADERS = bignum.h util.h keccak-tiny-wrapper.h tokenize.h lllparser.h parser.h opcodes.h functions.h optimize.h rewriteutils.h preprocess.h rewriter.h compiler.h funcs.h
+ PYTHON_VERSION = 2.7
++DESTDIR=
+ 
+ serpent : serpentc lib
+ 
+@@ -49,9 +50,9 @@
+ 	rm -f serpent *\.o libserpent.a libserpent.so
+ 
+ install:
+-	cp serpent /usr/local/bin
+-	cp libserpent.a /usr/local/lib
+-	cp libserpent.so /usr/local/lib
+-	rm -rf /usr/local/include/libserpent
+-	mkdir -p /usr/local/include/libserpent
+-	cp $(HEADERS) /usr/local/include/libserpent
++	cp serpent ${DESTDIR}/usr/bin
++	cp libserpent.a ${DESTDIR}/usr/lib
++	cp libserpent.so ${DESTDIR}/usr/lib
++	rm -rf ${DESTDIR}/usr/include/libserpent
++	mkdir -p ${DESTDIR}/usr/include/libserpent
++	cp $(HEADERS) ${DESTDIR}/usr/include/libserpent
