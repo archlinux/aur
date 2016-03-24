@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=moarvm-git
-pkgver=20160309
+pkgver=20160324
 pkgrel=1
 pkgdesc="6model-based VM for NQP and Rakudo Perl6"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -55,6 +55,4 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   rm -rf "$pkgdir/usr/include/"{libtommath,libuv}
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
-  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
