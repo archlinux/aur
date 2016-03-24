@@ -1,0 +1,30 @@
+diff -aur a/tests/matheval.c b/tests/matheval.c
+--- a/tests/matheval.c	2016-03-24 13:55:00.163074189 +0000
++++ b/tests/matheval.c	2016-03-24 13:52:59.492996682 +0000
+@@ -26,26 +26,6 @@
+ #include <matheval.h>
+ #include "config.h"
+ 
+-#ifndef HAVE_SCM_T_BITS
+-typedef long    scm_t_bits;
+-#endif
+-
+-#ifndef HAVE_SCM_NUM2DBL
+-#ifdef SCM_NUM2DBL
+-#define scm_num2dbl(x,s) SCM_NUM2DBL(x)
+-#else
+-#error Neither scm_num2dbl() nor SCM_NUM2DBL available
+-#endif
+-#endif
+-
+-#ifndef HAVE_SCM_C_DEFINE_GSUBR
+-#ifdef HAVE_SCM_MAKE_GSUBR
+-#define scm_c_define_gsubr scm_make_gsubr
+-#else
+-#error Neither scm_c_define_gsubr() nor scm_make_gsubr() available
+-#endif
+-#endif
+-
+ static scm_t_bits evaluator_tag;	/* Unique identifier for Guile
+ 					 * objects of evaluator type.  */
+ 
