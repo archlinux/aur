@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_pose_view provides a GUI plugin for visualizing 3D poses."
 url='http://ros.org/wiki/rqt_pose_view'
 
 pkgname='ros-indigo-rqt-pose-view'
-pkgver='0.4.2'
+pkgver='0.4.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rqt-gui
@@ -26,10 +26,16 @@ depends=(${ros_depends[@]}
   python2-rospkg
   python2-opengl)
 
-_tag=release/indigo/rqt_pose_view/${pkgver}-${_pkgver_patch}
-_dir=rqt_pose_view
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rqt_pose_view/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_robot_plugins-release-release-indigo-rqt_pose_view-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_robot_plugins-release/archive/release/indigo/rqt_pose_view/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('82106719ee2ebbbdee81badcfcd40b2222f74e0c642811b164397112453771e4')
 
 build() {
   # Use ROS environment variables
