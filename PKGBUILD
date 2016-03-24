@@ -4,7 +4,7 @@ pkgdesc="ROS - C++ ROS message and service generators."
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-gencpp'
-pkgver='0.5.3'
+pkgver='0.5.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,16 +12,22 @@ license=('BSD')
 
 ros_makedepends=(ros-indigo-genmsg
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-genmsg)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/gencpp/${pkgver}-${_pkgver_patch}
-_dir=gencpp
-source=("${_dir}"::"git+https://github.com/ros-gbp/gencpp-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/gencpp/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/gencpp-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="gencpp-release-release-indigo-gencpp-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gencpp-release/archive/release/indigo/gencpp/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('f0d174b2513f7ba838fe76ff069303cbc82a27bde644b0a24f6b5880ae08bda2')
 
 build() {
   # Use ROS environment variables
