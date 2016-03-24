@@ -3,8 +3,8 @@
 pkgbase="python-theano"
 pkgname=("python-theano" "python2-theano")
 _pkgname="Theano"
-pkgver="0.7.0"
-pkgrel="3"
+pkgver="0.8.0"
+pkgrel="0"
 pkgdesc='Definition and optimized evaluation of mathematical expressions on Numpy arrays.'
 arch=('any')
 url='http://www.deeplearning.net/software/theano/'
@@ -13,10 +13,17 @@ depends=('python'  'python-numpy'
          'python2' 'python2-numpy')
 makedepends=('python-distribute' 'python2-distribute')
 checkdepends=('python-nose'      'python2-nose')
-optdepends=('python-sympy' 'python-pycuda' 'python-pydot'
-            'python2-sympy' 'python2-pycuda' 'python2-pydot')
+optdepends=('python-sympy: Recommended'
+            'cuda>=7.0:'    #Can cause tests to fail
+            'python-pydot-ng: Preferred over python-pydot'
+            'python-pydot'
+            'python-pygpu: minimal support for opencl' # Can cause tests to fail
+            'python2-sympy'
+            'python2-pydot-ng'
+            'python-pydot'
+            'python2-pygpu')
 source=("http://pypi.python.org/packages/source/T/Theano/Theano-${pkgver}.tar.gz")
-sha256sums=('05b0f6d2467735abea13bdc5c2c1ce3c53f1b89f9ebc5a43abdf71f88cf818b3')
+sha256sums=('87f117277ebc3a3cd5394d2ae3e65a2aa3f8da3265a33e2a5c1ee63a9e6bceb5')
 
 prepare() {
   cd "$srcdir/"
@@ -41,18 +48,24 @@ build() {
   cp -f build/scripts-3.5/* bin/
 }
 
-# Check always fails on non-64 bit platforms.  Check frequently fails if optional dependencies are present
-# Even if check succeeds it takes hours to complete
-#
+# Test takes 3+ hours and over 10Gb of RAM/SWAP
+# All tests passed on my machine except the following:
+
+# ERROR: test_err_bound_list (theano.tensor.tests.test_subtensor.T_subtensor)
+# ----------------------------------------------------------------------
+# IndexError: index 4 is out of bounds for axis 0 with size 2
+
+
 #check() {
 #  msg "Checking Python 2"
 #  cd "$srcdir/${_pkgname}-${pkgver}-py2"/build/lib/theano/
+#  THEANO_FLAGS='device=cpu,optdb.max_use_ratio=40' OMP_NUM_THREADS=4 \
 #  ../../scripts-2.7/theano-nose -v
-#   
 #   
 #  msg "Checking Python 3"
 #  cd "$srcdir/${_pkgname}-${pkgver}"/build/lib/theano/
-#  ../../scripts-3.4/theano-nose -v
+#  THEANO_FLAGS='device=cpu,optdb.max_use_ratio=200' OMP_NUM_THREADS=4 \
+#  ../../scripts-3.5/theano-nose
 #}
 
 package_python2-theano() {
