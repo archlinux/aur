@@ -3,12 +3,12 @@
 
 pkgname=debops
 pkgver=0.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of Ansible playbooks, scalable from one container to an entire data center."
 arch=('any')
 url="http://debops.org/"
 license=('GPL3')
-depends=('python2' 'ansible')
+depends=('python2' 'ansible' 'python2-netaddr' 'python2-ldap' 'python2-passlib' 'util-linux' 'encfs' 'gnupg')
 makedepends=('python2-setuptools')
 conflicts=('depops-git')
 source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
