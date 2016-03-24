@@ -1,6 +1,6 @@
 pkgbase = lxqt-session-git
 	pkgdesc = LXQt session
-	pkgver = 0.9.0.24.g32079af
+	pkgver = 0.10.0.23.g1e7f82c
 	pkgrel = 1
 	url = http://lxqt.org
 	arch = i686
@@ -10,6 +10,7 @@ pkgbase = lxqt-session-git
 	makedepends = cmake
 	makedepends = qt5-tools
 	depends = liblxqt-git
+	depends = xdg-user-dirs
 	optdepends = sddm: The recommended LXQt display manager
 	provides = lxqt-session
 	conflicts = lxqt-session
