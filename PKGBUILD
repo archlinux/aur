@@ -2,8 +2,8 @@
 
 pkgname=jdk-demos
 _major=8
-_minor=74
-_build=b02
+_minor=77
+_build=b03
 pkgver=${_major}u${_minor}
 pkgrel=1
 pkgdesc="Demos and samples of common tasks and new functionality in Oracle Java $_major Development Kit"
@@ -16,8 +16,8 @@ makedepends=('pacman>=4.2.0')
 options=('!strip')
 source_i686=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build-demos/jdk-$pkgver-linux-i586-demos.tar.gz")
 source_x86_64=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build-demos/jdk-$pkgver-linux-x64-demos.tar.gz")
-md5sums_i686=('6aeb677301a6a89094da60e602e2a18c')
-md5sums_x86_64=('0f5efba4ee6d023c792a4bedc201228a')
+md5sums_i686=('6fdc42c7e25cf7a93e376bd5b83a2271')
+md5sums_x86_64=('fa93b0f96eda1e956c85f130a545771f')
 
 DLAGENTS=('http::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 -b oraclelicense=a -o %o %u')
 
