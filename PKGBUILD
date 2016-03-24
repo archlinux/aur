@@ -4,7 +4,7 @@ pkgdesc="ROS - Messages relating to the ROS Computation Graph."
 url='http://ros.org/wiki/rosgraph_msgs'
 
 pkgname='ros-indigo-rosgraph-msgs'
-pkgver='1.11.1'
+pkgver='1.11.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,17 +13,23 @@ license=('BSD')
 ros_makedepends=(ros-indigo-message-generation
   ros-indigo-catkin
   ros-indigo-std-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-std-msgs
   ros-indigo-message-runtime)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/rosgraph_msgs/${pkgver}-${_pkgver_patch}
-_dir=rosgraph_msgs
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm_msgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rosgraph_msgs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm_msgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm_msgs-release-release-indigo-rosgraph_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm_msgs-release/archive/release/indigo/rosgraph_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('f275011e9947d4c2fbc9a63d6f0328cfc792fc9aaa4a8c751c7a3b5ca0bf9376')
 
 build() {
   # Use ROS environment variables
