@@ -1,0 +1,13 @@
+pkgbase = lustache-cli
+	pkgdesc = A command-line interface to lustache (mustache templates for lua).
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/djmattyg007/lustache-cli
+	arch = any
+	license = UNLICENSE
+	depends = lua lua-argparse lua-luajson lustache
+	source = https://github.com/djmattyg007/lustache-cli/archive/1.0.0.tar.gz
+	sha256sums = 90f5790403b269eb37a2258d330572eab9f3036e31e858abdbb7fb02ec584d1a
+
+pkgname = lustache-cli
+
