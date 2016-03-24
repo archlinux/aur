@@ -2,7 +2,7 @@
 # Contributor: spider-mario <spidermario@free.fr>
 
 pkgname=rakudo-git
-pkgver=20160210
+pkgver=20160324
 pkgrel=1
 pkgdesc="Perl6 on MoarVM and the JVM"
 arch=('i686' 'x86_64')
@@ -39,7 +39,5 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
-  find "$pkgdir" -type f -print0 | xargs -0 sed -i "s,$pkgdir,,g"
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
-  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
+  find "$pkgdir" -type f -print0 | xargs -0 sed -i "s,$pkgdir\|\|$srcdir,,g"
 }
