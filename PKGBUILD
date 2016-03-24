@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_tf_tree provides a GUI plugin for visualizing the ROS TF fram
 url='http://ros.org/wiki/rqt_tf_tree'
 
 pkgname='ros-indigo-rqt-tf-tree'
-pkgver='0.4.2'
+pkgver='0.4.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rqt-gui
@@ -26,10 +26,16 @@ ros_depends=(ros-indigo-rqt-gui
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/indigo/rqt_tf_tree/${pkgver}-${_pkgver_patch}
-_dir=rqt_tf_tree
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rqt_tf_tree/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_robot_plugins-release-release-indigo-rqt_tf_tree-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_robot_plugins-release/archive/release/indigo/rqt_tf_tree/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('b76156f2e5429c24029c5be0dd4974cb27fcd136461349a0f269ea89d690ddb7')
 
 build() {
   # Use ROS environment variables
