@@ -1,6 +1,6 @@
 # Maintainer: Ashley Towns <mail(at)ashleytowns(dot)id(dot)au>
 
-_version=2.2-RELEASE
+_version=2.2
 pkgname=swift-bin
 pkgver=${_version//-/.}
 pkgrel=2
@@ -16,14 +16,14 @@ provides=('swift-language')
 replaces=('swift-language-bin')
 
 source=(
-  "https://swift.org/builds/swift-2.2-release/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz"
-  "https://swift.org/builds/swift-2.2-release/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz.sig"
+  "https://swift.org/builds/swift-2.2-release/ubuntu1510/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu15.10.tar.gz"
+  "https://swift.org/builds/swift-2.2-release/ubuntu1510/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu15.10.tar.gz.sig"
 )
 sha256sums=('e529bd7ac72b13a8d181f35e38f95836ac6af7b0968815459ac168e26e4e41c1'
             'SKIP')
 
 package() {
-    tar -C "$pkgdir" -xf "swift-${_version}"*.tar.gz --strip 1
+    tar -C "$pkgdir" -xf "swift-${_version}-RELEASE"*.tar.gz --strip 1
 
     # Permission fix
     find "${pkgdir}" -type d -exec chmod 755 {} +
