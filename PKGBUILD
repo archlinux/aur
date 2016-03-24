@@ -4,7 +4,7 @@ pkgdesc="ROS -  Contains a node that rotates an image stream in a way that minim
 url='http://ros.org/wiki/image_rotate'
 
 pkgname='ros-indigo-image-rotate'
-pkgver='1.12.15'
+pkgver='1.12.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -22,9 +22,8 @@ ros_makedepends=(ros-indigo-tf2-ros
   ros-indigo-dynamic-reconfigure
   ros-indigo-eigen-conversions
   ros-indigo-tf2)
-makedepends=('cmake' 'git' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  opencv)
+makedepends=('cmake' 'ros-build-tools'
+  ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-tf2-ros
   ros-indigo-nodelet
@@ -34,13 +33,18 @@ ros_depends=(ros-indigo-tf2-ros
   ros-indigo-dynamic-reconfigure
   ros-indigo-tf2-geometry-msgs
   ros-indigo-tf2)
-depends=(${ros_depends[@]}
-  opencv)
+depends=(${ros_depends[@]})
 
-_tag=release/indigo/image_rotate/${pkgver}-${_pkgver_patch}
-_dir=image_rotate
-source=("${_dir}"::"git+https://github.com/ros-gbp/image_pipeline-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/image_rotate/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/image_pipeline-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="image_pipeline-release-release-indigo-image_rotate-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/indigo/image_rotate/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('beb0efb233e7aa8e680ff7ebc82556cf21b66158ed41a266867d63817a86a687')
 
 build() {
   # Use ROS environment variables
