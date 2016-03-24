@@ -2,7 +2,7 @@
 # Contributor: Vladislav Odobesku positivcheg94@gmail.com
 
 pkgname=python-tensorflow-git
-pkgver=0.7.1.r1614.g005386d
+pkgver=0.7.1.r1622.g332fdef
 pkgrel=1
 
 pkgdesc="Open source software library for numerical computation using data flow graphs."
@@ -77,6 +77,9 @@ package() {
   TMP_PKG=`find $srcdir/tmp -name "tensor*.whl"`
   pip install --ignore-installed --upgrade --root $pkgdir/ $TMP_PKG --no-dependencies
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # remove cache files from the installation directory
+  find ${pkgdir} -name __pycache__ -exec rm -r {} +
 }
 
 # vim:set ts=2 sw=2 et:
