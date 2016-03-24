@@ -4,7 +4,7 @@ pkgdesc="ROS - roscpp_serialization contains the code for serialization as descr
 url='http://ros.org/wiki/roscpp_serialization'
 
 pkgname='ros-indigo-roscpp-serialization'
-pkgver='0.5.6'
+pkgver='0.5.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-indigo-catkin
   ros-indigo-rostime
   ros-indigo-cpp-common
   ros-indigo-roscpp-traits)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rostime
@@ -22,10 +22,16 @@ ros_depends=(ros-indigo-rostime
   ros-indigo-roscpp-traits)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/roscpp_serialization/${pkgver}-${_pkgver_patch}
-_dir=roscpp_serialization
-source=("${_dir}"::"git+https://github.com/ros-gbp/roscpp_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/roscpp_serialization/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/roscpp_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="roscpp_core-release-release-indigo-roscpp_serialization-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/indigo/roscpp_serialization/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('966a01811d27aedd556291eb0e6f5cdb3f415bd50e7bd90cb0d651871a29087f')
 
 build() {
   # Use ROS environment variables
