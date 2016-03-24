@@ -3,8 +3,11 @@
 
 usage () {
   echo "Un- then re-plug the USB for your Bus Pirate, you should now find it at /dev/bus_pirate0"
-  echo "bus-pirate-gui will launch a gui for your Bus Pirate."
-  echo "pirate-loader is the command to use to flash new firmware"
+  echo ""
+  echo "Here are the tools provided by this package:"
+  echo "bus-pirate-gui: a gui for your Bus Pirate"
+  echo "pirate-loader: firmware flasher (see usage below)"
+  echo "spi-sniffer: listen to a SPI bus"
   echo ""
   echo "To flash a firmware file, you might:"
   echo " 1. Short the PGC and PGD pins (right two) of the ICSP header"
