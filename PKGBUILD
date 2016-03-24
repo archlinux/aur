@@ -6,6 +6,9 @@ pkgname=archmap-git
 pkgver=0.3.r39.g09c5587
 pkgrel=1
 
+provides=('archmap')
+conflicts=('archmap')
+
 pkgdesc="Generates a map of Arch Linux users"
 arch=('any')
 url="https://github.com/maelstrom59/ArchMap"
