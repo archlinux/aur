@@ -4,14 +4,14 @@ pkgdesc="ROS - rospy is a pure Python client library for ROS."
 url='http://ros.org/wiki/rospy'
 
 pkgname='ros-indigo-rospy'
-pkgver='1.11.16'
+pkgver='1.11.18'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rosgraph
@@ -25,10 +25,16 @@ depends=(${ros_depends[@]}
   python2-numpy
   python2-yaml)
 
-_tag=release/indigo/rospy/${pkgver}-${_pkgver_patch}
-_dir=rospy
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rospy/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-indigo-rospy-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rospy/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('3d7b219fb843cb1071c04a719fea7d73a710a07d9b1677bf96c88b84e292f473')
 
 build() {
   # Use ROS environment variables
