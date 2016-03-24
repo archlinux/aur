@@ -4,10 +4,10 @@ pkgdesc="ROS - This unary stack contains the dynamic_reconfigure package which p
 url='http://ros.org/wiki/dynamic_reconfigure'
 
 pkgname='ros-indigo-dynamic-reconfigure'
-pkgver='1.5.38'
+pkgver='1.5.43'
 _pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp-serialization
@@ -16,7 +16,7 @@ ros_makedepends=(ros-indigo-roscpp-serialization
   ros-indigo-rostest
   ros-indigo-catkin
   ros-indigo-message-generation)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost)
 
@@ -29,10 +29,16 @@ ros_depends=(ros-indigo-rosservice
 depends=(${ros_depends[@]}
   boost)
 
-_tag=release/indigo/dynamic_reconfigure/${pkgver}-${_pkgver_patch}
-_dir=dynamic_reconfigure
-source=("${_dir}"::"git+https://github.com/ros-gbp/dynamic_reconfigure-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/dynamic_reconfigure/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/dynamic_reconfigure-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="dynamic_reconfigure-release-release-indigo-dynamic_reconfigure-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/dynamic_reconfigure-release/archive/release/indigo/dynamic_reconfigure/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('2941e38dc52f2b5378f1418213a85d413adb0cd5cddf3d253f23fc6c235d89d1')
 
 build() {
   # Use ROS environment variables
