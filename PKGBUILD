@@ -1,7 +1,7 @@
 # Maintainer: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-git
 _pkgname=sway
-pkgver=r1302.016a774
+pkgver=r1373.fb4fdf5
 pkgrel=1
 license=('MIT')
 pkgdesc='i3 compatible window manager for Wayland'
@@ -20,10 +20,9 @@ optdepends=(
 	"i3status: To display system information with a bar."
 )
 arch=("i686" "x86_64")
-url='https://github.com/SirCmpwn/sway'
+url='http://swaywm.org'
 source=("${pkgname%-*}::git+https://github.com/SirCmpwn/sway.git")
 sha1sums=('SKIP')
-options=('debug' '!strip')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -33,7 +32,10 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 
-	cmake . -DCMAKE_BUILD_TYPE=Upstream -DCMAKE_INSTALL_SYSCONFDIR=/etc -DCMAKE_INSTALL_PREFIX=/usr
+	cmake . \
+        -DCMAKE_BUILD_TYPE=Upstream \
+        -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+        -DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
 
