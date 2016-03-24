@@ -4,10 +4,10 @@ pkgdesc="ROS - rqt_rviz provides a GUI plugin embedding RViz."
 url='http://ros.org/wiki/rqt_rviz'
 
 pkgname='ros-indigo-rqt-rviz'
-pkgver='0.4.2'
+pkgver='0.4.3'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-rqt-gui
@@ -15,7 +15,7 @@ ros_makedepends=(ros-indigo-rqt-gui
   ros-indigo-catkin
   ros-indigo-pluginlib
   ros-indigo-rqt-gui-cpp)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost)
 
@@ -26,10 +26,16 @@ ros_depends=(ros-indigo-rqt-gui
 depends=(${ros_depends[@]}
   boost)
 
-_tag=release/indigo/rqt_rviz/${pkgver}-${_pkgver_patch}
-_dir=rqt_rviz
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rqt_rviz/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_robot_plugins-release-release-indigo-rqt_rviz-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_robot_plugins-release/archive/release/indigo/rqt_rviz/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('c69ce144b373a7b10b182e1a6cc91a18f2508df4b9d833ed2553b146a5c0e24f')
 
 build() {
   # Use ROS environment variables
