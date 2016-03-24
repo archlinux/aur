@@ -2,14 +2,13 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=megasync-git
-pkgver=2.7.1.1977.fd9cafb
+pkgver=v2.8.0.0.Linux.0.gb029ac2
 pkgrel=1
 pkgdesc="Sync your files to your Mega account. Official app. (GIT Version)"
 arch=('i686' 'x86_64')
 url='https://mega.co.nz/#sync'
 license=('custom:MEGA')
 source=('megasync::git+https://github.com/meganz/MEGAsync.git'
-        'megasync.desktop'
         'mega.svg'
         )
 conflicts=('megasync' 'megatools')
@@ -25,14 +24,13 @@ makedepends=('git'
              'qt5-tools'
              )
 sha1sums=('SKIP'
-          '077e146596f6e31254675a1e0771ddcc05084f03'
           'f0ce3c0c3297cbb07f211a6ff2a0237823e0c9cd'
           )
 install=megasync-git.install
 
 pkgver() {
   cd megasync
-  echo "$(< build/version).$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo "$(git describe --long --tags | tr - . | tr _ .)"
 }
 
 prepare() {
@@ -57,10 +55,9 @@ build() {
 }
 
 package() {
-  cd megasync
-  install -Dm644 LICENCE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  cd src/MEGASync
-  install -Dm755 megasync "${pkgdir}/usr/bin/megasync"
-  install -Dm644 "${srcdir}/megasync.desktop" "${pkgdir}/usr/share/applications/megasync.desktop"
+  install -Dm644 megasync/LICENCE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 megasync/src/MEGASync/megasync "${pkgdir}/usr/bin/megasync"
+  install -Dm644 megasync/src/MEGASync/platform/linux/data/megasync.desktop "${pkgdir}/usr/share/applications/megasync.desktop"
+  sed 's|System;||g' -i "${pkgdir}/usr/share/applications/megasync.desktop"
   install -Dm644 "${srcdir}/mega.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/mega.svg"
 }
