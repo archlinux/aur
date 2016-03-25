@@ -1,7 +1,7 @@
 # Maintainer: Michael Healy <horsemanoffaith@gmail.com>
 
 # vercheck-pkgbuild: auto
-# vercheck-ubuntu: name=gtk+3.0, repo=wily
+# vercheck-ubuntu: name=gtk+3.0, repo=xenial
 # vercheck-archlinux: name=gtk3, repo=extra, arch=x86_64
 # vercheck-gnome: name=gtk+, majorver=3.18
 # vercheck-ppa: name=gtk+3.0, url=ppa:gnome3-team/gnome3-staging
@@ -9,10 +9,10 @@
 _use_ppa=true
 
 pkgname=gtk3-ubuntu
-_ppa_rel=1ubuntu1~wily1
-#_ubuntu_rel=0ubuntu3.3
-#_ubuntu_ver=3.16.7
-pkgver=3.18.6
+_ppa_rel=0ubuntu1~xenial0
+#_ubuntu_rel=1ubuntu2
+#_ubuntu_ver=3.18.9
+pkgver=3.20.0
 pkgrel=1
 pkgdesc="GObject-based multi-platform toolkit (v3)"
 arch=(i686 x86_64)
@@ -21,7 +21,7 @@ install=gtk3.install
 depends=(atk cairo gtk-update-icon-cache libcups libepoxy libxcursor libxinerama
          libxrandr libxi libxcomposite libxdamage pango shared-mime-info
          colord at-spi2-atk wayland libxkbcommon adwaita-icon-theme
-         json-glib rest)
+         json-glib rest wayland-protocols)
 makedepends=(gobject-introspection)
 provides=("gtk3=${pkgver}")
 conflicts=(gtk3)
@@ -34,8 +34,8 @@ else
   source+=("http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/g/gtk+3.0/gtk+3.0_${_ppa_ver:-${pkgver}}-${_ppa_rel}.debian.tar.xz")
 fi
 
-sha512sums=('a606bfeb7e6991c9c367d6c93d04d70daed6c59b95d1ef14b971acb32b23e71894b0aef16b4c673e1cb2ae0fd08de3f65b7aa5512fd74253efe30f16b0dbac11'
-            '03296946286788d96572b7a17381191ee86d30736f652f678190b0c305ab70b10c65b0d732e213745bb24e44c3981c7dcafb1e83d0c519deef440fa25a36e00f')
+sha512sums=('493dc3ca8470be9624378ac1019ab110790ddcb121315699817022c51fad8012304bd4c2d980aeb789c6de04e00cf674b0a37b45c94c6d1694d1b52ab50e562e'
+            '5c3b4c0540e7ddd0b7069a74f3b6553eb5f186f3ff1a1819c38b58b8aadcc64d0b720b88be1b73f464d5ba2150a9b77c37aff54a9054b15736b1c7440e8b863e')
 
 prepare() {
     cd "gtk+-${pkgver}"
