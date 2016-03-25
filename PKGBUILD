@@ -4,16 +4,17 @@
 pkgname='spark-rc'
 pkgdesc='A simple rc script'
 license=( 'BSD' )
-pkgver=1.9.1
+pkgver=1.10.1
 pkgrel=1
 arch=( 'any' )
 url='https://github.com/fbt/spark-rc'
 
+depends=( halt-ubase-git )
 conflicts=( sysvinit-tools-adds )
 
 backup=( 'etc/rc.conf' )
 
-source=( "https://github.com/fbt/spark-rc/archive/${pkgver}.tar.gz" )
+source=( "https://git.fleshless.org/spark-rc/snapshot/spark-rc-${pkgver}.tar.gz" )
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
@@ -26,4 +27,4 @@ package() {
 	make USR=/usr DESTDIR="$pkgdir" install
 }
 
-sha1sums=('6624437cae78220205fbcac4d5330192235efb69')
+sha1sums=('b82fd1b88d8063b75f3c9b6ae327a60dbb4e97d9')
