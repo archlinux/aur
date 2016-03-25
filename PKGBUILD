@@ -4,7 +4,7 @@
 pkgname=synology-assistant
 pkgver=5566
 _sver=5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="It helps you set up and install DSM on your DiskStation"
 arch=('i686' 'x86_64')
 url="http://www.synology.com"
@@ -25,7 +25,7 @@ package() {
     cp -rp opt "${pkgdir}/opt"
 
     mkdir -p "${pkgdir}/usr/bin"
-    ln -sf "${pkgdir}/opt/Synology/SynologyAssistant/SynologyAssistant" "${pkgdir}/usr/bin/synology-assistant"
+    ln -sf /opt/Synology/SynologyAssistant/SynologyAssistant "${pkgdir}/usr/bin/synology-assistant"
 
     install -Dm644 usr/share/applications/synology-assistant.desktop "${pkgdir}/usr/share/applications/synology-assistant.desktop"
 }
