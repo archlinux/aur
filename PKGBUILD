@@ -13,10 +13,10 @@ source=("https://github.com/mgoral/subconvert/archive/2.0.0.tar.gz")
 sha1sums=('bb0bd87c35a55d70e3a510830ebe9c6f3524b9ee')
 
 build() {
-	cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     ./autogen.sh
-	./configure
-	make
+    ./configure
+    make
 }
 
 check() {
@@ -25,7 +25,7 @@ check() {
 }
 
 package() {
-	cd "$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+    cd "$pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" install
 }
 
