@@ -6,8 +6,8 @@ post_upgrade() {
 
 post_install() {
   cat <<MSG
->>> xorg-server has now the ability to run without root rights.
-    xserver will fail to run if not launched
+>>> xorg-server has now the ability to run without root rights with
+    the help of systemd-logind. xserver will fail to run if not launched
     from the same virtual terminal as was used to log in.
     Without root rights, log files will be in ~/.local/share/xorg/ directory.
 
@@ -15,3 +15,4 @@ post_install() {
     See Xorg.wrap man page (man xorg.wrap).
 MSG
 }
+
