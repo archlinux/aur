@@ -1,0 +1,8 @@
+post_install () {
+	 echo "Run 'systemctl enable --now vfs495-daemon.service` to start the daemon"
+}
+
+post_remove () {
+	echo """
+}
+

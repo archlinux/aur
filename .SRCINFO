@@ -2,6 +2,7 @@ pkgbase = vfs495-daemon
 	pkgdesc = Userspace driver for VFS495 fingerprint readers
 	pkgver = 4.5
 	pkgrel = 118.00
+	install = vfs495-daemon.install
 	arch = x86_64
 	license = unknown
 	makedepends = rpmextract
