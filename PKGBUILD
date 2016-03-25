@@ -14,7 +14,7 @@ source=('https://dl.dropboxusercontent.com/u/71679/Validity-Sensor-Setup-4.5-118
 	'vfs495-daemon.service')
 noextract=()
 md5sums=('b31117a84f8cb0561648b39957ba5393'
-         'c8cab102230f518158b6ecd38b1ff85a')
+         '8e959fb897cb2e8c134541abdbeeaee9')
 
 build() {
   cd "${srcdir}/"
