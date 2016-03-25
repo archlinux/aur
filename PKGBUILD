@@ -86,6 +86,18 @@ package() {
   # bridge_helper needs suid
   # https://bugs.archlinux.org/task/32565
   chmod u+s usr/lib/qemu/qemu-bridge-helper    
+
+ # remove guest agent
+  rm usr/bin/qemu-ga
+
+  # remove extra arch
+  for _arch in "${_extra_arches[@]}"; do
+    rm -f usr/bin/qemu-${_arch} usr/bin/qemu-system-${_arch}
+  done
+  for _blob in "${_extra_blob[@]}"; do
+    rm usr/share/qemu/${_blob}
+  done
+
 }
   
   # vim:set ts=2 sw=2 et:
