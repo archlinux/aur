@@ -2,7 +2,7 @@
 
 pkgname=gitlab-ci-multi-runner
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The official GitLab CI runner written in Go"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://gitlab.com/gitlab-org/gitlab-ci-multi-runner'
@@ -37,6 +37,7 @@ prepare() {
 }
 
 build() {
+    _rev=$(ls "${srcdir}" | grep -Po "${pkgname}-v${pkgver}-\K([0-9a-f]{7})")
     cd "${srcdir}/src/gitlab.com/gitlab-org/${pkgname}"
     GOPATH="${srcdir}" go-bindata \
         -pkg docker \
@@ -46,7 +47,7 @@ build() {
         -o executors/docker/bindata.go \
         prebuilt.tar.gz
     GOPATH="${srcdir}" go build \
-        -ldflags "-X main.NAME=${pkgname} -X main.VERSION=${pkgver} -X main.REVISION=unknown"
+        -ldflags "-X main.NAME=${pkgname} -X main.VERSION=${pkgver} -X main.REVISION=${_rev}"
 }
 
 package() {
