@@ -1,8 +1,8 @@
 # Maintainer: Joe Davison <joe@warhaggis.com>
 
 pkgname=lgogdownloader-git
-pkgver=2.27.r0.g3e61a94
-pkgrel=2
+pkgver=2.27.r1.g519cb78
+pkgrel=3
 pkgdesc="An open source downloader for GOG.com games, uses the GOG.com API (git version)"
 url="http://www.gog.com/en/forum/general/lgogdownloader_gogdownloader_for_linux"
 arch=(i686 x86_64)
@@ -19,12 +19,12 @@ _gitname="lgogdownloader"
 _aria2="no"
 
 if [ "$_aria2" == "no" ]; then
-	depends=('boost' 'jsoncpp<=1.6.5' 'liboauth' 'rhash' 'tinyxml' 'htmlcxx' 'curl')
+	depends=('boost' 'jsoncpp' 'liboauth' 'rhash' 'tinyxml' 'htmlcxx' 'curl')
 	source=('git://github.com/Sude-/lgogdownloader.git')
 	sha256sums=('SKIP')
 elif [ "$_aria2" == "yes" ]; then
 
-	depends=('boost' 'jsoncpp<=1.6.5' 'liboauth' 'rhash' 'tinyxml' 'htmlcxx' 'aria2')
+	depends=('boost' 'jsoncpp' 'liboauth' 'rhash' 'tinyxml' 'htmlcxx' 'aria2')
 	source=(
 		'git://github.com/Sude-/lgogdownloader.git' 
 		'https://sites.google.com/site/gogdownloader/use_aria2.diff'
