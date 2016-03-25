@@ -8,14 +8,14 @@
 
 pkgname=lightdm-unity-greeter
 _ubuntu_rel=0ubuntu1
-pkgver=16.04.0
+pkgver=16.04.2
 pkgrel=1
 pkgdesc="The greeter (login screen) application for Unity. It is implemented as a LightDM greeter."
 arch=(i686 x86_64)
 url="https://launchpad.net/unity-greeter"
 license=(GPL3 LGPL3)
 groups=(unity)
-depends=(cantarell-fonts gnome-doc-utils ido libindicator3 lightdm-ubuntu
+depends=(cantarell-fonts gnome-doc-utils ido-ubuntu libindicator-gtk3-ubuntu lightdm-ubuntu
          libcanberra libxext)
 makedepends=(gnome-common gnome-doc-utils unity-settings-daemon imagemagick
              intltool librsvg vala)
@@ -30,12 +30,13 @@ source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname#*-}_${pk
         50-unity-greeter.rules
         logo.png)
 
-sha512sums=('3583def6d9ff337bf15d53bc6960528a454b387e6faabadf060a15b3c72e5645f9b091947acc14461007c7592953911d6ca7ce7e514a5a806f239a581e62d0bc'
+sha512sums=('ee130f2436afa71053ec0cb931ce3573883e3fc675f6f37d4550e699362479b1b69bdbefbc99d95e9cb0e40ce98b34a6407a74c993015be78f3243860a160cbf'
             'cf3a158061dd56c07b43f370e25590b8116bfd28e1bdab2a7a3d1ab6ec061884855f06007ea9eda9fd0d229506f73aceaabdc5ee0becc3aee070906e1f6fecd5'
             'e43c177d0255af961bbf9198868e32a1a762bb70e117f80c3c2ce4b54d23f4955cc1c4c32b68751b021116f8e6d26133b24845c03ae459c2209e8313e28a0bc6'
             'ee5d1f17dddd99ba55bbaca8aff5e8487c9b9f7e1eef570d2adb3d2519e19ef437b160414468ef85a8c1b14af1eee23c714e2086291701edfbab2f43064e2cd7'
             '5d0f1b8221dfe02670df3ba88011dc0ce744bfd4205a9900dd8096de222358a740a384a47f13ed4e5b94e24d4a8ff5639117464c61a689dd7bd9025a0900f529'
             '4cc7e3600a8f5afc7edf574ccdb21dbbff9c7492a46b50c696fb7b38446829f2cc99ae029688e289da2100a9cac6ae0471cc8bac03f8db3799f9929a1e2f2679')
+
 prepare() {
   cd "${pkgname#*-}-${pkgver}"
 
