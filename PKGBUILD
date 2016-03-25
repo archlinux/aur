@@ -1,6 +1,6 @@
 # Maintainer: Tudor Roman <xenogenesis at openmailbox dot org>
 pkgname=mpvc-git
-pkgver=r81.e961d25
+pkgver=1
 pkgrel=1
 
 pkgdesc='A mpc-like control interface for mpv.'
@@ -28,5 +28,5 @@ build() {
 package() {
   cd mpvc
   mkdir -p "$pkgdir/usr/bin"
-  make PREFIX="$pkgdir/usr" install
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
