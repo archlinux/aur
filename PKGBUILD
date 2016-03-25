@@ -7,8 +7,11 @@
 # SigLevel = PackageRequired
 # Server = http://smoothware.net/$repo/$arch
 
+# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
+# you also find the URL of a binary repository.
+
 pkgname=subtitlecomposer
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="A KDE subtitle editor"
 arch=('i686' 'x86_64')
@@ -27,7 +30,7 @@ optdepends=('mpv: for MPV backend'
             'ruby: for scripting'
             'python: for scripting')
 source=("https://github.com/maxrd2/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('a49c7b7e5d8f1137373a65c9110a0934da6d827a7362dd6e7face708582c1d51')
+sha256sums=('1d62046d4f42947f5dd8f56a5adae25ee7843e8088a167abcb636f5e8796ecd1')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
@@ -43,4 +46,4 @@ build() {
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
-} 
+}
