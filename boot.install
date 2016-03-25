@@ -1,3 +1,12 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
 post_upgrade() {
-	 echo "Run boot -u to update boot.jar"
+	 note "Run 'boot -u' to update boot.jar"
 }
