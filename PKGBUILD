@@ -156,7 +156,8 @@ fi
   # incorporate journald fix
   local _patch_dir=${startdir}
   cd ${_basedir}
-  patch -p1 < ${_patch_dir}/0001-journald-test-will-fail-with-certain-toolchains.patch
+  patch -p1 < ${_patch_dir}/0001-Make-CFLAGS-CXXFLAGS-behave-consistently-in-config.t.patch
+  patch -p1 < ${_patch_dir}/0002-Adjust-egl-config.test-to-pass-sysrooted-libs.patch
   cd ${_waylanddir}
   patch -p1 < ${_patch_dir}/0001-Adjust-Raspberry-Pi-integration-to-new-API.patch
   cd ${_webenginedir}

@@ -1,0 +1,30 @@
+From ff84397f2dd8492386e025c73e595f004c3f69cd Mon Sep 17 00:00:00 2001
+From: Donald Carr <sirspudd@gmail.com>
+Date: Thu, 24 Mar 2016 20:11:53 -0700
+Subject: [PATCH 2/2] Adjust egl config.test to pass sysrooted libs
+
+We should really start using -L=/foo and -I=/foo inside of sysroots, and
+this test was preventing us from doing so (while arguably buying us
+nothing).
+
+Change-Id: If6e67631c585493871231e5d8a9354fa72e07343
+---
+ config.tests/qpa/eglfs-brcm/eglfs-brcm.pro | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/config.tests/qpa/eglfs-brcm/eglfs-brcm.pro b/config.tests/qpa/eglfs-brcm/eglfs-brcm.pro
+index ce16a3a..d8b1c3e 100644
+--- a/config.tests/qpa/eglfs-brcm/eglfs-brcm.pro
++++ b/config.tests/qpa/eglfs-brcm/eglfs-brcm.pro
+@@ -5,7 +5,7 @@ CONFIG -= qt
+ INCLUDEPATH += $$QMAKE_INCDIR_EGL
+ 
+ for(p, QMAKE_LIBDIR_EGL) {
+-    exists($$p):LIBS += -L$$p
++    LIBS += -L$$p
+ }
+ 
+ LIBS += -lEGL -lGLESv2 -lbcm_host
+-- 
+2.7.4
+
