@@ -46,8 +46,8 @@ sha1sums=('0df8d4e5484128b7b28029273b7704ab5d5419bc'
           '06919a6dc0ae8db9e8ab50b55bb83a26445de51d'
           '8c2fc1526a413cd821b46fd48ea08364abbf5c4c'
           '703825cd187fe90c449a299ced54710ced494ed7'
-          'e06f326f1e44c79fb2825c6d486f6be9b66de32a'
-          'cf498ba02cfdfd6e005808a2418adaf8adae0e28'
+          'f2b68b21f4cc02546048e2179df88742bd6501d4'
+          '8153505fb503d90f96501577923068af48306f50'
           )
 install=mplayer2-build-git.install
 noextract=('mplayer2-2.0.tar.xz')
