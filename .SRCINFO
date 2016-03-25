@@ -1,0 +1,18 @@
+pkgbase = onedrive-sdk-python-git
+	pkgdesc = Official Python OneDrive SDK for interfacing with OneDrive APIs (git)
+	pkgver = 1.0.4.r33.a649bec
+	pkgrel = 1
+	url = https://github.com/OneDrive/onedrive-sdk-python/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-requests
+	provides = onedrive-sdk-python
+	conflicts = onedrive-sdk-python
+	source = onedrive-sdk-python::git+https://github.com/OneDrive/onedrive-sdk-python.git
+	md5sums = SKIP
+
+pkgname = onedrive-sdk-python-git
+
