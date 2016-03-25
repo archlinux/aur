@@ -2,7 +2,7 @@
 
 pkgname=perl6-json-tiny
 pkgver=0.0.1
-pkgrel=4
+pkgrel=6
 pkgdesc="A tiny JSON parser and emitter for Perl 6 on Rakudo"
 arch=('any')
 depends=('perl6')
