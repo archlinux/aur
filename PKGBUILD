@@ -1,4 +1,4 @@
-# Maintainer: Doug Newgard <scimmia22 at outlook dot com>
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: Cravix < dr dot neemous at gmail dot org >
 
 _pkgname=terminology
@@ -18,7 +18,7 @@ source=("git://git.enlightenment.org/apps/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   local v_ver=$(awk -F , '/^AC_INIT/ {gsub(/[\[\] -]/, ""); print $2}' configure.ac)
 
@@ -26,7 +26,7 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   export CFLAGS="$CFLAGS -fvisibility=hidden"
 
@@ -37,15 +37,10 @@ build() {
 }
 
 package(){
-  cd "$srcdir/$_pkgname"
+  cd $_pkgname
 
   make DESTDIR="$pkgdir" install
 
-# install text files
-  install -d "$pkgdir/usr/share/doc/$_pkgname/"
-  install -m644 -t"$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
-
-# install license files
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  install -m644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
+  install -Dm644 -t"$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COPYING
 }
