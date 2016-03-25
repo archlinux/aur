@@ -5,7 +5,7 @@ pkgname=perl-wx
 pkgver=0.9928
 _author=M/MD/MDOOTSON
 _perlmod=Wx
-pkgrel=2
+pkgrel=3
 pkgdesc="Wx - interface to the wxWidgets GUI toolkit"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/dist/Wx"
@@ -16,13 +16,13 @@ wxgtk
 makedepends=(
 perl-alien-wxwidgets
 perl-extutils-xspp
+xorg-server-xvfb
 #ExtUtils::MakeMaker    => perl
 #ExtUtils::ParseXS      => perl
 #File::Spec::Functions  => perl
 #Test::More             => perl
 #Test::Harness          => perl
 )
-[ -z "$DISPLAY" ] && makedepends+=(xorg-server-xvfb)
 provides=(
 perl-wx-aui
 perl-wx-app
@@ -89,8 +89,8 @@ build(){
 }
 check(){
   cd "$srcdir"/$_perlmod-$pkgver
-  if [ -z "$DISPLAY" ]; then
-    warning 'Empty $DISPLAY - falling back to xvfb-run (xorg-server-xvfb)'
+  if [[ -z "$DISPLAY" || -x /usr/bin/xvfb-run ]]; then
+#     warning 'Empty $DISPLAY - falling back to xvfb-run (xorg-server-xvfb)'
     xvfb-run -a -s "+extension GLX -screen 0 1280x1024x24" make test
   else
     make test
