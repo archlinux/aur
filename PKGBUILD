@@ -2,7 +2,7 @@
 
 _pkgname=jalv-select
 pkgname="${_pkgname}-git"
-pkgver=0.2.r22.4859291
+pkgver=0.6.r40.00b98f9
 pkgrel=1
 pkgdesc="A little GUI to select installed lv2 plug-ins and run them with jalv."
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ pkgver() {
 build() {
   cd "${srcdir}/${_pkgname}"
 
-  make
+  make -j 1
 }
 
 package() {
