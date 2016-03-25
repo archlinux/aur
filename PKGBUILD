@@ -1,7 +1,7 @@
 # Maintainer: PureTryOut
 pkgname=horizon-launcher-git
 pkgver=r739.ad2d3c6
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A customizable, cross-platform and open-source launcher for launching all your games on Steam and other gaming services"
 arch=('x86_64')
