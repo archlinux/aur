@@ -11,7 +11,7 @@ while [ $i -le 3 ]; do
 		break
 	fi
 
-	seconds=$((5 * $i))
+	seconds=$((15 * $i))
 	sleep $seconds
 
 	let i=i+1
