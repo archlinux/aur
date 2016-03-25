@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=qcomicbook-git
-pkgver=0.8.2.85.g2b1748f
+pkgver=0.8.2.87.g9c5438d
 pkgrel=1
 pkgdesc="QComicBook is a viewer for comic book archives. (GIT version)"
 arch=('i686' 'x86_64')
@@ -17,7 +17,8 @@ optdepends=('unzip'
             'p7zip'
             'tar'
             )
-makedepends=('cmake'
+makedepends=('qt5-tools'
+             'cmake'
              'git'
              )
 provides=('qcomicbook')
