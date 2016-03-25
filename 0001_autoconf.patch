@@ -1,0 +1,12 @@
+diff -Nru libdbusmenu-12.10.2.orig/configure.ac libdbusmenu-12.10.2/configure.ac
+--- libdbusmenu-12.10.2.orig/configure.ac	2013-01-09 15:44:34.554871296 -0500
++++ libdbusmenu-12.10.2/configure.ac	2013-01-09 15:44:45.604812416 -0500
+@@ -4,7 +4,7 @@
+ 
+ AC_PREREQ(2.62)
+ 
+-AM_CONFIG_HEADER(config.h)
++AC_CONFIG_HEADERS(config.h)
+ AM_INIT_AUTOMAKE(libdbusmenu, 12.10.2, [-Wno-portability])
+ 
+ AM_MAINTAINER_MODE
