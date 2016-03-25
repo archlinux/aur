@@ -1,4 +1,5 @@
 # Maintainer: Lev Lybin <aur@devtrue.net>
+# Contributor: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=synology-assistant
 pkgver=5566
