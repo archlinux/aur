@@ -12,7 +12,7 @@
 # You will also need to install osgearth or fcgi, respectively, before building.
 
 pkgname=qgis
-pkgver=2.14.0
+pkgver=2.14.1
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats'
 url='http://qgis.org/'
@@ -27,7 +27,7 @@ optdepends=('gpsbabel: GPS Tool plugin'
             'python2-yaml: Processing plugin')
 install="$pkgname.install"
 source=("http://qgis.org/downloads/$pkgname-$pkgver.tar.bz2")
-md5sums=('e58294f6abd70951be3fcb3162ff6bc8')
+md5sums=('60e0708650303f28fdfe84b555c41c18')
 
 prepare() {
   cd $pkgname-$pkgver
