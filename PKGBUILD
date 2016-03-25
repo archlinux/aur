@@ -1,6 +1,6 @@
 # Maintainer: Veeti Paananen <veeti.paananen@rojekti.fi>
 pkgname=cmark
-pkgver=0.24.1
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="CommonMark parsing and rendering library and program in C"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('custom:BSD2')
 depends=('glibc')
 makedepends=('cmake' 'python')
 source=("https://github.com/jgm/cmark/archive/${pkgver}.tar.gz#/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('7566d307ffff07567faa0381b248f60164eddcc0e0f5eb6e27d6f58e1269ab2a')
+sha256sums=('73b36b24229fcd13cf63d6a32ec8f347d313e1029d33eff72d7414f24602ceeb')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
