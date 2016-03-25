@@ -2,7 +2,7 @@
 # Contributor: Enrico Bacis <enrico.bacis@gmail.com>
 pkgname=edx-downloader-git
 pkgname_git=edx-dl
-pkgver=r567.64ecd9a
+pkgver=r576.4e27666
 pkgrel=1
 pkgdesc='A simple tool to download video lectures from edx.org.'
 arch=('any')
@@ -13,10 +13,8 @@ depends=('python' 'python-beautifulsoup4' 'youtube-dl' 'python-six' 'python-html
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 
-source=('edx-dl::git+https://github.com/coursera-dl/edx-dl.git#branch=master'
-        'req-html5lib.patch')
-sha256sums=('SKIP'
-            'bf4c762d46fe9e7a15402dbba9f0ab617d19f2349b6c801f49f77167fa23414e')
+source=('edx-dl::git+https://github.com/coursera-dl/edx-dl.git#branch=master')
+sha256sums=('SKIP')
 
 pkgver() {
   msg "Downloading git repository..."
@@ -27,11 +25,6 @@ pkgver() {
     git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  cd "$srcdir/${pkgname_git%-git}"
-  patch -p0 -i ../req-html5lib.patch
 }
 
 package() {
