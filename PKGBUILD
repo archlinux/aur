@@ -3,9 +3,9 @@
 # Contributor: Benedikt 'linopolus' Mueller <benemue at googlemail dot com>
 
 pkgname=mediathek
-pkgver=10
+pkgver=11
 pkgrel=1
-pkgdesc="Offers access to the Mediathek of different tv stations (ARD, ZDF, Arte, etc.)"
+pkgdesc="Offers access to the Mediathek of different german tv stations (ARD, ZDF, Arte, etc.)"
 arch=(any)
 url="http://zdfmediathk.sourceforge.net"
 license=('custom')
@@ -17,7 +17,7 @@ options=(!strip !zipman)
 source=(http://downloads.sourceforge.net/zdfmediathk/MediathekView_${pkgver}.zip
         $pkgname
         $pkgname.desktop)
-md5sums=('769b3dab62cdcd7cd6c3033527930a7a'
+md5sums=('1d9f999c65f9c8f22f1cee6dc45876fe'
          'e52a61eabb6a5931dc2a1fe261bc7d95'
          'bad6e1fdc948ac0e41b8535509cf944d')
 
@@ -30,5 +30,5 @@ package() {
   install -m644 $pkgname.desktop $pkgdir/usr/share/applications/
   install -m644 Info/MediathekView.png $pkgdir/usr/share/pixmaps/
   install -m644 Anleitung/Kurzanleitung.pdf $pkgdir/usr/share/doc/$pkgname/
-  install -m644 -t $pkgdir/usr/share/licenses/$pkgname Copyright/{*.*,_copyright}
+  install -m644 -t $pkgdir/usr/share/licenses/$pkgname Copyright/*.*
 }
