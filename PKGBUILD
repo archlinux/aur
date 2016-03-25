@@ -4,7 +4,7 @@ _version=DEVELOPMENT-SNAPSHOT-2016-03-16-a
 
 pkgname=swift-development-bin
 pkgver=${_version//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Swift programming language, the development snapshot binary drops from the official website"
 arch=('x86_64')
 url="https://swift.org"
@@ -19,9 +19,11 @@ replaces=('swift-language-bin')
 source=(
   "https://swift.org/builds/development/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz"
   "https://swift.org/builds/development/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz.sig"
+  "swift.conf"
 )
 sha256sums=('9f15fd7614a4e2a0c62202526b58604642b2ed338839f80cb70146c1a5bd4c0a'
-            'SKIP')
+            'SKIP'
+            'c93a77b3a9b2647266a5ccdbe77f47d51cb7051d23ee7cca6258564daf713f35')
 
 package() {
     tar -C "$pkgdir" -xf "swift-${_version}"*.tar.gz --strip 1
@@ -46,6 +48,9 @@ package() {
 
     # Update glibc map paths
     sed -i 's/\/x86_64-linux-gnu//g' "${pkgdir}/usr/lib/swift/glibc/module.map"
+
+    # Adds swift libs to the ldpath 
+    install -Dm644 $srcdir/swift.conf $pkgdir/etc/ld.so.conf.d/swift.conf
 
     # Move license
     install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
