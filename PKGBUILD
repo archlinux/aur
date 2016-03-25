@@ -3,20 +3,14 @@
 
 pkgname=geany-astyle
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Sourcecode formatter/beautifier based on AStyle for Geany'
 url='https://launchpad.net/geany-astyle'
 arch=('i686' 'x86_64')
-license='GPL3'
+license=('GPL3')
 depends=('geany' 'astyle')
-makedepends=('unzip')
 source=("https://launchpad.net/$pkgname/trunk/0.2.1/+download/astyle-plugin-src-$pkgver.zip")
 md5sums=('d3ef9979426d217a3c6becb5ecad4422')
-noextract=("astyle-plugin-src-$pkgver.zip")
-
-prepare() {
-    unzip -o "astyle-plugin-src-$pkgver.zip"
-}
 
 build() {
     cd "astyle-plugin-src-$pkgver/src"
