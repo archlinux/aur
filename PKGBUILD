@@ -2,7 +2,7 @@
 # Contributor: Nathan Ringo <tikiking1@gmail.com>
 
 pkgname=libfreenect2
-_pkgver='0.2-rc1'
+_pkgver='0.2-rc2'
 pkgver=${_pkgver/-/}
 pkgrel=1
 pkgdesc="Open source drivers for the Kinect for Windows v2"
@@ -12,7 +12,7 @@ license=(Apache GPL)
 depends=(libusb glfw turbojpeg opencl-headers libcl)
 makedepends=(cmake)
 source=("https://github.com/OpenKinect/libfreenect2/archive/v${_pkgver}.tar.gz")
-sha512sums=('d15e2ecb8fbe8a156bfd02bdc534b7fa358fba3f67d8e545121363ffca00f2014f42015a4fe01de6f73a6b5a4f59827f8b7847b5b6322572cf8056abe0da6de7')
+sha512sums=('c93ca516e946f40ce97f4fb524840a0a0858275295da826738a92944009258f680770848da7d89ca6e9ad1c1a98919319cbf22f0e622e19c619ea2cdbe2e7ed7')
 
 prepare() {
 	cd "${srcdir}/libfreenect2-$_pkgver"
