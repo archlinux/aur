@@ -4,7 +4,7 @@ pkgbase="python-theano"
 pkgname=("python-theano" "python2-theano")
 _pkgname="Theano"
 pkgver="0.8.0"
-pkgrel="0"
+pkgrel="1"
 pkgdesc='Definition and optimized evaluation of mathematical expressions on Numpy arrays.'
 arch=('any')
 url='http://www.deeplearning.net/software/theano/'
@@ -26,6 +26,9 @@ source=("http://pypi.python.org/packages/source/T/Theano/Theano-${pkgver}.tar.gz
 sha256sums=('87f117277ebc3a3cd5394d2ae3e65a2aa3f8da3265a33e2a5c1ee63a9e6bceb5')
 
 prepare() {
+  cd "${_pkgname}-${pkgver}"
+  chmod +x "${_pkgname}.egg-info"
+  chmod 644 ${_pkgname}.egg-info/*
   cd "$srcdir/"
   cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-py2"
   cd "${_pkgname}-${pkgver}"
