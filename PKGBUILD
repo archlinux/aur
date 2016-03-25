@@ -1,14 +1,12 @@
 # Maintainer: Dylan Araps <dyl@tfwno.gf>
 pkgname=neofetch
-_pkgname=neofetch
 pkgver=1.5
 pkgrel=1
 pkgdesc="CLI script to show your system's info and display an image using w3m."
 arch=('any')
 url="https://github.com/dylanaraps/$pkgname"
 license=('MIT')
-provides=($_pkgname)
-conflicts=($_pkgname ${pkgname}-git)
+conflicts=(${pkgname}-git)
 depends=('bash' 'xorg-xprop')
 optdepends=(
   'cmus: Current Song'
