@@ -1,7 +1,7 @@
 pkgbase = worksnaps
 	pkgdesc = Time Tracking with Screenshots for Remote Teams
 	pkgver = 1.1.20150618
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.worksnaps.com/www/download.shtml
 	arch = any
 	license = unknown

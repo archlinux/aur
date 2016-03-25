@@ -2,7 +2,7 @@
 
 pkgname=worksnaps
 pkgver=1.1.20150618
-pkgrel=1
+pkgrel=2
 pkgdesc="Time Tracking with Screenshots for Remote Teams"
 arch=('any')
 url="http://www.worksnaps.com/www/download.shtml"
@@ -12,6 +12,7 @@ source=("http://worksnaps-download.s3.amazonaws.com/WSClient-linux-$pkgver.zip")
 md5sums=('7bc4f74ac3d7ed0e889172596c32eff7')
 
 prepare() {
+    # the main executable file
     src='#!/usr/bin/env sh
 path="/usr/lib/worksnaps/bin/run.sh"
 script=$(realpath "$path")
@@ -19,7 +20,11 @@ cd $(dirname "$script")
 exec "$script"'
     filename="$srcdir/worksnaps"
     echo "$src" > "$filename"
-    chmod a+x "$filename"
+    chmod a+rx "$filename"
+    # make sure everybody has access to the files
+    chmod a+r "$srcdir" --recursive
+    # worksnaps requires write access to the sh filesi, thats unsafe but otherwise an java exception is thrown
+    find "$srcdir" -type f -name "*.sh" -exec chmod a+rwx {} \; 
 }
 
 package() {
