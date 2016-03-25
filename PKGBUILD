@@ -5,7 +5,7 @@ pkgver=009
 pkgrel=3
 pkgdesc="A desktop tool to decrypt data encrypted by Cloud Sync"
 arch=('i686' 'x86_64')
-url="http://www.synology.com"
+url="https://www.synology.com/en-global/releaseNote/SynologyCloudSyncDecryptionTool"
 license=('unknown')
 
 source_x86_64=(http://global.download.synology.com/download/Tools/SynologyCloudSyncDecryptionTool/${pkgver}/Linux/x86_64/SynologyCloudSyncDecryptionTool-${pkgver}_x64.tar.gz)
