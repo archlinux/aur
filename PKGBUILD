@@ -2,7 +2,7 @@
 
 _pkgname=emotion_generic_players
 pkgname=$_pkgname-git
-pkgver=1.16.99.134.gad1d91a
+pkgver=1.17.99.141.g2853260
 pkgrel=1
 pkgdesc="Emotion external binary executable players - Development version"
 arch=('i686' 'x86_64')
