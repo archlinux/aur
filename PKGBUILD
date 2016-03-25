@@ -1,8 +1,8 @@
 # Maintainer: Chocobo1
 
 pkgname=chewing-editor
-pkgver=0.0.2
-pkgrel=2
+pkgver=0.0.3
+pkgrel=1
 pkgdesc="Cross platform chewing user phrase editor"
 arch=('i686' 'x86_64')
 url="http://chewing.im"
@@ -11,7 +11,7 @@ depends=('libchewing' 'qt5-base' 'hicolor-icon-theme')
 makedepends=('cmake' 'qt5-tools' 'help2man')
 install=$pkgname.install
 source=("https://github.com/chewing/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('1ce0a98d7cbabe3d03d8dcc9bd1b0a05b8dd37d069b60cbf83bd4cef99939367')
+sha256sums=('f49a024139aa6bab7b6aa980a0c7ec03c25e4b019d52386d3d10bf7d88c2382a')
 
 prepare() {
     cd "$srcdir/$pkgname-$pkgver"
