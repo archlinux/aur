@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-css-minifier-xs'
-pkgver='0.08'
+pkgver='0.09'
 pkgrel='1'
 pkgdesc="XS based CSS minifier"
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/CSS-Minifier-XS'
-source=('http://search.cpan.org/CPAN/authors/id/G/GT/GTERMARS/CSS-Minifier-XS-0.08.tar.gz')
-md5sums=('10a71fd208a20f69c13526a3f592d934')
-sha512sums=('f9aaf1f035d23dfa42af5251ff66193c40685b50cdf3716a0d10796311d11f9f4da72efb8661924814450de79e782b952a845564a4e4871c61be89a07b017b91')
-_distdir="CSS-Minifier-XS-0.08"
+url='https://metacpan.org/release/CSS-Minifier-XS'
+source=('http://search.cpan.org/CPAN/authors/id/G/GT/GTERMARS/CSS-Minifier-XS-0.09.tar.gz')
+md5sums=('583722bcd6175fcafaff63c769accc6f')
+sha512sums=('520e40fa4a6d70bd7692880f3bc5c813a8648dfe12946426dedf0874e180ccd98e703d67ed8b502a7b00489aa2404edce844d80b1eccc48f94156a0d5c36ad51')
+_distdir="CSS-Minifier-XS-0.09"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
