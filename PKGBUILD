@@ -4,7 +4,7 @@
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
 pkgver=1.18.2 # http://lists.x.org/archives/xorg/2016-March/057961.html
-pkgrel=3      # https://projects.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/xorg-server&id=bb37fae55e67f14bc491ca6bcccde3907f73b21c
+pkgrel=4      # https://projects.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/xorg-server&id=9fd963e75ec9745e07a5e2595dae57de3f925210
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
@@ -20,8 +20,8 @@ source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
         xvfb-run
         xvfb-run.1
         0001-glamor-swizzle-RED-to-0-for-alpha-textures.patch
-        0002-Xext-vidmode-Reduce-verbosity-of-GetModeLine.patch
-        0003-Revert-present-Requeue-if-flip-driver-hook-fails-and.patch)
+        0001-Xext-vidmode-Reduce-verbosity-of-GetModeLine.patch
+        0001-present-Only-requeue-for-next-MSC-after-flip-failure.patch)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
@@ -31,7 +31,7 @@ sha256sums=('022142b07f6477d140dcc915902df326408a53ca3a352426a499f142b25d632d'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
             '10c66c10f4f71930e2ac3f6e07881e228ca88542af449d2c69c7744ec87335df'
             '72755a652e72144e3f28c8fa959b4a6df5def838db3cde5077a626e97baab591'
-            '692cccb82ae20be237ac9fda9347c06952e9ca2971d63dc54cf63ad2223d41a0')
+            '70c84bf1f7cbc818692fb56f57c8b8ef2ea057bc05380b2f797ecba742b7ce31')
 
 prepare() {
   cd "${_pkgbase}-${pkgver}"
@@ -40,12 +40,10 @@ prepare() {
   patch -Np1 -i ../0001-glamor-swizzle-RED-to-0-for-alpha-textures.patch
 
   msg2 "Fix flooding of Xorg log file"
-  patch -Np1 -i ../0002-Xext-vidmode-Reduce-verbosity-of-GetModeLine.patch
-  
-  msg2 "FS#48549"
-  # upstream https://bugs.freedesktop.org/show_bug.cgi?id=94515
-  # upstream https://bugs.freedesktop.org/show_bug.cgi?id=94596
-  patch -Np1 -i ../0003-Revert-present-Requeue-if-flip-driver-hook-fails-and.patch
+  patch -Np1 -i ../0001-Xext-vidmode-Reduce-verbosity-of-GetModeLine.patch
+
+  msg2 "Fix FS#48549"
+  patch -Np1 -i ../0001-present-Only-requeue-for-next-MSC-after-flip-failure.patch
 }
 
 build() {
