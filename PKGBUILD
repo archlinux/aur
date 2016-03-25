@@ -11,8 +11,8 @@ license=("custom:github")
 
 #Sources
 source=("$pkgname.sh" "$pkgname.desktop" "$pkgname.png")
-source_i686=('https://storage.googleapis.com/franz-1245.appspot.com/downloads/linux-ia32/Franz-linux-ia32-'$_pkgver_dash'.tgz')
-source_x86_64=('https://storage.googleapis.com/franz-1245.appspot.com/downloads/linux-x64/Franz-linux-x64-'$_pkgver_dash'.tgz')
+source_i686=('https://github.com/imprecision/franz-app/releases/download/'$pkgver'/Franz-linux-ia32-'$pkgver'.tgz')
+source_x86_64=('https://github.com/imprecision/franz-app/releases/download/'$pkgver'/Franz-linux-x64-'$pkgver'.tgz')
 #Checksums
 sha256sums=('5d53c349bcf0452a31e3aee609eac6809f26750f4fb4da049132adc5c9a40289'
             '331918823545ad2696a7fb1c8650f1d001be6dfe40f09dd430dee0e4e3f34594'
