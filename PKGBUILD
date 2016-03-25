@@ -2,12 +2,13 @@
 
 pkgname=gotags-git
 _pkgname=gotags
-pkgver=20150322
+pkgver=1.3.0.18.gbe986a3
+epoch=1
 pkgrel=1
 pkgdesc="ctags-compatible tag generator for Go."
-arch=("any")
+arch=('x86_64' 'i686')
 url="https://github.com/jstemmer/gotags"
-license=('Other')
+license=('MIT')
 makedepends=('git' 'go')
 depends=()
 provides=('gotags')
@@ -16,16 +17,17 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git log -1 --format='%cd' --date=short | tr -d -- '-'
+    git describe --tags --long | sed 's/^v//;s/-/./g'
 }
 
 build() {
-    cd "${_pkgname}"
+    cd "${srcdir}/${_pkgname}"
     GOPATH=${srcdir} go build -o "${_pkgname}"
 }
 
 package() {
-    cd ${_pkgname}
+    cd "${srcdir}/${_pkgname}"
     install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 }
+
