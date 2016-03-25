@@ -2,10 +2,10 @@
 
 pkgname=perl6-geoip-city
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MaxMind GeoIP City library interface"
 arch=('any')
-depends=('geoip' 'geoip-citydata' 'perl6')
+depends=('geoip' 'geoip-database-extra' 'perl6')
 checkdepends=('perl')
 makedepends=('alacryd' 'git')
 groups=('perl6')
