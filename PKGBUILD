@@ -7,7 +7,7 @@ pkgdesc="Generate earth wall with cloud"
 arch=('any')
 url="www.google.fr"
 license=('WTFPL')
-depends=('xplanet')
+depends=('xplanet' 'wget')
 backup=('etc/wallxplanet/xplanet.conf')
 source=("$pkgname-$pkgver.tar.gz" "https://upload.wikimedia.org/wikipedia/commons/c/cd/Land_ocean_ice_2048.jpg" "http://eoimages.gsfc.nasa.gov/images/imagerecords/55000/55167/earth_lights_lrg.jpg" "https://upload.wikimedia.org/wikipedia/commons/a/ac/Earthmap1000x500.jpg")
 install=wallxplanet.install
@@ -30,7 +30,7 @@ package() {
         "$pkgdir"/usr/lib/systemd/system/downloadcloudsmap.service || return 1
 
     # downloadcloudsmap.timer
-    install -Dm644 systemd/downloadcloudsmap.service \
+    install -Dm644 systemd/downloadcloudsmap.timer \
         "$pkgdir"/usr/lib/systemd/system/downloadcloudsmap.timer || return 1
 
     # pictures
