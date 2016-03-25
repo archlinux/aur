@@ -6,7 +6,7 @@
 pkgname=qt5-doc
 _qtver=5.6.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
@@ -52,4 +52,7 @@ package() {
 
   install -d "$pkgdir"/usr/share/licenses
   ln -s /usr/share/licenses/qt5-base "$pkgdir"/usr/share/licenses/${pkgname}
+
+# Fix conflicts with qt5-examples
+  rm -r "$pkgdir"/usr/share/doc/qt/examples
 }
