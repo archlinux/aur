@@ -1,20 +1,15 @@
 # Maintainer: TingPing <tingping@tingping.se>
 
 pkgname=fpaste
-pkgver=0.3.7.3.3
+pkgver=0.3.8.1
 pkgrel=1
 pkgdesc='A cli frontend for the fpaste.org pastebin'
 arch=('any')
 url='http://fpaste.org/'
 license=('GPL3')
-depends=('python2')
+depends=('python')
 source=("https://fedorahosted.org/released/fpaste/$pkgname-$pkgver.tar.gz")
-sha256sums=('47728601aef3430e0e3baf7cdd2f821b6348a99ab5c39d118173028878617f4a')
-
-prepare() {
-	cd "$pkgname-$pkgver"
-	sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' fpaste
-}
+sha256sums=('2cf565f2a803371b13292db8f243da5f49c0509eb2e89d6236b4096d74f161df')
 
 package() {
 	cd "$pkgname-$pkgver"
