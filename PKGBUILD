@@ -1,11 +1,12 @@
-# Maintainer:  Ben Darwin <bcdarwin at gmail>
+# Maintainer:  Tatsuyuki Ishi <ishitatsuyuki at gmail>
+# Contributor: Ben Darwin <bcdarwin at gmail>
 # Contributor: speps <speps at aur dot archlinux dot org>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: Lone_Wolf <lonewolf@xs4all.nl>
 
 pkgname=zeroinstall-injector
 _pkgname=0install
-pkgver=2.6.1
+pkgver=2.11
 pkgrel=1
 pkgdesc="A decentralised loosely-coupled secure installation system"
 arch=('i686' 'x86_64')
@@ -20,12 +21,11 @@ optdepends=('ocaml-lablgtk: provides GUI features'
 install="$pkgname.install"
 source=("http://downloads.sourceforge.net/zero-install/$_pkgname/$pkgver/$_pkgname-$pkgver.tar.bz2"
         "http://downloads.sourceforge.net/zero-install/$_pkgname/$pkgver/$_pkgname-$pkgver.tar.bz2.sig")
-sha256sums=('7f691924616c1f7154ac53f4904b63e9a801f4ee3e470f9d641d39fc94e274a2'
+sha256sums=('194b675c48556a3b9aee6b4a2478a521fafa66c0d871ef64349dc3baede28006'
             'SKIP')
-
 build() {
   cd $_pkgname-$pkgver
-  make || return 1
+  make
 }
 
 package() {
