@@ -3,7 +3,7 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.14.99.30544.ga00bbff
+pkgver=1.17.99.46408.g2261964
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
@@ -22,8 +22,8 @@ optdepends=('evas_generic_loaders-git: More video/graphic/icon loaders for Evas'
             'gst-plugins-ugly: Access more types of video in Emotion'
             'gst-libav: Access video with ffmpeg/libav in Emotion'
             'python2: Compare Eina benchmarks')
-provides=("$_pkgname=$pkgver" 'elocation-git')
-conflicts=("$_pkgname" 'elocation-git')
+provides=("$_pkgname=$pkgver" "elementary=$pkgver" "elementary-git=$pkgver")
+conflicts=("$_pkgname" 'elementary' 'elementary-git' 'elementary_test' 'elementary_test-git')
 options=('debug')
 install="$_pkgname.install"
 source=("git://git.enlightenment.org/core/$_pkgname.git")
@@ -72,13 +72,6 @@ package() {
   python2 -m compileall -q "$pkgdir"
   python2 -O -m compileall -q "$pkgdir"
 
-# install text files
-  install -d "$pkgdir/usr/share/doc/$_pkgname/"
-  install -m644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
-
-# install license files
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  install -m644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COMPLIANCE COPYING licenses/COPYING.{BSD,SMALL}
-  sed -n '1,/details./p' licenses/COPYING.LGPL > "$pkgdir/usr/share/licenses/$pkgname/COPYING.LGPL"
-  ln -s ../common/GPL2/license.txt "$pkgdir/usr/share/licenses/$pkgname/COPYING.GPL"
+  install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" AUTHORS COMPLIANCE COPYING COPYING.images licenses/COPYING.{BSD,SMALL}
 }

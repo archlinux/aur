@@ -1,6 +1,6 @@
 pkgbase = efl-git
 	pkgdesc = Enlightenment Foundation Libraries - Development version
-	pkgver = 1.14.99.30544.ga00bbff
+	pkgver = 1.17.99.46408.g2261964
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	install = efl.install
@@ -43,10 +43,14 @@ pkgbase = efl-git
 	optdepends = gst-plugins-ugly: Access more types of video in Emotion
 	optdepends = gst-libav: Access video with ffmpeg/libav in Emotion
 	optdepends = python2: Compare Eina benchmarks
-	provides = efl=1.14.99.30544.ga00bbff
-	provides = elocation-git
+	provides = efl=1.17.99.46408.g2261964
+	provides = elementary=1.17.99.46408.g2261964
+	provides = elementary-git=1.17.99.46408.g2261964
 	conflicts = efl
-	conflicts = elocation-git
+	conflicts = elementary
+	conflicts = elementary-git
+	conflicts = elementary_test
+	conflicts = elementary_test-git
 	options = debug
 	source = git://git.enlightenment.org/core/efl.git
 	sha256sums = SKIP
