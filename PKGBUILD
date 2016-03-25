@@ -1,6 +1,6 @@
 # Maintainer: Tudor Roman <xenogenesis at openmailbox dot org>
 pkgname=st-xresources-git
-pkgver=r4.8a8358d
+pkgver=1
 pkgrel=1
 
 pkgdesc='Simple terminal with Xresources support'
