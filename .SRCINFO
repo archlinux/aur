@@ -1,0 +1,23 @@
+pkgbase = fluxable-newmenu
+	pkgdesc = provides categorized apps menus similar to those found in Mate or XFCE
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/burt1iband/fluxable-newmenu
+	install = fluxable-newmenu.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = grep
+	optdepends = notification-daemon
+	optdepends = caja
+	optdepends = pcmanfm
+	optdepends = nautilus
+	optdepends = orca
+	provides = fluxable-newmenu
+	conflicts = fluxable-newmenu
+	source = git+https://github.com/burt1iband/fluxable-newmenu.git
+	md5sums = SKIP
+
+pkgname = fluxable-newmenu
+

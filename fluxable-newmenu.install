@@ -1,0 +1,44 @@
+## fluxable-newmenu.install
+
+## Update defaults for users who have not customized
+inst_sysconf() {
+install -cm 644 /usr/share/doc/fluxable-newmenu/fluxable.conf.org /etc/fluxable/
+if ! [ -f /etc/fluxable/fluxable.conf ]; then
+ cp /etc/fluxable/fluxable.conf.org /etc/fluxable/fluxable.conf
+     fi
+     }
+ 
+## Tell the user what they need to know!
+post_inst_msg() {
+echo
+echo "If you ever trash your ~/.fluxable/fluxable.conf file
+a sample configuration file has been installed for you
+in /etc/fluxable with a .org extension."
+echo
+
+## Test for installed supported filemanagers.
+if [ -f "/usr/bin/caja" ] || [ -f "/usr/bin/nautilus" ] || [ -f "/usr/bin/pcmanfm" ]; then
+echo "One or more usable file managers have been detected."
+echo "Fluxable-newmenu should now be correctly installed on this system.
+Launch it by typing fluxable-newmenu in your dash or other run dialog.
+For most efficient use launch with a custom keybinding."
+     else
+echo "Although fluxable-newmenu should now be correctly installed, however
+none of the default file managers used by fluxable-newmenu has been detected.
+You must specify an installed filemanager to use in fluxable.conf
+or install a supported filemanager."
+     fi
+
+echo
+echo "Type man fluxable-newmenu for more information."
+     }
+
+post_install() {
+inst_sysconf
+post_inst_msg
+     }
+
+post_upgrade() {
+inst_sysconf
+post_inst_msg
+     }
