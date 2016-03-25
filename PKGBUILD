@@ -1,6 +1,6 @@
 pkgbase=swift-development
 pkgname=(swift-development swift-lldb-development)
-_swiftver=DEVELOPMENT-SNAPSHOT-2016-03-16-a
+_swiftver=DEVELOPMENT-SNAPSHOT-2016-03-24-a
 pkgver=${_swiftver//-/.}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger - latest development snapshot"
@@ -28,16 +28,16 @@ source=(
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "swift-no-docs.patch"
 )
-sha256sums=('9fee69b57f4a49c3f5f29a8bc58e48e155c984733e56b0fdafab101be0c93fe2'
-            '2b4bb6cd370f701db94ba1d2ec156a360203be88f0091343d6eaefa33448c3c6'
-            'aa41e96c4035110ab8399dbee38ccf577aa5379a746d33c9c8e9ed74df100915'
-            'f9481851db1b01f4206691957e0484c721fc3d641120ce9519b4da5c853a07c7'
-            '32e8f86400af44db4e217767555e2724f50f861b41ea23a90ff276792c116f75'
-            'c146c9475e646de3bc9644a951c3067440b352fe8d23de59e9d8793e13c6c224'
-            '5833e69d4d158949a9b4986eced73806e10d597ebb5db8549ba3c7962d6f3c32'
-            '65e3ef58877c8bbec926177a6d7ce790de98cf76cabb808a46a735e6945554d6'
-            '2ef008a1fd32b9d1c34eb242c7a13569e1f2e83ef127a964260b1cfcee6f82e3'
-            '5bd49df6c4b852b0300b2343d086497a563a5b977ffa4c7f20ce5fffdafd7dfc'
+sha256sums=('6166bc79142393ba407777d0e9cf20ca3e3f63e5fe810dea779b0002d4dfbbd0'
+            '0cc49a7e756871f8874a5e6e7a78512aa9db74b143abee717e11331e53bfffc8'
+            '21ef2fb8875ce49e809a8c7f40a68f50808acf4885170e2546c61c4856265ea4'
+            '6b533c1896930ef21f5f01adb3bad9a366c96df2842529dc9d2be3668568f65a'
+            'b2b240f39db42cf9e45bb1b581f2487c3ab7a3c3ade64efce95728cfc28f5997'
+            '23cf16650b07560b0708363d1acc4df9f526ac8dc721d5df79e17b2e6870275c'
+            '86967680bc37fd0e97068f7df2e248b255722f7d4faca0c96d2e9a2832f0cc71'
+            '8566926ae84afb323d422ba738bb49664e8ab6505db8c9d44bd4a4b6fcab8a92'
+            'fb82cce10570961239ba12c9df87aeec8e70910caddbf16fba59ab22aa7fc3b1'
+            '0542441b379597029e42a3b8c3d4caf4d0d1fc2dc788b326c18d4eac5eab88bf'
             '1a8663c48a1a203d1825ae62a7e4191e4980a2dad461d4d88152221ad9e2171d')
 
 prepare() {
@@ -112,7 +112,7 @@ package_swift-development() {
         install -m644 docs/tools/swift.1 "$pkgdir/usr/share/man/man1"
 
         umask 0022
-        cp -rL lib/swift/{clang,glibc,linux,shims} "$pkgdir/usr/lib/swift/"
+        cp -rL lib/swift/{clang,linux,shims} "$pkgdir/usr/lib/swift/"
     )
     (
         cd llbuild-linux-$CARCH
