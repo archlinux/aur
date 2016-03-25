@@ -23,7 +23,7 @@ source=("git+https://gerrit.wikimedia.org/r/p/mediawiki/services/parsoid"
         "parsoid.install")
 sha512sums=("SKIP"
             "b4f8a2fc5119fa4741d79c66b5bb2282b274018ad548d383c6007fbe66d14ee1de6744a2cdcf1f8453ca055f48716598b42d3faecd29b81f61c06a54df64ed7d"
-            "86a11382e8478ed131990c39b6465dfb1fe567b70d354bec78ae3c56c0916dcb27449c02d6aed70e7f813c3c57d27a80453f66e1c672a7c02cfa9bad26e1d459")
+            "103f701601103dfd8374a6461e8ffb7ebf2a85a5689c7d9792f22673dba0dcf5dd144b9905cc6e4a4143242ac931fc7f39c187b3b9eb5ecf401abfb4fd2b94ef")
 options=('!strip')
 install="parsoid.install"
 pkgver() {
