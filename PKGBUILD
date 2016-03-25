@@ -1,6 +1,6 @@
 # Maintainer: Tudor Roman <xenogenesis at openmailbox dot org>
 pkgname=x11fs-git
-pkgver=r24.9cd04ef
+pkgver=1
 pkgrel=1
 
 pkgdesc='A tool for manipulating X windows'
@@ -29,5 +29,5 @@ build() {
 package() {
   cd x11fs
   mkdir -p "$pkgdir/usr/bin"
-  make PREFIX="$pkgdir/usr" install
+  make DESTDIR="$pkgdir" PREFIX="/usr" install
 }
