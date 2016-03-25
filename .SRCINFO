@@ -7,6 +7,7 @@ pkgbase = curlbomb
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
+	optdepends = openssh: SSH tunnel support
 	source = https://pypi.python.org/packages/source/c/curlbomb/curlbomb-1.0.12.tar.gz
 	md5sums = d7df9d9b6475cf6f40972e4a573cf3cf
 
