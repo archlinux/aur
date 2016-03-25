@@ -3,7 +3,7 @@
 
 pkgname=parsoid-git
 _pkgname=parsoid
-pkgver=foo
+pkgver=v0.3.0.r554.g2fcc841
 pkgrel=1
 pkgdesc="A bidirectional wikitext parser and runtime"
 arch=('any')
@@ -22,8 +22,8 @@ source=("git+https://gerrit.wikimedia.org/r/p/mediawiki/services/parsoid"
         "parsoid.service"
         "parsoid.install")
 sha512sums=("SKIP"
-            "9a5bbec1cb5113c2ccd939f6e15abf159306d106e97d386685bf5d13cdbfa0ea7fa0023931bc19c94afd904cc87375a07f281d88fd5d0fed7e6af0f923e0f8cc"
-            "ef303933254e5a357ee5046f970822f069c2c695e01811f592c706627f99f936a8eb1d6b210707c76a78f1c0a7de1d27d30c461dfed55e21798db74a3ba7a7ea")
+            "b4f8a2fc5119fa4741d79c66b5bb2282b274018ad548d383c6007fbe66d14ee1de6744a2cdcf1f8453ca055f48716598b42d3faecd29b81f61c06a54df64ed7d"
+            "86a11382e8478ed131990c39b6465dfb1fe567b70d354bec78ae3c56c0916dcb27449c02d6aed70e7f813c3c57d27a80453f66e1c672a7c02cfa9bad26e1d459")
 options=('!strip')
 install="parsoid.install"
 pkgver() {

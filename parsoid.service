@@ -9,8 +9,8 @@ WantedBy=multi-user.target
  
 [Service]
 Type=simple
-User=nobody
-Group=nobody
+User=parsoid
+Group=parsoid
 WorkingDirectory=/usr/share/webapps/parsoid
 ExecStart=/usr/bin/node /usr/share/webapps/parsoid/bin/server.js
 KillMode=process

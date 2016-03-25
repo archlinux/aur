@@ -1,4 +1,40 @@
-post_install(){
+# Colored makepkg-like functions
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+_update() {
+    chown -R parsoid:parsoid /usr/share/webapps/parsoid
+}
+
+post_install() {
+    if ! getent passwd parsoid &>/dev/null; then
+        msg_blue "Adding user 'parsoid'"
+        useradd -m -r -U -d /usr/share/webapps/parsoid -s /bin/false parsoid &>/dev/null
+    fi
+    _update
     echo ">> Before run Parsoid, modify /usr/share/webapps/parsoid/localsettings.js ."
     echo ">> Reference comments in this file for help ."
 }
+
+post_upgrade() {
+    _update
+}
+
+post_remove() {
+    _update
+    if getent passwd parsoid &>/dev/null; then
+        msg_blue "Removing user 'parsoid'"
+        userdel -rf parsoid &>/dev/null
+    fi
+}
+
