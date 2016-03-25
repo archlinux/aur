@@ -1,8 +1,8 @@
-# Mantainer: M0Rf30
+# Maintainer: M0Rf30
 
 pkgname=unrealtournament-bonuspack2
 pkgver=20000104
-pkgrel=2
+pkgrel=3
 pkgdesc="Bonuspack 2: The Digital Extremes Pack for Unreal Tournament."
 arch=('i686' 'x86_64')
 url="http://www.unrealtournament2004.com/utgoty/"
@@ -12,7 +12,7 @@ depends=(unrealtournament)
 makedepends=(umodunpack)
 conflicts=(ut1999-bonuspack2)
 install=install
-source=(http://downloads.unrealadmin.org/UnrealTournament/BonusPack/utbonuspack2.zip
+source=(https://github.com/XenGi/oldgames/raw/master/ut/utbonuspack2.zip
         install)
 
 package() {
