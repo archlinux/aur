@@ -2,7 +2,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=tarantool-git
-pkgver=1.6.8.r459
+pkgver=1.6.8.r593
 pkgrel=1
 pkgdesc='Lua application server integrated with a database management system'
 arch=(i686 x86_64)
@@ -18,11 +18,13 @@ install=tarantool.install
 source=(git://github.com/tarantool/tarantool.git#branch=1.6
         git://github.com/tarantool/luajit.git
         git://github.com/tarantool/msgpuck.git
+        git://github.com/tarantool/libyaml.git
         git://github.com/rtsisyk/luafun.git
         git://github.com/tarantool/sophia.git
         git://github.com/tarantool/test-run.git
         git://github.com/tarantool/small.git)
 sha1sums=('SKIP'
+          'SKIP'
           'SKIP'
           'SKIP'
           'SKIP'
@@ -43,7 +45,8 @@ build() {
   git config -f .gitmodules 'submodule.third_party/luajit.url' "$srcdir/luajit"
   git config -f .gitmodules 'submodule.src/lib/msgpuck.url' "$srcdir/msgpuck"
   git config -f .gitmodules 'submodule.third_party/luafun.url' "$srcdir/luafun"
-  git config -f .gitmodules 'submodule.sophia.url' "$srcdir/sophia"
+  git config -f .gitmodules 'submodule.third_party/libyaml.url' "$srcdir/libyaml"
+  git config -f .gitmodules 'submodule.third_party/sophia.url' "$srcdir/sophia"
   git config -f .gitmodules 'submodule.test-run.url' "$srcdir/test-run"
   git config -f .gitmodules 'submodule.src/lib/small.url' "$srcdir/small"
   git submodule sync
