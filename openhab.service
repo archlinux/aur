@@ -1,0 +1,11 @@
+[Unit]
+Description=OpenHAB home automation software
+After=syslog.target network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/openhab/start.sh
+ExecReload=/usr/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
