@@ -1,0 +1,26 @@
+function post_install {
+  echo "
+To use fisherman, create a config dir first:
+
+mkdir -p ~/.config/fisherman/cache
+touch ~/.config/fisherman/fishfile
+
+Add the following into ~/.config/fish/config.fish:
+
+set fisher_config ~/.config/fisherman
+set fisher_home /usr/share/fish
+source \$fisher_home/config-fisherman.fish
+
+See the documentation at https://github.com/fisherman/fisherman/wiki for more details.
+"
+}
+
+function post_upgrade {
+  post_install
+}
+
+function post_remove {
+  echo "
+Remember to remove the vars and the source call from ~/.config/fish/config.fish for cleanup.
+"
+}
