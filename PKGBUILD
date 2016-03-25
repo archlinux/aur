@@ -52,13 +52,12 @@ prepare() {
     cd "${srcdir}/${srcname}"
 
     git apply "${srcdir}/melt.patch"
-
-    qmake PREFIX='/usr/'
 }
 
 build() {
     cd "${srcdir}/${srcname}"
 
+    qmake PREFIX='/usr/'
     make
 }
 
