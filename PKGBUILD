@@ -4,7 +4,7 @@
 
 _pkgname=evas_generic_loaders
 pkgname=$_pkgname-git
-pkgver=1.16.99.189.gab7d7d7
+pkgver=1.17.99.202.ge8d5347
 pkgrel=1
 pkgdesc="Evas external binary executable loaders - Development version"
 arch=('i686' 'x86_64')
@@ -50,6 +50,4 @@ package() {
   make DESTDIR="$pkgdir" install
 
   install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname/" ChangeLog NEWS README
-  install -Dm644 AUTHORS "$pkgdir/usr/share/licenses/$pkgname/AUTHORS"
-  sed -n '1,/PARTICULAR PURPOSE/p' COPYING > "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
