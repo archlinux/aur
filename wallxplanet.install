@@ -5,7 +5,8 @@ post_install() {
     echo "You must create /etc/wallxplanet/wallxplanet.conf. Example: /etc/wallxplanet/wallxplanet_sample.conf"
     echo "Adding in systemctl:"
 
-    for service in "downloadcloudsmap.timer" "wallxplanet" do
+    for service in "downloadcloudsmap.timer" "wallxplanet" 
+    do
         echo "  systemctl enable ${service}"
         echo "  systemctl start ${service}"
     done
@@ -19,7 +20,8 @@ post_upgrade() {
 
     echo "You should restart downloadcloudsmap & wallxplanet"
 
-    for service in "downloadcloudsmap" "wallxplanet" do
+    for service in "downloadcloudsmap" "wallxplanet" 
+    do
         echo "  systemctl restart ${service}"
     done
 
@@ -29,7 +31,8 @@ post_upgrade() {
 pre_remove() {
     # Remove symlink in systemd and stop service
     
-    for service in "downloadcloudsmap.timer" "wallxplanet" do
+    for service in "downloadcloudsmap.timer" "wallxplanet" 
+    do
         systemctl disable $service
         systemctl stop $service
     done
