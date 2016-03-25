@@ -3,7 +3,7 @@
 
 pkgname=docker-registry-git
 _pkgname=docker-registry
-pkgver=v2.2.0.18.g0a3acb2
+pkgver=v2.3.0.rc.1.187.gf4b6fc8
 pkgrel=1
 pkgdesc="An implementation of the Docker Registry HTTP API V2 for use with docker 1.6+."
 arch=('any')
@@ -27,6 +27,7 @@ build() {
     cd "${DISTRIBUTION_DIR}"
 
     # GOPATH fix
+    mkdir -p "$GOPATH/src/github.com/docker"
     ln -s "${DISTRIBUTION_DIR}" "${DISTRIBUTION_DIR}/Godeps/_workspace/src/github.com/docker/distribution"
 
     make clean binaries
