@@ -9,9 +9,9 @@ pkgbase = gdrive-bin
 	provides = gdrive
 	conflicts = gdrive
 	conflicts = gdrive-git
-	source_x86_64 = https://docs.google.com/uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download
+	source_x86_64 = gdrive::https://docs.google.com/uc?id=0B3X9GlR6EmbnWksyTEtCM0VfaFE&export=download
 	sha1sums_x86_64 = c636778c4a2c76e47ac731c142f4219a19c30263
-	source_i686 = https://docs.google.com/uc?id=0B3X9GlR6EmbnbndOUW50ZVllZ3M&export=download
+	source_i686 = gdrive::https://docs.google.com/uc?id=0B3X9GlR6EmbnbndOUW50ZVllZ3M&export=download
 	sha1sums_i686 = 0968993e4a70a594e0f315034640fd811977e4f1
 
 pkgname = gdrive-bin
