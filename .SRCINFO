@@ -1,0 +1,17 @@
+pkgbase = vfs495-daemon
+	pkgdesc = Userspace driver for VFS495 fingerprint readers
+	pkgver = 4.5
+	pkgrel = 118.00
+	arch = x86_64
+	license = unknown
+	makedepends = rpmextract
+	depends = openssl098
+	depends = libusb-compat
+	provides = vfs495-daemon
+	source = https://dl.dropboxusercontent.com/u/71679/Validity-Sensor-Setup-4.5-118.00.x86_64.rpm
+	source = vfs495-daemon.service
+	md5sums = b31117a84f8cb0561648b39957ba5393
+	md5sums = c8cab102230f518158b6ecd38b1ff85a
+
+pkgname = vfs495-daemon
+

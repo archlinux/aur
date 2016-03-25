@@ -1,0 +1,10 @@
+[Unit]
+Description=Fingerprint Service
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/vcsFPService > /dev/null 2>&1
+ExecStop=killall vcsFPService
+
+[Install]
+WantedBy=multi-user.target
