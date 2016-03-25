@@ -3,7 +3,7 @@
 
 pkgname=factorio-headless
 pkgver=0.12.29
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D game about building and maintaining factories - Server version"
 arch=('x86_64')
 url="http://www.factorio.com/"
@@ -16,8 +16,8 @@ source=(LICENSE
         factorio-headless.sysusers
         factorio_headless_x64_${pkgver}.tar.gz::http://www.factorio.com/get-download/${pkgver}/headless/linux64)
 sha256sums=('67ec2f88afff5d7e0ca5fd3301b5d98655269c161a394368fa0ec49fbc0c0e21'
-            '7ba176d90c55c86312f59aa664cbe33e72dea2fc88a746f0c3029cee84837ab6'
-            '082f6da53d1a90c2aa040e35d8912b02084c7d2011c9f8d784487723e05597dc'
+            'ed49cfea6ee20d4934ecd60adb764c92f94415c0f6e5f2ea7bd5c06cb8574b5e'
+            '4971b0345f76d1d9890cce1eeaeed74fe5335601653ab52ff4131624e008e80a'
             '87dae15d1bcfb4683faea9c66498bd916bd27f8aa0dc724c4e21076dcf17da64'
             '1b718e23c88bea5bc9cb5bf50d139333a2ab867283e3439a94763ee52e6c25c3')
 
