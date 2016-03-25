@@ -1,6 +1,6 @@
 pkgname=pgroonga
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="Fast fulltext search on PostgreSQL."
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/pgroonga/pgroonga"
