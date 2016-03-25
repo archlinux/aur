@@ -7,7 +7,7 @@ license=( 'BSD' )
 pkgver=1.10.1
 pkgrel=1
 arch=( 'any' )
-url='https://github.com/fbt/spark-rc'
+url='https://gitlab.com/fbt/spark-rc'
 
 depends=( halt-ubase-git )
 conflicts=( sysvinit-tools-adds )
