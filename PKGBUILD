@@ -7,7 +7,7 @@
 
 pkgname=gtk2-ubuntu
 _ubuntu_rel=1ubuntu1
-pkgver=2.24.29
+pkgver=2.24.30
 pkgrel=1
 pkgdesc="GTK+ is a multi-platform toolkit (v2)"
 arch=(i686 x86_64)
@@ -26,10 +26,11 @@ source=("http://ftp.gnome.org/pub/gnome/sources/gtk+/2.24/gtk+-${pkgver}.tar.xz"
         "https://launchpad.net/ubuntu/+archive/primary/+files/gtk+2.0_${_ubuntu_ver:-${pkgver}}-${_ubuntu_rel}.debian.tar.xz"
         gtkrc
         xid-collision-debug.patch)
-sha512sums=('3cdc868b74831c35b9181edfe29fc7743118b5db6b4e742cc684cf5b7d8e87686f53c4460ee14dee635c25cfd1fd7aefb5cc472d022f0f77d83b6d3a881eff26'
-            '9cc52c0bdbeca0580196e677cd9fe8e632ea3f1a05e12420fa59cd726f3f8705f6d5cb072f4d3d42bde97045efda77d2e7a76eac95a93531d6de830dd3322908'
+sha512sums=('13373e4809b48acefdbf09f18f0f18b562f05b3ce2e3169c5aa80722a262405b3b4a220ecee54c59ef03ef89be9850dc659f6da9251abaf7c577599b7a4319b1'
+            'd948b64130e3acc02743b212d7afa96cee0da1f9adb9855989749c33f53e1f5fcc3328e14d83e733699f2f3f9657f79efb01afcea6f06760a1b6eea9c65dbd75'
             'fb18f1937b117f97da1650fda2561e231cb5da108a9c04f3b27c19205843ea16402b52d9693eca63a8464bdfb1e6a0aedf81958ee3de75ce12aca4cce078bf23'
             '89e3223c86731a76b12d39245f1ec4cf8b4860ab1d11d74a10e5deb0db302f20b4bb5d9034da1d8aeb96369dbdeddcdd2f28943270dc501476c694562b960159')
+
 prepare() {
   cd "gtk+-${pkgver}"
 
@@ -48,8 +49,6 @@ prepare() {
         echo '062_dnd_menubar.patch' >> ../debian/patches/series
       # Make sure than an offscreen window does not grab the mouse pointer.
         echo '071_no_offscreen_widgets_grabbing.patch' >> ../debian/patches/series
-      # Fix bug where the last menu item in a scrollable menu cannot be selected
-        echo '095_git_menus_scrolling.patch' >> ../debian/patches/series
       # Fix bug for printers that don't print at 300 DPI
         echo '096_git_gtkprintsettings.patch' >> ../debian/patches/series
       # The list of printers should be searchable/sortable
