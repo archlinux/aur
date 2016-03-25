@@ -10,7 +10,7 @@ export LG2=en
 ###########################################################
 
 pkgname=i2p
-pkgver=0.9.24
+pkgver=0.9.25
 pkgrel=1
 pkgdesc="A distributed anonymous network"
 url="https://geti2p.net"
@@ -24,9 +24,7 @@ conflicts=('i2p-bin' 'i2p-dev')
 backup=('opt/i2p/wrapper.config')
 install='i2p.install'
 
-#_url="https://download.i2p2.de/releases/${pkgver}"
-#_url="https://googledrive.com/host/0B4jHEq5G7_EPWV9UeERwdGplZXc/${pkgver}"
-_url="https://launchpad.net/i2p/trunk/${pkgver}/+download"
+_url="https://download.i2p2.de/releases/${pkgver}"
 
 source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
         'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
@@ -38,7 +36,7 @@ source=("${_url}/i2psource_${pkgver}.tar.bz2"{,.sig}
             'i2prouter.service' 'i2prouter.sh' 'wrapper.config' 'router.config')
 }
 
-sha256sums=('134481ae5ef934a411545330d1b22e768189c424a65db47058db0f7d9cf51e7d'
+sha256sums=('daaac2b5a5a6b5bbd4b805f76e14f6a7c201dfd7c1cf43c98e182d2e657d1236'
             'SKIP'
             '9bb899ece87099716da29bac8b7da02916fc325699b68989e73c1fe333a6342f'
             'ea8f97e66461d591b1819eab39bbc40056b89ae12f7729b3dd9fd2ce088e5e53'
