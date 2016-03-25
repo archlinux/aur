@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=KeeWeb
+Comment=A KeePass Chrome-based application
+GenericName=Password Manager
+Exec=/usr/bin/keeweb
+Icon=keeweb
+Type=Application
+StartupNotify=true
+StartupWMClass=KeeWeb
+Categories=GNOME;GTK;Utility;

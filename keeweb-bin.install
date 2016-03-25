@@ -1,0 +1,15 @@
+post_install() {
+  # Note admin after install/update on how to change the update check setting.
+  cat << _EOF
+
+  ==> KeeWeb auto-update disabling:
+  ------------------------------------------------------------------------------
+    To disable in-application reminders about new versions, go to the settings
+    pane and set 'Update' to 'Never check for updates'.
+
+_EOF
+}
+
+post_upgrade() {
+  post_install
+}
