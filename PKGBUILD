@@ -7,7 +7,7 @@ _sver=5.2
 pkgrel=3
 pkgdesc="It helps you set up and install DSM on your DiskStation"
 arch=('i686' 'x86_64')
-url="http://www.synology.com"
+url="https://www.synology.com/en-global/releaseNote/Assistant"
 license=('unknown')
 install=synology-assistant.install
 
