@@ -1,14 +1,18 @@
 # Maintainer: dumblob <dumblob@gmail.com>
 # Contributor: dumblob <dumblob@gmail.com>
 
+# 2016-03-25 21:45:57 CET
+#   add support for multiple X displays
+#   unset used variables
+#   version 1.2
 # 2014-11-14 13:32:34 EET
 #   remove setsid (fixing a crash with non-root Xorg)
 #   version 1.1
 
 pkgname=udm
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
-pkgdesc='A micro display manager similar to cdm, tdm etc. having 26 SLOC in POSIX shell without any dependencies.'
+pkgdesc='A micro display manager (like cdm, tdm etc.) with multi display/session support. Written in POSIX shell without any dependencies and having only 31 SLOC.'
 url='http://aur.archlinux.org'
 license=('GPL')
 arch=('any')
@@ -30,9 +34,10 @@ package() {
   cat > "$_f" <<\UDM
 #!/bin/sh
 
-# FIXME when started from tty2 and X is already running on tty1, we should
-#   probably modify DISPLAY to :1, increase the vtX number etc.
-[ "$(tty)" = '/dev/tty1' ] && {
+eval "$(LC_ALL=C who -T -m | sed -r -e 's|(.*)|# for eval safety \1|' -e \
+  's|^.* ([^ ]*[^0-9])([0-9]+) +[A-Za-z]{3}  ?[0-9]+ [0-9:]+( \([^)]+\))?$|tn="\1";nr="\2"|')"
+
+[ "$tn" = 'tty' -a -n "$nr" ] && {
   printf '\n%s\n' 'Welcome to uDM. Choose what to start next (default has *):'
   while printf '\n\t%s\n\t%s\n\t%s\nchoice: ' \
       "*a   F? Virtual Window Manager" \
@@ -41,14 +46,14 @@ package() {
     read x
     case "$x" in
       ''|a)
-        # vtX ~ ttyX (reuse the current tty)
-        xinit ~/.xinitrc fvwm -- vt1 -nolisten tcp -dpi 130; exit
         # setsid causes the new non-root Xorg crash
-        #setsid xinit ~/.xinitrc fvwm -- vt1 -nolisten tcp -dpi 130; exit
+        #setsid xinit ~/.xinitrc ...
+        xinit ~/.xinitrc fvwm -- :"$nr" vt"$nr" -nolisten tcp -dpi 142 -keeptty
+        exit
         break ;;
       b)
-        #setsid xinit ~/.xinitrc -- vt1 -nolisten tcp -dpi 130; exit
-        xinit ~/.xinitrc -- vt1 -nolisten tcp -dpi 130; exit
+        xinit ~/.xinitrc -- :"$nr" vt"$nr" -nolisten tcp -dpi 142 -keeptty
+        exit
         break ;;
       c)
         break ;;
@@ -57,6 +62,7 @@ package() {
     esac
   done
 }
+unset tn nr x
 UDM
   chmod 755 "$_f"
 }
