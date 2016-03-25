@@ -6,7 +6,7 @@
 # This package binaries are built using the aur firefox-gtk2 PKGBUILD.
 
 pkgname=firefox-gtk2-bin
-pkgver=45.0
+pkgver=45.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
@@ -29,8 +29,8 @@ source_x86_64=(https://github.com/iPotable/firefox-gtk2-bin-archlinux/raw/master
 sha256sums=('c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9')
-sha256sums_i686=('9311ba5d22c7329d178828c6c705f0698007c1857de2368205ac4612a2adf809')
-sha256sums_x86_64=('d22f69853c91a46d2d8a04805e342a23ab7d0a082e6720a788645f4734154492')
+sha256sums_i686=('db8e580909947fc1cc86e372e116151952868f20e1b6aea5b17fdf0e4a684202')
+sha256sums_x86_64=('cff8280b29242f28efc48988903218169b67d8af05043be6412792484118b241')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 package() {
