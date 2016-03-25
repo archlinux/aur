@@ -2,7 +2,7 @@
 
 pkgname=nvim-r
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Vim plugin to work with R"
 arch=('any')
 url="https://github.com/jalvesaq/${pkgname}"
@@ -12,6 +12,8 @@ optdepends=('vim>=7.4.1579: either vim or neovim'
             'neovim: either neovim or vim'
 	    'pandoc: render output from markup files'
             'vim-csv: inspect data.frames and matrices')
+conflicts=('vim-r' 'r-vimcom')
+replaces=('vim-r')
 source=("https://github.com/jalvesaq/Nvim-R/releases/download/v${pkgver}/Nvim-R.vmb")
 sha256sums=('336acec73a4aede96cfc2974d7c7e95bccf8611208f7d9fac341cf3fa056b2cd')
 
