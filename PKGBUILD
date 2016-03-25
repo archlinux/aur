@@ -3,8 +3,8 @@
 # Contributor: Daniel Bomar <dbdaniel42@gmail.com>
 
 pkgname=libjson-rpc-cpp-git
-pkgver=20160119
-pkgrel=2
+pkgver=20160325
+pkgrel=1
 pkgdesc="C++ framework for json-rpc 1.0 and 2.0"
 arch=('i686' 'x86_64')
 depends=('argtable' 'curl' 'jsoncpp' 'libmicrohttpd')
@@ -12,8 +12,8 @@ makedepends=('cmake')
 checkdepends=('boost')
 url="https://github.com/cinemast/libjson-rpc-cpp"
 license=('MIT')
-source=(git+https://github.com/cinemast/libjson-rpc-cpp 'gcc5.patch')
-sha256sums=('SKIP' 'e5e8431bc478235eaad90fb94e723627cc2e0e5b015772fc97b0fae6ef9eeafc')
+source=(git+https://github.com/cinemast/libjson-rpc-cpp)
+sha256sums=('SKIP')
 provides=('libjson-rpc-cpp')
 conflicts=('libjson-rpc-cpp')
 install=libjson-rpc-cpp.install
@@ -25,7 +25,6 @@ pkgver() {
 
 prepare() {
  cd "${srcdir}"/${pkgname%-git}
- patch -Np1 -i ../gcc5.patch
 }
 
 build() {
