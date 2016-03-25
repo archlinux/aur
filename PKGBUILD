@@ -2,7 +2,7 @@
 
 pkgname=perl6-json-tiny
 pkgver=0.0.1
-pkgrel=5
+pkgrel=4
 pkgdesc="A tiny JSON parser and emitter for Perl 6 on Rakudo"
 arch=('any')
 depends=('perl6')
@@ -41,4 +41,5 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
+  find "$pkgdir" -type f -print0 | xargs -0 sed -i "s,$pkgdir,,g"
 }
