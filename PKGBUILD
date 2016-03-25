@@ -1,6 +1,5 @@
 # Maintainer: wenLiangcan <boxeed at gmail dot com>
 
-_npmver=0.1.0
 pkgname=electronic-wechat-git
 _pkgname=electronic-wechat
 pkgver=1.1.1.2.g573ce33
