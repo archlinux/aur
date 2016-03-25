@@ -2,7 +2,7 @@
 
 pkgname=synology-cloud-sync-decryption-tool
 pkgver=009
-pkgrel=3
+pkgrel=4
 pkgdesc="A desktop tool to decrypt data encrypted by Cloud Sync"
 arch=('i686' 'x86_64')
 url="https://www.synology.com/en-global/releaseNote/SynologyCloudSyncDecryptionTool"
@@ -24,7 +24,7 @@ package() {
     install -t "${pkgdir}/opt/Synology/CloudSyncDecryptionTool/platforms" platforms/*.so
 
     mkdir -p "${pkgdir}/usr/bin"
-    ln -sf "${pkgdir}/opt/Synology/CloudSyncDecryptionTool/SynologyCloudSyncDecryptionTool" "${pkgdir}/usr/bin/synology-cloud-sync-decryption-tool"
+    ln -sf /opt/Synology/CloudSyncDecryptionTool/SynologyCloudSyncDecryptionTool "${pkgdir}/usr/bin/synology-cloud-sync-decryption-tool"
 }
 
 
