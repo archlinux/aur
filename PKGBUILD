@@ -1,7 +1,7 @@
 pkgname=('shotcut')
 srcname='shotcut'
 pkgdesc='Video editor'
-pkgver='16.02'
+pkgver='16.03'
 pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://github.com/mltframework/shotcut'
@@ -16,7 +16,7 @@ depends=(
     'qt5-webkit'
     'qt5-websockets'
     'qt5-x11extras'
-    'mlt-git'
+    'mlt'
     'ffmpeg'
     'libx264'
     'libvpx'
