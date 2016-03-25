@@ -1,8 +1,8 @@
-# Mantainer: M0Rf30
+# Maintainer: M0Rf30
 
 pkgname=unrealtournament-bonuspack1
 pkgver=20000225
-pkgrel=2
+pkgrel=3
 pkgdesc="Bonuspack 1: The Epic Pack for Unreal Tournament."
 arch=('i686' 'x86_64')
 url="http://www.unrealtournament2004.com/utgoty/"
@@ -11,7 +11,7 @@ groups=(unrealtournament unrealtournament-bonuspacks)
 depends=(unrealtournament)
 makedepends=(umodunpack)
 conflicts=(ut1999-bonuspack1)
-source=(http://downloads.unrealadmin.org/UnrealTournament/BonusPack/utbonuspack.zip)
+source=(https://github.com/XenGi/oldgames/raw/master/ut/utbonuspack.zip)
 
 package() {
     cd "${srcdir}"
