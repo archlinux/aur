@@ -1,10 +1,10 @@
-# Maintainer: Nick Burrett <nick@Sqrt.co.uk>
+# Maintainer: Nick Burrett <nick@sqrt.co.uk>
 pkgname=comskip
 pkgver=0.93
-pkgrel=2
+pkgrel=3
 pkgdesc='Comskip is a free MPEG commercial break detector'.
 _gitname='comskip'
-url='http://github.com/`'
+url='http://github.com/erikkaashoek/Comskip'
 arch=('x86_64' 'i686')
 license=('GPL3')
 depends=('ffmpeg2.8' 'argtable')
