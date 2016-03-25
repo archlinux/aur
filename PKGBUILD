@@ -4,7 +4,7 @@
 _pkgname=spice-protocol
 pkgname=$_pkgname-git
 pkgver=0.12.9.158.g03a28f5
-pkgrel=1
+pkgrel=2
 pkgdesc="Headers defining SPICE protocols"
 arch=("any")
 url="http://www.spice-space.org"
@@ -17,7 +17,7 @@ sha256sums=("SKIP")
 
 pkgver() {
     cd $_pkgname
-    git describe --always | sed "s/-/./g"
+    git describe --always | sed "s/^v//;s/-/./g"
 }
 
 build() {
