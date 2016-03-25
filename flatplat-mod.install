@@ -1,0 +1,4 @@
+post_install() {
+echo "To activate the theme, please install gnome-tweak tool, and enable the shell theme. To install the chrome/chromium theme, open chrome/chromium, and navigate to chrome://extensions then drag the files '/usr/share/themes/Flat-Plat Mod/chrome/Flat-Plat Theme.crx' & '/usr/share/themes/Flat-Plat Mod/chrome/Flat-Plat Scrollbars.crx' into the chrome/chromium window."
+}
+
