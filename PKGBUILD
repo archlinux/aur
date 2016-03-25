@@ -18,8 +18,9 @@ source=("git+https://github.com/CorsixTH/CorsixTH.git"
         "corsix-th.sh")
 
 sha256sums=('SKIP'
-	    '71f882fc453f3df2ebda089ab9994f7698f212c98686098944743aedc1b882ea'
-	    '3614197a30498774fff4055ee54d82a812a8b88eba353b70c3288a09ff700158')
+ 	    '84568693506b208bf3d4cc60f1e830e9e1b236b6cd7032a24437f06176aa57f8'
+ 	    '3614197a30498774fff4055ee54d82a812a8b88eba353b70c3288a09ff700158')
+
 
 pkgver() {
   cd "CorsixTH"

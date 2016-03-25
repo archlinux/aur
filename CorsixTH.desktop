@@ -1,9 +1,9 @@
 [Desktop Entry]
 Name=CorsixTH
-Version=0.41-r1078
-Exec=/usr/games/CorsixTH/CorsixTH
+Version=0.50
+Exec=/usr/share/CorsixTH/CorsixTH
 Comment=A Theme Hospital Clone
-Icon=/usr/games/CorsixTH/CorsixTH.ico
+Icon=/usr/share/CorsixTH/CorsixTH.ico
 Type=Application
 Terminal=false
 StartupNotify=true
