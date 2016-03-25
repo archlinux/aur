@@ -3,7 +3,7 @@
 
 pkgname=arxlibertatis
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform port of Arx Fatalis, a first-person fantasy RPG (executables only)'
 url='http://arx-libertatis.org/'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('sdl' 'openal' 'glew')
 optdepends=('arxfatalis-data-gog: game data from GOG.com installer'
             'arxfatalis-data-copy: game data from existing win32 installation'
             'arxfatalis-data-demo: game data from official freeware demo'
-            'qt: enable built-in crash handler (Qt5 version; recompile needed)'
+            'qt5-base: enable built-in crash handler (Qt5 version; recompile needed)'
             'qt4: enable built-in crash handler (Qt4 version; recompile needed)'
             'gdb: generate detailed crash reports')
 makedepends=('boost' 'cmake')
@@ -22,11 +22,15 @@ conflicts=('arx-git')
 install='arxlibertatis.install'
 
 _archivefolder=arx-libertatis-$pkgver
-source=("http://downloads.sourceforge.net/arx/$_archivefolder.tar.xz")
-md5sums=('543dfdaaaaf7c337227c1b6a3087589a')
+source=("http://downloads.sourceforge.net/arx/$_archivefolder.tar.xz"
+        "arx-libertatis-1.1.2-cmake-3.5.patch")
+md5sums=('543dfdaaaaf7c337227c1b6a3087589a'
+         '9f7fb2bc6878ba97d1b83781721490bf')
 
 build() {
   cd $_archivefolder
+  
+  patch < "$srcdir"/arx-libertatis-1.1.2-cmake-3.5.patch
   
   cmake . -DCMAKE_INSTALL_PREFIX=/usr \
           -DCMAKE_INSTALL_LIBEXECDIR=lib/arx \
