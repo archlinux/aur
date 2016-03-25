@@ -6,7 +6,7 @@ _sver=4.0
 pkgrel=2
 pkgdesc="A backup service that allows you to back up your files from multiple client computers to a centralized Synology NAS"
 arch=('i686' 'x86_64')
-url="http://www.synology.com"
+url="https://www.synology.com/en-global/releaseNote/CloudStationBackup"
 license=('unknown')
 install=synology-cloud-station-backup.install
 
