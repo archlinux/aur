@@ -1,8 +1,8 @@
 # Maintainer: Forest Crossman <cyrozap at gmail dot com>
 
 pkgname=greenpak-designer-dev
-_pkgver=5.03
-_pkgrel=4
+_pkgver=5.04
+_pkgrel=5
 pkgver=$_pkgver.$(printf "%03d" $_pkgrel)
 pkgrel=1
 pkgdesc="GreenPAK1-5 Designer"
@@ -14,7 +14,7 @@ options=('!strip')
 install=${pkgname}.install
 
 source=("http://www.silego.com/uploads/resources/GP1-5_Designer_v${pkgver}_LNX_Setup.zip")
-sha256sums=('6fc639ed9c1729d664740608fd33f13d6e140da2519b0c428dc410a3cba96efe')
+sha256sums=('c50c37fb294d0a9ef025e19e3e06512ac9ee0340f0dbe7a50fabb19c206d06a0')
 
 if [[ $CARCH == 'i686' ]]; then
   _arch='i386'
