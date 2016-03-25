@@ -1,0 +1,11 @@
+--- exception_test.cpp~	2011-08-18 16:58:53.000000000 +0200
++++ exception_test.cpp	2016-01-29 15:53:16.039727358 +0100
+@@ -63,7 +63,7 @@
+         }
+         catch(const Ex& e) {
+             caught=true;
+-            BOOST_MESSAGE(string("Caught expected exception: ")+e.what()+"["+typeid(e).name()+"]");
++            BOOST_ERROR(string("Caught expected exception: ")+e.what()+"["+typeid(e).name()+"]");
+         }
+         catch(const std::exception& e) {
+             BOOST_ERROR(string("Bad exception: ")+e.what()+"["+typeid(e).name()+"] expected: "+typeid(Ex).name());
