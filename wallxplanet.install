@@ -6,7 +6,7 @@ post_install() {
     echo "Adding in systemctl:"
 
     for service in "downloadcloudsmap.timer" "wallxplanet" do
-        echo "  systemctl enable " $service"
+        echo "  systemctl enable " $service
         echo "  systemctl start " $service
     done
 
