@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 261246 2016-03-09 17:05:36Z heftig $
+# $Id: PKGBUILD 262095 2016-03-19 14:34:58Z heftig $
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor : Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-gtk2
 _pkgname=firefox
-pkgver=45.0
+pkgver=45.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
@@ -28,14 +28,16 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         firefox-install-dir.patch
         vendor.js
         firefox-symbolic.svg
-        firefox-fixed-loading-icon.png)
-sha256sums=('36ab0f09b1b1df071a8aafa673c6286d99c18dc06cecbb70d1bb2021fbf379f1'
+        firefox-fixed-loading-icon.png
+        no-libnotify.patch)
+sha256sums=('d1814ac6d8cd687696bd0d98da3bb525f6df11fe655e0d668742b21fca57d9c8'
             'e75e13807e5f210dde53b785e25c8a5345d7bb459f857355b7b87bffc24b312b'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
-            '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213')
+            '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213'
+            'e4ebdd14096d177d264a7993dbd5df46463605ff45f783732c26d30b9caa53a7')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -58,6 +60,10 @@ prepare() {
 
   cp ../mozconfig .mozconfig
   patch -Np1 -i ../firefox-install-dir.patch
+
+  # Notifications with libnotify are broken
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1236150
+  patch -Np1 -i ../no-libnotify.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo "ac_add_options --with-google-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
