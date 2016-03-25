@@ -3,8 +3,8 @@
 # Contributor: Daniel Bomar <dbdaniel42@gmail.com>
 
 pkgname=libjson-rpc-cpp-git
-pkgver=20160325
-pkgrel=1
+pkgver=20160317
+pkgrel=2
 pkgdesc="C++ framework for json-rpc 1.0 and 2.0"
 arch=('i686' 'x86_64')
 depends=('argtable' 'curl' 'jsoncpp' 'libmicrohttpd')
