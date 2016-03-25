@@ -1,6 +1,6 @@
 # Maintainer: Stefano Campanella <stefanocampanella1729@gmail.com>
 pkgname=pythia
-pkgver=8.2.12
+pkgver=8.2.15
 _pkgid=$pkgname`echo $pkgver | tr -d '.'`
 pkgrel=1
 pkgdesc="Generation of high-energy physics events."
@@ -11,8 +11,8 @@ makedepends=('rsync')
 provides=('$pkgname')
 source=("http://home.thep.lu.se/~torbjorn/pythia8/$_pkgid.tgz"
 'pythia.sh')
-md5sums=('0886d1b2827d8f0cd2ae69b925045f40'
-'0320534e1be7155cfb8ee19c7f8480cc')
+md5sums=('b4653133e6ab1782a5a4aa66eda6a54b'
+         '0320534e1be7155cfb8ee19c7f8480cc')
 _srcpath=$srcdir/$_pkgid
 
 build(){
