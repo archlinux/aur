@@ -1,8 +1,8 @@
-# Mantainer: M0Rf30
+# Maintainer: M0Rf30
 
 pkgname=unrealtournament-bonuspack4
 pkgver=20001223
-pkgrel=2
+pkgrel=3
 pkgdesc="Bonuspack 4: The Christmas 2000 Pack for Unreal Tournament."
 arch=('i686' 'x86_64')
 url="http://www.unrealtournament2004.com/utgoty/"
@@ -11,7 +11,7 @@ groups=(unrealtournament unrealtournament-bonuspacks)
 depends=(unrealtournament)
 conflicts=(ut1999-bonuspack4)
 makedepends=(umodunpack)
-source=(http://downloads.unrealadmin.org/UnrealTournament/BonusPack/utbonuspack4.zip)
+source=(https://github.com/XenGi/oldgames/raw/master/ut/utbonuspack4.zip)
 
 package() {
     cd "${srcdir}"
