@@ -2,10 +2,10 @@
 # Contributor: mcmillan <awmcmillan at gmail dot com>
 
 pkgname=engauge
-pkgver=7.0
+pkgver=7.1
 pkgrel=1
 pkgdesc="A Digitizer for curves and scanned plots"
-url="https://github.com/markummitchell/engauge6"
+url="http://markummitchell.github.io/engauge-digitizer/"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('qt5-tools' 'fftw' 'log4cpp')
@@ -13,7 +13,7 @@ optdepends=('libpng12: For reading png image files'
      'libjpeg-turbo: For reading jpeg image files'
      'openjpeg: For reading jpeg2000 image files')
 source=("https://github.com/markummitchell/$pkgname-digitizer/archive/v$pkgver.tar.gz" "$pkgname.desktop")
-md5sums=('06e0af0b78053f90d6569dc36e43c651'
+md5sums=('fb9a8e762db3b28024d13eb5c42d1d16'
          '53def24f20c3d0178d3cf1b8c574fe15')
 install=engauge.install
 
