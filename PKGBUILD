@@ -31,7 +31,8 @@ source=('https://dl.dropboxusercontent.com/u/6596386/mplayer2/mplayer2-2.0.tar.x
         'include-samba-4.0.patch'
         'vo_gl_locale_fix.patch'
         'patch-libmpcodecs-vd_theora.patch::https://svnweb.freebsd.org/ports/head/multimedia/mplayer2/files/patch-libmpcodecs-vd_theora.c?view=co'
-        'patch-libmpdemux-demux_ogg.patch::https://svnweb.freebsd.org/ports/head/multimedia/mplayer2/files/patch-libmpdemux-demux_ogg.c?view=co')
+        'patch-libmpdemux-demux_ogg.patch::https://svnweb.freebsd.org/ports/head/multimedia/mplayer2/files/patch-libmpdemux-demux_ogg.c?view=co'
+        )
 sha1sums=('0df8d4e5484128b7b28029273b7704ab5d5419bc'
           'SKIP'
           'SKIP'
@@ -46,7 +47,8 @@ sha1sums=('0df8d4e5484128b7b28029273b7704ab5d5419bc'
           '8c2fc1526a413cd821b46fd48ea08364abbf5c4c'
           '703825cd187fe90c449a299ced54710ced494ed7'
           'e06f326f1e44c79fb2825c6d486f6be9b66de32a'
-          'cf498ba02cfdfd6e005808a2418adaf8adae0e28')
+          'cf498ba02cfdfd6e005808a2418adaf8adae0e28'
+          )
 install=mplayer2-build-git.install
 noextract=('mplayer2-2.0.tar.xz')
 
@@ -73,28 +75,28 @@ prepare() {
   cd mplayer
 
   # Patch to use pkg-config method to get libdvdread/libdvdnav libs/headers info instead dvdnav-config/dvdread-config
-  patch -p1 -i ../../0004-use-pkg-config-for-dvdnav.patch
-  patch -p1 -i ../../0005-switch_title-switch-to-next-title-if-no-parameter-pa.patch
+  patch -p1 -i "${srcdir}/0004-use-pkg-config-for-dvdnav.patch"
+  patch -p1 -i "${srcdir}/0005-switch_title-switch-to-next-title-if-no-parameter-pa.patch"
 
   # Fix build with libdvdnav-git
-  patch -p1 -i ../../stream_dvdnav.diff
+  patch -p1 -i "${srcdir}/stream_dvdnav.diff"
 
   # Fix build with giflib 5.1.x
-  patch -p1 -i ../../giflib-5.0.patch
-  patch -p1 -i ../../giflib-5.1.patch
+  patch -p1 -i "${srcdir}/giflib-5.0.patch"
+  patch -p1 -i "${srcdir}/giflib-5.1.patch"
 
   # use libquvi 0.9x series
-  patch -p1 -i ../../libquvi-0.9.patch
+  patch -p1 -i "${srcdir}/libquvi-0.9.patch"
 
   # Fix samba includes
-  patch -p1 -i ../../include-samba-4.0.patch
+  patch -p1 -i "${srcdir}/include-samba-4.0.patch"
 
   # Fix brawbraw (?)
-  patch -p1 -i ../../vo_gl_locale_fix.patch
+  patch -p1 -i "${srcdir}/vo_gl_locale_fix.patch"
 
   # Fix vd_theora
-  patch -p0 -i ../../patch-libmpcodecs-vd_theora.patch
-  patch -p0 -i ../../patch-libmpdemux-demux_ogg.patch
+  patch -p0 -i "${srcdir}/patch-libmpcodecs-vd_theora.patch"
+  patch -p0 -i "${srcdir}/patch-libmpdemux-demux_ogg.patch"
 
   # Make Mplayer2 build flags
   echo "--confdir=/etc/mplayer
@@ -109,7 +111,8 @@ prepare() {
 }
 
 build() {
-  LDFLAGS+=" -ltheoradec" make -C mplayer2-build
+  LDFLAGS+=" -ltheoradec" \
+  make -C mplayer2-build
 }
 
 package() {
