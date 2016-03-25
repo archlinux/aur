@@ -2,7 +2,7 @@
 
 pkgname=discord-canary
 pkgver=0.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Discord Canary linux release'
 arch=('x86_64')
 url='https://discordapp.com/'
