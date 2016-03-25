@@ -6,8 +6,8 @@ post_install() {
     echo "Adding in systemctl:"
 
     for service in "downloadcloudsmap.timer" "wallxplanet" do
-        echo "  systemctl enable " $service
-        echo "  systemctl start " $service
+        echo "  systemctl enable ${service}"
+        echo "  systemctl start ${service}"
     done
 
     true
@@ -20,7 +20,7 @@ post_upgrade() {
     echo "You should restart downloadcloudsmap & wallxplanet"
 
     for service in "downloadcloudsmap" "wallxplanet" do
-        echo "  systemctl restart " $service
+        echo "  systemctl restart ${service}"
     done
 
     true
