@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/mgoral/subconvert/"
 license=('GPL3')
 depends=('python>=3.2' 'python-pyqt5>=5.5' 'python-chardet>=2.3' 'mplayer' 'gettext>=0.19')
-makedepends=('autoconf' 'intltool')
+makedepends=('intltool')
 checkdepends=('python-nose')
 source=("https://github.com/mgoral/subconvert/archive/2.0.0.tar.gz")
 sha1sums=('bb0bd87c35a55d70e3a510830ebe9c6f3524b9ee')
