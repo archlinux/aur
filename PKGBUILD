@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-javascript-minifier-xs'
-pkgver='0.09'
+pkgver='0.11'
 pkgrel='1'
 pkgdesc="XS based JavaScript minifier"
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/JavaScript-Minifier-XS'
-source=('http://search.cpan.org/CPAN/authors/id/G/GT/GTERMARS/JavaScript-Minifier-XS-0.09.tar.gz')
-md5sums=('b8d0e8110d2980573d807268bfab0768')
-sha512sums=('b46e5e0fc70d6a28829f9e6878c0a8285b6b4ba680de85ffa6d567ca00d8aaced66d4e8bf800c96b923fb261095fe0722648ce930925bb55c47e549c8ef574c8')
-_distdir="JavaScript-Minifier-XS-0.09"
+url='https://metacpan.org/release/JavaScript-Minifier-XS'
+source=('http://search.cpan.org/CPAN/authors/id/G/GT/GTERMARS/JavaScript-Minifier-XS-0.11.tar.gz')
+md5sums=('bd8544287ecd1b651367295485f4a5b0')
+sha512sums=('736294c898d7806eae509b0d0c14cfcbb783ac335fe6c08bed9c00a52643b3e6d0ade124735d7de8d2203bf404448889e0e84b3097e316d0ef444f1603cbbdef')
+_distdir="JavaScript-Minifier-XS-0.11"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
