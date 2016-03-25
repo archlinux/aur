@@ -1,16 +1,16 @@
 pkgbase = car
 	pkgdesc = Circle and Ruler is a dynamic geometry program
-	pkgver = 2015.08.10
-	pkgrel = 2
+	pkgver = 2016.03.25
+	pkgrel = 4
 	url = http://car.rene-grothmann.de/
 	arch = any
 	license = GPL
 	depends = java-runtime
 	depends = xdg-utils
-	source = http://car.rene-grothmann.de/download/zirkel.zip
+	source = http://car.rene-grothmann.de/download/car.zip
 	source = car.desktop
 	source = car.sh
-	md5sums = a15c1a69e325374af71e94b4302e74d2
+	md5sums = fa68cdf9976b3826f6d8ac74fd4e1c0e
 	md5sums = 9bf9a70cf538378bde46f3da2c252a4c
 	md5sums = 2539542867d5f23e823b7a7704f17443
 
