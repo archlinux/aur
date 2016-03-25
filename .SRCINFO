@@ -1,14 +1,14 @@
 pkgbase = curlbomb
 	pkgdesc = A personal HTTP server for serving one-time-use bash scripts
-	pkgver = 1.0.10
+	pkgver = 1.0.11
 	pkgrel = 0
 	url = https://github.com/EnigmaCurry/curlbomb
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.python.org/packages/source/c/curlbomb/curlbomb-1.0.10.tar.gz
-	md5sums = b157034d324bf5526a08b7bafe9b7d4e
+	source = https://pypi.python.org/packages/source/c/curlbomb/curlbomb-1.0.11.tar.gz
+	md5sums = de236e74a9aab9e5b0d30842ef087b6d
 
 pkgname = curlbomb
 	depends = python

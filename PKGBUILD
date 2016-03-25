@@ -1,7 +1,7 @@
 pkgbase=('curlbomb')
 pkgname=('curlbomb')
 _module='curlbomb'
-pkgver='1.0.10'
+pkgver='1.0.11'
 pkgrel=0
 pkgdesc="A personal HTTP server for serving one-time-use bash scripts"
 url="https://github.com/EnigmaCurry/curlbomb"
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://pypi.python.org/packages/source/c/curlbomb/curlbomb-${pkgver}.tar.gz")
-md5sums=('b157034d324bf5526a08b7bafe9b7d4e')
+md5sums=('de236e74a9aab9e5b0d30842ef087b6d')
 
 package() {
     depends+=()
