@@ -2,7 +2,7 @@
 pkgname=openhab-beta
 pkgver=2.0.0
 pkgrel=1
-pkgdesc="openHAB2 open source automation software"
+pkgdesc="openHAB2 open source home automation software"
 arch=('any')
 url="http://www.openhab.org/"
 license=('EPL')
