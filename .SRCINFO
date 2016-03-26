@@ -1,0 +1,17 @@
+pkgbase = pillowtalk-git
+	pkgdesc = ANSI C library that talks to CouchDB using libcurl and yajl
+	pkgver = 0.3.r29.ga2323dc
+	pkgrel = 1
+	url = https://github.com/mgmarino/pillowtalk
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = curl
+	depends = yajl
+	options = strip
+	source = pillowtalk-git::git+https://github.com/mgmarino/pillowtalk.git
+	md5sums = SKIP
+
+pkgname = pillowtalk-git
+
