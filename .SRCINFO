@@ -1,7 +1,7 @@
 pkgbase = elixirscript
 	pkgdesc = Converts Elixir to Javascript
 	pkgver = 0.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bryanjos/elixirscript
 	arch = any
 	license = MIT
