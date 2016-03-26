@@ -1,7 +1,7 @@
 # Maintainer: Vain <aurmaint1 on host: uninformativ dot de>
 pkgname=asciiworld-git
 pkgver=15.03
-pkgrel=1
+pkgrel=2
 pkgdesc="ASCII world map and tools"
 arch=('i686' 'x86_64')
 url="https://github.com/vain/asciiworld"
@@ -12,7 +12,7 @@ optdepends=('curl: Retrieving various data'
             'python: Additional tools, e.g. satellite tracking'
             'python-pyephem: Calculating satellite positions'
             'python-pygeoip: Reading GeoIP databases'
-            'geoip-citydata: An actual GeoIP database'
+            'geoip-database-extra: An actual GeoIP database'
             'python2: Additional tools, e.g. calculating tracks'
             'python2-geographiclib: Calculating geodetics'
             'ncurses: For tput')
