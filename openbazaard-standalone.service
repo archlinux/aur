@@ -5,11 +5,12 @@ After=network.target
 [Service]
 Type=forking
 User=openbazaar
-WorkingDirectory=/var/lib/openbazaard-standalone/
+WorkingDirectory=/var/lib/openbazaard/
 TimeoutSec=0
-EnvironmentFile=/etc/conf.d/openbazaard-standalone.conf
-ExecStart=/var/lib/openbazaard-standalone/openbazaard-standalone start $ARGS
-ExecStop=/var/lib/openbazaard-standalone/openbazaard-standalone stop
+EnvironmentFile=/etc/conf.d/openbazaard.conf
+ExecStart=/var/lib/openbazaard/openbazaard start $ARGS
+ExecStop=/var/lib/openbazaard/openbazaard stop
+PIDFile=/tmp/openbazaard.pid
 
 ## Security
 InaccessibleDirectories=/home
