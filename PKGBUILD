@@ -12,8 +12,8 @@ makedepends=('unzip')
 
 conflicts=('openhab-runtime' 'openhab-addons')
 
-backup=('etc/openhab/conf/addons.cfg'
-		'etc/openhab/conf/runtime.cfg')
+backup=('etc/openhab/conf/services/addons.cfg'
+		'etc/openhab/conf/services/runtime.cfg')
 
 source=("https://openhab.ci.cloudbees.com/job/openHAB-Distribution/lastSuccessfulBuild/artifact/distributions/openhab-online/target/openhab-online-${_pkgver}-SNAPSHOT.zip"
         "openhab.service")
