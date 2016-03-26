@@ -1,0 +1,8 @@
+[Unit]
+Description=ExpressVPN Daemon
+
+[Service]
+ExecStart=/usr/bin/expressvpnd start
+
+[Install]
+WantedBy=multi-user.target
