@@ -100,6 +100,9 @@ package_rust-git() {
 	emacs --eval '(byte-recompile-directory "." 0)' --quick --batch 2> /dev/null || true
 	install --directory "$pkgdir"/usr/share/emacs/site-lisp/
 	cp -a rust-mode.* "$pkgdir"/usr/share/emacs/site-lisp/
+
+	# already present in gtksourceview3
+	rm "$pkgdir"/usr/share/gtksourceview-3.0/language-specs/rust.lang
 }
 
 package_rust-doc-git() {
