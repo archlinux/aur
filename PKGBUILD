@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 url="http://freedesktop.org/wiki/Software/vaapi"
 license=('MIT')
 makedepends=('automake' 'libtool' 'python2')
-depends=("libva>=$_pkgver")
+depends=("libva=$pkgver")
 options=('!libtool')
 conflicts=('libva-intel-driver')
 provides=('libva-intel-driver')
