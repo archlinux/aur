@@ -1,7 +1,7 @@
 # Maintainer: Rick Kerkhof <rick.2889@gmail.com>
 pkgname=soundnode-app-bin
 pkgver=0.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Soundcloud client for the desktop"
 arch=('x86_64' 'i686')
 url="http://www.soundnodeapp.com/"
@@ -10,7 +10,7 @@ license=('GPL3')
 # Required, otherwise it won't run.
 options=('!strip')
 
-depends=('gconf')
+depends=('gconf' 'gtk2' 'libxtst' 'nss' 'alsa-lib' 'libnotify' 'fontconfig')
 
 # I couldn't figure out how to build it properly and the website has no per-release
 # archives. The SHA256sums will fail if it updates; that should be an indication that
