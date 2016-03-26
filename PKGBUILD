@@ -1,7 +1,7 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname="gnome-shell-extension-easyscreencast-git"
-pkgver=0.9.7.3.r11.g05c734b
+pkgver=0.9.8.1.r0.g90481b4
 pkgrel=1
 pkgdesc="Provides a convienent top bar pop-down interface to configure the GNOME Shell Screencast Recording feature."
 arch=('any')
