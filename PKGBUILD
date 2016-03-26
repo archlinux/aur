@@ -9,7 +9,7 @@
 # Maintainer: Thermi <noel [at] familie-kuntze dot de>
 
 pkgname=strongswan
-pkgver=5.3.5
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="open source IPsec implementation"
 url='http://www.strongswan.org'
@@ -39,8 +39,8 @@ source=("https://download.strongswan.org/strongswan-${pkgver}.tar.bz2"
 
 # md5 is broken. We use sha256 now. Alternatively, we could check the signature of the file, but that
 # doesn't yield any more security and just increases the work users initially have to invest.
-sha256sums=('2c84b663da652b1ff180a1a73c24a3d7b9fc4b9b8ba6bd07f94a1e33092e6350'
-            'cbf5af332c72bc27b9defa4c3067d6b7be0c873282e3d1874f980cc8cce74ad2')
+sha256sums=('f8288faaea6a9cd8a7d413c0b76b7922be5da3dfcd01fd05cb30d2c55d3bbe89'
+            '003750d77fa501075f1fdb6f55926dc544407c5dd26e2fd8d5eb4917ddf0b3f7')
 
 # We don't build libipsec because it would get loaded before kernel-netlink and netkey, which
 # would case processing to be handled in user space. Also, the plugin is experimental. If you need it,
@@ -48,7 +48,7 @@ sha256sums=('2c84b663da652b1ff180a1a73c24a3d7b9fc4b9b8ba6bd07f94a1e33092e6350'
 prepare()
 {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    patch -p1 < "${srcdir}/configure_ac.patch"
+    patch -p1 -l < "${srcdir}/configure_ac.patch"
     autoreconf
 }
 
