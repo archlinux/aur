@@ -1,0 +1,12 @@
+--- firefox-45.0esr.bak/browser/base/content/browser.js	2016-03-15
++++ firefox-45.0esr/browser/base/content/browser.js	2016-03-15
+@@ -1326,9 +1326,6 @@
+     gSyncUI.init();
+     gFxAccounts.init();
+ 
+-    if (AppConstants.MOZ_DATA_REPORTING)
+-      gDataNotificationInfoBar.init();
+-
+     gBrowserThumbnails.init();
+ 
+     // Add Devtools menuitems and listeners

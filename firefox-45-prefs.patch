@@ -28,6 +28,15 @@ diff -Naur firefox-45.0esr.bak/browser/app/profile/firefox.js firefox-45.0esr/br
  
  // Limit the number of characters sent to the current search engine to fetch
  // suggestions.
+@@ -346,7 +346,7 @@
+ pref("browser.download.animateNotifications", true);
+ 
+ // This records whether or not the panel has been shown at least once.
+-pref("browser.download.panel.shown", false);
++pref("browser.download.panel.shown", true);
+ 
+ #ifndef XP_MACOSX
+ pref("browser.helperApps.deleteTempFileOnExit", true);
 @@ -426,7 +426,7 @@
  // Tabbed browser
  pref("browser.tabs.closeWindowWithLastTab", true);

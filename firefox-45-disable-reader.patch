@@ -1,0 +1,114 @@
+diff -Naur firefox-45.0esr.bak/browser/base/content/browser.js firefox-45.0esr/browser/base/content/browser.js
+--- firefox-45.0esr.bak/browser/base/content/browser.js	2016-03-15
++++ firefox-45.0esr/browser/base/content/browser.js	2016-03-15
+@@ -251,9 +251,6 @@
+ XPCOMUtils.defineLazyModuleGetter(this, "ReaderMode",
+   "resource://gre/modules/ReaderMode.jsm");
+ 
+-XPCOMUtils.defineLazyModuleGetter(this, "ReaderParent",
+-  "resource:///modules/ReaderParent.jsm");
+-
+ XPCOMUtils.defineLazyModuleGetter(this, "LoginManagerParent",
+   "resource://gre/modules/LoginManagerParent.jsm");
+ 
+@@ -4574,7 +4571,6 @@
+       }
+     }
+     UpdateBackForwardCommands(gBrowser.webNavigation);
+-    ReaderParent.updateReaderButton(gBrowser.selectedBrowser);
+ 
+     gGestureSupport.restoreRotationState();
+ 
+diff -Naur firefox-45.0esr.bak/browser/base/content/browser-sets.inc firefox-45.0esr/browser/base/content/browser-sets.inc
+--- firefox-45.0esr.bak/browser/base/content/browser-sets.inc	2016-03-15
++++ firefox-45.0esr/browser/base/content/browser-sets.inc	2016-03-15
+@@ -42,7 +42,6 @@
+     <command id="View:PageSource" oncommand="BrowserViewSource(window.gBrowser.selectedBrowser);" observes="canViewSource"/>
+     <command id="View:PageInfo" oncommand="BrowserPageInfo();"/>
+     <command id="View:FullScreen" oncommand="BrowserFullScreen();"/>
+-    <command id="View:ReaderView" oncommand="ReaderParent.toggleReaderMode(event);"/>
+     <command id="cmd_find"
+              oncommand="gFindBar.onFindCommand();"
+              observes="isImage"/>
+diff -Naur firefox-45.0esr.bak/browser/base/content/browser.xul firefox-45.0esr/browser/base/content/browser.xul
+--- firefox-45.0esr.bak/browser/base/content/browser.xul	2016-03-15
++++ firefox-45.0esr/browser/base/content/browser.xul	2016-03-15
+@@ -731,10 +731,6 @@
+                        hidden="true"
+                        tooltiptext="&pageReportIcon.tooltip;"
+                        onclick="gPopupBlockerObserver.onReportButtonClick(event);"/>
+-                <image id="reader-mode-button"
+-                       class="urlbar-icon"
+-                       hidden="true"
+-                       onclick="ReaderParent.buttonClick(event);"/>
+               </hbox>
+               <hbox id="userContext-icons">
+                 <label id="userContext-label"/>
+diff -Naur firefox-45.0esr.bak/browser/components/nsBrowserGlue.js firefox-45.0esr/browser/components/nsBrowserGlue.js
+--- firefox-45.0esr.bak/browser/components/nsBrowserGlue.js	2016-03-15
++++ firefox-45.0esr/browser/components/nsBrowserGlue.js	2016-03-15
+@@ -177,9 +177,6 @@
+ XPCOMUtils.defineLazyModuleGetter(this, "WebChannel",
+                                   "resource://gre/modules/WebChannel.jsm");
+ 
+-XPCOMUtils.defineLazyModuleGetter(this, "ReaderParent",
+-                                  "resource:///modules/ReaderParent.jsm");
+-
+ XPCOMUtils.defineLazyModuleGetter(this, "AddonWatcher",
+                                   "resource://gre/modules/AddonWatcher.jsm");
+ 
+@@ -850,7 +847,6 @@
+     ContentPrefServiceParent.init();
+ 
+     LoginManagerParent.init();
+-    ReaderParent.init();
+ 
+     SelfSupportBackend.init();
+ 
+diff -Naur firefox-45.0esr.bak/browser/components/uitour/UITour.jsm firefox-45.0esr/browser/components/uitour/UITour.jsm
+--- firefox-45.0esr.bak/browser/components/uitour/UITour.jsm	2016-03-15
++++ firefox-45.0esr/browser/components/uitour/UITour.jsm	2016-03-15
+@@ -34,8 +34,6 @@
+   "resource://gre/modules/PrivateBrowsingUtils.jsm");
+ XPCOMUtils.defineLazyModuleGetter(this, "ReaderMode",
+   "resource://gre/modules/ReaderMode.jsm");
+-XPCOMUtils.defineLazyModuleGetter(this, "ReaderParent",
+-  "resource:///modules/ReaderParent.jsm");
+ 
+ // See LOG_LEVELS in Console.jsm. Common examples: "All", "Info", "Warn", & "Error".
+ const PREF_LOG_LEVEL      = "browser.uitour.loglevel";
+@@ -722,15 +720,10 @@
+       }
+ 
+       case "forceShowReaderIcon": {
+-        ReaderParent.forceShowReaderIcon(browser);
+         break;
+       }
+ 
+       case "toggleReaderMode": {
+-        let targetPromise = this.getTarget(window, "readerMode-urlBar");
+-        targetPromise.then(target => {
+-          ReaderParent.toggleReaderMode({target: target.node});
+-        });
+         break;
+       }
+     }
+@@ -1911,7 +1904,6 @@
+     }
+ 
+     if (aFeature == "readinglist") {
+-      ReaderParent.showReaderModeInfoPanel(browser);
+     } else {
+       log.error("startSubTour: Unknown feature option specified");
+       return;
+diff -Naur firefox-45.0esr.bak/browser/modules/moz.build firefox-45.0esr/browser/modules/moz.build
+--- firefox-45.0esr.bak/browser/modules/moz.build	2016-03-15
++++ firefox-45.0esr/browser/modules/moz.build	2016-03-15
+@@ -33,7 +33,6 @@
+     'offlineAppCache.jsm',
+     'PanelFrame.jsm',
+     'PluginContent.jsm',
+-    'ReaderParent.jsm',
+     'RecentWindow.jsm',
+     'RemotePrompt.jsm',
+     'SelfSupportBackend.jsm',

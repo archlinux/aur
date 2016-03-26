@@ -1,6 +1,7 @@
+# firefox-esr-privacy
 pkgname=firefox-esr-privacy
 _basever=45
-pkgver=45.0
+pkgver=45.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
@@ -20,16 +21,20 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${pkgver}esr/so
         firefox-${_basever}-disable-sponsored-tiles.patch
         firefox-${_basever}-prefs.patch
         firefox-${_basever}-disable-telemetry.patch
+        firefox-${_basever}-disable-data-sharing-infobar.patch
+        firefox-${_basever}-disable-reader.patch
         firefox.desktop
         firefox-fixed-loading-icon.png
         mozconfig)
-sha256sums=('0f46f6c2e6b4f7efea2cd688c27b154a2f000cf5a7e5cb676def8a6dbf3839a0'
+sha256sums=('1a44568b4d10b208ae21930335a3098aec31cc42dd43ccd6ef659f3c321b7366'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '8d9afa1f940a9dac689ead40a57990d1491f34a1787b2222f8f5b5e485d54103'
             '4ffefee2f47e2de114df0d8a0c9a7b964d6e6959ce691e274e259ad8fd85682e'
             '1926a3d3b8996cdbdd8b970a12d9880e3272181fd4b07c2c9277ca7290b159c3'
-            '23e76c382612ef694a4d62cc91996c063266ebb2620cab8149cd22a59ca11293'
+            '7fc91a81da2a83e7765bdea66944572cb78b87eed71d8f36d6cc6d6cc87b0dff'
             '5f97739f5962c98c94c0cf7a7361d9dac01be1366773cb2b45d2bd5938569fde'
+            '52a94f48e562f98ba0b22b43b1684f6a813872b9c310d6f7567fe91aaab4944b'
+            '01fa29086c1cba4a1fb7ea0e13baea3e210a771ccc67134fbb32de4185e0cb23'
             '0bcfe168964338ec9c6e781479f2f8d06aa44f2262d6405ff8fa42983be89630'
             '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213'
             '28b56c316c2f3a4072f1f9bb773eb355b204f66805654cb96d5dcda6d2a9a73e')
@@ -47,7 +52,7 @@ prepare() {
   patch -Np1 -i ${srcdir}/firefox-${_basever}-disable-loop-pocket.patch
   # Remove loop and pocket source directories
   rm -fr browser/extensions/loop/ browser/components/pocket/
-  
+
   # Disable geo IP lookup on first run
   patch -Np1 -i ${srcdir}/firefox-${_basever}-disable-location.services.mozilla.com.patch
   
@@ -56,6 +61,12 @@ prepare() {
   
   # Disable telemetry options
   patch -Np1 -i ${srcdir}/firefox-${_basever}-disable-telemetry.patch
+  
+  # Disable infobar "Firefox automatically sends some data to Mozilla..."
+  patch -Np1 -i ${srcdir}/firefox-${_basever}-disable-data-sharing-infobar.patch
+  
+  # Disable reader view
+  patch -Np1 -i ${srcdir}/firefox-${_basever}-disable-reader.patch
   
   # Fix build with Fontconfig 2.6
   sed -i '/^ftcache.h/a ftfntfmt.h' config/system-headers
