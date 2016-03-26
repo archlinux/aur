@@ -13,7 +13,7 @@ else
   fi
 
   # failing that run the creator in your path
-  qtcreator.sh $@
+  qtcreator $@
 fi
 
 exit 0
