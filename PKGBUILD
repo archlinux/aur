@@ -1,6 +1,6 @@
 
 pkgname=evopedia-git
-pkgver=120.9a3aa55
+pkgver=130.633a181
 pkgrel=1
 pkgdesc='Offline Wikipedia Viewer'
 arch=('i686' 'x86_64')
