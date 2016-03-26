@@ -16,10 +16,6 @@ options=('!strip' 'staticlibs')
 source=("git+https://github.com/ChristophHaag/openvr.git")
 md5sums=("SKIP")
 
-prepare() {
-  echo "CONFIG += c++11" >> "$srcdir/openvr/samples/helloworldoverlay/helloworldoverlay.pro"
-}
-
 pkgver() {
   cd "$srcdir/openvr"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
