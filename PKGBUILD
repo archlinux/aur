@@ -1,15 +1,15 @@
 pkgname=myagent-im-git
 pkgver=20130319
-pkgrel=2
+pkgrel=3
 pkgdesc="Mail.Ru Agent"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/myagent-im/"
-license="GPL2"
+license=('GPL2')
 depends=('zlib' 'xapian-core' 'aspell' 'libxss' 'qtmobility')
 makedepends=('gcc' 'flex' 'pkg-config' 'sed' 'git')
 source=()
 
-_gitroot=https://code.google.com/p/myagent-im
+_gitroot=https://github.com/Andrsid/myagent-im.git
 _gitname=myagent-im
 
 build()
