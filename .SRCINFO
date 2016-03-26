@@ -9,7 +9,7 @@ pkgbase = openhab-beta
 	depends = java-runtime-headless>=8
 	conflicts = openhab-runtime
 	conflicts = openhab-addons
-	noextract = openhab-online-2.0.0_20160326-SNAPSHOT.zip
+	noextract = openhab-online-2.0.0-SNAPSHOT.zip
 	backup = etc/openhab/conf/addons.cfg
 	backup = etc/openhab/conf/runtime.cfg
 	source = https://openhab.ci.cloudbees.com/job/openHAB-Distribution/lastSuccessfulBuild/artifact/distributions/openhab-online/target/openhab-online-2.0.0-SNAPSHOT.zip
