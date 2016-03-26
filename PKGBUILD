@@ -30,14 +30,14 @@ package() {
   # config for sourcing Fisherman from the user's fish config
   install -Dm 644 config-fisherman.fish "${fishpath}/config-fisherman.fish"
   cd "${_gitname}"
-  # completions
-  install -Dt "${fisherpath}/completions" completions/*
-  # functions
-  install -Dt "${fisherpath}/functions" functions/*
   # this will be included from the config-fisherman.fish ;)
-  install config.fish "${fisherpath}/config.fish"
+  install -Dm 644 config.fish "${fisherpath}/config.fish"
+  # completions
+  install -d completions "${fisherpath}"
+  # functions
+  install -d functions "${fisherpath}"
   # man pages, README and LICENSE
-  install -Dt "${sharepath}/man/man1" man/man1/*
+  install -d man "${sharepath}"
   install -Dm 644 LICENSE "${sharepath}/licenses/${pkgname}/LICENSE"
   install -Dm 644 README.md "${sharepath}/doc/${pkgname}/README"
 }
