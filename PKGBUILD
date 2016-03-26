@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-css-dom'
-pkgver='0.15'
+pkgver='0.16'
 pkgrel='1'
 pkgdesc="Document Object Model for Cascading Style Sheets"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-clone>=0.09')
 makedepends=()
-url='http://search.cpan.org/dist/CSS-DOM'
-source=('http://search.cpan.org/CPAN/authors/id/S/SP/SPROUT/CSS-DOM-0.15.tar.gz')
-md5sums=('fc0c8bbd85087271d67da1a2104a7563')
-sha512sums=('a2df55efee03b6485e0972abcab7f08460001b764c17abd71cb137e106f587b13658ee145802bc8d9d72ef569280518837a17c255524d2b261f827ac307031b0')
-_distdir="CSS-DOM-0.15"
+url='https://metacpan.org/release/CSS-DOM'
+source=('http://search.cpan.org/CPAN/authors/id/S/SP/SPROUT/CSS-DOM-0.16.tar.gz')
+md5sums=('31850d4a426bef34b8b451797c770678')
+sha512sums=('217564d3d731362a9890227491a8b2d2351410afe6e33d6ddc13b927a7b6918d11ae1938d906ddb6507f87098bf92655a9af2a1eb484aa90451cdb5dfbbdd88a')
+_distdir="CSS-DOM-0.16"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
