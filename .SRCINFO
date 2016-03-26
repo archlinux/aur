@@ -1,0 +1,34 @@
+pkgbase = gr-osmosdr-nonfree-git
+	pkgdesc = GNU Radio source block for OsmoSDR with nonfree components, such as sdrplay enabled.
+	pkgver = 0.1.4.72.g164a09f
+	pkgrel = 1
+	url = http://sdr.osmocom.org/trac/
+	install = gr-osmosdr-nonfree-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = python2-cheetah
+	depends = gnuradio
+	depends = swig
+	optdepends = gnuradio-iqbal: Osmocom IQ imbalance correction support
+	optdepends = rtl-sdr-git: Osmocom RTLSDR support
+	optdepends = libosmosdr-git: sysmocom OsmoSDR support
+	optdepends = libmirisdr-git: Osmocom MiriSDR support
+	optdepends = airspy-git: AIRSPY Receiver support
+	optdepends = soapysdr-git: SoapySDR support
+	optdepends = libsdrplay: SDRplay RSP support
+	optdepends = gnuradio-fcdproplus: FUNcube Dongle Pro+ support
+	optdepends = hackrf: HackRF and rad1o Badge support
+	optdepends = doxygen: documentation
+	provides = gr-osmosdr-git
+	provides = gr-osmosdr
+	provides = gnuradio-osmosdr
+	conflicts = gr-osmosdr-git
+	source = git://git.osmocom.org/gr-osmosdr
+	md5sums = SKIP
+
+pkgname = gr-osmosdr-nonfree-git
+

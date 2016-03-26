@@ -1,0 +1,7 @@
+post_install() {
+	echo "Ensure that the corresponding optional dependencies are installed for support of your device. If not, install the dependency and rebuild gr-osmosdr-nonfree-git."
+}
+
+post_upgrade() {
+	post_install $1
+}
