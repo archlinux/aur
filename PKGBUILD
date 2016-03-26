@@ -1,20 +1,20 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-lexical-sealrequirehints'
-pkgver='0.009'
+pkgver='0.010'
 pkgrel='1'
 pkgdesc="prevent leakage of lexical hints"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
-makedepends=('perl-module-build')
+depends=('perl-module-build' 'perl>=5.006')
+makedepends=()
 url='https://metacpan.org/release/Lexical-SealRequireHints'
-source=('http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/Lexical-SealRequireHints-0.009.tar.gz')
-md5sums=('f8484f81710b650277f2baa55d1f1060')
-sha512sums=('9c0951e23c7cb6101a9ec8c9f1577d257436204f80605eed69ed301fcca3ae745c68b7a5a226a05d80a4e7118a2ac543089b613d16096d95f9779c6250c2b9b9')
-_distdir="Lexical-SealRequireHints-0.009"
+source=('http://search.cpan.org/CPAN/authors/id/Z/ZE/ZEFRAM/Lexical-SealRequireHints-0.010.tar.gz')
+md5sums=('a02f013b3e7c4a0e44a25dbcbdfd4aa1')
+sha512sums=('4c71a22397ae689349bf45c1b2177108008158052b341f9d9b09e5d97c55cd538bb427c041389c4edf8584be292bf4b1f42abdff573510a0a64fb69e5166aecd')
+_distdir="Lexical-SealRequireHints-0.010"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
