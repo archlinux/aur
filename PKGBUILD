@@ -17,7 +17,7 @@ source=(release_${pkgver}.tar.gz::https://codeload.github.com/mank319/Go-For-It/
 sha256sums=('cb4db45577ee6469d0160c94ccff04cb02bf64167db71a785aef35443b79ecf0')
 
 prepare() {
-  mv ${srcdir}/Go-For-It-release_v${pkgver}/* ${srcdir}/
+  mv ${srcdir}/Go-For-It-release_${pkgver}/* ${srcdir}/
 }
 
 build() {
