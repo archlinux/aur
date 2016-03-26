@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis-git
-pkgver=0.1.r207.ga0ec87b
+pkgver=0.2.r0.g6305520
 pkgrel=1
 pkgdesc='modern, legacy free, simple yet efficient vim-like editor - git checkout'
 arch=('i686' 'x86_64')
@@ -28,6 +28,12 @@ pkgver() {
 			"$(git rev-list --count master)" \
 			"$(git log -1 --format='%h')"
 	fi
+}
+
+prepare() {
+	cd vis/
+
+	git cherry-pick -n f567d332
 }
 
 build() {
