@@ -1,23 +1,21 @@
 pkgname=scrypt-kdf-git
-_gitname=scrypt
-pkgver=2e054c2
 pkgrel=1
+pkgver=75
 pkgdesc='library and command-line utility for the scrypt key derivation function'
 arch=(any)
 license=(bsd, gpl3)
 makedepends=(git)
 provides=(scrypt-kdf)
 depends=()
-source=("git://github.com/jkalbhenn/$_gitname.git")
-url=https://github.com/jkalbhenn/$_gitname
+source=("$pkgname::git://github.com/jkalbhenn/scrypt")
+url=https://github.com/jkalbhenn/scrypt
 md5sums=(SKIP)
 
 pkgver() {
-  cd $_gitname
-  git log -n 1 --pretty=format:"%h"
+  cd $pkgname
+  git rev-list --count HEAD
 }
-
 package() {
-  cd $_gitname
-  ./exec/make+install.sh "$pkgdir"
+  cd $pkgname
+  ./exe/make+install.sh "$pkgdir"
 }
