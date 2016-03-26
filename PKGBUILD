@@ -2,7 +2,7 @@
 
 pkgname=expressvpn
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="ExpressVPN client for Linux"
 arch=('x86_64')
 url="https://expressvpn.com"
@@ -27,5 +27,5 @@ package() {
         | bsdtar -C "${pkgdir}" -s ":/usr/sbin:/usr/bin:" -xzf -
 
     rm -rf "${pkgdir}/etc/init.d"
-    install -D "${startdir}/expressvpn.service" "${pkgdir}/lib/systemd/system/expressvpn.service"
+    install -D "${startdir}/expressvpn.service" "${pkgdir}/usr/lib/systemd/system/expressvpn.service"
 }
