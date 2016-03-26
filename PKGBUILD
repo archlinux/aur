@@ -1,4 +1,5 @@
-#Contributor: Rasi <rasi13@gmx.de>
+#Contributor: Rasi <rasi at xssn dot at>
+#Maintainer: Rasi <rasi at xssn dot at>
 
 pkgname=stuffkeeper-git
 provides=('stuffkeeper')
