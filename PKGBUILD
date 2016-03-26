@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-www-scripter'
-pkgver='0.030'
+pkgver='0.031'
 pkgrel='1'
 pkgdesc="For scripting web sites that have scripts"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-css-dom' 'perl-html-dom>=0.045' 'perl-http-message>=1.34' 'perl-libwww' 'perl-uri' 'perl-www-mechanize>=1.52')
+depends=('perl-css-dom' 'perl-html-dom>=0.045' 'perl-http-message' 'perl-uri' 'perl-www-mechanize>=1.52' 'perl-libwww')
 makedepends=()
-url='http://search.cpan.org/dist/WWW-Scripter'
-source=('http://search.cpan.org/CPAN/authors/id/L/LX/LXP/WWW-Scripter-0.030.tar.gz')
-md5sums=('e1b42bca9a0e43474a9ad6e4d007adbd')
-sha512sums=('f44457ca9235350788b9e35dd68a4fe58f875912d7d89adb9b2f6bd34024b46cf57f3e704ba36c6441c01f37c49efab0cb8c156e0daff21c4d1a245c89e1c541')
-_distdir="WWW-Scripter-0.030"
+url='https://metacpan.org/release/WWW-Scripter'
+source=('http://search.cpan.org/CPAN/authors/id/S/SP/SPROUT/WWW-Scripter-0.031.tar.gz')
+md5sums=('79a38f2ee500f9d25f8e667584b90832')
+sha512sums=('9503a3f2b9c0b6186457a8b057a69d433f33afc91cb6c64757d22a7cce82c454eb9598aa65e7657c9de1817a03fe6d575102412561b7e4a6e8f6bea98ba9c134')
+_distdir="WWW-Scripter-0.031"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
