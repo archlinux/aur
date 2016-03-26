@@ -1,15 +1,11 @@
 function post_install {
   echo "
-To use fisherman, create a config dir first:
+To use Fisherman, source it in your fish config (usually ~/.config/fish/config.fish):
 
-mkdir -p ~/.config/fisherman/cache
-touch ~/.config/fisherman/fishfile
+source /usr/share/fisherman/config-fisherman.fish
 
-Add the following into ~/.config/fish/config.fish:
-
-set fisher_config ~/.config/fisherman
-set fisher_home /usr/share/fish
-source \$fisher_home/config-fisherman.fish
+Please note that Fisherman overrides the config_fish function, so if you also do that,
+you will need to do so after sourcing Fisherman.
 
 See the documentation at https://github.com/fisherman/fisherman/wiki for more details.
 "
@@ -21,6 +17,6 @@ function post_upgrade {
 
 function post_remove {
   echo "
-Remember to remove the vars and the source call from ~/.config/fish/config.fish for cleanup.
+Remember to remove the source call from your ~/.config/fish/config.fish for cleanup.
 "
 }
