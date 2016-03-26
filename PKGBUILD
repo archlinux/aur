@@ -1,7 +1,7 @@
 # Maintainer: Daniel Maslowski <info@orangecms.org>
 pkgname=vim-dein-git
 _gitname=dein.vim
-pkgver=0.0.r329.g9aac0c5
+pkgver=0.0.r363.gcf88cb0
 pkgrel=1
 pkgdesc="dark powered Vim/Neovim plugin manager"
 arch=('any')
@@ -24,15 +24,12 @@ pkgver() {
 
 package() {
   cd "${_gitname}"
-
-  vimpath="${pkgdir}/usr/share/vim/vimfiles"
-
-  mkdir -p ${vimpath}/doc
-  cp -R doc ${vimpath}
-  mkdir -p ${vimpath}/autoload
-  cp -R autoload ${vimpath}
-
-  install -Dm 644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-  install -Dm 644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README
+  sharepath="${pkgdir}/usr/share"
+  vimpath="${sharepath}/vim/vimfiles"
+  # install to global Vim directory
+  install -d doc ${vimpath}
+  install -d autoload ${vimpath}
+  # LICENSE and README
+  install -Dm 644 LICENSE ${sharepath}/licenses/${pkgname}/LICENSE
+  install -Dm 644 README.md ${sharepath}/doc/${pkgname}/README
 }
-
