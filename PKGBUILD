@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname='pyload-git'
-pkgver=5415.ed91dde
+pkgver=5427.22803c5
 pkgrel=1
 pkgdesc="Downloadtool for One-Click-Hoster written in python. Latest stable branch"
 url="https://github.com/pyload/pyload"
@@ -10,53 +10,69 @@ arch=('any')
 provides=('pyload')
 conflicts=('pyload' 'pyload-hg')
 backup=('var/lib/pyload/pyload.conf')
-depends=('python2' 'python2-crypto' 'python2-funcsigs' 'python2-pycurl' 'tesseract' 
-         'python2-pillow' 'python2-jinja' 'python2-beaker' 'python2-pyopenssl')
-optdepends=('python2-pyqt4: Gui'
-          'python2-flup: for additional webservers'
-	  'python2-notify: Notifications for GUI'
-	  'js: ClickNLoad')
+depends=('python2' 'python2-crypto' 'python2-pycurl' 'tesseract'
+         'python2-imaging' 'python2-pyopenssl')
+optdepends=('python2-pyqt: Gui'
+            'python2-flup: for additional webservers'
+            'python2-notify: Notifications for GUI'
+            'js: ClickNLoad')
 makedepends=('git')
 install='pyload-git.install'
 
 source=('pyload::git+https://github.com/pyload/pyload.git#branch=stable'
-	 pyload.service
-	 pyload.conf
-	 pyload-gui.desktop
-	 pyload.desktop
-	 pyload-gui.png
-	 pyload.svg)
+        'http://bitbucket.org/ranan/pyload-dist/raw/bf705af8f412/debian/pyload/usr/share/applications/pyload-gui.desktop'
+        'http://bitbucket.org/ranan/pyload-dist/raw/bf705af8f412/debian/pyload/usr/share/applications/pyload.desktop'
+        'http://bitbucket.org/ranan/pyload-dist/raw/bf705af8f412/debian/pyload/usr/share/pixmaps/pyload-gui.png'
+        'http://bitbucket.org/ranan/pyload-dist/raw/bf705af8f412/debian/pyload/usr/share/pixmaps/pyload.svg'
+        'pyload.service' 'pyload.conf' 'pyLoadCore' 'pyLoadCli' 'pyLoadGui' 'suppress_jinja2_version_check.patch')
 
 pkgver() {
-  cd $startdir/pyload
+  cd pyload
   echo $(git rev-list --count stable).$(git rev-parse --short stable)
 }
 
-package() {
-  cd $srcdir
+prepare() {
+  cd ${srcdir}
   sed -i 's_#!/usr/bin/env python$_#!/usr/bin/env python2_' pyload/pyLoad*.py
-  
-  install -d ${pkgdir}/opt/pyload
+  patch -p0 < suppress_jinja2_version_check.patch
+}
+
+build() {
+  python2 -O -m compileall ${srcdir}/pyload
+}
+
+package() {
+  cd ${srcdir}
+
+  install -d -m 755 ${pkgdir}/opt/pyload
   cp -r pyload/* ${pkgdir}/opt/pyload
-  install -d ${pkgdir}/usr/share/applications
-  cp pyload.desktop ${pkgdir}/usr/share/applications
-  cp pyload-gui.desktop ${pkgdir}/usr/share/applications
-  install -d ${pkgdir}/usr/share/pixmaps
-  cp pyload.svg ${pkgdir}/usr/share/pixmaps
-  cp pyload-gui.png ${pkgdir}/usr/share/pixmaps
-  install -d ${pkgdir}/usr/bin
-  ln -s /opt/pyload/pyLoadCore.py ${pkgdir}/usr/bin/pyLoadCore
-  ln -s /opt/pyload/pyLoadCli.py ${pkgdir}/usr/bin/pyLoadCli
-  ln -s /opt/pyload/pyLoadGui.py ${pkgdir}/usr/bin/pyLoadGui
- # Create PyLoad service
-  install -Dm 644 ${srcdir}/pyload.service ${pkgdir}/usr/lib/systemd/system/pyload.service
-  install -Dm 644 ${srcdir}/pyload.conf ${pkgdir}/var/lib/pyload/pyload.conf
+
+  install -d -m 755 ${pkgdir}/usr/share/applications
+  install -D -m 644 pyload.desktop ${pkgdir}/usr/share/applications
+  install -D -m 644 pyload-gui.desktop ${pkgdir}/usr/share/applications
+
+  install -d -m 755 ${pkgdir}/usr/share/pixmaps
+  install -D -m 644 pyload.svg ${pkgdir}/usr/share/pixmaps
+  install -D -m 644 pyload-gui.png ${pkgdir}/usr/share/pixmaps
+
+  install -d -m 755 ${pkgdir}/usr/bin
+  install -D -m 755 pyLoadCore ${pkgdir}/usr/bin/pyLoadCore
+  install -D -m 755 pyLoadCli ${pkgdir}/usr/bin/pyLoadCli
+  install -D -m 755 pyLoadGui ${pkgdir}/usr/bin/pyLoadGui
+
+  # Create PyLoad service
+  install -D -m 644 ${srcdir}/pyload.service ${pkgdir}/usr/lib/systemd/system/pyload.service
+  install -D -m 644 ${srcdir}/pyload.conf ${pkgdir}/var/lib/pyload/pyload.conf
 }
 
 md5sums=('SKIP'
-         'c9aec74442226efab711cc00bf4135b7'
-         '32b00d50be868c165930c592b99730a9'
          'b96a4e5091463b3b7fd79208623f1a3a'
          'c67462993d27d5884677dd6e8a8a17d2'
          '73fcec930d25a49e1b99576069d88bd5'
-         '649d5af94101655d37fe50e7b127d1b6')
+         '649d5af94101655d37fe50e7b127d1b6'
+         '454e974b11ab31533423f336c3a182f2'
+         '32b00d50be868c165930c592b99730a9'
+         '6d764666ec89ce218cd00164e73e0989'
+         '6fc2f343d2f324a66745524bbab93e5c'
+         '806a22a74e8331dffcb8538182e4df2c'
+         'd6051baf3bf7749e2b7959e73761bb30')

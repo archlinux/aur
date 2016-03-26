@@ -3,11 +3,7 @@ Description=pyLoad Core
 After=network.target
 
 [Service]
-Type=forking
-ExecStart=/usr/bin/pyLoadCore --daemon --configdir=/var/lib/pyload
-Restart=on-abort
-KillSignal=SIGQUIT
-PIDFile=/var/lib/pyload/pyload.pid
+ExecStart=/usr/bin/pyLoadCore
 User=pyload
 Group=pyload
 
