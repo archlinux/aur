@@ -1,29 +1,28 @@
 pkgname=guile-dbd-sqlite3-git
-_gitname=guile-dbd-sqlite3
 pkgrel=1
-pkgver=19.16435ab
+pkgver=19
 pkgdesc='guile-dbi database driver for sqlite version 3'
 arch=(any)
 license=(gpl3)
 makedepends=(git)
 depends=(guile guile-dbi sqlite3)
-source=("git://github.com/jkalbhenn/$_gitname.git")
-url=https://github.com/jkalbhenn/$_gitname
+source=("$pkgname::git://github.com/jkalbhenn/guile-dbd-sqlite3")
+url=https://github.com/jkalbhenn/guile-dbd-sqlite3
 md5sums=(SKIP)
 
 pkgver() {
-  cd $_gitname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd $pkgname
+  git rev-list --count HEAD
 }
 
 build() {
-  cd $_gitname
+  cd $pkgname
   chmod +x configure
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $_gitname
+  cd $pkgname
   make DESTDIR=$pkgdir install
 }
