@@ -3,12 +3,12 @@
 pkgname="burp-backup-git"
 _pkgname="burp"
 pkgver=2.0.30.r48.g1892559
-pkgrel=1
+pkgrel=2
 pkgdesc="Burp is a backup and restore program. It uses librsync in order to save on the amount of space that is used by each backup."
 arch=('any')
 license=('AGPLv3')
 depends=('librsync' 'openssl')
-makedepends=('uthash' 'git')
+makedepends=('uthash' 'git' 'rsync')
 conflicts=('burp-backup' 'burp-backup-dev')
 provides=(burp-backup)
 
