@@ -4,13 +4,13 @@
 _pkgname='livestreamer'
 pkgname="${_pkgname}-dev-git"
 pkgver=0.r1431.8dd6a69
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI program that launches streams from various streaming services in a custom video player'
 arch=('any')
 url='https://github.com/chrippa/livestreamer'
 license=('BSD')
 depends=('python-requests' 'rtmpdump' 'python-setuptools')
-makedepends=('python-sphinx', 'git')
+makedepends=('python-sphinx' 'git')
 source=("${pkgname}::git+https://github.com/chrippa/livestreamer#branch=develop")
 sha256sums=('SKIP')
 

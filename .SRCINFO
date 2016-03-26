@@ -1,11 +1,11 @@
 pkgbase = livestreamer-dev-git
 	pkgdesc = CLI program that launches streams from various streaming services in a custom video player
 	pkgver = 0.r1431.8dd6a69
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/chrippa/livestreamer
 	arch = any
 	license = BSD
-	makedepends = python-sphinx,
+	makedepends = python-sphinx
 	makedepends = git
 	depends = python-requests
 	depends = rtmpdump
