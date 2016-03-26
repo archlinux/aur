@@ -1,7 +1,7 @@
 # Maintainer: Aoibhinn di Tori <email@aoibh.in>
 
 pkgname="yank"
-pkgver=0.6.2
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="Copy terminal output to clipboard"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=("xsel")
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://github.com/mptre/yank/archive/v$pkgver.tar.gz")
-md5sums=('7328ffc90904d195b65055cf8d6577a9')
+md5sums=('32beb356047e3f7022fd829d0e310c13')
 
 build() {
   cd  "$pkgname-$pkgver"
