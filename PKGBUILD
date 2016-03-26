@@ -23,7 +23,7 @@ build() {
 package() {
     cd "${srcdir}/MPD_sima-${pkgver}"
     python setup.py install --prefix=/usr --root="$pkgdir" || return 1
-    install -Dm644 ../../mpd-sima.service ${pkgdir}/usr/lib/systemd/user/mpd-sima.service
+    install -Dm644 ${srcdir}/mpd-sima.service ${pkgdir}/usr/lib/systemd/user/mpd-sima.service
 }
 
 md5sums=('81368753f1d696276e850a9e86dcc060'
