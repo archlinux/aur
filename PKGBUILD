@@ -6,7 +6,8 @@ pkgrel=0
 pkgdesc="A personal HTTP server for serving one-time-use shell scripts"
 url="https://github.com/EnigmaCurry/curlbomb"
 depends=('python')
-optdepends=('openssh: SSH tunnel support')
+optdepends=('openssh: SSH tunnel support',
+            'gnupg: Encrypted SSL certificate support')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
