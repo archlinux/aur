@@ -3,7 +3,6 @@ home=/var/lib/openbazaard
 
 post_install() {
   _mkuser
-  _mkdbfolder
   _chown
 }
 
@@ -39,8 +38,3 @@ _rmuser() {
   echo "done"
 }
 
-_mkdbfolder() {
-  echo -n "Creating database folder... "
-  mkdir -p $home/$dbdata
-  echo "done"
-}
