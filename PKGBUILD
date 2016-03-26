@@ -1,7 +1,7 @@
 # Maintainer: Rick Kerkhof <rick.2889@gmail.com>
 pkgname=soundnode-app-bin
 pkgver=0.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Soundcloud client for the desktop"
 arch=('x86_64' 'i686')
 url="http://www.soundnodeapp.com/"
@@ -36,7 +36,7 @@ package() {
         install -Dm644 "$srcdir"/soundnode-app.desktop "$pkgdir"/usr/share/applications/
 
         # We're creating a broken link here. It'll be fixed when all files are in place :)
-        ln -s /opt/soundnode-app-bin/Soundnode-App "$pkgdir"/usr/bin/soundnode
+        ln -s /opt/soundnode-app-bin/Soundnode "$pkgdir"/usr/bin/soundnode
 
         rm "$srcdir"/Soundnode-App.zip
         rm "$srcdir"/soundnode-app.desktop
