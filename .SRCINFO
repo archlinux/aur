@@ -1,0 +1,15 @@
+pkgbase = elixirscript
+	pkgdesc = Converts Elixir to Javascript
+	pkgver = 0.16.0
+	pkgrel = 1
+	url = https://github.com/bryanjos/elixirscript
+	arch = any
+	license = MIT
+	makedepends = elixir
+	makedepends = npm
+	depends = erlang-nox
+	source = https://github.com/bryanjos/elixirscript/archive/v0.16.0.tar.gz
+	md5sums = 55f0e1e962b5405f6651fb3cc3765095
+
+pkgname = elixirscript
+
