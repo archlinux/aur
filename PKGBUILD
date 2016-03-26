@@ -27,7 +27,7 @@ sha256sums_i686=('bb53beb89ba67c327834191900191cc7ba242df0d32b51b449189aaa4fa4a4
 
 # Generic checksums.
 sha256sums=('a16acc740d94ed119f943e810f44cdb2d082153645aafc1c179f15fb5b9a7619'
-'a62a6bf1f28f21ba9d32b642cd29e9685a1c1f889347d041a1ab02e65dbbc2ca')
+'fe904788e6a5695468e845f2a20baba44ce0968440f007eae1a9ed977ca8f132')
 
 package() {
 	install -dm755 "$pkgdir"/usr/bin
