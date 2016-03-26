@@ -30,7 +30,6 @@ depends=(
 	python2-txws
 )
 
-makedepends=(git)
 source=("https://github.com/OpenBazaar/OpenBazaar-Server/archive/v$pkgver.tar.gz"
 	 ${pkgname}.service
 	 ${pkgname}.conf
