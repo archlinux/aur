@@ -17,7 +17,7 @@ install=$pkgname.install
 source=('git+https://github.com/gnunn1/terminix')
 md5sums=('SKIP')
 
-_gtkdver="3.2.3"
+_gtkdver="3.3.0"
 
 pkgver() {
   cd "$_pkgname"
