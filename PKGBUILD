@@ -3,10 +3,10 @@
 
 pkgname=dzen2-git
 pkgver=r14.488ab66
-pkgrel=2
+pkgrel=3
 pkgdesc="X notification utility with Xinerama and XMP support, git version."
 arch=('i686' 'x86_64')
-url=('https://github.com/robm/dzen')
+url='https://github.com/robm/dzen'
 license=('MIT/X')
 depends=(libxft)
 makedepends=(git)
