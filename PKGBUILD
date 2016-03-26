@@ -10,7 +10,7 @@ _pkgver=$_major
 pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
 #pkgver=${_major}u${_minor}.b${_build}
-pkgrel=1
+pkgrel=2
 pkgdesc="Oracle Java $_major Development Kit Snapshot"
 arch=('i686' 'x86_64')
 url=https://jdk$_major.java.net/
@@ -133,15 +133,6 @@ package() {
 
     # Replace JKS keystore with 'ca-certificates-java'
     ln -sf /etc/ssl/certs/java/cacerts lib/security/cacerts
-
-    # Suffix man pages
-    for i in $(find man/ -type f); do
-        mv "$i" "${i/.1}-$_jname.1"
-    done
-
-    # Move man pages
-    mv man/ja_JP.UTF-8/ man/ja
-    mv man/ "$pkgdir"/usr/share
 
     # Move/link licenses
     mv COPYRIGHT LICENSE *.txt "$pkgdir"/usr/share/licenses/java$_major-$_pkgname/

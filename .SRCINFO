@@ -1,7 +1,7 @@
 pkgbase = jdk-devel
 	pkgdesc = Oracle Java 9 Development Kit Snapshot
 	pkgver = 9b111
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jdk9.java.net/
 	install = jdk-devel.install
 	arch = i686
