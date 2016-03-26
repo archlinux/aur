@@ -1,6 +1,6 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
-# Contributor: Lauri Niskanen <ape@ape3000.com>
+# Maintainer: Lauri Niskanen <ape@ape3000.com>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
+# Contributor: Vlad M. <vlad@archlinux.net>
 
 pkgname=borgbackup-git
 _pkgname=borg
