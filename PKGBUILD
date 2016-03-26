@@ -1,7 +1,7 @@
 # Maintainer: eolianoe <eolianoe At GoogleMAIL DoT com>
 
 pkgname=python-atomicwrites
-pkgver=0.1.9
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Atomic file writes on POSIX"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 depends=('python')
 checkdepends=('python-pytest')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/untitaker/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('a4737f08efdbbed963e15a1fc28dba23b397654628553153a7e19de6d61dae02')
+sha256sums=('0325c610fefba1951374019ba534590ea47e28065d399b1a845db7159923df87')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
