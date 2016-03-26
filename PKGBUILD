@@ -17,7 +17,7 @@ optdepends=(
   'archey3: Output a logo and various system information'
 )
 source=('https://raw.githubusercontent.com/OscarHolst/UnixPorn/master/uxpload.sh')
-md5sums=('7a8651ffc6e12f8d7e296daca193ac13')
+md5sums=('d6708be9a07772120bde7a54561b17b4')
 
 package() {
   cd "${srcdir}"
