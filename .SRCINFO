@@ -6,7 +6,7 @@ pkgbase = ix
 	arch = any
 	license = unknown
 	depends = curl
-	source = ix::git://github.com/PedroSFreitas/ix-client.git
+	source = http://ix.io/client
 	md5sums = SKIP
 	sha256sums = SKIP
 

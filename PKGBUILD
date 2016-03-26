@@ -6,15 +6,14 @@ pkgrel=1
 pkgdesc="A command line pastebin - shell"
 arch=('any')
 license=('unknown')
-url="http://ix.io" 
+url="http://ix.io"
 depends=('curl')
-makedepends=('git')
-source=("${pkgname}::git://github.com/PedroSFreitas/ix-client.git")
+source=("http://ix.io/client")
 md5sums=('SKIP')
 sha256sums=('SKIP')
 
 package() {
-	cd "${srcdir}/${pkgname}"
+	cd "${pkdgir}"
 	mkdir -p ${pkgdir}/usr/bin
-	install -m755 ix ${pkgdir}/usr/bin
+	install -m655 client ${pkgdir}/usr/bin/ix 
 }
