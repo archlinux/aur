@@ -1,7 +1,7 @@
 # Maintainer: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 pkgname=megasync
-pkgver=2.7.1
-pkgrel=5
+pkgver=2.8.0
+pkgrel=1
 pkgdesc="Sync your files to your Mega account. Official app"
 arch=('i686' 'x86_64')
 url="https://mega.nz/#sync"
@@ -10,8 +10,8 @@ conflicts=('megatools')
 depends=('openssl' 'c-ares' 'libgcrypt' 'crypto++' 'qt4' 'libpng' 'qtchooser' 'sqlite' 'libuv')
 makedepends=('git')
 optdepends=('sni-qt: fix systray issue on KDE and LXQt')
-source=("git+https://github.com/meganz/MEGAsync.git#commit=fd9cafb46ca9287ae2871aca24ea336a99fc9363"
-        "git+https://github.com/meganz/sdk.git#commit=ad50d1188a8ea0d87c4d2425e446c0600638bb3c"
+source=("git+https://github.com/meganz/MEGAsync.git#commit=cf855e49c945860a90d91fe67767956dcbeb923d"
+        "git+https://github.com/meganz/sdk.git#commit=4ed589a68fdd3d9b170aef78b18c4c5753bb3f8f"
 	"megasync.install")
 md5sums=('SKIP'
          'SKIP'
