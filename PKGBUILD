@@ -10,8 +10,8 @@ url="https://toolbelt.heroku.com"
 license=('MIT')
 depends=('ruby')
 optdepends=('git')
-provides=('heroku-client-standalone' 'heroku-toolbelt')
-conflicts=('heroku-client-standalone' 'heroku-toolbelt')
+provides=('heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
+conflicts=('heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
 source=("https://s3.amazonaws.com/assets.heroku.com/heroku-client/heroku-client-${pkgver}.tgz")
 sha256sums=('1c174580a895ec4b446ab2d4837d00e731362dd4ee46268251e2cc7d99d077d9')
 
