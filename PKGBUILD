@@ -1,11 +1,11 @@
 pkgname=sph-lib-git
-pkgver=213
+pkgver=215
 pkgrel=1
 pkgdesc='set of more than 80 guile scheme libraries'
 arch=(any)
 license=(gpl3+)
 makedepends=(git)
-depends=("guile")
+depends=(guile)
 provides=(sph-lib)
 conflicts=(sph-lib)
 source=("$pkgname::git://git.sph.mn/sph-lib#branch=stable")
@@ -19,5 +19,5 @@ pkgver() {
 
 package() {
   cd $pkgname
-  ./exe/install "${pkgdir}"
+  ./exe/install --prefix="${pkgdir}"
 }
