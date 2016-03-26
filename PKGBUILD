@@ -2,7 +2,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 
 pkgname=apt
-pkgver=1.2.6
+pkgver=1.2.8
 pkgrel=1
 pkgdesc="commandline package manager"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ options=()
 install=
 changelog=
 source=(http://ftp.debian.org/debian/pool/main/a/$pkgname/${pkgname}_$pkgver.tar.xz)
-sha256sums=('c6be7303d3a59171745b84379f4c787debf6c8df8c2c457e1c8d3ea50c65b82b')
+sha256sums=('05f40aa4aa65d94b075c3e6e89a9bfa2878e3fdd7d950882ea741a96dffd4d77')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
