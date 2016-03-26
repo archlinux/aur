@@ -6,7 +6,7 @@ arch=('any')
 url='https://github.com/AladW/aurutils'
 license=('ISC')
 source=("$url/archive/0.1.0.tar.gz")
-depends=('pacman>=5.0' 'git' 'repose' 'jshon' 'pacutils' 'expac' 'aria2')
+depends=('pacman>=5.0' 'git' 'repose-git' 'jshon' 'pacutils-git' 'expac' 'aria2')
 checkdepends=('shellcheck')
 makedepends=('git')
 optdepends=('devtools: aurbuild -c'
