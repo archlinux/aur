@@ -8,7 +8,7 @@ arch=(any)
 url="http://openbazaar.org"
 license=('MIT')
 depends=(electron)
-makedepends=(git npm)
+makedepends=(npm)
 source=(
 	"https://github.com/OpenBazaar/OpenBazaar-Client/archive/v$pkgver.tar.gz"
 	"$pkgname.sh"
