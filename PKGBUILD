@@ -5,7 +5,8 @@ pkgdesc='a scheme syntax to c compiler'
 arch=(any)
 license=(gpl3)
 makedepends=(git)
-depends=(guile sph-lib)
+depends=(guile sph-lib-git)
+optdepends=(sph-lib)
 provides=(sph-sc)
 source=("$pkgname::git://git.sph.mn/sph-sc#branch=stable")
 url="http://sph.mn/content/3d3"
