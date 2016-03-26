@@ -1,12 +1,12 @@
 # Maintainer: Victor A. Santos  <victoraur.santos@gmail.com>
 pkgname=qsubber-git
-pkgver=r9.e71235c
+pkgver=r31.9fc60eb
 pkgrel=1
 pkgdesc="OpenSubtitles.org client for download subtiltes"
 arch=('x86' 'x86_64')
 url="https://github.com/hotvic/QSubber"
 license=('GPL3')
-depends=('desktop-file-utils' 'xmlrpc-c' 'qt5-base')
+depends=('desktop-file-utils' 'qt5-base')
 makedepends=('git' 'qt5-base')
 install=qsubber.install
 source=("$pkgname::git+https://github.com/hotvic/QSubber.git")
