@@ -4,7 +4,7 @@
 
 pkgname=universal-ctags-git
 _gitname=ctags
-pkgver=0.r3328.f2fef59
+pkgver=0.r3524.0d540d0
 pkgrel=1
 pkgdesc="multilanguage reimplementation of the Unix ctags utility"
 arch=('i686' 'x86_64')
