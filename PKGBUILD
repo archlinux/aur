@@ -1,33 +1,36 @@
-# Maintainer: Steffen Weber <-boenki-gmx-de->
+# Maintainer: boenki <boenki at gmx dot de>
 
 pkgname=ffdiaporama
-pkgver=2.1
-pkgrel=3
+pkgver=2.2.D759
+pkgrel=1
 pkgdesc="Movie creator from photos and video clips"
 arch=('i686' 'x86_64')
 url="http://ffdiaporama.tuxfamily.org"
 license=('GPL2')
-conflicts=('ffdiaporama-devel')
-depends=('qt5-svg' 'qt5-tools' 'qt5-imageformats' 'ffmpeg' 'exiv2' 'shared-mime-info' 'ffdiaporama-rsc')
+depends=('qt5-svg' 'qt5-tools' 'qt5-imageformats' 'qt5-multimedia' 'ffmpeg' 'pulseaudio' 'exiv2' 'shared-mime-info')
 optdepends=('ffdiaporama-texturemate: Additional background-images'
             'ffdiaporama-openclipart: use the openclipart-library')
-install=$pkgname.install
-source=(http://download.tuxfamily.org/ffdiaporama/Packages/Stable/ffdiaporama_bin_2.1.2014.0209.tar.gz
-        cDeviceModelDef.patch
-        EncodeVideo2.cpp.patch)
-md5sums=('f9f46277153cf49f6947973778516adb'
-         'f4ae4748072a4ade0db2e816fbfa3dbb'
-         '5924f4a2b48968839722252ad677437d')
+provides=('ffdiaporama-rsc')
+install=${pkgname}.install
+source=(http://download.tuxfamily.org/ffdiaporama/Packages/Devel/ffdiaporama_bin_2.2.devel.2014.0701.tar.gz
+        http://download.tuxfamily.org/ffdiaporama/Packages/Devel/ffdiaporama_rsc_2.2.devel.2014.0503.tar.gz
+        ffmpeg3.0.patch)
+md5sums=('0ca946d8db68467aefec39917e2dbb4d'
+         '37bfd8ba62dac8dcbde679aee29a7aad'
+         '945d2bc188a41d81542b18f44eeeb6bd')
 
 prepare() {
   cd ffDiaporama
-  patch -p0 -i ../cDeviceModelDef.patch
-  patch -p0 -i ../EncodeVideo2.cpp.patch
+  patch -p1 -i ../ffmpeg3.0.patch
 }
 
 build() {
   cd ffDiaporama
   qmake-qt5 ffDiaporama.pro
+  make
+
+  cd ../ffDiaporama_rsc
+  qmake-qt5 ffDiaporama_rsc.pro
   make
 }
 
@@ -35,4 +38,7 @@ package() {
   cd ffDiaporama
   make install INSTALL_ROOT=$pkgdir
   find $pkgdir/usr/share -type f -exec chmod 644 {} +
+
+  cd ../ffDiaporama_rsc
+  make install INSTALL_ROOT=$pkgdir
 }

@@ -1,0 +1,353 @@
+diff -upr ffDiaporama.r486/BUILDVERSION.txt ffDiaporama.r500/BUILDVERSION.txt
+--- ffDiaporama.r486/BUILDVERSION.txt	2014-07-01 10:37:05.000000000 +0200
++++ ffDiaporama.r500/BUILDVERSION.txt	2016-03-24 19:57:40.299426392 +0100
+@@ -1 +1 @@
+-Version 2.2_devel 20140701
++Version 2.2_devel 20160323
+diff -upr ffDiaporama.r486/src/ffDiaporama/DlgSlide/cShotComposer.cpp ffDiaporama.r500/src/ffDiaporama/DlgSlide/cShotComposer.cpp
+--- ffDiaporama.r486/src/ffDiaporama/DlgSlide/cShotComposer.cpp	2014-04-17 08:45:02.000000000 +0200
++++ ffDiaporama.r500/src/ffDiaporama/DlgSlide/cShotComposer.cpp	2016-03-13 10:54:04.000000000 +0100
+@@ -241,7 +241,8 @@ void cShotComposer::RefreshControls(bool
+     InRefreshControls=true;
+     QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
+ 
+-    if ((BlockSelectMode==SELECTMODE_ONE)&&(CurrentCompoObject)&&(CurrentCompoObject->IsVisible)) {
++    bool bEnable = CurrentCompoObject && CurrentCompoObject->IsVisible;
++    if ((BlockSelectMode==SELECTMODE_ONE)&&(CurrentCompoObject)/*&&(CurrentCompoObject->IsVisible)*/) {
+ 
+         qreal Ratio_X,Ratio_Y;
+         ComputeBlockRatio(CurrentCompoObject,Ratio_X,Ratio_Y);
+@@ -253,14 +254,14 @@ void cShotComposer::RefreshControls(bool
+         }
+ 
+         // Position, size and rotation
+-        GETUI("PosSize_X")->     setEnabled(true);
+-        GETUI("PosSize_Y")->     setEnabled(true);
+-        GETUI("PosSize_Width")-> setEnabled(true);
+-        GETUI("PosSize_Height")->setEnabled(true);
+-        GETDOUBLESPINBOX("PosXEd")->        setEnabled(true);
+-        GETDOUBLESPINBOX("PosYEd")->        setEnabled(true);
+-        GETDOUBLESPINBOX("WidthEd")->       setEnabled(true);
+-        GETDOUBLESPINBOX("HeightEd")->      setEnabled(true);
++        GETUI("PosSize_X")->     setEnabled(bEnable);
++        GETUI("PosSize_Y")->     setEnabled(bEnable);
++        GETUI("PosSize_Width")-> setEnabled(bEnable);
++        GETUI("PosSize_Height")->setEnabled(bEnable);
++        GETDOUBLESPINBOX("PosXEd")->        setEnabled(bEnable);
++        GETDOUBLESPINBOX("PosYEd")->        setEnabled(bEnable);
++        GETDOUBLESPINBOX("WidthEd")->       setEnabled(bEnable);
++        GETDOUBLESPINBOX("HeightEd")->      setEnabled(bEnable);
+ 
+         if (ApplicationConfig->DisplayUnit==DISPLAYUNIT_PERCENT) {
+             GETDOUBLESPINBOX("PosXEd")->  setRange(-200,200);                                                  GETDOUBLESPINBOX("PosXEd")->  setValue(CurrentCompoObject->x*100/Ratio_X);
+@@ -275,34 +276,34 @@ void cShotComposer::RefreshControls(bool
+         }
+ 
+         // Rotation
+-        GETUI("Rotate_X")-> setEnabled(true);
+-        GETSPINBOX("RotateXED")-> setEnabled(true);
+-        GETUI("ResetRotateXBT")->setEnabled(true);
+-        GETSLIDER("RotateXSLD")->setEnabled(true);
+-        GETUI("Rotate_Y")-> setEnabled(true);
+-        GETSPINBOX("RotateYED")-> setEnabled(true);
+-        GETUI("ResetRotateYBT")->setEnabled(true);
+-        GETSLIDER("RotateYSLD")->setEnabled(true);
+-        GETUI("Rotate_Z")-> setEnabled(true);
+-        GETSPINBOX("RotateZED")-> setEnabled(true);
+-        GETUI("ResetRotateZBT")->setEnabled(true);
+-        GETSLIDER("RotateZSLD")->setEnabled(true);
++        GETUI("Rotate_X")-> setEnabled(bEnable);
++        GETSPINBOX("RotateXED")-> setEnabled(bEnable);
++        GETUI("ResetRotateXBT")->setEnabled(bEnable);
++        GETSLIDER("RotateXSLD")->setEnabled(bEnable);
++        GETUI("Rotate_Y")-> setEnabled(bEnable);
++        GETSPINBOX("RotateYED")-> setEnabled(bEnable);
++        GETUI("ResetRotateYBT")->setEnabled(bEnable);
++        GETSLIDER("RotateYSLD")->setEnabled(bEnable);
++        GETUI("Rotate_Z")-> setEnabled(bEnable);
++        GETSPINBOX("RotateZED")-> setEnabled(bEnable);
++        GETUI("ResetRotateZBT")->setEnabled(bEnable);
++        GETSLIDER("RotateZSLD")->setEnabled(bEnable);
+ 
+         GETSPINBOX("RotateXED")->setValue(CurrentCompoObject->RotateXAxis);                       GETSLIDER("RotateXSLD")->setValue(CurrentCompoObject->RotateXAxis);
+         GETSPINBOX("RotateYED")->setValue(CurrentCompoObject->RotateYAxis);                       GETSLIDER("RotateYSLD")->setValue(CurrentCompoObject->RotateYAxis);
+         GETSPINBOX("RotateZED")->setValue(CurrentCompoObject->RotateZAxis);                       GETSLIDER("RotateZSLD")->setValue(CurrentCompoObject->RotateZAxis);
+ 
+         // Shape part
+-        GETUI("BlockShapeStyleBT")->setEnabled(true);
+-        GETUI("BlockShapeStyleED")->setEnabled(true);
+-        GETUI("BackgroundFormCB")->setEnabled(true);
+-        GETUI("PenSizeEd")->       setEnabled(true);
+-        GETUI("PenColorCB")->      setEnabled(CurrentCompoObject->PenSize!=0);
+-        GETUI("PenStyleCB")->      setEnabled(CurrentCompoObject->PenSize!=0);
+-        GETUI("OpacityCB")->       setEnabled(true);
+-        GETUI("ShadowEffectCB")->  setEnabled(true);
+-        GETUI("ShadowEffectED")->  setEnabled(CurrentCompoObject->FormShadow!=0);
+-        GETUI("ShadowColorCB")->   setEnabled(CurrentCompoObject->FormShadow!=0);
++        GETUI("BlockShapeStyleBT")->setEnabled(bEnable);
++        GETUI("BlockShapeStyleED")->setEnabled(bEnable);
++        GETUI("BackgroundFormCB")->setEnabled(bEnable);
++        GETUI("PenSizeEd")->       setEnabled(bEnable);
++        GETUI("PenColorCB")->      setEnabled(CurrentCompoObject->PenSize!=0 && bEnable);
++        GETUI("PenStyleCB")->      setEnabled(CurrentCompoObject->PenSize!=0 && bEnable);
++        GETUI("OpacityCB")->       setEnabled(bEnable);
++        GETUI("ShadowEffectCB")->  setEnabled(bEnable);
++        GETUI("ShadowEffectED")->  setEnabled(CurrentCompoObject->FormShadow!=0 && bEnable);
++        GETUI("ShadowColorCB")->   setEnabled(CurrentCompoObject->FormShadow!=0 && bEnable);
+ 
+         SetCBIndex(GETCOMBOBOX("BackgroundFormCB"),CurrentCompoObject->BackgroundForm);
+         GETSPINBOX("PenSizeEd")->      setValue(int(CurrentCompoObject->PenSize));
+diff -upr ffDiaporama.r486/src/ffDiaporama/DlgSlide/DlgImageComposer.cpp ffDiaporama.r500/src/ffDiaporama/DlgSlide/DlgImageComposer.cpp
+--- ffDiaporama.r486/src/ffDiaporama/DlgSlide/DlgImageComposer.cpp	2014-04-19 09:50:12.000000000 +0200
++++ ffDiaporama.r500/src/ffDiaporama/DlgSlide/DlgImageComposer.cpp	2016-03-13 10:47:30.000000000 +0100
+@@ -70,6 +70,7 @@ DlgImageComposer::DlgImageComposer(cDiap
+ // Initialise dialog
+ 
+ void DlgImageComposer::DoInitDialog() {
++    ToLog(LOGMSG_DEBUGTRACE,"IN:DlgImageComposer::DoInitDialog");
+     cShotComposer::DoInitDialog();
+ 
+     // Thumbnail part
+@@ -159,8 +160,6 @@ void DlgImageComposer::DoInitDialog() {
+ //====================================================================================================================
+ 
+ DlgImageComposer::~DlgImageComposer() {
+-    ToLog(LOGMSG_DEBUGTRACE,"IN:DlgImageComposer::DoInitDialog");
+-
+     ffdProject->CloseUnusedLibAv(ffdProject->CurrentCol);
+     delete ui;
+ }
+diff -upr ffDiaporama.r486/src/ffDiaporama/engine/cBaseMediaFile.cpp ffDiaporama.r500/src/ffDiaporama/engine/cBaseMediaFile.cpp
+--- ffDiaporama.r486/src/ffDiaporama/engine/cBaseMediaFile.cpp	2014-06-26 06:54:45.000000000 +0200
++++ ffDiaporama.r500/src/ffDiaporama/engine/cBaseMediaFile.cpp	2016-03-13 11:03:52.000000000 +0100
+@@ -124,7 +124,7 @@ int  Exiv2PatchVersion=EXIV2_PATCH_VERSI
+ #define VC_USERDATA     0x00000008
+ #define VC_FLUSHED      0x00000010
+ 
+-#define PIXFMT          PIX_FMT_RGB24
++#define PIXFMT          AV_PIX_FMT_RGB24
+ #define QTPIXFMT        QImage::Format_RGB888
+ 
+ //****************************************************************************************************************************************************************
+@@ -2104,6 +2104,8 @@ bool cVideoFile::DoAnalyseSound(QList<qr
+         foreach (qreal Value,*Peak) MaxVal.append(Value);
+         qSort(MaxVal.begin(),MaxVal.end());
+         qreal MaxSoundValue=MaxVal.count()>0?MaxVal[MaxVal.count()*0.9]:1;
++        if( MaxSoundValue == 0 )
++            MaxSoundValue = 1;
+ 
+         // Adjust Peak and Moyenne values by transforming them as % of the max value
+         for (int i=0;i<Peak->count();i++) {
+@@ -2598,7 +2600,7 @@ bool cVideoFile::GetChildFullInformation
+                             AVFrame *FrameRGB=ALLOCFRAME();
+                             if ((FrameRGB)&&(!Thumbnail.isNull())) {
+                                 avpicture_fill((AVPicture *)FrameRGB,Thumbnail.bits(),PIXFMT,RealW,RealH);
+-                                struct SwsContext *img_convert_ctx=sws_getContext(FrameYUV->width,FrameYUV->height,(PixelFormat)FrameYUV->format,RealW,RealH,PIXFMT,SWS_FAST_BILINEAR,NULL,NULL,NULL);
++                                struct SwsContext *img_convert_ctx=sws_getContext(FrameYUV->width,FrameYUV->height,(AVPixelFormat)FrameYUV->format,RealW,RealH,PIXFMT,SWS_FAST_BILINEAR,NULL,NULL,NULL);
+                                 if (img_convert_ctx!=NULL) {
+                                     int ret = sws_scale(img_convert_ctx,FrameYUV->data,FrameYUV->linesize,0,FrameYUV->height,FrameRGB->data,FrameRGB->linesize);
+                                     if (ret>0) {
+@@ -2919,9 +2921,9 @@ int cVideoFile::VideoFilter_Open() {
+             ToLog(LOGMSG_CRITICAL,QString("Error in cVideoFile::VideoFilter_Open : avfilter_graph_create_filter: src"));
+             return result;
+         }
+-        std::vector<PixelFormat> m_formats;
+-        m_formats.push_back(PIX_FMT_YUVJ420P);
+-        m_formats.push_back(PIX_FMT_NONE);      /* always add none to get a terminated list in Libav world */
++        std::vector<AVPixelFormat> m_formats;
++        m_formats.push_back(AV_PIX_FMT_YUVJ420P);
++        m_formats.push_back(AV_PIX_FMT_NONE);      /* always add none to get a terminated list in Libav world */
+         if ((result=avfilter_graph_create_filter(&VideoFilterOut,outFilter,"out",NULL,NULL,VideoFilterGraph))<0) {
+             ToLog(LOGMSG_CRITICAL,QString("Error in cVideoFile::VideoFilter_Open : avfilter_graph_create_filter: out"));
+             return result;
+@@ -3754,7 +3756,7 @@ QImage *cVideoFile::ConvertYUVToRGB(bool
+         struct SwsContext *img_convert_ctx=sws_getContext(
+             Frame->width,                                                     // Src width
+             Frame->height,                                                    // Src height
+-            (PixelFormat)Frame->format,                                       // Src Format
++            (AVPixelFormat)Frame->format,                                       // Src Format
+             W,                                                                // Destination width
+             H,                                                                // Destination height
+             PIXFMT,                                                           // Destination Format
+@@ -3837,11 +3839,11 @@ QImage *cVideoFile::ImageAt(bool Preview
+ int cVideoFile::getThreadFlags(AVCodecID ID) {
+     int Ret=0;
+     switch (ID) {
+-        case CODEC_ID_PRORES:
+-        case CODEC_ID_MPEG1VIDEO:
+-        case CODEC_ID_DVVIDEO:
+-        case CODEC_ID_MPEG2VIDEO:   Ret=FF_THREAD_SLICE;                    break;
+-        case CODEC_ID_H264 :        Ret=FF_THREAD_FRAME|FF_THREAD_SLICE;    break;
++        case AV_CODEC_ID_PRORES:
++        case AV_CODEC_ID_MPEG1VIDEO:
++        case AV_CODEC_ID_DVVIDEO:
++        case AV_CODEC_ID_MPEG2VIDEO:   Ret=FF_THREAD_SLICE;                    break;
++        case AV_CODEC_ID_H264 :        Ret=FF_THREAD_FRAME|FF_THREAD_SLICE;    break;
+         default:                    Ret=FF_THREAD_FRAME;                    break;
+     }
+     return Ret;
+diff -upr ffDiaporama.r486/src/ffDiaporama/engine/cDeviceModelDef.h ffDiaporama.r500/src/ffDiaporama/engine/cDeviceModelDef.h
+--- ffDiaporama.r486/src/ffDiaporama/engine/cDeviceModelDef.h	2014-04-12 06:41:33.000000000 +0200
++++ ffDiaporama.r500/src/ffDiaporama/engine/cDeviceModelDef.h	2016-03-13 11:03:52.000000000 +0100
+@@ -53,7 +53,6 @@ extern "C" {
+ 
+ #include <libavutil/mathematics.h>
+ #include <libavutil/pixdesc.h>
+-#include <libavutil/audioconvert.h>
+ 
+ #include <libavcodec/avcodec.h>
+ 
+@@ -84,11 +83,16 @@ extern "C" {
+ #elif (LIBAVUTIL_VERSION_MICRO>=100)&&(LIBAVCODEC_VERSION_MICRO>=100)&&(LIBAVFORMAT_VERSION_MICRO>=100)&&(LIBAVDEVICE_VERSION_MICRO>=100)&&(LIBAVFILTER_VERSION_MICRO>=100)&&(LIBSWSCALE_VERSION_MICRO>=100)
+     #define FFMPEG
+     #include "libswresample/swresample.h"
+-    #define RESAMPLE_MAX_CHANNELS SWR_CH_MAX
+-    #include "libavfilter/avcodec.h"
++    #include "libavcodec/avcodec.h"
+     #include "libavfilter/buffersink.h"
+     #include "libavfilter/buffersrc.h"
+-    #if     ((LIBAVUTIL_VERSION_INT>=AV_VERSION_INT(52,66,100))&&(LIBAVCODEC_VERSION_INT>=AV_VERSION_INT(55,52,102))&&(LIBAVFORMAT_VERSION_INT>=AV_VERSION_INT(55,33,100))&& \
++    #if     ((LIBAVUTIL_VERSION_INT>=AV_VERSION_INT(54,15,100))&&(LIBAVCODEC_VERSION_INT>=AV_VERSION_INT(56,13,100))&&(LIBAVFORMAT_VERSION_INT>=AV_VERSION_INT(56,15,102))&&   \
++             (LIBAVDEVICE_VERSION_INT>=AV_VERSION_INT(56,3,100))&&(LIBAVFILTER_VERSION_INT>=AV_VERSION_INT(5,2,103))&&(LIBSWSCALE_VERSION_INT>=AV_VERSION_INT(3,1,101))&&   \
++             (LIBSWRESAMPLE_VERSION_INT>=AV_VERSION_INT(1,1,100)))
++    #define FFMPEGVERSIONINT    250
++        #define FFMPEGVERSION       "FFmpeg 2.5 or higher"
++        #define RESAMPLE_MAX_CHANNELS 32
++    #elif   ((LIBAVUTIL_VERSION_INT>=AV_VERSION_INT(52,66,100))&&(LIBAVCODEC_VERSION_INT>=AV_VERSION_INT(55,52,102))&&(LIBAVFORMAT_VERSION_INT>=AV_VERSION_INT(55,33,100))&& \
+              (LIBAVDEVICE_VERSION_INT>=AV_VERSION_INT(55,10,100))&&(LIBAVFILTER_VERSION_INT>=AV_VERSION_INT(4,2,100))&&(LIBSWSCALE_VERSION_INT>=AV_VERSION_INT(2,5,102))&&   \
+              (LIBSWRESAMPLE_VERSION_INT>=AV_VERSION_INT(0,18,100)))
+         #define FFMPEGVERSIONINT    220
+@@ -108,38 +112,18 @@ extern "C" {
+     #else
+         // unsupported version
+     #endif
+-#endif
++    #if (FFMPEGVERSIONINT >=250)
++   #define RESAMPLE_MAX_CHANNELS 32
++    #else
++   #define RESAMPLE_MAX_CHANNELS SWR_CH_MAX
++    #endif
++ #endif
+ }
+ 
+ #ifndef AVCODEC_MAX_AUDIO_FRAME_SIZE
+     #define AVCODEC_MAX_AUDIO_FRAME_SIZE 192000
+ #endif
+ 
+-#if !defined(FF_API_CODEC_ID)
+-    #define AV_CODEC_ID_NONE        CODEC_ID_NONE
+-    #define AV_CODEC_ID_MJPEG       CODEC_ID_MJPEG
+-    #define AV_CODEC_ID_MPEG2VIDEO  CODEC_ID_MPEG2VIDEO
+-    #define AV_CODEC_ID_MPEG4       CODEC_ID_MPEG4
+-    #define AV_CODEC_ID_H264        CODEC_ID_H264
+-    #define AV_CODEC_ID_VP8         CODEC_ID_VP8
+-    #define AV_CODEC_ID_FLV1        CODEC_ID_FLV1
+-    #define AV_CODEC_ID_THEORA      CODEC_ID_THEORA
+-    #define AV_CODEC_ID_WMV1        CODEC_ID_WMV1
+-    #define AV_CODEC_ID_WMV2        CODEC_ID_WMV2
+-    #define AV_CODEC_ID_WMV3        CODEC_ID_WMV3
+-    #define AV_CODEC_ID_PCM_S16LE   CODEC_ID_PCM_S16LE
+-    #define AV_CODEC_ID_MP3         CODEC_ID_MP3
+-    #define AV_CODEC_ID_AAC         CODEC_ID_AAC
+-    #define AV_CODEC_ID_AC3         CODEC_ID_AC3
+-    #define AV_CODEC_ID_VORBIS      CODEC_ID_VORBIS
+-    #define AV_CODEC_ID_MP2         CODEC_ID_MP2
+-    #define AV_CODEC_ID_AMR_WB      CODEC_ID_AMR_WB
+-    #define AV_CODEC_ID_AMR_NB      CODEC_ID_AMR_NB
+-    #define AV_CODEC_ID_FLAC        CODEC_ID_FLAC
+-    #define AV_CODEC_ID_WMAV1       CODEC_ID_WMAV1
+-    #define AV_CODEC_ID_WMAV2       CODEC_ID_WMAV2
+-#endif
+-
+ #if !defined(avcodec_free_frame)
+     #define avcodec_free_frame  av_freep
+ #endif
+diff -upr ffDiaporama.r486/src/ffDiaporama/engine/_EncodeVideo.cpp ffDiaporama.r500/src/ffDiaporama/engine/_EncodeVideo.cpp
+--- ffDiaporama.r486/src/ffDiaporama/engine/_EncodeVideo.cpp	2014-06-23 09:39:23.000000000 +0200
++++ ffDiaporama.r500/src/ffDiaporama/engine/_EncodeVideo.cpp	2016-03-13 11:09:23.000000000 +0100
+@@ -20,7 +20,7 @@
+ 
+ #include "_EncodeVideo.h"
+ 
+-#define PIXFMT      PIX_FMT_RGB24
++#define PIXFMT      AV_PIX_FMT_RGB24
+ #define QTPIXFMT    QImage::Format_RGB888
+ 
+ //*************************************************************************************************************************************************
+@@ -185,11 +185,11 @@ void cEncodeVideo::CloseEncoder() {
+ int cEncodeVideo::getThreadFlags(AVCodecID ID) {
+     int Ret=0;
+     switch (ID) {
+-        case CODEC_ID_PRORES:
+-        case CODEC_ID_MPEG1VIDEO:
+-        case CODEC_ID_DVVIDEO:
+-        case CODEC_ID_MPEG2VIDEO:   Ret=FF_THREAD_SLICE;                    break;
+-        case CODEC_ID_H264 :        Ret=FF_THREAD_FRAME|FF_THREAD_SLICE;    break;
++        case AV_CODEC_ID_PRORES:
++        case AV_CODEC_ID_MPEG1VIDEO:
++        case AV_CODEC_ID_DVVIDEO:
++        case AV_CODEC_ID_MPEG2VIDEO:   Ret=FF_THREAD_SLICE;                    break;
++        case AV_CODEC_ID_H264 :        Ret=FF_THREAD_FRAME|FF_THREAD_SLICE;    break;
+         default:                    Ret=FF_THREAD_FRAME;                    break;
+     }
+     return Ret;
+@@ -414,8 +414,11 @@ bool cEncodeVideo::OpenVideoStream(sVide
+     // Setup codec parameters
+     VideoStream->codec->width               =ImageWidth;
+     VideoStream->codec->height              =ImageHeight;
+-    VideoStream->codec->pix_fmt             =PIX_FMT_YUV420P;
++    VideoStream->codec->pix_fmt             =AV_PIX_FMT_YUV420P;
+     VideoStream->codec->time_base           =VideoFrameRate;
++    #if FFMPEGVERSIONINT>=250
++    VideoStream->time_base                  = VideoFrameRate;   //new ffmpeg 2.5.0!!!!
++    #endif
+     VideoStream->codec->sample_aspect_ratio =PixelAspectRatio;
+     VideoStream->sample_aspect_ratio        =PixelAspectRatio;
+     VideoStream->codec->gop_size            =12;
+@@ -441,7 +444,7 @@ bool cEncodeVideo::OpenVideoStream(sVide
+     } else if (codec->id==AV_CODEC_ID_MJPEG) {
+ 
+         //-qscale 2 -qmin 2 -qmax 2
+-        VideoStream->codec->pix_fmt             =PIX_FMT_YUVJ420P;
++        VideoStream->codec->pix_fmt             =AV_PIX_FMT_YUVJ420P;
+         VideoStream->codec->qmin                =2;
+         VideoStream->codec->qmax                =2;
+         VideoStream->codec->bit_rate_tolerance  =int(qreal(int64_t(ImageWidth)*int64_t(ImageHeight)*int64_t(VideoFrameRate.den))/qreal(VideoFrameRate.num))*10;
+diff -upr ffDiaporama.r486/src/ffDiaporama_lib/cDatabase.cpp ffDiaporama.r500/src/ffDiaporama_lib/cDatabase.cpp
+--- ffDiaporama.r486/src/ffDiaporama_lib/cDatabase.cpp	2014-04-12 07:49:47.000000000 +0200
++++ ffDiaporama.r500/src/ffDiaporama_lib/cDatabase.cpp	2016-03-13 10:44:45.000000000 +0100
+@@ -462,7 +462,8 @@ cFilesTable::cFilesTable(cDatabase *Data
+                             "BasicProperties    text,"\
+                             "ExtendedProperties text,"\
+                             "Thumbnail16        binary,"\
+-                            "Thumbnail100       binary"\
++                            "Thumbnail100       binary,"\
++                            "SoundWave          text"\
+                      ")";
+     CreateIndexQuery.append("CREATE INDEX idx_MediaFiles_Key ON MediaFiles (Key)");
+     CreateIndexQuery.append("CREATE INDEX idx_MediaFiles_FolderKey ON MediaFiles (FolderKey,ShortName)");
+@@ -811,7 +812,11 @@ bool cFilesTable::GetAnalyseSound(qlongl
+     QSqlQuery Query(Database->db);
+     *RealAudioDuration=0;
+     if (RealVideoDuration) *RealVideoDuration=0;
+-    Query.prepare((QString("SELECT SoundWave FROM %1 WHERE Key=:Key").arg(TableName)));
++    if( !Query.prepare((QString("SELECT SoundWave FROM %1 WHERE Key=:Key").arg(TableName))) )
++    {
++        DisplayLastSQLError(&Query);
++        return false;
++    }
+     Query.bindValue(":Key",FileKey,QSql::In);
+     if (!Query.exec()) {
+         DisplayLastSQLError(&Query);
+diff -upr ffDiaporama.r486/src/ffDiaporama_lib/ImageFilters.cpp ffDiaporama.r500/src/ffDiaporama_lib/ImageFilters.cpp
+--- ffDiaporama.r486/src/ffDiaporama_lib/ImageFilters.cpp	2014-01-19 08:27:13.000000000 +0100
++++ ffDiaporama.r500/src/ffDiaporama_lib/ImageFilters.cpp	2016-03-13 10:46:02.000000000 +0100
+@@ -836,7 +836,7 @@ void BlurScanLine(float *kernel,int kern
+             scale = 0.0;
+             k = kernel;
+             src = source;
+-            for (i=0;i<columns;++k,src+=offset) {
++            for (i=0;i<columns;++k,src+=offset,i++) {
+                 if((i >= (x-kern_width/2)) && (i <= (x+kern_width/2))) {
+                     aggregate.red  +=(*k)*qRed(*src);
+                     aggregate.green+=(*k)*qGreen(*src);
