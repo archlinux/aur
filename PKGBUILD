@@ -14,7 +14,7 @@ source=("http://codingteam.net/project/sima/download/file/mpd_sima-$pkgver.tar.x
         "mpd-sima.service")
 
 build() {
-    cd "$srcdir/MPD_sima-${pkgver}"
+    cd "${srcdir}/MPD_sima-${pkgver}"
 
     sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' \
         mpd-sima simadb_cli
