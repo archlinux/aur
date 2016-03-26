@@ -1,13 +1,19 @@
 [Unit]
 Description=Openbazaar Marketplace Server
+After=network.target
 
 [Service]
 Type=forking
 User=openbazaar
 WorkingDirectory=/var/lib/openbazaard-standalone/
-ExecStart=/usr/bin/openbazaard-standalone start
-ExecStop=/usr/bin/openbazaard-standalone stop
-PIDFile=/tmp/openbazaard-standalone.pid
+TimeoutSec=0
+EnvironmentFile=/etc/conf.d/openbazaard-standalone.conf
+ExecStart=/var/lib/openbazaard-standalone/openbazaard-standalone start $ARGS
+ExecStop=/var/lib/openbazaard-standalone/openbazaard-standalone stop
+
+## Security
+InaccessibleDirectories=/home
 
 [Install]
 WantedBy=multi-user.target
+
