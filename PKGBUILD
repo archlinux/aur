@@ -21,19 +21,14 @@ options=(!emptydirs)
 source=("git+$url#tag=$_commit")
 sha256sums=('SKIP')
 
-
-prepare() {
+build() {
   cd ${pkgname#lib32-}
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export LDFLAGS='-m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-  NOCONFIGURE=1 ./autogen.sh
-}
-
-build() {
-  cd ${pkgname#lib32-}
   export MOC_QT4=/usr/bin/moc-qt4 PYTHON=/usr/bin/python2
+  NOCONFIGURE=1 ./autogen.sh
 
   ./configure \
     --prefix=/usr \
