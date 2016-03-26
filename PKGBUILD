@@ -1,5 +1,5 @@
 pkgname=sph-pack-git
-pkgver=20
+pkgver=21
 pkgrel=1
 pkgdesc="free software file packaging solution. compounding/compression/encryption and the rerverse with only one standard file format per task"
 arch=(any)
@@ -20,5 +20,5 @@ pkgver() {
 
 package() {
   cd $pkgname
-  ./exe/install "$pkgdir"
+  ./exe/install --prefix="$pkgdir"
 }
