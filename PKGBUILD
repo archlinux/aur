@@ -2,7 +2,7 @@
 
 _pkgname=breeze-icons
 pkgname="${_pkgname}-git"
-pkgver=5.20.0.rc1.r2.g2e36f9f
+pkgver=5.20.0.r23.gc69a57d
 pkgrel=1
 pkgdesc="Breeze icon themes for KDE Plasma. (GIT version)"
 arch=('any')
