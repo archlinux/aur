@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-html-dom'
-pkgver='0.053'
+pkgver='0.056'
 pkgrel='1'
 pkgdesc="A Perl implementation of the HTML Document Object Model"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-css-dom>=0.07' 'perl-html-encoding' 'perl-html-parser>=3' 'perl-html-tagset' 'perl-http-message>=1.34' 'perl-timedate' 'perl-uri')
+depends=('perl-css-dom>=0.07' 'perl-html-encoding' 'perl-html-parser>=3' 'perl-html-tagset' 'perl-http-message' 'perl-timedate' 'perl-uri')
 makedepends=()
-url='http://search.cpan.org/dist/HTML-DOM'
-source=('http://search.cpan.org/CPAN/authors/id/S/SP/SPROUT/HTML-DOM-0.053.tar.gz')
-md5sums=('1e401513ca98125858ea1dbebe62459f')
-sha512sums=('310ed49d24fd6a11096bfef93b3106c7a6239fae8170b95460c84df8e02684b07d0acc772380708aaaf1b2079f08c411824596616e3f07b3e88a928efca26559')
-_distdir="HTML-DOM-0.053"
+url='https://metacpan.org/release/HTML-DOM'
+source=('http://search.cpan.org/CPAN/authors/id/S/SP/SPROUT/HTML-DOM-0.056.tar.gz')
+md5sums=('65efe046c73b8242bc2228baa64118ff')
+sha512sums=('d3678813a543c6bd20f9b7f69f95ce070afde7bc2e7e14c9aaa3aa4f2e649701386afcd73d9bfed57aaf62e2d8876332e1980516a8de639c994e3c2c11ffd5ec')
+_distdir="HTML-DOM-0.056"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
