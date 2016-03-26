@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-je'
-pkgver='0.060'
+pkgver='0.066'
 pkgrel='1'
 pkgdesc="Pure-Perl ECMAScript (JavaScript) Engine"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-timedate')
 makedepends=()
-url='http://search.cpan.org/dist/JE'
-source=('http://search.cpan.org/CPAN/authors/id/S/SP/SPROUT/JE-0.060.tar.gz')
-md5sums=('f256a0ec25d57c0ea0d58cf4930dc997')
-sha512sums=('9dfe88797cb8946b6c360c59cb5087523ec334e7f60933aab26da9fc2aa58c4cedf437393dd0d47de304ef9dba597690d754dbab112a858fb61950bef4660499')
-_distdir="JE-0.060"
+url='https://metacpan.org/release/JE'
+source=('http://search.cpan.org/CPAN/authors/id/S/SP/SPROUT/JE-0.066.tar.gz')
+md5sums=('63ed03bd82fbae5021a7f3f200c18799')
+sha512sums=('e3352df8d1f0afd458866f7cee86da3397a9da3b9e6f59d44f5b50fb30dfd926e9e7e2e4fa4bfacdf9b6b86b7c3260443ab6ebabb971a7b4158d149c9b2c7a30')
+_distdir="JE-0.066"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
