@@ -45,20 +45,24 @@ _srcfolder=OpenBazaar-Server-$pkgver
 package(){
   cd $srcdir/
 
-  msg2 "Install systemd service"
+msg2 "Install systemd service"
   install -Dm644 $srcdir/${pkgname}.service $pkgdir/usr/lib/systemd/system/${pkgname}.service
 
-  msg2 "Install conf file"
+msg2 "Install conf file"
   install -Dm644 $srcdir/${pkgname}.conf $pkgdir/etc/conf.d/${pkgname}.conf
 
   install -dm755 $pkgdir/var/lib/
 
   cp -r ${_srcfolder} $pkgdir/var/lib/${pkgname}
 
-  msg2 "Python2 bytecode generation"
+msg2 "Fixing debug.txt not found"
+  mkdir $pkgdir/var/lib/openbazaard/.openbazaar
+  ln -sr /var/lib/openbazaard/.openbazaar/debug.log $pkgdir/var/lib/openbazaard/debug.txt
+
+msg2 "Python2 bytecode generation"
   cd $pkgdir/var/lib/${pkgname}/ && python2 -m compileall .
 
-  msg2 "Remove git folder"
+msg2 "Remove git folder"
   rm -rf $pkgdir/var/lib/${pkgname}/{.git*,.eslint*,.travis*}
 }
 

@@ -3,7 +3,6 @@ home=/var/lib/openbazaard
 
 post_install() {
   _mkuser
-  _mkdbfolder
   _chown
 }
 
@@ -21,7 +20,7 @@ post_remove() {
 }
 
 _chown() {
-  chown -R $usr:$usr $home $log
+  chown -R $usr:$usr $home
 }
 
 _mkuser() {
@@ -36,11 +35,5 @@ _mkuser() {
 _rmuser() {
   echo -n "Removing openbazaar user... "
   userdel -rf $usr 2>/dev/null
-  echo "done"
-}
-
-_mkdbfolder() {
-  echo -n "Creating database folder... "
-  mkdir -p $home/$dbdata
   echo "done"
 }
