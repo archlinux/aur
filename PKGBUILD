@@ -33,6 +33,10 @@ msg2 "Creating an optimized standalone executable"
   pip2 install https://github.com/pyinstaller/pyinstaller/archive/develop.zip
   env/bin/pyinstaller -F ${_pkgname}.spec
 
+msg2 "Symlinking to allow gui to automatically call daemon"
+  install -dm755 $pkgdir/opt
+  ln -sr /var/lib/openbazaard-standalone $pkgdir/opt/OpenBazaar-Server
+
 msg2 "Install systemd service"
   install -Dm644 $srcdir/${_pkgname}.service $pkgdir/usr/lib/systemd/system/${_pkgname}.service
 
