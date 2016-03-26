@@ -2,7 +2,7 @@
 
 pkgname=rapidminer-studio
 pkgver=7.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Empowers data scientists and business analysts to effortlessly design predictive analytics from mashup to modeling to deployment"
 arch=('any')
 url="https://rapidminer.com/products/studio/"
@@ -28,11 +28,11 @@ package() {
     unzip -p "$srcdir/$pkgname/lib/rapidminer-studio-core-$pkgver.jar" \
              com/rapidminer/resources/rapidminer_frame_icon_128.png > "$pkgname.png"
     install -Dm644 "$pkgname.png" "$pkgdir/usr/share/pixmaps/$pkgname.png"
-    cp -R "${srcdir}/${pkgname}/" "${pkgdir}/opt/"
+    cp -R "$srcdir/$pkgname/" "$pkgdir/opt/"
 
-    mkdir -p "${pkgdir}/usr/bin/"
-    mkdir -p "${pkgdir}/usr/share/applications/"
-    mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+    mkdir -p "$pkgdir/usr/bin/"
+    mkdir -p "$pkgdir/usr/share/applications/"
+    mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
 
     install -Dm655 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
     install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
