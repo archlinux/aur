@@ -1,8 +1,8 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-exporter-lite'
-pkgver='0.06'
+pkgver='0.08'
 pkgrel='1'
 pkgdesc="lightweight exporting of functions and variables"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='https://metacpan.org/release/Exporter-Lite'
-source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Exporter-Lite-0.06.tar.gz')
-md5sums=('309d37c45180b3c7716caf3d2ebe1617')
-sha512sums=('97f2127d2dad590522c8e38b05b5cdf43026fe91c0df4030a6d129392c4aea63170f9b1dc17740325cd05e797ed8d897d1663f429c880155dc74fa0c58ca81b3')
-_distdir="Exporter-Lite-0.06"
+source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Exporter-Lite-0.08.tar.gz')
+md5sums=('4982e3e96b9536cbce8b1f708eb718a1')
+sha512sums=('8c6ff5a88c1b810d74156c5d84695cfde6f555e0fc663804123e2a96f5e2235a5adeebbf24b18301ed2c3fb57f76788ecfdf301b26263279e92a88a9143b8953')
+_distdir="Exporter-Lite-0.08"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
