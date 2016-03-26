@@ -1,14 +1,14 @@
 # Maintainer: tuftedocelot@fastmail.fm
 _pkgname=exa
 pkgname=${_pkgname}-git
-pkgver=554
+pkgver=560
 pkgrel=1
 pkgdesc='Replacement for ls written in Rust.'
 arch=('i686' 'x86_64')
 url="https://github.com/ogham/exa"
 license=('MIT')
 depends=('libssh2')
-makedepends=('cmake' 'rust' 'cargo')
+makedepends=('cmake' 'rust' 'cargo' 'git')
 source=("git+https://github.com/ogham/exa.git")
 md5sums=('SKIP')
 
