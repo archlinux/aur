@@ -3,7 +3,7 @@
 
 pkgname=libimobiledevice-git
 epoch=1
-pkgver=1.2.0.r2.g1ff3448
+pkgver=1.2.0.r13.gdf1f5c4
 pkgrel=2
 pkgdesc="libimobiledevice is a software library that talks the protocols to support iPhone and iPod Touch devices on Linux"
 url="http://www.libimobiledevice.org/"
@@ -21,6 +21,12 @@ pkgver() {
 	cd libimobiledevice
 
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd libimobiledevice
+
+	find . -type f -exec sed -re 's|SSLv3_method\(|SSLv23_method\(|g' -i {} \;
 }
 
 build() {
