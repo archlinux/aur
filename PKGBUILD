@@ -2,7 +2,7 @@
 
 pkgname=python2-atomicwrites
 _pkgname=python-atomicwrites
-pkgver=0.1.9
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Atomic file writes on POSIX"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python2-setuptools')
 depends=('python2')
 checkdepends=('python2-pytest')
 source=(${_pkgname}-${pkgver}.tar.gz::"https://github.com/untitaker/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('a4737f08efdbbed963e15a1fc28dba23b397654628553153a7e19de6d61dae02')
+sha256sums=('0325c610fefba1951374019ba534590ea47e28065d399b1a845db7159923df87')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
