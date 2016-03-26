@@ -1,6 +1,6 @@
 # Maintainer: Victor A. Santos  <victoraur.santos@gmail.com>
 pkgname=qsubber-git
-pkgver=r31.9fc60eb
+pkgver=r42.9e081aa
 pkgrel=1
 pkgdesc="OpenSubtitles.org client for download subtiltes"
 arch=('x86' 'x86_64')
