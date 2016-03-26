@@ -57,7 +57,7 @@ _chrome_package() {
     # Install to single place for linking
     #install -Dm644 lpchrome_$_chromver.crx "$pkgdir"/usr/share/lastpass/lpchrome_$_chromver.crx
     install -Dm644 lpchrome_linux_$_chromver.crx "$pkgdir"/usr/share/lastpass/lpchrome_linux_$_chromver.crx
-    install -Dm755 nplastpass$_64 "$pkgdir"/etc/opt/chrome/native-messaging-hosts/nplastpass$_64
+    install -Dm755 lplinux/nplastpass$_64 "$pkgdir"/etc/opt/chrome/native-messaging-hosts/nplastpass$_64
 
     # 64-bit?
     sed "s|/nplastpass|/nplastpass$_64|" \
