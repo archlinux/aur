@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="A little gtk tool for managing all your stuff"
 url="http://www.stuffkeeper.org"
 license=('GPL')
-depends=('sqlite3' 'python' 'gtk2' 'libglade' 'gpgme' 'xdg-utils')
+depends=('sqlite3' 'python' 'gtk2' 'libglade' 'gpgme' 'xdg-utils' 'libunique')
 makedepends=('gcc' 'glibc' 'git' 'intltool' 'gob2' 'pkgconfig' 'vala>=0.7')
 md5sums=()
 options=('!libtool')
