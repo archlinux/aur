@@ -2,7 +2,7 @@
 pkgname=fisherman-git
 _gitname=fisherman
 pkgver=1.3.1.r19.g88b0e6e
-pkgrel=2
+pkgrel=3
 pkgdesc="A blazing fast, modern plugin manager for fish"
 arch=('any')
 url="http://fisherman.sh/"
@@ -16,7 +16,7 @@ source=(
   "config-fisherman.fish"
 )
 sha512sums=('SKIP'
-            '636c02e01c16f4aa435dccd843a994cefde5e3a751bbd4f7e01786b0ce1b8d49399788c0c69158c1a376a0ceaba852b52fa2541b7ef6d257fa2b49e182396cb5')
+            '5ba23cd8a2a08153e3d992cd4e9a717f4016af447b5578c26053a002de5cf2276fe1f01c704744fdb50d06f20e89fe42e2ccf9e1e99a12850b46b35c684d05dd')
 
 pkgver() {
   cd "${_gitname}"
@@ -32,8 +32,6 @@ package() {
   cd "${_gitname}"
   # completions
   install -Dt "${fisherpath}/completions" completions/*
-  # not needed because man pages are installed globally (see below)
-  rm functions/man.fish
   # functions
   install -Dt "${fisherpath}/functions" functions/*
   # this will be included from the config-fisherman.fish ;)

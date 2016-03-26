@@ -1,5 +1,5 @@
-# If fisher_home is not provided, use the directory of this file:
-set -q fisher_home; or set -g fisher_home (dirname (status -f))
+# If fisher_home is not provided, use the global directory:
+set -q fisher_home; or set -g fisher_home (dirname (status -f))/../fisherman
 
 # If fisher_config is not provided, set it up:
 set -q fisher_config
