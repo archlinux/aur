@@ -1,6 +1,6 @@
  #Maintainer: Kobus van Schoor <pbscube at gmail dot com>
 pkgname=nihdb
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="An easy-to-use C++ database library"
 url="http://github.com/Cube777/nihdb"
