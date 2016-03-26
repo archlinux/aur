@@ -1,0 +1,22 @@
+diff --git a/configure b/configure
+index d3c59ac..34da035 100755
+--- a/configure
++++ b/configure
+@@ -88,7 +88,7 @@ fi
+ tryldflag () {
+ printf "checking whether linker accepts %s... " "$2"
+ echo "typedef int x;" > "$tmpc"
+-if $CC $LDFLAGS_TRY -nostdlib -shared "$2" -o "$tmpo" "$tmpc" >/dev/null 2>&1 ; then
++if $CC $LDFLAGS_TRY -nostdlib -shared "$2" -o "$tmpo" "$tmpc" ; then
+ printf "yes\n"
+ eval "$1=\"\${$1} \$2\""
+ eval "$1=\${$1# }"
+@@ -223,7 +223,7 @@ tryflag CFLAGS_AUTO -fPIE
+ tryflag CFLAGS_AUTO -fstack-protector-all
+ tryldflag LDFLAGS_AUTO -Wl,-z,now
+ tryldflag LDFLAGS_AUTO -Wl,-z,relro
+-tryldflag LDFLAGS_AUTO -Wl,-pie
++tryldflag LDFLAGS_AUTO -pie
+ 
+ have_pkgconfig=no
+ printf "checking for pkg-config... "

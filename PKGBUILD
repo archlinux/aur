@@ -1,27 +1,30 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis
-pkgver=0.1
-pkgrel=2
+pkgver=0.2
+pkgrel=1
 pkgdesc='modern, legacy free, simple yet efficient vim-like editor'
 arch=('i686' 'x86_64')
-url='http://repo.or.cz/vis.git'
+url='http://www.brain-dump.org/projects/vis/'
 depends=('ncurses' 'libtermkey' 'lua')
-optdepends=('lua-lpeg: for syntax highlighting')
 makedepends=('markdown')
+optdepends=('lua-lpeg: for syntax highlighting')
 license=('custom:ISC')
-source=("http://www.brain-dump.org/projects/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('c695b095f85f4360590865b0b7007aa019463b24c1026c0e624a78b31f3ac54b')
+source=("http://www.brain-dump.org/projects/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+	'pie.patch')
+sha256sums=('3e5b81d760849c56ee378421e9ba0f653c641bf78e7594f71d85357be99a752d'
+	'44edf0d92e1e0e5533f9d8cc5a948aaa91c7f2fc5f3617e103c57588b335d093')
 
 prepare() {
 	cd "${pkgname}-${pkgver}/"
 
-	sed -i '/^\s\(C\|LD\)FLAGS_LUA =/s/lua5.2/lua/g' config.mk
+	patch -Np1 < "${srcdir}/pie.patch"
 }
 
 build() {
 	cd "${pkgname}-${pkgver}/"
 
+	./configure --prefix=/usr
 	make
 
 	markdown README.md > README.html
