@@ -1,5 +1,5 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-www-scripter-plugin-ajax'
 pkgver='0.09'
@@ -8,9 +8,9 @@ pkgdesc="WWW::Scripter plugin that provides the XMLHttpRequest object"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-constant-lexical' 'perl-html-dom' 'perl-http-cookies>=5.833' 'perl-http-daemon' 'perl-http-message' 'perl-je>=0.041' 'perl-libwww' 'perl-uri>=1' 'perl-www-scripter' 'perl-www-scripter-plugin-javascript>=0.002' 'perl-xml-dom-lite>=0.09')
+depends=('perl-libwww' 'perl-html-dom' 'perl-je>=0.041' 'perl-uri' 'perl-www-scripter' 'perl-www-scripter-plugin-javascript>=0.002' 'perl-xml-dom-lite>=0.09' 'perl-constant-lexical')
 makedepends=()
-url='http://search.cpan.org/dist/WWW-Scripter-Plugin-Ajax'
+url='https://metacpan.org/release/WWW-Scripter-Plugin-Ajax'
 source=('http://search.cpan.org/CPAN/authors/id/S/SP/SPROUT/WWW-Scripter-Plugin-Ajax-0.09.tar.gz')
 md5sums=('b5460a6e639d79218f610990ee114649')
 sha512sums=('d16da9c72d4ac7e050baa19b8bed05bea4970efd078292ade85d2ec5f0ba813437cb518e784c489ad991f9468c61e779408e03488a8d4f469490f7f056696924')
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
