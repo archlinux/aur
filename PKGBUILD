@@ -1,7 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=guile4emacs-git
-pkgver=r17563.a9733af
+_gitname="guile"
+pkgver=r17564.15ca784
 pkgrel=1
 pkgdesc="patched version of guile for guile-emacs"
 arch=('i686' 'x86_64')
@@ -13,9 +14,8 @@ conflicts=('guile-git')
 provides=('guile-git')
 options=('!strip' '!makeflags')
 install=guile.install
-source=("guile4emacs::git+https://gitlab.com/dustyweb/guile.git#branch=merge-bipt-elisp-wip")
+source=("git://git.sv.gnu.org/$_gitname.git#branch=wip-elisp")
 md5sums=('SKIP')
-_gitname="guile4emacs"
 
 pkgver() {
   cd "$srcdir"/"$_gitname"
