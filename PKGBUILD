@@ -1,6 +1,6 @@
 # Maintainer: Saiki81 <saikia81 at hotmail dot com>
 # adapted from package: pianoteq-stage-trial-bin
-# package Creator: CrocoDuck <crocoduck dot oducks at gmail dot com> 
+# adapted pkgbuild creator: CrocoDuck <crocoduck dot oducks at gmail dot com> 
 
 
 pkgname=pianoteq-stage
@@ -12,35 +12,36 @@ url="https://www.pianoteq.com/pianoteq5"
 license=('LGPL')
 depends=('alsa-lib' 'freetype2' 'libxext')
 makedepends=('gendesk' 'p7zip')
+optdepends=()
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}" "pianoteq-stage-bin", "pianoteq-standard-trial-bin")
 source=('https://www.pianoteq.com/images/logo/pianoteq_icon_128.png')
 sha256sums=('94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 
 # Define the target archive filename:
-_downfname=pianoteq_stage_linux_v${pkgver//./}.7z
+_pianoteqfilename=pianoteq_stage_linux_v${pkgver//./}.7z
 # Define its checksum:
-_downsha256sum=c6304a2c6c6c422df5216976715b0bec2e77ad257adfad697d3902401d1bdda0
+_pianoteqsha256sum=c6304a2c6c6c422df5216976715b0bec2e77ad257adfad697d3902401d1bdda0
 
 prepare(){
         # the source package must be downloaded manually
         # this can be done by going to the link here:
         # https://www.pianoteq.com/download?file=pianoteq_stage_linux_v551.7z
         # the checksum will still be validated
-	if [ ! -f ../pianoteq_stage_linux_v551.7z ]
+	if [ ! -f "../$_pianoteqfilename" ]
 	then
             echo "File not found!"
             echo -e "For this package a mannual download of the pianoteq software is needed: 'https://www.pianoteq.com/download?file=pianoteq_stage_linux_v551.7z'\nThe archive should be in the same dir as the PKGBUILD!"
             exit;
         fi 
         # move the dependency to ./src/
-        mv ../$_downfname ./
+        mv ../$_pianoteqfilename ./
 	# Check integrity:
-	echo $_downsha256sum $_downfname|sha256sum -c || { echo 'Checksum failed!'; exit 1; }
+	echo $_pianoteqsha256sum $_pianoteqfilename |sha256sum -c || { echo 'Checksum failed!'; exit 1; }
 	# Extract:
- 	7z x $_downfname
+ 	7z x $_pianoteqfilename
 	# Generate Desktop Entry:
-	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='Pianoteq 5' --exec='Pianoteq\ 5' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
+	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='pianoteq 5' --exec='pianoteq\ 5' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
 }
 
 package(){
@@ -52,8 +53,8 @@ package(){
 		archdir=amd64
 	fi
 	# Install program files:
-	install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type" "$pkgdir/usr/bin/Pianoteq 5"
-	install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type.so" "$pkgdir/usr/lib/vst/Pianoteq 5.so"
+	install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type" "$pkgdir/usr/bin/pianoteq 5"
+	install -Dm 755 "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type.so" "$pkgdir/usr/lib/vst/pianoteq 5.so"
 	cd "$srcdir/$_pianoteq_type/$archdir/$_pianoteq_type.lv2"
 	for i in *; do
 		install -D "$i" "$pkgdir/usr/lib/lv2/Pianoteq 5.lv2/$i"
