@@ -2,7 +2,7 @@
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Vlad M. <vlad@archlinux.net>
 
-pkgname=borgbackup-git
+pkgname=borg-git
 _pkgname=borg
 pkgver=1.0.0.r27.gf0cb637
 pkgrel=1
@@ -21,8 +21,8 @@ optdepends=('openssh: repositories on remote hosts'
 makedepends=('cython'
              'git'
              'python-sphinx')
-provides=('borgbackup')
-conflicts=('borgbackup')
+provides=('borg' 'borgbackup-git')
+conflicts=('borg' 'borgbackup-git')
 source=("${_pkgname}::git+https://github.com/borgbackup/${_pkgname}.git")
 sha256sums=('SKIP')
 
