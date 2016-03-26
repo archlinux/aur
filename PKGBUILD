@@ -1,13 +1,13 @@
 # Maintainer: Nils Amiet <amietn@foobar>
 pkgname=vcsi-git
 pkgver=5
-pkgrel=1
+pkgrel=2
 pkgdesc="Create video contact sheets, thumbnails"
 arch=(any)
 url="https://github.com/amietn/vcsi"
 license=('MIT')
 groups=()
-depends=(python ffmpeg python-numpy python-pillow python-jinja ttf-liberation ttf-dejavu)
+depends=(python ffmpeg python-numpy python-pillow python-jinja python-texttable ttf-dejavu)
 makedepends=()
 provides=(vcsi)
 conflicts=(vcsi)
@@ -20,5 +20,5 @@ md5sums=('SKIP')
 
 package() {
   cd "${pkgname}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python setup.py install --root="${pkgdir}/" --optimize=1
 }
