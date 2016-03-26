@@ -1,5 +1,5 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-www-scripter-plugin-javascript'
 pkgver='0.008'
@@ -10,8 +10,8 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-css-dom' 'perl-html-dom>=0.027' 'perl-hash-util-fieldhash-compat' 'perl-je>=0.038' 'perl-uri' 'perl-www-scripter>=0.022' 'perl-libwww')
 makedepends=()
-url='http://search.mcpan.org/dist/WWW-Scripter-Plugin-JavaScript'
-source=('http://search.mcpan.org/CPAN/authors/id/S/SP/SPROUT/WWW-Scripter-Plugin-JavaScript-0.008a.tar.gz')
+url='https://metacpan.org/release/WWW-Scripter-Plugin-JavaScript'
+source=('http://search.cpan.org/CPAN/authors/id/S/SP/SPROUT/WWW-Scripter-Plugin-JavaScript-0.008a.tar.gz')
 md5sums=('05ad48a00d97b88925746b1c651c136b')
 sha512sums=('ef5ed67004651cb6f40af195f34b76cb59e4bfb24832f82d3900551ef9d862dea6ea491add5cf4ba765175822dfcdb7c57e059da03927c669cfdf44155739e8c')
 _distdir="WWW-Scripter-Plugin-JavaScript-0.008a"
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
