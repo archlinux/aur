@@ -2,7 +2,7 @@
 pkgname=fisherman-git
 _gitname=fisherman
 pkgver=1.3.1.r19.g88b0e6e
-pkgrel=3
+pkgrel=4
 pkgdesc="A blazing fast, modern plugin manager for fish"
 arch=('any')
 url="http://fisherman.sh/"
@@ -30,14 +30,14 @@ package() {
   # config for sourcing Fisherman from the user's fish config
   install -Dm 644 config-fisherman.fish "${fishpath}/config-fisherman.fish"
   cd "${_gitname}"
-  # this will be included from the config-fisherman.fish ;)
+  # this will be included from the config-fisherman.fish
   install -Dm 644 config.fish "${fisherpath}/config.fish"
   # completions
-  install -d completions "${fisherpath}"
+  install -Dt "${fisherpath}/completions" completions/*
   # functions
-  install -d functions "${fisherpath}"
+  install -Dt "${fisherpath}/functions" functions/*
   # man pages, README and LICENSE
-  install -d man "${sharepath}"
+  install -Dt "${sharepath}/man/man1" man/man1/*
   install -Dm 644 LICENSE "${sharepath}/licenses/${pkgname}/LICENSE"
   install -Dm 644 README.md "${sharepath}/doc/${pkgname}/README"
 }
