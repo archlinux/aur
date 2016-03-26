@@ -2,7 +2,7 @@ function post_install {
   echo "
 To use Fisherman, source it in your fish config (usually ~/.config/fish/config.fish):
 
-source /usr/share/fisherman/config-fisherman.fish
+source /usr/share/fish/config-fisherman.fish
 
 Please note that Fisherman overrides the config_fish function, so if you also do that,
 you will need to do so after sourcing Fisherman.
