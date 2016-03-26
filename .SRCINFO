@@ -1,0 +1,17 @@
+pkgbase = python-pyjnius-git
+	pkgdesc = Python module to access Java class as Python class, using JNI.
+	pkgver = r286.28fb734
+	pkgrel = 1
+	url = https://github.com/kivy/pyjnius
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = cython
+	makedepends = perl
+	depends = java-environment
+	depends = python
+	source = git+https://github.com/kivy/pyjnius.git
+	md5sums = SKIP
+
+pkgname = python-pyjnius-git
+
