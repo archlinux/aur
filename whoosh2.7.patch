@@ -1,0 +1,32 @@
+diff --git a/ldoce5viewer/qtgui/indexer.py b/ldoce5viewer/qtgui/indexer.py
+index 0fedba6..582e99f 100644
+--- a/ldoce5viewer/qtgui/indexer.py
++++ b/ldoce5viewer/qtgui/indexer.py
+@@ -352,8 +352,12 @@ class IndexingThread(QThread):
+                     i += 1
+                     if i % 10000 == 0:
+                         self._message('{0} items added'.format(i))
+-                    fulltext_hwdphr_maker.add_item(itemtype, content, asfilter,
++
++                    try:
++                        fulltext_hwdphr_maker.add_item(itemtype, content, asfilter,
+                             label, path, prio, sortkey)
++                    except Exception as e:
++                        print ("itemtype=", itemtype, "content=", content, "label=", label, "path=", path, e)
+
+             self._message('{0} items were added.'.format(i))
+             self._message('Finalizing...')
+@@ -379,8 +383,11 @@ class IndexingThread(QThread):
+                     i += 1
+                     if i % 10000 == 0:
+                         self._message('{0} items added'.format(i))
+-                    fulltext_defexa_maker.add_item(itemtype, content, asfilter,
+-                            label, path, prio, sortkey)
++                    try:
++                        fulltext_defexa_maker.add_item(itemtype, content, asfilter,
++                                label, path, prio, sortkey)
++                    except Exception as e:
++                        print ("itemtype=", itemtype, "content=", content, "=label", label, "path=", path, e)
+
+             self._message('{0} items were added.'.format(i))
+             self._message('Finalizing...')```

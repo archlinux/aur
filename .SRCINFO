@@ -1,0 +1,23 @@
+pkgbase = ldoce5viewer-git
+	pkgdesc = Fast dictionary viewer for the Longman Dictionary of Contemporary English (LDOCE) 5th Edition
+	pkgver = r43.8004fb9
+	pkgrel = 1
+	url = http://hakidame.net/ldoce5viewer/
+	install = ldoce5viewer-git.install
+	arch = any
+	license = GPL3
+	depends = git
+	depends = python-pyqt4
+	depends = python-lxml
+	depends = gstreamer0.10-python
+	depends = gstreamer0.10-good-plugins
+	depends = gstreamer0.10-ugly-plugins
+	depends = python-whoosh
+	depends = phonon-qt4
+	source = git://github.com/ciscorn/ldoce5viewer.git
+	source = whoosh2.7.patch
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = ldoce5viewer-git
+
