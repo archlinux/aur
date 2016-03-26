@@ -1,22 +1,22 @@
 pkgname=liblmdb-git
 _gitname=lmdb
 _source_path=$_gitname/libraries/liblmdb
-pkgver=91fc43f
+pkgver=1085
 pkgrel=1
-pkgdesc='Symas Lightning Memory-Mapped Database'
+pkgdesc="Symas Lightning Memory-Mapped Database"
 arch=(any)
 license=(custom)
 makedepends=(git)
-provides=(liblmdb)
+provides=(liblmdb lmdb)
 depends=()
-conflicts=(liblmdb mdb-git)
+conflicts=(liblmdb mdb-git lmdb)
 source=("git://github.com/LMDB/lmdb.git")
 url=http://symas.com/mdb/
 md5sums=(SKIP)
 
 pkgver() {
-  cd $_gitname
-  git log -n 1 --pretty=format:"%h"
+  cd $_source_path
+  git rev-list --count HEAD
 }
 
 build() {
