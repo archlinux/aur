@@ -8,6 +8,7 @@ pkgbase = firectl
 	makedepends = python3
 	depends = python
 	depends = python-click
+	depends = firejail
 	source = https://pypi.python.org/packages/source/f/firectl/firectl-1.0.tar.gz
 	md5sums = 2bbf0b54d4074ac8cd5aa4bb1981c892
 
