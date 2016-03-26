@@ -1,5 +1,5 @@
-# Contributor: Anonymous
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-net-dns-native'
 pkgver='0.15'
@@ -8,7 +8,7 @@ pkgdesc="non-blocking system DNS resolver"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=0' 'glibc>=2.22')
+depends=('perl' 'glibc>=2.22')
 makedepends=()
 url='https://metacpan.org/release/Net-DNS-Native'
 source=('http://search.cpan.org/CPAN/authors/id/O/OL/OLEG/Net-DNS-Native-0.15.tar.gz')
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
