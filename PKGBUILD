@@ -2,7 +2,7 @@
 
 pkgname=texstudio-qt5
 _srcname=texstudio
-pkgver=2.10.4
+pkgver=2.10.8
 pkgrel=1
 pkgdesc="Fork of the LaTeX IDE TexMaker. Gives you an environment where you can easily create and manage LaTeX documents. Built with Phonon."
 arch=('i686' 'x86_64')
@@ -16,13 +16,13 @@ provides=('texstudio')
 install=$pkgname.install
 source=("http://downloads.sourceforge.net/${_srcname}/${_srcname}-${pkgver}.tar.gz"
         'archlinux-phonon.patch')
-md5sums=('96b34746e5a2b7b41111cc7ac83d7a92'
-         '2b4bd3232e9f92271856f7daa318e6c7')
+sha256sums=('0a569544ceb0ff92e52ed57a34e8eb12e7a16eef1209320737aef5d5b81b3404'
+            '8efdaf94a99e41ea2e5276fca8788e55ae502ee707100e5aeaad0ed05753c8d9')
 
 build() {
   cd "${srcdir}/${_srcname}${pkgver}"
   # Patch include path for phonon detection on archlinux.
-  patch -p1 < "${srcdir}"/archlinux-phonon.patch
+  patch -p1 -d pdfviewer < "${srcdir}"/archlinux-phonon.patch
   # Fix .desktop item.
   sed -i -e '/^Encoding/d' -e "/^Icon/s|=.*|=${_srcname}|" utilities/${_srcname}.desktop
   qmake-qt5 PREFIX=/usr QMAKE_CFLAGS+="${CFLAGS}" QMAKE_CXXFLAGS+="${CXXFLAGS}" \
