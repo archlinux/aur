@@ -15,6 +15,7 @@ optdepends=('haskell-pandoc: to build the documentation'
 source=("git+https://github.com/rust-lang/rust.git"
         "git+https://github.com/rust-lang/compiler-rt.git"
         "git+https://github.com/rust-lang/jemalloc.git"
+        "git+https://github.com/rust-lang/libc.git"
         "git+https://github.com/rust-lang/llvm.git"
         "git+https://github.com/rust-lang/hoedown.git"
         "git+https://github.com/rust-lang/rust-installer.git"
@@ -24,8 +25,9 @@ source=("git+https://github.com/rust-lang/rust.git"
         "git+https://github.com/rust-lang/gedit-config.git"
         "git+https://github.com/rust-lang/nano-config.git"
         "git+https://github.com/rust-lang/zsh-config.git")
-_noclone=(compiler-rt jemalloc llvm hoedown rust-installer)
+_noclone=(compiler-rt jemalloc libc llvm hoedown rust-installer)
 sha512sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
