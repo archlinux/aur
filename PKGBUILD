@@ -3,7 +3,7 @@
 
 _pkgname=libsoundio
 pkgname=${_pkgname}-git
-pkgver=1.1.0.0.g85d6d9d
+pkgver=1.1.0.2.gca0ebfd
 pkgrel=1
 pkgdesc='A C99 library providing cross-platform audio input and output'
 arch=('x86_64')
@@ -11,6 +11,7 @@ url='http://www.github.com/andrewrk/libsoundio'
 license=('MIT')
 source=('git://github.com/andrewrk/libsoundio')
 options=('!buildflags')
+depends=('jack2')
 provides=('libsoundio')
 conflicts=('libsoundio')
 md5sums=('SKIP')
@@ -30,7 +31,7 @@ build() {
         -D BUILD_EXAMPLE_PROGRAMS=OFF \
         -D BUILD_TESTS=OFF \
         -D BUILD_STATIC_LIBS=OFF \
-        -D ENABLE_JACK=OFF \
+        -D ENABLE_JACK=ON \
         "$srcdir/$_pkgname"
     make
 }
