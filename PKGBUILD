@@ -9,6 +9,7 @@ url="https://pypi.python.org/pypi/python-musicpd"
 license=('GPL')
 depends=('python')
 makedepends=('make')
+makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 
 package() {
