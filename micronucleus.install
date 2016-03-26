@@ -1,0 +1,9 @@
+post_install () {
+  udevadm control --reload-rules
+}
+
+post_remove () {
+  post_install "$@"
+}
+
+# vim:ts=2 sw=2 et ft=sh:
