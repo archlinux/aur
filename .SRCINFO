@@ -1,6 +1,6 @@
 pkgbase = st-xresources-git
 	pkgdesc = Simple terminal with Xresources support
-	pkgver = 1
+	pkgver = r4.8a8358d
 	pkgrel = 1
 	url = https://github.com/dcat/st-xresources
 	arch = i686
