@@ -1,9 +1,9 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
-# previous maintainer: Gwenn Gueguen <gwenn+aur@demisel.net>
+# Contributor: Gwenn Gueguen <gwenn+aur@demisel.net>
 
 pkgname=lcmc
 pkgver=1.7.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Linux Cluster Management Console"
 arch=('i686' 'x86_64')
 url="http://lcmc.sourceforge.net/"
@@ -23,7 +23,7 @@ sha1sums=('a42db59c1a090a4f0d7d3636884433e0587737a7'
           '84f8ab9b450c9e51d828435f12e72cfc851af0cf'
           '583f30b90058efb742a9ecc8e7f33e5e98048341'
           'e8b239a493dd5e1eb7e3dc5989bb03800e76a38d'
-          '37ef76b495cdc228262490f5fb39c385d7689a69')
+          '75ace3f4175047acebd6fa1f071da176bbb92c36')
 
 package() {
   cd "$srcdir"
