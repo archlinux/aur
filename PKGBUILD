@@ -10,7 +10,7 @@ arch=('any')
 url='https://github.com/chrippa/livestreamer'
 license=('BSD')
 depends=('python-requests' 'rtmpdump' 'python-setuptools')
-makedepends=('python-sphinx')
+makedepends=('python-sphinx', 'git')
 source=("${pkgname}::git+https://github.com/chrippa/livestreamer#branch=develop")
 sha256sums=('SKIP')
 
