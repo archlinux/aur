@@ -1,7 +1,7 @@
 # Maintainer: Rick Kerkhof <rick.2889@gmail.com>
 pkgname=soundnode-app-bin
-pkgver=0.6.2
-pkgrel=3
+pkgver=0.6.3
+pkgrel=1
 pkgdesc="Soundcloud client for the desktop"
 arch=('x86_64' 'i686')
 url="http://www.soundnodeapp.com/"
@@ -19,14 +19,14 @@ source_x86_64=("http://www.soundnodeapp.com/downloads/linux64/Soundnode-App.zip"
 source_i686=("http://www.soundnodeapp.com/downloads/linux32/Soundnode-App.zip")
 
 # Generic sources.
-source=("https://raw.githubusercontent.com/Soundnode/soundnode-app/0.6.2/app/soundnode.png"
+source=("https://raw.githubusercontent.com/Soundnode/soundnode-app/0.6.3/app/soundnode.png"
 "soundnode-app.desktop")
 
-sha256sums_x86_64=('e3d6b88150d286645553f803edd6163e53e967415fa9e38d7bbbf9f9182f7a7a')
-sha256sums_i686=('049429c52e6e91944f8100eed8a7b6b3c235d5ef49a3bcf60b74a638ffb7f445')
+sha256sums_x86_64=('15aa9524e37fc52276e4ec19a22936352785f8c132ead8b59c7bf6cdff0b1442')
+sha256sums_i686=('bb53beb89ba67c327834191900191cc7ba242df0d32b51b449189aaa4fa4a4a4')
 
 # Generic checksums.
-sha256sums=('aaae33882ab1e2334b4a33b4235cbdd4beb1379b08f5fa3a0a270f716ea43fa7'
+sha256sums=('a16acc740d94ed119f943e810f44cdb2d082153645aafc1c179f15fb5b9a7619'
 'a62a6bf1f28f21ba9d32b642cd29e9685a1c1f889347d041a1ab02e65dbbc2ca')
 
 package() {
