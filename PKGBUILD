@@ -19,23 +19,23 @@ sha512sums=('277ba27e35c20e2d4fc5296bf418c5ab78c821870476e21d49f723765b99b3a559e
             '33743f009c4486cc2199dc90b031cfe977c779f6bf6e958de29a2180578f3866004f20f6411a049aa1192ea4f8adad4636cd90cb4f0ff6ae05205bd2bc016fef')
 
 prepare() {
-  cd "${srcdir}/${pkgname#lib32-}-${pkgver}"
-  export LDFLAGS='-m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  cd "${pkgname#lib32-}-${pkgver}"
   patch -p1 -i ../../tigervnc.patch
   patch -p1 -i ../../fltk-config-dynlibs.patch
   sed -i 's/class Fl_XFont_On_Demand/class FL_EXPORT Fl_XFont_On_Demand/' FL/x.H
+  sed -i -e 's/$(LINKFLTK)/$(LINKSHARED)/' -e 's/$(LINKFLTKIMG)/$(LINKSHARED)/' test/Makefile
 }
 
 build() {
-  cd "${srcdir}/${pkgname#lib32-}-${pkgver}"
-  sed -i -e 's/$(LINKFLTK)/$(LINKSHARED)/' -e 's/$(LINKFLTKIMG)/$(LINKSHARED)/' test/Makefile
+  cd "${pkgname#lib32-}-${pkgver}"
+  export LDFLAGS='-m32'
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   ./configure --prefix=/usr --libdir=/usr/lib32 --libexecdir=/usr/lib32/fltk --enable-threads --enable-xft --enable-shared CC='gcc -m32' CXX='g++ -m32'
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname#lib32-}-${pkgver}"
+  cd "${pkgname#lib32-}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   make DESTDIR="${pkgdir}" -C fluid install install-linux
   chmod 644 "${pkgdir}"/usr/lib32/*.a
