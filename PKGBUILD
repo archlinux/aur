@@ -9,11 +9,9 @@ license=('unknown')
 url="http://ix.io"
 depends=('curl')
 source=("http://ix.io/client")
-md5sums=('SKIP')
-sha256sums=('SKIP')
+sha256sums=('a7f8ff373eedccb255ec7814c15b22c0dd56c42c783e8afe1f24601534d18275')
 
 package() {
-	cd "${pkdgir}"
 	mkdir -p ${pkgdir}/usr/bin
-	install -m655 client ${pkgdir}/usr/bin/ix 
+	install -m655 client ${pkgdir}/usr/bin/ix
 }
