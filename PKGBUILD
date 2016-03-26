@@ -55,10 +55,6 @@ msg2 "Install conf file"
 
   cp -r ${_srcfolder} $pkgdir/var/lib/${pkgname}
 
-msg2 "Fixing debug.txt not found"
-  mkdir $pkgdir/var/lib/openbazaard/.openbazaar
-  ln -sr /var/lib/openbazaard/.openbazaar/debug.log $pkgdir/var/lib/openbazaard/debug.txt
-
 msg2 "Python2 bytecode generation"
   cd $pkgdir/var/lib/${pkgname}/ && python2 -m compileall .
 
