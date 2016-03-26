@@ -8,7 +8,7 @@ pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(any)
 url="http://openbazaar.org"
 license=('MIT')
-depends=(electron openbazaard-git)
+depends=(electron)
 makedepends=(git npm)
 source=(
 	"${_pkgname}::git+https://github.com/OpenBazaar/OpenBazaar-Client.git"
@@ -30,9 +30,6 @@ package(){
 msg2 "Installing Openbazaar data"
   install -dm755 $pkgdir/opt/
   cp -r $srcdir/${_pkgname} $pkgdir/opt/
-
-msg2 "Symlinking to allow gui to automatically call daemon"
-  ln -sr /var/lib/openbazaard $pkgdir/opt/OpenBazaar-Server
 
 msg2 "Installing execution script"
   install -Dm755 $srcdir/${_pkgname}.sh $pkgdir/usr/bin/${_pkgname}
