@@ -1,17 +1,19 @@
 pkgname=3proxy
-pkgver=0.7.1.2
-pkgrel=4
+pkgver=0.8.6
+pkgrel=1
 pkgdesc="A tiny crossplatform proxy server"
 arch=('i686' 'x86_64')
 url="http://www.3proxy.ru/"
 license=('BSD')
 depends=()
-source=("http://www.3proxy.ru/$pkgver/3proxy-$pkgver.tgz")
-md5sums=('79ee900e3bb94862d17baadd1c12e159')
+source=("https://github.com/z3APA3A/3proxy/archive/3proxy-$pkgver.tar.gz"
+)
+md5sums=('edadb0da813c514f8af0dfc2c7c4ae2a'
+)
 _prefix=/usr
 _etcdir=/etc/3proxy
 package() {
-	cd "$srcdir/3proxy"
+	cd "$srcdir/3proxy-3proxy-0.8.6"
 	cp Makefile.Linux Makefile.Linux~ && sed 's/^\(CFLAGS =\)/\1 -Werror-implicit-function-declaration /' Makefile.Linux~ > Makefile.Linux || return 1
 	make='make -f Makefile.Linux INSTALL=/usr/bin/install'
 	$make prefix="$_prefix" ETCDIR="$_etcdir"
