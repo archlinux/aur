@@ -1,5 +1,5 @@
 pkgname=aurutils-git
-pkgver=r467.11890a5
+pkgver=0.1.0.r1.g679a64a
 pkgrel=1
 pkgdesc='helper tools for the aur'
 arch=('any')
@@ -7,8 +7,6 @@ url=https://github.com/AladW/aurutils
 license=('ISC')
 source=("git+$url")
 md5sums=('SKIP')
-conflicts=('aurutils')
-provides=('aurutils')
 depends=('pacman>=5.0' 'git' 'repose-git' 'jshon' 'pacutils-git' 'expac' 'aria2')
 checkdepends=('shellcheck')
 makedepends=('git')
@@ -17,7 +15,7 @@ optdepends=('devtools: aurbuild -c'
 
 pkgver() {
   cd aurutils
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 check() {
