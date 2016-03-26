@@ -22,12 +22,10 @@ source=("git+https://github.com/rust-lang/rust.git"
 
         "git+https://github.com/rust-lang/rust.vim.git"
         "git+https://github.com/rust-lang/rust-mode.git"
-        "git+https://github.com/rust-lang/gedit-config.git"
         "git+https://github.com/rust-lang/nano-config.git"
         "git+https://github.com/rust-lang/zsh-config.git")
 _noclone=(compiler-rt jemalloc libc llvm hoedown rust-installer)
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -88,8 +86,6 @@ package_rust-git() {
 	install --directory "$pkgdir"/usr/share/vim/vimfiles/
 	cp -a "$srcdir"/rust.vim/*/ "$pkgdir"/usr/share/vim/vimfiles/
 
-	cp -a "$srcdir"/gedit-config/share "$pkgdir"/usr/
-
 	install --directory "$pkgdir"/usr/share/zsh/functions/Completion/Zsh/
 	cp -a "$srcdir"/zsh-config/_* "$pkgdir"/usr/share/zsh/functions/Completion/Zsh/
 
@@ -100,9 +96,6 @@ package_rust-git() {
 	emacs --eval '(byte-recompile-directory "." 0)' --quick --batch 2> /dev/null || true
 	install --directory "$pkgdir"/usr/share/emacs/site-lisp/
 	cp -a rust-mode.* "$pkgdir"/usr/share/emacs/site-lisp/
-
-	# already present in gtksourceview3
-	rm "$pkgdir"/usr/share/gtksourceview-3.0/language-specs/rust.lang
 }
 
 package_rust-doc-git() {
