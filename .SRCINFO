@@ -1,0 +1,14 @@
+pkgbase = autopython
+	pkgdesc = Autoscripting for Python 3
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/autopython
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	source = https://pypi.python.org/packages/source/a/autopython/autopython-0.3.tar.gz
+	md5sums = 6e87bf46eb41e972653636dcdcdd1b8f
+
+pkgname = autopython
+
