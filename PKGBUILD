@@ -1,6 +1,6 @@
 # Maintainer: Tudor Roman <xenogenesis at openmailbox dot org>
 pkgname=mpvc-git
-pkgver=1
+pkgver=r89.dfaac20
 pkgrel=1
 
 pkgdesc='A mpc-like control interface for mpv.'

@@ -1,6 +1,6 @@
 pkgbase = mpvc-git
 	pkgdesc = A mpc-like control interface for mpv.
-	pkgver = 1
+	pkgver = r89.dfaac20
 	pkgrel = 1
 	url = https://github.com/wildefyr/mpvc
 	arch = i686
