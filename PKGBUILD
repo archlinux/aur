@@ -2,12 +2,12 @@
 
 pkgname=openbazaar
 pkgver=1.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(any)
 url="http://openbazaar.org"
 license=('MIT')
-depends=(electron openbazaard)
+depends=(electron)
 makedepends=(git npm)
 source=(
 	"https://github.com/OpenBazaar/OpenBazaar-Client/archive/v$pkgver.tar.gz"
