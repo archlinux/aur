@@ -8,7 +8,6 @@ pkgbase = uxpload
 	depends = bash
 	depends = scrot
 	depends = curl
-	depends = screenfetch
 	source = https://raw.githubusercontent.com/OscarHolst/UnixPorn/master/uxpload.sh
 	md5sums = 7a8651ffc6e12f8d7e296daca193ac13
 

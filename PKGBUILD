@@ -10,8 +10,11 @@ depends=(
   'bash'
   'scrot'
   'curl'
-  'screenfetch'
   
+)
+optdepends=(
+  'screenfetch: CLI Bash script to show system/theme info in screenshots'
+  'archey3: Output a logo and various system information'
 )
 source=('https://raw.githubusercontent.com/OscarHolst/UnixPorn/master/uxpload.sh')
 md5sums=('7a8651ffc6e12f8d7e296daca193ac13')
