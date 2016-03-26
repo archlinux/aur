@@ -1,7 +1,7 @@
 pkgbase = bin32-jdk-devel
 	pkgdesc = Oracle Java 9 Development Kit Snapshot (32-bit)
 	pkgver = 9b111
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jdk9.java.net/
 	install = bin32-jdk-devel.install
 	arch = x86_64
