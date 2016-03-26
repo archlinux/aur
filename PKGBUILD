@@ -1,25 +1,23 @@
 pkgname=sph-web-app-git
-_gitname=sph-web-app
-pkgver=ab51f30
+pkgver=33
 pkgrel=1
 pkgdesc='framework for creating web applications with guile scheme'
 arch=(any)
-license=(GPL3)
+license=(gpl3+)
 makedepends=(git)
 depends=(guile sph-lib)
 provides=(sph-web-app)
 conflicts=(sph-web-app)
-source=("git://git.sph.mn/sph-web-app")
+source=("$pkgname::git://git.sph.mn/sph-web-app#branch=stable")
 url="http://sph.mn/content/66b"
 md5sums=(SKIP)
 
 pkgver() {
-  cd $_gitname
-  git log -n 1 --pretty=format:"%h"
+  cd $pkgname
+  git rev-list --count HEAD
 }
 
 package() {
-  cd $_gitname
-  chmod 755 -R .
-  ./exec/install "${pkgdir}"
+  cd $pkgname
+  ./exe/install --prefix="${pkgdir}"
 }
