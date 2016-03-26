@@ -6,7 +6,7 @@ _gitbranch=master
 pkgname="python-${_gitname}-git"
 pkgdesc='Themer is a colorscheme generator and manager for your desktop.'
 pkgver=0.0.0
-pkgrel=3
+pkgrel=4
 url="https://github.com/s-ol/${_gitname}"
 license=('MIT')
 arch=('any')
@@ -22,7 +22,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${_gitname}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
