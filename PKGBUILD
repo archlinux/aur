@@ -1,16 +1,19 @@
-# Contributor: Vlad <avireti@gmail.com>
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname=perl-convert-bencode-xs
-pkgver=0.06
-pkgrel=1
+pkgname='perl-convert-bencode-xs'
+pkgver='0.06'
+pkgrel='1'
 pkgdesc="Faster conversions to/from Bencode format"
-url="http://search.cpan.org/dist/Convert-Bencode_XS"
-license=('PerlArtistic' 'GPL')
 arch=('i686' 'x86_64')
+license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl<=5.17.9')
-source=("http://search.cpan.org/CPAN/authors/id/I/IW/IWADE/Convert-Bencode_XS-$pkgver.tar.gz")
-sha256sums=('3b7aa07abefce56ea2416f8f7f20afcc95d7003e326f4173bc9874f125d75b6d')
+depends=('perl')
+makedepends=()
+url='https://metacpan.org/release/Convert-Bencode_XS'
+source=('http://search.cpan.org/CPAN/authors/id/I/IW/IWADE/Convert-Bencode_XS-0.06.tar.gz')
+md5sums=('472a1081a20b0d42175e103c7c84b0ef')
+sha512sums=('0f7a0afa3e5a270b982852903d5809c7964c174886cb99fa5a3e5e1e62a10ba9f68791c2a7d31b1f56ecbcac307b949dfc4660c613510d06a99f56dffd33adde')
 _distdir="Convert-Bencode_XS-0.06"
 
 build() {
@@ -38,3 +41,9 @@ package() {
   make install
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:
