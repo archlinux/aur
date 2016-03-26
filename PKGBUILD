@@ -8,9 +8,7 @@ pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
 url="http://openbazaar.org"
 license=('MIT')
-depends=(
-	gnupg
-)
+depends=(python2)
 makedepends=(git upx ucl python2-virtualenv)
 source=("${_pkgname}::git+https://github.com/OpenBazaar/OpenBazaar-Server.git"
 	 ${_pkgname}.conf
