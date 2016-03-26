@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-tap-harness-archive'
-pkgver='0.15'
+pkgver='0.18'
 pkgrel='1'
 pkgdesc="Create an archive of TAP test results"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-yaml-tiny')
 makedepends=()
-url='http://search.cpan.org/dist/TAP-Harness-Archive'
-source=('http://search.cpan.org/CPAN/authors/id/S/SC/SCHWIGON/TAP-Harness-Archive-0.15.tar.gz')
-md5sums=('1fbf09c898f8d847da2c7ad7ea915b16')
-sha512sums=('809340fc0071bd24dd4fd68bbdf4e4d4e1c2e56647b858af4e5b0f19101707dd1e4d5ea5b3214db2a815fe533a3a82ee5f6183b209a9f6af0a36e9edd83f5bf0')
-_distdir="TAP-Harness-Archive-0.15"
+url='https://metacpan.org/release/TAP-Harness-Archive'
+source=('http://search.cpan.org/CPAN/authors/id/S/SC/SCHWIGON/TAP-Harness-Archive-0.18.tar.gz')
+md5sums=('2cf535f3e795c1feb6f10d784809304e')
+sha512sums=('87762e75aaaf8b166ca7fcddfff724c334fc8bca7ef505433151de0ee0dee320022070743a1bc1f3652e156e9a54d232d975f0cae95a5ae4362e8d3727713f06')
+_distdir="TAP-Harness-Archive-0.18"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
