@@ -2,7 +2,7 @@
 
 pkgname=netdata-git
 _gitname=netdata
-pkgver=v0.1.r715.gc512fbe
+pkgver=v1.0.0.r4.ge26c938
 pkgrel=1
 pkgdesc="Real-time performance monitoring, in the greatest possible detail, over the web."
 url="https://github.com/firehol/netdata/wiki"
@@ -12,6 +12,8 @@ depends=('libmnl' 'libnetfilter_acct' 'zlib')
 optdepends=('nodejs: Webbox plugin')
 source=("$_gitname::git+https://github.com/firehol/netdata"
         "netdata.service")
+provides=('netdata')
+conflicts=('netdata')
 backup=('etc/netdata/netdata.conf' 'etc/netdata/charts.d.conf' 'etc/netdata/apps_groups.conf')
 install="$pkgname.install"
 
