@@ -2,7 +2,7 @@
 pkgname=vim-dein-git
 _gitname=dein.vim
 pkgver=0.0.r363.gcf88cb0
-pkgrel=1
+pkgrel=2
 pkgdesc="dark powered Vim/Neovim plugin manager"
 arch=('any')
 url="https://github.com/Shougo/dein.vim"
@@ -27,8 +27,8 @@ package() {
   sharepath="${pkgdir}/usr/share"
   vimpath="${sharepath}/vim/vimfiles"
   # install to global Vim directory
-  install -d doc ${vimpath}
-  install -d autoload ${vimpath}
+  install -Dm 644 doc/dein.txt "${vimpath}/doc/dein.txt"
+  cp -R autoload ${vimpath}
   # LICENSE and README
   install -Dm 644 LICENSE ${sharepath}/licenses/${pkgname}/LICENSE
   install -Dm 644 README.md ${sharepath}/doc/${pkgname}/README
