@@ -15,23 +15,20 @@ makedepends=('cmake' 'gcc-multilib' 'lib32-glu' 'lib32-mesa' 'lib32-libxxf86vm')
 source=("http://downloads.sourceforge.net/freeglut/${pkgname#lib32-}-${pkgver}.tar.gz")
 sha512sums=('9c45d5b203b26a7ff92331b3e080a48e806c92fbbe7c65d9262dd18c39cd6efdad8a795a80f499a2d23df84b4909dbd7c1bab20d7dd3555d3d88782ce9dd15b0')
 
-prepare() {
-  cd "${srcdir}"
+build() {
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export LDFLAGS='-m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  cd "${pkgname#lib32-}-${pkgver}"
   [ -d build ] || mkdir build
-}
-
-build() {
-  cd "${srcdir}/build"
-  cmake ${srcdir}/${pkgname#lib32-}-${pkgver} -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib32 -DCMAKE_BUILD_TYPE=Release
+  cd build
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib32 -DCMAKE_BUILD_TYPE=Release
   make
 }
 
 package() {
-  cd "${srcdir}/build"
+  cd "${pkgname#lib32-}-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}/usr/"{bin,include,share}
   mkdir -p "${pkgdir}/usr/share/licenses"
