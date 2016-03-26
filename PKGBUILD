@@ -2,7 +2,7 @@
 
 _pkgname=openbazaard
 pkgname=${_pkgname}-git
-pkgver=905.c5d47a4
+pkgver=922.03ef80a
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
@@ -46,17 +46,19 @@ backup=('var/lib/openbazaard/ob.cfg '
 package(){
   cd $srcdir
 
-  msg2 "Install systemd service"
+msg2 "Install systemd service"
   install -Dm644 $srcdir/${_pkgname}.service $pkgdir/usr/lib/systemd/system/${_pkgname}.service
 
-  msg2 "Install conf file"
+msg2 "Symlinking to allow gui to automatically call daemon"
+  install -dm755 $pkgdir/opt
+  ln -sr /var/lib/openbazaard $pkgdir/opt/OpenBazaar-Server
+
+msg2 "Install conf file"
   install -Dm644 $srcdir/${_pkgname}.conf $pkgdir/etc/conf.d/${_pkgname}.conf
-
   install -dm755 $pkgdir/var/lib/
-
   cp -r ${_pkgname} $pkgdir/var/lib/
 
-  msg2 "Python2 bytecode generation"
+msg2 "Python2 bytecode generation"
   cd $pkgdir/var/lib/${_pkgname}/ && python2 -m compileall .
 
   msg2 "Remove git folder"
