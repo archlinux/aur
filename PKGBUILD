@@ -1,6 +1,6 @@
 # Maintainer: Daniel Hillenbrand <codeworkx@bbqlinux.org>
 pkgname=openhab-beta
-pkgver=2.0.0
+pkgver=2.0.0_20160326
 pkgrel=1
 pkgdesc="openHAB2 open source home automation software"
 arch=('any')
@@ -19,8 +19,12 @@ source=("https://openhab.ci.cloudbees.com/job/openHAB-Distribution/lastSuccessfu
 
 noextract=("openhab-online-$pkgver-SNAPSHOT.zip")
 
-sha1sums=('7ecd0da3e4e15c7db37543c99d5f428427b6cd5a'
+sha1sums=('SKIP'
           '3494cf262f5b87dcff75044c8c2eee670a6f715c')
+
+pkgver() {
+    printf "2.0.0_%s" "$(date +%Y%m%d)"
+}
 
 prepare() {
 	mkdir -p "$srcdir/openhab"
