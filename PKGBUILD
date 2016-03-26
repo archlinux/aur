@@ -7,6 +7,8 @@ url=https://github.com/AladW/aurutils
 license=('ISC')
 source=("git+$url")
 md5sums=('SKIP')
+conflicts=('aurutils')
+provides=('aurutils')
 depends=('pacman>=5.0' 'git' 'repose-git' 'jshon' 'pacutils-git' 'expac' 'aria2')
 checkdepends=('shellcheck')
 makedepends=('git')
