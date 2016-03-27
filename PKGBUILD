@@ -21,7 +21,7 @@ source=("setup_homm3_complete_${_unpatchedver}.exe::gogdownloader://${_gamename_
         "${pkgname}.install")
 sha256sums=('d90bed0fd7e5338045f5f9983fdc7390297025ac1accdbc2f9bbec217a066468'
             '9c6ca90dacc621f0bb333a3f5fb6df8b06af2afee571beea14782c989177ff5a'
-            'a70a2a31884cf5ffac7890b632814fdff28c06ea28176feb521bd3d3169d8046'
+            '8c22223dbf0eeac09980b977bd1d66f801a153cf84cab66053d00c2ffc94820a'
             '5ad060d06817b0449760673a839dfcd7a12b1a7eb14ea717998c095affb11279'
             'bc5f57dd8fe1c4cb9bc4f144eea686a61ccc19e5020e446796f8f4c79014c8be'
             'f7b58168872ce04bfad2ef151632762d29735f3e165bc5c4cf887df68de62ed2'
