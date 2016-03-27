@@ -7,7 +7,7 @@ _pkgname="doublecmd"
 pkgbase="${_pkgname}-svn"
 pkgname=("${_pkgname}-gtk2-svn" "${_pkgname}-qt-svn")
 pkgver=r6743
-pkgrel=1
+pkgrel=2
 url="http://doublecmd.sourceforge.net/"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -66,8 +66,8 @@ build() {
 package_doublecmd-gtk2-svn() {
     pkgdesc="Twin-panel (commander-style) file manager (GTK)"
     depends=('gtk2')
-    provides=(${_pkgname}-gtk2)
-    conflicts=('doublecmd-qt-svn' 'doublecmd-qt' 'doublecmd-gtk2' 'doublecmd-gtk2-alpha-bin')
+    provides=('${_pkgname}-gtk2')
+    conflicts=('doublecmd-gtk2' 'doublecmd-gtk2-alpha-bin')
 
     cd "${srcdir}/${_pkgname}-gtk"
     ./install/linux/install.sh --install-prefix="${pkgdir}"
@@ -76,8 +76,8 @@ package_doublecmd-gtk2-svn() {
 package_doublecmd-qt-svn() {
     pkgdesc="Twin-panel (commander-style) file manager (QT)"
     depends=('qt4pas')
-    provides=(${_pkgname}-qt)
-    conflicts=('doublecmd-gtk2-svn' 'doublecmd-gtk2' 'doublecmd-qt' 'doublecmd-gtk2-alpha-bin')
+    provides=('${_pkgname}-qt')
+    conflicts=('doublecmd-qt')
 
     cd "${srcdir}/${_pkgname}-qt"
     ./install/linux/install.sh --install-prefix="${pkgdir}"
