@@ -3,10 +3,10 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgbase=linux-bld       # Build kernel with a different name
-_srcname=linux-4.4
+_srcname=linux-4.5
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.4.6
+pkgver=4.5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/rmullick/linux"
@@ -16,38 +16,31 @@ options=('!strip')
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 _bfqversion=v7r11
 _bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-${_bfqversion}"
-_BLDpatch="BLD-4.4.patch"
+_BLDpatch="BLD-4.5.patch"
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-	"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+#	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+#	"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux-bld.preset'
         'change-default-console-loglevel.patch'
-	"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqversion}-4.4.0.patch"
-	"${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqversion}-I-O-sched-for-4.4.0.patch"
-	"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqversion}-for.patch"
+#	"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqversion}-4.4.0.patch"
+#	"${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqversion}-I-O-sched-for-4.4.0.patch"
+#	"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqversion}-for.patch"
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
-        "0001-sdhci-revert.patch"
         )
 
-sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
-            'SKIP'
-            'efea93ff30955d445344a83c36678fa8e64111219eeafea2a41fd4ee11f79d68'
+sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
             'SKIP'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
-            'fbbae1d873900e84d1b7ef00593fbb94fc79f078a34b22ee824bab8b0a92be64'
-            '756a168bbc3bb582f0df45b977c32af53658f21d62fe15171c9ac85f52d8852a'
+            '4e520b53399541b5d166fba4be397756278cbcbc260be87bd3ff324496ac3619'
+            '30660541b981bfbf60db8ffdbf75dca63648ca19bc2fba564b4561f6ecc7bf1b'
             '8da1d80c0bd568781568da4f669f39fed94523312b9d37477836bfa6faa9527f'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'd1cf14cc696b0f716454fe8eb9746383700889d5d22ad829611f0433cc77b4ce'
-            'b17c3fb18c5b8c20a45a38198f293679ca6aef08d16f12cd816a5cfafac4b2c4'
-            '69a21bc286a628128cfc4723558829cb6ff6c2d7c4dfd4468457898674187b25'
-            '66f800ae606ae197dc80f3207d4e688fd3981ee6eab11b52ce84fcf3aed977ff'
-            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375')
+            'adf9a38282035ce3ab609ebac0e134aa4dac41d5189291b884156793d1cb295d')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -92,16 +85,12 @@ prepare() {
   msg2 "Patch source to enable more gcc CPU optimizatons via the make nconfig"
   patch -Np1 -i "${srcdir}/${_gcc_patch}"
 
-  msg "Patching source with BFQ patches"
-  for p in $(ls ${srcdir}/000{1,2,3}-block*BFQ*.patch); do
-      patch -Np1 -i "$p"
-  done
+#  msg "Patching source with BFQ patches"
+#  for p in $(ls ${srcdir}/000{1,2,3}-block*BFQ*.patch); do
+#      patch -Np1 -i "$p"
+#  done
 
-  msg2 "Patches from Archlinux"
-  # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
-  # fixes #47778 sdhci broken on some boards
-  # https://bugzilla.kernel.org/show_bug.cgi?id=106541
-  patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
+#  msg2 "Patches from Archlinux"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
