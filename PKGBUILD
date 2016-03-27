@@ -62,6 +62,7 @@ prepare() {
   echo -n "$_mozilla_api_key" >mozilla-api-key
   echo "ac_add_options --with-mozilla-api-keyfile=\"$PWD/mozilla-api-key\"" >>.mozconfig
 
+  rm -r "$srcdir/path"
   mkdir "$srcdir/path"
 
   # WebRTC build tries to execute "python" and expects Python 2
