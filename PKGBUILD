@@ -12,10 +12,10 @@ _use_no_jdk_archive=
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=145.258.11
+_buildver=145.596.7
 _veryear=2016
 _verrelease=1
-_verextra=RC2
+_nojdkrelease=false
 pkgver=${_veryear}.${_verrelease}.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (ultimate version)"
@@ -25,13 +25,14 @@ url="http://www.jetbrains.com/idea/"
 license=('custom')
 depends=('java-environment' 'giflib' 'libxtst')
 makedepends=('wget')
-if [ -n "$_use_no_jdk_archive" ]; then
-    source=("http://download.jetbrains.com/idea/ideaIU-${_veryear}.${_verrelease}-no-jdk.tar.gz")
-    sha256sums=($(wget -q "${source}.sha256" && cat "ideaIU-${_veryear}.${_verrelease}-no-jdk.tar.gz.sha256" | cut -f1 -d" "))
+if [ ${_nojdkrelease} = "true" ] && [ -n ${_use_no_jdk_archive} ]; then
+  source=("https://download.jetbrains.com/idea/ideaIU-${_veryear}.${_verrelease}-no-jdk.tar.gz")
+  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIU-${_veryear}.${_verrelease}-no-jdk.tar.gz.sha256" | cut -f1 -d" "))
 else
-    source=("http://download.jetbrains.com/idea/ideaIU-${_veryear}.${_verrelease}.tar.gz")
-    sha256sums=($(wget -q "${source}.sha256" && cat "ideaIU-${_veryear}.${_verrelease}.tar.gz.sha256" | cut -f1 -d" "))
+  source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}.tar.gz")
+  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIU-${_buildver}.tar.gz.sha256" | cut -f1 -d" "))
 fi
+
 package() {
     cd "$srcdir"
     mkdir -p "${pkgdir}/opt/${pkgname}"
@@ -39,6 +40,9 @@ package() {
     if [[ $CARCH = 'i686' ]]; then
         rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
         rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
+    fi
+    if [ ${_nojdkrelease} = "false" ] && [ -n ${_use_no_jdk_archive} ]; then
+      rm -rf "${pkgdir}/opt/${pkgname}/jre"
     fi
 (
 cat <<EOF
@@ -62,9 +66,9 @@ EOF
     mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/"
     for i in $(ls $srcdir/idea-IU-$_buildver/license/ ); do
-        ln -sf "${srcdir}/idea-IU-${_buildver}/license/$i" "${pkgdir}/usr/share/licenses/${pkgname}/$i"
+      ln -sf "${srcdir}/idea-IU-${_buildver}/license/$i" "${pkgdir}/usr/share/licenses/${pkgname}/$i"
     done 
     ln -s "/opt/${pkgname}/bin/idea.sh" "${pkgdir}/usr/bin/idea-ue-eap"
 }
 
-# vim:set ts=4 sw=4 et:
+# vim:set ts=2 sw=2 et:
