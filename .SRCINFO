@@ -1,6 +1,6 @@
 pkgbase = red-alien-git
 	pkgdesc = A script compiler and editor for Pokémon GBA ROMs
-	pkgver = r135.b1e0ee7
+	pkgver = r138.02b53bb
 	pkgrel = 1
 	url = https://github.com/cosarara97/red-alien
 	install = red-alien-git.install

@@ -1,6 +1,6 @@
 # Maintainer: Jaume Delclòs <jaume@delclos.com>
 pkgname=red-alien-git
-pkgver=r135.b1e0ee7
+pkgver=r138.02b53bb
 pkgrel=1
 pkgdesc="A script compiler and editor for Pokémon GBA ROMs"
 arch=(any)
@@ -18,7 +18,7 @@ package() {
   python setup.py install --root="$pkgdir/" --optimize=1
   install -D -m644 utils/medicon.png $pkgdir/usr/share/pixmaps/red-alien.png
   install -D -m644 utils/red-alien.desktop $pkgdir/usr/share/applications/red-alien.desktop
-  install -D -m644 utils/x-pks.xml $pkgdir/usr/share/mime/text/x-pks.xml
+  install -D -m644 utils/x-pks.xml $pkgdir/usr/share/mime/packages/x-pks.xml
 }
 
 pkgver() {
