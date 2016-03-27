@@ -1,11 +1,12 @@
 # Maintainer: Konstantin Shalygin <k0ste@cn.ru>
+# Contributor: Konstantin Shalygin <k0ste@cn.ru>
 
 pkgname='phantom'
-pkgver=r17.46aa170
+pkgver=r18.614029e
 pkgrel=1
 pkgdesc='Scalable I/O engine'
 arch=('i686' 'x86_64')
-url="https://github.com/k0ste/${pkgname}"
+url="https://github.com/yandex-load/${pkgname}"
 license=('LGPL2.1')
 depends=('openssl')
 makedepends=('git' 'gcc-multilib')
