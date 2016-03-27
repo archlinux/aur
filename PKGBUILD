@@ -1,7 +1,7 @@
 # Maintainer: Adam Goldsmith <adam@adamgoldsmith.name>
 
 pkgname=python2-libpebble2-git
-pkgver=v0.0.12
+pkgver=v0.0.17.3.gab2cd38
 pkgrel=1
 pkgdesc="The library portion of the successor to libpebble, a python library for interacting with Pebble devices."
 arch=('i386' 'x86_64')
@@ -11,6 +11,7 @@ depends=('python2'
          'python2-six'
          'python2-websocket-client'
          'python2-wsgiref')
+makedepends=('python2-setuptools')
 provides=("python2-libpebble2")
 conflicts=("python2-libpebble2")
 options=(!emptydirs)
