@@ -5,13 +5,13 @@
 
 pkgname=opencryptoki
 pkgver=3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="PKCS11 implementation for Linux"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/opencryptoki"
 license=('CPL' 'GPL')
-depends=('openssl' 'trousers' 'expect')
-makedepends=('libtool')
+depends=('openssl' 'trousers')
+makedepends=('libtool' 'expect')
 install=${pkgname}.install
 source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/3.4/${pkgname}-v${pkgver}.tgz
         'opencryptoki.tmpfiles.conf')
