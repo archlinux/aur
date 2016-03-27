@@ -11,10 +11,10 @@
 pkgname=gnome-settings-daemon-ubuntu
 _use_ppa=true
 _ppa_rel=0ubuntu1~xenial1
-#_ppa_ver=3.19.5
-#_ubuntu_rel=0ubuntu1
+#_ppa_ver=3.19.92
+#_ubuntu_rel=0ubuntu3
 #_ubuntu_ver=3.18.2
-pkgver=3.19.5
+pkgver=3.19.92
 pkgrel=1
 pkgdesc="The GNOME Settings daemon with Ubuntu's patches"
 arch=(i686 x86_64)
@@ -38,8 +38,8 @@ else
     source+=("https://launchpad.net/ubuntu/+archive/primary/+files/gnome-settings-daemon_${_ubuntu_ver:-${pkgver}}-${_ubuntu_rel}.debian.tar.xz")
 fi
 
-sha512sums=('c6d1529766aff5d90d0cc055d90ae0516700243fc5e86bd96d2a40506da5f356c14fad2db936faeca350407803d358a50a8020b4ecba58e21cb428bf8fccfe88'
-            '57708693d527a6f9de9a6ad116d690a00c79831b07f9cba70927554324416f6282b6e168a921d9dd1686cf6ac1ae88e5d0d973e2bd0c4f13936c3027db5102a7')
+sha512sums=('7a243216e19520937c90c8b7e5a18081721cf82e7f936a27352e7ceac0acd3cf638a7ef7130b20f63e75172d0fa44c4d104b39a0c6dcb15e1af9cf72d28e6f07'
+            '86b149a70e0bcb0af01e2b1cb7b7ee63cc4ae115539b446e78cb2fb11ce40ae6c1dc7f98d7b28d1e3293f1141a9135b5c9ef1f6c6f78ebbca4b1d754adfe600b')
 
 prepare() {
   cd "${pkgname%-*}-${pkgver}"
