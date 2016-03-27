@@ -8,7 +8,7 @@ arch=(any)
 license=(gpl)
 depends=(fortune-mod)
 makedepends=(coreutils)
-source="http://www.k-lug.org/~kessler/chucknorris.tar.gz"
+source=("http://www.k-lug.org/~kessler/chucknorris.tar.gz")
 url="http://www.k-lug.org/~kessler/projects.html"
 md5sums=(fa85d9f2062712b2431c9d42780265fd)
 
