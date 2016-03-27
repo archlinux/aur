@@ -3,16 +3,15 @@
 #
 # Contributor: Stanislav GE <ginermail at gmail dot com>
 
-_pkgbase="doublecmd"
-pkgbase="${_pkgbase}-svn"
-pkgname=('doublecmd-gtk2-svn' 'doublecmd-qt-svn')
-pkgver=r6741
+_pkgname="doublecmd"
+# pkgbase="${_pkgname}-svn"
+pkgname=("${_pkgname}-gtk2-svn" "${_pkgname}-qt-svn")
+pkgver=r6743
 pkgrel=1
 url="http://doublecmd.sourceforge.net/"
 arch=('i686' 'x86_64')
 license=('GPL2')
-install="${pkgbase}.install"
-provides=("doublecmd")
+install="${_pkgname}-svn.install"
 makedepends=('lazarus' 'qt4pas' 'gtk2' 'fpc' 'subversion')
 optdepends=(
     'lua51: scripting'
@@ -42,13 +41,13 @@ prepare() {
     sed -e 's/LIB_SUFFIX=.*/LIB_SUFFIX=/g' -i install/linux/install.sh
 
     cd "${srcdir}"
-    cp -a "${srcdir}/${_svnmod}/" "${_pkgbase}-gtk"
-    cp -a "${srcdir}/${_svnmod}/" "${_pkgbase}-qt"
+    cp -a "${srcdir}/${_svnmod}/" "${_pkgname}-gtk"
+    cp -a "${srcdir}/${_svnmod}/" "${_pkgname}-qt"
 }
 
 build() {
     msg2 'Build GTK'
-    gtkdir="${srcdir}/${_pkgbase}-gtk"
+    gtkdir="${srcdir}/${_pkgname}-gtk"
     cd "${gtkdir}"
     bsdtar -zxf "${srcdir}/lazarus-20140321-2.tar.gz"
     sed -e "s/\\(export\\ lazbuild=\\).*/\\1\"\$(which lazbuild) --primary-config-path=${gtkdir//\//\\\/}\/lazarus\/lazarus-$CARCH\"/" -i build.sh
@@ -56,7 +55,7 @@ build() {
     ./build.sh beta gtk2
 
     msg2 'Build QT'
-    qtdir="${srcdir}/${_pkgbase}-qt"
+    qtdir="${srcdir}/${_pkgname}-qt"
     cd "${qtdir}"
     bsdtar -zxf "${srcdir}/lazarus-20140321-2.tar.gz"
     sed -e "s/\\(export\\ lazbuild=\\).*/\\1\"\$(which lazbuild) --primary-config-path=${qtdir//\//\\\/}\/lazarus\/lazarus-$CARCH\"/" -i build.sh
@@ -67,16 +66,20 @@ build() {
 package_doublecmd-gtk2-svn() {
     pkgdesc="Twin-panel (commander-style) file manager (GTK)"
     depends=('gtk2')
-    conflicts=('doublecmd-qt-svn' 'doublecmd-qt' 'doublecmd-gtk2' 'doublecmd-gtk2-bin-nightly')
-    cd "${srcdir}/${_pkgbase}-gtk"
+    provides=(${_pkgname}-gtk2)
+    conflicts=('doublecmd-qt-svn' 'doublecmd-qt' 'doublecmd-gtk2' 'doublecmd-gtk2-alpha-bin')
+
+    cd "${srcdir}/${_pkgname}-gtk"
     ./install/linux/install.sh --install-prefix="${pkgdir}"
 }
 
 package_doublecmd-qt-svn() {
     pkgdesc="Twin-panel (commander-style) file manager (QT)"
     depends=('qt4pas')
-    conflicts=('doublecmd-gtk2-svn' 'doublecmd-gtk2' 'doublecmd-qt' 'doublecmd-gtk2-bin-nightly')
-    cd "${srcdir}/${_pkgbase}-qt"
+    provides=(${_pkgname}-qt)
+    conflicts=('doublecmd-gtk2-svn' 'doublecmd-gtk2' 'doublecmd-qt' 'doublecmd-gtk2-alpha-bin')
+
+    cd "${srcdir}/${_pkgname}-qt"
     ./install/linux/install.sh --install-prefix="${pkgdir}"
 }
 
