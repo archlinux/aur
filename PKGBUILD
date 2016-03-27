@@ -3,13 +3,13 @@
 
 pkgname='phantom'
 pkgver=r18.614029e
-pkgrel=1
+pkgrel=2
 pkgdesc='Scalable I/O engine'
 arch=('i686' 'x86_64')
 url="https://github.com/yandex-load/${pkgname}"
 license=('LGPL2.1')
 depends=('openssl')
-makedepends=('git' 'gcc-multilib')
+makedepends=('git' 'gcc' 'binutils' 'openssl')
 source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
