@@ -1,6 +1,4 @@
-# Maintainer: ZaphodBeeblebr0x <mattmoore at carbonhelix dot com>
-# Contributor: Arvedui <arvedui@posteo.de>
-# Contributor: haagch <haagch@studi.informatik.uni-stuttgart.de>
+# Maintainer: adagari <adam.garibay at gmail dot com>
 
 pkgname=ut4
 pkgver=2899548
@@ -18,7 +16,7 @@ source=("UnrealTournament-Client-XAN-${pkgver}-Linux.zip"
         "UnrealTournament4.desktop")
 noextract=("UnrealTournament-Client-XAN-${pkgver}-Linux.zip")
 md5sums=('71515d05ed84a0f08fdd59eee4b37cbb'
-         'c75648bafa54d1ed3c166a87a114deb7'
+         '12ff7c29ca0db84e76dfb485e6093f29'
          '126d209e58c0dd01bc3151b175651105')
 
 _root=LinuxNoEditor
