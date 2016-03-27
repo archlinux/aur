@@ -3,3 +3,4 @@
 !.SRCINFO
 !PKGBUILD
 !darling-mach-git.install
+!dkms.conf

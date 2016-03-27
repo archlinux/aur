@@ -2,18 +2,20 @@
 
 _kernel=$(pacman -Qqo /usr/lib/modules/`uname -r` | grep linux | grep -v headers)
 _gitname=darling
-pkgname=$_gitname-mach-git
-pkgver=21.b37d736
-pkgrel=1
+pkgbase=$_gitname-mach-git
+pkgname=($_gitname-mach-git $_gitname-mach-dkms-git)
+pkgver=23.4036a2b
+pkgrel=2
 pkgdesc="Darling's Linux kernel module (darling-mach)"
 arch=('x86_64') # Can only be built on x86_64 systems
 url="http://www.darlinghq.org"
 license=('GPL3')
 groups=('darling-git')
 makedepends=('git' "$_kernel-headers")
-install=$pkgname.install
-source=('git+https://github.com/darlinghq/darling.git')
-md5sums=('SKIP')
+source=('git+https://github.com/darlinghq/darling.git'
+        'dkms.conf')
+md5sums=('SKIP'
+         'ecdbe450d66128abda784cf6ec232f25')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
@@ -31,7 +33,10 @@ build() {
 	done
 }
 
-package() {
+package_darling-mach-git() {
+	install=$pkgname.install
+	conflicts=('darling-mach-dkms-git')
+
 	cd "$srcdir/$_gitname/src/lkm"
 
 	for kernel in $(ls -d /lib/modules/*); do
@@ -40,4 +45,26 @@ package() {
 			make INSTALL_MOD_PATH="$pkgdir/usr" -C "$kernel/build" M=$PWD modules_install
 		fi
 	done
+}
+
+package_darling-mach-dkms-git() {
+	depends=('dkms')
+	optdepends=('linux-headers: Build the module for Arch kernel'
+	            'linux-lts-headers: Build the module for LTS Arch kernel')
+	conflicts=('darling-mach-git')
+	_srcdest="$pkgdir/usr/src/darling-mach-$pkgver"
+
+	msg2 "Install module sources for DKMS..."
+	install -dm755 "$_srcdest"
+	cp -r "$srcdir/$_gitname/src/lkm"                        "$_srcdest"
+	cp -r "$srcdir/$_gitname/kernel-include"                 "$_srcdest"
+	cp -r "$srcdir/$_gitname/platform-include"               "$_srcdest"
+	cp -r "$srcdir/$_gitname/src/libc/include"               "$_srcdest/libc-include"
+	install -Dm644 "$srcdir/dkms.conf"                       "$_srcdest"
+
+	msg2 "Set configuration for DKMS..."
+	sed -i "s|/../../kernel-include|/../kernel-include|"     "$_srcdest/lkm/Makefile"
+	sed -i "s|/../../platform-include|/../platform-include|" "$_srcdest/lkm/Makefile"
+	sed -i "s|/../libc/include|/../libc-include|"            "$_srcdest/lkm/Makefile"
+	sed -i "s|@PKGVER@|$pkgver|g"                            "$_srcdest/dkms.conf"
 }
