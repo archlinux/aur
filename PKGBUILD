@@ -32,14 +32,14 @@ pkgver() {
 }
 
 prepare() {
+  cd "${pkgname}"
   [[ -d build ]] || mkdir build
-  cd "${srcdir}/${pkgname}"
   git checkout ${_branch}
 }
 
 build() {
-  cd "${srcdir}/build"
-  cmake ../"${pkgname}" -DCMAKE_INSTALL_PREFIX=/usr \
+  cd "${pkgname}/build"
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
         -DGLFW_LIBRARY=/usr/lib/libglfw2.so \
         -DPNG_LIBRARY=/usr/lib/libpng12.so \
         -DPNG_PNG_INCLUDE_DIR=/usr/include/libpng12
@@ -47,9 +47,9 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/build"
+  cd "${pkgname}/build"
   make DESTDIR="${pkgdir}" install
 
   # License.
-  install -Dm644 "../${pkgname}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "../COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 } 
