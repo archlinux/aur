@@ -1,7 +1,7 @@
 # Contributer: Donald Carr<sirspudd@gmail.com>
 
 pkgname=qtc
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 pkgdesc='Convenience script for qtcreator usage'
 arch=('any')
