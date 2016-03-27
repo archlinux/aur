@@ -6,10 +6,10 @@ Subject: [PATCH 3/3] Use GNOME 3.16 deprecated schemas
 
 ---
  data/gnome-settings-daemon.convert          |  4 +++-
- plugins/keyboard/gsd-keyboard-manager.c     | 30 ++++++++++++++++++++-----
- plugins/media-keys/gsd-media-keys-manager.c |  6 +++--
- plugins/mouse/gsd-mouse-manager.c           | 34 +++++++++++++++++++++--------
- 4 files changed, 56 insertions(+), 18 deletions(-)
+ plugins/keyboard/gsd-keyboard-manager.c     | 30 ++++++++++++++++++++++++------
+ plugins/media-keys/gsd-media-keys-manager.c |  8 +++++---
+ plugins/mouse/gsd-mouse-manager.c           | 46 +++++++++++++++++++++++++++-------------------
+ 4 files changed, 59 insertions(+), 29 deletions(-)
 
 diff --git a/data/gnome-settings-daemon.convert b/data/gnome-settings-daemon.convert
 index 001a147..51c7c0c 100644
@@ -288,3 +288,4 @@ index 273aaf2..b526bab 100644
          set_locate_pointer (manager, FALSE);
 -- 
 2.3.7
+
