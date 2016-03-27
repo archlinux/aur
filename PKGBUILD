@@ -12,10 +12,10 @@ _use_no_jdk_archive=
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=145.257.12
+_buildver=145.596.7
 _veryear=2016
 _verrelease=1
-_verextra=RC2
+_nojdkrelease=false
 pkgver=${_veryear}.${_verrelease}.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (community version)"
@@ -25,8 +25,13 @@ url="http://www.jetbrains.com/idea/"
 license=('Apache2')
 depends=('java-environment' 'giflib' 'libxtst')
 makedepends=('wget')
-source=("http://download.jetbrains.com/idea/ideaIC-${_veryear}.${_verrelease}-${_verextra}.tar.gz")
-sha256sums=($(wget -q "${source}.sha256" && cat "ideaIC-${_veryear}.${_verrelease}-${_verextra}.tar.gz.sha256" | cut -f1 -d" "))
+if [ ${_nojdkrelease} = "true" ] && [ -n ${_use_no_jdk_archive} ]; then
+  source=("https://download.jetbrains.com/idea/ideaIC-${_veryear}.${_verrelease}-no-jdk.tar.gz")
+  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIC-${_veryear}.${_verrelease}-no-jdk.tar.gz.sha256" | cut -f1 -d" "))
+else
+  source=("https://download.jetbrains.com/idea/ideaIC-${_buildver}.tar.gz")
+  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIC-${_buildver}.tar.gz.sha256" | cut -f1 -d" "))
+fi
 
 package() {
     cd "$srcdir"
@@ -36,7 +41,7 @@ package() {
         rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
         rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
     fi
-    if [ -n ${_use_no_jdk_archive} ]; then
+    if [ ${_nojdkrelease} = "false" ] && [ -n ${_use_no_jdk_archive} ]; then
       rm -rf "${pkgdir}/opt/${pkgname}/jre"
     fi
 (
