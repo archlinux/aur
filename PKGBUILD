@@ -3,7 +3,7 @@
 pkgname=plasma5-applets-redshift-control-git
 _pkgname=plasma5-applets-redshift-control
 _gitpkgname=plasma-applet-redshift-control
-pkgver=r25.e808a40
+pkgver=r31.4ab0b8b
 pkgrel=1
 pkgdesc="Plasmoid for Plasma 5 for controlling redshift."
 arch=('any')
@@ -31,7 +31,7 @@ build() {
   cmake .. \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
 }
 
