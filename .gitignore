@@ -1,0 +1,6 @@
+pkg/
+src/
+.AURINFO
+audiotk/
+audiotk-git-*.tar.xz
+audiotk-git-*.src.tar.gz

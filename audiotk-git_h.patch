@@ -1,0 +1,12 @@
+diff --git a/tests/Distortion/SimpleOverdriveFilter.cpp b/tests/Distortion/SimpleOverdriveFilter.cpp
+index 61f16cd..24f1397 100644
+--- a/tests/Distortion/SimpleOverdriveFilter.cpp
++++ b/tests/Distortion/SimpleOverdriveFilter.cpp
+@@ -3,7 +3,6 @@
+  */
+ 
+ #include <ATK/config.h>
+-#include <ATK/git.h>
+ 
+ #include <ATK/Distortion/SimpleOverdriveFilter.h>
+ 
