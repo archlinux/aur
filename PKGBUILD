@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=frei0r-plugins-git
-pkgver=v1.2.1.r258.g954fbe3
+pkgver=v1.5.r0.ge2cb011
 pkgrel=1
 pkgdesc="A minimalistic plugin API for video sources and filters (Git version)"
 arch=('i686' 'x86_64')
@@ -22,14 +22,10 @@ pkgver() {
         printf "%s" "$(git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
-prepare() {
-	cd "${srcdir}/${pkgname}"
-	
-        ./autogen.sh        
-}
-
 build() {
 	cd "${srcdir}/${pkgname}"
+	
+	./autogen.sh
 	
 	./configure \
                 --prefix=/usr \
