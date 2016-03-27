@@ -12,7 +12,7 @@ makedepends=('gcc' 'git')
 url="https://github.com/fumiyas/${_pkgname}"
 source=("git+$url" ${_pkgname}.service)
 sha1sums=('SKIP' '619e94f405ed705bf5c865af341745c60759ea7a')
-backup=('etc/log2mail.conf')
+backup=('etc/log2mail/config' 'etc/log2mail/mail')
 
 pkgver() {
 	cd "${srcdir}"/${_pkgname}
@@ -36,8 +36,10 @@ package() {
 	mkdir -p "${pkgdir}"/usr/share
 	mv "${pkgdir}"/usr/man "${pkgdir}"/usr/share/man 
 
-	# installing sample config file
-	install -Dm644 "${srcdir}"/${_pkgname}/${_pkgname}.conf "${pkgdir}"/etc/${_pkgname}.conf
+	# installing sample config and template files
+	mkdir -p "${pkgdir}"/etc/${_pkgname}
+	install -Dm644 "${srcdir}"/${_pkgname}/${_pkgname}.conf "${pkgdir}"/etc/${_pkgname}/config
+	install -Dm644 "${srcdir}"/${_pkgname}/msg-tmpl "${pkgdir}"/etc/${_pkgname}/mail
 
 	# installing systemd unit
 	install -Dm644 "${srcdir}"/${_pkgname}.service "${pkgdir}"/usr/lib/systemd/system/${_pkgname}.service
