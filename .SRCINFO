@@ -1,14 +1,18 @@
 pkgbase = conky-lua
 	pkgdesc = Lightweight system monitor for X, with Lua support enabled
-	pkgver = 1.9.0
+	pkgver = 1.10.1
 	pkgrel = 2
-	url = http://conky.sourceforge.net/
+	url = http://github.com/brndnmtthws/conky
 	arch = i686
 	arch = x86_64
 	license = BSD
-	license = GPL
+	license = GPL3
 	makedepends = docbook2x
 	makedepends = tolua++
+	makedepends = perl-xml-libxml
+	makedepends = cmake
+	makedepends = docbook-xsl
+	makedepends = docbook-xml
 	makedepends = perl-xml-libxml
 	depends = alsa-lib
 	depends = libxml2
@@ -20,14 +24,14 @@ pkgbase = conky-lua
 	depends = imlib2
 	depends = lua51
 	depends = cairo
-	provides = conky=1.9.0
+	provides = conky=1.10.1
 	conflicts = conky
 	replaces = torsmo
 	options = !emptydirs
 	backup = etc/conky/conky.conf
 	backup = etc/conky/conky_no_x11.conf
-	source = http://downloads.sourceforge.net/project/conky/conky/1.9.0/conky-1.9.0.tar.gz
-	sha1sums = a8d26d002370c9b877ae77ad3a3bbd2566b38e5d
+	source = https://github.com/brndnmtthws/conky/archive/v1.10.1.tar.gz
+	sha1sums = 97b59ec1daf54126b30516e8663a9cf1f218d8ae
 
 pkgname = conky-lua
 
