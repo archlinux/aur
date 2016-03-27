@@ -16,11 +16,15 @@ sha256sums_i686=('b24ff5c8b980b3037a781c59021ffe5c7c2a1dc8f55b381b5b14ee8e335bf9
                  'ece52b13719323b342215ccc4846ae072b14b07033aeac395c9c13d81190255b')
 
 package() {
-  for sh_file in *.sh; do
+  case $CARCH in
+    x86_64) _arch=x86_64;;
+    i686) _arch=x86;;
+  esac
+
+  for sh_file in *-plugin-$pkgver.x-linux-$_arch.sh; do
     sh_file=${sh_file##*/}
 
     tmp_dir=$sh_file.out
-    rm -rf "$tmp_dir"
     mkdir "$tmp_dir"
 
     (
