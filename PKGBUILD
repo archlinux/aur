@@ -1,15 +1,15 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
 pkgname=pylama_pylint
-pkgver=2.1.1
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Pylint support for pylama"
 arch=('any')
 url="https://github.com/klen/pylama_pylint"
 license=('BSD')
-depends=('pylama' 'python-pylint-1.4.4' 'python-logilab-common')
+depends=('pylama>=6.3.3' 'python-pylint>=1.5.4')
 source=("https://github.com/klen/pylama_pylint/archive/$pkgver.tar.gz")
-sha256sums=('e6080ad00d3bda7cfd79b0eb6f746a4ca5bec4e1d9edb292e7d673ab4a27c1f6')
+sha256sums=('6a2fe8ec97eed86e02a43ffcde1968d091159553076941c167920307c2aba7aa')
 
 package() {
   cd "$pkgname-$pkgver"

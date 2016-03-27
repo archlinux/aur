@@ -1,15 +1,14 @@
 pkgbase = pylama_pylint
 	pkgdesc = Pylint support for pylama
-	pkgver = 2.1.1
+	pkgver = 2.2.1
 	pkgrel = 1
 	url = https://github.com/klen/pylama_pylint
 	arch = any
 	license = BSD
-	depends = pylama
-	depends = python-pylint-1.4.4
-	depends = python-logilab-common
-	source = https://github.com/klen/pylama_pylint/archive/2.1.1.tar.gz
-	sha256sums = e6080ad00d3bda7cfd79b0eb6f746a4ca5bec4e1d9edb292e7d673ab4a27c1f6
+	depends = pylama>=6.3.3
+	depends = python-pylint>=1.5.4
+	source = https://github.com/klen/pylama_pylint/archive/2.2.1.tar.gz
+	sha256sums = 6a2fe8ec97eed86e02a43ffcde1968d091159553076941c167920307c2aba7aa
 
 pkgname = pylama_pylint
 
