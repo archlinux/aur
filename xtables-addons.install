@@ -3,5 +3,9 @@ post_install() {
 }
 
 post_remove() {
-  depmod -a
+  post_install
+}
+
+post_upgrade() {
+  post_install
 }
