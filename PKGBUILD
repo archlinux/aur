@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis-git
-pkgver=0.2.r0.g6305520
+pkgver=0.2.r1.gf567d33
 pkgrel=1
 pkgdesc='modern, legacy free, simple yet efficient vim-like editor - git checkout'
 arch=('i686' 'x86_64')
@@ -30,16 +30,12 @@ pkgver() {
 	fi
 }
 
-prepare() {
-	cd vis/
-
-	git cherry-pick -n f567d332
-}
-
 build() {
 	cd vis/
 
-	./configure --prefix=/usr
+	./configure \
+		--prefix=/usr
+
 	make
 
 	markdown README.md > README.html
@@ -48,7 +44,7 @@ build() {
 package() {
 	cd vis/
 
-	make DESTDIR="${pkgdir}" PREFIX='/usr/' install
+	make DESTDIR="${pkgdir}" install
 
 	install -D -m0644 'LICENSE' "${pkgdir}/usr/share/licenses/vis/LICENSE"
 	install -D -m0644 'README.md' "${pkgdir}/usr/share/doc/vis/README.md"
