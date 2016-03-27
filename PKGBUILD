@@ -1,5 +1,5 @@
 pkgname=libmesode-git
-pkgver=381.b647b57
+pkgver=410.148a0ff
 pkgrel=1
 pkgdesc="Fork of libstrophe (https://github.com/strophe/libstrophe) for use with Profanity XMPP Client"
 arch=('i686' 'x86_64')
