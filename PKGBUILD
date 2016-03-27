@@ -7,7 +7,7 @@ pkgdesc="GMail-like conversation view for Thunderbird"
 arch=('any')
 url="https://github.com/protz/GMail-Conversation-View"
 license=('MPL' 'GPL2' 'LGPL2.1')
-depends=('thunderbird-nightly=29.0a1')
+depends=('thunderbird-nightly>38.7.1')
 _thunderbird_extensions_dir="/opt/thunderbird-nightly-29.0a1/extensions"
 makedepends=('git' 'nodejs' 'zip')
 source=("$pkgname"::'git://github.com/protz/GMail-Conversation-View.git')
