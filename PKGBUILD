@@ -1,17 +1,17 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=red
-pkgver=0.5.4
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="An open source, native code compiled, dialect of Rebol"
 arch=('i686' 'x86_64')
 url="http://www.red-lang.org"
 license=('custom:3-clause BSD' 'custom:BSL')
 groups=('devel')
-depends=('lib32-readline')
-makedepends=('wget' 'rebol=2.7.8')
+makedepends=('wget' 'rebol=2.7.8' 'lib32-curl')
 checkdepends=('bash')
+conflicts=('ed')
 source=("https://github.com/dockimbel/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('fe80eb93b7dcb9cedf6693a0f6f91399')
+md5sums=('0df0ae2c3d25e7c6676bd282e3900fb5')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -30,12 +30,11 @@ check() {
 }
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir/$pkgname-$pkgver"
   install -d "$pkgdir"/opt/red
-  find $pkgname-$pkgver/quick-test/runnable -type f -executable -print0 | xargs -0 rm
-  cp -R $pkgname-$pkgver/* "$pkgdir"/opt/red/
-  cd $pkgname-$pkgver
-  install -Dm755 "$pkgdir"/opt/red/console "$pkgdir"/usr/bin/red-console
+  find ./quick-test/runnable -type f -executable -print0 | xargs -0 rm
+  cp -R * "$pkgdir"/opt/red/
+  install -Dm755 "$pkgdir"/opt/red/console "$pkgdir"/usr/bin/red
   rm "$pkgdir"/opt/red/console
   install -Dm644 BSD-3-License.txt "$pkgdir"/usr/share/licenses/$pkgname/BSD-3-License.txt
   install -Dm644 BSL-License.txt "$pkgdir"/usr/share/licenses/$pkgname/BSL-License.txt
@@ -45,4 +44,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
