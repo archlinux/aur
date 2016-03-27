@@ -2,7 +2,7 @@
 
 pkgname=wallxplanet
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate earth wall with cloud"
 arch=('any')
 url="www.google.fr"
@@ -47,7 +47,7 @@ package() {
         "$pkgdir"/usr/bin/wallxplanet.sh || return 1
 }
 
-sha512sums=('66c96c29eb92d1d0270be36242be295cf61d52ac16c6f60d0595536223014d43e26efca0688e73eb4031581dd26a79e61f34cf85982dbaad5b5ffbca96f2e189'
+sha512sums=('cb5244e8c11173d570898e3dc56f76ce3fa9ef1813a57474f172ef84955ab04806f94f4bdc74ab86bca54621c4ee855ad97968cd3603e6ea976f184f51ddf2c0'
             'f83c0157272ee41389d7af50f1988c3470977d5dc80c4bc8b982b8cafa273775996e9e06893da970c04e7ab87ba8463f35405319dbe4ae73b0e3d68a146472d3'
             '4b3574dce95148a2f6bc9f627524ea7f9b6806552016dd696e9cbf3edf56b8d8fa99f48f95616e276d67801ade65e32fe971a7dbd1bb5afadf7b49540fbd340c'
             '900a7c3c8822a2be6f46e672ad5b4bfde47863e4d9af401805df9011a7010b279e1ac3c8afe08d88f88cb7db0b662321f74a06219790868f85109c41c2ffc99e')
