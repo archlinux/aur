@@ -16,17 +16,17 @@ source=("${pkgname#lib32-}-${pkgver}.tar.gz::https://github.com/${pkgname#lib32-
 sha512sums=('0b80f9aa40e0a485371b5949152c10d7fffb6e0dfe8c2aabc3c6e4e97ba0cdd465ae7093343245be60173bc7b24e80e919c0c0e199ff0bb2b14ed94af7087c4f')
 
 prepare() {
-  cd "${srcdir}"
-  export CC='gcc -m32'
-  export CXX='g++ -m32'
-  export LDFLAGS='-m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  cd "${pkgname#lib32-}-${pkgver}"
   [ -d build ] || mkdir build
 }
 
 build() {
-  cd "${srcdir}/build"
-  cmake ../"${pkgname#lib32-}-${pkgver}" \
+  cd "${pkgname#lib32-}-${pkgver}/build"
+  export CC='gcc -m32'
+  export CXX='g++ -m32'
+  export LDFLAGS='-m32'
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  cmake .. \
         -DCMAKE_BUILD_TYPE=Release \
         -DSHARED_ONLY=true \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -35,7 +35,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/build"
+  cd "${pkgname#lib32-}-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
   rm -rf "${pkgdir}"/{etc,usr/{share,include,bin}}
 }
