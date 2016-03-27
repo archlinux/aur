@@ -2,7 +2,7 @@
 
 . /etc/rc.conf
 . /etc/rc.d/functions
-. /etc/conf.d/syslog-ng
+. /etc/conf.d/initscripts/syslog-ng
 
 checkconfig() {
   if ! syslog-ng -s "${SYSLOG_NG_CHECKOPTS[@]}"; then

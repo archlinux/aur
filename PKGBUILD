@@ -5,7 +5,7 @@
 
 pkgname=syslog-ng-nosystemd
 pkgver=3.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Next-generation syslogd with advanced networking and filtering capabilities"
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -21,7 +21,7 @@ replaces=('syslog-ng' 'syslog-ng-eudev')
 conflicts=('syslog-ng' 'syslog-ng-eudev')
 backup=('etc/syslog-ng/scl.conf'
         'etc/syslog-ng/syslog-ng.conf'
-        'etc/conf.d/syslog-ng'
+        'etc/conf.d/initscripts/syslog-ng'
         'etc/logrotate.d/syslog-ng')
 source=("http://www.balabit.com/downloads/files/syslog-ng/sources/$pkgver/source/syslog-ng_$pkgver.tar.gz"
         syslog-ng.conf
@@ -32,7 +32,7 @@ sha1sums=('33a8983d8324abf88975838149cbb772f5860d8a'
           '3e7ec4f3f68265aaa98f37338f801c5c22b85c17'
           'eb2aa25737e0cb9453c7b058f0e2dcf16abf21cd'
           '949128fe3d7f77a7aab99048061f885bc758000c'
-          '94af81a84e3add6653755122cdd5080694de059d')
+          '38bf100961fb1858b1c42d3851ffdf92afb74db6')
 
 build() {
   cd "syslog-ng-$pkgver"
@@ -62,5 +62,5 @@ package() {
   install -Dm644 "$srcdir/syslog-ng.conf" "$pkgdir/etc/syslog-ng/syslog-ng.conf"
   install -Dm644 "$srcdir/syslog-ng.logrotate" "$pkgdir/etc/logrotate.d/syslog-ng"
   install -Dm755 "$srcdir/syslog-ng.rc" "$pkgdir/etc/rc.d/syslog-ng"
-  install -Dm644 "$srcdir/syslog-ng.conf.d" "$pkgdir/etc/conf.d/syslog-ng"
+  install -Dm644 "$srcdir/syslog-ng.conf.d" "$pkgdir/etc/conf.d/initscripts/syslog-ng"
 }
