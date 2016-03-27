@@ -5,12 +5,13 @@
 
 pkgname=libmfx-git
 pkgver=r40.7adf2e4
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel Media SDK dispatcher library"
 arch=('i686' 'x86_64')
 url="https://github.com/lu-zero/mfx_dispatch"
 license=('custom')
 depends=('libva')
+makedepends=('git' 'autoconf')
 options=('staticlibs')
 provides=('libmfx' 'libmfx.a')
 source=("$pkgname"::'git+https://github.com/lu-zero/mfx_dispatch.git')
