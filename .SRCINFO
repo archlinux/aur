@@ -1,0 +1,21 @@
+pkgbase = swars
+	pkgdesc = Syndicate Wars, a classic 1996 strategy game, with SDL patches to make it playable natively on Linux. Requires the Syndicate Wars CD to copy data files from before first run.
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://swars.vexillium.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = python2
+	depends = lib32-sdl
+	depends = lib32-libvorbis
+	depends = lib32-libpng
+	depends = lib32-zlib
+	depends = lib32-openal
+	depends = lib32-cdparanoia
+	source = http://swars.vexillium.org/files/swars-0.3.tar.bz2
+	sha256sums = 01f44e5b792d41b138d361d04810a875cfa5f897c642a2b13d0dde633fabdacb
+
+pkgname = swars
+	install = swars.install
+

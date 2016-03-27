@@ -1,0 +1,3 @@
+post_install() {
+  echo "Syndicate Wars will not work until data has been copied/converted from an original CD. Firstly insert your Syndicate Wars CD or mount if you have an image file, then open in a terminal at /usr/share/swars/ and run the install script: ./install -f <mount point of CD/image> -t /usr/share/swars    after this process is finished, you can run Syndicate Wars by using swars"
+}
