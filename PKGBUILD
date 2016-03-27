@@ -1,8 +1,8 @@
-# Maintainer: L <alaviss0 at gmail dot com>
+# Maintainer: Albert Mikaelyan <tahvok at gmail dot com>
 
 pkgbase=gridcoinresearch-git
-pkgname=('gridcoinresearch-daemon-git' 'gridcoinresearch-qt-git' 'gridcoinresearch-upgrader-git')
-pkgver=3.4.2.5.r443.78d83b2
+pkgname=('gridcoinresearch-daemon-git' 'gridcoinresearch-qt-git')
+pkgver=3.5.6.0.r654.a20e6a6
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://gridcoin.us"
@@ -10,11 +10,11 @@ license=('custom:gridcoin')
 makedepends=('boost' 'git' 'qt4' 'openssl' 'qrencode' 'db' 'curl'
              'protobuf' 'miniupnpc')
 source=('gridcoinresearch::git+https://github.com/gridcoin/Gridcoin-Research.git'
-        'fix-upnp.patch'
+        '01_qt5_fixes.patch'
         'gridcoinresearch-qt.desktop')
 
 sha1sums=('SKIP'
-          '46006c634ef57189b9a9e6607ca392cb17b933b4'
+          'c8492e0244fb95214887aa432b52347dbd96879c'
           '931e82ce57cf9099d73534f969f49ba4e524e671')
 
 pkgver() {
@@ -28,10 +28,11 @@ pkgver() {
 prepare() {
   cd "$srcdir/${pkgbase%-git}"
 
-  # Fix miniupnpc header path
-  patch -Np1 -i "$srcdir"/fix-upnp.patch
+  patch -Np1 -i "$srcdir"/01_qt5_fixes.patch
 
-  mkdir -p src/obj/zerocoin
+  mkdir -p src/obj
+
+  chmod 755 src/leveldb/build_detect_platform
 }
 
 build() {
@@ -40,10 +41,8 @@ build() {
   cd src
   make ${MAKEFLAGS} -f makefile.unix DEBUGFLAGS="" USE_UPNP=1
 
-  make ${MAKEFLAGS} -f makefile_upgrader.unix DEBUGFLAGS=""
-
   cd ..
-  qmake-qt4 "USE_QRCODE=1 USE_UPNP=1"
+  qmake "USE_QRCODE=1 USE_UPNP=1 NO_UPGRADE=1"
   make ${MAKEFLAGS}
 }
 
@@ -73,12 +72,3 @@ package_gridcoinresearch-qt-git() {
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
-package_gridcoinresearch-upgrader-git() {
-  pkgdesc="Stub program for Gridcoin Daemon"
-  depends=('curl' 'boost-libs' 'libzip')
-
-  cd "${srcdir}/${pkgbase%-git}/src"
-  install -Dm755 gridcoinupgrader "${pkgdir}/usr/bin/gridcoinupgrader"
-
-  install -Dm644 ../COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
-}
