@@ -7,7 +7,7 @@
 
 pkgname=calculix
 pkgver=2.10
-pkgrel=1
+pkgrel=2
 pkgdesc="CalculiX: 3D finite element solver and post-processor (executables)"
 arch=('i686' 'x86_64')
 options=(!makeflags !buildflags)
@@ -27,7 +27,7 @@ source=("http://www.dhondt.de/ccx_${_ccxver}.src.tar.bz2"
         "calculix_${_mainver}_archlinux.patch")
 
 sha256sums=('693497d19d8dd2a5376e64e038d5c248d87f0e2df46d409a83bf976596b319f5'
-            'b2ea974003374c28b8e24f76f8a6c142db470a8c2a53013e3735efe78e98e84d'
+            '64810dab1c22152c7946282fac5763cc36b9e31e309f962c23b8bf8238537c7e'
             'f171dd982aca9204b24defc3b0a674747b17b5fdb675caf5eff11a5c794cd757')
 
 prepare()
