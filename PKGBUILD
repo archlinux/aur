@@ -10,8 +10,8 @@ license=('unknown')
 source_x86_64=('http://res.bsmart.it.s3.amazonaws.com/mybsmart_desktop/releases/production/linux/x64/MybSmart.deb')
 source_i686=('http://res.bsmart.it.s3.amazonaws.com/mybsmart_desktop/releases/production/linux/ia32/MybSmart.deb')
 noextract=('MybSmart.deb')
-md5sums_x86_64=('SKIP')
-md5sums_i686=('SKIP')
+md5sums_x86_64=('eae55b20e39542bf6cd33dde3364f600')
+md5sums_i686=('79044f14995a3930819bc1b95905d48b')
 
 package() {
  ar p MybSmart.deb data.tar.xz | tar xJ
