@@ -4,7 +4,7 @@
 # Contributor: Stanislav GE <ginermail at gmail dot com>
 
 _pkgname="doublecmd"
-# pkgbase="${_pkgname}-svn"
+pkgbase="${_pkgname}-svn"
 pkgname=("${_pkgname}-gtk2-svn" "${_pkgname}-qt-svn")
 pkgver=r6743
 pkgrel=1
