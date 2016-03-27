@@ -2,7 +2,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=zynaddsubfx-git
-pkgver=2.5.3.r4.ge52dd05
+pkgver=2.5.4.r0.gc90b4a6
 pkgrel=1
 pkgdesc="A powerful realtime, multi-timbral software synthesizer."
 arch=('i686' 'x86_64')
@@ -31,49 +31,47 @@ pkgver() {
   )
 }
 prepare() {
+  cd "${pkgname}"
   [ -d build ] || mkdir build
-  cd "${srcdir}/${pkgname}"
   git checkout ${_branch}
 
   # Pull rtosc and instruments
   git submodule update --init
-
-  # Does not build with --as-needed
-  LDFLAGS=${LDFLAGS//,--as-needed}
 
   # Prevent use of /usr/lib64
   sed -i 's:lib64:lib:' src/CMakeLists.txt
 }
 
 build() {
-  cd "${srcdir}"
   [ -f zynaddsubfx.desktop ] && rm zynaddsubfx.desktop
   gendesk $startdir/PKGBUILD
   # Match camel case of included .desktop files
   setconf "${pkgname%-*}.desktop" Name "ZynAddSubFX"
 
+  # Does not build with --as-needed
+  LDFLAGS=${LDFLAGS//,--as-needed}
 
-  cd "${srcdir}/build"
-  cmake ../"${pkgname}" -DCMAKE_INSTALL_PREFIX=/usr \
+  cd "${pkgname}/build"
+  cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
            -DCMAKE_INSTALL_LIBDIR=/usr/lib \
            -DGuiModule=ntk
   make
 
   # External programs
-  cd "../${pkgname}/ExternalPrograms/Spliter" && make
+  cd "../ExternalPrograms/Spliter" && make
   cd "../Controller" && make
 }
 
 package() {
-  cd "${srcdir}/build"
+  cd "${pkgname}/build"
   make DESTDIR="${pkgdir}/" install
 
   # External programs and documentation.
-  install -Dm755 "../${pkgname}/ExternalPrograms/Spliter/spliter" \
+  install -Dm755 "../ExternalPrograms/Spliter/spliter" \
                  "${pkgdir}/usr/bin/spliter"
-  install -Dm644 "../${pkgname}/ExternalPrograms/Spliter/readme.txt" \
+  install -Dm644 "../ExternalPrograms/Spliter/readme.txt" \
                  "${pkgdir}/usr/share/doc/zynaddsubfx/SPLITER.txt"
-  install -Dm755 "../${pkgname}/ExternalPrograms/Controller/controller" \
+  install -Dm755 "../ExternalPrograms/Controller/controller" \
                  "${pkgdir}/usr/bin/controller"
 
   # Additional parameters
