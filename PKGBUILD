@@ -2,7 +2,7 @@
 #Contributor: Muhammed Uluyol <uluyol0@gmail.com>
 
 pkgname=foo2zjs
-pkgver=20160122
+pkgver=20160313
 pkgrel=1
 pkgdesc="foo2zjs Printer Drivers. Includes also foo2hp, foo2hbpl, foo2oak, foo2xqx, foo2qpdl, foo2slx, foo2hiperc and foo2lava drivers."
 url="http://foo2zjs.rkkda.com/"
@@ -21,7 +21,7 @@ source=("foo2zjs-${pkgver}.tar.gz::http://foo2zjs.rkkda.com/foo2zjs.tar.gz"
 	'firmware-loader-20130602-1.patch'
 	'udev-firmware-loading-ruleset-20130601-1.patch')
 
-sha256sums=('654c6febb6a0b5259a3d5ca6e7217aa3cacdcf21bde4ca7f15848f7ffe3226c2'
+sha256sums=('SKIP'
             '6dbbbc0632833f2ef142f90d176a45bbdbb6f38fc674f9582c5a2fde0480bcd5'
             '2a104b8f93d8cb4bd0a10156043f9cf47eddaa728f6317d235bc6d9843312f05'
             '5fe072326173d5008741ffed2e122053f821eabc0d3369ef64a2e346e4e327d1'
