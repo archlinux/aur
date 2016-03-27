@@ -1,6 +1,6 @@
 pkgbase = gtk3-ubuntu
 	pkgdesc = GObject-based multi-platform toolkit (v3)
-	pkgver = 3.20.0
+	pkgver = 3.20.1
 	pkgrel = 1
 	url = http://www.gtk.org/
 	install = gtk3.install
@@ -29,12 +29,12 @@ pkgbase = gtk3-ubuntu
 	depends = json-glib
 	depends = rest
 	depends = wayland-protocols
-	provides = gtk3=3.20.0
+	provides = gtk3=3.20.1
 	conflicts = gtk3
-	source = http://ftp.gnome.org/pub/GNOME/sources/gtk+/3.20/gtk+-3.20.0.tar.xz
-	source = http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/g/gtk+3.0/gtk+3.0_3.20.0-0ubuntu1~xenial0.debian.tar.xz
-	sha512sums = 493dc3ca8470be9624378ac1019ab110790ddcb121315699817022c51fad8012304bd4c2d980aeb789c6de04e00cf674b0a37b45c94c6d1694d1b52ab50e562e
-	sha512sums = 5c3b4c0540e7ddd0b7069a74f3b6553eb5f186f3ff1a1819c38b58b8aadcc64d0b720b88be1b73f464d5ba2150a9b77c37aff54a9054b15736b1c7440e8b863e
+	source = http://ftp.gnome.org/pub/GNOME/sources/gtk+/3.20/gtk+-3.20.1.tar.xz
+	source = http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/g/gtk+3.0/gtk+3.0_3.20.1-0ubuntu1~xenial0.debian.tar.xz
+	sha512sums = fc70295850270805454197ea06551be36124ae76bd3966af46804ae7c9c83ee8d460370554eae6e84becdb905ad076863bbacc0e0f6a21e4bc873445eb81f89e
+	sha512sums = 126f22e3340ff0d7367e7098036daeb28ecdd9c4fbab7966c9ec1372cc336ff187f75d5584370ffe2a55335e8ff2c63c570b57c2e4c19725aad5d8207bd1eacc
 
 pkgname = gtk3-ubuntu
 
