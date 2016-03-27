@@ -3,12 +3,12 @@
 _gitname=i3lock-fancy
 pkgname=i3lock-fancy-git
 pkgver=r46.c30b2a1
-pkgrel=1
+pkgrel=2
 pkgdesc="i3lock-color script: blurs background, adds lock icon and text, offers dark/light background detection."
 arch=('i686' 'x86_64')
 url="https://github.com/meskarune/i3lock-fancy"
 license=('MIT')
-depends=('imagemagick' 'i3lock-color-git' 'scrot')
+depends=('coreutils' 'awk' 'sed' 'bash' 'util-linux' 'imagemagick' 'i3lock-color-git' 'scrot')
 makedepends=('git')
 provides=("i3lock-fancy")
 source=("git+https://github.com/meskarune/$_gitname.git")
