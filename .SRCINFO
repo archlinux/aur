@@ -1,6 +1,6 @@
 pkgbase = cower
 	pkgdesc = A simple AUR agent with a pretentious name
-	pkgver = 15
+	pkgver = 16
 	pkgrel = 1
 	url = http://github.com/falconindy/cower
 	arch = i686
@@ -11,10 +11,10 @@ pkgbase = cower
 	depends = openssl
 	depends = pacman
 	depends = yajl
-	source = http://code.falconindy.com/archive/cower/cower-15.tar.gz
-	source = http://code.falconindy.com/archive/cower/cower-15.tar.gz.sig
+	source = http://code.falconindy.com/archive/cower/cower-16.tar.gz
+	source = http://code.falconindy.com/archive/cower/cower-16.tar.gz.sig
 	validpgpkeys = 487EACC08557AD082088DABA1EB2638FF56C0C53
-	md5sums = 0e4ec7d658648c899cec4eb7dc377315
+	md5sums = f141e441b7775df3d3a1ba3a80bc3d1d
 	md5sums = SKIP
 
 pkgname = cower
