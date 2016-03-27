@@ -1,0 +1,13 @@
+pkgbase = xcursor-pinux-arch
+	pkgdesc = Arch Linux only theme based on Pinux's Tux Cursors
+	pkgver = 0.3
+	pkgrel = 1
+	url = http://www.kde-look.org/content/show.php?content=19506
+	arch = any
+	license = GPL
+	conflicts = xcursor-pinux
+	source = pArch.tar.xz
+	md5sums = ba184bf1d77b4387bfb9bea1945fe783
+
+pkgname = xcursor-pinux-arch
+
