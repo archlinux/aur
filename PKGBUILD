@@ -1,7 +1,7 @@
 # Maintainer: Eric Chu <eric@ericchu.net>
 pkgname=shomepass
-pkgver=1
-pkgrel=1
+pkgver=v1.1.r0.g500241f
+pkgrel=2
 pkgdesc='A systemd homepass service'
 arch=('any')
 url='https://github.com/ericchu94/shomepass'
@@ -11,13 +11,18 @@ source=('git+https://github.com/ericchu94/shomepass.git')
 noextract=()
 md5sums=('SKIP')
 
+pkgver() {
+  cd "$pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
   mkdir -p $pkgdir/etc/shomepass/
-  cp shomepass/shomepass.conf.example $pkgdir/etc/shomepass/
-
   mkdir -p $pkgdir/usr/bin/
-  cp shomepass/shomepass $pkgdir/usr/bin/
-
   mkdir -p $pkgdir/usr/lib/systemd/system/
-  cp shomepass/shomepass.service $pkgdir/usr/lib/systemd/system/
+
+  cd "$pkgname"
+  cp shomepass.conf.example $pkgdir/etc/shomepass/
+  cp shomepass $pkgdir/usr/bin/
+  cp shomepass.service $pkgdir/usr/lib/systemd/system/
 }
