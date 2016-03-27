@@ -3,24 +3,21 @@
 # Contributor: argymeg <argymeg at gmail dot com>
 
 pkgname=firefox-wayland
-pkgver=45.0rc2
-_realpkgver=45.0
-_rcbuild=2
+pkgver=43.0a1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta (build from source) with Wayland patches"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
-url="https://www.mozilla.org/firefox/"
-depends=('gtk2' 'gtk3' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
+url="https://github.com/stransky/gecko-dev"
+depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'ffmpeg2.8' 'desktop-file-utils' 'hicolor-icon-theme'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
              'xorg-server-xvfb' 'libpulse' 'inetutils' 'rust')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'upower: Battery API')
-provides=("firefox=$pkgver")
-conflicts=("firefox-wayland-bin")            
 install=firefox-wayland.install
+conflicts=("firefox-wayland-bin")            
 options=('!emptydirs' '!makeflags')
 source=('git+https://github.com/stransky/gecko-dev.git'
         mozconfig
