@@ -2,14 +2,14 @@
 
 
 post_install() {
+	xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 	update-desktop-database -q
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
 }
 
 post_upgrade() {
-	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	post_install
 }
 
 post_remove() {
-	post_install $1
+	post_install
 }
