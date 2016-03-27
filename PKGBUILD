@@ -3,13 +3,13 @@
 
 pkgname="rename-me"
 pkgver="0.0.6.4"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="An extension to rename files with Nautilus"
 arch=('any')
 url="http://www.atareao.es/tag/rename-me/"
 license=('GPL-3.0+')
 depends=('python2')
-makedepends=('python2-distutils-extra')
+makedepends=('python2-distutils-extra' 'python2-polib')
 source=("https://launchpad.net/~atareao/+archive/ubuntu/nautilus-extensions/+files/${pkgname}_${pkgver}-1ubuntu1.tar.xz")
 sha256sums=('b547bb22768be8f3ee800a7d6961b4f9e80d35d735d409df2b4bc23d942eee9f')
 
