@@ -7,33 +7,26 @@
 pkgname='warsow-beta'
 _pkgname_server='wsw-server-beta'
 _pkgname_tv='wswtv-server-beta'
-pkgver='2.0.1'
+pkgver='2.1.0'
 pkgrel='1'
 pkgdesc='Free online multiplayer competitive FPS based on the Qfusion engine'
 url='https://www.warsow.gg/'
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=(
-  'warsow-beta-data' 'sdl2' 'libjpeg' 'libpng' 'curl' 'libvorbis' 'freetype2'
-  'libxinerama' 'libxxf86vm' 'libxrandr' 'libtheora' 'libxi'
-)
+depends=('warsow-beta-data' 'sdl2' 'libjpeg' 'libpng' 'curl'
+         'libvorbis' 'freetype2' 'libxinerama' 'libxxf86vm'
+         'libxrandr' 'libtheora' 'libxi')
 makedepends=('mesa' 'openal' 'imagemagick' 'gendesk' 'cmake')
-optdepends=(
-  'openal: for openal audio support'
-  'openal-hrtf: for openal virtual acoustics'
-)
-source=(
-  'warsow.launcher'
-  'wsw-server.launcher'
-  'wswtv-server.launcher'
-  'http://mirror.null.one/warsow_201_sdk.tar.gz'
-)
-md5sums=(
-  '9f45e1a4a7eb2cc1bdf4b509cf32bbbc'
-  'ab24df17a04185a1448d4c1958ba38d7'
-  'ef59b7439ca732d9eb9f2956809ff9dd'
-  'e66809592094f45ec853b460ccaaa579'
-)
+optdepends=('openal: for openal audio support'
+            'openal-hrtf: for openal virtual acoustics')
+source=('warsow.launcher'
+        'wsw-server.launcher'
+        'wswtv-server.launcher'
+        'http://mirror.null.one/warsow_21_sdk.tar.gz')
+md5sums=('9f45e1a4a7eb2cc1bdf4b509cf32bbbc'
+         'ab24df17a04185a1448d4c1958ba38d7'
+         'ef59b7439ca732d9eb9f2956809ff9dd'
+         '41885946e562012582761af5485e6801')
 
 prepare() {
   gendesk -n -f --pkgname "${pkgname}" --pkgdesc "${pkgdesc}" \
@@ -42,7 +35,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/source/source"
-  cmake .
+  cmake -DQFUSION_GAME=Warsow .
   make ${MAKE_FLAGS}
 }
 
