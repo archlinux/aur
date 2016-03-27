@@ -2,11 +2,11 @@
 
 _pkgname=qotd
 pkgname=$_pkgname-git
-pkgver=0.4.0_3_gdd3c825.dd3c825
+pkgver=0.4.0_7_g8c33e16.8c33e16
 pkgrel=1
 pkgdesc="A simple QOTD (quote of the day) daemon."
 arch=('any')
-url="https://github.com/ammongit/$_pkgname"
+url="https://gitlab.com/ammongit/$_pkgname"
 license=('GPL')
 depends=()
 makedepends=('git' 'gcc') # Also compatible with clang. Change CC in src/Makefile.
@@ -15,7 +15,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=()
 install="$pkgname.install"
-source=("git+https://github.com/ammongit/$_pkgname.git")
+source=("git+https://gitlab.com/ammongit/$_pkgname.git")
 sha256sums=('SKIP')
 backup=('etc/qotd.conf')
 
