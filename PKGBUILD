@@ -1,16 +1,17 @@
-# Maintainer: Mladen Pejaković <pejakm[at]autistici[dot]org>
+# Maintainer: Sandor Nagy <sandor[dot]nagy[at]kdemail[dot]net>
+# Contributor: Mladen Pejaković <pejakm[at]autistici[dot]org>
 # Contributor: Morealaz <morealaz@gmail.com>
 # Contributor: Lev Lybin <lev.lybin@gmail.com>
 # Contributor: Özgür Sarıer <ozgursarier1011601115[at]gmail[dot]com>
 
 pkgname=viber
 pkgver=4.2.2.6
-pkgrel=14
+pkgrel=15
 pkgdesc="Proprietary cross-platform IM and VoIP software"
 arch=('x86_64')
 url="http://viber.com"
 license=('custom')
-depends=('qt5-quick1' 'qt5-websockets' 'qt5-svg' 'gstreamer0.10-base' 'libxss') # 'qt5-imageformats'
+depends=('qt5-websockets' 'qt5-svg' 'gstreamer0.10-base' 'libxss') # 'qt5-imageformats'
 source=("http://download.cdn.viber.com/cdn/desktop/Linux/${pkgname}.deb"
         "eula.html"
         "viber")
@@ -44,6 +45,9 @@ package() {
 
   # crashes on image sending/recieving with system WebKit, so leave this for now
   install -Dm644 {libicudata.so.48,libicui18n.so.48,libicuuc.so.48,libQt5WebKit.so.5,libQt5WebKitWidgets.so.5} "${pkgdir}/opt/viber"
+
+  # qt5-quick1 package no longer available
+  install -Dm644 libQt5Declarative.so.5 "${pkgdir}/opt/viber"
 
   # crashes without this, even if qt5-imageformats installed
   install -Dm644 imageformats/*.so "${pkgdir}/opt/viber/imageformats"
