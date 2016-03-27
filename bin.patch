@@ -1,6 +1,6 @@
-diff -Naur neo4j-community-2.3.2-orig/bin/neo4j neo4j-community-2.3.2-mod/bin/neo4j
---- neo4j-community-2.3.2-orig/bin/neo4j	2016-01-12 21:01:31.000000000 -0200
-+++ neo4j-community-2.3.2-mod/bin/neo4j	2016-01-26 10:38:34.784729340 -0200
+diff -Naur neo4j-community-2.3.3-orig/bin/neo4j neo4j-community-2.3.3-mod/bin/neo4j
+--- neo4j-community-2.3.3-orig/bin/neo4j	2016-01-12 21:01:31.000000000 -0200
++++ neo4j-community-2.3.3-mod/bin/neo4j	2016-01-26 10:38:34.784729340 -0200
 @@ -33,24 +33,13 @@
  LAUNCHD_NAME="org.neo4j.server"
  
@@ -60,9 +60,9 @@ diff -Naur neo4j-community-2.3.2-orig/bin/neo4j neo4j-community-2.3.2-mod/bin/ne
    if [ ! -e "$LIBDIR" ] ; then
      echo "Error: missing Neo4j Library, expected at $LIBDIR"
      exit 1
-diff -Naur neo4j-community-2.3.2-orig/bin/neo4j-import neo4j-community-2.3.2-mod/bin/neo4j-import
---- neo4j-community-2.3.2-orig/bin/neo4j-import	2016-01-12 21:01:31.000000000 -0200
-+++ neo4j-community-2.3.2-mod/bin/neo4j-import	2016-01-26 10:38:34.784729340 -0200
+diff -Naur neo4j-community-2.3.3-orig/bin/neo4j-import neo4j-community-2.3.3-mod/bin/neo4j-import
+--- neo4j-community-2.3.3-orig/bin/neo4j-import	2016-01-12 21:01:31.000000000 -0200
++++ neo4j-community-2.3.3-mod/bin/neo4j-import	2016-01-26 10:38:34.784729340 -0200
 @@ -21,19 +21,7 @@
  #Remember where we started from so that working dir is set correctly
  RUN_FROM=`pwd`
@@ -93,9 +93,9 @@ diff -Naur neo4j-community-2.3.2-orig/bin/neo4j-import neo4j-community-2.3.2-mod
  fi
  
  LIBRARY_JARS=""
-diff -Naur neo4j-community-2.3.2-orig/bin/neo4j-shell neo4j-community-2.3.2-mod/bin/neo4j-shell
---- neo4j-community-2.3.2-orig/bin/neo4j-shell	2016-01-12 21:01:31.000000000 -0200
-+++ neo4j-community-2.3.2-mod/bin/neo4j-shell	2016-01-26 10:38:34.784729340 -0200
+diff -Naur neo4j-community-2.3.3-orig/bin/neo4j-shell neo4j-community-2.3.3-mod/bin/neo4j-shell
+--- neo4j-community-2.3.3-orig/bin/neo4j-shell	2016-01-12 21:01:31.000000000 -0200
++++ neo4j-community-2.3.3-mod/bin/neo4j-shell	2016-01-26 10:38:34.784729340 -0200
 @@ -21,19 +21,7 @@
  #Remember where we started from so that working dir is set correctly
  RUN_FROM=`pwd`
