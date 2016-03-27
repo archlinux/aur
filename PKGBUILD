@@ -2,7 +2,7 @@ pkgname=freepass-git
 _pkgname=freepass
 pkgdesc="The free password manager for power users."
 pkgrel=1
-pkgver=0.0.0.67
+pkgver=0.0.0.70
 arch=('i686' 'x86_64')
 conflicts=('freepass')
 provides=('freepass')
@@ -10,7 +10,8 @@ url="https://github.com/myfreeweb/freepass"
 license=('UNLICENSE')
 depends=('libsodium')
 makedepends=('rust' 'cargo' 'git' 'python-pytoml')
-source=('git+https://github.com/quininer/freepass.git')
+optdepends=()
+source=('git+https://github.com/myfreeweb/freepass.git')
 # source=('git+https://github.com/myfreeweb/freepass.git')
 sha256sums=('SKIP')
 
@@ -21,7 +22,6 @@ pkgver() {
 
 build() {
 	cd $_pkgname
-	git checkout fix
 	git submodule init
 	git submodule update libsodium rusterpassword
 	cd "cli"
