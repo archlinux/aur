@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://launchpad.net/ladish"
 license=('GPL2')
 depends=('a2jmidid' 'boost' 'dbus-glib' 'flowcanvas<=0.7.1' 'jack' 'laditools-git')
-makedepends=('git' 'python2')
+makedepends=('git' 'intltool' 'python2')
 provides=("${pkgname%-*}" 'lash')
 conflicts=("${pkgname%-*}" 'lash')
 install=${pkgname}.install
@@ -28,8 +28,6 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname}"
-  export PYTHON=/usr/bin/python2
-  export CXX='g++ -std=c++11'
   git checkout ${_branch}
   sed -i "s|env python|&2|" ladish_control
   sed -i "s|\(RELEASE = \).*|\1True|" wscript
@@ -38,6 +36,7 @@ prepare() {
 build() {
   cd "${srcdir}/${pkgname}"
   export PYTHON=/usr/bin/python2
+  export CXX='g++ -std=c++11'
   python2 waf configure --prefix=/usr \
               --enable-liblash \
               --enable-pylash
