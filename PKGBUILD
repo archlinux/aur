@@ -4,18 +4,20 @@
 pkgname=('backintime' 'backintime-cli')
 _pkgname="backintime"
 pkgver=1.1.12
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/bit-team/backintime"
 license=('GPL')
 makedepends=('python')
-source=("https://github.com/bit-team/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('76036de6abdf5a2b2fbf66311c369dce7e3755fa778e5f01aa49bc2be68eb9f1')
+source=("https://github.com/bit-team/$_pkgname/archive/v$pkgver.tar.gz"
+'pkexec1.1.12.patch')
+sha256sums=('76036de6abdf5a2b2fbf66311c369dce7e3755fa778e5f01aa49bc2be68eb9f1'
+            'b5be2317976db5d946047b5daa7ef75b029498225a9bb2763a18c93b07686e5e')
 
-#prepare() {
-#	cd "$_pkgname-$pkgver/common"
-#	patch -i "$srcdir/Fix_bug_473-AttributeError.patch"
-#}
+prepare() {
+	cd "$_pkgname-$pkgver/qt4"
+	patch -i "$srcdir/pkexec1.1.12.patch"
+}
 
 build() {
 	cd "$_pkgname-$pkgver/common"

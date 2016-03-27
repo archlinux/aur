@@ -1,0 +1,33 @@
+diff --git a/qt4/backintime-qt4-root.desktop b/qt4/backintime-qt4-root.desktop
+index fef451b..61794c6 100644
+--- a/qt4/backintime-qt4-root.desktop
++++ b/qt4/backintime-qt4-root.desktop
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Name=Back In Time (root)
+ GenericName=Backup
+-Exec=pkexec backintime-qt4
++Exec=/usr/bin/backintime-qt4_polkit %f
+ Icon=document-save
+ Terminal=false
+ X-MultipleArgs=false
+diff --git a/qt4/backintime-qt4_polkit b/qt4/backintime-qt4_polkit
+new file mode 100644
+index 0000000..4a04190
+--- /dev/null
++++ b/qt4/backintime-qt4_polkit
+@@ -0,0 +1,2 @@
++#!/bin/sh
++pkexec --disable-internal-agent "/usr/bin/backintime-qt4" "$@"
+diff --git a/qt4/configure b/qt4/configure
+index 68803ca..a96e772 100755
+--- a/qt4/configure
++++ b/qt4/configure
+@@ -146,6 +146,7 @@ addNewline
+ addComment "application"
+ addInstallDir                   "/bin"
+ addInstallFile "backintime-qt4" "/bin" "755"
++addInstallFile "backintime-qt4_polkit"  "/bin" "755"
+ addNewline
+ 
+ addComment "dbus service"
