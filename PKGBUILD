@@ -2,16 +2,16 @@
 # Maintainer: EEva <eeva+aur at marvid fr>
 
 pkgname=ttf-montserrat
-provides="ttf-montserrat"
+provides=('ttf-montserrat')
 pkgdesc="Gorgeous geometric font with extended latin support (Regular, Alternates, Subrayada)"
 url="http://montserrat.zkysky.com.ar/en"
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('SIL Open Font')
-depends=
+depends=()
 install=ttf.install
-makedepends=
+makedepends=()
 #source=('http://colimite.fr/aur-mirrors/Montserrat.tar.gz') #BACKUP
 source=('http://marvid.fr/~eeva/mirror/Montserrat.tar.gz')
 md5sums=('7722f9573b957b3278bef2ad928ad5b1')
