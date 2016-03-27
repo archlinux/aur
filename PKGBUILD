@@ -15,7 +15,7 @@ url="http://search.cpan.org/dist/Bot-BasicBot"
 source=(http://search.cpan.org/CPAN/authors/id/H/HI/HINRIK/Bot-BasicBot-$pkgver.tar.gz)
 options=('!emptydirs')
 arch=('i686' 'x86_64')
-sha256sums=('34bc132338ce3fad601050a7815dbe41')
+sha256sums=('4c39b018d878db3286946955382625d9c9056a64128d77dbc57e5aaeab2f3948')
 
 package()
 {
