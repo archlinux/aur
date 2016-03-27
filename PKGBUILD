@@ -1,5 +1,5 @@
 pkgname=readeef
-pkgver="1.0.0"
+pkgver="1.1.0"
 pkgrel=1
 pkgdesc="Self-hosted feed aggregator"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=(
 backup=(
 	"etc/readeef/readeef.cfg"
 )
-md5sums=('8fd5d126d3429d572ba74ee3ff66f562'
+md5sums=('4aedb7ee73fa685257de0982ac9cf68e'
          'c34b33ec0e1b49823ebc90011644fb85'
          '90ee66da93df0331b127de5c1bde3d65'
          'eb803cfce3dfb686ee7bf035db9c60fc'
