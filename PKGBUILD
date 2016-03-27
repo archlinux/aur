@@ -1,7 +1,8 @@
 # Maintainer: Shalygin Konstantin <k0ste@cn.ru>
+# Contributor: Shalygin Konstantin <k0ste@cn.ru>
 
 pkgname='ipt_ndpi'
-pkgver=1.2_1.7.0.netfilter.191.2c1da32
+pkgver=1.2_1.7.0.netfilter.199.7619ce8
 pkgrel=1
 pkgdesc='nDPI as netfilter extension'
 arch=('any')
@@ -12,7 +13,7 @@ makedepends=('git' 'libtool' 'gcc' 'gzip' 'gawk' 'sed')
 source=("${pkgname}::git+https://github.com/vel21ripn/nDPI")
 sha256sums=('SKIP')
 install="${pkgname}.install"
-_kernver=`uname -r`
+_kernver="/usr/lib/modules/`pacman -Qe linux | awk '{ print $2 }'`-ARCH"
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -34,7 +35,7 @@ prepare() {
 
 build() {
   pushd "${srcdir}/${pkgname}/ndpi-netfilter"
-  make
+  make KERNEL_DIR="${_kernver}/build"
   gzip --best -c "src/xt_ndpi.ko" > "src/xt_ndpi.ko.gz"
   popd
 }
@@ -42,7 +43,7 @@ build() {
 package() {
   pushd "${srcdir}/${pkgname}/ndpi-netfilter"
   install -Dm755 "ipt/libxt_ndpi.so" "${pkgdir}/usr/lib/iptables/libxt_ndpi.so"
-  install -Dm644 "src/xt_ndpi.ko.gz" "${pkgdir}/usr/lib/modules/${_kernver}/extra/xt_ndpi.ko.gz"
+  install -Dm644 "src/xt_ndpi.ko.gz" "${pkgdir}${_kernver}/extra/xt_ndpi.ko.gz"
   install -Dm644 "INSTALL" "${pkgdir}/usr/share/doc/${pkgname}/README"
   cp -ax "kernel-patch" "${pkgdir}/usr/share/ndpi"
   popd
