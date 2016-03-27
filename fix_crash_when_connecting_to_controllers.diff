@@ -1,0 +1,37 @@
+From 177d27c8c3db4588ec13dae0368f240902c42825 Mon Sep 17 00:00:00 2001
+From: Luiz Augusto von Dentz <luiz.von.dentz@intel.com>
+Date: Tue, 22 Mar 2016 17:37:18 +0200
+Subject: audio/avrcp: Fix crash when connecting to controllers
+
+Patch 70fdb77d0af137aa859f267da976f610cd9bbbd2 has actually caused the
+following regression since no player is set:
+
+Invalid read of size 8
+  at 0x435B8E: avrcp_player_value_rsp (avrcp.c:2150)
+  by 0x42FB83: control_response (avctp.c:831)
+  by 0x42FB83: session_cb (avctp.c:996)
+  by 0x50C8E39: g_main_context_dispatch (in /usr/lib64/libglib-2.0.so.0.4600.2)
+  by 0x50C91CF: ??? (in /usr/lib64/libglib-2.0.so.0.4600.2)
+  by 0x50C94F1: g_main_loop_run (in /usr/lib64/libglib-2.0.so.0.4600.2)
+  by 0x40C258: main (main.c:687)
+Address 0x58 is not stack'd, malloc'd or (recently) free'd
+---
+ profiles/audio/avrcp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/profiles/audio/avrcp.c b/profiles/audio/avrcp.c
+index 787643c..0c6279a 100644
+--- a/profiles/audio/avrcp.c
++++ b/profiles/audio/avrcp.c
+@@ -3656,7 +3656,7 @@ static gboolean avrcp_get_capabilities_resp(struct avctp *conn,
+ 		}
+ 	}
+ 
+-	if (!session->controller)
++	if (!session->controller || !session->controller->player)
+ 		return FALSE;
+ 
+ 	if (!(events & (1 << AVRCP_EVENT_SETTINGS_CHANGED)))
+-- 
+cgit v0.12
+
