@@ -31,11 +31,6 @@ post_install() {
 
 post_upgrade() {
     chown -R zeronet:zeronet /opt/zeronet
-
-    # Because prior versions did not use /var/lib for zeronet user home
-    mkdir -p /var/lib/zeronet
     chown zeronet:zeronet /var/lib/zeronet
-
-    mkdir -p /var/log/zeronet
     chown zeronet:zeronet /var/log/zeronet
 }
