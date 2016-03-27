@@ -1,0 +1,10 @@
+[Unit]
+Description=Daemon watching logfiles and mailing lines matching patterns
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/log2mail -N -l -v
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target
