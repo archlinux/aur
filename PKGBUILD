@@ -1,14 +1,13 @@
 pkgname=libuecc
 arch=(i686 x86_64)
-pkgver=6
+pkgver=7
 pkgrel=1
 pkgdesc="Very small Elliptic Curve Cryptography library"
 makedepends=('cmake')
 url="http://git.universe-factory.net/libuecc/"
 license=('BSD')
-DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 --insecure -o %o %u')
-source=("https://projects.universe-factory.net/attachments/download/83/${pkgname}-${pkgver}.tar.xz")
-sha512sums=('72c34d7f54e00ac2ac732c770d975f14c217a1345aa83693053662be4b24f9eed18a4c417fe4491f8fa40b0cb0fa0961e5e271cb47753ef0378dbf13fd15be5a')
+source=("https://projects.universe-factory.net/attachments/download/85/${pkgname}-${pkgver}.tar.xz")
+sha512sums=('44c5a00f578d301c1bffe8c2852912740f8af72ae6c2772cc263510df9b63d6b4ea15bd29215794c86d92fd797d18a078b97239ead0ad5238b1f976a6e2bcaa1')
 
 build() {
   mkdir -p "$srcdir/build-${pkgver}"
