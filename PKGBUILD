@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-icon-theme
-pkgver=0.5.92
+pkgver=0.6.90.20160327
 pkgrel=1
 pkgdesc="Hawaii icon theme"
 arch=('any')
@@ -12,8 +12,9 @@ makedepends=('cmake')
 conflicts=('hawaii-icon-theme-git')
 replaces=('hawaii-icon-themes')
 groups=('hawaii')
-source=("https://github.com/hawaii-desktop/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('e19b18f53587078670a7096510f6b79383993ae1')
+#source=("https://github.com/hawaii-desktop/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("https://codeload.github.com/hawaii-desktop/${pkgname}/legacy.tar.gz/dfa9938a4ccc47c7b8ce7974afe1f6836b1e58cf")
+sha1sums=('d31ca86b6d47ecf993f201cd82b3735092e62ff7')
 
 prepare() {
 	mkdir build
@@ -21,7 +22,8 @@ prepare() {
 
 build() {
 	cd build
-	cmake ../${pkgname}-${pkgver} \
+	#cmake ../${pkgname}-${pkgver} \
+	cmake ../hawaii-desktop-hawaii-icon-theme-dfa9938 \
 		-DCMAKE_INSTALL_PREFIX=/usr
 	make
 }
