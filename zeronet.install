@@ -3,7 +3,7 @@ post_install() {
         echo -n ">>> Creating zeronet user... "
         useradd --system --user-group --home /var/lib/zeronet zeronet
         echo "done"
-    }
+    } # NOTE: we do not autoremove user due to security concerns (Arch policy)
     post_upgrade
     # Don't run thesre operations automatically, because they are security-sensitive
     echo ">>> Default mode is clearnet+Tor. Give zeronet permissions to configure hidden service:"
@@ -45,12 +45,4 @@ post_upgrade() {
 	    echo ">>> MANUAL ACTION REQUIRED: data directory is now /var/lib/zeronet"
 	    echo ">>>   mv /opt/zeronet/data/* /var/lib/zeronet/"
     fi
-}
-
-pre_remove() {
-    getent passwd zeronet &>/dev/null && {
-        echo -n ">>> Removing zeronet user... "
-        userdel zeronet
-        echo "done"
-    }
 }
