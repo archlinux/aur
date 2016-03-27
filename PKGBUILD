@@ -15,7 +15,7 @@
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.79100.g8f66a2d
+pkgver=N.79145.ge259dc8
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ license=('GPL3' 'custom:UNREDISTRIBUTABLE')
 depends=(
     'alsa-lib' 'zlib' 'bzip2' 'libpng' 'sdl' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugins'
     'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt'
-    'libcdio-paranoia' 'libdc1394' 'dcadec' 'faac' 'libfdk-aac' 'flite-fpic' 'freetype2'
+    'libcdio-paranoia' 'libdc1394' 'faac' 'libfdk-aac' 'flite-fpic' 'freetype2'
     'fribidi' 'libgme' 'gsm' 'libiec61883' 'libilbc' 'kvazaar' 'libmodplug' 'lame' 'netcdf'
     'nut-multimedia-git' 'opencore-amr' 'opencv' 'openh264' 'openjpeg' 'opus' 'pulseaudio'
     'rubberband' 'rtmpdump' 'schroedinger' 'shine' 'smbclient' 'libavc1394' 'snappy' 'libsoxr'
@@ -119,7 +119,6 @@ build() {
 	        --enable-libcelt \
 	        --enable-libcdio \
 	        --enable-libdc1394 \
-	        --enable-libdcadec \
 	        --enable-libfaac \
 	        --enable-libfdk-aac \
 	        --enable-libflite \
