@@ -1,0 +1,34 @@
+Game Changelog
+http://pokemon-revolution-online.net/Forum/viewtopic.php?f=14&t=4563
+
+Packaging
+switch from AUR pokemon-revolution-online to pokemon-revolution-online-bin
+cause we dont have the sources, its binary only
+
+0.94.20160327-1
+* PRO 0.94
+
+0.93_3.20160206-2
+* remove that X-DBUS-StartupType in *.desktop
+
+0.93_3.20160206-2
+* move directory from /opt/pokemonrevolutiononline to /opt/Pokemon Revolution
+* use our own *.svg icon.
+* gtk2 is now optional since we only need it for the screenselector plugin (i dont know this for sure..)
+
+0.93_3.20160206-1
+* PRO 0.93_3 - gogogo!
+
+0.93_2.20160202.1
+* correct directory permissions 775 -> 755
+* move files instead of copy them to save 50% (around 2GiB) memory while makepkg
+* no pro.install anymore (we dont need it)
+* use sed to set the correct path/names to alle files. (yep i'm lazy and this way its easier to maintain)
+* rm unused "prolinux" zip file before packaging because 130MiB!
+
+0.93_2.20160202.0
+* ready for PRO 0.93_2
+* enforce opengl to workaround a bug that makes the game start in direct3d mode on linux -> "PROLinux93_2.x86_64 -force-opengl"
+* new starter "pokemonrevolutiononline" in /usr/bin
+* now use <0.folderversion>.<yyyymmdd> to get a better package versioning. 
+###################
