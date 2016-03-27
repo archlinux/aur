@@ -1,5 +1,5 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-cpanplus-dist-build'
 pkgver='0.78'
@@ -8,10 +8,10 @@ pkgdesc="CPANPLUS plugin to install packages that use Build.PL"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-cpanplus>=0.84' 'perl')
+depends=('perl-cpanplus>=0.84' 'perl-module-build>=0.32' 'perl')
 makedepends=()
-url='http://search.mcpan.org/dist/CPANPLUS-Dist-Build'
-source=('http://search.mcpan.org/CPAN/authors/id/B/BI/BINGOS/CPANPLUS-Dist-Build-0.78.tar.gz')
+url='https://metacpan.org/release/CPANPLUS-Dist-Build'
+source=('http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/CPANPLUS-Dist-Build-0.78.tar.gz')
 md5sums=('9a40202a68fa13125b2adffc057cc053')
 sha512sums=('733abc212ea6ec506bc90c43e3860ee08f3a0a4b5908311f9c68c119d6ac2dc62876d2f2f468bd23dfaf7bb336ebd73a4c01e462ffaceff0802aee935aab75df')
 _distdir="CPANPLUS-Dist-Build-0.78"
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
