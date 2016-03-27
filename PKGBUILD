@@ -10,8 +10,8 @@ license=('GPL2')
 source=($pkgname'::git+https://kernel.googlesource.com/pub/scm/devel/pahole/pahole.git')
 depends=('elfutils' 'python')
 makedepends=('git' 'cmake')
-provides=('dwarves', 'pahole')
-conflicts=('dwarves', 'pahole')
+provides=('dwarves' 'pahole')
+conflicts=('dwarves' 'pahole')
 md5sums=('SKIP')
 
 pkgver() {
