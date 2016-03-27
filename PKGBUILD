@@ -1,7 +1,7 @@
 # Maintainer: wookietreiber <kizkizzbangbang@googlemail.com>
 
 pkgname=strace-analyzer
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="analyzes strace output"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/wookietreiber/strace-analyzer"
 license=('GPL')
 depends=('java-environment' 'bash')
 source=("https://github.com/wookietreiber/strace-analyzer/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('f2cbb3343343217a4756a85aadb16302')
+md5sums=('5bcfb6eeffdc966a73a86d075fe6a885')
 
 package() {
   cd $srcdir/$pkgname-$pkgver
@@ -21,6 +21,8 @@ package() {
   done
 
   install -Dm644 share/$pkgname/NOTICE.md $pkgdir/usr/share/$pkgname/NOTICE.md
+  install -Dm644 share/bash-completion/completions/strace-analyzer $pkgdir/usr/share/bash-completion/completions/strace-analyzer
+  install -Dm644 share/man/man1/strace-analyzer.1 $pkgdir/usr/share/man/man1/strace-analyzer.1
 
   install -d $pkgdir/usr/bin
   cd $pkgdir/usr/bin
