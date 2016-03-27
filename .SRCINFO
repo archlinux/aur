@@ -1,0 +1,16 @@
+pkgbase = termsyn-font
+	pkgdesc = Monospaced font based on terminus and tamsyn
+	pkgver = 1.8.7
+	pkgrel = 1
+	url = http://sourceforge.net/projects/termsyn/
+	install = termsyn-font.install
+	arch = any
+	license = GPL-2
+	depends = fontconfig
+	depends = xorg-fonts-encodings
+	depends = xorg-font-utils
+	source = http://downloads.sourceforge.net/project/termsyn/termsyn-1.8.7.tar.gz
+	md5sums = e870a0952bc1c5137a216e03095fe2db
+
+pkgname = termsyn-font
+
