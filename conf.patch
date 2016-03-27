@@ -1,6 +1,6 @@
-diff -Naur neo4j-enterprise-2.3.2-orig/conf/arbiter-wrapper.conf neo4j-enterprise-2.3.2-mod/conf/arbiter-wrapper.conf
---- neo4j-enterprise-2.3.2-orig/conf/arbiter-wrapper.conf	2016-01-12 21:01:31.000000000 -0200
-+++ neo4j-enterprise-2.3.2-mod/conf/arbiter-wrapper.conf	2016-01-26 10:46:16.378869474 -0200
+diff -Naur neo4j-enterprise-2.3.3-orig/conf/arbiter-wrapper.conf neo4j-enterprise-2.3.3-mod/conf/arbiter-wrapper.conf
+--- neo4j-enterprise-2.3.3-orig/conf/arbiter-wrapper.conf	2016-01-12 21:01:31.000000000 -0200
++++ neo4j-enterprise-2.3.3-mod/conf/arbiter-wrapper.conf	2016-01-26 10:46:16.378869474 -0200
 @@ -1,7 +1,7 @@
  # Java Additional Parameters
 -wrapper.java.additional.1=-Dorg.neo4j.server.properties=conf/neo4j-server.properties
@@ -21,9 +21,9 @@ diff -Naur neo4j-enterprise-2.3.2-orig/conf/arbiter-wrapper.conf neo4j-enterpris
  
  #********************************************************************
  # Wrapper Windows NT/2000/XP Service Properties
-diff -Naur neo4j-enterprise-2.3.2-orig/conf/neo4j-http-logging.xml neo4j-enterprise-2.3.2-mod/conf/neo4j-http-logging.xml
---- neo4j-enterprise-2.3.2-orig/conf/neo4j-http-logging.xml	2016-01-12 21:01:31.000000000 -0200
-+++ neo4j-enterprise-2.3.2-mod/conf/neo4j-http-logging.xml	2016-01-26 10:46:16.378869474 -0200
+diff -Naur neo4j-enterprise-2.3.3-orig/conf/neo4j-http-logging.xml neo4j-enterprise-2.3.3-mod/conf/neo4j-http-logging.xml
+--- neo4j-enterprise-2.3.3-orig/conf/neo4j-http-logging.xml	2016-01-12 21:01:31.000000000 -0200
++++ neo4j-enterprise-2.3.3-mod/conf/neo4j-http-logging.xml	2016-01-26 10:46:16.378869474 -0200
 @@ -21,9 +21,9 @@
  -->
  <configuration>
@@ -36,9 +36,9 @@ diff -Naur neo4j-enterprise-2.3.2-orig/conf/neo4j-http-logging.xml neo4j-enterpr
        <maxHistory>7</maxHistory>
      </rollingPolicy>
  
-diff -Naur neo4j-enterprise-2.3.2-orig/conf/neo4j.properties neo4j-enterprise-2.3.2-mod/conf/neo4j.properties
---- neo4j-enterprise-2.3.2-orig/conf/neo4j.properties	2016-01-12 21:01:31.000000000 -0200
-+++ neo4j-enterprise-2.3.2-mod/conf/neo4j.properties	2016-01-26 10:46:16.378869474 -0200
+diff -Naur neo4j-enterprise-2.3.3-orig/conf/neo4j.properties neo4j-enterprise-2.3.3-mod/conf/neo4j.properties
+--- neo4j-enterprise-2.3.3-orig/conf/neo4j.properties	2016-01-12 21:01:31.000000000 -0200
++++ neo4j-enterprise-2.3.3-mod/conf/neo4j.properties	2016-01-26 10:46:16.378869474 -0200
 @@ -24,8 +24,8 @@
  # Set the root directory for use with file URLs (`file:///`) in LOAD CSV.
  # If enabled, file URLs will refer to locations inside the `data/import`
@@ -50,9 +50,9 @@ diff -Naur neo4j-enterprise-2.3.2-orig/conf/neo4j.properties neo4j-enterprise-2.
  
  # Keep logical logs, helps debugging but uses more disk space, enabled for
  # legacy reasons To limit space needed to store historical logs use values such
-diff -Naur neo4j-enterprise-2.3.2-orig/conf/neo4j-server.properties neo4j-enterprise-2.3.2-mod/conf/neo4j-server.properties
---- neo4j-enterprise-2.3.2-orig/conf/neo4j-server.properties	2016-01-12 21:01:31.000000000 -0200
-+++ neo4j-enterprise-2.3.2-mod/conf/neo4j-server.properties	2016-01-26 10:46:16.378869474 -0200
+diff -Naur neo4j-enterprise-2.3.3-orig/conf/neo4j-server.properties neo4j-enterprise-2.3.3-mod/conf/neo4j-server.properties
+--- neo4j-enterprise-2.3.3-orig/conf/neo4j-server.properties	2016-01-12 21:01:31.000000000 -0200
++++ neo4j-enterprise-2.3.3-mod/conf/neo4j-server.properties	2016-01-26 10:46:16.378869474 -0200
 @@ -10,10 +10,10 @@
  #***************************************************************
  
@@ -112,9 +112,9 @@ diff -Naur neo4j-enterprise-2.3.2-orig/conf/neo4j-server.properties neo4j-enterp
  
  
  #*****************************************************************
-diff -Naur neo4j-enterprise-2.3.2-orig/conf/neo4j-wrapper.conf neo4j-enterprise-2.3.2-mod/conf/neo4j-wrapper.conf
---- neo4j-enterprise-2.3.2-orig/conf/neo4j-wrapper.conf	2016-01-12 21:01:31.000000000 -0200
-+++ neo4j-enterprise-2.3.2-mod/conf/neo4j-wrapper.conf	2016-01-26 10:46:16.378869474 -0200
+diff -Naur neo4j-enterprise-2.3.3-orig/conf/neo4j-wrapper.conf neo4j-enterprise-2.3.3-mod/conf/neo4j-wrapper.conf
+--- neo4j-enterprise-2.3.3-orig/conf/neo4j-wrapper.conf	2016-01-12 21:01:31.000000000 -0200
++++ neo4j-enterprise-2.3.3-mod/conf/neo4j-wrapper.conf	2016-01-26 10:46:16.378869474 -0200
 @@ -2,8 +2,8 @@
  # Property file references
  #********************************************************************
