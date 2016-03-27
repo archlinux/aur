@@ -2,20 +2,19 @@
 
 _pkgname=audiotk
 pkgname="${_pkgname}-git"
-pkgver=1.1.0.r803.12b0a3a
+pkgver=1.2.0.r808.0af35fc
 pkgrel=1
-pkgdesc="A C++ library with a set of audio filters (git version)"
+pkgdesc="A C++ library plus Python 3 bindings with a set of audio filters (git version)"
 arch=('i686' 'x86_64')
 license=('BSD')
 url='https://github.com/mbrucher/AudioTK'
 depends=('fftw' 'libsndfile' 'python')
 makedepends=('git' 'cmake')
-source=("${_pkgname}::git+https://github.com/mbrucher/AudioTK.git"
-        'audiotk-git_h.patch')
+source=("${_pkgname}::git+https://github.com/mbrucher/AudioTK.git")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-md5sums=('SKIP'
-         'bfb36a2eb0f771271cdd96bc9217a777')
+md5sums=('SKIP')
+
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -34,8 +33,6 @@ prepare() {
 
   mkdir build
   git checkout develop
-
-  patch -p1 -r - -i "${srcdir}/audiotk-git_h.patch"
 }
 
 build() {
@@ -57,7 +54,11 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 
-  install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd ..
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
+  cp -r Examples "${pkgdir}/usr/share/doc/${pkgname}"
+  cp -r Doxygen/html "${pkgdir}/usr/share/doc/${pkgname}/API"
 }
 
 # vim:set ts=2 sw=2 et:
