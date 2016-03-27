@@ -4,7 +4,7 @@
 #
 pkgname=dbus-nosystemd
 pkgver=1.10.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org message bus system"
 url="http://www.freedesktop.org/Software/dbus"
 arch=(i686 x86_64)
@@ -41,6 +41,7 @@ build() {
       --disable-static \
       --disable-tests \
       --disable-asserts \
+      --disable-libaudit \
       --disable-systemd
 
   make
