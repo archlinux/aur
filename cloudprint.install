@@ -1,0 +1,11 @@
+post_install() {
+    if ! getent group cloudprint >/dev/null; then
+	groupadd --system cloudprint
+    fi
+    if ! getent passwd cloudprint >/dev/null; then
+	useradd --system -c 'cloudprint daemon user' -g cloudprint -m -d /var/lib/cloudprint -s /bin/bash cloudprint
+    fi
+
+    echo "As user \"cloudprint\" run \"/usr/bin/cloudprint -c\" to connect with your Google account"
+    echo "Then start/enable cloudprint.service via systemd"
+}

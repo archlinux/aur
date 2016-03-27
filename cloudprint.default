@@ -1,0 +1,16 @@
+# Extra parameters for the daemon:
+# -d               : enable daemon mode (requires the daemon module)
+# -l               : logout of the current google account
+# -p pid_file      : path to write the pid to (default cloudprint.pid)
+# -a account_file  : path to google account ident data (optional)
+# -c               : establish and store login credentials, then exit
+# -f               : 'fast poll', if notifications aren't working
+# -i regexp        : include files matching regexp
+# -x regexp        : exclude filees matching regexp
+#                    regexp: a Python regexp, which is matched against the
+#                           start of the printer name
+# -s sitename      : one-word site-name that will prefix printers
+# -v               : verbose output
+# --syslog-address : syslog address to use in daemon mode
+# -h               : display this help
+EXTRA_PARAMETERS=""
