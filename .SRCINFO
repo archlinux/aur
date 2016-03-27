@@ -1,0 +1,13 @@
+pkgbase = shomepass
+	pkgdesc = A systemd homepass service
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/ericchu94/shomepass
+	arch = any
+	license = GPL
+	depends = hostapd
+	source = git+https://github.com/ericchu94/shomepass.git
+	md5sums = SKIP
+
+pkgname = shomepass
+
