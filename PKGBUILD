@@ -14,8 +14,9 @@ pkgrel=1
 pkgdesc="This open source software allows the 'cracking' of A5/1 keys used to secure GSM 2G calls and SMS."
 arch=('i686' 'x86_64')
 url="https://opensource.srlabs.de/projects/a51-decrypt"
-license=('GPL')
+license=('unknown')
 depends=('python')
+makedepends=('git')
 optdepends=( 'osmocombb-git: for capturing GSM radio packets'
               'airprobe-git: for capturing GSM radio packets'
 )
