@@ -10,7 +10,7 @@
 
 pkgname=bitlbee-libpurple
 _pkgname=bitlbee
-pkgver=3.4.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc='Brings instant messaging (XMPP, MSN, Yahoo!, AIM, ICQ, Twitter) to IRC. libpurple enabled.'
 url='http://www.bitlbee.org/'
@@ -24,7 +24,7 @@ provides=("bitlbee=${pkgver}")
 conflicts=('bitlbee')
 source=("http://get.bitlbee.org/src/${_pkgname}-${pkgver}.tar.gz"
         'bitlbee.tmpfiles')
-sha1sums=('b77311b538ec1c584694784f119b99fb6b3f4859'
+sha1sums=('c93eab4161754235a2bc04ba3dc0fc66ce2d34f2'
           '3695ed2fe22436c4d0fc3ead829f7d1f89bc491c')
 backup=('etc/bitlbee/bitlbee.conf'
         'etc/bitlbee/motd.txt')
