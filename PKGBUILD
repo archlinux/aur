@@ -11,8 +11,9 @@ depends=('qt5-base' 'qt5-declarative' 'glib2')
 makedepends=('gdb' 'extra-cmake-modules')
 groups=('hawaii')
 options=('debug')
-source=("https://github.com/hawaii-desktop/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
-sha1sums=('540e70590d58df671b5db59621bc71233ffe3726')
+#source=("https://github.com/hawaii-desktop/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.xz")
+source=("https://codeload.github.com/hawaii-desktop/${pkgname}/legacy.tar.gz/daf8ab6b9bea3b350c4dc157a65f9bae0c83fe33")
+sha1sums=('6b2242f38eeeecdeeb0824ae12fb11f814f379a1')
 
 prepare() {
 	mkdir -p build
@@ -20,7 +21,8 @@ prepare() {
 
 build() {
 	cd build
-	cmake ../${pkgname}-${pkgver} \
+	#cmake ../${pkgname}-${pkgver} \
+	cmake ../hawaii-desktop-libhawaii-daf8ab6 \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DLIB_INSTALL_DIR=lib \
 		-DLIBEXEC_INSTALL_DIR=lib \
