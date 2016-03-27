@@ -6,17 +6,17 @@
 
 pkgname='warsow-beta-data'
 _pkgname='warsow-beta'
-pkgver='2.0.1'
+pkgver='2.1.0'
 pkgrel='1'
 pkgdesc='Free online multiplayer competitive FPS based on the Qfusion engine (data files)'
 url='https://www.warsow.gg/'
 license=('custom:Warsow Content License')
 arch=('any')
-source=('http://mirror.null.one/warsow_201_unified.tar.gz')
-md5sums=('fee194075847f9a2508f65da89b6cfea')
+source=('http://mirror.null.one/warsow_21_unified.tar.gz')
+md5sums=('fac70b30d7295c0bc4c3f0432c4b7937')
 
 package() {
-  local srcdir_wsw="${srcdir}/warsow_20"
+  local srcdir_wsw="${srcdir}/warsow_21"
   local pkgdir_opt="${pkgdir}/opt/${_pkgname}"
 
   # Create Destination Directories
