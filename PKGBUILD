@@ -1,5 +1,5 @@
 # Contributor: Archadept
-#    Revision: 2016-03-15
+#    Revision: 2016-03-27
 
 # Package workarounds:
 # 1 Requires cmake2 to compile
@@ -18,7 +18,7 @@
 pkgname=friking-shark-git
 _gitname=friking-shark
 pkgver=1.01beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Latest version of vertical shooter with upgrades to machine gun of a bomber fighter"
 arch=('x86_64')
 url="https://github.com/ptitSeb/friking-shark"
@@ -74,13 +74,17 @@ package () {
     # Game settings saving workaround
     # If for any reason you don't want it just comment it out by placing # mark at beginning of every line in section below
     # Game settings save section >>
-    mkdir -p var/cache/frikingshark/
+    mkdir -p var/games/frikingshark/
 
-    mv usr/share/frikingshark/Player/ var/cache/frikingshark/
+    mv usr/share/frikingshark/Player/ var/games/frikingshark/
 
-    ln -s /var/cache/frikingshark/Player usr/share/frikingshark/Player
+    chmod 775 -R var/games
 
-    chmod 666 var/cache/frikingshark/Player/HighScores.cfg
-    chmod 666 var/cache/frikingshark/Player/PlayerProfiles.cfg
+    chown root:games -R var/games
+
+    ln -s /var/games/frikingshark/Player usr/share/frikingshark/Player
+
+    chmod 666 var/games/frikingshark/Player/HighScores.cfg
+    chmod 666 var/games/frikingshark/Player/PlayerProfiles.cfg
     # Game settings save section <<
 }
