@@ -1,7 +1,7 @@
 # Maintainer: Albert Graef <aggraef@gmail.com>
 
 pkgname=touchosc-editor
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Graphical editor to create and customise layouts for TouchOSC"
 arch=('any')
@@ -20,7 +20,7 @@ md5sums=('995e06cdb089cb2d06e5acfbc52b08ae'
          'caa18a80902f10ced5062b2407c797ee'
          '7dbf615862f6e99e76e97ac2864531fc'
          '68b65fc0a09478d1b055d8c5efc59e58'
-         '4e04e8e70733e78b40ab748945276015')
+         'b2f7f78313d975e20b0893a1c74bd30c')
 
 package() {
   # Installing application
