@@ -13,6 +13,6 @@ md5sums=('SKIP')
 
 package() {
  ar p BooktabZSteup-15.10.deb data.tar.xz | tar xJ
- mv usr $pkgdir
+ mv usr $pkgdir/
 }
 
