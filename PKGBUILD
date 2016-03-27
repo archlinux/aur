@@ -66,7 +66,7 @@ build() {
 package_doublecmd-gtk2-svn() {
     pkgdesc="Twin-panel (commander-style) file manager (GTK)"
     depends=('gtk2')
-    provides=('${_pkgname}-gtk2')
+    provides=(${_pkgname}-gtk2)
     conflicts=('doublecmd-gtk2' 'doublecmd-gtk2-alpha-bin')
 
     cd "${srcdir}/${_pkgname}-gtk"
@@ -76,7 +76,7 @@ package_doublecmd-gtk2-svn() {
 package_doublecmd-qt-svn() {
     pkgdesc="Twin-panel (commander-style) file manager (QT)"
     depends=('qt4pas')
-    provides=('${_pkgname}-qt')
+    provides=(${_pkgname}-qt)
     conflicts=('doublecmd-qt')
 
     cd "${srcdir}/${_pkgname}-qt"
