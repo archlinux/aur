@@ -1,4 +1,4 @@
-# Maintainer: Thomas Baag <thomas at b2ag dot de>
+# Maintainer: Mikael Tillenius <mti at tillenius dot com>
 pkgname=libps6000
 pkgver=1.4.5_6r37
 pkgrel=1
