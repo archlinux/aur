@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=2.14
+Name=Mayday
+Comment=Mayday is a workbench for visualization, analysis and storage of microarray data.
+Exec=/usr/bin/mayday
+Icon=
+Categories=Science;Education;
+Type=Application
+Terminal=false
+StartupNotify=false

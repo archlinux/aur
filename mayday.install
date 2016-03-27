@@ -1,0 +1,3 @@
+post_install() {
+	echo "Mayday plugin path is '/usr/share/java/mayday/plugins'."
+}
