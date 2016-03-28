@@ -1,5 +1,5 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-b-utils'
 pkgver='0.27'
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-task-weaken' 'perl>=5.006')
-makedepends=()
+makedepends=('perl-test-reporter')
 url='https://metacpan.org/release/B-Utils'
 source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/B-Utils-0.27.tar.gz')
 md5sums=('340d6461afcec016ce6d0a0ba27290ba')
