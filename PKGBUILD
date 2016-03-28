@@ -2,7 +2,7 @@
 pkgname=systemd-cron-next
 pkgver=1.0.0.rc6
 _gitver=1.0.0-rc6
-pkgrel=1
+pkgrel=2
 pkgdesc="systemd generator to generate timers/services from crontab and anacrontab files"
 url="https://github.com/systemd-cron/systemd-cron-next"
 arch=('i686' 'x86_64')
@@ -28,4 +28,5 @@ build() {
 package() {
     cd "${srcdir}/${pkgname}-${_gitver}"
     DESTDIR="${pkgdir}" make install
+    install -d -m 775 ${pkgdir}/var/spool/cron
 }
