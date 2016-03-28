@@ -4,21 +4,19 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 pkgname=libcompizconfig
-pkgver=0.8.10
-pkgrel=2
+pkgver=0.8.12
+pkgrel=1
 pkgdesc="Compiz configuration system library"
 arch=('i686' 'x86_64')
-url="http://www.compiz.org"
+url="http://blog.northfield.ws/compiz-release-announcement-0-8-12/"
 license=('GPL')
 depends=('compiz-core' 'libxml2' 'libxcomposite' 'libxinerama' 'protobuf' 'startup-notification')
 makedepends=('intltool' 'libxrandr' 'libice' 'libsm' 'mesa')
 options=('!emptydirs')
-source=("http://www.northfield.ws/projects/compiz/releases/${pkgver}/libcompizconfig.tar.gz")
-sha1sums=('7e64ef43f6fca7a3770bbf8e62516be56c9c51f1')
+source=("libcompizconfig-${pkgver}.tar.xz::http://www.northfield.ws/projects/compiz/releases/${pkgver}/libcompizconfig.tar.xz")
 
 prepare() {
     cd "${srcdir}/${pkgname}"
-    NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
@@ -34,3 +32,5 @@ package() {
     cd "${srcdir}/${pkgname}"
     make DESTDIR="${pkgdir}" install
 }
+
+sha256sums=('e3b313c9dd1690727fb21ece747e5c1bc27bd006fbe95292856b56f92513a409')
