@@ -1,9 +1,12 @@
 # Maintainer: Martchus <martchus@gmx.net>
 # Contributor: ant32 <antreimer@gmail.com>
 
+# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
+# you also find the URL of a binary repository.
+
 _qt_module=qtxmlpatterns
 pkgname="mingw-w64-qt5-xmlpatterns"
-pkgver=5.5.1
+pkgver=5.6.0
 pkgrel=1
 arch=('any')
 pkgdesc="Support for XPath, XQuery, XSLT and XML schema validation (mingw-w64)"
@@ -14,7 +17,7 @@ license=('GPL3' 'LGPL')
 url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('17b9ee5031262b5b875ce0e1045e6bdc')
+md5sums=('b511b49ab76a1da11b25802861d5688c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
