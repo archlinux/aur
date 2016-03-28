@@ -6,18 +6,18 @@
 # Contributor: Sylvester Johansson <scj(at)archlinux(dot)us>
 
 pkgname=ocaml-sexplib
-pkgver=113.24.00
+pkgver=113.33.00
 pkgrel=1
 pkgdesc="Library for serializing OCaml values to and from S-expressions"
 arch=('i686' 'x86_64')
 license=('Apache')
-depends=('ocaml>=4.02.1')
+depends=('ocaml')
 makedepends=('ocaml-findlib' 'opam')
 options=('!strip')
 url="https://github.com/janestreet/sexplib"
 source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-${pkgver}.tar.gz"
         "libdir.patch")
-md5sums=('f4f1e679187842c22db482dec5e11f36'
+md5sums=('f2a8f3f178656afbc76fdbd2884eaa2f'
          '7f0a951f1ac87385272ea7a6dd58762a')
 
 prepare() {
