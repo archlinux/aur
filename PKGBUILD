@@ -4,25 +4,16 @@
 pkgname=maia-gtk-theme
 pkgdesc="Maia GTK theme"
 _pkgname=artwork-maia-gtk
-pkgver=a0a2a34
 pkgrel=1
-_gitcommit=a0a2a340517417720a16047d66d95ccd3ca24ada
+_gitcommit=f4ea22a4fb0b0da038c0d256ebf1205f3e9b69e0
+pkgver=$(echo ${_gitcommit} | cut -c1-7)
 url="https://github.com/manjaro/$_pkgname/"
 arch=('any')
 license=('LGPL')
 depends=('bash')
-makedepends=('extra-cmake-modules' 'git')
-
-source=("maia-$pkgver-$pkgrel.tar.gz::$url/archive/$_gitcommit.tar.gz")
-sha256sums=('5779b36e410e1fc1f4a33a04f4d9e163cbd30fcbe0d21ccb893807fe337e620f')
-
-pkg_ver() {
-  git rev-parse --short HEAD
-}
-
-_gitcommit() {
-  git rev-parse HEAD
-}
+makedepends=('extra-cmake-modules')
+source=("$url/archive/$_gitcommit.tar.gz")
+sha256sums=('477dff460dfb0837048c80ac0543bcfc9c4ab5303180b4986e3252a375bd548c')
 
 prepare() {
   mv $srcdir/artwork-maia-gtk-$_gitcommit $srcdir/maia
