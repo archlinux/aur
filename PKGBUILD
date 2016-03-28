@@ -8,7 +8,7 @@ arch=(any)
 url='https://projects.kde.org/breeze-plymouth'
 license=(LGPL)
 depends=(plymouth)
-makedepends=(cmake)
+makedepends=(extra-cmake-modules)
 source=("http://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz")
 sha256sums=('92143ae63aaa02189350cbfa885215cfbb8f0ab85a02b2de0159ac7fbad50784')
 
