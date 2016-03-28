@@ -5,12 +5,12 @@
 
 pkgname=ccsm-git
 pkgver=0.8.12.2.r0.gef02e91
-pkgrel=1
+pkgrel=2
 pkgdesc="Compizconfig Settings Manager in Python2"
 arch=('any')
 url="https://github.com/compiz-reloaded/ccsm"
 license=('GPL')
-depends=("compizconfig-python-git" 'gobject-introspection')
+depends=("compizconfig-python-git" 'python2-gobject')
 makedepends=('intltool')
 optdepends=('compiz-gtk-standalone: option 1' 'compiz-core: option 2')
 groups=('compiz-fusion' 'compiz-fusion-gtk' 'compiz-fusion-kde')
