@@ -6,13 +6,13 @@
 
 pkgname=compiz-fusion-plugins-extra
 pkgver=0.8.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Compiz Fusion Extra plugins"
 arch=('i686' 'x86_64')
 url="http://blog.northfield.ws/compiz-0-8-12-release-announcement/"
 license=('GPL')
 depends=('compiz-core>=0.8.10' 'compiz-bcop' 'compiz-fusion-plugins-main' 'libnotify')
-makedepends=('intltool' 'pkg-config' 'gettext' 'gconf')
+makedepends=('intltool' 'pkg-config' 'gettext')
 groups=('compiz-fusion' 'compiz-fusion-gtk' 'compiz-fusion-kde')
 conflicts=('compiz-fusion-plugins-extra-git')
 options=('!libtool')
