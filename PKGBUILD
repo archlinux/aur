@@ -2,7 +2,6 @@
 # Based on wine-staging PKGBUILD
 
 #Additional patches:
-# -Gallium Nine support
 # -Mip-Map fix (see https://bugs.winehq.org/show_bug.cgi?id=34480 )
 # -Keybind patch reversion
 # -Heap allocation perfomance improvement patch
@@ -10,32 +9,18 @@
 # -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
 
 pkgname=wine-gaming-nine
-pkgver=1.9.5
+pkgver=1.9.6
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
-_winesrcdir="wine-patched-staging-$_pkgbasever"
+_winesrcdir="pontostroy-wine-$_pkgbasever"
 
-source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
-        30-win32-aliases.conf
-        heap_perf.patch
-        keybindings.patch
-        mipmap.patch
-        nine-1.9.1.patch
-        steam.patch
-        wbemprox_query_v2.patch
+source=("https://github.com/mradermaxlol/pontostroy-wine/archive/v$_pkgbasever.tar.gz"
         )
-sha1sums=('1caa585b63f21a68835226c2c201deda8d9c5093'
-          '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
-          '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
-          'f3febb8836f38320742a546c667106608d4c4395'
-          'c3096fccbac23e520d03f592db7f23350cbbc0bc'
-          '71d3dbd5f23436d0ea85d7477cd560787c6ae079'
-          '74aae040fde9ff3c9e8da9c840557e87afdbc3a0'
-          '644e141125a9f2407e64d23c85ec84a691c7caae'
+sha1sums=('797c816cb4b64bb28872b8f9676a6e0faad7b436'
           )
 
-pkgdesc="Based off wine-staging, including the gallium-nine patches and some more hacks"
+pkgdesc="Based off wine-staging (pontostroy version), including the gallium-nine patches and some more hacks"
 url="http://www.wine-staging.com"
 arch=(i686 x86_64)
 options=(staticlibs)
@@ -130,17 +115,7 @@ fi
 
 prepare()
 {
-    cd wine-patched-staging-$_pkgbasever
-
-    patch -p1 < ../nine-1.9.1.patch
-    patch -p1 < ../steam.patch
-    patch -p1 < ../mipmap.patch
-    patch -p1 < ../heap_perf.patch
-    patch -p1 < ../wbemprox_query_v2.patch
-
-    patch -p1 -R < ../keybindings.patch
-
-    autoreconf -f
+    cd pontostroy-wine-$_pkgbasever
 
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
 
@@ -168,7 +143,6 @@ build()
             --with-xattr \
             --with-d3dadapter \
             --disable-tests
-        # Gstreamer was disabled for FS#33655
 
         make
 
@@ -190,7 +164,6 @@ build()
         --with-d3dadapter \
         "${_wine32opts[@]}"
 
-    # These additional flags solve FS#23277
     make
 }
 
