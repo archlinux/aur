@@ -9,7 +9,7 @@
 
 pkgbase=linux-libre-pae
 _pkgbasever=4.4-gnu
-_pkgver=4.4.4-gnu
+_pkgver=4.4.6-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -40,10 +40,11 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'linux.preset'
         'change-default-console-loglevel.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
-        '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch')
+        '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
+        '0003-fix-atmel-maxtouch-touchscreen-support.patch')
 sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
-            '5b52578afb3bab7a50748e9b8e26bd9df851b3dcfbb55079d2abf3d3ad46aaff'
+            '0e4403973b4e92ec97e101f4f8053cc8f1b90302c2040f168d0c53374efc121a'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -55,7 +56,8 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
-            '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808')
+            '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
+            '0a6f76bbc03ae6e846a4ba4e31bbc0a40b1ae538c1271defcbe3089e00a4b53d')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               '684D54A189305A9CC95446D36B888913DDB59515' # Márcio Silva
@@ -93,6 +95,11 @@ prepare() {
   # maintain the TTY over USB disconnects
   # http://www.coreboot.org/EHCI_Gadget_Debug
   patch -p1 -i "${srcdir}/0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch"
+
+  # fix Atmel maXTouch touchscreen support
+  # https://labs.parabola.nu/issues/877
+  # http://www.fsfla.org/pipermail/linux-libre/2015-November/003202.html
+  patch -p1 -i "${srcdir}/0003-fix-atmel-maxtouch-touchscreen-support.patch"
 
   cat "${srcdir}/config" > ./.config # simpler
 
