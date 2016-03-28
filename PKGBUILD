@@ -2,7 +2,7 @@
 
 pkgname=otrtool-git
 _pkgname=otrtool
-pkgver=1.1.0.16.g2feb58d
+pkgver=1.2.0.3.gd86b39e
 pkgrel=1
 pkgdesc="Open source decoder for .otrkey files (onlinetvrecorder.com)"
 arch=('any')
@@ -12,22 +12,12 @@ depends=('curl' 'libmcrypt')
 makedepends=('git')
 conficts=('otrtool')
 provides=('otrtool')
-source=("git+https://github.com/$_pkgname/$_pkgname.git"
-        "destdir.patch"
-        "mkdir.patch")
-md5sums=('SKIP'
-         'fe06c0ed4ea003fae2cf2f0391f04a32'
-         '6917038171b9aa27f3a574ec5c9f8646')
+source=("git+https://github.com/$_pkgname/$_pkgname.git")
+md5sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgname"
 	git describe --tags | sed -e 's|-|.|g' -e 's|^v||'
-}
-
-prepare() {
-	cd "$_pkgname"
-	patch -Np1 -i "../destdir.patch"
-	patch -Np1 -i "../mkdir.patch"
 }
 
 build() {
