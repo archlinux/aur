@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-grsec
 _pkgbasever=4.4-gnu
-_pkgver=4.4.4-gnu
+_pkgver=4.4.6-gnu
 _grsecver=3.1
-_timestamp=201603032158
+_timestamp=201603171922
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -50,9 +50,12 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'change-default-console-loglevel.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
+        '0003-fix-atmel-maxtouch-touchscreen-support.patch'
         # armv7h patches
         "https://repo.parabola.nu/other/rcn-libre-grsec/patches/${_pkgver%-*}/rcn-libre-grsec-${_pkgver%-*}-${rcnrel}.patch"
         "https://repo.parabola.nu/other/rcn-libre-grsec/patches/${_pkgver%-*}/rcn-libre-grsec-${_pkgver%-*}-${rcnrel}.patch.sig"
+        '0001-ARM-disable-implicit-function-declaration-error.patch'
+        '0001-ARM-fix-ops-undeclared-first-use-in-this-function.patch'
         '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
         '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
         '0003-SMILE-Plug-device-tree-file.patch'
@@ -64,9 +67,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
 sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
-            '5b52578afb3bab7a50748e9b8e26bd9df851b3dcfbb55079d2abf3d3ad46aaff'
+            '0e4403973b4e92ec97e101f4f8053cc8f1b90302c2040f168d0c53374efc121a'
             'SKIP'
-            'bd005e43a54213a4dc065cee68cbaacae54547c916d21762547ee14bec5d6726'
+            '3ad57cda516c665c8fd093b92b1bfa0f3a56ee79021ea43b64576c8b8d911b2f'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -76,13 +79,16 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
             '8a911b8d635f2ab705b9f01f0301d9a08cff2ff9537172e02b1b8c5d4c050504'
             '23d15c88761c08f31c3e8a3c288033e7f0cd47d414d7b3880109638d8d6afebd'
-            '71ff01c06871dd92312f35a7ac2194708b2d1b783bdde0b585605f0d9d5c03f5'
+            '50808756ec1431b3163dd0579e901146229ec13356f73538b24db25a21bccb6a'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
             '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
-            '5a8d8fe270a5423fb5f712aebf55d367906a8f44f1ca343341ab67619479a319'
+            '0a6f76bbc03ae6e846a4ba4e31bbc0a40b1ae538c1271defcbe3089e00a4b53d'
+            '1ddb4826dc41c5e6db05c1ccad396915e678992c97b300089bf47040e0db4f44'
             'SKIP'
+            '1fc7055041da895d5d023fcf0c5e06d00a3506ae98931138229dba7392e2c382'
+            'bd7e6446b8ca7724642f8317326fe228b116be28f9649b5783530d7c0899ded8'
             'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
             '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
             '6dadc17ea56d93ec0f1d0c3c98c25a7863e9ba3c4af50dc411d630a1bcc98f08'
@@ -124,6 +130,12 @@ prepare() {
     # RCN patch (CM3 firmware deblobbed)
     git apply -v "${srcdir}/rcn-libre-grsec-${_pkgver%-*}-${rcnrel}.patch"
 
+    # disable implicit function declaration error since grsecurity patches conflicts against some RCN modules
+    patch -p1 -i "${srcdir}/0001-ARM-disable-implicit-function-declaration-error.patch"
+
+    # fix undeclared variable
+    patch -p1 -i "${srcdir}/0001-ARM-fix-ops-undeclared-first-use-in-this-function.patch"
+
     # ALARM patches
     patch -p1 -i "${srcdir}/0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch"
     patch -p1 -i "${srcdir}/0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch"
@@ -157,6 +169,11 @@ prepare() {
   # maintain the TTY over USB disconnects
   # http://www.coreboot.org/EHCI_Gadget_Debug
   patch -p1 -i "${srcdir}/0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch"
+
+  # fix Atmel maXTouch touchscreen support
+  # https://labs.parabola.nu/issues/877
+  # http://www.fsfla.org/pipermail/linux-libre/2015-November/003202.html
+  patch -p1 -i "${srcdir}/0003-fix-atmel-maxtouch-touchscreen-support.patch"
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
