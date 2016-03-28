@@ -1,13 +1,13 @@
---- lock        2016-03-28 00:03:43.768501884 -0400
-+++ lock-new    2016-03-28 00:07:49.391761702 -0400
-@@ -34,10 +34,7 @@
+--- lock        2016-03-28 10:42:23.087201354 -0400
++++ lock-new    2016-03-28 10:45:26.600775556 -0400
+@@ -37,9 +37,8 @@
      esac
  done
  
 -# get path where the script is located to find the lock icon
--pushd $(dirname $0) > /dev/null
--SCRIPTPATH=$(pwd)
--popd > /dev/null
+-SCRIPTPATH=$(realpath "$0")
+-SCRIPTPATH=${SCRIPTPATH%/*}
++# path where the lock icons are
 +SCRIPTPATH="/usr/share/i3lock-fancy"
  
  # l10n support
