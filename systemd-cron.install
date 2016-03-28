@@ -1,6 +1,13 @@
 _post_install_or_upgrade() {
-    touch /run/crond.reboot
-    touch /run/crond.bootdir
+    touch run/crond.reboot
+    touch run/crond.bootdir
+
+    systemd-sysusers systemd-cron.conf
+
+    chown root:crontab usr/lib/systemd-cron/crontab_setgid
+    chmod 2755 usr/lib/systemd-cron/crontab_setgid
+
+    chown root:crontab var/spool/cron
 }
 
 post_install() {
