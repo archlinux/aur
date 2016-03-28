@@ -4,11 +4,11 @@
 pkgbase=systemd-kdbus
 _pkgbase=${pkgbase%-kdbus}
 pkgname=('systemd-kdbus' 'libsystemd-kdbus' 'systemd-sysvcompat-kdbus')
-pkgver=226
-pkgrel=1
+pkgver=229
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
-makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam'
+makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'intltool' 'iptables' 'kmod' 'libcap' 'libidn' 'libgcrypt'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git')
@@ -31,6 +31,15 @@ md5sums=('SKIP'
 prepare() {
   cd "$_pkgbase"
 
+  # networkd: FIONREAD is not reliable on some sockets
+  git cherry-pick -n 4edc2c9b6b5b921873eb82e58719ed4d9e0d69bf
+
+  # fix assertion failure in src/core/timer.c on bootup (FS#48197)
+  git cherry-pick -n 6d2353394fc33e923d1ab464c8f88df2a5105ffb
+
+  # fix udevd error checking from cg_unified() (FS#48188)
+  git cherry-pick -n 6d2353394fc33e923d1ab464c8f88df2a5105ffb
+
   ./autogen.sh
 }
 
@@ -44,7 +53,6 @@ build() {
       --localstatedir=/var \
       --sysconfdir=/etc \
       --enable-lz4 \
-      --enable-compat-libs \
       --enable-gnuefi \
       --disable-audit \
       --disable-ima \
@@ -60,8 +68,8 @@ package_systemd-kdbus() {
   pkgdesc="system and service manager"
   license=('GPL2' 'LGPL2.1')
   depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
-           'libgcrypt' 'libsystemd' 'libidn' 'lz4' 'pam' 'libseccomp' 'util-linux'
-           'xz')
+           'libgcrypt' 'libsystemd' 'libidn' 'lz4' 'pam' 'libelf' 'libseccomp'
+           'util-linux' 'xz')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
   replaces=('nss-myhostname' 'systemd-tools' 'udev')
   conflicts=('nss-myhostname' 'systemd-tools' 'udev')
@@ -130,33 +138,25 @@ package_systemd-kdbus() {
   # ship default policy to leave services disabled
   echo 'disable *' >"$pkgdir"/usr/lib/systemd/system-preset/99-default.preset
 
-  ### split out manpages for sysvcompat
-  rm -rf "$srcdir/_sysvcompat"
-  install -dm755 "$srcdir"/_sysvcompat/usr/share/man/man8/
-  mv "$pkgdir"/usr/share/man/man8/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8 \
-     "$srcdir"/_sysvcompat/usr/share/man/man8
+  ### manpages shipped with systemd-sysvcompat
+  rm "$pkgdir"/usr/share/man/man8/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8
 
-  ### split off runtime libraries
-  rm -rf "$srcdir/_libsystemd"
-  install -dm755 "$srcdir"/_libsystemd/usr/lib
-  cd "$srcdir"/_libsystemd
-  mv "$pkgdir"/usr/lib/lib{systemd,udev}*.so* usr/lib
+  ### runtime libraries shipped with libsystemd
+  rm "$pkgdir"/usr/lib/lib{nss,systemd,udev}*.so*
 
   # add example bootctl configuration
   install -Dm644 "$srcdir/arch.conf" "$pkgdir"/usr/share/systemd/bootctl/arch.conf
   install -Dm644 "$srcdir/loader.conf" "$pkgdir"/usr/share/systemd/bootctl/loader.conf
-  unzip "$srcdir/splash-arch.zip"
-  install -Dm644 "splash-arch.bmp" "$pkgdir"/usr/share/systemd/bootctl/splash-arch.bmp
+  install -Dm644 "$srcdir/splash-arch.bmp" "$pkgdir"/usr/share/systemd/bootctl/splash-arch.bmp
 }
 
 package_libsystemd-kdbus() {
   pkgdesc="systemd client libraries"
-  depends=('glibc' 'libgcrypt' 'lz4' 'xz')
+  depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz')
   license=('GPL2')
-  provides=('libsystemd.so' 'libsystemd-daemon.so' 'libsystemd-id128.so'
-            'libsystemd-journal.so' 'libsystemd-login.so' 'libudev.so')
+  provides=('libsystemd.so' 'libudev.so')
 
-  mv "$srcdir/_libsystemd"/* "$pkgdir"
+  make -C "$_pkgbase" DESTDIR="$pkgdir" install-libLTLIBRARIES
 }
 
 package_systemd-sysvcompat-kdbus() {
@@ -166,7 +166,10 @@ package_systemd-sysvcompat-kdbus() {
   conflicts=('sysvinit')
   depends=('systemd')
 
-  mv "$srcdir/_sysvcompat"/* "$pkgdir"
+  install -dm755 "$pkgdir"/usr/share/man/man8
+  cp -d --no-preserve=ownership,timestamp \
+    "$_pkgbase"/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8 \
+    "$pkgdir"/usr/share/man/man8
 
   install -dm755 "$pkgdir/usr/bin"
   for tool in runlevel reboot shutdown poweroff halt telinit; do
