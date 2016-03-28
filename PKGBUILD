@@ -1,9 +1,12 @@
 # Maintainer: Martchus <martchus@gmx.net>
 # Contributor: Filip Brcic <brcha@gna.org>
 
+# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
+# you also find the URL of a binary repository.
+
 _qt_module=qtdeclarative
 pkgname=mingw-w64-qt5-declarative
-pkgver=5.5.1
+pkgver=5.6.0
 pkgrel=1
 arch=(any)
 pkgdesc="Classes for QML and JavaScript languages (mingw-w64)"
@@ -16,14 +19,14 @@ url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         "qt5-build-qmldevtools-as-shared-library.patch")
-md5sums=('b7997c9d8df4ea60945229883f9ce8ed'
+md5sums=('5eb41d468d88a70574ddc5237b68f7e8'
          '6c445ba7713b69d90f52bb2242303853')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
-  patch -p1 -i "${srcdir}"/qt5-build-qmldevtools-as-shared-library.patch  
+  patch -p1 -i "${srcdir}"/qt5-build-qmldevtools-as-shared-library.patch
 }
 
 build() {
@@ -50,7 +53,6 @@ package() {
     # The .dll's are installed in both bindir and libdir
     # One copy of the .dll's is sufficient
     rm -f "${pkgdir}/usr/${_arch}/lib/"*.dll
-    rm "${pkgdir}/usr/${_arch}/lib/pkgconfig/Qt5QmlDevTools.pc"
     find "${pkgdir}/usr/${_arch}" -name "*.exe" -o -name "*.bat" -o -name "*.def" -o -name "*.exp" -o -name '*.prl' | xargs -rtl1 rm
     find "${pkgdir}/usr/${_arch}" -name "*.dll" -exec ${_arch}-strip --strip-unneeded {} \;
     find "${pkgdir}/usr/${_arch}" -name "*.a" -o -name "*.dll" | xargs -rtl1 ${_arch}-strip -g
