@@ -19,10 +19,10 @@ sha256sums=('108381209090f403d6d9788786129206729fc21d543d9937ba9c938245e13bd9'
             '8e6e7fff0e0b49c0d53c6949ca1cb37b1e5e6bb2651ab1ed9f4d6ee051e4d8bf')
 
 # Valid options are: English, French, German, Italian, Portuguese, Spanish
-_language='German'
+_language='English'
 
 package() {
-    # Set language name: Default is German
+    # Set language name: Default is English
 
     # Installing the license, copied from the download site
     install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
