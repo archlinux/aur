@@ -16,8 +16,10 @@ _pkgbasever=${pkgver/rc/-rc}
 _winesrcdir="pontostroy-wine-$_pkgbasever"
 
 source=("https://github.com/mradermaxlol/pontostroy-wine/archive/v$_pkgbasever.tar.gz"
+		30-win32-aliases.conf
         )
 sha1sums=('797c816cb4b64bb28872b8f9676a6e0faad7b436'
+		  '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           )
 
 pkgdesc="Based off wine-staging (pontostroy version), including the gallium-nine patches and some more hacks"
