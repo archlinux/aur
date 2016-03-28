@@ -4,11 +4,11 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 pkgname=libcompizconfig-git
-pkgver=0.8.10.r2.g2eacaf2
+pkgver=0.8.12.r2.g992eb5c
 pkgrel=1
 pkgdesc="Compiz configuration system library"
 arch=('i686' 'x86_64')
-url="http://git.northfield.ws/compiz/?p=compiz/libcompizconfig;a=summary"
+url="https://github.com/compiz-reloaded/libcompizconfig"
 license=('GPL')
 depends=('compiz-core' 'libxml2' 'libxcomposite' 'libxinerama' 'protobuf' 'startup-notification')
 makedepends=('intltool' 'libxrandr' 'libice' 'libsm' 'mesa')
@@ -16,13 +16,13 @@ conflicts=('libcompizconfig')
 provides=('libcompizconfig')
 options=('!emptydirs')
 source=(
-	'git://northfield.ws/compiz/libcompizconfig'
+	'git+https://github.com/compiz-reloaded/libcompizconfig.git'
 )
 sha1sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname%%-git}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags|sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
