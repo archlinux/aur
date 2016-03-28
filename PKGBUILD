@@ -1,10 +1,13 @@
 # Maintainer: Martchus <martchus@gmx.net>
 # Contributor: ant32 <antreimer@gmail.com>
 
+# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
+# you also find the URL of a binary repository.
+
 _qt_module=qtserialport
 pkgname="mingw-w64-qt5-serialport"
-pkgver=5.5.1
-pkgrel=2
+pkgver=5.6.0
+pkgrel=1
 arch=('any')
 pkgdesc="Provides access to hardware and virtual serial ports (mingw-w64)"
 depends=('mingw-w64-qt5-base')
@@ -14,13 +17,13 @@ license=('LGPL')
 url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-$pkgver"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/$pkgver/submodules/qtserialport-opensource-src-$pkgver.tar.xz")
-md5sums=('1065424ad9be54f7635a9a50f35bc187')
+md5sums=('a9dfcfbf88034ada5b75f0be59030a37')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 build() {
   cd "${srcdir}/${_pkgfqn}"
-  
+
   # don't build examples or tests.
   sed -i 's/ examples tests//' qtserialport.pro
 
@@ -29,7 +32,7 @@ build() {
     ${_arch}-qmake-qt5 ../${_qt_module}.pro
     make
     popd
-    
+
     #mkdir -p static-${_arch}/include/QtSerialPort && pushd static-${_arch}
     #${_arch}-qmake-qt5 ../${_qt_module}.pro CONFIG+=static
     #make
@@ -44,9 +47,9 @@ package() {
     pushd build-${_arch}
 
     make INSTALL_ROOT="${pkgdir}" install
-    
+
     popd
-    
+
     #pushd static-${_arch}
     #make INSTALL_ROOT="${pkgdir}" install
     #popd
