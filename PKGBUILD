@@ -2,7 +2,7 @@
 
 pkgname=wine-staging-git
 pkgver=1.9.6.r34.g96fddf8+wine.1.9.6.r144.g4315cae
-pkgrel=1
+pkgrel=2
 pkgdesc="A compatibility layer for running Windows programs (staging branch, Git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/wine-compholio/wine-staging/"
@@ -67,6 +67,7 @@ optdepends=(
   'ncurses'               'lib32-ncurses'
   'libcl'                 'lib32-libcl'
   'libxslt'               'lib32-libxslt'
+  'libtxc_dxtn'           'lib32-libtxc_dxtn'
   'libva'                 'lib32-libva'
   'gtk3'                  'lib32-gtk3'
   'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
@@ -119,7 +120,7 @@ pkgver() {
 }
 
 prepare() {
-	cd "$srcdir/wine-git"
+	cd "$srcdir"/wine-git
 	
 	msg2 "Cleaning the wine source code tree..."
 	
