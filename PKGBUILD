@@ -1,5 +1,9 @@
-# Maintainer: MKzero <info at linux-web-development dot de>
-# Contributor: Bitwig GmbH <support at bitwig dot com>
+# Maintainer: MKzero <info@linux-web-development.de>
+# Maintainer: Aleksej Komarov <stylemistake@gmail.com>
+# Contributor: Ferenc Gergely Szilagyi <ferenc.szilagyi@rocket-internet.de>
+# Contributor: Renaud Lessard Larouche <sigmao@gmail.com>
+# Contributor: Ben Sherman <sherman@mycornerofthe.net>
+# Upstream: Bitwig GmbH <support@bitwig.com>
 
 pkgname='bitwig-studio'
 pkgver='1.3.8'
@@ -8,9 +12,8 @@ pkgdesc='Music production system for production, remixing and performance'
 arch=('x86_64')
 url='http://www.bitwig.com/'
 license=('custom')
-# This list is not anywhere near what it should be and misses a lot of package
-# names. If you find yourself in a situation where you are missing something,
-# please tell me via mail or Github:
+# This list might be missing a lot of package names. If you are missing
+# some package, report via email or create an issue on Github:
 # https://github.com/mkzero/bitwig-studio-demo-aur
 depends=('jack' 'xdg-utils' 'zenity' 'xcb-util-wm' 'libbsd')
 optdepends=('alsa-lib' 'oss' 'ffmpeg: MP3 support')
