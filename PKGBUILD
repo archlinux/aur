@@ -2,13 +2,14 @@
 
 _pkgname=truecraft
 pkgname=truecraft-git
-pkgver=20160103
+pkgver=r780.902b06a
 pkgrel=1
+epoch=1
 pkgdesc="A completely clean-room implementation of Minecraft beta 1.7.3 (circa September 2011)."
 arch=('i686' 'x86_64')
 url="https://github.com/SirCmpwn/TrueCraft"
 license=('MIT')
-depends=('mono>=4.0' 'desktop-file-utils' 'gtk2' 'webkitgtk2' 'gtk-sharp-2' 'sdl_mixer')
+depends=('mono>=4.0' 'desktop-file-utils' 'gtk3' 'webkitgtk' 'gtk-sharp-3' 'sdl_mixer')
 makedepends=('git' 'nuget')
 source=("${_pkgname}"::"git://github.com/SirCmpwn/TrueCraft.git"
         "${_pkgname}.svg"::'https://truecraft.io/static/truecraft_earth.svg')
@@ -19,7 +20,7 @@ md5sums=('SKIP'
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git log -1 --format='%cd' --date=short | tr -d -- '-'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -29,7 +30,7 @@ build() {
 mkdir -p \$HOME/.config/truecraft
 cd \$HOME/.config/truecraft
 ln -sf /usr/share/${_pkgname}/* ./
-exec mono /usr/share/${_pkgname}/TrueCraft.Launcher.exe
+mono /usr/share/${_pkgname}/TrueCraft.Launcher.exe
 EOF
 
     cat > "${_pkgname}.desktop" << EOF
@@ -51,7 +52,7 @@ EOF
     xbuild /p:Configuration=Release
 
     cd 'TrueCraft.Launcher/bin/Release/'
-    rm -f truecraft MonoGame.Framework.MacOS.dll MonoGame.Framework.Windows.dll
+    # rm -f truecraft MonoGame.Framework.MacOS.dll MonoGame.Framework.Windows.dll
 }
 
 package() {
