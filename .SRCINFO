@@ -1,0 +1,19 @@
+pkgbase = webp-pixbuf-loader
+	pkgdesc = WebM GDK Pixbuf Loader library
+	pkgver = 20140823
+	pkgrel = 1
+	url = https://github.com/aruiz/webp-pixbuf-loader
+	install = webp-pixbuf-loader.install
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = cmake
+	depends = gdk-pixbuf2
+	depends = libwebp
+	source = git+https://github.com/aruiz/webp-pixbuf-loader.git#commit=5610f216ba1a47fa97f8bda6edef57b6e53dc16f
+	source = CMakeLists.txt
+	sha256sums = SKIP
+	sha256sums = af1694e1f4a08a4c85e717c515887c3c57a72e5cb0cdd174bffe55810ceaf7e0
+
+pkgname = webp-pixbuf-loader
+
