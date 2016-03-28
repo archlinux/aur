@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=libraqm-git
-pkgver=v0.1.0.r16.g846b4f6
-pkgrel=2
+pkgver=v0.1.0.r25.gf45042d
+pkgrel=1
 pkgdesc="A library that encapsulates the logic for complex text layout"
 arch=('i686' 'x86_64')
 url="https://github.com/HOST-Oman/libraqm"
@@ -23,14 +23,10 @@ pkgver() {
 	  
 }
 
-prepare() {
+build() {
 	cd "${srcdir}/${pkgname}"
 	
 	./autogen.sh
-}
-
-build() {
-	cd "${srcdir}/${pkgname}"
 	
 	./configure \
 	        --prefix=/usr \
