@@ -2,8 +2,8 @@
 _pkgname=nctelegram
 _gitname=ncTelegram
 pkgname=${_pkgname}-git
-pkgver=0.9.1.r8.g013f3be
-pkgrel=2
+pkgver=0.9.1.r14.g4b7ca4b
+pkgrel=1
 pkgdesc="A ncurse Telegram client developed in Python"
 arch=('any')
 url="https://github.com/Nanoseb/ncTelegram"
