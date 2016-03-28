@@ -1,8 +1,11 @@
 # Maintainer: Martchus <martchus@gmx.net>
 
+# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
+# you also find the URL of a binary repository.
+
 _qt_module=qtwebchannel
 pkgname=mingw-w64-qt5-webchannel
-pkgver=5.5.1
+pkgver=5.6.0
 pkgrel=1
 arch=('any')
 pkgdesc='Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients (mingw-w64)'
@@ -10,11 +13,11 @@ depends=('mingw-w64-qt5-declarative')
 makedepends=('mingw-w64-gcc')
 options=('!strip' '!buildflags' 'staticlibs')
 license=('custom' 'FDL' 'GPL3' 'LGPL')
-url="http://qt-project.org"
+url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 groups=(mingw-w64-qt mingw-w64-qt5)
-source=("http://download.qt-project.org/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('f2e15d52c1b7732c2afbfb7e843091cf')
+source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
+md5sums=('1ba293366dcf67f8b8181be2682ee81a')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
