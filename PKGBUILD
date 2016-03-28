@@ -1,10 +1,13 @@
 # Maintainer: Martchus <martchus@gmx.net>
 # Contributor: ant32 <antreimer@gmail.com>
 
+# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
+# you also find the URL of a binary repository.
+
 _qt_module=qtactiveqt
 pkgname=mingw-w64-qt5-activeqt
-pkgver=5.5.1
-pkgrel=2
+pkgver=5.6.0
+pkgrel=1
 arch=(any)
 pkgdesc="ActiveX integration framework (mingw-w64)"
 depends=(mingw-w64-qt5-base)
@@ -18,7 +21,7 @@ source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/sub
         "qt5-activeqt-fix-compilation.patch"
         "qtactiveqt-fix-build.patch"
         "qtactiveqt-win64.patch")
-md5sums=('be5e0a79decc87d02c574348d9663e6a'
+md5sums=('791e40d20fed235b42029aa54d6f0634'
          '86c63b9808b0c8c7a8c2203bee73c42b'
          '7a7ba436452aa56613b3fbb15684e094'
          '1264d0274586aec14f96a978b416b048')
