@@ -29,8 +29,8 @@ optdepends=('netpbm: building HTML documentation'
 provides=("lilypond=$pkgver")
 conflicts=('lilypond' 'lilypond-git')
 source=("http://download.linuxaudio.org/lilypond/sources/v2.19/lilypond-${pkgver}.tar.gz" 'no_fontforge-versioncheck.patch')
-md5sums=('4c2e5873bf5253c12f6f0198c4c288e3'
-         '84c92f047d703a4b798092cfc4d83e32')
+sha256sums=('54ddfcfa663fd846c6545cd3b8fb1a583a1f1f14cf2c0fd43fcf45063b57dbfd'
+            'e74391f718babb984c5f637397162cf096c4716f5b9a21346ec76035cfc80817')
 
 prepare() {
   cd "$srcdir/lilypond-$pkgver"
