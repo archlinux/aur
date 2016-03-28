@@ -2,7 +2,7 @@
 
 pkgbase=django-allauth
 pkgname=('python-django-allauth' 'python2-django-allauth')
-pkgver=0.24.1
+pkgver=0.25.2
 pkgrel=1
 pkgdesc="Integrated set of Django applications addressing authentication, registration, account management as well as 3rd party (social) account authentication."
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python' 'python-setuptools' 'python-django' 'python-openid'
              'python2-setuptools' 'python2-django' 'python2-openid'
              'python2-requests-oauthlib' 'python2-requests')
 source=("https://github.com/pennersr/${pkgbase}/archive/${pkgver}.tar.gz")
-md5sums=('5bcece1721fcf1f05f5df2d8b36ae7dc')
+md5sums=('126722ca1b7d9d06adab6f7cf3af6062')
 
 package_python-django-allauth() {
   depends=('python' 'python-django' 'python-openid' 'python-requests-oauthlib'
