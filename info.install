@@ -10,7 +10,7 @@ filelist=(
 post_install() {
 	if [[ -x "/usr/bin/install-info" ]]; then
 		for file in ${filelist[@]}; do
-			install-info "${infodir}/${file}" "${infodir}/dir" 2> /dev/null
+			install-info "${infodir}/${file}.gz" "${infodir}/dir" 2> /dev/null
 		done
 	fi
 }
