@@ -5,7 +5,7 @@
 
 pkgbase=python-numpy
 pkgname=('python2-numpy' 'python-numpy')
-pkgver=1.10.4
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="Scientific tools for Python"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('cblas' 'lapack' 'python' 'python2' 'python-setuptools' 'python2-se
 	'python-nose' 'python2-nose' 'cython' 'cython2')
 options=('staticlibs')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/numpy/numpy/archive/v$pkgver.tar.gz" 'site.cfg')
-md5sums=('3cb325c3dff03b5bc15206c757a26116'
+md5sums=('487c83ea27d5e4581348a916453723da'
          '6ac5f9dac5d4c0e25a2eba6c98bf5b3c')
 
 prepare() {
