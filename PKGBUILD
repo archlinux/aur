@@ -1,24 +1,23 @@
-# Maintainer: Moritz Maxeiner <moritz@ucworks.org>
+# Maintainer: Davi da Silva Böger <dsboger at gmail dot com>
+# Contributor: Moritz Maxeiner <moritz@ucworks.org>
 
 pkgname=dub-git
 _gitname=dub
-pkgver=0.9.21beta.1.565.d2d3e2c
+pkgver=0.9.24.1535.7b9eba4
 pkgrel=1
 pkgdesc="Package manager for D packages, git version"
 arch=('i686' 'x86_64')
-url="https://github.com/rejectedsoftware/dub"
+url="https://github.com/D-Programming-Language/dub"
 license=('MIT')
-depends=('dmd' 'curl')
-makedepends=('git')
-optdepends=()
-source=()
+depends=('curl')
+makedepends=('git' 'dmd')
+provides=('dub')
 conflicts=('dub')
-source=('git://github.com/rejectedsoftware/dub.git')
+source=('git+https://github.com/D-Programming-Language/dub')
 md5sums=('SKIP')
 sha256sums=('SKIP')
 
-pkgver()
-{
+pkgver() {
   cd ${srcdir}/${_gitname}
   echo $(git describe --abbrev=0 | sed 's|v||g' | sed 's|-||g').$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
