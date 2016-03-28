@@ -1,9 +1,9 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=getver
-pkgver=0.5
+pkgver=0.52
 pkgrel=1
-pkgdesc='Find the latest version number for a given URL'
+pkgdesc='Find the latest package versions'
 arch=('x86_64' 'i686')
 url='https://github.com/xyproto/getver/'
 license=('MIT')
@@ -28,7 +28,8 @@ package() {
   install -m755 "scripts/bumprel.sh" "$pkgdir/usr/bin/bumprel"
   install -m755 "scripts/vup.sh" "$pkgdir/usr/bin/vup"
   install -m755 "scripts/geturlver.sh" "$pkgdir/usr/bin/geturlver"
+  install -m755 "scripts/allversions.sh" "$pkgdir/usr/bin/allversions"
 }
 
-# getver: -u 4 raw.githubusercontent.com/xyproto/getver/master/README.md
 # vim:set ts=2 sw=2 et:
+# getver: raw.githubusercontent.com/xyproto/getver/master/README.md
