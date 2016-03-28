@@ -1,4 +1,5 @@
-# Maintainer : Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Maintainer : Mark Weiman <mark dot weiman at markzz dot com>
+# Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Andre Osku Schmidt (oskude) <(andre.osku.schmidt) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 ################
@@ -18,13 +19,13 @@ _COMPILER="GCC49"
 ################
 
 ################
-_OPENSSL_VERSION="1.0.2e"
+_OPENSSL_VERSION="1.0.2g"
 ################
 
 _pkgname="ovmf"
 pkgname="${_pkgname}-git"
 
-pkgver=17363.e7e1201
+pkgver=18129.877c0a9
 pkgrel=1
 pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - GIT Version"
 url="https://tianocore.github.io/ovmf/"
@@ -44,7 +45,7 @@ source=("${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=master
         "https://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz")
 
 sha1sums=('SKIP'
-          '2c5691496761cb18f98476eefa4d35c835448fb6')
+          '36af23887402a5ea4ebef91df8e61654906f58f2')
 
 noextract=("openssl-${_OPENSSL_VERSION}.tar.gz")
 
@@ -114,7 +115,7 @@ _prepare_openssl_udk_dir() {
 	
 	msg "Apply EDK2 Patch for OpenSSL ${_OPENSSL_VERSION}"
 	cd "${_UDK_DIR}/CryptoPkg/Library/OpensslLib/openssl-${_OPENSSL_VERSION}/"
-	patch -p0 -i "${_UDK_DIR}/CryptoPkg/Library/OpensslLib/EDKII_openssl-${_OPENSSL_VERSION}.patch"
+	patch -p1 -i "${_UDK_DIR}/CryptoPkg/Library/OpensslLib/EDKII_openssl-${_OPENSSL_VERSION}.patch"
 	echo
 	
 	msg "Setup OpenSSL ${_OPENSSL_VERSION} headers in EDK2 dir"
