@@ -3,16 +3,18 @@
 #TODO: set up permissions (e.g. fortress/{progs,sounds, etc.} to be sticky-bit and writable? that way maybe at least files can be downloaded. create maps dir for all mods too.
 #TODO: change permissions for all .cfg's to 664?
 #TODO: way to force mode/ownership of newly created files? umask per dir?
+# NOTE: as of 2.3-8, with pacman 5 there is crippled support for split-package. so we build one friggin' huge thing.
+# sorry, community- i do hope someday that pacman devs stop making arbitrary changes on a whim.
 
-pkgname=('nquake-base' 'nquake-nonfree' 'nquake-fortress' 'nquake-arena' 'nquake-textures')
-pkgbase="nquake"
+pkgname=('nquake')
 pkgver=2.3
-pkgrel=7
+pkgrel=8
 pkgdesc="The easiest, quickest, and most popular QuakeWorld client."
 url="http://nquake.sourceforge.net/"
-license=('GPL' 'Custom:CC0-1.0')
+license=('GPL2' 'Custom:CC0-1.0' '')
 depends=('unzip' 'ezquake')
 arch=('any')
+install=nquake.install
 
 _alt_pkgver=$(echo ${pkgver} | sed -e 's/\.//g')
 
@@ -38,16 +40,8 @@ sha256sums=('fa4e166d06f6af88339448a4beaa9108418168493310242c457c644e7fc1ac00'
 	    '3e2c25baff6cdd58117b663fbd3d8570791e9dc777ebb28da8820f7934a6439d'
 	    'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
 
-package_nquake-base () {
-
-	pkgdesc="The easiest, quickest, and most popular QuakeWorld client. (nQuake core)"
-	license=('GPL2')
-	install=nquake-base.install
-	optdepends=('nquake-nonfree: non-GPL assets- STRONGLY recommended'
-		    'nquake-fortress: Team Fortress mod as distributed with nQuake'
-		    'nquake-arena: Clan Arena as distributed with nQuake'
-		    'nquake-textures: Hi-Res Textures as distributed with nQuake')
-
+package () {
+## BASE ##
 	# Most of these files are in gpl.zip
 	install -d -m 0750 ${pkgdir}/opt/quake/{id1,qw,ezquake}
 	install -d -m 0750 ${pkgdir}/usr/share/nquake
@@ -72,24 +66,7 @@ package_nquake-base () {
 
 	ln -sf /usr/bin/ezquake ${pkgdir}/usr/bin/nquake
 
-	# Security is worthless without a modicum of usability. We're kind of stepping on other packagers' toes here, but... c'est la vie.
-	# Remind me to submit a patch to https://aur.archlinux.org/packages/ezquake/ (and incorporate into ezquake-git, which I maintain).
-	# Scratch that, ezquake uses "users" group. Works for me!
-	chgrp -R users ${pkgdir}/opt/quake/
-	chgrp users ${pkgdir}/usr/share/nquake
-	
-}
-
-package_nquake-nonfree () {
-
-	pkgdesc="The easiest, quickest, and most popular QuakeWorld client. (Non-GPL assets)"
-	license=('Custom:CC0-1.0') # a.k.a. "public domain". per empazar @ upstream nQuake, non-GPL sources obtained from Quake community in freely distributed (but unlicensed) works.
-	install=nquake-generic.install
-	depends=('nquake-base')
-	optdepends=('nquake-fortress: Team Fortress mod as distributed with nQuake'
-                    'nquake-arena: Clan Arena as distributed with nQuake'
-                    'nquake-textures: Hi-Res Textures as distributed with nQuake')
-
+## NON-FREE ##
 	# Most of these files are in non-gpl.zip
 	install -d -m 0750 ${pkgdir}/opt/quake/qw/{skins,matchinfo}
 	install -d -m 0750 ${pkgdir}/usr/share/doc/nquake
@@ -103,18 +80,14 @@ package_nquake-nonfree () {
 	cp -a ${srcdir}/qw/readme.txt ${pkgdir}/opt/quake/qw/.  # Directory structure schema
 	cp -a ${srcdir}/qw/skins ${pkgdir}/opt/quake/qw/.  # Skins for models
 
-}
 
-package_nquake-fortress () {
+	# Security is worthless without a modicum of usability. We're kind of stepping on other packagers' toes here, but... c'est la vie.
+	# Remind me to submit a patch to https://aur.archlinux.org/packages/ezquake/ (and incorporate into ezquake-git, which I maintain).
+	# Scratch that, ezquake uses "users" group. Works for me!
+	chgrp -R users ${pkgdir}/opt/quake/
+	chgrp users ${pkgdir}/usr/share/nquake
 
-	pkgdesc="The easiest, quickest, and most popular QuakeWorld client. (Team Fortress, nQuake distribution)"
-	license=('Custom:CC0-1.0') # a.k.a. "public domain".
-	install=nquake-generic.install
-	depends=('nquake-base')
-	optdepends=('nquake-nonfree: non-GPL assets- STRONGLY recommended'
-                    'nquake-arena: Clan Arena as distributed with nQuake'
-                    'nquake-textures: Hi-Res Textures as distributed with nQuake')
-
+## FORTRESS ##
 	# Most of these files are in addon-fortress.zip
 	install -d -m 0750 ${pkgdir}/opt/quake/
 	install -d -m 0755 ${pkgdir}/usr/share/licenses/${pkgname}
@@ -122,18 +95,7 @@ package_nquake-fortress () {
 	# And the Business-End(TM). Do the thing.
 	cp -a ${srcdir}/fortress ${pkgdir}/opt/quake/.  # The entire mod
 
-}
-
-package_nquake-arena () {
-
-	pkgdesc="The easiest, quickest, and most popular QuakeWorld client. (Clan Arena, nQuake distribution)"
-	license=('Custom:CC0-1.0') # a.k.a. "public domain".
-	install=nquake-generic.install
-	depends=('nquake-base')
-        optdepends=('nquake-nonfree: non-GPL assets- STRONGLY recommended'
-                    'nquake-fortress: Team Fortress mod as distributed with nQuake'
-                    'nquake-textures: Hi-Res Textures as distributed with nQuake')
-
+## ARENA ##	
 	# Most of these files are in addon-clanarena.zip
 	install -d -m 0750 ${pkgdir}/opt/quake/
 	install -d -m 0755 ${pkgdir}/usr/share/licenses/${pkgname}
@@ -141,21 +103,9 @@ package_nquake-arena () {
 	# And the Business-End(TM). Do the thing.
 	cp -a ${srcdir}/arena ${pkgdir}/opt/quake/.  # The entire mod
 	cp -a ${srcdir}/prox ${pkgdir}/opt/quake/.  # QuakeProxy, I think?
-
-}
-
-package_nquake-textures () {
-
-# TODO: is aur/quake-qrp-textures more up-to-date than the QRP in the nQuake mirrors? If so, make that a dependency and symlink or copy.
-
-	pkgdesc="The easiest, quickest, and most popular QuakeWorld client. (QRP Textures, nQuake distribution)"
-	license=('Custom:CC0-1.0') # a.k.a. "public domain".
-	install=nquake-generic.install
-	depends=('nquake-base')
-        optdepends=('nquake-nonfree: non-GPL assets- STRONGLY recommended'
-                    'nquake-fortress: Team Fortress mod as distributed with nQuake'
-                    'nquake-arena: Clan Arena as distributed with nQuake')
-
+	
+## TEXTURES ##
+	# TODO: is aur/quake-qrp-textures more up-to-date than the QRP in the nQuake mirrors? If so, make that a dependency and symlink or copy.
 	# Most of these files are in addon-textures.zip
 	install -d -m 0750 ${pkgdir}/opt/quake/qw
 	install -d -m 0755 ${pkgdir}/usr/share/licenses/${pkgname}
@@ -163,5 +113,4 @@ package_nquake-textures () {
 	# And the Business-End(TM). Do the thing.
 	cp -a ${srcdir}/qw/textures.pk3 ${pkgdir}/opt/quake/qw.  # Textures
 	cp -a ${srcdir}/qw/readme-textures.txt ${pkgdir}/opt/quake/.  # ????
-
 }
