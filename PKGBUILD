@@ -5,11 +5,11 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 pkgname=compiz-fusion-plugins-experimental-git
-pkgver=r4.8fd9a92
+pkgver=0.8.12.r5.g464b3c5
 pkgrel=1
 pkgdesc="Compiz Fusion Experimental plugins"
 arch=('i686' 'x86_64')
-url="http://git.northfield.ws/compiz/?p=compiz/plugins-experimental;a=summary"
+url="https://github.com/compiz-reloaded/compiz-plugins-experimental"
 license=('GPL')
 depends=('compiz-core-git' 'compiz-bcop-git' 'compiz-fusion-plugins-extra-git' 'libnotify')
 makedepends=('intltool' 'pkg-config')
@@ -18,12 +18,12 @@ conflicts=('compiz-fusion-plugins-experimental')
 provides=('compiz-fusion-plugins-experimental')
 options=('!libtool')
 source=(
-	'git://northfield.ws/compiz/plugins-experimental'
+	'git+https://github.com/compiz-reloaded/compiz-plugins-experimental.git'
 )
 
 pkgver() {
-  cd "${srcdir}/plugins-experimental"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/compiz-plugins-experimental"
+  git describe --long --tags|sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 # Comment out until we have a tagged release
@@ -33,13 +33,13 @@ pkgver() {
 #}
 
 build() {
-  cd "${srcdir}/plugins-experimental"
+  cd "${srcdir}/compiz-plugins-experimental"
   ./autogen.sh --prefix=/usr --sysconfdir=/etc
   make
 }
 
 package() {
-    cd "${srcdir}/plugins-experimental"
+    cd "${srcdir}/compiz-plugins-experimental"
     DESTDIR="${pkgdir}" make install
 }
 
