@@ -13,7 +13,7 @@ url="http://lostpackets.de/pycarddav/"
 license=('Expat/MIT')
 conflicts=('pycarddav')
 provides=('pycarddav')
-depends=('python2' 'python2-vobject' 'python2-requests' 'python2-lxml'
+depends=('python2' 'python2-vobject<=0.8.1c' 'python2-requests' 'python2-lxml'
 'python2-urwid' 'python2-xdg')
 makedepends=('python-docutils' 'python2-distribute')
 source=("git+https://github.com/geier/${_pkgname}.git")
