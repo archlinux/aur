@@ -17,7 +17,7 @@ url="http://sourceforge.net/projects/apngdis/"
 provides=( apngasm apngdis gif2apng apng2gif)
 license=('LGPL')
 depends=( 'libpng' 'gcc-libs' )
-makedepends=( 'boost' )
+makedepends=( 'boost' 'cmake' )
 source=("http://sourceforge.net/projects/apngdis/files/${_apngdis_pkgver}/apngdis-${_apngdis_pkgver}-src.zip"
         "https://github.com/apngasm/apngasm/archive/3.1.6.tar.gz"
         "http://sourceforge.net/projects/gif2apng/files/${_gif2apng_pkgver}/gif2apng-${_gif2apng_pkgver}-src.zip"
