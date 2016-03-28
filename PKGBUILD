@@ -1,8 +1,8 @@
 # Maintainer: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=decklink
-_dvver=10.5.4a4 # DesktopVideo
-_mever=3.5a9 # MediaExpress
+_dvver=10.6.2a3 # DesktopVideo
+_mever=3.5.1a6 # MediaExpress
 pkgver=${_dvver}
 pkgrel=1
 pkgdesc="Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video editing cards"
@@ -13,7 +13,7 @@ depends=('linux-headers' 'libxml2' 'libpng12' 'glu' 'qt4')
 options=('!strip' 'staticlibs')
 install='decklink.install'
 source=("file://Blackmagic_Desktop_Video_Linux_${pkgver%a*}.tar")
-sha256sums=('87653c51ed854dac82a8502000f547deda117498b5c045d01bd81ca7388c574d')
+sha256sums=('da743c87b3af7fb50b3d17af67b75b253141896540589aa6119ecaed21979142')
 
 
 [ "$CARCH" = "i686" ] && _arch='i386'
