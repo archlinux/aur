@@ -9,6 +9,8 @@ arch=(i686 x86_64)
 url="http://www.delorie.com/djgpp/"
 depends=('glibc')
 license=(GPL LGPL custom:djgpp)
+provides=('djgpp-djcrx-bootstrap')
+conflicts=('djgpp-djcrx-bootstrap')
 source=(
 	"http://www.delorie.com/pub/djgpp/current/v2/djcrx${pkgver//./}.zip"
 	"http://www.delorie.com/pub/djgpp/current/v2/djlsr${pkgver//./}.zip"
