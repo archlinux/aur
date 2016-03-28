@@ -3,7 +3,7 @@
 
 pkgname=djgpp-djcrx
 pkgver=2.05
-pkgrel=2
+pkgrel=3
 pkgdesc="Headers and utilities for the djgpp cross-compiler"
 arch=(i686 x86_64)
 url="http://www.delorie.com/djgpp/"
@@ -16,6 +16,8 @@ source=(
 	"http://www.delorie.com/pub/djgpp/current/v2/djlsr${pkgver//./}.zip"
 	info.install
 	ttyscrn.patch
+	nmemalign.patch
+	fseeko64.patch
 )
 makedepends=(djgpp-gcc)
 sha512sums=(
@@ -23,6 +25,8 @@ sha512sums=(
 	'5d2b9c155b926284138c01221c783c4808020865fa91600749d63a2039f5acd076eec5b25c38cb38b4aa73ae6b998f1614baa7e98818bc3816bc2a5f67f8229c'
 	'65f18cce2297531606d850e8482fc604b2ef96402215cb1c3269ca215110f5884b48558c7dfd91502104beb6cb4dc808c2224c05ffec0dd7a89d45b0b9e465e0'
 	'f5d2220384795ca2ce70e8e2315afb77d84fb5600bd3d947a72110613d700d55a575f165560a820d43f7483b3709ed65152c8bbb7a77dd7a290090459cf4acb7'
+	'28acca2ecc8641fb27c2211f223df13efe7e070785c554928912ca1c8425d971da22a4d7afc1dfce9250e2479d0c4da162422c6c121f6789c0c446c141dd2a11'
+	'c004d2e5fd484f86986584e03003f62003ed6a3b8473c44e2f6e99562276e464b54e59cbe629e2d07e7d5d03159d2beddfeef2b96d8adb694a7c6f9072e06332'
 )
 options=(!buildflags !strip)
 install=info.install
@@ -42,8 +46,10 @@ prepare() {
 		src/libc/go32/dpmiexcp.c \
 		src/utils/redir.c
 
-	# fix NULL pointer dereference bug
+	# fix libc bugs
 	patch -Np0 < ../ttyscrn.patch
+	patch -Np0 < ../nmemalign.patch
+	patch -Np0 < ../fseeko64.patch
 
 	sed -ie '/XNOPGGPP/ s/$/ -Wno-strict-aliasing/' \
 		src/libemu/src/makefile

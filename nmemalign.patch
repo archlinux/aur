@@ -1,0 +1,22 @@
+--- src/libc/ansi/stdlib/nmalloc.c
++++ src/libc/ansi/stdlib/nmalloc.c
+@@ -1145,6 +1145,7 @@
+          return nmalloc(szneed);                      /* EXIT */
+       }
+       else if ((minit = nmalloc(szneed + XTRA))) {
++         m = MEMBLKp(minit);
+          /* alignment >= 2*ALIGN and power of 2 if here */
+          misalign = (ulong)minit % alignment;
+          DBGPRTM("  misalignment = %d", misalign);
+@@ -1154,9 +1155,10 @@
+          }
+          else {
+             /* two or more chunks to release */
+-            /* for now, just return NULL and have a leak */
+             DBGPRTM("  Complex case, release multiple chunks");
+             DBGEOLN;
++            nfree(PTR(split(&m, alignment - misalign)));
++            return nrealloc(PTR(m), size);
+          }
+       } /* alignment > ALIGN */
+    } /* valid parameters */

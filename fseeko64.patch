@@ -1,0 +1,10 @@
+--- src/libc/compat/stdio/fseeko64.c
++++ src/libc/compat/stdio/fseeko64.c
+@@ -19,6 +19,8 @@ fseeko64(FILE *_stream, off64_t _offset,
+   o = llseek(fileno(_stream), _offset, _mode);
+   if (o == -1)
+     return -1;
++  if (_stream)
++    _stream->_cnt = 0;
+   return 0;
+ }
