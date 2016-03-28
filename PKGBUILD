@@ -4,6 +4,8 @@ pkgname='optiprime'
 pkgver='1'
 pkgrel='2'
 pkgdesc='Primusrun with vblank_mode=0 parameter (vsync disabled, higher framerate, no mouse lag).'
+depends=('primus')
+optdepends=('lib32-primus: If you are running on 64bit system and need 32bit compatibility.')
 arch=('any')
 url='http://askubuntu.com/questions/297596/vblank-mode-0-primusrun-in-application-desktop-file'
 provides=('optiprime')
