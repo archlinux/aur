@@ -1,35 +1,35 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=python-pyswip
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Python wrapper for SWI-Prolog'
 arch=('any')
-url='https://github.com/swenzel2/pyswip3'
+url='https://github.com/yuce/pyswip'
 license=('MIT')
 depends=('python' 'swi-prolog')
 makedepends=('setuptools' 'git')
-source=("git://github.com/swenzel2/pyswip3.git#commit=0145fd1f70")
+source=("git://github.com/yuce/pyswip.git#commit=72771d9")
 sha256sums=('SKIP')
 
 build() {
-  cd pyswip3
+  cd pyswip
 
   python setup.py build
 }
 
 check() {
-  cd pyswip3
+  cd pyswip
 
   python setup.py check
 }
 
 package() {
-  cd pyswip3
+  cd pyswip
 
   python setup.py install --prefix=/usr --root="$pkgdir"
   install -d "$pkgdir/usr/share/doc/$pkgname"
-  cp -R README examples "$pkgdir/usr/share/doc/$pkgname"
+  cp -R examples "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
