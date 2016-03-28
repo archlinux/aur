@@ -5,7 +5,7 @@ pkgbase=systemd-kdbus
 _pkgbase=${pkgbase%-kdbus}
 pkgname=('systemd-kdbus' 'libsystemd-kdbus' 'systemd-sysvcompat-kdbus')
 pkgver=229
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -35,10 +35,13 @@ prepare() {
   git cherry-pick -n 4edc2c9b6b5b921873eb82e58719ed4d9e0d69bf
 
   # fix assertion failure in src/core/timer.c on bootup (FS#48197)
-  git cherry-pick -n 6d2353394fc33e923d1ab464c8f88df2a5105ffb
+  git cherry-pick -n 3f51aec8647fe13f4b1e46b2f75ff635403adf91
 
   # fix udevd error checking from cg_unified() (FS#48188)
   git cherry-pick -n 6d2353394fc33e923d1ab464c8f88df2a5105ffb
+
+  # revert "core: resolve specifier in config_parse_exec()"
+  git cherry-pick -n bd1b973fb326e9b7587494fd6108e5ded46e9163
 
   ./autogen.sh
 }
@@ -61,7 +64,8 @@ build() {
       --with-sysvrcnd-path= \
       --with-ntp-servers="${timeservers[*]}"
 
-  make
+  NPROC=$(getconf _NPROCESSORS_ONLN)
+  make -j${NPROC}
 }
 
 package_systemd-kdbus() {
@@ -72,7 +76,7 @@ package_systemd-kdbus() {
            'util-linux' 'xz')
   provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
   replaces=('nss-myhostname' 'systemd-tools' 'udev')
-  conflicts=('nss-myhostname' 'systemd-tools' 'udev')
+  conflicts=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
   optdepends=('cryptsetup: required for encrypted block devices'
               'libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
@@ -164,7 +168,7 @@ package_systemd-sysvcompat-kdbus() {
   license=('GPL2')
   groups=('base')
   conflicts=('sysvinit')
-  depends=('systemd')
+  depends=('systemd-kdbus')
 
   install -dm755 "$pkgdir"/usr/share/man/man8
   cp -d --no-preserve=ownership,timestamp \
