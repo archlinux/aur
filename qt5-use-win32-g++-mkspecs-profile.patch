@@ -22,8 +22,8 @@
  QMAKE_LFLAGS_DEBUG      =
  QMAKE_LFLAGS_CONSOLE    = -Wl,-subsystem,console
  QMAKE_LFLAGS_WINDOWS    = -Wl,-subsystem,windows
-@@ -84,21 +84,26 @@
- QMAKE_EXTENSION_STATICLIB = a
+@@ -94,21 +94,26 @@
+ QMAKE_LIB_EXTENSIONS    = a dll.a
  
  QMAKE_LIBS              =
 -QMAKE_LIBS_CORE         = -lole32 -luuid -lws2_32 -ladvapi32 -lshell32 -luser32 -lkernel32
@@ -33,17 +33,18 @@
 +QMAKE_LIBS_GUI          = -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32 -ljpeg -lpng -lharfbuzz -lglib-2.0 -lintl -lwinmm
 +QMAKE_LIBS_NETWORK      = -lws2_32 -lcrypt32 -ldnsapi
  QMAKE_LIBS_OPENGL       = -lglu32 -lopengl32 -lgdi32 -luser32
--QMAKE_LIBS_OPENGL_ES2   = -llibEGL -llibGLESv2 -lgdi32 -luser32
--QMAKE_LIBS_OPENGL_ES2_DEBUG = -llibEGLd -llibGLESv2d -lgdi32 -luser32
-+QMAKE_LIBS_OPENGL_ES2   = -lEGL -lGLESv2 -ld3d9 -ldxguid -lgdi32 -luser32
-+QMAKE_LIBS_OPENGL_ES2_DEBUG = $(QMAKE_LIBS_OPENGL_ES2)
+-QMAKE_LIBS_OPENGL_ES2   = -l$${LIBEGL_NAME} -l$${LIBGLESV2_NAME} -lgdi32 -luser32
+-QMAKE_LIBS_OPENGL_ES2_DEBUG = -l$${LIBEGL_NAME}d -l$${LIBGLESV2_NAME}d -lgdi32 -luser32
++QMAKE_LIBS_OPENGL_ES2   = -l$${LIBEGL_NAME} -l$${LIBGLESV2_NAME} -ld3d9 -ldxguid -lgdi32 -luser32
++QMAKE_LIBS_OPENGL_ES2_DEBUG = -l$${LIBEGL_NAME} -l$${LIBGLESV2_NAME} -ld3d9 -ldxguid -lgdi32 -luser32
  QMAKE_LIBS_COMPAT       = -ladvapi32 -lshell32 -lcomdlg32 -luser32 -lgdi32 -lws2_32
 -QMAKE_LIBS_QT_ENTRY     = -lmingw32 -lqtmain
 +QMAKE_LIBS_QT_ENTRY     = -lmingw32 -lqt5main
  
 -QMAKE_IDL               = midl
+-QMAKE_LIB               = $${CROSS_COMPILE}ar -ru
 +QMAKE_IDL               = $${CROSS_COMPILE}widl
- QMAKE_LIB               = $${CROSS_COMPILE}ar -ru
++QMAKE_LIB               = $${CROSS_COMPILE}ar -rc 
  QMAKE_RC                = $${CROSS_COMPILE}windres
 +QMAKE_DLLTOOL           = $${CROSS_COMPILE}dlltool
 +QMAKE_LRELEASE          = $${CROSS_COMPILE}lrelease-qt5
