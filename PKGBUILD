@@ -6,8 +6,8 @@
 # Contributor: Bjørn Madsen <bm@aeons.dk>
 pkgname='rubymine-eap'
 _pkgname='RubyMine'
-_pkgver='8.5'
-_pkgbuild='145.61.16'
+_pkgver='2016.1'
+_pkgbuild='RC'
 pkgver="${_pkgver}_${_pkgbuild}"
 pkgrel='1'
 pkgdesc="Ruby and Rails IDE with the full stack of essential developer tools (EAP)"
@@ -16,10 +16,10 @@ options=('!strip')
 url="http://www.jetbrains.com/rubymine"
 license=('custom')
 depends=('java-runtime')
-source=(http://download.jetbrains.com/ruby/${_pkgname}-${_pkgbuild}.tar.gz
+source=(http://download.jetbrains.com/ruby/${_pkgname}-${_pkgver}-${_pkgbuild}.tar.gz
         rubymine-eap
         rubymine-eap.desktop)
-sha256sums=('5435fa69a365645db25d60a72656b52e774f2469e40f271ad32b6f414b926d69'
+sha256sums=('321a62910cae96e1251fb7f3e2f54397218d8167e5e6bfe83d99380d2e2f6104'
             '5907872548a4698c4a58a229296ff519031fba30b070257ff1a5e308faaff3c3'
             'bcb9d042247f8595befddca2feec3188350a0d89ba31ee6d4dd2c18ca4b854fc')
 PKGEXT='.pkg.tar.gz' # prevent a time-consuming compression with xz
@@ -27,7 +27,7 @@ PKGEXT='.pkg.tar.gz' # prevent a time-consuming compression with xz
 package() {
   cd "${srcdir}"
 
-  realsrcdir="${_pkgname}-${_pkgbuild}/"
+  realsrcdir="${_pkgname}-${_pkgver}/"
 
   mkdir -p "${pkgdir}/opt/${pkgname}"
   cp -r ${srcdir}/${realsrcdir}* "${pkgdir}/opt/${pkgname}"
