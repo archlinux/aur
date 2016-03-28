@@ -1,7 +1,7 @@
 # Maintainer: David Runge <david[d]runge[a]frqrec[d]com>
 pkgname=grub-customizer
-pkgver=4.0.6
-pkgbranch=4.0
+pkgver=5.0.4
+pkgbranch=5.0
 pkgrel=2
 pkgdesc="A graphical grub2 settings manager"
 url="https://launchpad.net/grub-customizer"
@@ -16,12 +16,12 @@ options=()
 install=${pkgname}.install
 source=("https://launchpad.net/${pkgname}/${pkgbranch}/${pkgver}/+download/${pkgname}_${pkgver}.tar.gz" \
         grub.cfg)
-md5sums=('e4d76cd7cb6eb7ec03461e77db43bf34' \
+md5sums=('5ae791e8f6adace61c50cf114c3fa3e9'
          'f914f23d66341925238fd0d1922d2b85')
 package(){
   cd "$srcdir"/$pkgname-$pkgver/
   msg "Starting make..."
-  cmake -DCMAKE_CXX_FLAGS=" -std=c++11" -DCMAKE_INSTALL_PREFIX=/usr .&& make
+  cmake -DCMAKE_INSTALL_PREFIX=/usr .&& make
   make install DESTDIR=${pkgdir} || return 1
   msg "Modifying grub-customizer.desktop file..."
   sed -i -e '/^Categories=/s/Settings/GTK/' \
@@ -30,5 +30,8 @@ package(){
   msg "Installing custom config to: /etc/grub-customizer/grub.cfg"
   install -d ${pkgdir}/etc/grub-customizer
   install -Dm644 ${srcdir}/grub.cfg ${pkgdir}/etc/grub-customizer/grub.cfg
+  msg "Installing changelog to: /usr/share/doc/grub-customizer/CHANGELOG"
+  install -d ${pkgdir}/usr/share/doc/grub-customizer/
+  install -Dm644 changelog ${pkgdir}/usr/share/doc/grub-customizer/CHANGELOG
 }
 # vim:set ts=2 sw=2 et:
