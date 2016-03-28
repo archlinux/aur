@@ -7,7 +7,7 @@ arch=('any')
 url='https://github.com/acrisci/i3ipc-python'
 license=('custom:BSD')
 
-depends=('python' 'python-xlib')
+depends=('python')
 makedepends=('git' 'python-setuptools')
 provides=('i3ipc-python')
 conflicts=('i3ipc-python')
