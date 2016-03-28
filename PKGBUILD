@@ -4,17 +4,17 @@
 # Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
-pkgname=nvidia-grsec
+pkgbase=nvidia-grsec
+pkgname=(nvidia-grsec nvidia-grsec-dkms)
 pkgver=361.28
 _extramodules=extramodules-4.4.5-grsec
-pkgrel=5
+pkgrel=6
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 depends=('libgl' "nvidia-utils=${pkgver}" 'linux-grsec>=4.4' 'linux-grsec<4.5')
 makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.4' 'linux-grsec-headers<4.5')
 license=('custom')
-install=nvidia-grsec.install
 options=(!strip)
 source=("https://www.grsecurity.net/~paxguy1/nvidia-drivers-${pkgver}-pax.patch")
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
@@ -31,6 +31,18 @@ prepare() {
     cd "${_pkg}"
     # patches here
     patch -Np1 -i "../nvidia-drivers-${pkgver}-pax.patch"
+
+    cp -a kernel kernel-dkms
+    cd kernel-dkms
+    sed -i "s/__VERSION_STRING/${pkgver}/" dkms.conf
+    sed -i 's/__JOBS/`nproc`/' dkms.conf
+    sed -i 's/__DKMS_MODULES//' dkms.conf
+    sed -i '$iBUILT_MODULE_NAME[0]="nvidia"\
+DEST_MODULE_LOCATION[0]="/kernel/drivers/video"\
+BUILT_MODULE_NAME[1]="nvidia-uvm"\
+DEST_MODULE_LOCATION[1]="/kernel/drivers/video"\
+BUILT_MODULE_NAME[2]="nvidia-modeset"\
+DEST_MODULE_LOCATION[2]="/kernel/drivers/video"' dkms.conf
 }
 
 build() {
@@ -39,7 +51,11 @@ build() {
     make SYSSRC=/usr/lib/modules/"${_kernver}/build" module
 }
 
-package() {
+package_nvidia-grsec() {
+    pkgdesc="NVIDIA drivers for linux-grsec kernel"
+    depends=('linux>=4.4' 'linux<4.5' "nvidia-utils=${pkgver}" 'libgl')
+    install=nvidia-grsec.install
+
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
         "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-modeset.ko" \
@@ -55,4 +71,16 @@ package() {
 
     echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-grsec.conf"
     sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='${_extramodules}'/" "${startdir}/${pkgname}.install"
+}
+
+package_nvidia-grsec-dkms() {
+    pkgdesc="NVIDIA driver sources for linux-grsec kernel"
+    depends=('dkms' "nvidia-utils=$pkgver" 'libgl')
+    optdepends=('linux-grsec-headers: build modules against the grsec kernel')
+    conflicts+=('nvidia-grsec')
+
+    cd ${_pkg}
+    install -dm 755 "${pkgdir}"/usr/{lib/modprobe.d,src}
+    cp -dr --no-preserve='ownership' kernel-dkms "${pkgdir}/usr/src/nvidia-grsec-${pkgver}"
+    echo 'blacklist nouveau' > "${pkgdir}/usr/lib/modprobe.d/nvidia-grsec.conf"
 }
