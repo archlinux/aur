@@ -1,6 +1,6 @@
 pkgname=rover-bepo-git
 _pkgname=rover
-pkgver=v0.4.1.r4.gc484b36
+pkgver=v0.4.1.r4.gbdb6385
 pkgrel=1
 pkgdesc='Simple file browser for the terminal, bepo''s version.'
 arch=('i686' 'x86_64')
