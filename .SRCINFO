@@ -9,6 +9,7 @@ pkgbase = djgpp-djcrx
 	license = GPL
 	license = LGPL
 	license = custom:djgpp
+	makedepends = djgpp-gcc
 	depends = glibc
 	options = !buildflags
 	options = !strip

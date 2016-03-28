@@ -14,6 +14,7 @@ source=(
 	"http://www.delorie.com/pub/djgpp/current/v2/djlsr${pkgver//./}.zip"
 	info.install
 )
+makedepends=(djgpp-gcc)
 sha512sums=(
 	'248034a3c026971eeaa6421ef40f44d03873c62d4edf97490e98c71ac76662eaed531eb734e137a38a644483a34065c3ffc70d3d739682d53c8863bf7b521b90'
 	'5d2b9c155b926284138c01221c783c4808020865fa91600749d63a2039f5acd076eec5b25c38cb38b4aa73ae6b998f1614baa7e98818bc3816bc2a5f67f8229c'
