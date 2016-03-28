@@ -3,7 +3,7 @@
 pkgname=franz
 pkgver=0.9.9
 _pkgver_dash=0-9-9
-pkgrel=2
+pkgrel=3
 pkgdesc="A free messaging app for WhatsApp, Facebook Messenger, Telegram, Slack and more."
 arch=('i686' 'x86_64')
 url="http://meetfranz.com/"
