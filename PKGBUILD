@@ -1,7 +1,7 @@
 # Maintainer: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
 
 pkgname=ghostwriter-git
-pkgver=v1.0.1.r109.g49af913
+pkgver=v1.3.1.r19.g49af913
 pkgrel=1
 pkgdesc="ghostwriter is a cross-platform, aesthetic, distraction-free Markdown editor."
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ install=ghostwriter.install
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
