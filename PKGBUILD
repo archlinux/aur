@@ -1,7 +1,7 @@
 # Maintainer: Přemysl Janouch <p.janouch@gmail.com>
 pkgname=uirc3-git
 _pkgname=uirc3
-pkgver=v0.9.2.r2.g28fec6d
+pkgver=v0.9.3.r0.g11a6c76
 pkgrel=1
 pkgdesc="Experimental IRC client, daemon and bot"
 url="https://github.com/pjanouch/uirc3"
@@ -11,7 +11,7 @@ options=(zipman)
 conflicts=('uirc3')
 provides=('uirc3')
 makedepends=('cmake' 'pkg-config' 'git' 'help2man')
-depends=('openssl' 'readline' 'ncurses')
+depends=('openssl' 'readline' 'ncurses' 'libffi')
 optdepends=('lua>=5.3: support for Lua plugins')
 source=("git+https://github.com/pjanouch/$_pkgname.git")
 md5sums=('SKIP')
