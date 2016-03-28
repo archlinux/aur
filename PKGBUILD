@@ -1,6 +1,6 @@
 # Maintainer: Tudor Roman <xenogenesis at openmailbox dot org>
 pkgname=x11fs-git
-pkgver=1
+pkgver=r70.9ea1117
 pkgrel=1
 
 pkgdesc='A tool for manipulating X windows'
