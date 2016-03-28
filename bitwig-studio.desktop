@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+StartupNotify=true
+Icon=bitwig-studio.png
+Name=Bitwig Studio
+Comment=Music Application
+Exec="/usr/bin/bitwig-studio"
+Categories=Multimedia;AudioVideo;Player;Recorder
+MimeType=application/bitwig-project
+StartupWMClass="Bitwig Studio"
