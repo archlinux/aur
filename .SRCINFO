@@ -1,0 +1,23 @@
+pkgbase = jeliot
+	pkgdesc = Visualization application. It visualizes how a Java program is interpreted.
+	pkgver = 3.7.2
+	pkgrel = 1
+	url = https://cs.joensuu.fi/jeliot/
+	arch = any
+	license = GPL2
+	license = BSD
+	makedepends = libarchive
+	depends = sh
+	depends = java-runtime
+	depends = java-environment
+	source = http://cs.joensuu.fi/jeliot/downloads/jeliot3.7.2/Jeliot3.7.2.zip
+	source = jeliot
+	source = jeliot.desktop
+	source = jeliot.png
+	md5sums = b0e27a18eee56f5aaaadbb68974bc6b8
+	md5sums = 6a147f0478c73e897dd834818b1c3c8e
+	md5sums = 873ae0341bf0a1bc22cd7aff85dd6217
+	md5sums = 9a48b3fb91fa23ce2ed9f5057f31493d
+
+pkgname = jeliot
+

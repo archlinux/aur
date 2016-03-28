@@ -1,0 +1,4 @@
+#!/bin/sh
+APPBASE="/usr/share/java/jeliot"
+CP="$APPBASE/jeliot.jar:$JAVA_HOME/lib/tools.jar"
+$JAVA_HOME/bin/java -cp "$CP" jeliot.Jeliot  $*
