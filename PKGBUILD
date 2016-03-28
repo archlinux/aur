@@ -6,10 +6,10 @@
 _use_zeroc_ice="0"
 
 pkgname=murmur-git
-pkgver=1.2.5.937.gc22393e
+pkgver=1.2.5.980.ga59e166
 pkgrel=1
 pkgdesc="The voice chat application server for Mumble (git version)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="http://mumble.sourceforge.net"
 license=('BSD')
 depends=('avahi' 'lsb-release' 'protobuf' 'qt5-base')
