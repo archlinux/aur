@@ -1,10 +1,10 @@
 # Maintainer: martadinata666 <martadinata666@gmail.com>
 
 pkgname=compiz-core-git
-pkgver=0.8.10.r6.gb1aea52
+pkgver=0.8.12.2.r1.g22d6319
 pkgrel=1
 pkgdesc="This is the latest stable release of Compiz without DE deps"
-url="http://git.northfield.ws/compiz/?p=compiz/core;a=summary"
+url="https://github.com/compiz-reloaded/compiz"
 license=('GPL' 'LGPL' 'MIT')
 arch=('i686' 'x86_64')
 depends=('startup-notification' 'librsvg' 'dbus' 'glu' 'libxslt' 'libxrandr' 'libsm' 'libxcomposite' 'libxinerama')
@@ -13,19 +13,19 @@ options=(!libtool !emptydirs)
 conflicts=('compiz' 'compiz-core')
 provides=("compiz-core=$pkgver")
 source=(
-	'git://northfield.ws/compiz/core'
+	'git+https://github.com/compiz-reloaded/compiz'
 )
 
 sha1sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/core"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^compiz.//g'
+  cd "${srcdir}/compiz"
+  git describe --long --tags|sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build()
 {
-  cd $srcdir/core
+  cd "${srcdir}/compiz"
 
   ./autogen.sh \
 	    --prefix=/usr \
@@ -49,6 +49,6 @@ build()
 }
 
 package() {
-  cd "$srcdir/core"
+  cd "$srcdir/compiz"
   make DESTDIR="$pkgdir" install
 }
