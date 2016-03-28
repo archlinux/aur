@@ -10,16 +10,16 @@ pkgname=djgpp-gcc
 pkgver=5.3.0
 _islver=0.12.2
 _cloogver=0.18.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross GCC for the djgpp cross-compiler"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
 license=('GPL' 'LGPL' 'FDL' 'custom')
 groups=('djgpp-toolchain' 'djgpp')
-depends=('zlib' 'libmpc' 'djgpp-binutils' 'djgpp-djcrx')
-#makedepends=("gcc-ada=${pkgver}")
-optdepends=()
-provides=('djgpp-gcc-base')
+depends=('zlib' 'libmpc' 'djgpp-binutils')
+makedepends=('djgpp-djcrx-bootstrap')
+#makedepends+=("gcc-ada=${pkgver}")
+optdepends=('djgpp-djcrx: headers and utilities')
 replaces=()
 backup=()
 options=('!strip' 'staticlibs' '!emptydirs' '!buildflags')
