@@ -1,9 +1,12 @@
 # Maintainer: Martchus <martchus@gmx.net>
 # Contributor: ant32 <antreimer@gmail.com>
 
+# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
+# you also find the URL of a binary repository.
+
 _qt_module=qtsvg
 pkgname="mingw-w64-qt5-svg"
-pkgver=5.5.1
+pkgver=5.6.0
 pkgrel=1
 arch=('any')
 pkgdesc="Classes for displaying the contents of SVG files (mingw-w64)"
@@ -14,7 +17,7 @@ license=('GPL3' 'LGPL')
 url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('505fb8ba483818e53f759edbf735456e')
+md5sums=('ab86dafed92185a2f98190fc37afceab')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
