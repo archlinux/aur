@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=FromScratch
+GenericName=FromScratch
+Comment=A simple but smart note-taking app
+Exec=fromscratch
+Icon=fromscratch
+Terminal=false
+Type=Application
+Category=Office;TextEditor;
+Keywords=Text;Editor;
