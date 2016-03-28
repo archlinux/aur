@@ -9,8 +9,8 @@
 # Based on linux package
 
 pkgbase=linux-libre-pck
-_pkgbasever=4.4-gnu
-_pkgver=4.4.5-gnu
+_pkgbasever=4.5-gnu
+_pkgver=$_pkgbasever
 _pckpatchver=pck1
 
 _replacesarchkernel=('linux-zen')
@@ -21,7 +21,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}.${_pckpatchver}
 pkgrel=1
-rcnrel=armv7-x5
+rcnrel=armv7-x2
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.parabola.nu/PCK"
 license=('GPL2')
@@ -32,8 +32,8 @@ fi
 options=('!strip')
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
-        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
-        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
+        #"http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
+        #"http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
         "https://repo.parabola.nu/other/pck/patches/${_pkgver}/patch-${_pkgver}-${_pckpatchver}.patch"
         "https://repo.parabola.nu/other/pck/patches/${_pkgver}/patch-${_pkgver}-${_pckpatchver}.patch.sig"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm"
@@ -57,13 +57,10 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
-        '0008-USB-armory-support.patch'
-        '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
-sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
+        '0008-USB-armory-support.patch')
+sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
-            '4adf791c9d7e52ac72c60d337e3fa59f8cef5fb1f497a192345b70ac915674f1'
-            'SKIP'
-            'c6c9808e168a2fa2e0bbed37437f9c0a3480b6d344bc007f4498112688794030'
+            '3bf46e534269b5015f94dc27f0452fe0f88728db66bdb306065df5a6463b294b'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -71,22 +68,21 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '1ee68f86324752226e057a441b7ac7447799f94124123b02f423735f726904a5'
-            '61531f78eca1725c582a7bd54ae253ce5ae5aa1d0259e2d86c85c860aedc3f46'
-            '8566ab2fb29be8c8f89f45051812d7ca545e84541d0d51af74fbf18c436e458d'
+            '28f19076b6d18b64153eb422a7a9bc99ec928d991a2363249cffff15aabc0887'
+            'f37024a58677217f50c30bc3330dc704c806248409c1523b31fd0a6900953ebd'
+            '2030e30577ec3d7a13fc65b74a5ad723f1a07bcc6b21869565257acc8ec865c0'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '613e30849135843d150bcfc0c751205d6d8ba8887634a86234e4db6a2548312e'
+            '9865a47b50ccab0993f9b371f45b526162307fffc67dfadcae6fae31d05a67b9'
             'SKIP'
-            'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
-            '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
-            '6dadc17ea56d93ec0f1d0c3c98c25a7863e9ba3c4af50dc411d630a1bcc98f08'
-            '9c5d6d035c9a7103f19804c2284291d461d4b848cccd3ec07272bde68ba29513'
-            '6644705cd73c55056b5fed91cfb3199c1114b088d96dbd3c29358cd49863aeba'
-            '08d0aa76393ea2d1a853d0ea9b02aa616224ac915473ab057bb98285212bc994'
-            '1cb502674bf7a1ea79b359d1613fe891ba37f6aa64f5f5eca309d46ba01ab417'
-            '05bf1d8f94feab06bdd9fd958bc9bde4d1249a0cdeb8d3d3e16e6fac6dc5baed'
-            '5e1b8b1e9b3243a5ab315481c39b1b88f28923148659dcc0ac7ed78d9ba4f072')
+            'abc20251d9becc566e46ff0fca77074eca9de5d119d2dbccb7d9c933b2d59979'
+            '7db1c60b0a44e588f31bad6003bad5997ec7761d9f39590c7e07670a24fbeaa4'
+            '9e75777afb39b6c3d1886b18370df883e6d283c1bdf299690ac3d516ff5af4fd'
+            '01b3c73adcf5fbf97a2c5b91d30c3c0a1c4ee8dce60b5718a74c99f49c673566'
+            'bb97616b299b7c569e8a886a729493b67f22d06680a84d0bc4581fa062d62662'
+            'f03aee1273e0c349411cb1bf21983c5358b27f5f370a132b2cce05d3e56d18a9'
+            'd500fedf8332234c724a1075f69ceaa743d17e7fb73be70b62dee897f75f86f5'
+            'cda19e0f819f5475172aed8c231b7c8964f64f582d993f1cf7fa8b14d0d95cae')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -124,7 +120,6 @@ prepare() {
     patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
     patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
     patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
-    patch -p1 -i "${srcdir}/0009-ARM-dts-dove-add-Dove-divider-clocks.patch"
   fi
 
   # add freedo as boot logo
@@ -173,7 +168,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase^} kernel and modules with a handful of awesome features not merged into mainline [AUFS, BFQ, BFS, KDBUS, Knock, TuxOnIce, UKSM]"
+  pkgdesc="The ${pkgbase^} kernel and modules with a handful of awesome features not merged into mainline [AUFS, BFQ, BFS, KDBUS, Knock, TuxOnIce]"
   [ "${pkgbase}" = "linux-libre" ] && groups=('base')
   depends=('coreutils' 'linux-libre-firmware' 'kmod')
   optdepends=('crda: to set the correct wireless channels of your country'
@@ -273,7 +268,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}"
   cp -a arch/${KARCH}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
   if [ "${CARCH}" = "armv7h" ]; then
-    for i in dove exynos mvebu omap2 versatile; do
+    for i in dove exynos omap2; do
       mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-${i}"
       cp -a arch/${KARCH}/mach-${i}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-${i}/"
     done
