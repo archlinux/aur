@@ -1,7 +1,7 @@
  # Maintainer: saxonbeta <saxonbeta at gmail dot com>
 pkgname=whatsapp-desktop-git
 _pkgname=Sup-for-WhatsApp
-pkgver=20151105.d7501ae
+pkgver=20160130.e713c45
 pkgrel=1
 pkgdesc="Simple & beautiful (Unofficial) desktop client for WhatsApp"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ options=('!strip')
 [ "$CARCH" = "i686" ]   && _platform=linux32
 [ "$CARCH" = "x86_64" ] && _platform=linux64
 
-source=(git+https://github.com/zweicoder/Sup-for-WhatsApp.git
+source=(git+https://github.com/zweicoder/$_pkgname.git
 	'whatsapp-desktop.desktop')
 sha256sums=('SKIP'
             'f62f69eb7276a4f3c5632e9100192d0a4311064406be18dafb445ecf8a669eb1')
@@ -40,7 +40,7 @@ build() {
 
 package() {
   cd $srcdir/$_pkgname
-  _bpath="${srcdir}/${_pkgname}/build/SupForWhatsApp/${_platform}"
+  _bpath="${srcdir}/${_pkgname}/build/supforwhatsapp/${_platform}"
   
   #License
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
@@ -49,7 +49,7 @@ package() {
 
   #Program
   install -d $pkgdir/usr/lib/$pkgname
-  install -Dm755 $_bpath/{nw.pak,libffmpegsumo.so,SupForWhatsApp,icudtl.dat} $pkgdir/usr/lib/$pkgname
+  install -Dm755 $_bpath/{nw.pak,libffmpegsumo.so,supforwhatsapp,icudtl.dat} $pkgdir/usr/lib/$pkgname
   install -d $pkgdir/usr/bin
   ln -s "/usr/lib/${pkgname}/SupForWhatsApp" "${pkgdir}/usr/bin/WhatsApp"
   
