@@ -1,0 +1,25 @@
+pkgbase = bitwig-studio
+	pkgdesc = Music production system for production, remixing and performance
+	pkgver = 1.3.8
+	pkgrel = 2
+	url = http://www.bitwig.com/
+	arch = x86_64
+	license = custom
+	depends = jack
+	depends = xdg-utils
+	depends = zenity
+	depends = xcb-util-wm
+	depends = libbsd
+	optdepends = alsa-lib
+	optdepends = oss
+	optdepends = ffmpeg: MP3 support
+	provides = bitwig-studio
+	conflicts = bitwig-studio-demo-rc
+	options = !strip
+	source = https://downloads.bitwig.com/stable/1.3.8/bitwig-studio-1.3.8.deb
+	source = bitwig-studio.launcher
+	md5sums = 062f57caa81af1e1168680f24ec12370
+	md5sums = 32411d3b742f15addef7b86681825fee
+
+pkgname = bitwig-studio
+

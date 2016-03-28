@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export PATH="${PATH}:/opt/bitwig-studio/libexec"
+/opt/bitwig-studio/bitwig-studio "${@}"
