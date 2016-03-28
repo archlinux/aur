@@ -1,0 +1,11 @@
+--- cmake/ecbuild_pkgconfig.cmake.orig	2016-03-28 21:41:34.726196875 +0200
++++ cmake/ecbuild_pkgconfig.cmake	2016-03-28 21:41:59.595426196 +0200
+@@ -190,7 +190,7 @@
+   foreach( _incdir ${${INCLUDE_DIRS}} )
+ 
+     foreach( _ignore ${ignore_include_dirs} )
+-      if( "${_incdir}" MATCHES "${_ignore}" )
++      if( "${_incdir}" EQUAL "${_ignore}" )
+         unset( _incdir )
+         break()
+       endif()
