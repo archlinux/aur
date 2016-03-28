@@ -3,7 +3,7 @@
 # Contributor: Andrei "Garoth" Thorp <garoth "at the nice" gmail "dot" com>
 
 pkgname=debhelper
-pkgver=9.20140613
+pkgver=9.20141107
 pkgrel=1
 pkgdesc="A collection of programs that can be used in a debian/rules file to automate common tasks"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('binutils' 'dpkg>=1.16.2' 'file>=3.23' 'html2text' 'man-db>=2.5.1' 'per
 makedepends=('po4a>=0.24' 'man-db>=2.5.1' 'file>=3.23')
 optdepends=('dh-make')
 source=("http://launchpad.net/debhelper/main/$pkgver/+download/debhelper_$pkgver.tar.gz")
-sha256sums=('11d02f7e45affeddf327efc923a582b3fa7ba7246a9858a2a15d5262078bcedd')
+md5sums=('27b032d804a6679f6a6e3d1c2b25c4ce')
 
 build() {
   cd "$srcdir/$pkgname"
