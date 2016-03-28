@@ -12,7 +12,6 @@ pkgrel=7
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('libgl' "nvidia-utils=${pkgver}" 'linux-grsec>=4.4' 'linux-grsec<4.5')
 makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.4' 'linux-grsec-headers<4.5')
 license=('custom')
 options=(!strip)
@@ -75,7 +74,7 @@ package_nvidia-grsec() {
 
 package_nvidia-grsec-dkms() {
     pkgdesc="NVIDIA driver sources for linux-grsec kernel"
-    depends=('dkms' "nvidia-utils=$pkgver" 'libgl')
+    depends=('dkms' "nvidia-utils=${pkgver}" 'libgl')
     optdepends=('linux-grsec-headers: build modules against the grsec kernel')
     conflicts+=('nvidia-grsec')
 

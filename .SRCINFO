@@ -1,5 +1,4 @@
 pkgbase = nvidia-grsec
-	pkgdesc = NVIDIA drivers for linux-grsec kernel
 	pkgver = 361.28
 	pkgrel = 7
 	url = http://www.nvidia.com/
@@ -12,10 +11,6 @@ pkgbase = nvidia-grsec
 	makedepends = linux-grsec
 	makedepends = linux-grsec-headers>=4.4
 	makedepends = linux-grsec-headers<4.5
-	depends = libgl
-	depends = nvidia-utils=361.28
-	depends = linux-grsec>=4.4
-	depends = linux-grsec<4.5
 	options = !strip
 	source = https://www.grsecurity.net/~paxguy1/nvidia-drivers-361.28-pax.patch
 	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/361.28/NVIDIA-Linux-x86-361.28.run
@@ -25,3 +20,14 @@ pkgbase = nvidia-grsec
 	sha512sums_x86_64 = 4628161009b6ab3a430c866ff6fbb39be4446408620e10969867059188922891505e7dea269a7ce4cdbb97fb2081ff59db3e5299c7673ffbb503ee7b7bf7cb77
 
 pkgname = nvidia-grsec
+	pkgdesc = NVIDIA drivers for linux-grsec kernel
+	depends = linux>=4.4
+	depends = linux<4.5
+	depends = nvidia-utils=361.28
+	depends = libgl
+
+pkgname = nvidia-grsec-dkms
+	pkgdesc = NVIDIA driver sources for linux-grsec kernel
+	depends = dkms
+	depends = nvidia-utils=361.28
+	depends = libgl
