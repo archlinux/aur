@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm 4.5.0-gnu Kernel Configuration
+# Linux/arm 4.5.0-gnu-1 Kernel Configuration
 #
 CONFIG_ARM=y
 CONFIG_ARM_HAS_SG_CHAIN=y
@@ -2866,8 +2866,6 @@ CONFIG_WLAN_VENDOR_CISCO=y
 CONFIG_WLAN_VENDOR_INTEL=y
 # CONFIG_IPW2100 is not set
 # CONFIG_IPW2200 is not set
-CONFIG_LIBIPW=m
-# CONFIG_LIBIPW_DEBUG is not set
 CONFIG_IWLEGACY=m
 CONFIG_IWL4965=m
 CONFIG_IWL3945=m
