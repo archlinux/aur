@@ -4,12 +4,12 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 pkgname=compiz-bcop-git
-_pkgname=bcop
-pkgver=0.8.10.r1.g1eff7f4
+_pkgname=compiz-bcop
+pkgver=0.8.12.r1.g1a9efe2
 pkgrel=1
 pkgdesc="Compiz option code generator"
 arch=('any')
-url="http://git.northfield.ws/compiz/?p=compiz/bcop;a=summary"
+url="https://github.com/compiz-reloaded/compiz-bcop"
 license=('GPL')
 depends=("compiz-core-git" 'libxslt')
 makedepends=('intltool')
@@ -17,12 +17,12 @@ conflicts=('compiz-bcop-dev' 'compiz-bcop')
 provides=('compiz-bcop')
 sha1sums=('SKIP')
 source=(
-	'git://northfield.ws/compiz/bcop'
+	'git+https://github.com/compiz-reloaded/compiz-bcop.git'
 )
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags|sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build()
