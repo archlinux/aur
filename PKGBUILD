@@ -6,9 +6,11 @@
 # Contributor: Andrea Fagiani <andfagiani _at_ gmail dot com>
 # Contributor: Larry Hajali <larryhaja@gmail.com>
 
+# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
+
 pkgname=calibre-git
-pkgver=2.45.0.r100.g9ab8581
-pkgrel=1
+pkgver=2.53.0.r99.g9235097
+pkgrel=2
 pkgdesc="Ebook management application, from git"
 arch=('i686' 'x86_64')
 url="http://calibre-ebook.com/"
