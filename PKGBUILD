@@ -6,12 +6,12 @@
 
 pkgname=viber
 pkgver=4.2.2.6
-pkgrel=15
+pkgrel=16
 pkgdesc="Proprietary cross-platform IM and VoIP software"
 arch=('x86_64')
 url="http://viber.com"
 license=('custom')
-depends=('qt5-websockets' 'qt5-svg' 'gstreamer0.10-base' 'libxss') # 'qt5-imageformats'
+depends=('gstreamer0.10-base' 'libxss') # 'qt5-imageformats' 'qt5-svg' 'qt5-websockets' 'sqlite2'
 source=("http://download.cdn.viber.com/cdn/desktop/Linux/${pkgname}.deb"
         "eula.html"
         "viber")
@@ -31,6 +31,8 @@ prepare() {
 package() {
   cd "${srcdir}"
   install -m 755 -d "${pkgdir}"/opt/viber/imageformats
+  install -m 755 -d "${pkgdir}"/opt/viber/platforms
+  install -m 755 -d "${pkgdir}"/opt/viber/sqldrivers
   install -m 755 -d "${pkgdir}"/opt/viber/Sound/{DTMF,Messages,PTT}
   install -Dm755 viber "${pkgdir}/usr/bin/viber"
   install -Dm644 eula.html "${pkgdir}/usr/share/licenses/viber/eula.html"
@@ -43,14 +45,28 @@ package() {
   # there's no AUR package for QFacebook yet, so leave this
   install -Dm644 libqfacebook.so "${pkgdir}/opt/viber"
 
-  # crashes on image sending/recieving with system WebKit, so leave this for now
-  install -Dm644 {libicudata.so.48,libicui18n.so.48,libicuuc.so.48,libQt5WebKit.so.5,libQt5WebKitWidgets.so.5} "${pkgdir}/opt/viber"
-
   # qt5-quick1 package no longer available
   install -Dm644 libQt5Declarative.so.5 "${pkgdir}/opt/viber"
 
+  # crashes without this, even if qt5-base installed
+  install -Dm644 platforms/*.so "${pkgdir}/opt/viber/platforms"
+  install -Dm644 {libQt5Core.so.5,libQt5DBus.so.5,libQt5Gui.so.5,libQt5Network.so.5,libQt5OpenGL.so.5,libQt5PrintSupport.so.5,libQt5Sql.so.5,libQt5Widgets.so.5} "${pkgdir}/opt/viber/"
+
   # crashes without this, even if qt5-imageformats installed
   install -Dm644 imageformats/*.so "${pkgdir}/opt/viber/imageformats"
+
+  # crashes on image sending/recieving with system WebKit, so leave this for now
+  install -Dm644 {libicudata.so.48,libicui18n.so.48,libicuuc.so.48,libQt5WebKit.so.5,libQt5WebKitWidgets.so.5} "${pkgdir}/opt/viber"
+
+  # crashes without this, even if the right Qt5 package installed
+  install -Dm644 {libQt5Qml.so.5,libQt5Quick.so.5,libQt5QuickWidgets.so.5} "${pkgdir}/opt/viber/" # qt5-declarative
+  install -Dm644 libQt5Script.so.5 "${pkgdir}/opt/viber/" # qt5-script
+  install -Dm644 libQt5Svg.so.5 "${pkgdir}/opt/viber/" # qt5-svg
+  install -Dm644 libQt5WebSockets.so.5 "${pkgdir}/opt/viber/" # qt5-websockets
+  install -Dm644 libQt5XmlPatterns.so.5 "${pkgdir}/opt/viber/" # qt5-xmlpatterns
+
+  # crashes without this, even if sqlite2 installed
+  install -Dm644 sqldrivers/libqsqlite.so "${pkgdir}/opt/viber/sqldrivers"
 
   # it appears that 'Sound' path is hardcoded to Viber binary directory
   install -Dm644 Sound/*.wav "${pkgdir}/opt/viber/Sound"
