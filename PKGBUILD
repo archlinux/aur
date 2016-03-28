@@ -2,7 +2,7 @@
 
 pkgname=hawaii-meta
 pkgver=0.6.90.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Hawaii desktop environment meta package"
 arch=('i686' 'x86_64')
 url="http://hawaiios.org"
@@ -12,5 +12,6 @@ depends=('hawaii-shell'
          'hawaii-system-preferences'
          'hawaii-widget-styles'
          'hawaii-terminal')
+gropus=('hawaii')
 source=()
 md5sums=()
