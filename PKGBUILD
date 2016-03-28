@@ -1,8 +1,8 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=wine-staging-git
-pkgver=1.9.6.r34.g96fddf8+wine.1.9.6.r144.g4315cae
-pkgrel=2
+pkgver=1.9.6.r37.g0a391fa+wine.1.9.6.r144.g4315cae
+pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs (staging branch, Git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/wine-compholio/wine-staging/"
@@ -129,6 +129,9 @@ prepare() {
 	#+otherwise the patches will fail to be reapplied)
 	git reset --hard HEAD      # Restore tracked files
 	git clean -d -x -f         # Delete untracked files
+	
+	# Change back to the wine upstream commit that this version of wine-staging is based in
+	git checkout $(../"$pkgname"/patches/patchinstall.sh --upstream-commit)
 }
 
 build() {
