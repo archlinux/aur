@@ -1,22 +1,21 @@
 pkgname=fastd
 arch=(i686 x86_64)
-pkgver=17
+pkgver=18
 pkgrel=1
 pkgdesc="Fast and secure tunneling daemon"
 
-# Enable for fast AES implementations
-ENABLE_OPENSSL=0
+# Enabled for fast AES implementations
+ENABLE_OPENSSL=1
 
 makedepends=('cmake' 'bison' 'pkg-config')
-depends=('libcap' 'gcc-libs' 'libuecc>=5' 'libsodium' 'json-c')
+depends=('libcap' 'gcc-libs' 'libuecc>=6' 'libsodium' 'json-c')
 
 [ $ENABLE_OPENSSL -eq 0 ] || depends=(${depends[@]} 'openssl')
 
 url="https://projects.universe-factory.net/projects/fastd"
 license=('BSD')
-DLAGENTS=('https::/usr/bin/curl -fLC - --retry 3 --retry-delay 3 --insecure -o %o %u')
-source=("https://projects.universe-factory.net/attachments/download/81/${pkgname}-${pkgver}.tar.xz")
-sha512sums=('6bdf5df1d75c462d52a8709718c183dfe173b5d56a4c29592d4cbb4c35f9f31efa900bb575490384b878a421e1d197454036b39d9b93154b6ae8c876f30f30c2')
+source=("https://projects.universe-factory.net/attachments/download/86/${pkgname}-${pkgver}.tar.xz")
+sha512sums=('ec3a9f86bd539d7ffe751a81328f44671f0facca624e23ac273ac7e54da68de0dc0b50d1be490082bbb25f2896de0428802f74fc023f9acc986607875417bdae')
 
 build() {
   mkdir -p "$srcdir/build-${pkgver}"
