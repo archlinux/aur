@@ -53,18 +53,7 @@ diff -U 3 -r a/src/opengl/opengl.pro b/src/opengl/opengl.pro
  
  HEADERS += qgl.h \
             qgl_p.h \
-diff -U 3 -r a/src/plugins/platforms/windows/qwindowseglcontext.cpp b/src/plugins/platforms/windows/qwindowseglcontext.cpp
---- a/src/plugins/platforms/windows/qwindowseglcontext.cpp	2015-06-29 14:04:40.000000000 -0600
-+++ b/src/plugins/platforms/windows/qwindowseglcontext.cpp	2015-07-18 10:52:29.667410627 -0600
-@@ -39,7 +39,7 @@
- #include <QtGui/QOpenGLContext>
- 
- #if defined(QT_OPENGL_ES_2_ANGLE) || defined(QT_OPENGL_DYNAMIC)
--#  include <QtANGLE/EGL/eglext.h>
-+#  include <EGL/eglext.h>
- #endif
- 
- QT_BEGIN_NAMESPACE
+
 diff -U 3 -r a/src/plugins/platforms/windows/windows.pri b/src/plugins/platforms/windows/windows.pri
 --- a/src/plugins/platforms/windows/windows.pri	2015-06-29 14:04:40.000000000 -0600
 +++ b/src/plugins/platforms/windows/windows.pri	2015-07-18 10:53:45.585348009 -0600
