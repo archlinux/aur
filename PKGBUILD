@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ppx_driver
-pkgver=113.24.00
+pkgver=113.33.00
 pkgrel=1
 license=('Apache')
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('ocaml-findlib' 'opam')
 source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+\.[0-9]+").tar.gz"
         "libdir.patch")
 options=('!strip')
-md5sums=('dd5f40bef1c6d0cd3e78da9aac420209'
+md5sums=('4ddefe64b09991947771900afaedbae6'
          '7f0a951f1ac87385272ea7a6dd58762a')
 
 prepare() {
