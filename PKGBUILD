@@ -5,7 +5,7 @@ _gitname=darling
 pkgbase=$_gitname-mach-git
 pkgname=($_gitname-mach-git $_gitname-mach-dkms-git)
 pkgver=23.4036a2b
-pkgrel=2
+pkgrel=3
 pkgdesc="Darling's Linux kernel module (darling-mach)"
 arch=('x86_64') # Can only be built on x86_64 systems
 url="http://www.darlinghq.org"
@@ -35,7 +35,6 @@ build() {
 
 package_darling-mach-git() {
 	install=$pkgname.install
-	conflicts=('darling-mach-dkms-git')
 
 	cd "$srcdir/$_gitname/src/lkm"
 
@@ -52,6 +51,7 @@ package_darling-mach-dkms-git() {
 	optdepends=('linux-headers: Build the module for Arch kernel'
 	            'linux-lts-headers: Build the module for LTS Arch kernel')
 	conflicts=('darling-mach-git')
+	provides=('darling-mach-git')
 	_srcdest="$pkgdir/usr/src/darling-mach-$pkgver"
 
 	msg2 "Install module sources for DKMS..."
