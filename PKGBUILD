@@ -9,7 +9,7 @@ url="http://modules.prosody.im/mod_smacks.html"
 license=('MIT')
 depends=('prosody')
 source=("http://hg.prosody.im/prosody-modules/raw-file/tip/mod_smacks/mod_smacks.lua")
-sha1sums=('349d099481bb6462d028cc1cff6dd50c72c4bb4d')
+sha1sums=('182352b787ab292e48263e6c1a679652c880cf95')
 
 package() {
   install -Dm 644 "mod_smacks.lua" "${pkgdir}/usr/lib/prosody/modules/mod_smacks.lua"

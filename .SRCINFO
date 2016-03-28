@@ -7,7 +7,7 @@ pkgbase = prosody-mod-smacks
 	license = MIT
 	depends = prosody
 	source = http://hg.prosody.im/prosody-modules/raw-file/tip/mod_smacks/mod_smacks.lua
-	sha1sums = 349d099481bb6462d028cc1cff6dd50c72c4bb4d
+	sha1sums = 182352b787ab292e48263e6c1a679652c880cf95
 
 pkgname = prosody-mod-smacks
 
