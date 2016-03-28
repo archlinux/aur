@@ -1,5 +1,4 @@
-/pkg
+/archci
+/archci-*.tar.xz
 /src
-/archci-*.pkg.tar.xz
-/node_modules
-/README.1
+/pkg
