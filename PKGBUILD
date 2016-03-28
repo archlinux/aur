@@ -3,7 +3,7 @@
 # Contributor: Daniel Scharrer <daniel@constexpr.org>
 
 pkgname=innoextract
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="A tool to extract installers created by Inno Setup"
 url='http://constexpr.org/innoextract/'
@@ -12,7 +12,7 @@ license=('ZLIB')
 depends=('boost-libs' 'xz')
 makedepends=('boost' 'cmake')
 source=("http://constexpr.org/innoextract/files/$pkgname-$pkgver.tar.gz"{,.sig})
-sha256sums=('f2594e992ccf2859455475794803b29a67393fadb69d4df1eec34c451ffa48cf'
+sha256sums=('66463f145fffd4d5883c6b3e2f7b2c2837d6f07095810114e514233a88c1033e'
             'SKIP')
 validpgpkeys=("ADE9653703D4ADE0E997758128555A66D7E1DEC9") # Daniel Scharrer
 

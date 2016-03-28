@@ -1,6 +1,6 @@
 pkgbase = innoextract
 	pkgdesc = A tool to extract installers created by Inno Setup
-	pkgver = 1.5
+	pkgver = 1.6
 	pkgrel = 1
 	url = http://constexpr.org/innoextract/
 	arch = i686
@@ -10,9 +10,10 @@ pkgbase = innoextract
 	makedepends = cmake
 	depends = boost-libs
 	depends = xz
-	source = http://constexpr.org/innoextract/files/innoextract-1.5.tar.gz
-	source = http://constexpr.org/innoextract/files/innoextract-1.5.tar.gz.sig
-	sha256sums = f2594e992ccf2859455475794803b29a67393fadb69d4df1eec34c451ffa48cf
+	source = http://constexpr.org/innoextract/files/innoextract-1.6.tar.gz
+	source = http://constexpr.org/innoextract/files/innoextract-1.6.tar.gz.sig
+	validpgpkeys = ADE9653703D4ADE0E997758128555A66D7E1DEC9
+	sha256sums = 66463f145fffd4d5883c6b3e2f7b2c2837d6f07095810114e514233a88c1033e
 	sha256sums = SKIP
 
 pkgname = innoextract
