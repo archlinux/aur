@@ -2,9 +2,12 @@
 # Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Filip Brcic <brcha@gna.org>
 
+# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
+# you also find the URL of a binary repository.
+
 _qt_module=qttranslations
 pkgname="mingw-w64-qt5-translations"
-pkgver=5.5.1
+pkgver=5.6.0
 pkgrel=1
 arch=('any')
 pkgdesc="A cross-platform application and UI framework (translations, mingw-w64)"
@@ -15,7 +18,7 @@ license=('GPL3' 'LGPL')
 url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('1f89d53fe759db123b4b6d9de9d9e8c9')
+md5sums=('62b3b6191f902466d97e09df48c27534')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
