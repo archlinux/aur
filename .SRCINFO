@@ -1,15 +1,15 @@
 pkgbase = nodejs-tiddlywiki
 	pkgdesc = A non-linear personal web notebook
-	pkgver = 5.1.9
+	pkgver = 5.1.11
 	pkgrel = 1
 	url = http://tiddlywiki.com/
 	arch = any
 	license = BSD
 	depends = nodejs
 	depends = npm
-	noextract = tiddlywiki-5.1.9.tgz
-	source = https://registry.npmjs.org/tiddlywiki/-/tiddlywiki-5.1.9.tgz
-	sha256sums = e8db0d4e6b9d268097ae7f0df219c3966b50ed393eebe60a1d5f7688b6b36926
+	noextract = tiddlywiki-5.1.11.tgz
+	source = https://registry.npmjs.org/tiddlywiki/-/tiddlywiki-5.1.11.tgz
+	sha256sums = a0bb1adb0ab83e0b771ed2dee2c0472c1f1562ef735de44b5dd5ef4f7b115d85
 
 pkgname = nodejs-tiddlywiki
 
