@@ -1,7 +1,7 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ppx_type_conv
-pkgver=113.24.00
+pkgver=113.33.00
 pkgrel=1
 license=('Apache')
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('ocaml-findlib' 'opam')
 source=("https://ocaml.janestreet.com/ocaml-core/$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+")/files/${pkgname#ocaml-}-$(echo ${pkgver} | grep -Po "^[0-9]+\.[0-9]+\.[0-9]+").tar.gz"
         "libdir.patch")
 options=('!strip')
-md5sums=('12012679144f386664fe4a6c90fffbe3'
+md5sums=('470f20531bfd497ea8ee48e4f4a717b4'
          '7f0a951f1ac87385272ea7a6dd58762a')
 
 prepare() {
