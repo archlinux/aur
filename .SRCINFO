@@ -1,8 +1,8 @@
 pkgbase = ttf-nanum
 	pkgdesc = Nanum series TrueType fonts
 	pkgver = 3.1
-	pkgrel = 3
-	url = http://hangul.naver.com
+	pkgrel = 4
+	url = http://hangeul.naver.com/
 	install = ttf.install
 	arch = any
 	license = OFL
@@ -10,7 +10,7 @@ pkgbase = ttf-nanum
 	depends = fontconfig
 	depends = xorg-font-utils
 	source = http://appdown.naver.com/naver/font/NanumFont/setup/NanumFontSetup_TTF_ALL_hangeulcamp.exe
-	md5sums = 539c778ddbc8cf518f353e1ab1d4afda
+	md5sums = 9a6c4ec94a198684f3b5d6165c4e333c
 
 pkgname = ttf-nanum
 
