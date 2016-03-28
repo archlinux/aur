@@ -39,11 +39,17 @@ build() {
   cd "$srcdir/${pkgbase%-git}"
 
   cd src
+
   make ${MAKEFLAGS} -f makefile.unix DEBUGFLAGS="" USE_UPNP=1
 
+  strip gridcoinresearchd
+
   cd ..
+
   qmake "USE_QRCODE=1 USE_UPNP=1 NO_UPGRADE=1"
   make ${MAKEFLAGS}
+
+  strip gridcoinresearch
 }
 
 package_gridcoinresearch-daemon-git() {
