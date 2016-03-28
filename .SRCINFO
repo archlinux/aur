@@ -1,0 +1,32 @@
+pkgbase = atom-git
+	pkgdesc = The hackable text editor
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://atom.io/
+	install = atom.install
+	arch = x86_64
+	arch = armv7h
+	license = custom:MIT
+	makedepends = git
+	makedepends = sed
+	makedepends = npm
+	makedepends = ed
+	makedepends = grep
+	makedepends = findutils
+	depends = gconf
+	depends = nodejs
+	depends = python2
+	depends = libgnome-keyring
+	depends = desktop-file-utils
+	depends = nss
+	depends = alsa-lib
+	depends = libxtst
+	depends = gtk2
+	depends = libnotify
+	provides = atom
+	conflicts = atom
+	source = atom-git::git://github.com/atom/atom#branch=1.6-releases
+	sha256sums = SKIP
+
+pkgname = atom-git
+
