@@ -11,7 +11,7 @@ url="http://lilypond.org"
 license=('GPL')
 options=('!strip')
 source=("http://lilypond.org/download/binaries/documentation/lilypond-${pkgver}-1.documentation.tar.bz2")
-md5sums=('2d3f510ac4d0dbabe538cbce249b9572')
+sha256sums=('9c5486198175484906363736fd588278b718150bc5253b4345fe4f2fcdae8afe')
 
 package(){
   install -d ${pkgdir}/usr/share
