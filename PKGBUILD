@@ -1,9 +1,9 @@
 # $Id: PKGBUILD 68685 2012-03-31 16:54:07Z arodseth $
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Christian Babeux <christian.babeux@0x80.ca>
 
 pkgname=gambit-c
-pkgver=4.8.3
+pkgver=4.8.4
 pkgrel=1
 pkgdesc='Scheme R5RS interpreter and compiler (via C)'
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ depends=('bash')
 install="$pkgname.install"
 options=('staticlibs')
 source=("http://www.iro.umontreal.ca/~${pkgname%-c}/download/${pkgname%-c}/v${pkgver%.*}/source/${pkgname/-c/-v}${pkgver//./_}-devel.tgz")
-sha256sums=('aeb28918ce7a6b44534326674cc500dd2456ca252ac205234ac817d5bd0fc0c1')
+sha256sums=('daeaaa55f0c5076686313017c7c3676c60db14cbf2b55dd6023e8ed1fcfff218')
 
 build() {
  cd "${pkgname/-c/-v}${pkgver//./_}-devel"
