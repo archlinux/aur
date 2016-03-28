@@ -21,9 +21,6 @@ pkgver() {
 
 
 package() {
-	# The script
-	#install -Dm755 $srcdir/exploit-db.sh $pkgdir/usr/bin/exploit-db
-
 	# The database
 	chmod -R 644 "$srcdir/${_gitname}"
 	chmod -R a+X "$srcdir/${_gitname}"
