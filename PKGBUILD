@@ -1,13 +1,14 @@
-# Maintainer: MKzero <info@linux-web-development.de>
+# Maintainer: MKzero <info[at]linux-web-development[dot]de>
 # Maintainer: Aleksej Komarov <stylemistake@gmail.com>
 # Contributor: Ferenc Gergely Szilagyi <ferenc.szilagyi@rocket-internet.de>
 # Contributor: Renaud Lessard Larouche <sigmao@gmail.com>
 # Contributor: Ben Sherman <sherman@mycornerofthe.net>
+# Contributor: Nils Werner <nils.werner@gmail.com>
 # Upstream: Bitwig GmbH <support@bitwig.com>
 
 pkgname='bitwig-studio'
 pkgver='1.3.8'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='Music production system for production, remixing and performance'
 arch=('x86_64')
 url='http://www.bitwig.com/'
