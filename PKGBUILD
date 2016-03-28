@@ -16,4 +16,5 @@ package() {
   install -Dm644 seti.vim "$pkgdir/usr/share/vim/vimfiles/colors/seti.vim"
 }
 
+# getver: roboticoverlords.org/noversion/
 # vim:set ts=2 sw=2 et:
