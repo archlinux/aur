@@ -1,5 +1,5 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-file-sharedir-pathclass'
 pkgver='1.112440'
@@ -8,9 +8,9 @@ pkgdesc="File::ShareDir returning Path::Class objects"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.010' 'perl-file-sharedir' 'perl-path-class' 'perl-sub-exporter')
+depends=('perl-file-sharedir' 'perl-module-build>=0.3601' 'perl-path-class' 'perl-sub-exporter' 'perl>=5.010')
 makedepends=()
-url='http://search.cpan.org/dist/File-ShareDir-PathClass'
+url='https://metacpan.org/release/File-ShareDir-PathClass'
 source=('http://search.cpan.org/CPAN/authors/id/J/JQ/JQUELIN/File-ShareDir-PathClass-1.112440.tar.gz')
 md5sums=('d7e31590bc244d867e0292d054bb05cc')
 sha512sums=('d053bd981f90606beb0b16360a4ba296cf117b4fb083f970b23f495e03c01cf431f20828c624896ffb9c0a935a13a0442378c2e40879ff5ec773fa7441396ac8')
@@ -39,7 +39,6 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   /usr/bin/perl Build install
-
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
