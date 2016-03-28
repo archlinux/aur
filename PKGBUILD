@@ -1,8 +1,8 @@
 #Autor: Pablo Novara - Zaskar
 #Maintainer: mncarbone <mncarbone@gmail.com>
 pkgname=pseint
-pkgver=20160219
-pkgrel=2
+pkgver=20160327
+pkgrel=1
 pkgdesc="A tool for learning programming basis with a simple spanish pseudocode"
 arch=('i686' 'x86_64')
 url="http://pseint.sourceforge.net"
@@ -21,10 +21,10 @@ changelog=
 download_url='http://ufpr.dl.sourceforge.net/project'
 if [ "${CARCH}" = 'x86_64' ]; then
     pkgarch="l64"
-    md5="58747d6d3e88d74c3c161df9925d0fff"
+    md5="6a0c271137d4ca7fa7d20fa4f11eaddd"
 elif [ "${CARCH}" = 'i686' ]; then
     pkgarch="l32"
-    md5="8f0a9443b0538d7106417848bfa2c06c"
+    md5="5d4974f978dc28e66ccd9a6ac9bdb2da"
 fi
 source=(http://ufpr.dl.sourceforge.net/project/${pkgname}/${pkgver}/$pkgname-${pkgarch}-${pkgver}.tgz)
 noextract=()
