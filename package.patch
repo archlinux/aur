@@ -1,8 +1,8 @@
---- lock        2016-03-25 16:26:26.083985910 -0400
-+++ lock-new    2016-03-27 10:28:53.597662747 -0400
-@@ -8,10 +8,7 @@
- # Set your own font. List with "convert list font" in a terminal
- #FONT="Noto-Sans"
+--- lock	2016-03-27 22:02:18.766576563 -0400
++++ lock-new	2016-03-27 22:08:27.721197035 -0400
+@@ -34,10 +34,7 @@
+     esac
+ done
  
 -# get path where the script is located to find the lock icon
 -pushd $(dirname $0) > /dev/null
