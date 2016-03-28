@@ -1,7 +1,7 @@
 # Maintainer: Vlad M. <vlad@archlinux.net>
 
 pkgname=rusty-tags
-pkgver=0.6.8
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Create ctags/etags for a cargo project and all of its dependencies"
 url="https://github.com/dan-t/rusty-tags"
@@ -10,7 +10,7 @@ makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('BSD')
 source=("https://github.com/dan-t/$pkgname/archive/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('ddb5f3202f086a8e2b9af6db62292b03a93f16a8d82852683135a477bae758be')
+sha256sums=('68cb6e19e4a3b13cb374a365969cc92e5c850eb157562cfa4f0bbe2e607b6cd1')
 
 prepare() {
   mv "$pkgname-$pkgname-$pkgver" "$pkgname-$pkgver"
