@@ -6,8 +6,8 @@
 # Contributor: cameel <cameel2/gmail/com>
 
 pkgname=rednotebook
-pkgver=1.11
-pkgrel=2
+pkgver=1.12
+pkgrel=1
 pkgdesc="A simple desktop diary"
 arch=('i686' 'x86_64')
 url="http://rednotebook.sourceforge.net"
@@ -16,7 +16,7 @@ depends=('python2-gtkspell' 'pygtk' 'python2-yaml' 'pywebkitgtk' 'hicolor-icon-t
 optdepends=('python-chardet: Python3 module for character encoding auto-detection')
 install="${pkgname}.install"
 source=("${pkgname}-${pkgver}.tar.gz::https://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('fca771e3f1965128795852e1179590f9f0b9e0b6924840890aa32331a0e71981')
+sha256sums=('d02b185060594c62aa4295d65247b706fd02cdae3c89830406e5d256e828daf8')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
