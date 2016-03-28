@@ -3,7 +3,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-intensityfix
 pkgver=9.22
-pkgrel=2
+pkgrel=3
 pkgdesc='A unicode enabled rxvt-clone terminal emulator (urxvt), patched to avoid intense colors on 256 color escape codes and to fix font spacing'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -70,7 +70,7 @@ build() {
     --enable-xim \
     --enable-xterm-scroll \
     --disable-pixbuf \
-    --disable-frills
+    --enable-frills
   make
 }
 
