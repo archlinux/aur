@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=coyim
-pkgver=0.3
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A safe and secure chat client"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ url="https://coy.im"
 license=('GPL3')
 options=('!strip' '!emptydirs')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/twstrike/coyim/tar.gz/v$pkgver)
-sha256sums=('476f2f79d1d82329de520f5b212b5b2403161ec9e5f0c48b68a16286393dabb9')
+sha256sums=('794f1f468eb7056261f83eae38d4db9617c0e5f5e60f37c63bc57639b7e7cc8e')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
