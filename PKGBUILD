@@ -4,7 +4,7 @@
 pkgname=syncthing-bin
 _realname=syncthing
 pkgver=0.12.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Continuous Replication / Cluster Synchronization Thing: binary."
 url="http://syncthing.net/"
 arch=('armv6h' 'i686' 'x86_64')
@@ -18,13 +18,13 @@ sha1sums=('cabf3bf78457ce17057ae39fe3b0009a4aa446c4')
 
 case "$CARCH" in
 	arm*) _pkgarch="arm"
-		sha1sums+=('7b925b6d6eb02afedb70bee49a6297a972a38642')
+		sha1sums+=('5e08bb481d1f6f4f7e5d31e68fbae0854dac01a2')
 		;;
 	i686) _pkgarch="386"
-		sha1sums+=('77de243dcbf8b442f32b00fee7b2d4b19d25a8b9')
+		sha1sums+=('83e245763eaa2aa74d8ab280c2b563ae072aae61')
 		;;
 	x86_64) _pkgarch="amd64"
-		sha1sums+=('14f1ff84118c44f8407ab2475faa52a07089b2a9')
+		sha1sums+=('5401d90aefd4fd805a284f0a7ea1b6f25acf2c00')
 		;;
 esac
 
