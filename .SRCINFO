@@ -1,0 +1,14 @@
+pkgbase = safejumper
+	pkgdesc = VPN client for proxy_sh. Safejumper is a lightweight OpenVPN client specifically designed for the Proxy.sh VPN network.
+	pkgver = 2015.12.31
+	pkgrel = 1
+	url = https://proxy.sh/linux
+	install = safejumper.install
+	arch = x86_64
+	license = custom:Copyright (c) 2015 proxy.sh, Andrei Anifriev
+	depends = openvpn
+	source = https://proxy.sh/safejumper_linux.zip
+	md5sums = cbfe7452a20197ace291f47a64949729
+
+pkgname = safejumper
+
