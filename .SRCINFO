@@ -13,7 +13,7 @@ pkgbase = kakoune-git
 	optdepends = xorg-xmessage: for nicer debugging messages
 	optdepends = xdotool: add support for kak windows switching (in grep, make... files)
 	optdepends = clang: add command for C/CPP insert mode completion support
-	optdepends = ctags-git: provides `readtags` used by `:tag` command to jump on a tag definition
+	optdepends = universal-ctags-git: provides `readtags` used by `:tag` command to jump on a tag definition
 	source = kakoune-git::git+https://github.com/mawww/kakoune.git
 	sha256sums = SKIP
 

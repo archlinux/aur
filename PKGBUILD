@@ -2,7 +2,7 @@
 # Contributor: Shizeeg Unadequatov <shizeeque@gmail.com>
 
 pkgname=kakoune-git
-pkgver=r2699.4bbd8a4
+pkgver=r3963.c8490c4
 pkgrel=1
 pkgdesc='Code editor heavily inspired by Vim'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('ncurses' 'boost')
 optdepends=('xorg-xmessage: for nicer debugging messages'
             'xdotool: add support for kak windows switching (in grep, make... files)'
             'clang: add command for C/CPP insert mode completion support'
-            'ctags-git: provides `readtags` used by `:tag` command to jump on a tag definition')
+            'universal-ctags-git: provides `readtags` used by `:tag` command to jump on a tag definition')
 makedepends=('git' 'asciidoc')
 
 source=("${pkgname}::git+https://github.com/mawww/kakoune.git")
