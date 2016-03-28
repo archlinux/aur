@@ -1,6 +1,6 @@
 pkgbase = i3lock-color-git
 	pkgdesc = An improved screenlocker based upon XCB and PAM with color configuration support
-	pkgver = r232.b332ce6
+	pkgver = r234.b2c3247
 	pkgrel = 1
 	url = https://github.com/Arcaena/i3lock-color
 	arch = i686

@@ -2,7 +2,7 @@
 
 _gitname=i3lock-color
 pkgname="$_gitname-git"
-pkgver=r232.b332ce6
+pkgver=r234.b2c3247
 pkgrel=1
 pkgdesc="An improved screenlocker based upon XCB and PAM with color configuration support"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_gitname}"
-    sed -i 's| -m 644 i3lock-color.1.gz| -Dm 644 i3lock-color.1.gz|' Makefile
+    sed -i 's| -m 644 i3lock.1.gz| -Dm 644 i3lock.1.gz|' Makefile
 }
 
 build() {
