@@ -1,0 +1,14 @@
+pkgbase = breeze-plymouth
+	pkgdesc = Breeze theme for plymouth
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = https://projects.kde.org/breeze-plymouth
+	arch = any
+	license = LGPL
+	makedepends = cmake
+	depends = plymouth
+	source = http://download.kde.org/stable/plasma/5.6.0/breeze-plymouth-5.6.0.tar.xz
+	sha256sums = 92143ae63aaa02189350cbfa885215cfbb8f0ab85a02b2de0159ac7fbad50784
+
+pkgname = breeze-plymouth
+
