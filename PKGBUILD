@@ -2,12 +2,12 @@
 
 pkgname=vesta
 pkgver=3.3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="3D visualization program for structural models, volumetric data such as electron/nuclear densities, and crystal morphologies."
 url="http://jp-minerals.org/vesta"
 license=('custom')
 arch=('i686' 'x86_64')
-depends=('gtk2' 'libpng12')
+depends=('gtk2' 'libpng12' 'glu' 'desktop-file-utils' 'libxtst' 'java-environment')
 
 _url="http://www.geocities.jp/kmo_mma/crystal/download"
 source_i686=("${_url}/VESTA-i686.tar.bz2")
