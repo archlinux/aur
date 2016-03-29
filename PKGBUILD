@@ -3,13 +3,13 @@
 _pkgname=ppx_deriving
 pkgname=ocaml-${_pkgname}
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Type-driven code generation for OCaml >=4.02"
 arch=('i686' 'x86_64')
 url="https://github.com/whitequark/ppx_deriving"
 license=('MIT')
-depends=('ocaml' 'cppo>=1.2.0' 'ocaml-ppx_tools')
-makedepends=('ocaml-findlib')
+depends=('ocaml' 'ocaml-ppx_tools')
+makedepends=('ocaml-findlib' 'cppo')
 source=("https://github.com/whitequark/${_pkgname}/archive/v${pkgver}.tar.gz")
 md5sums=('c4a15d783a76912a1244a95aebb5935c')
 
