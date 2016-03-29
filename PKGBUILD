@@ -1,7 +1,7 @@
 pkgname=colobot-gold
 pkgver=0.1.7_alpha
 __ver=0.1.7-alpha
-pkgrel=1
+pkgrel=2
 pkgdesc="Colobot GOLD is a real-time strategy game with programmable bots."
 arch=('i686' 'x86_64')
 url="http://colobot.info"
