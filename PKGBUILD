@@ -1,15 +1,15 @@
 # Maintainer: Nick Østergaard <oe.nick at gmail dot com>
-pkgname=liblxi-git
-pkgver=r2.558bb5d
+pkgname=lxi-tools-git
+pkgver=r7.03bf830
 pkgrel=1
-pkgdesc="LXI library"
+pkgdesc="LXI Tools is a collection of software tools for controlling LXI instruments"
 arch=('i686' 'x86_64')
 url="https://github.com/lxi/liblxi"
 license=('BSD-3')
-provides=('liblxi')
-conflicts=('liblxi')
-optdepends=('lxi-tools')
-source=("$pkgname::git+https://github.com/lxi/liblxi")
+provides=('lxi-tools')
+conflicts=('lxi-tools')
+depends=('liblxi-git')
+source=("$pkgname::git+https://github.com/lxi/lxi-tools")
 md5sums=('SKIP')
 
 pkgver() {
@@ -21,7 +21,7 @@ build() {
   cd "$srcdir/$pkgname"
 
   ./autogen.sh
-  ./configure
+  ./configure --prefix=/usr 
   make
 }
 
