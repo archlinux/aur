@@ -1,7 +1,7 @@
 # Maintainer: Jan-Erik Rediger <badboy at archlinux dot us>
 
 pkgname=dit-git
-pkgver=v0.1.r142.g94b4867
+pkgver=0.2.r0.g94b4867
 pkgrel=1
 pkgdesc="A console text editor for Unix systems that you already know how to use"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ _gitname="dit"
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed -e 's/^v//' -e 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
