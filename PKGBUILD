@@ -8,7 +8,7 @@
 
 pkgname=mingw-w64-qt5-base
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform application and UI framework (mingw-w64)"
 arch=(i686 x86_64)
 url="https://www.qt.io/"
@@ -61,7 +61,7 @@ md5sums=('d6b6cfd333c22829c6c85fc52ceed019'
          '9916ded318f21afbe8388f0b9822062b'
          'bc99c4cc6998295d76f37ed681c20d47'
          '4fe6523dd1c34398df3aa5a8763530cc'
-         '22be0aa7fc36c5d08b3b41f0eccf7479'
+         'f32a768e1acb9785c79c8e93aa266db2'
          '3bd322551924543553a2bf81b4419a09'
          '30fa9ddf8d842b1392e8d63868940657'
          '99bb9f51ec684803768f36e407baf486'
@@ -73,7 +73,7 @@ md5sums=('d6b6cfd333c22829c6c85fc52ceed019'
          'd0eb81aef1a21c65813fe4ddabbc4206'
          '87cbd116c75ced1b075bf266f2455d50'
          '62d2977e57fccf1f16d7ea6bf06d3279'
-         '207420d43e997d1d41ef9684ef7fb715')
+         '83139869355c2d46921adb25e47cf0fa')
 _architectures="x86_64-w64-mingw32 i686-w64-mingw32"
 
 # Helper functions for the split builds
