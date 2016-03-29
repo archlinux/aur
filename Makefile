@@ -7,3 +7,4 @@ checksum:
 clean:
 	rm files.tar.gz
 	rm -rf src/ pkg/
+	rm steam-standalone-*.pkg.tar.xz
