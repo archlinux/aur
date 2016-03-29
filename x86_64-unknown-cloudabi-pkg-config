@@ -1,2 +1,2 @@
 #!/bin/sh
-PKG_CONFIG_LIBDIR=/usr/x86_64-unknown-cloudabi/lib/pkgconfig pkg-config "$@"
+PKG_CONFIG_LIBDIR=/usr/x86_64-unknown-cloudabi/lib/pkgconfig exec pkg-config "$@"

@@ -1,7 +1,7 @@
 # Maintainer: Maarten de Vries <maarten@de-vri.es>
 
 pkgname=cloudabi-pkg-config
-pkgver=1
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="CloudABI wrapper for pkg-config."
 url='https://www.freedesktop.org/wiki/Software/pkg-config/'
@@ -18,8 +18,8 @@ source=(
 )
 
 sha512sums=(
-	'ce9e12345472fc679edfb1c30e2c002e4858b2043feae2cc2578dc1ab6699d6ca9442d22d1951674197db363b1bf260047eedd656f05629fcec0268523fe69cb'
-	'ed36ced4c6a58871d45928f6a84818d3231b85682eb10c4f194507b8fc983d7398663790514a0ff04830290564d360465a2285ce8a2b9e7989d882cd22619c63'
+	'0a35cc70e4c41ea8ab0a4b4cce109904c695be6af54104d4d55668a8dfcd2b45e0ec99efb5ab061372e15c17db148da8a5fa1e1b5b1ebbcfea45871646509320'
+	'0ba89921525f73f0561d36effec72c1eb5c60089dba360b9c07357196504c563b38aea72aabff9db70f9c0bd2c84388b9511d302341b7ff9fa68560f04d019d5'
 )
 
 package() {
