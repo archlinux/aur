@@ -1,0 +1,17 @@
+pkgbase = wemux
+	pkgdesc = Multi-user Tmux made easy
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/zolrath/wemux
+	install = wemux.install
+	arch = any
+	license = MIT
+	depends = tmux
+	depends = lsof
+	depends = openssh
+	backup = etc/wemux/wemux.conf
+	source = https://github.com/zolrath/wemux/archive/v3.2.0.zip
+	md5sums = c83c5ee88d3784d79449c05a8e55da70
+
+pkgname = wemux
+
