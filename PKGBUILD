@@ -10,7 +10,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=1.9.6
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 _winesrcdir="pontostroy-wine-$_pkgbasever"
@@ -120,6 +120,8 @@ prepare()
     cd pontostroy-wine-$_pkgbasever
 
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
+
+    autoreconf -f
 
     cd $srcdir
 
