@@ -8,7 +8,7 @@ pkgdesc="A ncurse Telegram client developed in Python"
 arch=('any')
 url="https://github.com/Nanoseb/ncTelegram"
 license=('GPL3')
-depends=('python' 'python-urwid' 'pytg=0.4.5')
+depends=('python' 'python-urwid' 'pytg>=0.4.6')
 makedepends=('git' 'python-distribute')
 optdepends=(
 'libnotify: library to display notifications'

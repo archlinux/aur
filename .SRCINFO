@@ -9,7 +9,7 @@ pkgbase = nctelegram-git
 	makedepends = python-distribute
 	depends = python
 	depends = python-urwid
-	depends = pytg=0.4.5
+	depends = pytg>=0.4.6
 	optdepends = libnotify: library to display notifications
 	optdepends = libcaca: library to display inline images
 	optdepends = ttf-symbola: font for emoji
