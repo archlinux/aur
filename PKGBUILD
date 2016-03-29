@@ -2,7 +2,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 pkgname=jshon-git
 pkgver=r84.783d3bf
-pkgrel=1
+pkgrel=2
 pkgdesc="A json parser for the shell."
 arch=('i686' 'x86_64')
 url="http://kmkeen.com/jshon/"
@@ -16,6 +16,11 @@ md5sums=('SKIP')
 pkgver() {
   cd jshon
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd jshon
+  sed -i 's/_pbpst/_jshon/' Makefile
 }
 
 build() {
