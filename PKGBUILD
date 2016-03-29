@@ -12,7 +12,7 @@ pkgrel=3
 pkgdesc="An Free Software / Open Source GSM Baseband software implementation."
 arch=('i686' 'x86_64')
 url="http://bb.osmocom.org/"
-license="GPL3"
+license=('GPL3')
 #TODO: test if python2 is makedepend or regular dep
 makedepends=('shtool' 'libtool' 'autoconf' 'git' 'make' 'gcc' 'pkg-config' 'patch')
 depends=('libosmocore' 'python2')
