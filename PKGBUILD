@@ -10,7 +10,7 @@
 pkgname=google-appengine-python-php
 _pkgname=google_appengine
 pkgver=1.9.35
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Google App Engine SDK for Python & PHP"
 url=https://cloud.google.com/appengine/downloads#Google_App_Engine_SDK_for_Python
