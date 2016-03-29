@@ -1,0 +1,14 @@
+pkgbase = marisahttpd-git
+	pkgdesc = High-effiency dynamic webpage server and runtime for C/C++
+	pkgver = 0.4.r35.g45274d1
+	pkgrel = 1
+	url = https://github.com/AmamiyaRinyuki/MarisaHttpd
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = libmicrohttpd
+	provides = marisa
+	source = marisahttpd-git::git+https://github.com/AmamiyaRinyuki/MarisaHttpd
+	md5sums = SKIP
+
+pkgname = marisahttpd-git
