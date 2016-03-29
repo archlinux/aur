@@ -21,7 +21,7 @@ build() {
   cd "$srcdir/$pkgname"
 
   ./autogen.sh
-  ./configure
+  ./configure --prefix=/usr
   make
 }
 
