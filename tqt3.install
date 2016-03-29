@@ -1,0 +1,15 @@
+post_install() {
+   ldconfig
+   echo
+   echo 'In order to update PATH to include TQt3 binaries location, you should'
+   echo 're-login. The TQt3 PATH is available in /etc/profile.d/tqt3.sh'
+}
+
+post_upgrade() {
+   ldconfig 
+}
+
+post_remove() {
+   ldconfig
+}
+
