@@ -1,0 +1,13 @@
+pkgbase = minifetch
+	pkgdesc = Minimal system info fetcher
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/dawidd6/minifetch
+	arch = any
+	license = MIT
+	provides = minifetch
+	source = https://github.com/dawidd6/minifetch/archive/1.0.tar.gz
+	md5sums = SKIP
+
+pkgname = minifetch
+
