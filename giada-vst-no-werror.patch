@@ -1,0 +1,13 @@
+diff --git a/Makefile.am b/Makefile.am
+index ab76590..43be805 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -153,7 +153,7 @@ endif
+ # inside configure.ac
+ # Note: CPPFLAGS ---> C preprocessor, while CXXFLAGS ---> C++ compiler.
+ 
+-giada_CXXFLAGS = -std=c++11 -Wall -Werror
++giada_CXXFLAGS = -std=c++11 -Wall
+ 
+ # TODO - these are flags for Linux only!
+ # Also, JUCE makes GCC complain if compiled with optimization set to -O2.
