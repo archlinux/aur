@@ -1,5 +1,5 @@
 pkgbase = ros-jade-kinect2-bridge
-	pkgdesc = Tools for using the Kinect One (Kinect v2) in ROS.
+	pkgdesc = libfreenect2 binding for ROS.
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/code-iai/iai_kinect2
@@ -7,6 +7,7 @@ pkgbase = ros-jade-kinect2-bridge
 	license = apache
 	makedepends = cmake
 	makedepends = ros-build-tools
+	makedepends = libfreenect2
 	makedepends = ros-jade-roscpp
 	makedepends = ros-jade-rostime
 	makedepends = ros-jade-tf
@@ -26,6 +27,7 @@ pkgbase = ros-jade-kinect2-bridge
 	depends = ros-jade-kinect2-registration
 	depends = ros-jade-nodelet
 	depends = ros-jade-depth-image-proc
+	depends = libfreenect2
 	source = ros-jade-kinect2-bridge::git+https://github.com/code-iai/iai_kinect2.git
 	sha256sums = SKIP
 
