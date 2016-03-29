@@ -1,0 +1,29 @@
+--- a/Source/ResourceEditor.h.64bit	2009-02-01 09:44:30.000000000 -0500
++++ b/Source/ResourceEditor.h	2014-07-23 17:12:20.000000000 -0400
+@@ -180,7 +180,7 @@
+ 
+   void Destroy();
+ 
+-  DWORD m_dwWrittenAt;
++  long m_dwWrittenAt;
+ 
+ private:
+   IMAGE_RESOURCE_DIRECTORY m_rdDir;
+@@ -204,7 +204,7 @@
+ 
+   CResourceDataEntry* GetDataEntry();
+ 
+-  DWORD m_dwWrittenAt;
++  long m_dwWrittenAt;
+ 
+ private:
+   bool m_bHasName;
+@@ -232,7 +232,7 @@
+   DWORD GetCodePage();
+   DWORD GetOffset();
+ 
+-  DWORD m_dwWrittenAt;
++  long m_dwWrittenAt;
+ 
+ private:
+   BYTE* m_pbData;
