@@ -1,0 +1,21 @@
+pkgbase = dosbox-eden
+	pkgdesc = Eden Blues - old DOS game
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.old-games.com/
+	arch = any
+	license = freeware
+	depends = dosbox
+	depends = sdl
+	depends = unzip
+	source = http://ds.old-games.com/0d13d819f0/files.the-underdogs.info/edenblues.zip
+	source = dosbox-eden.png
+	source = dosbox-eden.desktop
+	source = dosbox-eden.conf
+	md5sums = 30d068687a55f69b119f047fa476c11a
+	md5sums = 02e88ae05eb4b10977d84e4ada491c68
+	md5sums = 6754c5f7584fbd08d5a8e11a32b78bff
+	md5sums = 449aa5d3dfabaeb9f888bc22d62dbdd6
+
+pkgname = dosbox-eden
+

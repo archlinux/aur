@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Eden
+Comment=Eden - old DOS game
+Exec=/usr/bin/dosbox -conf /usr/local/games/dosbox-eden/dosbox-eden.conf
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/dosbox-eden.png
+Encoding=UTF-8
+Categories=GNOME;GTK;Game;
