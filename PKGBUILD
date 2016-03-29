@@ -15,7 +15,7 @@
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.79145.ge259dc8
+pkgver=N.79160.gb73c271
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ depends=(
     'vid.stab' 'vo-amrwbenc' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265'
     'libxcb' 'xvidcore' 'zimg' 'zeromq' 'zvbi' 'openal' 'libva' 'libdrm' 'libva-intel-driver'
     'libmfx-git' 'opencl-headers' 'ocl-icd' 'libvdpau' 'mesa' 'openssl' 'xavs' 'nvidia-sdk'
-    'blackmagic-decklink-sdk' 'jdk8-openjdk'
+    'blackmagic-decklink-sdk' 'java-environment'
 )
 depends_x86_64=('cuda')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (experimental)')
@@ -88,8 +88,8 @@ build() {
 	        --prefix=/usr \
 	        --extra-cflags="-I/usr/include/nvidia-sdk \
 	                        ${_cudainc} \
-	                        -I/usr/lib/jvm/java-8-openjdk/include \
-	                        -I/usr/lib/jvm/java-8-openjdk/include/linux" \
+	                        -I/usr/lib/jvm/$(archlinux-java get)/include \
+	                        -I/usr/lib/jvm/$(archlinux-java get)/include/linux" \
 	        --extra-ldflags="${_cudalib} ${_intelsdklib}" \
 	        \
 	        --enable-rpath \
