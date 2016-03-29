@@ -6,7 +6,7 @@
 
 pkgname=ocaml-easy-format
 _oname=easy-format
-pkgver=1.0.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Data pretty printing made easy"
 url="http://mjambon.com/easy-format.html"
@@ -14,8 +14,8 @@ arch=('i686' 'x86_64')
 options=('!strip' 'staticlibs')
 license=('BSD')
 makedepends=('ocaml-findlib')
-source=(http://mjambon.com/releases/${_oname}/${_oname}-${pkgver}.tar.gz)
-md5sums=('82f6db85477831cab11e4cfe80321225')
+source=("https://github.com/mjambon/${_oname}/archive/v${pkgver}.tar.gz")
+sha256sums=('a288fabcdc19c2262e76cf93e0fd987fe1b21493edd13309522fbae405329ffd')
 build() {
   cd $srcdir/$_oname-$pkgver
   make
