@@ -3,40 +3,28 @@
 # Contributor: speps <speps at aur dot archlinux dot org> 
 
 pkgname=rtmidi
-pkgver=2.1.0
-pkgrel=3
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="A set of C++ classes that provides a common API for realtime MIDI input/output."
 arch=('i686' 'x86_64')
 url="http://www.music.mcgill.ca/~gary/rtmidi/"
 license=('MIT')
 depends=('alsa-lib' 'jack')
 source=("${url}release/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('3bb58a7bcdbd0a6c716060d57eb856f4557a460fd24a533e956ee93523aafe058a4b3cf3133fe1f21d517b1bc7519822f3466a88e3b2c3042a8b09d171143877')
+sha512sums=('964825a73ca24cbda5b6546cf89e9e28f8d0c3528ad1e4996e525892a09b94c5df039044b9c47b58177e80441fd1b4feb81b71b4e88d58ef2bf98d186e4db880')
 
 build() {
   cd "${pkgname}-${pkgver}"
   ./configure --prefix=/usr --with-alsa --with-jack
   make
-  cd tests && make
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-
-  # Install library files.
-  install -Dm755 librtmidi.so.${pkgver} "${pkgdir}/usr/lib/librtmidi.so.${pkgver}"
-  ln -s librtmidi.so.${pkgver} "${pkgdir}/usr/lib/librtmidi.so.2"
-  ln -s librtmidi.so.${pkgver} "${pkgdir}/usr/lib/librtmidi.so"
-
-  # Install header file.
-  install -Dm644 RtMidi.h "${pkgdir}/usr/include/RtMidi.h"
-
-  # Install RtMIDI configuration utility.
-  install -Dm644 librtmidi.pc  "${pkgdir}/usr/lib/pkgconfig/librtmidi.pc"
-  install -Dm755 rtmidi-config "${pkgdir}/usr/bin/rtmidi-config"
+  make DESTDIR="${pkgdir}" install
 
   # Install test utilities with prefix 'rtmidi-'
-  for _bin in `find tests -type f -perm 755`; do
+  for _bin in `find tests -maxdepth 1 -type f -perm 755 ! -name "*.*"`; do
     install -Dm755 $_bin "${pkgdir}/usr/bin/${pkgname}-"`basename $_bin`
   done
 
