@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=sslsplit-git
-pkgver=0.4.11.321.22b4d3c
+pkgver=0.5.0.466.7677fe0
 pkgrel=1
 pkgdesc="Tool for man-in-the-middle attacks against SSL/TLS encrypted network connections"
 url="https://www.roe.ch/SSLsplit"
@@ -34,7 +34,7 @@ check() {
 package() {
   cd ${pkgname}
   make PREFIX="${pkgdir}/usr" install
-  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm 644 NEWS.md "${pkgdir}/usr/share/doc/${pkgname}/NEWS.md"
 }
