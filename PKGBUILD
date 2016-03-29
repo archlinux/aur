@@ -3,7 +3,7 @@
 
 pkgname=ethereum
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, full webthree-umbrella)"
 arch=('i686' 'x86_64')
 depends=(
@@ -51,10 +51,15 @@ makedepends=(
 groups=('ethereum')
 url="https://github.com/ethereum/webthree-umbrella"
 license=('GPL')
-source=("${pkgname%-git}::git+https://github.com/ethereum/webthree-umbrella")
-sha256sums=('SKIP')
+source=(
+  "${pkgname%-git}::git+https://github.com/ethereum/webthree-umbrella"
+  'qt56.patch::https://github.com/ethereum/alethzero/commit/543a1669e32c9c4403893a46a596eeaedaf28518.patch'
+)
+sha256sums=(
+  'SKIP'
+  '6ad2ac07b1c2fa734dcd397baa10e5b4adc81e00354e13fbbdd70c66036a8556'
+)
 provides=(
-  'alethfive'
   'alethone'
   'alethzero'
   'eth'
@@ -68,10 +73,8 @@ provides=(
   'rlp'
   'solc'
   'ethereum'
-  'webthree-umbrella'
 )
 conflicts=(
-  'alethfive'
   'alethone'
   'alethzero'
   'eth'
@@ -92,14 +95,20 @@ build() {
   msg 'Updating...'
   cd ${pkgname%-git}
   git checkout release
+  git pull
   git checkout v$pkgver
   git submodule update --init --recursive
 
+  msg 'Patching...'
+  cd alethzero
+  git apply ${srcdir}/qt56.patch
+  cd ..
+
   msg 'Building...'
   mkdir -p build && pushd build
-  CXXFLAGS=-Wno-deprecated-declarations cmake .. \
-           -DCMAKE_INSTALL_PREFIX=/usr \
-           -DCMAKE_BUILD_TYPE=Release
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release
   make
   popd
 }
