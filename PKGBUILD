@@ -7,7 +7,7 @@ pkgdesc="software library written in C that provides an API for transparently re
 url="http://research.wand.net.nz/software/libwandio.php"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=()
+depends=('zlib' 'curl=>7.18.0')
 provides=('libwandio')
 source=("http://research.wand.net.nz/software/$_pkgname/$_pkgname-$pkgver.tar.gz")
 md5sums=('249645e4cc4fa9e89f1183d23f022918')
