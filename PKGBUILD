@@ -3,7 +3,7 @@
 pkgname=mattermost
 pkgver=2.1.0
 _pkgver=${pkgver/rc/-rc}
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source Slack-alternative in Golang and React"
 arch=('i686' 'x86_64')
 url="http://mattermost.org"
@@ -32,6 +32,12 @@ prepare() {
 	sed "s|_BUILD_DATE_|$(date -u)|g" -i model/version.go
 	sed "s|_BUILD_NUMBER_|$_pkgver-$pkgrel|g" -i model/version.go
 	sed "s|_BUILD_HASH_|-|g" -i model/version.go
+
+	cd web/react
+	sed -r \
+	  -e 's@mattermost/marked#([0-9a-f]+)@https://github.com/mattermost/marked/archive/\1.tar.gz@' \
+	  -e 's@mattermost/mm-intl#([0-9a-f]+)@https://github.com/mtorromeo/mm-intl/archive/\1.tar.gz@' \
+		-i package.json
 }
 
 build() {
@@ -46,7 +52,7 @@ build() {
 
 	msg2 "Building react application"
 	pushd "$GO_PLATFORM_DIR"/web/react
-	npm install
+	HOME="$srcdir" npm install
 	npm run build
 	npm run build-libs
 	popd
