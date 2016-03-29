@@ -3,7 +3,7 @@
 
 pkgname=owncloud-app-news
 pkgver=8.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An RSS/Atom feed reader"
 arch=('any')
 url="https://github.com/owncloud/news"
@@ -13,6 +13,11 @@ makedepends=()
 options=('!strip')
 source=("owncloud-app-news-${pkgver}.tar.gz::https://github.com/owncloud/news/archive/${pkgver}.tar.gz")
 sha512sums=("dabfe4475e68167d3b346146ebc17ae979ae02b0c638e4100013fa05738d963f3029f1ee1a638e32eb0c0084b14026a9c283e407c93bb20a7c92fdb4bd3e85d9")
+
+build() {
+  cd "news-${pkgver}"
+  make
+}
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/owncloud/apps"
