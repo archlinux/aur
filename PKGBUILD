@@ -2,8 +2,8 @@
 
 pkgname=mist-git
 _pkgname=mist
-pkgver=0.5.2.r0.g661f46a
-_pkgver=0-5-2
+pkgver=0.5.2.r65.g4d85c0f
+_pkgver=0-6-0
 pkgrel=1
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
 arch=('i686' 'x86_64')
@@ -89,8 +89,6 @@ package() {
   install -Dm644 "${srcdir}/mist.desktop" "${pkgdir}/usr/share/applications"
 
   install -d "${pkgdir}/usr/bin"
-  chmod +x "/usr/share/${_pkgname}/Ethereum-Wallet"
-  chmod +x "/usr/share/${_pkgname}/resources/node/geth/geth"
   ln -s "/usr/share/${_pkgname}/Ethereum-Wallet" "${pkgdir}/usr/bin/mist"
   ln -s "/usr/share/${_pkgname}/resources/node/geth/geth" "${pkgdir}/usr/bin/geth"
 
@@ -108,4 +106,5 @@ package() {
   find "${pkgdir}" -type f -exec chmod 644 {} +
   chmod 755 "${pkgdir}/usr/share/${_pkgname}/Ethereum-Wallet"
   chmod 755 "${pkgdir}/usr/share/${_pkgname}/libnode.so"
+  chmod 755 "${pkgdir}/usr/share/${_pkgname}/resources/node/geth/geth"
 }
