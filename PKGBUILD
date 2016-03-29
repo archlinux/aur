@@ -1,5 +1,5 @@
 pkgname=imapdedup
-pkgver=20130617
+pkgver=20160329
 pkgrel=1
 pkgdesc="IMAP folder deduplicator"
 arch=(any)
@@ -12,5 +12,5 @@ md5sums=('SKIP')
 package() {
   cd "$srcdir/IMAPdedup"
   install -Dm0755 imapdedup.py $pkgdir/usr/bin/imapdedup
-  install -Dm0755 README.txt $pkgdir/usr/share/doc/imapdedup/README.txt
+  install -Dm0755 README.md $pkgdir/usr/share/doc/imapdedup/README.md
 }
