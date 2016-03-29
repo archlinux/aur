@@ -8,6 +8,7 @@ pkgbase = marisahttpd-git
 	makedepends = git
 	makedepends = libmicrohttpd
 	provides = marisa
+	provides = libkirisame.so
 	source = marisahttpd-git::git+https://github.com/AmamiyaRinyuki/MarisaHttpd
 	md5sums = SKIP
 
