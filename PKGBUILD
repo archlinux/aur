@@ -14,7 +14,7 @@ backup=()
 source=("https://github.com/aperezdc/notmuch-addrlookup-c/archive/${pkgver}.tar.gz"
         "MIT-LICENSE")
 
-md5sums=('826056f096aa8d853589fe058da1f3f0'
+md5sums=('700906bdb8396cf0eb7a3b9d2c257d7d'
          'f9be2430c190c736214e76ead254ed07')
 
 build() {
