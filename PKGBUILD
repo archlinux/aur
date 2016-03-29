@@ -2,8 +2,8 @@
 # Contributor: Lone_Wolf <lonewolf@xs4all.nl>, ZekeSulastin <zekesulastin@gmail.com>
 
 pkgname=fs2_open-git
-pkgver=3.7.3
-pkgrel=20151208
+pkgver=3.7.5.r1280
+pkgrel=1
 pkgdesc="An enhancement of the original Freespace 2 engine - GIT version"
 url="http://scp.indiegames.us"
 arch=('i686' 'x86_64')
@@ -13,21 +13,20 @@ makedepends=('git')
 conflicts=('fs2_open')
 provides=('fs2_open')
 install=fs2_open-git.install
+source=("${pkgname}::git+https://github.com/scp-fs2open/fs2open.github.com.git")
+sha256sums=('SKIP')
 
-_gitrep='https://github.com/scp-fs2open/fs2open.github.com.git'
-_pkg=fs2_open
+version=3.7.5
+
+pkgver () {
+	cd "$srcdir/$pkgname"
+	rev=`git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'`
+	echo ${version}.${rev:10:5}
+}
 
 build()
 {
-	cd "$srcdir"
-	msg "Cloning git repository...."
-
-	git clone $_gitrep
-
-	msg "git clone done or server timeout"
-	msg "Starting build..."
-
-	cd "$srcdir/fs2open.github.com"
+	cd "$srcdir/$pkgname"
 
 	# Add --enable-debug to make a debug build.  These are NOT meant for general play;
 	#  only make a debug build if generating logs/bugreports.  This is true even for
@@ -37,15 +36,13 @@ build()
 }
 
 package () {
-	cd "$srcdir/fs2open.github.com"
-
-	_commit_hash=`git rev-parse HEAD`
+	cd "$srcdir/$pkgname/code"
+	binary=`find fs2_open*`
+	cd ..
+	rev=`git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'`
 	install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	if [[ -x code/fs2_open_3.7.3 ]]; then
-		install -D -m755 code/fs2_open_3.7.3 "$pkgdir/opt/fs2_open/fs2_open_3.7.3_${_commit_hash:0:7}"
-		msg "The output binary will be called 'fs2_open_3.7.3_${_commit_hash:0:7}'"
-	else
-		install -D -m755 code/fs2_open_3.7.3_DEBUG "$pkgdir/opt/fs2_open/fs2_open_3.7.3_DEBUG_${_commit_hash:0:7}"
-	fi
+
+	install -D -m755 code/${binary} "$pkgdir/opt/fs2_open/${binary}_${rev:10:5}"
+	msg "The output binary will be called '${binary}_${rev:10:5}'"
 }
 
