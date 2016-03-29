@@ -1,7 +1,7 @@
 pkgname=ammonite
 pkgver=0.5.7
 pkgrel=1
-pkgdesc="Ammonite is a cleanroom re-implementation of the Scala REPL from first principles. "
+pkgdesc="A cleanroom re-implementation of the Scala REPL from first principles. "
 arch=('any')
 url="https://github.com/lihaoyi/Ammonite"
 license=('MIT')
