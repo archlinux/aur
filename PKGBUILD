@@ -1,4 +1,4 @@
-pkgdesc="Tools for using the Kinect One (Kinect v2) in ROS."
+pkgdesc="libfreenect2 binding for ROS."
 url='https://github.com/code-iai/iai_kinect2'
 
 pkgname='ros-jade-kinect2-bridge'
@@ -19,7 +19,7 @@ ros_makedepends=(ros-jade-roscpp
   ros-jade-compressed-depth-image-transport
   ros-jade-kinect2-registration
   ros-jade-nodelet)
-makedepends=('cmake' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools' 'libfreenect2'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-roscpp
@@ -32,7 +32,7 @@ ros_depends=(ros-jade-roscpp
   ros-jade-kinect2-registration
   ros-jade-nodelet
   ros-jade-depth-image-proc)
-depends=(${ros_depends[@]})
+depends=(${ros_depends[@]} 'libfreenect2')
 
 # Git version (e.g. for debugging)
  _dir=${pkgname}
