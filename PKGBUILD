@@ -5,7 +5,7 @@
 # This PKGBUILD was prepared for pacman 4.1 by William. Thank you. :-)
 
 pkgname=i3-git
-pkgver=4.10.2.r223.gb30d87e
+pkgver=4.12.r14.geb837cb
 pkgrel=1
 pkgdesc='An improved dynamic tiling window manager'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ provides=('i3-wm')
 conflicts=('i3-wm' 'i3bar' 'i3bar-git')
 groups=('i3-vcs')
 depends=('xcb-util-keysyms' 'xcb-util-wm' 'libev' 'yajl'
-         'startup-notification' 'pango' 'perl' 'xcb-util-cursor-git'
+         'startup-notification' 'pango' 'perl' 'xcb-util-cursor'
          'libxkbcommon-x11')
 makedepends=('git' 'asciidoc' 'docbook-xsl' 'pkgconfig')
 optdepends=('rxvt-unicode: The terminal emulator used in the default config.'
@@ -25,7 +25,7 @@ optdepends=('rxvt-unicode: The terminal emulator used in the default config.'
             'perl-json-xs: For i3-save-tree'
             'perl-anyevent-i3: For i3-save-tree')
 options=('docs' '!strip' 'debug')
-source=('git://github.com/i3/i3#branch=next')
+source=('git://github.com/i3/i3')
 sha1sums=('SKIP')
 
 _gitname='i3'
