@@ -13,7 +13,7 @@
 
 pkgname=mozilla-custom-dictionaries
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Select which dictionaries should be available system-wide"
 arch=('any')
 license=('WTFPL')
@@ -31,4 +31,5 @@ package() {
     install -D -m 644 hook.install "$pkgdir/usr/share/libalpm/hooks/70-mcd-install.hook"
     install -D -m 644 hook.remove "$pkgdir/usr/share/libalpm/hooks/70-mcd-remove.hook"
     install -D -m 755 hook.sh "$pkgdir/usr/lib/mozilla-custom-dictionaries/alpm-hook"
+    install -d -m 755 "$pkgdir/etc/mozilla-custom-dictionaries"
 }
