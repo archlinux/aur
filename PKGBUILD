@@ -3,11 +3,11 @@
 
 pkgname=jitsi
 pkgver=2.8.5426
-pkgrel=2
+pkgrel=3
 pkgdesc="An audio/video SIP VoIP phone and instant messenger written in Java (formerly SIP-Communicator)"
 arch=('i686' 'x86_64')
 url="http://jitsi.org"
-license=('LGPL')
+license=('apache')
 depends=('java-runtime')
 makedepends=('apache-ant' 'java-environment-common')
 options=(!strip !emptydirs zipman !libtool docs)
