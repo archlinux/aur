@@ -4,23 +4,25 @@
 
 pkgname=aseprite
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
 license=('GPL')
-depends=('pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2')
+depends=('pixman' 'curl' 'giflib' 'zlib' 'libpng' 'libjpeg-turbo' 'tinyxml' 'freetype2' 'libwebp')
 makedepends=('cmake')
 source=("git+https://github.com/aseprite/aseprite.git#tag=v${pkgver}"
         "aseprite.desktop")
 sha256sums=('SKIP'
-        'c9e624b9fd095ebb3eec8220a58d4a9422f39d68477bafcc0047d773814ba0aa')
+        '4faeb782805e3427eedb04d7485e3e2d4eac6680509515b521a9f64ef5d79490')
 
 build() {
   cd "$pkgname"
   mkdir -p build && cd build
   git submodule update --init --recursive
   cmake -DUSE_SHARED_PIXMAN=ON \
+    -DWITH_WEBP_SUPPORT=ON \
+    -DUSE_SHARED_LIBWEBP=ON \
     -DUSE_SHARED_CURL=ON \
     -DUSE_SHARED_GIFLIB=ON \
     -DUSE_SHARED_JPEGLIB=ON \
