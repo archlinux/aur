@@ -6,13 +6,13 @@
 pkgname=ocaml-yojson
 _oname=yojson
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An optimized parsing and printing library for JSON'
 arch=('i686' 'x86_64')
 options=('!strip' 'staticlibs')
 license=('BSD')
-depends=('ocaml-easy-format')
-makedepends=('ocaml-biniou' 'ocaml-findlib' 'cppo')
+depends=('ocaml-biniou' 'ocaml-easy-format')
+makedepends=('ocaml-findlib' 'cppo')
 url='http://mjambon.com/yojson.html'
 source=("https://github.com/mjambon/${_oname}/archive/v${pkgver}.tar.gz")
 options=(!makeflags)
