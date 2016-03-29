@@ -2,16 +2,16 @@
 # Contributor: Reventlov <contact+aur at volcanis dot me>
 
 pkgname=searx-git
-pkgver=v0.8.1.r112.ge893d94
+pkgver=v0.8.1.r123.g71de593
 pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
 url="http://searx.me"
 license=('AGPL')
-depends=('python2-flask' 'python2-flask-babel' 'python2-requests' 'python2-lxml' 'python2-yaml' 'python2-dateutil' 'python2-pygments' 'python2-certifi' 'python2-pyasn1-modules' 'python2-ndg-httpsclient')
 makedepends=('git')
-install=searx.install
+depends=('python2-flask' 'python2-flask-babel' 'python2-requests' 'python2-lxml' 'python2-yaml' 'python2-dateutil' 'python2-pygments' 'python2-certifi' 'python2-pyasn1-modules' 'python2-ndg-httpsclient')
 backup=('usr/lib/python2.7/site-packages/searx/settings.yml')
+install=searx.install
 source=('git+https://github.com/asciimoo/searx.git'
         'searx.install'
         'searx.service')
@@ -31,14 +31,18 @@ pkgver() {
 package() {
   cd $srcdir/searx
 
-  sed -i 's/certifi==2015.11.20.1/certifi==2016.2.28/' requirements.txt
-  sed -i 's/pygments==2.0.2/pygments==2.1.3/' requirements.txt
-  sed -i 's/python-dateutil==2.4.2/python-dateutil==2.5.0/' requirements.txt
+  #sed -i \
+  #  -e "s|certifi==2015.11.20.1|certifi>=2015.11.20.1|" \
+  #  -e "s|lxml==3.5.0|lxml>=3.5.0|" \
+  #  -e "s|pygments==2.0.2|pygments>=2.0.2|" \
+  #  -e "s|python-dateutil==2.4.2|python-dateutil>=2.4.2|" \
+  #  requirements.txt
+  sed -i "s|==|>=|g" requirements.txt
 
   python2 setup.py install --root=$pkgdir --optimize=1
   
   mv $pkgdir/usr/lib/python2.7/site-packages/{README.rst,searx/}
   mv $pkgdir/usr/lib/python2.7/site-packages/{tests,searx/}
 
-  install -Dm 644 ../searx.service $pkgdir/usr/lib/systemd/system/searx.service
+  install -Dm0644 ../searx.service $pkgdir/usr/lib/systemd/system/searx.service
 }
