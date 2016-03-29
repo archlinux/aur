@@ -4,23 +4,22 @@
 # Contributor: nesl247 <nesl247@gmail.com>
 
 pkgname=compizconfig-python
-pkgver=0.8.10
+pkgver=0.8.12
 pkgrel=1
 pkgdesc="Compizconfig bindings for python"
 arch=('i686' 'x86_64')
 url="http://opencompositing.org"
 license=('GPL')
 depends=("compiz-core>=${pkgver}" 'libcompizconfig' 'glib2' 'python2' 'libxrandr' 'libsm' 'libxdamage')
-makedepends=('intltool' 'pkgconfig' 'pyrex')
+makedepends=('cython' 'intltool' 'pkgconfig' 'pyrex')
 options=('!libtool')
 conflicts=('compizconfig-python-git')
-source=("http://www.northfield.ws/projects/compiz/releases/${pkgver}/${pkgname}.tar.gz")
-md5sums=('83040ae44d6c558e02a07ac233424644')
+source=("http://www.northfield.ws/projects/compiz/releases/${pkgver}/${pkgname}.tar.xz")
+md5sums=('22a7345a395e9fb477eeec7a525b6a47')
 
 build()
 {
 	cd "${srcdir}/${pkgname}"
-	./autogen.sh
 	PYTHON=python2 ./configure --prefix=/usr
 	make
 }
