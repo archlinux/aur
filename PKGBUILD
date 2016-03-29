@@ -1,7 +1,7 @@
 # Maintainer: Tomasz Maciej Nowak <com[dot]gmail[at]tmn505>
 pkgname='minisatip-git'
 pkgdesc="SAT>IP server, tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards (experimental)"
-pkgver=0.5.39_a30e471
+pkgver=0.5.43_92bf0d8
 pkgrel=1
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://minisatip.org"
@@ -9,7 +9,7 @@ license=('GPL2')
 provides=('minisatip')
 conflicts=('minisatip')
 makedepends=('git')
-depends=('libdvbcsa' 'linuxtv-dvb-apps')
+depends=('libdvbcsa' 'linuxtv-dvb-apps' 'openssl')
 optdepends=('oscam: channels descrambling')
 backup=('etc/conf.d/minisatip')
 install='minisatip.install'
