@@ -1,7 +1,7 @@
 # Maintainer: Lubosz Sarnecki <lubosz@gmail.com>
 
 pkgname=openhmd-git
-pkgver=0.1.0.9.g3f60c20
+pkgver=0.1.0.82.gbdee667
 pkgrel=1
 pkgdesc="Free and Open Source API and drivers for immersive technology. Supports Oculus Rift."
 arch=(x86_64 i686)
