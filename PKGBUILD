@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=telegram-cli-git
-pkgver=r806.3ced7bb
+pkgver=r1128.6547c0b
 pkgrel=1
 pkgdesc="Telegram messenger CLI"
 arch=('i686' 'x86_64')
