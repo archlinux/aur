@@ -1,7 +1,7 @@
 # Maintainer: Ananth Bhaskararaman 
 
 pkgname=steam-standalone
-pkgver=0.2
+pkgver=1.0
 pkgrel=1
 pkgdesc="Systemd service and user to run steam stand-alone in big picture mode"
 url="https://github.com/ananthb/steam-standalone"
