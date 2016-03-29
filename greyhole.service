@@ -1,0 +1,14 @@
+[Unit]
+Description=Greyhole
+Requires=mysqld.service
+After=syslog.target network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/greyhole -D
+ExecReload=/usr/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
