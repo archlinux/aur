@@ -2,7 +2,7 @@
 _pkgname=nctelegram
 _gitname=ncTelegram
 pkgname=${_pkgname}-git
-pkgver=0.9.1.r14.g4b7ca4b
+pkgver=0.9.3.r0.g70c66dd
 pkgrel=1
 pkgdesc="A ncurse Telegram client developed in Python"
 arch=('any')
