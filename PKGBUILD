@@ -5,7 +5,7 @@
 pkgname=aseprite-git
 name=aseprite
 pkgver=v1.1.2.r32.g733ca44
-pkgrel=2
+pkgrel=3
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
@@ -16,7 +16,7 @@ conflicts=('aseprite')
 source=("git+https://github.com/aseprite/aseprite.git"
         "aseprite.desktop")
 sha256sums=('SKIP'
-        'c9e624b9fd095ebb3eec8220a58d4a9422f39d68477bafcc0047d773814ba0aa')
+        '4faeb782805e3427eedb04d7485e3e2d4eac6680509515b521a9f64ef5d79490')
 
 pkgver() {
     cd "$name"
@@ -28,6 +28,8 @@ build() {
   mkdir -p build && cd build
   git submodule update --init --recursive
   cmake -DUSE_SHARED_PIXMAN=ON \
+    -DWITH_WEBP_SUPPORT=ON \
+    -DUSE_SHARED_LIBWEBP=ON \
     -DUSE_SHARED_CURL=ON \
     -DUSE_SHARED_GIFLIB=ON \
     -DUSE_SHARED_JPEGLIB=ON \
