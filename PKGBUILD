@@ -5,7 +5,7 @@
 
 pkgname=ocaml-biniou
 _oname=biniou
-pkgver=1.0.9
+pkgver=1.0.10
 pkgrel=1
 pkgdesc='A binary data serialization format inspired by JSON'
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ license=('BSD')
 depends=('glibc')
 makedepends=('ocaml-easy-format' 'ocaml-findlib')
 url='http://mjambon.com/biniou.html'
-source=("http://mjambon.com/releases/${_oname}/${_oname}-${pkgver}.tar.gz")
-md5sums=('2f9f355281817912ac04c589eb463ef2')
+source=("https://github.com/mjambon/${_oname}/archive/v${pkgver}.tar.gz")
+sha256sums=('239f046b9edd07256a2001c78c70dd97fc7dfca8c7a999153eee729867c79bad')
 build() {
   cd $srcdir/$_oname-$pkgver
   make && make doc   
