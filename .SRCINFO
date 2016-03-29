@@ -1,0 +1,16 @@
+pkgbase = shet-c-client-git
+	pkgdesc = Command line clients for SHET, written in C.
+	pkgver = r5.6d9523a
+	pkgrel = 1
+	url = https://github.com/18sg/SHETCClient
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = scons
+	depends = shet-c-git
+	source = git+https://github.com/18sg/SHETCClient.git
+	md5sums = SKIP
+
+pkgname = shet-c-client-git
+
