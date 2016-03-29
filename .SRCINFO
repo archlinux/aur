@@ -1,7 +1,7 @@
 pkgbase = minecraft-server
 	pkgdesc = Minecraft server unit files, script, and jar
 	pkgver = 1.9
-	pkgrel = 7
+	pkgrel = 8
 	url = http://minecraft.net/
 	install = minecraft-server.install
 	arch = any
@@ -28,6 +28,6 @@ pkgbase = minecraft-server
 	md5sums = fef6fadd0739ae03ff71ba61025be207
 	md5sums = afb84ad0316af0aca421b36eaa2bbd90
 	md5sums = 00045683c06924d765ac14887218ffcc
-	md5sums = 18f23e5ad6547e6110a407808de40332
+	md5sums = 48cb57c426c7725483cd0c9af24048df
 
 pkgname = minecraft-server

@@ -37,6 +37,12 @@ source /etc/conf.d/${game} || echo "Could not source /etc/conf.d/${game}"
 # Preserve the content of IDLE_SERVER without making it readonly
 [[ ! -z ${tmp_IDLE_SERVER} ]] && IDLE_SERVER=${tmp_IDLE_SERVER}
 
+# The variable defines the row in which the first player is printed. It is interpreted
+# by awk and depends on the flavor of the game server.
+# The stock minecraft server prints the first player in the 4th row, spigot in the 6th.
+player_delimiter=4
+
+
 # Check whether sudo is needed at all
 if [[ $(whoami) == ${GAME_USER} ]]; then
 	SUDO_CMD=""
@@ -84,9 +90,7 @@ idle_server_daemon() {
 		if [[ $? -eq 0 ]]; then
 			# Game server is up and running
 			screen -S "${SESSION_NAME}" -X stuff "`printf \"list\r\"`"
-			# The "player_delimiter" in awk print needs to be 6 for the spigot server
-			# since the according information is contained in the 6th not in th 4th column
-			if [[ $? -eq 0 && -z $(tail -n 1 "${LOGPATH}/latest.log" | awk '{ print $4 }') ]]; then
+			if [[ $? -eq 0 && -z $(sleep 0.3; tail -n 1 "${LOGPATH}/latest.log" | awk "{ print \$${player_delimiter} }") ]]; then
 				# No player was seen on the server through list
 				no_player=$((no_player + CHECK_PLAYER_TIME))
 				# Stop the game server if no player was active for at least ${IDLE_IF_TIME}
@@ -96,13 +100,13 @@ idle_server_daemon() {
 					for i in {1..100}; do
 						screen -S "${SESSION_NAME}" -Q select . > /dev/null
 						[[ $? -eq 1 ]] && break
-						[[ $i -eq 100 ]] && echo -e "An \e[39;1merror\e[0m occured while trying to reset the idle_server!"
+						[[ $i -eq 100 ]] && echo -e "An \e[39;1merror\e[0m occurred while trying to reset the idle_server!"
 						sleep 0.1
 					done
 					# Listen on port ${GAME_PORT} for incoming connections
 					echo "Netcat is listening on port ${GAME_PORT} for incoming connections..."
 					${NETCAT_CMD} -v -l -p ${GAME_PORT}
-					[[ $? -eq 0 ]] && echo "Netcat caught an connection. The server is coming up again...."
+					[[ $? -eq 0 ]] && echo "Netcat caught an connection. The server is coming up again..."
 					IDLE_SERVER="false" ${myname} start
 				fi
 			elif [[ $? -eq 0 ]]; then
@@ -112,7 +116,7 @@ idle_server_daemon() {
 			# Game server is down, listen on port ${GAME_PORT} for incoming connections
 			echo "Netcat is listening on port ${GAME_PORT} for incoming connections..."
 			${NETCAT_CMD} -v -l -p ${GAME_PORT}
-			echo "Netcat caught an connection. The server is coming up again...."
+			echo "Netcat caught an connection. The server is coming up again..."
 			IDLE_SERVER="false" ${myname} start
 		fi
 	done
@@ -125,7 +129,7 @@ server_start() {
 	if [[ $? -eq 0 ]]; then
 		echo "A screen ${SESSION_NAME} session is already running. Please close it first."
 	else
-		echo -en "Starting server... "
+		echo -en "Starting server..."
 		${SUDO_CMD} screen -dmS "${SESSION_NAME}" /bin/bash -c "cd '${SERVER_ROOT}'; java ${JAVA_PARMS} -jar '${SERVER_ROOT}/${MAIN_EXECUTABLE}' nogui"
 		echo -e "\e[39;1m done\e[0m"
 	fi
@@ -145,11 +149,11 @@ server_start() {
 			for i in {1..100}; do
 				${SUDO_CMD} screen -S "${IDLE_SESSION_NAME}" -Q select . > /dev/null
 				[[ $? -eq 1 ]] && ${SUDO_CMD} screen -dmS "${IDLE_SESSION_NAME}" /bin/bash -c "${myname} idle_server_daemon" && break
-				[[ $i -eq 100 ]] && echo -e "An \e[39;1merror\e[0m occured while trying to reset the idle_server!"
+				[[ $i -eq 100 ]] && echo -e "An \e[39;1merror\e[0m occurred while trying to reset the idle_server!"
 				sleep 0.1
 			done
 		else
-			echo -en "Starting idle server daeomon... "
+			echo -en "Starting idle server daeomon..."
 			${SUDO_CMD} screen -dmS "${IDLE_SESSION_NAME}" /bin/bash -c "${myname} idle_server_daemon"
 			echo -e "\e[39;1m done\e[0m"
 		fi
@@ -168,7 +172,7 @@ server_stop() {
 
 		${SUDO_CMD} screen -S "${IDLE_SESSION_NAME}" -Q select . > /dev/null
 		if [[ $? -eq 0 ]]; then
-			echo -en "Stopping idle server daemon... "
+			echo -en "Stopping idle server daemon..."
 			${SUDO_CMD} screen -S "${IDLE_SESSION_NAME}" -X quit
 			echo -e "\e[39;1m done\e[0m"
 		else
@@ -179,15 +183,27 @@ server_stop() {
 	# Gracefully exit the game server
 	${SUDO_CMD} screen -S "${SESSION_NAME}" -Q select . > /dev/null
 	if [[ $? -eq 0 ]]; then
+		# Game server is up and running
 		game_command save-all
-		game_command say "Server is going down in 10 seconds! HURRY UP WITH WHATEVER YOU ARE DOING!" # Warning the users
-		echo -en "Server is going down in... "
-		for i in {1..10}; do
-			game_command say "down in... $(expr 10 - $i)"
-			echo -n " $(expr 10 - $i)"
-			sleep 1
-		done
-		game_command stop
+
+		# Gracefully stop the server when there are still active players
+		${SUDO_CMD} screen -S "${SESSION_NAME}" -X stuff "`printf \"list\r\"`"
+		if [[ $? -eq 0 && -z $(sleep 0.3; tail -n 1 "${LOGPATH}/latest.log" | awk "{ print \$${player_delimiter} }") ]]; then
+			# No player was seen on the server through list
+			echo -en "Server is going down..."
+			game_command stop
+		else
+			# Player(s) were seen on the server through list (or an error occurred)
+			# Warning the users through the server console
+			game_command say "Server is going down in 10 seconds! HURRY UP WITH WHATEVER YOU ARE DOING!"
+			echo -en "Server is going down in..."
+			for i in {1..10}; do
+				game_command say "down in... $(expr 10 - $i)"
+				echo -n " $(expr 10 - $i)"
+				sleep 1
+			done
+			game_command stop
+		fi
 
 		# Finish as soon as the server has shut down completely
 		for i in {1..100}; do
@@ -358,7 +374,7 @@ server_command() {
 
 	${SUDO_CMD} screen -S "${SESSION_NAME}" -Q select . > /dev/null
 	if [[ $? -eq 0 ]]; then
-		sleep 0.2 &
+		sleep 0.3 &
 		sleep_pid=$!
 		game_command "$@"
 		${SUDO_CMD} tail -f --pid=${sleep_pid} -n 0 "${LOGPATH}/latest.log"
