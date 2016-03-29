@@ -42,7 +42,7 @@ index 6d5764f..77e910b 100644
  QMAKE_EXTENSION_STATICLIB = a
 -QMAKE_LIB_EXTENSIONS    = a dll.a
 +QMAKE_EXTENSION_IMPORTLIB    = dll.a
- 
+
  QMAKE_LIBS              =
  QMAKE_LIBS_CORE         = -lole32 -luuid -lws2_32 -ladvapi32 -lshell32 -luser32 -lkernel32
 diff --git a/qmake/generators/win32/winmakefile.cpp b/qmake/generators/win32/winmakefile.cpp
@@ -82,6 +82,3 @@ index 6d5764f..77e910b 100644
          project->values("TARGET_EXT").append(project->first("TARGET_VERSION_EXT") + "."
                  + project->first("QMAKE_EXTENSION_SHLIB"));
          project->values("TARGET").first() = project->first("QMAKE_PREFIX_SHLIB") + project->first("TARGET");
--- 
-1.9.0
-
