@@ -1,0 +1,16 @@
+pkgbase = ros-jade-kinect2-registration
+	pkgdesc = Tools for using the Kinect One (Kinect v2) in ROS.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/code-iai/iai_kinect2
+	arch = any
+	license = apache
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-jade-roscpp
+	depends = ros-jade-roscpp
+	source = ros-jade-kinect2-registration::git+https://github.com/code-iai/iai_kinect2.git
+	sha256sums = SKIP
+
+pkgname = ros-jade-kinect2-registration
+
