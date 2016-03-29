@@ -3,7 +3,7 @@
 
 pkgname=cryptojka
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="de/encryption character by character"
 arch=('i686' 'x86_64')
 url="http://gitlab.com/JKANetwork/cryptoJKA"
@@ -19,7 +19,7 @@ build(){
 package(){
   mkdir "$pkgdir/usr"
   mkdir "$pkgdir/usr/bin"
-  mv "$srcdir/$pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin"
+  mv "$srcdir/$pkgname/$pkgname" "$pkgdir/usr/bin"
 }
 
 
