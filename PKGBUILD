@@ -3,7 +3,7 @@
 # Contributor: Justin Davis <jrcd 83 at gmail>
 
 pkgname=cppo
-pkgver=1.1.2
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="The C preprocessor written in OCaml"
 arch=('i686' 'x86_64')
@@ -11,9 +11,8 @@ license=('BSD')
 depends=('glibc')
 makedepends=('ocaml-findlib')
 url='http://mjambon.com/cppo.html'
-source=("http://mjambon.com/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('975e0cb5e2751a604715eb042a059ef4965aff0318cf4c0553f215ed0964dfdd')
-
+source=("https://github.com/mjambon/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('2e3e658b0ba24d7217c59e76df3e92d4e03866143da8d206b3267cebccfefc69')
 build() {
   cd $srcdir/$pkgname-$pkgver
   make
