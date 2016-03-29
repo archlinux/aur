@@ -2,8 +2,8 @@
 
 pkgname=srain-git
 pkgver=0.138.79ce198
-pkgrel=1
-pkgdesc="a simple mixer application designed to run in your system tray."
+pkgrel=2
+pkgdesc="it does not look like a irc client"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/LastAvenger/srain"
