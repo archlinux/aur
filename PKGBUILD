@@ -4,7 +4,7 @@
 # Contributor: Calvin Morrison <MutantTurkey@gmail.com>
 # Contributor: David C. Rankin <drankinatty at gmail dot com>
 
-pkgbase=tde-tqt3
+pkgname=tde-tqt3
 pkgver=14.0.3
 pkgrel=1
 pkgdesc='TQt3 gui toolkit'
