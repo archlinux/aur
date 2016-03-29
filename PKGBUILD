@@ -3,7 +3,7 @@
 
 pkgname=cryptojka
 pkgver=0.4.1
-pkgrel=3
+pkgrel=1
 pkgdesc="de/encryption character by character"
 arch=('i686' 'x86_64')
 url="http://gitlab.com/JKANetwork/cryptoJKA"
