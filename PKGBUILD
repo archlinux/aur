@@ -1,5 +1,5 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-cgi-ex'
 pkgver='2.44'
@@ -8,7 +8,7 @@ pkgdesc="CGI utility suite - makes powerful application writing fun and easy"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-template-alloy>=1.016')
+depends=('perl-template-alloy>=1.016' 'perl-cgi')
 makedepends=()
 url='https://metacpan.org/release/CGI-Ex'
 source=('http://search.cpan.org/CPAN/authors/id/L/LJ/LJEPSON/CGI-Ex-2.44.tar.gz')
