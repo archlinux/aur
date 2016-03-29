@@ -1,0 +1,17 @@
+pkgbase = dosbox-alleycat
+	pkgdesc = Alleycat - old DOS game
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.dosgamesarchive.com
+	arch = any
+	license = freeware
+	depends = dosbox
+	depends = sdl
+	depends = unzip
+	source = http://image.dosgamesarchive.com/games/alleycat.zip
+	source = dosbox-alleycat.png
+	source = dosbox-alleycat.desktop
+	source = dosbox-alleycat.conf
+
+pkgname = dosbox-alleycat
+

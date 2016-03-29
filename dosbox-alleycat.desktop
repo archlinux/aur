@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Alleycat
+Comment=Alleycat - old DOS game
+Exec=/usr/bin/dosbox -conf /usr/local/games/dosbox-alleycat/dosbox-alleycat.conf
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/dosbox-alleycat.png
+Encoding=UTF-8
+Categories=GNOME;GTK;Game;
