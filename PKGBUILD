@@ -1,7 +1,7 @@
 # Maintainer: Jonathan la Cour <jon@lacour.me>
 # Contributor: Pieter Kokx <pieter@kokx.nl>
 pkgname=armory-git
-pkgver=v0.93.3.r8.g1c71901
+pkgver=v0.94.0.r1.gb0033fb
 pkgrel=1
 pkgdesc="Full-featured Bitcoin wallet management application"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/$pkgname"
-    git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+    git describe --tags --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
