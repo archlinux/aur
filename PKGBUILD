@@ -3,7 +3,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust-git
-pkgver=4022.1c87aab
+pkgver=4030.85d71d3
 pkgrel=1
 pkgdesc="A functional programming language for realtime audio signal processing."
 arch=('i686' 'x86_64')
