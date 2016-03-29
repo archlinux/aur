@@ -1,0 +1,19 @@
+pkgbase = ros-jade-kinect2
+	pkgdesc = Metapackage for Kinect v2 tools from Institute for Artificial Intelligenceusing in Bremen.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/code-iai/iai_kinect2
+	arch = any
+	license = apache
+	makedepends = cmake
+	makedepends = ros-build-tools
+	depends = ros-jade-tf2-ros
+	depends = ros-jade-kinect2-registration
+	depends = ros-jade-kinect2-bridge
+	depends = ros-jade-kinect2-viewer
+	depends = ros-jade-kinect2-calibration
+	source = ros-jade-kinect2::git+https://github.com/code-iai/iai_kinect2.git
+	sha256sums = SKIP
+
+pkgname = ros-jade-kinect2
+
