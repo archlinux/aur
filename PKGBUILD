@@ -1,4 +1,4 @@
-# Maintainer: Jan-Erik Rediger <badboy at archlinux dot us>
+# Maintainer: Jan-Erik Rediger <badboy@archlinux.us>
 
 pkgname=dit-git
 pkgver=0.2.r0.g94b4867
