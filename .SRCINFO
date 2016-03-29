@@ -1,0 +1,15 @@
+pkgbase = python-minfx
+	pkgdesc = The minfx optimization library
+	pkgver = 1.0.12
+	pkgrel = 1
+	url = https://gna.org/projects/minfx/
+	arch = any
+	license = GPL
+	depends = python
+	provides = python-minfx
+	options = !emptydirs
+	source = http://download.gna.org/minfx/minfx-1.0.12.tar.gz
+	md5sums = 887476d5f30ea8dc40c6614d1a8776e8
+
+pkgname = python-minfx
+
