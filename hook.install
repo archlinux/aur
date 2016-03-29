@@ -1,0 +1,13 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = mozilla-custom-dictionaries
+Target = firefox
+Target = thunderbird
+
+[Action]
+Description = Re-symlink of Mozilla dictionaries
+Depends = bash
+When = PostTransaction
+Exec = /usr/lib/mozilla-custom-dictionaries/alpm-hook install

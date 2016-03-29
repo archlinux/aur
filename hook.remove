@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = mozilla-custom-dictionaries
+
+[Action]
+Description = Undo re-symlink of Mozilla dictionaries
+Depends = bash
+When = PreTransaction
+Exec = /usr/lib/mozilla-custom-dictionaries/alpm-hook remove
