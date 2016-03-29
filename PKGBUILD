@@ -7,7 +7,7 @@ arch=('any')
 url="https://metacpan.org/release/ExtUtils-Typemaps-Default/"
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
-makedepends=()
+makedepends=('perl-module-build')
 provides=()
 conflicts=()
 replaces=()
