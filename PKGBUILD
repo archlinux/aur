@@ -27,6 +27,8 @@ prepare() {
 
 build() {
     cd "${srcdir}/${_gitname}"
+    # https://bugs.archlinux.org/task/31544
+    sed -i -e 's:login:system-auth:' i3lock.pam
     make
 }
 
