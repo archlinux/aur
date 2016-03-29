@@ -4,7 +4,7 @@
 
 pkgname=cloudabi-binutils
 pkgver=2.26
-pkgrel=2
+pkgrel=3
 _commit=71090e7a
 pkgdesc="A set of programs to assemble and manipulate binary and object files"
 arch=('i686' 'x86_64')
@@ -39,6 +39,7 @@ package() {
 	make install DESTDIR="$pkgdir"
 	cd "$srcdir/build-aarch64"
 	make install DESTDIR="$pkgdir"
+	rm -r "$pkgdir"/usr/{x86_64,aarch64}-unknown-cloudabi/bin
 
 	rm -r "$pkgdir/usr/share/info"
 	rm "$pkgdir/usr/share/man/man1/x86_64-unknown-cloudabi-"{dlltool,nlmconv,windres,windmc}*
