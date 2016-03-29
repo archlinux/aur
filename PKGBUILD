@@ -3,7 +3,7 @@
 
 pkgname=cryptojka
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="de/encryption character by character"
 arch=('i686' 'x86_64')
 url="http://gitlab.com/JKANetwork/cryptoJKA"
@@ -13,7 +13,7 @@ source=(https://gitlab.com/JKANetwork/cryptoJKA/raw/master/last-version/$pkgname
 md5sums=('SKIP')
 
 build(){
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname"
   make
 }
 package(){
