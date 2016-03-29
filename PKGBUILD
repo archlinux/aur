@@ -2,11 +2,11 @@
 
 pkgname=xdm-arch-theme
 pkgver=2.3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="An Arch Linux theme for xdm."
 arch=("any")
 url="https://github.com/the-isz/xdm-arch-theme"
-license="GPL"
+license=("GPL")
 depends=("xorg-xdm" "xorg-xrandr" "xorg-xclock" "xorg-xwininfo" "xorg-xsetroot" "xorg-xkill" "librsvg")
 makedepends=("tar" "gzip")
 optdepends=(

@@ -1,7 +1,7 @@
 pkgbase = xdm-arch-theme
 	pkgdesc = An Arch Linux theme for xdm.
 	pkgver = 2.3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/the-isz/xdm-arch-theme
 	install = xdm-arch-theme.install
 	arch = any
