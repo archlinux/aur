@@ -1,7 +1,7 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 
 pkgname=libplatform-git
-pkgver=1.0.10.r4.g278828a
+pkgver=2.0.1.r2.g041a8c6
 pkgrel=1
 pkgdesc="Platform support library used by libCEC and binary add-ons for Kodi"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir"/libplatform
-  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/p8\.platform\.//'
 }
 
 build() {
