@@ -4,49 +4,42 @@
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=rtaudio
-pkgver=4.1.1
-pkgrel=7
+pkgver=4.1.2
+pkgrel=1
 pkgdesc="A set of C++ classes that provide a common API for realtime audio input/output."
 arch=('i686' 'x86_64')
 url="http://www.music.mcgill.ca/~gary/rtaudio/"
 license=('MIT')
 depends=('jack' 'rtmidi')
 source=("${url}release/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('b47f909d7b5485fa670005642ff2846122b15229f72e600318eca187c93d18b34ba38f5f8ba367799e3d47f3b0c9cb84f28d1315e6607ab779b0799e364b454b')
-
-prepare() {
-  cd "${pkgname}-${pkgver}"
-  aclocal
-  autoconf
-}
+sha512sums=('1e7f7f0f4dc451d023a7c8ab287fe63034cf6b4e18fe138bab253c307d6dd0cddb669b031f6c21325aaac0ce53002acd2a17dd1e47bd8ac2cb14e058cfce1a21')
 
 build() {
   cd "${pkgname}-${pkgver}"
   ./configure --prefix=/usr --with-alsa --with-jack
-  # Add jack or comment line without jack
-  sed -i 's/Requires: /Requires: jack /' librtaudio.pc
+  sed -i 's/Requires: /Requires: jack /' rtaudio.pc
   make
-  make -C tests
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
   
   # Install library files.
-  install -Dm755 librtaudio.so.${pkgver} "${pkgdir}/usr/lib/librtaudio.so.${pkgver}"
-  ln -sf librtaudio.so.${pkgver} "${pkgdir}/usr/lib/librtaudio.so.4"
-  ln -sf librtaudio.so.${pkgver} "${pkgdir}/usr/lib/librtaudio.so"
+#  install -Dm755 librtaudio.so.${pkgver} "${pkgdir}/usr/lib/librtaudio.so.${pkgver}"
+#  ln -sf librtaudio.so.${pkgver} "${pkgdir}/usr/lib/librtaudio.so.4"
+#  ln -sf librtaudio.so.${pkgver} "${pkgdir}/usr/lib/librtaudio.so"
 
   # Install header file.
-  install -Dm644 RtAudio.h "${pkgdir}/usr/include/RtAudio.h"
+#  install -Dm644 RtAudio.h "${pkgdir}/usr/include/RtAudio.h"
 
   # Install RtAudio configuration tool.
-  install -Dm644 librtaudio.pc "${pkgdir}/usr/lib/pkgconfig/librtaudio.pc"
+#  install -Dm644 librtaudio.pc "${pkgdir}/usr/lib/pkgconfig/librtaudio.pc"
   install -Dm755 rtaudio-config "${pkgdir}/usr/bin/rtaudio-config"
 
   # Install test utilities with prefix 'rtaudio-'
-  for i in $(find tests -maxdepth 1 -perm 755 -type f); do
-      install -Dm755 $i "${pkgdir}/usr/bin/${pkgname}-"${i/*\//}
+  for _bin in `find tests -maxdepth 1 -type f -perm 755 ! -name "*.*"`; do
+    install -Dm755 $_bin "${pkgdir}/usr/bin/${pkgname}-"`basename $_bin`
   done
 
   # Text documentation.
