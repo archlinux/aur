@@ -1,11 +1,13 @@
-# Maintainer: Jacob Emmert-Aronson <jacob at mlaronson dot com>
+# Maintainer: Harry Jeffery <harry|@|exec64|.|co|.|uk>
+# Contributor: Jacob Emmert-Aronson <jacob at mlaronson dot com>
 # Contributor: Xiao-Long Chen <chenxiaolong at cxl dot epac dot to>
 # Contributor: Paul Viren <paul dot viren at ircameras dot com>
+# Contributor: Dominic Meiser <dosm dot mail at gmail dot com>
 
 pkgname=gmock
 pkgver=1.7.0
 _ubuntu_ver=0ubuntu1
-pkgrel=1
+pkgrel=2
 pkgdesc="Google Mock - A library for writing and using C++ mock classes"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/googlemock/"
@@ -44,6 +46,7 @@ package() {
   install -d -m755 "${pkgdir}/usr/share/${pkgname}/"
   install -d -m755 "${pkgdir}/usr/share/doc/${pkgname}/"
   install -d -m755 "${pkgdir}/usr/src/gmock/src"
+  install -m644 CMakeLists.txt "$pkgdir/usr/src/gmock"
   install -m755 "scripts/generator/gmock_gen.py" "${pkgdir}/usr/bin/"
   install -m 0644 $srcdir/$pkgname-$pkgver/src/*.cc $pkgdir/usr/src/gmock/src
   cp -r --preserve=mode,links "scripts/generator/cpp" "${pkgdir}/usr/share/${pkgname}/"
