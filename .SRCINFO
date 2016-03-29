@@ -1,5 +1,5 @@
 pkgbase = ros-jade-kinect2-viewer
-	pkgdesc = Tools for using the Kinect One (Kinect v2) in ROS.
+	pkgdesc = Viewer for Kinect One (Kinect v2) in ROS.
 	pkgver = 0.0.1
 	pkgrel = 1
 	url = https://github.com/code-iai/iai_kinect2

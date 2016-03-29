@@ -22,8 +22,6 @@ ros_makedepends=(ros-jade-roscpp
 makedepends=('cmake' 'ros-build-tools' 'pcl'
   ${ros_makedepends[@]})
 
-
-
 ros_depends=(
   ros-jade-message-runtime
   ros-jade-roscpp
