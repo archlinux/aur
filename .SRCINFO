@@ -1,0 +1,21 @@
+pkgbase = dosbox-gobman
+	pkgdesc = Gobman - old DOS game
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.dosgamesarchive.com
+	arch = any
+	license = shareware
+	depends = dosbox
+	depends = sdl
+	depends = unzip
+	source = http://image.dosgamesarchive.com/games/gobman11.zip
+	source = dosbox-gobman.png
+	source = dosbox-gobman.desktop
+	source = dosbox-gobman.conf
+	md5sums = ce9bbc0101cffebd92b3d08a41f63d8c
+	md5sums = 7dd21ea980bff7b5a399cd039c90cf66
+	md5sums = 4a9351ca4d731803b82024b9492ee90a
+	md5sums = f0420bc16375fea1224db81c1cebd6a5
+
+pkgname = dosbox-gobman
+

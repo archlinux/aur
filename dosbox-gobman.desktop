@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Gobman
+Comment=Gobman - old DOS game
+Exec=/usr/bin/dosbox -conf /usr/local/games/dosbox-gobman/dosbox-gobman.conf
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/dosbox-gobman.png
+Encoding=UTF-8
+Categories=GNOME;GTK;Game;
