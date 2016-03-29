@@ -2,7 +2,7 @@
 pkgname=libwandio
 _pkgname=wandio
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="software library written in C that provides an API for transparently reading from and writing to files using a variety of supported compression methods"
 url="http://research.wand.net.nz/software/libwandio.php"
 arch=('i686' 'x86_64')
