@@ -40,7 +40,7 @@ then
    'lib32-libxtst')
 fi
 
-makedepends=('bash')
+makedepends=('bash' 'upx')
 
 optdepends=('quartus-lite-max: MAXII, MAXV device support'
             'quartus-lite-max10: MAX10 device support'
