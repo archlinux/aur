@@ -7,12 +7,12 @@
 # Contributor: Jose Neder <jlneder(at)gmail(dot)com>
 
 pkgname=ocaml-ocamlgraph
-pkgver=1.8.2
-pkgrel=2
+pkgver=1.8.6
+pkgrel=1
 pkgdesc="Graph library for OCaml"
 url="http://ocamlgraph.lri.fr"
 source=("http://ocamlgraph.lri.fr/download/ocamlgraph-$pkgver.tar.gz")
-md5sums=('efa4394bc4651c90de443ff61c7477e6')
+md5sums=('afbc24f0e0eb72c2d3eda64b68513e73')
 options=('!strip' '!makeflags')
 depends=('ocaml')
 makedepends=('ocaml-findlib' 'lablgtk2')
