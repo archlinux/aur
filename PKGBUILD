@@ -12,7 +12,7 @@ license=('GPL')
 depends=('systemd' 'xorg-server' 'xorg-xinit' 'steam' 'polkit' 'wmctrl' 'xfwm4')
 install=readme.install
 source=("https://github.com/ananthb/$pkgname/releases/download/$pkgver/files.tar.gz")
-sha256sums=('cdd565f50a4b89719c73b403e4c552584428c4f77db2401f0eba794ab0396174')
+sha256sums=('f2a2de40be790e92cdbfea4fd5b88395f904e7e689905c9c95dc781c63e49a46')
 
 package() {
 	install -Dm644 "$srcdir/steam.service" \
