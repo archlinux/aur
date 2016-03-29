@@ -2,14 +2,14 @@
 
 _pkgname="qt-installer-framework"
 pkgname=${_pkgname}-git
-pkgrel=1
+pkgrel=2
 pkgver=r2826.6277c86
 _qtver=5.4.2
 pkgdesc="The Qt Installer Framework used for the Qt SDK installer."
 arch=('i686' 'x86_64')
 url='http://qt-project.org/wiki/Qt-Installer-Framework'
 license=('FDL' 'LGPL')
-makedepends=("git" "qt5-base>=${_qtver}" "qt5-tools>=${_qtver}")
+makedepends=("git" "qt5-base>=${_qtver}" "qt5-tools>=${_qtver}" "qt5-declarative>=${_qtver}")
 groups=('qt' 'qt5')
 _pkgfqn="${_pkgname}-opensource-${pkgver}-src"
 
