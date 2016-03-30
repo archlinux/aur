@@ -1,8 +1,8 @@
 # Maintainer: Kaleb Klein <klein.jae@gmail.com>
 
 pkgname=checkmate-git
-pkgver=2.3.7
-pkgrel=7
+pkgver=2.3.8
+pkgrel=8
 pkgdesc="GUI application for verifying and generating checksums"
 arch=(any)
 license=('LGPL')
