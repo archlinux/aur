@@ -19,6 +19,7 @@ dkms_remove() {
   if echo "$line" | grep -E 'added|built|installed'; then
     dkms remove -m mba6x_bl -v ${1%%-*} --all
   fi
+  systemctl disable mba6x_bl
 }
 
 dkms_install() {
@@ -26,4 +27,5 @@ dkms_install() {
   modprobe mba6x_bl
 
   /usr/bin/depmod -a
+  systemctl enable mba6x_bl
 }
