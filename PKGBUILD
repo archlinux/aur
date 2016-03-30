@@ -3,8 +3,8 @@
 pkgname=qt-lua
 pkgdesc='Lua scripting API for Qt applications'
 pkgver=2.0
-pkgrel=1
-arch=('any')
+pkgrel=2
+arch=('i686' 'x86_64')
 url='http://www.nongnu.org/libqtlua/'
 license=('LGPL')
 makedepends=()
