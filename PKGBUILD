@@ -1,11 +1,11 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=skul-git
-pkgver=0.35.ac4b333
+pkgver=0.36.7b86bba
 pkgrel=1
 pkgdesc="Create, format and mount loopback-based, encrypted LUKS containers"
 url="https://github.com/gavinhungry/skul"
-license="MIT"
+license=('MIT')
 arch=('any')
 makedepends=('git')
 depends=('cryptsetup' 'e2fsprogs' 'udisks')
