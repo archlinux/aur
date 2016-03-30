@@ -1,0 +1,14 @@
+#!/bin/sh
+
+prepare() {
+	systemd-sysusers /usr/lib/sysusers.d/mysqlrouter.conf
+	systemd-tmpfiles --create
+}
+
+post_install() {
+	prepare
+}
+
+post_upgrade() {
+	prepare
+}
