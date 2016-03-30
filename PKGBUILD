@@ -1,7 +1,7 @@
 # Maintainer: John Jenkins twodopeshaggy@gmail.com
 
 pkgname=rtv
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=0
 pkgdesc="Browse Reddit from your terminal"
 arch=('any')
@@ -11,7 +11,7 @@ conflicts=('rtv-git')
 makedepends=('git')
 depends=('python-tornado' 'python-decorator' 'python3-kitchen' 'ncurses' 'python' 'python-six' 'python-requests' 'python-praw-git' 'python-setuptools')
 source=(https://github.com/michael-lazar/rtv/archive/v$pkgver.tar.gz)
-md5sums=('bd4d659a333a45ca88f2e8062b968274')
+md5sums=('d50b386c6145ccdaf7fbfeff0d68b657')
 
 package() {
    cd "$srcdir/$pkgname-$pkgver"
