@@ -14,17 +14,22 @@ makedepends=('cmake')
 source=(http://files.slembcke.net/chipmunk/release/Chipmunk-${pkgver%%.*}.x/Chipmunk-$pkgver.tgz)
 
 build() {
-	cd "$srcdir/Chipmunk-$pkgver"
-	sed -i '/MAKE_PROPERTIES_REF(cpShape, IsSensor);/d' include/chipmunk/chipmunk_ffi.h
-	cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_DEMOS=OFF -DCMAKE_C_FLAGS="-DCHIPMUNK_FFI" .
-	make clean
-	make
+  cd "$srcdir/Chipmunk-$pkgver"
+  sed -i '/MAKE_PROPERTIES_REF(cpShape, IsSensor);/d' include/chipmunk/chipmunk_ffi.h
+  cmake -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DBUILD_DEMOS=OFF \
+        -DCMAKE_C_FLAGS="-DCHIPMUNK_FFI" \
+        -DNDEBUG=ON \
+        .
+  make clean
+  make
 }
 
 package() {
-	cd "$srcdir/Chipmunk-$pkgver"
-	install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	make DESTDIR="$pkgdir" install
+  cd "$srcdir/Chipmunk-$pkgver"
+  install -Dm0644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  make DESTDIR="$pkgdir" install
 }
 
 sha256sums=('fe54b464777d89882a9f9d3d6deb17189af8bc5d63833b25bb1a7d16c3e69260')
