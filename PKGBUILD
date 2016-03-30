@@ -16,7 +16,7 @@ md5sums=('2ca73ae5aba01b644f2dfe732e84132c')
 prepare() {
   cd "compute-image-packages-$pkgver"
 
-  find . -name *.py -print0 | xargs -0 sed -i 's/#!\/usr\/bin\/python/#!\/usr\/bin\/python2.7/g'
+  find . -name *.py -print0 | xargs -0 sed -i 's/#!\/usr\/bin\/python/#!\/usr\/bin\/python2/g'
 }
 
 build() {
