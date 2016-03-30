@@ -1,75 +1,87 @@
-diff -Naur iproute2-3.4.0/Makefile iproute2-3.4.0.new/Makefile
---- iproute2-3.4.0/Makefile	2012-05-21 23:12:19.000000000 +0200
-+++ iproute2-3.4.0.new/Makefile	2012-06-18 10:23:53.896760158 +0200
-@@ -1,7 +1,8 @@
- ROOTDIR=$(DESTDIR)
- PREFIX=/usr
- LIBDIR=$(PREFIX)/lib
--SBINDIR=/sbin
-+SBINDIR=/usr/sbin
-+SHAREDIR=/usr/share
- CONFDIR=/etc/iproute2
- DATADIR=$(PREFIX)/share
- DOCDIR=$(DATADIR)/doc/iproute2
-diff -Naur iproute2-3.4.0/netem/Makefile iproute2-3.4.0.new/netem/Makefile
---- iproute2-3.4.0/netem/Makefile	2012-05-21 23:12:19.000000000 +0200
-+++ iproute2-3.4.0.new/netem/Makefile	2012-06-18 10:23:53.896760158 +0200
-@@ -20,9 +20,9 @@
+diff --git a/Makefile b/Makefile
+index 67176be..6549447 100644
+--- a/Makefile
++++ b/Makefile
+@@ -13,7 +13,7 @@ DBM_INCLUDE:=$(DESTDIR)/usr/include
+ 
+ SHARED_LIBS = y
+ 
+-DEFINES= -DRESOLVE_HOSTNAMES -DLIBDIR=\"$(LIBDIR)\"
++DEFINES= -DRESOLVE_HOSTNAMES -DLIBDIR=\"$(LIBDIR)\" -DDATADIR=\"$(DATADIR)\"
+ ifneq ($(SHARED_LIBS),y)
+ DEFINES+= -DNO_SHARED_LIBS
+ endif
+diff --git a/netem/Makefile b/netem/Makefile
+index e52e125..5b4d283 100644
+--- a/netem/Makefile
++++ b/netem/Makefile
+@@ -20,9 +20,9 @@ stats: stats.c
  	$(HOSTCC) $(CCOPTS) -I../include -o $@ $@.c -lm
  
  install: all
 -	mkdir -p $(DESTDIR)$(LIBDIR)/tc
-+	mkdir -p $(DESTDIR)$(SHAREDIR)/tc
++	mkdir -p $(DESTDIR)$(DATADIR)/tc
  	for i in $(DISTDATA); \
 -	do install -m 644 $$i $(DESTDIR)$(LIBDIR)/tc; \
-+	do install -m 644 $$i $(DESTDIR)$(SHAREDIR)/tc; \
++	do install -m 644 $$i $(DESTDIR)$(DATADIR)/tc; \
  	done
  
  clean:
-diff -Naur iproute2-3.4.0/tc/Makefile iproute2-3.4.0.new/tc/Makefile
---- iproute2-3.4.0/tc/Makefile	2012-05-21 23:12:19.000000000 +0200
-+++ iproute2-3.4.0.new/tc/Makefile	2012-06-18 10:23:53.893426840 +0200
-@@ -105,18 +105,11 @@
- 	$(AR) rcs $@ $(TCLIB)
+diff --git a/tc/q_netem.c b/tc/q_netem.c
+index cd990a0..7d4e71f 100644
+--- a/tc/q_netem.c
++++ b/tc/q_netem.c
+@@ -113,7 +113,7 @@ static int get_distribution(const char *type, __s16 *data, int maxdata)
+ 	char *line = NULL;
+ 	char name[128];
  
- install: all
--	mkdir -p $(MODDESTDIR)
-+	mkdir -p $(DESTDIR)$(LIBDIR)/tc
- 	install -m 0755 tc $(DESTDIR)$(SBINDIR)
- 	for i in $(TCSO); \
--	do install -m 755 $$i $(MODDESTDIR); \
-+	do install -m 755 $$i $(DESTDIR)$(LIBDIR)/tc; \
- 	done
--	if [ ! -f $(MODDESTDIR)/m_ipt.so ]; then \
--	if [ -f $(MODDESTDIR)/m_xt.so ]; \
--		then ln -s m_xt.so $(MODDESTDIR)/m_ipt.so ; \
--	elif [ -f $(MODDESTDIR)/m_xt_old.so ]; \
--		then ln -s m_xt_old.so $(MODDESTDIR)/m_ipt.so ; \
--	fi; \
--	fi
- 
- clean:
- 	rm -f $(TCOBJ) $(TCLIB) libtc.a tc *.so emp_ematch.yacc.h; \
-diff -Naur iproute2-3.4.0/tc/tc_util.c iproute2-3.4.0.new/tc/tc_util.c
---- iproute2-3.4.0/tc/tc_util.c	2012-05-21 23:12:19.000000000 +0200
-+++ iproute2-3.4.0.new/tc/tc_util.c	2012-06-18 10:23:53.893426840 +0200
-@@ -24,8 +24,8 @@
- #include "utils.h"
- #include "tc_util.h"
- 
--#ifndef LIBDIR
--#define LIBDIR "/usr/lib"
-+#ifndef SHAREDIR
-+#define SHAREDIR "/usr/share"
+-	snprintf(name, sizeof(name), "%s/%s.dist", get_tc_lib(), type);
++	snprintf(name, sizeof(name), "%s/%s.dist", get_tc_datadir(), type);
+ 	if ((f = fopen(name, "r")) == NULL) {
+ 		fprintf(stderr, "No distribution data for %s (%s: %s)\n",
+ 			type, name, strerror(errno));
+diff --git a/tc/tc_util.c b/tc/tc_util.c
+index aa6de24..22bb6d5 100644
+--- a/tc/tc_util.c
++++ b/tc/tc_util.c
+@@ -32,6 +32,10 @@
+ #define LIBDIR "/usr/lib"
  #endif
  
- const char *get_tc_lib(void)
-@@ -34,7 +34,7 @@
++#ifndef DATADIR
++#define DATADIR "/usr/share"
++#endif
++
+ static struct db_names *cls_names = NULL;
  
- 	lib_dir = getenv("TC_LIB_DIR");
- 	if (!lib_dir)
--		lib_dir = LIBDIR "/tc/";
-+		lib_dir = SHAREDIR "/tc/";
- 
+ #define NAMES_DB "/etc/iproute2/tc_cls"
+@@ -73,6 +77,17 @@ const char *get_tc_lib(void)
  	return lib_dir;
  }
+ 
++const char *get_tc_datadir(void)
++{
++	const char *data_dir;
++
++	data_dir = getenv("TC_DATA_DIR");
++	if (!data_dir)
++		data_dir = DATADIR "/tc/";
++
++	return data_dir;
++}
++
+ int get_qdisc_handle(__u32 *h, const char *str)
+ {
+ 	__u32 maj;
+diff --git a/tc/tc_util.h b/tc/tc_util.h
+index 61e60b1..6d448de 100644
+--- a/tc/tc_util.h
++++ b/tc/tc_util.h
+@@ -55,6 +55,7 @@ struct exec_util {
+ };
+ 
+ extern const char *get_tc_lib(void);
++extern const char *get_tc_datadir(void);
+ 
+ extern struct qdisc_util *get_qdisc_kind(const char *str);
+ extern struct filter_util *get_filter_kind(const char *str);
