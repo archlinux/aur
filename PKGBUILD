@@ -1,7 +1,7 @@
 # Maintainer: Cayde Dixon <me@cazzar.net>
 
 pkgname=discord-canary
-pkgver=0.0.0
+pkgver=0.0.1
 pkgrel=3
 pkgdesc='Discord Canary linux release'
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('freetype2-infinality: If you have black screens with emojis install
 source=(DiscordCanary.desktop LICENSE)
 source_x86_64=("https://storage.googleapis.com/discord-developer/test/discord-canary-${pkgver}.tar.gz")
 sha256sums=('67eb4842aec28f26e894315d46c7250e5958eab7f2f24c1f54db40ec302e41f0' '688f418cd32a682c6d331c211fedd48ff86ee8ba5a7640f589eadb32996af80f')
-sha256sums_x86_64=('0edc1be19faf2e6401c408b1097901ce582222348f144e38c51749bd38ba3dd6')
+sha256sums_x86_64=('0fb4b64b6119311279ec79b4a11c9f0640553ca437e36302f3b8134d10e375ea')
 
 package() {
   # Install the main files.
