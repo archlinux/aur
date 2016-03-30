@@ -3,7 +3,7 @@
 # Contributor: Fabio Volpe <volpefabio@gmail.com>
 
 pkgname=chipmunk
-pkgver=7.0.0
+pkgver=7.0.1
 pkgrel=1
 pkgdesc="A high-performance 2D rigid body physics library"
 arch=('i686' 'x86_64')
@@ -27,4 +27,4 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 
-sha256sums=('14ab380396a96b15951c42a2d7ca259a53ecab4e550a71857d13dcfd388a51cd')
+sha256sums=('fe54b464777d89882a9f9d3d6deb17189af8bc5d63833b25bb1a7d16c3e69260')
