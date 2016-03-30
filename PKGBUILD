@@ -24,7 +24,7 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   # Install test utilities with prefix 'rtmidi-'
-  for _bin in `find tests -maxdepth 1 -type f -perm 755 ! -name "*.*"`; do
+  for _bin in `find tests/.libs -maxdepth 1 -type f -perm 755 ! -name "*.*"`; do
     install -Dm755 $_bin "${pkgdir}/usr/bin/${pkgname}-"`basename $_bin`
   done
 
