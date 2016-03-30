@@ -3,7 +3,7 @@
 pkgbase=invoke
 pkgname=(invoke python2-invoke)
 pkgver=0.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Task execution tool & library"
 url="http://pyinvoke.org"
 license=('BSD')
