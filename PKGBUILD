@@ -10,6 +10,7 @@ url="https://github.com/elves/elvish"
 license=('custom:2-clause BSD')
 provides=('elvish')
 conflicts=('elvish')
+depends=('glibc')
 makedepends=('git' 'go')
 source=("git+https://github.com/elves/elvish.git")
 md5sums=('SKIP')
