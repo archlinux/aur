@@ -2,7 +2,7 @@
 
 #2014 tiagobrait
 pkgname=ca-certificates-icp_br
-pkgver=20160216
+pkgver=20160406
 pkgrel=1
 pkgdesc="Brazilian government Certification Authorities"
 arch=('any')
@@ -16,7 +16,7 @@ source=(
     )
 
 sha512sums=(
-    '1f3bdf14719e9afd26ee156d7f374a4eb8bb2a6c7e53edd0e546e062d602c8acace82454aa056ac63e7b6906f22ec385866ef521431ae470f1d38a8c0577cc54'
+    '8b3a70888cc64802dce82998303ee78803c8e276de5f2056bbdd0ef2855654e342fd11efcea5d65dbc2ed671afd834ead58ef2ad8aadd9a73fa6fe46b4ed3581'
     )
 
 package() {
