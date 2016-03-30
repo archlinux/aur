@@ -3,12 +3,12 @@
 
 pkgname=turses
 pkgver=0.3.1
-pkgrel=8
+pkgrel=9
 pkgdesc="A Twitter client for the console"
 arch=('any')
 url="https://github.com/dialelo/turses"
 license=('GPLv3')
-depends=('ncurses' 'python2-future' 'python2' 'python2-oauth2' 'python2-tweepy-git' 'python2-urwid' 'python2-setuptools')
+depends=('ncurses' 'python2-future' 'python2' 'python2-tweepy-git' 'python2-urwid' 'python2-setuptools')
 conflicts=('turses-git')
 source=(https://github.com/dialelo/turses/archive/v$pkgver.tar.gz)
 md5sums=('9c3b1d3739a40698d7f92103ee8286ba')
