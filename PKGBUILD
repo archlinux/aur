@@ -38,7 +38,7 @@ package() {
   install -Dm755 rtaudio-config "${pkgdir}/usr/bin/rtaudio-config"
 
   # Install test utilities with prefix 'rtaudio-'
-  for _bin in `find tests -maxdepth 1 -type f -perm 755 ! -name "*.*"`; do
+  for _bin in `find tests/.libs -maxdepth 1 -type f -perm 755 ! -name "*.*"`; do
     install -Dm755 $_bin "${pkgdir}/usr/bin/${pkgname}-"`basename $_bin`
   done
 
