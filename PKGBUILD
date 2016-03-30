@@ -1,4 +1,4 @@
-# Maintainer: Antoine Lubineau <antoine@lubignon.info>
+# Maintainer: Perry Hung <perry@leaflabs.com>
 
 pkgname=decklink
 _dvver=10.6.2a3 # DesktopVideo
