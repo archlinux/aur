@@ -1,0 +1,14 @@
+pkgbase = qdecoder
+	pkgdesc = qDecoder is a CGI library for C/C++ programming language which has been developed since 1996.
+	pkgver = 12.0.5
+	pkgrel = 1
+	url = https://wolkykim.github.io/qdecoder/
+	arch = x86_64
+	arch = i686
+	license = CUSTOM
+	makedepends = fcgi
+	source = https://github.com/wolkykim/qdecoder/archive/r12.0.5.tar.gz
+	sha256sums = 641d3df4895626d7a530c5d26724e9b5887e9845d4b47f42c1cbce4a17ebf6af
+
+pkgname = qdecoder
+
