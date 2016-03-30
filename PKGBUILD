@@ -1,6 +1,6 @@
 # Maintainer: Bjoern Franke <bjo@nord-west.org>
 pkgname=hibiscus
-pkgver=2.6.16
+pkgver=2.6.15
 _pkgver=2.6
 pkgrel=1
 pkgdesc="Nice HBCI banking program in form of a plugin for jameica."
