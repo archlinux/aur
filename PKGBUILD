@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl-dev
-pkgver=16.05.0_0pre1
+pkgver=16.05.0_0pre2
 # Hyphens (-) are prohibited however they are used by the package author
 # therefore it is necessary to invoke ${pkgver} like ${pkgver//_/-}
 # this will substituet any udnerscores (_) with hyphens
@@ -18,7 +18,6 @@ optdepends=("hwloc: enables the task/cgroup plugin"
 	"libmariadbclient: support for accounting"
 	"postgresql-libs: support for PostgreSQL"
 	"hdf5: support for acct_gather_profile/hdf5 job profiling"
-	"blcr: support for the checkpoint/blcr plugin"
 	"openssl: support for the crypto/openssl CryptoType plugin"
 	"pam: PAM support"
 	"readline: Readline support in scontrol and sacctmgr's interactive modes"
@@ -45,7 +44,7 @@ md5sums=('51e4ae2c51edf7c145d1b87bec4c344e'
          '834b641efbcb45d300630f51f08a9122'
          '231a6634fcf774642021377920fffe39'
          'cef9d45137b9bd431dce3cbe85ef9bca'
-         'cd520614588a0b79240941bcb44d4bfb')
+         'f592c244ff87d8ebd0d2eccf77837d31')
 
 build() {
 	cd "${srcdir}/slurm-${pkgver//_/-}"
