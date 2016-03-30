@@ -4,15 +4,15 @@
 pkgname=qt5-quick1
 pkgver=5.6.0
 _pkgver=5.6.0
-pkgrel=1
-arch=('x86_64')
+pkgrel=2
+arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 pkgdesc='Qt Declarative is provided for Qt 4 compatibility'
 license=('LGPL2.1' 'GPL3')
 #options=("debug")
 depends=('qt5-webkit' 'qt5-script')
 makedepends=('git')
-source=("git://code.qt.io/qt/qtquick1.git#commit=dcc5e5c01c28b227f0e5e5e4976a9d26e8a45295")
+source=("git+https://code.qt.io/qt/qtquick1.git#commit=dcc5e5c01c28b227f0e5e5e4976a9d26e8a45295")
 sha1sums=('SKIP')
 
 _prlfix() {
