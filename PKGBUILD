@@ -5,7 +5,7 @@
 
 pkgname=plexpy
 pkgver=1.3.14
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python based monitoring and tracking tool for Plex Media Server."
 arch=('any')
 url="https://github.com/drzoidberg33/plexpy"
@@ -27,7 +27,7 @@ sha256sums=('57dc8b8d26a45c90be9bcf26af8c867450fdc0263dfe8de3eadd944b225f994a'
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	patch -p0 < "${srcdir}/welcome.html.patch"
-	curl "https://api.github.com/repos/drzoidberg33/plexpy/git/refs/tags/v${pkgver}" | sed '/sha/!d' | sed 's/\(\"sha\":\ \|\"\|\,\|\ \)//g' > version.txt
+	echo "v${pkgver}" > version.txt
 }
 
 package() {
