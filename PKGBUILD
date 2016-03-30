@@ -2,7 +2,7 @@
 
 pkgname=pyinstaller
 _pyname=PyInstaller
-pkgver=3.1
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="An application to convert python scripts into stand-alone binaries"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=(
     "https://github.com/pyinstaller/pyinstaller/releases/download/v${pkgver}/${_pyname}-${pkgver}.tar.gz"
 )
 sha256sums=(
-    '5a28c3bb9d23ea644f9dc9e561e66471b83258d44063bcb108dfbbfe4af3c02b'
+    'b111d35d836237bf954e9b47dcb338da48a40210c318b2b0bc163dba8ca8e096'
 )
 options=('!strip')
 
