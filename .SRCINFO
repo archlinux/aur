@@ -1,0 +1,14 @@
+pkgbase = clblas
+	pkgdesc = A software library containing BLAS functions written in OpenCL
+	pkgver = 2.10
+	pkgrel = 0
+	url = https://github.com/clMathLibraries/clBLAS
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	depends = amdapp-sdk
+	source = https://github.com/clMathLibraries/clBLAS/archive/v2.10.tar.gz
+	sha512sums = 5ed43104aae565292e0df4cc9e014cf483ccc0ff89257ebb5817f6508bfc9593585ed658da639f2167fbfb5d92ef116be4d5de3694f56e1a1e228bd42b1c05c6
+
+pkgname = clblas
+
