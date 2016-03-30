@@ -2,8 +2,8 @@
 
 pkgname=lean-git
 _pkgver=0.2.0
-pkgver="${_pkgver}.r5708.0cda3f7"
-pkgrel=3
+pkgver=${_pkgver}.r8512.226f8ba
+pkgrel=4
 pkgdesc='Lean Theorem Prover'
 arch=('x86_64' 'i386')
 url="http://leanprover.github.io/"
@@ -17,7 +17,7 @@ md5sums=(SKIP)
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git-describe --always)"
+  printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git describe --always)"
 }
 
 build() {
