@@ -1,0 +1,18 @@
+pkgbase = nvpy-git
+	pkgdesc = Simplenote syncing note-taking application, inspired by Notational Velocity and ResophNotes, but uglier and cross-platformerer.
+	pkgver = VERSION
+	pkgrel = 1
+	url = https://github.com/cpbotha/nvpy
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python2
+	depends = python2-docutils
+	depends = python2-markdown
+	provides = nvpy
+	conflicts = nvpy
+	source = nvpy::git+https://github.com/cpbotha/nvpy.git
+	md5sums = SKIP
+
+pkgname = nvpy-git
+
