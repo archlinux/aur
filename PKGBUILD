@@ -37,8 +37,4 @@ prepare() {
 package() {
 	mkdir $pkgdir/usr $pkgdir/usr/share $pkgdir/usr/share/jorgan
 	cp -R $srcdir/* $pkgdir/usr/share/jorgan/
-	mkdir $pkgdir/usr/bin
-	echo "#/bin/bash" > $pkgdir/usr/bin/jorgan
-	echo "java -jar /usr/share/jorgan/jorgan.jar" > $pkgdir/usr/bin/jorgan
-	chmod 755 $pkgdir/usr/bin/jorgan
 }

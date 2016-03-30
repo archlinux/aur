@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=3.21
+Name[en_US]=jOrgan
+GenericName=jOrgan VPO
+Exec=java -jar /usr/share/jorgan/jorgan.jar
+Terminal=false
+Icon[en_US]=
+Type=Application
+Categories=Application;Multimedia
+Comment[en_US]=jOrgan Virtual Pipe Organ
