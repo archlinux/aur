@@ -8,7 +8,7 @@ arch=('any')
 url="http://www.oculusvr.com/"
 license=('custom')
 source=('83-oculus.rules')
-sha256sums=('26279a271b31c1163b34986a6745eed18408fff4b669d53515dfa9e35dfa85db')
+sha256sums=('8e965452d665c6134d82c7b293a6013b74975327f57a13a5f6bc6f59ed690fc2')
 install='oculus-udev.install'
 
 package() {
