@@ -1,14 +1,14 @@
 pkgbase = libsdrplay
 	pkgdesc = Modules for the SDRplay receiver
 	pkgver = 1.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sdrplay.com
 	arch = i686
 	arch = x86_64
 	license = custom
 	depends = libusb>=1.0
 	source = file://SDRplay_RSP_MiricsAPI-1.9.4.run
-	md5sums = SKIP
+	md5sums = f4b56be5b91e95c839dd07595e2444f6
 
 pkgname = libsdrplay
 

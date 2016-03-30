@@ -18,27 +18,30 @@
 #######################################
 pkgname=libsdrplay
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Modules for the SDRplay receiver"
 arch=('i686' 'x86_64')
 url="http://www.sdrplay.com"
 license=('custom')
 depends=('libusb>=1.0')
 source=(file://SDRplay_RSP_MiricsAPI-1.9.4.run)
-md5sums=('SKIP')
+md5sums=('f4b56be5b91e95c839dd07595e2444f6')
 
 prepare() {
 	mkdir $pkgname
-# Strip the run file of superfluous scripts, untar, and extract license
-	sed '1,498d' SDRplay_RSP_MiricsAPI-1.9.4.run > $pkgname/SDRplay_RSP_MiricsAPI-1.9.4.tar
+
+	# Strip the run file of superfluous scripts, untar, and extract license
+	tail -n +499 SDRplay_RSP_MiricsAPI-1.9.4.run | tar -xzvf - -C ./$pkgname/
+
+	# Pull out the license
 	cd $pkgname
-	tar -xf SDRplay_RSP_MiricsAPI-1.9.4.tar
 	cat mirsdrapi-rsp.h | grep Copyright > LICENSE
 }
 
 package() {
 	cd "$pkgname"
-# These commands are equivalent to the scripts used in the supplied run file
+
+	# These commands are equivalent to the scripts used in the supplied run file
 	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -D -m644 libmirsdrapi-rsp-${CARCH}-1.8.1.so "${pkgdir}/usr/lib/libmirsdrapi-rsp-${CARCH}-1.8.1.so"
 	install -D -m644 mirsdrapi-rsp.h "${pkgdir}/usr/include/mirsdrapi-rsp.h"
