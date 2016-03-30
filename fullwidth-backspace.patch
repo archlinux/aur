@@ -20,12 +20,12 @@
 -		s->cx--;
 +	} else {
 +		struct termios tio;
-+                int fd = open(ctx->wp->tty, O_RDONLY);
++		int fd = open(ctx->wp->tty, O_RDONLY);
 +		assert(tcgetattr(fd, &tio) == 0);
-+                close(fd);
++		close(fd);
 +		if (tio.c_lflag & ICANON && tio.c_iflag & IUTF8) {
 +			gl = &s->grid->linedata[s->grid->hsize + s->cy];
-+			if (s->cx >= 2 && grid_cell_width(&gl->celldata[s->cx-2]) == 2)
++			if (s->cx >= 2 && s->cx-2 < gl->cellsize && grid_cell_width(&gl->celldata[s->cx-2]) == 2)
 +				s->cx -= 2;
 +			else
 +				s->cx--;
