@@ -25,9 +25,11 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://downloads.sourceforge.net/project/jorgan/jorgan/3.21/jorgan-3.21-beta1.zip")
+source=("http://downloads.sourceforge.net/project/jorgan/jorgan/3.21/jorgan-3.21-beta1.zip"
+"jorgan.desktop")
 noextract=("jorgan-3.21-beta1.zip")
-md5sums=('be8db4257fd3152869b2393516a37773')
+md5sums=('be8db4257fd3152869b2393516a37773'
+	'c3e12491aadf07b526fc8ad6ed8a69ad')
 validpgpkeys=()
 
 prepare() {
@@ -37,5 +39,5 @@ prepare() {
 package() {
 	mkdir $pkgdir/usr $pkgdir/usr/share $pkgdir/usr/share/jorgan $pkgdir/usr/share/applications
 	cp -R $srcdir/* $pkgdir/usr/share/jorgan/
-	cp jorgan.desktop $pkgdir/usr/share/applications/
+	cp $srcdir/jorgan.desktop $pkgdir/usr/share/applications/
 }
