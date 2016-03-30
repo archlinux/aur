@@ -1,6 +1,6 @@
 pkgbase = sqlpp11-connector-odbc
 	pkgdesc = ODBC wrapper for sqlpp11
-	pkgver = 0.02
+	pkgver = 0.02.1
 	pkgrel = 1
 	url = https://github.com/Erroneous1/sqlpp11-connector-odbc
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = sqlpp11-connector-odbc
 	makedepends = git
 	makedepends = unixodbc
 	depends = sqlpp11
-	source = https://github.com/Erroneous1/sqlpp11-connector-odbc/archive/v0.02.tar.gz
-	sha256sums = b4ac8b592fa8acdd29996ce999dc928fe805b977e0e91b60f8087d115c1d3f4b
+	source = https://github.com/Erroneous1/sqlpp11-connector-odbc/archive/v0.02.1.tar.gz
+	sha256sums = e8f89cc6a6aa7eae33d8fb90d4fc77af5f74bc2ecd08ea91cb63bb8804fb2476
 
 pkgname = sqlpp11-connector-odbc
 
