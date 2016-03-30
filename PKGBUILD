@@ -14,7 +14,9 @@ md5sums=(454746d007ec0cbff2efc5764ca6e288)
 
 build() 
 	{
-	echo "No build requied, precompiled binary is avaliable"
+	cd "${srcdir}"/amdctl-master
+	rm amdctl
+	make
 	}
 
 package() {
