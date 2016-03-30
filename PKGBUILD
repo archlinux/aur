@@ -1,7 +1,7 @@
 #PKGBUILD Maintainer: Rafael Reggiani Manzo <rr.manzo#gmail.com>
 
 pkgname=codeclimate
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="Command line interface for the Code Climate analysis platform. It allows you to run Code Climate engines on your local machine inside of Docker containers. Make sure that your current user belongs to docker group and that docker is running."
 groups=('codeclimate')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('docker')
 makedepends=()
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('23951b9167811f08b9cd52294696bb9d6565bba345d8522b10f224f5f87d40e904fb6452fb19452c5b86991d3120cd595be302ae2a23bc8d28c8fc8f03bb869d')
+sha512sums=('a29c5c7e0d1d9b0cf1e0fd505648fccf08600ef24ab632203f0460ec898af8de8b5b656ea542b28b842bfd5942d1e5433ad88c29ae8e3fa6d171fc475b4ac8c5')
 
 prepare(){
   if ! groups ${USER} | grep &>/dev/null '\bdocker\b'; then
