@@ -2,7 +2,7 @@
 pkgname=drobo-utils
 _pkgver=0.6.2
 pkgver=${_pkgver}.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A library, GUI and CLI script for managing Data Robotics storage units on Linux"
 arch=(any)
 url="http://drobo-utils.sourceforge.net/"
@@ -12,7 +12,7 @@ source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/r${_pkgve
 md5sums=('7e181580a9051f4c87b567692d9ec094')
 sha1sums=('c6518b49c8304e3cbad7b39d9cfc2b3ab3c7484b')
 
-build() {
+package() {
   cd "$srcdir/$pkgname-$pkgver"
 
   python2 setup.py install --root=$pkgdir
