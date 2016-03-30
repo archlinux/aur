@@ -2,7 +2,7 @@
 
 pkgname=elvish
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A novel Unix shell."
 arch=('i686' 'x86_64')
 url="https://github.com/elves/elvish"
@@ -12,6 +12,7 @@ makedepends=('git' 'go')
 depends=('glibc')
 source=("git+https://github.com/elves/elvish.git#tag=0.1")
 md5sums=('SKIP')
+install=elvish.install
 
 prepare() {
     cd "$srcdir"
