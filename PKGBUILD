@@ -31,7 +31,7 @@ package() {
 
     # Move license
     install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
-    mv ${pkgdir}/usr/share/slack/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
-    mv ${pkgdir}/usr/share/slack/LICENSES.chromium.html ${pkgdir}/usr/share/licenses/${pkgname}
-    ln -s ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE ${pkgdir}/usr/share/slack/resources/LICENSE
+    mv ${pkgdir}/usr/lib/slack/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
+    mv ${pkgdir}/usr/lib/slack/LICENSES.chromium.html ${pkgdir}/usr/share/licenses/${pkgname}
+    ln -s ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE ${pkgdir}/usr/lib/slack/resources/LICENSE
 }
