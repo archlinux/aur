@@ -2,7 +2,7 @@
 
 pkgname=pycharm-professional
 pkgver=2016.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Powerful Python and Django IDE. Professional version."
 arch=('any')
 options=('!strip')
@@ -57,6 +57,9 @@ package() {
     rm -f $pkgdir/opt/$pkgname/bin/libyjpagent-linux64.so
     rm -f $pkgdir/opt/$pkgname/bin/fsnotifier64
   fi
+  
+  # delete bundled JRE inside Pycharm installation
+  rm -rf $pkgdir/opt/$pkgname/jre/
 
   # enable anti-aliasing text in pycharm options
   if [[ $CARCH = 'i686' ]]; then
