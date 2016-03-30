@@ -1,7 +1,7 @@
 pkgbase = google-cloud-compute-image-packages
   pkgdesc = Scripts and tools for Google Compute Engine images.
   pkgver = 1.3.3
-  pkgrel = 1
+  pkgrel = 2
   url = https://github.com/GoogleCloudPlatform/compute-image-packages
   arch = any
   license = APACHE
