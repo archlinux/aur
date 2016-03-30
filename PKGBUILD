@@ -7,14 +7,14 @@
 _pkgbase=vlc
 pkgname=vlc-nox
 pkgver=2.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (without X support)"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
 license=('LGPL2.1' 'GPL2')
 depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy'
          'sdl_image' 'libdvdnav' 'libtiger' 'lua' 'libmatroska'
-         'zvbi' 'taglib' 'libmpcdec' 'ffmpeg' 'faad2' 'libupnp'
+         'zvbi' 'taglib' 'libmpcdec' 'ffmpeg2.8' 'faad2' 'libupnp'
          'libshout' 'libmad' 'libmpeg2' 'xcb-util-keysyms' 'libtar'
          'libxinerama')
 makedepends=('live-media' 'libnotify' 'libbluray' 'flac'
@@ -49,8 +49,8 @@ optdepends=('avahi: for service discovery using bonjour protocol'
             'opus: for opus support'
             'libssh2: for sftp support'
             'lua-socket: for http interface')
-conflicts=('${_pkgbase}' 'vlc-plugin' 'vlc-git')
-replaces=('${_pkgbase}' 'vlc-plugin' 'vlc-git')
+conflicts=('vlc' 'vlc-plugin' 'vlc-git')
+replaces=('vlc' 'vlc-plugin' 'vlc-git')
 backup=('usr/share/vlc/lua/http/.hosts'
         'usr/share/vlc/lua/http/dialogs/.hosts')
 options=('!emptydirs')
@@ -72,6 +72,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
 
+  PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig" \
   CFLAGS+=" -I/usr/include/samba-4.0" CPPFLAGS+=" -I/usr/include/samba-4.0" \
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
