@@ -1,0 +1,16 @@
+pkgbase = nunc-stans
+	pkgdesc = an event framework wrapper
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = http://directory.fedoraproject.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = nspr
+	depends = libevent
+	depends = tevent
+	source = http://directory.fedoraproject.org/sources/nunc-stans-0.1.8.tar.bz2
+	sha256sums = 66cee78fce36f3a496b454c6cebf7511089a23825207591338bf10178d84dfb5
+
+pkgname = nunc-stans
+
