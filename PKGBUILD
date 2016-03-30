@@ -3,20 +3,20 @@
 # Contributor: Kyle Manna <kyle(at)kylemanna(dot)com>
 
 pkgname=slack-desktop
-pkgver=2.0.1
+pkgver=2.0.3
 pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux"
 arch=('i686' 'x86_64')
 url="https://slack.com/apps"
 license=('custom')
-depends=('expat' 'gconf' 'gtk2' 'gvfs' 'hunspell' 'hunspell-en' 'libgcrypt' 'libnotify' 'libxss' 'libxtst' 'xdg-utils')
+depends=('alsa-lib' 'expat' 'gconf' 'gtk2' 'gvfs' 'hunspell' 'hunspell-en' 'libgcrypt' 'libnotify' 'libxss' 'libxtst' 'xdg-utils')
 optdepends=('gnome-keyring')
 
 source_x86_64=("https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-${pkgver}-amd64.deb")
 source_i686=("https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-${pkgver}-i386.deb")
 
-sha256sums_x86_64=('12d84e61ba366cc5bac105b3f9930f2dfdd64c1e5fabbb08a6877e1c98bfb9c7')
-sha256sums_i686=('22a3c30c255db31247755749a34fe2e027fd90478c023143ee9449a045ba0bb6')
+sha256sums_x86_64=('8f8d4c7515463e7e8c68e9499f39a6e20fca759bcab059e0bd03d69978b0e85e')
+sha256sums_i686=('945e3430bb372cd1b12e044d823372664ad4c9cae9c2c64696ddf9a09afbc88f')
 
 package() {
     bsdtar -O -xf "slack-desktop-${pkgver}"*.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
