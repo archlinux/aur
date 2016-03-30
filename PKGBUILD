@@ -3,9 +3,9 @@
 _gemname=eventmachine
 pkgname=ruby-$_gemname
 pkgver=1.2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby/EventMachine library'
-arch=(any)
+arch=('i686' 'x86_64')
 url='http://rubyeventmachine.com'
 license=(Ruby GPL)
 depends=('ruby')
