@@ -1,5 +1,5 @@
 diff --git a/setup.py b/setup.py
-index 8cf2380..41f252e 100644
+index cec04dc..3927938 100644
 --- a/setup.py
 +++ b/setup.py
 @@ -1,120 +1,146 @@
@@ -53,7 +53,7 @@ index 8cf2380..41f252e 100644
 -                      ('lib/xdelta3.exe', 'xdelta3.exe'),
 -                      ('lib/lua51.dll', 'lua51.dll')],
 -    'icon': 'res/faf.ico',
--    'include_msvcr': False,
+-    'include_msvcr': True,
 -    'optimize': 2,
 -    'packages': ['cffi', 'pycparser', 'PyQt4', 'PyQt4.uic',
 -                 'PyQt4.QtGui', 'PyQt4.QtNetwork', 'win32com', 'win32com.client'],
@@ -176,7 +176,7 @@ index 8cf2380..41f252e 100644
 +                          ('lib/xdelta3.exe', 'xdelta3.exe'),
 +                          ('lib/lua51.dll', 'lua51.dll')],
 +        'icon': 'res/faf.ico',
-+        'include_msvcr': False,
++        'include_msvcr': True,
 +        'optimize': 2,
 +        'packages': ['cffi', 'pycparser', 'PyQt4', 'PyQt4.uic',
 +                     'PyQt4.QtGui', 'PyQt4.QtNetwork', 'win32com', 'win32com.client'],
@@ -263,7 +263,7 @@ index 8cf2380..41f252e 100644
 +    )
 +  
 diff --git a/src/__main__.py b/src/__main__.py
-index 7cc6586..7127372 100644
+index 9daf832..52162bb 100644
 --- a/src/__main__.py
 +++ b/src/__main__.py
 @@ -26,6 +26,7 @@ from PyQt4 import QtGui, uic
@@ -295,19 +295,19 @@ index 7cc6586..7127372 100644
  
      if answer == QtGui.QDialog.Rejected:
 diff --git a/src/chat/_chatwidget.py b/src/chat/_chatwidget.py
-index 99dae35..9cef9e6 100644
+index 0bf737b..395c7b7 100644
 --- a/src/chat/_chatwidget.py
 +++ b/src/chat/_chatwidget.py
-@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
- from PyQt4 import QtGui, QtCore
- from PyQt4.QtNetwork import QNetworkAccessManager, QNetworkRequest
+@@ -7,7 +7,7 @@ from PyQt4 import QtGui, QtCore
+ from PyQt4.QtNetwork import QNetworkAccessManager
+ from PyQt4.QtCore import QSocketNotifier, QTimer
  
 -from config import Settings
 +from config import Settings, VERSION
  import util
- import fa
  
-@@ -251,7 +251,7 @@ class ChatWidget(FormClass, BaseClass, SimpleIRCClient):
+ import sys
+@@ -248,7 +248,7 @@ class ChatWidget(FormClass, BaseClass, SimpleIRCClient):
          self.autoJoin(self.crucialChannels)
  
      def on_version(self, c, e):
@@ -317,7 +317,7 @@ index 99dae35..9cef9e6 100644
      def on_motd(self, c, e):
          self.log_event(e)
 diff --git a/src/client/_clientwindow.py b/src/client/_clientwindow.py
-index 8e933eb..fe317cf 100644
+index e1a58e0..c7b29c2 100644
 --- a/src/client/_clientwindow.py
 +++ b/src/client/_clientwindow.py
 @@ -7,7 +7,7 @@ from PyQt4.QtNetwork import QAbstractSocket
@@ -401,7 +401,7 @@ index 9052f31..6260763 100644
              logger.info("Running FA with info: " + str(info))
              logger.info("Running FA via command: " + command)
 diff --git a/src/fa/maps.py b/src/fa/maps.py
-index 72606f6..b7f7f88 100644
+index ea97dd4..e4c7fb4 100644
 --- a/src/fa/maps.py
 +++ b/src/fa/maps.py
 @@ -191,13 +191,18 @@ def folderForMap(mapname):
@@ -453,7 +453,7 @@ index 72606f6..b7f7f88 100644
      
      mode = os.stat(mapdir)[0]
 diff --git a/src/util/__init__.py b/src/util/__init__.py
-index 39d8ebb..6b6ed4c 100644
+index 47d7c02..7207b97 100644
 --- a/src/util/__init__.py
 +++ b/src/util/__init__.py
 @@ -1,22 +1,42 @@
@@ -591,7 +591,7 @@ index 39d8ebb..6b6ed4c 100644
                  logger.info("Using theme: " + theme + " in directory " + test_dir)
                  __themedir = test_dir
                  __theme = theme
-@@ -605,5 +635,3 @@ def datetostr(d):
+@@ -607,5 +637,3 @@ def datetostr(d):
  def now():
      return _dateDummy.now()
  
