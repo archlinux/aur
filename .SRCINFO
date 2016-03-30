@@ -1,0 +1,28 @@
+pkgbase = darkplaces-xonotic
+	pkgdesc = An advanced Quake 1 game engine (Xonotic branch)
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://icculus.org/twilight/darkplaces/
+	install = darkplaces-xonotic.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xextproto
+	makedepends = xf86dgaproto
+	makedepends = xf86vidmodeproto
+	makedepends = xproto
+	depends = alsa-lib
+	depends = hicolor-icon-theme
+	depends = libjpeg-turbo
+	depends = libxpm
+	depends = libxxf86vm
+	depends = sdl2
+	provides = darkplaces
+	conflicts = darkplaces
+	source = https://github.com/xonotic/darkplaces/archive/xonotic-v0.8.1.tar.gz
+	source = darkplaces-xonotic.desktop
+	sha256sums = 61c2225e7a740af3111e4ebb260d7aceddd7e1f3e632b39f6dae22150097c431
+	sha256sums = 476f513f85da873ce93c89f2078bf9c2ea244e3e13a19c6ab02e818ddf221c37
+
+pkgname = darkplaces-xonotic
+

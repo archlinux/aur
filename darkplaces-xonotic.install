@@ -1,0 +1,14 @@
+post_install() {
+  echo ">>> You need the Quake 1 data to play."
+  echo ">>> Copy your \"id1\" directory to /usr/share/quake"
+  post_upgrade
+}
+
+post_upgrade() {
+  update-desktop-database -q
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+post_remove() {
+  post_upgrade
+}
