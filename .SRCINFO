@@ -1,0 +1,21 @@
+pkgbase = htwtxt
+	pkgdesc = hosted twtxt server (in Go)
+	pkgver = 1.0.6
+	pkgrel = 1
+	url = https://github.com/plomlompom/htwtxt
+	install = htwtxt.install
+	arch = x86_64
+	arch = i686
+	license = AGPL
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/plomlompom/htwtxt/archive/1.0.6.tar.gz
+	source = htwtxt.patch
+	sha256sums = 33f93146b93b33ee6946e9aae3a3df137ab7e7a912f0008a03e88d42072a847a
+	sha256sums = dfc87ef17977d28e490a59312b2a772f30aa57a07ad2106d3ff2a8319714e827
+
+pkgname = htwtxt
+

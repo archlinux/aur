@@ -1,0 +1,12 @@
+diff -aur htwtxt-1.0.6.pristine/main.go htwtxt-1.0.6.new/main.go
+--- htwtxt-1.0.6.pristine/main.go	2016-03-30 01:58:44.992331592 +0200
++++ htwtxt-1.0.6.new/main.go	2016-03-30 02:00:25.241148111 +0200
+@@ -243,7 +243,7 @@
+ 	flag.StringVar(&keyPath, "key", "", "SSL key file")
+ 	flag.StringVar(&certPath, "cert", "", "SSL certificate file")
+ 	flag.StringVar(&templPath, "templates",
+-		os.Getenv("GOPATH")+"/src/htwtxt/templates",
++		"/usr/share/htwtxt/templates",
+ 		"directory where to expect HTML templates")
+ 	flag.StringVar(&dataDir, "dir", os.Getenv("HOME")+"/htwtxt",
+ 		"directory to store feeds and login data")
