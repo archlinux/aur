@@ -2,7 +2,7 @@
 
 _name=meld
 pkgname=$_name-dev
-pkgver=3.15.1
+pkgver=3.15.2
 pkgrel=1
 pkgdesc='Visual diff and merge tool'
 arch=('any')
@@ -21,8 +21,8 @@ provides=($_name)
 conflicts=($_name)
 install=meld.install
 options=('!emptydirs')
-source=("http://ftp.gnome.org/pub/GNOME/sources/meld/3.15/meld-3.15.1.tar.xz")
-sha256sums=('53a59132bfe78b66b3db0dd32d0857a160d2cbf4f07f963f900134224fe60c6b')
+source=("http://ftp.gnome.org/pub/GNOME/sources/meld/3.15/meld-3.15.2.tar.xz")
+sha256sums=('7df34d973dd96163cb1c85bae7d713be610a53f49f2450acb01d501cea24ad16')
 
 pkgver() {
   cd $_name-$pkgver
