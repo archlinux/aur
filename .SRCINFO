@@ -1,0 +1,13 @@
+pkgbase = rmate
+	pkgdesc = rmate allows activate TextMate from an ssh session
+	pkgver = 1.5.8
+	pkgrel = 1
+	url = http://blog.macromates.com/2011/mate-and-rmate/
+	arch = any
+	license = unknown
+	depends = ruby
+	source = rmate-1.5.8::https://github.com/textmate/rmate/archive/v1.5.8.tar.gz
+	sha256sums = 40be07ae251bfa47b408eb56395dd2385d8e9ea220a19efd5145593cd8cbd89c
+
+pkgname = rmate
+
