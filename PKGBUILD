@@ -1,19 +1,20 @@
-# Maintainer: Ian Thompson <dalrik370 at gmail dot com>
+# Maintainer:  WorMzy Tykashi <wormzy.tykashi@gmail.com>
+# Contributor: Ian Thompson <dalrik370 at gmail dot com>
 # Contributor: Anton Bazhenov <anton.bazhenov at gmail>
 # Contributor: TheBenj88 <thebenj88 *AT* gmail *DOT* com>
 
 pkgname=openxcom
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An open-source reimplementation of the famous X-COM game"
 arch=('i686' 'x86_64')
 url="http://openxcom.org/"
 license=('GPL3')
-depends=('sdl_gfx' 'sdl_mixer' 'sdl_image' 'yaml-cpp51' 'mesa')
+depends=('sdl_gfx' 'sdl_mixer' 'sdl_image' 'yaml-cpp' 'mesa')
 makedepends=('boost' 'glu' 'xmlto' 'docbook-xml' 'docbook-xsl')
 install="${pkgname}.install"
 source=("https://github.com/SupSuper/OpenXcom/archive/v1.0.tar.gz"
-		"${pkgname}.install")
+        "${pkgname}.install")
 sha256sums=('45acb280010a01d60506b1c5f2951ae501c012cc6161aac470bd15c1e6981246'
             '33a412d870d8c1399738b71f772aaa5954d0028a9c42373ca4a27124c154956d')
 
@@ -21,7 +22,7 @@ sha256sums=('45acb280010a01d60506b1c5f2951ae501c012cc6161aac470bd15c1e6981246'
 build() {
   cd "${srcdir}/OpenXcom-1.0"
   ./autogen.sh
-  YAML_CFLAGS="-I/opt/yaml-cpp51/include" YAML_LIBS="-Wl,-rpath,/opt/yaml-cpp51/lib -L/opt/yaml-cpp51/lib -lyaml-cpp" ./configure --prefix=/usr --without-docs
+  ./configure --prefix=/usr --without-docs
   make
 }
 
