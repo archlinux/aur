@@ -1,6 +1,6 @@
 # Maintainer: Tomas Kral <tomas.kral@gmail.com>
 pkgname=nvpy-git
-pkgver=VERSION
+pkgver=r430.d1c926c
 pkgrel=1
 pkgdesc="Simplenote syncing note-taking application, inspired by Notational Velocity and ResophNotes, but uglier and cross-platformerer."
 arch=('any')
