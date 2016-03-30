@@ -1,7 +1,7 @@
 # Maintainer: Christoph Drexler <chrdr at gmx dot at>
 
 pkgname=pcsc-cyberjack
-_sp=SP08
+_sp=SP09
 pkgver=3.99.5_${_sp}
 _pkgver=3.99.5final.${_sp}
 pkgrel=1
@@ -13,8 +13,8 @@ replaces=('ctapi-cyberjack')
 conflicts=('ctapi-cyberjack')
 depends=('libusb' 'pcsclite')
 options=('!libtool' '!docs')
-source=("http://www.kernelport.com/reiner-sct/${_sp}/${pkgname}-${_pkgver}.tar.bz2")
-sha256sums=('ab42b81ad685302c89763faaf0d90e23f804134e020d653323ad9f95a43655fc')
+source=("http://support.reiner-sct.de/downloads/LINUX/V${pkgver}/pcsc-cyberjack-${_pkgver}.tar.bz2")
+sha256sums=('1f8cb8da18aae3b39f7c972d06c3221d08e870119bc871a2eb198a09b01139d4')
 
 build() {
     cd "${pkgname}-${_pkgver}"
