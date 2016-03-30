@@ -17,7 +17,7 @@ sha512sums=('b01e24cd79c2711139c9d46c9bff4687049c3a735562a7f48a387103eec25c0222e
 
 prepare() {
   cd "${pkgname}-${pkgname}-${pkgver}"
-  sed -i "s#env python#env python2#g" ladish_control
+  sed -i "s|env python|&2|" ladish_control
 
   # Add missing include.
   sed -i "36i#include <sys/resource.h>" daemon/loader.c
