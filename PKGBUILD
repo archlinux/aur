@@ -2,7 +2,7 @@
 
 pkgname=google-play-music-desktop-player-git
 _name=Google-Play-Music-Desktop-Player-UNOFFICIAL-
-pkgver=3.0.1.48.g36ec8a5
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music."
 arch=('i686' 'x86_64')
