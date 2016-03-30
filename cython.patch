@@ -1,11 +1,11 @@
---- setuplib.py	2015-04-05 18:19:36.869928443 +0800
-+++ setuplib.py.cur	2015-04-05 18:20:58.253259520 +0800
-@@ -26,7 +26,7 @@
- import distutils.core
+--- setuplib.py	2016-03-30 10:36:25.300030343 +0800
++++ setuplib.py.cur	2016-03-30 10:39:04.186704987 +0800
+@@ -58,7 +58,7 @@
+ if windows:
+     cython_command = os.path.join(os.path.dirname(sys.executable), "Scripts", "cython.exe")
+ else:
+-    cython_command = "cython"
++    cython_command = "cython2"
  
- # The cython command.
--cython_command = "cython"
-+cython_command = "cython2"
  
- # The include and library dirs that we compile against.
- include_dirs = [ ".", "src" ]
+ if sys.version_info[0] >= 3:

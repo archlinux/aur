@@ -2,7 +2,7 @@
 
 pkgname=python2-pygame-sdl2-git
 _pkgname=pygame_sdl2
-pkgver=257.24df6c8
+pkgver=310.2f7bc03
 pkgrel=1
 pkgdesc="A new, SDL2-based implementation of the Pygame API (dev channel)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('python2-pygame-sdl2')
 source=("git://github.com/renpy/$_pkgname.git"
         'cython.patch')
 md5sums=('SKIP'
-         '5d3aee6b640b5e58bf98442eb443eef3')
+         '142fa70196ab3308826ca24d3527065d')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
