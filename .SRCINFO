@@ -1,0 +1,30 @@
+pkgbase = texstudio-phonon
+	pkgdesc = Fork of the LaTeX IDE TexMaker. Gives you an environment where you can easily create and manage LaTeX documents. Built with Phonon.
+	pkgver = 2.10.8
+	pkgrel = 1
+	url = http://texstudio.sourceforge.net/
+	install = texstudio-phonon.install
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = sed
+	makedepends = qt5-tools
+	depends = poppler-qt5
+	depends = phonon-qt5
+	depends = qt5-svg
+	depends = qt5-script
+	depends = texlive-core
+	optdepends = evince: pdf reader,
+	optdepends = okular: alternate pdf reader
+	provides = texstudio
+	replaces = texmakerx
+	replaces = texstudio
+	source = http://downloads.sourceforge.net/texstudio/texstudio-2.10.8.tar.gz
+	source = archlinux-phonon.patch
+	source = qt-5.6.0.patch
+	sha256sums = 0a569544ceb0ff92e52ed57a34e8eb12e7a16eef1209320737aef5d5b81b3404
+	sha256sums = 8efdaf94a99e41ea2e5276fca8788e55ae502ee707100e5aeaad0ed05753c8d9
+	sha256sums = 661cf3a6c423c1077f124835655ccca20b79d846926a74ea88688e00b760e175
+
+pkgname = texstudio-phonon
+

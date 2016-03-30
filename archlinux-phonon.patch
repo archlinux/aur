@@ -1,0 +1,12 @@
+diff -Naur texstudio2.6.6.orig/PDFDocument.h texstudio2.6.6/PDFDocument.h
+--- texstudio2.6.6.orig/PDFDocument.h	2013-11-02 22:23:51.000000000 +0000
++++ texstudio2.6.6/PDFDocument.h	2014-01-05 06:44:39.803435721 +0000
+@@ -91,7 +91,7 @@
+ };
+ 
+ #ifdef PHONON
+-#include <Phonon/VideoPlayer>
++#include <phonon/VideoPlayer>
+ 
+ class PDFMovie: public Phonon::VideoPlayer
+ {
