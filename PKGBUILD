@@ -9,15 +9,25 @@ pkgdesc="Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video 
 arch=('i686' 'x86_64')
 url="http://www.blackmagic-design.com/products/"
 license=('custom')
+makedepends=('curl')
 depends=('linux-headers' 'libxml2' 'libpng12' 'glu' 'qt4')
 options=('!strip' 'staticlibs')
 install='decklink.install'
-source=("file://Blackmagic_Desktop_Video_Linux_${pkgver%a*}.tar")
-sha256sums=('da743c87b3af7fb50b3d17af67b75b253141896540589aa6119ecaed21979142')
-
 
 [ "$CARCH" = "i686" ] && _arch='i386'
 [ "$CARCH" = "x86_64" ] && _arch='x86_64'
+
+pkgsrc_url="https://www.blackmagicdesign.com/api/register/us/download/3f0844bdcfc24fd1a631aeca0d2cefe6"
+pkgsrc_file=$pkgname-${_dvver}.tar.gz
+pkgsrc_sha256sum="da743c87b3af7fb50b3d17af67b75b253141896540589aa6119ecaed21979142"
+
+prepare() {
+  temp_url=`curl --data '{country":"us","platform":"Linux"}' $pkgsrc_url`
+  curl -o $pkgsrc_file $temp_url
+  shasum=`sha256sum $pkgsrc_file | cut -d " " -f1`
+  [ "${shasum}" != "${pkgsrc_sha256sum}" ] && ( echo "Integrity check failed."; exit 1 )
+  tar xf ${pkgsrc_file}
+}
 
 package() {
 	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"

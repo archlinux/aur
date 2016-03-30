@@ -12,10 +12,9 @@ pkgbase = decklink
 	depends = libpng12
 	depends = glu
 	depends = qt4
+  makedepends = curl
 	options = !strip
 	options = staticlibs
-	source = file://Blackmagic_Desktop_Video_Linux_10.6.2.tar
-	sha256sums = da743c87b3af7fb50b3d17af67b75b253141896540589aa6119ecaed21979142
 
 pkgname = decklink
 
