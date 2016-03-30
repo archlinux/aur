@@ -8,7 +8,7 @@ arch=('x86_64')
 url="http://www.bloomberglabs.com/"
 license=('custom')
 depends=('python' 'blpapi_cpp')
-source=(http://static.bloomberglabs.com/api/python/blpapi_python_$pkgver.tar.gz)
+source=(https://bloomberg.bintray.com/BLPAPI-Stable-Generic/blpapi_python_$pkgver.tar.gz)
 md5sums=(9ad814bd83d3621f0774352a42d0e2b8)
 
 package() {
