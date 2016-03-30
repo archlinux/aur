@@ -30,7 +30,7 @@ package() {
 	mkdir $pkgdir/usr/bin/
 	mkdir $pkgdir/usr/lib/
 
-	gcc -shared -fpic -Ofast kirisame.c src/libs/*.c -Ilibs -o $pkgdir/lib/libkirisame.so
+	gcc -shared -fpic -Ofast src/kirisame.c src/libs/*.c -Ilibs -o $pkgdir/lib/libkirisame.so
 	gcc -Ofast src/marisa.c src/grimoire.c src/magicshop.c srd/kirisame.c -ldl -lm -lpthread -lmicrohttpd -o $pkgdir/usr/bin/marisa
 	gcc -Ofast src/logview.c -o $pkgdir/usr/bin/marisa-logview
 
