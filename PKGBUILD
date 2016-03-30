@@ -1,13 +1,13 @@
 # Maintainer: Jens Kuske <jenskuske@gmail.com>
 # Contributor: smotocel69 <smotocel69@gmail.com>
 pkgname=libvdpau-sunxi-git
-pkgver=0.4.r1.6857693
+pkgver=0.4.r6.c2fb693
 pkgrel=1
 pkgdesc="VDPAU driver for Allwinner sunxi SoCs"
 arch=('armv7h')
 url="https://github.com/linux-sunxi/libvdpau-sunxi"
 license=('LGPL')
-depends=('libx11' 'libcedrus-git')
+depends=('libx11' 'libcedrus-git' 'pixman')
 makedepends=('git' 'libvdpau')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
