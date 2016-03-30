@@ -1,0 +1,21 @@
+pkgbase = theshell
+	pkgdesc = Minimalistic Desktop Shell
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://github.com/vicr123/thefile
+	arch = x86_64
+	license = GPL2
+	makedepends = qtchooser
+	makedepends = git
+	depends = kwidgetsaddons
+	depends = xdg-utils
+	depends = wmctrl
+	depends = kwin
+	depends = NetworkManager
+	optdepends = pocketsphinx: for theWave
+	optdepends = festival: for theWave
+	source = theshell-1.0::git+https://github.com/vicr123/theshell#branch=master
+	md5sums = SKIP
+
+pkgname = theshell
+
