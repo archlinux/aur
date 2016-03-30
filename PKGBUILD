@@ -2,7 +2,7 @@
 
 pkgname=blender-better-collada-git
 pkgver=1405.f220183
-pkgrel=1
+pkgrel=2
 pkgdesc="Better Collada exporter for Blender, made for the Godot Engine"
 arch=('any')
 url="https://github.com/okamstudio/godot/tree/master/tools/export/blender25"
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 package() {
-  _addondir="$pkgdir/usr/share/blender/2.72/scripts/addons/io_scene_dae"
+  _addondir="$pkgdir/usr/share/blender/2.77/scripts/addons/io_scene_dae"
   install -dm755 $_addondir
   install -Dm644 $srcdir/$pkgname/tools/export/blender25/io_scene_dae/*.py $_addondir
   install -dm755 $pkgdir/share/licenses/$pkgname/licenses
