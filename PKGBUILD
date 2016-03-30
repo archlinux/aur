@@ -2,20 +2,20 @@
 # Contributor: Dan Serban
 # Contributor: Fabio Volpe
 
-pkgbase=python-pymunk
-pkgname=(python-pymunk python2-pymunk)
+pkgbase='python-pymunk'
+pkgname=('python-pymunk' 'python2-pymunk')
 pkgver=4.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A wrapper around the 2d physics library Chipmunk"
-arch=(any)
-url=http://www.pymunk.org/en/latest/
-license=MIT
-makedepends=(python python2)
+arch=('any')
+url='http://www.pymunk.org/en/latest/'
+license=('MIT')
+makedepends=('python' 'python2')
 source=("http://pymunk.googlecode.com/files/pymunk-$pkgver.zip")
 
 prepare() {
 	cd "$srcdir"/pymunk-$pkgver
-	rm pymunk/*.{so,dll}
+	rm pymunk/*.{so,dll,dylib}
 	sed '/print poly.radius/d' -i pymunk/pygame_util.py
 
 	cd ..
@@ -36,8 +36,10 @@ package_python-pymunk() {
 	cd "$srcdir"/pymunk-$pkgver
 	python setup.py install -O1 --skip-build --root="$pkgdir"
 	_site_packages=$(python -sSc 'import site; print(site.getsitepackages()[0])')
-	ln -s "/usr/lib/libchipmunk.so" "$pkgdir$_site_packages/pymunk/libchipmunk64.so"
-	ln -s "/usr/lib/libchipmunk.so" "$pkgdir$_site_packages/pymunk/libchipmunk.so"
+	ln -s ../../../libchipmunk.so "$pkgdir$_site_packages"/pymunk/libchipmunk64.so
+	ln -s ../../../libchipmunk.so "$pkgdir$_site_packages"/pymunk/libchipmunk.so
+
+	install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
 
 package_python2-pymunk() {
@@ -49,8 +51,10 @@ package_python2-pymunk() {
 	cd "$srcdir"/pymunk-$pkgver-py2
 	python2 setup.py install -O1 --skip-build --root="$pkgdir"
 	_site_packages=$(python2 -sSc 'import site; print site.getsitepackages()[0]')
-	ln -s "/usr/lib/libchipmunk.so" "$pkgdir$_site_packages/pymunk/libchipmunk64.so"
-	ln -s "/usr/lib/libchipmunk.so" "$pkgdir$_site_packages/pymunk/libchipmunk.so"
+	ln -s ../../../libchipmunk.so "$pkgdir$_site_packages"/pymunk/libchipmunk64.so
+	ln -s ../../../libchipmunk.so "$pkgdir$_site_packages"/pymunk/libchipmunk.so
+
+	install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
 }
 
 sha256sums=('7102b1a63d4eeb9eb459d4733663bc0af4ea59f664e3fac2228c704ec6768937')
