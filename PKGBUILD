@@ -5,7 +5,7 @@
 
 pkgname=lib32-libical
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source reference implementation of the icalendar data type and serialization format (32-bit)"
 arch=('x86_64')
 url='https://github.com/libical/libical'
@@ -32,6 +32,9 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=/usr/lib32
   make
+  
+  # Remove erroneous iculib entries from pkg-config.
+  sed -i 's#/lib/libicuuc.so /lib/libicui18n.so##g' "./libical.pc"
 }
 
 package() {
