@@ -6,7 +6,7 @@
 
 pkgname=vlmc-git
 epoch=1
-pkgver=0.3596.e389c34
+pkgver=0.3823.fb433b0
 pkgrel=1
 pkgdesc="VideoLAN Movie Creator, a simple and user-friendly video editor"
 arch=('i686' 'x86_64')
@@ -33,9 +33,11 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_gitname}"
-  mkdir 'build'
+  git submodule init
+  git submodule update
+  mkdir -p 'build'
   cd 'build'
-  cmake -DCMAKE_INSTALL_PREFIX=/usr ../
+  cmake -Wno-dev -DCMAKE_INSTALL_PREFIX=/usr ../
   make
 }
 
