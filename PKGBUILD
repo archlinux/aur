@@ -2,7 +2,7 @@
 
 _pkgname=urwidtrees
 pkgname=python2-$_pkgname
-pkgver=1.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="tree widgets for urwid"
 arch=(any)
@@ -24,4 +24,4 @@ package() {
     install -dm755 "$pkgdir/usr/share/doc/$pkgname"
     cp -a docs/build/html/* "$pkgdir/usr/share/doc/$pkgname"
 }
-md5sums=('2ddf327db098caee70ff4648abba0209')
+md5sums=('07699e009203486f9c1e19c2fd5ef201')
