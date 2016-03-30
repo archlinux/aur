@@ -3,15 +3,14 @@
 pkgname=conky-lua
 _pkgname=conky
 pkgver=1.10.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight system monitor for X, with Lua support enabled'
 url='http://github.com/brndnmtthws/conky'
 license=('BSD' 'GPL3')
 arch=('i686' 'x86_64')
 options=('!emptydirs')
-makedepends=('docbook2x' 'tolua++' 'perl-xml-libxml' 'cmake' 
-'docbook-xsl' 'docbook-xml' 'perl-xml-libxml')
-depends=('alsa-lib' 'libxml2' 'curl' 'wireless_tools' 'libxft' 'glib2' 'libxdamage' 'imlib2' 'lua51' 'cairo')
+makedepends=('docbook2x' 'perl-xml-libxml' 'cmake' 'docbook-xsl' 'docbook-xml' 'perl-xml-libxml')
+depends=('tolua++' 'alsa-lib' 'libxml2' 'curl' 'wireless_tools' 'libxft' 'glib2' 'libxdamage' 'imlib2' 'lua51' 'cairo')
 provides=('conky=1.10.1')
 conflicts=('conky')
 backup=('etc/conky/conky.conf' 'etc/conky/conky_no_x11.conf')
