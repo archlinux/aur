@@ -7,7 +7,7 @@ pkgname=teensyduino
 pkgver=1.27
 _pkgver=1.27
 _arduino=1.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Arduino SDK with Teensyduino"
 arch=('i686' 'x86_64')
 url="http://www.pjrc.com/teensy/teensyduino.html"
@@ -23,7 +23,7 @@ source=('arduino.desktop'
         'arduino.xml'
         'teensyduino.sh'
         'teensy-loader.desktop'
-        "git+https://github.com/PaulStoffregen/teensy_loader_cli.git#commit=8420103e1d8fa5b226d36a05f2f70f49382d6208"
+        "git+https://github.com/PaulStoffregen/teensy_loader_cli.git#commit=f9e6a039f0031569d955fc4e40e02b59e5759007"
         "http://www.pjrc.com/teensy/49-teensy.rules"
         'LICENSE')
 source_i686+=("http://downloads.arduino.cc/arduino-${_arduino}-linux32.tar.xz"
