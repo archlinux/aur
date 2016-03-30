@@ -4,7 +4,7 @@
 # A specific version of CuraEngine is bundled with Aleph's Cura, and so it also
 # comes with this package.
 pkgname=cura-aleph-bin
-pkgver=18.03
+pkgver=18.04
 pkgrel=1
 pkgdesc="A full 3D printing solution aimed at RepRaps and the Ultimaker. 
 This is the Aleph Objects fork, specialized for the Lulzbot series of 3D printers."
@@ -25,15 +25,19 @@ conflicts=('cura'
            'cura-old' 
            'cura-not-so-old')
 
-_aleph_ver_major=$(echo "$pkgver" | cut -d "." -f 1)
-_aleph_url_root="http://download.lulzbot.com/Software/Cura/Packages/Cura_${_aleph_ver_major}"
+_aleph_url_root="http://download.lulzbot.com/Software/Cura/Packages/Cura_${pkgver}/Debian"
+_aleph_signature="67db" # Version-specific signature; part of the filename
+
+# Sha1sums verified against:
+# http://download.alephobjects.com/ao/aodeb/dists/jessie/main/binary-amd64/Packages
+# http://download.alephobjects.com/ao/aodeb/dists/jessie/main/binary-i386/Packages
 
 if [ "$CARCH" == x86_64 ]; then
-    source+=(${_aleph_url_root}/cura_${pkgver}-8bed_amd64.deb)
-    sha1sums+=('458528f3e1ea5033d0a2efdc10c9108184791a15')
+    source+=(${_aleph_url_root}/cura_${pkgver}-${_aleph_signature}_amd64.deb)
+    sha1sums+=('0da0e898a3cc8b1a9682719ac9f354a81366ec93')
 elif [ "$CARCH" == i686 ]; then
-    source+=(${_aleph_url_root}/cura_${pkgver}-8bed_i386.deb)
-    sha1sums+=('fd6ed10d0b4fea59129be2596c044021ca94c648')
+    source+=(${_aleph_url_root}/cura_${pkgver}-${_aleph_signature}_i386.deb)
+    sha1sums+=('1093afd238d73ee22c954a47cce82098f79a2440')
 fi
 
 source+=(arch_aleph_patch.diff)
