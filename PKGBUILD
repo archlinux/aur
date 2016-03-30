@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl
-pkgver=15.08.8
+pkgver=15.08.9
 pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management"
 arch=('i686' 'x86_64')
@@ -15,7 +15,6 @@ optdepends=("hwloc: enables the task/cgroup plugin"
 	"libmariadbclient: support for accounting"
 	"postgresql-libs: support for PostgreSQL"
 	"hdf5: support for acct_gather_profile/hdf5 job profiling"
-	"blcr: support for the checkpoint/blcr plugin"
 	"openssl: support for the crypto/openssl CryptoType plugin"
 	"pam: PAM support"
 	"readline: Readline support in scontrol and sacctmgr's interactive modes"
@@ -41,7 +40,7 @@ md5sums=('51e4ae2c51edf7c145d1b87bec4c344e'
          '834b641efbcb45d300630f51f08a9122'
          '231a6634fcf774642021377920fffe39'
          'cef9d45137b9bd431dce3cbe85ef9bca'
-         'd3273c539fe35a623e53dcc3db7d4102')
+         '509229069300075d1caec9756ab5f5bf')
 
 
 build() {
