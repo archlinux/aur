@@ -8,9 +8,14 @@ post_install() {
 
 pre_upgrade() {
    /opt/lampp/lampp stop >/dev/null 2>&1
-   cp -r /opt/lampp/htdocs /opt/lampp/htdocs_backup
-   echo "Your htdocs folder were backed up to /opt/lampp/htdocs_backup"   
+   cp -r /opt/lampp/ /opt/lampp_backup
+   echo "Your /opt/lampp/ folder were backed up to /opt/lampp/htdocs_backup"
  }
+
+ post_upgrade() {
+    echo "REMEMBER: Your /opt/lampp folder were backed up to /opt/lampp_backup"
+    echo "Restore manually the needed configuration files."
+  }
 
 
 pre_remove() {
