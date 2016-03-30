@@ -3,7 +3,7 @@
 pkgname=('google-cloud-compute-image-daemon' 'google-cloud-compute-image-startup-scripts')
 pkgbase=google-cloud-compute-image-packages
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Scripts and tools for Google Compute Engine images."
 arch=('any')
 url="https://github.com/GoogleCloudPlatform/compute-image-packages"
@@ -35,7 +35,8 @@ package_google-cloud-compute-image-startup-scripts() {
 
   cd "compute-image-packages-$pkgver/google-startup-scripts"
   cp -r usr "$pkgdir"
-  cp -r lib "$pkgdir"
-        mkdir -p "$pkgdir/etc"
-        cp -r etc/sysctl.d "$pkgdir/etc"
+  mkdir -p "$pkgdir/usr"
+  cp -r lib "$pkgdir/usr"
+  mkdir -p "$pkgdir/etc"
+  cp -r etc/sysctl.d "$pkgdir/etc"
 }
