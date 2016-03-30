@@ -6,7 +6,7 @@
 
 pkgbase=ppsspp
 pkgname=('ppsspp' 'ppsspp-qt')
-pkgver=1.2
+pkgver=1.2.2
 pkgrel=1
 pkgdesc='A PSP emulator written in C++'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ license=('GPL2')
 depends=('ffmpeg' 'sdl2')
 makedepends=('cmake' 'git' 'glu' 'qt5-tools')
 source=("git+https://github.com/hrydgard/ppsspp.git#tag=v${pkgver}"
-        'git+https://github.com/hrydgard/ppsspp-lang.git#commit=b7da552'
+        'git+https://github.com/hrydgard/ppsspp-lang.git#commit=16a50e3'
         'ppsspp-armips::git+https://github.com/Kingcom/armips.git#commit=9b225d9'
         'ppsspp.desktop')
 sha256sums=('SKIP'
