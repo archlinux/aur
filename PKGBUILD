@@ -21,7 +21,7 @@ sha256sums=('48a8726c6799025be06bc5b8bafa8449ca02abf8fe578e805f91707a5edf1e52'
             '42e4e6b6011f1126e69d8fd1cc06af72b4baa396b551c18a54de632d572c7d8c')
 
 prepare() {
-  cd "$srcdir/media_build-bst"
+  cd media_build-bst
   ln -sr v4l/sit2_op.o.x${CARCH: -2} v4l/sit2_op.o
   cp v4l/sit2_mod.dvb linux/drivers/media/dvb-frontends/sit2_mod.c
   sed -i '/depmod/d' v4l/Makefile v4l/scripts/make_makefile.pl
@@ -33,13 +33,14 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/media_build-bst"
-  #media-build doesn't like parallel jobs
-  make VER=$_kernver -j1
+  cd media_build-bst
+  #target prepare doesn't like parallel jobs
+  make VER=$_kernver -j1 prepare
+  make VER=$_kernver
 }
 
 package() {
-  cd "$srcdir/media_build-bst"
+  cd media_build-bst
   make DESTDIR="$pkgdir" KDIR26="/usr/lib/modules/$_kernver/updates/kernel/drivers/media" media-install
   find "$pkgdir" -type f -name '*.ko' -exec gzip -9 {} \;
 }
