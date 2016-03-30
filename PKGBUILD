@@ -9,6 +9,7 @@ url="https://github.com/elves/elvish"
 license=('custom:2-clause BSD')
 provides=('elvish')
 makedepends=('git' 'go')
+depends=('glibc')
 source=("git+https://github.com/elves/elvish.git#tag=0.1")
 md5sums=('SKIP')
 
