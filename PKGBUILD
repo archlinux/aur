@@ -1,8 +1,8 @@
 # Maintainer: Eric Chu <eric@ericchu.net>
 pkgname=shomepass
-pkgver=v2.0.r0.ge6c9c57
+pkgver=v2.1.r0.g0b89bb0
 pkgrel=1
-pkgdesc='A systemd homepass service'
+pkgdesc='A simple homepass implementation'
 arch=('any')
 url='https://github.com/ericchu94/shomepass'
 license=('GPL')
