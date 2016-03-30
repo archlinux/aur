@@ -1,0 +1,42 @@
+# Maintainer: Patrick Wozniak <hello@patwoz.de>
+
+pkgname=openbox-arc-git
+pkgver=20160330.r10.b39574d
+pkgrel=1
+pkgdesc="An attempt to create Openbox themes to fit with the rest of the Arc theme. (git)"
+
+arch=('any')
+url="https://github.com/dglava/arc-openbox"
+license=('GPL3')
+
+depends=(
+  'openbox'
+  'gtk-engine-murrine'
+)
+makedepends=(
+  'git'
+)
+
+conflicts=()
+backup=()
+
+source=(
+  "$pkgname::git+$url.git#branch=master"
+)
+sha256sums=(
+  'SKIP'
+)
+
+pkgver() {
+  cd "$pkgname"
+  printf "%s.r%s.%s" "$(date +%Y%m%d)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$pkgname"
+
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  mkdir -p ${pkgdir}/usr/share/themes
+  ls | grep -e '^Arc' | xargs cp -R -t "${pkgdir}/usr/share/themes"
+}
