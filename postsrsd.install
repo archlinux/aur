@@ -1,0 +1,15 @@
+post_install() {
+  useradd -r -g mail -d / postsrsd
+  chown -R postsrsd:root etc/postsrsd
+
+  [ -e /etc/postsrsd/postsrsd.secret ] || dd if=/dev/urandom bs=18 count=1 status=none | base64 > /etc/postsrsd/postsrsd.secret
+  chown postsrsd:root /etc/postsrsd/postsrsd.secret
+  chmod 400 /etc/postsrsd/postsrsd.secret
+  cat << _EOF
+Don't forget to set your domainname in /etc/postsrsd/postsrsd.conf
+_EOF
+}
+
+post_remove() {
+	userdel postsrsd
+}
