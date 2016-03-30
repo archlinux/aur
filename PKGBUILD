@@ -1,44 +1,35 @@
 # Maintainer: Jason Edson <jason@oceighty.co>
 
-_name=meld
-pkgname=$_name-dev
+pkgname=meld
 pkgver=3.15.2
 pkgrel=1
 pkgdesc='Visual diff and merge tool'
-arch=('any')
 url='http://meldmerge.org/'
-license=('GPL')
-depends=('python2'
-        'gtk3>=3.6'
-	'glib2>=2.34'
-	'python2-gobject>=3.6'
-	'pygobject-devel>=3.6'
-	'gtksourceview3>=3.6')
-makedepends=('intltool' 'gnome-doc-utils' 'git' 'itstool')
-optdepends=('python2-dbus: open a new tab in an already running instance'
-            'python2-gconf: gnome integration')
-provides=($_name)
-conflicts=($_name)
+license=(GPL)
+arch=(any)
+makedepends=(intltool itstool)
 install=meld.install
-options=('!emptydirs')
-source=("http://ftp.gnome.org/pub/GNOME/sources/meld/3.15/meld-3.15.2.tar.xz")
-sha256sums=('7df34d973dd96163cb1c85bae7d713be610a53f49f2450acb01d501cea24ad16')
+depends=(python2-gobject python2-cairo gtksourceview3 hicolor-icon-theme desktop-file-utils
+         gsettings-desktop-schemas)
+optdepends=('python2-dbus: open a new tab in an already running instance')
+source=("https://download.gnome.org/sources/$pkgname/${pkgver%.*}/$pkgname-${pkgver}.tar.xz")
+sha1sums=('c5c34f52ebe337c654ad5e35450f43e95bdd7743')
 
-pkgver() {
-  cd $_name-$pkgver
-  git describe --tags | sed s/-/./g
+# Meld does not support Python 3. The build succeeds, but
+# the main executable checks the version and errors out.
+
+prepare() {
+  cd $pkgname-$pkgver
 }
 
 build() {
-  cd $_name-$pkgver
+  cd $pkgname-$pkgver
   python2 setup.py build
 }
 
 package() {
-  cd $_name-$pkgver
-  python2 setup.py \
-  	--no-update-icon-cache --no-compile-schemas install \
-  	--prefix=/usr \
-  	--root="${pkgdir}" \
-  	--optimize=1
+  cd $pkgname-$pkgver
+  # using --skip-build breaks install
+  python2 setup.py --no-update-icon-cache --no-compile-schemas \
+    install --prefix=/usr --root="$pkgdir" --optimize=1
 }
