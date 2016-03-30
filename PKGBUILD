@@ -35,6 +35,7 @@ prepare() {
 }
 
 package() {
-	mkdir $pkgdir/usr $pkgdir/usr/share $pkgdir/usr/share/jorgan
+	mkdir $pkgdir/usr $pkgdir/usr/share $pkgdir/usr/share/jorgan $pkgdir/usr/share/applications
 	cp -R $srcdir/* $pkgdir/usr/share/jorgan/
+	cp jorgan.desktop $pkgdir/usr/share/applications/
 }
