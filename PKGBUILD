@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 url="http://trojita.flaska.net"
 license=('GPL')
 depends=('qt5-webkit' 'qtkeychain-qt5' 'qt5-tools' 'mimetic'
-'gpgmepp' 'xdg-utils' 'update-desktop-database')
+'gpgmepp' 'xdg-utils' 'desktop-file-utils')
 conflicts=('trojita')
 provides=('trojita')
 makedepends=('git' 'cmake' 'boost')
