@@ -7,7 +7,7 @@
 pkgname=qt4-revert80e3108
 _pkgname=qt4
 pkgver=4.8.7
-pkgrel=7
+pkgrel=8
 arch=('i686' 'x86_64')
 url='http://www.qt.io'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
@@ -28,8 +28,11 @@ optdepends=('qtchooser: set the default Qt toolkit'
             'icu: Unicode support'
             'sni-qt: StatusNotifierItem (AppIndicators) support')
 install="${_pkgname}.install"
-replaces=('qt<=4.8.4')
-conflicts=('qt')
+
+provides=("qt4=$pkgver")
+replaces=('qt4')
+conflicts=('qt4')
+
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
 source=("http://download.qt.io/official_releases/qt/4.8/${pkgver}/${_pkgfqn}.tar.gz"
         'qtconfig-qt4.desktop' 'assistant-qt4.desktop' 'designer-qt4.desktop'
