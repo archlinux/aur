@@ -1,6 +1,6 @@
 pkgbase = slurm-llnl-git
 	pkgdesc = Simple Linux Utility for Resource Management (development version)
-	pkgver = 27368.7fb0c98
+	pkgver = 27552.a685e0e
 	pkgrel = 1
 	url = http://www.schedmd.com
 	install = slurm-llnl-git.install
@@ -15,7 +15,6 @@ pkgbase = slurm-llnl-git
 	optdepends = libmariadbclient: support for accounting
 	optdepends = postgresql-libs: support for PostgreSQL
 	optdepends = hdf5: support for acct_gather_profile/hdf5 job profiling
-	optdepends = blcr: support for the checkpoint/blcr plugin
 	optdepends = openssl: support for the crypto/openssl CryptoType plugin
 	optdepends = pam: PAM support
 	optdepends = readline: Readline support in scontrol and sacctmgr's interactive modes
