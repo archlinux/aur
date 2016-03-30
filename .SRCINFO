@@ -9,7 +9,9 @@ pkgbase = marisahttpd-git
 	makedepends = libmicrohttpd
 	provides = marisa
 	provides = libkirisame.so
+	provides = marisa-logview
 	source = marisahttpd-git::git+https://github.com/AmamiyaRinyuki/MarisaHttpd
 	md5sums = SKIP
 
 pkgname = marisahttpd-git
+

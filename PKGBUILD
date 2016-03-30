@@ -2,7 +2,7 @@
 # Maintainer: Dustin Van Tate Testa <toast27@gmail.com>
 
 pkgname=marisahttpd-git
-pkgver=0.4.r35.g45274d1 # changes after makepkg (based on git versioning)
+pkgver=0.4.r35.g45274d1 # calls `pkgver()` to replace this number (ver from git)
 pkgrel=1
 license=('GPL')
 pkgdesc="High-effiency dynamic webpage server and runtime for C/C++"
@@ -12,7 +12,7 @@ arch=('any')
 
 makedepends=('git' 'libmicrohttpd')
 
-provides=("marisa")
+provides=("marisa" "libkirisame.so" "marisa-logview")
 
 source=("$pkgname::git+https://github.com/AmamiyaRinyuki/MarisaHttpd")
 
@@ -30,8 +30,9 @@ package() {
 	mkdir $pkgdir/usr/bin/
 	mkdir $pkgdir/usr/lib/
 
-	gcc -shared -fpic src/kirisame.c -o $pkgdir/usr/lib/libkirisame.so
-	gcc src/marisa.c src/grimoire.c src/magicshop.c src/kirisame.c -ldl -lm -lpthread -lmicrohttpd -o $pkgdir/usr/bin/marisa
+	gcc -shared -fpic -Ofast kirisame.c src/libs/*.c -Ilibs -o $pkgdir/lib/libkirisame.so
+	gcc -Ofast src/marisa.c src/grimoire.c src/magicshop.c srd/kirisame.c -ldl -lm -lpthread -lmicrohttpd -o $pkgdir/usr/bin/marisa
+	gcc -Ofast src/logview.c -o $pkgdir/usr/bin/marisa-logview
 
 	install -D -m644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
 
