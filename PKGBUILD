@@ -1,7 +1,7 @@
 # Maintainer: Morris Jobke <hey AT morrisjobke.de>
 # Maintainer: Martin Mlynář <nexus+arch@smoula.net>
 pkgname=dokku
-pkgver=0.4.14
+pkgver=0.5.3
 pkgrel=4
 pkgdesc="Docker powered mini-Heroku in around 100 lines of Bash."
 arch=(any)
