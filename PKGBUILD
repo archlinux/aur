@@ -2,7 +2,7 @@
 # Contributor: Det <nimetonmaili g-mail>
 # Contributor: Sergio A. Morales <sergiomorales@archlinux.cl>
 pkgname=389-adminutil
-pkgver=1.1.21
+pkgver=1.1.22
 pkgrel=1
 pkgdesc="Utility library for 389 administration"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('389-ds-base' 'mozldap')
 source=("http://directory.fedoraproject.org/sources/$pkgname-$pkgver.tar.bz2")
 install=$pkgname.install
-sha256sums=('a2f2c811d606bf8da71226ae4fa64322f585160cac415afb73c16ea7d7dab06d')
+sha256sums=('d6eff92baef515045a6c9f1e77e04e623b0d20306fd4507a53c5ead3ab2af9cd')
 
 build() {
   cd $pkgname-$pkgver
