@@ -5,7 +5,7 @@ pkgver=r24.da6584a
 pkgrel=1
 pkgdesc="Alternating split directions for the i3-wm"
 _repo=i3-alternating-layout
-url="github.com/olemartinorg/$_repo"
+url="https://github.com/olemartinorg/$_repo"
 arch=('any')
 license=('MIT')
 depends=('i3-wm'
@@ -14,7 +14,7 @@ depends=('i3-wm'
 conflicts=('alternating-layouts')
 makedepends=('git')
 install=alternating-layouts.install
-source=("git://$url")
+source=("git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
