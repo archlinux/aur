@@ -11,7 +11,7 @@ conflicts=('pycharm' 'pycharm-community')
 provides=('pycharm')
 license=('custom')
 install=${pkgname}.install
-depends=('gtk2' 'libxtst' 'alsa-lib' 'libxslt' 'java-environment')
+depends=('gtk2' 'libxtst' 'alsa-lib' 'libxslt' 'java-environment' 'ttf-font')
 source=(https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz
         'pycharm-professional.desktop'
         'pycharm-professional.install'
