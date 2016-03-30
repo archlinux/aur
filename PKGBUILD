@@ -1,13 +1,14 @@
 # Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=red
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source, native code compiled, dialect of Rebol"
 arch=('i686' 'x86_64')
 url="http://www.red-lang.org"
 license=('custom:3-clause BSD' 'custom:BSL')
 groups=('devel')
-makedepends=('wget' 'rebol=2.7.8' 'lib32-curl')
+depends=('lib32-curl')
+makedepends=('wget' 'rebol=2.7.8')
 checkdepends=('bash')
 conflicts=('ed')
 source=("https://github.com/dockimbel/${pkgname}/archive/v${pkgver}.tar.gz")
