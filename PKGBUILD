@@ -9,7 +9,10 @@ url="http://pyinvoke.org"
 license=('BSD')
 arch=('any')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("http://pypi.python.org/packages/source/i/invoke/invoke-$pkgver.tar.gz")
+source=("http://pypi.python.org/packages/source/i/invoke/invoke-$pkgver.tar.gz"
+        "invoke.bash::https://raw.githubusercontent.com/pyinvoke/invoke/$pkgver/completion/bash"
+        "invoke.fish::https://raw.githubusercontent.com/pyinvoke/invoke/$pkgver/completion/fish"
+        "invoke.zsh::https://raw.githubusercontent.com/pyinvoke/invoke/$pkgver/completion/zsh")
 
 prepare() {
 	cp -r $pkgbase-$pkgver $pkgbase-$pkgver-py2
@@ -32,6 +35,13 @@ package_invoke() {
 
 	install -Dm644 README.rst "$pkgdir"/usr/share/doc/$pkgname/README.rst
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+	install -Dm644 "$srcdir"/invoke.bash \
+		"$pkgdir"/usr/share/bash-completion/completions/invoke
+	install -Dm644 "$srcdir"/invoke.fish \
+		"$pkgdir"/usr/share/fish/completions/invoke.fish
+	install -Dm644 "$srcdir"/invoke.zsh \
+		"$pkgdir"/usr/share/zsh/site-functions/_invoke
 }
 
 package_python2-invoke() {
@@ -49,4 +59,7 @@ package_python2-invoke() {
 	mv invoke invoke2
 }
 
-sha256sums=('8001f79e80998e33a429a9a26c149db8f315676b5de782eacd980eacd0f420c0')
+sha256sums=('8001f79e80998e33a429a9a26c149db8f315676b5de782eacd980eacd0f420c0'
+            '5c0fdc6b454253d117d71705a65922d74f2e8e56de905dcfee6460692e47e9ce'
+            '58a7a1e82bf02afb74b0093ffd4f8f5045e7aa86dd6606e75d8a4ef69bc2dea6'
+            '2fd9da1f67d2fbe48d0a3ddb570e2fad6600c29d1298ce017466edc688c576c7')
