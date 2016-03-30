@@ -1,7 +1,7 @@
 pkgbase = shomepass
 	pkgdesc = A systemd homepass service
-	pkgver = v1.1.r0.g500241f
-	pkgrel = 2
+	pkgver = v2.0.r0.ge6c9c57
+	pkgrel = 1
 	url = https://github.com/ericchu94/shomepass
 	arch = any
 	license = GPL
