@@ -3,7 +3,7 @@
 pkgbase=python-breathe
 pkgname=('python-breathe' 'python2-breathe')
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An extension to reStructuredText and Sphinx to be able to read and render Doxygen xml output."
 arch=('any')
 url="https://breathe.readthedocs.org/en/latest/"
