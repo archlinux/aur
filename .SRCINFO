@@ -17,6 +17,7 @@ pkgbase = openxcom
 	depends = sdl_image
 	depends = yaml-cpp
 	depends = mesa
+	optdepends = openxcom-data-steam: Original XCom data files from steam
 	source = https://github.com/SupSuper/OpenXcom/archive/v1.0.tar.gz
 	source = openxcom.install
 	sha256sums = 45acb280010a01d60506b1c5f2951ae501c012cc6161aac470bd15c1e6981246

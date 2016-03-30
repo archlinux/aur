@@ -12,6 +12,7 @@ url="http://openxcom.org/"
 license=('GPL3')
 depends=('sdl_gfx' 'sdl_mixer' 'sdl_image' 'yaml-cpp' 'mesa')
 makedepends=('boost' 'glu' 'xmlto' 'docbook-xml' 'docbook-xsl')
+optdepends=('openxcom-data-steam: Original XCom data files from steam')
 install="${pkgname}.install"
 source=("https://github.com/SupSuper/OpenXcom/archive/v1.0.tar.gz"
         "${pkgname}.install")
