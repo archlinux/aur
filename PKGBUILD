@@ -2,12 +2,12 @@
 
 pkgname=lateafternoon-icons
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lateafternoon icon theme"
 arch=('any')
 url="http://manicfold.deviantart.com/art/LateAfternoon-444389530"
 license=('CC BY-NC 3.0')
-source="http://esclapion.free.fr/AUR/LateAfternoon-${pkgver}.tar.gz"
+source=("http://esclapion.free.fr/AUR/LateAfternoon-${pkgver}.tar.gz")
 md5sums=('217325bf85a111bd4c5ad1336520e3f1')
 
 package() {
