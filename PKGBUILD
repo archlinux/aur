@@ -12,6 +12,7 @@ arch=('any')
 url="https://github.com/OpenELEC/${_reponame}"
 license=('GPL3')
 conflicts=('openelec-dvb-firmware')
+provides=('openelec-dvb-firmware')
 makedepends=('git' 'linux-firmware')
 source=("git+https://github.com/OpenELEC/${_reponame}.git")
 md5sums=('SKIP')
