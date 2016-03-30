@@ -5,7 +5,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=inox
-pkgver=48.0.2564.116
+pkgver=49.0.2623.110
 pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
@@ -26,14 +26,12 @@ install=inox.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         inox.desktop
-        chromium-use-non-versioned-icu-namespace.patch
-        chromium-fix-print-preview-on-en_GB-locale.patch
         chromium-widevine.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-autofill-download-manager.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-google-url-tracker.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-default-extensions.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/modify-default-prefs.patch
-        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-notification-promo-fetch.patch
+        https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-web-resource-service.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/restore-classic-ntp.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-google-ipv6-probes.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-gcm-status-check.patch
@@ -47,21 +45,19 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-new-avatar-menu.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-first-run-behaviour.patch)
 
-sha256sums=('6a1eb9b4c853f15eeec0a55af7ac3b41835f0fc592ba6c0a500873cb12a84d0f'
+sha256sums=('41840925d3769555ce4ebd780ee0dc6789ffae27b1684006c9b543bcaa35bbd2'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
-            'e4192446cc0ab6a5c540599c8a149f4f2208f0014da2786ada6c9544913d7426'
-            '6fff45aafa31fb35a032b4e2175a341e08f9d2a9b37c5cf080c318180f558378'
             '4660344789c45c9b9e52cb6d86f7cb6edb297b39320d04f6947e5216d6e5f64c'
-            '4923cbcf3f5b8d8b469b23dedfedb36b85a11761ac07dd0e1bfd976c3801a322'
-            '59ebf0ff2227eea507bf113c8f6ff4768dd168b6fa7cc2195172d2757a5df807'
-            'da61f378acf468851d084534c7c6d4afb9711534b92e58aea3e4bca98a38fa4b'
-            '81f5f881e10d974b2a770b68e8becc25db22781252e85d0b7323f2c1236190a1'
-            '64b5e27c57017b80c3e1471d0ee9fd45901392beb9ffe69fb4362f701eccc6ae'
+            '1b2274b25d2b02c0c54b2c830ff889ddf7eceb6b8c7cf5a6dd9321c3c468a715'
+            'a7329d7f3099f6b8dfe4b7addeb7abbca1cf079139a86c6483a51fed0190478e'
+            '241ffb6a5dfd4f331e11c87b70aa26a48475d52e14f5b9e86f6b69db7137ee84'
+            'e247f7c91d79eb119feffb67eb8e19e9a667911a42e8dd43c92861c922ee5cbd'
+            'c2bab92d8d237d341b79d868e814807c3f862d3b3c22a87bbf5e905853e516ae'
             '2aec3f9a8a3f9f64caf1fdaae797a617199739c8b0ead1e176aba1bcfffcc389'
             '562eea848542f76537a9f3993bac397b523d0ce419416daf0bb4dd17f5203c7c'
             'b081462f645ffab7aaf2c310761c269329d3d22a36cf463dd0ba5ebb3da2141e'
-            '05f1a3a921c7e41535a67272e8a511f96e341b55d2549344c5026a5ebea38e4d'
+            '508ae6417ad5dc23581ca593ac19fa36cfdc019d16ac5e159b8cf1e5e1acb551'
             'd2861c60acfdb710cf8b114ef1c3484011102cfef813c480d460002305ebcc0f'
             '8412971b2814c1135375d5e5fc52f0f005ac15ed9e7625db59f7f5297f92727e'
             '55b75daf5aad2a8929c80837f986d4474993f781c0ffa4169e38483b0af6e385'
@@ -89,13 +85,6 @@ prepare() {
   # https://code.google.com/p/chromium/issues/detail?id=541273
   sed -i "/'target_name': 'libvpx'/s/libvpx/&_new/" build/linux/unbundle/libvpx.gyp
 
-  # https://codereview.chromium.org/1505763002
-  patch -Np1 -i ../chromium-use-non-versioned-icu-namespace.patch
-
-  # https://code.google.com/p/chromium/issues/detail?id=480415
-  patch -Np1 -i ../chromium-fix-print-preview-on-en_GB-locale.patch
-
-
   # Enable support for the Widevine CDM plugin
   # libwidevinecdm.so is not included, but can be copied over from Chrome
   # (Version string doesn't seem to matter so let's go with "Pinkie Pie")
@@ -107,7 +96,7 @@ prepare() {
   patch -Np1 -i ../disable-google-url-tracker.patch
   patch -Np1 -i ../disable-default-extensions.patch
   patch -Np1 -i ../modify-default-prefs.patch
-  patch -Np1 -i ../disable-notification-promo-fetch.patch
+  patch -Np1 -i ../disable-web-resource-service.patch
   patch -Np1 -i ../restore-classic-ntp.patch
   patch -Np1 -i ../disable-google-ipv6-probes.patch
   patch -Np1 -i ../disable-gcm-status-check.patch
@@ -187,6 +176,7 @@ build() {
     -Dusb_ids_path=/usr/share/hwdata/usb.ids
     -Duse_mojo=0
     -Duse_gconf=0
+    -Duse_sysroot=0
     -Denable_widevine=1
     -Ddisable_fatal_linker_warnings=1
     -Ddisable_glibc=1
