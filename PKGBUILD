@@ -1,7 +1,7 @@
 # Maintainer: John Jenkins <twodopeshaggy@gmail.com>
 
 pkgname=define
-pkgver=1.72
+pkgver=1.74
 pkgrel=1
 pkgdesc="Terminal dictionary"
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('gstreamer' 'python' 'python-requests')
 conflicts=('define-git')
 source=("https://github.com/SethDusek/define/archive/$pkgver.tar.gz")
-md5sums=('f8b98f113fa9fd77a3a50abaab82723e')
+md5sums=('44dd91c4f4d29fd0d11940145feb4392')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
