@@ -2,7 +2,7 @@
 
 pkgname=gnome-twitch
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Enjoy Twitch on your GNU/Linux desktop"
 arch=('i686' 'x86_64')
 url="https://github.com/Ippytraxx/gnome-twitch"
@@ -20,7 +20,7 @@ build()
     rm -rf build
     mkdir build
     cd build
-    meson --prefix /usr --buildtype release -Ddo-post-install=false ..
+    meson.py --prefix /usr --buildtype release -Ddo-post-install=false ..
     ninja
 }
 
