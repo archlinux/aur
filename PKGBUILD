@@ -1,50 +1,35 @@
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
 # Contributor: Johannes Dewender < arch at JonnyJD dot net >
 
 pkgname=vim-vimwiki
-pkgver=2.1
+pkgver=2.2.1
 pkgrel=1
-pkgdesc="Personal Wiki for Vim"
+pkgdesc='A personal wiki for Vim'
 arch=('any')
-url="http://code.google.com/p/vimwiki/"
-license=('MIT' 'GPL3')
+url='https://github.com/vimwiki/vimwiki'
+license=('MIT')
 groups=('vim-plugins')
 depends=('vim' 'python2')
-install=vimwiki.install
-source=(http://vimwiki.googlecode.com/files/vimwiki-2-1.zip
-        license.txt
-        convert_links.py
-        convert-links.patch)
-md5sums=('775877e910d5588f764472dd934a7000'
-         'e19fa0689d06a724fc8ddfe824ef2680'
-         '0fc0e816bb93e408b62f74e8b2073daa'
-         '1ba74a69c30927e947f22870c2551f73')
+install=vimdoc.install
+source=("https://github.com/vimwiki/vimwiki/archive/v${pkgver}.tar.gz")
+sha256sums=('be7bbb57482d05b5ee300a944dc3fce01c9c266d1b7509c079e3f667ad924c32')
 
-build () {
-  cd "$srcdir"
-
-  # change symlink to file
-  mv convert_links.py convert_links.symlink
-  cp -L convert_links.symlink convert_links.py
-  rm convert_links.symlink
-  patch -p1 < convert-links.patch
+prepare() {
+  # Extract licence from vim's help
+  grep '^[0-9]*. License' "${pkgname#vim-}-${pkgver}/doc/vimwiki.txt" -A 1000 > LICENCE
 }
 
 package () {
-  cd "$srcdir"
+  cd "${pkgname#vim-}-${pkgver}"
 
   install -d $pkgdir/usr/share/vim/vimfiles/autoload/vimwiki
   install -Dm644 autoload/vimwiki/* \
     ${pkgdir}/usr/share/vim/vimfiles/autoload/vimwiki/
 
   install -d $pkgdir/usr/share/vim/vimfiles/{doc,ftplugin,plugin,syntax}
+  install -Dm644 doc/vimwiki.txt $pkgdir/usr/share/vim/vimfiles/doc/
   for x in {ftplugin,plugin,syntax}; do
     install -Dm644 $x/* $pkgdir/usr/share/vim/vimfiles/$x/
   done
-  install -Dm644 license.txt $pkgdir/usr/share/licenses/$pkgname/license.txt
-  install -Dm644 doc/vimwiki.txt $pkgdir/usr/share/vim/vimfiles/doc/ 
-
-  # install convert-links
-  install -D convert_links.py $pkgdir/usr/bin/vimwiki_convert_links
+  install -Dm644 ../LICENCE $pkgdir/usr/share/licenses/$pkgname/LICENCE
 }
-
-# vim:set ts=2 sw=2 et:
