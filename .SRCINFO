@@ -11,7 +11,7 @@ pkgbase = theshell
 	depends = xdg-utils
 	depends = wmctrl
 	depends = kwin
-	depends = NetworkManager
+	depends = networkmanager
 	optdepends = pocketsphinx: for theWave
 	optdepends = festival: for theWave
 	source = theshell-1.0::git+https://github.com/vicr123/theshell#branch=master

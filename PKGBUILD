@@ -7,7 +7,7 @@ pkgdesc="Minimalistic Desktop Shell"
 arch=("x86_64")
 url="https://github.com/vicr123/thefile"
 license=('GPL2')
-depends=('kwidgetsaddons' 'xdg-utils' 'wmctrl' 'kwin' 'NetworkManager')
+depends=('kwidgetsaddons' 'xdg-utils' 'wmctrl' 'kwin' 'networkmanager')
 optdepends=('pocketsphinx: for theWave'
 	    'festival: for theWave')
 makedepends=('qtchooser' 'git')
