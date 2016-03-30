@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.1
+Name=don't take it personally, babe..
+Comment=Visual novel game that tells a story of a new high school literature teacher, set in a prestigious private high school, and on the social networks of 2027
+Icon=donttakeitpersonally.ico
+Exec=/usr/bin/donttakeitpersonally
+Terminal=false
+Categories=Application;Game;

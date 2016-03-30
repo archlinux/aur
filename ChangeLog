@@ -1,0 +1,10 @@
+2012-16-03 AlexanderR <alexanderr at gmx dot com>
+
+	* 1.1-2 :
+	changed dep from python-renpy to renpy. added ChangeLog.
+	removed direct usage of RENPY_BASE from launcher script.
+
+2012-24-02 AlexanderR <alexanderr at gmx dot com>
+
+	* 1.1-1 :
+	uploaded version 1.1. added icon, launcher script and .desktop file.
