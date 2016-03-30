@@ -14,6 +14,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 source=("git+https://github.com/elves/elvish.git")
 md5sums=('SKIP')
+install=elvish.install
 
 pkgver() {
     cd "$_pkgname"
