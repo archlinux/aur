@@ -1,13 +1,13 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
 pkgname=adapta-gtk-theme
 pkgver='3.20.1.60'
-pkgrel=1
+pkgrel=2
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
 url="https://github.com/tista500/Adapta"
 license=('GPL2')
 install="${pkgname}.install"
-depends=(gtk2 gtk3)
+depends=(gtk2 'gtk3>=3.18.0', 'gtk3<=3.20.0')
 source=("https://github.com/tista500/Adapta/archive/${pkgver}.tar.gz")
 sha256sums=(58d2bb69efdcc530891a73db39d3aabbb8d439850d4ffe5cc555d0ff93f1c20d)
 
