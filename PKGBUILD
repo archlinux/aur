@@ -1,10 +1,10 @@
-# Maintainer: Bjoern Bidar <theodorstormgrade@gmail.com>
+# Maintainer: deadhead <deadhead3492@gmail.com>
 pkgname=arch-wiki-cli
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
-pkgdesc="search in arch wiki from command line"
+pkgdesc="Search the arch wiki from the cli"
 arch=('any')
-url="https://github.com/deadhead420/archlinux"
+url="https://github.com/deadhead420/arch-wiki"
 license=('GPL')
 depends=('bash')
 optdepends=(
@@ -12,12 +12,12 @@ optdepends=(
   'elinks: to view the wiki inside your shell'
   'links: to view the wiki inside your shell'
 )
-source='https://raw.githubusercontent.com/deadhead420/archlinux/master/wiki.sh'
-md5sums=('13269023719830461f164fabb5d349b3')
+source=('https://raw.githubusercontent.com/deadhead420/arch-wiki/master/arch-wiki.sh')
+md5sums=('b358943235f2413e429bef8890b3c2ea')
 
 package() {
   cd "${srcdir}"
-  install -Dm755 wiki.sh $pkgdir/usr/bin/arch-wiki
+  install -Dm755 arch-wiki.sh $pkgdir/usr/bin/arch-wiki
 }
 
 # vim:set ts=2 sw=2 et:
