@@ -27,7 +27,7 @@ _bldtype=Release
 # http://zipcloud.ibsnet.co.jp/
 #*************************************************************
 
-_zipcoderel=201602
+_zipcoderel=201603
 _mozcrev=2628af6995dbbbb9ccdb52d1160db1dbd5ed3bae
 
 pkgbase=mozc
@@ -46,8 +46,8 @@ source=(
   http://downloads.sourceforge.net/project/pnsft-aur/mozc/jigyosyo-${_zipcoderel}.zip
 )
 sha1sums=('SKIP'
-          '5cc2c2811e2a57ebaf671d09d727a86009f7f846'
-          '4ba7faa2ebecb4ad52e05d92d7d18abae327a4fc')
+          '532926e98c8cc2aefd6e6db7b1980792f9c0f878'
+          'e19a7bbe22e2b3d6ab3ace6538e50804f533bbb7')
 
 
 if [[ "$_emacs_mozc" == "yes" ]]; then
