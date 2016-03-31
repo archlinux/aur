@@ -2,14 +2,14 @@
 
 pkgname=snapcast
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Synchronous multi-room audio player"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/badaix/snapcast"
 license=('GPL')
 groups=()
-depends=(boost-libs alsa-lib avahi libvorbis flac)
-makedepends=(git boost alsa-utils)
+depends=(alsa-lib avahi libvorbis flac)
+makedepends=(git alsa-utils)
 checkdepends=()
 optdepends=()
 provides=()
