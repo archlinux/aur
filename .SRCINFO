@@ -1,0 +1,23 @@
+pkgbase = x48
+	pkgdesc = An HP 48 x/sx/g/gx Emulator
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = http://sourceforge.net/projects
+	install = x48.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = readline
+	depends = libxext
+	provides = x48=0.6.4
+	conflicts = x48
+	options = !emptydirs
+	source = source::http://sourceforge.net/projects/x48.berlios/files/x48-0.6.4.tar.bz2/download
+	source = sxrom::http://sourceforge.net/projects/x48.berlios/files/sxrom-d.bz2/download
+	source = gxrom::http://sourceforge.net/projects/x48.berlios/files/gxrom-r.bz2/download
+	md5sums = 700e631f8924a991b35d8a86ce60aab7
+	md5sums = a1adf17500c61774160afaa72894e936
+	md5sums = a08249c9a75d52671045dbb9c35321fa
+
+pkgname = x48
+
