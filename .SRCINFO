@@ -23,7 +23,7 @@ pkgname = lib32-nvidia-libgl-352
 	provides = lib32-nvidia-libgl
 	conflicts = lib32-libgl
 	conflicts = lib32-nvidia-libgl
-	conflicts = libglvnd
+	conflicts = lib32-libglvnd
 	replaces = lib32-nvidia-utils<=313.26-1
 
 pkgname = lib32-opencl-nvidia-352

@@ -54,7 +54,7 @@ package_lib32-nvidia-libgl-352() {
     pkgdesc="NVIDIA drivers libraries symlinks (32-bit)"
     depends=('lib32-nvidia-utils-352')
     replaces=('lib32-nvidia-utils<=313.26-1')
-    conflicts=('lib32-libgl' 'lib32-nvidia-libgl' 'libglvnd')
+    conflicts=('lib32-libgl' 'lib32-nvidia-libgl' 'lib32-libglvnd')
     provides=('lib32-libgl' 'lib32-nvidia-libgl')
     cd "${_pkg}"
 
