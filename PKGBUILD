@@ -2,7 +2,7 @@
 
 pkgname=sheepdog
 pkgver=1.0_rc0
-pkgrel=1
+pkgrel=2
 pkgdesc="This package provides a distributed storage system for QEMU. It provides highly available block level storage volumes to virtual machines. It supports advanced volume management features such as snapshot, cloning, and thin provisioning."
 arch=("i686" "x86_64")
 url="http://sheepdog.github.io/sheepdog/"
@@ -20,8 +20,14 @@ makedepends=("libqb>=0.17.2"
              "qemu>=2.5.0"
              "yasm>=1.3.0")
 
-source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=("8d3fdb58ac4d62e814a11f191d83baa783a7e805f6400eb6807719760f10e49aaad28c68c7c1a95bc535bc1c15722d43458bf4f3342696d58624baab2af1436d")
+backup=("etc/sheepdog/sheepdog.env")
+
+source=("https://github.com/$pkgname/$pkgname/archive/v$pkgver.tar.gz"
+        "sheepdog.service"
+        "sheepdog.env")
+sha512sums=("8d3fdb58ac4d62e814a11f191d83baa783a7e805f6400eb6807719760f10e49aaad28c68c7c1a95bc535bc1c15722d43458bf4f3342696d58624baab2af1436d"
+            "d86c504098ad52e79c800c29f28a2de44e42332bd72625b63a19d1019bfd7f9e752277605b97661103e317ff6b33d54c272c03117fd29a2c37bc0d4670f729ff"
+            "f6d0dba543a79127f3bae7492fb1c88df7270dc8423ae967b223b69285cf410c7da49e80ceb7c9c6abf2bcf7d5c0c9d77dc8ff702eccffcb9f39338ecaec3bd3")
 
 build() {
     cd "$pkgname-$pkgver"
@@ -38,4 +44,15 @@ check() {
 package() {
     cd "$pkgname-$pkgver"
     make DESTDIR="$pkgdir/" install
+
+    rm -rf $pkgdir/etc/init.d
+    rm -rf $pkgdir/usr/lib/systemd/system/sheepdog.service
+
+    install -D -m 644 \
+      $srcdir/sheepdog.service \
+      $pkgdir/usr/lib/systemd/system/sheepdog.service
+
+    install -D -m 644 \
+      $srcdir/sheepdog.env \
+      $pkgdir/etc/sheepdog/sheepdog.env
 }
