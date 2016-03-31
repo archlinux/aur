@@ -29,11 +29,11 @@ sha512sums=(
 
 prepare() {
 	# msgpack-c now provides libmsgpackc
-	cd ${srcdir}/${pkgname}-${pkgver}
+	cd "${srcdir}"/${pkgname}-${pkgver}
 	patch -Np1 < ../msgpackc_fix.patch
 
 	# Create build directory
-	mkdir -p ${srcdir}/build
+	mkdir -p "${srcdir}"/build
 }
 
 build() {
@@ -45,7 +45,7 @@ build() {
 	fi
 	
 	# Building package
-	cd ${srcdir}/build
+	cd "${srcdir}"/build
 	cmake ../${pkgname}-${pkgver} \
 		-DCMAKE_C_COMPILER=clang \
 		-DCMAKE_CXX_COMPILER=clang++ \
@@ -58,6 +58,6 @@ build() {
 
 package() {
 	# Installing package
-	cd ${srcdir}/build
-	make DESTDIR=${pkgdir} install
+	cd "${srcdir}"/build
+	make DESTDIR="${pkgdir}" install
 }
