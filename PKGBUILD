@@ -2,7 +2,7 @@
 pkgname=python2-gpsoauth
 _pipyname=gpsoauth
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="client library for Google Play Services OAuth"
 arch=('any')
 url="https://github.com/simon-weber/gpsoauth"
@@ -10,11 +10,8 @@ license=('BSD')
 groups=()
 depends=(
     'python2'
-    'python2-requests>=2.7'
-    'python2-crypto>=2.6'
-    'python2-pyasn1>=0.1.7'
-    'python2-pyopenssl>=0.15'
-    'python2-ndg-httpsclient>=0.4'
+    'python2-requests>=2.9'
+    'python2-pycryptodomex'
 )
 makedepends=('python2-setuptools')
 optdepends=()
