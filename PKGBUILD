@@ -30,7 +30,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-tidy"
          "${pkgbase}-xsl")
 pkgver=5.6.19
-pkgrel=1
+pkgrel=2
 pkgdesc="A general-purpose scripting language that is especially suited to web development"
 arch=('i686' 'x86_64')
 license=('PHP')
@@ -212,6 +212,7 @@ build() {
 	make
 
 	# pear
+	sed -i 's#@$(top_builddir)/sapi/cli/php $(PEAR_INSTALL_FLAGS) pear/install-pear-nozlib.phar -d#@$(top_builddir)/sapi/cli/php $(PEAR_INSTALL_FLAGS) pear/install-pear-nozlib.phar -p $(bindir)/php$(program_suffix) -d#' ${srcdir}/php-${pkgver}/pear/Makefile.frag
 	cp -Ta ${srcdir}/build-php ${srcdir}/build-pear
 	cd ${srcdir}/build-pear
 	./configure ${_phpconfig} \
@@ -332,16 +333,11 @@ package_php56-pear() {
 
 	cd ${srcdir}/build-pear
 	make install-pear INSTALL_ROOT=${pkgdir}
-	rm -rf ${pkgdir}/usr/share/${pkgbase}/pear/.{channels,depdb,depdblock,filemap,lock,registry}
+	rm -rf ${pkgdir}{/usr/share/${pkgbase}/pear,}/.{channels,depdb,depdblock,filemap,lock,registry}
 
 	mv ${pkgdir}/usr/bin/{pear,${pkgbase/php/pear}}
 	mv ${pkgdir}/usr/bin/{peardev,${pkgbase/php/peardev}}
 	mv ${pkgdir}/usr/bin/{pecl,${pkgbase/php/pecl}}
-
-	# fix hardcoded php paths in pear
-	sed -i 's|/usr/bin/php|/usr/bin/php56|g' "${pkgdir}/usr/bin/pear56"
-	sed -i 's|PHP=php|PHP=php56|g' "${pkgdir}/usr/bin/pear56"
-	sed -i 's|s:7:"php_bin";s:12:"/usr/bin/php"|s:7:"php_bin";s:14:"/usr/bin/php56"|' "${pkgdir}/etc/${pkgbase}/pear.conf"
 }
 
 package_php56-enchant() {
