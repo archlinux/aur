@@ -2,7 +2,7 @@
 pkgname=jasp-desktop-git
 _pkgname=jasp-desktop
 _buildname=jasp-build
-pkgver=v0.7.5.r0.g7db237f
+pkgver=v0.7.5.5.r0.ge682447
 pkgrel=1
 pkgdesc="JASP, a low fat alternative to SPSS, a delicious alternative to R."
 arch=('any')
@@ -14,7 +14,7 @@ provides=('jasp' 'jasp-desktop')
 conflicts=('jasp' 'jasp-desktop')
 install='jasp-desktop-git.install'
 options=('!strip')
-source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git#tag=v0.7.5" 
+source=("$_pkgname::git+https://github.com/jasp-stats/$_pkgname.git#tag=v0.7.5.5" 
 	"jasp-desktop.svg"
 	"include.patch"
 	"sem.patch")
