@@ -1,0 +1,20 @@
+Software Licence Agreement
+
+
+
+All rights, including but not limited to copyrights and 
+intellectual property rights, in and to this software are 
+owned by Warmerdam, training, software & consultancy 
+(Wtcs).
+
+Wtcs grants to you a non-exclusive license to use the 
+software. You may not redistribute, sell, decompile, reverse 
+engineer, or disassemble the software. The software 
+cannot be resold, redistributed, or offered as a service 
+without explicit written permission from Wtcs.
+
+Your use of the software is entirely at your own risk. 
+
+The license is free of charge. Nevertheless, I would 
+appreciate any donation. See www.suitplay.com.
+

@@ -1,0 +1,10 @@
+post_install() {
+    echo "You must agree to the following End-User License agreement,"
+    echo "or uninstall suitplay."
+    echo
+    cat /usr/share/licenses/suitplay/LICENSE
+}
+
+post_upgrade() {
+    post_install
+}
