@@ -2,7 +2,7 @@
 # Contributor: Atlanis <emallson@archlinux.us>
 pkgname=python2-gmusicapi
 _pipyname=gmusicapi
-pkgver=7.0.0
+pkgver=9.0.0
 pkgrel=1
 pkgdesc="Allows control of Google Music with Python"
 arch=('any')
@@ -38,7 +38,7 @@ install=
 changelog=
 source=("https://pypi.python.org/packages/source/g/$_pipyname/$_pipyname-$pkgver.tar.gz")
 noextract=()
-md5sums=('bba75437f7f5bf06847c26d154f4324f')
+md5sums=('3d208660db1bc0a7be518b85ab2daaf9')
 
 package() {
     cd "$srcdir/$_pipyname-$pkgver"
