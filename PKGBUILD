@@ -2,7 +2,7 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=bazel
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Correct, reproducible, and fast builds for everyone"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'protobuf')
 install=bazel.install
 options=('!strip')
 source=("https://github.com/bazelbuild/bazel/archive/${pkgver}.tar.gz")
-sha256sums=('3685ce039e44224260a7ed5b80dd951155998a6e128b2bebe984ea1d85a674b3')
+sha256sums=('fc71ed603b085885d6e10b912681f01c78400502210a6680725e359cd76eb8ed')
 
 build() {
   cd ${pkgname}-${pkgver}
