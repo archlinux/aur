@@ -4,10 +4,10 @@
 # Contributor: Frederic Bezies <fredbezies@gmail.com>
 # Contributor: Sébastien "Seblu" Luttringer <seblu@seblu.net>
 
-pkgbase=qemu-minimal-git
+pkgbase=('qemu-minimal-git')
 _gitname=qemu
 pkgname=('qemu-minimal-git')
-pkgver=2.5.0.r44924.b68a801
+pkgver=2.6.0.r45065.9370a3b
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -59,7 +59,7 @@ build() {
 }
 
 package() {
-  pkgdesc='A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation. Minimal Git version.'
+  pkgdesc='A generic and open source processor emulator. This is a stripped-down version for running on a headless server. It does not install extra arches either.'
   depends=('pixman' 'gnutls' 'dtc')
   optdepends=('ovmf: Tianocore UEFI firmware for qemu'
               'samba: SMB/CIFS server support'

@@ -1,5 +1,5 @@
 pkgbase = qemu-minimal-git
-	pkgver = 2.5.0.r44924.b68a801
+	pkgver = 2.6.0.r45065.9370a3b
 	pkgrel = 1
 	url = http://wiki.qemu.org/
 	arch = i686
@@ -32,7 +32,7 @@ pkgbase = qemu-minimal-git
 	sha256sums = 6710a5db47761c5d9b23a243c9d4a129d3eda2c505fc0acc1e428b0e111f1575
 
 pkgname = qemu-minimal-git
-	pkgdesc = A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation. Minimal Git version.
+	pkgdesc = A generic and open source processor emulator. This is a stripped-down version for running on a headless server. It does not install extra arches either.
 	install = qemu.install
 	depends = pixman
 	depends = gnutls
