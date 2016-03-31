@@ -1,0 +1,21 @@
+pkgbase = litetran-git
+	pkgdesc = The powerful translator on Qt5 - GIT version
+	pkgver = 1.2.82.gc9cd6d2
+	pkgrel = 1
+	url = https://bitbucket.org/gfarniev/litetran
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = git
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-tools
+	depends = qt5-x11extras
+	provides = litetran
+	conflicts = litetran
+	source = litetran::git+https://bitbucket.org/gfarniev/litetran.git
+	sha1sums = SKIP
+
+pkgname = litetran-git
+
