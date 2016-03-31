@@ -4,8 +4,8 @@
 
 pkgname=gnome-terminal-dark-variant
 _pkgname=gnome-terminal
-pkgver=3.18.2
-pkgrel=2
+pkgver=3.18.3
+pkgrel=1
 pkgdesc="The GNOME Terminal Emulator - Patched to bring back 'Use dark theme variant' option in preferences"
 arch=(i686 x86_64)
 license=(GPL)
@@ -18,9 +18,10 @@ url="http://www.gnome.org"
 groups=('gnome')
 install=$pkgname.install
 conflicts=(gnome-terminal)
+provides=(gnome-terminal)
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz
 		$_pkgname-restore-dark.patch)
-sha256sums=('5e35c0fa1395258bab83952cfabe4c1828b8655bcd761f8faed70b452bd89efa'
+sha256sums=('14c2fce1c6a80a3fb0cc8666d7752228adcb60d199634ab69150de32e3c17d56'
 			'5ef48574b93ec5530ce2747012fc0838a5e1ffa265803069a8da79b1be5e1eff')
 
 prepare() {
