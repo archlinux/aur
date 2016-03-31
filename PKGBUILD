@@ -6,9 +6,9 @@
 
 pkgbase=nvidia-grsec
 pkgname=(nvidia-grsec nvidia-grsec-dkms)
-pkgver=361.28
+pkgver=364.12
 _extramodules=extramodules-4.4.6-grsec
-pkgrel=7
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -18,9 +18,9 @@ options=(!strip)
 source=("https://www.grsecurity.net/~paxguy1/nvidia-drivers-${pkgver}-pax.patch")
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-sha512sums=('2872af917ee78a0191eef4ef133ca7f660beaa834ec8c6eafe0c827fae1acf71ce31d1194000e8256c9cf00b6297ca1225be374f59c0499a5a7ebf89b6668996')
-sha512sums_i686=('4a18d7df8dabea9da52a5996b6e820f618e6417449b4e329c886d05465b25adb39ae3bd77b2852c93a7338fab2d398f6705bddde315c7373e313f242dc1113ab')
-sha512sums_x86_64=('4628161009b6ab3a430c866ff6fbb39be4446408620e10969867059188922891505e7dea269a7ce4cdbb97fb2081ff59db3e5299c7673ffbb503ee7b7bf7cb77')
+sha512sums=('83c264564850d5e31d5673ec332f5a55f95ebdd07415a72bd702e635bca1d4b5a5d30531be89376e2846fee46e273620e0001dd4381cc3b41127e4764901f27')
+sha512sums_i686=('649950ec37ec02bc18d4a976d97b7a2b803cbddd31ff34fd3b6e3540e50267b27e1873133fce78634a9b6e86b4378a7230d19a9d5f9df4cd64a026d11b48bb3f')
+sha512sums_x86_64=('6577ce8846a79b4b667b82473923dfd0ac20269662c7885bae4dd042128f4eaa3daeaf8ffecea8eda346e36d8b10b1308ba266f9cf69fb82ff3b154f6c6d2769')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
