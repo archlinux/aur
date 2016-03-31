@@ -1,15 +1,16 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=mkinitcpio-chkeymap
-pkgver=0.1.0.r2.g8c1a568
-pkgrel=1
+pkgver=0.1.0.r3.g5e3f039
+pkgrel=2
 pkgdesc='Set keymap and timezone for main system inside initrd'
 arch=('any')
 makedepends=('git')
 url='https://github.com/eworm-de/mkinitcpio-chkeymap'
 license=('GPL')
 install=mkinitcpio-chkeymap.install
-backup=('etc/X11/xorg.conf.d/00-keyboard.conf')
+backup=('etc/vconsole.conf'
+	'etc/X11/xorg.conf.d/00-keyboard.conf')
 source=('git://github.com/eworm-de/mkinitcpio-chkeymap.git')
 sha256sums=('SKIP')
 
