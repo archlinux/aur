@@ -1,0 +1,27 @@
+pkgbase = retrofe
+	pkgdesc = desc
+	pkgver = 0.6.165
+	pkgrel = 1
+	url = http://www.retrofe.com
+	install = retrofe.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = mercurial
+	makedepends = python2
+	depends = glib2
+	depends = zlib
+	depends = gstreamer0.10-good
+	depends = sdl2_image
+	depends = sdl2_mixer
+	depends = sdl2_ttf
+	source = hg+https://bitbucket.org/teamretro/retrofe#branch=default
+	source = retrofe.desktop
+	source = icon.png
+	md5sums = SKIP
+	md5sums = d98dfab0f0209e18769191d5755b2feb
+	md5sums = 229f9ddd063de953ab165ab10ce73717
+
+pkgname = retrofe
+
