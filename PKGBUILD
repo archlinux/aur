@@ -1,8 +1,8 @@
 # Contributor: Hy Goldsher <hyness-at-gmail>
 pkgname=retrofe
 pkgver=0.6.165
-pkgrel=1
-pkgdesc="desc"
+pkgrel=2
+pkgdesc="A cross-platform frontend designed for MAME cabinets/game centers/etc. with a focus on simplicity and customization"
 arch=('i686' 'x86_64')
 url="http://www.retrofe.com"
 license=('GPL3')
