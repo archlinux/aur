@@ -2,9 +2,9 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=mailcheck
 pkgver=1.91.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Check multiple mailboxes/maildirs for mail from the command line."
-url=("http://mailcheck.sourceforge.net/")
+url="http://mailcheck.sourceforge.net/"
 arch=('i686' 'x86_64')
 license=('GPL2')
 makedepends=('quilt')
