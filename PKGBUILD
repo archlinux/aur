@@ -4,7 +4,7 @@
 
 _pkgname=freeminer
 pkgname=${_pkgname}-git
-pkgver=0.4.13.7.991.g950b602
+pkgver=0.4.13.7.1522.g5b606f5
 pkgrel=2
 pkgdesc='An open source sandbox game inspired by Minecraft. Development version.'
 arch=('i686' 'x86_64')
@@ -20,10 +20,14 @@ install=${pkgname}.install
 
 source=(
 	"git+https://github.com/${_pkgname}/${_pkgname}.git"
+	"git+https://github.com/${_pkgname}/default.git"
+	"git+https://github.com/kaadmy/pixture.git"
 	"${pkgname}.install"
 	'enet_shared_lib.patch'
 )
 sha512sums=(
+	'SKIP'
+	'SKIP'
 	'SKIP'
 	'd590345e9b87e4350b7420eebf8f69e4ad65a53415257573b569ed1c85568a40b4f65fc8df5925f7c03af75d340c52a10a4d1389e5d868816aef9711102ebef1'
 	'ac51ee33df27f9fb3bdf16c50b2a9da602d6c55bba7afe21492d0056cdfefa5f84ccfb306c23bd2bcf22066ca3ef2a952110ba0de350602393754f0466383004'
@@ -31,12 +35,12 @@ sha512sums=(
 
 pkgver() {
 	# Updating package version
-	cd ${srcdir}/${_pkgname}
+	cd "${srcdir}"/${_pkgname}
 	git describe --long --tags | sed 's/-/./g'
 }
 
 prepare() {
-	cd ${srcdir}/${_pkgname}
+	cd "${srcdir}"/${_pkgname}
 	
 	# Use Arch's enet lib
 	patch -Np1 < ../enet_shared_lib.patch
@@ -49,11 +53,13 @@ prepare() {
 	git config -f .gitmodules --remove-section submodule.src/jsoncpp
 	git add .gitmodules
 	
-	# Cloning with submodules
-	git submodule update --init --recursive
+	# Config submodules
+	git config submodule.games/default.url "${srcdir}"/default
+	git config submodule.games/pixture.url "${srcdir}"/pixture
+	git submodule update --init
 	
 	# Build directory
-	mkdir -p ${srcdir}/build
+	mkdir -p "${srcdir}"/build
 }
 
 build() {
@@ -65,7 +71,7 @@ build() {
 	fi
 
 	# Building package
-	cd ${srcdir}/build
+	cd "${srcdir}"/build
 	cmake ../${_pkgname} \
 		-DCMAKE_C_COMPILER=clang \
 		-DCMAKE_CXX_COMPILER=clang++ \
@@ -78,6 +84,6 @@ build() {
 
 package() {
 	# Installing package
-	cd ${srcdir}/build
-	make DESTDIR=${pkgdir} install
+	cd "${srcdir}"/build
+	make DESTDIR="${pkgdir}" install
 }
