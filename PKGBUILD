@@ -2,13 +2,13 @@
 
 pkgname=svtplay-dl-git
 _gitname=svtplay-dl
-pkgver=0.30.2016.01.10.r19.gd66a2a7
+pkgver=1.0.r2.gc125540
 pkgrel=1
-pkgdesc="Small command-line program to download videos from svtplay.se/tv4play.se/tv3play.se/tv8play.se/tv6play.se/aftonbladet"
+pkgdesc="Media downloader for play sites (e.g. SVT Play)"
 arch=('any')
 url="https://github.com/spaam/svtplay-dl"
 license=('MIT')
-depends=('rtmpdump' 'python-crypto' 'python-requests')
+depends=('ffmpeg' 'python-crypto' 'python-requests' 'rtmpdump')
 makedepends=('git' 'python-setuptools')
 provides=('svtplay-dl')
 conflicts=('svtplay-dl')
@@ -23,8 +23,11 @@ pkgver() {
 package() {
   cd "${srcdir}/${_gitname}"
 
-  python setup.py install --root "${pkgdir}"
-  install -Dm644 "${srcdir}/${_gitname}/LICENSE" -t "${pkgdir}}/usr/share/licenses/${_gitname}"
+  python setup.py install --root "${pkgdir}" --optimize=1
+  install -Dm644 "${srcdir}/${_gitname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${_gitname}"
+
+  pod2man -us 1 -c "${_gitname} manual" -r "${_gitname} ${pkgver}" ${_gitname}.pod ${_gitname}.1
+  install -Dm644 "${_gitname}.1"  -t "${pkgdir}/usr/share/man/man1"
 }
 
 # vim:set ts=2 sw=2 et:
