@@ -2,7 +2,7 @@
 
 _pkgname=Arc-Dark-KDE
 pkgname=('arc-dark-suite-git')
-pkgver=r32.64c4546
+pkgver=r33.7263eab
 pkgrel=1
 pkgdesc="Arc-Dark cusomization for Plasma 5 (git version)"
 arch=('any')
@@ -28,4 +28,6 @@ package() {
     cp -r ${srcdir}/${_pkgname}/yakuake/kns_skins/arc-dark              ${pkgdir}/usr/share/yakuake/skins/
     install -Dm644 -t "${pkgdir}/usr/share/color-schemes/"              ${srcdir}/${_pkgname}/color-schemes/*.colors
     install -Dm644 -t "${pkgdir}/usr/share/konsole/"                    ${srcdir}/${_pkgname}/konsole/*.colorscheme
+    find "${pkgdir}" -type f -exec chmod 644 {} +
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
