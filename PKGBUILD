@@ -1,9 +1,9 @@
-# Maintainer: David McInnis<davidm@eagles.ewu.edu>
+# Maintainer: David McInnis <davidm@eagles.ewu.edu>
 
 pkgbase="python-theano"
 pkgname=("python-theano" "python2-theano")
 _pkgname="Theano"
-pkgver="0.8.0"
+pkgver="0.8.1"
 pkgrel="1"
 pkgdesc='Definition and optimized evaluation of mathematical expressions on Numpy arrays.'
 arch=('any')
@@ -22,13 +22,16 @@ optdepends=('python-sympy: Recommended'
             'python2-pydot-ng'
             'python-pydot'
             'python2-pygpu')
-source=("http://pypi.python.org/packages/source/T/Theano/Theano-${pkgver}.tar.gz")
-sha256sums=('87f117277ebc3a3cd5394d2ae3e65a2aa3f8da3265a33e2a5c1ee63a9e6bceb5')
+source=("http://pypi.python.org/packages/source/T/Theano/Theano-${pkgver}.tar.gz"
+        "0001-Fix-problem-with-python-3.5.patch")
+sha256sums=('2f1d9ad7ecf136e7978a6720fa9286f7b02221c5599b935e9f7fa14cd29cb19d'
+            'b522bb513278635487a8e50f5d6b1aca003900cc92fd2450ac843daeb6c69216')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
   chmod +x "${_pkgname}.egg-info"
   chmod 644 ${_pkgname}.egg-info/*
+  patch -p1 < ../0001-Fix-problem-with-python-3.5.patch
   cd "$srcdir/"
   cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-py2"
   cd "${_pkgname}-${pkgver}"
@@ -51,24 +54,25 @@ build() {
   cp -f build/scripts-3.5/* bin/
 }
 
-# Test takes 3+ hours and over 10Gb of RAM/SWAP
-# All tests passed on my machine except the following:
-
-# ERROR: test_err_bound_list (theano.tensor.tests.test_subtensor.T_subtensor)
-# ----------------------------------------------------------------------
-# IndexError: index 4 is out of bounds for axis 0 with size 2
-
-
+# Test takes 4+ hours and over 10Gb of RAM/SWAP
+# All tests passed on my machine
+#-------------------------------------------------
 #check() {
 #  msg "Checking Python 2"
 #  cd "$srcdir/${_pkgname}-${pkgver}-py2"/build/lib/theano/
-#  THEANO_FLAGS='device=cpu,optdb.max_use_ratio=40' OMP_NUM_THREADS=4 \
-#  ../../scripts-2.7/theano-nose -v
+#    THEANO_FLAGS='device=cpu,\
+#                optdb.max_use_ratio=200,\
+#                exception_verbosity=high' \
+#  OMP_NUM_THREADS=4 \
+#  nosetests2 -v -d
 #   
 #  msg "Checking Python 3"
 #  cd "$srcdir/${_pkgname}-${pkgver}"/build/lib/theano/
-#  THEANO_FLAGS='device=cpu,optdb.max_use_ratio=200' OMP_NUM_THREADS=4 \
-#  ../../scripts-3.5/theano-nose
+#  THEANO_FLAGS='device=cpu,\
+#                optdb.max_use_ratio=200,\
+#                exception_verbosity=high' \
+#  OMP_NUM_THREADS=4 \
+#  nosetests3 -v -d
 #}
 
 package_python2-theano() {
