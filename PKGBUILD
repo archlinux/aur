@@ -1,6 +1,6 @@
 pkgname=aurutils
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='helper tools for the aur'
 arch=('any')
 url=https://github.com/AladW/aurutils
