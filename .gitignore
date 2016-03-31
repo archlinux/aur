@@ -1,0 +1,5 @@
+/pkg
+/src
+/*.pkg.*
+/awslogs-*.tar.gz
+*.swp
