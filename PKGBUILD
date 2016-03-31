@@ -6,7 +6,7 @@
 pkgbase=nvidia-utils-352
 pkgname=('nvidia-utils-352' 'nvidia-libgl-352' 'opencl-nvidia-352')
 pkgver=352.79
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -58,7 +58,7 @@ package_opencl-nvidia-352() {
 package_nvidia-libgl-352() {
     pkgdesc="NVIDIA drivers libraries symlinks"
     depends=('nvidia-utils')
-    conflicts=('libgl' 'nvidia-libgl' 'mesa<10.1.0-2')
+    conflicts=('libgl' 'nvidia-libgl' 'mesa<10.1.0-2' 'libglvnd')
     provides=('libgl' 'nvidia-libgl')
     cd "${_pkg}"
 
