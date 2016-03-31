@@ -13,7 +13,7 @@ sha256sums=('18aed78cdb39dbfdcec1ca10077b96139c3d0b70f1af7425e3598829cae70ede')
 install="holodev.install"
 
 package() {
-	cd "${srcdir}/${pkgname}-master"
+	cd "${srcdir}/${pkgname}-$pkgver"
 	install -Dm644 "${srcdir}/${pkgname}-$pkgver/debian/holodev.bash-completion" "$pkgdir/etc/bash_completion.d/holodev.bash-completion"
 	install -Dm755 "${srcdir}/${pkgname}-$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
