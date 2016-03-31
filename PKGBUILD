@@ -7,7 +7,7 @@ _pkgbasename=nvidia-utils-352
 pkgbase=lib32-$_pkgbasename
 pkgname=('lib32-nvidia-utils-352' 'lib32-nvidia-libgl-352' 'lib32-opencl-nvidia-352')
 pkgver=352.79
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom')
@@ -54,7 +54,7 @@ package_lib32-nvidia-libgl-352() {
     pkgdesc="NVIDIA drivers libraries symlinks (32-bit)"
     depends=('lib32-nvidia-utils-352')
     replaces=('lib32-nvidia-utils<=313.26-1')
-    conflicts=('lib32-libgl' 'lib32-nvidia-libgl')
+    conflicts=('lib32-libgl' 'lib32-nvidia-libgl' 'libglvnd')
     provides=('lib32-libgl' 'lib32-nvidia-libgl')
     cd "${_pkg}"
 
