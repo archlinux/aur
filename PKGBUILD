@@ -2,10 +2,10 @@
 
 set -e
 
-_pi_ver=3
+_pi_ver=2
 pkgname="pi-compositor"
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 provides=("pi-launcher")
 conflicts=("pi-launcher")
 replaces=("pi-launcher")
@@ -25,6 +25,7 @@ build() {
 
   cd ${repo_src}
   $qmake
+  make clean
   make
 }
 
