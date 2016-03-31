@@ -10,7 +10,7 @@ arch=('x86_64')
 url="http://www.gtk.org/"
 license=('LGPL')
 depends=('lib32-libxi' 'lib32-glib')
-makedepends=('lib32-libxt' 'gcc-multilib')
+makedepends=('lib32-libxt' 'gcc-multilib' 'glib')
 install=gtk.install
 source=(ftp://ftp.gnome.org/pub/gnome/sources/gtk+/1.2/gtk+-${pkgver}.tar.gz
         aclocal-fixes.patch)
