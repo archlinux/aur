@@ -3,7 +3,7 @@
 
 pkgname=numix-themes-blue
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A flat and light theme with a modern look and softer accents (GNOME, Openbox, Unity, Xfce)'
 arch=('any')
 url='http://numixproject.org/'
@@ -17,8 +17,8 @@ prepare() {
 
   for FILE in `find -type f`
   do
-    sed -i 's/#fc6f5d/#00a0ff/g' "${FILE}"
-    sed -i 's/#d64937/#0060ff/g' "${FILE}"
+    sed -i 's/#fc6f5d/#428de7/g' "${FILE}"
+    sed -i 's/#d64937/#2d81e5/g' "${FILE}"
     sed -i 's/Numix/Numix-Blue/' "${FILE}"
   done
 }
