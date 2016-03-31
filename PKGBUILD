@@ -1,6 +1,6 @@
 # Maintainer: Eric Chu <eric@ericchu.net>
 pkgname=shomepass
-pkgver=v2.1.r0.g0b89bb0
+pkgver=v2.2.r0.g30ea928
 pkgrel=1
 pkgdesc='A simple homepass implementation'
 arch=('any')
