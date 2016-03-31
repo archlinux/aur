@@ -2,9 +2,9 @@
 # Contributor: winlu
 
 pkgname=shairplay
-_gitname=shairplay
-pkgver=20140422
-pkgrel=2
+_commit=ce80e00
+pkgver=20160101.ce80e00
+pkgrel=1
 pkgdesc='Apple airplay and raop protocol server'
 arch=('i686' 'x86_64')
 url='https://github.com/juhovh/shairplay'
@@ -12,17 +12,24 @@ license=('custom')
 depends=('libao')
 optdepends=('avahi: to run the server')
 makedepends=('git')
-source=("$_gitname::git://github.com/juhovh/shairplay.git#commit=64d59e3087f829006d091fa0d114efb50972a2bf"
-	'shairplay.service')
+source=(
+    "$pkgname::git://github.com/juhovh/shairplay.git#commit=$_commit"
+	'shairplay.service'
+)
 sha256sums=('SKIP'
 	'f0a176539a6c5be46dc832d054be2f18c3256e5fd34c5f1416c9463bd75c82b3')
 options=(!libtool)
 
+pkgver() {
+	cd "$pkgname"
+	git log -1 --date=short --format="%cd.%h" | tr -d '-'
+}
+
 build() {
-	cd $_gitname
+	cd "$pkgname"
 
 	# installing airport.key to /etc/shairplay/
-	sed 's/airport.key/\/etc\/shairplay\/airport.key/' -i "$srcdir/$_gitname"/src/shairplay.c
+	sed 's/airport.key/\/etc\/shairplay\/airport.key/' -i "$srcdir/$pkgname"/src/shairplay.c
 
 	./autogen.sh
 	./configure --prefix=/usr/
@@ -31,7 +38,7 @@ build() {
 
 
 package() {
-	cd $_gitname
+	cd "$pkgname"
 	make DESTDIR="$pkgdir" install
 
 	# install systemd service file
