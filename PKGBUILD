@@ -1,7 +1,7 @@
 # Maintainer: D. Can Celasun <dcelasun[at]gmail[dot]com>
 pkgname=voltdb-enterprise
 _pkgname=voltdb-ent
-pkgver=6.0
+pkgver=6.1
 pkgrel=1
 pkgdesc="An in-memory database with pre-compiled Java stored procedures (Enterprise Edition)"
 arch=('i686' 'x86_64')
