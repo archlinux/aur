@@ -2,7 +2,7 @@
 
 pkgname=x48
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An HP 48 x/sx/g/gx Emulator"
 arch=(i686 x86_64)
 url="http://sourceforge.net/projects"
@@ -15,8 +15,8 @@ conflicts=(${pkgname%-*})
 options=(!emptydirs)
 install=$pkgname.install
 source=(source::${url}/${pkgname%-*}.berlios/files/${pkgname}-${pkgver}.tar.bz2/download
-        sxrom::${url}/${pkgname%-*}.berlios/files/sxrom-d.bz2/download
-        gxrom::${url}/${pkgname%-*}.berlios/files/gxrom-r.bz2/download)
+        sxrom.bz2::${url}/${pkgname%-*}.berlios/files/sxrom-d.bz2/download
+        gxrom.bz2::${url}/${pkgname%-*}.berlios/files/gxrom-r.bz2/download)
 
 
 md5sums=('700e631f8924a991b35d8a86ce60aab7'
@@ -30,11 +30,14 @@ build() {
     autoconf
     ./configure --prefix /usr
     make
+    bzcat gxrom.bz2 > gxrom
+    bzcat sxrom.bz2 > sxrom
+    
 }
 
 package() {
-    install -Dm644 ../gxrom ${pkgdir}/usr/share/${pkgname}/gxrom
-    install -Dm644 ../sxrom ${pkgdir}/usr/share/${pkgname}/sxrom
+    install -Dm644 gxrom ${pkgdir}/usr/share/${pkgname}/gxrom
+    install -Dm644 sxrom ${pkgdir}/usr/share/${pkgname}/sxrom
     make DESTDIR="$pkgdir/" install
     rm -r ${pkgdir}/usr/share/X11
 }
