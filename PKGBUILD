@@ -13,7 +13,7 @@ makedepends=('git' 'protobuf')
 install=bazel.install
 options=('!strip')
 source=("https://github.com/bazelbuild/bazel/archive/${pkgver}.tar.gz")
-sha256sums=('fc71ed603b085885d6e10b912681f01c78400502210a6680725e359cd76eb8ed')
+sha256sums=('be964f98480ed258f249fc44c467a293e3a143aa750149b970da3d6719ba6ff1')
 
 build() {
   cd ${pkgname}-${pkgver}
