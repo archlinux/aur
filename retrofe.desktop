@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=RetroFE
+Comment=A cross-platform frontend designed for MAME cabinets/game centers/etc. with a focus on simplicity and customization.
+Exec=retrofe
+Icon=retrofe
+Terminal=false
+Type=Application
+StartupNotify=false
+Categories=Game;
