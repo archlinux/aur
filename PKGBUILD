@@ -3,7 +3,7 @@
 
 pkgname=hhsuite
 pkgver=2.0.16
-pkgrel=3
+pkgrel=4
 pkgdesc="A set of programs for protein sequence homology detection by iterative HMM-HMM comparison for computational biology like PSI-BLAST"
 arch=('i686' 'x86_64')
 url="http://hhblits.genzentrum.lmu.de/"
@@ -26,6 +26,9 @@ package()
   cd $srcdir/$pkgname-$pkgver/
   make install INSTALL_DIR="${pkgdir}/usr"
   install -Dm755 "$srcdir/hhsuite.sh" "${pkgdir}/etc/profile.d/hhsuite.sh"
+
+  mv ${pkgdir}/usr/lib64/* ${pkgdir}/usr/lib
+  rmdir ${pkgdir}/usr/lib64
 }
 
 # vim:set ts=2 sw=2 et:
