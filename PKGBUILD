@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('kwidgetsaddons' 'xdg-utils' 'wmctrl' 'kwin' 'networkmanager')
 optdepends=('pocketsphinx: for theWave'
 	    'festival: for theWave')
-makedepends=('qtchooser' 'git')
+makedepends=('qtchooser' 'git' 'clang')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/theshell#branch=master')
 md5sums=('SKIP')
 
