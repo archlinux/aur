@@ -10,7 +10,7 @@ license=('MIT')
 depends=('libxcb')
 makedepends=('git' 'xorg-util-macros')
 provides=("xcb-${_pkgname}")
-conflicts=("xcb-${_pkgname}")
+conflicts=("xcb-${_pkgname}-git")
 source=("$_pkgname::git+http://github.com/Airblader/xcb-util-xrm")
 md5sums=('SKIP')
 

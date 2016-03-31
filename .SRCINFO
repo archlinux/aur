@@ -12,7 +12,7 @@ pkgbase = xcb-util-xrm
 	makedepends = xorg-util-macros
 	depends = libxcb
 	provides = xcb-util-xrm
-	conflicts = xcb-util-xrm
+	conflicts = xcb-util-xrm-git
 	source = util-xrm::git+http://github.com/Airblader/xcb-util-xrm
 	md5sums = SKIP
 
