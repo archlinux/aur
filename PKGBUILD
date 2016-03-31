@@ -1,45 +1,37 @@
 # Maintainer: Hanspeter Portner <dev at open-music-kontrollers dot ch>
-pkgname=synthpod-git
-pkgver=0.1.0
+_pkgname=synthpod
+pkgname="${_pkgname}-git"
+pkgver=608
 pkgrel=1
 pkgdesc="Lightweight non-linear plugin host"
 arch=('i686' 'x86_64')
 url="http://open-music-kontrollers.ch/lv2/synthpod"
 license=('Artistic2.0')
 groups=('lv2-plugins' 'lv2-hosts')
-depends=('lilv' 'jack' 'zita-alsa-pcmi' 'elementary' 'hicolor-icon-theme')
+depends=('lilv' 'jack' 'zita-alsa-pcmi' 'elementary' 'hicolor-icon-theme' 'nanomsg' 'sratom' 'libxcb' 'gtk2' 'gtk3')
 makedepends=('git' 'cmake' 'lv2' 'xdg-utils')
 optdepends=('moony-lv2' 'sherlock-lv2')
-provides=()
-conflicts=()
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 replaces=()
 backup=()
 options=()
 install=synthpod.install
-source=()
+source=("$_pkgname::git+https://github.com/OpenMusicKontrollers/synthpod.git")
 noextract=()
-md5sums=() #generate with 'makepkg -g'
+md5sums=('SKIP')
 
-_gitroot="https://github.com/OpenMusicKontrollers/synthpod.git"
-_gitname="master"
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git log --pretty=oneline | wc -l
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
+  cd "$srcdir/$_pkgname"
 
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
+  rm -rf build
+  mkdir build
+  cd build
 
   #
   # BUILD HERE
@@ -49,12 +41,18 @@ build() {
 		-DCMAKE_INSTALL_PREFIX="/usr" \
     -DBUILD_JACK=1 \
     -DBUILD_ALSA=1 \
-		.
+    -DBUILD_DUMMY=1 \
+    -DBUILD_SANDBOX_LIB=1 \
+    -DBUILD_SANDBOX_X11=1 \
+    -DBUILD_SANDBOX_EFL=1 \
+    -DBUILD_SANDBOX_GTK2=1 \
+    -DBUILD_SANDBOX_GTK3=1 \
+		..
   make
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/$_pkgname/build"
   make DESTDIR="$pkgdir/" install
 }
 
