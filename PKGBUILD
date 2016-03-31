@@ -8,7 +8,7 @@ url='https://stem.torproject.org/'
 license=('LGPL3')
 depends=('python')
 makedepends=('git')
-source=('git://git.torproject.org/stem.git')
+source=('git+https://git.torproject.org/stem.git')
 sha256sums=('SKIP')
 
 _gitname='stem'
