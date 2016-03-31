@@ -6,18 +6,18 @@
 
 pkgname=chromium-gtk3
 _pkgname=chromium
-pkgver=49.0.2623.87
+pkgver=49.0.2623.110
 pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser (GTK3 version)"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
-depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
+depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
          'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
          'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
          'libvpx' 'perl' 'perl-file-basedir' 'desktop-file-utils'
-         'hicolor-icon-theme')
+         'hicolor-icon-theme' 'gtk3')
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
@@ -31,7 +31,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkg
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
         chromium-widevine.patch)
-sha256sums=('c98d0f843d1f5e24f5df42154d91f340a8ae64f316399f163b701193e880774d'
+sha256sums=('41840925d3769555ce4ebd780ee0dc6789ffae27b1684006c9b543bcaa35bbd2'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '4660344789c45c9b9e52cb6d86f7cb6edb297b39320d04f6947e5216d6e5f64c')
@@ -55,6 +55,9 @@ fi
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
+
+  # Fix build with gtk3, already merged to upstream for 50 version  
+  sed -i 's#^// Default tints.$#\0\nconst color_utils::HSL kDefaultTintFrameInactive = { -1, -1, 0.75f };#' chrome/browser/ui/libgtk2ui/gtk2_ui.cc
 
   # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/9JX1N2nf4PU/discussion
   touch chrome/test/data/webui/i18n_process_css_test.html
@@ -122,7 +125,7 @@ build() {
     -Dlibspeechd_h_prefix=speech-dispatcher/
     -Dffmpeg_branding=Chrome
     -Dproprietary_codecs=1
-    -Duse_gnome_keyring=0
+    -Duse_gnome_keyring=1
     -Duse_system_bzip2=1
     -Duse_system_flac=1
     -Duse_system_ffmpeg=0
