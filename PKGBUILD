@@ -3,7 +3,7 @@
 
 _gitname='vaccine'
 pkgname=vaccine-git
-pkgver=0.0.1.r304.g6abd2fc
+pkgver=0.0.1.r388.gf122027
 pkgrel=1
 pkgdesc="A GTK+3 4chan client for the linux desktop"
 arch=('i686' 'x86_64')
@@ -14,8 +14,9 @@ makedepends=('git' 'automake' 'autoconf-archive' 'vala')
 install='vaccine.install'
 provides=('vaccine')
 conflicts=('vaccine')
-source=('vaccine::git+https://github.com/VaccineApp/vaccine.git')
-md5sums=('SKIP')
+source=('git://github.com/VaccineApp/vaccine.git'
+        'git://github.com/VaccineApp/bayes-glib.git')
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd "$_gitname"
@@ -25,6 +26,13 @@ pkgver() {
     _rev=`git rev-list --count HEAD`
     _hash=`git rev-parse --short HEAD`
     echo "$_ver.r$_rev.g$_hash"
+}
+
+prepare() {
+    cd "$_gitname"
+    git submodule init
+    git config submodule.bayes-glib.url $srcdir/bayes-glib
+    git submodule update
 }
 
 build() {
