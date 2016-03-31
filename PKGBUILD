@@ -1,11 +1,12 @@
 # Maintainer: Brent Carmer <bcarmer@gmail.com>
 pkgname=cvc4-git
+_pkgname=CVC4
 
 pkgver=v1.4
 pkgver() {
-      cd "$_pkgname"
-        git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-    }
+    cd "$_pkgname"
+    git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+}
 
 pkgrel=1
 pkgdesc="An automatic theorem prover for SMT problems."
