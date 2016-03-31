@@ -3,7 +3,7 @@
 pkgname=conky-lua
 _pkgname=conky
 pkgver=1.10.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Lightweight system monitor for X, with Lua support enabled'
 url='http://github.com/brndnmtthws/conky'
 license=('BSD' 'GPL3')
@@ -52,6 +52,6 @@ package() {
 }
  
 prepare() {
-    cd "${srcdir}/${_pkgname}-${pkgver}/cmake"
-    patch -p1 -i ../fix_build.patch
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    patch -p1 -i ../../fix_build.patch
 }
