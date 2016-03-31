@@ -6,7 +6,7 @@
 
 pkgname=coursera-dl-git
 _gitname=${pkgname/-git/}
-pkgver=0.5.2.r0.g38f190a
+pkgver=0.5.2.r12.gb8596ea
 pkgrel=1
 pkgdesc="Script for downloading Coursera.org videos and naming them"
 arch=('any')
@@ -19,10 +19,15 @@ conflicts=('coursera-dl')
 source=("git://github.com/coursera-dl/$_gitname.git")
 sha256sums=('SKIP')
 
+prepare() {
+  export LC_CTYPE="en_US.UTF-8"
+}
+
 pkgver() {
   cd $_gitname
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
+
 package() {
   cd "$srcdir/$_gitname"
   python ./setup.py install -O1 --root="$pkgdir"
