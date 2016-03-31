@@ -1,7 +1,10 @@
+# Maintainer: Adam Goldsmith <contact@adamgoldsmith.name>
+
 ## Contributor: Martin Wimpress <code@flexion.org>
 ## Contributor: Maxime Gauduin <alucryd@gmail.com>
 ## Contributor: Diego <cdprincipe@gmail.com>
 ## Contributor: dRaiser <pw@draiser.net>
+
 pkgname=numix-themes-darkblue
 pkgver=2.5
 pkgrel=1
