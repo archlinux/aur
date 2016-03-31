@@ -2,20 +2,20 @@
 
 set -e
 
-_pi_ver=2
+_pi_ver=3
 pkgname="pi-compositor"
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 provides=("pi-launcher")
 conflicts=("pi-launcher")
 replaces=("pi-launcher")
-pkgdesc="Rudimentary QML compositor branched off qtwayland/examples/wayland/qml-compositor "
+pkgdesc="Rudimentary QML compositor branched off qtwayland/examples/wayland/qml-compositor"
 arch=("any")
 url="http://www.qt.io"
 license=("LGPL3" "GPL3")
 makedepends=("qt-sdk-raspberry-pi${_pi_ver}")
 depends=("qt-sdk-raspberry-pi-target-libs" "qcec")
-source=("git://github.com/sirspudd/${pkgname}.git")
+source=("git://github.com/sirspudd/${pkgname}.git#tag=v${pkgver}")
 sha256sums=("SKIP")
 options=('!strip')
 
@@ -37,5 +37,5 @@ package() {
   mkdir -p $systemd_deploy_path
 
   cp ${repo_src}/${pkgname} ${deploy_path}
-  cp ${startdir}/*.service ${systemd_deploy_path}
+  cp ${repo_src}/resources/*.service ${systemd_deploy_path}
 }
