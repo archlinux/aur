@@ -1,0 +1,7 @@
+post_install() {
+  holodev setup
+}
+
+post_upgrade() {
+	post_install 
+}
