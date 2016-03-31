@@ -1,5 +1,4 @@
-mutter-3.16.3.tar.xz
-mutter-hide-legacy-decorations-3.16.3-1-x86_64.pkg.tar.xz
+*.tar.xz
 pkg
 src
 
