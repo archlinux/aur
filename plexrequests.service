@@ -3,6 +3,8 @@ Description=PlexRequests
 After=network.target
 
 [Service]
+# Add additional path here to change base url, like http://localhost:3000/plexrequests
+Environment=ROOT_URL=http://localhost:3000/
 User=plexrequests
 Group=plexrequests
 Type=simple
