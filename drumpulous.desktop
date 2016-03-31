@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Drumpulous
+Comment="Shoot dildos at Donald Trump's head"
+Path=/opt/drumpulous/
+Exec=drumpulous
+Icon=drumpulous
+Terminal=false
+StartupNotify=false
+Categories=Game
