@@ -6,7 +6,7 @@ pkgver=1.r47.g5fe205f
 pkgrel=1
 pkgdesc="Session management system for JACK."
 arch=('i686' 'x86_64')
-url="https://launchpad.net/ladish"
+url="https://github.com/LADI/ladish"
 license=('GPL2')
 depends=('a2jmidid' 'boost' 'dbus-glib' 'flowcanvas<=0.7.1' 'jack' 'laditools-git' 'python2')
 makedepends=('git' 'intltool')
