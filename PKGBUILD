@@ -4,9 +4,12 @@
 # Contributor: xantares
 # Contributor: jellysheep <max DOT mail AT dameweb DOT de>
 
+# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
+# you also find the URL of a binary repository.
+
 pkgname=mingw-w64-angleproject
-pkgver=2.1.r5637.0e49e6b
-pkgrel=2
+pkgver=2.1.r5658.a3d333c
+pkgrel=1
 pkgdesc='ANGLE project (mingw-w64)'
 arch=('any')
 url='https://chromium.googlesource.com/angle/angle/+/master/README.md'
@@ -14,18 +17,20 @@ license=('BSD')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'git' 'gyp-git' 'python')
 options=('!strip' '!buildflags' 'staticlibs')
-source=('angleproject::git+https://chromium.googlesource.com/angle/angle#commit=0e49e6b'
+source=('angleproject::git+https://chromium.googlesource.com/angle/angle#commit=a3d333c'
         'additional-mingw-header::git+https://github.com/Martchus/additional-mingw-header.git#commit=7a8f394'
         'angleproject-include-import-library-and-use-def-file.patch'
         'libEGL_mingw32.def'
         'libGLESv2_mingw32.def'
-        'entry_points_shader.cpp')
+        'entry_points_shader.cpp'
+        'provide_mbstowcs_s_for_xp.patch')
 sha256sums=('SKIP'
             'SKIP'
             '895c62846e6784dcc33171523a452cb474010d3fc9e7c351c27b8add4e9930ab'
             'fb04f30b904760d32c4c0b733d0a0b44359855db1fde9e7f5ca7d0b8b1be3e56'
             '3186d913a5fb483d2ae568068453e494d52df8f3f23f09d16afbbf916a63e4a4'
-            'ad347c9732f8897497aa51b8969a0e01cd8cd4ebb9a0e873a2ff47c210f1d46c')
+            'ad347c9732f8897497aa51b8969a0e01cd8cd4ebb9a0e873a2ff47c210f1d46c'
+            '57b16254c23dbd312dbbe0495a177690809b916c2f3d8b3bbf2dd405274d518c')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 #pkgver() {
@@ -45,7 +50,7 @@ prepare() {
   # provide 32-bit versions of *.def files
   cp ../libEGL_mingw32.def src/libEGL/
   cp ../libGLESv2_mingw32.def src/libGLESv2/
-  
+
   # provide a file to export symbols declared in ShaderLang.h as part of libGLESv2.dll
   # (required to build Qt WebKit which uses shader interface)
   cp ../entry_points_shader.cpp src/libGLESv2/
@@ -56,6 +61,9 @@ prepare() {
   # make sure an import library is created, the correct .def file is used during the build
   # and entry_points_shader.cpp is compiled
   patch -p1 -i "${srcdir}/angleproject-include-import-library-and-use-def-file.patch"
+
+  # provide own implementation of mbstowcs_s for Windows XP support
+  patch -p1 -i "${srcdir}/provide_mbstowcs_s_for_xp.patch"
 
   # executing .bat scripts on Linux is a no-go so make this a no-op
   echo "" > src/copy_compiler_dll.bat
