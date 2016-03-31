@@ -3,7 +3,7 @@
 pkgname=conky-lua
 _pkgname=conky
 pkgver=1.10.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Lightweight system monitor for X, with Lua support enabled'
 url='http://github.com/brndnmtthws/conky'
 license=('BSD' 'GPL3')
@@ -53,5 +53,5 @@ package() {
  
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}/cmake"
-    sed -i "s|tolua++ |toluapp |g" ConkyPlatformChecks.cmake
+    patch -p1 -i ../fix_build.patch
 }
