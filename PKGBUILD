@@ -13,8 +13,8 @@ pkgname=('jre8-openjdk-headless-infinality' 'jre8-openjdk-infinality' 'jdk8-open
 pkgbase=java8-openjdk
 _java_ver=8
 # Found @ http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-_jdk_update=74
-_jdk_build=02
+_jdk_update=77
+_jdk_build=03
 pkgver=${_java_ver}.u${_jdk_update}
 _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
 pkgrel=1
@@ -36,14 +36,14 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         004_add-fontconfig.patch
         005_enable-infinality.patch)
 
-sha256sums=('5a65fc7e061e4f1bec3a7c666a5875c4279533308d41a289eab43bc36b12faca'
-            '8ce88dbb0f00dd60711b86d435505addfaf215474955782d9a9f34e7adc0b369'
-            '63d7f2a230623e82def92c9bdec36d02b82a0f7d29648bdafa92d9cb645df53e'
-            '6796e956492778b6d1831144ae06a39f17dd817a31cc2205fe4a68964cdc794f'
-            '40d58330b06a855d7f2edd462bf2550f82ed83f37ee881b0dd63684a794f808e'
-            '42c398efba7280ea331ba2bbe01f608a63514cde0bd8b417b5451cedf04670d5'
-            '1340a50fc7e37ab73869f0f934b7e9755bffb7e261d2fd5cadb4bd7acc558a1c'
-            '150e7518c5be066ea729297c44fbbfebb874a5b1fe2b0a9eb0a52da9bf83df31'
+sha256sums=('4de7ac9e083b577c61b861660e1883c8e3d36024860ac95390fe5113cd51aa85'
+            '8e556b9cb8321a1007894358405365f43a5138e04647436aea2dabd4457a5c11'
+            '166058d86a5f078094f6de2ba534b28837124bcc7688b72c67dc3b6beb41a013'
+            '3c0bcc0afda1f4bb27ae8f15ed5ebaafc7ce90e9d304e3cb53e202ac911a8de5'
+            '240313419da136cac61293ff867568fd4342faff1d66688af66d4fd0d45047c4'
+            'f671cdb170bd50681d1c97051740b69952764d3eda17a5d1523a0a830ab401ab'
+            '40d450dc4a1799a0d913af40b97ad22bd713974f29f2b4bcc4fbfae2c1dc3412'
+            'eab31307c8325823667ed376cee0ebea5cafe90d1bff8eec66457532fddd72a7'
             '3e67013b249fe702b0176e5d39f7ddef85ef0df121ef0b3a898ea82772712f55'
             'efeee8db0710bc217b5e886224450f6cf50938004e8c140eb9aee0a699d2d5ac')
 
