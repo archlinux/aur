@@ -3,7 +3,7 @@
 pkgname=edx-downloader-git
 pkgname_git=edx-dl
 pkgver=r576.4e27666
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple tool to download video lectures from edx.org.'
 arch=('any')
 url='https://github.com/coursera-dl/edx-dl'
@@ -19,10 +19,10 @@ sha256sums=('SKIP'
             'bf4c762d46fe9e7a15402dbba9f0ab617d19f2349b6c801f49f77167fa23414e')
 
 pkgver() {
-  msg "Downloading git repository..."
-  git clone https://github.com/coursera-dl/edx-dl.git "$srcdir/${pkgname%-git}"
+  #msg "Downloading git repository..."
+  #git clone https://github.com/coursera-dl/edx-dl.git "$srcdir/${pkgname%-git}"
 
-  cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname_git%-git}"
   ( set -o pipefail
     git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
