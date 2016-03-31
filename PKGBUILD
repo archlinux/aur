@@ -1,7 +1,7 @@
 # Maintainer: Jonas Platte <aur@jonasplatte.de>
 
 pkgname=purescript-bin
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="A small strongly typed programming language with expressive types that compiles to Javascript, written in and inspired by Haskell."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gmp' 'libtinfo-5' 'zlib')
 provides=('purescript')
 source=("purescript-${pkgver}.tar.gz::https://github.com/purescript/purescript/releases/download/v${pkgver}/linux64.tar.gz")
-sha256sums=('1fc2c63ffb434fbbf49729c4e04143f083d932a859a1a7f1c06ccc59356412b2')
+sha256sums=('6b2520331fc9d329e5dd6abd30641c69bbc0f148931f0850c44b3bdb372ecbdd')
 
 package() {
   cd purescript
