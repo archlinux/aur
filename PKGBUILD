@@ -1,7 +1,7 @@
 # Maintainer: TingPing tingping@tingping.se
 
 pkgname=hexchat-git
-pkgver=2.11.0.r1244.g7c078db
+pkgver=2.12.0.r1266.gb7373f4
 pkgrel=1
 pkgdesc='A GTK+ based IRC client'
 arch=('i686' 'x86_64' 'armv6h')
@@ -26,7 +26,7 @@ prepare() {
   cd "$_gitname"
 
   # Needed for pkgver()
-  aclocal --install
+  aclocal
 }
 
 pkgver() {
@@ -48,9 +48,4 @@ build() {
 package() {
   cd "$srcdir/$_gitname"
   make DESTDIR="$pkgdir" install
-
-  # Fix opening irc:// links
-  desktop-file-edit \
-    --set-key=Exec --set-value="hexchat -e %U" \
-    "$pkgdir/usr/share/applications/hexchat.desktop"
 }
