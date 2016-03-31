@@ -1,9 +1,9 @@
 # Maintainer: Nicolas F. <aur@fratti.ch>
 pkgname=snowmix
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Dynamic audio and video feed mixer"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://snowmix.sourceforge.net"
 license=('GPL')
 groups=()
