@@ -8,7 +8,7 @@ pkgbase=linux-mptcp
 _srcname=mptcp
 _mptcpv=0.91
 pkgver=0.91.525000.c6ba013
-pkgrel=9
+pkgrel=10
 arch=('i686' 'x86_64')
 url="http://www.multipath-tcp.org/"
 license=('GPL2')
@@ -19,12 +19,14 @@ source=("git://github.com/multipath-tcp/mptcp#branch=mptcp_v${_mptcpv}"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch'
+        'fix-ipv6.patch')
 md5sums=('SKIP'
          'bb0f6b2febc1e0f154eacd1cf03f5d4f'
          '851f5ecd973350c7313ffa9f690c8375'
          'eb14dcfd80c00852ef81ded6e826826a'
-         '92562f0a5d8cc0e5972ab58523dbe0a4')
+         '92562f0a5d8cc0e5972ab58523dbe0a4'
+         '3669b617090a4408e91e0e792c7fb699')
 
 _kernelname=${pkgbase#linux}
 
@@ -40,6 +42,8 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  patch -p1 -i "${srcdir}/fix-ipv6.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
