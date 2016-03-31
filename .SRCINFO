@@ -1,0 +1,22 @@
+pkgbase = nav-git
+	pkgdesc = nav is a hackable ncurses file manager, inspired by vim, ranger, and dvtm.
+	pkgver = r489.7983ab2
+	pkgrel = 1
+	url = https://github.com/jollywho/nav
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = ncurses
+	depends = libtermkey
+	depends = libuv
+	optdepends = w3m: image support
+	provides = nav
+	conflicts = nav
+	backup = etc/nav/navrc
+	source = nav::git+https://github.com/jollywho/nav.git
+	sha1sums = SKIP
+
+pkgname = nav-git
+
