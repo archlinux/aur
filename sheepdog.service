@@ -12,11 +12,18 @@ StartLimitInterval=10s
 StartLimitBurst=3
 Environment="LOG_LEVEL=level=info,format=server,dst=stdout"
 Environment="BIND_ADDRESS=0.0.0.0"
+Environment="BIND_PORT=7000"
 Environment="CLUSTER_MANAGER=local"
 Environment="SHEEP_OPTS=--upgrade"
 Environment="SHEEP_STORE=/var/lib/sheepdog"
 EnvironmentFile=-/etc/sheepdog/sheepdog.env
-ExecStart=/usr/bin/sheep --foreground --log ${LOG_LEVEL} --bindaddr ${BIND_ADDRESS} --cluster ${CLUSTER_MANAGER} ${SHEEP_OPTS} ${SHEEP_STORE}
+ExecStart=/usr/bin/sheep \
+    --foreground \
+    --log ${LOG_LEVEL} \
+    --bindaddr ${BIND_ADDRESS} \
+    --port ${BIND_PORT} \
+    --cluster ${CLUSTER_MANAGER} \
+    $SHEEP_OPTS ${SHEEP_STORE}
 
 [Install]
 WantedBy=multi-user.target
