@@ -1,0 +1,12 @@
+diff -ur minidjvu-0.8-orig/Makefile.in minidjvu-0.8/Makefile.in
+--- minidjvu-0.8-orig/Makefile.in	2009-10-11 12:00:03.000000000 +0200
++++ minidjvu-0.8/Makefile.in	2016-03-31 16:17:31.735603674 +0200
+@@ -30,7 +30,7 @@
+ build-lib:
+ 	cd minidjvu && ${MAKE}
+ 
+-build-app:
++build-app: build-lib
+ 	cd src && ${MAKE}
+ 
+ build-po:
