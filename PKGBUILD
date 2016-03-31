@@ -1,8 +1,8 @@
 # Maintainer: D. Can Celasun <dcelasun[at]gmail[dot]com>
 
 pkgname=vertica-client
-pkgver=7.2.1
-_pkgver=7.2.1-0
+pkgver=7.2.2
+_pkgver=7.2.2-0
 pkgrel=1
 pkgdesc="Client for the Vertica Analytic Database"
 arch=('i686' 'x86_64')
