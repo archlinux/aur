@@ -1,15 +1,18 @@
 # Maintainer: HappyClown <giganitris at gmail dot com>
 pkgname=corrupt
-pkgver=A.1.3.2
+pkgver=A.1.5.8
 pkgrel=1
 pkgdesc="ROM corruptor for multiple operating systems."
 url="https://sourceforge.net/projects/corrupter-for-linux/"
 arch=('any')
-source=("http://downloads.sourceforge.net/project/corrupter-for-linux/Source%20Code/A.1.3.2.cpp" "http://downloads.sourceforge.net/project/corrupter-for-linux/Source%20Code/Portable.h")
-md5sums=("d3d062d3ca245a04f8c55b756fda5982" "1ff4ef1e53bd3171cf864b9be2ae3f3b")
+makedepends=('p7zip')
+source=("http://downloads.sourceforge.net/project/corrupter-for-linux/English/A.1.5.8.7z")
+md5sums=("edd1df492d5f42f000c184e374532951")
 
 build() {
 cd ..
+7z x "A.1.5.8.7z"
+cd "Source Code"
 make
 }
 
@@ -21,5 +24,6 @@ package() {
 cd ..
 mkdir $pkgdir/usr
 mkdir $pkgdir/usr/bin
+cd "Source Code"
 cp corrupt $pkgdir/usr/bin
 }
