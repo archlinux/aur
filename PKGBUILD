@@ -2,7 +2,7 @@
 
 
 pkgname=yandex-browser-beta
-pkgver=16.3.0.4716_1
+pkgver=16.4.0.6115_1
 pkgrel=2
 pkgdesc="The web browser from Yandex.
  Yandex Browser is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
@@ -19,7 +19,7 @@ depends=('desktop-file-utils' 'gconf' 'alsa-lib'  'gtk2'  'libxkbfile' 'nss' 'li
 install='yandex-browser.install'
 
 source=("http://browser.yandex.ru/download/?beta=1&os=linux&x64=1&package=deb&full=1")
-md5sums=("9d712ae64d09a0dcb4d85cd437d772ea")
+md5sums=("7975ab280f752ec4c7384af8a01a1934")
 
 package() {
 	cd "$srcdir"
