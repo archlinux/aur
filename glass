@@ -1,2 +1,2 @@
-#!/bin/bash
-exec java -jar /opt/glass/glass.jar $@
+#!/bin/sh
+exec /usr/binjava -jar '/usr/share/java/glass/glass.jar' "$@"

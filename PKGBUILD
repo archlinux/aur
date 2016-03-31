@@ -1,8 +1,8 @@
-# Maintainer: Sander Zuidema <archlinux at grunny dot demon dot nl>
+# Maintainer: Sander Zuidema <s.zuidema at bazix dot nl>
 
 pkgname=glass
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform assembler for the Z80 processor"
 arch=('any')
 url="https://bitbucket.org/grauw/glass"
@@ -20,18 +20,16 @@ options=()
 install=
 changelog=
 source=(
- https://bitbucket.org/grauw/glass/downloads/glass-$pkgver.jar
+ https://bitbucket.org/grauw/$pkgname/downloads/$pkgname-$pkgver.jar
  $pkgname
 )
-noextract=(glass-$pkgver.jar)
-md5sums=('7b1e56de3ec590a6a021b127a21bae55'
-         '3fa2766909bdc108dfdfdeac01f6bb04')
+noextract=($pkgname-$pkgver.jar)
 
 package() {
-  # copy files
-  cd "$srcdir"
-  mkdir -p "$pkgdir/opt/glass"
+  mkdir -p "$pkgdir/usr/share/java/$pkgname"
   mkdir -p "$pkgdir/usr/bin"
-  install -m755 glass-$pkgver.jar "$pkgdir/opt/glass/glass.jar"
-  install -m755 $pkgname "$pkgdir/usr/bin/glass"  
+  install -m755 $pkgname-$pkgver.jar "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+  install -m755 $pkgname "$pkgdir/usr/bin/$pkgname"
 }
+sha256sums=('6f270760f650b2d02f184678356aa50b776f47ea7715ff0794efbbbef7a7d47b'
+            '96378d1179a06aec3f405e833cb79df158c8ccad6afaa67ed34e9a9473744841')
