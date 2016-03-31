@@ -1,48 +1,39 @@
-# Maintainer: Andy Weidenbaum <archbaum@gmail.com>
+# Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=merlin-git
-pkgver=20150520
+_pkgname=merlin
+pkgver=20160325
 pkgrel=1
 pkgdesc="Context sensitive completion for OCaml in Vim and Emacs (ocamlmerlin binary only)"
 arch=('i686' 'x86_64')
-depends=('ocaml' 'ocaml-biniou' 'ocaml-findlib' 'ocaml-yojson' 'python2')
-makedepends=('git' 'make')
+depends=('ocaml' 'ocaml-findlib' 'ocaml-yojson')
+makedepends=('git')
 url="https://github.com/the-lambda-church/merlin"
 license=('MIT')
-source=(${pkgname%-git}::git+https://github.com/the-lambda-church/merlin)
+source=(git+https://github.com/the-lambda-church/merlin)
 sha256sums=('SKIP')
 options=('!strip')
-provides=('merlin' 'ocaml-merlin')
-conflicts=('merlin' 'ocaml-merlin' 'vim-ocaml-merlin-git')
+provides=('merlin')
+conflicts=('merlin' 'vim-ocaml-merlin-git')
 
 pkgver() {
-  cd ${pkgname%-git}
+  cd ${_pkgname}
   git log -1 --format="%cd" --date=short | sed "s|-||g"
 }
 
 build() {
-  cd ${pkgname%-git}
+  cd ${_pkgname}
 
-  msg 'Building...'
-  ./configure
-  make
+  ./configure --prefix "/usr"
+  make ocamlmerlin
 }
 
 package() {
-  cd ${pkgname%-git}
+   cd ${_pkgname}
 
-  msg 'Installing license...'
-  install -Dm 644 LICENSE_MIT.txt "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE_MIT.txt"
+  install -Dm 644 LICENSE_MIT.txt "$pkgdir/usr/share/licenses/${pkgname}/LICENSE_MIT.txt"
 
-  msg 'Installing documentation...'
-  for _doc in `find . -maxdepth 1 -type f -name "*.md" -printf '%f\n'` CHANGELOG; do
-    install -Dm 644 $_doc "$pkgdir/usr/share/doc/${pkgname%-git}/$_doc"
-  done
-
-  msg 'Installing...'
-  install -Dm 755 ocamlmerlin "$pkgdir/usr/bin/ocamlmerlin"
-
-  msg 'Cleaning up pkgdir...'
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
-  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
+  make DESTDIR="$pkgdir" install-binary
 }
+
