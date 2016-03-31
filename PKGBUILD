@@ -2,13 +2,13 @@
 
 pkgname=discord-canary
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Discord Canary linux release'
 arch=('x86_64')
 url='https://discordapp.com/'
 provides=('discord-canary')
 license=('custom')
-depends=('gtk2' 'gconf')
+depends=('gtk2' 'gconf' 'libnotify')
 optdepends=('freetype2-infinality: If you have black screens with emojis install this.')
 
 source=(DiscordCanary.desktop LICENSE)
