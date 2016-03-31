@@ -2,14 +2,14 @@
 
 pkgname=python-importmagic
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically manage imports in Python"
 arch=('any')
 url="https://github.com/alecthomas/importmagic"
 license=('BSD')
 depends=('python')
-source=("https://pypi.python.org/packages/source/i/importmagic/importmagic-${pkgver}.tar.gz")
-md5sums=('e2a870154c6a8b895e66e3f7d72bfd27')
+source=("https://github.com/alecthomas/importmagic/archive/${pkgver}.tar.gz")
+md5sums=('7c7fd0beb81c85a64c6d9b85ee9f5e14')
 
 package() {
   cd "${srcdir}/importmagic-${pkgver}"
