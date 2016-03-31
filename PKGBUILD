@@ -9,7 +9,7 @@ provides=('qtcreator-cppcheck-plugin')
 conflicts=()
 license=('MIT')
 url="http://downloads.sourceforge.net/project/qtc-cppcheck/bin/${pkgver}/"
-depends=('qtcreator>=3.6.0' 'cppcheck')
+depends=('qtcreator>=3.6.0' 'qtcreator<3.7.0' 'cppcheck')
 makedepends=()
 if [ "$CARCH" == x86_64 ]; then
 	source=("${url}/QtcCppcheck-${pkgver}-linux-x64.tar.gz")
