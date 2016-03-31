@@ -6,7 +6,7 @@ Wants=syslog.target
 
 [Service]
 Type=simple
-LimitNOFILE=65536
+LimitNOFILE=6144000
 Restart=on-abort
 StartLimitInterval=10s
 StartLimitBurst=3
