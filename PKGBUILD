@@ -2,13 +2,13 @@
 
 pkgname=uplink
 pkgver=1.55
-pkgrel=4
+pkgrel=5
 pkgdesc="Trust is a weakness - a futuristic computer crime game"
 arch=(i686 x86_64)
 url="http://www.introversion.co.uk/uplink"
 license=(custom)
-depends=(libjpeg6 mesa zlib libxdamage)
-[[ $CARCH == x86_64 ]] && depends=(lib32-libjpeg6 lib32-mesa lib32-zlib lib32-libxdamage)
+depends_i686=(libjpeg6-turbo mesa zlib libxdamage)
+depends_x86_64=(lib32-libjpeg6-turbo lib32-mesa lib32-zlib lib32-libxdamage)
 noextract=(uplink.zip)
 
 # Requires uplink.zip from original Uplink CD
