@@ -1,7 +1,7 @@
 # Maintainer: utsi
 pkgname=qtcreator-cppcheck-plugin
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt Creator Cppcheck integration plugin"
 groups=('qt' 'qt5')
 arch=('i686' 'x86_64')
