@@ -1,5 +1,5 @@
 # Maintainer: Jack Frost <fbt@fleshless.org>
-# % Trigger: 1434983485 %
+# % Trigger: 1459428626 %
 
 pkgname=watchman-sm
 pkgdesc='A service manager for linux written in bash'
