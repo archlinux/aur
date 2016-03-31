@@ -21,7 +21,7 @@ pkgname=(
          'papirus-vlc-theme-git'
          'papirus-yakuake-theme-git' 
          )
-pkgver=r563.5053042
+pkgver=r572.8377407
 pkgrel=1
 pkgdesc="Papirus Suite for KDE (git version)"
 arch=('any')
@@ -48,6 +48,8 @@ package_bomi-skin-papirus-git() {
     conflicts=('bomi-skin-papirus')
     install -dm755 ${pkgdir}/usr/share/bomi/skins
     cp -r ${srcdir}/${_pkgname}/players-skins/bomi-skin/Papirus ${pkgdir}/usr/share/bomi/skins/
+    find "${pkgdir}" -type f -exec chmod 644 {} +
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
 
 package_libreoffice-papirus-theme-git() {
@@ -59,6 +61,8 @@ package_libreoffice-papirus-theme-git() {
     conflicts=('libreoffice-style-papirus' 'libreoffice-papirus-theme' 'libreoffice-fresh-rpm-papirus-theme')
     install -Dm644 -t "${pkgdir}/usr/lib/libreoffice/share/config/" ${srcdir}/${_pkgname}/libreoffice-icons/*.zip
     install -Dm644 -t "${pkgdir}/opt/libreoffice5.1/share/config/"  ${srcdir}/${_pkgname}/libreoffice-icons/*.zip
+    find "${pkgdir}" -type f -exec chmod 644 {} +
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
 
 package_papirus-git() {
@@ -94,6 +98,8 @@ package_papirus-aurorae-theme-git() {
     conflicts=('papirus-aurorae-theme')
     install -dm755 ${pkgdir}/usr/share/aurorae/themes
     cp -r ${srcdir}/${_pkgname}/kde-pack/aurorae-themes/Papirus* ${pkgdir}/usr/share/aurorae/themes/
+    find "${pkgdir}" -type f -exec chmod 644 {} +
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
 
 package_papirus-color-scheme-git() {
@@ -104,6 +110,8 @@ package_papirus-color-scheme-git() {
     optdepends=()
     conflicts=('papirus-color-scheme')
     install -Dm644 -t "${pkgdir}/usr/share/color-schemes/"   ${srcdir}/${_pkgname}/kde-pack/color-schemes/*.colors
+    find "${pkgdir}" -type f -exec chmod 644 {} +
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
 
 package_papirus-gtk-theme-git() {
@@ -115,6 +123,8 @@ package_papirus-gtk-theme-git() {
     conflicts=('papirus-gtk-theme')
     install -dm755 ${pkgdir}/usr/share/themes
     cp -r ${srcdir}/${_pkgname}/kde-pack/gtk-themes/papirus* ${pkgdir}/usr/share/themes/
+    find "${pkgdir}" -type f -exec chmod 644 {} +
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
 
 package_papirus-icon-theme-gtk-git() {
@@ -127,6 +137,8 @@ package_papirus-icon-theme-gtk-git() {
     conflicts=('papirus-gtk-icon-theme' 'papirus-gtk-icon-theme-git' 'papirus-icon-theme-gtk')
     install -dm755 ${pkgdir}/usr/share/icons
     cp -r ${srcdir}/${_pkgname}/gtk-icons/Papirus* ${pkgdir}/usr/share/icons/
+    find "${pkgdir}" -type f -exec chmod 644 {} +
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
 
 package_papirus-icon-theme-kde-git() {
@@ -142,6 +154,8 @@ package_papirus-icon-theme-kde-git() {
     cp -r ${srcdir}/${_pkgname}/kde-pack/icons/papirus/extra-icons/amarok/*              ${pkgdir}/usr/share/apps/amarok/icons/papirus/
     cp -r ${srcdir}/${_pkgname}/kde-pack/icons/papirus-black-panel/extra-icons/amarok/*  ${pkgdir}/usr/share/apps/amarok/icons/papirus-black-panel/
     cp -r ${srcdir}/${_pkgname}/kde-pack/icons/papirus-dark/extra-icons/amarok/*         ${pkgdir}/usr/share/apps/amarok/icons/papirus-dark/
+    find "${pkgdir}" -type f -exec chmod 644 {} +
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
 
 package_papirus-k3b-theme-git() {
@@ -152,6 +166,8 @@ package_papirus-k3b-theme-git() {
     install -dm755 ${pkgdir}/usr/share/{k3b/pics,apps/k3b/pics}
     cp -r ${srcdir}/${_pkgname}/kde-pack/k3b-themes/* ${pkgdir}/usr/share/k3b/pics/
     cp -r ${srcdir}/${_pkgname}/kde-pack/k3b-themes/* ${pkgdir}/usr/share/apps/k3b/pics/
+    find "${pkgdir}" -type f -exec chmod 644 {} +
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
 
 package_papirus-kmail-theme-git() {
@@ -163,6 +179,8 @@ package_papirus-kmail-theme-git() {
     conflicts=('papirus-kmail-theme')
     install -dm755 ${pkgdir}/usr/share/messageviewer/themes
     cp -r ${srcdir}/${_pkgname}/kde-pack/kmail-theme/papirus* ${pkgdir}/usr/share/messageviewer/themes/
+    find "${pkgdir}" -type f -exec chmod 644 {} +
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
 
 package_papirus-konsole-colorscheme-git() {
@@ -173,6 +191,8 @@ package_papirus-konsole-colorscheme-git() {
     optdepends=()
     conflicts=('papirus-konsole-colorscheme')
     install -Dm644 -t "${pkgdir}/usr/share/konsole/" ${srcdir}/${_pkgname}/kde-pack/konsole-colorschemes/*.colorscheme
+    find "${pkgdir}" -type f -exec chmod 644 {} +
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
 
 package_papirus-plasma-theme-git() {
@@ -185,6 +205,8 @@ package_papirus-plasma-theme-git() {
     install -dm755 ${pkgdir}/usr/share/plasma/{desktoptheme,look-and-feel}
     cp -r ${srcdir}/${_pkgname}/kde-pack/plasma-themes/papirus* ${pkgdir}/usr/share/plasma/desktoptheme/
     cp -r ${srcdir}/${_pkgname}/kde-pack/look-and-feel/* ${pkgdir}/usr/share/plasma/look-and-feel/
+    find "${pkgdir}" -type f -exec chmod 644 {} +
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
 
 package_papirus-qtcurve-theme-git() {
@@ -195,6 +217,8 @@ package_papirus-qtcurve-theme-git() {
     optdepends=()
     conflicts=('papirus-qtcurve-theme')
     install -Dm644 -t "${pkgdir}/usr/share/QtCurve/" ${srcdir}/${_pkgname}/kde-pack/QtCurve/*.qtcurve
+    find "${pkgdir}" -type f -exec chmod 644 {} +
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
 
 package_papirus-smplayer-theme-git() {
@@ -205,6 +229,8 @@ package_papirus-smplayer-theme-git() {
     conflicts=('papirus-smplayer-theme')
     install -Dm644 -t "${pkgdir}/usr/share/smplayer/themes/Papirus/"        ${srcdir}/${_pkgname}/players-skins/smplayer-themes/Papirus/*
     install -Dm644 -t "${pkgdir}/usr/share/smplayer/themes/PapirusDark/"    ${srcdir}/${_pkgname}/players-skins/smplayer-themes/PapirusDark/*
+    find "${pkgdir}" -type f -exec chmod 644 {} +
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
 
 package_papirus-vlc-theme-git() {
@@ -214,6 +240,8 @@ package_papirus-vlc-theme-git() {
     depends=('vlc')
     conflicts=('papirus-vlc-theme')
     install -Dm644 -t "${pkgdir}/usr/share/vlc/skins2/" ${srcdir}/${_pkgname}/players-skins/vlc-skins/*.vlt
+    find "${pkgdir}" -type f -exec chmod 644 {} +
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
 
 package_papirus-yakuake-theme-git() {
@@ -224,4 +252,6 @@ package_papirus-yakuake-theme-git() {
     conflicts=('papirus-yakuake-theme' 'yakuake-skin-papirus' 'yakuake-skin-papirus-dark' 'yakuake-skin-papirus-dark-frameworks' 'yakuake-skin-papirus-frameworks')
     install -dm755 ${pkgdir}/usr/share/{apps/yakuake/skins,yakuake/skins}
     cp -r ${srcdir}/${_pkgname}/kde-pack/yakuake-skins/papirus* ${pkgdir}/usr/share/yakuake/skins/
+    find "${pkgdir}" -type f -exec chmod 644 {} +
+    find "${pkgdir}" -type d -exec chmod 755 {} +
 }
