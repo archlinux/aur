@@ -5,8 +5,8 @@
 # Maintainer: Erik Fleischer <erik@erlenweg.de>
 
 pkgname=crossover
-pkgver=15.0.1
-pkgrel=3
+pkgver=15.1.0
+pkgrel=1
 _pkgdebrel=1
 pkgdesc="Run Windows Programs on Linux"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ install=${pkgname}.install
 replaces=('crossover-games' 'crossover-pro' 'crossover-standard')
 
 source=("http://media.codeweavers.com/pub/${pkgname}/cxlinux/demo/${pkgname}_${pkgver}-${_pkgdebrel}.deb")
-sha256sums=('77cf153ee5f2bcc1d6fbec1b3b33913a8b9e2d43b89902068823be12dd265d52')
+sha256sums=('c26a9291471f3032b47a9138c9ab8311e27511ed8a7c54de6129ee014c75f4d4')
 
 depends=( 
     'python2' 'desktop-file-utils' 'pygtk' 'python2-dbus'
@@ -99,7 +99,7 @@ optdepends_x86_64=(
 package() {
     cd ${srcdir}
 
-    ar -p crossover_${pkgver}-${_pkgdebrel}.deb data.tar.gz | tar zxf - -C "${pkgdir}" || return 1
+    ar -p crossover_${pkgver}-${_pkgdebrel}.deb data.tar.xz | tar Jxf - -C "${pkgdir}" || return 1
     if [[ "${CARCH}" = 'i686' ]]; then
         rm -f ${pkgdir}/opt/cxoffice/lib/nsplugin-linux64.so
     fi
