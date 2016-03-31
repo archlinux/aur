@@ -1,11 +1,7 @@
 pkgname=dwm-git
 _pkgname=dwm
 pkgver=6.1.2.g3465bed
-pkgver(){
-  cd $_pkgname
-  git describe --tags |sed 's/-/./g'
-}
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic window manager for X"
 url="http://dwm.suckless.org"
 arch=('i686' 'x86_64')
@@ -22,9 +18,15 @@ source=(dwm.desktop
 md5sums=('939f403a71b6e85261d09fc3412269ee'
          'SKIP')
 
+pkgver(){
+  cd $_pkgname
+  git describe --tags |sed 's/-/./g'
+}
+
 prepare() {
-  if [[ -f $SRCDEST/config.h ]]; then
-    cp $SRCDEST/config.h $srcdir/dwm/config.h
+  cd $_pkgname
+  if [[ -f "$SRCDEST/$pkgname/config.h" ]]; then
+    cp -f "$SRCDEST/$pkgname/config.h" config.h
   fi
 }
 
@@ -34,10 +36,11 @@ build() {
 }
 
 package() {
-  make -C $_pkgname PREFIX=/usr DESTDIR=$pkgdir install
-  install -m644 -D $_pkgname/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  install -m644 -D $_pkgname/README $pkgdir/usr/share/doc/$pkgname/README
-  install -m644 -D $srcdir/dwm.desktop $pkgdir/usr/share/xsessions/dwm.desktop
+  cd $_pkgname
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -m644 -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -m644 -D README "$pkgdir/usr/share/doc/$pkgname/README"
+  install -m644 -D ../dwm.desktop "$pkgdir/usr/share/xsessions/dwm.desktop"
 }
 
 # vim:set ts=2 sw=2 et:
