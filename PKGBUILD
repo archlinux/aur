@@ -2,19 +2,20 @@
 
 _pkgname=Arc-Dark-KDE
 pkgname=('arc-dark-suite-git')
-pkgver=r33.7263eab
+pkgver=r36.05ac5eb
 pkgrel=1
 pkgdesc="Arc-Dark cusomization for Plasma 5 (git version)"
 arch=('any')
 url="https://github.com/varlesh/${_pkgname}"
 license=('CCPL:by-sa')
 options=('!strip')
-makedepends=('git')
+makedepends=('git' 'imagemagick')
 depends=('konsole' 'plasma-desktop' 'yakuake')
 optdepends=("gtk-theme-arc-git: A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell (git version)"
             "papirus-icon-theme-kde-git: Papirus icon theme for KDE (git version)")
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
+install=INSTALL
 
 pkgver(){
     cd ${srcdir}/${_pkgname}
