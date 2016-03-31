@@ -12,6 +12,10 @@ makedepends=('git' 'pandoc')
 source=("git://github.com/coursera-dl/coursera-dl.git#tag=$pkgver")
 sha256sums=('SKIP')
 
+prepare() {
+  export LC_CTYPE="en_US.UTF-8"
+}
+
 package() {
   cd "$srcdir/$pkgname"
   python ./setup.py install -O1 --root="$pkgdir"
