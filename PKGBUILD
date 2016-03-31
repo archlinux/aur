@@ -5,7 +5,7 @@ pkgver='1.1.0'
 pkgrel=0
 pkgdesc="An HTTP server for serving one-time-use shell scripts"
 url="https://github.com/EnigmaCurry/curlbomb"
-depends=('python')
+depends=('python', 'python-tornado')
 optdepends=('openssh: SSH tunnel support',
             'gnupg: Encrypted SSL certificate support')
 makedepends=('python-setuptools')

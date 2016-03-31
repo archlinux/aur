@@ -6,12 +6,14 @@ pkgbase = curlbomb
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
+	depends = python,
+	depends = python-tornado
 	optdepends = openssh: SSH tunnel support,
 	optdepends = gnupg: Encrypted SSL certificate support
 	source = https://pypi.python.org/packages/source/c/curlbomb/curlbomb-1.1.0.tar.gz
 	md5sums = 18d7683d259a836aca491a95f37fc825
 
 pkgname = curlbomb
-	depends = python
+	depends = python,
+	depends = python-tornado
 
