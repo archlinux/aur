@@ -10,14 +10,14 @@ license=('GPL')
 depends=('pacman' 'libarchive' 'gnupg')
 makedepends=('git')
 source=("$url/archive/$pkgver.tar.gz")
+sha1sums=('cd5ab13aae67079245697aec5eaab8b7566c63cb')
 
 build() {
-  make -C repose
+  make -C "$pkgname-$pkgver"
 }
 
 package() {
-  make -C repose DESTDIR="$pkgdir" install
+  make -C "$pkgname-$pkgver" DESTDIR="$pkgdir" install
 }
 
 # vim: ft=sh syn=sh et
-md5sums=('9998f2faba23c4f77dbe47e308b57689')
