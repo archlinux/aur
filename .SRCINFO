@@ -1,6 +1,6 @@
 pkgbase = transmission-remote-cli-git
 	pkgdesc = Curses interface for the daemon of the BitTorrent client Transmission
-	pkgver = 1.7.0.49.g62de9f0
+	pkgver = 1.7.1.1.g844cc4e
 	pkgrel = 1
 	url = https://github.com/fagga/transmission-remote-cli
 	arch = any

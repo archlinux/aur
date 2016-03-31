@@ -4,7 +4,7 @@
 
 pkgname=transmission-remote-cli-git
 _gitname=${pkgname%-git}
-pkgver=1.7.0.49.g62de9f0
+pkgver=1.7.1.1.g844cc4e
 pkgrel=1
 pkgdesc="Curses interface for the daemon of the BitTorrent client Transmission"
 arch=('any')
@@ -22,11 +22,6 @@ md5sums=('SKIP')
 pkgver() {
   cd "$_gitname"
   git --no-pager describe --tags | sed -e 's:-:.:g' -e '1s:v::'
-}
-
-prepare() {
-  cd "$_gitname"
-  sed -i "1s/python/python2/" transmission-remote-cli
 }
 
 package() {
