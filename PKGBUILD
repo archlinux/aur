@@ -3,7 +3,7 @@
 pkgname=python2-gmusicapi
 _pipyname=gmusicapi
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows control of Google Music with Python"
 arch=('any')
 url="https://github.com/simon-weber/Unofficial-Google-Music-API"
@@ -26,6 +26,7 @@ depends=(
     'python2-pyopenssl>=0.15.1'
     'python2-ndg-httpsclient>=0.4.0'
     'python2-pyasn1'
+    'python2-future>=0.15'
 )
 makedepends=('python2-setuptools')
 optdepends=()
