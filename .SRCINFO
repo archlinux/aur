@@ -1,6 +1,6 @@
 pkgbase = shomepass
 	pkgdesc = A simple homepass implementation
-	pkgver = v2.2.r0.g30ea928
+	pkgver = v2.3.r0.g5cc2445
 	pkgrel = 1
 	url = https://github.com/ericchu94/shomepass
 	arch = any
