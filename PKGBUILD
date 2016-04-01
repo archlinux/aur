@@ -2,14 +2,17 @@
 
 pkgname=adwm
 pkgver=0.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced dynamic window manager for X"
 arch=('i686' 'x86_64')
 url="http://github.com/bbidulock/adwm"
 license=('GPL')
-makedepends=('libxi')
 depends=('libxfixes' 'libxft' 'libxrandr' 'libxinerama' 'libxpm' 'startup-notification' 'imlib2')
+optdepends=('xde-ctools: for xde-run, xde-winmenu, xde-winlist and xde-wkspmenu default bindings'
+            'xde-menu: for xde-menu root menu default bindings'
+            'xde-session: for xde-logout and xde-xlock default bindings')
 options=('!libtool')
+makedepends=('libxi')
 source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
 md5sums=('22a67562d5f4c335c54f0a30f6762f3b')
 
