@@ -1,4 +1,4 @@
-# Maintainer: Mario Finelli <mario dot finelli at yahoo dot com>
+# Maintainer: Mario Finelli <mario at finel dot li>
 # Contributor: Tom Richards <tom at tomrichards dot net>
 # Contributor: Alexsandr Pavlov <kidoz at mail dot ru>
 # Contributor: Ernie Brodeur <ebrodeur at ujami dotnet>
@@ -7,7 +7,7 @@
 
 pkgname=rubymine
 _pkgname=RubyMine
-pkgver=8.0.3
+pkgver=2016.1
 pkgrel=1
 pkgdesc="Ruby and Rails IDE with the full stack of essential developer tools."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ install=rubymine.install
 source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
         rubymine.desktop
         rubymine.install)
-sha256sums=('fc31207e9e88fd7338b84791e0a4bd62db2319d9bcca589ba543b2aba5a79944'
+sha256sums=('b0b2565dbe00c51c913540f6154dc3a76e3a1799e09cded86164ca3c3ce3b00e'
             '72df0e7c605caf7b6c98e9335f4eee9c8bfe8fcc24523634fd8c1ebe019534d6'
             '7ecadddf2b315b22df3a5c7b90e18be7ea69e2a0d869ee18bf0e031b2c508f76')
 
