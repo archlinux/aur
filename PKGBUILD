@@ -2,12 +2,13 @@
 
 pkgname=makepkg-optimize
 pkgver=1
-pkgrel=6
+pkgrel=7
 pkgdesc='Additional package optimization routines for makepkg'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='https://projects.archlinux.org/pacman.git/'
-depends=('pacman' 'upx' 'optipng' 'nodejs-svgo')
+depends=('pacman')
+optdepends=('upx' 'optipng' 'nodejs-svgo' 'graphite')
 backup=(etc/makepkg-optimize.conf)
 source=({00.optipng,01.upx,02.lto,03.pgo,04.graphite,05.svgo}.patch
         {upx,optipng,svgo}.sh.in
@@ -16,7 +17,7 @@ source=({00.optipng,01.upx,02.lto,03.pgo,04.graphite,05.svgo}.patch
 sha512sums=('67fb9359cd5dc52413ad2ca7e91b445826d7cf6b7ad3db0d2b3845310ab0bdfc41c2e70cec564e26269521ac313f7202c44996a24266380e48e88927bd1012e2'
             'b4896082fd7fc4a69abc5fc98bf22c92a94cef9ccae5d3e5d1825cd3f04dcff1bce622a3f7fdc00bd43b5e1d091825d119b3a91d354f1ab58e6a8fe3af72b0e2'
             'bbd4bf3ddbda97008764c1a619aee4f2e3d3476c8affaac75ffee328db452f587454f16158942ec666e2357474a052019e5641ce6d432c43593b3612bdc40af2'
-            '3f1f897e5567b8fcfde0bad44ab9f7646aad248bee655114ad1ac2d64da23aba6a78ca7d82e2a2083909ba7bb8fd788eda05572816c8be3e3772f470a994f51c'
+            '5a8083ea14a6a414051602740d1cabf80e77119570b8555194bd921c46a4fce5a7e6611d04a778bfe688e30b0de5ccd6c458299d279476e4ffcc01577959d949'
             '3520817c16ea83a4bed28f153138608456267eac0caed250f8d951c54cf6a07d07e5b13768c5165a8e31a56e76919b3c9b84ad3b2905489ce65e625fa067f9b0'
             'c2f74ab15214ccac6ae570fa4a4ebfdf35690be60851be9eb8ab65c1ce4ebed0f0d3cb98947fd4a586d19cb399d312390ebbc68f4de86f607adef2a2d590798e'
             '0cbcc6590b901ac33dc78b755300da02070c5abb68153a55eb7b1bf5426dd37286f5831185c53eff189fc689796a234bad84fddc8e8f43edf6b19f13667291c7'
@@ -35,7 +36,7 @@ prepare() {
   cp /etc/makepkg.conf ./makepkg-optimize.conf
 
   # How to check for the unlikely possiblity that the directory was changed?
-  sed -i "s|@libmakepkgdir@|/usr/share/makepkg|g"  *.sh.in
+  sed -i "s|@libmakepkgdir@|/usr/share/makepkg|g" *.sh.in
 
   #Comment on additional BUIDENV options
   sed -i "/#-- sign/r buildenv_ext.conf" makepkg-optimize.conf

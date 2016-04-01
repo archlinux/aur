@@ -30,15 +30,11 @@
  [[ -n ${SRCPKGDEST} ]] && _SRCPKGDEST=$(canonicalize_path ${SRCPKGDEST})
  [[ -n ${LOGDEST} ]] && _LOGDEST=$(canonicalize_path ${LOGDEST})
  [[ -n ${BUILDDIR} ]] && _BUILDDIR=$(canonicalize_path ${BUILDDIR})
-@@ -2109,6 +2125,18 @@ if (( SOURCEONLY )); then
+@@ -2109,6 +2125,14 @@ if (( SOURCEONLY )); then
  	IGNOREARCH=1
  fi
  
-+if [[ "${0##*/}" = "mkchrootpkg" ]]; then
-+  PROFDEST=$PWD #default to $PWD for mkchrootpkg; which should only build one package at a time.
-+else
-+  PROFDEST=${PROFDEST:-$startdir} #default to $startdir if undefined
-+fi
++PROFDEST=${_PROFDEST:-$PROFDEST}
 +PROFDEST=${PROFDEST:-$startdir} #default to $startdir if undefined
 +if [[ ! -w $PROFDEST ]] ; then
 +	error "$(gettext "You do not have write permission to store profiles in %s.")" "$PROFDEST"
