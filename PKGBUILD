@@ -11,8 +11,8 @@ pkgdesc="provides a suite of cross-platform utility classes to add functionality
 arch=('x86_64')
 url="http://www.libqxt.org"
 license=('CPL')
-depends=('lib32-qt' 'lib32-openssl' 'lib32-db' ${_pkgbase})
-makedepends=('lib32-qt gcc-multilib')
+depends=('lib32-qt4' 'lib32-openssl' 'lib32-db' ${_pkgbase})
+makedepends=('lib32-qt4 gcc-multilib')
 source=(http://bitbucket.org/libqxt/libqxt/get/v$pkgver.tar.bz2 32bit.patch)
 
 noextract=()
