@@ -1,7 +1,7 @@
 pkgbase = theshell
 	pkgdesc = Minimalistic Desktop Shell
-	pkgver = 1.0
-	pkgrel = 2
+	pkgver = 1.1
+	pkgrel = 0
 	url = https://github.com/vicr123/thefile
 	arch = x86_64
 	license = GPL2
@@ -13,9 +13,11 @@ pkgbase = theshell
 	depends = wmctrl
 	depends = kwin
 	depends = networkmanager
+	depends = xorg-xbacklight
+	optdepends = alsa-utils: for volume controls
 	optdepends = pocketsphinx: for theWave
 	optdepends = festival: for theWave
-	source = theshell-1.0::git+https://github.com/vicr123/theshell#branch=master
+	source = theshell-1.1::git+https://github.com/vicr123/theshell#branch=master
 	md5sums = SKIP
 
 pkgname = theshell

@@ -1,14 +1,15 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theshell
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=0
 pkgdesc="Minimalistic Desktop Shell"
 arch=("x86_64")
 url="https://github.com/vicr123/thefile"
 license=('GPL2')
-depends=('kwidgetsaddons' 'xdg-utils' 'wmctrl' 'kwin' 'networkmanager')
-optdepends=('pocketsphinx: for theWave'
+depends=('kwidgetsaddons' 'xdg-utils' 'wmctrl' 'kwin' 'networkmanager' 'xorg-xbacklight')
+optdepends=('alsa-utils: for volume controls'
+	    'pocketsphinx: for theWave'
 	    'festival: for theWave')
 makedepends=('qtchooser' 'git' 'clang')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/theshell#branch=master')
