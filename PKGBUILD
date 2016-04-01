@@ -1,7 +1,7 @@
 # Maintainer: Daniel Sandman <revoltism@gmail.com>
 
 pkgname=systemd-manager-git
-pkgver=r29.724a5e2
+pkgver=r33.cdab9cc
 pkgrel=1
 pkgdesc="A program written with RUST that allow the user to manage their systemd services via a GTK3 GUI."
 arch=('i686' 'x86_64')
@@ -27,8 +27,8 @@ build() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	install -D -m755 target/release/systemd-manager "$pkgdir/usr/local/bin/systemd-manager"
-	install -D -m755 assets/systemd-manager-pkexec "$pkgdir/usr/local/bin/systemd-manager-pkexec"
+	install -D -m755 target/release/systemd-manager "$pkgdir/usr/bin/systemd-manager"
+	install -D -m755 assets/systemd-manager-pkexec "$pkgdir/usr/bin/systemd-manager-pkexec"
      	install -D -m644 assets/systemd-manager.desktop "$pkgdir/usr/share/applications/systemd-manager.desktop"
      	install -D -m644 assets/org.freedesktop.policykit.systemd-manager.policy "$pkgdir/usr/share/polkit-1/actions/org.freedesktop.policykit.systemd-manager.policy"
      	install -D -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README"
