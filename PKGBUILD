@@ -2,18 +2,20 @@
 
 pkgbase=octopi
 pkgname=('octopi' 'octopi-notifier' 'octopi-repoeditor' 'octopi-cachecleaner')
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
+pkgdesc="a powerful Pacman frontend using Qt libs"
 arch=('i686' 'x86_64')
-url="https://github.com/aarnt/octopi"
+url="http://octopiproject.wordpress.com"
 license=('GPL2')
+install=$pkgname.install
 makedepends=('qt5-declarative' 'knotifications' 'libnotify')
 source=("https://github.com/aarnt/${pkgname}/archive/v${pkgver}.tar.gz"
 	'octopi-repoeditor.desktop'
 	'enable-kstatus.patch')
-sha256sums=('79ab8a24e3329ab4e5320e03309f44f802336cc00bada0f9a37fae46f5eeb02b'
+sha256sums=('e01c6d959e5663797771b95b47951e3ad11a9abbc7cbb009f1f835404c5ff43e'
             '131f16745df685430db55e54ede6da66aed9b02ca00d6d873a002b2a3e1c90ef'
-            '81dcbbda0d020607d23f3f8042fa43bfc4318269a55f9327e4995299b59dcb4b')
+            '288dd58a8aa98ef5ad901aec600d0a3c36fa81b60d51385bceeadec0c1aa7b01')
 
 prepare() {
 	_cpucount=$(grep -c processor /proc/cpuinfo 2>/dev/null)
@@ -22,7 +24,7 @@ prepare() {
 	cd "${srcdir}/${pkgbase}-${pkgver}"
 
   
-	patch -p1 < ../enable-kstatus.patch
+	patch -p0 < ../enable-kstatus.patch
 }            
             
 build() {

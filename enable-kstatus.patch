@@ -1,10 +1,10 @@
-diff -Naur octopi-master-current/notifier/octopi-notifier/octopi-notifier.pro octopi-master-current-kstatus/notifier/octopi-notifier/octopi-notifier.pro
---- octopi-master-current/notifier/octopi-notifier/octopi-notifier.pro	2015-08-09 13:12:50.000000000 +0200
-+++ octopi-master-current-kstatus/notifier/octopi-notifier/octopi-notifier.pro	2015-08-14 10:15:02.645977100 +0200
-@@ -7,7 +7,7 @@
- QT += core xml gui network dbus
+diff -Naur notifier/octopi-notifier/octopi-notifier.pro-orig notifier/octopi-notifier/octopi-notifier.pro
+--- notifier/octopi-notifier/octopi-notifier.pro-orig	2016-04-01 16:34:55.541500593 -0400
++++ notifier/octopi-notifier/octopi-notifier.pro	2016-04-01 16:34:59.948205892 -0400
+@@ -8,7 +8,7 @@
  
  # This controls whether octopi-notifier uses KStatusNotifier lib
+ # You SHOULD REALLY enable the following define in plasma 5 desktops!
 -#DEFINES += KSTATUS
 +DEFINES += KSTATUS
  
