@@ -1,6 +1,6 @@
 --- makepkg-optimize
 +++ makepkg-optimize
-@@ -877,6 +877,21 @@ run_build() {
+@@ -877,6 +877,23 @@ run_build() {
  		NMFLAGS+=" --plugin $LTOPLUGIN"
  	fi
  
@@ -13,6 +13,8 @@
 +			LDFLAGS+=" -lgcov"
 +		else
 +			[[ ! -d "$PROFDEST/$pkgbase.used" ]] && mv "$PROFDEST/$pkgbase.gen" "$PROFDEST/$pkgbase.used"
++			#It is not necessary, and occasionally dangerous, to profile conftest.c
++			[[ -f "$PROFDEST/$pkgbase.used/conftest.gcda" ]] && rm "$PROFDEST/$pkgbase.used/conftest.gcda"
 +			CFLAGS+=" -fprofile-correction -fprofile-use -fprofile-dir=$PROFDEST/$pkgbase.used"
 +			CXXFLAGS+=" -fprofile-correction -fprofile-use -fprofile-dir=$PROFDEST/$pkgbase.used"
 +		fi
