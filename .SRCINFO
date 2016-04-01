@@ -1,7 +1,7 @@
 pkgbase = dee
 	pkgdesc = Model to synchronize multiple instances over DBus
 	pkgver = 1.2.7
-	pkgrel = 6
+	pkgrel = 7
 	url = https://launchpad.net/dee
 	arch = i686
 	arch = x86_64
@@ -11,8 +11,7 @@ pkgbase = dee
 	makedepends = vala
 	depends = glib2
 	depends = icu
-	source = http://launchpad.net/dee/1.0/1.2.7/+download/dee-1.2.7.tar.gz
+	source = https://launchpad.net/dee/1.0/1.2.7/+download/dee-1.2.7.tar.gz
 	sha256sums = 1bf0336ce684aa0f48d6eae2469628c1a9b43695a77443bc31a5790aa673bf8a
 
 pkgname = dee
-
