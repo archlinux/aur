@@ -1,6 +1,6 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 pkgname=spigot
-pkgver=1.9
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="High performance Minecraft server implementation"
 arch=(any)
