@@ -25,7 +25,7 @@ install=$pkgname.install
 md5sums=('7366934a8b79c86a49728e51e4d06621'
          'bec6d0ab5edca667f726dd84540626aa'
          'b05aef80afa76162ff9a1992cef3f0f9')
-source=("atom-amd64-v${_ver}-${_beta}.deb::https://github.com/atom/atom/releases/download/v${_ver}-${_beta}/atom-amd64.deb"
+source=("atom-amd64-v${_ver}-${_beta}.deb::https://atom-installer.github.com/v${_ver}-${_beta}/atom-amd64.deb"
          atom-python.patch
          startupwmclass.patch)
 
