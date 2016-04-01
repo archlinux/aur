@@ -3,7 +3,7 @@
 
 PKGNAMESHORT=musicqueue
 pkgname=${PKGNAMESHORT}-git
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=0
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
