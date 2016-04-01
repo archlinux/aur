@@ -1,0 +1,43 @@
+# Maintainer: Gonzalo Exequiel Pedone <hipersayan DOT x AT gmail DOT com>
+# Contributor: Romain "Artefact2" Dal Maso <artefact2@gmail.com>
+
+_pkgbase=v4l2loopback
+pkgname=${_pkgbase}-dkms-git
+pkgver=0.9.1.r10.g2fdda92
+pkgrel=1
+pkgdesc="v4l2-loopback device"
+url="https://github.com/umlaeute/v4l2loopback"
+arch=('x86_64' 'i686')
+license=('GPLv2')
+depends=('dkms')
+makedepends=('git' 'help2man' 'linux-headers')
+conflicts=("${_pkgbase}")
+provides=('v4l2loopback-dkms')
+install="${pkgname}.install"
+source=("git://github.com/umlaeute/v4l2loopback.git"
+        "${pkgname}.install")
+md5sums=('SKIP'
+         '3105b604a5ebe4af6df587049ed19946')
+
+pkgver() {
+    cd "$srcdir/${_pkgbase}"
+    (
+        set -o pipefail
+        git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
+}
+
+build() {
+    cd "${srcdir}/${_pkgbase}"
+    make
+}
+
+package() {
+    cd "${srcdir}/${_pkgbase}"
+    make DESTDIR="${pkgdir}" PREFIX="/usr" install-utils install-man
+    mkdir -p "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
+    cp -ar * "${pkgdir}/usr/src/${_pkgbase}-${pkgver}"
+}
+
+# vim:set ts=4 sw=4 et:
