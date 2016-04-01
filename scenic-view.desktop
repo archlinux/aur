@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Scenic View
+Comment=A tool for analyzing the scenegraph of a JavaFX application
+Exec=scenic-view
+Icon=scenic-view
+Terminal=false
+Categories=Development;Java;
