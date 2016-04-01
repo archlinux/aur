@@ -9,7 +9,7 @@ url="https://github.com/IgnorantGuru/spacefm/wiki/plugins"
 license=("GPL")
 depends=("dropbox" "spacefm")
 optdepends=("dropbox-cli")
-source=(https://github.com/downloads/hasufell/spacefm-plugins/Drobox.spacefm-plugin-0.0.9.tar.gz)
+source=("https://github.com/downloads/hasufell/spacefm-plugins/Drobox.spacefm-plugin-0.0.9.tar.gz")
 sha256sums=("14a11e357cb2eff8c041986aba1d220a3537a6102c0b2eb46fad14a3ecb389b2")
 
 package() {
