@@ -1,7 +1,7 @@
 # Maintainer: Arthur Zamarin <arthurzam@gmail.com>
 
 pkgname=eclipse-pydev
-pkgver=4.5.4
+pkgver=4.5.5
 pkgrel=1
 pkgdesc="Python IDE for Eclipse"
 url="http://pydev.org/"
@@ -11,7 +11,7 @@ depends=('java-environment>=7' 'eclipse>=3.8')
 makedepends=('unzip')
 conflicts=('eclipse-aptana')
 source=("PyDev_${pkgver}.zip::http://downloads.sourceforge.net/project/pydev/pydev/PyDev%20${pkgver}/PyDev%20${pkgver}.zip")
-md5sums=('9858d936598e4d4d91546a9190eb65a4')
+md5sums=('f650353d3ae237f56b1541bda02c2043')
 
 package () {
 
