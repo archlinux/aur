@@ -23,7 +23,8 @@ md5sums=('SKIP')
 pkgver() {
 	cd "${pkgname%-git}"
 
-	git describe
+	s=$(git describe)
+	echo ${s%%\-*}
 }
 
 package() {
