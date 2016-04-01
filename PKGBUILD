@@ -6,7 +6,7 @@
 # https://github.com/sjug/atom-editor
 
 pkgname=atom-editor
-pkgver=1.6.2
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Chrome-based text editor from Github'
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ makedepends=('git' 'npm')
 conflicts=('atom-editor-bin' 'atom-editor-git')
 install=atom.install
 source=("https://github.com/atom/atom/archive/v${pkgver}.tar.gz")
-sha256sums=('63ee85a67d642bf85179c67ba455042e2892a5091dedc31f007f8ec2de8fc3af')
+sha256sums=('e9359e8fab6178e951e0fef9e767fb762eed22328c64454bfd1c0cc2366aedcb')
 
 prepare() {
   cd "atom-$pkgver"
