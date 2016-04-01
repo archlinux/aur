@@ -1,0 +1,14 @@
+pkgbase = bcm4350-firmware
+	pkgdesc = Bluetooth firmware for the Broadcom BCM4350 card
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/Dell_XPS_13_(2016)
+	arch = any
+	license = custom:"Dell End User License Agreement — S Version"
+	source = BCM4350C5_003.006.007.0095.1703.hcd
+	source = LICENSE
+	md5sums = a1d960a1e882f73c55fa12f41082cc0a
+	md5sums = 995e79f031135e8180272775852cf68e
+
+pkgname = bcm4350-firmware
+
