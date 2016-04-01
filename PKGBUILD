@@ -3,7 +3,7 @@
 # Contributor: Leonidas <marek@xivilization.net>
 pkgname=factor-git
 _pkgname=factor
-pkgver=0.96.1139.g3a9f4ed
+pkgver=0.96.3614.gc09312d
 pkgrel=1
 pkgdesc="A general purpose, dynamically typed, stack-based programming language"
 arch=(i686 x86_64)
@@ -30,14 +30,15 @@ build() {
   cd "$srcdir/$_pkgname"
 
   if [[ ! -f checksums.txt ]]; then
-    # update done by build-support/factor.sh
+    # update done by ./build.sh
     msg "Running factor update script...."
-    #build-support/factor.sh quick-update
-    #build-support/factor.sh self-update
-    build-support/factor.sh update
+    git checkout master # factor dislikes the "makepkg" branch
+    #./build.sh quick-update
+    #./build.sh self-update
+    ./build.sh update
   else
     msg "Running factor bootstrap script...."
-    build-support/factor.sh net-bootstrap
+    ./build.sh net-bootstrap
   fi
 }
 
@@ -66,8 +67,8 @@ package() {
   cd -
 
   # copy over the license (as defined in Arch Packaging Standards)
-  chmod -x license.txt
-  cp license.txt $pkgdir/usr/share/licenses/$pkgname/COPYING
+  chmod -x LICENSE.txt
+  cp LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/COPYING
 
   # add the desktop entry and icon
   install -D "$srcdir/factor.desktop" "$pkgdir/usr/share/applications/factor.desktop"
