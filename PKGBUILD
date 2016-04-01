@@ -1,7 +1,7 @@
 # Maintainer: Albert Graef <aggraef at gmail dot com>
 
 pkgname=pdl2ork-lv2plugin-git
-pkgver=14.539522c
+pkgver=20.76bf43b
 pkgrel=1
 pkgdesc="LV2 plugin host for Pd, Pd-L2Ork version"
 arch=("i686" "x86_64")
