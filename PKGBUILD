@@ -7,7 +7,7 @@
 pkgname=libpng12
 _realname=libpng
 pkgver=1.2.56
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of routines used to create PNG format graphics files"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.libpng.org/pub/png/libpng.html"
@@ -19,7 +19,7 @@ source=("http://sourceforge.net/projects/libpng/files/libpng12/${pkgver}/libpng-
 build() {
   cd "${srcdir}/${_realname}-${pkgver}"
 
-  patch -Np0 -i "${srcdir}/libpng-${pkgver}-apng.patch"
+  patch -Np1 -i "${srcdir}/libpng-${pkgver}-apng.patch"
 
   libtoolize --force --copy
   aclocal
