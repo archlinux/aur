@@ -8,7 +8,7 @@
 _pkgbasename=libpng
 pkgname=lib32-libpng12
 pkgver=1.2.56
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of routines used to create PNG format graphics files (32-bit, 1.2 branch)"
 arch=('x86_64')
 url="http://www.libpng.org/pub/png/libpng.html"
@@ -24,7 +24,7 @@ prepare(){
 
   # Add animated PNG (apng) support
   # see http://sourceforge.net/projects/libpng-apng/
-  patch -Np0 -i "${srcdir}/libpng-${pkgver}-apng.patch"
+  patch -Np1 -i "${srcdir}/libpng-${pkgver}-apng.patch"
 }
 
 build() {
