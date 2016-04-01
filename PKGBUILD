@@ -1,13 +1,13 @@
 pkgname=cue2tracks
 pkgver=0.2.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash script for slipt audio CD image files with cue sheet"
 url="https://code.google.com/p/cue2tracks/"
 license=('GPL2')
 arch=('any')
 depends=('bash' 'cuetools' 'shntool' 'file' 'glibc' 'flac')
 optdepends=('vorbis-tools: For OGG support'
-'flake: Alternative FLAC encoder'
+'flake8: Alternative FLAC encoder'
 'mac: For APE support'
 'wavpack: For WavPack support'
 'shorten: For shorten support'
@@ -15,7 +15,7 @@ optdepends=('vorbis-tools: For OGG support'
 'lame: For MP3 support'
 'id3v2: For MP3 tagging support'
 'faac: For AAC in M4A support'
-'faad: For AAC in M4A support')
+'faad2: For AAC in M4A support')
 source=("https://cue2tracks.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
 
 package() {
