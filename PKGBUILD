@@ -1,7 +1,7 @@
 # Maintainer: Carmen Bianca Bakker <carmenbbakker@gmail.com>
 pkgname=pyparadox
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A nix launcher for Paradox titles.'
 arch=('any')
 url='https://gitlab.com/carmenbbakker/pyparadox'
@@ -20,9 +20,12 @@ package() {
     cd "${srcdir}/$pkgname-$pkgver"
     python setup.py install --root="${pkgdir}/"
 
-    install -D -m 755 "${srcdir}/pyparadox-ck2.desktop" \
+    install -D "${srcdir}/pyparadox-ck2.desktop" \
         "${pkgdir}/usr/share/applications/pyparadox-ck2.desktop"
 
-    install -D -m 755 "${srcdir}/pyparadox-eu4.desktop" \
+    install -D "${srcdir}/pyparadox-eu4.desktop" \
         "${pkgdir}/usr/share/applications/pyparadox-eu4.desktop"
+
+    install -D pyparadox/resources/paradox.png \
+        "${pkgdir}/usr/share/pixmaps/paradox.png"
 }
