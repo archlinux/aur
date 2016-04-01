@@ -2,7 +2,7 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=nodejs-git
-pkgver=5.9.1.r3.gc1534e7
+pkgver=5.10.0.r1.g0605555
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ provides=('nodejs')
 conflicts=('nodejs')
 source=($pkgname::git://github.com/nodejs/node#branch=v5.x)
 sha256sums=('SKIP')
-# alternative: v5.x
+options=('!makeflags')
 
 pkgver() {
   cd $pkgname
