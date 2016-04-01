@@ -2,7 +2,7 @@
 
 _pkgname=jalv-select
 pkgname="${_pkgname}-git"
-pkgver=0.6.r42.68ac02f
+pkgver=0.7.r62.5a010a0
 pkgrel=1
 pkgdesc="A little GUI to select installed lv2 plug-ins and run them with jalv."
 arch=('i686' 'x86_64')
@@ -36,6 +36,11 @@ package() {
 
   make install DESTDIR="$pkgdir"
 
+  # readme
+  install -Dm644 README.md \
+    "$pkgdir/usr/share/doc/$pkgname/README.md"
+
   # license
-  install -Dm644 "$srcdir/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/LICENSE.txt" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
