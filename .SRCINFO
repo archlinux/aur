@@ -1,7 +1,7 @@
 pkgbase = brave
 	pkgdesc = Web browser that blocks ads and trackers by default.
-	pkgver = 0.8.2
-	pkgrel = 4
+	pkgver = 0.8.3
+	pkgrel = 1
 	url = https://www.brave.com/
 	install = brave.install
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = brave
 	depends = libxtst
 	depends = desktop-file-utils
 	provides = brave-browser
-	source = https://github.com/brave/browser-laptop/archive/v0.8.2dev.tar.gz
+	source = https://github.com/brave/browser-laptop/archive/v0.8.3dev.tar.gz
 	source = MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt
 	source = brave.desktop
-	sha384sums = 0ec654691c52548da663adb1c02f8a77e82de8c05d9168ce6ac875c994895d5419f114ec6e3a24b4b3e242eac73f091f
+	sha384sums = f9bc24904ae66ec783a8200e99b87c4287a76079fa78db0dd57be1bf459d4c418aa549e55f1eb708c433b04ed2736ee4
 	sha384sums = b27caa103555393992e6e1de1c2663f3ecf8339054e1aee8961406c8cbc9d677ba78b4bab6efe7210143818f9207d16b
 	sha384sums = f950675fb4a3f9e48374f8a2667e7a45889206a3062c8182e474143607fc26bd17e852a1ef494607dbd3ff4de325e05f
 
