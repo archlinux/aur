@@ -2,7 +2,7 @@
 
 pkgname=archey2
 pkgver=20121013
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple python script that displays the arch logo and some basic information. Python 2.x version"
 
 arch=('i686' 'x86_64')
@@ -12,13 +12,12 @@ depends=('python2')
 makedepends=('git')
 provides=('archey')
 conflicts=('archey3' 'archey')
-md5sums=('d7b47e6e79a9926ce1f8502fb1070426')
 source=('python27.patch')
 
 _gitroot="git://github.com/djmelik/archey.git"
 _gitname="archey"
 
-build() {
+package() {
 	cd ${srcdir}
 	rm -rf archey	
 	msg "Connecting to GIT server...."
@@ -39,3 +38,4 @@ build() {
 	install -D -m755 archey ${pkgdir}/usr/bin/archey || return 1
 	install -D -m644 COPYING ${pkgdir}/usr/share/licenses/archey/COPYING
 }
+md5sums=('d5a4b8f4b71379b869a12879199b0b38')
