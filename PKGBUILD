@@ -1,8 +1,8 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=adwm
-pkgver=0.5.6
-pkgrel=2
+pkgver=0.5.7
+pkgrel=1
 pkgdesc="Advanced dynamic window manager for X"
 arch=('i686' 'x86_64')
 url="http://github.com/bbidulock/adwm"
@@ -12,9 +12,8 @@ optdepends=('xde-ctools: for xde-run, xde-winmenu, xde-winlist and xde-wkspmenu 
             'xde-menu: for xde-menu root menu default bindings'
             'xde-session: for xde-logout and xde-xlock default bindings')
 options=('!libtool')
-makedepends=('libxi')
 source=("https://github.com/bbidulock/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-md5sums=('22a67562d5f4c335c54f0a30f6762f3b')
+md5sums=('3b98f6b4794bcf3a2304e2f1e7737708')
 
 build() {
   cd $pkgname-$pkgver
