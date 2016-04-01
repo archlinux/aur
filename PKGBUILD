@@ -12,7 +12,7 @@ arch=('x86_64')
 url="http://www.libqxt.org"
 license=('CPL')
 depends=('lib32-qt4' 'lib32-openssl' 'lib32-db' ${_pkgbase})
-makedepends=('lib32-qt4 gcc-multilib')
+makedepends=('lib32-qt4' 'gcc-multilib')
 source=(http://bitbucket.org/libqxt/libqxt/get/v$pkgver.tar.bz2 32bit.patch)
 
 noextract=()
