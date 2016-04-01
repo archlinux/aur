@@ -1,6 +1,6 @@
 # Maintainer: Dylan Araps <dyl@tfwno.gf>
 pkgname=neofetch
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="CLI script to show your system's info and display an image using w3m."
 arch=('any')
@@ -17,10 +17,11 @@ optdepends=(
   'nitrogen: Wallpaper Display'
   'scrot: Take a screenshot'
   'w3m: Display Images'
-  'xorg-xdpyinfo: Resolution Detection'
+  'xorg-xdpyinfo: resolution detection (Single Monitor)'
+  'xorg-xrandr: resolution detection (Multi Monitor + Refresh rates)'
 )
 source=("https://github.com/dylanaraps/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('e49f0d09efce0f129c17886b0611e82b')
+md5sums=('f6d73367b377aab52f5f29e6c7c12968')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/"
