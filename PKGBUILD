@@ -2,7 +2,7 @@
 # Maintainer: pzl <alsoelp at gmail dot com>
 
 pkgname=jlink-systemview
-pkgver=2.32b
+pkgver=2.34
 pkgrel=1
 epoch=1
 pkgdesc="Segger SystemView for Linux"
@@ -14,8 +14,8 @@ source=("cookie::https://www.segger.com/downloads/login")
 source_x86_64=("SystemView_Linux_V${pkgver/./}_x86_64.tgz::https://www.segger.com/downloads/free_tools/SystemView_Linux_V${pkgver/./}_x86_64.tgz")
 source_i686=("SystemView_Linux_V${pkgver/./}_i686.tgz::https://www.segger.com/downloads/free_tools/SystemView_Linux_V${pkgver/./}_i386.tgz")
 md5sums=('SKIP')
-md5sums_i686=('be70c0433d587071ab09301d2b5b97b8')
-md5sums_x86_64=('e2281f6d8b7467033815916b729bd10e')
+md5sums_i686=('36e469480651bf7a6157c3cff0426a66')
+md5sums_x86_64=('bc01a2f36d9ff7483c4c478f73d22eeb')
 url="https://www.segger.com/downloads/free_tools"
 DLAGENTS=("https::/usr/bin/env curl -c cookie -d name=archsegger@free.fr -d password=QfNDbvDUa7 %u -o %o")
 
@@ -39,7 +39,7 @@ package(){
     cd ${srcdir}/SystemView*
 
     # Bulk copy everything
-    cp --preserve=mode -r SystemViewer description Doc SampleTraces "${pkgdir}/opt/SEGGER/SystemView"
+    cp --preserve=mode -r SystemViewer Description Doc Sample "${pkgdir}/opt/SEGGER/SystemView"
 
     # Create links where needed
     ln -s /opt/SEGGER/SystemView/Doc/License_SystemView.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
