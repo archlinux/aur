@@ -6,7 +6,7 @@ pkgrel=0
 pkgdesc="Minimalistic Desktop Shell"
 arch=("x86_64")
 url="https://github.com/vicr123/theshell"
-license=('GPL2')
+license=('GPL3')
 depends=('kwidgetsaddons' 'xdg-utils' 'wmctrl' 'kwin' 'networkmanager' 'xorg-xbacklight')
 optdepends=('alsa-utils: for volume controls'
 	    'pocketsphinx: for theWave'
