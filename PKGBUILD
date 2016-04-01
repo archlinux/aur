@@ -3,7 +3,7 @@
 # Contributor: ilikenwf
 # Contributor: American_Jesus
 pkgname=palemoon-beta
-pkgver=26.1.0b1
+pkgver=26.2.0_RC3
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -11,14 +11,14 @@ url="http://www.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib' 'hunspell'
          'nspr' 'libjpeg-turbo' 'zlib' 'bzip2' 'libpng' 'libevent' 'libvpx' 'startup-notification')
-makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'gstreamer0.10' 'gstreamer0.10-base-plugins' 'libpulse')
+makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'gstreamer' 'gst-plugins-base' 'libpulse')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libpulse: PulseAudio audio driver'
             'hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
-            'gstreamer0.10-bad-plugins'
-            'gstreamer0.10-good-plugins'
-            'gstreamer0.10-ugly-plugins')
+            'gst-plugins-bad'
+            'gst-plugins-good'
+            'gst-plugins-ugly')
 conflicts=('palemoon' 'palemoon-bin')
 install=palemoon.install
 source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=$pkgver"
@@ -26,7 +26,7 @@ source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=$pkgver"
         mozconfig.in)
 md5sums=('SKIP'
          'ba2923c637c7324c2f5b151f0b22da6a'
-         'f518f022bd6bf4b57d0b01eaefeab161')
+         '5c4f064028750abff77eaac03d7515e1')
 
 prepare() {
   sed 's#%SRCDIR%#'"$srcdir"'#g' mozconfig.in > mozconfig
