@@ -11,6 +11,7 @@ pkgbase = gplaycli-git
 	depends = python2-requests
 	depends = wxpython
 	depends = python2-ndg-httpsclient
+	depends = python2-androguard-git
 	optdepends = java-runtime: needed for autogeneration of a new AndroiID
 	source = gplaycli::git+https://github.com/matlink/gplaycli.git
 	md5sums = SKIP

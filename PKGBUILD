@@ -10,7 +10,8 @@ depends=('python2'
          'python2-protobuf'
          'python2-requests'
          'wxpython'
-         'python2-ndg-httpsclient')
+         'python2-ndg-httpsclient'
+         'python2-androguard-git')
 optdepends=('java-runtime: needed for autogeneration of a new AndroiID')
 source=("gplaycli::git+https://github.com/matlink/gplaycli.git")
 md5sums=("SKIP")
