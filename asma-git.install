@@ -1,7 +1,5 @@
 post_install() {
-	echo "You must install Arma 3 via Steam and ensure it is located"
-	echo "in or linked to the following directory (case sensitive):"
-	echo "~/.local/share/Steam/steamapps/common/Arma 3"
+	echo "You must install Arma 3 via Steam."
 }
 
 post_upgrade() {
