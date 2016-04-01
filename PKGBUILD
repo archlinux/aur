@@ -17,7 +17,7 @@ depends=('lib32-zlib' 'libpng12')
 makedepends=('gcc-multilib') 
 options=('!libtool')
 source=("http://sourceforge.net/projects/libpng/files/libpng12/${pkgver}/libpng-${pkgver}.tar.xz"
-        "http://sourceforge.net/projects/apng/files/libpng/libpng12/libpng-${pkgver}-apng.patch.gz")
+        "http://sourceforge.net/projects/libpng-apng/files/libpng12/${pkgver}/libpng-${pkgver}-apng.patch.gz")
 
 prepare(){
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
@@ -54,4 +54,4 @@ package() {
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 sha256sums=('24ce54581468b937734a6ecc86f7e121bc46a90d76a0d948dca08f32ee000dbe'
-            '454631947201483930c759ecb3741618258e8143db4ff13b0d938b4238bc8708')
+            'b689af23e7c399b1f5d1fc0a7ed0540a5e678bcb665bc70f377d0569b278f3d9')
