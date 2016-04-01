@@ -16,4 +16,5 @@ PATH=${mingw_prefix}/bin:$PATH cmake \
     -DSHARE_INSTALL_DIR:PATH=${mingw_prefix}/share \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DCMAKE_TOOLCHAIN_FILE=/usr/share/mingw/toolchain-@TRIPLE@.cmake \
+    -DCMAKE_CROSSCOMPILING_EMULATOR=/usr/bin/@TRIPLE@-wine \
     "$@"
