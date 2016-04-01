@@ -1,7 +1,7 @@
 # Maintainer: Albert Graef <aggraef at gmail dot com>
 
 pkgname=pdextended-lv2plugin-git
-pkgver=14.539522c
+pkgver=20.76bf43b
 pkgrel=1
 pkgdesc="LV2 plugin host for Pd, Pd-Extended version"
 arch=("i686" "x86_64")
@@ -19,10 +19,10 @@ pkgver() {
 
 build() {
      cd $srcdir/pd-lv2plugin
-     make PD=pd-extended || return 1
+     make PD=pd-extended prefix=/usr || return 1
 }
 
 package() {
      cd $srcdir/pd-lv2plugin
-     make DESTDIR=$pkgdir PD=pd-extended install || return 1
+     make DESTDIR=$pkgdir PD=pd-extended prefix=/usr install || return 1
 }
