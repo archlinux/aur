@@ -1,8 +1,8 @@
 # Maintainer: Hanspeter Portner <dev at open-music-kontrollers dot ch>
 _pkgname=synthpod
 pkgname="${_pkgname}-git"
-pkgver=608
-pkgrel=1
+pkgver=639
+pkgrel=2
 pkgdesc="Lightweight non-linear plugin host"
 arch=('i686' 'x86_64')
 url="http://open-music-kontrollers.ch/lv2/synthpod"
@@ -44,7 +44,7 @@ build() {
     -DBUILD_DUMMY=1 \
     -DBUILD_SANDBOX_LIB=1 \
     -DBUILD_SANDBOX_X11=1 \
-    -DBUILD_SANDBOX_EFL=1 \
+    -DBUILD_SANDBOX_EFL=0 \
     -DBUILD_SANDBOX_GTK2=1 \
     -DBUILD_SANDBOX_GTK3=1 \
 		..
