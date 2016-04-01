@@ -1,7 +1,7 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
 Encoding=UTF-8
-Name=Circle and Ruler
+Name=Compass and Ruler
 Exec=/usr/bin/car
 Icon=car.png
 Terminal=false
@@ -11,3 +11,4 @@ StartupNotify=true
 GenericName=Dynamic geometry program
 GenericName[fr]=Logiciel de géométrie dynamique
 GenericName[es]=Programa de geometría dinámica
+GenericName[de]=Programm für dynamische Geometrie

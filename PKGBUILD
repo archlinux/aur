@@ -6,7 +6,7 @@
 
 pkgname=car
 pkgver=2016.03.25
-pkgrel=5
+pkgrel=6
 url="http://car.rene-grothmann.de/"
 pkgdesc="Compass and Ruler is a dynamic geometry program"
 arch=('any')
