@@ -1,7 +1,7 @@
 pkgname=aurutils
 pkgver=0.3.0
 pkgrel=1
-pkgdesc='helper tools for the aur'
+pkgdesc='helper tools for the arch user repository'
 arch=('any')
 url=https://github.com/AladW/aurutils
 license=('ISC')
