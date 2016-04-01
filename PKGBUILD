@@ -7,7 +7,7 @@
 pkgname=fusion-icon
 epoch=1
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple tray icon for Compiz 0.8"
 arch=('any')
 url="http://www.compiz.org/"
@@ -40,6 +40,8 @@ prepare() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  # Workaround until upstream autofills out main.py for each interface
+  make PREFIX=/usr
   make PREFIX=/usr DESTDIR=$pkgdir install
 }
 
