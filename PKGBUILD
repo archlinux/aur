@@ -4,8 +4,8 @@
 
 _pkgname=xorg-server
 pkgname=xorg-server-hwcursor-gamma
-pkgver=1.18.1
-pkgrel=1 # 1=2 in xorg-server
+pkgver=1.18.2
+pkgrel=1 # 4 in xorg-server
 pkgdesc="Xorg X server with patch to apply gamma ramps on hardware cursors"
 depends=(libepoxy libxdmcp libxfont libpciaccess libdrm pixman libgcrypt libxau xorg-server-common libxshmfence libgl xf86-input-evdev)
 provides=("xorg-server=${pkgver}" 'X-ABI-VIDEODRV_VERSION=20' 'X-ABI-XINPUT_VERSION=22.1' 'X-ABI-EXTENSION_VERSION=9.0' 'x-server')
@@ -24,18 +24,33 @@ makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 
 source=(${url}/releases/individual/xserver/${_pkgname}-${pkgver}.tar.bz2
         xvfb-run
         xvfb-run.1
+        0001-glamor-swizzle-RED-to-0-for-alpha-textures.patch
+	0001-Xext-vidmode-Reduce-verbosity-of-GetModeLine.patch
+	0001-present-Only-requeue-for-next-MSC-after-flip-failure.patch
 	0001-When-an-cursor-is-set-it-is-adjusted-to-use-the.patch
 	0002-Fix-for-full-and-semi-transparency-under-negative-im.patch
 	0003-Use-Harms-s-suggest-do-not-use-inline-if.-And-fix-si.patch)
-sha256sums=('85ec56dbeb89a951295cdf4f39bf38e515f900d35e06d4a8081b114d1520789d'
+sha256sums=('022142b07f6477d140dcc915902df326408a53ca3a352426a499f142b25d632d'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
-            '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
+	    '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
+	    '10c66c10f4f71930e2ac3f6e07881e228ca88542af449d2c69c7744ec87335df'
+	    '72755a652e72144e3f28c8fa959b4a6df5def838db3cde5077a626e97baab591'
+	    '70c84bf1f7cbc818692fb56f57c8b8ef2ea057bc05380b2f797ecba742b7ce31'
 	    'bea348631dedd66475d84ac2cfe0840f22a80a642b4680d73fead4749e47f055'
 	    'be9169b937b5d0b44f7f05d7c08aaa5f0c1092e128ce261d9cb350f09dfe1fb0'
 	    '0a643ae83e03faee0f4db669a33c5b3c99edbba5c86cde2c83962ae536d31081')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
+
+  msg2 'Fix red tint in Firefox'
+  patch -Np1 -i ../0001-glamor-swizzle-RED-to-0-for-alpha-textures.patch
+
+  msg2 'Fix flooding of Xorg log file'
+  patch -Np1 -i ../0001-Xext-vidmode-Reduce-verbosity-of-GetModeLine.patch
+
+  msg2 'Fix FS#48549'
+  patch -Np1 -i ../0001-present-Only-requeue-for-next-MSC-after-flip-failure.patch
 
   msg2 'Apply hardware cursors gamma adjustments patches'
   patch -Np1 -i ../0001-When-an-cursor-is-set-it-is-adjusted-to-use-the.patch
