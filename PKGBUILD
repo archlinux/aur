@@ -1,10 +1,10 @@
 # Maintainer: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
 
 pkgname=atom-editor-beta
-_pkgbeta=0
+_pkgbeta=4
 _pkgver=1.7.0
 pkgver="${_pkgver}.beta${_pkgbeta}"
-pkgrel=4
+pkgrel=1
 pkgdesc='Chrome-based text editor from Github - Beta Channel'
 arch=('x86_64' 'i686')
 url='https://github.com/atom/atom'
@@ -14,8 +14,10 @@ optdepends=('gvfs: file deletion support')
 makedepends=('git' 'npm')
 conflicts=('atom-editor-bin' 'atom-editor-git' 'atom-editor-beta-bin' 'atom-editor')
 install=atom.install
-source=("https://github.com/atom/atom/archive/v${_pkgver}-beta${_pkgbeta}.tar.gz")
-sha256sums=('ec8be58b9bd43e8b82f206ddf8745476d7e174d2ec560a7257cd76c5017197e1')
+source=("https://github.com/atom/atom/archive/v${_pkgver}-beta${_pkgbeta}.tar.gz"
+        "atom-beta.desktop")
+sha256sums=('15378582d4afa0c31289e8042c983233163701104856af872c548f56e69ffca3'
+            '10e158a590ff3a52481ea30f3742c170c7b49557fc7f7af875394de91048311f')
 
 prepare() {
 	cd "atom-${_pkgver}-beta${_pkgbeta}"
@@ -39,8 +41,8 @@ build() {
 package() {
 	cd "$srcdir/atom-${_pkgver}-beta${_pkgbeta}"
 	script/grunt install --build-dir "$srcdir/atom-build" --install-dir "$pkgdir/usr"
-	sed -re "s/^(Exec=).*/\1atom-beta/g;s/^(Icon=).*/\1atom-beta/g;s|(text/plain;$)|\1\nStartupWMClass=Atom\n|g" \
-	    "$pkgdir/usr/share/applications/atom-beta.desktop" \
-	    | tee "$pkgdir/usr/share/applications/atom-beta.desktop" 1>/dev/null
+
+	[[ -f "${pkgdir}/usr/share/applications/atom-beta.destkop" ]] && rm -rf "${pkgdir}/usr/share/applications/atom-beta.destkop"
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+	install -Dm644 "${srcdir}/atom-beta.desktop" "${pkgdir}/usr/share/applications/atom-beta.desktop"
 }

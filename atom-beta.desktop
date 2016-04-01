@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Atom Beta
+Comment=A hackable text editor for the 21st Century.
+GenericName=Text Editor
+Exec=atom-beta
+Icon=atom-beta
+Type=Application
+StartupNotify=true
+Categories=GNOME;GTK;Utility;TextEditor;Development;
+MimeType=text/plain;
+StartupWMClass=Atom
+
