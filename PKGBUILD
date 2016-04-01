@@ -14,7 +14,7 @@ url="http://retroshare.sourceforge.net/"
 license=('GPL' 'LGPL')
 
 # qt4
-depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd')
+depends=('qt4' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd' 'sqlite')
 makedepends=('git')
 
 optdepends=('tor: tor hidden node support'
