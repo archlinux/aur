@@ -2,7 +2,7 @@
 # Tue Feb 23 08:29:56 UTC 2016
 pkgbase = xnviewmp
 	pkgdesc = An efficient multimedia viewer, browser and converter.
-	pkgver = 0.78
+	pkgver = 0.79
 	pkgrel = 1
 	url = http://www.xnview.com/en/xnviewmp/
 	install = xnviewmp.install
@@ -20,15 +20,13 @@ pkgbase = xnviewmp
 	depends = qt5-svg
 	depends = qt5-x11extras
 	optdepends = gvfs: support for moving files to trash
-	noextract = http://www.xnview.com/beta/XnView-archx32.gz
-	noextract = http://www.xnview.com/beta/XnView-archx64.gz
 	source_x86_64 = http://download.xnview.com/XnViewMP-linux-x64.tgz
 	source_x86_64 = xnviewmp.desktop
-	md5sums_x86_64 = 6d15272d6dfbf790ebc9c6b469e438e0
+	md5sums_x86_64 = 9f0849b44217ca792480566225e709c4
 	md5sums_x86_64 = 24f44d5a881b94daf48775213a57e4ec
 	source_i686 = http://download.xnview.com/XnViewMP-linux.tgz
 	source_i686 = xnviewmp.desktop
-	md5sums_i686 = 947e7f3c8d1d63109d8d6a7fb70bfedb
+	md5sums_i686 = f9ee2c9c66a405c88fea9570a53579eb
 	md5sums_i686 = 24f44d5a881b94daf48775213a57e4ec
 
 pkgname = xnviewmp
