@@ -2,7 +2,7 @@
 # Contributor: Filippo Squillace <sqoox85@gmail.com>
 
 pkgname=visit
-pkgver=2.10.1
+pkgver=2.10.2
 _pkgver=${pkgver//./_}
 pkgrel=1
 pkgdesc="Interactive parallel visualization and graphical analysis tool."
@@ -19,7 +19,7 @@ source=("https://portal.nersc.gov/svn/${pkgname}/trunk/releases/${pkgver}/${pkgn
         "visit.sh"
         "visit_FindIceT.patch"
         "visit_frontendlauncher.patch")
-sha256sums=('6b53dea89a241fd03300a7a3a50c0f773e2fb8458cd3ad06816e9bd2f0337cd8'
+sha256sums=('89ecdfaf197ef431685e31b75628774deb6cd75d3e332ef26505774403e8beff'
             'd07a11e67ad646579fbc341f30e1eb63ebd38a5fbdd4f3ea36e8f460419028da'
             '2e7b0be6ad5bc6c0f0568b91f79149f081c2a9bded58223e4347fcf513aa206a'
             '75179bcdcc5881b12e417f402e52b14598ae2f85ea1f78702ce1dc95c9b5198f')
@@ -104,7 +104,7 @@ build() {
     -DVISIT_SILO_DIR:PATH=/usr \
     -DVISIT_THREAD:BOOL=ON \
     -DVISIT_TCMALLOC_DIR:PATH=/usr \
-    -DVISIT_VTK_DIR:PATH=/opt/vtk-${_vtk_ver} -DVISIT_VTK_SKIP_INSTALL:BOOL=ON -DVISIT_VTK_VERSION:STRING=${_vtk_ver}\
+    -DVISIT_VTK_DIR:PATH="/opt/vtk-${_vtk_ver}" -DVISIT_VTK_SKIP_INSTALL:BOOL=ON -DVISIT_VTK_VERSION:STRING="${_vtk_ver}"\
     -DVISIT_ZLIB_DIR:PATH=/usr
 
   # Does not compile for now
