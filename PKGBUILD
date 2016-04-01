@@ -28,9 +28,9 @@ build() {
 package() {
 	cd "$srcdir/$pkgname"
 	install -D -m755 target/release/systemd-manager "$pkgdir/usr/local/bin/systemd-manager"
-	install -D -m755 systemd-manager-pkexec "$pkgdir/usr/local/bin/systemd-manager-pkexec"
-     	install -D -m644 systemd-manager.desktop "$pkgdir/usr/share/applications/systemd-manager.desktop"
-     	install -D -m644 org.freedesktop.policykit.systemd-manager.policy "$pkgdir/usr/share/polkit-1/actions/org.freedesktop.policykit.systemd-manager.policy"
+	install -D -m755 assets/systemd-manager-pkexec "$pkgdir/usr/local/bin/systemd-manager-pkexec"
+     	install -D -m644 assets/systemd-manager.desktop "$pkgdir/usr/share/applications/systemd-manager.desktop"
+     	install -D -m644 assets/org.freedesktop.policykit.systemd-manager.policy "$pkgdir/usr/share/polkit-1/actions/org.freedesktop.policykit.systemd-manager.policy"
      	install -D -m644 README.md "$pkgdir/usr/share/doc/$pkgname/README"
      	install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
