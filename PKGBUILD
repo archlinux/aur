@@ -26,12 +26,12 @@ sha512sums=(
 
 prepare() {
 	# Decompressing the file
-	cd ${srcdir}
+	cd "${srcdir}"
 	7z x ${pkgname}-${pkgver}.7z
 }
 
 package() {	
 	# Copy theme
-	mkdir -p ${pkgdir}/usr/share/themes
-	cp -R ${srcdir}/Mistral ${pkgdir}/usr/share/themes
+	mkdir -p "${pkgdir}"/usr/share/themes
+	cp -R "${srcdir}"/Mistral "${pkgdir}"/usr/share/themes
 }
