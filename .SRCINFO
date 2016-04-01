@@ -1,0 +1,30 @@
+pkgbase = germinate
+	pkgdesc = Takes lists of seed packages and expands their dependencies to produce a full list of packages. This can be used for purposes such as managing the list of packages present in a derived distribution's archive or CD builds.
+	pkgver = 2.23
+	pkgrel = 1
+	url = https://tracker.debian.org/pkg/germinate
+	arch = any
+	license = GPL
+	makedepends = python
+	makedepends = python-setuptools
+	makedepends = python-apt
+	makedepends = python2-apt
+	options = !emptydirs
+	source = https://mirrors.ocf.berkeley.edu/debian/pool/main/g/germinate/germinate_2.23.tar.xz
+	sha256sums = aeadbd250ef4c065cc9aa0b0a7410ddee49b5c4aa31209c4f66d23652da612eb
+
+pkgname = germinate
+	depends = 
+	depends = perl
+	depends = python
+
+pkgname = python-germinate
+	depends = 
+	depends = germinate
+	depends = python
+
+pkgname = python2-germinate
+	depends = 
+	depends = germinate
+	depends = python2
+
