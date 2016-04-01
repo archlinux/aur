@@ -1,0 +1,13 @@
+
+[Desktop Entry]
+Name=Jag level editor
+Exec=jag-editor
+Icon=/usr/share/pixmaps/jag-leveleditor.png
+Comment=Level editor for Jag game
+Exec=jag-editor
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=GNOME;GTK;Game;LogicGame;
+Encoding=UTF-8
+StartupNotify=true

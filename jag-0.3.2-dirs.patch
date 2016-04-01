@@ -1,0 +1,48 @@
+diff -u -r ../jag-0.3.2-src.orig/Game.pro ./Game.pro
+--- ../jag-0.3.2-src.orig/Game.pro	2012-03-02 23:50:16.000000000 +0100
++++ ./Game.pro	2013-02-09 22:49:25.860349664 +0100
+@@ -5,9 +5,9 @@
+     opengl
+ unix: {
+     TARGET = ./bin/jag
+-    target.path = /usr/local/bin/
++    target.path = /usr/bin/
+     INSTALLS += target
+-    datas.path = /usr/local/games/jag
++    datas.path = /usr/share/jag
+     datas.files = data
+     INSTALLS += datas
+     LIBS += -lXrandr
+@@ -22,7 +22,7 @@
+         -lSDL.dll
+     RC_FILE = res.rc
+ }
+-LIBS += -lSDLmain \
++LIBS += -lSDL -lX11 \
+     -lSDL \
+     -lSDL_mixer
+ TEMPLATE = app
+diff -u -r ../jag-0.3.2-src.orig/editor/editor.pro ./editor/editor.pro
+--- ../jag-0.3.2-src.orig/editor/editor.pro	2009-12-14 22:20:12.000000000 +0100
++++ ./editor/editor.pro	2013-02-09 22:49:25.862349666 +0100
+@@ -4,7 +4,7 @@
+ 
+ unix: {
+     TARGET = ./bin/jag-editor
+-    target.path = /usr/local/bin/
++    target.path = /usr/bin/
+     INSTALLS += target
+ }
+ win32: {
+diff -u -r ../jag-0.3.2-src.orig/main.cpp ./main.cpp
+--- ../jag-0.3.2-src.orig/main.cpp	2012-03-03 16:19:11.000000000 +0100
++++ ./main.cpp	2013-02-09 22:49:25.861349662 +0100
+@@ -37,7 +37,7 @@
+   // on X11, we'll check if data directory exists locally first
+ #ifdef Q_WS_X11
+   if (!QDir(resourcePath).exists())
+-    resourcePath = "/usr/local/games/jag/data/";
++    resourcePath = "/usr/share/jag/data/";
+ #endif
+ 
+   if (!QDir(resourcePath).exists()) {

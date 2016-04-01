@@ -1,0 +1,14 @@
+
+[Desktop Entry]
+Name=Jag
+Exec=jag
+Icon=/usr/share/pixmaps/jag.png
+Comment=Break all the target pieces
+Exec=jag
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Categories=GNOME;GTK;Game;LogicGame;
+Encoding=UTF-8
+StartupNotify=true
+
