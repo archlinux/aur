@@ -8,8 +8,8 @@
 # Contributor: Carlos Solis <csolisr at gmail dot com>
 
 pkgname=stepmania
-pkgver=5.0.10
-pkgrel=3
+pkgver=5.0.11
+pkgrel=1
 pkgdesc='A free dance and rhythm game (was previously sm-ssc)'
 url='http://www.stepmania.com/'
 license=('MIT')
@@ -23,7 +23,7 @@ source=(stepmania.sh
         $pkgname-$pkgver.tar.gz::https://github.com/stepmania/stepmania/archive/v$pkgver.tar.gz)
 sha512sums=('e066ac27932e795078a3a9b1073f280f10f140b2dd776f12efdc469d327d13c2fccdc87f823a32d91c9896b5ea1e98fca404cfadcf55c97ea22a179e5ca21412'
             'a136c74c71730bbac0d90e876d0f8de066c5f4cfba1923f649d085c7590a3624bd469d03daacc7e4ff5f23c1de2907c015c5a9b6df66f5fce584cf912e9e5c58'
-            'd242d76aed7a72bc2bf7e0ffa222de6f889422956b4f6bad88d54556fca511735c2d3249693b43232190075b1d4c4a0166606fc7b57057edf1b6c1ca34f958e7')
+            '6ef126da5b5690e8fcdbebd9b3a0ee6411dd3cb43209c0e209399e711dc6d449aae1372de92ee0be20af9c3fba1c55ec27087e86a0aeb874535d0a39167f98c3')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/Build"
