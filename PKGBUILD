@@ -2,7 +2,7 @@
 # Based On: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
 pkgname=sdlmame-wout-toolkits
-pkgver=0.171
+pkgver=0.172
 pkgrel=1
 pkgdesc="A port of the popular Multiple Arcade Machine Emulator using SDL with OpenGL support. Without Qt toolkit"
 url='http://mamedev.org'
@@ -22,12 +22,12 @@ makedepends=('nasm'
              'mesa'
              'glu'
              'wget'
-             'python2'
+             'python'
              )
 source=("https://github.com/mamedev/mame/archive/mame${pkgver/./}.tar.gz"
         'sdlmame.sh'
         'extras.tar.gz')
-sha1sums=('53a6c72b2b8c11e72e622c14cb4d2ec710c1dbd5'
+sha1sums=('f6ea29f7880a05f8d835c538f4316bd4b0adad18'
           '1ed8016f41edecfca746fadcfb40eab78845a3d6'
           '75732974431844670aa3904d8f9ce3f5c5504827')
 install=sdlmame-wout-toolkits.install
@@ -35,9 +35,8 @@ noextract=('extras.tar.gz')
 
 prepare() {
   cd "mame-mame${pkgver/./}"
-  bsdtar -xf ../extras.tar.gz
 
-  find . -type f -not -name \*.png | xargs -i_arg_ perl -pi -e 's/\r\n?/\n/g' "_arg_"
+  bsdtar -xf ../extras.tar.gz
 }
 
 build() {
@@ -46,8 +45,7 @@ build() {
   [ "${CARCH}" = "i686" ] && _use_64bits=0
   [ "${CARCH}" = "x86_64" ] && _use_64bits=1
 
-  make PYTHON_EXECUTABLE=/usr/bin/python2 \
-       PTR64="${_use_64bits}" \
+  make PTR64="${_use_64bits}" \
        SSE2="${_use_64bits}" \
        OPTIMIZE=2 \
        NOWERROR=1 \
@@ -84,6 +82,7 @@ package() {
   install -Dm755 ldresample "${pkgdir}/usr/bin/ldresample"
   install -Dm755 ldverify   "${pkgdir}/usr/bin/ldverify"
   install -Dm755 nltool     "${pkgdir}/usr/bin/nltool"
+  install -Sm755 nlwav      "${pkgdir}/usr/bin/nlwav"
   install -Dm755 pngcmp     "${pkgdir}/usr/bin/pngrep"
   install -Dm755 regrep     "${pkgdir}/usr/bin/regrep"
   install -Dm755 romcmp     "${pkgdir}/usr/bin/romcmp"
@@ -94,10 +93,10 @@ package() {
   install -Dm755 unidasm    "${pkgdir}/usr/bin/unidasm"
 
   # Install the extra bits
-  install -d "${pkgdir}/usr/share/sdlmame/"{artwork,ctrlr,keymaps,shader}
-  install -m644 artwork/* "${pkgdir}/usr/share/sdlmame/artwork/"
-  install -m644 ctrlr/* "${pkgdir}/usr/share/sdlmame/ctrlr/"
-  install -m644 src/osd/sdl/keymaps/* "${pkgdir}/usr/share/sdlmame/keymaps/"
+  for i in artwork bgfx ctrlr hash hlsl ini keymaps language plugins; do
+    for e in $(find ${i} -type f); do install -Dm644 "${e}" ${pkgdir}/usr/share/sdlmame/${e}; done
+  done
+  install -d "${pkgdir}/usr/share/sdlmame/shader"
   install -m644 src/osd/modules/opengl/shader/glsl*.*h "${pkgdir}/usr/share/sdlmame/shader/"
 
   # Install man
@@ -105,7 +104,7 @@ package() {
   install -Dm644 src/osd/sdl/man/mame.6 "${pkgdir}/usr/share/man/man6/sdlmame.6"
 
   # Include the license
-  install -Dm644 docs/mamelicense.txt "${pkgdir}/usr/share/licenses/${pkgname}/mamelicense.txt"
+  install -Dm644 docs/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # documentation
   (cd docs; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/${pkgname}/${i}"; done)
