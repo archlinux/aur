@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=20160312.9cd0555
+pkgver=20160401.64791a0
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
@@ -10,7 +10,6 @@ depends=('desktop-file-utils'
          'libguess'
          'enca'
          'libxv'
-         'libfdk-aac'
          'libcdio-paranoia'
          'openal'
          'luajit'
@@ -22,7 +21,6 @@ depends=('desktop-file-utils'
          'jack2'
          'libbluray'
          'libpulse'
-         'libx264'
          'libbs2b'
          'libgme'
          'mesa'
@@ -33,7 +31,6 @@ depends=('desktop-file-utils'
          'sdl'
          'sdl2'
          'lcms2'
-         'lame'
          'libva'
          'rubberband'
          'uchardet'
@@ -70,7 +67,6 @@ sha1sums=('SKIP'
           'SKIP'
           #'SKIP'
           )
-backup=('etc/mpv/encoding-profiles.conf')
 
 pkgver() {
   cd mpv
@@ -86,9 +82,6 @@ prepare() {
 
   # Set ffmpeg/libass/fribidi/mpv flags
   echo "--disable-programs \
-        --enable-libx264 \
-        --enable-libmp3lame \
-        --enable-libfdk-aac \
         --enable-libssh \
         --enable-nonfree \
         --enable-ladspa \
@@ -110,8 +103,6 @@ prepare() {
         --disable-vapoursynth-lazy" > mpv_options
 
   cd mpv
-
-  # Download Waf script
   ./bootstrap.py
 }
 
