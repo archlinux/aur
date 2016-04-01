@@ -7,8 +7,8 @@
 # Contributor: VuDu <vudu 'dot' curse 'at' gmail 'dot' com>
 
 pkgname=xnviewmp
-pkgver=0.78
-pkgrel=2
+pkgver=0.79
+pkgrel=1
 pkgdesc="An efficient multimedia viewer, browser and converter."
 url="http://www.xnview.com/en/xnviewmp/"
 
@@ -19,8 +19,8 @@ optdepends=('gvfs: support for moving files to trash')
 
 source_i686=("http://download.xnview.com/XnViewMP-linux.tgz")
 source_x86_64=("http://download.xnview.com/XnViewMP-linux-x64.tgz")
-md5sums_x86_64=('6d15272d6dfbf790ebc9c6b469e438e0')
-md5sums_i686=('947e7f3c8d1d63109d8d6a7fb70bfedb')
+md5sums_x86_64=('9f0849b44217ca792480566225e709c4')
+md5sums_i686=('f9ee2c9c66a405c88fea9570a53579eb')
 
 package() {
   install -d -m755 "${pkgdir}/opt/${pkgname}"
