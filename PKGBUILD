@@ -34,12 +34,12 @@ _brandingrel=2
 
 pkgname=iceweasel
 pkgver=${_debver}.deb${_debrel}
-pkgrel=1
+pkgrel=2
 pkgdesc="Debian Browser based on Mozilla Firefox, with Parabola GNU/Linux-libre branding"
 arch=('i686' 'x86_64')
 license=('GPL' 'MPL' 'LGPL')
 depends=(alsa-lib dbus-glib desktop-file-utils ffmpeg gtk2 gtk3 hicolor-icon-theme hunspell icu libevent libvpx libxt mime-types mozilla-common nss sqlite startup-notification ttf-font)
-makedepends=(autoconf2.13 diffutils gconf imake inetutils libidl2 libpulse librsvg libxslt mesa pkg-config python2 quilt unzip yasm zip nss imagemagick)
+makedepends=(autoconf2.13 diffutils gconf imake inetutils libidl2 libpulse librsvg-stable libxslt mesa pkg-config python2 quilt unzip yasm zip nss imagemagick)
 options=(!emptydirs !makeflags debug)
 if $_pgo; then
   makedepends+=(xorg-server-xvfb)
@@ -113,8 +113,8 @@ prepare() {
   # Fix tab loading icon (flickers with libpng 1.6)
   # https://bugzilla.mozilla.org/show_bug.cgi?id=841734
   cp "$srcdir/iceweasel-fixed-loading-icon.png" browser/themes/linux/tabbrowser/loading.png
-
 }
+
 
 build() {
   cd "$srcdir/$_debname-$_debver"
