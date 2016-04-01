@@ -3,7 +3,7 @@
 pkgname=storm-launcher
 _pkgname=stormLauncher
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Software to control Dream Cheeky O.I.C Storm & Thunder USB Missile Launchers"
 arch=('any')
 url="https://github.com/7CTech/stormLauncher"
@@ -21,8 +21,8 @@ sha256sums=('df497e28068b6c34856ae622a503a693623b89602a466e1eec6977d5defe4a11')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
-  mv stormLauncher.py stormLauncher
-  chmod +x stormLauncher
+  mv "$_pkgname".py "$_pkgname"
+  chmod +x "$_pkgname"
 }
 
 package() {
