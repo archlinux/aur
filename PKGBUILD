@@ -3,7 +3,7 @@
 
 pkgname=sshuttle-git
 _gitname=sshuttle
-pkgver=v0.73+51_ge433c59
+pkgver=v0.77.2+10_g6e15e69
 #_commit=e433c599e40bc47c7b0e4d16934815c84b26eea8
 pkgrel=1
 pkgdesc='Transparent proxy server that forwards all TCP packets over ssh'
@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/sshuttle/sshuttle"
 license=('GPL2')
 depends=('python-setuptools' 'iptables' 'openssh' 'net-tools')
-makedepends=('git' 'pandoc')
+makedepends=('git' 'python-sphinx' 'python-setuptools_scm')
 checkdepends=('python-pytest-runner' 'python-mock')
 conflicts=('sshuttle')
 backup=('etc/sshuttle/tunnel.conf' 'etc/sshuttle/prefixes.conf')
@@ -30,8 +30,9 @@ pkgver() {
 build() {
   cd "$_gitname"
   python setup.py build
-
-  pandoc -s -r markdown -w man -o sshuttle.8 sshuttle/sshuttle.md
+  
+  cd docs
+  make man
 }
 
 check() {
@@ -43,7 +44,8 @@ package() {
   cd "$_gitname"
   python setup.py install --root="$pkgdir" -O1
 
-  install -Dm644 sshuttle.8 "$pkgdir/usr/share/man/man8/sshuttle.8"
+  #install -Dm644 sshuttle.8 "$pkgdir/usr/share/man/man8/sshuttle.8"
+  install -Dm644 docs/_build/man/sshuttle.1 "$pkgdir/usr/share/man/man1/sshuttle.1"
 
   install -d "$pkgdir/etc/sshuttle"
   install -m644 "$srcdir"/{tunnel.conf,prefixes.conf} "$pkgdir/etc/sshuttle"
