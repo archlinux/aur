@@ -1,6 +1,6 @@
 pkgname=ca-certificates-hackint
 pkgver=20150513
-pkgrel=1
+pkgrel=2
 pkgdesc="hackint root certificates for irc.hackint.org"
 arch=(any)
 url="https://www.hackint.org/ca.html"
@@ -10,7 +10,7 @@ install=install
 source=(hackint.crt)
 
 package() {
-  local certdir="$pkgdir/etc/ca-certificates/trust-source/anchors/"
+  local certdir="$pkgdir/usr/share/ca-certificates/trust-source/anchors/"
   install -d "$certdir"
   install -t "$certdir" -m644 hackint.crt
 
