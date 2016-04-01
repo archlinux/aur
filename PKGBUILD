@@ -3,17 +3,17 @@
 
 pkgname=python-dask
 _pkgname=dask
-pkgver=0.8.0
-pkgrel=1
+pkgver=0.8.1
+pkgrel=2
 pkgdesc="Minimal task scheduling abstraction"
 arch=('any')
 url="https://dask.readthedocs.org/"
 license=('BSD')
-depends=('python' 'python-numpy' 'python-dill' 'python-pandas' 'python-toolz' 'python-psutil' 'python-pyzmq' 'python-bcolz' 'python-cloudpickle' 'python-partd')
+depends=('python' 'python-numpy' 'python-scipy' 'python-dill' 'python-pandas' 'python-toolz' 'python-psutil' 'python-pyzmq' 'python-bcolz' 'python-cloudpickle' 'python-partd' )
 makedepends=('python-setuptools')
 checkdepends=('python-pytest') # 'python-pygraphviz' 'python-cachey'
 source=(https://pypi.python.org/packages/source/d/dask/dask-$pkgver.tar.gz)
-sha256sums=('3cc8ac74589b13c959c9f72bfc4092aed549da08987c0ba087a64abb5d129796')
+sha256sums=('43deb1934cd033668e5e60b735f45c9c3ee2813f87bd51c243f975e55267fa43')
 
 check() {
   cd "$srcdir/$_pkgname-$pkgver"
