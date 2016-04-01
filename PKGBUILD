@@ -3,8 +3,9 @@
 # Contributor: Yosef Or Boczko <yosefor3@walla.com>
 
 _gitname=gimp
-pkgname="$_gitname"-gtk3-git
-pkgver=2.9.2.r452.ga885dd9
+_version=2.99
+pkgname=${_gitname}-gtk3-git
+pkgver=2.9.2.r933.gfc73b32
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
@@ -23,9 +24,9 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
 			'ghostscript: for postscript support')
 options=('!libtool' '!makeflags')
 install=$pkgname.install
-replaces=('gimp')
-provides=('gimp')
-conflicts=('gimp')
+replaces=("gimp-${_version}")
+provides=("gimp-${_version}")
+conflicts=("gimp-${_version}")
 source=(git://git.gnome.org/gimp#branch=gtk3-port
 		linux.gpl)
 md5sums=('SKIP' #generate with 'makepkg -g'
@@ -38,8 +39,9 @@ pkgver() {
 
 prepare() {
 	cd $_gitname
-	sed -i -e 's/automake-1.11/automake-1.14/g' \
-                        -e 's/aclocal-1.11/aclocal-1.14/g' autogen.sh
+	sed -i -e 's/automake-1.11/automake-1.14/g;s/aclocal-1.11/aclocal-1.14/g' autogen.sh
+	sed -i 's/gimp.desktop/gimp-'${_version}'.desktop/g' desktop/gimp.appdata.xml.in
+	sed -i  '/_Name=/ s/$/ '${_version}'/;s/Icon=gimp/&-'${_version}'/' desktop/gimp.desktop.in.in
 }
 
 build() {
@@ -56,9 +58,15 @@ build() {
 package() {
 	cd $_gitname
 	make DESTDIR="$pkgdir/" install
-	install -D -m644 "${srcdir}/linux.gpl" "${pkgdir}/usr/share/gimp/2.0/palettes/Linux.gpl"
 
-	ln -s gimp-2.99 ${pkgdir}/usr/bin/gimp
-	ln -s gimp-console-2.99 ${pkgdir}/usr/bin/gimp-console
+	mv "${pkgdir}/usr/share/appdata/gimp.appdata.xml" "${pkgdir}/usr/share/appdata/gimp-${_version}.appdata.xml"
+	mv "${pkgdir}/usr/share/applications/gimp.desktop" "${pkgdir}/usr/share/applications/gimp-${_version}.desktop"
+
+	install -D -m644 "${srcdir}/linux.gpl" "${pkgdir}/usr/share/gimp/${_version}/palettes/Linux.gpl"
+	mv "${pkgdir}/usr/share/aclocal/gimp-2.0.m4" "${pkgdir}/usr/share/aclocal/gimp-${_version}.m4"
+
+	for _icon in 16 22 24 32 48 256; do
+		mv "${pkgdir}"/usr/share/icons/hicolor/${_icon}x${_icon}/apps/gimp{,-${_version}}.png
+	done
 }
 

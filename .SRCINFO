@@ -1,6 +1,6 @@
 pkgbase = gimp-gtk3-git
 	pkgdesc = GNU Image Manipulation Program
-	pkgver = 2.9.2.r452.ga885dd9
+	pkgver = 2.9.2.r933.gfc73b32
 	pkgrel = 1
 	url = http://www.gimp.org
 	install = gimp-gtk3-git.install
@@ -38,9 +38,9 @@ pkgbase = gimp-gtk3-git
 	optdepends = curl: for URI support
 	optdepends = xorg-server-xvfb: for xvfb-run
 	optdepends = ghostscript: for postscript support
-	provides = gimp
-	conflicts = gimp
-	replaces = gimp
+	provides = gimp-2.99
+	conflicts = gimp-2.99
+	replaces = gimp-2.99
 	options = !libtool
 	options = !makeflags
 	source = git://git.gnome.org/gimp#branch=gtk3-port
