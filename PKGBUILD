@@ -1,7 +1,7 @@
 # Maintainer: Albert Graef <aggraef at gmail dot com>
 
 pkgname=pd-lv2plugin-git
-pkgver=14.539522c
+pkgver=20.76bf43b
 pkgrel=1
 pkgdesc="LV2 plugin host for Pd"
 arch=("i686" "x86_64")
@@ -19,10 +19,10 @@ pkgver() {
 
 build() {
      cd $srcdir/pd-lv2plugin
-     make || return 1
+     make prefix=/usr || return 1
 }
 
 package() {
      cd $srcdir/pd-lv2plugin
-     make DESTDIR=$pkgdir install || return 1
+     make DESTDIR=$pkgdir prefix=/usr install || return 1
 }
