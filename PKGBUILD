@@ -1,6 +1,6 @@
 # Maintainer: Jack O'Connor <oconnor663@gmail.com>
 
-xpkgname=keybase-git
+pkgname=keybase-git
 pkgdesc='the Keybase Go client, filesystem, and GUI'
 license=('BSD')
 pkgver=1.0.14_20160328133147+256dedd
