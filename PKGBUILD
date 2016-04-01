@@ -5,14 +5,15 @@
 
 pkgname=gr-osmosdr-nonfree-git
 pkgver=0.1.4.72.g164a09f
-pkgrel=1
-pkgdesc="GNU Radio source block for OsmoSDR with nonfree components, such as sdrplay enabled."
+pkgrel=2
+pkgdesc="GNU Radio source block for OsmoSDR with nonfree components, such as sdrplay, enabled."
 arch=('i686' 'x86_64')
 url="http://sdr.osmocom.org/trac/"
-license=('GPL')
+license=('custom')
 depends=(
     'gnuradio'
     'swig'
+    'airspy'
     )
 makedepends=(
     'git'
@@ -25,7 +26,6 @@ optdepends=(
     'rtl-sdr-git: Osmocom RTLSDR support'
     'libosmosdr-git: sysmocom OsmoSDR support'
     'libmirisdr-git: Osmocom MiriSDR support'
-    'airspy-git: AIRSPY Receiver support'
     'soapysdr-git: SoapySDR support'
     'libsdrplay: SDRplay RSP support'
     'gnuradio-fcdproplus: FUNcube Dongle Pro+ support'
@@ -53,6 +53,10 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}"/$_gitname
+
+  # The binaries no longer follow GPL terms and cannot be
+  # distributed due to nonfree components.
+  sed -i '1s/^/NONFREE components have been enabled. The resulting\nbinaries cannot be distributed under GPL terms.\n\n/' COPYING
 }
 
 build() {
@@ -70,6 +74,7 @@ build() {
 package() {
   cd "$srcdir/$_gitname/build/"
   make DESTDIR=${pkgdir} install
+  install -Dm644 $srcdir/$_gitname/COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
