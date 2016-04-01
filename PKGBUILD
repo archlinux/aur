@@ -55,10 +55,6 @@ build() {
   fi
 }
 
-check() {
-  make check
-}
-
 package_transmission-sequential-cli() {
   pkgdesc="Fast, easy, and free BitTorrent client (CLI tools, daemon and web client) (+sequential patch)"
   depends=('curl' 'libevent' 'libsystemd')
