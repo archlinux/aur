@@ -2,7 +2,7 @@
 # arg 2:  the old package version
 
 KERNEL_NAME=-criu
-KERNEL_VERSION=4.2.2-1-criu
+KERNEL_VERSION=4.4.5-1-criu
 
 post_install () {
   # updating module dependencies
