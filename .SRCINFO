@@ -1,0 +1,22 @@
+pkgbase = python-whelk
+	pkgdesc = A python library to run shell commands
+	pkgver = 2.6
+	pkgrel = 1
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = python
+	depends = python2
+	source = git+https://github.com/seveas/whelk.git#tag=2.6
+	md5sums = SKIP
+
+pkgname = python2-whelk
+	depends = python2
+	provides = python2-whelk
+	conflicts = python2-whelk
+
+pkgname = python-whelk
+	depends = python
+	provides = python-whelk
+	conflicts = python-whelk
+
