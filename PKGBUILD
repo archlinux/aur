@@ -3,37 +3,38 @@
 # Contributor: Juergen Hoetzel <juergen@hoetzel.info>
 
 pkgname=xf86-video-openchrome
-pkgver=0.3.3
-pkgrel=6
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="X.Org Openchrome drivers"
 arch=(i686 x86_64)
 license=('custom')
 url="http://www.freedesktop.org/wiki/Openchrome/"
 depends=('libdrm' 'libxvmc' 'systemd')
 optdepends=('unichrome-dri')
-makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=20')
+makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION=20' 'git')
 conflicts=('xorg-server<1.16' 'X-ABI-VIDEODRV_VERSION<20' 'X-ABI-VIDEODRV_VERSION>=21'
            'xf86-video-via' 'xf86-video-unichrome' 'openchrome')
 replaces=('openchrome' 'xf86-video-via')
 groups=('xorg-drivers' 'xorg')
 options=('!emptydirs' '!makeflags')
-source=(http://xorg.freedesktop.org/archive/individual/driver/${pkgname}-${pkgver}.tar.bz2 git-fixes.patch)
-sha1sums=('1f7b23d4ed53417eda5c6730486b36812f469295'
-          '048a756f0d051df740279f98be9e2aa3e5c75415')
+source=(#http://xorg.freedesktop.org/archive/individual/driver/${pkgname}-${pkgver}.tar.bz2 git-fixes.patch
+        # there's no release tarball
+        git://anongit.freedesktop.org/openchrome/xf86-video-openchrome#commit=52730d1)
+md5sums=('SKIP')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
-  patch -Np1 -i ../git-fixes.patch
+  cd ${pkgname} #-${pkgver}
+  autoreconf -vfi
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname} #-${pkgver}
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname} #-${pkgver}
   make DESTDIR="${pkgdir}" install
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
