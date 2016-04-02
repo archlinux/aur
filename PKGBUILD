@@ -1,17 +1,24 @@
 # Maintainer: TingPing <tingping@tingping.se>
 
 pkgname=hexchat-lua-git
-pkgver=1.0.r3.gca5e6fc
+pkgver=1.2.r7.ga917373
 pkgrel=1
-pkgdesc="Lua plugin for scripts"
+pkgdesc='Lua plugin for scripts'
 arch=('i686' 'x86_64')
 url='https://github.com/mniip/hexchat-lua'
 license=('MIT')
-depends=('lua' 'hexchat')
+depends=('luajit' 'hexchat')
 makedepends=('git')
 source=('git+https://github.com/mniip/hexchat-lua.git')
 md5sums=('SKIP')
 _gitname='hexchat-lua'
+
+prepare() {
+	cd "$_gitname"
+
+	# Use luajit
+	sed -i 's|lua)|luajit)|g' Makefile
+}
 
 pkgver() {
 	cd "$_gitname"
