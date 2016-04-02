@@ -1,7 +1,7 @@
-# Contributor: sora <veltlion@foxmail.com>
+# Contributor: sora <sora at live dot jp>
 
 pkgname=kde-thumbnailer-epub
-pkgver=1.0.9
+pkgver=1.1
 pkgrel=1
 pkgdesc="Thumbnailer to show ePub cover previews in KDE file managers."
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ depends=('kio')
 makedepends=('cmake' 'extra-cmake-modules')
 license=('GPL')
 source=("http://kde-apps.org/CONTENT/content-files/151210-${pkgname}-${pkgver}.tar.gz")
-md5sums=('d833dd20370533c80466f27e98035f6d')
+md5sums=('SKIP')
 build() {
 	install -d "$pkgname-$pkgver"/build
 	cd "$pkgname-$pkgver"/build
