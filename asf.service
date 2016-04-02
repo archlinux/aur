@@ -1,0 +1,14 @@
+[Unit]
+Description=ArchiSteamFarm Service
+Documentation=https://github.com/JustArchi/ArchiSteamFarm/wiki
+After=network.target
+
+[Service]
+User=asf
+Group=asf
+ExecStart=/usr/bin/asf --server
+ProtectSystem=true
+ReadWriteDirectories=/opt/asf
+
+[Install]
+WantedBy=multi-user.target

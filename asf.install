@@ -1,0 +1,26 @@
+post_install() {
+    if grep -q "^asf" /etc/group &> /dev/null ; then
+        groupmod -n asf asf &> /dev/null                                                 
+    else
+        groupadd -r asf &> /dev/null
+    fi
+    if grep -q "^asf:" /etc/passwd 2> /dev/null ; then
+        usermod -s /bin/false -c "ArchiSteamFarm daemon" -d /opt/asf -g asf asf &> /dev/null
+    else
+        useradd -s /bin/false -c "ArchiSteamFarm daemon user" -d /opt/asf -g asf -r asf &> /dev/null
+    fi
+    chown -R asf: /opt/asf
+}
+
+post_upgrade() {
+    post_install $1
+}
+
+post_remove() {
+    if grep -q "^asf:" /etc/passwd 2> /dev/null ; then
+        userdel asf &> /dev/null
+    fi
+    if grep -q "^asf" /etc/group &> /dev/null ; then
+        groupdel asf &> /dev/null                                                 
+    fi
+}
