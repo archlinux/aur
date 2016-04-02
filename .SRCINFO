@@ -2,11 +2,11 @@ pkgbase = vamox-mate
 	pkgdesc = Vamox MATE icon theme.
 	pkgver = 201
 	pkgrel = 0
-	url = https://vamox.blogspot.com
+	url = https://vamox.blogspot.com && http://vamox.blogspot.gr/2008/12/descargas-vamox.html
 	arch = any
 	license = CC BY-SA 3.0
 	options = !strip
-	source = http://www.mediafire.com/download/ndcdqo993rf9ng5/vamox-mate-201.tar.gz
+	source = https://www.dropbox.com/s/p1up8d26bnv0avv/vamox-mate-201.tar.gz
 	sha256sums = SKIP
 
 pkgname = vamox-mate
