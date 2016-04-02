@@ -1,7 +1,7 @@
 #!/bin/sh
 post_common() {
-	systemd-sysusers textsecure-cli.conf
-	systemd-tmpfiles --create textsecure-cli.conf
+	systemd-sysusers signal-cli.conf
+	systemd-tmpfiles --create signal-cli.conf
 }
 
 post_install() {

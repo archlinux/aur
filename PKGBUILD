@@ -1,23 +1,25 @@
 # Maintainer: AsamK <asamk ät gmx de>
 
-pkgname=textsecure-cli
-pkgver=0.2.1
-pkgrel=3
+pkgname=signal-cli
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Provides a commandline and dbus interface for secure Signal/TextSecure messaging."
 arch=('any')
-url="https://github.com/AsamK/textsecure-cli"
+url="https://github.com/AsamK/signal-cli"
 license=('GPL3')
 depends=('java-runtime' 'libmatthew-unix-java' 'java-commons-logging' 'java-commons-io')
 makedepends=('java-environment' 'gradle')
+replaces=('textsecure-cli')
+conflicts=('textsecure-cli')
 source=("https://github.com/AsamK/${pkgname}/archive/v${pkgver}.tar.gz"
         "${pkgname}.sh"
         "${pkgname}.sysusers.conf"
         "${pkgname}.tmpfiles.conf")
 install="${pkgname}.install"
-sha256sums=('19e4c66c5699e4a7cc2213c0df56ed3240ada49507c6b670133b33f2e6ccf760'
-            '6a0229a91b87d4b2fd44e30b67feb972e4e24dc22c80eabd04aa007b68d190bf'
-            'e4560cafef512e59935d1562f05dd55b04f6b2ead6bf2a888dc6f9ec5b342758'
-            '31a16ec54fbdef581695b797d03c47b5618030de9b9fa26c3d3fcfc476ad30b8')
+sha256sums=('1ffd176c238bb8cec92026f442f46366b80bb06425d1cd4fe359d81d67364a82'
+            '874dd32da6f0f0c427d26cb5ecdcf989d7b84288a8deb74a36c7b7101e73c337'
+            '873aee431878cbecf6162b51053e82ed758cadbca40bbb2614e5a82e5a99f32f'
+            '2fcc0856591271c5997051a9b19ed13cf94d179d7b4a1b5addff9ccd4cf60f9d')
 
 build() {
 	cd "${srcdir}"
@@ -42,7 +44,7 @@ package() {
 
 	cd "${pkgname}-${pkgver}"
 
-	install -m644 "data/org.asamk.TextSecure.conf" "${pkgdir}/etc/dbus-1/system.d/"
+	install -m644 "data/org.asamk.Signal.conf" "${pkgdir}/etc/dbus-1/system.d/"
 	install -m644 "data/${pkgname}@.service" "${pkgdir}/usr/lib/systemd/system/"
 	sed -i "s|%dir%|/usr|" "${pkgdir}/usr/lib/systemd/system/${pkgname}@.service"
 
