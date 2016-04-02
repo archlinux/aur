@@ -3,21 +3,22 @@
 
 pkgname=nginx-devel
 _pkgname=nginx
-pkgver=1.9.11
+pkgver=1.9.13
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server - development version'
 url="http://nginx.org"
 arch=(i686 x86_64 armv6h)
-# for modules' URL
-declare -A _modulesURL
-#{{{ Third party modules and patches
+# a few global variables
+declare -A _modules_URL
+_configure_params=()
 _add2source() {
   local key=$1 url=$2
   if [ $# -ne 2 ]; then
     return 1
   fi
-  _modulesURL+=([$key]="${url}")
+  _modules_URL+=([$key]="${url}")
 }
+#{{{1 Third party modules and patches
 # naxsi: Application firewall {{{2
 # @link http://code.google.com/p/naxsi/
 # @link https://github.com/nbs-system/naxsi/tags
@@ -28,7 +29,8 @@ _add2source naxsi $_naxsi_url
 # systemd socket activation support {{{2
 # @link http://trac.nginx.org/nginx/ticket/237
 # _add2source socket socket.patch::http://trac.nginx.org/nginx/raw-attachment/ticket/237/0001-Socket-activation-support-for-systemd.patch
-_add2source socket socket.patch::https://lynthium.com/socket.patch
+_systemd_socket_ver=1.9.13
+_add2source socket socket.patch::https://lynthium.com/systemd_socket_nginx_${_systemd_socket_ver}plus.patch
 
 # http push module: This module turns Nginx into an adept HTTP Push and Comet server {{{2
 # @link http://pushmodule.slact.net/
@@ -86,8 +88,7 @@ _psol_name="ngx_pagespeed-release-${_psol_ver}"
 # echo-nginx-module(git) {{{2
 # @link https://github.com/openresty/echo-nginx-module
 #}}}2
-# end of Third party modules and patches }}}
-# PKGBUILD metadata {{{
+#}}}1
 depends=(
 gd
 geoip
@@ -142,11 +143,11 @@ nginx.logrotate
 naxsi.rules
 nginx.conf.example
 nginx.socket
-${_modulesURL[*]}
+${_modules_URL[*]}
 )
 validpgpkeys=(
 )
-sha256sums=('6a5c72f4afaf57a6db064bba0965d72335f127481c5d4e64ee8714e7b368a51f'
+sha256sums=('f7cd529a5879cd9cd5b62e6fc4a3a7e8d8363cb12c080ab480cc718c55736609'
             '05fdc0c0483410944b988d7f4beabb00bec4a44a41bd13ebc9b78585da7d3f9b'
             '272907d3213d69dac3bd6024d6d150caa23cb67d4f121e4171f34ba5581f9e98'
             'e299680e919a97c7ec06b62e4fabc3b5ead837fe486a5f87260bd16d0b51e112'
@@ -157,12 +158,9 @@ sha256sums=('6a5c72f4afaf57a6db064bba0965d72335f127481c5d4e64ee8714e7b368a51f'
             '03d1f5fbecba8565f247d87a38f5e4b6440b0a56d752bdd2b29af2f1c4aea480'
             '7c3fac8c506bbf8b9c381e995af3fc4e1460363ad24dbfd5ead900b68dfcf6b2'
             '1b7d69a9210cf434804eb574618869fba2ddc95d3b0aea7c57205f7a15e920a4'
-            'fd9ba6ede6f993d0b09799aed8979ef29be6f80620737d8900d7f2bdad4c3e91'
+            '001d6592200acc23f0492e1386e7acd37c2977cb967c30320994ece1d30428de'
             'e2bbf789966c1f80094d88d9085a81bde082b2054f8e38e0db571ca49208f434'
             '3b27e9eb0478cbba65ba0beb844c5361e2e2f9c21e5bee8803ea9e707f4bbb47')
-# Additional functions, from nginx-development-extra, thx {{{
-# build variables
-_configure_params=()
 add_module() {
   local module=$1 && shift
   local src=$1 && shift
@@ -363,7 +361,7 @@ build() {
   ./configure \
       ${_configure_params[*]}
   make
-} # end of build }}}
+}
 package() {
   cd $_pkgname-$pkgver
   make DESTDIR="$pkgdir" install
@@ -398,4 +396,4 @@ package() {
   install -Dm644 "$srcdir"/naxsi.rules "$pkgdir"/${_cfgdir}/naxsi.rules
 
   install -Dm644 "$srcdir"/nginx.conf.example "$pkgdir"/${_cfgdir}/nginx.conf.example
-} # end of package }}}
+}
