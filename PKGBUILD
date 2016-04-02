@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-blockchain-git
-pkgver=20160114
+pkgver=20160401
 pkgrel=1
 pkgdesc="Bitcoin Blockchain Library"
 arch=('i686' 'x86_64')
@@ -10,6 +10,7 @@ depends=('boost'
          'icu'
          'libbitcoin'
          'libbitcoin-consensus'
+         'libbitcoin-database'
          'secp256k1-git')
 makedepends=('autoconf'
              'automake'
@@ -22,7 +23,7 @@ makedepends=('autoconf'
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-blockchain"
 license=('AGPL3')
-source=(git+https://github.com/libbitcoin/libbitcoin-blockchain#branch=version2)
+source=(git+https://github.com/libbitcoin/libbitcoin-blockchain)
 sha256sums=('SKIP')
 provides=('libbitcoin-blockchain')
 conflicts=('libbitcoin-blockchain')
