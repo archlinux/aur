@@ -1,7 +1,7 @@
 pkgname=colobot-gold-music
-pkgver=0.1.6_alpha
-__ver=0.1.6-alpha
-pkgrel=2
+pkgver=0.1.7_alpha
+__ver=0.1.7-alpha
+pkgrel=1
 pkgdesc="Music pack for Colobot GOLD real-time strategy game."
 arch=('any')
 url="http://colobot.info"
