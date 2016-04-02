@@ -29,7 +29,7 @@ build() {
   cd $_gitname
 
   make LUA_INCDIR=/usr/include/luajit-2.0/ \
-    LUA_CFLAGS="$(pkg-config --cflags luajit) -02"
+    LUA_CFLAGS="$(pkg-config --cflags luajit) -O2"
 }
 
 package() {
