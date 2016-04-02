@@ -3,7 +3,7 @@
 
 pkgname=ntfs-3g-compress-git
 _pkgname=ntfs-3g
-pkgver=2016.2.22.r4907.c3395ba
+pkgver=2016.2.22.r4907.321c9da
 pkgrel=1
 pkgdesc='Fork of ntfs-3g with experimental Windows 10 System Compression support'
 url='https://github.com/ebiggers/ntfs-3g/tree/system_compression'
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('util-linux' 'fuse')
 makedepends=('git')
-source=('git+https://github.com/simonbru/ntfs-3g.git#branch=system_compression')
+source=('git+https://github.com/ebiggers/ntfs-3g.git#branch=system_compression')
 md5sums=('SKIP')
 
 conflicts=('ntfsprogs' 'ntfs-3g')
