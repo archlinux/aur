@@ -53,7 +53,7 @@ pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _kernelname=-rt-bfq
 _srcname=linux-4.4
 _pkgver=4.4.6
-_rtpatchver=rt12
+_rtpatchver=rt13
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -79,7 +79,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux-rt-bfq.preset'
         'change-default-console-loglevel.patch'
         'config' 'config.x86_64'
-        '0004-sdhci-revert.patch')
+        '0004-sdhci-revert.patch'
+        'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch')
         
 prepare() {
     cd ${_srcname}
@@ -91,6 +92,11 @@ prepare() {
     ### Add rt patch
         msg "Add rt patch"
         patch -Np1 -i "${srcdir}/patch-${_pkgver}-${_rtpatchver}.patch" 
+        
+    ### A patch to fix a problem that ought to be fixed in the NVIDIA source code.
+    # Stops X from hanging on certain NVIDIA cards
+        msg "Fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT.patch"
+        patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"    
         
     ### Revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
     # fixes #47778 sdhci broken on some boards
@@ -454,7 +460,7 @@ sha512sums=('13c8459933a8b80608e226a1398e3d1848352ace84bcfb7e6a4a33cb230bbe1ab71
             'SKIP'
             '73da057476eb31d818eed4b66c883f5ceec65f18ec8ea60d64e48334c7681af4ed4cf7eb8684481f705446a59fd124de9449d22e28805bc9617b6608ecec491d'
             'SKIP'
-            '701db0b22988318163ca392f8dcfc198a98ce29c68704b0584e43c109380a4e8d5e16828bd08ba7b5833bf2c3b0bc42723e0375045e5f06958703bf0c028b781'
+            '44be94594a31de16efab3481a8c005d7c0924dcf1cb02eeea9a519791249b15d4d76d1f347b21f70f52329c536ae634f1e442bf6dbdf2e7afc9ce591c41854ca'
             'SKIP'
             'bfd5d1a2d8f203e4d13914d311e8cc79b81695a41dc24179074cb05a5a9b5b0cc89a77062c6b8f79c850281aaa0d02dce40e23750aea7d1015f675c1cc024027'
             '275b7573adf648325ab950f8a8be7753f2efac0c4cd5030d31b0482fca0b9b9886c85dec989acde15eadf128366c250ecbd19d5527bfb41f472425fef43e93fd'
@@ -464,7 +470,8 @@ sha512sums=('13c8459933a8b80608e226a1398e3d1848352ace84bcfb7e6a4a33cb230bbe1ab71
             'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
             '756a5c5ec2db9153d0f749c4f358501d78743ab6f7538c7c127aad0a6a0bd21364f15315689f4ccd8c7b559e4cebefdfb8bb55ee90aabe3d0bd5a3d5f00703c7'
             '56ce250e1b14b03b28dfdf03923ffd173d05edc5fe9dcf5daecd121370e618d62eb8448b930503d69989c9c7ee3e3d8b64768962e78f5a1d08ba1267405192df'
-            'be80d7ee558595d4b17b07a5a2b729d9a9503c963ec1b19bac6a87601eaefd28075aea7fb6d9c77e2e15e063fc6a8a2e8744bc1efe63e2a58b8c3ede0d89c821')
+            'be80d7ee558595d4b17b07a5a2b729d9a9503c963ec1b19bac6a87601eaefd28075aea7fb6d9c77e2e15e063fc6a8a2e8744bc1efe63e2a58b8c3ede0d89c821'
+            '86f717f596c613db3bc40624fd956ed379b8a2a20d1d99e076ae9061251fe9afba39cf536623eccd970258e124b8c2c05643e3d539f37bd910e02dc5dd498749')
             
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
