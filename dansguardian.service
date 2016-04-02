@@ -1,0 +1,11 @@
+[Unit]
+Description=Versatile Web Content Filter
+After=network.target
+
+[Service]
+Type=forking
+PIDFile=/run/dansguardian.pid
+ExecStart=/usr/bin/dansguardian
+
+[Install]
+WantedBy=multi-user.target
