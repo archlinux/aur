@@ -18,8 +18,8 @@ _mod3=nginx-ct
 _mod3ver=1.2.0
 
 pkgname=nginx-mainline-mod4679
-pkgver=1.9.12
-pkgrel=2
+pkgver=1.9.13
+pkgrel=1
 pkgdesc="lightweight HTTP server, statically linked against OpenSSL(Cloudflare's patch),with ngx_http_google_filter_module,nginx-ct."
 arch=('i686' 'x86_64')
 
@@ -58,8 +58,8 @@ source=("nginx.conf"
 sha256sums=('8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
             'adcf6507abb2d4edbc50bd92f498ba297927eed0460d71633df94f79637aa786'
             '225228970d779e1403ba4314e3cd8d0d7d16f8c6d48d7a22f8384db040eb0bdf'
-            '1af2eb956910ed4b11aaf525a81bc37e135907e7127948f9179f5410337da042'
-            '92b58a778f2fbe4af718beef60b0a36f16e1ce7548c006fa2c679dd6c551cb6e'
+            'f7cd529a5879cd9cd5b62e6fc4a3a7e8d8363cb12c080ab480cc718c55736609'
+            '48c566618f24c814259fc7ab35ba197dab3f5c808dfabcdc0468babace480b93'
             '09a2e88f95d8cd12bd9c23cd87554ab700fb1625a848c0502951849fb1d564fc'
             '9cd68c8e092efb1a419e1087bb9ca23aab1ff8650c400c0aa815d461d79385de'
             'ed4ddbcf0c434f4a1e97b61251a63ace759792764bd5cb79ff20efe348db8db3'
