@@ -3,7 +3,7 @@
 _pkgname=protobuf
 pkgname=python-$_pkgname
 pkgver=3.0.0b2.post2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python 3 bindings to Google Protocol Buffers"
 arch=("any")
 license=("BSD")
@@ -22,4 +22,6 @@ build() {
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
 	python ./setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
+	# https://github.com/google/protobuf/issues/737
+	chmod -R a+r "$pkgdir"/usr/lib/python3.5/site-packages/protobuf-$pkgver-py3.5.egg-info/
 }

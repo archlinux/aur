@@ -1,7 +1,7 @@
 pkgbase = python-protobuf
 	pkgdesc = Python 3 bindings to Google Protocol Buffers
 	pkgver = 3.0.0b2.post2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/google/protobuf
 	arch = any
 	license = BSD
