@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=secp256k1-git
-pkgver=20151210
+pkgver=20160128
 pkgrel=1
 pkgdesc="Elliptic Curve Library for libbitcoin"
 arch=('i686' 'x86_64')
