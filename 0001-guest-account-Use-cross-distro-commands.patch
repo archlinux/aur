@@ -1,35 +1,29 @@
-From f79dcd208c2d0e09425cda9535c6881ecf22125c Mon Sep 17 00:00:00 2001
-From: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
-Date: Sun, 13 Apr 2014 01:01:44 -0400
-Subject: [PATCH 1/2] guest-account: Use cross-distro commands
+# Created by Michael Healy <horsemanoffaith@gmail.com>
 
----
- debian/guest-account.sh | 41 +++++++++++++++++++++++++++++++++--------
- 1 file changed, 33 insertions(+), 8 deletions(-)
-
-diff --git a/debian/guest-account.sh b/debian/guest-account.sh
-index 6da5687..0fc3daa 100644
---- a/debian/guest-account.sh
-+++ b/debian/guest-account.sh
-@@ -20,7 +20,12 @@ fi
+--- a/debian/guest-account.sh	2016-02-01 14:52:37.852819467 -0800
++++ b/debian/guest-account.sh	2016-02-01 15:05:12.117293961 -0800
+@@ -32,10 +32,12 @@
  
  add_account ()
  {
--  HOME=`mktemp -td guest-XXXXXX`
+-  temp_home=$(mktemp -td guest-XXXXXX)
+-  GUEST_HOME=$(echo ${temp_home} | tr '[:upper:]' '[:lower:]')
+-  GUEST_USER=${GUEST_HOME#/tmp/}
+-  [ ${GUEST_HOME} != ${temp_home} ] && mv ${temp_home} ${GUEST_HOME}
 +  NEWHOME=`mktemp -td guest-XXXXXX`
 +  # useradd does not accept upper case characters in the username
 +  HOME=`echo $NEWHOME | tr '[A-Z]' '[a-z]'`
 +  if [ "x$NEWHOME" != "x$HOME" ]; then
 +    mv $NEWHOME $HOME
 +  fi
-   USER=`echo $HOME | sed 's/\(.*\)guest/guest/'`
  
-   # if $USER already exists, it must be a locked system account with no existing
-@@ -46,7 +51,21 @@ add_account ()
+   # if ${GUEST_USER} already exists, it must be a locked system account with no existing
+   # home directory
+@@ -65,7 +67,21 @@
      fi
    else
      # does not exist, so create it
--    adduser --system --no-create-home --home / --gecos $(gettext "Guest") --group --shell /bin/bash $USER || {
+-    useradd --system --home-dir ${GUEST_HOME} --comment $(gettext "Guest") --user-group --shell /bin/bash ${GUEST_USER} || {
 +    # Arch Linux modification: Ubuntu/Debian uses their own adduser package,
 +    # which works differently from the own provided by the shadow package.
 +    # Instead, use useradd, which works in any distro.
@@ -45,45 +39,57 @@ index 6da5687..0fc3daa 100644
 +    #
 +    #adduser --system --no-create-home --home / --gecos $(gettext "Guest") --group --shell /bin/bash $USER || {
 +    useradd --system --no-create-home --home-dir / --comment $(gettext "Guest") --user-group --shell /bin/bash $USER || {
-         umount "$HOME"
-         rm -rf "$HOME"
-         exit 1
-@@ -128,7 +147,12 @@ remove_account ()
-   GUEST_UID=`echo "$PWENT" | cut -f3 -d:`
-   GUEST_HOME=`echo "$PWENT" | cut -f6 -d:`
+       rm -rf ${GUEST_HOME}
+       exit 1
+     }
+@@ -148,14 +164,18 @@
+   }
  
--  if [ "$GUEST_UID" -ge 500 ]; then
+   GUEST_UID=$(echo ${PWENT} | cut -f3 -d:)
+-
+-  if ! is_system_user ${GUEST_UID}; then
+-    echo "Error: user ${GUEST_USER} is not a system user."
+-    exit 1
+-  fi
+-
+   GUEST_HOME=$(echo ${PWENT} | cut -f6 -d:)
+ 
 +  # deluser is provided by the adduser package on Debian/Ubuntu. useradd
 +  # doesn't have a '--system' parameter, which causes deluser to only delete
 +  # system users, so this will be handled using this script.
 +  SYS_UID_MIN="$(cat /etc/login.defs | grep SYS_UID_MIN | awk '{print $2}')"
 +  SYS_UID_MAX="$(cat /etc/login.defs | grep SYS_UID_MAX | awk '{print $2}')"
 +  if [ "$GUEST_UID" -lt "$SYS_UID_MIN" ] || [ "$GUEST_UID" -gt "$SYS_UID_MAX" ]; then
-     echo "Error: user $GUEST_USER is not a system user."
-     exit 1
-   fi
-@@ -150,15 +174,16 @@ remove_account ()
++     echo "Error: user $GUEST_USER is not a system user."
++     exit 1
++   fi
++
+   # kill all remaining processes
+   if [ -x /bin/loginctl ] || [ -x /usr/bin/loginctl ]; then
+     loginctl kill-user ${GUEST_USER} >/dev/null || true
+@@ -179,18 +199,18 @@
    # remove leftovers in /tmp
-   find /tmp -mindepth 1 -maxdepth 1 -uid "$GUEST_UID" -print0 | xargs -0 rm -rf || true
+   find /tmp -mindepth 1 -maxdepth 1 -uid ${GUEST_UID} -print0 | xargs -0 rm -rf || true
  
--  # remove possible /media/guest-XXXXXX folder
--  if [ -d /media/"$GUEST_USER" ]; then
--    for dir in $( find /media/"$GUEST_USER" -mindepth 1 -maxdepth 1 ); do
+-  # remove possible {/run,}/media/guest-XXXXXX folder
+-  for media_dir in /run/media/${GUEST_USER} /media/${GUEST_USER}; do
+-    if [ -d ${media_dir} ]; then
+-      for dir in $(find ${media_dir} -mindepth 1 -maxdepth 1); do
 +  # remove possible /run/media/guest-XXXXXX folder
 +  if [ -d /run/media/"$GUEST_USER" ]; then
 +    for dir in $( find /run/media/"$GUEST_USER" -mindepth 1 -maxdepth 1 ); do
-       umount "$dir" || true
-     done
--    rmdir /media/"$GUEST_USER" || true
-+    rmdir /run/media/"$GUEST_USER" || true
-   fi
+         umount ${dir} || true
+       done
  
--  deluser --system "$GUEST_USER"
+-      rmdir ${media_dir} || true
++      rmdir /run/media/"$GUEST_USER" || true
+     fi
+   done
+ 
+-  userdel --force ${GUEST_USER}
 +  #deluser --system "$GUEST_USER"
 +  userdel "$GUEST_USER"
  }
  
- case "$1" in
--- 
-2.3.3
+ case ${1} in
 
