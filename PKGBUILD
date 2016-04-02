@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-server-git
-pkgver=20160114
+pkgver=20160402
 pkgrel=1
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
@@ -13,6 +13,8 @@ depends=('boost'
          'libbitcoin'
          'libbitcoin-blockchain'
          'libbitcoin-consensus'
+         'libbitcoin-database'
+         'libbitcoin-network'
          'libbitcoin-node'
          'libsodium'
          'secp256k1-git'
@@ -29,7 +31,7 @@ optdepends=('libbitcoin-explorer: CurveZMQ client/server authentication')
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-server"
 license=('AGPL3')
-source=(git+https://github.com/libbitcoin/libbitcoin-server#branch=version2
+source=(git+https://github.com/libbitcoin/libbitcoin-server
         git+https://github.com/libbitcoin/libbitcoin-server.wiki
         bs.logrotate
         bs.service
