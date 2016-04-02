@@ -1,7 +1,7 @@
 # Maintainer: James W. Barnett <jbarnet4 at tulane dot edu>
 pkgname=snap-pac
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Make pacman automatically use snapper to create pre/post snapshots like openSUSE's YaST"
 arch=(any)
 url="https://github.com/wesbarnett/snap-pac"
@@ -12,7 +12,7 @@ source=(${url}/archive/${pkgver}.tar.gz
         snap-pac.install)
 install="snap-pac.install"
 md5sums=('aba7420175d397349b092075aa299de9'
-         '2903106b08569e6c917918ca0f516413')
+         'f278fda31aafe46b2e5e3354a819ca45')
 
 package() {
     cd "$pkgname-$pkgver"
