@@ -1,7 +1,7 @@
 # Maintainer: Joakim Hernberg <jhernberg at alchemy dot lu>
 
 pkgname=rt-tests
-pkgver=0.96
+pkgver=0.97
 pkgrel=1
 
 pkgdesc="A collection of latency testing tools for the linux(-rt) kernel"
@@ -11,12 +11,11 @@ license=('GPL2')
 
 depends=('python2' 'numactl')
 source=("https://www.kernel.org/pub/linux/utils/rt-tests/$pkgname-$pkgver.tar.gz")
-sha256sums=('98b47ef679a33e6558822e06a27ff3c600a6121cd8625e248adf36c3e288001f')
+sha256sums=('6318b9ad41939e509f2502c752f7fa36e824d5b3ec10763a974c96f10f22c205')
 
 prepare() {
   cd "$pkgname-$pkgver"
   sed -i s/'shell python'/'shell python2'/g Makefile
-  sed -i '1 s/python$/&2/' src/hwlatdetect/hwlatdetect.py
   sed -i s/'mpath = os.path.join(path, m) + ".ko"'/'mpath = os.path.join(path, m) + ".ko.gz"'/g src/hwlatdetect/hwlatdetect.py
 }
 
