@@ -1,0 +1,6 @@
+pkg/
+src/
+ruamel.base-*.tar.gz
+python-ruamel.base-*.pkg.tar.xz
+python-ruamel.base-*.src.tar.gz
+.AURINFO
