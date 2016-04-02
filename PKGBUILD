@@ -3,28 +3,25 @@
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 
 pkgname=libserial
-pkgver=0.6.0rc1
-pkgrel=2
+pkgver=0.6.0rc2
+pkgrel=1
 pkgdesc="A C++ library to access serial ports like standard C++ iostream objects"
 arch=('i686' 'x86_64')
 url="http://$pkgname.sourceforge.net/"
 license=('GPL')
 depends=('gcc-libs')
-makedepends=('python2-sip')
+makedepends=('python-sip')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
-sha256sums=('60d8aebf5f262c12baf94ce61d61198fc9b79da2432c735c200decd08ead1fb4')
+sha256sums=('35ee29eb1369d52ffb8658237577692f991eb508320d0abbb71c53e6494a1c23')
 
 prepare() {
   cd $pkgname-$pkgver
-
-  ./configure --prefix=/usr
-  sed -e 's/python/python2/g' -i sip/Makefile
   sed -e '1s/^/#include <unistd.h>\n/' -i src/SerialPort.cpp
 }
 
 build() {
   cd $pkgname-$pkgver
-
+  ./configure --prefix=/usr
   make
 }
 
