@@ -2,7 +2,7 @@
 # Comaintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/vorbote>
 pkgname=brave
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('x86_64')
 url='https://www.brave.com/'
@@ -20,7 +20,6 @@ sha384sums=('f9bc24904ae66ec783a8200e99b87c4287a76079fa78db0dd57be1bf459d4c418aa
 
 build() {
 	cd "$srcdir"/browser-laptop-"$pkgver"dev
-	npm install node-gyp@3.2.1
 	npm install
 	CHANNEL=dev npm run build-package
 }
@@ -36,7 +35,7 @@ package() {
 
 	install -dm0755 "$pkgdir"/usr/bin
 
-	ln -s /usr/lib/brave-browser/Brave "$pkgdir"/usr/bin/brave
+	ln -s /usr/lib/brave-browser/brave "$pkgdir"/usr/bin/brave
 
 	install -Dm0644 res/app.png "$pkgdir"/usr/share/pixmaps/brave.png
 
