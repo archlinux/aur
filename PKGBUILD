@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
 
 pkgname=matrix-synapse-git
-pkgver=0.13.3.r0.g7e0a168
+pkgver=0.14.0.r0.g5fbdf2b
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
 license=('Apache')
@@ -18,10 +18,12 @@ depends=('python2-matrix-angular-sdk-git'
 makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial')
 source=("git://github.com/matrix-org/synapse.git"
 		'sysusers-synapse.conf'
-		'deps-relax-pynacl-check.patch')
+		'deps-relax-pynacl-check.patch'
+		'deps-relax-pysaml2-check.patch')
 md5sums=('SKIP'
          'dfbffdd307c5559357a2ff51a1906700'
-         'e98392881f1af244632c6886d01d5634')
+         'a2b653d523161a33a36e931b60a234f2'
+         '80e8116e3f39889b16fb748b6cba83e8')
 backup=('etc/synapse/log_config.yaml')
 install='synapse.install'
 provides=('matrix-synapse')
@@ -34,7 +36,8 @@ pkgver() {
 
 prepare() {
 	cd synapse
-	git am < "$srcdir/deps-relax-pynacl-check.patch"
+	git apply "$srcdir/deps-relax-pynacl-check.patch"
+	git apply "$srcdir/deps-relax-pysaml2-check.patch"
 }
 
 build() {
