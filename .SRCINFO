@@ -1,0 +1,26 @@
+pkgbase = fldigi-git
+	pkgdesc = Digital Modem Program for Amateur Radio, git version
+	pkgver = v3.23.09.r0.g8446e6e
+	pkgrel = 1
+	url = http://w1hkj.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	makedepends = autoconf
+	makedepends = libsamplerate
+	makedepends = libpng
+	depends = fltk
+	depends = libusb-compat
+	optdepends = hamlib: rig control through hamlib
+	optdepends = libsndfile: sound file support
+	optdepends = portaudio: PortAudio support
+	optdepends = pulseaudio: pulseaudio support
+	optdepends = xmlrpc-c: XML-RPC control
+	provides = fldigi
+	conflicts = fldigi
+	source = fldigi-git::git://git.code.sf.net/p/fldigi/fldigi
+	md5sums = SKIP
+
+pkgname = fldigi-git
+
