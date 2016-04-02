@@ -10,9 +10,8 @@ pkgdesc="GNU make utility to maintain groups of programs"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/make"
 license=('GPL3')
-groups=('base-devel')
 depends=('glibc' 'sh')
-install=$pkgname.install
+install=${_pkgname}.install
 source=(ftp://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2
         make-3.82-bug30612.patch
         make-3.82-bug30723.patch
@@ -20,7 +19,13 @@ source=(ftp://ftp.gnu.org/gnu/${_pkgname}/${_pkgname}-${pkgver}.tar.bz2
         make-3.82-makeflags.patch
         make-3.82-expensive_glob.patch
         make-3.82-dont-prune-intermediate.patch)
-
+md5sums=('1a11100f3c63fcf5753818e59d63088f'
+         '8714ba22911a58ab3eb42ac3f4c6c3bd'
+         '662e6450e19a5acdaa5c9fcb8ad78dea'
+         '7d01a99f389d8f08dec93ed479071ee4'
+         'bc12ad4d0c6e6c0e72d9fb61054f446b'
+         'e58d4211c5b29d7d927a304d082849e7'
+         '45ac9e987f4bf16c0d7e1685db943917')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
@@ -56,10 +61,3 @@ package() {
   cd ${srcdir}/${_pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
 }
-md5sums=('1a11100f3c63fcf5753818e59d63088f'
-         '8714ba22911a58ab3eb42ac3f4c6c3bd'
-         '662e6450e19a5acdaa5c9fcb8ad78dea'
-         '7d01a99f389d8f08dec93ed479071ee4'
-         'bc12ad4d0c6e6c0e72d9fb61054f446b'
-         'e58d4211c5b29d7d927a304d082849e7'
-         '45ac9e987f4bf16c0d7e1685db943917')
