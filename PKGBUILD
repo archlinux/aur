@@ -28,12 +28,12 @@ prepare() {
 
 package() {
   cd $srcdir
-  install -d $pkgdir/usr/share/$pkgname/ $pkgdir/usr/share/applications/ $pkgdir/usr/bin/
+  install -d $pkgdir/usr/share/$pkgname
   install -Dm644 Captvty.exe Captvty.exe.config $pkgdir/usr/share/$pkgname
-  install -m644 captvty-8.png $pkgdir/usr/share/$pkgname/captvty.png
   cp -r tools $pkgdir/usr/share/$pkgname
-  install -Dm644 captvty.desktop $pkgdir/usr/share/applications/
+  install -Dm755 captvty $pkgdir/usr/bin/captvty
+  install -Dm644 captvty-8.png $pkgdir/usr/share/pixmaps/captvty.png
+  install -Dm644 captvty.desktop $pkgdir/usr/share/applications/captvty.desktop
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname}/LICENSE
-  install -Dm755 captvty $pkgdir/usr/bin/
 }
 

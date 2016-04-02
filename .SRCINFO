@@ -13,7 +13,7 @@ pkgbase = captvty
 	depends = wine-mono
 	depends = libjpeg6-turbo
 	depends = lib32-libjpeg6-turbo
-	source = http://releases.captvty.fr/e1b8c1122116994504e118f43f59459e135d113a/captvty-2.3.11.zip
+	source = http://releases.captvty.fr/f171f183713659c504a19a5be3acc9bc8579d782/captvty-2.3.11.zip
 	source = captvty.ico::http://captvty.fr/favicon.ico?v=2
 	source = captvty
 	source = LICENSE
