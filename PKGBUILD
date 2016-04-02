@@ -1,10 +1,12 @@
 # Maintainer: Aleksey Filippov <sarum9in@gmail.com>
 
+_nanopbver=0.3.5
+
 pkgbase=grpc
 # PHP is disabled until https://github.com/grpc/grpc/issues/4337 is fixed
 #pkgname=('grpc' 'php-grpc')
 pkgname=('grpc')
-pkgver=0.13.0
+pkgver=0.13.1
 _pkgver=$(echo $pkgver | tr . _)
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
@@ -12,14 +14,24 @@ arch=('i686' 'x86_64')
 url='http://www.grpc.io/'
 license=('BSD')
 makedepends=('re2c' 'openssl' 'protobuf3' 'php')
-source=(https://github.com/$pkgname/$pkgname/archive/release-$_pkgver.tar.gz)
-md5sums=('f272d55b8ed4368bdc0d76ad27bfc2ad')
+source=(
+    https://github.com/$pkgname/$pkgname/archive/release-$_pkgver.tar.gz
+    https://github.com/nanopb/nanopb/archive/nanopb-$_nanopbver.tar.gz
+)
+noextract=("nanopb-$_nanopbver.tar.gz")
+md5sums=('fb811b167eb3c55af3292f7af322e392'
+         '30c6553c1f51f613eb0733d6451f9b97')
 
 build() {
   cd "$srcdir/$pkgname-release-$_pkgver"
 
   # Patch
   sed -r 's|GetUmbrellaClassName|GetReflectionClassName|g' -i src/compiler/csharp_generator.cc
+
+  # Nanopb missing
+  tar xf "$srcdir/nanopb-$_nanopbver.tar.gz" -C third_party
+  rm -rf third_party/nanopb
+  mv third_party/"nanopb-nanopb-$_nanopbver" third_party/nanopb
 
   # Core
   # Avoid collision with yaourt's environment variable
