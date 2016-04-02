@@ -31,8 +31,6 @@ PKGEXT='.pkg.tar'
 prepare() {
 	cd "${srcdir}/zen-kernel"
 	
-	patch -Np1 -i "${srcdir}/exfat_fix.patch"
-	
 	# Number of CPU Cores
 	_CORES=$(cat /proc/cpuinfo|grep processor|wc -l)
 	if [ $_CORES -lt 1 ]; then
