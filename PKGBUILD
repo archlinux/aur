@@ -2,7 +2,7 @@
 pkgname=gog-baldurs-gate-enhanced-edition
 _pkgname=baldurs-gate-enhanced-edition
 _original="Baldurs Gate Enhanced Edition"
-pkgver=1.0.0.1
+pkgver=2.1.0.4
 pkgrel=1
 pkgdesc="Chaos threatens to overwhelm the Sword Coast. GOG Version. Linux native."
 arch=('i686' 'x86_64')
@@ -12,17 +12,20 @@ depends_i686=('glibc' 'alsa-lib' 'libgl')
 depends_x86_64=('lib32-glibc' 'lib32-alsa-lib' 'lib32-libgl')
 optdepends_i686=('libpulse: pulseaudio support')
 optdepends_x86_64=('lib32-libpulse: pulseaudio support')
-source=("local://gog_baldurs_gate_enhanced_edition_${pkgver}.tar.gz"
-        "${pkgname}")
+DLAGENTS+=("gog::/usr/bin/echo Could not find %u. Manually download it to \"$(pwd)\", or set up a gog:// DLAGENT in /etc/makepkg.conf.")
+source=("gog://gog_baldur_s_gate_enhanced_edition_$pkgver.sh"
+        "${pkgname}"
+	"$pkgname.desktop")
 PKGEXT=".pkg.tar"
-sha256sums=('8f28cded9f33543827daaa1703f05ffbcc5fe44f4f2f7e161c656fa5672ee411'
-            'e0fd7ba999325b6c085257ffce97f2f6af4df4d99d0a587f437f8aa37a9b1889')
-
+sha256sums=('bc93a0ba2077756fa34a02fb93ed62da36eb2956163756c2c235fc81c7fd425a'
+            '7b037776cb5a87c26a827ef29bd87957d0fee670570a6f9e0383ec2d90f26040'
+            'a1b677747360e37376da85ccc568463f9c0cb0d8a99a8e0be3655bf23473ccb7')
 package() {
-  mkdir -p "${pkgdir}"/opt/gog/${_pkgname}
-  cp -r "${srcdir}"/"${_original}"/* "${pkgdir}"/opt/gog/${_pkgname}
-  install -Dm644 "${srcdir}"/"${_original}"/support/${pkgname}-primary.desktop "${pkgdir}"/usr/share/applications/${pkgname}-primary.desktop
-  install -Dm644 "${srcdir}"/"${_original}"/support/${pkgname}.png "${pkgdir}"/usr/share/pixmaps/${pkgname}.png
-  install -Dm644 "${srcdir}"/"${_original}"/docs/End\ User\ License\ Agreement.txt "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
-  install -Dm755 "${srcdir}"/$pkgname "${pkgdir}"/usr/bin/${pkgname}
+  _pkgdir="$pkgdir/opt/gog/$_pkgname"
+  mkdir -p "$pkgdir"/opt/gog/$_pkgname
+  cp -r data/noarch/* "$_pkgdir"
+  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 data/noarch/support/icon.png "$pkgdir/usr/share/pixmaps/hicolor/256x256/$pkgname.png"
+  install -Dm644 data/noarch/docs/End\ User\ License\ Agreement.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
