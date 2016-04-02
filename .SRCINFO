@@ -1,0 +1,19 @@
+pkgbase = luajit-lgi-git
+	pkgdesc = Lua binadings for gobject using gobject-introspection library
+	pkgver = 0.9.0.r30.g2c5e63d
+	pkgrel = 1
+	url = https://github.com/pavouk/lgi
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	makedepends = gobject-introspection
+	depends = libffi
+	depends = luajit
+	depends = gobject-introspection-runtime
+	provides = luajit-lgi
+	conflicts = luajit-lgi
+	source = git+https://github.com/pavouk/lgi.git
+	md5sums = SKIP
+
+pkgname = luajit-lgi-git
+
