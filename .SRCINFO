@@ -1,0 +1,10 @@
+pkgbase = git-prebase-git
+	pkgver = r22.f2eb7fa
+	pkgrel = 1
+	url = https://github.com/koreno/prebase
+	arch = any
+	source = https://github.com/koreno/prebase
+	md5sums = SKIP
+
+pkgname = git-prebase-git
+
