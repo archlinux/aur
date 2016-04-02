@@ -1,0 +1,8 @@
+.*
+*~
+/postgresql-uint-git
+*.pkg.tar.xz
+*.src.tar.gz
+!.git*
+!.mailmap
+!.SRCINFO
