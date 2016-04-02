@@ -29,7 +29,7 @@ source=(
 )
 sha256sums=(
 	'SKIP'
-	'59e25f0c4aff996d146e07f4b04251b4d131da23f20f80a5e8bf84c7af734cd0'
+	'457cde9539f8e603d031429e22c6543ba7f5ad79b85a1f3108604ce80039c8f0'
 )
 
 pkgver() {
