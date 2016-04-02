@@ -11,7 +11,7 @@ provides=('psysh')
 optdepends=('mariadb: mysql command support')
 source=('http://psysh.org/psysh'
         'https://raw.githubusercontent.com/bobthecow/psysh/master/LICENSE')
-md5sums=('1876f9badc9ebec0dd33393c687a6bdf'
+md5sums=('SKIP'
          'SKIP')
 
 package() {
