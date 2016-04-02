@@ -11,8 +11,8 @@
 # Orginally based on a Debian Squeeze package
 _pkgname=zoneminder
 pkgname=zoneminder
-pkgver=1.28.1
-pkgrel=6
+pkgver=1.29.0
+pkgrel=1
 pkgdesc='Capture, analyse, record and monitor video security cameras'
 arch=( i686 x86_64 mips64el arm armv7h )
 backup=( etc/zm.conf )
@@ -40,16 +40,18 @@ optdepends=(
 install=$_pkgname.install
 
 source=(
-    https://github.com/ZoneMinder/ZoneMinder/archive/v$pkgver.tar.gz
+    # https://github.com/ZoneMinder/ZoneMinder/archive/v$pkgver.tar.gz
+    https://github.com/ZoneMinder/ZoneMinder/releases/download/v$pkgver/ZoneMinder-$pkgver.tar.gz
     httpd-zoneminder.conf
     zoneminder.service
     zoneminder-tmpfile.conf
 )
-sha256sums=('e55fa6ce1fd6c27912cd1de67fca3f80fad579f330020a384dc82838704d11ba'
-            'ff7382b38ac07dadead0ad4d583e3dbcf8da4aaa06b76d048ee334f69f95db67'
-            '043d77a995553c533d62f48db4b719d29cf6c7074f215d866130e97be57ed646'
-            'cc8af737c3c07750fc71317c81999376e4bbb39da883780164a8747b3d7c95a7'
-           )
+sha256sums=(
+    '78c32c0cd969bc5e29ed030000ebec5c3a26cccb31fac08257a9f12781f1295c'
+    'ff7382b38ac07dadead0ad4d583e3dbcf8da4aaa06b76d048ee334f69f95db67'
+    '043d77a995553c533d62f48db4b719d29cf6c7074f215d866130e97be57ed646'
+    'cc8af737c3c07750fc71317c81999376e4bbb39da883780164a8747b3d7c95a7'
+)
      
 build() {
     cd $srcdir/ZoneMinder-$pkgver
