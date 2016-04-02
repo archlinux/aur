@@ -16,8 +16,8 @@ source=("$_mirror/technology/dltk/downloads/drops/R${pkgver:0:3}/R-$pkgver-$_pkg
 md5sums=('c83e27daf38c0e6f8c7bfe11596c4ab2')
 
 package() {
-	cd $srcdir
-	install -dm755 $pkgdir/usr/lib/eclipse/dropins/${pkgname#eclipse-}/
-	find eclipse -type f -exec install -Dm644 {} \
-		$pkgdir/usr/lib/eclipse/dropins/${pkgname#eclipse-}/{} \;
+	cd "$srcdir"
+	install -dm755 "$pkgdir/usr/lib/eclipse/dropins/${pkgname#eclipse-}/"
+	find . -type f -exec install -Dm644 {} \
+		"$pkgdir/usr/lib/eclipse/dropins/${pkgname#eclipse-}/{}" \;
 }
