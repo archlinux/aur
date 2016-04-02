@@ -1,6 +1,6 @@
 pkgbase = jackett
 	pkgdesc = User any tracker with Sonarr
-	pkgver = 0.7.200
+	pkgver = 0.7.211
 	pkgrel = 1
 	url = https://github.com/Jackett/Jackett
 	install = jackett.install
@@ -8,9 +8,9 @@ pkgbase = jackett
 	license = GPL
 	depends = mono
 	depends = curl
-	source = https://github.com/Jackett/Jackett/releases/download/v0.7.200/Jackett.Binaries.Mono.tar.gz
+	source = https://github.com/Jackett/Jackett/releases/download/v0.7.211/Jackett.Binaries.Mono.tar.gz
 	source = jackett.service
-	md5sums = ba273de09050d2018ddb126c39f84e96
+	md5sums = 8b5e45df3fa2969e5a5b032cb3599952
 	md5sums = 5983ba69e0289be2c27ce9423df408ab
 
 pkgname = jackett
