@@ -1,25 +1,25 @@
 pkgbase = captvty
-	pkgdesc = Access to the live and shows provided by various french TV channels
-	pkgver = 2.3.10.2
-	pkgrel = 2
+	pkgdesc = Accédez aux directs et à une multitude d’émissions proposées au rattrapage par différentes chaînes de télévision
+	pkgver = 2.3.11
+	pkgrel = 1
 	url = http://www.captvty.fr
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = imagemagick
+	makedepends = gendesk
+	makedepends = icoutils
 	depends = winetricks
 	depends = wine-mono
 	depends = libjpeg6-turbo
 	depends = lib32-libjpeg6-turbo
-	source = http://releases.captvty.fr/47511838126348b52441bf685aa366b0526a1c1d/captvty-2.3.10.2.zip
+	source = http://releases.captvty.fr/e1b8c1122116994504e118f43f59459e135d113a/captvty-2.3.11.zip
 	source = captvty.ico::http://captvty.fr/favicon.ico?v=2
-	source = captvty.desktop
 	source = captvty
 	source = LICENSE
-	sha1sums = ef95a4b228aa0a95f2b85cb606b16961cd9b98f1
+	sha1sums = f5ee0e871bacda75ec799d230c0677dbf1b53173
 	sha1sums = 7210acfa98cb21ab32de463ccf0456743241b48e
-	sha1sums = c2780184a4580a4dbccac05e8cba1a9fd0129061
-	sha1sums = b0dd6f93522393f1d5b849988fb0256ad872b3fc
+	sha1sums = 39b09f2f8fd5e5f72492854cfdacaa01a0afe9f6
 	sha1sums = a1a03fcff4541bbf212eb20730d5e344ae817a5d
 
 pkgname = captvty

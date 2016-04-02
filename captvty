@@ -1,8 +1,6 @@
 #!/usr/bin/env sh
 
-export WINEARCH='win32'
-export WINEPREFIX="$HOME/.wine32"
-export WINEDEBUG=fixme-all
+export WINEARCH='win32' WINEPREFIX="$HOME/.wine32"
 
 if [ ! -d "$HOME/.captvty" ]; then
   mkdir -p "$HOME/.captvty"
@@ -12,10 +10,5 @@ if [ ! -d "$HOME/.captvty" ]; then
 fi
 
 winetricks -q dotnet45 comctl32
-if [ $(uname -m) = 'x86_64' ]; then
-  LD_PRELOAD='/usr/lib32/libjpeg.so.62' wine "$HOME/.captvty/Captvty.exe"
-else
-  wine "$HOME/.captvty/Captvty.exe"
-fi
-
+wine "$HOME/.captvty/Captvty.exe"
 
