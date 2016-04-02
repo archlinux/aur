@@ -133,7 +133,7 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+  pkgdesc="Linux 4.1.x kernel patched for Tempesta FW (headers and scripts)"
   provides=("kernel${_kernelname}-headers=${pkgver}")
   conflicts=("kernel${_kernelname}-headers")
   replaces=("kernel${_kernelname}-headers")
