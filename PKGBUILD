@@ -5,7 +5,7 @@
 
 pkgname=python2-apscheduler
 _pkgname=APScheduler
-pkgver=3.0.5
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="In-process task scheduler with Cron-like capabilities"
 arch=('any')
@@ -19,12 +19,10 @@ depends=('python2'
          'python2-six'
          'python2-setuptools'
         )
-source=("https://pypi.python.org/packages/source/A/APScheduler/APScheduler-$pkgver.tar.gz"
-        "https://bitbucket.org/agronholm/apscheduler/raw/master/LICENSE.txt")
-sha256sums=('009dcf552035b30ee967f2677d0d7a49a88f2d36291c42669aa069dd549da9e4'
-            '6163f7987dfb38d6bc320ce2b70b2f02b862bc41126516d552ef1cd43247e758')
+source=("https://pypi.python.org/packages/source/A/APScheduler/APScheduler-$pkgver.tar.gz")
+sha256sums=('96a7ca40dbfb16502b44740c31c935943532f5a13be114e75419ca86fa264486')
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
-  install -D -m644 ../LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
