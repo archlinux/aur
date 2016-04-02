@@ -3,7 +3,7 @@
 _gitname=Antu
 _pkgname=AntuDark
 pkgname=('antu-dark-icon-theme-git')
-pkgver=r73.250ac6f
+pkgver=r103.edf89e7
 pkgrel=1
 pkgdesc="A dark icon theme for Plasma Desktop"
 arch=('any')
