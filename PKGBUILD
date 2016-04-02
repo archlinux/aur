@@ -1,7 +1,7 @@
 # Maintainer: 4679kun <4679kun@outlook.com>
 
 pkgname=chann-git
-pkgver=20151103
+pkgver=20151229
 pkgrel=1
 pkgdesc="Chann is an anonymous imageboard written in C/C++ based on mongoose and unqlite."
 arch=('i686' 'x86_64')
