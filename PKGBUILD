@@ -1,6 +1,6 @@
 pkgname=mingw-w64-sdl2_ttf
-pkgver=2.0.12
-pkgrel=7
+pkgver=2.0.14
+pkgrel=1
 pkgdesc="A library that allows you to use TrueType fonts in your SDL applications (Version 2) (mingw-w64)"
 arch=(any)
 url="http://libsdl.org"
@@ -9,7 +9,7 @@ depends=(mingw-w64-sdl2 mingw-w64-freetype2 mingw-w64-bzip2)
 makedepends=(mingw-w64-configure)
 options=(staticlibs !strip !buildflags)
 source=("http://www.libsdl.org/projects/SDL_ttf/release/SDL2_ttf-$pkgver.tar.gz")
-md5sums=('79787216b56cb4707f39d538f2225e00')
+md5sums=('e53c05e1e7f1382c316afd6c763388b1')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
