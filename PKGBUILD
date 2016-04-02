@@ -1,6 +1,6 @@
 # Maintainer: Manuel Schneider  <manuelschneid3r at googles mail>
 pkgname=albert
-pkgver=0.8.7.1
+pkgver=0.8.7.2
 pkgrel=1
 pkgdesc="A DE agnostic omnilauncher."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ provides=('albert')
 conflicts=('albert-git')
 source=(https://github.com/ManuelSchneid3r/albert/archive/v${pkgver}.tar.gz)
 noextract=()
-md5sums=('66ba554a0319291f436bab5de97ec53c')
+md5sums=('0a983951de8b4ef3c8a95d018b57fb7b')
 
 build() {
   [[ -d "${pkgname}-${pkgver}/build" ]]\
