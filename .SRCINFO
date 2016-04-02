@@ -7,6 +7,7 @@ pkgbase = librealsense
 	license = Apache
 	depends = glfw>=3
 	depends = libusb
+	optdepends = qt
 	source = https://github.com/IntelRealSense/librealsense/archive/v0.9.1.tar.gz
 	md5sums = f2f2bad22f3cffb8f1bb3f509a90f3fb
 

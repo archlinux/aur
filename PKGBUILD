@@ -8,7 +8,7 @@ url="https://github.com/IntelRealSense/librealsense"
 license=('Apache')
 makedepends=()
 depends=('glfw>=3' 'libusb')
-optdepens=('qt')
+optdepends=('qt')
 changelog=''
 source=("https://github.com/IntelRealSense/librealsense/archive/v${pkgver}.tar.gz")
 md5sums=('f2f2bad22f3cffb8f1bb3f509a90f3fb')
