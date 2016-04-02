@@ -25,11 +25,9 @@ makedepends=(gnome-common gobject-introspection gtk-doc gtk3-ubuntu intltool qt4
 optdepends=('accountsservice: DBus interface for querying user information'
             'gnome-keyring: For pam_gnome_keyring.so in the greeter PAM config'
             'gtk3: For using the GTK greeter'
-            'lightdm-unity-greeter: Default Ubuntu 13.04 Greeter'
-            'qt4: To use the qt4 version of liblightdm-qt'
-            'qt5-base: To use the qt5 version of liblightdm-qt')
-provides=("lightdm=${pkgver}" "liblightdm-qt4=${pkgver}")
-conflicts=(lightdm liblightdm-qt4)
+            'lightdm-unity-greeter: Default Ubuntu 16.04 Greeter')
+provides=("lightdm=${pkgver}")
+conflicts=(lightdm)
 options=(emptydirs)
 backup=(etc/lightdm/keys.conf
         etc/lightdm/lightdm.conf

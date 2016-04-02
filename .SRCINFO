@@ -24,13 +24,9 @@ pkgbase = lightdm-ubuntu
 	optdepends = accountsservice: DBus interface for querying user information
 	optdepends = gnome-keyring: For pam_gnome_keyring.so in the greeter PAM config
 	optdepends = gtk3: For using the GTK greeter
-	optdepends = lightdm-unity-greeter: Default Ubuntu 13.04 Greeter
-	optdepends = qt4: To use the qt4 version of liblightdm-qt
-	optdepends = qt5-base: To use the qt5 version of liblightdm-qt
+	optdepends = lightdm-unity-greeter: Default Ubuntu 16.04 Greeter
 	provides = lightdm=1.18.0
-	provides = liblightdm-qt4=1.18.0
 	conflicts = lightdm
-	conflicts = liblightdm-qt4
 	options = emptydirs
 	backup = etc/lightdm/keys.conf
 	backup = etc/lightdm/lightdm.conf
