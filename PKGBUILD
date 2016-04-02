@@ -1,5 +1,6 @@
 # Contributors:
 # henning mueller <henning@orgizm.net>
+# krompus <amartin@riseup.net>
 
 pkgname=anarchism
 pkgver=14.0
