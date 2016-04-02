@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-node-git
-pkgver=20160114
+pkgver=20160402
 pkgrel=1
 pkgdesc="Bitcoin Full Node Library"
 arch=('i686' 'x86_64')
@@ -11,6 +11,8 @@ depends=('boost'
          'libbitcoin'
          'libbitcoin-blockchain'
          'libbitcoin-consensus'
+         'libbitcoin-database'
+         'libbitcoin-network'
          'secp256k1-git')
 makedepends=('autoconf'
              'automake'
@@ -23,7 +25,7 @@ makedepends=('autoconf'
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-node"
 license=('AGPL3')
-source=(git+https://github.com/libbitcoin/libbitcoin-node#branch=version2)
+source=(git+https://github.com/libbitcoin/libbitcoin-node)
 sha256sums=('SKIP')
 provides=('libbitcoin-node')
 conflicts=('libbitcoin-node')
