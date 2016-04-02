@@ -1,30 +1,31 @@
-# Maintainer: Dan Schaper <dschaper at ganymeade dot com>
+# Maintainer: Martin Poljak <martin at poljak dot cz>
+# Contributor: Dan Schaper <dschaper at ganymeade dot com>
 
 pkgname=dump1090-mutability-git
 _pkgbase=dump1090-mutability
-pkgver=faup1090.2.1.3.r1.gc55c71b
+pkgver=r903.e1278c3
 pkgrel=1
-pkgdesc="ADS-B / Mode S Ground Station System for simple RTL-SDR decoding/translating. Mutability Fork"
+pkgdesc="ADS-B/Mode S Ground Station System for simple RTL-SDR decoding/translating (Mutability Fork)."
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
-url=("https://github.com/mutability/dump1090")
+url="https://github.com/mutability/dump1090"
 license=('GPL' 'BSD')
 depends=('rtl-sdr')
 makedepends=('git')
-provides=('dump1090' 'fatsv-data-source' 'faup1090')
+provides=('dump1090' 'dump1090-fa' 'fatsv-data-source' 'faup1090')
 backup=(etc/${_pkgbase})
-install=(${_pkgbase}.install)
+install=${_pkgbase}.install
 source=(${pkgname}::git://github.com/mutability/dump1090
 	${_pkgbase}
 	${_pkgbase}.service)
 sha1sums=('SKIP'
-          '578a300700e746ba3e5f8403764fb14a9b1f88d5'
-          'aa4c8b844e7008794094947cea02530791dddfb1')
-optdepends=('lighttpd: web display support')
-changelog=('dump1090-mutability.changelog')
+          'fc5315d2585bb8dd81eeefc1c43da2b8d2b79a9f'
+          '80d6ddc3668868a63c31fcff4e34fa7d4084aa23')
+optdepends=('lighttpd: web display support' 'mlat-client: multilateration client')
+changelog='dump1090-mutability.changelog'
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

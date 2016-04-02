@@ -1,4 +1,4 @@
 # dump1090-mutability configuration file
 # Run systemctl restart dump1090-mutability
 # to load changes.
-DUMP1090_OPTS=""
+DUMP1090_OPTS="--quiet --net --gain -10 --modeac --fix --phase-enhance --mlat --oversample --max-range 600 --net-bi-port 30104"
