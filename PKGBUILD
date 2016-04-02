@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-explorer-git
-pkgver=20151221
-pkgrel=3
+pkgver=20160402
+pkgrel=1
 pkgdesc="Bitcoin Command Line Tool"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -12,6 +12,7 @@ depends=('boost'
          'icu'
          'libbitcoin'
          'libbitcoin-client'
+         'libbitcoin-network'
          'libpng'
          'libsodium'
          'qrencode'
@@ -28,7 +29,7 @@ makedepends=('autoconf'
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-explorer"
 license=('AGPL3')
-source=(git+https://github.com/libbitcoin/libbitcoin-explorer#branch=version2
+source=(git+https://github.com/libbitcoin/libbitcoin-explorer
         git+https://github.com/libbitcoin/libbitcoin-explorer.wiki)
 sha256sums=('SKIP' 'SKIP')
 provides=('libbitcoin-explorer')
