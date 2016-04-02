@@ -20,7 +20,7 @@ source=("${pkgname%-git}::git+$url#branch=master"
 		"git://github.com/nbdsp/appsm.git"
 		"git://github.com/nbdsp/dtlsm.git")
 noextract=()
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "${pkgname%-git}"
