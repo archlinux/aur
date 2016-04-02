@@ -26,7 +26,9 @@ pkgver(){
 package() {
     # Plasma theme
     install -d ${pkgdir}/usr/share/plasma/desktoptheme/antu
-    cp -r ${srcdir}/${_gitname}/${_theme}/* ${pkgdir}/usr/share/plasma/desktoptheme/antu
+    install -d ${pkgdir}/usr/share/plasma/desktoptheme/antu-flat
+    cp -r ${srcdir}/${_gitname}/${_theme}/antu/* ${pkgdir}/usr/share/plasma/desktoptheme/antu
+    cp -r ${srcdir}/${_gitname}/${_theme}/antu-flat/* ${pkgdir}/usr/share/plasma/desktoptheme/antu-flat
 
     # Window decorations
     install -d ${pkgdir}/usr/share/kwin/decorations
