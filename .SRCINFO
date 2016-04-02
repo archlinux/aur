@@ -1,15 +1,14 @@
 pkgbase = librealsense
 	pkgdesc = Librealsense is a cross-platform library (Linux, OSX, Windows) for capturing data from the Intel RealSense F200, SR300 and R200 cameras
-	pkgver = 0.9
+	pkgver = 0.9.1
 	pkgrel = 1
 	url = https://github.com/IntelRealSense/librealsense
 	arch = any
 	license = Apache
 	depends = glfw>=3
 	depends = libusb
-	depends = qtcreator
-	source = https://github.com/IntelRealSense/librealsense/archive/v0.9.tar.gz
-	md5sums = 8b30a944b51a9ff3fa00f2d1652ae9d9
+	source = https://github.com/IntelRealSense/librealsense/archive/v0.9.1.tar.gz
+	md5sums = f2f2bad22f3cffb8f1bb3f509a90f3fb
 
 pkgname = librealsense
 
