@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-client-git
-pkgver=20151213
-pkgrel=2
+pkgver=20160401
+pkgrel=1
 pkgdesc="Bitcoin Client Protocol Library"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -25,7 +25,7 @@ makedepends=('autoconf'
 groups=('libbitcoin')
 url="https://github.com/libbitcoin/libbitcoin-client"
 license=('AGPL3')
-source=(git+https://github.com/libbitcoin/libbitcoin-client#branch=version2)
+source=(git+https://github.com/libbitcoin/libbitcoin-client)
 sha256sums=('SKIP')
 provides=('libbitcoin-client')
 conflicts=('libbitcoin-client')
