@@ -62,7 +62,7 @@ package() {
 	mv "${pkgdir}/usr/share/appdata/gimp.appdata.xml" "${pkgdir}/usr/share/appdata/gimp-${_version}.appdata.xml"
 	mv "${pkgdir}/usr/share/applications/gimp.desktop" "${pkgdir}/usr/share/applications/gimp-${_version}.desktop"
 
-	install -D -m644 "${srcdir}/linux.gpl" "${pkgdir}/usr/share/gimp/${_version}/palettes/Linux.gpl"
+	install -D -m644 "${srcdir}/linux.gpl" "${pkgdir}/usr/share/gimp/3.0/palettes/Linux.gpl"
 	mv "${pkgdir}/usr/share/aclocal/gimp-2.0.m4" "${pkgdir}/usr/share/aclocal/gimp-${_version}.m4"
 
 	for _icon in 16 22 24 32 48 256; do
