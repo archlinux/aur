@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=maxima-git
-pkgver=5.37.1.614.g22f4fd0
+pkgver=5.37.1.650.g228e386
 pkgrel=1
 pkgdesc="a sophisticated computer algebra system - git-version"
 arch=('any')
@@ -28,7 +28,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
-  LANG=C
   ./bootstrap
   ./configure --prefix=/usr --mandir=/usr/share/man \
     --infodir=/usr/share/info  --libexecdir=/usr/lib \
