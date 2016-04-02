@@ -39,7 +39,7 @@ pkgname = linux-tfw
 	backup = etc/mkinitcpio.d/linux-tfw.preset
 
 pkgname = linux-tfw-headers
-	pkgdesc = Header files and scripts for building modules for Linux-tfw kernel
+	pkgdesc = Linux 4.1.x kernel patched for Tempesta FW (headers and scripts)
 	provides = kernel-tfw-headers=4.1.12
 	conflicts = kernel-tfw-headers
 	replaces = kernel-tfw-headers
