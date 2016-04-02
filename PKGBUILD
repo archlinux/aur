@@ -2,13 +2,13 @@
 # Contributor: Drew DeVault <sir@cmpwn.com>
 
 pkgname=sway
-pkgver=0.3
-pkgrel=1
+pkgver=0.1
+pkgrel=2
 license=('MIT')
 pkgdesc='i3 compatible window manager for Wayland'
 makedepends=("cmake" "git" "asciidoc")
 depends=(
-	"wlc-git" "xorg-server-xwayland"
+	"wlc" "xorg-server-xwayland"
 	"xcb-util-image" "json-c"
 	"pango" "cairo"
 	"wayland" "gdk-pixbuf2"
