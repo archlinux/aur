@@ -33,8 +33,8 @@ pkgbase = gtk3-ubuntu
 	conflicts = gtk3
 	source = http://ftp.gnome.org/pub/GNOME/sources/gtk+/3.18/gtk+-3.18.6.tar.xz
 	source = http://ppa.launchpad.net/gnome3-team/gnome3-staging/ubuntu/pool/main/g/gtk+3.0/gtk+3.0_3.18.6-1ubuntu1~wily1.debian.tar.xz
-	sha512sums = fc70295850270805454197ea06551be36124ae76bd3966af46804ae7c9c83ee8d460370554eae6e84becdb905ad076863bbacc0e0f6a21e4bc873445eb81f89e
-	sha512sums = 126f22e3340ff0d7367e7098036daeb28ecdd9c4fbab7966c9ec1372cc336ff187f75d5584370ffe2a55335e8ff2c63c570b57c2e4c19725aad5d8207bd1eacc
+	sha512sums = a606bfeb7e6991c9c367d6c93d04d70daed6c59b95d1ef14b971acb32b23e71894b0aef16b4c673e1cb2ae0fd08de3f65b7aa5512fd74253efe30f16b0dbac11
+	sha512sums = 03296946286788d96572b7a17381191ee86d30736f652f678190b0c305ab70b10c65b0d732e213745bb24e44c3981c7dcafb1e83d0c519deef440fa25a36e00f
 
 pkgname = gtk3-ubuntu
 
