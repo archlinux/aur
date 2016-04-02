@@ -1,0 +1,24 @@
+pkgbase = extempore-git
+	pkgdesc = A cyber-physical programming environment for live coding
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://extempore.moso.com.au
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = perl
+	depends = extempore-llvm
+	depends = mesa
+	depends = pcre
+	depends = alsa-lib
+	optdepends = jack
+	provides = extempore
+	conflicts = extempore
+	source = git+https://github.com/digego/extempore.git
+	md5sums = SKIP
+
+pkgname = extempore-git
+
