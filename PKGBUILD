@@ -8,7 +8,7 @@
 
 _pack=geometry
 pkgname=octave-$_pack
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Library for geometric computing extending MatGeom functions. Useful to create, transform, manipulate and display geometric primitives."
 arch=(any)
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('fe8cfbf84cd2f412cf685a14c4f0e04b')
+md5sums=('671365424670ef6569cb5f8d52a8cff9')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
