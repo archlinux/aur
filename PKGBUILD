@@ -18,6 +18,6 @@ md5sums=('08aa234c48109b3391ff721aad015249')
 package() {
 	cd $srcdir
 	install -dm755 $pkgdir/usr/lib/eclipse/dropins/${pkgname#eclipse-}/
-	find eclipse -type f -exec install -Dm644 {} \
+	find . -type f -exec install -Dm644 {} \
 		$pkgdir/usr/lib/eclipse/dropins/${pkgname#eclipse-}/{} \;
 }
