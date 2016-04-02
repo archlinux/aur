@@ -1,6 +1,6 @@
 pkgbase = nginx-nchan-git
 	pkgdesc = Nginx + Nchan - a flexible pub/sub server (git version)
-	pkgver = 1.9.13.nchan.0.99.9.r0.g416db68
+	pkgver = 1.9.13.nchan.0.99.10.r0.g8dabac8
 	pkgrel = 1
 	url = https://nchan.slact.net
 	arch = i686
