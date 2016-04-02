@@ -72,14 +72,14 @@ _bldtype=Release
 #_bldtype=Debug
 
 _mozcrev=2628af6995dbbbb9ccdb52d1160db1dbd5ed3bae
-_utdicver=20160303
-_zipcoderel=201602
+_utdicver=20160317
+_zipcoderel=201603
 _uimmozcrev=321.3ea28b1
 
 pkgbase=mozc-ut
 pkgname=mozc-ut
 true && pkgname=('mozc-ut')
-pkgver=2.17.2313.102.20160303
+pkgver=2.17.2313.102.20160317
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
@@ -95,11 +95,11 @@ source=(
   mod-generate-mozc-ut.sh
 )
 sha1sums=('SKIP'
-          '4db23b05c9a7d6a6fbc57f5714f2ce58b12d582f'
-          'a56267cdf87b5ea48c378107da180f45b7beb46a'
+          '28639c0b873c4068e9fd676314bf0983eaff1fe4'
+          '53cd48f52f691fe1f31bec110529c6e44796a296'
           'e0ba18e67c1be8e3cfb8ecb30760597b215da255'
-          '5cc2c2811e2a57ebaf671d09d727a86009f7f846'
-          '4ba7faa2ebecb4ad52e05d92d7d18abae327a4fc'
+          '532926e98c8cc2aefd6e6db7b1980792f9c0f878'
+          'e19a7bbe22e2b3d6ab3ace6538e50804f533bbb7'
           'fd9b79fc4b81703549b266afe55b6b1598722d1b')
 
 
