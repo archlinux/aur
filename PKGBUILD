@@ -3,13 +3,13 @@
 
 pkgname=hydrogen-git
 _pkgname=hydrogen
-pkgver=0.9.7.beta1.r90.g5c9eb00
+pkgver=0.9.7.beta2.r2541.3187d9b
 pkgrel=1
 pkgdesc="An advanced drum machine - git version"
 arch=('i686' 'x86_64')
 license=('GPL')
 url="https://github.com/hydrogen-music/hydrogen"
-depends=('desktop-file-utils' 'libarchive' 'liblrdf' 'qt4' 'jack' 'libpulse'
+depends=('desktop-file-utils' 'liblrdf' 'qt4' 'jack' 'libpulse'
          'lash' 'liblo')
 optdepends=('rubberband: Audio Time Stretcher Library')
 makedepends=('git' 'cmake')
@@ -21,8 +21,10 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  # Use the tag of the last commit
-  git describe --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  version="$(git describe --tags | sed -e 's/-/./')"
+  revision=$(git rev-list --count HEAD)
+  hash=$(git rev-parse --short HEAD)
+  echo $version.r$revision.$hash
 }
 
 prepare() {
@@ -45,6 +47,7 @@ build() {
 
   cmake ../$_pkgname \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DWANT_DEBUG=OFF \
     -DWANT_LASH=ON \
     -DWANT_LRDF=ON \
     -DWANT_CPPUNIT=OFF
