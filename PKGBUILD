@@ -1,11 +1,11 @@
 # Maintainer: Marcin Mielniczuk <marmistrz@inboxalias.com>
 pkgname=arename
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="automatic audio file renaming tool"
 arch=("any")
 url="http://ft.bewatermyfriend.org/computer/arename.html"
-depends=("perl-audio-scan perl-readonly")
+depends=("perl-audio-scan" "perl-readonly")
 source=("https://github.com/ft/$pkgname/archive/v$pkgver.zip")
 sha1sums=("396bb6eb247f8e848fb22ecbc8c7cfa28656e95e")
 
