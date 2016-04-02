@@ -1,5 +1,5 @@
---- lock        2016-03-28 13:22:03.804682848 -0400
-+++ lock-new    2016-03-30 20:54:48.629852576 -0400
+--- lock        2016-04-02 12:27:15.379419717 -0400
++++ lock-new    2016-04-02 12:30:17.182148233 -0400
 @@ -38,8 +38,7 @@
  done
  
@@ -9,4 +9,4 @@
 +SCRIPTPATH="/usr/share/i3lock-fancy"
  
  # l10n support
- TEXT="Type password to unlock"
+ TEXT="Type password to unlock""
