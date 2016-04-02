@@ -9,7 +9,7 @@ url="https://vamox.blogspot.com"
 license=('CC BY-SA 3.0')
 options=(!strip)
 source=(http://www.mediafire.com/download/ndcdqo993rf9ng5/$pkgname-$pkgver.tar.gz)
-sha256sums=('d3f501c41102dbed193f06b6ad1b61de52f2f34fd6519ef0509b60168a090fc5')
+sha256sums=('SKIP')
  
 package() {
         cd "${srcdir}"
