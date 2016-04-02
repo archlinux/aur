@@ -16,7 +16,9 @@ replaces=()
 backup=()
 options=()
 install=
-source=("${pkgname%-git}::git+$url#branch=master")
+source=("${pkgname%-git}::git+$url#branch=master"
+		"git://github.com/nbdsp/appsm.git"
+		"git://github.com/nbdsp/dtlsm.git")
 noextract=()
 md5sums=('SKIP')
 
@@ -31,6 +33,11 @@ package() {
 	cd "${pkgname%-git}"
 	pname="${pkgname%-git}"
 	_username="$(id | sed -e 's/[^(]*(\([^)]*\)).*/\1/')"
+	
+	git submodule init
+	git config submodule.appsm.url $srcdir/regd/appsm
+	git config submodule.dtlsm.url $srcdir/regd/dtlsm	
+	git submodule update
 	python setup.py install --root="$pkgdir/" --optimize=1
 	install -Dm644 -o $_username "data/conf.${pname}" "$pkgdir/etc/${pname}/conf.${pname}"
 	install -Dm644 -o $_username "data/${pname}.conf" "$pkgdir/usr/lib/tmpfiles.d/${pname}.conf"	
