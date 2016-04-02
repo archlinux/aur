@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-server-git
 pkgver=20160402
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -58,7 +58,7 @@ prepare() {
   msg2 'Configuring...'
   cp -dpr --no-preserve=ownership data/bs.cfg data/bs.cfg.in
   sed -i \
-    -e 's@^database_path.*@database_path = /srv/blockchain/db@' \
+    -e 's@^directory.*@directory = /srv/blockchain/db@' \
     -e 's@^debug_file.*@debug_file = /var/log/bs/debug.log@' \
     -e 's@^error_file.*@error_file = /var/log/bs/error.log@' \
     -e 's@^hosts_file.*@hosts_file = /etc/bs/hosts.cache@' \
