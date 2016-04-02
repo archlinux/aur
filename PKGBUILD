@@ -1,8 +1,8 @@
 # Contributor:  Martin C. Doege <mdoege at compuserve dot com>
 
 pkgname=gnaural-presets
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="Preset files for Gnaural"
 arch=('any')
 url="http://sourceforge.net/projects/gnaural/files/Presets/"
@@ -21,6 +21,7 @@ source=(http://downloads.sourceforge.net/project/gnaural/Presets/Soundscapes/Toa
         http://downloads.sourceforge.net/project/gnaural/Presets/Soundscapes/CricketsAndFrogs.gnaural
         http://downloads.sourceforge.net/project/gnaural/Presets/Soundscapes/C.gnaural
         http://downloads.sourceforge.net/project/gnaural/Presets/Soundscapes/AndromedaHell.gnaural
+        http://downloads.sourceforge.net/project/gnaural/Presets/Soundscapes/Slingspray.gnaural
         http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/purr.gnaural
         http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/10_ISO_BIN.zip
         http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/woods.zip
@@ -45,6 +46,11 @@ source=(http://downloads.sourceforge.net/project/gnaural/Presets/Soundscapes/Toa
         http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/alert.gnaural
         http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/ForestMeditation.zip
         http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/ForestMeditation_android.zip
+        http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/AcademicPerformanceEnhancement.gnaural
+        http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/android_presets.zip
+        http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/DefaultMeditationSession.gnaural
+        "http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/Full Moon.gnaural"
+        http://downloads.sourceforge.net/project/gnaural/Presets/Mindstates/8-voice.gnaural
        )
 md5sums=('62443726c421d0355a6af4e6af6d0e78'
          'c15e5a3ce821946ee427d70c7f653caa'
@@ -59,6 +65,7 @@ md5sums=('62443726c421d0355a6af4e6af6d0e78'
          'a781208ea1e2b8140c28585b9a81703d'
          'c633481f9434c5fde7c40d2525b24362'
          '10b942583040646a9422ed35de158179'
+         '09503cca8feecbd5e4395678ef3d74b3'
          'ff2679b115b44e6848081927bfdac4af'
          '6b7bf8cbc9609981e0fbceac50363351'
          '78bb2c852e66217b7e656da5aa50c5dc'
@@ -73,7 +80,7 @@ md5sums=('62443726c421d0355a6af4e6af6d0e78'
          '7e0ca97f2b25f477235180dc24341892'
          'd9f687f7de6b4d35f16554b852fe6bb8'
          'e6e2a565edf3dddf0d44c64be8461d10'
-         '70f9a78dc726bfa2c2ca572493da6df2'
+         'ec2d39110121ab1ca6e6fe75f71c25f7'
          '315725454545248c10d9eb714212c9ed'
          'd300ca119dfb320e832df3d1ac00ea1c'
          '5dba68b0b87fb103ee77238b174ddf35'
@@ -81,8 +88,13 @@ md5sums=('62443726c421d0355a6af4e6af6d0e78'
          '3806f882458dac32f1bb131ffaa13a08'
          '8fb4baaed28fe659be2d886b9f0f9886'
          'b4cecb447bc6c2b1443026d8a245f8ec'
-         'afa63a07aa8a52e381d43dd889bf72fc'
-         'd5790152e26d2cd854427e2326ad0469')
+         '6f0fa8f1709fb76a5674859d802af5d8'
+         'd5790152e26d2cd854427e2326ad0469'
+         '947a4fd8b4b970db1c2729d3bd5bbe45'
+         'f662da558b74bb43fae11c6874fab1a4'
+         'e9ff458225bb1aacb6fdf47db82a494b'
+         '7ab55dfca94f146a13c2d9e55098878f'
+         '59a438b3c1ea5394d2f310608971b7c4')
 
 package() {
   mkdir -p $pkgdir/usr/share/gnaural/presets
