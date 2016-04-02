@@ -1,14 +1,11 @@
-# $Id: PKGBUILD 161291 2012-06-08 23:30:06Z dreisner $
-# Maintainer: Mark Coolen <mark.coolen@gmail.com>
-# Contributor: Kevin Piche <kevin@archlinux.org>
-# Contributor: Manolis Tzanidakis
+# Maintainer: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 pkgname=dansguardian
 pkgver=2.10.1.1
 pkgrel=13
 pkgdesc="Extremely flexible web content filter."
 url="http://dansguardian.org"
-arch=('i686' 'x86_64' 'armv6h' 'arm')
+arch=('i686' 'x86_64' 'armv6h' 'arm' 'armv7h')
 license=('GPL2')
 depends=('pcre' 'zlib')
 optdepends=('squid')
