@@ -1,7 +1,7 @@
 pkgbase = conky-lua
 	pkgdesc = Lightweight system monitor for X, with Lua support enabled
 	pkgver = 1.10.1
-	pkgrel = 6
+	pkgrel = 7
 	url = http://github.com/brndnmtthws/conky
 	arch = i686
 	arch = x86_64

@@ -1,9 +1,8 @@
-# Maintainer: alexiobash < me (at) alexiobash (dot) com >
-# Co-Maintainer: TidestManager1 < michaelpulliam1 (at) gmail (dot) com > 
+# Maintainer: TidestManager1 < michaelpulliam1 (at) gmail (dot) com > 
 pkgname=conky-lua
 _pkgname=conky
 pkgver=1.10.1
-pkgrel=6
+pkgrel=7
 pkgdesc='Lightweight system monitor for X, with Lua support enabled'
 url='http://github.com/brndnmtthws/conky'
 license=('BSD' 'GPL3')
@@ -36,6 +35,7 @@ build() {
         -D BUILD_WEATHER_METAR=ON \
         -D BUILD_WEATHER_XOAP=ON \
         -D BUILD_XDBE=ON \
+	-D BUILD_WLAN=ON \
         .
  
  
@@ -53,5 +53,5 @@ package() {
  
 prepare() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    patch -p1 -i ../../fix_build.patch
+    patch -p1 -i ${startdir}/fix_build.patch
 }
