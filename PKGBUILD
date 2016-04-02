@@ -2,7 +2,7 @@
 
 pkgname=libcsptr
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A smart pointers library for the C programming language"
 arch=('i686' 'x86_64')
 url="http://github.com/Snaipe/${pkgname}.git"
@@ -23,4 +23,4 @@ package() {
   make DESTDIR=$pkgdir LIBDIR=$pkgdir/usr/lib install
 }
 
-md5sums=('f43cc18338952a69a79e9215033e4279')
+md5sums=('f55ff517219883f07e748fdc2fc084ed')
