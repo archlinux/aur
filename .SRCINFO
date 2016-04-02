@@ -1,0 +1,15 @@
+pkgbase = audacious-vgmstream
+	pkgdesc = A library for playing streamed audio from video games (for Audacious)
+	pkgver = r1004
+	pkgrel = 1
+	url = https://github.com/kode54/vgmstream
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = audacious
+	depends = libvorbis
+	source = git+https://github.com/kode54/vgmstream.git
+	md5sums = SKIP
+
+pkgname = audacious-vgmstream
+
