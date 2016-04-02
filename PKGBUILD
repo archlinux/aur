@@ -80,10 +80,10 @@ build() {
 	# Note: the Presets directory remains in the user's directory so that they can save presets
 	#patch_strings_in_file "$binaryname" "%s/.%s/%s/Presets" "$instdir/Presets"
 	patch_strings_in_file "$binaryname" "%s/.%s/%s/" "$instdir/"
-	patch_strings_in_file "$binaryname" "%s/.%s/%s/Tunefiles" "$instdir/Tunefiles"
+	#patch_strings_in_file "$binaryname" "%s/.%s/%s/Tunefiles" "$instdir/Tunefiles"
 	# CCMaps isn't shipped with the binary, nor is it created by the default install.sh, so ignore it
 	#patch_strings_in_file "$binaryname" "%s/.%s/%s/CCMaps" "$instdir/CCMaps"
-	patch_strings_in_file "$binaryname" "%s/.%s/%s/Support" "$instdir/Support"
+	#patch_strings_in_file "$binaryname" "%s/.%s/%s/Support" "$instdir/Support"
 }
 
 package() {
