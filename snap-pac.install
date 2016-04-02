@@ -7,7 +7,7 @@ post_install() {
     echo "NOTE: If you do not have grub-btrfs-git installed, you will receive an
 error on each pacman transaction about not being able to satisfy dependencies
 for 99_grub-config.hook. This is safe to ignore. To prevent the warning, remove
-'/usr/share/libalpm/99_grub-config.hook.'" 
+'/usr/share/libalpm/hooks/99_grub-config.hook.'" 
 }
 
 pre_upgrade() {
@@ -18,7 +18,7 @@ post_upgrade() {
     echo "NOTE: If you do not have grub-btrfs-git installed, you will receive an
 error on each pacman transaction about not being able to satisfy dependencies
 for 99_grub-config.hook. This is safe to ignore. To prevent the warning, remove
-'/usr/share/libalpm/99_grub-config.hook.'" 
+'/usr/share/libalpm/hooks/99_grub-config.hook.'" 
 }
 
 pre_remove() {
