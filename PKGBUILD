@@ -5,7 +5,7 @@ _pkgname=make
 pkgver=3.82
 pkgrel=1
 conflicts=('make')
-provides=('make=$pkgver-$pkgrel')
+provides=("make=${pkgver}-${pkgrel}")
 pkgdesc="GNU make utility to maintain groups of programs"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/make"
