@@ -15,7 +15,7 @@ optdepends=(balz lpaq p7zip paq8o quad unace upx rar zpaq)
 provides=(${pkgname%-*-*} ${pkgname%-*})
 conflicts=(${pkgname%-*-*} ${pkgname%-*-*}-gtk2 ${pkgname%-*})
 source=(http://download.opensuse.org/repositories/devel:/languages:/pascal/openSUSE_Factory/${arch}/${pkgname%-*-*}-${pkgver}-${_rpmrel}.x86_64.rpm
-        https://github.com/FadeMind/archpkgbuilds/blob/master/AUR/customized/peazip-qt-opensuse/peazip_additional_formats_plugin-merged.LINUX.ALL.tar.xz)
+        https://github.com/FadeMind/archpkgbuilds/blob/master/AUR/customized/peazip-qt-opensuse/peazip_additional_formats_plugin-merged.LINUX.ALL.tar.xz?raw=true)
 sha256sums=('0ad772e16af5bffde6d6a4017719dee639771087a66e23f6b17d099ef14e7e9f'
             'f86b659739dc0c7c9e4365f700fae91677cd290fc61743381d14ab300ccded72')
 
