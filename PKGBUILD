@@ -5,7 +5,7 @@
 pkgname=peazip-qt-opensuse
 pkgver=6.0.0
 _rpmrel=2.7
-pkgrel=5
+pkgrel=6
 pkgdesc="QT archiver utility (openSUSE x86_64 RPM)"
 arch=(x86_64)
 url=http://peazip.sourceforge.net/peazip-linux.html
