@@ -16,11 +16,9 @@ pkgrel=1
 options=("!strip")
 source=("linux-zen.conf"
         "linux-zen.preset"
-        "exfat_fix.patch"
         'git://github.com/damentz/zen-kernel.git#branch=4.5/master')
 sha256sums=('6373073ad943e068478ef1373be4eb2a7e473da8743d946f1f50cd364685ab87'
             '18fe6b2664a9a740544c4cb990efe5ec933d6e64caf9e5d0a6ced92af0027c2d'
-            '732b0f9041acacccbe96c0f7dff6faf34930abdbd29f97c21fd5e5822aca78fe'
             'SKIP')
 _CORES=1
 
