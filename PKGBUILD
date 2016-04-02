@@ -1,7 +1,7 @@
 # Maintainer: 4679kun <4679kun@outlook.com> 
 # Contributor: Peter Cai <xqsx43cxy@gmail.com> 
 pkgname=net-speeder 
-pkgver=git
+pkgver=20160303
 pkgrel=1 
 pkgdesc="A network optimizing tool for high-delay network environment (ROOT NEEDED)" 
 url="https://github.com/snooda/net-speeder" 
@@ -12,8 +12,13 @@ source=("git+https://github.com/snooda/net-speeder")
 md5sums=('SKIP') 
 
 build() { 
-    cd "${srcdir}/net-speeder"&&sh build.sh 
+    cd "${srcdir}/net-speeder" && sh build.sh -DCOOKED 
 } 
+
+pkgver() {
+    cd "${srcdir}/${pkgname}"
+    git log -1 --format='%cd' --date=short | tr -d -- '-'
+}
 
 package() { 
     install -Dm755 "${srcdir}/net-speeder/net_speeder" "${pkgdir}/usr/bin/net-speeder" 
