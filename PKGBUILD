@@ -2,7 +2,7 @@
 
 pkgname=signal-cli
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides a commandline and dbus interface for secure Signal/TextSecure messaging."
 arch=('any')
 url="https://github.com/AsamK/signal-cli"
@@ -25,7 +25,7 @@ build() {
 	cd "${srcdir}"
 	cd "${pkgname}-${pkgver}"
 
-	gradle --no-daemon installDist
+	GRADLE_USER_HOME="${srcdir}/.gradle" gradle --no-daemon installDist
 }
 
 package() {
