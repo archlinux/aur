@@ -1,0 +1,13 @@
+pkgbase = vamox-ceibo
+	pkgdesc = Vamox Ceibo icon theme.
+	pkgver = 201
+	pkgrel = 0
+	url = http://vamox.blogspot.gr/2008/12/descargas-vamox.html
+	arch = any
+	license = CC BY-SA 3.0
+	options = !strip
+	source = https://www.dropbox.com/s/0qnjxudqedwm08m/vamox-ceibo-201.tar.gz
+	sha256sums = SKIP
+
+pkgname = vamox-ceibo
+
