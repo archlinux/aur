@@ -1,10 +1,11 @@
 pkgbase = arename
 	pkgdesc = automatic audio file renaming tool
 	pkgver = 4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ft.bewatermyfriend.org/computer/arename.html
 	arch = any
-	depends = perl-audio-scan perl-readonly
+	depends = perl-audio-scan
+	depends = perl-readonly
 	source = https://github.com/ft/arename/archive/v4.0.zip
 	sha1sums = 396bb6eb247f8e848fb22ecbc8c7cfa28656e95e
 
