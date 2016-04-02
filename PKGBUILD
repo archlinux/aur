@@ -3,7 +3,7 @@
 
 pkgname=pgcli
 pkgver=0.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="a command line interface for Postgres with auto-completion and syntax highlighting"
 url="http://pgcli.com/"
 arch=(any)
@@ -15,7 +15,7 @@ provides=('pgcli')
 conflicts=('pgcli-git')
 
 package() {
-    cd $srcdir/pgcli
+    cd $srcdir/pgcli-${pkgver}
     python setup.py install --root=$pkgdir/ --optimize=1
     echo "#!/usr/bin/bash" > $pkgdir/usr/bin/pgcli
     echo "python -c 'import pgcli.main; pgcli.main.cli()' \"\$@\"" >> $pkgdir/usr/bin/pgcli
