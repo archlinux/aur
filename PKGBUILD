@@ -25,11 +25,11 @@ optdepends=('lame: MP3 transcoding support'
 			'vorbis-tools: OGG transcoding support')
 source=(
 	"${pkgname}::git+https://github.com/masmu/pulseaudio-dlna.git"
-	"pulseaudio-dlna.service::https://gist.githubusercontent.com/sim590/1824b3167cf55fc7817c/raw/630972adfafa416d6ac8c2cdf3461611b2fdfedc/pulseaudio-dlna.service"
+	"pulseaudio-dlna.service::https://gist.githubusercontent.com/freijon/64066155a46083eb3c06acd9ad40821f/raw/1a1557df4e398197aa89c973d20117ebabf03aa2/pulseaudio-dlna.service"
 )
 sha256sums=(
 	'SKIP'
-	'5612dd60ea1ed1858878faf9280c00339eb7c92b59df0cec8e265fbe685da49e'
+	'59e25f0c4aff996d146e07f4b04251b4d131da23f20f80a5e8bf84c7af734cd0'
 )
 
 pkgver() {
