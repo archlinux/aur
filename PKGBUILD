@@ -7,7 +7,7 @@
 
 pkgname=lxqt-admin
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LXQt system administration"
 arch=("i686" "x86_64" "armv6h")
 url="http://lxqt.org"
@@ -21,13 +21,13 @@ sha256sums=("46a5dd35e4bb560643647dfc9439f4a6ba1cdb3fd73af639cb3aca364cd3a895"
 validpgpkeys=("169704C6FB490C6892C7F23C37E0AF1FDA48F373") # J. Leclanche
 
 build() {
-	mkdir -p build
-	cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/usr "$srcdir/$pkgname-$pkgver"
-	make
+      mkdir -p build
+      cd build
+      LC_ALL=en_US.UTF-8 cmake -DCMAKE_INSTALL_PREFIX=/usr "$srcdir/$pkgname-$pkgver"
+      LC_ALL=en_US.UTF-8 make
 }
 
 package() {
-	cd build
-	make DESTDIR="$pkgdir" install
+      cd build
+      make DESTDIR="$pkgdir" install
 }
