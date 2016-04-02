@@ -4,8 +4,8 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=zeromq-git
-pkgver=20151221
-pkgrel=2
+pkgver=20160331
+pkgrel=1
 pkgdesc="ZeroMQ core engine in C++"
 arch=('i686' 'x86_64')
 depends=('gcc-libs' 'libpgm' 'libsodium')
