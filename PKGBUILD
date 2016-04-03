@@ -4,11 +4,11 @@
 pkgname=pyxml
 pkgname_=PyXML
 pkgver=0.8.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python XML, Dependency for selinux-refpolicy"
 arch=('any')
 url=http://downloads.sourceforge.net
-source=http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname_-$pkgver.tar.gz
+source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkgname_-$pkgver.tar.gz)
 license=('GPL')
 depends=('python2')
 md5sums=('1f7655050cebbb664db976405fdba209')
