@@ -1,8 +1,9 @@
-# Contributor: favonia
 # Maintainer: kaptoxic
+# Contributor: kaptoxic
+# Contributor: favonia
 
 pkgname=mathpartir
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 license=('GPL')
 depends=('texlive-core')
