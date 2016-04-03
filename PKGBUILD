@@ -2,7 +2,7 @@
 
 pkgname=cryptomator
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=("any")
 url="https://cryptomator.org/"
@@ -17,5 +17,5 @@ package() {
   install -d "${pkgdir}/usr/share/java/${pkgname}"
   cp -r * "${pkgdir}/usr/share/java/${pkgname}"
   install -d "${pkgdir}/usr/bin"
-  ln -s "/usr/share/java/${pkgname}/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/usr/share/java/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
