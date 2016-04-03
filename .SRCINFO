@@ -1,0 +1,26 @@
+pkgbase = aurutils-with-signing
+	pkgdesc = Helper tools for the AUR, forked to add support for signing packages
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://github.com/djmattyg007/aurutils-with-signing
+	arch = any
+	license = ISC
+	checkdepends = shellcheck
+	makedepends = git
+	depends = pacman>=5.0
+	depends = git
+	depends = repose
+	depends = jshon
+	depends = pacutils
+	depends = expac
+	depends = aria2
+	depends = devtools
+	depends = python-srcinfo
+	optdepends = time: for tracking build times
+	optdepends = vifm: improved build file interaction
+	conflicts = aurutils
+	source = https://github.com/djmattyg007/aurutils-with-signing/archive/0.4.2.tar.gz
+	sha256sums = 1390d7c5ce48c636c55c4e7f7682b477a5268b69a3ce097806ffae61b2c67f12
+
+pkgname = aurutils-with-signing
+
