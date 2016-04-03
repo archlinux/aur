@@ -4,7 +4,7 @@
 pkgname=fluxable-newmenu
 _pkgname=fluxable-newmenu
 pkgver=0.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc="provides categorized apps menus similar to those found in Mate or XFCE"
 arch=('any')
 url="https://github.com/burt1iband/fluxable-newmenu"
@@ -12,15 +12,16 @@ license=('GPL')
 source=("git+${url}.git")
 depends=('bash' 'grep' 'xorg-xrandr')
 optdepends=('notification-daemon' 'caja' 'pcmanfm' 'nautilus' 'orca')
-provides=('fluxable-newmenu')
+provides=('fluxable-newmenu' 'monitor-toggle')
 conflicts=('fluxable-newmenu')
-#install=$pkgname.install
+install=$pkgname.install
 md5sums=('SKIP')
 
 package() {
 cd "${srcdir}/${_pkgname}"
      install -d "$pkgdir/usr/bin"
      install -m 755 $_pkgname $pkgdir/usr/bin/
+     install -m 755 monitor-toggle $pkgdir/usr/bin/
      install -d "$pkgdir/usr/share/applications"
           install -m 644 fluxable-newmenu.desktop "$pkgdir/usr/share/applications/"
      install -d "$pkgdir/usr/share/doc/fluxable-newmenu"
