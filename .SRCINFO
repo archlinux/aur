@@ -1,7 +1,7 @@
 pkgbase = ttf-geosans-light
 	pkgdesc = Asian style font, clean and beautiful
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.dafont.com/geo-sans-light.font
 	install = ttf-geosans-light.install
 	arch = any

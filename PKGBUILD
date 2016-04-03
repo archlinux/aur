@@ -2,9 +2,9 @@
 
 pkgname=ttf-geosans-light
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Asian style font, clean and beautiful"
-url=('http://www.dafont.com/geo-sans-light.font')
+url='http://www.dafont.com/geo-sans-light.font'
 arch=('any')
 license=('custom')
 depends=('fontconfig' 'xorg-font-utils')
