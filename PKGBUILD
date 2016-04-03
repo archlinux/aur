@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-protocol-git
 pkgver=20160402
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Blockchain Query Privacy Protocol"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -10,9 +10,9 @@ depends=('boost'
          'czmq-git'
          'czmqpp-git'
          'libbitcoin'
+         'libsecp256k1'
          'libsodium'
          'protobuf'
-         'secp256k1-git'
          'zeromq')
 makedepends=('autoconf'
              'automake'
