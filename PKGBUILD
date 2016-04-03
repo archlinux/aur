@@ -3,16 +3,14 @@
 # Note: These VSTs require purchase/activation.
 
 vstname=Hive
-vstdir=/usr/lib/vst # Note: these are Linux VSTs (.so files)
 instdir=/opt/$vstname
-bits=64
-binaryname=$vstname.$bits.so
+vstdir=/usr/lib/vst # Note: these are Linux VSTs (.so files)
 
 pkgname=uhe-hive-vst
 pkgver=3965
 pkgrel=1
 pkgdesc='Virtual-analog synthesizer From u-he'
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url='http://www.u-he.com/cms/hive'
 license=('custom')
 depends=('cairo')
@@ -21,6 +19,10 @@ untarname=$vstname-$pkgver
 tarname=$untarname.tar.gz
 source=("http://uhedownloads.heckmannaudiogmb.netdna-cdn.com/penguin/release/$pkgver/$tarname")
 md5sums=('6fef511df532bda4e719f01699a1fa47')
+install=user.install
+
+bits=$(echo "$arch" | sed "s/x86_64/64/" | sed "s/i686/32/")
+binaryname=$vstname.$bits.so
 
 function patch_strings_in_file() {
 	# Source (Johan Hedin): http://everydaywithlinux.blogspot.com/2012/11/patch-strings-in-binary-files-with-sed.html
@@ -69,21 +71,27 @@ function patch_strings_in_file() {
 
 
 build() {
-	cd "$srcdir" && tar -xzf $tarname
+	cd "$srcdir" && tar -xzf $tarname && echo "$arch" > arch.txt
 	cd "$srcdir/$untarname/$vstname"
+
 	# The binaries use a scheme that causes paths to all be ~/.uhe/$vstname
 	# This includes paths to the plugin's own static resources (images, fonts)
-	# Patch the binary such that static resources will be loaded from a system dir
+	# Patch the binary such that static resources will be loaded from a system dir:
 	# Note: these paths can be located in the binary by hand via `strings $binaryname`
 	patch_strings_in_file "$binaryname" "%s/.%s/%s/Data" "$instdir/Data"
 	patch_strings_in_file "$binaryname" "%s/.%s/%s/Modules" "$instdir/Modules"
-	# Note: the Presets directory remains in the user's directory so that they can save presets
-	#patch_strings_in_file "$binaryname" "%s/.%s/%s/Presets" "$instdir/Presets"
+	# This is for accessing the user guide & the dialog binaries
 	patch_strings_in_file "$binaryname" "%s/.%s/%s/" "$instdir/"
-	#patch_strings_in_file "$binaryname" "%s/.%s/%s/Tunefiles" "$instdir/Tunefiles"
-	# CCMaps isn't shipped with the binary, nor is it created by the default install.sh, so ignore it
-	#patch_strings_in_file "$binaryname" "%s/.%s/%s/CCMaps" "$instdir/CCMaps"
-	#patch_strings_in_file "$binaryname" "%s/.%s/%s/Support" "$instdir/Support"
+
+	# The vst will work OK w/o the presets directory, but it must be manually created if the user wishes to save his/her presets
+	patch_strings_in_file "$binaryname" "%s/.%s/%s/Presets/%s" "%s/.local/share/$vstname"
+
+	# These other directories need to already exist and also be persistent
+	patch_strings_in_file "$binaryname" "%s/.%s/%s/Tunefiles" "%s/.local/share"
+	# CCMaps is set via [settings wheel] -> Midi Table
+	patch_strings_in_file "$binaryname" "%s/.%s/%s/CCMaps" "%s/.local/share"
+	# Support includes logs & license info
+	patch_strings_in_file "$binaryname" "%s/.%s/%s/Support" "%s/.local/share"
 }
 
 package() {
@@ -91,16 +99,14 @@ package() {
 	# Install custom license
 	install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/license.txt"
 
-	# Install binary
-	install -D $binaryname "$pkgdir/usr/lib/vst/$binaryname"
+	# Install the binary and the correct dialog version
+	install -D "$binaryname" "$pkgdir/$instdir/$binaryname"
+	install -D "dialog.$bits" "$pkgdir/$instdir/dialog.$bits"
+	# Link the binary onto the path
+	mkdir -p "$pkgdir/usr/lib/vst"
+	ln -s "$instdir/$binaryname" "$pkgdir/usr/lib/vst/$vstname.so"
 
-	# Empty directories ARE needed, so install those first
-	find Data/ Modules/ Presets/ Tunefiles/ Support/ -type d -exec install -d {} $pkgdir/$instdir/$file/{} \;
 	# Install all the files
-	find Data/ Modules/ Presets/ Tunefiles/ Support/ -type f -exec install -Dm644 {} $pkgdir/$instdir/$file/{} \;
+	find Data/ Modules/ Presets/ -type f -exec install -Dm644 {} $pkgdir/$instdir/{} \;
 }
 
-post_install() {
-	echo "$vstname installed; each user who wishes to access the presets must run the following"
-	echo "> mkdir -p ~/.u-he/$vstname/ && cp -R $instdir/Presets/ ~/.u-he/$vstname/"
-}
