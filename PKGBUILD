@@ -2,12 +2,12 @@
 
 pkgname=libbitcoin-consensus-git
 pkgver=20160402
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Consensus Library"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
-         'secp256k1-git')
+         'libsecp256k1')
 makedepends=('autoconf'
              'automake'
              'gcc'
