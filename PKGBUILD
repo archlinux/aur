@@ -3,12 +3,12 @@
 _gemname=celluloid-essentials
 pkgname=ruby-${_gemname}
 pkgver=0.20.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Internally used tools, and superstructural dependencies of Celluloid'
 url='https://github.com/celluloid/celluloid-essentials'
 arch=('any')
 license=('MIT')
-depends=('ruby')
+depends=('ruby' 'ruby-timers')
 makedepends=('git')
 options=('!emptydirs')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/celluloid/celluloid-essentials/archive/v${pkgver}.tar.gz
