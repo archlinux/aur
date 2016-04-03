@@ -1,26 +1,23 @@
-# Maintainer: Victor Häggqvist <aur *AT* snilius *DOT* com>
+# Maintainer: Morten Linderud <morten@linderud.pw> 
 
 pkgname=texcount
 pkgver=3.0.0.24
+_pkgver=$(echo $pkgver | tr "." "_")
 pkgrel=1
-pkgdesc="TeXcount is a Perl script that counts the number of words in the text of LaTeX files. It has rules for handling most of the common macros and provides colour coded output indicating which parts have been counted."
+pkgdesc='TeXcount is a Perl script for counting words in LaTeX documents. It parses valid LaTeX documents counting words, headers, formulae (mathematics) and floats/begin-end groups.'
 arch=('any')
-url="http://app.uio.no/ifi/texcount/"
-license=('LaTeX Project Public License')
+url='http://app.uio.no/ifi/texcount/'
+license=('LPPL')
+depends=('perl')
+source=("${pkgname}_${pkgver}.zip::http://app.uio.no/ifi/texcount/download.php?file=texcount_${_pkgver}.zip")
 makedepends=('unzip')
-source=("${pkgname}_${pkgver}.zip::http://app.uio.no/ifi/texcount/download.php?file=${pkgname}_${pkgver//./_}.zip")
 noextract=("${pkgname}_${pkgver}.zip")
-sha1sums=('aca004deb2cab96a0c25083978b7cf1dbc1a55ee')
+sha256sums=('0347fb8b5a77342f8853ff3bcf017f941664e624153f969e66933ea54b868944')
+
+prepare() {
+  unzip -qo ${srcdir}/${pkgname}_${pkgver}.zip
+}
 
 package() {
-  cd "$srcdir"
-  unzip "${pkgname}_${pkgver}.zip"
-
-  # Binaries
-  install -dm755 "${pkgdir}/usr/bin"
-  cp texcount.pl "${pkgdir}/usr/bin/$pkgname"
-
-  # Docs
-  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
-  cp README QuickReference.pdf TeXcount.pdf "${pkgdir}/usr/share/doc/${pkgname}/."
+  install -D ${srcdir}/texcount.pl ${pkgdir}/usr/bin/texcount
 }
