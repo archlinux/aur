@@ -3,7 +3,7 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=ttf-textfonts
-pkgver=6.31
+pkgver=8.91
 pkgrel=1
 pkgdesc="Text faces based on early Greek editions"
 arch=('any')
@@ -24,6 +24,7 @@ md5sums=('9ce238bc6b3bfe4fcaadf8d2f10c6022'
          'b88dff592adf143f00d195af54f434f9'
          '43e0f2d0d6de7e2138de293c0ad58814'
          'bc1709dc3b1f6a7545ab366923e01a1c')
+
 
 package()
 {
