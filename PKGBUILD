@@ -3,7 +3,7 @@
 
 pkgname=aurutils-with-signing
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Helper tools for the AUR, forked to add support for signing packages'
 arch=('any')
 url='https://github.com/djmattyg007/aurutils-with-signing'
@@ -15,6 +15,7 @@ depends=('pacman>=5.0' 'git' 'repose' 'jshon' 'pacutils' 'expac' 'aria2' 'devtoo
 checkdepends=('shellcheck')
 makedepends=('git')
 optdepends=(
+    'cower: for downloading packages automatically using aurgrab'
     'time: for tracking build times'
     'vifm: improved build file interaction'
 )
