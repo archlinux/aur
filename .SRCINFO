@@ -1,0 +1,17 @@
+pkgbase = git-remote-hg-git
+	pkgdesc = Transparent bidirectional bridge between Git and Mercurial
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/fingolfin/git-remote-hg
+	arch = any
+	license = GPL2
+	makedepends = asciidoc
+	depends = git
+	depends = mercurial
+	provides = git-remote-hg
+	conflicts = git-remote-hg
+	source = git+https://github.com/fingolfin/git-remote-hg.git
+	md5sums = SKIP
+
+pkgname = git-remote-hg-git
+
