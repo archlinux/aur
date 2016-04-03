@@ -4,7 +4,7 @@
 _pkgname=mailcatcher
 pkgname=ruby-$_pkgname
 pkgver=0.6.1
-pkgrel=8
+pkgrel=9
 pkgdesc='Catches mail and serves it through a dream.'
 arch=('any')
 url="http://$_pkgname.me"
@@ -41,8 +41,8 @@ package() {
   rm "$_gemdir/cache/$_pkgname-$pkgver.gem"
 
   # Loosen version-specific dependencies
-  sed -i '/dependency(%q<eventmachine>/{s/"<= 1.0.5", //}' $_gemspec
-  sed -i '/dependency(%q<thin>/{s/"~> 1.5.0"/"~> 1"/}' $_gemspec
+  sed -i '/dependency(%q<eventmachine>/{s/".*"/"~> 1"/}' $_gemspec
+  sed -i '/dependency(%q<thin>/{s/".*"/"~> 1"/}' $_gemspec
 
   # Install systemd units
   for file in "$_pkgname"{.service,{-http,-smtp}{@.service,.socket}}; do
