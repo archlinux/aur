@@ -1,6 +1,6 @@
 pkgbase = xf86-input-synaptics-led
 	pkgdesc = Synaptics driver for notebook touchpads (with LED disable support)
-	pkgver = 1.7.6
+	pkgver = 1.7.8
 	pkgrel = 1
 	url = http://xorg.freedesktop.org/
 	arch = i686
@@ -21,10 +21,10 @@ pkgbase = xf86-input-synaptics-led
 	conflicts = xf86-input-synaptics
 	replaces = synaptics
 	options = !libtool
-	source = http://xorg.freedesktop.org/releases/individual/driver/xf86-input-synaptics-1.7.6.tar.bz2
+	source = http://xorg.freedesktop.org/releases/individual/driver/xf86-input-synaptics-1.7.8.tar.bz2
 	source = led_support.patch
-	md5sums = f1a501caa0da0bf0e78f249c5ed9bd73
-	md5sums = d4e3cd69e96405cd37df19f8043161da
+	md5sums = 4279611b096e17865912c6f91b86a648
+	md5sums = b6a51cc96e67b6860ed8e6206116414c
 
 pkgname = xf86-input-synaptics-led
 
