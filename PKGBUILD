@@ -1,6 +1,6 @@
 pkgname=mingw-w64-sdl2_net
-pkgver=2.0.0
-pkgrel=6
+pkgver=2.0.1
+pkgrel=1
 pkgdesc="A small sample cross-platform networking library (Version 2) (mingw-w64)"
 arch=('any')
 url="http://libsdl.org"
@@ -9,7 +9,7 @@ depends=('mingw-w64-sdl2')
 makedepends=('mingw-w64-configure')
 options=('staticlibs' '!strip' '!buildflags')
 source=("http://www.libsdl.org/projects/SDL_net/release/SDL2_net-$pkgver.tar.gz")
-md5sums=('83bcd0e67796b81b35b08a014c677200')
+md5sums=('5c1d9d1cfa63301b141cb5c0de2ea7c4')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
