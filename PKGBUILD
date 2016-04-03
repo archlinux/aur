@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-client
 pkgver=2.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Bitcoin Client Protocol Library"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -11,8 +11,8 @@ depends=('boost'
          'czmqpp-git'
          'icu'
          'libbitcoin'
+         'libsecp256k1'
          'libsodium'
-         'secp256k1-git'
          'zeromq')
 makedepends=('autoconf'
              'automake'
