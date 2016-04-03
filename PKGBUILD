@@ -4,7 +4,7 @@
 
 pkgname=spearmint
 pkgver=0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="An improved ioquake3-based Quake 3: Arena client (note: requires pak files from original CD)"
 url="http://spearmint.pw"
 license=("GPL3")
@@ -27,6 +27,8 @@ build() {
   mv "${pkgname}-${pkgver}-linux" ${pkgname}
   cd ${pkgname}
 
+if [ ! -f "${pkgname}-server" ];
+then
   if [[ "${CARCH}" == 'i686' ]];
   then
     rm -f ${pkgname}{,-server}_x86_64
@@ -40,6 +42,7 @@ build() {
     mv ${pkgname}-server_x86_64 ${pkgname}-server
     _ARCH=${CARCH}
   fi
+fi
 
   mv ${pkgname}-${pkgver}-readme.txt readme.txt
 }
