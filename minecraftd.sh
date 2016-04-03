@@ -87,7 +87,7 @@ idle_server_daemon() {
 			screen -S "${SESSION_NAME}" -X stuff "`printf \"list\r\"`"
 			# The list command prints a line containing the usernames after the last occurrence of ": "
 			# and since playernames may not contain this string the clean player-list can be easily retrieved.
-			if [[ $? -eq 0 && -z $(sleep 0.6; tail -n 1 "${LOGPATH}/latest.log" | sed 's/.*\: //' | tr -d '\n') ]]; then
+			if [[ $? -eq 0 && -z $(sleep 0.6; tail -n 1 "${LOGPATH}/latest.log" | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' | sed 's/.*\: //' | tr -d '\n') ]]; then
 				# No player was seen on the server through list
 				no_player=$((no_player + CHECK_PLAYER_TIME))
 				# Stop the game server if no player was active for at least ${IDLE_IF_TIME}
@@ -184,7 +184,7 @@ server_stop() {
 		${SUDO_CMD} screen -S "${SESSION_NAME}" -X stuff "`printf \"list\r\"`"
 		# The list command prints a line containing the usernames after the last occurrence of ": "
 		# and since playernames may not contain this string the clean player-list can be easily retrieved.
-		if [[ $? -eq 0 && -z $(sleep 0.6; tail -n 1 "${LOGPATH}/latest.log" | sed 's/.*\: //' | tr -d '\n') ]]; then
+		if [[ $? -eq 0 && -z $(sleep 0.6; tail -n 1 "${LOGPATH}/latest.log" | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' | sed 's/.*\: //' | tr -d '\n') ]]; then
 			# No player was seen on the server through list
 			echo -en "Server is going down..."
 			game_command stop
@@ -239,7 +239,7 @@ server_status() {
 
 		# Calculating memory usage
 		for p in $(${SUDO_CMD} pgrep -f "${MAIN_EXECUTABLE}"); do
-			ps -p${p} -O rss | tail -n1;
+			ps -p${p} -O rss | tail -n 1;
 		done | gawk '{ count ++; sum += $2 }; END {count --; print "Number of processes =", count, "(screen, bash,", count-2, "x java)"; print "Total memory usage =", sum/1024, "MB" ;};'
 	else
 		echo -e "Status:\e[39;1m stopped\e[0m"
@@ -371,7 +371,7 @@ server_command() {
 
 	${SUDO_CMD} screen -S "${SESSION_NAME}" -Q select . > /dev/null
 	if [[ $? -eq 0 ]]; then
-		${SUDO_CMD} sleep 0.3 & tail -f --pid=$! -n 0 "${LOGPATH}/latest.log" &
+		${SUDO_CMD} sleep 0.3 & tail -f --pid=$! -s 0.1 -n 0 "${LOGPATH}/latest.log" &
 		game_command "$@"
 		wait
 	else
