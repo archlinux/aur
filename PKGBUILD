@@ -1,7 +1,7 @@
 # Maintainer: Albert Graef <aggraef at gmail dot com>
 
 pkgname=pd-lv2plugin-git
-pkgver=22.6d24266
+pkgver=24.98b7fb6
 pkgrel=1
 pkgdesc="LV2 plugin host for Pd"
 arch=("i686" "x86_64")
