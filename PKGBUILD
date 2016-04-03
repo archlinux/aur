@@ -14,7 +14,7 @@
 #
 
 pkgname=emacs-git
-pkgver=25.1.50.r125542
+pkgver=25.1.50.r125562
 pkgrel=1
 pkgdesc="GNU Emacs. Master development branch."
 arch=('i686' 'x86_64')
@@ -42,7 +42,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
 
-  [[ -x configure ]] || $( ./autogen.sh git && ./autogen.sh autoconf )
+  [[ -x configure ]] || ( ./autogen.sh git && ./autogen.sh autoconf )
 }
 
 build() {
