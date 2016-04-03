@@ -9,7 +9,7 @@
 # Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
 pkgname=networkmanager-consolekit
-pkgver=1.0.10
+pkgver=1.0.12
 pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems"
@@ -21,7 +21,7 @@ depends=("libnm-glib>=${pkgver}" 'iproute2' 'libnl' 'polkit-consolekit' 'console
          'libteam' 'libgudev')
 makedepends=('intltool' 'iptables' 'gobject-introspection' 'gtk-doc' 
              "ppp=$_pppver" 'modemmanager' 'rp-pppoe' 'vala' 'perl-yaml' 
-             'python2-gobject')
+             'python-gobject')
 optdepends=('modemmanager: for modem management service'
             'dhcpcd: alternative DHCP client; does not support DHCPv6'
             'iptables: connection sharing'
@@ -35,32 +35,26 @@ conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 install=networkmanager.install
 source=(https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
-        0001-core-fix-failure-to-configure-routes.patch
         NetworkManager.conf 
         disable_set_hostname.patch 
         networkmanager.rc
         )
-sha256sums=('1bcfce8441dfd9f432a100d06b54f3831a2275cccc3b74b1b4c09a011e179fbc'
-            '27d84d45046826a25e861a126099d9ad39e84408530c1bb898287e4543eb84f7'
+sha256sums=('3a470f8c60109b1acb5784ddc2423501706b5fe34c793a6faee87e591eb04a9e'
             '2c6a647b5aec9f3c356d5d95251976a21297c6e64bd8d2a59339f8450a86cb3b'
             '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460'
             'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc')
 
 prepare() {
-  mkdir path
-  ln -s /usr/bin/python2 path/python
-
   cd NetworkManager-$pkgver
 
-  patch -Np1 -i ../0001-core-fix-failure-to-configure-routes.patch
   patch -Np1 -i ../disable_set_hostname.patch
+  2to3 -w libnm src tools
   NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
   cd NetworkManager-$pkgver
 
-  export PATH="$srcdir/path:$PATH"
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
