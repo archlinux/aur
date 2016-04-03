@@ -1,0 +1,19 @@
+pkgbase = tclmpi-git
+	pkgdesc = OpenMPI bindings for Tcl
+	pkgver = r141.5889616
+	pkgrel = 1
+	url = https://sites.google.com/site/akohlmey/software/tclmpi
+	arch = any
+	license = custom
+	makedepends = git
+	makedepends = openmpi
+	makedepends = tcl
+	depends = tcl
+	depends = openmpi
+	provides = tclmpi
+	conflicts = tclmpi
+	source = tclmpi::git+https://github.com/akohlmey/tclmpi.git
+	md5sums = SKIP
+
+pkgname = tclmpi-git
+
