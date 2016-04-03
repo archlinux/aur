@@ -1,7 +1,7 @@
 pkgname=('shotcut')
 srcname='shotcut'
 pkgdesc='Video editor'
-pkgver='16.03'
+pkgver='16.04'
 pkgrel='1'
 arch=('i686' 'x86_64')
 url='https://github.com/mltframework/shotcut'
@@ -48,7 +48,7 @@ prepare() {
 build() {
     cd "${srcdir}/${srcname}"
 
-    qmake PREFIX='/usr/'
+    qmake 'CONFIG-=c++11' PREFIX='/usr/'
     make
 }
 
