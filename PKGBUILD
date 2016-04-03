@@ -1,7 +1,8 @@
-# Maintainer: Veeti Paananen <veeti.paananen@rojekti.fi>
+# Maintainer: Jonathan la Cour <jon@lacour.me>
+# Contributor: Veeti Paananen <veeti.paananen@rojekti.fi>
 pkgname=armory-bin
 pkgver=0.94.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Full-featured Bitcoin wallet management application (official binary)"
 arch=('x86_64')
 url="https://github.com/goatpig/BitcoinArmory"
@@ -24,9 +25,8 @@ check() {
   gpg --verify 'sha256sum.asc.txt'
   msg2 'GPG signature is valid.'
 
-  cd $srcdir
   msg 'Validating signed checksum of downloaded binary...'
-  grep 'amd64.deb' '../sha256sum.asc.txt' | tr -d '\r' | sha256sum -c -
+  grep 'amd64.deb' 'sha256sum.asc.txt' | tr -d '\r' | sha256sum -c -
   msg2 'Checksum valid.'
 }
 
