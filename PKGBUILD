@@ -1,21 +1,21 @@
 # Contributor: Isak Karlsson <isak.karlsson@gmail.com>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=rust-nightly
-pkgver=1.9.0_2016.04.03
+pkgname=('rust-nightly' 'rust-nightly-doc')
+pkgver=1.9.0_2016.04.04
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A safe, concurrent, practical language'
 url='http://www.rust-lang.org/'
 license=('MIT' 'Apache')
 depends=('shared-mime-info')
-makedepends=('libffi' 'perl' 'python2' 'curl' 'clang')
+makedepends=('libffi' 'perl' 'python2' 'curl' 'clang' 'haskell-pandoc' 'emacs')
 source=("http://static.rust-lang.org/dist/rustc-nightly-src.tar.gz")
 sha256sums=('SKIP')
 install=rust.install
 options=('!makeflags' 'staticlibs' '!strip' '!emptydirs')
-conflicts=('rust' 'cargo')
-provides=('rust' 'cargo')
+conflicts=('rust')
+provides=('rust')
 
 build() {
   cd rustc-nightly
@@ -27,12 +27,59 @@ build() {
   make
  }
 
-package() {
-  cd rustc-nightly
-  make DESTDIR="$pkgdir" install
+package_rust-nightly() {
+	depends=('shared-mime-info')
+	optdepends=('rust-doc-git: language and API documentation')
+	provides=('rust')
+	conflicts=('rust')
+	options=('staticlibs')
+	install=rust.install
 
-  install -Dm644 LICENSE-APACHE "$pkgdir/usr/share/licenses/$pkgname/LICENSE-APACHE"
-  install -Dm644 LICENSE-MIT "$pkgdir/usr/share/licenses/$pkgname/LICENSE-MIT"
-  cd "$pkgdir/usr/lib"
-  ln -sf rustlib/$CARCH-unknown-linux-gnu/lib/* .
+	cd rust
+
+	make DESTDIR="$pkgdir" install
+	rm -fr "$pkgdir"/usr/share/doc/rust/html
+
+	rm -f "$pkgdir"/usr/lib/rustlib/{components,manifest-rustc,manifest-rust-docs,rust-installer-version,install.log,uninstall.sh}
+
+	install --directory "$pkgdir"/usr/share/licenses/rust-nightly/
+	install -m644 COPYRIGHT LICENSE-* "$pkgdir"/usr/share/licenses/rust-nightly/
+
+	install --directory "$pkgdir"/usr/share/vim/vimfiles/
+	cp -a "$srcdir"/rust.vim/*/ "$pkgdir"/usr/share/vim/vimfiles/
+
+	install --directory "$pkgdir"/usr/share/zsh/functions/Completion/Zsh/
+	cp -a "$srcdir"/zsh-config/_* "$pkgdir"/usr/share/zsh/functions/Completion/Zsh/
+
+	install --directory "$pkgdir"/usr/share/nano/
+	cp -a "$srcdir"/nano-config/*.nanorc "$pkgdir"/usr/share/nano/
+
+	cd "$srcdir"/rust-mode
+	emacs --eval '(byte-recompile-directory "." 0)' --quick --batch 2> /dev/null || true
+	install --directory "$pkgdir"/usr/share/emacs/site-lisp/
+	cp -a rust-mode.* "$pkgdir"/usr/share/emacs/site-lisp/
+}
+
+package_rust-nightly-doc() {
+	pkgdesc="A safe, concurrent, practical language from Mozilla. (Language and API documentation)"
+	arch=('any')
+	options+=('!strip' '!emptydirs')
+	optdepends=('rust-nightly: to compile and run the programs you can write using this documentation')
+	provides=('rust-doc')
+	conflicts=('rust-doc')
+
+	cd rust
+
+	_docdir="$pkgdir"/usr/share/doc/rust
+	install --directory "$_docdir"
+	cp -r doc/* "$_docdir"/ || true
+
+	chmod -R 644 "$_docdir"
+	find "$_docdir" -type d -exec chmod 755 {} +
+	for ext in aux out log toc; do
+		rm -f "$_docdir"/*."$ext"
+	done
+
+	install --directory "$pkgdir"/usr/share/licenses/rust-nightly-doc/
+	install -m644 COPYRIGHT LICENSE-* "$pkgdir"/usr/share/licenses/rust-nightly-doc/
 }
