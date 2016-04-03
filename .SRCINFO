@@ -1,6 +1,6 @@
 pkgbase = freefem++
 	pkgdesc = A PDE oriented language using the finite element method
-	pkgver = 3.41
+	pkgver = 3.45
 	pkgrel = 1
 	url = http://www.freefem.org/ff++/index.htm
 	arch = i686
@@ -15,9 +15,9 @@ pkgbase = freefem++
 	depends = glu
 	depends = suitesparse
 	options = !makeflags
-	source = http://www.freefem.org/ff++/ftp/freefem++-3.41.tar.gz
+	source = http://www.freefem.org/ff++/ftp/freefem++-3.45.tar.gz
 	source = disable-doc.patch
-	sha256sums = 49559dcfd0a68fc3b028842e960074cfbb3db87295a039cfa2fa6b422763e478
+	sha256sums = 7bd233821603f5f99d657fa6eea7bfe2df821d816a200246261616106b8e49b5
 	sha256sums = 0e6a176f38c0d9ec299994d978ae378f71aafe55ef90c1fb5d40e137ba939d70
 
 pkgname = freefem++
