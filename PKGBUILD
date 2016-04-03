@@ -1,13 +1,20 @@
 # Maintainer: See AUR interface for current maintainer.
 
 #
-# TIP: Don't run this on a tmpfs unless you have oodles of RAM.
-#      When the official git repo started, the size was about
-#      200MB. As time passes, it will grow more and more.
+# TIPS: Don't run this on a tmpfs unless you have oodles of RAM.
+#       When the official git repo started, the size was about
+#       200MB. As time passes, it will grow more and more.
+#
+#       Keeping this directory in a safe place preserves the 
+#       git repo and the src dir for faster compilations if 
+#       you want. You may delete the pkg dir after successfully 
+#       creating a package.
+#
+#      "makepkg -i" is your friend.
 #
 
 pkgname=emacs-git
-pkgver=25.1.50.r125353
+pkgver=25.1.50.r125542
 pkgrel=1
 pkgdesc="GNU Emacs. Master development branch."
 arch=('i686' 'x86_64')
@@ -31,16 +38,21 @@ pkgver() {
 
 
 # There is no need to run autogen.sh after first checkout.
-# Doing so, breaks incremental recompilation.
+# Doing so, breaks incremental compilation.
 prepare() {
   cd "$srcdir/$pkgname"
-  if ! [ -f configure ]; then 
-    ./autogen.sh
-  fi 
+
+  [[ -x configure ]] || $( ./autogen.sh git && ./autogen.sh autoconf )
 }
 
 build() {
   cd "$srcdir/$pkgname"
+
+# If you add "--with-xwidgets" to the options array below, make sure to add
+# webkitgtk to the depends array above.
+
+# If you add "--with-cairo" to the options array below, make sure to add
+# cairo to the depends array above.
 
   local _conf=(
     --prefix=/usr 
@@ -55,11 +67,14 @@ build() {
     --with-xft
     --with-modules)
 
-  ./configure ${_conf[@]}
+  ./configure "${_conf[@]}"
 
   # Using "make" instead of "make bootstrap" makes incremental
   # compiling work. Less time recompiling. Yay! But if you may 
-  # need to use bootstrap sometime, just add it below.
+  # need to use bootstrap sometime, just add it to the command 
+  # line.
+  # Please note that incremental compilation implies that you 
+  # are reusing your src directory!
   make
 
   # You may need to run this if loaddefs.el files become
@@ -68,8 +83,14 @@ build() {
   #make autoloads
 
   # Before enabling "make docs" you need to install texlive, either from
-  # the repos or locally while using texlive-dummy from AUR.
+  # the repos or locally while using texlive-dummy from AUR and enable
+  # installation in the package() section. This command installs dvi, 
+  # ps and html copies of the documentation.
   #make docs
+  # You can generate html only.
+  #make html
+  # And... pdf output is handled independently.
+  #make pdf
 }
 
 package() {
@@ -79,7 +100,16 @@ package() {
 
   # Before enabling "make install-doc" you need to install texlive, either
   # from the repos or locally while using texlive-dummy from AUR.
+  # Installs dvi, ps and html.
   # make DESTDIR="$pkgdir/" install-doc
+
+  # Before enabling "make install-html" you need to install texlive, either
+  # from the repos or locally while using texlive-dummy from AUR.
+  # make DESTDIR="$pkgdir/" install-html
+
+  # Before enabling "make install-pdf" you need to install texlive, either
+  # from the repos or locally while using texlive-dummy from AUR.
+  # make DESTDIR="$pkgdir/" install-pdf
 
   # remove conflict with ctags package
   mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
