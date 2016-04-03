@@ -4,7 +4,7 @@
 
 pkgname=spearmint
 pkgver=0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="An improved ioquake3-based Quake 3: Arena client (note: requires pak files from original CD)"
 url="http://spearmint.pw"
 license=("GPL3")
@@ -16,11 +16,15 @@ install=spearmint.install
 source=("${pkgname}.tar.xz::https://github.com/zturtleman/${pkgname}/releases/download/release-${pkgver}/${pkgname}-${pkgver}-linux.tar.xz"
 	"https://raw.githubusercontent.com/zturtleman/${pkgname}/master/misc/${pkgname}.svg"
 	"spearmint.desktop"
-	"spearmint.service")
+	"spearmint.service"
+	"spearmint.launcher"
+	"spearmint-server.launcher")
 sha256sums=("40100f4e321a51661155ba78ae4432debb0e5454390be163595f78e4f27baeab"
             "51d2af17f344a5a38800b4a82d7be44ae79f2f4ab30201535b468b945ea69122"
 	    "38c570ee9372f84d6a617e63c97d5b57ded6641fef442133dd68d9eb6d7ab615"
-	    "179efb08accebc7be70e6656f79599049c74f0a4c5a0bae3b526fb70416a9aa6")
+	    "065642fa4eed2530a15be47ff18f5cdfc990dcf262656cf902552d2a8e2410e5"
+            "667921e0c27baeaa643f80adae3b0e9f8ce274827b89f514c7e5c9a704a7a5a0"
+	    "64c1a40839604cf905a6caebd29d392504517e6c9d37c9a1de67bdf0178e8255")
 
 build() {
   cd ${srcdir}
@@ -60,6 +64,8 @@ package() {
   install -d -m 755 ${pkgdir}/usr/bin
   install -d -m 755 ${pkgdir}/usr/share/doc/${pkgname}
   install -d -m 750 ${pkgdir}/opt/quake3/{baseq3,missionpack,settings}
+  install -m 750 ${srcdir}/${pkgname}.launcher ${pkgdir}/opt/quake3/
+  install -m 750 ${srcdir}/${pkgname}-server.launcher ${pkgdir}/opt/quake3/
   install -m 750 ${srcdir}/${pkgname}/${pkgname} ${pkgdir}/opt/quake3/
   install -m 750 ${srcdir}/${pkgname}/${pkgname}-server ${pkgdir}/opt/quake3/
   install -m 750 ${srcdir}/${pkgname}/mint-renderer-opengl*_${_ARCH}.so ${pkgdir}/opt/quake3/
@@ -71,13 +77,15 @@ package() {
   rm ${pkgdir}/usr/share/doc/${pkgname}/COPYING.txt
 
   cd ${pkgdir}/usr/bin
-  ln -sf /opt/quake3/${pkgname}-server ${pkgname}
-  ln -sf /opt/quake3/ioq3ded ${pkgname}-server
-  ln -sf ${pkgname} quake3 
-  ln -sf ${pkgname}-server q3ded 
-  ln -s ${pkgname} ioquake3
-  ln -s ${pkgname}-server ioq3ded
-  cd ${srcdir}/${pkgname}
+  ln -sf /opt/quake3/${pkgname}.launcher ${pkgname}
+  ln -sf /opt/quake3/${pkgname}-server.launcher ${pkgname}-server
+  ln -sf /opt/quake3/${pkgname}.launcher quake3 
+  ln -sf /opt/quake3/${pkgname}-server.launcher q3ded 
+  ln -sf /opt/quake3/${pkgname}.launcher ioquake3
+  ln -sf /opt/quake3${pkgname}-server.launcher ioq3ded
+  cd ${pkgdir}/opt/quake3
+  ln -sf ${pkgname} ioquake3
+  ln -sf ${pkgname}-server ioq3ded
 
   install -D -m 644 ${srcdir}/spearmint.service ${pkgdir}/usr/lib/systemd/system/spearmint.service
 
