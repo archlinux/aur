@@ -1,0 +1,23 @@
+pkgbase = sysprof2-git
+	pkgdesc = CPU Profiler
+	pkgver = 1.99.0.gabbf2e0
+	pkgrel = 1
+	url = https://github.com/chergert/sysprof2
+	install = sysprof2.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = GPL3
+	makedepends = intltool
+	makedepends = git
+	makedepends = autoconf-archive
+	depends = gtk3
+	depends = polkit
+	provides = sysprof2
+	conflicts = sysprof2
+	options = !libtool
+	source = git+https://github.com/chergert/sysprof2.git
+	md5sums = SKIP
+
+pkgname = sysprof2-git
+
