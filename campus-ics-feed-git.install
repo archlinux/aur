@@ -1,5 +1,0 @@
-post_install() {
-    echo "Configure your username and password in /etc/campus-ics-feed.ini. You can"
-    echo "also set CAMPUS_CONFIG_FILE to a custom location for the webapp config"
-    echo "file."
-}
