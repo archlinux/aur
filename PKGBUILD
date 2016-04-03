@@ -5,7 +5,7 @@
 
 pkgname=qtkeychain-qt4
 _pkgname=qtkeychain
-pkgver=0.6
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Provides support for secure credentials storage'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('qt4')
 makedepends=('cmake')
 optdepends=('gnome-keyring: GNOME password manager')
 source=("${_pkgname}-${pkgver}.zip::https://github.com/frankosterfeld/qtkeychain/archive/${pkgver}.zip")
-md5sums=('44eb27f44708532f9ec222c1d2e2fb85')
+md5sums=('d58f7ea3d85392cf80afc4b956fbd5c0')
 
 prepare() {
     rm -rf build
