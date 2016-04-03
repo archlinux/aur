@@ -1,0 +1,12 @@
+diff -aur pctr/ctrtool/Makefile pctr-p/ctrtool/Makefile
+--- pctr/ctrtool/Makefile	2016-04-03 13:00:08.768354449 +0800
++++ pctr-p/ctrtool/Makefile	2016-04-03 12:59:58.821687435 +0800
+@@ -4,7 +4,7 @@
+ 
+ # Compiler Settings
+ OUTPUT = ctrtool
+-CXXFLAGS = -I.
++CXXFLAGS = -O2 -flto -Wall -I.
+ CFLAGS = -O2 -flto -Wall -Wno-unused-variable  -Wno-unused-result -I.
+ CC = gcc
+ CXX = g++
