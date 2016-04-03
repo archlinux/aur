@@ -200,10 +200,11 @@ diff -ur xf86-input-synaptics-1.7.6/src/synaptics.c xf86-input-synaptics-1.7.6_n
  
  const static struct {
      const char *name;
-@@ -745,6 +746,8 @@
-         xf86SetIntOption(opts, "HorizResolution", horizResolution);
-     pars->resolution_vert =
-         xf86SetIntOption(opts, "VertResolution", vertResolution);
+@@ -771,7 +771,8 @@
+            the touchpad diagonal */
+         pars->maxDeltaMM = diag * 0.25;
+     }
+-
 +    pars->led_double_tap =
 +        xf86SetBoolOption(opts, "LEDDoubleTap", TRUE);
  
@@ -387,17 +388,18 @@ diff -ur xf86-input-synaptics-1.7.6/src/synaptics.c xf86-input-synaptics-1.7.6_n
 diff -ur xf86-input-synaptics-1.7.6/src/synapticsstr.h xf86-input-synaptics-1.7.6_new/src/synapticsstr.h
 --- xf86-input-synaptics-1.7.6/src/synapticsstr.h	2014-05-01 08:18:12.000000000 +0400
 +++ xf86-input-synaptics-1.7.6_new/src/synapticsstr.h	2015-10-29 11:47:04.671303525 +0300
-@@ -226,6 +226,9 @@
+@@ -226,7 +226,9 @@
      int area_left_edge, area_right_edge, area_top_edge, area_bottom_edge;       /* area coordinates absolute */
      int softbutton_areas[4][4]; /* soft button area coordinates, 0 => right, 1 => middle , 2 => secondary right, 3 => secondary middle button */
      int hyst_x, hyst_y;         /* x and y width of hysteresis box */
+-
 +    Bool has_led;               /* has an embedded LED */
 +    Bool led_status;            /* Current status of LED (1=on) */
 +    Bool led_double_tap;        /* double-tap period in ms for touchpad LED control */
+     int maxDeltaMM;               /* maximum delta movement (vector length) in mm */
  } SynapticsParameters;
  
- struct _SynapticsPrivateRec {
-@@ -308,6 +311,11 @@
+@@ -310,6 +312,11 @@
      Bool has_width;             /* device reports finger width */
      Bool has_scrollbuttons;     /* device has physical scrollbuttons */
      Bool has_semi_mt;           /* device is only semi-multitouch capable */
