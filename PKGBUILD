@@ -6,7 +6,7 @@
 # Contributor: Christian Berendt <christian@thorlin.de>
 
 pkgname=cfengine
-pkgver=3.7.2
+pkgver=3.7.3
 pkgrel=1
 pkgdesc='Automated suite of programs for configuring and maintaining Unix-like computers.'
 url='http://www.cfengine.org'
@@ -17,12 +17,12 @@ makedepends=('which')
 optdepends=('libvirt' 'postgresql-libs' 'libmariadbclient' 'acl')
 install=${pkgname}.install
 source=("${pkgname}-${pkgver}.tar.gz::https://cfengine-package-repos.s3.amazonaws.com/tarballs/${pkgname}-${pkgver}.tar.gz"
-        "https://cfengine-package-repos.s3.amazonaws.com/tarballs/cfengine-masterfiles-${pkgver}.tar.gz"
+        "cfengine-masterfiles-${pkgver}.tar.gz::https://cfengine-package-repos.s3.amazonaws.com/tarballs/cfengine-masterfiles-${pkgver}.tar.gz"
         'cf-execd.service'
         'cf-monitord.service'
         'cf-serverd.service')
-md5sums=('aff92abe87a5424680afd285d0384bef'
-         '48335259f199c87c2d7652ed8405f21c'
+md5sums=('dcd0a8b9490dfafad124c5135900f08b'
+         'f7d1260a6fe9f6ce9a00c70c984a7252'
          'dba17dc5133b8fa86de11577120d46c5'
          'a2f9db31408f288cb934397ffb474db3'
          'ff28f7de9b81b4673082a2640a318896')
