@@ -3,7 +3,7 @@
 _target=msp430-elf
 pkgname=${_target}-mcu
 pkgver=4.0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Header files and linker scripts for MSP430 microcontrollers"
 arch=('any')
 url="http://www.ti.com/tool/msp430-gcc-opensource"
@@ -15,20 +15,24 @@ sha256sums=('84c8571cc6eab96df04685d5bd5f7884a0617435826c79d4dd50b5723b1353d9'
             'cd344f1a8da5c24768fbcc3494ad12b9880a82097dfb5a4d63d2a52f2833cc38')
 
 
+# TI changed the directory things get placed into...
+_extractdir=GCC_RH/include
+
 build() {
-  cd "${srcdir}/msp430-gcc-support-files"
-  # seems like TI fixed this, please report bugs if that is not the case
-  # for f in *.ld; do
-  #   echo -n "Modifying linker script ${f}... "
-  #   sed -i \
-  #     "s|(\.debug_line)|(\.debug_line \.debug_line\.\* \.debug_line_end)|g" \
-  #     ${f} 
-  #   [[ $? = "0" ]] && echo "ok" || echo "fail"
-  # done
+  cd "${srcdir}/${_extractdir}"
+  # https://sourceware.org/bugzilla/show_bug.cgi?id=17940
+  # some linker scripts are missing the necessary debug_line the linker expects
+  for f in *.ld; do
+    echo -n "Modifying linker script ${f}... "
+    sed -i \
+      "s|(\.debug_line)|(\.debug_line \.debug_line\.\* \.debug_line_end)|g" \
+      ${f} 
+    [[ $? = "0" ]] && echo "ok" || echo "fail"
+  done
 }
 
 package() {
-  cd "${srcdir}/msp430-gcc-support-files"
+  cd "${srcdir}/${_extractdir}"
   
   # install linker scripts
   # binutils does weird stuff and does not look in lib/ldscripts
@@ -45,7 +49,7 @@ package() {
 
   # copy license file
   install -dm755 "${pkgdir}/usr/share/licenses/msp430-elf-mcu"
-  install -m644 ../license "${pkgdir}/usr/share/licenses/msp430-elf-mcu"
+  install -m644 ../../license "${pkgdir}/usr/share/licenses/msp430-elf-mcu"
 }
 
 # vim:set ts=2 sw=2 et:
