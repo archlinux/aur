@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-node-git
-pkgver=20160402
+pkgver=20160403
 pkgrel=1
 pkgdesc="Bitcoin Full Node Library"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('boost'
          'libbitcoin-consensus'
          'libbitcoin-database'
          'libbitcoin-network'
-         'secp256k1-git')
+         'libsecp256k1')
 makedepends=('autoconf'
              'automake'
              'gcc'
