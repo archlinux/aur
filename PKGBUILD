@@ -2,7 +2,7 @@
 
 pkgname=netdata-git
 _gitname=netdata
-pkgver=v1.0.0.r22.g8209164
+pkgver=v1.0.0.r78.g52c3674
 pkgrel=1
 pkgdesc="Real-time performance monitoring, in the greatest possible detail, over the web."
 url="https://github.com/firehol/netdata/wiki"
@@ -20,14 +20,6 @@ install="$pkgname.install"
 pkgver() {
 	cd "$_gitname"
 	git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-	cd "$_gitname"
-	sed -i "s#/usr/sbin/netdata#/usr/bin/netdata#" "system/netdata-systemd"
-	sed -i "s#/bin/kill#/usr/bin/kill#" "system/netdata-systemd"
-	# http://article.gmane.org/gmane.comp.security.firewalls.firehol.devel/898
-	# sed -i "s#<script>var netdataTheme = 'slate';</script>##" "web/index.html"
 }
 
 build() {
@@ -51,7 +43,7 @@ package() {
 	make DESTDIR="$pkgdir" install
 
 	touch "$pkgdir/etc/netdata/netdata.conf"
-	install -Dm0644 "system/netdata-systemd" "$pkgdir/usr/lib/systemd/system/netdata.service"
+ 	install -Dm0644 "system/netdata.service" "$pkgdir/usr/lib/systemd/system/netdata.service"
 }
 
 md5sums=('SKIP')
