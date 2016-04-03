@@ -1,0 +1,24 @@
+# Maintainer: Ryan Farley <ryan.farley@gmx.com>
+pkgname=shoebill
+pkgver=0.0.5
+pkgrel=1
+pkgdesc="A Macintosh II emulator that runs A/UX"
+arch=('i686' 'x86_64')
+url="https://github.com/pruten/$pkgname"
+license=('BSD')
+depends=('sdl2')
+source=("https://github.com/pruten/shoebill/archive/$pkgver.tar.gz")
+md5sums=('03d24eeee574c06f9baa8c7c921d4682')
+
+build() {
+  cd "$pkgname-$pkgver/sdl-gui"
+  ./lin_build.sh
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dt "$pkgdir/usr/bin" sdl-gui/shoebill
+}
+
+#vim: set ts=2 sw=2 et:
