@@ -1,7 +1,7 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=tldr-rs-git
 _name=tldr-rs
-pkgver=r63.fb62eaa
+pkgver=r73.d5f6814
 pkgrel=1
 pkgdesc="A fast TLDR client written in Rust."
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ license=('MIT', 'Apache')
 depends=('')
 makedepends=('git' 'rust' 'cargo')
 provides=('tldr')
-conflicts=('tldr-rs', 'nodejs-tldr', 'nodejs-tldr-git', 'tldr-cpp-client', 'tldr-git')
+conflicts=('tldr-rs' 'nodejs-tldr' 'nodejs-tldr-git' 'tldr-cpp-client' 'tldr-git')
 options=(!emptydirs)
 source=('git+https://github.com/dbrgn/tldr-rs')
 md5sums=('SKIP')
