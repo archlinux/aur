@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=NetLogger
+Comment=Freeware Amateur Radio net logging tool
+Type=Application
+Exec=netlogger
+StartupNotify=true
+Terminal=false
+Categories=Network;HamRadio;

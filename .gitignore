@@ -1,0 +1,8 @@
+# Arch stuff
+pkg/*
+src/*
+*.pkg.tar.*
+
+
+# Netlogger tarballs
+NetLogger*.tgz
