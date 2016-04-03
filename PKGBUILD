@@ -1,20 +1,41 @@
-# Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
-pkgname=ruby-celluloid
-pkgver=0.17.1.2
-_realname="celluloid"
+_gemname=celluloid
+pkgname=ruby-${_gemname}
+pkgver=0.17.3
 pkgrel=1
-pkgdesc="Actor-based concurrent object framework for Ruby"
+pkgdesc='Celluloid provides a simple and natural way to build fault-tolerant concurrent programs in Ruby'
+url='https://github.com/celluloid/celluloid'
 arch=('any')
-url="https://celluloid.io/"
-license=("MIT")
-depends=('ruby' 'ruby-timers')
-source=("http://gems.rubyforge.org/gems/$_realname-$pkgver.gem")
-noextract=($real_name-$pkgver.gem)
-md5sums=('b9e83eafce24171a83536b13e9c6ba39')
+license=('MIT')
+depends=('ruby' 'ruby-timers' 'ruby-celluloid-supervision' 'ruby-celluloid-pool' 'ruby-celluloid-fsm' 'ruby-celluloid-extras' 'ruby-celluloid-essentials')
+makedepends=('git')
+options=('!emptydirs')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/celluloid/celluloid/archive/v${pkgver}.tar.gz
+        culture-git::"git+https://github.com/celluloid/culture#commit=d76f772")
+sha512sums=('14e0da06024a884ae4a949906e7a2e518215bc69161e6ce1aead65b4356f2487d25618be44fd06200d2a5b04e68b89c99020d4329bb58aaad2355cd138e7524c'
+            'SKIP')
+
+prepare() {
+  cd ${_gemname}-${pkgver}
+  sed 's|git ls-files -z|find -not -path "*culture*" -print0|' -i *.gemspec
+  rmdir culture
+  cp -ra "${srcdir}/culture-git" culture
+}
+
+build() {
+  cd ${_gemname}-${pkgver}
+  gem build celluloid.gemspec
+}
 
 package() {
-  cd $srcdir
-  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" ${_realname}-$pkgver.gem
+  cd ${_gemname}-${pkgver}
+  local _gemdir="$(gem env gemdir)"
+  gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" celluloid*.gem
+  install -Dm 644 README.md CHANGES.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  cp -r examples "${pkgdir}/usr/share/doc/${pkgname}"
+  rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
 }
+
+# vim: ts=2 sw=2 et:
