@@ -4,7 +4,9 @@
 
 pkgname=spearmint
 pkgver=0.2
-pkgrel=7
+pkgrel=8
+_ioq3v1='1.36'
+_ioq3v2='1.32-9'
 pkgdesc="An improved ioquake3-based Quake 3: Arena client (note: requires pak files from original CD)"
 url="http://spearmint.pw"
 license=("GPL3")
@@ -15,21 +17,34 @@ provides=('quake3' 'ioquake3')
 install=spearmint.install
 source=("${pkgname}.tar.xz::https://github.com/zturtleman/${pkgname}/releases/download/release-${pkgver}/${pkgname}-${pkgver}-linux.tar.xz"
 	"https://raw.githubusercontent.com/zturtleman/${pkgname}/master/misc/${pkgname}.svg"
+	"http://ioquake3.org/files/${_ioq3v1}/data/ioquake3-q3a-${_ioq3v2}.run"
 	"spearmint.desktop"
 	"spearmint.service"
 	"spearmint.launcher"
 	"spearmint-server.launcher")
 sha256sums=("40100f4e321a51661155ba78ae4432debb0e5454390be163595f78e4f27baeab"
             "51d2af17f344a5a38800b4a82d7be44ae79f2f4ab30201535b468b945ea69122"
+	    "fd871b4437212f7e0f3a74d650ef9412c39aff5e265ca5f8939ec2d86b35a109"
 	    "38c570ee9372f84d6a617e63c97d5b57ded6641fef442133dd68d9eb6d7ab615"
 	    "ce4622186434d54429eee500d4f1494b4d099ee06bf805e0713be596e19273c9"
             "037fc0000ce83ebf26d2097ab3676500aea85274548eea7665d318a0bfcd1ef9"
 	    "859625c05dfb451bb36963d10bc250d20e03853bef03243bcf85b8d0ff12b561")
 
-build() {
+prepare() {
   cd ${srcdir}
   mv "${pkgname}-${pkgver}-linux" ${pkgname}
-  cd ${pkgname}
+  mkdir paks
+  chmod 700 ioquake3-q3a-${_ioq3v2}.run
+  ./ioquake3-q3a-${_ioq3v2}.run --tar xfC ${srcdir}/paks/.
+  tar -C ${srcdir}/${pkgname}/baseq3 -xf ${srcdir}/paks/idpatchpk3s.tar
+  tar -C ${srcdir}/${pkgname}/missionpack -xf ${srcdir}/paks/idtapatchpk3s.tar
+  cd ${srcdir}
+  # don't need this anymore.
+  rm -rf ${srcdir}/paks
+}
+
+build() {
+  cd ${srcdir}/${pkgname}
 
 if [ ! -f "${pkgname}-server" ];
 then
