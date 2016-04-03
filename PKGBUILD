@@ -2,7 +2,7 @@
 _pkgname=fluxus
 pkgname=${_pkgname}-git
 pkgver=v0.17rc5.r224.gd06cb52
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D game engine for livecoding worlds into existence"
 arch=('i686' 'x86_64')
 url="http://www.pawfal.org/fluxus/"
@@ -36,6 +36,12 @@ package() {
   cd "$srcdir/$_pkgname"
 
   scons DESTDIR="$pkgdir/" Prefix=/usr RacketPrefix=/usr install
+
+  # Install icon and desktop file
+  install -d "$pkgdir"/usr/share/pixmaps
+  install -m 644 modules/material/textures/fluxus-icon.png "$pkgdir"/usr/share/pixmaps
+  install -d "$pkgdir"/usr/share/applications
+  install -m 644 debian/fluxus.desktop "$pkgdir"/usr/share/applications
 }
 
 # vim:set ts=2 sw=2 et:
