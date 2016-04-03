@@ -4,7 +4,7 @@
 pkgbase="g13"
 pkgname="g13-git"
 pkgver=20160120
-pkgrel=3
+pkgrel=5
 pkgdesc="Userspace driver for the Logitech G13 Keyboard"
 arch=('x86_64' 'i686')
 url="https://github.com/ecraven/g13"

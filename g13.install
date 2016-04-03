@@ -1,7 +1,6 @@
 post_install() {
   echo "(Re)creating group and user ..."
-  getent group g13 > /dev/null 2>&1 || groupadd -g 613 g13
-  getent passwd g13 > /dev/null 2>&1 || useradd -c 'Logitech G13 daemon' -u 613 -g g13 -G wheel -d /run/g13d -s /usr/bin/nologin g13
+  getent passwd g13 > /dev/null 2>&1 || useradd -c 'Logitech G13 daemon' -G wheel -d /run/g13d -s /usr/bin/nologin -r g13
   passwd -l g13 > /dev/null
   echo "(Re)creating tmpfiles ..."
   systemd-tmpfiles --create /usr/lib/tmpfiles.d/g13.conf
@@ -20,7 +19,8 @@ pre_remove() {
 }
 
 post_remove() {
+  echo "Making sure the g13d service is not running ..."
+  systemctl stop g13
   echo "Removing user and group ..."
-  getent group g13 > /dev/null 2>&1 && groupdel g13
   getent passwd g13 > /dev/null 2>&1 && userdel g13
 }
