@@ -24,7 +24,7 @@ package() {
 	#prepare dirs
 	mkdir -p ${pkgdir}/opt
 	mkdir -p ${pkgdir}/usr/bin
-	mkdir -p ${pkgdir}/usr/share/licenses/vesta
+	mkdir -p ${pkgdir}/usr/share/licenses
 	mkdir -p ${pkgdir}/usr/share/applications/
 	
   
@@ -38,7 +38,7 @@ package() {
 	install -m 644 ${srcdir}/VESTA.desktop ${pkgdir}/usr/share/applications/
 
 	#link licence
-	(	cd ${pkgdir}/usr/share/licenses/vesta
-		ln -sf ../../../../opt/VESTA/Library_License .
+	(	cd ${pkgdir}/usr/share/licenses
+		ln -sf ../../../../opt/VESTA/Library_License vesta
 	)
 }
