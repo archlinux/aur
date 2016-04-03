@@ -1,9 +1,9 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theshell
-pkgver=1.1
+pkgver=1.2
 pkgrel=0
-pkgdesc="Minimalistic Desktop Shell"
+pkgdesc="Desktop Shell that gets out of your way"
 arch=("x86_64")
 url="https://github.com/vicr123/theshell"
 license=('GPL3')
