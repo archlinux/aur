@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-exwm-git
-pkgver=r153.fa204e1
+pkgver=r154.c7c233b
 pkgrel=1
 pkgdesc="Windowmanagement environment for guile"
 arch=('any')
