@@ -6,17 +6,17 @@
 pkgname=zpaq
 pkgdesc='Programmable file compressor, library and utilities. Based on the PAQ compression algorithm'
 url='http://mattmahoney.net/dc/zpaq.html'
-pkgver=7.07
+pkgver=7.08
 pkgrel=1
 
-_zpaq_ver=707
+_zpaq_ver=708
 
 arch=(i686 x86_64)
 license=(custom MIT)
 makedepends=(perl)
 
 source=(http://mattmahoney.net/dc/zpaq${_zpaq_ver}.zip)
-sha512sums=('9c9ca868e825ea21314656a9ba6e8b08b1ce8148e3b7d702f27ff443e6370622d79f1f09e16feb4274afc774d0a8f870b21435b691b65ad28512eca024677e7c')
+sha512sums=('d91a18f35548ff49b92c337b2cdd0eebf76bcf035c6ab79c3323bcfbe78fb28d0a26a2fa0049be5849095a783e48950de3808abcaee27032c2113174f0e2b5dd')
 
 build()
 {
