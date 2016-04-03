@@ -1,7 +1,7 @@
 pkgbase = scenic-view
 	pkgdesc = A tool for analyzing the scenegraph of a JavaFX application
 	pkgver = 8.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fxexperience.com/scenic-view/
 	arch = i686
 	arch = x86_64
