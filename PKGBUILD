@@ -1,7 +1,7 @@
 # Maintainer: Miguel Revilla <yo@miguelrevilla.com>
 # Contributor: joyfulgirl <joyfulgirl (at) archlinux.us>
 pkgname=pspp
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Statistical analysis program. Free replacement for SPSS."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ optdepends=('zlib: GNUmeric support'
             'libxml2: GNUMERIC support')
 options=('!libtool' '!emptydirs')
 source=(ftp://ftp.gnu.org/gnu/pspp/pspp-${pkgver}.tar.gz)
-md5sums=('e58514ab47aca6b3ea990fbba7c8dbc5')
+md5sums=('c5c12bca5f0670a77460d02eda8dea49')
 install=pspp.install
 
 build() {
