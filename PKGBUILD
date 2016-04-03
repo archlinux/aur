@@ -1,4 +1,4 @@
-# Contributor: Hy Goldsher <hyness-at-gmail>
+# Contributor: Hy Goldsher <hyness-at-hyness-dot-com>
 pkgname=retrofe
 pkgver=0.6.165
 pkgrel=3
