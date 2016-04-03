@@ -78,7 +78,7 @@ build() {
     # Patch the binary such that static resources will be loaded from a system dir:
     # Note: these paths can be located in the binary by hand via `strings $binaryname`
     patch_strings_in_file "$binaryname" "%s/.%s/%s/Data" "/opt/%3\$s/Data"
-    patch_strings_in_file "$binaryname" "%s/.%s/%s/Modules" "/opt/%s\$s/Modules"
+    patch_strings_in_file "$binaryname" "%s/.%s/%s/Modules" "/opt/%3\$s/Modules"
     # This is for accessing the user guide & the dialog binaries
     patch_strings_in_file "$binaryname" "%s/.%s/%s/" "/opt/%3\$s/"
 
