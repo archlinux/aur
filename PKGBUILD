@@ -2,17 +2,17 @@
 
 pkgname=secp256k1-git
 pkgver=20160128
-pkgrel=1
-pkgdesc="Elliptic Curve Library for libbitcoin"
+pkgrel=2
+pkgdesc="Optimized C library for EC operations on curve secp256k1"
 arch=('i686' 'x86_64')
 url="https://github.com/libbitcoin/secp256k1"
-makedepends=('gcc' 'git' 'make' 'pkg-config')
+makedepends=('autoconf' 'automake' 'git' 'm4' 'make' 'pkg-config')
 groups=('libbitcoin')
 license=('MIT')
 source=(git+https://github.com/libbitcoin/secp256k1#branch=version4)
 sha256sums=('SKIP')
-provides=('secp256k1')
-conflicts=('secp256k1')
+provides=('libsecp256k1' 'secp256k1')
+conflicts=('libsecp256k1' 'secp256k1')
 
 pkgver() {
   cd ${pkgname%-git}
