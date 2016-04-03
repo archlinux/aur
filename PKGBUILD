@@ -1,14 +1,14 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-database-git
-pkgver=20160401
+pkgver=20160403
 pkgrel=1
 pkgdesc="Bitcoin High Performance Blockchain Database"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
          'libbitcoin'
-         'secp256k1-git')
+         'libsecp256k1')
 makedepends=('autoconf'
              'automake'
              'gcc'
