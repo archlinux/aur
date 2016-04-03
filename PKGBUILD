@@ -12,7 +12,9 @@ makedepends=('make' 'python-sphinx')
 optdepends=()
 provides=('git-spindle')
 conflicts=('git-spindle')
-source=("git+https://github.com/seveas/git-spindle.git")
+# NOTE: we need to use a patched version to adapt to github3.py
+# source=("git+https://github.com/seveas/git-spindle.git")
+source=("git+https://github.com/aroig/git-spindle.git")
 md5sums=('SKIP')
 
 pkgver() {

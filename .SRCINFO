@@ -14,7 +14,7 @@ pkgbase = git-spindle-git
 	depends = python-docopt
 	provides = git-spindle
 	conflicts = git-spindle
-	source = git+https://github.com/seveas/git-spindle.git
+	source = git+https://github.com/aroig/git-spindle.git
 	md5sums = SKIP
 
 pkgname = git-spindle-git
