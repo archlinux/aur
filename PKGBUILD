@@ -13,12 +13,15 @@ makedepends=('cmake' 'itstool')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 install="${pkgname}.install"
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Ryochan7/${_pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('5c78c37a8f854e24f6f9521569f8a1c9')
+#source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Ryochan7/${_pkgname}/archive/${pkgver}.tar.gz")
+source=("http://pkgs.fedoraproject.org/lookaside/pkgs/${_pkgname}/${_pkgname}-${pkgver}.tar.gz/2064888967031e847c255efef941b45e/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('2064888967031e847c255efef941b45e')
 
 
 build() {
-   cd ${_pkgname}-${pkgver}
+   #cd ${_pkgname}-${pkgver}
+   cd ${_pkgname}-*/
+
    mkdir -p build && cd build
    QT_SELECT=4 cmake -DCMAKE_INSTALL_PREFIX=/usr -DUSE_SDL_2=ON \
       -DWITH_UINPUT=ON -DWITH_XTEST=ON -DAPPDATA=ON ..
@@ -26,7 +29,9 @@ build() {
 }
 
 package() {
-   cd ${_pkgname}-${pkgver}/build
+   #cd ${_pkgname}-${pkgver}/build
+   cd ${_pkgname}-*/build/
+
    make DESTDIR="${pkgdir}" install
 }
 
