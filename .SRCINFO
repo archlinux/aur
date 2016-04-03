@@ -1,7 +1,7 @@
 pkgbase = pacutils
 	pkgdesc = alpm front-end tools
 	pkgver = 0.3.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/andrewgregory/pacutils
 	arch = i686
 	arch = x86_64
