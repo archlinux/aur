@@ -2,7 +2,7 @@
 
 pkgname=eficas
 pkgver=2015.2
-pkgrel=2
+pkgrel=3
 pkgdesc="ASter Command FIle Editor. Editor of Code_Aster's command files."
 url="http://www.code-aster.org/"
 license=('GPL')
@@ -31,7 +31,16 @@ package() {
   cp "${srcdir}/${pkgname}.png" "${pkgdir}/usr/share/pixmaps/"
   desktop-file-install --dir="${pkgdir}/usr/share/applications" \
     "${srcdir}/${pkgname}.desktop"
+
+  cd ${pkgdir}
+  for _FILE in `find ./ -iname *.py`
+  do
+    sed "s|${pkgdir}||" -i ${_FILE}
+  done
+
+  sed -e "s|'/opt/eficas', '12.5', 'lib/aster/Cata/cata.py'|'/usr/lib/aster', '12.5', 'Cata/cata.py'|" -i opt/eficas/public/eficas-${pkgver}/Aster/prefs_ASTER.py
 }
+
 md5sums=('58224ee70b508e2bf0a0e0f0fab6a57d'
          '246438dfb94a62aff24fcd7b05f5a7d7'
          '0315674d3dd04af7f2125576d651a94b')
