@@ -1,7 +1,7 @@
 pkgbase = minecraft-server
 	pkgdesc = Minecraft server unit files, script, and jar
 	pkgver = 1.9.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://minecraft.net/
 	install = minecraft-server.install
 	arch = any
@@ -15,7 +15,6 @@ pkgbase = minecraft-server
 	conflicts = minecraft-server-systemd
 	conflicts = minecraft-canary
 	noextract = minecraft_server.1.9.2.jar
-	options = !strip
 	backup = etc/conf.d/minecraft
 	source = https://s3.amazonaws.com/Minecraft.Download/versions/1.9.2/minecraft_server.1.9.2.jar
 	source = minecraftd-backup.service
@@ -28,6 +27,6 @@ pkgbase = minecraft-server
 	md5sums = fef6fadd0739ae03ff71ba61025be207
 	md5sums = afb84ad0316af0aca421b36eaa2bbd90
 	md5sums = 00045683c06924d765ac14887218ffcc
-	md5sums = 07fc6725f5354e4eca5a56c039577764
+	md5sums = 1f31f0e0ee859ed43b512121b61edc69
 
 pkgname = minecraft-server

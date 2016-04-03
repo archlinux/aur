@@ -100,7 +100,9 @@ idle_server_daemon() {
 						[[ $i -eq 100 ]] && echo -e "An \e[39;1merror\e[0m occurred while trying to reset the idle_server!"
 						sleep 0.1
 					done
-					# Listen on port ${GAME_PORT} for incoming connections
+					# Reset timer
+					no_player=0
+					# Game server is down, listen on port ${GAME_PORT} for incoming connections
 					echo "Netcat is listening on port ${GAME_PORT} for incoming connections..."
 					${NETCAT_CMD} -v -l -p ${GAME_PORT}
 					[[ $? -eq 0 ]] && echo "Netcat caught an connection. The server is coming up again..."
@@ -110,10 +112,12 @@ idle_server_daemon() {
 				no_player=0
 			fi
 		else
+			# Reset timer
+			no_player=0
 			# Game server is down, listen on port ${GAME_PORT} for incoming connections
 			echo "Netcat is listening on port ${GAME_PORT} for incoming connections..."
 			${NETCAT_CMD} -v -l -p ${GAME_PORT}
-			echo "Netcat caught an connection. The server is coming up again..."
+			[[ $? -eq 0 ]] && echo "Netcat caught an connection. The server is coming up again..."
 			IDLE_SERVER="false" ${myname} start
 		fi
 	done

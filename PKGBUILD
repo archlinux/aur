@@ -4,7 +4,7 @@
 
 pkgname=minecraft-server
 pkgver=1.9.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Minecraft server unit files, script, and jar"
 arch=('any')
 url="http://minecraft.net/"
@@ -14,7 +14,6 @@ optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
 conflicts=('minecraft-server-systemd' 'minecraft-canary')
 backup=('etc/conf.d/minecraft')
-options=(!strip)
 install="${pkgname}.install"
 source=("https://s3.amazonaws.com/Minecraft.Download/versions/${pkgver}/minecraft_server.${pkgver}.jar"
 	"minecraftd-backup.service"
@@ -28,7 +27,7 @@ md5sums=('560d467028f17a70997151ed0053deb6'
          'fef6fadd0739ae03ff71ba61025be207'
          'afb84ad0316af0aca421b36eaa2bbd90'
          '00045683c06924d765ac14887218ffcc'
-         '07fc6725f5354e4eca5a56c039577764')
+         '1f31f0e0ee859ed43b512121b61edc69')
 
 _game="minecraft"
 _server_root="/srv/minecraft"
