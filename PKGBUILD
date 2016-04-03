@@ -1,5 +1,5 @@
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
-pkgname=libbrotli-git
+pkgname=libbrotli
 pkgver=1.0
 pkgrel=1
 pkgdesc="meta project to build libraries from the brotli source code"
