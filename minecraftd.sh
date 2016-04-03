@@ -180,10 +180,7 @@ server_stop() {
 	# Gracefully exit the game server
 	${SUDO_CMD} screen -S "${SESSION_NAME}" -Q select . > /dev/null
 	if [[ $? -eq 0 ]]; then
-		# Game server is up and running
-		game_command save-all
-
-		# Gracefully stop the server when there are still active players
+		# Game server is up and running, gracefully stop the server when there are still active players
 		${SUDO_CMD} screen -S "${SESSION_NAME}" -X stuff "`printf \"list\r\"`"
 		# The list command prints a line containing the usernames after the last occurrence of ": "
 		# and since playernames may not contain this string the clean player-list can be easily retrieved.
@@ -195,6 +192,7 @@ server_stop() {
 			# Player(s) were seen on the server through list (or an error occurred)
 			# Warning the users through the server console
 			game_command say "Server is going down in 10 seconds! HURRY UP WITH WHATEVER YOU ARE DOING!"
+			game_command save-all
 			echo -en "Server is going down in..."
 			for i in {1..10}; do
 				game_command say "down in... $(expr 10 - $i)"
