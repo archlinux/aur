@@ -1,0 +1,23 @@
+pkgbase = rapiddisk-dkms
+	pkgdesc = A collection of open source and enhanced Linux RAM drive and caching modules
+	pkgver = 4.0.2
+	pkgrel = 1
+	url = http://www.rapiddisk.org/
+	install = rapiddisk-dkms.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = dkms
+	depends = zlib
+	depends = cryptsetup
+	backup = etc/rapiddisk/rapiddisk.sh.pacemaker
+	backup = etc/rapiddisk/rapiddisk.sh.rgmanager
+	source = git+http://git.rapiddisk.org/rapiddisk-4.x.git#commit=8284699a529e6a72ee0fbef90457d3819a1e2cb7
+	source = Makefile.dkms.in
+	source = dkms.conf.in
+	md5sums = SKIP
+	md5sums = 8c2d495a0da7939300c8e981cc6186e4
+	md5sums = e09ac0d71fe2f49666c5121f0d0eb194
+
+pkgname = rapiddisk-dkms
+

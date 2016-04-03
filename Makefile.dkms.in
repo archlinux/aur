@@ -1,0 +1,33 @@
+VERSION = @PKGVER@
+
+KVER ?= $(shell uname -r)
+KDIR ?= $(DESTDIR)/usr/lib/modules/$(KVER)/build
+PWD ?= $(shell pwd)
+
+RM ?= rm -rf
+
+obj-m += @PKGBASE@.o
+obj-m += @PKGBASE@-cache.o
+
+dkms-src += Makefile
+dkms-src += dkms.conf
+dkms-src += @PKGBASE@.c
+dkms-src += @PKGBASE@-cache.c
+
+all clean: 
+	@echo Nothing to do.
+
+modules modules_install:
+	KCPPFLAGS="-DNOTMAINLINE" $(MAKE) -C $(KDIR) M=$(PWD) $@
+
+modules_clean:
+	KCPPFLAGS="-DNOTMAINLINE" $(MAKE) -C $(KDIR) M=$(PWD) clean
+
+install:
+	install -Dm644 -t $(DESTDIR)/usr/src/@PKGBASE@-$(VERSION) $(dkms-src)
+
+uninstall:
+	$(RM) $(DESTDIR)/usr/src/@PKGBASE@-$(VERSION)
+
+modules_uninstall:
+	dkms remove @PKGBASE@/$(VERSION) --all

@@ -1,0 +1,12 @@
+PACKAGE_NAME=@PKGBASE@
+PACKAGE_VERSION=@PKGVER@
+MAKE[0]="make modules KVER=$kernelver"
+CLEAN[0]="make modules_clean"
+
+BUILT_MODULE_NAME[0]=@PKGBASE@
+BUILT_MODULE_NAME[1]=@PKGBASE@-cache
+DEST_MODULE_LOCATION[0]="/kernel/drivers/block/"
+DEST_MODULE_LOCATION[1]="/kernel/drivers/block/"
+
+AUTOINSTALL="yes"
+REMAKE_INITRD=yes
