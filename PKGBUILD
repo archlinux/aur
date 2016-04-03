@@ -11,7 +11,7 @@
 # Maintainer: Zeke Sonxx <zeke@zekesonxx.com>
 pkgname=netlogger
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Server-based amateur radio net logging programs"
 arch=('i686' 'x86_64')
 url="http://www.netlogger.org"
@@ -61,7 +61,7 @@ package() {
 	cd "$pkgdir"
 	mkdir -p "$pkgdir/opt/netlogger/"
 	cp -r "$srcdir/tarball/" -T "$pkgdir/opt/netlogger/"
-	install -D -m644 "${srcdir}/netlogger.sh" "${pkgdir}/usr/bin/netlogger"
+	install -D -m755 "${srcdir}/netlogger.sh" "${pkgdir}/usr/bin/netlogger"
 	install -D -m644 "${srcdir}/netlogger.desktop" "${pkgdir}/usr/share/applications/netlogger.desktop"
 	install -D -m644 "${srcdir}/license.rtf" "${pkgdir}/usr/share/licenses/netlogger/license.rtf"
 }
