@@ -1,0 +1,25 @@
+pkgbase = fluxus-git
+	pkgdesc = A 3D game engine for livecoding worlds into existence
+	pkgver = v0.17rc5.r224.gd06cb52
+	pkgrel = 1
+	url = http://www.pawfal.org/fluxus/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = scons
+	depends = ode
+	depends = fftw
+	depends = liblo
+	depends = glew
+	depends = jack
+	depends = freeglut
+	depends = openal
+	depends = racket
+	provides = fluxus
+	conflicts = fluxus
+	source = git://git.savannah.nongnu.org/fluxus.git
+	md5sums = SKIP
+
+pkgname = fluxus-git
+
