@@ -1,6 +1,6 @@
 _name=ldb
 pkgname=lib32-$_name
-pkgver=1.1.24
+pkgver=1.1.26
 pkgrel=1
 pkgdesc="A schema-less, ldap like, API and database"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('lib32-talloc' 'lib32-tevent' 'lib32-tdb' 'lib32-popt')
 makedepends=('lib32-python2')
 optdepends=('python2: for python bindings')
-md5sums=('152f061422de5b90f8ce51e0ea316292')
+md5sums=('31780b702b638ad32aa5d9853d257839')
 
 build() {
 	cd "${_name}-${pkgver}"
