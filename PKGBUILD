@@ -1,7 +1,7 @@
 # Maintainer: yaroslav <proninyaroslav@mail.ru>
 
 pkgname=infer
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Static Analyzer by Facebook"
 arch=('x86_64')
