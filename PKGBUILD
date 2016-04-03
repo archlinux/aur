@@ -1,23 +1,20 @@
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
-pkgname=libbrotli
-pkgver=r38.1606131
+pkgname=libbrotli-git
+pkgver=1.0
 pkgrel=1
-pkgdesc="Test"
+pkgdesc="meta project to build libraries from the brotli source code"
 arch=('x86_64' 'i686')
-url="https://github.com/google/brotli"
-license=('GPL')
+url="https://github.com/bagder/libbrotli"
+license=('MIT')
 makedepends=('git')
 depends=('brotli')
+provides=('libbrotli')
 source=("$pkgname"::'git+https://github.com/bagder/libbrotli.git')
 md5sums=('SKIP')
 
-pkgver() {
-	cd "$srcdir/${pkgname}"
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 build() {
 	cd "$srcdir/${pkgname}"
+	git checkout tags/libbrotli-$pkgver
 	./autogen.sh
 	./configure --prefix=/usr
 	make
