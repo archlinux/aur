@@ -1,0 +1,71 @@
+diff --git a/contrib/dmenu/passmenu b/contrib/dmenu/passmenu
+index 9b5239d..9cd3e52 100755
+--- a/contrib/dmenu/passmenu
++++ b/contrib/dmenu/passmenu
+@@ -2,11 +2,19 @@
+ 
+ shopt -s nullglob globstar
+ 
++PROGRAM="${0##*/}"
++
+ typeit=0
+-if [[ $1 == "--type" ]]; then
+-	typeit=1
+-	shift
+-fi
++notify=0
++
++opts="$(getopt -o "" -l notify,typeit -n "$PROGRAM" -- "$@")"
++[[ $? -ne 0 ]] && (echo "Usage: $PROGRAM [--notify] [--typeit]" >&2 ; exit 1)
++eval set -- "$opts"
++while true; do case $1 in
++	--notify) notify=1; shift ;;
++	--typeit) typeit=1; shift ;;
++	--) shift; break ;;
++esac done
+ 
+ prefix=${PASSWORD_STORE_DIR-~/.password-store}
+ password_files=( "$prefix"/**/*.gpg )
+@@ -18,6 +26,12 @@ password=$(printf '%s\n' "${password_files[@]}" | dmenu "$@")
+ [[ -n $password ]] || exit
+ 
+ if [[ $typeit -eq 0 ]]; then
++	if [[ $notify -ne 0 ]] && hash notify-send; then
++		PASSWORD_STORE_POST_COPY_HOOK() {
++			notify-send -a "${PROGRAM}" -u normal -t 2000 "Copied $1" "$2"
++		}
++		export -f PASSWORD_STORE_POST_COPY_HOOK
++	fi
+ 	pass show -c "$password" 2>/dev/null
+ else
+ 	pass show "$password" |
+diff --git a/src/password-store.sh b/src/password-store.sh
+index d535a74..0c21f21 100755
+--- a/src/password-store.sh
++++ b/src/password-store.sh
+@@ -119,6 +119,10 @@ check_sneaky_paths() {
+ 	done
+ }
+ 
++function_exists() {
++	type $1 >/dev/null && [[ "$(type -t $1)" -eq "function" ]]
++}
++
+ #
+ # END helper functions
+ #
+@@ -151,7 +155,13 @@ clip() {
+ 
+ 		echo "$before" | base64 -d | xclip -selection "$X_SELECTION"
+ 	) 2>/dev/null & disown
+-	echo "Copied $2 to clipboard. Will clear in $CLIP_TIME seconds."
++
++	local copied_message="Copied $2 to clipboard. Will clear in $CLIP_TIME seconds."
++	echo "$copied_message"
++
++	if function_exists 'PASSWORD_STORE_POST_COPY_HOOK'; then
++		PASSWORD_STORE_POST_COPY_HOOK "$2" "$copied_message"
++	fi
+ }
+ tmpdir() {
+ 	[[ -n $SECURE_TMPDIR ]] && return

@@ -18,18 +18,26 @@ optdepends=('git: for Git support'
 replaces=('passmenu')
 provides=('pass' 'passmenu')
 conflicts=('passmenu')
-source=("git+ssh://git@github.com/emlun/password-store.git#branch=passmenu-notify")
-md5sums=('SKIP')
+source=(
+  'passmenu-notify.patch'
+  "https://git.zx2c4.com/password-store/snapshot/password-store-master.tar.xz"
+)
+md5sums=('c12e88d852175da95af85958ed83a59b'
+         'SKIP')
 
 pkgver() {
-  cd "${srcdir}/password-store/"
-  git describe | sed 's/-/./g'
+  "${srcdir}"/password-store-master/src/password-store.sh --version | grep -oE '[0-9]+\.[0-9]+\.[0-9]+'
+}
+
+prepare() {
+  cd "${srcdir}"/password-store-master/
+  patch -u -p1 < "${srcdir}"/passmenu-notify.patch
 }
 
 package() {
-  cd "${srcdir}/password-store/"
+  cd "${srcdir}"/password-store-master/
   ls -la
   make DESTDIR="${pkgdir}" FORCE_ALL=1 install
 
-  install -Dm0755 contrib/dmenu/passmenu "${pkgdir}/usr/bin/passmenu"
+  install -Dm0755 contrib/dmenu/passmenu "${pkgdir}"/usr/bin/passmenu
 }

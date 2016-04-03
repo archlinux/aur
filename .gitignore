@@ -1,8 +1,7 @@
 pkg/
 src/
-*.pkg.tar.xz
-*.src.tar.gz
 *.tar.gz
+*.tar.xz
 *.tar.xz.sig
 
-/password-store/
+/password-store-master/
