@@ -3,10 +3,10 @@
 
 pkgname=vinetto
 pkgver=0.07beta
-pkgrel=6
+pkgrel=7
 pkgdesc="a forensics tool to examine Thumbs.db files"
 url="http://vinetto.sourceforge.net"
-license="GPL-2"
+license=("GPL-2")
 arch=('i686' 'x86_64')
 depends=('python2' 'python2-pillow')
 source=("vinetto-hashlib.patch"
