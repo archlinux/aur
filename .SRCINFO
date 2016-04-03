@@ -6,8 +6,8 @@ pkgbase = 0xffff
 	arch = x86_64
 	arch = i686
 	license = GPLv3
-	makedepends = libusb-compat
-	depends = libusb-compat
+	makedepends = libusb0
+	depends = libusb0
 	source = http://repository.maemo.org/extras-devel/pool/fremantle/free/source/0/0xffff/0xffff_0.6.1.orig.tar.gz
 	sha1sums = 898d5c05c0835c340b63ff3e8e2c458d29b93bd8
 
