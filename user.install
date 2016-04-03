@@ -1,7 +1,7 @@
-vstname=TripleCheese
-instdir=/opt/$vstname
+_vstname=TripleCheese
+_instdir=/opt/$_vstname
 
 post_install() {
-	echo "$vstname successfully installed; each user who wishes to access the presets must first run the following:"
-	echo "> mkdir -p ~/.local/share/ && cp -R $instdir/Presets/$vstname/ ~/.local/share/"
+	echo "$_vstname successfully installed; each user who wishes to access the presets must first run the following:"
+	echo "> mkdir -p ~/.local/share/ && cp -R $_instdir/Presets/$_vstname/ ~/.local/share/"
 }
