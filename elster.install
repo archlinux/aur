@@ -1,0 +1,6 @@
+post_install() {
+    echo '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
+    echo "% Navigate to https://www.elster.de/elfo_down.php           %"
+    echo "% Download the Elster program and install it with wine.     %"
+    echo '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%'
+    }
