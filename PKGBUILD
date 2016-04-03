@@ -1,6 +1,6 @@
 # Maintainer: VirtualTam <virtualtam@flibidi.net>
 pkgname=xtrkcad-hg
-pkgver=r681.1e0308838f6f
+pkgver=r747.7ccdbf9cdae9
 pkgrel=1
 pkgdesc="CAD program for designing model railroad layouts."
 url="http://www.xtrkcad.org/"
@@ -21,7 +21,11 @@ pkgver() {
 
 build() {
   cd ${_hgname}
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_EXE_LINKER_FLAGS="-lm" -DCMAKE_BUILD_TYPE="Release" -DXTRKCAD_USE_GETTEXT="ON"
+  cmake \
+      -DCMAKE_INSTALL_PREFIX="/usr" \
+      -DCMAKE_EXE_LINKER_FLAGS="-lm" \
+      -DCMAKE_BUILD_TYPE="Release" \
+      -DXTRKCAD_USE_GETTEXT="ON"
   make
 }
 
@@ -31,4 +35,3 @@ package() {
   install -Dm644 "app/lib/xtrkcad.desktop" "${pkgdir}/usr/share/applications/xtrkcad.desktop"
   install -Dm644 "app/lib/icon.png" "${pkgdir}/usr/share/pixmaps/xtrkcad.png"
 }
-
