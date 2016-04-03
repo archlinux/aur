@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Exec=s25rttr
+Icon=s25rttr
+Type=Application
+Categories=Game;StrategyGame;
+Name=Return to the Roots
+StartupNotify=false
+Terminal=false 
