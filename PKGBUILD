@@ -31,6 +31,9 @@ build() {
     --sharedstatedir=/usr/share/libsecp256k1 \
     --localstatedir=/var/lib/libsecp256k1 \
     --enable-module-recovery \
+    --enable-experimental \
+    --enable-module-ecdh \
+    --enable-module-schnorr \
     --disable-tests \
     --with-gnu-ld
   make
