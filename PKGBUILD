@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=49.0.2623.110
-pkgrel=1
+pkgrel=2
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser"
 arch=('i686' 'x86_64')
