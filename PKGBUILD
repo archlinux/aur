@@ -1,6 +1,6 @@
 # Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
-_ngx_ver=1.9.12
+_ngx_ver=1.9.13
 _mod_name=headers-more
 
 pkgname=nginx-mod-headers-more-git
@@ -15,13 +15,9 @@ makedepends=('git')
 source=(git://github.com/openresty/${_mod_name}-nginx-module.git
         http://nginx.org/download/nginx-${_ngx_ver}.tar.gz)
 md5sums=('SKIP'
-         '0afe4a7e589a0de43b7b54aa055a4351')
+         'e7502dc170277597ca73eb53c359c771')
 
 _ngx_flags=(
-  --with-imap
-  --with-imap_ssl_module
-  --with-ipv6
-  --with-pcre-jit
   --with-file-aio
   --with-http_addition_module
   --with-http_auth_request_module
@@ -38,8 +34,13 @@ _ngx_flags=(
   --with-http_stub_status_module
   --with-http_sub_module
   --with-http_v2_module
-  --with-threads
+  --with-ipv6
+  --with-mail
+  --with-mail_ssl_module
+  --with-pcre-jit
   --with-stream
+  --with-stream_ssl_module
+  --with-threads
 )
 
 pkgver() {
