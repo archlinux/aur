@@ -4,7 +4,7 @@
 pkgname=virtualbox-bin
 pkgver=5.0.16
 _build=105871
-pkgrel=2
+pkgrel=3
 pkgdesc='Oracle VM VirtualBox Binary Edition (Oracle branded non-OSE version)'
 arch=('i686' 'x86_64')
 url='http://virtualbox.org/'
@@ -118,10 +118,6 @@ package() {
   install -d -m 0755 "$pkgdir/usr/share/doc/$pkgname"
   ln -s "$_installdir/VirtualBox.chm" "$pkgdir/usr/share/doc/$pkgname/virtualbox.chm"
 
-  # Symlink module sources in /usr/src
-  install -d -m 0755 "$pkgdir/usr/src"
-  ln -s "$_installdir/src/vboxhost" "$pkgdir/usr/src/vboxhost-$pkgver"
-
   # Symlink icons
   pushd icons
   for _dir in *; do
@@ -138,6 +134,10 @@ package() {
   done
   popd
 
+  # module sources in /usr/src
+  install -d -m 0755 "${pkgdir}/usr/src"
+  mv "${pkgdir}/${_installdir}/src/vboxhost" "${pkgdir}/usr/src/vboxhost-${pkgver}"
+
   # Write the configuration file
   install -D -m 0644 /dev/null "$pkgdir/etc/vbox/vbox.cfg"
   cat > "$pkgdir/etc/vbox/vbox.cfg" <<EOF
@@ -150,21 +150,10 @@ INSTALL_REV='$_build'
 EOF
 
   # Write modules-load.d configuration to ensure that modules are loaded at boot
-  install -D -m 0644 /dev/null "$pkgdir/etc/modules-load.d/virtualbox.conf"
-  cat > "$pkgdir/etc/modules-load.d/virtualbox.conf" <<EOF
-# Load virtualbox kernel modules at boot.
-# This file was installed by the virtualbox-bin AUR package
-
-# Base module
-vboxdrv
-
-# Host-based network
-vboxnetadp
-EOF
-
-  # Register into DKMS
-  install -dm 755 "$pkgdir/var/lib/dkms/vboxhost/$pkgver"
-  ln -s '/opt/VirtualBox/src/vboxhost' "$pkgdir/var/lib/dkms/vboxhost/$pkgver/source"
+  install -Dm644 /dev/null "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
+  printf \
+  "# Load virtualbox kernel modules at boot.\n# This file was installed by the ${pkgname} AUR package\n\nvboxdrv\nvboxpci\nvboxnetadp\nvboxnetflt" > \
+  "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
 
 }
 

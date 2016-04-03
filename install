@@ -30,19 +30,12 @@ post_install() {
 
 ==> Remember to add allowed users to the vboxusers group:
 ==> # gpasswd -a USERNAME vboxusers
-==
-==> To compile/load virtualbox modules automatically at startup you can add dkms in your DAEMONS
-==
-==> To build and install your modules run dkms autoinstall
 EOF
 }
 
 # arg 1:  the new package version
 # arg 2:  the old package version
 pre_upgrade() {
-  # should be $2... pacman is bugged FS#29371.
-  pre_remove "$2"
-
   # Remove any stuff remaining from the module compilation
   rm -Rf "/opt/VirtualBox"
 }
@@ -58,15 +51,6 @@ post_upgrade() {
 ==> Please change to dkms instead of vboxdrv in DAEMONS in rc.conf.
 ==>
 EOF
-}
-
-# arg 1:  the old package version
-pre_remove() {
-  # Stop running services
-  #[[ -x /etc/rc.d/vboxweb ]] && /etc/rc.d/vboxweb stop >/dev/null
-
-  # Remove modules
-  [[ -n $1 ]] && dkms remove vboxhost/${1%-*} --all >/dev/null || true
 }
 
 # arg 1:  the old package version
