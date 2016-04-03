@@ -5,7 +5,7 @@ Description=This service spawns an ioquake3 (Spearmint) dedicated server with sa
 
 [Service]
 User=spearmint
-ExecStart=/usr/bin/q3ded +set dedicated 2
+ExecStart=/opt/quake3/spearmint-server +set dedicated 2
 Restart=on-abort
 # there are several options to tweak the server's performance:
 # net_port defines the UDP-port used for connections to the server
