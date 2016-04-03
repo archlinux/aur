@@ -1,0 +1,13 @@
+pkgbase = gedit-autotab-git
+	pkgdesc = Automatically detect tab preferences for source files
+	pkgver = r45.cc70af2
+	pkgrel = 1
+	url = https://github.com/kapouer/gedit-autotab
+	arch = any
+	license = GPL3
+	depends = gedit
+	source = git+https://github.com/kapouer/gedit-autotab.git
+	sha256sums = SKIP
+
+pkgname = gedit-autotab-git
+
