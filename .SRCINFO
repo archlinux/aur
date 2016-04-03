@@ -2,6 +2,7 @@ pkgbase = python-whelk
 	pkgdesc = A python library to run shell commands
 	pkgver = 2.6
 	pkgrel = 1
+	url = https://github.com/seveas/whelk
 	arch = any
 	license = GPLv3
 	makedepends = git
