@@ -1,7 +1,7 @@
 # Maintainer: adrien Prost-Boucle <adrien.prost-boucle.@laposte.net>
 
 pkgname='mygui-gl-git'
-pkgver=3.2.3.git20151206
+pkgver=3.2.3.git20160322
 pkgrel=1
 
 pkgdesc="MyGUI - OpenGL backend"
@@ -12,7 +12,7 @@ license=('LGPL')
 source=("git://github.com/MyGUI/mygui.git")
 md5sums=('SKIP')
 
-depends=('boost-libs' 'freetype2' 'sdl2' 'libgl')
+depends=('boost-libs' 'freetype2' 'sdl2' 'sdl2_image' 'libgl')
 makedepends=('boost' 'cmake')
 optdepends=('mygui-docs: documentation')
 conflicts=('mygui' 'mygui-git')
