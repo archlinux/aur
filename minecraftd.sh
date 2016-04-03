@@ -37,11 +37,6 @@ source /etc/conf.d/${game} || echo "Could not source /etc/conf.d/${game}"
 # Preserve the content of IDLE_SERVER without making it readonly
 [[ ! -z ${tmp_IDLE_SERVER} ]] && IDLE_SERVER=${tmp_IDLE_SERVER}
 
-# The variable defines the row in which the first player is printed. It is interpreted
-# by awk and depends on the flavor of the game server.
-# The stock minecraft server prints the first player in the 4th row, spigot in the 6th.
-player_delimiter=4
-
 
 # Check whether sudo is needed at all
 if [[ $(whoami) == ${GAME_USER} ]]; then
@@ -90,7 +85,9 @@ idle_server_daemon() {
 		if [[ $? -eq 0 ]]; then
 			# Game server is up and running
 			screen -S "${SESSION_NAME}" -X stuff "`printf \"list\r\"`"
-			if [[ $? -eq 0 && -z $(sleep 0.3; tail -n 1 "${LOGPATH}/latest.log" | awk "{ print \$${player_delimiter} }") ]]; then
+			# The list command prints a line containing the usernames after the last occurrence of ": "
+			# and since playernames may not contain this string the clean player-list can be easily retrieved.
+			if [[ $? -eq 0 && -z $(sleep 0.6; tail -n 1 "${LOGPATH}/latest.log" | sed 's/.*\: //' | tr -d '\n') ]]; then
 				# No player was seen on the server through list
 				no_player=$((no_player + CHECK_PLAYER_TIME))
 				# Stop the game server if no player was active for at least ${IDLE_IF_TIME}
@@ -188,7 +185,9 @@ server_stop() {
 
 		# Gracefully stop the server when there are still active players
 		${SUDO_CMD} screen -S "${SESSION_NAME}" -X stuff "`printf \"list\r\"`"
-		if [[ $? -eq 0 && -z $(sleep 0.3; tail -n 1 "${LOGPATH}/latest.log" | awk "{ print \$${player_delimiter} }") ]]; then
+		# The list command prints a line containing the usernames after the last occurrence of ": "
+		# and since playernames may not contain this string the clean player-list can be easily retrieved.
+		if [[ $? -eq 0 && -z $(sleep 0.6; tail -n 1 "${LOGPATH}/latest.log" | sed 's/.*\: //' | tr -d '\n') ]]; then
 			# No player was seen on the server through list
 			echo -en "Server is going down..."
 			game_command stop
@@ -374,10 +373,9 @@ server_command() {
 
 	${SUDO_CMD} screen -S "${SESSION_NAME}" -Q select . > /dev/null
 	if [[ $? -eq 0 ]]; then
-		sleep 0.3 &
-		sleep_pid=$!
+		${SUDO_CMD} sleep 0.3 & tail -f --pid=$! -n 0 "${LOGPATH}/latest.log" &
 		game_command "$@"
-		${SUDO_CMD} tail -f --pid=${sleep_pid} -n 0 "${LOGPATH}/latest.log"
+		wait
 	else
 		echo "There is no ${SESSION_NAME} session to connect to."
 	fi

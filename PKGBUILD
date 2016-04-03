@@ -4,7 +4,7 @@
 
 pkgname=minecraft-server
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft server unit files, script, and jar"
 arch=('any')
 url="http://minecraft.net/"
@@ -13,9 +13,9 @@ depends=('java-runtime-headless' 'screen' 'sudo' 'bash')
 optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
 conflicts=('minecraft-server-systemd' 'minecraft-canary')
-options=(!strip)
-install=${pkgname}.install
 backup=('etc/conf.d/minecraft')
+options=(!strip)
+install="${pkgname}.install"
 source=("https://s3.amazonaws.com/Minecraft.Download/versions/${pkgver}/minecraft_server.${pkgver}.jar"
 	"minecraftd-backup.service"
 	"minecraftd-backup.timer"
@@ -28,19 +28,19 @@ md5sums=('560d467028f17a70997151ed0053deb6'
          'fef6fadd0739ae03ff71ba61025be207'
          'afb84ad0316af0aca421b36eaa2bbd90'
          '00045683c06924d765ac14887218ffcc'
-         '48cb57c426c7725483cd0c9af24048df')
+         'f130c76d285297071c3e0d2988631dfe')
 
 _game="minecraft"
 _server_root="/srv/minecraft"
 
 package() {
-	install -Dm644 minecraftd.conf              "${pkgdir}/etc/conf.d/${_game}"
-	install -Dm755 minecraftd.sh                "${pkgdir}/usr/bin/${_game}d"
-	install -Dm644 minecraftd.service           "${pkgdir}/usr/lib/systemd/system/${_game}d.service"
-	install -Dm644 minecraftd-backup.service    "${pkgdir}/usr/lib/systemd/system/${_game}d-backup.service"
-	install -Dm644 minecraftd-backup.timer      "${pkgdir}/usr/lib/systemd/system/${_game}d-backup.timer"
-	install -Dm644 minecraft_server.${pkgver}.jar "${pkgdir}${_server_root}/minecraft_server.${pkgver}.jar"
-	ln -s "minecraft_server.${pkgver}.jar" "${pkgdir}${_server_root}/minecraft_server.jar"
+	install -Dm644 ${_game}d.conf              "${pkgdir}/etc/conf.d/${_game}"
+	install -Dm755 ${_game}d.sh                "${pkgdir}/usr/bin/${_game}d"
+	install -Dm644 ${_game}d.service           "${pkgdir}/usr/lib/systemd/system/${_game}d.service"
+	install -Dm644 ${_game}d-backup.service    "${pkgdir}/usr/lib/systemd/system/${_game}d-backup.service"
+	install -Dm644 ${_game}d-backup.timer      "${pkgdir}/usr/lib/systemd/system/${_game}d-backup.timer"
+	install -Dm644 ${_game}_server.${pkgver}.jar "${pkgdir}${_server_root}/${_game}_server.${pkgver}.jar"
+	ln -s "${_game}_server.${pkgver}.jar" "${pkgdir}${_server_root}/${_game}_server.jar"
 
 	# Link the log files
 	mkdir -p "${pkgdir}/var/log/"
