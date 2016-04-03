@@ -1,0 +1,15 @@
+pkgbase = flume-ng-rabbitmq
+	pkgdesc = Flume-NG RabbitMQ
+	pkgver = 1.0
+	pkgrel = 4
+	url = https://github.com/jcustenborder/flume-ng-rabbitmq
+	install = flume-ng-rabbitmq.install
+	arch = any
+	license = Apache License
+	makedepends = java-environment>=6
+	depends = apache-flume-ng
+	source = git+https://github.com/jcustenborder/flume-ng-rabbitmq.git
+	md5sums = SKIP
+
+pkgname = flume-ng-rabbitmq
+

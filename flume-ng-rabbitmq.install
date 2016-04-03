@@ -1,0 +1,13 @@
+post_install() {
+  if [ -d /usr/lib/apache-flume-ng/lib ]; then
+    ln -s /usr/share/java/flume-ng-rabbitmq.jar /usr/lib/apache-flume-ng/lib/flume-ng-rabbitmq.jar
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  rm -f /usr/lib/apache-flume-ng/lib/flume-ng-rabbitmq.jar
+}
