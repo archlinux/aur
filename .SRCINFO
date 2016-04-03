@@ -1,14 +1,14 @@
 pkgbase = xcursor-oxygen
 	pkgdesc = Oxygen cursor themes
-	pkgver = 5.6.0
-	pkgrel = 2
+	pkgver = 5.6.1
+	pkgrel = 1
 	url = https://quickgit.kde.org/?p=oxygen.git
 	arch = any
 	license = LGPL
 	depends = libxcursor
 	conflicts = oxygen
-	source = http://download.kde.org/stable/plasma/5.6.0/oxygen-5.6.0.tar.xz
-	sha256sums = 458eeb0614f075f029ffedb08d71950c5258ad4f6daea0c8cbad89e8a6b27954
+	source = http://download.kde.org/stable/plasma/5.6.1/oxygen-5.6.1.tar.xz
+	sha256sums = 2544e953e7af34a51b8bcd441223e2f2f036a1533c5972c9df7c0e281abdc412
 
 pkgname = xcursor-oxygen
 
