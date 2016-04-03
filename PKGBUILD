@@ -3,7 +3,7 @@
 # Contributor: William Giokas (KaiSforza) <1007380@gmail.com>
 
 pkgname=libbitcoin-network-git
-pkgver=20160401
+pkgver=20160403
 pkgrel=1
 pkgdesc="Bitcoin P2P Network Library"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('boost'
          'boost-libs'
          'icu'
          'libbitcoin'
-         'secp256k1-git')
+         'libsecp256k1')
 makedepends=('autoconf'
              'automake'
              'gcc'
