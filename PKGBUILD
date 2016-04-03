@@ -1,8 +1,9 @@
 # Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=flightradar24
-pkgver=1.0.13
-pkgrel=5
+pkgver=1.0.18
+_pkgverorig=1.0.18-5
+pkgrel=1
 pkgdesc="Feeder software for Flightradar24.com"
 url="http://forum.flightradar24.com/threads/7563-Flightradar24-decoder-feeder-BETA-testing-%28Win-RPi-Linux-OSX%29"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -17,17 +18,17 @@ sha256sums=(
   '7e5e1a28769559a2e2e1312894a1f9d315c4812bb34e2f1c45b2f877e4f4eeb0'
 )
 
-source_i686=("http://feed.flightradar24.com/linux/fr24feed_${pkgver}-2_i386.tgz")
-sha256sums_i686=('d5a59d2837a65334ab8ff760c749b4da5f721030f8b441dc28a5f4c20a56e2f9')
+source_i686=("http://feed.flightradar24.com/linux/fr24feed_${_pkgverorig}_i386.tgz")
+sha256sums_i686=('9d80b8a6fe55fc70b3b8e773e3d07d61ceee95c41db50a682eaab208abd3a391')
 
-source_x86_64=("http://feed.flightradar24.com/linux/fr24feed_${pkgver}-2_amd64.tgz")
-sha256sums_x86_64=('71a43fd6de5e033af59ca989b85e7c724d3aace26eb11b629dab4088a3321f6c')
+source_x86_64=("http://feed.flightradar24.com/linux/fr24feed_${_pkgverorig}_amd64.tgz")
+sha256sums_x86_64=('770e86b640bcbb8850df67aaa8072a85ac941e2e2f79ea25ef44d67e89bc5649')
 
-source_armv6h=("http://feed.flightradar24.com/raspberry-pi/fr24feed_${pkgver}-2_armv6l.tgz")
-sha256sums_armv6h=('dddd8feaa5c603acf81ab00aca7dd71f4a4cec46c83cf02eaab050e1f67501ed')
+source_armv6h=("http://feed.flightradar24.com/raspberry-pi/fr24feed_${_pkgverorig}_armhf.tgz")
+sha256sums_armv6h=('a298e3054ad47825118c9f8f11c563bad8dd68a10939a40dc0fd2647eb46866a')
 
-source_armv7h=("http://feed.flightradar24.com/raspberry-pi/fr24feed_${pkgver}-2_armv7l.tgz")
-sha256sums_armv7h=('ab54ce2ff14bceca43e28bec387d0309f8e64fe7853a6cbc6a1cb85110696ef1')
+source_armv7h=("http://feed.flightradar24.com/raspberry-pi/fr24feed_${_pkgverorig}_armhf.tgz")
+sha256sums_armv7h=('a298e3054ad47825118c9f8f11c563bad8dd68a10939a40dc0fd2647eb46866a')
 
 package() {
   cd "$srcdir"
@@ -36,9 +37,9 @@ package() {
   elif [[ $CARCH = "x86_64" ]]; then
     pushd fr24feed_amd64
   elif [[ $CARCH = "armv6h" ]]; then
-    pushd fr24feed_armv6l
+    pushd fr24feed_armhf
   elif [[ $CARCH = "armv7h" ]]; then
-    pushd fr24feed_armv7l
+    pushd fr24feed_armhf
   fi
 
   install -Dm755 fr24feed "$pkgdir/usr/bin/fr24feed"
