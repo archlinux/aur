@@ -1,0 +1,13 @@
+pkgbase = ttf-twitter-color-emoji-svginot
+	pkgdesc = A color emoji font using Twitter Emoji for Everyone SVG graphics
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/eosrei/twemoji-color-font
+	arch = any
+	license = MIT
+	depends = fontconfig
+	source = https://github.com/eosrei/twemoji-color-font/releases/download/v1.0-alpha/TwitterColorEmoji-SVGinOT-1.0-alpha.zip
+	sha256sums = 341e2d5ef6eed9c506f6010048e12f646f9d0ccce8e82676eaebf1ef06eb4ca3
+
+pkgname = ttf-twitter-color-emoji-svginot
+
