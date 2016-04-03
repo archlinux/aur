@@ -1,4 +1,5 @@
 *.tar*
 *.deb
+*.asc*
 src/
 pkg/
