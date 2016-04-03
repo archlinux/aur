@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-server-git
-pkgver=20160402
-pkgrel=2
+pkgver=20160403
+pkgrel=1
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -16,8 +16,8 @@ depends=('boost'
          'libbitcoin-database'
          'libbitcoin-network'
          'libbitcoin-node'
+         'libsecp256k1'
          'libsodium'
-         'secp256k1-git'
          'zeromq')
 makedepends=('autoconf'
              'automake'
