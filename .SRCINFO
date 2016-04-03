@@ -1,6 +1,6 @@
 pkgbase = panda3d
 	pkgdesc = A 3D game engine with Python bindings. SDK package. Optional dependencies you want to support need to be installed before panda3d.
-	pkgver = 1.9.1
+	pkgver = 1.9.2
 	pkgrel = 1
 	url = http://www.panda3d.org
 	install = panda3d.install
@@ -55,9 +55,9 @@ pkgbase = panda3d
 	optdepends = vrpn: support for virtual reality trackers (unavailable)
 	optdepends = libgles: OpenGL ES support
 	optdepends = libegl: GLX for OpenGL ES
-	source = http://www.panda3d.org/download/panda3d-1.9.1/panda3d-1.9.1.tar.gz
+	source = http://www.panda3d.org/download/panda3d-1.9.2/panda3d-1.9.2.tar.gz
 	source = panda3d.install
-	md5sums = a09747c400c85af456e91fd650a60038
+	md5sums = 44b6bd25a8a11c1e918b14eff6e34a10
 	md5sums = 057269173f3c1987953302519bc744fa
 
 pkgname = panda3d
