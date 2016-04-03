@@ -1,7 +1,7 @@
 # Contributor: Hy Goldsher <hyness-at-gmail>
 pkgname=retrofe
 pkgver=0.6.165
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform frontend designed for MAME cabinets/game centers/etc. with a focus on simplicity and customization"
 arch=('i686' 'x86_64')
 url="http://www.retrofe.com"
@@ -24,9 +24,10 @@ build() {
 }
 package() {
 	install -d $pkgdir/{opt,usr/bin}
-	install -dm777 $pkgdir/opt/RetroFE
-	cp -r $srcdir/$pkgname/Artifacts/linux/RetroFE/* $pkgdir/opt/RetroFE
-	ln -s /opt/RetroFE/$pkgname $pkgdir/usr/bin/$pkgname
+        install -dm777 $pkgdir/opt/retrofe
+	cp -r $srcdir/$pkgname/Artifacts/linux/RetroFE/* $pkgdir/opt/retrofe
+        chmod -R a+w $pkgdir/opt/retrofe/{collections,layouts,launchers}
+	ln -s /opt/retrofe/$pkgname $pkgdir/usr/bin/$pkgname
 	install -Dm644 $srcdir/$pkgname.desktop ${pkgdir}/usr/share/applications/$pkgname.desktop
 	install -Dm644 icon.png ${pkgdir}/usr/share/pixmaps/$pkgname.png
 }
