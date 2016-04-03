@@ -32,7 +32,7 @@ package() {
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   cp -r examples "${pkgdir}/usr/share/doc/${pkgname}"
   rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
-  find "${pkgdir}/${_gemdir}" -name '*.log' -or -name 'gem_make.out' -delete
+  find "${pkgdir}/${_gemdir}" \( -name '*.log' -or -name 'gem_make.out' \) -delete
 }
 
 # vim: ts=2 sw=2 et:
