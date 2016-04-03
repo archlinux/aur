@@ -3,7 +3,6 @@
 # Note: These VSTs require purchase/activation.
 
 vstname=Hive
-instdir=/opt/$vstname
 vstdir=/usr/lib/vst # Note: these are Linux VSTs (.so files)
 
 pkgname=uhe-hive-vst
@@ -78,13 +77,16 @@ build() {
     # This includes paths to the plugin's own static resources (images, fonts)
     # Patch the binary such that static resources will be loaded from a system dir:
     # Note: these paths can be located in the binary by hand via `strings $binaryname`
-    patch_strings_in_file "$binaryname" "%s/.%s/%s/Data" "$instdir/Data"
-    patch_strings_in_file "$binaryname" "%s/.%s/%s/Modules" "$instdir/Modules"
+    patch_strings_in_file "$binaryname" "%s/.%s/%s/Data" "/opt/%3\$s/Data"
+    patch_strings_in_file "$binaryname" "%s/.%s/%s/Modules" "/opt/%s\$s/Modules"
     # This is for accessing the user guide & the dialog binaries
-    patch_strings_in_file "$binaryname" "%s/.%s/%s/" "$instdir/"
+    patch_strings_in_file "$binaryname" "%s/.%s/%s/" "/opt/%3\$s/"
 
-    # The vst will work OK w/o the presets directory, but it must be manually created if the user wishes to save his/her presets
-    patch_strings_in_file "$binaryname" "%s/.%s/%s/Presets/%s" "%s/.local/share/$vstname"
+    # The vst will work OK w/o the presets directory, but it must be manually
+    # created if the user wishes to save his/her presets
+    # NOTE: mixing positional and non-positional printf arguments like this is
+    # against the spec, but doing differently would not meet the length limit
+    patch_strings_in_file "$binaryname" "%s/.%s/%s/Presets/%s" "%s/.local/share/%3\$s"
 
     # These other directories need to already exist and also be persistent
     patch_strings_in_file "$binaryname" "%s/.%s/%s/Tunefiles" "%s/.local/share"
@@ -95,6 +97,8 @@ build() {
 }
 
 package() {
+    instdir=/opt/$vstname
+
     cd "$srcdir/$untarname/$vstname"
     # Install custom license
     install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/license.txt"
