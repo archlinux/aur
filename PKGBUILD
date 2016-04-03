@@ -1,8 +1,8 @@
 # Maintainer: melchips <truphemus dot francois at gmail dot com>
 # Contributor: Lari Tikkanen <lartza@wippies.com>
 pkgname=bgs-git
-pkgver=0.6.r2.gd455737
-pkgrel=2
+pkgver=v0.8.r0.gc439733
+pkgrel=1
 pkgdesc="simple background setter based on imlib2"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/Gottox/bgs"
