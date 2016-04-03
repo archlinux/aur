@@ -1,9 +1,9 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
-# Contributor: josephgbr
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: josephgbr
 
 pkgbase=lib32-smbclient
 pkgname=('lib32-libwbclient' 'lib32-smbclient')
-pkgver=4.3.4
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Tools to access a server's filespace and printers via SMB"
 arch=('x86_64')
@@ -13,8 +13,15 @@ makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap' \
              'lib32-libcups' 'lib32-libgcrypt' 'lib32-pam' 'lib32-python2' \
              'lib32-systemd' 'lib32-talloc' 'lib32-tdb' 'lib32-popt' \
              'lib32-tevent' 'lib32-ldb' 'lib32-libarchive')
-source=("http://us1.samba.org/samba/ftp/stable/samba-${pkgver}.tar.gz")
-sha256sums=('5d0eb52e842832af922f7d57716eacff23192906ec3bdf6727e18ca24f1419d9')
+source=("http://us1.samba.org/samba/ftp/stable/samba-${pkgver}.tar.gz"
+        'libsystemd.patch')
+md5sums=('e42b884d0e07528c8571641a4df40666'
+         'ab4d156dd6be268aaf462fbd7f40a55b')
+
+prepare() {
+  cd samba-${pkgver}
+  patch -Np1 -i ../libsystemd.patch
+}
 
 build() {
   cd samba-${pkgver}
