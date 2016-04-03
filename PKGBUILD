@@ -2,17 +2,17 @@
 # CPAN Name  : Devel::CheckLib
 
 pkgname='perl-devel-checklib'
-pkgver='1.05'
+pkgver='1.06'
 pkgrel='1'
 pkgdesc="Module to check if other perl modules are installed"
 arch=('any')
-url='http://search.cpan.org/~mattn/Devel-CheckLib-1.05/'
+url='http://search.cpan.org/dist/Devel-CheckLib/'
 license=('PerlArtistic' 'GPL')
 depends=('perl')
 checkdepends=('perl-io-captureoutput')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/M/MA/MATTN/Devel-CheckLib-${pkgver}.tar.gz")
-md5sums=('c4792a4487ba54eb269f4783bf3a2fe6')
+md5sums=('1e7ab1d28313f5303c0ac777c9aa7b91')
 _distdir="Devel-CheckLib-${pkgver}"
 
 prepare() {
