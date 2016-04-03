@@ -110,6 +110,8 @@ package() {
     mkdir -p "$pkgdir/usr/lib/vst"
     ln -s "$instdir/$binaryname" "$pkgdir/usr/lib/vst/$vstname.so"
 
+    # Install all the directories (empty directories are required)
+    find Data/ Modules/ Presets/ -type d -exec install -dm755 {} $pkgdir/$instdir/{} \;
     # Install all the files
     find Data/ Modules/ Presets/ -type f -exec install -Dm644 {} $pkgdir/$instdir/{} \;
 }
