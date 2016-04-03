@@ -1,7 +1,7 @@
 # Maintainer: Albert Graef <aggraef at gmail dot com>
 
 pkgname=pdextended-lv2plugin-git
-pkgver=20.76bf43b
+pkgver=22.6d24266
 pkgrel=1
 pkgdesc="LV2 plugin host for Pd, Pd-Extended version"
 arch=("i686" "x86_64")
