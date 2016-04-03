@@ -1,9 +1,10 @@
-# Maintainer: megadriver <megadriver at gmx dot com>
+# Maintainer: grimsock <lord.grimsock at gmail dot com>
+# Contributor: megadriver <megadriver at gmx dot com>
 # Contributor: Christoph Zeiler <moonblade.dot.org: arch>
 # Contributor:  Jesse Jaara      <gmail.com: jesse.jaara>
 
 pkgname=gnurobbo
-pkgver=0.66
+pkgver=0.68
 pkgrel=4
 pkgdesc="A reimplementation of Janusz Pelc's Robbo, originally for the Atari XE/XL"
 arch=('i686' 'x86_64')
@@ -12,7 +13,7 @@ license=('GPL2', 'Custom')
 depends=('sdl_ttf' 'sdl_mixer' 'sdl_image')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}-source.tar.gz"
         "${pkgname}.desktop")
-md5sums=('77fdf9a186a08c1f95b94bd35ebbc21c'
+md5sums=('7d1f194a67dcc66c6c88ae1037db4a50'
          'e520a3c136854383627d1d960a41f8b2')
 
 build() {
