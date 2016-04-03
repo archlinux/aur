@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-node
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Full Node Library"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -11,7 +11,7 @@ depends=('boost'
          'libbitcoin'
          'libbitcoin-blockchain'
          'libbitcoin-consensus'
-         'secp256k1-git')
+         'libsecp256k1')
 makedepends=('autoconf'
              'automake'
              'gcc'
