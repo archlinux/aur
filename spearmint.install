@@ -4,6 +4,7 @@ post_install() {
     chown -R spearmint:games /opt/quake3
 
     echo '!!!'
+    echo '!!! NOTE: TO PLAY SPEARMINT, YOU MUST BE PART OF THE "games" GROUP!'
     echo '!!! To play Spearmint with the Retail Version of Quake III: Arena,'
     echo '!!!  move the pak0.pk3 file from the original game CD to /opt/quake3/baseq3/'
     echo '!!!'
