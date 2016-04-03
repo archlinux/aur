@@ -2,7 +2,7 @@
 
 pkgname=lxd
 pkgver=2.0.0.rc8
-pkgrel=1
+pkgrel=2
 pkgdesc="REST API, command line tool and OpenStack integration plugin for LXC."
 arch=('x86_64')
 url="https://github.com/lxc/lxd"
@@ -45,7 +45,6 @@ package() {
   install -p -m755 "$srcdir/bin/"* "$pkgdir/usr/bin"
   mv "$pkgdir/usr/bin/lxd-bridge-proxy" "$pkgdir/usr/lib/lxd/"
 
-  install -p -m755 "$srcdir/src/$_gourl/scripts/lxd-images" "$pkgdir/usr/bin/"
   install -p -m755 "$srcdir/src/$_gourl/lxd-bridge/lxd-bridge" "$pkgdir/usr/lib/lxd/"
 
   # Package license (if available)
