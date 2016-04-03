@@ -7,12 +7,12 @@ vstdir=/usr/lib/vst # Note: these are Linux VSTs (.so files)
 
 pkgname=uhe-podolski-vst
 pkgver=3965
-pkgrel=1
+pkgrel=2
 pkgdesc='Freeware virtual-analog synthesizer from u-he'
 arch=('x86_64' 'i686')
 url='http://www.u-he.com/cms/hive'
 license=('custom')
-depends=('cairo')
+depends=('gtk3')
 makedepends=()
 untarname=$vstname-$pkgver
 tarname=$untarname.tar.gz
