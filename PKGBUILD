@@ -1,5 +1,5 @@
 # Maintainer: Colin Wallace <wallacoloo@gmail.com>
-# Download links to other U-he VSTs can be found here: http://www.kvraudio.com/forum/viewtopic.php?f=31&t=418736&sid=0cdc12e0e50a6c55da33d25ea70da706&start=105
+# Download links to other u-he VSTs can be found here: http://www.kvraudio.com/forum/viewtopic.php?f=31&t=424953
 # Note: These VSTs require purchase/activation.
 
 vstname=Hive
