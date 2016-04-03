@@ -57,7 +57,7 @@ prepare() {
 build() {
     cd "${srcdir}/${srcname}"
 
-    qmake PREFIX='/usr/'
+    qmake 'CONFIG-=c++11' PREFIX='/usr/'
     make
 }
 
