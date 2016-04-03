@@ -3,7 +3,7 @@
 # Contributor: William Giokas (KaiSforza) <1007380@gmail.com>
 
 pkgname=libbitcoin-git
-pkgver=20160402
+pkgver=20160403
 pkgrel=1
 pkgdesc="Bitcoin Cross-Platform C++ Development Toolkit"
 arch=('i686' 'x86_64')
@@ -11,8 +11,8 @@ depends=('boost'
          'boost-libs'
          'icu'
          'libpng'
-         'qrencode'
-         'secp256k1-git')
+         'libsecp256k1'
+         'qrencode')
 makedepends=('autoconf'
              'automake'
              'gcc'
