@@ -1,0 +1,10 @@
+post_install() {
+   echo "If you want to set custom flags for SpiderOak, remember to create the"
+   echo "\`.spideroak.rc' file in your home directory. A prototype can be found"
+   echo "in /usr/share/spideroak-systemd-git/spideroak.rc.proto."
+}
+
+post_remove() {
+  echo "Remember to remove your \`.spideroak.rc' file if you don't plan on using"
+  echo "this package anymore."
+}
