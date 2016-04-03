@@ -1,6 +1,7 @@
 post_install() {
     groupadd -f games
     useradd -r -s /sbin/nologin -c "Spearmint Daemon user" -M -d /opt/quake3 -g games spearmint > /dev/null 2>&1
+    chown -R spearmint:games /opt/quake3
 
     echo '!!!'
     echo '!!! To play Spearmint with the Retail Version of Quake III: Arena,'
@@ -21,5 +22,9 @@ post_remove() {
     if egrep -q '^games:.*:$' /etc/group;
     then
       groupdel games
+    fi
+    if [[ -d '/opt/quake3' ]];
+    then
+    	chown -R root:root /opt/quake3 > /dev/null 2>&1
     fi
 }

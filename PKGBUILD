@@ -4,7 +4,7 @@
 
 pkgname=spearmint
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An improved ioquake3-based Quake 3: Arena client (note: requires pak files from original CD)"
 url="http://spearmint.pw"
 license=("GPL3")
