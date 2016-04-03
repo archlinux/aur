@@ -12,7 +12,7 @@ source=("http://dl.strem.io/Stremio${pkgver}.linux.tar.gz"
         "https://strem.io/favicon-32x32.png"
         "https://strem.io/favicon-96x96.png"
         "stremio-beta.desktop")
-md5sums=('cff370338122bf0fddc60a1c2492acdd'
+md5sums=('cff370338122bf0fddc60a1c2492acde'
          '17a3ae27d06908138317c3a9b8d03898'
          'e3b38592637449733618d73b45293b09'
          'a9381ff162484cd8c847eaa364e51e62')
