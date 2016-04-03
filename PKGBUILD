@@ -8,7 +8,7 @@ pkgdesc="nobleNote aims to be a lightweight, open source alternative to Evernote
 url="http://qt-apps.org/content/show.php/nobleNote?content=157713"
 arch=('i686' 'x86_64')
 license=('BSD')
-depends=('qt5-base qt5-tools')
+depends=('qt5-base' 'qt5-tools')
 makedepends=('git')
 source=('git+https://github.com/hakaishi/nobleNote.git')
 md5sums=('SKIP')
