@@ -25,12 +25,12 @@ bits=$(echo "$arch" | sed "s/x86_64/64/" | sed "s/i686/32/")
 binaryname=$vstname.$bits.so
 
 function patch_strings_in_file() {
-	# Source (Johan Hedin): http://everydaywithlinux.blogspot.com/2012/11/patch-strings-in-binary-files-with-sed.html
-	# Slight modification by Colin Wallace to force the pattern to capture the entire line
-	# Usage: patch_strings_in_file <file> <pattern> <replacement>
-	# replaces all occurances of <pattern> with <replacement> in <file>, padding
-	# <replacement> with null characters to match the length
-	# Unlike sed or patch, this works on binary files
+    # Source (Johan Hedin): http://everydaywithlinux.blogspot.com/2012/11/patch-strings-in-binary-files-with-sed.html
+    # Slight modification by Colin Wallace to force the pattern to capture the entire line
+    # Usage: patch_strings_in_file <file> <pattern> <replacement>
+    # replaces all occurances of <pattern> with <replacement> in <file>, padding
+    # <replacement> with null characters to match the length
+    # Unlike sed or patch, this works on binary files
     local FILE="$1"
     local PATTERN="$2"
     local REPLACEMENT="$3"
@@ -71,42 +71,43 @@ function patch_strings_in_file() {
 
 
 build() {
-	cd "$srcdir" && tar -xzf $tarname && echo "$arch" > arch.txt
-	cd "$srcdir/$untarname/$vstname"
+    cd "$srcdir" && tar -xzf $tarname && echo "$arch" > arch.txt
+    cd "$srcdir/$untarname/$vstname"
 
-	# The binaries use a scheme that causes paths to all be ~/.uhe/$vstname
-	# This includes paths to the plugin's own static resources (images, fonts)
-	# Patch the binary such that static resources will be loaded from a system dir:
-	# Note: these paths can be located in the binary by hand via `strings $binaryname`
-	patch_strings_in_file "$binaryname" "%s/.%s/%s/Data" "$instdir/Data"
-	patch_strings_in_file "$binaryname" "%s/.%s/%s/Modules" "$instdir/Modules"
-	# This is for accessing the user guide & the dialog binaries
-	patch_strings_in_file "$binaryname" "%s/.%s/%s/" "$instdir/"
+    # The binaries use a scheme that causes paths to all be ~/.uhe/$vstname
+    # This includes paths to the plugin's own static resources (images, fonts)
+    # Patch the binary such that static resources will be loaded from a system dir:
+    # Note: these paths can be located in the binary by hand via `strings $binaryname`
+    patch_strings_in_file "$binaryname" "%s/.%s/%s/Data" "$instdir/Data"
+    patch_strings_in_file "$binaryname" "%s/.%s/%s/Modules" "$instdir/Modules"
+    # This is for accessing the user guide & the dialog binaries
+    patch_strings_in_file "$binaryname" "%s/.%s/%s/" "$instdir/"
 
-	# The vst will work OK w/o the presets directory, but it must be manually created if the user wishes to save his/her presets
-	patch_strings_in_file "$binaryname" "%s/.%s/%s/Presets/%s" "%s/.local/share/$vstname"
+    # The vst will work OK w/o the presets directory, but it must be manually created if the user wishes to save his/her presets
+    patch_strings_in_file "$binaryname" "%s/.%s/%s/Presets/%s" "%s/.local/share/$vstname"
 
-	# These other directories need to already exist and also be persistent
-	patch_strings_in_file "$binaryname" "%s/.%s/%s/Tunefiles" "%s/.local/share"
-	# CCMaps is set via [settings wheel] -> Midi Table
-	patch_strings_in_file "$binaryname" "%s/.%s/%s/CCMaps" "%s/.local/share"
-	# Support includes logs & license info
-	patch_strings_in_file "$binaryname" "%s/.%s/%s/Support" "%s/.local/share"
+    # These other directories need to already exist and also be persistent
+    patch_strings_in_file "$binaryname" "%s/.%s/%s/Tunefiles" "%s/.local/share"
+    # CCMaps is set via [settings wheel] -> Midi Table
+    patch_strings_in_file "$binaryname" "%s/.%s/%s/CCMaps" "%s/.local/share"
+    # Support includes logs & license info
+    patch_strings_in_file "$binaryname" "%s/.%s/%s/Support" "%s/.local/share"
 }
 
 package() {
-	cd "$srcdir/$untarname/$vstname"
-	# Install custom license
-	install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/license.txt"
+    cd "$srcdir/$untarname/$vstname"
+    # Install custom license
+    install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/license.txt"
 
-	# Install the binary and the correct dialog version
-	install -D "$binaryname" "$pkgdir/$instdir/$binaryname"
-	install -D "dialog.$bits" "$pkgdir/$instdir/dialog.$bits"
-	# Link the binary onto the path
-	mkdir -p "$pkgdir/usr/lib/vst"
-	ln -s "$instdir/$binaryname" "$pkgdir/usr/lib/vst/$vstname.so"
+    # Install the binary and the correct dialog version
+    install -D "$binaryname" "$pkgdir/$instdir/$binaryname"
+    install -D "dialog.$bits" "$pkgdir/$instdir/dialog.$bits"
+    # Link the binary onto the path
+    mkdir -p "$pkgdir/usr/lib/vst"
+    ln -s "$instdir/$binaryname" "$pkgdir/usr/lib/vst/$vstname.so"
 
-	# Install all the files
-	find Data/ Modules/ Presets/ -type f -exec install -Dm644 {} $pkgdir/$instdir/{} \;
+    # Install all the files
+    find Data/ Modules/ Presets/ -type f -exec install -Dm644 {} $pkgdir/$instdir/{} \;
 }
 
+# vim: set tabstop=4 shiftwidth=4 expandtab:
