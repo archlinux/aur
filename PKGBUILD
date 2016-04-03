@@ -12,7 +12,7 @@ license=('GPL')
 url='http://www.abisource.com'
 depends=('fribidi' 'wv' 'goffice' 'desktop-file-utils' 'redland' 'libical' 'loudmouth'
 	 'libwpg' 'libwmf' 'link-grammar' 'gtkmathview' 'aiksaurus' 'libots' 'psiconv')
-makedepends=('pkgconfig' 'asio' 'boost' 'gobject-introspection' 'python2' 'libwpd')
+makedepends=('asio' 'boost' 'gobject-introspection' 'python2' 'libwpd' 'subversion')
 conflicts=('abiword' 'abiword-plugins')
 replaces=('abiword' 'abiword-plugins')
 install=abiword.install
