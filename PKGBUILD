@@ -2,7 +2,7 @@
 
 pkgname=libbitcoin-server
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
 depends=('boost'
@@ -14,8 +14,8 @@ depends=('boost'
          'libbitcoin-blockchain'
          'libbitcoin-consensus'
          'libbitcoin-node'
+         'libsecp256k1'
          'libsodium'
-         'secp256k1-git'
          'zeromq')
 makedepends=('autoconf'
              'automake'
