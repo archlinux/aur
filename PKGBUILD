@@ -1,6 +1,6 @@
  
 pkgname=stremio-beta
-pkgver=3.5.8
+pkgver=3.5.10
 pkgrel=1
 pkgdesc="Watch instantly all the video content you enjoy in one place."
 arch=('x86_64')
