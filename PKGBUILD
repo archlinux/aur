@@ -2,7 +2,7 @@
 
 _pkgname=tevent
 pkgname=lib32-${_pkgname}
-pkgver=0.9.26
+pkgver=0.9.28
 pkgrel=1
 pkgdesc="An event system based on the talloc memory management library (lib32)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('lib32-talloc')
 makedepends=('python2')
 optdepends=('python2: for python bindings')
-md5sums=('22c372f3d936d751271f588ab71f829b')
+md5sums=('945845817918f5cfbe0202d80a7db118')
 
 build() {
   cd "${_pkgname}-${pkgver}"
