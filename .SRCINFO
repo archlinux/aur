@@ -1,17 +1,20 @@
-pkgbase = jhelioviewer
-	pkgdesc = Visualization software for solar image data
-	pkgver = 2.3.3
+pkgbase = jhelioviewer-swhv
+	pkgdesc = Visualization software for solar image data in space weather context
+	pkgver = 2.10.0.6818
 	pkgrel = 1
 	url = http://www.jhelioviewer.org/
 	arch = x86_64
 	license = MPL
-	depends = java-runtime=8
-	source = jhelioviewer
-	source = jhelioviewer.desktop
-	source = https://github.com/Helioviewer-Project/JHelioviewer/releases/download/2.3.3/JHelioviewer_2_3_3_64_bit.rpm
-	md5sums = 173482ed34e21169a138e92de47656c6
-	md5sums = 4cdedcd67c7371762d4ad17b7ce91a32
-	md5sums = bf2bb6ed3a7f8b6c4f0297e347b3abdc
+	depends = java-environment
+  depends = sh
+	source = jhelioviewer-swhv
+	source = jhelioviewer-swhv.desktop
+	source = http://swhv.oma.be/download/jhv-2.10.0.6818.bin.tar.gz
+  source = https://raw.githubusercontent.com/Helioviewer-Project/JHelioviewer/master/resources/images/hvImage_160x160.png
+	md5sums = 945eeacfcf2465f8800c62930ad33524
+	md5sums = da3e2a96ce96c4a25d2759c7442b91d5
+	md5sums = e1c1e63453733a9c37438ffd8ca32c39
+  md5sums = f59e81237e7069b0793316d30c7bba8c
 
-pkgname = jhelioviewer
+pkgname = jhelioviewer-swhv
 
