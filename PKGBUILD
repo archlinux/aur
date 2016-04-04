@@ -6,13 +6,13 @@
 # Contributor: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gitlab
-pkgver=8.6.1
+pkgver=8.6.3
 pkgrel=1
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
 url="http://gitlab.org/gitlab-ce"
 license=('MIT')
-depends=('ruby2.1' 'git>=2.7.4' 'ruby2.1-bundler>=1.5.2' 'gitlab-shell=2.6.11' 'openssh' 'redis>=2.8' 'libxslt' 'icu' 'nodejs')
+depends=('ruby2.1' 'git>=2.7.4' 'ruby2.1-bundler>=1.5.2' 'gitlab-shell=2.6.12' 'openssh' 'redis>=2.8' 'libxslt' 'icu' 'nodejs')
 makedepends=('cmake')
 optdepends=(
 	'gitlab-workhorse=0.7.1: for http(s) access'
@@ -48,7 +48,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/gitlabhq/gitlabhq/archive/v
 	nginx-ssl.conf.example
 	lighttpd.conf.example)
 install='gitlab.install'
-sha512sums=('198ee12fbc0405014ca366ec4aac156aaabf09d8a284317a6f72930d3dc572da9d04556c1d512728549e5e7f4411b06c783ff7a85c4df64db514ed5ad7399e95'
+sha512sums=('d878d7706de91697917099dcdc98bf60961b0efa452f94ddf55f26bed93b0c02c685adf0d82ecb3bb53809183235522096194edb0140c19d61f3640b7c9fe98b'
 	'5dd7a940eee6a84095478af514dcc98c4fc6c4a214de1ddfa4a1e727d4ba34984d66d51affd7844ffebb75fed8f781b38a0da80fba6a5b8fa832948ab39b2249'
 	'2c9d8c650a1808d730bb0f6c45ea8fe2f354d56a5bea1da7eb17dc687ec06b731472af842f4cce0704bf738b5a88001a06e1907d18a35d363e88c4dd6f3e9c7d'
 	'c22439ee4cb34adf42de7619a2b83b02359cada38cbe99dd3031e6e72225ec4b2c2d6306331eadfc1c2044609b7a7e8bceddf7be213b5d4dbcaff86b35fe1ce7'
@@ -56,7 +56,7 @@ sha512sums=('198ee12fbc0405014ca366ec4aac156aaabf09d8a284317a6f72930d3dc572da9d0
 	'c11d2c59da8325551a465227096e8d39b0e4bcd5b1db21565cf3439e431838c04bc00aa6f07f4d493f3f47fd6b4e25aeb0fe0fc1a05756064706bf5708c960ec'
 	'c519a51d31300074ea12594fbcc8e9610d991ef04b1dac94d93a2b201df3465999cc7c6ac7f3896e02b117c2366d61dea1ef2f6b9cd7b18998385a7f26e5700f'
 	'4fe532dabea64189bf25d271cccc11481b22451704e10efac01c7ca4ad76a532fce82088b5eea9546aa80c1141d716820bb23de81c9093dac87f70c94910fb02'
-	'a1f52d6ca36b32580062dede23ccdde5633238310b28c6c47deb2ce4496f4e5ffea0de2a49bcb1e0e38fc82b66b0cc91a5e86854716c7e848127769b43eb5067'
+	'20b93eab504e82cc4401685b59e6311b4d2c0285bc594d47ce4106d3f418a3e2ba92c4f49732748c0ba913aa3e3299126166e37d2a2d5b4d327d66bae4b8abda'
 	'aebff70d764b16352980ab00a964122a78d57170ff1f8c86687a75770d44de03c9d02009481745c4d68cf30cad6f0158c51a1c47276e73bbc05109948a3a2c26'
 	'8025a9d8543b31d57bc54ee3d668ebf8840d4447d8a4ab3ef22597e9ca95f3d3571a71a749ca357670fc09f2c1c4c8cf79d8d603084a4142e7e088bab6dbf99c'
 	'e42d4cc00dd2de2c9512c86e977cc50487fde623b33fb020fcf0246679c6401b3fc9cb041b94377d2fcec620623d7726e1757e3a3b9a8871d78dfdc2ddb0151d'
@@ -110,6 +110,7 @@ prepare() {
 	msg2 "Patching username in database.yml..."
 	sed -e "s|username: git|username: gitlab|" \
 		config/database.yml.mysql > config/database.yml
+	msg2 "Pathing redis connection in resque.yml"
 	sed -e "s|production: unix:/var/run/redis/redis.sock|production: redis://localhost:6379|" \
 		config/resque.yml.example > config/resque.yml
 	msg2 "Patching redis_config path"
@@ -132,9 +133,9 @@ build() {
 	bundle-2.1 config build.nokogiri --use-system-libraries
 	cpus=$(nproc)
 	if [[ $cpus -ge 3 ]]; then
-		bundle-2.1 install -j$(( $cpus - 1 )) --no-cache --deployment --without development test aws ${_wo[@]}
+		bundle-2.1 install -j$(( $cpus - 1 )) --no-cache --deployment --without development test aws kerberos ${_wo[@]}
 	else
-		bundle-2.1 install --no-cache --deployment --without development test aws ${_wo[@]}
+		bundle-2.1 install --no-cache --deployment --without development test aws kerberos ${_wo[@]}
 	fi
 }
 
