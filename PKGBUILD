@@ -1,5 +1,5 @@
 _pkgname=jdk
-pkgname=jdk8
+pkgname=denix-jdk8
 _major=8
 _minor=77
 _build=b03

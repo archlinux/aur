@@ -1,4 +1,4 @@
-pkgbase = jdk8
+pkgbase = denix-jdk8
 	pkgdesc = Oracle Java 8 Development Kit (in /opt for servers)
 	pkgver = 8u77
 	pkgrel = 1
@@ -25,5 +25,5 @@ pkgbase = jdk8
 	source_armv7h = http://download.oracle.com/otn-pub/java/jdk/8u77-b03/jdk-8u77-linux-arm32-vfp-hflt.tar.gz
 	md5sums_armv7h = fe99c43db6fe17670c327fe05066e402
 
-pkgname = jdk8
+pkgname = denix-jdk8
 
