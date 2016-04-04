@@ -1,5 +1,5 @@
 pkgname=fortune-mod-blackbooks
-pkgver=1506132341
+pkgver=1603160520
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Black Books"
