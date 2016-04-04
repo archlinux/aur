@@ -3,8 +3,8 @@
 # Contributor: Javier 'Phrodo_00' Aravena  <phrodo.00@gmail.com>
 
 pkgname=ascii-invaders
-pkgver=0.1b
-pkgrel=5
+pkgver=0.1
+pkgrel=1
 pkgdesc="Clone of Space Invaders for text-terminals using the curses library"
 arch=(i686 x86_64)
 url="https://github.com/macdice/ascii-invaders"
