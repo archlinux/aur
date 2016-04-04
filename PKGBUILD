@@ -2,7 +2,7 @@
 
 pkgname=mattercontrol
 _pkgname=MatterControl
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Software solution for 3D printers"
 arch=("i386" "x86_64")
