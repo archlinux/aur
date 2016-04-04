@@ -6,13 +6,13 @@
 # Maintainer: Thomas Pulzer <t.pulzer at thesecretgamer dot de>
 pkgname=msigna
 pkgver=0.9.6
-pkgrel=2
+pkgrel=3
 pkgdesc="An interactive desktop application for transacting on the bitcoin network."
 arch=('x86_64' 'i686')
 url="https://ciphrex.com"
 license=('AGPL3' 'MIT')
 depends=('qt5-base' 'boost-libs' 'qrencode' 'boost')
-makedepends=('libodb-sqlite' 'odb')
+makedepends=('libodb-sqlite' 'odb' 'rsync')
 optdepends=('bitcoin-qt')
 source=("https://github.com/Faldon/mSIGNA/archive/v$pkgver-AUR.tar.gz")
 
