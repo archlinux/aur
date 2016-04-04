@@ -1,11 +1,11 @@
 pkgname=fortune-mod-betteroffted
-pkgver=1512041429
+pkgver=1603131748
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Better Off Ted"
 arch=('any')
 license=('custom:cc-sa-3.0')
-url=("http://en.wikiquote.org/wiki/Better_Off_Ted")
+url="http://en.wikiquote.org/wiki/Better_Off_Ted"
 depends=('fortune-mod')
 makedepends=('fortune-mod' 'make' 'coreutils' 'sed' 'grep' 'wikiquote-fortune>=1.4')
 source=("https://github.com/maandree/wikiquote-fortune-collection/archive/${_ver}.tar.gz")
