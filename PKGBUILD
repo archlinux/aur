@@ -18,11 +18,11 @@ optdepends=('tk: tcl/tk interface' 'texlive-bin: latex sty files')
 backup=('etc/R-devel/Makeconf' 'etc/R-devel/Renviron' 'etc/R-devel/ldpaths' 'etc/R-devel/repositories' 'etc/R-devel/javaconf')
 options=('!makeflags' '!emptydirs')
 install=r.install
-source=("ftp://ftp.stat.math.ethz.ch/Software/R/R-devel.tar.gz"
+source=("https://stat.ethz.ch/R/daily/R-devel.tar.bz2"
 	'r.desktop'
 	'r.png'
 	'R.conf')
-sha1sums=('be3bd5f00318e5b3883b280ad4367d95b2050278'
+sha1sums=('SKIP'
           'f5a9e7f53d1a45a5be4e61bad0f2727ea35d6b92'
           'a69a07ec363440efc18ce0a7f2af103375dea978'
           'a2a2d672b4b123d8305666444680cb4f6909261b')
