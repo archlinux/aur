@@ -2,7 +2,7 @@
 
 pkgname=openbazaar-bin
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="OpenBazaar Client, Decentralized Peer to Peer Marketplace for Bitcoin -- Static binaries"
 arch=('i686' 'x86_64')
 url="https://github.com/OpenBazaar/OpenBazaar-Client"
