@@ -5,7 +5,7 @@ _ver=5
 pkgdesc="Fortune quotes from Two and a Half Men"
 arch=('any')
 license=('custom:cc-sa-3.0')
-url=("http://en.wikiquote.org/wiki/Two_and_a_Half_Men")
+url="http://en.wikiquote.org/wiki/Two_and_a_Half_Men"
 depends=('fortune-mod')
 makedepends=('fortune-mod' 'make' 'coreutils' 'sed' 'grep' 'wikiquote-fortune>=1.4')
 source=("https://github.com/maandree/wikiquote-fortune-collection/archive/${_ver}.tar.gz")
