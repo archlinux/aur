@@ -21,5 +21,8 @@ build() {
 package() {
 	cd "$srcdir/cbvike/build"
 	install -Dm664 libcbVike.so "$pkgdir/usr/lib/codeblocks/plugins/libcbVike.so"
+	install -Dm664 cbVike.zip "$pkgdir/usr/share/codeblocks/cbVike.zip"
+
+
 }
 
