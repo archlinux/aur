@@ -12,7 +12,7 @@ pkgbase=linux-libre-grsec
 _pkgbasever=4.4-gnu
 _pkgver=4.4.6-gnu
 _grsecver=3.1
-_timestamp=201603171922
+_timestamp=201604021734
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -55,7 +55,6 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         "https://repo.parabola.nu/other/rcn-libre-grsec/patches/${_pkgver%-*}/rcn-libre-grsec-${_pkgver%-*}-${rcnrel}.patch"
         "https://repo.parabola.nu/other/rcn-libre-grsec/patches/${_pkgver%-*}/rcn-libre-grsec-${_pkgver%-*}-${rcnrel}.patch.sig"
         '0001-ARM-disable-implicit-function-declaration-error.patch'
-        '0001-ARM-fix-ops-undeclared-first-use-in-this-function.patch'
         '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
         '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
         '0003-SMILE-Plug-device-tree-file.patch'
@@ -69,7 +68,7 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
             '0e4403973b4e92ec97e101f4f8053cc8f1b90302c2040f168d0c53374efc121a'
             'SKIP'
-            '3ad57cda516c665c8fd093b92b1bfa0f3a56ee79021ea43b64576c8b8d911b2f'
+            'ef5da08e3d3e822e86edf295f4bad988ba2e55f2a3c4bca98636fd156191ef09'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -88,7 +87,6 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             '1ddb4826dc41c5e6db05c1ccad396915e678992c97b300089bf47040e0db4f44'
             'SKIP'
             '1fc7055041da895d5d023fcf0c5e06d00a3506ae98931138229dba7392e2c382'
-            'bd7e6446b8ca7724642f8317326fe228b116be28f9649b5783530d7c0899ded8'
             'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
             '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
             '6dadc17ea56d93ec0f1d0c3c98c25a7863e9ba3c4af50dc411d630a1bcc98f08'
@@ -132,9 +130,6 @@ prepare() {
 
     # disable implicit function declaration error since grsecurity patches conflicts against some RCN modules
     patch -p1 -i "${srcdir}/0001-ARM-disable-implicit-function-declaration-error.patch"
-
-    # fix undeclared variable
-    patch -p1 -i "${srcdir}/0001-ARM-fix-ops-undeclared-first-use-in-this-function.patch"
 
     # ALARM patches
     patch -p1 -i "${srcdir}/0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch"
