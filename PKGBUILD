@@ -13,12 +13,12 @@ url="http://cristal.inria.fr/~remy/latex/"
 options=(!strip)
 install=texlive.install
 source=('http://cristal.inria.fr/~remy/latex/mathpartir.tgz')
-md5sums=('aa2b95890d49f74c1babb60da2f7e84c')
+md5sums=('3f670db71394a86c87042682c128c977')
 
 package() {
   local lib="$pkgdir"/usr/share/texmf-dist/tex/latex
   local doc="$pkgdir"/usr/share/doc/mathpartir
   install -m755 -d "$lib" "$doc"
   install -m644 -t "$lib" mathpartir.sty
-  install -m644 -t "$doc" mathpartir.dvi  mathpartir.pdf  mathpartir.ps.gz  mathpartir.tex
+  install -m644 -t "$doc" mathpartir.pdf  mathpartir.tex
 }
