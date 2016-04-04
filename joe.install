@@ -1,0 +1,7 @@
+post_install() {
+    echo "NOTE : don't forget to run \"joe update\" to get latest gitignores templates"
+}
+
+post_upgrade() {
+    echo "NOTE : don't forget to run \"joe update\" to get latest gitignores templates"
+}
