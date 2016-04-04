@@ -1,11 +1,11 @@
 pkgname=fortune-mod-3rfts
-pkgver=1601081550
+pkgver=1602082012
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from 3rd Rock from the Sun"
 arch=('any')
 license=('custom:cc-sa-3.0')
-url=("http://en.wikiquote.org/wiki/3rd_Rock_from_the_Sun")
+url="http://en.wikiquote.org/wiki/3rd_Rock_from_the_Sun"
 depends=('fortune-mod')
 makedepends=('fortune-mod' 'make' 'coreutils' 'sed' 'grep' 'wikiquote-fortune>=1.4')
 source=("https://github.com/maandree/wikiquote-fortune-collection/archive/${_ver}.tar.gz")
