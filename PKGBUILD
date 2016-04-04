@@ -1,17 +1,20 @@
 pkgname=bandwidth
-pkgver=1.1b
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Benchmark memory and network bandwidth"
 arch=('i686' 'x86_64')
-url="http://home.comcast.net/~veritas/bandwidth.html"
+url="http://zsmith.co/bandwidth.html"
 license=('GPL')
 makedepends=('nasm')
 options=(!makeflags)
-source=(http://zsmith.co/archives/${pkgname}-${pkgver}.tar.gz)
-md5sums=('ae47329daea5c422f552e38b16856376') 
+sha1sums=('ee10698c6a675ece26f08ddb5e6001323d6305c1')
+source=("https://mutineer.org/file.php?id=${sha1sums[0]}&p=${pkgname}")
 
 build() {
-  cd "${srcdir}"/${pkgname}-1.1
+  cd "${srcdir}"/${pkgname}-${pkgver}
+
+  make clean
+
   if [ "${CARCH}" = "x86_64" ]; then 
      make bandwidth64
    else
@@ -20,7 +23,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}"/${pkgname}-1.1
+  cd "${srcdir}"/${pkgname}-${pkgver}
   if [ "${CARCH}" = "x86_64" ]; then 
      install -Dm755 bandwidth64 "${pkgdir}"/usr/bin/bandwidth
    else
