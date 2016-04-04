@@ -1,6 +1,6 @@
 pkgbase = captvty
 	pkgdesc = Accédez aux directs et à une multitude d’émissions proposées au rattrapage par différentes chaînes de télévision
-	pkgver = 2.3.11
+	pkgver = 2.3.11.1
 	pkgrel = 1
 	url = http://www.captvty.fr
 	arch = i686
@@ -13,13 +13,13 @@ pkgbase = captvty
 	depends = wine-mono
 	depends = libjpeg6-turbo
 	depends = lib32-libjpeg6-turbo
-	source = http://releases.captvty.fr/656150a73146f9d56461f25d7003e195ff040011/captvty-2.3.11.zip
+	source = http://releases.captvty.fr/c500190897c75905d4214909021da0931708013c/captvty-2.3.11.1.zip
 	source = captvty.ico::http://captvty.fr/favicon.ico?v=2
 	source = captvty
 	source = LICENSE
-	sha1sums = f5ee0e871bacda75ec799d230c0677dbf1b53173
+	sha1sums = 4e0ddb3de70707e7f12dac81ba9b9edf2245173e
 	sha1sums = 7210acfa98cb21ab32de463ccf0456743241b48e
-	sha1sums = 2ee170fc5ab5d46d373074518d8a69ef72418268
+	sha1sums = 52f3b7d06a168639c9ab3fd28cd6a0853dc7521d
 	sha1sums = a1a03fcff4541bbf212eb20730d5e344ae817a5d
 
 pkgname = captvty
