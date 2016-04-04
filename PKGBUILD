@@ -2,7 +2,7 @@
 # Contributor: Chris Heien <chris.h.heien@gmail.com>
 
 pkgname=pdfbox
-pkgver=1.8.11
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="An open source Java tool for working with PDF documents. (pdfbox, fontbox, jempbox)"
 arch=(any)
@@ -16,7 +16,7 @@ source=(pdfbox
         http://www.us.apache.org/dist/${pkgname}/${pkgver}/${jarname})
 
 sha1sums=('be3bd038b51d983c5f3ccb58f60b905cb5baab92'
-          'db70d9e7d8d8e0fec50b9fa86f82535687c31d42')
+          'aacb85be8c89d7d4d713b25d9fa000d524ea3dbc')
 
 package() {
     cd "${srcdir}"
