@@ -23,6 +23,6 @@ package() {
 
 	cp ${srcdir}/../ida.png ${pkgdir}/usr/share/icons/hicolor/64x64/apps/
 	cp ${srcdir}/../ida-demo.desktop ${pkgdir}/usr/share/applications/
-	cp ${srcdir}/idademo68/license.txt ${pkgdir}/usr/share/ida-demo/LICENSE
-	mv ${srcdir}/idademo68 ${pkgdir}/opt/ida-demo
+	cp ${srcdir}/idademo${_pkgver}/license.txt ${pkgdir}/usr/share/ida-demo/LICENSE
+	mv ${srcdir}/idademo${_pkgver} ${pkgdir}/opt/ida-demo
 }
