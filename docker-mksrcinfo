@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Runs mksrcinfo from within the container. Allows to make a release from
+# another Linux operating system using Docker.
+#
+
+id=$(docker build -q .)
+docker run -ti --rm --volume "$(pwd):/src" "$id" /usr/sbin/mksrcinfo
