@@ -8,13 +8,9 @@ pkgdesc='Build-Tools for Google Android SDK (aapt, aidl, dexdump, dx, llvm-rs-cc
 arch=('i686' 'x86_64')
 url="http://developer.android.com/sdk/index.html"
 license=('custom')
-depends=('gcc-libs' 'zlib')
+depends_i686=('gcc-libs' 'zlib')
 optdepends=()
-
-if [[ $CARCH = x86_64 ]]; then
-  depends=('lib32-gcc-libs' 'lib32-zlib')
-fi
-
+depends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 _sdk=android-sdk
 
 source=("https://dl-ssl.google.com/android/repository/build-tools_${pkgver}-linux.zip")
