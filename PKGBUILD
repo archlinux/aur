@@ -3,12 +3,12 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=firefox-extension-flash-video-downloader
-pkgver=9.5.1
+pkgver=11.0.0
 pkgrel=1
 pkgdesc='download your favorite videos in 1 click'
 url='http://www.flashvideodownloader.org/'
 license=('MPLv1.1')
-md5sums=('cc3977d443b16c6cd0b2922ac71aba00')
+md5sums=('bae77fbd0d6fe5c839ef266f69dd87bc')
 
 [ "$arch" ] || arch=('any')
 
