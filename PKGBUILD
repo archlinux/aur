@@ -1,14 +1,14 @@
 # Maintainer: zimbatm <zimbatm@zimbatm.com>
 pkgname=direnv
-pkgver=2.7.0
-pkgrel=2
+pkgver=2.8.1
+pkgrel=1
 pkgdesc='a shell extension that manages your environment'
 arch=('x86_64' 'i686')
 url='http://direnv.net'
 license=('MIT')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/zimbatm/direnv/archive/v$pkgver.tar.gz")
-sha256sums=('3cfa8f41e740c0dc09d854f3833058caec0ea0d67d19e950f97eee61106b0daf')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/direnv/direnv/archive/v$pkgver.tar.gz")
+sha256sums=('7863d533fa75953d10130396a9db7d129e14d19ea24177e603bd433af439f393')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
