@@ -43,21 +43,7 @@ package_rust-nightly() {
 	rm -f "$pkgdir"/usr/lib/rustlib/{components,manifest-rustc,manifest-rust-docs,rust-installer-version,install.log,uninstall.sh}
 
 	install --directory "$pkgdir"/usr/share/licenses/rust-nightly/
-	install -m644 COPYRIGHT LICENSE-* "$pkgdir"/usr/share/licenses/rust-nightly/
-
-	install --directory "$pkgdir"/usr/share/vim/vimfiles/
-	cp -a "$srcdir"/rust.vim/*/ "$pkgdir"/usr/share/vim/vimfiles/
-
-	install --directory "$pkgdir"/usr/share/zsh/functions/Completion/Zsh/
-	cp -a "$srcdir"/zsh-config/_* "$pkgdir"/usr/share/zsh/functions/Completion/Zsh/
-
-	install --directory "$pkgdir"/usr/share/nano/
-	cp -a "$srcdir"/nano-config/*.nanorc "$pkgdir"/usr/share/nano/
-
-	cd "$srcdir"/rust-mode
-	emacs --eval '(byte-recompile-directory "." 0)' --quick --batch 2> /dev/null || true
-	install --directory "$pkgdir"/usr/share/emacs/site-lisp/
-	cp -a rust-mode.* "$pkgdir"/usr/share/emacs/site-lisp/
+	install -m644 COPYRIGHT LICENSE-* "$pkgdir"/usr/share/licenses/rust-nightly
 }
 
 package_rust-nightly-doc() {
