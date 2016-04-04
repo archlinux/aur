@@ -11,9 +11,9 @@ if ! [ -f /etc/fluxable/fluxable.conf ]; then
 ## Tell the user what they need to know!
 post_inst_msg() {
 echo
-echo "If you ever trash your ~/.fluxable/fluxable.conf file
-a sample configuration file has been installed for you
-in /etc/fluxable with a .org extension."
+echo "If you ever trash your /etc/fluxable/fluxable.conf file, a sample configuration file has been installed for you
+in /etc/fluxable with a .org extension.
+Copy this file to ~/.fluxable/fluxable.conf and edit for user specific settings."
 echo
 
 ## Test for installed supported filemanagers.
