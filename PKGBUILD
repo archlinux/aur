@@ -4,7 +4,7 @@
 
 pkgname=spearmint
 pkgver=0.2
-pkgrel=8
+pkgrel=9
 _ioq3v1='1.36'
 _ioq3v2='1.32-9'
 pkgdesc="An improved ioquake3-based Quake 3: Arena client (note: requires pak files from original CD)"
@@ -63,7 +63,7 @@ then
   fi
 fi
 
-  mv ${pkgname}-${pkgver}-readme.txt readme.txt
+  cp ${pkgname}-${pkgver}-readme.txt readme.txt
 }
 
 package() {
@@ -89,7 +89,7 @@ package() {
   install -m 640 ${srcdir}/${pkgname}/settings/* ${pkgdir}/opt/quake3/settings/
   install -m 644 ${srcdir}/${pkgname}/*.txt ${pkgdir}/usr/share/doc/${pkgname}/
   # unneeded since we have the license tracked by pacman
-  rm ${pkgdir}/usr/share/doc/${pkgname}/COPYING.txt
+  rm ${pkgdir}/usr/share/doc/${pkgname}/{COPYING,${pkgname}-${pkgver}-readme}.txt
 
   cd ${pkgdir}/usr/bin
   ln -sf /opt/quake3/${pkgname}.launcher ${pkgname}
