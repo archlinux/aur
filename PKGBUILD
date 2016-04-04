@@ -2,7 +2,7 @@
 
 pkgname=letsencrypt.sh-git
 pkgver=v0.1.0.r9.g33f07fc
-pkgrel=1
+pkgrel=2
 pkgdesc="A Let's Encrypt (ACME) client implemented in bash"
 arch=(any)
 url="https://github.com/lukas2511/letsencrypt.sh"
@@ -26,7 +26,7 @@ package() {
 
 	install -Dm644 docs/examples/config.sh.example "$pkgdir/etc/letsencrypt.sh/config.sh.example"
 	install -Dm644 docs/examples/domains.txt.example "$pkgdir/etc/letsencrypt.sh/domains.txt.example"
-	install -Dm644 docs/examples/hook.txt.example "$pkgdir/etc/letsencrypt.sh/hook.txt.example"
+	install -Dm644 docs/examples/hook.sh.example "$pkgdir/etc/letsencrypt.sh/hook.sh.example"
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
