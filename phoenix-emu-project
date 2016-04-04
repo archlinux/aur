@@ -1,0 +1,15 @@
+#!/bin/sh
+
+confdir=$HOME/.config/PhoenixEmuProject
+mkdir -p $confdir
+cd  $confdir
+if [ ! -s $confdir/scales ] ; then 
+     cp -ar /opt/phoenix-emu-project/scales $confdir/scales
+fi 
+if [ ! -s $confdir/shaders ] ; then 
+     cp -ar /opt/phoenix-emu-project/shaders $confdir/shaders
+fi 
+if [ ! -s $confdir/skin ] ; then 
+     cp -ar /opt/phoenix-emu-project/skin $confdir/skin
+fi 
+/opt/phoenix-emu-project/PhoenixEmuProject
