@@ -12,5 +12,7 @@ source=("https://github.com/dokku/sshcommand/archive/v$pkgver.tar.gz")
 sha256sums=('3e43fb91a35bb5d868b7416cf251f563eb2b393e3571af9226c3e9ca5eeb1232')
 
 package(){
+  cd sshcommand-$pkgver
+
   install -Dm 755 sshcommand "$pkgdir"/usr/bin/sshcommand
 }
