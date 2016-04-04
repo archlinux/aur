@@ -4,7 +4,7 @@
 
 pkgname=mathpartir
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 license=('GPL')
 depends=('texlive-core')
 pkgdesc="LaTeX package for typesetting type inference rules"
