@@ -2,7 +2,7 @@
 # Contributor: Jarek Sedlacek <jareksedlacek@gmail.com>
 
 pkgname=batterymon-clone
-pkgver=1.4.3
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A simple battery monitor tray icon using acpi"
 arch=('any')
@@ -18,12 +18,6 @@ conflicts=('batterymon')
 
 source=("$pkgname"::'git://github.com/JarekSed/batterymon-clone.git')
 md5sums=('SKIP')
-
-pkgver() {
-    cd "$srcdir/$pkgname"
-    # Use the tag of the last commit
-    git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
-}
 
 package() {
 cd "$srcdir/$pkgname"
