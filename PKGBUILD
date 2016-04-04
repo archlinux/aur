@@ -1,11 +1,11 @@
 pkgname=fortune-mod-carnivale
-pkgver=1510232113
+pkgver=1603161815
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Carnivàle"
 arch=('any')
 license=('custom:cc-sa-3.0')
-url=("http://en.wikiquote.org/wiki/Carnivàle")
+url="http://en.wikiquote.org/wiki/Carnivàle"
 depends=('fortune-mod')
 makedepends=('fortune-mod' 'make' 'coreutils' 'sed' 'grep' 'wikiquote-fortune>=1.4')
 source=("https://github.com/maandree/wikiquote-fortune-collection/archive/${_ver}.tar.gz")
