@@ -1,0 +1,15 @@
+pkgbase = ruby-circler
+	pkgdesc = A command line tool for circle ci
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = https://github.com/unhappychoice/circler
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = circler-0.3.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/circler-0.3.2.gem
+	md5sums = f1c8a1b22a6a87cd7329cddcca98a255
+
+pkgname = ruby-circler
+
