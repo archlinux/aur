@@ -1,6 +1,6 @@
 pkgname=scenic-view
 pkgver=8.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A tool for analyzing the scenegraph of a JavaFX application'
 arch=('i686' 'x86_64')
 url='http://fxexperience.com/scenic-view/'
@@ -11,7 +11,7 @@ source=("http://fxexperience.com/downloads/ScenicView-${pkgver}.zip"
         'scenic-view.desktop')
 sha256sums=('cb62998437190fa0d52fe786594f71605673ba0983d12cd99a863d2d8c10e8aa'
             '94f63cb15a84149c2bff3e1ff2644105e0c776a8c9510f7c95c645ca11a40eed'
-            'fe496d029e9a748c0ac30a2cb933a939af36874c36a4e07a35de24332858a285')
+            '7d1fb4e5a06a081b604e10acef772e809b0aa6a7c56edbfba8bce8af47cabd96')
 
 prepare() {
   jar xf ScenicView.jar

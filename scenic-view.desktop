@@ -5,5 +5,7 @@ Name=Scenic View
 Comment=A tool for analyzing the scenegraph of a JavaFX application
 Exec=scenic-view
 Icon=scenic-view
+StartupNotify=true
+StartupWMClass=org.scenicview.ScenicView
 Terminal=false
 Categories=Development;Java;
