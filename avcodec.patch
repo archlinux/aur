@@ -1,0 +1,225 @@
+diff --git a/plugins/configure.ac b/plugins/configure.ac
+index 2f6022b..4779fa0 100644
+--- a/plugins/configure.ac
++++ b/plugins/configure.ac
+@@ -260,10 +260,10 @@ else
+                                            HAVE_H264_DECODER=yes
+                                            ;;
+                                        * ) 
+-                                           AC_CHECK_LIB(avcodec, h263p_encoder, [HAVE_H263=yes], [HAVE_H263=no])
+-                                           AC_CHECK_LIB(avcodec, h263p_encoder, [HAVE_H263P=yes], [HAVE_H263P=no])
+-                                           AC_CHECK_LIB(avcodec, mpeg4_encoder, [HAVE_MPEG4=yes], [HAVE_MPEG4=no])
+-                                           AC_CHECK_LIB(avcodec, h264_decoder, [HAVE_H264_DECODER=yes], [HAVE_H264_DECODER=no])
++                                           AC_CHECK_LIB(avcodec, avcodec_find_encoder, [HAVE_H263=yes], [HAVE_H263=no])
++                                           AC_CHECK_LIB(avcodec, avcodec_find_encoder, [HAVE_H263P=yes], [HAVE_H263P=no])
++                                           AC_CHECK_LIB(avcodec, avcodec_find_encoder, [HAVE_MPEG4=yes], [HAVE_MPEG4=no])
++                                           AC_CHECK_LIB(avcodec, avcodec_find_encoder, [HAVE_H264_DECODER=yes], [HAVE_H264_DECODER=no])
+                                            ;;
+                      esac
+                      AC_SUBST(HAVE_H263)
+diff --git a/plugins/video/H.263-1998/h263-1998.h b/plugins/video/H.263-1998/h263-1998.h
+index 61db155..c665f7a 100644
+--- a/plugins/video/H.263-1998/h263-1998.h
++++ b/plugins/video/H.263-1998/h263-1998.h
+@@ -94,11 +94,7 @@ typedef unsigned char BYTE;
+ #define SQCIF_WIDTH     128
+ #define SQCIF_HEIGHT    96
+ 
+-#if FF_API_CODEC_ID
+-    #define FF_CodecID AVCodecID
+-#else
+-    #define FF_CodecID CodecID
+-#endif
++#define FF_CodecID AVCodecID
+ 
+ #define MAX_YUV420P_FRAME_SIZE (((CIF16_WIDTH * CIF16_HEIGHT * 3) / 2) + (FF_INPUT_BUFFER_PADDING_SIZE*2))
+ enum Annex {
+diff --git a/plugins/video/H.264/h264-x264.cxx b/plugins/video/H.264/h264-x264.cxx
+index d7b6183..7acb0e1 100644
+--- a/plugins/video/H.264/h264-x264.cxx
++++ b/plugins/video/H.264/h264-x264.cxx
+@@ -88,7 +88,7 @@
+ #endif
+ #include <string.h>
+ 
+-FFMPEGLibrary FFMPEGLibraryInstance(CODEC_ID_H264);
++FFMPEGLibrary FFMPEGLibraryInstance(AV_CODEC_ID_H264);
+ 
+ static void logCallbackFFMPEG (void* v, int level, const char* fmt , va_list arg) {
+   char buffer[512];
+@@ -308,7 +308,7 @@ H264DecoderContext::H264DecoderContext()
+   _skippedFrameCounter = 0;
+   _rxH264Frame = new H264Frame();
+ 
+-  if ((_codec = FFMPEGLibraryInstance.AvcodecFindDecoder(CODEC_ID_H264)) == NULL) {
++  if ((_codec = FFMPEGLibraryInstance.AvcodecFindDecoder(AV_CODEC_ID_H264)) == NULL) {
+     TRACE(1, "H264\tDecoder\tCodec not found for decoder");
+     return;
+   }
+@@ -325,7 +325,7 @@ H264DecoderContext::H264DecoderContext()
+     return;
+   }
+ 
+-    _context->pix_fmt             = PIX_FMT_YUV420P;
++    _context->pix_fmt             = AV_PIX_FMT_YUV420P;
+     _context->skip_frame          = AVDISCARD_DEFAULT;
+     _context->error_concealment   = FF_EC_GUESS_MVS; // | FF_EC_DEBLOCK;
+ #if LIBAVCODEC_VERSION_MAJOR < 54
+@@ -340,7 +340,7 @@ H264DecoderContext::H264DecoderContext()
+ #else
+     _context->codec_type          = AVMEDIA_TYPE_VIDEO;
+ #endif
+-    _context->codec_id            = CODEC_ID_H264;
++    _context->codec_id            = AV_CODEC_ID_H264;
+     _context->thread_count        = 1; // using more than 1 thread causes race conditions
+     _context->keyint_min          = 8;
+     _context->flags               += CODEC_FLAG_EMU_EDGE; //CODEC_FLAG_LOW_DELAY;
+diff --git a/plugins/video/common/dyna.cxx b/plugins/video/common/dyna.cxx
+index 1f94a2f..8da45f5 100644
+--- a/plugins/video/common/dyna.cxx
++++ b/plugins/video/common/dyna.cxx
+@@ -197,13 +197,13 @@ bool DynaLink::GetFunction(const char * name, Function & func)
+ FFMPEGLibrary::FFMPEGLibrary(FF_CodecID codec)
+ {
+   _codec = codec;
+-  if (_codec==CODEC_ID_H264)
++  if (_codec==AV_CODEC_ID_H264)
+       snprintf( _codecString, sizeof(_codecString), "H264");
+-  if (_codec==CODEC_ID_H263)
++  if (_codec==AV_CODEC_ID_H263)
+       snprintf( _codecString, sizeof(_codecString), "H263");
+-  if (_codec==CODEC_ID_H263P)
++  if (_codec==AV_CODEC_ID_H263P)
+       snprintf( _codecString, sizeof(_codecString), "H263+");
+-  if (_codec==CODEC_ID_MPEG4)
++  if (_codec==AV_CODEC_ID_MPEG4)
+       snprintf( _codecString, sizeof(_codecString), "MPEG4");
+   isLoadedOK = false;
+ }
+@@ -254,14 +254,14 @@ bool FFMPEGLibrary::Load(int ver)
+     return false;
+   }
+ 
+-  if (_codec==CODEC_ID_H264) {
++  if (_codec==AV_CODEC_ID_H264) {
+     if (!libAvcodec.GetFunction("h264_decoder", (DynaLink::Function &)Favcodec_h264_decoder)) {
+       TRACE (1, _codecString << "\tDYNA\tFailed to load h264_decoder");
+       return false;
+     }
+   }
+ 
+-  if (_codec==CODEC_ID_H263) {
++  if (_codec==AV_CODEC_ID_H263) {
+     if (!libAvcodec.GetFunction("h263_encoder", (DynaLink::Function &)Favcodec_h263_encoder)) {
+       TRACE (1, _codecString << "\tDYNA\tFailed to load h263_encoder" );
+       return false;
+@@ -273,7 +273,7 @@ bool FFMPEGLibrary::Load(int ver)
+     }
+   }
+   
+-  if (_codec==CODEC_ID_H263P) {
++  if (_codec==AV_CODEC_ID_H263P) {
+     if (!libAvcodec.GetFunction("h263_encoder", (DynaLink::Function &)Favcodec_h263_encoder)) {
+       TRACE (1, _codecString << "\tDYNA\tFailed to load h263_encoder" );
+       return false;
+@@ -290,7 +290,7 @@ bool FFMPEGLibrary::Load(int ver)
+     }
+   }
+ 
+-  if (_codec==CODEC_ID_MPEG4) {
++  if (_codec==AV_CODEC_ID_MPEG4) {
+     if (!libAvcodec.GetFunction("mpeg4_encoder", (DynaLink::Function &)mpeg4_encoder)) {
+       TRACE (1, _codecString << "\tDYNA\tFailed to load mpeg4_encoder");
+       return false;
+@@ -431,21 +431,21 @@ bool FFMPEGLibrary::Load(int ver)
+     Favcodec_init();
+ 
+     // register only the codecs needed (to have smaller code)
+-    if (_codec==CODEC_ID_H264) 
++    if (_codec==AV_CODEC_ID_H264) 
+       Favcodec_register(Favcodec_h264_decoder);
+ 
+-    if (_codec==CODEC_ID_H263) {
++    if (_codec==AV_CODEC_ID_H263) {
+       Favcodec_register(Favcodec_h263_encoder);
+       Favcodec_register(Favcodec_h263_decoder);
+     }
+ 
+-    if (_codec==CODEC_ID_H263P) {
++    if (_codec==AV_CODEC_ID_H263P) {
+       Favcodec_register(Favcodec_h263_encoder);
+       Favcodec_register(Favcodec_h263p_encoder);
+       Favcodec_register(Favcodec_h263_decoder);
+     }
+ 
+-    if (_codec==CODEC_ID_MPEG4) {
++    if (_codec==AV_CODEC_ID_MPEG4) {
+       Favcodec_register(mpeg4_encoder);
+       Favcodec_register(mpeg4_decoder);
+     }
+diff --git a/plugins/video/common/dyna.h b/plugins/video/common/dyna.h
+index 52b03b2..2c82f75 100644
+--- a/plugins/video/common/dyna.h
++++ b/plugins/video/common/dyna.h
+@@ -77,11 +77,7 @@ class DynaLink
+ #endif /* _WIN32 */
+ };
+ 
+-#if FF_API_CODEC_ID
+-    #define FF_CodecID AVCodecID
+-#else
+-    #define FF_CodecID CodecID
+-#endif
++#define FF_CodecID AVCodecID
+ /////////////////////////////////////////////////////////////////
+ //
+ // define a class to interface to the FFMpeg library
+diff --git a/plugins/video/H.263-1998/h263-1998.cxx b/plugins/video/H.263-1998/h263-1998.cxx
+index a7f153a..05f5844 100644
+--- a/plugins/video/H.263-1998/h263-1998.cxx
++++ b/plugins/video/H.263-1998/h263-1998.cxx
+@@ -128,7 +128,7 @@ static struct StdSizes {
+   { CIF16_WIDTH, CIF16_HEIGHT, PLUGINCODEC_CIF16_MPI },
+ };
+ 
+-static FFMPEGLibrary FFMPEGLibraryInstance(CODEC_ID_H263P);
++static FFMPEGLibrary FFMPEGLibraryInstance(AV_CODEC_ID_H263P);
+ 
+ // this callback may receive log data from all FFMPEG based codecs
+ static void logCallbackFFMPEG (void* v, int level, const char* fmt , va_list arg)
+@@ -286,7 +286,7 @@ bool H263_Base_EncoderContext::Open(FF_CodecID codecId)
+   _context->me_method = ME_EPZS;
+ 
+   _context->max_b_frames = 0;
+-  _context->pix_fmt = PIX_FMT_YUV420P;
++  _context->pix_fmt = AV_PIX_FMT_YUV420P;
+ 
+   // X-Lite does not like Custom Picture frequency clocks...
+   _context->time_base.num = 100; 
+@@ -616,7 +616,7 @@ void H263_RFC2190_EncoderContext::RTPCallBack(struct AVCodecContext * /*avctx*/,
+ 
+ bool H263_RFC2190_EncoderContext::Open()
+ {
+-  if (!H263_Base_EncoderContext::Open(CODEC_ID_H263))
++  if (!H263_Base_EncoderContext::Open(AV_CODEC_ID_H263))
+     return false;
+ 
+   _context->rtp_payload_size = 1400;
+@@ -849,7 +849,7 @@ H263_RFC2429_EncoderContext::~H263_RFC2429_EncoderContext()
+ 
+ bool H263_RFC2429_EncoderContext::Open()
+ {
+-  if (!H263_Base_EncoderContext::Open(CODEC_ID_H263P))
++  if (!H263_Base_EncoderContext::Open(AV_CODEC_ID_H263P))
+     return false;
+ 
+   SetMaxKeyFramePeriod(H263P_KEY_FRAME_INTERVAL);
+@@ -989,7 +989,7 @@ H263_Base_DecoderContext::H263_Base_DecoderContext(const char * _prefix)
+   , tracer(_prefix, false)
+ #endif
+ {
+-  if ((_codec = FFMPEGLibraryInstance.AvcodecFindDecoder(CODEC_ID_H263)) == NULL) {
++  if ((_codec = FFMPEGLibraryInstance.AvcodecFindDecoder(AV_CODEC_ID_H263)) == NULL) {
+     TRACE_AND_LOG(tracer, 1, "Codec not found for decoder");
+     return;
+   }
