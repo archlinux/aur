@@ -1,11 +1,11 @@
 pkgname=fortune-mod-supernatural
-pkgver=1505161956
+pkgver=1603210424
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Supernatural (U.S. TV series)"
 arch=('any')
 license=('custom:cc-sa-3.0')
-url=("http://en.wikiquote.org/wiki/Supernatural_(U.S._TV_series)")
+url="http://en.wikiquote.org/wiki/Supernatural_(U.S._TV_series)"
 depends=('fortune-mod')
 makedepends=('fortune-mod' 'make' 'coreutils' 'sed' 'grep' 'wikiquote-fortune>=1.4')
 source=("https://github.com/maandree/wikiquote-fortune-collection/archive/${_ver}.tar.gz")
