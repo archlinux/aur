@@ -42,9 +42,9 @@
 pkgname=ttf-wps-win10
 pkgver=1.0.0
 pkgrel=2
-pkgdesc="Symbol fonts required by wps-office from Microsoft Windows 10"
+pkgdesc='Symbol fonts required by wps-office from Microsoft Windows 10'
 arch=('any')
-url="http://www.microsoft.com/typography/fonts/product.aspx?PID=164"
+url='http://www.microsoft.com/typography/fonts/product.aspx?PID=164'
 license=('custom')
 depends=('fontconfig' 'xorg-font-utils')
 provides=('ttf-wps-fonts')
