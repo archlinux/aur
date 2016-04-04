@@ -1,5 +1,5 @@
 pkgname=fortune-mod-homeland
-pkgver=1506121722
+pkgver=1601141717
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Homeland"
