@@ -2,3 +2,4 @@ src/
 pkg/
 sshcommand
 *.tar.xz
+v*.tar.gz
