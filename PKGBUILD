@@ -3,7 +3,7 @@
 # Contributor: Christian Babeux <christian.babeux@0x80.ca>
 
 pkgname=gambit-c
-pkgver=4.8.4
+pkgver=4.8.5
 pkgrel=1
 pkgdesc='Scheme R5RS interpreter and compiler (via C)'
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ depends=('bash')
 install="$pkgname.install"
 options=('staticlibs')
 source=("http://www.iro.umontreal.ca/~${pkgname%-c}/download/${pkgname%-c}/v${pkgver%.*}/source/${pkgname/-c/-v}${pkgver//./_}-devel.tgz")
-sha256sums=('daeaaa55f0c5076686313017c7c3676c60db14cbf2b55dd6023e8ed1fcfff218')
+sha256sums=('d8e2affb144013cbe22d09cf9c4120c81edd9f075473de3605198b69405d6509')
 
 build() {
  cd "${pkgname/-c/-v}${pkgver//./_}-devel"
