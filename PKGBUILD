@@ -1,11 +1,11 @@
 pkgname=fortune-mod-scrubs
-pkgver=1504091518
+pkgver=1512071537
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Scrubs"
 arch=('any')
 license=('custom:cc-sa-3.0')
-url=("http://en.wikiquote.org/wiki/Scrubs")
+url="http://en.wikiquote.org/wiki/Scrubs"
 depends=('fortune-mod')
 makedepends=('fortune-mod' 'make' 'coreutils' 'sed' 'grep' 'wikiquote-fortune>=1.4')
 source=("https://github.com/maandree/wikiquote-fortune-collection/archive/${_ver}.tar.gz")
