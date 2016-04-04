@@ -1,11 +1,11 @@
 pkgname=fortune-mod-mentalist
-pkgver=1504211639
+pkgver=1604032026
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from The Mentalist"
 arch=('any')
 license=('custom:cc-sa-3.0')
-url=("http://en.wikiquote.org/wiki/The_Mentalist")
+url="http://en.wikiquote.org/wiki/The_Mentalist"
 depends=('fortune-mod')
 makedepends=('fortune-mod' 'make' 'coreutils' 'sed' 'grep' 'wikiquote-fortune>=1.4')
 source=("https://github.com/maandree/wikiquote-fortune-collection/archive/${_ver}.tar.gz")
