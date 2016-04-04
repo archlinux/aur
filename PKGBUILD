@@ -1,14 +1,14 @@
 # Maintainer: Hanspeter Portner <dev at open-music-kontrollers dot ch>
 _pkgname=midi_matrix.lv2
 pkgname=midi-matrix-lv2
-pkgver=0.1.5
+pkgver=0.1.6
 pkgrel=1
 pkgdesc="LV2 'Midi Matrix' plugin bundle: 'Channel Filter'"
 arch=('i686' 'x86_64')
 url='http://open-music-kontrollers.ch/lv2/midi_matrix'
 license=('Artistic2.0')
 groups=('lv2-plugins')
-depends=('elementary')
+depends=('elementary' 'lilv' 'sratom' 'nanomsg')
 makedepends=('cmake' 'lv2')
 provides=()
 conflicts=()
@@ -18,7 +18,7 @@ options=()
 install=
 source=("https://github.com/OpenMusicKontrollers/$_pkgname/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=('a01699fc717a0b8c9e832edde81bbb2a')
+md5sums=('937d012cbe153dd1f81060038efa0d56')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
