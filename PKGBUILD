@@ -6,7 +6,7 @@ pkgver=6.30.223.271
 pkgrel=6
 pkgdesc="Broadcom 802.11 Linux STA wireless driver"
 arch=('i686' 'x86_64')
-url="https://www.broadcom.com/support/?gid=1"
+url="https://www.broadcom.com/support/802.11"
 license=('custom')
 depends=('dkms')
 optdepends=('linux-headers: build modules against the Arch kernel'
