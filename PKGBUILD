@@ -4,7 +4,7 @@
 # Contributor: quantax
 
 pkgname=ags-git
-pkgver=3.3.4.2.42.g18d1d18
+pkgver=v.3.3.5.4.r0.g1ea2d33
 pkgrel=1
 pkgdesc="Adventure Game Studio, a development tool that is primarily used to create graphical adventure games"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/ags"
-  git describe --tags | sed s'/v\.//;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 #prepare() {
