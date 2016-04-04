@@ -47,7 +47,7 @@ arch=('any')
 url="http://www.microsoft.com/typography/fonts/product.aspx?PID=164"
 license=('custom')
 depends=('fontconfig' 'xorg-font-utils')
-provides=('ttf-font' 'ttf-wps-fonts')
+provides=('ttf-wps-fonts')
 conflicts=('ttf-wps-fonts')
 install="${pkgname}.install"
 
