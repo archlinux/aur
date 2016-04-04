@@ -1,5 +1,5 @@
 pkgname=fortune-mod-blackadder
-pkgver=1601111626
+pkgver=1603201321
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Blackadder"
