@@ -1,6 +1,6 @@
 # Maintainer: Joost Bremmer <toost dot b at gmail dot com>
 pkgname=clmystery-git
-pkgver=20150115
+pkgver=20160202
 pkgrel=1
 pkgdesc="A command-line murder mystery"
 arch=('any')
