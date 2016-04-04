@@ -2,7 +2,7 @@
 # Contributor: Fraser P. Newton <fpnewton90 [at] gmail [dot] com>
 
 pkgname=gcp-cups-connector
-pkgver=2016.01.02.r34.g9f9b683
+pkgver=2016.01.02.r68.gd1f3668
 pkgrel=1
 pkgdesc="The Google Cloud Print (aka GCP) CUPS Connector shares CUPS printers with users of Google Cloud Print."
 arch=('i686' 'x86_64')
@@ -37,4 +37,5 @@ package() {
 
 	echo ""
 	echo "Please use gcp-cups-connector-util init to generate a config json file in /etc/gcp-cups-connector"
+        echo "or don't forget to update confgi file using gcp-cups-connector-util update-config file"
 }
