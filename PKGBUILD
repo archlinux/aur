@@ -5,7 +5,7 @@ pkgname=ruby-${_gemname}
 _pkgver=1.0.3
 pkgver=1.0.3.af7984c
 _gitcommit=af7984cd39a23445e6b2a19e2e12444c8d2f7d27
-pkgrel=1
+pkgrel=2
 pkgdesc='High-performance asynchronous DNS server and resolver for Ruby'
 url='https://github.com/ioquatix/rubydns'
 arch=('any')
@@ -18,6 +18,7 @@ sha512sums=('3795bd482916db229d4c399f82bd2646c72b828727ff0267f9f3073b4403b816935
 prepare() {
   cd ${_gemname}-${_gitcommit}
   sed 's|git ls-files|find|' -i *.gemspec
+  sed -r 's|2.0.0|1.0.3|' -i lib/rubydns/version.rb
 }
 
 build() {
