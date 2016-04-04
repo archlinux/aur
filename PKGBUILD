@@ -3,7 +3,7 @@
 _gemname=network_interface
 pkgname=ruby-${_gemname}
 pkgver=0.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Library to get network interface information'
 url='https://github.com/rapid7/network_interface'
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ package() {
   gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" network_interface*.gem
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  find "${pkgdir}" -name gem_make.out -o -name gem.build_complete -o -name mkmf.log | xargs rm
+  find "${pkgdir}" \( -name gem_make.out -o -name mkmf.log \) -delete
   rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
 }
 
