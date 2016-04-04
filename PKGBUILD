@@ -1,11 +1,11 @@
 pkgname=fortune-mod-warehouse13
-pkgver=1601061550
+pkgver=1602060612
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Warehouse 13"
 arch=('any')
 license=('custom:cc-sa-3.0')
-url=("http://en.wikiquote.org/wiki/Warehouse_13")
+url="http://en.wikiquote.org/wiki/Warehouse_13"
 depends=('fortune-mod')
 makedepends=('fortune-mod' 'make' 'coreutils' 'sed' 'grep' 'wikiquote-fortune>=1.4')
 source=("https://github.com/maandree/wikiquote-fortune-collection/archive/${_ver}.tar.gz")
