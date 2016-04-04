@@ -1,0 +1,21 @@
+diff -aur ptask-git/src/tw.c ptask-new/src/tw.c
+--- ptask-git/src/tw.c	2016-04-04 14:51:03.742076645 +0200
++++ ptask-new/src/tw.c	2016-04-04 14:54:59.306938336 +0200
+@@ -111,11 +111,12 @@
+ 
+ 	log_debug("task version: %s", ver);
+ 
+-	if (!strcmp(ver, "2.2.0")
+-	    || !strcmp(ver, "2.0.0")
+-	    || !strcmp(ver, "2.3.0")
+-	    || !strcmp(ver, "2.4.0")
+-	    || !strcmp(ver, "2.4.1"))
++	if (!strncmp(ver, "2.0", 3)
++	    || !strncmp(ver, "2.1", 3)
++		|| !strncmp(ver, "2.2", 3)
++	    || !strncmp(ver, "2.3", 3)
++	    || !strncmp(ver, "2.4", 3)
++	    || !strncmp(ver, "2.5", 3))
+ 		return 1;
+ 	else
+ 		return 0;

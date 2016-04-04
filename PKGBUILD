@@ -3,7 +3,7 @@
 
 pkgname=ptask-git
 pkgver=0.0.9.r9.g2b8b4aa
-pkgrel=2
+pkgrel=3
 pkgdesc='A GTK+ graphical user interface for managing tasks in taskwarrior'
 arch=('i686'
       'x86_64')
@@ -18,9 +18,9 @@ makedepends=('git'
 			 'asciidoc')
 install=$pkgname.install
 source=("$pkgname::git+http://git.wpitchoune.net/${pkgname%-git}.git"
-        'task-2.4.4-compat.patch')
+        'task-2.5-compat.patch')
 sha512sums=('SKIP'
-            '85ee768407ca6827df6544d86772d392e269d26e1ca6ca2faebb059e52cc9acd04c4baf2a1f4f02f5d088dd470992c9a35398512c465a988fc3aa3588d1a8a77')
+            'ffe243097a6580105820fa2ba84b52667ba8d97c34b9e377b54ce297896dbb695fab47d66c634dff724d4c676bf60a83690e5d574b7b34c0b757558f305a6a23')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
@@ -31,7 +31,7 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  patch -p1 -i ${srcdir}/task-2.4.4-compat.patch
+  patch -p1 -i ${srcdir}/task-2.5-compat.patch
 }
 
 build() {
