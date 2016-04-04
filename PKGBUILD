@@ -1,11 +1,11 @@
 pkgname=fortune-mod-darkangel
-pkgver=1511040948
+pkgver=1601191607
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Dark Angel"
 arch=('any')
 license=('custom:cc-sa-3.0')
-url=("http://en.wikiquote.org/wiki/Dark_Angel")
+url="http://en.wikiquote.org/wiki/Dark_Angel"
 depends=('fortune-mod')
 makedepends=('fortune-mod' 'make' 'coreutils' 'sed' 'grep' 'wikiquote-fortune>=1.4')
 source=("https://github.com/maandree/wikiquote-fortune-collection/archive/${_ver}.tar.gz")
