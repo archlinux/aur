@@ -1,5 +1,5 @@
 pkgname=fortune-mod-prettylittleliars
-pkgver=1601022111
+pkgver=1604040751
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Pretty Little Liars"
