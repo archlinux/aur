@@ -1,5 +1,5 @@
 pkgname=fortune-mod-that70sshow
-pkgver=1512051211
+pkgver=1601221149
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from That '70s Show"
