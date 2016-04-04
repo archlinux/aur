@@ -1,22 +1,22 @@
 pkgbase = jcryptool
 	pkgdesc = A cryptographer's e-learning application. You can use it to apply and analyse cryptographic algorithms.
-	pkgver = 0.9.8
+	pkgver = 0.9.9
 	pkgrel = 1
-	epoch = 1
 	url = http://www.cryptool.org/en/jcryptool
 	install = jcryptool.install
 	arch = i686
 	arch = x86_64
 	license = EPL
+	depends = glibc
 	depends = java-environment
 	depends = python2
 	depends = libxext
 	depends = libxrender
 	depends = fontconfig
-	source = http://www.cryptool.org/jctdownload/Builds/downloads/stable/jcryptool-0.9.8-linux.gtk.x86_64.tar.gz
+	source = http://www.cryptool.org/jctdownload/Builds/downloads/weekly/jcryptool-0.9.9-linux.gtk.x86_64.tar.gz
 	source = jcryptool.desktop
 	source = jcryptool.png
-	sha512sums = 19ece8644757c02e8fb4ba43f4e4b23cc093d6492fe4cb7f1d5a4f37dc60f83a43d387c2b7bc7f5293cbdbe793f8870d7ebc2cfba86b8a1f4edfe52f0dd7e083
+	sha512sums = 33ef49c750d968a0f088f712292e51741b1c60e71fa1b0eafc36f9390acfb8970897a9385ceceaabd0c40164728f6f2ccc59702d8886b5ee8ce29e18b8736fdc
 	sha512sums = d0bd2e8b4a52b52280c9dcf45ae1e1db11876dfe6cefd34e095f5218c4c9fabb1abefcd38c92f74e3ef1b825794d720655dc45a03f08cbfc3f5b01f1f5994302
 	sha512sums = e5e0ac2721ad3919b85fdf7da2fc14d491e89965aabf4c7ca6db840b70bd72ca37ddb63222ee21727607348651125fb34c5e62c2cb9d49e5856678187cb35f6c
 
