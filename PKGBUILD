@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=cryfs
-pkgver=0.9.3.alpha
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Cryptographic filesystem for the cloud"
 arch=('i686' 'x86_64')
@@ -15,13 +15,13 @@ depends=('boost'
 makedepends=('cmake' 'git' 'make')
 url="https://www.cryfs.org"
 license=('LGPL3')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/cryfs/$pkgname/tar.gz/0.9.3-alpha
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/cryfs/$pkgname/tar.gz/$pkgver
         git+https://github.com/cryfs/cryfs.wiki)
-sha256sums=('136b3009b9a352cd891d41f2cd009a340616105310fedddaa8e678ec23900be3'
+sha256sums=('124ac3315161c702eef4ba2e5720a39b7ab8f012aefd9313578373c2150a62f0'
             'SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-0.9.3-alpha"
+  cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Building...'
   mkdir cmake && cd cmake
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-0.9.3-alpha"
+  cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Installing license...'
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
