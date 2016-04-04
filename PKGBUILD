@@ -3,14 +3,14 @@
 # Maintainer: Albert Graef <aggraef@gmail.com>
 
 pkgname=pure-hg
-pkgver=5611.c4dc19d7f764
+pkgver=5613.b7486ed110e5
 pkgrel=1
 pkgdesc="Pure is a modern-style functional programming language based on term rewriting."
 arch=("i686" "x86_64")
 license=('GPL3' 'LGPL3')
 url="http://purelang.bitbucket.org/"
-depends=('llvm35' 'gmp' 'mpfr' 'readline')
-makedepends=('mercurial')
+depends=('llvm35-libs' 'gmp' 'mpfr' 'readline')
+makedepends=('mercurial' 'llvm35')
 optdepends=("pure-docs-hg: online documentation"
             "pcre: Perl regex support"
             "w3m: access to help in interactive mode"
@@ -40,6 +40,9 @@ build() {
 package() {
   cd "$srcdir/pure-lang/pure"
   make DESTDIR=$pkgdir install || return 1
+  # Copy the needed binaries from the LLVM toolchain to make the batch
+  # compiler work without having the llvm35 package installed.
+  cp /usr/bin/llc /usr/bin/llvm-as /usr/bin/opt $pkgdir/usr/lib/pure
 }
 
 # vim:set ts=2 sw=2 et:
