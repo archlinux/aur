@@ -1,5 +1,5 @@
 pkgname=fortune-mod-fringe
-pkgver=1504021750
+pkgver=1604012231
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Fringe"
