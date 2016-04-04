@@ -1,7 +1,7 @@
 # Maintainer: Marcin Mielniczuk <marmistrz@inboxalias.com>
 pkgname=cbvike
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="VIM plugin for Code::Blocks "
 arch=("x86_64" "i686")
 url="http://forums.codeblocks.org/index.php?topic=19281.0"
@@ -20,6 +20,6 @@ build() {
 
 package() {
 	cd "$srcdir/cbvike/build"
-	install -Dm664 libcbVike.so "$pkgdir/usr/lib/codeblocks/plugins"
+	install -Dm664 libcbVike.so "$pkgdir/usr/lib/codeblocks/plugins/libcbVike.so"
 }
 
