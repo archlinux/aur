@@ -1,0 +1,16 @@
+pkgbase = lessmsi
+	pkgdesc = An utility to view and extract the contents of an MSI file
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://lessmsi.activescott.com
+	arch = any
+	makedepends = gendesk
+	makedepends = icoutils
+	depends = winetricks
+	source = https://github.com/activescott/lessmsi/releases/download/v1.4/lessmsi-v1.4.zip
+	source = lessmsi
+	sha1sums = 3798775e8038e5ae9d1b279cca7df234ee4ca560
+	sha1sums = 6b5308768269d0846104abf83fae3b5aa71b77d1
+
+pkgname = lessmsi
+
