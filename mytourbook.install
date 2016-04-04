@@ -1,0 +1,14 @@
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+cat << EOF 
+Internal data cleanup (upstream): The internal Eclipse data is now located in
+the mytourbook installation folder. The existing data is not removed from the
+old location, it should be removed manually using:
+
+  rm -r ~/.mytourbook/org.eclipse.*
+
+Do not delete any other data from this directory, as it contains the tour data
+files.
+EOF
+}
