@@ -1,13 +1,13 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=ropper-git
-pkgver=1.7.2.268.debc8e8
+pkgver=1.8.0.301.46cac0e
 pkgrel=1
 pkgdesc="Show information about binary files and find gadgets to build rop chains for different architectures"
 url="https://github.com/sashs/Ropper"
 arch=('any')
 license=('GPL2')
-depends=('python-capstone')
+depends=('python-capstone' 'python-filebytes')
 optdepends=('sqlite: gadgets database support')
 makedepends=('git' 'python-setuptools')
 checkdepends=('sqlite')
