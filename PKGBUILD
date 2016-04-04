@@ -4,7 +4,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-caffeine-git
-pkgver=r102
+pkgver=r110
 pkgrel=1
 pkgdesc="Fill the cup to inhibit auto suspend and screensaver."
 arch=(any)
@@ -45,6 +45,11 @@ package_03_unify_conveniencejs() {
   ln -fs \
     ../user-theme@gnome-shell-extensions.gcampax.github.com/convenience.js \
     "$destdir/convenience.js"
+}
+
+build() {
+  cd "$_gitname"
+  ./update-locale.sh
 }
 
 package_09_icons() {
