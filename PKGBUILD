@@ -26,5 +26,7 @@ package() {
     install -D -m755 "${srcdir}/${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
     install -D -m755 "${srcdir}/${pkgname}-gui.sh" "${pkgdir}/usr/bin/${pkgname}-gui"
     install -D -m 644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+    
+    # disable auto-updates
+    sed -i 's/"AutoUpdates": true,/"AutoUpdates": false,/g' ${pkgdir}/opt/asf/config/ASF.json
 }
-
