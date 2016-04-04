@@ -1,34 +1,19 @@
+# Maintainer: Zanny <lordzanny@gmail.com>
 # First Linux Arch packager: Serge Victor <arch@random.re>
 
-_pipname=Flask-Bootstrap
-pkgbase=python-flask-bootstrap
-pkgname=('python2-flask-bootstrap' 'python-flask-bootstrap')
-pkgver=3.3.5.6
+pkgname=('python-flask-bootstrap')
+pkgver=3.3.5.7
 pkgrel=1
-pkgdesc="Packages Bootstrap into an extension that mostly consists of a blueprint named ‘bootstrap’."
+pkgdesc="Ready-to-use Twitter-bootstrap for use in Flask."
 arch=('any')
-url="https://pythonhosted.org/Flask-Bootstrap/"
+url="https://github.com/mbr/flask-bootstrap"
 license=('Apache')
-makedepends=('python2-setuptools' 'python-setuptools')
-source=("https://pypi.python.org/packages/source/${_pipname:0:1}/$_pipname/$_pipname-$pkgver.tar.gz")
-md5sums=('8527aaefa724a30eef7578a3139bbdef')
-
-
-prepare() {
-    cp -R $_pipname-$pkgver python2-$_pipname-$pkgver
-}
-
-package_python2-flask-bootstrap() {
-depends=('python2-flask' 'python2-visitor' 'python2-dominate')
-
-    cd python2-$_pipname-$pkgver
-    python2 setup.py install --root="$pkgdir/" --optimize=1
-}
-
-package_python-flask-bootstrap() {
 depends=('python-flask' 'python-visitor' 'python-dominate')
+makedepends=('python-setuptools')
+source=("https://github.com/mbr/flask-bootstrap/archive/$pkgver.tar.gz")
+md5sums=('5c58de16b7a76f732e4d14d70b0d5cb8')
 
-    cd $_pipname-$pkgver 
-    python setup.py install --root="$pkgdir/" --optimize=1
+package() {
+    cd "flask-bootstrap-$pkgver"
+    python setup.py install --root="$pkgdir"
 }
-
