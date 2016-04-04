@@ -1,7 +1,7 @@
 # Maintainer: Marcin Mielniczuk <marmistrz@inboxalias.com>
 pkgname=cbvike
 pkgver=0.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="VIM plugin for Code::Blocks "
 arch=("x86_64" "i686")
 url="http://forums.codeblocks.org/index.php?topic=19281.0"

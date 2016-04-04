@@ -1,7 +1,7 @@
 pkgbase = cbvike
 	pkgdesc = VIM plugin for Code::Blocks
 	pkgver = 0.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://forums.codeblocks.org/index.php?topic=19281.0
 	arch = x86_64
 	arch = i686
