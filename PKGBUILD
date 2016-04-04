@@ -2,7 +2,7 @@
 # This PKGBUILD is maintained at https://github.com/winged/aur-packages
 
 pkgname=finja
-pkgver=1.0.7
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="Index and find your stuff"
 arch=('any')
@@ -19,7 +19,7 @@ source=(
     "LICENSE::https://www.gnu.org/licenses/agpl.txt"
 )
 sha256sums=(
-    '4c3e568a0a4764a550ecd25891049a1c512237c164d0cf5a572ae91b73551ae5'
+    'd1efb9c240ad27c0317d4186e59e186da24c28da816b56b8fa28ff4ea510e252'
     '57c8ff33c9c0cfc3ef00e650a1cc910d7ee479a8bc509f6c9209a7c2a11399d6'
 )
 
