@@ -21,8 +21,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_gitname"
-  # Git tag
-  echo $(git describe --tags|sed 's/-/./g')
+  # Latest annotated tag (release)
+  git describe --abbrev=0
 }
 
 build() {
