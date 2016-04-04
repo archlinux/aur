@@ -1,5 +1,5 @@
 pkgname=fortune-mod-psych
-pkgver=1504081448
+pkgver=1603090531
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Psych"
