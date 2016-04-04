@@ -31,26 +31,6 @@ md5sums_armv7h=('fe99c43db6fe17670c327fe05066e402')
 package() {
     cd ${_pkgname}1.${_major}.0_${_minor}
 
-    msg2 "Removing redundancies..."
-    rm    db/bin/*.bat
-    rm    db/3RDPARTY
-    rm    db/LICENSE
-    rm -r jre/lib/desktop/icons/HighContrast
-    rm -r jre/lib/desktop/icons/HighContrastInverse
-    rm -r jre/lib/desktop/icons/LowContrast
-    rm    jre/lib/fontconfig.*.bfc
-    rm    jre/lib/fontconfig.*.properties.src
-    rm -r jre/plugin/
-    rm    jre/*.txt
-    rm    jre/COPYRIGHT
-    rm    jre/LICENSE
-    rm    jre/README
-    rm    *.txt
-    rm    COPYRIGHT
-    rm    LICENSE
-    rm    README*
-    rm -r man
-
     install -d -m755 $pkgdir/opt/${_pkgname}1.${_major}.0_${_minor}
     install -d -m755 $pkgdir/etc/profile.d
     install -D -m644 $srcdir/jdk.sh $pkgdir/etc/profile.d/jdk.sh
