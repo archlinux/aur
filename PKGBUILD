@@ -11,7 +11,7 @@ depends=('python'
 
 makedepends=('git')
 
-source=(${pkgname}::'git+https://github.com/dotfloat/steam-appmanifest.git')
+source=(${pkgname}::"git+https://github.com/dotfloat/${pkgname%-git}.git")
 
 sha256sums=('SKIP')
 
