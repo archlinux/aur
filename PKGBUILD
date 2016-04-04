@@ -11,7 +11,7 @@ url="https://github.com/macdice/ascii-invaders"
 license=('GPL2')
 depends=('ncurses')
 source=(http://web.archive.org/web/20100417061809/http://www.ip9.org/munro/invaders/invaders$pkgver.tgz)
-md5sums=('fbb3f99a1b198bf4222d26a55665482e')
+md5sums=('62816f153af4b2510ba0ed2cf19fb88c')
 
 build() {
   cd "$srcdir"/invaders
