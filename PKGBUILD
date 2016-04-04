@@ -1,5 +1,5 @@
 pkgname=fortune-mod-americandad
-pkgver=1506171736
+pkgver=1603281158
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from American Dad!"
