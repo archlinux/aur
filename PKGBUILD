@@ -5,7 +5,7 @@ pkgname=noblenote-git
 pkgver=560.7b926f9
 pkgrel=2
 pkgdesc="nobleNote aims to be a lightweight, open source alternative to Evernote and OneNote."
-url="http://qt-apps.org/content/show.php/nobleNote?content=157713"
+url="https://github.com/hakaishi/nobleNote"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('qt5-base' 'qt5-tools')
