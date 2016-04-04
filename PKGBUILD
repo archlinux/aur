@@ -3,7 +3,7 @@
 pkgname=keybase-git
 pkgdesc='the Keybase Go client, filesystem, and GUI'
 license=('BSD')
-pkgver=1.0.15-20160404180708+0112799
+pkgver=1.0.15_20160404192606+0112799
 pkgver() {
   "$srcdir/client/packaging/version.sh" prerelease | sed 's/-/_/g'
 }
