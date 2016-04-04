@@ -1,17 +1,18 @@
-# Maintainer: Eduardo Leggiero <https://www.leggiero.uk/>
+# Maintainer: Quey-Liang Kao<s101062801@m101.nthu.edu.tw>
+# Contributor: Eduardo Leggiero <https://www.leggiero.uk/>
 # Contributor: Kai Korla <balticer@balticer.de>
 # Contributor: Techlive Zheng <techlivezheng@gmail.com>
 # Contributor: Ernie Brodeur <ebrodeur@ujami.net>
 
 pkgname=gitflow
-pkgver=0.4.1
-pkgrel=5
-pkgdesc='Extend git with the Gitflow branching model.'
+pkgver=1.9.1_dev
+pkgrel=1
+pkgdesc="A collection of git extetions for Vincent Driessen's branching model."
 arch=('any')
-url='https://github.com/nvie/gitflow'
+url='https://github.com/petervanderdoes/gitflow-avh'
 license=('BSD')
 depends=('git')
-source=("$pkgname.git::git://github.com/nvie/gitflow.git#tag=$pkgver")
+source=("$pkgname.git::git://github.com/petervanderdoes/gitflow-avh.git")
 md5sums=('SKIP')
 
 prepare() {
