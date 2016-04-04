@@ -1,14 +1,14 @@
 pkgbase = ida-demo
-	pkgdesc = IDA Demo version 6.8
-	pkgver = 6.8
+	pkgdesc = IDA is a multi-processor disassembler and debugger
+	pkgver = 6.9
 	pkgrel = 1
 	url = https://www.hex-rays.com/products/ida/
 	install = ida-demo.install
 	arch = i686
 	arch = x86_64
 	license = custom:IDA License Agreement
-	source = https://out7.hex-rays.com/files/idademo68_linux.tgz
-	sha1sums = 84a143b971bff4b6aac0d250d2eb3d0a761230e9
+	source = https://out7.hex-rays.com/files/idademo69_linux.tgz
+	sha1sums = 3bdf6706520f1ff04dd88e2c2f467f3090e8e6ea
 	depends_i686 = qt4
 	depends_x86_64 = lib32-qt4
 

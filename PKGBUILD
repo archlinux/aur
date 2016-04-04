@@ -2,17 +2,17 @@
 
 pkgname=ida-demo
 _pkgname=${pkgname/-/}
-pkgver=6.8
+pkgver=6.9
 _pkgver=${pkgver/./}
 pkgrel=1
-pkgdesc="IDA Demo version 6.8"
+pkgdesc="IDA is a multi-processor disassembler and debugger"
 arch=('i686' 'x86_64')
 license=('custom:IDA License Agreement')
 url="https://www.hex-rays.com/products/ida/"
 depends_i686=('qt4')
 depends_x86_64=('lib32-qt4')
 source=("https://out7.hex-rays.com/files/${_pkgname}${_pkgver}_linux.tgz")
-sha1sums=('84a143b971bff4b6aac0d250d2eb3d0a761230e9')
+sha1sums=('3bdf6706520f1ff04dd88e2c2f467f3090e8e6ea')
 install='ida-demo.install'
 
 package() {
