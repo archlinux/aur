@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archinux.org>
 
 pkgname=snorenotify
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc='Multi-platform Qt5 notification framework'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('qt5-base' 'qt5-quick1' 'hicolor-icon-theme')
 makedepends=('cmake' 'doxygen' 'extra-cmake-modules')
 install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz::https://github.com/Snorenotify/Snorenotify/archive/v$pkgver.tar.gz)
-md5sums=('fc2074ffd9d639e966ff8c01543ece8e')
+md5sums=('1092b2dd9024d6c6a714455b64f7f934')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
