@@ -2,7 +2,7 @@
 
 pkgname=thor-codec
 _pkg=thor
-pkgver=r11.191fcb3
+pkgver=r130.50d6802
 pkgrel=1
 url=https://tools.ietf.org/html/draft-fuldseth-netvc-thor
 pkgdesc="The Thor video codec is a block-based hybrid video codec similar in structure to widespread standards."
