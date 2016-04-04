@@ -1,7 +1,7 @@
 pkgbase = ida-demo
 	pkgdesc = IDA is a multi-processor disassembler and debugger
 	pkgver = 6.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hex-rays.com/products/ida/
 	install = ida-demo.install
 	arch = i686
