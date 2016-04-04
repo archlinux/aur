@@ -4,20 +4,20 @@
 
 pkgbase=cloudabi-linux
 pkgver=4.5.0rc1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://nuxi.nl"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
-_commit='4f2e7416a497dd1626068c73fe7f59fa8e0e6950'
+_commit='39369e68ea6c165ede7a29fd60b475ab6541d9c9'
 source=(
   "https://github.com/NuxiNL/linux/archive/$_commit.tar.gz"
   'config.x86_64'
   'linux.preset'
 )
 
-sha512sums=('451cd3309baa728277f6200385fd4c697d6e2b57eb730fb17139b2b619d8137ae4dc308c990840aafc455dcaa26ebe0849e9b5b2b63fe444762f5091b1ba770f'
+sha512sums=('45b0e7aa431607dd839cb7b1690256b6e01fc77f6184878153a6259504b8036830756eb388e5420010009f29318a3c27dd57e91a1d9df6edc1b62e36943298dd'
             '1375eb24d45b04cdf3a861a5ae264c2a9d9eeb78f7b4043e9069e5a38ec12c3005a0df1ec7338b38f8337b8b304408e73d46422710dce1cc0b397d3c25855280'
             '5fe243dea17fdb71edc7098e0e1938beb7f2d851bd2be3981c4ef3d617aaad81ff1cb4c84689082472ebd13b721e849ad2214aefb9ffe40ec3d76abfd40b87ad')
 
