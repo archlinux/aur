@@ -1,0 +1,8 @@
+#!/bin/sh
+
+binpath=$(readlink -f "$0")
+basedir="$(dirname "${binpath}")"
+swtdir="${basedir}/swt"
+
+cd "${basedir}"
+/usr/bin/java -Xbootclasspath/a:"${swtdir}/swt.jar" -jar Budget.jar $@

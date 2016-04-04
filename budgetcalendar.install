@@ -1,0 +1,10 @@
+post_install() {
+	ln -s "/usr/share/budgetcalendar/budgetcalendar" /usr/bin/budgetcalendar
+	update-desktop-database -q
+}
+
+post_remove() {
+	rm -f /usr/bin/budgetcalendar
+	update-desktop-database -q
+}
+
