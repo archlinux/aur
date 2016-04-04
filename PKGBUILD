@@ -5,7 +5,7 @@
 
 pkgname=gnurobbo
 pkgver=0.68
-pkgrel=4
+pkgrel=2
 pkgdesc="A reimplementation of Janusz Pelc's Robbo, originally for the Atari XE/XL"
 arch=('i686' 'x86_64')
 url="http://gnurobbo.sourceforge.net/"
@@ -17,7 +17,7 @@ md5sums=('7d1f194a67dcc66c6c88ae1037db4a50'
          'e520a3c136854383627d1d960a41f8b2')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}/${pkgname}"
 
   sed -e 's|#MUSIC=-DHAVE_MUSIC|MUSIC=-DHAVE_MUSIC|g' \
       -e 's|=-O3 -pipe -Wall -fomit-frame-pointer|+=|g' \
@@ -30,7 +30,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}/${pkgname}"
 
   make PACKAGE_DATA_DIR="${pkgdir}/usr/share/${pkgname}" BINDIR="${pkgdir}/usr/bin" DOCDIR="${pkgdir}/usr/share/doc/${pkgname}" install
 
@@ -38,7 +38,7 @@ package() {
   
   install -m644 ChangeLog COPYING README "${pkgdir}/usr/share/doc/${pkgname}/"
   install -Dm644 icon32.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-  install -Dm644 ../${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 ../../${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   cd "${pkgdir}/usr/share/doc/${pkgname}"
