@@ -6,7 +6,7 @@
 
 pkgname=clion
 _pkgname=CLion
-pkgver=2016.1
+pkgver=2016.1.1
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc="C/C++ IDE. Free 30-day trial."
@@ -27,7 +27,7 @@ optdepends=(
   'python2: Python 2 programming language support (Also requires the plugin)'
 )
 source=("https://download.jetbrains.com/cpp/${_pkgname}-${_pkgver}.tar.gz")
-sha256sums=('4d5289fe57d7951c0316034e79325f8bce9ad91e9ded6fa63d161141e6ebec42')
+sha256sums=('917b3fbd6127fb7ab49732c4078a7ea1f3e06a5f1ac763b72d1b7c4ef3ccb07a')
 noextract=("${_pkgname}-${_pkgver}.tar.gz")
 
 package() {
