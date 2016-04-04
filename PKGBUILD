@@ -2,19 +2,31 @@
 # Maintainer: Jonathan Schaeffer <Joschaeffer@gmail.com>
 
 pkgname=trang
-pkgver=20091111
-pkgrel=2
+_pkgname="jing-trang"
+pkgver=20131210
+pkgrel=1
 pkgdesc="Converts between different schema languages for XML"
-url="http://code.google.com/p/jing-trang"
+url="https://github.com/relaxng/jing-trang"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=(java-runtime-headless)
-source=(http://jing-trang.googlecode.com/files/$pkgname-$pkgver.zip  trang)
-md5sums=('9d31799b948c350850eb9dd14e5b832d'
-         'ec221196a87423d7ab6af7c5323a879c')
+source=(
+	"${pkgname}-${pkgver}.tar.gz::https://github.com/relaxng/${_pkgname}/archive/V${pkgver}.tar.gz"
+	trang
+)
 
-package() {
-  install -D -m644 $srcdir/$pkgname-$pkgver/trang.jar $pkgdir/usr/share/java/trang.jar || return 1
-  install -D -m755 $srcdir/trang $startdir/pkg/usr/bin/trang || return 1
+build() {
+  cd "$srcdir/${_pkgname}-${pkgver}"
+  ./ant
 }
 
+package() {
+  cd "$srcdir/${_pkgname}-${pkgver}"
+  install -D -m644 build/trang.jar   "${pkgdir}/usr/share/java/trang.jar"
+  install -D -m644 build/jing.jar    "${pkgdir}/usr/share/java/jing.jar"
+  install -D -m644 build/dtdinst.jar "${pkgdir}/usr/share/java/dtdinst.jar"
+  install -D -m755 "${srcdir}/trang" "${pkgdir}/usr/bin/trang" || return 1
+}
+
+sha256sums=('4cedef9de8d15f1bb5aa01620ffb1f9d55ab877419167c3a7b25b3caa8caad9d'
+            '1641a4fa0578ddec1afb374a5da75be6816e659f60c98207619f656cb90ca135')

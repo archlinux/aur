@@ -1,1 +1,15 @@
-java -jar /usr/share/java/trang.jar $@
+#!/bin/sh
+
+if [ "$1" = "classpath" ]
+then
+  CLASSPATH="$2"
+  shift 2
+fi
+
+JAVACLASSES=/usr/share/java
+CLASSPATH="${CLASSPATH:-.}:$JAVACLASSES/trang.jar"
+
+export CLASSPATH
+
+exec java com.thaiopensource.relaxng.translate.Driver "$@"
+
