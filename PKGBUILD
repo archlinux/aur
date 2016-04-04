@@ -2,7 +2,7 @@
 # Maintainer: Martin Mlynář <nexus+arch@smoula.net>
 pkgname=dokku
 pkgver=0.5.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Docker powered mini-Heroku in around 100 lines of Bash."
 arch=(any)
 url="https://github.com/dokku/dokku"
@@ -24,19 +24,17 @@ depends=(
 )
 
 source=(
-#  "https://github.com/dokku/dokku/archive/v${pkgver}.zip"
-  "https://github.com/MorrisJobke/dokku/archive/v0.4.14-arch-linux.zip"
+  "https://github.com/dokku/dokku/archive/v${pkgver}.zip"
   "${pkgname}.install"
 )
-sha256sums=('3f2de8924ea1c155b84fed7d81b7b033fe1266cfcd7532d6a4bccf0ee29c92c5'
+sha256sums=('94a061e173499b6c5cbdf6c1b6c98ccb032b698d658bf435b2eea7b32df50801'
             'e173147ecb9887a0d558a7d624d0500f1242b91b70e86e35ada39c73fd80a29b')
 install=${pkgname}.install
 
 package() {
   cd "${srcdir}/"
 
-  #cd "$pkgname"
-  cd "dokku-0.4.14-arch-linux"
+  cd "$pkgname-$pkgver"
 
   install -Dm755 dokku "${pkgdir}/usr/bin/dokku"
 
