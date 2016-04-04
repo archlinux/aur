@@ -1,14 +1,14 @@
 # Maintainer: Hanspeter Portner <dev at open-music-kontrollers dot ch>
 _pkgname=moony.lv2
 pkgname=moony-lv2
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Realtime Lua as programmable glue in LV2"
 arch=('i686' 'x86_64')
 url='http://open-music-kontrollers.ch/lv2/moony'
 license=('Artistic2.0')
 groups=('lv2-plugins')
-depends=('libuv')
+depends=('libuv' 'elementary' 'lilv' 'sratom' 'nanomsg')
 makedepends=('cmake' 'lv2')
 provides=()
 conflicts=()
@@ -18,7 +18,7 @@ options=()
 install=
 source=("https://github.com/OpenMusicKontrollers/$_pkgname/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=('df382363f38cf06bbc37ffaea634209b')
+md5sums=('808e18bf0d697b389bcf597ed04b3d33')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -33,6 +33,9 @@ build() {
     -DCMAKE_BUILD_TYPE="Release" \
 		-DCMAKE_INSTALL_PREFIX="/usr" \
     -DBUILD_TESTING=1 \
+    -DBUILD_COMMON_UI=1 \
+    -DBUILD_SIMPLE_UI=1 \
+    -DBUILD_WEB_UI=1 \
 		..
   make
 }
