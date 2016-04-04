@@ -1,5 +1,5 @@
 # Maintainer: XZS <d dot f dot fischer at web dot de>
-pkgver=1.0.0
+pkgver=1.1.0
 pkgname=python-path-and-address-git
 pkgrel=1
 pkgdesc="Functions for server CLI applications used by humans."

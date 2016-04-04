@@ -1,6 +1,6 @@
 pkgbase = python-path-and-address-git
 	pkgdesc = Functions for server CLI applications used by humans.
-	pkgver = 1.0.0
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://github.com/joeyespo/path-and-address
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-path-and-address-git
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
-	provides = python-path-and-address=1.0.0
+	provides = python-path-and-address=1.1.0
 	conflicts = python-path-and-address
 	options = !emptydirs
 	source = python-path-and-address::git+https://github.com/joeyespo/path-and-address
