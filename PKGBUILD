@@ -3,7 +3,7 @@
 
 pkgname=sasm
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple crossplatform IDE for NASM, MASM, GAS, FASM assembly languages"
 arch=('i686' 'x86_64')
 url="http://dman95.github.io/SASM/english.html"
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('qt4>=4.8' 'nasm' 'gdb' 'gcc')
 depends_x86_64+=('gcc-multilib')
 source=("https://github.com/Dman95/SASM/archive/v${pkgver}.tar.gz")
-sha256sums=('44b84460a44bdf63c5070cf7b622b9ffb106289f6025730d5e81f39998acd8ca')
+sha256sums=('f79d6f2986df97207342617c90b4d8d984b9ebb2302c215bdcea6acfcf4eff2a')
 
 build() {
     cd "${srcdir}/SASM-${pkgver}"
