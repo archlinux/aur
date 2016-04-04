@@ -1,11 +1,11 @@
 pkgname=fortune-mod-chuck
-pkgver=1504021525
+pkgver=1602171302
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Chuck"
 arch=('any')
 license=('custom:cc-sa-3.0')
-url=("http://en.wikiquote.org/wiki/Chuck")
+url="http://en.wikiquote.org/wiki/Chuck"
 depends=('fortune-mod')
 makedepends=('fortune-mod' 'make' 'coreutils' 'sed' 'grep' 'wikiquote-fortune>=1.4')
 source=("https://github.com/maandree/wikiquote-fortune-collection/archive/${_ver}.tar.gz")
