@@ -1,7 +1,8 @@
 # Maintainer: Tilman Blumenbach <tilman AT ax86 DOT net>
 
 pkgname=keepass-plugin-rpc
-pkgrel=2
+pkgrel=1
+epoch=1
 pkgdesc="RPC plugin for Keepass (used by the KeeFox addon for Firefox)"
 arch=(any)
 url="http://keefox.org/"
