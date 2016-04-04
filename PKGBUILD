@@ -35,7 +35,7 @@ package_rust-nightly() {
 	options=('staticlibs')
 	install=rust.install
 
-	cd rust
+	cd rustc-nightly
 
 	make DESTDIR="$pkgdir" install
 	rm -fr "$pkgdir"/usr/share/doc/rust/html
@@ -68,7 +68,7 @@ package_rust-nightly-doc() {
 	provides=('rust-doc')
 	conflicts=('rust-doc')
 
-	cd rust
+	cd rustc-nightly
 
 	_docdir="$pkgdir"/usr/share/doc/rust
 	install --directory "$_docdir"
