@@ -6,12 +6,13 @@
 
 pkgname=pure
 pkgver=0.64
-pkgrel=3
+pkgrel=4
 pkgdesc="Pure is a modern-style functional programming language based on term rewriting."
 arch=("i686" "x86_64")
 license=('GPL3' 'LGPL3')
 url="http://purelang.bitbucket.org/"
-depends=('llvm35' 'gmp' 'mpfr' 'readline')
+depends=('llvm35-libs' 'gmp' 'mpfr' 'readline')
+makedepends=('llvm35')
 optdepends=("pure-docs: online documentation"
             "pcre: Perl regex support"
             "w3m: access to help in interactive mode"
@@ -35,4 +36,7 @@ build() {
 package() {
   cd $srcdir/$pkgname-$pkgver
   make DESTDIR=$pkgdir install || return 1
+  # Copy the needed binaries from the LLVM toolchain to make the batch
+  # compiler work without having the llvm35 package installed.
+  cp /usr/bin/llc /usr/bin/llvm-as /usr/bin/opt $pkgdir/usr/lib/pure
 }
