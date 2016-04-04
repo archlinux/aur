@@ -1,13 +1,13 @@
 # Maintainer: Denis Kasak <dkasak|AT|termina.org.uk>
 
 pkgname=ekho
-pkgver=6.1
+pkgver=6.4.2
 pkgrel=1
 pkgdesc="Chinese text-to-speech (TTS) software for Cantonese, Mandarin, Zhaoan Hakka, Tibetan, Ngangien and Korean"
 arch=('i686' 'x86_64')
 url="http://www.eguidedog.net/ekho.php"
 license=('GPL')
-depends=('libpulse' 'lame' 'festival')
+depends=('libpulse' 'lame' 'festival' 'ncurses')
 source=("http://downloads.sourceforge.net/e-guidedog/ekho-${pkgver}.tar.xz")
 options=(!strip) #We have a lots of non executable data and only 2 executables
 
@@ -18,6 +18,11 @@ build() {
     CXXFLAGS="${CXXFLAGS} -D_x86_64"
   fi
 
+  # fix undefined references to tget* functions
+  sed -ie                                                                                             \
+    's/^\(\s*LIB_FESTIVAL=.*\)-lncurses\(.*\)/\1-Wl,--push-state,--no-as-needed,-lncurses,--pop-state\2/' \
+    $srcdir/$pkgname-$pkgver/configure
+
   ./configure --prefix=/usr --with-mp3lame --enable-festival
 }
 
@@ -27,4 +32,4 @@ package() {
   make DESTDIR="${pkgdir}/" install
 }
 
-md5sums=('19047a8d838e1c35436cfa1798b70a70')
+md5sums=('c38f9fe9479e5f0f4f4e1450095fef39')
