@@ -1,5 +1,5 @@
 pkgname=fortune-mod-freshprince
-pkgver=1601040319
+pkgver=1603111444
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from The Fresh Prince of Bel-Air"
