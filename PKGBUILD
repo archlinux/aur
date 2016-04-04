@@ -1,5 +1,5 @@
 pkgname=fortune-mod-thebigbangtheory
-pkgver=1601081409
+pkgver=1603122342
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from The Big Bang Theory"
