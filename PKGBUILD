@@ -2,7 +2,7 @@
 
 _plug=minsharp
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r1.5.g4103f3d
+pkgver=r4.1.gce01b8f
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('i686' 'x86_64')
@@ -38,6 +38,5 @@ build() {
 }
 
 package(){
-  cd "${_plug}/build/unix"
-  make DESTDIR="${pkgdir}" install
+  make -C "${_plug}/build/unix" DESTDIR="${pkgdir}" install
 }
