@@ -2,13 +2,13 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust2-git
-pkgver=7071.daeab07
+pkgver=7075.3e6f2df
 pkgrel=1
 pkgdesc="The latest development version of Faust featuring additional backends for LLVM, C, Java, JavaScript etc."
 arch=('i686' 'x86_64')
 url="http://faust.grame.fr/"
 license=('GPL')
-depends=('llvm35' 'clang35' 'ruby'
+depends=('llvm' 'clang' 'ruby'
 # needed for sound2faust:
 	 'libsndfile'
 # needed for libfaustremote:
