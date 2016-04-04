@@ -2,7 +2,7 @@
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
-pkgbase=linux               # Build stock -ARCH kernel
+pkgbase=linux-t460s         # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.4
 pkgver=4.4.5
@@ -11,6 +11,7 @@ arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
+conflicts=('linux')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
