@@ -1,5 +1,5 @@
 pkgname=fortune-mod-metalocalypse
-pkgver=1512120814
+pkgver=1603011952
 pkgrel=1
 _ver=5
 pkgdesc="Fortune quotes from Metalocalypse"
