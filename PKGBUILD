@@ -3,7 +3,7 @@
 
 pkgname=liferea-git
 _gitname=liferea
-pkgver=v1.11.7.r8.g91739af
+pkgver=v1.11.7.r19.ga265c6d
 pkgrel=1
 pkgdesc="A news aggregator for GTK, git version."
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ build() {
   cd liferea
   autoreconf -i
   intltoolize
-  ./autogen.sh
+  #./autogen.sh
   ./configure --prefix=/usr --disable-schema-install
   make 
 } 
