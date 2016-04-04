@@ -5,7 +5,7 @@ _ver=5
 pkgdesc="Fortune quotes from Two Guys, a Girl and a Pizza Place"
 arch=('any')
 license=('custom:cc-sa-3.0')
-url=("http://en.wikiquote.org/wiki/Two_Guys,_a_Girl_and_a_Pizza_Place")
+url="http://en.wikiquote.org/wiki/Two_Guys,_a_Girl_and_a_Pizza_Place"
 depends=('fortune-mod')
 makedepends=('fortune-mod' 'make' 'coreutils' 'sed' 'grep' 'wikiquote-fortune>=1.4')
 source=("https://github.com/maandree/wikiquote-fortune-collection/archive/${_ver}.tar.gz")
