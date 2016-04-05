@@ -2,7 +2,7 @@
 # Contributor: Markus Opitz <mastero23 at gmail dot com>
 
 pkgname=oscam-svn
-pkgver=10680
+pkgver=11225
 pkgrel=1
 
 pkgdesc="The Open Source Conditional Access Module daemon"
@@ -29,6 +29,7 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   make allyesconfig
+  ./config.sh --disable WITH_SSL
   make OSCAM_BIN=oscam CONF_DIR=/etc/oscam USE_LIBUSB=1 USE_PCSC=1
 }
 
