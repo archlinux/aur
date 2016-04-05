@@ -1,4 +1,5 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Please report issues at https://github.com/sanduhrs/arch-aur-drush-unstable
 
 _pkgname=drush
 pkgname=${_pkgname}-unstable
