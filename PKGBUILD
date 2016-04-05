@@ -6,7 +6,7 @@
 
 pkgname=xflux
 pkgver=20130901
-pkgrel=4
+pkgrel=5
 pkgdesc="(f.lux for X) Changes monitor color temperature adaptively to ease eye strain (command-line version)"
 arch=('i686' 'x86_64')
 url="https://justgetflux.com/"
@@ -16,14 +16,22 @@ depends_x86_64=('gcc-libs')
 source=('f.lux-eula.txt' 'f.lux-eula.html::https://justgetflux.com/news/pages/eula/index.html')
 source_i686=('https://justgetflux.com/linux/xflux-pre.tgz')
 source_x86_64=('https://justgetflux.com/linux/xflux64.tgz')
-sha256sums=('1d989851f6f02a2eb280faec1e3bbb348ba9a5d1677da22fa89dfc02cb063030'
-            'cc092411b8edbd2158436ffad45bafc03d9ff1eb1b2be31659bf7308c2c33b26')
+sha256sums=('05b1edc619263941960f37ebce2cf63baabdd5959a287b52b6829b7195d20653'
+            'SKIP') #Verified through prepare() rather than sums as websites change
 sha256sums_i686=('fda5d10c3ca16ba38eddc5fbdecebeccd607c4c95787b4379d1ab372760877b4')
 sha256sums_x86_64=('cc50158fabaeee58c331f006cc1c08fd2940a126e99d37b76c8e878ef20c2021')
 
 #EULA compliance
 prepare() {
-    #cat $srcdir/f.lux-eula.txt
+		#build and compare license from fetched html
+		echo f.lux End User License Agreement > license_verify
+    
+		awk < f.lux-eula.html '/div id="post"/,/<\/div>/' | sed -e 's/<[^>]*>//g' -e 's/^ *//' >> license_verify
+		if [ "$(md5sum license_verify|cut -c1-32)" != "$(md5sum f.lux-eula.txt|cut -c1-32)" ]
+		  then 
+			  echo "Downloaded license does not match that cached in package, aborting."
+				return 1
+		fi	
     echo 'Download of this software requires agreement with EULA at https://justgetflux.com/news/pages/eula/index.html'
 }
 
