@@ -16,7 +16,7 @@ pkgbase = tmux-fullwidth-backspace
 	source = fullwidth-backspace.patch
 	md5sums = 74a2855695bccb51b6e301383ad4818c
 	md5sums = 71601bc37fa44e4395580b321963018e
-	md5sums = b9ff3b7e4f214d13aaaea0629dae4689
+	md5sums = 2bb338d95e88265689f5b981c317b6a3
 
 pkgname = tmux-fullwidth-backspace
 
