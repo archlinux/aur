@@ -2,7 +2,7 @@
 pkgname=libaesrand-git
 _pkgname=libaesrand
 
-pkgver=0.1.0.r0.gabeba78
+pkgver=0.1.0.r3.g6b974d4
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
@@ -33,4 +33,5 @@ build() {
 package() {
   cd $srcdir/$_pkgname 
   make DESTDIR=${pkgdir} install
+  libtool --finish /usr/lib
 }
