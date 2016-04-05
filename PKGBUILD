@@ -3,7 +3,7 @@
 
 pkgname=dub-git
 _gitname=dub
-pkgver=0.9.24.1535.7b9eba4
+pkgver=0.9.24.r1542.cb1a20a
 pkgrel=1
 pkgdesc="Package manager for D packages, git version"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${srcdir}/${_gitname}
-  echo $(git describe --abbrev=0 | sed 's|v||g' | sed 's|-||g').$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo $(git describe --abbrev=0 | sed 's|v||g' | sed 's|-||g').r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
