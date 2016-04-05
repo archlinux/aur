@@ -20,8 +20,8 @@ sha512sums=('277ba27e35c20e2d4fc5296bf418c5ab78c821870476e21d49f723765b99b3a559e
 
 prepare() {
   cd "${pkgname#lib32-}-${pkgver}"
-  patch -p1 -i ../../tigervnc.patch
-  patch -p1 -i ../../fltk-config-dynlibs.patch
+  patch -Np1 -i ${srcdir}/tigervnc.patch
+  patch -Np1 -i ${srcdir}/fltk-config-dynlibs.patch
   sed -i 's/class Fl_XFont_On_Demand/class FL_EXPORT Fl_XFont_On_Demand/' FL/x.H
   sed -i -e 's/$(LINKFLTK)/$(LINKSHARED)/' -e 's/$(LINKFLTKIMG)/$(LINKSHARED)/' test/Makefile
 }
