@@ -1,8 +1,8 @@
 # Maintainer: Philipp Schmitt <philipp@schmitt.co>
 # GitHub: https://github.com/pschmitt/aur-python2-socksipychain
 pkgname=python2-socksipychain
-_pkgname=python-SocksipyChain
-pkgver=2.0.12
+_pkgname=SocksipyChain
+pkgver=2.0.15a
 pkgrel=1
 pkgdesc='A Python SOCKS/HTTP Proxy module'
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('python2' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://pagekite.net/pk/src/$_pkgname-$pkgver.tar.gz")
-md5sums=('8ee8ff40e566aad9d76672a4ee745845')
+sha1sums=('6b051a1d79f5c762a38b3cb95517de9dced8dbe2')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
