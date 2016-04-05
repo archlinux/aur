@@ -1,4 +1,6 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Please report issues at https://github.com/sanduhrs/arch-aur-phpunit-skeleton-generator
+
 pkgname=phpunit-skeleton-generator
 _pkgname=phpunit-skelgen
 pkgver=2.0.1
