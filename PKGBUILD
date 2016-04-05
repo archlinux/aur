@@ -2,7 +2,7 @@
 # Contributor: Daniel Renninghoff <renninghoff at archlinux dot info>
 # Contributor: Carl George <carl at carlgeorge dot us>
 pkgname=mint-themes
-pkgver=3.14+9
+pkgver=3.18+2
 pkgrel=1
 pkgdesc="Mint-X GTK2, GTK3, Metacity and Xfce theme."
 arch=('any')
@@ -11,10 +11,10 @@ license=('GPL3')
 optdepends=('gtk-engine-murrine: for the GTK2 theme'
             'mint-x-icons: Mint icon theme')
 conflicts=('mint-x-theme')
-source=("${url}/${pkgname}_1.4.5.tar.gz"
-        "${url}-gtk3/${pkgname}-gtk3_3.14+9.tar.gz")
-sha256sums=('7f6c12b8b01dbd1b30e0c7fdeda85258cd79229b20528857735be086d59dd65a'
-            '0962910cfda8f93eff90ec33a162e482e2a55b90cd389c11479e94cb4059f93c')
+source=("${url}/${pkgname}_1.4.6.tar.gz"
+        "${url}-gtk3/${pkgname}-gtk3_3.18+2.tar.xz")
+sha256sums=('49efc330923d4aef8d55ac589bca57882a9c52f69d8efa4c588863575b09e0d2'
+            '371a9c37b6261f65cd9180948f5197698c802efc7bddfa6f182da0f33c4a3435')
 
 prepare() {
 	# fix permissions
@@ -26,7 +26,9 @@ package() {
   install -d "$pkgdir/usr/share"
   install -d "$pkgdir/usr/lib/libreoffice/share/config"
   cp -a usr/share/themes "$pkgdir/usr/share"
-  cp -a usr/share/libreoffice/share/config/images_human.zip "$pkgdir/usr/lib/libreoffice/share/config"
+  if [ -f /tmp/foo.txt ]; then
+    cp -a usr/share/libreoffice/share/config/images_human.zip "$pkgdir/usr/lib/libreoffice/share/config"
+  fi
   cd "$srcdir/${pkgname}-gtk3"
   cp -R usr/share/themes "$pkgdir/usr/share"
 }
