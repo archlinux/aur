@@ -1,5 +1,7 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 # Contributor: Joris Steyn <jorissteyn@gmail.com>
+# Please report issues at https://github.com/sanduhrs/arch-aur-phploc
+
 pkgname=phploc
 pkgver=3.0.0
 pkgrel=1
