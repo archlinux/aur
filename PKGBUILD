@@ -1,7 +1,7 @@
 # Maintainer: Alastair Pharo  asppsa at gmail dot com
 
 pkgname=pure-reduce-hg
-pkgver=5613.b7486ed110e5
+pkgver=5614.6078c8bf1c2e
 pkgrel=1
 pkgdesc="Computer Algebra with Pure: A Reduce Interface"
 arch=("i686" "x86_64")
