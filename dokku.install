@@ -31,6 +31,12 @@ post_install() {
 
   DOKKU_LIB_ROOT="/var/lib/dokku"
 
+  echo "Cleanup old links"
+  rm -f /var/lib/dokku/plugins/available/backup
+  rm -f /var/lib/dokku/plugins/enabled/backup
+  rm -f /var/lib/dokku/core-plugins/available/backup
+  rm -f /var/lib/dokku/core-plugins/enabled/backup
+
   echo "Setting up plugin directories"
   # should be replaced by `plugn init`
   mkdir -p ${DOKKU_LIB_ROOT}/core-plugins/available ${DOKKU_LIB_ROOT}/plugins/available
