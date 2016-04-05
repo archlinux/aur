@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 depends=('qt5-base' 'qt5-webkit' 'qt5-multimedia' 'qt5-x11extras' 'qca-qt5' 'libidn' 'aspell' 'libxss')
 makedepends=('git' 'patch' 'qconf-git')
 optdepends=('qca-gnupg: encrypted client-to-client connection')
-provides=("psi-plus=$pkgver" "psi-plus-qt5=$pkgver")
+provides=("psi-plus=$pkgver" "psi-plus-qt5-git=$pkgver")
 replaces=('psi-plus' 'psi-plus-webkit-git' 'psi-plus-git' 'psi-plus-qt5-git')
 conflicts=('psi-plus' 'psi-plus-webkit-git' 'psi-plus-git' 'psi-plus-qt5-git')
 install=psi-plus-git.install
