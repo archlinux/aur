@@ -1,5 +1,6 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 # Contributor: Joris Steyn <jorissteyn@gmail.com>
+# Please report issues at https://github.com/sanduhrs/arch-aur-php-codesniffer-drupal
 
 _pkgname=php-codesniffer-drupal
 pkgname=${_pkgname}
