@@ -1,0 +1,16 @@
+pkgbase = bambam
+	pkgdesc = A simple baby keyboard masher application.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/porridge/bambam
+	arch = any
+	license = GPLv3
+	depends = python2
+	depends = python2-pygame
+	source = https://github.com/porridge/bambam/archive/master.zip
+	source = bambam.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = bambam
+
