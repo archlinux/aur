@@ -1,4 +1,6 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Please report issues at https://github.com/sanduhrs/arch-aur-pdepend
+
 pkgname=pdepend
 pkgver=2.2.4
 pkgrel=1
