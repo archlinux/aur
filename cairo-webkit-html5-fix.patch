@@ -1,0 +1,30 @@
+From 0742b90a214b35951414558f6f5579f79b8a8194 Mon Sep 17 00:00:00 2001
+From: Massimo Valentini <mvalentini@src.gnome.org>
+Date: Thu, 21 Aug 2014 17:15:51 +0200
+Subject: [PATCH] Fix segfault rendering videos in webkit based browsers
+
+do not tessellate empty boxes.
+
+Reported-by: Henrique Lengler <henriqueleng@openmailbox.org>
+Bugzilla: https://bugs.freedesktop.org/show_bug.cgi?id=81699
+---
+ src/cairo-bentley-ottmann-rectangular.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/cairo-bentley-ottmann-rectangular.c b/src/cairo-bentley-ottmann-rectangular.c
+index 5541bdc..4bcd8d1 100644
+--- a/src/cairo-bentley-ottmann-rectangular.c
++++ b/src/cairo-bentley-ottmann-rectangular.c
+@@ -823,6 +823,9 @@ _cairo_bentley_ottmann_tessellate_boxes (const cairo_boxes_t *in,
+ 	for (i = 0; i < chunk->count; i++) {
+ 	    int h;
+ 
++	    if (box[i].p1.y == box[i].p2.y)
++	      continue;
++
+ 	    if (box[i].p1.x < box[i].p2.x) {
+ 		rectangles[j].left.x = box[i].p1.x;
+ 		rectangles[j].left.dir = 1;
+-- 
+1.9.3
+
