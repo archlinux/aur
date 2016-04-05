@@ -3,7 +3,7 @@
 pkgname=kirigami-git
 pkgver=r404.1ae53b2
 pkgrel=1
-pkgdesc='KDE and Plasma resources management GUI'
+pkgdesc='A set of QML components for mobile/desktop convergent applications made by KDE'
 arch=('any')
 url='https://quickgit.kde.org/?p=kirigami.git'
 license=(LGPL)
