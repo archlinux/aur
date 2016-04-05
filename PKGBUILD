@@ -4,13 +4,13 @@
 
 pkgname=solaar
 pkgver=0.9.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Device manager for Logitech's Unifying receiver peripherals"
 url="http://pwr.github.com/Solaar/"
 license=('GPL2')
 groups=()
 arch=('any')
-depends=('python' 'python-pyudev' 'python-gobject')
+depends=('python' 'python-pyudev' 'python-gobject' 'python-six')
 optdepends=(
 	'libappindicator3: better integration into Unity'
 	)
