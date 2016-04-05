@@ -1,5 +1,5 @@
 pkgname=bandwidth
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Benchmark memory and network bandwidth"
 arch=('i686' 'x86_64')
@@ -7,7 +7,7 @@ url="http://zsmith.co/bandwidth.html"
 license=('GPL')
 makedepends=('nasm')
 options=(!makeflags)
-sha1sums=('ee10698c6a675ece26f08ddb5e6001323d6305c1')
+sha1sums=('93a408a667d6dcf7fd5f33cea4b24c4cea5c89bc')
 source=("https://mutineer.org/file.php?id=${sha1sums[0]}&p=${pkgname}")
 
 build() {
