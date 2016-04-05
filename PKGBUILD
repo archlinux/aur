@@ -1,4 +1,4 @@
-# Contributor: Slash <demodevil5[at]yahoo[dot]com>
+# Maintainer: Slash <demodevil5[at]yahoo[dot]com>
 
 pkgname=quake3-rocketarena
 pkgver=1.80
@@ -8,16 +8,14 @@ url="http://rocketarena.planetquake.gamespy.com/"
 license=('custom')
 arch=('any')
 depends=('quake3')
-source=('http://games.mirrors.tds.net/pub/planetquake3/modifications/rocketarena3/ra3180.zip')
-md5sums=('68e9ac4f5571d85c963e985193c16230')
+source=('https://www.mirrorservice.org/sites/quakeunity.com/modifications/rocketarena3/ra3180.zip')
+sha256sums=('95d590cb516b01355ef38ccf54427961c69b0a596b41a6137135451891533a29')
 
-build() {
+package() {
     # Create Destination Directories
-    install -d $startdir/pkg/opt/quake3/
-
-    # Delete Useless Files
+    install -d "${pkgdir}/opt/quake3/"
 
     # Install RA3 Files
-    cp -r $startdir/src/arena \
-        $startdir/pkg/opt/quake3/
+    cp -r "${srcdir}/arena" \
+        "${pkgdir}/opt/quake3/"
 }
