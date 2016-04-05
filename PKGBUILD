@@ -1,5 +1,5 @@
 pkgname=aurutils-git
-pkgver=0.2.0.r0.g4f01afc
+pkgver=0.4.0.r3.ga42ecce
 pkgrel=1
 pkgdesc='helper tools for the aur'
 arch=('any')
@@ -7,7 +7,7 @@ url=https://github.com/AladW/aurutils
 license=('ISC')
 source=("git+$url")
 md5sums=('SKIP')
-depends=('pacman>=5.0' 'git' 'repose-git' 'jshon' 'pacutils-git' 'expac' 'aria2')
+depends=('pacman>=5.0' 'expac' 'pacutils-git' 'repose-git' 'jshon' 'git' 'aria2')
 checkdepends=('shellcheck')
 makedepends=('git')
 optdepends=('devtools: aurbuild -c'
@@ -19,16 +19,17 @@ pkgver() {
 }
 
 check() {
-  cd aurutils
-  shellcheck -e 2016,2174 -x ./aur* repofind
+  cd aurutils/bin
+  shellcheck -e 2016,2174 -x ./*
 }
 
 package() {
   cd aurutils
-  install -d "$pkgdir"/usr/{bin,share{/licenses,/doc}/aurutils}
+  install -d "$pkgdir"/usr/{bin,share{/man/man1,{/licenses,/doc}/aurutils}}
 
-  install -m755 ./aur* repofind "$pkgdir"/usr/bin/
+  install -m755 bin/* "$pkgdir"/usr/bin/
   install -m644 LICENSE "$pkgdir"/usr/share/licenses/aurutils/
-  install -m644 CREDITS doc/* "$pkgdir"/usr/share/doc/aurutils/
+  install -m644 CREDITS README.org "$pkgdir"/usr/share/doc/aurutils/
+  install -m644 doc/*.1 "$pkgdir"/usr/share/man/man1/
 }
 
