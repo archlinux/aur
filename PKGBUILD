@@ -1,13 +1,14 @@
 # Maintainer: Thomas Wood <grand.edgemaster@gmail.com>
 pkgname=twemoji-color-font
 pkgver=1.0_beta1
-pkgrel=1
+pkgrel=2
 pkgdesc="A color and B&W emoji SVG-in-OpenType font with support for ZWJ, skin tone modifiers and country flags."
 arch=('any')
 url="https://github.com/eosrei/twemoji-color-font"
 license=('custom:CCPL:by-4.0' 'MIT')
 
 depends=(fontconfig)
+optdepends=('ttf-bitstream-vera: for bug-free font fallback')
 
 _pkgver=${pkgver//_/-}
 
