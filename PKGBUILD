@@ -2,7 +2,7 @@
 
 pkgname=pycharm-professional
 pkgver=2016.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Powerful Python and Django IDE. Professional version."
 arch=('any')
 options=('!strip')
@@ -11,7 +11,7 @@ conflicts=('pycharm' 'pycharm-community')
 provides=('pycharm')
 license=('custom')
 install=${pkgname}.install
-depends=('java-environment' 'ttf-font' 'libxtst' 'libxslt')
+depends=('java-runtime-common' 'jre8-openjdk' 'ttf-font' 'libxtst' 'libxslt')
 source=(https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz
         'pycharm-professional.desktop'
         'pycharm-professional.install'
