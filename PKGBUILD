@@ -33,7 +33,7 @@ package() {
 	cp icon.gif "${pkgdir}/usr/share/icons/bambam.gif"
 
 	mkdir -p "${pkgdir}/usr/share/games/bambam"
-	cp -R bambam.py data "${pkgdir}/usr/share/games/bambam/"
+	cp -R bambam.py data/ "${pkgdir}/usr/share/games/bambam/"
 
 	mkdir -p "${pkgdir}/usr/share/applications"
 	cp "${srcdir}/bambam.desktop" "${pkgdir}/usr/share/applications/"
