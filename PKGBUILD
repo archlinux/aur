@@ -2,10 +2,10 @@
 
 pkgname=emacs-exwm-git
 pkgver=r154.c7c233b
-pkgrel=1
-pkgdesc="Windowmanagement environment for guile"
+pkgrel=2
+pkgdesc="Windowmanager in written in elisp"
 arch=('any')
-url="http://www.markwitmer.com/guile-xcb/guile-wm.html"
+url="https://github.com/ch11ng/exwm.git"
 license=('GPL')
 depends=('emacs')
 makedepends=('git')
