@@ -1,7 +1,7 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 pkgname=python2-pytvmaze
 _pkgname=pytvmaze
-pkgver=1.4.9
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Python interface to the TV Maze API "
 arch=(any)
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(python2)
 makedepends=(python2-distribute)
 source=("http://pypi.python.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-md5sums=('cbcbc7472a36eecbda4be1c9ed28606d')
+md5sums=('0b7f5e0b1073f34e223007c1359666b4')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
