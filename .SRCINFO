@@ -1,6 +1,6 @@
 pkgbase = mint-themes
 	pkgdesc = Mint-X GTK2, GTK3, Metacity and Xfce theme.
-	pkgver = 3.14+9
+	pkgver = 3.18+2
 	pkgrel = 1
 	url = http://packages.linuxmint.com/pool/main/m/mint-themes
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = mint-themes
 	optdepends = gtk-engine-murrine: for the GTK2 theme
 	optdepends = mint-x-icons: Mint icon theme
 	conflicts = mint-x-theme
-	source = http://packages.linuxmint.com/pool/main/m/mint-themes/mint-themes_1.4.5.tar.gz
-	source = http://packages.linuxmint.com/pool/main/m/mint-themes-gtk3/mint-themes-gtk3_3.14+9.tar.gz
-	sha256sums = 7f6c12b8b01dbd1b30e0c7fdeda85258cd79229b20528857735be086d59dd65a
-	sha256sums = 0962910cfda8f93eff90ec33a162e482e2a55b90cd389c11479e94cb4059f93c
+	source = http://packages.linuxmint.com/pool/main/m/mint-themes/mint-themes_1.4.6.tar.gz
+	source = http://packages.linuxmint.com/pool/main/m/mint-themes-gtk3/mint-themes-gtk3_3.18+2.tar.xz
+	sha256sums = 49efc330923d4aef8d55ac589bca57882a9c52f69d8efa4c588863575b09e0d2
+	sha256sums = 371a9c37b6261f65cd9180948f5197698c802efc7bddfa6f182da0f33c4a3435
 
 pkgname = mint-themes
 
