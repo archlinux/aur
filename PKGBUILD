@@ -4,7 +4,7 @@
 
 set -u
 pkgname='miller'
-pkgver='3.4.0'
+pkgver='3.5.0'
 pkgrel='1'
 pkgdesc="Miller is like sed, awk, cut, join, and sort for name-indexed data such as CSV"
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ makedepends=('make' 'gcc' 'flex' 'ctags' 'valgrind' 'asciidoc' 'autoconf')
 _verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
 _srcdir="${pkgname}-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('ba33b1def394cf3f157200498b0bc2aed7decdef98c359d87f1bd8c57f39ea85')
+sha256sums=('2928fb8ca5fc76de7a440aba18e681f2b2518a2b583b70fe9187fd7a90931048')
 
 prepare() {
   set -u
