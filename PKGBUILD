@@ -3,12 +3,12 @@
 
 pkgname=faust2-git
 pkgver=7075.3e6f2df
-pkgrel=1
+pkgrel=2
 pkgdesc="The latest development version of Faust featuring additional backends for LLVM, C, Java, JavaScript etc."
 arch=('i686' 'x86_64')
 url="http://faust.grame.fr/"
 license=('GPL')
-depends=('llvm' 'clang' 'ruby'
+depends=('llvm-libs'
 # needed for sound2faust:
 	 'libsndfile'
 # needed for libfaustremote:
@@ -20,7 +20,9 @@ depends=('llvm' 'clang' 'ruby'
 # provide for alternative dependencies. Most users will presumably have 'gvim'
 # installed, so that's the one we go with, but you can replace that with either
 # 'vim' or 'xxd' if you prefer.
-makedepends=('git' 'gvim')
+makedepends=('llvm' 'clang' 'git' 'gvim')
+optdepends=('clang: needed for sound2reader'
+	    'ruby: needed for faust2sc and scbuilder')
 provides=('faust')
 conflicts=('faust')
 # This keeps the static libraries. Remove the 'staticlibs' option if this
