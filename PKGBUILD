@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-mame2003-git
-pkgver=252.6809571
+pkgver=266.ffd2614
 
 pkgrel=1
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -13,11 +13,11 @@ makedepends=('git' 'python2')
 _libname=mame2003_libretro
 _gitname=mame2003-libretro
 source=("git+https://github.com/libretro/${_gitname}.git"
-        "https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info"
-        "https://raw.githubusercontent.com/libretro/mame/master/docs/mamelicense.txt")
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP')
+	"https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info"
+	"https://raw.githubusercontent.com/libretro/mame/master/docs/mamelicense.txt")
+sha256sums=('SKIP'
+	'SKIP'
+	'SKIP')
 
 pkgver() {
   cd "${_gitname}"
