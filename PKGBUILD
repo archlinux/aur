@@ -1,4 +1,5 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Please report issues at https://github.com/sanduhrs/arch-aur-baikal-unstable
 
 _pkgname=baikal
 pkgname=${_pkgname}-unstable
