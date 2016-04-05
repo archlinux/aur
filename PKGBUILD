@@ -1,4 +1,5 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Please report issues at https://github.com/sanduhrs/arch-aur-phpqa-git
 
 _pkgname=phpqa
 pkgname=${_pkgname}-git
