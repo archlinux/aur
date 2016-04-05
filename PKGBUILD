@@ -2,11 +2,12 @@
 
 pkgname=nimsuggest
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for providing auto completion data for Nim source code"
 arch=('i686' 'x86_64')
 depends=('nim')
 makedepends=('git' 'nimble')
+groups=('nim')
 url="https://github.com/nim-lang/nimsuggest"
 license=('MIT')
 source=($pkgname-$pkgver::git+https://github.com/nim-lang/nimsuggest)
