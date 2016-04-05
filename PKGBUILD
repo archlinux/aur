@@ -1,8 +1,9 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Please report issues at https://github.com/sanduhrs/arch-aur-drush-git-alternative
 
 _pkgname=drush
 pkgname=${_pkgname}-git-alternative
-pkgver=8.0.2.r18.g957d2b1
+pkgver=8.0.2.r38.g86de4b6
 pkgrel=1
 pkgdesc="Drush is a command line shell and Unix scripting interface for Drupal"
 arch=('any')
