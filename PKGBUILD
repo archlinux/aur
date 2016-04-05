@@ -3,7 +3,7 @@
 # Maintainer: Albert Graef <aggraef@gmail.com>
 
 pkgname=pure-hg
-pkgver=5613.b7486ed110e5
+pkgver=5614.6078c8bf1c2e
 pkgrel=1
 pkgdesc="Pure is a modern-style functional programming language based on term rewriting."
 arch=("i686" "x86_64")
@@ -11,7 +11,8 @@ license=('GPL3' 'LGPL3')
 url="http://purelang.bitbucket.org/"
 depends=('llvm35-libs' 'gmp' 'mpfr' 'readline')
 makedepends=('mercurial' 'llvm35')
-optdepends=("pure-docs-hg: online documentation"
+optdepends=("clang35: needed for inlining C/C++ code"
+	    "pure-docs-hg: online documentation"
             "pcre: Perl regex support"
             "w3m: access to help in interactive mode"
             "emacs-pure-mode: editing Pure files from Emacs"
