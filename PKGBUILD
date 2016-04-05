@@ -19,11 +19,11 @@ optdepends=('desktop-file-utils: Adds URI support to compatible desktop environm
             'ffmpeg-compat: Adds support for playback of local files'
             'libnotify: Adds desktop notifications')
 source=('spotify.protocol' 'spotify.desktop')
-source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_anotherpkgver}-14_amd64.deb")
+source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_anotherpkgver}-15_amd64.deb")
 source_i686=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_anotherpkgver}-5_i386.deb")
 sha256sums=('af54f3b90cac46fa100b3f919a9225d10d847617d24aa9af3d832e7689f482c3'
             '44ae606a73613540922b06af6adc5c5a5e69c6151788902d26ffb08fe17187c2')
-sha256sums_x86_64=('65e7917fe3cdc08683559a5efdaa3a434577ac29ed02e6b442d32841ebb58a27')
+sha256sums_x86_64=('e15b159dd2f20f8c00067545d5899f40f991fa89e1cf246b280289944396c407')
 sha256sums_i686=('13dfa424106762821765a900612ab40982a32d640e13c266c0a5102cdc6cea5a')
 
 scale_factor=1.0000001
