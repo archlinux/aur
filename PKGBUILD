@@ -1,4 +1,5 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Please report issues at https://github.com/sanduhrs/arch-aur-php-cs-fixer-git
 
 _pkgname=php-cs-fixer
 pkgname=${_pkgname}-git
