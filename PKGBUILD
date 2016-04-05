@@ -11,7 +11,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=subtitlecomposer
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="A KDE subtitle editor"
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ optdepends=('mpv: for MPV backend'
             'ruby: for scripting'
             'python: for scripting')
 source=("https://github.com/maxrd2/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('1d62046d4f42947f5dd8f56a5adae25ee7843e8088a167abcb636f5e8796ecd1')
+sha256sums=('5dd2a74f16bc3c0b8771690a0fdc0a6928c38578ad2d27a1c84df6890e41fbf8')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
