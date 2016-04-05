@@ -1,4 +1,6 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Please report issues at https://github.com/sanduhrs/arch-aur-phpcov
+
 pkgname=phpcov
 pkgver=3.0.0
 pkgrel=1
