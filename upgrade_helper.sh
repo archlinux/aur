@@ -34,7 +34,7 @@ grep CONDA_INSTALL= installer_sh_x86_64.patch
 echo "Edit conda_install patch to have correct conda version in header"
 read
 cd pkg/anaconda2/opt/anaconda2/
-conda_install=`ls -1 pkgs/conda-3.*/lib/python*/site-packages/conda/install.py`
+conda_install=`ls -1 pkgs/conda-*/lib/python*/site-packages/conda/install.py`
 cp $conda_install ${conda_install}.old
 echo "Trying patch as is:"
 patch -p1 < ../../../../conda_install.patch
