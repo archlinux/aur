@@ -2,11 +2,12 @@
 
 pkgname=c2nim
 pkgver=0.9.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to translate Ansi C code to Nim"
 arch=('i686' 'x86_64')
 depends=('nim')
 makedepends=('git' 'nimble')
+groups=('nim')
 url="https://github.com/nim-lang/c2nim"
 license=('MIT')
 source=($pkgname-$pkgver::git+https://github.com/nim-lang/c2nim)
