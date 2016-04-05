@@ -1,4 +1,5 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Please report issues at https://github.com/sanduhrs/arch-aur-php-codesniffer-drupal-git
 
 _pkgname=php-codesniffer-drupal
 pkgname=${_pkgname}-git
