@@ -1,7 +1,7 @@
 # Maintainer: Jack L. Frost <fbt@fleshless.org>
 
 pkgname='loksh'
-pkgver='5.8'
+pkgver='5.9'
 pkgrel=1
 pkgdesc="A Linux port of OpenBSD's ksh targeting musl"
 arch=( 'i686' 'x86_64' )
@@ -28,4 +28,4 @@ package() {
 	make DESTDIR="$pkgdir/" BIN_NAME='loksh' install
 }
 
-sha1sums=('aa490b78f0af91243210ca24103a61e5cb25577b')
+sha1sums=('3446cda233438a1d2c926246ec7d0d064af786e7')
