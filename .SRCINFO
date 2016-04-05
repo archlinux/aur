@@ -1,7 +1,7 @@
 pkgbase = nautilus-admin
 	pkgdesc = Extension for Nautilus to do administrative operations
 	pkgver = 0.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/brunonova/nautilus-admin
 	install = nautilus-admin.install
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = nautilus-admin
 	depends = gconf
 	optdepends = gedit: to use the "Edit as Administrator" action
 	source = https://github.com/brunonova/nautilus-admin/releases/download/v0.1.6/nautilus-admin_0.1.6.tar.xz
-	md5sums = 764044b9f354736680dbf35d40953199
+	md5sums = 0cf5f8d941856424a5762b6611b56c14
 
 pkgname = nautilus-admin
 
