@@ -4,7 +4,7 @@
 _pkgname=colorific-6.5.3-fx+tb
 pkgname=firefox-extension-colorific
 pkgver=6.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for firefox that allows you to colorize all websites to your own preferences."
 license=('MPL')
 arch=('any')
@@ -24,7 +24,8 @@ prepare() {
 package() {
 	cd "${srcdir}"
 
-	_extension_id="$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' ${_pkgname}/install.rdf)"
+	#_extension_id="$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' ${_pkgname}/install.rdf)"
+	_extension_id='colorific@pjs.nl'
 	_extension_dest="${pkgdir}/usr/lib/firefox/browser/extensions/${_extension_id}"
 	# Should this extension be unpacked or not?
 	if grep '<em:unpack>true</em:unpack>' ${_pkgname}/install.rdf > /dev/null; then
