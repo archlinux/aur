@@ -1,0 +1,18 @@
+pkgbase = ruby-weather-api
+	pkgdesc = Weather-API provides an object-oriented interface to the Yahoo! Weather XML RSS feed service.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/stewart/weather-api
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-chronic
+	depends = ruby-map-6.5
+	depends = ruby-json
+	noextract = weather-api-1.2.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/weather-api-1.2.0.gem
+	sha1sums = f90607bd644c011f587b0cb0dbd8c293eb504599
+
+pkgname = ruby-weather-api
+
