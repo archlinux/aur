@@ -3,7 +3,7 @@
 pkgname=ddrescue-gui
 pkgver=1.5
 pkgrel=1
-pkgdesc="A simple GUI frontend to make GNU ddrescue easier to use."
+pkgdesc="A simple GUI frontend to make ddrescue (a command-line data recovery tool) easier to use."
 arch=('any')
 url="https://launchpad.net/ddrescue-gui"
 depends=('python2' 'wxpython2.8' 'ddrescue' 'parted')
