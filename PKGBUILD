@@ -1,7 +1,7 @@
 #Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=runc-git
-pkgver=r1432.8ad8d40
+pkgver=v0.0.5.r431.g6c88a52
 pkgrel=1
 pkgdesc="Container CLI tools"
 depends=('glibc')
@@ -29,7 +29,7 @@ package() {
 }
 
 pkgver() {
-    cd $srcdir/$pkgname
+    cd $srcdir/runc
     ( set -o pipefail
         git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
         printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
