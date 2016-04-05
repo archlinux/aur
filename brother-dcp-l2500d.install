@@ -1,0 +1,6 @@
+post_install() {
+	echo ">> After installation restart CUPS server."
+	echo ">> It might be necessary to add udev rules mentioned in:"
+	echo ">> https://wiki.archlinux.org/index.php/CUPS/Troubleshooting#Printer_is_not_recognized_by_CUPS."
+	echo ">> If You had to do that, please leave comment on AUR, I'll provide the rule with the package."
+}
