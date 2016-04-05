@@ -25,16 +25,7 @@ package() {
   cd "${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
   
-  # Install library files.
-#  install -Dm755 librtaudio.so.${pkgver} "${pkgdir}/usr/lib/librtaudio.so.${pkgver}"
-#  ln -sf librtaudio.so.${pkgver} "${pkgdir}/usr/lib/librtaudio.so.4"
-#  ln -sf librtaudio.so.${pkgver} "${pkgdir}/usr/lib/librtaudio.so"
-
-  # Install header file.
-#  install -Dm644 RtAudio.h "${pkgdir}/usr/include/RtAudio.h"
-
   # Install RtAudio configuration tool.
-#  install -Dm644 librtaudio.pc "${pkgdir}/usr/lib/pkgconfig/librtaudio.pc"
   install -Dm755 rtaudio-config "${pkgdir}/usr/bin/rtaudio-config"
 
   # Install test utilities with prefix 'rtaudio-'
