@@ -1,14 +1,14 @@
 # Maintainer: Yarema aka Knedlyk <yupadmin (at) gmail (dot) com>
 
 pkgname=ddrescue-gui
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="A simple GUI frontend to make gddrescue easier to use."
 arch=('any')
 url="https://launchpad.net/ddrescue-gui"
 depends=('python2' 'wxpython2.8' 'ddrescue' 'parted')
 license=('GPL3')
-source=("https://launchpadlibrarian.net/213272261/${pkgname}_${pkgver}otherdistro-0ubuntu1~ppa1.tar.gz")
+source=("https://launchpad.net/ddrescue-gui/1.x/${pkgver}/+download/${pkgname}_${pkgver}otherdistro-0ubuntu1%7Eppa1.tar.gz")
 provides=('ddrescue-gui')
 package() {
 
@@ -26,4 +26,5 @@ package() {
 	install -D -m644 "${srcdir}/${pkgname}-${pkgver}/ddrescue-gui.desktop" "${pkgdir}/usr/share/applications"
 	install -D -m644 "${srcdir}/${pkgname}-${pkgver}/ddrescue-gui.png" "${pkgdir}/usr/share/pixmaps"
 }
-md5sums=('c849699ea6271383b61de3719e3f31f6')
+
+md5sums=('dafaedde55c0f6deb454f1bc46401405')

@@ -1,6 +1,6 @@
 pkgbase = ddrescue-gui
 	pkgdesc = A simple GUI frontend to make gddrescue easier to use.
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://launchpad.net/ddrescue-gui
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = ddrescue-gui
 	depends = ddrescue
 	depends = parted
 	provides = ddrescue-gui
-	source = https://launchpadlibrarian.net/213272261/ddrescue-gui_1.4otherdistro-0ubuntu1~ppa1.tar.gz
-	md5sums = c849699ea6271383b61de3719e3f31f6
+	source = https://launchpad.net/ddrescue-gui/1.x/1.5/+download/ddrescue-gui_1.5otherdistro-0ubuntu1%7Eppa1.tar.gz
+	md5sums = dafaedde55c0f6deb454f1bc46401405
 
 pkgname = ddrescue-gui
 
