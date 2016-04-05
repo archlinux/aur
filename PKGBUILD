@@ -11,7 +11,7 @@ depends=('python2' 'python2-pygame')
 source=("git+https://github.com/porridge/bambam.git"
 	bambam.desktop)
 sha256sums=('SKIP'
-	'SKIP')
+	'2d7926a150805654d6581fff5781217eb9e3c5eeb4c01240737b229dc4f48a31')
 
 pkgver() {
 	cd "${srcdir}/bambam"
