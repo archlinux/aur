@@ -1,0 +1,16 @@
+pkgbase = kirigami-git
+	pkgdesc = KDE and Plasma resources management GUI
+	pkgver = r404.1ae53b2
+	pkgrel = 1
+	url = https://quickgit.kde.org/?p=kirigami.git
+	arch = any
+	groups = plasma
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = git
+	depends = qt5-base
+	source = git://anongit.kde.org/kirigami.git
+	md5sums = SKIP
+
+pkgname = kirigami-git
+
