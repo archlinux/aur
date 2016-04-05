@@ -24,6 +24,9 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_gitname/doc"
   [ -h texinfo.tex ] || ln -s /usr/share/automake-1.15/texinfo.tex texinfo.tex
+  cd ../lisp
+  sed -i '67s+juliamode.el++' Makefile
+  cp /usr/share/emacs/site-lisp/julia-mode.el .
 }
 
 build() {
