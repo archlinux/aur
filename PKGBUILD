@@ -1,6 +1,7 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 # Contributor: Yardena Cohen <yardenack at gmail dot com>
 # quick check for commits https://git.php.net/?p=pecl/networking/ssh2.git;a=shortlog
+# Please report issues at https://github.com/sanduhrs/arch-aur-php-ssh-git
 
 _pkgname=php-ssh
 pkgname=${_pkgname}-git
