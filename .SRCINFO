@@ -1,0 +1,15 @@
+pkgbase = ruby-map-6.5
+	pkgdesc = map
+	pkgver = 6.5.5
+	pkgrel = 1
+	url = https://github.com/ahoward/map
+	arch = any
+	license = same as rubys
+	depends = ruby
+	noextract = map-6.5.5.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/map-6.5.5.gem
+	sha1sums = 7ed76265b442883cdd90d65367bfe0b192052c91
+
+pkgname = ruby-map-6.5
+
