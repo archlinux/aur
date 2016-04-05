@@ -1,0 +1,25 @@
+--- a/irc_channel.c	2016-04-06 00:35:16.862674632 +0800
++++ b/irc_channel.c	2016-04-06 00:37:24.614969527 +0800
+@@ -530,7 +530,7 @@
+ 	int i, j;
+ 
+ 	for (i = j = 0; name[i]; i++) {
+-		if (name[i] > ' ' && name[i] != ',') {
++		if ((unsigned char)name[i] > ' ' && name[i] != ',') {
+ 			name[j++] = name[i];
+ 		}
+ 	}
+@@ -612,12 +612,7 @@
+ 	char *translit_name;
+ 	gsize bytes_written;
+ 
+-	translit_name = g_convert_with_fallback(hint, -1, "ASCII//TRANSLIT", "UTF-8", "", NULL, &bytes_written, NULL);
+-
+-	if (!translit_name) {
+-		/* Same thing as in nick_gen() in nick.c, try again without //TRANSLIT */
+-		translit_name = g_convert_with_fallback(hint, -1, "ASCII", "UTF-8", "", NULL, &bytes_written, NULL);
+-	}
++	translit_name = g_convert_with_fallback(hint, -1, "UTF-8", "UTF-8", "", NULL, &bytes_written, NULL);
+ 
+ 	if (!translit_name) {
+ 		return NULL;
