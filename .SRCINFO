@@ -1,0 +1,29 @@
+pkgbase = redis-testing
+	pkgdesc = Advanced key-value store
+	pkgver = 3.2.0_rc3
+	pkgrel = 1
+	url = http://redis.io/
+	install = redis.install
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = jemalloc
+	depends = grep
+	depends = shadow
+	provides = redis
+	conflicts = redis
+	backup = etc/redis.conf
+	backup = etc/logrotate.d/redis
+	source = https://github.com/antirez/redis/archive/3.2.0-rc3.tar.gz
+	source = redis.service
+	source = redis.logrotate
+	source = redis.conf-sane-defaults.patch
+	source = redis-2.8.11-use-system-jemalloc.patch
+	md5sums = 2882bca0eb0116b56188af92fbc963fa
+	md5sums = afa0f4a9000c26c3323e83fe34883e23
+	md5sums = 9e2d75b7a9dc421122d673fe520ef17f
+	md5sums = 990536d339b694d76415ec1e847b861a
+	md5sums = 2ae176578f538e37a67a463258302bc6
+
+pkgname = redis-testing
+
