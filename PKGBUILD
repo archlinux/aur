@@ -3,8 +3,8 @@
 
 _pkgbase=xorg-server
 pkgname=('xorg-server-dev' 'xorg-server-xephyr-dev' 'xorg-server-xdmx-dev' 'xorg-server-xvfb-dev' 'xorg-server-xnest-dev' 'xorg-server-xwayland-dev' 'xorg-server-common-dev' 'xorg-server-devel-dev')
-pkgver=1.18.2 # http://lists.x.org/archives/xorg/2016-March/057961.html
-pkgrel=4      # https://projects.archlinux.org/svntogit/packages.git/commit/trunk?h=packages/xorg-server&id=9fd963e75ec9745e07a5e2595dae57de3f925210
+pkgver=1.18.3 # http://lists.x.org/archives/xorg/2016-April/057993.html
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
