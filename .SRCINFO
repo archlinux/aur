@@ -3,7 +3,8 @@ pkgbase = kirigami-git
 	pkgver = r404.1ae53b2
 	pkgrel = 1
 	url = https://quickgit.kde.org/?p=kirigami.git
-	arch = any
+	arch = i686
+	arch = x86_64
 	groups = plasma
 	license = LGPL
 	makedepends = extra-cmake-modules

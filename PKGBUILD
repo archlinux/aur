@@ -4,7 +4,7 @@ pkgname=kirigami-git
 pkgver=r404.1ae53b2
 pkgrel=1
 pkgdesc='A set of QML components for mobile/desktop convergent applications made by KDE'
-arch=('any')
+arch=('i686' 'x86_64')
 url='https://quickgit.kde.org/?p=kirigami.git'
 license=(LGPL)
 depends=(qt5-base)
