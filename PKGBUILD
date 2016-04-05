@@ -7,8 +7,8 @@
 
 _pkgbase=mutt
 pkgname=${_pkgbase}-slang
-pkgver=1.5.23
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='Small but very powerful text-based mail client'
 url='http://www.mutt.org/'
 provides=('mutt')
@@ -18,10 +18,9 @@ backup=('etc/Muttrc')
 arch=('i686' 'x86_64')
 optdepends=('smtp-forwarder: to send mail')
 depends=('gpgme' 'slang' 'openssl' 'libsasl' 'gdbm' 'libidn' 'mime-types' 'krb5')
-source=("https://bitbucket.org/mutt/mutt/downloads/${_pkgbase}-${pkgver}.tar.gz")
-sha256sums=('3af0701e57b9e1880ed3a0dee34498a228939e854a16cdccd24e5e502626fd37')
-
-install=${pkgname}.install
+source=("http://ftp.mutt.org/pub/mutt/${_pkgbase}-${pkgver}.tar.gz"{,.asc})
+sha1sums=('bab62759af0873a94dc8b85a62a7a9e09e33c6bb' 'SKIP')
+validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA')
 
 build() {
 	cd "${srcdir}/${_pkgbase}-${pkgver}"
@@ -40,7 +39,7 @@ build() {
 		--with-sasl \
 		--with-idn \
 
-  make
+	make
 }
 
 package() {

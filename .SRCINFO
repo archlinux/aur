@@ -1,9 +1,8 @@
 pkgbase = mutt-slang
 	pkgdesc = Small but very powerful text-based mail client
-	pkgver = 1.5.23
-	pkgrel = 2
+	pkgver = 1.6.0
+	pkgrel = 1
 	url = http://www.mutt.org/
-	install = mutt-slang.install
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -19,8 +18,11 @@ pkgbase = mutt-slang
 	provides = mutt
 	conflicts = mutt
 	backup = etc/Muttrc
-	source = https://bitbucket.org/mutt/mutt/downloads/mutt-1.5.23.tar.gz
-	sha256sums = 3af0701e57b9e1880ed3a0dee34498a228939e854a16cdccd24e5e502626fd37
+	source = http://ftp.mutt.org/pub/mutt/mutt-1.6.0.tar.gz
+	source = http://ftp.mutt.org/pub/mutt/mutt-1.6.0.tar.gz.asc
+	validpgpkeys = 8975A9B33AA37910385C5308ADEF768480316BDA
+	sha1sums = bab62759af0873a94dc8b85a62a7a9e09e33c6bb
+	sha1sums = SKIP
 
 pkgname = mutt-slang
 
