@@ -2,7 +2,7 @@
 
 pkgname=bambam-git
 pkgver=r45.e3680c3
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple baby keyboard masher application."
 arch=('any')
 url="https://github.com/porridge/bambam"

@@ -1,7 +1,7 @@
 pkgbase = bambam-git
 	pkgdesc = A simple baby keyboard masher application.
 	pkgver = r45.e3680c3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/porridge/bambam
 	arch = any
 	license = GPLv3
@@ -10,7 +10,7 @@ pkgbase = bambam-git
 	source = git+https://github.com/porridge/bambam.git
 	source = bambam.desktop
 	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 2d7926a150805654d6581fff5781217eb9e3c5eeb4c01240737b229dc4f48a31
 
 pkgname = bambam-git
 
