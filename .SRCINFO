@@ -1,18 +1,18 @@
 pkgbase = opentrack
 	pkgdesc = An application dedicated to tracking user's head movements and relaying the information to games and flight simulation software
-	pkgver = 2.3rc13p1
-	pkgrel = 1
+	pkgver = 2.3rc21p11
+	pkgrel = 2
 	url = https://github.com/opentrack/opentrack/
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	depends = opencv
-	depends = qt5-serialport
-	source = https://github.com/opentrack/opentrack/archive/opentrack-2.3-rc13p1.tar.gz
+	depends = qt5-base
+	depends = opencv-git
+	source = https://github.com/opentrack/opentrack/archive/opentrack-2.3-rc21p11.tar.gz
 	source = opentrack.desktop
-	sha256sums = 8c75558dff6bef791eadf6e4e25d46994337c7473684c780e7b553acebf09eb6
-	sha256sums = 4d98f03a759d14d1cf6436741135b5b11de9b1975b5dd67407010a13f86fa8e4
+	sha256sums = 0b7edcf35071ae6f227c3a94505df245ebdc9026ce5a34e04d694aa675b1efbc
+	sha256sums = e39d8d68739f875393c4b0bec61aacf5d2fa7970327c82d9b4e97f643e4fb0cc
 
 pkgname = opentrack
 
