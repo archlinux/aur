@@ -22,7 +22,7 @@ _update() {
 post_install() {
     _update
     note 1 "This package installs side-by-side with [extra]'s firefox."
-    note 2 "The binary is called 'firefox-nightly'."
+    note 2 "The binary is called 'firefox-developer'."
 }
 
 post_upgrade() {
