@@ -17,8 +17,7 @@ source=('f.lux-eula.txt' 'f.lux-eula.html::https://justgetflux.com/news/pages/eu
 source_i686=('https://justgetflux.com/linux/xflux-pre.tgz')
 source_x86_64=('https://justgetflux.com/linux/xflux64.tgz')
 sha256sums=('1d989851f6f02a2eb280faec1e3bbb348ba9a5d1677da22fa89dfc02cb063030'
-            '76eaf1d3fba40574a344ca7e11d0a86de6dc5bfd0ba6e9d50ff2c08decc3ab06'
-)
+            'cc092411b8edbd2158436ffad45bafc03d9ff1eb1b2be31659bf7308c2c33b26')
 sha256sums_i686=('fda5d10c3ca16ba38eddc5fbdecebeccd607c4c95787b4379d1ab372760877b4')
 sha256sums_x86_64=('cc50158fabaeee58c331f006cc1c08fd2940a126e99d37b76c8e878ef20c2021')
 
