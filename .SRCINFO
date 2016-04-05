@@ -1,7 +1,7 @@
 pkgbase = brave-browser-bin
 	pkgdesc = A web browser that stops ads and trackers by default. Binary release.
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.brave.com/
 	install = brave-browser-bin.install
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = brave-browser-bin
 	depends = libgnome-keyring
 	depends = libxtst
 	depends = desktop-file-utils
+	depends = ttf-font
 	optdepends = cups: Printer support
 	provides = brave
 	provides = brave-browser
@@ -25,7 +26,7 @@ pkgbase = brave-browser-bin
 	sha384sums = 8cc316249adb07c4b11a7d240b834d656d414de06ee5101eb6fab4ea079aec559b74b959647bc4b224cedf7b21656c77
 	sha384sums = 850b39853a44cb86fca09c82a201ad9ac8d4c6938c82ad1cfffcb40a9b2868a15ebc80a1c7d7597e9dfedf0144584381
 	sha384sums = b27caa103555393992e6e1de1c2663f3ecf8339054e1aee8961406c8cbc9d677ba78b4bab6efe7210143818f9207d16b
-	sha384sums = 43d5244a193bb093972c070fbc8f79cc59a3b46a034cb028edd2f645437633fd91226c6c36b713d1f387fbc377714f9d
+	sha384sums = f950675fb4a3f9e48374f8a2667e7a45889206a3062c8182e474143607fc26bd17e852a1ef494607dbd3ff4de325e05f
 
 pkgname = brave-browser-bin
 
