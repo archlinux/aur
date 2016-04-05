@@ -2,7 +2,7 @@
 
 pkgname=plasma5-applet-awesome-widgets
 _pkgname=awesome-widgets
-pkgver=3.0.1
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Collection of minimalistic Plasmoids which look like Awesome WM widgets (ex-PyTextMonitor)"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=("catalyst: for GPU monitor"
 makedepends=('cmake' 'extra-cmake-modules')
 source=(https://github.com/arcan1s/awesome-widgets/releases/download/V.${pkgver}/${_pkgname}-${pkgver}-src.tar.xz)
 install=${pkgname}.install
-md5sums=('6e17215102a4965b0167c5de0c9a5222')
+md5sums=('08d1c0b3995ae6003a5b552a7ae7b93d')
 backup=('etc/xdg/plasma-dataengine-extsysmon.conf')
 
 prepare() {
