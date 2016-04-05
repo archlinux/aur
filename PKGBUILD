@@ -1,5 +1,6 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 # Contributor: Victor Häggqvist <aur@snilius.com>
+# Please report issues at https://github.com/sanduhrs/arch-aur-drupalconsole-git
 
 _pkgname=drupalconsole
 pkgname=${_pkgname}-git
