@@ -2,7 +2,7 @@
 
 pkgname=brave-browser-bin
 pkgver=0.8.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A web browser that stops ads and trackers by default. Binary release."
 arch=('x86_64') # No 32-bit builds for you! (Joke appart, upstream supports x86_64 only).
 url="https://www.brave.com/"
