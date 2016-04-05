@@ -19,7 +19,6 @@ ac_add_options --disable-b2g-ril
 ac_add_options --disable-accessibility
 ac_add_options --disable-codesighs
 ac_add_options --disable-crashreporter
-ac_add_options --disable-jemalloc # see https://github.com/MoonchildProductions/Pale-Moon/issues/39
 ac_add_options --disable-gamepad
 ac_add_options --disable-installer
 ac_add_options --disable-logging
@@ -41,11 +40,13 @@ ac_add_options --disable-debug-symbols
 
 # enable useful features
 ac_add_options --enable-chrome-format=omni
-ac_add_options --enable-gstreamer
+ac_add_options --enable-gstreamer=1.0
 ac_add_options --enable-pulseaudio
 ac_add_options --enable-safe-browsing
 ac_add_options --enable-startup-notification
 ac_add_options --enable-url-classifier
+ac_add_options --enable-jemalloc
+ac_add_options --enable-jemalloc-lib
 
 # use system libs
 ac_add_options --x-libraries=/usr/lib
