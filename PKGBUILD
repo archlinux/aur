@@ -2,7 +2,7 @@
 
 _pkgname=screencloud
 pkgname=${_pkgname}-git
-pkgver=1.2.0.77.gf608629
+pkgver=1.2.0.95.gc8e126f
 pkgrel=2
 pkgdesc='An easy to use screenshot sharing tool. Experimental Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
@@ -28,13 +28,13 @@ sha512sums=(
 
 pkgver() {
 	# Updating package version
-	cd ${srcdir}/${_pkgname}
+	cd "${srcdir}"/${_pkgname}
 	git describe --long --tags | sed 's/^v//;s/-/./g'
 }
 
 prepare() {
 	# Create build directory
-	mkdir -p ${srcdir}/build
+	mkdir -p "${srcdir}"/build
 }
 
 build() {
@@ -43,24 +43,23 @@ build() {
 	local _consumer_secret='2d745141473f640b566aba29147fd672'
 	
 	# Building package
-	cd ${srcdir}/build
+	cd "${srcdir}"/build
 	cmake ../${_pkgname} \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt5 \
-		-DCONSUMER_KEY_SCREENCLOUD=${_consumer_key} \
-		-DCONSUMER_SECRET_SCREENCLOUD=${_consumer_secret} \
+		-DCONSUMER_KEY_SCREENCLOUD="${_consumer_key}" \
+		-DCONSUMER_SECRET_SCREENCLOUD="${_consumer_secret}" \
 		-DQT_USE_QT5=ON \
 		-DPYTHON_USE_PYTHON3=ON
 }
 
 package() {
 	# Installing package
-	cd ${srcdir}/build
+	cd "${srcdir}"/build
 	
 	# Install files
-	make DESTDIR=${pkgdir} install
+	make DESTDIR="${pkgdir}" install
 	
 	# Create a symbolic link to the Python module
-	mkdir -p ${pkgdir}/usr/lib/python3.5/site-packages
-	ln -sf /usr/share/screencloud/modules/ScreenCloud.py ${pkgdir}/usr/lib/python3.5/site-packages/ScreenCloud.py
+	mkdir -p "${pkgdir}"/usr/lib/python3.5/site-packages
+	ln -sf /usr/share/screencloud/modules/ScreenCloud.py "${pkgdir}"/usr/lib/python3.5/site-packages/ScreenCloud.py
 }
