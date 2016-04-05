@@ -9,7 +9,7 @@ pkgbase = kirigami-git
 	license = LGPL
 	makedepends = extra-cmake-modules
 	makedepends = git
-	depends = qt5-base
+	depends = qt5-quickcontrols
 	source = git://anongit.kde.org/kirigami.git
 	md5sums = SKIP
 
