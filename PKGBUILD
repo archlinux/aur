@@ -1,4 +1,6 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Please report issues at https://github.com/sanduhrs/arch-aur-phpmetrics
+
 pkgname=phpmetrics
 pkgver=1.10.0
 pkgrel=1
