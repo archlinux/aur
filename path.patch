@@ -1,0 +1,143 @@
+diff -aur gameplay3d/newproject.sh gameplay3d-patch/newproject.sh
+--- gameplay3d/newproject.sh	2016-04-05 11:37:05.764090798 +0800
++++ gameplay3d-patch/newproject.sh	2016-04-05 11:38:19.041184223 +0800
+@@ -144,34 +144,33 @@
+ 		back="../${back}"
+ 	fi
+ done
+-gpPath=${back}/${gpPathAbs#$common_path/}
+-if [[ ${gpPathAbs} == ${common_path} ]]; then
+-	gpPath=${back}
+-fi
++
++gpPath="/opt/gameplay3d"
++TEMPDIR="$gpPath/template"
+ 
+ #############################################
+ # Copy Microsoft Visual Studio project files
+ #############################################
+ gpPathWin=$(echo $gpPath | sed 's*/*\\\\*g')
+-cp "template/template.vcxproj" "$projPath/$projName.vcxproj"
++cp "$TEMPDIR/template.vcxproj" "$projPath/$projName.vcxproj"
+ aliassedinplace "s*TEMPLATE_PROJECT*$projName*g" "$projPath/$projName.vcxproj"
+ aliassedinplace "s*TemplateGame*$className*g" "$projPath/$projName.vcxproj"
+ aliassedinplace "s*GAMEPLAY_PATH*$gpPathWin*g" "$projPath/$projName.vcxproj"
+-cp "template/template.vcxproj.filters" "$projPath/$projName.vcxproj.filters"
++cp "$TEMPDIR/template.vcxproj.filters" "$projPath/$projName.vcxproj.filters"
+ aliassedinplace "s*TemplateGame*$className*g" "$projPath/$projName.vcxproj.filters"
+ 
+ #############################################
+ # Copy Apple Xcode project files
+ #############################################
+ mkdir -p "$projPath/$projName.xcodeproj"
+-cp "template/template.xcodeproj/project.pbxproj" "$projPath/$projName.xcodeproj/project.pbxproj"
++cp "$TEMPDIR/template.xcodeproj/project.pbxproj" "$projPath/$projName.xcodeproj/project.pbxproj"
+ aliassedinplace "s*TEMPLATE_PROJECT*$projName*g" "$projPath/$projName.xcodeproj/project.pbxproj"
+ aliassedinplace "s*TemplateGame*$className*g" "$projPath/$projName.xcodeproj/project.pbxproj"
+ aliassedinplace "s*GAMEPLAY_PATH*$gpPath*g" "$projPath/$projName.xcodeproj/project.pbxproj"
+-cp "template/TEMPLATE_PROJECT-macosx.plist" "$projPath/$projName-macosx.plist"
++cp "$TEMPDIR/TEMPLATE_PROJECT-macosx.plist" "$projPath/$projName-macosx.plist"
+ aliassedinplace "s*TEMPLATE_UUID*$uuid*g" "$projPath/$projName-macosx.plist"
+-cp "template/TEMPLATE_PROJECT-ios.plist" "$projPath/$projName-ios.plist"
+-cp "template/Default-568h@2x.png" "$projPath/Default-568h@2x.png"
++cp "$TEMPDIR/TEMPLATE_PROJECT-ios.plist" "$projPath/$projName-ios.plist"
++cp "$TEMPDIR/Default-568h@2x.png" "$projPath/Default-568h@2x.png"
+ aliassedinplace "s*TEMPLATE_TITLE*$title*g" "$projPath/$projName-ios.plist"
+ aliassedinplace "s*TEMPLATE_UUID*$uuid*g" "$projPath/$projName-ios.plist"
+ 
+@@ -182,48 +181,48 @@
+ mkdir -p "$projPath/android/jni"
+ mkdir -p "$projPath/android/res/values"
+ mkdir -p "$projPath/android/res/drawable"
+-cp "template/android/AndroidManifest.xml" "$projPath/android/AndroidManifest.xml"
++cp "$TEMPDIR/android/AndroidManifest.xml" "$projPath/android/AndroidManifest.xml"
+ aliassedinplace "s*TEMPLATE_PROJECT*$projName*g" "$projPath/android/AndroidManifest.xml"
+ aliassedinplace "s*TEMPLATE_UUID*$uuid*g" "$projPath/android/AndroidManifest.xml"
+-cp "template/android/build.xml" "$projPath/android/build.xml"
++cp "$TEMPDIR/android/build.xml" "$projPath/android/build.xml"
+ aliassedinplace "s*TEMPLATE_PROJECT*$projName*g" "$projPath/android/build.xml"
+ aliassedinplace "s*GAMEPLAY_PATH*$gpPath*g" "$projPath/android/build.xml"
+-cp "template/android/project.properties" "$projPath/android/project.properties"
+-cp "template/android/jni/Application.mk" "$projPath/android/jni/Application.mk"
+-cp "template/android/jni/Android.mk" "$projPath/android/jni/Android.mk"
++cp "$TEMPDIR/android/project.properties" "$projPath/android/project.properties"
++cp "$TEMPDIR/android/jni/Application.mk" "$projPath/android/jni/Application.mk"
++cp "$TEMPDIR/android/jni/Android.mk" "$projPath/android/jni/Android.mk"
+ aliassedinplace "s*TEMPLATE_PROJECT*$projName*g" "$projPath/android/jni/Android.mk"
+ aliassedinplace "s*TemplateGame*$className*g" "$projPath/android/jni/Android.mk"
+ aliassedinplace "s*GAMEPLAY_PATH*$gpPath*g" "$projPath/android/jni/Android.mk"
+-cp "template/icon.png" "$projPath/android/res/drawable/icon.png"
+-cp "template/android/res/values/template.strings.xml" "$projPath/android/res/values/strings.xml"
++cp "$TEMPDIR/icon.png" "$projPath/android/res/drawable/icon.png"
++cp "$TEMPDIR/android/res/values/template.strings.xml" "$projPath/android/res/values/strings.xml"
+ aliassedinplace "s*TEMPLATE_TITLE*$title*g" "$projPath/android/res/values/strings.xml"
+ 
+ #############################################
+ # Copy Eclipse files for Android
+ #############################################
+-cp "template/android/.cproject" "$projPath/android/.cproject"
++cp "$TEMPDIR/android/.cproject" "$projPath/android/.cproject"
+ aliassedinplace "s*TEMPLATE_PROJECT*$projName*g" "$projPath/android/.cproject"
+ aliassedinplace "s*TEMPLATE_UUID*$uuid*g" "$projPath/android/.cproject"
+ aliassedinplace "s*GAMEPLAY_PATH*$gpPath*g" "$projPath/android/.cproject"
+-cp "template/android/.project" "$projPath/android/.project"
++cp "$TEMPDIR/android/.project" "$projPath/android/.project"
+ aliassedinplace "s*TEMPLATE_PROJECT*$projName*g" "$projPath/android/.project"
+-cp "template/android/.classpath" "$projPath/android/.classpath"
++cp "$TEMPDIR/android/.classpath" "$projPath/android/.classpath"
+ aliassedinplace "s*TEMPLATE_PROJECT*$projName*g" "$projPath/android/.classpath"
+ 
+ #############################################
+ # Copy Eclipse files for Linux
+ #############################################
+-cp "template/.cproject" "$projPath/.cproject"
++cp "$TEMPDIR/.cproject" "$projPath/.cproject"
+ aliassedinplace "s*TEMPLATE_PROJECT*$projName*g" "$projPath/.cproject"
+ aliassedinplace "s*TEMPLATE_UUID*$uuid*g" "$projPath/.cproject"
+ aliassedinplace "s*GAMEPLAY_PATH*$gpPath*g" "$projPath/.cproject"
+-cp "template/.project" "$projPath/.project"
++cp "$TEMPDIR/.project" "$projPath/.project"
+ aliassedinplace "s*TEMPLATE_PROJECT*$projName*g" "$projPath/.project"
+ 
+ #############################################
+ # Copy QtCreator files
+ #############################################
+-cp "template/TEMPLATE_PROJECT.pro" "$projPath/$projName.pro"
++cp "$TEMPDIR/TEMPLATE_PROJECT.pro" "$projPath/$projName.pro"
+ aliassedinplace "s*TEMPLATE_PROJECT*$projName*g" "$projPath/$projName.pro"
+ aliassedinplace "s*TemplateGame*$className*g" "$projPath/$projName.pro"
+ aliassedinplace "s*GAMEPLAY_PATH*$gpPath*g" "$projPath/$projName.pro"
+@@ -231,7 +230,7 @@
+ #############################################
+ # Copy CMake files
+ #############################################
+-cp "template/template-CMakeLists.txt" "$projPath/CMakeLists.txt"
++cp "$TEMPDIR/template-CMakeLists.txt" "$projPath/CMakeLists.txt"
+ aliassedinplace "s*TEMPLATE_PROJECT*$projName*g" "$projPath/CMakeLists.txt"
+ aliassedinplace "s*TemplateGame*$className*g" "$projPath/CMakeLists.txt"
+ aliassedinplace "s*GAMEPLAY_PATH*$gpPath*g" "$projPath/CMakeLists.txt"
+@@ -239,19 +238,19 @@
+ #############################################
+ # Copy source files
+ #############################################
+-cp "template/src/TemplateGame.h" "$projPath/src/$className.h"
+-cp "template/src/TemplateGame.cpp" "$projPath/src/$className.cpp"
++cp "$TEMPDIR/src/TemplateGame.h" "$projPath/src/$className.h"
++cp "$TEMPDIR/src/TemplateGame.cpp" "$projPath/src/$className.cpp"
+ aliassedinplace "s*TemplateGame*$className*g" "$projPath/src/$className.h"
+ aliassedinplace "s*TemplateGame*$className*g" "$projPath/src/$className.cpp"
+ 
+ # Copy resource files
+-cp "template/res/"* "$projPath/res/"
++cp "$TEMPDIR/res/"* "$projPath/res/"
+ 
+ # Copy icon
+-cp "template/icon.png" "$projPath/icon.png"
++cp "$TEMPDIR/icon.png" "$projPath/icon.png"
+ 
+ # Copy config
+-cp "template/game.config" "$projPath/game.config"
++cp "$TEMPDIR/game.config" "$projPath/game.config"
+ aliassedinplace "s*TEMPLATE_TITLE*$title*g" "$projPath/game.config"
+ 
+ # Open the new project folder, use xdg-open on Linux

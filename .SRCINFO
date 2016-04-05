@@ -1,6 +1,6 @@
 pkgbase = gameplay3d
 	pkgdesc = Open-source, cross-platform, C++ game framework/engine for creating 2D/3D mobile and desktop games.
-	pkgver = 0.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = https://github.com/gameplay3d/GamePlay
 	arch = any
@@ -9,7 +9,9 @@ pkgbase = gameplay3d
 	depends = cmake
 	depends = unzip
 	source = gameplay3d::git+https://github.com/gameplay3d/GamePlay.git
+	source = path.patch
 	sha512sums = SKIP
+	sha512sums = f8e96b9de2cb57ace265465e3d02c7314e58dc73bca91b417a1517d24106e042bed67edd5e4ddedf6a36aea2ecdb70e85baab50bc0cabbd9434ff5852474ec68
 
 pkgname = gameplay3d
 
