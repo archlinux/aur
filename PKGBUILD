@@ -26,7 +26,7 @@ package() {
   install -d "$pkgdir/usr/share"
   install -d "$pkgdir/usr/lib/libreoffice/share/config"
   cp -a usr/share/themes "$pkgdir/usr/share"
-  if [ -f /tmp/foo.txt ]; then
+  if [ -f usr/share/libreoffice/share/config/images_human.zip ]; then
     cp -a usr/share/libreoffice/share/config/images_human.zip "$pkgdir/usr/lib/libreoffice/share/config"
   fi
   cd "$srcdir/${pkgname}-gtk3"
