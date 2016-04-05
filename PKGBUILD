@@ -1,4 +1,4 @@
-# Contributor: Slash <demodevil5[at]yahoo[dot]com>
+# Maintainer: Slash <demodevil5[at]yahoo[dot]com>
 
 pkgname=quake3-reactionq3
 pkgver=3.2
@@ -8,14 +8,14 @@ url="http://www.rq3.com/"
 license=('custom')
 arch=('any')
 depends=('quake3')
-source=('ftp://ftp.euronet.nl/pub/orange/games/Quake3/mods/Reaction/ReactionQuake3-v3.2-Full.zip')
-md5sums=('9d376db7be9c2990953b93fae075458b')
+source=('ftp://ftp.tw.freebsd.org/pub/ports/distfiles/ReactionQuake3-v3.2-Full.zip')
+sha256sums=('c84de808ac5bd369a2047553745a1b2cb2fd8afe31a0ea6b8380424da5652bb1')
 PKGEXT='.pkg.tar'
 
 package() {
     # Create Destination Directory
-    install -d ${pkgdir}/opt/quake3/
+    install -d "${pkgdir}/opt/quake3/"
 
     # Intrall RQ3 Files
-    mv ${srcdir}/rq3 ${pkgdir}/opt/quake3/
+    mv "${srcdir}/rq3" "${pkgdir}/opt/quake3/"
 }
