@@ -5,7 +5,7 @@
 # Contributor: Tsekhovoy Eugene aka Krash <8552246@gmail.com>
 
 pkgname=mc-git
-pkgver=4.8.8.r10.g923d379
+pkgver=4.8.16.r15.g50cca69
 pkgrel=1
 pkgdesc='a text based filemanager'
 arch=('i686' 'x86_64')
@@ -39,17 +39,17 @@ backup=('etc/mc/edit.indent.rc'
         'etc/mc/mc.menu'
         'etc/mc/sfs.ini')
 options=('!emptydirs')
-source=('git://repo.or.cz/midnight-commander.git')
+source=('git+https://github.com/MidnightCommander/mc')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd midnight-commander
+  cd mc
   git describe --long | sed -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
 }
 
 build() {
   export PYTHON=/usr/bin/python2
-  cd midnight-commander
+  cd mc
 
   ./autogen.sh
   ./configure \
@@ -64,7 +64,7 @@ build() {
 }
 
 package() {
-  cd midnight-commander
+  cd mc
   make DESTDIR="${pkgdir}" install
 }
 
