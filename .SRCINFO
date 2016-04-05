@@ -1,0 +1,17 @@
+pkgbase = mates-git
+	pkgdesc = A very simple commandline addressbook, with mutt integration and optional CardDAV synchronization.
+	pkgver = r170
+	pkgrel = 1
+	url = https://github.com/untitaker/mates.rs
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	depends = gcc-libs
+	source = mates-git::git+https://github.com/untitaker/mates.rs.git
+	md5sums = SKIP
+
+pkgname = mates-git
+
