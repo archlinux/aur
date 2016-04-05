@@ -1,0 +1,21 @@
+pkgbase = dosbox-superkarts
+	pkgdesc = Superkarts - old DOS game
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.bestoldgames.net/eng/
+	arch = any
+	license = abandonware
+	depends = dosbox
+	depends = sdl
+	depends = unzip
+	source = http://www.bestoldgames.net/download/bgames/superkarts.zip
+	source = dosbox-superkarts.png
+	source = dosbox-superkarts.desktop
+	source = dosbox-superkarts.conf
+	md5sums = ecbe252384633c287ba36ba3e370236d
+	md5sums = cb2b4f1416955fa715430ecec3694134
+	md5sums = 073341a96df2150891a9eea35c108f91
+	md5sums = af93f0318edaca1ff91c121938b8f3b3
+
+pkgname = dosbox-superkarts
+
