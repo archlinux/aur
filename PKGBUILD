@@ -2,8 +2,8 @@
 # Contributor: argymeg <argymeg at gmail dot com>
 
 pkgname=firefox-beta
-pkgver=46.0b7
-_realpkgver=46.0b7
+pkgver=46.0b8
+_realpkgver=46.0b8
 _rcbuild=1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta (build from source)"
@@ -28,7 +28,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/candidates/$_realpkgver-
         vendor.js
         firefox-fixed-loading-icon.png
         no-libnotify.patch)
-sha512sums=('00599078cd8d2db71bd94ac20d4a9e26ccd9824b884c093623c630232ac55d43056f5e8905ddb0e733c7abcecf71b2e4105ad403732f5af7e0e24407c65b7f68'
+sha512sums=('5c7ea044926d40603ffb7c1180289579cc8f74299c1dbc8f9c5c1ef072f0565aeb4aa9ab780879d49a16ddc4448c9b18299fac5f10a95c37df81e1da7663f5f7'
             'c72792b505031431282a3777bce6d3ee98fe68cc0faf8cadd84afe2b42921da52b9d8ad94e3324f0d0a09e8e298e3bcd2b527b08e92e2a0140434d7767efc422'
             'dd9a563d6ad772ba440a45bbd0ee27943b319edcb785951e62cd4aefe0d33ded2acf9b63a2b15cec89ee184687c68a8d3a1cc06ec98f9a9251602f063fbaef14'
             '266989b0c4a37254a40836a6193284a186230b48716907e4d249d73616f58382b258c41baa8c1ffc98d405f77bfafcd3438f749edcf391c7bd22185399adf4bd'
