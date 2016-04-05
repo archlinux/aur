@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=jna
-pkgver=4.2.1
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="Access native libraries with pure Java code."
 arch=('any')
@@ -10,7 +10,7 @@ license=('LGPL' 'custom:ASL')
 depends=('java-runtime')
 source=("https://maven.java.net/content/repositories/releases/net/java/dev/jna/jna/${pkgver}/jna-${pkgver}.jar"
         'https://raw.githubusercontent.com/java-native-access/jna/master/LICENSE.ASL')
-sha1sums=('fcc5b10cb812c41b00708e7b57baccc3aee5567c'
+sha1sums=('5012450aee579c3118ff09461d5ce210e0cdc2a9'
           '1bc726a247a3fe718d411c802cd6215038d527a4')
 
 package() {
