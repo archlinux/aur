@@ -1,5 +1,6 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 # Contributor: jsteel <mail at jsteel dot org>
+# Please report issues at https://github.com/sanduhrs/arch-aur-php-ssh
 
 _pkgname=php-ssh
 pkgname=${_pkgname}
