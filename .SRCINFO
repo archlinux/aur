@@ -1,0 +1,17 @@
+pkgbase = ruby-barr
+	pkgdesc = Barr is a status line generator for use with Lemonbar
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/OkayDave/barr
+	arch = any
+	license = MIT
+	depends = ruby
+	depends = ruby-i3ipc
+	depends = ruby-weather-api
+	noextract = barr-0.2.3.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/barr-0.2.3.gem
+	sha1sums = 1f716f6d3fea91f6555a93b3b44a270a7205ebe7
+
+pkgname = ruby-barr
+
