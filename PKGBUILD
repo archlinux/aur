@@ -70,15 +70,15 @@ package() {
   install -Dm755 "../ExternalPrograms/Spliter/spliter" \
                  "${pkgdir}/usr/bin/spliter"
   install -Dm644 "../ExternalPrograms/Spliter/readme.txt" \
-                 "${pkgdir}/usr/share/doc/zynaddsubfx/SPLITER.txt"
+                 "${pkgdir}/usr/share/doc/${pkgname%-*}/SPLITER.txt"
   install -Dm755 "../ExternalPrograms/Controller/controller" \
                  "${pkgdir}/usr/bin/controller"
 
   # Additional parameters
-  install -d "${pkgdir}/usr/share/zynaddsubfx/parameters"
+  install -d "${pkgdir}/usr/share/${pkgname%-*}/parameters"
   bsdtar --strip-components 1 --uid 0 --gid 0 -zxf \
                  ${srcdir}/${source[1]##*/} -C \
-                 "${pkgdir}/usr/share/zynaddsubfx/parameters"
+                 "${pkgdir}/usr/share/${pkgname%-*}/parameters"
                  
   # Desktop file sans predefied I/O
   install -Dm644 "${srcdir}/${pkgname%-*}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-*}.desktop"
