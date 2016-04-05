@@ -2,13 +2,13 @@
 # Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=vsxu-git
-pkgver=0.5.1.r0.g98bf097
+pkgver=0.5.1.r50.g4a34b08
 pkgrel=1
 pkgdesc="A free to use program that lets you create and perform real-time audio visual presets."
 arch=('i686' 'x86_64')
 url="http://www.vsxu.com/"
 license=('GPL' 'custom')
-depends=('desktop-file-utils' 'glew' 'glfw2' 'libpng12' 'opencv' 'xdg-utils')
+depends=('desktop-file-utils' 'glew' 'glfw' 'libpng12' 'opencv' 'xdg-utils')
 makedepends=('alsa-lib' 'cmake' 'git' 'pulseaudio' 'jack')
 optdepends=(
   'alsa-lib: ALSA support.'
@@ -18,9 +18,11 @@ optdepends=(
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 install=${pkgname}.install
-source=("${pkgname}::git+https://github.com/vovoid/vsxu.git")
-sha512sums=('SKIP')
-_branch=master
+source=("${pkgname}::git+https://github.com/vovoid/vsxu.git"
+        "cal3d::git+https://github.com/vovoid/cal3d.git")
+sha512sums=('SKIP'
+            'SKIP')
+_branch=glfw3
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -35,12 +37,14 @@ prepare() {
   cd "${pkgname}"
   [[ -d build ]] || mkdir build
   git checkout ${_branch}
+  git submodule init
+  git config submodule.plugins/src/mesh.importers/cal3d.url "${srcdir}/cal3d"
+  git submodule update plugins/src/mesh.importers/cal3d
 }
 
 build() {
   cd "${pkgname}/build"
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
-        -DGLFW_LIBRARY=/usr/lib/libglfw2.so \
         -DPNG_LIBRARY=/usr/lib/libpng12.so \
         -DPNG_PNG_INCLUDE_DIR=/usr/include/libpng12
   make
