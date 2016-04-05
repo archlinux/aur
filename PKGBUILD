@@ -14,7 +14,7 @@ depends=(
 	'docker'
 	'nginx'
 	'plugn'
-	'sshcommand'
+	'sshcommand'='0.4.0'
 	'herokuish'
 	'openbsd-netcat'
 	'gliderlabs-sigil'
