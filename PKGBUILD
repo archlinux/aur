@@ -1,4 +1,5 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Please report issues at https://github.com/sanduhrs/arch-aur-php-uploadprogress
 
 _pkgname=uploadprogress
 pkgname=php-${_pkgname}
