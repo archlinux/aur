@@ -6,29 +6,17 @@
 
 pkgbase=lib32-bluez
 pkgname=(${pkgbase}{,-libs,-cups,-plugins})
-pkgver=5.38
-pkgrel=2
+pkgver=5.39
+pkgrel=1
 url="http://www.bluez.org/"
 arch=('x86_64')
 license=('GPL2')
 makedepends=('gcc-multilib' 'gcc-libs-multilib' 'lib32-dbus' 'lib32-libical' 'lib32-systemd')
-source=("http://www.kernel.org/pub/linux/bluetooth/${pkgbase#lib32-}-${pkgver}.tar."{xz,sign}
-        fix_crash_when_connecting_to_controllers.diff
-        fix_registering_to_player_events.diff)
+source=("http://www.kernel.org/pub/linux/bluetooth/${pkgbase#lib32-}-${pkgver}.tar."{xz,sign})
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
-sha256sums=('0618c5440be6715805060ab5eea930526f34089c437bf61819447b160254f4df'
-            'SKIP'
-            '27296fb6cce5e62a04fbeb0779d852995779ecef553cc2e692d91d89eff8c673'
-            'a3f39bf73a14b7621c36fb1ab8237914c80aaddd7a3dae46d29a515c5121ed38')
+sha256sums=('21d1bc9150d3576296595217efb98a746b592389d25d5637e8bee5da7272593b'
+            'SKIP')
 validpgpkeys=('E932D120BC2AEC444E558F0106CA9F5D1DCF2659') # Marcel Holtmann <marcel@holtmann.org>
-
-prepare() {
-  cd "${srcdir}/${pkgbase#lib32-}-${pkgver}"
-  # FS#48644, http://git.kernel.org/cgit/bluetooth/bluez.git/commit/?id=177d27c8c3db4588ec13dae0368f240902c42825
-  patch -Np1 -i ${srcdir}/fix_crash_when_connecting_to_controllers.diff
-  # http://git.kernel.org/cgit/bluetooth/bluez.git/commit/?id=cc235a8d528b36cad2cf9fe6517d54711613331a
-  patch -Np1 -i ${srcdir}/fix_registering_to_player_events.diff
-}
 
 build() {
   cd "${srcdir}/${pkgbase#lib32-}-${pkgver}"
