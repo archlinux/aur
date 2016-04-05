@@ -4,13 +4,13 @@
 pkgname=hubic
 pkgver=2.1.0
 _pkgbuildver=53
-pkgrel=57
+pkgrel=58
 pkgdesc="Synchronization service provided by OVH."
 arch=('any')
 url="https://hubic.com/"
 license=('custom')
 provides=('hubic')
-depends=('mono<=4.2.2.30')
+depends=('mono')
 install=hubic.install
 changelog=CHANGELOG
 source=(http://mir7.ovh.net/ovh-applications/hubic/hubiC-Linux/${pkgver}/hubiC-Linux-${pkgver}.${_pkgbuildver}-linux.tar.gz)
