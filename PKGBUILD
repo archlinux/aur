@@ -2,7 +2,7 @@
 pkgname=clt13-git
 _pkgname=clt13
 
-pkgver=0.1.0.r0.g1248e29
+pkgver=0.1.0.r13.gdeb7094
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
@@ -26,6 +26,7 @@ source=("git://github.com/spaceships/clt13.git")
 
 build() {
     cd $srcdir/${_pkgname}
+    mkdir -p build/autoconf
     autoreconf -i
     ./configure --prefix=/usr
     make
@@ -34,4 +35,5 @@ build() {
 package() {
   cd $srcdir/$_pkgname 
   make DESTDIR=${pkgdir} install
+  libtool --finish /usr/lib
 }
