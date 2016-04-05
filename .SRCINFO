@@ -1,0 +1,16 @@
+pkgbase = python-dkim
+	pkgdesc = Python module that implements DKIM email signing and verification
+	pkgver = 0.5.6
+	pkgrel = 1
+	url = https://launchpad.net/dkimpy
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-dnspython
+	options = !emptydirs
+	source = https://launchpad.net/dkimpy/trunk/0.5.6/+download/dkimpy-0.5.6.tar.gz
+	sha512sums = 208a60142f2c9db4323b82f1759efdcd0f837a14ecde4eee8a5924d03fad581596ab63825db270e9c6017891315af65c5d1247952ac8fa918391f9364b31d39c
+
+pkgname = python-dkim
+
