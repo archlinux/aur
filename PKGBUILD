@@ -13,6 +13,12 @@ makedepends=(cython2)
 source=(http://mirrors.mit.edu/sage/spkg/upstream/pari_jupyter/pari_jupyter-$pkgver.tar.gz)
 md5sums=('80ec021034affd77cebba79eb4bc4f83')
 
+prepare() {
+  cd pari_jupyter-$pkgver
+# Use python2
+  sed -e 's|python|python2|g' -i spec/kernel.json
+}
+
 build() {
   cd pari_jupyter-$pkgver
   python2 setup.py build 
