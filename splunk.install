@@ -1,6 +1,6 @@
+SPLUNK_HOME="/opt/splunk"
+
 pre_install() {
-	SPLUNK_HOME="/opt/splunk"
-	
 	group_exists=no
 	# Try to test for group existence in a 'modern' fashion
 	if which getent >/dev/null; then
@@ -23,8 +23,6 @@ pre_install() {
 }
 
 post_install() {
-	SPLUNK_HOME="/opt/splunk"
-	
 	if [ ! -f "$SPLUNK_HOME/etc/splunk-launch.conf" ]; then
 		sed "s%# SPLUNK_HOME=.*%SPLUNK_HOME=$SPLUNK_HOME%g" "$SPLUNK_HOME/etc/splunk-launch.conf.default" > "$SPLUNK_HOME/etc/splunk-launch.conf"
 	fi
@@ -53,7 +51,6 @@ post_install() {
 }
 
 pre_upgrade() {
-	SPLUNK_HOME="/opt/splunk"
 	echo "Attempting to stop the installed Splunk Server..."
 	$SPLUNK_HOME/bin/splunk stop
 	systemctl stop splunk
@@ -80,8 +77,6 @@ pre_upgrade() {
 }
 
 post_upgrade() {
-	SPLUNK_HOME="/opt/splunk"
-	
 	# Build the post-upgrade message in steps:
 	touch "$SPLUNK_HOME/ftr"
 	echo "-------------------------------------------------------------------------" > "$SPLUNK_HOME/ftr"
@@ -106,15 +101,12 @@ post_upgrade() {
 }
 
 pre_remove() {
-	SPLUNK_HOME="/opt/splunk"
 	echo "Attempting to stop the installed Splunk Server..."
 	$SPLUNK_HOME/bin/splunk stop
 	systemctl stop splunk
 }
 
 post_remove() {
-	SPLUNK_HOME="/opt/splunk"
-	
 	# Remove any remaining files
 	rm -rf $SPLUNK_HOME
 	
