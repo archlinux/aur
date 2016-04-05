@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=BamBam
+Comment=A simple baby keyboard masher
+Exec=bambam -d -u
+Icon=bambam
+Terminal=false
+Type=Application
+Categories=Game
