@@ -1,0 +1,15 @@
+pkgbase = ruby-i3ipc
+	pkgdesc = Interprocess communication with i3 wm
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/veelenga/i3ipc-ruby
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = i3ipc-0.2.0.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/i3ipc-0.2.0.gem
+	sha1sums = e2c4c9d48effa3d6244fff8f763e764656f92885
+
+pkgname = ruby-i3ipc
+
