@@ -1,6 +1,6 @@
 # Maintainer: sumt <sumt at sci dot fi>
 pkgname=palemoon-bin
-pkgver=26.1.1
+pkgver=26.2.0
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -8,11 +8,8 @@ url="http://linux.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib')
 optdepends=('palemoon-i18n-default: language pack for system active language'
-            'gstreamer0.10-base-plugins: vorbis decoding, ogg demuxing'
-            'gstreamer0.10-good-plugins: webm and mp4 demuxing'
-            'gstreamer0.10-bad-plugins: aac, vp8 and opus decoding'
-            'gstreamer0.10-ugly-plugins: h.264 and mp3 decoding'
-            'gstreamer0.10-ffmpeg: h.264 decoding'
+            'gst-libav: h.264 video playback'
+            'gst-plugins-good: h.264 video playback'
             'hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification')
 provides=("palemoon=$pkgver")
@@ -22,8 +19,8 @@ source=(palemoon.desktop)
 source_i686=("palemoon-$pkgver.en-US.linux-i686.tar.bz2::http://linux.palemoon.org/installer/download.php?v=$pkgver&a=i686")
 source_x86_64=("palemoon-$pkgver.en-US.linux-x86_64.tar.bz2::http://linux.palemoon.org/installer/download.php?v=$pkgver&a=x86_64")
 sha1sums=('e8d4cbcd51326c337a2c901e7aff7b6c54043dec')
-sha1sums_i686=('8f636b3aa6bc43a37876428be32bb6f078db878a')
-sha1sums_x86_64=('34c6871a6b5720c0ffefcf234981b3f09126464a')
+sha1sums_i686=('07402dba250ab634f0f39d733044e02819137877')
+sha1sums_x86_64=('5a19756ccf911f43f999010def48caa0d2f8a48b')
 
 package() {
   install -d "$pkgdir"/usr/{bin,lib}
