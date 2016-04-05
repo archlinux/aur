@@ -7,7 +7,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-staging-ivb
-pkgver=1.9.3
+pkgver=1.9.7
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -16,9 +16,9 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
         30-win32-aliases.conf
         patch-$pkgver-ivb.patch
         patch_temp_constants.patch)
-sha512sums=('20cf49a208127c157bc4b2e125aaea47b7199cdf75376c3a5f521f5472cade003a75079c51acc8b0d60107e9983dbc00e76cc881aaedfb1b37969eb735a5e6b6'
+sha512sums=('1fe256f6c255b88e4c16a39c2a77af02debefe6fb784d07126a7518d0f26578cf9c396b84fe9de1358a8eb8283ea5b5370b1a7f6ee385e06c7ca387ed50466f2'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
-            '71a8614e9044cc750fcf80431dff6fe383b5abe906e05224082fefcdb4d4429f8c118eb775689e59386b863e01fd1376e5ae2569a292418212ac8b84156d62e7'
+            '7b6d0076846c8f0b1c45971fecf43d57bb9ec381e403641f22a7c1b10bf4329f0a4a88d2362a8bbec7d0a601a667eb1002d5192b64c204e4a7e333878ef92c8d'
             '83583553d8db60e671679adcddedb87a2f8a740d36e5cdffef4a0cf2b995e48be216e53a7d1ee3bbeafd5bf9d0938b4c32b42265620c8e7c5bba967da893be11')
 
 pkgdesc="A compatibility layer for running Windows programs - Staging branch: indexed vertex blending - https://bugs.winehq.org/show_bug.cgi?id=39057"
@@ -93,6 +93,7 @@ optdepends=(
   libva                 lib32-libva
   gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
+  vulkan-icd-loader     lib32-vulkan-icd-loader
   cups
   samba           dosbox
 )
