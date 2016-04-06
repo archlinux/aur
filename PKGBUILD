@@ -1,8 +1,9 @@
 # Maintainer: brent s. <bts (AT) square-r00t [dot] net>
+validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
 pkgname=libyuv-git
 _pkgname=libyuv
 pkgver=r1445.0735245
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for YUV scaling (git)"
 arch=('i686' 'x86_64')
 url="https://github.com/lemenkov/libyuv"
@@ -12,7 +13,7 @@ makedepends=('depot-tools-git' 'cmake')
 #optdepends=('')
 provides=('libyuv')
 source=('git+https://github.com/lemenkov/libyuv.git')
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
