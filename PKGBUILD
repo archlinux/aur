@@ -5,14 +5,14 @@
 
 pkgname=gcc-gcj
 pkgver=5.3.0
-pkgrel=6
+pkgrel=7
 _islver=0.14.1
 _cloogver=0.18.3
 pkgdesc="The GNU Compiler for Java"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 url="http://gcc.gnu.org"
-depends=('gtk2' 'libxtst' 'alsa-lib' 'libmpc>=0.8.1' 'classpath-notools' 'gcc-gcj-ecj')
+depends=('gtk2' 'libxtst' 'alsa-lib' 'libmpc>=0.8.1' 'classpath' 'gcc-gcj-ecj')
 makedepends=('mpfr>=2.4.2' 'elfutils' 'jack' 'zip' 'gcc=5.3.0' 'libart-lgpl')
 optdepends=('python2: for running /usr/bin/aot-compile'
   'java-environment: for runnig some jars')
