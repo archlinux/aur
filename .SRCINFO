@@ -1,0 +1,16 @@
+pkgbase = tinybldlin
+	pkgdesc = Tiny PIC Bootloader for Microchip microcontrollers, GNU/Linux port
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://tinybldlin.sourceforge.net/index.php
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = wxgtk2.8
+	depends = python2-pyserial
+	conflicts = tinybldlin<0.8.1
+	source = https://sourceforge.net/projects/tinybldlin/files/tinybldlin-0.8.1-src.tar.gz
+	md5sums = b4d65608bdf2766ba22e5d9367574a32
+
+pkgname = tinybldlin
+
