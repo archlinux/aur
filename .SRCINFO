@@ -1,4 +1,5 @@
 pkgbase = micropsi2
+	pkgdesc = artificial intelligence toolkit implementing concepts from the cognitive architecture MicroPsi
 	pkgver = 0.7a5
 	pkgrel = 1
 	url = http://www.micropsi.com/

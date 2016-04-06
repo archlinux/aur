@@ -2,7 +2,7 @@
 pkgname=micropsi2
 pkgver=0.7a5
 pkgrel=1
-pkgdesc=""
+pkgdesc="artificial intelligence toolkit implementing concepts from the cognitive architecture MicroPsi"
 url="http://www.micropsi.com/"
 arch=('any')
 license=('unknown')
