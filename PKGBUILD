@@ -6,14 +6,14 @@
 
 pkgname=tvheadend-git
 _gitname='tvheadend-git'
-pkgver=4.1.r1672.g3927788
-pkgrel=4
+pkgver=4.1.r1817.gfc6b8ce
+pkgrel=1
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://tvheadend.org/"
 license=('GPL3')
-depends=('avahi' 'openssl' 'python2' 'uriparser' 'ffmpeg' 'linuxtv-dvb-apps')
-makedepends=('git')
+depends=('avahi' 'openssl' 'uriparser' 'ffmpeg' 'linuxtv-dvb-apps')
+makedepends=('git' 'python2')
 optdepends=('xmltv: For an alternative source of programme listings')
 provides=('tvheadend')
 conflicts=('tvheadend' 'hts-tvheadend' 'hts-tvheadend-svn' 'tvheadend-git')
@@ -38,14 +38,25 @@ prepare() {
     cp -a "dvb-scan-tables" "${_dvbscan}"
     rm -rf "${_dvbscan}/.git"
     touch "${_dvbscan}/.stamp"
+
+    # See: https://tvheadend.org/issues/3696
+    sed -i 's|/usr/bin/env python|/usr/bin/env python2|g' \
+        "${_gitname}/support/doc/md_to_c.py"
 }
 
 build() {
     cd "${srcdir}/${_gitname}"
-    ./configure --prefix=/usr --mandir=/usr/share/man/man1 --python=python2 --release \
-        --disable-libffmpeg_static --disable-libx264_static \
+    ./configure --prefix=/usr --mandir=/usr/share/man/man1 --release \
+        --python=python2 \
+        --disable-ffmpeg_static --enable-libav \
+        --disable-libx264_static --enable-libx264 \
         --disable-libx265_static --enable-libx265 \
-        --disable-libmfx_static \
+        --disable-libvpx_static \
+        --disable-libtheora_static \
+        --disable-libvorbis_static \
+        --disable-libfdkaac_static \
+        --disable-libmfx_static --disable-qsv \
+        --disable-nvenc \
         --disable-hdhomerun_static
     make
 }
@@ -53,6 +64,7 @@ build() {
 package() {
     cd "${srcdir}/${_gitname}"
     make DESTDIR="$pkgdir/" install
-    install -D -m 644 "$srcdir/tvheadend.service" "$pkgdir/usr/lib/systemd/system/tvheadend.service"
+    install -D -m 644 "$srcdir/tvheadend.service" \
+        "$pkgdir/usr/lib/systemd/system/tvheadend.service"
 }
 
