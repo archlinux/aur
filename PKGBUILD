@@ -2,7 +2,7 @@
 
 pkgname=yarp
 pkgver=2.3.64
-pkgrel=2
+pkgrel=3
 pkgdesc='Yet Another Robot Platform'
 arch=('x86_64' 'i686')
 url="http://www.yarp.it"
@@ -22,12 +22,11 @@ prepare() {
 build() {
 	mkdir -p "$srcdir/yarp-$pkgver/build"
 	cd "$srcdir/yarp-$pkgver/build"
-	cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCREATE_GUIS=ON -DCREATE_LIB_MATH=ON
+	cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=/usr/lib -DCREATE_GUIS=ON -DCREATE_LIB_MATH=ON
 	make
 }
 
 package() {
 	cd "$srcdir/yarp-$pkgver/build"
-	mv lib64 lib
 	make DESTDIR="${pkgdir}" install
 }

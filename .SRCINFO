@@ -1,7 +1,7 @@
 pkgbase = yarp
 	pkgdesc = Yet Another Robot Platform
 	pkgver = 2.3.64
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.yarp.it
 	arch = x86_64
 	arch = i686
