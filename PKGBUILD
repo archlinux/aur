@@ -24,6 +24,6 @@ package() {
 
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  mkdir -p "${pkgdir}/opt/textadept/modules/rust"
-	cp -r "." "${pkgdir}/opt/textadept/modules/rust"
+  mkdir -p "${pkgdir}/usr/share/textadept/modules/rust"
+	cp -r "." "${pkgdir}/usr/share/textadept/modules/rust"
 }
