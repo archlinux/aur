@@ -19,7 +19,8 @@ post_upgrade() {
 }
 
 post_remove() {
-    userdel -rf spearmint > /dev/null 2>&1
+    #userdel -rf spearmint > /dev/null 2>&1
+    userdel spearmint > /dev/null 2>&1
     if egrep -q '^games:.*:$' /etc/group;
     then
       groupdel games
