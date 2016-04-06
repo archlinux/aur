@@ -18,7 +18,7 @@ build() {
 
 package() {
   cd ${srcdir}/Crypt-DES_EDE3-$pkgver
-  make pure_install doc_install DESTDIR=${srcdir}/${pkgname} || return 1
-  find $startdir/pkg -name '.packlist' -delete
-  find $startdir/pkg -name '*.pod' -delete
+  make pure_install doc_install DESTDIR=${pkgdir} || return 1
+  find ${pkgdir} -name '.packlist' -delete
+  find ${pkgdir} -name '*.pod' -delete
 }
