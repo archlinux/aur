@@ -1,6 +1,6 @@
 pkgbase = safir-sdk-core
 	pkgdesc = Safir SDK Core is a middleware and platform for creation of distributed soft real-time systems. It is Scalable, Reliable, Portable, and last but not least, it is Open!
-	pkgver = 6.0.1
+	pkgver = 6.1.1
 	pkgrel = 1
 	url = http://www.safirsdkcore.com
 	install = install
@@ -20,13 +20,13 @@ pkgbase = safir-sdk-core
 	depends = python
 	depends = mono
 	depends = java-environment>=6
-	depends = google-breakpad-svn
+	depends = google-breakpad-git
 	backup = etc/safir-sdk-core/typesystem.ini
 	backup = etc/safir-sdk-core/logging.ini
 	backup = etc/safir-sdk-core/locations.ini
-	source = https://github.com/SafirSDK/safir-sdk-core/archive/6.0.1.tar.gz
+	source = https://github.com/SafirSDK/safir-sdk-core/archive/6.1.1.tar.gz
 	source = safir-sdk-core.tmpfiles
-	sha1sums = 29d1616fdd963301b3b4ec7ec972d78d8d0d429d
+	sha1sums = fa8af3019c3cff096e815cad4462ae32a55718d1
 	sha1sums = b2ef06ef3614b2f7243556cb8a28e4856e0c9e7b
 
 pkgname = safir-sdk-core
