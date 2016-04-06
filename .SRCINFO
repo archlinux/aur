@@ -1,6 +1,6 @@
 pkgbase = micropsi2
 	pkgver = 0.7a5
-	pkgrel = 0
+	pkgrel = 1
 	url = http://www.micropsi.com/
 	arch = any
 	license = unknown

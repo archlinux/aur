@@ -1,7 +1,7 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname=micropsi2
 pkgver=0.7a5
-pkgrel=0
+pkgrel=1
 pkgdesc=""
 url="http://www.micropsi.com/"
 arch=('any')
@@ -11,8 +11,8 @@ md5sums=('e38ef506522949b3436b4c8138bcab8c')
  
 package() {
     mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/bin" "${pkgdir}/usr/share/licenses/micropsi" 
-    cp -R "${srcdir}/micropsi2-0.6-alpha4" "${pkgdir}/opt/"
-    mv "${pkgdir}/opt/micropsi2-0.6-alpha4" "${pkgdir}/opt/micropsi"
+    cp -R "${srcdir}/micropsi2-0.7-alpha5" "${pkgdir}/opt/"
+    mv "${pkgdir}/opt/micropsi2-0.7-alpha5" "${pkgdir}/opt/micropsi"
     #ln -s /opt/micropsi/start_micropsi_server.py "${pkgdir}/usr/bin/micropsi-server"
     mkdir -m777 "${pkgdir}/opt/micropsi/resources"
 
