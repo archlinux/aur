@@ -1,7 +1,7 @@
 pkgbase = vpnc-juniper-git
 	pkgdesc = VPNC With Juniper patchset
 	pkgver = 0.5.3r550jnpr1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ndpgroup/vpnc
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = vpnc-juniper-git
 	provides = vpnc
 	conflicts = vpnc
 	backup = etc/vpnc/default.conf
-	source = vpnc-juniper-git::git+https://github.com/ndpgroup/vpnc.git
+	source = vpnc-juniper-git::git+https://github.com/ndpgroup/vpnc.git#branch=master
 	source = vpnc-scripts::git://git.infradead.org/users/dwmw2/vpnc-scripts.git#commit=df5808b
 	source = vpnc.conf
 	source = vpnc-juniper.conf
