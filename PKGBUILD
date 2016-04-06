@@ -1,5 +1,5 @@
 # Maintainer: brent s. <bts (AT) square-r00t [dot] net>
-validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
+validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 pkgname=libyuv-git
 _pkgname=libyuv
 pkgver=r1445.0735245
