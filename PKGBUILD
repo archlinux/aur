@@ -6,7 +6,7 @@
 
 pkgname=tvheadend-git
 _gitname='tvheadend-git'
-pkgver=4.1.r1830.g596f711
+pkgver=4.1.r1834.g957b835
 pkgrel=1
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -54,7 +54,7 @@ build() {
         --disable-libmfx_static --disable-qsv \
         --disable-nvenc \
         --disable-hdhomerun_static
-    PYTHONIOENCODING="UTF-8" make
+    make
 }
 
 package() {
