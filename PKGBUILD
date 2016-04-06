@@ -26,7 +26,7 @@ url="http://www.jetbrains.com/idea/"
 license=('Apache2')
 depends=('java-environment' 'giflib' 'libxtst')
 makedepends=('wget')
-if [ ${_nojdkrelease} = "true" ] && [ -n ${_use_no_jdk_archive} ]; then
+if [ "${_nojdkrelease}" = "true" ] && [ -n "${_use_no_jdk_archive}" ]; then
   source=("https://download.jetbrains.com/idea/ideaIC-${_veryear}.${_verrelease}.${_verextra}-no-jdk.tar.gz")
   sha256sums=($(wget -q "${source}.sha256" && cat "ideaIC-${_veryear}.${_verrelease}.${_verextra}-no-jdk.tar.gz.sha256" | cut -f1 -d" "))
 else
@@ -42,7 +42,8 @@ package() {
         rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
         rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
     fi
-    if [ ${_nojdkrelease} = "false" ] && [ -n ${_use_no_jdk_archive} ]; then
+    if [ "${_nojdkrelease}" = "false" ] && [ -n "${_use_no_jdk_archive}" ]; then
+      msg "Removing bundled JRE..."
       rm -rf "${pkgdir}/opt/${pkgname}/jre"
     fi
 (
