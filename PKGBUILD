@@ -5,10 +5,9 @@
 
 pkgname=gcc-gcj
 pkgver=5.3.0
-_pkgver=6
+pkgrel=6
 _islver=0.14.1
 _cloogver=0.18.3
-pkgrel=1
 pkgdesc="The GNU Compiler for Java"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
