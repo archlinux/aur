@@ -1,0 +1,29 @@
+pkgbase = vpnc-juniper-git
+	pkgdesc = VPNC With Juniper patchset
+	pkgver = 0.5.3r550jnpr1
+	pkgrel = 2
+	url = https://github.com/ndpgroup/vpnc
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = libgcrypt
+	depends = openssl
+	depends = iproute2
+	optdepends = openresolv: Let vpnc manage resolv.conf
+	provides = vpnc
+	conflicts = vpnc
+	backup = etc/vpnc/default.conf
+	source = vpnc-juniper-git::git+https://github.com/ndpgroup/vpnc.git
+	source = vpnc-scripts::git://git.infradead.org/users/dwmw2/vpnc-scripts.git#commit=df5808b
+	source = vpnc.conf
+	source = vpnc-juniper.conf
+	source = vpnc@.service
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = a3f4e0cc682f437e310a1c86ae198e45
+	md5sums = 804ffae88091bc9795b2ef6cffbd7c80
+	md5sums = 09cfded435c43dd2adb5a8863bd74cfc
+
+pkgname = vpnc-juniper-git
+

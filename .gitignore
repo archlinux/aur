@@ -1,0 +1,10 @@
+#Sources
+vpnc-juniper-git
+vpnc-scripts
+src/
+
+#Builds
+pkg/
+
+#Packages
+*.pkg.tar.xz
