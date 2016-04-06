@@ -3,7 +3,7 @@
 pkgname=ricin-git
 _pkgname=Ricin
 _submodule=tox-vapi
-pkgver=0.467.11d69a5
+pkgver=0.537.628494f
 pkgrel=1
 pkgdesc="Lightweight and Fully-Hackable Tox client powered by Vala & Gtk3"
 url="https://github.com/RicinApp/Ricin"
@@ -39,7 +39,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    mkdir build > /dev/null
+    mkdir build || true
     if [ -f "/usr/bin/meson" ]; then
         meson . build
     else
