@@ -1,11 +1,12 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
 # Past contributor: Andreas Schrafl <aschrafl@jetnet.ch>
 # based on the work of Jaroslav Lichtblau <tu@dragonlord.cz>
 # based on the work of KyAnh, http://kyanh.net/ <xkyanh@gmail.com>
 
 pkgname=boxbackup-client
 pkgver=0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source, completely automatic on-line backup system for UNIX."
 arch=('i686' 'x86_64')
 url="http://boxbackup.org"
@@ -14,8 +15,8 @@ depends=('openssl' 'perl' 'zlib')
 backup=('etc/boxbackup/bbstored.conf')
 source=(https://github.com/boxbackup/boxbackup/archive/${pkgver}.tar.gz bbclient.service)
 
-md5sums=('268bec094ab71d491de497e766c45c87'
-         '3ccf31e2cc3027b9243cd8d790ad3170')
+sha512sums=('fed06f379c03ab73e884639f90f926050e07df85a5de6ee22a109210267d469e345110e28bcc5b1c78103301cefbf74279e13c720ca28751340b2609122d84af'
+         '88c9dfc022fa3b1716e74df7f26a29033f00734aa9d025b650871082ea1da0575aa03eb04f7027bdabe6c10be01feb9e528f6baaa33705f4bd74ef7422bf8779')
 
 build() {
 	export MAKEFLAGS="-j1"
