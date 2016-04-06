@@ -1,8 +1,9 @@
 # Maintainer: brent s. <bts (at) square-r00t (dot) net>
+validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
 
 pkgname=swatd-git
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="A daemon for running scripts when a sensor is triggered"
 arch=('any')
 url="https://github.com/defuse/swatd"
@@ -11,8 +12,8 @@ depends=('')
 makedepends=('git')
 source=('git+https://github.com/defuse/swatd.git'
 	'swatd.service')
-md5sums=('SKIP'
-	'719ef9b8911054561f157475c117c649')
+sha512sums=('SKIP'
+	'5b7822403169ebd148316ce1ca5fa0f87ee0551189f077890812c28a1eac6df934a721a89b190aeb1896fa406452fda067682d258264fbfb8931fd892afd9410')
 
 build() {
 	cd "${srcdir}"/swatd
