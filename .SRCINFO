@@ -1,0 +1,20 @@
+pkgbase = zerodb-git
+	pkgdesc = An end-to-end encrypted database protocol client
+	pkgver = r384.2963885
+	pkgrel = 1
+	url = http://www.zerodb.io/
+	arch = any
+	license = AGPL
+	source = zerodb::git+https://github.com/zero-db/zerodb#branch=master
+	md5sums = SKIP
+
+pkgname = python-zerodb-git
+	depends = python,
+	depends = python-setuptools
+	depends = python-transaction
+
+pkgname = python2-zerodb-git
+	depends = python2,
+	depends = python2-setuptools
+	depends = python2-transaction
+
