@@ -3,7 +3,7 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Matthew Bowra-Dean <matthew@ijw.co.nz>
 pkgname=openra-git
-pkgver=playtest.2015.09.19.git
+pkgver=DEV.20151224
 pkgrel=1
 pkgdesc="An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL"
 arch=('any')
@@ -23,9 +23,11 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/OpenRA"
-  
-  gitdate="$( git log -1 --format=%ai | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/ /\n/g' | head -1 )"
-  echo "playtest.$gitdate.git"
+
+  #git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null || echo git-`git rev-parse --short HEAD` | cut 'release-' ''
+  git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null | sed 's/release-/DEV./'''
+  #gitdate="$( git log -1 --format=%ai | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/ /\n/g' | head -1 )"
+  #echo "playtest.$gitdate.git"
 }
 
 
@@ -41,6 +43,7 @@ build() {
   make dependencies
   make core
   make tools
+  #make version
 }
 
 package() {
