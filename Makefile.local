@@ -1,0 +1,40 @@
+PLATFORM=linux
+export PLATFORM
+
+COMPILE_ARCH=%%_ARCH%%
+
+ARCH=%%_ARCH%%
+export ARCH
+
+CROSS_COMPILING=0
+
+export CROSS_COMPILING
+
+# If we want to change the executables' names, dis where we do it
+#ifndef CLIENTBIN
+#CLIENTBIN=spearmint
+#endif
+#ifndef SERVERBIN
+#SERVERBIN=spearmint-server
+#endif
+
+COPYDIR="%%_SRCDIR%%/opt/quake3"
+
+COPYBINDIR=$(COPYDIR)
+
+TEMPDIR=./tmp
+
+# If we want to use system-supplied libs, we change this to 0.
+# Best to use supplied ones for compatibility with servers, though, I'd think.
+# Plus then I'd have to track them in the makedepends array.
+#USE_INTERNAL_LIBS=1
+#USE_INTERNAL_SPEEX=$(USE_INTERNAL_LIBS)
+#USE_INTERNAL_OGG=$(USE_INTERNAL_LIBS)
+#USE_INTERNAL_VORBIS=$(USE_INTERNAL_LIBS)
+#USE_INTERNAL_OPUS=$(USE_INTERNAL_LIBS)
+#USE_INTERNAL_ZLIB=$(USE_INTERNAL_LIBS)
+#USE_INTERNAL_JPEG=$(USE_INTERNAL_LIBS)
+#USE_INTERNAL_FREETYPE=$(USE_INTERNAL_LIBS)
+#USE_LOCAL_HEADERS=$(USE_INTERNAL_LIBS)
+#USE_RENDERER_DLOPEN=1
+#SERVER_USE_RENDERER_DLOPEN=0

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd /opt/quake3
+/opt/quake3/spearmint-server +set fs_basepath /opt/quake3 +set fs_homepath ${HOME}/.spearmint ${*}

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Quake III: Arena (Spearmint)
+GenericName=Spearmint
+Comment=ioQuake3 - Quake III Open Source Engine (with Spearmint modifications)
+Exec=/usr/bin/spearmint
+Icon=/usr/share/pixmaps/spearmint.png
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Qt;KDE;GNOME;Application;Game;
+
