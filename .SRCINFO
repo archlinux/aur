@@ -1,0 +1,26 @@
+pkgbase = neomutt
+	pkgdesc = Small but powerful text-based mail client
+	pkgver = neomutt.20160404.r0.gfba0ecd
+	pkgrel = 1
+	url = https://github.com/neomutt/neomutt
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gnupg
+	makedepends = libxslt
+	depends = openssl
+	depends = gdbm
+	depends = mime-types
+	depends = libsasl
+	depends = gnupg
+	depends = gpgme
+	depends = libidn
+	depends = krb5
+	provides = mutt
+	conflicts = mutt
+	source = git+https://github.com/neomutt/neomutt.git#branch=neomutt
+	sha256sums = SKIP
+
+pkgname = neomutt
+
