@@ -1,19 +1,20 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
 # Past maintainer: Evan Teitelman <teitelmanevan@gmail.com>
 # Contributor: Pranay Kanwar <pranay.kanwar@gamil.com>
 
 pkgname=sipcrack
 pkgver=0.2
-pkgrel=3
-pkgdesc="SIPcrack is a SIP protocol login cracker."
+pkgrel=4
+pkgdesc="A SIP protocol login cracker."
 license=('custom')
 url="http://www.remote-exploit.org/codes_sipcrack.html"
 arch=(i686 x86_64)
 
 source=(http://ftp.de.debian.org/debian/pool/main/s/sipcrack/${pkgname}_${pkgver}.orig.tar.gz
         LICENSE)
-md5sums=('b9096c8d537fc231c7d74b759831a4c7'
-         '80f9899bc5977147c1a18108e7d39339')
+sha512sums=('406c0f0ac4f23529e2d58f131c571492fd655d27bb466a5b972cef2c7b8ca5d550d6055ad405a4180b711a5f29027a8d47b43a912b4859ef9fccdb85069a1c45'
+         '0195d97500e9a044dde046e6fbc08434d06e56b0e86c9237f4a634ef61bd864d145e9fbe445825d5e748d6c17c021ade0b4f49709c98f2b40f63aa1b96263c6f')
 
 build() {
   cd ${srcdir}/sipcrack-${pkgver}
