@@ -11,7 +11,7 @@ depends=('python' 'python-gobject' 'pygtk' 'ratbagd' 'libratbag')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/libratbag/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('71a471aa083c8017ad6512e59f1644a7356201a63559ec62cbf7c8903bfd7725')
+sha256sums=('d8ec55f1b447daa9712d15a69f645739f7374c5ab8198da2bcd75c4a76cb1375')
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
