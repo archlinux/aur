@@ -1,5 +1,5 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
-validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
+validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Past maintainer: Joris Steyn <jorissteyn@gmail.com>
 # Contributor: TDY <tdy@gmx.com>
 pkgname=iozone
@@ -12,8 +12,10 @@ license=('custom')
 depends=('sh')
 optdepends=('gnuplot: for generating graph reports')
 install=$pkgname.install
-source=(http://www.${pkgname}.org/src/current/${pkgname}${pkgver}.tar)
-sha512sums=('75c75a3a59aedc007222d2e6877631d41afd89f1e6702deca3f7e815a6586ad57bcc1ca55f01656bcfa9f733fda74edcc3fe241c7bef143a9aa60527e6865f59')
+source=("http://www.${pkgname}.org/src/current/${pkgname}${pkgver}.tar"
+	"${pkgname}${pkgver}.tar.sig")
+sha512sums=('75c75a3a59aedc007222d2e6877631d41afd89f1e6702deca3f7e815a6586ad57bcc1ca55f01656bcfa9f733fda74edcc3fe241c7bef143a9aa60527e6865f59'
+            'SKIP')
 
 build() {
   cd "${srcdir}/${pkgname}${pkgver}/src/current"
