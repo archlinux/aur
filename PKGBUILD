@@ -21,7 +21,7 @@ install=$pkgname.install
 _channel=stable
 source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
         "$url/browser/privacy/eula_text.html"
-        'google-chrome-stable')
+        'google-chrome-stable.sh')
 md5sums=('e56d5a0fe4c039abc3df1434a228b460'
          'SKIP'
          '99fa93d5e7fb5d622cef0f9621f3ffa3')
@@ -32,7 +32,7 @@ package() {
 
   msg2 "Moving stuff in place..."
   # Launcher
-  install -m755 google-chrome-$_channel "$pkgdir"/usr/bin/
+  install -m755 google-chrome-$_channel.sh "$pkgdir"/usr/bin/google-chrome-$_channel
 
   # Icons
   for i in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
