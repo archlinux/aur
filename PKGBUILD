@@ -13,7 +13,7 @@
 pkgname=popcorntime-bin
 _pkgname=popcorntime
 pkgver=0.3.9
-pkgrel=5
+pkgrel=6
 pkgdesc="Stream movies and TV shows from torrents"
 arch=('i686' 'x86_64')
 url="https://popcorntime.sh"
