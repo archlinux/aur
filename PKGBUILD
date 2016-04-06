@@ -10,9 +10,8 @@ url="http://linux.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib')
 optdepends=('palemoon-i18n-default: language pack for system active language'
-            'gst-plugins-bad: aac and mp3 audio playback'
-            'gst-plugins-good: h.264 video playback'
-            'gst-libav: h.264 video playback'
+            'gst-plugins-good: h.264 video, aac and mp3 audio playback'
+            'gst-libav: h.264 video, aac and mp3 audio playback'
             'hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification')
 provides=("palemoon=$pkgver")
