@@ -1,7 +1,7 @@
 # Maintainer: Tyler Langlois <ty |at| tjll |dot| net>
 
 pkgname=topbeat
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='An open source server monitoring agent that stores metrics in Elasticsearch'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -15,7 +15,7 @@ provides=("$pkgname")
 conflicts=("$pkgname")
 source=("https://github.com/elastic/beats/archive/v$pkgver/beats-$pkgver.tar.gz"
         "$pkgname.service")
-sha256sums=('2b664802183f771eb13c80b8d19e16122580be64a501476ba270917964d5b65e'
+sha256sums=('02353f1ccce61d104c381256ea96cbe51a0318a860277d409d6ed36fa22d81ae'
             'ac768b039c699c63a3cda17518f3a2ec0481dff23e6366f6fb452c819bd5825b')
 
 prepare() {
