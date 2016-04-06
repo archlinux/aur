@@ -3,12 +3,12 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Hongbin Ma <mathmhb@gmail.com>
 pkgname=cct
 pkgver=1.44
 pkgrel=1
 epoch=
-pkgdesc="CCT: "
+pkgdesc="CCT: A Chinese Characters Typesetting System for LaTeX"
 arch=(any)
 url=""
 license=('GPL')
