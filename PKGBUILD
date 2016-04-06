@@ -1,9 +1,9 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
-validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
+validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=storcli
 pkgver=1.15.12
-pkgrel=4
+pkgrel=5
 pkgdesc="CLI program for LSI MegaRAID cards, also works with some Dell PERC RAID cards (successor to megaraid-cli)"
 arch=('i686' 'x86_64')
 url="https://www.thomas-krenn.com/en/wiki/StorCLI"
@@ -17,14 +17,17 @@ then
   _arch='i386'
   _bits=''
 fi
-source=("http://archive.thomas-krenn.com/packages/pool/optional/s/storcli/storcli_${pkgver}_${_arch}.deb")
-if [[ "${_arch}" == "amd64" ]];
-then
-  sha512sums=('f3a18bbcde3dae2bddb1bac3edbdbe0064574e983bbc6bf9751e79abd7163de64d4d759fa4298f4559676e4fae2a0ad40118fef4968ea205086b5aca8fa1160b')
-elif [[ "${_arch}" == "i386" ]];
-then
-  sha512sums=('61fb9fcf463c7a89e0553beade97e5aa193e83d1a561558302506124ae9497de121acd2f0484b68ff811accf4bfd2f2aaad26156e5a3073908e5c50c96428cf5')
-fi
+source_x86_64=("http://archive.thomas-krenn.com/packages/pool/optional/s/${pkgname}/${pkgname}_${pkgver}_amd64.deb"
+		"${pkgname}_${pkgver}_amd64.deb.sig")
+source_i686=("http://archive.thomas-krenn.com/packages/pool/optional/s/${pkgname}/${pkgname}_${pkgver}_i386.deb"
+		"${pkgname}_${pkgver}_i386.deb.sig")
+
+
+md5sums_i686=('031e910733b7861749d27968a7d452de'
+              'SKIP')
+md5sums_x86_64=('a899d70f8f8d106db70c7188a9edeae7'
+                'SKIP')
+
 provides=('storcli')
 conflicts=('megaraid-cli')
 
