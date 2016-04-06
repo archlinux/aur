@@ -1,9 +1,10 @@
 # Maintainer: Konstantin Shalygin <k0ste@cn.ru>
+# Contributor: Konstantin Shalygin <k0ste@cn.ru>
 
 pkgname="firefox-extension-adblock-plus"
 pkgver='2.7.2'
 pkgrel='2'
-pkgdesc='Adblock Plus blocks all annoying ads, and supports websites by not blocking unobtrusive ads by default (configurable).'
+pkgdesc='Adblock Plus extension. This is signed package.'
 arch=('any')
 url="https://addons.mozilla.org/en-US/firefox/addon/adblock-plus"
 license=('GPL')
