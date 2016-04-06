@@ -76,6 +76,7 @@ package_libappindicator-gtk3() {
 }
 
 package_libappindicator-sharp() {
+    depends=('gtk-sharp-2' 'libappindicator-gtk2')
     cd libappindicator-${pkgver}
 
     make -j1 -C bindings/mono DESTDIR="${pkgdir}" install
