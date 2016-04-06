@@ -3,18 +3,16 @@
 
 pkgname=palemoon-atom-bin
 pkgver=26.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source web browser based on Firefox focusing on efficiency - i686 Intel Atom optimised version"
 arch=('i686')
 url="http://linux.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib')
 optdepends=('palemoon-i18n-default: language pack for system active language'
-            'gstreamer0.10-base-plugins: vorbis decoding, ogg demuxing'
-            'gstreamer0.10-good-plugins: webm and mp4 demuxing'
-            'gstreamer0.10-bad-plugins: aac, vp8 and opus decoding'
-            'gstreamer0.10-ugly-plugins: h.264 and mp3 decoding'
-            'gstreamer0.10-ffmpeg: h.264 decoding'
+            'gst-plugins-bad: aac and mp3 audio playback'
+            'gst-plugins-good: h.264 video playback'
+            'gst-libav: h.264 video playback'
             'hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification')
 provides=("palemoon=$pkgver")
