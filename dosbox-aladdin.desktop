@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Aladdin
+Comment=Aladdin - old DOS game
+Exec=/usr/bin/dosbox -conf /usr/local/games/dosbox-aladdin/dosbox-aladdin.conf
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/dosbox-aladdin.png
+Encoding=UTF-8
+Categories=GNOME;GTK;Game;

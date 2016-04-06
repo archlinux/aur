@@ -1,0 +1,21 @@
+pkgbase = dosbox-aladdin
+	pkgdesc = Aladdin - old DOS game
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.bestoldgames.net/eng/
+	arch = any
+	license = Abandonware
+	depends = dosbox
+	depends = sdl
+	depends = unzip
+	source = http://www.bestoldgames.net/download/bgames/aladdin.zip
+	source = dosbox-aladdin.png
+	source = dosbox-aladdin.desktop
+	source = dosbox-aladdin.conf
+	md5sums = a8f4a9286bab7cb02faaefd8ed10adca
+	md5sums = d197130e15675233c5755b4b9233733a
+	md5sums = 6fcfce3b346ff1744d83ac232be2ccb7
+	md5sums = d22100e58e0026d1e66b310a101cb8a3
+
+pkgname = dosbox-aladdin
+
