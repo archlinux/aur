@@ -8,6 +8,7 @@ _pkgver=2016.1.1
 _eap="False"
 pkgver="${_pkgver}.${_buildver}"
 pkgrel=1
+epoch=1
 pkgdesc="Powerful Python and Django IDE, Early Access Program (EAP) build. Professional edition."
 arch=('any')
 options=('!strip')
