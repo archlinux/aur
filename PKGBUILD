@@ -1,12 +1,12 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
 # Contributor: frownlee <florez.brownlee@gmail.com>
 
 pkgname=android-ndk
-pkgver=r10e
+pkgver=r11
 pkgrel=1
 pkgdesc='Android C/C++ developer kit'
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url='https://developer.android.com/ndk/'
 license=('GPL' 'LGPL' 'custom')
 options=('!strip' 'staticlibs')
@@ -14,16 +14,14 @@ backup=('etc/profile.d/android-ndk.sh')
 install="$pkgname.install"
 provides=('android-ndk')
 replaces=('android-ndk32' 'android-ndk64')
-source=('android-ndk.sh')
-source_x86_64=("${pkgname}_x86_64.bin::http://dl.google.com/android/ndk/${pkgname}-$pkgver-linux-x86_64.bin")
-source_i686=("${pkgname}_i686.bin::http://dl.google.com/android/ndk/${pkgname}-$pkgver-linux-x86.bin")
-md5sums=('372f74400bfa061642c4b4175f2ddb48')
-md5sums_x86_64=('19af543b068bdb7f27787c2bc69aba7f')
-md5sums_i686=('c3edd3273029da1cbd2f62c48249e978')
+depends=('ncurses5-compat-libs')
+source=('android-ndk.sh' "http://dl.google.com/android/repository/${pkgname}-$pkgver-linux-x86_64.zip")
+sha256sums=('5bc58ccd7e7de03c9656ca8f13fb9bf9dff2eeee31a2670ce04a4b97be73dc95'
+            'bfc80b786eb0cef271089602399c91979e9ba5727247c3dc6548cc21c6052de0')
 
 prepare() {
-  chmod +x ${pkgname}_$CARCH.bin
-  ./${pkgname}_$CARCH.bin
+  # Weirdest directory name, inside a zip file. What were they smoking?
+  mv "$pkgname-$pkgver-linux-x86_64.tar.bz2/" "$pkgname-$pkgver"
 }
 
 package() {
