@@ -1,5 +1,5 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
-validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
+validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Past maintainer: Fina Miñano <cicely@algofacil.info>
 # Contributor: Fina Miñano <cicely@algofacil.info>
 pkgname=mindi
@@ -15,8 +15,10 @@ depends=('bzip2>=0.9' 'udev>=173' 'cdrkit' 'ncurses' 'binutils' 'gawk' 'dosfstoo
 # Not on all systems
 #conflicts=(bonnie++)
 
-source=("ftp://ftp.mondorescue.org/src/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('397f25484d38eb465bbb074d5e75cb0aff0c32ebad0ec28e002edfd915a8593c36f1ae4b7aa7038bf4d6d1c998e175fc78bea51b55886d0755dcecb3393326bf')
+source=("ftp://ftp.mondorescue.org/src/${pkgname}-${pkgver}.tar.gz"
+	"${pkgname}-${pkgver}.tar.gz.sig")
+sha512sums=('397f25484d38eb465bbb074d5e75cb0aff0c32ebad0ec28e002edfd915a8593c36f1ae4b7aa7038bf4d6d1c998e175fc78bea51b55886d0755dcecb3393326bf'
+            'SKIP')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
