@@ -4,13 +4,13 @@
 
 pkgname=libserial
 pkgver=0.6.0rc2
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ library to access serial ports like standard C++ iostream objects"
 arch=('i686' 'x86_64')
-url="http://$pkgname.sourceforge.net/"
+url="https://github.com/crazyewulf/libserial"
 license=('GPL')
 depends=('gcc-libs')
-makedepends=('python-sip')
+makedepends=('python2-sip')
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
 sha256sums=('35ee29eb1369d52ffb8658237577692f991eb508320d0abbb71c53e6494a1c23')
 
@@ -22,6 +22,9 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
   ./configure --prefix=/usr
+  cd sip
+  python2 configure.py
+  cd ..
   make
 }
 
