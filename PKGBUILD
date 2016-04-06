@@ -13,5 +13,5 @@ sha256sums=('97492e447fa5135cf3f6eead92a8c5f97328fcb68634d4e21dc00dbdcd90337d')
 
 package() {
     cd "$srcdir"
-    install -D UseLATEX.cmake ${pkgdir}/usr/share/cmake-3.3/Modules/UseLATEX.cmake || return 1
+    install -D UseLATEX.cmake ${pkgdir}/usr/share/cmake-3.5/Modules/UseLATEX.cmake || return 1
 }
