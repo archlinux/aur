@@ -4,7 +4,7 @@
 # Contributor: Andrew Simmons <andrew.simmons@gmail.com>
 
 pkgname=thunar-git
-pkgver=thunar.1.6.10.r118.g82c6060
+pkgver=1.6.10.r118.g82c6060
 pkgrel=1
 pkgdesc='file manager for xfce'
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd thunar
-    git describe --long | sed -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
+    git describe --long | sed -e 's/^thunar.//' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
 }
 
 build() {
