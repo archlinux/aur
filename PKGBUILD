@@ -1,5 +1,5 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
-validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
+validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Past maintainer: Max Roder <maxroder@web.de>
 
 pkgname='wpscrack'
@@ -10,8 +10,10 @@ url='http://sviehb.wordpress.com'
 arch=('i686' 'x86_64')
 license=('unknown')
 depends=('pycrypto' 'scapy')
-source=("http://dl.dropbox.com/u/22108808/${pkgname}.zip")
-sha512sums=('1b007222463103eb66fbf345b2244371d983d91129e893b668062c2e41cdb3cdec7386f3ff5a980e18e00b300486cf3e6a50070643719373029f106e95bb7ba1')
+source=("http://dl.dropbox.com/u/22108808/${pkgname}.zip"
+	"${pkgname}.zip.sig")
+sha512sums=('1b007222463103eb66fbf345b2244371d983d91129e893b668062c2e41cdb3cdec7386f3ff5a980e18e00b300486cf3e6a50070643719373029f106e95bb7ba1'
+            'SKIP')
 
 package() {
 	cd ${srcdir}
