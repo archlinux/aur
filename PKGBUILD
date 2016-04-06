@@ -2,7 +2,7 @@
 
 pkgname=topbeat-bin
 _pkgbase=${pkgname%%-bin}
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='An open source server monitoring agent that stores metrics in Elasticsearch (precompiled)'
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ sha256sums=('ac768b039c699c63a3cda17518f3a2ec0481dff23e6366f6fb452c819bd5825b')
 
 source_i686=("https://download.elastic.co/beats/$_pkgbase/$_pkgbase-$pkgver-i686.tar.gz")
 source_x86_64=("https://download.elastic.co/beats/$_pkgbase/$_pkgbase-$pkgver-x86_64.tar.gz")
-sha256sums_i686=('c75d9e16ea8308cec9adc3075ada608c01e3ee02a0849f008ca66db7d54e6d4d')
-sha256sums_x86_64=('03017d96a51d47dd4eb7136cf4c2541d3cfed7dd27344bf12bae7949a5dad17e')
+sha256sums_i686=('965a4c914b5cb5c652919b8c5b228b060db9c35f85e75171400e96a2b8738848')
+sha256sums_x86_64=('45cb127c891c6b5e41f18bd95647e16000e837c8811bebcec5a8d1a7bb8b6063')
 
 package() {
     cd "$srcdir/$_pkgbase-$pkgver-$CARCH"
