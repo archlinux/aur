@@ -1,4 +1,5 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
 
 #TODO: set up permissions (e.g. fortress/{progs,sounds, etc.} to be sticky-bit and writable? that way maybe at least files can be downloaded. create maps dir for all mods too.
 #TODO: change permissions for all .cfg's to 664?
@@ -8,7 +9,7 @@
 
 pkgname=('nquake')
 pkgver=2.3
-pkgrel=8
+pkgrel=9
 pkgdesc="The easiest, quickest, and most popular QuakeWorld client."
 url="http://nquake.sourceforge.net/"
 license=('GPL2' 'Custom:CC0-1.0' '')
@@ -32,13 +33,13 @@ source=("${_nQ_MIRROR}/gpl.zip"
 	"${_nQ_MIRROR}/addon-fortress.zip"
 	"CC0-1.0::https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt")
 
-sha256sums=('fa4e166d06f6af88339448a4beaa9108418168493310242c457c644e7fc1ac00'
-	    '207267e0202bc2ad9f45a34a02f4c353c1ece83c10572188781732eb184e448f'
-	    '6ab154fdefca8bc7e080565ac61d74ccce7cf0599de1bb2f82cf32309d9cc767'
-	    'a3df93400b03e44f6d87c1781f1205fc846d555945c43b81e5381b9df9b8da04'
-	    '029ccc6764fc442a50b6ceac319377f61183060d67bde8f26137c4101862b09d'
-	    '3e2c25baff6cdd58117b663fbd3d8570791e9dc777ebb28da8820f7934a6439d'
-	    'a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499')
+sha512sums=('0a5cd2e2816d535c66b156072f52c4e5bcb6c1b4664d8f0481dce5cf68d3cd69ba24afaf839009a3a95c87812314a9816719c4fbc56ba89baf80676b0432571f'
+	    'b615d791a140631b163d71061aa48e2fd5e9b1fae88335e2a0972eb232d8c7d5a31fc16a137df75c6ce0284cb140bf56c0b52f2f56ecec78b288424c698e186c'
+	    '583704a192eab419da46efd0ac3b98c1ca8d9a6ff785186558929207b517a0cf779b593075d6187ab3cd7bb08711a85fe73436f76fbcd99917a5511aa369a83a'
+	    '693379acc3c0204b810ab31aeaaedbb6d8659fd2140e3874f463bde3af5009a161d76b1dbd2f970e151ebae1f323848a937b8209cf2172c6251578edcad1753b'
+	    '96dca06af3f1044816247596c75876fabb5a7d9585229f43e85552872ef5b4c754a830fd7f83d6107c0e3df62951ee952bb36b5a184b74a8b1870125c3d23dad'
+	    'a15cbd4ccf2a3d87e0ec9f6f6f4546e2a68a0f03a516bac47d0965bc6affaf902669db0824619634dc19698698d40ef72325da33ea2c78437c45bd19bd2c8138'
+	    '1eb4436f8d58766cbe99db97e5e8c0db8a706376afd291c337de1ba7a6b066d3791dc85ad034bdd54ea336bed6e6e8e7a037d8b04b2773c9c7517b9d9921d1fa')
 
 package () {
 ## BASE ##
