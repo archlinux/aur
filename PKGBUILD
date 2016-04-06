@@ -1,5 +1,5 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
-validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
+validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Thanks to Slash's ioquake3-git package (https://aur.archlinux.org/packages/ioquake3-git)
 # for install files and desktop icon, and general guidance (I owe you a beer!).
 
@@ -22,14 +22,28 @@ source=("${pkgname}.tar.xz::https://github.com/zturtleman/${pkgname}/releases/do
 	"spearmint.desktop"
 	"spearmint.service"
 	"spearmint.launcher"
-	"spearmint-server.launcher")
+	"spearmint-server.launcher"
+	"${pkgname}.tar.xz.sig"
+	"${pkgname}.svg.sig"
+	"ioquake3-q3a-${_ioq3v2}.run.sig"
+	"spearmint.desktop.sig"
+	"spearmint.service.sig"
+	"spearmint.launcher.sig"
+	"spearmint-server.launcher.sig")
 sha512sums=('53a3b3b2bb139b9e5ecbd12c5876048dd2b2cffab07acf2db5fd7697f5624af24d503539bfe4a9acf721fdb6886063ff24d848637781f6639550e79f4a1abd26'
-	    'a6991edf1821403be965a40d1534b23b1248c9c6c0aaa23ea7d67e93f03d65610637ac417d6beb9d69c7609249ed68afe90d9a1ce1ad26237dc8e64f072d6d79'
-	    '2ff6eff394119697b1c0a76f9c6d70cec21f90aecd89b72f6459661d04821a799a9c70d80f390b2ae7822d5830e247033a79022cd6d3d1754f7780fadd2d418b'
-	    '0c192c23cc180181f5edee12cd085e78f0cdd2d6e8f18dbd27532b76c36f2b0e731b764119a0a44df90411f94d3b7475bd40ae0d9b8f5bb3867442f93172746b'
-	    'fd75d6633015057c49fdb1cd29dfa16b8b30fd49df2deb0bbbb9da1a5e84179672ee7fee5df6dc57b0e4b6931ab5200f9e6ada5127e57aec5bf29b3e1b020073'
-	    '894a0b07399ea7fcf60c97516e5cf19740693192e896e687fba0aeedee675684d94968e69dc927bdb4a44b4298c82d5b4bdca0cc86e707c21cb44f4f9876aea9'
-	    'c7611bf35ace821dcf5829e729c1b0e2f2cc858f2e8ffb491c94990b72990148a8700c1797d715ee2002b3acc10c599d69fa6bc0059c0f9117f64707b6745445')
+            'a6991edf1821403be965a40d1534b23b1248c9c6c0aaa23ea7d67e93f03d65610637ac417d6beb9d69c7609249ed68afe90d9a1ce1ad26237dc8e64f072d6d79'
+            '2ff6eff394119697b1c0a76f9c6d70cec21f90aecd89b72f6459661d04821a799a9c70d80f390b2ae7822d5830e247033a79022cd6d3d1754f7780fadd2d418b'
+            '0c192c23cc180181f5edee12cd085e78f0cdd2d6e8f18dbd27532b76c36f2b0e731b764119a0a44df90411f94d3b7475bd40ae0d9b8f5bb3867442f93172746b'
+            'fd75d6633015057c49fdb1cd29dfa16b8b30fd49df2deb0bbbb9da1a5e84179672ee7fee5df6dc57b0e4b6931ab5200f9e6ada5127e57aec5bf29b3e1b020073'
+            '894a0b07399ea7fcf60c97516e5cf19740693192e896e687fba0aeedee675684d94968e69dc927bdb4a44b4298c82d5b4bdca0cc86e707c21cb44f4f9876aea9'
+            'c7611bf35ace821dcf5829e729c1b0e2f2cc858f2e8ffb491c94990b72990148a8700c1797d715ee2002b3acc10c599d69fa6bc0059c0f9117f64707b6745445'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
   cd ${srcdir}
