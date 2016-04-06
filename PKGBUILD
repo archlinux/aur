@@ -1,25 +1,26 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
 # Past maintainer: Mauro Andreolini <mauro.andreolini@unimore.it>
 
 pkgname=pack
 _pkgname=PACK
 pkgver=0.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Password Analysis and Cracking Kit"
 url="http://thesprawl.org/projects/pack/"
-arch=('any')
+arch=('i686' 'x86_64')
 license=('unknown')
 depends=('python2' 'aspell' 'aspell-en')
 makedepends=()
-source=("http://thesprawl.org/media/projects/PACK-0.0.4.tar.gz"
+source=("http://thesprawl.org/media/projects/${_pkgname}-${pkgver}.tar.gz"
     "fix-python2-invocation.patch"
     "reorganize-enchant-modules.patch"
     "fix-rulegen-module-refs.patch"
 )
-md5sums=('710963e952e71a889a97624994400219'
-         '0992472aa06bb6b0950f2a8d10c07c70'
-         '29f727b5930aa0bef58e2e16de728e6b'
-         '7d77d5f620af287f829b34b2831114f5')
+sha512sums=('0b134d7119daac50f47134d7e8fd8563934390460cb042a3069f90a473a864cd0488e6bbd535bef8fb727cbe1035ed77abdcb2f94f3078d4de8cfbd0dec638f0'
+	    '2188a1578a15cf4a011346818608fcdab835b468f88ca4bbc93b885ec7d0808da83750b93a1be0c3d19033b66b89007fe6190be687848eb998e0e89c8f6e48d6'
+	    'faf3b17304ffb7820bbe795d8d73c0d84d8ae5e108e2bdcea97584ffbb91c155061f89be859354c9077c6d8eb6d1a7160e7a4a9b98ae7cabcd5e11e90930d63e'
+	    '475506f54d70524b5c1630119aa60e8fd799bf1612ddaad874c129ddd7d3467f2d7b3078c08670c6279653d98d94f85bbbe5831413dc7a9dd03f91bcef8c3a45')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
