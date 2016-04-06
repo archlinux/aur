@@ -1,0 +1,21 @@
+pkgbase = dosbox-arkanoid
+	pkgdesc = Arkanoid - old DOS game
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.bestoldgames.net/eng/
+	arch = any
+	license = Abandonware
+	depends = dosbox
+	depends = sdl
+	depends = unzip
+	source = http://www.bestoldgames.net/download/bgames/arkanoid.zip
+	source = dosbox-arkanoid.png
+	source = dosbox-arkanoid.desktop
+	source = dosbox-arkanoid.conf
+	md5sums = a3575138e6cba82571a06ed5d08138f7
+	md5sums = 8f71a88cf8c2cc903f23de2d93bfc324
+	md5sums = dca66016ddfa02081731929f1e015120
+	md5sums = d5d0e37054fa757de79a289b0e4e7e32
+
+pkgname = dosbox-arkanoid
+

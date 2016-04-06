@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Arkanoid
+Comment=Arkanoid - old DOS game
+Exec=/usr/bin/dosbox -conf /usr/local/games/dosbox-arkanoid/dosbox-arkanoid.conf
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/dosbox-arkanoid.png
+Encoding=UTF-8
+Categories=GNOME;GTK;Game;
