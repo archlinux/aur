@@ -4,8 +4,8 @@
 
 pkgbase=xorg-server-bug865
 pkgname=xorg-server-bug865
-pkgver=1.18.2
-pkgrel=4 # build first with 0.1 and then rebuild it after xf86-input-evdev rebuild
+pkgver=1.18.3
+pkgrel=1 # build first with 0.1 and then rebuild it after xf86-input-evdev rebuild
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('xorg')
@@ -20,30 +20,18 @@ makedepends=('pixman' 'libx11' 'mesa' 'mesa-libgl' 'xf86driproto' 'xcmiscproto' 
 source=(${url}/releases/individual/xserver/xorg-server-${pkgver}.tar.bz2{,.sig}
         xvfb-run
         xvfb-run.1
-        0001-glamor-swizzle-RED-to-0-for-alpha-textures.patch
-        0001-Xext-vidmode-Reduce-verbosity-of-GetModeLine.patch
-        0001-present-Only-requeue-for-next-MSC-after-flip-failure.patch
         freedesktop-bug-865.patch)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
-sha256sums=('022142b07f6477d140dcc915902df326408a53ca3a352426a499f142b25d632d'
+sha256sums=('ea739c22517cdbe2b5f7c0a5fd05fe8a10ac0629003e71c0c7862f4bb60142cd'
             'SKIP'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
             '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
-            '10c66c10f4f71930e2ac3f6e07881e228ca88542af449d2c69c7744ec87335df'
-            '72755a652e72144e3f28c8fa959b4a6df5def838db3cde5077a626e97baab591'
-            '70c84bf1f7cbc818692fb56f57c8b8ef2ea057bc05380b2f797ecba742b7ce31'
             'dad4bbadda03db2fe7046c43d838afd5e41f98c821fdac0908f0f20493caa660')
 
 prepare() {
   cd "xorg-server-${pkgver}"
-  # Fix red tint in Firefox
-  patch -Np1 -i ../0001-glamor-swizzle-RED-to-0-for-alpha-textures.patch
-  # Fix flooding of Xorg log file
-  patch -Np1 -i ../0001-Xext-vidmode-Reduce-verbosity-of-GetModeLine.patch
-  # Fix FS#48549
-  patch -Np1 -i ../0001-present-Only-requeue-for-next-MSC-after-flip-failure.patch
 
   # The patch for freedesktop bug 865
   patch -Np1 -i "${srcdir}/freedesktop-bug-865.patch"
