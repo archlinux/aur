@@ -1,4 +1,5 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer: Marco Pompili <aur@emarcs.org>
+# Contributor: Daniel Nagy <danielnagy at gmx de>
 # Contributor: Danny Coates <dannycoates@gmail.com>
 # Contributor: Danny Coates <dannycoates@gmail.com>
 # Contributor: 3y3 <3y3@bk.ru>
@@ -28,26 +29,24 @@
 # Contributor: strongloop <callback@strongloop.com>
 
 _npmname=node-inspector
-_npmver=0.7.4
-pkgname=nodejs-node-inspector # All lowercase
-pkgver=0.7.4
+pkgname=nodejs-$_npmname
+pkgver=0.12.7
 pkgrel=1
 pkgdesc="Web Inspector based nodeJS debugger"
-arch=(any)
+arch=('any')
 url="http://github.com/node-inspector/node-inspector"
-license=()
-depends=('nodejs' )
-optdepends=()
-source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-noextract=($_npmname-$_npmver.tgz)
-sha1sums=('3d07234f0834e7f1e21a1669eceaa224a7be43f2')
+license=('BSD')
+depends=('nodejs')
+makedepends=('npm')
+source=("http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz")
+noextract=($_npmname-$pkgver.tgz)
+sha256sums=('d56d192191852e9abf6768c9814e3add43c193ce62f8aef786bd327d5a3e3323')
 
 package() {
-  cd "$srcdir"
-  local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p "$_npmdir"
-  cd "$_npmdir"
-  npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+  npm install -g --user root --prefix "$pkgdir"/usr "$srcdir"/$_npmname-$pkgver.tgz
+  rm -r "$pkgdir"/usr/etc
+  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s "../../../lib/node_modules/$_npmname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim:set ts=2 sw=2 et:

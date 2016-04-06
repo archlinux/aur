@@ -1,0 +1,4 @@
+src/
+pkg/
+node-inspector-*
+nodejs-node-inspector-*
