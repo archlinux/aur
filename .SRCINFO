@@ -1,0 +1,13 @@
+pkgbase = trine3-hib
+	pkgdesc = action role-playing platform and puzzle video game. humblebundle version.
+	pkgver = 2015.12.01
+	pkgrel = 1
+	url = https://trine3.com
+	install = trine3.install
+	arch = x86_64
+	license = commercial
+	source = hib://trine3_linux.zip
+	md5sums = 28070d73b2291c30e31b5ef486b9f3ac
+
+pkgname = trine3-hib
+

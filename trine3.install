@@ -1,0 +1,4 @@
+post_install(){
+    echo "Info to optimus users: this game does work better"
+    echo "with primusrun than optirun."
+}
