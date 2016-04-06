@@ -4,7 +4,7 @@
 _pkgname=mailcatcher
 pkgname=ruby-$_pkgname
 pkgver=0.6.1
-pkgrel=10
+pkgrel=11
 pkgdesc='Catches mail and serves it through a dream.'
 arch=('any')
 url="http://$_pkgname.me"
@@ -18,16 +18,16 @@ install="$pkgname.install"
 source=(
   "http://gems.rubyforge.org/gems/$_pkgname-$pkgver.gem"
   "$_pkgname.service"
-  "$_pkgname-http.socket"
+  "$_pkgname-http@.socket"
   "$_pkgname-http.service"
-  "$_pkgname-smtp.socket"
+  "$_pkgname-smtp@.socket"
   "$_pkgname-smtp.service"
 )
 md5sums=('bdeb5656e0931d1b211b52aa0f9e31f5'
          'c6e70c3b5b061fb3e13ad56fea757b01'
-         'e72d4a12219e7f0d52fa6095738ed9d5'
+         '5058d837ddef08507197a1cb17dcab34'
          'a3be575ff001fedc044ba43e6fdd31f7'
-         'd0002eca814fbef980a058303a277634'
+         '354d0e3422ef2f890ad5c598c709372b'
          'be35bfe4c621b7f2ff733e2c21bee54d')
 noextract=("$_pkgname-$pkgver.gem")
 
@@ -45,7 +45,7 @@ package() {
   sed -i '/dependency(%q<thin>/{s/".*"/"~> 1"/}' $_gemspec
 
   # Install systemd units
-  for file in "$_pkgname"{.service,{-http,-smtp}{.service,.socket}}; do
+  for file in "$_pkgname"{.service,{-http,-smtp}{.service,@.socket}}; do
     install -Dm644 "$file" "$pkgdir/usr/lib/systemd/system/$file"
   done
 }

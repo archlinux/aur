@@ -3,7 +3,8 @@ Description=Mailcatcher SMTP Activation Socket
 After=network.target
 
 [Socket]
-ListenStream=25
+ListenStream=%I
+Service=mailcatcher-smtp.service
 
 [Install]
 WantedBy=sockets.target

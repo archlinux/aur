@@ -1,10 +1,10 @@
 post_install() {
-  echo ">>> Start mail catcher at boot by enabling the systemd service unit, mailcatcher.service. (The default SMTP and HTTP ports are 1025 and 1080, respectively.)"
-  echo ">>> Map port 25 (HTTP) and/or port 80 (SMTP) to mail catcher via socket actviation by using mailcatcher-smtp.socket and mailcatcher-http.socket."
+  echo ">>> Start mailcatcher using the mailcatcher.service unit file. (The default SMTP and HTTP ports are 1025 and 1080, respectively.)"
+  echo ">>> Or, socket-activate mailcatcher with another port for either or both using: mailcatcher-smtp@.socket or mailcatcher-http@.socket."
 }
 
 pre_remove() {
-  for unit in mailcatcher{.service,-{http,smtp}.{service,socket}}; do
+  for unit in mailcatcher{.service,-{http,smtp}{.service,@.socket}}; do
     systemctl --quiet is-active $unit && systemctl stop $unit
     systemctl --quiet is-enabled $unit && systemctl disable $unit
   done
