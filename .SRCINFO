@@ -1,15 +1,15 @@
 pkgbase = python-wavefile
 	pkgdesc = Pythonic libsndfile wrapper to read and write audio files.
-	pkgver = 1.4
+	pkgver = 1.5
 	pkgrel = 1
 	url = https://github.com/vokimon/python-wavefile
 	arch = any
 	license = GPL3
-	checkdepends = python-numpy
-	checkdepends = python-pyaudio
 	makedepends = python-setuptools
-	source = https://pypi.python.org/packages/source/w/wavefile/wavefile-1.4.tar.gz
-	md5sums = 4427a9a24536bf759e9e791d4424c6b4
+	depends = python-numpy
+	optdepends = python-pyaudio
+	source = https://pypi.python.org/packages/source/w/wavefile/wavefile-1.5.tar.gz
+	md5sums = b5d71713b4fded3c9350cbf61a51a9a1
 
 pkgname = python-wavefile
 
