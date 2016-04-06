@@ -64,7 +64,7 @@ pkgbase = chromium-snapshot-bin
 	md5sums = db90dcb101891a7285d25f2fbceca752
 	source_i686 = chrome-linux-r382086.zip::http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux/382086/chrome-linux.zip
 	md5sums_i686 = SKIP
-	source_x86_64 = chrome-linux-r382086.zip::http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/382086/chrome-linux.zip
+	source_x86_64 = chrome-linux-r385562.zip::http://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/385562/chrome-linux.zip
 	md5sums_x86_64 = SKIP
 
 pkgname = chromium-snapshot-bin
