@@ -5,7 +5,7 @@
 # or use: $ curl -s https://dl.google.com/linux/chrome/rpm/stable/x86_64/repodata/other.xml.gz | gzip -df | awk -F\" '/pkgid/{ sub(".*-","",$4); print $4": "$10 }'
 
 pkgname=google-chrome-beta
-pkgver=50.0.2661.57
+pkgver=50.0.2661.66
 pkgrel=1
 pkgdesc="An attempt at creating a safer, faster, and more stable browser (Beta Channel)"
 arch=('x86_64')
@@ -21,8 +21,8 @@ install=$pkgname.install
 _channel=beta
 source=("google-chrome-${_channel}_${pkgver}_amd64.deb::https://dl.google.com/linux/direct/google-chrome-${_channel}_current_amd64.deb"
         "$url/browser/privacy/eula_text.html"
-        'google-chrome-beta')
-md5sums=('d3ebb00b2940fa64599b01ca6e3ab5ab'
+        'google-chrome-beta.sh')
+md5sums=('042233dae2f17d4d71ba4c38061bdfd4'
          'SKIP'
          'ca16d5162eed85b1ba4e6b9fc37f9e35')
 
@@ -32,7 +32,7 @@ package() {
 
   msg2 "Moving stuff in place..."
   # Launcher
-  install -m755 google-chrome-$_channel "$pkgdir"/usr/bin/
+  install -m755 google-chrome-$_channel.sh "$pkgdir"/usr/bin/google-chrome-$_channel
 
   # Icons
   for i in 16x16 22x22 24x24 32x32 48x48 64x64 128x128 256x256; do
