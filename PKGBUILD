@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-ess-git
-pkgver=15.09.158.g4a8fe78
+pkgver=15.09.250.g10f63dd
 pkgrel=1
 pkgdesc="Emacs Speaks Statistics: A Universal Interface for \
  Statistical Analysis - git-version"
@@ -18,15 +18,18 @@ md5sums=('SKIP')
 _gitname="emacs-ess"
 
 pkgver() {
-  cd "$srcdir/$_gitname"
+  cd "$_gitname"
   git describe --tags | tr '-' '.' |cut -c2-
 }
+
 prepare() {
-  cd "$srcdir/$_gitname/doc"
-  [ -h texinfo.tex ] || ln -s /usr/share/automake-1.15/texinfo.tex texinfo.tex
-  cd ../lisp
-  sed -i '67s+juliamode.el++' Makefile
+  cd "$_gitname/lisp"
+  sed -i '67s+julia-mode.el++' Makefile
   cp /usr/share/emacs/site-lisp/julia-mode.el .
+  cd ../doc
+  sed -i 's+ text html pdf++' Makefile
+  sed -i 's+install-other-docs++' Makefile
+  sed -i '296i@end itemize' ess.texi
 }
 
 build() {
