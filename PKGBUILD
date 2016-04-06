@@ -2,11 +2,9 @@
 # Contributor: Daniel Nagy <danielnagy at gmx de>
 # Contributor: Thanh Ha <thanh.ha at alumni.carleton dot ca>
 # Contributor: Marcel Huber <marcelhuberfoo at gmail dot com>
-#
-# Repository: https://github.com/zxiiro/arch-gerrit
 
 pkgname=gerrit
-pkgver=2.12.1
+pkgver=2.12.2
 pkgrel=1
 #epoch=
 pkgdesc="A web-based code review tool built on top of the git version control system"
@@ -28,7 +26,7 @@ source=(http://gerrit-releases.storage.googleapis.com/gerrit-$pkgver.war
         gerrit.conf
         gerrit.systemd)
 noextract=(gerrit.war)
-sha256sums=('13873f45fb41ad3d288947ea203203c2db395c31766393be98d53a51cd0ac6de'
+sha256sums=('ff28bd84a078534b4fd1bf2e3e8b38cde5437c28e25c1e0a33dbcdf2182bbff7'
             '35becf2754e3779c750b2889909349160c2b0584ec201f6cfb5cf2c42e6fc598'
             'be1d205c6a0f3b24aad3c385f8188c64bfa3a9799ecf8ce5e089149af991a645')
 package() {

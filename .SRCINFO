@@ -1,6 +1,6 @@
 pkgbase = gerrit
 	pkgdesc = A web-based code review tool built on top of the git version control system
-	pkgver = 2.12.1
+	pkgver = 2.12.2
 	pkgrel = 1
 	url = https://www.gerritcodereview.com/
 	install = gerrit.install
@@ -12,10 +12,10 @@ pkgbase = gerrit
 	optdepends = bcprov: Java cryptography APIs (Bouncy Castle)
 	noextract = gerrit.war
 	backup = etc/default/gerritcodereview
-	source = http://gerrit-releases.storage.googleapis.com/gerrit-2.12.1.war
+	source = http://gerrit-releases.storage.googleapis.com/gerrit-2.12.2.war
 	source = gerrit.conf
 	source = gerrit.systemd
-	sha256sums = 13873f45fb41ad3d288947ea203203c2db395c31766393be98d53a51cd0ac6de
+	sha256sums = ff28bd84a078534b4fd1bf2e3e8b38cde5437c28e25c1e0a33dbcdf2182bbff7
 	sha256sums = 35becf2754e3779c750b2889909349160c2b0584ec201f6cfb5cf2c42e6fc598
 	sha256sums = be1d205c6a0f3b24aad3c385f8188c64bfa3a9799ecf8ce5e089149af991a645
 
