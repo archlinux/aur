@@ -5,7 +5,7 @@
 # Report all package issues to `https://github.com/SShrike/pkgbuilds`
 
 pkgname=gtkd-git
-pkgver=r1258.4b67777
+pkgver=3.3.1.r1.7a4b7d7
 pkgrel=1
 pkgdesc='D bindings for GTK+ and related libraries.'
 url='http://gtkd.org/'
@@ -23,7 +23,7 @@ md5sums=('SKIP')
 pkgver() {
   cd 'GtkD'
 
-  echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
