@@ -1,5 +1,5 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
-validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
+validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Past Maintainer: bslackr <brendan at vastactive dot com>
 
 pkgname=sucrack
@@ -9,8 +9,10 @@ pkgdesc='a multi-threaded Linux/UNIX tool for brute-force cracking local user ac
 url='http://labs.portcullis.co.uk/application/sucrack'
 license=('custom')
 arch=('i686' 'x86_64')
-source=("http://labs.portcullis.co.uk/download/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('6ea47a542a652ce416af9f8dece569eec6662a361860a150291e1f6c23ff0cc8288b573aee047624c4c2c32f51aa01c6ce88177a0f41353b17c891d905085a41')
+source=("http://labs.portcullis.co.uk/download/${pkgname}-${pkgver}.tar.gz"
+	"${pkgname}-${pkgver}.tar.gz.sig")
+sha512sums=('6ea47a542a652ce416af9f8dece569eec6662a361860a150291e1f6c23ff0cc8288b573aee047624c4c2c32f51aa01c6ce88177a0f41353b17c891d905085a41'
+            'SKIP')
 
 build() {
   unset LDFLAGS
