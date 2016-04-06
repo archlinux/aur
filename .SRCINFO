@@ -15,13 +15,18 @@ pkgbase = openscap
 	depends = libxslt
 	depends = libldap
 	depends = pcre
-	depends = perl-xml-parser
-	depends = perl
 	depends = bzip2
 	depends = procps-ng
 	depends = gconf
+	depends = perl
+	depends = perl-xml-parser
+	depends = perl-xml-xpath
 	source = https://github.com/OpenSCAP/openscap/releases/download/1.2.8/openscap-1.2.8.tar.gz
+	source = fails_and_fix.patch
+	source = xpath.patch
 	md5sums = d26a148d834635363ac8cdd707828302
+	md5sums = 4120f2763e518a590fb896759bf644ca
+	md5sums = 6ac9434d7d169450982f6b4065f3d8e3
 
 pkgname = openscap
 
