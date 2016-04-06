@@ -10,7 +10,7 @@
 pkgname=ffmpeg-full-nvenc
 _pkgbasename=ffmpeg
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Record, convert, and stream audio and video (all codecs including Nvidia NVENC)"
 arch=('i686' 'x86_64')
@@ -27,11 +27,11 @@ depends=('alsa-lib' 'bzip2' 'celt' 'chromaprint' 'faac' 'fontconfig'
          'wavpack' 'zeromq' 'zimg' 'zlib' 'zvbi' 'libdcadec.so'
          'libvorbisenc.so' 'libvorbis.so' 'libvpx.so' 'libx264.so' 'x265'
          'snappy' 'openh264' 'xavs')
-depends_x86_64=('cuda')
 makedepends=('hardening-wrapper' 'libvdpau' 'nvidia-sdk' 'yasm')
 optdepends=('avxsynth-git: for Avisynth support'
             'chromaprint-fftw: for chromaprint which uses fftw for FFT calculations')
-optdepends_x86_64=('intel-media-sdk: for Intel QSV support (Experimental! See PKGBUILD of that package for additional info)')
+optdepends_x86_64=('intel-media-sdk: for Intel QSV support (Experimental! See PKGBUILD of that package for additional info)'
+                   'cuda: for CUDA support')
 conflicts=('ffmpeg' 'ffmpeg-full' 'ffmpeg-git' 'ffmpeg-full-git' 'ffmpeg-full-extra')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavresample.so' 'libavutil.so' 'libpostproc.so' 'libswresample.so'
