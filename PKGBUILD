@@ -6,12 +6,12 @@ _pkgname=jdk
 pkgname=bin32-jdk-devel
 _major=9
 #_minor=1
-_build=111
+_build=112
 _pkgver=$_major
 pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
 #pkgver=${_major}u${_minor}.b${_build}
-pkgrel=2
+pkgrel=1
 pkgdesc="Oracle Java $_major Development Kit Snapshot (32-bit)"
 arch=('x86_64')
 url=https://jdk$_major.java.net/
@@ -52,7 +52,7 @@ source=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binari
         "jvisualvm32-$_jname.desktop"
         "policytool32-$_jname.desktop"
         'OTN-Early-Adopter-License-Terms.txt')
-md5sums=('1bdc0f1cf3863681216d70ed4cf78225'
+md5sums=('af54381ffbaa4b9f52deb90e0818e64d'
          'cae82f6fd99d9b5e60dca0e48f71cc3f'
          '766d4781f1610fbd2e5797709c373d2f'
          'bf32df4a5c6a82dceb0249cb815efe18'
