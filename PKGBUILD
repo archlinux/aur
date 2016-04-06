@@ -5,7 +5,7 @@
 pkgbase=cloudabi-linux
 _cloudabi_ver=0.1
 pkgver=4.5.0rc1cloudabi$_cloudabi_ver
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://nuxi.nl"
 license=('GPL2')
@@ -23,7 +23,7 @@ sha512sums=('17039067c94c039e3d512fbc9e34c9239cfd29bb5adca92a2b3b2e228821e36f45a
             '5fe243dea17fdb71edc7098e0e1938beb7f2d851bd2be3981c4ef3d617aaad81ff1cb4c84689082472ebd13b721e849ad2214aefb9ffe40ec3d76abfd40b87ad')
 
 _kernelname="-cloudabi"
-_srcname="linux-$_commit"
+_srcname="linux-linux-cloudabi-$_cloudabi_ver"
 
 prepare() {
   cd "${srcdir}/${_srcname}"
