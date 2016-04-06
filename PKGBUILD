@@ -1,15 +1,16 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
 # Past Maintainer: bslackr <brendan at vastactive dot com>
 
 pkgname=sucrack
 pkgver=1.2.3
-pkgrel=4
+pkgrel=5
 pkgdesc='a multi-threaded Linux/UNIX tool for brute-force cracking local user accounts via su'
 url='http://labs.portcullis.co.uk/application/sucrack'
 license=('custom')
 arch=('i686' 'x86_64')
 source=("http://labs.portcullis.co.uk/download/${pkgname}-${pkgver}.tar.gz")
-md5sums=('6ebfe5e94577a53ce8dcabadd3581ec3')
+sha512sums=('6ea47a542a652ce416af9f8dece569eec6662a361860a150291e1f6c23ff0cc8288b573aee047624c4c2c32f51aa01c6ce88177a0f41353b17c891d905085a41')
 
 build() {
   unset LDFLAGS
