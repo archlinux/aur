@@ -2,7 +2,7 @@
 
 pkgname=openscap
 pkgver=1.2.8
-pkgrel=1
+pkgrel=3
 pkgdesc="Open Source Security Compliance Solution"
 
 # i686 is theoretically bulitable, if anyone needs it
