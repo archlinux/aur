@@ -19,5 +19,10 @@ done
 export CHROME_WRAPPER="$(readlink -f $0)"
 export CHROME_DESKTOP="$0.desktop"
 
+# Google API keys: https://projects.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/chromium
+export GOOGLE_API_KEY=AIzaSyDwr302FpOSkGRpLlUpPThNTDPbXcIn_FM
+export GOOGLE_DEFAULT_CLIENT_ID=413772536636.apps.googleusercontent.com
+export GOOGLE_DEFAULT_CLIENT_SECRET=0ZChLK6AxeA3Isu96MkwqDR4
+
 # Launch
 exec /opt/chromium-snapshot/chrome $CHROMIUM_USER_FLAGS $@

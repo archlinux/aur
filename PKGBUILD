@@ -2,7 +2,7 @@
 # Contributors: Ner0, alexwizard, thotypous, jdhore, xduugu, randypenguin, bdheeman, AlK
 
 pkgname=chromium-snapshot-bin
-pkgver=50.0.2628.0.r370712
+pkgver=51.0.2702.0.r385562
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Snapshot builds)"
 arch=('i686' 'x86_64')
@@ -20,11 +20,11 @@ optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'google-chrome-dev: for Pepper Flash plugin [AUR]')
 provides=('chromium')
 install=$pkgname.install
-source=("$pkgname"
+source=("$pkgname.sh"
         "$pkgname.desktop"
         "$pkgname"_{16,22,24,32,48,64,128,256}.png
         'LICENSE')
-md5sums=('d0d1e6e0a3c3251a46af0d767880d3e5'
+md5sums=('52c593f49e39413dc6a421235590d77f'
          '1f7c85955a1b845105b3464186d82b97'
          '6cd41f6e08eee03c6553603fb0b6ecd7'
          '227eac16d1e737bed42742840b950d41'
@@ -66,7 +66,7 @@ package() {
 
   msg2 "Moving contents..."
   # Main script
-  install -m755 $pkgname "$pkgdir"/usr/bin/
+  install -m755 $pkgname.sh "$pkgdir"/usr/bin/$pkgname
 
   # Rename chrome-sandbox
   mv chrome-linux/chrome{_,-}sandbox
