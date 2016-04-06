@@ -5,8 +5,8 @@
 # Contributor: Michael Pfeuti
 
 pkgname=texworks
-pkgver=0.4.6
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="A TeX IDE inspired by TeXShop."
 arch=('i686' 'x86_64')
 url="http://tug.org/texworks"
@@ -19,8 +19,8 @@ makedepends=('cmake' 'hardening-wrapper' 'lua' 'python')
 provides=('texworks')
 conflicts=('texworks-svn')
 install=texworks.install
-source=("https://github.com/TeXworks/texworks/archive/release-${pkgver}.tar.gz")
-sha256sums=('58650574c1e3234c38cddc3375f8043a83cc65075839030fc7089471af6a3bde')
+source=("https://github.com/TeXworks/${pkgname}/archive/release-${pkgver}.tar.gz")
+sha256sums=('abb0dd76fe8870d0caa83f8f98743b44b6d5ce6e4df406e47eb6d0ffc2559f7b')
 
 build() {
     cd $pkgname-release-$pkgver
@@ -36,4 +36,3 @@ package() {
     cd $pkgname-release-$pkgver
     make install
 }
-
