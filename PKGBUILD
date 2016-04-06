@@ -2,8 +2,8 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=2.5.3
-pkgrel=7
+pkgver=2.6.1
+pkgrel=1
 _wwwpkgname=AdminLTE
 _wwwpkgver=1.1.7
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -28,7 +28,7 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	whitelist.txt
 	blacklist.txt)
 
-md5sums=('30dbf80661c93668f7215e2c708693dc'
+md5sums=('a12aeda6af08d785b711654927163f1d'
          'ab48115b4c826bb49f187f53ad03db3f'
          '791c86996377ceca23d1459ea0fd5cd6'
          'cba1675593bb43c94a35aabe8a210efa'
@@ -43,35 +43,52 @@ md5sums=('30dbf80661c93668f7215e2c708693dc'
          'd41d8cd98f00b204e9800998ecf8427e')
 
 prepare() {
+  _ssc="/tmp/sedcontrol"
+
   # modify service management
-  sed -i 's|^		\$SUDO service dnsmasq start|		$SUDO systemctl start dnsmasq|' "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  sed -i "s|^		\$SUDO service dnsmasq start|		$SUDO systemctl start dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management" && return 1 ; fi
 
   # gravity call paths changing
-  sed -i 's|/usr/local/bin/|/usr/bin/|' "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  sed -i "s|/opt/pihole/|/usr/bin/|w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: gravity call paths changing" && return 1 ; fi
 
   # adlists.default is already there
-  sed -i '/\$SUDO cp \/etc\/.pihole\/adlists.default \/etc\/pihole\/adlists.default/d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  sed -i "s/\$SUDO cp \/etc\/.pihole\/adlists.default \/etc\/pihole\/adlists.default//w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: adlists.default is already there" && return 1 ; fi
+
+  # useless by definition
+  sed -n "/# Reload hosts file/w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: useless by definition" && return 1 ; fi
+  sed -i '/# Reload hosts file/,+8d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
 
   # change log location in admin php interface and scripts
-  sed -i 's|/var/log/pihole.log|/run/log/pihole/pihole.log|' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
+  sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log location in admin php interface and scripts" && return 1 ; fi
 
   # original toilet is in aur, enter figlet
-  sed -i 's|		toilet -f small -F gay Pi-hole|		figlet Pi-hole|' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
+  sed -i "s|		toilet -f small -F gay Pi-hole|		figlet Pi-hole|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: original toilet is in aur, enter figlet" && return 1 ; fi
 
   # little arch changes to chronometer.sh
-  sed -i "/figlet Pi-hole/a NICDEV=$\(ip route get 8.8.8.8 | awk '{for\(i=1;i<=NF;i++\)if\(\$\i~/dev/\)print $\(i+1\)}'\)" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
-  sed -i 's|$(ifconfig eth0 \||$(ifconfig $NICDEV \||' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
-  sed -i 's|/inet addr/|/inet /|' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
-
-  # change bin location in admin php interface
-  sed -i 's|/usr/local/bin/|/usr/bin/|' "$srcdir"/$_wwwpkgname-$_wwwpkgver/index.php
-  sed -i 's|/usr/local/bin/|/usr/bin/|' "$srcdir"/$_wwwpkgname-$_wwwpkgver/api.php
+  sed -n "/figlet Pi-hole/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: little arch changes to chronometer.sh 1" && return 1 ; fi
+  sed -i "/figlet Pi-hole/a NICDEV=\$\(ip route get 8.8.8.8 | awk '{for\(i=1;i<=NF;i++\)if\(\$\i~/dev/\)print $\(i+1\)}'\)" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
+  sed -i "s|\$(ifconfig eth0 \||\$(ifconfig \$NICDEV \||w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: little arch changes to chronometer.sh 2" && return 1 ; fi
+  sed -i "s|/inet addr/|/inet /|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: little arch changes to chronometer.sh 3" && return 1 ; fi
 
   # change log location in admin php interface
-  sed -i 's|/var/log/pihole.log|/run/log/pihole/pihole.log|' "$srcdir"/$_wwwpkgname-$_wwwpkgver/data.php
+  sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/data.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log location in admin php interface" && return 1 ; fi
 
   # since we don't directly install from git...
+  sed -n "/<b>Pi-hole Version <\/b> /w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/footer.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 1" && return 1 ; fi
   sed -i '/<b>Pi-hole Version <\/b> /,+1d' "$srcdir"/$_wwwpkgname-$_wwwpkgver/footer.php
+  sed -n "/<div class=\"pull-right hidden-xs\">/w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/footer.php
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 2" && return 1 ; fi
   sed -i '/<div class="pull-right hidden-xs">/a<b>Pi-hole Version </b> '"$pkgver"'\n<b> - Web Interface Version </b>'"$_wwwpkgver"'' "$srcdir"/$_wwwpkgname-$_wwwpkgver/footer.php
 }
 
