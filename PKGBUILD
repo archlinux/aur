@@ -11,7 +11,7 @@ url="https://github.com/vokimon/python-wavefile"
 makedepends=('python-setuptools')
 depends=('python-numpy')
 optdepends=('python-pyaudio')
-source=("https://pypi.python.org/packages/source/w/wavefile/wavefile-${pkgver}.tar.gz")
+source=("https://pypi.python.org/packages/source/w/${basename}/${basename}-${pkgver}.tar.gz")
 md5sums=('b5d71713b4fded3c9350cbf61a51a9a1')
 
 build() {
