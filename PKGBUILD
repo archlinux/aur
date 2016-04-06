@@ -2,12 +2,15 @@
 
 pkgname=pbpst-git
 pkgver=v1.1.1.r7.g1893f08
-pkgrel=1
+pkgrel=2
 
 pkgdesc='A small tool to interact with pb instances'
 url='https://github.com/HalosGhost/pbpst'
 arch=('i686' 'x86_64')
 license=('GPL2')
+
+provides=('pbpst')
+conflicts=('pbpst')
 
 depends=('curl' 'jansson')
 makedepends=('git' 'tup' 'clang' 'python-sphinx')
