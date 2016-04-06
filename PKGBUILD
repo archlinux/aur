@@ -2,7 +2,7 @@
 
 pkgname=yarp
 pkgver=2.3.64
-pkgrel=1
+pkgrel=2
 pkgdesc='Yet Another Robot Platform'
 arch=('x86_64' 'i686')
 url="http://www.yarp.it"
@@ -28,5 +28,6 @@ build() {
 
 package() {
 	cd "$srcdir/yarp-$pkgver/build"
+	mv lib64 lib
 	make DESTDIR="${pkgdir}" install
 }
