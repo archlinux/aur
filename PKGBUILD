@@ -4,7 +4,7 @@
 
 pkgname=xfce4-remmina-plugin
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Xfce panel applet for remmina."
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/remmina/"
