@@ -1,4 +1,5 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
 # Past maintainer: GI_Jack <iamjacksemail@hackermail.com>
 # Contributor: Angel Velasquez <angvp@archlinux.org> 
 # Contributor: Jason Chu <jason@archlinux.org>
@@ -7,10 +8,10 @@
 #compiled and included are the AutoWEP and PTW plugins not compiled by default
 pkgname=kismet-allplugins
 _pkgname=kismet
-pkgver=2013_03_R1b
+pkgver=2016_01_R1
 _realver="${pkgver//_/-}"
-pkgrel=3
-pkgdesc="802.11 layer2 wireless network detector, sniffer, and intrusion detection system(all plugins enabled)"
+pkgrel=1
+pkgdesc="802.11 layer2 wireless network detector, sniffer, and intrusion detection system (all plugins enabled)"
 arch=('i686' 'x86_64')
 url="http://www.kismetwireless.net/"
 license=('GPL')
@@ -26,9 +27,8 @@ optdepends=('gpsd: log coordinates of detected networks'
             'ruby: ruby interface')
 backup=('etc/kismet.conf' 'etc/kismet_drone.conf')
 install=kismet.install
-changelog=kismet.changelog
 source=("http://www.kismetwireless.net/code/${_pkgname}-${_realver}.tar.gz")
-md5sums=('6cdcd78baf2e15edbe8a9de3c5493f02')
+sha512sums=('cfbfb2cefd8df4a4fd09333eb6b0becd56cd7c3a1804d555d28b1d55379186e51804334560531d05e760d31e446c4b89d32ce2bd2c0705473f67f04611c0434e')
 
 build() {
     cd "${srcdir}/${_pkgname}-${_realver}"
