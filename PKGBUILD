@@ -1,7 +1,7 @@
 # Maintainer Daniel Perez <tuvistavie@gmail.com>
 
 pkgname=fundle-git
-pkgver=20151222
+pkgver=20160406
 pkgrel=1
 pkgdesc='A minimalist package manager for fish shell'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url='https://github.com/tuvistavie/fundle'
 license=('MIT')
 depends=('fish')
 makedepends=('git')
-source=('git://github.com/tuvistavie/fundle')
+source=('git+https://github.com/tuvistavie/fundle.git')
 sha1sums=('SKIP')
 
 package() {
