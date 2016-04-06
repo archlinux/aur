@@ -1,5 +1,5 @@
 # Maintainer: Brent Saner <r00t (at) square-r00t (dot) net>
-validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
+validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Contributor: TJ Vanderpoel <tj@rubyists.com>
 
 ## MAINTAINER NOTE BEGIN
@@ -112,7 +112,13 @@ source=("git+https://stash.freeswitch.org/scm/fs/freeswitch.git"
          'run.freeswitch'
          'run_log.freeswitch'
          'conf_log.freeswitch'
-         'freeswitch.service')
+         'freeswitch.service'
+	'freeswitch.conf.d.sig'
+	'README.freeswitch.sig'
+	'run.freeswitch.sig'
+	'run_log.freeswitch.sig'
+	'conf_log.freeswitch.sig'
+	'freeswitch.service.sig')
 changelog='ChangeLog'
 _pkgname="freeswitch"
 sha512sums=('SKIP'
@@ -121,7 +127,13 @@ sha512sums=('SKIP'
             '6d8a3080b73918fb4a10e077758726b8b8e917c6b6f9d3c11c3b81e14e2efb43cd6fdf87d86f81a9e374811ca0d555eaa901113795c9334104de5e1309458da7'
             'e0ad57847905d11540567512fb224587a96db086ecaefd949964bd7e5bf29e448497fb3d6df5d88dbedd69beb5ae4618bb0e8462cbbb9fad84947c6932fc0b46'
             'a4fd539de109de3475abfeb2bd8a95670af3f5af83bd6f6b229df19e81da3f121c28a62cff282f9dc152908ebe0f24f76743e00c72fa04dc1fd465a00dc6f976'
-            '0d71a056de156f5840effabf6fb37a20e64ae011ecd48bf049886d4c073fe251cd6adeb0380784622b570948e1ca30ce7c92a2cade230a7177c97ed697e6f1cb')
+            '0d71a056de156f5840effabf6fb37a20e64ae011ecd48bf049886d4c073fe251cd6adeb0380784622b570948e1ca30ce7c92a2cade230a7177c97ed697e6f1cb'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
