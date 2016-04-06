@@ -1,5 +1,5 @@
 pkgbase = contao-lts
-	pkgdesc = small yet powerful Content Management System (CMS) based on php
+	pkgdesc = small yet powerful Content Management System (CMS) based on php, LTS version
 	pkgver = 3.5.9
 	pkgrel = 1
 	url = https://contao.org

@@ -2,7 +2,7 @@
 pkgname=contao-lts
 pkgver=3.5.9
 pkgrel=1
-pkgdesc="small yet powerful Content Management System (CMS) based on php"
+pkgdesc="small yet powerful Content Management System (CMS) based on php, LTS version"
 url="https://contao.org"
 arch=('any')
 license=('LGPL')
