@@ -8,7 +8,7 @@ url="https://github.com/Microsoft/cpprestsdk/"
 license=('Apache')
 depends=('boost' 'websocketpp' 'openssl>=1.0.0')
 makedepends=('git' 'cmake>=2.6.0')
-conflicts=('cpprestsdk' 'casablanca-git')
+conflicts=('cpprestsdk' 'casablanca' 'casablanca-git')
 provides=('cpprestsdk')
 source=("git://github.com/Microsoft/cpprestsdk.git#branch=development")
 sha512sums=('SKIP')
@@ -36,6 +36,6 @@ build() {
 package() {
   make -C build DESTDIR="$pkgdir/" install
   cd cpprestsdk
-  install -Dm644 license.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  install -Dm644 ThirdPartyNotices.txt $pkgdir/usr/share/licenses/$pkgname/ThirdPartyNotices
+  install -Dm644 license.txt $pkgdir/usr/share/licenses/cpprestsdk/LICENSE
+  install -Dm644 ThirdPartyNotices.txt $pkgdir/usr/share/licenses/cpprestsdk/ThirdPartyNotices
 }
