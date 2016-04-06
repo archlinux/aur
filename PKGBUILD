@@ -27,7 +27,5 @@ build() {
 
 package() {
 	cd $_pkgname
-	export PATH="$PATH:$pkgdir/usr/bin"
-	cargo install --root "$pkgdir/usr"
-	rm "$pkgdir/usr/.crates.toml"
+	install -D -m755 "$srcdir/$_pkgname/target/release/parity" "$pkgdir/usr/bin/parity"
 }
