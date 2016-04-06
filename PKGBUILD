@@ -1,5 +1,5 @@
 pkgname=psi-plus-plugins-qt5-git
-pkgver=20160322
+pkgver=r468.708bb34
 pkgrel=1
 pkgdesc="Additional plugins for Psi+ (built with Qt 5.x)"
 arch=('i686' 'x86_64')
