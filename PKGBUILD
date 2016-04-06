@@ -1,6 +1,6 @@
 pkgname=psi-plus-plugins-qt5-git
-pkgver=r468.708bb34
-pkgrel=1
+pkgver=20160322
+pkgrel=2
 pkgdesc="Additional plugins for Psi+ (built with Qt 5.x)"
 arch=('i686' 'x86_64')
 url="http://psi-plus.com"
@@ -17,7 +17,8 @@ md5sums=('SKIP'
 
 pkgver() {
     cd psi-plus-plugins
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    # Date of last commit
+    git log -1 --format="%ci" HEAD | cut -d\  -f1 | tr -d '-'
 }
 
 prepare() {
