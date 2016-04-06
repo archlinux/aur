@@ -1,9 +1,10 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
 # thanks to Slash <demodevil5[at]yahoo[dot]com> for the original no-git package
 
 pkgname=ezquake-git
 pkgver=r4621.4bf8793
-pkgrel=3
+pkgrel=4
 pkgdesc="One of the most Popular QuakeWorld clients for Linux/BSD/OSX/Win32. You need the retail pak files to play. (Git version)"
 url="http://ezquake.sourceforge.net/"
 license=('GPL')
@@ -26,15 +27,15 @@ source=("git+https://github.com/ezQuake/ezquake-source.git"
 	'ezquake.launcher'
 	'ezquake.desktop'
 	'ezquake.ico')
-sha256sums=("SKIP"
+sha512sums=("SKIP"
 	    "SKIP" ## TODO[4]: split this into another package/split package. there's some... licensing issues.
 	    #"SKIP" ## not needed; we use makepkg's depedency system for this, foo's.
 	    "SKIP" ## TODO[3]
 	    #"SKIP" ## TODO[2]
 	    #'SKIP' ## TODO[1]
-            '3a5084a92a3d61c03403c0352c92deab09be82f2fc7399ecf3c9963b06b4b0fe'
-            'e92b9cdeac5eadced50a6167eb53b1343b0772d3bf8afa310eb281b88bf7e677'
-            '2a6a5484ddb4cfaf8518b51df39ffd1fa8ce768402eab6401415bececb8e8ab2')
+            '2d816039d137127dac9629d8ac7d30fcdc4583ce2c37555af43715051cce86ac2a356f1df806b1d2125bf2f6f97b3e2d7665b654b9f20eaa29f764a4230e1957'
+            '32b76abde8b93a64bdf42af7dd72288eb2baa7fc07ff45e18d38a9ad0ccbc0f3617d38ae0ccf4a04a1d4d2dd4536e1d1cdd51a5560274efb347f5a17ecf4919d'
+            '1d9ea83c95fb324ef87bf22a767e3a41429f5c35a456111adbc9a56d70691d587bdda6ec9ff5a9025436f5fcdad40e4959e6244425a474be2f4286bb00cd130e')
 pkgver() {
   cd "$srcdir/ezquake-source"
   (
