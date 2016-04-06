@@ -1,0 +1,8 @@
+post_install(){
+    cat << \here
+Contao LTS was installed to /usr/share/webapps/contao-lts
+To continue installation please follow the instructions
+at https://docs.contao.org/books/manual/current/en/01-installation/index.html
+here
+
+}
