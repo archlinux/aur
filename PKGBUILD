@@ -1,5 +1,5 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
-validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
+validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Past maintainer: icaruseffect <icaruseffect at posteo dot net>
 pkgname="burp-backup-git"
 _pkgname="burp"
@@ -13,16 +13,14 @@ makedepends=('uthash' 'git' 'rsync')
 conflicts=('burp-backup' 'burp-backup-dev')
 provides=(burp-backup)
 
-url='http://burp.grke.org/'1
-source=(
-        'burp::git+https://github.com/grke/burp.git#branch=master'
+url='http://burp.grke.org/'
+source=('burp::git+https://github.com/grke/burp.git#branch=master'
         'burp.service'
-        )
+	'burp.service.sig')
 
-sha512sums=(
-        'SKIP'
-        'c729903764b482ed89edddd0d7b3d3c3477671bce0a0f4cc35a4d0658a4bb2f27dc1c911a531e77572671c5ff49c2e5652aaaca452d8929ecfa2d5ef18fb41da'
-        ) 
+sha512sums=('SKIP'
+            'c729903764b482ed89edddd0d7b3d3c3477671bce0a0f4cc35a4d0658a4bb2f27dc1c911a531e77572671c5ff49c2e5652aaaca452d8929ecfa2d5ef18fb41da'
+            'SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
