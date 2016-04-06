@@ -1,19 +1,19 @@
 # Maintainer: Maxime Morel <maxime@mmorel.eu>
 
 pkgname=opentrack-git
-pkgver=r2387
+pkgver=r2966
 pkgrel=1
 pkgdesc="An application dedicated to tracking user's head movements and relaying the information to games and flight simulation software"
 arch=('i686' 'x86_64')
-url="https://github.com/opentrack/opentrack"
+url="https://github.com/opentrack/opentrack/"
 license=('GPL3')
-depends=('opencv-git' 'qt5-serialport')
+depends=('qt5-base' 'opencv-git')
 makedepends=('git' 'cmake')
 provides=('opentrack')
 conflicts=('opentrack')
 source=("git+https://github.com/opentrack/opentrack.git" "opentrack.desktop")
 sha256sums=('SKIP'
-            '4d98f03a759d14d1cf6436741135b5b11de9b1975b5dd67407010a13f86fa8e4')
+            'e39d8d68739f875393c4b0bec61aacf5d2fa7970327c82d9b4e97f643e4fb0cc')
 
 pkgver() {
   cd "$srcdir/opentrack"
