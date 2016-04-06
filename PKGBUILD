@@ -16,6 +16,7 @@ optdepends=('palemoon-i18n-default: language pack for system active language'
 provides=("palemoon=$pkgver")
 conflicts=('palemoon')
 install=palemoon.install
+options=('!strip')
 source=(palemoon.desktop)
 source_i686=("palemoon-$pkgver.en-US.linux-i686.tar.bz2::http://linux.palemoon.org/installer/download.php?v=$pkgver&a=i686")
 source_x86_64=("palemoon-$pkgver.en-US.linux-x86_64.tar.bz2::http://linux.palemoon.org/installer/download.php?v=$pkgver&a=x86_64")
