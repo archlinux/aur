@@ -17,7 +17,7 @@ provides=('openra')
 conflicts=('openra')
 options=(!strip)
 
-source=('OpenRA::git://github.com/OpenRA/OpenRA.git#branch=master')
+source=('OpenRA::git://github.com/OpenRA/OpenRA.git#branch=bleed')
 md5sums=('SKIP')
 
 
@@ -25,7 +25,7 @@ pkgver() {
   cd "$srcdir/OpenRA"
 
   #git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null || echo git-`git rev-parse --short HEAD` | cut 'release-' ''
-  git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null | sed 's/release-/DEV./'''
+  git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null | sed 's/release-/BLEED./'''
   #gitdate="$( git log -1 --format=%ai | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/ /\n/g' | head -1 )"
   #echo "playtest.$gitdate.git"
 }
