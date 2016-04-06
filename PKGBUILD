@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl-git
-pkgver=27552.a685e0e
+pkgver=27593.33557de
 pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management (development version)"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ makedepends=('python' 'git')
 provides=('slurm-llnl')
 conflicts=('slurm-llnl' 'slurm-llnl-dev')
 backup=('etc/default/slurm-llnl')
-install=${pkgname}.install
+install="${pkgname}.install"
 source=("slurm-tmpfiles.conf"
 	"slurm-llnl-default-conf"
 	"slurmctld.service"
@@ -58,11 +58,19 @@ build() {
 	#
 	# Read http://slurm.schedmd.com/quickstart_admin.html for more information
 
+	./autogen.sh
 	./configure \
-	--prefix=/usr \
-	--sbindir=/usr/bin  \
-	--sysconfdir=/etc/slurm-llnl  \
-	--localstatedir=/var
+		--prefix=/usr \
+		--sbindir=/usr/bin \
+		--sysconfdir=/etc/slurm-llnl \
+		--localstatedir=/var \
+		--enable-pam \
+		--with-proctrack \
+		--with-hdf5 \
+		--with-hwloc \
+		--with-rrdtool \
+		--with-ssl \
+		--with-munge
 
 	make
 }

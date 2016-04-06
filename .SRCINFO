@@ -1,6 +1,6 @@
 pkgbase = slurm-llnl-git
 	pkgdesc = Simple Linux Utility for Resource Management (development version)
-	pkgver = 27552.a685e0e
+	pkgver = 27593.33557de
 	pkgrel = 1
 	url = http://www.schedmd.com
 	install = slurm-llnl-git.install
