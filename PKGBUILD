@@ -8,7 +8,7 @@ _modpkver=2.9.1
 pkgname=nginx-mainline-modsecurity
 provides=('nginx')
 conflicts=('nginx')
-pkgver=1.9.13
+pkgver=1.9.14
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release with ModSecurity module'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -32,14 +32,12 @@ source=($url/download/nginx-$pkgver.tar.gz
         service
         logrotate
         https://www.modsecurity.org/tarball/$_modpkver/modsecurity-$_modpkver.tar.gz)
-md5sums=('e7502dc170277597ca73eb53c359c771'
+md5sums=('a25818039f34b5d54b017d44c76321c4'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7'
          '0fa92b852abc857a20b9e24f83f814cf')
 
 _common_flags=(
-  --with-imap
-  --with-imap_ssl_module
   --with-ipv6
   --with-pcre-jit
   --with-file-aio
@@ -61,8 +59,11 @@ _common_flags=(
 
 _mainline_flags=(
   --with-http_v2_module
-  --with-threads
+  --with-mail
+  --with-mail_ssl_module
   --with-stream
+  --with-stream_ssl_module
+  --with-threads
 )
 
 prepare() {
