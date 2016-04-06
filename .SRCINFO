@@ -1,0 +1,11 @@
+pkgbase = micropsi2
+	pkgver = 0.7a5
+	pkgrel = 0
+	url = http://www.micropsi.com/
+	arch = any
+	license = unknown
+	source = https://github.com/joschabach/micropsi2/archive/0.7-alpha5.tar.gz
+	md5sums = e38ef506522949b3436b4c8138bcab8c
+
+pkgname = micropsi2
+
