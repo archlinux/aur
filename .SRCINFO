@@ -1,6 +1,6 @@
 pkgbase = groonga
 	pkgdesc = An opensource fulltext search engine.
-	pkgver = 6.0.0
+	pkgver = 6.0.1
 	pkgrel = 1
 	url = http://groonga.org/
 	arch = i686
@@ -20,9 +20,9 @@ pkgbase = groonga
 	optdepends = mercurial
 	optdepends = kytea
 	optdepends = snowball-c
-	source = http://packages.groonga.org/source/groonga/groonga-6.0.0.tar.gz
+	source = http://packages.groonga.org/source/groonga/groonga-6.0.1.tar.gz
 	source = groonga-httpd.service
-	sha1sums = b0cd02af31b556e617533d5b3efe69e73b193bdf
+	sha1sums = adbb1d73ad41afffa34eeaccf482d004fb027ec9
 	sha1sums = 56b68b5ebfc6785f08ce101b263d6f56acd74d8a
 
 pkgname = groonga
