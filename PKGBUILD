@@ -1,7 +1,7 @@
 # Maintainer: Dan Ziemba <zman0900@gmail.com>
 
 pkgname=nut-monitor
-pkgver=2.7.3
+pkgver=2.7.4
 pkgrel=1
 pkgdesc="GUI to manage devices connected a NUT server"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('network-ups-tools' 'python2')
 makedepends=('desktop-file-utils')
 source=("http://www.networkupstools.org/source/2.7/nut-$pkgver.tar.gz")
-sha256sums=('ff44d95d06a51559a0a018eef7f8d17911c1002b6352a7d7580ff75acb12126b')
+sha256sums=('980e82918c52d364605c0703a5dcf01f74ad2ef06e3d365949e43b7d406d25a7')
 
 prepare() {
   cd "$srcdir/nut-$pkgver"
