@@ -1,7 +1,0 @@
-[Unit]
-Description=Mailcatcher SMTP Mapping Service
-
-[Service]
-ExecStart=/usr/bin/nc localhost 1025
-StandardInput=socket
-StandardOutput=socket

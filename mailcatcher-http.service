@@ -1,0 +1,7 @@
+[Unit]
+Description=Mailcatcher HTTP Mapping Service
+Requires=mailcatcher.service
+After=mailcatcher.service
+
+[Service]
+ExecStart=/usr/lib/systemd/systemd-socket-proxyd localhost:1080

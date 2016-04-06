@@ -1,11 +1,9 @@
 [Unit]
 Description=Mailcatcher HTTP Activation Socket
-Requires=mailcatcher.service
-After=network.target mailcatcher.service
+After=network.target
 
 [Socket]
 ListenStream=80
-Accept=true
 
 [Install]
 WantedBy=sockets.target
