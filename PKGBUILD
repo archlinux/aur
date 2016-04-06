@@ -1,8 +1,9 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
 pkgname=johnny-git
 _pkgname=johnny
 pkgver=r527.c862833
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI for john (the ripper, a password audit tool)"
 arch=('i686' 'x86_64')
 url="http://openwall.info/wiki/john/johnny"
@@ -11,7 +12,7 @@ install=
 changelog=
 source=("git+https://github.com/shinnok/johnny.git")
 noextract=()
-md5sums=('SKIP')
+sha512sums=('SKIP')
 depends=('john' 'qt5-base')
 makedepends=('john' 'qt5-base')
 provides=('johnny')
