@@ -3,8 +3,8 @@
 # Contributor: frownlee <florez.brownlee@gmail.com>
 
 pkgname=android-ndk
-pkgver=r11
-pkgrel=2
+pkgver=r11b
+pkgrel=1
 pkgdesc='Android C/C++ developer kit'
 arch=('x86_64')
 url='https://developer.android.com/ndk/'
@@ -17,7 +17,7 @@ replaces=('android-ndk64')
 depends=('ncurses5-compat-libs' 'libtinfo')
 source=('android-ndk.sh' "http://dl.google.com/android/repository/${pkgname}-$pkgver-linux-x86_64.zip")
 sha256sums=('5bc58ccd7e7de03c9656ca8f13fb9bf9dff2eeee31a2670ce04a4b97be73dc95'
-            '59ab44f7ee6201df4381844736fdc456134c7f7660151003944a3017a0dcce97')
+            '51d429bfda8bbe038683ed7ae7acc03b39604b84711901b555fe18c698867e53')
 
 package() {
   install -d "$pkgdir/opt"
