@@ -1,7 +1,7 @@
 # Maintainer: Carlos Silva <r3pek@r3pek.org>
 
 pkgname=piper
-pkgver=0.1
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Piper is a GUI interface to ratbagd, the system daemon for configurable mice'
 arch=('i686' 'x86_64')
