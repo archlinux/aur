@@ -5,7 +5,7 @@ pkgdesc="Additional iconsets, themes and sounds for Psi+ (Qt5 build)"
 arch=('any')
 url="http://psi-plus.com"
 license=('GPL2')
-depends=('psi-plus-git')
+depends=('psi-plus-qt5-git')
 provides=("psi-plus-resources-git=$pkgver")
 conflicts=("psi-plus-resources-git=$pkgver")
 options=('!strip' '!zipman')
