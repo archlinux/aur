@@ -1,14 +1,15 @@
 # Maintainer: brent saner <bts@square-r00t.net>
+validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
 
 pkgname=quake2world-git
 pkgver=r2493.f1fb32c
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, stand-alone, multiplayer-only iteration of Quake2"
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://quetoo.org"
 license=('GPL')
 source=(git+https://github.com/jdolan/quake2world.git)
-md5sums=('SKIP')
+sha512sums=('SKIP')
 depends=('sdl2' 'curl' 'sdl2_image' 'sdl2_mixer')
 makedepends=('sdl2' 'sdl2_mixer' 'sdl2_image' 'physfs')
 optdepends=(
