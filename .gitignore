@@ -1,0 +1,4 @@
+*.xz
+mkb/
+pkg/
+src/
