@@ -2,7 +2,7 @@
 
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
-pkgver=2.5.3
+pkgver=2.6.1
 pkgrel=1
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
@@ -21,7 +21,7 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	whitelist.txt
 	blacklist.txt)
 
-md5sums=('30dbf80661c93668f7215e2c708693dc'
+md5sums=('a12aeda6af08d785b711654927163f1d'
          '925e5f23e36320ec13f55cff3f1bdcb7'
          'fa485f038d577c354068410ed1159d94'
          '1b2e808b699a6b58647641f12379f65d'
@@ -31,17 +31,29 @@ md5sums=('30dbf80661c93668f7215e2c708693dc'
          'd41d8cd98f00b204e9800998ecf8427e')
 
 prepare() {
+  _ssc="/tmp/sedcontrol"
+
   # change local ip to unusable 0.0.0.0 (ref. http://dlaa.me/blog/post/skyhole)
+  sed -n "/^function gravity_reload() {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change local ip to unusable 0.0.0.0 (ref. http://dlaa.me/blog/post/skyhole)" && return 1 ; fi
   sed -i '/^function gravity_reload() {/a sed -i "s/^[0-9\\.]\\+\\s/0.0.0.0 /g" /etc/pihole/gravity.list' "$srcdir"/$_pkgname-$pkgver/gravity.sh
 
-  # gravity call paths changing
-  sed -i 's|/usr/local/bin/|/usr/bin/|' "$srcdir"/$_pkgname-$pkgver/gravity.sh
-
   # modify service management
-  sed -i 's|^		\$SUDO service dnsmasq start|		$SUDO systemctl start dnsmasq|' "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  sed -i "s|^		\$SUDO service dnsmasq start|		$SUDO systemctl start dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management" && return 1 ; fi
+
+  # gravity call paths changing
+  sed -i "s|/opt/pihole/|/usr/bin/|w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: gravity call paths changing" && return 1 ; fi
 
   # adlists.default is already there
-  sed -i '/\$SUDO cp \/etc\/.pihole\/adlists.default \/etc\/pihole\/adlists.default/d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  sed -i "s/\$SUDO cp \/etc\/.pihole\/adlists.default \/etc\/pihole\/adlists.default//w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: adlists.default is already there" && return 1 ; fi
+
+  # useless by definition
+  sed -n "/# Reload hosts file/w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: useless by definition" && return 1 ; fi
+  sed -i '/# Reload hosts file/,+8d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
 }
 
 package() {
