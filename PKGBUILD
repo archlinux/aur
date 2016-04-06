@@ -2,7 +2,7 @@
 
 pkgname=wine-staging-git
 pkgver=1.9.6.r37.g0a391fa+wine.1.9.6.r144.g4315cae
-pkgrel=1
+pkgrel=2
 pkgdesc="A compatibility layer for running Windows programs (staging branch, Git version)"
 arch=('i686' 'x86_64')
 url="https://github.com/wine-compholio/wine-staging/"
@@ -75,7 +75,7 @@ optdepends=(
   'samba'
 )
 options=('staticlibs')
-install=wine-staging.install
+install="$pkgname".install
 source=(wine-git::'git://source.winehq.org/git/wine.git'
         "$pkgname"::'git+https://github.com/wine-compholio/wine-staging.git'
         '30-win32-aliases.conf')
