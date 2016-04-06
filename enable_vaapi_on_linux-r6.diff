@@ -1,11 +1,7 @@
-Description: Enables using VA-API hardware acceleration in Linux. The patch for bpf_gpu_policy_linux.cc initially came from https://codereview.chromium.org/15955009/diff/92001/content/common/sandbox_linux/bpf_gpu_policy_linux.cc.
-
-Index: beta.vivid/content/common/gpu/media/gpu_video_decode_accelerator.cc
-===================================================================
---- beta.vivid.orig/content/common/gpu/media/gpu_video_decode_accelerator.cc	2015-06-02 14:57:28.961592702 -0400
-+++ beta.vivid/content/common/gpu/media/gpu_video_decode_accelerator.cc	2015-06-02 14:57:28.954592798 -0400
-@@ -33,7 +33,7 @@
- #include "content/common/gpu/media/dxva_video_decode_accelerator.h"
+--- chromium-51.0.2679.0/content/common/gpu/media/gpu_video_decode_accelerator.cc.orig	2016-03-16 16:27:58.208611696 +0100
++++ chromium-51.0.2679.0/content/common/gpu/media/gpu_video_decode_accelerator.cc	2016-03-16 16:35:17.481912267 +0100
+@@ -34,7 +34,7 @@
+ #include "content/common/gpu/media/dxva_video_decode_accelerator_win.h"
  #elif defined(OS_MACOSX)
  #include "content/common/gpu/media/vt_video_decode_accelerator_mac.h"
 -#elif defined(OS_CHROMEOS)
@@ -13,17 +9,53 @@ Index: beta.vivid/content/common/gpu/media/gpu_video_decode_accelerator.cc
  #if defined(USE_V4L2_CODEC)
  #include "content/common/gpu/media/v4l2_device.h"
  #include "content/common/gpu/media/v4l2_slice_video_decode_accelerator.h"
-@@ -346,7 +346,7 @@
- scoped_ptr<media::VideoDecodeAccelerator>
- GpuVideoDecodeAccelerator::CreateVaapiVDA() {
-   scoped_ptr<media::VideoDecodeAccelerator> decoder;
+@@ -360,7 +360,7 @@
+     &GpuVideoDecodeAccelerator::CreateV4L2VDA,
+     &GpuVideoDecodeAccelerator::CreateV4L2SliceVDA,
+ #endif
 -#if defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)
 +#if (defined(OS_CHROMEOS) || defined(OS_LINUX)) && defined(ARCH_CPU_X86_FAMILY)
-   decoder.reset(new VaapiVideoDecodeAccelerator(
-       make_context_current_, base::Bind(&GpuVideoDecodeAccelerator::BindImage,
-                                         base::Unretained(this))));
-Index: dev.vivid/content/content_common.gypi
-===================================================================
+     &GpuVideoDecodeAccelerator::CreateVaapiVDA,
+ #endif
+ #if defined(OS_MACOSX)
+@@ -444,7 +444,7 @@
+ }
+ #endif
+ 
+-#if (defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)) || defined(OS_MACOSX)
++#if (defined(OS_CHROMEOS) || defined(OS_LINUX)) && defined(ARCH_CPU_X86_FAMILY) || defined(OS_MACOSX)
+ void GpuVideoDecodeAccelerator::BindImage(uint32_t client_texture_id,
+                                           uint32_t texture_target,
+                                           scoped_refptr<gl::GLImage> image) {
+@@ -459,7 +459,7 @@
+ }
+ #endif
+ 
+-#if defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)
++#if (defined(OS_CHROMEOS) || defined(OS_LINUX)) && defined(ARCH_CPU_X86_FAMILY)
+ scoped_ptr<media::VideoDecodeAccelerator>
+ GpuVideoDecodeAccelerator::CreateVaapiVDA() {
+   return make_scoped_ptr<media::VideoDecodeAccelerator>(
+--- chromium-51.0.2700.0/content/common/gpu/media/gpu_video_decode_accelerator.h	2016-03-30 16:00:22.683898943 +0200
++++ chromium-51.0.2700.0/content/common/gpu/media/gpu_video_decode_accelerator.h.orig	2016-03-29 21:01:59.000000000 +0200
+@@ -89,7 +89,7 @@
+   scoped_ptr<media::VideoDecodeAccelerator> CreateV4L2VDA();
+   scoped_ptr<media::VideoDecodeAccelerator> CreateV4L2SliceVDA();
+ #endif
+-#if defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)
++#if (defined(OS_CHROMEOS) || defined(OS_LINUX)) && defined(ARCH_CPU_X86_FAMILY)
+   scoped_ptr<media::VideoDecodeAccelerator> CreateVaapiVDA();
+ #endif
+ #if defined(OS_MACOSX)
+@@ -121,7 +121,7 @@
+   // Sets the texture to cleared.
+   void SetTextureCleared(const media::Picture& picture);
+ 
+-#if (defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)) || defined(OS_MACOSX)
++#if (defined(OS_CHROMEOS) || defined(OS_LINUX)) && defined(ARCH_CPU_X86_FAMILY) || defined(OS_MACOSX)
+   // Helper to bind |image| to the texture specified by |client_texture_id|.
+   void BindImage(uint32_t client_texture_id,
+                  uint32_t texture_target,
 --- dev.vivid.orig/content/content_common.gypi	2015-06-02 15:12:59.295303719 -0400
 +++ dev.vivid/content/content_common.gypi	2015-06-02 15:12:59.289303797 -0400
 @@ -826,7 +826,7 @@
@@ -44,8 +76,6 @@ Index: dev.vivid/content/content_common.gypi
        'dependencies': [
          '../media/media.gyp:media',
          '../third_party/libyuv/libyuv.gyp:libyuv',
-Index: dev.vivid/content/content_gpu.gypi
-===================================================================
 --- dev.vivid.orig/content/content_gpu.gypi	2015-06-02 15:12:59.295303719 -0400
 +++ dev.vivid/content/content_gpu.gypi	2015-06-02 15:12:59.289303797 -0400
 @@ -36,7 +36,7 @@
@@ -57,8 +87,6 @@ Index: dev.vivid/content/content_gpu.gypi
        'include_dirs': [
          '<(DEPTH)/third_party/libva',
        ],
-Index: dev.vivid/content/content_tests.gypi
-===================================================================
 --- dev.vivid.orig/content/content_tests.gypi	2015-06-02 15:12:59.295303719 -0400
 +++ dev.vivid/content/content_tests.gypi	2015-06-02 15:12:59.289303797 -0400
 @@ -1651,7 +1651,7 @@
@@ -70,8 +98,6 @@ Index: dev.vivid/content/content_tests.gypi
        'targets': [
            {
              'target_name': 'vaapi_jpeg_decoder_unittest',
-Index: dev.vivid/content/public/common/content_switches.cc
-===================================================================
 --- dev.vivid.orig/content/public/common/content_switches.cc	2015-06-02 15:12:59.295303719 -0400
 +++ dev.vivid/content/public/common/content_switches.cc	2015-06-02 15:12:59.290303784 -0400
 @@ -962,7 +962,7 @@
@@ -83,8 +109,6 @@ Index: dev.vivid/content/public/common/content_switches.cc
  // Disables panel fitting (used for mirror mode).
  const char kDisablePanelFitting[]           = "disable-panel-fitting";
 
-Index: dev.vivid/content/public/common/content_switches.h
-===================================================================
 --- dev.vivid.orig/content/public/common/content_switches.h	2015-06-02 15:12:59.295303719 -0400
 +++ dev.vivid/content/public/common/content_switches.h	2015-06-02 15:12:59.290303784 -0400
 @@ -273,7 +273,7 @@
@@ -96,8 +120,6 @@ Index: dev.vivid/content/public/common/content_switches.h
  CONTENT_EXPORT extern const char kDisablePanelFitting[];
  CONTENT_EXPORT extern const char kDisableVaapiAcceleratedVideoEncode[];
  #endif
-Index: dev.vivid/media/media.gyp
-===================================================================
 --- dev.vivid.orig/media/media.gyp	2015-06-02 15:12:59.295303719 -0400
 +++ dev.vivid/media/media.gyp	2015-06-02 15:12:59.290303784 -0400
 @@ -708,7 +708,7 @@
@@ -109,8 +131,6 @@ Index: dev.vivid/media/media.gyp
            'sources': [
              'filters/h264_bitstream_buffer.cc',
              'filters/h264_bitstream_buffer.h',
-Index: dev.vivid/gpu/config/software_rendering_list_json.cc
-===================================================================
 --- dev.vivid.orig/gpu/config/software_rendering_list_json.cc	2015-06-02 15:12:59.295303719 -0400
 +++ dev.vivid/gpu/config/software_rendering_list_json.cc	2015-06-02 15:12:59.290303784 -0400
 @@ -475,17 +475,6 @@
@@ -143,8 +163,6 @@ Index: dev.vivid/gpu/config/software_rendering_list_json.cc
          }
        ],
        "features": [
-Index: dev.vivid/content/common/sandbox_linux/bpf_gpu_policy_linux.cc
-===================================================================
 --- dev.vivid.orig/content/common/sandbox_linux/bpf_gpu_policy_linux.cc	2015-06-02 15:12:59.295303719 -0400
 +++ dev.vivid/content/common/sandbox_linux/bpf_gpu_policy_linux.cc	2015-06-02 15:12:59.291303771 -0400
 @@ -21,6 +21,8 @@
@@ -246,8 +264,6 @@ Index: dev.vivid/content/common/sandbox_linux/bpf_gpu_policy_linux.cc
 
    return true;
  }
-Index: dev.vivid/chrome/browser/about_flags.cc
-===================================================================
 --- chromium-50.0.2652.0/chrome/browser/about_flags.cc	2016-02-17 00:01:07.000000000 +0100
 +++ chromium-50.0.2652.0/chrome/browser/about_flags.cc.new	2016-02-17 18:41:33.115828319 +0100
 @@ -859,7 +859,7 @@
@@ -259,8 +275,6 @@ Index: dev.vivid/chrome/browser/about_flags.cc
          SINGLE_DISABLE_VALUE_TYPE(switches::kDisableAcceleratedVideoDecode),
      },
  #if defined(USE_ASH)
-Index: dev.vivid/content/common/gpu/media/vaapi_wrapper.cc
-===================================================================
 --- dev.vivid.orig/content/common/gpu/media/vaapi_wrapper.cc	2015-06-02 15:12:59.295303719 -0400
 +++ dev.vivid/content/common/gpu/media/vaapi_wrapper.cc	2015-06-02 15:12:59.293303745 -0400
 @@ -146,7 +146,7 @@

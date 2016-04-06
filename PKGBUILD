@@ -18,7 +18,7 @@ _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=50.0.2661.18
+pkgver=51.0.2700.0
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -44,7 +44,7 @@ depends=('desktop-file-utils'
          #'opus'
          #'protobuf'
          #'libevent'
-         #'libvpx'
+         'libvpx'
          'ffmpeg'
          )
 makedepends=('libexif'
@@ -66,10 +66,9 @@ makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('chromium-pepper-flash-dev: PPAPI Flash Player (Dev Channel) (64bits only)'
             'chromium-widevine-dev: Widevine plugin (eg: Netflix) (Dev Channel) (64bits only)'
             #
-            'kdebase-kdialog: Needed for file dialogs in KDE4'
-            'kwalletmanager4: Needed for storing passwords in KWallet in KDE4'
-            #
+            'kdebase-kdialog: Needed for file dialogs in KDE4/KF5'
             'kdialog-frameworks-git: Needed for file dialogs in KF5'
+            #
             'kwalletmanager: Needed for storing passwords in KWallet in KF5'
             #
             'libexif: Need for read EXIF metadata'
@@ -84,10 +83,11 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r2.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-snapshot-toolchain-r1.patch'
         # Misc Patches
-        'enable_vaapi_on_linux-r4.diff'
+        'enable_vaapi_on_linux-r6.diff'
         'chromium-system-jinja-r9.patch'
         # Patch from crbug (chromium bugtracker)
         'chromium-widevine-r0.patch' # https://crbug.com/473866
+        'https://codereview.chromium.org/download/issue1853263002_1.diff' # https://crbug.com/595429
         )
 sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?marker=chromium-${pkgver}.tar.x | awk -v FS='<td>"' -v RS='"</td>' '$0=$2' | head -n1)"
           "$(curl -sL "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes" | grep sha1 | cut -d " " -f3)"
@@ -100,10 +100,11 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           '450cd81653499eb50f0f7df1b0d4d1c1620365a5'
           '7b9c1a7e0e581413dbebb0e894f68ce2f2ba0e6a'
           # Misc Patches
-          '1a03daacbbf46777738f81968f9796612a6c9217'
+          'f8aaa6cc84602175f33361503ef0a53f3cdac889'
           '1063521b4e3bf1bb25b666ef7423968886fe055c'
           # Patch from crbug (chromium bugtracker)
           'fa9ff0ff9049784b4a1ec37292530ae61aece610'
+          'ddbbc70a6263cfde3fcc668b2d54529424eaffb9'
           )
 options=('!strip')
 install=chromium-dev.install
@@ -211,6 +212,7 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/angle/src/third_party/compiler'
            'third_party/angle/src/third_party/murmurhash'
            'third_party/angle/src/third_party/trace_event'
+           'third_party/angle/src/third_party/libXNVCtrl'
            'third_party/brotli'
            'third_party/boringssl'
            'third_party/cacheinvalidation'
@@ -243,13 +245,12 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/libaddressinput'
            'third_party/libjingle'
            'third_party/libphonenumber'
+           'third_party/libpng'
            'third_party/libsecret'
            'third_party/libsrtp'
            'third_party/libudev'
            'third_party/libusb'
            'third_party/libva'
-           'third_party/libvpx_new'
-           'third_party/libvpx_new/source/libvpx/third_party/x86inc'
            'third_party/libxml/chromium'
            'third_party/libwebm'
            'third_party/libXNVCtrl'
@@ -302,6 +303,8 @@ _necesary=('base/third_party/dmg_fp'
 # -Dlinux_use_gold_flags=0                   | Never use bundled gold binary. Disable gold linker flags for now.
 # -Dusb_ids_path=/usr/share/hwdata/usb.ids   | Use the file at run time instead of effectively compiling it in.
 # -Denable_hotwording=0                      | http://crbug.com/491435
+# -Dicu_use_data_file_flag=1                 | set to 0 when fix https://crbug.com/592268
+
 _flags=("-Dclang=${_use_clang}"
         '-Ddisable_glibc=1'
         '-Ddisable_fatal_linker_warnings=1'
@@ -317,7 +320,7 @@ _flags=("-Dclang=${_use_clang}"
         "-Dgoogle_api_key=${_google_api_key}"
         "-Dgoogle_default_client_id=${_google_default_client_id}"
         "-Dgoogle_default_client_secret=${_google_default_client_secret}"
-        '-Dicu_use_data_file_flag=1' # https://crbug.com/592268
+        '-Dicu_use_data_file_flag=1'
         '-Dlibspeechd_h_prefix=speech-dispatcher/'
         "-Dlinux_link_gnome_keyring=${_use_gnome_keyring}"
         "-Dlinux_link_gsettings=${_use_gnome}"
@@ -374,10 +377,10 @@ fi
 # -Duse_system_sqlite=1      | https://crbug.com/22208
 # -Duse_system_ssl=1         | https://crbug.com/58087
 # -Duse_system_libsrtp=1     | https://crbug.com/501318
-# -Duse_system_libvpx=1      | https://crbug.com/494939
 # -Duse_system_re2=1         | https://bugs.gentoo.org/show_bug.cgi?id=571156
 # -Duse_system_protobuf=1    | https://bugs.gentoo.org/show_bug.cgi?id=525560
 # -Duse_system_icu=1         | https://crbug.com/584920 and https://crbug.com/592268
+# -Duse_system_libpng=1      | https://crbug.com/595429
 # NOTE
 # -Duse_system_openssl=0     | Set to 1 if use BoringSSL instead of SSL
 # -Duse_system_libevent=0    | Need older version (<2.x.x)
@@ -393,10 +396,10 @@ _use_system=('-Duse_system_expat=1'
              '-Duse_system_libevent=0'
              '-Duse_system_libexif=1'
              '-Duse_system_libjpeg=1'
-             '-Duse_system_libpng=1'
+             '-Duse_system_libpng=0'
              '-Duse_system_libsrtp=0'
              '-Duse_system_libusb=0'
-             '-Duse_system_libvpx=0'
+             '-Duse_system_libvpx=1'
              '-Duse_system_libwebp=1'
              '-Duse_system_libxml=1'
              '-Duse_system_libxnvctrl=0'
@@ -442,13 +445,16 @@ prepare() {
   patch -p0 -i "${srcdir}/chromium-snapshot-toolchain-r1.patch"
 
   # Misc Patches:
-  patch -p1 -i "${srcdir}/enable_vaapi_on_linux-r4.diff"
+  patch -p1 -i "${srcdir}/enable_vaapi_on_linux-r6.diff"
   patch -p0 -i "${srcdir}/chromium-system-jinja-r9.patch"
 
   # Patch from crbug (chromium bugtracker)
   # https://crbug.com/473866
   patch -p0 -i "${srcdir}/chromium-widevine-r0.patch"
   sed 's|@WIDEVINE_VERSION@|The Cake Is a Lie|g' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
+
+  # https://crbug.com/595429
+  patch -p1 -i "${srcdir}/issue1853263002_1.diff"
 
   ##
   # Fix libpng errors
