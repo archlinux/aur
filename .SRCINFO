@@ -1,0 +1,18 @@
+pkgbase = meson-git
+	pkgdesc = SCons-like build system that use python as a front-end language and Ninja as a building backend
+	pkgver = 0.30.0.r95.536edb6
+	pkgrel = 1
+	url = http://mesonbuild.com/
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = python
+	depends = ninja
+	optdepends = python-pyqt5: GUI support
+	provides = meson
+	conflicts = meson
+	source = git+https://github.com/mesonbuild/meson
+	md5sums = SKIP
+
+pkgname = meson-git
+
