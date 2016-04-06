@@ -1,5 +1,5 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
-validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
+validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Contributor: Spider.007 <archPackage@spider007.net>
 pkgname=rcracki_mt
 pkgver=0.7.0
@@ -8,8 +8,10 @@ pkgdesc="A tool that can be used to perform a rainbow table attack on password h
 url="http://rcracki.sourceforge.net/"
 depends=('openssl')
 license=('GPL')
-source=("http://downloads.sourceforge.net/project/rcracki/rcracki_mt/${pkgname}_${pkgver}/${pkgname}_${pkgver}_src.7z")
-sha512sums=('f93dc1d7ca1f18c63a9612b053d86ad639589e2534361c2fb3d3c064c162002798082bc1219737ae9567a23daa6ef7a0f7a52e7debbeb8ceceb2e1724c71bf0d')
+source=("http://downloads.sourceforge.net/project/rcracki/rcracki_mt/${pkgname}_${pkgver}/${pkgname}_${pkgver}_src.7z"
+	"${pkgname}_${pkgver}_src.7z.sig")
+sha512sums=('f93dc1d7ca1f18c63a9612b053d86ad639589e2534361c2fb3d3c064c162002798082bc1219737ae9567a23daa6ef7a0f7a52e7debbeb8ceceb2e1724c71bf0d'
+            'SKIP')
 arch=('i686' 'x86_64')
 
 package() {
