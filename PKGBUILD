@@ -2,7 +2,7 @@
 
 pkgname=vpnc-juniper-git
 pkgver=0.5.3r550jnpr1
-pkgrel=2
+pkgrel=3
 pkgdesc="VPNC With Juniper patchset"
 url="https://github.com/ndpgroup/vpnc"
 license=('GPL')
@@ -12,7 +12,7 @@ provides=('vpnc')
 conflicts=('vpnc')
 optdepends=('openresolv: Let vpnc manage resolv.conf')
 arch=('i686' 'x86_64')
-source=("${pkgname}::git+https://github.com/ndpgroup/vpnc.git"
+source=("${pkgname}::git+https://github.com/ndpgroup/vpnc.git#branch=master"
         "vpnc-scripts::git://git.infradead.org/users/dwmw2/vpnc-scripts.git#commit=df5808b"
         'vpnc.conf'
         'vpnc-juniper.conf'
