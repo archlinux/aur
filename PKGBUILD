@@ -6,7 +6,7 @@ pkgname=neomutt
 pkgver=neomutt.20160404.r0.gfba0ecd
 pkgrel=1
 pkgdesc='Small but powerful text-based mail client'
-url='https://github.com/neomutt/neomutt'
+url='http://www.neomutt.org/'
 license=('GPL')
 source=('git+https://github.com/neomutt/neomutt.git#branch=neomutt')
 sha256sums=('SKIP')
