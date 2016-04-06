@@ -3,9 +3,9 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}-light-git
-pkgver=r22.2.gf6fe61e
+pkgver=r22.8.g5d7c34d
 pkgrel=1
-pkgdesc="Plugin for Vapoursynth: ${_plug}. (Light depends, GIT version)"
+pkgdesc="Plugin for Vapoursynth: ${_plug}. (Optional Depends, GIT Version)"
 arch=('any')
 url='http://forum.doom9.org/showthread.php?t=166582'
 license=('GPL')
@@ -18,7 +18,7 @@ optdepends=('vapoursynth-plugin-addgrain-git'
             'vapoursynth-plugin-dfttest-git'
             'vapoursynth-plugin-eedi2-git'
             'vapoursynth-plugin-fft3dfilter-git'
-            'vapoursynth-plugin-flash3kyuu_deband-git'
+            'vapoursynth-plugin-f3kdb-git'
             'vapoursynth-plugin-fluxsmooth'
             'vapoursynth-plugin-fmtconv'
             'vapoursynth-plugin-genericfilters-git'
