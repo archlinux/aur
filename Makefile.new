@@ -1,0 +1,41 @@
+PREFIX:=/usr/local
+MANPREFIX:=$(PREFIX)/share/man
+
+INSTALL = install
+
+CC      := cc
+LD      := $(CC)
+
+CFLAGS  += -pedantic -Wall
+LDFLAGS +=
+
+BIN = mkb
+SRC = mkb.c
+MAN = mkb.1
+
+OBJ = $(SRC:.c=.o)
+
+.POSIX:
+
+all: binutils
+
+binutils: $(BIN)
+
+.o:
+	@echo "LD $@"
+	@$(LD) $< -o $@ $(LDFLAGS)
+
+.c.o:
+	@echo "CC $<"
+	@$(CC) -c $< -o $@ $(CFLAGS)
+
+install: $(BIN) $(MAN)
+	$(INSTALL) -Dm 0755 $(BIN) $(DESTDIR)$(PREFIX)/bin/$(BIN)
+	$(INSTALL) -Dm 0644 $(MAN) $(DESTDIR)$(MANPREFIX)/man1/$(MAN)
+
+uninstall:
+	$(RM) $(DESTDIR)$(PREFIX)/bin/$(BIN)
+	$(RM) $(DESTDIR)$(MANPREFIX)/man1/$(MAN)
+
+clean :
+	$(RM) $(OBJ) $(BIN)

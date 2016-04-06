@@ -1,7 +1,7 @@
 pkgbase = mkb-git
 	pkgdesc = progress bar maker
 	pkgver = latest
-	pkgrel = 1
+	pkgrel = 2
 	url = http://git.2f30.org/mkb/
 	arch = i686
 	arch = x86_64
