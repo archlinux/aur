@@ -1,5 +1,5 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
-validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
+validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Past maintainer: GI_Jack <iamjacksemail@hackermail.com>
 # Contributor: Angel Velasquez <angvp@archlinux.org> 
 # Contributor: Jason Chu <jason@archlinux.org>
@@ -27,8 +27,10 @@ optdepends=('gpsd: log coordinates of detected networks'
             'ruby: ruby interface')
 backup=('etc/kismet.conf' 'etc/kismet_drone.conf')
 install=kismet.install
-source=("http://www.kismetwireless.net/code/${_pkgname}-${_realver}.tar.gz")
-sha512sums=('cfbfb2cefd8df4a4fd09333eb6b0becd56cd7c3a1804d555d28b1d55379186e51804334560531d05e760d31e446c4b89d32ce2bd2c0705473f67f04611c0434e')
+source=("http://www.kismetwireless.net/code/${_pkgname}-${_realver}.tar.xz"
+	"${_pkgname}-${_realver}.tar.xz.sig")
+sha512sums=('cfbfb2cefd8df4a4fd09333eb6b0becd56cd7c3a1804d555d28b1d55379186e51804334560531d05e760d31e446c4b89d32ce2bd2c0705473f67f04611c0434e'
+            'SKIP')
 
 build() {
     cd "${srcdir}/${_pkgname}-${_realver}"
