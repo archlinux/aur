@@ -1,4 +1,5 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
+validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
 # Past maintainer: Ryon Sherman <ryon.sherman@gmail.com>
 # NOTE: This package was previously called truecrack-svn.
 # the project has moved from google code to github.
@@ -7,7 +8,7 @@ _pkgname="truecrack"
 
 pkgname="${_pkgname}-git"
 pkgver=r64.50eca69
-pkgrel=1
+pkgrel=2
 pkgdesc="TrueCrack is a brute-force password cracker for TrueCrypt volume files."
 conflicts=('truecrack-svn')
 
@@ -21,7 +22,7 @@ makedepends=('gcc')
 optdepends=('cuda: GPU Support')
 
 source=("git+https://github.com/lvaccaro/truecrack.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
