@@ -1,5 +1,5 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
-validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
+validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Past contributor: Andreas Schrafl <aschrafl@jetnet.ch>
 # based on the work of Jaroslav Lichtblau <tu@dragonlord.cz>
 # based on the work of KyAnh, http://kyanh.net/ <xkyanh@gmail.com>
@@ -13,10 +13,15 @@ url="http://boxbackup.org"
 license=('BSD')
 depends=('openssl' 'perl' 'zlib')
 backup=('etc/boxbackup/bbstored.conf')
-source=(https://github.com/boxbackup/boxbackup/archive/${pkgver}.tar.gz bbclient.service)
+source=("https://github.com/boxbackup/boxbackup/archive/${pkgver}.tar.gz"
+	"bbclient.service"
+	"${pkgver}.tar.gz.sig"
+	"bbclient.service.sig")
 
 sha512sums=('fed06f379c03ab73e884639f90f926050e07df85a5de6ee22a109210267d469e345110e28bcc5b1c78103301cefbf74279e13c720ca28751340b2609122d84af'
-         '88c9dfc022fa3b1716e74df7f26a29033f00734aa9d025b650871082ea1da0575aa03eb04f7027bdabe6c10be01feb9e528f6baaa33705f4bd74ef7422bf8779')
+            '88c9dfc022fa3b1716e74df7f26a29033f00734aa9d025b650871082ea1da0575aa03eb04f7027bdabe6c10be01feb9e528f6baaa33705f4bd74ef7422bf8779'
+            'SKIP'
+            'SKIP')
 
 build() {
 	export MAKEFLAGS="-j1"
