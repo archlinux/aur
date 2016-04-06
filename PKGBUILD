@@ -1,24 +1,30 @@
 # Maintainer: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=cogl
-pkgver=1.22.0
+pkgver=1.22.0+11+g81ab4a3
 pkgrel=1
 pkgdesc="An object oriented GL/GLES Abstraction/Utility Layer"
 arch=('i686' 'x86_64')
 url="http://www.clutter-project.org/"
 license=('GPL2')
 depends=('mesa' 'libdrm' 'libxext' 'libxdamage' 'libxcomposite' 'gdk-pixbuf2' 'pango' 'libxrandr')
-makedepends=('gobject-introspection')
+makedepends=('gobject-introspection' 'git' 'gtk-doc')
 options=(!emptydirs)
-source=(https://download.gnome.org/sources/$pkgname/${pkgver:0:4}/$pkgname-$pkgver.tar.xz)
-sha256sums=('689dfb5d14fc1106e9d2ded0f7930dcf7265d0bc84fa846b4f03941633eeaa91')
+source=('git://git.gnome.org/cogl#commit=81ab4a3e')
+sha256sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  git describe --long | sed 's/-/+/g'
+}
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd $pkgname
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   ./configure --prefix=/usr \
     --enable-gles{1,2} \
     --enable-{kms,wayland}-egl-platform \
@@ -31,7 +37,7 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   make DESTDIR="$pkgdir" install
 }
 
