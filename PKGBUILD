@@ -3,14 +3,14 @@
 
 _pkgname=polari
 pkgname=$_pkgname-git
-pkgver=3.19.2.16.g3064de4
+pkgver=3.20.0.6.g8d2e0e4
 pkgrel=1
 pkgdesc="An IRC Client for GNOME"
 arch=(i686 x86_64)
 license=(GPL)
 url="https://wiki.gnome.org/Apps/Polari"
 depends=(gjs gtk3 telepathy-glib telepathy-idle telepathy-mission-control telepathy-logger)
-makedepends=(intltool gobject-introspection desktop-file-utils appdata-tools)
+makedepends=(intltool gobject-introspection desktop-file-utils appdata-tools gnome-common)
 replaces=($_pkgname)
 provides=($_pkgname-$pkgver)
 conflicts=($_pkgname)
