@@ -31,5 +31,5 @@ post_upgrade() {
 }
 
 post_remove() {
-    post_upgrade
+    _update
 }
