@@ -1,6 +1,6 @@
 pkgbase = sysprof2-git
 	pkgdesc = CPU Profiler
-	pkgver = 1.99.0.gabbf2e0
+	pkgver = 3.19.90.g7610e09
 	pkgrel = 1
 	url = https://github.com/chergert/sysprof2
 	install = sysprof2.install

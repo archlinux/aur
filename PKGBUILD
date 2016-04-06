@@ -1,7 +1,7 @@
 # Maintainer: TingPing tingping@tingping.se
 
 pkgname=sysprof2-git
-pkgver=1.99.0.gabbf2e0
+pkgver=3.19.90.g7610e09
 pkgrel=1
 pkgdesc='CPU Profiler'
 arch=('i686' 'x86_64' 'armv6h')
@@ -20,8 +20,8 @@ _gitname='sysprof2'
 pkgver() {
   cd "$_gitname"
 
-  # TODO
-  _ver='1.99.0'
+  # TODO: Waiting for a git tag
+  _ver='3.19.90'
   _hash=`git describe --always`
   echo "$_ver.g$_hash"
 }
