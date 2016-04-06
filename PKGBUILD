@@ -1,4 +1,5 @@
 # Maintainer: Brent Saner <r00t (at) square-r00t (dot) net>
+validpgpkeys=('7482 31EB CBD8 08A1 4F5E  85D2 8C00 4C2F 9348 1F6B')
 # Contributor: TJ Vanderpoel <tj@rubyists.com>
 
 ## MAINTAINER NOTE BEGIN
@@ -69,7 +70,7 @@ _disabled_modules=(languages/mod_spidermonkey
 
 pkgname='freeswitch-git'
 pkgver=1.5.final.r1613.g3a13f0d
-pkgrel=3
+pkgrel=4
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk (git version)."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
@@ -114,6 +115,13 @@ source=("git+https://stash.freeswitch.org/scm/fs/freeswitch.git"
          'freeswitch.service')
 changelog='ChangeLog'
 _pkgname="freeswitch"
+sha512sums=('SKIP'
+            'a9c0f8397e9375b26f8c3950c07fff9ce2c60684bd99cfb371cd19cce2bfb2f042a5380a38751bcd212096611d38731a2613a93d037b53f0c1cf356180b98912'
+            '55e913bae6d3bb04ae9253989e40b6e0c3bfcecf95c28c904f5022ed218227c68530aaa60f99d7486469c95f9c1719da041a8fef82bf4ee54b1f901c443d347d'
+            '6d8a3080b73918fb4a10e077758726b8b8e917c6b6f9d3c11c3b81e14e2efb43cd6fdf87d86f81a9e374811ca0d555eaa901113795c9334104de5e1309458da7'
+            'e0ad57847905d11540567512fb224587a96db086ecaefd949964bd7e5bf29e448497fb3d6df5d88dbedd69beb5ae4618bb0e8462cbbb9fad84947c6932fc0b46'
+            'a4fd539de109de3475abfeb2bd8a95670af3f5af83bd6f6b229df19e81da3f121c28a62cff282f9dc152908ebe0f24f76743e00c72fa04dc1fd465a00dc6f976'
+            '0d71a056de156f5840effabf6fb37a20e64ae011ecd48bf049886d4c073fe251cd6adeb0380784622b570948e1ca30ce7c92a2cade230a7177c97ed697e6f1cb')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
@@ -256,10 +264,3 @@ package() {
   install -D -m 0755 "${srcdir}/run_log.freeswitch" usr/share/freeswitch/log/run
   install -D -m 0644 "${srcdir}/conf_log.freeswitch" usr/share/freeswitch/log/conf
 } 
-md5sums=('SKIP'
-	 'f674b302edeb1895bbefcaf7bb8510ca'
-         'bfa0c6c70c8173bc78fd228bd42a98ef'
-         '4126dcbe4e1e4f689230a0fe40edcb68'
-         'e9f0bdde366bca6fd29a9202818f3591'
-         'e6411d793501c29ec4afd6d54018de1b'
-         '31cd89e02ec3cc52769489a30ccf6c9b')
