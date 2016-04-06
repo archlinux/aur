@@ -3,7 +3,8 @@
 # Contributor: Maarten de Vries <maarten@de-vri.es>
 
 pkgbase=cloudabi-linux
-pkgver=4.5.0rc1
+_cloudabi_ver=0.1
+pkgver=4.5.0rc1cloudabi$_cloudabi_ver
 pkgrel=4
 arch=('x86_64')
 url="https://nuxi.nl"
@@ -12,12 +13,12 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 _commit='39369e68ea6c165ede7a29fd60b475ab6541d9c9'
 source=(
-  "https://github.com/NuxiNL/linux/archive/$_commit.tar.gz"
+  "https://github.com/NuxiNL/linux/archive/linux-cloudabi-$_cloudabi_ver.tar.gz"
   'config.x86_64'
   'linux.preset'
 )
 
-sha512sums=('45b0e7aa431607dd839cb7b1690256b6e01fc77f6184878153a6259504b8036830756eb388e5420010009f29318a3c27dd57e91a1d9df6edc1b62e36943298dd'
+sha512sums=('17039067c94c039e3d512fbc9e34c9239cfd29bb5adca92a2b3b2e228821e36f45a873fcaf8756e0e502426249945d5865b3da7b358e88f746cf75f58edb6b86'
             '1375eb24d45b04cdf3a861a5ae264c2a9d9eeb78f7b4043e9069e5a38ec12c3005a0df1ec7338b38f8337b8b304408e73d46422710dce1cc0b397d3c25855280'
             '5fe243dea17fdb71edc7098e0e1938beb7f2d851bd2be3981c4ef3d617aaad81ff1cb4c84689082472ebd13b721e849ad2214aefb9ffe40ec3d76abfd40b87ad')
 
