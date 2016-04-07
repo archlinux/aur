@@ -6,16 +6,16 @@
 
 pkgname=texworks
 pkgver=0.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A TeX IDE inspired by TeXShop.'
 arch=('i686' 'x86_64')
 url='http://tug.org/texworks'
 license=('GPL2')
-depends=('poppler-qt4' 'hunspell' 'desktop-file-utils')
+depends=('desktop-file-utils' 'hunspell' 'poppler-qt5' 'qt5-script')
 optdepends=('texlive-core: Support for typesetting'
             'lua: Support for Lua scripting/plugins'
             'python: Support for Python scripting/plugins')
-makedepends=('cmake' 'hardening-wrapper' 'lua' 'python')
+makedepends=('cmake' 'hardening-wrapper' 'lua' 'python' 'qt5-tools')
 provides=('texworks')
 conflicts=('texworks-svn')
 install=texworks.install
@@ -28,7 +28,7 @@ build() {
         -DTW_BUILD_ID='AUR' \
         -DWITH_LUA='ON' \
         -DWITH_PYTHON='ON' \
-        -DDESIRED_QT_VERSION:STRING=4 \
+        -DDESIRED_QT_VERSION:STRING=5 \
         -DCMAKE_INSTALL_PREFIX:PATH="$pkgdir/usr" .
     make
 }
