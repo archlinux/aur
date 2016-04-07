@@ -16,7 +16,7 @@ depends=(
   'python2-psutil'
   'python2-ipaddr'
   'python2-twisted'
-  'python2-daemon=1.6.1'
+  'python2-daemon16'
   'python2-keyring'
   'python2-zope-proxy'
   'python2-pyzmq'
