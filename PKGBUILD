@@ -8,7 +8,7 @@ pkgbase=linux-mptcp
 _srcname=mptcp
 _mptcpv=0.91
 pkgver=0.91.525002.856ebd0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.multipath-tcp.org/"
 license=('GPL2')
@@ -21,8 +21,8 @@ source=("git://github.com/multipath-tcp/mptcp#branch=mptcp_v${_mptcpv}"
         'linux.preset'
         'change-default-console-loglevel.patch')
 md5sums=('SKIP'
-         'cfa125ceceb9a0fd1e83ff2b9a9a59d1'
-         '3d718d42cab47222b1d0fb3c284dba8e'
+         '4b08d92164ee25f2a680700e426f6cd5'
+         '6a74094caead06597a356c864c8872bc'
          'eb14dcfd80c00852ef81ded6e826826a'
          '92562f0a5d8cc0e5972ab58523dbe0a4')
 
@@ -52,8 +52,8 @@ prepare() {
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   fi
 
-  # set extraversion to pkgrel
-  sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
+  # set extraversion to git revision
+  sed -ri "s|^(EXTRAVERSION =).*|\1 -$(git rev-parse --short HEAD)|" Makefile
 
   # don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
