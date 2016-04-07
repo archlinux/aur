@@ -4,3 +4,4 @@ Scratch-*.air
 scratch2-*.pkg.tar.xz
 pkg
 pkg/*
+update-scratch.sh
