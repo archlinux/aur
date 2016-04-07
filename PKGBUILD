@@ -9,13 +9,12 @@ arch=('i686' 'x86_64')
 url="https://arcanis.me/projects/awesome-widgets"
 license=('GPL3')
 depends=('plasma-framework')
-makedepends=('python')
 optdepends=("catalyst: for GPU monitor"
             "hddtemp: for HDD temperature monitor"
             "smartmontools: for HDD temperature monitor"
             "mpd: for music player monitor"
             "nvidia-utils: for GPU monitor")
-makedepends=('cmake' 'extra-cmake-modules')
+makedepends=('cmake' 'extra-cmake-modules' 'python')
 source=(https://github.com/arcan1s/awesome-widgets/releases/download/V.${pkgver}/${_pkgname}-${pkgver}-src.tar.xz)
 install=${pkgname}.install
 md5sums=('1a4dc1d912b663dfd24d00712ab68f07')
