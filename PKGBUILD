@@ -2,7 +2,7 @@
 # Contributor: mutantmonkey <mutantmonkey@mutantmonkey.in>
 
 pkgname=firefox-extension-scriptish
-pkgver=0.1.11
+pkgver=0.1.11.1
 pkgrel=1
 pkgdesc="Firefox add-on for user scripts (fork of Greasemonkey)"
 arch=('any')
@@ -12,8 +12,18 @@ depends=('firefox')
 conflicts=('scriptish')
 replaces=('scriptish')
 source=("https://addons.cdn.mozilla.net/user-media/addons/231203/scriptish-0.1.11-fx+sm.xpi")
-sha256sums=('9c0a5e618da18b1195d2db87883b14394fb408be11a32b028f68adedd98ed2da')
+sha256sums=('edc002a8e44f7620b277038828a7f4e5319b0a8a6cc9a7f87f88627c96903bc9')
+
+#package() {
+#  install -D $srcdir/*.xpi $pkgdir/usr/lib/firefox/browser/extensions/scriptish@erikvold.com.xpi
+#  }
 
 package() {
-  install -D $srcdir/*.xpi $pkgdir/usr/lib/firefox/browser/extensions/scriptish@erikvold.com.xpi
-  }
+    cd "$srcdir"
+    emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf)
+    local dstdir="$pkgdir/usr/lib/firefox/browser/extensions/${emid}"
+    install -d "$dstdir"
+    rm *.xpi
+    cp -dpr --no-preserve=ownership * "$dstdir"
+    chmod -R 755 "$dstdir"
+}
