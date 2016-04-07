@@ -2,7 +2,7 @@
 
 pkgname=webtorrent-desktop-bin
 _pkgname=webtorrent-desktop
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Streaming torrent client."
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('npm')
 provides=('webtorrent-desktop')
 conflicts=('webtorrent-desktop' 'webtorrent-desktop-git')
 source=("https://github.com/feross/${_pkgname}/releases/download/v${pkgver}/WebTorrent-v${pkgver}-linux.zip")
-sha256sums=('90a01cff9ac03c8766c9a1a9bd6d705216022d30054c0ba62230b6009bbaaf1c')
+sha256sums=('67213ebc247376947e02bc8e43be5931237f198e6f22680347e0d02d1f031c0a')
 
 package() {
   install -dm755 "${pkgdir}/usr/share"
