@@ -20,7 +20,7 @@ package() {
   cp -R "${srcdir}/truffle" "${pkgdir}/usr/lib/"
 
   mkdir -p "${pkgdir}/usr/bin"
-  ln -s "${pkgdir}/usr/lib/truffle/cli.js" "${pkgdir}/usr/bin/truffle"
+  ln -s "/usr/lib/truffle/cli.js" "${pkgdir}/usr/bin/truffle"
 
   install -D -m644 "${srcdir}/truffle/LICENSE" "${pkgdir}/usr/share/licenses/truffle/LICENSE"
 }
