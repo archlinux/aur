@@ -2,7 +2,7 @@
 
 pkgname=pydio
 pkgver=6.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='PHP file sharing platform, formerly AjaXplorer.'
 arch=('any')
 url='http://pyd.io/'
@@ -44,7 +44,7 @@ md5sums=('9c8cb779ee0c0fbed98f2d67734b9a14'
          '4852094d1b423d62fee10bf5fde38b63'
          'be74fee97c60b4ae7e8b194187b553ea'
          '272007089a6c8ca65d1bdde705d91e05'
-         '837e3fc09a4fcfdc8a20c758083cfb99')
+         '66b7b02228b4147a0e87b112441da4bb')
 
 package() {
   cd ${srcdir}/${pkgname}-core-${pkgver}
@@ -76,5 +76,12 @@ package() {
   install -Dm644 ${srcdir}/5.2.5-6.0.0.pgsql "${_DOCDIR}/upgrade/"
   install -Dm644 ${srcdir}/5.2.5-6.0.0.sqlite "${_DOCDIR}/upgrade/"
 
+  local _FULLSRCDIR="${srcdir}/${pkgname}-core-${pkgver}"
+  install -Dm644 ${_FULLSRCDIR}/plugins/core.mailer/create.mysql \
+                 "${_DOCDIR}/upgrade/6.x.x-6.4.0.mysql"
+  install -Dm644 ${_FULLSRCDIR}/plugins/core.mailer/create.pgsql \
+                 "${_DOCDIR}/upgrade/6.x.x-6.4.0.pgsql"
+  install -Dm644 ${_FULLSRCDIR}/plugins/core.mailer/create.sqlite \
+                 "${_DOCDIR}/upgrade/6.x.x-6.4.0.sqlite"
 }
 

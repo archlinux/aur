@@ -35,6 +35,8 @@ pre_upgrade() {
 post_upgrade() {
     if [ $(vercmp $2 6.0.0) -lt 0 ]; then
         echo
+        echo "5.x -> 6.0 upgrade notice :"
+        echo
         echo "Don't forget to to upgrade your database using scripts provided"
         echo "in /usr/share/doc/pydio/upgrade."
         echo
@@ -54,6 +56,23 @@ post_upgrade() {
         echo
         echo "If you have problems after upgrade, please go to :"
         echo "https://pyd.io/f/topic/troubleshooting-upgrade-to-v6/"
+        echo
+    fi
+    if [ $(vercmp $2 6.4.0-2) -lt 0 ]; then
+        echo
+        echo "6.x -> 6.4 upgrade notice :"
+        echo
+        echo "Don't forget to to upgrade your database using scripts provided"
+        echo "in /usr/share/doc/pydio/upgrade."
+        echo
+        echo "Also, please shutdown your webserver and run the following commands :"
+        echo
+        echo "# rm -f var/lib/pydio/cache/plugins_*.*"
+        echo "# rm -f var/lib/pydio/cache/i18n/*.*"
+        echo
+        echo "If you have problems after upgrade, please go to :"
+        echo "https://pydio.com/en/community/releases/pydio-core/pydio-core-640-sharing-ux-performances"
+        echo "or https://pydio.com/forum/f/topic/6-3-1-to-6-4-0-upgrade-withing-application-shows-no-available-upgrade/"
         echo
     fi
 }
