@@ -10,7 +10,7 @@ url='https://bitmask.net/'
 license=('GPL3')
 depends=(
   # There are multiple versions of these, we want the newer fork
-  'python2-gnupg>=2'
+  'python2-gnupg-ng-leap'
   'python2-simplejson'
   'python2-requests'
   'python2-leap_pycommon')
