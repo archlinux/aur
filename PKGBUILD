@@ -1,18 +1,14 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
-# Please consider the size of the package, before building on a potential small partition
-# like /tmp (bare in mind that most AUR helpers do so). The extracted content of the files
-# is about 3 GB in size.
-
 # Watch new releases at http://forum.unity3d.com/threads/unity-on-linux-release-notes-and-known-issues.350256/
 
 # Prevent compression of the final package since it would take too long (sereausly!)
 PKGEXT='.pkg.tar'
 
 pkgname=unity-editor-bin
-_version=5.3.4
-_build=f1
-_buildtag=20160317
+_version=5.4.0
+_build=b13
+_buildtag=20160406
 pkgver=${_version}${_build}+${_buildtag}
 pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
@@ -30,9 +26,17 @@ optdepends=('ffmpeg: for WebGL exporting'
 provides=('unity-editor')
 conflicts=('unity-editor')
 options=(!strip)
-install=${pkgname}.install
+install="${pkgname}.install"
 source=("http://download.unity3d.com/download_unity/linux/unity-editor-${pkgver}_amd64.deb")
-md5sums=('2308a4b23baa07af2664a8bf0dd338e4')
+md5sums=('1acc8c7d74aaa0ae380ee02126674a24')
+
+prepare() {
+	if [[ "$(df . -BG --output=avail | awk -F'[^0-9]*' 'FNR==2 {print $2;}')" -le "10" ]]; then
+		warning "It seems that you have less than 10GB left on the partition you are building on."
+		warning "You might want to change the build-/cache-directory as this package is rather big."
+		warning "Bear in mind that most AUR helpers build in /tmp, a potential small partition."
+	fi
+}
 
 package() {
 	bsdtar xf data.tar.gz
