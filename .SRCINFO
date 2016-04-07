@@ -1,0 +1,12 @@
+pkgbase = ppd-dell-b2375dfw
+	pkgdesc = CUPS Printer Driver for Dell B2375dfw
+	pkgver = A00
+	pkgrel = 1
+	url = http://www.dell.com/support/home/us/en/19/product-support/product/dell-B2375dfw/drivers?os=ln90
+	arch = any
+	license = custom
+	source = http://downloads.dell.com/FOLDER01816495M/1/Printer_B2375_Driver_Dell_A00_Linux.tar.gz
+	md5sums = 46de00a5cf7856eac33800dd61a6ed26
+
+pkgname = ppd-dell-b2375dfw
+
