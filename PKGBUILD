@@ -2,7 +2,7 @@
 
 _pyname=versioneer
 pkgname=python-$_pyname
-pkgver=0.15
+pkgver=0.16
 pkgrel=1
 pkgdesc='Easy VCS-based management of project version strings'
 url="https://pypi.python.org/pypi/$_pyname/"
@@ -10,7 +10,7 @@ depends=('python-setuptools')
 license=('custom')
 arch=('any')
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/$_pyname/$_pyname-$pkgver.tar.gz")
-md5sums=('38c8810defbc26721b7e4a419c040892')
+md5sums=('47ed8f172468a31639bedf74ff2cf323')
 
 build() {
   cd $srcdir/$_pyname-$pkgver
