@@ -12,11 +12,11 @@ _use_no_jdk_archive=
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=145.597.3
+_buildver=145.844.1
 _veryear=2016
 _verrelease=1
-_verextra=1
-_nojdkrelease=false
+_verextra=2
+_nojdkrelease=true
 pkgver=${_veryear}.${_verrelease}.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (community version)"
@@ -27,11 +27,11 @@ license=('Apache2')
 depends=('java-environment' 'giflib' 'libxtst')
 makedepends=('wget')
 if [ "${_nojdkrelease}" = "true" ] && [ -n "${_use_no_jdk_archive}" ]; then
-  source=("https://download.jetbrains.com/idea/ideaIC-${_veryear}.${_verrelease}.${_verextra}-no-jdk.tar.gz")
-  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIC-${_veryear}.${_verrelease}.${_verextra}-no-jdk.tar.gz.sha256" | cut -f1 -d" "))
+  source=("https://download.jetbrains.com/idea/ideaIC-${_buildver}-no-jdk.tar.gz")
+  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIC-${_buildver}-no-jdk.tar.gz.sha256" | cut -f1 -d" "))
 else
-  source=("https://download.jetbrains.com/idea/ideaIC-${_veryear}.${_verrelease}.${_verextra}.tar.gz")
-  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIC-${_veryear}.${_verrelease}.${_verextra}.tar.gz.sha256" | cut -f1 -d" "))
+  source=("https://download.jetbrains.com/idea/ideaIC-${_buildver}.tar.gz")
+  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIC-${_buildver}.tar.gz.sha256" | cut -f1 -d" "))
 fi
 
 package() {
