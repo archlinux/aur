@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Prince of persia
+Comment=Prince of persia - old DOS game
+Exec=/usr/bin/dosbox -conf /usr/local/games/dosbox-prince-of-persia/dosbox-prince-of-persia.conf
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/dosbox-prince-of-persia.png
+Encoding=UTF-8
+Categories=GNOME;GTK;Game;

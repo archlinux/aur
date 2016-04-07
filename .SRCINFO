@@ -1,0 +1,21 @@
+pkgbase = dosbox-prince-of-persia
+	pkgdesc = Prince of persia - old DOS game
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.bestoldgames.net/eng/
+	arch = any
+	license = Abandonware
+	depends = dosbox
+	depends = sdl
+	depends = unzip
+	source = http://www.bestoldgames.net/download/bgames/prince-of-persia.zip
+	source = dosbox-prince-of-persia.png
+	source = dosbox-prince-of-persia.desktop
+	source = dosbox-prince-of-persia.conf
+	md5sums = 5750420547a6739ffaa9b07cd74923ef
+	md5sums = dca719b74d10b38a2ba080e1db580d68
+	md5sums = dbdb77177064fe8b86fdab039ee1690d
+	md5sums = c3500c252e85bb78df2499fbc2370c25
+
+pkgname = dosbox-prince-of-persia
+
