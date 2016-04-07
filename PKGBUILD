@@ -30,7 +30,7 @@ optdepends=(
     'p7zip: support for 7zip archives')
 makedepends=('git' 'libxt' 'libx11')
 provides=("mc=${pkgver%%.r*}")
-conflicts=(mc-{,cvs,fork-svn,mp,slavz,suse})
+conflicts=(mc{,-cvs,-fork-svn,-mp,-slavz,-suse})
 backup=('etc/mc/edit.indent.rc'
         'etc/mc/filehighlight.ini'
         'etc/mc/mcedit.menu'
