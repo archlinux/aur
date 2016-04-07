@@ -14,10 +14,6 @@ replaces=('scriptish')
 source=("https://addons.cdn.mozilla.net/user-media/addons/231203/scriptish-0.1.11-fx+sm.xpi")
 sha256sums=('edc002a8e44f7620b277038828a7f4e5319b0a8a6cc9a7f87f88627c96903bc9')
 
-#package() {
-#  install -D $srcdir/*.xpi $pkgdir/usr/lib/firefox/browser/extensions/scriptish@erikvold.com.xpi
-#  }
-
 package() {
     cd "$srcdir"
     emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf)
