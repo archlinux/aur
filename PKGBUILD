@@ -37,6 +37,6 @@ package() {
   cd gbLocate
 
   install -d ${pkgdir}/usr/bin
-  install -m755 gbLocate.gambas ${pkgdir}/usr/bin/gbLocate
+  install -m755 gbLocate.gambas ${pkgdir}/usr/bin/gblocate
 }
 
