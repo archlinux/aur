@@ -1,20 +1,21 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-font-freetype'
-pkgver='0.03'
+pkgver='0.07'
 pkgrel='1'
 pkgdesc="read font files and render glyphs from Perl using FreeType2"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('freetype2>=2.5.0.1' 'perl')
+depends=('freetype2>=2.6.3' 'perl')
 makedepends=()
-url='http://search.cpan.org/dist/Font-FreeType'
-source=('http://search.cpan.org/CPAN/authors/id/G/GE/GEOFFR/Font-FreeType-0.03.tar.gz')
-md5sums=('47b9483c92f1b2df0bbb5258a6a596b2')
-sha512sums=('fb10e09e7ce1a85a23e3d4e4fc6fbcf05a910b61f75117d09f464c1d68f59b624343b079d03b0787df0493f003c80a8e4bf9c72557c2763a39ed9af2deb622cd')
-_distdir="Font-FreeType-0.03"
+checkdepends=('perl-test-warnings')
+url='https://metacpan.org/release/Font-FreeType'
+source=('http://search.cpan.org/CPAN/authors/id/D/DM/DMOL/Font-FreeType-0.07.tar.gz')
+md5sums=('058aae0f22416b089804db7f1de6bdf1')
+sha512sums=('f245f104f668eeb20fe84c8f05aa9132dd217f58f4d00c34d0318dc7de034ae9577c3f863191b27c52514fd8ef235d5018161015d246abafcc50d0eeb886c95e')
+_distdir="Font-FreeType-0.07"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
