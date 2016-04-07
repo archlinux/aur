@@ -3,12 +3,13 @@
 pkgname=plasma5-applet-awesome-widgets
 _pkgname=awesome-widgets
 pkgver=3.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of minimalistic Plasmoids which look like Awesome WM widgets (ex-PyTextMonitor)"
 arch=('i686' 'x86_64')
 url="https://arcanis.me/projects/awesome-widgets"
 license=('GPL3')
 depends=('plasma-framework')
+makedepends=('python')
 optdepends=("catalyst: for GPU monitor"
             "hddtemp: for HDD temperature monitor"
             "smartmontools: for HDD temperature monitor"
