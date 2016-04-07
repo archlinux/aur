@@ -4,8 +4,8 @@
 
 _pkgname=tzlocal
 pkgname=python-${_pkgname}
-pkgver=1.2
-pkgrel=2
+pkgver=1.2.2
+pkgrel=1
 pkgdesc="Tzinfo object for the local timezone"
 arch=('any')
 url='https://pypi.python.org/pypi/tzlocal'
@@ -13,7 +13,7 @@ license=('custom')
 depends=('python-pytz')
 makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/t/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('438f122d684c951b22cb98aecc80fdb961b84e69542bf878c6b9a9419de09a8b')
+sha256sums=('cbbaa4e9d25c36386f12af9febe315139fdd39317b91abcb42d782a5e93e525d')
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
