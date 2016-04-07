@@ -2,7 +2,7 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=2.6.1
+pkgver=2.6.1.2
 pkgrel=1
 _wwwpkgname=AdminLTE
 _wwwpkgver=1.1.7
@@ -28,7 +28,7 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	whitelist.txt
 	blacklist.txt)
 
-md5sums=('a12aeda6af08d785b711654927163f1d'
+md5sums=('0d7dd350cd2fcfede3845badfc783707'
          'ab48115b4c826bb49f187f53ad03db3f'
          '791c86996377ceca23d1459ea0fd5cd6'
          'cba1675593bb43c94a35aabe8a210efa'
