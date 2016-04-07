@@ -3,7 +3,7 @@
 
 pkgbase="ptpython"
 pkgname=("ptpython" "ptpython2")
-pkgver="0.31"
+pkgver="0.32"
 pkgrel="1"
 pkgdesc="Python REPL build on top of prompt_toolkit"
 arch=("any")
@@ -14,7 +14,7 @@ makedepends=(
     "python2-setuptools"
 )
 source=("https://pypi.python.org/packages/source/${pkgbase:0:1}/${pkgbase}/${pkgbase}-${pkgver}.tar.gz")
-sha256sums=('a70ac512efc7b3c3e1ed6adba56f7214d5ed48729f9dac474e9a73472152006f')
+sha256sums=('0dccac7b3f0ed6efe206ee61c4042950e52b4bee05680c499472115681d3efe8')
 
 prepare() {
     cp -a "${srcdir}/${pkgbase}-${pkgver}" "${srcdir}/${pkgbase}2-${pkgver}"
