@@ -7,9 +7,10 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 pkgname=spearmint-git
 _pkgname=spearmint
 pkgver=r4064.33b5758
-pkgrel=2
+pkgrel=4
 _ioq3v1='1.36'
 _ioq3v2='1.32-9'
+_upver='0.2'  # upstream release- needed for some pk3's.
 
 ## What games do you want to build in support for?
 ## baseq3 should at the LEAST be enabled.
@@ -24,11 +25,15 @@ url="http://spearmint.pw"
 license=("GPL3")
 arch=('i686' 'x86_64')
 depends=('sdl2')
+optdepends=('curl: use native curl'
+	    'openal: use native openal'
+	    'mumble: support for positional audio (as alternative to in-game VOIP feature)')
 makedepends=('sdl2')
 conflicts=('spearmint')
 provides=('spearmint')
 install=spearmint.install
-source=("${_pkgname}-engine::git+https://github.com/zturtleman/spearmint.git"
+source=("upstream.tar.xz::https://github.com/zturtleman/${_pkgname}/releases/download/release-${_upver}/${_pkgname}-${_upver}-linux.tar.xz"
+	"${_pkgname}-engine::git+https://github.com/zturtleman/spearmint.git"
 	"${_pkgname}-game::git+https://github.com/zturtleman/mint-arena.git"
 	"${_pkgname}-patch::git+https://github.com/zturtleman/spearmint-patch-data.git"
 	"https://raw.githubusercontent.com/gabomdq/SDL_GameControllerDB/master/gamecontrollerdb.txt"
@@ -44,7 +49,8 @@ source=("${_pkgname}-engine::git+https://github.com/zturtleman/spearmint.git"
 	"spearmint.launcher.sig"
 	"spearmint-server.launcher.sig"
 	"ioquake3-q3a-${_ioq3v2}.run.sig")
-sha512sums=('SKIP'
+sha512sums=('53a3b3b2bb139b9e5ecbd12c5876048dd2b2cffab07acf2db5fd7697f5624af24d503539bfe4a9acf721fdb6886063ff24d848637781f6639550e79f4a1abd26'
+            'SKIP'
             'SKIP'
             'SKIP'
             '950e7cd01fd272a7feed853f3bd9934ae050ccd1363d2d1d6a7fee78364ae697df9f4a1d98be949d8beb34afcb15de3908b267c1b19806cee996244ece7142fa'
@@ -95,6 +101,8 @@ prepare() {
   cp ${srcdir}/Makefile.local ${srcdir}/${_pkgname}-game/.
   mkdir -p ${srcdir}/${_pkgname}-{engine,game}/tmp
 
+  ## Extra .pk3 files needed
+  # Demo/ioq3
   cd ${srcdir}
   mkdir -p paks
   chmod 700 ioquake3-q3a-${_ioq3v2}.run
@@ -102,11 +110,14 @@ prepare() {
   install -d -m 750 ${srcdir}/${_pkgname}/{baseq3,missionpack}
   tar -C ${srcdir}/${_pkgname}/baseq3 -xf ${srcdir}/paks/idpatchpk3s.tar
   tar -C ${srcdir}/${_pkgname}/missionpack -xf ${srcdir}/paks/idtapatchpk3s.tar
+  # upstream
   cd ${srcdir}
-  # don't need this anymore.
-  rm -rf ${srcdir}/paks
+  mv "${_pkgname}-${_upver}-linux" ${_pkgname}_upstream
+  cp -a ${srcdir}/${_pkgname}_upstream/baseq3/* ${srcdir}/${_pkgname}/baseq3/.
+  cp -a ${srcdir}/${_pkgname}_upstream/missionpack/* ${srcdir}/${_pkgname}/missionpack/.
 
-  
+  # done with this, let's save some disk space.
+  rm -rf ${srcdir}/paks ${srcdir}/${_pkgname}_upstream
 }
 
 build() {
@@ -178,21 +189,25 @@ package() {
 
   ## GAME ##
   cd ${srcdir}/${_pkgname}-game/build/release-linux-${_ARCH}
-  for i in tools/{lburg,cpp,rcc,etc,asm} baseq3/{,vm,common,ui,game,cgame} missionpack/{,vm,qcommon,q3ui,ui,game,cgame};
+  #for i in tools/{lburg,cpp,rcc,etc,asm} baseq3/{,vm,common,ui,game,cgame} missionpack/{,vm,qcommon,q3ui,ui,game,cgame};  # per upstream- only needed for debug
+  for i in {baseq3,missionpack}/vm;
   do
     install -d -m 750 ${pkgdir}/opt/spearmint/${i}
   done
-  for i in baseq3 tools missionpack;
-  do
-    for f in $(find ${i} -type f);
-    do
-      install -D -m 640 ${f} ${pkgdir}/opt/spearmint/${f}
-    done
-    for x in $(find ${i} -type f -executable);
-    do
-      chmod 750 ${pkgdir}/opt/spearmint/${x}
-    done
-  done
+  #for i in baseq3 tools missionpack;  # per upstream- tools is mostly debug, compiler, etc. most people won't need them. if they do, they can just switch this back in.
+  #for i in baseq3 missionpack;
+  #do
+  #  for f in $(find ${i} -type f);
+  #  do
+  #    install -D -m 640 ${f} ${pkgdir}/opt/spearmint/${f}
+  #  done
+  #  for x in $(find ${i} -type f -executable);
+  #  do
+  #    chmod 750 ${pkgdir}/opt/spearmint/${x}
+  #  done
+  #done
+  
+  
 
   ## PATCH ##
   cd ${srcdir}/${_pkgname}-patch
@@ -209,7 +224,7 @@ package() {
     done
   done
 
-  # PK3 PAKs from demo
+  # PK3 PAKs from demo and upstream
   install -m 640 ${srcdir}/${_pkgname}/baseq3/* ${pkgdir}/opt/spearmint/baseq3/
   install -m 640 ${srcdir}/${_pkgname}/missionpack/* ${pkgdir}/opt/spearmint/missionpack/
 
