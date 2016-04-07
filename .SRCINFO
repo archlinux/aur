@@ -1,0 +1,14 @@
+pkgbase = python2-deepdiff
+	pkgdesc = Deep Difference of dictionaries, iterables, strings and other objects.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/seperman/deepdiff
+	arch = any
+	license = MIT
+	depends = python2
+	depends = salt
+	source = https://pypi.python.org/packages/source/d/deepdiff/deepdiff-1.1.0.tar.gz
+	sha256sums = ea82865707c974d4e1e4f7e5ab237a4558bb6f8c28c16c7850270ea0f791cc1f
+
+pkgname = python2-deepdiff
+
