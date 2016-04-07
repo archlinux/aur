@@ -7,12 +7,13 @@
 
 pkgname=facter2
 pkgver=2.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Collect and display system facts"
 arch=('any')
 url="http://puppetlabs.com/facter"
 license=('APACHE')
 depends=('ruby' 'inetutils' 'net-tools')
+makedepends=('python-docutils')
 provides=('facter')
 conflicts=('facter')
 source=(http://downloads.puppetlabs.com/facter/facter-$pkgver.tar.gz)
