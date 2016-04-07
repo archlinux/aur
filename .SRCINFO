@@ -1,0 +1,12 @@
+pkgbase = taarich
+	pkgdesc = Summary: Tells the Hebrew date, Torah readings, and generates calendars
+	pkgver = 1.20051120
+	pkgrel = 1
+	url = http://www.math.technion.ac.il/S/rl/calendar/gauss/
+	arch = any
+	license = BSD
+	source = taarich-1.20051120.tar.gz
+	md5sums = ab10af06a4fc13378b0359d5083c7aac
+
+pkgname = taarich
+
