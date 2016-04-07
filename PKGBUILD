@@ -1,7 +1,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=webtorrent-desktop
-pkgver=0.3.1
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Streaming torrent client."
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 makedepends=('npm')
 conflicts=('webtorrent-desktop-git' 'webtorrent-desktop-bin')
 source=("https://github.com/feross/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('7f173e90da4e5eb59797207fd51d4c701428b9ceb581dc3a0bd664d5961f1b15')
+sha256sums=('82972f1e1a5ebbef5e7097bba5bfe6320204c1e249e40f67b5d5938ae5644252')
 
 build() {
   cd "$pkgname-$pkgver"
