@@ -2,8 +2,9 @@ post_install() {
     # Reload systemctl
     systemctl daemon-reload
 
-    echo "You must create /etc/wallxplanet/wallxplanet.conf. Example: /etc/wallxplanet/wallxplanet_sample.conf"
-    echo "Adding in systemctl:"
+    echo "- You must create /etc/wallxplanet/wallxplanet.conf. Example: /etc/wallxplanet/wallxplanet_sample.conf"
+    echo "- You should edit /usr/bin/wallxplanet.sh and /usr/bin/downloadcloudsmap.sh to change output location of files"
+    echo "- Adding in systemctl:"
 
     for service in "downloadcloudsmap.timer" "wallxplanet" 
     do
@@ -19,6 +20,7 @@ post_upgrade() {
     systemctl daemon-reload
 
     echo "You should restart downloadcloudsmap & wallxplanet"
+    echo "- You should edit /usr/bin/wallxplanet.sh and /usr/bin/downloadcloudsmap.sh to change output location of files"
 
     for service in "downloadcloudsmap" "wallxplanet" 
     do
