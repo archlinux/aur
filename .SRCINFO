@@ -18,7 +18,7 @@ pkgbase = holodev-git
 	depends = sudo
 	depends = bash-completion
 	conflicts = holodev
-	source = git+http://github.com/lappis-tools/holodev
+	source = holodev:git+http://github.com/lappis-tools/holodev#branch=archlinux-support
 	sha256sums = SKIP
 
 pkgname = holodev-git
