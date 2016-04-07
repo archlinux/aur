@@ -8,7 +8,7 @@
 _lib32=0
 
 pkgname=('nvidia-full-beta' 'nvidia-utils-full-beta' 'nvidia-libgl-full-beta' 'opencl-nvidia-full-beta')
-pkgver=364.12
+pkgver=364.15
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -30,9 +30,9 @@ source=('20-nvidia.conf')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
 md5sums=('2640eac092c220073f0668a7aaff61f7')
-md5sums_i686=('fc600b54a518590976ced34795073f9f')
-md5sums_x86_64=('fbb16deedf34dd2d9da247261c5ce89c')
-[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('0ec484a88b650decfb6d23ba976e813d')
+md5sums_i686=('856c286a4838f62c250939c769b42d6e')
+md5sums_x86_64=('98dff9af5ce90295df442472483bca1e')
+[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('f158981302a9da47967f29dc958dc923')
 
 # Auto-detect patches (e.g. nvidia-linux-4.1.patch)
 for _patch in $(ls "$startdir"/*.patch 2>/dev/null); do
@@ -116,7 +116,7 @@ package_nvidia-libgl-full-beta() {
   pkgdesc="NVIDIA driver library symlinks for 'nvidia-utils-full-beta'"
   depends=('nvidia-utils-full-beta')
   provides=('libgl' 'nvidia-libgl')
-  conflicts=('libgl' 'nvidia-libgl' 'mesa<10.1.0-2')
+  conflicts=('libgl' 'nvidia-libgl' 'mesa<10.1.0-2' 'libglvnd')
   cd $_pkg
 
   # GLX extension for X (link)
@@ -167,8 +167,8 @@ package_nvidia-utils-full-beta() {
               'gtk3: nvidia-settings (GTK+ v3)'
               'opencl-nvidia-full-beta: OpenCL support'
               'xorg-server-devel: nvidia-xconfig')
-  provides=("nvidia-utils=$pkgver")
-  conflicts=('nvidia-utils')
+  provides=("nvidia-utils=$pkgver" 'nvidia-settings' 'libglvnd')
+  conflicts=('nvidia-utils' 'nvidia-settings' 'libglvnd')
   backup=('etc/X11/xorg.conf.d/20-nvidia.conf')
   install=$pkgname.install
   cd $_pkg
@@ -381,7 +381,7 @@ package_lib32-nvidia-libgl-full-beta() {
   pkgdesc="NVIDIA driver library symlinks for 'lib32-nvidia-utils-full-beta'"
   depends=('lib32-nvidia-utils-full-beta')
   provides=('lib32-libgl' 'lib32-nvidia-libgl')
-  conflicts=('lib32-libgl' 'lib32-nvidia-libgl' 'lib32-mesa<10.1.0-2')
+  conflicts=('lib32-libgl' 'lib32-nvidia-libgl' 'lib32-mesa<10.1.0-2' 'lib32-libglvnd')
   cd $_pkg
 
   # libGL (link)
@@ -423,8 +423,8 @@ package_lib32-nvidia-utils-full-beta() {
   pkgdesc="NVIDIA driver utilities and libraries for 'nvidia-full-beta' (32-bit)"
   depends=('lib32-zlib' 'lib32-gcc-libs')
   optdepends=('lib32-opencl-nvidia-full-beta: OpenCL support')
-  provides=("lib32-nvidia-utils=$pkgver")
-  conflicts=('lib32-nvidia-utils')
+  provides=("lib32-nvidia-utils=$pkgver" 'lib32-libglvnd')
+  conflicts=('lib32-nvidia-utils' 'lib32-libglvnd')
   cd $_pkg
 
   # libGL & OpenGL
