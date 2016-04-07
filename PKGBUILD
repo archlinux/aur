@@ -4,11 +4,11 @@
 GTK=3
 
 pkgname="spacefm-git"
-pkgver=20150919
-pkgrel=2
+pkgver=20160403
+pkgrel=1
 pkgdesc="A multi-panel tabbed file manager - git branch"
 arch=('i686' 'x86_64')
-url=("https://github.com/IgnorantGuru/spacefm")
+url="https://github.com/IgnorantGuru/spacefm"
 license=('GPL3')
 conflicts=("spacefm")
 provides=("spacefm")
@@ -36,7 +36,7 @@ sha512sums=(SKIP)
 
 pkgver() {
     cd "$srcdir/spacefm"
-    git log -1 --format="%cd" --date=short |tr -d -
+    echo $(git log -1 --format="%cd" --date=short |tr -d -)
 }
 
 prepare() {

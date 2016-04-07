@@ -1,7 +1,7 @@
 pkgbase = spacefm-git
 	pkgdesc = A multi-panel tabbed file manager - git branch
-	pkgver = 20150919
-	pkgrel = 2
+	pkgver = 20160403
+	pkgrel = 1
 	url = https://github.com/IgnorantGuru/spacefm
 	install = spacefm.install
 	arch = i686
