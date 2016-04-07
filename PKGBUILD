@@ -6,7 +6,7 @@
 # Use the archive without the bundled JDK - make sure you use your own,
 # either through JAVA_HOME or by setting the path to the JDK 
 # in ~/.IntelliJIdea2016.1/config/idea.jdk
-_use_no_jdk_archive=y
+_use_no_jdk_archive=
 
 ### Do no edit below this line unless you know what you're doing
 
