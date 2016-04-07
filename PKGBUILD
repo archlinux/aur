@@ -1,4 +1,5 @@
-# Maintainer: Aoibhinn di Tori <email@aoibh.in>
+# Maintainer: Ricardo Madriz <richin13@gmail.com>
+# Contributor: Aoibhinn di Tori <email@aoibh.in>
 # Contributor: Lara Maia <lara@craft.net.br>
 # Contributor: estranho <estranho@diogoleal.com>
 # Contributor: tsester <spyridon.papanastasiou@gmail.com>
