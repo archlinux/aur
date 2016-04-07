@@ -1,8 +1,8 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=Quake III: Arena (Spearmint)
+Name=Spearmint
 GenericName=Spearmint
-Comment=ioQuake3 - Quake III Open Source Engine (with Spearmint modifications)
+Comment=Spearmint (an ioquake3-based engine with numerous improvements)
 Exec=/usr/bin/spearmint
 Icon=/usr/share/pixmaps/spearmint.png
 StartupNotify=true

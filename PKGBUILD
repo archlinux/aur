@@ -1,11 +1,12 @@
 # Maintainer: brent s. <bts[at]square-r00t[dot]net>
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Thanks to Slash's ioquake3-git package (https://aur.archlinux.org/packages/ioquake3-git)
-# for install files and desktop icon, and general guidance (I owe you a beer!).
+# for install files and desktop icon, and general (indirect) guidance (I owe you a beer!).
+# Also thanks to the creator, Zack Middleton, who provided a lot of good input on packaging. I owe you a case!
 
 pkgname=spearmint-git
 _pkgname=spearmint
-pkgver=1
+pkgver=r4064.33b5758
 pkgrel=1
 _ioq3v1='1.36'
 _ioq3v2='1.32-9'
@@ -18,18 +19,19 @@ _ioq3v2='1.32-9'
 _games=("baseq3"
 	"missionpack")
 
-pkgdesc="An improved ioquake3-based Quake 3: Arena client (note: requires pak files from original CD) - Git master:HEAD"
+pkgdesc="An ioquake3-based engine with multiple improvements (note: requires pak files from original Q3 CD; incompatible with ioquake3)-git master:HEAD"
 url="http://spearmint.pw"
 license=("GPL3")
 arch=('i686' 'x86_64')
 depends=('sdl2')
 makedepends=('sdl2')
-conflicts=('spearmint' 'quake3' 'ioquake3' 'ioquake3-git')
-provides=('quake3' 'ioquake3' 'spearmint' 'ioquake3-git')
+conflicts=('spearmint')
+provides=('spearmint')
 install=spearmint.install
 source=("${_pkgname}-engine::git+https://github.com/zturtleman/spearmint.git"
 	"${_pkgname}-game::git+https://github.com/zturtleman/mint-arena.git"
 	"${_pkgname}-patch::git+https://github.com/zturtleman/spearmint-patch-data.git"
+	"https://raw.githubusercontent.com/gabomdq/SDL_GameControllerDB/master/gamecontrollerdb.txt"
 	"Makefile.local"
 	"spearmint.desktop"
 	"spearmint.service"
@@ -45,11 +47,12 @@ source=("${_pkgname}-engine::git+https://github.com/zturtleman/spearmint.git"
 sha512sums=('SKIP'
             'SKIP'
             'SKIP'
-            '7a5db71f2c9d8630f9cfbe8f345e076344e05791f5ef47f7c2abc232f0c5b4c3d344dba7c4b7defd94e88d1bc77ef55c68c89b53480c61e688cb410f5a1c6d4c'
-            '0c192c23cc180181f5edee12cd085e78f0cdd2d6e8f18dbd27532b76c36f2b0e731b764119a0a44df90411f94d3b7475bd40ae0d9b8f5bb3867442f93172746b'
-            'fd75d6633015057c49fdb1cd29dfa16b8b30fd49df2deb0bbbb9da1a5e84179672ee7fee5df6dc57b0e4b6931ab5200f9e6ada5127e57aec5bf29b3e1b020073'
-            '894a0b07399ea7fcf60c97516e5cf19740693192e896e687fba0aeedee675684d94968e69dc927bdb4a44b4298c82d5b4bdca0cc86e707c21cb44f4f9876aea9'
-            'c7611bf35ace821dcf5829e729c1b0e2f2cc858f2e8ffb491c94990b72990148a8700c1797d715ee2002b3acc10c599d69fa6bc0059c0f9117f64707b6745445'
+            '950e7cd01fd272a7feed853f3bd9934ae050ccd1363d2d1d6a7fee78364ae697df9f4a1d98be949d8beb34afcb15de3908b267c1b19806cee996244ece7142fa'
+            '2ca85a1fc28feaa0f7609d419f5ae81f830e9e9244bccfb8d881f1e44c6151af168bc5cc1e8ebcb1f212d345d34ea967b00763f682c35db720612b0b7162a522'
+            '9e70a201f26265e29fb9ce2d198d943de8e12094b9d04b5e2fad630508787f036c0ee318604a2899ad4a74b4cef8ba3bffd1e7817de8bcbd512a6f80783aea1a'
+            '778220bc8e853967745a7bfa56051b231a4d9217c311a6cdddcd542a164595e8c6f11e2b548cddec48d9b6347803aea772cfb7f773752c57d7f55235ae077b8b'
+            '92fb1693b91fc7e7ba97612990369a0344b23dbdcfd0c3ecbfc5e7519f86caf9348b63e9a641f081ef8ba913fb1f50a4ca830a7107bc939be5c345e89223f640'
+            '91b9af20e64223d7d7f21e7eb18cac168c9374409358e4e4d7ddad6576ceb68532d67ba82bc525833cd4ae4d8260ea44429299facbfb9186f72f16790f45a023'
             '2ff6eff394119697b1c0a76f9c6d70cec21f90aecd89b72f6459661d04821a799a9c70d80f390b2ae7822d5830e247033a79022cd6d3d1754f7780fadd2d418b'
             'SKIP'
             'SKIP'
@@ -57,6 +60,17 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}-engine"
+  (
+     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  #( set -o pipefail
+  #  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+  #  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  #)
+  )
+}
 
 prepare() {
 
@@ -79,11 +93,10 @@ prepare() {
 
   cp ${srcdir}/Makefile.local ${srcdir}/${_pkgname}-engine/.
   cp ${srcdir}/Makefile.local ${srcdir}/${_pkgname}-game/.
-  mkdir ${srcdir}/${_pkgname}-engine/tmp
-  mkdir ${srcdir}/${_pkgname}-game/tmp
+  mkdir -p ${srcdir}/${_pkgname}-{engine,game}/tmp
 
   cd ${srcdir}
-  mkdir paks
+  mkdir -p paks
   chmod 700 ioquake3-q3a-${_ioq3v2}.run
   ./ioquake3-q3a-${_ioq3v2}.run --tar xfC ${srcdir}/paks/.
   install -d -m 750 ${srcdir}/${_pkgname}/{baseq3,missionpack}
@@ -144,13 +157,13 @@ package() {
   ## Base dirs ##
   install -d -m 755 ${pkgdir}/usr/bin
   install -d -m 755 ${pkgdir}/usr/share/doc/${_pkgname}
-  install -d -m 750 ${pkgdir}/opt/quake3/{baseq3,missionpack,settings}
+  install -d -m 750 ${pkgdir}/opt/spearmint/{baseq3,missionpack}
 
   ## ENGINE ##
-  install -m 750 ${srcdir}/${_pkgname}-engine/build/release-linux-${_ARCH}/${_pkgname}_${_ARCH} ${pkgdir}/opt/quake3/${_pkgname}
-  install -m 750 ${srcdir}/${_pkgname}-engine/build/release-linux-${_ARCH}/${_pkgname}-server_${_ARCH} ${pkgdir}/opt/quake3/${_pkgname}-server
-  install -m 750 ${srcdir}/${_pkgname}-engine/build/release-linux-${_ARCH}/mint-renderer-opengl1_${_ARCH}.so ${pkgdir}/opt/quake3/
-  install -m 750 ${srcdir}/${_pkgname}-engine/build/release-linux-${_ARCH}/mint-renderer-opengl2_${_ARCH}.so ${pkgdir}/opt/quake3/
+  install -m 750 ${srcdir}/${_pkgname}-engine/build/release-linux-${_ARCH}/${_pkgname}_${_ARCH} ${pkgdir}/opt/spearmint/${_pkgname}
+  install -m 750 ${srcdir}/${_pkgname}-engine/build/release-linux-${_ARCH}/${_pkgname}-server_${_ARCH} ${pkgdir}/opt/spearmint/${_pkgname}-server
+  install -m 750 ${srcdir}/${_pkgname}-engine/build/release-linux-${_ARCH}/mint-renderer-opengl1_${_ARCH}.so ${pkgdir}/opt/spearmint/
+  install -m 750 ${srcdir}/${_pkgname}-engine/build/release-linux-${_ARCH}/mint-renderer-opengl2_${_ARCH}.so ${pkgdir}/opt/spearmint/
   # docs
   install -m 644 ${srcdir}/${_pkgname}-engine/id-readme.txt ${pkgdir}/usr/share/doc/${_pkgname}/
   install -m 644 ${srcdir}/${_pkgname}-engine/md4-readme.txt ${pkgdir}/usr/share/doc/${_pkgname}/
@@ -167,17 +180,17 @@ package() {
   cd ${srcdir}/${_pkgname}-game/build/release-linux-${_ARCH}
   for i in tools/{lburg,cpp,rcc,etc,asm} baseq3/{,vm,common,ui,game,cgame} missionpack/{,vm,qcommon,q3ui,ui,game,cgame};
   do
-    install -d -m 750 ${pkgdir}/opt/quake3/${i}
+    install -d -m 750 ${pkgdir}/opt/spearmint/${i}
   done
   for i in baseq3 tools missionpack;
   do
     for f in $(find ${i} -type f);
     do
-      install -D -m 640 ${f} ${pkgdir}/opt/quake3/${f}
+      install -D -m 640 ${f} ${pkgdir}/opt/spearmint/${f}
     done
     for x in $(find ${i} -type f -executable);
     do
-      chmod 750 ${pkgdir}/opt/quake3/${x}
+      chmod 750 ${pkgdir}/opt/spearmint/${x}
     done
   done
 
@@ -187,39 +200,27 @@ package() {
   do
     for i in $(find ${g} -type d);
     do
-      install -d -m 750 ${pkgdir}/opt/quake3/${i}
+      install -d -m 750 ${pkgdir}/opt/spearmint/${i}
     done
     for i in $(find ${g} -type f);
     do
       # TODO: should this be in .pk3 (zip) format?
-      install -D -m 640 ${srcdir}/${_pkgname}-patch/${i} ${pkgdir}/opt/quake3/${i}
+      install -D -m 640 ${srcdir}/${_pkgname}-patch/${i} ${pkgdir}/opt/spearmint/${i}
     done
   done
 
   # PK3 PAKs from demo
-  install -m 640 ${srcdir}/${_pkgname}/baseq3/* ${pkgdir}/opt/quake3/baseq3/
-  install -m 640 ${srcdir}/${_pkgname}/missionpack/* ${pkgdir}/opt/quake3/missionpack/
-  if [[ -d "${srcdir}/${_pkgname}/settings}" ]];
-  then
-    install -m 640 ${srcdir}/${_pkgname}/settings/* ${pkgdir}/opt/quake3/settings/
-  else
-    install -d -m 750 ${pkgdir}/opt/quake3/settings
-  fi
+  install -m 640 ${srcdir}/${_pkgname}/baseq3/* ${pkgdir}/opt/spearmint/baseq3/
+  install -m 640 ${srcdir}/${_pkgname}/missionpack/* ${pkgdir}/opt/spearmint/missionpack/
 
   cd ${pkgdir}/usr/bin
-  ln -sf /opt/quake3/${_pkgname}.launcher ${_pkgname}
-  ln -sf /opt/quake3/${_pkgname}-server.launcher ${_pkgname}-server
-  ln -sf /opt/quake3/${_pkgname}.launcher quake3 
-  ln -sf /opt/quake3/${_pkgname}-server.launcher q3ded 
-  ln -sf /opt/quake3/${_pkgname}.launcher ioquake3
-  ln -sf /opt/quake3${_pkgname}-server.launcher ioq3ded
-  cd ${pkgdir}/opt/quake3
-  ln -sf ${_pkgname} ioquake3
-  ln -sf ${_pkgname}-server ioq3ded
+  ln -sf /opt/spearmint/${_pkgname}.launcher ${_pkgname}
+  ln -sf /opt/spearmint/${_pkgname}-server.launcher ${_pkgname}-server
+  ln -sf /opt/spearmint/${_pkgname}.launcher spearmint 
 
   install -D -m 644 ${srcdir}/spearmint.service ${pkgdir}/usr/lib/systemd/system/spearmint.service
   install -D -m 644 ${srcdir}/spearmint.desktop ${pkgdir}/usr/share/applications/spearmint.desktop
-  install -m 750 ${srcdir}/${_pkgname}.launcher ${pkgdir}/opt/quake3/
-  install -m 750 ${srcdir}/${_pkgname}-server.launcher ${pkgdir}/opt/quake3/
+  install -m 750 ${srcdir}/${_pkgname}.launcher ${pkgdir}/opt/spearmint/
+  install -m 750 ${srcdir}/${_pkgname}-server.launcher ${pkgdir}/opt/spearmint/
 
 }

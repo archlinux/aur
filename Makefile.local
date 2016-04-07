@@ -18,7 +18,7 @@ export CROSS_COMPILING
 #SERVERBIN=spearmint-server
 #endif
 
-COPYDIR="%%_SRCDIR%%/opt/quake3"
+COPYDIR="%%_SRCDIR%%/opt/spearmint"
 
 COPYBINDIR=$(COPYDIR)
 

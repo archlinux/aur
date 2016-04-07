@@ -1,15 +1,15 @@
 post_install() {
     groupadd -f games
-    useradd -r -s /sbin/nologin -c "Spearmint Daemon user" -M -d /opt/quake3 -g games spearmint > /dev/null 2>&1
-    chown -R spearmint:games /opt/quake3
+    useradd -r -s /sbin/nologin -c "Spearmint Daemon user" -M -d /opt/spearmint -g games spearmint > /dev/null 2>&1
+    chown -R spearmint:games /opt/spearmint
 
     echo '!!!'
     echo '!!! NOTE: TO PLAY SPEARMINT, YOU MUST BE PART OF THE "games" GROUP!'
     echo '!!! To play Spearmint with the Retail Version of Quake III: Arena,'
-    echo '!!!  move the pak0.pk3 file from the original game CD to /opt/quake3/baseq3/'
+    echo '!!!  move the pak0.pk3 file from the original game CD to /opt/spearmint/baseq3/'
     echo '!!!'
     echo '!!!'
-    echo '!!! When you have the .pk3 file(s) installed, you can run the game via: quake3'
+    echo '!!! When you have the .pk3 file(s) installed, you can run the game via: spearmint'
     echo '!!! See https://github.com/zturtleman/spearmint/wiki for more documentation.'
     echo '!!!'
 }
@@ -25,8 +25,8 @@ post_remove() {
     then
       groupdel games
     fi
-    if [[ -d '/opt/quake3' ]];
+    if [[ -d '/opt/spearmint' ]];
     then
-    	chown -R root:root /opt/quake3 > /dev/null 2>&1
+    	chown -R root:root /opt/spearmint > /dev/null 2>&1
     fi
 }
