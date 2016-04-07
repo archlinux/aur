@@ -1,14 +1,14 @@
 # Maintainer: TingPing tingping@tingping.se
 
 pkgname=hexchat-git
-pkgver=2.12.0.r1266.gb7373f4
+pkgver=2.12.0.r1285.g5b05271
 pkgrel=1
 pkgdesc='A GTK+ based IRC client'
 arch=('i686' 'x86_64' 'armv6h')
 url='https://hexchat.github.io'
 license=('GPL')
 options=('!libtool')
-depends=('gtk2' 'openssl' 'dbus-glib'
+depends=('gtk2' 'openssl' 'dbus-glib' 'luajit'
          'libcanberra' 'libnotify' 'libproxy' 
          'hicolor-icon-theme' 'desktop-file-utils' 'sound-theme-freedesktop' 'iso-codes')
 makedepends=('intltool' 'git' 'perl' 'python' 'autoconf-archive')
@@ -17,7 +17,8 @@ optdepends=('enchant: for spell check'
             'python: for python plugin')
 install='hexchat.install'
 provides=('hexchat')
-conflicts=('hexchat')
+conflicts=('hexchat' 'hexchat-lua-git')
+replaces=('hexchat-lua-git')
 source=('git://github.com/hexchat/hexchat.git')
 md5sums=('SKIP')
 _gitname='hexchat'
