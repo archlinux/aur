@@ -7,7 +7,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 pkgname=spearmint-git
 _pkgname=spearmint
 pkgver=r4064.33b5758
-pkgrel=4
+pkgrel=5
 _ioq3v1='1.36'
 _ioq3v2='1.32-9'
 _upver='0.2'  # upstream release- needed for some pk3's.
@@ -49,6 +49,7 @@ source=("upstream.tar.xz::https://github.com/zturtleman/${_pkgname}/releases/dow
 	"spearmint.launcher.sig"
 	"spearmint-server.launcher.sig"
 	"ioquake3-q3a-${_ioq3v2}.run.sig")
+noextract=("upstream.tar.xz")
 sha512sums=('53a3b3b2bb139b9e5ecbd12c5876048dd2b2cffab07acf2db5fd7697f5624af24d503539bfe4a9acf721fdb6886063ff24d848637781f6639550e79f4a1abd26'
             'SKIP'
             'SKIP'
@@ -104,20 +105,15 @@ prepare() {
   ## Extra .pk3 files needed
   # Demo/ioq3
   cd ${srcdir}
-  mkdir -p paks
   chmod 700 ioquake3-q3a-${_ioq3v2}.run
-  ./ioquake3-q3a-${_ioq3v2}.run --tar xfC ${srcdir}/paks/.
   install -d -m 750 ${srcdir}/${_pkgname}/{baseq3,missionpack}
-  tar -C ${srcdir}/${_pkgname}/baseq3 -xf ${srcdir}/paks/idpatchpk3s.tar
-  tar -C ${srcdir}/${_pkgname}/missionpack -xf ${srcdir}/paks/idtapatchpk3s.tar
+  ./ioquake3-q3a-${_ioq3v2}.run --tar --wildcards -xO ./idpatch*.tar 2> /dev/null | tar -xC ${srcdir}/${_pkgname}/baseq3/. > /dev/null 2>&1  # i am ashamed to admit how long it took me to figure this out.
+  ./ioquake3-q3a-${_ioq3v2}.run --tar --wildcards -xO ./idtapatch*.tar 2> /dev/null | tar -xC ${srcdir}/${_pkgname}/missionpack/. > /dev/null 2>&1
   # upstream
   cd ${srcdir}
-  mv "${_pkgname}-${_upver}-linux" ${_pkgname}_upstream
-  cp -a ${srcdir}/${_pkgname}_upstream/baseq3/* ${srcdir}/${_pkgname}/baseq3/.
-  cp -a ${srcdir}/${_pkgname}_upstream/missionpack/* ${srcdir}/${_pkgname}/missionpack/.
-
-  # done with this, let's save some disk space.
-  rm -rf ${srcdir}/paks ${srcdir}/${_pkgname}_upstream
+  tar --strip-components=1 -C ${srcdir}/${_pkgname}/ --wildcards -xf upstream.tar.xz spearmint-*-linux/baseq3/* spearmint-*-linux/missionpack/*
+  # done with these, let's save some disk space because these are big and a lot of people run makepkg in /tmp.
+  rm -rf ${srcdir}/ioquake3-q3a-${_ioq3v2}.run ${srcdir}/upstream.tar.xz
 }
 
 build() {
@@ -189,29 +185,23 @@ package() {
 
   ## GAME ##
   cd ${srcdir}/${_pkgname}-game/build/release-linux-${_ARCH}
-  #for i in tools/{lburg,cpp,rcc,etc,asm} baseq3/{,vm,common,ui,game,cgame} missionpack/{,vm,qcommon,q3ui,ui,game,cgame};  # per upstream- only needed for debug
-  for i in {baseq3,missionpack}/vm;
+  # dirs
+  for i in ${_games[@]};
   do
-    install -d -m 750 ${pkgdir}/opt/spearmint/${i}
+    install -d -m 750 ${pkgdir}/opt/${_pkgname}/${i}/vm
   done
-  #for i in baseq3 tools missionpack;  # per upstream- tools is mostly debug, compiler, etc. most people won't need them. if they do, they can just switch this back in.
-  #for i in baseq3 missionpack;
-  #do
-  #  for f in $(find ${i} -type f);
-  #  do
-  #    install -D -m 640 ${f} ${pkgdir}/opt/spearmint/${f}
-  #  done
-  #  for x in $(find ${i} -type f -executable);
-  #  do
-  #    chmod 750 ${pkgdir}/opt/spearmint/${x}
-  #  done
-  #done
-  
-  
+  # files
+  for g in ${_games[@]};
+  do
+    for f in $(find ${g} -type f -name "*.qvm");
+    do
+      install -m 640 ${f} ${pkgdir}/opt/${_pkgname}/${f}
+    done
+  done
 
   ## PATCH ##
   cd ${srcdir}/${_pkgname}-patch
-  for g in ${_games};
+  for g in ${_games[@]};
   do
     for i in $(find ${g} -type d);
     do
