@@ -2,7 +2,7 @@
 
 pkgname=mpd-sacd
 pkgver=0.20
-pkgrel=2
+pkgrel=3
 pkgdesc='MPD with patches for SACD and DVDA ISO playback.'
 url='http://git.musicpd.org/cgit/manisiutkin/mpd.git/'
 license=('GPL')
@@ -23,6 +23,12 @@ sha1sums=('SKIP'
 backup=('etc/mpd.conf')
 install=install
 
+prepare() {
+	# Temporary; see FS#48372
+	install -d "${srcdir}"/pkg-config
+	ln -s /usr/lib/pkgconfig/libsystemd.pc "${srcdir}"/pkg-config/libsystemd-daemon.pc
+}
+
 build() {
 	cd "${srcdir}/mpd"
 	./autogen.sh
@@ -38,6 +44,10 @@ build() {
 		--enable-dvdaiso \
 		--disable-sidplay \
 		--with-systemdsystemunitdir=/usr/lib/systemd/system
+
+	# Quick fix for missing glib-2.0 include.
+	sed -i 's/DSD_CFLAGS = \\/DSD_CFLAGS = $(MMS_CFLAGS) \\/' "${srcdir}"/mpd/Makefile
+
 	make
 }
 
