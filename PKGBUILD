@@ -1,8 +1,8 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 pkgname=energyplus
-pkgver=8.4.0
+pkgver=8.5.0
 pkgrel=1
-_relcode='09f5359d8a'
+_relcode='c87e61b44b'
 install="$pkgname.install"
 pkgdesc="A building energy simulation engine to model energy and water use in buildings"
 arch=('x86_64')
