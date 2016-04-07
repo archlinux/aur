@@ -1,6 +1,6 @@
 pkgbase = spectools
-	pkgdesc = Spectools is a set of utilities for using various spectrum analyzer hardware. It supports the suite of Wi-Spy devices.
-	pkgver = 201601R1
+	pkgdesc = A set of utilities for spectrum analyzer hardware including Wi-Spy devices.
+	pkgver = 2016.01.R1
 	pkgrel = 1
 	url = https://www.kismetwireless.net/spectools/
 	arch = i686
