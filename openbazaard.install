@@ -13,8 +13,8 @@ post_upgrade() {
 
 ## arg 1:  the old package version
 post_remove() {
-  #_rmuser
-  echo "Please remove $home and user $usr manually"
+  echo "Please remove $home and user $usr manually doing"
+  echo "userdel -rf $usr"
   echo "WARNING!!!"
   echo "Be sure to save your db and gpg backup"
 }
@@ -32,8 +32,3 @@ _mkuser() {
   }
 }
 
-_rmuser() {
-  echo -n "Removing openbazaar user... "
-  userdel -rf $usr 2>/dev/null
-  echo "done"
-}
