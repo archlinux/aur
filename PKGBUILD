@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-ess-git
-pkgver=15.09.250.g10f63dd
+pkgver=15.09.263.gc943353
 pkgrel=1
 pkgdesc="Emacs Speaks Statistics: A Universal Interface for \
  Statistical Analysis - git-version"
@@ -29,7 +29,6 @@ prepare() {
   cd ../doc
   sed -i 's+ text html pdf++' Makefile
   sed -i 's+install-other-docs++' Makefile
-  sed -i '296i@end itemize' ess.texi
 }
 
 build() {
