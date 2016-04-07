@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-strictures'
-pkgver='2.000000'
+pkgver='2.000002'
 pkgrel='1'
-pkgdesc="turn on strict and make all warnings fatal"
+pkgdesc="turn on strict and make most warnings fatal"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-bareword-filehandles' 'perl-indirect' 'perl-multidimensional' 'perl')
+depends=('perl-bareword-filehandles' 'perl-indirect' 'perl-multidimensional' 'perl>=5.006')
 makedepends=()
-url='http://search.mcpan.org/dist/strictures'
-source=('http://search.mcpan.org/CPAN/authors/id/H/HA/HAARG/strictures-2.000000.tar.gz')
-md5sums=('272d98533003581f42cafebfd95bfc5b')
-sha512sums=('94ecc46877253ff590bf9aba6637bd295e2f95c83d2dcabbcd0b73f7b6de07f2f5cef61f2e4d097057ba200298fb4b9cd992d0d23892433167afab47753bcffa')
-_distdir="strictures-2.000000"
+url='https://metacpan.org/release/strictures'
+source=('http://search.cpan.org/CPAN/authors/id/H/HA/HAARG/strictures-2.000002.tar.gz')
+md5sums=('fb1fada8260992bc85e126c21ffcc6d5')
+sha512sums=('30e7d02b4a240ef201e80f49066205f8563efade402bded4d0a818b0bde7c3bc5c4378e65b4e537ebd22d97ccab44e245764862eba5919770340d3811de346ef')
+_distdir="strictures-2.000002"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
