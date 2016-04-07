@@ -6,8 +6,8 @@ _vstname=Hive
 _vstdir=/usr/lib/vst # Note: these are Linux VSTs (.so files)
 
 pkgname=uhe-hive-vst
-pkgver=3965
-pkgrel=3
+pkgver=4408
+pkgrel=1
 pkgdesc='Commercial virtual-analog synthesizer from u-he'
 arch=('x86_64' 'i686')
 url='http://www.u-he.com/cms/hive'
@@ -17,7 +17,7 @@ makedepends=('xxd')
 _untardir=$_vstname-$pkgver
 _tarname=$_untardir.tar.gz
 source=("http://uhedownloads.heckmannaudiogmb.netdna-cdn.com/penguin/release/$pkgver/$_tarname")
-md5sums=('6fef511df532bda4e719f01699a1fa47')
+md5sums=('d07779c4a7852aa89550573df25cf15e')
 install=user.install
 
 _bits=$(echo "$CARCH" | sed "s/x86_64/64/" | sed "s/i686/32/")
