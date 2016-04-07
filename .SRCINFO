@@ -1,0 +1,29 @@
+pkgbase = xfce4-panel-hidpi
+	pkgdesc = Panel for the Xfce desktop environment with bigger icons in tasklist for HiDPI displays
+	pkgver = 4.12.0
+	pkgrel = 1
+	url = http://www.xfce.org/
+	install = xfce4-panel-hidpi.install
+	arch = i686
+	arch = x86_64
+	groups = xfce4
+	license = GPL2
+	makedepends = intltool
+	makedepends = gtk-doc
+	depends = exo
+	depends = garcon
+	depends = libxfce4ui
+	depends = libwnck
+	depends = hicolor-icon-theme
+	depends = desktop-file-utils
+	provides = xfce4-panel=4.12.0
+	conflicts = xfce4-panel
+	conflicts = xfce4-panel-devel
+	conflicts = xfce4-panel-git
+	source = http://archive.xfce.org/src/xfce/xfce4-panel-hidpi/4.12/xfce4-panel-4.12.0.tar.bz2
+	source = xfce4-panel-hidpi.patch
+	sha256sums = 30920fc2e2fc26279a82b5261a155c2cc15ab2aa1ced2275684a6ff8261b97b0
+	sha256sums = 5415a842fdd811a6bd5ac726c80110b663feee12b0847378559ed97846fb22fe
+
+pkgname = xfce4-panel-hidpi
+

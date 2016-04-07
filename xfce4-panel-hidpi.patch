@@ -1,0 +1,15 @@
+diff -aur xfce4-panel-4.12.0.pristine/plugins/tasklist/tasklist-widget.c xfce4-panel-4.12.0.new/plugins/tasklist/tasklist-widget.c
+--- xfce4-panel-4.12.0.pristine/plugins/tasklist/tasklist-widget.c	2016-02-09 12:01:32.935816562 +0100
++++ xfce4-panel-4.12.0.new/plugins/tasklist/tasklist-widget.c	2016-02-09 15:57:11.018924063 +0100
+@@ -2449,10 +2449,7 @@
+     return;
+ 
+   /* get the window icon */
+-  if (tasklist->show_labels)
+-    pixbuf = wnck_window_get_mini_icon (window);
+-  else
+-    pixbuf = wnck_window_get_icon (window);
++  pixbuf = wnck_window_get_icon (window);
+ 
+   /* leave when there is no valid pixbuf */
+   if (G_UNLIKELY (pixbuf == NULL))
