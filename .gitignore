@@ -1,3 +1,4 @@
+.gitignore
 src
 src/*
 Scratch-*.air
