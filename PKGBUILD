@@ -6,17 +6,17 @@
 # Use the archive without the bundled JDK - make sure you use your own,
 # either through JAVA_HOME or by setting the path to the JDK 
 # in ~/.IntelliJIdea2016.1/config/idea.jdk
-_use_no_jdk_archive=
+_use_no_jdk_archive=y
 
 ### Do no edit below this line unless you know what you're doing
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=145.597.3
+_buildver=145.844.1
 _veryear=2016
 _verrelease=1
-_verextra=1
-_nojdkrelease=false
+_verextra=2
+_nojdkrelease=true
 pkgver=${_veryear}.${_verrelease}.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (ultimate version)"
@@ -27,11 +27,11 @@ license=('custom')
 depends=('java-environment' 'giflib' 'libxtst')
 makedepends=('wget')
 if [ "${_nojdkrelease}" = "true" ] && [ -n "${_use_no_jdk_archive}" ]; then
-  source=("https://download.jetbrains.com/idea/ideaIU-${_veryear}.${_verrelease}.${_verextra}-no-jdk.tar.gz")
-  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIU-${_veryear}.${_verrelease}.${_verextra}-no-jdk.tar.gz.sha256" | cut -f1 -d" "))
+  source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}-no-jdk.tar.gz")
+  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIU-${_buildver}-no-jdk.tar.gz.sha256" | cut -f1 -d" "))
 else
-  source=("https://download.jetbrains.com/idea/ideaIU-${_veryear}.${_verrelease}.${_verextra}.tar.gz")
-  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIU-${_veryear}.${_verrelease}.${_verextra}.tar.gz.sha256" | cut -f1 -d" "))
+  source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}.tar.gz")
+  sha256sums=($(wget -q "${source}.sha256" && cat "ideaIU-${_buildver}.tar.gz.sha256" | cut -f1 -d" "))
 fi
 
 package() {
