@@ -18,8 +18,8 @@ install=$pkgname.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_$pkgver.orig.tar.bz2"
         "https://launchpad.net/ubuntu/+archive/primary/+files/fontconfig_$pkgver-$_ubver.debian.tar.xz"
         '53-monospace-lcd-filter.patch')
-md5sums=('824d000eb737af6e16c826dd3b2d6c90'
-         '5d8e082f4d36d6c82853f6b6a5f6997a'
+md5sums=('c988ea12f4117330246e041109152b4a'
+         '600869b15c56513542099eb9a05bd7bc'
          'a17e48be6a06bc056574be6756cb9738')
 
 prepare() {
