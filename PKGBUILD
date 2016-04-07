@@ -18,7 +18,8 @@ depends=(
         'gambas3-gb-image>=3.1.1'
         'gambas3-gb-settings>=3.1.1'
 		'gambas3-gb-form-stock>=3.1.1'
-		'gambas3-gb-desktop-x11')
+		'gambas3-gb-desktop-x11'
+		'slocate')
 
 _gitroot="https://github.com/kokoko3k/gbLocate.git"
 
