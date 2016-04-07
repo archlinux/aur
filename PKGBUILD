@@ -6,8 +6,8 @@ _vstname=Podolski
 _vstdir=/usr/lib/vst # Note: these are Linux VSTs (.so files)
 
 pkgname=uhe-podolski-vst
-pkgver=3965
-pkgrel=3
+pkgver=4408
+pkgrel=1
 pkgdesc='Freeware virtual-analog synthesizer from u-he'
 arch=('x86_64' 'i686')
 url='http://www.u-he.com/cms/podolski'
@@ -17,7 +17,7 @@ makedepends=('xxd')
 _untardir=$_vstname-$pkgver
 _tarname=$_untardir.tar.gz
 source=("http://uhedownloads.heckmannaudiogmb.netdna-cdn.com/penguin/release/$pkgver/$_tarname")
-md5sums=('24e72d1db8c3b22498f4d925dab5d4c9')
+md5sums=('4cc86c3be3f323c12a20231188c3b004')
 install=user.install
 
 _bits=$(echo "$CARCH" | sed "s/x86_64/64/" | sed "s/i686/32/")
