@@ -9,7 +9,6 @@ license=('MIT')
 source=("truffle::git+https://github.com/ConsenSys/truffle.git")
 makedepends=('npm')
 depends=('nodejs')
-conflicts=('truffle')
 sha256sums=('SKIP')
 provides=('truffle')
 
