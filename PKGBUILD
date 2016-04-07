@@ -2,7 +2,7 @@
 # Contributor: Loui Chang <louipc dot ist at NOSPAM gmail dot com>
 
 pkgname=mutt-kz
-pkgver=1.5.23.1
+pkgver=1.6.0.1
 pkgrel=1
 pkgdesc="Mutt with notmuch support and another improvements."
 url="https://github.com/karelzak/mutt-kz"
@@ -14,7 +14,7 @@ conflicts=('mutt')
 provides=('mutt')
 options=('!strip')
 source=("https://github.com/karelzak/$pkgname/archive/v$pkgver.tar.gz")
-md5sums=('808c7a47e5d6f16d4bbb631e550d9b4b')
+md5sums=('42a47d32888366b220b99f5183b5a487')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
