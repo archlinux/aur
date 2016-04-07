@@ -1,22 +1,23 @@
-# Maintainer: Marcel Korpel <marcel[dot]korpel[at]gmail>
+# Maintainer: FadeMind <fademind@gmail.com>
+# Contributor: Marcel Korpel <marcel[dot]korpel[at]gmail>
 
 _plugin_name=keefox
 pkgname=firefox-extension-$_plugin_name
-pkgver=1.5.4
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Adds free, secure and easy to use password management features to Firefox"
 arch=('any')
-url="http://keefox.org"
+url="http://${_plugin_name}.org"
 license=('GPL2')
 depends=('firefox' 'keepass-plugin-rpc')
-source=("https://addons.mozilla.org/firefox/downloads/latest/306880/platform:2/addon-306880-latest.xpi")
-sha256sums=('f373a2896036cddd4936f4779b9da83b68f0d01133e8416eda479bdf40ad52a9')
+source=("${_plugin_name}-${pkgver}.xpi::https://addons.cdn.mozilla.net/user-media/addons/306880/${_plugin_name}-${pkgver}-tb+fx-linux.xpi")
+sha256sums=('79b24492e191e112bac7fb42dfc318fe0e2fac369ab9dcb8da4534c3149f2ca4')
 
 package() {
-  emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf)
-  local dstdir="$pkgdir/usr/lib/firefox/browser/extensions/${emid}"
-  install -d "$dstdir"
-  cp -dpr --no-preserve=ownership * "$dstdir"
-  rm "$dstdir/addon-306880-latest.xpi"
-  chmod 644 "$dstdir"/META-INF/*
+    emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf)
+    local dstdir="$pkgdir/usr/lib/firefox/browser/extensions/${emid}"
+    install -d "$dstdir"
+    cp -dpr --no-preserve=ownership * "$dstdir"
+    rm "$dstdir/${_plugin_name}-${pkgver}.xpi"
+    chmod 644 "$dstdir"/META-INF/*
 }
