@@ -1,20 +1,21 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-moosex-attributehelpers'
-pkgver='0.23'
+pkgver='0.25'
 pkgrel='1'
-pkgdesc="Extend your attribute interfaces (deprecated)"
+pkgdesc="(DEPRECATED) Extend your attribute interfaces"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-moose>=0.56')
-makedepends=('perl-moose' 'perl-test-exception>=0.21')
-url='http://search.cpan.org/dist/MooseX-AttributeHelpers'
-source=('http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/MooseX-AttributeHelpers-0.23.tar.gz')
-md5sums=('ebdd543a211884854b6c87adf25e6e22')
-sha512sums=('57ec98e98172d761538aa475f2c6e8ef59c6430d121cd283642670d938a774211a5a55bb14a8a493f22a1a6edafa25d5bea7eb31c0dc4731d00f55b32bde87dc')
-_distdir="MooseX-AttributeHelpers-0.23"
+depends=('perl-moose>=0.56' 'perl>=5.006')
+makedepends=()
+checkdepends=('perl-moose' 'perl-test-exception>=0.21')
+url='https://metacpan.org/release/MooseX-AttributeHelpers'
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-AttributeHelpers-0.25.tar.gz')
+md5sums=('31552c620d3852650b8d3c9c914c29fd')
+sha512sums=('76f15c7f7bf0665464d33f1d432ec59b9d48a4cdc8b8af792c24c715dac9debef68ba4967a090f9960647f11e5d2ae0ba43e83eeba1cbc4a446a442dbdd57e1e')
+_distdir="MooseX-AttributeHelpers-0.25"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
