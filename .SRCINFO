@@ -1,20 +1,22 @@
 pkgbase = lib32-nvidia-utils-beta
-	pkgver = 364.12
+	pkgver = 364.15
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom:NVIDIA
 	options = !strip
-	source = http://us.download.nvidia.com/XFree86/Linux-x86/364.12/NVIDIA-Linux-x86-364.12.run
-	md5sums = fc600b54a518590976ced34795073f9f
+	source = http://us.download.nvidia.com/XFree86/Linux-x86/364.15/NVIDIA-Linux-x86-364.15.run
+	md5sums = 856c286a4838f62c250939c769b42d6e
 
 pkgname = lib32-nvidia-utils-beta
 	pkgdesc = NVIDIA driver utilities and libraries (beta version) (32-bit)
 	depends = lib32-zlib
 	depends = lib32-gcc-libs
 	optdepends = lib32-opencl-nvidia-beta: OpenCL support
-	provides = lib32-nvidia-utils=364.12
+	provides = lib32-nvidia-utils=364.15
+	provides = lib32-libglvnd
 	conflicts = lib32-nvidia-utils
+	conflicts = lib32-libglvnd
 
 pkgname = lib32-nvidia-libgl-beta
 	pkgdesc = NVIDIA driver library symlinks for 'lib32-nvidia-utils-beta'
@@ -24,6 +26,7 @@ pkgname = lib32-nvidia-libgl-beta
 	conflicts = lib32-libgl
 	conflicts = lib32-nvidia-libgl
 	conflicts = lib32-mesa<10.1.0-2
+	conflicts = lib32-libglvnd
 
 pkgname = lib32-opencl-nvidia-beta
 	pkgdesc = NVIDIA's OpenCL implemention for 'lib32-nvidia-utils-beta'
