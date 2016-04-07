@@ -1,20 +1,20 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-bootylicious'
-pkgver='1.10'
+pkgver='1.12'
 pkgrel='1'
 pkgdesc="Lightweight blog engine on Mojo steroids!"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-mojox-validator>=0.0016' 'perl-mojolicious>=5.81')
+depends=('perl-mojox-validator>=0.0016' 'perl-mojolicious>=5.81' 'perl>=5.8.1')
 makedepends=()
 url='https://metacpan.org/release/Bootylicious'
-source=('http://search.cpan.org/CPAN/authors/id/O/OL/OLEG/Bootylicious-1.10.tar.gz')
-md5sums=('129f40fe934e87d69801b04ff731e11a')
-sha512sums=('1c3daf1e590553c5d74ee7c17f0bfbdc9f64b58bbb746a523226256bb1fa644e471933540d168e81b5567af89fce02a919a0c08de56aac944a157f3b9b1aab7e')
-_distdir="Bootylicious-1.10"
+source=('http://search.cpan.org/CPAN/authors/id/O/OL/OLEG/Bootylicious-1.12.tar.gz')
+md5sums=('ed17e03ae9111623bea1443e6ce555bb')
+sha512sums=('574604ffb407a31c0b37f0a1da03f881214501e772cce5a00ea236644133d0dfa8ed7cb9150735c992dc9d1a905429a3faedfc083d92c60a9fef3007def8b1ad')
+_distdir="Bootylicious-1.12"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
