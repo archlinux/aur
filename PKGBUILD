@@ -1,7 +1,7 @@
 # Maintainer: Polichronucci <nick at discloud dot eu> 
 
 pkgname=owncloud-app-notifications
-pkgver=9.0.0
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="An app that notifies the user about important events of other apps"
 arch=('any')
@@ -9,8 +9,8 @@ url="https://github.com/owncloud/notifications"
 license=('AGPL')
 depends=('owncloud')
 options=('!strip')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/owncloud/notifications/archive/v9.0.0.tar.gz")
-sha512sums=("0b00dba2db819b7ac5a2ef8280be3930d1ba350892d2b4b92b8879932d5ff8db9492a7ef9d151ff3e5282f0c9ac980bfc5b77f456482388b98fb92b02109868b")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/owncloud/notifications/archive/v${pkgver}.tar.gz")
+sha512sums=('b23afe1b9b807c36a358a1e9919bb73fc445f3c76e83c9b66d5603b09c5aac529f037b362a4b7db08c6b5f3a2e1ade020e79d414af8a54941470f4252f85e60b')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/owncloud/apps"
