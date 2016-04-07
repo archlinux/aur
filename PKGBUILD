@@ -8,11 +8,9 @@ pkgdesc="A set of utilities for spectrum analyzer hardware including Wi-Spy devi
 arch=('i686' 'x86_64')
 url="https://www.kismetwireless.net/spectools/"
 license=('GPL')
-depends=('cairo' 'gdk-pixbuf2' 'glib2' 'gtk2' 'ncurses' 'pango'
-	'libusb' 'libusb-compat')
+depends=('cairo' 'gdk-pixbuf2' 'glib2' 'gtk2' 'ncurses' 'pango' 'libusb' 'libusb-compat')
 optdepends=('libtinfo: ncurses terminal graphics support')
-source=("https://www.kismetwireless.net/code/$pkgname-$_ver.tar.xz"
-	'spectool_gtk.desktop')
+source=("https://www.kismetwireless.net/code/$pkgname-$_ver.tar.xz" 'spectool_gtk.desktop')
 sha256sums=('8d70daaf3b4b71196ca63bbd5df0ef14b82c3b496f63b5cfa434fa637dc08d57'
 	'2ec667f8876db43463ef97628e00f2013068dc9139cf32e49ea40d2af77e71af')
 
