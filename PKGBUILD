@@ -1,8 +1,8 @@
 # Maintainer: Luca Weiss <WEI16416@spengergasse.at>
 
 pkgname=ubuntu-device-flash-bin
-pkgver=0.33.0ubuntu2
-_pkgver=0.33-0ubuntu2 # hyphen is not allowed in pkgver
+pkgver=0.34
+_pkgver=0.34-0ubuntu1 # hyphen is not allowed in pkgver
 pkgrel=1
 pkgdesc="Tools to work with Ubuntu Touch"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ provides=("ubuntu-device-flash")
 conflicts=("ubuntu-device-flash")
 source_i686=("http://mirrors.kernel.org/ubuntu/pool/universe/g/goget-ubuntu-touch/ubuntu-device-flash_${_pkgver}_i386.deb")
 source_x86_64=("http://mirrors.kernel.org/ubuntu/pool/universe/g/goget-ubuntu-touch/ubuntu-device-flash_${_pkgver}_amd64.deb")
-md5sums_i686=('f2ba36a0eb5f2c47ce9991b67b6a5cd2')
-md5sums_x86_64=('2e8eae2580131af93880872483a45a1a')
+md5sums_i686=('7f8805fa8143a8683d855c5f937b3186')
+md5sums_x86_64=('2d0926595b8e67bf81d773517bf225b7')
 
 package() {
 	bsdtar xf data.tar.xz
