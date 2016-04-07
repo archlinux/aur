@@ -33,15 +33,16 @@ depends=(
 
 makedepends=(git)
 source=("${_pkgname}::git+https://github.com/OpenBazaar/OpenBazaar-Server.git"
-	 ${_pkgname}.service
-	 ${_pkgname}.conf
+	"${_pkgname}.service"
+	"${_pkgname}.conf"
+	"${_pkgname}.sh"
 )
 install=${_pkgname}.install
 options=('!strip')
 provides=(${_pkgname})
 replaces=(${_pkgname})
-backup=('var/lib/openbazaard/ob.cfg '
-	'etc/conf.d/openbazaard.conf')
+backup=("var/lib/${_pkgname}/ob.cfg"
+	"etc/conf.d/${_pkgname}.conf")
 
 package(){
   cd $srcdir
@@ -49,14 +50,15 @@ package(){
 msg2 "Install systemd service"
   install -Dm644 $srcdir/${_pkgname}.service $pkgdir/usr/lib/systemd/system/${_pkgname}.service
 
-msg2 "Symlinking to allow gui to automatically call daemon"
-  install -dm755 $pkgdir/opt
-  ln -sr /var/lib/openbazaard $pkgdir/opt/OpenBazaar-Server
-
 msg2 "Install conf file"
   install -Dm644 $srcdir/${_pkgname}.conf $pkgdir/etc/conf.d/${_pkgname}.conf
   install -dm755 $pkgdir/var/lib/
   cp -r ${_pkgname} $pkgdir/var/lib/
+
+msg2 "Symlinking to allow gui to automatically call daemon"
+  install -dm755 $pkgdir/opt
+  ln -sr /var/lib/${_pkgname} $pkgdir/opt/OpenBazaar-Server
+  install -m777 ${_pkgname}.sh $pkgdir/var/lib/${_pkgname}/${_pkgname}
 
 msg2 "Python2 bytecode generation"
   cd $pkgdir/var/lib/${_pkgname}/ && python2 -m compileall .
@@ -72,4 +74,5 @@ pkgver() {
 
 md5sums=('SKIP'
          'df247302f02ad1af79e009fa75ced4bc'
-         'd66496060ae2a28c6f755a1fb29e3f37')
+         'd66496060ae2a28c6f755a1fb29e3f37'
+         '3dccb27e5df2324880fde3f1b0972a2c')
