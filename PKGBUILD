@@ -13,14 +13,14 @@
 # Contributor: archdria
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
-_CLANG_LIB_FILENAME="libclang.so.3.7"
-_CLANG_VERSION="3.7.0"
+_CLANG_LIB_FILENAME="libclang.so.3.8"
+_CLANG_VERSION="3.8.0"
 _CLANG_URL="http://llvm.org/releases/${_CLANG_VERSION}"
 _CLANG_DIRNAME="clang+llvm-${_CLANG_VERSION}-x86_64-linux-gnu-ubuntu-14.04"
 _CLANG_FILENAME="${_CLANG_DIRNAME}.tar.xz"
 
 pkgname=vim-youcompleteme-git
-pkgver=1747.381b213
+pkgver=1765.41e4886
 pkgver() {
   cd "YouCompleteMe"
   echo $(git rev-list --count master).$(git rev-parse --short master)
@@ -32,7 +32,7 @@ arch=('i686' 'x86_64')
 url='http://valloric.github.com/YouCompleteMe/'
 license=('GPL3')
 groups=('vim-plugins')
-depends=('mono' 'nodejs' 'python2' 'rust' 'vim')
+depends=('boost' 'boost-libs' 'libtinfo' 'mono' 'nodejs' 'python' 'python2' 'rust' 'vim')
 # use system's libclang on non-x86_64 architectures
 [[ "${CARCH}" != 'x86_64' ]] && depends+=('clang')
 makedepends=('cargo' 'cmake' 'git' 'go' 'make' 'mono' 'npm')
@@ -59,8 +59,8 @@ sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
 if [[ "${CARCH}" == 'x86_64' ]]; then
   # use bundled libclang on x86_64
   source+=("${_CLANG_URL}/${_CLANG_FILENAME}"{,.sig})
-  sha256sums+=('093a94ff8982ae78461f0d2604c98f6b454c15e2ef768d34c235c6676c336460'
-               '3251144f5f250b6cbb19041062f84c2c201d231b0f71d15631c65beb67582b0b')
+  sha256sums+=('3120c3055ea78bbbb6848510a2af70c68538b990cb0545bac8dad01df8ff69d7'
+               '7cc55f1a1cc3e5478581e66c79ffa5ab4d7495076e6164b52d7b1a63816751a7')
   validpgpkeys=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D')
   noextract=("${_CLANG_FILENAME}")
   _COMPLETER="USE_CLANG_COMPLETER"
@@ -103,6 +103,7 @@ prepare() {
 
   cd "$srcdir/YouCompleteMe/third_party/ycmd/third_party/JediHTTP"
   git submodule init
+  git config submodule.vendor/argparse.url "$srcdir/argparse"
   git config submodule.vendor/waitress.url "$srcdir/waitress"
   git config submodule.vendor/jedi.url "$srcdir/jedi"
   git config submodule.vendor/bottle.url "$srcdir/bottle"
