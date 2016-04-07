@@ -4,7 +4,7 @@
 pkgname=ubuntu-themes-wildblueyonder
 _pkgname=ubuntu-themes
 _actual_ver=14.04
-_extra_ver=+14.10.20140929
+_extra_ver=+15.04.20150410
 pkgver=${_actual_ver}${_extra_ver}
 # pkgver=${_actual_ver}${_extra_ver/\+/.}
 pkgrel=1
@@ -20,7 +20,7 @@ conflicts=(ubuntu-themes ubuntu-mono)
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${_pkgname}_${_actual_ver}${_extra_ver}.orig.tar.gz"
         gtk2.patch gtk3.patch)
-md5sums=('268d1c4a3ef375400f1cb990c4b635e0'
+md5sums=('f3b03e11e406c687b789dcb7cc94178f'
          '82ca564f78217c88358fedc5003bf149'
          'b3808ebed9a637971a934646349cde69')
 
