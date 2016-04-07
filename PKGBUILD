@@ -6,7 +6,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 pkgname=spearmint
 pkgver=0.2
-pkgrel=13
+pkgrel=14
 _ioq3v1='1.36'
 _ioq3v2='1.32-9'
 pkgdesc="An ioquake3-based engine with multiple improvements (note: requires pak files from original Q3 CD; incompatible with ioquake3)"
@@ -14,6 +14,9 @@ url="http://spearmint.pw"
 license=("GPL3")
 arch=('i686' 'x86_64')
 depends=('sdl2')
+optdepends=('curl: use native curl'
+	    'openal: use native openal'
+	    'mumble: support for positional audio (as alternative to in-game VOIP feature)')
 conflicts=('spearmint-git')
 install=spearmint.install
 source=("${pkgname}.tar.xz::https://github.com/zturtleman/${pkgname}/releases/download/release-${pkgver}/${pkgname}-${pkgver}-linux.tar.xz"
