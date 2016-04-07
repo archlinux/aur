@@ -1,7 +1,7 @@
 # Maintainer: M0Rf30
 
 pkgname=python2-libbitcoinclient
-pkgver=0.4.0
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Pure Python Obelisk + Bitcoin client side library'
 arch=('any')
@@ -18,4 +18,4 @@ package() {
   python2 setup.py install --root="$pkgdir" -O1
 }
 
-md5sums=('7e722425495a7b40694e702c90fcd8e4')
+md5sums=('87f8826aac8d0f2ff951b122be8624ff')
