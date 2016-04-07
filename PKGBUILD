@@ -22,7 +22,7 @@ package() {
   mv "${pkgdir}/usr/lib/${pkgname}-${pkgver}" "${pkgdir}/usr/lib/truffle"
 
   mkdir -p "${pkgdir}/usr/bin"
-  ln -s "${pkgdir}/usr/lib/truffle/cli.js" "${pkgdir}/usr/bin/truffle"
+  ln -s "/usr/lib/truffle/cli.js" "${pkgdir}/usr/bin/truffle"
 
   install -D -m644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
