@@ -13,8 +13,8 @@ arch=(any)
 url=""
 license=('GPL')
 groups=()
-depends=()
-makedepends=(fontforge)
+depends=(texlive-bin)
+makedepends=(fontforge cvs)
 checkdepends=()
 optdepends=()
 provides=()
@@ -25,16 +25,13 @@ options=()
 install=
 changelog=
 source=()
-#source=("$pkgname-$pkgver.tar.gz")
-#source=("cct::cvs+:pserver:anonymous@lsec.cc.ac.cn:/cvsroot/")
 noextract=()
-#md5sums=()
 validpgpkeys=()
 
 prepare() { 
 	#cd "$pkgname-$pkgver"
 	pwd
-	mkdir _tmp
+	mkdir _tmp||echo Subfolder _tmp is created to hold source files.
 	cd _tmp
 	echo Please type ENTER directly when prompting CVS password ...
 	cvs -d :pserver:anonymous@lsec.cc.ac.cn:/cvsroot/cct login
