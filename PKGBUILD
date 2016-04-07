@@ -2,7 +2,7 @@
 
 pkgname=imv
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Image viewer for Wayland and X11"
 url="http://github.com/eXeC64/imv"
 arch=('x86_64' 'i686')
@@ -22,12 +22,12 @@ sha1sums=('SKIP')
 
 build() {
   cd "${srcdir}/${pkgname}"
-  make
+  make BUILDDIR=build
 }
 
 package() {
   cd "${srcdir}/${pkgname}"
-  make DESTDIR="${pkgdir}" install
+  make BUILDDIR=build DESTDIR="${pkgdir}" install
 }
 
 # vim:set ts=2 sw=2 et:
