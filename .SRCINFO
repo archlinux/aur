@@ -1,0 +1,24 @@
+pkgbase = spectools
+	pkgdesc = Spectools is a set of utilities for using various spectrum analyzer hardware. It supports the suite of Wi-Spy devices.
+	pkgver = 201601R1
+	pkgrel = 1
+	url = https://www.kismetwireless.net/spectools/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = gtk2
+	depends = ncurses
+	depends = pango
+	depends = libusb
+	depends = libusb-compat
+	optdepends = libtinfo: ncurses terminal graphics support
+	source = https://www.kismetwireless.net/code/spectools-2016-01-R1.tar.xz
+	source = spectool_gtk.desktop
+	sha256sums = 8d70daaf3b4b71196ca63bbd5df0ef14b82c3b496f63b5cfa434fa637dc08d57
+	sha256sums = 2ec667f8876db43463ef97628e00f2013068dc9139cf32e49ea40d2af77e71af
+
+pkgname = spectools
+
