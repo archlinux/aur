@@ -11,7 +11,7 @@ license=('GPL3')
 arch=('any')
 depends=('python2' 'gnupg' 'python2-psutil')
 conflicts=('python2-gnupg' 'python2-gnupg-isis')
-provides=('python2-gnupg')
+provides=("python2-gnupg=$pkgver")
 source=("https://github.com/leapcode/$_srcname/archive/master.zip")
 sha256sums=('453bbfdb19d4467f289346c2f0b994ea729b1fafe34fd912a0dab4fe6808e171')
 
