@@ -3,13 +3,13 @@
 pkgname=ricin-git
 _pkgname=Ricin
 _submodule=tox-vapi
-pkgver=0.537.628494f
+pkgver=0.540.62bb688
 pkgrel=1
 pkgdesc="Lightweight and Fully-Hackable Tox client powered by Vala & Gtk3"
 url="https://github.com/RicinApp/Ricin"
 arch=('i686' 'x86_64')
 license=('GPL3')
-makedepends=('git' 'meson' 'ninja' 'vala')
+makedepends=('git' 'meson-git' 'ninja' 'vala')
 depends=('gtk3'
          'toxcore'
          'glib2'
