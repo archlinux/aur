@@ -1,12 +1,13 @@
 # Maintainer: Konstantin Shalygin <k0ste@cn.ru>
+# Contributor: Konstantin Shalygin <k0ste@cn.ru>
 
 pkgname='ovirt-guest-agent'
 _mainver='1.0.11'
-pkgver="${_mainver}.2"
-pkgrel='2'
+pkgver="${_mainver}.3"
+pkgrel='1'
 pkgdesc='The oVirt Guest Agent'
 arch=('x86_64')
-url='http://wiki.ovirt.org/Category:Ovirt_guest_agent'
+url="http://wiki.ovirt.org/develop/developer-guide/vdsm/guest-agent"
 depends=('systemd' 'python2' 'python2-dbus' 'python2-gobject2' 'dbus-glib' 'python2-ethtool' 'usermode')
 makedepends=('pam' 'libtool' 'python2' 'python2-pep8' 'pep8')
 license=('ASL 2.0')
@@ -18,7 +19,7 @@ source=("python2-arch.patch"
 sha256sums=('95c162b584dd137296bcec70d14079d4b93d10d8542a87bd8f1cd6ad01e4b140'
             'fab3d62ecd8f6546d5b193f4ca22919de20451678b4cce2c53aa0977fed4f483'
             '545235630d6da51b547c1e8c177ddbf9f57aa81017b8683274a449d46e765cc4'
-            '19d049892aa80ed6ee7e8d2499dffbd590abb3820f3c63b869099e935c42208c')
+            'bedc224ce25e6f45c10c2e9b7aafde5146c9a4bc54c9fe9d253e94c93944e138')
 backup=("etc/${pkgname}.conf")
 
 prepare() {
