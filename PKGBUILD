@@ -9,6 +9,7 @@ license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ConsenSys/truffle/archive/v1.0.0.tar.gz")
 makedepends=('npm')
 depends=('nodejs')
+conflicts=('truffle-git')
 sha256sums=('93bcb6091d119ed2d657ecfb33ba0a949415ed6e5bf22e2d731e26deb968163d')
 provides=('truffle')
 
