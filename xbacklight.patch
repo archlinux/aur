@@ -1,0 +1,53 @@
+diff -aur xfce4-power-manager-1.4.4.pristine/common/xfpm-brightness.c xfce4-power-manager-1.4.4.new/common/xfpm-brightness.c
+--- xfce4-power-manager-1.4.4.pristine/common/xfpm-brightness.c	2015-02-11 15:25:13.000000000 +0100
++++ xfce4-power-manager-1.4.4.new/common/xfpm-brightness.c	2016-04-07 12:41:56.974212363 +0200
+@@ -320,7 +320,7 @@
+     gint value = -1;
+     gchar *command = NULL;
+ 
+-    command = g_strdup_printf (SBINDIR "/xfpm-power-backlight-helper --%s", argument);
++    command = g_strdup_printf (SBINDIR "/xbacklight -%s", argument);
+     ret = g_spawn_command_line_sync (command,
+ 	    &stdout_data, NULL, &exit_status, &error);
+     if ( !ret )
+@@ -355,7 +355,7 @@
+ {
+     gint32 ret;
+ 
+-    ret = (gint32) xfpm_brightness_helper_get_value ("get-max-brightness");
++    ret = 100;
+     g_debug ("xfpm_brightness_setup_helper: get-max-brightness returned %i", ret);
+     if ( ret < 0 ) {
+ 	brightness->priv->helper_has_hw = FALSE;
+@@ -377,7 +377,7 @@
+     if ( ! brg->priv->helper_has_hw )
+ 	return FALSE;
+ 
+-    ret = (gint32) xfpm_brightness_helper_get_value ("get-brightness");
++    ret = (gint32) xfpm_brightness_helper_get_value ("get");
+ 
+     g_debug ("xfpm_brightness_helper_get_level: get-brightness returned %i", ret);
+ 
+@@ -398,7 +398,7 @@
+     gint exit_status = 0;
+     gchar *command = NULL;
+ 
+-    command = g_strdup_printf ("pkexec " SBINDIR "/xfpm-power-backlight-helper --set-brightness %i", level);
++    command = g_strdup_printf (SBINDIR "/xbacklight -set %i", level);
+     ret = g_spawn_command_line_sync (command, NULL, NULL, &exit_status, &error);
+     if ( !ret )
+     {
+@@ -418,8 +418,12 @@
+ xfpm_brightness_helper_get_switch (XfpmBrightness *brg, gint *brightness_switch)
+ {
+     gint ret;
++    GError *error = NULL;
++    gint exit_status = 0;
++    gchar *command = NULL;
+ 
+-    ret = xfpm_brightness_helper_get_value ("get-brightness-switch");
++    command = g_strdup_printf ("pkexec " SBINDIR "/xfpm-power-backlight-helper --get-brightness-switch");
++    ret = g_spawn_command_line_sync (command, NULL, NULL, &exit_status, &error);
+ 
+     if ( ret >= 0 )
+     {

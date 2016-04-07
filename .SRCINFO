@@ -1,0 +1,28 @@
+pkgbase = xfce4-power-manager-xbacklight
+	pkgdesc = Power manager for Xfce desktop using xbacklight for setting brightness
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = http://www.xfce.org/
+	install = xfce4-power-manager.install
+	arch = i686
+	arch = x86_64
+	groups = xfce4
+	license = GPL2
+	makedepends = intltool
+	makedepends = xfce4-panel
+	makedepends = lxpanel
+	depends = libxfce4ui
+	depends = upower
+	depends = libnotify
+	depends = hicolor-icon-theme
+	depends = xorg-xbacklight
+	optdepends = xfce4-panel: for the Xfce panel plugin
+	optdepends = lxpanel: for the LXDE panel plugin
+	conflicts = xfce4-power-manager
+	source = http://archive.xfce.org/src/apps/xfce4-power-manager/1.4/xfce4-power-manager-1.4.4.tar.bz2
+	source = xbacklight.patch
+	sha256sums = c50ec8aa7e7848c57c0f856dceb8132eb5f37585f0ac1627459ab8c882c73b07
+	sha256sums = 9e03283b77d2afff7570e2187b064a1954a5a40a1fdb79a37436469b7c050afe
+
+pkgname = xfce4-power-manager-xbacklight
+
