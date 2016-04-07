@@ -2,7 +2,7 @@
 
 _pkgname=libabigail
 pkgname="${_pkgname}-git"
-pkgver=1.0.rc0.r23.g6a7566d
+pkgver=1.0.rc3.r17.gd06c4cd
 pkgrel=1
 pkgdesc='ABI Generic Analysis and Instrumentation Library'
 arch=('i686' 'x86_64')
@@ -14,13 +14,13 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	git describe --long --tags | sed 's/-/.r/;s/-/./g'
+	git describe --long --tags | sed "s/^${_pkgname}-//;s/-/.r/;s/-/./g"
 }
 
 build() {
 	cd "${srcdir}/${_pkgname}"
 	autoreconf -i
-	./configure --prefix=/usr --disable-static
+	./configure --prefix=/usr --disable-static --disable-apidoc --disable-manual
 	make
 }
 
