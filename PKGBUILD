@@ -3,13 +3,13 @@
 
 pkgname=lv
 pkgver=4.51
-pkgrel=4
+pkgrel=5
 pkgdesc="a Powerful Multilingual File Viewer / Grep"
 depends=('ncurses')
 makedepends=('autoconf')
 license=('GPL')
 arch=('i686' 'x86_64')
-source=(http://www.ff.iij4u.or.jp/~nrt/freeware/lv451.tar.gz)
+source=(https://web.archive.org/web/20130405191850/http://www.ff.iij4u.or.jp/~nrt/freeware/lv451.tar.gz)
 md5sums=('85b70ae797f935741ec9a1cbe92f00e9')
 url="http://www.ff.iij4u.or.jp/~nrt/lv/index.html"
 
