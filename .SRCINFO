@@ -1,0 +1,14 @@
+pkgbase = alterant
+	pkgdesc = A self-contained dotfile manager and lightweight provisioning tool that supports encryption of sensitive data, multiline command execution, and a single file configuration for multiple machines.
+	pkgver = 26.d9b15e9
+	pkgrel = 1
+	url = https://github.com/autonomy/alterant
+	arch = x86
+	arch = x86_64
+	license = unknown
+	makedepends = go
+	options = !strip
+	options = !emptydirs
+
+pkgname = alterant
+
