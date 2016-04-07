@@ -1,7 +1,7 @@
 # Maintainer: Sebastien Duthil <duthils@free.fr>
 
 pkgname=rimworld
-pkgver=0.12.914
+pkgver=0.13.1135
 pkgrel=1
 pkgdesc="A sci-fi colony simulation game driven by an intelligent AI storyteller."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ if test "$CARCH" == i686; then
 elif test "$CARCH" == x86_64; then
   _rimworld_arch=x86_64
 fi
-_gamepkg=RimWorldAlpha12dLinux.zip
+_gamepkg=RimWorldAlpha13Linux.zip
 _pkgpaths_tries=("$startdir"
                  "$HOME/Downloads")
 
