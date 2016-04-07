@@ -3,9 +3,9 @@
 # Installation order:  freetype2-ubuntu → fontconfig-ubuntu → cairo-ubuntu
 
 pkgname=fontconfig-ubuntu
-pkgver=2.11.1
-_ubver=0ubuntu6
-pkgrel=3
+pkgver=2.11.94
+_ubver=0ubuntu1
+pkgrel=1
 pkgdesc="Library for configuring and customizing font access, with Ubuntu's LCD rendering patches."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/ubuntu/+source/fontconfig"
