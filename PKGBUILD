@@ -12,6 +12,7 @@ depends=('nodejs')
 conflicts=('truffle-git')
 sha256sums=('93bcb6091d119ed2d657ecfb33ba0a949415ed6e5bf22e2d731e26deb968163d')
 provides=('truffle')
+optdepends=('mocha: testing support')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
