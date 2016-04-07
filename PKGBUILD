@@ -4,7 +4,7 @@
 # Contributor: Carl George <arch at cgtx dot us> PGP-Key: 4BA2F7E101D9F512
 
 pkgname=rkt
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="App container runtime"
 arch=('x86_64')
@@ -17,7 +17,7 @@ replaces=('rocket')
 conflicts=('rocket')
 source=("https://github.com/coreos/rkt/archive/v${pkgver}.tar.gz"
         "rkt.sysusers")
-sha256sums=('82cb68f8a2a986d506f5bd1935883f5be83c7e918d3e1614b6db54db4f427fdd'
+sha256sums=('0468c5b1079da8df65db9ebd0b712f64509acf6c8d6b34b780b6e787271d9b30'
             '1ad8d343191be731289577d249a2467fbe5a69949117601e760b459f599d311f')
 install="${pkgname}.install"
 
