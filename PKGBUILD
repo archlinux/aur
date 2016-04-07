@@ -3,11 +3,11 @@
 pkgname=python2-tzlocal
 _pkgname=tzlocal
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python2 version for tzinfo object for the local timezone"
 arch=('any')
 url='https://pypi.python.org/pypi/tzlocal'
-license=('custom')
+license=('custom:cc-0')
 depends=('python2-pytz')
 makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/t/${_pkgname}/${_pkgname}-$pkgver.tar.gz")
