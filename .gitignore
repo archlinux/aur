@@ -16,4 +16,5 @@ pkg/
 *.7z
 *.rar
 *.deb
+*.pkg.tar.xz.sig
 CC0-1.0
