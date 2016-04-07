@@ -6,8 +6,8 @@ _vstname=TripleCheese
 _vstdir=/usr/lib/vst # Note: these are Linux VSTs (.so files)
 
 pkgname=uhe-triplecheese-vst
-pkgver=3965
-pkgrel=3
+pkgver=4408
+pkgrel=1
 pkgdesc='Freeware virtual-analog synthesizer from u-he'
 arch=('x86_64' 'i686')
 url='http://www.u-he.com/cms/triple-cheese'
@@ -17,7 +17,7 @@ makedepends=('xxd')
 _untardir=$_vstname-$pkgver
 _tarname=$_untardir.tar.gz
 source=("http://uhedownloads.heckmannaudiogmb.netdna-cdn.com/penguin/release/$pkgver/$_tarname")
-md5sums=('8215c533bf5ca8f78b1b668cef312d8c')
+md5sums=('e6984805d8a38ab558acc71317ea6c54')
 install=user.install
 
 _bits=$(echo "$CARCH" | sed "s/x86_64/64/" | sed "s/i686/32/")
