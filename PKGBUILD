@@ -5,7 +5,7 @@
 
 pkgname=mitmproxy
 pkgver=0.16
-pkgrel=3
+pkgrel=4
 pkgdesc="SSL-capable man-in-the-middle HTTP proxy"
 arch=('any')
 url="http://mitmproxy.org/"
@@ -24,8 +24,9 @@ source=("git+https://github.com/mitmproxy/mitmproxy.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 prepare() {
-  sed -e 's/lxml>=3.5.0, <3.6/lxml>=3.5.0, <3.7/' \
-      -e 's/h2>=2.1.0, <2.2/h2>=2.1.0, <2.3/' \
+  # Let's remove all the upper bounds
+  sed -e 's/, <[0-9=.]*//' \
+      -e '/netlib/s/.*/"netlib>={}".format(version.MINORVERSION),/' \
       -i mitmproxy/setup.py
 }
 
