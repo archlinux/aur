@@ -1,5 +1,5 @@
 pkgbase = nvidia-utils-beta
-	pkgver = 364.12
+	pkgver = 364.15
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = nvidia-utils-beta
 	options = !strip
 	source = 20-nvidia.conf
 	md5sums = 2640eac092c220073f0668a7aaff61f7
-	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/364.12/NVIDIA-Linux-x86-364.12.run
-	md5sums_i686 = fc600b54a518590976ced34795073f9f
-	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/364.12/NVIDIA-Linux-x86_64-364.12-no-compat32.run
-	md5sums_x86_64 = fbb16deedf34dd2d9da247261c5ce89c
+	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/364.15/NVIDIA-Linux-x86-364.15.run
+	md5sums_i686 = 856c286a4838f62c250939c769b42d6e
+	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/364.15/NVIDIA-Linux-x86_64-364.15-no-compat32.run
+	md5sums_x86_64 = 98dff9af5ce90295df442472483bca1e
 
 pkgname = nvidia-utils-beta
 	pkgdesc = NVIDIA driver utilities and libraries (beta version)
@@ -21,8 +21,12 @@ pkgname = nvidia-utils-beta
 	optdepends = gtk3: nvidia-settings (GTK+ v3)
 	optdepends = opencl-nvidia-beta: OpenCL support
 	optdepends = xorg-server-devel: nvidia-xconfig
-	provides = nvidia-utils=364.12
+	provides = nvidia-utils=364.15
+	provides = nvidia-settings
+	provides = libglvnd
 	conflicts = nvidia-utils
+	conflicts = nvidia-settings
+	conflicts = libglvnd
 	backup = etc/X11/xorg.conf.d/20-nvidia.conf
 
 pkgname = nvidia-libgl-beta
@@ -33,6 +37,7 @@ pkgname = nvidia-libgl-beta
 	conflicts = libgl
 	conflicts = nvidia-libgl
 	conflicts = mesa<10.1.0-2
+	conflicts = libglvnd
 
 pkgname = opencl-nvidia-beta
 	pkgdesc = NVIDIA's OpenCL implemention for 'nvidia-utils-beta'

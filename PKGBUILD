@@ -3,7 +3,7 @@
 # Based on [extra]'s nvidia-utils: https://www.archlinux.org/packages/extra/x86_64/nvidia-utils/
 
 pkgname=('nvidia-utils-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
-pkgver=364.12
+pkgver=364.15
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -21,8 +21,8 @@ source=('20-nvidia.conf')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
 md5sums=('2640eac092c220073f0668a7aaff61f7')
-md5sums_i686=('fc600b54a518590976ced34795073f9f')
-md5sums_x86_64=('fbb16deedf34dd2d9da247261c5ce89c')
+md5sums_i686=('856c286a4838f62c250939c769b42d6e')
+md5sums_x86_64=('98dff9af5ce90295df442472483bca1e')
 
 _create_links() {
   # create missing soname links
@@ -75,7 +75,7 @@ package_nvidia-libgl-beta() {
   pkgdesc="NVIDIA driver library symlinks for 'nvidia-utils-beta'"
   depends=('nvidia-utils-beta')
   provides=('libgl' 'nvidia-libgl')
-  conflicts=('libgl' 'nvidia-libgl' 'mesa<10.1.0-2')
+  conflicts=('libgl' 'nvidia-libgl' 'mesa<10.1.0-2' 'libglvnd')
   cd $_pkg
 
   # GLX extension for X (link)
@@ -126,8 +126,8 @@ package_nvidia-utils-beta() {
               'gtk3: nvidia-settings (GTK+ v3)'
               'opencl-nvidia-beta: OpenCL support'
               'xorg-server-devel: nvidia-xconfig')
-  provides=("nvidia-utils=$pkgver")
-  conflicts=('nvidia-utils')
+  provides=("nvidia-utils=$pkgver" 'nvidia-settings' 'libglvnd')
+  conflicts=('nvidia-utils' 'nvidia-settings' 'libglvnd')
   backup=('etc/X11/xorg.conf.d/20-nvidia.conf')
   install=$pkgname.install
   cd $_pkg
