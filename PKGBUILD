@@ -8,7 +8,7 @@ url='http://direnv.net'
 license=('MIT')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/direnv/direnv/archive/v$pkgver.tar.gz")
-sha256sums=('7863d533fa75953d10130396a9db7d129e14d19ea24177e603bd433af439f393')
+sha256sums=('918194e91435bf7ebb07705ba901e822dad7a01546e29e285043c3976fee115b')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
