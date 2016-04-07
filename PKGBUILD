@@ -2,7 +2,7 @@
 
 _pkgname=Arc-Dark-KDE
 pkgname=('arc-dark-suite-git')
-pkgver=r52.ea5a33a
+pkgver=r57.53ed800
 pkgrel=1
 pkgdesc="Arc-Dark cusomization for Plasma 5 (git version)"
 arch=('any')
