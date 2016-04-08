@@ -5,8 +5,6 @@
 _debug=n
 
 # Compile from a specific commit?
-#_commit=51cd5ea  #0.13.4
-#_commit=a7857b2  #0.13.5
 _commit=HEAD
 
 pkgname=libtorrent-pyro-git
@@ -44,11 +42,11 @@ build() {
     cd "$srcdir/libtorrent"
     #export CC=clang
     #export CXX=clang++
+    export CXXFLAGS+=" -fno-strict-aliasing"
 
     ./configure $_debug \
         --prefix=/usr \
         --with-posix-fallocate
-
     make
 }
 
