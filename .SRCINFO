@@ -6,8 +6,8 @@ pkgbase = jsgtk
 	arch = any
 	license = MIT
 	depends = gjs
-	source = https://github.com/WebReflection/jsgtk/archive/jsgtk-0.9.0.tar.gz
-	md5sums = 889a19500bf1ef45c4d09cc394928222
+	source = https://github.com/WebReflection/jsgtk/blob/master/archive/jsgtk-0.9.0.tar.gz?raw=true
+	md5sums = ecbeaad765a3817589ba392442a8adf1
 
 pkgname = jsgtk
 
