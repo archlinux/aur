@@ -9,7 +9,8 @@ pkgdesc='A collaborative note taking and journal application using a stylus.'
 arch=('any')
 license=('GPL3')
 url='http://cournal-project.org/'
-depends=('python>=3.1' 'gtk3>=3.2' 'poppler-glib>=0.18' 'gobject-introspection' 'python-gobject' 'python-zope-interface>=3.6' 'hicolor-icon-theme' 'desktop-file-utils' 'intltool')
+depends=('python>=3.1' 'gtk3>=3.2' 'poppler-glib>=0.18' 'gobject-introspection' 'python-gobject'
+	'python-zope-interface>=3.6' 'hicolor-icon-theme' 'desktop-file-utils' 'intltool')
 makedepends=('git' 'mercurial')
 source=()
 sha512sums=()
