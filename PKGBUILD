@@ -1,17 +1,17 @@
 # Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=mapbox-studio
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Vector tile driven map design"
 arch=('x86_64')
-url="https://mapbox.com/mapbox-studio/"
+url="https://mapbox.com/mapbox-studio-classic/"
 license=(BSD)
 depends=()
 makedepends=(unzip)
 source=("https://mapbox.s3.amazonaws.com/mapbox-studio/mapbox-studio-linux-x64-v${pkgver}.zip")
 noextract=("mapbox-studio-linux-x64-v${pkgver}.zip")
-sha1sums=('b0c80aa7143e47db0f08144f302cd96654d2cc65')
+sha1sums=('521e722fd5a317f48af2dc718447c9323041bd85')
 
 prepare() {
   unzip -q mapbox-studio-linux-x64-v${pkgver}.zip
