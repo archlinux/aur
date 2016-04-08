@@ -9,7 +9,7 @@ pkgver=3.0
 _pkgver2=160229-1221
 _pkgver=${pkgver}-${_pkgver2}
 fmodex_ver=4.24.16
-pkgrel=1
+pkgrel=2
 _pkgdl=ZandroDev
 pkgdesc="OpenGL ZDoom port with Client/Server multiplayer. (Development Build ${_pkgver})"
 arch=('i686' 'x86_64')
@@ -71,7 +71,7 @@ package() {
 
 	install -d -m 755 "${pkgdir}/usr/bin"
 	cd ${pkgdir}/usr/bin
-	ln -sf /usr/share/${pkgname}/${_pkgname}.launcher ${pkgname}
-	ln -sf /usr/share/${pkgname}/${_pkgname}-server.launcher ${pkgname}-server
+	ln -sf /usr/share/${pkgname}/${pkgname}.launcher ${pkgname}
+	ln -sf /usr/share/${pkgname}/${pkgname}-server.launcher ${pkgname}-server
 	
 }
