@@ -1,0 +1,22 @@
+pkgbase = xbfuse-git
+	pkgdesc = Mount Xbox and Xbox 360 disk images via FUSE
+	pkgver = r4.99db830
+	pkgrel = 1
+	url = http://multimedia.cx/xbfuse/
+	arch = x86_64
+	arch = i686
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = sed
+	depends = fuse
+	provides = xbfuse
+	conflicts = xbfuse
+	source = git+https://github.com/multimediamike/xbfuse
+	md5sums = SKIP
+
+pkgname = xbfuse-git
+
