@@ -105,8 +105,8 @@ install() {
 		cp -v "$MEMTEST86_PATH/"*                "$esp/EFI/memtest86/" # Move files in memtest ESP directory
 		mv -v "$esp/EFI/memtest86/boot$ARCH.efi" "$esp/EFI/memtest86/memtest$ARCH.efi" # Rename .efi file
 		echo -e "\nAdd a new configuration file for systemd-boot..."
-		echo -e "title MemTest86\n" \
-			"efi /EFI/memtest86/memtest86$ARCH.efi" > "$esp/loader/entries/memtest86-efi.conf"
+		echo -e "title MemTest86" \
+			"\nefi   /EFI/memtest86/memtest$ARCH.efi" > "$esp/loader/entries/memtest86-efi.conf"
 		;;
 
 		*) # Do nothing and quit

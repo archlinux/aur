@@ -17,7 +17,7 @@ source=("$_pkgbasename-$pkgver.iso.tar.gz::http://www.memtest86.com/downloads/$_
 	"memtest86-efi"
 	"memtest86-efi.conf")
 md5sums=('87c0fb1338183b5eaf11096d1d2f0475'
-         '71b77e2737370c5ce12c7b40ac12cbeb'
+         'db8f92f995967b608a36324efd2d62b6'
          '6c096df3f55baf3e27c3bd605a418aa2')
 
 prepare() {
