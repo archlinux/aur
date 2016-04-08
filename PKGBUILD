@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/seokbeomKim/shell_shortcut"
 license=('GPL')
 depends=('')
-source=("git://github.com/seokbeomKim/shell_shortcut")
+source=("https://github.com/seokbeomKim/shell_shortcut")
 md5sums=('SKIP')
 
 
