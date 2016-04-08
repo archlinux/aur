@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-catalyst-manual'
-pkgver='5.9007'
+pkgver='5.9009'
 pkgrel='1'
 pkgdesc="The Catalyst developer's manual"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl>=5.006')
 makedepends=()
-url='http://search.cpan.org/dist/Catalyst-Manual'
-source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Catalyst-Manual-5.9007.tar.gz')
-md5sums=('dd24ec95a064bab02c0ed0e4faf7a19e')
-sha512sums=('37da1afee051f8a1a3089994bab7b07beb8e7cefbd530b4a11cc4a06dba64f4b4ea7e2bd61c97c7b5d237c1adc38a3b00e401104b5fe81edc0eeac199dd82640')
-_distdir="Catalyst-Manual-5.9007"
+url='https://metacpan.org/release/Catalyst-Manual'
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Catalyst-Manual-5.9009.tar.gz')
+md5sums=('dd87fa67fba0b3993e252810343e8121')
+sha512sums=('b180fbf32ff73c8f9b939e976a451b757d89a50170d51ee4ba7c9ed1e87fe7ac494823fb87db6886952fe37851275dc71d616ac97540f4dfe2374821b156cade')
+_distdir="Catalyst-Manual-5.9009"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
