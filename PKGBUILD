@@ -11,7 +11,9 @@ makedepends=('npm')
 depends=('nodejs')
 sha256sums=('SKIP')
 provides=('truffle')
-optdepends=('mocha: testing support')
+optdepends=('mocha: testing support'
+            'testrpc: contract deployment'
+            'geth: contract deployment')
 
 package() {
   cd "${srcdir}/truffle"
