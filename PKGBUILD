@@ -38,6 +38,6 @@ package() {
 	ln -s "/opt/$pkgname/HSCards/" "$pkgdir/usr/bin/"
 	chmod 0777 "$pkgdir/opt/$pkgname/HSCards/"
 }
-md5sums=('a745a81be2e6e8fc9adca6d7eaf540d6'
+md5sums=('3206c648d240a2ffd9df5211e9946f64'
 	'81cbf4e6a4d8711ba29ad526b4c2c755'
 	'c81a05fdc3b96092fb363f841267e21f')
