@@ -2,7 +2,7 @@
 
 pkgname="holodev-git"
 _pkgname="holodev"
-pkgver=115.baf5fa1
+pkgver=116.a678626
 pkgrel=1
 epoch=1
 pkgdesc="A tool to facilitate the creation of Linux Containers for developing Debian systems"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('dmidecode' 'bridge-utils' 'libvirt' 'debootstrap' 'lxc' 'dnsmasq' 'ebtables' 'sudo' 'bash-completion')
 conflicts=('holodev')
 install="$pkgname.install"
-source=('holodev::git+http://github.com/lappis-tools/holodev#branch=archlinux-support')
+source=('holodev::git+http://github.com/lappis-tools/holodev')
 sha256sums=('SKIP')
 
 pkgver() {

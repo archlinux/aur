@@ -1,6 +1,6 @@
 pkgbase = holodev-git
 	pkgdesc = A tool to facilitate the creation of Linux Containers for developing Debian systems
-	pkgver = 110.f611d50
+	pkgver = 116.a678626
 	pkgrel = 1
 	epoch = 1
 	url = http://joenio.me/desenvolvendo-noosfero-usando-containers-lxc/
@@ -18,7 +18,7 @@ pkgbase = holodev-git
 	depends = sudo
 	depends = bash-completion
 	conflicts = holodev
-	source = holodev:git+http://github.com/lappis-tools/holodev#branch=archlinux-support
+	source = holodev::git+http://github.com/lappis-tools/holodev
 	sha256sums = SKIP
 
 pkgname = holodev-git
