@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-io-interactive'
-pkgver='0.0.6'
+pkgver='1.021'
 pkgrel='1'
 pkgdesc="Utilities for interactive I/O"
 arch=('any')
@@ -11,10 +11,9 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='http://search.cpan.org/dist/IO-Interactive'
-source=('http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/IO-Interactive-0.0.6.tar.gz')
-md5sums=('6ca9b8b8afc8b7d5e85985ea864d2431')
-sha512sums=('beee3f3c9c6ad9c9ca34e313a36312a62520c98914c9c405beacee1c2b3bf05ad2b2fe5a53b43abff8dec1dcbccada4718dd8b7b31a98755d96a6ef0f9863863')
-_distdir="IO-Interactive-0.0.6"
+source=('http://search.cpan.org/CPAN/authors/id/B/BD/BDFOY/IO-Interactive-1.021.tar.gz')
+md5sums=('1636503b9e7b34d88450233e2504b73f')
+_distdir="IO-Interactive-1.021"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
