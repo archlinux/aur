@@ -6,10 +6,10 @@ pkgbase="umlet"
 pkgname=($pkgbase{-standalone,-eclipse-plugin})
 
 # Version
-pkgver=14.1.1
+pkgver=14.2
 pkgrel=1
 #epoch=
-_date="2016-01-14"
+_date="2016-04-03"
 _tag="${_date}_UMLet_v${pkgver}"
 
 # Generic
@@ -34,7 +34,7 @@ makedepends=('maven' 'unzip')
 #backup=()
 #options=()
 #install=actor
-changelog=changelog
+#changelog=changelog
 
 # Sources
 source=("umlet.sh" "umlet.desktop" "https://github.com/umlet/umlet/archive/${_tag}.tar.gz")
@@ -44,7 +44,7 @@ source=("umlet.sh" "umlet.desktop" "https://github.com/umlet/umlet/archive/${_ta
 #validpgpkeys=()
 
 # Integrity
-md5sums=('SKIP' 'SKIP' '86d2987ad76522e926584a9b4532fc50')
+md5sums=('SKIP' 'SKIP' '46221fd47003f88ffe881954d68dfc83')
 #md5sums_i686=('')
 #md5sums_x86_64=('')
 #sha1sums=()
