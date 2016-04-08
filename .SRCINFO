@@ -1,8 +1,8 @@
 pkgbase = rivalctl-git
 	pkgdesc = SteelSeries Rival configuration tool
-	pkgver = r24.5873121
-	pkgrel = 1
-	url = https://github.com/pacoqueen/rivalctl
+	pkgver = r27.0bbf7c3
+	pkgrel = 2
+	url = https://github.com/nixi-awoo/rivalctl
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
@@ -14,7 +14,7 @@ pkgbase = rivalctl-git
 	depends = python-yaml
 	provides = rivalctl
 	conflicts = rivalctl
-	source = rivalctl-git::git://github.com/pacoqueen/rivalctl.git
+	source = rivalctl-git::git://github.com/nixi-awoo/rivalctl.git
 	sha256sums = SKIP
 
 pkgname = rivalctl-git

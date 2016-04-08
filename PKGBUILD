@@ -1,17 +1,18 @@
 # Maintainer: nixi <nixiawoo@gmail.com>
+# Contributor: HER0_01 <aconrad103 at gmail.com>
 
 pkgname=rivalctl-git
-pkgver=r24.5873121
-pkgrel=1
+pkgver=r27.0bbf7c3
+pkgrel=2
 pkgdesc="SteelSeries Rival configuration tool"
 arch=('any')
-url="https://github.com/pacoqueen/rivalctl"
+url="https://github.com/nixi-awoo/rivalctl"
 license=('GPL3')
 depends=('python' 'python-ioctl-opt-git' 'python-pyudev' 'python-webcolors' 'python-hidraw-git' 'python-yaml')
 makedepends=('python-setuptools')
 provides=('rivalctl')
 conflicts=('rivalctl')
-source=("$pkgname::git://github.com/pacoqueen/rivalctl.git")
+source=("$pkgname::git://github.com/nixi-awoo/rivalctl.git")
 sha256sums=('SKIP')
 
 pkgver() {
