@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-moosex-types-json'
-pkgver='0.02'
+pkgver='1.00'
 pkgrel='1'
 pkgdesc="JSON datatype for Moose"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-json-xs>=2.00' 'perl-moose>=0.82' 'perl-moosex-types>=0.15')
+depends=('perl-json' 'perl-moose' 'perl-moosex-types')
 makedepends=()
-url='http://search.cpan.org/dist/MooseX-Types-JSON'
-source=('http://search.cpan.org/CPAN/authors/id/M/MI/MILA/MooseX-Types-JSON-0.02.tar.gz')
-md5sums=('e6eb8745f38051ff471755759e6006c8')
-sha512sums=('b6c072bae945243ee0efb4a230c31bb20d74d7eccddd3a4c5ae106e21e7eca59f85da5b49950d835d5d396d33cd003063e301728bcac846127ac58b7eb8bd451')
-_distdir="MooseX-Types-JSON-0.02"
+url='https://metacpan.org/release/MooseX-Types-JSON'
+source=('http://search.cpan.org/CPAN/authors/id/M/MI/MILA/MooseX-Types-JSON-1.00.tar.gz')
+md5sums=('39ec7063a355ec7b0abc64ee20c94166')
+sha512sums=('1dfaa8907c04ca765fc03c2049cbf076b2e29f1df34b569d91b3cc3931acde8cc7563cb186d3ea4b278ee40f1c4706f6b03139fb370d6a9d79eb7e6de21aa23f')
+_distdir="MooseX-Types-JSON-1.00"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
