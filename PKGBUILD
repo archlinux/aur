@@ -2,7 +2,7 @@
 # Contributor: talavis <aur talavis eu>
 # Contributor: Bruno Vieira <mail@bmpvieira.com>
 pkgname=ugene
-pkgver=1.21.0
+pkgver=1.22.0
 pkgrel=1
 pkgdesc="A free cross-platform genome analysis suite."
 arch=('i686' 'x86_64')
@@ -10,10 +10,15 @@ url="http://ugene.net/"
 license=('GPL')
 depends=('qt5-base' 'libxtst' 'glu' 'qtwebkit' 'desktop-file-utils' 'procps-ng' 'python' 'shared-mime-info')
 source=(${url}downloads/$pkgname-$pkgver.tar.gz)
-sha256sums=('baf979a1f2b133822748750266f68a010ed8f7ac424ff1cbb9da44decc403cf5')
+sha256sums=('ee46be799c9f02a9b6a89f13747a4918d5c96c01676dc2d4cc4a4c98278912b6')
 install=$pkgname.install
 
 build() {
+  LC_ALL=C
+  #hopefully this falls back to english as default
+  curTranslFile=english.ts
+  curTranslTag=en
+  
   cd "$srcdir/$pkgname-$pkgver"
   if [[ $CARCH == "i686" ]]
   then
