@@ -1,0 +1,23 @@
+pkgbase = wechatircd-git
+	pkgdesc = IRC server capable of controlling Web WeChat
+	pkgver = r32.9732b27
+	pkgrel = 1
+	url = https://github.com/MaskRay/wechatircd
+	install = wechatircd.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = python-aiohttp
+	optdepends = python-ipython: pretty error messages with the '-d' option
+	provides = wechatircd
+	conflicts = wechatircd
+	source = git+https://github.com/MaskRay/wechatircd.git
+	source = wechatircd.service
+	source = wechatircd.install
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = wechatircd-git
+

@@ -1,0 +1,10 @@
+[Unit]
+Description=IRC server capable of controlling Web WeChat
+Documentation=https://github.com/MaskRay/wechatircd
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/wechatircd --tls-key /etc/wechatircd/key.pem --tls-cert /etc/wechatircd/cert.pem --http-root /usr/share/wechatircd
+
+[Install]
+WantedBy=multi-user.target
