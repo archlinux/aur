@@ -2,7 +2,7 @@
 
 pkgname=mopidy-mopify
 _pypiname=Mopidy-Mopify
-pkgver=1.5.16
+pkgver=1.5.17
 pkgrel=1
 pkgdesc='A web client that uses external web services to provide additional features and a more complete music experience.'
 arch=('any')
@@ -11,7 +11,7 @@ license=('APACHE')
 depends=('python2' 'mopidy>=0.19' 'mopidy-spotify' 'python2-configobj')
 makedepends=('python2' 'python2-setuptools')
 source=("https://pypi.python.org/packages/source/M/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
-md5sums=('3b83dfd69931dbdf610e3827c6830ff0')
+md5sums=('037221401322f9b416e13de99a0e2d3c')
 
 package() {
   cd "${srcdir}/${_pypiname}-${pkgver}"
