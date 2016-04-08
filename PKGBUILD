@@ -1,5 +1,5 @@
 pkgname=fusiondirectory-plugin-squid
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc="Squid connectivity plugin"
 arch=("any")
@@ -10,7 +10,7 @@ depends=("fusiondirectory>=$pkgver")
 install=fusiondirectory-plugin-squid.install
 source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-plugins-${pkgver}.tar.gz"
 "http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondirectory-${pkgver}.tar.gz")
-md5sums=('eac9f2a077e8569e615f4fb542a33b10' 'abaa6fd4c73d1b51c4bac16f9be2bd0e')
+md5sums=('e3b8df83899c46e3107c56e090e2f17b' '5046dccfdf0713f0ddd72dc076f615ee')
 
 package() {
 cd ./fusiondirectory-plugins-${pkgver}
