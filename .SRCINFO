@@ -27,7 +27,7 @@ pkgbase = vte3-ng-fullwidth-emoji
 	source = https://github.com/thestinger/vte-ng/archive/0.44.0.a.tar.gz
 	source = fullwidth-emoji.patch
 	sha256sums = bfa4f4148a63e8b730ab272792f55d03c8afa632bb5c28a440e1a5a8134c4b1b
-	sha256sums = 07a07525516576c34469a1ca9c554c740bc7fa89055a00002216fd6f89684785
+	sha256sums = 85e9c7f2014419238077f0cbe3fc522dc8afc81430dd49840cd1e33622623270
 
 pkgname = vte3-ng-fullwidth-emoji
 

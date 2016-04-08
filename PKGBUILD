@@ -14,7 +14,7 @@ makedepends=('intltool' 'gobject-introspection' 'gtk3' 'vala' 'gtk-doc' 'gperf')
 url="https://github.com/thestinger/vte-ng"
 source=(https://github.com/thestinger/vte-ng/archive/$pkgver.tar.gz fullwidth-emoji.patch)
 sha256sums=('bfa4f4148a63e8b730ab272792f55d03c8afa632bb5c28a440e1a5a8134c4b1b'
-            '07a07525516576c34469a1ca9c554c740bc7fa89055a00002216fd6f89684785')
+            '85e9c7f2014419238077f0cbe3fc522dc8afc81430dd49840cd1e33622623270')
 provides=(vte3=$_basever vte3-select-text=$_basever vte3-ng)
 conflicts=(vte3 vte3-select-text vte3-ng)
 replaces=(vte3-select-text vte3-ng)
