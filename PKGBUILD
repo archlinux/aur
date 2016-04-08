@@ -12,7 +12,7 @@ depends=('gtk3' 'libsoup' 'json-glib' 'gstreamer' 'gst-libav' 'gst-plugins-base'
 conflicts=('gnome-twitch-git')
 install=gnome-twitch.install
 source=("https://github.com/Ippytraxx/gnome-twitch/archive/v${pkgver}.tar.gz")
-md5sums=('b6f9ab3dab93ac5f7eb2c8722c7e97f7')
+md5sums=('984b6120aec2f4d121cce3ccb50e367a')
 
 build()
 {
