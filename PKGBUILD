@@ -2,7 +2,8 @@
 # Contributor: stqn
 # Mod Fanch
 
-make_option="-j4"
+ncpu=$(grep processor /proc/cpuinfo|wc -l)
+make_option="-j${ncpu}"
 
 ### Nothing to be changed below this line ###
 
