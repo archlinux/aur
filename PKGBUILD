@@ -3,15 +3,16 @@
 _pyname=conda
 pkgname=python-conda
 pkgver=4.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="OS-agnostic, system-level binary package manager and ecosystem"
 arch=('any')
 url="http://conda.pydata.org/docs/"
 license=('BSD')
 groups=()
 depends=('python' 'python-psutil' 'python-pycosat>=0.6.1' 'python-requests' 'python-yaml')
-makedepends=('git')
-provides=('activate' 'conda' 'deactivate')
+makedepends=()
+optdepends=('python-conda-env: to use the conda env command')
+provides=('conda')
 conflicts=()
 replaces=()
 backup=()
