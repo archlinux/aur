@@ -1,0 +1,14 @@
+pkgbase = shtool
+	pkgdesc = GNU shtool is a compilation of small but very stable and portable shell scripts into a single shell tool.
+	pkgver = 2.0.8
+	pkgrel = 2
+	url = http://www.gnu.org/software/shtool/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = perl
+	source = ftp://ftp.gnu.org/gnu/shtool/shtool-2.0.8.tar.gz
+	md5sums = c5f7c6836882d48bc79049846a5f9c5b
+
+pkgname = shtool
+
