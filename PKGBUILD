@@ -5,7 +5,7 @@
 pkgname=pstate-frequency-git
 _gitname=pstate-frequency
 pkgdesc="Easily control Intel p-state driver (git version)"
-pkgver="3.0.0".r624.343ab41
+pkgver="3.1.0".r641.c873c10
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git')
