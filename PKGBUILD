@@ -4,7 +4,7 @@
 
 pkgname=imgurbash
 pkgver=4
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple bash script to upload an image to imgur from the commandline"
 arch=('any')
 url="https://imgur.com/tools/"
@@ -13,12 +13,12 @@ depends=('curl')
 optdepends=('xsel: automatically putting the URL on the X selection for easy pasting'
 	'xclip: an alternative to xsel')
 source=("https://imgur.com/tools/imgurbash.sh"
-        "001-https.patch")
+        "001-api-v3.patch")
 sha256sums=('41310047e634c4be5471d0470b7e862b7f27158fdc6afd2fc1a17fbc8b6da79a'
-            'dca8fa7113d9df4676ad1dddbf4dea56c278b1f40368cad32120c3bc450f314d')
+            '015b293ae2a21c0013b866d5f2e7395c05c5eaacfd7758cdb6e989a57b3896c6')
 
 prepare() {
-  patch -p1 --follow-symlinks < 001-https.patch
+  patch -p1 --follow-symlinks < "001-api-v3.patch"
 }
 
 package() {
