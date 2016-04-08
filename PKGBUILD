@@ -1,21 +1,20 @@
-# CPAN Name  : constant
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-constant'
-pkgver='1.27'
-pkgrel='3'
+pkgver='1.33'
+pkgrel='1'
 pkgdesc="Perl pragma to declare constants"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/constant'
-source=('http://search.cpan.org/CPAN/authors/id/S/SA/SAPER/constant-1.27.tar.gz')
-md5sums=('1e00a4fbed2b98ae1f447848b132cdd0')
-sha512sums=('5840abb036c40c1f0db7d920959c20b01761e2a9e8e8276a7c6fe5dbfec41840c6a4114a378cf8ad7480e310a4328ce876bdd05c11236492c69b8a715d5e0af8')
-_distdir="constant-1.27"
+url='https://metacpan.org/release/constant'
+source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/constant-1.33.tar.gz')
+md5sums=('4ee93d57fbd8dfbc4c902c495614d5f0')
+sha512sums=('f1ec947a321c6a04be39e1b1ec50e44a6e9edd0ed5c4698ff2aa33218a85cde3c37b4641e6c98ee7b06015d4dbb32f8bbeccfba87b8ce88a08da062c216e5ec2')
+_distdir="constant-1.33"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
