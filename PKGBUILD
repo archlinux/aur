@@ -1,5 +1,5 @@
 pkgname="psi-plus-qt5-git"
-pkgver=0.16.544.533
+pkgver=0.16.544.532
 pkgrel=1
 pkgdesc="Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users (built with Qt 5.x)"
 url="http://psi-plus.com"
