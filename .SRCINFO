@@ -5,7 +5,7 @@ pkgbase = shell_shortcut
 	url = https://github.com/seokbeomKim/shell_shortcut
 	arch = any
 	license = GPL
-	source = https://github.com/seokbeomKim/shell_shortcut
+	source = git://github.com/seokbeomKim/shell_shortcut
 	md5sums = SKIP
 
 pkgname = shell_shortcut

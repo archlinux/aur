@@ -7,9 +7,8 @@ arch=('any')
 url="https://github.com/seokbeomKim/shell_shortcut"
 license=('GPL')
 depends=('')
-source=("https://github.com/seokbeomKim/shell_shortcut")
+source=("git://github.com/seokbeomKim/shell_shortcut")
 md5sums=('SKIP')
-
 
 package() {
     cd "$srcdir/$pkgname"
