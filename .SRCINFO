@@ -1,7 +1,7 @@
 pkgbase = bitlbee-libpurple-unicode-channel
 	pkgdesc = Brings instant messaging (XMPP, MSN, Yahoo!, AIM, ICQ, Twitter) to IRC. libpurple enabled. (patched for unicode channel names)
 	pkgver = 3.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.bitlbee.org/
 	install = bitlbee.install
 	arch = i686

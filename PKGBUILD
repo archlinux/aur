@@ -11,7 +11,7 @@
 pkgname=bitlbee-libpurple-unicode-channel
 _pkgname=bitlbee
 pkgver=3.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Brings instant messaging (XMPP, MSN, Yahoo!, AIM, ICQ, Twitter) to IRC. libpurple enabled. (patched for unicode channel names)'
 url='http://www.bitlbee.org/'
 license=('GPL')
@@ -50,7 +50,8 @@ build() {
     --strip=0 \
     --otr=plugin \
     --skype=plugin \
-    --purple=1
+    --purple=1 \
+    --jabber=1
 
   make
 }
