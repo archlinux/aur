@@ -4,7 +4,7 @@
 
 pkgname=('lib32-nvidia-utils-beta' 'lib32-nvidia-libgl-beta' 'lib32-opencl-nvidia-beta')
 pkgver=364.15
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
