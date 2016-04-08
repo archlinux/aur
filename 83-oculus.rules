@@ -1,1 +1,5 @@
+# For OVR
 KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="2833", TAG+="uaccess"
+
+# For OpenHMD
+SUBSYSTEM=="usb", ATTRS{idVendor}=="2833", TAG+="uaccess"
