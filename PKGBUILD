@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-minion'
-pkgver='5.01'
+pkgver='5.02'
 pkgrel='1'
 pkgdesc="Job queue"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-mojolicious>=6.0' 'perl>=5.10.1')
 makedepends=()
 url='https://metacpan.org/release/Minion'
-source=('http://search.cpan.org/CPAN/authors/id/S/SR/SRI/Minion-5.01.tar.gz')
-md5sums=('85bcbf89567c8a96e65851cb70ff68ba')
-sha512sums=('2f25e66b51c982963cb2c4cc7f7107bfbd3ea04e1ba814b6c26094f756ab38b05ed17ab0803dfe2fc7cdc489e8ae652837399c6ca14056639a36aebd76044289')
-_distdir="Minion-5.01"
+source=('http://search.cpan.org/CPAN/authors/id/S/SR/SRI/Minion-5.02.tar.gz')
+md5sums=('c164564e9495bd9a2079acd55303528d')
+sha512sums=('e0c9a7ef782e5e9a460c8a798bbef594999d8682dd60fc5b5f912849b06baf1e8fd5d2ef8f351231dcb7d3380f8bbb781f12d3d4e638708e6e15d46c95002775')
+_distdir="Minion-5.02"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -39,6 +39,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
+
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
