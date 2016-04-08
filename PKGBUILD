@@ -12,9 +12,10 @@ md5sums=('SKIP')
 
 package() {
     cd "$srcdir/$pkgname"
-    
-    sed -e 's/\(CONFIG_FILE=\)\(.*\)/\1\/usr\/local\/etc\/config_shortcut/g' bin_shortcut
-    sed -e 's/\(PATH_FILE=\)\(.*\)/\1\/usr\/local\/etc\/path_shortcut/g' bin_shortcut
+    cp bin_shortcut{,.bak}
+
+    sed -i bin_shortcut.bak -e 's/\(CONFIG_FILE=\)\(.*\)/\1\/usr\/local\/etc\/config_shortcut/g' bin_shortcut
+    sed -i bin_shortcut.bak -e 's/\(PATH_FILE=\)\(.*\)/\1\/usr\/local\/etc\/path_shortcut/g' bin_shortcut
     
     install -Dm755 bin_shortcut ${pkgdir}/usr/local/bin/bin_shortcut
     install -Dm644 config_shortcut ${pkgdir}/usr/local/etc/config_shortcut
