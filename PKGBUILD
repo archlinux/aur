@@ -7,9 +7,9 @@
 
 pkgname=phpstorm-eap
 _pkgname=PhpStorm # Directory name in the tar file
-pkgbuild=145.256.26
+pkgbuild=145.844.5
 pkgver=${pkgbuild}
-pkgrel=2
+pkgrel=1
 pkgdesc="Lightning-smart PHP IDE. Early Access Program."
 arch=('i686' 'x86_64')
 options=(!strip)
@@ -17,10 +17,10 @@ url="http://www.jetbrains.com/phpstorm/"
 license=('custom')
 optdepends=('java-environment>=8: use system java'
     'java-runtime-common: use system java')
-source=(http://download.jetbrains.com/webide/PhpStorm-EAP-145.256.26.tar.gz
+source=(http://download.jetbrains.com/webide/PhpStorm-EAP-145.844.5.tar.gz
 	phpstorm-eap.desktop
     phpstorm-eap.sh)
-sha256sums=('f51648a0ea7c55f1d602e02a14442d7db171682a81c15b5caf197a469b92adc1'
+sha256sums=('a351a96241489046d8b2936125446b8e89a331c55faf12a41f96a829cc5d9204'
 	'479e6ac16424df02ce1610da9eec8cc73a84cac7912e60661d4092954142933e'
     '7ff963977384e7398890fbd38f91eb68fc7166e2b440325f19770a8a87bbf480')
 
