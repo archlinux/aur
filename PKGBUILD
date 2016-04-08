@@ -1,14 +1,14 @@
 # Maintainer: Paulo Alexandre <paulequilibrio at gmail dot com>
-# Contributor: Kamil Śliwak <cameel2 gmail>
 # Contributor: morning_star<themorningstar@riseup.net>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Parth Buch <parthbuch115 at gmail dot com>
 # Contributor: Tom Vincent <http://tlvince.com/contact/>
 # Contributor: Valentin Haloiu <vially.ichb+aur@gmail.com>
 # Contributor: Cluxter <contact@cluxter.email>
+# Contributor: Kamil Śliwak <cameel2 gmail>
 
 pkgname=meteor-js
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=4
 pkgdesc="Open-source JavaScript platform for building top-quality web apps in a fraction of the time."
 
@@ -22,8 +22,8 @@ options=('!strip')
 source_i686=("https://d3sqy0vbqsdhku.cloudfront.net/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_32.tar.gz")
 source_x86_64=("https://d3sqy0vbqsdhku.cloudfront.net/packages-bootstrap/$pkgver/meteor-bootstrap-os.linux.x86_64.tar.gz")
 
-md5sums_i686=('19b9e31626c9dc35ece52fe0e88e84f6')
-md5sums_x86_64=('2cef5e7a5f8a62d45927d48691e65a1e')
+md5sums_i686=('78f27c963e77126f34bb8c2ffe4f1f79')
+md5sums_x86_64=('9aee3f9af9330a0e8ec201b88fe2e114')
 
 package() {
     mkdir -p "$pkgdir/opt/meteor-js"
