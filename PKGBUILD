@@ -1,6 +1,6 @@
 pkgname="psi-plus-qt5-git"
-pkgver=0.16.543.523
-pkgrel=2
+pkgver=0.16.544.533
+pkgrel=1
 pkgdesc="Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users (built with Qt 5.x)"
 url="http://psi-plus.com"
 license=('GPL2')
@@ -12,8 +12,8 @@ provides=("psi-plus=$pkgver")
 replaces=('psi-plus' 'psi-plus-webkit-git' 'psi-plus-git')
 conflicts=('psi-plus' 'psi-plus-webkit-git' 'psi-plus-git')
 install=psi-plus-git.install
-source=('git://github.com/psi-plus/psi-plus-snapshots')
-md5sums=('SKIP')
+source=('git://github.com/psi-plus/psi-plus-snapshots' 'git://github.com/psi-plus/main.git')
+md5sums=('SKIP' 'SKIP')
 pkgver() {
     cd psi-plus-snapshots
     git describe --tags | cut -d - -f 1-2 --output-delimiter=.
@@ -24,7 +24,8 @@ prepare() {
   cd psi-plus-snapshots
   # make build date in --version output a bit more readable
   #sed "s/yyyyMMdd/yyyy-MM-dd/" -i qcm/conf.qcm
-  cp -a "$srcdir"/psi-plus-snapshots/iconsets .
+  mkdir -p iconsets
+  cp -r "$srcdir"/main/iconsets/* ./iconsets
   echo "$pkgver ($(date +"%Y-%m-%d"))" >version
 }
 
