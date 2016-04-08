@@ -1,21 +1,21 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-moosex-object-pluggable'
-pkgver='0.0013'
+pkgver='0.0014'
 pkgrel='1'
 pkgdesc="Make your classes pluggable"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-module-runtime' 'perl-moose' 'perl-try-tiny' 'perl-namespace-autoclean')
+depends=('perl-module-pluggable' 'perl-module-runtime' 'perl-moose' 'perl-try-tiny' 'perl-namespace-autoclean' 'perl>=5.006')
 makedepends=()
 checkdepends=('perl-test-fatal')
-url='http://search.mcpan.org/dist/MooseX-Object-Pluggable'
-source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Object-Pluggable-0.0013.tar.gz')
-md5sums=('ef047198af7e065cb3f02cf56daf8fdd')
-sha512sums=('af0753fbd26a6b7b0173a8fdf6c386e2ea87c58832d88aaef3d70493bf23bf5a87a5bdedb19e049d8d1768ba2a98ff96243bfb17abe4d61842daa36001dfdb4e')
-_distdir="MooseX-Object-Pluggable-0.0013"
+url='https://metacpan.org/release/MooseX-Object-Pluggable'
+source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Object-Pluggable-0.0014.tar.gz')
+md5sums=('bcdbeaf1928616c54bdac9f0ec93c602')
+sha512sums=('0eab6798519fdf5f0b6c698112af62db9d3dade00d4e28d622f4dbabdb0d3f099ae1427d7a5913c8c6db25fc547c2b949672af1f8a58fdff2546b795814c36e5')
+_distdir="MooseX-Object-Pluggable-0.0014"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
