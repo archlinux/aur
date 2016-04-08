@@ -1,0 +1,15 @@
+pkgbase = yolo-git
+	pkgdesc = kills a random pid
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/Airblader/yolo
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	provides = yolo
+	source = yolo::git+http://github.com/Airblader/yolo
+	md5sums = SKIP
+
+pkgname = yolo-git
+
