@@ -19,6 +19,9 @@ sha256sums=('459580fab840432ee520b9341b8361fe6017d271cf2502c07b95225a6fb966b6'
             '360d44488e2c0617e8436e2420e9e1a1e657055b1bb41e1e121524f7dc99ed57')
 
 build() {
+  patch -p0 < ../Makefile.COMMON.patch
+  mkdir -p "$_pkgname-$pkgver/Godeps"
+  cp -fr ../Godeps.json "$_pkgname-$pkgver/Godeps"
   cd "$_pkgname-$pkgver"
 
   make
