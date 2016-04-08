@@ -10,7 +10,7 @@ depends=('gcc-libs')
 makedepends=('cmake' 'gcc-fortran' 'libsufr')
 changelog=ChangeLog
 source=("http://sourceforge.net/projects/libthesky/files/$pkgname-$pkgver.tar.gz")
-sha512sums=('179ab67b289208363a77a639924b3c8c04ae5af0c4b0a1b2adb1f0ce7c1386da3f6138065c4de1f93f9c679733ba25d9d74c1a53cc5733df5531a45b6b6d25ca')
+sha512sums=('f7180fdce4a28f6b09393c7b4676a293b145cea8f9993c309c4105dd2928c42fe842985cc905033c9f1b7626b50417005250bce11b1c60d3d6c91f03d7c79bcb')
 
 build() {
 	mkdir -p "$pkgname-$pkgver"/build
