@@ -1,0 +1,19 @@
+pkgbase = stream_unrar-git
+	pkgdesc = Start extracting multi-part rar archives as soon as the first part is available
+	pkgver = 20140208.2a85bb8
+	pkgrel = 1
+	url = https://github.com/vlovich/stream-unrar
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	provides = stream_unrar
+	provides = libunrar=4.0.7
+	conflicts = stream_unrar
+	conflicts = libunrar
+	source = git+https://github.com/vlovich/stream-unrar.git
+	md5sums = SKIP
+
+pkgname = stream_unrar-git
+
