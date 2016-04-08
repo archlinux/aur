@@ -3,7 +3,7 @@
 
 pkgname=hydrogen-git
 _pkgname=hydrogen
-pkgver=0.9.7.beta2.r2541.3187d9b
+pkgver=0.9.7.beta2.r2544.1ab9bf5
 pkgrel=1
 pkgdesc="An advanced drum machine - git version"
 arch=('i686' 'x86_64')
@@ -21,9 +21,9 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  version="$(git describe --tags | sed -e 's/-/./')"
-  revision=$(git rev-list --count HEAD)
-  hash=$(git rev-parse --short HEAD)
+  local version="$(git describe --tags | sed -e 's/-[^-]*-[^-]*$//;s/-/./g')"
+  local revision=$(git rev-list --count HEAD)
+  local hash=$(git rev-parse --short HEAD)
   echo $version.r$revision.$hash
 }
 
