@@ -2,11 +2,13 @@
 # Contributor: stqn
 # Mod Fanch
 
+make_option="-j4"
+
 ### Nothing to be changed below this line ###
 
 _pkgname=retroshare
 pkgname=${_pkgname}-git-qt4-no-sqlcipher
-pkgver=v0.6.0.r294.gab78825
+pkgver=v0.6.0.r320.g554251d
 pkgrel=1
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -55,7 +57,7 @@ build() {
 
 	export LANG=C
 	qmake-qt4  "DEFINES+=NO_SQLCIPHER" "CONFIG+=NO_SQLCIPHER" "CONFIG-=debug" "CONFIG+=release" QMAKE_CFLAGS_RELEASE="${CFLAGS}" QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}" RetroShare.pro
-	make
+	make "${make_option}"
 }
 
 package() {
