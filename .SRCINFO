@@ -1,0 +1,20 @@
+pkgbase = python-peakutils
+	pkgdesc = Peak detection utilities for 1D data
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/PeakUtils
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python2-setuptools
+	source = https://pypi.python.org/packages/source/P/PeakUtils/PeakUtils-1.0.1.tar.gz
+	md5sums = 32d8728b174801baa8ee466a97ecf838
+
+pkgname = python-peakutils
+	depends = python-numpy
+	depends = python-scipy
+
+pkgname = python2-peakutils
+	depends = python2-numpy
+	depends = python2-scipy
+
