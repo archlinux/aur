@@ -6,14 +6,14 @@ _pkgname=CloudStationDrive
 pkgver=4.0.4203
 _pkgver=4.0
 pkgver_=4203
-pkgrel=1
+pkgrel=2
 pkgdesc="Synology Cloud Station Drive : CloudStation client to sync files among your Synology NAS (DSM 6.x) and computers"
 arch=('i686' 'x86_64')
 url="http://www.synology.com"
 license=('unknown')
 depends=('libsm' 'qt5-base')
 optdepends=('nautilus: For nautilus integration')
-conflicts=('cloudstation-beta' 'cloudstation')
+conflicts=('cloudstation-beta' 'cloudstation' 'synology-cloud-station-drive')
 install=cloudstationdrive.install
 
 source_x86_64=(http://global.download.synology.com/download/Tools/${_pkgname}/${_pkgver}-${pkgver_}/Ubuntu/Installer/x86_64/synology-cloud-station-drive-${pkgver_}.x86_64.deb)
