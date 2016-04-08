@@ -1,7 +1,7 @@
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 
 pkgname=4pane
-pkgver=3.0
+pkgver=4.0
 pkgrel=1
 pkgdesc="A multi-pane, detailed-list file manager."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://www.4pane.co.uk/index.html"
 license=('GPL3')
 depends=('wxgtk')
 source=(http://downloads.sourceforge.net/project/fourpane/${pkgver}/${pkgname}-${pkgver}.tar.gz 4Pane.desktop)
-md5sums=('396f968e3cd77c0d8f56c3d687b9ee32'
+md5sums=('7e447b92a7704c3c12dab65957099475'
          'b3bafbcc64bde3e3742f994574da5fdd')
 
 build() {
