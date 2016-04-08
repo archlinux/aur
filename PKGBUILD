@@ -2,16 +2,16 @@
 # PKGBUILD update by Xavier corredorl (epsilom) 2009
 
 pkgname=elektra
-pkgver=0.8.9
-pkgrel=2
+pkgver=0.8.15
+pkgrel=1
 pkgdesc="Elektra is a universal hierarchical configuration store"
 url="http://freedesktop.org/wiki/Software/Elektra"
-license="BSD"
+license=("BSD")
 arch=('i686' 'x86_64')
 depends=('libxml2')
 makedepends=('docbook-xsl' 'texlive-latexextra' 'cmake')
 source=(ftp://ftp.markus-raab.org/elektra/releases/$pkgname-$pkgver.tar.gz)
-md5sums=('001c4ec67229046509a0cb9eda223dc6')
+md5sums=('33ec1e5982fb7fbd8893bf7b579b80f0')
 
 build() {
   cd ${srcdir}/$pkgname-$pkgver
