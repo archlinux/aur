@@ -10,7 +10,7 @@ url='https://github.com/andmarti1424/sc-im'
 license=('BSD')
 conflicts=('scim-spreadsheet')
 source=("https://github.com/andmarti1424/$pkgname/archive/v${pkgver}.tar.gz")
-sha256sums=('fa666cb0d0557b175a08d8f4adbfe13d32ad160c4f069a4c84bba2332d9fdfdd')
+sha256sums=('c47ac3c273da804f9fda1c3bdcc5570f471fc26234183a9a1ed70f3e65a20cb7')
 MAKEFLAGS='-j1'
 
 build() {
