@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-snakebite
-pkgver=2.8.1
+pkgver=2.8.2
 pkgrel=1
 pkgdesc="Pure Python HDFS client"
 arch=('any')
@@ -15,8 +15,8 @@ url="https://github.com/spotify/snakebite"
 license=('Apache')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/s/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('74dfdbe6830833714ec7aa8e001a9d9e')
-sha256sums=('2b7b433328071d84f08b33ec41dffa005d741b67548b1daab56fcedabc2cf173')
+md5sums=('b8394cb4eebcde6cd9d494df13d058ea')
+sha256sums=('8d525c1e46b8d1204411e2ecc4cb9e2c51063215a1f4e2d7524f2e94532369d0')
 provides=('python2-snakebite' 'snakebite')
 conflicts=('snakebite')
 
