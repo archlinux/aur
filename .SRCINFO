@@ -1,6 +1,6 @@
 pkgbase = nvidia-utils-beta
 	pkgver = 364.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	arch = i686
 	arch = x86_64
@@ -37,7 +37,6 @@ pkgname = nvidia-libgl-beta
 	conflicts = libgl
 	conflicts = nvidia-libgl
 	conflicts = mesa<10.1.0-2
-	conflicts = libglvnd
 
 pkgname = opencl-nvidia-beta
 	pkgdesc = NVIDIA's OpenCL implemention for 'nvidia-utils-beta'

@@ -4,7 +4,7 @@
 
 pkgname=('nvidia-utils-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
 pkgver=364.15
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -75,7 +75,7 @@ package_nvidia-libgl-beta() {
   pkgdesc="NVIDIA driver library symlinks for 'nvidia-utils-beta'"
   depends=('nvidia-utils-beta')
   provides=('libgl' 'nvidia-libgl')
-  conflicts=('libgl' 'nvidia-libgl' 'mesa<10.1.0-2' 'libglvnd')
+  conflicts=('libgl' 'nvidia-libgl' 'mesa<10.1.0-2')
   cd $_pkg
 
   # GLX extension for X (link)
