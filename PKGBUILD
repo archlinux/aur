@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-lingua-en-tagger'
-pkgver='0.24'
+pkgver='0.25'
 pkgrel='1'
 pkgdesc="Part-of-speech tagger for English natural language processing."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.8.1' 'perl-html-parser>=3.45' 'perl-html-tagset>=3.20' 'perl-lingua-stem>=0.81' 'perl-memoize-expirelru>=0.55')
+depends=('perl-html-parser>=3.45' 'perl-html-tagset>=3.20' 'perl-lingua-stem>=0.81' 'perl-memoize-expirelru>=0.55' 'perl>=5.8.1')
 makedepends=()
-url='http://search.cpan.org/dist/Lingua-EN-Tagger'
-source=('http://search.cpan.org/CPAN/authors/id/A/AC/ACOBURN/Lingua-EN-Tagger-0.24.tar.gz')
-md5sums=('cfa309e3e3b1e8940dac35e9e0b5da18')
-sha512sums=('a14dca8d843e372c6097065b52ccc009885786e7ab7fdd5c73fe0aeeb26593daf22155ecddbf1b389be2aa4f4ac03efd9a1d2e198c465a97707de6914da41cc7')
-_distdir="Lingua-EN-Tagger-0.24"
+url='https://metacpan.org/release/Lingua-EN-Tagger'
+source=('http://search.cpan.org/CPAN/authors/id/A/AC/ACOBURN/Lingua-EN-Tagger-0.25.tar.gz')
+md5sums=('c626a636bb3f33d56613eb65a926e600')
+sha512sums=('a0237f34272a0a5efd07a38c6ba793ddf63c405cfbde5f6c2100260be735310e514ca2f8bc699d0634ba959a3a66f655f05d837eafc988089b1a661e1a26eb3a')
+_distdir="Lingua-EN-Tagger-0.25"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
