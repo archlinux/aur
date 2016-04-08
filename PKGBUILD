@@ -1,7 +1,7 @@
 # Maintainer: shimi <shimi.chen@gmail.com>
 # Contributor: Marios Abatis <marios.archlinux@gmail.com>
 pkgname=gnome-chemistry-utils
-pkgver=0.14.10
+pkgver=0.14.12
 _majorver=$(echo ${pkgver}|cut -c1-4)
 pkgrel=1
 pkgdesc="Gnome Chemistry Utilities (gcu). Includes gchempaint, a tool to draw molecules."
@@ -24,7 +24,7 @@ optdepends=('yelp: Viewing help manuals' \
 source=(http://download.savannah.gnu.org/releases/gchemutils/${_majorver}/${pkgname}-${pkgver}.tar.bz2)
 options=(!libtool)
 install=gnome-chemistry-utils.install
-md5sums=('c6f72617eac3089c9d3d6562c89dcc94')
+md5sums=('b630da183c7b8e754d62503a58cec4ed')
 
 build() {
 
