@@ -1,5 +1,5 @@
 pkgname=nodejs-lts-argon
-pkgver=4.4.0
+pkgver=4.4.2
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript (LTS release: Argon)'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ optdepends=('npm: nodejs package manager')
 provides=('nodejs')
 conflicts=('nodejs')
 source=("http://nodejs.org/dist/v$pkgver/node-v$pkgver.tar.xz")
-sha256sums=('6ae44ae9a9cd1f102ca7f3ea09ca6223afe88fab4911f1bf21c9da2a1e795f1d')
+sha256sums=('49051fd930e36181509dc8fcf584fc01971083b6bf9e14f2bbec49cc9c4224e9')
 
 prepare() {
   cd node-v$pkgver
