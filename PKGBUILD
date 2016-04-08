@@ -1,9 +1,10 @@
-# Maintainer: Scott Lawrence <bytbox@gmail.com>
+# Maintainer: Carl Lei <xecycle@gmail.com>
+# Contributor: Scott Lawrence <bytbox@gmail.com>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 # Contributor: Sebastian Voecking <voeck@web.de>
 
 pkgname=root5
-pkgver=5.34.32
+pkgver=5.34.36
 pkgrel=1
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
@@ -30,14 +31,14 @@ depends=('desktop-file-utils'
 	 'libafterimage')
 install='root.install'
 options=('!emptydirs')
-source=("ftp://root.cern.ch/root/root_v${pkgver}.source.tar.gz"
+source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
         'root.sh'
         'rootd'
         'root.xml')
-md5sums=('292a0b95063053699b3273bd50515b0a'
-		 '0e883ad44f99da9bc7c23bc102800b62'
-  'efd06bfa230cc2194b38e0c8939e72af'
-		   'e2cf69b204192b5889ceb5b4dedc66f7')
+md5sums=('6a1ad549b3b79b10bbb1f116b49067ee'
+         '0e883ad44f99da9bc7c23bc102800b62'
+         'efd06bfa230cc2194b38e0c8939e72af'
+         'e2cf69b204192b5889ceb5b4dedc66f7')
 
 build() {
   cd root
