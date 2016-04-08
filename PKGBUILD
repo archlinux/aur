@@ -1,8 +1,8 @@
 # Maintainer: Anna Schumaker <anna@ocarinaproject.net>
 pkgname=ocarina
-pkgver=6.4.8
+pkgver=6.4.9
 pkgrel=1
-pkgdesc="A simple GTK and gstreamer based music player."
+pkgdesc="A simple GTK+ and gstreamer based music player."
 url="http://www.ocarinaproject.net/"
 arch=('x86_64' 'i686' 'armv7h')
 license=('GPL2')
@@ -13,7 +13,7 @@ conflicts=()
 replaces=()
 backup=()
 source=("http://ocarinaproject.net/wp-content/ocarina/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('c24c8f9bf8d2ef4324a97a905b36e3b5b3499fd0')
+sha1sums=('ca47b359b32df53676e168c24fc749f9abe779e5')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
