@@ -4,7 +4,7 @@
 
 pkgname=('lib32-nvidia-utils-beta' 'lib32-nvidia-libgl-beta' 'lib32-opencl-nvidia-beta')
 pkgver=364.15
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -61,7 +61,7 @@ package_lib32-nvidia-libgl-beta() {
   pkgdesc="NVIDIA driver library symlinks for 'lib32-nvidia-utils-beta'"
   depends=('lib32-nvidia-utils-beta')
   provides=('lib32-libgl' 'lib32-nvidia-libgl')
-  conflicts=('lib32-libgl' 'lib32-nvidia-libgl' 'lib32-mesa<10.1.0-2' 'lib32-libglvnd')
+  conflicts=('lib32-libgl' 'lib32-nvidia-libgl' 'lib32-mesa<10.1.0-2')
   cd $_pkg
 
   # libGL (link)

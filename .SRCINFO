@@ -1,6 +1,6 @@
 pkgbase = lib32-nvidia-utils-beta
 	pkgver = 364.15
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.nvidia.com/
 	arch = x86_64
 	license = custom:NVIDIA
@@ -26,7 +26,6 @@ pkgname = lib32-nvidia-libgl-beta
 	conflicts = lib32-libgl
 	conflicts = lib32-nvidia-libgl
 	conflicts = lib32-mesa<10.1.0-2
-	conflicts = lib32-libglvnd
 
 pkgname = lib32-opencl-nvidia-beta
 	pkgdesc = NVIDIA's OpenCL implemention for 'lib32-nvidia-utils-beta'
