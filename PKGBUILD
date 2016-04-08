@@ -53,16 +53,15 @@ prepare() {
     cd "$srcdir/rtorrent"
     #patch -Np1 -i "${startdir}/rtorrent.patch"
 
-    git revert -n --no-edit 30d8379391ad4cb3097d57aa56a488d061e68662
-    git revert -n --no-edit 1f5e4d37d5229b63963bb66e76c07ec3e359ecba
-
-    sed -i src/ui/download_list.cc \
-        -e 's:rTorrent \" VERSION:rTorrent-PS " VERSION:'
     sed -i doc/scripts/update_commands_0.9.sed \
         -e "s:':\":g"
-    sed -i ../command_pyroscope.cc \
-        -e 's:view_filter:view.filter:' \
-        -e 's:RT_HEX_VERSION < 0x000904:RT_HEX_VERSION > 0x000904:'
+    sed -i ../{command_pyroscope.cc,ui_pyroscope.cc} \
+        -e "s:tr1:std:"
+
+    sed -i configure.ac \
+        -e "s:\\(AC_DEFINE(HAVE_CONFIG_H.*\\):\1\nAC_DEFINE(RT_HEX_VERSION, 0x000907, version checks):"
+    sed -i src/ui/download_list.cc \
+        -e "s:rTorrent \" VERSION:rTorrent-PS git~$(git rev-parse --short $_commit) \" VERSION:"
 
     for i in ${srcdir}/*.patch; do
         sed -f doc/scripts/update_commands_0.9.sed -i "$i"
@@ -81,6 +80,7 @@ build() {
     cd "$srcdir/rtorrent"
     #export CC=clang
     #export CXX=clang++
+    export CXXFLAGS+=" -fno-strict-aliasing"
     export libtorrent_LIBS="-L/usr/lib -ltorrent"
 
     ./configure $_debug \
