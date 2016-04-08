@@ -1,7 +1,7 @@
 pkgbase = tlauncher
 	pkgdesc = TLauncher is freeware launcher of Minecraft.
-	pkgver = 1.7
-	pkgrel = 2
+	pkgver = 1.71
+	pkgrel = 1
 	url = http://vk.com/tlauncher
 	install = tlauncher.install
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tlauncher
 	source = TLauncher.jar::http://tlaun.ch/jar
 	source = tlauncher.desktop::https://drive.google.com/uc?export=download&id=0BwXQWEVmNM9ddTlVM1Q0TGJmT0k
 	source = mncrft.png::https://drive.google.com/uc?export=download&id=0BwXQWEVmNM9dWm1sbGtoQ29CVTA
-	md5sums = 485329f383ac31f0ae8eec4a19b70073
+	md5sums = b5410bbbf3c8185c7fc6f232decd4d2b
 	md5sums = 679caa7ce6fd3f3ba1f5e57d71de97e1
 	md5sums = 7ad17a837b4a3742a84a34ecd7160665
 
