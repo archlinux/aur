@@ -2,7 +2,7 @@
 # Wed Feb 10 11:39:03 UTC 2016
 pkgbase = nvidia-full-beta
 	pkgver = 364.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	arch = i686
 	arch = x86_64
@@ -51,7 +51,6 @@ pkgname = nvidia-libgl-full-beta
 	conflicts = libgl
 	conflicts = nvidia-libgl
 	conflicts = mesa<10.1.0-2
-	conflicts = libglvnd
 
 pkgname = opencl-nvidia-full-beta
 	pkgdesc = NVIDIA's OpenCL implemention for 'nvidia-utils-full-beta'
@@ -79,7 +78,6 @@ pkgname = lib32-nvidia-libgl-full-beta
 	conflicts = lib32-libgl
 	conflicts = lib32-nvidia-libgl
 	conflicts = lib32-mesa<10.1.0-2
-	conflicts = lib32-libglvnd
 
 pkgname = lib32-opencl-nvidia-full-beta
 	pkgdesc = NVIDIA's OpenCL implemention for 'lib32-nvidia-utils-full-beta'

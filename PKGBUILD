@@ -9,7 +9,7 @@ _lib32=0
 
 pkgname=('nvidia-full-beta' 'nvidia-utils-full-beta' 'nvidia-libgl-full-beta' 'opencl-nvidia-full-beta')
 pkgver=364.15
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
@@ -116,7 +116,7 @@ package_nvidia-libgl-full-beta() {
   pkgdesc="NVIDIA driver library symlinks for 'nvidia-utils-full-beta'"
   depends=('nvidia-utils-full-beta')
   provides=('libgl' 'nvidia-libgl')
-  conflicts=('libgl' 'nvidia-libgl' 'mesa<10.1.0-2' 'libglvnd')
+  conflicts=('libgl' 'nvidia-libgl' 'mesa<10.1.0-2')
   cd $_pkg
 
   # GLX extension for X (link)
@@ -381,7 +381,7 @@ package_lib32-nvidia-libgl-full-beta() {
   pkgdesc="NVIDIA driver library symlinks for 'lib32-nvidia-utils-full-beta'"
   depends=('lib32-nvidia-utils-full-beta')
   provides=('lib32-libgl' 'lib32-nvidia-libgl')
-  conflicts=('lib32-libgl' 'lib32-nvidia-libgl' 'lib32-mesa<10.1.0-2' 'lib32-libglvnd')
+  conflicts=('lib32-libgl' 'lib32-nvidia-libgl' 'lib32-mesa<10.1.0-2')
   cd $_pkg
 
   # libGL (link)
