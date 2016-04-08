@@ -8,6 +8,7 @@ pkgbase = yolo-git
 	license = MIT
 	makedepends = git
 	provides = yolo
+	provides = yolo-forkbomb
 	source = yolo::git+http://github.com/Airblader/yolo
 	md5sums = SKIP
 
