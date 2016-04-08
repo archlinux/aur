@@ -2,7 +2,7 @@
 
 pkgname=oculus-udev
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Udev rule for Oculus Rift"
 arch=('any')
 url="http://www.oculusvr.com/"
