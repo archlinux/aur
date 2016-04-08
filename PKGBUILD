@@ -22,9 +22,9 @@ source=("http://repos.fusiondirectory.org/sources/1.0/fusiondirectory/fusiondire
 
 md5sums=('5046dccfdf0713f0ddd72dc076f615ee'
          "5f92d3e4378d0ea7fda7fa9c8b81d29e"
-         "d2e3d7dedf5c436c6d7484dc049f3f7f"
+         "b88da1c13e73cdeb2a89d3c115b2e3e0"
          "0a78917932d864cbaefa0139f90c6ab0"
-         "21ff95126a4e956a85219242c609bb3c")
+         "ff7e4454dcabb975c14672cc2e4dcbb7")
 
 prepare() {
   # In srcdir
