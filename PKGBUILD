@@ -3,37 +3,44 @@
 
 _pkgname=apkstudio
 pkgname=$_pkgname-git
-pkgver=3.0.0.b2.r33.gbab0183
+pkgver=r100.9e114ca
 pkgrel=1
+epoch=1
 pkgdesc='An IDE for decompiling/editing & then recompiling of android application binaries.'
 arch=('i686' 'x86_64')
-url='http://github.vaibhavpandey.com/apkstudio/'
+url='http://www.vaibhavpandey.com/apkstudio/'
 license=('GPL2')
-depends=('qt5-base')
+depends=('qt5-base' 'android-tools' 'android-apktool')
 makedepends=('git' 'qt5-tools' 'unzip')
 source=('git+https://github.com/vaibhavpandeyvpz/apkstudio.git'
-'https://bintray.com/artifact/download/vaibhavpandeyvpz/generic/2015.10.29/vendor.zip')
+        'APKTOOL_VERSION'
+        'apkstudio-setup.sh'
+        'change-vendor-zip-warning.patch')
 sha256sums=('SKIP'
-            'b089427ee80aff65e87cb19ca2f08cd74d156a1b692da86a1ba37aa39689f539')
-noextract=('vendor.zip')
+            'ff6ea79b60edfc59c6556ba1f349aae9da3cbb99d5d35239521ebb8f3a201a8c'
+            'f750ecf7d4ddf14922aa52e98ec37f6277692bd88f934f4a3a41b0e888017a1d'
+            'addf387dfb760341e694c9fe50900b7e39acd71f4ff7e3b793ae9347c2b9c0ab')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/$_pkgname"
+  patch -p0 -i ../change-vendor-zip-warning.patch
 }
 
 build() {
   cd "$srcdir/$_pkgname"
   lrelease-qt5 res/lang/en.ts
-  mkdir build
-  cd build
-  qmake-qt5 -r ../apkstudio.pro CONFIG+=release
+  qmake-qt5 -r apkstudio.pro CONFIG+=release
   make
 }
 
 package() {
   cd "$srcdir"
-  install -Dm755 "$_pkgname/build/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  install -dm755 "$pkgdir/usr/share/apkstudio/vendor"
-  unzip "vendor.zip" -d "$pkgdir/usr/share/apkstudio/vendor"
+  install -Dm755 "$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm744 'APKTOOL_VERSION' "$pkgdir/usr/share/$pkgname/APKTOOL_VERSION"
+  install -Dm755 'apkstudio-setup.sh' "$pkgdir/usr/bin/apkstudio-setup.sh"
 }
