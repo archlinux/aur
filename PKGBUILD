@@ -3,7 +3,7 @@
 
 pkgname=owncloud-app-news
 pkgver=8.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An RSS/Atom feed reader"
 arch=('any')
 url="https://github.com/owncloud/news"
