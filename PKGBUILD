@@ -2,19 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-pquery'
-pkgver='0.23'
+pkgver='0.24'
 pkgrel='1'
 pkgdesc="A port of jQuery.js to Perl"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-html-tree')
+depends=('perl-html-tree' 'perl>=5.8.1')
 makedepends=()
 url='https://metacpan.org/release/pQuery'
-source=('http://search.cpan.org/CPAN/authors/id/I/IN/INGY/pQuery-0.23.tar.gz')
-md5sums=('8c7e4d1fcaadc6f07c57cf3ec3255421')
-sha512sums=('92e8889026eb4dffa2c68fb7bf8dd165f423bd98aa23258a71b6a50ebe29258822ada454ee4545f6ddcfdefe0447efdeaa8a4e4e7d2501d000c27ad1ca0b2305')
-_distdir="pQuery-0.23"
+source=('http://search.cpan.org/CPAN/authors/id/I/IN/INGY/pQuery-0.24.tar.gz')
+md5sums=('40707f93a016d7164155ea84d5d0dea0')
+sha512sums=('225a23e4ff118d73c95f15f3bb2d6df8d97f48c5f8f85026756efd6ea3df66074265dbfbeb673fec2e44fa8e44efae28aa52f62bc80d867cd2c7763e5fa97727')
+_distdir="pQuery-0.24"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
