@@ -8,10 +8,11 @@ url="https://github.com/mikar/${pkgname}"
 license=("MIT")
 conflicts=("blockify-git")
 depends=("spotify"
-         "alsa-utils" 
-         "pygtk" 
-         "gst-python" 
-         "python-dbus")
+         "alsa-utils"
+         "pygtk"
+         "gst-python"
+         "python-dbus"
+         "wmctrl")
 makedepends=("python-setuptools")
 optdepends=("pulseaudio: mute spotify sink instead of system sound"
             "python-docopt: command-line interface")
