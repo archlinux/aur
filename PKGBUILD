@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-flow'
-pkgver='0.9'
+pkgver='1.01'
 pkgrel='1'
 pkgdesc="Make data flow processing easy"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-json>=2.21' 'perl-xml-flow>=0.85')
 makedepends=()
-url='http://search.cpan.org/dist/Flow'
-source=('http://search.cpan.org/CPAN/authors/id/Z/ZA/ZAG/Flow-0.9.tar.gz')
-md5sums=('c8d7fb9c1b55f5091e2b272904452c98')
-sha512sums=('926569c0d67753460d41fef854e0bf245f01027ad88cc94074e61ecf110932c5343365d562029f20b28f0962a3029f59de832b743194715570400aaeed19b6bd')
-_distdir="Flow-0.9"
+url='https://metacpan.org/release/Flow'
+source=('http://search.cpan.org/CPAN/authors/id/Z/ZA/ZAG/Flow-1.01.tar.gz')
+md5sums=('b55494e4b15cc1fe267b5fa55daf608b')
+sha512sums=('d6407cd788f8268b27f7be53617943d0a03e3a1d73445ac2864dfe88e6a07d1fdc7a73da58462aa374c577d83b4348812984b93b401ec75f02c1df9ca1d2bd3f')
+_distdir="Flow-1.01"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
