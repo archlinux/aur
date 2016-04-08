@@ -5,12 +5,10 @@
 _debug=n
 
 # Compile from a specific commit?
-#_commit=6a3234e  #0.9.4
-#_commit=3019261  #0.9.5
 _commit=HEAD
 
 pkgname=rtorrent-pyro-git
-pkgver=20151117
+pkgver=20160310
 pkgrel=1
 pkgdesc="Ncurses BitTorrent client based on libTorrent - rTorrent-git with Pyroscope patches"
 url="https://github.com/pyroscope/rtorrent-ps"
@@ -42,7 +40,7 @@ md5sums=('SKIP'
          '7a88f8ab5d41242fdf1428de0e2ca182'
          'bd04a0699b80c8042e1cf63a7e0e4222'
          '0a2bbaf74c7160ba33876dcc2f050f14'
-         'b09d4632ba18f643b9f1ec8ccf1def9a'
+         '75b2f47edad1f27eb0aca495c6474089'
          '23e215888c8c45cfc6b816b02f473c1b'
          '1258acfc82c50a8f452ace87fef0b416')
 
@@ -55,6 +53,9 @@ prepare() {
     cd "$srcdir/rtorrent"
     #patch -Np1 -i "${startdir}/rtorrent.patch"
 
+    git revert -n --no-edit 30d8379391ad4cb3097d57aa56a488d061e68662
+    git revert -n --no-edit 1f5e4d37d5229b63963bb66e76c07ec3e359ecba
+
     sed -i src/ui/download_list.cc \
         -e 's:rTorrent \" VERSION:rTorrent-PS " VERSION:'
     sed -i doc/scripts/update_commands_0.9.sed \
@@ -63,9 +64,6 @@ prepare() {
         -e 's:view_filter:view.filter:' \
         -e 's:RT_HEX_VERSION < 0x000904:RT_HEX_VERSION > 0x000904:'
 
-    [[ $(grep "dl_rate" "src/core/download_store.cc") ]] &&
-        patch -uNp1 -i "$startdir/fix_351.patch"
-
     for i in ${srcdir}/*.patch; do
         sed -f doc/scripts/update_commands_0.9.sed -i "$i"
         msg "Patching $i"
@@ -73,7 +71,7 @@ prepare() {
     done
     for i in ${srcdir}/*.{cc,h}; do
         sed -f doc/scripts/update_commands_0.9.sed -i "$i"
-        ln -s "$i" src
+        ln -sf "$i" src
     done
 
     ./autogen.sh
@@ -88,7 +86,6 @@ build() {
     ./configure $_debug \
         --prefix=/usr \
         --with-xmlrpc-c
-
     make
 }
 
