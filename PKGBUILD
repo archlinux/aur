@@ -3,7 +3,7 @@
 # Contributor: ilikenwf
 # Contributor: American_Jesus
 pkgname=palemoon
-pkgver=26.2.0
+pkgver=26.2.1
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -12,19 +12,16 @@ license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib'
          'nspr' 'libjpeg-turbo' 'zlib' 'bzip2' 'libpng' 'libevent' 'libvpx' 'startup-notification')
 makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'gstreamer' 'gst-plugins-base' 'libpulse' 'hunspell')
-optdepends=('networkmanager: Location detection via available WiFi networks'
-            'libpulse: PulseAudio audio driver'
+optdepends=('libpulse: PulseAudio audio driver'
             'hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
-            'gst-libav: H264 Support'
-            'gst-plugins-bad'
-            'gst-plugins-good'
-            'gst-plugins-ugly')
+            'gst-libav: h.264 support'
+            'gst-plugins-good: h.264 support')
 install=palemoon.install
 source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=${pkgver}_Release"
         mozconfig.in)
 md5sums=('SKIP'
-         '5c4f064028750abff77eaac03d7515e1')
+         'c3af6b33006a95e8844cbe4fea8b2309')
 
 prepare() {
   sed 's#%SRCDIR%#'"$srcdir"'#g' mozconfig.in > mozconfig
