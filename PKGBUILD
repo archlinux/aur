@@ -4,16 +4,15 @@
 _pkgname='bigloo'
 pkgname="${_pkgname}-devel"
 epoch=14
-_pkgver='4.2c'
-#_pkgsuffix='beta10Dec15'
-pkgver="${_pkgver}"
-#_${_pkgsuffix}"
+_pkgver='4.3a'
+_pkgsuffix='alpha05Apr16'
+pkgver="${_pkgver}"."${_pkgsuffix}"
 pkgrel=1
 pkgdesc="Fast scheme compiler"
 arch=('i686' 'x86_64')
 url="http://www-sop.inria.fr/mimosa/fp/Bigloo/"
 license=('GPL' 'LGPL')
-depends=('openssl' 'sqlite3' 'avahi' 'libunistring' 'gmp' 'gstreamer0.10-base' 'mpg123' 'flac')
+depends=('openssl' 'sqlite3' 'avahi' 'libunistring' 'gmp' 'libpulse' 'libuv' 'gstreamer0.10-base' 'mpg123' 'flac')
 makedepends=('zip' 'emacs')
 optdepends=('emacs: for bee'
 	    'java-environment: for compiling into jvm')
@@ -21,9 +20,8 @@ provides=('bigloo=$pkgver')
 conflicts=('bigloo')
 options=('!makeflags' 'libtool' 'staticlibs' '!strip')
 install=bigloo.install
-#source=("ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${_pkgname}${_pkgver}-${_pkgsuffix}.tar.gz" "satisfy-ldconfig.sh")
-source=("ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${_pkgname}${_pkgver}.tar.gz" "satisfy-ldconfig.sh")
-md5sums=('c2208e166954cf8476898a28cfc975be'
+source=("ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${_pkgname}${_pkgver}-${_pkgsuffix}.tar.gz" "satisfy-ldconfig.sh")
+md5sums=('1ba665d02237b8ad11ce0d7337dc19fd'
          'c253eb5651c81204f6c16b89c3c2cb6a')
 
 prepare() {
