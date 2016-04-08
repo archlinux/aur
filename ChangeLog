@@ -2,9 +2,12 @@
 ChangeLog for libTheSky PKGBUILD
 http://libthesky.sourceforge.net/
 
+* libthesky-0.3.3-1 (2016-04-08 - AstroFloyd)
+	Version bump: 0.3.2 -> 0.3.3
+
 * libthesky-0.3.2-2 (2015-04-28 - AstroFloyd)
 	Added cmake as a make dependency
-	
+
 * libthesky-0.3.2-1 (2015-04-26 - AstroFloyd)
 	Version bump: 0.3.1 -> 0.3.2
 
