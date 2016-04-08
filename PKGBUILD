@@ -2,8 +2,8 @@
 
 pkgname=firefox-esr-zh-cn
 _pkgname=firefox-esr
-pkgver=45.0.1esr
-pkgrel=2
+pkgver=45.0.2esr
+pkgrel=1
 pkgdesc="Chinese Simplified For Firefox ESR"
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/zh-CN/firefox/channel/#esr"
@@ -23,8 +23,8 @@ source_i686=("https://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/
 source_x86_64=("https://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/build$pkgrel/linux-x86_64/zh-CN/firefox-$pkgver.tar.bz2")
 sha512sums=('SKIP'
             'SKIP')
-sha512sums_i686=('6e228be0194aa9b0ee66aa02e8613f4735197421ed3dd40c0a10c7c3d9efc52d270ac219c171228d808d246e3cec8d6c1fe1f936875aea25f879be506d30d32c')
-sha512sums_x86_64=('dcf62f76d7c664122a4ce9f35dcfcbd53ab3e9dec4a414251483f05b4223a8816cf0b307c52245e3575583ce7c9e0475279a5f4eceee03cdcae8dde0ce2fcdff')
+sha512sums_i686=('1f7d0d91668e935fe4d0420a50447eb88bcffd241efc8f81a368fd96afc0b7697b642bc62da243f35c3dadc8b59a5303da3a1dbe0f015b719459ebaef50f3615')
+sha512sums_x86_64=('7f4c391e3d677afbed55996c16de5741902e403d9b91d7a67a8bc46b6f18cc65ddbef6b9a1e73a971434fc6b538f8aeb719780ff6605f52ab162373e4a2539f9')
 
 package() {
   # Create directories
