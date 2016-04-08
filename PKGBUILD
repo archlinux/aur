@@ -1,5 +1,5 @@
 pkgname=psi-plus-l10n-qt5-git
-pkgver=0.16.543.523
+pkgver=0.16.543.523.3
 pkgrel=1
 pkgdesc="Language packs for Psi+ (Qt 5.x build)"
 arch=('any')

@@ -2,7 +2,7 @@
 # Wed Apr  6 17:56:08 UTC 2016
 pkgbase = psi-plus-l10n-qt5-git
 	pkgdesc = Language packs for Psi+ (Qt 5.x build)
-	pkgver = 0.16.543.523
+	pkgver = 0.16.543.523.3
 	pkgrel = 1
 	url = http://psi-plus.com
 	arch = any
