@@ -3,7 +3,7 @@
 _pkgbasename=memtest86
 pkgname=$_pkgbasename-efi
 pkgver=6.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A free, thorough, stand alone memory test as an EFI application"
 arch=('i686' 'x86_64')
 url="http://www.memtest86.com"
