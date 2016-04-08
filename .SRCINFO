@@ -1,14 +1,15 @@
 pkgbase = acbuild
 	pkgdesc = Command line utility to build and modify App Container Images (ACIs), the container image format defined in the App Container (appc) spec implemented by rkt.
-	pkgver = 0.1.1
+	pkgver = 0.2.2
 	pkgrel = 1
 	url = https://github.com/appc/acbuild
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = git
+	makedepends = go
 	depends = gnupg
-	source = git+https://github.com/appc/acbuild.git#tag=v0.1.1
+	source = git+https://github.com/appc/acbuild.git#tag=v0.2.2
 	md5sums = SKIP
 
 pkgname = acbuild
