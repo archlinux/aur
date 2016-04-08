@@ -3,13 +3,13 @@
 _pyname=conda-env
 pkgname=python-${_pyname}
 pkgver=2.4.5
-pkgrel=1
-pkgdesc="OS-agnostic, system-level binary package manager and ecosystem"
+pkgrel=2
+pkgdesc="Provides a unified interface to dealing with Conda environments"
 arch=('any')
-url="http://conda.pydata.org/docs/"
+url="http://conda.pydata.org/docs/using/envs.html"
 license=('BSD')
 groups=()
-depends=('python')
+depends=('python' 'python-conda')
 makedepends=()
 provides=("$_pyname" 'activate' 'deactivate')
 conflicts=()
