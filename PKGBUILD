@@ -2,7 +2,7 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=megasync-git
-pkgver=v2.8.0.0.Linux.0.gb029ac2
+pkgver=v2.8.0.0.Linux.1.gd631cbf
 pkgrel=1
 pkgdesc="Sync your files to your Mega account. Official app. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -19,6 +19,8 @@ depends=('qt5-base'
          'curl'
          'crypto++'
          'hicolor-icon-theme'
+         'xdg-utils'
+         'desktop-file-utils'
          )
 makedepends=('git'
              'qt5-tools'
