@@ -21,7 +21,7 @@ pkgname=(
          'papirus-vlc-theme-git'
          'papirus-yakuake-theme-git' 
          )
-pkgver=r591.5e20523
+pkgver=r594.ce60a60
 pkgrel=1
 pkgdesc="Papirus Suite for KDE (git version)"
 arch=('any')
