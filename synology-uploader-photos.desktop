@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=synology-uploader-photos
+Comment=Synology Assistant - Version 4.2 with uploader photos for Photo Station
+Exec=synology-uploader-photos
+Icon=/usr/share/icons/hicolor/64x64/apps/synology-uploader-photos.png
+Terminal=false
+Type=Application
+Categories=Network;Graphics;Photography;
