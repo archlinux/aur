@@ -71,6 +71,10 @@ build() {
   make
   # Python
   python2 setup.py build
+
+  cd "$srcdir/$pkgname-debian-experimental/docs/man"
+  rst2man2 bitmask.1.rst      bitmask.1
+  rst2man2 bitmask-root.1.rst bitmask-root.1
 }
 
 #check() {
@@ -90,6 +94,9 @@ package() {
   cd "$srcdir/$pkgname-debian-experimental"
   install -Dm644 -t "${pkgdir}/usr/share/pixmaps"      debian/bitmask.xpm
   install -Dm644 -t "${pkgdir}/usr/share/applications" debian/bitmask.desktop
+
+  install -Dm644 -t "${pkgdir}/usr/share/man/man1" docs/man/bitmask.1 \
+                                                   docs/man/bitmask-root.1
 
   for i in 24x24 32x32 48x48 64x64 128x128 256x256; do
     install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/$i/apps/" \
