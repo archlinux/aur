@@ -7,15 +7,15 @@ if [ ! -f /usr/bin/metacity ]; then
   zenity --warning --text="<b>You do not appear to have Metacity installed.</b>\n\nThe Compiz GTK window decorator uses Metacity libraries to operate. The Metacity theme is what this tool adjusts.\n\nInstall the metacity package if you would like to use the Compiz GTK window decorator."
 fi
 
-if [ -f ~/.config/compiz-manjaro-gtk-decorator-theme.cfg ]; then
-  rm ~/.config/compiz-manjaro-gtk-decorator-theme.cfg
-  gsettings reset org.gnome.desktop.wm.preferences titlebar-uses-system-font
-fi
-
 main_window() {
   selection=$(
-    zenity --height 450 --width 300 --list --ok-label="Apply" --cancel-label="Close" --title="Compiz GTK decorator theme" \
-    --column="Installed Metacity themes:" "Compiz GWD default" \
+    zenity --height 450 --width 320 --list --ok-label="Apply" --cancel-label="Close" --title="Metacity themes" \
+    --column="Current theme: $( if [ $(gsettings get org.gnome.metacity theme) == "''" ]; then
+        echo Default
+      else
+        gsettings get org.gnome.metacity theme
+      fi)" \
+    "Compiz GWD default" \
     $(
       for d in /usr/share/themes/*/metacity-1; do
         echo $d | sed 's:/usr/share/themes/::' | sed 's:/metacity-1::'

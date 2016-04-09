@@ -6,7 +6,7 @@ _name=compiz
 pkgname=compiz-manjaro
 _series=0.9.12
 pkgver=${_series}.2
-pkgrel=4
+pkgrel=5
 _greybirdver=1.6.2
 pkgdesc="OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE."
 arch=('i686' 'x86_64')
@@ -34,13 +34,11 @@ source=("${url}/${_series}/${pkgver}/+download/${_name}-${pkgver}.tar.bz2"
         "${pkgname}-defaults.patch"
         "${pkgname}.gschema.override"
         "compiz-gtk-decorator-theme-selector"
-        "compiz-gtk-decorator-theme.desktop"
-        "compiz-xfce-autostart"
-        "compiz-xfce-autostart.desktop"
+        "compiz-gtk-decorator-theme-selector.desktop"
+        "compiz-xfce-autostart-setup"
+        "compiz-xfce-autostart-setup.desktop"
         "compiz-xfce-uninstall-helper"
         "compiz-xfce-uninstall-helper.desktop"
-        "${pkgname}-xfce-decoratortheme"
-        "${pkgname}-xfce-decoratortheme.desktop"
         "greybird-${_greybirdver}.tar.gz::https://github.com/shimmerproject/Greybird/archive/v${_greybirdver}.tar.gz")
 sha256sums=('8917ac9e6dfdacc740780e1995e932ed865d293ae87821e7a280da5325daec80'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
@@ -53,16 +51,14 @@ sha256sums=('8917ac9e6dfdacc740780e1995e932ed865d293ae87821e7a280da5325daec80'
             '0d7474aee60c1a482cf26d5d0be6ec2e1b1067fa1d601fdf4aa19a71b07e41d3'
             'cdc9eeaa213dbde3bceb2d0a73171ed319929b6a5146ff55fcd4f17df7b25d13'
             '443f85eae424e8aa993f786f3f90dcf92a5454f728f574a5311bb4747ac54288'
-            '0679b0f336b765171c1ee0317065dfe33f6beb93f74d8e3282bd4a3e61e4a819'
+            '04c7d417602c144313e808d5e1bde198ee677412c97d7405cf6092e8794f95b7'
             '0faaf9e9df28d2857108ccd0910d50ba631c34c2b1659b8860da8c2b552fc889'
-            '85940c9c84443fd6229630f4dca9859d8db5146ea21ab76d55d99b2d763cf740'
-            '8938f927c0f0ee5a9e83489dd66939588ebe4ad65bb59b483a54991421836a53'
-            'cd179e08cef8e34f5aeb9629d5050ff263ccdb20f7df4a4e0fa195867b6bd1b9'
-            '6f982de454f190235fd6577c1b3719a570569b9b024ebafe9fec1f1e2004326b'
-            'de94d4f1239ba263c2fdc7d4b168ee30d585f5aedccd2ad45fa63cb913e44cbc'
-            '185b5db74729997c63c0a873eb08961414dade7755efaea95e4fe7e1b2821e18'
+            'a9caa25aa72c1d28e7f3660ac89404e0bae8085b71626fc1c97db1956eea8bec'
+            'd23b8633186bb3a2a841734ad0b917500f3536a67046f5d8fbb08818eab59160'
+            '38ef826430307958722fa6d3553adf5a6e2bc793d7f1b55d4c66c5e51a60b385'
+            '02eec20f75eb1f9571a2cf92013fc3c78d13c155a8ede0467cc10b83cdeba43c'
             '473a38b379381311b68dcc579005c0d5bbfbabefe1de7107d897c68b81e6b460')
-install="${_name}.install"
+install="${pkgname}.install"
 
 prepare() {
   cd "${_name}-${pkgver}"
@@ -162,14 +158,12 @@ package() {
   sed -i 's|Categories=Settings;DesktopSettings;|Categories=Settings;DesktopSettings;X-XFCE-SettingsDialog;X-XFCE-OtherSettings;|' "${pkgdir}/usr/share/applications/ccsm.desktop"
   # Install GWD theme selector app
   install -Dm755 "${srcdir}/compiz-gtk-decorator-theme-selector" "${pkgdir}/usr/bin/compiz-gtk-decorator-theme-selector"
-  install -Dm644 "${srcdir}/compiz-gtk-decorator-theme.desktop" "${pkgdir}/usr/share/applications/compiz-gtk-decorator-theme.desktop"
+  install -Dm644 "${srcdir}/compiz-gtk-decorator-theme-selector.desktop" "${pkgdir}/usr/share/applications/compiz-gtk-decorator-theme.desktop"
   # Place autostart/theme scripts/enablers
-  install -Dm755 "${srcdir}/compiz-xfce-autostart" "${pkgdir}/usr/bin/compiz-xfce-autostart"
-  install -Dm644 "${srcdir}/compiz-xfce-autostart.desktop" "${pkgdir}/etc/xdg/autostart/compiz-xfce-autostart.desktop"
+  install -Dm755 "${srcdir}/compiz-xfce-autostart-setup" "${pkgdir}/usr/bin/compiz-xfce-autostart-setup"
+  install -Dm644 "${srcdir}/compiz-xfce-autostart-setup.desktop" "${pkgdir}/etc/xdg/autostart/compiz-xfce-autostart-setup.desktop"
   install -Dm755 "${srcdir}/compiz-xfce-uninstall-helper" "${pkgdir}/usr/bin/compiz-xfce-uninstall-helper"
   install -Dm644 "${srcdir}/compiz-xfce-uninstall-helper.desktop" "${pkgdir}/etc/xdg/autostart/compiz-xfce-uninstall-helper.desktop"
-  install -Dm755 "${srcdir}/${pkgname}-xfce-decoratortheme" "${pkgdir}/usr/bin/${pkgname}-xfce-decoratortheme"
-  install -Dm644 "${srcdir}/${pkgname}-xfce-decoratortheme.desktop" "${pkgdir}/etc/xdg/autostart/${pkgname}-xfce-decoratortheme.desktop"
   
   # greybird window decorations
   cd "${srcdir}/Greybird-${_greybirdver}"

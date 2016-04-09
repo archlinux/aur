@@ -1,0 +1,18 @@
+#!/bin/bash
+
+xfconf-query -c xfce4-session -p /sessions/Failsafe/Client0_Command -a -s compiz
+
+## Automatic GWD decoration matching for default Manjaro Xfce themes
+if [ "$(xfconf-query -c xsettings -p /Net/ThemeName)" == "Menda" ]; then
+	gsettings set org.gnome.metacity theme "Menda"
+elif [ "$(xfconf-query -c xsettings -p /Net/ThemeName)" == "Vertex-Maia-Square" ]; then
+	gsettings set org.gnome.metacity theme "Vertex-Maia-Square"
+fi
+
+mkdir -p ~/.config/autostart
+rm ~/.config/autostart/compiz-xfce-autostart-setup.desktop
+cp /etc/xdg/autostart/compiz-xfce-autostart-setup.desktop ~/.config/autostart/
+sed -i 's|Hidden=false|Hidden=true|' ~/.config/autostart/compiz-xfce-autostart-setup.desktop
+
+## This first-time run when it's replacing a running xfwm4, we run it twice cause of bugs
+compiz --replace ; exec compiz --replace
