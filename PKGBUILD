@@ -2,7 +2,7 @@
 
 _themename=urbanlifestyle
 pkgname=sddm-${_themename}-theme
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='A simple and colorful SDDM theme.'
 arch=('any')
@@ -18,9 +18,10 @@ source=(
 	"${_themename}-${pkgver}.tar.gz::https://github.com/AlfredoRamos/${pkgname}/archive/${pkgver}.tar.gz"
 	'password_focus_fix.patch'
 )
+
 sha512sums=(
-	'6ec35568d91fa0a155d286823fe74b9933d5400df05e8ed5b463b0e4d7bcf04e5f752c20dc68543b50ef306d22e9ac1e38854b61b5b55a90c4feae5fe89366e4'
-	'ec7b22a50ffe98c3a447dedd9b521b4d7fe43f34a6e5b1aa7589b7be122a3e8bd3e91c4f780ea0f5222421ecd9f226ecc1ae7f060a0db9cd816b0478bc4db1fc'
+	'2606688a61e755dddd83c1ea8d7810071b857ed7ac9192a21a9f2b9945a7d906a2ed6dd63fa63bd85753981fefaed6bff696532a3af8ad1691fac9cb20cb464c'
+	'a70a38b86de090c7abff3690cedfa6a2f555316c49c2fb2b1621643c812efc7c7e123c8fc05402c2b5bb39dc3502fec39e1ecf0d9af4c842da25c0913e82c87f'
 )
 
 prepare() {
