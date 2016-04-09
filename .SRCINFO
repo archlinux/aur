@@ -1,14 +1,14 @@
 pkgbase = fastqc
 	pkgdesc = A quality control tool for high throughput sequence data.
-	pkgver = 0.11.4
-	pkgrel = 3
+	pkgver = 0.11.5
+	pkgrel = 1
 	url = http://www.bioinformatics.babraham.ac.uk/projects/fastqc
 	arch = any
 	license = GPL3
 	depends = perl
 	depends = java-environment>=6
-	source = http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.4.zip
-	md5sums = 104ff2e0e9aebf5bee1f6b068a059b0d
+	source = http://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.5.zip
+	md5sums = 3524f101c0ab0bae77c7595983170a76
 
 pkgname = fastqc
 
