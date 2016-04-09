@@ -5,7 +5,7 @@
 # Contributor: Loui Chang <louipc dot ist at gmail company> (SPAMMERS!)
 
 pkgname=draftsight
-pkgver=2016SP0
+pkgver=2016SP1
 pkgrel=1
 pkgdesc="Freeware CAD software for your DWG/DXF files."
 arch=('x86_64')
@@ -31,7 +31,7 @@ depends=('desktop-file-utils'
 install='draftsight.install'
 source=("http://www.draftsight.com/download-linux-fedora"
         "draftsight.desktop")
-md5sums=('4076a388798e3cf3c7eee7774d842273'
+md5sums=('1bc8b2d4c69314f0d612a6c8e09d5acb'
          'cfda3b8675a93ccfb768873c1a873199')
 
 _pkgprefix='opt/dassault-systemes/DraftSight'
