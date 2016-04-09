@@ -1,4 +1,4 @@
-From ae33abe3ab357de1dc341841c435d7e3cd4fca8b Mon Sep 17 00:00:00 2001
+From badd5c180f547a467089f9311df2d05578e2828a Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Wed, 7 Jan 2015 16:01:00 +0100
 Subject: [PATCH 1/3] emulation: Add sequences and signals for desktop
@@ -20,15 +20,17 @@ https://bugzilla.gnome.org/show_bug.cgi?id=711059
 ---
  src/caps.cc           |  4 +++
  src/marshal.list      |  1 +
- src/vte.cc            | 38 ++++++++++++++++++++++
+ src/vte.cc            | 12 +++++++
  src/vte/vteterminal.h |  3 +-
+ src/vtegtk.cc         | 21 ++++++++++++
+ src/vtegtk.hh         |  1 +
  src/vteinternal.hh    |  5 +++
  src/vteseq-n.gperf    |  1 +
  src/vteseq.cc         | 90 +++++++++++++++++++++++++++++++++++++++++++++++++++
- 7 files changed, 141 insertions(+), 1 deletion(-)
+ 9 files changed, 137 insertions(+), 1 deletion(-)
 
 diff --git a/src/caps.cc b/src/caps.cc
-index 82078af3f405..e3514eb11f38 100644
+index d4ac3d8b01aa..bf79b08181f1 100644
 --- a/src/caps.cc
 +++ b/src/caps.cc
 @@ -254,6 +254,8 @@ const char _vte_xterm_capability_strings[] =
@@ -60,20 +62,61 @@ index 0276422ec6d4..2c35c685930a 100644
  VOID:STRING,UINT
  VOID:UINT,UINT
 diff --git a/src/vte.cc b/src/vte.cc
-index 701891ba93b3..7830319ea9a3 100644
+index cf052beefcb5..17b31f6f177e 100644
 --- a/src/vte.cc
 +++ b/src/vte.cc
-@@ -8906,6 +8906,9 @@ vte_terminal_finalize(GObject *object)
+@@ -8517,6 +8517,9 @@ VteTerminalPrivate::~VteTerminalPrivate()
  
- 	remove_update_timeout (terminal);
+ 	remove_update_timeout(this);
  
-+	g_free (terminal->pvt->notification_summary);
-+	g_free (terminal->pvt->notification_body);
++	g_free (m_notification_summary);
++	g_free (m_notification_body);
 +
  	/* discard title updates */
-         g_free(terminal->pvt->window_title);
-         g_free(terminal->pvt->window_title_changed);
-@@ -10638,6 +10641,7 @@ vte_terminal_class_init(VteTerminalClass *klass)
+         g_free(m_window_title);
+         g_free(m_window_title_changed);
+@@ -10551,6 +10554,15 @@ VteTerminalPrivate::emit_pending_signals()
+ 
+ 	emit_adjustment_changed();
+ 
++	if (m_notification_received) {
++                _vte_debug_print (VTE_DEBUG_SIGNALS,
++                                  "Emitting `notification-received'.\n");
++                g_signal_emit(object, signals[SIGNAL_NOTIFICATION_RECEIVED], 0,
++                              m_notification_summary,
++                              m_notification_body);
++                m_notification_received = FALSE;
++	}
++
+ 	if (m_window_title_changed) {
+ 		g_free (m_window_title);
+ 		m_window_title = m_window_title_changed;
+diff --git a/src/vte/vteterminal.h b/src/vte/vteterminal.h
+index 38ea8c3bc460..cb00855f0cf8 100644
+--- a/src/vte/vteterminal.h
++++ b/src/vte/vteterminal.h
+@@ -71,6 +71,7 @@ struct _VteTerminalClass {
+ 	void (*child_exited)(VteTerminal* terminal, int status);
+ 	void (*encoding_changed)(VteTerminal* terminal);
+ 	void (*char_size_changed)(VteTerminal* terminal, guint char_width, guint char_height);
++	void (*notification_received)(VteTerminal* terminal, const gchar *summary, const gchar *body);
+ 	void (*window_title_changed)(VteTerminal* terminal);
+ 	void (*icon_title_changed)(VteTerminal* terminal);
+ 	void (*selection_changed)(VteTerminal* terminal);
+@@ -104,7 +105,7 @@ struct _VteTerminalClass {
+ 	void (*bell)(VteTerminal* terminal);
+ 
+         /* Padding for future expansion. */
+-        gpointer padding[16];
++        gpointer padding[15];
+ 
+         VteTerminalClassPrivate *priv;
+ };
+diff --git a/src/vtegtk.cc b/src/vtegtk.cc
+index a2591b4bc7e8..19733ea85505 100644
+--- a/src/vtegtk.cc
++++ b/src/vtegtk.cc
+@@ -666,6 +666,7 @@ vte_terminal_class_init(VteTerminalClass *klass)
  	klass->child_exited = NULL;
  	klass->encoding_changed = NULL;
  	klass->char_size_changed = NULL;
@@ -81,8 +124,8 @@ index 701891ba93b3..7830319ea9a3 100644
  	klass->window_title_changed = NULL;
  	klass->icon_title_changed = NULL;
  	klass->selection_changed = NULL;
-@@ -10712,6 +10716,25 @@ vte_terminal_class_init(VteTerminalClass *klass)
-                      1, G_TYPE_INT);
+@@ -742,6 +743,26 @@ vte_terminal_class_init(VteTerminalClass *klass)
+                              1, G_TYPE_INT);
  
          /**
 +         * VteTerminal::notification-received:
@@ -93,88 +136,51 @@ index 701891ba93b3..7830319ea9a3 100644
 +         * Emitted when a process running in the terminal wants to
 +         * send a notification to the desktop environment.
 +         */
-+        g_signal_new(I_("notification-received"),
-+                     G_OBJECT_CLASS_TYPE(klass),
-+                     G_SIGNAL_RUN_LAST,
-+                     G_STRUCT_OFFSET(VteTerminalClass, notification_received),
-+                     NULL,
-+                     NULL,
-+                     _vte_marshal_VOID__STRING_STRING,
-+                     G_TYPE_NONE,
-+                     2, G_TYPE_STRING, G_TYPE_STRING);
++        signals[SIGNAL_NOTIFICATION_RECEIVED] =
++                g_signal_new(I_("notification-received"),
++                             G_OBJECT_CLASS_TYPE(klass),
++                             G_SIGNAL_RUN_LAST,
++                             G_STRUCT_OFFSET(VteTerminalClass, notification_received),
++                             NULL,
++                             NULL,
++                             _vte_marshal_VOID__STRING_STRING,
++                             G_TYPE_NONE,
++                             2, G_TYPE_STRING, G_TYPE_STRING);
 +
 +        /**
           * VteTerminal::window-title-changed:
           * @vteterminal: the object which received the signal
           *
-@@ -12732,6 +12755,16 @@ need_processing (VteTerminal *terminal)
- 	return _vte_incoming_chunks_length (terminal->pvt->incoming) != 0;
- }
- 
-+static void
-+vte_terminal_emit_notification_received (VteTerminal *terminal)
-+{
-+	_vte_debug_print (VTE_DEBUG_SIGNALS,
-+			  "Emitting `notification-received'.\n");
-+	g_signal_emit_by_name (terminal, "notification-received",
-+			       terminal->pvt->notification_summary,
-+			       terminal->pvt->notification_body);
-+}
-+
- /* Emit an "icon-title-changed" signal. */
- static void
- vte_terminal_emit_icon_title_changed(VteTerminal *terminal)
-@@ -12779,6 +12812,11 @@ vte_terminal_emit_pending_signals(VteTerminal *terminal)
- 
- 	vte_terminal_emit_adjustment_changed (terminal);
- 
-+	if (terminal->pvt->notification_received) {
-+		vte_terminal_emit_notification_received (terminal);
-+		terminal->pvt->notification_received = FALSE;
-+	}
-+
- 	if (terminal->pvt->window_title_changed) {
- 		g_free (terminal->pvt->window_title);
- 		terminal->pvt->window_title = terminal->pvt->window_title_changed;
-diff --git a/src/vte/vteterminal.h b/src/vte/vteterminal.h
-index dbe3ffed81ba..8b21635bea9e 100644
---- a/src/vte/vteterminal.h
-+++ b/src/vte/vteterminal.h
-@@ -78,6 +78,7 @@ struct _VteTerminalClass {
- 	void (*child_exited)(VteTerminal* terminal, int status);
- 	void (*encoding_changed)(VteTerminal* terminal);
- 	void (*char_size_changed)(VteTerminal* terminal, guint char_width, guint char_height);
-+	void (*notification_received)(VteTerminal* terminal, const gchar *summary, const gchar *body);
- 	void (*window_title_changed)(VteTerminal* terminal);
- 	void (*icon_title_changed)(VteTerminal* terminal);
- 	void (*selection_changed)(VteTerminal* terminal);
-@@ -111,7 +112,7 @@ struct _VteTerminalClass {
- 	void (*bell)(VteTerminal* terminal);
- 
-         /* Padding for future expansion. */
--        gpointer padding[16];
-+        gpointer padding[15];
- 
-         VteTerminalClassPrivate *priv;
- };
+diff --git a/src/vtegtk.hh b/src/vtegtk.hh
+index 5fd8c1161538..d28c72ff5adb 100644
+--- a/src/vtegtk.hh
++++ b/src/vtegtk.hh
+@@ -53,6 +53,7 @@ enum {
+         SIGNAL_TEXT_INSERTED,
+         SIGNAL_TEXT_MODIFIED,
+         SIGNAL_TEXT_SCROLLED,
++        SIGNAL_NOTIFICATION_RECEIVED,
+         SIGNAL_WINDOW_TITLE_CHANGED,
+         COPY_CLIPBOARD,
+         PASTE_CLIPBOARD,
 diff --git a/src/vteinternal.hh b/src/vteinternal.hh
-index f2152e6a8853..8c4c87d73122 100644
+index 696750b585f0..cb57a60c4e7e 100644
 --- a/src/vteinternal.hh
 +++ b/src/vteinternal.hh
-@@ -369,6 +369,11 @@ public:
- 	gboolean cursor_moved_pending;
- 	gboolean contents_changed_pending;
+@@ -513,6 +513,11 @@ public:
+         gboolean m_cursor_moved_pending;
+         gboolean m_contents_changed_pending;
  
 +	/* desktop notification */
-+	gboolean notification_received;
-+	gchar *notification_summary;
-+	gchar *notification_body;
++	gboolean m_notification_received;
++	gchar *m_notification_summary;
++	gchar *m_notification_body;
 +
  	/* window name changes */
-         gchar *window_title;
- 	gchar *window_title_changed;
+         char* m_window_title;
+         char* m_window_title_changed;
 diff --git a/src/vteseq-n.gperf b/src/vteseq-n.gperf
-index ad5b6d99f938..287caa5b5928 100644
+index 4e2f3376d969..407139c37bfb 100644
 --- a/src/vteseq-n.gperf
 +++ b/src/vteseq-n.gperf
 @@ -168,3 +168,4 @@ struct vteseq_n_struct {
@@ -183,15 +189,15 @@ index ad5b6d99f938..287caa5b5928 100644
  "set-current-file-uri", VTE_SEQUENCE_HANDLER(vte_sequence_handler_set_current_file_uri)
 +"send-notification", VTE_SEQUENCE_HANDLER(vte_sequence_handler_send_notification)
 diff --git a/src/vteseq.cc b/src/vteseq.cc
-index bf76995165bb..59f091f166aa 100644
+index 1a646029abbe..53ce98332e43 100644
 --- a/src/vteseq.cc
 +++ b/src/vteseq.cc
-@@ -2243,6 +2243,96 @@ vte_sequence_handler_return_terminal_id (VteTerminal *terminal, GValueArray *par
- 	vte_sequence_handler_send_primary_device_attributes (terminal, params);
+@@ -2334,6 +2334,96 @@ vte_sequence_handler_return_terminal_id (VteTerminalPrivate *that, GValueArray *
+ 	vte_sequence_handler_send_primary_device_attributes (that, params);
  }
  
 +static void
-+vte_sequence_handler_send_notification (VteTerminal *terminal, GValueArray *params)
++vte_sequence_handler_send_notification (VteTerminalPrivate *that, GValueArray *params)
 +{
 +	GValue *value;
 +	const char *end;
@@ -199,8 +205,8 @@ index bf76995165bb..59f091f166aa 100644
 +	char *str = NULL;
 +	char *p, *validated;
 +
-+	g_clear_pointer (&terminal->pvt->notification_summary, g_free);
-+	g_clear_pointer (&terminal->pvt->notification_body, g_free);
++	g_clear_pointer (&that->m_notification_summary, g_free);
++	g_clear_pointer (&that->m_notification_body, g_free);
 +
 +	value = g_value_array_get_nth (params, 0);
 +	if (value == NULL) {
@@ -210,7 +216,7 @@ index bf76995165bb..59f091f166aa 100644
 +	if (G_VALUE_HOLDS_STRING (value)) {
 +		option = g_value_dup_string (value);
 +	} else if (G_VALUE_HOLDS_POINTER (value)) {
-+		option = vte_ucs4_to_utf8 (terminal, (const guchar *)g_value_get_pointer (value));
++		option = that->ucs4_to_utf8 ((const guchar *)g_value_get_pointer (value));
 +	} else {
 +		goto out;
 +	}
@@ -227,7 +233,7 @@ index bf76995165bb..59f091f166aa 100644
 +	if (G_VALUE_HOLDS_STRING (value)) {
 +		str = g_value_dup_string (value);
 +	} else if (G_VALUE_HOLDS_POINTER (value)) {
-+		str = vte_ucs4_to_utf8 (terminal, (const guchar *)g_value_get_pointer (value));
++		str = that->ucs4_to_utf8 ((const guchar *)g_value_get_pointer (value));
 +	} else {
 +		goto out;
 +	}
@@ -242,10 +248,10 @@ index bf76995165bb..59f091f166aa 100644
 +		}
 +	}
 +
-+	terminal->pvt->notification_summary = validated;
++	that->m_notification_summary = validated;
 +	g_free (str);
 +
-+	terminal->pvt->notification_received = TRUE;
++	that->m_notification_received = TRUE;
 +	if (params->n_values == 2) {
 +		goto out;
 +	}
@@ -258,7 +264,7 @@ index bf76995165bb..59f091f166aa 100644
 +	if (G_VALUE_HOLDS_STRING (value)) {
 +		str = g_value_dup_string (value);
 +	} else if (G_VALUE_HOLDS_POINTER (value)) {
-+		str = vte_ucs4_to_utf8 (terminal, (const guchar *)g_value_get_pointer (value));
++		str = that->ucs4_to_utf8 ((const guchar *)g_value_get_pointer (value));
 +	} else {
 +		goto out;
 +	}
@@ -273,7 +279,7 @@ index bf76995165bb..59f091f166aa 100644
 +		}
 +	}
 +
-+	terminal->pvt->notification_body = validated;
++	that->m_notification_body = validated;
 +	g_free (str);
 +
 + out:
@@ -282,12 +288,12 @@ index bf76995165bb..59f091f166aa 100644
 +
  /* Send secondary device attributes. */
  static void
- vte_sequence_handler_send_secondary_device_attributes (VteTerminal *terminal, GValueArray *params)
+ vte_sequence_handler_send_secondary_device_attributes (VteTerminalPrivate *that, GValueArray *params)
 -- 
 2.5.0
 
 
-From d781b9be57a7d612558241a1712d1ad28c56de44 Mon Sep 17 00:00:00 2001
+From aa0710938fc81d72edcbd951939fa14672f9a4ee Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Thu, 29 Jan 2015 13:09:17 +0100
 Subject: [PATCH 2/3] vte.sh: Emit OSC 777 from PROMPT_COMMAND
@@ -318,7 +324,7 @@ index 2d211caa2f17..1c0543bd9d26 100644
 2.5.0
 
 
-From 21df58de64837af0216926743fbb9b3a10f82dfc Mon Sep 17 00:00:00 2001
+From 43e74100bc1e7114147333a5e6c45052a66a0849 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Thu, 22 Jan 2015 16:37:10 +0100
 Subject: [PATCH 3/3] vteapp: Add a test for the notification-received signal
@@ -328,10 +334,10 @@ Subject: [PATCH 3/3] vteapp: Add a test for the notification-received signal
  1 file changed, 7 insertions(+)
 
 diff --git a/src/app.vala b/src/app.vala
-index aa8d312abbca..290657d9495d 100644
+index 81049640358f..364836a61f1c 100644
 --- a/src/app.vala
 +++ b/src/app.vala
-@@ -102,6 +102,8 @@ class Window : Gtk.ApplicationWindow
+@@ -332,6 +332,8 @@ class Window : Gtk.ApplicationWindow
      if (App.Options.object_notifications)
        terminal.notify.connect(notify_cb);
  
@@ -339,8 +345,8 @@ index aa8d312abbca..290657d9495d 100644
 +
      /* Settings */
      if (App.Options.no_double_buffer)
-       terminal.set_double_buffered(true);
-@@ -511,6 +513,11 @@ class Window : Gtk.ApplicationWindow
+       terminal.set_double_buffered(false);
+@@ -797,6 +799,11 @@ class Window : Gtk.ApplicationWindow
      set_title(terminal.get_window_title());
    }
  
