@@ -1,7 +1,7 @@
 # Maintainer: Michael Tiebesl <email@tiebesl.com>
 
 pkgname=masalla-icon-theme
-pkgver=0.8.2
+pkgver=0.9
 pkgrel=1
 pkgdesc="A flat design icon theme by Hayder Majid"
 arch=('any')
