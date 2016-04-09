@@ -12,8 +12,9 @@ sha256sums=('SKIP')
 conflicts=('ghostwriter')
 provides=('ghostwriter')
 makedepends=('git' 'qtchooser')
-depends=('qt5-base' 'qt5-webkit' 'hunspell' 'desktop-file-utils' 'gtk-update-icon-cache')
+depends=('qt5-base' 'qt5-webkit' 'hunspell' 'desktop-file-utils' 'gtk-update-icon-cache' 'markdown')
 install=ghostwriter.install
+optdepends=('hunspell: spell checking')
 
 pkgver() {
   cd "${pkgname%-git}"
