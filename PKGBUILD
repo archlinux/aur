@@ -1,10 +1,10 @@
 # Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
-# Maintainer: Fernando Fernandez <fernando@softwareperonista.com.ar>
+# Contributor: Fernando Fernandez <fernando@softwareperonista.com.ar>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gnome-terminal-fedora
 _pkgname=gnome-terminal
-pkgver=3.18.2
+pkgver=3.20.0
 pkgrel=1
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686' 'x86_64')
@@ -20,24 +20,21 @@ install="${pkgname}.install"
 source=(
 	"https://download.gnome.org/sources/${_pkgname}/${pkgver::4}/${_pkgname}-${pkgver}.tar.xz"
 	'0001-build-Don-t-treat-warnings-as-errors.patch'
-	'gnome-terminal-symbolic-new-tab-icon.patch'
-	'gnome-terminal-dark-transparency-notify.patch'
+	'gnome-terminal-transparency-notify.patch'
 	'org.gnome.Terminal.gschema.override'
 )
 sha256sums=(
-	'5e35c0fa1395258bab83952cfabe4c1828b8655bcd761f8faed70b452bd89efa'
+	'2fe7f6bd3ca4e93ce156f83e673b9e8c3f0155b6bc603e109edc942718eb4150'
 	'83c42ed513e374c181b23da4f9fce39e197c1e09ae328147b2b2bcdfbc4c99d7'
-	'5a3d70ffca64e81f10ede0ed222199581bfb8e92bec26d89dc86130243f8994d'
-	'18e2f9530e759707775162a0207e782072a202f5c5efbbfe16079c6985eb37d9'
-	'e2797c0591e45b7cf4e7e8d3b926803bcff129d88dfe3b54f63dc61e0c8377de'
+	'2e80e28a47639f751de5e3947e99b0d9bd8a7532bcfc5ac28dddad7e8e08ce3a'
+	'5409b35d1940443d29d810de0560d3303eb74c009e661e8fbfa1030e5ffde92e'
 )
 
 prepare () {
 	cd "${_pkgname}-${pkgver}"
 
 	patch -p1 -i '../0001-build-Don-t-treat-warnings-as-errors.patch'
-	patch -p1 -i '../gnome-terminal-symbolic-new-tab-icon.patch'
-	patch -p1 -i '../gnome-terminal-dark-transparency-notify.patch'
+	patch -p1 -i '../gnome-terminal-transparency-notify.patch'
 
 	autoreconf -f -i
 }
@@ -53,6 +50,7 @@ build() {
 	            --disable-migration \
 	            --with-gtk=3.0 \
 	            --with-nautilus-extension
+	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 	make
 }
 
@@ -65,5 +63,6 @@ package() {
 	cd "${_pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 
-	install -Dm644 '../org.gnome.Terminal.gschema.override' "${pkgdir}/usr/share/glib-2.0/schemas/org.gnome.Terminal.gschema.override"
+	install -Dm644 '../org.gnome.Terminal.gschema.override' \
+		"${pkgdir}/usr/share/glib-2.0/schemas/org.gnome.Terminal.gschema.override"
 }

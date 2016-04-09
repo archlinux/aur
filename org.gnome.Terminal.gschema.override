@@ -1,2 +1,2 @@
 [org.gnome.Terminal.Legacy.Settings]
-dark-theme=true
+theme-variant='dark'
