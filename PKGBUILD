@@ -6,10 +6,11 @@ pkgname=$_pkgname-git
 pkgver=r147.556cc14
 pkgrel=1
 pkgdesc="CMake toolchain file and other scripts for the Android NDK"
-arch=('i686' 'x86_64')
-license=('cusomt:BSD')
+arch=('any')
+license=('custom:BSD')
 url='https://github.com/taka-no-me/android-cmake'
 depends=('cmake>=2.8.9' 'android-ndk>=r5')
+makedepends=('git')
 source=("$_pkgname"::"git+https://github.com/$_github_addr")
 sha256sums=('SKIP')
 
