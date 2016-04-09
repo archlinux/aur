@@ -7,7 +7,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 pkgname=spearmint-git
 _pkgname=spearmint
 pkgver=r4064.33b5758
-pkgrel=5
+pkgrel=6
 _ioq3v1='1.36'
 _ioq3v2='1.32-9'
 _upver='0.2'  # upstream release- needed for some pk3's.
@@ -209,7 +209,7 @@ package() {
     done
     for i in $(find ${g} -type f);
     do
-      # TODO: should this be in .pk3 (zip) format?
+      # per upstream: these should be "loose", not zipped in a pk3. otherwise, version conflicts from clients and other nastiness.
       install -D -m 640 ${srcdir}/${_pkgname}-patch/${i} ${pkgdir}/opt/spearmint/${i}
     done
   done
@@ -227,5 +227,6 @@ package() {
   install -D -m 644 ${srcdir}/spearmint.desktop ${pkgdir}/usr/share/applications/spearmint.desktop
   install -m 750 ${srcdir}/${_pkgname}.launcher ${pkgdir}/opt/spearmint/
   install -m 750 ${srcdir}/${_pkgname}-server.launcher ${pkgdir}/opt/spearmint/
+  install -m 640 ${srcdir}/gamecontrollerdb.txt ${pkgdir}/opt/spearmint/
 
 }
