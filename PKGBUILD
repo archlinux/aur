@@ -10,6 +10,7 @@ url='https://www.x64architecture.com/libicuid'
 license=('isc')
 source=("https://github.com/x64architecture/libicuid/archive/${pkgver}.tar.gz")
 sha256sums=('f34b6d44086d8c2501a5e8422f2f3e7c3121c64f51110b945aa8601caac5570f')
+makedepends=('cmake')
 
 prepare() {
   cd libicuid-${pkgver}
