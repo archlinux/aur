@@ -2,7 +2,7 @@
 
 pkgname="holodev-git"
 _pkgname="holodev"
-pkgver=116.a678626
+pkgver=125.99ec9c7
 pkgrel=1
 epoch=1
 pkgdesc="A tool to facilitate the creation of Linux Containers for developing Debian systems"
