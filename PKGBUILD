@@ -2,7 +2,7 @@
 # Contributor: Maxime Gauduin <alucryd@gmail.com>
 
 pkgname=vapoursynth-editor-git
-pkgver=r5.1.g4562431
+pkgver=r6.0.g1638e47
 pkgrel=1
 pkgdesc="A simple program for edit/create VapourSynth scripts. (GIT version)"
 arch=('i686' 'x86_64')
@@ -11,15 +11,16 @@ license=('CCPL' 'MIT' 'LGPL')
 depends=('qt5-base'
          'vapoursynth'
          'desktop-file-utils'
+         'hicolor-icon-theme'
          )
 makedepends=('git')
 provides=('vapoursynth-editor')
 conflicts=('vapoursynth-editor')
-install=vapoursynth-editor-git.install
 source=('git+https://bitbucket.org/mystery_keeper/vapoursynth-editor.git'
         'vsedit.desktop')
 sha1sums=('SKIP'
           '33df6813bdcceb3e11a094576515812f9df7eff6')
+install=vapoursynth-editor-git.install
 
 pkgver() {
   cd vapoursynth-editor
@@ -40,7 +41,7 @@ package() {
 
   cd "vapoursynth-editor/build/release-${_arch}bit-gcc"
   install -Dm755 vsedit "${pkgdir}/usr/bin/vsedit"
-  install -Dm644 vsedit.svg "${pkgdir}/usr/share/pixmaps/vsedit.svg"
+  install -Dm644 vsedit.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/vsedit.svg"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README "${pkgdir}/usr/share/doc/vsedit/README"
 }
