@@ -2,7 +2,7 @@
 # Contributor: Alex Ferrando <alferpal@gmail.com>
 # Contributor: Archan Paul <arp@archan.org>
 pkgname=eclipse-egit
-pkgver=4.2.0.201601211800_r
+pkgver=4.3.0.201604071810_r
 pkgrel=1
 pkgdesc='An Eclipse Team provider for the Git version control system.'
 arch=('any')
@@ -10,7 +10,7 @@ url='https://www.eclipse.org/egit/'
 license=('EPL')
 depends=('eclipse' 'eclipse-mylyn')
 source=("https://www.eclipse.org/downloads/download.php?file=/egit/updates/org.eclipse.egit.repository-${pkgver//_/-}.zip&r=1")
-sha512sums=('4f14a51c1c04be3e7b561a3901b061b57a24873796429d33bc242e7ddfe683437ff570a885e2dd9bd23c16c3cd78246b017f0a2d13d44560875a7a032a1ba506')
+sha512sums=('c4a8a9815fac6bf013892bbbb5d8d9b861fdd1c4bdbb15fc8a7aa650f036bdebcd2a128b4510fd81b7eb687155d26daa7ff88316fea45ef9e45f70b2dbfbcc03')
 
 prepare()
 {
