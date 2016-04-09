@@ -3,12 +3,14 @@
 _srcname=leap.bitmask
 pkgname=bitmask_client
 pkgver=0.9.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Encrypted communication for mere mortals.'
 arch=('any')
 url='https://bitmask.net/'
 license=('GPL3')
 depends=(
+  'desktop-file-utils'
+  'xdg-utils'
   'python2-argh'
   'python2-requests'
   'python2-srp'
@@ -31,6 +33,7 @@ depends=(
   'python2-leap_pycommon'
 )
 makedepends=(
+  'python2-docutils'
   'python-pyside-tools'
 )
 # Disable tests for now as they fail
