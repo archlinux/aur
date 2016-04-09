@@ -1,14 +1,15 @@
 # Maintainer: Fabien JUIF <fabien.juif@gmail.com>
 _application=himawaripy
 pkgname=${_application}-git
-pkgrel=2
-pkgver=r87.f18836f
+pkgrel=1
+pkgver=r90.f644f5d
 license=('MIT')
 pkgdesc="Put near-realtime picture of Earth as your desktop background."
 url="https://github.com/boramalper/${_application}"
 arch=('x86_64' 'i686')
-depends=('python' 'python-pillow' 'python-tzlocal' 'python-dateutil')
+depends=('python' 'python-pillow' 'python-tzlocal' 'python-dateutil' 'python-appdirs')
 makedepends=('git' 'python-setuptools')
+install=himawaripy.install
 source=(
   "git+https://github.com/boramalper/${_application}"
 )
@@ -18,6 +19,13 @@ sha256sums=(
 
 package() {
   cd ${srcdir}/${_application}
+
+  # Systemd
+  mkdir -p "${pkgdir}/usr/lib/systemd/user/"
+  cp ./systemd/* "${pkgdir}/usr/lib/systemd/user/"
+  sed -e 's|<INSTALLATION_PATH>|/usr/bin/himawaripy|g' -i "${pkgdir}/usr/lib/systemd/user/himawaripy.service"
+
+  # Package
   python setup.py install --root="${pkgdir}/" --optimize=1
 }
 
