@@ -2,6 +2,9 @@
 ChangeLog for astroTools PKGBUILD
 http://astrotools.sourceforge.net/
 
+* astroTools-0.0.3-1 (2016-04-09 - AstroFloyd)
+	Version bump v0.0.1 -> v0.0.3
+
 * astroTools-0.0.1-2 (2015-04-28 - AstroFloyd)
 	Added cmake as a make dependency
 
