@@ -69,8 +69,8 @@ _disabled_modules=(languages/mod_spidermonkey
 
 
 pkgname='freeswitch-git'
-pkgver=1.5.final.r1613.g3a13f0d
-pkgrel=4
+pkgver=1.5.final.r2501.g07b200c
+pkgrel=2
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk (git version)."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
@@ -83,7 +83,8 @@ depends=('curl'
          'libvorbis'
          'speex'
          'libjpeg-turbo'
-         'postgresql-libs')
+         'postgresql-libs'
+	 'yasm')
 # per https://wiki.freeswitch.org/wiki/FreeSwitch_Dependencies, dependencies are downloaded and built *from upstream*, so thankfully the deps are pretty minimal.
 makedepends=('git'
              'libjpeg'
