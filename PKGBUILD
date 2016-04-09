@@ -7,7 +7,7 @@
 
 
 pkgname=gtk3-light
-pkgver=3.18.8
+pkgver=3.20.2
 pkgrel=1
 pkgdesc="GTK3 without colord."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ url="http://www.gtk.org/"
 install=gtk3.install
 depends=('atk' 'cairo' 'gtk-update-icon-cache' 'libcups' 'libxcursor' 'libxinerama' 'libxrandr' 'libxi' 'libepoxy'
          'libxcomposite' 'libxdamage' 'pango' 'shared-mime-info' 'at-spi2-atk' 'wayland' 'libxkbcommon'
-         'adwaita-icon-theme' 'json-glib' 'rest' 'gtk-update-icon-cache')
+         'adwaita-icon-theme' 'json-glib' 'rest' 'librsvg' 'wayland-protocols')
 makedepends=('gobject-introspection' 'libcanberra' 'gtk-doc')
 optdepends=('libcanberra: gtk3-widget-factory demo')
 provides=("gtk3=$pkgver")
@@ -25,11 +25,11 @@ backup=(etc/gtk-3.0/settings.ini)
 license=('LGPL')
 source=(https://download.gnome.org/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz
         settings.ini)
-sha256sums=('1c53ef1bb55364698f7183ecd185b547f92f4a3a7abfafd531400232e2e052f8'
+sha256sums=('1ab1d1068ea55e0046f437d69983f164df5e68cb2e9fdfb38787b867f33f69f7'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202')
 
 prepare() {
-    cd gtk+-$pkgver
+    cd "gtk+-$pkgver"
     NOCONFIGURE=1 ./autogen.sh
 }
 
