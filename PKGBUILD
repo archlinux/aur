@@ -1,7 +1,7 @@
 # Maintainer: jdn06 <jdn06.jdn06@outlook.fr>
 pkgname=aqualung-git
 _pkgname=aqualung
-pkgver=2016.03
+pkgver=1.02g6b39024
 pkgrel=1
 pkgdesc="High quality music player w/ gapless support"
 arch=('i686' 'x86_64')
@@ -26,8 +26,12 @@ optdepends=('liblrdf: LADSPA filters'
 provides=(aqualung)
 conflicts=(aqualung)
 
-source=("$_pkgname"::"git://github.com/jeremyevans/$_pkgname.git")
-sha256sums=(SKIP)
+source=("$_pkgname"::"git://github.com/jeremyevans/$_pkgname.git"
+	"${_pkgname}.desktop")
+sha256sums=('SKIP'
+	'4d2aba2924b7c0bacbd377a6975f1cdbf09dc67a5d61c36bf2d52bddbab1b3b9')
+
+install="${_pkgname}.install"
 
 pkgver() {
 	cd "$_pkgname"
@@ -49,5 +53,11 @@ check() {
 package() {
 	cd "$_pkgname"
 	make DESTDIR="$pkgdir/" install
+	install -Dm644 "src/img/icon_16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/${_pkgname}.png"
+	install -Dm644 "src/img/icon_24.png" "${pkgdir}/usr/share/icons/hicolor/24x24/apps/${_pkgname}.png"
+	install -Dm644 "src/img/icon_32.png" "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png"
+	install -Dm644 "src/img/icon_48.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/${_pkgname}.png"
+	install -Dm644 "src/img/icon_64.png" "${pkgdir}/usr/share/icons/hicolor/64x64/apps/${_pkgname}.png"
+	install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
 
