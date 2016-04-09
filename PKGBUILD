@@ -1,7 +1,7 @@
 # Contributor: Randy Heydon <randy dot heydon at clockworklab dot net>
 # Maintainer:  saxonbeta <saxonbeta at gmail __com
 pkgname=elmerfem
-pkgver=8.1
+pkgver=8.2
 pkgrel=1
 pkgdesc="Simulation tool for CFD, FEM, electromagnetics, heat transfer and others featuring a PDE solver."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ options=(!emptydirs !makeflags)
 
 source=("https://github.com/ElmerCSC/$pkgname/archive/release-$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('cea4e0b33fac7244a76d7b259d9db58f5ce95e80d468c54f182b3a864bfd06cb'
+sha256sums=('ed4c87895c76003dd81faa464b6d0f38225d43e584f75290df21df629d0a4ecc'
             'd2e9f6f2ced11d845149721371ca15d15f9983a34eedc35a88263f8368f721ab')
 
 
