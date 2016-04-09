@@ -5,14 +5,14 @@
 
 pkgname=ccsm
 pkgver=0.8.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Compizconfig Settings Manager in Python2"
 arch=('any')
 url="http://www.northfield.ws/projects/compiz/releases/${pkgver}"
 license=('GPL')
 depends=('compizconfig-python' 'pygtk')
 makedepends=('intltool')
-optdepends=('compiz-gtk-standalone: option 1' 'compiz-core: option 2' 'python2-sexy: needed for some widgets')
+optdepends=('compiz-gtk-standalone: option 1' 'compiz-core: option 2')
 groups=('compiz-fusion' 'compiz-fusion-gtk' 'compiz-fusion-kde')
 conflicts=('ccsm-git')
 provides=("ccsm=$pkgver")
