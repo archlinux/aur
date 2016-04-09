@@ -1,0 +1,23 @@
+pre_install(){
+  update-desktop-database -q
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+post_install() {
+  pre_install
+  echo "if you are running x86_64, you need the lib32 opt depends for your driver"
+  echo "if you are having problems with the steam license, remove .steam and .local/share/Steam"
+}
+
+post_upgrade() {
+  pre_install
+}
+
+pre_upgrade(){
+  pre_install
+}
+
+post_remove() {
+  pre_install
+}
+
