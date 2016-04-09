@@ -1,0 +1,12 @@
+post_install() {
+  getent passwd filtor > /dev/null || useradd -r -g tor -d / -s /sbin/nologin filtor
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  systemctl stop filtor
+  userdel filtor
+}
