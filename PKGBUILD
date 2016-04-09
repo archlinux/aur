@@ -1,5 +1,5 @@
 pkgname=imapdedup
-pkgver=20160329
+pkgver=20160410
 pkgrel=1
 pkgdesc="IMAP folder deduplicator"
 arch=(any)
@@ -8,6 +8,11 @@ license=('GPL2')
 depends=('python2')
 source=(git://github.com/quentinsf/IMAPdedup.git)
 md5sums=('SKIP')
+
+prepare() {
+  cd "$srcdir/IMAPdedup"
+  sed -i 's|#! /usr/bin/env python|#! /usr/bin/env python2|' imapdedup.py
+}
 
 package() {
   cd "$srcdir/IMAPdedup"
