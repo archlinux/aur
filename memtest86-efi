@@ -5,14 +5,17 @@ CE="\033[31m" # Color red
 CB="\033[1m"  # Color bold
 CR="\033[0m"  # Color reset
 PRGNAME=$(basename $0)
-CONFFILE="/etc/memtest86-efi.conf"
-source "$CONFFILE"
+CONFDIR="/etc/memtest86-efi"
+CONFFILE="$CONFDIR/memtest86-efi.conf"
+source "$CONFFILE" || exit 127
 [[ "$(uname -m)" == "i686" ]]   && ARCH="ia32"
 [[ "$(uname -m)" == "x86_64" ]] && ARCH="x64"
 
 warn() {
 	echo -e "${CB}${CE}This script is unofficial, written by an AUR (Arch User Repository) user. Use it at YOUR OWN RISK.${CR}"
+}
 
+checkuid() {
 	if [[ $EUID -ne 0 ]]; then
 		echo -e "${CE}You must be root to run $PRGNAME. Aborted.${CR}" > /dev/stderr
 		exit -1
@@ -32,22 +35,31 @@ install() {
 		exit 1
 	fi
 
+	# Find ESP device number
 	partition=$(fdisk -l | grep "EFI System" | awk '{print $1}' | tail -n1)
-	esp=$(mount | grep $partition | awk '{print $3}' | tail -n1)
-	[[ -n $esp ]] && mountpoint=" (mounted on ${CB}$esp${CR})"
-
-	echo -en "Press Enter if ${CB}$partition${CR}$mountpoint is your ESP partition, "
+	echo -en "Press Enter if ${CB}$partition${CR} is your ESP partition, "
 	echo -en "else enter device path manually (like ${CB}/dev/sdXY${CR}): "
 	read choice
 	[[ -n $choice ]] && partition=$choice
 
+	# Find ESP mount point
 	esp=$(mount | grep $partition | awk '{print $3}' | tail -n1)
-	if [[ -z $esp ]]; then
-		echo -e "${CE}ESP $partition is not mounted, you need to mount it. Aborted.${CR}" > /dev/stderr
-		exit 2
+	echo -en "Press Enter if ${CB}$esp${CR} is your mount point, "
+	echo -en "else enter mount point manually (like ${CB}/boot/efi${CR}): "
+	read choice
+	[[ -n $choice ]] && esp=$choice
+
+	# Check if ESP is mounted
+	if ! mount | grep $partition | grep -q $esp; then
+		echo -e "ESP ${CB}$partition${CR} is not mounted, mounting..."
+		if ! mount "$partition" "$esp"; then
+			echo -e "${CE}Fail to mount $partition on $esp. Aborted.${CR}" > /dev/stderr
+			exit 2
+		fi
 	fi
 	echo -e "The target is: ${CB}$partition${CR} (mounted on ${CB}$esp${CR}).\n"
 
+	# Get user choice
 	echo "Select $PRGNAME action to perform:"
 	echo -e "${CB}1${CR}: Copy shellx64.efi file on ESP's root (bit safe)"
 	echo -e "${CB}2${CR}: Add a new EFI boot entry (more safe)"
@@ -64,38 +76,39 @@ install() {
 		1) # Install MemTest86 in $esp/
 		echo -e "MemTest86 will be installed in ${CB}$esp/${CR}."
 		[[ -f "$esp/shell$ARCH.efi" ]] && mv -v "$esp/shell$ARCH.efi" "$esp/shell$ARCH.efi.bak" # Backup if exist
-		cp -v "$MEMTEST86_PATH/"*               "$esp/"	# Move files in ESP root
-		mv -v "$esp/boot$ARCH.efi"              "$esp/shell$ARCH.efi"	# Rename .efi file
+		cp -v "$MEMTEST86_PATH/"*               "$esp/" # Move files in ESP root
+		mv -v "$esp/boot$ARCH.efi"              "$esp/shell$ARCH.efi" # Rename .efi file
 		;;
 
 		2) # Install MemTest86 in $esp/EFI/memtest86/ & add an EFI boot entry
 		checkcommand efibootmgr
+
 		echo -e "MemTest86 will be installed in ${CB}$esp/EFI/memtest86/${CR}."
 		mkdir -pv "$esp/EFI/memtest86"
 		cp -v "$MEMTEST86_PATH/"*                "$esp/EFI/memtest86/" # Move files in memtest ESP directory
 		mv -v "$esp/EFI/memtest86/boot$ARCH.efi" "$esp/EFI/memtest86/memtest$ARCH.efi" # Rename .efi file
+
 		echo -e "\nAdd a new EFI boot entry..."
 		efibootmgr -c -d ${partition:0:8} -p ${partition:8} -w -L "MemTest86" -l "\EFI\memtest86\memtest$ARCH.efi" # Manage efi entry
 		;;
 
 		3) # Install MemTest86 in $esp/EFI/memtest86/ & add a file for GRUB2
 		checkcommand grub-mkconfig
-		echo -e "MemTest86 will be installed in ${CB}$esp/EFI/memtest86/${CR}."
 		if [[ ! -d "/etc/grub.d/" ]]; then
 			echo -e "${CE}GRUB2 seems not installed on your system. Aborted.${CR}" > /dev/stderr
 			exit 2
 		fi
+
+		echo -e "MemTest86 will be installed in ${CB}$esp/EFI/memtest86/${CR}."
 		mkdir -pv "$esp/EFI/memtest86"
 		cp -v "$MEMTEST86_PATH/"*                "$esp/EFI/memtest86/" # Move files in memtest ESP directory
 		mv -v "$esp/EFI/memtest86/boot$ARCH.efi" "$esp/EFI/memtest86/memtest$ARCH.efi" # Rename .efi file
+
 		echo -e "\nAdd a new configuration file for GRUB..."
-		echo -e "if [ \"x\${grub_platform}\" = xefi ]; then\n" \
-			"menuentry \"Memtest86\" {\n" \
-			"\tsearch --set=root --no-floppy --fs-uuid $(blkid $partition -s UUID -o value)\n" \
-			"\tchainloader /EFI/memtest86/memtest$ARCH.efi\n" \
-			"}\n" \
-			"fi" > "/etc/grub.d/86_memtest"
-		chmod +x "/etc/grub.d/86_memtest"
+		/bin/install -Dvm755 "$CONFDIR/grub.conf" "/etc/grub.d/86_memtest"
+		uuid=$(blkid $partition -s UUID -o value)
+		sed -i "s|@UUID@|$uuid|g"                 "/etc/grub.d/86_memtest"
+		sed -i "s|@ARCH@|$ARCH|g"                 "/etc/grub.d/86_memtest"
 		grub-mkconfig -o "/boot/grub/grub.cfg"
 		;;
 
@@ -104,9 +117,10 @@ install() {
 		mkdir -pv "$esp/EFI/memtest86" "$esp/loader/entries"
 		cp -v "$MEMTEST86_PATH/"*                "$esp/EFI/memtest86/" # Move files in memtest ESP directory
 		mv -v "$esp/EFI/memtest86/boot$ARCH.efi" "$esp/EFI/memtest86/memtest$ARCH.efi" # Rename .efi file
+
 		echo -e "\nAdd a new configuration file for systemd-boot..."
-		echo -e "title MemTest86" \
-			"\nefi   /EFI/memtest86/memtest$ARCH.efi" > "$esp/loader/entries/memtest86-efi.conf"
+		/bin/install -Dvm644 "$CONFDIR/systemd-boot.conf" "$esp/loader/entries/memtest86-efi.conf"
+		sed -i "s|@ARCH@|$ARCH|g"                         "$esp/loader/entries/memtest86-efi.conf"
 		;;
 
 		*) # Do nothing and quit
@@ -162,16 +176,21 @@ remove() {
 
 		2) # Remove files in $esp/EFI/memtest86/ & delete EFI boot entry
 		checkcommand efibootmgr
+
 		echo -e "MemTest86 will be removed from ${CB}$esp/EFI/memtest86/${CR}."
 		rm -rfv "$esp/EFI/memtest86/"
+
 		echo -e "\nRemove MemTest86 EFI boot entry..."
-		efibootmgr -b $(efibootmgr | grep MemTest86 | cut -c 5-8) -B
+		entry=$(efibootmgr | grep MemTest86 | cut -c 5-8)
+		[[ -n $entry ]] && efibootmgr -b $entry -B
 		;;
 
 		3) # Remove files in $esp/EFI/memtest86/ & delete file for GRUB2
 		checkcommand grub-mkconfig
+
 		echo -e "MemTest86 will be removed from ${CB}$esp/EFI/memtest86/${CR}."
 		rm -rfv "$esp/EFI/memtest86/"
+
 		echo -e "\nRemove configuration file for GRUB..."
 		rm -v "/etc/grub.d/86_memtest"
 		grub-mkconfig -o "/boot/grub/grub.cfg"
@@ -180,6 +199,7 @@ remove() {
 		4) # Remove files in $esp/EFI/memtest86/ & delete file for systemd-boot
 		echo -e "MemTest86 will be removed from ${CB}$esp/EFI/memtest86/${CR}."
 		rm -rfv "$esp/EFI/memtest86/"
+
 		echo -e "\nRemove configuration file for systemd-boot..."
 		rm -v "$esp/loader/entries/memtest86-efi.conf"
 		;;
@@ -192,6 +212,23 @@ remove() {
 	sed -i "s|install=1|install=0|g"    "$CONFFILE"
 
 	echo -e "\nMemTest86 has been removed from ESP."
+}
+
+status() {
+	echo -e "${CB}Default MemTest86 directories:${CR}"
+	echo -e "Configuration directory: $CONFDIR/"
+	echo -e "Data directory: $MEMTEST86_PATH/\n"
+
+	if [[ $install == 0 ]]; then
+		echo -e "${CB}MemTest86 is not installed on your system.${CR}"
+		exit 1
+	else
+		echo -e "${CB}MemTest86 is installed on your system with following parameters:${CR}"
+		echo -e "ESP device name: $partition"
+		echo -e "ESP mount point: $esp"
+		echo -e "Type of installation: $choice"
+		exit 0
+	fi
 }
 
 help() {
@@ -211,11 +248,11 @@ about() {
 }
 
 case "$1" in
-	-i|--install) warn; install; exit 0;;
-	-u|--update)  warn; update;  exit 0;;
-	-r|--remove)  warn; remove;  exit 0;;
-	-s|--status)  exit $install;;
-	-h|--help)    help;  exit 0;;
-	-a|--about)   about; exit 0;;
-	*)            help;  exit 1;;
+	-i|--install) warn; checkuid; install; exit 0;;
+	-u|--update)  checkuid; update; exit 0;;
+	-r|--remove)  checkuid; remove; exit 0;;
+	-s|--status)  status;;
+	-h|--help)    help; exit 0;;
+	-a|--about)   warn; about; exit 0;;
+	*)            help; exit 1;;
 esac

@@ -5,3 +5,5 @@
 !memtest86-efi
 !memtest86-efi.conf
 !memtest86-efi.install
+!grub.conf
+!systemd-boot.conf

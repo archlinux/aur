@@ -3,11 +3,9 @@ post_install() {
 }
 
 post_upgrade() {
-	/usr/bin/memtest86-efi --status || /usr/bin/memtest86-efi --update
-	exit 0
+	/usr/bin/memtest86-efi --status &> /dev/null && /usr/bin/memtest86-efi --update
 }
 
 pre_remove() {
-	/usr/bin/memtest86-efi --status || /usr/bin/memtest86-efi --remove
-	exit 0
+	/usr/bin/memtest86-efi --status &> /dev/null && /usr/bin/memtest86-efi --remove
 }
