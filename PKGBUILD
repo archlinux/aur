@@ -3,7 +3,7 @@
 _pkgname=mint-y-theme
 pkgname=${_pkgname}-git
 pkgver=14.ea98044
-pkgrel=1
+pkgrel=2
 pkgdesc="New theme from LinuxMint 18"
 arch=('any')
 url="https://github.com/linuxmint/mint-y-theme"
@@ -27,4 +27,7 @@ package() {
   
   cd ..  
   cp -aR ./usr ${pkgdir}
+
+  find "${pkgdir}"/usr/share/themes -type f -name "metacity*xml" -exec sed -i 's:normal_dialog_style_set:normal_style_set:' {} \;
+
 }
