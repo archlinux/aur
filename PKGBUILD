@@ -3,7 +3,7 @@
 _srcname=leap.bitmask
 pkgname=bitmask_client
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Encrypted communication for mere mortals.'
 arch=('any')
 url='https://bitmask.net/'
@@ -76,6 +76,11 @@ build() {
 package() {
   cd "$srcdir/$_srcname-$pkgver"
   python2 setup.py install --skip-build --root="$pkgdir" --optimize=1
+
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+  install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" AUTHORS\
+                                                         CHANGELOG.rst\
+                                                         README.rst
 }
 
 # vim:set ts=2 sw=2 et:
