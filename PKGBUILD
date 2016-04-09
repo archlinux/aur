@@ -1,5 +1,7 @@
 # Maintainer: Zhang Hai <dreaming.in.code.zh@gmail.com>
 
+# Taken from android-studio
+
 pkgname=android-studio-dummy
 _pkgname=android-studio
 pkgver=2.0.0.20
@@ -21,12 +23,13 @@ source=("${_pkgname}.desktop::https://aur.archlinux.org/cgit/aur.git/plain/${_pk
 sha512sums=('7c1ab152b3f26a0a4796c085bb7bf66aa4711a010910636c0c82a37609155c819b21a732fc3874b55e7d443c989c46f29d51ed54538795829c8eb835308b5aaa')
 
 prepare() {
-  # extract the application icon
+  # Extract the application icon
   msg "Please extract Android Studio to /opt/${_pkgname}/ before building this package"
   unzip -qo "/opt/${_pkgname}/lib/resources.jar" 'artwork/icon_AS_128.png'
 }
 
 package() {
+  ln -s '/opt/android-studio/bin/studio.sh' "${pkgdir}/usr/bin/android-studio"
   install -Dm644 'artwork/icon_AS_128.png' "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
   install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
