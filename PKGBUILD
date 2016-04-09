@@ -1,13 +1,13 @@
 # Maintainer: Christian Rebischke <chris.rebischke[at]archlinux[dot]org>
 pkgname=pyew-git
 pkgver=100.2d086a1
-pkgrel=1
+pkgrel=2
 pkgdesc="A python tool for static malware analysis"
 arch=('any')
 url="https://code.google.com/p/pyew/"
-license=('GPLv2')
+license=('GPL2')
 depends=('python2')
-optdepends=('libemu' 'pylibemu' 'pil' 'python2-pillow' 'pygtk')
+optdepends=('libemu' 'python2-pylibemu' 'pil' 'python2-pillow' 'pygtk')
 makedepends=('git')
 source=('git+https://github.com/joxeankoret/pyew')
 md5sums=('SKIP')
