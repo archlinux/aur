@@ -55,8 +55,8 @@ package() {
 	done
 	install -d -m 755 ${pkgdir}/usr/share/${_pkgname}/lib
 	install -d -m 755 ${pkgdir}/usr/share/doc/${_pkgname}
-	install -D -m 755 ${srcdir}/${_pkgname}.launcher ${pkgdir}/usr/share/${_pkgname}.launcher
-	install -D -m 755 ${srcdir}/${_pkgname}-server.launcher ${pkgdir}/usr/share/${_pkgname}-server.launcher
+	install -D -m 755 ${srcdir}/${_pkgname}.launcher ${pkgdir}/usr/share/${_pkgname}/${_pkgname}.launcher
+	install -D -m 755 ${srcdir}/${_pkgname}-server.launcher ${pkgdir}/usr/share/${_pkgname}/${_pkgname}-server.launcher
 	for p in $(find ./ -type f -iname "*.pk3" | sed -e 's@\./@@g');
 	do
 		install -D -m 644 ${srcdir}/${p} ${pkgdir}/usr/share/${_pkgname}/${p}
