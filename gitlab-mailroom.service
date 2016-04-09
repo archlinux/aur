@@ -7,15 +7,13 @@ After=gitlab-unicorn.service
 [Service]
 User=gitlab
 Group=gitlab
-Environment=RAILS_ENV=production PATH=/opt/ruby2.1/bin:/usr/bin
 WorkingDirectory=<DATADIR>
+Environment=RAILS_ENV=production PATH=/opt/ruby2.1/bin:/usr/bin
 SyslogIdentifier=gitlab-mailroom
-PIDFile=/run/gitlab/gitlab-mailroom.pid
-Type=oneshot
-RemainAfterExit=yes
+PIDFile=/run/gitlab/mailroom.pid
 
-ExecStart=<DATADIR>/bin/mail_room start
-ExecStop=<DATADIR>/bin/mail_room stop
+ExecStart=/usr/bin/bundle-2.1 exec mail_room -q -c <DATADIR>/config/mail_room.yml
+ExecStop=/usr/bin/kill -QUIT $MAINPID
 
 [Install]
 WantedBy=multi-user.target
