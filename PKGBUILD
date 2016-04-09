@@ -5,7 +5,7 @@
 
 _realname=mutter
 pkgname=$_realname-catalyst
-pkgver=3.18.3
+pkgver=3.20.0
 pkgrel=1
 pkgdesc="A window manager for GNOME with patch for catalyst compatibility"
 arch=(i686 x86_64)
@@ -27,6 +27,7 @@ depends=('clutter'
 makedepends=('intltool'
   'libxkbcommon-x11'
   'gobject-introspection'
+  'python2'
 )
 conflicts=('mutter-wayland'
   'mutter'
@@ -38,15 +39,12 @@ groups=('gnome')
 options=('!emptydirs')
 install=mutter-catalyst.install
 source=(https://download.gnome.org/sources//$_realname/${pkgver:0:4}/$_realname-$pkgver.tar.xz
-        pointer.patch
         catalyst-workaround.patch)
-sha256sums=('58dd88d5596bb0377ae3aed692b306995de45aefae9e215cfaf4b13287526846'
-            'e413bbdaa7195f4604b77eee7239bad234ba0888acf45cbf372b55928a821a4e'
+sha256sums=('5644d297b69dd3fb465ed9d998e297667c06d9d372e49ded1d788548a38516f5'
             'cf6c54cf23dc5898ab105d8bde2d60fd3f6671b319ffef12b0584544bfb23655')
 
 prepare() {
   cd "$_realname-$pkgver"
-  patch -Np1 -i ../pointer.patch
 
   #https://bugzilla.gnome.org/show_bug.cgi?id=741581
   echo "Commenting out call to function with XRRChangeOutputProperty to fix issue with catalyst"
