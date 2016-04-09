@@ -1,0 +1,6 @@
+*.tar
+*.gz
+*.xz
+vdirsyncer/
+/pkg
+/src
