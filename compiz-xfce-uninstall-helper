@@ -2,6 +2,20 @@
 
 if [ ! -f /usr/bin/compiz ]; then
    xfwm4 --daemon
+   xfconf-query -c xfce4-session -p /sessions/Failsafe/Client0_Command -a -s xfwm4
+   rm ~/.config/autostart/compiz-xfce-autostart.desktop
+   rm ~/.config/autostart/compiz-manjaro-xfce-decoratortheme.desktop
    rm ~/.config/autostart/compiz-xfce-uninstall-helper.desktop
+   
+   # this one is clean-up for an old filename that is no longer used, some time in the future it should be removed
+   rm ~/.config/autostart/compiz-manjaro-decoratortheme.desktop
+   
    rm ~/.local/bin/compiz-xfce-uninstall-helper
+elif [ ! -f ~/.config/autostart/compiz-xfce-uninstall-helper.desktop ]; then
+   mkdir -p ~/.local/bin
+   mkdir -p ~/.config/autostart
+   rm ~/.local/bin/compiz-xfce-uninstall-helper
+   cp /usr/bin/compiz-xfce-uninstall-helper ~/.local/bin/
+   cp /etc/xdg/autostart/compiz-xfce-uninstall-helper.desktop ~/.config/autostart/
+   sed -i 's|Exec=compiz-xfce-uninstall-helper|Exec=sh -c ~/.local/bin/compiz-xfce-uninstall-helper|' ~/.config/autostart/compiz-xfce-uninstall-helper.desktop
 fi
