@@ -17,14 +17,16 @@ optdepends=('ffmpeg: additional video and audio decoders'
 makedepends=('pacman>=4.2.0')
 provides=("firefox=$pkgver")
 install=$pkgname.install
+_baseurl="https://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/build$pkgrel/linux-${CARCH}/zh-CN/"
+_filename="firefox-$pkgver"
+_filename1="firefox-$(echo ${pkgver}|cut -d "b" -f1).zh-CN.linux-${CARCH}"
+_sha512sum="$(curl -s "${_baseurl}${_filename}.checksums" | grep "${_filename1}.tar.bz2" | grep sha512 | cut -d " " -f1)"
 source=("$pkgname.desktop"
-        "vendor.js")
-source_i686=("https://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/build$pkgrel/linux-i686/zh-CN/firefox-$pkgver.tar.bz2")
-source_x86_64=("https://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/build$pkgrel/linux-x86_64/zh-CN/firefox-$pkgver.tar.bz2")
+        "vendor.js"
+        "${_baseurl}${_filename}.tar.bz2")
 sha512sums=('SKIP'
-            'SKIP')
-sha512sums_i686=('90a1e1b665b4e3c7385ef0042eff5fb81d0a3b45266eb81916d8b3cd6e935ebb75555dc6ba3294ca5e69243573378be0cdef2e2ab7c53500358e2abefd830dd9')
-sha512sums_x86_64=('44f1e1f7b26a4158bfe67d97367bc5d8f0c20b404f700bdf937d4c2d64d75f5784c25129c755b83b79078b743c7c434296597a3c3a60f13ba389b319ad00bbf9')
+            'SKIP'
+            "${_sha512sum}")
 
 package() {
   # Create directories
