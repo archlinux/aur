@@ -1,6 +1,6 @@
 pkgbase = libqmlbind
 	pkgdesc = libqmlbind is a C library for creating QML bindings.
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/seanchas116/libqmlbind
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = libqmlbind
 	depends = qt5-base
 	depends = qt5-declarative
 	options = !emptydirs
-	source = libqmlbind::git+https://github.com/seanchas116/libqmlbind#tag=v0.1.0
+	source = libqmlbind::git+https://github.com/seanchas116/libqmlbind#tag=v0.2.0
 	sha256sums = SKIP
 
 pkgname = libqmlbind
