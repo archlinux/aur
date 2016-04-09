@@ -2,7 +2,7 @@
 
 pkgname=spectrum2
 pkgver=2.0.3
-pkgrel=1
+pkgrel=2
 #epoch=
 pkgdesc="Create C++ transports easily"
 arch=(x86_64 x64)
@@ -34,4 +34,5 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
+	install -D -m0644 "$srcdir/$pkgname-$pkgver/spectrum_manager/src/spectrum_manager.cfg" "$pkgdir/etc/spectrum2/"
 }
