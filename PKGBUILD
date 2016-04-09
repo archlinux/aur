@@ -6,7 +6,7 @@
 pkgname=firefox-gtk2
 _pkgname=firefox
 pkgver=45.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
