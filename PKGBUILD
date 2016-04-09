@@ -2,7 +2,7 @@
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 pkgname=skulltag-fixed
 pkgver=098d
-pkgrel=3
+pkgrel=4
 pkgdesc="Closed source OpenGL ZDoom port with Client/Server multiplayer. (Fixed package)"
 arch=('i686' 'x86_64')
 url="http://skulltag.com/"
