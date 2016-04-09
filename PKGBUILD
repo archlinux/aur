@@ -43,7 +43,7 @@ build() {
   ./autogen.sh
 
   export PYTHON=$(which python2)
-  ./configure --prefix=/usr --sysconfdir=/etc 
+  ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 
