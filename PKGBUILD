@@ -12,5 +12,6 @@ depends=('')
 package() {
 	mkdir data
 	tar xf data.tar.xz --directory data/
-	cp -r data/* ${pkgdir}
+	cp -r data/opt/qtcreator-git/lib/x86_64-linux-gnu/qtcreator/plugins/* ${pkgdir}/usr/lib/qtcreator/plugins/
+	cp -r data/opt/qtcreator-git/share/qtcreator/templates/wizards/projects/* ${pkgdir}/usr/share/qtcreator/templates/wizards/projects/
 }
