@@ -4,13 +4,12 @@
 
 pkgname=knossos
 pkgver=4.1.2
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 pkgdesc="A software tool for the visualization and annotation of 3D image data. It was developed for the rapid reconstruction of neural morphology and connectivity."
 url="http://www.knossostool.org/"
 license=("GPL2")
-depends=("boost-libs"
-	"curl"
+depends=("curl"
 	"freeglut"
 	"glu"
 	"glut"
@@ -20,7 +19,11 @@ depends=("boost-libs"
 	"quazip-qt5"
 	"snappy"
 )
-makedepends=("cmake" "boost" "libxmu") # CMake wants libxmu for GLUT
+makedepends=("boost"
+	"cmake"
+	"libxmu" # CMake wants libxmu for GLUT
+	"ninja"
+)
 source=("https://github.com/knossos-project/knossos/archive/v$pkgver.tar.gz"
 	"knossos.desktop"
 	"quazip.patch"
@@ -37,8 +40,8 @@ prepare() {
 build() {
 	mkdir -p "build-$CHOST-$pkgname-$pkgver"
 	cd "build-$CHOST-$pkgname-$pkgver"
-	cmake ../knossos-$pkgver
-	make
+	cmake -G Ninja ../knossos-$pkgver
+	ninja
 }
 
 package() {
