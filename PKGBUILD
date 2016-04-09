@@ -1,10 +1,10 @@
 # Maintainer: Moritz Luedecke <ritze@skweez.net>
 pkgname=dfp
 pkgver=20141004
-pkgrel=2
+pkgrel=3
 pkgdesc="df with progress bar in pacman style"
 url="https://github.com/ritze/dfp"
-license="GPL"
+license=('GPL')
 arch=('any')
 makedepends=('git')
 depends=('bash' 'pbar')
