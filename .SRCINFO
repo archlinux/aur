@@ -1,0 +1,16 @@
+pkgbase = static_tl
+	pkgdesc = Generate a static HTML website from your Twitter time line
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/dmerejkowsky/static_tl
+	arch = any
+	license = BSD
+	depends = python-setuptools
+	depends = python-arrow
+	depends = python-jinja
+	depends = python-twitter
+	source = https://pypi.python.org/packages/source/s/static_tl/static_tl-0.2.tar.gz
+	md5sums = 8796323ca2d3cee05da7ff7da171683f
+
+pkgname = static_tl
+
