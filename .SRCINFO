@@ -1,6 +1,6 @@
 pkgbase = holodev
 	pkgdesc = A tool to facilitate the creation of Linux Containers for developing Debian systems
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = http://joenio.me/desenvolvendo-noosfero-usando-containers-lxc/
 	install = holodev.install
@@ -16,8 +16,8 @@ pkgbase = holodev
 	depends = ebtables
 	depends = sudo
 	depends = bash-completion
-	source = https://github.com/lappis-tools/holodev/archive/0.4.tar.gz
-	sha256sums = 18aed78cdb39dbfdcec1ca10077b96139c3d0b70f1af7425e3598829cae70ede
+	source = https://github.com/lappis-tools/holodev/archive/0.5.tar.gz
+	sha256sums = 4357fd42465df5ddc4cec141da57ebae15b364628de85e2bcd02b1b54856dfdd
 
 pkgname = holodev
 
