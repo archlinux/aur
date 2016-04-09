@@ -8,7 +8,7 @@ url="http://sourceforge.net/projects/greitukas"
 license=('GPL')
 makedepends=(p7zip)
 source=(http://downloads.sourceforge.net/greitukas/$pkgver/$pkgname-$pkgver-src.tar.7z)
-md5sums=(76580928ab934ecb8aec06c89840a102)
+md5sums=(ee1158f2705542ff0f26163096f3243b)
 
 build() {
   cd "$srcdir"
