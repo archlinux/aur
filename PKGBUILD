@@ -40,7 +40,7 @@ source=("https://download.qt.io/community_releases/${pkgver:0:3}/${pkgver}/${_pk
         qtwebkit-opensource-src-5.0.1-debuginfo.patch
         revert-qt4-unicode-removal.patch
         webkit-commit-151422.patch)
-md5sums=('eba1382587add1c9b1293a532e7dd161'
+md5sums=('b68565d18db63ee4db998bb8e37608a5'
          'ce7d257e2b5b94fe3affd98f52d99d09'
          'ac574de962545d6a9e975b4db63c3e09'
          '4ad37c7d4dda8e77bb0a25c671f79adc'
@@ -110,7 +110,8 @@ build() {
   cd "${srcdir}/${_pkgfqn}"
   for _arch in ${_architectures}; do
     # Generate headers
-    ${_arch}-syncqt.pl-qt5 ./Source -version ${pkgver}
+    # seems like this has been fixed
+    #${_arch}-syncqt.pl-qt5 ./Source -version ${pkgver}
 
     mkdir -p build-${_arch} && pushd build-${_arch}
 
