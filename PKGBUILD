@@ -5,7 +5,7 @@
 
 #Maintainer: Felice Murolo <linuxboy@fel.hopto.org>
 pkgname=kencfs
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 #epoch=
 pkgdesc="GUI frontend for encfs. Create, mount, umount and delete your encrypted fs."
@@ -26,7 +26,7 @@ depends=('encfs>=1.7.4-8' 'fuse>=2.9.2-1' 'kdelibs')
 #changelog=
 source=($pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('837ef8f9563b623a3bd981d967c8278c') #generate with 'makepkg -g'
+md5sums=('136a3630e080e0fe5e547ee9e7f053a8')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
