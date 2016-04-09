@@ -1,7 +1,7 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
 pkgname=pkgbuilder
 _pyname=pkgbuilder
-pkgver=4.2.7
+pkgver=4.2.8
 pkgrel=1
 pkgdesc='A Python AUR helper/library.'
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python' 'python-setuptools' 'pyalpm>=0.5.1-1' 'python-requests' 'python-srcinfo' 'rsync' 'git')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('b2da9cedfa965623eeb7695089ccbcd3')
+md5sums=('b450f874ea29b6df3214a3426d35e009')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
