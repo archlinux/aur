@@ -21,6 +21,7 @@ pkgbase = popcorntime-ce
 	conflicts = popcorntime
 	conflicts = popcorntime-bin
 	conflicts = popcorntime-git
+	conflicts = popcorntime-ce-git
 	options = !strip
 	source = https://github.com/PopcornTime-CE/desktop/releases/download/v0.4.0-2/popcorn-time-community-v0.4.0-2-64bit.tar.xz
 	source = popcorntime-ce.install
