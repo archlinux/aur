@@ -12,7 +12,7 @@ makedepends=('cmake')
 options=('strip')
 source=("https://github.com/ohwgiles/wemed/archive/v$pkgver.zip")
 install=wemed.install
-md5sums=('eeb5beef8c609a6acd548acf30d27190')
+md5sums=('7f0236d93e8adc6bf83e53b810d54ccd')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
