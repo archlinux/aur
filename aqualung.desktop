@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Aqualung
+GenericName=Gapless Music Player
+Comment=Advanced music player featuring gapless playback
+Icon=aqualung
+Categories=AudioVideo;Audio;Player;GTK;
+Exec=aqualung %U
+TryExec=aqualung
+Terminal=false
+MimeType=audio/aac;audio/ac3;audio/basic;audio/mp4;audio/mpeg;audio/mpegurl;audio/vnd.rn-realaudio;audio/vorbis;audio/x-adpcm;audio/x-flac;audio/x-mp2;audio/x-mp3;audio/x-mpegurl;audio/x-ms-wma;audio/x-oggflac;audio/x-speex;audio/x-vorbis;audio/x-wav;
+
