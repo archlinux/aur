@@ -1,0 +1,17 @@
+pkgbase = speedometer-git
+	pkgdesc = Measure and display the rate of data across a network connection or data being stored in a file
+	pkgver = 2.8.r8.g9211116
+	pkgrel = 1
+	url = http://excess.org/speedometer/
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python2-setuptools
+	depends = python2-urwid
+	provides = speedometer
+	conflicts = speedometer
+	source = speedometer-git::git://github.com/wardi/speedometer.git
+	md5sums = SKIP
+
+pkgname = speedometer-git
+
