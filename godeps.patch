@@ -1,0 +1,13 @@
+--- Godeps/Godeps.json	2016-04-09 15:04:51.001129590 +0200
++++ Godeps/Godeps.json	2016-04-09 15:05:24.610572211 +0200
+@@ -7,8 +7,8 @@
+ 	"Deps": [
+ 		{
+ 			"ImportPath": "github.com/BurntSushi/toml",
+-			"Comment": "v0.1.0-24-gffbe061",
+-			"Rev": "ffbe061dbf09df6f4d404ef06736cc2b9e2510f7"
++			"Comment": "v0.2.0",
++			"Rev": "bbd5bb678321a0d6e58f1099321dfa73391c1b6f"
+ 		},
+ 		{
+ 			"ImportPath": "github.com/Sirupsen/logrus",
