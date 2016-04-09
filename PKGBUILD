@@ -2,20 +2,20 @@
 
 pkgname=keeweb-git
 _pkgname=keeweb
-pkgver=1.0.4.0.ga6e7afe
-pkgrel=4
+pkgver=1.1.1.0.g88bfa7e
+pkgrel=1
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
 url="https://github.com/antelle/keeweb"
 license=('MIT')
 depends=('electron' 'xdg-utils' 'sh')
-makedepends=('nodejs-grunt' 'npm')
+makedepends=('nodejs-grunt' 'npm' 'sed' 'patch')
 provides=("${_pkgname}" "${_pkgname}-desktop")
 conflicts=("${_pkgname}" "${_pkgname}-desktop")
 source=('git+https://github.com/antelle/keeweb.git'
         'app.js.patch')
 sha1sums=('SKIP'
-          '1832bff0206d2434540f153f4fa2949bdad277df')
+          '6ead549d69231890a76ae7531fb03637fccb942a')
 _desktop="${_pkgname}.desktop"
 
 pkgver() {
@@ -45,10 +45,10 @@ EOF
 
 build() {
     cd ${_pkgname}
+    # skip electron installation
     sed -i 's/^.*"electron-builder".*$//;s/^.*"grunt-electron".*$//;s/postinstall/_pi/' package.json
     npm install
     grunt --force
-    patch ./electron/app.js < "${srcdir}/app.js.patch"
 }
 
 package() {
@@ -56,7 +56,10 @@ package() {
     find ./{electron,tmp} -type f -exec install -Dm644 {} \
         "${pkgdir}/usr/share/${_pkgname}/{}" \;
     mv "${pkgdir}/usr/share/${_pkgname}/"{tmp,html}
-    install -Dm644 MIT-LICENSE.txt "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+    # auto hide menubar
+    patch "${pkgdir}/usr/share/${_pkgname}/electron/app.js" < "${srcdir}/app.js.patch"
+
+    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${_desktop}" "${pkgdir}/usr/share/applications/${_desktop}"
     install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 }
