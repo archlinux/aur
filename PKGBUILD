@@ -2,7 +2,7 @@
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 pkgname=skulltag-fixed
 pkgver=098d
-pkgrel=4
+pkgrel=5
 pkgdesc="Closed source OpenGL ZDoom port with Client/Server multiplayer. (Fixed package)"
 arch=('i686' 'x86_64')
 url="http://skulltag.com/"
@@ -10,7 +10,7 @@ license=('proprietary')
 install=skulltag.install
 changelog=
 noextract=()
-depends=('sdl' 'gtk2' 'libjpeg6')  # fmod SHOULD be a depends, or an optdepends... buuuuut it can't be packaged because their site requires registration for download now. balls.
+depends=('sdl' 'gtk2' 'libjpeg6' 'fmodex4.26.36')  # fmod SHOULD be a depends, or an optdepends... buuuuut it can't be packaged because their site requires registration for download now. balls.
 optdepends=('timidity++: midi support'
             'freedoom: free IWAD')
 makedepends=()
@@ -48,6 +48,12 @@ sha512sums_x86_64=('b16da4d4441f6f02eb19eb07c0bf4e54574fa831734b7e8daaaf107af921
 #}
 
 package() {
+	if [[ "${CARCH}" == 'x86_64' ]];
+	then
+		_ARCH='64'
+	else
+		_ARCH=''
+	fi
 	cd ${srcdir}
 	for d in $(find ./ -type d | sed -e 's@\./@@g');
 	do
@@ -71,4 +77,6 @@ package() {
 	cd ${pkgdir}/usr/bin
 	ln -sf /usr/share/${_pkgname}/${_pkgname}.launcher ${_pkgname}
 	ln -sf /usr/share/${_pkgname}/${_pkgname}-server.launcher ${_pkgname}-server
+	cd ${pkgdir}/usr/share/${_pkgname}/lib
+	ln -sf /usr/lib/libfmodex${_ARCH}-4.26.36.so libfmodex${_ARCH}-4.24.16.so
 }
