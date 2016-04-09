@@ -10,7 +10,7 @@ pkgdesc="Enable binaural audio globally in 3d applications"
 depends=('openal>=1.14')
 url="https://wiki.archlinux.org/index.php/Gaming"
 source=("http://kcat.strangesoft.net/openal-releases/openal-soft-$_oalversion.tar.bz2"
-        'http://www.sp.m.is.nagoya-u.ac.jp/HRTF/archive/data02.tgz'
+        'https://web.archive.org/web/20130911210554/http://www.sp.m.is.nagoya-u.ac.jp/HRTF/archive/data02.tgz'
         'alsoftrc')
 noextract=('data02.tgz')
 md5sums=('SKIP'
