@@ -30,12 +30,10 @@ optdepends = upower: Battery API
 provides = firefox
 source = firefox-beta-zh-cn.desktop
 source = vendor.js
+source = https://ftp.mozilla.org/pub/firefox/candidates/-candidates/build/linux-/zh-
 sha512sums = SKIP
 sha512sums = SKIP
-source_i686 = https://ftp.mozilla.org/pub/firefox/candidates/-candidates/build/linux-i686/zh-CN/firefox-.tar.bz2
-sha512sums_i686 = 
-source_x86_64 = https://ftp.mozilla.org/pub/firefox/candidates/-candidates/build/linux-x86_64/zh-CN/firefox-.tar.bz2
-sha512sums_x86_64 = 
+sha512sums = 
 
 pkgname = firefox-beta-zh-cn
 
