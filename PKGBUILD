@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <Stefan-Husmann@t-online.de>
 
 pkgname=fontmatrix-git
-pkgver=1176.25e002c
+pkgver=1177.33cc6af
 pkgrel=1
 pkgdesc='Font manager for Linux'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('fontmatrix')
 provides=('fontmatrix')
 makedepends=('cmake' 'git' 'mesa')
 install="${pkgname%-*}.install"
-source=('git+https://github.com/fontmatrix/fontmatrix.git')
+source=('git+https://github.com/popolon/fontmatrix.git')
 sha256sums=('SKIP')
 
 pkgver() {
