@@ -3,6 +3,7 @@ post_install() {
 }
 
 post_upgrade() {
+	[[ -f /etc/memtest86-efi.conf.pacsave ]] && mv /etc/memtest86-efi.conf.pacsave /etc/memtest86-efi/memtest86-efi.conf
 	/usr/bin/memtest86-efi --status &> /dev/null && /usr/bin/memtest86-efi --update
 }
 
