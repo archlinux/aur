@@ -3,7 +3,7 @@
 pkgname=openal-hrtf
 pkgver=1.0
 pkgrel=1
-_oalversion=1.15.1
+_oalversion=1.17.2
 arch=('i686' 'x86_64')
 license=('LGPL')
 pkgdesc="Enable binaural audio globally in 3d applications"
