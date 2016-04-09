@@ -2,13 +2,13 @@
 
 pkgbase=mpd
 pkgname=mpd-minimal
-pkgver=0.19.12
+pkgver=0.19.14
 pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music. Minmal version with only flac playback through socket connection.'
 url='http://www.musicpd.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('alsa-lib' 'flac' 'glib2' 'icu' 'libmpdclient' 'libsystemd' 'sqlite')
+depends=('alsa-lib' 'flac' 'glib2' 'icu' 'libmpdclient' 'sqlite') # 'libsystemd'
 makedepends=('boost')
 provides=("mpd=$pkgver")
 conflicts=('mpd')
@@ -17,7 +17,7 @@ validpgpkeys=('0392335A78083894A4301C43236E8A58C6DB4512')
 source=("http://www.musicpd.org/download/mpd/${pkgver%.*}/mpd-${pkgver}.tar.xz"{,.sig}
         'mpd.tmpfile')
 #        'mpd.conf')
-sha1sums=('9de55e24d2612526ca8eb688126d0784339f2ee8' 'SKIP'
+sha1sums=('2faf8664ae5c9183e73185c9dcfe0be50579f5e8' 'SKIP'
           'f4d5922abb69abb739542d8e93f4dfd748acdad7')
 #          '291fd5cda9f0845834a553017327c4586bd853f6')
 #backup=('etc/mpd.conf')
@@ -82,7 +82,7 @@ build() {
         --disable-wave-encoder \
         --disable-neighbor-plugins \
         --enable-sqlite \
-        --enable-systemd-daemon \
+        --disable-systemd-daemon \
         --with-systemdsystemunitdir=/usr/lib/systemd/system \
         --with-zeroconf=no
 
