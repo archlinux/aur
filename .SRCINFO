@@ -11,6 +11,7 @@ pkgbase = nginx-mainline-passenger
 	depends = zlib
 	depends = openssl
 	depends = geoip
+	optdepends = passenger: standard passenger support
 	provides = nginx
 	conflicts = nginx
 	backup = etc/nginx/fastcgi.conf
