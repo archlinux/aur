@@ -22,7 +22,7 @@ ProtectSystem=full
 ProtectHome=true
 NoNewPrivileges=true
 
-ExecStart=/usr/bin/bundle-2.1 exec "unicorn_rails -c <DATADIR>/config/unicorn.rb -E production"
+ExecStart=/usr/bin/bundle-2.1 exec unicorn_rails -c <DATADIR>/config/unicorn.rb -E production
 ExecStop=/usr/bin/kill -QUIT $MAINPID
 ExecReload=/usr/bin/kill -USR2 $MAINPID
 
