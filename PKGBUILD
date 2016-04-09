@@ -12,6 +12,8 @@ url="http://developer.android.com/sdk/index.html"
 license=('custom')
 depends_i686=('gcc-libs' 'zlib')
 depends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 
 package() {
   :
