@@ -1,0 +1,4 @@
+post_install() {
+ echo ":: Skulltag looks for IWADs (e.g. doom2.wad) in current working directory, ~/.skulltag, and /usr/local/share."
+ echo ":: You can change this via your configuration ini file."
+}
