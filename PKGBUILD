@@ -2,7 +2,7 @@
 
 pkgname=yabar
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern and lightweight status bar for X window managers"
 arch=('i686' 'x86_64')
 url="https://github.com/geommer/yabar"
@@ -13,7 +13,7 @@ md5sums=('ac4d4de6e4ac59d59bdb19d738ee4306')
 
 build() {
   cd $pkgname-$pkgver
-
+  sed -ie "s/\$(VERSION)/$pkgver/" Makefile
   make
 }
 
