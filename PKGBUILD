@@ -3,7 +3,7 @@
 
 pkgname=firefox-extension-kwallet-kf5
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An extension that allows Firefox to use KF5's Kwallet to store passwords"
 arch=('i686' 'x86_64')
 url='http://www.guillermomolina.com.ar/en/projects/63-firefox-kwallet5'
@@ -24,14 +24,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$dirname"
-
-  mkdir -p build
-  cd build
-  cmake ../library
-  make
-  cd ..
-  make
-  make archive
+  make -j1
 }
 
 package() {
