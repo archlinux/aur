@@ -29,6 +29,7 @@ prepare() {
 }
 
 package() {
+  install -d "${pkgdir}/usr/bin/"
   ln -s '/opt/android-studio/bin/studio.sh' "${pkgdir}/usr/bin/android-studio"
   install -Dm644 'artwork/icon_AS_128.png' "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
   install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
