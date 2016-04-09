@@ -1,0 +1,13 @@
+pkgbase = libicuid
+	pkgdesc = I C U ID is a modern library that provides a C interface for the CPUID opcode
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://www.x64architecture.com/libicuid
+	arch = i686
+	arch = x86_64
+	license = isc
+	source = https://github.com/x64architecture/libicuid/archive/1.2.0.tar.gz
+	sha256sums = f34b6d44086d8c2501a5e8422f2f3e7c3121c64f51110b945aa8601caac5570f
+
+pkgname = libicuid
+
