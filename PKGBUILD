@@ -1,9 +1,9 @@
 # Maintainer: Ronny Lorenz <ronny at tbi dot univie dot ac dot at>
 
 pkgbase=viennarna
-pkgname=('viennarna' 'python2-rna' 'perl-rna')
+pkgname=('viennarna' 'python-rna' 'python2-rna' 'perl-rna')
 pkgver=2.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="RNA Secondary Structure Prediction and Comparison"
 arch=('x86_64' 'i686')
 license=('Custom')
@@ -11,6 +11,7 @@ url="http://www.tbi.univie.ac.at/RNA"
 groups=('viennarna-package')
 makedepends=( 'perl'
               'python2'
+              'python'
               'libtool'
               'check')
 source=(http://www.tbi.univie.ac.at/RNA/packages/source/ViennaRNA-${pkgver}.tar.gz)
@@ -20,7 +21,7 @@ sha256sums=('12654f0ba5e516d5eeb018dc76485b1c5a3ba010c61f40f1221aad5c3815cc29')
 
 build() {
   cd "${srcdir}/ViennaRNA-${pkgver}"
-  ./configure --with-cluster --prefix=/usr INSTALLDIRS=vendor
+  ./configure --with-cluster --with-python3 --prefix=/usr INSTALLDIRS=vendor
   make
 }
 
@@ -84,6 +85,13 @@ package_python2-rna() {
   depends=('python2' viennarna="${pkgver}")
   cd "${srcdir}/ViennaRNA-${pkgver}"
   cd interfaces/Python
+  make DESTDIR="${pkgdir}" install
+}
+
+package_python-rna() {
+  depends=('python' viennarna="${pkgver}")
+  cd "${srcdir}/ViennaRNA-${pkgver}"
+  cd interfaces/Python3
   make DESTDIR="${pkgdir}" install
 }
 
