@@ -1,0 +1,15 @@
+pkgbase = elementary-cursors-git
+	pkgdesc = elementary project cursor theme
+	pkgver = r37.64440f1
+	pkgrel = 1
+	url = https://github.com/snwh/elementary-cursors
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = elementary-cursors
+	conflicts = elementary-cursors
+	source = elementary-cursors-git::git://github.com/snwh/elementary-cursors.git
+	md5sums = SKIP
+
+pkgname = elementary-cursors-git
+
