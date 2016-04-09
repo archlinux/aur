@@ -1,5 +1,5 @@
 pkgname=cmakeprojectmanager2-bin
-pkgdesc="Enhanced CMake Project Manager plugin for Qt Creator."
+pkgdesc="Enhanced CMake Project Manager plugin for Qt Creator. QtCreator-git is required"
 pkgver=20160401
 pkgrel=1
 arch=('x86_64')
