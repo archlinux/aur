@@ -11,7 +11,7 @@ url='https://github.com/thomasvs/morituri'
 license=('GPL3')
 depends=(
   'cdparanoia' 'cdrdao'
-  'gstreamer0.10' 'gstreamer0.10-python'
+  'gstreamer0.10-good-plugins' 'gstreamer0.10-python'
   'python2-xdg' 'python2-setuptools'
 )
 makedepends=('git')
