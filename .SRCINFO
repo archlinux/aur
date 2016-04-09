@@ -1,5 +1,5 @@
 pkgbase = vertex-themes-git
-	pkgdesc = Vertex Gtk2, Gtk3, Metacity, Xfwm, Cinnamon and GNOME Shell themes (GNOME 3.18 version)
+	pkgdesc = Vertex Gtk2, Gtk3, Metacity, Xfwm, Cinnamon and GNOME Shell themes (GNOME 3.20 version)
 	pkgver = r571.20160404
 	pkgrel = 1
 	url = http://horst3180.deviantart.com/art/Vertex-Theme-470663601
