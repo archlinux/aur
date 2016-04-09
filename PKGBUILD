@@ -2,7 +2,7 @@
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 pkgname=skulltag-fixed
 pkgver=098d
-pkgrel=1
+pkgrel=2
 pkgdesc="Closed source OpenGL ZDoom port with Client/Server multiplayer. (Fixed package)"
 arch=('i686' 'x86_64')
 url="http://skulltag.com/"
@@ -55,6 +55,8 @@ package() {
 	done
 	install -d -m 755 ${pkgdir}/usr/share/${_pkgname}/lib
 	install -d -m 755 ${pkgdir}/usr/share/doc/${_pkgname}
+	install -D -m 755 ${srcdir}/${_pkgname}.launcher ${pkgdir}/usr/share/${_pkgname}.launcher
+	install -D -m 755 ${srcdir}/${_pkgname}-server.launcher ${pkgdir}/usr/share/${_pkgname}-server.launcher
 	for p in $(find ./ -type f -iname "*.pk3" | sed -e 's@\./@@g');
 	do
 		install -D -m 644 ${srcdir}/${p} ${pkgdir}/usr/share/${_pkgname}/${p}
@@ -64,4 +66,9 @@ package() {
 	install -D -m 755 ${srcdir}/libsnes_spc.so ${pkgdir}/usr/share/${_pkgname}/lib/
 	install -D -m 755 ${srcdir}/liboutput_sdl.so ${pkgdir}/usr/share/${_pkgname}/lib/
 	install -D -m 644 "${srcdir}/Skulltag Version History.txt" ${pkgdir}/usr/share/doc/${_pkgname}/history.txt
+
+	install -D -m 755 ${pkgdir}/usr/bin
+	cd ${pkgdir}/usr/bin
+	ln -sf /usr/share/${_pkgname}/${_pkgname}.launcher ${_pkgname}
+	ln -sf /usr/share/${_pkgname}/${_pkgname}-server.launcher ${_pkgname}-server
 }
