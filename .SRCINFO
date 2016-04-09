@@ -1,0 +1,19 @@
+pkgbase = texlive-tubs
+	pkgdesc = LaTeX-Templates for the Corporate Design of TU Braunschweig
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = http://tubslatex.ejoerns.de/
+	install = texlive-tubs.install
+	arch = any
+	license = LPPL
+	depends = texlive-core
+	depends = texlive-latexextra
+	depends = texlive-fontsextra
+	provides = texlive-tubslatex
+	conflicts = texlive-tubslatex
+	source = http://tubslatex.ejoerns.de/1.1.0/tubslatex_1.1.0.tds.zip
+	md5sums = 3768f97ff43dc5cdf5faa52d42b18dd5
+	sha512sums = bad54c632d0413a98b163fd393d280f68196733d6c34c4d6fed59919075112c96813f56d389ef06fd3f5163328e06b692a0e9df400f27881b42581d9d7ff6f78
+
+pkgname = texlive-tubs
+
