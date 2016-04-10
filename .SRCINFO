@@ -1,0 +1,16 @@
+pkgbase = monopd
+	pkgdesc = A dedicated game server daemon for playing Monopoly-like board games
+	pkgver = git
+	pkgrel = 1
+	url = http://www.robertjohnkaper.com/software/atlantik/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = git
+	depends = muparser
+	depends = utf8cpp
+	source = git+git://git.tuxfamily.org/gitroot/gtkatlantic/atlanticd.git
+	md5sums = SKIP
+
+pkgname = monopd
+
