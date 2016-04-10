@@ -2,7 +2,7 @@
 
 _pkgname=vim-monokai
 pkgname=${_pkgname}-git
-pkgver=r20.91b3eb3
+pkgver=r26.55ff654
 pkgrel=2
 pkgdesc='A port of the Monokai color scheme for Vim by sickill.'
 arch=('any')
@@ -18,18 +18,12 @@ provides=("${_pkgname}=${pkgver}")
 
 install=${pkgname}.install
 
-source=(
-	"git+https://github.com/sickill/${_pkgname}.git"
-	"${pkgname}.install"
-)
-sha512sums=(
-	'SKIP'
-	'e83b44527f9c45a81f6faed689462fdabac55d9f7ce6f3bdb08e00a344baa16d99adf0c39d278488d59595c577093d0404aacfa98563a2ee1db821d5dab3632b'
-)
+source=("git+https://github.com/sickill/${_pkgname}.git")
+sha512sums=('SKIP')
 
 pkgver() {
 	# Updating package version
-	cd ${srcdir}/${_pkgname}
+	cd "${srcdir}"/${_pkgname}
 	(
 		set -o pipefail
 		git describe --long --tags 2>/dev/null | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
@@ -39,7 +33,7 @@ pkgver() {
 
 package() {
 	# Installing package
-	cd ${srcdir}/${_pkgname}
-	mkdir -p ${pkgdir}/usr/share/vim/vimfiles
-	cp -R ./colors ${pkgdir}/usr/share/vim/vimfiles
+	cd "${srcdir}"/${_pkgname}
+	mkdir -p "${pkgdir}"/usr/share/vim/vimfiles
+	cp -R ./colors "${pkgdir}"/usr/share/vim/vimfiles
 }
