@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 260264 2016-02-27 06:59:33Z tpowa $
-# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
-# Maintainer: Thomas Baechler <thomas@archlinux.org>
+# Maintainer: graysky <graysky AT archlinux DOT us>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-rc       # Build kernel with a different name
-_srcname=linux-4.4.4
-pkgver=4.4.6rc1
-_patchname=patch-4.4.6-rc1
+_srcname=linux-4.5
+pkgver=4.5.1rc1
+_patchname=patch-4.5.1-rc1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -20,18 +20,16 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        'change-default-console-loglevel.patch'
-        '0001-sdhci-revert.patch')
+        'change-default-console-loglevel.patch')
 
-sha256sums=('4d39d79f5889ea60365269387ce21520ba767c15837a136c12c3f5ca2b48812c'
+sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
             'SKIP'
-            'd41b41d3fc13a5c5879335a4b0a91ec3d5720bb86d86b585e827525f058475e9'
+            'a10f30cc3b5e5f7eaf8cd1784162f15d3b36ba183f6526ca1ff43e1f687bd775'
             'SKIP'
-            'fbbae1d873900e84d1b7ef00593fbb94fc79f078a34b22ee824bab8b0a92be64'
-            '756a168bbc3bb582f0df45b977c32af53658f21d62fe15171c9ac85f52d8852a'
+            '4e520b53399541b5d166fba4be397756278cbcbc260be87bd3ff324496ac3619'
+            '30660541b981bfbf60db8ffdbf75dca63648ca19bc2fba564b4561f6ecc7bf1b'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -47,11 +45,6 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-  
-  # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
-  # fixes #47778 sdhci broken on some boards
-  # https://bugzilla.kernel.org/show_bug.cgi?id=106541
-  patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
