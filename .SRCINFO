@@ -1,0 +1,52 @@
+pkgbase = linux-x205ta
+	pkgver = 4.4.5
+	pkgrel = 1
+	url = http://www.kernel.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = xmlto
+	makedepends = docbook-xsl
+	makedepends = kmod
+	makedepends = inetutils
+	makedepends = bc
+	options = !strip
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.tar.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.4.tar.sign
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.4.5.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.4.5.sign
+	source = config
+	source = config.x86_64
+	source = linux.preset
+	source = change-default-console-loglevel.patch
+	source = 0001-sdhci-revert.patch
+	source = 0002-byt-cstates-fix.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	sha256sums = 401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2
+	sha256sums = SKIP
+	sha256sums = a570680ad5624eff0687c74d652158cbd9ec92fdd177ac5ff812988a24d54ab5
+	sha256sums = SKIP
+	sha256sums = fbbae1d873900e84d1b7ef00593fbb94fc79f078a34b22ee824bab8b0a92be64
+	sha256sums = 756a168bbc3bb582f0df45b977c32af53658f21d62fe15171c9ac85f52d8852a
+	sha256sums = f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c
+	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
+	sha256sums = 5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375
+	sha256sums = 20c8d367cb1bd1574827657912fc7b3e8dfb078be5a1fa9de45da5acc824c527
+
+pkgname = linux-x205ta
+	pkgdesc = The Linux-x205ta kernel and modules
+	install = linux.install
+	depends = coreutils
+	depends = linux-firmware
+	depends = kmod
+	depends = mkinitcpio>=0.7
+	optdepends = crda: to set the correct wireless channels of your country
+	backup = etc/mkinitcpio.d/linux-x205ta.preset
+
+pkgname = linux-x205ta-headers
+	pkgdesc = Header files and scripts for building modules for Linux-x205ta kernel
+
+pkgname = linux-x205ta-docs
+	pkgdesc = Kernel hackers manual - HTML documentation that comes with the Linux-x205ta kernel
+
