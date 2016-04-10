@@ -1,7 +1,7 @@
 pkgbase = usb-creator
 	pkgdesc = Create bootable USB from a LiveCD or disc image of Ubuntu
-	pkgver = 0.2.67
-	pkgrel = 2
+	pkgver = 0.3.2
+	pkgrel = 1
 	url = https://launchpad.net/usb-creator
 	install = usb-creator.install
 	arch = any
@@ -15,14 +15,11 @@ pkgbase = usb-creator
 	depends = cdrkit
 	depends = python-dbus
 	depends = python-gobject
-	depends = python-debian
 	depends = hicolor-icon-theme
 	optdepends = python-pyqt5: for KDE/QT5 frontend
 	optdepends = gtk3: for GTK frontend
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/usb-creator_0.2.67.tar.xz
-	source = usb-creator-fake-ubuntu-version.patch
-	sha256sums = 5671093e446b7a2a3d76c23dcfa9d6f95ad8aae6e1dcdfed8530163b05e1596a
-	sha256sums = 6e67acd7a0364e121bbf6a838b6234b2c919aa7920d562f90350b0178d0aa232
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/usb-creator_0.3.2.tar.xz
+	sha256sums = fbbd79fa8a6b4365b620bdd1bfa4049b28d9403e3bd427adf0f2a87193a22e97
 
 pkgname = usb-creator
 

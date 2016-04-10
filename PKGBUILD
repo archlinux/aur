@@ -4,29 +4,19 @@
 # Contributor: twa022 <twa022@gmail.com>
 
 pkgname=usb-creator
-pkgver=0.2.67
-pkgrel=2
+pkgver=0.3.2
+pkgrel=1
 pkgdesc="Create bootable USB from a LiveCD or disc image of Ubuntu"
 arch=('any')
 url="https://launchpad.net/usb-creator"
 license=('GPL3')
 depends=('udisks2' 'syslinux' 'parted' 'dosfstools' 'mtools' 'cdrkit'
-         'python-dbus' 'python-gobject' 'python-debian' 'hicolor-icon-theme')
+         'python-dbus' 'python-gobject' 'hicolor-icon-theme')
 makedepends=('python-distutils-extra')
 optdepends=('python-pyqt5: for KDE/QT5 frontend' 'gtk3: for GTK frontend')
 install=usb-creator.install
-source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.xz"
-        "$pkgname-fake-ubuntu-version.patch")
-sha256sums=('5671093e446b7a2a3d76c23dcfa9d6f95ad8aae6e1dcdfed8530163b05e1596a'
-            '6e67acd7a0364e121bbf6a838b6234b2c919aa7920d562f90350b0178d0aa232')
-
-prepare() {
-  cd $pkgname-$pkgver
-
-  # fake a recent ubuntu LTS version and
-  # fix the location of syslinux 6.xx bootsector
-  patch -Np1 < ../$pkgname-fake-ubuntu-version.patch
-}
+source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}.tar.xz")
+sha256sums=('fbbd79fa8a6b4365b620bdd1bfa4049b28d9403e3bd427adf0f2a87193a22e97')
 
 package() {
   cd $pkgname-$pkgver
