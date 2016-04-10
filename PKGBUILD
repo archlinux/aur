@@ -34,7 +34,7 @@ _brandingrel=2
 
 pkgname=iceweasel
 pkgver=${_debver}.deb${_debrel}
-pkgrel=2
+pkgrel=3
 pkgdesc="Debian Browser based on Mozilla Firefox, with Parabola GNU/Linux-libre branding"
 arch=('i686' 'x86_64')
 license=('GPL' 'MPL' 'LGPL')
@@ -60,6 +60,7 @@ source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.xz"
 		iceweasel-install-dir.patch
 		vendor.js
 		iceweasel-fixed-loading-icon.png
+		iceweasel-gtk3-20.patch
 		no-libnotify.patch)
 md5sums=('a095e3270ad0d38d0f0fb1706a189fab'
          '882aa168857d6c15c7fddcb49578c75b'
@@ -69,6 +70,7 @@ md5sums=('a095e3270ad0d38d0f0fb1706a189fab'
          '1c42509891cf6843660a5f3c69896e80'
          '35adf69c840aadeb138d1b0be3af63b5'
          '6e335a517c68488941340ee1c23f97b0'
+		 '118fcac8fdeafeb6a41f2dc0dc313538'
          '8efbf7973a21aa01038bf2315f3384a9')
 
 prepare() {
@@ -89,6 +91,9 @@ prepare() {
 
   # Install to /usr/lib/$pkgname
   patch -Np1 -i "$srcdir/iceweasel-install-dir.patch"
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1234158
+  patch -Np1 -i "$srcdir/$pkgname-gtk3-20.patch"
 
   # Notifications with libnotify are broken
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1236150
