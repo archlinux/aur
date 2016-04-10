@@ -52,7 +52,7 @@ sha256sums=('d79d0113e0913ecb638b59964c0c2031e6fc1de3c29c37c433c0fd4b4798ba80' '
 prepare() {
   gem install jekyll --version '= 1.5.1'
   gem install RedCloth
-  export PATH="$PATH":/home/boss/.gem/ruby/2.3.0/bin
+  export PATH="$PATH":~/.gem/ruby/$(ruby --version|cut -f2 -d' '|cut -f1 -d'p')/bin
 }
 
 build() {
