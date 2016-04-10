@@ -3,17 +3,17 @@ pre_install() {
     virtualenv2 --relocatable /usr/lib/seafile/seafileenv
     source /usr/lib/seafile/seafileenv/bin/activate
 
-    pip2 install gunicorn
-    pip2 install "Django>=1.5.8,<1.6"
-    pip2 install django-pipeline
-    pip2 install http://effbot.org/media/downloads/PIL-1.1.7.tar.gz
-    pip2 install "https://github.com/djblets/djblets/archive/release-0.6.14.zip#egg=Djblets"
-    pip2 install "Pillow>=2.6.1,<3.0.0"
-    pip2 install "django-compressor==1.4"
+    pip2 install "Django==1.8.10"
     pip2 install "django-statici18n==1.1.2"
+    pip2 install "django-compressor==1.4"
     pip2 install "git+git://github.com/haiwen/django-constance.git@bde7f7cdfd0ed1631a6817fd4cd76f37bf54fe35#egg=django-constance[database]"
     pip2 install "openpyxl==2.3.0"
-
+    pip2 install "pytz==2015.7"
+    pip2 install "djangorestframework==3.3.1"
+    pip2 install "django-post-office==2.0.3"
+    pip2 install "Pillow>=2.6.1,<3.0.0"
+    pip2 install "python-memcached==1.57"
+    pip2 install gunicorn
     deactivate
 }
 
