@@ -1,0 +1,10 @@
+Based on Sirius 3.0
+Based on Mars.1
+Uses AQL
+Builds with Travis and uploaded on S3: https://travis-ci.org/ObeoNetwork/UML-Designer
+Tested thanks to Travis and RCPTT tests: https://travis-ci.org/ObeoNetwork/UML-Designer-UI-Tests https://github.com/ObeoNetwork/UML-Designer-UI-Tests
+Bug fixes on Class diagram (#774, #764, #759, #727)
+Bug fixes on Deployment diagram (#728)
+Bug fixes on Component diagram (#664)
+New Mac App bundle based on Mars.1. Pay attention do not perform an "update" from an existing "directory layout" installation. You must download a fresh version.
+Provides an Oomph setup: https://github.com/ObeoNetwork/UML-Designer/blob/master/releng/org.obeonetwork.dsl.uml2.settings/UMLDesigner.setup
