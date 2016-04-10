@@ -1,0 +1,69 @@
+{
+	"ImportPath": "github.com/prometheus/node_exporter",
+	"GoVersion": "go1.4",
+	"GodepVersion": "v62",
+	"Deps": [
+		{
+			"ImportPath": "bitbucket.org/ww/goautoneg",
+			"Comment": "null-5",
+			"Rev": "'75cd24fc2f2c2a2088577d12123ddee5f54e0675'"
+		},
+		{
+			"ImportPath": "github.com/Sirupsen/logrus",
+			"Comment": "v0.10.0",
+			"Rev": "4b6ea7319e214d98c938f12692336f7ca9348d6b"
+		},
+		{
+			"ImportPath": "github.com/beevik/ntp",
+			"Rev": "283ed9d548825a1dae0994311560e8dbf8efac68"
+		},
+		{
+			"ImportPath": "github.com/beorn7/perks/quantile",
+			"Rev": "3ac7bf7a47d159a033b107610db8a1b6575507a4"
+		},
+		{
+			"ImportPath": "github.com/golang/protobuf/proto",
+			"Rev": "dda510ac0fd43b39770f22ac6260eb91d377bce3"
+		},
+		{
+			"ImportPath": "github.com/matttproud/golang_protobuf_extensions/pbutil",
+			"Rev": "d0c3fe89de86839aecf2e0579c40ba3bb336a453"
+		},
+		{
+			"ImportPath": "github.com/prometheus/client_golang/prometheus",
+			"Comment": "0.7.0",
+			"Rev": "6dbab8106ed3ed77359ac85d9cf08e30290df864"
+		},
+		{
+			"ImportPath": "github.com/prometheus/client_golang/model",
+			"Comment": "0.7.0",
+			"Rev": "6dbab8106ed3ed77359ac85d9cf08e30290df864"
+		},
+		{
+			"ImportPath": "github.com/prometheus/client_golang/text",
+			"Comment": "0.7.0",
+			"Rev": "6dbab8106ed3ed77359ac85d9cf08e30290df864"
+		},
+		{
+			"ImportPath": "github.com/prometheus/client_model/go",
+			"Comment": "model-0.0.2-12-gfa8ad6f",
+			"Rev": "fa8ad6fec33561be4280a8f0514318c79d7f6cb6"
+		},
+		{
+			"ImportPath": "github.com/prometheus/log",
+			"Rev": "9a3136781e1ff7bc42736ba4acb81339b1422551"
+		},
+		{
+			"ImportPath": "github.com/prometheus/procfs",
+			"Rev": "406e5b7bfd8201a36e2bb5f7bdae0b03380c2ce8"
+		},
+		{
+			"ImportPath": "github.com/soundcloud/go-runit/runit",
+			"Rev": "06ad41a06c4a586951fb8040a697ecd39729640b"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/unix",
+			"Rev": "8fdfb00a6a1add0f7a145480e3729a5427a74375"
+		}
+	]
+}

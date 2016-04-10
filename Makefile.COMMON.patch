@@ -1,0 +1,24 @@
+--- node_exporter-0.11.0/Makefile.COMMON	2015-07-27 14:32:10.000000000 -0700
++++ Makefile.COMMON	2016-04-09 20:54:17.173999007 -0700
+@@ -90,12 +90,17 @@
+ 	mkdir -p $(dir $@)
+ 	ln -s $(CURDIR) $@
+ 
+-dependencies-stamp: $(GOCC) $(SRC) | $(SELFLINK)
+-	$(GO) get -d
++$(GODEP):
++	go get github.com/tools/godep && go install github.com/tools/godep
++
++dependencies-stamp: $(GOCC) $(SRC) | $(SELFLINK) $(GODEP)
+# godep needs to run from a directory within GOPATH	
++	cd $(SELFLINK)
++	godep restore
+ 	touch $@
+ 
+ $(BINARY): $(GOCC) $(SRC) dependencies-stamp Makefile Makefile.COMMON
+-	$(GO) build $(GOFLAGS) -o $@
++	cd $(SELFLINK)
++	godep go build -o node_exporter
+ 
+ .PHONY: archive
+ archive: $(ARCHIVE)
