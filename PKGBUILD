@@ -2,13 +2,13 @@
 pkgname=gnome-shell-extension-extensions-git
 _pkgname=${pkgname%-git}
 
-pkgver=r5.e7cd494
+pkgver=r10.eac8f17
 pkgrel=1
 pkgdesc="Extensions which allows to enable and disable extensions via a menu in the status area in the main menu panel."
 arch=('any')
 url="https://github.com/petres/gnome-shell-extension-extensions"
 license=('GPL3')
-depends=('gnome-shell<3.19')
+depends=('gnome-shell<3.21')
 makedepends=('git')
 source=("git+https://github.com/petres/gnome-shell-extension-extensions")
 _gitfolder="extensions@abteil.org"
