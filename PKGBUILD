@@ -58,14 +58,11 @@ prepare() {
 build() {
   # Build documentation web site
   cd UML-Designer-${pkgver}/documentation
-  ls
   jekyll build
-  ls
   cd ../
   # Integrate the documentation to Eclipse
   rm -rf plugins/org.obeonetwork.dsl.uml2.design.doc/html
   cp -r documentation/_site plugins/org.obeonetwork.dsl.uml2.design.doc/html
-  ls plugins/org.obeonetwork.dsl.uml2.design.doc/html
   # Build uml designer
   mvn clean verify
   # Build uml designer products
