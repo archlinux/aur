@@ -1,6 +1,15 @@
+# Concerning the _pkgver_base HACK (copied from gcc-git AUR):
+#
+#    * _pkgver_base is hard coded at the moment to 6.0.0; can't parse from source
+#       * git source is downloaded just before pkgver(), so source doesn't exist to be parsed when globals (incl_pkgver_base) are currently set
+#       * can't set it to an empty string and silently re-set it at the beginning of pkgver(), because the new value of _pkgver_base is only within the scope of pkgver()
+#       * would have to re-set it at the beginning of every function that uses it, which is messy and error-prone
+#       * to-do: could test in pkgver() or prepare() if _pkgver_base is different than gcc/BASE-VER and error
+
 pkgbase="gcc-multilib-trunk-git"
 pkgname=('gcc-multilib-git' 'gcc-libs-multilib-git' 'lib32-gcc-libs-git' 'gcc-objc-multilib-git')
-pkgver=6.0.144667.048186c
+pkgver=6.0.0.r145527.5ecab91
+_pkgver_base=6.0.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection developmental snapshot"
 arch=('any')
@@ -22,15 +31,11 @@ if [[ "${CHOST}" == 'x86_64-unknown-linux-gnu' ]]; then
 fi
 
 pkgver() {
-  cd ${srcdir}/${_basedir}
-
-  _ver=$(cat ${srcdir}/gcc/gcc/BASE-VER)
-  _ver=${_ver%.*}
-
-  echo ${_ver}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd ${srcdir}/gcc
+  echo $(cat gcc/BASE-VER).r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
-_libdir="usr/lib/gcc/$_CHOST/$pkgver"
+_libdir="usr/lib/gcc/$_CHOST/$_pkgver_base"
 
 prepare() {
         cd ${srcdir}/${_basedir}
@@ -44,8 +49,6 @@ prepare() {
 
         # Arch Linux installs x86_64 libraries /lib
         [[ $CARCH == "x86_64" ]] && sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
-
-        echo ${pkgver} > gcc/BASE-VER
 
         # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
         sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
