@@ -3,9 +3,9 @@
 pkgname=ricin-git
 _pkgname=Ricin
 _submodule=tox-vapi
-pkgver=0.540.62bb688
+pkgver=0.563.0897e51
 pkgrel=1
-pkgdesc="Lightweight and Fully-Hackable Tox client powered by Vala & Gtk3"
+pkgdesc="A dead-simple but powerful Tox client."
 url="https://github.com/RicinApp/Ricin"
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -19,18 +19,10 @@ depends=('gtk3'
          'libconfig'
          )
 
-source=("git+https://github.com/RicinApp/Ricin.git"
-        "git+https://github.com/RicinApp/tox-vapi.git")
-sha256sums=('SKIP' 'SKIP')
+source=("git+https://github.com/RicinApp/Ricin.git")
+sha256sums=('SKIP')
 provides=('ricin')
 conflicts=('ricin')
-
-prepare() {
-    cd "${srcdir}/${_pkgname}"
-    git submodule init
-    git config submodule.${_submodule}.url $srcdir/${_submodule}
-    git submodule update
-}
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
@@ -39,19 +31,18 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    mkdir build || true
-    if [ -f "/usr/bin/meson" ]; then
-        meson . build
-    else
-        meson.py . build
-    fi
+
+    make autogen
     make release
+
+    cd build
+    mesonconf.py -Dprefix=/usr
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
 
-    install -Dm644 "icons/Ricin-128x128.png" "${pkgdir}/usr/share/icons/icons/Ricin-128x128.png"
-    install -Dm644 "ricin.desktop" "${pkgdir}/usr/share/applications/ricin.desktop"
+    make DESTDIR=$pkgdir install
+    # cover ${pkgdir}/usr/bin/Ricin"
     install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/ricin"
 }
