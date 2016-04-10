@@ -19,27 +19,31 @@ md5sums=('a6693598b4cd0890c648aa2cbfa92fe7')
 sha256sums=('af16e0a686a46f759156cb685e25f345680703f43f93af1ce8d834caaf541da6')
 
 prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    sed -i 's/\.la/.so/g' gtags.conf.in
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i 's/\.la/.so/g' gtags.conf.in
+
+    # Package idutils from AUR installs lid as lid-idutils
+    # See: https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=idutils
+    msg "Change idutils lid executable name to lid-idutils"
+    sed -i 's/usable("lid")/usable("lid-idutils")/g' global/global.c
 }
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	autoreconf -fi
-	./configure --prefix=/usr --with-exuberant-ctags=/usr/bin/ctags
-	make
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  autoreconf -fi
+  ./configure --prefix=/usr --with-exuberant-ctags=/usr/bin/ctags
+  make
 }
 
 check() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make -k check
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make -k check
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
-	make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 
-	install -d "${pkgdir}/usr/share/emacs/site-lisp"
-	ln -s ../../gtags/gtags.el "${pkgdir}/usr/share/emacs/site-lisp/gtags.el"
+  install -d "${pkgdir}/usr/share/emacs/site-lisp"
+  ln -s ../../gtags/gtags.el "${pkgdir}/usr/share/emacs/site-lisp/gtags.el"
 }
-
