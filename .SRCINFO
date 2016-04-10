@@ -19,7 +19,7 @@ pkgbase = siril
 	optdepends = ffms2: films native support as image sequences and import
 	optdepends = opencv: rotate and resize images
 	source = https://free-astro.org/download/siril-0.9.3.tar.bz2
-	sha1sums = 2dd678037184d0d1786054ed5f38fa08e527b3f3
+	sha1sums = 20144eb3ae0a16bcf9897c9dc2eec282b8426198
 
 pkgname = siril
 

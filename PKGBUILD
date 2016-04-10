@@ -19,7 +19,7 @@ optdepends=('libpng: PNG import'
 _pkgname="${pkgname}-${pkgver}"
 source=("https://free-astro.org/download/${_pkgname}.tar.bz2")
 
-sha1sums=('2dd678037184d0d1786054ed5f38fa08e527b3f3')
+sha1sums=('20144eb3ae0a16bcf9897c9dc2eec282b8426198')
 
 build() {
 	cd "${_pkgname}"
