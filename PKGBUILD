@@ -4,7 +4,7 @@
 
 pkgname=global
 pkgver=6.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A source code tag system"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/global/"
@@ -22,10 +22,10 @@ prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   sed -i 's/\.la/.so/g' gtags.conf.in
 
-    # Package idutils from AUR installs lid as lid-idutils
-    # See: https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=idutils
-    msg "Change idutils lid executable name to lid-idutils"
-    sed -i 's/usable("lid")/usable("lid-idutils")/g' global/global.c
+  # Package idutils from AUR installs lid as lid-idutils
+  # See: https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=idutils
+  msg "Change idutils lid executable name to lid-idutils"
+  sed -i 's/usable("lid")/usable("lid-idutils")/g' global/global.c
 }
 
 build() {
