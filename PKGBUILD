@@ -1,7 +1,7 @@
 # Maintainer: Omid Mottaghi Rad <omidmr at gmail dot com>
 
 pkgname=gnome-shell-extension-persian-calendar
-pkgver=20151020
+pkgver=20160410
 pkgrel=1
 pkgdesc="Persian calendar for Gnome Shell."
 arch=(any)
