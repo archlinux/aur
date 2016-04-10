@@ -70,7 +70,7 @@ _disabled_modules=(languages/mod_spidermonkey
 
 pkgname='freeswitch-git'
 pkgver=1.5.final.r2501.g07b200c
-pkgrel=2
+pkgrel=3
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk (git version)."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
@@ -84,7 +84,9 @@ depends=('curl'
          'speex'
          'libjpeg-turbo'
          'postgresql-libs'
-	 'yasm')
+	 'libshout'
+	 'lua'
+	 'opus')
 # per https://wiki.freeswitch.org/wiki/FreeSwitch_Dependencies, dependencies are downloaded and built *from upstream*, so thankfully the deps are pretty minimal.
 makedepends=('git'
              'libjpeg'
@@ -95,7 +97,8 @@ makedepends=('git'
              'unixodbc'
              'sed'
              'make'
-	     'libyuv-git')
+	     'libyuv-git'
+	     'yasm')
 # per https://aur.archlinux.org/packages/freeswitch-fixed/ 2014-08-13 14:02 comment, enable this when freetdm is packaged.
 # freetdm will require libsangoma, wanpipe, libsng_isdn, libpri. see http://wiki.freeswitch.org/wiki/FreeTDM#Dependencies ; links below
 # http://wiki.sangoma.com/wanpipe-linux-drivers
@@ -177,13 +180,13 @@ build() {
   sleep 5
 
   # SED FIXES
-   sed -i -e '/if\ test\ "\$ac_cv_gcc_supports_w_no_unused_result"\ =\ yes;\ then/,+2d' configure.ac
+   #sed -i -e '/if\ test\ "\$ac_cv_gcc_supports_w_no_unused_result"\ =\ yes;\ then/,+2d' configure.ac
    #sed -i -e '/\ _BSD_SOURCE$/d' src/include/switch.h
 
   # CONFIGURE
   ./configure --prefix=/var/lib/freeswitch --with-python=/usr/bin/python2 \
     --bindir=/usr/bin --sbindir=/usr/sbin --localstatedir=/var \
-    --sysconfdir=/etc/freeswitch --datarootdir=/usr/share \
+    --sysconfdir=/etc/ --datarootdir=/usr/share \
     --libexecdir=/usr/lib/freeswitch --libdir=/usr/lib/freeswitch \
     --includedir=/usr/include/freeswitch --enable-core-odbc-support \
     --with-recordingsdir=/var/spool/freeswitch/recordings \
@@ -222,7 +225,7 @@ disable_mod_xml() {
 
 package() {
   mkdir -p /var/tmp/bin
-  ln -s /usr/bin/python2 /var/tmp/bin/python
+  ln -sf /usr/bin/python2 /var/tmp/bin/python
   PATH="/var/tmp/bin:${PATH}"
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}/" install
@@ -235,14 +238,14 @@ package() {
   cd ${pkgdir} # MUY IMPORTANT, $PWD is $pkgdir from here on out
   # Mangle freeswitch's installed dirs into a more compliant structure,
   # leaving symlinks in their place so freeswitch doesn't notice.
-  ln -s /var/log/freeswitch var/lib/freeswitch/log
-  ln -s /var/spool/freeswitch/db var/lib/freeswitch/db
-  ln -s /var/spool/freeswitch/recordings var/lib/freeswitch/recordings
+  ln -sf /var/log/freeswitch var/lib/freeswitch/log
+  ln -sf /var/spool/freeswitch/db var/lib/freeswitch/db
+  ln -sf /var/spool/freeswitch/recordings var/lib/freeswitch/recordings
   install -D -m 0755 -d var/spool/freeswitch/storage && \
-    ln -s /var/spool/freeswitch/storage var/lib/freeswitch/storage
+    ln -sf /var/spool/freeswitch/storage var/lib/freeswitch/storage
   rm usr/lib/freeswitch/mod/*.la 2>/dev/null|| true
   rm usr/lib/freeswitch/*.la 2>/dev/null || true
-  ln -s /usr/lib/freeswitch/mod var/lib/freeswitch/mod
+  ln -sf /usr/lib/freeswitch/mod var/lib/freeswitch/mod
   install -D -m 0644 ${srcdir}/freeswitch.service usr/lib/systemd/system/freeswitch.service
   install -D -m 0644 "${srcdir}/freeswitch.conf.d" etc/conf.d/freeswitch
   install -D -m 0644 "${srcdir}/README.freeswitch" usr/share/doc/freeswitch/README
@@ -259,7 +262,7 @@ package() {
   echo "<X-PRE-PROCESS cmd=\"set\" data=\"default_password=$(tr -dc 0-9 < /dev/urandom | head -c10)\"/>" > etc/freeswitch/private/passwords.xml
   chmod 700 etc/freeswitch/private
   chmod 600 etc/freeswitch/private/passwords.xml
-  ln -s /etc/freeswitch var/lib/freeswitch/conf
+  ln -sf /etc/freeswitch var/lib/freeswitch/conf
   cp -a etc/freeswitch/* usr/share/doc/freeswitch/examples/conf.default/
 
   for _mod in ${_enabled_modules[@]};do
