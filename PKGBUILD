@@ -6,20 +6,20 @@ _name=compiz
 pkgname=compiz-manjaro
 _series=0.9.12
 pkgver=${_series}.2
-pkgrel=5
+pkgrel=6
 _greybirdver=1.6.2
 pkgdesc="OpenGL compositing window manager. Includes friendly defaults, GWD theme selector and autostart for Xfce & MATE."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/${_name}"
 license=('GPL' 'LGPL' 'MIT')
-depends=('boost' 'xorg-server' 'libxcomposite' 'startup-notification' 'librsvg' 'dbus' 'mesa' 'libxslt' 'fuse' 'glibmm' 'libxrender' 'libwnck3' 'pygtk' 'desktop-file-utils' 'pyrex' 'protobuf' 'metacity>=3.16.0' 'glu' 'libsm' 'dconf')
+depends=('boost' 'xorg-server' 'libxcomposite' 'startup-notification' 'librsvg' 'dbus' 'mesa' 'libxslt' 'fuse' 'glibmm' 'libxrender' 'libwnck3' 'pygtk' 'desktop-file-utils' 'pyrex' 'protobuf' 'metacity>=3.16.0' 'glu' 'libsm' 'dconf' 'zenity')
 makedepends=('cmake' 'intltool')
 optdepends=(
   'xorg-xprop: grab various window properties for use in window matching rules'
 )
 conflicts=('compiz' 'compiz09-manjaro-test' 'compiz-core-bzr' 'compiz-core-devel' 'compiz-core' 'compiz-gtk-standalone' 'compiz-xfce' 'compiz-mate'
-           'compiz-core-mate' 'compiz-fusion-plugins-main' 'compiz-fusion-plugins-extra' 'compiz-fusion-plugins-unsupported' 'compiz-decorator-gtk'
-           'compiz-decorator-kde' 'libcompizconfig' 'compizconfig-python' 'compizconfig-backend-gconf' 'compiz-bcop' 'ccsm')
+           'compiz-core-mate' 'compiz-fusion-plugins-main' 'compiz-fusion-plugins-extra' 'compiz-fusion-plugins-unsupported' 'compiz-fusion-plugins-experimental'
+           'compiz-decorator-gtk' 'compiz-decorator-kde' 'libcompizconfig' 'compizconfig-python' 'compizconfig-backend-gconf' 'compiz-bcop' 'ccsm')
 replaces=('compiz09-manjaro-test')
 provides=("${_name}=${pkgver}")
 source=("${url}/${_series}/${pkgver}/+download/${_name}-${pkgver}.tar.bz2"
@@ -53,9 +53,9 @@ sha256sums=('8917ac9e6dfdacc740780e1995e932ed865d293ae87821e7a280da5325daec80'
             '443f85eae424e8aa993f786f3f90dcf92a5454f728f574a5311bb4747ac54288'
             '04c7d417602c144313e808d5e1bde198ee677412c97d7405cf6092e8794f95b7'
             '0faaf9e9df28d2857108ccd0910d50ba631c34c2b1659b8860da8c2b552fc889'
-            'a9caa25aa72c1d28e7f3660ac89404e0bae8085b71626fc1c97db1956eea8bec'
+            'bc4643f94e0eca255e7e97968f928da11c33fb27944c1ca4f9c61ea3dafc7f42'
             'd23b8633186bb3a2a841734ad0b917500f3536a67046f5d8fbb08818eab59160'
-            '38ef826430307958722fa6d3553adf5a6e2bc793d7f1b55d4c66c5e51a60b385'
+            '5c471a34a1d79a45e8c4a924f0f58d71199328e45c80472fe32ecaac76c987ee'
             '02eec20f75eb1f9571a2cf92013fc3c78d13c155a8ede0467cc10b83cdeba43c'
             '473a38b379381311b68dcc579005c0d5bbfbabefe1de7107d897c68b81e6b460')
 install="${pkgname}.install"

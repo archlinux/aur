@@ -9,7 +9,15 @@ elif [ "$(xfconf-query -c xsettings -p /Net/ThemeName)" == "Vertex-Maia-Square" 
 	gsettings set org.gnome.metacity theme "Vertex-Maia-Square"
 fi
 
+mkdir -p ~/.local/bin
 mkdir -p ~/.config/autostart
+
+rm ~/.local/bin/compiz-xfce-uninstall-helper
+cp /usr/bin/compiz-xfce-uninstall-helper ~/.local/bin/
+rm ~/.config/autostart/compiz-xfce-uninstall-helper.desktop
+cp /etc/xdg/autostart/compiz-xfce-uninstall-helper.desktop ~/.config/autostart/
+sed -i 's|Exec=compiz-xfce-uninstall-helper|Exec=sh -c ~/.local/bin/compiz-xfce-uninstall-helper|' ~/.config/autostart/compiz-xfce-uninstall-helper.desktop
+
 rm ~/.config/autostart/compiz-xfce-autostart-setup.desktop
 cp /etc/xdg/autostart/compiz-xfce-autostart-setup.desktop ~/.config/autostart/
 sed -i 's|Hidden=false|Hidden=true|' ~/.config/autostart/compiz-xfce-autostart-setup.desktop

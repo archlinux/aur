@@ -12,11 +12,4 @@ if [ ! -f /usr/bin/compiz ]; then
    rm ~/.config/autostart/compiz-xfce-autostart.desktop
    
    rm ~/.local/bin/compiz-xfce-uninstall-helper
-elif [ ! -f ~/.config/autostart/compiz-xfce-uninstall-helper.desktop ]; then
-   mkdir -p ~/.local/bin
-   mkdir -p ~/.config/autostart
-   rm ~/.local/bin/compiz-xfce-uninstall-helper
-   cp /usr/bin/compiz-xfce-uninstall-helper ~/.local/bin/
-   cp /etc/xdg/autostart/compiz-xfce-uninstall-helper.desktop ~/.config/autostart/
-   sed -i 's|Exec=compiz-xfce-uninstall-helper|Exec=sh -c ~/.local/bin/compiz-xfce-uninstall-helper|' ~/.config/autostart/compiz-xfce-uninstall-helper.desktop
 fi
