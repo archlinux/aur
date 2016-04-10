@@ -3,10 +3,10 @@
 pkgname=tboplayer-git
 pkgver=146.5eb1897
 pkgrel=1
-pkgdesc="A GUI for OMXPlayer"
+pkgdesc="Raspberry Pi. A GUI for OMXPlayer"
 url="https://github.com/KenT2/tboplayer"
 arch=('armv6h' 'armv7h')
-depends=('python2-gobject2' 'python2-dbus' 'pygtk' 'python2-requests' 'python2-pexpect' 'python2-ptyprocess' 'tk' 'ffmpeg' 'youtube-dl')
+depends=('omxplayer-git' 'python2-gobject2' 'python2-dbus' 'pygtk' 'python2-requests' 'python2-pexpect' 'python2-ptyprocess' 'tk' 'ffmpeg' 'youtube-dl')
 source=(git://github.com/KenT2/tboplayer.git)
 md5sums=('SKIP')
 
