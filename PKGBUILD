@@ -6,13 +6,16 @@ pkgdesc="Command line tool for Amazon Route 53"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=()
-makedepends=('go')
+makedepends=('go>=1.5', 'make')
 source=("https://github.com/barnybug/cli53/archive/$pkgver.tar.gz")
 sha256sums=('87233f01795194e87a0f906309e273ca1e38e2313b2272c5bef27eb905543d99')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	go build -ldflags "-X github.com/barnybug/cli53.version=$pkgver" ./cmd/cli53
+    export GOPATH="$srcdir"
+    mkdir -p "$srcdir/src/github.com/barnybug"
+    ln -s "$srcdir/$pkgname-$pkgver" "$srcdir/src/github.com/barnybug/cli53"
+    cd "$srcdir/src/github.com/barnybug/cli53"
+    make build
 }
 
 package() {
