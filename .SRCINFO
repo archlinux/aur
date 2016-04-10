@@ -1,0 +1,15 @@
+pkgbase = gtk-theme-arc-flatabulous-git
+	pkgdesc = Arc-Flatabulous theme is the Arc theme with Flatabulous window controls. Latest commit from the master branch on Github.
+	pkgver = 510.cf62cb0
+	pkgrel = 1
+	url = https://github.com/andreisergiu98/arc-flatabulous-theme
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gtk3
+	depends = gtk-engine-murrine
+	source = arc-flatabulous-theme::git+https://github.com/andreisergiu98/arc-flatabulous-theme.git
+	sha256sums = SKIP
+
+pkgname = gtk-theme-arc-flatabulous-git
+
