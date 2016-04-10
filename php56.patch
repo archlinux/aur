@@ -1,0 +1,11 @@
+--- php-composer56/src/Composer/Compiler.php	2016-04-10 22:22:14.056406238 +0100
++++ php-composer56/src/Composer/Compiler.php	2016-04-10 22:39:13.935566040 +0100
+@@ -224,7 +224,7 @@
+     private function getStub()
+     {
+         $stub = <<<'EOF'
+-#!/usr/bin/env php
++#!/usr/bin/env php56
+ <?php
+ /*
+  * This file is part of Composer.

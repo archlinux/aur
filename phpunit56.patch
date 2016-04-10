@@ -1,0 +1,8 @@
+--- vendor/phpunit/phpunit/phpunit	2016-02-11 14:56:33.000000000 +0000
++++ vendor/phpunit/phpunit/phpunit	2016-04-10 22:52:38.205971643 +0100
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env php
++#!/usr/bin/env php56
+ <?php
+ /*
+  * This file is part of PHPUnit.
