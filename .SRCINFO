@@ -1,0 +1,12 @@
+pkgbase = lila-icon-theme
+	pkgdesc = Lila Icon Theme
+	pkgver = 20160409
+	pkgrel = 1
+	url = http://ilnanny.deviantart.com/art/Lila-HD-icon-theme-2-0-594947650
+	arch = any
+	license = CC BY-NC-ND 4.0
+	source = Lila-hd-icon-theme::git+https://github.com/ilnanny/Lila-hd-icon-theme.git#branch=master
+	md5sums = SKIP
+
+pkgname = lila-icon-theme
+
