@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=switchboard-plug-network-bzr
-pkgver=r159
+pkgver=r223
 pkgrel=1
 pkgdesc='Network plug for Switchboard'
 arch=('i686' 'x86_64')
