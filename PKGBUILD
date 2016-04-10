@@ -1,7 +1,7 @@
 # Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
 # Contributor: Janne Haapsaari <haaja@iki.fi>
 pkgname=gnome-shell-pomodoro-git
-pkgver=r709.cb362bf
+pkgver=r737.adfe069
 pkgrel=1
 _gitbranch='master'
 pkgdesc='A time management utility for GNOME based on the pomodoro technique'
