@@ -82,9 +82,10 @@ package() {
         mkdir -p "$pkgdir$ESPA_STATIC_DATA_DIR/$pkgname/static_data"
         mkdir -p "$pkgdir$PREFIX/lib/$pkgname"
 
+        cd "$srcdir/$pkgname"
         install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-        cd "$srcdir/$pkgname/raw_binary"
+        cd raw_binary
         make PREFIX="$pkgdir$PREFIX" install
         make PREFIX="$pkgdir$PREFIX" clean
 
