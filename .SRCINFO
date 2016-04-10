@@ -1,0 +1,24 @@
+pkgbase = kdevelop-php-git
+	pkgdesc = PHP language plugin for KDevelop - Git build
+	pkgver = v4.90.91.r33.gd3b3852
+	pkgrel = 1
+	url = http://www.kdevelop.org/
+	arch = i686
+	arch = x86_64
+	groups = kde
+	groups = kdevelop-plugins
+	license = GPL
+	makedepends = cmake
+	makedepends = automoc4
+	makedepends = git
+	makedepends = php
+	depends = kdevplatform-git
+	depends = kdevelop-git
+	depends = php
+	provides = kdevelop-php
+	conflicts = kdevelop-php
+	source = git+git://anongit.kde.org/kdev-php.git
+	md5sums = SKIP
+
+pkgname = kdevelop-php-git
+
