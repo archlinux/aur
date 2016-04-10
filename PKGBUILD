@@ -4,7 +4,7 @@
 
 pkgname=borg-git
 _pkgname=borg
-pkgver=1.0.0.r27.gf0cb637
+pkgver=1.0.1.r74.gd4aac62
 pkgrel=1
 pkgdesc="Deduplicating backup program with compression and authenticated encryption"
 url="https://borgbackup.github.io/"
@@ -28,7 +28,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
