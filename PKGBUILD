@@ -1,7 +1,7 @@
 # Maintainer: twilinx <twilinx@mesecons.net>
 
 pkgname=gtk3-typeahead
-pkgver=3.18.9
+pkgver=3.20.2
 pkgrel=1
 conflicts=(gtk3)
 provides=("gtk3=$pkgver")
@@ -11,15 +11,15 @@ url="http://www.gtk.org/"
 install=gtk3.install
 depends=(atk cairo libcups libxcursor libxinerama libxrandr libxi libepoxy gdk-pixbuf2
          libxcomposite libxdamage pango shared-mime-info colord at-spi2-atk wayland libxkbcommon
-         adwaita-icon-theme json-glib rest librsvg gtk-update-icon-cache)
+         adwaita-icon-theme json-glib rest librsvg gtk-update-icon-cache wayland-protocols)
 optdepends=('libcanberra: gtk3-widget-factory demo')
 makedepends=(gobject-introspection libcanberra gtk-doc)
 license=(LGPL)
 source=(https://download.gnome.org/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz
     settings.ini typeahead.patch)
-sha256sums=('783d7f8b00f9b4224cc94d7da885a67598e711c2d6d79c9c873c6b203e83acbd'
+sha256sums=('1ab1d1068ea55e0046f437d69983f164df5e68cb2e9fdfb38787b867f33f69f7'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
-            '029a05a3475bf54f1f1617e7b7a10d589a098b30e0beee1d7a0fdc42d05202ce')
+            '4e3f2c47eeb088de08dae332ae9aedcfd1c118bf899517233b52effd2d37020b')
 
 prepare() {
     cd gtk+-$pkgver
