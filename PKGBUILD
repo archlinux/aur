@@ -26,5 +26,4 @@ package() {
 	install -d $pkgdir/opt/relion $pkgdir/etc/profile.d/
 	cp -r * $pkgdir/opt/relion/.
 	install -D -m755 $srcdir/relion.* $pkgdir/etc/profile.d/.
-	source /etc/profile.d/relion.sh
 }
