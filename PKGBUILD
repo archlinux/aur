@@ -1,7 +1,7 @@
 # Maintainer: Janusz Lewandowski <lew21@xtreeme.org>
 pkgname=('python-pydbus-git'
          'python2-pydbus-git')
-pkgver=v0.5.r0.0a681e4
+pkgver=0.5.r0.0a681e4
 pkgrel=1
 pkgdesc="Pythonic DBus library"
 arch=("any")
@@ -13,7 +13,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/pydbus"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/v//')"
 }
 
 package_python-pydbus-git() {
