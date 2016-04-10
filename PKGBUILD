@@ -3,7 +3,7 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust-git
-pkgver=4033.9c38856
+pkgver=4043.e38e610
 pkgrel=1
 pkgdesc="A functional programming language for realtime audio signal processing."
 arch=('i686' 'x86_64')
@@ -15,11 +15,8 @@ depends=('ruby'
 # needed for libHTTPDFaust:
 	 'libmicrohttpd' 'openssl')
 # We need xxd at build time, which is provided by 'gvim', 'vim' and 'xxd'
-# (AUR). Unfortunately, these all conflict with each other, and pacman doesn't
-# provide for alternative dependencies. Most users will presumably have 'gvim'
-# installed, so that's the one we go with, but you can replace that with either
-# 'vim' or 'xxd' if you prefer.
-makedepends=('git' 'gvim')
+# (AUR).
+makedepends=('git' 'xxd')
 provides=('faust')
 conflicts=('faust')
 # This keeps the static libraries. Remove the 'staticlibs' option if this
