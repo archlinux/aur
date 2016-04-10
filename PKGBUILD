@@ -7,7 +7,7 @@ pkgdesc="A webkit2 greeter for LightDM"
 arch=('i686' 'x86_64')
 url="https://github.com/antergos/lightdm-webkit2-greeter"
 license=('GPL3')
-source=("${pkgname}-${pkgver}::https://github.com/antergos/${pkgname}/archive/${pkgver}.zip")
+source=("${pkgname}-${pkgver}.zip::https://github.com/antergos/${pkgname}/archive/${pkgver}.zip")
 makedepends=('gnome-doc-utils' 'gobject-introspection' 'intltool' 'gnome-common' 'exo' 'git')
 depends=('lightdm' 'webkit2gtk>=2.10.8' 'gtk3>=3.18')
 provides=('lightdm-webkit-greeter' 'lightdm-webkit-theme-antergos')
