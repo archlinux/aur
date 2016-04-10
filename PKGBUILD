@@ -2,7 +2,7 @@
 
 pkgname=terminix-git
 _pkgname=terminix
-pkgver=0.56.0.r2.7ddd63c
+pkgver=0.57.0.r0.bdd7c6d
 pkgrel=1
 pkgdesc="A tiling terminal emulator based on GTK+ 3 (git master)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ install=$pkgname.install
 source=('git+https://github.com/gnunn1/terminix')
 md5sums=('SKIP')
 
-_gtkdver="3.3.0"
+#_gtkdver="3.3.0"
 
 pkgver() {
   cd "$_pkgname"
@@ -33,7 +33,7 @@ build() {
     git clone https://github.com/gtkd-developers/GtkD.git "$_gtkdrepo"
   fi
   
-  #_gtkdver=$(git --git-dir="$_gtkdrepo/.git" describe --tags --abbrev=0 | sed 's/^v//')
+  _gtkdver=$(git --git-dir="$_gtkdrepo/.git" describe --tags --abbrev=0 | sed 's/^v//')
 
   # Register local GtkD repository in dub
   dub add-local "$_gtkdrepo" $_gtkdver
