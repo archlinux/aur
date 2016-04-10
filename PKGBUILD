@@ -4,7 +4,7 @@
 _pkgname=raptor
 pkgname=lib32-${_pkgname}
 pkgver=2.0.15
-pkgrel=2
+pkgrel=3
 pkgdesc="A C library that parses RDF/XML/N-Triples into RDF triples (32 bit)"
 arch=('x86_64')
 url="http://librdf.org/raptor"
