@@ -1,7 +1,7 @@
 # Maintainer: Hanspeter Portner <dev at open-music-kontrollers dot ch>
 _pkgname=sherlock.lv2
 pkgname=sherlock-lv2
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="An investigative LV2 plugin bundle"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ options=()
 install=
 source=("https://github.com/OpenMusicKontrollers/$_pkgname/archive/$pkgver.tar.gz")
 noextract=()
-md5sums=('279d0b9d198bdaddf76898b7c13c4dfc')
+md5sums=('8cba02b6243aa8ee169f7b723558e125')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
