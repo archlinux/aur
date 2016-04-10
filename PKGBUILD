@@ -22,10 +22,12 @@ provides=('nginx')
 conflicts=('nginx')
 source=($url/download/nginx-$pkgver.tar.gz
         service
-        logrotate)
+        logrotate
+	nginx.conf)
 md5sums=('a25818039f34b5d54b017d44c76321c4'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
-         '3441ce77cdd1aab6f0ab7e212698a8a7')
+         '3441ce77cdd1aab6f0ab7e212698a8a7'
+         '288ef522c59aef7f2ddb4bba27e3367c')
 
 _common_flags=(
   --with-ipv6
@@ -93,7 +95,8 @@ package() {
     -e '54s|html|/usr/share/nginx/html|' \
     -i "$pkgdir"/etc/nginx/nginx.conf
 
-  rm "$pkgdir"/etc/nginx/*.default
+  rm "$pkgdir"/etc/nginx/*.default "$pkgdir"/etc/nginx/nginx.conf
+  install -Dm644 ../nginx.conf "$pkgdir"/etc/nginx/
 
   install -d "$pkgdir"/var/lib/nginx
   install -dm700 "$pkgdir"/var/lib/nginx/proxy

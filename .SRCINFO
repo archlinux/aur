@@ -11,7 +11,7 @@ pkgbase = nginx-mainline-passenger
 	depends = zlib
 	depends = openssl
 	depends = geoip
-	optdepends = passenger: standard passenger support
+	depends = passenger
 	provides = nginx
 	conflicts = nginx
 	backup = etc/nginx/fastcgi.conf
@@ -27,9 +27,11 @@ pkgbase = nginx-mainline-passenger
 	source = http://nginx.org/download/nginx-1.9.14.tar.gz
 	source = service
 	source = logrotate
+	source = nginx.conf
 	md5sums = a25818039f34b5d54b017d44c76321c4
 	md5sums = ce9a06bcaf66ec4a3c4eb59b636e0dfd
 	md5sums = 3441ce77cdd1aab6f0ab7e212698a8a7
+	md5sums = 288ef522c59aef7f2ddb4bba27e3367c
 
 pkgname = nginx-mainline-passenger
 
