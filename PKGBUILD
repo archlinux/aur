@@ -1,0 +1,1 @@
+../../abs/espa-product-formatter/PKGBUILD

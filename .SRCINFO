@@ -1,0 +1,19 @@
+pkgbase = espa-product-formatter
+	pkgdesc = libraries and tools for working with the ESPA internal file format
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/USGS-EROS/espa-product-formatter
+	arch = x86_64
+	license = custom:"Nasa Open Source Agreement"
+	depends = libxml2
+	depends = jbigkit
+	depends = netcdf
+	depends = hdf-eos2
+	depends = hdf-eos5
+	provides = espa-product-formatter
+	conflicts = espa-product-formatter
+	source = https://github.com/USGS-EROS/espa-product-formatter/archive/product_formatter_v1.6.0.tar.gz
+	md5sums = SKIP
+
+pkgname = espa-product-formatter
+
