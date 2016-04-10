@@ -1,7 +1,7 @@
 
 pkgname=nginx-mainline-passenger
 pkgver=1.9.14
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release, including support for Phusion Passenger'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
@@ -57,7 +57,7 @@ _mainline_flags=(
 )
 
 _passenger_flags=(
-  --add-module=$(passenger-config --nginx-addon-dir)
+  --add-module=$(/usr/lib/passenger/bin/passenger-config --nginx-addon-dir)
 )
 
 build() {
