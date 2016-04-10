@@ -15,7 +15,9 @@ pkgbase = relion
 	depends = openmpi
 	source = http://www2.mrc-lmb.cam.ac.uk/groups/scheres/1sep15/relion-1.4.tar.bz2
 	source = relion.sh
+	source = relion.csh
 	md5sums = 9897d73f405d11e0cceb740c2f7a6d29
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = relion

@@ -13,8 +13,8 @@ url="http://www2.mrc-lmb.cam.ac.uk/relion/index.php/Main_Page"
 license=('GPL')
 depends=('libxinerama' 'glu' 'libjpeg-turbo' 'fftw' 'tcsh' 'alsa-lib' 'libxft' 'openmpi')
 source=("http://www2.mrc-lmb.cam.ac.uk/groups/scheres/1sep15/$pkgname-$pkgver.tar.bz2" 
-'relion.sh')
-md5sums=('9897d73f405d11e0cceb740c2f7a6d29' 'SKIP')
+'relion.sh' 'relion.csh')
+md5sums=('9897d73f405d11e0cceb740c2f7a6d29' 'SKIP' 'SKIP')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -25,5 +25,5 @@ package() {
 	cd "$pkgname-$pkgver"
 	install -d $pkgdir/opt/relion $pkgdir/etc/profile.d/
 	cp -r * $pkgdir/opt/relion/.
-	install -D -m755 $srcdir/relion.sh $pkgdir/etc/profile.d/.
+	install -D -m755 $srcdir/relion.* $pkgdir/etc/profile.d/.
 }
