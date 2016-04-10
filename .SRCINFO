@@ -1,6 +1,6 @@
 pkgbase = siril
 	pkgdesc = An astronomical image processing software for Linux. (IRIS clone)
-	pkgver = 0.9.2
+	pkgver = 0.9.3
 	pkgrel = 1
 	url = https://free-astro.org/index.php/Siril
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = siril
 	optdepends = giflib: animated GIF monochrome sequence export
 	optdepends = ffms2: films native support as image sequences and import
 	optdepends = opencv: rotate and resize images
-	source = https://free-astro.org/download/siril-0.9.2.tar.bz2
-	sha1sums = 092228a77d536269995a33ee52c505a0edf970ab
+	source = https://free-astro.org/download/siril-0.9.3.tar.bz2
+	sha1sums = 2dd678037184d0d1786054ed5f38fa08e527b3f3
 
 pkgname = siril
 
