@@ -25,7 +25,7 @@ install=$pkgname.install
 
 package() {
   mkdir -p $pkgdir/usr/bin
-  install -m755 $srcdir/meow-$pkgver $pkgdir/usr/bin/meow
+  install -m755 $srcdir/meow-$CARCH-$pkgver $pkgdir/usr/bin/meow
   install -Dm644 meow@.service ${pkgdir}/usr/lib/systemd/system/meow@.service
   install -Dm644 meow_user.service ${pkgdir}/usr/lib/systemd/user/meow.service
 }
