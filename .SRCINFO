@@ -6,15 +6,16 @@ pkgbase = meow-proxy
 	install = meow-proxy.install
 	arch = i686
 	arch = x86_64
-	arch = arm
 	license = custom
 	conflicts = meow-proxy-git
 	source = meow@.service
 	source = meow_user.service
-	source = meow-1.3.4.gz::https://github.com/renzhn/MEOW/raw/gh-pages/dist/MEOW-linux-amd64-1.3.4.gz
 	sha1sums = bf9f1c5c58807e39c969d1ec5cb6535579f0dc92
 	sha1sums = 4ab8d5afaf78c992bdd7c45a7fcd7dd4ae3875d5
-	sha1sums = dc2904d1021ca21b94d6a225a7aaae861b3fe0c7
+	source_i686 = meow-i686-1.3.4.gz::https://github.com/renzhn/MEOW/raw/gh-pages/dist/MEOW-linux-386-1.3.4.gz
+	sha1sums_i686 = f75759f9b7af633f821e99d5978e75e4634fe643
+	source_x86_64 = meow-x86_64-1.3.4.gz::https://github.com/renzhn/MEOW/raw/gh-pages/dist/MEOW-linux-amd64-1.3.4.gz
+	sha1sums_x86_64 = dc2904d1021ca21b94d6a225a7aaae861b3fe0c7
 
 pkgname = meow-proxy
 
