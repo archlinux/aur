@@ -1,5 +1,5 @@
 pkgbase = ovito
-	pkgdesc = OVITO is a scientific visualization and analysis software for atomistic simulation data.
+	pkgdesc = A scientific visualization and analysis software for atomistic simulation data.
 	pkgver = 2.6.2
 	pkgrel = 1
 	url = http://www.ovito.org
