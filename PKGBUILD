@@ -34,6 +34,12 @@ prepare() {
         sed -i -e \
             's: = ../$(project_name): = ../lib/$(project_name):g' \
             make.config
+
+        sed -i -e \
+            's: = ../$(project_name): = ../lib/$(project_name):g' \
+            scripts/Makefile
+
+
 }
 
 build() {
