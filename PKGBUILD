@@ -6,7 +6,7 @@ pkgdesc="A library for layout and rendering of text (for compat with cairo-ubunt
 arch=('i686' 'x86_64')
 license=('LGPL')
 depends=('libthai' 'cairo-ubuntu' 'libxft' 'harfbuzz')
-provides=('pango=$pkgver')
+provides=("pango=$pkgver")
 replaces=('pango')
 conflicts=('pango')
 makedepends=('harfbuzz' 'fontconfig-ubuntu' 'cairo-ubuntu' 'libxft' 'libthai' 'gobject-introspection' 'help2man')

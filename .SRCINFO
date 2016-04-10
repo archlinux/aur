@@ -21,7 +21,7 @@ pkgbase = pango-ubuntu
 	depends = cairo-ubuntu
 	depends = libxft
 	depends = harfbuzz
-	provides = pango=$pkgver
+	provides = pango=1.40.0
 	conflicts = pango
 	replaces = pango
 	source = http://ftp.gnome.org/pub/GNOME/sources//pango/1.40/pango-1.40.0.tar.xz
