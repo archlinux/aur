@@ -1,20 +1,18 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=zelda-classic
-pkgver=2.5.0.24
-pkgrel=2
+pkgver=2.50.1.28
+pkgrel=1
 pkgdesc="A tribute to Nintendo's The Legend of Zelda (NES)"
 arch=('i686' 'x86_64')
 url="http://zeldaclassic.com"
 license=('custom: Freeware')
-depends=('allegro4')
-optdepends=('gtk-engine-murrine: needed for the gtk2-launcher')
-if [ "$CARCH" == "x86_64" ]; then
-  depends=('lib32-allegro4')
-  optdepends=('lib32-gtk-engine-murrine: needed for the gtk2-launcher')
-fi
+depends_i686=('libxpm' 'libxxf86vm' 'libxcursor' 'alsa-lib')
+depends_x86_64=('lib32-libxpm' 'lib32-libxxf86vm' 'lib32-libxcursor' 'lib32-alsa-lib')
+optdepends_i686=('gtk-engine-murrine: needed for the gtk2-launcher')
+optdepends_x86_64=('lib32-gtk-engine-murrine: needed for the gtk2-launcher')
 install=$pkgname.install
-source=("http://www.shardstorm.com/zcmirror/zc-250-linux.tar.gz"
+source=("http://www.shardstorm.com/zcmirror/zc-2-50-1-linux.tar.gz"
         "$pkgname.png"
         "$pkgname-zlaunch.png"
         "$pkgname-zquest.png"
@@ -22,7 +20,7 @@ source=("http://www.shardstorm.com/zcmirror/zc-250-linux.tar.gz"
         "$pkgname-zlaunch.desktop"
         "$pkgname-zquest.desktop"
         "$pkgname.sh")
-sha256sums=('6fbd660403cc7f3292b3892ab08620ed02f3276e82274b35b210b09479783aa9'
+sha256sums=('1d269e537b83f8b8c40c25ce53b36a57e6243bf0fafd2f5614d0fd1cf9d7a3af'
             'bb4331ce9940c81edb95d3388f3e3cb459c1559df159d727b0302dd7dbbd82e1'
             'bfc007209c30f8b752ad102e2f9e6a4cd4fc447dc306c2712db4f34a8ffb3b7e'
             'e436cfa2303703037a800b298ad52f50af8e9e2d3e410e9298a6218761c9d088'
