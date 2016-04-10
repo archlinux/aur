@@ -1,20 +1,14 @@
 # Maintainer: Janusz Lewandowski <lew21@xtreeme.org>
 pkgname=('python-pydbus-git'
          'python2-pydbus-git')
-pkgver=v0.3.r0.b665d73
+pkgver=v0.5.r0.0a681e4
 pkgrel=1
 pkgdesc="Pythonic DBus library"
 arch=("any")
 url="https://github.com/LEW21/pydbus"
 license=('LGPL')
-groups=()
 makedepends=('git' 'python-setuptools' 'python2-setuptools')
-replaces=()
-backup=()
-options=()
-install=
 source=('pydbus::git+https://github.com/LEW21/pydbus.git')
-noextract=()
 md5sums=('SKIP')
 
 pkgver() {
