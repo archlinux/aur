@@ -2,7 +2,7 @@
 
 pkgname=svtplay-dl-git
 _gitname=svtplay-dl
-pkgver=1.0.r2.gc125540
+pkgver=1.0.r15.g3487ba6
 pkgrel=1
 pkgdesc="Media downloader for play sites (e.g. SVT Play)"
 arch=('any')
@@ -26,8 +26,8 @@ package() {
   python setup.py install --root "${pkgdir}" --optimize=1
   install -Dm644 "${srcdir}/${_gitname}/LICENSE" -t "${pkgdir}/usr/share/licenses/${_gitname}"
 
-  pod2man -us 1 -c "${_gitname} manual" -r "${_gitname} ${pkgver}" ${_gitname}.pod ${_gitname}.1
-  install -Dm644 "${_gitname}.1"  -t "${pkgdir}/usr/share/man/man1"
+  /usr/bin/core_perl/pod2man -us 1 -c "${_gitname} manual" -r "${_gitname} ${pkgver}" ${_gitname}.pod ${_gitname}.1
+  install -Dm644 "${_gitname}.1" -t "${pkgdir}/usr/share/man/man1"
 }
 
 # vim:set ts=2 sw=2 et:
