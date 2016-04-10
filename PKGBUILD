@@ -1,6 +1,6 @@
 # Maintainer: Peter Klotz <peter.klotz99@gmail.com>
 pkgname=uex
-pkgver=15.1.0.0
+pkgver=15.1.0.8
 pkgrel=1
 pkgdesc="UltraEdit is a powerful text editor."
 arch=('i686' 'x86_64')
@@ -10,10 +10,10 @@ depends=('desktop-file-utils' 'gtk2' 'libjpeg6' 'libpng12' 'libsm')
 install=uex.install
 if [ "${CARCH}" = 'i686' ]; then
   source=(http://www.ultraedit.com/files/uex/Other/uex-${pkgver}_i386.tar.gz)
-  md5sums=('9b0b3aeddc43639ebf7ee96117d607bf')
+  md5sums=('75c2b87a5cdb3e08554629d2ef303c82')
 else
   source=(http://www.ultraedit.com/files/uex/Other/uex-${pkgver}_amd64.tar.gz)
-  md5sums=('c1f0dd5b44b91d3613cb9558f0ba9f6a')
+  md5sums=('6d26c50adc6fe279c15357ff61c8187a')
 fi
 
 package() {
