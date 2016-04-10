@@ -1,18 +1,18 @@
-# Maintainer: Ionut Biru <ibiru@archlinux.org>
-# Contributor: wangjiezhe <wangjiezhe AT yandex DOT com>
+# Contrubutor: Ionut Biru <ibiru@archlinux.org>
+# Maintainer: wangjiezhe <wangjiezhe AT yandex DOT com>
 
 _pkgbase=pygobject
 pkgbase=pygobject-patched
 pkgname=(python-gobject-patched python2-gobject-patched)
-pkgver=3.18.2
+pkgver=3.20.0
 pkgrel=1
 arch=(i686 x86_64)
 url="https://live.gnome.org/PyGObject"
 license=(LGPL)
-makedepends=(python python2 python-cairo python2-cairo gobject-introspection gnome-common)
-source=("http://ftp.gnome.org/pub/gnome/sources/${_pkgbase}/${pkgver:0:4}/${_pkgbase}-$pkgver.tar.xz"
+makedepends=(python python2 python-cairo python2-cairo gobject-introspection)
+source=("https://download.gnome.org/sources/${_pkgbase}/${pkgver:0:4}/${_pkgbase}-${pkgver}.tar.xz"
 		"01_cairo_region.patch")
-sha256sums=('2a3cad1517916b74e131e6002c3824361aee0671ffb0d55ded119477fc1c2c5f'
+sha256sums=('31ab4701f40490082aa98af537ccddba889577abe66d242582f28577e8807f46'
             '194fc7946beb01d02a3fba587a214f2f38da56e3b63ecc9b7de37da210488919')
 
 prepare() {
@@ -24,10 +24,12 @@ prepare() {
 build() {
   cd build-py2
   ../${_pkgbase}-${pkgver}/configure --prefix=/usr --with-python=/usr/bin/python2
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 
   cd ../build-py3
   ../${_pkgbase}-${pkgver}/configure --prefix=/usr --with-python=/usr/bin/python
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
@@ -53,5 +55,3 @@ package_python2-gobject-patched() {
   rm -r "$pkgdir"/usr/{include,lib/pkgconfig}
   python2 -m compileall "$pkgdir"//usr/lib/python2.7/site-packages/gi
 }
-
-# vim:set ts=2 sw=2 et:
