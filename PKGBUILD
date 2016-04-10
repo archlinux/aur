@@ -66,9 +66,8 @@ package() {
         mkdir -p "$pkgdir$PREFIX/lib/$pkgname"
         mkdir -p "$pkgdir/var/lib/espa/$pkgname/static_data"
 
-        install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
         cd "$srcdir/$pkgname"
+        install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
         make PREFIX="$pkgdir$PREFIX" install
         make PREFIX="$pkgdir$PREFIX" clean
 }
