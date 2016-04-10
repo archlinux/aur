@@ -1,8 +1,9 @@
-# Maintainer: AG_Caesar <caesar[at]drachenhain[dot]net>
+# Maintainer:	AG_Caesar <caesar[at]drachenhain[dot]net>
+# Contributor:	Jan Oliver Oelerich <janoliver[at]oelerich[dot]org>
 pkgname=ovito
 pkgver=2.6.2
 pkgrel=1
-pkgdesc="OVITO is a scientific visualization and analysis software for atomistic simulation data."
+pkgdesc="A scientific visualization and analysis software for atomistic simulation data."
 url="http://www.ovito.org"
 arch=('x86_64' 'i686')
 license=('GPL3')
