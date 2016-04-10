@@ -6,6 +6,11 @@ pkgbase = ovito
 	arch = x86_64
 	arch = i686
 	license = GPL3
+	depends = python
+	depends = qt5-svg
+	depends = ffmpeg2.8
+	depends = mpfr
+	conflicts = ovito-git
 	source = http://www.ovito.org/download/2.6.2/ovito-2.6.2-x86_64.tar.gz
 	md5sums = f75d142736367d26e63eafbf31a1ceba
 
