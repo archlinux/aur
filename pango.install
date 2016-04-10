@@ -1,0 +1,8 @@
+post_upgrade() {
+	if [ -f usr/etc/pango/pango.modules ]; then
+		rm usr/etc/pango/pango.modules
+	fi
+	if [ -f etc/pango/pango.modules ]; then
+		rm etc/pango/pango.modules
+	fi
+}
