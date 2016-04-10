@@ -1,0 +1,72 @@
+pkgbase = java8-openjdk-jetbrains-git
+	pkgver = 8.u76.b03.r6.g8818da1
+	pkgrel = 1
+	url = https://github.com/JetBrains/jdk8u
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = jdk7-openjdk
+	makedepends = ccache
+	makedepends = cpio
+	makedepends = unzip
+	makedepends = zip
+	makedepends = libxrender
+	makedepends = libxtst
+	makedepends = fontconfig
+	makedepends = libcups
+	makedepends = alsa-lib
+	source = jdk8u-jdk8u76-b03::git+https://github.com/JetBrains/jdk8u.git
+	source = corba-jdk8u76-b03::git+https://github.com/JetBrains/jdk8u_corba.git
+	source = hotspot-jdk8u76-b03::git+https://github.com/JetBrains/jdk8u_hotspot.git
+	source = jdk-jdk8u76-b03::git+https://github.com/JetBrains/jdk8u_jdk.git
+	source = jaxws-jdk8u76-b03::git+https://github.com/JetBrains/jdk8u_jaxws.git
+	source = jaxp-jdk8u76-b03::git+https://github.com/JetBrains/jdk8u_jaxp.git
+	source = langtools-jdk8u76-b03::git+https://github.com/JetBrains/jdk8u_langtools.git
+	source = nashorn-jdk8u76-b03::git+https://github.com/JetBrains/jdk8u_nashorn.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = jre8-openjdk-headless-jetbrains-git
+	pkgdesc = OpenJDK Java 8 headless runtime environment with JetBrains modifications
+	install = install_jre8-openjdk-headless.sh
+	depends = java-runtime-common
+	depends = ca-certificates-utils
+	depends = nss
+	optdepends = java-rhino: for some JavaScript support
+	provides = java-runtime-headless=8
+	provides = java-runtime-headless-openjdk=8
+	conflicts = jre8-openjdk-headless
+	replaces = jre8-openjdk-headless-wm
+	backup = 
+
+pkgname = jre8-openjdk-jetbrains-git
+	pkgdesc = OpenJDK Java 8 full runtime environment with JetBrains modifications
+	install = install_jre8-openjdk.sh
+	depends = jre8-openjdk-headless-jetbrains-git=8.u76.b03.r6.g8818da1-1
+	depends = xdg-utils
+	depends = hicolor-icon-theme
+	optdepends = icedtea-web: web browser plugin + Java Web Start
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for the Gtk+ look and feel - desktop usage
+	optdepends = java-openjfx: for JavaFX GUI components support
+	provides = java-runtime=8
+	provides = java-runtime-openjdk=8
+	conflicts = jre8-openjdk
+	replaces = jre8-openjdk-wm
+
+pkgname = jdk8-openjdk-jetbrains-git
+	pkgdesc = OpenJDK Java 8 development kit with JetBrains modifications
+	install = install_jdk8-openjdk.sh
+	depends = java-environment-common
+	depends = jre8-openjdk-jetbrains-git=8.u76.b03.r6.g8818da1-1
+	provides = java-environment=8
+	provides = java-environment-openjdk=8
+	conflicts = jdk8-openjdk
+	replaces = jdk8-openjdk-wm
+
