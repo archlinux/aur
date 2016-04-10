@@ -1,0 +1,35 @@
+From 62216b36bdae69559a8db8693deed1306e75fe23 Mon Sep 17 00:00:00 2001
+From: Tom Swartz <tom.swartz07@gmail.com>
+Date: Thu, 7 Apr 2016 07:59:39 -0400
+Subject: [PATCH] Fix DBus issue
+
+Related to #53 and #54
+
+As mentioned in #54, the check can be removed.
+Using the plain imports allows the program to work as expected.
+---
+ volti | 11 ++---------
+ 1 file changed, 2 insertions(+), 9 deletions(-)
+
+diff --git a/volti b/volti
+index d8f06bd..25d7ca9 100755
+--- a/volti
++++ b/volti
+@@ -19,15 +19,8 @@
+ 
+ import os
+ import sys
+-
+-try:
+-    import dbus
+-    import dbus._version
+-    from dbus.mainloop.glib import DBusGMainLoop
+-    assert dbus.version >= (0, 80, 0)
+-except ImportError, AssertionError:
+-    sys.stderr.write("This program needs dbus-python 0.80.0 or higher\nExiting\n")
+-    sys.exit(1)
++import dbus
++from dbus.mainloop.glib import DBusGMainLoop
+ 
+ if os.path.isdir(os.path.join(".","src")) and os.path.isfile(
+         os.path.join(".","setup.py")):
