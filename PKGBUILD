@@ -7,8 +7,8 @@
 
 pkgname=ntfs-3g-ar
 _pkgname=ntfs-3g_ntfsprogs
-_stablever=2015.3.14
-pkgver=2015.3.14AR.1
+_stablever=2016.2.22
+pkgver=2016.2.22AR.1
 pkgrel=1
 pkgdesc='NTFS filesystem driver and utilities with experimental features'
 url='http://www.tuxera.com/community/ntfs-3g-advanced/'
@@ -17,8 +17,8 @@ license=('GPL2')
 depends=('util-linux' 'fuse')
 source=("http://tuxera.com/opensource/${_pkgname}-${_stablever}.tgz"
         "http://pagesperso-orange.fr/jp-andre/${_pkgname}-${pkgver}.tgz")
-sha1sums=('0ebd9adffd5a6ddcfbacade6be8efe1eba4b1a08'
-          '5cb2a01f267e226b4413d6f13792d9928da9b59a')
+sha1sums=('382df40c366711003cf24d2342033c23e2580b42'
+          'd224eb429a65465a95a3dedbf5898884e20ddac5')
 
 conflicts=('ntfsprogs' 'ntfs-3g')
 provides=('ntfsprogs' "ntfs-3g=$_stablever-$pkgrel")
