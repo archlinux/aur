@@ -1,6 +1,8 @@
-# Maintainer: Christian Dersch <chrisdersch@gmail.com>
+# Maintainer: Marco Pompili <aur@emarcs.org>
+# Contributor: Christian Dersch <chrisdersch@gmail.com>
+
 pkgname=python2-pyraf
-pkgver=2.1.7
+pkgver=2.1.10
 pkgrel=1
 pkgdesc="Python interface for IRAF"
 arch=('i686' 'x86_64')
@@ -9,7 +11,7 @@ optdepends=('ipython2')
 url="http://www.stsci.edu/institute/software_hardware/pyraf/"
 source=(http://stsdas.stsci.edu/download/pyraf/pyraf-$pkgver.tar.gz)
 license=('BSD')
-md5sums=('72c7529de63bd1d4cfe016e5253d0b8f')
+sha256sums=('040085e0de7d509701bd8aaa9d2abf16f7c3a5db655a2a78a43252c143b20199')
 
 package() {
   cd $srcdir/pyraf-$pkgver
