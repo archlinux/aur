@@ -1,18 +1,18 @@
-# Maintainer: Jan Oliver Oelerich <janoliver[at]oelerich[dot]org>
+# Maintainer: AG_Caesar <caesar[at]drachenhain[dot]net>
 pkgname=ovito
-pkgver=2.4.2
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="OVITO is a scientific visualization and analysis software for atomistic simulation data."
 url="http://www.ovito.org"
 arch=('x86_64' 'i686')
 license=('GPL3')
 md5sums=('')
-source=("http://sourceforge.net/projects/$pkgname/files/releases/$pkgver/$pkgname-$pkgver-$CARCH.tar.gz")
+source=("http://www.ovito.org/download/$pkgver/$pkgname-$pkgver-$CARCH.tar.gz")
 
 if [[ $CARCH = i686 ]];then
-  md5sums[0]='172af4d4b6b6f834adca7e9bde8c29b8'
+  md5sums[0]='a111bac521bd350ce1049e785461002b'
 else
-  md5sums[0]='8f4929044173bd61bc0b1caa56219ba3'
+  md5sums[0]='f75d142736367d26e63eafbf31a1ceba'
 fi
 
 package() {
@@ -21,5 +21,3 @@ package() {
   rm -rf LICENSE.txt README.txt
   cp -dpr --no-preserve=ownership ./* ${pkgdir}/usr
 }
- 
-# vim:set ts=2 sw=2 et:
