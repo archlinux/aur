@@ -1,0 +1,64 @@
+diff --git a/installer b/installer
+new file mode 100755
+index 0000000..250a5c1
+--- /dev/null
++++ b/installer
+@@ -0,0 +1,10 @@
++#!/bin/bash
++
++target=~/.local/install/readline
++./configure --prefix=$target --with-curses
++make SHLIB_LIBS=-lncurses
++make install
++ln -sf $target/lib/libreadline.so.7.0 $target/lib/libreadline.so.6.3
++ln -sf $target/lib/libreadline.so.7.0 $target/lib/libreadline.so.6
++cd $target/..
++stow readline
+diff --git a/readline.c b/readline.c
+index 6f30e3d..9a5fe4b 100644
+--- a/readline.c
++++ b/readline.c
+@@ -151,7 +151,7 @@ static int running_in_emacs;
+ #endif
+ 
+ /* Flags word encapsulating the current readline state. */
+-unsigned long rl_readline_state = RL_STATE_NONE;
++int rl_readline_state = RL_STATE_NONE;
+ 
+ /* The current offset in the current input line. */
+ int rl_point;
+diff --git a/readline.h b/readline.h
+index 6b63ae4..1b11211 100644
+--- a/readline.h
++++ b/readline.h
+@@ -220,7 +220,6 @@ extern int rl_insert_close PARAMS((int, int));
+ extern void rl_callback_handler_install PARAMS((const char *, rl_vcpfunc_t *));
+ extern void rl_callback_read_char PARAMS((void));
+ extern void rl_callback_handler_remove PARAMS((void));
+-extern void rl_callback_sigcleanup PARAMS((void));
+ 
+ /* Things for vi mode. Not available unless readline is compiled -DVI_MODE. */
+ /* VI-mode bindable commands. */
+@@ -493,7 +492,7 @@ extern int rl_readline_version;			/* e.g., 0x0402 */
+ extern int rl_gnu_readline_p;
+ 
+ /* Flags word encapsulating the current readline state. */
+-extern unsigned long rl_readline_state;
++extern int rl_readline_state;
+ 
+ /* Says which editing mode readline is currently using.  1 means emacs mode;
+    0 means vi mode. */
+diff --git a/signals.c b/signals.c
+index 6143045..10fa098 100644
+--- a/signals.c
++++ b/signals.c
+@@ -213,9 +213,6 @@ _rl_handle_signal (sig)
+     case SIGINT:
+       _rl_reset_completion_state ();
+       rl_free_line_state ();
+-#if defined (READLINE_CALLBACKS)
+-      rl_callback_sigcleanup ();
+-#endif
+ 
+       /* FALLTHROUGH */
+ 

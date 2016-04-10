@@ -18,20 +18,22 @@ source=(inputrc)
 md5sums=('58d54966c1191db45973cb3191ac621a')
 
 build() {
-  cd "$srcdir"
-  git clone --depth 1 --branch devel git://git.savannah.gnu.org/readline.git
-  cd readline
-  git checkout devel
-  [[ $CARCH == "x86_64" ]] && CFLAGS="$CFLAGS -fPIC"
-  ./configure --prefix=/usr
-  make SHLIB_LIBS=-lncurses
+    branch="readline-7.0-testing"
+    cd "$srcdir"
+    git clone --depth 1 --branch $branch git://git.savannah.gnu.org/readline.git
+    cd readline
+    git checkout $branch
+    git apply ../../abi-compat.patch
+    [[ $CARCH == "x86_64" ]] && CFLAGS="$CFLAGS -fPIC"
+    ./configure --prefix=/usr
+    make SHLIB_LIBS=-lncurses
 }
 
 package() {
-  cd "$srcdir/readline"
-  make DESTDIR="$pkgdir" install
-  cd "$pkgdir"
-  install -Dm644 ../../inputrc etc/inputrc
-  ln -s /usr/lib/libreadline.so.7 usr/lib/libreadline.so.6
-  ln -s /usr/lib/libreadline.so.7.0 usr/lib/libreadline.so.6.0
+    cd "$srcdir/readline"
+    make DESTDIR="$pkgdir" install
+    cd "$pkgdir"
+    install -Dm644 ../../inputrc etc/inputrc
+    ln -s libreadline.so.7.0 usr/lib/libreadline.so.6
+    ln -s libreadline.so.7.0 usr/lib/libreadline.so.6.3
 }
