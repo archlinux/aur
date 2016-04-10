@@ -10,7 +10,7 @@
 
 pkgname=opera
 pkgver=36.0.2130.46
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and secure web browser"
 url="http://www.opera.com/"
 install=${pkgname}.install
@@ -52,8 +52,13 @@ package() {
     rm -rf "$pkgdir/usr/lib/"*-linux-gnu
 
     # patch rpath in opera-developer binary
-    patchelf --set-rpath \$ORIGIN/lib_extra:\$ORIGIN/. \
-        "$pkgdir/usr/lib/$pkgname/$pkgname"
+    if [[ "$CARCH" == "i686" ]]; then
+        patchelf --set-rpath \$ORIGIN/lib_extra:\$ORIGIN/lib:\$ORIGIN/. \
+            "$pkgdir/usr/lib/$pkgname/$pkgname"
+    else
+        patchelf --set-rpath \$ORIGIN/lib_extra:\$ORIGIN/. \
+            "$pkgdir/usr/lib/$pkgname/$pkgname"
+    fi
 
     # suid opera_sandbox
     chmod 4755 "$pkgdir/usr/lib/$pkgname/opera_sandbox"
