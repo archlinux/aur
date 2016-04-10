@@ -6,8 +6,7 @@ pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release, i
 arch=('i686' 'x86_64')
 url='http://nginx.org'
 license=('custom')
-depends=('pcre' 'zlib' 'openssl' 'geoip')
-optdepends=('passenger: standard passenger support')
+depends=('pcre' 'zlib' 'openssl' 'geoip' 'passenger')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
