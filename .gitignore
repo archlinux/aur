@@ -1,6 +1,6 @@
 borg
 src
 pkg
-borgbackup-git-*.tar.xz
-borgbackup-git-*.src.tar.gz
+borg-git-*.tar.xz
+borg-git-*.src.tar.gz
 .AURINFO
