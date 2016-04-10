@@ -3,14 +3,14 @@
 # Contributor: Leo von Klenze <aur@leo.von-klenze.de>
 
 pkgname=jquery
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Cross-platform JavaScript library designed to simplify the client-side scripting of HTML"
 arch=('any')
 url="http://jquery.com"
 license=('MIT' 'GPL2')
 source=("http://code.jquery.com/jquery-${pkgver}.min.js")
-sha256sums=('dfa729d82a3effadab1000181cb99108f232721e3b0af74cfae4c12704b35a32')
+sha256sums=('6b6de0d4db7876d1183a3edb47ebd3bbbf93f153f5de1ba6645049348628109a')
 
 package() {
     cd "${srcdir}"
