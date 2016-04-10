@@ -1,6 +1,6 @@
 pkgname='holo-run-scripts'
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Holo plugin for running custom provisioning scripts'
 arch=('any')
 url='http://holocm.org'
@@ -31,4 +31,5 @@ check() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     make install DESTDIR="${pkgdir}"
+    install -d -m0755 "${pkgdir}/usr/share/holo/run-scripts"
 }
