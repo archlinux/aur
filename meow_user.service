@@ -1,0 +1,10 @@
+[Unit]
+Description=MEOW HTTP proxy service per-user service
+After=network.target
+ 
+[Service]
+ExecStart=/usr/bin/meow
+Restart=on-abort
+
+[Install]
+WantedBy=default.target
