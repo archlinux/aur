@@ -1,7 +1,7 @@
 # Maintainer: Fredrik Strandin <fredrik@strandin.name>
 
 pkgname="dspdfviewer"
-pkgver=1.14
+pkgver=1.15
 pkgrel=1
 pkgdesc="Viewer for latex-beamer presentations that are built with the «show notes on second screen»-option"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('boost-libs' 'poppler-qt4')
 makedepends=('cmake' 'boost')
 conflicts=('dspdfviewer-git')
 source=("https://github.com/dannyedel/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('e0cc19e12f241d92c59f358e4fa69c9c3f5b65b456391b881803d393134baf7f')
+sha256sums=('19986053ac4a60e086a9edd78281f1e422a64efef29e3c6604386419e9420686')
 
 build() {
   cd "${pkgname}-${pkgver}"
