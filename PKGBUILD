@@ -8,7 +8,7 @@
 _pkgbasename=gnutls
 pkgname=lib32-${_pkgbasename}28
 pkgver=3.3.22
-pkgrel=1
+pkgrel=2
 pkgdesc="A library which provides a secure layer over a reliable transport layer (32-bit, legacy version)"
 arch=('x86_64')
 license=('GPL3' 'LGPL2.1')
@@ -24,8 +24,9 @@ sha256sums=('0ffa233e022e851f3f5f7811ac9223081a0870d5a05a7cf35a9f22e173c7b009'
 validpgpkeys=(1F42418905D8206AA754CCDC29EE58B996865171)
 
 build() {
-  export CC="gcc -m32"
-  export CXX="g++ -m32"
+  export CFLAGS="-m32 ${CFLAGS}"
+  export CXXFLAGS="-m32 ${CXXFLAGS}"
+  export LDFLAGS="-m32 ${LDFLAGS}"
   export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
@@ -35,16 +36,14 @@ build() {
   # openssl, dane, tpm disabled to match 3.4.x package even when building
   #   outside chroot where those deps are installed
   # local libopts enabled to prevent build issue when autogen is installed
-  # multilib build fails without --disable-hardware-acceleration because of
-  #   assembler errors
-  ./configure --prefix=/usr --libdir=/usr/lib32 \
+  ./configure --build=i686-pc-linux-gnu \
+    --prefix=/usr --libdir=/usr/lib32 \
     --includedir=/usr/include/gnutls28 \
     --program-suffix=28 \
     --with-zlib \
     --disable-static \
     --disable-guile \
     --with-default-trust-store-pkcs11="pkcs11:model=p11-kit-trust;manufacturer=PKCS%2311%20Kit" \
-    --disable-hardware-acceleration \
     --disable-cxx \
     --disable-openssl-compatibility \
     --enable-local-libopts \
