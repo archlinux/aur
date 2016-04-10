@@ -1,7 +1,6 @@
 
 # Maintainer: Malte Veerman <maldela@halloarsch.de>
 
-_srcname=fancontrol-gui
 pkgname=fancontrol-common
 pkgver=v0.4
 pkgrel=1
