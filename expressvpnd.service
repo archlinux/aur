@@ -1,0 +1,9 @@
+[Unit]
+Description=ExpressVPN Backend Daemon
+
+[Service]
+PIDFile=/var/run/expressvpnd.pid
+ExecStart=/usr/bin/expressvpnd --pidfile /var/run/expressvpnd.pid
+
+[Install]
+WantedBy=multi-user.target
