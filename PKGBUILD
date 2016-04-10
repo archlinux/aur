@@ -56,7 +56,7 @@ pkgver() {
 prepare() {
   gem install jekyll --version '= 1.5.1'
   gem install RedCloth
-  export PATH="$PATH":/home/boss/.gem/ruby/2.3.0/bin
+  export PATH="$PATH":~/.gem/ruby/$(ruby --version|cut -f2 -d' '|cut -f1 -d'p')/bin
 }
 
 build() {
