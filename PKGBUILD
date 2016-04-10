@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.3.1.r2252.83549e6
+pkgver=1.5.0.r586.847b579
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=('i686' 'x86_64')
@@ -35,12 +35,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd pcsx2
 
-  h=`grep -o "VersionHi.*" pcsx2/SysForwardDefs.h | grep -o "[0-9]*"`
-  m=`grep -o "VersionMid.*" pcsx2/SysForwardDefs.h | grep -o "[0-9]*"`
-  l=`grep -o "VersionLo.*" pcsx2/SysForwardDefs.h | grep -o "[0-9]*"`
-  v="$h.$m.$l"
-
-  echo "$v.r$(git rev-list --count v1.2.2..HEAD).$(git rev-parse --short HEAD)"
+  git describe --tags | sed 's/^v//; s/-dev//; s/-/.r/; s/-g/./'
 }
 
 build() {
