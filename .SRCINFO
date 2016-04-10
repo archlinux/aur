@@ -1,0 +1,16 @@
+pkgbase = espa-surface-reflectance
+	pkgdesc = Producing surface reflectance products. LEDAPS for Landsats 4-7 and L8SR for Landsat 8.
+	pkgver = 2.5.0
+	pkgrel = 1
+	url = https://github.com/USGS-EROS/espa-surface-reflectance
+	install = espa-surface-reflectance.install
+	arch = x86_64
+	license = custom:"Nasa Open Source Agreement"
+	depends = espa-product-formatter
+	provides = espa-surface-reflectance
+	conflicts = espa-surface-reflectance
+	source = https://github.com/USGS-EROS/espa-surface-reflectance/archive/surface_reflectance_mar2016.tar.gz
+	md5sums = SKIP
+
+pkgname = espa-surface-reflectance
+

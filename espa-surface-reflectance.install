@@ -1,0 +1,4 @@
+post_install() {
+    echo "LEDAPS auxiliary data must be downloaded inside /var/lib/espa/espa-surface-reflectance/ledaps/static_data."
+    echo "L8_SR auxiliary data must be downloaded inside /var/lib/espa/espa-surface-reflectance/l8_sr/static_data."
+}
