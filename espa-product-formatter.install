@@ -1,1 +1,3 @@
-../../abs/espa-product-formatter/espa-product-formatter.install
+post_install() {
+    echo "Static data must be downloaded inside /var/lib/espa/espa-product-formatter/static_data"
+}

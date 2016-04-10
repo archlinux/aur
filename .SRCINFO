@@ -3,6 +3,7 @@ pkgbase = espa-product-formatter
 	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/USGS-EROS/espa-product-formatter
+	install = espa-product-formatter.install
 	arch = x86_64
 	license = custom:"Nasa Open Source Agreement"
 	depends = libxml2
