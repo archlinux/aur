@@ -25,6 +25,6 @@ build() {
 package() {
     pushd "$srcdir/svn-$pkgver"
     make INSTALL_ROOT="$pkgdir" install
-    install -Dm644 svn.ini "$pkgdir/etc/php/conf.d/svn.ini"
+    install -Dm644 svn.ini "$pkgdir/etc/php56/conf.d/svn.ini"
     popd
 }
