@@ -1,5 +1,5 @@
 # Contributor: Branko Vukelic (bg.branko@gmail.com)
-pkgname=lprof
+pkgname=lprof-fix
 pkgver=1.11.4.1
 pkgrel=5
 arch=(i686 x86_64)
