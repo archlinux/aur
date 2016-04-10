@@ -3,13 +3,14 @@
 # Contributor: dcelasun <dcelasun@gmail.com>
 
 pkgname=plank-bzr
-pkgver=r1018
+pkgver=r1551
 pkgrel=1
 pkgdesc='Elegant, simple, clean dock'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/plank'
 license=('GPL3')
-depends=('bamf' 'libdbusmenu-gtk3' 'libgee')
+depends=('atk' 'bamf' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc' 'gtk3'
+         'libgee' 'libwnck3' 'libx11' 'libxfixes' 'libxi' 'pango')
 makedepends=('bzr' 'gnome-common' 'intltool' 'vala')
 provides=('plank')
 conflicts=('plank')
@@ -20,7 +21,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd plank
 
-  printf "r%s" "$(bzr revno)"
+  echo "r$(bzr revno)"
 }
 
 build() {
