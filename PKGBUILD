@@ -2,8 +2,8 @@
 # Contributor: bjoern lindig (bjoern _dot_ lindig _at_ google.com)
 
 pkgname=faust2-git
-pkgver=7075.3e6f2df
-pkgrel=2
+pkgver=7089.26da37a
+pkgrel=1
 pkgdesc="The latest development version of Faust featuring additional backends for LLVM, C, Java, JavaScript etc."
 arch=('i686' 'x86_64')
 url="http://faust.grame.fr/"
@@ -16,11 +16,8 @@ depends=('llvm-libs'
 # needed for libHTTPDFaust:
 	 'libmicrohttpd' 'openssl')
 # We need xxd at build time, which is provided by 'gvim', 'vim' and 'xxd'
-# (AUR). Unfortunately, these all conflict with each other, and pacman doesn't
-# provide for alternative dependencies. Most users will presumably have 'gvim'
-# installed, so that's the one we go with, but you can replace that with either
-# 'vim' or 'xxd' if you prefer.
-makedepends=('llvm' 'clang' 'git' 'gvim')
+# (AUR).
+makedepends=('llvm' 'clang' 'git' 'xxd')
 optdepends=('clang: needed for sound2reader'
 	    'ruby: needed for faust2sc and scbuilder')
 provides=('faust')
