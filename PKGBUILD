@@ -1,4 +1,4 @@
-# Maintainer: renzhn <renznn@gmail.com>
+# Maintainer: Alvie Zhang <alvie.zhang {AT} gmail {DOT} com>
 pkgname=meow-proxy
 pkgver=1.3.4
 pkgrel=1
