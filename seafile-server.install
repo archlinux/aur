@@ -1,4 +1,5 @@
 pre_install() {
+    rm -rf /usr/lib/seafile
     virtualenv2 --system-site-packages /usr/lib/seafile/seafileenv
     virtualenv2 --relocatable /usr/lib/seafile/seafileenv
     source /usr/lib/seafile/seafileenv/bin/activate
@@ -23,7 +24,7 @@ post_install() {
 }
 
 pre_upgrade() {
-    rm -rf /usr/lib/seafile/seafileenv
+    rm -rf /usr/lib/seafile
     pre_install
 }
 
@@ -32,6 +33,6 @@ post_upgrade() {
 }
 
 post_remove() {
-    rm -rf /usr/lib/seafile/seafileenv
+    rm -rf /usr/lib/seafile
     post_install
 }
