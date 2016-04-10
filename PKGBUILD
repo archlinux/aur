@@ -83,9 +83,7 @@ package() {
         mkdir -p $pkgdir$L8_AUX_DIR
         mkdir -p $pkgdir$PREFIX/lib/$pkgname
 
-        install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
         cd "$srcdir/$pkgname"
-
+        install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
         make PREFIX="$pkgdir$PREFIX" install
 }
