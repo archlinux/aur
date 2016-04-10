@@ -13,23 +13,16 @@ depends=('qt5-multimedia'
          'audiofile'
          'libsamplerate'
          'hicolor-icon-theme'
-         )
-makedepends=('git'
-             'cmake'
+         'id3lib'
+         'fftw')
+makedepends=('cmake'
              'extra-cmake-modules'
              'kdoctools'
              'doxygen'
              'python'
-             'librsvg'
-             'opus'
-             'fftw'
-             'id3lib'
-             'libmad'
-             )
+             'librsvg')
 optdepends=('libmad: MP3 plugin'
-            'id3lib: MP3 ID3 tag plugin'
-            'opus: OGG plugin'
-            'fftw: Sonagram plugin')
+            'opus: OGG plugin')
 conflicts=('kwave-git')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-1.tar.bz2")
 sha256sums=('5698bc0c3970b50ad47de6c8f9f2fae3921b7403eec341d7117fa732a9f2fc1f')
