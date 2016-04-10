@@ -2,7 +2,7 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-glib-networking
-pkgver=2.46.1
+pkgver=2.48.0
 pkgrel=1
 pkgdesc='Network-related giomodules for glib'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glib-networking' 'lib32-glib2' 'lib32-gnutls' 'lib32-libproxy')
 makedepends=('ca-certificates' 'gcc-multilib' 'intltool')
 install='glib-networking.install'
 source=("http://download.gnome.org/sources/glib-networking/${pkgver%.*}/glib-networking-${pkgver}.tar.xz")
-sha256sums=('d5034214217f705891b6c9e719cc2c583c870bfcfdc454ebbb5e5e8940ac90b1')
+sha256sums=('7a1f3312e757b97af94e2db8a1f14eb9cc018c983931ecdf3b0c54acece39024')
 
 build() {
   cd glib-networking-${pkgver}
