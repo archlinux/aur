@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=GtkAtlantic
+GenericName=Monopd network client
+Comment=Connect to a Monopd server
+Exec=gtkatlantic
+Icon=gtkatlantic
+Categories=Game;BoardGame;
+

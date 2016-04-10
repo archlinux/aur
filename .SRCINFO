@@ -1,0 +1,19 @@
+pkgbase = gtkatlantic
+	pkgdesc = Monopoly board game client for the monopd server.
+	pkgver = git
+	pkgrel = 1
+	url = http://gtkatlantic.gradator.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gtk3
+	depends = git
+	depends = muparser
+	depends = utf8cpp
+	source = git+git://git.tuxfamily.org/gitroot/gtkatlantic/gtkatlantic.git
+	source = gtkatlantic.desktop
+	md5sums = SKIP
+	md5sums = 8f570f9210682354b21517e6692ed08a
+
+pkgname = gtkatlantic
+
