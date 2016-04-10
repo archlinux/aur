@@ -1,0 +1,12 @@
+stages:
+  - build
+  - test
+  - deploy
+
+job_makepkg:
+  stage: build
+  script:
+    - makepkg -srf --noconfirm --noprogressbar
+  tags:
+    - shell
+    - arch
