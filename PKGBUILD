@@ -4,10 +4,9 @@
 
 
 pkgname=kokua-secondlife
-pkgver=4.0.1.37934
-_pkgver=4_0_1_37934
-_pkgprever=4.0.1
-
+pkgver=4.0.2.38137
+_pkgver=4_0_2_38137
+_pkgprever=4.0.2
 pkgrel=1
 pkgdesc="An Open Source third party viewer for Second Life® (secondlife), only."
 url="http://www.kokuaviewer.org"
@@ -29,13 +28,13 @@ source_i686=("http://sourceforge.net/projects/kokua.team-purple.p/files/Kokua-${
 source_x86_64=("http://sourceforge.net/projects/kokua.team-purple.p/files/Kokua-${_pkgprever}/Kokua_64_${_pkgver}_x86_64.tar.txz"
 		'kokua-secondlife.desktop'
 		'kokua-secondlife.launcher')
-
-md5sums_i686=('3201aa127045d3af0c2c75b04fc827bf'
+md5sums_i686=('b94695e087119dd1769807144a491938'
               '3893a2c8ae9cb8e2adb4d7c47750029b'
               'e12fd7bd333f4f810dec66f1be17c71c')
-md5sums_x86_64=('4f1033c19199b35eb0f5b556a958666e'
+md5sums_x86_64=('90e7d4bdca0f939a429f622c84f1f610'
                 '3893a2c8ae9cb8e2adb4d7c47750029b'
                 'e12fd7bd333f4f810dec66f1be17c71c')
+
 
 package() {
 cd $srcdir
