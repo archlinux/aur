@@ -31,7 +31,7 @@ optdepends=('libmad: MP3 plugin'
             'opus: OGG plugin'
             'fftw: Sonagram plugin')
 conflicts=('kwave-git')
-source=('http://downloads.sourceforge.net/project/kwave/kwave/$pkgver/kwave-0.9.1-1.tar.bz2')
+source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-1.tar.bz2")
 sha256sums=('5698bc0c3970b50ad47de6c8f9f2fae3921b7403eec341d7117fa732a9f2fc1f')
 install=kwave.install
 
