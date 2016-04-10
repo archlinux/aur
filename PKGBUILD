@@ -2,14 +2,14 @@
 # Maintainer: Edvinas Valatka <edacval@gmail.com>
 
 pkgname=ccnet
-pkgver=5.0.5
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="A framework for writing networked applications in C."
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/haiwen/ccnet/"
 license=('GPL3')
-depends=('libevent' 'libzdb' 'libsearpc>=3.0.7' 'libldap' 'python2')
-makedepends=('vala' 'pacman>=4.1')
+depends=('libevent' 'libzdb' 'libsearpc' 'libldap' 'python2')
+makedepends=('vala' 'libmysqlclient' )
 options=('!makeflags')
 
 source=("${pkgname}-v${pkgver}-server.tar.gz::https://github.com/haiwen/${pkgname}/archive/v${pkgver}-server.tar.gz"
@@ -32,6 +32,6 @@ package () {
     cd "$srcdir/$pkgname-$pkgver-server"
     make DESTDIR="$pkgdir" install
 }
-sha256sums=('c270eb4598217d83d440781f7d23b3fa143f0dd3b77760f09b10b628b37ea254'
+sha256sums=('d237ae8b54b6ad561b88d517d03a77f5389f3269075c17d484f53b58af3a6705'
             'c07aeccf581c255e60acbddcc6af90290e0d6354e6ec0ee1987b82845d3d57ac'
             '66c3b02c3981db6a80819e0ae103bedadf8dfdf81405a7f75a9cba714acf973f')
