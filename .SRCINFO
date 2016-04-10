@@ -20,9 +20,9 @@ pkgbase = ecwolf
 	depends = gtk2
 	optdepends = wolf3d-shareware: Demo version of Wolfenstein 3D
 	source = http://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-1.3.2-src.7z
-	source = sdl_mixer-for-ecwolf.tar.bz2::https://bitbucket.org/Blzut3/sdl_mixer-for-ecwolf/get/5bc08849892f.tar.bz2
+	source = hg+https://bitbucket.org/Blzut3/sdl_mixer-for-ecwolf#revision=5bc08849892f
 	sha256sums = e827cf32f7fd34dfa8aec7d4945a1495ea9ea61881f30a32736cf53d9cf58fe1
-	sha256sums = 8793c8c3b9e7328a71261674c57349c0bbe949b9edee163473601857bfe131a4
+	sha256sums = SKIP
 
 pkgname = ecwolf
 

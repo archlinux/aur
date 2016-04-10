@@ -2,7 +2,6 @@
 
 pkgname=ecwolf
 pkgver=1.3.2
-_mixerhghash=5bc08849892f
 pkgrel=1
 pkgdesc='Advanced source port of "Wolfenstein 3D" and "Spear of Destiny" based on Wolf4SDL'
 arch=('i686' 'x86_64')
@@ -14,9 +13,9 @@ optdepends=('wolf3d-shareware: Demo version of Wolfenstein 3D')
 install=$pkgname.install
 changelog=$pkgname.ChangeLog
 source=("http://maniacsvault.net/ecwolf/files/ecwolf/1.x/ecwolf-$pkgver-src.7z"
-        sdl_mixer-for-ecwolf.tar.bz2::"https://bitbucket.org/Blzut3/sdl_mixer-for-ecwolf/get/$_mixerhghash.tar.bz2")
+        "hg+https://bitbucket.org/Blzut3/sdl_mixer-for-ecwolf#revision=5bc08849892f")
 sha256sums=('e827cf32f7fd34dfa8aec7d4945a1495ea9ea61881f30a32736cf53d9cf58fe1'
-            '8793c8c3b9e7328a71261674c57349c0bbe949b9edee163473601857bfe131a4')
+            'SKIP')
 
 prepare() {
   # reset build folders
@@ -33,14 +32,14 @@ prepare() {
 build() {
   msg2 "Building custom SDL_mixer..."
   cd mixer-build
-  cmake ../Blzut3-sdl_mixer-for-ecwolf-$_mixerhghash
+  cmake ../sdl_mixer-for-ecwolf
   make
 
   msg2 "Building ecwolf..."
   cd ../build
   # build patch utility, enable gpl licensed opl emulator and force custom SDL2_mixer with dependency libraries
   cmake ../ecwolf-$pkgver-src -DBUILD_PATCHUTIL=ON -DGPL=ON \
-    -DSDLMIXER_INCLUDE_DIR="$srcdir/Blzut3-sdl_mixer-for-ecwolf-$_mixerhghash" \
+    -DSDLMIXER_INCLUDE_DIR="$srcdir/sdl_mixer-for-ecwolf" \
     -DSDLMIXER_LIBRARY="$srcdir/mixer-build/libSDL_mixer.a;-lfluidsynth;-lvorbisfile;-lvorbis;-lopusfile;-lopus;-lFLAC;-lmikmod;-logg"
   make
 }
