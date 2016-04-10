@@ -1,16 +1,9 @@
+#
 # Maintainer: Iacopo Isimbaldi <isiachi@rhye.it>
-# Original maintainer: Rudolf Polzer <divVerent[at]xonotic[dot]org>
-# Original maintainer: Ionut Biru <ibiru@archlinux.org>
-# Original maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
-# Contributor: Tom Newsom <Jeepster@gmx.co.uk>
-# Contributor: Paul Mattal <paul@archlinux.org>
-
-# NOTE before flagging this out of date: this PKGBUILD is supposed to have the
-# same ffmpeg version as extra/ffmpeg. Once that one got updated, this one
-# needs too.
+#
 
 pkgname=ffmpeg-full
-pkgver=2.8.6
+pkgver=3.0.1
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with all options)'
@@ -18,18 +11,19 @@ arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
 license=('GPL3' 'custom:UNREDISTRIBUTABLE')
 depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame'
-         'libass' 'libbluray' 'libmodplug' 'libpulse' 'libsoxr' 'libssh'
-         'libtheora' 'libva' 'libvdpau' 'libwebp' 'opencore-amr' 'openjpeg'
-         'opus' 'schroedinger' 'sdl' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
+         'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug'
+         'libpulse' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
+         'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
+         'v4l-utils' 'xvidcore' 'zlib'
          'libdcadec.so' 'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so'
          'libvpx.so' 'libx264.so' 'libx265.so'
-         'celt' 'faac' 'frei0r-plugins' 'jack' 'ladspa' 'libaacplus'
-         'libavc1394' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
-         'libfdk-aac' 'libgme' 'libiec61883' 'libmfx-git' 'libutvideo-git'
-         'libxv' 'mesa' 'openal' 'opencl-headers' 'openh264'
-         'rtmpdump' 'shine' 'snappy' 'twolame' 'vid.stab'
-         'vo-aacenc' 'vo-amrwbenc' 'wavpack' 'xavs' 'zeromq' 'zvbi')
-makedepends=('hardening-wrapper' 'libvdpau' 'yasm')
+         'celt' 'chromaprint' 'faac' 'frei0r-plugins' 'jack' 'kvazaar' 'ladspa'
+         'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
+         'libfdk-aac' 'libgme'  'libmfx-git' 'libutvideo-git'
+         'libxv' 'mesa' 'openal' 'opencl-headers' 'openh264' 'rubberband'
+         'rtmpdump' 'shine' 'smbclient' 'snappy' 'tesseract' 'twolame' 'vid.stab'
+         'vo-aacenc' 'vo-amrwbenc' 'wavpack' 'xavs' 'zeromq' 'zimg' 'zvbi')
+makedepends=('hardening-wrapper' 'libvdpau' 'nvidia-sdk' 'yasm')
 optdepends=('intel-media-sdk: for Intel QSV encoding/decoding')
 conflicts=('ffmpeg' 'ffmpeg-git' 'ffmpeg-full-git')
 provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
@@ -39,7 +33,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 source=(http://ffmpeg.org/releases/ffmpeg-$pkgver.tar.bz2{,.asc}
         UNREDISTRIBUTABLE.txt)
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-sha256sums=('40611e329bc354592c6f8f1deb033c31b91f80e91f5707ca4f9afceca78d8e62'
+sha256sums=('f7f7052c120f494dd501f96becff9b5a4ae10cfbde97bc2f1e9f0fd6613a4984'
             'SKIP'
             'e0c1b126862072a71e18b9580a6b01afc76a54aa6e642d2c413ba0ac9d3010c4')
 
@@ -48,30 +42,35 @@ build() {
 
   ./configure \
     --prefix=/usr \
+    --extra-cflags="-I/usr/include/nvidia-sdk" \
     --disable-debug \
     --disable-static \
     --disable-stripping \
+    --enable-dxva2 \
+    --enable-vaapi \
+    --enable-vdpau \
     --enable-shared \
     --enable-avisynth \
     --enable-avresample \
+    --enable-chromaprint \
     --enable-decoder=atrac3 \
     --enable-decoder=atrac3p \
-    --enable-dxva2 \
     --enable-fontconfig \
     --enable-frei0r \
+    --enable-gcrypt \
+    --enable-gmp \
     --enable-gnutls \
     --enable-gpl \
     --enable-gray \
     --enable-ladspa \
-    --enable-libaacplus \
     --enable-libass \
     --enable-libbluray \
-    --enable-libdcadec \
     --enable-libbs2b \
     --enable-libcaca \
     --enable-libcdio \
     --enable-libcelt \
     --enable-libdc1394 \
+    --enable-libdcadec \
     --enable-libfaac \
     --enable-libfdk-aac \
     --enable-libfreetype \
@@ -79,6 +78,7 @@ build() {
     --enable-libgme \
     --enable-libgsm \
     --enable-libiec61883 \
+    --enable-libkvazaar \
     --enable-libmfx \
     --enable-libmodplug \
     --enable-libmp3lame \
@@ -90,18 +90,20 @@ build() {
     --enable-libopus \
     --enable-libpulse \
     --enable-librtmp \
+    --enable-librubberband \
     --enable-libschroedinger \
     --enable-libshine \
+    --enable-libsmbclient \
     --enable-libsnappy \
     --enable-libsoxr \
     --enable-libspeex \
     --enable-libssh \
+    --enable-libtesseract \
     --enable-libtheora \
     --enable-libtwolame \
     --enable-libutvideo \
     --enable-libv4l2 \
     --enable-libvidstab \
-    --enable-libvo-aacenc \
     --enable-libvo-amrwbenc \
     --enable-libvorbis \
     --enable-libvpx \
@@ -111,20 +113,21 @@ build() {
     --enable-libx265 \
     --enable-libxavs \
     --enable-libxcb \
+    --enable-libxcb-shape \
     --enable-libxcb-shm \
     --enable-libxcb-xfixes \
-    --enable-libxcb-shape \
     --enable-libxvid \
+    --enable-libzimg \
     --enable-libzmq \
     --enable-libzvbi \
     --enable-nonfree \
+    --enable-nvenc \
     --enable-openal \
     --enable-opencl \
     --enable-opengl \
     --enable-openssl \
     --enable-runtime-cpudetect \
     --enable-swresample \
-    --enable-vdpau \
     --enable-version3
 
   make
@@ -133,8 +136,8 @@ build() {
 }
 
 package() {
-  #source /etc/profile.d/perlbin.sh
   cd ${pkgname%-full}-$pkgver
+
   make DESTDIR="$pkgdir" install install-man
   install -Dm755 tools/qt-faststart "$pkgdir"/usr/bin/qt-faststart
   install -Dm644 "$srcdir"/UNREDISTRIBUTABLE.txt "$pkgdir/usr/share/licenses/$pkgname/UNREDISTRIBUTABLE.txt"
