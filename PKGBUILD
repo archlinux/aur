@@ -6,8 +6,8 @@
 # If you want to cherry-pick patches, check out the git repo:
 # TODO: Allow selection of patches in PKGBUILD.
 pkgname=telegram-desktop-patched
-pkgver=0.9.33
-pkgrel=3
+pkgver=0.9.40
+pkgrel=1
 _qtver=5.5.1
 pkgdesc='Telegram Desktop with bigger sticker panel and dark colour scheme patches.'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ license=('GPL3')
 depends=('ffmpeg' 'icu' 'jasper' 'libexif' 'libmng' 'libwebp' 'libxkbcommon-x11'
 	 'libinput' 'libproxy' 'mtdev' 'openal' 'libva' 'desktop-file-utils'
 	 'gtk-update-icon-cache')
-makedepends=('git' 'patch' 'libunity' 'libappindicator-gtk2')
+makedepends=('git' 'libunity' 'libappindicator-gtk2')
 provides=('telegram-desktop')
 conflicts=('telegram-desktop')
 source=("tdesktop::git+https://git.mel.vin/melvin/telegram-desktop.git#tag=v${pkgver}-${pkgrel}"
