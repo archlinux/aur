@@ -9,7 +9,7 @@
 
 pkgname=google-appengine-python
 _pkgname=google_appengine
-pkgver=1.9.34
+pkgver=1.9.35
 pkgrel=1
 arch=(any)
 pkgdesc="Google App Engine SDK for Python"
@@ -36,7 +36,7 @@ optdepends=('mysql-python: MySQL DB API'
 options=(!strip)
 install=install
 source=(https://storage.googleapis.com/appengine-sdks/featured/${_pkgname}_${pkgver}.zip)
-sha1sums=('d7879abdb5c903aa88e2d564bdac09a870ecb019')
+sha1sums=('abe54d95c4ce6ffc35452e027ca701f5d21dd56a')
 noextract=(${_pkgname}_${pkgver}.zip)
 
 prepare() {
