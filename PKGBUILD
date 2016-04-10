@@ -70,7 +70,7 @@ _disabled_modules=(languages/mod_spidermonkey
 
 pkgname='freeswitch'
 pkgver='1.6'
-pkgrel='10'
+pkgrel='11'
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
@@ -225,7 +225,7 @@ disable_mod_xml() {
 
 package() {
   mkdir -p /var/tmp/bin
-  ln -s /usr/bin/python2 /var/tmp/bin/python
+  ln -sf /usr/bin/python2 /var/tmp/bin/python
   PATH="/var/tmp/bin:${PATH}"
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}/" install
@@ -238,14 +238,14 @@ package() {
   cd ${pkgdir} # MUY IMPORTANT, $PWD is $pkgdir from here on out
   # Mangle freeswitch's installed dirs into a more compliant structure,
   # leaving symlinks in their place so freeswitch doesn't notice.
-  ln -s /var/log/freeswitch var/lib/freeswitch/log
-  ln -s /var/spool/freeswitch/db var/lib/freeswitch/db
-  ln -s /var/spool/freeswitch/recordings var/lib/freeswitch/recordings
+  ln -sf /var/log/freeswitch var/lib/freeswitch/log
+  ln -sf /var/spool/freeswitch/db var/lib/freeswitch/db
+  ln -sf /var/spool/freeswitch/recordings var/lib/freeswitch/recordings
   install -D -m 0755 -d var/spool/freeswitch/storage && \
-    ln -s /var/spool/freeswitch/storage var/lib/freeswitch/storage
+    ln -sf /var/spool/freeswitch/storage var/lib/freeswitch/storage
   rm usr/lib/freeswitch/mod/*.la 2>/dev/null|| true
   rm usr/lib/freeswitch/*.la 2>/dev/null || true
-  ln -s /usr/lib/freeswitch/mod var/lib/freeswitch/mod
+  ln -sf /usr/lib/freeswitch/mod var/lib/freeswitch/mod
   install -D -m 0644 ${srcdir}/freeswitch.service usr/lib/systemd/system/freeswitch.service
   install -D -m 0644 "${srcdir}/freeswitch.conf.d" etc/conf.d/freeswitch
   install -D -m 0644 "${srcdir}/README.freeswitch" usr/share/doc/freeswitch/README
