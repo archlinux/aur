@@ -2,8 +2,8 @@
 
 _pkgname=canto-next
 pkgname=canto-next-git
-pkgver=0.9.5
-pkgrel=3
+pkgver=0.9.5.r14.g3be0ad8
+pkgrel=1
 pkgdesc="News aggregator for Atom/RSS/RDF. Git version"
 url="http://codezen.org/canto-ng/"
 license=('GPL')
@@ -18,12 +18,18 @@ md5sums=('SKIP')
 
 
 pkgver() {
-    cd $_pkgname
+    cd ${_pkgname}
     git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
+prepare() {
+    cd ${_pkgname}
+    # https://github.com/themoken/canto-next/issues/10
+    git cherry-pick 5e6449d
+}
+
 package() {
-    cd $srcdir/$_pkgname
+    cd ${_pkgname}
 
     python setup.py install --prefix=/usr --root=${pkgdir} #--optimize=1
 }
