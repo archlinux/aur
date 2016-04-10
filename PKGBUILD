@@ -43,11 +43,8 @@ package() {
 
 	# Program
 	install -Dm755 "${srcdir}/${_bindir}/${_pkgfullname}" "${pkgdir}/usr/share/${pkgname}/"
-
-	cp "${srcdir}/${_reldir}/package.json" "${srcdir}/${_bindir}"
-
-	install -Dm644 "${srcdir}/${_bindir}/"{icudtl.dat,libffmpegsumo.so,nw.pak,package.json} \
-	"${pkgdir}/usr/share/${pkgname}/"
+	install -Dm644 "${srcdir}/${_reldir}/package.json" "${pkgdir}/usr/share/${pkgname}/"
+	install -Dm644 "${srcdir}/${_bindir}/"{icudtl.dat,libffmpegsumo.so,nw.pak} "${pkgdir}/usr/share/${pkgname}/"
 
 	# Directories
 	cp -a "${srcdir}/${_reldir}/"{node_modules,src} "${pkgdir}/usr/share/${pkgname}/"
