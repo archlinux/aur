@@ -1,7 +1,7 @@
 pkgbase = spotify094
 	pkgdesc = A proprietary music streaming service (pre dark-UI version)
 	pkgver = 0.9.4.183
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.spotify.com
 	install = spotify.install
 	changelog = spotify.changelog
@@ -12,7 +12,7 @@ pkgbase = spotify094
 	depends = glibc>=2.6
 	depends = libxss>=1.2.0
 	depends = qt4>=4.5.0
-	depends = openssl
+	depends = openssl098
 	depends = usbutils
 	depends = nspr>=4.0
 	depends = nspr<5.0
@@ -28,6 +28,7 @@ pkgbase = spotify094
 	optdepends = ffmpeg-compat: Adds support for playback of local files
 	provides = spotify=0.9.4.183
 	conflicts = spotify-beta
+	conflicts = spotify-stable
 	conflicts = spotify
 	options = !strip
 	source = spotify.protocol
