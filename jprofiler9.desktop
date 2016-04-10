@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=JProfiler 9
+GenericName=JProfiler 9
+Comment=Launch JProfiler 9
+Icon=jprofiler9
+Categories=Development;
+Exec=jprofiler9
