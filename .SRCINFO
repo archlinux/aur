@@ -11,7 +11,7 @@ pkgbase = lprof-fix
 	depends = qt3
 	depends = lcms>=1.12
 	depends = vigra>=1.3
-	source = http://downloads.sourceforge.net/lprof/lprof-fix-1.11.4.1.tar.gz
+	source = http://downloads.sourceforge.net/lprof/lprof-1.11.4.1.tar.gz
 	source = lcms-118.patch
 	source = build-qt3.patch
 	sha256sums = 366b9e9ea720d36d5dbe71af6971647bc37307a083e61e4aa8dbfb521d111d61
