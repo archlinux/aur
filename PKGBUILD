@@ -1,18 +1,19 @@
 # Maintainer: cth451 <cth451@gmail.com>
 pkgname=flatplat-theme
-pkgver=v20160404
+epoch=1
+pkgver=3.20.20160404
 pkgrel=1
 pkgdesc="A Material Design-like flat theme for GTK3, GTK2, Metacity, and GNOME-Shell. This package does not contains chrome skin extension."
 arch=('any')
 url="https://github.com/nana-4/Flat-Plat"
 license=('GPL')
-depends=('gtk3>=3.18')
+depends=('gtk3>=3.20')
 optdepends=()
 provides=('flatplat-theme')
 conflicts=('flatplat-theme-git')
 replaces=()
-source=("https://github.com/nana-4/Flat-Plat/releases/download/3.18.20160404/Flat-Plat-3.18.20160404.tar.gz")
-sha256sums=('df58ed970108daacff0d79cff60ef5b072383a7ebb899ef55cd3cf474f9f8a1f')
+source=("https://github.com/nana-4/Flat-Plat/releases/download/${pkgver}/Flat-Plat-${pkgver}.tar.gz")
+sha256sums=('cbb53a24a943f894cd4fe5ce35d54d5c9512fdd88812be88cf9e46ac83f53821')
 
 package() {
   cd "Flat-Plat"
