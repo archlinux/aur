@@ -1,36 +1,26 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=scour
-pkgver=0.26
+pkgver=0.33
 pkgrel=1
 pkgdesc='An SVG scrubber'
 arch=('any')
-url='http://www.codedread.com/scour/'
+url='https://github.com/codedread/scour'
 license=('APACHE')
-depends=('python2')
-source=("${url}/${pkgname}-${pkgver}.zip")
-sha256sums=('bb9ff799ed5590ac6611a1d7325d722541eb9b18937dcf40b086d7d35b7a2a1f')
-
-prepare() {
-  cd "${srcdir}"/${pkgname}
-
-  mv scour.py __init__.py
-  sed -i 's|^#!.*python$|#!/usr/bin/python2|' *.py
-}
+depends=('python')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/codedread/scour/archive/v${pkgver}.tar.gz")
+sha256sums=('e9b4fb4beb653afbdbc43c4cc0836902d6f287d882b6b7cdf714c456ff0841a8')
 
 build() {
-  cd "${srcdir}"/${pkgname}
+  cd scour-${pkgver}
 
-  python2 -Om compileall .
+  python setup.py build
 }
 
 package() {
-  cd "${srcdir}"/${pkgname#*-}
+  cd scour-${pkgver}
 
-  install -dm 755  "${pkgdir}"/usr/{bin,lib/python2.7/site-packages/scour}
-  install -m 755 __init__.py* "${pkgdir}"/usr/lib/python2.7/site-packages/scour/
-  install -m 644 svg_regex.py* yocto_css.py* svg_transform.py* "${pkgdir}"/usr/lib/python2.7/site-packages/scour/
-  ln -s /usr/lib/python2.7/site-packages/scour/__init__.py "${pkgdir}"/usr/bin/scour
+  python setup.py install --root="${pkgdir}" --optimize='1'
 }
 
 # vim: ts=2 sw=2 et:
