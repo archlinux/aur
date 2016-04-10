@@ -12,6 +12,7 @@ pkgbase = nginx-mainline-passenger
 	depends = openssl
 	depends = geoip
 	depends = passenger
+	optdepends = logrotate: rotate nginx/passenger logs
 	provides = nginx
 	conflicts = nginx
 	backup = etc/nginx/fastcgi.conf

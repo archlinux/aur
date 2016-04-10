@@ -7,6 +7,7 @@ arch=('i686' 'x86_64')
 url='http://nginx.org'
 license=('custom')
 depends=('pcre' 'zlib' 'openssl' 'geoip' 'passenger')
+optdepends=('logrotate: rotate nginx/passenger logs')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
