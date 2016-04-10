@@ -3,7 +3,7 @@
 
 pkgname=lib32-glib-networking
 pkgver=2.48.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Network-related giomodules for glib'
 arch=('x86_64')
 url='http://www.gtk.org/'
@@ -35,7 +35,7 @@ package() {
   cd glib-networking-${pkgver}
 
   make DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}"/usr/share
+  rm -rf "${pkgdir}"/usr/{lib,share}
 }
 
 # vim: ts=2 sw=2 et:
