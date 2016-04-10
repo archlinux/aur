@@ -1,12 +1,12 @@
 pkgbase=python-nfc
 pkgname=('python-nfc' 'python2-nfc')
-pkgver=r70.70a807f
+pkgver=r83.4f4d194
 pkgrel=1
 pkgdesc='Python bindings for libnfc'
 arch=('i686' 'x86_64')
 license=(BSD)
 url="https://github.com/xantares/nfc-bindings"
-makedepends=('cmake' 'swig')
+makedepends=('cmake' 'swig' 'libnfc' 'python' 'python2')
 source=("git+https://github.com/xantares/nfc-bindings.git")
 md5sums=('SKIP')
 
