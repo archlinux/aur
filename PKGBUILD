@@ -31,7 +31,7 @@ prepare() {
             make.config
 
         sed -i -e \
-            's:schema_link_path = $(PREFIX)/schema:schema_link_path = $(PREFIX)/lib/espa-product-formatter/schema:g' \
+            's:schema_link_path = $(PREFIX)/schema:schema_link_path = $(PREFIX)/../var/lib/espa/espa-product-formatter/static_data/schema:g' \
             make.config
 
         sed -i -e \
