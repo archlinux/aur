@@ -1,8 +1,8 @@
 # Maintainer: grufo <madmurphy333@gmail.com>
 
-pkgname=popcorntime-ce
-pkgver=0.4.0
-pkgrel=2
+pkgname="popcorntime-ce"
+pkgver="0.4.0"
+pkgrel="2"
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch. Repos of the original community edition."
 arch=("x86_64" "i686")
 url="http://popcorntime.ag/"
@@ -25,12 +25,16 @@ _pkgfullname="Popcorn-Time-CE"
 _reldir="desktop-${pkgver}-${pkgrel}"
 _bindir="${_reldir}/build/${_pkgfullname}/linux$(if [[ $CARCH = 'x86_64' ]]; then echo '64'; else echo '32'; fi)"
 
-package() {
+build() {
 
 	cd "${srcdir}/${_reldir}"
 
 	npm install
 	"${srcdir}/${_reldir}/node_modules/.bin/gulp" build
+
+}
+
+package() {
 
 	cd "${srcdir}/${_bindir}"
 
