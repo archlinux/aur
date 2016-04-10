@@ -79,7 +79,7 @@ build() {
 }
 
 package() {
-        mkdir -p "$pkgdir$ESPA_STATIC_DATA_DIR/$pkgname/static_data"
+        mkdir -p "$pkgdir$ESPA_STATIC_DATA_DIR/$pkgname/static_data/schema"
         mkdir -p "$pkgdir$PREFIX/lib/$pkgname"
 
         cd "$srcdir/$pkgname"
