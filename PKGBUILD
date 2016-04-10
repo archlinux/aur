@@ -1,8 +1,8 @@
-# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=qtikz-git
 pkgver=r196.ab7bd73
-pkgrel=1
+pkgrel=2
 pkgdesc="Small application helping you to create TikZ diagrams"
 arch=('i686' 'x86_64')
 url="https://github.com/fhackenberger/ktikz"
@@ -31,13 +31,13 @@ prepare() {
 build() {
   cd "$_gitname"
   qmake qtikz.pro
-  patch -p0 < "$srcdir"/makefile.diff
+  patch -p0 -F3 < "$srcdir"/makefile.diff
   make
 }
 
 package() {
   cd "$_gitname"
-  make INSTALL_ROOT="$pkgdir"/usr install
+  make INSTALL_ROOT="$pkgdir" install
 }
 
 
