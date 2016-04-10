@@ -1,7 +1,7 @@
 
 pkgname=nginx-mainline-passenger
 pkgver=1.9.14
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release, including support for Phusion Passenger'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
