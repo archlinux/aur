@@ -5,7 +5,7 @@ pkgver=0.5.0
 pkgrel=1
 pkgdesc="Gobject bindings for LibHdate. LibHdate is a small C,C++ library for Hebrew calendar, dates, holidays, and reading sequence (parasha)."
 url="http://libhdate-glib.googlecode.com"
-license="GPL"
+license=("GPL")
 arch=('i686' 'x86_64')
 depends=('libhdate>=1.6' 'vala')
 makedepends=("gcc" "autoconf" "automake")
