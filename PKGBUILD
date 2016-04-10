@@ -7,6 +7,8 @@ pkgdesc="A scientific visualization and analysis software for atomistic simulati
 url="http://www.ovito.org"
 arch=('x86_64' 'i686')
 license=('GPL3')
+depends=('python' 'qt5-svg' 'ffmpeg2.8' 'mpfr')
+conflicts=('ovito-git')
 md5sums=('')
 source=("http://www.ovito.org/download/$pkgver/$pkgname-$pkgver-$CARCH.tar.gz")
 
