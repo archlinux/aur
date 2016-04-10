@@ -27,5 +27,4 @@ package() {
 	install -d $pkgdir/opt/eman2 $pkgdir/etc/profile.d/
 	cp -r * $pkgdir/opt/eman2/.
 	install -D -m755 $srcdir/eman2.sh $pkgdir/etc/profile.d/.
-	source $pkdir/etc/profile.d/eman2.sh
 }
