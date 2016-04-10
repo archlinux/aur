@@ -2,7 +2,7 @@
 Type=Application
 Name=Scala-IDE
 GenericName=Scala IDE for Eclipse
-Icon=/usr/share/eclipse/dropins/scala-ide/icon.png
+Icon=/usr/lib/eclipse/dropins/scala-ide/icon.png
 Exec=/usr/bin/eclipse
 Categories=Development
 
