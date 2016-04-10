@@ -70,7 +70,7 @@ _disabled_modules=(languages/mod_spidermonkey
 
 pkgname='freeswitch'
 pkgver='1.6'
-pkgrel='9'
+pkgrel='10'
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
@@ -84,7 +84,9 @@ depends=('curl'
          'speex'
          'libjpeg-turbo'
          'postgresql-libs'
-	 'yasm')
+	 'libshout'
+	 'lua'
+	 'opus')
 # per https://wiki.freeswitch.org/wiki/FreeSwitch_Dependencies, dependencies are downloaded and built *from upstream*, so thankfully the deps are pretty minimal.
 makedepends=('git'
              'libjpeg'
@@ -95,7 +97,8 @@ makedepends=('git'
              'unixodbc'
              'sed'
              'make'
-	     'libyuv-git')
+	     'libyuv-git'
+	     'yasm')
 # per https://aur.archlinux.org/packages/freeswitch-fixed/ 2014-08-13 14:02 comment, enable this when freetdm is packaged.
 # freetdm will require libsangoma, wanpipe, libsng_isdn, libpri. see http://wiki.freeswitch.org/wiki/FreeTDM#Dependencies ; links below
 # http://wiki.sangoma.com/wanpipe-linux-drivers
@@ -181,7 +184,7 @@ build() {
   # CONFIGURE
   ./configure --prefix=/var/lib/freeswitch --with-python=/usr/bin/python2 \
     --bindir=/usr/bin --sbindir=/usr/sbin --localstatedir=/var \
-    --sysconfdir=/etc/freeswitch --datarootdir=/usr/share \
+    --sysconfdir=/etc --datarootdir=/usr/share \
     --libexecdir=/usr/lib/freeswitch --libdir=/usr/lib/freeswitch \
     --includedir=/usr/include/freeswitch --enable-core-odbc-support \
     --with-recordingsdir=/var/spool/freeswitch/recordings \
