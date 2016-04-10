@@ -13,7 +13,7 @@ provides=('shotcut')
 install="$pkgname.install"
 source=("https://github.com/mltframework/shotcut/releases/download/v${pkgver::2}.${pkgver:2:2}/shotcut-debian7-x86${CARCH/*86}-$pkgver.tar.bz2"
        "shotcut.png")
-md5sums=('5615b0014e0babebcc796354b7d3d5f4' '457bc6ae5a299dee017521ec058e833b')
+md5sums=('cd15283c6e3dbdd40ae16d076b1d89d6' '457bc6ae5a299dee017521ec058e833b')
 
 
 prepare() {
