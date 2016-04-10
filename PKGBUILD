@@ -1,6 +1,6 @@
 #Maintainer: Dimitris Pappas <mitsakosgr@gmail.com>
 pkgname=minizinc-ide
-pkgver=2.0.9
+pkgver=2.0.13
 pkgrel=1
 pkgdesc="Simple IDE for writing and running MiniZinc models"
 arch=('i686' 'x86_64')
@@ -17,9 +17,9 @@ source_i686=(https://github.com/MiniZinc/MiniZincIDE/releases/download/"${pkgver
 
 md5sums=('dbc72538f4e9bfd6ca0b4dec0a013341'
          'c4aff15df2271ac84fc60b2dd9a7d192')
+md5sums_i686=('aeb7ed4cc5cead90b1bc049b39e1e883')
+md5sums_x86_64=('d5714c12d95bf704e074d5db2b31d60b')
 
-md5sums_x86_64=(1c39d44524bfd9bdbb45bf876b50428e)
-md5sums_i686=(501dc621471cd6484da66c13c75de9e4)
 
 package() {
     if [ "${CARCH}" == "i686" ]; then
@@ -52,8 +52,9 @@ export QT_PLUGIN_PATH=/usr/share/$pkgname/plugins
 exec /usr/share/$pkgname/MiniZincIDE \$@
 EOT
 
-    # Create linkgs for minizinc and IDE
+    # Create links for minizinc programs.
     mkdir -p usr/bin
-    ln -s /usr/share/${pkgname}/MiniZincIDE.sh usr/bin/${pkgname}
-    ln -s /usr/share/${pkgname}/minizinc usr/bin/minizinc
+    ln -s /usr/share/${pkgname}/MiniZincIDE.sh usr/bin/minizinc-ide
+    ln -s /usr/share/${pkgname}/{flatzinc,fzn-gecode-gist,minizinc,mzn2doc,mzn-g12fd,mzn-g12mip} usr/bin
+    ln -s /usr/share/${pkgname}/{solns2dzn,fzn-gecode,mzn2fzn,mzn-g12lazy,mzn-gecode,solns2out} usr/bin/
 }
