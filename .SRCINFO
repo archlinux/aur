@@ -1,0 +1,22 @@
+pkgbase = relion
+	pkgdesc = REgularised LIkelihood OptimisatioN: employs an empirical Bayesian approach to refinement of 3D reconstructions or 2D class averages in electron cryo-microscopy
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://www2.mrc-lmb.cam.ac.uk/relion/index.php/Main_Page
+	arch = x86_64
+	license = GPL
+	depends = libxinerama
+	depends = glu
+	depends = libjpeg-turbo
+	depends = fftw
+	depends = tcsh
+	depends = alsa-lib
+	depends = libxft
+	depends = openmpi
+	source = http://www2.mrc-lmb.cam.ac.uk/groups/scheres/1sep15/relion-1.4.tar.bz2
+	source = relion.sh
+	md5sums = 9897d73f405d11e0cceb740c2f7a6d29
+	md5sums = SKIP
+
+pkgname = relion
+
