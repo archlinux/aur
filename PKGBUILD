@@ -3,7 +3,7 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname=ttf-textfonts
-pkgver=8.91
+pkgver=6.31
 pkgrel=1
 pkgdesc="Text faces based on early Greek editions"
 arch=('any')
