@@ -1,13 +1,14 @@
 --- metadata.json
 +++ metadata.json
-@@ -2,10 +2,12 @@
+@@ -2,10 +2,13 @@
      "shell-version": [
          "3.10",
          "3.12",
 -        "3.14"
 +        "3.14",
 +        "3.16",
-+        "3.18"
++        "3.18",
++        "3.20"
      ], 
      "uuid": "audio-output-switcher@anduchs", 
      "name": "Audio Output Switcher", 

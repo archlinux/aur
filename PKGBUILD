@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-audio-output-switcher-git
 pkgver=r21.5def796
-pkgrel=2
+pkgrel=3
 pkgdesc="Adds a switch for choosing audio output to the system menu."
 arch=('i686' 'x86_64')
 url="https://github.com/anduchs/audio-output-switcher"
@@ -12,7 +12,7 @@ makedepends=('git')
 source=("$pkgname::git+https://github.com/anduchs/audio-output-switcher#branch=ports2"
         "gnome-shell-version.patch")
 sha256sums=('SKIP'
-            '544486ebf5f8e882bdda9b842aab1d8d6b0c7edbe0c48c09960da05ff5e53775')
+            'eb90f357bf6af150c19cae6d899a2506e3b429b430f335b66e475baf45829e83')
 
 prepare() {
   cd "$pkgname"

@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-audio-output-switcher-git
 	pkgdesc = Adds a switch for choosing audio output to the system menu.
 	pkgver = r21.5def796
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/anduchs/audio-output-switcher
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = gnome-shell-extension-audio-output-switcher-git
 	source = gnome-shell-extension-audio-output-switcher-git::git+https://github.com/anduchs/audio-output-switcher#branch=ports2
 	source = gnome-shell-version.patch
 	sha256sums = SKIP
-	sha256sums = 544486ebf5f8e882bdda9b842aab1d8d6b0c7edbe0c48c09960da05ff5e53775
+	sha256sums = eb90f357bf6af150c19cae6d899a2506e3b429b430f335b66e475baf45829e83
 
 pkgname = gnome-shell-extension-audio-output-switcher-git
 
