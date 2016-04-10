@@ -10,7 +10,7 @@
 
 pkgname=flashplugin-focusfix
 _licensefile='PlatformClients_PC_WWEULA_Combined_20100108_1657.pdf'
-pkgver=11.2.202.577
+pkgver=11.2.202.616
 pkgrel=1
 pkgdesc='Adobe Flash Player with multi-monitor full-screen fix'
 url='http://get.adobe.com/flashplayer'
@@ -33,8 +33,8 @@ source_i686=(flashplugin_$pkgver.i386.tar.gz::http://fpdownload.macromedia.com/g
 source_x86_64=(flashplugin_$pkgver.x86_64.tar.gz::http://fpdownload.macromedia.com/get/flashplayer/pdc/$pkgver/install_flash_player_11_linux.x86_64.tar.gz)
 md5sums=('94ca2aecb409abfe36494d1a7ec7591d'
          'f34aae6279b40e0bd2abfb0d9963d7b8')
-md5sums_i686=('ac08d3013aad8fe0f8e65242f8b9afb5')
-md5sums_x86_64=('b6edd26db2067c7ccf4c0354d63517fd')
+md5sums_i686=('489771efdee853e534d1025fba036f51')
+md5sums_x86_64=('18271ef4389464f5236e415a8f140872')
 
 build () {
     sed -i "s/$_patchorig/$_patchrepl/" libflashplayer.so
