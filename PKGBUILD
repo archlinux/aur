@@ -49,5 +49,5 @@ package() {
     cd ${srcdir}/${pkgname}
 
     install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-    install -Dm755 composer.phar ${pkgdir}/usr/bin/composer
+    install -Dm755 composer.phar ${pkgdir}/usr/bin/composer56
 }
