@@ -1,5 +1,14 @@
 --- src/Composer/Compiler.php	2016-04-10 22:22:14.056406238 +0100
 +++ src/Composer/Compiler.php	2016-04-10 22:39:13.935566040 +0100
+@@ -183,7 +183,7 @@
+     private function addComposerBin($phar)
+     {
+         $content = file_get_contents(__DIR__.'/../../bin/composer');
+-        $content = preg_replace('{^#!/usr/bin/env php\s*}', '', $content);
++        $content = preg_replace('{^#!/usr/bin/env php56\s*}', '', $content);
+         $phar->addFromString('bin/composer', $content);
+     }
+ 
 @@ -224,7 +224,7 @@
      private function getStub()
      {
