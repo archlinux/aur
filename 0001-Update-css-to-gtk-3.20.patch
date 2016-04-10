@@ -1,0 +1,108 @@
+From c4b49557dfed8465f273f2b5490002607baa5182 Mon Sep 17 00:00:00 2001
+From: Ippytraxx <ippytraxx@installgentoo.com>
+Date: Sun, 10 Apr 2016 13:03:53 +0200
+Subject: [PATCH] Update css to gtk+ 3.20
+
+---
+ data/gnome-twitch-style.css | 31 ++++++++++++++++---------------
+ 1 file changed, 16 insertions(+), 15 deletions(-)
+
+diff --git a/data/gnome-twitch-style.css b/data/gnome-twitch-style.css
+index b2f45c2..4a0b04a 100644
+--- a/data/gnome-twitch-style.css
++++ b/data/gnome-twitch-style.css
+@@ -22,28 +22,28 @@
+     border-style: none;
+ }
+ 
+-.gt-channels-container-child .overlay-box .favourite-button:hover GtkImage
++.gt-channels-container-child .overlay-box .favourite-button:hover image
+ {
+     transition: 150ms ease-in-out;
+     color: gold;
+ }
+ 
+-.gt-channels-container-child .overlay-box .favourite-button GtkImage
++.gt-channels-container-child .overlay-box .favourite-button image
+ {
+     color: rgba(109, 115, 128, 1);
+ }
+ 
+-.gt-channels-container-child .overlay-box .favourite-button:checked GtkImage
++.gt-channels-container-child .overlay-box .favourite-button:checked image
+ {
+     color: gold;
+ }
+ 
+-.gt-channels-container-child-offline GtkImage
++.gt-channels-container-child-offline image
+ {
+-    -gtk-image-effect: dim;
++    -gtk-icon-effect: dim;
+ }
+ 
+-.gt-channels-container-child-offline .label
++.gt-channels-container-child-offline label
+ {
+     color: alpha(currentColor,0.55);
+ }
+@@ -55,46 +55,47 @@
+     opacity: 0.8;
+ }
+ 
+-.player-clutter .buffer-box GtkProgressBar
++.player-clutter .buffer-box progressbar
+ {
+     color: white;
+ }
+ 
+-.gt-chat GtkTextView
++.gt-chat textview,
++.gt-chat textview text
+ {
+     background-color: transparent;
+ }
+ 
+-.gt-chat GtkEntry
++.gt-chat entry
+ {
+     background-color: transparent;
+     background-image: none;
+ }
+ 
+-.gt-chat GtkTextView.light-theme
++.gt-chat textview.light-theme text
+ {
+     color: rgba(50, 50, 62, 1.0);
+ }
+ 
+-.gt-chat GtkTextView.dark-theme
++.gt-chat textview.dark-theme text
+ {
+     color: rgba(255, 255, 255, 1.0);
+ }
+ 
+-.gt-chat GtkTextView:selected,
+-.gt-chat GtkEntry:selected
++.gt-chat textview:selected,
++.gt-chat textview:selected
+ {
+     color: @selected_fg_color;
+     background-color: @selected_bg_color;
+ }
+ 
+-.gt-chat GtkEntry.light-theme
++.gt-chat entry.light-theme
+ {
+     color: rgba(0, 0, 0, 1);
+     border-color: rgba(204, 204, 204, 1.0);
+ }
+ 
+-.gt-chat GtkEntry.dark-theme
++.gt-chat entry.dark-theme
+ {
+     color: rgba(255, 255, 255, 1.0);
+     border-color: rgba(81, 81, 85, 1.0);
+-- 
+2.8.0
+
