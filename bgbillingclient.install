@@ -1,0 +1,12 @@
+# arg 1:  the new package version
+post_install() {
+  echo
+  echo "After the install you must relog and forced update BGClient (as root)."
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+  echo
+  echo "After the upgrade you must forced update BGClient (as root)."
+}

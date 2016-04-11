@@ -1,0 +1,19 @@
+pkgbase = bgbillingclient70
+	pkgdesc = Client for billing system BGBilling 7.0
+	pkgver = 7.0.796
+	pkgrel = 1
+	url = http://bgbilling.ru
+	install = bgbillingclient.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = java-runtime=8
+	source = bgbillingclient{_versuf}.sh
+	source = bgbillingclient{_versuf}.desktop
+	source = bgbillingclient{_versuf}.png
+	md5sums = 5c6031713ab88c1d6fa71e43d27d1071
+	md5sums = 64cbed916271ecc83f2af450cfececbc
+	md5sums = e33f57ef3a2e711f47ccc3ec5ecddaf8
+
+pkgname = bgbillingclient70
+
