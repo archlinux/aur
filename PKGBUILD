@@ -3,24 +3,29 @@
 # Contributor: JJDaNiMoTh <jjdanimoth@gmail.com>
 # Contributor: nesl247 <nesl247@gmail.com>
 
+_upstream="libcompizconfig"
+_pkgver=0.8.12
+_micro=.1
+
 pkgname=libcompizconfig
-pkgver=0.8.12
+pkgver="${_pkgver}${_micro}"
 pkgrel=1
 pkgdesc="Compiz configuration system library"
 arch=('i686' 'x86_64')
-url="http://blog.northfield.ws/compiz-release-announcement-0-8-12/"
+url="https://github.com/compiz-reloaded/${_upstream}/"
 license=('GPL')
 depends=('compiz-core' 'libxml2' 'libxcomposite' 'libxinerama' 'protobuf' 'startup-notification')
 makedepends=('intltool' 'libxrandr' 'libice' 'libsm' 'mesa')
 options=('!emptydirs')
-source=("libcompizconfig-${pkgver}.tar.xz::http://www.northfield.ws/projects/compiz/releases/${pkgver}/libcompizconfig.tar.xz")
+source=("${url}/releases/download/v${pkgver}/${_upstream}-${pkgver}.tar.xz")
 
 prepare() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_upstream}-${pkgver}"
 }
 
 build() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_upstream}-${pkgver}"
+    NOCONFIGURE=1 ./autogen.sh
     CPPFLAGS="$CPPFLAGS -I/usr/include/compiz \
                         -I/usr/include/startup-notification-1.0 \
                         -I/usr/include/libxml2" \
@@ -29,8 +34,8 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/${_upstream}-${pkgver}"
     make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('e3b313c9dd1690727fb21ece747e5c1bc27bd006fbe95292856b56f92513a409')
+sha256sums=('83f4f7567930f87724e37933e6b5be1c655e7a21f80002be7bdb7aed4dc9d1f7')
