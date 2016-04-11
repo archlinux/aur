@@ -1,9 +1,9 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=thefile
-pkgver=2.0
+pkgver=2.1
 pkgrel=0
-pkgdesc="File Manager for theOS"
+pkgdesc="Simple File Manager"
 arch=("x86_64")
 url="https://github.com/vicr123/thefile"
 license=('GPL2')
