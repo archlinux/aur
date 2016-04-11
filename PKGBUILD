@@ -9,7 +9,7 @@ pkgname=(
 )
 
 pkgbase=("zeroc-ice")
-pkgver=3.6.1
+pkgver=3.6.2
 pkgrel=1
 pkgdesc="An object-oriented middleware that provides object-oriented Remote Procedure Call functionality"
 arch=("i686" "x86_64")
@@ -17,13 +17,14 @@ url="https://zeroc.com"
 license=("GPL" "custom:Ice license")
 makedepends=(
     "mcpp>=2.7.2"
-    "php" "bzip2"
+    "bzip2"
+    "php56"
     "java-environment"
     "java-berkeleydb>=5.3"
 )
 
 depends=("mcpp>=2.7.2")
-_depends_zeroc_ice_php=("zeroc-ice" "php")
+_depends_zeroc_ice_php=("zeroc-ice" "php56")
 _depends_zeroc_ice_java=("zeroc-ice" "java-environment")
 
 source=(
@@ -31,8 +32,8 @@ source=(
     "ice-packaging-${pkgver}.tar.gz::https://github.com/zeroc-ice/ice-packaging/archive/v${pkgver}.tar.gz"
 )
 
-sha256sums=('454d81cb72986c1f04e297a81bca7563e3449a216ad63de8630122d34545ae78'
-            '91e340c404047ebf05a787ab992ed175b086ce306070da1768b5817e38385748')
+sha256sums=('5e9305a5eb6081c8f128d63a5546158594e9f115174fc91208f645dbe2fc02fe'
+            'f838d1740ef9421151873f1e04c9afd89da7c73998991f73f7c66e8466f5de80')
 install=ice.install
 
 _make_args="OPTIMIZE=yes embedded_runpath=prefix='' prefix=/usr"
@@ -47,6 +48,7 @@ build() {
 
     cd ${srcdir}/ice-${pkgver}/php
     msg "Building Ice for PHP"
+    find . -name 'Make*' -exec sed -i -e 's/php\-config\ /php\-config56\ /g' {} \;
     msg2 "Compiling..."
     make ${_make_args} DESTDIR="${pkgdir}/"
 
@@ -101,9 +103,9 @@ package_zeroc-ice-php() {
     make ${_make_args} DESTDIR="${pkgdir}/" install
 
     msg "Installing Ice for PHP"
-    install -dm755 ${pkgdir}/etc/php/conf.d/
-    echo "extension = IcePHP.so" > ${pkgdir}/etc/php/conf.d/ice.ini
-    echo "include_path=${include_path}:/usr/share/Ice-${pkgver}/php/" > ${pkgdir}/etc/php/conf.d/ice.ini
+    install -dm755 ${pkgdir}/etc/php56/conf.d/
+    echo "extension = IcePHP.so" > ${pkgdir}/etc/php56/conf.d/ice.ini
+    echo "include_path=${include_path}:/usr/share/Ice-${pkgver}/php/" > ${pkgdir}/etc/php56/conf.d/ice.ini
 
     # Put stuff into more possibly Arch Linux friendly places
     rm -rf ${pkgdir}/usr/share/Ice-${pkgver}/*
