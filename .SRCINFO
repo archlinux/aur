@@ -1,0 +1,14 @@
+pkgbase = arc-themes
+	pkgdesc = A flat theme with transparent elements
+	pkgver = 20160331
+	pkgrel = 1
+	url = https://github.com/horst3180/arc-theme
+	arch = any
+	license = GPL3
+	depends = gnome-themes-standard
+	depends = gtk-engine-murrine
+	source = arc-themes-20160331.tar.gz::https://github.com/horst3180/arc-theme/archive/20160331.tar.gz
+	sha256sums = 13042e424ce66475de03c774e0026e3038b8b3e2ea787bc850451d8c05922253
+
+pkgname = arc-themes
+
