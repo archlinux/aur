@@ -3,7 +3,7 @@
 
 _pkgbasename=gnome-themes-standard
 pkgname=lib32-$_pkgbasename
-pkgver=3.18.0
+pkgver=3.20
 pkgrel=1
 pkgdesc="Default themes for the GNOME desktop (32-bit)"
 arch=(x86_64)
@@ -17,7 +17,7 @@ replaces=(lib32-gnome-themes)
 conflicts=(gnome-themes lib32-gnome-themes)
 options=('!emptydirs')
 source=(http://download.gnome.org/sources/$_pkgbasename/${pkgver:0:4}/$_pkgbasename-$pkgver.tar.xz)
-sha256sums=('e646eb04c225282b7df7fff65741adaad4cf9ed2c12616b7310e7edd27d2bacb')
+sha256sums=('1cde84b34da310e6f2d403bfdbe9abb0798e5f07a1d1b4fde82af8e97edd3bdc')
 
 build() {
   export CC="gcc -m32"
@@ -26,6 +26,7 @@ build() {
 
   cd $_pkgbasename-$pkgver
   ./configure --prefix=/usr --libdir=/usr/lib32
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
