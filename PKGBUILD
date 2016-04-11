@@ -18,6 +18,7 @@ optdepends=(
     'jack: for JACK sound output plugin'
     'libexif: for auto rotate plugin'
     'frei0r-plugins: for additional effects'
+    'movit: opengl plugin'
 )
 makedepends=(
     'ladspa'
@@ -34,6 +35,7 @@ makedepends=(
     'python2'
     'swig'
     'git'
+    'movit'
 )
 provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
