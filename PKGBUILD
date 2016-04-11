@@ -4,12 +4,14 @@
 # Contributor: JJDaNiMoTh <jjdanimoth@gmail.com>
 # Contributor: nesl247 <nesl247@gmail.com>
 
+_upstream="compiz-plugins-main"
+
 pkgname=compiz-fusion-plugins-main-git
-pkgver=0.8.12.1.r1.g7e4e894
+pkgver=0.8.12.2.r0.g8182f15
 pkgrel=1
 pkgdesc="Compiz Fusion Main plugins"
 arch=('i686' 'x86_64')
-url="https://github.com/compiz-reloaded/compiz-plugins-main"
+url="https://github.com/compiz-reloaded/${_upstream}"
 license=('GPL')
 depends=('compiz-core-git' 'libjpeg>=7' 'librsvg' 'compiz-bcop-git' 'libxdamage' 'libxcomposite'
 	'libxinerama' 'startup-notification')
@@ -18,25 +20,25 @@ groups=('compiz-fusion' 'compiz-fusion-kde' 'compiz-fusion-gtk')
 conflicts=('compiz-fusion-plugins-main')
 provides=('compiz-fusion-plugins-main')
 source=(
-	'git+https://github.com/compiz-reloaded/compiz-plugins-main'
+	"git+https://github.com/compiz-reloaded/${_upstream}.git"
 )
 options=(!libtool)
 
 pkgver() {
-  cd "${srcdir}/compiz-plugins-main"
+  cd "${srcdir}/${_upstream}"
   git describe --long --tags|sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/compiz-plugins-main"
+  cd "${srcdir}/${_upstream}"
   
-  CPPFLAGS="$CPPFLAGS -I/usr/include/compiz -I/usr/include/startup-notification-1.0 \
-        -I/usr/include/libxml2" ./autogen.sh --prefix=/usr --sysconfdir=/etc
+  NOCONFIGURE=1 ./autogen.sh
+  ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 
 package() {
-  cd "${srcdir}/compiz-plugins-main"
+  cd "${srcdir}/${_upstream}"
   make DESTDIR="${pkgdir}" install
 }
 
