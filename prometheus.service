@@ -1,11 +1,12 @@
 [Unit]
 Description=Prometheus service
-After=network.target                                     
+After=network.target
 
 [Service]
 User=prometheus
 Group=prometheus
 ExecStart=/usr/bin/prometheus -storage.local.path=/var/lib/prometheus -config.file=/etc/prometheus.yml
+ExecReload=/bin/kill -HUP $MAINPID
 
 [Install]
 WantedBy=multi-user.target

@@ -1,7 +1,8 @@
 post_install() {
 	id prometheus 2>/dev/null || useradd -r -U -M -s /bin/false prometheus
-	mkdir -p "/var/lib/prometheus"
-	chown prometheus.prometheus /var/lib/prometheus
+	mkdir -p /var/lib/prometheus
+	chown prometheus:prometheus /var/lib/prometheus
+	usr/bin/systemctl daemon-reload
 }
 
 post_remove() {
