@@ -6,8 +6,8 @@
 # Contributor: Simon Zilliken <simon____AT____zilliken____DOT____name>
 
 pkgname=paraview
-pkgver=5.0.0
-pkgrel=3
+pkgver=5.0.1
+pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
@@ -23,7 +23,7 @@ source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}-source.tar
 	    'paraview_32bit.patch'
 	    '0001-find_hdf5.patch'
 	    'ffmpeg3_compat.patch')
-sha1sums=('909da124e13a385ce4bfb5afd4d0089aa5271904'
+sha1sums=('3d72635df84421c2bc4d59ec4a121348966ec28f'
           'a2dff014e1235dfaa93cd523286f9c97601d3bbc'
           '1f94c8ff79bb2bd2c02d6b403ea1f4599616531b'
 	  'c25134330c582371e1009b51445cdb435144b53f'
