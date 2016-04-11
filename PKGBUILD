@@ -6,7 +6,7 @@ arch=(i686 x86_64)
 url="https://github.com/OSVR/OSVR-Config"
 #license=('GPL')
 #install=osvr-config.install
-makedepends=('git' 'cmake')
+makedepends=('git')
 depends=('osvr-core-git' 'asp.net-bin' 'bower' 'gulp' 'libcurl-gnutls') #TODO: add more deps # why libcurl-gnutls?? https://github.com/dotnet/core/issues/37
 source=("osvr-config::git+https://github.com/OSVR/OSVR-Config.git")
 #    "Findjsoncpp.cmake")

@@ -6,7 +6,6 @@ pkgbase = osvr-config-git
 	arch = i686
 	arch = x86_64
 	makedepends = git
-	makedepends = cmake
 	depends = osvr-core-git
 	depends = asp.net-bin
 	depends = bower
