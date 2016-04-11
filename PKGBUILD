@@ -19,13 +19,9 @@ makedepends=('mpich')
 # opencl-mesa
 # amdapp-sdk
 # opencl-nvidia
-# cuda
 # intel-opencl-sdk
-#depends=('mpich'
-#         'libcl'
-#         'YOUR_OPENCL_VENDOR_HERE')
-#makedepends=('opencl-headers'
-#             'libcl')
+#depends=('mpich' 'opencl-nvidia')
+#makedepends=('opencl-headers')
 backup=(etc/john/john.conf
         etc/john/dumb32.conf
         etc/john/dumb16.conf
