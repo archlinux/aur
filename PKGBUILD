@@ -1,7 +1,7 @@
 # Maintainer: Christoph Stahl <christoph.stahl@uni-dortmund.de>
 pkgname=pyspellbook
 pkgname_=pySpellbook
-pkgver=0.9.0
+pkgver=0.9.0.1
 pkgrel=1
 pkgdesc="A PDF spellbook creation utility for d20 games in python "
 arch=("any")
@@ -21,4 +21,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('d54169662fbaf471041f7f681bd374dd')
+md5sums=('5479fb0af0eac27ffc6bf7f058978495')
