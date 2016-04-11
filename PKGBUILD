@@ -4,7 +4,7 @@
 # Contributor: Brett McGruddy <braxs69@gmail.com>
  
 pkgname=libgaminggear
-pkgver=0.11.2
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Provides functionality for gaming input devices"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ url="http://sourceforge.net/projects/libgaminggear/"
 depends=('libnotify' 'libcanberra' 'gtk2' 'sqlite3>=3.7')
 makedepends=('cmake>=3.0' 'doxygen')
 source=(http://downloads.sourceforge.net/project/libgaminggear/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('ee960e4a6af28f4cd586a613cef0b893')
+md5sums=('ef50263efb4e6cb97548d6620fd3143c')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
