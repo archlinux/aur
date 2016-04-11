@@ -7,7 +7,7 @@
 
 _pluginame=neodatis
 pkgname=i2p-plugin-${_pluginame}
-pkgver=0.1.7_0.1.12
+pkgver=2.1_2.14_209_17
 pkgrel=1
 pkgdesc="A distributed email client for I2P"
 arch=('any')
