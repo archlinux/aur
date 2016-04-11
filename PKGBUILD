@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url='https://community.kde.org/Frameworks'
 license=('LGPL')
 depends=('kio')
-makedepends=('extra-cmake-modules' 'kdoctools')
+makedepends=('extra-cmake-modules' 'kdoctools' 'python')
 groups=('kf5')
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/${pkgname}-${pkgver}.tar.xz")
 md5sums=('7ef5abc8f61026be09855a7a28bbddf4')
@@ -23,8 +23,8 @@ build() {
   cmake ../${pkgname}-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DLIBEXEC_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
+    -DKDE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF
   make
 }
