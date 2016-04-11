@@ -19,7 +19,7 @@ pkgname="${_pyver}-${_pybase}"
 _pyverother='' #python-'
 fi
 _pybase="${_pybase//-/}"
-pkgver='3.7.4'
+pkgver='3.7.5'
 pkgrel='1'
 pkgdesc='The API and CLI tools that provide access to Amazon Elastic Beanstalk awsebcli'
 arch=('any')
@@ -30,7 +30,7 @@ makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 #_verwatch=("https://pypi.python.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
 source=("https://pypi.python.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('6578c6e9a7359fe545557195a453236fbc9f34d6596591b391c1a249ccdc4541')
+sha256sums=('95053d61de0fdbf4db97d4a28b203d85c4c8cf4f0cec58fc88fe1653313ccad2')
 
 # Convert python requires to PKGBUILD depends
 # $1: prefix python- or python2-
@@ -43,16 +43,17 @@ _fn_pydepends() {
 local _requires="
 requires = ['pyyaml>=3.11',
             'botocore>=1.0.1',
-            'cement==2.4',
-            'colorama==0.3.3',
-            'pathspec==0.3.3',
+            'cement==2.8.2',
+            'colorama==0.3.7',
+            'pathspec==0.3.4',
+            'setuptools >= 20.0',
             ## For docker-compose
             'docopt >= 0.6.1, < 0.7',
-            'requests >= 2.6.1, < 2.7',
+            'requests >= 2.6.1, <= 2.9.1',
             'texttable >= 0.8.1, < 0.9',
             'websocket-client >= 0.11.0, < 1.0',
-            'docker-py >= 1.1.0, < 1.2',
-            'dockerpty >= 0.3.2, < 0.4',
+            'docker-py >= 1.1.0, <= 1.7.2',
+            'dockerpty >= 0.3.2, <= 0.4.1',
             'semantic_version == 2.5.0'
             #found further down in setup.py
             'blessed==1.9.5',
