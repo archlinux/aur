@@ -7,13 +7,13 @@
 
 pkgname=('roccat-tools-full')
 _pkgbase=roccat-tools
-pkgver=3.7.1
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
 license=('GPL2')
-depends=('libgaminggear>=0.11.1' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme')
+depends=('libgaminggear>=0.12' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme' 'libgudev' 'lua>=5.3')
 makedepends=('cmake')
 optdepends=('kmod-roccat: Adds support for the old kone device.'
             'roccat-dkms: Adds support for the old kone device with dynamic rebuild.')
@@ -21,12 +21,12 @@ conflicts=('roccat-tools-common')
 replaces=('roccat-tools-common')
 source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2")
 install=roccat-tools.install
-sha1sums=('25c42d638f0fa2101e31fe54c766ada74534eb3a')
+sha1sums=('45c72422486e460995cb8cae25b016d674a6971c')
 
 build() {
   cd "$srcdir/$_pkgbase-$pkgver"
 
-  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DUDEVDIR=/usr/lib/udev/rules.d -DWITHOUT_PYTHON=TRUE
+  cmake . -DCMAKE_INSTALL_PREFIX=/usr -DUDEVDIR=/usr/lib/udev/rules.d -DWITHOUT_PYTHON=TRUE -DWITH_LUA="5.3"
   
   make
 }
