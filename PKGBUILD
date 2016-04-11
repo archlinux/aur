@@ -6,7 +6,7 @@
 
 _pkgname=rhythmbox
 pkgname=$_pkgname-git
-pkgver=3.3.0.r35.g67b24c9
+pkgver=3.3.1.r3.gc414b79
 pkgrel=1
 pkgdesc="Music playback and management application"
 arch=(i686 x86_64)
@@ -45,10 +45,10 @@ pkgver() {
 
 prepare() {
     cd $pkgname/
-    dots=`git describe | grep -o '\.' | wc -l`
     # reset to the original version so that regex works
     git checkout configure.ac
     # use a different regex depending on the version
+    dots=`git describe | grep -o '\.' | wc -l`
     if [ ${dots} -eq 1 ]
     then
         sed "{:q;N;s/(\[rhythmbox\],\n\t\[\([0-9]\).\([0-9]\)\],/(\[rhythmbox\],\n\t[$pkgver],/g;t q}" -i configure.ac
@@ -61,8 +61,7 @@ build() {
     cd $pkgname/
     # export CFLAGS+=" -g -O1"
     # export CXXFLAGS+=" -g -O1"
-    ./autogen.sh
-    ./configure --prefix=/usr --sysconfdir=/etc \
+    ./autogen.sh --prefix=/usr --sysconfdir=/etc \
         --libexecdir=/usr/lib/rhythmbox \
         --localstatedir=/var --disable-static \
         --enable-daap --enable-python --enable-vala \
