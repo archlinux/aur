@@ -4,30 +4,35 @@
 # Contributor: JJDaNiMoTh <jjdanimoth@gmail.com>
 # Contributor: nesl247 <nesl247@gmail.com>
 
-pkgname=compiz-fusion-plugins-extra
-pkgver=0.8.12
-pkgrel=2
-pkgdesc="Compiz Fusion Extra plugins"
+_upstream="compiz-plugins-experimental"
+_pkgver=0.8.12
+_micro=""
+
+pkgname=compiz-fusion-plugins-experimental
+pkgver="${_pkgver}${_micro}"
+pkgrel=1
+pkgdesc="Compiz Experimental plugins"
 arch=('i686' 'x86_64')
-url="http://blog.northfield.ws/compiz-0-8-12-release-announcement/"
+url="https://github.com/compiz-reloaded/${_upstream}/"
 license=('GPL')
-depends=('compiz-core>=0.8.10' 'compiz-bcop' 'compiz-fusion-plugins-main' 'libnotify')
+depends=("compiz-core>=${pkgver}" 'compiz-bcop' 'compiz-fusion-plugins-extra' 'libnotify')
 makedepends=('intltool' 'pkg-config' 'gettext')
-groups=('compiz-fusion' 'compiz-fusion-gtk' 'compiz-fusion-kde')
-conflicts=('compiz-fusion-plugins-extra-git')
+groups=('compiz-fusion')
+conflicts=('compiz-fusion-plugins-experimental-git')
 options=('!libtool')
-source=("compiz-fplugs-extra-${pkgver}.tar.xz::http://www.northfield.ws/projects/compiz/releases/${pkgver}/plugins-extra.tar.xz")
+source=("${url}/releases/download/v${pkgver}/${_upstream}-${pkgver}.tar.xz")
 
 build() {
-  cd "${srcdir}/plugins-extra"
+  cd "${srcdir}/${_upstream}-${pkgver}"
+  #NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr
 
   make
 }
 
 package() {
-  cd "${srcdir}/plugins-extra"
+  cd "${srcdir}/${_upstream}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('a534b1266190aa8a384f028d67ed9a2ff3fc1b8173dac84a5a21b257ce00cad6')
+sha256sums=('ba337e9bd482d6eff8dec4a840e3fda1091513a38a581a37cdd45021cc7404b5')
