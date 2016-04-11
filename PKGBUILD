@@ -5,18 +5,18 @@
 _pkgbase=nautilus
 pkgname=(nautilus-typeahead libnautilus-extension-typeahead)
 pkgbase=$pkgname
-pkgver=3.18.5
+pkgver=3.20.0
 pkgrel=1
 pkgdesc="GNOME file manager - Patched to bring back the 'typeahead find' feature"
 arch=(i686 x86_64)
 license=(GPL)
-depends=(libexif gnome-desktop exempi gvfs desktop-file-utils dconf 
+depends=(libexif gnome-desktop exempi gvfs desktop-file-utils dconf
          libtracker-sparql nautilus-sendto)
 makedepends=(intltool gobject-introspection python packagekit)
 url="http://www.gnome.org"
 options=('!emptydirs')
 source=(http://download.gnome.org/sources/$_pkgbase/${pkgver:0:4}/$_pkgbase-$pkgver.tar.xz nautilus-restore-typeahead.patch)
-sha256sums=('60a927c0522b4cced9d8f62baed2ee5e2fd4305be4523eb5bc44805971a6cc15' '39c6b7169df479ab5049499a7b26953b68e8870dac0919b454c6b441d74fa4f0')
+sha256sums=('7ca7995a4d6a77871503dc092ae816584b8d1891730e1b9eed1a1e4a16194293' 'db89234d8b6d25cc9f82e9518b8010651d076e5d8e6d75b2eb45ff3b81e56c28')
 
 prepare() {
   cd $_pkgbase-$pkgver
@@ -30,7 +30,9 @@ build() {
       --localstatedir=/var --disable-static \
       --libexecdir=/usr/lib/nautilus \
       --disable-update-mimedb \
-      --disable-schemas-compile
+      --disable-schemas-compile \
+      --disable-selinux
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
 
