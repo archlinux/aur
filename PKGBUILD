@@ -21,27 +21,26 @@ sha1sums=("c8a1e25fd777180942deb05d7a520f2313d95029"
 	"48fe37180e9dfed60da82fc67d023b0004f3f1c7"
 	"219a9c7033361e1286967452868721302b1d6da7")
 
+_platform=$([ $CARCH = "x86_64" ] && echo "linux64" || echo "linux32")
 _pkgfullname="Popcorn-Time-CE"
 _reldir="desktop-${pkgver}-${pkgrel}"
-_bindir="${_reldir}/build/${_pkgfullname}/linux$(if [[ $CARCH = 'x86_64' ]]; then echo '64'; else echo '32'; fi)"
+_bindir="${_reldir}/build/${_pkgfullname}/${_platform}"
+
+build() {
+
+	cd "${srcdir}/${_reldir}"
+
+	npm install
+	"${srcdir}/${_reldir}/node_modules/.bin/gulp" build -p ${_platform}
+
+}
 
 package() {
 
+	cd "${srcdir}/${_bindir}"
+
 	install -dm755 "${pkgdir}/usr/share/${pkgname}"
 	install -dm755 "${pkgdir}/usr/bin"
-
-	# Compile the program in its destination folder, for
-	# avoiding -> WARNING: Package contains reference to $srcdir <-
-
-	mv "${srcdir}/${_reldir}/"* "${pkgdir}/usr/share/${pkgname}/"
-	cd "${pkgdir}/usr/share/${pkgname}"
-	npm install
-	"${pkgdir}/usr/share/${pkgname}/node_modules/.bin/gulp" build
-
-	# Move both the source and the binaries back to their original path
-	mv "${pkgdir}/usr/share/${pkgname}/"* "${srcdir}/${_reldir}/"
-
-	cd "${srcdir}/${_bindir}"
 
 	# Program
 	install -Dm755 "${srcdir}/${_bindir}/${_pkgfullname}" "${pkgdir}/usr/share/${pkgname}/"
