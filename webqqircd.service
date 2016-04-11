@@ -1,0 +1,10 @@
+[Unit]
+Description=IRC server capable of controlling WebQQ
+Documentation=https://github.com/MaskRay/webqqircd
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/webqqircd --tls-key /etc/webqqircd/key.pem --tls-cert /etc/webqqircd/cert.pem --http-root /usr/share/webqqircd
+
+[Install]
+WantedBy=multi-user.target

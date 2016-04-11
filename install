@@ -1,0 +1,27 @@
+post_install() {
+  if [[ ! -f /etc/webqqircd/key.pem ]]; then
+    mkdir -p /etc/webqqircd
+    openssl req -x509 -newkey rsa:2048 -nodes -keyout /etc/webqqircd/key.pem -out /etc/webqqircd/cert.pem -subj '/CN=127.0.0.1' -days 9999
+    cat <<NOTE
+NOTE:
+1. Install URL redirection extension (Chrome: Switcheroo Redirector)
+2. Redirect http://pub.idqqimg.com/smartqq/js/mq.js to https://127.0.0.1:9002/mq.js
+3. Import /etc/webqqircd/cert.pem to your browser. Instructions for Chrome/Chromium are listed below:
+  a. Visit chrome://settings/certificates
+  b. Import /etc/webqqircd/cert.pem
+  c. 'Authorities' tab page -> 'Untrusted 127.0.0.1' -> 'Edit...' -> 'Trust this certificate for identifying websites.'
+
+Refer to https://github.com/MaskRay/webqqircd for details.
+NOTE
+  fi
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo Removing /etc/webqqircd/
+  rm /etc/webqqircd/{cert,key}.pem
+  rmdir /etc/webqqircd
+}
