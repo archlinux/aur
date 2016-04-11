@@ -11,7 +11,7 @@ pkgver=0.1.7_0.1.12
 pkgrel=1
 pkgdesc="A distributed email client for I2P"
 arch=('any')
-url="http://bote.i2p/"
+url="http://i2pwiki.i2p/index.php?title=Plugins"
 license=('GPLv3')
 groups=('i2p-plugins')
 depends=('i2p')
