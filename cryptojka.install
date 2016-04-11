@@ -10,5 +10,5 @@ post_upgrade() {
 post_remove() {
    echo ""
    echo "Something was wrong? :'("
-   echo -e "If you had got any problem with cryptojka please report it to us \e[94mmailto:contacto@jkanetwork.com\e[m"
+   echo -e "If you had got any problem with cryptojka please report it to us \e[94mcontacto@jkanetwork.com\e[m"
 }
