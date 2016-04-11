@@ -8,7 +8,7 @@
 _pluginame=i2pbote
 pkgname=i2p-plugin-${_pluginame}
 pkgver=0.4.3
-pkgrel=2
+pkgrel=1
 pkgdesc="A distributed email client for I2P"
 arch=('any')
 url="http://bote.i2p/"
@@ -37,7 +37,7 @@ prepare() {
 
 package() {
   cd "${srcdir}"
-  mkdir -p "${pkgdir}/opt/i2p/plugins/"
-  cp -Ra "i2p" "${pkgdir}/opt/i2p/plugins/${_pluginame}"
+  mkdir -p "${pkgdir}/opt/i2p/plugins/.i2p/"
+  cp -Ra "i2p" "${pkgdir}/opt/i2p/.i2p/plugins/${_pluginame}"
 }
 
