@@ -1,13 +1,13 @@
 pkgbase = jsgtk
 	pkgdesc = A simplified approach to GJS for Node.JS and JavaScript developers.
-	pkgver = 0.9.4
+	pkgver = 0.9.5
 	pkgrel = 1
 	url = https://github.com/WebReflection/jsgtk
 	arch = any
 	license = MIT
 	depends = gjs
-	source = https://webreflection.github.io/jsgtk/archive/jsgtk-0.9.4.tar.gz
-	md5sums = 852447960df80f444afeae443ddca678
+	source = https://webreflection.github.io/jsgtk/archive/jsgtk-0.9.5.tar.gz
+	md5sums = 3cd3a900e36b031c4ca579d8ea0e0653
 
 pkgname = jsgtk
 
