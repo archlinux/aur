@@ -2,7 +2,7 @@
 # Maintainer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=shared-mime-info
-pkgver=1.5
+pkgver=1.6
 pkgrel=1
 pkgdesc="Freedesktop.org Shared MIME Info"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('intltool' 'pkgconfig')
 install=shared-mime-info.install
 url="http://freedesktop.org/Software/shared-mime-info"
 source=(http://freedesktop.org/~hadess/${pkgname}-${pkgver}.tar.xz)
-md5sums=('cc3e78d8bceaf2b361f62d67a8b4dda4')
+md5sums=('10abc5c4e6b22223ff05c3bd70ff9e8f')
 options=(!makeflags)
 
 build() {
