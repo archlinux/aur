@@ -1,13 +1,13 @@
 pkgbase = cryptojka
 	pkgdesc = de/encryption character by character
-	pkgver = 0.4.6
+	pkgver = 0.4.7
 	pkgrel = 1
 	url = http://gitlab.com/JKANetwork/cryptoJKA
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	options = !emptydirs
-	source = https://gitlab.com/JKANetwork/cryptoJKA/raw/master/last-version/cryptojka-0.4.6.tbz2
+	source = https://gitlab.com/JKANetwork/cryptoJKA/raw/master/last-version/cryptojka-0.4.7.tbz2
 	md5sums = SKIP
 
 pkgname = cryptojka
