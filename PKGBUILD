@@ -15,7 +15,7 @@ optdepends=('devtools: aurbuild -c'
 
 check() {
   cd "$pkgname-$pkgver"
-  shellcheck -e 2016,2174 -x bin/*
+  shellcheck -e 2016 -x bin/*
 }
 
 package() {
