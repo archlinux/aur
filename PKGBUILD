@@ -22,32 +22,34 @@ pkgname=('roccat-tools-common'
          'roccat-tools-lua'
          'roccat-tools-pyra'
          'roccat-tools-ryosmk'
+         'roccat-tools-ryosmkfx'
          'roccat-tools-ryostkl'
          'roccat-tools-savu'
          'roccat-tools-tyon'
          'roccat-tools-nyth')
 pkgbase=roccat-tools
-pkgver=3.9.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='Userland applications to configure and make extended use of ROCCAT devices'
 arch=('i686' 'x86_64')
 url='http://roccat.sourceforge.net'
 license=('GPL2')
-depends=('libgaminggear>=0.11.1' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme' 'libgudev')
+depends=('libgaminggear>=0.12.0' 'libcanberra' 'gtk2' 'libnotify>=0.7.0' 'dbus-glib' 'udev' 'hicolor-icon-theme' 'libgudev' 'lua>=5.3')
 makedepends=('cmake')
 optdepends=('kmod-roccat: Adds support for the old kone device.')
 source=("http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-$pkgver.tar.bz2")
 
-md5sums=('7ca1a714f1db29fb90bf0c875c206aeb')
+md5sums=('1cd462a09f10fd16369b1aca1234cbd4')
 
 build() {
   cd "$srcdir/$pkgbase-$pkgver"
 
   cmake \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-	-DUDEVDIR=/usr/lib/udev/rules.d \
-	-DWITHOUT_PYTHON=TRUE \
-	-DLIBDIR="/usr/lib"
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DUDEVDIR=/usr/lib/udev/rules.d \
+    -DWITHOUT_PYTHON=TRUE \
+    -DLIBDIR="/usr/lib" \
+    -DWITH_LUA="5.3"
   make
 }
 
@@ -219,6 +221,16 @@ package_roccat-tools-ryosmk() {
   make DESTDIR="$pkgdir/" install
   cd "$srcdir/$pkgbase-$pkgver"
   install -Dm644 udev/90-roccat-ryosmk.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-ryosmk.rules
+}
+
+package_roccat-tools-ryosmkfx() {
+  pkgdesc='Userland applications to configure and make extended use of ROCCAT RyosMK FX devices'
+  depends=('roccat-tools-common')
+
+  cd "$srcdir/$pkgbase-$pkgver/ryosmkfx"
+  make DESTDIR="$pkgdir/" install
+  cd "$srcdir/$pkgbase-$pkgver"
+  install -Dm644 udev/90-roccat-ryosmkfx.rules $pkgdir/usr/lib/udev/rules.d/90-roccat-ryosmkfx.rules
 }
 
 package_roccat-tools-ryostkl() {
