@@ -18,6 +18,7 @@ optdepends=('mocha: testing support'
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
+  rm -Rf .git*
   npm install
 
   mkdir -p "${pkgdir}/usr/lib/"
