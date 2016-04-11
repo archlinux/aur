@@ -1,0 +1,16 @@
+pkgbase = asp.net-bin
+	pkgdesc = ASP.NET 5
+	pkgver = 1.0.0rc1
+	pkgrel = 1
+	url = https://docs.asp.net/en/latest/getting-started/installing-on-linux.html#install-using-prebuild-binaries
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = icu52
+	provides = asp.net
+	options = !strip
+	source = https://go.microsoft.com/fwlink/?LinkId=703941
+	md5sums = 200646b706984af5e1ec4e2687ffad2a
+
+pkgname = asp.net-bin
+
