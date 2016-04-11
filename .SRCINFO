@@ -8,7 +8,9 @@ pkgbase = eman2
 	options = !strip
 	source = http://ncmi.bcm.edu/ncmi/software/counter_222/software_133/manage_addProduct/NCMI/attendee_factory/eman2.12.linux64.tar.gz
 	source = eman2.sh
+	source = eman2-installer
 	md5sums = 2e21b310c957fc3b21f8c6b551b60fdb
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = eman2

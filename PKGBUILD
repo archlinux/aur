@@ -13,12 +13,22 @@ url="http://blake.bcm.edu/emanwiki/EMAN2"
 license=('GPL')
 depends=()
 source=("http://ncmi.bcm.edu/ncmi/software/counter_222/software_133/manage_addProduct/NCMI/attendee_factory/eman$pkgver.linux64.tar.gz" 
-'eman2.sh')
-md5sums=('2e21b310c957fc3b21f8c6b551b60fdb' 'SKIP')
+'eman2.sh' 'eman2-installer')
+md5sums=('2e21b310c957fc3b21f8c6b551b60fdb' 'SKIP' 'SKIP')
 options=(!strip)
 
+prepare () {
+	cd "$srcdir/EMAN2"
+	rm eman2-installer
+	cp ../eman2-installer .
+}
 build() {
 	cd "$srcdir/EMAN2"
+#	sed -e 's,export EMAN2DIR=`pwd`,export EMAN2DIR=/opt/eman2,' $srcdir/EMAN2/eman2-installer > 
+#$srcdir/EMAN2/eman2-installer.tmp
+#	mv $srcdir/EMAN2/eman2-installer.tmp $srcdir/EMAN2/eman2-installer
+#	chmod +x eman2-installer	
+#	EMAN2DIR=pwd
 	./eman2-installer
 }
 
