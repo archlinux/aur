@@ -3,30 +3,34 @@
 # Contributor: JJDaNiMoTh <jjdanimoth@gmail.com>
 # Contributor: nesl247 <nesl247@gmail.com>
 
+_upstream="compiz-bcop"
+_pkgver=0.8.12
+_micro=""
+
 pkgname=compiz-bcop
 _pkgname=bcop
-pkgver=0.8.12
-pkgrel=1
+pkgver="${_pkgver}${_micro}"
+pkgrel=2
 pkgdesc="Compiz option code generator"
 arch=('any')
-url="http://blog.northfield.ws/compiz-release-announcement-0-8-12/"
+url="https://github.com/compiz-reloaded/${_upstream}/"
 license=('GPL')
-depends=("compiz-core>=${pkgver}" 'libxslt')
+depends=("compiz-core>=${_pkgver}" 'libxslt')
 makedepends=('intltool')
-conflicts=('compiz-bcop-dev')
-source=("compiz-bcop-${pkgver}.tar.xz::http://www.northfield.ws/projects/compiz/releases/${pkgver}/${_pkgname}.tar.xz")
+conflicts=('compiz-bcop-dev' 'compiz-bcop-git')
+source=("${url}/releases/download/v${pkgver}/${_upstream}-${pkgver}.tar.xz")
 
 build()
 {
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${_upstream}-${pkgver}"
 	./configure --prefix=/usr
 	make
 }
 
 package()
 {
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${_upstream}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('570d19623d54b727ca7a11601236f3303770d9419b9bb44104c5871a5f688f77')
+sha256sums=('1f100394aa586945c6b9a4fa4786230ccca7ceac8791fc9147d3525260eb219a')
