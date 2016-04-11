@@ -2,7 +2,7 @@
 
 pkgname=libpsl
 pkgver=0.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Publix Suffic List library"
 arch=('i686' 'x86_64')
 url="https://github.com/rockdaboot/libpsl"
