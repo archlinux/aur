@@ -7,12 +7,12 @@ _pkgbase=gdm
 pkgbase=gdm-plymouth
 pkgname=(gdm-plymouth libgdm-plymouth)
 pkgver=3.20.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Gnome Display Manager with Plymouth support."
 arch=(i686 x86_64)
 license=(GPL)
 url="http://www.gnome.org"
-depends=(plymouth gnome-shell gnome-session upower xorg-xrdb xorg-server xorg-server-xwayland xorg-xhost)
+depends=('plymouth' 'gnome-shell=3.20.0' 'gnome-session' 'upower' 'xorg-xrdb' 'xorg-server' 'xorg-server-xwayland' 'xorg-xhost')
 makedepends=(itstool intltool yelp-tools gobject-introspection)
 checkdepends=('check')
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgbase/${pkgver:0:4}/$_pkgbase-$pkgver.tar.xz
