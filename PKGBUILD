@@ -17,6 +17,7 @@ optdepends=('mocha: testing support'
 
 package() {
   cd "${srcdir}/truffle"
+  rm -Rf .git*
   npm install
 
   mkdir -p "${pkgdir}/usr/lib/"
