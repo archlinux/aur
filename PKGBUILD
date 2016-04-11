@@ -2,7 +2,7 @@
 
 pkgname=bloscpack
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='command line interface to and serialization format for Blosc.'
 arch=(any)
 url='https://github.com/Blosc/bloscpack'
@@ -14,6 +14,9 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/Blosc/bloscpack/archive/
 
 build() {
   cd ${pkgname}-${pkgver}
+  sed -i -e '/blosc==/s|==1\.2\.7|>=1\.3\.2|' requirements.txt
+  sed -i -e '/blosc==/s|==1\.2\.7|>=1\.3\.2|' setup.py
+  sed -i -e '/blosc==/s|==1\.2\.7|>=1\.3\.2|' bloscpack.egg-info/requires.txt
   python setup.py build
 }
 
