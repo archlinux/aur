@@ -13,7 +13,7 @@ depends=('gtk3' 'gdk-pixbuf2')
 makedepends=('git')
 source=(${_pkgname}::"git+https://github.com/tista500/${_pkgname}.git")
 sha256sums=('SKIP')
-conflicts=('gtk-theme-adapta')
+conflicts=('adapta-gtk-theme')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
