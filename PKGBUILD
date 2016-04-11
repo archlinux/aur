@@ -8,14 +8,14 @@
 
 pkgname=acpi_call-ck-fbcondecor
 pkgver=1.1.0
-pkgrel=8
-_extramodules=extramodules-4.3-ck-fbcondecor
+pkgrel=9
+_extramodules=extramodules-4.4-ck-fbcondecor
 pkgdesc='A linux-ck kernel module that enables calls to ACPI methods through /proc/acpi/call'
 arch=('i686' 'x86_64')
 url="http://github.com/mkottman/${pkgname%-*}"
 license=('GPL')
-depends=('linux-ck-fbcondecor>=4.3' 'linux-ck-fbcondecor<4.4')
-makedepends=('linux-ck-fbcondecor-headers>=4.3' 'linux-ck-fbcondecor-headers<4.4')
+depends=('linux-ck-fbcondecor>=4.4' 'linux-ck-fbcondecor<4.5')
+makedepends=('linux-ck-fbcondecor-headers>=4.4' 'linux-ck-fbcondecor-headers<4.5')
 provides=("${pkgname%-*-*}")
 install="${pkgname}.install"
 source=("${url}/archive/v${pkgver}.tar.gz")
