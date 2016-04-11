@@ -25,7 +25,7 @@ _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 
 # PKGBUILD
 
-pkgrel=5
+pkgrel=6
 _piver=2
 
 _pkgvermajmin="5.7"
