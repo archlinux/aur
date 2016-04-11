@@ -8,7 +8,7 @@
 _pluginame=seedless
 pkgname=i2p-plugin-${_pluginame}
 pkgver=0.1.7_0.1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A distributed email client for I2P"
 arch=('any')
 url="http://sponge.i2p/files/seedless/doc/how-it-works.txt"
@@ -20,6 +20,7 @@ provides=('i2p-seedless')
 # get this from http://sponge.i2p/files/seedless/02_seedless.xpi2p
 source=("file://02_${_pluginame}.xpi2p")
 noextract=("file://02_${_pluginame}.xpi2p")
+install="${_pluginame}.install"
 sha256sums=('26df04b135a9b0a4fcd37e8f911972c157529b84c51a7569695da2e6ce366989')
 
 prepare() {
