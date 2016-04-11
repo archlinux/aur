@@ -92,8 +92,10 @@ fi
 
 # callbacks
 finish() {
-    cd ${startdir}
-    git checkout qpi.install
+    if [[ -n ${startdir} ]]; then
+      cd ${startdir}
+      git checkout qpi.install
+    fi
 }
 trap finish EXIT
 
