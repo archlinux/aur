@@ -28,8 +28,8 @@ _unpack_dir() {
   # but it will not work otherwise
   local indir="$@"
   for file in $indir/*.pack;do
-    unpack200 $file ${file%.pack}
-    rm $file
+    unpack200 "$file" "${file%.pack}"
+    rm "$file"
   done
 }
 
