@@ -15,7 +15,8 @@ url="http://handbrake.fr/"
 license=('GPL')
 options=('!makeflags')
 md5sums=('SKIP')
-makedepends=('libnotify' 'git' 'cmake' 'intltool' 'python2' 'gettext' 'subversion' 'yasm' 'prelink')
+makedepends=('libnotify' 'git' 'cmake' 'intltool' 'python2' 'gettext' 'subversion' 'yasm' 'prelink'
+	    'jansson')
 source=("git+https://github.com/HandBrake/HandBrake.git")
 md5sums=('SKIP')
 _gitname="HandBrake"
