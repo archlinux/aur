@@ -1,4 +1,4 @@
-# Maintainer: Sebastian Lau <lauseb644@gmail.com>
+# Maintainer: Sebastian Lau <archlinux _at_ slau _dot_ info>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Damian01w <damian01w@gmail.com>
@@ -6,7 +6,7 @@
 _pkgbase=gdm
 pkgbase=gdm-plymouth
 pkgname=(gdm-plymouth libgdm-plymouth)
-pkgver=3.18.2
+pkgver=3.20.0
 pkgrel=1
 pkgdesc="Gnome Display Manager with Plymouth support."
 arch=(i686 x86_64)
@@ -16,16 +16,13 @@ depends=(plymouth gnome-shell gnome-session upower xorg-xrdb xorg-server xorg-se
 makedepends=(itstool intltool yelp-tools gobject-introspection)
 checkdepends=('check')
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgbase/${pkgver:0:4}/$_pkgbase-$pkgver.tar.xz
-        0001-Add-Arch-Linux-PAM-config-files.patch
 	0002-Xsession-Don-t-start-ssh-agent-by-default.patch)
-sha256sums=('549235247611d74f0d5d5a4aa01ba9350a4d3468e44ac013b40791c6a986f822'
-            'c4598b38cf92dd47fb06b2125e808ce66dabcc3bbcdf7508b97ba87e1ead0ac5'
-            'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('c64fba0bb07a86504bc8cb877fd529938c1cc931b6ff1cbca0e99b4a24d9d3c2'
+            '63f99db7623f078e390bf755350e5793db8b2c4e06622caf42eddc63cd39ecca')
 
 prepare() {
   cd $_pkgbase-$pkgver
 
-  patch -Np1 -i ../0001-Add-Arch-Linux-PAM-config-files.patch
   patch -Np1 -i ../0002-Xsession-Don-t-start-ssh-agent-by-default.patch
 
   AUTOPOINT='intltoolize --automake -c' autoreconf -fi
