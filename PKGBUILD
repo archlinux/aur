@@ -100,7 +100,7 @@ finish() {
 trap finish EXIT
 
 if $_static_build || $_skip_web_engine || [[ ${_piver} = "1" ]] || [[ ${_piver} = "3" ]]; then
-  _device_configure_flags="$_device_configure_flags -skip qtwebengine -no-icu"
+  _device_configure_flags="$_device_configure_flags -skip qtwebengine"
 fi
 
 if $_static_build; then
@@ -177,6 +177,7 @@ fi
   # -qtnamespace Pi \
 
   ${_srcdir}/configure \
+    -no-icu \
     -v \
     -qreal float \
     -release \
