@@ -8,17 +8,13 @@ pkgdesc="A free cross-platform genome analysis suite."
 arch=('i686' 'x86_64')
 url="http://ugene.net/"
 license=('GPL')
-depends=('qt5-base' 'libxtst' 'glu' 'qtwebkit' 'desktop-file-utils' 'procps-ng' 'python' 'shared-mime-info')
+depends=('qt5-base' 'libxtst' 'glu' 'qtwebkit' 'desktop-file-utils' 'procps-ng' 'python' 'shared-mime-info'
+'qt5-svg' 'qt5-script')
 source=(${url}downloads/$pkgname-$pkgver.tar.gz)
 sha256sums=('ee46be799c9f02a9b6a89f13747a4918d5c96c01676dc2d4cc4a4c98278912b6')
 install=$pkgname.install
 
 build() {
-  LC_ALL=C
-  #hopefully this falls back to english as default
-  curTranslFile=english.ts
-  curTranslTag=en
-  
   cd "$srcdir/$pkgname-$pkgver"
   if [[ $CARCH == "i686" ]]
   then
