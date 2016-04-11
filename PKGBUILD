@@ -1,14 +1,14 @@
 # Maintainer: Andrea Giammarchi <andrea.giammarchi@gmail.com>
 pkgname=jsgtk
 pkgrel=1
-pkgver=0.9.2
+pkgver=0.9.3
 pkgdesc="A simplified approach to GJS for Node.JS and JavaScript developers."
 arch=('any')
 url="https://github.com/WebReflection/jsgtk"
 license=('MIT')
 depends=('gjs')
 source=(https://webreflection.github.io/jsgtk/archive/$pkgname-$pkgver.tar.gz)
-md5sums=('c43cc76346e7a6480fa4695019136980')
+md5sums=('0fab1e8b10f82b9f88e138641a38da59')
 
 package() {
 
