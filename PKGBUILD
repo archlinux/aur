@@ -1,7 +1,7 @@
 # Maintainer: Alexander Keller <git@nycroth.com>
 pkgname=bdrss
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="Brain Dead RSS"
 arch=(any)
 url="https://github.com/Nycroth/bdrss"
