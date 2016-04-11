@@ -4,12 +4,14 @@
 # Contributor: JJDaNiMoTh <jjdanimoth@gmail.com>
 # Contributor: nesl247 <nesl247@gmail.com>
 
+_upstream="compiz-plugins-experimental"
+
 pkgname=compiz-fusion-plugins-experimental-git
-pkgver=0.8.12.r5.g464b3c5
+pkgver=0.8.12.r10.gbb7d82e
 pkgrel=1
 pkgdesc="Compiz Fusion Experimental plugins"
 arch=('i686' 'x86_64')
-url="https://github.com/compiz-reloaded/compiz-plugins-experimental"
+url="https://github.com/compiz-reloaded/${_upstream}"
 license=('GPL')
 depends=('compiz-core-git' 'compiz-bcop-git' 'compiz-fusion-plugins-extra-git' 'libnotify')
 makedepends=('intltool' 'pkg-config')
@@ -18,11 +20,11 @@ conflicts=('compiz-fusion-plugins-experimental')
 provides=('compiz-fusion-plugins-experimental')
 options=('!libtool')
 source=(
-	'git+https://github.com/compiz-reloaded/compiz-plugins-experimental.git'
+	"git+https://github.com/compiz-reloaded/${_upstream}.git"
 )
 
 pkgver() {
-  cd "${srcdir}/compiz-plugins-experimental"
+  cd "${srcdir}/${_upstream}"
   git describe --long --tags|sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
@@ -33,13 +35,14 @@ pkgver() {
 #}
 
 build() {
-  cd "${srcdir}/compiz-plugins-experimental"
-  ./autogen.sh --prefix=/usr --sysconfdir=/etc
+  cd "${srcdir}/${_upstream}"
+  NOCONFIGURE=1 ./autogen.sh
+  ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 
 package() {
-    cd "${srcdir}/compiz-plugins-experimental"
+    cd "${srcdir}/${_upstream}"
     DESTDIR="${pkgdir}" make install
 }
 
