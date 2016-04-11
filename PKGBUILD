@@ -14,6 +14,7 @@ provides=('testrpc')
 
 package() {
   cd "${srcdir}/testrpc"
+  rm -Rf .git*
   npm install
 
   mkdir -p "${pkgdir}/usr/lib/"
