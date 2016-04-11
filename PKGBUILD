@@ -16,7 +16,7 @@ license=('GPLv3')
 groups=('i2p-plugins')
 depends=('i2p')
 makedepends=('unzip')
-provides=('neodatis')
+provides=('i2p-neodatis')
 # get this from http://sponge.i2p/files/seedless/01_neodatis.xpi2p
 source=("file://01_${_pluginame}.xpi2p")
 noextract=("file://01_${_pluginame}.xpi2p")
