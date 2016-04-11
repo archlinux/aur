@@ -2,7 +2,7 @@
 
 pkgbase=gridcoinresearch-git
 pkgname=('gridcoinresearch-daemon-git' 'gridcoinresearch-qt-git')
-pkgver=3.5.6.0.r654.a20e6a6
+pkgver=3.5.6.0.r662.f6f8de5
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://gridcoin.us"
