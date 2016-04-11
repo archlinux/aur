@@ -11,7 +11,7 @@ depends=("libnotify" "desktop-file-utils" "ttf-font" "gconf" "nss" "libxtst" "gt
 makedepends=("npm")
 optdepends=("net-tools: necessary for the new vpn feature" "ttf-liberation: open source ttf fonts")
 provides=("popcorntime" "popcorntime-ce")
-conflicts=("popcorntime-ce-bin" "popcorntime-ce-git" "popcorntime" "popcorntime-bin" "popcorntime-git")
+conflicts=("popcorntime-ce-bin" "popcorntime-ce-git")
 options=("!strip")
 install="popcorntime-ce.install"
 source=("https://github.com/PopcornTimeCommunity/desktop/archive/v${pkgver}-${pkgrel}.tar.gz"
@@ -25,25 +25,25 @@ _pkgfullname="Popcorn-Time-CE"
 _reldir="desktop-${pkgver}-${pkgrel}"
 _bindir="${_reldir}/build/${_pkgfullname}/linux$(if [[ $CARCH = 'x86_64' ]]; then echo '64'; else echo '32'; fi)"
 
-build() {
-
-	cd "${srcdir}/${_reldir}"
-
-	npm install
-	"${srcdir}/${_reldir}/node_modules/.bin/gulp" build
-
-}
-
 package() {
-
-	cd "${srcdir}/${_bindir}"
 
 	install -dm755 "${pkgdir}/usr/share/${pkgname}"
 	install -dm755 "${pkgdir}/usr/bin"
 
+	# Compile the program in its destination folder
+	mv "${srcdir}/${_reldir}/"* "${pkgdir}/usr/share/${pkgname}/"
+	cd "${pkgdir}/usr/share/${pkgname}"
+	npm install
+	"${pkgdir}/usr/share/${pkgname}/node_modules/.bin/gulp" build
+
+	# Move both the source and the binaries back to their original path
+	mv "${pkgdir}/usr/share/${pkgname}/"* "${srcdir}/${_reldir}/"
+
+	cd "${srcdir}/${_bindir}"
+
 	# Program
 	install -Dm755 "${srcdir}/${_bindir}/${_pkgfullname}" "${pkgdir}/usr/share/${pkgname}/"
-	install -Dm644 "${srcdir}/${_reldir}/package.json" "${pkgdir}/usr/share/${pkgname}/"
+	install -Dm644 "${srcdir}/${_reldir}/"{CHANGELOG.md,LICENSE.txt,package.json,README.md} "${pkgdir}/usr/share/${pkgname}/"
 	install -Dm644 "${srcdir}/${_bindir}/"{icudtl.dat,libffmpegsumo.so,nw.pak} "${pkgdir}/usr/share/${pkgname}/"
 
 	# Directories
