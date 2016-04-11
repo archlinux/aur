@@ -9,10 +9,10 @@ Subject: [PATCH] Linux: Completely fix gcc-5 "Invalid characters encountered"
  the second fork.
 
 ---
- src/Platform/Unix/Process.cpp | 24 ++++++++++++++++++++++--
+ Platform/Unix/Process.cpp | 24 ++++++++++++++++++++++--
  1 file changed, 22 insertions(+), 2 deletions(-)
 
-diff --git a/src/Platform/Unix/Process.cpp b/src/Platform/Unix/Process.cpp
+diff --git a/Platform/Unix/Process.cpp b/Platform/Unix/Process.cpp
 index 388bda6..0770364 100644
 --- a/Platform/Unix/Process.cpp
 +++ b/Platform/Unix/Process.cpp

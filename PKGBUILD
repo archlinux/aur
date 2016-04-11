@@ -23,7 +23,7 @@ source=("${pkgname}_${pkgver}_Source.tar.bz2::https://sourceforge.net/projects/$
 sha1sums=('cd27cf9b6853aac104a33fac0f1d8733765042ba'
           'cbe620297486c32d1f6a1693f6f2136097644287'
           '0cbe9f7875ab52be125cc575533f76fab60314a5'
-          '8379455e17745f0a0f3f70050c5af1c5e127f63b'
+          '03b0287022e8c906f01e95a22a83ee8b90c42951'
           'ebdd450e719fe3cff5e459f027856cbaf03db13a'
           '14dceabf658a7e3505c855c2862aa86e343fcda5')
 validpgpkeys=('993B7D7E8E413809828F0F29EB559C7C54DDD393')
