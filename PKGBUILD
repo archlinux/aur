@@ -4,7 +4,7 @@
 # Arch extra repository, for obvious reasons.
 
 pkgname=libreoffice-uglyfix-freetype2
-pkgver=2.6.1
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="Installs freetype2 .so files in the LibreOffice directory to fix font ugliness"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ license=('GPL')
 url="http://freetype.sourceforge.net"
 # adding harfbuzz for improved OpenType features auto-hinting 
 # introduces a cycle dep to harfbuzz depending on freetype wanted by upstream
-depends=('zlib' 'bzip2' 'sh' 'libpng' 'harfbuzz' 'libreoffice')
+depends=('zlib' 'bzip2' 'libpng' 'harfbuzz' 'libreoffice')
 options=(!docs)
 source=(
   http://download.savannah.gnu.org/releases/freetype/freetype-${pkgver}.tar.bz2{,.sig}
@@ -21,7 +21,7 @@ source=(
   0002-Enable-subpixel-rendering.patch
   0003-Enable-subpixel-hinting.patch
   0004-Mask-subpixel-hinting-with-an-env-var.patch)
-sha256sums=('2f6e9a7de3ae8e85bdd2fe237e27d868d3ba7a27495e65906455c27722dd1a17'
+sha256sums=('371e707aa522acf5b15ce93f11183c725b8ed1ee8546d7b3af549863045863a2'
             'SKIP'
             '65915726ba3adfc5903ddd6b706ce91751994e7635ea6111e33e5939c674496b'
             '9de28c1156c0a5edff1b3860ad44f4cc2494fc5663bd40c3914fdd64e8ee0724'
