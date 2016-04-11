@@ -1,0 +1,53 @@
+Index: MLBviewer/mlbConfig.py
+===================================================================
+--- MLBviewer/mlbConfig.py	(revision 662)
++++ MLBviewer/mlbConfig.py	(working copy)
+@@ -109,7 +109,7 @@
+                              'highlight_division',
+                              'gameday_audio',
+                              'international',
+-                             'curses_debug', 'use_wired_web' ):
++                             'curses_debug', 'use_wired_web', 'use_wired_web_60' ):
+                     if val.isdigit():
+                         self.data[key] = bool(int(val))
+                     else:
+Index: MLBviewer/mlbConstants.py
+===================================================================
+--- MLBviewer/mlbConstants.py	(revision 662)
++++ MLBviewer/mlbConstants.py	(working copy)
+@@ -196,7 +196,7 @@
+ 
+ STREAM_SPEEDS = ( '300', '500', '1200', '1800', '2500' )
+ 
+-NEXDEF_SPEEDS = ( '128', '500', '800', '1200', '1800', '2400', '3000', '4500' )
++NEXDEF_SPEEDS = ( '128', '500', '800', '1200', '1800', '2400', '3000', '4500', '5000' )
+ 
+ DEFAULT_SPEED = '1200'
+ 
+Index: MLBviewer/mlbMediaStream.py
+===================================================================
+--- MLBviewer/mlbMediaStream.py	(revision 662)
++++ MLBviewer/mlbMediaStream.py	(working copy)
+@@ -22,6 +22,7 @@
+ import os
+ import subprocess
+ import select
++import base64
+ 
+ from copy import deepcopy
+ from xml.dom.minidom import parse
+@@ -175,6 +176,14 @@
+         self.updateSession(reply)
+         content_list = self.parseMediaReply(reply)
+         game_url = self.requestSpecificMedia()
++        if self.cfg.get('use_nexdef') and self.cfg.get('use_wired_web_60'):
++            # replace default playlist with 60 fps version in base64 url
++            game_url = base64.encodestring(
++                base64.decodestring(game_url).replace(
++                    'master_wired_web.m3u8',
++                    'master_wired60.m3u8'
++                )
++            ).replace('\n', '')
+         return game_url
+ 
+ 
