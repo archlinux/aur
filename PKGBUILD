@@ -2,7 +2,7 @@
 
 pkgname=domoticz-git
 _gitname="domoticz"
-pkgver=r4506
+pkgver=r5051
 pkgrel=1
 pkgdesc="Web based home automation"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -24,11 +24,7 @@ pkgver() {
 
 build() {
   cd $_gitname
-
-  # Dynamicly link to libopenzwave instead of static link
-  sed -i 's/find_library(OpenZWave NAMES libopenzwave.a HINTS "..\/open-zwave-read-only" "..\/open-zwave-read-only\/cpp\/build")/find_library(OpenZWave NAMES libopenzwave.so)/' CMakeLists.txt
-
-  cmake -DCMAKE_BUILD_TYPE=Release CMakeLists.txt
+  cmake -DCMAKE_BUILD_TYPE=Release -DUSE_STATIC_OPENZWAVE=NO CMakeLists.txt
 }
 
 package() {
