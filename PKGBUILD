@@ -9,8 +9,8 @@ pkgrel=1
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('vte3-notification>=0.42.1' 'gsettings-desktop-schemas' 'dconf' 'gtk3')
-makedepends=('gnome-doc-utils' 'intltool' 'itstool' 'docbook-xsl' 'desktop-file-utils'
+depends=('vte3-notification>=0.44.0' 'gsettings-desktop-schemas' 'dconf' 'gtk3>=3.12.0' 'glib2>=2.42.0')
+makedepends=('gnome-doc-utils' 'intltool' 'itstool' 'docbook-xsl' 'desktop-file-utils>=0.2.90'
              'libnautilus-extension' 'appdata-tools' 'gnome-shell' 'gconf' 'vala' 'yelp-tools')
 options=('!emptydirs')
 url='https://www.gnome.org'
