@@ -2,10 +2,10 @@
 # Contributor: sekret <sekret at posteo.se>
 
 pkgname=libsodium-git
-pkgver=1.0.2.r65.g6ab4589
+pkgver=1.0.10.r10.g0a590b0
 pkgrel=1
 pkgdesc="P(ortable|ackageable) NaCl-based crypto library (git version)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7l' 'armv7h')
 url="https://github.com/jedisct1/libsodium"
 license=('ISC')
 makedepends=('git')
