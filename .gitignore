@@ -1,0 +1,7 @@
+pkg/
+src/
+*.ttf
+*.otf
+*.zip
+*.tar
+*.tar.*
