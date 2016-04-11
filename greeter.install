@@ -1,0 +1,29 @@
+# Colored makepkg-like functions
+msg_blue() {
+    printf "${blue} **${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} NOTE: $1 ${blue}<==${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+#post_install() {
+#	echo "Setting greeter to webkit2 in lightdm.conf"
+#	sed -i 's|#greeter-session=example-gtk-gnome|greeter-session=lightdm-webkit2-greeter|g' /etc/lightdm/lightdm.conf
+#	find /usr/share/lightdm-webkit -type d -exec chmod 755 {} \; 
+#
+#}
+
+post_upgrade() {
+	note "MANUAL ACTION REQUIRED!"
+	msg_blue "The greeter's config file contains important changes. It has been saved as"
+	msg_blue "/etc/lightdm/lightdm-webkit2-greeter.conf.pacnew. You must either merge the"
+	msg_blue "changes into /etc/lightdm/lightdm-webkit2-greeter.conf"
+	msg_blue "or replace the latter with the former."
+}
+# -*- mode: bash;-*-
