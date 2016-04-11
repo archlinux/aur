@@ -2,34 +2,34 @@
 
 pkgname=rpcd-git
 _gitname=rpcd
-pkgver=r124.f00890c
+pkgver=r126.e64cbdd
 pkgrel=1
 pkgdesc='OpenWrt ubus RPC backend server'
-url='http://nbd.name/gitweb.cgi?p=luci2/rpcd.git'
+url='http://git.openwrt.org/?p=project/rpcd.git;a=summary'
 arch=('i686' 'x86_64')
 license=('ISC')
 depends=('libubox-lua-git' 'ubus-lua-git' 'uci-lua-git')
 makedepends=('git' 'cmake' 'gcc' 'make' 'patch' 'pkg-config')
 conflicts=('rpcd' 'rpcd-git')
 provides=('rpcd')
-source=('git://nbd.name/luci2/rpcd.git' '001-install-headers.patch' '002-rpcd-location.patch')
+source=('git://git.openwrt.org/project/rpcd.git' '001-install-headers.patch' '002-rpcd-location.patch')
 md5sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-	cd "$srcdir/$_gitname"
+	cd "$_gitname"
 
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-	cd "$srcdir/$_gitname"
+	cd "$_gitname"
 
 	patch -p1 -i "$srcdir/001-install-headers.patch"
 	patch -p1 -i "$srcdir/002-rpcd-location.patch"
 }
 
 build() {
-	cd "$srcdir/$_gitname"
+	cd "$_gitname"
 
 	cmake CMakeLists.txt \
 		-DCMAKE_INSTALL_PREFIX=/usr \
@@ -39,7 +39,7 @@ build() {
 }
 
 package() {
-	cd "$srcdir/$_gitname"
+	cd "$_gitname"
 
 	make DESTDIR="$pkgdir" install
 
