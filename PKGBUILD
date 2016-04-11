@@ -2,10 +2,10 @@
 
 pkgname=ocaml-ao
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 license=('LGPL2.1')
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml libao bindings")
+pkgdesc="OCaml libao bindings"
 url="https://github.com/savonet/ocaml-ao"
 depends=('ocaml' 'libao')
 makedepends=('ocaml-findlib')
