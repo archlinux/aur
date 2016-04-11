@@ -15,7 +15,7 @@ url="http://bote.i2p/"
 license=('GPLv3')
 groups=('i2p-plugins')
 depends=('i2p')
-makedepends=('zip')
+makedepends=('unzip')
 provides=('i2pbotes')
 # get this from http://bote.i2p/i2pbote.su3
 source=("file://${_pluginame}.su3")
