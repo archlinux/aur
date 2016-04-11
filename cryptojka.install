@@ -1,0 +1,14 @@
+post_install() {
+    echo ""
+    echo "Thanks to install this program"
+    echo -e "Visit \e[94mhttp://repo.jkanetwork.com\e[m for get our Arch repository"
+    echo -e "Visit our GitLab to know our projects --> \e[94mhttps://gitlab.com/u/JKANetwork\e[m"
+}
+post_upgrade() {
+   post_install
+}
+post_remove() {
+   echo ""
+   echo "Something was wrong? :'("
+   echo -e "If you had got any problem with cryptojka please report it to us \e[94mmailto:contacto@jkanetwork.com\e[m"
+}
