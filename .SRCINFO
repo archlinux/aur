@@ -1,0 +1,11 @@
+pkgbase = lightdm-webkit-theme-contemporary
+	pkgdesc = theOS Contemporary Lightdm theme
+	pkgver = 1.0
+	pkgrel = 2
+	arch = x86_64
+	license = GPL
+	source = lightdm-webkit-theme-contemporary-1.0::git+https://github.com/vicr123/contemporary-lightdm-webkit-theme.git
+	md5sums = SKIP
+
+pkgname = lightdm-webkit-theme-contemporary
+
