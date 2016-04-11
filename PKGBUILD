@@ -11,7 +11,7 @@ url="http://lostpackets.de/khal/"
 depends=('python-urwid' 'python-xdg' 'vdirsyncer' 'python-dateutil'
          'python-configobj' 'python-tzlocal' 'python-icalendar'
          'sqlite' 'python-pkginfo')
-makedepends=('python-setuptools' 'python-setuptools_scm'
+makedepends=('python-setuptools' 'python-setuptools-scm'
              'git' 'python-sphinxcontrib-newsfeed')
 optdepends=('python-setproctitle: Display a clearer name in your process list')
 source=("${_gitname}::git+https://github.com/geier/khal.git")
