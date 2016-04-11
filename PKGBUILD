@@ -12,7 +12,7 @@ pkgrel=1
 pkgdesc="Some I2P middleware for seedless"
 arch=('any')
 url="http://i2pwiki.i2p/index.php?title=Plugins"
-license=('GPLv3')
+license=('WTFPL')
 groups=('i2p-plugins')
 depends=('i2p')
 makedepends=('unzip')
