@@ -1,12 +1,11 @@
 pkgbase = prometheus-node-exporter
 	pkgdesc = Prometheus exporter for machine metrics
 	pkgver = 0.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prometheus/node_exporter
 	arch = x86_64
 	arch = i686
 	license = Apache
-	makedepends = go
 	makedepends = git
 	makedepends = mercurial
 	provides = prometheus-node-exporter
