@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-rt
 _pkgbasever=4.4-gnu
-_pkgver=4.4.4-gnu
+_pkgver=4.4.6-gnu
 _rtbasever=4.4
-_rtpatchver=rt11
+_rtpatchver=rt14
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -50,6 +50,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'change-default-console-loglevel.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
+        '0003-fix-atmel-maxtouch-touchscreen-support.patch'
         # armv7h patches
         "https://repo.parabola.nu/other/rcn-libre-rt/patches/${_pkgver%-*}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch"
         "https://repo.parabola.nu/other/rcn-libre-rt/patches/${_pkgver%-*}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch.sig"
@@ -64,9 +65,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
 sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
-            '5b52578afb3bab7a50748e9b8e26bd9df851b3dcfbb55079d2abf3d3ad46aaff'
+            '0e4403973b4e92ec97e101f4f8053cc8f1b90302c2040f168d0c53374efc121a'
             'SKIP'
-            '819505e059c12bc3c37bb38011fa3c2fa7c554a29bbdd7a02b473a1ec2757c4f'
+            '962eed78bc4bf8d4b9cfd020a005ddeaf88ccd7cc05e884f162a08406673a690'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -81,7 +82,8 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
             '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
-            '3d8e49fcbd0065718e5682bd240c5f710bbfa063b6d9f9bdbc35c023b1f9c90f'
+            '0a6f76bbc03ae6e846a4ba4e31bbc0a40b1ae538c1271defcbe3089e00a4b53d'
+            '7b08c9d339fb782a729c0602eeb507a853deb7ddcc703746b7bbc76b9a1b1ca0'
             'SKIP'
             'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
             '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
@@ -160,6 +162,11 @@ prepare() {
   # maintain the TTY over USB disconnects
   # http://www.coreboot.org/EHCI_Gadget_Debug
   patch -p1 -i "${srcdir}/0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch"
+
+  # fix Atmel maXTouch touchscreen support
+  # https://labs.parabola.nu/issues/877
+  # http://www.fsfla.org/pipermail/linux-libre/2015-November/003202.html
+  patch -p1 -i "${srcdir}/0003-fix-atmel-maxtouch-touchscreen-support.patch"
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
