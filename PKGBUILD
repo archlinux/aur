@@ -9,7 +9,7 @@ url="https://gitlab.com/hobarrera/todoman"
 license=('MIT')
 depends=(python-icalendar python-urwid python-xdg python-ansi
          python-parsedatetime python-atomicwrites python-click
-         python-setuptools_scm)
+         python-setuptools-scm)
 optdepends=('python-click-repl-git: the repl command.')
 source=("https://pypi.python.org/packages/source/t/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('132995f497848566189f40a1a0fe274f')
