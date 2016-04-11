@@ -9,7 +9,7 @@ _pluginame=neodatis
 pkgname=i2p-plugin-${_pluginame}
 pkgver=2.1_2.14_209_17
 pkgrel=1
-pkgdesc="A distributed email client for I2P"
+pkgdesc="Some I2P middleware for seedless"
 arch=('any')
 url="http://i2pwiki.i2p/index.php?title=Plugins"
 license=('GPLv3')
