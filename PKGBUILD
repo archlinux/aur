@@ -4,8 +4,8 @@
 # Contributor: Christopher Reimer <mail+aur[at]c-reimer[dot]de>
 
 pkgname=spotify-beta
-pkgver=1.0.26.125
-_anotherpkgver=g64dc8bc6
+pkgver=1.0.27.71
+_anotherpkgver=g0a26e3b2
 pkgrel=2
 pkgdesc="A proprietary peer-to-peer music streaming service"
 arch=('x86_64' 'i686')
@@ -19,12 +19,12 @@ optdepends=('desktop-file-utils: Adds URI support to compatible desktop environm
             'ffmpeg-compat: Adds support for playback of local files'
             'libnotify: Adds desktop notifications')
 source=('spotify.protocol' 'spotify.desktop')
-source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_anotherpkgver}-15_amd64.deb")
-source_i686=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_anotherpkgver}-5_i386.deb")
+source_x86_64=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_${pkgver}.${_anotherpkgver}-9_amd64.deb")
+source_i686=("http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.0.27.73.g602ced10-2_i386.deb")
 sha256sums=('af54f3b90cac46fa100b3f919a9225d10d847617d24aa9af3d832e7689f482c3'
             '44ae606a73613540922b06af6adc5c5a5e69c6151788902d26ffb08fe17187c2')
-sha256sums_x86_64=('e15b159dd2f20f8c00067545d5899f40f991fa89e1cf246b280289944396c407')
-sha256sums_i686=('13dfa424106762821765a900612ab40982a32d640e13c266c0a5102cdc6cea5a')
+sha256sums_x86_64=('82dc602ed17bbb9d0f2b161c69226f8a291f85d544fe4abffa347860374340e7')
+sha256sums_i686=('b7113e2aa305cd2389d8861c6212de05ed5a9cfaa2a85e8021b355a848634f34')
 
 scale_factor=1.0000001
 
