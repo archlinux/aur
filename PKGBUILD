@@ -1,6 +1,6 @@
 # Maintainer: Matthias Blankertz <matthias at blankertz dot org>
 pkgname=msc-generator
-pkgver=4.6.0
+pkgver=5.1.0
 pkgrel=1
 epoch=
 pkgdesc="Draws MSCs from textual descriptions"
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/msc-generator/"
 license=('AGPL3')
 groups=()
-depends=(cairo)
+depends=('graphviz>=2.36')
 makedepends=(help2man texlive-plainextra)
 checkdepends=()
 optdepends=()
@@ -20,25 +20,17 @@ options=()
 install=msc-generator.install
 changelog=
 
-source=("http://sourceforge.net/projects/msc-generator/files/msc-generator/v4.6/msc-generator-4.6.tar.gz"
-	msc-generator.patch)
+source=("http://sourceforge.net/projects/msc-generator/files/msc-generator/v5.1/msc-generator-5.1.tar.gz")
 noextract=()
-sha256sums=('6f993efd775e99faf9163f0e597ee7e0c77312e2ba9a51989a7ebdf3c4c80b2e'
-            '0482408cc7e850e79069e0c2728a7fc326afd949031e3eb6f8d7a9dc45c18adc')
-build() {
-	cd "$srcdir/$pkgname-4.6"
+sha256sums=('e908a325c822bfc6284dfba64cb26a1d580c6382c9c4932d8bfc8de35f726ecf')
 
-	# Remove Windows links
+build() {
+	cd "$srcdir/$pkgname-5.1"
+
+	# Remove links
 	rm compile depcomp doc/texinfo.tex doc/mdate-sh install-sh missing
 	# Remove stale configure script
 	rm configure
-
-	# Convert file to UNIX line endings so patch works
-	tr -d '\r' < src/csh.cpp > tmp.cpp
-	mv tmp.cpp src/csh.cpp
-
-	# Apply patch
-	patch -p1 -i ../msc-generator.patch
 
 	aclocal
 	automake -a
@@ -48,11 +40,11 @@ build() {
 }
 
 check() {
-	cd "$srcdir/$pkgname-4.6"
+	cd "$srcdir/$pkgname-5.1"
 	make check
 }
 
 package() {
-	cd "$srcdir/$pkgname-4.6"
+	cd "$srcdir/$pkgname-5.1"
 	make DESTDIR="$pkgdir/" install
 }
