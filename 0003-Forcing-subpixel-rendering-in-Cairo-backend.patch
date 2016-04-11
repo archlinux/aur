@@ -1,4 +1,4 @@
-From 8b919abfec2ee853d1972ba9cddb34ca59b39ffa Mon Sep 17 00:00:00 2001
+From 1b9c60f0c26ad4a1e114836a6ef4ad6bfe1dcaaa Mon Sep 17 00:00:00 2001
 From: Paul Gideon Dann <pdgiddie@gmail.com>
 Date: Wed, 20 May 2009 13:06:48 +0100
 Subject: [PATCH 3/4] Forcing subpixel rendering in Cairo backend
@@ -26,5 +26,5 @@ index d0d6cb4..50e64f9 100644
  	//XXX: is this sufficient? could we miss changes to the matrix somehow?
  	cairo_get_matrix(cairo, &orig_matrix);
 -- 
-2.7.2
+2.8.0
 
