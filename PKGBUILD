@@ -2,20 +2,20 @@
 
 # This package provides pngcrush bundled with libpng and zlib.
 # The pngcrush provided in [community] repository uses libpng and zlib from system libraries.
-
+#
 # Advantages of having pngcrush bundled with libpng and zlib:
 #   - produces slightly smaller PNG files
 #   - ability to read erroneous PNG files with "Too many IDAT's"
 #   - avoids warnings when pngcrush is not yet rebuild or updated after a libpng/zlib update
-
-# Disvantages of having pngcrush bundled with libpng and zlib:
+#
+# Disadvantages of having pngcrush bundled with libpng and zlib:
 #   - slightly slower execution
-#   - higher pngcrush filesize
+#   - higher pngcrush executable filesize
 
 _srcname=pngcrush
 pkgname=pngcrush-bundled
 pkgver=1.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for optimizing the compression of PNG files (with bundled libpng and zlib)"
 arch=('i686' 'x86_64')
 url="http://pmt.sourceforge.net/pngcrush/"
