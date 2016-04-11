@@ -15,7 +15,6 @@ pkgbase = gridcoinresearch-git
 	makedepends = protobuf
 	makedepends = miniupnpc
 	source = gridcoinresearch::git+https://github.com/gridcoin/Gridcoin-Research.git
-	source = 01_qt5_fixes.patch
 	source = gridcoinresearch-qt.desktop
 	sha1sums = SKIP
 	sha1sums = 46006c634ef57189b9a9e6607ca392cb17b933b4
@@ -40,10 +39,4 @@ pkgname = gridcoinresearch-qt-git
 	depends = miniupnpc
 	depends = curl
 	depends = boinc
-
-pkgname = gridcoinresearch-upgrader-git
-	pkgdesc = Stub program for Gridcoin Daemon
-	depends = curl
-	depends = boost-libs
-	depends = libzip
 

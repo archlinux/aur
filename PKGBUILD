@@ -10,11 +10,9 @@ license=('custom:gridcoin')
 makedepends=('boost' 'git' 'qt4' 'openssl' 'qrencode' 'db' 'curl'
              'protobuf' 'miniupnpc')
 source=('gridcoinresearch::git+https://github.com/gridcoin/Gridcoin-Research.git'
-        '01_qt5_fixes.patch'
         'gridcoinresearch-qt.desktop')
 
 sha1sums=('SKIP'
-          'c8492e0244fb95214887aa432b52347dbd96879c'
           '931e82ce57cf9099d73534f969f49ba4e524e671')
 
 pkgver() {
@@ -28,8 +26,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/${pkgbase%-git}"
 
-  patch -Np1 -i "$srcdir"/01_qt5_fixes.patch
-
   mkdir -p src/obj
 
   chmod 755 src/leveldb/build_detect_platform
@@ -42,14 +38,10 @@ build() {
 
   make ${MAKEFLAGS} -f makefile.unix DEBUGFLAGS="" USE_UPNP=1
 
-  strip gridcoinresearchd
-
   cd ..
 
   qmake "USE_QRCODE=1 USE_UPNP=1 NO_UPGRADE=1"
   make ${MAKEFLAGS}
-
-  strip gridcoinresearch
 }
 
 package_gridcoinresearch-daemon-git() {
