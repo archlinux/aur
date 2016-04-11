@@ -1,7 +1,7 @@
 # Maintainer: Eduardo Sánchez Muñoz
 
 pkgname=(cling-git cling-jupyter-git)
-pkgver=r2850.a754fcc
+pkgver=r2889.bb7b609
 pkgrel=1
 pkgdesc="Interactive C++ interpreter built on the top of LLVM and Clang libraries."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=("llvm::git+http://root.cern.ch/git/llvm.git#branch=cling-patches"
 sha256sums=('SKIP'
 	    'SKIP'
 	    'SKIP'
-	    '2d601fe5c75388a0c9e6cdbef6d15f356ea7b9957c9d56525becf247025a7ed2')
+	    '9569ca1bfc0b675c86f51904de96ed47254490f7f9ba6bc8540210f9269898a9')
 
 pkgver() {
 	cd "$srcdir/cling"

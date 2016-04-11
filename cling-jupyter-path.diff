@@ -1,13 +1,21 @@
 diff --git a/tools/Jupyter/kernel/clingkernel.py b/tools/Jupyter/kernel/clingkernel.py
-index 9decdda..079b245 100644
+index befb193..a1c796c 100644
 --- a/tools/Jupyter/kernel/clingkernel.py
 +++ b/tools/Jupyter/kernel/clingkernel.py
-@@ -67,7 +67,8 @@ class ClingKernel(Kernel):
+@@ -67,11 +67,12 @@ class ClingKernel(Kernel):
  
      def __init__(self, **kwargs):
          super(ClingKernel, self).__init__(**kwargs)
--        whichCling = shutil.which('cling')
-+        #whichCling = shutil.which('cling')
+-        try:
+-            whichCling = shutil.which('cling')
+-        except AttributeError:
+-            from distutils.spawn import find_executable
+-            whichCling = find_executable('cling')
++        #try:
++        #    whichCling = shutil.which('cling')
++        #except AttributeError:
++        #    from distutils.spawn import find_executable
++        #    whichCling = find_executable('cling')
 +        whichCling = "/opt/cling/bin/cling"
          if whichCling:
              clingInstDir = os.path.dirname(os.path.dirname(whichCling))
