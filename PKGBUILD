@@ -11,7 +11,7 @@ url="https://github.com/prometheus/node_exporter"
 conflicts=($pkgname)
 provides=($pkgname)
 license=('Apache')
-makedepends=('go' 'git' 'mercurial')
+makedepends=('git' 'mercurial')
 options=('!strip' '!emptydirs')
 source=("https://github.com/prometheus/node_exporter/archive/${pkgver}.tar.gz"
   "prometheus-node-exporter.service")
