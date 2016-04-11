@@ -30,7 +30,9 @@ package() {
 	install -dm755 "${pkgdir}/usr/share/${pkgname}"
 	install -dm755 "${pkgdir}/usr/bin"
 
-	# Compile the program in its destination folder
+	# Compile the program in its destination folder, for
+	# avoiding -> WARNING: Package contains reference to $srcdir <-
+
 	mv "${srcdir}/${_reldir}/"* "${pkgdir}/usr/share/${pkgname}/"
 	cd "${pkgdir}/usr/share/${pkgname}"
 	npm install
