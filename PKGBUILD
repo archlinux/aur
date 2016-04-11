@@ -2,28 +2,33 @@
 # Contributor: jjdanimoth <jjdanimoth@gmail.com>
 # Contributor: nesl247 <nesl247@gmail.com>
 
+_upstream="emerald-themes"
+_pkgver=0.8.12
+_micro=""
+
 pkgname=emerald-themes
-pkgver=0.8.10
+pkgver="${_pkgver}${_micro}"
 pkgrel=1
 pkgdesc="Themes for emerald"
 arch=('any')
-url="http://www.northfield.ws/projects/compiz"
+url="https://github.com/compiz-reloaded/${_upstream}/"
 license=('GPL')
 depends=('emerald')
 makedepends=('intltool' 'pkgconfig')
 groups=('compiz-fusion' 'compiz-fusion-kde' 'compiz-fusion-gtk')
 conflicts=('emerald-themes-git')
-source=('http://www.northfield.ws/projects/compiz/releases/0.8.10/emerald-themes.tar.gz')
-sha256sums=('07224509f85f37f3e080a50532a43bf5e5cbcfdc92faae14df42966648be85d0')
+source=("${url}/releases/download/v${pkgver}/${_upstream}-${pkgver}.tar.xz")
 
 build() {
-  cd emerald-themes
-  ./autogen.sh 
+  cd "${srcdir}/${_upstream}-${pkgver}"
+  #./autogen.sh
   ./configure --prefix=/usr 
   make
 }
 
 package() {
-  cd emerald-themes
-  make DESTDIR=${pkgdir} install 
+  cd "${srcdir}/${_upstream}-${pkgver}"
+  make DESTDIR="${pkgdir}" install 
 }
+
+sha256sums=('b9b2e4bb10765d8a242d54698d07a48b64be6156b8a1990d4edd6b2ebb82fce4')
