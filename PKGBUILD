@@ -29,7 +29,7 @@ package() {
     mkdir -p "$pkgdir$PREFIX/bin"
     mkdir -p "$pkgdir$HOME/.meteor"
     mv .meteor "$pkgdir$HOME"
-    chown -R $USER:$USER "$pkgdir$HOME/.meteor/"
+    chown -R $USER "$pkgdir$HOME/.meteor/"
     chmod -R 755 "$pkgdir$HOME/.meteor/"
 
     METEOR_SYMLINK_TARGET="$(readlink "$pkgdir$HOME/.meteor/meteor")"
