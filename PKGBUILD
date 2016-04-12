@@ -1,5 +1,5 @@
 pkgname=clrmamepro
-pkgver=4.028
+pkgver=4.029
 pkgrel=1
 pkgdesc="A ROM manager for MAME."
 arch=('any')
@@ -11,7 +11,7 @@ source=("http://mamedev.emulab.it/clrmamepro/binaries/cmp${pkgver//./}_32.zip"
         "clrmamepro"
         "clrmamepro.desktop"
         "clrmamepro.install")
-sha256sums=('d5ff9a3df8c8ace95e32678e2c51dd6fa48ad85c0d6c2d58aefccf877ff336db'
+sha256sums=('e26138e2a8c79657c3a0c608e94b9deff34d0e18c224a3a391d4b7867fffb19f'
             '466f1cd863e85915f8355463a1062e394296228b17cbdfe101357b3266b988f5'
             '8d92a074639a43cb5d7ed69df999d059dd81fca9f3967a58873db0acafb0d95b'
             '508ff5cdcc001d3e6e5068918d21a4536adc5ed605af7bc08dfc6c27c0c6399d')
