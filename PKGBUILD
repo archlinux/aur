@@ -1,4 +1,4 @@
-# Contributor: Aashik S  aashiks at gmail dot com
+# Contributor: Aashik S  ashik at inflo dot ws
 # Maintainer: http://smc.org.in
 # Contributor: Akshay S Dinesh asdofindia at gmail dot com
 
