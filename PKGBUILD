@@ -2,7 +2,7 @@
 # Contributor: carstene1ns <url/mail: arch carsten-teibes de>
 
 pkgname=trackma-git
-pkgver=0.4.r122.g32ecc47
+pkgver=0.4.r143.g5531f91
 pkgrel=1
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=('python2'
             )
 optdepends=('pygtk: gtk frontend'
 			'python2-pillow: thumbnail images for GUI frontends'
-			'python2-pyqt4: Qt frontend'
+			'python2-pyqt5: Qt frontend'
             'python2-urwid: ncurses frontend'
 			'python2-inotifyx: instant media recognition')
 
