@@ -2,8 +2,8 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=xubuntu-artwork
-pkgver=15.12.2
-pkgrel=2
+pkgver=16.04.1
+pkgrel=1
 _uver=wily
 pkgdesc="Xubuntu themes and artwork"
 arch=("any")
@@ -22,28 +22,12 @@ optdepends=("plymouth: For plymouth theme to work"
 source=("http://security.ubuntu.com/ubuntu/pool/universe/x/${pkgname}/${pkgname}_${pkgver}.tar.xz")
 
 package() {
-  cd "${srcdir}/xubuntu-artwork"
-  
-  make DESTDIR="${pkgdir}" prefix=/usr \
-	sbindir=/usr/bin bindir=/usr/bin \
-	libdir=/usr/lib libexecdir=/usr/lib
-
-  cd "${srcdir}/xubuntu-artwork/libreoffice-style-elementary"
-
-  make DESTDIR="${pkgdir}" prefix=/usr \
-        sbindir=/usr/bin bindir=/usr/bin \
-        libdir=/usr/lib libexecdir=/usr/lib
-}
-
-package() {
-  cd "${srcdir}/xubuntu-artwork"
-
-  make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/trunk"
 
   install -dm755 "${pkgdir}/usr/"
 
   msg2 "Install the rest of the files."
-  cp -av usr/share/ "${pkgdir}/usr/"
+  cp -av usr/share/ "${pkgdir}/usr/share/"
 
   msg2 "Remove Elementary-Xfce bundled with this artwork, is hella outdated."
   rm -frv "${pkgdir}"/usr/share/icons
@@ -55,6 +39,6 @@ package() {
   msg2 "Remove redundant and empty files."
   rm -frv "${pkgdir}"/usr/share/xfce4/backdrops
 }
-
 # I use MD5 because is what "makepkg -g" give by default, blame Allan
-md5sums=('d408bd142b486999b4c377a539906692')
+
+md5sums=('ad7058efdaef7a3fabf4651b09aa74f7')
