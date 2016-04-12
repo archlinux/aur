@@ -1,6 +1,6 @@
 pkgbase = gplaycli-git
 	pkgdesc = Google Play Downloader via Command line, based on https://codingteam.net/project/googleplaydownloader
-	pkgver = 0.1.2.r19.gd622d27
+	pkgver = 0.1.2.r22.g1c17621
 	pkgrel = 1
 	url = https://github.com/matlink/gplaycli
 	arch = i686
@@ -12,6 +12,7 @@ pkgbase = gplaycli-git
 	depends = wxpython
 	depends = python2-ndg-httpsclient
 	depends = python2-androguard-git
+	depends = python2-clint
 	optdepends = java-runtime: needed for autogeneration of a new AndroiID
 	source = gplaycli::git+https://github.com/matlink/gplaycli.git
 	md5sums = SKIP
