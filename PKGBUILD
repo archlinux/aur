@@ -1,4 +1,4 @@
-# Maintainer: Alad Wenter <alad@archlinux.info>
+# Maintainer: Alad Wenter <nynq@nepuyvahk.vasb> (rot13)
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Andrew Simmons <andrew.simmons@gmail.com>
