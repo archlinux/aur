@@ -1,7 +1,7 @@
 pkgbase = python-rst2pdf
 	pkgdesc = Convert restructured text to PDF via reportlab.
 	pkgver = 0.93
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/rst2pdf/rst2pdf
 	arch = any
 	license = MIT
