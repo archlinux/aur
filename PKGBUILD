@@ -9,7 +9,6 @@ license=('AGPL')
 depends=('python2'
          'python2-protobuf'
          'python2-requests'
-         'wxpython'
          'python2-ndg-httpsclient'
          'python2-androguard-git'
          'python2-clint')

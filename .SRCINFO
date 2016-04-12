@@ -9,7 +9,6 @@ pkgbase = gplaycli-git
 	depends = python2
 	depends = python2-protobuf
 	depends = python2-requests
-	depends = wxpython
 	depends = python2-ndg-httpsclient
 	depends = python2-androguard-git
 	depends = python2-clint
