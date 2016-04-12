@@ -63,6 +63,9 @@ prepare() {
 	# Just because our Apache 2.4 is configured with a threaded MPM by default does not mean we want to build a ZTS PHP.
 	# Let's supress this behaviour and build a SAPI that works fine with the prefork MPM.
 	sed '/APACHE_THREADED_MPM=/d' -i sapi/apache2handler/config.m4 -i configure
+
+	# Allow php-tidy to compile with tidy-html5
+	sed 's/buffio\.h/tidybuffio\.h/' -i ext/tidy/tidy.c
 }
 
 build() {
