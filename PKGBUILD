@@ -8,7 +8,7 @@ pkgname=courier-imap
 pkgver=4.16.2
 pkgrel=3
 pkgdesc="IMAP(s)/POP3(s) Server"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 license=('GPL2')
 url="http://www.courier-mta.org/imap/"
 depends=('courier-maildrop' 'gcc-libs' 'gamin' 'gdbm' 'openssl' 'courier-unicode>=1.3')
