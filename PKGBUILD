@@ -3,7 +3,7 @@
 pkgname=docker-machine-bin
 pkgver=0.7.0rc3
 _pkgver=0.7.0-rc3
-pkgrel=1
+pkgrel=2
 pkgdesc='Machine management for a container-centric world'
 arch=('x86_64')
 url='https://github.com/docker/machine'
@@ -18,7 +18,7 @@ source=(
     "docker-machine::https://github.com/docker/machine/releases/download/v${_pkgver}/docker-machine-Linux-x86_64"
     "https://raw.githubusercontent.com/docker/machine/master/LICENSE"
 )
-sha256sums=('6544df7946b6236c0a19f897f08124b342cf28bdac34357ba19626c62f374236'
+sha256sums=('ddab3eb52fc692a32d4697b2a082791172f8c5bb21e1d8489bb5d2eb1e42348a'
             'SKIP')
 
 package() {
