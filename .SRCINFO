@@ -1,6 +1,6 @@
 pkgbase = pidgin-im-gnome-shell-extension
 	pkgdesc = Make Pidgin IM conversations appear in the Gnome Shell message tray
-	pkgver = 25
+	pkgver = 27
 	pkgrel = 1
 	url = https://github.com/muffinmad/pidgin-im-gnome-shell-extension
 	arch = any
