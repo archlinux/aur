@@ -33,8 +33,8 @@ pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
 __basekernel=4.4
 _minor=6
 pkgver=${__basekernel}.${_minor}
-pkgrel=2
-lqxrel=2
+pkgrel=3
+lqxrel=3
 _kernelname=-lqx
 pkgbase=linux-lqx
 pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
@@ -59,7 +59,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.x
 
 sha512sums=('13c8459933a8b80608e226a1398e3d1848352ace84bcfb7e6a4a33cb230bbe1ab719d4b58e067283df91ce5311be6d2d595fc8c19e2ae6ecc652499415614b3e'
             'SKIP'
-            'aed9bda77890460d3e4a4873a2c1e220b020256c933f459cc4d3c498924cf900993493e736ae785d5b19f18cb96fb0ed821de06d44808a7b32508e8d2457f15c'
+            'adcd188ccb4b5d1b3e641e9fe7d7dd3e03526f27f282001042f6f9ec3da8fa1d454d71796154f01c4ab0130860a88ab2a078c203a7f89d4fe91b131d8b735b46'
             '9a87ff8075859bfa69fd30484cab7dfe53b2ec2b744927fa0517a7ed3fc5b579c122ad8a8cf1bb9e0cc32c500b5d2cf7a0b5ae62f073e91a58f0d5444fec7243'
             '3ab9b8e395eaaf22fd92c5329bda8a4c55eb29fd2a3587c3b1e225f4bbb3827cae4bc7fd72a2de94b504406b765353d5613f2e81d08a8707b329ebf62c71e585'
             '11078e4ff74013c34e90dde8368002178d5f57593306c23fcd9fc5ee41fbdcda0e5f99dc862b0cf20886e6f0cab52b0df2ed9f5c48557fc6f21d316e2809ade6'
