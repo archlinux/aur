@@ -1,20 +1,14 @@
 
 post_install() {
-  for k in $(cd /lib/modules && /bin/ls); do
-    [ -d "/lib/modules/$k/kernel/" ] && depmod -a "$k"
-  done
+  _extramodules=extramodules-4.1-lts
+  depmod $(cat /usr/lib/modules/${_extramodules}/version)
 }
 
 post_upgrade() {
-  for k in $(cd /lib/modules && /bin/ls); do
-    [ -d "/lib/modules/$k/kernel/" ] && depmod -a "$k"
-  done
+  post_install
 }
 
-## arg 1:  the old package version
 post_remove() {
-  for k in $(cd /lib/modules && /bin/ls | grep '^[0-9]'); do
-    [ -d "/lib/modules/$k/kernel/" ] && depmod -a "$k"
-  done
-
+  post_install
 }
+
