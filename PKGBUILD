@@ -3,7 +3,7 @@
 _pkgname=rst2pdf
 pkgname=python-rst2pdf
 pkgver=0.93
-pkgrel=2
+pkgrel=3
 pkgdesc='Convert restructured text to PDF via reportlab.'
 arch=('any')
 url="https://github.com/$_pkgname/$_pkgname"
