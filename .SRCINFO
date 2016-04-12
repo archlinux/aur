@@ -1,7 +1,7 @@
 pkgbase = kargo-cli
 	pkgdesc = Kubernetes cluster deployment using Ansible
-	pkgver = 0.2.2
-	pkgrel = 5
+	pkgver = 0.2.3
+	pkgrel = 1
 	url = https://github.com/kubespray/kargo-cli
 	arch = any
 	license = GPL3
@@ -12,8 +12,8 @@ pkgbase = kargo-cli
 	depends = python2-netaddr
 	depends = python2-apache-libcloud
 	options = !emptydirs
-	source = kargo-cli::https://github.com/kubespray/kargo-cli/archive/0.2.2.zip
-	sha256sums = 3360ce19fde40ad2206bc60edc602a8a3b2ce62ebae792da9c93402a3d07cc95
+	source = kargo-cli::https://github.com/kubespray/kargo-cli/archive/0.2.3.zip
+	sha256sums = 0aee8b4dd863fd6c4379b62c0289311a4d8ddaa9cbfa60b379580160e2a3c550
 
 pkgname = kargo-cli
 
