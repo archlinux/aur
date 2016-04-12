@@ -1,38 +1,77 @@
-# Maintainer: See AUR interface for current maintainer.
+# Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
 
+#######################################################################
+# CAVEAT LECTOR
+#######################################################################
 #
-# TIPS: Don't run this on a tmpfs unless you have oodles of RAM.
-#       When the official git repo started, the size was about
-#       200MB. As time passes, it will grow more and more.
+#  Don't run this on a tmpfs unless you have oodles of RAM.
+#  When the official git repo started, the size was about
+#  200MB. As time passes, it is growing more and more.
+#  Final directory size after a build is shy of 1Gb! 
+#  Furthermore, the FSF isn't precisely rich and Savannah 
+#  network costs aren't cheap. Keep your git checkout!
 #
-#       Keeping this directory in a safe place preserves the 
-#       git repo and the src dir for faster compilations if 
-#       you want. You may delete the pkg dir after successfully 
-#       creating a package.
+#  Keeping this directory in a safe place preserves the 
+#  git repo and the src dir for faster compilation if 
+#  you want. You may delete the pkg dir after successfully 
+#  creating a package.
 #
-#      "makepkg -i" is your friend.
+#  "makepkg -i" is your friend.
 #
+#  There is a bug with gtk+ 3.20 where the geometry is not 
+#  calculated at all. Emacs opens in a very small frame.
+#  From within emacs, search for the options initial-frame-alist
+#  and default-frame-alist to set up emacs frame geometry to
+#  your personal preference.
+#
+#######################################################################
+
+#######################################################################
+#
+# Still reading? Here kid, have enough rope to hang yourself.
+#
+#######################################################################
+
+#######################################################################
+# Assign "YES" to the variable you want enabled, empty otherwise
+#######################################################################
+GTK3="YES"       # Leave empty to compile with gtk+ 2 support
+LTO=             # Enable link-time optimization. Broken.
+CAIRO=           # Very broken for me. Use at own risk.
+XWIDGETS=        # Use GTK+ native widgets pulled from webkitgtk.
+DOCS_HTML=       # Generate and install html documentation.
+DOCS_PDF=        # Generate and install pdf documentation.
+#######################################################################
 
 pkgname=emacs25-git
-pkgver=25.0.92.r124666
+pkgver=25.0.92.r124705
 pkgrel=1
 pkgdesc="GNU Emacs. Version 25 development and maintenance branch."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL')
-depends=('gtk3' 'gpm' 'giflib' 'm17n-lib' 'desktop-file-utils' 'alsa-lib' 'imagemagick')
+depends=('gpm' 'giflib' 'm17n-lib' 'desktop-file-utils' 'alsa-lib' 'imagemagick')
 makedepends=('git')
+#######################################################################
+#######################################################################
+if [[ $GTK3 = "YES" ]]; then depends+=('gtk3'); else depends+=('gtk2'); fi
+if [[ $CAIRO = "YES" ]]; then depends+=('cairo'); fi
+if [[ $XWIDGETS = "YES" ]]; then depends+=('webkitgtk'); fi
+if [[ $DOCS_PDF = "YES" ]]; then makedepends+=('texlive-core'); fi
+#######################################################################
+#######################################################################
 conflicts=('emacs')
 provides=('emacs')
 install="$pkgname".install
 source=("$pkgname::git://git.savannah.gnu.org/emacs.git#branch=emacs-25")
-#source=("$pkgname::git+http://git.savannah.gnu.org/r/emacs.git#branch=emacs-25")
 md5sums=('SKIP')
+#source=("$pkgname::git+http://git.savannah.gnu.org/r/emacs.git#branch=emacs-25")
 
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "%s.r%s" \
-    "$(grep AC_INIT configure.ac | sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\).\+$/\1/')" \
+    "$(grep AC_INIT configure.ac | \
+    sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\).\+$/\1/')" \
     "$(git rev-list --count HEAD)"
 }
 
@@ -48,29 +87,34 @@ prepare() {
 build() {
   cd "$srcdir/$pkgname"
 
-# If you add "--with-xwidgets" to the options array below, make sure to add
-# webkitgtk to the depends array above.
-
-# If you add "--with-cairo" to the options array below, make sure to add
-# cairo to the depends array above.
-
   local _conf=(
     --prefix=/usr 
     --sysconfdir=/etc 
     --libexecdir=/usr/lib 
     --localstatedir=/var 
     --mandir=/usr/share/man 
-    --pdfdir=/usr/share/doc/emacs/pdf 
+    --with-gameuser=:games 
     --with-sound=alsa 
-    --without-gconf 
-    --with-x-toolkit=gtk3 
     --with-xft
     --with-modules)
 
+#######################################################################
+#######################################################################
+  if [[ $GTK3 = "YES" ]]; then 
+    _conf+=('--with-xtoolkit=gtk3' '--without-gconf' '--with-gsettings'); 
+  else
+    _conf+=('with-xtoolkit=gtk2' '--with-gconf' '--without-gsettings');
+  fi
+  if [[ $LTO = "YES" ]]; then _conf+=('--enable-link-time-optimization'); fi
+  if [[ $CAIRO = "YES" ]]; then _conf+=('--with-cairo'); fi
+  if [[ $XWIDGETS = "YES" ]]; then _conf+=('--with-xwidgets'); fi
+#######################################################################
+#######################################################################
+
   ./configure "${_conf[@]}"
 
-  # Using "make" instead of "make bootstrap" makes incremental
-  # compiling work. Less time recompiling. Yay! But if you may 
+  # Using "make" instead of "make bootstrap" enables incremental
+  # compiling. Less time recompiling. Yay! But if you may 
   # need to use bootstrap sometime, just add it to the command 
   # line.
   # Please note that incremental compilation implies that you 
@@ -81,16 +125,11 @@ build() {
   # corrupt.
   #cd "$srcdir/$pkgname/lisp"
   #make autoloads
+  #cd ../
 
-  # Before enabling "make docs" you need to install texlive, either from
-  # the repos or locally while using texlive-dummy from AUR and enable
-  # installation in the package() section. This command installs dvi, 
-  # ps and html copies of the documentation.
-  #make docs
-  # You can generate html only.
-  #make html
-  # And... pdf output is handled independently.
-  #make pdf
+  # Optional documentation formats.
+  if [[ $DOCS_HTML = "YES" ]]; then make html; fi
+  if [[ $DOCS_PDF = "YES" ]]; then make pdf; fi
 }
 
 package() {
@@ -98,18 +137,9 @@ package() {
 
   make DESTDIR="$pkgdir/" install
 
-  # Before enabling "make install-doc" you need to install texlive, either
-  # from the repos or locally while using texlive-dummy from AUR.
-  # Installs dvi, ps and html.
-  # make DESTDIR="$pkgdir/" install-doc
-
-  # Before enabling "make install-html" you need to install texlive, either
-  # from the repos or locally while using texlive-dummy from AUR.
-  # make DESTDIR="$pkgdir/" install-html
-
-  # Before enabling "make install-pdf" you need to install texlive, either
-  # from the repos or locally while using texlive-dummy from AUR.
-  # make DESTDIR="$pkgdir/" install-pdf
+  # Install optional documentation formats
+  if [[ $DOCS_HTML = "YES" ]]; then make DESTDIR="$pkgdir/" install-html; fi
+  if [[ $DOCS_PDF = "YES" ]]; then make DESTDIR="$pkgdir/" install-pdf; fi
 
   # remove conflict with ctags package
   mv "$pkgdir"/usr/bin/{ctags,ctags.emacs}
