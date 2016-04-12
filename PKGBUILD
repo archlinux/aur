@@ -2,7 +2,7 @@
 
 _pkgname=Meliora
 pkgname=meliora-openbox-themes
-pkgver=0.0
+pkgver=4d6199b
 pkgrel=1
 pkgdesc="$_pkgname Openbox Themes"
 arch=('any')
