@@ -1,12 +1,12 @@
 # Maintainer: taij33n <bwbuiz@gmail.com>
 pkgname=picolisp      
-pkgver=15.11.r0.g633a276
-pkgrel=2
+pkgver=16.2.r0.g0b67511
+pkgrel=1
 pkgdesc="Fast and tiny 64-bit Lisp interpreter: OO, dynamic and functional (database, prolog, coroutines)."
 url="http://www.picolisp.com"
 arch=('any')
 license=('MIT')
-depends=('bash' 'openssl')
+depends=('bash' 'openssl' 'gcc-multilib')
 optdepends=('jre: for picolisp ersatz.jar')
 makedepends=('make' 'git' 'gcc')
 source=("$pkgname::git+https://github.com/taij33n/picolisp.git")
@@ -23,16 +23,19 @@ build() {
   # build 32bit version and tools first
   cd "${srcdir}/${pkgname}/src"
   make all
-
+  make clean
+ 
   # build the 64bit version
   cd "${srcdir}/${pkgname}/src64"
   if [ $CARCH = "x86_64" ]
   then
     # real 64-bit env
     make 
+    make clean
   else
     # emulation of 64-bit env
     make emu
+    make clean
   fi
 }
 
