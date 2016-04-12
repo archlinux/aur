@@ -1,6 +1,6 @@
 pkgbase = virtualbox-modules-mainline
 	pkgver = 5.0.16
-	pkgrel = 3
+	pkgrel = 4
 	url = http://virtualbox.org
 	arch = i686
 	arch = x86_64

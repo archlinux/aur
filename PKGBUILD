@@ -6,7 +6,7 @@
 pkgbase=virtualbox-modules-mainline
 pkgname=('virtualbox-host-modules-mainline' 'virtualbox-guest-modules-mainline')
 pkgver=5.0.16
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
@@ -15,26 +15,43 @@ makedepends=('dkms' 'linux-mainline-headers>=4.6rc1' 'linux-mainline-headers<4.7
 # remember to also adjust the .install files and the package deps below
 _extramodules=extramodules-4.6-mainline
 
-build() {
+prepare() {
   _kernver=$(cat /usr/lib/modules/$_extramodules/version)
   # dkms need modification to be run as user
 
-  rm -rf dkms/vboxguest/$pkgver/source
+  rm -rf dkms/vboxhost/${pkgver}_OSE/source
+  rm -rf dkms/vboxguest/${pkgver}_OSE/source
   cp -r /var/lib/dkms .
 
-  mkdir -p $srcdir/usr/src
-  cp -r /usr/src/vboxhost-${pkgver}_OSE $srcdir/usr/src/vboxhost-$pkgver
-  cp -r /usr/src/vboxguest-${pkgver}_OSE $srcdir/usr/src/vboxguest-$pkgver
-
   echo "dkms_tree='$srcdir/dkms'" > dkms.conf
-  echo "source_tree='$srcdir/usr/src'" >> dkms.conf
+
+  # workaround to patch for linux 4.6
+  rm -r $srcdir/dkms/vboxhost/${pkgver}_OSE/source
+  cp -r /usr/src/vboxhost-${pkgver}_OSE $srcdir/dkms/vboxhost/${pkgver}_OSE/source
+
+  cd $srcdir/dkms/vboxhost/${pkgver}_OSE/source
+  # page_cache_release() -> put_page(); 09cbfeaf1a5a67bfb3201e0c83c810cecb2efa5a
+  sed -i 's|page_cache_release|put_page|g' vboxdrv/r0drv/linux/memobj-r0drv-linux.c
+
+  rm -r $srcdir/dkms/vboxguest/${pkgver}_OSE/source
+  cp -r /usr/src/vboxguest-${pkgver}_OSE $srcdir/dkms/vboxguest/${pkgver}_OSE/source
+
+  cd $srcdir/dkms/vboxguest/${pkgver}_OSE/source
+  # page_cache_release() -> put_page(); 09cbfeaf1a5a67bfb3201e0c83c810cecb2efa5a
+  sed -i 's|page_cache_release|put_page|g' vboxsf/regops.c
+  sed -i 's|page_cache_release|put_page|g' vboxguest/r0drv/linux/memobj-r0drv-linux.c
+
+  cd $srcdir
+}
+
+build() {
 
   # build host modules
   msg2 'Host modules'
-  dkms --dkmsframework dkms.conf build "vboxhost/$pkgver" -k "$_kernver"
+  dkms --dkmsframework dkms.conf build "vboxhost/${pkgver}_OSE" -k "$_kernver"
   # build guest modules
   msg2 'Guest modules'
-  dkms --dkmsframework dkms.conf build "vboxguest/$pkgver" -k "$_kernver"
+  dkms --dkmsframework dkms.conf build "vboxguest/${pkgver}_OSE" -k "$_kernver"
 }
 
 package_virtualbox-host-modules-mainline(){
@@ -45,7 +62,7 @@ package_virtualbox-host-modules-mainline(){
   conflicts=('virtualbox-modules-mainline')
   install=virtualbox-host-modules-mainline.install
 
-  cd "dkms/vboxhost/$pkgver/$_kernver/$CARCH/module"
+  cd "dkms/vboxhost/${pkgver}_OSE/$_kernver/$CARCH/module"
   install -dm755 "$pkgdir/usr/lib/modules/$_extramodules/"
   install -m644 * "$pkgdir/usr/lib/modules/$_extramodules/"
   find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
@@ -60,7 +77,7 @@ package_virtualbox-guest-modules-mainline(){
   conflicts=('virtualbox-modules-mainline')
   install=virtualbox-guest-modules-mainline.install
 
-  cd "dkms/vboxguest/$pkgver/$_kernver/$CARCH/module"
+  cd "dkms/vboxguest/${pkgver}_OSE/$_kernver/$CARCH/module"
   install -dm755 "$pkgdir/usr/lib/modules/$_extramodules/"
   install -m644 * "$pkgdir/usr/lib/modules/$_extramodules/"
   find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
