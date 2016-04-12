@@ -1,6 +1,6 @@
 # Contributor: Sapphira Armageddos <shadowkyogre@aim.com>
 pkgname=compiz-alone-utils-git
-pkgver=20110403
+pkgver=r3.8ac2684
 pkgrel=1
 pkgdesc="A few Compiz Standalone utilities based off of some scripts that come with Openbox."
 arch=('any')
@@ -12,29 +12,25 @@ optdepends=('pyxdg: for the xdg-autostart script')
 makedepends=('git')
 install=${pkgname%-git}.install
 
-_giturl=git://github.com/ShadowKyogre/Compiz-Standalone-Utils.git
 _gitname="CompizSAUtils"
+source=(
+  "${_gitname}::git://github.com/ShadowKyogre/Compiz-Standalone-Utils.git"
+)
+
 
 # trick re-determining the build revision and, or entertain the hidden
 # makepkg option --forcever, huh
-if [ -z "${FORCE_VER}" ]; then
-    msg "Determining latest build revision..."
-    FORCE_VER=$(date +%Y%m%d)
-fi
 
+pkgver() {
+	cd "${srcdir}/${_gitname}"
 
-
-build() {
-	cd "$srcdir"
-	if [ -d $_gitname ];then
-		cd $_gitname && git pull origin
-	else
-		git clone $_giturl $_gitname
-	fi
+  # currently don't have any tags atm
+	#git describe --long --tags|sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd ${srcdir}/$_gitname
+	cd "${srcdir}/${_gitname}"
 
 	mkdir -p ${pkgdir}/usr/bin
 	mkdir -p ${pkgdir}/{usr/share/xs,etc/X11/s}essions
@@ -49,3 +45,6 @@ package() {
 
 # vim:set ts=2 sw=2 et:
 
+sha256sums=(
+  'SKIP'
+)
