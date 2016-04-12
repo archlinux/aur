@@ -1,7 +1,7 @@
 # Maintainer: liara (liara at archlinux.info)
 
 pkgname=python-shodan
-pkgver=1.4.8
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="The official Python library for Shodan"
 url="https://github.com/achillean/shodan-python"
@@ -10,7 +10,7 @@ arch=('any')
 depends=('python-simplejson' 'python-requests' 'python-click' 'python-colorama')
 makedepends=('python')
 source=(https://pypi.python.org/packages/source/s/shodan/shodan-${pkgver}.tar.gz)
-md5sums=('4b9de829a1361bbd10432ada67174863')
+md5sums=('8c9e4b2a22c9fd004d21d98e6370cc4e')
 
 build() {
   cd "$srcdir/shodan-${pkgver}"
