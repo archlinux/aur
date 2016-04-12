@@ -4,7 +4,7 @@
 
 pkgname=android-sdk
 pkgver=24.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Android SDK'
 arch=('x86_64' 'i686')
 url='http://developer.android.com/sdk/'
