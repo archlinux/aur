@@ -1,4 +1,4 @@
-# Contributor: Aashik S  aashiks at gmail dot com
+# Contributor: Aashik S  ashik at inflo dot ws
 # Maintainer: http://smc.org.in
 # Contributor: Akshay S Dinesh asdofindia at gmail dot com
 
@@ -12,7 +12,7 @@ url="http://smc.org.in/fonts/"
 depends=(fontconfig xorg-font-utils)
 source=("http://smc.org.in/downloads/fonts/dyuthi/Dyuthi.ttf"
         "https://gitlab.com/smc/dyuthi/raw/master/67-smc-dyuthi.conf")
-md5sums=('af094c3f037c079b837efbe6224cd8f8'
+md5sums=('c1e43e83fee45ef05fc1f14f832f7d11'
          'f4a275e1e8a1bd33c90ed44f1ee84017')
 install=ttf-malayalam-fonts.install
 
