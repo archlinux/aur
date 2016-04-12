@@ -31,11 +31,8 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
 
-  # Ancient autoconf used upstream can't handle CPPFLAGS correctly
-  export CFLAGS="$CPPFLAGS $CFLAGS"
-  export CXXFLAGS="$CPPFLAGS $CXXFLAGS"
-  unset CPPFLAGS
-
+  # Ancient autoconf used upstream can't handle CPPFLAGS correctly, so set CPP to ignore warnings
+  CPP="gcc -E -w" \
   ./configure \
     --prefix=/opt/$pkgname \
     --with-freetype-includes=/usr/include/freetype2 \
