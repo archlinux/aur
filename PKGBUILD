@@ -14,7 +14,7 @@ source=('meliora-openbox-themes::git+https://bitbucket.org/Ensayia/meliora-openb
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/Lila-hd-icon-theme"
+	cd "$srcdir/$pkgname"
 	git describe --always | sed 's|-|.|g'
 }
 
