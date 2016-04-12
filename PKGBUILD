@@ -4,14 +4,23 @@
 
 pkgname=butter-git
 _pkgname=butter-desktop
-pkgver=r5479.150b1b9
+pkgver=r5891.6365715
 pkgrel=1
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="https://butterproject.github.io/"
 license=('GPL3')
-depends=('alsa-lib' 'gconf' 'gtk2' 'nss' 'ttf-font' 'libxtst')
-makedepends=('bower' 'cmake' 'git' 'nodejs-grunt-cli' 'npm')
+depends=('alsa-lib'
+         'gconf'
+         'gtk2'
+         'libxtst'
+         'nss'
+         'ttf-font')
+makedepends=('bower'
+             'cmake'
+             'git'
+             'gulp'
+             'npm')
 conflicts=('butter')
 provides=('butter')
 options=('!strip')
@@ -27,25 +36,20 @@ md5sums=('SKIP'
 
 pkgver() {
   cd "$_pkgname"
-  
+
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "$_pkgname"
-
-  export PYTHON=/usr/bin/python2
-
-  # Get dependencies
   npm install
 }
 
 build() {
   cd "$_pkgname"
-
-  grunt bower_clean
-  grunt css
-  grunt nwjs
+  gulp clean
+  gulp css
+  gulp nwjs
 }
 
 package() {
@@ -62,9 +66,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   ln -s "/usr/lib/butter/Butter" "$pkgdir/usr/bin/butter"
 
-  # Desktop file
   install -Dm644 "butter.desktop" "$pkgdir/usr/share/applications/butter.desktop"
-
-  # Icon
   install -Dm644 "$_pkgname/src/app/images/icon.png" "$pkgdir/usr/share/pixmaps/butter.png"
+  install -Dm644 "$_pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
