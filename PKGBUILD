@@ -19,7 +19,7 @@ depends=('gtk3' 'portaudio' 'libgl' 'glu' 'ffmpeg-compat' 'libedit' 'nvidia-cg-t
 optdepends=('nvidia-utils: only for nVidia users')
 provides=('lightworks')
 conflicts=('lightworks')
-source=("http://www.lwks.com/dmpub/lwks-$pkgver-amd64.deb")
+source=("http://downloads.lwks.com/lwks-$pkgver-amd64.deb")
 sha256sums=('428d72570054b0f4287212d85a70c926b413407b5105a07bcf14cc578b5ebff1')
 
 package() {
