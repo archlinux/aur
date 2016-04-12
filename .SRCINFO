@@ -1,6 +1,6 @@
 pkgbase = osvr-steamvr-git
 	pkgdesc = Driver for allowing applications written against SteamVR to work with hardware and software running with the OSVR software framework.
-	pkgver = v0.1.r84.g124f42a
+	pkgver = v0.1.r92.gaa4b206
 	pkgrel = 1
 	url = https://github.com/OSVR/SteamVR-OSVR
 	install = osvr-steamvr.install
