@@ -1,5 +1,5 @@
 pkgname=telegram-desktop
-pkgver=0.9.40
+pkgver=0.9.42
 pkgrel=1
 _qtver=5.5.1
 pkgdesc='Official desktop version of Telegram messaging app.'
@@ -112,6 +112,6 @@ package() {
 		icon_dir="$pkgdir/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps"
 		
 		install -d "$icon_dir"
-		install -m644 "$srcdir/tdesktop/Telegram/SourceFiles/art/icon${icon_size}.png" "$icon_dir/telegram-desktop.png"
+		install -m644 "$srcdir/tdesktop/Telegram/Resources/art/icon${icon_size}.png" "$icon_dir/telegram-desktop.png"
 	done
 }
