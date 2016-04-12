@@ -1,7 +1,7 @@
 # Maintainer: Xentec <xentec at aix0 dot eu>
 
 pkgname=cppformat
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Small, safe and fast formatting library for C++"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ conflicts=('cppformat-git')
 install=$pkgname.install
 
 source=("https://github.com/cppformat/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('561d5d3628bcba65b9ceaba5266603572535c8ba5f9e4e17e7afd4c55ff31941')
+sha256sums=('bf03e9fe37abf1087a3ea209fb8cd0f3d4ba6d8b699c255f13cbe3835f89b19b')
 
 prepare() {
 	cd "$pkgname-$pkgver"
