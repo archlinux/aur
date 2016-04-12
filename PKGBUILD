@@ -1,11 +1,11 @@
-# Maintainer: Alad Wenter <alad@archlinux.info>
+# Maintainer: Alad Wenter <nynq@nepuyvahk.vasb> (rot13)
 # Contributor: Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Chirantan Ekbote <chirantan.ekbote@gmail.com>
 # Contributor: Sébastien Luttringer <seblu@aur.archlinux.org>
 # Contributor: Tsekhovoy Eugene aka Krash <8552246@gmail.com>
 
 pkgname=mc-git
-pkgver=4.8.16.r15.g50cca69
+pkgver=4.8.16.r44.g51d0783
 pkgrel=1
 pkgdesc='a text based filemanager'
 arch=('i686' 'x86_64')
