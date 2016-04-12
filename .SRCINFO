@@ -1,0 +1,19 @@
+pkgbase = oomox-git
+	pkgdesc = Numix fork with color-changing script (GTK2, GTK3)
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://github.com/actionless/oomox
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	depends = bash
+	depends = glib2
+	depends = gdk-pixbuf2
+	depends = ruby-sass
+	depends = python-gobject
+	optdepends = xorg-xrdb: for the `xresources` theme
+	source = git://github.com/actionless/oomox.git#branch=master
+	md5sums = SKIP
+
+pkgname = oomox-git
+
