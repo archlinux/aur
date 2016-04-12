@@ -1,8 +1,9 @@
 pkgbase = udf-infusion-git
 	pkgdesc = MySQL functionality enhancement UDF
 	pkgver = r104.25c3613
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/infusion/udf_infusion
+	install = udf-infusion.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
@@ -11,7 +12,9 @@ pkgbase = udf-infusion-git
 	provides = udf-infusion
 	conflicts = udf-infusion
 	source = git+https://github.com/infusion/udf_infusion
+	source = bootstrap.patch
 	sha256sums = SKIP
+	sha256sums = 82a19b98f1338b2c73040e82ca60b0cfcdf1907e0ca4ab20de3d66227027108f
 
 pkgname = udf-infusion-git
 

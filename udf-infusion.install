@@ -1,0 +1,39 @@
+# Register functions
+post_install() {
+	start=
+	if systemctl -q is-active mysqld; then
+		echo Stopping mysqld... >&2
+		start=1
+		systemctl stop mysqld
+	fi
+	echo Registering UDF library... >&2
+	mysqld -u mysql --bootstrap < /usr/share/udf-infusion/load.sql 2> /dev/null
+	if test -n "$start"; then
+		echo Starting mysqld... >&2
+		systemctl start mysqld
+	fi
+}
+
+post_upgrade() {
+	post_install "$@"
+}
+
+# Unregister functions
+pre_remove() {
+	start=
+	if systemctl -q is-active mysqld; then
+		echo Stopping mysqld... >&2
+		start=1
+		systemctl stop mysqld
+	fi
+	echo Unregistering UDF library... >&2
+	mysqld -u mysql --bootstrap < /usr/share/udf-infusion/unload.sql 2> /dev/null
+	if test -n "$start"; then
+		echo Starting mysqld... >&2
+		systemctl start mysqld
+	fi
+}
+
+pre_upgrade() {
+	pre_remove "$@"
+}
