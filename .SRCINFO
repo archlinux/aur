@@ -5,6 +5,7 @@ pkgbase = courier-imap
 	url = http://www.courier-mta.org/imap/
 	arch = i686
 	arch = x86_64
+	arch = armv7h
 	license = GPL2
 	depends = courier-maildrop
 	depends = gcc-libs
