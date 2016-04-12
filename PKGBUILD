@@ -1,7 +1,7 @@
 # Maintainer: Yegorius <yegorius@domic.us>
 
 pkgname=pulseaudio-dlna
-pkgver=0.5.0.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A small DLNA server which brings DLNA/UPnP support to PulseAudio"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ optdepends=('lame: MP3 transcoding support'
 			'opus-tools: OPUS transcoding support'
 			'vorbis-tools: OGG transcoding support')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/masmu/pulseaudio-dlna/archive/$pkgver.tar.gz")
-sha256sums=('7788adc3c6ec4916719a3ca43a3f2cf34451a76ff27e5610c5a8ebb1ff0e3cfd')
+sha256sums=('e07f6db31502d90f6f8971d2cd1f96a540e2bd7f26f0090afdaee5b5c73f6a68')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
