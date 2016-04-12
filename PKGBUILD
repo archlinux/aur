@@ -1,15 +1,17 @@
-# Maintainer:
+# Maintainer: Luca Weiss <WEI16416@spengergasse.at>
 
 pkgname=ubuntu-device-flash
 pkgver=0.34
 pkgrel=1
-pkgdesc=""
+pkgdesc="Tools to work with Ubuntu Touch"
 url="https://launchpad.net/goget-ubuntu-touch"
 arch=('x86_64' 'i686')
 license=('GPL3')
 depends=('android-tools')
 makedepends=('go' 'bzr')
 # options='!emptydirs'
+provides=("ubuntu-device-flash")
+conflicts=("ubuntu-device-flash")
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/goget-ubuntu-touch_${pkgver}.orig.tar.gz")
 md5sums=('b8bddb2db18d1b47098bb94531b23c78')
 
