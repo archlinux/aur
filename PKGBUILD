@@ -5,12 +5,11 @@
 
 pkgname=keyfuzz
 pkgver=0.2
-pkgrel=9
+pkgrel=10
 pkgdesc="A Utility for manipulating the scancode/keycode translation tables of keyboard drivers"
 url="http://0pointer.de/lennart/projects/keyfuzz"
-license="GPL2"
+license=('GPL2')
 arch=("i686" "x86_64")
-depends=()
 makedepends=("lynx")
 
 # original source is down since 2014/08. It's small, so pack it in the aurball...
