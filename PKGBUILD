@@ -1,14 +1,14 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname=sunlesssea-hib
-pkgver=2016.02.22
+pkgver=2016.03.29
 pkgrel=1
 pkgdesc="Sunless Sea is a nautical roguelike in glorious 2D, presenting a non-linear, choice-heavy, personalised experience. Humblebundle version."
 url="http://www.failbettergames.com/sunless/"
 arch=('any')
 license=('commercial')
 depends=("lib32-libxcursor")
-source=("hib://Sunless_Sea-StandAlone-Linux-2016-02-22.sh")
-md5sums=('91f751a8d4b6c65e50f1e8466350c5e8')
+source=("hib://Sunless_Sea-StandAlone-Linux-2016-03-29.sh")
+md5sums=('b82055a5e48ffe7188309ce28a003b98')
 PKGEXT=.pkg.tar
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
 
