@@ -1,10 +1,10 @@
 # Maintainer: tjbp (archlinux@tjbp.net)
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 
-pkgname=php-composer56
+pkgname=php56-composer
 epoch=1
 pkgver=1.0.0
-pkgrel=2
+pkgrel=1
 pkgdesc="Dependency Manager for PHP 5.6"
 arch=('any')
 license=('MIT')
