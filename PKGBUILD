@@ -1,5 +1,5 @@
 pkgname=osvr-oculus-rift-git
-pkgver=v0.1.r80.gf69fb4e
+pkgver=v0.1.r83.g3fb935e
 pkgrel=1
 pkgdesc="A plugin for OSVR that provides access to Oculus Rift trackers from OSVR applications."
 arch=(i686 x86_64)
