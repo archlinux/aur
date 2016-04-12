@@ -1,7 +1,6 @@
 pkgname=libcomps
-_commit=d86995b748419bf6ca36f1c7f233727736d2efd5
 pkgver=0.1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Comps XML file manipulation library"
 arch=('i686' 'x86_64')
 url="https://github.com/rpm-software-management/$pkgname"
@@ -10,11 +9,11 @@ depends=('expat' 'libxml2')
 makedepends=('cmake' 'python')
 checkdepends=('check')
 optdepends=('python: for python bindings')
-source=("$url/archive/$_commit/$pkgname-$pkgver.tar.gz")
-md5sums=('59f37f86cd69d3ebeb700959aa606bdf')
+source=("$url/archive/$pkgname-$pkgver.tar.gz")
+md5sums=('c5baced95e7b465dd7e9d8e5bd9094f6')
 
 prepare() {
-	mv "$pkgname-$_commit" "$pkgname-$pkgver"
+	mv "$pkgname-$pkgname-$pkgver" "$pkgname-$pkgver"
 	cd "$pkgname-$pkgver"
 	rm -rf build
 	mkdir build

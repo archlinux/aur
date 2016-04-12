@@ -1,7 +1,7 @@
 pkgbase = libcomps
 	pkgdesc = Comps XML file manipulation library
 	pkgver = 0.1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rpm-software-management/libcomps
 	arch = i686
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = libcomps
 	depends = expat
 	depends = libxml2
 	optdepends = python: for python bindings
-	source = https://github.com/rpm-software-management/libcomps/archive/d86995b748419bf6ca36f1c7f233727736d2efd5/libcomps-0.1.7.tar.gz
-	md5sums = 59f37f86cd69d3ebeb700959aa606bdf
+	source = https://github.com/rpm-software-management/libcomps/archive/libcomps-0.1.7.tar.gz
+	md5sums = c5baced95e7b465dd7e9d8e5bd9094f6
 
 pkgname = libcomps
 
