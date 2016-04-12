@@ -1,0 +1,23 @@
+pkgbase = virglrenderer
+	pkgdesc = VirGL virtual OpenGL renderer
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://virgil3d.github.io/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = python2
+	depends = libepoxy
+	depends = mesa
+	source = http://www.freedesktop.org/software/virgl/virglrenderer-0.5.0.tar.bz2
+	source = http://www.freedesktop.org/software/virgl/virglrenderer-0.5.0.tar.bz2.sig
+	validpgpkeys = 10A6D91DA1B05BD29F6DEBAC0C74F35979C486BE
+	md5sums = 29804ecd1713e298828f9d1642eb289d
+	md5sums = SKIP
+	sha1sums = c3e94299b6d16b8ca05d1aa511a89b26c66393b3
+	sha1sums = SKIP
+	sha256sums = a1955a3433b6a51c3ee5def007b1973da22807b91437a2dbcdf664bf2c9240b6
+	sha256sums = SKIP
+
+pkgname = virglrenderer
+
