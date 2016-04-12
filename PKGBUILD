@@ -2,7 +2,7 @@
 # Source: https://github.com/zancarius/archlinux-pkgbuilds
 
 pkgname=sentry
-pkgver=8.2.3
+pkgver=8.3.1
 pkgrel=1
 pkgdesc="Python-based realtime logging and aggregation server."
 arch=(any)
