@@ -1,4 +1,4 @@
-# Contributor: Aashik S  aashiks at gmail dot com
+# Contributor: Aashik S  aashiks at inflo dot ws
 # Maintainer: http://smc.org.in
 # Contributor: Akshay S Dinesh asdofindia at gmail dot com
 
@@ -13,7 +13,7 @@ url="http://smc.org.in/fonts/"
 depends=(fontconfig xorg-font-utils)
 source=("http://smc.org.in/downloads/fonts/anjalioldlipi/AnjaliOldLipi.ttf"
         "https://gitlab.com/smc/anjalioldlipi/raw/master/67-smc-anjalioldlipi.conf")
-md5sums=('049762747764b0ac0ae291a48a616424'
+md5sums=('9eedaf7396ba99a6086af5f2c154bd7c'
          '9b343beb71398383af33988a9829bc05')
 install=ttf-malayalam-fonts.install
 
