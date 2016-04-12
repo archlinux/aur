@@ -6,25 +6,23 @@
 
 pkgname=mysql-workbench-git
 pkgver=6.3.6.r0.gd46b227
-pkgrel=2
+pkgrel=3
 # mysql & mysql-connector-c++ from git
-_gdal_version=2.0.1
+_gdal_version=2.0.2
 _boost_version=1.59.0
 pkgdesc='A cross-platform, visual database design tool developed by MySQL - git checkout'
 arch=('i686' 'x86_64')
 url='https://www.mysql.com/products/workbench/'
 license=('GPL2')
-depends=('python2' 'libzip' 'gtkmm' 'ctemplate'
-	'libgnome-keyring' 'libgl' 'python2-paramiko' 'python2-pexpect'
-	'pcre' 'tinyxml' 'libxml2' 'mysql-python' 'cairo'
-	'python2-cairo' 'hicolor-icon-theme' 'desktop-file-utils' 'libiodbc'
-	'vsqlite++' 'unixodbc' 'freetype2'
-	'libantlr3c')
+depends=('cairo' 'ctemplate' 'desktop-file-utils' 'freetype2' 'gtkmm'
+	'hicolor-icon-theme' 'libgl' 'libgnome-keyring' 'libiodbc' 'libxml2'
+	'libzip' 'mysql-python' 'pcre' 'python2' 'python2-cairo' 'python2-paramiko'
+	'python2-pexpect' 'tinyxml' 'unixodbc' 'vsqlite++')
 optdepends=('gnome-keyring: store SSH/MySQL passwords in GNOME password manager'
 	'python2-pyodbc: database migration')
 provides=('mysql-workbench')
 conflicts=('mysql-workbench')
-makedepends=('git' 'cmake' 'boost' 'curl' 'mesa' 'swig' 'java-runtime' 'imagemagick')
+makedepends=('git' 'cmake' 'boost' 'mesa' 'swig' 'imagemagick')
 install=mysql-workbench.install
 validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5')
 source=('git://github.com/mysql/mysql-workbench.git'
@@ -32,15 +30,13 @@ source=('git://github.com/mysql/mysql-workbench.git'
 	'git://github.com/mysql/mysql-connector-cpp.git'
 	"http://download.osgeo.org/gdal/${_gdal_version}/gdal-${_gdal_version}.tar.gz"
 	"https://downloads.sourceforge.net/project/boost/boost/${_boost_version}/boost_${_boost_version//./_}.tar.bz2"
-	'http://www.antlr3.org/download/antlr-3.4-complete.jar'
 	'0001-mysql-workbench-no-check-for-updates.patch'
 	'arch_linux_profile.xml')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'b55f794768e104a2fd0304eaa61bb8bda3dc7c4e14f2c9d0913baca3e55b83ab'
+            'db7722caf8d9dd798ec18012b9cacf40a518918466126a88b9fd277bd7d40cc4'
             '727a932322d94287b62abb1bd2d41723eec4356a7728909e38adb65ca25241ca'
-            '9d3e866b610460664522520f73b81777b5626fb0a282a5952b9800b751550bf7'
             'b189e15c6b6f5a707357d9a9297f39ee3a33264fd28b44d5de6f537f851f82cf'
             '2ade582ca25f6d6d748bc84a913de39b34dcaa6e621a77740fe143007f2833af')
 
@@ -69,9 +65,6 @@ prepare() {
 	# we need python 2.x
 	sed -i '/^FIND_PROGRAM(PYTHON_EXEC /c FIND_PROGRAM(PYTHON_EXEC "python2")' \
 		CMakeLists.txt
-
-	# put antlr into place
-	install -D ${srcdir}/antlr-3.4-complete.jar ${srcdir}/linux-res/bin/antlr-3.4-complete.jar
 }
 
 build() {
