@@ -3,7 +3,7 @@
 
 pkgname=gnome-shell-extension-topicons
 pkgver=28
-pkgrel=3
+pkgrel=4
 pkgdesc="Shows legacy tray icons on top."
 arch=('any')
 url="https://extensions.gnome.org/extension/495/topicons/"
@@ -13,6 +13,11 @@ groups=('gnome-shell-extensions')
 #source=("http://adel-dev.abaton.at/repo/topicons/snapshot/topicons-${pkgver}.tar.gz")
 source=("https://repo.dray.be/package-files/topicons-28.tar.gz")
 sha256sums=('569760b6f62a8b9e40ac3a1b6fa44572bd86416008fff1f0ef8b54215e2ec8a6')
+
+build() {
+	cd $srcdir
+	sed -i 's/"3.18"/"3.18",\n    "3.20"/g' topicons-*/metadata.json
+}
 
 package() {
   uuid='topIcons@adel.gadllah@gmail.com'
