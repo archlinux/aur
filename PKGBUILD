@@ -2,8 +2,8 @@
 # Contributor: Conrad Nelson <yaro@marupa.net>
 
 pkgname=kildclient-git
-pkgver=r1347.e437da1
-pkgrel=2
+pkgver=r1359.1103a2d
+pkgrel=1
 pkgdesc="A powerful MUD client written for GTK+ and support for Perl."
 
 arch=('i686' 'x86_64')
