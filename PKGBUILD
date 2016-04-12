@@ -3,7 +3,7 @@
 
 pkgname=dracut
 pkgver=044
-pkgrel=2
+pkgrel=3
 pkgdesc="Generic, modular, cross-distribution initramfs generation tool"
 arch=("i686" "x86_64")
 url="https://dracut.wiki.kernel.org/"
@@ -13,7 +13,7 @@ optdepends=("cryptsetup: Part of the Crypto setup"
 	"dmraid: Part of the Raid setup"
 	"lvm2: Part of the LVM setup"
 	"mdadm: Part of the MDadmin thing"
-	"kexec: For switch kernels without reboot support")
+	"kexec-tools: For switch kernels without reboot support")
 makedepends=("docbook-xsl" "asciidoc")
 backup=("etc/dracut.conf")
 install="dracut.install"
@@ -46,5 +46,4 @@ package() {
 	sysconfdir=/etc loginstall=/var/log/dracut install
 }
 #I use md5sum because is the default in "makepkg -g", blame Allan McRae
-
 md5sums=('fbb8b6aea24c2f7d328021bbf11788fd')
