@@ -1,5 +1,5 @@
 pkgname=amule-git
-pkgver=2.4.0.r10305.4a508bf
+pkgver=2.4.0.r10323.d3c6603
 pkgrel=1
 pkgdesc='Client for the eD2k and Kad networks'
 arch=(i686 x86_64)
@@ -17,7 +17,6 @@ makedepends=(
 #  boost
   git
 )
-provides=(amule)
 conflicts=(amule)
 backup=(usr/share/webapps/amps/index.php
         usr/share/webapps/amps/style.css)
@@ -37,30 +36,27 @@ sha256sums=(SKIP
             897ac890b5f1b8cb4b53fded313cb2779bed5d39041a320885dd9dbe30878879)
 
 pkgver() {
-  cd amule
+  cd amule/
 
   printf %s.r%s.%s $(grep '#define VERSION' src/include/common/ClientVersion.h |
     cut -d \" -f2) $(git rev-list --count HEAD) $(git rev-parse --short HEAD)
 }
 
 prepare() {
-  cd amule
-
-  sed -i '12,$ d' $srcdir/configure_ignore_gdlib-config_garbage.diff
+  cd amule/
 
   patch -Np1 < $srcdir/aMule-cas-datadir.patch
   patch -Np1 < $srcdir/configure_ignore_gdlib-config_garbage.diff
   patch -Np1 < $srcdir/use_xdg-open_as_preview_default.diff
   patch -Np1 < $srcdir/version_check.diff
 
-  sed -i 's/Categories=Network;P2P;/Categories=GTK;Network;P2P;/' amule.desktop
   sed -i 's\./LucidaSansRegular.ttf\/usr/share/fonts/TTF/DejaVuSans.ttf\' src/utils/amps/index.php
   sed -i 's\/usr/share/fonts/corefonts/times.ttf\/usr/share/fonts/TTF/DejaVuSerif.ttf\' \
     src/utils/cas/configfile.c
 }
 
 build() {
-  cd amule
+  cd amule/
 
   ./autogen.sh
 
@@ -89,30 +85,30 @@ build() {
 }
 
 package() {
-  cd amule
+  cd amule/
 
   make DESTDIR=$pkgdir install
 
   rm $pkgdir/usr/share/pixmaps/amule.*
-  install -m644 $srcdir/amule.png $pkgdir/usr/share/pixmaps
+  install -m644 $srcdir/amule.png $pkgdir/usr/share/pixmaps/
 
-  install src/utils/fileview/mulefileview $pkgdir/usr/bin
+  install src/utils/fileview/mulefileview $pkgdir/usr/bin/
   ln -rs $pkgdir/usr/bin/mulefileview $pkgdir/usr/bin/fileview
 
-  install -d $pkgdir/usr/share/webapps/amps
-  install -m644 $(find src/utils/amps -maxdepth 1 -type f) $pkgdir/usr/share/webapps/amps
-  install -d $pkgdir/usr/share/webapps/amps/langs
-  install -m644 src/utils/amps/langs/* $pkgdir/usr/share/webapps/amps/langs
-  install -d $pkgdir/usr/share/webapps/amps/images
-  install -m644 src/utils/amps/images/* $pkgdir/usr/share/webapps/amps/images
+  install -d $pkgdir/usr/share/webapps/amps/
+  install -m644 $(find src/utils/amps -maxdepth 1 -type f) $pkgdir/usr/share/webapps/amps/
+  install -d $pkgdir/usr/share/webapps/amps/langs/
+  install -m644 src/utils/amps/langs/* $pkgdir/usr/share/webapps/amps/langs/
+  install -d $pkgdir/usr/share/webapps/amps/images/
+  install -m644 src/utils/amps/images/* $pkgdir/usr/share/webapps/amps/images/
 
-  install -m644 *.txt docs/{*.dia,AUTHORS,COPYING,README.*} README* $pkgdir/usr/share/doc/amule
+  install -m644 *.txt docs/{*.dia,AUTHORS,COPYING,README.*} README* $pkgdir/usr/share/doc/amule/
 
-  install -d $pkgdir/usr/share/doc/amule/cas
-  install -m644 src/utils/cas/README $pkgdir/usr/share/doc/amule/cas
+  install -d $pkgdir/usr/share/doc/amule/cas/
+  install -m644 src/utils/cas/README $pkgdir/usr/share/doc/amule/cas/
 
-  install -d $pkgdir/usr/share/doc/amps
+  install -d $pkgdir/usr/share/doc/amps/
   ln -rs $pkgdir/usr/share/webapps/amps/{CHANGELOG,COPYING,README,SETTINGS,TODO} \
-    $pkgdir/usr/share/doc/amps
-  ln -rs $pkgdir/usr/share/doc/amps $pkgdir/usr/share/doc/amule
+    $pkgdir/usr/share/doc/amps/
+  ln -rs $pkgdir/usr/share/doc/amps/ $pkgdir/usr/share/doc/amule/
 }
