@@ -1,7 +1,7 @@
 pkgname=osvr-rendermanager-git
 pkgver=v00_06_43.r6.gdb34892
 pkgrel=1
-pkgdesc="utilities, sample programs (including source code) for direct rendering on NVIDIA and AMD cards"
+pkgdesc="TW, ATW and high performance rendering with OpenGL and GLES"
 arch=(i686 x86_64)
 url="https://github.com/sensics/OSVR-RenderManager"
 #license=('GPL')
