@@ -1,6 +1,6 @@
 pkgbase = mailnag-gnome-shell
 	pkgdesc = Mailnag GNOME-Shell extension
-	pkgver = 3.18.0
+	pkgver = 3.20.0
 	pkgrel = 1
 	url = https://github.com/pulb/mailnag-gnome-shell
 	install = mailnag-gnome-shell.install
@@ -13,8 +13,8 @@ pkgbase = mailnag-gnome-shell
 	depends = gnome-shell
 	depends = mailnag
 	depends = folks
-	source = https://github.com/pulb/mailnag-gnome-shell/archive/v3.18.0.tar.gz
-	md5sums = de87a0d76149a3a2c28cade37f229858
+	source = https://github.com/pulb/mailnag-gnome-shell/archive/v3.20.0.tar.gz
+	md5sums = 16e3d33e2d85faf41ff1b981f481110f
 
 pkgname = mailnag-gnome-shell
 
