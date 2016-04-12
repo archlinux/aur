@@ -1,30 +1,37 @@
 --- Makefile.COMMON	2015-07-27 14:32:10.000000000 -0700
-+++ node_exporter-0.11.0/Makefile.COMMON	2016-04-10 19:47:18.669912858 -0700
-@@ -66,6 +66,10 @@
++++ node_exporter-0.11.0/Makefile.COMMON	2016-04-11 23:42:19.161142552 -0700
+@@ -66,6 +66,11 @@
  	GO     ?= GOROOT=$(GOROOT) GOPATH=$(GOPATH) $(GOCC)
  endif
  
-+# GODEP
-+GODEP    ?= GOROOT=$(GOROOT) GOPATH=$(GOPATH) PATH=$(GOROOT)/bin:$(PATH) $(GOPATH)/bin/godep
-+GODEPURL ?= "github.com/tools/godep"
++# set godep cmd path and url
++GODEP           ?= $(GOPATH)/bin/godep
++GODEPCMD       ?= GOROOT=$(GOROOT) GOPATH=$(GOPATH) PATH=$(GOROOT)/bin:$(PATH) $(GODEP)
++GODEPURL        ?= "github.com/tools/godep"
 +
  # Never honor GOBIN, should it be set at all.
  unexport GOBIN
  
-@@ -91,11 +95,14 @@
+@@ -90,12 +95,19 @@
+ 	mkdir -p $(dir $@)
  	ln -s $(CURDIR) $@
  
- dependencies-stamp: $(GOCC) $(SRC) | $(SELFLINK)
+-dependencies-stamp: $(GOCC) $(SRC) | $(SELFLINK)
 -	$(GO) get -d
++$(GODEP):
++	@echo
++	@echo installing godep
 +	$(GO) get $(GODEPURL) && $(GO) install $(GODEPURL)
-+	@echo restoring Godeps
-+	$(GODEP) restore
++
++dependencies-stamp: $(SELFLINK) | $(GODEP)
++	@echo
++	@echo restoring dependencies
++	cd $(SELFLINK) ; $(GODEPCMD) restore
  	touch $@
  
  $(BINARY): $(GOCC) $(SRC) dependencies-stamp Makefile Makefile.COMMON
 -	$(GO) build $(GOFLAGS) -o $@
-+	cd $(SELFLINK)
-+	$(GODEP) go build -o node_exporter
++	cd $(SELFLINK) ; $(GODEPCMD) go build -o node_exporter
  
  .PHONY: archive
  archive: $(ARCHIVE)
