@@ -1,0 +1,15 @@
+pkgbase = noto-fonts-sc
+	pkgdesc = Noto CJK-SC fonts for Simplified Chinese
+	pkgver = 20150617
+	pkgrel = 1
+	url = https://github.com/googlei18n/noto-cjk
+	install = noto-fonts-sc.install
+	arch = any
+	license = custom: SIL
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://github.com/googlei18n/noto-cjk/raw/master/NotoSansCJKsc-DemiLight.otf
+	sha256sums = SKIP
+
+pkgname = noto-fonts-sc
+
