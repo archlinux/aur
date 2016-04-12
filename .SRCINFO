@@ -1,6 +1,6 @@
 pkgbase = meliora-openbox-themes
 	pkgdesc = Meliora Openbox Themes
-	pkgver = 4d6199b
+	pkgver = a878d5b
 	pkgrel = 1
 	url = https://bitbucket.org/Ensayia/meliora-openbox-themes
 	arch = any
