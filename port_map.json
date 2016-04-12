@@ -1,0 +1,17 @@
+{
+    "map_list": [
+        {
+            // 要加速的服务器端口
+            "dst_port": 12345, 
+            // 本地端口
+            "listen_port": 1099, 
+            // 备注信息
+            "name": "ss"
+        }, 
+        {
+            "dst_port": 23456, 
+            "listen_port": 2200, 
+            "name": "ssh"
+        }
+    ]
+}

@@ -1,0 +1,13 @@
+pkgname="finalspeed-client-cli"
+
+post_install(){
+    echo
+    echo "==> 启动前请先配置好位于/opt/${pkgname}下"
+    echo "==> 的client_config.json和port_map.json，并删除注释"
+    echo "==> "
+    echo "==> 开机自启请输入以下命令："
+    echo "==> # systemctl enable finalspeed-client-cli"
+    echo "==> # systemctl start finalspeed-client-cli"
+    echo "==> "
+    echo "==> 祝你使用愉快！"
+}

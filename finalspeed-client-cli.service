@@ -1,0 +1,8 @@
+[Unit]
+Description=FinalSpeed Client Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/finalspeed-client-cli
