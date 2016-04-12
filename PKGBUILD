@@ -3,7 +3,7 @@
 pkgbase=octopi
 pkgname=('octopi' 'octopi-notifier' 'octopi-repoeditor' 'octopi-cachecleaner')
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="a powerful Pacman frontend using Qt libs"
 arch=('i686' 'x86_64')
 url="http://octopiproject.wordpress.com"
@@ -60,6 +60,7 @@ package_octopi() {
 	depends=('qt5-declarative' 'xterm')
 	optdepends=('kdesu: for KDE'
 		    'gksu: for XFCE, Gnome, LXDE, Cinnamon'
+				'lxqt-sudo: for LXQT'
 		    'gnome-keyring: for password management'
 		    'gist: for SysInfo report'
 		    'pacaur: for AUR support'
