@@ -11,7 +11,7 @@ url="https://github.com/3ed/CheckUpdates-AUR"
 license=('Artistic2.0')
 depends=('perl-www-aur' 'perl-json' 'perl-try-tiny')
 makedepends=('perl-module-build')
-optdepends=('perl-smart-Comments: for debug perpose only')
+optdepends=('perl-smart-comments: for debug perpose only')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/3ed/${_pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('e1f96259fbd3558852b83f9ae80b0395de988aaca2a065c79a85f6ecc8b7419b')
 
