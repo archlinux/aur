@@ -29,6 +29,7 @@ prepare() {
   git submodule update #--init #--recursive #NDA
 
   mkdir -p "$srcdir/osvr-rendermanager-build"
+  sed -i "/osvrrm_copy_deps(osvr::osvrClientKit osvr::osvrClient osvr::osvrCommon osvr::osvrUtil)/d" CMakeLists.txt
 }
 
 build() {
@@ -42,10 +43,10 @@ package() {
   make DESTDIR="$pkgdir/" install
 
   # *sigh*
-  rm -f "$pkgdir"/usr/lib/libosvrClient.so.0.6
-  rm -f "$pkgdir"/usr/lib/libosvrClientKit.so.0.6
-  rm -f "$pkgdir"/usr/lib/libosvrCommon.so.0.6
-  rm -f "$pkgdir"/usr/lib/libosvrUtil.so.0.6
+#  rm -f "$pkgdir"/usr/lib/libosvrClient.so.0.6
+#  rm -f "$pkgdir"/usr/lib/libosvrClientKit.so.0.6
+#  rm -f "$pkgdir"/usr/lib/libosvrCommon.so.0.6
+#  rm -f "$pkgdir"/usr/lib/libosvrUtil.so.0.6
 }
 
 # vim:set ts=2 sw=2 et:
