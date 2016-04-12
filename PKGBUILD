@@ -4,7 +4,7 @@
 pkgname=ubuntu-themes-wildblueyonder
 _pkgname=ubuntu-themes
 _actual_ver=14.04
-_extra_ver=+15.04.20150410
+_extra_ver=+16.04.20160324.1
 pkgver=${_actual_ver}${_extra_ver}
 # pkgver=${_actual_ver}${_extra_ver/\+/.}
 pkgrel=1
@@ -20,12 +20,12 @@ conflicts=(ubuntu-themes ubuntu-mono)
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${_pkgname}_${_actual_ver}${_extra_ver}.orig.tar.gz"
         gtk2.patch gtk3.patch)
-md5sums=('f3b03e11e406c687b789dcb7cc94178f'
+md5sums=('ce30d562a8b1bb80eb65997ba8e90abc'
          '82ca564f78217c88358fedc5003bf149'
          'b3808ebed9a637971a934646349cde69')
 
 prepare () {
-  cd "$srcdir"/${_pkgname}-${pkgver}/
+  cd "$srcdir"
 
   patch Ambiance/gtk-2.0/gtkrc -i ../gtk2.patch
   patch -Np0 -i "../gtk3.patch"
@@ -34,13 +34,13 @@ prepare () {
 }
 
 build() {
-  cd "$srcdir"/${_pkgname}-${pkgver}/
+  cd "$srcdir"
   make
 }
 
 package () {
 
-  cd "$srcdir"/${_pkgname}-${pkgver}/
+  cd "$srcdir"
 
   # Install themes
   install -dm755   "${pkgdir}/usr/share/themes/"
