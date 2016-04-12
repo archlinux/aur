@@ -7,7 +7,6 @@ arch=(any)
 url="https://github.com/n2code/${pkgname}"
 license=('MIT')
 depends=('git>=2.0.0' 'rsync>=3.0.0' 'coreutils' 'bash>=4.0.0')
-makedepends=('git>=2.0.0')
 source=("${pkgname}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha256sums=(e6e49d9cba2c7bab2160724ecc1685e72b5501c9da8eb332c145ac5634866362)
 backup=("etc/${pkgname}.conf")
