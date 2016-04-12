@@ -3,7 +3,7 @@
 
 pkgname=i2pd-git
 _pkgname=i2pd
-pkgver=2443.b486483
+pkgver=2710.eefff14
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ source=('i2pd::git+https://github.com/PurpleI2P/i2pd.git#branch=master'
         i2pd.service
         i2pd.tmpfiles.conf)
 install=i2pd.install
-backup=(etc/i2pd/i2pd.conf etc/i2pd/tunnels.cfg)
+backup=(etc/i2pd/i2pd.conf etc/i2pd/tunnels.conf)
 conflicts=('i2pd')
 
 build() {
@@ -35,12 +35,12 @@ package(){
   install -Dm0644 $srcdir/i2pd.tmpfiles.conf $pkgdir/usr/lib/tmpfiles.d/i2pd.conf
 
   install -Dm0644 $srcdir/i2pd/debian/i2pd.conf $pkgdir/${_conf_dest}/i2pd.conf
-  install -Dm0644 $srcdir/i2pd/debian/tunnels.conf $pkgdir/${_conf_dest}/tunnels.cfg
+  install -Dm0644 $srcdir/i2pd/debian/tunnels.conf $pkgdir/${_conf_dest}/tunnels.conf
   install -Dm0644 $srcdir/i2pd/debian/subscriptions.txt $pkgdir/${_conf_dest}/subscriptions.txt
 
   install -d -m0750 $pkgdir/${_home_dest}
   ln -s /${_conf_dest}/i2pd.conf $pkgdir/${_home_dest}/i2pd.conf
-  ln -s /${_conf_dest}/tunnels.cfg $pkgdir/${_home_dest}/tunnels.cfg
+  ln -s /${_conf_dest}/tunnels.conf $pkgdir/${_home_dest}/tunnels.conf
   ln -s /${_conf_dest}/subscriptions.txt $pkgdir/${_home_dest}/subscriptions.txt
 
   cd $srcdir/i2pd/contrib
