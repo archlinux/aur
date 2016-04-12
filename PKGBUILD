@@ -13,7 +13,7 @@ url='http://sourceforge.net/projects/nicotine-plus/'
 license=('GPL')
 depends=('pygtk' 'mutagen')
 makedepends=('setconf')
-optdepends=('python2-geoip: to enable Geographical blocker' 'python2-sexy: spell checking support' 'miniupnpc-python2: UPNP support')
+optdepends=('python2-geoip: to enable Geographical blocker' 'python2-sexy: spell checking support' 'python2-miniupnpc: UPNP support')
 source=("http://downloads.sourceforge.net/project/nicotine-plus/nicotine-plus/${pkgver}/${pkgname}+-${pkgver}.tar.bz2")
 sha256sums=('71e5b33e273daaf072dbf63839536c14d7ead9d149323d50eee09f7429e34c1d')
 
