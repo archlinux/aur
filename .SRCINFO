@@ -1,7 +1,7 @@
 pkgbase = scrawpp-git
 	pkgdesc = Steam Controller C++ library (git version)
-	pkgver = 0.1.0.r0.g09a158c
-	pkgrel = 2
+	pkgver = 0.2.0.r0.ge93a248
+	pkgrel = 1
 	url = https://gitlab.com/dennis-hamester/scrawpp
 	arch = any
 	license = custom:ISC
