@@ -1,7 +1,7 @@
 # Maintainer: Det <nimetonmaili g-mail>
 # Contributors: 458italia, Madek, Berseker, Syr
 # Check the latest version with:
-# curl -s https://dl.google.com/dl/earth/client/current/google-earth-stable_current_x86_64.rpm | head -c96 | strings | cut -d "-" -f4
+# $ curl -s https://dl.google.com/dl/earth/client/current/google-earth-stable_current_x86_64.rpm | head -c96 | strings | cut -d "-" -f4
 
 # Attempt to fix crashes and blank Panoramio: "1" to enable.
 # - http://forums.fedoraforum.org/showthread.php?p=1678303#post1678303
