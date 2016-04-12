@@ -3,11 +3,11 @@
 # Contributor: Pieter Kokx <pieter@kokx.nl>
 
 pkgname=armory-goatpig-git
-pkgver=v0.94.0.r0.gc2e0a6b
+pkgver=v0.94.1.r1.g6fc4fe9
 pkgrel=1
 pkgdesc="Armory Bitcoin wallet, built from new, official github repo w/auto selection of current python2 version"
 arch=('i686' 'x86_64')
-url="https://github.com/etotheipi/BitcoinArmory"
+url="https://github.com/goatpig/BitcoinArmory"
 license=('AGPL3')
 depends=('crypto++' 'swig' 'python2' 'twisted' 'qt4' 'python2-pyqt4' 'python2-bsddb' 'python2-psutil')
 makedepends=('git' 'gcc' 'make')
