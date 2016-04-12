@@ -9,8 +9,8 @@ license=('LGPL2.1')
 depends=('glu' 'libsm' 'libxext' 'mesa' 'ncurses' 'ocl-icd' 'llvm')
 makedepends=('clang' 'cmake' 'python2')
 provides=('opencl-intel' 'opencl-headers' 'opencl-headers12')
-conflicts=('opencl-intel' 'opencl-headers' 'opencl-headers12')
-replaces=('opencl-intel' 'opencl-headers' 'opencl-headers12')
+conflicts=('beignet' 'opencl-intel' 'opencl-headers' 'opencl-headers12')
+replaces=('beignet' 'opencl-intel' 'opencl-headers' 'opencl-headers12')
 source=("git://anongit.freedesktop.org/beignet")
 sha256sums=('SKIP')
 
@@ -21,7 +21,6 @@ pkgver() {
 
 build() {
 	cd "$srcdir/beignet"
-	patch -p1 < ../../isnan.patch
 	mkdir -p "$srcdir/beignet/build"
 	cd "$srcdir/beignet/build"
 	cmake .. \
