@@ -1,7 +1,7 @@
 # Maintainer: Simon Gomizelj <simongmzlj@gmail.com>
 
 pkgname=repose
-pkgver=5
+pkgver=6
 pkgrel=1
 pkgdesc="archlinux repo building tool"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('pacman' 'libarchive' 'gnupg')
 makedepends=('git')
 source=("$url/archive/$pkgver.tar.gz")
-sha1sums=('cd5ab13aae67079245697aec5eaab8b7566c63cb')
+sha1sums=('c5a7f8f737d853bac15e7a2d7312114954525622')
 
 build() {
   make -C "$pkgname-$pkgver"
