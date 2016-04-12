@@ -1,22 +1,29 @@
 pkgbase = libubox-lua-git
 	pkgdesc = A small utility library developed for OpenWrt containing a event loop, linked lists, blobmsg, stream buffer management, [...]
-	pkgver = r351.136a519
+	pkgver = r364.155bf39
 	pkgrel = 1
 	url = http://git.openwrt.org/?p=project/libubox.git
-	arch = any
-	license = ISC
-	license = BSD-3c
-	depends = json-c
-	depends = lua51
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = ISC BSD-3c
 	makedepends = git
 	makedepends = cmake
 	makedepends = gcc
 	makedepends = make
 	makedepends = patch
 	makedepends = pkg-config
+	depends = json-c
+	depends = lua51
 	provides = libubox
 	conflicts = libubox
 	conflicts = libubox-git
-	replaces = libubox
+	source = git://git.openwrt.org/project/libubox.git
+	source = 001-lua-version.patch
+	source = 002-json-c-include.patch
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = libubox-lua-git
+
