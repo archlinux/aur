@@ -6,7 +6,7 @@
 
 pkgname=gtk-theme-orion
 pkgver=1.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A modern and light GTK theme"
 arch=('any')
 url="http://deviantart.com/view/281431756"
