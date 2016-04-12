@@ -44,7 +44,6 @@ pkgname = compiz-gtk-git
 	depends = libsm
 	depends = libxcomposite
 	depends = libxinerama
-	depends = marco
 	provides = compiz-gtk=0.8.12.3.r0.g59328f2
 	conflicts = compiz-gtk
 
