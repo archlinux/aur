@@ -2,7 +2,7 @@
 
 pkgname=azure-vhd-utils-for-go-git
 _pkgname=azure-vhd-utils-for-go
-pkgver=2016.04.10
+pkgver=r21.7db4795
 pkgrel=1
 pkgdesc="Azure VHD utilities for Go."
 arch=('x86_64' 'i686')
@@ -11,6 +11,11 @@ license=('MIT')
 makedepends=('go' 'git')
 options=('!strip' '!emptydirs')
 _gourl=github.com/Microsoft/azure-vhd-utils-for-go
+
+pkgver() {
+  cd $srcdir/build/src/$_gourl/
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
   export GOPATH="$srcdir/build"
