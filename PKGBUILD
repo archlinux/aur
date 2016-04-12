@@ -2,7 +2,7 @@
 
 pkgname=vhdl-simili
 pkgver=3.1b16
-pkgrel=3
+pkgrel=4
 pkgdesc="A low-cost VHDL development system designed for the serious hardware designer." 
 arch=('i686' 'x86_64') 
 url="http://www.symphonyeda.com/products.htm" 
@@ -33,7 +33,6 @@ package()
    install -m755 "${srcdir}/"$pkgname.{sh,csh} "${pkgdir}/etc/profile.d/"
 }
 
-
-md5sums=('b92b4bf72a55845576359f05d8465f12'
+md5sums=('cd4de271d000af8b31fec41fccf47d08'
          '2520169313fca8024d970a2c1fb6d2ab'
          '569609c49efe253d201f71b1c88c3740')
