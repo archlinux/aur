@@ -5,7 +5,7 @@
 pkgname=nvidia-ck
 pkgver=361.28
 _extramodules=extramodules-4.4-ck
-pkgrel=3
+pkgrel=4
 _pkgdesc="NVIDIA drivers for linux-ck."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
