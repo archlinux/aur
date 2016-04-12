@@ -1,6 +1,6 @@
 pkgname=vulcan-editor-git
-pkgver=0.1
-pkgrel=2
+pkgver=62.72b6297
+pkgrel=1
 pkgdesc="A minimalistic editor for gtk3"
 arch=('i686' 'x86_64')
 url="https://github.com/zesterer/vulcan"
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   # Use the tag of the last commit
-  git describe --long -- tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
