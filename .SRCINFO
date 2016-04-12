@@ -1,0 +1,21 @@
+pkgbase = xkeyboard-config-bone
+	pkgdesc = X keyboard configuration files with bone support
+	pkgver = 1840.918d5c5
+	pkgrel = 1
+	url = https://github.com/HenningJW/xkeyboard-config
+	arch = any
+	license = custom
+	makedepends = intltool
+	makedepends = xorg-xkbcomp
+	makedepends = xorg-util-macros
+	provides = xkeyboard-config
+	provides = xkbdata
+	conflicts = xkeyboard-config
+	conflicts = xkbdata
+	replaces = xkeyboard-config
+	replaces = xkbdata
+	source = git+https://github.com/HenningJW/xkeyboard-config.git
+	sha256sums = SKIP
+
+pkgname = xkeyboard-config-bone
+
