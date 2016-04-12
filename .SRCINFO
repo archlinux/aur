@@ -1,6 +1,6 @@
 pkgbase = distrho-vst-git
 	pkgdesc = DISTRHO VST audio plugins ports
-	pkgver = r341.ec86a7a
+	pkgver = r342.e03c51c
 	pkgrel = 1
 	url = http://distrho.sourceforge.net/
 	arch = i686
