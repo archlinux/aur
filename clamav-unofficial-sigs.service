@@ -1,8 +1,0 @@
-[Unit]
-Description=clamav-unofficial-sigs third-party signature databases updater
-RefuseManualStart=no
-RefuseManualStop=yes
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/clamav-unofficial-sigs.sh

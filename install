@@ -1,4 +1,0 @@
-post_upgrade() {
-    # for old versions of this package
-    chown clamav:clamav /var/lib/clamav-unofficial-sigs
-}
