@@ -1,5 +1,6 @@
 # Maintainer: Luca Weiss <WEI16416@spengergasse.at>
-
+# Contributor: Oliver Kuster <oliver.kuster[at]gmail[dot]com>
+  
 pkgname=ubuntu-device-flash
 pkgver=0.34
 pkgrel=1
@@ -39,3 +40,6 @@ package() {
   install -Dm755 "$SOURCE_PATH/${pkgname}/${pkgname}" \
     "$pkgdir/usr/bin/$pkgname"
 }
+
+# vim:set ts=2 sw=2 et:
+
