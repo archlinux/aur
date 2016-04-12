@@ -1059,14 +1059,15 @@ index 595a325..99c29b6 100644
 +msgid "Transparent background"
 +msgstr "Latar belakang transparan"
 diff --git a/po/it.po b/po/it.po
-index 491303d..af13ad9 100644
+index 909a8c9..2c46e9c 100644
 --- a/po/it.po
 +++ b/po/it.po
-@@ -2105,3 +2105,6 @@ msgstr "Chiudi _finestra"
- 
- #~ msgid "_Update login records when command is launched"
- #~ msgstr "_Aggiornare i record di login quando il comando viene eseguito"
+@@ -2284,3 +2284,7 @@ msgstr ""
+ #: ../src/terminal-window.c:3727
+ msgid "C_lose Window"
+ msgstr "Chiudi _finestra"
 +
++#, fuzzy
 +msgid "Transparent background"
 +msgstr "Sfondo trasparente"
 diff --git a/po/ja.po b/po/ja.po
