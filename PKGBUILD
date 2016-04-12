@@ -1,7 +1,7 @@
 # Maintainer: Aaron Rogers <aaron.kyle.rogers at gmail dot com>
 pkgname="obd-auto-doctor"
 pkgver="3.0.8"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="obd scan and diagnostics"
 arch=('i686' 'x86_64')
 url="http://www.obdautodoctor.com/"
@@ -12,7 +12,7 @@ source_x86_64=("http://cdn.obdautodoctor.com/${pkgname}_${pkgver}_amd64.tar.gz")
 md5sums_i686=('4cbca291eb5ab3577c306ab1e803a655')
 md5sums_x86_64=('394d7783508545a2eb5b036bd6ac9a9d')
 
-depends=("qt5-base")
+depends=("qt5-base>5.2")
 optdepends=("bluez: for bluetooth support")
 
 [[ "$CARCH" = "i686" ]] && _parch='i386'
