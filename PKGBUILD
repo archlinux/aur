@@ -1,7 +1,7 @@
 # Current Maintainer: Sean Lynch <seanl@literati.org>
 pkgname=beignet-git
 pkgver=Release_v1.0.0.r676.gad86ed3
-pkgrel=1
+pkgrel=2
 pkgdesc='A GPGPU System for Intel Ivybridge GPUs'
 arch=('x86_64')
 url='http://cgit.freedesktop.org/beignet/'
