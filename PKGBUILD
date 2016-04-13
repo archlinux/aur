@@ -3,12 +3,12 @@
 pkgname=walinuxagent
 _pkgname=WALinuxAgent
 pkgver=2.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc="The Microsoft Azure Linux Agent"
 arch=('any')
 url="https://github.com/Azure/WALinuxAgent"
 license=('Apache')
-depends=('python2' 'openssh')
+depends=('python2' 'openssh' 'parted' 'net-tools')
 makedepends=('python2')
 checkdepends=()
 optdepends=()
