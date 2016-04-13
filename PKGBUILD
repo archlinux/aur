@@ -2,10 +2,10 @@
 
 pkgname=festival-pl-em
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Polish diphone female voice for Festival. (Polski zenski glos)"
 url="http://festlang.berlios.de/docu/doku.php?id=languages"
-license="custom"
+license=("custom")
 depends=('festival' 'licenses')
 install="festival-pl-em.install"
 source=(http://repository.slacky.eu/slackware-13.0/multimedia/festival_polish/20091229/src/festival_polish_voice.tgz
