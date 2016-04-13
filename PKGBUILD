@@ -33,6 +33,7 @@ package() {
   python2 setup.py install --root="$pkgdir" --prefix="/usr" --init-system=systemd --optimize=1
   mv $pkgdir/usr/sbin $pkgdir/usr/bin
   sed -i -e 's/\/usr\/sbin/\/usr\/bin/g' $pkgdir/usr/lib/systemd/system/waagent.service
+  sed -i -e '0,/env python/s/env python/env python2/' $pkgdir/usr/bin/waagent
 }
 
 # vim:set ts=2 sw=2 et:
