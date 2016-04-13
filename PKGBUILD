@@ -6,17 +6,17 @@
 # Maintainer: Michael Latman <mlatman@gmail.com>
 pkgname=whatsie
 pkgver=2.0.10
-pkgrel=1
+pkgrel=2
 epoch=
-pkgdesc=""
+pkgdesc="A simple & beautiful desktop client for WhatsApp Web."
 arch=('any')
-url=""
+url="https://whatsie.chat"
 license=('MIT')
 groups=()
-depends=()
-makedepends=('')
+depends=('bash-completion', 'desktop-file-utils', 'gconf', 'gtk2', 'gvfs', 'gvfs', 'hicolor-icon-theme', 'libcap', 'libgcrypt', 'libgcrypt11', 'libnotify', 'libsystemd', 'libsystemd', 'libxtst', 'libxtst', 'nss', 'xdg-utils')
+makedepends=()
 checkdepends=()
-optdepends=()
+optdepends=('gir1.2-gnomekeyring-1.0', 'libgnome-keyring', 'lsb-release')
 provides=()
 conflicts=()
 replaces=()
