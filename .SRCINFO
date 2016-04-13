@@ -1,7 +1,7 @@
 pkgbase = xfce4-power-manager-devel
 	pkgdesc = Power manager for Xfce desktop
 	pkgver = 1.6.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.xfce.org/
 	install = xfce4-power-manager.install
 	arch = i686
@@ -23,8 +23,8 @@ pkgbase = xfce4-power-manager-devel
 	replaces = xfce4-power-manager
 	options = !libtool
 	source = http://archive.xfce.org/src/xfce/xfce4-power-manager/1.6/xfce4-power-manager-1.6.0.tar.bz2
-	md5sums = 28e1ac260a6ea64ebc5f740c06d2a6b8
-	sha1sums = 432e34cbd9e7f8e9ab2f81e3abb10ec7ed7b8c1f
+	md5sums = 2e2e24a1a22912d6a561ba6155887503
+	sha1sums = 5a9fd4d4695a870c9ea1820cd5c228ea957f6ee3
 
 pkgname = xfce4-power-manager-devel
 

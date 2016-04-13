@@ -7,7 +7,7 @@
 _pkgname=xfce4-power-manager
 pkgname=${_pkgname}-devel
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Power manager for Xfce desktop"
 arch=('i686' 'x86_64')
 url="http://www.xfce.org/"
@@ -24,8 +24,8 @@ conflicts=("${_pkgname}")
 options=('!libtool')
 install=${_pkgname}.install
 source=("http://archive.xfce.org/src/xfce/xfce4-power-manager/1.6/xfce4-power-manager-${pkgver}.tar.bz2")
-sha1sums=('432e34cbd9e7f8e9ab2f81e3abb10ec7ed7b8c1f')
-md5sums=('28e1ac260a6ea64ebc5f740c06d2a6b8')
+sha1sums=('5a9fd4d4695a870c9ea1820cd5c228ea957f6ee3')
+md5sums=('2e2e24a1a22912d6a561ba6155887503')
 
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"
