@@ -1,0 +1,13 @@
+pkgbase = foobar2000-playcount-bin
+	pkgdesc = Collects playback statistics for your music
+	pkgver = 3.0.2
+	pkgrel = 1
+	url = https://www.foobar2000.org/components/view/foo_playcount
+	arch = any
+	license = unknown
+	depends = foobar2000>=1.1.0
+	source = foobar2000-playcount-bin-3.0.2.zip::https://www.dropbox.com/s/xhhydw02dbbg7i1/foo_playcount.fb2k-component
+	md5sums = 1699e277414cedf2def7df6c3f3f2e54
+
+pkgname = foobar2000-playcount-bin
+
