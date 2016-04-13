@@ -18,9 +18,9 @@ depends=('pygtk' 'hicolor-icon-theme' 'desktop-file-utils')
 optdepends=('pygtksourceview2: syntax highlighting'
             'python2-dbus: open a new tab in an already running instance'
             'python2-gconf: gnome integration')
-provides=($_pkgname)
-conflicts=($_pkgname)
-replaces=($_pkgname)
+provides=('meld')
+conflicts=('meld')
+replaces=('meld')
 options=('!emptydirs')
 install=meld.install
 source=("http://ftp.gnome.org/pub/gnome/sources/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz")
