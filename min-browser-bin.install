@@ -1,0 +1,1 @@
+update-desktop-database -q
