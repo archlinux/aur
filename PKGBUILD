@@ -3,7 +3,7 @@
 
 _pkgname=monotonic
 pkgname=python-monotonic
-pkgver=0.6
+pkgver=1.0
 pkgrel=1
 pkgdesc="An implementation of time.monotonic() for Python 2 & < 3.3"
 url="https://pypi.python.org/pypi/monotonic"
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/m/monotonic/monotonic-$pkgver.tar.gz")
-sha256sums=('2bc780a16024427cb4bfbfff77ed328484cf6937a787cc50055b83b13b653e74')
+sha256sums=('47d7d045b3f2a08bffe683d761ef7f9131a2598db1cec7532a06720656cf719d')
 
 package() {
   cd $srcdir/$_pkgname-$pkgver
