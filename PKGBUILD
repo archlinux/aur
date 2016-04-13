@@ -12,7 +12,7 @@ makedepends=('xdg-utils')
 optdepends=('mashup: for composing pages to print from within fotoxx' 
   'brasero: for burning')
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-md5sums=('59544973fc74be73cab14885dff838cb')
+md5sums=('1e25cc733c24452c7fcc4469562d6a4a')
 install=fotoxx.install
 
 prepare() {
