@@ -13,7 +13,7 @@ depends=('perl-www-aur' 'perl-json' 'perl-try-tiny')
 makedepends=('perl-module-build')
 optdepends=('perl-smart-comments: for debug perpose only')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/3ed/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('3f32b86f60896d551726a9de9a698ca973e955771d2404a50d1d5453e4add3fc')
+sha256sums=('8c4a16af493007429337c75b7d6530dd501c539f071b077c2c1ece9c25c57e52')
 
 build() {
 	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
