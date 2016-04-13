@@ -4,7 +4,7 @@
 pkgname=oomox-git
 pkgver=0.14.1
 pkgrel=1
-pkgdesc="Numix fork with color-changing script (GTK2, GTK3)"
+pkgdesc="Graphical application for generating different color variations of Numix theme (GTK2, GTK3)"
 arch=('x86_64' 'i686')
 url="https://github.com/actionless/oomox"
 license=('GPLv3')
