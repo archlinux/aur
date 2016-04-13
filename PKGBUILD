@@ -1,15 +1,14 @@
 # firefox-esr-privacy
 pkgname=firefox-esr-privacy
 _basever=45
-pkgver=45.0.1
-pkgrel=1
+pkgver=45.0.2
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.mozilla.org/firefox/"
-depends=('gtk3' 'gtk2' 'libxt' 'startup-notification'
-         'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
-         'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
+depends=('gtk2' 'libxt' 'startup-notification' 'dbus-glib' 'alsa-lib' 'desktop-file-utils'
+         'hicolor-icon-theme' 'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'xorg-server' 'inetutils')
 install=firefox.install
 options=('!emptydirs')
@@ -26,12 +25,12 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${pkgver}esr/so
         firefox.desktop
         firefox-fixed-loading-icon.png
         mozconfig)
-sha256sums=('1a44568b4d10b208ae21930335a3098aec31cc42dd43ccd6ef659f3c321b7366'
+sha256sums=('939ac36c4bf30794e76e87903c0e0f5a813807310226c52f0fcd573275067ed3'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '8d9afa1f940a9dac689ead40a57990d1491f34a1787b2222f8f5b5e485d54103'
             '4ffefee2f47e2de114df0d8a0c9a7b964d6e6959ce691e274e259ad8fd85682e'
             '1926a3d3b8996cdbdd8b970a12d9880e3272181fd4b07c2c9277ca7290b159c3'
-            '7fc91a81da2a83e7765bdea66944572cb78b87eed71d8f36d6cc6d6cc87b0dff'
+            '46a5fbd75febff5a901eed2ac711876bcb9e91e68e1812a3069cbb48de0e58b8'
             '5f97739f5962c98c94c0cf7a7361d9dac01be1366773cb2b45d2bd5938569fde'
             '52a94f48e562f98ba0b22b43b1684f6a813872b9c310d6f7567fe91aaab4944b'
             '01fa29086c1cba4a1fb7ea0e13baea3e210a771ccc67134fbb32de4185e0cb23'

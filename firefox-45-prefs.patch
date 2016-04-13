@@ -92,6 +92,15 @@ diff -Naur firefox-45.0esr.bak/modules/libpref/init/all.js firefox-45.0esr/modul
  
  // maximum number of dated backups to keep at any time
  pref("browser.bookmarks.max_backups",       5);
+@@ -1117,7 +1117,7 @@
+ // send "do not track" HTTP header, disabled by default
+ pref("privacy.donottrackheader.enabled",    false);
+ // Enforce tracking protection in all modes
+-pref("privacy.trackingprotection.enabled",  false);
++pref("privacy.trackingprotection.enabled",  true);
+ // Enforce tracking protection in Private Browsing mode
+ pref("privacy.trackingprotection.pbmode.enabled",  true);
+ 
 @@ -4096,7 +4096,7 @@
  
  // Satchel (Form Manager) prefs
