@@ -1,3 +1,7 @@
+!.gitignore
+
 /src
 /pkg
 *.pkg*
+*.orig
+gnome-shell-frippery-*.tgz
