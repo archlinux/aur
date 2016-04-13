@@ -2,7 +2,7 @@
 # Contributor: JD Horelick <jdhore1@gmail.com>
 # Contributor: Alad Wenter <alad@linuxbbq.org>
 pkgname=cowdancer
-pkgver=0.78
+pkgver=0.79
 pkgrel=1
 pkgdesc="Copy-on-write wrapper for pbuilder"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('qemu: if you want to use qemubuilder'
             'bash-completion: bash autocomplete support')
 
 source=(http://httpredir.debian.org/debian/pool/main/c/$pkgname/${pkgname}_${pkgver}.tar.xz)
-sha256sums=('bec4384cf72c3b3d98c3a2dc61832737c3407ff3f121bf5216ab06135b998519')
+sha256sums=('0b9fc98f22b37d3a499a6648a35a5739f858148a4496e09d7474002b0c68c344')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
