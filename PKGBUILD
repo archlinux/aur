@@ -2,8 +2,8 @@
 # Contributor: Nikita Sivakov <cryptomaniac.512@gmail.com>
 
 pkgname=numix-themes-archblue-git
-pkgver=2.5.1
-pkgrel=3
+pkgver=2.5.1.r193.a86f0a3
+pkgrel=1
 pkgdesc='A flat and light theme with a modern look using Arch Linux colors (GNOME, Openbox, Unity, Xfce)'
 arch=('any')
 url='http://numixproject.org/'
@@ -12,11 +12,16 @@ depends=('gtk-engine-murrine')
 makedepends=('git')
 provides=('numix-themes-archblue')
 conflicts=('numix-themes-archblue')
-source=("numix-themes-${pkgver}.tar.gz::https://github.com/shimmerproject/Numix/archive/v${pkgver}.tar.gz")
-md5sums=('4468cb3f2fe0d01e823df7c310778787')
+source=("git+https://github.com/shimmerproject/Numix.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd Numix
+  git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./'
+}
 
 prepare() {
-    cd Numix-${pkgver}
+    cd Numix
 
     for FILE in `find -type f`
     do
@@ -28,12 +33,15 @@ prepare() {
         sed -i 's/#f0f0f0/#ffffff/g' "${FILE}"
         sed -i 's/#f9f9f9/#ffffff/g' "${FILE}"
         sed -i 's/#bdbdbd/#cbcbcb/g' "${FILE}"
+        sed -i 's/#f0544c/#1793d1/g' "${FILE}"
+        sed -i 's/#444444/#333333/g' "${FILE}"
+        sed -i 's/#444/#333/g' "${FILE}"
         sed -i 's/Numix/Numix-ArchBlue/' "${FILE}"
     done
 }
 
 package() {
-  cd Numix-${pkgver}
+  cd Numix
 
   install -dm 755 "${pkgdir}"/usr/share/themes/Numix-ArchBlue
   rm -rf .git .gitignore CREDITS LICENSE README.md
