@@ -1,11 +1,12 @@
 pkgbase = letsencrypt-systemd-nginx
 	pkgdesc = Systemd service for Let's Encrypt certificate renewal with nginx servers
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lnicola/letsencrypt-systemd-nginx
 	arch = any
 	license = MIT
 	depends = letsencrypt
+	depends = nginx
 	source = git+https://github.com/lnicola/letsencrypt-systemd-nginx.git
 	md5sums = SKIP
 

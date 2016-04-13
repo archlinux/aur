@@ -1,12 +1,12 @@
 # Maintainer: Laurentiu Nicola <lnicola@dend.ro>
 pkgname=letsencrypt-systemd-nginx
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Systemd service for Let's Encrypt certificate renewal with nginx servers"
 arch=('any')
 url="https://github.com/lnicola/letsencrypt-systemd-nginx"
 license=('MIT')
-depends=('letsencrypt')
+depends=('letsencrypt' 'nginx')
 source=("git+https://github.com/lnicola/letsencrypt-systemd-nginx.git")
 md5sums=('SKIP')
 
