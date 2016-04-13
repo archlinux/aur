@@ -1,12 +1,11 @@
 # Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=nuvola-app-google-play-git
-pkgver=5.11.r0.g2bdd8d6
+pkgver=5.12.r1.gcd09584
 pkgrel=1
 pkgdesc="Google Play Music integration for Nuvola Player."
 arch=("any")
 url="https://github.com/tiliado/nuvola-app-google-play"
-provides=('nuvola-app-google-play')
 license=('custom:BSD')
 depends=('nuvolaplayer-git')
 makedepends=('git')
