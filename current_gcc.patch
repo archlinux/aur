@@ -1,0 +1,67 @@
+diff -rupN plink-1.07-src-orig/elf.cpp plink-1.07-src/elf.cpp
+--- plink-1.07-src-orig/elf.cpp	2009-10-10 17:00:21.000000000 +0100
++++ plink-1.07-src/elf.cpp	2016-04-13 11:43:48.518604345 +0100
+@@ -1175,10 +1175,10 @@ void Plink::elfBaseline()
+ 	  << setw(8) << gcnt << " "
+ 	  << setw(8) << (double)cnt / (double)gcnt << "\n";
+ 
+-      map<int,int>::iterator i = chr_cnt.begin();
+-      while ( i != chr_cnt.end() )
++      map<int,int>::iterator i2 = chr_cnt.begin();
++      while ( i2 != chr_cnt.end() )
+ 	{
+-	  int c = i->first;
++	  int c = i2->first;
+ 	  int x = chr_cnt.find( c )->second;
+ 	  int y = chr_gcnt.find( c )->second;
+ 	  
+@@ -1189,7 +1189,7 @@ void Plink::elfBaseline()
+ 	      << setw(8) << y << " "
+ 	      << setw(8) << (double)x / (double)y << "\n";
+ 	  
+-	  ++i;
++	  ++i2;
+ 	}
+       
+
+diff -rupN plink-1.07-src-orig/idhelp.cpp plink-1.07-src/idhelp.cpp
+--- plink-1.07-src-orig/idhelp.cpp	2009-10-10 17:00:22.000000000 +0100
++++ plink-1.07-src/idhelp.cpp	2016-04-13 11:45:59.860417525 +0100
+@@ -772,12 +772,12 @@ void IDHelper::idHelp()
+       for (int j = 0 ; j < jointField.size(); j++ )
+ 	{
+ 	  set<IDField*> & jf = jointField[j];
+-	  set<IDField*>::iterator j = jf.begin();
++	  set<IDField*>::iterator j2 = jf.begin();
+ 	  PP->printLOG(" { ");
+-	  while ( j != jf.end() )
++	  while ( j2 != jf.end() )
+ 	    {
+-	      PP->printLOG( (*j)->name + " " );
+-	      ++j;
++	      PP->printLOG( (*j2)->name + " " );
++	      ++j2;
+ 	    }
+ 	  PP->printLOG(" }");
+ 	}
+
+
+diff -rupN plink-1.07-src-orig/sets.cpp plink-1.07-src/sets.cpp
+--- plink-1.07-src-orig/sets.cpp	2009-10-10 17:00:20.000000000 +0100
++++ plink-1.07-src/sets.cpp	2016-04-13 11:42:16.252106931 +0100
+@@ -768,11 +768,11 @@ vector_t Set::profileTestScore()
+       //////////////////////////////////////////////
+       // Reset original missing status
+ 
+-      vector<Individual*>::iterator i = PP->sample.begin();
+-      while ( i != PP->sample.end() )
++      vector<Individual*>::iterator i2 = PP->sample.begin();
++      while ( i2 != PP->sample.end() )
+ 	{
+-	  (*i)->missing = (*i)->flag;
+-	  ++i;
++	  (*i2)->missing = (*i2)->flag;
++	  ++i2;
+ 	}
+ 
+       ////////////////////////////////////////////////
