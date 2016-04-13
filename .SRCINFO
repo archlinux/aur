@@ -1,6 +1,6 @@
 pkgbase = vte3-ng-fullwidth-emoji
 	pkgdesc = Enhanced Virtual Terminal Emulator widget for use with GTK3 (patched with support for fullwidth emoji)
-	pkgver = 0.44.0.a
+	pkgver = 0.44.1.a
 	pkgrel = 1
 	url = https://github.com/thestinger/vte-ng
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = vte3-ng-fullwidth-emoji
 	depends = gtk3
 	depends = vte-common
 	depends = pcre2
-	provides = vte3=0.44.0
-	provides = vte3-select-text=0.44.0
+	provides = vte3=0.44.1
+	provides = vte3-select-text=0.44.1
 	provides = vte3-ng
 	conflicts = vte3
 	conflicts = vte3-select-text
@@ -24,9 +24,9 @@ pkgbase = vte3-ng-fullwidth-emoji
 	replaces = vte3-select-text
 	replaces = vte3-ng
 	options = !emptydirs
-	source = https://github.com/thestinger/vte-ng/archive/0.44.0.a.tar.gz
+	source = https://github.com/thestinger/vte-ng/archive/0.44.1.a.tar.gz
 	source = fullwidth-emoji.patch
-	sha256sums = bfa4f4148a63e8b730ab272792f55d03c8afa632bb5c28a440e1a5a8134c4b1b
+	sha256sums = 63c01b8bc3299086e7fb30e59fd3af879326f6f6d7629e46fdeeb344f9be141b
 	sha256sums = 85e9c7f2014419238077f0cbe3fc522dc8afc81430dd49840cd1e33622623270
 
 pkgname = vte3-ng-fullwidth-emoji
