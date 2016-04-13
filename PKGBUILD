@@ -4,7 +4,7 @@
 # Contributor: kageurufu
 
 pkgname=burpsuite
-pkgver=1.6.32
+pkgver=1.7beta
 pkgrel=1
 pkgdesc="An integrated platform for performing security testing of web applications (free edition)."
 url="https://portswigger.net/burp/"
@@ -17,7 +17,7 @@ source=("${pkgname}.jar::https://portswigger.net/DownloadUpdate.ashx?Product=Fre
         burpsuite.desktop
         icon64.png)
 
-md5sums=('ea4e6bac280f854a2125e631a6c82a1c'
+md5sums=('9851e2c48ce91e6e9b47b789aec50245'
          'f463acff8a409ef66136a30b404ff361'
          '81feb47df93ef9b65e5194cf9ff6c023'
          'c3678a3dcb77765beb6708a7cead6341')
