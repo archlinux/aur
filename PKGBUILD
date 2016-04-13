@@ -2,7 +2,7 @@
 
 _pkgname=whoneeds
 pkgname=${_pkgname}-git
-pkgver=r5.1593694
+pkgver=r6.ca4e025
 pkgrel=1
 pkgdesc="A fast whoneeds implemention in Python for Arch Linux"
 arch=('any')
@@ -22,5 +22,6 @@ pkgver() {
 package() {
     cd "$srcdir/$_pkgname"
     install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 '_whoneeds' "${pkgdir}/usr/share/zsh/site-functions/_whoneeds"
 }
 
