@@ -2,14 +2,13 @@
 # Contributor: Keerthan Jaic <jckeerthan at gmail dot com>
 
 pkgname=diorite-git
-pkgver=0.2.0.r3.gb24e5fe
+pkgver=0.2.0.r20.g885d3e6
 pkgrel=1
 pkgdesc="Utility and widget library based on Glib and GTK3."
 arch=('i686' 'x86_64')
 url="https://tiliado.eu/diorite"
 license=('GPL')
 makedepends=('git')
-provides=('diorite')
 depends=('python' 'vala' 'glib2' 'gtk3')
 source=("$pkgname::git://github.com/tiliado/diorite")
 sha256sums=('SKIP')
