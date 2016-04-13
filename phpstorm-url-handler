@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Delete first 27 characters
+request=${1:27}
+
+# Decode URL
+request=$(echo $request | echo -e "$(sed 's/+/ /g; s/%/\\x/g')")
+
+# Replace &line= with :
+request=${request/&line=/:}
+
+# Replace &column= with :
+request=${request/&column=/:}
+
+# Launch PHPStorm
+phpstorm $request
