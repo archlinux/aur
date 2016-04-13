@@ -1,0 +1,10 @@
+--- sage-7.1/src/setup.py.orig	2016-04-08 16:59:24.691349473 +0000
++++ sage-7.1/src/setup.py	2016-04-08 17:03:03.847153796 +0000
+@@ -591,6 +591,7 @@
+         build_dir=SAGE_CYTHONIZED,
+         force=force,
+         aliases=aliases,
++        include_path=sys.path,
+         compiler_directives={
+             'embedsignature': True,
+             'profile': profile,

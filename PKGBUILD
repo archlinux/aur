@@ -7,41 +7,44 @@
 # Special thanks to Nareto for moving the compile from the .install to the PKGBUILD
 
 pkgname=sagemath-git
-pkgver=7.1.beta2.r0.gbcb68d0
+pkgver=7.2.beta4.r0.g0aec256
 pkgrel=1
 pkgdesc="Open Source Mathematics Software, free alternative to Magma, Maple, Mathematica, and Matlab"
 arch=(i686 x86_64)
 url="http://www.sagemath.org"
 license=(GPL)
-depends=(ipython2 atlas-lapack ppl mpfi palp brial singular libcliquer maxima-ecl gfan sympow tachyon python2-rpy2
+depends=(ipython2 cysignals ppl mpfi palp brial singular cliquer maxima-ecl gfan sympow tachyon python2-rpy2 nauty
   python2-matplotlib python2-scipy python2-sympy python2-networkx python2-igraph libgap flintqs lcalc lrcalc lrs arb
   eclib gmp-ecm zn_poly gd python2-cvxopt pynac linbox gsl rubiks pari-galdata pari-seadata-small planarity rankwidth
   sage-data-combinatorial_designs sage-data-elliptic_curves sage-data-graphs sage-data-polytopes_db sage-data-conway_polynomials)
 optdepends=('cython2: to compile cython code' 'jmol: 3D plots' 'sage-notebook: Browser-based (flask) notebook interface'
   'sagemath-doc: Documentation and inline help' 'ipython2-notebook: Jupyter notebook interface' 'mathjax: Jupyter notebook interface'
-  'coin-or-cbc: COIN backend for numerical computations' 'nauty: for generating some classes of graphs'
+  'coin-or-cbc: COIN backend for numerical computations' 'coin-or-csdp: for computing Lovász theta-function of graphs'
   'buckygen: for generating fullerene graphs' 'plantri: for generating some classes of graphs' 'benzene: for generating fusenes and benzenoids'
   'modular_decomposition: modular decomposition of graphs' 'ffmpeg: to export animations to video' 'imagemagick: to show animations'
-  'coxeter3: Coxeter groups implementation' 'cryptominisat: SAT solver' 'gap-data: for computing Galois groups')
+  'coxeter3: Coxeter groups implementation' 'cryptominisat: SAT solver' 'gap-data: for computing Galois groups'
+  'jupyter-notebook: Jupyter notebook interface' 'atlas-lapack: improved performance for some linear algebra operations')
 makedepends=(cython2 boost ratpoints symmetrica fflas-ffpack python2-jinja coin-or-cbc
-  mcqd coxeter3 cryptominisat modular_decomposition bliss-graphs tdlib meataxe) # libfes
+  mcqd coxeter3 cryptominisat modular_decomposition bliss-graphs tdlib python2-pkgconfig meataxe) # libfes
 conflicts=(sagemath)
 provides=(sagemath sage-mathematics)
 source=("git://git.sagemath.org/sage.git#branch=develop" 
-        anal.h package.patch env.patch paths.patch clean.patch skip-check.patch test-optional.patch python-2.7.11.patch contour.patch
-        disable-fes.patch jupyter-path.patch)
+        pexpect.zip::"https://github.com/pexpect/pexpect/archive/524495960dd8898ddd30f7ba37298de51beee773.zip"
+        anal.h package.patch env.patch paths.patch clean.patch skip-check.patch cython-sys-path.patch
+        disable-fes.patch jupyter-path.patch test-optional.patch python-2.7.11.patch)
 md5sums=('SKIP'
+         'a346bb2c0350c1cb17d5325235c5e38a'
          'a906a180d198186a39820b0a2f9a9c63'
          '9ba81f717ffd4e20b8b2f2a318307488'
-         '93a9716afa561a928f4fd311582de064'
-         'f547e48a76e409c4ba6735377e5893e4'
+         'f6c62f0ccc168c5e6e3dd9d6f73f6389'
+         '0f746ed394fd7eb7a6b3963014976098'
          '6d9ae0978ce6a05a0da2cafdfb178a09'
          '5947a420a0b1483f0cbc74c76895789b'
-         'cdcabd475b80afe0534a5621e972736e'
-         'ef927896f2071b442b1d07d7e69f5f3a'
-         '930cb987f63fd465a3a7123b0f5c2b85'
+         'a1bcdd3fe620dbae60ed8b0e98b2ece7'
          '4eb23a3c7363258bc9ba764d6e5512ba'
-         '16b529194c6105c3364127bd8f1efa83')
+         '16b529194c6105c3364127bd8f1efa83'
+         'cdcabd475b80afe0534a5621e972736e'
+         'ef927896f2071b442b1d07d7e69f5f3a')
 
 pkgver() {
   cd sage
@@ -76,12 +79,12 @@ prepare(){
   sed -e 's|graph.hh|bliss/graph.hh|' -i src/sage/graphs/bliss.pyx
 # don't list optional packages when running tests
   patch -p0 -i ../test-optional.patch
-# fix jupyter path
+# set jupyter path
   patch -p0 -i ../jupyter-path.patch
 # fix timeit with Python 2.7.11
   patch -p0 -i ../python-2.7.11.patch
-# fix contour plots with matplotlib 1.5.1
-  patch -p0 -i ../contour.patch
+# search system paths for cython includes
+  patch -p1 -i ../cython-sys-path.patch
 
 # Upstream patches  
 # fix build against libfes 0.2 http://trac.sagemath.org/ticket/15209
@@ -104,20 +107,21 @@ prepare(){
   rm -r src/sage/dev
 }
 
-
 build() {
   cd sage/src
 
   export SAGE_LOCAL="/usr"
   export SAGE_SRC="$PWD"
   export CC=gcc
-  
+
   make sage/libs/pari/auto_gen.pxi
   make sage/ext/interpreters/__init__.py
 
   python2 setup.py build
-}
 
+  cd "$srcdir"/pexpect-*
+  python2 setup.py build
+}
 
 package() {
   cd sage/src
@@ -132,9 +136,9 @@ package() {
 
   mkdir -p "$pkgdir"/usr/bin
   cp bin/sage "$pkgdir"/usr/bin
-  for _i in arch-env banner cachegrind callgrind cleaner coverage coverageall CSI CSI-helper.py cython env eval grep grepdoc inline-fortran ipython \
+  for _i in arch-env banner cachegrind callgrind cleaner coverage coverageall cython env eval grep grepdoc inline-fortran ipython \
     massif maxima.lisp native-execute notebook num-threads.py omega open preparse python rst2sws rst2txt run run-cython runtests startuptime.py \
-    sws2rst unzip valgrind version.sh
+    sws2rst valgrind version.sh
   do
     cp bin/sage-$_i "$pkgdir"/usr/bin
   done
@@ -145,4 +149,13 @@ package() {
   
 # Create SAGE_SRC, needed for the notebook
   mkdir "$pkgdir"/usr/share/sage/source
+
+# Remove sage_setup
+  rm -r "$pkgdir"/usr/lib/python2.7/site-packages/sage_setup
+
+# install pexpect
+  cd "$srcdir"/pexpect-*
+  python2 setup.py install --root="$pkgdir" --optimize=1
+  mkdir -p "$pkgdir"/usr/lib/sage/site-packages/
+  mv "$pkgdir"/usr/lib/python2.7/site-packages/pexpect "$pkgdir"/usr/lib/sage/site-packages/
 }
