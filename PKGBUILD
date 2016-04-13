@@ -92,7 +92,7 @@ package() {
 
   # Add source file
   echo "export FOAM_INST_DIR=/opt/$_distpkgname" > "$pkgdir/usr/bin/ofoam-3.0" || return 1
-  echo ".$FOAM_INST_DIR/$_gitname/etc/bashrc" >> "$pkgdir/usr/bin/ofoam-3.0" || return 1
+  echo ".\$FOAM_INST_DIR/$_gitname/etc/bashrc" >> "$pkgdir/usr/bin/ofoam-3.0" || return 1
 
   # Add stub thirdparty directory to keep openfoam happy
   install -d "$pkgdir/opt/$_distpkgname/ThirdParty-$_distpkgver" || return 1
