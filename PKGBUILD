@@ -6,7 +6,7 @@ pkgbase=linux-bld       # Build kernel with a different name
 _srcname=linux-4.5
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.5
+pkgver=4.5.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/rmullick/linux"
@@ -19,27 +19,32 @@ _bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-${_bfqv
 _BLDpatch="BLD-4.5.patch"
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-#	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-#	"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+	"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux-bld.preset'
         'change-default-console-loglevel.patch'
-#	"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqversion}-4.4.0.patch"
-#	"${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqversion}-I-O-sched-for-4.4.0.patch"
-#	"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqversion}-for.patch"
+	"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqversion}-4.4.0.patch"
+	"${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqversion}-I-O-sched-for-4.4.0.patch"
+	"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqversion}-for.patch"
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
         )
 
 sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
+            'SKIP'
+            '060ad091ebfa2b63d62e86beaf68c3a5d4638c506c3ac941c1825ba756e830b1'
             'SKIP'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
             '4e520b53399541b5d166fba4be397756278cbcbc260be87bd3ff324496ac3619'
             '30660541b981bfbf60db8ffdbf75dca63648ca19bc2fba564b4561f6ecc7bf1b'
             '8da1d80c0bd568781568da4f669f39fed94523312b9d37477836bfa6faa9527f'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'd1cf14cc696b0f716454fe8eb9746383700889d5d22ad829611f0433cc77b4ce'
+            'b17c3fb18c5b8c20a45a38198f293679ca6aef08d16f12cd816a5cfafac4b2c4'
+            '69a21bc286a628128cfc4723558829cb6ff6c2d7c4dfd4468457898674187b25'
             'adf9a38282035ce3ab609ebac0e134aa4dac41d5189291b884156793d1cb295d')
 
 validpgpkeys=(
@@ -85,10 +90,10 @@ prepare() {
   msg2 "Patch source to enable more gcc CPU optimizatons via the make nconfig"
   patch -Np1 -i "${srcdir}/${_gcc_patch}"
 
-#  msg "Patching source with BFQ patches"
-#  for p in $(ls ${srcdir}/000{1,2,3}-block*BFQ*.patch); do
-#      patch -Np1 -i "$p"
-#  done
+  msg "Patching source with BFQ patches"
+  for p in $(ls ${srcdir}/000{1,2,3}-block*BFQ*.patch); do
+      patch -Np1 -i "$p"
+  done
 
 #  msg2 "Patches from Archlinux"
 
