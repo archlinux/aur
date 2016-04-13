@@ -5,7 +5,7 @@
 # Contributor: Wiadufa Chen <wiadufachen@gmail.com>
 
 pkgname=wxformbuilder-svn
-pkgver=3.5.1.RC1.r2203
+pkgver=3.5.2.RC2.r2227
 pkgrel=1
 pkgdesc="Designer, GUI builder, and RAD tool For wxWidgets"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=('subversion')
 source=("wxformbuilder::svn+http://svn.code.sf.net/p/wxformbuilder/code/3.x/trunk")
 md5sums=('SKIP')
 url="http://wxformbuilder.sourceforge.net/"
-license="GPL"
+license=('GPL')
 
 pkgver() {
   cd "${srcdir}/wxformbuilder"
@@ -28,7 +28,7 @@ pkgver() {
 build() {
   cd "$srcdir/wxformbuilder"
   ./create_build_files4.sh
-  cd build/3.0/gmake
+  cd build/$(wx-config --release)/gmake
   make config=release
 }
 
