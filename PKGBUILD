@@ -1,6 +1,6 @@
 # Maintainer: Johan Förberg <johan@forberg.se>
 pkgname=zstd
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='A fast and efficient compression algorithm.'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git')
 source=("https://github.com/Cyan4973/zstd/archive/v${pkgver}.tar.gz")
 noextract=()
-sha1sums=('b065f7243e24b5e09d80908c8016f8695a3a3ffb')
+sha1sums=('4eb288d9273d3d31378fb42324ac61fae326d9b5')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
