@@ -1,12 +1,12 @@
 # Maintainer: Laurentiu Nicola <lnicola@dend.ro>
 pkgname=systemd-zpool-scrub
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Systemd service for automatic ZFS zpool scrubbing"
 arch=('any')
 url="https://github.com/lnicola/systemd-zpool-scrub"
 license=('MIT')
-depends=('zfs-utils-git')
+depends=('zfs-utils')
 source=("git+https://github.com/lnicola/systemd-zpool-scrub.git")
 md5sums=('SKIP')
 
