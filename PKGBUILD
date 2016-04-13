@@ -4,7 +4,7 @@
 pkgname=python-icalendar-git
 _gitname='icalendar'
 _gitroot='https://github.com/collective/icalendar.git'
-pkgver=3.9.0.4.g64d1741
+pkgver=3.9.2.r2.g608b211
 pkgrel=1
 pkgdesc='A parser/generator of iCalendar files (RFC 2445)'
 arch=('any')
@@ -21,7 +21,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_gitname"
-  git describe --always | sed 's|-|.|g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
