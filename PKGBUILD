@@ -1,4 +1,4 @@
-# Maintainer: _ <_ at gmail dot com>
+# Maintainer: ObscureScience <curvedreality at gmail dot com>
 
 pkgname=urweb-git
 _pkgname=urweb
@@ -36,8 +36,8 @@ build() {
 package() {
 	cd "${srcdir}/${_pkgname}"
 	make PREFIX=/usr DESTDIR="${pkgdir}" install
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README"
 }
 md5sums=('SKIP')
 md5sums=('SKIP')
