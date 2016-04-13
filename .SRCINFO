@@ -1,0 +1,22 @@
+pkgbase = ros-jade-octomap-msgs
+	pkgdesc = ROS - This package provides messages and serializations / conversion for the OctoMap library.
+	pkgver = 0.3.2
+	pkgrel = 1
+	url = http://ros.org/wiki/octomap_msgs
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = ros-jade-message-generation
+	makedepends = ros-jade-catkin
+	makedepends = ros-jade-std-msgs
+	makedepends = ros-jade-geometry-msgs
+	depends = ros-jade-std-msgs
+	depends = ros-jade-message-runtime
+	depends = ros-jade-geometry-msgs
+	source = octomap_msgs::git+https://github.com/ros-gbp/octomap_msgs-release.git#tag=release/jade/octomap_msgs/0.3.2-0
+	md5sums = SKIP
+
+pkgname = ros-jade-octomap-msgs
+
