@@ -1,8 +1,8 @@
 # Maintainer: Maikel Wever <maikelwever@gmail.com>
 
 pkgname=lxd
-pkgver=2.0.0.rc9
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="REST API, command line tool and OpenStack integration plugin for LXC."
 arch=('x86_64')
 url="https://github.com/lxc/lxd"
@@ -20,7 +20,7 @@ source=(
     "https://github.com/lxc/$pkgname/archive/$pkgname-$pkgver.tar.gz"
     "lxd.service"
 )
-md5sums=('89ab34baa36cfb93f85db9a6c2b951b7'
+md5sums=('2a6bcb8e01bc21d1a376d2059eadf572'
          'b1780c0e01e404895e35ac277aa597c4')
 
 _gourl=github.com/lxc/lxd
