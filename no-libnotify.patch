@@ -48,3 +48,4 @@ index 6ecebcc..2f193a3 100644
 -  { NS_SYSTEMALERTSERVICE_CONTRACTID, &kNS_SYSTEMALERTSSERVICE_CID },
    { nullptr }
  };
+ 

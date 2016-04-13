@@ -25,7 +25,7 @@ _pgo=false
 
 # We're getting this from Debian Sid
 _debname=firefox
-_debver=45.0.1
+_debver=45.0.2
 _debrel=1
 _debrepo=http://ftp.debian.org/debian/pool/main/f
 _parabolarepo=https://repo.parabola.nu/other/iceweasel
@@ -34,7 +34,7 @@ _brandingrel=2
 
 pkgname=iceweasel
 pkgver=${_debver}.deb${_debrel}
-pkgrel=3
+pkgrel=1
 pkgdesc="Debian Browser based on Mozilla Firefox, with Parabola GNU/Linux-libre branding"
 arch=('i686' 'x86_64')
 license=('GPL' 'MPL' 'LGPL')
@@ -62,8 +62,8 @@ source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.xz"
 		iceweasel-fixed-loading-icon.png
 		iceweasel-gtk3-20.patch
 		no-libnotify.patch)
-md5sums=('a095e3270ad0d38d0f0fb1706a189fab'
-         '882aa168857d6c15c7fddcb49578c75b'
+md5sums=('b84c7cd075972f87b00681b3901c9d90'
+         'c21e8865ab7e49f4ff2dd05b5e6bcae9'
          '18ddaa5f1b70cbf12110471d50746339'
          '9f8cd36718fa474ce593c90979d14b38'
          '7b9e5996dd9fe0b186a43a297db1c6b5'
@@ -71,7 +71,7 @@ md5sums=('a095e3270ad0d38d0f0fb1706a189fab'
          '35adf69c840aadeb138d1b0be3af63b5'
          '6e335a517c68488941340ee1c23f97b0'
 		 '118fcac8fdeafeb6a41f2dc0dc313538'
-         '8efbf7973a21aa01038bf2315f3384a9')
+         'c4a7a21445579167bff3d787e887903e')
 
 prepare() {
   cd "$srcdir/$_debname-$_debver"
