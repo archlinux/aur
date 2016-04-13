@@ -6,14 +6,14 @@
 # Maintainer: Michael Latman <mlatman@gmail.com>
 pkgname=whatsie
 pkgver=2.0.10
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A simple & beautiful desktop client for WhatsApp Web."
 arch=('any')
 url="https://whatsie.chat"
 license=('MIT')
 groups=()
-depends=()
+depends=("debtap")
 makedepends=()
 checkdepends=()
 optdepends=('lsb-release')
@@ -24,13 +24,13 @@ backup=()
 options=()
 install=".INSTALL"
 changelog=
-source=("https://github.com/mrl4214/AUR/releases/download/2.0.10/whatsie-2.0.10-x86_64.pkg.tar.xz")
+source=()
 noextract=()
 md5sums=()
 validpgpkeys=()
 package(){
-ls
-cp -R * "$pkgdir/"
- echo "$pkgdir/"
+wget "https://github.com/Aluxian/Whatsie/releases/download/v$pkgver/whatsie-$pkgver-linux-amd64.deb" -P build_step/
+dpkg -x "build_step/whatsie-$pkgver-linux-amd64.deb" "$pkgdir/"
+
 }
-md5sums=('836ac02b4a451a51049b35faffaec425')
+md5sums=()
