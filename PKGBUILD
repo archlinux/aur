@@ -2,13 +2,12 @@
 # Contributor: Keerthan Jaic <jckeerthan at gmail dot com
 
 pkgname=nuvolaplayer-git
-pkgver=3.0.0.r2.gd865d68
+pkgver=3.0.0.r25.g8329274
 pkgrel=1
 pkgdesc="Cloud music integration for your Linux desktop."
 arch=('i686' 'x86_64')
 url="https://tiliado.eu/nuvolaplayer/"
 license=('GPL')
-provides=('nuvolaplayer')
 makedepends=('git' 'python')
 depends=('diorite-git' 'vala' 'webkit2gtk' 'libarchive' 'gtk3' 'libnotify' 'json-glib')
 source=("$pkgname::git://github.com/tiliado/nuvolaplayer")
