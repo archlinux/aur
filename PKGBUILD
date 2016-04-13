@@ -4,7 +4,7 @@
 
 pkgname=gnome-terminal-fedora
 _pkgname=gnome-terminal
-pkgver=3.20.0
+pkgver=3.20.1
 pkgrel=1
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686' 'x86_64')
@@ -24,9 +24,9 @@ source=(
 	'org.gnome.Terminal.gschema.override'
 )
 sha256sums=(
-	'2fe7f6bd3ca4e93ce156f83e673b9e8c3f0155b6bc603e109edc942718eb4150'
+	'98b7f48b13b37f05c92aa6b09006f608985efaf5440a1d76c28eda5f46b50894'
 	'83c42ed513e374c181b23da4f9fce39e197c1e09ae328147b2b2bcdfbc4c99d7'
-	'2e80e28a47639f751de5e3947e99b0d9bd8a7532bcfc5ac28dddad7e8e08ce3a'
+	'e9a0c700dd6e52073048d5f025108c583529abae9dce743f40a27fa95f7cb883'
 	'5409b35d1940443d29d810de0560d3303eb74c009e661e8fbfa1030e5ffde92e'
 )
 

@@ -1,4 +1,4 @@
-From b87c1302d9335dc867f0382a6463b0026e38f6dc Mon Sep 17 00:00:00 2001
+From 1c10221dc88f6bd79f9150d00582382840d06b0c Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
 Subject: [PATCH 1/6] Restore transparency
@@ -23,7 +23,7 @@ restore the translations of the string.
  6 files changed, 144 insertions(+), 1 deletion(-)
 
 diff --git a/src/org.gnome.Terminal.gschema.xml b/src/org.gnome.Terminal.gschema.xml
-index c031c8a..7bdd156 100644
+index c031c8ace24a..7bdd156e36aa 100644
 --- a/src/org.gnome.Terminal.gschema.xml
 +++ b/src/org.gnome.Terminal.gschema.xml
 @@ -370,6 +370,16 @@
@@ -44,7 +44,7 @@ index c031c8a..7bdd156 100644
  
    <!-- Keybinding settings -->
 diff --git a/src/profile-editor.c b/src/profile-editor.c
-index ff26df6..b8c1c78 100644
+index ff26df6a0e1b..b8c1c784d17e 100644
 --- a/src/profile-editor.c
 +++ b/src/profile-editor.c
 @@ -1218,7 +1218,18 @@ terminal_profile_edit (GSettings  *profile,
@@ -67,7 +67,7 @@ index ff26df6..b8c1c78 100644
  
    terminal_util_dialog_focus_widget (editor, widget_name);
 diff --git a/src/profile-preferences.ui b/src/profile-preferences.ui
-index 9c00946..9caf72d 100644
+index 9c0094687ffd..9caf72da0f14 100644
 --- a/src/profile-preferences.ui
 +++ b/src/profile-preferences.ui
 @@ -23,6 +23,11 @@
@@ -177,7 +177,7 @@ index 9c00946..9caf72d 100644
                          </child>
                        </object>
 diff --git a/src/terminal-schemas.h b/src/terminal-schemas.h
-index 4b734a3..e434075 100644
+index 4b734a3961d1..e434075d86af 100644
 --- a/src/terminal-schemas.h
 +++ b/src/terminal-schemas.h
 @@ -69,6 +69,9 @@ G_BEGIN_DECLS
@@ -191,7 +191,7 @@ index 4b734a3..e434075 100644
  #define TERMINAL_SETTING_DEFAULT_SHOW_MENUBAR_KEY       "default-show-menubar"
  #define TERMINAL_SETTING_ENABLE_MENU_BAR_ACCEL_KEY      "menu-accelerator-enabled"
 diff --git a/src/terminal-screen.c b/src/terminal-screen.c
-index 33a34ab..92e8bb3 100644
+index 33a34abc2f93..92e8bb387d03 100644
 --- a/src/terminal-screen.c
 +++ b/src/terminal-screen.c
 @@ -855,7 +855,9 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
@@ -245,7 +245,7 @@ index 33a34ab..92e8bb3 100644
  
  static void
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index 8b78849..eb75b42 100644
+index 8b788491f807..eb75b42a23b3 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
 @@ -2616,6 +2616,8 @@ terminal_window_init (TerminalWindow *window)
@@ -273,7 +273,7 @@ index 8b78849..eb75b42 100644
 2.5.0
 
 
-From a160731760b90fa566017dd0212fa1239eadc72c Mon Sep 17 00:00:00 2001
+From a4c0ef989373dab0b6c1506cade6646a8c1779ee Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
 Subject: [PATCH 2/6] window: Make the drawing robust across all themes
@@ -293,7 +293,7 @@ https://bugzilla.gnome.org/show_bug.cgi?id=730016
  1 file changed, 21 insertions(+)
 
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index eb75b42..58ec94a 100644
+index eb75b42a23b3..58ec94aee3d2 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
 @@ -2288,6 +2288,26 @@ terminal_window_realize (GtkWidget *widget)
@@ -335,7 +335,7 @@ index eb75b42..58ec94a 100644
 2.5.0
 
 
-From c2d5533c8973f04f66eafe919d1fc4740d66c106 Mon Sep 17 00:00:00 2001
+From e85b099179ce4cbdedac269460b82aff38a0fa91 Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
 Subject: [PATCH 3/6] screen, window: Extra padding around transparent
@@ -348,7 +348,7 @@ https://bugzilla.redhat.com/show_bug.cgi?id=1207943
  2 files changed, 49 insertions(+), 9 deletions(-)
 
 diff --git a/src/terminal-screen.c b/src/terminal-screen.c
-index 92e8bb3..1718d42 100644
+index 92e8bb387d03..1718d42edaa8 100644
 --- a/src/terminal-screen.c
 +++ b/src/terminal-screen.c
 @@ -140,6 +140,8 @@ static void terminal_screen_system_font_changed_cb (GSettings *,
@@ -427,7 +427,7 @@ index 92e8bb3..1718d42 100644
  terminal_screen_button_press (GtkWidget      *widget,
                                GdkEventButton *event)
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index 58ec94a..49cb3dc 100644
+index 58ec94aee3d2..49cb3dc74f08 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
 @@ -2293,15 +2293,21 @@ terminal_window_draw (GtkWidget *widget,
@@ -462,7 +462,7 @@ index 58ec94a..49cb3dc 100644
 2.5.0
 
 
-From efa968e91ec5348bb0380990663f9fd813e7331e Mon Sep 17 00:00:00 2001
+From 38cd660bbd57cd3223a7714acac33cbd1d046982 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 27 Jan 2015 18:40:13 +0100
 Subject: [PATCH 4/6] Support desktop notifications from OSC 777
@@ -476,7 +476,7 @@ https://bugzilla.gnome.org/show_bug.cgi?id=711059
  4 files changed, 171 insertions(+), 1 deletion(-)
 
 diff --git a/src/terminal-app.c b/src/terminal-app.c
-index 2d9129c..4cbe251 100644
+index 2d9129cb3419..4cbe2510e02d 100644
 --- a/src/terminal-app.c
 +++ b/src/terminal-app.c
 @@ -374,6 +374,31 @@ app_menu_quit_cb (GSimpleAction *action,
@@ -533,7 +533,7 @@ index 2d9129c..4cbe251 100644
  
    app_load_css (application);
 diff --git a/src/terminal-screen.c b/src/terminal-screen.c
-index 1718d42..9a76914 100644
+index 1718d42edaa8..9a769146c5d7 100644
 --- a/src/terminal-screen.c
 +++ b/src/terminal-screen.c
 @@ -57,6 +57,7 @@
@@ -706,7 +706,7 @@ index 1718d42..9a76914 100644
                                      GdkDragContext   *context,
                                      gint              x,
 diff --git a/src/terminal-tab-label.c b/src/terminal-tab-label.c
-index cdd73d0..d6909a1 100644
+index cdd73d0653be..d6909a13ca65 100644
 --- a/src/terminal-tab-label.c
 +++ b/src/terminal-tab-label.c
 @@ -34,6 +34,7 @@
@@ -766,7 +766,7 @@ index cdd73d0..d6909a1 100644
   * @tab_label: a #TerminalTabLabel
   *
 diff --git a/src/terminal-tab-label.h b/src/terminal-tab-label.h
-index 20cfbce..a987025 100644
+index 20cfbceb36b0..a987025e0524 100644
 --- a/src/terminal-tab-label.h
 +++ b/src/terminal-tab-label.h
 @@ -59,6 +59,10 @@ GtkWidget *     terminal_tab_label_new        (TerminalScreen *screen);
@@ -784,7 +784,7 @@ index 20cfbce..a987025 100644
 2.5.0
 
 
-From 23d8f7e2e110e20064151b58fa2a068eafe2a9f2 Mon Sep 17 00:00:00 2001
+From f3027e8dc64dfbb4d3e54b11d759b4ec3ed222d4 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Thu, 29 Jan 2015 11:47:21 +0100
 Subject: [PATCH 5/6] Sprinkle debug messages for notifications
@@ -800,7 +800,7 @@ https://bugzilla.gnome.org/show_bug.cgi?id=711059
  3 files changed, 9 insertions(+), 1 deletion(-)
 
 diff --git a/src/terminal-debug.c b/src/terminal-debug.c
-index 0ff321f..dac79c3 100644
+index 0ff321f1f0e2..dac79c38d82b 100644
 --- a/src/terminal-debug.c
 +++ b/src/terminal-debug.c
 @@ -38,6 +38,7 @@ _terminal_debug_init(void)
@@ -812,7 +812,7 @@ index 0ff321f..dac79c3 100644
  
    _terminal_debug_flags = g_parse_debug_string (g_getenv ("GNOME_TERMINAL_DEBUG"),
 diff --git a/src/terminal-debug.h b/src/terminal-debug.h
-index 5dc3ca4..7499ebe 100644
+index 5dc3ca4f3df0..7499ebe06c88 100644
 --- a/src/terminal-debug.h
 +++ b/src/terminal-debug.h
 @@ -34,7 +34,8 @@ typedef enum {
@@ -826,7 +826,7 @@ index 5dc3ca4..7499ebe 100644
  
  void _terminal_debug_init(void);
 diff --git a/src/terminal-screen.c b/src/terminal-screen.c
-index 9a76914..31843a0 100644
+index 9a769146c5d7..31843a09d055 100644
 --- a/src/terminal-screen.c
 +++ b/src/terminal-screen.c
 @@ -1713,6 +1713,8 @@ terminal_screen_focus_in (GtkWidget     *widget,
@@ -867,7 +867,7 @@ index 9a76914..31843a0 100644
 2.5.0
 
 
-From 36d6de88a47083e5593c41335af52aca3f3479f1 Mon Sep 17 00:00:00 2001
+From 2253900d75d67d8cfa040a7763504c48c7b790d6 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
 Subject: [PATCH 6/6] Restore translations for transparency
@@ -962,7 +962,7 @@ Subject: [PATCH 6/6] Restore translations for transparency
  86 files changed, 209 insertions(+), 96 deletions(-)
 
 diff --git a/po/am.po b/po/am.po
-index 27a7e96..04a8ad9 100644
+index 27a7e9640668..04a8ad9f36a3 100644
 --- a/po/am.po
 +++ b/po/am.po
 @@ -613,8 +613,8 @@ msgid "_Text color:"
@@ -977,10 +977,10 @@ index 27a7e96..04a8ad9 100644
  #: ../src/gnome-terminal.glade2.h:103
  msgid "_Update login records when command is launched"
 diff --git a/po/ar.po b/po/ar.po
-index f8582ed..85ff6cc 100644
+index 47a7add14981..6f469994f9ee 100644
 --- a/po/ar.po
 +++ b/po/ar.po
-@@ -3104,8 +3104,8 @@ msgstr "أغ_لق النافذة"
+@@ -3105,8 +3105,8 @@ msgstr "أغ_لق النافذة"
  #~ msgid "Background image _scrolls"
  #~ msgstr "صورة الخلفية ت_لتف"
  
@@ -992,7 +992,7 @@ index f8582ed..85ff6cc 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "_ظلل شفافية أو صورة الخلفية:"
 diff --git a/po/as.po b/po/as.po
-index 0bd699d..63fca01 100644
+index 0bd699d5e021..63fca0132a93 100644
 --- a/po/as.po
 +++ b/po/as.po
 @@ -2979,8 +2979,8 @@ msgstr "উইন্ডো বন্ধ কৰক (_l)"
@@ -1007,7 +1007,7 @@ index 0bd699d..63fca01 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "স্বচ্ছ বা ছবিৰ সৈতে পটভূমি ছায়া আচ্ছন্ন কৰক (_h):"
 diff --git a/po/ast.po b/po/ast.po
-index d1c6e7b..4210820 100644
+index d1c6e7b8174a..4210820a1429 100644
 --- a/po/ast.po
 +++ b/po/ast.po
 @@ -1598,8 +1598,8 @@ msgid "_Text color:"
@@ -1022,7 +1022,7 @@ index d1c6e7b..4210820 100644
  #: ../src/profile-preferences.glade.h:78
  msgid "_Underline color:"
 diff --git a/po/az.po b/po/az.po
-index b0f2e3e..877f114 100644
+index b0f2e3eac8b8..877f114954e0 100644
 --- a/po/az.po
 +++ b/po/az.po
 @@ -619,8 +619,8 @@ msgid "_Text color:"
@@ -1037,7 +1037,7 @@ index b0f2e3e..877f114 100644
  #: ../src/gnome-terminal.glade2.h:103
  msgid "_Update login records when command is launched"
 diff --git a/po/be.po b/po/be.po
-index fca0ae4..74ff329 100644
+index fca0ae4617d4..74ff3291321a 100644
 --- a/po/be.po
 +++ b/po/be.po
 @@ -2015,3 +2015,6 @@ msgstr ""
@@ -1048,7 +1048,7 @@ index fca0ae4..74ff329 100644
 +msgstr "Празрысты фон"
 +
 diff --git a/po/be@latin.po b/po/be@latin.po
-index 1e057c7..1d22a58 100644
+index 1e057c74b152..1d22a58915af 100644
 --- a/po/be@latin.po
 +++ b/po/be@latin.po
 @@ -1425,8 +1425,8 @@ msgid "_Text color:"
@@ -1063,18 +1063,18 @@ index 1e057c7..1d22a58 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/bg.po b/po/bg.po
-index 0b8dd8e..5d45919 100644
+index 748dd3d76fbb..09becedaf1aa 100644
 --- a/po/bg.po
 +++ b/po/bg.po
-@@ -2167,3 +2167,6 @@ msgstr ""
- #: ../src/terminal-window.c:3726
+@@ -2281,3 +2281,6 @@ msgstr ""
+ #: ../src/terminal-window.c:3727
  msgid "C_lose Window"
  msgstr "_Затваряне на този прозорец"
 +
 +msgid "Transparent background"
 +msgstr "Прозрачен фон"
 diff --git a/po/bn_IN.po b/po/bn_IN.po
-index c74246a..d65b322 100644
+index c74246a5a26d..d65b322ba88c 100644
 --- a/po/bn_IN.po
 +++ b/po/bn_IN.po
 @@ -2358,3 +2358,6 @@ msgstr "উইন্ডো বন্ধ করুন (_l)"
@@ -1085,7 +1085,7 @@ index c74246a..d65b322 100644
 +msgid "Transparent background"
 +msgstr "স্বচ্চ পটভূমি "
 diff --git a/po/bs.po b/po/bs.po
-index 49e7108..fccfa86 100644
+index 49e710859ac9..fccfa86de311 100644
 --- a/po/bs.po
 +++ b/po/bs.po
 @@ -680,6 +680,10 @@ msgstr "Kratica tastature za povećavanje fonta"
@@ -1100,7 +1100,7 @@ index 49e7108..fccfa86 100644
  msgid "Keyboard shortcut to make font normal-size"
  msgstr "Kratica tastature za postavljanje fonta na normalnu veličinu"
 diff --git a/po/ca.po b/po/ca.po
-index 55caef1..d201f40 100644
+index 55caef12594f..d201f403e2e4 100644
 --- a/po/ca.po
 +++ b/po/ca.po
 @@ -2304,3 +2304,6 @@ msgstr "Tanca la _finestra"
@@ -1111,7 +1111,7 @@ index 55caef1..d201f40 100644
 +msgid "Transparent background"
 +msgstr "Fons transparent"
 diff --git a/po/ca@valencia.po b/po/ca@valencia.po
-index 1c279a0..4073f71 100644
+index 1c279a0bf09c..4073f719906a 100644
 --- a/po/ca@valencia.po
 +++ b/po/ca@valencia.po
 @@ -2092,3 +2092,6 @@ msgstr ""
@@ -1122,10 +1122,10 @@ index 1c279a0..4073f71 100644
 +msgid "Transparent background"
 +msgstr "Fons transparent"
 diff --git a/po/cs.po b/po/cs.po
-index 784fe2f..ef0d7cc 100644
+index 7b868e4f899c..0d7a4035f989 100644
 --- a/po/cs.po
 +++ b/po/cs.po
-@@ -2245,3 +2245,6 @@ msgstr ""
+@@ -2249,3 +2249,6 @@ msgstr ""
  #: ../src/terminal-window.c:3727
  msgid "C_lose Window"
  msgstr "_Zavřít okno"
@@ -1133,7 +1133,7 @@ index 784fe2f..ef0d7cc 100644
 +msgid "Transparent background"
 +msgstr "Průsvitné pozadí"
 diff --git a/po/cy.po b/po/cy.po
-index 0739e20..8b1ff00 100644
+index 0739e201f83b..8b1ff006857a 100644
 --- a/po/cy.po
 +++ b/po/cy.po
 @@ -1447,8 +1447,8 @@ msgid "_Text color:"
@@ -1148,10 +1148,10 @@ index 0739e20..8b1ff00 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/da.po b/po/da.po
-index 68f20ab..1e7acbe 100644
+index 66c0aac6320e..7c0681159ee0 100644
 --- a/po/da.po
 +++ b/po/da.po
-@@ -3195,8 +3195,8 @@ msgstr "_Luk vindue"
+@@ -3178,8 +3178,8 @@ msgstr "_Luk vindue"
  #~ msgid "_Solid color"
  #~ msgstr "_Ensfarvet"
  
@@ -1163,7 +1163,7 @@ index 68f20ab..1e7acbe 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/de.po b/po/de.po
-index f0f16e0..48efa8f 100644
+index f0f16e036272..48efa8f1ba12 100644
 --- a/po/de.po
 +++ b/po/de.po
 @@ -3259,8 +3259,8 @@ msgstr "Fenster _schließen"
@@ -1178,7 +1178,7 @@ index f0f16e0..48efa8f 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "Transparenz und Bildhintergründe _abdunkeln:"
 diff --git a/po/dz.po b/po/dz.po
-index ecb8fd5..290934a 100644
+index ecb8fd59329c..290934ad3e0f 100644
 --- a/po/dz.po
 +++ b/po/dz.po
 @@ -1551,8 +1551,8 @@ msgid "_Text color:"
@@ -1193,7 +1193,7 @@ index ecb8fd5..290934a 100644
  #: ../src/profile-preferences.glade.h:78
  #, fuzzy
 diff --git a/po/el.po b/po/el.po
-index 2b0d1de..5bf36a9 100644
+index 2b0d1de8c80f..5bf36a9fdbea 100644
 --- a/po/el.po
 +++ b/po/el.po
 @@ -2510,3 +2510,6 @@ msgstr "Κ_λείσιμο παραθύρου"
@@ -1204,7 +1204,7 @@ index 2b0d1de..5bf36a9 100644
 +msgid "Transparent background"
 +msgstr "Διάφανο παρασκήνιο"
 diff --git a/po/en@shaw.po b/po/en@shaw.po
-index 65f3d41..05dc99d 100644
+index 65f3d415e476..05dc99df5980 100644
 --- a/po/en@shaw.po
 +++ b/po/en@shaw.po
 @@ -1467,8 +1467,8 @@ msgid "_Text color:"
@@ -1219,7 +1219,7 @@ index 65f3d41..05dc99d 100644
  #: ../src/profile-preferences.glade.h:79
  msgid "_Underline color:"
 diff --git a/po/en_CA.po b/po/en_CA.po
-index c79cbf5..b8b14d2 100644
+index c79cbf5aa245..b8b14d2030e1 100644
 --- a/po/en_CA.po
 +++ b/po/en_CA.po
 @@ -556,8 +556,8 @@ msgid "_Text color:"
@@ -1234,7 +1234,7 @@ index c79cbf5..b8b14d2 100644
  #: ../src/gnome-terminal.glade2.h:87
  msgid "_Update login records when command is launched"
 diff --git a/po/en_GB.po b/po/en_GB.po
-index 4d38486..69e7113 100644
+index 4d38486679fe..69e71135d75c 100644
 --- a/po/en_GB.po
 +++ b/po/en_GB.po
 @@ -2732,8 +2732,8 @@ msgstr "_Title:"
@@ -1249,7 +1249,7 @@ index 4d38486..69e7113 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "S_hade transparent or image background:"
 diff --git a/po/es.po b/po/es.po
-index d339099..e8b4159 100644
+index d3390991533d..e8b41596b94b 100644
 --- a/po/es.po
 +++ b/po/es.po
 @@ -3303,8 +3303,8 @@ msgstr "_Cerrar ventana"
@@ -1264,7 +1264,7 @@ index d339099..e8b4159 100644
  #~ msgid "No such profile \"%s\", using default profile\n"
  #~ msgstr "No existe el perfil «%s», usando el perfil predeterminado\n"
 diff --git a/po/et.po b/po/et.po
-index 4b1c2a7..7707611 100644
+index 4b1c2a7c67e4..770761168806 100644
 --- a/po/et.po
 +++ b/po/et.po
 @@ -1747,3 +1747,6 @@ msgstr "Su_lge aken"
@@ -1275,10 +1275,10 @@ index 4b1c2a7..7707611 100644
 +msgid "Transparent background"
 +msgstr "Läbipaistev taust"
 diff --git a/po/eu.po b/po/eu.po
-index 786f9e2..a731d99 100644
+index e38a39262043..c1cfa95ae46c 100644
 --- a/po/eu.po
 +++ b/po/eu.po
-@@ -3011,8 +3011,8 @@ msgstr "It_xi leihoa"
+@@ -3168,8 +3168,8 @@ msgstr "It_xi leihoa"
  #~ msgid "_Solid color"
  #~ msgstr "_Kolore solidoa"
  
@@ -1290,7 +1290,7 @@ index 786f9e2..a731d99 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/fa.po b/po/fa.po
-index 52856cb..2a89999 100644
+index 52856cbdd6a4..2a89999af2bf 100644
 --- a/po/fa.po
 +++ b/po/fa.po
 @@ -2240,3 +2240,6 @@ msgstr "_بستن پنجره"
@@ -1301,7 +1301,7 @@ index 52856cb..2a89999 100644
 +msgid "Transparent background"
 +msgstr "پس‌زمینه‌ی شفاف"
 diff --git a/po/fi.po b/po/fi.po
-index 02bddc5..cf84950 100644
+index 02bddc5c6407..cf84950057eb 100644
 --- a/po/fi.po
 +++ b/po/fi.po
 @@ -2294,6 +2294,9 @@ msgstr "_Sulje ikkuna"
@@ -1315,7 +1315,7 @@ index 02bddc5..cf84950 100644
  #~ msgid "Missing command"
  #~ msgstr "Puuttuva komento"
 diff --git a/po/fr.po b/po/fr.po
-index d230aa2..9771335 100644
+index d230aa20aaa6..9771335bda19 100644
 --- a/po/fr.po
 +++ b/po/fr.po
 @@ -2303,3 +2303,6 @@ msgstr "Fermer _la fenêtre"
@@ -1326,10 +1326,10 @@ index d230aa2..9771335 100644
 +msgid "Transparent background"
 +msgstr "Arrière-plan transparent"
 diff --git a/po/fur.po b/po/fur.po
-index 39fe0bb..bc471ab 100644
+index 5cce29a0d7e7..ba9f3e22760e 100644
 --- a/po/fur.po
 +++ b/po/fur.po
-@@ -651,6 +651,10 @@ msgstr ""
+@@ -652,6 +652,10 @@ msgstr ""
  msgid "Which encoding to use"
  msgstr "Codifiche di doprâ"
  
@@ -1341,7 +1341,7 @@ index 39fe0bb..bc471ab 100644
  msgid ""
  "Whether ambiguous-width characters are narrow or wide when using UTF-8 "
 diff --git a/po/ga.po b/po/ga.po
-index 93d5fa9..feb87dc 100644
+index 93d5fa9d1481..feb87dce3d6b 100644
 --- a/po/ga.po
 +++ b/po/ga.po
 @@ -1925,3 +1925,6 @@ msgstr "_Dún Fuinneog"
@@ -1352,7 +1352,7 @@ index 93d5fa9..feb87dc 100644
 +msgid "Transparent background"
 +msgstr "Cúlra trédhearcach"
 diff --git a/po/gl.po b/po/gl.po
-index a858849..7fadccd 100644
+index a858849ef591..7fadccd9e524 100644
 --- a/po/gl.po
 +++ b/po/gl.po
 @@ -3241,8 +3241,8 @@ msgstr "P_echar a xanela"
@@ -1367,7 +1367,7 @@ index a858849..7fadccd 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "_Sombra transparente ou imaxe de fondo:"
 diff --git a/po/gu.po b/po/gu.po
-index 0bcb195..f72a807 100644
+index 0bcb1954f634..f72a807d6e2b 100644
 --- a/po/gu.po
 +++ b/po/gu.po
 @@ -2944,8 +2944,8 @@ msgstr "વિન્ડો બંધ કરો (_l)"
@@ -1382,7 +1382,7 @@ index 0bcb195..f72a807 100644
  #~ msgid "No such profile \"%s\", using default profile\n"
  #~ msgstr "\"%s\" જેવી કોઈ રૂપરેખા નથી, મૂળભૂત રૂપરેખા વાપરી રહ્યા છે\n"
 diff --git a/po/he.po b/po/he.po
-index 0c2420e..7a25a26 100644
+index 0c2420ebc5f3..7a25a26e6abd 100644
 --- a/po/he.po
 +++ b/po/he.po
 @@ -3189,8 +3189,8 @@ msgstr "סגירת ה_חלון"
@@ -1397,7 +1397,7 @@ index 0c2420e..7a25a26 100644
  #~ msgid "No such profile \"%s\", using default profile\n"
  #~ msgstr "No such profile \"%s\", using default profile\n"
 diff --git a/po/hi.po b/po/hi.po
-index 2d7dc5b..adf8d35 100644
+index 2d7dc5b14008..adf8d35e8d3f 100644
 --- a/po/hi.po
 +++ b/po/hi.po
 @@ -2979,8 +2979,8 @@ msgstr "विंडो बंद करें (_l)"
@@ -1412,7 +1412,7 @@ index 2d7dc5b..adf8d35 100644
  #~ msgid "S/Key Challenge Response"
  #~ msgstr "एस/कुंजी चैलेंज प्रतिक्रिया"
 diff --git a/po/hr.po b/po/hr.po
-index cb48c52..747cf48 100644
+index cb48c52f708c..747cf488e7b4 100644
 --- a/po/hr.po
 +++ b/po/hr.po
 @@ -1362,8 +1362,8 @@ msgid "_Text color:"
@@ -1427,7 +1427,7 @@ index cb48c52..747cf48 100644
  #: ../src/profile-preferences.glade.h:70
  msgid "_Update login records when command is launched"
 diff --git a/po/hu.po b/po/hu.po
-index 381dd15..500c08a 100644
+index 381dd15fd86f..500c08a70bd9 100644
 --- a/po/hu.po
 +++ b/po/hu.po
 @@ -2713,3 +2713,6 @@ msgstr "_Ablak bezárása"
@@ -1438,7 +1438,7 @@ index 381dd15..500c08a 100644
 +msgid "Transparent background"
 +msgstr "Áttetsző háttér"
 diff --git a/po/hy.po b/po/hy.po
-index 5584901..caadbba 100644
+index 558490157ada..caadbba37c5d 100644
 --- a/po/hy.po
 +++ b/po/hy.po
 @@ -1011,8 +1011,8 @@ msgid "_Text color:"
@@ -1453,29 +1453,29 @@ index 5584901..caadbba 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/id.po b/po/id.po
-index 595a325..99c29b6 100644
+index d7b1700c3696..0a1be4d025aa 100644
 --- a/po/id.po
 +++ b/po/id.po
-@@ -2058,3 +2058,6 @@ msgstr ""
- #: ../src/terminal-window.c:3694
+@@ -2248,3 +2248,6 @@ msgstr ""
+ #: ../src/terminal-window.c:3727
  msgid "C_lose Window"
  msgstr "Tutup Jende_la"
 +
 +msgid "Transparent background"
 +msgstr "Latar belakang transparan"
 diff --git a/po/it.po b/po/it.po
-index 491303d..af13ad9 100644
+index 909a8c9f5062..982d702818d7 100644
 --- a/po/it.po
 +++ b/po/it.po
-@@ -2105,3 +2105,6 @@ msgstr "Chiudi _finestra"
- 
- #~ msgid "_Update login records when command is launched"
- #~ msgstr "_Aggiornare i record di login quando il comando viene eseguito"
+@@ -2284,3 +2284,6 @@ msgstr ""
+ #: ../src/terminal-window.c:3727
+ msgid "C_lose Window"
+ msgstr "Chiudi _finestra"
 +
 +msgid "Transparent background"
 +msgstr "Sfondo trasparente"
 diff --git a/po/ja.po b/po/ja.po
-index f7235d9..63d7fd7 100644
+index f7235d9f4a0b..63d7fd7bb943 100644
 --- a/po/ja.po
 +++ b/po/ja.po
 @@ -1907,3 +1907,6 @@ msgstr "ウィンドウを閉じる(_L)"
@@ -1486,7 +1486,7 @@ index f7235d9..63d7fd7 100644
 +msgid "Transparent background"
 +msgstr "透過な画像にする"
 diff --git a/po/ka.po b/po/ka.po
-index 8415e88..3717b7e 100644
+index 8415e88f94ff..3717b7e75dcd 100644
 --- a/po/ka.po
 +++ b/po/ka.po
 @@ -568,7 +568,7 @@ msgstr "_ტექსტის ფერი:"
@@ -1499,7 +1499,7 @@ index 8415e88..3717b7e 100644
  
  #: ../src/gnome-terminal.glade2.h:87
 diff --git a/po/kk.po b/po/kk.po
-index 3573937..862b095 100644
+index 3573937d4f88..862b095e4988 100644
 --- a/po/kk.po
 +++ b/po/kk.po
 @@ -2208,3 +2208,6 @@ msgstr "Терезені жа_бу"
@@ -1510,7 +1510,7 @@ index 3573937..862b095 100644
 +msgid "Transparent background"
 +msgstr "Мөлдір фон"
 diff --git a/po/kn.po b/po/kn.po
-index c887f88..e899ef3 100644
+index c887f88a2c87..e899ef3ca8c1 100644
 --- a/po/kn.po
 +++ b/po/kn.po
 @@ -2344,3 +2344,6 @@ msgstr "ಕಿಟಕಿಯನ್ನು ಮುಚ್ಚು  (_l)"
@@ -1521,7 +1521,7 @@ index c887f88..e899ef3 100644
 +msgid "Transparent background"
 +msgstr "ಪಾರದರ್ಶಕ ಹಿನ್ನಲೆ"
 diff --git a/po/ko.po b/po/ko.po
-index eba5008..72ebbe7 100644
+index eba5008d84c7..72ebbe738787 100644
 --- a/po/ko.po
 +++ b/po/ko.po
 @@ -2304,3 +2304,6 @@ msgstr "창 닫기(_L)"
@@ -1532,7 +1532,7 @@ index eba5008..72ebbe7 100644
 +msgid "Transparent background"
 +msgstr "투명한 배경"
 diff --git a/po/ku.po b/po/ku.po
-index 221825b..96e3581 100644
+index 221825b29cd9..96e35811337b 100644
 --- a/po/ku.po
 +++ b/po/ku.po
 @@ -557,8 +557,8 @@ msgid "_Text color:"
@@ -1547,7 +1547,7 @@ index 221825b..96e3581 100644
  #: ../src/gnome-terminal.glade2.h:87
  msgid "_Update login records when command is launched"
 diff --git a/po/lt.po b/po/lt.po
-index 974c353..6b16746 100644
+index 974c35354b07..6b1674621446 100644
 --- a/po/lt.po
 +++ b/po/lt.po
 @@ -2310,3 +2310,6 @@ msgstr "_Užverti langą"
@@ -1558,7 +1558,7 @@ index 974c353..6b16746 100644
 +msgid "Transparent background"
 +msgstr "Permatomas fonas"
 diff --git a/po/lv.po b/po/lv.po
-index 42a9b35..8cb9a83 100644
+index 42a9b35ad3eb..8cb9a837d66b 100644
 --- a/po/lv.po
 +++ b/po/lv.po
 @@ -2261,3 +2261,6 @@ msgstr ""
@@ -1569,7 +1569,7 @@ index 42a9b35..8cb9a83 100644
 +msgid "Transparent background"
 +msgstr "Caurspīdīgs fons"
 diff --git a/po/mai.po b/po/mai.po
-index 9b984a0..a3c0e17 100644
+index 9b984a068fda..a3c0e178ae67 100644
 --- a/po/mai.po
 +++ b/po/mai.po
 @@ -1290,8 +1290,8 @@ msgid "_Text color:"
@@ -1584,7 +1584,7 @@ index 9b984a0..a3c0e17 100644
  #: ../src/profile-preferences.glade.h:70
  msgid "_Update login records when command is launched"
 diff --git a/po/mg.po b/po/mg.po
-index 1c1895c..a805417 100644
+index 1c1895c98ba9..a805417893ed 100644
 --- a/po/mg.po
 +++ b/po/mg.po
 @@ -566,8 +566,8 @@ msgid "_Text color:"
@@ -1599,7 +1599,7 @@ index 1c1895c..a805417 100644
  #: ../src/gnome-terminal.glade2.h:87
  msgid "_Update login records when command is launched"
 diff --git a/po/mk.po b/po/mk.po
-index e31378a..d2b74d4 100644
+index e31378a5726b..d2b74d4438d1 100644
 --- a/po/mk.po
 +++ b/po/mk.po
 @@ -1166,8 +1166,8 @@ msgid "_Text color:"
@@ -1614,7 +1614,7 @@ index e31378a..d2b74d4 100644
  #: ../src/profile-preferences.glade.h:78
  #| msgid "_Text color:"
 diff --git a/po/ml.po b/po/ml.po
-index cc1928d..62abd21 100644
+index cc1928dcda63..62abd2131499 100644
 --- a/po/ml.po
 +++ b/po/ml.po
 @@ -2751,8 +2751,8 @@ msgstr "ടെര്‍മിനല്‍ അ_ടയ്ക്കുക"
@@ -1629,7 +1629,7 @@ index cc1928d..62abd21 100644
  #~ msgid "S/Key Challenge Response"
  #~ msgstr "S/Key ചാലഞ്ച് മറുപടി"
 diff --git a/po/mn.po b/po/mn.po
-index 4922041..9696b7f 100644
+index 4922041e09f9..9696b7f981f1 100644
 --- a/po/mn.po
 +++ b/po/mn.po
 @@ -617,8 +617,8 @@ msgid "_Text color:"
@@ -1644,7 +1644,7 @@ index 4922041..9696b7f 100644
  #: ../src/gnome-terminal.glade2.h:103
  msgid "_Update login records when command is launched"
 diff --git a/po/mr.po b/po/mr.po
-index 61997da..50451d7 100644
+index 61997dafbd03..50451d7b8e60 100644
 --- a/po/mr.po
 +++ b/po/mr.po
 @@ -3015,8 +3015,8 @@ msgstr "चौकट बंद करा (_l)"
@@ -1659,7 +1659,7 @@ index 61997da..50451d7 100644
  #~ msgid "Disabled"
  #~ msgstr "अकार्यान्वीतित"
 diff --git a/po/ms.po b/po/ms.po
-index 5b663aa..38a2afe 100644
+index 5b663aae2639..38a2afeecd2f 100644
 --- a/po/ms.po
 +++ b/po/ms.po
 @@ -630,8 +630,8 @@ msgid "_Text color:"
@@ -1674,7 +1674,7 @@ index 5b663aa..38a2afe 100644
  #: ../src/gnome-terminal.glade2.h:103
  msgid "_Update login records when command is launched"
 diff --git a/po/nb.po b/po/nb.po
-index ff66807..8ea486c 100644
+index ff6680716092..8ea486cd0dde 100644
 --- a/po/nb.po
 +++ b/po/nb.po
 @@ -2101,3 +2101,6 @@ msgstr ""
@@ -1685,7 +1685,7 @@ index ff66807..8ea486c 100644
 +msgid "Transparent background"
 +msgstr "Gjennomsiktig bakgrunn"
 diff --git a/po/nds.po b/po/nds.po
-index 98a1287..94fd757 100644
+index 98a12875e382..94fd757d3e5c 100644
 --- a/po/nds.po
 +++ b/po/nds.po
 @@ -995,8 +995,8 @@ msgid "_Text color:"
@@ -1700,7 +1700,7 @@ index 98a1287..94fd757 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/ne.po b/po/ne.po
-index 4fe16cc..d9a90ad 100644
+index 4fe16cc88a9a..d9a90adbf693 100644
 --- a/po/ne.po
 +++ b/po/ne.po
 @@ -2398,8 +2398,8 @@ msgstr "सञ्झ्याल बन्द गर्नुहोस्"
@@ -1715,7 +1715,7 @@ index 4fe16cc..d9a90ad 100644
  #~ msgid "_Use the system fixed width font"
  #~ msgstr "प्रणाली निश्चित गरिएको फन्ट चौडाइ प्रयोग गर्नुहोस्"
 diff --git a/po/nl.po b/po/nl.po
-index a51720b..111b032 100644
+index a51720be1610..111b032c89fa 100644
 --- a/po/nl.po
 +++ b/po/nl.po
 @@ -2352,3 +2352,6 @@ msgstr "Venster sl_uiten"
@@ -1726,7 +1726,7 @@ index a51720b..111b032 100644
 +msgid "Transparent background"
 +msgstr "Transparante achtergrond"
 diff --git a/po/nn.po b/po/nn.po
-index 91cd6ab..9284459 100644
+index 91cd6ab918c9..92844590fcbe 100644
 --- a/po/nn.po
 +++ b/po/nn.po
 @@ -1428,8 +1428,8 @@ msgid "_Text color:"
@@ -1741,7 +1741,7 @@ index 91cd6ab..9284459 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/oc.po b/po/oc.po
-index 29a9030..87f6f9e 100644
+index 29a903075a2c..87f6f9e436eb 100644
 --- a/po/oc.po
 +++ b/po/oc.po
 @@ -3419,8 +3419,8 @@ msgstr "Tampar _la fenèstra"
@@ -1756,7 +1756,7 @@ index 29a9030..87f6f9e 100644
  #~ msgid ""
  #~ "A subset of possible encodings are presented in the Encoding submenu. "
 diff --git a/po/or.po b/po/or.po
-index ec1e6bf..218acd7 100644
+index ec1e6bfb9a28..218acd712df6 100644
 --- a/po/or.po
 +++ b/po/or.po
 @@ -2705,8 +2705,8 @@ msgstr "ଶୀର୍ଷକ (_T):"
@@ -1771,7 +1771,7 @@ index ec1e6bf..218acd7 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "ଛାୟା ସ୍ବଚ୍ଛ କିମ୍ବା ଚିତ୍ର ପୃଷ୍ଠଭୂମି (_h):"
 diff --git a/po/pa.po b/po/pa.po
-index 9c95b66..5e5b8ba 100644
+index 9c95b66e7185..5e5b8ba4f104 100644
 --- a/po/pa.po
 +++ b/po/pa.po
 @@ -3008,8 +3008,8 @@ msgstr "ਵਿੰਡੋ ਬੰਦ ਕਰੋ(_l)"
@@ -1786,7 +1786,7 @@ index 9c95b66..5e5b8ba 100644
  #~ msgid "S/Key Challenge Response"
  #~ msgstr "S/ਸਵਿੱਚ ਚੈਲੰਜ਼ ਜਵਾਬ"
 diff --git a/po/ps.po b/po/ps.po
-index b1de52c..a16ac49 100644
+index b1de52c2ff34..a16ac4937d1a 100644
 --- a/po/ps.po
 +++ b/po/ps.po
 @@ -1052,8 +1052,8 @@ msgid "_Text color:"
@@ -1801,7 +1801,7 @@ index b1de52c..a16ac49 100644
  #: ../src/profile-preferences.glade.h:70
  msgid "_Update login records when command is launched"
 diff --git a/po/pt.po b/po/pt.po
-index a361c66..ac7297e 100644
+index a361c662424f..ac7297e80ec4 100644
 --- a/po/pt.po
 +++ b/po/pt.po
 @@ -3033,8 +3033,8 @@ msgstr "Fechar jane_La"
@@ -1816,7 +1816,7 @@ index a361c66..ac7297e 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "Transparente som_breado ou imagem de fundo:"
 diff --git a/po/pt_BR.po b/po/pt_BR.po
-index 25cfa6e..94a8df6 100644
+index 25cfa6ef2614..94a8df632ae6 100644
 --- a/po/pt_BR.po
 +++ b/po/pt_BR.po
 @@ -3056,3 +3056,6 @@ msgstr "_Fechar janela"
@@ -1827,7 +1827,7 @@ index 25cfa6e..94a8df6 100644
 +msgid "Transparent background"
 +msgstr "Fundo transparente"
 diff --git a/po/ro.po b/po/ro.po
-index 179dd77..f7fc7ae 100644
+index 179dd77fd166..f7fc7ae070cf 100644
 --- a/po/ro.po
 +++ b/po/ro.po
 @@ -1576,8 +1576,8 @@ msgid "_Text color:"
@@ -1842,7 +1842,7 @@ index 179dd77..f7fc7ae 100644
  #: ../src/profile-preferences.glade.h:78
  msgid "_Underline color:"
 diff --git a/po/ru.po b/po/ru.po
-index 8ff3d59..9b3342d 100644
+index 8ff3d59e696e..9b3342d2f0ce 100644
 --- a/po/ru.po
 +++ b/po/ru.po
 @@ -2318,3 +2318,6 @@ msgstr "_Закрыть окно"
@@ -1853,7 +1853,7 @@ index 8ff3d59..9b3342d 100644
 +msgid "Transparent background"
 +msgstr "Прозрачный фон"
 diff --git a/po/rw.po b/po/rw.po
-index 3f02231..b7fff4c 100644
+index 3f0223162995..b7fff4cb3ce4 100644
 --- a/po/rw.po
 +++ b/po/rw.po
 @@ -748,7 +748,7 @@ msgstr "Ibara ry'Inyandiko..."
@@ -1866,7 +1866,7 @@ index 3f02231..b7fff4c 100644
  
  #: ../src/gnome-terminal.glade2.h:103
 diff --git a/po/si.po b/po/si.po
-index 81dbf65..5cb0e5a 100644
+index 81dbf6589f89..5cb0e5ad52cc 100644
 --- a/po/si.po
 +++ b/po/si.po
 @@ -537,8 +537,8 @@ msgid "_Text color:"
@@ -1881,7 +1881,7 @@ index 81dbf65..5cb0e5a 100644
  #: ../src/gnome-terminal.glade2.h:87
  msgid "_Update login records when command is launched"
 diff --git a/po/sk.po b/po/sk.po
-index 03ac832..e97eb61 100644
+index 03ac832c72c9..e97eb6113a87 100644
 --- a/po/sk.po
 +++ b/po/sk.po
 @@ -2585,3 +2585,6 @@ msgstr "_Zavrieť okno"
@@ -1892,7 +1892,7 @@ index 03ac832..e97eb61 100644
 +msgid "Transparent background"
 +msgstr "Priehľadné pozadie"
 diff --git a/po/sl.po b/po/sl.po
-index 72baf7b..83ad04a 100644
+index 72baf7b1e8ad..83ad04ac019f 100644
 --- a/po/sl.po
 +++ b/po/sl.po
 @@ -2322,3 +2322,6 @@ msgstr "_Zapri okno"
@@ -1903,7 +1903,7 @@ index 72baf7b..83ad04a 100644
 +msgid "Transparent background"
 +msgstr "Prosojno ozadje"
 diff --git a/po/sq.po b/po/sq.po
-index e59c0b6..6fb4090 100644
+index e59c0b69d8f8..6fb409043319 100644
 --- a/po/sq.po
 +++ b/po/sq.po
 @@ -567,8 +567,8 @@ msgstr "Ngjyra e _tekstit:"
@@ -1918,7 +1918,7 @@ index e59c0b6..6fb4090 100644
  #: ../src/gnome-terminal.glade2.h:86
  msgid "_Update login records when command is launched"
 diff --git a/po/sr.po b/po/sr.po
-index 799352b..bad0c4e 100644
+index 799352b324a1..bad0c4e35343 100644
 --- a/po/sr.po
 +++ b/po/sr.po
 @@ -2424,3 +2424,6 @@ msgstr "_Затвори прозор"
@@ -1929,7 +1929,7 @@ index 799352b..bad0c4e 100644
 +msgid "Transparent background"
 +msgstr "Провидна позадина"
 diff --git a/po/sr@latin.po b/po/sr@latin.po
-index 318a7a1..aa759aa 100644
+index 318a7a1e9ee5..aa759aa7cee9 100644
 --- a/po/sr@latin.po
 +++ b/po/sr@latin.po
 @@ -2424,3 +2424,6 @@ msgstr "_Zatvori prozor"
@@ -1940,7 +1940,7 @@ index 318a7a1..aa759aa 100644
 +msgid "Transparent background"
 +msgstr "Providna pozadina"
 diff --git a/po/sv.po b/po/sv.po
-index 38b9426..0ad3def 100644
+index 38b942608ca7..0ad3def03714 100644
 --- a/po/sv.po
 +++ b/po/sv.po
 @@ -2281,5 +2281,8 @@ msgstr "Stän_g fönster"
@@ -1953,7 +1953,7 @@ index 38b9426..0ad3def 100644
  #~ msgid "Missing command"
  #~ msgstr "Kommando saknas"
 diff --git a/po/ta.po b/po/ta.po
-index 80aa2f6..61185b4 100644
+index 80aa2f684eec..61185b47f911 100644
 --- a/po/ta.po
 +++ b/po/ta.po
 @@ -3028,8 +3028,8 @@ msgstr "_l சாளரத்தை மூடவும்"
@@ -1968,7 +1968,7 @@ index 80aa2f6..61185b4 100644
  #~ msgid "No such profile \"%s\", using default profile\n"
  #~ msgstr "\"%s\" என்ற வரியுரு கிடையாது, முன்னிருப்பு வரியுரு பயன்படுத்தப்படும்\n"
 diff --git a/po/te.po b/po/te.po
-index 000cda3..6dcf793 100644
+index 000cda30f86c..6dcf79399604 100644
 --- a/po/te.po
 +++ b/po/te.po
 @@ -2898,8 +2898,8 @@ msgstr "కిటికీని మూసివేయి (_l)"
@@ -1983,7 +1983,7 @@ index 000cda3..6dcf793 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "పారదర్శకంగా మారు లేదా చిత్రము బ్యాక్‌గ్రౌండ్ కు మారు(_h):"
 diff --git a/po/th.po b/po/th.po
-index 91c78cc..1f1fa48 100644
+index 91c78cc07fce..1f1fa486f941 100644
 --- a/po/th.po
 +++ b/po/th.po
 @@ -2676,8 +2676,8 @@ msgstr "ปิ_ดหน้าต่าง"
@@ -1998,7 +1998,7 @@ index 91c78cc..1f1fa48 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/tr.po b/po/tr.po
-index f7c68e6..316587c 100644
+index f7c68e62d9da..316587c0a7b2 100644
 --- a/po/tr.po
 +++ b/po/tr.po
 @@ -1963,3 +1963,6 @@ msgstr "Hala bir süreç bu uçbirimde çalışıyor. Uçbirimi kapatmak onu son
@@ -2009,7 +2009,7 @@ index f7c68e6..316587c 100644
 +msgid "Transparent background"
 +msgstr "Şeffaf arkaplan"
 diff --git a/po/ug.po b/po/ug.po
-index 1673bb3..e21e61e 100644
+index 1673bb32d9db..e21e61e829d7 100644
 --- a/po/ug.po
 +++ b/po/ug.po
 @@ -2616,8 +2616,8 @@ msgstr "ماۋزۇ (_T):"
@@ -2024,7 +2024,7 @@ index 1673bb3..e21e61e 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/uk.po b/po/uk.po
-index 0a04bc6..c097f0c 100644
+index 0a04bc62af1b..c097f0c1d328 100644
 --- a/po/uk.po
 +++ b/po/uk.po
 @@ -3126,8 +3126,8 @@ msgstr "Закр_ити вікно"
@@ -2039,10 +2039,10 @@ index 0a04bc6..c097f0c 100644
  #~ msgid "Switch to Tab 2"
  #~ msgstr "До вкладки 2"
 diff --git a/po/vi.po b/po/vi.po
-index 9036f38..5cbcc8c 100644
+index 9e74f1a18bb7..a2d778814aef 100644
 --- a/po/vi.po
 +++ b/po/vi.po
-@@ -2690,3 +2690,6 @@ msgstr "Đón_g cửa sổ"
+@@ -2863,3 +2863,6 @@ msgstr "Đón_g cửa sổ"
  #~ "Phím tắt để đặt lại thiết bị cuối. Dùng dạng chuỗi có cùng một khuôn dạng "
  #~ "với tập tin tài nguyên GTK+. Nếu bạn đặt tùy chọn là chuỗi “disabled” (bị "
  #~ "tắt), nghĩa là không có phím tắt cho hành động này."
@@ -2050,7 +2050,7 @@ index 9036f38..5cbcc8c 100644
 +msgid "Transparent background"
 +msgstr "Nền trong suốt"
 diff --git a/po/wa.po b/po/wa.po
-index 2856571..f068531 100644
+index 285657194713..f068531c2928 100644
 --- a/po/wa.po
 +++ b/po/wa.po
 @@ -563,8 +563,8 @@ msgid "_Text color:"
@@ -2065,7 +2065,7 @@ index 2856571..f068531 100644
  #: ../src/gnome-terminal.glade2.h:87
  msgid "_Update login records when command is launched"
 diff --git a/po/xh.po b/po/xh.po
-index e5981c6..7f9f804 100644
+index e5981c6ec5bf..7f9f8049c3df 100644
 --- a/po/xh.po
 +++ b/po/xh.po
 @@ -620,8 +620,8 @@ msgid "_Text color:"
@@ -2080,7 +2080,7 @@ index e5981c6..7f9f804 100644
  #: ../src/gnome-terminal.glade2.h:103
  msgid "_Update login records when command is launched"
 diff --git a/po/zh_CN.po b/po/zh_CN.po
-index e9a540f..8473524 100644
+index e9a540f2963a..8473524960e6 100644
 --- a/po/zh_CN.po
 +++ b/po/zh_CN.po
 @@ -2357,3 +2357,6 @@ msgstr "关闭窗口(_L)"
@@ -2091,7 +2091,7 @@ index e9a540f..8473524 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 diff --git a/po/zh_HK.po b/po/zh_HK.po
-index eb0ede7..aceb184 100644
+index eb0ede77e889..aceb184b2440 100644
 --- a/po/zh_HK.po
 +++ b/po/zh_HK.po
 @@ -2376,3 +2376,6 @@ msgstr "關閉視窗(_L)"
@@ -2102,7 +2102,7 @@ index eb0ede7..aceb184 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 diff --git a/po/zh_TW.po b/po/zh_TW.po
-index e85dda1..f69fd98 100644
+index e85dda1047a6..f69fd98ef82c 100644
 --- a/po/zh_TW.po
 +++ b/po/zh_TW.po
 @@ -2558,3 +2558,6 @@ msgstr "關閉視窗(_L)"
