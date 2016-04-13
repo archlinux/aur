@@ -1,6 +1,6 @@
 pkgbase = ros-jade-mavlink
 	pkgdesc = ROS - MAVLink message marshaling library.
-	pkgver = 2015.10.10
+	pkgver = 2016.4.4
 	pkgrel = 1
 	url = http://qgroundcontrol.org/mavlink/
 	arch = any
