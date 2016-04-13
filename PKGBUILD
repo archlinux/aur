@@ -2,7 +2,7 @@
 
 pkgname=xurls
 _name="${pkgname}"
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Extract urls from plain text"
 url="https://github.com/mvdan/${_name}"
