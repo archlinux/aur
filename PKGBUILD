@@ -30,5 +30,6 @@ md5sums=()
 validpgpkeys=()
 package(){
 cp "whatsie-$pkgver-x86_64.pkg.tar.xz" "$pkgdir/"
+ pacman -U "$pkgdir/whatsie-$pkgver-x86_64.pkg.tar.xz"
 }
 md5sums=('836ac02b4a451a51049b35faffaec425')
