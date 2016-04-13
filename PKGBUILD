@@ -4,7 +4,7 @@
 
 pkgname=python2-icalendar
 _pkgname=icalendar
-pkgver=3.9.1
+pkgver=3.9.2
 pkgrel=1
 pkgdesc='A parser/generator of iCalendar files (RFC 2445)'
 arch=('any')
@@ -13,8 +13,8 @@ license=('BSD')
 depends=('python2' 'python2-pytz' 'python2-dateutil')
 makedepends=('python2-distribute')
 source=(https://pypi.python.org/packages/source/i/icalendar/icalendar-${pkgver}.tar.gz)
-md5sums=('e16251e71dd417b6ede1207fbea67f4c')
-sha256sums=('d8e05184f943713cbd56e7f1bb122b9befa3fd1e175eaef72abecb21db67193a')
+md5sums=('92799281bedbce961102031a952448c0')
+sha256sums=('0b2d2610e039404e22a0a72fe5a59614374e7bd15ed824ead6ef6f8d36b41e2f')
 
 build() {
   cd "$srcdir/${_pkgname}-$pkgver"
