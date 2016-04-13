@@ -2,7 +2,7 @@
 
 _pkgname=vdirsyncer
 pkgname=${_pkgname}-git
-pkgver=0.9.3.r35.g777eb35
+pkgver=0.9.3.r41.g7917f2e
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ checkdepends=("python-hypothesis>=3.1"
 source=("git://github.com/pimutils/${_pkgname}.git")
 sha256sums=('SKIP')
 conflicts=('vdirsyncer')
-provides=('vdirsyncer')
+provides=("vdirsyncer=${pkgver}")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
