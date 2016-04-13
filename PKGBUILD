@@ -21,7 +21,7 @@ install=
 changelog=
 
 source=(
-  "https://github.com/BoostIO/boost-releases/releases/download/v0.5.9/boost_0.5.9_amd64.deb"
+  "https://github.com/BoostIO/boost-releases/releases/download/v0.5.9/boostnote_0.5.9_amd64.deb"
   )
 
 noextract=()
