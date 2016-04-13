@@ -5,12 +5,14 @@
 
 pkgname=yad-gtk2
 pkgver=0.35.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A fork of zenity - display graphical dialogs from shell scripts or command line - for gtk2'
 url='http://sourceforge.net/projects/yad-dialog'
 arch=('x86_64' 'i686')
 license=('GPL3')
 depends=('gtk2')
+provides=('yad')
+conflicts=('yad')
 makedepends=('intltool')
 install='yad.install'
 source=($url/files/${pkgname%-gtk2}-${pkgver}.tar.xz)
