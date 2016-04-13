@@ -1,8 +1,8 @@
 # Maintainer: Vasya Novikov <vnnn91@yandex.ru> (replace "nnn" with a single "n")
 
 pkgname=bambam-git
-pkgver=r45.e3680c3
-pkgrel=2
+pkgver=r48.fcc117a
+pkgrel=1
 pkgdesc="A simple baby keyboard masher application."
 arch=('any')
 url="https://github.com/porridge/bambam"
@@ -16,14 +16,6 @@ sha256sums=('SKIP'
 pkgver() {
 	cd "${srcdir}/bambam"
 	echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-	cd "${srcdir}/bambam"
-
-	# allow bambam to be executed from a symlink
-	# remove these lines if/after a corresponding PR gets merged to master
-	sed -i -e 's/normpath/realpath/' bambam.py
 }
 
 package() {
