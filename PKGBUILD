@@ -1,10 +1,10 @@
 # Contributor: muhas <muhas@mail.ru>
 pkgname=fbless
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="fictionbook console viewer"
 url="http://pybookreader.narod.ru/misc.html"
-license="GPL"
+license=("GPL")
 depends=('python2' 'ncurses')
 makedepends=('git')
 arch=('any')
