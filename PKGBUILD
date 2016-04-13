@@ -5,7 +5,7 @@ pkgdesc="perl script for managing/searching mail on an IMAP servers from the com
 arch=(any)
 url="https://sourceforge.net/projects/imaputils/files/"
 license=('BSD')
-depends=('perl-mail-imapclient')
+depends=('perl-mail-imapclient' 'perl-datetime-format-mail' 'perl-datetime')
 source=("$pkgname::git://git.code.sf.net/p/imaputils/git"
 	"timeout.patch::http://pastie.org/pastes/10795427/download")
 md5sums=('SKIP'
