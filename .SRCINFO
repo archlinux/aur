@@ -1,0 +1,10 @@
+pkgbase = whatsie
+	pkgver = 2.0.10
+	pkgrel = 1
+	arch = any
+	license = MIT
+	source = https://github.com/mrl4214/AUR/releases/download/2.0.10/whatsie-2.0.10-x86_64.pkg.tar.xz
+	md5sums = 836ac02b4a451a51049b35faffaec425
+
+pkgname = whatsie
+
