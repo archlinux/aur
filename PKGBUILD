@@ -1,7 +1,7 @@
 # Contributor: Brian F.G. <bidulock@openss7.org>
 # Maintainer: Alexandr Boiko <brdcom@ya.ru>
 pkgname=accel-ppp
-pkgver=1.10.0
+pkgver=1.10.1
 pkgrel=1
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ source=(http://sourceforge.net/projects/$pkgname/files/$pkgname-$pkgver.tar.bz2
 	accel-pppd.service
 	dictionary.accel_ipoe
 	dictionary.ppp)
-md5sums=('864835b2b85bcdd2a509df3a85900c7d'
+md5sums=('68a617acb228bf8e16a91196902e4307'
          '0536dd60960e76cf5a6cdbf0518782d8'
          '816dd5ea9534a077dfd63b6cd529738a'
          '5be7d42b434b74d7e692b19a9e3c4297'
