@@ -12,7 +12,7 @@ provides=('pycharm')
 license=('custom')
 install=${pkgname}.install
 depends=('java-runtime-common' 'java-runtime>=8' 'ttf-font' 'libxtst' 'libxslt')
-source=(https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz
+source=(https://download.jetbrains.com/python/$pkgname-$pkgver-no-jdk.tar.gz
         'pycharm-professional.desktop'
         'pycharm-professional.install'
         'pycharm')
