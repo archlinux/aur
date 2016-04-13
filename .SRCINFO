@@ -1,14 +1,14 @@
 pkgbase = nevow
 	pkgdesc = web application construction kit written in Python
-	pkgver = 0.11.1
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = http://pypi.python.org/pypi/Nevow
 	arch = any
 	license = custom
 	depends = python2
 	depends = twisted
-	source = https://pypi.python.org/packages/source/N/Nevow/Nevow-0.11.1.tar.gz
-	md5sums = acc5d23bd94a5399752065baae6117f6
+	source = https://pypi.python.org/packages/source/N/Nevow/Nevow-0.13.0.tar.gz
+	md5sums = d685fb5b2d07730a75b517472908238c
 
 pkgname = nevow
 
