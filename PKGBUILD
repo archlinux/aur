@@ -2,7 +2,7 @@
 
 pkgname=pycharm-professional
 pkgver=2016.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Powerful Python and Django IDE. Professional version."
 arch=('any')
 options=('!strip')
@@ -30,8 +30,8 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'vagrant: For support virtualized development environments'
             'python2-pytest: For support testing inside Pycharm with Python 2'
             'python-pytest: For support testing inside Pycharm with Python 3'
-            'python2-tox: Multi-Python-version environments testing with tox with Python 2'
-            'python-tox: Multi-Python-version environments testing with tox with Python 3')
+            'python2-tox: Python environments for testing tool with Python 2'
+            'python-tox: Python environments for testing tool with Python 3')
 sha256sums=('5525914782ab7c0b2e4dafa228d053525494acbe4cb47e84e6a44be2c21a646d'
             '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
             '6442ec9f0690f743da697a2a65b0784017de501e7f39d5de0879153fbf85dc7a'
