@@ -1,0 +1,16 @@
+pkgbase = mogilefs-utils
+	pkgdesc = Command line utilities for the MogileFS distributed file system
+	pkgver = 2.29
+	pkgrel = 1
+	url = http://www.mogilefs.org/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-mogilefs-client
+	depends = perl-dbi
+	options = !emptydirs
+	source = http://cpan.perl.org/modules/by-authors/id/DORMANDO/MogileFS-Utils-2.29.tar.gz
+	md5sums = 093aee5dc57a3f0a50651072e2de571d
+
+pkgname = mogilefs-utils
+
