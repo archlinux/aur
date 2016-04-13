@@ -5,7 +5,7 @@
 
 pkgname=fcitx-sogoupinyin
 pkgver=2.0.0.0068
-pkgrel=1
+pkgrel=2
 pkgdesc="Sogou Pinyin for Linux"
 arch=('x86_64' 'i686')
 url="http://pinyin.sogou.com/linux/"
@@ -36,6 +36,9 @@ package(){
 
     mv "$pkgdir"/usr/lib/{$_LIB_DIR/,}fcitx
     rmdir "$pkgdir/usr/lib/${_LIB_DIR}"
+
+    # Avoid "No such key 'Gtk/IMModule' in schema 'org.gnome.settings-daemon.plugins.xsettings'" warning
+    sed -i '/Gtk\/IMModule=fcitx/d' "$pkgdir/usr/share/glib-2.0/schemas/50_sogoupinyin.gschema.override"
 
     rm -r "$pkgdir"/usr/share/keyrings
 
