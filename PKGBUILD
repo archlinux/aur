@@ -5,16 +5,21 @@
 
 _pkgname=lmms
 pkgname=lmms-qt5-git
-pkgver=1.1.90.r98.g9a44eaf
+pkgver=1.1.90.r128.g13595bb
 pkgrel=1
 pkgdesc='The Linux MultiMedia Studio (Qt5 Version).'
 url='http://lmms.io'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('qt5-base' 'sdl_sound' 'jack' 'libsamplerate' 'fluidsynth' 'zynaddsubfx' 'portaudio' 'libxft' 
-'libxinerama' 'shared-mime-info')
-optdepends=('wine: VST support (experimental)'
-            'fftw: SpectrumAnalyzer plugin' 
+depends=('qt5-base' 'libsamplerate' 'fluidsynth' 'zynaddsubfx' 'libxft' 
+'libxinerama' 'shared-mime-info' 'alsa-lib')
+optdepends=('wine: VST support (experimental, currently nearly unusable on Arch Linux)'
+            'fftw: SpectrumAnalyzer plugin'
+            'jack: Optional JACK audio backend'
+            'portaudio: Optional Portaudio audio backend'
+            'sdl_sound: Optional SDL audio backend'
+            'pulseaudio: Optional PulseAudio backend'
+            'oss: Optional OSS backend'
             'libsoundio: For soundio support')
 makedepends=('git' 'cmake' 'ladspa' 'raptor' 'rasqal' 'libxft' 'freetype2' 'redland' 'gcc-multilib')
 options=('!strip')
