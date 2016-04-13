@@ -3,7 +3,7 @@
 pkgname=ricin-git
 _pkgname=Ricin
 _submodule=tox-vapi
-pkgver=0.563.0897e51
+pkgver=0.599.5602330
 pkgrel=1
 pkgdesc="A dead-simple but powerful Tox client."
 url="https://github.com/RicinApp/Ricin"
@@ -16,7 +16,6 @@ depends=('gtk3'
          'json-glib'
          'libsoup'
          'libnotify'
-         'libconfig'
          )
 
 source=("git+https://github.com/RicinApp/Ricin.git")
