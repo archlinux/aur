@@ -1,4 +1,4 @@
-From badd5c180f547a467089f9311df2d05578e2828a Mon Sep 17 00:00:00 2001
+From ef29016cabfb42ce62d06b2f5db20c213073deec Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Wed, 7 Jan 2015 16:01:00 +0100
 Subject: [PATCH 1/3] emulation: Add sequences and signals for desktop
@@ -62,10 +62,10 @@ index 0276422ec6d4..2c35c685930a 100644
  VOID:STRING,UINT
  VOID:UINT,UINT
 diff --git a/src/vte.cc b/src/vte.cc
-index cf052beefcb5..17b31f6f177e 100644
+index 5ba70d3d8a13..721ad1ab3135 100644
 --- a/src/vte.cc
 +++ b/src/vte.cc
-@@ -8517,6 +8517,9 @@ VteTerminalPrivate::~VteTerminalPrivate()
+@@ -8515,6 +8515,9 @@ VteTerminalPrivate::~VteTerminalPrivate()
  
  	remove_update_timeout(this);
  
@@ -75,7 +75,7 @@ index cf052beefcb5..17b31f6f177e 100644
  	/* discard title updates */
          g_free(m_window_title);
          g_free(m_window_title_changed);
-@@ -10551,6 +10554,15 @@ VteTerminalPrivate::emit_pending_signals()
+@@ -10549,6 +10552,15 @@ VteTerminalPrivate::emit_pending_signals()
  
  	emit_adjustment_changed();
  
@@ -293,7 +293,7 @@ index 1a646029abbe..53ce98332e43 100644
 2.5.0
 
 
-From aa0710938fc81d72edcbd951939fa14672f9a4ee Mon Sep 17 00:00:00 2001
+From e8ec1e70715efe5887b84df0edcbcc9d56a623ad Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Thu, 29 Jan 2015 13:09:17 +0100
 Subject: [PATCH 2/3] vte.sh: Emit OSC 777 from PROMPT_COMMAND
@@ -324,7 +324,7 @@ index 2d211caa2f17..1c0543bd9d26 100644
 2.5.0
 
 
-From 43e74100bc1e7114147333a5e6c45052a66a0849 Mon Sep 17 00:00:00 2001
+From f919c5c63471e9878a10518d8e8813cf59586f84 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Thu, 22 Jan 2015 16:37:10 +0100
 Subject: [PATCH 3/3] vteapp: Add a test for the notification-received signal
