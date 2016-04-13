@@ -3,6 +3,6 @@ pkgbase = whatsie
 	pkgrel = 3
 	arch = any
 	license = MIT
-
+	depends = dpkg
 pkgname = whatsie
 
