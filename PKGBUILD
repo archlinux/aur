@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-glib-object-introspection'
-pkgver='0.028'
+pkgver='0.040'
 pkgrel='1'
 pkgdesc="Dynamically create Perl language bindings"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('glib-perl>=1.28' 'glib2>=2.42.2' 'gobject-introspection>=1.42.0' 'libffi>=3.2.1' 'perl-extutils-depends>=0.3' 'perl-extutils-pkgconfig')
+depends=('glib-perl>=1.32' 'glib2>=2.48.0' 'gobject-introspection-runtime>=1.48.0' 'libffi>=3.2.1' 'perl-extutils-depends>=0.3' 'perl-extutils-pkgconfig')
 makedepends=()
-url='http://search.mcpan.org/dist/Glib-Object-Introspection'
-source=('http://search.mcpan.org/CPAN/authors/id/X/XA/XAOC/Glib-Object-Introspection-0.028.tar.gz')
-md5sums=('69452323451b8260339ffd00e375dd25')
-sha512sums=('5754e012b2330e7533f06056cfee377cad380b4938e0c92d744321dacf65688cc96797e3eaf500632df24a5d6bd495281a79f915ed970d95b474f688c63850b2')
-_distdir="Glib-Object-Introspection-0.028"
+url='https://metacpan.org/release/Glib-Object-Introspection'
+source=('http://search.cpan.org/CPAN/authors/id/X/XA/XAOC/Glib-Object-Introspection-0.040.tar.gz')
+md5sums=('df8329c498da77677d58ef337a75fa6d')
+sha512sums=('bd5e4db8b6e331fb9641e75a50a95fff1a823597a8e4c4e9f99a81e7aa2ee30d93856c56ecfea3785b8719dba6590169bcd006ea06d97170889091e6b9480e9f')
+_distdir="Glib-Object-Introspection-0.040"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
