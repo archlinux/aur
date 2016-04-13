@@ -1,0 +1,20 @@
+--- package.json	2016-04-13 09:13:10.216678408 -0400
++++ package.json	2016-04-13 09:22:50.416683431 -0400
+@@ -12,7 +12,7 @@
+     "url": "https://github.com/atom/atom/issues"
+   },
+   "license": "MIT",
+-  "electronVersion": "0.36.8",
++  "electronVersion": "0.36.12",
+   "dependencies": {
+     "async": "0.2.6",
+     "atom-keymap": "6.3.2",
+@@ -37,7 +37,7 @@
+     "less-cache": "0.23",
+     "line-top-index": "0.2.0",
+     "marked": "^0.3.4",
+-    "nodegit": "0.12.0",
++    "nodegit": "0.12.2",
+     "normalize-package-data": "^2.0.0",
+     "nslog": "^3",
+     "oniguruma": "^5",

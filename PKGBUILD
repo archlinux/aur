@@ -7,7 +7,7 @@
 
 pkgname=atom-editor
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Chrome-based text editor from Github'
 arch=('x86_64' 'i686')
 url='https://github.com/atom/atom'
@@ -17,11 +17,15 @@ optdepends=('gvfs: file deletion support')
 makedepends=('git' 'npm')
 conflicts=('atom-editor-bin' 'atom-editor-git')
 install=atom.install
-source=("https://github.com/atom/atom/archive/v${pkgver}.tar.gz")
-sha256sums=('1629c6688bccf7180482b4b5ccacf0d68d9b33172007d2c05c6458da80be046a')
+source=("https://github.com/atom/atom/archive/v${pkgver}.tar.gz"
+        'package.patch')
+sha256sums=('1629c6688bccf7180482b4b5ccacf0d68d9b33172007d2c05c6458da80be046a'
+            '5acaea28a0b895b8657cc98a231da0c85a276e2f499d4438529060fb80cbf722')
 
 prepare() {
   cd "atom-$pkgver"
+  
+  patch -Np0 -i "$srcdir/package.patch"
 
   sed -i -e "/exception-reporting/d" \
       -e "/metrics/d" package.json
