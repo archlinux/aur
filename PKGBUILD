@@ -3,26 +3,22 @@
 # Contributor: Étienne Deparis <etienne [at] depar [dot] is>
 
 pkgname=khal
-pkgver=0.7.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='CLI calendar application build around CalDAV'
 arch=('any')
 url='http://lostpackets.de/khal/'
 license=('MIT')
-makedepends=('python-setuptools_scm' 'python-sphinxcontrib-newsfeed')
-depends=('python-urwid' 'vdirsyncer' 'python-tzlocal'
-         'python-click' 'python-configobj' 'python-icalendar' 'python-xdg'
+makedepends=('python-setuptools-scm' 'python-sphinxcontrib-newsfeed')
+depends=('python-urwid' "vdirsyncer>=0.5.2" "python-tzlocal>=1.0"
+         "python-click>=3.2" 'python-configobj' 'python-icalendar' 'python-xdg'
          'python-pkginfo')
 optdepends=('python-setproctitle')
-source=("http://pypi.python.org/packages/source/k/khal/khal-${pkgver}.tar.gz"
-        fix_path.patch::'https://github.com/geier/khal/commit/ef65e7b75f2f6aee61433da2372345b86118f4f4.patch')
-sha256sums=('c6b0c81df56133e4592f02d8e9b60702079da2affd1b09ba96358ccd8eec9402'
-            '302d2c9e8ffe094033ae02dbc70f6f6c48cd6fb26da3a707d5c8975b75b3536f')
+source=("http://pypi.python.org/packages/source/k/khal/khal-${pkgver}.tar.gz")
+sha256sums=('9d352e4aa6256e493d5aea69540f642158bdcab75d2383e1e43506bf89982094')
 
 prepare(){
   cd "$srcdir/$pkgname-$pkgver"
-  patch -p1 < "$srcdir/fix_path.patch"
-
 }
 
 build() {
