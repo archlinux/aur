@@ -29,8 +29,10 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'docker-compose: For support docker inside Pycharm'
             'vagrant: For support virtualized development environments'
             'python2-pytest: For support testing inside Pycharm with Python 2'
-            'python-pytest: For support testing inside Pycharm with Python 3')
-sha256sums=('730e994f3582b1cb9754b121457636265515c19199eabd762cd78b0c504b91cf'
+            'python-pytest: For support testing inside Pycharm with Python 3'
+            'python2-tox: Multi-Python-version environments testing with tox with Python 2'
+            'python-tox: Multi-Python-version environments testing with tox with Python 3')
+sha256sums=('5525914782ab7c0b2e4dafa228d053525494acbe4cb47e84e6a44be2c21a646d'
             '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
             '6442ec9f0690f743da697a2a65b0784017de501e7f39d5de0879153fbf85dc7a'
             'ad59415f8ac2c623f9c61453caf70bf75b6b14db2f09807e4ea339a2dc740be9')
