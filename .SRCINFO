@@ -1,7 +1,7 @@
 pkgbase = spotify-ripper
 	pkgdesc = a small ripper for Spotify that rips Spotify URIs to audio files
 	pkgver = 2.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jrnewell/spotify-ripper
 	arch = any
 	license = MIT
@@ -20,7 +20,7 @@ pkgbase = spotify-ripper
 	optdepends = libav-git-no-libs: Rip songs to Apple Lossless format
 	optdepends = fdkaac: Rip songs to MP4/M4A format with Fraunhofer FDK AAC codec
 	source = https://pypi.python.org/packages/source/s/spotify-ripper/spotify-ripper-2.8.5.tar.gz
-	md5sums = 1cdd037f76cbd4866584f81c28939ba7
+	md5sums = e8421d26c2fdb2afaaf681f81a50f747
 
 pkgname = spotify-ripper
 
