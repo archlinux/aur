@@ -3,7 +3,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=2.6.2
-pkgrel=2
+pkgrel=3
 _wwwpkgname=AdminLTE
 _wwwpkgver=1.1.7
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -65,10 +65,10 @@ prepare() {
   sed -i "s/\$SUDO cp \/etc\/.pihole\/adlists.default \/etc\/pihole\/adlists.default//w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: adlists.default is already there" && return 1 ; fi
 
-  # useless by definition
-  sed -n "/# Reload hosts file/w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: useless by definition" && return 1 ; fi
-  sed -i '/# Reload hosts file/,+9d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  # arch useless
+  sed -n "/#ensure \/etc\/dnsmasq\.d\//w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: arch useless" && return 1 ; fi
+  sed -i '/ensure \/etc\/dnsmasq\.d\//,+5d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
 
   # change log location in admin php interface and scripts
   sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
