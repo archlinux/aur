@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethereum-git
-pkgver=v1.2.2.r36.g40fcd1a
+pkgver=v1.2.2.r60.g248bbb5
 pkgrel=1
 pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, full webthree-umbrella, latest unstable git version)"
 arch=('i686' 'x86_64')
@@ -110,8 +110,6 @@ package() {
 
   msg 'Installing...'
   make DESTDIR="$pkgdir" install -C build
-
-  mv $pkgdir/usr/bin/mix $pkgdir/usr/bin/mix-ide
 
   msg 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
