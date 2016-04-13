@@ -1,6 +1,6 @@
 pkgbase = lektor
 	pkgdesc = A static content management system.
-	pkgver = 2.0.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://www.getlektor.com
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = lektor
 	depends = python2-inifile
 	depends = exifread
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/L/Lektor/Lektor-2.0.tar.gz
-	sha256sums = e8a35a27c24a12b1c4a51d3fb72acfdf8580897f55a8cba9707d0259dad68b82
+	source = https://pypi.python.org/packages/source/L/Lektor/Lektor-2.2.tar.gz
+	sha256sums = 50316f0b92d128389de03b88c4c532f38c2eb3360909a239251b503c9706e60c
 
 pkgname = lektor
 
