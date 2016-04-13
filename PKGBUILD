@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-mime-charset'
-pkgver='1.010.1'
+pkgver='1.012'
 pkgrel='1'
 pkgdesc="Charset Information for MIME"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.005')
+depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/MIME-Charset'
-source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEZUMI/MIME-Charset-1.010.1.tar.gz')
-md5sums=('3fcd1e3575e8911ae83c5da902947994')
-sha512sums=('9918f4e9fdbe2b3a049b2f4402c7c34dd9d756635beb4883cd216fdf0eda30c20a36fa75dbcef9f481eea6e8711cf26fb9189e8554fb0d14c918f13c3db85a27')
-_distdir="MIME-Charset-1.010.1"
+url='https://metacpan.org/release/MIME-Charset'
+source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEZUMI/MIME-Charset-1.012.tar.gz')
+md5sums=('1762b0d9e9379be684b704c247317276')
+sha512sums=('f116deb04912bdccfd98484ef82d643d23b4cb90bfdf88ddc60d0a3f857ac3f084a60681a6fae4f9a2d982d6f470c79f171688e44a4034e9533bb518a914e2fe')
+_distdir="MIME-Charset-1.012"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
