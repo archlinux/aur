@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-gtk3'
-pkgver='0.025'
+pkgver='0.026'
 pkgrel='1'
 pkgdesc="Perl interface to the 3.x series of the gtk+ toolkit"
 arch=('any')
@@ -12,10 +12,10 @@ depends=('gtk3' 'perl-cairo-gobject>=1.000' 'perl-glib-object-introspection>=0.0
 makedepends=()
 checkdepends=('ttf-dejavu' 'xorg-server-xvfb')
 url='https://metacpan.org/release/Gtk3'
-source=('http://search.cpan.org/CPAN/authors/id/X/XA/XAOC/Gtk3-0.025.tar.gz')
-md5sums=('215f3db5a4916daacd260280b9be3551')
-sha512sums=('b198b56bb0b6df061d00b958debc506f89fc59302f7e338d2788d0efde45ce4912276879f71a6dc2c1285f5a818e760b551c9baa31d9cd638ed30bc60872f702')
-_distdir="Gtk3-0.025"
+source=('http://search.cpan.org/CPAN/authors/id/X/XA/XAOC/Gtk3-0.026.tar.gz')
+md5sums=('d0de8124000200abeaf753407967a324')
+sha512sums=('b1b11845cdc2834c68ead133dbc40246e8d43129e191ab2b91c48226e0aede139b81e34e8080eb72802cbc1e1a31d266bd13c07412dc1ab71505a730f09a9e3b')
+_distdir="Gtk3-0.026"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
