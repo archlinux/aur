@@ -1,4 +1,5 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: Chris Andrews <christophersimonandrews [at] gmail [dot] com>
+# Contributor: FadeMind <fademind@gmail.com>
 # Contributor: Serge Victor <arch@random.re>
 # Contributor: Krzysztof Wloch <wloszekk [at] gmail [dot] com>
 # Contributor: Luke McCarthy <luke@iogopro.co.uk>
