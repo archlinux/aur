@@ -1,0 +1,29 @@
+pkgbase = doublecmd-gtk2-svn
+	pkgdesc = Twin-panel (commander-style) file manager (GTK)
+	pkgver = r6754
+	pkgrel = 1
+	url = http://doublecmd.sourceforge.net/
+	install = doublecmd-svn.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = lazarus
+	makedepends = fpc
+	makedepends = subversion
+	depends = gtk2
+	optdepends = lua51: scripting
+	optdepends = p7zip: support for 7zip archives
+	optdepends = libunrar: support for rar archives
+	provides = doublecmd-gtk2
+	conflicts = doublecmd-gtk2
+	conflicts = doublecmd-gtk2-alpha-bin
+	conflicts = doublecmd-qt
+	conflicts = doublecmd-qt-svn
+	options = !strip
+	source = doublecmd-code::svn+http://svn.code.sf.net/p/doublecmd/code/trunk
+	source = http://www.herecura.be/files/lazarus-20140321-2.tar.gz
+	sha256sums = SKIP
+	sha256sums = 16560ad7403ffbee1800384768828e1fad924d03068c6248b68a78c393fc4e20
+
+pkgname = doublecmd-gtk2-svn
+
