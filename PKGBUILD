@@ -9,7 +9,7 @@ url='http://www.impredicative.com/ur/'
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=()
-optdepends=('postgrsql' 'mariadb' 'sqlite')
+optdepends=('postgresql' 'mariadb' 'sqlite')
 makedepends=('mlton' 'openssl' 'git')
 source=('git://github.com/urweb/urweb.git')
 md5sums=('SKIP')
@@ -39,6 +39,3 @@ package() {
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README"
 }
-md5sums=('SKIP')
-md5sums=('SKIP')
-md5sums=('SKIP')
