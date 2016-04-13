@@ -1,8 +1,10 @@
 2016-04-13
+	removed gschema-override for theme, which is superfluous from >= 3.20
+
+2016-04-13
 	upstream update: 3.20.0 -> 3.20.1
 	modify patch for italian translation to stay compatible
 	replace makedepends: appdata-tools -> appstream-glib
 
 2016-04-12
 	initial creation
-
