@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec $MONO /usr/lib/emby-server/MediaBrowser.Server.Mono.exe -programdata $PROGRAM_DATA -ffmpeg $FFMPEG -ffprobe $FFPROBE
