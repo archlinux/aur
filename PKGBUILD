@@ -4,13 +4,12 @@
 
 pkgname=(
     "zeroc-ice"
-    "zeroc-ice-php"
     "zeroc-ice-java"
 )
 
 pkgbase=("zeroc-ice")
 pkgver=3.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An object-oriented middleware that provides object-oriented Remote Procedure Call functionality"
 arch=("i686" "x86_64")
 url="https://zeroc.com"
@@ -18,13 +17,11 @@ license=("GPL" "custom:Ice license")
 makedepends=(
     "mcpp>=2.7.2"
     "bzip2"
-    "php56"
     "java-environment"
     "java-berkeleydb>=5.3"
 )
 
 depends=("mcpp>=2.7.2")
-_depends_zeroc_ice_php=("zeroc-ice" "php56")
 _depends_zeroc_ice_java=("zeroc-ice" "java-environment")
 
 source=(
@@ -45,12 +42,6 @@ build() {
     msg "Building Ice for C++"
     msg2 "Compiling..."
     make ${_make_args} -j`nproc`
-
-    cd ${srcdir}/ice-${pkgver}/php
-    msg "Building Ice for PHP"
-    find . -name 'Make*' -exec sed -i -e 's/php\-config\ /php\-config56\ /g' {} \;
-    msg2 "Compiling..."
-    make ${_make_args} DESTDIR="${pkgdir}/"
 
     cd ${srcdir}/ice-${pkgver}/java
     msg "Building Ice for Java"
@@ -94,23 +85,6 @@ package_zeroc-ice() {
 
     rm -f ${pkgdir}/usr/share/Ice-${pkgver}/LICENSE
     rm -f ${pkgdir}/usr/share/Ice-${pkgver}/ICE_LICENSE
-}
-
-package_zeroc-ice-php() {
-   depends=("${_depends_zeroc_ice_php[@]}")
-
-    cd ${srcdir}/ice-${pkgver}/php
-    make ${_make_args} DESTDIR="${pkgdir}/" install
-
-    msg "Installing Ice for PHP"
-    install -dm755 ${pkgdir}/etc/php56/conf.d/
-    echo "extension = IcePHP.so" > ${pkgdir}/etc/php56/conf.d/ice.ini
-    echo "include_path=${include_path}:/usr/share/Ice-${pkgver}/php/" > ${pkgdir}/etc/php56/conf.d/ice.ini
-
-    # Put stuff into more possibly Arch Linux friendly places
-    rm -rf ${pkgdir}/usr/share/Ice-${pkgver}/*
-    rm ${pkgdir}/usr/share/slice
-    mv ${pkgdir}/usr/share/php ${pkgdir}/usr/share/Ice-${pkgver}/php
 }
 
 package_zeroc-ice-java() {
