@@ -6,7 +6,6 @@ pkgver=1.17
 pkgrel=1
 pkgdesc="Client library for the MogileFS distributed file system"
 arch=(any)
-_dist="MogileFS-Client"
 url="http://www.mogilefs.org/"
 license=('GPL' 'PerlArtistic')
 depends=(perl-libwww perl-io-stringy)
