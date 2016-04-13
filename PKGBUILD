@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=wine-staging-git
-pkgver=1.9.7.r10.g1f66129+wine.1.9.7.r39.gf6c10b8
+pkgver=1.9.7.r29.g141fc08+wine.1.9.7.r195.g944190b
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs (staging branch, Git version)"
 arch=('i686' 'x86_64')
@@ -71,8 +71,8 @@ optdepends=(
   'libva'                 'lib32-libva'
   'gtk3'                  'lib32-gtk3'
   'gst-plugins-base-libs' 'lib32-gst-plugins-base-libs'
-  'cups'                  'dosbox'
-  'samba'
+  'cups'                  'samba'
+  'dosbox'                'oss'
 )
 options=('staticlibs')
 install="$pkgname".install
