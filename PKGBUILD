@@ -7,7 +7,7 @@ pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch. 
 arch=("x86_64" "i686")
 url="http://popcorntime.ag/"
 license=("GPL3")
-depends=("libnotify" "desktop-file-utils" "ttf-font" "gconf" "nss" "libxtst" "gtk2" "alsa-lib")
+depends=("alsa-lib" "desktop-file-utils" "gconf" "gtk2" "libnotify" "libxtst" "nodejs" "nss" "python" "ttf-font")
 makedepends=("npm")
 optdepends=("net-tools: necessary for the new vpn feature" "ttf-liberation: open source ttf fonts")
 provides=("popcorntime" "popcorntime-ce")
@@ -18,19 +18,23 @@ source=("https://github.com/PopcornTimeCommunity/desktop/archive/v${pkgver}-${pk
 	"popcorntime-ce.install"
 	"popcorntime-ce.desktop")
 sha1sums=("c8a1e25fd777180942deb05d7a520f2313d95029"
-	"48fe37180e9dfed60da82fc67d023b0004f3f1c7"
+	"2c22a3f1d1335abe8d7ac7dd6a33933720ba30e4"
 	"219a9c7033361e1286967452868721302b1d6da7")
 
 _platform=$([ $CARCH = "x86_64" ] && echo "linux64" || echo "linux32")
-_pkgfullname="Popcorn-Time-CE"
+_execname="Popcorn-Time-CE"
 _reldir="desktop-${pkgver}-${pkgrel}"
-_bindir="${_reldir}/build/${_pkgfullname}/${_platform}"
+_bindir="${_reldir}/build/${_execname}/${_platform}"
 
 build() {
 
 	cd "${srcdir}/${_reldir}"
 
-	npm install
+	npm install --user root
+
+	# Remove all references to ${srcdir}
+	find "${srcdir}/${_reldir}" -type f -print0 | xargs -0 sed -i "s|${srcdir}/${_reldir}|/usr/share/${pkgname}|g"
+
 	"${srcdir}/${_reldir}/node_modules/.bin/gulp" build -p ${_platform}
 
 }
@@ -43,7 +47,7 @@ package() {
 	install -dm755 "${pkgdir}/usr/bin"
 
 	# Program
-	install -Dm755 "${srcdir}/${_bindir}/${_pkgfullname}" "${pkgdir}/usr/share/${pkgname}/"
+	install -Dm755 "${srcdir}/${_bindir}/${_execname}" "${pkgdir}/usr/share/${pkgname}/"
 	install -Dm644 "${srcdir}/${_reldir}/"{CHANGELOG.md,LICENSE.txt,package.json,README.md} "${pkgdir}/usr/share/${pkgname}/"
 	install -Dm644 "${srcdir}/${_bindir}/"{icudtl.dat,libffmpegsumo.so,nw.pak} "${pkgdir}/usr/share/${pkgname}/"
 
@@ -51,7 +55,7 @@ package() {
 	cp -a "${srcdir}/${_reldir}/"{node_modules,src} "${pkgdir}/usr/share/${pkgname}/"
 
 	# Link to program
-	ln -s "/usr/share/${pkgname}/${_pkgfullname}" "${pkgdir}/usr/bin/${pkgname}"
+	ln -s "/usr/share/${pkgname}/${_execname}" "${pkgdir}/usr/bin/${pkgname}"
 
 	# Desktop file
 	install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
