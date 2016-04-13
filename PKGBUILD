@@ -27,7 +27,9 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'cython: For performance debugger in Python 3'
             'docker-machine: For support docker inside Pycharm'
             'docker-compose: For support docker inside Pycharm'
-            'vagrant: For support virtualized development environments')
+            'vagrant: For support virtualized development environments'
+            'python2-pytest: For support testing inside Pycharm with Python 2'
+            'python-pytest: For support testing inside Pycharm with Python 3')
 sha256sums=('730e994f3582b1cb9754b121457636265515c19199eabd762cd78b0c504b91cf'
             '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
             '6442ec9f0690f743da697a2a65b0784017de501e7f39d5de0879153fbf85dc7a'
