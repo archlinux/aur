@@ -1,0 +1,16 @@
+pkgbase = perl-mogilefs-client
+	pkgdesc = Client library for the MogileFS distributed file system
+	pkgver = 1.17
+	pkgrel = 1
+	url = http://www.mogilefs.org/
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-libwww
+	depends = perl-io-stringy
+	options = !emptydirs
+	source = http://cpan.perl.org/modules/by-authors/id/DORMANDO/MogileFS-Client-1.17.tar.gz
+	md5sums = f077c567fc29358ea6308f22a6ad76e5
+
+pkgname = perl-mogilefs-client
+
