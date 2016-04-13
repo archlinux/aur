@@ -1,0 +1,21 @@
+pkgbase = urweb-git
+	pkgdesc = Full stack web framework based on a functional programming language
+	pkgver = 20160330.1278321
+	pkgrel = 1
+	url = http://www.impredicative.com/ur/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = mlton
+	makedepends = openssl
+	makedepends = git
+	optdepends = postgrsql
+	optdepends = mariadb
+	optdepends = sqlite
+	provides = urweb
+	conflicts = urweb
+	source = git://github.com/urweb/urweb.git
+	md5sums = SKIP
+
+pkgname = urweb-git
+
