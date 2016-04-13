@@ -1,0 +1,13 @@
+pkgbase = systemd-zpool-scrub
+	pkgdesc = Systemd service for automatic ZFS zpool scrubbing
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/lnicola/systemd-zpool-scrub
+	arch = any
+	license = MIT
+	depends = zfs-utils-git
+	source = git+https://github.com/lnicola/systemd-zpool-scrub.git
+	md5sums = SKIP
+
+pkgname = systemd-zpool-scrub
+
