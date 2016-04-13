@@ -1,0 +1,15 @@
+pkgbase = apk-thumbnailer
+	pkgdesc = a simple thumbnailer for apk files
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/theredbaron1834/Scripts/blob/master/apk-thumbnailer
+	arch = i686
+	arch = x86_64
+	license = BSD 3 Clause
+	depends = java-runtime
+	depends = android-sdk-build-tools
+	depends = imagemagick
+	depends = unzip
+
+pkgname = apk-thumbnailer
+
