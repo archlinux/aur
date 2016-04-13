@@ -2,7 +2,7 @@
 # Contributor: Daniel Seymour <dannyseeless@gmail.com>
 
 pkgname=emby-server-git
-pkgver=3.0.5782.0.r524.36eed0d
+pkgver=3.0.5913
 pkgrel=1
 pkgdesc='Bring together your videos, music, photos, and live television'
 arch=('i686' 'x86_64' 'armv6h')
@@ -13,7 +13,7 @@ makedepends=('git')
 provides=('emby-server')
 conflicts=('emby-server')
 install='emby-server.install'
-source=('git+https://github.com/MediaBrowser/Emby.git#branch=dev'
+source=('git+https://github.com/MediaBrowser/Emby.git'
         'emby-server'
         'emby-migrate-database'
         'emby-server.conf'
