@@ -1,6 +1,6 @@
 # Maintainer: Francisco Domínguez Lerma <francisco.dominguez.lerma@gmail.com>
 pkgname=poketty
-pkgver=1.3
+pkgver=1.4
 pkgrel=1
 pkgdesc="Pokemon battle simulator for tty"
 arch=('any')
@@ -17,19 +17,19 @@ backup=()
 options=()
 install=
 changelog=
-source=(http://hispagnu.org/poketty/releases/poketty1.3.tar.gz)
+source=(http://hispagnu.org/poketty/releases/poketty1.4.tar.gz)
 noextract=()
-md5sums=('596fd5eb0ba01956aa8014ad2cbe2be3')
+md5sums=('30006ef3e115a446b544e39ecda107e4')
 
 build() {
-  cd "$srcdir/"
-  gcc poketty.c -o poketty
+  cd "$srcdir/poketty1.4"
+  make
 
 }
 
 package() {
 
-cd "$srcdir/"
+cd "$srcdir/poketty1.4"
 mkdir -p "$pkgdir/usr/bin"
 cp poketty "$pkgdir/usr/bin/"
 
