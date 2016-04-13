@@ -1,0 +1,18 @@
+pkgbase = ros-jade-mavlink
+	pkgdesc = ROS - MAVLink message marshaling library.
+	pkgver = 2015.10.10
+	pkgrel = 1
+	url = http://qgroundcontrol.org/mavlink/
+	arch = any
+	license = LGPLv3
+	makedepends = cmake
+	makedepends = git
+	makedepends = ros-build-tools
+	makedepends = python2
+	depends = ros-jade-catkin
+	depends = python2
+	source = mavlink::git+https://github.com/mavlink/mavlink-gbp-release.git#tag=release/jade/mavlink/2016.4.4-0
+	md5sums = SKIP
+
+pkgname = ros-jade-mavlink
+
