@@ -1,12 +1,12 @@
 pkgname=fairphone-udev
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
-pkgdesc="udev rules for Fairphone."
+pkgdesc="udev rules for Fairphone 1 and 2."
 arch=('any')
 url="http://www.fairphone.com/"
 license=('MIT')
 source=('99-fairphone.rules')
-sha256sums=('a2b2b7bb3f8b13b849cc7c4b724a31f1086e4d440a350c05eeaeec2b2f45e022')
+sha256sums=('e4e68bd53bb4b35bd7bb2ae93f485588405896a42ccb5b9f26f1a57302fe14bc')
 
 package() {
     rulesdir="$pkgdir/etc/udev/rules.d/"

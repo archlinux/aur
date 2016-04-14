@@ -1,2 +1,4 @@
-# Fairphone
+# Fairphone 1
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bb4", ATTRS{idProduct}=="0c03", GROUP="users", MODE="0666"
+# Fairphone 2
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="2ae5", ATTRS{idProduct}=="9015", GROUP="users", MODE="0666"
