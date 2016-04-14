@@ -2,7 +2,7 @@
 # Contributor: Sebastien Duthil <duthils@free.fr>
 
 pkgname=factorio-experimental
-pkgver=0.12.23
+pkgver=0.12.30
 pkgrel=1
 pkgdesc="A 2D game about building and maintaining factories. - Experimental Version"
 arch=('i686' 'x86_64')
