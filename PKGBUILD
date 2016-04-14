@@ -3,8 +3,8 @@
 
 pkgname=transmission-remote-gui-qt4
 _pkgname=transgui
-pkgver=5.2.0
-pkgrel=2
+pkgver=5.3.0
+pkgrel=1
 pkgdesc='Cross platform remote GUI for the Transmission daemon'
 arch=(i686 x86_64)
 url='https://github.com/leonsoft-kras/transmisson-remote-gui'
@@ -15,18 +15,14 @@ provides=(transmission-remote-gui)
 conflicts=(transmission-remote-gui-gtk2 transmission-remote-gui-svn transmission-remote-gui)
 install=transmission-remote-gui.install
 source=(https://github.com/leonsoft-kras/transmisson-remote-gui/archive/v${pkgver}.zip
-        ${_pkgname}.desktop
-        https://github.com/leonsoft-kras/transmisson-remote-gui/commit/afe7aa9d12e5a802b500ffe9991bd00a538af25f.patch)
-md5sums=(c38ef3c65bbd2c0fe0828b8673707b2a
-         c0504cb6d4e970892ac7be9206c787b5
-         32f04e7d96a8cf6bc6cdf8d41e039784)
+        ${_pkgname}.desktop)
+md5sums=(efece16944d4e6b3fb2d9849cebc3438
+         c0504cb6d4e970892ac7be9206c787b5)
 _ws=qt
 
 build() {
   mkdir "${srcdir}/config"
   cd "${srcdir}/transmisson-remote-gui-${pkgver}"
-
-  patch -p1 < ../afe7aa9d12e5a802b500ffe9991bd00a538af25f.patch
 
   lazbuild "${_pkgname}.lpi" --lazarusdir=/usr/lib/lazarus --widgetset=${_ws} \
     --primary-config-path="${srcdir}/config"
