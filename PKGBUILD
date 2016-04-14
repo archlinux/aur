@@ -9,7 +9,7 @@
 
 pkgname=meteor-js
 pkgver=1.3.1
-pkgrel=5
+pkgrel=6
 pkgdesc="Open-source JavaScript platform for building top-quality web apps in a fraction of the time."
 
 arch=('i686' 'x86_64')
