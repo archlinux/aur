@@ -6,6 +6,15 @@ CHANGELOG
 ---------
 
 
+2016-03-28
+~~~~~~~~~~
+
+### cairo-infinality-ultimate, rev. 1.14.6-1
+
+* Version upgrade.
+* Fixed #143 (added `FT_LCD_FILTER_DEFAULT`).
+
+
 2015-11-01
 ~~~~~~~~~~
 
@@ -29,12 +38,14 @@ CHANGELOG
 
 * Applied git_fixes.diff patch.
 
+
 2014-10-15
 ~~~~~~~~~~
 
 ### cairo-infinality-ultimate, rev. 1.14.0-1
 
 * New upstream release.
+
 
 2014-09-26
 ~~~~~~~~~~
@@ -44,6 +55,7 @@ CHANGELOG
 * Merging latest upstream commits as used in the stock Arch Linux cairo 1.13.1.
 * Removing obsolete Ubuntu patches.
 
+
 2014-09-09
 ~~~~~~~~~~
 
@@ -52,12 +64,14 @@ CHANGELOG
 * Upstream code base upgraded to version 1.13.1 (Ubuntu source package).
 * Fixed Webkit browsers crashing on HTML5 video playback.
 
+
 2014-06-01
 ~~~~~~~~~~
 
 ### cairo-infinality-ultimate, rev. 1.12.16-6
 
 * Package update.
+
 
 2014-05-03
 ~~~~~~~~~~
@@ -66,11 +80,11 @@ CHANGELOG
 
 * Package update.
 
+
 2013-10-11
 ~~~~~~~~~~
 
 ### cairo-infinality-ultimate, rev. 1.12.16-3
 
 * Packages rebuilt with the updated Ubuntu patchset.
-
 
