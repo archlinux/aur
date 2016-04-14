@@ -13,7 +13,7 @@ url="http://smc.org.in/fonts/"
 depends=(fontconfig xorg-font-utils)
 source=("http://smc.org.in/downloads/fonts/keraleeyam/Keraleeyam.ttf"
         "https://gitlab.com/smc/keraleeyam/raw/master/67-smc-keraleeyam.conf")
-md5sums=('a0ec523ec5c83dd66ef99b41cc5e5c19'
+md5sums=('0c3651bb646b4af3c2ff1b30e2e5f809'
          '37d7da81268fa7cf4a9702d241c7ea1c')
 install=ttf-malayalam-fonts.install
 
