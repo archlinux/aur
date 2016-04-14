@@ -1,7 +1,7 @@
 # Maintainer: Sam Stuewe <halosghost at archlinux dot info>
 pkgname=libsixel-git
 pkgver=r2708.e5a06ee
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight, fast implementation of DEC SIXEL graphics codec'
 arch=('x86_64' 'i686')
 url='https://github.com/saitoha/libsixel'
