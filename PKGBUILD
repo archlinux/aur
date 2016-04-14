@@ -27,17 +27,17 @@ sha512sums=(
 
 pkgver() {
 	# Updating package version
-	cd ${srcdir}/${_pkgname}
+	cd "${srcdir}"/${_pkgname}
 	git describe --long --tags 2>/dev/null | sed -r 's/-/./g'
 }
 
 prepare() {
 	# Patch desktop entry
-	cd ${srcdir}/${_pkgname}
-	patch -p1 < ../desktop_entry.patch
+	cd "${srcdir}"/${_pkgname}
+	patch -Np1 < ../desktop_entry.patch
 	
 	# Build directory
-	mkdir -p ${srcdir}/build
+	mkdir -p "${srcdir}"/build
 }
 
 build() {
@@ -49,7 +49,7 @@ build() {
 	fi
 
 	# Building package
-	cd ${srcdir}/build
+	cd "${srcdir}"/build
 	cmake ../${_pkgname} \
 		-DCMAKE_INSTALL_PREFIX=/usr
 	make -j${njobs}
@@ -57,6 +57,6 @@ build() {
 
 package() {
 	# Installing package
-	cd ${srcdir}/build
-	make DESTDIR=${pkgdir} install
+	cd "${srcdir}"/build
+	make DESTDIR="${pkgdir}" install
 }
