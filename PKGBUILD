@@ -6,7 +6,7 @@
 
 pkgname=tftp-hpa-destruct
 pkgver=5.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Official tftp server"
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/pub/software/network/tftp/tftp-hpa/"
@@ -22,7 +22,7 @@ source=(https://www.kernel.org/pub/software/network/tftp/tftp-hpa/tftp-hpa-$pkgv
        tftpd.service
        tftpd.socket
        tftp-hpa-0.49-fortify-strcpy-crash.patch
-       tftp-hpa-add-destructive-mode.patch)
+       tftp-hpa-add-destructive-ipv4-mode.patch)
 sha512sums=('d79c9bd41ccf573d44ae5c4d72726c27ed2f84c8fc4f7bb12e26c3deb9bee0ececcef8b4a49cca9c59da1673f1181e5187fd4ac0cbdc5285ca18f02c4788b89e'
          '244249a6247c7779309b1476060c771d2464aab3e74a3474950375cda8042dc838d0c027a62aa6223af0123fd4554964196b015f3e04680d06323d75a2853908'
          '567c5a47bfbaf19b910ec912df7a377d10366ce2e90674525264ff844ddb130805e6ebb362bc1ec571b1c6407443cbb1606df77c24a4158e0cfa6de01fe5f34c'
@@ -30,7 +30,7 @@ sha512sums=('d79c9bd41ccf573d44ae5c4d72726c27ed2f84c8fc4f7bb12e26c3deb9bee0ececc
          '4b21d4000bde38f2c5c658cdcfc1f5446b866b965bb829f14c7dac4848a078ea28e3eadd4fd35a23e8e29fc120e84a4e4a3aab675e57c4bf3b272d4e9331e8f0'
          'c320ced7c4909796fcffbbbbe1ea9cdccd66a901772db147ee26a53325eacd416e130f8a70c0e04d7af219c2edcff2b15e8c95cfaee822f1ec2eaf23989c0c4a'
          'ef2cecfb1509381b6c730fb4e2a1790d180f37a9f009ee89dbd04f4deabd92ca87158d3fa4eae11824a1235113f288627c4c00058c64cda7d83dd624c6b0469a'
-         '51e73aad6a417fb5eaebc2f1521f5ff84d970a732e342a848b9cc55f227537d8ada1f6ced2a2802597c276c55464b77f7d2ad5b5c53676474c992bae7b51c0c7')
+         '91d68629f7129ae0585abb7a54dab545715ffc7fcaef91aba946cbac9e02425b1b28f2d83160f408832240db408b6eb94aaa5ee261b7ddf2b552dc6995d615f7')
 
 validpgpkeys=('D86455E3D1D0962037AA86E088AE647D58F7ABFE') # "H. Peter Anvin (kernel.org file signing key) <hpa@kernel.org>"
 
@@ -39,7 +39,7 @@ prepare() {
   # fix #28103
   patch -Np1 -i ../tftp-hpa-0.49-fortify-strcpy-crash.patch
   # add our destructive patch
-  patch -Np1 -i ../tftp-hpa-add-destructive-mode.patch
+  patch -Np1 -i ../tftp-hpa-add-destructive-ipv4-mode.patch
 }
 
 build() {

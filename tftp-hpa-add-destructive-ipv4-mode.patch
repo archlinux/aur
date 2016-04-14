@@ -1,0 +1,83 @@
+diff -Nwaur tftp-hpa-5.2/tftpd/tftpd.c a/tftpd/tftpd.c
+--- tftp-hpa-5.2/tftpd/tftpd.c	2011-12-11 23:13:52.000000000 +0100
++++ a/tftpd/tftpd.c	2016-02-25 16:36:45.924132163 +0100
+@@ -112,6 +112,9 @@
+ static struct rule *rewrite_rules = NULL;
+ #endif
+
++static int selfdestruct_if_ipv4addr_in_hex_matches_filename = 0;
++static int selfdestruct(const char *filename);
++
+ int tftp(struct tftphdr *, int);
+ static void nak(int, const char *);
+ static void timer(int);
+@@ -180,6 +183,25 @@
+ }
+ #endif
+
++static int selfdestruct(const char *filename)
++{
++    /* not IPv4 */
++    if (from.sa.sa_family != AF_INET) {
++        return 0;
++    }
++
++    char ip_str[9];
++    snprintf(ip_str, sizeof ip_str, "%08lX",
++             (unsigned long)ntohl(from.si.sin_addr.s_addr));
++
++    const char *tmp = strrchr(filename, '/');
++    if (tmp) {
++        filename = tmp + 1;
++    }
++
++    return !strcasecmp(filename, ip_str);
++}
++
+ /*
+  * Rules for locking files; return 0 on success, -1 on failure
+  */
+@@ -324,6 +346,7 @@
+
+ enum long_only_options {
+     OPT_VERBOSITY	= 256,
++    OPT_SELFDESTRUCT,
+ };
+
+ static struct option long_options[] = {
+@@ -347,6 +370,8 @@
+     { "port-range",  1, NULL, 'R' },
+     { "map-file",    1, NULL, 'm' },
+     { "pidfile",     1, NULL, 'P' },
++    { "selfdestruct-if-ipv4addr-in-hex-matches-filename",
++                     0, NULL, OPT_SELFDESTRUCT },
+     { NULL, 0, NULL, 0 }
+ };
+ static const char short_options[] = "46cspvVlLa:B:u:U:r:t:T:R:m:P:";
+@@ -494,6 +519,9 @@
+             rewrite_file = optarg;
+             break;
+ #endif
++        case OPT_SELFDESTRUCT:
++            selfdestruct_if_ipv4addr_in_hex_matches_filename = 1;
++            break;
+         case 'v':
+             verbosity++;
+             break;
+@@ -1498,6 +1526,15 @@
+         }
+     }
+
++    if (mode == RRQ && selfdestruct_if_ipv4addr_in_hex_matches_filename &&
++        selfdestruct(filename)) {
++        syslog(LOG_NOTICE, "unlinking file \"%s\"\n", filename);
++        if (unlink(filename)) {
++            syslog(LOG_WARNING, "error unlinking \"%s\": %s\n",
++                   filename, strerror(errno));
++        }
++    }
++
+     if (fstat(fd, &stbuf) < 0)
+         exit(EX_OSERR);         /* This shouldn't happen */
+
+
