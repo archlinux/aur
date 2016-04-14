@@ -4,17 +4,17 @@
 
 pkgbase=python-mdtraj
 pkgname=('python2-mdtraj' 'python-mdtraj')
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='A modern, open library for the analysis of molecular dynamics trajectories'
 url='http://mdtraj.org/'
 license=("LGPL")
 arch=('i686' 'x86_64')
 depends=()
-makedepends=('python2-setuptools' 'python-setuptools')
+makedepends=('python2-setuptools' 'python-setuptools' 'cython2' 'cython')
 options=('!libtool')
 source=("https://github.com/SimTk/mdtraj/archive/${pkgver}.tar.gz")
-sha1sums=('a1ee0c98fc4d7b8a585d500099583fa846a51cc6')
+sha1sums=('bd1ca717595cbbc852d08463e9dbe01a8de9f941')
 
 prepare() {
   cd "$srcdir"
@@ -32,7 +32,7 @@ build() {
 }
 
 package_python-mdtraj() {
-  depends=('python-numpy' 'cython')
+  depends=('python-numpy')
   optdepends=('python-scipy: For loading and saving AMBER netcdf formatted trajectories.'
               'python-pandas: Some functionality, including mol2 parsing, requires pandas.'
               'python-nose: To run tests.'
@@ -49,7 +49,7 @@ package_python-mdtraj() {
 
 
 package_python2-mdtraj() {
-  depends=('python2-numpy' 'cython2')
+  depends=('python2-numpy')
   optdepends=('python2-scipy: For loading and saving AMBER netcdf formatted trajectories.'
               'python2-pandas: Some functionality, including mol2 parsing, requires pandas.'
               'python2-nose: To run tests.'
