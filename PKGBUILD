@@ -1,7 +1,7 @@
 # Contributor: Pavel Borzenkov <pavel@voidptr.ru>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=criu
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="A Checkpoint/Restore functionality for Linux in Userspace."
 url="http://criu.org"
@@ -9,12 +9,12 @@ license=("GPL2")
 arch=("x86_64")
 source=("http://download.openvz.org/$pkgname/$pkgname-$pkgver.tar.bz2")
 depends=('protobuf-c' 'libnl')
-makedepends=('xmlto' 'asciidoc')
+makedepends=('xmlto' 'asciidoc' 'python')
 options=("!buildflags")
 changelog=Changelog
-md5sums=('12c453489dd1729505211eb034c6e441')
-sha1sums=('29614201ba425a2609afacd056ff9a7ae53cf36d')
-sha256sums=('e80726cc54f74751ae6f63a5b0cf9a2882ffc3fd2aa11b311da0384635d418ff')
+md5sums=('f075b3daa3560e2c0381c75bd62de35a')
+sha1sums=('3a375f7a3be2354f425d141630d229b17422469f')
+sha256sums=('7a9fe6f2858a3086e652e17ffb85174f72cf19e87e776fc5ddab66013f16d4c4')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
