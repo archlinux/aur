@@ -2,7 +2,7 @@ pkgname=('heka')
 srcname='heka'
 pkgdesc='Data collection and processing made easy'
 pkgver='0.10.0'
-pkgrel='3'
+pkgrel='7'
 arch=('i686' 'x86_64')
 url="https://github.com/mozilla-services/${srcname}"
 license=('MPL2')
@@ -17,7 +17,7 @@ makedepends=(
     'mercurial'
     'patch'
 )
-optdepends=('geoip-citydata: GeoIpDecoder')
+optdepends=('geoip-database-extra: GeoIpDecoder')
 provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 
