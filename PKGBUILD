@@ -1,9 +1,10 @@
 # Maintainer : Remy van Elst
 # https://raymii.org
+# You need to download the files yourself from the VanDyke website and place them in the folder.
 
 pkgname=scrt
-pkgver=7.3.6
-incrver=963
+pkgver=8.0.0
+incrver=1063
 pkgrel=1
 pkgdesc="Vandyke SecureCRT SSH Client"
 arch=('x86_64' 'i686')
@@ -13,9 +14,9 @@ license=('custom')
 depends=('openssl' 'glibc' 'qt4')
 		
 source_x86_64=("${pkgname}-${pkgver}.${incrver}.ubuntu13-64.tar.gz::file://${pkgname}-${pkgver}.${incrver}.ubuntu13-64.tar.gz")
-md5sums_x86_64=('dbc351b0082d00581d9889cc71aa70a2')
+md5sums_x86_64=('02942bd378efaead6baa5b29cdbd349a')
 source_i686=("${pkgname}-${pkgver}.${incrver}.ubuntu13.tar.gz::file://${pkgname}-${pkgver}.${incrver}.ubuntu13.tar.gz")
-md5sums_i686=('8c4aa8a386e9a0e9cd160a24bc95d9d3')
+md5sums_i686=('61795836e0f7a2b91d24596f84f1d2fb')
 options=('!strip')
 
 package() {
@@ -29,11 +30,6 @@ package() {
 	chmod +x "${pkgdir}/usr/lib/securecrt/run.sh"
 	mkdir -p "$pkgdir/usr/bin/"
 	ln -s /usr/lib/securecrt/run.sh "$pkgdir/usr/bin/SecureCRT"
-	
-	install -Dm 644 ./libQtCore.so.4  ${pkgdir}/usr/lib/securecrt/libQtCore.so.4
-	install -Dm 644 ./libQtDBus.so.4  ${pkgdir}/usr/lib/securecrt/libQtDBus.so.4
-	install -Dm 644 ./libQtGui.so.4  ${pkgdir}/usr/lib/securecrt/libQtGui.so.4
-	install -Dm 644 ./libQtNetwork.so.4  ${pkgdir}/usr/lib/securecrt/libQtNetwork.so.4
 
 	install -Dm 644 ./SecureCRT.desktop ${pkgdir}/usr/share/applications/SecureCRT.desktop
 	install -Dm 644 ./securecrt_64.png ${pkgdir}/usr/share/vandyke/data/securecrt_64.png
