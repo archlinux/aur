@@ -10,7 +10,7 @@ license=('BSD')
 arch=('i686' 'x86_64')
 makedepends=('git' 'go')
 options=('!strip')
-source=("${_name}::git+${url}#tag=v${pkgver}")
+source=("git+${url}#tag=v${pkgver}")
 sha1sums=('SKIP')
 
 prepare() {
