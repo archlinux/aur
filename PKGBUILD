@@ -1,7 +1,7 @@
 # Maintainer=rafaelsoaresbr <rafaelsoaresbr@gmail.com>
 # umldesigner
-# Contributing: https://gitlab.com/aur-ci/umldesigner.git
-# Builds: https://gitlab.com/aur-ci/umldesigner/builds
+# Contributing: https://github.com/rafaelsoaresbr/umldesigner.git
+# Builds: https://gitlab.com/rafaelsoaresbr/umldesigner/builds
 #pkgbase=
 pkgname=umldesigner
 

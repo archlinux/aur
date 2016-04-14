@@ -3,6 +3,6 @@ AUR Package:
 
 UMLDesigner
 
-Contributing: https://gitlab.com/aur-ci/umldesigner.git
+Contributing: https://github.com/rafaelsoaresbr/umldesigner.git
 
-Builds: https://gitlab.com/aur-ci/umldesigner/builds
+Builds: https://gitlab.com/rafaelsoaresbr/umldesigner/builds
