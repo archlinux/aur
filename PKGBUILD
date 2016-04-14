@@ -1,7 +1,7 @@
 # Maintainer: Márk Sági-Kazár <mark.sagi-kazar@gmail.com>
 
 pkgname=gnome-shell-extension-gravatar
-pkgver=1
+pkgver=3
 pkgrel=1
 pkgdesc="A GNOME Shell extension to synchronize your user icon with Gravatar."
 arch=('any')
@@ -13,7 +13,7 @@ conflicts=("${pkgname}-git")
 install=gschemas.install
 source=("https://github.com/jrouleau/gnome-shell-extension-gravatar/archive/v${pkgver}.tar.gz")
 noextract=()
-md5sums=('289cdbaf6cc842eb6473607665c89aaa')
+md5sums=('05ce8131c2b2c1bc38cdea204606714e')
 
 _uuid='gravatar@jr.rlabs.io'
 
