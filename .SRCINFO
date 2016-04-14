@@ -1,5 +1,5 @@
 pkgbase = gridcoinresearch-git
-	pkgver = 3.5.6.0.r654.a20e6a6
+	pkgver = 3.5.6.0.r662.f6f8de5
 	pkgrel = 1
 	url = http://gridcoin.us
 	arch = i686
@@ -17,7 +17,6 @@ pkgbase = gridcoinresearch-git
 	source = gridcoinresearch::git+https://github.com/gridcoin/Gridcoin-Research.git
 	source = gridcoinresearch-qt.desktop
 	sha1sums = SKIP
-	sha1sums = 46006c634ef57189b9a9e6607ca392cb17b933b4
 	sha1sums = 931e82ce57cf9099d73534f969f49ba4e524e671
 
 pkgname = gridcoinresearch-daemon-git
