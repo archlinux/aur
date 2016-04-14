@@ -2,7 +2,7 @@
 
 _basename=mhchem
 pkgname=texlive-mhchem-bundle
-pkgver=4.02
+pkgver=4.04
 pkgrel=1
 pkgdesc="Typeset chemical formulae/equations and Risk and Safety phrases in LaTeX."
 arch=('any')
@@ -27,4 +27,4 @@ package() {
   done
 }
 
-sha256sums=('714e32f8b2059a4f676d2570b3356e713c53be583d25e35f575e7ea605bfab38')
+sha256sums=('0cdb85035a4d96b04189b9078be541874fcbc06492de5fec8c0377bfa05cd51d')
