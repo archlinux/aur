@@ -131,7 +131,7 @@ package_papirus-icon-theme-gtk-git() {
     pkgdesc="Papirus icon theme for GTK (git version)"
     options=('!strip')
     makedepends=('git' 'gtk-update-icon-cache' 'xdg-utils')
-    install='papirus-git.install'
+    install='icon-cache-refresh.install'
     depends=()
     optdepends=()
     conflicts=('papirus-gtk-icon-theme' 'papirus-gtk-icon-theme-git' 'papirus-icon-theme-gtk')
@@ -145,7 +145,7 @@ package_papirus-icon-theme-kde-git() {
     pkgdesc="Papirus icon theme for KDE (git version)"
     options=('!strip')
     makedepends=('git' 'gtk-update-icon-cache' 'xdg-utils')
-    install='papirus-git.install'
+    install='icon-cache-refresh.install'
     depends=()
     optdepends=()
     conflicts=('papirus-icon-theme' 'papirus-icon-theme-kde' 'papirus-icon-theme-git')
@@ -202,6 +202,7 @@ package_papirus-plasma-theme-git() {
     depends=('plasma-desktop')
     optdepends=()
     conflicts=('papirus-look-and-feel' 'plasma-theme-papirus')
+    install='plasma-refresh.install'
     install -dm755 ${pkgdir}/usr/share/plasma/{desktoptheme,look-and-feel}
     cp -r ${srcdir}/${_pkgname}/kde-pack/plasma-themes/papirus* ${pkgdir}/usr/share/plasma/desktoptheme/
     cp -r ${srcdir}/${_pkgname}/kde-pack/look-and-feel/* ${pkgdir}/usr/share/plasma/look-and-feel/
