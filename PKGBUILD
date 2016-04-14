@@ -10,7 +10,7 @@ url="http://www.ravefinity.com/p/vivacious-colors-gtk-theme.html"
 license=('GPL2')
 options=('!strip' '!zipman')
 url="https://aur.archlinux.org/packages/vivacious-colors-gtk-theme/"
-depends=('gtk3>=3.16' 'gtk<3.20' 'gtk-engine-murrine')
+depends=('gtk3>=3.16' 'gtk3<3.20' 'gtk-engine-murrine')
 optdepends=('vivacious-colors')
 source=("$pkgname-$pkgver.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QARTktREI0bWVTbzg")
 md5sums=('0080cfc469d499947a48f1d53f0a6a4c')
