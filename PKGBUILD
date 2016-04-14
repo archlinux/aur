@@ -16,11 +16,6 @@ conflicts=("${_pkgname}")
 source=("${_pkgname}"::"git+https://github.com/drush-ops/drush.git")
 sha512sums=('SKIP')
 
-pkgver() {
-  cd "${_pkgname}"
-  git describe --abbrev=0 --tags
-}
-
 build() {
   cd "${srcdir}/${_pkgname}"
   php /usr/bin/composer install --no-dev
