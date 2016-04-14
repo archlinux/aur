@@ -23,13 +23,13 @@ depends=(${ros_depends[@]})
 # Git version (e.g. for debugging)
 # _tag=release/indigo/tf2_py/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry_experimental-release.git"#tag=${_tag})
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry2-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="geometry_experimental-release-release-indigo-tf2_py-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry_experimental-release/archive/release/indigo/tf2_py/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c81c03214fa6b34de71a6321771ad2c5a38e95913970a4aecc90edc5db557310')
+_dir="geometry2-release-release-indigo-tf2_py-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/indigo/tf2_py/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('90bc27c9a60f145486eb531925990ffaab1392076a1a43f08c500cdd28228159')
 
 build() {
   # Use ROS environment variables
