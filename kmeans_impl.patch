@@ -1,0 +1,13 @@
+diff --git a/src/mlpack/methods/kmeans/kmeans_impl.hpp b/src/mlpack/methods/kmeans/kmeans_impl.hpp
+index c3254b3..20681cc 100644
+--- a/src/mlpack/methods/kmeans/kmeans_impl.hpp
++++ b/src/mlpack/methods/kmeans/kmeans_impl.hpp
+@@ -175,7 +175,7 @@ Cluster(const MatType& data,
+     iteration++;
+     Log::Info << "KMeans::Cluster(): iteration " << iteration << ", residual "
+         << cNorm << ".\n";
+-    if (isnan(cNorm) || isinf(cNorm))
++    if (std::isnan(cNorm) || std::isinf(cNorm))
+       cNorm = 1e-4; // Keep iterating.
+ 
+   } while (cNorm > 1e-5 && iteration != maxIterations);
