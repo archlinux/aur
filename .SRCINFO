@@ -1,6 +1,6 @@
 pkgbase = python-sphinx
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sphinx.pocoo.org/
 	arch = any
 	license = BSD
@@ -21,11 +21,13 @@ pkgbase = python-sphinx
 	makedepends = python-jinja
 	makedepends = python-pygments
 	makedepends = python-six
+	makedepends = python-imagesize
 	makedepends = python2-setuptools
 	makedepends = python2-docutils
 	makedepends = python2-jinja
 	makedepends = python2-pygments
 	makedepends = python2-six
+	makedepends = python2-imagesize
 	source = http://pypi.python.org/packages/source/S/Sphinx/Sphinx-1.4.1.tar.gz
 	source = http://pypi.python.org/packages/source/S/Sphinx/Sphinx-1.4.1.tar.gz.asc
 	validpgpkeys = E9BEABB07E7B9CC3F56E62C91425F8CE5EBA0E07
@@ -42,6 +44,7 @@ pkgname = python-sphinx
 	depends = python-babel
 	depends = python-snowballstemmer
 	depends = python-six
+	depends = python-imagesize
 	optdepends = texlive-latexextra: for generation of PDF documentation
 
 pkgname = python2-sphinx
@@ -54,5 +57,6 @@ pkgname = python2-sphinx
 	depends = python2-babel
 	depends = python2-snowballstemmer
 	depends = python2-six
+	depends = python2-imagesize
 	optdepends = texlive-latexextra: for generation of PDF documentation
 

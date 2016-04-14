@@ -7,7 +7,7 @@
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 
 arch=('any')
 url='http://sphinx.pocoo.org/'
@@ -19,11 +19,13 @@ makedepends=(
   'python-jinja'
   'python-pygments'
   'python-six'
+  'python-imagesize'
   'python2-setuptools'
   'python2-docutils'
   'python2-jinja'
   'python2-pygments'
   'python2-six'
+  'python2-imagesize'
 )
 checkdepends=(
   'python-nose' 'python2-nose'
@@ -65,12 +67,12 @@ build() {
 check() {
   msg2 'Python 3 version'
   cd "$srcdir"/Sphinx-$pkgver
-#  make PYTHON=python3 test
+  LOCALE=en_US.UTF-8 make PYTHON=python3 test
   rm -r tests
 
   msg2 'Python 2 version'
   cd "$srcdir"/Sphinx-${pkgver}2
-#  make PYTHON=python2 test
+  LOCALE=en_US.UTF-8 make PYTHON=python2 test
   rm -r tests
 }
 
@@ -85,6 +87,7 @@ package_python-sphinx() {
     'python-babel'
     'python-snowballstemmer'
     'python-six'
+    'python-imagesize'
   )
   optdepends=('texlive-latexextra: for generation of PDF documentation')
 
@@ -105,6 +108,7 @@ package_python2-sphinx() {
     'python2-babel'
     'python2-snowballstemmer'
     'python2-six'
+    'python2-imagesize'
   )
   optdepends=('texlive-latexextra: for generation of PDF documentation')
 
