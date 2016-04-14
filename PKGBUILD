@@ -3,14 +3,14 @@
 
 pkgname=libde265
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Open h.265 video codec implementation"
 arch=('i686' 'x86_64')
 url="https://github.com/strukturag/libde265"
 license=('LGPL3')
 depends=('ffmpeg' 'qt5-base' 'sdl')
 source=("$url/archive/v$pkgver.tar.gz")
-md5sums=('c410f78fbba2f5739cef21ec344ac9ab')
+md5sums=('7c7f97db66b562d9866ae8e86d6ea3e7')
 
 prepare() {
   cd "$pkgname-$pkgver"
