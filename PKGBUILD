@@ -4,7 +4,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=flow
-pkgver=0.22.1
+pkgver=0.23.0
 pkgrel=1
 pkgdesc="A static typechecker for JavaScript"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=(
     'Makefile-fPIC.patch'
 )
 sha256sums=(
-    '3ace90c42d82e7e32719b764d94e0bccb24620a22761a6f3ff7f3b28f2f37186'
+    'f053841511381af3b1bc3d5c682a675ee4cc66fb5dfd4843783e412b31e8464d'
     '85c7dc96e0ad270edc8f5dc631069282fb5be4a044a80878cd357642316066b8'
 )
 
