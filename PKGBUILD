@@ -4,7 +4,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=heirloom-doctools-cvs
 pkgver=20120529
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc="The Heirloom Documentation Tools consist of a modern roff suite."
 url="http://heirloom.sourceforge.net/doctools.html"
@@ -19,20 +19,19 @@ prepare() {
   cvs -d:pserver:anonymous:@heirloom.cvs.sourceforge.net:/cvsroot/heirloom login
   cvs -d:pserver:anonymous:@heirloom.cvs.sourceforge.net:/cvsroot/heirloom co -P heirloom-doctools
   rm -rf $srcdir/build
-  cp -ar $srcdir/heirloom-doctools $srcdir/build
-  cd "$srcdir/build"
+  cd "$srcdir/${pkgname%-*}"
   patch -p1 < ../config.diff
 }
 
 build() {
-  cd "$srcdir/build"
+  cd "$srcdir/${pkgname%-*}"
   make
 }
 
 package() {
-  cd "$srcdir/build"
+  cd "$srcdir/${pkgname%-*}"
   make install ROOT=$pkgdir
-  cd "$srcdir/heirloom-doctools/LICENSE"
+  cd "LICENSE/"
   for i in *.LICENSE COPYING.LGPL; do
     install -Dm0644 $i $pkgdir/usr/share/licenses/${pkgname%-*}/$i
   done
