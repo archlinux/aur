@@ -7,14 +7,14 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc="Simple Ruby version manager"
 arch=('any')
-url="https://github.com/sstephenson/rbenv"
+url="https://github.com/rbenv/rbenv"
 license=('MIT')
 depends=()
 optdepends=('ruby-build')
 conflicts=('rbenv-git')
 install="rbenv.install"
 noextract=("v${pkgver}")
-source=("https://github.com/sstephenson/rbenv/tarball/v${pkgver}")
+source=("https://github.com/rbenv/rbenv/tarball/v${pkgver}")
 md5sums=('3925d0c04d3d86c6b695731e783fa3d2')
 
 build() {
