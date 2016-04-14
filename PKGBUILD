@@ -2,7 +2,7 @@
 
 pkgname=clingo
 groups=('potassco')
-pkgver=4.5.3
+pkgver=4.5.4
 pkgrel=1
 pkgdesc="Grounding tools for (disjunctive) logic programs."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ depends=()
 makedepends=('bison' 're2c' 'scons')
 source=(
     "http://downloads.sourceforge.net/project/potassco/${pkgname}/${pkgver}/${pkgname}-${pkgver}-source.tar.gz")
-sha1sums=(95459cbc3ed996a32de0166748cd42ef8a857006)
+sha1sums=(bf039e6aacefba7814de1e9c82e57da0784839fb)
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}-source"
