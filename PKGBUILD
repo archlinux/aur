@@ -4,43 +4,47 @@ pkgdesc="ROS - Assorted filters designed to operate on 2D planar laser scanners,
 url='http://ros.org/wiki/laser_filters'
 
 pkgname='ros-indigo-laser-filters'
-pkgver='1.7.4'
-_pkgver_patch=1
+pkgver='1.8.1'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
-ros_makedepends=(ros-indigo-roscpp
+ros_makedepends=(ros-indigo-catkin
+  ros-indigo-roscpp
   ros-indigo-rostest
+  ros-indigo-filters
   ros-indigo-sensor-msgs
   ros-indigo-angles
-  ros-indigo-catkin
   ros-indigo-laser-geometry
-  ros-indigo-filters
   ros-indigo-cmake-modules
   ros-indigo-tf
   ros-indigo-message-filters
   ros-indigo-pluginlib)
-makedepends=('cmake' 'git' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  eigen3)
+makedepends=('cmake' 'ros-build-tools'
+  ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-roscpp
+  ros-indigo-filters
   ros-indigo-sensor-msgs
   ros-indigo-angles
   ros-indigo-laser-geometry
-  ros-indigo-filters
   ros-indigo-cmake-modules
   ros-indigo-tf
   ros-indigo-message-filters
   ros-indigo-pluginlib)
-depends=(${ros_depends[@]}
-  eigen3)
+depends=(${ros_depends[@]})
 
-_tag=release/indigo/laser_filters/${pkgver}-${_pkgver_patch}
-_dir=laser_filters
-source=("${_dir}"::"git+https://github.com/ros-gbp/laser_filters-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/laser_filters/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/laser_filters-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="laser_filters-release-release-indigo-laser_filters-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/laser_filters-release/archive/release/indigo/laser_filters/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('68db497e9a27466e453234c4348595bec99b3c90f51b8de6bf63fbcfe8f971ab')
 
 build() {
   # Use ROS environment variables
