@@ -11,7 +11,7 @@ license=('Apache')
 depends=('java-environment>=6' 'giflib' 'ttf-font')
 conflicts=('pycharm' 'pycharm-professional')
 provides=('pycharm')
-source=(http://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz
+source=(https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz
         'pycharm-community.desktop' )
 sha256sums=('6abc1d3b37289424334fce2901a81480161b7603394690a1b1f73b41cb93bccf'
             '5ce44b5bee632258749ee7d0df0fd08af446d43715f9ef50cb6889b88232de41')
