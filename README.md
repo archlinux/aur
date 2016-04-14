@@ -3,6 +3,6 @@ AUR Package:
 
 UMLet
 
-Contributing: https://gitlab.com/aur-ci/umlet.git
+Contributing: https://github.com/rafaelsoaresbr/umlet.git
 
-Builds: https://gitlab.com/aur-ci/umlet/builds
+Builds: https://gitlab.com/rafaelsoaresbr/umlet/builds
