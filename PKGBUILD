@@ -8,6 +8,8 @@ url='https://github.com/saitoha/libsixel'
 license=('MIT')
 makedepends=('git')
 depends=('curl' 'libjpeg-turbo' 'libpng')
+provides=('libsixel')
+conflicts=('libsixel')
 
 source=("git+https://github.com/saitoha/libsixel")
 sha256sums=(SKIP)
