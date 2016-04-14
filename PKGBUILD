@@ -4,24 +4,30 @@ pkgdesc="ROS - qt_dotgraph provides helpers to work with dot graphs."
 url='http://ros.org/wiki/qt_dotgraph'
 
 pkgname='ros-indigo-qt-dotgraph'
-pkgver='0.2.29'
+pkgver='0.2.30'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-python-qt-binding)
 depends=(${ros_depends[@]}
   python2-pydot)
 
-_tag=release/indigo/qt_dotgraph/${pkgver}-${_pkgver_patch}
-_dir=qt_dotgraph
-source=("${_dir}"::"git+https://github.com/ros-gbp/qt_gui_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/qt_dotgraph/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/qt_gui_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="qt_gui_core-release-release-indigo-qt_dotgraph-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/indigo/qt_dotgraph/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('78216438bec4ca25e72e5803cd28c03ce8ea8dbc91b416f28b4a8bbd0ad4aef3')
 
 build() {
   # Use ROS environment variables
