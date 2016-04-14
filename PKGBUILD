@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=emacs-lyqi-mode-git
 pkgver=r78.4876a0f
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Emacs mode for LilyPond editing."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/nsceaux/nenuvar"
 license=('GPLv3')
 groups=()
 depends=('emacs' 'lilypond')
-makedepends=('git')
+makedepends=('git' 'wget')
 optdepends=()
 checkdepends=()
 provides=()
