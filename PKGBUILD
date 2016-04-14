@@ -4,7 +4,7 @@ pkgdesc="ROS - 3D visualization tool for ROS."
 url='http://ros.org/wiki/rviz'
 
 pkgname='ros-indigo-rviz'
-pkgver='1.11.12'
+pkgver='1.11.14'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -85,7 +85,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="rviz-release-release-indigo-rviz-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rviz-release/archive/release/indigo/rviz/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('484db3107ae988e545c3d2338331fea05b2225e79b970a689f75e220e7beb5ad')
+sha256sums=('17f125bd19e7ef1ccfd6674006346bcd626fbbc8c02b16703db03352ff6cc1bd')
 
 build() {
   # Use ROS environment variables
