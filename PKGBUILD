@@ -2,10 +2,10 @@
 
 pkgname=iprange
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage IP ranges. From the FireHOL project."
 url="http://firehol.org/"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('glibc')
 makedepends=('git' 'help2man')
