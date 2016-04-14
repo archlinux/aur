@@ -2,7 +2,7 @@
 
 pkgname=gb-git
 _name="${pkgname/-git/}"
-pkgver=v0.4.0
+pkgver=v0.4.0.13.g10f5c6c
 pkgrel=1
 pkgdesc="The project based build tool for Go"
 url="https://github.com/constabulary/${_name}"
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 _cmds="gb gb-vendor"
 
 pkgver() {
-	cd "${srcdir}/${_name}"
+	cd "../${_name}"
 	git describe --always --tags | sed 's/-/./g'
 }
 
