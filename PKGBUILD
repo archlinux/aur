@@ -2,8 +2,8 @@
 _name=colorama
 pkgname=python2-colorama-0.3.3
 pkgver=0.3.3
-pkgrel=1
-pkgdesc='Python API for cross-platform colored terminal text.<Paste>'
+pkgrel=2
+pkgdesc='Python API for cross-platform colored terminal text.'
 arch=('any')
 url="http://pypi.python.org/pypi/colorama"
 license=('BSD')
