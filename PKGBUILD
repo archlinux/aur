@@ -4,16 +4,16 @@ pkgdesc="ROS - qt_gui_cpp provides the foundation for C++-bindings for qt_gui an
 url='http://ros.org/wiki/qt_gui_cpp'
 
 pkgname='ros-indigo-qt-gui-cpp'
-pkgver='0.2.29'
+pkgver='0.2.30'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-python-qt-binding
   ros-indigo-pluginlib
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   qt4
   tinyxml
@@ -23,10 +23,16 @@ ros_depends=(ros-indigo-qt-gui
   ros-indigo-pluginlib)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/qt_gui_cpp/${pkgver}-${_pkgver_patch}
-_dir=qt_gui_cpp
-source=("${_dir}"::"git+https://github.com/ros-gbp/qt_gui_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/qt_gui_cpp/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/qt_gui_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="qt_gui_core-release-release-indigo-qt_gui_cpp-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/indigo/qt_gui_cpp/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('353d603d69c43457bbd9950b4d5b91f097b1772d8d3dddf2509af97d4f30fc46')
 
 build() {
   # Use ROS environment variables
