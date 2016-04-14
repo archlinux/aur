@@ -5,14 +5,17 @@
 _pkgname=lmms
 pkgname=lmms-git
 pkgver=0.9.92.r79.g6c920df
-pkgrel=2
+pkgrel=3
 pkgdesc='The Linux MultiMedia Studio.'
 url='http://lmms.sourceforge.net'
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('qt4' 'sdl_sound' 'jack' 'libsamplerate' 'fluidsynth' 'zynaddsubfx' 'portaudio' 'libxft' 'libxinerama' 'shared-mime-info')
+depends=('sdl' 'glib2' 'fluidsynth' 'libpng' 'libvorbis' 'libxft' 'libxinerama' 'qt4' 'sdl_sound'
+         'libsamplerate' 'shared-mime-info' 'fltk')
 optdepends=('wine: VST support (experimental)'
-            'fftw: SpectrumAnalyzer plugin' )
+            'fftw: SpectrumAnalyzer plugin'
+            'stk: STK instruments plugins'
+            'pulseaudio: PulseAudio output')
 makedepends=('git' 'cmake' 'ladspa' 'raptor' 'rasqal' 'libxft' 'freetype2' 'redland' 'gcc-multilib')
 provides=('lmms')
 conflicts=('lmms')
