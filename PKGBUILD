@@ -1,7 +1,7 @@
 # Maintainer: dryes <joswiseman@cock.li>
 pkgname='pyrescene-hg'
 pkgver=646
-pkgrel=1
+pkgrel=2
 pkgdesc='pyReScene is a port of ReScene .NET to the Python programming language.'
 url='https://bitbucket.org/Gfy/pyrescene'
 arch=('any')
@@ -26,6 +26,7 @@ package() {
 
   mkdir -p "${pkgdir}/opt/rarlinux"
   python2 'bin/preprardir.py' "${srcdir}/rarlinux" "${pkgdir}/opt/rarlinux"
+  chown -R root:root "${pkgdir}/opt/rarlinux"
 
   install -D -m755 "awescript/awescript.py" "${pkgdir}/usr/bin/awescript"
 }
