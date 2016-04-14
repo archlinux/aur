@@ -2,7 +2,7 @@
 
 pkgname=python2-cloudprint-git
 pkgver=r157.5c33ff3
-pkgrel=1
+pkgrel=2
 pkgdesc="Google cloudprint proxy"
 arch=('any')
 url="https://github.com/armooo/cloudprint"
@@ -14,7 +14,7 @@ source=("${pkgname}::git+https://github.com/armooo/cloudprint.git"
 	"cloudprint.service"
 	"cloudprint.default")
 md5sums=('SKIP'
-         '0abe9c6b5ec3f9e74e0760a4d1dfadc6'
+         'cc9c9a487358c08c76a2e01b08d119b5'
          '562dd123c5e4646e603679755ff01877')
 options=(!emptydirs)
 provides=('python2-cloudprint')
