@@ -13,7 +13,10 @@ depends=('python'
          'python-six'
          'python-binaryornot'
          'python-termcolor'
+         'python-chardet'
+         'sqlite3'
          )
+
 conflicts=()
 provides=('finja' 'finja-git')
 makedepends=()
