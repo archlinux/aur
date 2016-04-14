@@ -35,7 +35,8 @@ build() {
   cd avxsynth
   ./configure \
     --prefix=/usr \
-    --enable-silent-rules
+    --enable-silent-rules \
+    --disable-ffms2
   make
 }
 
