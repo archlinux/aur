@@ -8,7 +8,7 @@ pkgname=('elektra-git'
          'elektra-glib-git'
          'java-elektra-git'
          )
-pkgver=0.8.14.295.g63eb956
+pkgver=0.8.15.226.gc5dd537
 pkgrel=1
 pkgdesc="A universal hierarchical configuration store. (GIT version)"
 arch=('i686' 'x86_64')
@@ -46,10 +46,10 @@ pkgver() {
 
 prepare(){
   if [[ -d /usr/lib/jvm/java-8-openjdk ]]; then
-  export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
+    export JAVA_HOME="/usr/lib/jvm/java-8-openjdk"
   fi
   if [[ -d /usr/lib/jvm/java-8-jdk ]]; then
-  export JAVA_HOME="/usr/lib/jvm/java-8-jdk"
+    export JAVA_HOME="/usr/lib/jvm/java-8-jdk"
   fi
 
   mkdir -p build
@@ -82,7 +82,7 @@ package_elektra-git() {
               'qt5-declarative: qt-gui'
               'discount: qt-gui'
               'python-elektra-git: Python bindings'
-              'python2-elektra-git: Python 2 bindings'
+              'python2-elektra-git: Python 2 bindings and gen tool'
               'lua52-elektra-git: Lua52 bindings'
               'elektra-glib-git: Glib bindings'
               'java-elektra-git: Java bindings')
@@ -101,19 +101,18 @@ package_elektra-git() {
   rm -fr "${pkgdir}/usr/lib/"girepository*
   rm -fr "${pkgdir}/usr/lib/pkgconfig/"gelektra*.pc
   rm -fr "${pkgdir}/usr/lib/lua"
-  (cd ${pkgdir}/usr/lib/python2*/site-packages; rm -fr $(\ls -I elektra_gen-0.8.14-py2.7.egg-info))
-  rm -fr "${pkgdir}/usr/lib/"python3*
+  rm -fr "${pkgdir}/usr/lib/"python*
 
   rm -fr "${pkgdir}/usr/lib/"libgelektra-*
 
-  rm -fr "${pkgdir}/usr/lib/elektra/libelektra-python.so"
-  rm -fr "${pkgdir}/usr/lib/elektra/libelektra-python2.so"
-  rm -fr "${pkgdir}/usr/lib/elektra/libelektra-lua.so"
-  rm -fr "${pkgdir}/usr/lib/elektra/libelektra-jni.so"
+  rm -fr "${pkgdir}/usr/lib/elektra/tool_exec/gen"
+
+  rm -fr "${pkgdir}/usr/lib/elektra/"libelektra-{python,python2,lua,jni}.so
 
   rm -fr "${pkgdir}/usr/share/"gir-*
   rm -fr "${pkgdir}/usr/share/lua"
   rm -fr "${pkgdir}/usr/share/java"
+  rm -fr "${pkgdir}/usr/share/elektra/test_data"/{lua,python,python2}
 }
 
 package_python-elektra-git() {
@@ -126,7 +125,7 @@ package_python-elektra-git() {
 
   make -C build/src/bindings/swig/python DESTDIR="${pkgdir}" install
   make -C build/src/bindings/gi/python DESTDIR="${pkgdir}" install
-  install -Dm755 build/lib/libelektra-python.so "${pkgdir}/usr/lib/elektra/libelektra-python.so"
+  make -C build/src/plugins/python DESTDIR="${pkgdir}" install
 
   install -Dm644 elektra/doc/COPYING "${pkgdir}/usr/share/licenses/python-elektra-git/LICENSE"
 }
@@ -137,7 +136,8 @@ package_python2-elektra-git() {
   conflicts=('python2-elektra')
 
   make -C build/src/bindings/swig/python2 DESTDIR="${pkgdir}" install
-  install -Dm755 build/lib/libelektra-python2.so "${pkgdir}/usr/lib/elektra/libelektra-python2.so"
+  make -C build/src/plugins/python2 DESTDIR="${pkgdir}" install
+  make -C build/src/tools/gen DESTDIR="${pkgdir}" install
 
   install -Dm644 elektra/doc/COPYING "${pkgdir}/usr/share/licenses/python2-elektra-git/LICENSE"
 }
@@ -152,7 +152,7 @@ package_lua52-elektra-git() {
 
   make -C build/src/bindings/swig/lua DESTDIR="${pkgdir}" install
   make -C build/src/bindings/gi/lua DESTDIR="${pkgdir}" install
-  install -Dm755 build/lib/libelektra-lua.so "${pkgdir}/usr/lib/elektra/libelektra-lua.so"
+  make -C build/src/plugins/lua DESTDIR="${pkgdir}" install
 
   install -Dm644 elektra/doc/COPYING "${pkgdir}/usr/share/licenses/lua52-elektra-git/LICENSE"
 }
@@ -183,7 +183,7 @@ package_java-elektra-git() {
   conflicts=('java-elektra')
 
   make -C build/src/bindings/jna DESTDIR="${pkgdir}" install
-  install -Dm755 build/lib/libelektra-jni.so "${pkgdir}/usr/lib/elektra/libelektra-jni.so"
+  make -C build/src/plugins/jni DESTDIR="${pkgdir}" install
 
   install -Dm644 elektra/doc/COPYING "${pkgdir}/usr/share/licenses/java-elektra-git/LICENSE"
 }
