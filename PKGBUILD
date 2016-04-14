@@ -4,11 +4,11 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=heirloom-doctools-cvs
 pkgver=20120529
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="The Heirloom Documentation Tools consist of a modern roff suite."
 url="http://heirloom.sourceforge.net/doctools.html"
-license=('custom:"caldera"' 'custom:"opensolaris"' 'custom:"lucent"')
+license=('custom:berkeley' 'custom:"caldera"' 'custom:"opensolaris"' 'custom:"lucent"' 'LGPL' 'LPPL')
 source=('config.diff')
 makedepends=('cvs')
 md5sums=('ccb66e215599cab347132e2f3240156e')
@@ -30,11 +30,11 @@ build() {
 }
 
 package() {
-  cd "$srcdir/build "
+  cd "$srcdir/build"
   make install ROOT=$pkgdir
   cd "$srcdir/heirloom-doctools/LICENSE"
-  install -Dm0644 CALDERA.LICENSE $pkgdir/usr/share/licenses/${pkgname}/CALDERA.LICENSE
-  install -m0644 OPENSOLARIS.LICENSE $pkgdir/usr/share/licenses/${pkgname}/OPENSOLARIS.LICENSE
-  install -m0644 LUCENT.LICENSE $pkgdir/usr/share/licenses/${pkgname}/LUCENT.LICENSE
+  for i in *.LICENSE COPYING.LGPL; do
+    install -Dm0644 $i $pkgdir/usr/share/licenses/${pkgname%-*}/$i
+  done
 }
 
