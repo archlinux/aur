@@ -1,0 +1,11 @@
+## arg 1:  the new package version
+post_install() {
+  echo "add /opt/tee-clc-<version> to your path, e.g. export PATH=/opt/tee-clc-$1:\$PATH"
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+  echo "add /opt/tee-clc-<version> to your path, e.g. export PATH=/opt/tee-clc-$1:\$PATH"
+}
+
