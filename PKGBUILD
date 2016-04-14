@@ -1,12 +1,33 @@
-# Maintainer : Xavier Devlamynck <magicrhesus@ouranos.be>
+# Maintainer: m1kc (Max Musatov) <m1kc@yandex.ru>
+# Contributor: Xavier Devlamynck <magicrhesus@ouranos.be>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 
-pkgname=asterisk
+pkgname=asterisk-opus
+_pkgname=asterisk
 pkgver=13.8.0
 pkgrel=1
-pkgdesc="A complete PBX solution"
+pkgdesc="Asterisk with patches for Opus support from https://github.com/seanbright/asterisk-opus"
 arch=('i686' 'x86_64')
+url="http://www.asterisk.org"
+license=('GPL')
+depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt' 'pjproject')
+makedepends=('sqlite3' 'gsm')
+optdepends=('lua51' 'libsrtp' 'postgresql' 'unixodbc' 'libpri' 'libss7' 'openr2' 'iksemel' 'radiusclient-ng' 'dahdi')
+provides=("asterisk=${pkgver}")
+conflicts=("asterisk")
+source=(http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-${pkgver}.tar.gz \
+	${_pkgname}.service \
+	${_pkgname}.logrotated \
+	${_pkgname}.tmpfile \
+	'git+https://github.com/seanbright/asterisk-opus.git')
+install=${_pkgname}.install
+sha256sums=('9953d3ea0023f7be0e14aed587725dacc199116c9453587093e1489073b53d5d'
+            '94acb6e68424195a12fd9d406b3fb586f264a550e75801f6e020a86e800dd42c'
+            'caa24cfec5c6b4f8cea385269e39557362acad7e2a552994c3bc24080e3bdd4e'
+            '673c0c55bce8068c297f9cdd389402c2d5d5a25e2cf84732cb071198bd6fa78a'
+            'SKIP')
+
 backup=('etc/asterisk/acl.conf'
 	'etc/asterisk/adsi.conf'
 	'etc/asterisk/agents.conf'
@@ -116,40 +137,33 @@ backup=('etc/asterisk/acl.conf'
 	'etc/asterisk/voicemail.conf'
 	'etc/asterisk/vpb.conf'
 	'etc/asterisk/xmpp.conf')
-url="http://www.asterisk.org"
-license=('GPL')
-depends=('alsa-lib' 'speex' 'popt' 'libvorbis' 'curl' 'libxml2' 'jansson' 'libxslt' 'pjproject')
-makedepends=('sqlite3' 'gsm')
-optdepends=('lua51' 'libsrtp' 'postgresql' 'unixodbc' 'libpri' 'libss7' 'openr2' 'iksemel' 'radiusclient-ng' 'dahdi')
-source=(http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-${pkgver}.tar.gz \
-	${pkgname}.service \
-	${pkgname}.logrotated \
-	${pkgname}.tmpfile)
-install=${pkgname}.install
-sha256sums=('9953d3ea0023f7be0e14aed587725dacc199116c9453587093e1489073b53d5d'
-            '94acb6e68424195a12fd9d406b3fb586f264a550e75801f6e020a86e800dd42c'
-            'caa24cfec5c6b4f8cea385269e39557362acad7e2a552994c3bc24080e3bdd4e'
-            '673c0c55bce8068c297f9cdd389402c2d5d5a25e2cf84732cb071198bd6fa78a')
+
+prepare() {
+  cp -v "${srcdir}/asterisk-opus/formats/"* "${srcdir}/${_pkgname}-${pkgver}/formats/"
+  cp -v "${srcdir}/asterisk-opus/codecs/"* "${srcdir}/${_pkgname}-${pkgver}/codecs/"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  patch -p1 < "${srcdir}/asterisk-opus/asterisk.patch"
+}
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
   make
 }
 
 package(){
-  cd ${srcdir}/${pkgname}-${pkgver}
-  make DESTDIR=${pkgdir} install
-  make DESTDIR=${pkgdir} samples
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  make "DESTDIR=${pkgdir}" install
+  make "DESTDIR=${pkgdir}" samples
   
-  sed -i -e "s/\/var\/run/\/run/" ${pkgdir}/etc/asterisk/asterisk.conf
+  sed -i -e "s/\/var\/run/\/run/" "${pkgdir}/etc/asterisk/asterisk.conf"
 
-  mkdir -p ${pkgdir}/usr/share/doc/asterisk/examples
-  for i in ${pkgdir}/etc/asterisk/*; do install -D -m 644 $i ${pkgdir}/usr/share/doc/asterisk/examples/; done
+  mkdir -p "${pkgdir}/usr/share/doc/asterisk/examples"
+  for i in "${pkgdir}/etc/asterisk/"*; do install -D -m 644 "${i}" "${pkgdir}/usr/share/doc/asterisk/examples/"; done
   
-  mv ${pkgdir}/var/run ${pkgdir}
+  mv "${pkgdir}/var/run" "${pkgdir}"
   
-  install -D -m 644 ${srcdir}/asterisk.logrotated ${pkgdir}/etc/logrotate.d/asterisk
-  install -D -m 644 ${srcdir}/asterisk.service ${pkgdir}/usr/lib/systemd/system/asterisk.service
-  install -D -m 644 ${srcdir}/asterisk.tmpfile ${pkgdir}/usr/lib/tmpfiles.d/asterisk.conf
+  install -D -m 644 "${srcdir}/asterisk.logrotated" "${pkgdir}/etc/logrotate.d/asterisk"
+  install -D -m 644 "${srcdir}/asterisk.service" "${pkgdir}/usr/lib/systemd/system/asterisk.service"
+  install -D -m 644 "${srcdir}/asterisk.tmpfile" "${pkgdir}/usr/lib/tmpfiles.d/asterisk.conf"
  }

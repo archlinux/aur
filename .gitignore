@@ -1,0 +1,7 @@
+src/
+pkg/
+*.pkg.tar.xz
+
+asterisk-opus/
+*.tar.gz
+
