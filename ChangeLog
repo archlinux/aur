@@ -191,3 +191,8 @@
 	switch to the Qt4 GUI toolkit through Python bindings PyQt4
 	because PyQt5 did not yet follow the Qt5 upgrade to 5.4.0
 	and so is broken presently
+2016-04-14
+        * 2.6.2-1 :
+	added GPLv2 license
+	switch again to the Qt5 GUI toolkit through Python bindings PyQt5
+	updated the icon theme path
