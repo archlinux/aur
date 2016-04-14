@@ -2,7 +2,7 @@
 pkgname=mingw-w64-mlpack
 pkgver=2.0.1
 pkgrel=1
-pkgdesc='a scalable c++ machine learning library'
+pkgdesc='a scalable c++ machine learning library (mingw-w64)'
 arch=('any')
 url="http://www.mlpack.org"
 license=('LGPLv3')
