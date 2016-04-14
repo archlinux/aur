@@ -1,3 +1,5 @@
+image: rafaelsoares/archlinux:2016-04-13-devel
+
 stages:
   - build
   - test
@@ -8,5 +10,4 @@ job_makepkg:
   script:
     - makepkg -srf --noconfirm --noprogressbar
   tags:
-    - shell
-    - arch
+    - docker
