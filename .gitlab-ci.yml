@@ -1,4 +1,4 @@
-image: rafaelsoares/archlinux:2016-04-13-devel
+image: rafaelsoares/archlinux-devel
 
 stages:
   - build
