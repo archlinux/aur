@@ -3,7 +3,7 @@
 
 pkgname=ucg
 _pkglongname=universalcodegrep
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="UniversalCodeGrep (ucg) is an extremely fast grep-like tool specialized for searching large bodies of source code"
 arch=(i686 x86_64)
