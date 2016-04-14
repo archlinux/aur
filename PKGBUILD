@@ -4,14 +4,14 @@ pkgdesc="ROS - This package contains a recent version of the Kinematics and Dyna
 url='http://wiki.ros.org/orocos_kdl'
 
 pkgname='ros-indigo-orocos-kdl'
-pkgver='1.3.0'
+pkgver='1.3.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('LGPL')
 
 ros_makedepends=()
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen3)
 
@@ -20,10 +20,16 @@ depends=(${ros_depends[@]}
   eigen3
   pkg-config)
 
-_tag=release/indigo/orocos_kdl/${pkgver}-${_pkgver_patch}
-_dir=orocos_kdl
-source=("${_dir}"::"git+https://github.com/smits/orocos-kdl-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/orocos_kdl/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/smits/orocos-kdl-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="orocos-kdl-release-release-indigo-orocos_kdl-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/smits/orocos-kdl-release/archive/release/indigo/orocos_kdl/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('e2d12a417cb38364fffd22cafe5e8958f5ed8fec61429501a582100860ce1b74')
 
 build() {
   # Use ROS environment variables
@@ -45,6 +51,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
