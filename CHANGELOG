@@ -6,10 +6,23 @@ CHANGELOG
 ---------
 
 
+2016-03-30
+~~~~~~~~~~
+
+* Fixed #133 & #138 (freetype crashing with `poppler-qt`).
+
+2016-03-28
+~~~~~~~~~~
+
+* Upstream `freetype2` version upgrade 2.6.3.
+* `freetype2` code was updated with recent upstream commits up to rev.2016.03.26.
+* Updated Infinality patch set.
+* `stem-darkening.patch` was merged with the Infinality patch set.
+
 2015-12-05
 ~~~~~~~~~~
 
-* `freetype2` code was updated with recent upstream commit up to rev.2015.12.05.
+* `freetype2` code was updated with recent upstream commits up to rev.2015.12.05.
 * Fixed bug #124 ("WebKit browsers (Chromium, Opera) won't use freetype2 run-time settings with the new Infinality patch").
 * Infinality patch set cleanup and update.
 

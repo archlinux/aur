@@ -1,11 +1,13 @@
-# Maintainer: Jan de Groot <jgc@archlinux.org>
-# Maintainer: JIN Xiao-Yong <jinxiaoyong@gmail.com>
-# Maintainer: bohoomil <@zoho.com>
+# Maintainer : Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
+# Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: JIN Xiao-Yong <jinxiaoyong@gmail.com>
+# Contributor: bohoomil <@zoho.com>
 
 pkgname=freetype2-infinality
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
-_patchrel=2015.12.05
+_patchrel=2016.03.26
+_commit=36b60ecefe1fd0e042cad51105b0ffb29315e577
 pkgdesc="TrueType font rendering library with Infinality patches and custom settings."
 arch=('armv7h' 'i686' 'x86_64')
 changelog=CHANGELOG
@@ -17,19 +19,19 @@ conflicts=('freetype2' 'freetype2-infinality')
 provides=("freetype2=$pkgver" 'freetype2-infinality' 'freetype2-infinality-ultimate')
 install='infinality.install'
 source=(http://downloads.sourceforge.net/sourceforge/freetype/freetype-${pkgver}.tar.bz2
-        "01-freetype-${pkgver}-enable-valid.patch"
-        "02-upstream-${_patchrel}.patch"
-        "03-infinality-${pkgver}-${_patchrel}.patch"
-         xft-settings.sh
-         infinality-settings.sh
-         infinality-settings-generic)
+        "01-freetype-2.6.3-enable-valid.patch::https://raw.githubusercontent.com/bohoomil/fontconfig-ultimate/${_commit}/freetype/01-freetype-2.6.2-enable-valid.patch"
+        "https://raw.githubusercontent.com/bohoomil/fontconfig-ultimate/${_commit}/freetype/02-upstream-2016.03.26.patch"
+        "https://raw.githubusercontent.com/bohoomil/fontconfig-ultimate/${_commit}/freetype/03-infinality-2.6.3-2016.03.26.patch"
+        "https://raw.githubusercontent.com/bohoomil/fontconfig-ultimate/${_commit}/freetype/xft-settings.sh"
+        "https://raw.githubusercontent.com/bohoomil/fontconfig-ultimate/${_commit}/freetype/infinality-settings.sh"
+        "infinality-settings-generic::https://raw.githubusercontent.com/bohoomil/fontconfig-ultimate/${_commit}/freetype/generic_settings/infinality-settings.sh")
 
-sha1sums=('29c22b85b77cb22cf95c13e7062e21f39fe6b17a'
+sha1sums=('6c98bd5d0be313207c37ca23d25faf983486aee5'
           'abf7a8f726ad6359533651a8942636880febf9f6'
-          '319c377ef4e3f6bc2f52acb893c9b880ef9578b4'
-          'a19a000e778a0b29b0ef0623d566b12187b7f24a'
+          'dc527dc3b45bb5f17533e7e049d16c475007a945'
+          'fa848046558c4ac59ef77775ab4a1a9d7200417f'
           'a1859f2eacae2046a9ef705ac2bcc4bdf4fd9717'
-          '5624c40049a73f8c75d01537212b4c7040f1761f'
+          '44ca94634f894011db9ed7edbb105b50ca591e52'
           '4d219670cb9641b649f6ba0f2a799006f7c3c3c5')
 
 prepare() {
