@@ -1,12 +1,16 @@
 pkgbase = linuxtrack
 	pkgdesc = Software for head motion tracking on linux.
-	pkgver = 0.99.12
-	pkgrel = 4
-	url = http://code.google.com/p/linux-track/
+	pkgver = 0.99.17
+	pkgrel = 1
+	url = https://github.com/uglyDwarf/linuxtrack
 	install = linuxtrack.install
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = gcc-objc-multilib
+	makedepends = gdb
+	makedepends = xplane-sdk-devel
+	makedepends = bison
 	depends = libusb
 	depends = v4l-utils
 	depends = zlib
@@ -17,8 +21,8 @@ pkgbase = linuxtrack
 	depends = opencv
 	provides = linuxtrack
 	provides = trackir-udev
-	source = https://github.com/uglyDwarf/linuxtrack/archive/0.99.12.tar.gz
-	md5sums = 036ffb8c98b08bd58f3388d07ece40f1
+	source = https://github.com/uglyDwarf/linuxtrack/archive/0.99.17.tar.gz
+	md5sums = 32ed472750aa61539b379b5c5e9f3abc
 
 pkgname = linuxtrack
 

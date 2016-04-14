@@ -1,21 +1,19 @@
-# Maintainer: blackleg <blackleg@openaliasbox.org>
 # Based in linuxtrack-svn
 # Creator: Cristóvão Duarte Sousa <crisjss@gmail.com>
 
 pkgname=linuxtrack
-pkgver=0.99.12
-pkgrel=4
+pkgver=0.99.17
+pkgrel=1
 pkgdesc="Software for head motion tracking on linux."
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/linux-track/"
+url="https://github.com/uglyDwarf/linuxtrack"
 license=('MIT')
 depends=('libusb' 'v4l-utils' 'zlib' 'mxml' 'qt4' 'qtwebkit'  'cwiid' 'opencv')
 provides=("linuxtrack" "trackir-udev")
 
-#source=(http://linuxtrack.eu/repositories/universal/linuxtrack-${pkgver}.tar.bz2)
 source=(https://github.com/uglyDwarf/linuxtrack/archive/${pkgver}.tar.gz)
 
-md5sums=('036ffb8c98b08bd58f3388d07ece40f1')
+md5sums=('32ed472750aa61539b379b5c5e9f3abc')
 
 install=linuxtrack.install
 
@@ -27,8 +25,6 @@ fi
 
 build() {
 	cd "$srcdir/${pkgname}-${pkgver}"
-  	#export CPPFLAGS=""
-	#./configure CPP=/usr/bin/cpp --prefix=/usr
 	./configure --prefix=/usr --with-out
 	make
 }
