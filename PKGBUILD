@@ -2,12 +2,13 @@
 
 pkgname=cryptomator
 pkgver=1.0.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Multiplatform transparent client-side encryption of your files in the cloud."
 arch=("any")
 url="https://cryptomator.org/"
 license=('MIT/X Consortium License')
 depends=('java-runtime' 'java-environment' 'java-openjfx')
+optdepends=('rng-tools: Entropy generation')
 source=("https://github.com/cryptomator/cryptomator/releases/download/${pkgver}/Cryptomator-${pkgver}.jar"
         "${pkgname}.sh")
 noextract=("Cryptomator-${pkgver}.jar")
