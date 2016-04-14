@@ -76,7 +76,6 @@ build() {
 
 package_elektra-git() {
   pkgdesc="A universal hierarchical configuration store. (GIT version)"
-  depends=('python2-cheetah')
   optdepends=('augeas: augeas plugin'
               'yajl: yajl plugin'
               'qt5-declarative: qt-gui'
@@ -85,7 +84,8 @@ package_elektra-git() {
               'python2-elektra-git: Python 2 bindings and gen tool'
               'lua52-elektra-git: Lua52 bindings'
               'elektra-glib-git: Glib bindings'
-              'java-elektra-git: Java bindings')
+              'java-elektra-git: Java bindings'
+              )
   provides=('elektra')
   conflicts=('elektra')
 
@@ -131,7 +131,9 @@ package_python-elektra-git() {
 }
 package_python2-elektra-git() {
   pkgdesc="Python2 bindings for Elektra. (GIT version)"
-  depends=('elektra-git')
+  depends=('elektra-git'
+           'python2-cheetah'
+           )
   provides=('python2-elektra')
   conflicts=('python2-elektra')
 
