@@ -1,7 +1,7 @@
 # Maintainer: Anthony DeStefano <adx@fastmail.fm> 
 
 pkgname=flrig
-pkgver=1.3.24
+pkgver=1.3.25
 pkgrel=1
 pkgdesc="Amateur Radio Transceiver Control Program"
 arch=('i686' 'x86_64')
@@ -31,5 +31,4 @@ package() {
 	make DESTDIR="$pkgdir" install
 }
 
-md5sums=('404224b5879cf39e5214478a21cf9b44')
-sha512sums=('061dadf4ef8ba4c5e120658f06d51d8d281a0e3f657b9a6f28f58ad4ce79540566305f8602a2c93b67632a11192826d047ec4897b62597505079a42bb5170682')
+sha512sums=('b845b125d58f4254f00d5e3fc758e7b3ee1cbf502df8d88058d47e791ef0e6fc4e5daccc477c4d1b5f716a9eaded309cb2e80b3b94499970620173a1c5c86b62')
