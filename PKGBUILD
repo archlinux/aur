@@ -3,7 +3,7 @@
 # Contributor: Mantas Mikulėnas <grawity@gmail.com>
 
 pkgname=runescape-launcher
-pkgver=2.1.9
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="RuneScape Game Client"
 arch=(x86_64)
@@ -25,7 +25,7 @@ install=$pkgname.install
 source=("wrapper.sh")
 source_x86_64=("https://content.runescape.com/downloads/ubuntu/pool/non-free/r/$pkgname/${pkgname}_${pkgver}_amd64.deb")
 sha256sums=('d20151c9111a77e753954638eb60f1b4ec0d2c86e173041dcd95bb7b309d5b12')
-sha256sums_x86_64=('a000faeb8bace9c54e0013c4f2a83fe1867b0a2d141eeccb03e89c28a19da23a')
+sha256sums_x86_64=('7b07d25bb22ca43dd042b76eaaad77dcd79f05a7f88be62de21c9f2662bcaac5')
 
 prepare() {
     mkdir -p "$srcdir/$pkgname-$pkgver"
