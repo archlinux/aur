@@ -12,6 +12,7 @@ url='http://github.com/adfinis-sygroup/finja'
 depends=('python'
          'python-six'
          'python-binaryornot'
+         'python-termcolor'
          )
 conflicts=()
 provides=('finja' 'finja-git')
