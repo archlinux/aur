@@ -1,0 +1,63 @@
+diff --git a/src/plugins_3rdparty/hmm3/src/hmmer3/hmmer3_funcs.cpp b/src/plugins_3rdparty/hmm3/src/hmmer3/hmmer3_funcs.cpp
+index b458c12..23fa49b 100644
+--- a/src/plugins_3rdparty/hmm3/src/hmmer3/hmmer3_funcs.cpp
++++ b/src/plugins_3rdparty/hmm3/src/hmmer3/hmmer3_funcs.cpp
+@@ -33,7 +33,7 @@ float infinity() {
+ }
+ 
+ bool isfin( float x ) {
+-    return !isnan( x ) && !isinf( x );
++    return !std::isnan( x ) && !std::isinf( x );
+ }
+ 
+ const char TERM_SYM = '\0';
+diff --git a/src/plugins_3rdparty/hmm3/src/hmmer3/impl_sse/decoding.cpp b/src/plugins_3rdparty/hmm3/src/hmmer3/impl_sse/decoding.cpp
+index 9050f1c..6032970 100644
+--- a/src/plugins_3rdparty/hmm3/src/hmmer3/impl_sse/decoding.cpp
++++ b/src/plugins_3rdparty/hmm3/src/hmmer3/impl_sse/decoding.cpp
+@@ -134,7 +134,7 @@ p7_Decoding(const P7_OPROFILE *om, const P7_OMX *oxf, P7_OMX *oxb, P7_OMX *pp)
+         if (oxb->has_own_scales) scaleproduct *= oxf->xmx[i*p7X_NXCELLS+p7X_SCALE] /  oxb->xmx[i*p7X_NXCELLS+p7X_SCALE];
+     }
+ 
+-    if (isinf(scaleproduct)) return eslERANGE;
++    if (std::isinf(scaleproduct)) return eslERANGE;
+     else                     return eslOK;
+ }
+ 
+@@ -188,7 +188,7 @@ p7_DomainDecoding(const P7_OPROFILE *om, const P7_OMX *oxf, const P7_OMX *oxb, P
+     }
+     ddef->L = oxf->L;
+ 
+-    if (isinf(scaleproduct)) return eslERANGE;
++    if (std::isinf(scaleproduct)) return eslERANGE;
+     else                     return eslOK;
+ }
+ /*------------------ end, posterior decoding --------------------*/
+diff --git a/src/plugins_3rdparty/hmm3/src/hmmer3/impl_sse/fwdback.cpp b/src/plugins_3rdparty/hmm3/src/hmmer3/impl_sse/fwdback.cpp
+index 5bafaa4..413a6fe 100644
+--- a/src/plugins_3rdparty/hmm3/src/hmmer3/impl_sse/fwdback.cpp
++++ b/src/plugins_3rdparty/hmm3/src/hmmer3/impl_sse/fwdback.cpp
+@@ -465,9 +465,9 @@ forward_engine(int do_full, const ESL_DSQ *dsq, int L, const P7_OPROFILE *om, P7
+     /* On an underflow (which shouldn't happen), we counterintuitively return infinity:
+     * the effect of this is to force the caller to rescore us with full range.
+     */
+-    if       (isnan(xC))      ESL_EXCEPTION(eslERANGE, "forward score is NaN");
++    if       (std::isnan(xC))      ESL_EXCEPTION(eslERANGE, "forward score is NaN");
+     else if  (L>0 && xC == 0.0)      ESL_EXCEPTION(eslERANGE, "forward score underflow (is 0.0)");
+-    else if  (isinf(xC) == 1) ESL_EXCEPTION(eslERANGE, "forward score overflow (is infinity)");
++    else if  (std::isinf(xC) == 1) ESL_EXCEPTION(eslERANGE, "forward score overflow (is infinity)");
+ 
+     if (opt_sc != NULL) *opt_sc = ox->totscale + log((double)(xC * om->xf[p7O_C][p7O_MOVE]));
+     return eslOK;
+@@ -742,9 +742,9 @@ backward_engine(int do_full, const ESL_DSQ *dsq, int L, const P7_OPROFILE *om, c
+     if (bck->debugging) p7_omx_DumpFBRow(bck, TRUE, 0, 9, 4, bck->xmx[p7X_E], bck->xmx[p7X_N],  bck->xmx[p7X_J], bck->xmx[p7X_B],  bck->xmx[p7X_C]);	/* logify=TRUE, <rowi>=0, width=9, precision=4*/
+ #endif
+ 
+-    if       (isnan(xN))      ESL_EXCEPTION(eslERANGE, "backward score is NaN");
++    if       (std::isnan(xN))      ESL_EXCEPTION(eslERANGE, "backward score is NaN");
+     else if  (L>0 && xN == 0.0)      ESL_EXCEPTION(eslERANGE, "backward score underflow (is 0.0)");
+-    else if  (isinf(xN) == 1) ESL_EXCEPTION(eslERANGE, "backward score overflow (is infinity)");
++    else if  (std::isinf(xN) == 1) ESL_EXCEPTION(eslERANGE, "backward score overflow (is infinity)");
+ 
+     if (opt_sc != NULL) *opt_sc = bck->totscale + log((double)xN);
+     return eslOK;

@@ -10,9 +10,15 @@ url="http://ugene.net/"
 license=('GPL')
 depends=('qt5-base' 'libxtst' 'glu' 'qtwebkit' 'desktop-file-utils' 'procps-ng' 'python' 'shared-mime-info'
 'qt5-svg' 'qt5-script')
-source=(${url}downloads/$pkgname-$pkgver.tar.gz)
-sha256sums=('ee46be799c9f02a9b6a89f13747a4918d5c96c01676dc2d4cc4a4c98278912b6')
+source=("${url}downloads/$pkgname-$pkgver.tar.gz" 'hmmer3.patch')
+sha256sums=('ee46be799c9f02a9b6a89f13747a4918d5c96c01676dc2d4cc4a4c98278912b6'
+            '57ecbaec5b5d26382d06b73ad0d599f7b07237de6ebf1e175fe662884e585736')
 install=$pkgname.install
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -p1 -i "$srcdir"/hmmer3.patch
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
