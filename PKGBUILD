@@ -33,5 +33,6 @@ build() {
 package() {
     cd "$srcdir/$_pkgname"
 	make DESTDIR="$pkgdir" install
+    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/qotd/LICENSE"
 }
 
