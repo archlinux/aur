@@ -1,18 +1,14 @@
-msg-and-update()
+update()
 {
 gtk-update-icon-cache /usr/share/icons/hicolor
-cat << EOF
-To be able to write to the sounds directory, add yourself to the games group.
-# gpasswd -a $USER games
-EOF
 }
 
 post_install()
 {
-msg-and-update
+update
 }
 
 post_upgrade()
 {
-msg-and-update
+update
 }
