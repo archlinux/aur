@@ -3,20 +3,20 @@
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
-# Use the archive without the bundled JDK - make sure you use your own,
+# Remove the bundled JRE to save space - make sure you use your own,
 # either through JAVA_HOME or by setting the path to the JDK 
 # in ~/.IntelliJIdea2016.1/config/idea.jdk
-_use_no_jdk_archive=
+_remove_bundled_jre=
 
 ### Do no edit below this line unless you know what you're doing
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=145.844.1
+_buildver=145.969.6
 _veryear=2016
 _verrelease=1
-_verextra=2
-_nojdkrelease=true
+_verextra=2-RC
+_nojdkrelease=false
 pkgver=${_veryear}.${_verrelease}.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (ultimate version)"
@@ -26,7 +26,7 @@ url="http://www.jetbrains.com/idea/"
 license=('custom')
 depends=('java-environment' 'giflib' 'libxtst')
 makedepends=('wget')
-if [ "${_nojdkrelease}" = "true" ] && [ -n "${_use_no_jdk_archive}" ]; then
+if [ "${_nojdkrelease}" = "true" ] && [ -n "${_remove_bundled_jre}" ]; then
   source=("https://download.jetbrains.com/idea/ideaIU-${_buildver}-no-jdk.tar.gz")
   sha256sums=($(wget -q "${source}.sha256" && cat "ideaIU-${_buildver}-no-jdk.tar.gz.sha256" | cut -f1 -d" "))
 else
@@ -42,7 +42,7 @@ package() {
         rm -f "${pkgdir}/opt/${pkgname}/bin/libyjpagent-linux64.so"
         rm -f "${pkgdir}/opt/${pkgname}/bin/fsnotifier64"
     fi
-    if [ "${_nojdkrelease}" = "false" ] && [ -n "${_use_no_jdk_archive}" ]; then
+    if [ "${_nojdkrelease}" = "false" ] && [ -n "${_remove_bundled_jre}" ]; then
       msg "Removing bundled JRE..."
       rm -rf "${pkgdir}/opt/${pkgname}/jre"
     fi
