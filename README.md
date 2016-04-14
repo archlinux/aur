@@ -3,6 +3,6 @@ AUR Package:
 
 Modelio
 
-Contributing: https://gitlab.com/aur-ci/modelio-bin.git
+Contributing: https://github.com/rafaelsoaresbr/modelio-bin.git
 
-Builds: https://gitlab.com/aur-ci/modelio-bin/builds
+Builds: https://gitlab.com/rafaelsoaresbr/modelio-bin/builds
