@@ -1,13 +1,13 @@
 # Maintainer: Omid Mottaghi Rad <omidmr at gmail dot com>
 
 pkgname=gnome-shell-extension-persian-calendar
-pkgver=20160410
-pkgrel=2
+pkgver=20160414
+pkgrel=1
 pkgdesc="Persian calendar for Gnome Shell."
 arch=(any)
 url="https://github.com/omid/Persian-Calendar-for-Gnome-Shell"
 license=(GPL3)
-depends=('gnome-shell>=3.20')
+depends=('gnome-shell>=3.18')
 makedepends=(git)
 install='gnome-shell-extension.install'
 source=("$pkgname"::"git+https://github.com/omid/Persian-Calendar-for-Gnome-Shell")
