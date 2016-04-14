@@ -1,12 +1,13 @@
---- lock        2016-04-02 12:27:15.379419717 -0400
-+++ lock-new    2016-04-02 12:30:17.182148233 -0400
-@@ -38,8 +38,7 @@
+--- lock        2016-04-13 21:15:22.279264962 -0400
++++ lock-new    2016-04-13 21:18:22.401244430 -0400
+@@ -37,9 +37,7 @@
+     esac
  done
  
- # get path where the script is located to find the lock icon
+-# get path where the script is located to find the lock icon
 -SCRIPTPATH=$(realpath "$0")
 -SCRIPTPATH=${SCRIPTPATH%/*}
 +SCRIPTPATH="/usr/share/i3lock-fancy"
  
  # l10n support
- TEXT="Type password to unlock""
+ TEXT="Type password to unlock"
