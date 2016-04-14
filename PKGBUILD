@@ -36,7 +36,6 @@ query-version() {
   sparql "[] em:id '$2' ; em:${1}Version ?x" install.rdf
 }
 
-
 pkgver() {
   sparql '<urn:mozilla:install-manifest> em:version ?x' | tr - .
   echo -n .
