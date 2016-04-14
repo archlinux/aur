@@ -4,14 +4,14 @@ pkgdesc="ROS - qt_gui provides the infrastructure for an integrated graphical us
 url='http://ros.org/wiki/qt_gui'
 
 pkgname='ros-indigo-qt-gui'
-pkgver='0.2.29'
+pkgver='0.2.30'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   python2-pyqt4
   qt4)
@@ -21,10 +21,16 @@ depends=(${ros_depends[@]}
   python2-rospkg
   tango-icon-theme)
 
-_tag=release/indigo/qt_gui/${pkgver}-${_pkgver_patch}
-_dir=qt_gui
-source=("${_dir}"::"git+https://github.com/ros-gbp/qt_gui_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/qt_gui/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/qt_gui_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="qt_gui_core-release-release-indigo-qt_gui-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/indigo/qt_gui/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('96398b91e19c52a760016a4445f6b3aed37821051084cc18ac924f1c03e2cecf')
 
 build() {
   # Use ROS environment variables
