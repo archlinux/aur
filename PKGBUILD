@@ -2,7 +2,7 @@
 
 pkgname=xurls-git
 _name="${pkgname/-git/}"
-pkgver=v0.8.0.21.g1f6b014
+pkgver=v0.9.0
 pkgrel=1
 pkgdesc="Extract urls from plain text"
 url="https://github.com/mvdan/${_name}"
@@ -12,11 +12,11 @@ conflicts=('xurls')
 provides=('xurls')
 makedepends=('git' 'go')
 options=('!strip')
-source=("${_name}::git+${url}")
+source=("git+${url}")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_name}"
+	cd "../${_name}"
 	git describe --tags | sed 's/-/./g'
 }
 
