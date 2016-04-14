@@ -10,7 +10,7 @@ Restart=on-failure
 
 ExecStart=/usr/bin/hekad -config=/etc/heka/conf.d/
 
-ExecReload=/usr/bin/kill --signal HUP ${MAINPID}
+ExecReload=/usr/bin/kill --signal HUP "${MAINPID}"
 
 [Install]
 WantedBy=multi-user.target

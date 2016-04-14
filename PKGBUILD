@@ -17,17 +17,15 @@ makedepends=(
     'mercurial'
     'patch'
 )
-optdepends=('geoip-citydata: GeoIpDecoder')
+optdepends=('geoip-database-extra: GeoIpDecoder')
 provides=("${pkgname[0]%-git}")
 conflicts=("${pkgname[0]%-git}")
 
 source=(
-    "${srcname}::git+https://github.com/mozilla-services/${srcname}.git#tag=v${pkgver}"
+    "${srcname}::git+https://github.com/mozilla-services/${srcname}.git"
     'heka.service'
-    'cmake.patch'
 )
 sha512sums=(
-    'SKIP'
     'SKIP'
     'SKIP'
 )
@@ -41,12 +39,6 @@ pkgver() {
         "$( git rev-list --count 'HEAD' )" \
         "$( git log --max-count='1' --pretty='format:%ct' )" \
         "$( git rev-parse --short 'HEAD' )"
-}
-
-prepare() {
-    cd "${srcdir}/${srcname}"
-
-    git apply "${srcdir}/cmake.patch"
 }
 
 build() {
