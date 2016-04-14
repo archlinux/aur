@@ -1,7 +1,7 @@
 # Maintainer=rafaelsoaresbr <rafaelsoaresbr@gmail.com>
 # actor-messenger-bin
-# Contributing: https://gitlab.com/aur-ci/actor-messenger-bin.git
-# Builds: https://gitlab.com/aur-ci/actor-messenger-bin/builds
+# Contributing: https://github.com/rafaelsoaresbr/actor-messenger-bin.git
+# Builds: https://gitlab.com/rafaelsoaresbr/actor-messenger-bin/builds
 #pkgbase=
 pkgname=actor-messenger-bin
 

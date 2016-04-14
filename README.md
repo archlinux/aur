@@ -3,6 +3,6 @@ AUR Package:
 
 Actor Messenger
 
-Contributing: https://gitlab.com/aur-ci/actor-messenger-bin.git
+Contributing: https://github.com/rafaelsoaresbr/actor-messenger-bin.git
 
-Builds: https://gitlab.com/aur-ci/actor-messenger-bin/builds
+Builds: https://gitlab.com/rafaelsoaresbr/actor-messenger-bin/builds
