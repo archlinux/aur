@@ -1,6 +1,6 @@
 # Maintainer: Moritz Schönherr <moritz.schoenherr@gmail.com>
 
-pkgname=mdbook-bin
+pkgname=mdbook
 pkgver=v0.0.11
 pkgrel=1
 pkgdesc="Command line tool for books written in markdown language."

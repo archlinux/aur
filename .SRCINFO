@@ -1,4 +1,4 @@
-pkgbase = mdbook-bin
+pkgbase = mdbook
 	pkgdesc = Command line tool for books written in markdown language.
 	pkgver = v0.0.11
 	pkgrel = 1
@@ -9,5 +9,5 @@ pkgbase = mdbook-bin
 	source = https://github.com/azerupi/mdBook/releases/download/v0.0.11/mdBook-v0.0.11-x86_64-unknown-linux-gnu.tar.gz
 	md5sums = 1b626f4e594f39aa71bdb4a96be5ed97
 
-pkgname = mdbook-bin
+pkgname = mdbook
 
