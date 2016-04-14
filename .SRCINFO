@@ -1,0 +1,30 @@
+pkgbase = redex-git
+	pkgdesc = A bytecode optimizer for Android apps
+	pkgver = r58.3b12645
+	pkgrel = 1
+	url = http://fbredex.com/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = boost
+	depends = python
+	depends = boost-libs
+	depends = double-conversion
+	depends = gflags
+	depends = google-glog
+	depends = libevent
+	depends = lz4
+	depends = xz
+	depends = snappy
+	depends = jemalloc
+	depends = folly-git
+	provides = redex
+	conflicts = redex
+	source = git+https://github.com/facebook/redex/
+	source = redex.patch
+	sha256sums = SKIP
+	sha256sums = 62e48fd8c554cfaaf21eadca6d74617f559780f1fd0fa9d61b5201fce961d6bb
+
+pkgname = redex-git
+

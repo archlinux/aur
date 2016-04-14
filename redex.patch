@@ -1,0 +1,36 @@
+--- Makefile.am
++++ Makefile.am
+@@ -2,8 +2,6 @@
+ 
+ CXXFLAGS = --std=gnu++11 -O3 -Wall -g
+ 
+-SUBDIRS = third-party/folly/folly
+-
+ bin_PROGRAMS = redex-all
+ 
+ bin_SCRIPTS = redex
+@@ -46,11 +44,10 @@
+ 	opt/synth \
+ 	opt/unterface \
+ 	tools/redex-all \
+-	third-party/folly \
+ 	util
+ 
+ redex_all_CPPFLAGS = $(foreach i, $(includes), -I$(top_srcdir)/$i)
+-redex_all_LDADD = -lboost_filesystem -lboost_system -lpthread third-party/folly/folly/.libs/libfolly.a
++redex_all_LDADD = -lboost_filesystem -lboost_system -lpthread -lfolly
+ 
+ redex_all_SOURCES = \
+ 	configparser/keeprules.cc \
+--- configure.ac
++++ configure.ac
+@@ -6,7 +6,8 @@
+ AM_INIT_AUTOMAKE(redex, 1.0)
+ AC_CONFIG_SRCDIR([configparser/config.l])
+ AC_CONFIG_HEADERS([config.h])
+-AC_CONFIG_SUBDIRS([third-party/folly/folly])
++
++AC_LANG([C++])
+ 
+ # Checks for programs.
+ AC_PROG_CXX
