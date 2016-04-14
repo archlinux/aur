@@ -6,6 +6,7 @@ pkgdesc='A lightweight, fast implementation of DEC SIXEL graphics codec'
 arch=('x86_64' 'i686')
 url='https://github.com/saitoha/libsixel'
 license=('MIT')
+makedepends=('git')
 depends=('curl' 'libjpeg-turbo' 'libpng')
 
 source=("git+https://github.com/saitoha/libsixel")
