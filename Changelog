@@ -1,3 +1,7 @@
+2016-04-13  Ivy Foster  <ivy.foster@gmail.com>
+	* 1.0.0.r0.gab02f17
+	- Update pkgver() to reflect new versioning
+
 2015-12-21  Ivy Foster  <joyfulgirl@archlinux.us>
 	* 120527.1.241.ga1f7e87-1
 	- Clean up PKGBUILD style a little
