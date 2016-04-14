@@ -8,7 +8,7 @@ pkgdesc="Image correction Editor for EcoDMS Document Management Software"
 arch=('i686' 'x86_64')
 url="http://www.ecodms.de/index.php/de/"
 license=('custom')
-depends=('bash' 'pcre' 'ecodmsclient')
+depends=('bash' 'pcre' 'ecodmsclient'i 'libpng12')
 options=('!strip')
 install=${pkgname}.install
 
