@@ -1,0 +1,15 @@
+pkgbase = libuser-ldap
+	pkgdesc = LDAP module for libuser
+	pkgver = 0.62
+	pkgrel = 1
+	url = https://fedorahosted.org/libuser/
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	depends = libuser
+	depends = libldap
+	source = https://fedorahosted.org/releases/l/i/libuser/libuser-0.62.tar.xz
+	md5sums = 63e5e5c551e99dc5302b40b80bd6d4f2
+
+pkgname = libuser-ldap
+
