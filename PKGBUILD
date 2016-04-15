@@ -12,8 +12,8 @@ url="http://steampowered.com/"
 license=('custom')
 install=steam.install
 source=("http://repo.steampowered.com/${_realname}/pool/${_realname}/s/${_realname}/${_realname}_${pkgver}.tar.gz"
-        'file://alsa_sdl_audiodriver.patch'
-        'file://99-steam-controller-perms.rules')
+        'alsa_sdl_audiodriver.patch'
+        '99-steam-controller-perms.rules')
 md5sums=('18fe1e009d229ec2eb28e4e7fa87ebc8'
          'ac0e03d70f1101331598b2b32ed9bac3'
          'cd8475f127bd7cec8f98862cb591f095')
