@@ -5,7 +5,7 @@
 pkgname=openchange
 _codename=VULCAN
 pkgver=2.3
-pkgrel=5
+pkgrel=6
 pkgdesc="A portable, open source implementation of Microsoft Exchange server \
 and Exchange protocols."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -24,29 +24,29 @@ source=("https://github.com/openchange/openchange/archive/${pkgname}-${pkgver}-$
         "ocsmanager.service"
         "openchange-provision-type-error.patch"
         "openchange-issue-249.patch"
-        "openchange-remove-server_id_str-1.patch"
         "openchange-add_SizedXid-1.patch"
-        "yyunput_flex2.6.patch")
+        "yyunput_flex2.6.patch"
+        "remove-private-headers.patch")
 
 sha256sums=('46ffdc779bb7bf6a823f6d1a78c5ca3f5548b981ad90164214a68279b403a05e'
             '45bd19e2a5725a94692ae606086be6d57423375c9b1c0eb5322c6e09ef2b5fb3'
             '067d25b0442ab233f47fbfd32a56042fa161b3d0aa65081f222fddde3648c439'
             'e3cfd2455a52d4b68153b3d546c70edbde5cf024ebcec1088a923aedaa938834'
-            '1281c59a5d0490d9b2091535191a0aac1ae04ebc6b48cf56bd4fca656c23b25b'
             'f8012d91b1c1c382e6d480dd015230e59f07d9958ac63d57f65801b1dfc6b54a'
-            '569385a8666ef95a7aa024b52ea47ee308be5eee73a3d973207df43439c2c1e7')
+            '569385a8666ef95a7aa024b52ea47ee308be5eee73a3d973207df43439c2c1e7'
+            'fd7c2cfae6c8b52a30fc80f8e3f4118d93172b535c0032b6cde839a57bf6da9f')
 
 # Used to be pkgname-pkgver-codename, but now we have two openchanges. WAT
 _srcsubdir="${pkgname}-${pkgname}-${pkgver}-${_codename}"
 
-build() {
+prepare() {
     cd "${srcdir}/${_srcsubdir}"
 
     patch -p1 < "${srcdir}/openchange-provision-type-error.patch"
     patch -p1 < "${srcdir}/openchange-issue-249.patch"
-    patch -p1 < "${srcdir}/openchange-remove-server_id_str-1.patch"
     patch -p1 < "${srcdir}/openchange-add_SizedXid-1.patch"
     patch -p1 < "${srcdir}/yyunput_flex2.6.patch"
+    patch -p1 < "${srcdir}/remove-private-headers.patch"
 
     PYTHON_CALLERS="$(find ${srcdir}/${_srcsubdir} -name '*.py')
                     $(find ${srcdir}/${_srcsubdir} -name 'configure.ac')
@@ -60,6 +60,10 @@ build() {
     # Fix linking of boost_thread in autoconf test
     sed -i -e "s|-lboost_thread\$BOOST_LIB_SUFFIX|-lboost_thread\$BOOST_LIB_SUFFIX -lboost_system\$BOOST_LIB_SUFFIX|" \
         configure.ac
+}
+
+build() {
+    cd "${srcdir}/${_srcsubdir}"
 
     export PYTHON=/usr/bin/python2
 

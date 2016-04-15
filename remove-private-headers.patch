@@ -1,0 +1,45 @@
+From 5f5783711d2c2496a824e66c8aa439781cac67fa Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Jes=C3=BAs=20Garc=C3=ADa=20S=C3=A1ez?= <jgarcia@zentyal.com>
+Date: Sat, 26 Mar 2016 17:20:14 +0100
+Subject: [PATCH] Remove private headers (samba 4.4)
+
+emsmdbp.c didn't need that include
+mapiadmin_user.c has declaration now
+---
+ libmapiadmin/mapiadmin_user.c              | 3 ++-
+ mapiproxy/servers/default/emsmdb/emsmdbp.c | 2 --
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/libmapiadmin/mapiadmin_user.c b/libmapiadmin/mapiadmin_user.c
+index 1aacd3d..518b802 100644
+--- a/libmapiadmin/mapiadmin_user.c
++++ b/libmapiadmin/mapiadmin_user.c
+@@ -30,13 +30,14 @@
+ #include <credentials.h>
+ #include <ldb_errors.h>
+ #include <ldb_wrap.h>
+-#include <ldap_ndr.h>
+ 
+ #include <gen_ndr/ndr_samr.h>
+ #include <gen_ndr/ndr_samr_c.h>
+ 
+ #include <time.h>
+ 
++char *ldap_encode_ndr_dom_sid(TALLOC_CTX *mem_ctx, const struct dom_sid *sid);
++
+ /**
+    \file
+    User management functions for mapiadmin
+diff --git a/mapiproxy/servers/default/emsmdb/emsmdbp.c b/mapiproxy/servers/default/emsmdb/emsmdbp.c
+index 0088c95..90686c6 100644
+--- a/mapiproxy/servers/default/emsmdb/emsmdbp.c
++++ b/mapiproxy/servers/default/emsmdb/emsmdbp.c
+@@ -32,8 +32,7 @@
+ #include "mapiproxy/libmapiserver/libmapiserver.h"
+ #include "mapiproxy/libmapiproxy/fault_util.h"
+ 
+-#include <ldap_ndr.h>
+ 
+ /* Expose samdb_connect prototype */
+ struct ldb_context *samdb_connect(TALLOC_CTX *, struct tevent_context *,
+ 				  struct loadparm_context *,
