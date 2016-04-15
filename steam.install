@@ -1,16 +1,24 @@
 pre_install(){
   update-desktop-database -q
-  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  xdg-icon-resource forceupdate --theme hicolor
 }
 
 post_install() {
   pre_install
-  echo "if you are running x86_64, you need the lib32 opt depends for your driver"
-  echo "if you are having problems with the steam license, remove .steam and .local/share/Steam"
+  getent group steamcontroller &>/dev/null || groupadd -g 906 steamcontroller >/dev/null
+  echo "+-------------------------------------------------------------------------------------+"
+  echo "| If you use the Steam Controller, you need to add your user in group steamcontroller |"
+  echo "| and make relogin: gpasswd -a {USER} steamcontroller                                 |"
+  echo "| If you have x86_64, you need the lib32 opt depends for your driver                  |"
+  echo "+-------------------------------------------------------------------------------------+"
 }
 
 post_upgrade() {
   pre_install
+  echo "+-------------------------------------------------------------------------------------+"
+  echo "| If you use the Steam Controller, you need to add your user in group steamcontroller |"
+  echo "| and make relogin: gpasswd -a {USER} steamcontroller                                 |"
+  echo "+-------------------------------------------------------------------------------------+"
 }
 
 pre_upgrade(){
