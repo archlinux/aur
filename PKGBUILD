@@ -1,3 +1,4 @@
+# Maintainer: Dag Robole <dag.robole@gmail.com>
 pkgname=fluxbox-style-numix
 pkgver=20160415
 pkgrel=1
