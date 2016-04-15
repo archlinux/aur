@@ -10,7 +10,7 @@ url="http://gitlab.com/JKANetwork/cryptoJKA"
 license=('GPL3')
 options=(!emptydirs)
 source=(https://gitlab.com/JKANetwork/cryptoJKA/raw/master/last-version/$pkgname-$pkgver.tbz2)
-md5sums=('b38967d474fb14582a16938df6897751')
+md5sums=('1b08c52e7f0dda75858fd577349f4fc1')
 build(){
   cd "$srcdir/$pkgname-$pkgver"
   make
