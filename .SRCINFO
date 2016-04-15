@@ -1,7 +1,7 @@
 pkgbase = xhtml-docs
 	pkgdesc = Set of HTML documentation for XHTML 1.0 & 1.1
 	pkgver = 1.1
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.w3.org/TR/xhtml11/
 	arch = any
 	license = GPL
