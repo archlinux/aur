@@ -11,10 +11,9 @@ depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'als
 provides=("fossamail=$pkgver")
 conflicts=('fossamail' 'fossamail-git')
 install=fossamail.install
-DLAGENTS="http::/usr/bin/echo $(tput bold)$(tput setaf 1)Please download manually the FossaMail binaries with a web browser from %u and move it to the PKGBUILD directory."
 source=(fossamail.desktop)
-source_i686=("FossaMail-${pkgver}.en-US.linux-i686.tar.bz2::http://www.fosshub.com/FossaMail.html/FossaMail-${pkgver}.en-US.linux-i686.tar.bz2")
-source_x86_64=("FossaMail-${pkgver}.en-US.linux-x86_64.tar.bz2::http://www.fosshub.com/FossaMail.html/FossaMail-${pkgver}.en-US.linux-x86_64.tar.bz2")
+source_i686=(http://relmirror.fossamail.org/${pkgver}/FossaMail-${pkgver}.en-US.linux-i686.tar.bz2)
+source_x86_64=(http://relmirror.fossamail.org/${pkgver}/FossaMail-${pkgver}.en-US.linux-x86_64.tar.bz2)
 sha256sums=('4d7b71a153f662abaab5f85fa8371c674d58aaffbaabc428b0b56359be8caacd')
 sha256sums_i686=('ae32326e72260d7f6c141b9c572c3be7b23e33013025f444817514d79c4d7305')
 sha256sums_x86_64=('92c73480732f1f0502448041be35c7847a605e449ce64708b6a38865784e74d8')
