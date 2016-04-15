@@ -3,14 +3,16 @@
 
 pkgname=cryptojka
 pkgver=0.4.7
-pkgrel=6
+pkgrel=7
 pkgdesc="de/encryption character by character"
 arch=('i686' 'x86_64')
 url="http://gitlab.com/JKANetwork/cryptoJKA"
 license=('GPL3')
 options=(!emptydirs)
 source=(https://gitlab.com/JKANetwork/cryptoJKA/raw/master/last-version/$pkgname-$pkgver.tbz2)
+install=$pkgname.install
 md5sums=('2ad8f2e4c44793e897fc1ed0c2b9d54f')
+
 build(){
   cd "$srcdir/$pkgname-$pkgver"
   make
