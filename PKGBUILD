@@ -1,7 +1,7 @@
 # $Id: PKGBUILD 72016 2012-06-05 19:54:42Z seblu $
 # Maintainer: Quan Guo <guotsuan@gmail.com>
 
-pkgname=awesome-treetile-git
+pkgname=awesome-treetile
 pkgver=2016.03.06.g15a5ecc
 pkgrel=1
 pkgdesc='Treetile is binary tree-based, dynamical tiling layout for Awesome 3.5
