@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=lsi-msm
-pkgver=15.11.00.13
+pkgver=16.02.00.04
 _pkgver="$(echo "${pkgver}" | sed 's/\./-/3')"
 pkgrel=1
 pkgdesc="LSI Logic MegaRAID Storage Manager Suite"
@@ -55,8 +55,8 @@ source=('lynx_script_for_download_pegasus' #IMPORTANT for download pegasus zip. 
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.13.0-gcc5-build.patch'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-build-fixes.patch'
         'http://pkgs.fedoraproject.org/cgit/tog-pegasus.git/plain/pegasus-2.14.1-ssl-include.patch')
-source_i686=("${pkgver}_Linux-x86_MSM.tar.gz::http://docs.avagotech.com/docs-and-downloads/https:/avagodocs.s3.amazonaws.com:443/docs-and-downloads/https:/avagodocs.s3.amazonaws.com:443/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_x86_installer-${_pkgver}.tar.gz")
-source_x86_64=("${pkgver}_Linux-x64_MSM.tar.gz::http://docs.avagotech.com/docs-and-downloads/https:/avagodocs.s3.amazonaws.com:443/docs-and-downloads/https:/avagodocs.s3.amazonaws.com:443/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_x64_installer-${_pkgver}.tar.gz")
+source_i686=("${pkgver}_Linux-x86_MSM.tar.gz::http://docs.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_x86_installer-${_pkgver}.tar.gz")
+source_x86_64=("${pkgver}_Linux-x64_MSM.tar.gz::http://docs.avagotech.com/docs-and-downloads/raid-controllers/raid-controllers-common-files/MSM_linux_x64_installer-${_pkgver}.tar.gz")
 sha1sums=('3e0e9a5b5bae72af361db01825242aefcfc3094a'
           'c832eaf240f6dfba843c4937f7a935382d48b9be'
           '0e5d7b71435760e3ef7c1e132ba05145ccbd1268'
@@ -70,8 +70,8 @@ sha1sums=('3e0e9a5b5bae72af361db01825242aefcfc3094a'
           'e8c0cea2589daebcd94ec2baf726391d4cd516cd'
           'a4d642b7be3c3400539dac5014f66463dc567221'
           '1eadb4d032cb7e7367317e61fee6a6e1f9f68868')
-sha1sums_i686=('74b03ef3ca8c9ceb8ae3a60adc3d22303d239798')
-sha1sums_x86_64=('7c687b8a18955053580849c68512d0bef4b5dba1')
+sha1sums_i686=('f0e73ea96f37fc99761587a07f5f2c88fb95fd71')
+sha1sums_x86_64=('e8019072b1071d2043180fae907bc67fa67890fa')
 install=lsi-msm.install
 backup=('etc/lsi_mrdsnmp/LSI_StorSNMP.ini'
         'etc/lsi_mrdsnmp/sas/sas_TrapDestination.conf'
