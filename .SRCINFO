@@ -1,6 +1,6 @@
 pkgbase = vulkan-intel-git
 	pkgdesc = Intel's Vulkan mesa driver
-	pkgver = 11.3.0_devel.79820.e5c833d
+	pkgver = 11.3.0_devel.80244.696d8ff
 	pkgrel = 1
 	url = http://www.mesa3d.org
 	arch = x86_64
@@ -28,7 +28,7 @@ pkgbase = vulkan-intel-git
 	conflicts = vulkan-intel
 	conflicts = vulkan-i965
 	conflicts = vulkan-i965-git
-	source = anvil::git://anongit.freedesktop.org/mesa/mesa#branch=vulkan
+	source = anvil::git://anongit.freedesktop.org/mesa/mesa
 	source = LICENSE
 	sha256sums = SKIP
 	sha256sums = 7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2

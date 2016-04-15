@@ -2,7 +2,7 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=vulkan-intel-git
-pkgver=11.3.0_devel.79820.e5c833d
+pkgver=11.3.0_devel.80244.696d8ff
 pkgrel=1
 pkgdesc="Intel's Vulkan mesa driver"
 arch=(x86_64)
@@ -13,7 +13,7 @@ provides=(vulkan-intel)
 conflicts=(vulkan-intel vulkan-i965 vulkan-i965-git)
 makedepends=('libdrm' 'dri2proto' 'glproto' 'libxxf86vm' 'libxdamage' 'expat>=2.0.1' 'libxmu'
              'talloc' 'wayland' 'pkgconfig' 'imake' 'xorg-server-devel' 'python2-mako' 'python' 'git')
-source=('anvil::git://anongit.freedesktop.org/mesa/mesa#branch=vulkan'
+source=('anvil::git://anongit.freedesktop.org/mesa/mesa'
         LICENSE)
 sha256sums=('SKIP'
             '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2')
@@ -34,7 +34,10 @@ build() {
     --with-sha1=libgcrypt \
     --with-dri-drivers=i965 \
     --with-egl-platforms=x11,drm,wayland \
-    --with-gallium-drivers=
+    --with-gallium-drivers= \
+    --with-vulkan-drivers=intel \
+    --with-vulkan-icddir="$srcdir/fakeinstall/etc/vulkan/icd.d"
+
   make
 
   # fake installation
