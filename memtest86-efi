@@ -237,7 +237,7 @@ help() {
 	echo -e "\t-i, --install\t Install MemTest86 in ESP"
 	echo -e "\t-u, --update\t Update an existing installation of MemTest86"
 	echo -e "\t-r, --remove\t Remove MemTest86 from ESP"
-	echo -e "\t-s, --status\t Return status (1 if installed, else 0)"
+	echo -e "\t-s, --status\t Print and return status"
 	echo -e "\t-h, --help\t Print this help and exit"
 	echo -e "\t-a, --about\t Print informations about $PRGNAME and exit"
 }
