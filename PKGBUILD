@@ -8,7 +8,7 @@ url="https://github.com/shinnova/rslevel"
 license=('GPL')
 depends=('python2' 'python2-colorama')
 source=("git+https://github.com/shinnova/rslevel.git")
-md5sums=('SKIP')
+md5sums=('067df7f766d7fbd09f0ee7adb2646ba5')
 
 package() {
   cd $srcdir/$pkgname
