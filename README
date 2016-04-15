@@ -3,7 +3,10 @@ Arch Linux packaging
 http://musicqueue.furcat.ca/
 
 =====
-Musicqueue can now be built against latest version of wxWidgets git
+Musicqueue CANNOT be built against latest version of wxWidgets git due
+to deprecation of Connect/Disconnect calls.
+Fixes tracked by GitLab Issue #14 
+https://gitlab.com/digifuzzy/musicqueue/issues/14
 =====
 
 =====
