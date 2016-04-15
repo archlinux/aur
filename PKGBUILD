@@ -1,7 +1,7 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-pcem-git
-pkgver=136.87d73d7
+pkgver=146.223f434
 pkgrel=1
 pkgdesc="Libretro port of PCem, based on mooch's personal fork of PCem, based on OBattler's experimental branch"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
