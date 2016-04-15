@@ -30,8 +30,8 @@ _use_32bit_pae="no"	# "yes": Use the PAE config for 32-bit
 ###########################################################################################################
 
 pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
-__basekernel=4.4
-_minor=7
+__basekernel=4.5
+_minor=1
 pkgver=${__basekernel}.${_minor}
 pkgrel=1
 lqxrel=1
@@ -57,12 +57,12 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.x
         "http://liquorix.net/sources/${__basekernel}/config.amd64"
         "linux-lqx.preset")
 
-sha512sums=('13c8459933a8b80608e226a1398e3d1848352ace84bcfb7e6a4a33cb230bbe1ab719d4b58e067283df91ce5311be6d2d595fc8c19e2ae6ecc652499415614b3e'
+sha512sums=('cb0d5f30baff37dfea40fbc1119a1482182f95858c883e019ee3f81055c8efbdb9dba7dfc02ebcc4216db38f03ece58688e69efc0fce1dade359af30bd5426de'
             'SKIP'
-            '3bd501b0a1c7bdb8cb8a61c08528eb1349d5befaf5775eb3a951fe17febba0bd890c1f5877973fd4159c7ce126c57ab1500a5741d2f2aa6680b510f93283e28a'
-            '9a87ff8075859bfa69fd30484cab7dfe53b2ec2b744927fa0517a7ed3fc5b579c122ad8a8cf1bb9e0cc32c500b5d2cf7a0b5ae62f073e91a58f0d5444fec7243'
-            '3ab9b8e395eaaf22fd92c5329bda8a4c55eb29fd2a3587c3b1e225f4bbb3827cae4bc7fd72a2de94b504406b765353d5613f2e81d08a8707b329ebf62c71e585'
-            '11078e4ff74013c34e90dde8368002178d5f57593306c23fcd9fc5ee41fbdcda0e5f99dc862b0cf20886e6f0cab52b0df2ed9f5c48557fc6f21d316e2809ade6'
+            '54042a3c0210d96a3514ece1aeedb30576e2cb0e5b5ff55d09a7239f31899a8d5801f9ec0dfa4b36e0511e03289d439fe7f3f602736ddaf2631c7316751b34cd'
+            '72e503fb2ef8526e0f01c72c410438a75f0af1e5b15e136ad4ec88e57ac191df3bfcad6c424af390fb92a4ed9d1dfd59f076283929e88f343684f9efdc24e070'
+            'f8183466ace0b0a82419139b53703e0a85fa6469fbd8df4ac397db046cb9f643f7104e1089166378d260e0baa3a5f33db858abe5262c9fa277899a1a2715dfd6'
+            'f9c3a09519d3873535ffa1afc84c63c39dccfc4d9dfebc18746a82264a5fcfcc509c63257231ac145fbccfff422bc62a7ce2d2da36c763f4e5262990c08cbcf7'
             'fe4dcd7b5ec06ec3ec4aa631531469f58f6a7111e2d33affa98a1b8a8d230c5fa7e25ffdf770fe5ce61f249b0ec0ecd69df2858c4029acee0efaadff957858fe')
             
 validpgpkeys=(
@@ -390,7 +390,7 @@ _basekernel=${_basekernel%.*}
 
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
   cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  find "${pkgdir}" -type f -exec chmod 444 {} \;
+  find "${pkgdir}" -type f -exec chmod 4.5 {} \;
   find "${pkgdir}" -type d -exec chmod 755 {} \;
 
   # remove a file already in linux package
