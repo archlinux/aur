@@ -55,7 +55,11 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # armv7h patches
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
-        '0001-CHIP-device-tree-file.patch'
+        '0001-ARM-sunxi-Add-R8-support.patch'
+        '0002-ARM-sun5i-Add-CHIP-DTS.patch'
+        '0003-ARM-sun5i-Add-R8-DTSI.patch'
+        '0004-ARM-dts-axp209-Add-usb_power_supply-child-node-to-the-ax209-node.patch'
+        '0005-ARM-sun5i-chip-Add-CPU-regulator-for-cpufreq.patch'
         '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
         '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
         '0003-SMILE-Plug-device-tree-file.patch'
@@ -86,7 +90,11 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             '0a6f76bbc03ae6e846a4ba4e31bbc0a40b1ae538c1271defcbe3089e00a4b53d'
             '3743d0478507d160f24326241831df8c4d3f2e268bcaf2f62dfe2ef5e8a69188'
             'SKIP'
-            'bb3113130feedd411bd0947bd8217c7643519659ddb9ca57f7b53a1a51fb67a0'
+            '349691937f0a2881c5fc981d7fb85f64ad3c341ce77a716638d328750d3e9f41'
+            '26274259a896a6a362bf89a5ba014c01c5126c646dcd50b51255d94743a9ad7f'
+            '80d426c53296b0a04d7817caafe628135ac28abfe32cc7f4740049b89d7bd956'
+            '32673476cec6024851c5e084f920c72a4c5297c092d0b40a65ab5c05089bb36e'
+            'fdb50c0b420d374de0552412a5b65f568eda3bf9dc896682578a74797c5c4dab'
             '203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7'
             '28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c'
             '39bfd7f6e2df0b87b52488462edb2fbcfaf9e3eb2a974fc7b3bc22147352fece'
@@ -128,7 +136,12 @@ prepare() {
     git apply -v "${srcdir}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
 
     # Parabola patches
-    patch -p1 -i "${srcdir}/0001-CHIP-device-tree-file.patch"
+    # add C.H.I.P single-board computer support
+    patch -p1 -i "${srcdir}/0001-ARM-sunxi-Add-R8-support.patch"
+    patch -p1 -i "${srcdir}/0002-ARM-sun5i-Add-CHIP-DTS.patch"
+    patch -p1 -i "${srcdir}/0003-ARM-sun5i-Add-R8-DTSI.patch"
+    patch -p1 -i "${srcdir}/0004-ARM-dts-axp209-Add-usb_power_supply-child-node-to-the-ax209-node.patch"
+    patch -p1 -i "${srcdir}/0005-ARM-sun5i-chip-Add-CPU-regulator-for-cpufreq.patch"
 
     # ALARM patches
     patch -p1 -i "${srcdir}/0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch"
