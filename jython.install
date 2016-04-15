@@ -1,0 +1,20 @@
+pre_install() {
+	/bin/true
+}
+post_install() {
+	echo "==> Please see /usr/share/doc/jython/README.ArchLinux"
+	echo "==> for important information about this package."
+}
+pre_upgrade() {
+	/bin/true
+}
+post_upgrade() {
+	echo "==> Please see /usr/share/doc/jython/README.ArchLinux"
+	echo "==> for important information about this package."
+}
+pre_remove() {
+	/bin/true
+}
+post_remove() {
+	/bin/true
+}
