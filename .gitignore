@@ -6,6 +6,6 @@
 !chromium-dev.install
 !chromium-dev.xml
 !chromium-dev.svg
-!enable_vaapi_on_linux-r6.diff
+!enable_vaapi_on_linux-r7.diff
 !chromium-widevine-r0.patch
 !chromium-system-jinja-r9.patch
