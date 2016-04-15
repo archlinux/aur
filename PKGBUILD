@@ -2,7 +2,7 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=nodejs-git
-pkgver=5.10.1.r2.g60a73a2
+pkgver=5.10.1.r5.g61167c3
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript'
 arch=('i686' 'x86_64')
