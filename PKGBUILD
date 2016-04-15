@@ -3,7 +3,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-stealmyfocus-git
-pkgver=r11
+pkgver=r13
 pkgrel=1
 pkgdesc="Shell Extension that let window that demand attention to steal focus"
 arch=(any)

@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-stealmyfocus-git
 	pkgdesc = Shell Extension that let window that demand attention to steal focus
-	pkgver = r11
+	pkgver = r13
 	pkgrel = 1
 	url = https://github.com/v-dimitrov/gnome-shell-extension-stealmyfocus
 	install = notice.install
@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-stealmyfocus-git
 	license = GPLv2
 	makedepends = git
 	depends = gnome-shell
-	provides = gnome-shell-extension-stealmyfocus=r11
+	provides = gnome-shell-extension-stealmyfocus=r13
 	conflicts = gnome-shell-extension-stealmyfocus
 	replaces = gnome-shell-extension-justshowthewindow
 	source = gnome-shell-extension-stealmyfocus::git+https://github.com/v-dimitrov/gnome-shell-extension-stealmyfocus
