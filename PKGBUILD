@@ -7,7 +7,7 @@
 pkgname=ruby2.2
 pkgver=2.2.4
 pkgdesc='An object-oriented language for quick and easy programming'
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url='http://www.ruby-lang.org/en/'
 license=(BSD custom)
@@ -15,7 +15,7 @@ depends=(gdbm openssl libffi libyaml gmp zlib)
 optdepends=('tk: for Ruby/TK')
 makedepends=(gdbm openssl libffi doxygen graphviz libyaml ttf-dejavu tk)
 options=(!emptydirs)
-source=(http://cache.ruby-lang.org/pub/ruby/${pkgver:0:3}/ruby-${pkgver}.tar.xz)
+source=(https://cache.ruby-lang.org/pub/ruby/${pkgver:0:3}/ruby-${pkgver}.tar.xz)
 
 build() {
   cd ruby-${pkgver}
@@ -47,12 +47,12 @@ package() {
 
   install -dm755 $pkgdir/usr/bin
   install -dm755 $pkgdir/usr/lib
-    
+
   for i in erb irb rdoc ri ruby testrb rake gem; do
     ln -s /opt/$pkgname/bin/$i-2.2 $pkgdir/usr/bin/$i-2.2
     ln -s /opt/$pkgname/bin/$i-2.2 $pkgdir/opt/$pkgname/bin/$i
   done
-  
+
   ln -s /opt/$pkgname/lib/libruby.so.2.2 $pkgdir/usr/lib/libruby.so.2.2
 
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
