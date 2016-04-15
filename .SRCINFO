@@ -1,6 +1,6 @@
 pkgbase = python-voluptuous
 	pkgdesc = Voluptuous is a Python data validation library
-	pkgver = 0.8.7
+	pkgver = 0.8.11
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/voluptuous
 	arch = any
@@ -11,12 +11,12 @@ pkgbase = python-voluptuous
 	makedepends = python2-setuptools
 	makedepends = python2-pip
 	makedepends = python-pip
-	source = https://pypi.python.org/packages/source/v/voluptuous/voluptuous-0.8.7.tar.gz
-	md5sums = 0f0949147b439590b3289e391ce5330b
+	source = https://pypi.python.org/packages/source/v/voluptuous/voluptuous-0.8.11.tar.gz
+	md5sums = 0fb3c9de961a4acfac1cad1009657751
 
 pkgname = python-voluptuous
-	depends = python2
+	depends = python
 
 pkgname = python2-voluptuous
-	depends = python
+	depends = python2
 
