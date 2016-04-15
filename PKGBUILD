@@ -10,6 +10,7 @@ url="https://github.com/wmutils/libwm"
 arch=('i686' 'x86_64')
 license=('ISC')
 depends=('libxcb' 'xcb-util-wm')
+makedepends=('git')
 source=("$pkgname::git+https://github.com/wmutils/libwm.git")
 md5sums=('SKIP')
 
