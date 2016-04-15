@@ -38,20 +38,20 @@ build() {
   make
 
   # fake installation
-  mkdir -p $srcdir/fakeinstall
-  make DESTDIR=${srcdir}/fakeinstall install
+  mkdir -p "$srcdir"/fakeinstall
+  make DESTDIR="${srcdir}"/fakeinstall install
 }
 
 package() {
   cd "${srcdir}/anvil"
   
-  install -m755 -d ${pkgdir}/etc
-  mv -v ${srcdir}/fakeinstall/etc/vulkan ${pkgdir}/etc/
+  install -m755 -d "${pkgdir}"/etc
+  mv -v "${srcdir}"/fakeinstall/etc/vulkan "${pkgdir}"/etc/
 
-  install -m755 -d ${pkgdir}/usr/{include/vulkan,lib}
-  mv -v ${srcdir}/fakeinstall/usr/lib/libvulkan_intel.so ${pkgdir}/usr/lib/
-  mv -v ${srcdir}/fakeinstall/usr/include/vulkan/vulkan_intel.h ${pkgdir}/usr/include/vulkan
+  install -m755 -d "${pkgdir}"/usr/{include/vulkan,lib}
+  mv -v "${srcdir}"/fakeinstall/usr/lib/libvulkan_intel.so "${pkgdir}"/usr/lib/
+  mv -v "${srcdir}"/fakeinstall/usr/include/vulkan/vulkan_intel.h "${pkgdir}"/usr/include/vulkan
 
-  install -m755 -d "${pkgdir}"/usr/share/licenses/${pkgname}
-  install -m644 "${srcdir}/LICENSE" "${pkgdir}"/usr/share/licenses/${pkgname}/
+  install -m755 -d "${pkgdir}"/usr/share/licenses/"${pkgname}"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}"/usr/share/licenses/"${pkgname}"/
 }
