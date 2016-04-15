@@ -1,6 +1,7 @@
 # Contributor: Weng Xuetian <wengxt@gmail.com>
 # Maintainer: Thaodan <theodorstormgrade@gmail.com>
 
+
 # enable this if you run out of memory during linking
 #_lowmem=true
 
@@ -12,7 +13,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=45.0
+pkgver=45.0.2
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -33,7 +34,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
 install=firefox.install
-_patchrev=6a889427cd4f
+_patchrev=3ccb278a9ceb
 options=('!emptydirs'  'strip' )
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
@@ -51,6 +52,9 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         pgo_fix_missing_kdejs.patch
 )
 
+if [ $_gtk3 ] ; then
+    source+=($_patchurl/mozilla-gtk3_20.patch)
+fi
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
 # get your own set of keys. Feel free to contact foutrelis@archlinux.org for
@@ -103,9 +107,10 @@ prepare() {
   # enable gtk3
   if [ $_gtk3 ] ; then
      # fix gtk3 build
-     sed -i 's|parent->group|gtk_window_get_group(const_cast<GtkWindow*>(parent))|g' \
-	 toolkit/xre/nsKDEUtils.cpp
-     echo 'ac_add_options --enable-default-toolkit=cairo-gtk3' >>.mozconfig
+   #  sed -i 's|parent->group|gtk_window_get_group(const_cast<GtkWindow*>(parent))|g' \
+#	 toolkit/xre/nsKDEUtils.cpp
+      echo 'ac_add_options --enable-default-toolkit=cairo-gtk3' >>.mozconfig
+          patch -Np1 -i "$srcdir"/mozilla-gtk3_20.patch
   fi
   # configure script misdetects the preprocessor without an optimization level
   # https://bugs.archlinux.org/task/34644
@@ -182,7 +187,7 @@ package() {
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }
 
-sha256sums=('36ab0f09b1b1df071a8aafa673c6286d99c18dc06cecbb70d1bb2021fbf379f1'
+sha256sums=('a6b09bac0390d4e48b752026ec1aaa934332dee31fb3ff3ca59f8209f4217a53'
             '633084aa03336088e087f39eb55b212cc97b11d27a4b288a87f75148350be4dd'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
@@ -197,4 +202,5 @@ sha256sums=('36ab0f09b1b1df071a8aafa673c6286d99c18dc06cecbb70d1bb2021fbf379f1'
             'e8289ea4c1f8191e1e23661312ceee2128b8e790501b9a589d0d7bfc4384553f'
             '6b0e2900be693805388a96e4b2f4ea9a838c1e95322a546388d384a21458cd3f'
             'f9067f62a25a7a77276e15f91cc9e7ba6576315345cfc6347b1b2e884becdb0c'
-            '2797d1e61031d24ee24bf682c9447b3b9c1bca10f8e6cbd597b854af2de1ec54')
+            '2797d1e61031d24ee24bf682c9447b3b9c1bca10f8e6cbd597b854af2de1ec54'
+            '34d1055031ffb7f5fa25aa0363456d3e5c43a1e7332ee2300a5e2253dd9a2585')
