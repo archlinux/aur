@@ -1,0 +1,18 @@
+pkgbase = weki-input-helper
+	pkgdesc = Helps with signal transformation for Wekinator inputs.
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://www.wekinator.org/
+	arch = any
+	depends = java-runtime
+	source = https://github.com/fiebrink1/WekiInputHelper/releases/download/v1.0.1/WekiInputHelper-1.0.1_AnyOS.zip
+	source = icon.icns::https://github.com/fiebrink1/WekiInputHelper/raw/master/src/wekiinputhelper/icons/wekihelper.icns
+	source = weki-input-helper.run
+	source = weki-input-helper.desktop
+	md5sums = 94593da7306747e41cc8377929dc5779
+	md5sums = bb9bbc91296553017fd5a4986d71e781
+	md5sums = df68c63b33a7c7ec6bad2d23fa137b5e
+	md5sums = 61c278576e1878d6454dc6ed8d697ec4
+
+pkgname = weki-input-helper
+

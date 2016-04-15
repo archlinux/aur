@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=WekiInputHelper
+Comment=Helps with signal transformation for Wekinator inputs.
+Path=/usr/share/java/weki-input-helper
+Exec=weki-input-helper
+Icon=/usr/share/weki-input-helper/icon.icns
+Terminal=false
+Categories=Music;Java;
