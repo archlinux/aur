@@ -1,6 +1,6 @@
 # Maintainer: David Donchez <david.donchez@gmail.com>
 pkgname=kargo-cli
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Kubernetes cluster deployment using Ansible"
 arch=('any')
@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("$pkgname::https://github.com/kubespray/kargo-cli/archive/$pkgver.zip")
-sha256sums=('0aee8b4dd863fd6c4379b62c0289311a4d8ddaa9cbfa60b379580160e2a3c550')
+sha256sums=('2ba71b22c41b73e5f6e2cec2148b166eb1d12902a66fae1ee7728aa9914b1023')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
