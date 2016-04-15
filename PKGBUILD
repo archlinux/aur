@@ -1,16 +1,16 @@
 # Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com> PGP-Key: 78695CFD
-# Contributor: shivik <> PGP-Key: 761E4.4C
+# Contributor: shivik <> PGP-Key: 761E4.5C
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-304xx-lqx
 pkgver=304.131
-_extramodules=extramodules-4.4-lqx
-pkgrel=3
+_extramodules=extramodules-4.5-lqx
+pkgrel=4
 pkgdesc="NVIDIA drivers for linux-lqx kernel, 304xx legacy branch"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-lqx>=4.4' 'linux-lqx<4.5' "nvidia-304xx-utils=${pkgver}" "nvidia-304xx-libgl")
-makedepends=('linux-lqx-headers>=4.4' 'linux-lqx-headers<4.5')
+depends=('linux-lqx>=4.5' 'linux-lqx<4.6' "nvidia-304xx-utils=${pkgver}" "nvidia-304xx-libgl")
+makedepends=('linux-lqx-headers>=4.5' 'linux-lqx-headers<4.6')
 conflicts=('nvidia-lqx' 'nvidia-340xx-lqx')
 license=('custom')
 install=nvidia-304xx-lqx.install
