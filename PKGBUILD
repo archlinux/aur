@@ -30,13 +30,13 @@ depends=(${ros_depends[@]}
 # Git version (e.g. for debugging)
 # _tag=release/indigo/tf2_sensor_msgs/${pkgver}-${_pkgver_patch}
 # _dir=${pkgname}
-# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry_experimental-release.git"#tag=${_tag})
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry2-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
-_dir="geometry_experimental-release-release-indigo-tf2_sensor_msgs-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry_experimental-release/archive/release/indigo/tf2_sensor_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('75a56958d5773248bd9d130c835990c18d861a7eb246fa98aa790a57a38045ef')
+_dir="geometry2-release-release-indigo-tf2_sensor_msgs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/indigo/tf2_sensor_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('9eb6e5bc82e3c67f3944f4e9e630817d51c6a4e77fb096b0bbe7c57c632a515e')
 
 build() {
   # Use ROS environment variables
