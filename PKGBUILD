@@ -5,7 +5,7 @@
 pkgname=android-sdk-dummy
 _pkgname=android-sdk
 pkgver=24.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Android SDK, dummy package'
 arch=('i686' 'x86_64')
 url='http://developer.android.com/sdk/'
@@ -27,7 +27,7 @@ source=('https://developer.android.com/assets/images/android_logo.png'
         "${_pkgname}.conf::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.conf?h=${_pkgname}"
         "license.html::https://aur.archlinux.org/cgit/aur.git/plain/license.html?h=${_pkgname}")
 sha1sums=('b8726c63294a23e5fea066a36061164e583b5732'
-          'e834f53e13d5926ec7be3fd775fa80aa6f328eb6'
+          '8f886de363ad91a7f93a0c6ded993e99bef3e1a7'
           '78f8574e651c9bf8b7515ecb30c7ef93edbc4a96'
           '08c85aab7523e22b298891c7047bc0e7adbf3437'
           '145bdf3eb41a56574b289c1577a24bc47097ec83'
