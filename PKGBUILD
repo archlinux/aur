@@ -19,7 +19,7 @@ source=(
 	graylog-tmpfiles.conf
 	graylog.service
 )
-sha256sums=('7bc36b313b9a7ab41c6c8d9a5da3b53dbb7e9a048df0fb35da3b346c93956b09'
+sha256sums=('b6475ecfaa178d3f2080bdae4e696072d9e699eef821824613ed72b8f70ef553'
             'SKIP'
             'SKIP')
 
