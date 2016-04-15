@@ -1,13 +1,13 @@
 pkgbase = centroid-rna-package
 	pkgdesc = CentroidFold for predicting RNA secondary structures
 	pkgver = 0.0.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/satoken/centroid-rna-package
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = boost>=1.40.0
 	makedepends = viennarna>=1.8
+	depends = boost-libs>=1.40.0
 	source = https://github.com/satoken/centroid-rna-package/archive/v0.0.15.tar.gz
 	md5sums = dc333b18b7f4d353d667fe66d66404ba
 
