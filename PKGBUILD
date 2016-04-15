@@ -86,7 +86,9 @@ requires = ['pyyaml>=3.11',
 }
 _fn_pydepends "${_pyver}-" '' '='
 # vercmp doesn't consider 2.4 and 2.4.0 equal
-_pydepends=("${_pydepends[@]//-cement=2.4/-cement=2.4.0}")
+#_pydepends=("${_pydepends[@]//-cement=2.4/-cement=2.4.0}")
+#Arch drops the py prefix on pyyaml
+_pydepends=("${_pydepends[@]//-pyyaml/-yaml}")
 unset -f _fn_pydepends
 
 build() {
