@@ -3,7 +3,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-scroll-workspaces-git
-pkgver=r48
+pkgver=r51
 pkgrel=1
 pkgdesc="Switch workspaces by scrolling in the top panel"
 arch=(any)
