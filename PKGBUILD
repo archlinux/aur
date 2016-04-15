@@ -1,15 +1,17 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=voltron-git
-pkgver=20151109
-pkgrel=2
+pkgver=20160413
+pkgrel=1
 pkgdesc="UI for GDB, LLDB and Vivisect's VDB"
 arch=('any')
 depends=('python'
          'python-blessed'
          'python-cherrypy'
          'python-flask'
+         'python-flask-restful'
          'python-pygments'
+         'python-requests-unixsocket'
          'python-rl'
          'python-scruffington'
          'readline')
@@ -48,12 +50,6 @@ package() {
 
   msg2 'Installing...'
   python setup.py install --root="$pkgdir" --optimize=1
-
-  msg2 'Fixing placement of dbgentry.py...'
-  _pysite=$(python -c \
-    'from distutils.sysconfig import get_python_lib; print(get_python_lib())'
-  )
-  mv "$pkgdir/usr/dbgentry.py" "$pkgdir/$_pysite/voltron"
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
