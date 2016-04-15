@@ -42,6 +42,9 @@ prepare() {
 	sed -i -e 's/automake-1.11/automake-1.14/g;s/aclocal-1.11/aclocal-1.14/g' autogen.sh
 	sed -i 's/gimp.desktop/gimp-'${_version}'.desktop/g' desktop/gimp.appdata.xml.in
 	sed -i  '/_Name=/ s/$/ '${_version}'/;s/Icon=gimp/&-'${_version}'/' desktop/gimp.desktop.in.in
+
+	#fix non-existing theme
+	sed -i 's/03-Dark/System/' app/config/gimpguiconfig.h
 }
 
 build() {
