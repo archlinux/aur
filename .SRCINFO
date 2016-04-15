@@ -1,6 +1,6 @@
 pkgbase = thunderbird-beta-bin
 	pkgdesc = Standalone Mail/News reader - Bleeding edge binary version
-	pkgver = 45.0rc1
+	pkgver = 45.0
 	pkgrel = 1
 	url = https://www.mozilla.org/thunderbird
 	install = thunderbird-beta-bin.install
@@ -28,7 +28,7 @@ pkgbase = thunderbird-beta-bin
 	depends = sqlite
 	depends = startup-notification
 	optdepends = libcanberra: for sound support
-	provides = thunderbird=45.0rc1
+	provides = thunderbird=45.0
 	conflicts = thunderbird-beta
 	source = thunderbird-beta-bin.desktop
 	source = thunderbird-beta-bin-safe.desktop
@@ -36,9 +36,9 @@ pkgbase = thunderbird-beta-bin
 	sha512sums = fc83c23f67cc5d399bc655d2486936db3ab500bafe399a905a17a0b0f63ad9befb782fc9c07d467a65a80a00e3ce984700ec3cf60e4cb3e1b29b20954c6fa775
 	sha512sums = 3cf4194575041bbe344d6cd17e473eb78caf7e2e1aa8b1309151f7e4677c33571014ba6d7aba267398c3ba69c825c64363272b82b15f7dbb8ae5e3e825f439b7
 	sha512sums = aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5
-	source_i686 = https://ftp.mozilla.org/pub/thunderbird/candidates/45.0-candidates/build1/linux-i686/en-US/thunderbird-45.0.tar.bz2
+	source_i686 = https://ftp.mozilla.org/pub/thunderbird/releases/45.0/linux-i686/en-US/thunderbird-45.0.tar.bz2
 	sha512sums_i686 = 3a079483f9c097694904fbb562b06442d80e27eafaee0c8f4e94cf900b40dcb9ef99b23e6902ff03e86c4bfc746ab17defd0e5172d9321383594686e920838c8
-	source_x86_64 = https://ftp.mozilla.org/pub/thunderbird/candidates/45.0-candidates/build1/linux-x86_64/en-US/thunderbird-45.0.tar.bz2
+	source_x86_64 = https://ftp.mozilla.org/pub/thunderbird/releases/45.0/linux-x86_64/en-US/thunderbird-45.0.tar.bz2
 	sha512sums_x86_64 = 59a3afc8751eeaf46ec3c92a898278ddbdf41c8250cb11d9b110fafb23427cadf7bb3afa4c1762cbdb528d4628d2acfc02eea505ce3602c6f4532cafa6750fe4
 
 pkgname = thunderbird-beta-bin
