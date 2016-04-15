@@ -1,0 +1,9 @@
+[Unit]
+Description=dyndnsc
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/dyndnsc --loop --config /etc/dyndnsc.conf
+
+[Install]
+WantedBy=multi-user.target
