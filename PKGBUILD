@@ -13,22 +13,21 @@ license=(GPL)
 depends=(flint cddlib) # polymake
 makedepends=(doxygen)
 source=("http://www.mathematik.uni-kl.de/ftp/pub/Math/Singular/src/$_majver/${pkgname%4}-${pkgver//_/}.tar.gz") 
-md5sums=('cf7f8df838a630b58ba67da6b8153469')
+md5sums=('003ffe73776235313899f16c2258b510')
 
 build() {
-  cd $pkgname-${pkgver//_/}
+  cd ${pkgname%4}-${pkgver//_/}
 
   ./configure --prefix=/usr --libexecdir=/usr/lib
   make
 }
 
 package() {
-  cd $pkgname-${pkgver//_/}
+  cd ${pkgname%4}-${pkgver//_/}
   make DESTDIR="$pkgdir" install
 
 # Install docs
   mkdir -p "$pkgdir"/usr/share/singular
-  install -m644 doc/singular.hlp "$pkgdir"/usr/share/singular/
   install -m644 doc/singular.idx "$pkgdir"/usr/share/singular/
 
 # needed by Sage, not installed by default
