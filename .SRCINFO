@@ -1,0 +1,14 @@
+pkgbase = mkinitcpio-tarball-utils
+	pkgdesc = Provides hooks for booting to a tmpfs
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = mkinitcpio-nfs-utils
+	source = tarballroot-hook
+	source = tarballroot-install
+	md5sums = 582ed650034623c4c666905ae4ca900c
+	md5sums = 4d5a0b0566a929b0af277b53b4990a53
+
+pkgname = mkinitcpio-tarball-utils
+

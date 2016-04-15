@@ -1,0 +1,23 @@
+#!/bin/bash
+
+build() {
+
+    add_binary "/usr/bin/tar" "/bin/tar"
+    add_binary "/usr/bin/xz" "/bin/xz"
+
+    add_runscript
+}
+
+help() {
+    cat <<HELPEOF
+This hook adds the ability to use a tmpfs as root, downloading a tarball
+image (with xz compression) and extracting it on the fly.
+
+Don't forget to include the net hook.
+
+On the boot command line  root=tarball and tarball=<url>
+
+HELPEOF
+}
+
+# vim: set ft=sh ts=4 sw=4 et:
