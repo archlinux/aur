@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libktorrent-git
-pkgver=1.9.50.r376.54f39bb
+pkgver=1.9.50.r396.77d90c4
 pkgrel=1
 pkgdesc="A BitTorrent protocol implementation. (GIT version)"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ build() {
   cmake ../libktorrent \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
