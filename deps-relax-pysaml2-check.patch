@@ -1,4 +1,4 @@
-From d69c4e9247be638e7d564f63ed597c45049ca96c Mon Sep 17 00:00:00 2001
+From 8008e66d5b277d96f18f062b145cb080fe80c1b8 Mon Sep 17 00:00:00 2001
 From: Ivan Shapovalov <intelfx@intelfx.name>
 Date: Mon, 21 Mar 2016 01:29:11 +0300
 Subject: [PATCH] Revert "Pin pysaml2 version to 3.x"
@@ -9,7 +9,7 @@ This reverts commit 07cf96ebf7c806ba570d167e200e54e07034f5ce.
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/synapse/python_dependencies.py b/synapse/python_dependencies.py
-index d7afe48..1db6c12 100644
+index 4b11b60..be23846 100644
 --- a/synapse/python_dependencies.py
 +++ b/synapse/python_dependencies.py
 @@ -34,7 +34,7 @@ REQUIREMENTS = {
@@ -19,8 +19,8 @@ index d7afe48..1db6c12 100644
 -    "pysaml2>=3.0.0,<4.0.0": ["saml2>=3.0.0,<4.0.0"],
 +    "pysaml2": ["saml2"],
      "pymacaroons-pynacl": ["pymacaroons"],
+     "pyjwt": ["jwt"],
  }
- CONDITIONAL_REQUIREMENTS = {
 -- 
-2.7.4
+2.8.0
 

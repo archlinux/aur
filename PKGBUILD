@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
 
 pkgname=matrix-synapse-git
-pkgver=0.14.0.r0.g5fbdf2b
+pkgver=0.14.0.r237.gaaabbd3
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
 license=('Apache')
@@ -14,16 +14,17 @@ depends=('python2-matrix-angular-sdk-git'
          'python2-pillow' 'python2-pydenticon' 'python2-ujson' 'python2-blist'
          'python2-pysaml2' 'python2-requests' 'python2-dateutil' 'python2-pytz'
          'python2-systemd' 'python2-unpaddedbase64' 'python2-canonicaljson'
-         'python2-signedjson' 'python2-pymacaroons-pynacl' 'python2-simplejson')
+         'python2-signedjson' 'python2-pymacaroons-pynacl' 'python2-simplejson'
+         'python2-pyjwt')
 makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial')
-source=("git://github.com/matrix-org/synapse.git"
+source=("git://github.com/matrix-org/synapse.git#branch=develop"
 		'sysusers-synapse.conf'
 		'deps-relax-pynacl-check.patch'
 		'deps-relax-pysaml2-check.patch')
 md5sums=('SKIP'
          'dfbffdd307c5559357a2ff51a1906700'
          'a2b653d523161a33a36e931b60a234f2'
-         '80e8116e3f39889b16fb748b6cba83e8')
+         '1361184e2aea38b421fdde095e6f3e14')
 backup=('etc/synapse/log_config.yaml')
 install='synapse.install'
 provides=('matrix-synapse')
