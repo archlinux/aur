@@ -5,7 +5,7 @@
 _pgo=0  # "1" to enable
 
 pkgname=thunderbird-beta
-pkgver=45.0rc1
+pkgver=45.0
 _major=${pkgver/rc*}
 _build=${pkgver/*rc}
 pkgrel=1
