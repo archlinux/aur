@@ -1,7 +1,7 @@
 # Maintainer: TingPing tingping@tingping.se
 
 pkgname=sysprof2-git
-pkgver=3.19.90.g7610e09
+pkgver=3.19.90.r544.g88d3ae3
 pkgrel=1
 pkgdesc='CPU Profiler'
 arch=('i686' 'x86_64' 'armv6h')
@@ -22,8 +22,9 @@ pkgver() {
 
   # TODO: Waiting for a git tag
   _ver='3.19.90'
+  _rev=`git rev-list --count HEAD`
   _hash=`git describe --always`
-  echo "$_ver.g$_hash"
+  echo "$_ver.r$_rev.g$_hash"
 }
 
 build() {
