@@ -1,0 +1,10 @@
+--- Utilities.hpp.orig	2016-04-15 10:47:13.031387314 +0200
++++ Utilities.hpp	2016-04-15 10:47:26.417272828 +0200
+@@ -24,6 +24,7 @@
+ #include <string>
+ #include <sys/time.h>
+ #include <vector>
++#include <limits.h>
+ 
+ typedef unsigned char BYTE;
+ const char DIR_SEPARATOR_CHAR = '/';

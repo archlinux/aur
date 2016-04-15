@@ -1,0 +1,11 @@
+--- LBFGS.ipp.orig	2016-04-15 10:46:11.527249307 +0200
++++ LBFGS.ipp	2016-04-15 10:46:21.377843414 +0200
+@@ -107,7 +107,7 @@
+ 
+         // perform line search, update f, and take step
+ 
+-        Real step = DoLineSearch(x[k%2], f[k%2], g[k%2], d,
++        Real step = this->DoLineSearch(x[k%2], f[k%2], g[k%2], d,
+                                  x[(k+1)%2], f[(k+1)%2], g[(k+1)%2],
+                                  Real(0), std::min(Real(10), MAX_STEP_NORM / std::max(Real(1), Norm(d))));
+         
