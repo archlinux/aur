@@ -2,8 +2,8 @@
 # Contributor: Tetsumaki <http://goo.gl/YMBdA>
 
 pkgname=selfoss
-pkgver=2.14
-pkgrel=2
+pkgver=2.15
+pkgrel=1
 pkgdesc="The new multipurpose rss reader, live stream, mashup, aggregation web application"
 arch=('any')
 url="http://selfoss.aditu.de/"
@@ -22,15 +22,7 @@ backup=('etc/webapps/selfoss/config.ini'
         'usr/share/webapps/selfoss/config.ini')
 install=${pkgname}.install
 source=("https://github.com/SSilence/${pkgname}/releases/download/${pkgver}/${pkgname}-${pkgver}.zip")
-sha256sums=('23ddf9de2d5192133701576d66e45e1509b468160236e600b80d86737c1052e9')
-
-prepare() {
-  cd "${srcdir}/libs"
-
-  # Fix bug with update on php7
-  sed -i 's/function floIconImage/function __construct/' floIcon.php
-  sed -i 's/function floIcon/function __construct/' floIcon.php
-}
+sha256sums=('6a42ad93054fc8b356ac23f5ffca7347032315fa2b7b289c98d9d6b55121576b')
 
 package() {
   rm -rf "${srcdir}"/{README.md,${pkgname}-${pkgver}.zip}
