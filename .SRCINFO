@@ -1,6 +1,6 @@
 pkgbase = sky
 	pkgdesc = Lync & Skype for business on Linux
-	pkgver = 2.0.481
+	pkgver = 2.0.485
 	pkgrel = 1
 	url = http://tel.red
 	install = sky.install
@@ -20,8 +20,8 @@ pkgbase = sky
 	depends = gtk2
 	depends = libxmu
 	options = !strip
-	source_x86_64 = http://tel.red/linux/sky_ubuntu64_v2.0.481.deb
-	sha256sums_x86_64 = 8fad3c2243821b06e628c4cb12cfc2a640aa1d182876dd1a413b351596714834
+	source_x86_64 = http://tel.red/linux/sky_ubuntu64_v2.0.485.deb
+	sha256sums_x86_64 = 31fce8a4277b10e965cc2d4e1bb2386214f3249121c33a8fdaebc74ab15235f2
 
 pkgname = sky
 
