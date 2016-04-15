@@ -11,7 +11,7 @@
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
 _pkgbasever=4.5-gnu
-_pkgver=$_pkgbasever
+_pkgver=4.5.1-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -20,7 +20,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
-pkgrel=1.1
+pkgrel=1
 rcnrel=armv7-x2
 arch=('i686' 'x86_64' 'armv7h')
 url="http://linux-libre.fsfla.org/"
@@ -32,8 +32,8 @@ fi
 options=('!strip')
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
-        #"http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
-        #"http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
+        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
+        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm"
@@ -58,8 +58,12 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
-        '0008-USB-armory-support.patch')
+        '0008-USB-armory-support.patch'
+        '0009-Revert-stmmac-Fix-eth0-No-PHY-found-regression.patch'
+        '0010-stmmac-fix-MDIO-settings.patch')
 sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
+            'SKIP'
+            'bde6fa0cee5ee3d32c6e4336b23f87cbe37b74b9d4d1603d1d421dc1e44d2ab9'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -69,22 +73,24 @@ sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
             '40eadc1b5f9d11b4cd183491973c866d5fd96c15f75f0a82af52d0ae170948cd'
             '668df07cc6664ec056365702c7554bad1182460e80b3705bfd5d12283b6ed499'
-            '0f830583294bdf445ed1cef604874f5e98e4f71e69a19e2227cdd2b26c3a3274'
+            '7eccf2c95c69b07bddbac5bf336e694b5cc21bc77feb01a07275606568ce3ee8'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '93edfa289033e491ba7f9d6886943ce68c94fb45dc6817a3fc577c7ba6c369d6'
+            '2f5fe30332d1feb853ffe76a5390329ab23963fa07b06f22e48773064f90f20c'
             '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
             '0a6f76bbc03ae6e846a4ba4e31bbc0a40b1ae538c1271defcbe3089e00a4b53d'
-            '9865a47b50ccab0993f9b371f45b526162307fffc67dfadcae6fae31d05a67b9'
+            '9303951a81911d4f5de58c40b76cfe392ac69f007a66c99e492816a624081096'
             'SKIP'
-            'abc20251d9becc566e46ff0fca77074eca9de5d119d2dbccb7d9c933b2d59979'
-            '7db1c60b0a44e588f31bad6003bad5997ec7761d9f39590c7e07670a24fbeaa4'
-            '9e75777afb39b6c3d1886b18370df883e6d283c1bdf299690ac3d516ff5af4fd'
-            '01b3c73adcf5fbf97a2c5b91d30c3c0a1c4ee8dce60b5718a74c99f49c673566'
-            'bb97616b299b7c569e8a886a729493b67f22d06680a84d0bc4581fa062d62662'
-            'f03aee1273e0c349411cb1bf21983c5358b27f5f370a132b2cce05d3e56d18a9'
-            'd500fedf8332234c724a1075f69ceaa743d17e7fb73be70b62dee897f75f86f5'
-            'cda19e0f819f5475172aed8c231b7c8964f64f582d993f1cf7fa8b14d0d95cae')
+            'd09937cbca4f408dbcde270e465bdfe0589a0b41ed07d260a596a38fe6cca987'
+            'cc1f1b5026b373da4a5c2e8c82bc2b0f8a20e295353c201579140a04f2452545'
+            'f68d382f9d5b9948cc0e7062290e1b26d7c3c7e4ba270fda0bd632c24465a40b'
+            '658f619cd11676996919ef290934cfc809db5d0fa35a1ebc475d3ebb59253201'
+            'f7bf7a7cf676571f48c92fc858ddd67cc395105ae633c3d6e5386a4a5c848d81'
+            '939c11540b47f02706f3cff1b76b84a13b4dab9cae438632d4b685b16ed8249e'
+            'db830e53d451c54f84917b663671a6cc9414b043064cdf1a17369c198abee9dd'
+            'ef21f0524fdd559389529bd05b56a3b89642fb10b74de709153d1b3c2e21c126'
+            '9f915fedf2cf03eccfed9025d3883a1158531203a676060a2eae5809ec4989ce'
+            'bbbdd20f4a933ae988e713de5ac3ad08bd453e4e3dfa4cdac2da483dcf2454d8')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -111,6 +117,8 @@ prepare() {
 
   if [ "${CARCH}" = "armv7h" ]; then
     # RCN patch (CM3 firmware deblobbed)
+    # Note: features not merged into mainline kernel were removed in the RCN patch (eg. AUFS)
+    # since it are being supported by our custom kernels (eg. linux-libre-pck).
     git apply -v "${srcdir}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
 
     # ALARM patches
@@ -122,6 +130,8 @@ prepare() {
     patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
     patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
     patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
+    patch -p1 -i "${srcdir}/0009-Revert-stmmac-Fix-eth0-No-PHY-found-regression.patch"
+    patch -p1 -i "${srcdir}/0010-stmmac-fix-MDIO-settings.patch"
   fi
 
   # add freedo as boot logo
