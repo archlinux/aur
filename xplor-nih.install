@@ -1,0 +1,10 @@
+post_install() {
+    echo 'Running post-install / post-upgrade configuration'
+    pkgver=${1%-*}
+    cd /opt/xplor-nih-${pkgver}
+    ./configure
+}
+
+post_upgrade() {
+    post_install $@
+}

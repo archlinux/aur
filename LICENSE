@@ -1,0 +1,36 @@
+         LICENSE FOR NON-PROFIT INSTITUTIONS TO USE XPLOR-NIH
+
+                         Terms of Agreement
+
+By downloading or using the Xplor-NIH software you agree to the
+following terms:  
+
+- You shall not use the software for any purpose (research or
+  otherwise) that is supported by a "for profit" organization without
+  prior written authorization.
+
+- You agree that the software is furnished on an "as is" basis and
+  that the authors in no way warrant the software or any of its
+  results and is in no way liable for any use you make of the software.
+
+- Ownership of software and documentation is retained by the
+  appropriate, respective organizations.
+
+- You shall not disclose in any form either the delivered software or
+  documentation to third parties without prior written authorization. 
+
+
+In addition, we request that you adhere to the following practices:
+
+- Please report modifications and additions to the software back to
+  the Xplor-NIH authors. We would like the modified source code and a
+  test script, such that we can include the modifications in future
+  versions of the software.
+
+- In reports or publication of results obtained using Xplor-NIH,
+  please acknowledge use of the software by citing the article:
+
+
+    C.D. Schwieters, J.J. Kuszewski, N. Tjandra, G.M. Clore, ``The
+    Xplor-NIH NMR Molecular Structure Determination Package,'' 
+    J. Magn. Res., 160, 66-74 (2003).
