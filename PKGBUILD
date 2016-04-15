@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-git
-pkgver=20160216
+pkgver=20160415
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node"
 arch=('i686' 'x86_64')
@@ -100,8 +100,4 @@ package() {
   msg2 'Installing bash completion...'
   install -Dm 644 contrib/bitcoind.bash-completion \
     "$pkgdir/usr/share/bash-completion/completions/bitcoind"
-
-  msg2 'Cleaning up pkgdir...'
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
-  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
 }
