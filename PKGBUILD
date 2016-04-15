@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=minlog-git
-pkgver=189.5625606
+pkgver=192.b32efbd
 pkgrel=1
 pkgdesc="Interactive proof system based on first order natural deduction calculus."
 arch=('any')
