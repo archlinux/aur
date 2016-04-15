@@ -5,14 +5,15 @@
 pkgname=qt5-connectivity
 _qtver=5.6.0
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
 pkgdesc='Provides access to Bluetooth hardware'
 depends=('qt5-base')
-makedepends=('qt5-declarative')
-optdepends=('qt5-declarative: QML bindings')
+makedepends=('qt5-declarative' 'bluez-libs')
+optdepends=('qt5-declarative: QML bindings'
+            'bluez-libs: for sdpscanner')
 conflicts=('qt')
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-opensource-src-${_qtver}"
