@@ -4,8 +4,8 @@
 # Colaborator: Jonhoo
 
 pkgname=ghost
-pkgver=0.7.8
-pkgrel=2
+pkgver=0.7.9
+pkgrel=1
 pkgdesc="Free, open, simple blogging platform"
 arch=('any')
 url="http://ghost.org"
@@ -18,7 +18,7 @@ source=(https://ghost.org/zip/$pkgname-$pkgver.zip
         ghost.service
         ghost.install)
 noextract=($pkgname-$pkgver.zip)
-sha512sums=('671e6d67e5b0e0b58c6fc6d5abc06328cc7befcb961bfe978570adf8fae97a973ed557feb3cdef72f51a9196c991c8f301f55fa3e9091c37fb163240db5a9bd1'
+sha512sums=('bbf4c3bad0350fded36d7f4d5b6bb50e284c3776b1f40756d30eedb202422b7b09ae886c9afbf64951d7ae8152f2d3f67d58f2083b301573159036bd3b394c28'
             '9028de4621c38bf83a22c1cbfa0529d6538516838d641730226fcc24487d654a7d8dcb0b45e455a0a697bd0a9dd80dfdbce6ca8ec1d2e895683ab35846dac10c'
             'c4cbd918bf050dbf4b77d5ff016836947351fb1f575359b19e0d6c0343275a253f0922e3be952a9e672c3d2659e67327f92c19573ff5e5fde7f68826afec6d8f')
 
