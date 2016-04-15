@@ -24,6 +24,9 @@ prepare() {
 
   # https://github.com/mlpack/mlpack/pull/615
   sed -i "s|Windows.h|windows.h|g" src/mlpack/tests/cli_test.cpp
+
+  # disable tests, proposed in https://github.com/mlpack/mlpack/pull/616
+  sed -i "/tests/d" src/mlpack/CMakeLists.txt
 }
 
 build() {
@@ -40,6 +43,7 @@ package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/mlpack-$pkgver/build-${_arch}"
     make DESTDIR="${pkgdir}" install
+    rm "${pkgdir}"/usr/${_arch}/bin/*.exe
     ${_arch}-strip -g ${pkgdir}/usr/${_arch}/lib/*.a
 #     ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
   done
