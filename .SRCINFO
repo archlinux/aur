@@ -1,7 +1,7 @@
 pkgbase = webgoat
 	pkgdesc = Deliberately insecure J2EE web application designed to teach web application security concepts
 	pkgver = 7.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://webgoat.github.io/
 	install = webgoat.install
 	arch = i686
@@ -13,8 +13,10 @@ pkgbase = webgoat
 	optdepends = paros: MitM HTTP/HTTPS proxy, spider, XSS and injection scanner + more, used to help solve WebGoat lessons
 	source = webgoat-7.0.1.tar.gz::https://github.com/WebGoat/WebGoat/archive/7.0.1.tar.gz
 	source = webgoat.sh
+	source = git://github.com/WebGoat/WebGoat-Lessons.git
 	sha256sums = 8d044f63470eb07be848566cf7cbb7058e7ba89221e00cc8289aeeea8e70d87f
 	sha256sums = 3615a09c64eb07709bede9b22782bedeffe7c7097cde1c6bcc2a07adcd28712c
+	sha256sums = SKIP
 
 pkgname = webgoat
 
