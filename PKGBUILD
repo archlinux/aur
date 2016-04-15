@@ -1,12 +1,12 @@
 # Maintainer: Moritz Bunkus <moritz@bunkus.org>
 pkgname='hevcesbrowser'
 pkgver='1.0.47.100316'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="a tool for analyzing HEVC (h265) bitstreams"
 arch=('any')
 license=('GPL')
 options=('!emptydirs')
-depends=('qt5-base')
+depends=('qt5-base boost')
 builddepends=('cmake')
 url='https://github.com/virinext/hevcesbrowser'
 source=("hevcesbrowser.tar.gz::https://github.com/virinext/${pkgname}/archive/head.tar.gz"
