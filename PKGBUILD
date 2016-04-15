@@ -2,7 +2,7 @@
 
 _pkgbase=quodlibet
 pkgname=exfalso
-pkgver=3.6.0
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="GTK+ audio tag editor"
 arch=('any')
@@ -18,7 +18,7 @@ _base_url="https://bitbucket.org/lazka/${_pkgbase}-files/raw/default/releases"
 source=("${_base_url}/${_base_src}" "${_base_url}/${_base_src}.sig")
 #_checksum="$(curl -s "${_base_url}/${_base_src}.sha256" | cut -d " " -f1)"
 #sha256sums=("${_checksum}" 'SKIP')
-sha256sums=('8baa869d6ad3780d218ddbb9cb5d82ac8dad1fa7ec33eb910061a738cd92f788' 'SKIP')
+sha256sums=('e6525bbdebd790992431b15775e9ec257f72a4dccb1136994186c32549c04a48' 'SKIP')
 validpgpkeys=('0EBF782C5D53F7E5FB02A66746BD761F7A49B0EC') # Christoph Reiter
 
 build () {
