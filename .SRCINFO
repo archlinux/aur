@@ -1,0 +1,16 @@
+pkgbase = x3dna
+	pkgdesc = 3DNA is a versatile, integrated software system for the analysis, rebuilding and visualization of three-dimensional nucleic-acid-containing structures. Please see: http://forum.x3dna.org/site-announcements/download-instructions/
+	pkgver = 2.3_2016apr02
+	pkgrel = 1
+	url = http://x3dna.org/
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = ruby
+	source_i686 = http://x3dna.bio.columbia.edu/downloads/v2.3/x3dna-v2.3-linux-32bit.tar.gz
+	md5sums_i686 = 71874b399db7a24f5025b654493d77e2
+	source_x86_64 = http://x3dna.bio.columbia.edu/downloads/v2.3/x3dna-v2.3-linux-64bit.tar.gz
+	md5sums_x86_64 = cc65b97a27d38d7a97cb86aaa6e6d152
+
+pkgname = x3dna
+
