@@ -27,7 +27,7 @@ md5sums=('7a63cfe85f2adc3633fda9f8b2020288'
          '11b55a3fec7279db32b63e3a0b97dc01')
 
 ## Previous build (also see: /var/cache/pacman/pkg/google-chrome-dev-*):
-#source[0]='http://mirror.glendaleacademy.org/chrome/pool/main/g/google-chrome-unstable/google-chrome-unstable_51.0.2704.7-1_amd64.deb'
+#source[0]='http://mirror.glendaleacademy.org/chrome/pool/main/g/google-chrome-unstable/google-chrome-unstable_51.0.2704.4-1_amd64.deb'
 #md5sums[0]='349bac7145dc83a00facfb7accc90ccd'
 
 package() {
