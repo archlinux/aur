@@ -2,13 +2,13 @@
 # Comaintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/vorbote>
 pkgname=brave
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('x86_64')
 url='https://www.brave.com/'
 license=('custom')
 depends=('gtk2' 'nss' 'alsa-lib' 'libnotify' 'gconf' 'libxtst' 'desktop-file-utils' 'ttf-font')
-makedepends=('npm')
+makedepends=('npm' 'git')
 install="$pkgname".install
 provides=('brave-browser')
 source=("https://github.com/brave/browser-laptop/archive/v"$pkgver"dev.tar.gz"

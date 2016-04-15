@@ -1,12 +1,13 @@
 pkgbase = brave
 	pkgdesc = Web browser that blocks ads and trackers by default.
 	pkgver = 0.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.brave.com/
 	install = brave.install
 	arch = x86_64
 	license = custom
 	makedepends = npm
+	makedepends = git
 	depends = gtk2
 	depends = nss
 	depends = alsa-lib
