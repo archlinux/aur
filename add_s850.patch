@@ -1,0 +1,13 @@
+--- a/linux/drivers/media/pci/cx23885/cx23885-cards.c
++++ b/linux/drivers/media/pci/cx23885/cx23885-cards.c
+@@ -987,6 +987,10 @@ struct cx23885_subid cx23885_subids[] =
+ 		.subdevice = 0x0950,
+ 		.card      = CX23885_BOARD_DVBSKY_S950,
+ 	}, {
++		.subvendor = 0x14f1,
++		.subdevice = 0x8512,
++		.card      = CX23885_BOARD_DVBSKY_S950,
++	}, {
+ 		.subvendor = 0x4254,
+ 		.subdevice = 0x0952,
+ 		.card      = CX23885_BOARD_DVBSKY_S952,
