@@ -7,10 +7,10 @@ arch=('any')
 url="https://github.com/shinnova/rslevel"
 license=('GPL')
 depends=('python2' 'python2-colorama')
-source=("git+https://github.com/shinnova/rslevel.git")
+source=("https://raw.githubusercontent.com/shinnova/rslevel/5b4434dc6f8aceb384ea4ed01faf57fce71d88cf/rslevel")
 md5sums=('067df7f766d7fbd09f0ee7adb2646ba5')
 
 package() {
-  cd $srcdir/$pkgname
+  cd $srcdir
   install -Dm 755 $pkgname $pkgdir/usr/bin/$pkgname
 }
