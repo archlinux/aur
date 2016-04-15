@@ -4,12 +4,13 @@
 
 pkgname=mozilla-extension-gnotifier-git
 pkgver=1.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Add-on for Firefox and Thunderbird to enable integration with GNOME native notification system.'
 url='https://github.com/mkiol/GNotifier'
 arch=('any')
 license=('GPL3')
 depends=('libnotify')
+makedepends=('nodejs-jpm' 'unzip')
 optdepends=(firefox thunderbird)
 
 makedepends+=('git')
@@ -47,6 +48,9 @@ printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 build() {
   cp -r --reflink=auto source/* .
   rm -r xpi misc *.md win8* source
+  jpm xpi
+  unzip -o *.xpi
+  rm *.xpi
 }
 
 eval "package_$pkgname()" '{
