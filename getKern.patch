@@ -1,0 +1,22 @@
+--- simgear/simgear/canvas/elements/CanvasText.cxx
++++ simgear/simgear/canvas/elements/CanvasText.cxx
+@@ -496,7 +496,8 @@
+               {
+                 case LEFT_TO_RIGHT:
+                 {
+-                  osg::Vec2 delta( activefont->getKerning( previous_charcode,
++                  osg::Vec2 delta( activefont->getKerning( _fontSize,
++                                                           previous_charcode,
+                                                            charcode,
+                                                            _kerningType ) );
+                   cursor.x() += delta.x() * wr;
+@@ -505,7 +506,8 @@
+                 }
+                 case RIGHT_TO_LEFT:
+                 {
+-                  osg::Vec2 delta( activefont->getKerning( charcode,
++                  osg::Vec2 delta( activefont->getKerning( _fontSize,
++                                                           charcode,
+                                                            previous_charcode,
+                                                            _kerningType ) );
+                   cursor.x() -= delta.x() * wr;

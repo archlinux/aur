@@ -2,7 +2,7 @@
 # Contributor: jmf <jmf at mesecons dot net>
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 pkgname=simgear-git
-pkgver=20151212
+pkgver=20160415
 pkgrel=1
 _gitname=simgear
 pkgdesc="A set of open-source libraries designed to be used as building blocks for quickly assembling 3d simulations, games, and visualization applications."
@@ -14,11 +14,18 @@ optdepends=()
 makedepends=('boost' 'cmake' 'mesa')
 provides=('simgear-git')
 conflicts=('simgear')
-source=(git://git.code.sf.net/p/flightgear/simgear)
-md5sums=('SKIP')
+source=(git://git.code.sf.net/p/flightgear/simgear
+        getKern.patch)
+md5sums=('SKIP'
+         'b4ab9878bbb07555d7fef68b592fb2de')
 
 pkgver() {
   echo "$(date +"%Y%m%d")"
+}
+
+prepare() {
+  cd ${srcdir}
+  patch -p0 -i getKern.patch
 }
 
 build() {
