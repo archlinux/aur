@@ -9,7 +9,7 @@ url='http://virtualbox.org'
 license=('GPL')
 makedepends=('linux-lqx-headers' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver" 'dkms')
 
-_extramodules=extramodules-4.4-lqx
+_extramodules=extramodules-4.5-lqx
 _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
 build() {
@@ -27,7 +27,7 @@ build() {
 package_virtualbox-host-modules-lqx() {
 	pkgdesc='Host kernel modules for VirtualBox running under Linux-lqx.'
 	license=('GPL')
-	depends=('linux-lqx>=4.4' 'linux-lqx<4.5')
+	depends=('linux-lqx>=4.5' 'linux-lqx<4.6')
 	install=host.install
 
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
@@ -40,7 +40,7 @@ package_virtualbox-host-modules-lqx() {
 package_virtualbox-guest-modules-lqx() {
 	pkgdesc='Guest kernel modules for VirtualBox running under Linux-lqx.'
 	license=('GPL')
-	depends=('linux-lqx>=4.4' 'linux-lqx<4.5')
+	depends=('linux-lqx>=4.5' 'linux-lqx<4.6')
 	install=guest.install
 
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"

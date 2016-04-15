@@ -1,5 +1,5 @@
 _depmod() {
-	EXTRAMODULES='extramodules-4.4-lqx'
+	EXTRAMODULES='extramodules-4.5-lqx'
 	depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
 }
 
