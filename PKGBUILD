@@ -7,7 +7,7 @@
 pkgname=('ruby2.1')
 pkgver=2.1.10
 pkgdesc='An object-oriented language for quick and easy programming'
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://www.ruby-lang.org/en/'
 license=('BSD' 'custom')
@@ -15,7 +15,7 @@ depends=('gdbm' 'openssl' 'libffi' 'libyaml' 'gmp' 'zlib')
 makedepends=('gdbm' 'openssl' 'libffi' 'doxygen' 'graphviz' 'libyaml' 'ttf-dejavu' 'tk')
 optdepends=('tk: for Ruby/TK')
 options=('!emptydirs' 'staticlibs')
-source=("http://cache.ruby-lang.org/pub/ruby/${pkgver:0:3}/ruby-${pkgver}.tar.xz")
+source=("https://cache.ruby-lang.org/pub/ruby/${pkgver:0:3}/ruby-${pkgver}.tar.xz")
 
 build() {
   cd ruby-${pkgver}
