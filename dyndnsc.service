@@ -4,6 +4,7 @@ After=network.target
 
 [Service]
 ExecStart=/usr/bin/dyndnsc --loop --config /etc/dyndnsc.conf
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
