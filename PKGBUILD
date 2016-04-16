@@ -2,7 +2,7 @@
 # Contributor: Garrett <floft.net/contact>
 
 pkgname=openlp-bzr
-pkgver=r2576
+pkgver=r2642
 pkgrel=1
 pkgdesc="Church presentation software."
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('qt5-tools' 'bzr')
 depends=('python' 'python-pyqt5' 'phonon'
          'python-chardet' 'python-lxml'
          'python-beautifulsoup4' 'python-pyenchant'
-         'python-alembic'
+         'python-alembic' 'mediainfo'
         )
 optdepends=('libreoffice-fresh: display impress presentations'
             'vlc: play multimedia'
@@ -35,11 +35,6 @@ pkgver() {
 build() {
   cd "$srcdir/trunk"
   python setup.py build
-}
-
-check() {
-  cd "$srcdir/trunk"
-  nosetests -v tests
 }
 
 package() {
