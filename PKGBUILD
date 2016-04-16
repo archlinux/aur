@@ -1,6 +1,6 @@
 # Maintainer: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 pkgname=pertino
-pkgver=510.4573
+pkgver=530.4607
 pkgrel=2
 pkgdesc="Cloud-based VPN client"
 arch=('x86_64')
@@ -49,6 +49,7 @@ package() {
     ln -s "/usr/share/pgateway/pGateway" "$pkgdir/usr/bin/pGateway"
     ln -s "/usr/share/pgateway/pertino" "$pkgdir/usr/bin/pertino"
 }
+
 md5sums_x86_64=('6860e827d05c06b63dad13fbc0b947c8'
                 'c8dd2304f286498e215543a4651b4e37'
-                '94ec406cf30353e24bf605e635d5b64d')
+                '206c07048db0983a3821df4d74655d59')
