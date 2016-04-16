@@ -2,7 +2,7 @@
 # Contributor: jmf <jmf at mesecons dot net>
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 pkgname=flightgear-git
-pkgver=20151224
+pkgver=20160416
 pkgrel=1
 _gitname=flightgear
 pkgdesc="An open-source, multi-platform flight simulator"
@@ -17,7 +17,7 @@ conflicts=('flightgear')
 source=(git://git.code.sf.net/p/flightgear/flightgear
         'explicitely-link-with-libX11.patch')
 md5sums=('SKIP'
-        'fc264184d88afdc12c669f1eabb5bbea')
+         'f1d10be82891991513aee4c5505ac577')
 
 pkgver() {
   echo "$(date +"%Y%m%d")"
@@ -26,7 +26,7 @@ pkgver() {
 build() {
   cd ${srcdir}/${_gitname}
   git checkout next
-#  patch -Np1 -i ../explicitely-link-with-libX11.patch
+  patch -p1 -i ../explicitely-link-with-libX11.patch
   cmake \
   -DCMAKE_INSTALL_PREFIX=/usr \
   -DENABLE_QT=1 \
