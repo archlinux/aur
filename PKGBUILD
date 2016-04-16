@@ -2,7 +2,7 @@
 # https://github.com/ValHue/AUR-PKGBUILDs
 
 pkgname="nautilus-megasync"
-pkgver="2.8.0"
+pkgver="2.9.1"
 pkgrel="1"
 pkgdesc="Upload your files to your Mega account from nautilus."
 arch=('i686' 'x86_64')
