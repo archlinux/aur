@@ -1,6 +1,6 @@
 pkgbase = glab
 	pkgdesc = Interactive educational multipurpose package to process and analyse GNSS data
-	pkgver = 2.2.4
+	pkgver = 2.2.8
 	pkgrel = 1
 	url = http://gage.upc.edu/drupal6/gLAB
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = glab
 	depends = wxpython2.8
 	depends = tk
 	noextract = glab.tgz
-	source = glab.tgz::http://gage.upc.edu/sites/default/files/TEACHING_MATERIAL/TUTORIALS_LAB/LINUX/gLAB_2.2.4_Linux.tgz
-	md5sums = 97d91055a93b862554f8e6c8d4ccfbe0
+	source = glab.tgz::http://gage.upc.edu/sites/default/files/gLAB/src/LINUX/gLAB_2.2.8_Linux.tgz
+	md5sums = a31b3a6e9a17fcd704eb090d00b9eb55
 
 pkgname = glab
 

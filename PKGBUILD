@@ -1,19 +1,19 @@
 # Maintainer: Ilya Oshchepkov 
 pkgname=glab
-pkgver=2.2.4
+pkgver=2.2.8
 pkgrel=1
 pkgdesc="Interactive educational multipurpose package to process and analyse GNSS data"
 arch=(i686 x86_64)
 url="http://gage.upc.edu/drupal6/gLAB"
 license=('Apache')
 depends=('python2' 'python2-matplotlib' 'wxpython2.8' 'tk')
-source=($pkgname.tgz::http://gage.upc.edu/sites/default/files/TEACHING_MATERIAL/TUTORIALS_LAB/LINUX/gLAB_2.2.4_Linux.tgz)
+source=($pkgname.tgz::http://gage.upc.edu/sites/default/files/gLAB/src/LINUX/gLAB_2.2.8_Linux.tgz)
 noextract=($pkgname.tgz)
-md5sums=('97d91055a93b862554f8e6c8d4ccfbe0')
+md5sums=('a31b3a6e9a17fcd704eb090d00b9eb55')
 
 build() {
     tar -xf $pkgname.tgz
-    mv "$srcdir"/gLAB_2.2.4_Linux "$srcdir/$pkgname" 
+    mv "$srcdir"/gLAB_2.2.8_Linux "$srcdir/$pkgname" 
 	cd "$srcdir/$pkgname"
 	make
 }
