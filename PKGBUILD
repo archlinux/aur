@@ -1,7 +1,7 @@
 # Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
 
 pkgname=gnome-shell-extension-dynamic-top-bar
-pkgver=3.2.2
+pkgver=3.3.0
 pkgrel=1
 pkgdesc="Extension that make the top bar transparent when no window is maximized"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('gnome-shell')
 install=${pkgname}.install
 source=("https://github.com/AMDG2/GnomeShell_DynamicTopBar/archive/${pkgver}.tar.gz")
-sha256sums=('8369dcac9c7bd0cb0a360c8bf4dcea3b9bc3a4d92aa88206b8cccdef13232fe9')
+sha256sums=('167a1c1206d531eda2b25633c656e4a961fdb9e84169703d232b3873d8995f00')
 
 package() {
   _uuid='dynamicTopBar@gnomeshell.feildel.fr'
@@ -22,7 +22,6 @@ package() {
   mv "${_uuid}/schemas/org.gnome.shell.extensions.dynamic-top-bar.gschema.xml" \
     "${pkgdir}/usr/share/glib-2.0/schemas/"
   cp -af "${_uuid}" "${pkgdir}/usr/share/gnome-shell/extensions/"
-
 }
 
 # vim:set ts=2 sw=2 et:
