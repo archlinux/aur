@@ -1,14 +1,15 @@
+# Maintainer: Christoph Haag <haagch+aur@frickel.club>
 # Author: Christoph Jaeger <christophjaeger@linux.com>
-# Maintainer: Marc Rozanc <marc@rozanc.fr>
+# Contributor: Marc Rozanc <marc@rozanc.fr>
 
 pkgname="clevo-wmi-dkms-git"
 _modname="clevo-wmi"
 pkgver="0.9.6"
 pkgrel=4
-pkgdesc='A reverse engineering driver for the Clevo P15SM/P17SM/W230ST/W350STQ/W370ST/W650SR/W670SR/W740SU backlight keyboard, by Christoph Jaeger (DKMS version)'
+pkgdesc='A reverse engineered driver for the Clevo P15SM/P17SM/P170EM/W230ST/W350STQ/W370ST/W650SR/W670SR/W740SU backlight keyboard'
 arch=('any')
 license=('GPL')
-url='http://www.linux-onlineshop.de/forum/index.php?page=Thread&threadID=26&s=82130b57e71bd5b6ea569abc1424025c6f8d412d'
+url='https://github.com/franontanaya/clevo-wmi/tree/master/code-dump/clevo-wmi-code-b5d8a0d3f9cb4f20b39018d25ba9f313ad1b10ba' #I actually don't know where this version is from
 depends=('dkms' 'linux-headers')
 provides=("clevo-wmi")
 conflicts=("clevo_wmi-git" "clevo-wmi" "tuxedo-wmi" "tuxedo-wmi-dkms")

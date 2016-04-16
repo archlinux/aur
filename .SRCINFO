@@ -1,8 +1,8 @@
 pkgbase = clevo-wmi-dkms-git
-	pkgdesc = A reverse engineering driver for the Clevo P15SM/P17SM/W230ST/W350STQ/W370ST/W650SR/W670SR/W740SU backlight keyboard, by Christoph Jaeger (DKMS version)
+	pkgdesc = A reverse engineered driver for the Clevo P15SM/P17SM/P170EM/W230ST/W350STQ/W370ST/W650SR/W670SR/W740SU backlight keyboard
 	pkgver = 0.9.6
 	pkgrel = 4
-	url = http://www.linux-onlineshop.de/forum/index.php?page=Thread&threadID=26&s=82130b57e71bd5b6ea569abc1424025c6f8d412d
+	url = https://github.com/franontanaya/clevo-wmi/tree/master/code-dump/clevo-wmi-code-b5d8a0d3f9cb4f20b39018d25ba9f313ad1b10ba
 	install = clevo-wmi-dkms.install
 	arch = any
 	license = GPL
