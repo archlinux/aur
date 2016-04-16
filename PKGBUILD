@@ -4,7 +4,7 @@ pkgdesc="ROS - voxel_grid provides an implementation of an efficient 3D voxel gr
 url='http://wiki.ros.org/voxel_grid'
 
 pkgname='ros-indigo-voxel-grid'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,7 +12,7 @@ license=('BSD')
 
 ros_makedepends=(ros-indigo-roscpp
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-roscpp)
@@ -20,14 +20,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/voxel_grid/${pkgver}-${_pkgver_patch}
-# _dir=voxel_grid
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="navigation-release-release-indigo-voxel_grid-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/ros-gbp/navigation-release/archive/release/indigo/voxel_grid/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e031d428a182f63a6ca4ed357742d6626698928a010786c5468c0ea1a9ac2e37')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/voxel_grid/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('8c68ec36ae8fcbd43cbfbd2c285e3322f98f482ac9af64b02cd0d161971e9ab9')
 
 build() {
   # Use ROS environment variables
