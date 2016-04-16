@@ -1,6 +1,6 @@
 pkgbase = whatsie
 	pkgver = 2.0.12
-	pkgrel = 5
+	pkgrel = 6
 	arch = any
 	license = MIT
 	depends = dpkg

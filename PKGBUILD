@@ -6,7 +6,7 @@
 # Maintainer: Michael Latman <mlatman@gmail.com>
 pkgname=whatsie
 pkgver=2.0.12
-pkgrel=4
+pkgrel=6
 epoch=
 pkgdesc="A simple & beautiful desktop client for WhatsApp Web."
 arch=('any')
