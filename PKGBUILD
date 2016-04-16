@@ -34,6 +34,7 @@ depends=(
     'python2-requests'
     'polkit'
     'python2-netifaces'
+    'python2-awesome-slugify'
     )
 makedepends=( 'git' )
 optdepends=( 
