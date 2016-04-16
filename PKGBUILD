@@ -23,4 +23,4 @@ pkgver() {
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 md5sums=('SKIP'
-         '831350cbf86cf21c0c82d0f3c03c059c')
+         '387fb7ad32c65c675805b52419e5c28e')
