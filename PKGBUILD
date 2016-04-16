@@ -3,12 +3,11 @@
 pkgname=("python-spotify" "python2-spotify")
 _pkgname=pyspotify
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python wrapper for libspotify."
-arch=("any")
+arch=("i686" "x86_64")
 license=("APACHE")
 url="http://pyspotify.mopidy.com/"
-depends=("libspotify")
 makedepends=("python-setuptools" "python2-setuptools")
 conflicts=("python2-pyspotify" "pyspotify")
 source=("https://pypi.python.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
@@ -30,13 +29,13 @@ build_python2-spotify() {
 }
 
 package_python-spotify() {
-  depends=("python-cffi")
+  depends=("libspotify" "python-cffi")
   cd ${pkgname}-${pkgver}
   python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 package_python2-spotify() {
-  depends=("python2-cffi")
+  depends=("libspotify" "python2-cffi")
   cd ${pkgname}-${pkgver}
   python2 setup.py install --root="${pkgdir}" --optimize=1
 }
