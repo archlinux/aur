@@ -28,6 +28,7 @@ optdepends = libpulse: PulseAudio driver
 optdepends = networkmanager: Location detection via available WiFi networks
 optdepends = upower: Battery API
 provides = firefox
+conflicts = firefox-beta-bin-zh
 source = firefox-beta-zh-cn.desktop
 source = vendor.js
 source = https://ftp.mozilla.org/pub/firefox/candidates/-candidates/build/linux-/zh-

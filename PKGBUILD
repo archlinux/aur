@@ -16,6 +16,7 @@ optdepends=('ffmpeg: additional video and audio decoders'
             'upower: Battery API')
 makedepends=('pacman>=4.2.0')
 provides=("firefox=$pkgver")
+conflicts=("firefox-beta-bin-zh")
 install=$pkgname.install
 _baseurl="https://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/build$pkgrel/linux-${CARCH}/zh-CN/"
 _filename="firefox-$pkgver"
