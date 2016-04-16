@@ -2,13 +2,13 @@
 
 pkgbase=gridcoinresearch-git
 pkgname=('gridcoinresearch-daemon-git' 'gridcoinresearch-qt-git')
-pkgver=3.5.6.0.r662.f6f8de5
+pkgver=3.5.6.1.r668.d5d9558
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://gridcoin.us"
 license=('custom:gridcoin')
-makedepends=('boost' 'git' 'qt5-base' 'openssl' 'libzip' 'qrencode' 'db' 'curl'
-             'protobuf' 'miniupnpc' 'qt5-tools')
+makedepends=('boost' 'git' 'qt5-base' 'qt5-tools' 'openssl' 'libzip' 'qrencode' 'db' 'curl'
+             'miniupnpc')
 source=('gridcoinresearch::git+https://github.com/gridcoin/Gridcoin-Research.git'
         'gridcoinresearch-qt.desktop')
 
