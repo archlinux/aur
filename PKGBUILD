@@ -2,7 +2,7 @@
 # Contributor: Giedrius Slavinskas <giedrius25@gmail.com>
 
 pkgname=opendict
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="Multiplatform computer dictionary software"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('wxpython' 'xdg-utils')
 install=${pkgname}.install
 source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('2909fe7ebdcc8bba869c9ca24dbbe086')
+md5sums=('a274896b4ee943de4f3200cfba4bbdde')
 
 
 prepare() {
