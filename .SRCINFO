@@ -13,7 +13,7 @@ pkgbase = chewing-editor
 	depends = libchewing
 	depends = qt5-base
 	depends = hicolor-icon-theme
-	source = https://github.com/chewing/chewing-editor/archive/0.1.0.tar.gz
+	source = chewing-editor-0.1.0.tar.gz::https://github.com/chewing/chewing-editor/archive/0.1.0.tar.gz
 	sha256sums = f769ec40b22c4d9bb3e1b68d62e4fade40e057131a5986e37772698131235693
 
 pkgname = chewing-editor

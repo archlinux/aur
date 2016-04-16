@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libchewing' 'qt5-base' 'hicolor-icon-theme')
 makedepends=('cmake' 'qt5-tools' 'help2man')
 install=$pkgname.install
-source=("https://github.com/chewing/$pkgname/archive/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/chewing/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('f769ec40b22c4d9bb3e1b68d62e4fade40e057131a5986e37772698131235693')
 
 prepare() {
