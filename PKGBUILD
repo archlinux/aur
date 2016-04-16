@@ -1,18 +1,18 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=ring-gnome
-pkgver=20160328
-pkgrel=2
+pkgver=20160415
+pkgrel=1
 pkgdesc="The GNOME client for Ring (formerly known as SFLphone)"
 arch=("i686" "x86_64")
 url="http://ring.cx"
 license=('GPL3')
 groups=("ring")
 depends=("libringclient" "ring-daemon"
-         "gtk3" "dconf" "clutter" "clutter-gtk"
+         "gtk3" "dconf" "clutter" "clutter-gtk" "qrencode"
          "qt5-base" "gtk-update-icon-cache" "desktop-file-utils"
          "evolution-data-server" "libnotify")
 makedepends=('git' 'cmake')
-source=("git+https://gerrit-ring.savoirfairelinux.com/ring-client-gnome#commit=a06a97e3cfa1cd213b874b443dd0ba6bb42b197f")
+source=("git+https://gerrit-ring.savoirfairelinux.com/ring-client-gnome#commit=dd355ba494a065d22c56589a3eb8999c1664e7da")
 sha256sums=('SKIP')
 install=ring-gnome.install
 
