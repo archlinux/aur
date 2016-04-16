@@ -1,5 +1,5 @@
 From: Matthew Gamble <git@matthewgamble.net>
-Date: Sat, 19 Mar 2016 15:17:33 +1100
+Date: Sat, 16 Apr 2016 12:15:45 +1000
 Subject: [PATCH] Remove hard dependency on pip
 
 ---
@@ -12,31 +12,32 @@ your system's package manager.
 Also, we make the assumption that importlib will always exist because
 this package is targeting python3 on Arch Linux.
 
-diff -u -r luckydonaldUtils/dependencies.py luckydonaldUtils/dependencies.py
---- luckydonaldUtils/dependencies.py	2016-03-02 10:59:03.000000000 +1100
-+++ luckydonaldUtils/dependencies.py	2016-03-19 15:14:54.191287535 +1100
-@@ -3,17 +3,7 @@
+diff -u -r luckydonald-utils-0.43/luckydonaldUtils/dependencies/install.py luckydonald-utils-0.43_mod/luckydonaldUtils/dependencies/install.py
+--- luckydonald-utils-0.43/luckydonaldUtils/dependencies/install.py	2016-04-02 16:06:40.000000000 +1100
++++ luckydonald-utils-0.43_mod/luckydonaldUtils/dependencies/install.py	2016-04-16 12:10:45.479951244 +1000
+@@ -1,18 +1,11 @@
+ # -*- coding: utf-8 -*-
+-from .pip_interface import pip_install
+ from luckydonaldUtils.logger import logging
+ from setuptools import find_packages
  
+ __author__ = 'luckydonald'
  logger = logging.getLogger(__name__)
  
--import pip
--
 -try:
 -    import importlib
 -except ImportError:
 -    # pip install importlib
--    pip.main(["install", "importlib"])
+-    pip_install(["importlib"])
 -    import importlib
--
--
 -# end try
 +import importlib
  
+ logger = logging.getLogger(__name__)
  
- def import_or_install(package_name, pip_name=None):
-diff -u -r setup.py setup.py
---- setup.py	2016-03-03 08:44:22.000000000 +1100
-+++ setup.py	2016-03-19 15:13:50.879930426 +1100
+diff -u -r luckydonald-utils-0.43/setup.py luckydonald-utils-0.43_mod/setup.py
+--- luckydonald-utils-0.43/setup.py	2016-04-02 16:06:40.000000000 +1100
++++ luckydonald-utils-0.43_mod/setup.py	2016-04-16 12:12:42.922743383 +1000
 @@ -12,12 +12,6 @@
  
  main_package = 'luckydonaldUtils'
@@ -51,10 +52,10 @@ diff -u -r setup.py setup.py
      name="luckydonald-utils",
      packages=find_submodules(main_package),
 @@ -28,7 +22,6 @@
-     license="GPLv3+",
+     license="GPLv2+",
      keywords="luckydonald utils utilities utility python dependencies dependency download progress bar encoding files interactions json update store text xml time network logger color images webserver django CSRF headers eastereggs",
-     url="https://github.com/luckydonald/python-utils",
+     url="https://github.com/luckydonald/luckydonald-utils",
 -    install_requires=install_requires,
      long_description=long_description,
-     test_suite = 'nose.collector',
+     # test_suite = 'nose.collector',
      classifiers=[
