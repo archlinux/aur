@@ -1,6 +1,6 @@
 pkgbase = chewing-editor-git
 	pkgdesc = Cross platform chewing user phrase editor
-	pkgver = 0.0.4.r0.g5514dfa
+	pkgver = 0.1.0.r0.g9198eb2
 	pkgrel = 1
 	url = http://chewing.im
 	install = chewing-editor-git.install
