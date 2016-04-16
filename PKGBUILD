@@ -3,7 +3,7 @@
 pkgname=('python-pydbus'
          'python2-pydbus')
 _pkgname='pydbus'
-pkgver='0.5'
+pkgver='0.5.1'
 pkgrel='1'
 pkgdesc='Pythonic DBus library'
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL')
 makedepends=('python-setuptools'
              'python2-setuptools')
 source=("https://pypi.python.org/packages/source/${_pkgname:0:1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('9fef673160b6d906dfff4c75ed4302eceede2873fc62f599037681d19d68f611')
+md5sums=('e054c81fd9eaa550c3b566fc4049b477')
 
 package_python-pydbus()
 {

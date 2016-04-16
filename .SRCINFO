@@ -1,14 +1,14 @@
 pkgbase = python-pydbus
 	pkgdesc = Pythonic DBus library
-	pkgver = 0.5
+	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://github.com/LEW21/pydbus
 	arch = any
 	license = LGPL
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://pypi.python.org/packages/source/p/pydbus/pydbus-0.5.tar.gz
-	sha256sums = 9fef673160b6d906dfff4c75ed4302eceede2873fc62f599037681d19d68f611
+	source = https://pypi.python.org/packages/source/p/pydbus/pydbus-0.5.1.tar.gz
+	md5sums = e054c81fd9eaa550c3b566fc4049b477
 
 pkgname = python-pydbus
 	depends = python
