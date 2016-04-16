@@ -1,7 +1,7 @@
 pkgbase = molprobity-git
 	pkgdesc = All-atom structure validation for macromolecular crystallography
 	pkgver = r1013.ee5bdd4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://molprobity.biochem.duke.edu/
 	arch = any
 	license = BSD
@@ -25,6 +25,8 @@ pkgbase = molprobity-git
 	conflicts = molprobity-git
 	options = !strip
 	source = molprobity-git::git+https://github.com/rlabduke/MolProbity#branch=molprobity_4.2
+	source = molprobity.sh
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = molprobity-git
