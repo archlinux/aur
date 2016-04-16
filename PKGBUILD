@@ -3,7 +3,7 @@
 
 pkgname=selfoss-git
 _gitname=selfoss
-pkgver=2.14.r50.g9e6347b
+pkgver=2.15.r1.g7fdf087
 pkgrel=1
 pkgdesc="The new multipurpose rss reader, live stream, mashup, aggregation web application"
 arch=('any')
@@ -37,10 +37,6 @@ prepare() {
   cd "${srcdir}"/${_gitname}
   git submodule init
   git submodule update
-
-  # Fix bug with update on php7
-  sed -i 's/function floIconImage/function __construct/' libs/floIcon.php
-  sed -i 's/function floIcon/function __construct/' libs/floIcon.php
 }
 
 package() {
