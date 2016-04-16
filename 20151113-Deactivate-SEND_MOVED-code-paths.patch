@@ -1,0 +1,48 @@
+From 95ed18a7322c5cb27024547425a05522d5f34d7b Mon Sep 17 00:00:00 2001
+From: Harald Judt <h.judt@gmx.at>
+Date: Fri, 13 Nov 2015 13:29:49 +0100
+Subject: Deactivate SEND_MOVED code paths
+
+---
+ thunar/thunar-file.c   | 4 ++--
+ thunar/thunar-folder.c | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/thunar/thunar-file.c b/thunar/thunar-file.c
+index 3262dfb..e3f9076 100644
+--- a/thunar/thunar-file.c
++++ b/thunar/thunar-file.c
+@@ -853,7 +853,7 @@ thunar_file_watch_reconnect (ThunarFile *file)
+         }
+ 
+       /* create a file or directory monitor */
+-      file_watch->monitor = g_file_monitor (file->gfile, G_FILE_MONITOR_WATCH_MOUNTS | G_FILE_MONITOR_SEND_MOVED, NULL, NULL);
++      file_watch->monitor = g_file_monitor (file->gfile, G_FILE_MONITOR_WATCH_MOUNTS, NULL, NULL);
+       if (G_LIKELY (file_watch->monitor != NULL))
+         {
+           /* watch monitor for file changes */
+@@ -3854,7 +3854,7 @@ thunar_file_watch (ThunarFile *file)
+       file_watch->watch_count = 1;
+ 
+       /* create a file or directory monitor */
+-      file_watch->monitor = g_file_monitor (file->gfile, G_FILE_MONITOR_WATCH_MOUNTS | G_FILE_MONITOR_SEND_MOVED, NULL, NULL);
++      file_watch->monitor = g_file_monitor (file->gfile, G_FILE_MONITOR_WATCH_MOUNTS, NULL, NULL);
+       if (G_LIKELY (file_watch->monitor != NULL))
+         {
+           /* watch monitor for file changes */
+diff --git a/thunar/thunar-folder.c b/thunar/thunar-folder.c
+index 9decb89..bd8249d 100644
+--- a/thunar/thunar-folder.c
++++ b/thunar/thunar-folder.c
+@@ -569,7 +569,7 @@ thunar_folder_finished (ExoJob       *job,
+ 
+   /* add us to the file alteration monitor */
+   folder->monitor = g_file_monitor_directory (thunar_file_get_file (folder->corresponding_file),
+-                                              G_FILE_MONITOR_SEND_MOVED, NULL, NULL);
++                                              G_FILE_MONITOR_NONE, NULL, NULL);
+   if (G_LIKELY (folder->monitor != NULL))
+     g_signal_connect (folder->monitor, "changed", G_CALLBACK (thunar_folder_monitor), folder);
+ 
+-- 
+2.6.3
+

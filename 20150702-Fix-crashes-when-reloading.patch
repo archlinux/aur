@@ -1,0 +1,83 @@
+From 029012f4c39d9d3d9ae617491a69f76f54a4192f Mon Sep 17 00:00:00 2001
+From: Harald Judt <h.judt@gmx.at>
+Date: Thu, 2 Jul 2015 10:30:21 +0200
+Subject: Fix crashes when reloading target file after move (bug #11983)
+
+When moving a file, check the target file for NULL to avoid crashes
+or assertions.
+
+diff --git a/thunar/thunar-file.c b/thunar/thunar-file.c
+index 196bb6c..3262dfb 100644
+--- a/thunar/thunar-file.c
++++ b/thunar/thunar-file.c
+@@ -795,13 +795,15 @@ thunar_file_monitor (GFileMonitor     *monitor,
+       if (event_type == G_FILE_MONITOR_EVENT_MOVED)
+         {
+           /* reload the target file if cached */
++          if (other_path == NULL)
++            return;
+           other_file = thunar_file_cache_lookup (other_path);
+           if (other_file)
+               thunar_file_reload (other_file);
+           else
+               other_file = thunar_file_get (other_path, NULL);
+ 
+-          if (!other_file)
++          if (other_file == NULL)
+               return;
+ 
+           /* notify the thumbnail cache that we can now also move the thumbnail */
+diff --git a/thunar/thunar-folder.c b/thunar/thunar-folder.c
+index 217610a..9decb89 100644
+--- a/thunar/thunar-folder.c
++++ b/thunar/thunar-folder.c
+@@ -773,27 +773,30 @@ thunar_folder_monitor (GFileMonitor     *monitor,
+             {
+               /* destroy the old file and update the new one */
+               thunar_file_destroy (lp->data);
+-              file = thunar_file_get(other_file, NULL);
+-              if (file != NULL && THUNAR_IS_FILE (file))
++              if (other_file != NULL)
+                 {
+-                  thunar_file_reload (file);
+-
+-                  /* if source and target folders are different, also tell
+-                     the target folder to reload for the changes */
+-                  if (thunar_file_has_parent (file))
++                  file = thunar_file_get(other_file, NULL);
++                  if (file != NULL && THUNAR_IS_FILE (file))
+                     {
+-                      other_parent = thunar_file_get_parent (file, NULL);
+-                      if (other_parent &&
+-                          !g_file_equal (thunar_file_get_file(folder->corresponding_file),
+-                                         thunar_file_get_file(other_parent)))
++                      thunar_file_reload (file);
++
++                      /* if source and target folders are different, also tell
++                         the target folder to reload for the changes */
++                      if (thunar_file_has_parent (file))
+                         {
+-                          thunar_file_reload (other_parent);
+-                          g_object_unref (other_parent);
++                          other_parent = thunar_file_get_parent (file, NULL);
++                          if (other_parent &&
++                              !g_file_equal (thunar_file_get_file(folder->corresponding_file),
++                                             thunar_file_get_file(other_parent)))
++                            {
++                              thunar_file_reload (other_parent);
++                              g_object_unref (other_parent);
++                            }
+                         }
+-                    }
+ 
+-                  /* drop reference on the other file */
+-                  g_object_unref (file);
++                      /* drop reference on the other file */
++                      g_object_unref (file);
++                    }
+                 }
+ 
+               /* reload the folder of the source file */
+-- 
+cgit v0.10.1
+

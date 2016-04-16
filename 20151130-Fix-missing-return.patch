@@ -1,0 +1,22 @@
+From 77cf6ec3a3969589a4e9a8beea6a122b7dbcc2a0 Mon Sep 17 00:00:00 2001
+From: Steve Dodier-Lazaro <sidnioulz@gmail.com>
+Date: Mon, 30 Nov 2015 15:29:56 +0000
+Subject: Fixing missing return value in standard view
+
+
+diff --git a/thunar/thunar-standard-view.c b/thunar/thunar-standard-view.c
+index 5cc31dd..6b078e3 100644
+--- a/thunar/thunar-standard-view.c
++++ b/thunar/thunar-standard-view.c
+@@ -2167,7 +2167,7 @@ thunar_standard_view_get_fallback_directory (ThunarFile *directory,
+   GFile      *path;
+   GFile      *tmp;
+ 
+-  _thunar_return_if_fail (THUNAR_IS_FILE (directory));
++  _thunar_return_val_if_fail (THUNAR_IS_FILE (directory), NULL);
+ 
+   /* determine the path of the directory */
+   path = g_object_ref (thunar_file_get_file (directory));
+-- 
+cgit v0.10.1
+

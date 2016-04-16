@@ -1,0 +1,46 @@
+pkgbase = thunar-split
+	pkgdesc = Modern file manager for Xfce - patched to include split pane and upstream bug fixes
+	pkgver = 1.6.10
+	pkgrel = 1
+	url = http://thunar.xfce.org
+	install = thunar.install
+	arch = i686
+	arch = x86_64
+	groups = xfce4
+	license = GPL2
+	license = LGPL2.1
+	makedepends = intltool
+	makedepends = xfce4-panel
+	depends = desktop-file-utils
+	depends = libexif
+	depends = hicolor-icon-theme
+	depends = libnotify
+	depends = libgudev
+	depends = gtk2
+	depends = exo
+	depends = libxfce4util
+	depends = libxfce4ui
+	depends = libpng
+	optdepends = gvfs: for trash support, mounting with udisk and remote filesystems
+	optdepends = xfce4-panel: for trash applet
+	optdepends = tumbler: for thumbnail previews
+	optdepends = thunar-volman: manages removable devices
+	optdepends = thunar-archive-plugin: create and deflate archives
+	optdepends = thunar-media-tags-plugin: view/edit id3/ogg tags
+	provides = thunar=1.6.10
+	conflicts = thunar
+	replaces = thunar
+	options = !libtool
+	source = http://archive.xfce.org/src/xfce/thunar/1.6/Thunar-1.6.10.tar.bz2
+	source = split_pane.patch
+	source = 20150702-Fix-crashes-when-reloading.patch
+	source = 20151113-Deactivate-SEND_MOVED-code-paths.patch
+	source = 20151130-Fix-missing-return.patch
+	sha256sums = 7e9d24067268900e5e44d3325e60a1a2b2f8f556ec238ec12574fbea15fdee8a
+	sha256sums = 535797e0c6e54cdf7b44c676e64e52185306497570ae00c62c8a9fef28b79181
+	sha256sums = 292e593492678b7e476d5da992bc9c008169b7e0f00048aee100195701842892
+	sha256sums = 2461773024336a94fd70d7f2276aec0f9fc819cb8af96c8689e42c429014ea7d
+	sha256sums = 3f4d8dfba3003f14d29d7b5f8e38debecb2aa3a7244949a564bd183e8ae3d2fe
+
+pkgname = thunar-split
+
