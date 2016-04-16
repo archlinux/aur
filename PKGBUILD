@@ -1,7 +1,8 @@
-# Maintainer: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
+# Maintainer: Nicholas O'Callaghan <nocallaghan12 at gmail dot come
+# Contributor: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
 # Contributor: Pieter Robyns <pieter.robyns@uhasselt.be>
 pkgname=python2-tensorflow
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 url="http://tensorflow.org"
 license=('Apache')
@@ -10,10 +11,12 @@ pkgdesc="Open source software library for numerical computation using data flow 
 depends=('python2' 'python2-numpy' 'python2-protobuf3')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
-makedepends=('python2' 'python2-pip' 'python2-wheel' 'bazel' 'swig' 'bower' 'git')
+makedepends=('python2' 'python2-pip' 'python2-wheel' 'bazel' 'swig' 'git')
 source=("https://github.com/tensorflow/tensorflow/archive/v${pkgver}.tar.gz"
+	"https://github.com/google/protobuf/archive/fb714b3606bd663b823f6960a73d052f97283b74.tar.gz"
         "flags.patch")
-sha256sums=('43dd3051f947aa66e6fc09dac2f86a2efe2e019736bbd091c138544b86d717ce'
+sha256sums=('ef34121432f7a522cf9f99a56cdd86e370cc5fa3ee31255ca7cb17f36b8dfc0d'
+            '87ec95e580ec315fdec2d8c1590c332e61486d387f0d6e6540e74a18e44fd2ab'
             '513f634cc1cab44eb17204616617695ea23355462f918873678fcac1a95ae778')
 provides=('tensorflow')
 conflicts=('tensorflow' 'tensorflow-git')
@@ -31,15 +34,10 @@ prepare() {
   # Fix compilation flags
   patch -p1 < ../flags.patch
 
-  # Get submodules
-  if [ ! -e "${srcdir}/tensorflow-${pkgver}/.git" ]; then
-    msg2 "Initializing protobuf submodule..."
-    git init
-    rm -r google/protobuf
-    git submodule add --force https://github.com/google/protobuf.git google/protobuf \
-      -b d2c7fe6bc5d28b225f6202684574fe4ef9e3a3a8
-    git submodule update --init --recursive --force
-  fi
+  # Move protobuf
+  msg2 "Moving protobuf sources..."
+  rm -r google/protobuf
+  mv ../protobuf-fb714b3606bd663b823f6960a73d052f97283b74 google/protobuf
 
   if (pacman -Q cuda &>/dev/null && pacman -Q cudnn &>/dev/null); then
     msg2 "CUDA support enabled"
@@ -86,9 +84,6 @@ package() {
     --install-option="--install-data=${pkgdir}/var/lib/${_name}" \
     --install-option="--root=${pkgdir}" \
     ${TMP_PKG}
-
-  # FIXME: solve this protobuf conflict in the pip command
-  rm -r "${pkgdir}${_site_packages}/google"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
 }
