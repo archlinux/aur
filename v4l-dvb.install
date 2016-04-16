@@ -1,16 +1,14 @@
-_kernver=4.1.5-1-ARCH
-
 post_install() {
     echo ">>> Running depmod..."
-    depmod ${_kernver}
+    depmod
 }
 
 post_upgrade() {
     echo ">>> Running depmod..."
-    depmod ${_kernver}
+    depmod
 }
 
 post_remove() {
     echo ">>> Running depmod..."
-    depmod ${_kernver}
+    depmod
 }
