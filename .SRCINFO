@@ -31,7 +31,9 @@ pkgbase = qgis
 	optdepends = python2-pyspatialite: Processing plugin
 	optdepends = python2-yaml: Processing plugin
 	source = http://qgis.org/downloads/qgis-2.14.1.tar.bz2
+	source = https://github.com/qgis/QGIS/commit/fc6559aa053317cda8ced657c3013a0d4c6549e9.patch
 	md5sums = 60e0708650303f28fdfe84b555c41c18
+	md5sums = e57b70e88a0cb4e99e9fb4910b7d932d
 
 pkgname = qgis
 
