@@ -5,16 +5,16 @@ pkgbase = junipersknot
 	url = http://junipersknot.dischan.org/
 	arch = any
 	license = custom
-	depends = renpy
+	depends = renpy python2-pygame
 	options = !strip
 	source = JunipersKnot_en_1.0_lin.tar.bz2::https://dischan.co/downloads/JunipersKnot_en_1.0_lin.tar.bz2
 	source = dischan_JunipersKnot.desktop
 	source = junipersknot
 	source = junipersknot.png
 	md5sums = 3318de6e4c5952271961d757bdd5fddf
-	md5sums = 672677a075b4ed04f4a3ca71f6c33808
-	md5sums = 6b294591761f99d780a8e4d64848aba2
-	md5sums = SKIP
+	md5sums = dec96343fbf164e5e9d6c1b29f31b519
+	md5sums = 8d6decca098b103db2c3d6709a7a6332
+	md5sums = c3fd43e5bacc7f9ebbda0971a3e5b2d0
 
 pkgname = junipersknot
 
