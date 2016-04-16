@@ -18,7 +18,6 @@ prepare() {
         cd "$pkgname"
 
         mv cfmask/CFMASK-LICENSE.txt LICENSE
-        install -D -m644 LICENSE "$(pkgdir)/usr/share/licenses/$(pkgname)/LICENSE"
 
         python_files=$(find -name '*.py')
         for file in $python_files
