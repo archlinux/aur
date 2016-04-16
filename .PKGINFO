@@ -1,5 +1,5 @@
 pkgname = whatsie
-pkgver = 2.0.12
+pkgver = 2.0.13
 pkgdesc = A simple & beautiful desktop client for WhatsApp Web.
 url = https://whatsie.chat
 builddate = 1460577681
