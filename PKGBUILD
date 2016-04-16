@@ -1,14 +1,14 @@
 # Maintainer: Steven Honeyman <stevenhoneyman at gmail com>
 
 pkgname=speedcrunch-git
-pkgver=20150901
+pkgver=20160416
 pkgrel=1
 pkgdesc="Simple, high precision and powerful calculator."
 arch=('i686' 'x86_64')
 url="http://speedcrunch.org/"
 license=('GPL2')
-depends=('qt5-base' 'libxkbcommon-x11')
-makedepends=('git')
+depends=('qt5-base' 'qt5-tools' 'libxkbcommon-x11')
+makedepends=('git' 'cmake')
 conflicts=('speedcrunch')
 provides=('speedcrunch')
 source=('speedcrunch::git+https://bitbucket.org/heldercorreia/speedcrunch.git')
@@ -20,12 +20,15 @@ pkgver() {
 }
 
 build() {
-  cd speedcrunch/src/
-  qmake-qt5 speedcrunch.pro
+  cd speedcrunch
+  rm -rf build
+  mkdir build
+  cd build
+  cmake ../src -DCMAKE_INSTALL_PREFIX="$pkgdir/usr"
   make
 }
 
 package() {
-  cd speedcrunch/src/
-  make INSTALL_ROOT="$pkgdir/usr" install
+  cd speedcrunch/build
+  make install
 }
