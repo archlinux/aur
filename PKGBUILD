@@ -26,7 +26,7 @@ _execname="Popcorn-Time-CE"
 _reldir="desktop-${pkgver}-${pkgrel}"
 _bindir="${_reldir}/build/${_execname}/${_platform}"
 
-build() {
+prepare() {
 
 	cd "${srcdir}/${_reldir}"
 
@@ -34,6 +34,12 @@ build() {
 
 	# Remove all references to ${srcdir}
 	find "${srcdir}/${_reldir}" -type f -print0 | xargs -0 sed -i "s|${srcdir}/${_reldir}|/usr/share/${pkgname}|g"
+
+}
+
+build() {
+
+	cd "${srcdir}/${_reldir}"
 
 	"${srcdir}/${_reldir}/node_modules/.bin/gulp" build -p ${_platform}
 
