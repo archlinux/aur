@@ -1,4 +1,4 @@
 post_install(){
 	getent group plexpy &>/dev/null || groupadd -r plexpy >/dev/null
-	getent passwd plexpy &>/dev/null || useradd -r -g plexpy -s /bin/false plexpy >/dev/null
+	getent passwd plexpy &>/dev/null || useradd -r -d /opt/plexpy -g plexpy -s /bin/false plexpy >/dev/null
 }
