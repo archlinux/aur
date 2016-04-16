@@ -6,13 +6,14 @@
 
 pkgname=pdfshuffler-git
 pkgver=r103.8335b07
-pkgrel=1
+pkgrel=2
 pkgdesc="Merge or split pdf documents and rotate, crop and rearrange their pages"
 arch=('any')
 url="http://sourceforge.net/projects/pdfshuffler/"
 license=('GPL')
 depends=('python2-poppler' 'python-pypdf2' 'ghostscript')
 makedepends=('git')
+conflicts=('pdfshuffler')
 install="$pkgname.install"
 source=('pdfshuffler-git::git+https://github.com/jeromerobert/pdfshuffler')
 md5sums=('SKIP')
