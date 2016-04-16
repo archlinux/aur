@@ -2,7 +2,7 @@
 Name=Spectrum Tools
 Exec=spectool_gtk
 Type=Application
-Icon=radio
+Icon=network-wireless
 Comment=2.4 GHz spectrum analysis using the Wi-Spy hardware device
 Keywords=wispy;spectrum;wireless;
 Categories=GTK;System;Monitor;
