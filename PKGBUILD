@@ -3,7 +3,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-middleclickclose-git
-pkgver=r16
+pkgver=r23
 pkgrel=1
 pkgdesc="Close windows with a button click (the middle one by default) when in overview mode"
 arch=(any)
