@@ -1,0 +1,14 @@
+pkgbase = python-rtttl
+	pkgdesc = Nokia Ring Tone Text Transfer Language (RTTTL) parser for python
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/asdwsda/rtttl
+	arch = any
+	license = GPL
+	depends = python
+	options = !emptydirs
+	source = python-rtttl-0.2.tar.gz::https://github.com/asdwsda/rtttl/archive/0.2.tar.gz
+	md5sums = 44272e32e72db980caf472de8c263239
+
+pkgname = python-rtttl
+
