@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides a recovery behavior for the navigation stac
 url='http://wiki.ros.org/rotate_recovery'
 
 pkgname='ros-indigo-rotate-recovery'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,7 +18,7 @@ ros_makedepends=(ros-indigo-nav-core
   ros-indigo-cmake-modules
   ros-indigo-tf
   ros-indigo-pluginlib)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen3)
 
@@ -32,14 +32,14 @@ depends=(${ros_depends[@]}
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/rotate_recovery/${pkgver}-${_pkgver_patch}
-# _dir=rotate_recovery
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="navigation-release-release-indigo-rotate_recovery-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/ros-gbp/navigation-release/archive/release/indigo/rotate_recovery/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('ef48f04be6f33ff2095d73c21ef2576f15a14e1a6eb8df1d7c1ce55189402ba9')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/rotate_recovery/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('7562e5b1a3e9b3e7ecbc42e4d89eba2d59a80cf1af88410d7639cd05f79daf90')
 
 build() {
   # Use ROS environment variables
