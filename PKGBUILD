@@ -2,7 +2,7 @@
 # Contributor: Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 
 pkgname=megasync-git
-pkgver=v2.8.0.0.Linux.1.gd631cbf
+pkgver=v2.9.0.0.0.ge46bc5e
 pkgrel=1
 pkgdesc="Sync your files to your Mega account. Official app. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ install=megasync-git.install
 
 pkgver() {
   cd megasync
-  echo "$(git describe --long --tags | tr - . | tr _ .)"
+  echo "$(git describe --long --tags | tr - . | tr _ . | sed 's|OSX\.||' | sed 's|Win\.||' | sed 's|Linux\.||' )"
 }
 
 prepare() {
