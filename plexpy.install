@@ -2,3 +2,9 @@ post_install(){
 	getent group plexpy &>/dev/null || groupadd -r plexpy >/dev/null
 	getent passwd plexpy &>/dev/null || useradd -r -d /opt/plexpy -g plexpy -s /bin/false plexpy >/dev/null
 }
+
+post_upgrade(){
+	if [ ! -d `grep plexpy /etc/passwd | cut -d ":" -f6` ]; then
+                usermod -d /opt/plexpy plexpy >/dev/null
+        fi
+}

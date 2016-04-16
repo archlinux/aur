@@ -5,7 +5,7 @@
 
 pkgname=plexpy
 pkgver=1.3.14
-pkgrel=3
+pkgrel=4
 pkgdesc="A Python based monitoring and tracking tool for Plex Media Server."
 arch=('any')
 url="https://github.com/drzoidberg33/plexpy"
@@ -21,7 +21,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/drzoidberg33/plexpy/archive
 		'welcome.html.patch')
 sha256sums=('57dc8b8d26a45c90be9bcf26af8c867450fdc0263dfe8de3eadd944b225f994a'
          '58300f84762f1362ae4d81aab9bbdf48425735b886807fea847ec256082524a0'
-         '5f5953dc4dc00e6b5584c4853a3e87bc44837d23acd54877a1a3c3a2c4b72419'
+         '93d8bc219acc2781f14d832443bc226a4fa6cc751f5ecf5cac5a407187c69160'
          'e8203e18bb168ae50401cb7afacbc5e0e9b0adc9fa1322c7744018b9f8ac1d32')
 
 prepare() {
