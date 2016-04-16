@@ -1,7 +1,7 @@
 pkgbase = oscam-git
 	pkgdesc = Open Source Conditional Access Module software
-	pkgver = 11213
-	pkgrel = 2
+	pkgver = 11228
+	pkgrel = 1
 	url = http://www.streamboard.tv/oscam
 	install = oscam.install
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = oscam-git
 	depends = openssl
 	optdepends = pcsclite: for use with PC/SC readers
 	optdepends = ccid: PC/SC reader generic driver
-	source = git+http://www.oscam.cc/git/oscam-mirror#commit=64c739f95fe4f6f9dbf0d6693606743185c15ff6
+	source = git+http://www.oscam.cc/git/oscam-mirror#commit=91faa05455f48659298d69b2b9416ed07844bea1
     source = oscam-remove-sslv3.diff
 	source = oscam.service
 	source = oscam.sysuser
