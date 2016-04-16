@@ -72,3 +72,4 @@ pkgname = whatsie" > .SRCINFO
 git add -A
 git commit -m "Release $pkgver PackageRel $pkgrel"
 git push AUR master
+yaourt -S whatsie
