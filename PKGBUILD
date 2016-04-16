@@ -1,36 +1,37 @@
-
 # Contributor: Paolo Herms
+# Contributor: kaptoxic
+
 pkgname=why3-git
-pkgver=20120419
-pkgrel=1
+pkgver=0.72.r3740.g406e7f0
+pkgrel=2
 pkgdesc="The next generation of the former software verification platform Why"
 arch=(x86_64 i686)
 url="http://why3.gforge.inria.fr/"
 license=('GPL')
-depends=('gtksourceview2')
-makedepends=('ocaml' 'ocaml-sqlite3' 'lablgtk2' 'git')
+depends=('gtksourceview2' 'sqlite')
+makedepends=('ocaml' 'ocaml-sqlite3' 'lablgtk2' 'ocaml-menhir' 'git' 'autoconf')
 conflicts=('why3')
+source=('why3::git+https://scm.gforge.inria.fr/anonscm/git/why3/why3.git')
+md5sums=('SKIP')
 
-_gitroot="git://scm.gforge.inria.fr/why3/why3.git"
+_gitroot="https://scm.gforge.inria.fr/anonscm/git/why3/why3.git"
 _gitname="why3"
 
+pkgver() {
+  cd "${srcdir}/${_gitname}"
+  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g' | sed 's#debian/##'
+}
+
 build() {
-  cd "$srcdir"
+  cd "${srcdir}/${_gitname}"
+  autoconf
+  ./configure --prefix=/usr --disable-pvs-libs
+  make clean
+  make all # src/why3.cma
+}
 
-  if [ -d $_gitname ] ; then
-    cd $_gitname && git pull origin
-  else
-    git clone $_gitroot $_gitname && 
-    cd $_gitname
-  fi
-
-  [[ -e "$srcdir"/NOCONFIGURE ]] && msg "Skipping configure - remove src/NOCONFIGURE to force it" || { 
-      autoconf &&
-      ./configure --prefix=/usr &&
-      echo "Remove this file to force ./configure" > "$srcdir"/NOCONFIGURE ||
-      return 1
-  }
-
-  make || return 1
+package() {
+  cd "${srcdir}/${_gitname}"
   make DESTDIR="$pkgdir" OCAMLLIB="$pkgdir"/usr/lib/ocaml install install-lib
 }
+md5sums=('SKIP')
