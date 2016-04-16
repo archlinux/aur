@@ -1,19 +1,24 @@
 pkgbase = thunar-thumbnailers
-	pkgdesc = Display various file previews (thumbnails) in Thunar file manager.
+	pkgdesc = Provides additional thumbnailers for Thunar. Patched to support OpenRaster
 	pkgver = 0.4.1
 	pkgrel = 1
-	url = http://goodies.xfce.org/projects/thunar-plugins/thunar-thumbnailers
-	arch = any
-	license = CCPL:cc-by-nc-sa
-	makedepends = git
-	makedepends = xfce4-dev-tools
+	url = http://goodies.xfce.org/projects/thunar-plugins/thunar-thumbnailers/
+	install = thunar-thumbnailers.install
+	arch = i686
+	arch = x86_64
+	groups = xfce4-goodies
+	license = GPL2
+	makedepends = raw-thumbnailer
+	makedepends = dcraw
+	makedepends = unzip
 	depends = imagemagick
-	optdepends = tetex: LaTeX files support
-	optdepends = raw-thumbnailer: Raw Digital Camera Images support
-	optdepends = grace: Grace files support
-	optdepends = ffmpegthumbnailer: Thumbnails for video files support
-	source = git://git.xfce.org/apps/thunar-thumbnailers
-	md5sums = SKIP
+	depends = ffmpegthumbnailer
+	optdepends = raw-thumbnailer: support for Raw Digital Camera Images
+	optdepends = dcraw: support for Raw Digital Camera Image
+	conflicts = thunar-thumbnailers
+	options = !libtool
+	source = http://archive.xfce.org/src/apps/thunar-thumbnailers/0.4/thunar-thumbnailers-0.4.1.tar.bz2
+	sha256sums = 7b37531de23adb35ef183ccb0a970e916a8cd78dddd840adbf2970b941524209
 
 pkgname = thunar-thumbnailers
 
