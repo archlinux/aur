@@ -15,7 +15,7 @@ replaces=('xtables-addons-dkms')
 install="${pkgname}.install"
 source=("http://sourceforge.net/projects/${pkgname}/files/Xtables-addons/${pkgname}-${pkgver}.tar.xz")
 sha256sums=('2a2d92ae924437d757f55514502c6ef3aeccc6106f729c702efe703ad30f4007')
-_kernver="/usr/lib/modules/`pacman -Qe linux | awk '{ print $2 }'`-ARCH"
+_kernver="`pacman -Ql linux| awk '/(\/modules\/)([0-9.-])+-ARCH\/$/ {print $2}'`"
 
 prepare() {
   pushd "${srcdir}/${pkgname}-${pkgver}"
