@@ -1,8 +1,9 @@
 # Maintainer: Olaf Bauer <obauer@freenet.de>
 
+_kernver="$(uname -r)"
 pkgname=v4l-dvb-git
 pkgver=r660.a9c762b
-pkgrel=1
+pkgrel=2
 pkgdesc="V4L-DVB device drivers"
 arch=('i686' 'x86_64')
 url="http://linuxtv.org/"
@@ -25,11 +26,13 @@ prepare() {
 
 build() {
   cd "${srcdir}/media_build"
-  make
+  make KERNELRELEASE=${_kernver}
 }
 
 package() {
   cd "${srcdir}/media_build"
   sed -i '/^[^#].*depmod/s/^/#/' v4l/Makefile.media
-  make DESTDIR="${pkgdir}/usr" FW_DIR="${pkgdir}/usr/lib/firmware/updates/" install
+  make KERNELRELEASE=${_kernver} KDIR26="/lib/modules/${_kernver}/updates" \
+       DESTDIR="${pkgdir}/usr" FW_DIR="${pkgdir}/usr/lib/firmware/updates/" install
 }
+
