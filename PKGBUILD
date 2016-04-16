@@ -2,13 +2,13 @@
 
 pkgname='libmbim-qmi-over-mbim'
 pkgver='1.0.0'
-pkgrel=3
+pkgrel=4
 pkgdesc="MBIM modem protocol helper library with experimental qmi-over-mbim patch"
 arch=('i686' 'x86_64')
 url='http://www.freedesktop.org/wiki/Software/libmbim/'
 license=('GPL2')
 depends=('glib2' 'bash' 'systemd' 'libgudev')
-makedepends=('gtk-doc')
+makedepends=('git' 'gtk-doc')
 provides=('libmbim')
 conflicts=('libmbim')
 source=("git+https://cgit.freedesktop.org/libmbim/libmbim")
@@ -35,4 +35,3 @@ package() {
     make DESTDIR="${pkgdir}/" install
     libtool --finish "${pkgdir}/usr/lib"
 }
-
