@@ -2,7 +2,7 @@
 # Contributor: jmf <jmf at mesecons dot net>
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 pkgname=fgdata-git
-pkgver=20151212
+pkgver=20160416
 pkgrel=1
 _gitname="fgdata"
 pkgdesc="Base data for the flightgear flight simulator."
