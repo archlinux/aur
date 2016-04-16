@@ -11,7 +11,7 @@ provides=('wxtoimg' 'xwxtoimg')
 source_x86_64=("http://wxtoimg.com/downloads/$pkgname-linux64-$pkgver-1.tar.gz")
 source_i686=("http://wxtoimg.com/downloads/$pkgname-linux-$pkgver.tar.gz")
 md5sums_x86_64=('773dcad83ac853e7ea622debcd99478d')
-md5sums_i686=('278b7dc098188beec20bde2169162_64279')
+md5sums_i686=('278b7dc098188beec20bde2169162279')
 DLAGENTS='http::/usr/bin/wget -c -t 3 --waitretry=3 -O %o %u' 
 
 prepare(){
