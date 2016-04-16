@@ -4,14 +4,14 @@ pkgdesc="ROS - A 2D navigation stack that takes in information from odometry, se
 url='http://wiki.ros.org/navigation'
 
 pkgname='ros-indigo-navigation'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD,LGPL,LGPL (amcl)')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-nav-core
@@ -35,14 +35,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/navigation/${pkgver}-${_pkgver_patch}
-# _dir=navigation
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="navigation-release-release-indigo-navigation-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/ros-gbp/navigation-release/archive/release/indigo/navigation/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('944c1a11f2c4f29b67f8d60c2ddcdc4dd1a59c9e37e6ba3316c59cea11d9de8c')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/navigation/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('d7cb322e3e063ed6b85b47d65121e30372375c8275821414b682cca1e25ba9bb')
 
 build() {
   # Use ROS environment variables
