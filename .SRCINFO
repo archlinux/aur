@@ -1,0 +1,20 @@
+pkgbase = roonbridge
+	pkgdesc = The music player for music lovers
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://roonlabs.com/
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = glibc
+	depends = ffmpeg
+	depends = cifs-utils
+	source = http://download.roonlabs.com/builds/RoonBridge_linuxx64.tar.bz2
+	source = roonbridge.service
+	source = copyright
+	sha256sums = SKIP
+	sha256sums = 0eec72ddf20b20c0b40f98b1234e023ee5ebe4109d656288853800a356a75b64
+	sha256sums = 31b6cac147644ad4d0908906b91e631752111939be88031e03da72182de5be93
+
+pkgname = roonbridge
+

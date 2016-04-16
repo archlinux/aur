@@ -1,0 +1,14 @@
+[Unit]
+    Description=RoonBridge
+    After=network.target
+
+    [Service]
+    Type=simple
+    User=root
+    Environment=ROON_DATAROOT=/var/roon
+    Environment=ROON_ID_DIR=/var/roon
+    ExecStart=/opt/RoonBridge/start.sh
+    Restart=on-abort
+
+    [Install]
+    WantedBy=multi-user.target
