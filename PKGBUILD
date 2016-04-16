@@ -43,16 +43,16 @@ package() {
 	install -Dm644 "${srcdir}/"{CHANGELOG.md,icudtl.dat,libffmpegsumo.so,LICENSE.txt,nw.pak,package.json,README.md} "${pkgdir}/usr/share/${_pkgname}/"
 
 	# Directories
-	cp -a "${srcdir}/${_reldir}/"{node_modules,src} "${pkgdir}/usr/share/${_pkgname}/"
+	cp -a "${srcdir}/"{node_modules,src} "${pkgdir}/usr/share/${_pkgname}/"
 
 	# Link to program
-	ln -s "/usr/share/${_pkgname}/${_execname}" "${pkgdir}/usr/bin/${_pkgname}"
+	ln -s "/usr/share/${_pkgname}/Popcorn-Time-CE" "${pkgdir}/usr/bin/${_pkgname}"
 
 	# Desktop file
 	install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
 	# Icon
-	install -Dm644 "${srcdir}/${_reldir}/src/app/images/icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+	install -Dm644 "${srcdir}/src/app/images/icon.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 
 }
 
