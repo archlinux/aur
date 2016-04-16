@@ -4,7 +4,7 @@ pkgdesc="ROS - The Robot Pose EKF package is used to estimate the 3D pose of a r
 url='http://wiki.ros.org/robot_pose_ekf'
 
 pkgname='ros-indigo-robot-pose-ekf'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -19,7 +19,7 @@ ros_makedepends=(ros-indigo-roscpp
   ros-indigo-tf
   ros-indigo-nav-msgs
   ros-indigo-bfl)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-roscpp
@@ -34,14 +34,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/robot_pose_ekf/${pkgver}-${_pkgver_patch}
-# _dir=robot_pose_ekf
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="navigation-release-release-indigo-robot_pose_ekf-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/ros-gbp/navigation-release/archive/release/indigo/robot_pose_ekf/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d2e1f8e765ad1ea298bf3d9f5c96319198b7978552396da01fa76ed3b48b6c4a')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/robot_pose_ekf/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('9e79d2ff060bf1dfce16ef595303c62f0ee41b1a7a1088f0cc2269ff959d367c')
 
 build() {
   # Use ROS environment variables
