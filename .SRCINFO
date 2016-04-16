@@ -1,6 +1,6 @@
 pkgbase = chewing-editor
 	pkgdesc = Cross platform chewing user phrase editor
-	pkgver = 0.0.4
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = http://chewing.im
 	install = chewing-editor.install
@@ -13,8 +13,8 @@ pkgbase = chewing-editor
 	depends = libchewing
 	depends = qt5-base
 	depends = hicolor-icon-theme
-	source = https://github.com/chewing/chewing-editor/archive/0.0.4.tar.gz
-	sha256sums = 793ba7c963c24826205eced2b6bdfd35761be1042aed2bdf44987eaf0bf952ac
+	source = https://github.com/chewing/chewing-editor/archive/0.1.0.tar.gz
+	sha256sums = f769ec40b22c4d9bb3e1b68d62e4fade40e057131a5986e37772698131235693
 
 pkgname = chewing-editor
 
