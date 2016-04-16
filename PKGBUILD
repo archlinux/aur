@@ -1,7 +1,7 @@
 # Maintainer: TingPing tingping@tingping.se
 
 pkgname=sysprof2-git
-pkgver=3.19.90.r544.g88d3ae3
+pkgver=3.20.0.r1.g605572d
 pkgrel=1
 pkgdesc='CPU Profiler'
 arch=('i686' 'x86_64' 'armv6h')
@@ -13,18 +13,14 @@ makedepends=('intltool' 'git' 'autoconf-archive')
 install='sysprof2.install'
 provides=('sysprof2')
 conflicts=('sysprof2')
-source=('git+https://github.com/chergert/sysprof2.git')
+source=('git+https://git.gnome.org/browse/sysprof')
 md5sums=('SKIP')
-_gitname='sysprof2'
+_gitname='sysprof'
 
 pkgver() {
   cd "$_gitname"
 
-  # TODO: Waiting for a git tag
-  _ver='3.19.90'
-  _rev=`git rev-list --count HEAD`
-  _hash=`git describe --always`
-  echo "$_ver.r$_rev.g$_hash"
+  git describe --long | sed 's/^sysprof-//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
