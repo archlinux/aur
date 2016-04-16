@@ -1,6 +1,6 @@
 pkgbase = eid-viewer
 	pkgdesc = Viewer for Belgian Electronic Identity Card
-	pkgver = 4.1.10
+	pkgver = 4.1.12
 	pkgrel = 1
 	url = http://eid.belgium.be/
 	install = eid-viewer.install
@@ -10,8 +10,8 @@ pkgbase = eid-viewer
 	depends = java-runtime
 	depends = gsettings-desktop-schemas
 	depends = eid-mw
-	source = https://dist.eid.belgium.be/continuous/sources/eid-viewer-4.1.9-v4.1.9.src.tar.gz
-	sha256sums = 3eae66dc57c6270157a7b93510b7f178a4fc4e94c2956c7c6583b096dd43e7a5
+	source = https://dist.eid.belgium.be/continuous/sources/eid-viewer-4.1.13-v4.1.13.src.tar.gz
+	sha256sums = 8a4f7ae34558b2b858851a233f3d0b968be1daf091ece0adc04cfa5a7b74cddc
 
 pkgname = eid-viewer
 
