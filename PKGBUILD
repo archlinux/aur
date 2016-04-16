@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Jug <seb AT stianj DOT ug>
 
 pkgname=openbazaar-bin
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="OpenBazaar Client, Decentralized Peer to Peer Marketplace for Bitcoin -- Static binaries"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ conflicts=('openbazaar' 'openbazaar-git')
 install="$pkgname.install"
 source_i686=("https://github.com/OpenBazaar/OpenBazaar-Installer/releases/download/v${pkgver}/openbazaar_${pkgver}_i386.deb")
 source_x86_64=("https://github.com/OpenBazaar/OpenBazaar-Installer/releases/download/v${pkgver}/openbazaar_${pkgver}_amd64.deb")
-sha256sums_i686=('3141b4a9b92e1fe9fb18b4fd90ea1fb737f19c652a626f8994c0015406d3578e')
-sha256sums_x86_64=('535e67eadd4e044e7c34c0ce056c244c74d0eb18dd7383c38666c14e6987186d')
+sha256sums_i686=('c286c18c940f88e02281afe83a481877cb98218d8197a20059e022b13e4ca053')
+sha256sums_x86_64=('7dcd01b3c41a59484264c8ec3fe228f4cb6e6587d8934b3b2b0ffa358e5bfcc8')
 
 package() {
     msg2 "Extracting the data.tar.xz..."
