@@ -1,6 +1,6 @@
 pkgname="psi-plus-qt5-git"
-pkgver=0.16.544.532
-pkgrel=1
+pkgver=0.16.545.535
+pkgrel=2
 pkgdesc="Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users (built with Qt 5.x)"
 url="http://psi-plus.com"
 license=('GPL2')
@@ -12,8 +12,11 @@ provides=("psi-plus=$pkgver")
 replaces=('psi-plus' 'psi-plus-webkit-git' 'psi-plus-git')
 conflicts=('psi-plus' 'psi-plus-webkit-git' 'psi-plus-git')
 install=psi-plus-git.install
-source=('git://github.com/psi-plus/psi-plus-snapshots' 'git://github.com/psi-plus/main.git')
-md5sums=('SKIP' 'SKIP')
+source=('git://github.com/psi-plus/psi-plus-snapshots' 'git://github.com/psi-plus/main.git' 'conf.diff')
+md5sums=('SKIP'
+         'SKIP'
+         '238c14567b9b74670de4df84a3b6cdab')
+
 pkgver() {
     cd psi-plus-snapshots
     git describe --tags | cut -d - -f 1-2 --output-delimiter=.
@@ -31,14 +34,15 @@ prepare() {
 
 build() {
   cd psi-plus-snapshots
-
   qconf
+  patch -p0 < "$srcdir"/conf.diff
   ./configure --prefix=/usr \
               --libdir=/usr/lib \
               --enable-plugins \
               --disable-enchant \
               --qtdir="/usr/lib/qt"
   make
+  patch -Rp0 < "$srcdir"/conf.diff
 }
 
 package() {
