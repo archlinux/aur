@@ -1,0 +1,17 @@
+pkgbase = libvsq-git
+	pkgdesc = A C++ library for reading/writing/editing VSQ file for VOCALOID2 and VOCALOID1
+	pkgver = r386.6e259d9
+	pkgrel = 1
+	url = https://github.com/kbinani/libvsq
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	provides = libvsq
+	options = !strip
+	source = git+https://github.com/kbinani/libvsq.git
+	sha512sums = SKIP
+
+pkgname = libvsq-git
+
