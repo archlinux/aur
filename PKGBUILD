@@ -2,13 +2,13 @@
 
 pkgname='libqmi-qmi-over-mbim'
 pkgver='1.0.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="QMI modem protocol helper library with experimental qmi-over-mbim patch"
 arch=('x86_64')
 url='http://www.freedesktop.org/wiki/Software/libqmi/'
 license=('GPL2')
 depends=('glib2' 'bash')
-makedepends=('autogen' 'gtk-doc' 'libmbim-qmi-over-mbim')
+makedepends=('gtk-doc' 'libmbim-qmi-over-mbim')
 provides=('libqmi')
 conflicts=('libqmi')
 source=("git+https://cgit.freedesktop.org/libqmi")
@@ -33,6 +33,7 @@ build() {
 package() {
     cd libqmi
     make DESTDIR="${pkgdir}/" install
+    libtool --finish ${pkgdir}/usr/lib
     # Fix file name for ModemManager
     ln ${pkgdir}/usr/lib/libqmi-glib.so ${pkgdir}/usr/lib/libqmi-glib.so.1
 }
