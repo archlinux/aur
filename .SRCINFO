@@ -1,0 +1,19 @@
+pkgbase = themedia
+	pkgdesc = Media Player based on Phonon
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/vicr123/themedia
+	arch = x86_64
+	license = GPL3
+	makedepends = qtchooser
+	makedepends = git
+	makedepends = clang
+	depends = libmusicbrainz5
+	depends = xdg-utils
+	depends = phonon-qt5
+	depends = qt5-base
+	source = themedia-1.0::git+https://github.com/vicr123/themedia.git
+	md5sums = SKIP
+
+pkgname = themedia
+
