@@ -2,7 +2,7 @@
 
 pkgname=nvidia-352-lts
 pkgver=352.79
-pkgrel=4
+pkgrel=5
 pkgdesc="NVIDIA drivers for linux-lts"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
