@@ -4,9 +4,8 @@ pkgver=3.4.5.r569.g0f06dfe
 pkgrel=1
 pkgdesc="music player for gnome, similar to KDEs amarok"
 arch=('any')
-url="www.exaile.org"
+url="http://www.exaile.org"
 license=('GPL')
-groups=()
 depends=(
   'python2>=2.7.0' 
   'gtk3>=3.10' 
@@ -20,19 +19,15 @@ depends=(
   'gst-plugins-good')
 
 makedepends=(
-  'git')
+  'git'
+  'help2man')
 
 optdepends=(
   'python2-beautifulsoup3: lyricwiki plugin'
   )
 provides=('exaile')
 conflicts=('exaile')
-replaces=()
-backup=()
-options=()
-install=()
 source=(git://github.com/exaile/exaile.git)
-noextract=()
 md5sums=('SKIP')
 
 _gitname=exaile
@@ -42,18 +37,15 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "${srcdir}/${_gitname}"
-}
-
 build() {
   cd "$_gitname"
-  make clean
+  make
 }
 
 package() {
   cd "$_gitname"
   make DESTDIR="$pkgdir/" PREFIX="/usr" install
+  make clean
 }
 
 # vim:set ts=2 sw=2 et:
