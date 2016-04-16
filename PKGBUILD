@@ -4,7 +4,7 @@ pkgdesc="ROS - A path planner library and node."
 url='http://wiki.ros.org/global_planner'
 
 pkgname='ros-indigo-global-planner'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -21,7 +21,7 @@ ros_makedepends=(ros-indigo-nav-core
   ros-indigo-dynamic-reconfigure
   ros-indigo-nav-msgs
   ros-indigo-pluginlib)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-nav-core
@@ -37,14 +37,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/global_planner/${pkgver}-${_pkgver_patch}
-# _dir=global_planner
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="navigation-release-release-indigo-global_planner-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/ros-gbp/navigation-release/archive/release/indigo/global_planner/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d5825dddc3d26d305cdeceb76b82ffc9301944fb28e7465b9f1fc15d7cbdc944')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/global_planner/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('460ca1a706886727468aa818cf0ba1304f7497b542075cb921724e5b02132e31')
 
 build() {
   # Use ROS environment variables
