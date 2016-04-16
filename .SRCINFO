@@ -1,11 +1,11 @@
 pkgbase = mingw-w64-ki18n
 	pkgdesc = Advanced internationalization framework (mingw-w64)
-	pkgver = 5.20.0
+	pkgver = 5.21.0
 	pkgrel = 1
 	url = https://projects.kde.org/projects/frameworks/ki18n
 	arch = any
 	license = LGPL
-	makedepends = mingw-w64-extra-cmake-modules>=5.20
+	makedepends = mingw-w64-extra-cmake-modules>=5.21
 	makedepends = python
 	depends = mingw-w64-qt5-script
 	depends = mingw-w64-qt5-declarative
@@ -13,8 +13,8 @@ pkgbase = mingw-w64-ki18n
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = http://download.kde.org/stable/frameworks/5.20/ki18n-5.20.0.tar.xz
-	md5sums = b2c5edb59d6ab4fd78d0bf68cfb631c6
+	source = http://download.kde.org/stable/frameworks/5.21/ki18n-5.21.0.tar.xz
+	md5sums = b96cc4d8aa9ae3368463c1a7c647c17f
 
 pkgname = mingw-w64-ki18n
 
