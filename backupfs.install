@@ -1,0 +1,17 @@
+post_install() {
+  egrep backupfs /etc/group >/dev/null || groupadd -g 65530 backupfs
+  egrep backupfs /etc/passwd >/dev/null || \
+    useradd -u 65530 -g 65530 -d /home/backupfs -s /usr/bin/backupfs-shell -c 'backupfs, daily backup system' backupfs
+  chown backupfs:backupfs /usr/bin/{backupfs,backupfs{-remote,-chksrc,-exctar,-mkdir,-mklink,-addfiles,-shell,-hist}}
+  chown backupfs:backupfs /usr/bin/newfiles
+}
+
+post_upgrade() {
+  post_install $1
+}
+
+pre_remove() {
+  sed -i '/backupfs:x:65530:/d' etc/group
+  sed -i '/backupfs:x:65530:/d' etc/passwd
+}
+
