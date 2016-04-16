@@ -1,7 +1,7 @@
 # Maintainer: Robert Orzanna <orschiro@gmail.com>
 
 pkgname=wat-git
-pkgver=r3.8d130b6
+pkgver=r25.1302640
 pkgrel=1
 pkgdesc="Show upgrades since recent -Syu"
 arch=('i686' 'x86_64')
