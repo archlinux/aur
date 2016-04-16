@@ -1,6 +1,6 @@
 # Maintainer: aggraef@gmail.com
 pkgname=libmusicxml-git
-pkgver=34.68feb19
+pkgver=61.9a74ed3
 pkgrel=1
 pkgdesc="library and tools for the MusicXML format (git version)"
 arch=('x86_64' 'i686')
@@ -9,7 +9,7 @@ license=('LGPL')
 makedepends=('cmake')
 provides=('libmusicxml')
 conflicts=('libmusicxml')
-source=("$pkgname::git+https://github.com/dfober/libmusicxml")
+source=("$pkgname::git+https://github.com/dfober/libmusicxml#branch=dev")
 md5sums=('SKIP')
 
 pkgver() {
@@ -18,12 +18,12 @@ pkgver() {
 }
 
 build() {
-    cd "$srcdir/$pkgname/cmake"
+    cd "$srcdir/$pkgname/build"
     cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -G "Unix Makefiles"
     make
 }
 
 package() {
-    cd "$srcdir/$pkgname/cmake"
+    cd "$srcdir/$pkgname/build"
     make install DESTDIR="$pkgdir"
 }
