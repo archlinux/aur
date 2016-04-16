@@ -4,7 +4,7 @@ pkgdesc="ROS - move_slow_and_clear."
 url='http://wiki.ros.org/move_slow_and_clear'
 
 pkgname='ros-indigo-move-slow-and-clear'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -17,7 +17,7 @@ ros_makedepends=(ros-indigo-nav-core
   ros-indigo-cmake-modules
   ros-indigo-catkin
   ros-indigo-pluginlib)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-nav-core
@@ -29,14 +29,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/move_slow_and_clear/${pkgver}-${_pkgver_patch}
-# _dir=move_slow_and_clear
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="navigation-release-release-indigo-move_slow_and_clear-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/ros-gbp/navigation-release/archive/release/indigo/move_slow_and_clear/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2627243cd50ca21a533eb27b1e35a536d6abdbe910b53356b699cd89dc313545')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/move_slow_and_clear/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('eb032f049a41491698f00ee81fda4c09f813612767dd7116b938478a1cec0fac')
 
 build() {
   # Use ROS environment variables
