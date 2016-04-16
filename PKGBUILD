@@ -2,7 +2,7 @@
 #PKGBUILD mantainer: JoseluCross, kprkpr
 
 pkgname=cryptojka
-pkgver=0.4.8
+pkgver=0.4.9
 pkgrel=1
 pkgdesc="de/encryption character by character"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://gitlab.com/JKANetwork/cryptoJKA"
 license=('GPL3')
 options=(!emptydirs)
 source=(https://gitlab.com/JKANetwork/cryptoJKA/raw/master/last-version/$pkgname-$pkgver.tbz2)
-md5sums=('1f0fe1d36cdcec959ceb04d7df68a3a4')
+md5sums=('640a7d4a4e2110957f5c9f109fc4e657')
 build(){
   cd "$srcdir/$pkgname-$pkgver"
   make
