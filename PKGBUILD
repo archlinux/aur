@@ -1,7 +1,7 @@
 # Maintainer: Janusz Lewandowski <lew21@xtreeme.org>
 pkgname=('python-pydbus-git'
          'python2-pydbus-git')
-pkgver=0.5.r0.0a681e4
+pkgver=0.5.1.r0.1b58124
 pkgrel=1
 pkgdesc="Pythonic DBus library"
 arch=("any")
