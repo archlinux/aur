@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=abiword-svn
-pkgver=35200
+pkgver=35214
 pkgrel=1
 pkgdesc='Fully-featured word processor from subversion sources'
 arch=('i686' 'x86_64')
