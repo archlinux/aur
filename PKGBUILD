@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=vim-fzf
-pkgver=0.11.4
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="Fuzzy finder for Vim, inspired by ctrlp.vim and the likes"
 arch=('any')
@@ -10,7 +10,7 @@ groups=('vim-plugins')
 url="https://github.com/junegunn/fzf"
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/junegunn/${pkgname##vim-}/tar.gz/$pkgver)
-sha256sums=('08871ad531c3931224721d4cd56651bf7d109c559a1bbdbfa7c787e3dd03d733')
+sha256sums=('a0754720bda05de1547a50183acec5d8c0515a98be780c2b99d1c1385142b071')
 install=vimdoc.install
 
 prepare() {
@@ -23,14 +23,10 @@ prepare() {
 package() {
   cd "$srcdir/${pkgname##vim-}-$pkgver"
 
-  msg 'Installing docs...'
+  msg2 'Installing docs...'
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/vim-fzf"
 
-  msg 'Installing plugin...'
+  msg2 'Installing plugin...'
   install -dm 755 "$pkgdir/usr/share/vim/vimfiles"
   cp -dpr --no-preserve=ownership plugin "$pkgdir/usr/share/vim/vimfiles"
-
-  msg 'Cleaning up pkgdir...'
-  find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
-  find "$pkgdir" -type d -name .git -exec rm -r '{}' +
 }
