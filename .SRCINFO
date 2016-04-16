@@ -9,7 +9,6 @@ pkgbase = thunar-thumbnailers
 	makedepends = xfce4-dev-tools
 	optdepends = tetex: LaTeX files support
 	optdepends = raw-thumbnailer: Raw Digital Camera Images support
-	optdepends = dcraw: Addition to Raw Digital Camera Images support
 	optdepends = grace: Grace files support
 	optdepends = ffmpegthumbnailer: Video files support
 	source = git://git.xfce.org/apps/thunar-thumbnailers

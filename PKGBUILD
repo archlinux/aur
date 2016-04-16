@@ -13,7 +13,6 @@ makedepends=('git' 'xfce4-dev-tools')
 optdepends=(
     'tetex: LaTeX files support'
     'raw-thumbnailer: Raw Digital Camera Images support'
-    'dcraw: Addition to Raw Digital Camera Images support'
     'grace: Grace files support'
     'ffmpegthumbnailer: Video files support'
 )
