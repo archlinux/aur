@@ -11,9 +11,10 @@ url='http://lostpackets.de/khal/'
 license=('MIT')
 makedepends=('python-setuptools-scm' 'python-sphinxcontrib-newsfeed')
 depends=('python-urwid' "vdirsyncer>=0.5.2" "python-tzlocal>=1.0"
-         "python-click>=3.2" 'python-configobj' 'python-icalendar' 'python-xdg'
+         "python-click>=3.2" 'python-configobj' "python-icalendar>=3.9.2" 'python-xdg'
          'python-pkginfo')
 optdepends=('python-setproctitle')
+checkdepends=('python-pytest' 'python-freezegun')
 source=("http://pypi.python.org/packages/source/k/khal/khal-${pkgver}.tar.gz")
 sha256sums=('9d352e4aa6256e493d5aea69540f642158bdcab75d2383e1e43506bf89982094')
 
@@ -27,6 +28,17 @@ build() {
 
   cd "$srcdir/$pkgname-$pkgver/doc"
   make man PYTHONPATH="$srcdir/$pkgname-$pkgver"
+}
+
+check() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  if [ "$(locale -a | grep -o en_US)" == "en_US" ]
+  then
+    py.test
+  else
+    echo "The tests need the 'en_US' locale"
+  fi
 }
 
 package() {
