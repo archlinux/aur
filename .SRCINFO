@@ -1,7 +1,7 @@
 pkgbase = latexila
 	pkgdesc = A LaTeX editor designed for the GNOME desktop
-	pkgver = 3.18.1
-	pkgrel = 2
+	pkgver = 3.20.0
+	pkgrel = 1
 	url = http://projects.gnome.org/latexila/
 	install = latexila.install
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = latexila
 	optdepends = yelp: for viewing help files
 	provides = latexila
 	conflicts = latexila-git
-	source = http://ftp.gnome.org/pub/GNOME/sources/latexila/3.18/latexila-3.18.1.tar.xz
-	sha256sums = edfd95f321dfff31fb094c243c358cb78d19904164b9ef4fb37c021113044d0a
+	source = http://ftp.gnome.org/pub/GNOME/sources/latexila/3.20/latexila-3.20.0.tar.xz
+	sha256sums = fa0a7023b522339a1d5af57121bbed410651f4772b76a7139a3ab1c2ab49f85c
 
 pkgname = latexila
 
