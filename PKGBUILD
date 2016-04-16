@@ -1,15 +1,15 @@
 # Maintainer: Ainola
 
 pkgname=gog-freedom-planet
-pkgver=2.1.0.5
-pkgrel=3
+pkgver=2.2.0.6
+pkgrel=1
 pkgdesc="A combat-based platform adventure that pits a spunky dragon girl and her friends against an alien attack force."
 url="http://freedomplanet.galaxytrail.com/"
 license=('custom')
 arch=('i686' 'x86_64')
 source=("gog://gog_freedom_planet_${pkgver}.sh"
         "${pkgname}.desktop")
-sha256sums=('8a63a6b18ffbb43e9154b2fa17666bf937de0f48563480de574950f140683012'
+sha256sums=('6c09b0c768424c65638c842fa19b9d051dc2ae43cf956f6aab76f305ab76a912'
             'a6545600bb9af6aa24fe25b85366690930d8725477638aebb0c0220c836fe53f')
 install="${pkgname}.install"
 
