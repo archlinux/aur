@@ -3,12 +3,13 @@
 
 pkgname=zuki-themes-git
 pkgver=r81.f78c14d
-pkgrel=1
+pkgrel=2
 pkgdesc="A selection of themes for GTK3, gnome-shell and more."
 arch=('any')
 url="https://github.com/lassekongo83/zuki-themes"
 license=('GPL3')
 depends=('gtk-engine-murrine' 'gtk-engines')
+makedepends=('git')
 conflicts=('zukitwo-themes')
 optdepends=('gnome-themes-standard: Required for the GTK3 theme'
             'ttf-droid: Font family for the Gnome Shell theme')
