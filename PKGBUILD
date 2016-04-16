@@ -9,15 +9,15 @@ license=('custom:"Nasa Open Source Agreement"')
 depends=('espa-product-formatter')
 provides=('espa-cloud-masking')
 conflicts=('espa-cloud-masking')
-source=("https://github.com/USGS-EROS/espa-cloud-masking/archive/cloud-masking-2016_Mar.tar.gz")
+source=('https://github.com/USGS-EROS/espa-cloud-masking/archive/cloud-masking-2016_Mar.tar.gz')
 md5sums=('SKIP')
 
 prepare() {
-        cd "$srcdir"
+        cd $srcdir
         mv "espa-cloud-masking-cloud-masking-2016_Mar" "$pkgname"
-        cd "$pkgname"
+        cd $pkgname
 
-        mv cfmask/CFMASK-LICENSE.txt LICENSE
+        mv ./cfmask/CFMASK-LICENSE.txt LICENSE
 
         python_files=$(find -name '*.py')
         for file in $python_files
@@ -37,8 +37,6 @@ prepare() {
         sed -i -e \
             's:static_install_path = $(espa_project_dir)/static_data:static_install_path = $(prefix)/../var/lib/espa/$(project_name)/static_data:g' \
             Makefile
-
-
 }
 
 
