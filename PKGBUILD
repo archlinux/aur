@@ -4,7 +4,7 @@ pkgdesc="ROS - Holds the action description and relevant messages for the move_b
 url='http://wiki.ros.org/move_base_msgs'
 
 pkgname='ros-indigo-move-base-msgs'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-indigo-message-generation
   ros-indigo-catkin
   ros-indigo-actionlib-msgs
   ros-indigo-geometry-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-actionlib-msgs
@@ -24,14 +24,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/move_base_msgs/${pkgver}-${_pkgver_patch}
-# _dir=move_base_msgs
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="navigation-release-release-indigo-move_base_msgs-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/ros-gbp/navigation-release/archive/release/indigo/move_base_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9a3075af115add9d7fd01e280ea30fad32dcb633a4b2e0856c661bdfa58a34fa')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/move_base_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('6723722279b2ef9c9fa40cae2714b300686aad8792c9f3906699a5bd515c7562')
 
 build() {
   # Use ROS environment variables
