@@ -7,10 +7,11 @@ pkgbase = thunar-thumbnailers
 	license = CCPL:cc-by-nc-sa
 	makedepends = git
 	makedepends = xfce4-dev-tools
+	depends = imagemagick
 	optdepends = tetex: LaTeX files support
 	optdepends = raw-thumbnailer: Raw Digital Camera Images support
 	optdepends = grace: Grace files support
-	optdepends = ffmpegthumbnailer: Video files support
+	optdepends = ffmpegthumbnailer: Thumbnails for video files support
 	source = git://git.xfce.org/apps/thunar-thumbnailers
 	md5sums = SKIP
 

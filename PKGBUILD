@@ -9,12 +9,13 @@ arch=('any')
 pkgdesc="Display various file previews (thumbnails) in Thunar file manager."
 url="http://goodies.xfce.org/projects/thunar-plugins/thunar-thumbnailers"
 license=('CCPL:cc-by-nc-sa')
+depends=('imagemagick')
 makedepends=('git' 'xfce4-dev-tools')
 optdepends=(
     'tetex: LaTeX files support'
     'raw-thumbnailer: Raw Digital Camera Images support'
     'grace: Grace files support'
-    'ffmpegthumbnailer: Video files support'
+    'ffmpegthumbnailer: Thumbnails for video files support'
 )
 source=('git://git.xfce.org/apps/thunar-thumbnailers')
 md5sums=('SKIP')
