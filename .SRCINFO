@@ -1,6 +1,6 @@
 pkgbase = neomutt
 	pkgdesc = Small but powerful text-based mail client
-	pkgver = neomutt.20160404.r0.gfba0ecd
+	pkgver = neomutt.20160416.r0.gfc12fdf
 	pkgrel = 1
 	url = http://www.neomutt.org/
 	arch = i686

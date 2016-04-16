@@ -3,7 +3,7 @@
 
 _pkgname=neomutt
 pkgname=neomutt
-pkgver=neomutt.20160404.r0.gfba0ecd
+pkgver=neomutt.20160416.r0.gfc12fdf
 pkgrel=1
 pkgdesc='Small but powerful text-based mail client'
 url='http://www.neomutt.org/'
