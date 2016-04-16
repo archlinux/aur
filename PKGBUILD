@@ -4,7 +4,7 @@ pkgdesc="ROS - navfn provides a fast interpolated navigation function that can b
 url='http://wiki.ros.org/navfn'
 
 pkgname='ros-indigo-navfn'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -23,7 +23,7 @@ ros_makedepends=(ros-indigo-nav-core
   ros-indigo-tf
   ros-indigo-nav-msgs
   ros-indigo-pluginlib)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   netpbm)
 
@@ -42,14 +42,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/navfn/${pkgver}-${_pkgver_patch}
-# _dir=navfn
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="navigation-release-release-indigo-navfn-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/ros-gbp/navigation-release/archive/release/indigo/navfn/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1287faebaed0e3f75979c791ca6e2a7c025aa7e79397848205cda1f3fed24ca1')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/navfn/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('4f85e9306dfb329451e16b9b278bf0014b1719b0edae3714ece181e01abf9834')
 
 build() {
   # Use ROS environment variables
