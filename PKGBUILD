@@ -3,16 +3,16 @@
 # Contributor: Christian Holme <cholme at gmx dot com>
 
 pkgname=idlex
-pkgver=1.12
+pkgver=1.13
 pkgrel=1
 pkgdesc="Extensions to IDLE, the Python IDE"
 arch=('any')
-url=("http://idlex.sourceforge.net/")
+url="http://idlex.sourceforge.net/"
 license=('custom:NCSA')
 depends=('python')
 options=(!emptydirs)
 source=("http://downloads.sourceforge.net/project/idlex/$pkgname-$pkgver.zip")
-md5sums=('16c800f56314a5c1a497f53d293b9e71')
+md5sums=('ddda3e3c36b19aac8a2bf69bf7cbedf1')
 
 
 package() {
