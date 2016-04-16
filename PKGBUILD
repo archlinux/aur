@@ -1,5 +1,5 @@
 pkgname=pacaur-git
-pkgver=4.6.1
+pkgver=4.6.2
 pkgrel=1
 pkgdesc="An AUR helper that minimizes user interaction"
 arch=('any')
@@ -43,18 +43,8 @@ package() {
   install -D -m644 ./pacaur.8 $pkgdir/usr/share/man/man8/pacaur.8
   mkdir -p $pkgdir/usr/share/licenses/pacaur
   install -D -m644 ./LICENSE $pkgdir/usr/share/licenses/pacaur/LICENSE
-  mkdir -p $pkgdir/usr/share/locale/{ca,de,es,fr,hu,it,ja,nl,pl,pt,ru,sk,tr}/LC_MESSAGES/
-  msgfmt ./po/ca.po -o $pkgdir/usr/share/locale/ca/LC_MESSAGES/pacaur.mo
-  msgfmt ./po/de.po -o $pkgdir/usr/share/locale/de/LC_MESSAGES/pacaur.mo
-  msgfmt ./po/es.po -o $pkgdir/usr/share/locale/es/LC_MESSAGES/pacaur.mo
-  msgfmt ./po/fr.po -o $pkgdir/usr/share/locale/fr/LC_MESSAGES/pacaur.mo
-  msgfmt ./po/hu.po -o $pkgdir/usr/share/locale/hu/LC_MESSAGES/pacaur.mo
-  msgfmt ./po/it.po -o $pkgdir/usr/share/locale/it/LC_MESSAGES/pacaur.mo
-  msgfmt ./po/ja.po -o $pkgdir/usr/share/locale/ja/LC_MESSAGES/pacaur.mo
-  msgfmt ./po/nl.po -o $pkgdir/usr/share/locale/nl/LC_MESSAGES/pacaur.mo
-  msgfmt ./po/pl.po -o $pkgdir/usr/share/locale/pl/LC_MESSAGES/pacaur.mo
-  msgfmt ./po/pt.po -o $pkgdir/usr/share/locale/pt/LC_MESSAGES/pacaur.mo
-  msgfmt ./po/ru.po -o $pkgdir/usr/share/locale/ru/LC_MESSAGES/pacaur.mo
-  msgfmt ./po/sk.po -o $pkgdir/usr/share/locale/sk/LC_MESSAGES/pacaur.mo
-  msgfmt ./po/tr.po -o $pkgdir/usr/share/locale/tr/LC_MESSAGES/pacaur.mo
+  for i in {ca,de,es,fr,hu,it,ja,nl,pl,pt,ru,sk,sr,sr@latin,tr}; do
+    mkdir -p $pkgdir/usr/share/locale/$i/LC_MESSAGES/
+    msgfmt ./po/$i.po -o $pkgdir/usr/share/locale/$i/LC_MESSAGES/pacaur.mo
+  done
 }
