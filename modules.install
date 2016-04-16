@@ -1,4 +1,4 @@
-KERNEL_VERSION=4.4.1-usermodelinux
+KERNEL_VERSION=4.5.1-usermodelinux
 
 post_install() {
   echo ">>> Updating module dependencies. Please wait ..."

@@ -2,8 +2,8 @@ pkgname=linux-usermode
 true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
 _kernelname=-usermodelinux
-_srcname=linux-4.4
-pkgver=4.4.1
+_srcname=linux-4.5
+pkgver=4.5.1
 pkgrel=1
 pkgdesc="User mode Linux kernel and modules"
 arch=('i686' 'x86_64')
@@ -15,10 +15,10 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 	config-i686
 	config-x86_64)
-md5sums=('9a78fa2eb6c68ca5a40ed5af08142599'
-         'd9e951895c8c249f0bf52d85f3e63bce'
-         '6591c4b84535db059a29f6d0aec12b88'
-         '30b8f016b4b97857b24827718b735a8f')
+md5sums=('a60d48eee08ec0536d5efb17ca819aef'
+         '1df9ff0283c1732ebbf7c55f340a121b'
+         '6ea12a1081777445a7aa0b83943a2e2c'
+         '0b7d5565e655edc4a58a09eab21005bc')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
@@ -38,7 +38,6 @@ build() {
 #return 1
 
   make ARCH=um vmlinux modules KCFLAGS=-fPIC
-#  make ARCH=um vmlinux modules KCFLAGS="-fPIC -D__used='__attribute__((__used__))'"
 }
 
 package_linux-usermode() {
