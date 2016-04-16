@@ -22,7 +22,7 @@ build() {
   CXXFLAGS="$CXXFLAGS    -std=c++11"
 
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python2 waf configure   --prefix=/usr --static-ffmpeg
+  python2 waf configure   --prefix=/usr 
   python2 waf build
 }
 
