@@ -3,7 +3,7 @@
 # Contributor: Andrei "Garoth" Thorp <garoth "at the nice" gmail "dot" com>
 
 pkgname=debhelper
-pkgver=9.20160313
+pkgver=9.20160403
 pkgrel=1
 pkgdesc="A collection of programs that can be used in a debian/rules file to automate common tasks"
 arch=('any')
