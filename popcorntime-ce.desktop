@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Popcorn Time CE
+Comment=Watch Movies and TV Shows instantly
+Exec=popcorntime-ce %U
+Icon=popcorntime-ce
+MimeType=application/x-bittorrent;x-scheme-handler/magnet;
+StartupNotify=false
+Categories=AudioVideo;Video;Network;Player;P2P;
+Type=Application
