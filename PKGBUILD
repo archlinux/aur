@@ -6,7 +6,7 @@ pkgdesc="GUI for Clevo Notebooks with a backlit keyboard with controllable LEDs.
 arch=("x86_64" "i686")
 url="https://github.com/ChristophHaag/clevo_wmi_kivy-gui"
 license=('GPL')
-depends=('python3' 'python-kivy-git' 'clevo-wmi') #should work with python2 too
+depends=('python3' 'python-kivy' 'clevo-wmi-dkms-git') #should work with python2 too
 options=('!emptydirs')
 source=("git+https://github.com/ChristophHaag/clevo_wmi_kivy-gui.git"
         "clevo_wmi-gui.sh")
