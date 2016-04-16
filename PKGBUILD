@@ -1,8 +1,8 @@
 # Maintainer: Sébastien Luttringer
 
 pkgname=quagga
-pkgver=0.99.24.1
-pkgrel=2
+pkgver=1.0.20160315
+pkgrel=1
 pkgdesc='BGP/OSPF/ISIS/RIP/RIPNG routing daemon suite'
 arch=('i686' 'x86_64')
 url='http://www.quagga.net'
@@ -21,7 +21,7 @@ source=("http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar
         'ripd.service'
         'ripngd.service'
         'zebra.service')
-md5sums=('7986bdc2fe6027d4c9216f7f5791e718'
+md5sums=('e73d6e527fb80240f180de420cfe8042'
          '286c545efadcc7b463eb603c25473cb4'
          '9dfa2f649a2c83a2e52f5f89dec3b167'
          '20a8e36ad851d4e06467aeb56a84b245'
@@ -48,8 +48,6 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
-  # fix broken 0.99.22.4 tarball
-  autoreconf -fvi
   ./configure \
     --prefix=/usr \
     --sbindir=/usr/bin \
