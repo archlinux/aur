@@ -1,6 +1,6 @@
 pkgbase = eid-viewer
 	pkgdesc = Viewer for Belgian Electronic Identity Card
-	pkgver = 4.1.12
+	pkgver = 4.1.13
 	pkgrel = 1
 	url = http://eid.belgium.be/
 	install = eid-viewer.install
