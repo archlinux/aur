@@ -1,0 +1,17 @@
+rebuild_module_dependencies() {
+    depmod $(cat "@MODULES_PATH@/version")
+}
+
+post_install() {
+    rebuild_module_dependencies
+    echo 'In order to use igb module, reboot the system.'
+}
+
+post_upgrade() {
+    rebuild_module_dependencies
+    echo 'In order to use igb module, reboot the system.'
+}
+
+post_remove() {
+    rebuild_module_dependencies
+}
