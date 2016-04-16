@@ -5,11 +5,11 @@
 
 _upstream="compizconfig-python"
 _pkgver=0.8.12
-_micro=""
+_micro=".1"
 
 pkgname=compizconfig-python
 pkgver="${_pkgver}${_micro}"
-pkgrel=2
+pkgrel=1
 pkgdesc="Compizconfig bindings for python"
 arch=('i686' 'x86_64')
 url="https://github.com/compiz-reloaded/${_upstream}/"
@@ -24,7 +24,7 @@ build()
 {
 	cd "${srcdir}/${_upstream}-${pkgver}"
 
-	#NOCONFIGURE=1 ./autogen.sh
+	NOCONFIGURE=1 ./autogen.sh
 	PYTHON=python2 ./configure --prefix=/usr
 	make
 }
@@ -36,4 +36,4 @@ package()
 	make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('b86dffa0884d2294aaa33d1d9e07ff652e9e54d071b853948d320f6e12783178')
+sha256sums=('ca905e3d3450ed2748d992065d53d104033e7402b1ea4789188c0d3fcce2b39a')
