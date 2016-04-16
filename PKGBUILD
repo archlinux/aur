@@ -4,7 +4,7 @@ pkgdesc="ROS - This package provides common interfaces for navigation specific r
 url='http://wiki.ros.org/nav_core'
 
 pkgname='ros-indigo-nav-core'
-pkgver='1.12.6'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,7 +15,7 @@ ros_makedepends=(ros-indigo-std-msgs
   ros-indigo-costmap-2d
   ros-indigo-tf
   ros-indigo-geometry-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-std-msgs
@@ -26,14 +26,14 @@ depends=(${ros_depends[@]})
 
 # Git version (e.g. for debugging)
 # _tag=release/indigo/nav_core/${pkgver}-${_pkgver_patch}
-# _dir=nav_core
+# _dir=${pkgname}
 # source=("${_dir}"::"git+https://github.com/ros-gbp/navigation-release.git"#tag=${_tag})
 # sha256sums=('SKIP')
 
 # Tarball version (faster download)
 _dir="navigation-release-release-indigo-nav_core-${pkgver}-${_pkgver_patch}"
-source=("https://github.com/ros-gbp/navigation-release/archive/release/indigo/nav_core/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e30612d17623ae882547838139a02f79eba0e8c1ac9be03c19b9b045c1b24f43')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/navigation-release/archive/release/indigo/nav_core/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('cabc560c5f8ad8006d5688a9d396ec9d411d88f023d7ebaadda68bf3edae9430')
 
 build() {
   # Use ROS environment variables
