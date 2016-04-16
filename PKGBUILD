@@ -1,4 +1,5 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
+# Contributor: nougad
 
 pkgname=opensmtpd-snapshot
 _pkgname=opensmtpd

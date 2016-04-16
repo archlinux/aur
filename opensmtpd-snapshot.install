@@ -1,18 +1,18 @@
 post_install() {
-  if [ $(getent group _smtpd > /dev/null) ]; then
+  if ! getent group _smtpd > /dev/null; then
     groupadd -r _smtpd
   fi;
-  if [ $(getent group _smtpq > /dev/null) ]; then
+  if ! getent group _smtpq > /dev/null; then
     groupadd -r _smtpq
   fi;
-  if [ $(getent passwd _smtpd > /dev/null) ]; then
+  if ! getent passwd _smtpd > /dev/null; then
     useradd -c "SMTPD Daemon" -r -g _smtpd -d /var/empty -s /sbin/nologin _smtpd
   fi;
-  if [ $(getent passwd _smtpq > /dev/null) ]; then
-    useradd "SMTPD queue user" -r -g _smtpd -d /var/empty -s /sbin/nologin _smtpq
+  if ! getent passwd _smtpq > /dev/null; then
+    useradd -c "SMTPD queue user" -r -g _smtpd -d /var/empty -s /sbin/nologin _smtpq
   fi;
-  if [ $(getent passwd _smtpf > /dev/null) ]; then
-    useradd "SMTPD filter user" -r -g _smtpd -d /var/empty -s /sbin/nologin _smtpq
+  if ! getent passwd _smtpf > /dev/null; then
+    useradd -c "SMTPD filter user" -r -g _smtpd -d /var/empty -s /sbin/nologin _smtpf
   fi;
 
   chown -R _smtpd:_smtpd /etc/mail
