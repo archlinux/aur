@@ -11,15 +11,16 @@ license=('MIT')
 depends=('coreutils' 'awk' 'bash' 'util-linux' 'imagemagick' 'i3lock' 'scrot')
 makedepends=('git')
 provides=("i3lock-fancy")
-source=("git+https://github.com/meskarune/$_gitname.git")
-md5sums=('SKIP')
+source=("git+https://github.com/meskarune/$_gitname.git" "package.patch")
+md5sums=('SKIP'
+         'b7493e6bb3ce1129e0f23f18c4e9480f')
 
 pkgver() {
   cd "$_gitname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 build() {
-    patch -N "${srcdir}"/"${_gitname}"/lock ../package.patch
+    patch -N "${srcdir}"/"${_gitname}"/lock "${srcdir}"/package.patch
 }
 package() {
     cd "${srcdir}"/"$_gitname"
