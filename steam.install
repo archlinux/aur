@@ -15,6 +15,7 @@ post_install() {
 
 post_upgrade() {
   pre_install
+  getent group steamcontroller &>/dev/null || groupadd -g 906 steamcontroller >/dev/null
   echo "+-------------------------------------------------------------------------------------+"
   echo "| If you use the Steam Controller, you need to add your user in group steamcontroller |"
   echo "| and make relogin: gpasswd -a {USER} steamcontroller                                 |"
