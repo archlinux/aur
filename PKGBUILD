@@ -1,14 +1,6 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# See http://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines
-# for more information on packaging from GIT sources.
-
 # Maintainer: 1213 <lambertacampo at gmail dot com>
 pkgname=exaile-git
-pkgver=3.4.5
+pkgver=3.4.5.r569.g0f06dfe
 pkgrel=1
 pkgdesc="music player for gnome, similar to KDEs amarok"
 arch=('any')
@@ -20,50 +12,47 @@ depends=(
   'gtk3>=3.10' 
   'gstreamer>=1.4' 
   'mutagen>=1.10' 
-  'dbus-python'
-  'pygobject-devel>=3.13.2'
-  'python-cairo')
+  'python2-dbus'
+  'python2-gobject>=3.13.2'
+  'python2-cairo'
+  'udisks2'
+  'librsvg'
+  'gst-plugins-good')
 
-makedepends=('git')
-provides=()
-conflicts=()
+makedepends=(
+  'git')
+
+optdepends=(
+  'python2-beautifulsoup3: lyricwiki plugin'
+  )
+provides=('exaile')
+conflicts=('exaile')
 replaces=()
 backup=()
 options=()
 install=()
-source=()
+source=(git://github.com/exaile/exaile.git)
 noextract=()
-md5sums=() #generate with 'makepkg -g'
+md5sums=('SKIP')
 
-_gitroot="https://github.com/exaile/exaile.git"
 _gitname=exaile
 
+pkgver() {
+  cd "$_gitname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd "${srcdir}/${_gitname}"
+}
+
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
-  #
-  # BUILD HERE
-  #
-  make
+  cd "$_gitname"
+  make clean
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd "$_gitname"
   make DESTDIR="$pkgdir/" PREFIX="/usr" install
 }
 
