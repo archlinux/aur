@@ -8,7 +8,7 @@ pkgdesc="A short kinetic novel crafted in a month by Dischan, Juniper's Knot is 
 arch=('any')
 url="http://junipersknot.dischan.org/"
 license=('custom')
-depends=('renpy python2-pygame')
+depends=('renpy' 'python2-pygame')
 options=(!strip)
 source=("JunipersKnot_en_1.0_lin.tar.bz2::https://dischan.co/downloads/JunipersKnot_en_1.0_lin.tar.bz2"
 	dischan_JunipersKnot.desktop
