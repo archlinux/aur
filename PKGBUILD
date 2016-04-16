@@ -4,8 +4,8 @@
 # Contributor: Hubert Grzeskowiak <arch at nemesis13 de>
 
 pkgname=panda3d-git
-pkgver=git
-pkgrel=5
+pkgver=v1.9.1.r472.gd3071d1
+pkgrel=1
 pkgdesc="A 3D game engine with Python bindings. SDK package. Git Version. Optional dependencies you want to support need to be installed before panda3d."
 url="http://www.panda3d.org"
 arch=('i686' 'x86_64')
@@ -78,7 +78,7 @@ build() {
 
 package() {
   cd $srcdir/panda3d
-  python2 makepanda/installpanda.py --prefix=/usr --destdir="$pkgdir"
+  python makepanda/installpanda.py --prefix=/usr --destdir="$pkgdir"
   install -D -m644 "$srcdir/panda3d/doc/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
@@ -98,7 +98,7 @@ post_remove() {
   update-desktop-database -q
 }
 
-#pkgver() {
-#  cd "$pkgname"
-#  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-#}
+pkgver() {
+  cd "panda3d"
+  git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+}
