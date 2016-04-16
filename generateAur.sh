@@ -68,3 +68,6 @@ echo "pkgbase = whatsie
 	license = MIT
 	depends = dpkg
 pkgname = whatsie" > .SRCINFO
+
+git add -A
+git commit -m "Release $pkgver PackageRel $pkgrel"
