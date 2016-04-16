@@ -7,13 +7,13 @@ pkgbase = clevo_wmi-gui
 	arch = i686
 	license = GPL
 	depends = python3
-	depends = python3-kivy-git
+	depends = python-kivy-git
 	depends = clevo-wmi
 	options = !emptydirs
 	source = git+https://github.com/ChristophHaag/clevo_wmi_kivy-gui.git
 	source = clevo_wmi-gui.sh
 	md5sums = SKIP
-	md5sums = 831350cbf86cf21c0c82d0f3c03c059c
+	md5sums = 387fb7ad32c65c675805b52419e5c28e
 
 pkgname = clevo_wmi-gui
 
