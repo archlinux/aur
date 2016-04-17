@@ -2,6 +2,10 @@
 ChangeLog for libTheSky PKGBUILD
 http://libthesky.sourceforge.net/
 
+* libthesky-0.3.3-3 (2016-04-17 - AstroFloyd)
+	Revision bump to v0.3.3-3:
+	remove unwanted man pages
+
 * libthesky-0.3.3-2 (2016-04-16 - AstroFloyd)
 	Revision bump: 0.3.3-1 -> 0.3.3-2:
 	added dependency on libthesky-data
