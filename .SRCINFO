@@ -1,7 +1,7 @@
 pkgbase = rslevel
 	pkgdesc = Check your or others' Runescape levels, or compare the levels of multiple players
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/shinnova/rslevel
 	arch = any
 	license = GPL

@@ -1,7 +1,7 @@
 # Maintainer: Ivanka Heins <ivanka@tuta.io>
 pkgname=rslevel
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Check your or others' Runescape levels, or compare the levels of multiple players"
 arch=('any')
 url="https://github.com/shinnova/rslevel"
