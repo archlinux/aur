@@ -1,6 +1,6 @@
 pkgname='cockroachdb-git'
 pkgdesc='A Scalable, Geo-Replicated, Transactional Datastore'
-pkgver=r7357.e617cdb
+pkgver=r9464.0958303
 pkgrel=1
 license=('Apache')
 url='https://github.com/cockroachdb/cockroach'
@@ -12,7 +12,7 @@ makedepends=('go')
 
 
 pkgver () {
-	cd "${pkgname}"
+	cd "${GOPATH}/src/github.com/cockroachdb/cockroach"
 	(
 		set -o pipefail
 		git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
