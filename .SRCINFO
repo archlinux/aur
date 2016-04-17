@@ -1,0 +1,17 @@
+pkgbase = msiklm-git
+	pkgdesc = A simple backlighting manager for MSI steelseries keyboards
+	pkgver = 20160417.d3f15b9
+	pkgrel = 1
+	url = https://github.com/Gibtnix/MSIKLM
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = hidapi
+	provides = msiklm
+	conflicts = msiklm
+	source = msiklm-git::git://github.com/Gibtnix/MSIKLM
+	md5sums = SKIP
+
+pkgname = msiklm-git
+
