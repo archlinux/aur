@@ -1,14 +1,14 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoin-classic-git
-pkgver=v0.12.0cl1.r2.gd10f990
-pkgrel=1
+pkgver=v0.12.0cl1.r14.gc596b82
+pkgrel=2
 pkgdesc='Bitcoin Classic versions of Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, most recent stable branch, w/GUI and wallet'
 arch=('i686' 'x86_64')
 url="https://bitcoinclassic.com/"
 license=('MIT')
-depends=('boost-libs' 'openssl' 'miniupnpc' 'protobuf' 'qrencode' 'qt4')
-makedepends=('boost' 'automoc4' 'qrencode' 'miniupnpc' 'protobuf')
+depends=('boost-libs' 'desktop-file-utils' 'libevent' 'qt5-base' 'protobuf' 'qrencode' 'openssl')
+makedepends=('boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'protobuf')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
@@ -26,7 +26,7 @@ build() {
 	msg2 'Building...'
   CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
 	./autogen.sh
-	./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt4
+	./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt5
   make -j$(nproc)
 }
 
