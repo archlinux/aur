@@ -40,7 +40,8 @@ package() {
   rm -vf "$pkgdir/usr/lib/udev/rules.d/95-dataeng-udev.rules"
 
   msg2 "Removing conflicting files"
-  rm -vf "$pkgdir/usr/lib"/{libcimcclient,libcimcClientXML,libcmpisfcc}.so*
+  rm -vf "$pkgdir"/usr/lib/{libcimcclient,libcimcClientXML,libcmpisfcc}.so*
+  rm -vf "$pkgdir"/usr/share/man/
 }
 
 _reloc() {
