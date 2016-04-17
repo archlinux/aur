@@ -8,7 +8,7 @@
 
 pkgname=openct-git
 pkgver=r1046.a4f3fcb
-pkgrel=1
+pkgrel=2
 pkgdesc="Implements drivers for several smart card readers and PCSC Lite"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/OpenSC/openct/"
