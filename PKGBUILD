@@ -8,7 +8,7 @@
 # you also find the URL of a binary repository.
 
 pkgname=mingw-w64-angleproject
-pkgver=2.1.r5658.a3d333c
+pkgver=2.1.r5707.5858f7e
 pkgrel=1
 pkgdesc='ANGLE project (mingw-w64)'
 arch=('any')
@@ -17,7 +17,7 @@ license=('BSD')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-gcc' 'git' 'gyp-git' 'python')
 options=('!strip' '!buildflags' 'staticlibs')
-source=('angleproject::git+https://chromium.googlesource.com/angle/angle#commit=a3d333c'
+source=('angleproject::git+https://chromium.googlesource.com/angle/angle#commit=5858f7e'
         'additional-mingw-header::git+https://github.com/Martchus/additional-mingw-header.git#commit=7a8f394'
         'angleproject-include-import-library-and-use-def-file.patch'
         'libEGL_mingw32.def'
@@ -43,7 +43,7 @@ prepare() {
   cd "${srcdir}/angleproject"
 
   # provide recent versions of some mingw-w64 header files
-  mkdir sysinclude
+  mkdir -p sysinclude
   cp ../additional-mingw-header/{d3d11sdklayers,dxgi1_2,versionhelpers,d3d10_1,sdkddkver,d3d11,dcomp,dcomptypes,dcompanimation}.h sysinclude/
   cp sysinclude/{versionhelpers,VersionHelpers}.h
 
@@ -89,7 +89,7 @@ build() {
       target="win64"
     fi
 
-    gyp -D OS=win -D TARGET=$target --format make -D MSVS_VERSION="" --depth . -I ../build/common.gypi ../src/angle.gyp
+    gyp -D use_ozone=0 -D OS=win -D TARGET=$target --format make -D MSVS_VERSION="" --depth . -I ../build/common.gypi ../src/angle.gyp
 
     # forcing non-concurrent build to prevent:
     # i686-w64-mingw32-g++ -shared   -Wl,-soname=libGLESv2.so -o out/Debug/obj.target/../src/libGLESv2.so -Wl,--whole-archive out/Debug/obj.target/libGLESv2/../src/libGLESv2/entry_points_egl.o out/Debug/obj.target/libGLESv2/../src/libGLESv2/entry_points_egl_ext.o out/Debug/obj.target/libGLESv2/../src/libGLESv2/entry_points_gles_2_0.o out/Debug/obj.target/libGLESv2/../src/libGLESv2/entry_points_gles_2_0_ext.o out/Debug/obj.target/libGLESv2/../src/libGLESv2/entry_points_gles_3_0.o out/Debug/obj.target/libGLESv2/../src/libGLESv2/global_state.o out/Debug/obj.target/libGLESv2/../src/libGLESv2/libGLESv2.o out/Debug/obj.target/../src/libANGLE.a out/Debug/obj.target/../src/libangle_common.a out/Debug/obj.target/../src/libtranslator_static.a out/Debug/obj.target/../src/libtranslator_lib.a out/Debug/obj.target/../src/libpreprocessor.a -Wl,--no-whole-archive
@@ -98,7 +98,7 @@ build() {
     make -j1 V=1
 
     # static libs must be built separately
-    gyp -D OS=win -D TARGET=$target --format make -D MSVS_VERSION="" --depth . -I ../build/common.gypi ../src/angle.gyp -D angle_gl_library_type=static_library
+    gyp -D use_ozone=0 -D OS=win -D TARGET=$target --format make -D MSVS_VERSION="" --depth . -I ../build/common.gypi ../src/angle.gyp -D angle_gl_library_type=static_library
     make -j1 V=1
 
     # the static libs produced by the build script are just thin archives so they don't contain any objects themselves
