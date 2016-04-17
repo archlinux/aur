@@ -1,4 +1,5 @@
-# Script generated with import_catkin_packages.py
+# Based on a script generated with import_catkin_packages.py
+# Modified to use a special branch for Gazebo 7 suport
 # For more information: https://github.com/bchretien/arch-ros-stacks
 pkgdesc="ROS - hector_gazebo_plugins provides gazebo plugins from Team Hector."
 url='http://ros.org/wiki/hector_gazebo_plugins'
@@ -7,7 +8,7 @@ pkgname='ros-indigo-hector-gazebo-plugins'
 pkgver='0.3.7'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-indigo-dynamic-reconfigure
@@ -32,9 +33,8 @@ ros_depends=(ros-indigo-dynamic-reconfigure
   ros-indigo-nav-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/indigo/hector_gazebo_plugins/${pkgver}-${_pkgver_patch}
 _dir=hector_gazebo_plugins
-source=("${_dir}"::"git+https://github.com/tu-darmstadt-ros-pkg-gbp/hector_gazebo-release.git"#tag=${_tag})
+source=("${_dir}"::"git+https://github.com/tu-darmstadt-ros-pkg/hector_gazebo.git"#branch=argos_gazebo7)
 md5sums=('SKIP')
 
 build() {
@@ -43,14 +43,14 @@ build() {
   [ -f /opt/ros/indigo/setup.bash ] && source /opt/ros/indigo/setup.bash
 
   # Create build directory
-  [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-  cd ${srcdir}/build
+  [ -d ${srcdir}/${_dir}/build ] || mkdir ${srcdir}/${_dir}/build
+  cd ${srcdir}/${_dir}/build
 
   # Fix Python2/Python3 conflicts
-  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}
+  /usr/share/ros-build-tools/fix-python-scripts.sh -v 2 ${srcdir}/${_dir}/${_dir}
 
   # Build project
-  cmake ${srcdir}/${_dir} \
+  cmake ${srcdir}/${_dir}/${_dir} \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_CXX_FLAGS=-std=c++11\
         -DCATKIN_BUILD_BINARY_PACKAGE=ON \
@@ -64,6 +64,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/build"
+  cd "${srcdir}/${_dir}/build"
   make DESTDIR="${pkgdir}/" install
 }
