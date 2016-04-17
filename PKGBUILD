@@ -3,7 +3,7 @@
 # Contributor: Ray Donnelly <mingw.android@gmail.com>
 _realname=icu
 pkgname=mingw-w64-${_realname}
-pkgver=56.1
+pkgver=57.1
 pkgrel=1
 arch=(any)
 pkgdesc="International Components for Unicode library (mingw-w64)"
@@ -24,7 +24,7 @@ source=("http://download.icu-project.org/files/icu4c/${pkgver}/icu4c-${pkgver//.
 "0015-debug.mingw.patch"
 "0016-icu-pkgconfig.patch"
 "0017-icu-config-versioning.patch")
-md5sums=('c4a2d71ff56aec5ebfab2a3f059be99d'
+md5sums=('976734806026a4ef8bdd17937c8898b9'
          '4c8143786ed499184e64fc5a1a1d0fdf'
          'eb56b72df2ca0dc77261c4f2adc5c8ad'
          '9c63125f7bdd88871c89e13ee62ac02b'
