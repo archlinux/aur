@@ -4,6 +4,7 @@ pkgbase=gridcoinresearch-git
 pkgname=('gridcoinresearch-daemon-git' 'gridcoinresearch-qt-git')
 pkgver=3.5.6.1.r668.d5d9558
 pkgrel=1
+pkgdesc="Gridcoin P2P Cryptocurrency"
 arch=('i686' 'x86_64')
 url="http://gridcoin.us"
 license=('custom:gridcoin')
