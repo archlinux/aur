@@ -4,7 +4,7 @@
                  return 0;
          if (G_UNLIKELY (g_unichar_iswide (c)))
                  return 2;
-+        if (G_UNLIKELY(0x25a0 <= c && c < 0x27c0 || // Geometric Shapes, Miscellaneous Symbols, Dingbats
++        if (G_UNLIKELY(0x2000 <= c && c < 0x27c0 || // General Punctuation ... Dingbats
 +                       0x2b00 <= c && c < 0x2c00 || // Miscellaneous Symbols and Arrows
 +                       0x1f300 <= c && c < 0x20000 || // Miscellaneous Symbols and Pictographs ... Supplemental Symbols and Pictographs
 +                       0))
