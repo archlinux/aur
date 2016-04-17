@@ -1,9 +1,9 @@
 # Maintainer: Dmitry Chusovitin <dchusovitin@gmail.com>
 
 pkgname=docker-machine-bin
-pkgver=0.7.0rc3
-_pkgver=0.7.0-rc3
-pkgrel=2
+pkgver=0.7.0
+_pkgver=0.7.0
+pkgrel=1
 pkgdesc='Machine management for a container-centric world'
 arch=('x86_64')
 url='https://github.com/docker/machine'
@@ -18,7 +18,7 @@ source=(
     "docker-machine::https://github.com/docker/machine/releases/download/v${_pkgver}/docker-machine-Linux-x86_64"
     "https://raw.githubusercontent.com/docker/machine/master/LICENSE"
 )
-sha256sums=('ddab3eb52fc692a32d4697b2a082791172f8c5bb21e1d8489bb5d2eb1e42348a'
+sha256sums=('21e490d5cdfa0d21e543e06b73180614f72e6c18a940f476a64cf084cea23aa5'
             'SKIP')
 
 package() {
