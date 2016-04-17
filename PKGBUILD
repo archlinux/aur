@@ -1,5 +1,6 @@
 # Maintainer: Martchus <martchus@gmx.net>
 # Contributor: Filip Brcic <brcha@gna.org>
+# Contributor: ohmyarch
 
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
@@ -7,7 +8,7 @@
 _qt_module=qtdeclarative
 pkgname=mingw-w64-qt5-declarative
 pkgver=5.6.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Classes for QML and JavaScript languages (mingw-w64)"
 depends=(mingw-w64-qt5-base)
@@ -40,6 +41,7 @@ build() {
     find ./src -type f -exec sed -i "s|-L/usr/${_arch}/lib -lQt5Bootstrap|/usr/lib/libstdc++.so.6 /usr/lib/libm.so -L/usr/${_arch}/lib -lQt5Bootstrap|g" {} \;
     find . -type f -exec sed -i "s|-L/usr/${_arch}/lib -lQt5Bootstrap|/usr/lib/libstdc++.so.6 /usr/lib/libm.so -L/usr/${_arch}/lib -lQt5Bootstrap|g" {} \;
     find ./src -type f -exec sed -i "s|-L/usr/${_arch}/lib -lQt5QmlDevTools|/usr/lib/libstdc++.so.6 -L/usr/${_arch}/lib -lQt5QmlDevTools|g" {} \;
+    find ./tools -type f -exec sed -i "s|-L/usr/${_arch}/lib -lQt5Bootstrap|/usr/lib/libstdc++.so.6 /usr/lib/libm.so -L/usr/${_arch}/lib -lQt5Bootstrap|g" {} \;
     make
     popd
   done
