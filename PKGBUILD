@@ -4,7 +4,7 @@ pkgname=atom-editor-beta
 _pkgbeta=1
 _pkgver=1.8.0
 pkgver="${_pkgver}.beta${_pkgbeta}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Chrome-based text editor from Github - Beta Channel'
 arch=('x86_64' 'i686')
 url='https://github.com/atom/atom'
@@ -15,9 +15,12 @@ makedepends=('git' 'npm')
 conflicts=('atom-editor-bin' 'atom-editor-git' 'atom-editor-beta-bin' 'atom-editor')
 install=atom.install
 source=("https://github.com/atom/atom/archive/v${_pkgver}-beta${_pkgbeta}.tar.gz"
-        "atom-beta.desktop")
+        "atom-beta.desktop"
+        "package.patch")
+
 sha256sums=('1bf988e5663f7f7bfabe2f95cc723a34c416399ee7528b38705d87706228bd11'
-            '10e158a590ff3a52481ea30f3742c170c7b49557fc7f7af875394de91048311f')
+            '10e158a590ff3a52481ea30f3742c170c7b49557fc7f7af875394de91048311f'
+            'fbd8e29cdde10d430d809ffb2bdd52c5a0af3af96ad882c4754c553fefa7b2db')
 
 prepare() {
 	cd "atom-${_pkgver}-beta${_pkgbeta}"
@@ -25,10 +28,7 @@ prepare() {
 	sed -i -e "/exception-reporting/d" \
 		-e "/metrics/d" package.json
 
-	if pacman -Qi freetype2 | grep "2.6.3-1" &>/dev/null; then
-		echo -e "\x1b[1;31mwarning: \x1b[0mAtom has issues with the latest version of Freetype2 [2.6.3-1]."
-		echo "         Downgrade to 2.6.2-1 to ensure everything will run smoothly."
-	fi
+	patch -Np0 -i "$srcdir/package.patch"
 }
 
 build() {
