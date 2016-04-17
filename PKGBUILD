@@ -5,8 +5,8 @@
 # Contributor: Farid <farid at archlinux-br dot org>
 
 pkgname=pdfshuffler-git
-pkgver=r103.8335b07
-pkgrel=3
+pkgver=r100.caec35f
+pkgrel=1
 pkgdesc="Merge or split pdf documents and rotate, crop and rearrange their pages"
 arch=('any')
 url="http://sourceforge.net/projects/pdfshuffler/"
