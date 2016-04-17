@@ -1,12 +1,12 @@
 pkgname=fossamail-git
-pkgver=25.2.0_Release.0.ge58b271
+pkgver=25.2.0_Release.3.g96a0103
 pkgrel=1
 pkgdesc="Open Source, Mozilla Thunderbird-based mail, news and chat client based on the Pale Moon browser core."
 arch=('i686' 'x86_64')
 url="http://www.fossamail.org/"
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib')
-makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'gstreamer0.10' 'gstreamer0.10-base-plugins')
+makedepends=('git' 'python2' 'autoconf2.13' 'gcc47' 'unzip' 'zip' 'yasm' 'gstreamer0.10' 'gstreamer0.10-base-plugins')
 provides=("fossamail=$pkgver")
 conflicts=('fossamail' 'fossamail-bin')
 install=fossamail.install
@@ -14,7 +14,7 @@ source=(fossamail.desktop
         mozconfig.txt
         git+"https://github.com/MoonchildProductions/FossaMail.git")
 sha1sums=('6d19278e2af83290c83cc063b6447476b5f58fd8'
-          '7403fe0a655f18b061e7bd347c5b771930d42c2c'
+          'f2b5a4434e1b17b23969113cf1172e6c851d6deb'
           'SKIP')
 
 pkgver() {
