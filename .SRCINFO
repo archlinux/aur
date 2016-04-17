@@ -1,13 +1,14 @@
 pkgbase = v4l-dvb-git
 	pkgdesc = V4L-DVB device drivers
 	pkgver = r660.a9c762b
-	pkgrel = 2
+	pkgrel = 3
 	url = http://linuxtv.org/
 	install = v4l-dvb.install
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = linux-headers
+	makedepends = kmod
 	makedepends = perl-proc-processtable
 	makedepends = patchutils
 	makedepends = git

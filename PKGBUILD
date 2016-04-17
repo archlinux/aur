@@ -3,12 +3,12 @@
 _kernver="$(uname -r)"
 pkgname=v4l-dvb-git
 pkgver=r660.a9c762b
-pkgrel=2
+pkgrel=3
 pkgdesc="V4L-DVB device drivers"
 arch=('i686' 'x86_64')
 url="http://linuxtv.org/"
 license=('GPL')
-makedepends=('linux-headers' 'perl-proc-processtable' 'patchutils' 'git' 'wget')
+makedepends=('linux-headers' 'kmod' 'perl-proc-processtable' 'patchutils' 'git' 'wget')
 options=(!makeflags)
 install=v4l-dvb.install
 source=('git://linuxtv.org/media_build.git')
