@@ -34,11 +34,10 @@ package() {
     bsdtar -xvf "$_pkg" -C "$pkgdir"
   done
 
-  msg2 "Adjusting paths"
   _reloc etc/udev   usr/lib/udev
   _reloc usr/lib64  usr/lib
-  _reloc usr/sbin   usr/bin
 
+  mkdir -p "$pkgdir/usr/bin"
   ln -s "/opt/dell/srvadmin/bin/idracadm7" "$pkgdir/usr/bin/racadm"
 
   msg2 "Removing crud"
