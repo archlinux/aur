@@ -1,21 +1,19 @@
 # Maintainer: Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ>
 
 pkgname=bitcoinxt-gui-git
-pkgver=v0.11E.r0.g4b7bf01
+pkgver=v0.11E.r15.g962434b
 pkgrel=1
-pkgdesc='Bitcoin XT versions of bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt compiled with GUI and wallet enabled'
+pkgdesc='Bitcoin XT versions of bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt compiled w/GUI and wallet'
 arch=('i686' 'x86_64')
 url="https://bitcoinxt.software/"
 license=('MIT')
-depends=('boost-libs' 'openssl' 'miniupnpc' 'protobuf' 'qrencode' 'qt4')
-makedepends=('boost' 'automoc4' 'qrencode' 'miniupnpc' 'protobuf')
+depends=('boost-libs' 'openssl' 'protobuf' 'qrencode' 'qt4')
+makedepends=('boost' 'automoc4' 'qrencode' 'protobuf')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
 source=('git+https://github.com/bitcoinxt/bitcoinxt.git')
 sha256sums=('SKIP')
-sha512sums=('SKIP')
-
 
 pkgver() {
 	cd ${srcdir}/bitcoinxt
@@ -26,7 +24,7 @@ build() {
   cd "$srcdir/bitcoinxt"
 
   msg2 'Building...'
-  CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1 -UUPNPDISCOVER_SUCCESS"
+  CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
 	./autogen.sh
 	./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt4
   make -j$(nproc)
