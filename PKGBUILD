@@ -9,7 +9,7 @@
 # TODO split packages? nimbus/supervisor/ui ?
 
 pkgname=storm
-pkgver=0.10.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Distributed and fault-tolerant realtime computation system'
 arch=('any')
@@ -32,16 +32,18 @@ source=(${_closest}/${_app_path}
         systemd_storm-supervisor.service
         systemd_storm-ui.service
         systemd_sysusers.d_storm.conf
-        systemd_tmpfiles.d_storm.conf)
+        systemd_tmpfiles.d_storm.conf
+        arch_python2.patch)
 
-sha256sums=('066d1f5343333efd9187d7b850047cf9b3f63d885811e9fdd6e50f949b432f62'
+sha256sums=('8233dab1a6898fc39bcf9fe68dfadbee38159a39c473ac2da9ce9da60db52066'
             'c94799f4b459f5218faf1da57936baeb4c32b9542a1ba0aacdd637bf2f3aaf05'
             '00780ee4cea3bb7a282a548f41b8964d5e392776f9d687ebea89cd49ed5742e3'
             '0d8958786538714da86ccf3f23cb668fa017530f8858aea2b7325ffe1af66cd1'
             '894b41bd473410271337585509fe9db431a74f3ae2114039229a5742214e097e'
             '41eade47c4e3b07c53c84351730b1f8752341eed095b6b6fc499ccc2213bead3'
             '66db40103bc75bae0817581ef1bbde35bb3b81c2494eda5a8c769813ddd000f1'
-            '15c959356f32c9583fe6a328d2ec4c7addb983ac7a2529621d90c24b49a07df3')
+            '15c959356f32c9583fe6a328d2ec4c7addb983ac7a2529621d90c24b49a07df3'
+            '94567fe94f4d27b1a82714231c0fa9a87827343f3838f9a962e3483f6c6d26a5')
 
 package() {
   cd "${srcdir}/apache-${pkgname}-${pkgver}"
@@ -62,6 +64,8 @@ package() {
   sed -i "1s|^#!/usr/bin/python$|#!/usr/bin/python2|" \
     "${pkgdir}${_app_home}/bin/storm.py"
   ln -s ${_app_home}/bin/storm "${pkgdir}/usr/bin/storm"
+  patch -d "${pkgdir}${_app_home}" \
+        -p0 < "${srcdir}/arch_python2.patch"
 
   cp -r lib/* "${pkgdir}/usr/share/java/${pkgname}"
   ln -s ../java/${pkgname} "${pkgdir}${_app_home}/lib"
