@@ -25,7 +25,7 @@ package() {
 	mkdir $pkgdir/usr/bin -p
 	cat <<'EOF' > $pkgdir/usr/bin/misq
 #!/bin/sh
-cd /opt/misq/
+cd /usr/share/misq/
 ./misq
 EOF
 	chmod a+x $pkgdir/usr/bin/misq
