@@ -3,14 +3,15 @@
 pkgname=sabre-zarafa
 groups=('zarafa')
 pkgver=0.23
-pkgrel=8
+pkgrel=10
 pkgdesc="provide a full CardDav backend for SabreDAV to connect with Zarafa groupware"
 arch=('any')
 url="https://github.com/1afa/sabre-zarafa"
 license=('AGPL3')
 depends=('php<7'
 	 'php-fpm<7')
-makedepends=('php-composer')
+makedepends=('php-composer'
+	     'git')
 optdepends=('nginx'
 	    'zarafa-server')
 install='install'
@@ -72,7 +73,11 @@ package() {
     echo >> /tmp/composer.ini
     
     echo "extension=phar.so" >> /tmp/composer.ini
-    echo "open_basedir=$(which composer):$(pwd):$(realpath ~/.composer)" >> /tmp/composer.ini
+    echo "extension=openssl.so" >> /tmp/composer.ini
+    echo "open_basedir=$(which composer):$(pwd):$(realpath $HOME/.composer)" >> /tmp/composer.ini
+    mkdir $HOME/.composer
+
+    $(which php) -nc/tmp/composer.ini  $(which composer) config -g disable-tls true
     $(which php) -nc/tmp/composer.ini  $(which composer) install
     rm /tmp/composer.ini
     
