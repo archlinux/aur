@@ -2,7 +2,7 @@
 
 pkgname=quagga
 pkgver=1.0.20160315
-pkgrel=1
+pkgrel=2
 pkgdesc='BGP/OSPF/ISIS/RIP/RIPNG routing daemon suite'
 arch=('i686' 'x86_64')
 url='http://www.quagga.net'
@@ -18,6 +18,7 @@ source=("http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar
         'isisd.service'
         'ospf6d.service'
         'ospfd.service'
+        'pimd.service'
         'ripd.service'
         'ripngd.service'
         'zebra.service')
@@ -29,6 +30,7 @@ md5sums=('e73d6e527fb80240f180de420cfe8042'
          '67d0ada0f3000b9a86351798786c5256'
          '6e2569ef339838aa41375e913a8e19ce'
          '260f5fcf9b53ef201a8fb34e7ea90457'
+         'af6571185d6a6a6e1f070c7be0e4333a'
          'b6e3549d780355914ae8edd43e15630a'
          '72dd63c49fdaea41729a4318d0fbac79'
          '577f1e7caeea31d910f2dc29c28ada7d')
@@ -55,7 +57,6 @@ build() {
     --localstatedir=/run/quagga \
     --enable-exampledir=/usr/share/doc/quagga/examples \
     --enable-vtysh \
-    --enable-isisd \
     --enable-isis-topology \
     --enable-netlink \
     --enable-snmp \
@@ -82,7 +83,7 @@ package() {
   # systemd
   cd "$srcdir"
   install -d -m 755 "$pkgdir"/usr/lib/{systemd/system,tmpfiles.d,sysusers.d}
-  for _d in zebra ripd ripngd bgpd ospfd ospf6d isisd babeld; do
+  for _d in zebra ripd ripngd bgpd ospfd ospf6d isisd babeld pimd; do
     install -D -m 644 $_d.service "$pkgdir/usr/lib/systemd/system/$_d.service"
   done
   install -D -m 644 $pkgname.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
