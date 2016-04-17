@@ -3,7 +3,7 @@
 # Contributor: Matej Horváth <matej.horvath@gmail.com>
 
 pkgname=gscreenshot
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 epoch=
 pkgdesc="A GUI front-end for scrot"
@@ -31,7 +31,7 @@ install=
 changelog=
 source=("https://github.com/thenaterhood/gscreenshot/archive/v$pkgver.zip")
 noextract=("v$pkgver.zip")
-sha256sums=('e30b3a33382176f1e8178e17977cf87bdbd66a56ef8aa4ca116286309292b540')
+sha256sums=('35846793c64c0d7a0e2ade928f04c4bca7283e42642f59df8d53934e9929c9a6')
 validpgpkeys=()
 
 prepare() {
@@ -52,8 +52,4 @@ package() {
         cd $srcdir/gscreenshot-$pkgver
         python setup.py install --root="$pkgdir/" --optimize=1
         chmod +x "$pkgdir/usr/bin/gscreenshot"
-        install -Dm644 dist/$pkgname.desktop \
-            "$pkgdir/usr/share/applications/$pkgname.desktop"
-        install -Dm644 dist/black-white_2-Style-applets-screenshooter.png \
-            "$pkgdir/usr/share/pixmaps/$pkgname.png"
 }
