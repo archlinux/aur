@@ -38,37 +38,7 @@ post_install() {
     cp -n ${cfg} /etc/zarafa
   done
 
-  # => create ssl key and certificate (SSL)
-  if [ ! -f "/etc/ssl/private/zarafa.key" ]
-  then
-    # https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
-    # https://cipherli.st/
-    # http://www.shellhacks.com/en/HowTo-Create-CSR-using-OpenSSL-Without-Prompt-Non-Interactive
-    echo ">>> Creating default key and certificate to /etc/ssl/private/zarafa.*"
-    openssl genrsa -out /etc/ssl/private/zarafa.key 4096
-    openssl req -new -sha512 -key /etc/ssl/private/zarafa.key -out /tmp/zarafa.csr -subj "/CN=localhost"
-    openssl x509 -req -days 3650 -in /tmp/zarafa.csr -signkey /etc/ssl/private/zarafa.key -out /etc/ssl/private/zarafa.crt
-
-    # trust own certificate for later connections
-    find -L /etc/ssl/certs -samefile /etc/ssl/private/zarafa.crt -exec rm {} \;
-    ln -s /etc/ssl/private/zarafa.crt /etc/ssl/certs/zarafa.crt
-    ln -s /etc/ssl/private/zarafa.crt /etc/ssl/certs/$(openssl x509 -noout -hash -in /etc/ssl/certs/zarafa.crt).0
-    update-ca-trust
-  fi
-  
-  # => create diffie hellman (PFS)
-  if [ ! -f "/etc/ssl/private/zarafa.dh" ]
-  then
-    echo ">>> Creating default dh file to /etc/ssl/private/zarafa.*"
-    openssl dhparam -out /etc/ssl/private/zarafa.dh 512
-  fi
-  
-  # => set permission (SSL)
-  echo ">>> Setting permissions to /etc/ssl/private/zarafa.*"
-  chmod go-rwx /etc/ssl/private/zarafa.*
-  chmod u+rw /etc/ssl/private/zarafa.*
-  chown root:root /etc/ssl/private/zarafa.*
-
+  /usr/share/doc/zarafa/install-ssl.sh
 }
 
 #post_upgrade() {

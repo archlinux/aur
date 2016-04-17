@@ -7,7 +7,7 @@ replaces=('zarafa-server-arm')
 pkgver=7.2.1
 _pkgmajver=7.2
 _pkgrev=${pkgver}-51847
-pkgrel=12
+pkgrel=13
 pkgdesc="Open Source Groupware Solution"
 arch=('arm'
       'armv7h'
@@ -61,6 +61,7 @@ optdepends=('zarafa-webaccess'
 install="install"
 source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_pkgmajver}/${pkgver}-51838/sourcecode/zarafa-${_pkgrev}.tar.gz"
 	"arm.diff"
+	"install-ssl.sh"
 	"zarafa-server.service"
 	"zarafa-ical.service"
 	"zarafa-dagent.service"
@@ -141,6 +142,9 @@ package() {
   cp -R ${pkgdir}/usr/etc/* ${pkgdir}/etc
   rm -Rf ${pkgdir}/usr/etc
   rm ${pkgdir}/etc/zarafa/*.cfg
+
+  # copy ssl routine
+  cp ${srcdir}/install-ssl.sh ${pkgdir}/usr/share/doc/zarafa/install-ssl.sh
 
   # => change to socket connections only
   sed -i -e "s/\(server_tcp_enabled\s*=\)\(.*$\)/\1 no/" ${pkgdir}/usr/share/doc/zarafa/example-config/server.cfg
