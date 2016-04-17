@@ -1,7 +1,7 @@
 # arg 1:  the new package version
 # arg 2:  the old package version
 
-KERNEL_NAME=
+KERNEL_NAME=-lts
 KERNEL_VERSION=
 
 post_install () {
