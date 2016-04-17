@@ -70,6 +70,7 @@ source=("zarafa-${pkgver}.tar.gz::http://download.zarafa.com/community/final/${_
 
 md5sums=('d281fd9f85562efc81802620673d682b'
          '5de9759477995d9940c056e56ed9d3f1'
+         'bc00929702cb8b6487f9b14bf708e83b'
          '0e2728f1e35b25ca679427fcb57315d8'
          'c25f3982217fe390d68ed9003a5988ed'
          '9666bf713645af11dd65b3ac5cbb42d9'
