@@ -2,7 +2,7 @@
 # Contributor: FzerorubigD <Fzerorubigd {AT} GMail {DOT} com>
 
 pkgname=gpaste-git
-pkgver=3.18.2+3+g233f664
+pkgver=3.20+3+g3503fca
 pkgrel=1
 pkgdesc="Clipboard management system"
 url="http://www.imagination-land.org/tags/GPaste.html"
@@ -12,9 +12,10 @@ depends=(gtk3)
 makedepends=(git intltool vala appstream-glib gobject-introspection gnome-shell gnome-control-center)
 optdepends=("wgetpaste: Upload clipboard contents")
 provides=("gpaste=$pkgver")
+conflicts=(gpaste)
 options=('!emptydirs')
 install=gpaste.install
-source=("git+https://github.com/Keruspe/GPaste#branch=gpaste-3.18")
+source=("git+https://github.com/Keruspe/GPaste#branch=gpaste-3.20")
 sha256sums=('SKIP')
 
 pkgver() {
