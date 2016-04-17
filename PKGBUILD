@@ -50,9 +50,9 @@ package_gtk3-nocsd() {
 	install -Dm644 "${srcdir}"/${pkgbase//-git/}/libgtk3-nocsd.so.0 "${pkgdir}"/usr/lib/libgtk3-nocsd.so.0
 	install -d "${pkgdir}"/etc/profile.d
 	cat <<\EOF >>"${pkgdir}"/etc/profile.d/gtk3-nocsd.sh
-##disables the overlay scrollbars in newer GTK3 versions
+## disables the overlay scrollbars in newer GTK3 versions
 export GTK_OVERLAY_SCROLLING=0
-##No silly CSD stuff
+## No silly CSD stuff
 export GTK_CSD=0
 export LD_PRELOAD="/usr/\${LIB}/libgtk3-nocsd.so.0:${LD_PRELOAD}"
 EOF
@@ -60,12 +60,14 @@ EOF
 } 
 
 package_lib32-gtk3-nocsd() {
-	provides=("${pkgname}" "${pkgname}-git=${pkgver}")
-	conflicts=("${pkgname}" "${pkgname}-git<=${pkgver}")
-	replaces=("${pkgname}" "${pkgname}-git<=${pkgver}")
-###there is no way to force extra makedeps so we add this here
-	depends=('gtk3-nocsd' 'gcc-multilib')
-	arch=('x86_64')
-	install -d "${pkgdir}"/usr/lib32/
-	install -Dm644 "${srcdir}"/${pkgbase//-git/}/lib32/libgtk3-nocsd.so.0 "${pkgdir}"/usr/lib32/libgtk3-nocsd.so.0
+	if (pacman -Q gcc-multilib >/dev/null); then
+		provides=("${pkgname}" "${pkgname}-git=${pkgver}")
+		conflicts=("${pkgname}" "${pkgname}-git<=${pkgver}")
+		replaces=("${pkgname}" "${pkgname}-git<=${pkgver}")
+### there is no way to force extra makedeps so we add this here
+		depends=('gtk3-nocsd' 'gcc-multilib')
+		arch=('x86_64')
+		install -d "${pkgdir}"/usr/lib32/
+		install -Dm644 "${srcdir}"/${pkgbase//-git/}/lib32/libgtk3-nocsd.so.0 "${pkgdir}"/usr/lib32/libgtk3-nocsd.so.0
+	fi
 } 
