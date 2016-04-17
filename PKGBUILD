@@ -5,11 +5,13 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
+# See the comment below for additional dependencies/functionality.
+
 _qt_module=qtwebkit
 pkgname=mingw-w64-qt5-webkit
 pkgver=5.6.0
-pkgrel=1
-arch=(any)
+pkgrel=2
+arch=('any')
 pkgdesc="Classes for a WebKit2 based implementation and a new QML API (mingw-w64)"
 depends=('mingw-w64-qt5-declarative'
          'mingw-w64-qt5-sensors'
@@ -24,6 +26,10 @@ depends=('mingw-w64-qt5-declarative'
          'mingw-w64-icu'
          'mingw-w64-sqlite'
          'mingw-w64-libwebp')
+# these dependencies will enable further functionality
+#depends+=('mingw-w64-webchannel')
+#depends+=('mingw-w64-gst-plugins-base')
+#optdepends+=('mingw-w64-gst-plugins-good: Webm codec support')
 makedepends=('mingw-w64-gcc' 'python' 'gperf' 'ruby' 'mingw-w64-pkg-config')
 options=('!strip' '!buildflags' 'staticlibs')
 license=("custom, FDL, GPL3, LGPL")
@@ -39,7 +45,8 @@ source=("https://download.qt.io/community_releases/${pkgver:0:3}/${pkgver}/${_pk
         qtwebkit-dont-use-bundled-angle-libraries.patch
         qtwebkit-opensource-src-5.0.1-debuginfo.patch
         revert-qt4-unicode-removal.patch
-        webkit-commit-151422.patch)
+        webkit-commit-151422.patch
+        qt5-webkit-pthread.patch)
 md5sums=('b68565d18db63ee4db998bb8e37608a5'
          'ce7d257e2b5b94fe3affd98f52d99d09'
          'ac574de962545d6a9e975b4db63c3e09'
@@ -49,14 +56,19 @@ md5sums=('b68565d18db63ee4db998bb8e37608a5'
          'f452210683386f9c28f04d7dea0ecfc7'
          '6aba6468efafb64943887079e258b799'
          '4e374836f26853b4d82be0e87aa584a5'
-         'c36fe581e0f3b61cef19415782b257ca')
+         'c36fe581e0f3b61cef19415782b257ca'
+         'f65286024f65ca87837171272fc8975d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
 
-  # note: all patches are from http://pkgs.fedoraproject.org/git/rpms/mingw-qt5-qtwebkit.git
+  # see description inside the patch file
+  patch -p1 -i ../qt5-webkit-pthread.patch
+
+  # note: most patches are originally from http://pkgs.fedoraproject.org/git/rpms/mingw-qt5-qtwebkit.git
+  # however, I needed to update most of them in order to update to 5.6.0 and to use the latest ANGLE
 
   # The ICU libraries used for cross-compilation are named exactly the same as their native Linux counterpart
   patch -p1 -b -i ../qt5-qtwebkit-use-correct-icu-libs.patch
