@@ -1,7 +1,7 @@
 # Maintainer: Jake <ja.ke@posteo.de>
 pkgname=script-communicator
-_fullname=ScriptCommunicator_04_08_source
-pkgver=4.08
+_fullname=ScriptCommunicator_04_09_source
+pkgver=4.09
 pkgrel=1
 pkgdesc="Scriptable terminal with Serial/TCP/UDP/SPI/CAN support"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('qt5-tools' 'dos2unix' 'icoutils')
 source=("http://sourceforge.net/projects/scriptcommunicator/files/Source/${_fullname}.zip" 
 	"qmake.patch"
 	"$pkgname.desktop")
-md5sums=('7a1b304ac45004cb57a19e50ab02982d'
+md5sums=('3b0c0a494c3ab6040250a8cc71f3eba3'
          'efe580480b123884895d7aadad495921'
          '2178766b1e5dcccffe29d666625d111a')
 
