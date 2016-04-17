@@ -7,7 +7,7 @@
 
 pkgname=courier-mta
 pkgver=0.75.0
-pkgrel=4
+pkgrel=5
 pkgdesc="IMAP(s)/POP3(s) and SMTP Server with ML-manager, webmail and webconfig"
 arch=(i686 x86_64)
 license=('GPL2')
@@ -73,7 +73,7 @@ build() {
     --with-trashquota \
     --with-random=/dev/urandom --without-ispell \
     --with-mailuser=courier --with-mailgroup=courier \
-    --with-certdb=/etc/ssl/certs/
+    --with-certdb=/etc/ssl/certs/ --with-gnutls
   make
 }
 
