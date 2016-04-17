@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kconfig
-pkgver=5.19.0
+pkgver=5.21.0
 pkgrel=1
 arch=(any)
 pkgdesc="Configuration system (mingw-w64)"
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-cmake mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
 url="https://projects.kde.org/projects/frameworks/kconfig"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kconfig-${pkgver}.tar.xz")
-md5sums=('79953233cd7d507f4f8394bf62e23078')
+md5sums=('11782bb4555990deafa273f0288d2673')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
