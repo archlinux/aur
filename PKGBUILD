@@ -14,10 +14,6 @@ conflicts=('mp4fpsmod-git')
 makedepends=('git')
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  }
-
 prepare() {
   cd "$srcdir/$_pkgname"
   ./bootstrap.sh
