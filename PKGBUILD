@@ -5,6 +5,8 @@ pkgdesc="Dell OpenManage iDRAC server management tools (RACADM)"
 arch=(i686 x86_64)
 url='http://en.community.dell.com/techcenter/systems-management/w/wiki/1760.openmanage-server-administrator-omsa'
 depends=(openssl libsmbios sblim-sfcc)
+provides=(dell-mgmtstat=$pkgver)
+conflicts=(dell-mgmtstat)
 source_i686=("http://downloads.dell.com/FOLDER03572627M/2/OM-SrvAdmin-Dell-Web-LX-8.3.0-1908_A00.tar.gz"
              "http://downloads.dell.com/FOLDER03572656M/2/OM-SrvAdmin-Dell-Web-LX-8.3.0-1908_A00.tar.gz.sign")
 sha256sums_i686=('b509ddb8ef4461c29d06c6af12b78847374d06a67416ecc7daa055ab4048084d'
