@@ -1,10 +1,9 @@
 ## Maintainer: benklett <b.klettbach@gmail.com>
 
 pkgname=repo
-# pkgver from https://android.googlesource.com/tools/repo/+/v1.12.20/repo
-pkgver=1.21
-_tag=v1.12.32
-pkgrel=7
+# pkgver from https://android.googlesource.com/tools/repo/+/v1.12.33/repo
+pkgver=1.22
+pkgrel=1
 pkgdesc="The Multiple Git Repository Tool from the Android Open Source Project"
 arch=("i686" "x86_64")
 url="http://source.android.com/source/git-repo.html"
@@ -13,7 +12,7 @@ depends=("git" "python2")
 makedepends=("git")
 # source is always the current tag
 source=(
-  "git+https://android.googlesource.com/tools/repo.git#tag=${_tag}"
+  "git+https://android.googlesource.com/tools/repo.git#tag=v1.12.33"
   "python2-patch.diff"
 )
 sha256sums=(
