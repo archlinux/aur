@@ -7,13 +7,13 @@
 # Contributor: Lorenzo Nizzi Grifi Gargiolli <lorenzo.nizzi.grifi@gmail.com>
 
 pkgname=openct-git
-pkgver=r1044.968da6c
+pkgver=r1046.a4f3fcb
 pkgrel=1
 pkgdesc="Implements drivers for several smart card readers and PCSC Lite"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/OpenSC/openct/"
 options=('!libtool')
-license="LGPL"
+license=("LGPL")
 backup=('etc/openct.conf')
 depends=('pcsclite'
 	 'libusb-compat'
