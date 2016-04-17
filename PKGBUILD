@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kcoreaddons
-pkgver=5.15.0
+pkgver=5.21.0
 pkgrel=1
 arch=(any)
 pkgdesc="Addons to QtCore (mingw-w64)"
@@ -11,7 +11,7 @@ options=(staticlibs !strip !buildflags)
 optdepends=("kcoreaddons: needed for desktopjson.exe workaround symlink")
 url="https://projects.kde.org/projects/frameworks/kcoreaddons"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kcoreaddons-${pkgver}.tar.xz")
-md5sums=('8d4f4f374649419fe34e24766f5ec22b')
+md5sums=('f3823cbe368197f64ec692e3e6688865')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
