@@ -2,8 +2,8 @@
 # Contributors: Se7endAY, Nathan Owe <ndowens04 at gmail>
 
 pkgname=bozohttpd
-pkgver=20150320
-pkgrel=3
+pkgver=20160415
+pkgrel=1
 pkgdesc="A small and secure HTTP version 1.1 server"
 arch=('i686' 'x86_64')
 url="http://www.eterna.com.au/bozohttpd/"
@@ -17,13 +17,12 @@ source=("http://www.eterna.com.au/${pkgname}/${pkgname}-${pkgver}.tar.bz2"
 	'sample_perl.cgi'
 	'LICENSE'
 )
-md5sums=('60e2cf933d028a096523214fab8e6590'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-	'SKIP'
-)
+md5sums=('15a30acfbb5b36cec413ce81153064cb'
+         'ff9687a9c5e0c656e633b1c3a0809901'
+         'd1678187aba0c256e6f626cab677fe5c'
+         '574f7bfc8a99c817bef1f26704bd8936'
+         '911134dd7e4dbf7292a0c985986d8516'
+         'd9cf04c906c6c560dea10afd1a93eab0')
 install=bozohttpd.install
 
 build()
