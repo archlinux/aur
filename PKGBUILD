@@ -1,5 +1,5 @@
 pkgname=mingw-w64-pango
-pkgver=1.38.1
+pkgver=1.40.1
 pkgrel=1
 pkgdesc="A library for layout and rendering of text (mingw-w64)"
 arch=(any)
@@ -11,7 +11,7 @@ options=(staticlibs !strip !buildflags)
 source=("http://ftp.gnome.org/pub/gnome/sources/pango/${pkgver:0:4}/pango-${pkgver}.tar.xz"
 "0001-no-unconditional-xft-please.all.patch"
 "0002-msvc-is-impotent-but-not.mingw.patch")
-sha256sums=('1320569f6c6d75d6b66172b2d28e59c56ee864ee9df202b76799c4506a214eb7'
+sha256sums=('e27af54172c72b3ac6be53c9a4c67053e16c905e02addcf3a603ceb2005c1a40'
             'eccc044bbd156b252f5a13f7894c3a6cd1efc6ea80eaee57a5865895b192616d'
             '240d21474157c0deabc2660593ac0414565ddf30c304b08b74a09072c910b34d')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
