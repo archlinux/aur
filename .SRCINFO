@@ -1,0 +1,14 @@
+pkgbase = slim-theme-burning-arch
+	pkgdesc = Slim theme for ArchLinux
+	pkgver = 1.0
+	pkgrel = 4
+	url = https://sourceforge.net/projects/slimburningarch/
+	install = burning-arch.install
+	arch = any
+	license = custom
+	depends = slim
+	source = http://sourceforge.net/projects/slimburningarch/files/1.0/slim-theme-burning-arch-1.0.tar.gz
+	md5sums = 2c7444637b2ad05ac28470ea0419b3a1
+
+pkgname = slim-theme-burning-arch
+
