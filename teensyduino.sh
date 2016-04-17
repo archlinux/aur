@@ -14,7 +14,6 @@ xdotool search --class "teensyduino" \
     key --delay 400 Tab \
     key --delay 400 Tab \
     key --delay 1000 space \
-    key --delay 1000 space \
     key --delay 400 Tab \
     key --delay 400 Tab \
     key --delay 400 Tab \
