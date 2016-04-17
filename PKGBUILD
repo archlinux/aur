@@ -1,7 +1,7 @@
 pkgname=dell-srvadmin
 pkgver=8.3
 pkgrel=2
-pkgdesc="Dell OpenManage iDRAC server management tools (RACADM)"
+pkgdesc="Dell OpenManage iDRAC server management (OMSA and RACADM)"
 arch=(i686 x86_64)
 url='http://en.community.dell.com/techcenter/systems-management/w/wiki/1760.openmanage-server-administrator-omsa'
 depends=(openssl libsmbios sblim-sfcc)
