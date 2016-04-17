@@ -2,7 +2,7 @@
 
 _pkgname=openbazaard-standalone
 pkgname=${_pkgname}-git
-pkgver=963.41f83b6
+pkgver=984.65e6618
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
