@@ -3,8 +3,8 @@
 # Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 pkgname=eclipse-mylyn
-pkgver=3.18.0
-_reldate=20151215-0126
+pkgver=3.19.0
+_reldate=20160331-2042
 pkgrel=1
 pkgdesc='A task-focused interface for Eclipse.'
 arch=('any')
@@ -13,7 +13,7 @@ license=('EPL')
 depends=('eclipse')
 optdepends=('bugzilla: ticketing support')
 source=("https://www.eclipse.org/downloads/download.php?file=/mylyn/drops/$pkgver/v$_reldate/mylyn-$pkgver.v$_reldate.zip&r=1")
-sha512sums=('e1cecffc6041c9ec1b7bfc6b08545ab354ee7d7d51ad1cbec95c851134dd909e65ecc3f771bdc77d1ecd7f4da11bcaec0bcebbc92149ab4349480ec0f332b00f')
+sha512sums=('d96335045a221e96bb6598051381464fdbf004f8f83433c3954d6df5d2d9818b65562444c8c6b9328ea1b425c30551720a00371b208b4f1b7b1487dd053c0bd8')
 
 prepare()
 {
