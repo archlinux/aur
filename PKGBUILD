@@ -2,7 +2,7 @@
 
 pkgname=gitlab-ci-multi-runner
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The official GitLab CI runner written in Go"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://gitlab.com/gitlab-org/gitlab-ci-multi-runner'
@@ -13,7 +13,7 @@ install='gitlab-runner.install'
 backup=('etc/gitlab-runner/config.toml')
 noextract=('prebuilt.tar.gz')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://gitlab.com/gitlab-org/gitlab-ci-multi-runner/repository/archive.tar.gz?ref=v${pkgver}"
-        "https://gitlab-ci-multi-runner-downloads.s3.amazonaws.com/master/docker/prebuilt.tar.gz"
+        "https://gitlab-ci-multi-runner-downloads.s3.amazonaws.com/v${pkgver}/docker/prebuilt.tar.gz"
         "gitlab-runner.install"
         "gitlab-runner.service"
         "gitlab-runner.sysusers"
@@ -21,7 +21,7 @@ source=("${pkgname}-${pkgver}.tar.gz"::"https://gitlab.com/gitlab-org/gitlab-ci-
         "config.toml"
         "godeps.patch")
 sha512sums=('6f6cab7ddceefc6dc995f8cc6557982f40964b737c66b1e116c31e72a3a8d8df24ce305d2903a17592b9a275aa1b77119465240dfe2b944659639f322a61221d'
-            'SKIP'
+            '809f620a3da952fd32321590ead703bb311961b6719cd0280e3cb75f1d9b96fce96aee63b8bfc5abc455ed29f69a583ff9dc3d30956c710aed1ec9076884dcf0'
             'd952618713a4ead9e8ac4d28bc5e3b1f9f0e7a36691d3abee40f73aa31d1b7dcff171c5ce62127b51ddf2c52ad490e7fa4bf0d928a3be793b813706588813535'
             'e0db2ecd45ba9472a9e9109b0254c12d1d27571fa28a01329dbd7f9aa32df33c1d8f1583a27a8105b1ee6e26e5ae5a6696248544f1f7a9d399271973d6a21fed'
             '648647fbffbf8dac5558d06d257e460f47ede45dc7e60b183091d03af96546b31fd6e8120b6b2e02af2e49f7aa094e472ef2db266a8b3baa8490a96afd915944'
