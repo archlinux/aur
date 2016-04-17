@@ -6,14 +6,14 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=2.2.0.r459.gf045d9b
+pkgver=2.2.0.r775.gf034d8b
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
 arch=('i686' 'x86_64' 'arm')
 url="http://fishshell.com"
 license=("GPL" "LGPL" "BSD" "MIT")
-depends=('bc')
+depends=('bc' 'pcre2')
 optdepends=('python: fish_update_completions and other tools' 
             'pkgfile: for command-not-found handler')
 makedepends=('doxygen' 'git' 'ncurses')
@@ -33,7 +33,7 @@ build() {
 	cd "$srcdir/$_gitname"
 
 	autoconf
-	./configure --prefix=/usr --sysconfdir=/etc --docdir=/usr/share/doc/fish
+	./configure --prefix=/usr --sysconfdir=/etc --docdir=/usr/share/doc/fish --without-included-pcre2
 	make
 }
 
