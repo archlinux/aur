@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = flashplugin-focusfix
+
+[Action]
+Description = Remove flashplugin focusfix
+Depends = sed
+When = PreTransaction
+Exec = /usr/bin/sed -i -e 's/XNET_ACTIVE_WINDOW/_NET_ACTIVE_WINDOW/' /usr/lib/mozilla/plugins/libflashplayer.so

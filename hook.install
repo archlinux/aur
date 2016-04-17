@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = flashplugin
+Target = flashplugin-focusfix
+
+[Action]
+Description = Apply flashplugin focusfix
+Depends = sed
+When = PostTransaction
+Exec = /usr/bin/sed -i -e 's/_NET_ACTIVE_WINDOW/XNET_ACTIVE_WINDOW/' /usr/lib/mozilla/plugins/libflashplayer.so
