@@ -1,0 +1,15 @@
+pkgbase = xilinx-usb-drivers
+	pkgdesc = libusb/ppdev-connector for Xilinx JTAG tools (like iMPACT)
+	pkgver = 14.7
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = xilinx-ise
+	options = !strip
+	source = git+git://git.zerfleddert.de/usb-driver
+	md5sums = SKIP
+
+pkgname = xilinx-usb-drivers
+
