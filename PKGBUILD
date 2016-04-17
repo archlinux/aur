@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
 	cd ${srcdir}/${_appname}
-	QT_SELECT=5 qmake PREFIX=/usr
+	QT_SELECT=5 qmake PREFIX=/usr CONFIG+=zeal_qtwebkit
 	make
 }
 
