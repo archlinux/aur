@@ -5,7 +5,7 @@
 
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
-pkgver=2.8.5
+pkgver=3.0.1
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
@@ -15,14 +15,18 @@ license=('GPL3')
 depends=("$_pkgbasename"
       'lib32-alsa-lib' 'lib32-fontconfig' 'lib32-fribidi'
       'lib32-gnutls' 'lib32-gsm' 'lib32-lame' 'lib32-libass'
-      'lib32-libbluray' 'lib32-libmodplug' 'lib32-libpulse'
+      'lib32-libavc1394'
+      'lib32-libbluray' 'lib32-libiec61883'
+      'lib32-libmodplug' 'lib32-libpulse'
       'lib32-libtheora' 'lib32-libva' 'lib32-libvdpau'
-      'lib32-libwebp' 'lib32-opus' 'lib32-schroedinger'
-      'lib32-sdl' 'lib32-v4l-utils'
+      'lib32-libwebp' 'lib32-opencore-amr' 'lib32-openjpeg'
+      'lib32-opus' 'lib32-schroedinger'
+      'lib32-sdl' 'lib32-speex' 'lib32-v4l-utils'
       'lib32-libxv'
       'lib32-xvidcore' 'lib32-zlib'
       'lib32-libvorbis' 'libvorbis.so' 'libvorbisenc.so'
       'lib32-libx264' 'libx264.so'
+      'lib32-libvpx' 'libvpx.so'
       )
 makedepends=('hardening-wrapper' 'lib32-ladspa' 'yasm')
 optdepends=('lib32-ladspa: LADSPA filters')
@@ -33,7 +37,7 @@ provides=(
 )
 source=(http://ffmpeg.org/releases/$_pkgbasename-$pkgver.tar.bz2{,.asc})
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('3b6d9951533323ee64a21d0aa7667a780b3470bfe4e0fb7c1b33307ce290615a'
+sha256sums=('f7f7052c120f494dd501f96becff9b5a4ae10cfbde97bc2f1e9f0fd6613a4984'
             'SKIP')
 
 build() {
@@ -60,14 +64,20 @@ build() {
     --enable-libfreetype \
     --enable-libfribidi \
     --enable-libgsm \
+    --enable-libiec61883 \
     --enable-libmodplug \
     --enable-libmp3lame \
+    --enable-libopencore_amrnb \
+    --enable-libopencore_amrwb \
+    --enable-libopenjpeg \
     --enable-libopus \
     --enable-libpulse \
     --enable-libschroedinger \
+    --enable-libspeex \
     --enable-libtheora \
     --enable-libv4l2 \
     --enable-libvorbis \
+    --enable-libvpx \
     --enable-libwebp \
     --enable-libx264 \
     --enable-libxvid \
@@ -76,13 +86,9 @@ build() {
     --enable-x11grab
 
 #    --enable-libdcadec \
-#    --enable-libopencore_amrnb \
-#    --enable-libopencore_amrwb \
-#    --enable-libopenjpeg \
-#    --enable-libspeex \
-#    --enable-libvpx \
 #    --enable-libx265 \
 #    --enable-libssh \
+#    --enable-libsoxr \
 #    --enable-libvidstab \
 
   make
