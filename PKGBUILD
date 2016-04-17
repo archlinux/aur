@@ -1,8 +1,8 @@
 # Maintainer: Ammon Smith <ammon.i.smith@gmail.com>
 
 _pkgname='days-until'
-pkgname=$_pkgname-git
-pkgver=0.1.3e97ed8
+pkgname="${_pkgname}-git"
+pkgver=0.1.rf01b6ec
 pkgrel=1
 pkgdesc='A command-line program to give you the number of days until or since certain events.'
 arch=('any')
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
-    echo "0.1.$(git describe --always)"
+    echo "0.1.r$(git describe --always)"
 }
 
 package() {
