@@ -2,7 +2,7 @@
 # Contributor: Andreas Krinke <andreas dot krinke at gmx dot de>
 pkgname=gephi
 pkgver=0.9.1
-pkgrel=5
+pkgrel=6
 pkgdesc="An interactive graph visualization and exploration platform"
 arch=('i686' 'x86_64')
 url="http://gephi.org"
@@ -19,4 +19,7 @@ package() {
   cp -r * "${pkgdir}/usr/share/java/${pkgname}"
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/share/java/${pkgname}/bin/gephi" "${pkgdir}/usr/bin/gephi"
+
+  find "${pkgdir}" -type f -iname \*.dll -delete
+  find "${pkgdir}" -type f -iname \*.exe -delete
 }
