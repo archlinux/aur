@@ -15,7 +15,7 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=fwlogwatch
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="A packet filter/firewall/IDS log analyzer"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ license=('GPL')
 source=("http://fwlogwatch.inside-security.de/sw/$pkgname-$pkgver.tar.gz"
         'fwlogwatch'
         'fwlogwatch.conf')
-md5sums=('b76bad368ea311677dabb0618ec6c8cf'
+md5sums=('0c55031e7d66518493607d2c30a3a5a5'
          'e10d41244780c74280d27794ca6a6525'
          '35dc2f301904b2b03ef688e2e2edae53')
 
