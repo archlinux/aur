@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kguiaddons
-pkgver=5.19.0
+pkgver=5.21.0
 pkgrel=1
 arch=(any)
 pkgdesc="Addons to QtGui (mingw-w64)"
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-cmake mingw-w64-extra-cmake-modules)
 options=(staticlibs !strip !buildflags)
 url="https://projects.kde.org/projects/frameworks/kguiaddons"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kguiaddons-${pkgver}.tar.xz")
-md5sums=('b423159cec98dbac442bdb88e1daeda4')
+md5sums=('0a84bef225895de02a0df3c1d9b8747e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
