@@ -1,7 +1,7 @@
 # Maintainer: Sébastien Luttringer
 
 pkgname=aurbot-git
-pkgver=44
+pkgver=45
 pkgrel=1
 pkgdesc='AUR Builder Bot'
 arch=('any')
