@@ -9,7 +9,7 @@ _pkgname=android-qt5
 pkgname=${_pkgname}-${android_arch}
 _pkgver=5.6
 pkgver=${_pkgver}.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt 5 for Android"
 arch=('i686' 'x86_64')
 url='https://www.qt.io'
@@ -84,6 +84,10 @@ prepare() {
     esac
 }
 
+get_last() {
+    ls $1 | sort -V | tail -n 1
+}
+
 build() {
     cd ${_pkgfqn}
 
@@ -106,11 +110,11 @@ build() {
 
     export ANDROID_NDK_ROOT=/opt/android-ndk
     export ANDROID_SDK_ROOT=/opt/android-sdk
-    export ANDROID_BUILD_TOOLS_REVISION=$(ls ${ANDROID_SDK_ROOT}/build-tools)
-    export ANDROID_API_VERSION=$(ls ${ANDROID_SDK_ROOT}/platforms)
+    export ANDROID_BUILD_TOOLS_REVISION=$(get_last ${ANDROID_SDK_ROOT}/build-tools)
+    export ANDROID_API_VERSION=$(get_last ${ANDROID_SDK_ROOT}/platforms)
     export PYTHON=/usr/bin/python2
 
-    ndkPlatform=$(ls ${ANDROID_NDK_ROOT}/platforms | sort -V | tail -n 1)
+    ndkPlatform=$(get_last ${ANDROID_NDK_ROOT}/platforms)
     _pref=/opt/${_pkgname}/${pkgver}/${android_arch}
 
     configue_opts="
