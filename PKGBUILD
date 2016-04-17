@@ -2,13 +2,13 @@
 
 pkgname=bitcoin-unlimited-git
 pkgver=20160315.9b1890e
-pkgrel=2
+pkgrel=3
 pkgdesc='Bitcoin Unlimited versions of Bitcoind, bitcoin-cli, bitcoin-tx, and bitcoin-qt, w/GUI and wallet'
 arch=('i686' 'x86_64')
 url="http://www.bitcoinunlimited.info/download.html"
 license=('MIT')
-depends=('boost-libs' 'openssl' 'miniupnpc' 'protobuf' 'qrencode' 'qt4')
-makedepends=('boost' 'automoc4' 'qrencode' 'miniupnpc' 'protobuf')
+depends=('boost-libs' 'desktop-file-utils' 'libevent' 'qt5-base' 'protobuf' 'qrencode' 'openssl')
+makedepends=('boost' 'libevent' 'qt5-base' 'qt5-tools' 'qrencode' 'protobuf')
 provides=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 conflicts=('bitcoin-daemon' 'bitcoin-cli' 'bitcoin-qt' 'bitcoin-tx')
 install=bitcoin-qt.install
@@ -30,7 +30,7 @@ build() {
 	msg2 'Building...'
   CXXFLAGS="$CXXFLAGS -DBOOST_VARIANT_USE_RELAXED_GET_BY_DEFAULT=1"
 	./autogen.sh
-	./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt4
+	./configure --prefix=/usr --with-incompatible-bdb --with-gui=qt5
   make -j$(nproc)
 }
 
