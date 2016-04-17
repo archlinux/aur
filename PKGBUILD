@@ -1,5 +1,5 @@
 pkgname=mingw-w64-tools
-pkgver=4.0.5
+pkgver=4.0.6
 _pkgver=${pkgver/rc/-rc}
 pkgrel=1
 pkgdesc="MinGW-w64 utilities"
@@ -11,7 +11,7 @@ options=(!libtool !emptydirs)
 source=("http://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v${_pkgver}.tar.bz2"
 "mingw-w64-tools-2.0.999-s390.patch"
 "0001-widl-Relocate-DEFAULT_INCLUDE_DIR.patch")
-md5sums=('d99ef0bd7323dc0351aff2294c12ffd1'
+md5sums=('e3998f1192ea44049685059225074952'
          '85a915187d7092c659a56fca102da04c'
          '4881e9b6cb7640e3542f45b88bd53a5e')
 
