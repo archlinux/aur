@@ -3,7 +3,7 @@
 # Generator  : CPANPLUS::Dist::Arch 0.14
 pkgname='perl-class-trigger'
 pkgver='0.14'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="Mixin to add / call inheritable triggers"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
@@ -18,12 +18,25 @@ sha512sums=('f0908469a4853ef386158f2ee66bb52a1bb4cfcdb385ecd9fd3375af87943910ba7
 build() {
   _DISTDIR="${srcdir}/Class-Trigger-0.14"
   export PERL_MM_USE_DEFAULT=1
-  { cd "$_DISTDIR" &&
-    perl Makefile.PL INSTALLDIRS=vendor &&
-    make &&
-    make test &&
-    make DESTDIR="${pkgdir}/" install;
-  } || return 1;
+
+  cd "$_DISTDIR"
+  perl Makefile.PL INSTALLDIRS=vendor
+  make
+}
+
+test() {
+  _DISTDIR="${srcdir}/Class-Trigger-0.14"
+  export PERL_MM_USE_DEFAULT=1
+  cd "$_DISTDIR"
+  make test
+}
+
+package() {
+  _DISTDIR="${srcdir}/Class-Trigger-0.14"
+  export PERL_MM_USE_DEFAULT=1
+  cd "$_DISTDIR"
+
+  make DESTDIR="${pkgdir}/" install;
 
   find "$pkgdir" -name .packlist -delete
   find "$pkgdir" -name perllocal.pod -delete
