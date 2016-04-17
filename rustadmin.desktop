@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=02042016.210010
+Name=RustAdmin
+Comment=Graphical administration tool for Rust servers.
+Exec=/usr/bin/rustadmin
+Icon=/usr/share/pixmaps/rustadmin.png
+Terminal=false
+Categories=Utility

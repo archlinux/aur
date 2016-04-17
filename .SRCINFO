@@ -1,0 +1,21 @@
+pkgbase = rustadmin
+	pkgdesc = Graphical configuration tool for Rust servers.
+	pkgver = 02042016.210010
+	pkgrel = 1
+	url = https://rustadmin.com/
+	install = rustadmin.install
+	arch = x86_64
+	arch = i686
+	license = custom
+	depends = wine
+	source = http://rustadmin.com/release/RustAdminRelease.zip
+	source = rustadmin.desktop
+	source = rustadmin.png
+	source = rustadmin
+	sha256sums = 3db053609ea00110010429caa1322f0de0e35b408401c2fbf9a50271dbcc6046
+	sha256sums = d0d70c438085d8ee2efa0f773a271f606b8299495dd84ac399cc136285a108d4
+	sha256sums = 52ee3c5bc7f3b248ef160cdb736407c46c316a1d57a7aa9e88e0953630a2f626
+	sha256sums = 6fd706b76017ccba3708706c7602360f0de0d533dff83ecbbace1765a8eefb02
+
+pkgname = rustadmin
+

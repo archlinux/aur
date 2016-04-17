@@ -1,0 +1,12 @@
+#!/bin/bash
+export WINEPREFIX="$HOME"/.rustadmin/wine
+export WINEARCH=win64
+export WINEDLLOVERRIDES="mscoree=" # disable mono
+export WINEDEBUG=-all
+if [ ! -d "$HOME"/.rustadmin ] ; then
+   mkdir -p "$HOME"/.rustadmin/wine
+   wineboot -u
+   cp -r /usr/share/rustadmin "$HOME"/.rustadmin
+fi
+
+wine "$HOME"/.rustadmin/rustadmin/RustAdmin.exe "$@"
