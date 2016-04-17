@@ -1,6 +1,6 @@
 pkgbase = slip
 	pkgdesc = Select and upload screen(shot) to imgur with the help of slop. (Screencasts too)
-	pkgver = 1.0.0
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/Toqozz/slip
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = slip
 	optdepends = ffmpeg: taking screencasts
 	optdepends = libnotify: upload notification
 	optdepends = xsel: copy link to clipboard
-	source = https://github.com/Toqozz/slip/archive/1.0.0.tar.gz
-	sha256sums = 155bb1d1b959a28f8f127046c0f51e17ac36e531889c878c5a9a1594511cf748
+	source = https://github.com/Toqozz/slip/archive/1.0.4.tar.gz
+	sha256sums = f991f8ca2cd47b160eb8316aa3995bd60e2899e4b663a6360a88a0e21199d5b3
 
 pkgname = slip
 
