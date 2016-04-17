@@ -38,4 +38,6 @@ check() {
 package() {
   cd "$srcdir/$_pkgname"
   python setup.py install --root="$pkgdir"
+  install -Dm 644 todoman.conf.sample \
+    "$pkgdir/usr/share/doc/todoman/examples/todoman.conf"
 }
