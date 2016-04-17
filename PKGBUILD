@@ -1,7 +1,7 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname="asf"
-pkgver="2.0.3.2"
+pkgver="2.0.3.3"
 pkgrel=1
 pkgdesc="Steam cards farmer."
 arch=('any')
@@ -14,7 +14,7 @@ source=("https://github.com/JustArchi/ArchiSteamFarm/releases/download/${pkgver}
         "${pkgname}.sh"
         "${pkgname}-config.sh"
         "${pkgname}.service")
-sha256sums=('9abd876ec11d927f1845e4db5cd6c3bf9de2e023a7e3fefa0dc5452d23967588'
+sha256sums=('4db611b1979be197140dadf185f8e610baeaf242242a6efc1a0abb5c4a57facc'
             'a5d0324c029efb1f99264e787fea26ad53953b4df59bf642bca1ffabad4027f5'
             '63b8d4718e8cc61016ef415ff418e6180102b077315f5ce77bfcab9c03433565'
             'afeee8eb3f1bafa1b0502ce6be43e5119ab73fdc228a49990c9087462c5464af')
