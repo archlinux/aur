@@ -33,6 +33,7 @@ package() {
   _reloc etc/udev   usr/lib/udev
   _reloc usr/lib64  usr/lib
 
+  mkdir -p "$pkgdir/usr/bin"
   ln -s "/opt/dell/srvadmin/bin/idracadm7" "$pkgdir/usr/bin/racadm"
 
   msg2 "Removing crud"
