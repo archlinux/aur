@@ -290,7 +290,7 @@ LOOKUP_DNSDB=yes
 LOOKUP_DSEARCH=yes
 # LOOKUP_IBASE=yes
 LOOKUP_LDAP=yes
-# LOOKUP_MYSQL=yes
+LOOKUP_MYSQL=yes
 # LOOKUP_NIS=yes
 # LOOKUP_NISPLUS=yes
 # LOOKUP_ORACLE=yes
@@ -1222,7 +1222,8 @@ PID_FILE_PATH=/var/run/exim.pid
 # ENABLE_DISABLE_FSYNC=yes
 
 HAVE_IPV6=YES
-LOOKUP_LIBS=-lldap -llber
+LOOKUP_INCLUDE=-I /usr/include/mysql
+LOOKUP_LIBS=-lldap -llber -L/usr/lib -lmysqlclient
 EXTRALIBS_EXIM=-lpam
 
 USE_GDBM=yes

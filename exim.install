@@ -1,13 +1,11 @@
 post_install() {
-  getent group exim >/dev/null 2>&1 || groupadd -g 79 exim 
+  getent group exim >/dev/null 2>&1 || groupadd -g 79 exim
   if getent passwd exim > /dev/null 2>&1; then
     usr/sbin/usermod -d /var/spool/exim -c 'Exim MTA' -s /sbin/nologin exim > /dev/null 2>&1
   else
-    usr/sbin/useradd -c 'Exim MTA' -u 79 -g exim -d /var/spool/exim -s /sbin/nologin exim 
+    usr/sbin/useradd -c 'Exim MTA' -u 79 -g exim -d /var/spool/exim -s /sbin/nologin exim
   fi
   passwd -l exim > /dev/null
-  chown root.exim /var/spool/exim /var/log/exim
-  chown exim.exim /var/spool/exim/db
   chmod u+s /usr/bin/exim
 }
 
