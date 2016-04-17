@@ -27,7 +27,7 @@ package() {
   cd "$srcdir/linux/RPMS/supportRPMS/srvadmin/SLES12/$_sarch"
 
   for _pkg in *.rpm; do
-    if [[ $_pkg == @(libsmbios|smbios-utils)* ]]; then
+    if [[ $_pkg == @(libsmbios|smbios-utils|sblim-sfcc)* ]]; then
       continue
     fi
     msg2 "Extracting $_pkg"
@@ -43,10 +43,6 @@ package() {
 
   msg2 "Removing crud"
   rm -vf "$pkgdir/usr/lib/udev/rules.d/95-dataeng-udev.rules"
-
-  msg2 "Removing conflicting files"
-  rm -rvf "$pkgdir"/usr/lib/{libcimcclient,libcimcClientXML,libcmpisfcc}.so*
-  rm -rvf "$pkgdir"/usr/share/man/
 }
 
 _reloc() {
