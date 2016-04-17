@@ -1,7 +1,7 @@
 # Maintainer: Yuexuan Gu <lastavengers@outlook.com>
 
 pkgname=srain
-pkgver=0.01
+pkgver=0.02
 pkgrel=1
 pkgdesc="it does not look like a irc client"
 arch=('i686' 'x86_64')
