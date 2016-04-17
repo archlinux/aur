@@ -1,0 +1,42 @@
+pkgbase = policyd
+	pkgdesc = multi-platform policy server for popular MTAs
+	pkgver = 2.0.14
+	pkgrel = 1
+	url = http://wiki.policyd.org/start
+	install = policyd.install
+	arch = any
+	license = GPLv2
+	optdepends = php: for webui use
+	source = http://download.policyd.org/v2.0.14/cluebringer-v2.0.14.tar.xz
+	md5sums = e75cd25a836b316846f5ad8bf09a69a2
+
+pkgname = policyd-mysql
+	depends = perl-net-cidr
+	depends = perl-net-server
+	depends = perl-config-inifiles
+	depends = perl-cache-fastmmap
+	depends = perl-mail-spf
+	depends = mysql
+	conflicts = policyd-pgsql
+	conflicts = policyd-sqlite
+
+pkgname = policyd-pgsql
+	depends = perl-net-cidr
+	depends = perl-net-server
+	depends = perl-config-inifiles
+	depends = perl-cache-fastmmap
+	depends = perl-mail-spf
+	depends = pgsql
+	conflicts = policyd-mysql
+	conflicts = policyd-sqlite
+
+pkgname = policyd-sqlite
+	depends = perl-net-cidr
+	depends = perl-net-server
+	depends = perl-config-inifiles
+	depends = perl-cache-fastmmap
+	depends = perl-mail-spf
+	depends = sqlite
+	conflicts = policyd-mysql
+	conflicts = policyd-pgsql
+

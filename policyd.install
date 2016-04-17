@@ -1,0 +1,9 @@
+post_install(){
+    cat << \here
+• Setup your database and feed it with the rules from /usr/share/policyd/policyd-rules.*
+• Setup WebUI from /usr/share/policyd/webui
+• httpd config is located at /usr/share/policyd/httpd
+• postfix sample config is located at /usr/share/policyd/postfix
+• amavisd config is located at /usr/share/policyd/amavisd-new
+here
+}
