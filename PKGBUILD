@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kcrash
-pkgver=5.15.0
+pkgver=5.21.0
 pkgrel=1
 arch=(any)
 pkgdesc="Support for application crash analysis and bug report from apps (mingw-w64)"
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-cmake "mingw-w64-extra-cmake-modules=$pkgver" "kcoreaddon
 options=(staticlibs !strip !buildflags)
 url="https://projects.kde.org/projects/frameworks/kcrash"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kcrash-${pkgver}.tar.xz")
-md5sums=('8a205f76a3ca73b585cfabfafdc97571')
+md5sums=('508b6c0a8657a6da0878549c8df8c7e5')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
