@@ -1,5 +1,7 @@
 post_install() {
-  glib-compile-schemas /usr/share/glib-2.0/schemas
+  glib-compile-schemas /usr/share/glib-2.0/schemas > /dev/null 2>&1
+  xdg-icon-resource forceupdate --theme hicolor 2> /dev/null
+  update-desktop-database -q
 }
 
 post_upgrade() {
