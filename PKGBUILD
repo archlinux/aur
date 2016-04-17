@@ -17,7 +17,7 @@ udev_rules="etc/udev/rules.d/99-realsense-libusb.rules"
 
 build() {
   cd "$pkgname-$pkgver"
-  make
+  make BACKEND=LIBUVC
 }
 
 package() {
@@ -31,6 +31,4 @@ package() {
 echo "SUBSYSTEMS==\"usb\", ENV{DEVTYPE}==\"usb_device\", ATTRS{idVendor}==\"8086\", ATTRS{idProduct}==\"0a80\", MODE=\"0666\", GROUP=\"realsense\"" > $pkgdir/$udev_rules
 echo "SUBSYSTEMS==\"usb\", ENV{DEVTYPE}==\"usb_device\", ATTRS{idVendor}==\"8086\", ATTRS{idProduct}==\"0a66\", MODE=\"0666\", GROUP=\"realsense\"" >>$pkgdir/$udev_rules
 echo "SUBSYSTEMS==\"usb\", ENV{DEVTYPE}==\"usb_device\", ATTRS{idVendor}==\"8086\", ATTRS{idProduct}==\"0aa5\", MODE=\"0666\", GROUP=\"realsense\"" >>$pkgdir/$udev_rules
-  echo "You need to make an V4L2 patch ( see official repo guide, currently I am working on it )"
-  echo "Don't forget adding user to realsense group"
 }
