@@ -3,13 +3,13 @@
 pkgbase=octopi
 pkgname=('octopi' 'octopi-notifier' 'octopi-repoeditor' 'octopi-cachecleaner')
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="a powerful Pacman frontend using Qt libs"
 arch=('i686' 'x86_64')
 url="http://octopiproject.wordpress.com"
 license=('GPL2')
 install=$pkgname.install
-makedepends=('qt5-declarative' 'knotifications' 'libnotify')
+makedepends=('qt5-declarative')
 source=("https://github.com/aarnt/${pkgname}/archive/v${pkgver}.tar.gz"
 	'octopi-repoeditor.desktop'
 	'enable-kstatus.patch')
@@ -18,9 +18,6 @@ sha256sums=('e01c6d959e5663797771b95b47951e3ad11a9abbc7cbb009f1f835404c5ff43e'
             '288dd58a8aa98ef5ad901aec600d0a3c36fa81b60d51385bceeadec0c1aa7b01')
 
 prepare() {
-	_cpucount=$(grep -c processor /proc/cpuinfo 2>/dev/null)
-	_jc=$((${_cpucount:-1}))
-   
 	cd "${srcdir}/${pkgbase}-${pkgver}"
 
   
@@ -31,34 +28,35 @@ build() {
 	cd "${srcdir}/${pkgbase}-${pkgver}"
 
 	qmake-qt5 octopi.pro
-	make -j $_jc
+	make
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/notifier/pacmanhelper"
 	msg "Building pacmanhelper..."
 	qmake-qt5 pacmanhelper.pro
-	make -j $_jc
+	make
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/notifier/octopi-notifier"
 	msg "Building octopi-notifier..."
 	qmake-qt5 octopi-notifier.pro
-	make -j $_jc
+	make
   
 	cd "${srcdir}/${pkgbase}-${pkgver}/repoeditor"
 	msg "Building octopi-repoeditor..."
 	qmake-qt5 octopi-repoeditor.pro
-	make -j $_jc
+	make
 
 	cd "${srcdir}/${pkgbase}-${pkgver}/cachecleaner"
 	msg "Building octopi-cachecleaner..."
 	qmake-qt5 octopi-cachecleaner.pro
-	make -j $_jc
+	make
 }
 
 package_octopi() {
 	pkgdesc="A powerful Pacman frontend using Qt5 libs"
 	install=octopi.install
-	depends=('qt5-declarative' 'xterm')
-	optdepends=('kdesu: for KDE'
+	depends=('qt5-declarative')
+	optdepends=('xterm: for AUR support'
+				'kdesu: for KDE'
 		    'gksu: for XFCE, Gnome, LXDE, Cinnamon'
 				'lxqt-sudo: for LXQT'
 		    'gnome-keyring: for password management'
@@ -95,7 +93,7 @@ package_octopi() {
 
 package_octopi-notifier() {
 	pkgdesc="Notifier for Octopi"
-	depends=('octopi' 'libnotify')
+	depends=('octopi' 'libnotify' 'knotifications')
 	optdepends=('xfce4-notifyd: for notifications in XFCE')
 	install=octopi.install
 	conflicts=('octopi-notifier-qt4' 'octopi-notifier-kde' 'octopi-notifier-kde4')
