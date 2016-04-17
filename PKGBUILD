@@ -6,7 +6,7 @@ pkgver=latest
 pkgrel=5
 pkgdesc="A simple CalDav-based todo manager."
 arch=("any")
-url="https://gitlab.com/hobarrera/todoman"
+url="https://github.com/pimutils/todoman"
 license=('MIT')
 depends=(python-icalendar python-urwid python-xdg python-ansi
          python-parsedatetime python-atomicwrites python-click
@@ -14,7 +14,7 @@ depends=(python-icalendar python-urwid python-xdg python-ansi
 optdepends=('python-click-repl-git: the repl command.')
 conflicts=("todoman")
 provides=("todoman")
-source=(git+https://gitlab.com/hobarrera/todoman.git)
+source=(git+https://github.com/pimutils/todoman.git)
 md5sums=('SKIP')
 
 pkgver() {
