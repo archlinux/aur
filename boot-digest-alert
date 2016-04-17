@@ -1,0 +1,4 @@
+#!/bin/bash
+
+systemctl status boot-digest-check.service|grep -q failed
+[ $? -eq 0 ] && notify-send -t 0 -u critical -i /usr/share/icons/gnome/24x24/status/error.png --app-name='Boot loader Checksum' 'boot-digest FAILED!'

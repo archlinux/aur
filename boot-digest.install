@@ -1,0 +1,15 @@
+post_install() {
+	hooks=$(grep '^HOOKS=' /etc/mkinitcpio.conf|cut -f2 -d'"')
+	if [ ! -z "${hooks##*boot-digest*}" ]; then
+		hooks="$hooks boot-digest"
+		sed -i "s/^HOOKS=.*/HOOKS=\"$hooks\"/" /etc/mkinitcpio.conf
+	fi
+	/usr/bin/boot-digest-mark
+	systemctl enable boot-digest-check.service
+}
+
+pre_remove() {
+  grep -q boot-digest /etc/mkinitcpio.conf
+  [ $? -eq 0 ] && sed -i "s/ boot-digest//" /etc/mkinitcpio.conf
+  systemctl disable boot-digest-check.service
+}

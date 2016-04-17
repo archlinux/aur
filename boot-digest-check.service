@@ -1,0 +1,9 @@
+[Unit]
+Description=Check boot partition checksums
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh /usr/bin/boot-digest-check
+
+[Install]
+WantedBy=multi-user.target

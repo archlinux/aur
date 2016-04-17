@@ -1,0 +1,6 @@
+[Desktop Entry]
+Exec=/usr/bin/boot-digest-alert
+Name=Boot digest alert
+Type=Application
+Version=1.0
+X-LXQt-Need-Tray=true

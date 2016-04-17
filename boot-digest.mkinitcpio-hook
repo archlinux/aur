@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+build() {
+	/usr/bin/boot-digest-mkinitcpio &
+}
+
+help() {
+	cat <<HELPEOF
+This hook waits for mkinitcpio to finish, then recalculates the boot digest.
+HELPEOF
+}

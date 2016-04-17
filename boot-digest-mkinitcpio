@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+while [[ -d "/proc/$PPID" ]]; do
+	sleep 1
+done
+
+/usr/bin/boot-digest-mark
