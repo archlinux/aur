@@ -1,12 +1,12 @@
-# $Id: PKGBUILD 262095 2016-03-19 14:34:58Z heftig $
+# $Id: PKGBUILD 264812 2016-04-13 04:44:53Z heftig $
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor : Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-gtk2
 _pkgname=firefox
-pkgver=45.0.1
-pkgrel=2
+pkgver=45.0.2
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -30,7 +30,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         firefox-symbolic.svg
         firefox-fixed-loading-icon.png
         no-libnotify.patch)
-sha256sums=('d1814ac6d8cd687696bd0d98da3bb525f6df11fe655e0d668742b21fca57d9c8'
+sha256sums=('a6b09bac0390d4e48b752026ec1aaa934332dee31fb3ff3ca59f8209f4217a53'
             'e75e13807e5f210dde53b785e25c8a5345d7bb459f857355b7b87bffc24b312b'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
