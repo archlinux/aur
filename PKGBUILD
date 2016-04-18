@@ -12,7 +12,7 @@ _build_voip=true
 
 pkgname=retroshare
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
@@ -64,7 +64,7 @@ build() {
 	cd ../..
 
 	# qt4: qmake-qt4 -r ...
-	qmake   "CONFIG-=debug" "CONFIG+=release" \
+	qmake   "CONFIG-=debug" "CONFIG+=release" "CONFIG -= c++11" \
 		QMAKE_CFLAGS_RELEASE="${CFLAGS}"\
 		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"\
 		RetroShare.pro
