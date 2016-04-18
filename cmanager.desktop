@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=cmanager
+Comment=Sync logs between geocaching.com and opencaching.de
+#Icon=cmanager
+Exec=cmanager
+Terminal=false
