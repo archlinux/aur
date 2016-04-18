@@ -2,7 +2,7 @@
 # Contributor: Martin Kostolný <clearmartin at zoho dot com>
 
 pkgname=plasma5-applets-network-monitor
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="Plasma 5 applet that monitors network speed of currently active connections"
 arch=(any)
@@ -11,7 +11,7 @@ license=(GPL)
 depends=(plasma-workspace qt5-graphicaleffects)
 makedepends=(extra-cmake-modules)
 source=("https://github.com/kotelnik/plasma-applet-network-monitor/archive/v$pkgver.tar.gz")
-md5sums=('25db52122083fa207223e2c6386204fa')
+md5sums=('10512358e603b96339c244a1d4ac8588')
 
 prepare() {
   mkdir -p build
