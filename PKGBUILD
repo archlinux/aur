@@ -3,7 +3,7 @@
 pkgname=openconnect-git
 _pkgname=openconnect
 pkgver=7.06.r93.g11ad105
-pkgrel=1
+pkgrel=2
 pkgdesc="Open client for Cisco AnyConnect VPN"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -27,8 +27,7 @@ build() {
   ./autogen.sh
   PYTHON=/usr/bin/python2 ./configure --prefix=/usr \
       --sbindir=/usr/bin \
-      --disable-static \
-      --with-openssl
+      --disable-static
   make V=0
 }
 
