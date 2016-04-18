@@ -1,7 +1,7 @@
 pkgname=monaco-powerline-font-git
 _gitname=monaco-powerline-font
 pkgver=r16.616d338
-pkgrel=1
+pkgrel=2
 pkgdesc="Monaco Powerline fonts for X11 and the console"
 arch=('any')
 url='https://gist.github.com/arkhan/229a0729ec79c6fcec81'
