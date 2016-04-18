@@ -1,0 +1,14 @@
+[Unit]
+Description=IrDA Support
+After=syslog.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/irattach.pid
+ExecStartPre=/sbin/modprobe -qab ircomm-tty irtty-sir irnet
+ExecStart=/usr/bin/irattach /dev/ttyUSB0 -s
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
