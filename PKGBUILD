@@ -2,7 +2,7 @@
 
 pkgname=xt7-player-mpv
 pkgver=0.17.384
-#hotfix=-hotfix
+hotfix=-hotfix
 pkgrel=1
 _realname=xt7-player-mpv
 pkgdesc="Aims to be an 'almost complete' but usable mpv gui"
