@@ -61,7 +61,6 @@ prepare() {
 }
 
 package() {  
-  install -d $pkgdir/usr/share/fonts/$pkgname
-  install -m 644 -t $pkgdir/usr/share/fonts/$pkgname $srcdir/$pkgname/*.ttf
+  install -m 644 -Dt $pkgdir/usr/share/fonts/$pkgname $srcdir/$pkgname/*.ttf
   install -Dm 644 $srcdir/$pkgname/ofl.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
