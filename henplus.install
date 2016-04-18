@@ -1,0 +1,9 @@
+post_install() {
+cat << 'EOM'
+  ==> PLEASE NOTE:
+  ==>
+  ==> Henplus looks for JDBC drivers in the following directories:
+  ==> /usr/lib/java/henplus
+  ==> ~/.henplus/jdbc
+EOM
+}

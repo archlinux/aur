@@ -1,0 +1,18 @@
+pkgbase = henplus
+	pkgdesc = SQL shell written in Java
+	pkgver = 0.9.8.1676541
+	pkgrel = 1
+	url = http://henplus.sourceforge.net/
+	install = henplus.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = apache-ant
+	depends = java-environment
+	depends = bash
+	optdepends = java-readline: readline support
+	source = henplus::git+https://github.com/neurolabs/henplus.git#commit=1676541
+	md5sums = SKIP
+
+pkgname = henplus
+
