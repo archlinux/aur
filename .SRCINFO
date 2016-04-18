@@ -1,0 +1,42 @@
+pkgbase = certbot-plugins-git
+	pkgver = 0.5.0.r57.g86e09d5
+	pkgrel = 1
+	url = https://github.com/letsencrypt/letsencrypt
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = certbot=0.5.0.r57.g86e09d5
+	makedepends = python2-acme=0.5.0.r57.g86e09d5
+	makedepends = python2-pyopenssl
+	makedepends = python2-pyparsing
+	makedepends = python2-setuptools
+	makedepends = python2-mock
+	makedepends = python2-zope-interface
+	makedepends = python2-zope-component
+	makedepends = python2-augeas
+	source = letsencrypt::git+https://github.com/letsencrypt/letsencrypt
+	md5sums = SKIP
+
+pkgname = cerbot-nginx-git
+	pkgdesc = Nginx plugin for Let’s Encrypt client
+	depends = certbot=0.5.0.r57.g86e09d5
+	depends = python2-acme=0.5.0.r57.g86e09d5
+	depends = python2-pyopenssl
+	depends = python2-pyparsing
+	depends = python2-setuptools
+	depends = python2-mock
+	depends = python2-zope-interface
+	provides = cerbot-nginx
+	conflicts = cerbot-nginx
+
+pkgname = cerbot-apache-git
+	pkgdesc = Apache plugin for Let’s Encrypt client
+	depends = letsencrypt=0.5.0.r57.g86e09d5
+	depends = python2-acme=0.5.0.r57.g86e09d5
+	depends = python2-augeas
+	depends = python2-setuptools
+	depends = python2-mock
+	depends = python2-zope-component
+	depends = python2-zope-interface
+	provides = cerbot-apache
+	conflicts = cerbot-apache
