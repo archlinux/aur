@@ -2,7 +2,7 @@
 
 pkgname=keeweb-git
 _pkgname=keeweb
-pkgver=1.1.1.0.g88bfa7e
+pkgver=1.1.2.1.g5553b10
 pkgrel=1
 pkgdesc="Desktop password manager compatible with KeePass databases."
 arch=('any')
