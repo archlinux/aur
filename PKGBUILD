@@ -3,7 +3,7 @@
 pkgbase=perl-checkupdates-aur
 pkgname=(perl-checkupdates-aur checkupdates-aur)
 _pkgname=CheckUpdates-AUR
-pkgver=0.02
+pkgver=0.03
 pkgrel=1
 pkgdesc="checkupdates for aur"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('perl-www-aur' 'perl-json' 'perl-try-tiny')
 makedepends=('perl-module-build')
 optdepends=('perl-smart-comments: for debug perpose only')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/3ed/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('8c4a16af493007429337c75b7d6530dd501c539f071b077c2c1ece9c25c57e52')
+sha256sums=('7c7b4b67a5203b7a1f5839cb4945fbe5e210ba4ffa6d9f4f73e89bf1366c04b1')
 
 build() {
 	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
