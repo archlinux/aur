@@ -3,7 +3,7 @@
 pkgname=perl-parallel-forkmanager
 _lastauthor=Y/YA/YANICK
 _pkgname=Parallel-ForkManager
-pkgver=1.17
+pkgver=1.18
 pkgrel=1
 pkgdesc="A simple parallel processing fork manager"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('perl-extutils-makemaker')
 checkdepends=('perl-test-warn')
 url="https://metacpan.org/release/${_pkgname}"
 source=(https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz)
-sha512sums=('2897cc737bc35ab88bd60fea1cd371a499ea32fdcc33095601ecf8930725dd6350041172dd138e4ee4a529641aacb6fa51ae34f7ac9f1359f910713f3afa0f2c')
+sha512sums=('1d9f959f0caee374273c6eacd0791d758f899aa4a2fd5040232df82c170ba57de396608ce7f464412f00260ca14fb6e9302c6f4eab48419c6b445e86ae43366c')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
