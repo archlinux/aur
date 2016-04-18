@@ -6,7 +6,7 @@
 
 pkgname=draftsight
 pkgver=2016SP1
-pkgrel=1
+pkgrel=2
 pkgdesc="Freeware CAD software for your DWG/DXF files."
 arch=('x86_64')
 url="http://www.3ds.com/products/draftsight/"
@@ -21,6 +21,7 @@ depends=('desktop-file-utils'
          'libgl'
          'libice'
          'libmariadbclient'
+         'libpng12'
          'libsm'
          'libx11'
          'libxext'
