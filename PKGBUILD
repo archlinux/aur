@@ -1,36 +1,33 @@
-# Maintainer: Piotr Rogoża <rogoza dot piotr at gmail dot com>
-# Contributor:  Piotr Rogoża <rogoza dot piotr at gmail dot com>
-# vim:set ts=2 sw=2 et ft=sh et:
+# Maintainer: dracorp aka Piotr Rogoza <piotr.r.public at gmail.com>
 
 pkgname=dialog-doc
-_pkgname=dialog
-pkgver=1.2_20130928
+pkgver=1.3_20160209
 _pkgver=${pkgver/_/-}
 pkgrel=1
 pkgdesc="Samples for the dialog, a tool to display dialog boxes from shell scripts"
 arch=('any')
 url="http://invisible-island.net/dialog/"
 license=('GPL')
-depends=('sh' 'bash' 'dialog>=1.1_20110118')
+depends=(sh bash dialog)
 source=(
-ftp://invisible-island.net/${_pkgname}/${_pkgname}-$_pkgver.tgz
-ftp://invisible-island.net/${_pkgname}/${_pkgname}-$_pkgver.tgz.asc
+ftp://invisible-island.net/dialog/dialog-$_pkgver.tgz
+ftp://invisible-island.net/dialog/dialog-$_pkgver.tgz.asc
 )
+sha256sums=('0314f7f2195edc58e7567a024dc1d658c2f8ea732796d8fa4b4927df49803f87'
+            'SKIP')
 # ftp://invisible-island.net/dialog/
-
+validpgpkeys=(C52048C0C0748FEE227D47A2702353E0F7E48EDB) #Thomas Dickey <dickey@invisible-island.net>
 package() {
-  cd "${srcdir}"/${_pkgname}-${_pkgver}/samples/
+  cd "${srcdir}"/dialog-${_pkgver}/samples/
 
-  install -dm755 ${pkgdir}/usr/share/doc/${_pkgname}/samples
+  install -dm755 ${pkgdir}/usr/share/doc/dialog/samples
 
   # search for executeables files
-  find -maxdepth 1 -type f -perm +111 -print | \
-    xargs -I{} cp {} ${pkgdir}/usr/share/doc/$_pkgname/samples/
+  find -maxdepth 1 -type f -executable -print | \
+    xargs -I{} cp {} ${pkgdir}/usr/share/doc/dialog/samples/
 
   for i in README report-* setup-* testdata-8bit textbox.txt whiptail.rc \
     checklist9.txt; do
-    install -Dm 644 $i ${pkgdir}/usr/share/doc/$_pkgname/samples
+    install -Dm 644 $i ${pkgdir}/usr/share/doc/dialog/samples
   done
 }
-sha256sums=('6fcf8daa50335e4d08da9f4f5ea5e1025efe84c3a719a56e871eb83ed0fd2b4c'
-            'SKIP')
