@@ -1,7 +1,7 @@
 pkgbase = min-browser-bin
 	pkgdesc = A faster, smarter web browser.
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://palmeral.github.io/min/
 	install = min-browser-bin.install
 	arch = x86_64

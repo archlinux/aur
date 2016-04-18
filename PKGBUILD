@@ -1,7 +1,7 @@
 # Maintainer: Braeden Mollot <3mollot at gmail dot com>
 pkgname=min-browser-bin
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A faster, smarter web browser."
 arch=('x86_64')
 url="https://palmeral.github.io/min/"
