@@ -1,11 +1,11 @@
 pkgbase = min-browser-bin
 	pkgdesc = A faster, smarter web browser.
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://palmeral.github.io/min/
 	install = min-browser-bin.install
 	arch = x86_64
-	license = unknown
+	license = Apache
 	depends = libxtst
 	depends = nodejs
 	depends = gconf
@@ -13,9 +13,9 @@ pkgbase = min-browser-bin
 	depends = nss
 	depends = libnotify
 	depends = gnuplot
-	noextract = Min_1.1.1_amd64.deb
-	source = https://github.com/PalmerAL/min/releases/download/v1.1.1/Min_1.1.1_amd64.deb
-	md5sums = 247ca4bf46b953c47dd5b7b406c00295
+	noextract = Min_1.1.2_amd64.deb
+	source = https://github.com/PalmerAL/min/releases/download/v1.1.2/Min_1.1.2_amd64.deb
+	md5sums = ef8657e6649bf1bd8366fced72cd0c84
 
 pkgname = min-browser-bin
 
