@@ -1,291 +1,35 @@
-diff -aur src/openscap-1.2.8/tests/API/XCCDF/applicability/all.sh src/openscap-1.2.8-patch/tests/API/XCCDF/applicability/all.sh
---- src/openscap-1.2.8/tests/API/XCCDF/applicability/all.sh	2016-01-18 17:18:42.278429270 +0800
-+++ src/openscap-1.2.8-patch/tests/API/XCCDF/applicability/all.sh	2016-04-06 19:11:34.765355152 +0800
-@@ -12,20 +12,13 @@
-     local CPE_DICT=$srcdir/$2
-     local EXPECTED_NA=$3
+diff -aur src/openscap-1.2.8/tests/test_common.sh.in src/openscap-1.2.8-patch/tests/test_common.sh.in
+--- src/openscap-1.2.8/tests/test_common.sh.in	2016-01-18 10:18:42.000000000 +0100
++++ src/openscap-1.2.8-patch/tests/test_common.sh.in	2016-04-13 22:15:31.866559193 +0200
+@@ -26,11 +26,7 @@
  
--    local TMP_RESULTS=`mktemp`
--    $OSCAP xccdf eval --cpe $CPE_DICT --results $TMP_RESULTS $INPUT
-+    result=`mktemp`
-+    $OSCAP xccdf eval --cpe $CPE_DICT --results $result $INPUT
-     if [ "$?" != "0" ]; then
-         return 1
-     fi
+ export XMLDIFF="@abs_top_srcdir@/tests/xmldiff.pl"
  
--    local NOTAPPLICABLE_COUNT=$($XPATH $TMP_RESULTS 'count(//result[text()="notapplicable"])')
--    rm -f $TMP_RESULTS
--
--    if [ "$NOTAPPLICABLE_COUNT" == "$EXPECTED_NA" ]; then
--        return 0
--    fi
--
--    return 1
-+    assert_exists $3 '//result[text()="notapplicable"]'
+-if ! XPATH=`command -v xpath 2>&1`; then
+-  echo "I require xpath tool but it's not installed. Aborting." >&2
+-  exit 1
+-fi
+-export XPATH
++export XPATH=xpath_wrapper
+ 
+ # Overall test result.
+ result=0
+@@ -163,3 +160,18 @@
+         fi
  }
- 
- function test_api_xccdf_cpe2_eval {
-@@ -33,40 +26,26 @@
-     local CPE_DICT=$srcdir/$2
-     local EXPECTED_NA=$3
- 
--    local TMP_RESULTS=`mktemp`
--    $OSCAP xccdf eval --cpe $CPE_DICT --results $TMP_RESULTS $INPUT
-+    result=`mktemp`
-+    $OSCAP xccdf eval --cpe $CPE_DICT --results $result $INPUT
-     if [ "$?" != "0" ]; then
-         return 1
-     fi
- 
--    local NOTAPPLICABLE_COUNT=$($XPATH $TMP_RESULTS 'count(//result[text()="notapplicable"])')
--    rm -f $TMP_RESULTS
--
--    if [ "$NOTAPPLICABLE_COUNT" == "$EXPECTED_NA" ]; then
--        return 0
--    fi
--
--    return 1
-+    assert_exists $3 '//result[text()="notapplicable"]'
- }
- 
- function test_api_xccdf_embedded_cpe_eval {
-     local INPUT=$srcdir/$1
-     local EXPECTED_NA=$2
- 
--    local TMP_RESULTS=`mktemp`
--    $OSCAP xccdf eval --results $TMP_RESULTS $INPUT
-+    result=`mktemp`
-+    $OSCAP xccdf eval --results $result $INPUT
-     if [ "$?" != "0" ]; then
-         return 1
-     fi
- 
--    local NOTAPPLICABLE_COUNT=$($XPATH $TMP_RESULTS 'count(//result[text()="notapplicable"])')
--    rm -f $TMP_RESULTS
--
--    if [ "$NOTAPPLICABLE_COUNT" == "$EXPECTED_NA" ]; then
--        return 0
--    fi
--
--    return 1
-+    assert_exists $2 '//result[text()="notapplicable"]'
- }
- # Testing.
- 
-diff -aur src/openscap-1.2.8/tests/API/XCCDF/tailoring/all.sh src/openscap-1.2.8-patch/tests/API/XCCDF/tailoring/all.sh
---- src/openscap-1.2.8/tests/API/XCCDF/tailoring/all.sh	2016-01-18 17:18:42.279429298 +0800
-+++ src/openscap-1.2.8-patch/tests/API/XCCDF/tailoring/all.sh	2016-04-06 19:15:11.219458174 +0800
-@@ -13,20 +13,14 @@
-     local PROFILE=$3
-     local EXPECTED_PASS=$4
- 
--    local TMP_RESULTS=`mktemp`
--    $OSCAP xccdf eval --tailoring-file $TAILORING --profile $PROFILE --results $TMP_RESULTS $INPUT
-+    result=`mktemp`
-+    $OSCAP xccdf eval --tailoring-file $TAILORING --profile $PROFILE --results $result $INPUT
-     if [ "$?" != "0" ]; then
-         return 1
-     fi
- 
--    local PASS_COUNT=$($XPATH $TMP_RESULTS 'count(//result[text()="pass"])')
--    rm -f $TMP_RESULTS
--
--    if [ "$PASS_COUNT" == "$EXPECTED_PASS" ]; then
--        return 0
--    fi
--
--    return 1
-+    assert_exists $4 '//result[text()="pass"]'
-+    rm -f $result
- }
- 
- function test_api_xccdf_tailoring_ds {
-@@ -35,20 +29,14 @@
-     local PROFILE=$3
-     local EXPECTED_PASS=$4
- 
--    local TMP_RESULTS=`mktemp`
--    $OSCAP xccdf eval --tailoring-id $TAILORING_ID --profile $PROFILE --results $TMP_RESULTS $INPUT
-+    result=`mktemp`
-+    $OSCAP xccdf eval --tailoring-id $TAILORING_ID --profile $PROFILE --results $result $INPUT
-     if [ "$?" != "0" ]; then
-         return 1
-     fi
- 
--    local PASS_COUNT=$($XPATH $TMP_RESULTS 'count(//result[text()="pass"])')
--    rm -f $TMP_RESULTS
--
--    if [ "$PASS_COUNT" == "$EXPECTED_PASS" ]; then
--        return 0
--    fi
--
--    return 1
-+    assert_exists $4 '//result[text()="pass"]'
-+    rm -f $result
- }
- 
- function test_api_xccdf_tailoring_ds_hybrid {
-@@ -57,20 +45,14 @@
-     local PROFILE=$3
-     local EXPECTED_PASS=$4
- 
--    local TMP_RESULTS=`mktemp`
--    $OSCAP xccdf eval --tailoring-file $TAILORING --profile $PROFILE --results $TMP_RESULTS $INPUT
-+    result=`mktemp`
-+    $OSCAP xccdf eval --tailoring-file $TAILORING --profile $PROFILE --results $result $INPUT
-     if [ "$?" != "0" ]; then
-         return 1
-     fi
- 
--    local PASS_COUNT=$($XPATH $TMP_RESULTS 'count(//result[text()="pass"])')
--    rm -f $TMP_RESULTS
--
--    if [ "$PASS_COUNT" == "$EXPECTED_PASS" ]; then
--        return 0
--    fi
--
--    return 1
-+    assert_exists $4 '//result[text()="pass"]'
-+    rm -f $result
- }
- 
- function test_api_xccdf_tailoring_oscap_info {
-@@ -92,20 +74,13 @@
-     local PROFILE=$2
-     local EXPECTED_PASS=$3
- 
--    local TMP_RESULTS=`mktemp`
--    $OSCAP xccdf eval --profile $PROFILE --results $TMP_RESULTS $TAILORING
-+    result=`mktemp`
-+    $OSCAP xccdf eval --profile $PROFILE --results $result $TAILORING
-     if [ "$?" != "0" ]; then
-         return 1
-     fi
- 
--    local PASS_COUNT=$($XPATH $TMP_RESULTS 'count(//result[text()="pass"])')
--    rm -f $TMP_RESULTS
--
--    if [ "$PASS_COUNT" == "$EXPECTED_PASS" ]; then
--        return 0
--    fi
--
--    return 1
-+    assert_exists $3 '//result[text()="pass"]'
- }
- 
- # Testing.
-diff -aur src/openscap-1.2.8/tests/DS/test_ds.sh src/openscap-1.2.8-patch/tests/DS/test_ds.sh
---- src/openscap-1.2.8/tests/DS/test_ds.sh	2016-01-18 17:18:42.303429988 +0800
-+++ src/openscap-1.2.8-patch/tests/DS/test_ds.sh	2016-04-06 18:30:55.651537530 +0800
-@@ -18,15 +18,15 @@
- 	rm $stderr
- 
- 	# First of all make sure that there is at least one ds:component-ref.
--	[ "$($XPATH $DS 'count(//*[local-name()="component-ref"])')" != "0" ]
-+	[ "$($XPATH -e 'count(//*[local-name()="component-ref"])' $DS)" != "0" ]
- 	# We want to catch cases when this element has different namespace.
--	local ns=$($XPATH $DS 'name(//*[local-name()="component-ref"][1])' | sed 's/:.*$/:/')
-+	local ns=$($XPATH -e 'name(//*[local-name()="component-ref"][1])' $DS | sed 's/:.*$/:/')
- 	[ "$ns" != "component-ref" ] || ns=""
- 	# Ensure there is at least some xlink.
--	[ "`$XPATH $DS \"count(//${ns}component-ref/@xlink:href)\"`" != "0" ]
-+	[ "`$XPATH -e \"count(//${ns}component-ref/@xlink:href)\" $DS`" != "0" ]
- 	# This asserts that there is none component-ref/xlink:href broken.
- 	# Previously, we have seen datastreams with broken xlinks (see trac#286).
--	[ "`$XPATH $DS  \"count(//${ns}component-ref[substring(@xlink:href, 2, 10000) != (//${ns}component/@${ns}id | //${ns}extended-component/@${ns}id)])\"`" == "0" ]
-+	[ "`$XPATH -e  \"count(//${ns}component-ref[substring(@xlink:href, 2, 10000) != (//${ns}component/@${ns}id | //${ns}extended-component/@${ns}id)])\" $DS`" == "0" ]
- }
- 
- sds_add_multiple_twice(){
-diff -aur src/openscap-1.2.8/tests/probes/maskattr/test_object_entity_mask_oval_5_9.sh src/openscap-1.2.8-patch/tests/probes/maskattr/test_object_entity_mask_oval_5_9.sh
---- src/openscap-1.2.8/tests/probes/maskattr/test_object_entity_mask_oval_5_9.sh	2016-01-12 20:19:04.715152743 +0800
-+++ src/openscap-1.2.8-patch/tests/probes/maskattr/test_object_entity_mask_oval_5_9.sh	2016-04-06 19:24:11.717585118 +0800
-@@ -20,13 +20,13 @@
- assert_exists 0 '/oval_results/oval_definitions/objects/unix-def:file_object/unix-def:filepath[text()="/etc/passwd"]'
- 
- echo "Testing results values."
--[ "$($XPATH $result 'string(/oval_results/results/system/tests/test[@test_id="oval:x:tst:1"]/@result)')" == "true" ]
-+[ "$($XPATH -e 'string(/oval_results/results/system/tests/test[@test_id="oval:x:tst:1"]/@result)' $result)" == "true" ]
- 
- echo "Testing syschar values."
--[ "$($XPATH $result 'string(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:1"]/@flag)')" == "complete" ]
--[ "$($XPATH $result 'count(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:1"]/reference)')" == "1" ]
-+[ "$($XPATH -e 'string(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:1"]/@flag)' $result)" == "complete" ]
-+[ "$($XPATH -e 'count(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:1"]/reference)' $result)" == "1" ]
- 
--[ "$($XPATH $result 'boolean(/oval_results/results/system/oval_system_characteristics/system_data/unix-sys:file_item/unix-sys:filepath/@mask)')" == "1" ]
--[ "$($XPATH $result 'string(/oval_results/results/system/oval_system_characteristics/system_data/unix-sys:file_item/unix-sys:filepath)')" == "" ]
-+[ "$($XPATH -e 'boolean(/oval_results/results/system/oval_system_characteristics/system_data/unix-sys:file_item/unix-sys:filepath/@mask)' $result)" == "1" ]
-+[ "$($XPATH -e 'string(/oval_results/results/system/oval_system_characteristics/system_data/unix-sys:file_item/unix-sys:filepath)' $result)" == "" ]
- 
- rm $result
-diff -aur src/openscap-1.2.8/tests/probes/maskattr/test_object_entity_mask.sh src/openscap-1.2.8-patch/tests/probes/maskattr/test_object_entity_mask.sh
---- src/openscap-1.2.8/tests/probes/maskattr/test_object_entity_mask.sh	2016-01-18 17:18:42.305430046 +0800
-+++ src/openscap-1.2.8-patch/tests/probes/maskattr/test_object_entity_mask.sh	2016-04-06 19:24:21.111235748 +0800
-@@ -20,13 +20,13 @@
- assert_exists 1 '/oval_results/oval_definitions/objects/unix-def:file_object/unix-def:filepath[text()="/etc/passwd"]'
- 
- echo "Testing results values."
--[ "$($XPATH $result 'string(/oval_results/results/system/tests/test[@test_id="oval:x:tst:1"]/@result)')" == "true" ]
-+[ "$($XPATH -e 'string(/oval_results/results/system/tests/test[@test_id="oval:x:tst:1"]/@result)' $result)" == "true" ]
- 
- echo "Testing syschar values."
--[ "$($XPATH $result 'string(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:1"]/@flag)')" == "complete" ]
--[ "$($XPATH $result 'count(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:1"]/reference)')" == "1" ]
-+[ "$($XPATH -e 'string(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:1"]/@flag)' $result)" == "complete" ]
-+[ "$($XPATH -e 'count(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:1"]/reference)' $result)" == "1" ]
- 
--[ "$($XPATH $result 'boolean(/oval_results/results/system/oval_system_characteristics/system_data/unix-sys:file_item/unix-sys:filepath/@mask)')" == "1" ]
--[ "$($XPATH $result 'string(/oval_results/results/system/oval_system_characteristics/system_data/unix-sys:file_item/unix-sys:filepath)')" == "" ]
-+[ "$($XPATH -e 'boolean(/oval_results/results/system/oval_system_characteristics/system_data/unix-sys:file_item/unix-sys:filepath/@mask)' $result)" == "1" ]
-+[ "$($XPATH -e 'string(/oval_results/results/system/oval_system_characteristics/system_data/unix-sys:file_item/unix-sys:filepath)' $result)" == "" ]
- 
- rm $result
-diff -aur src/openscap-1.2.8/tests/probes/maskattr/test_object_entity_nomask.sh src/openscap-1.2.8-patch/tests/probes/maskattr/test_object_entity_nomask.sh
---- src/openscap-1.2.8/tests/probes/maskattr/test_object_entity_nomask.sh	2016-01-18 17:18:42.305430046 +0800
-+++ src/openscap-1.2.8-patch/tests/probes/maskattr/test_object_entity_nomask.sh	2016-04-06 19:24:29.878198602 +0800
-@@ -17,13 +17,13 @@
- $OSCAP oval validate-xml --results $result
- 
- echo "Testing results values."
--[ "$($XPATH $result 'string(/oval_results/results/system/tests/test[@test_id="oval:x:tst:1"]/@result)')" == "true" ]
-+[ "$($XPATH -e 'string(/oval_results/results/system/tests/test[@test_id="oval:x:tst:1"]/@result)' $result)" == "true" ]
- 
- echo "Testing syschar values."
--[ "$($XPATH $result 'string(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:1"]/@flag)')" == "complete" ]
--[ "$($XPATH $result 'count(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:1"]/reference)')" == "1" ]
-+[ "$($XPATH -e 'string(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:1"]/@flag)' $result)" == "complete" ]
-+[ "$($XPATH -e 'count(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:1"]/reference)' $result)" == "1" ]
- 
--[ "$($XPATH $result 'boolean(/oval_results/results/system/oval_system_characteristics/system_data/unix-sys:file_item/unix-sys:filepath/@mask)')" == "0" ]
--[ "$($XPATH $result 'string(/oval_results/results/system/oval_system_characteristics/system_data/unix-sys:file_item/unix-sys:filepath)')" == "/etc/passwd" ]
-+[ "$($XPATH -e 'boolean(/oval_results/results/system/oval_system_characteristics/system_data/unix-sys:file_item/unix-sys:filepath/@mask)' $result)" == "0" ]
-+[ "$($XPATH -e 'string(/oval_results/results/system/oval_system_characteristics/system_data/unix-sys:file_item/unix-sys:filepath)' $result)" == "/etc/passwd" ]
- 
- rm $result
-diff -aur src/openscap-1.2.8/tests/probes/textfilecontent54/test_symlinks.sh src/openscap-1.2.8-patch/tests/probes/textfilecontent54/test_symlinks.sh
---- src/openscap-1.2.8/tests/probes/textfilecontent54/test_symlinks.sh	2015-11-26 23:25:49.608388465 +0800
-+++ src/openscap-1.2.8-patch/tests/probes/textfilecontent54/test_symlinks.sh	2016-04-06 19:23:36.366391632 +0800
-@@ -20,14 +20,14 @@
- echo "Validating results."
- $OSCAP oval validate-xml --results $result
- echo "Testing syschar values."
--[ "$($XPATH $result 'string(/oval_results/results/system/tests/test[@test_id="oval:x:tst:1"]/@result)')" == "true" ]
--[ "$($XPATH $result 'string(/oval_results/results/system/tests/test[@test_id="oval:x:tst:2"]/@result)')" == "false" ]
--[ "$($XPATH $result 'string(/oval_results/results/system/tests/test[@test_id="oval:x:tst:3"]/@result)')" == "false" ]
--[ "$($XPATH $result 'string(/oval_results/results/system/tests/test[@test_id="oval:x:tst:4"]/@result)')" == "true" ]
-+[ "$($XPATH -e 'string(/oval_results/results/system/tests/test[@test_id="oval:x:tst:1"]/@result)' $result)" == "true" ]
-+[ "$($XPATH -e 'string(/oval_results/results/system/tests/test[@test_id="oval:x:tst:2"]/@result)' $result)" == "false" ]
-+[ "$($XPATH -e 'string(/oval_results/results/system/tests/test[@test_id="oval:x:tst:3"]/@result)' $result)" == "false" ]
-+[ "$($XPATH -e 'string(/oval_results/results/system/tests/test[@test_id="oval:x:tst:4"]/@result)' $result)" == "true" ]
- echo "Testing syschar values."
--[ "$($XPATH $result 'string(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:1"]/@flag)')" == "complete" ]
--[ "$($XPATH $result 'string(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:2"]/@flag)')" == "does not exist" ]
--[ "$($XPATH $result 'string(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:3"]/@flag)')" == "does not exist" ]
--[ "$($XPATH $result 'string(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:4"]/@flag)')" == "complete" ]
-+[ "$($XPATH -e 'string(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:1"]/@flag)' $result)" == "complete" ]
-+[ "$($XPATH -e 'string(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:2"]/@flag)' $result)" == "does not exist" ]
-+[ "$($XPATH -e 'string(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:3"]/@flag)' $result)" == "does not exist" ]
-+[ "$($XPATH -e 'string(/oval_results/results/system/oval_system_characteristics/collected_objects/object[@id="oval:x:obj:4"]/@flag)' $result)" == "complete" ]
- 
- rm -rf $tmpdir
+ export -f assert_exists
++
++xpath_wrapper() {
++XPATH_BIN="/usr/bin/vendor_perl/xpath"
++if [ "$#" -eq 1 ];
++then
++	# read file from stdin
++	xpath_expr="$1"
++	$XPATH_BIN -e "$xpath_expr"
++else
++	file="$1"
++	xpath_expr="$2"
++	$XPATH_BIN -e "$xpath_expr" "$file"
++fi
++}
++export -f xpath_wrapper

@@ -88,20 +88,6 @@ diff -aur openscap-1.2.8/tests/mitre/test_mitre.sh openscap-1.2.8-patch/tests/mi
  if WANT_PROBES_SOLARIS
 --- openscap-1.2.8/tests/test_common.sh.in	2016-04-06 17:10:12.439743753 +0800
 +++ openscap-1.2.8-patch/tests/test_common.sh.in	2016-04-06 17:03:00.834628286 +0800
-@@ -26,11 +26,8 @@
- 
- export XMLDIFF="/home/noner/aur/openscap/src/openscap-1.2.8/tests/xmldiff.pl"
- 
--if ! XPATH=`command -v xpath 2>&1`; then
--  echo "I require xpath tool but it's not installed. Aborting." >&2
--  exit 1
--fi
--export XPATH
-+# In Arch, after perl-xml-xpath is installed, this should be satisfied.
-+export XPATH="/usr/bin/vendor_perl/xpath"
- 
- # Overall test result.
- result=0
 @@ -67,7 +64,8 @@
  	echo -e "RESULT: SKIPPED\n" >&2
  	return 0; 
@@ -112,13 +98,3 @@ diff -aur openscap-1.2.8/tests/mitre/test_mitre.sh openscap-1.2.8-patch/tests/mi
  	echo "[ WARN ]"; 
  	echo -e "RESULT: WARNING (unknown exist status $ret_val)\n" >&2
  	return 1;
-@@ -156,7 +154,8 @@
- }
- 
- assert_exists() {
--        real_cnt="$($XPATH $result 'count('"$2"')' 2>/dev/null)"
-+# Different xpath tool is used here.
-+        real_cnt="$($XPATH -e 'count('"$2"')' $result 2>/dev/null)"
-         if [ "$real_cnt" != "$1" ]; then
-                 echo "Failed: expected count: $1, real count: $real_cnt, xpath: '$2'"
-                 return 1

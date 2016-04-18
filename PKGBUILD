@@ -2,7 +2,7 @@
 
 pkgname=openscap
 pkgver=1.2.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Open Source Security Compliance Solution"
 
 # i686 is theoretically bulitable, if anyone needs it
@@ -22,8 +22,8 @@ source=("https://github.com/OpenSCAP/openscap/releases/download/$pkgver/$pkgname
         "fails_and_fix.patch"
         "xpath.patch")
 md5sums=('d26a148d834635363ac8cdd707828302'
-         '4120f2763e518a590fb896759bf644ca'
-         '6ac9434d7d169450982f6b4065f3d8e3')
+         '7882c8b0010db0920d1cabbd2aabcc07'
+         '6dc765fcfba0e5c4ee277635d58584e2')
 
 prepare() {
 	cd "$pkgname-$pkgver"
