@@ -1,0 +1,14 @@
+pkgbase = pidgin-pushbullet
+	pkgdesc = Lets you (currently) send/receive SMS from your Android phone to/from Pidgin.
+	pkgver = r33.38040a1
+	pkgrel = 1
+	url = https://github.com/EionRobb/pidgin-pushbullet
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libpurple
+	source = git+https://github.com/EionRobb/pidgin-pushbullet.git
+	md5sums = SKIP
+
+pkgname = pidgin-pushbullet
+
