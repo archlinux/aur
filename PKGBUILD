@@ -12,13 +12,13 @@ depends=('librsvg')
 makedepends=('git')
 provides=('flattr-icon-theme')
 conflicts=('flattr-icon-theme' 'flattr-icons-kde' 'flattr-icons-kde-kaosx' 'flattr-icons-kde-kaosx-git')
-install=${pkgname}.install
+install="${pkgname}.install"
 source=("${pkgname}"::'git+https://github.com/NitruxSA/flattr-icons.git')
 sha256sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
