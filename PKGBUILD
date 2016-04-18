@@ -2,8 +2,8 @@
 
 pkgname=ttf-borna
 pkgver=1.0
-pkgrel=1
-pkgdesc="Borna Rayaneh Persian B font series"
+pkgrel=2
+pkgdesc="Borna Rayaneh Persian B font series."
 arch=('any')
 url="http://www.bornaray.com/products/font.html"
 license=('GPL')
@@ -17,8 +17,6 @@ md5sums=('e21a18bd572bc551ad9728059ec5f0e5')
 prepare() {
   unzip -o -j -LL -qq $pkgname.zip -d $srcdir/$pkgname/
 }
-package() {
-  chmod 644 "$srcdir/$pkgname/"*.ttf
-  install -dm755 "$pkgdir/usr/share/fonts/TTF"
-  cp -dpr --no-preserve=ownership "$srcdir/$pkgname/"*.ttf "$pkgdir/usr/share/fonts/TTF/"
+package() {  
+  install -m 644 -Dt $pkgdir/usr/share/fonts/$pkgname $srcdir/$pkgname/*.ttf
 }
