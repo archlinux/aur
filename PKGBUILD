@@ -2,35 +2,35 @@
 
 pkgname=ttf-x2
 pkgver=1.0
-pkgrel=0
-pkgdesc="X Series 2 fonts are built on freely available fonts and extended to support Persian, Arabic, Urdu, Pashto, Dari, Uzbek, Kurdish, Uighur, old Turkish (Ottoman) and modern Turkish (Roman)."
+pkgrel=1
+pkgdesc="Free fonts with support for Persian, Arabic, Urdu, Pashto, Dari, Uzbek, Kurdish, Uighur, old Turkish (Ottoman) and modern Turkish (Roman)."
 arch=('any')
 url="http://wiki.irmug.com/index.php?title=X_Series_2"
 license=('custom:OFL')
 groups=(persian-fonts)
 depends=('fontconfig' 'xorg-font-utils' 'unzip')
 source=("zar.zip::http://dl.irmug.com/dl.php?id=21"
- 	"niloofar.zip::http://dl.irmug.com/dl.php?id=3" 
-	"khoramshahr.zip::http://dl.irmug.com/dl.php?id=2" 
-	"kayhan.zip::http://dl.irmug.com/dl.php?id=1" 
-	"yaghut.zip::http://dl.irmug.com/dl.php?id=17" 
-	"riyaz.zip::http://dl.irmug.com/dl.php?id=5" 
-	"roya.zip::http://dl.irmug.com/dl.php?id=6" 
-	"shafigh.zip::http://dl.irmug.com/dl.php?id=7" 
-	"shafigh-kurd.zip::http://dl.irmug.com/dl.php?id=9" 
-	"shafigh-uzbek.zip::http://dl.irmug.com/dl.php?id=8" 
-	"shiraz.zip::http://dl.irmug.com/dl.php?id=10" 
-	"sols.zip::http://dl.irmug.com/dl.php?id=11" 
-	"tabriz.zip::http://dl.irmug.com/dl.php?id=12" 
-	"titre.zip::http://dl.irmug.com/dl.php?id=13" 
-	"traffic.zip::http://dl.irmug.com/dl.php?id=14" 
-	"paatch.zip::http://dl.irmug.com/dl.php?id=4" 
-	"vahid.zip::http://dl.irmug.com/dl.php?id=15" 
-	"vosta.zip::http://dl.irmug.com/dl.php?id=16" 
-	"yekan.zip::http://dl.irmug.com/dl.php?id=19" 
-	"yermook.zip::http://dl.irmug.com/dl.php?id=20" 
-	"yas.zip::http://dl.irmug.com/dl.php?id=18" 
-	"ziba.zip::http://dl.irmug.com/dl.php?id=22")
+        "niloofar.zip::http://dl.irmug.com/dl.php?id=3" 
+        "khoramshahr.zip::http://dl.irmug.com/dl.php?id=2" 
+        "kayhan.zip::http://dl.irmug.com/dl.php?id=1" 
+        "yaghut.zip::http://dl.irmug.com/dl.php?id=17" 
+        "riyaz.zip::http://dl.irmug.com/dl.php?id=5" 
+        "roya.zip::http://dl.irmug.com/dl.php?id=6" 
+        "shafigh.zip::http://dl.irmug.com/dl.php?id=7" 
+        "shafigh-kurd.zip::http://dl.irmug.com/dl.php?id=9" 
+        "shafigh-uzbek.zip::http://dl.irmug.com/dl.php?id=8" 
+        "shiraz.zip::http://dl.irmug.com/dl.php?id=10" 
+        "sols.zip::http://dl.irmug.com/dl.php?id=11" 
+        "tabriz.zip::http://dl.irmug.com/dl.php?id=12" 
+        "titre.zip::http://dl.irmug.com/dl.php?id=13" 
+        "traffic.zip::http://dl.irmug.com/dl.php?id=14" 
+        "paatch.zip::http://dl.irmug.com/dl.php?id=4" 
+        "vahid.zip::http://dl.irmug.com/dl.php?id=15" 
+        "vosta.zip::http://dl.irmug.com/dl.php?id=16" 
+        "yekan.zip::http://dl.irmug.com/dl.php?id=19" 
+        "yermook.zip::http://dl.irmug.com/dl.php?id=20" 
+        "yas.zip::http://dl.irmug.com/dl.php?id=18" 
+        "ziba.zip::http://dl.irmug.com/dl.php?id=22")
 noextract=("${source[@]%%::*}")
 install=$pkgname.install
 md5sums=('8e08f1d30a07e687d0a858558a852ce1'
@@ -60,9 +60,8 @@ prepare() {
   unzip -o -qq -LL -j '*.zip' -d $srcdir/$pkgname/ 
 }
 
-package() {
-  chmod 644 "$srcdir/$pkgname/"*.*
-  install -dm755 "$pkgdir/usr/share/fonts/TTF"
-  cp -dpr --no-preserve=ownership "$srcdir/$pkgname/"*.ttf "$pkgdir/usr/share/fonts/TTF/"
-  install -D "$srcdir/$pkgname/ofl.txt" "$pkgdir/usr/share/licenses/$pkgname/license.txt"
+package() {  
+  install -d $pkgdir/usr/share/fonts/$pkgname
+  install -m 644 -t $pkgdir/usr/share/fonts/$pkgname $srcdir/$pkgname/*.ttf
+  install -Dm 644 $srcdir/$pkgname/ofl.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
