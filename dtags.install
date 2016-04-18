@@ -1,19 +1,16 @@
 post_install() {
   cat << EOF
 
-To complete the installation, place the following line in your shell config:
+To activate dtags, place the following line in your shell config:
 
   For zsh, place in ~/.zshrc:
+    command -v dtags-activate > /dev/null 2>&1 && eval "`dtags-activate zsh`"
 
-    command -v dtags > /dev/null 2>&1 && . <(dtags shell zsh)
-
-  For bash, place in ~/.bashrc
-
-    command -v dtags > /dev/null 2>&1 && . <(dtags shell bash)
+  For bash, place in ~/.bashrc (or ~/.bash_profile for OS X):
+    command -v dtags-activate > /dev/null 2>&1 && eval "`dtags-activate bash`"
 
   For fish, place in ~/.config/fish/config.fish:
-
-    command -v dtags > /dev/null 2>&1; and dtags shell fish | source
+    command -v dtags-activate > /dev/null 2>&1; and dtags-activate fish | source
 
 EOF
 }
