@@ -1,4 +1,4 @@
-configs=(35-emojione-color-font.conf)
+configs=(56-emojione-color-font.conf)
 
 post_install() {
   pushd etc/fonts/conf.d > /dev/null
