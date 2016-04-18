@@ -1,7 +1,7 @@
 # Maintainer: Thomas Wood <grand.edgemaster@gmail.com>
 pkgname=twemoji-color-font
 pkgver=1.0_beta1
-pkgrel=2
+pkgrel=3
 pkgdesc="A color and B&W emoji SVG-in-OpenType font with support for ZWJ, skin tone modifiers and country flags."
 arch=('any')
 url="https://github.com/eosrei/twemoji-color-font"
@@ -25,7 +25,7 @@ package() {
   install -Dm644 ${_srcdir}/LICENSE-CC-BY.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-CC-BY
   install -Dm644 ${_srcdir}/LICENSE-MIT.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE-MIT
   install -Dm644 ${_srcdir}/README.md "$pkgdir"/usr/share/doc/$pkgname/README
-  install -Dm644 ${_srcdir}/linux/fontconfig/user-bitstream-vera-fonts.conf "$pkgdir"/etc/fonts/conf.avail/35-$pkgname.conf
+  install -Dm644 ${_srcdir}/linux/fontconfig/user-bitstream-vera-fonts.conf "$pkgdir"/etc/fonts/conf.avail/56-$pkgname.conf
 }
 
 md5sums=('456fa7a3615550287926fe573bde2872'
