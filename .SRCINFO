@@ -1,0 +1,14 @@
+pkgbase = animecheck-git
+	pkgdesc = Commandline CRC32, MD5 and eD2k-based hashing script also capable of reading and creating SFV and MD5 checksum files and generating eD2k links.
+	pkgver = r98.e87a977
+	pkgrel = 1
+	url = https://github.com/OmegaPhil/animecheck
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	source = git+https://github.com/OmegaPhil/animecheck.git
+	sha256sums = SKIP
+
+pkgname = animecheck-git
+
