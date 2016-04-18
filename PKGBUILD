@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=3.0.0b2.r130.gb269751
+pkgver=3.0.0b2.r486.geb840fe
 pkgrel=1
 arch=('any')
 url="https://github.com/spyder-ide/spyder"
@@ -42,6 +42,8 @@ package_spyder-git() {
   # 'icu'
   depends=('python2-pyqt5'
            'ipython2-notebook'
+           'python2-rope'
+           'python2-jedi'
            'python2-pyflakes'
            'python2-sphinx'
            'python2-pygments'
@@ -49,14 +51,11 @@ package_spyder-git() {
            'python2-pep8'
            'python2-psutil'
            'python2-qtawesome'
-
            'python2-pyzmq'
            'desktop-file-utils'
            'gtk-update-icon-cache')
   optdepends=('python2-pyqt4: Qt-Python bindings'
               'python2-pyside: Qt-Python bindings'
-              'python2-rope: editor code completion, calltips and go-to-definition'
-              'python2-jedi: editor code completion, calltips and go-to-definition'
               'python2-matplotlib: 2D/3D plotting'
               'python2-pandas: DataFrame and Series support'
               'python2-numpy: N-dimensional arrays'
@@ -82,6 +81,8 @@ package_spyder3-git() {
   # 'icu'
   depends=('python-pyqt5'
            'jupyter'
+           'python-rope'
+           'python-jedi'
            'python-pyflakes'
            'python-sphinx'
            'python-pygments'
@@ -89,14 +90,11 @@ package_spyder3-git() {
            'pep8'
            'python-psutil'
            'python-qtawesome'
-
            'python-pyzmq'
            'desktop-file-utils'
            'gtk-update-icon-cache')
   optdepends=('python-pyqt4: Qt-Python bindings'
               'python-pyside: Qt-Python bindings'
-              'python-rope: editor code completion, calltips and go-to-definition'
-              'python-jedi: editor code completion, calltips and go-to-definition'
               'python-matplotlib: 2D/3D plotting'
               'python-pandas: DataFrame and Series support'
               'python-numpy: N-dimensional arrays'
