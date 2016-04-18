@@ -2,8 +2,8 @@
 
 pkgname=ttf-irfonts
 pkgver=1.0
-pkgrel=0
-pkgdesc="Official I.R. Iran Supreme Council of Information and Communication Technology (SCICT) standard persian fonts series"
+pkgrel=1
+pkgdesc="Iran Supreme Council of Information and Communication Technology (SCICT) standard persian fonts series."
 arch=('any')
 url="http://scict.ir"
 license=('custom')
@@ -20,8 +20,6 @@ mv $srcdir/"standard irfonts" $srcdir/$pkgname
 }
 
 package() {
-  chmod 644 "$srcdir/$pkgname/"*.*
-  install -dm755 "$pkgdir/usr/share/fonts/TTF"
-  cp -dpr --no-preserve=ownership "$srcdir/$pkgname/"*.ttf "$pkgdir/usr/share/fonts/TTF/"
-  install -D "$srcdir/$pkgname/readme.txt" "$pkgdir/usr/share/licenses/$pkgname/license.txt"
+  install -m 644 -Dt $pkgdir/usr/share/fonts/$pkgname $srcdir/$pkgname/*.ttf
+  install -Dm 644 "$srcdir/$pkgname/readme.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
