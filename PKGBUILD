@@ -1,9 +1,9 @@
 # Maintainer: Toqoz <https://github.com/Toqozz/slip>
 
 pkgname=slip
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
-pkgdesc='Select and upload screen(shot) to imgur with the help of slop.  (Screencasts too)'
+pkgdesc='dmenu interface to select and upload screen(shot) to imgur with the help of slop.  (Screencasts too)'
 arch=('any')
 url='https://github.com/Toqozz/slip'
 license=('GPL')
