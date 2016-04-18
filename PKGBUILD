@@ -1,5 +1,5 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-html-stripscripts'
 pkgver='1.05'
@@ -10,10 +10,13 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/HTML-StripScripts'
-source=('http://search.cpan.org/CPAN/authors/id/D/DR/DRTECH/HTML-StripScripts-1.05.tar.gz')
-md5sums=('e8c51fbfda69efaf94c2937084d2458f')
-sha512sums=('e9de1a05721fa74b90168ef36596c4d32d5af365258f1a8b363ac7a2e2f15181e67cbadde1c1dcae1225b6d2850589fa14e252134cf799b84bf506f55f5e050d')
+url='https://metacpan.org/release/HTML-StripScripts'
+source=(
+  'http://search.cpan.org/CPAN/authors/id/D/DR/DRTECH/HTML-StripScripts-1.05.tar.gz'
+  'HTML-StripScripts-1.05-Fix-typo-in-regex.patch')
+md5sums=(
+  'e8c51fbfda69efaf94c2937084d2458f'
+  '9d9adc755b19118d4c3b187ee396c33c')
 _distdir="HTML-StripScripts-1.05"
 
 build() {
@@ -24,6 +27,7 @@ build() {
       MODULEBUILDRC=/dev/null
 
     cd "$srcdir/$_distdir"
+    patch -Np1 -i ../HTML-StripScripts-1.05-Fix-typo-in-regex.patch
     /usr/bin/perl Makefile.PL
     make
   )
