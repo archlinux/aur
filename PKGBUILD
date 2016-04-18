@@ -14,7 +14,7 @@
 
 pkgname=perl-config-inifiles
 pkgver=2.88
-pkgrel=1
+pkgrel=2
 pkgdesc="A Perl module for reading .ini-style configuration files"
 arch=('any')
 url="http://search.cpan.org/dist/Config-IniFiles/"
@@ -27,13 +27,23 @@ md5sums=('c322dde13d7d48b1f9d0f30f661002cf')
 
 build() {
   cd "$srcdir"/Config-IniFiles-$pkgver
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-  make
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps
+  /usr/bin/perl Build.PL
+  ./Build
+}
+
+check() {
+  cd "$srcdir"/Config-IniFiles-$pkgver
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  export PERL_MM_USE_DEFAULT=1
+  ./Build test
 }
 
 package() {
   cd "$srcdir"/Config-IniFiles-$pkgver
-  make DESTDIR="$pkgdir" install
+  unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+  ./Build install installdirs=vendor destdir="$pkgdir"
 }
 
 # vim:set ts=2 sw=2 et:
