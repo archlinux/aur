@@ -16,13 +16,19 @@ license=('custom')
 conflicts=('zathura-pdf-poppler')
 
 depends=('zathura' 'jbig2dec' 'openjpeg2' 'cairo')
-makedepends=('mupdf>=1.4')
+makedepends=('mupdf>=1.9')
 
-source=(https://pwmt.org/projects/zathura/plugins/download/zathura-pdf-mupdf-$pkgver.tar.gz)
-sha1sums=('ae0be41ea7c75b8ddc083fe01f1366673ea9751a')
+source=(https://pwmt.org/projects/zathura/plugins/download/zathura-pdf-mupdf-$pkgver.tar.gz
+  mupdf-1.9.patch)
+sha1sums=('ae0be41ea7c75b8ddc083fe01f1366673ea9751a'
+  'f26adb3a7c69cf7a2e957d211e8faffe79c923c7')
+
+prepare() {
+  patch -d zathura-pdf-mupdf-$pkgver -Np1 < mupdf-1.9.patch
+}
 
 build() {
-  make -C zathura-pdf-mupdf-$pkgver MUPDF_LIB="-lmupdf -lmujs"
+  make -C zathura-pdf-mupdf-$pkgver MUPDF_LIB="-lmupdf -lmupdfthird"
 }
 
 package(){
