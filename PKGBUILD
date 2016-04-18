@@ -5,13 +5,12 @@
 pkgname=icu52
 _pkgname=icu
 pkgver=52.1
-pkgrel=1
+pkgrel=2
 pkgdesc="International Components for Unicode library"
 arch=(i686 x86_64)
 url="http://www.icu-project.org/"
 license=('custom:"icu"')
 depends=('gcc-libs>=4.7.1-5' 'sh')
-provides=("$_pkgname==$pkgver")
 source=(http://download.icu-project.org/files/${_pkgname}4c/${pkgver}/${_pkgname}4c-${pkgver//./_}-src.tgz
 	icu.8198.revert.icu5431.patch)
 md5sums=('9e96ed4c1d99c0d14ac03c140f9f346c'
