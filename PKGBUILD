@@ -3,7 +3,7 @@
  
 pkgname=onedrive
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Free OneDrive client written in D'
 arch=('i686' 'x86_64')
 url='https://github.com/skilion/onedrive'
