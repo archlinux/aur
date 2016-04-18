@@ -1,7 +1,7 @@
 pkgbase = thunar-extended
 	pkgdesc = Thunar with split view, cursor audio preview and extra options for trash, desktop files and user actions
 	pkgver = 1.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://thunar.xfce.org
 	install = thunar.install
 	arch = i686
@@ -31,7 +31,7 @@ pkgbase = thunar-extended
 	optdepends = thunar-volman: manages removable devices
 	optdepends = thunar-archive-plugin: create and deflate archives
 	optdepends = thunar-media-tags-plugin: view/edit id3/ogg tags
-	provides = thunar=1.6.8
+	provides = thunar=1.6.10
 	conflicts = thunar
 	replaces = thunar
 	options = !libtool
@@ -40,11 +40,13 @@ pkgbase = thunar-extended
 	source = uca_num_files.patch
 	source = preview.patch
 	source = split_pane.patch
+	source = bug11983.patch
 	md5sums = 3089e1dca6e408641b07cd9c759dea5e
 	md5sums = d87f154a5fbd3709511ded0c9b9b0317
 	md5sums = 69aa416e8694b8b608f767769b6dcd98
 	md5sums = 6302de8c5061fbf769bc2b24e67256f9
 	md5sums = ce443cf896934131427b7789da130097
+	md5sums = 053c83b6d88d2e01d1aa7fe7b5dd8a6e
 
 pkgname = thunar-extended
 
