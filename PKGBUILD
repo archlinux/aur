@@ -10,7 +10,7 @@ url="http://gitlab.com/JKANetwork/cryptoJKA"
 license=('GPL3')
 options=(!emptydirs)
 source=(https://gitlab.com/JKANetwork/cryptoJKA/raw/master/last-version/$pkgname-$pkgver.tbz2)
-md5sums=('61611d71f9fe0831686625e64ff7eea0')
+md5sums=('c616cffee0f344c37fd4e045a7a87054')
 install=$pkgname.install
 build(){
   cd "$srcdir/$pkgname-$pkgver"
