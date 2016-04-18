@@ -21,16 +21,11 @@ post_install() {
 
 	echo -e "\e[34;1m==>\e[39;1m NOTE: You have to create a slurm configuration-file in /etc/slurm-llnl/ \e[0m"
 	echo -e "\e[34;1m==>\e[39;1m prior to starting any slurm daemons. \e[0m"
-	echo -e "\e[34;1m==>\e[39;1m NOTE: In order for new optional dependencies to be taken into account \e[0m"
-	echo -e "\e[34;1m==>\e[39;1m slurm-llnl has to be recompiled. \e[0m"
 }
 
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
-	echo -e "\e[34;1m==>\e[39;1m NOTE: In order for new optional dependencies to be taken into account \e[0m"
-	echo -e "\e[34;1m==>\e[39;1m slurm-llnl has to be recompiled. \e[0m"
-
 	# THIS HAS TO BE REMOVED ONEDAY - TODO
 	if [ -f /etc/slurm/slurm.conf ]; then
 		mv /etc/slurm/* /etc/slurm-llnl/

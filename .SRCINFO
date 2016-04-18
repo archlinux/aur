@@ -1,7 +1,7 @@
 pkgbase = slurm-llnl-dev
 	pkgdesc = Simple Linux Utility for Resource Management (development version)
 	pkgver = 16.05.0_0pre2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.schedmd.com
 	install = slurm-llnl-dev.install
 	arch = i686

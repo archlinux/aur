@@ -7,7 +7,7 @@ pkgver=16.05.0_0pre2
 # Hyphens (-) are prohibited however they are used by the package author
 # therefore it is necessary to invoke ${pkgver} like ${pkgver//_/-}
 # this will substituet any udnerscores (_) with hyphens
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Linux Utility for Resource Management (development version)"
 arch=('i686' 'x86_64')
 url="http://www.schedmd.com"
@@ -32,7 +32,7 @@ makedepends=('python')
 provides=('slurm-llnl')
 conflicts=('slurm-llnl' 'slurm-llnl-git')
 backup=('etc/default/slurm-llnl')
-install=${pkgname}.install
+install="${pkgname}.install"
 source=("slurm-tmpfiles.conf"
 	"slurm-llnl-default-conf"
 	"slurmctld.service"
@@ -56,11 +56,19 @@ build() {
 	#
 	# Read http://slurm.schedmd.com/quickstart_admin.html for more information
 
+	./autogen.sh
 	./configure \
-	--prefix=/usr \
-	--sbindir=/usr/bin  \
-	--sysconfdir=/etc/slurm-llnl  \
-	--localstatedir=/var
+		--prefix=/usr \
+		--sbindir=/usr/bin \
+		--sysconfdir=/etc/slurm-llnl \
+		--localstatedir=/var \
+		--enable-pam \
+		--with-proctrack \
+		--with-hdf5 \
+		--with-hwloc \
+		--with-rrdtool \
+		--with-ssl \
+		--with-munge
 
 	make
 }
