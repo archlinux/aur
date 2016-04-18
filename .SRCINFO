@@ -43,7 +43,7 @@ pkgname = python-acme-git
 	depends = python-six
 	depends = python-werkzeug
 	depends = python-mock
-	provides = python-acme
+	provides = python-acme=0.5.0.r57.g86e09d5
 	conflicts = python-acme
 
 pkgname = python2-acme-git
@@ -58,5 +58,5 @@ pkgname = python2-acme-git
 	depends = python2-six
 	depends = python2-werkzeug
 	depends = python2-mock
-	provides = python2-acme
+	provides = python2-acme=0.5.0.r57.g86e09d5
 	conflicts = python2-acme

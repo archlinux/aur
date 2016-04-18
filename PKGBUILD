@@ -51,7 +51,7 @@ package_python-acme-git() {
 	depends=('python-setuptools' 'python-pyasn1' 'python-cryptography' 'python-pyopenssl'
 		'python-ndg-httpsclient' 'python-pyrfc3339' 'python-pytz' 'python-requests'
 		'python-six' 'python-werkzeug' 'python-mock')
-	provides=("python-acme")
+	provides=("python-acme=${pkgver}")
 	conflicts=("python-acme")
 
 	cd "${srcdir}/${_reponame}/acme"
@@ -62,7 +62,7 @@ package_python2-acme-git() {
 	depends=('python2-setuptools' 'python2-pyasn1' 'python2-cryptography' 'python2-pyopenssl'
 		'python2-ndg-httpsclient' 'python2-pyrfc3339' 'python2-pytz' 'python2-requests'
 		'python2-six' 'python2-werkzeug' 'python2-mock')
-	provides=("python2-acme")
+	provides=("python2-acme=${pkgver}")
 	conflicts=("python2-acme")
 
 	cd "${srcdir}/${_reponame}/acme-py2"
