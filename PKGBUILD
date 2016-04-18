@@ -3,7 +3,7 @@
 pkgname=letsencrypt-git
 _pkgname=letsencrypt
 pkgver=6095.86e09d5
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free."
 arch=('any')
 license=('Apache')
@@ -36,8 +36,8 @@ package() {
 
 	# Link to the executables
 	mkdir -p "${pkgdir}"/usr/bin
-	ln -s /opt/letsencrypt/venv/bin/letsencrypt "${pkgdir}"/usr/bin/letsencrypt
-	ln -s /opt/letsencrypt/venv/bin/letshelp-letsencrypt-apache "${pkgdir}"/usr/bin/letshelp-letsencrypt-apache
+	ln -s /opt/letsencrypt/venv/bin/certbot "${pkgdir}"/usr/bin/certbot
+	ln -s /opt/letsencrypt/venv/bin/letshelp-certbot-apache "${pkgdir}"/usr/bin/letshelp-certbot-apache
 
 	# Create configuration directory, log and lib path
 	install -d -m755 "${pkgdir}"/etc
