@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=wingide
-_wingver=5.1.10
+_wingver=5.1.11
 _wingrel=1
 pkgver=$_wingver.$_wingrel
 pkgrel=1
@@ -25,8 +25,8 @@ source_x86_64=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_
 source_i686=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_wingrel-i386-linux.tar.gz" $_wingpatch_i686)
 depends=('hicolor-icon-theme' 'libpng' 'python2' 'xdg-utils')
 options=(!strip !emptydirs)
-md5sums_i686=('b85ac4315ad4bc846e4fb52d6e23fa6a')
-md5sums_x86_64=('dc10ec69e4ae02af8fa895b46d780e41')
+md5sums_i686=('392b8f3a0e2dcb69fd2d8316bd88b028')
+md5sums_x86_64=('ddacf06b4cc9577b9b80cbbb79de2d32')
 install=${pkgname}.install
 
 prepare() {
