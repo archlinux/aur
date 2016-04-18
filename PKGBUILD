@@ -3,7 +3,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-hidetopbar-git
-pkgver=r151
+pkgver=r157
 pkgrel=1
 pkgdesc="Gnome 3 extension to hide the top bar except in overview mode"
 arch=(any)

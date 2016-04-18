@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-hidetopbar-git
 	pkgdesc = Gnome 3 extension to hide the top bar except in overview mode
-	pkgver = r151
+	pkgver = r157
 	pkgrel = 1
 	url = https://github.com/mlutfy/hidetopbar
 	install = gschemas.install
@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-hidetopbar-git
 	license = GPLv2
 	makedepends = git
 	depends = gnome-shell
-	provides = gnome-shell-extension-hidetopbar=r151
+	provides = gnome-shell-extension-hidetopbar=r157
 	conflicts = gnome-shell-extension-hidetopbar
 	source = gnome-shell-extension-hidetopbar::git+https://github.com/mlutfy/hidetopbar
 	md5sums = SKIP
