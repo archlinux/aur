@@ -1,6 +1,6 @@
 # Maintainer: Jason Papakostas <vithos@gmail.com>
 pkgname=epaste
-pkgver=1.0.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="encrypts given text and turns encrypted bytes into base64 text which can be easily pasted/retrieved on pastebin websites"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ options=()
 install=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zetok/${pkgname}/archive/v${pkgver}.tar.gz")
 noextract=()
-sha512sums=('c22f0499e2768946f82c9b60dda0928246795c1bfb716216f8f90c60cd34847a1b3bf500d9a2841f602de3be82b52986bdfd507de2b6800980685f1292e765d1')
+sha512sums=('3d26cbc95267008b75958ff9d54f972943f6f2c4a931cf7314b7eb7641a989fb6f07fa39c88c15724fc8b7f7bfd46cb4f76497ad8bb39ead143f29b3ae9bae97')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
