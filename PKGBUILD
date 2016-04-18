@@ -1,13 +1,13 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=mattermost
-pkgver=2.1.0
+pkgver=2.2.0
 _pkgver=${pkgver/rc/-rc}
-pkgrel=2
+pkgrel=1
 pkgdesc="Open source Slack-alternative in Golang and React"
 arch=('i686' 'x86_64')
 url="http://mattermost.org"
-license=('AGPL')
+license=('MIT')
 depends=('glibc')
 makedepends=('go' 'godep' 'ruby' 'npm' 'python2' 'git' 'mercurial')
 backup=('etc/webapps/mattermost/config.json')
@@ -18,7 +18,7 @@ install=mattermost.install
 source=(https://github.com/mattermost/platform/archive/v$_pkgver/$pkgname-$_pkgver.tar.gz
         mattermost.service
         mattermost-user.conf)
-sha256sums=('b477803cbef30fac7de691af3df9902d04ed7d17f7807e3afad48328ef9ad97b'
+sha256sums=('61cd2ae77e795e899a61d79156aa58b91e39071c893b6b5092d731e5879b3393'
             'b02a0bdbffd17a3a02b6d0098d2a10363ad595070ce6985513b7e6496f9b655a'
             '7cd154ed034a09f6671cab68bc9c30a7fd84e777e801e2aaf93a567cfa0dccfd')
 
@@ -32,12 +32,6 @@ prepare() {
 	sed "s|_BUILD_DATE_|$(date -u)|g" -i model/version.go
 	sed "s|_BUILD_NUMBER_|$_pkgver-$pkgrel|g" -i model/version.go
 	sed "s|_BUILD_HASH_|-|g" -i model/version.go
-
-	cd web/react
-	sed -r \
-	  -e 's@mattermost/marked#([0-9a-f]+)@https://github.com/mattermost/marked/archive/\1.tar.gz@' \
-	  -e 's@mattermost/mm-intl#([0-9a-f]+)@https://github.com/mtorromeo/mm-intl/archive/\1.tar.gz@' \
-		-i package.json
 }
 
 build() {
@@ -112,4 +106,9 @@ package() {
 	install -Dm755 bin/mattermost "$pkgdir"/usr/bin/mattermost
 	install -Dm644 mattermost.service "$pkgdir"/usr/lib/systemd/system/mattermost.service
 	install -Dm644 mattermost-user.conf "$pkgdir"/usr/lib/sysusers.d/mattermost.conf
+
+	cd "$srcdir"/platform-$_pkgver/
+	install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
+	install -Dm644 NOTICE.txt "$pkgdir"/usr/share/doc/$pkgname/NOTICE.txt
+	install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
 }
