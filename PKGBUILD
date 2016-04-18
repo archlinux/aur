@@ -3,8 +3,8 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-wintitle-git
-pkgver=r17
-pkgrel=2
+pkgver=r18
+pkgrel=1
 pkgdesc="Shows the title of window when scrolled on the appMenu button."
 arch=(any)
 url="https://github.com/dffischer/wintitle"
