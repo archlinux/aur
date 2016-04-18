@@ -2,10 +2,10 @@
 
 pkgname=thinkpad-scripts
 pkgver=4.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Scripts for ThinkPad X220 & X230 Tablet rotation, docking, etc."
 arch=('any')
-url="http://martin-ueding.de/en/projects/thinkpad-scripts"
+url="https://thinkpad-scripts.readthedocs.org/en/latest/"
 license=('GPL')
 depends=('acpid' 'alsa-utils' 'python' 'python-setuptools' 'systemd>=196'
          'xf86-input-wacom' 'xorg-xinput' 'xorg-xrandr')
