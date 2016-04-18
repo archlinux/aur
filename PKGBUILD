@@ -5,16 +5,16 @@
 # Contributor: Federico Quagliata <quaqo@despammed.com>
 
 pkgname=lib32-cracklib
-pkgver=2.9.4
+pkgver=2.9.6
 pkgrel=1
 pkgdesc='Password Checking Library'
 arch=('x86_64')
-url='http://sourceforge.net/projects/cracklib'
+url='https://github.com/cracklib/cracklib'
 license=('GPL')
 depends=('cracklib' 'lib32-zlib')
 makedepends=('gcc-multilib')
-source=("http://downloads.sourceforge.net/sourceforge/cracklib/cracklib-${pkgver}.tar.gz")
-sha256sums=('f2a866b4b9808344228ea6d68b69e3ba9a8a99210e23dfd718d4b95c60be8958')
+source=("https://github.com/cracklib/cracklib/releases/download/cracklib-${pkgver}/cracklib-${pkgver}.tar.gz")
+sha256sums=('17cf76943de272fd579ed831a1fd85339b393f8d00bf9e0d17c91e972f583343')
 
 build() {
   cd cracklib-${pkgver}
