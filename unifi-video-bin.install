@@ -1,0 +1,7 @@
+# arg 1:  the new package version
+post_install() {
+  systemd-sysusers unifi-video.conf
+  :
+}
+
+# vim:set ts=2 sw=2 et:
