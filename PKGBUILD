@@ -3,7 +3,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-activities-config
-pkgver=40
+pkgver=42
 pkgrel=1
 pkgdesc="Configure the Activities Button with the Activities Configurator Extension and the Gnome Shell Extension Preferences Tool."
 arch=(any)
