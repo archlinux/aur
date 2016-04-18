@@ -1,6 +1,6 @@
 post_install() {
   glib-compile-schemas /usr/share/glib-2.0/schemas > /dev/null 2>&1
-  xdg-icon-resource forceupdate --theme hicolor 2> /dev/null
+  gtk-update-icon-cache -f /usr/share/icons/hicolor
   update-desktop-database -q
 }
 
