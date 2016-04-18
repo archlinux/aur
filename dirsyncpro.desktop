@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=DirSync Pro
+GenericName=File and folder synchronisation utility
+Comment=A small but powerfull utility for file and folder synchronisation
+Type=Application
+Categories=Utility
+Exec=/usr/bin/dirsyncpro
+Terminal=false
+Icon=/opt/dirsyncpro/icons/DirSyncPro48x48.png
+MimeType=application/x-dirsyncpro;
