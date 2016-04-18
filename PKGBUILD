@@ -3,8 +3,8 @@
 pkgname=bbswitch-rt
 _basename=bbswitch
 pkgver=0.8
-_extramodules=extramodules-4.1-rt
-pkgrel=7
+_extramodules=extramodules-4.4-rt
+pkgrel=8
 pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus laptops for linux-rt"
 arch=('i686' 'x86_64')
 url="http://github.com/Bumblebee-Project/bbswitch"
