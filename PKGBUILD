@@ -19,8 +19,8 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	./configure \
-	--prefix=/usr \
-	--libexecdir=/usr/lib/pcc
+		--prefix=/usr \
+		--libexecdir=/usr/lib/pcc
 
 	make
 }
