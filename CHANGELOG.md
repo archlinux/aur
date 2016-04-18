@@ -1,13 +1,13 @@
 # Changelog
 
-## [1.0.0](https://github.com/justintime4tea/aur-freelancer-desktop-app/tree/1.0.0)
+## [1.0.0](https://github.com/justintime4tea/aur-freelancer-desktop-app)
 
-[Full Changelog](https://github.com/justintime4tea/aur-freelancer-desktop-app/compare/1.0.0...master)
+[Full Changelog](https://github.com/justintime4tea/aur-freelancer-desktop-app/commits/master)
 
- - Add initial set of files
-     - Justin Gross <jgross.biz@gmail.com>
-     - [0c457b8](https://github.com/justintime4tea/aur-freelancer-desktop-app/commit/0c457b84adcf713ad3b4b3e19175d12fc565d1ad)
+- Initialize repo
+    - `Justin Gross <jgross.biz@gmail.com>`
+    - [a3cfc14](http://github.com/justintime4tea/aur-freelancer-desktop-app/commit/a3cfc14442038b337560d4858e6b742c3c179769)
 
-- Initial commit
-    - Justin Gross <jgross.biz@gmail.com>
-    - [278ea6d](https://github.com/justintime4tea/aur-freelancer-desktop-app/commit/278ea6d20dde922432d2930281b280ed45c10c43)
+- Fix amd64.deb md5sum and update README.md
+    - `Justin Gross <jgross.biz@gmail.com>`
+    - [553a99c](http://github.com/justintime4tea/aur-freelancer-desktop-app/commit/553a99c1ca989b8b55f3eb88191992f7a2f95200)
