@@ -2,12 +2,12 @@
 # This PKGBUILD is maintained at https://github.com/winged/aur-packages
 
 pkgname=worklog-git
-pkgver=0.r21.79801a0
+pkgver=0.r31.ee40ae0
 pkgrel=1
 pkgdesc="A script to help you manage your notes and access them quickly"
-arch=('x86_64' 'i686')
+arch=('any')
 license=('BSD')
-url=('https://github.com/winged/worklog')
+url='https://github.com/winged/worklog'
 depends=('python' 'sqlite')
 provides=('worklog')
 conflicts=()
