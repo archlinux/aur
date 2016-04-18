@@ -1,5 +1,7 @@
---- a/tmux-2.1/screen-write.c	2016-03-22 01:39:12.909169226 +0800
-+++ b/tmux-2.1/screen-write.c	2016-03-22 01:39:57.147655122 +0800
+diff --git i/screen-write.c w/screen-write.c
+index e58d744..eabfa6d 100644
+--- i/screen-write.c
++++ w/screen-write.c
 @@ -18,8 +18,11 @@
  
  #include <sys/types.h>
@@ -12,7 +14,7 @@
  
  #include "tmux.h"
  
-@@ -488,8 +491,20 @@
+@@ -494,8 +497,20 @@ screen_write_backspace(struct screen_write_ctx *ctx)
  			s->cy--;
  			s->cx = screen_size_x(s) - 1;
  		}
@@ -25,7 +27,7 @@
 +		close(fd);
 +		if (tio.c_lflag & ICANON && tio.c_iflag & IUTF8) {
 +			gl = &s->grid->linedata[s->grid->hsize + s->cy];
-+			if (s->cx >= 2 && s->cx-2 < gl->cellsize && grid_cell_width(&gl->celldata[s->cx-2]) == 2)
++			if (s->cx > 0 && s->cx-1 < gl->extdsize && gl->extddata[s->cx-1].data.width == 2)
 +				s->cx -= 2;
 +			else
 +				s->cx--;
@@ -35,16 +37,3 @@
  }
  
  /* VT100 alignment test. */
---- a/tmux-2.1/utf8.c	2016-03-24 00:05:38.096784610 +0800
-+++ b/tmux-2.1/utf8.c	2016-03-24 00:07:48.045489630 +0800
-@@ -193,6 +193,10 @@
- 	{ 0x02060, 0x02063, 0, NULL, NULL },
- 	{ 0x00c3e, 0x00c40, 0, NULL, NULL },
- 	{ 0x10a05, 0x10a06, 0, NULL, NULL },
-+
-+	{ 0x025a0, 0x027c0, 2, NULL, NULL },
-+	{ 0x02b00, 0x02c00, 2, NULL, NULL },
-+	{ 0x1f300, 0x1f700, 2, NULL, NULL },
- };
- 
- struct utf8_width_entry	*utf8_width_root = NULL;

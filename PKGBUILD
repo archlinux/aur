@@ -1,9 +1,8 @@
-# $Id: PKGBUILD 163998 2016-03-01 16:55:48Z spupykin $
 # Maintainer: Ray Song <i@maskray.me>
 
 pkgname=tmux-fullwidth-backspace
-pkgver=2.1
-pkgrel=2
+pkgver=2.2
+pkgrel=1
 pkgdesc='A terminal multiplexer (patched with support for fullwidth backspace'
 url='http://tmux.github.io/'
 arch=('i686' 'x86_64')
@@ -13,12 +12,13 @@ source=(https://github.com/tmux/tmux/releases/download/$pkgver/tmux-$pkgver.tar.
 	LICENSE fullwidth-backspace.patch)
 provides=('tmux')
 conflicts=('tmux')
-md5sums=('74a2855695bccb51b6e301383ad4818c'
+md5sums=('bd95ee7205e489c62c616bb7af040099'
          '71601bc37fa44e4395580b321963018e'
-         '2bb338d95e88265689f5b981c317b6a3')
+         'SKIP')
 
 prepare() {
-	patch -p1 < ../fullwidth-backspace.patch
+	cd "$srcdir/tmux-${pkgver/_/}"
+	patch -Np1 -i ../fullwidth-backspace.patch
 }
 
 build() {
@@ -30,12 +30,5 @@ build() {
 package() {
 	cd "$srcdir/tmux-${pkgver/_/}"
 	make install DESTDIR=$pkgdir
-	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/tmux/LICENSE"
-
-	install -dm755 "$pkgdir/usr/share/tmux/" "$pkgdir/usr/share/vim/vimfiles/syntax/"
-	install -m644 examples/* "$pkgdir/usr/share/tmux/"
-	ln -s /usr/share/tmux/tmux.vim "$pkgdir/usr/share/vim/vimfiles/syntax/tmux.vim"
-
-	install -d $pkgdir/usr/share/bash-completion/completions/
-	mv $pkgdir/usr/share/tmux/bash_completion_tmux.sh $pkgdir/usr/share/bash-completion/completions/tmux
+	install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/tmux/LICENSE"
 }
