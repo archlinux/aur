@@ -2,33 +2,26 @@
 
 pkgbase=phonon-gstreamer
 pkgname=('phonon-qt4-gstreamer' 'phonon-qt5-gstreamer')
-pkgver=4.8.2
-pkgrel=4
+pkgver=4.9.0
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://phonon.kde.org/'
 license=('LGPL')
 depends=('gst-plugins-base')
 optdepends=('pulseaudio: PulseAudio support' 'gst-plugins-good: PulseAudio support and good codecs' 'gst-plugins-bad: additional codecs'
 	'gst-plugins-ugly: additional codecs' 'gst-libav: libav codec')
-makedepends=('gst-plugins-base' 'cmake' 'automoc4' 'phonon-qt4' 'phonon-qt5')
-source=("http://download.kde.org/stable/phonon/phonon-backend-gstreamer/${pkgver}/src/phonon-backend-gstreamer-${pkgver}.tar.xz"
-        "phonon-gstreamer-gst15_include_dirs.patch")
-md5sums=('ce441035dc5a00ffaac9a64518ab5c62'
-         'c4a3d5230b07d4d84a8f05a8575c69aa')
+makedepends=('gst-plugins-base' 'extra-cmake-modules' 'automoc4' 'phonon-qt4' 'phonon-qt5' 'qt5-x11extras')
+source=("http://download.kde.org/stable/phonon/phonon-backend-gstreamer/${pkgver}/phonon-backend-gstreamer-${pkgver}.tar.xz")
+md5sums=('b2b0ca327908948ce8cdba117e31bf80')
 
 prepare() {
   mkdir build-qt4
   mkdir build-qt5
-
-  cd phonon-backend-gstreamer-${pkgver}
-
-  # https://bugzilla.redhat.com/show_bug.cgi?id=1239790
-  patch -Np1 -i ../phonon-gstreamer-gst15_include_dirs.patch
 }
 
 build() {
   cd build-qt4
-  cmake ../phonon-backend-gstreamer-${pkgver} \
+  cmake ../${pkgbase}-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
@@ -37,7 +30,7 @@ build() {
   make
 
   cd ../build-qt5
-  cmake ../phonon-backend-gstreamer-${pkgver} \
+  cmake ../${pkgbase}-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_SKIP_RPATH=ON \
@@ -56,6 +49,9 @@ package_phonon-qt4-gstreamer() {
 
   cd build-qt4
   make DESTDIR="${pkgdir}" install
+
+# Conflict with -qt5
+  rm -r "$pkgdir"/usr/share/icons
 }
 
 package_phonon-qt5-gstreamer() {
@@ -63,10 +59,8 @@ package_phonon-qt5-gstreamer() {
   provides=('phonon-qt5-backend')
   replaces=('phonon-gstreamer')
   conflicts=('phonon-gstreamer')
+  depends+=('qt5-x11extras')
 
   cd build-qt5
   make DESTDIR="${pkgdir}" install
-
-  # Those are not needed
-  rm -rf "${pkgdir}"/usr/share
 }
