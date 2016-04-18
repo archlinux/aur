@@ -1,17 +1,20 @@
 pkgbase = jnc
-	pkgdesc = A wrapper for the Juniper network connect client (ncsvc)
-	pkgver = 0.19
+	pkgdesc = A wrapper for the Juniper network connect client (ncsvc) and the Pulse Secure client (pulsesvc)
+	pkgver = 0.20
 	pkgrel = 1
 	url = http://www.scc.kit.edu/scc/net/juniper-vpn/linux/
 	install = jnc.install
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = GPL
 	depends = perl
 	depends = openssl
 	depends = net-tools
-	optdepends = java: for Network Connect Java GUI, with x86_64 the Network Connect Java GUI will not work
-	source = http://www.scc.kit.edu/scc/net/juniper-vpn/linux/jnc
-	sha256sums = 5eb2f187a32c009ca4e19042ee46e6a1b99a0ec0714b0b93f207b11440ff4fb7
+	depends = lib32-nss-mdns
+	depends = lib32-zlib
+	optdepends = java-runtime: for Network Connect Java GUI, with x86_64 the Network Connect Java GUI will not work
+	source = jnc-0.20::http://www.scc.kit.edu/scc/net/juniper-vpn/linux/jnc
+	sha256sums = 67854a7f7125dcce0e60bcd209738f23c718a27c551b7105a8d5ba717449aecc
 
 pkgname = jnc
 
