@@ -1,0 +1,18 @@
+pkgbase = freelancer-desktop-app
+	pkgdesc = Freelancer.com desktop client
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://www.freelancer.com/desktop-app
+	install = freelancer-desktop-app.install
+	changelog = CHANGELOG.md
+	arch = i686
+	arch = x86_64
+	license = custom:freelancer
+	license = custom:oracle
+	source_i686 = http://desktop.freelancer.com/installers/freelancer-desktop-app_ubuntu-i386.deb
+	md5sums_i686 = d5f64ef74e3a1e2bf98714d647d3c22b
+	source_x86_64 = http://desktop.freelancer.com/installers/freelancer-desktop-app_ubuntu-amd64.deb
+	md5sums_x86_64 = d5f64ef74e3a1e2bf98714d647d3c22b
+
+pkgname = freelancer-desktop-app
+

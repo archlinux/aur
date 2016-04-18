@@ -1,0 +1,7 @@
+pre_install() {
+	echo Installing Freelancer.com desktop client
+}
+
+post_install() {
+	echo Finished installing Freelancer.com desktop client
+}
