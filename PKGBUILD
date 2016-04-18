@@ -3,7 +3,7 @@
 pkgname=henplus
 fragment=1676541
 pkgver=0.9.8.$fragment
-pkgrel=1
+pkgrel=2
 pkgdesc="SQL shell written in Java"
 arch=('i686' 'x86_64')
 url="http://henplus.sourceforge.net/"
