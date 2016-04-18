@@ -12,7 +12,7 @@ changelog=CHANGELOG.md
 source_i686=("http://desktop.freelancer.com/installers/${pkgname}_ubuntu-i386.deb")
 md5sums_i686=('d5f64ef74e3a1e2bf98714d647d3c22b')
 source_x86_64=("http://desktop.freelancer.com/installers/${pkgname}_ubuntu-amd64.deb")
-md5sums_x86_64=('d5f64ef74e3a1e2bf98714d647d3c22b')
+md5sums_x86_64=('6d3af725b8861f003480eb40730a32b3')
 package() {
 	# Extract zipped tar files from Ubuntu deb package
 	tar -xzf control.tar.gz
