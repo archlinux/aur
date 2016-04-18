@@ -1,0 +1,15 @@
+post_install() {
+	systemd-sysusers
+	chown -R zabbix:zabbix /var/log/zabbix /etc/zabbix
+	systemd-tmpfiles --create zabbix-proxy.conf
+	
+	
+	grep -q /etc/services -e "^zabbix-agent.*/tcp" > /dev/null || echo "zabbix-agent    10050/tcp" >> /etc/services
+	grep -q /etc/services -e "^zabbix-agent.*/udp" > /dev/null || echo "zabbix-agent    10050/udp" >> /etc/services
+	grep -q /etc/services -e "^zabbix-trapper.*/tcp" > /dev/null || echo "zabbix-trapper  10051/tcp" >> /etc/services
+	grep -q /etc/services -e "^zabbix-trapper.*/udp" > /dev/null || echo "zabbix-trapper  10051/udp" >> /etc/services
+}
+
+post_upgrade() {
+	systemd-tmpfiles --create zabbix-proxy.conf
+}

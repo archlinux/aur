@@ -1,0 +1,33 @@
+pkgbase = zabbix-proxy-sqlite
+	pkgdesc = Software for monitoring of your applications, network and servers.
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://www.zabbix.com
+	install = zabbix-proxy.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	makedepends = binutils
+	makedepends = gcc
+	makedepends = make
+	makedepends = fakeroot
+	depends = sqlite3
+	depends = fping
+	depends = openipmi
+	depends = libxml2
+	backup = etc/zabbix/zabbix_proxy.conf
+	source = http://downloads.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stable/3.0.1/zabbix-3.0.1.tar.gz
+	source = zabbix-proxy.install
+	source = zabbix-proxy.service
+	source = zabbix-proxy.sysusers
+	source = zabbix-proxy.tmpfiles
+	sha512sums = ee24883e37335bfe274a20fe43bd8ff1d1814e240177d7486363691374f8a07ef12506724ea9422efb11eaa8b2f49f2639dec774db160ffa00cb08a60a3fac78
+	sha512sums = 78a0ff34910815eff8af5f2d66a650ae2e265c9a42e81b16bdf916f676861546e3fb915fe8b0841e95d674ff0bca3cbdb0ff6d00472448025110e215efa9a1a4
+	sha512sums = 6e4e8f16e467afe472e958a3ca4246fd499d56c67544ee5b21fdf94cee698534f9bc3caedc49a207f652500e25d4251d6b708e098fa82858aeb385ab4fbba314
+	sha512sums = fa42d06ebf0ada6e80efa6479034afedf6ff6d2e8e6cb9e4bb34c682f438eb37c97a25eb76bf19576944781ff057603f851a0333109de065dec6feadb916228d
+	sha512sums = 3c63a2791e6ac77cb3144eb47a275cc8748f5c8943a076052300d6964994b95b18d60f504584fdcb683739dc514261402895e3f30ae2fbdb218acbc42c3d72df
+
+pkgname = zabbix-proxy-sqlite
+
