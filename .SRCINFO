@@ -1,0 +1,15 @@
+pkgbase = wayland-ivi-extension-git
+	pkgver = 1.9.1
+	pkgrel = 1
+	url = http://git.projects.genivi.org/?p=wayland-ivi-extension.git
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = weston
+	provides = wayland-ivi-extension
+	conflicts = wayland-ivi-extension
+	source = wayland-ivi-extension::git://git.projects.genivi.org/wayland-ivi-extension.git#tag=1.9.1
+	md5sums = SKIP
+
+pkgname = wayland-ivi-extension-git
+
