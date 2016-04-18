@@ -1,6 +1,6 @@
 pkgbase = gtk-theme-arc-opaque-git
 	pkgdesc = A flat theme for GTK 3, GTK 2 and Gnome-Shell. With --disable-transparency build option. Latest commit from Github.
-	pkgver = 498.46a232e
+	pkgver = 502.474cc28
 	pkgrel = 1
 	url = https://github.com/horst3180/arc-theme
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = gtk-theme-arc-opaque-git
 	makedepends = git
 	depends = gtk3
 	depends = gtk-engine-murrine
-	conflicts = gtk-theme-arc
+	conflicts = gtk-theme-arc,
 	conflicts = gtk-theme-arc-git
 	source = arc-theme::git+https://github.com/horst3180/arc-theme.git
 	sha256sums = SKIP
