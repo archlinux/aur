@@ -1,0 +1,12 @@
+pkgbase = klicknmenu
+	pkgdesc = X11 based lightweight menu application
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/seokbeomKim/klicknmenu
+	arch = any
+	license = GPL
+	source = git://github.com/seokbeomKim/klicknmenu
+	md5sums = SKIP
+
+pkgname = klicknmenu
+
