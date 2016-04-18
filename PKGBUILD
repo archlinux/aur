@@ -33,6 +33,8 @@ build() {
     --with-stage1-flavors=coreos \
     --with-stage1-default-location=/usr/lib/rkt/stage1.aci
   make -s
+  make -s bash-completion
+  make -s manpages
 }
 
 package() {
@@ -47,6 +49,10 @@ package() {
   install -Dm644 "dist/init/systemd/tmpfiles.d/rkt.conf" "${pkgdir}/usr/lib/tmpfiles.d/rkt.conf"
   install -Dm644 "${srcdir}/rkt.sysusers" "${pkgdir}/usr/lib/sysusers.d/rkt.conf"
   install -Dm644 "dist/bash_completion/rkt.bash" "${pkgdir}/usr/share/bash-completion/completions/rkt"
+
+  for f in $(ls dist/manpages); do
+    install -Dm644 "dist/manpages/${f}" "${pkgdir}/usr/share/man/man1/${f}"
+  done
 
   cd "build-${pkgname}-${pkgver}"
   install -Dm755 bin/rkt "$pkgdir/usr/bin/rkt"
