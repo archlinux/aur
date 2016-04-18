@@ -10,7 +10,6 @@ url="http://henplus.sourceforge.net/"
 license=('GPL')
 depends=('java-environment' 'bash')
 makedepends=('apache-ant')
-optdepends=('java-readline: readline support')
 install=henplus.install
 source=("${pkgname}::git+https://github.com/neurolabs/henplus.git#commit=${fragment}")
 md5sums=(SKIP)
