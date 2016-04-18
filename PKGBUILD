@@ -1,8 +1,8 @@
 # Maintainer: Sebastien Duthil <duthils@free.fr>
 
 pkgname=rimworld
-pkgver=0.13.1135
-pkgrel=1
+pkgver=0.13.1135  # see ${srcdir}/Version.txt
+pkgrel=2
 pkgdesc="A sci-fi colony simulation game driven by an intelligent AI storyteller."
 arch=('i686' 'x86_64')
 url="http://rimworldgame.com/"
@@ -10,11 +10,9 @@ license=('custom: commercial')
 depends=('glu' 'lib32-gtk2' 'gcc-libs-multilib')
 makedepends=('unzip')
 source=(rimworld.desktop
-        rimworld.sh
-        LICENSE)
+        rimworld.sh)
 sha256sums=('e83c514731904722d96218e82e257467d7af32d938493bb5908cf96c7699cae6'
-            '2cf317e27b0d0414cc0a9dbde784edd5e8f06ab1c71715a869e4578e7febffd3'
-            'ef210c499f47f0076204227da65110e0f2fe3316b5ae03478c21941a07e513e0')
+            '2cf317e27b0d0414cc0a9dbde784edd5e8f06ab1c71715a869e4578e7febffd3')
 if test "$CARCH" == i686; then
   _rimworld_arch=x86
 elif test "$CARCH" == x86_64; then
@@ -65,5 +63,5 @@ package() {
   cp -r Mods Source "$pkgdir/usr/share/rimworld"
   install -m644 Readme.txt Version.txt "$pkgdir/usr/share/rimworld"
   install -m644 "${srcdir}/rimworld.desktop" "${pkgdir}/usr/share/applications/rimworld.desktop"
-  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/rimworld/LICENSE"
+  install -m644 EULA.txt "${pkgdir}/usr/share/licenses/rimworld/LICENSE"
 }
