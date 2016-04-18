@@ -6,7 +6,7 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=release.2.1.0.r943.gf85c0b3
+pkgver=release.2.1.0.r959.gc1be2cc
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
@@ -34,6 +34,7 @@ build() {
   cd $_gitdir
   git clean -dfx
   git reset --hard
+  git checkout 75c061211c58be93ac2a1e93de67eb3d9d21fef8
   [[ ! -d build ]] && mkdir -p build
   cd build
   cmake \
@@ -44,7 +45,7 @@ build() {
       -DUSE_GCONF_BACKEND=Off \
       -DBUILD_USERMANUAL=False \
       -DUSE_GNOME_KEYRING=Off \
-      -DCMAKE_C_FLAGS=-Wno-error=deprecated-declarations \
+      -DCMAKE_C_FLAGS="-Wno-error=deprecated-declarations -Wno-error=unused-result" \
       ..
   make
 }
