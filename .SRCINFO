@@ -1,0 +1,21 @@
+pkgbase = unlinkmkv-git
+	pkgdesc = Merges ordered chapters / segmented MKVs back into a single file.
+	pkgver = r29.639bea0
+	pkgrel = 1
+	url = https://github.com/gnoling/UnlinkMKV
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = perl
+	depends = mkvtoolnix-cli
+	depends = perl-xml-libxml
+	depends = perl-log-log4perl
+	depends = perl-string-crc32
+	depends = perl-ipc-run3
+	depends = perl-file-which
+	depends = ffmpeg
+	source = git+https://github.com/gnoling/UnlinkMKV.git
+	sha256sums = SKIP
+
+pkgname = unlinkmkv-git
+
