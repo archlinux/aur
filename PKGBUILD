@@ -7,7 +7,7 @@
 
 pkgname=riak
 pkgver=2.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='NOSQL database engine providing decentralized key-value store, flexible map/reduce engine and HTTP/JSON query interface'
 arch=('i686' 'x86_64')
 license=('APACHE')
