@@ -1,7 +1,7 @@
 # Maintainer Musikolo <musikolo {at} hotmail [dot] com>
 
 pkgname=plasma5-applets-system-panel
-pkgver=1.2.0
+pkgver=1.3.0
 pkgdesc="Plasma5 applet that displays a panel with a set of system actions"
 pkgrel=1
 arch=(i686 x86_64)
