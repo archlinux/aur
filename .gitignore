@@ -1,0 +1,5 @@
+/epaste-*.pkg.tar
+/epaste-*.pkg.tar.*
+/epaste-*.tar.gz
+/pkg/
+/src/
