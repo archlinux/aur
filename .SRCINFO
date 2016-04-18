@@ -25,7 +25,7 @@ pkgbase = slurm-llnl-git
 	optdepends = numactl: NUMA support in the task/affinity plugin
 	optdepends = ncurses: adds the smap command
 	optdepends = gtk2: enables the sview command, a simple graphical frontend
-	provides = slurm-llnl
+	provides = slurm-llnl=27696.0cbeddd
 	conflicts = slurm-llnl
 	conflicts = slurm-llnl-dev
 	backup = etc/default/slurm-llnl
