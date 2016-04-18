@@ -1,0 +1,27 @@
+pkgbase = trustedgrub2-git
+	pkgdesc = TPM enabled GRUB2 Bootloader
+	pkgver = r9387.6750c4e
+	pkgrel = 1
+	url = https://github.com/Sirrix-AG/TrustedGRUB2/
+	arch = x86
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = autogen
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = gcc
+	makedepends = bison
+	makedepends = flex
+	provides = trustedgrub2
+	provides = grub
+	conflicts = trustedgrub2
+	conflicts = grub
+	replaces = grub
+	source = git+https://github.com/Sirrix-AG/TrustedGRUB2
+	source = grub.default
+	md5sums = SKIP
+	md5sums = 860933e5027697900a13e9b592cb4ca6
+
+pkgname = trustedgrub2-git
+
