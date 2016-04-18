@@ -2,18 +2,18 @@
 pkgname=clt13-git
 _pkgname=clt13
 
-pkgver=0.1.0.r13.gdeb7094
+pkgver=0.1.0.r24.g8aae4d0
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of the CLT13 multilinear map over integers."
 url="https://github.com/spaceships/clt13"
 arch=('x86_64' 'i686')
 license=('GPLv2')
-depends=('gmp')
+depends=('gmp' 'libaesrand')
 makedepends=('git' 'gcc' 'make')
 conflicts=()
 replaces=()
