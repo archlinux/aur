@@ -2,7 +2,7 @@
 # Wed Apr 13 13:25:26 UTC 2016
 pkgbase = keybase-git
 	pkgdesc = the Keybase Go client, filesystem, and GUI
-	pkgver = 1.0.15+8070.9f1142e
+	pkgver = 1.0.15+8077.22ea5aa
 	pkgrel = 1
 	install = keybase.install
 	arch = i686
