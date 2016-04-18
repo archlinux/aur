@@ -13,23 +13,23 @@ optdepends=("zlib: zlib compression support"
 makedepends=('git')
 provides=('munge')
 conflicts=('munge')
-install=$pkgname.install
+install="${pkgname}.install"
 source=("${pkgname}"::"git+https://github.com/dun/munge.git")
 md5sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
 	cd "${srcdir}/${pkgname}"
 
 	./configure \
-	--prefix=/usr \
-	--sbindir=/usr/bin	\
-	--localstatedir=/var	\
-	--sysconfdir=/etc
+		--prefix=/usr \
+		--sbindir=/usr/bin \
+		--localstatedir=/var \
+		--sysconfdir=/etc
 
 	make
 }
@@ -37,16 +37,16 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}"
 
-	make DESTDIR="$pkgdir" install
+	make DESTDIR="${pkgdir}" install
 
 	# Remove obsolete init script (Arch Linux uses SystemD)
-	rm -f $pkgdir/etc/init.d/munge
-	rmdir $pkgdir/etc/init.d
+	rm -f "${pkgdir}"/etc/init.d/munge
+	rmdir "${pkgdir}"/etc/init.d
 
 	# It is bad practice to put package-files in /run
 	# The dir /var/run/munge will be created in post_install, see .install
-	rmdir $pkgdir/var/run/munge
-	rmdir $pkgdir/var/run
+	rmdir "${pkgdir}"/var/run/munge
+	rmdir "${pkgdir}"/var/run
 
 	# Securing the installation (this is optional)
 	chmod 0700 /etc/munge
