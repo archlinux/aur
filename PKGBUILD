@@ -5,7 +5,7 @@
 
 pkgbase=mesa-nosystemd
 pkgname=('opencl-mesa-nosystemd' 'libva-mesa-driver-nosystemd' 'mesa-vdpau-nosystemd' 'mesa-nosystemd' 'mesa-libgl-nosystemd')
-pkgver=11.2.0
+pkgver=11.2.1
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto' 
@@ -15,7 +15,7 @@ url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=(ftp://ftp.freedesktop.org/pub/mesa/${pkgver}/mesa-${pkgver}.tar.xz{,.sig}
         LICENSE)
-sha256sums=('1c1fed2674abf3f16ed2623e9a5694d6752c293194e18462ebc644a19cfaafb2'
+sha256sums=('a65207e9ae5c5f1c29f863c6a2cc98a7ab99762a24b82a248337f0ea9cfce01b'
             'SKIP'
             '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2')
 validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D') # Emil Velikov <emil.l.velikov@gmail.com>
