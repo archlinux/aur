@@ -1,5 +1,5 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-html-stripscripts-parser'
 pkgver='1.03'
@@ -10,7 +10,7 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-html-parser>=3.56' 'perl-html-stripscripts>=1.05')
 makedepends=()
-url='http://search.cpan.org/dist/HTML-StripScripts-Parser'
+url='https://metacpan.org/release/HTML-StripScripts-Parser'
 source=('http://search.cpan.org/CPAN/authors/id/D/DR/DRTECH/HTML-StripScripts-Parser-1.03.tar.gz')
 md5sums=('b4c169034be56590a53f8835529627ba')
 sha512sums=('3bc766ff738623191b23c5212751cad32b76160bf5e3dcdfad5e161288c906deb1357fc092a962da87525b7364ba924de9ef68b94966c003ee7cb23e8035dc15')
