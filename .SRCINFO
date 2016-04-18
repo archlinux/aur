@@ -18,7 +18,7 @@ pkgbase = certbot-plugins-git
 	md5sums = SKIP
 
 pkgname = cerbot-nginx-git
-	pkgdesc = Nginx plugin for Let’s Encrypt client
+	pkgdesc = Nginx plugin for Certbot
 	depends = certbot=0.5.0.r57.g86e09d5
 	depends = python2-acme=0.5.0.r57.g86e09d5
 	depends = python2-pyopenssl
@@ -32,7 +32,7 @@ pkgname = cerbot-nginx-git
 	conflicts = letsencrypt-nginx
 
 pkgname = cerbot-apache-git
-	pkgdesc = Apache plugin for Let’s Encrypt client
+	pkgdesc = Apache plugin for Certbot
 	depends = letsencrypt=0.5.0.r57.g86e09d5
 	depends = python2-acme=0.5.0.r57.g86e09d5
 	depends = python2-augeas

@@ -41,7 +41,7 @@ build_cerbot-apache-git() {
 }
 
 package_cerbot-nginx-git() {
-	pkgdesc="Nginx plugin for Let’s Encrypt client"
+	pkgdesc="Nginx plugin for Certbot"
 	depends=("certbot=$pkgver" "python2-acme=$pkgver" 'python2-pyopenssl' 'python2-pyparsing'
 		'python2-setuptools' 'python2-mock' 'python2-zope-interface')
 	provides=("cerbot-nginx=${pkgver}" "letsencrypt-nginx=${pkgver}")
@@ -52,7 +52,7 @@ package_cerbot-nginx-git() {
 }
 
 package_cerbot-apache-git() {
-	pkgdesc="Apache plugin for Let’s Encrypt client"
+	pkgdesc="Apache plugin for Certbot"
 	depends=("letsencrypt=$pkgver" "python2-acme=$pkgver" 'python2-augeas' 'python2-setuptools'
 		'python2-mock' 'python2-zope-component' 'python2-zope-interface')
 	provides=("cerbot-apache=${pkgver}" "letsencrypt-apache=${pkgver}")
