@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-    cd ${pkgname}-$pkgver
+    cd ${pkgname}-${pkgname}-${pkgver}
     make DESTDIR="${pkgdir}" install
 
     install -d "${pkgdir}"/etc/pam_pkcs11/{cacerts,crls}
