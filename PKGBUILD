@@ -2,7 +2,7 @@
 # Contributor: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
 pkgname=gnome-shell-extension-workspace-grid
-pkgver=1.3.8.13
+pkgver=1.3.8.15
 pkgrel=1
 pkgdesc="Allows to configure your workspaces in a grid"
 arch=(any)
@@ -37,6 +37,8 @@ package() {
     "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/ws-switch-arrow-left.png"
   install -m644 "${_uuid}/ws-switch-arrow-right.png" \
     "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/ws-switch-arrow-right.png"
+  install -m644 "${_uuid}/myWorkspaceSwitcherPopup.js" \
+    "${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}/myWorkspaceSwitcherPopup.js"
   install -Dm644 "${_uuid}/schemas/org.gnome.shell.extensions.workspace-grid.gschema.xml" \
     "${pkgdir}/usr/share/glib-2.0/schemas/org.gnome.shell.extensions.workspace-grid.gschema.xml"
 }
