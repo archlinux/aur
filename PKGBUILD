@@ -18,7 +18,7 @@ build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	./configure \
-	--prefix=/usr
+		--prefix=/usr
 
 	make CC=gcc
 }
