@@ -2,7 +2,7 @@
 # Contributor: [Vitaliy Berdinskikh](mailto:ur6lad@archlinux.org.ua) aka UR6LAD
 
 pkgname=slf4j
-pkgver=1.7.20
+pkgver=1.7.21
 pkgrel=1
 pkgdesc="A successor to the log4j project."
 arch=('any')
@@ -36,9 +36,9 @@ package() {
 		ln -s ${_filename} ${pkgdir}/usr/share/java/${pkgname}/${_filename/-${pkgver}/}
 	done
 }
-md5sums=('9f9d3fdc8e3f2d58948ea929ee8edc9d'
+md5sums=('4c9dbae97b23ca1e03416dd48da4c3c4'
          '30637bebdbd56f4800072e2c931e13d1'
          '9939d1d46aa38b00af24f36b6f59b0f0')
-sha256sums=('24c548b8fb3f3cc79be5e410bed46373645099f1468c77c57f8652b10078ef9b'
+sha256sums=('dfcb11c3dd0cf90425de6a8293ae51d48bb6bb52d71afd14680501a2f20783b3'
             '9a1efcd3b99c0ef88e1fbdf361a7832f09a925802a7518629f271ff8e08ae940'
             '3fa0fb54bd4b0cd91e16b882002943d0ea3d0985ecf8fa870c9afc9b73656dba')
