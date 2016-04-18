@@ -23,7 +23,7 @@ optdepends=('ffmpeg: for WebGL exporting'
 	'java-environment: for Android and Tizen exporting'
 	'android-sdk: for Android Remote'
 	'android-udev: for Android Remote')
-provides=('unity-editor')
+provides=("unity-editor=${pkgver}")
 conflicts=('unity-editor')
 options=(!strip)
 install="${pkgname}.install"

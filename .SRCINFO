@@ -24,7 +24,7 @@ pkgbase = unity-editor-bin
 	optdepends = java-environment: for Android and Tizen exporting
 	optdepends = android-sdk: for Android Remote
 	optdepends = android-udev: for Android Remote
-	provides = unity-editor
+	provides = unity-editor=5.4.0b13+20160406
 	conflicts = unity-editor
 	options = !strip
 	source = http://download.unity3d.com/download_unity/linux/unity-editor-5.4.0b13+20160406_amd64.deb
