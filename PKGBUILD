@@ -3,7 +3,7 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=gnome-shell-extension-volume-mixer
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Applet allowing separate configuration of pulseaudio mixers"
 arch=(any)
@@ -12,20 +12,20 @@ license=(GPLv2)
 depends=(python)
 
 makedepends+=(jq)
-source+=("${_giturl:-release::${url/github.com/api.github.com\/repos}/releases/latest}")
+source+=("tags::${_giturl:-${url/github.com/api.github.com\/repos}/tags}")
 md5sums+=('SKIP')
 
 prepare() {
-  local url="$(jq -r '.assets[0].browser_download_url' release)"
+  local url="$(jq -r '.[0].tarball_url' tags)"
   local archive="${url##*/}"
   if [ ! -e "$archive" ]; then
     curl -Lo "$archive" "$url"
   fi
-  unzip -o "$archive"
+  tar xf "$archive"
 }
 
 pkgver() {
-  jq -r .tag_name release | grep -o '[[:digit:].]*$'
+  jq -r '.[0].name' tags | grep -o '[[:digit:].]*$'
 }
 package() {
   for function in $(declare -F | grep -Po 'package_[[:digit:]]+[[:alpha:]_]*$')
