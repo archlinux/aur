@@ -1,7 +1,7 @@
 # Maintainer: Florian Schweikert <kelvan@ist-total.org>
 pkgname=tunslip
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="tunslip and tunslip6 are tools to establish an IPv6 SLIP tunnel interface"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.contiki-os.org/"
@@ -21,7 +21,7 @@ build() {
 }
 
 package() {
-  install -D -m755 tunslip "$pkgdir/usr/sbin/tunslip"
-  install -D -m755 tunslip6 "$pkgdir/usr/sbin/tunslip6"
+  install -D -m755 tunslip "$pkgdir/usr/bin/tunslip"
+  install -D -m755 tunslip6 "$pkgdir/usr/bin/tunslip6"
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
