@@ -4,7 +4,7 @@
 pkgbase=(virtualbox-ck-modules)
 pkgname=(virtualbox-ck-host-modules virtualbox-ck-guest-modules)
 pkgver=5.0.16
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
@@ -31,7 +31,7 @@ package_virtualbox-ck-host-modules() {
 	pkgdesc='Host kernel modules for VirtualBox running under Linux-ck.'
 	provides=("virtualbox-host-modules")
 	depends=('linux-ck>=4.4' 'linux-ck<4.5')
-	conflicts=('virtualbox-ck-host-modules-atom' 'virtualbox-ck-host-modules-barcelona' 'virtualbox-ck-host-modules-bulldozer' 'virtualbox-ck-host-modules-corex' 'virtualbox-ck-host-modules-core2' 'virtualbox-ck-host-modules-haswell' 'virtualbox-ck-host-modules-broadwell' 'virtualbox-ck-host-modules-ivybridge' 'virtualbox-ck-host-modules-kx' 'virtualbox-ck-host-modules-k10' 'virtualbox-ck-host-modules-nehalem' 'virtualbox-ck-host-modules-p4' 'virtualbox-ck-host-modules-piledriver' 'virtualbox-ck-host-modules-pentm' 'virtualbox-ck-host-modules-sandybridge' 'virtualbox-ck-host-modules-silvermont')
+	conflicts=('virtualbox-ck-host-modules-atom' 'virtualbox-ck-host-modules-barcelona' 'virtualbox-ck-host-modules-bulldozer' 'virtualbox-ck-host-modules-corex' 'virtualbox-ck-host-modules-core2' 'virtualbox-ck-host-modules-haswell' 'virtualbox-ck-host-modules-broadwell' 'virtualbox-ck-host-modules-skylake' 'virtualbox-ck-host-modules-ivybridge' 'virtualbox-ck-host-modules-kx' 'virtualbox-ck-host-modules-k10' 'virtualbox-ck-host-modules-nehalem' 'virtualbox-ck-host-modules-p4' 'virtualbox-ck-host-modules-piledriver' 'virtualbox-ck-host-modules-pentm' 'virtualbox-ck-host-modules-sandybridge' 'virtualbox-ck-host-modules-silvermont')
 	#replaces=('virtualbox-ck-host-modules-corex')
 	#groups=('ck-generic')
 	install=host.install
@@ -50,7 +50,7 @@ package_virtualbox-ck-guest-modules() {
 	license=('GPL')
 	provides=("virtualbox-guest-modules")
 	depends=('linux-ck>=4.4' 'linux-ck<4.5')
-	conflicts=('virtualbox-ck-guest-modules-atom' 'virtualbox-ck-guest-modules-barcelona' 'virtualbox-ck-guest-modules-bulldozer' 'virtualbox-ck-guest-modules-corex' 'virtualbox-ck-guest-modules-core2' 'virtualbox-ck-guest-modules-haswell' 'virtualbox-ck-guest-modules-broadwell' 'virtualbox-ck-guest-modules-ivybridge' 'virtualbox-ck-guest-modules-kx' 'virtualbox-ck-guest-modules-k10' 'virtualbox-ck-guest-modules-nehalem' 'virtualbox-ck-guest-modules-p4' 'virtualbox-ck-guest-modules-piledriver' 'virtualbox-ck-guest-modules-pentm' 'virtualbox-ck-guest-modules-sandybridge' 'virtualbox-ck-guest-modules-silvermont')
+	conflicts=('virtualbox-ck-guest-modules-atom' 'virtualbox-ck-guest-modules-barcelona' 'virtualbox-ck-guest-modules-bulldozer' 'virtualbox-ck-guest-modules-corex' 'virtualbox-ck-guest-modules-core2' 'virtualbox-ck-guest-modules-haswell' 'virtualbox-ck-guest-modules-broadwell' 'virtualbox-ck-guest-modules-skylake' 'virtualbox-ck-guest-modules-ivybridge' 'virtualbox-ck-guest-modules-kx' 'virtualbox-ck-guest-modules-k10' 'virtualbox-ck-guest-modules-nehalem' 'virtualbox-ck-guest-modules-p4' 'virtualbox-ck-guest-modules-piledriver' 'virtualbox-ck-guest-modules-pentm' 'virtualbox-ck-guest-modules-sandybridge' 'virtualbox-ck-guest-modules-silvermont')
 	#replaces=('virtualbox-ck-guest-modules-corex')
 	#groups=('ck-generic')
 	install=guest.install
