@@ -4,7 +4,7 @@
 
 pkgbase=linux-tfw
 _srcname=linux-4.1
-pkgver=4.1.12
+pkgver=4.1.21
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/natsys/tempesta/"
@@ -14,6 +14,7 @@ options=('!strip')
 source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
         https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
         # tempesta patch
+        linux-4.1.20-skbuff.patch
         https://raw.githubusercontent.com/natsys/tempesta/master/linux-4.1-tfw.patch
         # the main kernel config file (x86_64 only)
         'config'
@@ -22,8 +23,9 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            'f3520b06e6a2b9929173c680de75f11cde9f0a380e04195d538b5de820a549ae'
+            '7a2213fa9f9926a49dbdc4871d58a3498a03396a9b0167c1090712bf0a2a18e2'
             'SKIP'
+            'cfb06b4118732f62b2de63b929bdfd63940faf6ed7957f121ef53500737128e7'
             'SKIP'
             '9ad6e65402d7afb61351f08b12ddb3537241a81de448e5c20191b6682204a8fe'
             'bf7464376f0c654a6522b085468a07a8f9a7e0e88a508289e5a3db5348d66d61')
@@ -39,6 +41,7 @@ prepare() {
   patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add tempesta patch
+  patch -p1 -i "${srcdir}/linux-4.1.20-skbuff.patch"
   patch -p1 -i "${srcdir}/linux-4.1-tfw.patch"
 
   # add latest fixes from stable queue, if needed

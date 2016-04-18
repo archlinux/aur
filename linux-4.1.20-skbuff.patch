@@ -1,0 +1,12 @@
+diff --git a/net/core/skbuff.c b/net/core/skbuff.c
+index c9793c6..e07228b 100644
+--- a/net/core/skbuff.c
++++ b/net/core/skbuff.c
+@@ -79,6 +79,7 @@
+ 
+ struct kmem_cache *skbuff_head_cache __read_mostly;
+ static struct kmem_cache *skbuff_fclone_cache __read_mostly;
++
+ int sysctl_max_skb_frags __read_mostly = MAX_SKB_FRAGS;
+ EXPORT_SYMBOL(sysctl_max_skb_frags);
+ 
