@@ -20,7 +20,7 @@ _CLANG_DIRNAME="clang+llvm-${_CLANG_VERSION}-x86_64-linux-gnu-ubuntu-14.04"
 _CLANG_FILENAME="${_CLANG_DIRNAME}.tar.xz"
 
 pkgname=vim-youcompleteme-git
-pkgver=1765.41e4886
+pkgver=1774.f67033c
 pkgver() {
   cd "YouCompleteMe"
   echo $(git rev-list --count master).$(git rev-parse --short master)
@@ -32,7 +32,7 @@ arch=('i686' 'x86_64')
 url='http://valloric.github.com/YouCompleteMe/'
 license=('GPL3')
 groups=('vim-plugins')
-depends=('boost' 'boost-libs' 'libtinfo' 'mono' 'nodejs' 'python' 'python2' 'rust' 'vim')
+depends=('boost' 'boost-libs' 'libtinfo-5' 'mono' 'nodejs' 'python' 'python2' 'rust' 'vim')
 # use system's libclang on non-x86_64 architectures
 [[ "${CARCH}" != 'x86_64' ]] && depends+=('clang')
 makedepends=('cargo' 'cmake' 'git' 'go' 'make' 'mono' 'npm')
