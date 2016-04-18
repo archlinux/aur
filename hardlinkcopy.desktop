@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Action
+Name=Hardlink Copy
+Icon=edit-copy
+Profiles=profile-zero;
+
+[X-Action-Profile profile-zero]
+Exec=sh -c "cp -al %f `zenity --title 'Select destination directory' --file-selection --directory`/"
+Name=Default profile
