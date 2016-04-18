@@ -1,24 +1,22 @@
 # Maintainer: Ainola
 
 pkgname=gnome-mpv
-pkgver=0.7
-pkgrel=4
+pkgver=0.8
+pkgrel=1
 pkgdesc="GNOME frontend for MPV"
 arch=('i686' 'x86_64')
 url="https://github.com/gnome-mpv/gnome-mpv"
 license=('GPL3')
 depends=('gtk3' 'mpv')
-makedepends=('intltool' 'autoconf-archive' 'appstream-glib')
+makedepends=('intltool')
 optdepends=('youtube-dl: Video integration to YouTube and other video sites.')
 conflicts=('gnome-mpv-git')
-source=("https://github.com/gnome-mpv/gnome-mpv/archive/v${pkgver}.tar.gz")
-sha256sums=('94b9d9ff0afe4375d0fe6f53df6069de193d009488988014b0e30e23edad49a5')
+source=("https://github.com/gnome-mpv/gnome-mpv/releases/download/v${pkgver}/gnome-mpv-${pkgver}.tar.xz")
+sha256sums=('d18cea34c452242e188df9c4e6dcad6b2e99dec1dea324a66ec27b422c6fe3f8')
 install='gnome-mpv.install'
 
 build() {
     cd "${pkgname}-${pkgver}"
-    autoreconf -sfi
-    intltoolize -c --automake
     ./configure --prefix=/usr
     make
 }
