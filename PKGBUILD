@@ -1,7 +1,7 @@
 # Maintainer: Sukbeom Kim <sukbeom.kim@gmail.com>
 pkgname=shell_shortcut
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple script to use shortcuts in terminal environment."
 arch=('any')
 url="https://github.com/seokbeomKim/shell_shortcut"

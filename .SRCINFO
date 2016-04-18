@@ -1,7 +1,7 @@
 pkgbase = shell_shortcut
 	pkgdesc = Simple script to use shortcuts in terminal environment.
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/seokbeomKim/shell_shortcut
 	arch = any
 	license = GPL
