@@ -8,11 +8,11 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=python-gitlab
-pkgver=0.9.2
-pkgrel=2
+pkgver=0.11.1
+pkgrel=1
 pkgdesc="Interact with GitLab API"
 arch=(any)
-url="ttps://github.com/gpocentek/python-gitlab"
+url="https://github.com/gpocentek/python-gitlab"
 license=('LGPLv3')
 groups=()
 depends=('python' 'python-requests' 'python-six')
@@ -24,7 +24,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=(https://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-md5sums=('0c2e4d281cd86b58337dbe83915a9d53')
+md5sums=('1b222f0d9884c5c1a4d57ba6aebc5a45')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
