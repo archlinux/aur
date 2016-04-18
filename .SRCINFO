@@ -1,0 +1,15 @@
+pkgbase = cloak-gtk2-gtk3-theme
+	pkgdesc = A clean dark theme for GTK3 / GTK2, Gnome-Shell-Theme, Metacity Theme
+	pkgver = 3.20.2_04172016
+	pkgrel = 2
+	url = http://killhellokitty.deviantart.com/art/Cloak-3-20-2-04172016-603341133?q=gallery%3Akillhellokitty%2F26771632&qo=0
+	arch = any
+	license = CC
+	depends = gtk-engine-murrine
+	optdepends = gnome-themes-standard: Default themes for the GNOME desktop
+	optdepends = gnome-tweak-tool: A tool to customize advanced GNOME 3 options
+	optdepends = gnome-shell-extension-user-theme: User Theme extension for GNOME Shell
+	source = http://orig06.deviantart.net/e6b8/f/2016/108/0/0/cloak_3_20_2_04172016_by_killhellokitty-d9z7ozx.zip
+
+pkgname = cloak-gtk2-gtk3-theme
+
