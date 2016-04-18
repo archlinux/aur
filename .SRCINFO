@@ -1,4 +1,5 @@
 pkgbase = certbot-plugins-git
+	pkgdesc = Plugins for Certbot
 	pkgver = 0.5.0.r57.g86e09d5
 	pkgrel = 1
 	url = https://github.com/letsencrypt/letsencrypt
@@ -17,7 +18,7 @@ pkgbase = certbot-plugins-git
 	source = letsencrypt::git+https://github.com/letsencrypt/letsencrypt
 	md5sums = SKIP
 
-pkgname = cerbot-nginx-git
+pkgname = certbot-nginx-git
 	pkgdesc = Nginx plugin for Certbot
 	depends = certbot=0.5.0.r57.g86e09d5
 	depends = python2-acme=0.5.0.r57.g86e09d5
@@ -26,21 +27,21 @@ pkgname = cerbot-nginx-git
 	depends = python2-setuptools
 	depends = python2-mock
 	depends = python2-zope-interface
-	provides = cerbot-nginx=0.5.0.r57.g86e09d5
+	provides = certbot-nginx=0.5.0.r57.g86e09d5
 	provides = letsencrypt-nginx=0.5.0.r57.g86e09d5
-	conflicts = cerbot-nginx
+	conflicts = certbot-nginx
 	conflicts = letsencrypt-nginx
 
-pkgname = cerbot-apache-git
+pkgname = certbot-apache-git
 	pkgdesc = Apache plugin for Certbot
-	depends = letsencrypt=0.5.0.r57.g86e09d5
+	depends = certbot=0.5.0.r57.g86e09d5
 	depends = python2-acme=0.5.0.r57.g86e09d5
 	depends = python2-augeas
 	depends = python2-setuptools
 	depends = python2-mock
 	depends = python2-zope-component
 	depends = python2-zope-interface
-	provides = cerbot-apache=0.5.0.r57.g86e09d5
+	provides = certbot-apache=0.5.0.r57.g86e09d5
 	provides = letsencrypt-apache=0.5.0.r57.g86e09d5
-	conflicts = cerbot-apache
+	conflicts = certbot-apache
 	conflicts = letsencrypt-apache
