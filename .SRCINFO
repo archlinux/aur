@@ -8,8 +8,10 @@ pkgbase = letshelp-certbot-git
 	makedepends = git
 	depends = python2-setuptools
 	depends = python2-mock
-	provides = letshelp-certbot
+	provides = letshelp-certbot=0.5.0.r57.g86e09d5
+	provides = letshelp-letsencrypt=0.5.0.r57.g86e09d5
 	conflicts = letshelp-certbot
+	conflicts = letshelp-letsencrypt
 	source = letsencrypt::git+https://github.com/letsencrypt/letsencrypt
 	md5sums = SKIP
 

@@ -10,8 +10,8 @@ license=('Apache')
 url="https://github.com/letsencrypt/${_reponame}"
 depends=('python2-setuptools' 'python2-mock')
 makedepends=('git')
-provides=("letshelp-certbot")
-conflicts=("letshelp-certbot")
+provides=("letshelp-certbot=${pkgver}" "letshelp-letsencrypt=${pkgver}")
+conflicts=("letshelp-certbot" "letshelp-letsencrypt")
 source=("${_reponame}"::"git+https://github.com/letsencrypt/letsencrypt")
 md5sums=('SKIP')
 
