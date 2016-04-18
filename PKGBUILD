@@ -1,8 +1,8 @@
 # Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=dwarffortress-ironhand
-pkgver=0.42.03
-_pkgver=42_03
+pkgver=0.42.06
+_pkgver=42_06
 pkgrel=1
 pkgdesc="A single-player fantasy game. You control a dwarven outpost or an adventurer in a randomly generated persistent world."
 arch=(i686 x86_64)
@@ -25,16 +25,24 @@ fi
 # We try to compile whatever little bit of df is open source
 source=(http://www.bay12games.com/dwarves/df_${_pkgver}_linux.tar.bz2
         git://github.com/svenstaro/dwarf_fortress_unfuck.git#tag=${pkgver}
+        https://github.com/svenstaro/dwarf_fortress_unfuck/commit/3d409680597679998560c6c9fd4ad45b58e27872.patch
         dwarffortress
         dwarffortress.desktop
-        dwarffortress.png
-        'http://dffd.bay12games.com/download.php?id=11349&f=Ironhand_42_03A_Upgrade.zip')
-sha256sums=('6bc36b3562da0a8d6e1f14d269e2a4ce04b8f2f6ffc516b542bc7ac8ae50b3cc'
+        'http://dffd.bay12games.com/download.php?id=11348&f=Ironhand_42_06B.zip'
+        dwarffortress.png)
+sha256sums=('03df8e73bf81e4f7bec9e789a83f8bd20b0b968d73131e4051e005db13fec99f'
             'SKIP'
+            '303660f11968bc8a8cb61c91e08334d0e1bc42b58e08759b7edb3b0b9cb08811'
             '7dc1f0ed0d496b21f4f240334f77dc43b728823f3e1c4ea25ce768691346ec07'
             '0c279596f88b5fca4e0676627bfc6739b5da9416cc099abf5865ee6c0fd13435'
-            '83183abc70b11944720b0d86f4efd07468f786b03fa52fe429ca8e371f708e0f'
-            '17b8209d90cfffc8bcae9ac69fe5c302cbd38016012a6af1841269be6972a70b')
+            '47e2ebbdaf1f1bb78185609512f4fbba3bd190682a2029195cbf675e25a25391'
+            '83183abc70b11944720b0d86f4efd07468f786b03fa52fe429ca8e371f708e0f')
+
+prepare() {
+  cd $srcdir/dwarf_fortress_unfuck
+
+  patch -Np1 -i $srcdir/3d409680597679998560c6c9fd4ad45b58e27872.patch
+}
 
 build() {
   cd $srcdir/dwarf_fortress_unfuck
