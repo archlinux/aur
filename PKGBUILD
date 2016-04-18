@@ -4,8 +4,8 @@
 
 pkgbase=linux-rc       # Build kernel with a different name
 _srcname=linux-4.5
-pkgver=4.5.1rc1
-_patchname=patch-4.5.1-rc1
+pkgver=4.5.2rc1
+_patchname=patch-4.5.2-rc1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -24,10 +24,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
             'SKIP'
-            'a10f30cc3b5e5f7eaf8cd1784162f15d3b36ba183f6526ca1ff43e1f687bd775'
+            'bae0a4be06fa656ca5023a34d96ef0995ff8c00e3fa0bc8d4e1f2f33b2b58ec3'
             'SKIP'
-            '4e520b53399541b5d166fba4be397756278cbcbc260be87bd3ff324496ac3619'
-            '30660541b981bfbf60db8ffdbf75dca63648ca19bc2fba564b4561f6ecc7bf1b'
+            '8a8a955f015ee8342701231a63836cec0e300fd7e96d30e8696fde8a383fcdc9'
+            '8b60911aad591306336e300e27071f2d108c5016e66a04327b82ac69acbfefff'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
