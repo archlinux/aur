@@ -1,6 +1,6 @@
 pkgbase = runc-git
 	pkgdesc = Container CLI tools
-	pkgver = v0.0.5.r431.g6c88a52
+	pkgver = v0.0.5.r482.g8b0f6a7
 	pkgrel = 1
 	url = http://runc.io/
 	arch = x86_64

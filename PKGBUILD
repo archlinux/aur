@@ -1,7 +1,7 @@
 #Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=runc-git
-pkgver=v0.0.5.r431.g6c88a52
+pkgver=v0.0.5.r482.g8b0f6a7
 pkgrel=1
 pkgdesc="Container CLI tools"
 depends=('glibc')
