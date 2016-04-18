@@ -6,7 +6,7 @@
 pkgbase=virtualbox-modules-mainline
 pkgname=('virtualbox-host-modules-mainline' 'virtualbox-guest-modules-mainline')
 pkgver=5.0.16
-pkgrel=4
+pkgrel=5
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
@@ -32,6 +32,7 @@ prepare() {
   cd $srcdir/dkms/vboxhost/${pkgver}_OSE/source
   # page_cache_release() -> put_page(); 09cbfeaf1a5a67bfb3201e0c83c810cecb2efa5a
   sed -i 's|page_cache_release|put_page|g' vboxdrv/r0drv/linux/memobj-r0drv-linux.c
+  sed -i 's|get_user_pages|get_user_pages_remote|g' vboxdrv/r0drv/linux/memobj-r0drv-linux.c
 
   rm -r $srcdir/dkms/vboxguest/${pkgver}_OSE/source
   cp -r /usr/src/vboxguest-${pkgver}_OSE $srcdir/dkms/vboxguest/${pkgver}_OSE/source
@@ -40,6 +41,7 @@ prepare() {
   # page_cache_release() -> put_page(); 09cbfeaf1a5a67bfb3201e0c83c810cecb2efa5a
   sed -i 's|page_cache_release|put_page|g' vboxsf/regops.c
   sed -i 's|page_cache_release|put_page|g' vboxguest/r0drv/linux/memobj-r0drv-linux.c
+  sed -i 's|get_user_pages|get_user_pages_remote|g' vboxguest/r0drv/linux/memobj-r0drv-linux.c
 
   cd $srcdir
 }
