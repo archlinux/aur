@@ -16,8 +16,8 @@ depends=('ca-certificates' "python2-acme=$pkgver" 'python2-configargparse' 'pyth
 optdepends=("certbot-apache: Apache plugin for Let’s Encrypt client"
 	"certbot-nginx: Nginx plugin for Let’s Encrypt client")
 makedepends=('git')
-provides=("certbot")
-conflicts=("certbot")
+provides=("certbot=${pkgver}" "letsencrypt=${pkgver}")
+conflicts=("certbot" "letsencrypt")
 source=("${_reponame}"::"git+https://github.com/letsencrypt/letsencrypt")
 md5sums=('SKIP')
 
@@ -49,7 +49,7 @@ package() {
 	python2 setup.py install --root="${pkgdir}" --optimize=1
 
 	# Create configuration, log and lib directories
-	install -d -m700 "${pkgdir}"/etc
+	install -d "${pkgdir}"/etc/letsencrypt	# TODO: someday this will probably change
 	install -d -m700 "${pkgdir}"/var/log/letsencrypt	# TODO: someday this will probably change
-	install -d -m700 "${pkgdir}"/var/lib/letsencrypt	# TODO: someday this will probably change
+	install -d "${pkgdir}"/var/lib/letsencrypt	# TODO: someday this will probably change
 }

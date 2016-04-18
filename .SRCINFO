@@ -25,8 +25,10 @@ pkgbase = certbot-git
 	depends = python2-zope-interface
 	optdepends = certbot-apache: Apache plugin for Let’s Encrypt client
 	optdepends = certbot-nginx: Nginx plugin for Let’s Encrypt client
-	provides = certbot
+	provides = certbot=0.5.0.r57.g86e09d5
+	provides = letsencrypt=0.5.0.r57.g86e09d5
 	conflicts = certbot
+	conflicts = letsencrypt
 	source = letsencrypt::git+https://github.com/letsencrypt/letsencrypt
 	md5sums = SKIP
 
