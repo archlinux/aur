@@ -1,7 +1,7 @@
 # Maintainer: Flow
 
 pkgname=svfs
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="The Swift Virtual File System for hubiC (ovh)"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ depends=('fuse' 'ruby')
 makedepends=()
 source_x86_64=("https://github.com/ovh/svfs/releases/download/v${pkgver}/${pkgname}_${pkgver}_amd64.deb")
 source_i686=("https://github.com/ovh/svfs/releases/download/v${pkgver}/${pkgname}_${pkgver}_386.deb")
-md5sums_i686=('eb07ec1aea5462db4fe19382e0fbf106')
-md5sums_x86_64=('851ef4ccffa447de858350f7101c7852')
+md5sums_i686=('2ca3f2490a18ffabb98fb4632d5cb533')
+md5sums_x86_64=('135c4836c4b8e4033b341e46df231a4f')
 
 package() {  
     cd "${srcdir}"
