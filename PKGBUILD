@@ -17,11 +17,11 @@ source_armv6h=("https://nodejs.org/dist/v$pkgver/node-v$pkgver-linux-armv6l.tar.
 source_armv7h=("https://nodejs.org/dist/v$pkgver/node-v$pkgver-linux-armv7l.tar.xz")
 source_aarch64=("https://nodejs.org/dist/v$pkgver/node-v$pkgver-linux-arm64.tar.xz")
 
-sha256sums_i686=("1267b0602e7f7f0c1ab53c841dc71d56dd70c4883396c2e1dc6a1108ab47a622")
-sha256sums_x86_64=("3b58583102afbd54214f1ce61d90c7b05e807471bd6ecb084e2fa7de540cdce2")
-sha256sums_armv6h=("58627371bc50452fcfbdae66fae043eacde6649ff27fd8b41e2ce42e84720b4e")
-sha256sums_armv7h=("e1eaf11800762f45a0b07847c1276ed2c8a13e207ed6ea9938ad992379204131")
-sha256sums_aarch64=("b58b1729d3b084255c18c99b31a6db375311ce2effb4f1083cee1b480d03e97f")
+sha256sums_i686=("93bcf48a9e5c6fdcd030ccfa0bde626466daaf0d8924a98f235e89f517addb76")
+sha256sums_x86_64=("7d8919fa7c6fa927c0fe295fcb16c7025c974b717350e97ddbd7a46d3b60fbef")
+sha256sums_armv6h=("b570ba9a8dcb287fa833c0d0dd05f3ad008853a4a445805ef1e17e2ce7c01d03")
+sha256sums_armv7h=("437716a5a9e751196eb25486fc486786a431fe3a632c61728949f4628ccbe83d")
+sha256sums_aarch64=("fe65d3992219389cd965cee015571b222948ce46c676e5e0224450439fa26637")
 
 build() {
     cd node-*
