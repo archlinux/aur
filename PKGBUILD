@@ -44,8 +44,8 @@ package_cerbot-nginx-git() {
 	pkgdesc="Nginx plugin for Let’s Encrypt client"
 	depends=("certbot=$pkgver" "python2-acme=$pkgver" 'python2-pyopenssl' 'python2-pyparsing'
 		'python2-setuptools' 'python2-mock' 'python2-zope-interface')
-	provides=("cerbot-nginx")
-	conflicts=("cerbot-nginx")
+	provides=("cerbot-nginx=${pkgver}" "letsencrypt-nginx=${pkgver}")
+	conflicts=("cerbot-nginx" "letsencrypt-nginx")
 
 	cd "${srcdir}/${_reponame}/certbot-nginx"
 	python2 setup.py install --root="${pkgdir}" --optimize=1
@@ -55,8 +55,8 @@ package_cerbot-apache-git() {
 	pkgdesc="Apache plugin for Let’s Encrypt client"
 	depends=("letsencrypt=$pkgver" "python2-acme=$pkgver" 'python2-augeas' 'python2-setuptools'
 		'python2-mock' 'python2-zope-component' 'python2-zope-interface')
-	provides=("cerbot-apache")
-	conflicts=("cerbot-apache")
+	provides=("cerbot-apache=${pkgver}" "letsencrypt-apache=${pkgver}")
+	conflicts=("cerbot-apache" "letsencrypt-apache")
 
 	cd "${srcdir}/${_reponame}/certbot-apache"
 	python2 setup.py install --root="${pkgdir}" --optimize=1

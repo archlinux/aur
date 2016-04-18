@@ -26,8 +26,10 @@ pkgname = cerbot-nginx-git
 	depends = python2-setuptools
 	depends = python2-mock
 	depends = python2-zope-interface
-	provides = cerbot-nginx
+	provides = cerbot-nginx=0.5.0.r57.g86e09d5
+	provides = letsencrypt-nginx=0.5.0.r57.g86e09d5
 	conflicts = cerbot-nginx
+	conflicts = letsencrypt-nginx
 
 pkgname = cerbot-apache-git
 	pkgdesc = Apache plugin for Let’s Encrypt client
@@ -38,5 +40,7 @@ pkgname = cerbot-apache-git
 	depends = python2-mock
 	depends = python2-zope-component
 	depends = python2-zope-interface
-	provides = cerbot-apache
+	provides = cerbot-apache=0.5.0.r57.g86e09d5
+	provides = letsencrypt-apache=0.5.0.r57.g86e09d5
 	conflicts = cerbot-apache
+	conflicts = letsencrypt-apache
