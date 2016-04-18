@@ -3,7 +3,7 @@
 
 pkgname=netbsd-pkgsrc
 _pkgname=pkgsrc
-pkgver=2015Q4
+pkgver=2016Q1
 pkgrel=1
 pkgdesc="The NetBSD Packages Collection (pkgsrc)"
 arch=('i686' 'x86_64')
@@ -31,6 +31,6 @@ package() {
   echo "export MANPATH=/usr/pkg/man:${MANPATH}" >> "${pkgdir}/etc/profile.d/pkgsrc.sh"
 }
 
-sha512sums=('c3b6c3f14405a2a2758b9c11a3d4f45e5da28a2926339fb1de9cd2427371f8d48efb32fadda7eb2f25ee871a31ff95d145a76aed4c3d85edfec6c8fc9ba166d2'
+sha512sums=('1f674c77fd66cd3acf7104600553d4a32d088c98e8cce0124372f9d9fa6776124ec5c4a576712b2ecaa9909eae614379e12f2bc4046112b267b7d12f243587c8'
             '78f634baef190d4a52187e69344e50ae9544c95bd6243ebb22af727092edbb61c021ec38de1a85e38b08cb046b71bdbf6cc869af2d9a6365cb93c92e342dfe96')
 
