@@ -6,8 +6,8 @@
 # Contributor: zhehao
 
 pkgname=riak
-pkgver=2.1.3
-pkgrel=2
+pkgver=2.1.4
+pkgrel=1
 pkgdesc='NOSQL database engine providing decentralized key-value store, flexible map/reduce engine and HTTP/JSON query interface'
 arch=('i686' 'x86_64')
 license=('APACHE')
@@ -22,8 +22,8 @@ source=(
     "http://s3.amazonaws.com/downloads.basho.com/riak/2.1/${pkgver}/${pkgname}-${pkgver}.tar.gz"
     'riak.service'
 )
-md5sums=('0a3ea829f00e00a6e9fe6863e861f7bb'
-         'ed4cda47fc1fad8b0a3fb3858600c578')
+md5sums=('b216c70a904afe4f3b0ad7acf04a6489'
+         '60c34e8ee8bc6d314df62b3b6d30ec96')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
