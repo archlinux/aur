@@ -4,7 +4,7 @@
 pkgbase=python-regex
 pkgname=('python-regex' 'python2-regex')
 pkgname=python-regex
-pkgver=2016.02.23
+pkgver=2016.04.15
 pkgrel=1
 epoch=1
 pkgdesc="Alternative python regular expression module."
@@ -14,7 +14,7 @@ license=('Python')
 makedepends=('python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("https://pypi.python.org/packages/source/r/regex/regex-${pkgver}.tar.gz")
-md5sums=('af88e53da776ffdf5c03865452de5e3b')
+md5sums=('aea95174223a631da88d2956c0fadfbd')
 
 package_python2-regex() {
   depends=('python2')
