@@ -6,7 +6,7 @@ arch=('any')
 url="http://dun.ai"
 license=('GPL')
 depends=('python2' 'python2-mechanize' 'python2-beautifulsoup4')
-source=(http://sprunge.us/UXRQ)
+source=(google-translate::git://github.com:and3rson/google-translate.git)
 
 package() {
     install -Dm755 ${srcdir}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
