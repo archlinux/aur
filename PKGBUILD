@@ -7,8 +7,7 @@ pkgdesc="Centralized management system for Ubiquiti UniFi Surveillance Cameras"
 arch=('x86_64')
 url="https://www.ubnt.com/"
 license=('custom')
-depends=('mongodb' 'jre8-openjdk-headless' 'java-jsvc'
-)
+depends=('mongodb' 'jre8-openjdk-headless' 'java-jsvc' 'lsb-release')
 install=unifi-video-bin.install
 source=("http://dl.ubnt.com/firmwares/unifi-video/$pkgver/unifi-video_$pkgver~Ubuntu14.04_amd64.deb"
         'unifi-video.service'
@@ -39,6 +38,9 @@ package() {
     msg2 "Installing systemd files..."
     install -D -m 644 "${srcdir}/unifi-video.service" "${pkgdir}/usr/lib/systemd/system/unifi-video.service"
     install -D -m 644 "${srcdir}/unifi-video.sysusers" "${pkgdir}/usr/lib/sysusers.d/unifi-video.conf"
+
+    msg2 "Creating directories..."
+    mkdir -p "${pkgdir}/usr/lib/unifi-video/logs" "${pkgdir}/usr/lib/unifi-video/work"
 }
 
 # vim:set ts=2 sw=2 et:
