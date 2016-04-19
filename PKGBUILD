@@ -19,7 +19,7 @@
 # THE SOFTWARE.
 
 pkgname=irccd
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 epoch=
 pkgdesc="IRC client daemon"
@@ -37,13 +37,13 @@ replaces=()
 backup=("etc/irccd.conf" "etc/irccdctl.conf")
 options=()
 changelog="ChangeLog"
-source=("http://releases.malikania.fr/$pkgname/$pkgname-$pkgver.tar.xz")
+source=("http://releases.malikania.fr/$pkgname/$pkgver/$pkgname-$pkgver.tar.xz")
 noextract=()
-md5sums=('e206daecc412929ddac6c5b7bef15dc6')
+md5sums=('b9a1fc38837c9e9c7c493b26a1ab999f')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
-	mkdir _build
+	mkdir -p _build
 	cd _build
 	cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX='/usr' -DWITH_CONFDIR='../etc' -DWITH_MANDIR='share/man' -DWITH_DOCDIR='share/doc/irccd' -DWITH_PLUGINDIR='share/irccd/plugins'
 	make
@@ -53,16 +53,15 @@ package() {
 	cd $srcdir/$pkgname-$pkgver/_build
 	make DESTDIR="$pkgdir" install
 
-	cd ..
 	mkdir -p $pkgdir/usr/share/licenses/$pkgname
-	cp LICENSE.md $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	cp ../LICENSE.md $pkgdir/usr/share/licenses/$pkgname/LICENSE
 	
 	# Copy systemd unit
 	mkdir -p $pkgdir/usr/lib/systemd/system/
-	cp contrib/irccd.service $pkgdir/usr/lib/systemd/system/
+	sed 's/@PATH@/\/usr\/bin\/irccd/' contrib/irccd.service > $pkgdir/usr/lib/systemd/system/irccd.service
+	sed -i 's/Type=forking/Type=simple/' $pkgdir/usr/lib/systemd/system/irccd.service
 	
 	# Copy default config files
-	cd $pkgdir/etc/
-	mv irccd.conf.sample irccd.conf
-	mv irccdctl.conf.sample irccdctl.conf
+	mv $pkgdir/etc/irccd.conf.sample $pkgdir/etc/irccd.conf
+	mv $pkgdir/etc/irccdctl.conf.sample $pkgdir/etc/irccdctl.conf
 }

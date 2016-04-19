@@ -1,3 +1,8 @@
+2016-04-19 Pierre Choffet <peuc@wanadoo.fr>
+	* 2.0.2-1 :
+	Upstream update to 2.0.2
+	Fix systemd unit
+
 2016-03-16 Pierre Choffet <peuc@wanadoo.fr>
 	* 2.0.1-1 :
 	Upstream update to 2.0.1
