@@ -29,11 +29,9 @@ pkgver() {
 }
 
 prepare() {
-  composer --no-interaction --working-dir="$_pkgname" install --prefer-source
+  cd "$_pkgname"
 
-  # Generate empty drush.ini from the example by
-  # commenting out all line starting with word character.
-  sed 's/^\b/;/' "$_pkgname/examples/example.$_pkgname.ini" >| "$_pkgname.ini"
+  composer --no-interaction update --prefer-source
 }
 
 build() {
@@ -57,26 +55,18 @@ check() {
 }
 
 package() {
-
-  # Set up directory structure
-  install --owner=http --group=http --mode=6775  --directory "$pkgdir/etc/drush"
-  install --owner=http --group=http --mode=644 "$_pkgname.ini" "$pkgdir/etc/$_pkgname/$_pkgname.ini"
-  install --directory "$pkgdir/etc/bash_completion.d"
-  install --directory "$pkgdir/usr/bin"
-  install --directory "$pkgdir/usr/share/webapps/$_pkgname"
-  install --directory "$pkgdir/usr/share/doc/$_pkgname/misc"
-  install -Dm644 php.ini "$pkgdir/etc/php/conf.d/$_pkgname.ini"
-
-  # Copy main application files
   cd "$_pkgname"
-  cp -a * "$pkgdir/usr/share/webapps/$_pkgname"
-  cp -a CONTRIBUTING.md README.md docs examples "$pkgdir/usr/share/doc/$_pkgname"
-  rm -rf "$pkgdir/usr/share/doc/$_pkgname/"{CONTRIBUTING.md,README.md,docs,examples,misc/windrush_build}
-  ln -s "/usr/share/webapps/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
-  ln -s "/usr/share/webapps/$_pkgname/$_pkgname.complete.sh" "$pkgdir/etc/bash_completion.d"
-
+  install -Dm755 "$_pkgname.phar" "$pkgdir/usr/share/webapps/$_pkgname/$_pkgname.phar"
   install -Dm644 "$_pkgname.complete.sh" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
-  install -Dm644 "examples/example.$_pkgname.ini" "${pkgdir}/etc/$_pkgname/$_pkgname.ini"
+  install --directory "$pkgdir/usr/bin"
+  install --directory "$pkgdir/usr/share/doc/$_pkgname"
+  install --directory "$pkgdir/usr/share/webapps/$_pkgname/commands"
+  cp -a CONTRIBUTING.md README.md docs examples "$pkgdir/usr/share/doc/$_pkgname"
+  ln -s "/usr/share/webapps/$_pkgname/$_pkgname.phar" "$pkgdir/usr/bin/$_pkgname"
+
+  # Symlink upstream's hard-coded drush base path
+  ln -s "/usr/share/webapps/$_pkgname" "$pkgdir/usr/share/$_pkgname"
+
   install -Dm644 "examples/example.aliases.${_pkgname}rc.php" "${pkgdir}/etc/$_pkgname/aliases.${_pkgname}rc.php"
   install -Dm644 "examples/example.${_pkgname}rc.php" "${pkgdir}/etc/$_pkgname/${_pkgname}rc.php"
 }
