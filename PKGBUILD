@@ -11,6 +11,7 @@ url="http://$_pkgname.org"
 license=('GPL')
 depends=('bash' 'php-composer' 'php-gd')
 makedepends=('git' 'php-box')
+#~ checkdepends=('bzr' 'sqlite')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=(emptydirs)
@@ -47,12 +48,10 @@ check() {
   msg2 'Verifying PHAR file'
   php -d phar.readonly=Off /usr/bin/php-box verify $_pkgname.phar
 
-  msg2 'Testing on Drupal 6'
-  UNISH_DRUPAL_MAJOR_VERSION=6 ./unish.sh
-  msg2 'Testing on Drupal 7'
-  UNISH_DRUPAL_MAJOR_VERSION=7 ./unish.sh
-  msg2 'Testing on Drupal 8'
-  UNISH_DRUPAL_MAJOR_VERSION=8 ./unish.sh
+  #~ msg2 'Testing on Drupal 7'
+  #~ UNISH_DRUPAL_MAJOR_VERSION=7 UNISH_DB_URL=sqlite://test vendor/bin/phpunit -d extensions=pdo_sqlite.so -d extensions=gd.so--configuration tests
+  #~ msg2 'Testing on Drupal 8'
+  #~ UNISH_DRUPAL_MAJOR_VERSION=8 UNISH_DB_URL=sqlite://test vendor/bin/phpunit -d extensions=pdo_sqlite.so -d extensions=gd.so--configuration tests
 }
 
 package() {
