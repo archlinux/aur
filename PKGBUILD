@@ -42,6 +42,6 @@ package() {
 	install -Dm644 "${srcdir}/Cryptocat.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
 	# Icon
-	install -Dm644 "logo.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+	install -Dm644 "logo.png" "${pkgdir}/usr/share/pixmaps/Cryptocat.png"
 
 }
