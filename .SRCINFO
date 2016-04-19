@@ -3,7 +3,7 @@
 pkgbase = google-translate
 	pkgdesc = A simple CLI google translator (command-line).
 	pkgver = 0.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://dun.ai
 	arch = any
 	license = GPL

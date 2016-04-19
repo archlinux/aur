@@ -1,12 +1,13 @@
 pkgname=google-translate
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple CLI google translator (command-line)."
 arch=('any')
 url="http://dun.ai"
-license=('GPL')
+license=('GPL2')
 depends=('python2' 'python2-mechanize' 'python2-beautifulsoup4')
-source=(google-translate::git://github.com/and3rson/google-translate.git)
+options=('!strip')
+source=('google-translate')
 
 package() {
     install -Dm755 ${srcdir}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
