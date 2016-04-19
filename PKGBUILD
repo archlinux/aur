@@ -2,7 +2,7 @@
 
 pkgname=libretro-81-libretro-git
 pkgver=101.2fbe08a
-pkgrel=1
+pkgrel=2
 pkgdesc="A port of the EightyOne ZX81 Emulator to libretro (WIP)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/81-libretro.git"
@@ -24,7 +24,7 @@ pkgver() {
 
 build() {
   cd "${_gitname}"
-  make
+  make -f Makefile.libretro
 }
 
 package() {
