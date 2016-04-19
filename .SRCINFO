@@ -2,15 +2,15 @@
 # Thu Apr  9 16:35:58 UTC 2015
 pkgbase = google-translate
 	pkgdesc = A simple CLI google translator (command-line).
-	pkgver = 0.2
-	pkgrel = 3
+	pkgver = 0.3
+	pkgrel = 1
 	url = http://dun.ai
 	arch = any
 	license = GPL
 	depends = python2
 	depends = python2-mechanize
 	depends = python2-beautifulsoup4
-	md5sums = c2dae6294c95cf55c39ba7b68c5ff6f1
+	md5sums = 7b5a5bd4b68bbd536c11bb0b4a7f84e4
 
 pkgname = google-translate
 

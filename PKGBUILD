@@ -1,6 +1,6 @@
 pkgname=google-translate
-pkgver=0.2
-pkgrel=3
+pkgver=0.3
+pkgrel=1
 pkgdesc="A simple CLI google translator (command-line)."
 arch=('any')
 url="http://dun.ai"
@@ -13,4 +13,4 @@ package() {
     install -Dm755 ${srcdir}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 }
 
-md5sums=('c2dae6294c95cf55c39ba7b68c5ff6f1')
+md5sums=('7b5a5bd4b68bbd536c11bb0b4a7f84e4')
