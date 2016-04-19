@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-pck
 _pkgbasever=4.5-gnu
-_pkgver=$_pkgbasever
+_pkgver=4.5.1-gnu
 _pckpatchver=pck1
 
 _replacesarchkernel=('linux-zen')
@@ -32,8 +32,8 @@ fi
 options=('!strip')
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
-        #"http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
-        #"http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
+        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
+        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
         "https://repo.parabola.nu/other/pck/patches/${_pkgver}/patch-${_pkgver}-${_pckpatchver}.patch"
         "https://repo.parabola.nu/other/pck/patches/${_pkgver}/patch-${_pkgver}-${_pckpatchver}.patch.sig"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm"
@@ -57,10 +57,14 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
-        '0008-USB-armory-support.patch')
+        '0008-USB-armory-support.patch'
+        '0009-Revert-stmmac-Fix-eth0-No-PHY-found-regression.patch'
+        '0010-stmmac-fix-MDIO-settings.patch')
 sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
-            '3bf46e534269b5015f94dc27f0452fe0f88728db66bdb306065df5a6463b294b'
+            'bde6fa0cee5ee3d32c6e4336b23f87cbe37b74b9d4d1603d1d421dc1e44d2ab9'
+            'SKIP'
+            '8d0d6cff49ded14e2660fbebe4edaf6433347418ac90374ef2aadb4c55f8d2ed'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -68,21 +72,23 @@ sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '28f19076b6d18b64153eb422a7a9bc99ec928d991a2363249cffff15aabc0887'
-            'f37024a58677217f50c30bc3330dc704c806248409c1523b31fd0a6900953ebd'
-            '2030e30577ec3d7a13fc65b74a5ad723f1a07bcc6b21869565257acc8ec865c0'
+            'fb523eec2cc7341b16469447390415d584f4fb9f79702bf21adb848f767800aa'
+            'ee0eff1c84e529feaf716fc4afefc2723901e0b60ac733e4b6a867771b629820'
+            '2ada64f97aaf9f38ad35f1235d93d817535ac3d4b0c21ae303fc3feac4a7d71c'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '9865a47b50ccab0993f9b371f45b526162307fffc67dfadcae6fae31d05a67b9'
+            'b878510fb1ba2c83999b9faf9bf270779d6f1a1c33ec39fb3701d3e2aba053dc'
             'SKIP'
-            'abc20251d9becc566e46ff0fca77074eca9de5d119d2dbccb7d9c933b2d59979'
-            '7db1c60b0a44e588f31bad6003bad5997ec7761d9f39590c7e07670a24fbeaa4'
-            '9e75777afb39b6c3d1886b18370df883e6d283c1bdf299690ac3d516ff5af4fd'
-            '01b3c73adcf5fbf97a2c5b91d30c3c0a1c4ee8dce60b5718a74c99f49c673566'
-            'bb97616b299b7c569e8a886a729493b67f22d06680a84d0bc4581fa062d62662'
-            'f03aee1273e0c349411cb1bf21983c5358b27f5f370a132b2cce05d3e56d18a9'
-            'd500fedf8332234c724a1075f69ceaa743d17e7fb73be70b62dee897f75f86f5'
-            'cda19e0f819f5475172aed8c231b7c8964f64f582d993f1cf7fa8b14d0d95cae')
+            'd09937cbca4f408dbcde270e465bdfe0589a0b41ed07d260a596a38fe6cca987'
+            'cc1f1b5026b373da4a5c2e8c82bc2b0f8a20e295353c201579140a04f2452545'
+            'f68d382f9d5b9948cc0e7062290e1b26d7c3c7e4ba270fda0bd632c24465a40b'
+            '658f619cd11676996919ef290934cfc809db5d0fa35a1ebc475d3ebb59253201'
+            'f7bf7a7cf676571f48c92fc858ddd67cc395105ae633c3d6e5386a4a5c848d81'
+            '939c11540b47f02706f3cff1b76b84a13b4dab9cae438632d4b685b16ed8249e'
+            'db830e53d451c54f84917b663671a6cc9414b043064cdf1a17369c198abee9dd'
+            'ef21f0524fdd559389529bd05b56a3b89642fb10b74de709153d1b3c2e21c126'
+            '9f915fedf2cf03eccfed9025d3883a1158531203a676060a2eae5809ec4989ce'
+            'bbbdd20f4a933ae988e713de5ac3ad08bd453e4e3dfa4cdac2da483dcf2454d8')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -104,11 +110,14 @@ prepare() {
     patch -p1 -i "${srcdir}/patch-${_pkgbasever}-${_pkgver}"
   fi
 
-  # add pck patch
+  # add PCK patch
   patch -p1 -i "${srcdir}/patch-${_pkgver}-${_pckpatchver}.patch"
 
   if [ "${CARCH}" = "armv7h" ]; then
-    # RCN patch (CM3 firmware deblobbed)
+    # RCN patch (CM3 firmware deblobbed and AUFS removed)
+    # Note: AUFS was removed in the RCN patch since it are being supported by
+    # linux-libre-pck through PCK patch for all available architectures.
+    # See https://wiki.parabola.nu/PCK for further details.
     git apply -v "${srcdir}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
 
     # ALARM patches
@@ -120,6 +129,8 @@ prepare() {
     patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
     patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
     patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
+    patch -p1 -i "${srcdir}/0009-Revert-stmmac-Fix-eth0-No-PHY-found-regression.patch"
+    patch -p1 -i "${srcdir}/0010-stmmac-fix-MDIO-settings.patch"
   fi
 
   # add freedo as boot logo
@@ -370,7 +381,7 @@ _package-headers() {
   # remove unneeded architectures
   find "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch -mindepth 1 -maxdepth 1 -type d -not -name "$KARCH" -exec rm -rf {} +
 
-  # remove a files already in docs package
+  # remove files already in docs package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
@@ -389,7 +400,7 @@ _package-docs() {
   find "${pkgdir}" -type f -exec chmod 444 {} \;
   find "${pkgdir}" -type d -exec chmod 755 {} \;
 
-  # remove a file already in linux package
+  # remove a file already in kernel package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
