@@ -2,12 +2,12 @@
 
 pkgname=ttylog
 pkgver=0.26
-pkgrel=1
+pkgrel=2
 pkgdesc="A serial port logger"
 arch=('x86_64')
 url='http://ttylog.sourceforge.net/'
 license=('GPL2')
-makedepends=()
+makedepends=('cmake')
 depends=()
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/${pkgname}_${pkgver}.tar.gz"
         bindir.patch)

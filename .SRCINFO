@@ -5,6 +5,7 @@ pkgbase = ttylog
 	url = http://ttylog.sourceforge.net/
 	arch = x86_64
 	license = GPL2
+	makedepends = cmake
 	source = http://downloads.sourceforge.net/project/ttylog/ttylog/0.26/ttylog_0.26.tar.gz
 	source = bindir.patch
 	md5sums = 0ccad5652e1174ebc6c6b1232a7af29e
