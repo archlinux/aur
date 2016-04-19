@@ -1,7 +1,7 @@
 pkgbase = crashplan
 	pkgdesc = An online/offsite backup solution
 	pkgver = 4.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.crashplan.com
 	install = crashplan.install
 	arch = i686
