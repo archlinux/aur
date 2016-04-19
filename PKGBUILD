@@ -4,7 +4,7 @@
 # Contributor: James Pearson <james.m.pearson+arch@gmail.com>
 pkgname=python2-django-tagging
 _pkgname=django-tagging
-pkgver=0.4
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="A generic tagging application for Django projects"
 arch=('any')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('python2-django')
 makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/d/django-tagging/django-tagging-${pkgver}.tar.gz")
-sha256sums=('033e3d1b352f0dacdf8588dc83521ac602a020f34f4c1c389912eaff2915e557')
+sha256sums=('35802daf35f90aa022d59f7d7d485c719c29c4efbde1bf966d44017e1e64602b')
 
 build() { 
   cd "${srcdir}/${_pkgname}-${pkgver}"
