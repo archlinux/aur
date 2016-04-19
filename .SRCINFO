@@ -1,0 +1,14 @@
+pkgbase = python-cerberus
+	pkgdesc = Lightweight, extensible data validation library for Python
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = http://docs.python-cerberus.org/en/stable/
+	arch = any
+	license = ISC
+	makedepends = python
+	makedepends = python-setuptools
+	source = https://pypi.python.org/packages/source/C/Cerberus/Cerberus-0.9.2.tar.gz
+	sha256sums = b122c7b2cbf856ea2587e187fac968fc8dcd49d47aa1f239abd9eaa0ed86a7ce
+
+pkgname = python-cerberus
+
