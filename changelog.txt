@@ -1,3 +1,16 @@
+Version 2.3.1 - 19 Apr 2016
+- Add additional strings for translations.
+- Add 'Save All Errors' checkbox for plugin save-errors column.
+- Update translations
+- Add exception for bad HTML breaking img finding.
+- Fix for Overwrite if Newer not working with BG Metadata.
+- Comment out some debug output.
+- Updates to adapter_literotica from davidfor
+- Clean up a stray print.
+- Catch more img tag exceptions.
+- Fix series/universe processing in adapter_storiesonlinenet.
+- Fix for literotica.com using str() instead of unicode().
+
 Version 2.3.0 - 20 Mar 2016
 - Fix for adapter_thehexfilesnet missing chapter text.
 - Fixes for finestories.com, now shares code with storiesonline.net, thanks
@@ -35,32 +48,4 @@ Version 2.3.0 - 20 Mar 2016
 - Add support for 'This story has not been validated' in base_efiction_adapter
 - Some mcstoriescom stories include <h3> tags that aren't
   title/chapter/byline.
-- Update translations.
-
-Version 2.2.18 - 18 Feb 2016
-- Fix for quotev.com change to story image.
-- Fix for tthfanfic.org author story list change. (Manifests as 'Adult
-  required'.)
-- Add byline site specific metadata for AO3.
-- Apply *_format ini option to date/time types. For calibre_* columns passed
-  in.
-- Change deprecated has_key() to has_attr() on BS objects.
-- Adding Word Count post-processing option, like Smarten Punct.
-- Fix for html5lib handling noscript oddly, noticed with fictionalley.org.
-- Fix fictionally.org description so calibre doesn't <code> it.
-- Add code for lazyload images in base_xenforoforum.
-- Correct outdated ini comment re *_filename.
-- Fix for replace_br_with_p(htmlheuristics) when author includes <>, thanks
-  Feynor!
-- Fix for portkey.org--Don't use cache on first hit in case added adult
-  cookie.
-- Add (partial) translations for Estonian and Norwegian Bokmål
-- Add automatic adding of unrecognized metadata in base_efiction. For
-  tgstorytime.com.
-- Fix 'In Progress' to 'In-Progress' in fanfiktion.de & ficbook.net like all
-  the others.
-- Fix for Calibre generated covers.
-- Adding Incomplete status state to adapter_storiesonlinenet
-- Add new AccessDenied exception for one line output in CLI.
-- Allow Pairing w/o Centered category -> chars in TtH.
 - Update translations.
