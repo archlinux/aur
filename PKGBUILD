@@ -3,7 +3,7 @@
 # Contributor: Antonio Rojas
 
 pkgname=ksysguard
-pkgver=5.6.2
+pkgver=5.6.3
 pkgrel=1
 pkgdesc='Track and control the processes running in your system'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ conflicts=('kdebase-workspace')
 groups=('plasma')
 install="${pkgname}.install"
 source=("http://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz")
-md5sums=('bdc2e791280455b1003a8e6125741490')
+md5sums=('21ab8596a2e47f00e9823d1ad4e64e5d')
 
 prepare() {
   mkdir -p build
@@ -27,7 +27,7 @@ build() {
   cmake ../${pkgname}-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
