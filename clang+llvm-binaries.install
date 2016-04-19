@@ -1,0 +1,9 @@
+post_install() {
+  echo ":: Adding clang+llvm libraries to LD cache..."
+  ldconfig
+}
+
+post_upgrade() {
+  post_install
+}
+
