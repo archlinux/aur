@@ -1,7 +1,7 @@
 pkgbase = brltty-minimal
 	pkgdesc = Braille display driver for Linux/Unix
-	pkgver = 5.2
-	pkgrel = 4
+	pkgver = 5.3.1
+	pkgrel = 1
 	url = http://brltty.com
 	install = brltty.install
 	arch = i686
@@ -14,9 +14,9 @@ pkgbase = brltty-minimal
 	conflicts = brltty
 	options = !emptydirs
 	backup = etc/brltty.conf
-	source = http://brltty.com/archive/brltty-5.2.tar.xz
+	source = http://brltty.com/archive/brltty-5.3.1.tar.xz
 	source = brltty.service
-	md5sums = b484343461b5a45f95fedfb21d1ceca3
+	md5sums = 7835871c911effd286040225bf5355f8
 	md5sums = 0cad54bb5470122535f5e3a11d5ca123
 
 pkgname = brltty-minimal
