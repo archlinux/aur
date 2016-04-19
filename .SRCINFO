@@ -1,6 +1,6 @@
 pkgbase = nctelegram-git
 	pkgdesc = A ncurse Telegram client developed in Python
-	pkgver = 0.9.5.r0.g2ce4638
+	pkgver = 0.9.6.r0.g1509f30
 	pkgrel = 1
 	url = https://github.com/Nanoseb/ncTelegram
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = nctelegram-git
 	makedepends = python-distribute
 	depends = python
 	depends = python-urwid
+	depends = python-psutil
 	depends = pytg>=0.4.10
 	optdepends = libnotify: library to display notifications
 	optdepends = libcaca: library to display inline images
