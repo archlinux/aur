@@ -1,7 +1,7 @@
-From 98e458c66c85472984a4230f34e7386af9e7b8d6 Mon Sep 17 00:00:00 2001
+From e479cd018fcd7f32714e5172265f8d1e7c4d9f0d Mon Sep 17 00:00:00 2001
 From: Jason Self <j@jxself.org>
-Date: Wed, 5 Aug 2015 09:16:03 -0700
-Subject: [PATCH 1/1] [PATCH] drm/radeon: Make the driver load without the
+Date: Sun, 30 Aug 2015 14:27:44 -0700
+Subject: [PATCH 1/3] drm/radeon: Make the driver load without the
  firmwares.
 
 ---
@@ -10,10 +10,10 @@ Subject: [PATCH 1/1] [PATCH] drm/radeon: Make the driver load without the
  2 files changed, 8 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/gpu/drm/radeon/r600.c b/drivers/gpu/drm/radeon/r600.c
-index 720e599..d6a92ba 100644
+index 103f5d0..98f923b4 100644
 --- a/drivers/gpu/drm/radeon/r600.c
 +++ b/drivers/gpu/drm/radeon/r600.c
-@@ -2442,7 +2442,7 @@ int r600_init_microcode(struct radeon_device *rdev)
+@@ -2489,7 +2489,7 @@ int r600_init_microcode(struct radeon_device *rdev)
  	}
  
  	DRM_INFO("Loading %s Microcode\n", chip_name);
@@ -22,7 +22,7 @@ index 720e599..d6a92ba 100644
  	snprintf(fw_name, sizeof(fw_name), "/*(DEBLOBBED)*/", chip_name);
  	err = reject_firmware(&rdev->pfp_fw, fw_name, rdev->dev);
  	if (err)
-@@ -2494,7 +2494,7 @@ int r600_init_microcode(struct radeon_device *rdev)
+@@ -2541,7 +2541,7 @@ int r600_init_microcode(struct radeon_device *rdev)
  			err = -EINVAL;
  		}
  	}
@@ -31,7 +31,7 @@ index 720e599..d6a92ba 100644
  out:
  	if (err) {
  		if (err != -EINVAL)
-@@ -3154,7 +3154,7 @@ int r600_init(struct radeon_device *rdev)
+@@ -3201,7 +3201,7 @@ int r600_init(struct radeon_device *rdev)
  	r = radeon_bo_init(rdev);
  	if (r)
  		return r;
@@ -40,7 +40,7 @@ index 720e599..d6a92ba 100644
  	if (!rdev->me_fw || !rdev->pfp_fw || !rdev->rlc_fw) {
  		r = r600_init_microcode(rdev);
  		if (r) {
-@@ -3162,7 +3162,7 @@ int r600_init(struct radeon_device *rdev)
+@@ -3209,7 +3209,7 @@ int r600_init(struct radeon_device *rdev)
  			return r;
  		}
  	}
@@ -50,7 +50,7 @@ index 720e599..d6a92ba 100644
  	radeon_pm_init(rdev);
  
 diff --git a/drivers/gpu/drm/radeon/r600_cp.c b/drivers/gpu/drm/radeon/r600_cp.c
-index af15260..f138df9 100644
+index cd3f6ac..b09af51 100644
 --- a/drivers/gpu/drm/radeon/r600_cp.c
 +++ b/drivers/gpu/drm/radeon/r600_cp.c
 @@ -2241,7 +2241,7 @@ int r600_do_init_cp(struct drm_device *dev, drm_radeon_init_t *init,
