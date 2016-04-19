@@ -6,7 +6,7 @@
 
 pkgbase=nvidia-grsec
 pkgname=(nvidia-grsec nvidia-grsec-dkms)
-pkgver=364.12
+pkgver=364.16
 _extramodules=extramodules-4.4.6-grsec
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
@@ -15,21 +15,28 @@ url="http://www.nvidia.com/"
 makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.4' 'linux-grsec-headers<4.5')
 license=('custom')
 options=(!strip)
-source=("https://www.grsecurity.net/~paxguy1/nvidia-drivers-${pkgver}-pax.patch")
-source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
-source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-sha512sums=('83c264564850d5e31d5673ec332f5a55f95ebdd07415a72bd702e635bca1d4b5a5d30531be89376e2846fee46e273620e0001dd4381cc3b41127e4764901f27')
-sha512sums_i686=('649950ec37ec02bc18d4a976d97b7a2b803cbddd31ff34fd3b6e3540e50267b27e1873133fce78634a9b6e86b4378a7230d19a9d5f9df4cd64a026d11b48bb3f')
-sha512sums_x86_64=('6577ce8846a79b4b667b82473923dfd0ac20269662c7885bae4dd042128f4eaa3daeaf8ffecea8eda346e36d8b10b1308ba266f9cf69fb82ff3b154f6c6d2769')
+#source=("https://www.grsecurity.net/~paxguy1/nvidia-drivers-${pkgver}-pax.patch")
+#364.16 patch not on the website, and no errors reported (as of this change) with this patch
+source=("https://www.grsecurity.net/~paxguy1/nvidia-drivers-364.12-pax.patch")
+# Temporarily changed as the scripts aren't in the main FTP yet, see package nvidia-utils for more details
+#source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
+#source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
+source_i686=("NVIDIA-Linux-x86-${pkgver}.run::https://developer.nvidia.com/linux32bit")
+source_x86_64=("NVIDIA-Linux-x86_64-${pkgver}.run::https://developer.nvidia.com/linux64bit")
+sha512sums=('a83c264564850d5e31d5673ec332f5a55f95ebdd07415a72bd702e635bca1d4b5a5d30531be89376e2846fee46e273620e0001dd4381cc3b41127e4764901f27')
+sha512sums_i686=('6878c7552eda31c0ea8092dfd5050611f15c1d94a778e945fdc1190860ad13878308323bf6b0f420002b5322adb7d5b545bf69c5336c9cacf16030b799e0ca67')
+sha512sums_x86_64=('a937f736f90e3bf9f9b1539be58445d2b7957a7bad2ab6babf9c04bf550e81990d1358e0b0bda3de537500584073500d260da9dfb909701bdffb268ca3db62da')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
-[[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
+[[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}"
 
 prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
     # patches here
-    patch -Np1 -i "../nvidia-drivers-${pkgver}-pax.patch"
+    # change this when the patch comes back to the same version as the driver
+    # patch -Np1 -i "../nvidia-drivers-${pkgver}-pax.patch"
+    patch -Np1 -i "../nvidia-drivers-364.12-pax.patch"
 
     cp -a kernel kernel-dkms
     cd kernel-dkms
