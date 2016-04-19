@@ -2,7 +2,7 @@ pkgbase=swift-development
 pkgname=(swift-development swift-lldb-development)
 _swiftver=DEVELOPMENT-SNAPSHOT-2016-04-12-a
 pkgver=${_swiftver//-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Swift programming language and debugger - latest development snapshot"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
@@ -10,11 +10,7 @@ license=('apache')
 depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
          'sqlite' 'ncurses')
 makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.6' 'python2-six' 'perl'
-             # See https://llvm.org/bugs/show_bug.cgi?id=26580 and
-             # https://sourceware.org/bugzilla/show_bug.cgi?id=19612
-             # NOTE: Using gold doesn't completely work either, since gold
-             # isn't used to link the swift std libraries by default
-             'binutils<2.26')
+             'binutils>=2.26')
 source=(
     "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
     "swift-llvm-${_swiftver}.tar.gz::https://github.com/apple/swift-llvm/archive/swift-${_swiftver}.tar.gz"
@@ -27,6 +23,7 @@ source=(
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "swift-no-docs.patch"
+    "binutils226-swift.patch" "binutils226-swift-driver.patch"
 )
 sha256sums=('290470b39b188ca564dfff487035435d062fa83649689c0cff5e7ad386efceb4'
             '0e8bfc92508c14f0ed80b4811c06df403639fcbd27422ba4551b15799793ef23'
@@ -38,7 +35,9 @@ sha256sums=('290470b39b188ca564dfff487035435d062fa83649689c0cff5e7ad386efceb4'
             '666be3e751f50f3932730e88f18d61cb61dfdd771b8a272179f969736da22086'
             '942c3494c182cb767ac71ad0be2baebf34274ec38901fbdebf61ba912b2f73b1'
             '3d616a043ffff2ecbcaa2367347168f5a2220d222faa9812abada902b59d88d5'
-            '1a8663c48a1a203d1825ae62a7e4191e4980a2dad461d4d88152221ad9e2171d')
+            '1a8663c48a1a203d1825ae62a7e4191e4980a2dad461d4d88152221ad9e2171d'
+            '2d8afb6a3d6f7aca1636eae961e4d1e7f486df420e1a726c69d027e4b65c73c5'
+            '0aa6868dac834ab13a9f61a0e406c6dc25f39afdf086cb93d90d85c39083e589')
 
 prepare() {
     # Use python2 where appropriate
@@ -70,6 +69,11 @@ prepare() {
     # Sphinx 1.3.5 raises a warning (promoted to error) when using an unknown
     # syntax highlighting language (like "swift").
     ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/swift-no-docs.patch" )
+
+    # Patches for compiling against binutils 2.26
+    # (See https://bugs.swift.org/projects/SR/issues/SR-1023)
+    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/binutils226-swift.patch" )
+    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/binutils226-swift-driver.patch" )
 }
 
 build() {

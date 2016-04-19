@@ -1,0 +1,86 @@
+From 59d2e56811a01ed543010b93109017f03e8881bc Mon Sep 17 00:00:00 2001
+From: Ryan Lovelett <ryan@lovelett.me>
+Date: Mon, 4 Apr 2016 21:28:40 -0400
+Subject: [PATCH] Work around relocation R_X86_64_PC32 link error
+
+A more complete discussion of the error and its background can be found
+in SR-1023.
+
+The brief overview is that in versions of `ld` that would be effected by
+this dynamic relocation issue there are two flags: `-z nocopyreloc` and
+`-z noextern-protected-data`. If `ld` supports the flags then they are
+sento to the linker. This patch checks that the linker supports the
+flags and then optionally sets them.
+
+The code to check if `ld` supports the flags is inspired by this CMake
+mailing list entry.
+
+https://cmake.org/pipermail/cmake/2011-July/045525.html
+---
+ CMakeLists.txt                                        |  7 +++++++
+ cmake/modules/AddSwift.cmake                          |  8 ++++++++
+ cmake/modules/CheckLinkerDynamicRelocationFlags.cmake | 11 +++++++++++
+ 3 files changed, 26 insertions(+)
+ create mode 100644 cmake/modules/CheckLinkerDynamicRelocationFlags.cmake
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cae3647..b1ef7b6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -277,6 +277,7 @@ option(SWIFT_BUILD_SOURCEKIT
+ #
+ 
+ include(CheckCXXSourceRuns)
++include(CheckLinkerDynamicRelocationFlags)
+ include(CMakeParseArguments)
+ include(SwiftTranslateFlag)
+ include(SwiftHandleGybSources)
+@@ -437,6 +438,12 @@ if("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
+   set(SWIFT_HOST_VARIANT_SDK "LINUX")
+   set(SWIFT_PRIMARY_VARIANT_SDK_default "LINUX")
+ 
++  # Support relative relocation against protected symbols in binutils 2.26
++  check_linker_supports_flag("-Wl,-z,nocopyreloc"
++    "SWIFT_LINKER_SUPPORTS_NOCOPYRELOC")
++  check_linker_supports_flag("-Wl,-z,noextern-protected-data"
++    "SWIFT_LINKER_SUPPORTS_NOEXTERN_PROTECTED_DATA")
++
+   # FIXME: This will not work while trying to cross-compile.
+   if("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
+     set(SWIFT_HOST_VARIANT_ARCH "x86_64")
+diff --git a/cmake/modules/AddSwift.cmake b/cmake/modules/AddSwift.cmake
+index 7294dd4..f6dae01 100644
+--- a/cmake/modules/AddSwift.cmake
++++ b/cmake/modules/AddSwift.cmake
+@@ -1189,6 +1189,14 @@ function(_add_swift_library_single target name)
+     list(APPEND link_flags "-fuse-ld=gold")
+   endif()
+ 
++  # Support relative relocation against protected symbols in binutils 2.26
++  if(SWIFT_LINKER_SUPPORTS_NOCOPYRELOC)
++    list(APPEND link_flags "-Wl,-z,nocopyreloc")
++  endif()
++  if(SWIFT_LINKER_SUPPORTS_NOEXTERN_PROTECTED_DATA)
++    list(APPEND link_flags "-Wl,-z,noextern-protected-data")
++  endif()
++
+   # Configure plist creation for OS X.
+   set(PLIST_INFO_PLIST "Info.plist" CACHE STRING "Plist name")
+   if(APPLE AND SWIFTLIB_SINGLE_IS_STDLIB)
+diff --git a/cmake/modules/CheckLinkerDynamicRelocationFlags.cmake b/cmake/modules/CheckLinkerDynamicRelocationFlags.cmake
+new file mode 100644
+index 0000000..0a53f77
+--- /dev/null
++++ b/cmake/modules/CheckLinkerDynamicRelocationFlags.cmake
+@@ -0,0 +1,11 @@
++include(CheckCXXCompilerFlag)
++
++function(check_linker_supports_flag flag_to_test var_name)
++  set(CMAKE_REQUIRED_FLAGS "${flag_to_test}")
++  check_cxx_compiler_flag("" LINKER_SUPPORTS_NOEXTERN_PROTECTED_DATA)
++  if(LINKER_SUPPORTS_NOEXTERN_PROTECTED_DATA)
++    set("${var_name}" TRUE PARENT_SCOPE)
++  else()
++    set("${var_name}" FALSE PARENT_SCOPE)
++  endif()
++endfunction()
