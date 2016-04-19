@@ -1,0 +1,13 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+post_upgrade() {
+	 note "Since version 2.6.1-2 this package installs a standalone leiningen.jar"
+   note "So you might want to remove ~/.lein/self-installs"
+}
