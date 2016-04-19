@@ -1,6 +1,6 @@
 pkgbase=swift-language
 pkgname=(swift swift-lldb)
-_swiftver=2.2-RELEASE
+_swiftver=2.2.1-RELEASE
 _swiftold=2.2-SNAPSHOT-2016-01-11-a
 pkgver=${_swiftver//-RELEASE/}
 pkgrel=1
@@ -20,11 +20,11 @@ source=(
     "swift-cmark-${_swiftver}.tar.gz::https://github.com/apple/swift-cmark/archive/swift-${_swiftver}.tar.gz"
     "swift-no-docs.patch"
 )
-sha256sums=('6dfb9de14201b9804974b1f221573cfb3e24fd657ec3bf132bf3c75de02565f5'
-            'b975b816773aa9d888a9139f51acd1b57fd58959bb391f8f65645a2f9b6d4cc4'
-            'ba9220e61971a55d13f501dc30f452a5c272e4d897b444a5220f2e23dbbfc2f8'
-            'b562fee1963900c86fed016408e3acbb63500a3603f4af70928c11ce376b9a72'
-            '09c8da18c37f32cd0eb82b252a172481f5403c1bc6ab5740f92e87f8d1e79991'
+sha256sums=('95fb0da2282da15f2aada66dec07a26630e66caf9d68f2c9f492527e25962096'
+            'f7977e5bb275494b5dac4490afc5d634f894ba5f209f3b2dbd5b7e520fa5fce2'
+            '40bdfa7eec0497ec69005d6a5d018b12c85aa2c0959d3408ecaaa9e34ff0415f'
+            '2098043dbda98374e784d3357f71f8e931aea3ac958c042adf0df0fae7bc22a3'
+            '254d3c02bf2b03ad456fa3ad27b4da854e36318fcaf6b6f199fdb3e978a90803'
             '1a8663c48a1a203d1825ae62a7e4191e4980a2dad461d4d88152221ad9e2171d')
 
 # Set this to 1 to enable the experimental parts (swiftpm, corelibs)
