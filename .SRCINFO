@@ -1,0 +1,24 @@
+pkgbase = python2-ldns
+	pkgdesc = Python bindings for the ldns library for DNS programming (Ubuntu repackage)
+	pkgver = 1.6.17
+	pkgrel = 1
+	url = https://www.nlnetlabs.nl/projects/ldns/
+	arch = x86_64
+	arch = i686
+	license = BSD
+	makedepends = deb2targz
+	makedepends = python2-setuptools
+	depends = python2
+	depends = ldns
+	noextract = python-ldns_1.6.17-5_amd64.deb
+	source_x86_64 = http://ftp.osuosl.org/pub/ubuntu/pool/universe/l/ldns/python-ldns_1.6.17-5_amd64.deb
+	source_x86_64 = setup.py
+	md5sums_x86_64 = 63dca2552e87f3c32148bdaccd1e3d20
+	md5sums_x86_64 = 4a96c66b37f26b6d5231c6466cd6503f
+	source_i686 = http://ftp.osuosl.org/pub/ubuntu/pool/universe/l/ldns/python-ldns_1.6.17-5_i386.deb
+	source_i686 = setup.py
+	md5sums_i686 = e8ab989ff369d3b330896ee578c4fcd2
+	md5sums_i686 = 4a96c66b37f26b6d5231c6466cd6503f
+
+pkgname = python2-ldns
+
