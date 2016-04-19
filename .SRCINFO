@@ -1,6 +1,6 @@
 pkgbase = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 11.3.0_devel.80247.f30f6e2
+	pkgver = 11.3.0_devel.80298.1d2ac7a
 	pkgrel = 2
 	url = http://mesa3d.sourceforge.net
 	arch = i686
@@ -47,7 +47,7 @@ pkgname = opencl-mesa-git
 	depends = libcl
 	depends = libclc
 	depends = nettle
-	depends = mesa-git=11.3.0_devel.80247.f30f6e2
+	depends = mesa-git=11.3.0_devel.80298.1d2ac7a
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-mesa=11.3.0-devel
 	conflicts = opencl-mesa
@@ -59,7 +59,7 @@ pkgname = mesa-vulkan-intel-git
 	depends = libgcrypt
 	depends = wayland
 	depends = libxcb
-	depends = mesa-git=11.3.0_devel.80247.f30f6e2
+	depends = mesa-git=11.3.0_devel.80298.1d2ac7a
 	provides = vulkan-intel
 	conflicts = vulkan-intel
 	replaces = vulkan-intel
@@ -67,17 +67,25 @@ pkgname = mesa-vulkan-intel-git
 pkgname = libva-mesa-driver-git
 	pkgdesc = VA-API implementation for gallium
 	depends = nettle
-	depends = mesa-git=11.3.0_devel.80247.f30f6e2
+	depends = mesa-git=11.3.0_devel.80298.1d2ac7a
 	provides = libva-mesa-driver=11.3.0-devel
 	conflicts = libva-mesa-driver
 
 pkgname = mesa-vdpau-git
 	pkgdesc = Mesa VDPAU drivers
 	depends = nettle
-	depends = mesa-git=11.3.0_devel.80247.f30f6e2
+	depends = mesa-git=11.3.0_devel.80298.1d2ac7a
 	provides = mesa-vdpau=11.3.0-devel
 	conflicts = mesa-vdpau
 	replaces = mesa-vdpau
+
+pkgname = mesa-libgl-git
+	pkgdesc = Mesa 3-D graphics library
+	depends = mesa-git=11.3.0_devel.80298.1d2ac7a
+	provides = mesa-libgl=11.3.0-devel
+	provides = libgl=11.3.0-devel
+	conflicts = mesa-libgl
+	replaces = mesa-libgl
 
 pkgname = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
@@ -104,12 +112,4 @@ pkgname = mesa-git
 	replaces = mesa
 	replaces = mesa-r300-r600-radeonsi-git
 	replaces = mesa-dri
-
-pkgname = mesa-libgl-git
-	pkgdesc = Mesa 3-D graphics library
-	depends = mesa-git=11.3.0_devel.80247.f30f6e2
-	provides = mesa-libgl=11.3.0-devel
-	provides = libgl=11.3.0-devel
-	conflicts = mesa-libgl
-	replaces = mesa-libgl
 
