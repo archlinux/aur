@@ -23,7 +23,7 @@ package() {
 	mkdir -p $pkgdir/usr/include/dlang/dmd/mir
 	cp -r $srcdir/$_gitname/source/mir/* $pkgdir/usr/include/dlang/dmd/mir/
 
-    find $pkgdir/usr -type f | xargs chmod 0644
+	find $pkgdir/usr -type f | xargs chmod 0644
 
 	# symlink for ldc
 	mkdir -p $pkgdir/usr/include/dlang/ldc
