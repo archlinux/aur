@@ -11,7 +11,7 @@ url='http://www.gnu.org/software/bash/bash.html'
 arch=('i686' 'x86_64')
 license=('GPL')
 backup=(etc/bash.bash{rc,_logout} etc/skel/.bash{rc,_profile,_logout})
-depends=('readline>=7' 'glibc' 'ncurses' 'libncursesw.so')
+depends=('glibc' 'ncurses' 'libncursesw.so')
 optdepends=('bash-completion: for tab completion')
 provides=('sh' 'bash=4.4')
 conflicts=('bash')
@@ -43,7 +43,7 @@ build() {
   export CFLAGS="${CFLAGS} ${_bashconfig[@]}"
 
   ./configure --prefix=/usr --with-curses --enable-readline \
-              --without-bash-malloc --with-installed-readline
+              --without-bash-malloc
   make
 }
 
