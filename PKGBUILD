@@ -11,20 +11,23 @@
 # Contributor: Diego Jose <diegoxter1006@gmail.com>
 
 pkgbase=lib32-mesa-git
-pkgname=('lib32-mesa-vdpau-git' 'lib32-mesa-git' 'lib32-mesa-libgl-git' 'lib32-libva-mesa-driver-git')
-pkgver=11.2.0_devel.75996.9c78cfd
+pkgname=('lib32-mesa-vdpau-git' 'lib32-mesa-vulkan-intel-git' 'lib32-mesa-libgl-git' 'lib32-libva-mesa-driver-git' 'lib32-mesa-git')
+pkgver=11.3.0_devel.80298.1d2ac7a
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'lib32-libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto'
              'lib32-libxshmfence' 'lib32-libxxf86vm' 'lib32-libxdamage' 'gcc-multilib' 'lib32-elfutils'  'lib32-systemd'
              'lib32-libvdpau' 'lib32-wayland' 'python2-mako' 'lib32-libtxc_dxtn' 'git' 'lib32-nettle'
-             'mesa-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-libgl-git' 'lib32-llvm-libs-svn' 'lib32-llvm-svn' 'lib32-libxvmc' )
+             'mesa-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-libgl-git' 'mesa-vulkan-intel-git' 'lib32-llvm-libs-svn' 'lib32-llvm-svn' 'lib32-libxvmc'
+             )
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa#branch=master'
-        'LICENSE')
+        'LICENSE'
+        'vulkan-fix-install-data-local.patch')
 md5sums=('SKIP'
-         '5c65a0fe315dd347e09b1f2826a1df5a')
+         '5c65a0fe315dd347e09b1f2826a1df5a'
+         '3db37a8e69dc3580ceb634305e654ec2')
 
 pkgver() {
     cd "${srcdir}/mesa"
@@ -34,6 +37,11 @@ pkgver() {
 _mesaver() {
     path="${srcdir}/mesa/VERSION"
     [ -f $path ] && cat "$path"
+}
+
+prepare() {
+  cd mesa
+  patch -p1 -i "${srcdir}/vulkan-fix-install-data-local.patch"
 }
 
 build() {
@@ -51,6 +59,7 @@ build() {
                --with-dri-driverdir=/usr/lib32/xorg/modules/dri \
                --with-gallium-drivers=i915,ilo,r300,r600,radeonsi,nouveau,swrast,virgl \
                --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
+               --with-vulkan-drivers=intel \
                --with-egl-platforms=x11,drm,wayland \
                --with-sha1=libnettle \
                --enable-texture-float \
@@ -122,6 +131,26 @@ package_lib32-libva-mesa-driver-git() {
 
   install -v -m755 -d "${pkgdir}/usr/share/licenses/lib32-libva-mesa-driver-git"
   install -v -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/lib32-libva-mesa-driver-git/"
+}
+
+package_lib32-mesa-vulkan-intel-git() {
+  pkgdesc="Vulkan driver for selected intel graphic chipsets"
+  depends=('lib32-wayland' 'lib32-libxcb' 'lib32-libxshmfence' 'lib32-nettle' 'mesa-vulkan-intel-git')
+  provides=('lib32-vulkan-intel')
+  replaces=('lib32-vulkan-intel')
+  conflicts=('lib32-vulkan-intel')
+  
+# skipping files installed by mesa-vulkan-intel-git
+#  install -m755 -d ${pkgdir}/etc
+#  mv -v ${srcdir}/fakeinstall/etc/vulkan ${pkgdir}/etc/
+
+  install -m755 -d ${pkgdir}/usr/lib32
+  mv -v ${srcdir}/fakeinstall/usr/lib32/libvulkan_intel.so ${pkgdir}/usr/lib32/
+  # already installed by mesa-vulkan-intel-git
+  #  mv -v ${srcdir}/fakeinstall/usr/include/vulkan/vulkan_intel.h ${pkgdir}/usr/include/vulkan
+
+  install -m755 -d "${pkgdir}/usr/share/licenses/lib32-mesa-vulkan-intel-git"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/lib32-mesa-vulkan-intel-git/"
 }
 
 package_lib32-mesa-vdpau-git() {
