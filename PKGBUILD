@@ -1,20 +1,18 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=voltron-git
-pkgver=20160413
+pkgver=20160417
 pkgrel=1
 pkgdesc="UI for GDB, LLDB and Vivisect's VDB"
 arch=('any')
 depends=('python'
          'python-blessed'
-         'python-cherrypy'
          'python-flask'
          'python-flask-restful'
          'python-pygments'
+         'python-requests'
          'python-requests-unixsocket'
-         'python-rl'
-         'python-scruffington'
-         'readline')
+         'python-scruffington')
 makedepends=('git' 'python-setuptools')
 optdepends=('gdb: GDB'
             'lldb: LLDB'
