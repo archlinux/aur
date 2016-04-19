@@ -9,8 +9,8 @@
 # Based on linux package
 
 pkgbase=linux-libre-knock
-_pkgbasever=4.4-gnu
-_pkgver=4.4.6-gnu
+_pkgbasever=4.5-gnu
+_pkgver=4.5.1-gnu
 _knockpatchver=4.2_2
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -21,7 +21,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
 pkgrel=1
-rcnrel=armv7-x5
+rcnrel=armv7-x2
 arch=('i686' 'x86_64' 'armv7h')
 url="https://gnunet.org/knock"
 license=('GPL2')
@@ -51,7 +51,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'change-default-console-loglevel.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
-        '0003-fix-atmel-maxtouch-touchscreen-support.patch'
+        '0003-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
@@ -63,10 +63,11 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
         '0008-USB-armory-support.patch'
-        '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
-sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
+        '0009-Revert-stmmac-Fix-eth0-No-PHY-found-regression.patch'
+        '0010-stmmac-fix-MDIO-settings.patch')
+sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
-            '0e4403973b4e92ec97e101f4f8053cc8f1b90302c2040f168d0c53374efc121a'
+            'bde6fa0cee5ee3d32c6e4336b23f87cbe37b74b9d4d1603d1d421dc1e44d2ab9'
             'SKIP'
             'c7c4ab580f00dca4114c185812a963e73217e6bf86406c240d669026dc3f98a4'
             'SKIP'
@@ -76,25 +77,26 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '040949e9df70beb7b4264171686227e730f5d11e3c87292136def3f98e52f61b'
-            '459856e93345e1da802c3703434f33c8a4f709761ccf0c78f73387b8290b968c'
-            '570f3e9d21f340f6c3bc7edb4f4de07176c54ea2aeb84cc326084a412756cf33'
+            'e5ac9db034eb0e06a134ca953fa26a1bc651a24c6949beaeedf6163eab0e7636'
+            'b67fca020055afa88653fddf9615d833d8d5fc8b0557697a528b3514b817ae71'
+            '582337684f3b5aae22553af1f664463c4d52d2910f0cdc574b04c9df1d02b85d'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
-            '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
-            '0a6f76bbc03ae6e846a4ba4e31bbc0a40b1ae538c1271defcbe3089e00a4b53d'
-            '3664d7449894efefa49e3511e0252c324a3019b7818a69b0671505181b011a5e'
+            '91e087cddaf2149d050b90720d5b3004263ec3ab07dece0241551d045ff0a91f'
+            '96c6c7d4057b8d08238adae85d476c863c082770a182057163a45480511d35a8'
+            '2ca85ee212ef8d8aab3d3c2a0cef304a355d86e7aa520e19471f56ace68a0cf4'
+            'b878510fb1ba2c83999b9faf9bf270779d6f1a1c33ec39fb3701d3e2aba053dc'
             'SKIP'
-            'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
-            '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
-            '6dadc17ea56d93ec0f1d0c3c98c25a7863e9ba3c4af50dc411d630a1bcc98f08'
-            '9c5d6d035c9a7103f19804c2284291d461d4b848cccd3ec07272bde68ba29513'
-            '6644705cd73c55056b5fed91cfb3199c1114b088d96dbd3c29358cd49863aeba'
-            '08d0aa76393ea2d1a853d0ea9b02aa616224ac915473ab057bb98285212bc994'
-            '1cb502674bf7a1ea79b359d1613fe891ba37f6aa64f5f5eca309d46ba01ab417'
-            '05bf1d8f94feab06bdd9fd958bc9bde4d1249a0cdeb8d3d3e16e6fac6dc5baed'
-            '5e1b8b1e9b3243a5ab315481c39b1b88f28923148659dcc0ac7ed78d9ba4f072')
+            'd09937cbca4f408dbcde270e465bdfe0589a0b41ed07d260a596a38fe6cca987'
+            'cc1f1b5026b373da4a5c2e8c82bc2b0f8a20e295353c201579140a04f2452545'
+            'f68d382f9d5b9948cc0e7062290e1b26d7c3c7e4ba270fda0bd632c24465a40b'
+            '658f619cd11676996919ef290934cfc809db5d0fa35a1ebc475d3ebb59253201'
+            'f7bf7a7cf676571f48c92fc858ddd67cc395105ae633c3d6e5386a4a5c848d81'
+            '939c11540b47f02706f3cff1b76b84a13b4dab9cae438632d4b685b16ed8249e'
+            'db830e53d451c54f84917b663671a6cc9414b043064cdf1a17369c198abee9dd'
+            'ef21f0524fdd559389529bd05b56a3b89642fb10b74de709153d1b3c2e21c126'
+            '9f915fedf2cf03eccfed9025d3883a1158531203a676060a2eae5809ec4989ce'
+            'bbbdd20f4a933ae988e713de5ac3ad08bd453e4e3dfa4cdac2da483dcf2454d8')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -121,7 +123,10 @@ prepare() {
   fi
 
   if [ "${CARCH}" = "armv7h" ]; then
-    # RCN patch (CM3 firmware deblobbed)
+    # RCN patch (CM3 firmware deblobbed and AUFS removed)
+    # Note: AUFS was removed in the RCN patch since it are being supported by
+    # linux-libre-pck through PCK patch for all available architectures.
+    # See https://wiki.parabola.nu/PCK for further details.
     git apply -v "${srcdir}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
 
     # ALARM patches
@@ -133,7 +138,8 @@ prepare() {
     patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
     patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
     patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
-    patch -p1 -i "${srcdir}/0009-ARM-dts-dove-add-Dove-divider-clocks.patch"
+    patch -p1 -i "${srcdir}/0009-Revert-stmmac-Fix-eth0-No-PHY-found-regression.patch"
+    patch -p1 -i "${srcdir}/0010-stmmac-fix-MDIO-settings.patch"
   fi
 
   # add freedo as boot logo
@@ -161,7 +167,7 @@ prepare() {
   # fix Atmel maXTouch touchscreen support
   # https://labs.parabola.nu/issues/877
   # http://www.fsfla.org/pipermail/linux-libre/2015-November/003202.html
-  patch -p1 -i "${srcdir}/0003-fix-atmel-maxtouch-touchscreen-support.patch"
+  patch -p1 -i "${srcdir}/0003-fix-Atmel-maXTouch-touchscreen-support.patch"
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
@@ -297,7 +303,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}"
   cp -a arch/${KARCH}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
   if [ "${CARCH}" = "armv7h" ]; then
-    for i in dove exynos mvebu omap2 versatile; do
+    for i in dove exynos omap2; do
       mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-${i}"
       cp -a arch/${KARCH}/mach-${i}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-${i}/"
     done
@@ -399,7 +405,7 @@ _package-headers() {
   # remove unneeded architectures
   find "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch -mindepth 1 -maxdepth 1 -type d -not -name "$KARCH" -exec rm -rf {} +
 
-  # remove a files already in docs package
+  # remove files already in docs package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
@@ -418,7 +424,7 @@ _package-docs() {
   find "${pkgdir}" -type f -exec chmod 444 {} \;
   find "${pkgdir}" -type d -exec chmod 755 {} \;
 
-  # remove a file already in linux package
+  # remove a file already in kernel package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
