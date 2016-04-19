@@ -7,3 +7,4 @@ Icon=/usr/share/pixmaps/discord-canary.png
 Type=Application
 StartupNotify=true
 Categories=Network;InstantMessaging;
+StartupWMClass=discord
