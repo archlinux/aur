@@ -1,0 +1,17 @@
+pkgbase = python2-purple-git
+	pkgdesc = Python bindings for libpurple.
+	pkgver = r226.b4ed49b
+	pkgrel = 1
+	url = https://github.com/fahhem/python-purple
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cython2
+	depends = python2
+	depends = libpurple
+	source = git+https://github.com/fahhem/python-purple
+	md5sums = SKIP
+
+pkgname = python2-purple-git
+
