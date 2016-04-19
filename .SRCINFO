@@ -1,15 +1,17 @@
 pkgbase = thefile
 	pkgdesc = Simple File Manager
-	pkgver = 2.1
+	pkgver = 3.0
 	pkgrel = 0
 	url = https://github.com/vicr123/thefile
 	arch = x86_64
 	license = GPL2
 	makedepends = qtchooser
 	makedepends = git
+	makedepends = clang
 	depends = kwidgetsaddons
 	depends = xdg-utils
-	source = thefile-2.1::git+https://github.com/vicr123/thefile#branch=master
+	optdepends = jmtpfs: for MTP support
+	source = thefile-3.0::git+https://github.com/vicr123/thefile#branch=master
 	md5sums = SKIP
 
 pkgname = thefile
