@@ -1,4 +1,4 @@
-pkgname=google-translate-git
+pkgname=google-translate
 pkgver=0.2
 pkgrel=2
 pkgdesc="A simple CLI google translator (command-line)."
