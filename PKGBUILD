@@ -8,7 +8,7 @@ pkgdesc="A curses-based tool for viewing and analyzing log files"
 arch=(i686 x86_64)
 url="http://lnav.org/"
 license=('custom:BSD')
-depends=('ncurses' 'pcre' 'sqlite3')
+depends=('ncurses' 'curl' 'pcre' 'sqlite3')
 source=("https://github.com/tstack/lnav/releases/download/v$pkgver/lnav-$pkgver.tar.gz")
 md5sums=('cfeb8201928e5d665a763d5d91a77f16')
 
