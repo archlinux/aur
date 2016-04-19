@@ -3,7 +3,7 @@
 
 pkgname=drush-git
 _pkgname=${pkgname%-git}
-pkgver=9.0.0.alpha1.r7.gce82b94
+pkgver=9.0.0.alpha1.r64.g5f5f9cf
 pkgrel=1
 pkgdesc='The Drupal command-line shell, git version.'
 arch=('any')
@@ -13,11 +13,12 @@ depends=('bash' 'php-composer' 'php-gd')
 makedepends=('git' 'php-box')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
+options=(emptydirs)
 install=$pkgname.install
 source=("$_pkgname"::"git+https://github.com/$_pkgname-ops/$_pkgname.git#branch=master"
         "php.ini")
 md5sums=('SKIP'
-          '938cbe5548e3381e63668ea865ad7aa1')
+         '9627e7e568fa7933fe32b44ad21b219f')
 
 pkgver() {
     cd "$_pkgname"
