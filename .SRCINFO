@@ -1,7 +1,7 @@
 pkgbase = franz
 	pkgdesc = A free messaging app for WhatsApp, Facebook Messenger, Telegram, Slack and more.
 	pkgver = 0.9.10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://meetfranz.com/
 	arch = i686
 	arch = x86_64
@@ -13,9 +13,9 @@ pkgbase = franz
 	sha256sums = 5d53c349bcf0452a31e3aee609eac6809f26750f4fb4da049132adc5c9a40289
 	sha256sums = 331918823545ad2696a7fb1c8650f1d001be6dfe40f09dd430dee0e4e3f34594
 	sha256sums = 6e761371afadf155b8bc25e94fd7de371c16130a87338300e5800924916a7a28
-	source_i686 = https://github.com/imprecision/franz-app/releases/download/0.9.10/Franz-linux-ia32-0.9.10.tgz
+	source_i686 = https://github.com/imprecision/franz-app/releases/download/2.0/Franz-linux-ia32-0.9.10.tgz
 	sha256sums_i686 = 9a4ca6e06339b4a01f644fd081b0c1bb8eb3a4e5b8dc8e1c65e09e667b2547c9
-	source_x86_64 = https://github.com/imprecision/franz-app/releases/download/0.9.10/Franz-linux-x64-0.9.10.tgz
+	source_x86_64 = https://github.com/imprecision/franz-app/releases/download/2.0/Franz-linux-x64-0.9.10.tgz
 	sha256sums_x86_64 = 3bcd64f01ddd2f5bd723d3fd04524eddc3fd11a3c53c95acc0029bb46d11042a
 
 pkgname = franz

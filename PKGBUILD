@@ -2,7 +2,8 @@
 
 pkgname=franz
 pkgver=0.9.10
-pkgrel=2
+_gittag=2.0
+pkgrel=3
 pkgdesc="A free messaging app for WhatsApp, Facebook Messenger, Telegram, Slack and more."
 arch=('i686' 'x86_64')
 depends=('gconf')
@@ -11,8 +12,8 @@ license=("custom:github")
 
 #Sources
 source=("$pkgname.sh" "$pkgname.desktop" "$pkgname.png")
-source_i686=('https://github.com/imprecision/franz-app/releases/download/'$pkgver'/Franz-linux-ia32-'$pkgver'.tgz')
-source_x86_64=('https://github.com/imprecision/franz-app/releases/download/'$pkgver'/Franz-linux-x64-'$pkgver'.tgz')
+source_i686=('https://github.com/imprecision/franz-app/releases/download/'$_gittag'/Franz-linux-ia32-'$pkgver'.tgz')
+source_x86_64=('https://github.com/imprecision/franz-app/releases/download/'$_gittag'/Franz-linux-x64-'$pkgver'.tgz')
 #Checksums
 sha256sums=('5d53c349bcf0452a31e3aee609eac6809f26750f4fb4da049132adc5c9a40289'
             '331918823545ad2696a7fb1c8650f1d001be6dfe40f09dd430dee0e4e3f34594'
