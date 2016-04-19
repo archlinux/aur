@@ -3,7 +3,7 @@
 pkgname="cryptocat-bin"
 _pkgname="cryptocat-bin"
 pkgver="3.1.03"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Chat with your friends, privately."
 arch=("x86_64")
 url="https://crypto.cat/"
