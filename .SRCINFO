@@ -1,0 +1,18 @@
+pkgbase = urw-arial
+	pkgdesc = URW Arial Type1 fonts from CTAN (for texlive)
+	pkgver = 20060321
+	pkgrel = 1
+	url = http://www.ctan.org/pkg/urw-arial
+	install = urw-arial.install
+	arch = any
+	license = CUSTOM:alladin
+	depends = texlive-core
+	source = http://mirrors.ctan.org/fonts/urw/arial.zip
+	source = urw-arial.maps
+	source = LICENSE
+	md5sums = 4ad05e902e727fecc4f55f8d737e10a5
+	md5sums = 14a40d8b0873eabaa33bfd1d6c5304f2
+	md5sums = 5687e45ec13eb0290e38e48ce3903e47
+
+pkgname = urw-arial
+
