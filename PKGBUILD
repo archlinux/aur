@@ -2,8 +2,8 @@
 
 _pkgname=hostmaster
 pkgname=aegir-$_pkgname
-pkgver=7.x_3.2
-pkgrel=3
+pkgver=7.x_3.4
+pkgrel=1
 pkgdesc="mass Drupal hosting system - frontend"
 arch=('any')
 url='http://aegirproject.org'
