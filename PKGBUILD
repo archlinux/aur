@@ -8,7 +8,7 @@ _install_cron_file=
 _install_logrotate_file="y"
 
 pkgname=clamav-unofficial-sigs
-pkgver=5.1.0
+pkgver=5.2.2
 pkgrel=1
 pkgdesc='ClamAV Unofficial Signatures Updater maintained by eXtremeSHOK.com'
 arch=('any')
@@ -17,23 +17,27 @@ license=('BSD')
 depends=('clamav' 'rsync' 'bind-tools' 'gnupg' 'curl')
 source=("https://github.com/extremeshok/clamav-unofficial-sigs/archive/$pkgver.tar.gz"
     "cron"
-    "logrotate")
-sha256sums=('834d2435caf4291e720dc422987b617ce1f1661898f36082cd445f5d89752db7'
+    "logrotate"
+    "clamav-unofficial-sigs.8")
+sha256sums=('4fdfeaaffe2ca40bfdb537818dc7f341f604f8d6b44a4378cd72e9b608365c17'
             '82d1db1f7f8400d4b5457343a6c6e1c32cffbee06b0f73104c5b11641b58fa74'
-            'ad2dee4d8d21483f33f9e95a808c598c98c03014baffa12141ecaefcd2cc3a79')
+            'ad2dee4d8d21483f33f9e95a808c598c98c03014baffa12141ecaefcd2cc3a79'
+            '53fe3143db5d422e6306bc9c7ba400976328faaf79cade5f669b48bb1ce6f7bf')
+backup=("etc/clamav-unofficial-sigs/user.conf")
 
 package() {
     cd "$pkgname-$pkgver"
 
     install -Dm755 clamav-unofficial-sigs.sh "${pkgdir}/usr/bin/clamav-unofficial-sigs.sh"
-    install -Dm644 clamav-unofficial-sigs.8 "${pkgdir}/usr/share/man/man8/clamav-unofficial-sigs.8"
+    install -Dm644 "${srcdir}/clamav-unofficial-sigs.8" "${pkgdir}/usr/share/man/man8/clamav-unofficial-sigs.8"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/clamav-unofficial-sigs/LICENSE"
     install -d -o clamav -g clamav "${pkgdir}/var/lib/clamav-unofficial-sigs"
     install -d -o clamav -g clamav "${pkgdir}/var/log/clamav-unofficial-sigs"
 
-    install -d "${pkgdir}/etc/clamav-unofficial-sigs"
-    install -Dm644 config/*.conf "${pkgdir}/etc/clamav-unofficial-sigs/"
-    mv "${pkgdir}/etc/clamav-unofficial-sigs/os.archlinux.conf" "${pkgdir}/etc/clamav-unofficial-sigs/os.conf"
+    mkdir -p "${pkgdir}/etc/clamav-unofficial-sigs"
+    install -Dm644 config/master.conf "${pkgdir}/etc/clamav-unofficial-sigs/master.conf"
+    install -Dm644 config/os.archlinux.conf "${pkgdir}/etc/clamav-unofficial-sigs/os.conf"
+    install -Dm644 config/user.conf "${pkgdir}/etc/clamav-unofficial-sigs/user.conf"
 
     if [ -n "$_install_logrotate_file" ]; then
         install -Dm644 "${srcdir}/logrotate" "${pkgdir}/etc/logrotate.d/clamav-unofficial-sigs"
