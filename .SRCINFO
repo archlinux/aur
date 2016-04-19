@@ -1,0 +1,16 @@
+pkgbase = spot
+	pkgdesc = Spot is a C++11 library for omega automata manipulation and model checking.
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://spot.lrde.epita.fr/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = glibc
+	depends = sh
+	depends = python
+	source = http://www.lrde.epita.fr/dload/spot/spot-2.0.tar.gz
+	sha256sums = 40ee69d8c7d9104d1474e64c8fc2361759715736067ba9c9bff5395a6b1a2192
+
+pkgname = spot
+
