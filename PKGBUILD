@@ -3,7 +3,7 @@
 # Contributor: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=libkscreen
-pkgver=5.6.2
+pkgver=5.6.3
 pkgrel=1
 pkgdesc='KDE screen management software'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('libkscreen-frameworks')
 replaces=('libkscreen-frameworks')
 provides=('libkscreen-frameworks')
 source=("http://download.kde.org/stable/plasma/${pkgver}/libkscreen-$pkgver.tar.xz")
-md5sums=('712230d0dc9a2af6eea575181aa883bb')
+md5sums=('6d19479c61e5bb96424b78b7572fbf48')
 
 prepare() {
   mkdir -p build
@@ -26,8 +26,8 @@ build() {
   cmake ../libkscreen-${pkgver} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DLIBEXEC_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
+    -DKDE_INSTALL_LIBEXECDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
