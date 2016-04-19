@@ -1,6 +1,8 @@
 [Unit]
 Description=Pacman mirrorlist update
 Documentation=https://wiki.archlinux.org/index.php/Reflector
+Requires=network-online.target
+After=network-online.target
 
 [Service]
 Type=oneshot

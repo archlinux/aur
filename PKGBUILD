@@ -11,7 +11,7 @@ backup=('etc/conf.d/reflector.conf')
 source=('reflector.service'
         'reflector.timer'
         'reflector.conf')
-md5sums=('7d4432c985801e43502c16668ccac2de'
+md5sums=('fc23403d89042fa7f982e8839eb8b9c9'
          '3b43ecdcde2fde5ffc5a1dc5f9919a63'
          '621329d2064b2919b1fd0aaade0cc122')
 
