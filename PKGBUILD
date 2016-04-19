@@ -13,4 +13,4 @@ package() {
     install -Dm755 ${srcdir}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 }
 
-md5sums=('5c1ab8eaca293ed22280c7844bb9d29d')
+md5sums=('c2dae6294c95cf55c39ba7b68c5ff6f1')
