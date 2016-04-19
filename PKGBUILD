@@ -2,7 +2,7 @@
 
 pkgname="pidgin-pushbullet-git"
 pkgver="r33.38040a1"
-pkgrel=1
+pkgrel="2"
 pkgdesc="Lets you (currently) send/receive SMS from your Android phone to/from Pidgin."
 arch=("i686" "x86_64")
 url="https://github.com/EionRobb/pidgin-pushbullet"
@@ -17,11 +17,11 @@ pkgver() {
 }
 
 build() {
-  cd "$srcdir/${pkgname%-VCS}"
+  cd "$srcdir/${pkgname%-git}"
   make
 }
 
 package() {
-  cd "$srcdir/${pkgname%-VCS}"
+  cd "$srcdir/${pkgname%-git}"
   make DESTDIR="$pkgdir/" install
 }
