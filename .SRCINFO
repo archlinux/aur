@@ -1,0 +1,13 @@
+pkgbase = flashprint
+	pkgdesc = Slicer for the FlashForge 3D printers.
+	pkgver = 3.6.0
+	pkgrel = 1
+	url = http://www.ff3dp.com/
+	arch = x86_64
+	depends = unrar
+	depends = qt5-base
+	source = http://www.sz3dp.com/upfile/2015/11/19/20151119135106_645.rar
+	md5sums = e34932a16c948857629180ebedb5dc9a
+
+pkgname = flashprint
+
