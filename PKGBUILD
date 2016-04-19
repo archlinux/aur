@@ -2,8 +2,8 @@
 
 pkgname=firefox-beta-zh-cn
 _pkgname=firefox-beta
-pkgver=46.0b11
-pkgrel=1
+pkgver=46.0
+pkgrel=3
 pkgdesc="Chinese Simplified For Firefox Beta"
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/zh-CN/firefox/channel/#beta"
@@ -21,7 +21,7 @@ install=$pkgname.install
 _baseurl="https://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/build$pkgrel/linux-${CARCH}/zh-CN/"
 _filename="firefox-$pkgver"
 _filename1="firefox-$(echo ${pkgver}|cut -d "b" -f1).zh-CN.linux-${CARCH}"
-_sha512sum="$(curl -s "${_baseurl}${_filename}.checksums" | grep "${_filename1}.tar.bz2" | grep sha512 | cut -d " " -f1)"
+_sha512sum="$(curl -s "${_baseurl}${_filename}.checksums" | grep "${_filename}.tar.bz2" | grep sha512 | cut -d " " -f1)"
 source=("$pkgname.desktop"
         "vendor.js"
         "${_baseurl}${_filename}.tar.bz2")
