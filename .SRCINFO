@@ -1,0 +1,16 @@
+pkgbase = pxz-git
+	pkgdesc = Runs LZMA compression of different parts of an input file on multiple cores and processors simultaneously
+	pkgver = r56.fcfea93
+	pkgrel = 1
+	url = http://jnovy.fedorapeople.org/pxz/
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = xz
+	provides = pxz
+	conflicts = pxz
+	source = git+https://github.com/jnovy/pxz.git
+	md5sums = SKIP
+
+pkgname = pxz-git
+
