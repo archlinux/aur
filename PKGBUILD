@@ -8,8 +8,8 @@
 # Based on linux-xen package
 
 pkgbase=linux-libre-xen
-_pkgbasever=4.4-gnu
-_pkgver=4.4.6-gnu
+_pkgbasever=4.5-gnu
+_pkgver=4.5.1-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -41,10 +41,10 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'change-default-console-loglevel.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
-        '0003-fix-atmel-maxtouch-touchscreen-support.patch')
-sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
+        '0003-fix-Atmel-maXTouch-touchscreen-support.patch')
+sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
-            '0e4403973b4e92ec97e101f4f8053cc8f1b90302c2040f168d0c53374efc121a'
+            'bde6fa0cee5ee3d32c6e4336b23f87cbe37b74b9d4d1603d1d421dc1e44d2ab9'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -52,12 +52,12 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'f1a74fe347903b99289bb6fe722a69bdbc2aac1fa84fd80b3c77c26551bcf91c'
+            'ba8d0c5800d3bd235db20cd401f8a9be69d22a0ef50d4da988618448b594a269'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
-            '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
-            '0a6f76bbc03ae6e846a4ba4e31bbc0a40b1ae538c1271defcbe3089e00a4b53d')
+            '91e087cddaf2149d050b90720d5b3004263ec3ab07dece0241551d045ff0a91f'
+            '96c6c7d4057b8d08238adae85d476c863c082770a182057163a45480511d35a8'
+            '2ca85ee212ef8d8aab3d3c2a0cef304a355d86e7aa520e19471f56ace68a0cf4')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               '684D54A189305A9CC95446D36B888913DDB59515' # Márcio Silva
@@ -99,7 +99,7 @@ prepare() {
   # fix Atmel maXTouch touchscreen support
   # https://labs.parabola.nu/issues/877
   # http://www.fsfla.org/pipermail/linux-libre/2015-November/003202.html
-  patch -p1 -i "${srcdir}/0003-fix-atmel-maxtouch-touchscreen-support.patch"
+  patch -p1 -i "${srcdir}/0003-fix-Atmel-maXTouch-touchscreen-support.patch"
 
   cat "${srcdir}/config" > ./.config # simpler
 
@@ -311,7 +311,7 @@ _package-headers() {
   # remove unneeded architectures
   find "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch -mindepth 1 -maxdepth 1 -type d -not -name "$KARCH" -exec rm -rf {} +
 
-  # remove a files already in docs package
+  # remove files already in docs package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
@@ -330,7 +330,7 @@ _package-docs() {
   find "${pkgdir}" -type f -exec chmod 444 {} \;
   find "${pkgdir}" -type d -exec chmod 755 {} \;
 
-  # remove a file already in linux package
+  # remove a file already in kernel package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
