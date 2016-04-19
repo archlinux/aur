@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ethereum
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="Ethereum decentralised consensus-based deterministic transaction resolution platform (C++ toolkit, full webthree-umbrella)"
 arch=('i686' 'x86_64')
@@ -111,8 +111,6 @@ package() {
 
   msg 'Installing...'
   make DESTDIR="$pkgdir" install -C build
-
-  mv $pkgdir/usr/bin/mix $pkgdir/usr/bin/mix-ide
 
   msg 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
