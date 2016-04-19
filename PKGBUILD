@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://plot.ly/python/"
 license=('MIT')
 depends=('python-requests' 'python-pytz')
-makedepends=('git' 'python')
+makedepends=('git' 'python' 'python-setuptools')
 source=("git+https://github.com/plotly/plotly.py.git")
 md5sums=('SKIP')
 
