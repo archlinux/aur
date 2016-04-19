@@ -8,7 +8,7 @@ url="https://stitchpanorama.sourceforge.net/Python/amoeba.py"
 arch=('any')
 license=('GPL2')
 makedepends=("python" "python2")
-source=("https://stitchpanorama.sourceforge.net/Python/amoeba.py"
+source=("http://stitchpanorama.sourceforge.net/Python/amoeba.py"
         "deepcopy.patch"
         "setup.py")
 md5sums=('7e6a9ad95d8639ec3d1da7c6db0928fb'
