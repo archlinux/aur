@@ -2,7 +2,7 @@
 
 pkgname=unifi-video
 pkgver=3.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Centralized management system for Ubiquiti UniFi Surveillance Cameras"
 arch=('x86_64')
 url="https://www.ubnt.com/"
@@ -14,7 +14,7 @@ source=("http://dl.ubnt.com/firmwares/unifi-video/$pkgver/unifi-video_$pkgver~Ub
         'unifi-video.sysusers'
         'unifi-video.patch')
 sha256sums=('4dba35c7d948567f098f13f5ac1faff7e4601ae99bc6477b8817a69f0dcfaeb4'
-            'e0b26acb0d6c3c66e4b21d1f96db357532f2bc52c48acc7a5c3c9b6a21115819'
+            'f5f5244e19aba87884747cee371077bcfa9669806b9b0a8d0e176b9306c7f843'
             '90fb2f826a70d3b7815cd6a2253c2af6754c17504be28ef92ee223bd02093730'
             '26a11592d01ead22dbf2c083aae5cec320917902b516cfc595c12d158876bddb')
 

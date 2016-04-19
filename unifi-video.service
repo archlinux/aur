@@ -7,6 +7,10 @@ Type=forking
 WorkingDirectory=/usr/lib/unifi-video
 TimeoutStartSec=300
 TimeoutStopSec=300
+Restart=on-failure
+RestartSec=5
+StartLimitInterval=60s
+StartLimitBurst=3
 ExecStart=/usr/bin/unifi-video --verbose start
 ExecStop=/usr/bin/unifi-video --verbose stop
 
