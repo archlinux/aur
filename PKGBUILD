@@ -1,5 +1,5 @@
 pkgname=mingw-w64-libgcrypt
-pkgver=1.6.5
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="General purpose cryptographic library based on the code from GnuPG (mingw-w64)"
 arch=("any")
@@ -9,18 +9,15 @@ depends=(mingw-w64-libgpg-error)
 makedepends=(mingw-w64-configure transfig ghostscript)
 options=(staticlibs !buildflags !strip)
 source=("ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-${pkgver}.tar.bz2"
-"libgcrypt-use-correct-def-file.patch"
-"libgcrypt-use-correct-asm-code-for-win64.patch")
-md5sums=('3babc8af8978eeafa1bdbfef066ea943'
-         '531e089caca74b5daf130b7173c2a5c5'
-         'ccdd21fdd8b28690ed7e736a77606735')
+"libgcrypt-use-correct-def-file.patch")
+md5sums=('67ec79bdde8fd815c9cdd55aa9555935'
+         '531e089caca74b5daf130b7173c2a5c5')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/libgcrypt-${pkgver}"
   patch -p0 -i "$srcdir"/libgcrypt-use-correct-def-file.patch
-  patch -p1 -i "$srcdir"/libgcrypt-use-correct-asm-code-for-win64.patch
-  autoreconf -vfi
+  autoreconf -fi
 }
 
 build() {
