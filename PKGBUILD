@@ -1,12 +1,12 @@
 pkgname=mingw-w64-kcoreaddons
 pkgver=5.21.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Addons to QtCore (mingw-w64)"
 license=("LGPL")
 depends=(mingw-w64-qt5-base shared-mime-info)
 groups=(mingw-w64-kf5)
-makedepends=(mingw-w64-cmake "mingw-w64-extra-cmake-modules=$pkgver")
+makedepends=("mingw-w64-extra-cmake-modules=$pkgver" mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
 optdepends=("kcoreaddons: needed for desktopjson.exe workaround symlink")
 url="https://projects.kde.org/projects/frameworks/kcoreaddons"
