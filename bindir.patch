@@ -1,0 +1,21 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakelists.txt
+@@ -22,6 +22,6 @@
+ ADD_EXECUTABLE(ttylog ${ttylog_executable_SRCS})
+
+ # add install targets:
+-INSTALL(TARGETS ttylog DESTINATION sbin)
++INSTALL(TARGETS ttylog DESTINATION bin)
+ # add install man page:
+ INSTALL(FILES ttylog.8 DESTINATION share/man/man8)
+diff --git a/INSTALL b/INSTALL
+--- a/INSTALL
++++ b/INSTALL
+@@ -51,5 +51,5 @@
+ 	rm -f *.o ttylog core *~
+
+ install: ttylog
+-	$(INS) -o root -g root -m 0755 ttylog $(DESTDIR)/usr/sbin
++	$(INS) -o root -g root -m 0755 ttylog $(DESTDIR)/usr/bin
+ 	$(INS) -o root -g root -m 0444 ttylog.8 $(DESTDIR)/usr/share/man/man8
