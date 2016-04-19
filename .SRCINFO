@@ -31,3 +31,5 @@ pkgname = nvidia-grsec-dkms
 	depends = dkms
 	depends = nvidia-utils=364.16
 	depends = libgl
+	optdepends = linux-grsec-headers: build modules against the grsec kernel
+	conflicts = nvidia-grsec
