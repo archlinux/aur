@@ -4,7 +4,7 @@
 
 pkgname=ricochet
 pkgver=1.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Anonymous peer-to-peer instant messaging."
 arch=('i686' 'x86_64')
 url="https://ricochet.im/"
@@ -13,15 +13,18 @@ depends=('tor' 'qt5-quick1' 'qt5-quickcontrols' 'qt5-declarative' 'openssl' 'pro
 makedepends=('qt5-tools' 'pkg-config')
 source=('disable-ASAN-by-default-for-release-builds.patch'
         https://ricochet.im/releases/$pkgver/$pkgname-$pkgver-src.tar.bz2{,.asc})
-        
 sha256sums=('ed72e9b2a2d22861c00edb9effdab1e15150137a7e70767a9fbd580b28d0a99c'
             '97c78d088892e84c95a3e3a4a982883d8e44028848a513a5d7e0231d36325cc3'
             'SKIP')
 validpgpkeys=('9032CAE4CBFA933A5A2145D5FF97C53F183C045D')
 
-build() {
+prepare() {
   cd "$srcdir"/$pkgname-$pkgver
   patch -p1 < "${srcdir}/disable-ASAN-by-default-for-release-builds.patch"
+}
+
+build() {
+  cd "$srcdir"/$pkgname-$pkgver
   QT_SELECT=5 qmake CONFIG+=release DEFINES+=RICOCHET_NO_PORTABLE
   make
 }
