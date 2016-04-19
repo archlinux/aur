@@ -1,0 +1,16 @@
+pkgbase = cinnamon-applet-system-monitor
+	pkgdesc = Cinnamon applet displaying system informations, such as memory usage, cpu usage, network rates. Ported from gnome-shell extension
+	pkgver = r53.abff13d
+	pkgrel = 1
+	url = https://github.com/cinnamon-applets/system-monitor-applet
+	install = cinnamon-applet-system-monitor.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = cinnamon
+	depends = dconf
+	source = cinnamon-applet-system-monitor::git+https://github.com/cinnamon-applets/system-monitor-applet.git
+	sha256sums = SKIP
+
+pkgname = cinnamon-applet-system-monitor
+
