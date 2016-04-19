@@ -1,0 +1,13 @@
+[Unit]
+Description=Ubiquiti UniFi Video Server
+After=network.target
+
+[Service]
+WorkingDirectory=/usr/lib/unifi-video
+TimeoutStartSec=300
+TimeoutStopSec=300
+ExecStart=/usr/bin/unifi-video --verbose --nodetach start
+ExecStop=/usr/bin/unifi-video --verbose --nodetach stop
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+--- unifi-video.old	2016-04-18 14:14:21.249318503 -0700
++++ unifi-video	2016-04-18 14:18:30.525974270 -0700
+@@ -42,7 +42,7 @@
+ is_java7_compat() {
+ 	local J V
+         J=$1
+-        V=$($J -version 2>&1 | sed -e 's/^java version "\([^"]*\)".*/\1/;tz;d;:z')
++        V=$($J -version 2>&1 | awk -F '"' '/version/ {print $2}')
+         case "$V" in
+                 1.7*|1.8*) return 0
+                 ;;
