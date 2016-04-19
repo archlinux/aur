@@ -1,0 +1,45 @@
+#!/usr/bin/env python2
+
+import urllib2
+import argparse
+import mechanize
+from bs4 import BeautifulSoup
+
+PATTERN='http://translate.google.com/translate_a/t?client=x&text={text}&hl={src}&sl={src}&tl={dest}'
+
+parser = argparse.ArgumentParser(
+    description='Command-line interface for Google translate.',
+    epilog='Created by Andrew Dunai <andrew@dun.ai>'
+)
+
+def lang_name(value):
+    if len(value) != 2 and value != 'auto':
+        raise argparse.ArgumentTypeError('Language code should be 2 digits or "auto".')
+    return value
+
+def not_empty(value):
+    value = value.strip()
+    if not len(value):
+        raise argparse.ArgumentTypeError('Text cannot be empty.')
+    return value
+
+parser.add_argument('src', metavar='<FROM>', help='Source language', type=lang_name)
+parser.add_argument('dest', metavar='<TO>', help='Destination language', type=lang_name)
+parser.add_argument('text', metavar='<TEXT>', help='Text to translate', type=not_empty)
+
+args = parser.parse_args()
+
+url = PATTERN.format(src=args.src, dest=args.dest, text=args.text.replace(' ', '+'))
+
+browser = mechanize.Browser()
+browser.addheaders = [('User-Agent', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)')]
+browser.set_handle_robots(False)
+browser.open('https://translate.google.com')
+browser.select_form(nr=0)
+
+browser.form['sl'] = [args.src]
+browser.form['tl'] = [args.dest]
+browser.form['text'] = args.text
+response = browser.submit()
+doc = BeautifulSoup(response.read())
+print ''.join([x.text for x in doc.select('span#result_box > span')])
