@@ -47,7 +47,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'change-default-console-loglevel.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
-        '0003-fix-atmel-maxtouch-touchscreen-support.patch'
+        '0003-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
@@ -76,9 +76,9 @@ sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             '7eccf2c95c69b07bddbac5bf336e694b5cc21bc77feb01a07275606568ce3ee8'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '2f5fe30332d1feb853ffe76a5390329ab23963fa07b06f22e48773064f90f20c'
-            '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
-            '0a6f76bbc03ae6e846a4ba4e31bbc0a40b1ae538c1271defcbe3089e00a4b53d'
+            '91e087cddaf2149d050b90720d5b3004263ec3ab07dece0241551d045ff0a91f'
+            '96c6c7d4057b8d08238adae85d476c863c082770a182057163a45480511d35a8'
+            '2ca85ee212ef8d8aab3d3c2a0cef304a355d86e7aa520e19471f56ace68a0cf4'
             'b878510fb1ba2c83999b9faf9bf270779d6f1a1c33ec39fb3701d3e2aba053dc'
             'SKIP'
             'd09937cbca4f408dbcde270e465bdfe0589a0b41ed07d260a596a38fe6cca987'
@@ -116,9 +116,10 @@ prepare() {
   fi
 
   if [ "${CARCH}" = "armv7h" ]; then
-    # RCN patch (CM3 firmware deblobbed)
-    # Note: features not merged into mainline kernel were removed in the RCN patch (eg. AUFS)
-    # since it are being supported by our custom kernels (eg. linux-libre-pck).
+    # RCN patch (CM3 firmware deblobbed and AUFS removed)
+    # Note: AUFS was removed in the RCN patch since it are being supported by
+    # linux-libre-pck through PCK patch for all available architectures.
+    # See https://wiki.parabola.nu/PCK for further details.
     git apply -v "${srcdir}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
 
     # ALARM patches
@@ -159,7 +160,7 @@ prepare() {
   # fix Atmel maXTouch touchscreen support
   # https://labs.parabola.nu/issues/877
   # http://www.fsfla.org/pipermail/linux-libre/2015-November/003202.html
-  patch -p1 -i "${srcdir}/0003-fix-atmel-maxtouch-touchscreen-support.patch"
+  patch -p1 -i "${srcdir}/0003-fix-Atmel-maXTouch-touchscreen-support.patch"
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
@@ -395,7 +396,7 @@ _package-headers() {
   # remove unneeded architectures
   find "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch -mindepth 1 -maxdepth 1 -type d -not -name "$KARCH" -exec rm -rf {} +
 
-  # remove a files already in docs package
+  # remove files already in docs package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
@@ -414,7 +415,7 @@ _package-docs() {
   find "${pkgdir}" -type f -exec chmod 444 {} \;
   find "${pkgdir}" -type d -exec chmod 755 {} \;
 
-  # remove a file already in linux package
+  # remove a file already in kernel package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
