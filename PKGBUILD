@@ -2,7 +2,7 @@
 
 _pkgname=plotly.py
 pkgname=python-plotly
-pkgver=1.6.12.r715.g20102d6
+pkgver=r1780.d88c5d0
 pkgrel=1
 pkgdesc="An interactive, browser-based charting library for python"
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ source=("git+https://github.com/plotly/plotly.py.git")
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "$srcdir/$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
