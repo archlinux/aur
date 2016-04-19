@@ -1,6 +1,6 @@
 pkgbase = thefile
 	pkgdesc = Simple File Manager
-	pkgver = 3.0
+	pkgver = 3.1
 	pkgrel = 0
 	url = https://github.com/vicr123/thefile
 	arch = x86_64
@@ -11,7 +11,10 @@ pkgbase = thefile
 	depends = kwidgetsaddons
 	depends = xdg-utils
 	optdepends = jmtpfs: for MTP support
-	source = thefile-3.0::git+https://github.com/vicr123/thefile#branch=master
+	optdepends = ifuse: for iOS support
+	optdepends = usbmuxd: for iOS support
+	optdepends = libplist: for iOS support
+	source = thefile-3.1::git+https://github.com/vicr123/thefile#branch=master
 	md5sums = SKIP
 
 pkgname = thefile

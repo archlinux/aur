@@ -1,7 +1,7 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=thefile
-pkgver=3.0
+pkgver=3.1
 pkgrel=0
 pkgdesc="Simple File Manager"
 arch=("x86_64")
@@ -9,7 +9,10 @@ url="https://github.com/vicr123/thefile"
 license=('GPL2')
 depends=('kwidgetsaddons' 'xdg-utils')
 makedepends=('qtchooser' 'git' 'clang')
-optdepends=('jmtpfs: for MTP support')
+optdepends=('jmtpfs: for MTP support'
+	    'ifuse: for iOS support'
+	    'usbmuxd: for iOS support'
+	    'libplist: for iOS support')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/thefile#branch=master')
 md5sums=('SKIP')
 
