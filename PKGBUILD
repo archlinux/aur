@@ -8,7 +8,8 @@
 
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux libutil-linux-selinux)
-pkgver=2.27.1
+_pkgmajor=2.28
+pkgver=${_pkgmajor}
 pkgrel=1
 pkgdesc="SELinux aware miscellaneous system utilities for Linux"
 url="https://www.kernel.org/pub/linux/utils/util-linux/"
@@ -23,9 +24,9 @@ makedepends=('systemd' 'python' 'libselinux')
 license=('GPL2')
 options=('strip' 'debug')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
-source=("https://www.kernel.org/pub/linux/utils/util-linux/v${pkgver%.?}/${pkgname/-selinux}-$pkgver.tar."{xz,sign}
+source=("https://www.kernel.org/pub/linux/utils/util-linux/v$_pkgmajor/${pkgname/-selinux}-$pkgver.tar."{xz,sign}
         pam-{login,common,su})
-md5sums=('3cd2698d1363a2c64091c2dadc974647'
+md5sums=('e534e6ccc49107e5d31c329af798ef7d'
          'SKIP'
          '4368b3f98abd8a32662e094c54e7f9b1'
          'a31374fef2cba0ca34dfc7078e2969e4'
@@ -56,8 +57,8 @@ package_util-linux-selinux() {
   conflicts=('util-linux-ng' 'eject' 'zramctl'
              "${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
   provides=("util-linux-ng=$pkgver" 'eject' 'zramctl'
-            "${pkgname/-selinux}=${pkgver}-${pkrel}"
-            "selinux-${pkgname/-selinux}=${pkgver}-${pkrel}")
+            "${pkgname/-selinux}=${pkgver}-${pkgrel}"
+            "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
   depends=('pam-selinux' 'shadow-selinux' 'coreutils-selinux'
            'libsystemd-selinux' 'libutil-linux-selinux')
   optdepends=('python: python bindings to libmount')
@@ -97,7 +98,7 @@ package_util-linux-selinux() {
 package_libutil-linux-selinux() {
   pkgdesc="util-linux-selinux runtime libraries"
   provides=('libblkid.so' 'libfdisk.so' 'libmount.so' 'libsmartcols.so' 'libuuid.so'
-            "${pkgname/-selinux}=${pkgver}-${pkrel}")
+            "${pkgname/-selinux}=${pkgver}-${pkgrel}")
   depends=('libselinux')
   conflicts=("${pkgname/-selinux}")
 
