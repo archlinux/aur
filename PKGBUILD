@@ -7,7 +7,7 @@ url="http://dun.ai"
 license=('GPL2')
 depends=('python2' 'python2-mechanize' 'python2-beautifulsoup4')
 options=('!strip')
-source=('google-translate')
+source=('http://public.dun.ai/public/google-translate/google-translate')
 
 package() {
     install -Dm755 ${srcdir}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
