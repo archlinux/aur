@@ -2,7 +2,7 @@
 
 pkgname=libmir-git
 _gitname=mir
-pkgver=245
+pkgver=v0.13.2.2.g08a91a7
 pkgrel=1
 pkgdesc="Generic Numeric Library for the D Programming language"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ md5sums=('SKIP')
 conflicts=('libmir')
 
 pkgver() {
-	cd "$_gitname"
-	git rev-list --count HEAD
+	cd "${srcdir}/${_gitname}"
+	git describe --tags HEAD | sed 's/-/./g'
 }
 
 package() {
