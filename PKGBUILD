@@ -1,7 +1,7 @@
 # Maintainer: TingPing tingping@tingping.se
 
 pkgname=sysprof2-git
-pkgver=3.20.0.r1.g605572d
+pkgver=3.20.0.r25.gb97425b
 pkgrel=1
 pkgdesc='CPU Profiler'
 arch=('i686' 'x86_64' 'armv6h')
@@ -11,8 +11,8 @@ options=('!libtool')
 depends=('gtk3' 'polkit')
 makedepends=('intltool' 'git' 'autoconf-archive')
 install='sysprof2.install'
-provides=('sysprof2')
-conflicts=('sysprof2')
+provides=('sysprof')
+conflicts=('sysprof')
 source=('git+https://git.gnome.org/browse/sysprof')
 md5sums=('SKIP')
 _gitname='sysprof'
