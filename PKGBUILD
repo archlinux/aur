@@ -1,8 +1,9 @@
-# Maintainer:  dacoit <dacoit at tuta.io>
-# Contributor: xjpvictor Huang <ke [AT] xjpvictor [DOT] info>
-# Contributor: uuwe
+# Maintainer:   AXVill
+# Contributor:  dacoit <dacoit at tuta.io>
+# Contributor:  xjpvictor Huang <ke [AT] xjpvictor [DOT] info>
+# Contributor:  uuwe
 pkgname=openswan
-pkgver=2.6.43.1
+pkgver=2.6.47
 pkgrel=1
 pkgdesc='Open Source implementation of IPsec for the Linux operating system'
 url='https://www.openswan.org'
@@ -58,5 +59,6 @@ package() {
   # fix python2
   sed -i '1s|python|python2|' "$pkgdir/usr/lib/openswan/verify"
 }
-md5sums=('dafa77db8be28d7ae32c5ac2a45966eb'
+md5sums=('54aa71adb46e4f1b07f3db534540058a'
          'd8b465c10838c72e31329d65011002b6')
+
