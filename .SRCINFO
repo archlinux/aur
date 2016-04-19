@@ -1,0 +1,26 @@
+pkgbase = j7z-svn
+	pkgdesc = An alternative 7-Zip GUI
+	pkgver = r145
+	pkgrel = 1
+	url = https://sourceforge.net/projects/k7z/
+	install = J7Z.install
+	arch = any
+	license = LGPL3
+	makedepends = apache-ant
+	makedepends = java-environment>=7
+	depends = java-runtime>=7
+	depends = p7zip
+	optdepends = gtk-kde4: KDE style support
+	optdepends = oxygen-gtk: Native 'Oxygen' style
+	optdepends = tar: Supports POSIX attributes
+	optdepends = gzip: Supports GZip archives
+	optdepends = bzip2: Supports BZip2 archives
+	optdepends = xz: Supports XZ archives
+	conflicts = j7z
+	conflicts = q7z
+	conflicts = k7z
+	source = https://sourceforge.net/code-snapshots/svn/k/k7/k7z/code/k7z-code-145-trunk.zip
+	sha1sums = SKIP
+
+pkgname = j7z-svn
+
