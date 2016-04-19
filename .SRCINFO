@@ -1,12 +1,13 @@
 pkgbase = python2-ldnsx
 	pkgdesc = python ldns API for human beings
 	pkgver = 2012.01.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/colah/ldnsx
 	arch = any
 	license = BSD
 	makedepends = git
 	depends = python2-setuptools
+	depends = python2-ldns
 	source = ldnsx::git+https://github.com/colah/ldnsx.git
 	source = setup.py
 	md5sums = SKIP
