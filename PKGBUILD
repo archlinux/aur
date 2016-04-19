@@ -9,8 +9,8 @@
 # Based on linux-lts package
 
 pkgbase=linux-libre-lts
-_pkgbasever=4.1-gnu
-_pkgver=4.1.21-gnu
+_pkgbasever=4.4-gnu
+_pkgver=4.4.7-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -19,8 +19,8 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
-pkgrel=1.1
-rcnrel=armv7-x7
+pkgrel=1
+rcnrel=armv7-x6
 arch=('i686' 'x86_64' 'armv7h')
 url="http://linux-libre.fsfla.org/"
 license=('GPL2')
@@ -44,17 +44,13 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
+        '0001-sdhci-revert.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
-        '0003-fix-atmel-maxtouch-touchscreen-support.patch'
+        '0003-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
-        '0001-ARM-sunxi-Add-R8-support.patch'
-        '0002-ARM-sun5i-Add-CHIP-DTS.patch'
-        '0003-ARM-sun5i-Add-R8-DTSI.patch'
-        '0004-ARM-dts-axp209-Add-usb_power_supply-child-node-to-the-ax209-node.patch'
-        '0005-ARM-sun5i-chip-Add-CPU-regulator-for-cpufreq.patch'
         '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
         '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
         '0003-SMILE-Plug-device-tree-file.patch'
@@ -62,10 +58,11 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
-        '0008-USB-armory-support.patch')
-sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
+        '0008-USB-armory-support.patch'
+        '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
+sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
-            '4344dfe5c74414baafcf05de768082788cba3c4baefe2f66d8d6e97afc0fd14a'
+            '589e412cfd54f4683c6b9512d50fe4f25d23f019633f5c57b2c8b083d74f3890'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -73,29 +70,26 @@ sha256sums=('48b2e5ea077d0a0bdcb205e67178e8eb5b2867db3b2364b701dbc801d9755324'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '235a8cb8f79a38cfea0e74984b2b46b1921709a37c58f43db9dc837abcf4a469'
-            '0fbf6fc9105593aa821a79b653d57d1751f57a0169927765edee626ccdd3be3d'
-            'e64cd7bf23e42a0db85e2d48a5af4fefacb26de5f517da8f268b18d1fc319769'
+            'd862f4829d8b8a7af0cb4ac9053a25941888b2c02c36fd70091cfa0cf8d10f6e'
+            '63680e592608c8d8640d2fb8c3389afa04ee2bed8f74b1c36aed7761448f54ba'
+            '87da21f263e97f98f0dcd03280c07fa27fd1797fb70b2047f9ba20207942619c'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '38cf6bdf70dc070ff0b785937d99347bb91f8531ea2bcca50283c8923a184c6d'
-            '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
-            '0a6f76bbc03ae6e846a4ba4e31bbc0a40b1ae538c1271defcbe3089e00a4b53d'
-            '3743d0478507d160f24326241831df8c4d3f2e268bcaf2f62dfe2ef5e8a69188'
+            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
+            'f0a10ea9a669e5200aa33656565c209718b24ff1add03ac5279c4a1f46ab8798'
+            '96c6c7d4057b8d08238adae85d476c863c082770a182057163a45480511d35a8'
+            '2ca85ee212ef8d8aab3d3c2a0cef304a355d86e7aa520e19471f56ace68a0cf4'
+            '1375da8de6cb1ae227e4f6295d872db59c157da0248f5110167f2a90a15bd6b9'
             'SKIP'
-            '349691937f0a2881c5fc981d7fb85f64ad3c341ce77a716638d328750d3e9f41'
-            '26274259a896a6a362bf89a5ba014c01c5126c646dcd50b51255d94743a9ad7f'
-            '80d426c53296b0a04d7817caafe628135ac28abfe32cc7f4740049b89d7bd956'
-            '32673476cec6024851c5e084f920c72a4c5297c092d0b40a65ab5c05089bb36e'
-            'fdb50c0b420d374de0552412a5b65f568eda3bf9dc896682578a74797c5c4dab'
-            '203b07cc241f2374d1e18583fc9940cc69da134f992bff65a8b376c717aa7ea7'
-            '28fb8c937c2a0dc824ea755efba26ac5a4555f9a97d79f4e31f24b23c5eae59c'
-            '39bfd7f6e2df0b87b52488462edb2fbcfaf9e3eb2a974fc7b3bc22147352fece'
-            '59444ed7dce62697f1c35be340b740899e1d71398b334c419ad07cea838c6ed6'
-            '90cff98e43322e79c8d8b1c6456a328650f6af3ebf018086a82ab690a688da5d'
-            'ed6cf79434d3b1c10e0e141ab6bdc2aa9abfe7e7df6bbb24b2097c0e0d62ac17'
-            '2c3df3d9a3d8fe11fefc485167a81c6fc53635b04ba0312bef144505dc0a6ce4'
-            '0f6b0146096ee7a04938d39a013c23cfd8719f3bef0956b5c88a33e7d7ecafdc')
+            'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
+            '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
+            '6dadc17ea56d93ec0f1d0c3c98c25a7863e9ba3c4af50dc411d630a1bcc98f08'
+            '9c5d6d035c9a7103f19804c2284291d461d4b848cccd3ec07272bde68ba29513'
+            '6644705cd73c55056b5fed91cfb3199c1114b088d96dbd3c29358cd49863aeba'
+            '08d0aa76393ea2d1a853d0ea9b02aa616224ac915473ab057bb98285212bc994'
+            '1cb502674bf7a1ea79b359d1613fe891ba37f6aa64f5f5eca309d46ba01ab417'
+            '05bf1d8f94feab06bdd9fd958bc9bde4d1249a0cdeb8d3d3e16e6fac6dc5baed'
+            '5e1b8b1e9b3243a5ab315481c39b1b88f28923148659dcc0ac7ed78d9ba4f072')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -121,16 +115,11 @@ prepare() {
   fi
 
   if [ "${CARCH}" = "armv7h" ]; then
-    # RCN patch (CM3 firmware deblobbed)
+    # RCN patch (CM3 firmware deblobbed and AUFS removed)
+    # Note: AUFS was removed in the RCN patch since it are being supported by
+    # linux-libre-pck through PCK patch for all available architectures.
+    # See https://wiki.parabola.nu/PCK for further details.
     git apply -v "${srcdir}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
-
-    # Parabola patches
-    # add C.H.I.P single-board computer support
-    patch -p1 -i "${srcdir}/0001-ARM-sunxi-Add-R8-support.patch"
-    patch -p1 -i "${srcdir}/0002-ARM-sun5i-Add-CHIP-DTS.patch"
-    patch -p1 -i "${srcdir}/0003-ARM-sun5i-Add-R8-DTSI.patch"
-    patch -p1 -i "${srcdir}/0004-ARM-dts-axp209-Add-usb_power_supply-child-node-to-the-ax209-node.patch"
-    patch -p1 -i "${srcdir}/0005-ARM-sun5i-chip-Add-CPU-regulator-for-cpufreq.patch"
 
     # ALARM patches
     patch -p1 -i "${srcdir}/0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch"
@@ -141,6 +130,7 @@ prepare() {
     patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
     patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
     patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
+    patch -p1 -i "${srcdir}/0009-ARM-dts-dove-add-Dove-divider-clocks.patch"
   fi
 
   # add freedo as boot logo
@@ -149,6 +139,11 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
+  # fixes #47778 sdhci broken on some boards
+  # https://bugzilla.kernel.org/show_bug.cgi?id=106541
+  patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
@@ -168,7 +163,7 @@ prepare() {
   # fix Atmel maXTouch touchscreen support
   # https://labs.parabola.nu/issues/877
   # http://www.fsfla.org/pipermail/linux-libre/2015-November/003202.html
-  patch -p1 -i "${srcdir}/0003-fix-atmel-maxtouch-touchscreen-support.patch"
+  patch -p1 -i "${srcdir}/0003-fix-Atmel-maXTouch-touchscreen-support.patch"
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
@@ -403,6 +398,11 @@ _package-headers() {
 
   # remove unneeded architectures
   find "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch -mindepth 1 -maxdepth 1 -type d -not -name "$KARCH" -exec rm -rf {} +
+
+  # remove files already in docs package
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
+  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
 }
 
 _package-docs() {
@@ -418,7 +418,7 @@ _package-docs() {
   find "${pkgdir}" -type f -exec chmod 444 {} \;
   find "${pkgdir}" -type d -exec chmod 755 {} \;
 
-  # remove a file already in linux package
+  # remove a file already in kernel package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
