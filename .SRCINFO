@@ -1,6 +1,6 @@
 pkgbase = openswan
 	pkgdesc = Open Source implementation of IPsec for the Linux operating system
-	pkgver = 2.6.43.1
+	pkgver = 2.6.47
 	pkgrel = 1
 	url = https://www.openswan.org
 	arch = i686
@@ -21,9 +21,9 @@ pkgbase = openswan
 	backup = etc/ipsec.d/policies/clear-or-private
 	backup = etc/ipsec.d/policies/private
 	backup = etc/ipsec.d/policies/private-or-clear
-	source = http://download.openswan.org/openswan/openswan-2.6.43.1.tar.gz
+	source = http://download.openswan.org/openswan/openswan-2.6.47.tar.gz
 	source = openswan.service
-	md5sums = dafa77db8be28d7ae32c5ac2a45966eb
+	md5sums = 54aa71adb46e4f1b07f3db534540058a
 	md5sums = d8b465c10838c72e31329d65011002b6
 
 pkgname = openswan
