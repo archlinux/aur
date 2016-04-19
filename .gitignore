@@ -1,0 +1,6 @@
+/src/
+/pkg/
+/mkttf/
+terminus-font-*.tar.gz
+*.pkg.tar.xz
+
