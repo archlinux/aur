@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Cryptocat
+Comment=Chat with your friends, privately.
+Exec=cryptocat %U
+Icon=cryptocat
+StartupNotify=false
+Categories=Network
+Type=Application
+Name[en_US]=Cryptocat.desktop
