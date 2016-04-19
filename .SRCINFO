@@ -1,7 +1,7 @@
 pkgbase = ttylog
 	pkgdesc = A serial port logger
 	pkgver = 0.26
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ttylog.sourceforge.net/
 	arch = x86_64
 	license = GPL2
