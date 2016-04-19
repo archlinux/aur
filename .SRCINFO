@@ -1,0 +1,15 @@
+pkgbase = vcdiff-git
+	pkgdesc = The ultimate VCD files comparator
+	pkgver = r26.baab8ca
+	pkgrel = 1
+	url = https://github.com/orsonmmz/vcdiff.git
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = gcc-libs
+	source = vcdiff-git::git+https://github.com/orsonmmz/vcdiff
+	md5sums = SKIP
+
+pkgname = vcdiff-git
+
