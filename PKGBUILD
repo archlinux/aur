@@ -3,8 +3,8 @@
 
 pkgname=lib32-apulse
 pkgver=0.1.7
-pkgrel=1
-pkgdesc='PulseAudio emulation for ALSA, multilib.'
+pkgrel=2
+pkgdesc='PulseAudio emulation for ALSA (32-bit)'
 arch=('x86_64')
 url='https://github.com/i-rinat/apulse'
 license=('custom:MIT')
@@ -29,8 +29,10 @@ build() {
 
 	export CFLAGS=-m32
 	export CXXFLAGS=-m32
+	export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr \
+	cmake .. \
+		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release
 	make
 }
