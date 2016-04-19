@@ -1,20 +1,21 @@
 # Maintainer: Leif Warner <abimelech@gmail.com>
 _gitname=Idris-dev
 pkgname=idris-git
-pkgver=v0.9.19.r7.4932d1c
+pkgver=v0.11.r118.cf0b54e
 pkgrel=1
 pkgdesc="Functional Programming Language with Dependent Types"
 url="http://www.idris-lang.org/"
 license=('custom:BSD3')
 arch=('i686' 'x86_64')
-makedpends=('ghc' 'haskell-annotated-wl-pprint>=0.7'  'haskell-annotated-wl-pprint<0.8' 'haskell-ansi-terminal<0.7' 'haskell-ansi-wl-pprint<0.7' 'haskell-base64-bytestring<1.1' 'haskell-binary<0.8' 'haskell-blaze-html<0.8' 'haskell-blaze-markup<0.6.3.0' 'haskell-bytestring' 'haskell-cheapskate<0.2' 'haskell-containers' 'haskell-deepseq' 'haskell-directory' 'haskell-filepath' 'haskell-fingertree<0.2' 'haskell-haskeline<0.8' 'haskell-mtl' 'haskell-network' 'haskell-optparse-applicative<0.12' 'haskell-parsers<0.13' 'haskell-pretty' 'haskell-process' 'haskell-safe' 'haskell-split<0.3' 'haskell-text' 'haskell-time' 'haskell-transformers' 'haskell-transformers-compat>=0.3' 'haskell-trifecta<1.6' 'haskell-uniplate<1.7' 'haskell-unix' 'haskell-unordered-containers<0.3' 'haskell-utf8-string<0.4' 'haskell-vector<0.11' 'haskell-vector-binary-instances<0.3' 'haskell-zip-archive<0.2.4' 'haskell-zlib' 'haskell-libffi')
-depends=('gmp' 'libffi' 'zlib' 'gcc')
+makedepends=('ghc' 'haskell-annotated-wl-pprint>=0.7'  'haskell-ansi-terminal<0.7' 'haskell-ansi-wl-pprint<0.7' 'haskell-base64-bytestring<1.1' 'haskell-binary<0.8' 'haskell-blaze-html' 'haskell-blaze-markup' 'haskell-bytestring' 'haskell-cheapskate<0.2' 'haskell-containers' 'haskell-deepseq' 'haskell-directory' 'haskell-filepath' 'haskell-fingertree<0.2' 'haskell-haskeline<0.8' 'haskell-mtl' 'haskell-network' 'haskell-optparse-applicative' 'haskell-parsers<0.13' 'haskell-pretty' 'haskell-process' 'haskell-safe' 'haskell-split<0.3' 'haskell-text' 'haskell-time' 'haskell-transformers' 'haskell-transformers-compat>=0.3' 'haskell-trifecta<1.6' 'haskell-uniplate<1.7' 'haskell-unix' 'haskell-unordered-containers<0.3' 'haskell-utf8-string' 'haskell-vector' 'haskell-vector-binary-instances<0.3' 'haskell-zip-archive' 'haskell-zlib' 'haskell-libffi' 'haskell-terminal-size' 'haskell-ieee754')
+depends=('ncurses' 'gmp' 'libffi' 'zlib' 'gcc')
 options=('staticlibs')
 provides=('idris')
 conflicts=('idris')
 source=("git://github.com/idris-lang/${_gitname}.git")
 md5sums=('SKIP')
 install=${pkgname}.install
+
 
 pkgver() {
   cd $_gitname
@@ -41,3 +42,4 @@ package() {
     install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
     rm -f ${pkgdir}/usr/share/doc/${pkgname}/LICENSE
 }
+
