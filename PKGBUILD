@@ -10,6 +10,7 @@ url="https://github.com/DlangScience/mir"
 license=('BSL')
 depends=('libphobos-devel' 'dmd')
 makedepends=('git')
+optdepends=('ldc: faster numeric operations')
 source=("git://github.com/DlangScience/$_gitname.git#tag=v$pkgver")
 md5sums=('SKIP')
 conflicts=('libmir-git')
