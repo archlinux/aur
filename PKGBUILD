@@ -2,7 +2,7 @@
 pkgname=fmit-git
 _pkgname=fmit
 pkgver=1.0.12.r1.196da15
-pkgrel=2
+pkgrel=3
 pkgdesc="Free Music Instrument Tuner"
 url="https://github.com/gillesdegottex/fmit"
 arch=('i686' 'x86_64')
@@ -23,6 +23,7 @@ pkgver() {
 build() {
   mkdir -p "${_pkgname}/build"
   cd "${_pkgname}/build"
+  lrelease ../${_pkgname}.pro
   qmake-qt5 "PREFIX=/usr" "CONFIG+=acs_qt acs_alsa acs_jack acs_portaudio" ../${_pkgname}.pro
   make
 }
