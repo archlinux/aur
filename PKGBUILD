@@ -20,7 +20,6 @@ conflicts=("firefox-beta-bin-zh")
 install=$pkgname.install
 _baseurl="https://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/build$pkgrel/linux-${CARCH}/zh-CN/"
 _filename="firefox-$pkgver"
-_filename1="firefox-$(echo ${pkgver}|cut -d "b" -f1).zh-CN.linux-${CARCH}"
 _sha512sum="$(curl -s "${_baseurl}${_filename}.checksums" | grep ".tar.bz2" | grep sha512 | cut -d " " -f1)"
 source=("$pkgname.desktop"
         "vendor.js"
