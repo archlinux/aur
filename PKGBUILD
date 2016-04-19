@@ -20,7 +20,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=1.1
 rcnrel=armv7-x2
 arch=('i686' 'x86_64' 'armv7h')
 url="https://gnunet.org/knock"
@@ -121,6 +121,9 @@ prepare() {
   if [ "${_pkgbasever}" != "${_pkgver}" ]; then
     patch -p1 -i "${srcdir}/patch-${_pkgbasever}-${_pkgver}"
   fi
+
+  # add Knock patch
+  patch -p1 -i "${srcdir}/tcp_stealth_${_knockpatchver}.diff"
 
   if [ "${CARCH}" = "armv7h" ]; then
     # RCN patch (CM3 firmware deblobbed and AUFS removed)
