@@ -122,7 +122,7 @@ prepare() {
     patch -p1 -i "${srcdir}/patch-${_pkgbasever}-${_pkgver}"
   fi
 
-  # add knock patch
+  # add Knock patch
   patch -p1 -i "${srcdir}/tcp_stealth_${_knockpatchver}.diff"
 
   if [ "${CARCH}" = "armv7h" ]; then
