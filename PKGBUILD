@@ -2,7 +2,7 @@
 # Contributor: Shalygin Konstantin <k0ste@cn.ru>
 
 pkgname='ipt_ndpi'
-pkgver=1.2_1.7.0.netfilter.202.c20e93d
+pkgver=1.2_1.7.0.netfilter.209.7fc13cd
 pkgrel=1
 pkgdesc='nDPI as netfilter extension'
 arch=('any')
