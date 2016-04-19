@@ -3,8 +3,8 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite
-pkgver=1.1.4
-pkgrel=2
+pkgver=1.1.4.1
+pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64' 'i686')
 url='http://www.aseprite.org/'
