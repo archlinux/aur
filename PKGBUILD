@@ -1,11 +1,11 @@
 pkgname=mingw-w64-extra-cmake-modules
 pkgver=5.21.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Extra modules and scripts for CMake (mingw-w64)"
 groups=(mingw-w64-kf5)
 license=("LGPL")
-makedepends=(mingw-w64-cmake)
+depends=(mingw-w64-cmake)
 options=(staticlibs !strip !buildflags)
 url="https://projects.kde.org/projects/kdesupport/extra-cmake-modules"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/extra-cmake-modules-${pkgver}.tar.xz"
