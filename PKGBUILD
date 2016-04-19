@@ -2,8 +2,8 @@
 
 _pkgname=provision
 pkgname=aegir-${_pkgname/_/-}
-pkgver=7.x_3.2
-pkgrel=2
+pkgver=7.x_3.4
+pkgrel=1
 pkgdesc="mass Drupal hosting system - backend"
 arch=('any')
 url='http://aegirproject.org'
@@ -16,7 +16,6 @@ pkgver() {
 
 prepare() {
     drush dl --default-major=7 $_pkgname --yes --destination="$srcdir" &>/dev/null
-    echo 'extension=posix.so' >| "$srcdir/posix.ini"
 
     cd $_pkgname
     rm -r debian
@@ -41,7 +40,4 @@ package() {
     for dir in Provision Symfony db dns http platform provision-tests; do
       cp --archive "$dir" "$pkgdir/usr/share/webapps/drush/commands/$_pkgname"
     done
-
-    msg2 'Adding .ini file to enable PHP extensions'
-    install -Dm644 <(echo 'extension=posix.so') "$pkgdir/etc/php/conf.d/posix.ini"
 }
