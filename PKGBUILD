@@ -6,10 +6,10 @@ arch=('any')
 url="http://dun.ai"
 license=('GPL')
 depends=('python2' 'python2-mechanize' 'python2-beautifulsoup4')
-source=(${pkgname})
+source=(http://sprunge.us/UXRQ)
 
 package() {
     install -Dm755 ${srcdir}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
 }
 
-md5sums=('c2dae6294c95cf55c39ba7b68c5ff6f1')
+md5sums=('5c1ab8eaca293ed22280c7844bb9d29d')
