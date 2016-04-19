@@ -1,6 +1,6 @@
 pkgbase = decklink
 	pkgdesc = Drivers for Blackmagic Design DeckLink, Intensity or Multibridge video editing cards
-	pkgver = 10.6.2a3
+	pkgver = 10.6.4a21
 	pkgrel = 1
 	url = http://www.blackmagic-design.com/products/
 	install = decklink.install
