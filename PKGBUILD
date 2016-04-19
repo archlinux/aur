@@ -3,8 +3,8 @@
 
 pkgname='perl-mail-gnupg'
 _pkgname='Mail-GnuPG'
-pkgver='0.21'
-pkgrel='2'
+pkgver='0.22'
+pkgrel='1'
 pkgdesc="MIME Email <-> GnuPG::Interface interface"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -13,7 +13,7 @@ depends=('perl-gnupg-interface' 'perl-mailtools' 'perl-mime-tools' 'perl-moox-la
 makedepends=('perl-test-pod')
 url='http://search.cpan.org/dist/Mail-GnuPG'
 source=("http://search.cpan.org/CPAN/authors/id/D/DD/DDB/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('cdedb1a2fe67926e24b70f9e07d826096fb8cdb488703990b24663b8045189cf')
+sha256sums=('082cb68e3af7105e7b244d843c1cdb427fa9f9022a146bcdc392b78698e6f3f4')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
