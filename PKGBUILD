@@ -4,7 +4,7 @@
 pkgname=drush-git
 _pkgname=${pkgname%-git}
 pkgver=9.0.0.alpha1.r64.g5f5f9cf
-pkgrel=1
+pkgrel=2
 pkgdesc='The Drupal command-line shell, git version.'
 arch=('any')
 url="http://$_pkgname.org"
@@ -58,6 +58,7 @@ package() {
   cd "$_pkgname"
   install -Dm755 "$_pkgname.phar" "$pkgdir/usr/share/webapps/$_pkgname/$_pkgname.phar"
   install -Dm644 "$_pkgname.complete.sh" "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
+  install -Dm644 ../php.ini "$pkgdir/etc/php/conf.d/$_pkgname.ini"
   install --directory "$pkgdir/usr/bin"
   install --directory "$pkgdir/usr/share/doc/$_pkgname"
   install --directory "$pkgdir/usr/share/webapps/$_pkgname/commands"
