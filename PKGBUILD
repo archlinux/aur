@@ -7,7 +7,7 @@
 DLAGENTS=('http::/usr/bin/curl -d agree="We+luv+You" -fL -o %o %u')
 
 pkgname=netfabb-basic
-pkgver=7.2.0
+pkgver=7.4.0
 pkgrel=1
 pkgdesc="view and repair STL files"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ install='netfabb-basic.install'
 md5sums=('8901e9ed2f93d64a298aa328d762b3d1') # 32-bit
 nARCH=32
 if [ "$CARCH" == x86_64 ] ; then
-   md5sums=('aaf88c0c54885e20f225f6d2805b8b10') # 64-bit
+   md5sums=('19eeb80c953e9eb0e22a635678a1a18e') # 64-bit
    depends[0]="lib32-gtk2"
    nARCH=64
 fi
