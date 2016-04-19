@@ -1,0 +1,13 @@
+pkgbase = python2-ipcalc
+	pkgdesc = IP subnet calculator for Python.
+	pkgver = 1.99.0
+	pkgrel = 1
+	url = https://github.com/tehmaze/ipcalc
+	arch = any
+	license = custom:unknown
+	depends = python2
+	source = http://pypi.python.org/packages/source/i/ipcalc/ipcalc-1.99.0.tar.gz
+	sha1sums = a9841397166cce456f02e0226c0b97cbbdaf300a
+
+pkgname = python2-ipcalc
+
