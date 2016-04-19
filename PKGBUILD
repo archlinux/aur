@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-rt
 _pkgbasever=4.4-gnu
-_pkgver=4.4.6-gnu
+_pkgver=4.4.7-gnu
 _rtbasever=4.4
-_rtpatchver=rt14
+_rtpatchver=rt16
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -22,7 +22,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}_${_rtpatchver}
 pkgver=${_pkgver//-/_}.${_rtpatchver}
 pkgrel=1
-rcnrel=armv7-x5
+rcnrel=armv7-x6
 arch=('i686' 'x86_64' 'armv7h')
 url="https://rt.wiki.kernel.org/"
 license=('GPL2')
@@ -50,7 +50,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         'change-default-console-loglevel.patch'
         '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
         '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
-        '0003-fix-atmel-maxtouch-touchscreen-support.patch'
+        '0003-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
         "https://repo.parabola.nu/other/rcn-libre-rt/patches/${_pkgver%-*}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch"
         "https://repo.parabola.nu/other/rcn-libre-rt/patches/${_pkgver%-*}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch.sig"
@@ -65,9 +65,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
 sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
-            '0e4403973b4e92ec97e101f4f8053cc8f1b90302c2040f168d0c53374efc121a'
+            '589e412cfd54f4683c6b9512d50fe4f25d23f019633f5c57b2c8b083d74f3890'
             'SKIP'
-            '962eed78bc4bf8d4b9cfd020a005ddeaf88ccd7cc05e884f162a08406673a690'
+            '2ff8616f1fcbf8070650fe0287523c57f556c76c0e8acabd627f4acf2737b387'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -77,13 +77,13 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
             '395079cf7bdaef8fd80dbe8fd9e45d827d44b66f6eeaf87d57c25047a42efeae'
             '93d8c9e4937e59b17336853afcf2ade326ab5182e7bef239b363ec963d698291'
-            'c1b28105e8283299a23e9dde63b91563d875a847e4757c525fb521384c68057e'
+            '50959af214719962e3b5e5a6215ede80164a8d348e970ae71b7310224fb7cd36'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '61370b766e0c60b407c29d2c44b3f55fc352e9049c448bc8fcddb0efc53e42fc'
-            '3d3266bd082321dccf429cc2200d1a4d870d2031546f9f591b6dfbb698294808'
-            '0a6f76bbc03ae6e846a4ba4e31bbc0a40b1ae538c1271defcbe3089e00a4b53d'
-            '7b08c9d339fb782a729c0602eeb507a853deb7ddcc703746b7bbc76b9a1b1ca0'
+            'f0a10ea9a669e5200aa33656565c209718b24ff1add03ac5279c4a1f46ab8798'
+            '96c6c7d4057b8d08238adae85d476c863c082770a182057163a45480511d35a8'
+            '2ca85ee212ef8d8aab3d3c2a0cef304a355d86e7aa520e19471f56ace68a0cf4'
+            '5f16832e670ada630e17d4ddecd02d139873e1924bbad5df0693362327ed48c3'
             'SKIP'
             'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
             '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
@@ -126,7 +126,10 @@ prepare() {
   rm localversion-rt
 
   if [ "${CARCH}" = "armv7h" ]; then
-    # RCN patch (CM3 firmware deblobbed)
+    # RCN patch (CM3 firmware deblobbed and AUFS removed)
+    # Note: AUFS was removed in the RCN patch since it are being supported by
+    # linux-libre-pck through PCK patch for all available architectures.
+    # See https://wiki.parabola.nu/PCK for further details.
     git apply -v "${srcdir}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch"
 
     # ALARM patches
@@ -166,7 +169,7 @@ prepare() {
   # fix Atmel maXTouch touchscreen support
   # https://labs.parabola.nu/issues/877
   # http://www.fsfla.org/pipermail/linux-libre/2015-November/003202.html
-  patch -p1 -i "${srcdir}/0003-fix-atmel-maxtouch-touchscreen-support.patch"
+  patch -p1 -i "${srcdir}/0003-fix-Atmel-maXTouch-touchscreen-support.patch"
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
@@ -402,7 +405,7 @@ _package-headers() {
   # remove unneeded architectures
   find "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch -mindepth 1 -maxdepth 1 -type d -not -name "$KARCH" -exec rm -rf {} +
 
-  # remove a files already in docs package
+  # remove files already in docs package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
@@ -421,7 +424,7 @@ _package-docs() {
   find "${pkgdir}" -type f -exec chmod 444 {} \;
   find "${pkgdir}" -type d -exec chmod 755 {} \;
 
-  # remove a file already in linux package
+  # remove a file already in kernel package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
