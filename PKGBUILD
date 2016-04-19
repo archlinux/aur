@@ -2,9 +2,10 @@
 
 pkgname=franz
 pkgver=0.9.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A free messaging app for WhatsApp, Facebook Messenger, Telegram, Slack and more."
 arch=('i686' 'x86_64')
+depends=('gconf')
 url="http://meetfranz.com/"
 license=("custom:github")
 

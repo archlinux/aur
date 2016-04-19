@@ -1,11 +1,12 @@
 pkgbase = franz
 	pkgdesc = A free messaging app for WhatsApp, Facebook Messenger, Telegram, Slack and more.
 	pkgver = 0.9.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://meetfranz.com/
 	arch = i686
 	arch = x86_64
 	license = custom:github
+	depends = gconf
 	source = franz.sh
 	source = franz.desktop
 	source = franz.png
