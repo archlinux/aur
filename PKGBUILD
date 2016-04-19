@@ -4,8 +4,8 @@
 # SELinux Maintainer: Nicolas Iooss (nicolas <dot> iooss <at> m4x <dot> org)
 
 pkgbase=linux-selinux
-_srcname=linux-4.4
-pkgver=4.4.5
+_srcname=linux-4.5
+pkgver=4.5.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -21,18 +21,16 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux-selinux.preset'
-        'change-default-console-loglevel.patch'
-        '0001-sdhci-revert.patch')
+        'change-default-console-loglevel.patch')
 
-sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
+sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
             'SKIP'
-            'a570680ad5624eff0687c74d652158cbd9ec92fdd177ac5ff812988a24d54ab5'
+            '060ad091ebfa2b63d62e86beaf68c3a5d4638c506c3ac941c1825ba756e830b1'
             'SKIP'
-            '87dcca2025cd2eab16e130e4d1f4a69cb1516eb12935d7e29c98a07196ecd291'
-            'a0e993a465290325e0b7c432358066d16f766d8580f9337de20fa92bb658e994'
+            '1a141a80b4bf54a76c11d428e4946cab9f031eb08a6d7c1acc16483773c2f5d2'
+            '6b38e96c477909b50bc467f59a4e7d2b79fd774841ac59c1f25b5f4ff9ed19ee'
             '375da3b030f17581cbf5be9140b79029ca85eebc70197f419a4de77e00fa84e9'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -48,11 +46,6 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
-  
-  # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
-  # fixes #47778 sdhci broken on some boards
-  # https://bugzilla.kernel.org/show_bug.cgi?id=106541
-  patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
