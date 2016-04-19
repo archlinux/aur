@@ -1,6 +1,6 @@
 pkgbase = unity-editor-bin
 	pkgdesc = The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences.
-	pkgver = 5.4.0b13+20160406
+	pkgver = 5.4.0b15+20160418
 	pkgrel = 1
 	url = https://unity3d.com/
 	install = unity-editor-bin.install
@@ -24,10 +24,10 @@ pkgbase = unity-editor-bin
 	optdepends = java-environment: for Android and Tizen exporting
 	optdepends = android-sdk: for Android Remote
 	optdepends = android-udev: for Android Remote
-	provides = unity-editor=5.4.0b13+20160406
+	provides = unity-editor=5.4.0b15+20160418
 	conflicts = unity-editor
 	options = !strip
-	source = http://download.unity3d.com/download_unity/linux/unity-editor-5.4.0b13+20160406_amd64.deb
-	md5sums = 1acc8c7d74aaa0ae380ee02126674a24
+	source = http://download.unity3d.com/download_unity/linux/unity-editor-5.4.0b15+20160418_amd64.deb
+	md5sums = 815ab60084ef0be7960ed1b53b85cb9a
 
 pkgname = unity-editor-bin
