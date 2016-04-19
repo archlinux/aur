@@ -49,6 +49,8 @@ BUILT_MODULE_NAME[1]="nvidia-uvm"\
 DEST_MODULE_LOCATION[1]="/kernel/drivers/video"\
 BUILT_MODULE_NAME[2]="nvidia-modeset"\
 DEST_MODULE_LOCATION[2]="/kernel/drivers/video"' dkms.conf
+echo -e "# Only build for scoped kernels." >> dkms.conf
+echo -e "BUILD_EXCLUSIVE_KERNEL=\0042^4.4.*grsec$\0042" >> dkms.conf
 }
 
 build() {
