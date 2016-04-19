@@ -3,17 +3,17 @@
 # Original Maintainer::  	Jonathan Hudson <jh+arch@daria.co.uk>
 
 pkgname=mapserver
-pkgver=7.0.0
-pkgrel=2
+pkgver=7.0.1
+pkgrel=1
 pkgdesc="Platform for publishing spatial data and interactive mapping applications to the web"
 arch=(i686 x86_64)
 license=('MIT')
 url="http://www.mapserver.org"
-depends=('libpng' 'freetype2' 'v8-3.20' 'zlib' 'gdal' 'proj' 'libjpeg-turbo' 'libxml2' 'libpqxx' 'pdflib-lite' 'geos' 'agg' 'apache' 'fcgi' 'mod_fastcgi' 'python2' 'php' 'php-apache' 'swig' 'libsvg-cairo' 'php-pear' )
+depends=('libpng' 'freetype2' 'v8' 'zlib' 'gdal' 'proj' 'libjpeg-turbo' 'libxml2' 'libpqxx' 'pdflib-lite' 'geos' 'agg' 'apache' 'fcgi' 'mod_fastcgi' 'python2' 'php' 'php-apache' 'swig' 'libsvg-cairo' 'php-pear' )
 makedepends=('cfitsio')
 options=()
 source=("http://download.osgeo.org/mapserver/mapserver-${pkgver}.tar.gz")
-md5sums=('e39360006e668ae2ba3560ed37a43e9b')
+md5sums=('9dddee855006686dd9b3b1402651f283')
 
 build() {
   cd ${startdir}/src/${pkgname}-${pkgver}
@@ -33,7 +33,7 @@ build() {
 	-DPYTHON_INCLUDE_PATH=/usr/include/python2.7 \
 	-DFRIBIDI_INCLUDE_DIR="/usr/include/glib-2.0;/usr/lib/glib-2.0/include;/usr/include/fribidi" \
 	-DCMAKE_PREFIX_PATH=/opt/v8 \
-    -DWITH_CAIRO=ON \
+        -DWITH_CAIRO=ON \
 	-DWITH_CLIENT_WFS=ON \
 	-DWITH_CLIENT_WMS=ON \
 	-DWITH_CSHARP=OFF \
@@ -56,8 +56,8 @@ build() {
 	-DWITH_ORACLESPATIAL=OFF \
 	-DWITH_ORACLE_PLUGIN=OFF \
 	-DWITH_PERL=OFF \
-	-DWITH_PHP=ON \
-	-DWITH_POINT_Z_M=OFF \
+	-DWITH_PHP=OFF \
+	-DWITH_POINT_Z_M=ON \
 	-DWITH_POSTGIS=ON \
 	-DWITH_PROJ=ON \
 	-DWITH_PYTHON=ON \
@@ -73,7 +73,7 @@ build() {
 	-DFREETYPE_INCLUDE_DIR=/usr/include/freetype2 \
     
   make clean
-  make -j9
+  make -j5
   
 }
 
