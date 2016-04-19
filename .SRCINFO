@@ -1,6 +1,6 @@
 pkgbase = themedia
 	pkgdesc = Media Player based on Phonon
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 0
 	url = https://github.com/vicr123/themedia
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = themedia
 	depends = xdg-utils
 	depends = phonon-qt5
 	depends = qt5-base
-	source = themedia-1.0::git+https://github.com/vicr123/themedia.git
+	source = themedia-1.1::git+https://github.com/vicr123/themedia.git
 	md5sums = SKIP
 
 pkgname = themedia
