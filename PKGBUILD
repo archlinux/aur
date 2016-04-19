@@ -9,8 +9,8 @@
 # -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
 
 pkgname=wine-gaming-nine
-pkgver=1.9.7
-pkgrel=2
+pkgver=1.9.8
+pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
 _winesrcdir="pontostroy-wine-$_pkgbasever"
@@ -18,7 +18,7 @@ _winesrcdir="pontostroy-wine-$_pkgbasever"
 source=("https://github.com/mradermaxlol/pontostroy-wine/archive/v$_pkgbasever.tar.gz"
 		30-win32-aliases.conf
         )
-sha1sums=('62b796c2b300ab37e05a974bba5f06400186b872'
+sha1sums=('4cba3dfba02ebced92ddba82a15b8105e0ae86a8'
 		  '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           )
 
