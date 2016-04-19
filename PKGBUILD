@@ -12,11 +12,11 @@ _remove_bundled_jre=
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=145.969.6
+_buildver=145.970.4
 _veryear=2016
 _verrelease=1
-_verextra=2-RC
-_nojdkrelease=false
+_verextra=2-RC2
+_nojdkrelease=true
 pkgver=${_veryear}.${_verrelease}.${_buildver}
 pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (ultimate version)"
