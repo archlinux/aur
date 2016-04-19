@@ -1,11 +1,12 @@
 pkgbase = prosody-mod-s2s-auth-dane
 	pkgdesc = implements DANE as server to server authentication for prosody xmpp server
 	pkgver = 2016.01.31
-	pkgrel = 1
+	pkgrel = 2
 	url = https://modules.prosody.im/mod_s2s_auth_dane.html
 	arch = any
 	license = MIT
 	depends = prosody
+	depends = lua-sec
 	source = https://hg.prosody.im/prosody-modules/file/39774b078dde/mod_s2s_auth_dane/mod_s2s_auth_dane.lua
 	md5sums = 31fa9665867682002ef6763b7e26df19
 
