@@ -1,7 +1,7 @@
 pkgbase = python2-ldns
 	pkgdesc = Python bindings for the ldns library for DNS programming (Ubuntu repackage)
 	pkgver = 1.6.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nlnetlabs.nl/projects/ldns/
 	arch = x86_64
 	arch = i686

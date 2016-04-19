@@ -1,7 +1,7 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname="python2-ldns"
 pkgver=1.6.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for the ldns library for DNS programming (Ubuntu repackage)"
 url="https://www.nlnetlabs.nl/projects/ldns/"
 arch=('x86_64' 'i686')
@@ -28,15 +28,18 @@ prepare() {
     then
         deb2targz python-ldns_1.6.17-5_amd64.deb
         tar xf python-ldns_1.6.17-5_amd64.tar.xz ./usr/lib/python2.7/dist-packages/ldns.py
+        tar xf python-ldns_1.6.17-5_amd64.tar.xz ./usr/lib/python2.7/dist-packages/_ldns.so
     else
         deb2targz python-ldns_1.6.17-5_i686.deb
         tar xf python-ldns_1.6.17-5_i686.tar.xz ./usr/lib/python2.7/dist-packages/ldns.py
+        tar xf python-ldns_1.6.17-5_i686.tar.xz ./usr/lib/python2.7/dist-packages/_ldns.so
     fi
-    mv usr/lib/python2.7/dist-packages/ldns.py .
+    mv usr/lib/python2.7/dist-packages/* .
     rm -rf usr # thats why you NEVER may run makepkg as root!
 }
 
 package() {
     cd "${srcdir}"
     python2 setup.py install --root="${pkgdir}" --optimize=1
+    cp _ldns.so "${pkgdir}/usr/lib/python2.7/site-packages/"
 }
