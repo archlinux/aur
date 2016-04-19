@@ -104,6 +104,9 @@ _package() {
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
+  conflicts=('linux')
+  provides=("linux=$pkgver")
+
   cd "${srcdir}/${_srcname}"
 
   KARCH=x86
@@ -157,6 +160,9 @@ _package() {
 
 _package-headers() {
   pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+
+  conflicts=('linux-headers')
+  provides=("linux-headers=$pkgver")
 
   install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -279,6 +285,9 @@ _package-headers() {
 
 _package-docs() {
   pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+
+  conflicts=('linux-docs')
+  provides=("linux-docs=$pkgver")
 
   cd "${srcdir}/${_srcname}"
 
