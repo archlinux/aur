@@ -1,3 +1,4 @@
 src/
 pkg/
-canary_latest.tar.gz
+*.gz
+*.xz
