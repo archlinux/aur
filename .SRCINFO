@@ -1,7 +1,7 @@
 pkgbase = python2-qtlc3-git
 	pkgdesc = A python and C++ LC-3 simulator frontend in QT
 	pkgver = r119.25b0d84
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/theotherjimmy/pylc3
 	arch = any
 	license = GPL
@@ -11,6 +11,8 @@ pkgbase = python2-qtlc3-git
 	makedepends = python2
 	makedepends = qt4
 	makedepends = python2-pylc3-git
+	makedepends = qt5-base
+	makedepends = qtchooser
 	depends = boost
 	depends = boost-libs
 	depends = python2
