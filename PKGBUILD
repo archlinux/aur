@@ -6,7 +6,7 @@
 pkgbase='firefox-theme-adwaita-git'
 pkgname=('firefox-theme-gnome-git' 'firefox-extension-gnome-theme-tweak-git')
 pkgver=45.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Adwaita theme for Firefox (Matches the default Gnome Shell theme)"
 url="https://github.com/gnome-integration-team/firefox-gnome"
 arch=('any')
@@ -26,7 +26,6 @@ conflicts+=("$_gitname")
 prepare() {
   cp -rf --reflink=auto "$_gitname"/* .
   rm -rf "$_gitname"
-  find -name '.git*' -exec rm -rf '{}' +
 }
 
 makedepends+=(rasqal)
