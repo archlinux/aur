@@ -1,0 +1,23 @@
+pkgbase = openvpn-x509-alt-username
+	pkgdesc = OpenVPN with x509-username-field option enabled
+	pkgver = 2.3.10
+	pkgrel = 1
+	url = http://openvpn.net/index.php/open-source.html
+	install = openvpn.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = systemd
+	depends = openssl
+	depends = lzo
+	depends = iproute2
+	depends = libsystemd
+	provides = openvpn
+	conflicts = openvpn
+	source = http://swupdate.openvpn.net/community/releases/openvpn-2.3.10.tar.gz
+	source = openvpn@.service
+	sha256sums = f8b0b5b92e35bbca1db1a7e6b49e04639e45634e9accd460459b40b2c99ec8f6
+	sha256sums = 860976d954bd1db95861b95f0ef42e4e80618aa23a9f2aed26d17ee3d09110df
+
+pkgname = openvpn-x509-alt-username
+
