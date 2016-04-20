@@ -1,17 +1,17 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=gitlint
-pkgver=0.6.1
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Git commit message linter"
 arch=('any')
-depends=('python' 'python-click' 'python-sh')
+depends=('python' 'python-click' 'python-ordereddict' 'python-sh')
 makedepends=('python-setuptools')
 url="https://jorisroovers.github.io/gitlint/"
 license=('MIT')
 options=(!emptydirs)
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/jorisroovers/$pkgname/tar.gz/v$pkgver)
-sha256sums=('a96057d22ef925f4c7c891031203daffd9719c2a1f6050a26d9541f19154e997')
+sha256sums=('dc4de35e652f86675b7ab2fb89707645a596346ce214d55a1d88999719485361')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
