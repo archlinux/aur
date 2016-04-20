@@ -6,13 +6,13 @@
 _pkgbase=glfw
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-x11-git" "$_pkgbase-wayland-git")
-pkgver=3.1.1.r124.g33c7c28
+pkgver=3.1.2.r311.gd97044d
 pkgrel=1
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.glfw.org/"
 license=('custom:ZLIB')
 optdepends=('doxygen: build glfw html documentation')
-makedepends=('cmake' 'git' 'libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'wayland' 'libxkbcommon' 'libgl')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'libxi' 'libxrandr' 'libxinerama' 'libxcursor' 'wayland' 'wayland-protocols' 'libxkbcommon' 'libgl')
 conflicts=("$_pkgbase")
 provides=("$_pkgbase=3.1.1")
 source=("$_pkgbase::git+https://github.com/glfw/glfw")
