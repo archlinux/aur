@@ -13,16 +13,16 @@ makedepends=('git' 'gulp' 'npm')
 source=("$pkgname::git+https://github.com/Sytten/Facebook-Messenger-Desktop.git")
 md5sums=('SKIP')
 
+if [ $(uname -m) == "i686" ]
+ then
+  _arch="linux32"
+else
+  _arch="linux64"
+fi
+
 build() {
   cd $pkgname
   npm install
-  
-  if [ $(uname -m) == "i686" ]
-   then
-    _arch="linux32"
-  else
-    _arch="linux64"
-  fi
   
   gulp build:${_arch}
 }
