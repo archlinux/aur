@@ -4,6 +4,6 @@ Comment=Chat with your friends, privately.
 Exec=cryptocat %U
 Icon=Cryptocat
 StartupNotify=false
-Categories=Network
+Categories=Network;
 Type=Application
 Name[en_US]=Cryptocat.desktop
