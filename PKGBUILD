@@ -4,7 +4,7 @@
 
 pkgname=mozilla-extension-gnotifier-git
 pkgver=1.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Add-on for Firefox and Thunderbird to enable integration with GNOME native notification system.'
 url='https://github.com/mkiol/GNotifier'
 arch=('any')
@@ -55,7 +55,8 @@ build() {
 
 eval "package_$pkgname()" '{
   prepare_target
-  cp --no-preserve=ownership,mode -r . "$destdir/$id"
+  install -d "$destdir/$id"
+  cp --no-preserve=ownership,mode -r * "$destdir/$id"
 }'
 
 for target in "${optdepends[@]}"; do
