@@ -7,7 +7,7 @@
 
 pkgname=mozilla-extension-gnome-keyring-git
 pkgver=0.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Mozilla extension to store passwords and form logins in gnome-keyring."
 arch=(any)
 url='https://github.com/swick/moz-gnome-keyring-integration'
@@ -27,7 +27,6 @@ conflicts+=("$_gitname")
 prepare() {
   cp -rf --reflink=auto "$_gitname"/* .
   rm -rf "$_gitname"
-  find -name '.git*' -exec rm -rf '{}' +
 }
 
 makedepends+=(rasqal)
