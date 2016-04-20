@@ -2,7 +2,7 @@
 
 pkgname=rimworld
 pkgver=0.13.1135  # see ${srcdir}/Version.txt
-pkgrel=4
+pkgrel=5
 pkgdesc="A sci-fi colony simulation game driven by an intelligent AI storyteller."
 arch=('i686' 'x86_64')
 url="http://rimworldgame.com/"
@@ -46,7 +46,7 @@ build() {
 
   # unpack game zipfile
   msg "Found game package, unpacking..."
-  unzip -f "${pkgpath}/${_gamepkg}" -d "${srcdir}"
+  unzip -u "${pkgpath}/${_gamepkg}" -d "${srcdir}"
 }
 
 package() {
