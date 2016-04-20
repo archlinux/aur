@@ -2,7 +2,7 @@
      
 pkgname=nvidia-pf
 pkgver=364.16
-pkgrel=1
+pkgrel=2
 _goodkver=4.5
 _badkver=4.6
 _modver=${_goodkver}-pf
@@ -32,6 +32,8 @@ install=nvidia.install
 options=(!strip)
 source_i686=("NVIDIA-Linux-x86-${pkgver}.run::https://developer.nvidia.com/linux32bit")
 source_x86_64=("NVIDIA-Linux-x86_64-${pkgver}.run::https://developer.nvidia.com/linux64bit")
+md5sums_i686=('c25de6f7e328c6eab5305be0cd0b02d5')
+md5sums_x86_64=('5d954bfb0be8532779a4ca1741851493')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}"
@@ -62,7 +64,10 @@ package() {
           "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia.ko"
   install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-modeset.ko" \
           "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-modeset.ko"
-  
+  install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-drm.ko" \
+         "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-drm.ko"
+
+
   if [[ "$CARCH" = "x86_64" ]]; then
       install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia-uvm.ko" \
               "${pkgdir}/usr/lib/modules/${_extramodules}/nvidia-uvm.ko"
@@ -75,5 +80,3 @@ package() {
   echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-pf.conf"
 }
 
-md5sums_i686=('1a79469721e631996304bad13dad91f5')
-md5sums_x86_64=('1de9f7ad2604f4bcb002164c403b288b')
