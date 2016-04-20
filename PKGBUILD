@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatlibc-git
-pkgver=r148.124258a
+pkgver=r154.e5469d2
 pkgrel=1
 epoch=
 pkgdesc="A small ARM/x86(_64) libc."
@@ -32,7 +32,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
-  make
+  make CC="$(which ncc)"
 }
 
 package() {
@@ -46,6 +46,6 @@ package() {
   install -m644 arpa/inet.h $pkgdir/usr/include/arpa
   install -m644 sys/ioctl.h sys/mman.h sys/stat.h \
                 sys/time.h sys/types.h sys/wait.h $pkgdir/usr/include/sys
-  install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
+  install -Dm644 README $pkgdir/usr/share/doc/${pkgname%-*}/README
 }
 
