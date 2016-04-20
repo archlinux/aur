@@ -2,9 +2,9 @@
 
 pkgname='lel-git'
 pkgver=r18.d5c9d0a
-pkgrel=1
+pkgrel=2
 pkgdesc="Viewer for farbfeld images."
-url="http://git.2f30.org"
+url="http://git.2f30.org/lel"
 license=('custom:MIT/X Consortium')
 source=("git://git.2f30.org/lel.git")
 sha512sums=('SKIP')
