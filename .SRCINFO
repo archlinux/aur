@@ -1,0 +1,15 @@
+pkgbase = lel-git
+	pkgdesc = Viewer for farbfeld images.
+	pkgver = r18.d5c9d0a
+	pkgrel = 1
+	url = http://git.2f30.org
+	arch = any
+	license = custom:MIT/X Consortium
+	makedepends = git
+	provides = lel
+	conflicts = lel
+	source = git://git.2f30.org/lel.git
+	sha512sums = SKIP
+
+pkgname = lel-git
+
