@@ -6,7 +6,7 @@
 
 _pkgname=htop
 pkgname=$_pkgname-solarized
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Interactive process viewer with solarized patch"
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ conflicts=('htop')
 options=('!emptydirs')
 source=("http://hisham.hm/$_pkgname/releases/$pkgver/$_pkgname-$pkgver.tar.gz"
         "htop-$pkgver-solarized.patch")
-sha512sums=('2df1b96e4c07a1de360dc7b7b20db0e663d7fa2c9a8a9dcc3d7dc1ce5e5b59f72d927e8e7ae919631cf0e950a82450b45116a1f8d788f63c5762bd73332ec32c'
+sha512sums=('57991a55b69028c01549b067ec749099466df5b08a0ed9a65dd779e6d2c8ee0a5d9c330bb6c727b04a349146ad441b7115718e433d1f8232f74b28903fb351ff'
             'd221942ea7843e802cfbbe01f24805944d831148eefc6a7a0bab38e883970bd6598a2e76ff45286566d732df0b193ef33451956d210bd4f44752336cadc79c57')
 
 prepare() {
