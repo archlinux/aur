@@ -1,7 +1,7 @@
 # Maintainer: FrozenCow <frozencow@gmail.com>
 
 pkgname=itch
-pkgver=0.13.2
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="The best way to play itch.io games."
 
@@ -15,7 +15,7 @@ options=('!strip')
 install="itch.install"
 
 source=("https://github.com/itchio/itch/archive/v${pkgver}.tar.gz")
-sha256sums=('fd258ee8e5e32508f71daa626fe30f21b0fb0d95660cbc9adc2b2898a21fa118')
+sha256sums=('0eafdc5c12f2a007a146b2925dc99c210ee9aeb2c859ce81fa523244098c5779')
 
 [ "$CARCH" = "i686" ]   && _ELECTRON_ARCH=ia32
 [ "$CARCH" = "x86_64" ] && _ELECTRON_ARCH=x64
@@ -31,6 +31,9 @@ prepare() {
 
 build() {
   cd "$srcdir/itch-${pkgver}"
+  export CI_APPNAME=itch
+  export CI_CHANNEL=stable
+  export CI_RELEASE_DATE="`date +%Y-%m-%d`"
   release/prepare.sh
   release/generate-itch-desktop.sh
 
@@ -51,9 +54,9 @@ package() {
   install -d "$pkgdir/usr/share/applications"
   install -Dm644 release/itch.desktop "${pkgdir}/usr/share/applications/itch.desktop"
 
-  for icon in release/icons/icon*.png
+  for icon in release/itch-icons/icon*.png
   do
-    iconsize="${icon#release/icons/icon}"
+    iconsize="${icon#release/itch-icons/icon}"
     iconsize="${iconsize%.png}"
     icondir="$pkgdir/usr/share/icons/hicolor/${iconsize}x${iconsize}/apps/"
     install -d "${icondir}"
