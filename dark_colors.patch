@@ -1,0 +1,95 @@
+--- a/gtk-2.0/gtkrc
++++ b/gtk-2.0/gtkrc
+@@ -1,6 +1,6 @@
+ # Numix GTK Theme
+ 
+-gtk-color-scheme = "bg_color:#eeeeee\nfg_color:#555555\nbase_color:#ffffff\ntext_color:#333333\nselected_bg_color:#f0544c\nselected_fg_color:#ffffff\ntooltip_bg_color:#444444\ntooltip_fg_color:#eeeeee\ntitlebar_bg_color:#444444\ntitlebar_fg_color:#dddddd\nmenubar_bg_color:#444444\nmenubar_fg_color:#dddddd\ntoolbar_bg_color:#eeeeee\ntoolbar_fg_color:#555555\nmenu_bg_color:#444444\nmenu_fg_color:#dddddd\npanel_bg_color:#444444\npanel_fg_color:#dddddd\nlink_color:#f06860"
++gtk-color-scheme = "bg_color:#333333\nfg_color:#dcdcdc\nbase_color:#333333\ntext_color:#dcdcdc\nselected_bg_color:#1568A4\nselected_fg_color:#f9f9f9\ntooltip_bg_color:#2d2d2d\ntooltip_fg_color:#dedede\ntitlebar_bg_color:#2d2d2d\ntitlebar_fg_color:#dcdcdc\nmenubar_bg_color:#2d2d2d\nmenubar_fg_color:#dcdcdc\ntoolbar_bg_color:#333333\ntoolbar_fg_color:#dcdcdc\nmenu_bg_color:#2d2d2d\nmenu_fg_color:#dcdcdc\npanel_bg_color:#2d2d2d\npanel_fg_color:#dcdcdc\nlink_color:#1568A4"
+ 
+ # Default Style
+ 
+--- a/gtk-3.0/scss/_global.scss
++++ b/gtk-3.0/scss/_global.scss
+@@ -3,18 +3,18 @@
+ @import "functions";
+ 
+ // default color scheme
+-$bg_color: if($variant == "dark", #444, #eee);
+-$fg_color: if($variant == "dark", #ddd, #555);
++$bg_color: if($variant == "dark", #333, #eee);
++$fg_color: if($variant == "dark", #dcdcdc, #555);
+ $base_color: if($variant == "dark", #333, #fff);
+-$text_color: if($variant == "dark", #eee, #333);
+-$selected_bg_color: #f0544c;
+-$selected_fg_color: #fff;
+-$tooltip_bg_color: #444;
+-$tooltip_fg_color: #eee;
++$text_color: if($variant == "dark", #dcdcdc, #333);
++$selected_bg_color: #1268A4;
++$selected_fg_color: #f9f9f9;
++$tooltip_bg_color: #2d2d2d;
++$tooltip_fg_color: #dedede;
+ 
+ // dark colors
+-$dark_bg_color: #444;
+-$dark_fg_color: #eee;
++$dark_bg_color: #333;
++$dark_fg_color: #dcdcdc;
+ 
+ // shadows
+ $dark_shadow: #000;
+--- a/gtk-3.20/scss/_global.scss
++++ b/gtk-3.20/scss/_global.scss
+@@ -3,22 +3,26 @@
+ @import "functions";
+ 
+ // default color scheme
+-$bg_color: if($variant == "dark", #444, #eee);
+-$fg_color: if($variant == "dark", #ddd, #555);
++$bg_color: if($variant == "dark", #333, #eee);
++$fg_color: if($variant == "dark", #dcdcdc, #555);
+ $base_color: if($variant == "dark", #333, #fff);
+-$text_color: if($variant == "dark", #eee, #333);
+-$selected_bg_color: #f0544c;
+-$selected_fg_color: #fff;
+-$tooltip_bg_color: #444;
+-$tooltip_fg_color: #eee;
++$text_color: if($variant == "dark", #dcdcdc, #333);
++$selected_bg_color: #1268A4;
++$selected_fg_color: #f9f9f9;
++$tooltip_bg_color: #2d2d2d;
++$tooltip_fg_color: #dedede;
+ 
+ $selected_borders_color: if($variant == 'light', shade($bg_color, .85), shade($bg_color, .88));
+ $borders_color: if($variant == 'light', shade($bg_color, .85), shade($bg_color, .88));
+ $borders_edge: if($variant == 'light', transparentize(white, 0.2), transparentize($fg_color, 0.93));
+ 
+ // dark colors
+-$dark_bg_color: #444;
+-$dark_fg_color: #eee;
++$dark_bg_color: #333;
++$dark_fg_color: #dcdcdc;
++
++// shadows
++$dark_shadow: #000;
++$light_shadow: #fff;
+ 
+ // shadows
+ $dark_shadow: #000;
+--- a/index.theme
++++ b/index.theme
+@@ -1,10 +1,10 @@
+ [Desktop Entry]
+ Type=X-GNOME-Metatheme
+-Name=Numix
+-Comment=A modern flat theme
++Name=Numix-DarkBlue
++Comment=A modern flat theme (Dark Blue variant)
+ Encoding=UTF-8
+ 
+ [X-GNOME-Metatheme]
+-GtkTheme=Numix
+-MetacityTheme=Numix
++GtkTheme=Numix-DarkBlue
++MetacityTheme=Numix-DarkBlue
+ ButtonLayout=:minimize,maximize,close
