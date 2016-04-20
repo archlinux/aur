@@ -10,7 +10,7 @@ license=('LGPL2.1')
 depends=( 'gtk2' 'gtk-doc' 'spice-protocol-git' 'python2' )
 makedepends=( 'git' 'intltool' )
 provides=("$pkgname")
-conflicts=("$pkgname" "${_pkgname}3" )
+conflicts=("$pkgname" "${_pkgname}3" "spice-glib" )
 source=("http://www.spice-space.org/download/gtk/spice-gtk-LATEST.tar.bz2")
 sha256sums=('c72b4d202b1c0b71d6e24ce5caf914d6dddbcf4010d10db9c2d8e73af728c1ca')
 
