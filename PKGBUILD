@@ -1,23 +1,23 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=python3-cactus
-pkgver=2012.12
-pkgrel=5
+pkgver=2016
+pkgrel=1
 pkgdesc='Interface modules for CACTUS (CADD Group Chemoinformatics Tools and User Services).'
 arch=(any)
 license=(GPL)
 url="http://xyne.archlinux.ca/projects/python3-cactus"
-depends=(python3 python-openbabel python3-memoizedb)
+depends=(python-openbabel python3 python3-memoizedb)
 source=(
-  http://xyne.archlinux.ca/projects/python3-cactus/src/python3-cactus-2012.12.tar.xz
-  http://xyne.archlinux.ca/projects/python3-cactus/src/python3-cactus-2012.12.tar.xz.sig
+  http://xyne.archlinux.ca/projects/python3-cactus/src/python3-cactus-2016.tar.xz
+  http://xyne.archlinux.ca/projects/python3-cactus/src/python3-cactus-2016.tar.xz.sig
 )
 sha512sums=(
-  078517144ab426af206ac0bea1c5a8f1306372065231cc181724bbd47c09090278dd2eb90167ba2a43e7aff755d35592b8eb395d9a453a4e11bbe0f3e3d8ca48
-  f7b81dfccdafcf524a92765b0f08a02295fd248185d7b9f16369d6e6fe0d6f465c3274f7435a5a7a931ec5f438f129cdaf9f736ffc8475c3f2074513ba6dfcc5
+  8e2bb48e9a82e2c6d2035a800b1358b328e7c2da5d145f2172f5ba5a4cb659e650cfd748d10e7875cdf96ab9da96002028fb5f4107b042ff29325388dba2b7a5
+  a903838141c6c4fe6e69f39320f8c9c2b8d7862a876a9c07986c497a0861bb311711e6eb5ae47dd9fd3964dcc5bd0087077ec425090b356c9430f90462b1cff3
 )
 md5sums=(
-  e82dd3b1fc6dd07206a329924e6f560c
-  c3ecdba4e9a23b2cbc7194c1ea553b79
+  0bcc821ebb5ed3b68c3300333102ca80
+  8c6394869484bf084f9539a841c72630
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
