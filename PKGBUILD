@@ -4,7 +4,7 @@
 
 _gemname=asciidoctor
 pkgname=ruby-$_gemname
-pkgver=1.5.2
+pkgver=1.5.4
 pkgrel=1
 pkgdesc='An implementation of the AsciiDoc text processor and publishing toolchain in Ruby'
 arch=(any)
@@ -14,7 +14,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('da218067d519173d97a0ccd24f8ee81eeeef8460')
+sha1sums=('316ea896c2a52f5bc18b118a93967bb15252758d')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
