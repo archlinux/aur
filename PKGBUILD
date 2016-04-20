@@ -1,7 +1,7 @@
 # Maintainer: Nate Dalliard <nate@dalliard.ch>
 pkgname=fin-git
 _gitname=fin
-pkgver=VERSION
+pkgver=r10.8486731
 pkgrel=1
 pkgdesc="Zero-configuration, concurrent plugin manager for the fish shell in one file"
 arch=('any')
