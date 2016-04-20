@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatas-git
-pkgver=r24.6a3f8d4
+pkgver=r25.269256f
 pkgrel=1
 epoch=
 pkgdesc="A simple ARM assembler."
@@ -11,6 +11,9 @@ groups=()
 depends=('')
 makedepends=('git')
 optdepends=()
+optdepends=('neatcc-git: A simple ARM/x86(_64) C compiler'
+            'neatld-git: A simple ARM/x86(_64) static linker'
+            'neatlibc-git: A small ARM/x86(_64) libc')
 checkdepends=()
 provides=()
 conflicts=()
