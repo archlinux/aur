@@ -2,20 +2,18 @@ post_install(){
 
     /usr/sbin/useradd -s /bin/false -d /opt/sentry -r sentry
 
-    /usr/bin/chown -R root:root /opt/sentry
-    /usr/bin/chown -R sentry:sentry /opt/sentry/.python-eggs
+    /usr/bin/mkdir -p /opt/sentry/celery
+
+    /usr/bin/chown -R sentry:sentry /opt/sentry
     /usr/bin/chown -R sentry:sentry /etc/sentry
 
-    # Storage location for Celery's database.
-    /usr/bin/mkdir -p /opt/sentry/celery
-    /usr/bin/chown sentry:sentry /opt/sentry/celery
-
     # Generate a new configuration.
-    if [ ! -e "/etc/sentry/sentry.conf.py" ] ; then
-        "/opt/sentry/bin/sentry" init "/etc/sentry/sentry.conf.py"
+    if [ ! -e "/etc/sentry/sentry.conf.py" ] || [ ! -e "/etc/sentry/config.yml" ] ; then
+        "/opt/sentry/bin/sentry" init "/etc/sentry"
     fi
 
     /usr/bin/chmod 0600 /etc/sentry/sentry.conf.py
+    /usr/bin/chmod 0600 /etc/sentry/config.yml
 
 cat << EOF
 
@@ -23,47 +21,32 @@ INSTALLATION STEPS
 
 1) Initialize Sentry's configuration:
 
-    sudo -u sentry PATH=/opt/sentry/bin:\$PATH \\
-        /opt/sentry/bin/sentry init /etc/sentry
+    sudo -u sentry /opt/sentry/bin/sentry init /etc/sentry
 
 Be sure to edit the configurations in /etc/sentry before proceeding to the next
 step.
 
-2) Install the appropriate database packages for your setup:
+2) Run migrations:
 
-    # MySQL
-    sudo -u sentry -- /usr/bin/bash -c \\
-    'source /opt/sentry/bin/activate && /opt/sentry/bin/pip install mysql-python'
+    sudo -u sentry /opt/sentry/bin/sentry --config=/etc/sentry upgrade
 
-    # PostgreSQL
-    sudo -u sentry -- /usr/bin/bash -c \\
-    'source /opt/sentry/bin/activate && /opt/sentry/bin/pip install psycopg2'
+3) Create the initial superuser if you skipped doing so in the previous step:
 
-3) Run migrations:
+    sudo -u sentry /opt/sentry/bin/sentry --config=/etc/sentry createuser
 
-    sudo -u sentry PATH=/opt/sentry/bin:\$PATH \\
-        /opt/sentry/bin/sentry --config=/etc/sentry/sentry.conf.py upgrade
-
-4) Create the initial superuser:
-
-    sudo -u sentry PATH=/opt/sentry/bin:\$PATH \\
-        /opt/sentry/bin/sentry --config=/etc/sentry/sentry.conf.py createuser
-
-5) Start Sentry:
+4) Start Sentry:
 
     sudo systemctl start sentry sentry-celery
 
 If you wish to run Sentry manually, e.g. to test your configuration:
 
-    sudo -u sentry PATH=/opt/sentry/bin:\$PATH \\
-        --config=/etc/sentry/sentry.conf.py start
+    sudo -u sentry /opt/sentry/bin/sentry --config=/etc/sentry start
 
 EXTRAS
 
 To install additional plugins, you'll need to use Sentry's local copy of pip:
 
-    sudo -u sentry PATH=/opt/sentry/bin:\$PATH \\
-        /opt/sentry/bin/pip install <package>
+    sudo -u sentry /opt/sentry/bin/pip install <package>
 
 REMOVAL
 
@@ -85,15 +68,13 @@ EOF
 
 post_upgrade(){
 
-    /usr/bin/chown -R root:root /opt/sentry
-    /usr/bin/chown -R sentry:sentry /etc/sentry
-    /usr/bin/chown -R sentry:sentry /opt/sentry/.python-eggs
-
-    # Storage location for Celery's database.
     /usr/bin/mkdir -p /opt/sentry/celery
-    /usr/bin/chown sentry:sentry /opt/sentry/celery
+
+    /usr/bin/chown -R sentry:sentry /etc/sentry
+    /usr/bin/chown -R sentry:sentry /opt/sentry
 
     /usr/bin/chmod 0600 /etc/sentry/sentry.conf.py
+    /usr/bin/chmod 0600 /etc/sentry/config.yml
 
 cat << EOF
 
@@ -105,7 +86,8 @@ UPGRADE STEPS
     sudo systemctl --system daemon-reload
 
 2) If you're upgrading from a Sentry version < 8.0, you'll need to update the
-configuration by hand. Sentry's configuration setup has changed dramatically:
+configuration by hand. Sentry's configuration setup has changed dramatically
+and increasingly more options are being moved to Sentry's YAML-based configs:
 
     sudo -u sentry mkdir /etc/sentry/temp
     sudo -u sentry /opt/sentry/bin/sentry init /etc/sentry/temp
@@ -119,44 +101,60 @@ configuration by hand. Sentry's configuration setup has changed dramatically:
     # Delete the temporary config directory:
     sudo rm -r /etc/sentry/temp
 
-3) Install the appropriate drivers if you don't already have them (you may skip
-this step if you do):
+    See here:
+    https://docs.getsentry.com/on-premise/server/config/
 
-    # MySQL
-    sudo -u sentry -- /usr/bin/bash -c \\
-    'source /opt/sentry/bin/activate && /opt/sentry/bin/pip install mysql-python'
-
-    # PostgreSQL
-    sudo -u sentry -- /usr/bin/bash -c \\
-    'source /opt/sentry/bin/activate && /opt/sentry/bin/pip install psycopg2'
-
-4) Run the database migrations:
+3) Run the database migrations:
 
 !!! ALWAYS BACK-UP YOUR DATABASE PRIOR TO UPGRADING SENTRY !!!
 
-    sudo -u sentry PATH=/opt/sentry/bin:\$PATH \\
-        /opt/sentry/bin/sentry --config=/etc/sentry/sentry.conf.py upgrade
+    sudo -u sentry /opt/sentry/bin/sentry --config=/etc/sentry upgrade
 
-5) Start Sentry:
+4) Start Sentry:
 
     sudo systemctl start sentry sentry-celery
 
 If you wish to run Sentry manually, e.g. to test your configuration:
 
-    sudo -u sentry PATH=/opt/sentry/bin:\$PATH \\
-        --config=/etc/sentry/sentry.conf.py start
+    sudo -u sentry /opt/sentry/bin/sentry --config=/etc/sentry start
 
 EXTRAS
 
 To install additional plugins, you'll need to use Sentry's local copy of pip:
 
-    sudo -u sentry PATH=/opt/sentry/bin:\$PATH \\
-        /opt/sentry/bin/pip install <package>
+    sudo -u sentry /opt/sentry/bin/pip install <package>
 
 REMOVAL
 
 As of Sentry 7.1.4, this package will no longer remove the Sentry user by
 default. You must perform this step manually.
+
+IMPORTANT 8.0 UPGRADE NOTICE
+
+If you're upgrading from an earlier version of Sentry, the Sentry team has
+deprecated MySQL support. You will need to plan for one of the following
+options: 1) Manage schema migration manually, 2) consider migrating your data
+away from MySQL (there may be some tools to assist, linked below), or 3)
+reinstall from scratch with PostgreSQL.
+
+8.0 Notice:
+
+http://blog.getsentry.com/2016/01/08/sentry-8-on-premise.htmlA
+
+Django migration tools from MySQL-to-PostgreSQL:
+
+https://www.calazan.com/migrating-django-app-from-mysql-to-postgresql/
+http://www.ofbrooklyn.com/2010/07/18/migrating-django-mysql-postgresql-easy-way/
+  (2010!)
+
+And lastly, the PostgreSQL guide on moving your data (read carefully):
+
+https://wiki.postgresql.org/wiki/How_to_make_a_proper_migration_from_MySQL_to_PostgreSQL
+
+(Note: I'm not a Django developer although I have some experience with South
+prior to its deprecation; my experience is predominantly limited to
+SQLAlchemy, so I cannot vouch for the veracity of these tools and they are
+provided on an informational basis only.)
 
 SENTRY WON'T START?
 

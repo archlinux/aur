@@ -6,7 +6,7 @@ After=network.target
 User=sentry
 Restart=always
 Environment=PATH=/opt/sentry/bin
-ExecStart=/opt/sentry/bin/sentry --config=/etc/sentry/sentry.conf.py celery worker --loglevel=ERROR -B -s /opt/sentry/celery/celerybeat-schedule
+ExecStart=/opt/sentry/bin/sentry --config=/etc/sentry celery worker --loglevel=ERROR -B -s /opt/sentry/celery/celerybeat-schedule
 
 [Install]
 WantedBy=multi-user.target

@@ -7,7 +7,7 @@ Requires=sentry-celery.service
 User=sentry
 Restart=always
 Environment=PATH=/opt/sentry/bin
-ExecStart=/opt/sentry/bin/sentry --config=/etc/sentry/sentry.conf.py start
+ExecStart=/opt/sentry/bin/sentry --config=/etc/sentry start
 KillSignal=SIGINT
 
 [Install]
