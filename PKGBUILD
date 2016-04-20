@@ -3,14 +3,14 @@
 pkgname=vhba-module-rt
 _basename=vhba-module
 pkgver=20140928
-_extramodules=extramodules-4.1-rt
-pkgrel=12
+_extramodules=extramodules-4.4-rt
+pkgrel=13
 pkgdesc="Kernel module that emulates SCSI devices. For linux-rt"
 arch=('i686' 'x86_64')
 url="http://cdemu.sourceforge.net/"
 license=('GPL')
-depends=('linux-rt>=4.1' 'linux-rt<4.2' 'vhba-module')
-makedepends=('linux-rt-headers>=4.1' 'linux-rt-headers<4.2')
+depends=('linux-rt>=4.4' 'linux-rt<4.5' 'vhba-module')
+makedepends=('linux-rt-headers>=4.4' 'linux-rt-headers<4.5')
 options=(!makeflags)
 install=$pkgname.install
 source=("http://downloads.sourceforge.net/cdemu/${_basename}-$pkgver.tar.bz2")
