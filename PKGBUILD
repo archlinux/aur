@@ -7,7 +7,7 @@ pkgdesc="A sci-fi colony simulation game driven by an intelligent AI storyteller
 arch=('i686' 'x86_64')
 url="http://rimworldgame.com/"
 license=('custom: commercial')
-depends=('glu' 'lib32-gtk2' 'gcc-libs-multilib')
+depends=('glu' 'libxcursors')
 makedepends=('unzip')
 source=(rimworld.desktop
         rimworld.sh)
