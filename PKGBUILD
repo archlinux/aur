@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatld-git
-pkgver=r48.75d5b1f
+pkgver=r49.612ff06
 pkgrel=1
 epoch=
 pkgdesc="A simple ARM/x86(_64) static linker."
@@ -11,6 +11,9 @@ groups=()
 depends=('')
 makedepends=('git')
 optdepends=()
+optdepends=('neatcc-git: A simple ARM/x86(_64) C compiler'
+            'neatas-git: A small ARM assembler'
+            'neatlibc-git: A small ARM/x86(_64) libc')
 checkdepends=()
 provides=()
 conflicts=()
