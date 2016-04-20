@@ -1,7 +1,7 @@
 # Maintainer: MattWoelk
 
 pkgname=nessus
-pkgver=6.6.0
+pkgver=6.6.1
 pkgrel=1
 _bigver=Nessus-$pkgver-fc20
 pkgdesc='Vulnerability scanner'
@@ -12,12 +12,12 @@ url='https://www.nessus.org'
 install=nessus.install
 
 # Download the rpm from <http://www.tenable.com/products/nessus/select-your-operating-system>
-# Nessus-6.6.0-fc20.x86_64.rpm
+# Nessus-6.6.1-fc20.x86_64.rpm
 source=($_bigver.x86_64.rpm
         nessus.sh
         LICENSE.NESSUS
         nessus.install)
-md5sums=('d2da54786692f32e237da84f3fbab960'
+md5sums=('28f86ffcccf03cf87eab80e853fd8abf'
          '8c5772ac63f97d94475fe03e80d6ba5c'
          '8ff98bc9488304fcb66753d3cfb5f30e'
          'd9d25d4075acc50c0050c7a4f244c7cb')
