@@ -1,7 +1,7 @@
 pkgbase = firefox-extension-omnisidebar-git
 	pkgdesc = A firefox add-on designed to provide more control over the behavior of the sidebar.
 	pkgver = 1.6.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Quicksaver/OmniSidebar
 	arch = any
 	license = MPLv2

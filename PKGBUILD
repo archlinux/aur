@@ -4,7 +4,7 @@
 
 pkgname=firefox-extension-omnisidebar-git
 pkgver=1.6.12
-pkgrel=1
+pkgrel=2
 pkgdesc='A firefox add-on designed to provide more control over the behavior of the sidebar.'
 url='https://github.com/Quicksaver/OmniSidebar'
 arch=('any')
@@ -21,7 +21,6 @@ conflicts+=("$_gitname")
 prepare() {
   cp -rf --reflink=auto "$_gitname"/* .
   rm -rf "$_gitname"
-  find -name '.git*' -exec rm -rf '{}' +
 }
 
 makedepends+=(rasqal)
