@@ -1,10 +1,10 @@
 # Maintainer: Jonathan Ryan <jryan@curious-computing.com>
 pkgname=vncshare-git
-pkgver=0.1
-pkgrel=1
+pkgver=r28.791c5ca
+pkgrel=2
 pkgdesc="Easily share your screen over HTTP using VNC."
 arch=(any)
-url="https://github.com/jryan0/vncshare"
+url="https://github.com/jryan128/vncshare"
 license=('MIT')
 groups=()
 depends=(net-tools novnc openssl bash)
@@ -15,17 +15,17 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/jryan0/vncshare.git')
+source=('git+https://github.com/jryan128/vncshare.git')
 noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+  cd "$srcdir/${pkgname%-git}"
   mkdir -p "$pkgdir/usr/bin"
   install vncshare "$pkgdir/usr/bin"
 }
