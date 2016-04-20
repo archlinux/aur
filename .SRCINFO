@@ -1,0 +1,26 @@
+pkgbase = messengerfordesktop-git
+	pkgdesc = Beautiful desktop client for Facebook Messenger. Sytten's fork
+	pkgver = v1.4.7
+	pkgrel = 1
+	url = http://messengerfordesktop.com/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = gulp
+	makedepends = npm
+	depends = gcc-libs
+	depends = cairo
+	depends = libxtst
+	depends = alsa-lib
+	depends = gtk2
+	depends = gconf
+	depends = libnotify
+	depends = fontconfig
+	depends = nss
+	options = !strip
+	source = messengerfordesktop-git::git+https://github.com/Sytten/Facebook-Messenger-Desktop.git
+	md5sums = SKIP
+
+pkgname = messengerfordesktop-git
+
