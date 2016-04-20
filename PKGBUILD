@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatcc-git
-pkgver=r307.96a803c
+pkgver=r310.e2682e7
 pkgrel=1
 epoch=
 pkgdesc="A simple ARM/x86(_64) C compiler."
@@ -10,7 +10,9 @@ license=('custom:BSD')
 groups=()
 depends=('')
 makedepends=('git')
-optdepends=()
+optdepends=('neatas-git: A small ARM assembler'
+            'neatlibc-git: A small ARM/x86(_64) libc'
+            'neatld-git: A simple ARM/x86(_64) static linker')
 checkdepends=()
 provides=()
 conflicts=()
@@ -19,7 +21,7 @@ backup=()
 options=()
 changelog=
 install=
-source=("$pkgname::git+git://repo.or.cz/neatcc.git")
+source=("$pkgname::git+git://repo.or.cz/neatcc.git#branch=master")
 noextract=()
 md5sums=('SKIP')
 
@@ -36,7 +38,6 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   install -Dm755 ncc $pkgdir/usr/bin/ncc
-  install -Dm755 npp $pkgdir/usr/bin/npp
   install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
 }
 
