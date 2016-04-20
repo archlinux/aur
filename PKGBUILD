@@ -4,7 +4,7 @@
 
 pkgname=firefox-extension-beyond-australis-git
 pkgver=1.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A Firefox add-on to improve the feeling of using the new Australis theme.'
 url='https://github.com/Quicksaver/The-Fox--Only-Better'
 arch=('any')
@@ -22,7 +22,6 @@ conflicts+=("$_gitname")
 prepare() {
   cp -rf --reflink=auto "$_gitname"/* .
   rm -rf "$_gitname"
-  find -name '.git*' -exec rm -rf '{}' +
 }
 
 makedepends+=(rasqal)
