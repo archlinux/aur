@@ -24,10 +24,10 @@ build() {
 	make
 }
 
-check() {
-	cd "$srcdir/${pkgname%-VCS}"
-	make -k test
-}
+#check() {
+	#cd "$srcdir/${pkgname%-VCS}"
+	#make -k test
+#}
 
 package() {
 	cd "$srcdir/${pkgname%-VCS}"
