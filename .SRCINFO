@@ -1,0 +1,31 @@
+pkgbase = hostsblock-git
+	pkgdesc = A script and cronjob that downloads, sorts, and installs multiple ad- and malware-blocking hosts files.
+	pkgver = r78.1584916
+	pkgrel = 1
+	url = http://gaenserich.github.com/hostsblock/
+	install = hostsblock.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = curl
+	depends = grep
+	depends = sed
+	depends = coreutils
+	optdepends = dnsmasq: helps speed up DNS resolutions
+	optdepends = pixelserv: removes boilerplate page on blocked urls
+	optdepends = kwakd: removes boilerplate page on blocked urls (recommended)
+	optdepends = unzip: allows the use of zipped downloads
+	optdepends = p7zip: allows the use of 7zipped downloads
+	optdepends = gzip: allows compression of old blockfile
+	provides = hostsblock
+	conflicts = hostsblock
+	backup = etc/hostsblock/hostsblock.conf
+	backup = etc/hostsblock/black.list
+	backup = etc/hostsblock/white.list
+	backup = etc/hostsblock/hosts.head
+	source = git+https://github.com/gaenserich/hostsblock
+	md5sums = SKIP
+
+pkgname = hostsblock-git
+
