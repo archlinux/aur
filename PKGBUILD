@@ -31,7 +31,7 @@ depends=('desktop-file-utils'
 'libafterimage')
 install='root.install'
 options=('!emptydirs')
-source=("ftp://root.cern.ch/root/root_v${pkgver}.source.tar.gz"
+source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
 'root.sh'
 'rootd'
 'root.xml'
