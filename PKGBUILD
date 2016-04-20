@@ -12,7 +12,7 @@ makedepends=('unzip')
 source=(rimworld.desktop
         rimworld.sh)
 sha256sums=('e83c514731904722d96218e82e257467d7af32d938493bb5908cf96c7699cae6'
-            '2cf317e27b0d0414cc0a9dbde784edd5e8f06ab1c71715a869e4578e7febffd3')
+            '37be72d82b2cb853b435598ff1fabda03de3a660b9e69b95a03af6548f6dc4c4')
 if test "$CARCH" == i686; then
   _rimworld_arch=x86
 elif test "$CARCH" == x86_64; then
@@ -46,22 +46,19 @@ build() {
 
   # unpack game zipfile
   msg "Found game package, unpacking..."
-  unzip "${pkgpath}/${_gamepkg}" -d "${srcdir}"
+  unzip -f "${pkgpath}/${_gamepkg}" -d "${srcdir}"
 }
 
 package() {
   cd "$srcdir"/RimWorld*Linux
 
-  install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/usr/share/applications"
-  install -d "${pkgdir}/usr/share/rimworld"
-  install -d "${pkgdir}/usr/share/licenses/rimworld"
-
-  install -m755 "$srcdir/rimworld.sh" "$pkgdir/usr/bin/rimworld"
-  install -m755 RimWorld*Linux.${_rimworld_arch} "$pkgdir/usr/share/rimworld/rimworld"
-  cp -r RimWorld*Linux_Data "$pkgdir/usr/share/rimworld/Data"
-  cp -r Mods Source "$pkgdir/usr/share/rimworld"
-  install -m644 Readme.txt Version.txt "$pkgdir/usr/share/rimworld"
-  install -m644 "${srcdir}/rimworld.desktop" "${pkgdir}/usr/share/applications/rimworld.desktop"
-  install -m644 EULA.txt "${pkgdir}/usr/share/licenses/rimworld/LICENSE"
+  install -Dm755 "$srcdir/rimworld.sh" "$pkgdir/usr/bin/rimworld"
+  install -Dm755 RimWorld*Linux.${_rimworld_arch} "$pkgdir/opt/rimworld/rimworld"
+  cp -r RimWorld*Linux_Data "$pkgdir/opt/rimworld/Data"
+  cp -r Mods Source "$pkgdir/opt/rimworld"
+  chgrp games "$pkgdir/opt/rimworld/Mods"
+  chmod g+w "$pkgdir/opt/rimworld/Mods"
+  install -Dm644 EULA.txt Readme.txt Version.txt "$pkgdir/opt/rimworld"
+  install -Dm644 "${srcdir}/rimworld.desktop" "${pkgdir}/usr/share/applications/rimworld.desktop"
+  install -Dm644 EULA.txt "${pkgdir}/usr/share/licenses/rimworld/LICENSE"
 }
