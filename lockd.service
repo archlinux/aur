@@ -1,0 +1,8 @@
+[Unit]
+Description=Lockscreen daemon
+
+[Service]
+ExecStart=/usr/bin/lockd
+
+[Install]
+WantedBy=default.target
