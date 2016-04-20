@@ -5,14 +5,14 @@
 
 pkgname=bbswitch-pf
 _pkgname=bbswitch
-_godver=4.4
+_godver=4.5
 _badver=4.6
 pkgver=0.8
 _extramodules=extramodules-$_godver-pf # Don't forget to update bbswitch.install
-pkgrel=21
+pkgrel=22
 pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus laptops"
 arch=('i686' 'x86_64')
-url=("http://github.com/Bumblebee-Project/bbswitch")
+url="http://github.com/Bumblebee-Project/bbswitch"
 license=('GPL')
 depends=("linux-pf>=$_godver" "linux-pf<$_badver")
 makedepends=("linux-pf-headers")
