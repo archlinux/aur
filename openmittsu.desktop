@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=openMittsu
+Comment=Open source Threema client
+Exec=openMittsu
+Terminal=false
+Categories=Network;InstantMessaging;Chat;

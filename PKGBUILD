@@ -2,7 +2,7 @@
 pkgname=openmittsu-git
 _fullname=openMittsu
 pkgver=r8.d61d58c
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source implementation and desktop client of the Threema Messenger App."
 arch=('x86_64' 'i686')
 url="https://github.com/blizzard4591/openMittsu"
@@ -11,9 +11,10 @@ depends=('libsodium' 'qrencode' 'qt5-base' 'qt5-multimedia')
 makedepends=('git' 'cmake')
 provides=('openmittsu')
 conflicts=('openmittsu')
-install=${pkgname}.install
-source=('git+https://github.com/blizzard4591/openMittsu')
-md5sums=('SKIP')
+source=('git+https://github.com/blizzard4591/openMittsu'
+        'openmittsu.desktop')
+sha256sums=('SKIP'
+            'e37f4cf33dec07d3c486bb1ea454795a4c06be0443391c6741cc37f3b03bc3c3')
 
 prepare() {
   cd "$srcdir/$_fullname"
@@ -40,6 +41,8 @@ build() {
 package() {
   cd "$srcdir/$_fullname-build"
   make install
+
+  install -Dm644 "$srcdir/openmittsu.desktop" "$pkgdir/usr/share/applications/openmittsu.desktop"
 }
 
 pkgver() {
