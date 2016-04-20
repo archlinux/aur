@@ -16,12 +16,11 @@ optdepends=("java-runtime>=$_major: Run the examples"
             "java-environment>=$_major: Compile and run the examples")
 options=('!strip')
 source=("http://download.oracle.com/otn-pub/java/jdk/$pkgver-$_build/jdk-$pkgver-docs-all.zip"
-#        "http://download.oracle.com/otn-pub/java/javafx/$_major.0.$_minor-$_build/javafx-$pkgver-apidocs.zip"
-        'http://download.oracle.com/otn-pub/java/javafx/8.0.72-b15/javafx-8u72-apidocs.zip'
+        "http://download.oracle.com/otn-pub/java/javafx/$_major.0.$_minor-$_build/javafx-$pkgver-apidocs.zip"
         'LICENSE-Documentation'
         'LICENSE-Oracle-Legal-Notices')
 md5sums=('a4bc1ff14e617ec9f6a15bf77c2c1b71'
-         '1a97e0c6e666cfcb11c52a76a43be96b'
+         'b0b87529ba6843f6c9b7ac6f342ce262'
          '4d54057ca75b691366977dab2277e869'
          '3137397f4dba13f4a79157819af583a3')
 
@@ -37,9 +36,6 @@ package_jdk-docs() {
 }
 
 package_javafx-docs() {
-  _minor=92
-  pkgver=${_major}u${_minor}
-
   # Install
   install -d "$pkgdir"/usr/share/doc/java/javafx/
   mv api "$pkgdir"/usr/share/doc/java/javafx/
