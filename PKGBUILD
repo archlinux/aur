@@ -3,8 +3,8 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=mozilla-extension-gnotifier-git
-pkgver=1.9.6
-pkgrel=3
+pkgver=1.9.7
+pkgrel=1
 pkgdesc='Add-on for Firefox and Thunderbird to enable integration with GNOME native notification system.'
 url='https://github.com/mkiol/GNotifier'
 arch=('any')
