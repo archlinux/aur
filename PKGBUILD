@@ -15,7 +15,7 @@ conflicts=('caprine')
 
 source=(
   "Caprine-linux-v${pkgver}.zip::https://github.com/sindresorhus/caprine/releases/download/v${pkgver}/Caprine-linux-${pkgver}.zip"
-  "https://github.com/sindresorhus/caprine/blob/${pkgver}/media/Icon.png"
+  "https://raw.githubusercontent.com/sindresorhus/caprine/v${pkgver}/media/Icon.png"
   "caprine.desktop")
 noextract=("Caprine-linux-v${pkgver}.zip")
 sha256sums=('a605a2e3059aca4d17cb3ebc07f7345a478da6c1cb1592cabe40aa8149629560'
