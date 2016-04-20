@@ -1,6 +1,6 @@
 pkgbase = nvidia-grsec
 	pkgver = 364.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.nvidia.com/
 	install = nvidia-grsec.install
 	arch = i686
