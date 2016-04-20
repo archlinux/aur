@@ -1,0 +1,19 @@
+pkgbase = zukitwo-themes-git
+	pkgdesc = A theme for GTK3, GTK2, Metacity, xfwm4, Gnome Shell and Unity - git version
+	pkgver = 20160418.r87.7fedc33
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/Zukitwo?content=140562
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gtk-engines
+	depends = gtk-engine-murrine
+	optdepends = gnome-themes-standard: Required for the GTK3 theme
+	optdepends = ttf-roboto: Font family for the Gnome Shell theme
+	provides = zukitwo-themes
+	conflicts = zukitwo-themes
+	source = zukitwo-themes-git::git+https://github.com/lassekongo83/zuki-themes
+	md5sums = SKIP
+
+pkgname = zukitwo-themes-git
+
