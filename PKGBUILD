@@ -4,7 +4,7 @@
 pkgname=insync
 pkgver=1.3.6
 _pkgver=36076
-pkgrel=1
+pkgrel=2
 pkgdesc="An unofficial Google Drive client that runs on Linux, with support for various desktops"
 url="https://www.insynchq.com/downloads"
 license=('custom:insync')
@@ -30,4 +30,5 @@ package() {
    done
    mkdir -p ${pkgdir}/usr/lib/systemd/system
    sed "s/_OPTION/ start/g" ${srcdir}/insync.service >${pkgdir}/usr/lib/systemd/system/insync@.service
+   ln -sf "/usr/lib/libfontconfig.so.1" "${pkgdir}/usr/lib/insync/libfontconfig.so.1"
 }
