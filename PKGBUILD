@@ -4,7 +4,7 @@
 
 pkgname=mozilla-extension-gnotifier-git
 pkgver=1.9.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Add-on for Firefox and Thunderbird to enable integration with GNOME native notification system.'
 url='https://github.com/mkiol/GNotifier'
 arch=('any')
@@ -23,7 +23,6 @@ conflicts+=("$_gitname")
 prepare() {
   cp -rf --reflink=auto "$_gitname"/* .
   rm -rf "$_gitname"
-  find -name '.git*' -exec rm -rf '{}' +
 }
 
 makedepends+=(rasqal)
