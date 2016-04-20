@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=moarvm-git
-pkgver=20160324
+pkgver=20160418
 pkgrel=1
 pkgdesc="6model-based VM for NQP and Rakudo Perl6"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
