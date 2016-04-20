@@ -1,7 +1,7 @@
 pkgbase = lockd
 	pkgdesc = A simple utility for managing your lock screen on a tiling wm (like i3, dwm, xmonad or awesome)
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Kilobyte22/lockd
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,9 @@ pkgbase = lockd
 	makedepends = cargo
 	depends = i3lock
 	source = lockd::git+https://github.com/Kilobyte22/lockd.git#tag=v0.1
+	source = local://lockd.service
 	md5sums = SKIP
+	md5sums = 0f9e968b906d26cc0f4255afe30f2eaa
 
 pkgname = lockd
 
