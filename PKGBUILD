@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-git-repository'
-pkgver='1.313'
+pkgver='1.318'
 pkgrel='1'
 pkgdesc="Perl interface to Git repositories"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-system-command>=1.103' 'perl>=5.006')
+depends=('perl-git-version-compare>=1.001' 'perl-system-command>=1.103' 'perl-namespace-clean' 'perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/Git-Repository'
-source=('http://search.cpan.org/CPAN/authors/id/B/BO/BOOK/Git-Repository-1.313.tar.gz')
-md5sums=('34f14e6bbfd860d72bb9463a7da9b192')
-sha512sums=('82f9135fc9bc871c3d2f1ea0fd6336b60cbe81509148e4925592858f1e6960e91fea3284260314e578890ee9b6c15d65db19582019f283a6343c1d1b8525f14c')
-_distdir="Git-Repository-1.313"
+source=('http://search.cpan.org/CPAN/authors/id/B/BO/BOOK/Git-Repository-1.318.tar.gz')
+md5sums=('ce1ac533dcfed76050c97cf2bef6d79b')
+sha512sums=('3e70b22ed25942abea8a6b42583ebd59a041db538e70d2d21f7b4a6a5e4d664898c7bf0095b160d43578e7be0812d871d2a104c3f629dfdc40a08b195bbe8836')
+_distdir="Git-Repository-1.318"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
