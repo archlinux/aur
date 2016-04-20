@@ -2,7 +2,7 @@
 
 pkgname=kde-services
 pkgver="2.1"
-pkgrel=4
+pkgrel=5
 pkgdesc="kde-service multifunction"
 arch=('any')
 url="https://opendesktop.org/content/show.php/kde-services?content=147065"
@@ -11,7 +11,7 @@ depends=('kdebase-runtime' 'dmidecode' 'festival' 'poppler' 'ffmpeg' 'transcode'
 source=("http://downloads.sourceforge.net/project/kde-services/Source-Code/$pkgname-$pkgver.tar.bz2" 
 	"System-Tools_addtoservicemenu.desktop")
 install=${pkgname}.install
-sha512sums=('cf6081dda8a5b8e56e0d4d2317cef96cf073da1003c49c94bc8d74a23e3aac31a4fff0281ec34ea4adbc2a6de413cc3492bab2fe2bb86349381358911f876e28'
+sha512sums=('68a2bd7889da69d0af4000be09736b3e2421042a73595eb9be1cc443af8b486321d395e67ffa21c3e66243724d86dfada077c2e3ef6d0099444c0ed382a0ff46'
             '170b89e91dad38340424911f3a1daad69b4a3bc7aa6813ffd74e53c4b34c2555f68c05334b0d2a7fa17d1f0f778369e7cfe3e0590e18e8e0bf006ec1685a59f2')
 
 package() {
