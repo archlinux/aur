@@ -2,7 +2,7 @@
 # Maintainer: Jimmy Brisson <theotherjimmy@gmail.com>
 pkgname=python2-pylc3-git
 pkgrel=1
-pkgver=r127.a7f93a1
+pkgver=r160.1a4ff2d
 pkgdesc="A python and C++ LC-3 simulator"
 arch=('any')
 url="http://github.com/theotherjimmy/pylc3"
@@ -31,6 +31,5 @@ check() {
 
 package() {
 	cd "$srcdir/${pkgname%-VCS}"
-  mkdir -p ${pkgdir}/usr/lib/python2.7/site-packages/
-  install _Linux/pylc3.so ${pkgdir}/usr/lib/python2.7/site-packages/
+  make install DESTDIR=${pkgdir}
 }
