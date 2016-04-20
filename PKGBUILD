@@ -6,7 +6,7 @@ pkgname=my-little-investigations
 _gitrepo=https://github.com/mdevlamynck/${pkgname}.git
 #_gitrepo=https://github.com/GabuEx/${pkgname}.git
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An Ace Attorney like game based on My Little Pony : Friendship is Magic"
 arch=('i686' 'x86_64')
 url="http://www.equestriandreamers.com/"
@@ -23,7 +23,7 @@ source=(
 )
 md5sums=(
 	'SKIP'
-	'f1fdbbb7306065a46edf0a9932360b64'
+	'e713e14f678062639305ffbba32a3350'
 	#'e5d48f2eec8c55b8eb51bb573fe1d4eb'
 )
 
