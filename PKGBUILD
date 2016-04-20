@@ -1,6 +1,6 @@
 pkgname='cockroachdb-git'
 pkgdesc='A Scalable, Geo-Replicated, Transactional Datastore'
-pkgver=r9464.0958303
+pkgver=r9542.234e580
 pkgrel=1
 license=('Apache')
 url='https://github.com/cockroachdb/cockroach'
@@ -34,8 +34,7 @@ build () {
 	# Do not use "make release", is the LDFLAGS added by the Makefile
 	# result in linkage errors.
 	make .bootstrap
-	TAGS=( $(./build/depvers.sh) release )
-	go build -tags "${TAGS[*]}" -v -i -o cockroach
+	go build -v -i -o cockroach
 }
 
 package () {
