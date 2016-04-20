@@ -1,10 +1,11 @@
 # Maintainer: KNOSSOS-Team <knossos-team ät mpimf-heidelberg.mpg.de>
+# Contributor: Martin Drawitsch <mdraw.gh ät gmail.com>
 #
 # KNOSSOS saves its user preferences in $HOME/.config/MPIMF/
 
 pkgname=knossos
 pkgver=4.1.2
-pkgrel=6
+pkgrel=7
 arch=('x86_64')
 pkgdesc="A software tool for the visualization and annotation of 3D image data. It was developed for the rapid reconstruction of neural morphology and connectivity."
 url="http://www.knossostool.org/"
@@ -13,8 +14,6 @@ depends=("curl"
 	"freeglut"
 	"glu"
 	"glut"
-	"libgl"
-	"qt5-base"
 	"qt5-python27"
 	"quazip-qt5"
 	"snappy"
