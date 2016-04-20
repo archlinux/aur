@@ -3,7 +3,7 @@
 pkgname=i3-gaps-next-git
 pkgver=4.12.3.g4e8238f
 pkgrel=1
-pkgdesc='A fork of i3wm tiling window manager (next branch) with more features, including gaps'
+pkgdesc='A fork of i3wm tiling window manager (development branch) with more features, including gaps'
 arch=('i686' 'x86_64')
 url='https://github.com/Airblader/i3/tree/gaps-next'
 license=('BSD')
@@ -43,32 +43,32 @@ package() {
   make DESTDIR="$pkgdir/" install
 
   install -Dm644 man/i3.1 \
-    ${pkgdir}/usr/share/man/man1/i3.1
+    "${pkgdir}/usr/share/man/man1/i3.1"
   install -Dm644 man/i3bar.1 \
-    ${pkgdir}/usr/share/man/man1/i3bar.1
+    "${pkgdir}/usr/share/man/man1/i3bar.1"
   install -Dm644 man/i3-config-wizard.1 \
-    ${pkgdir}/usr/share/man/man1/i3-config-wizard.1
+    "${pkgdir}/usr/share/man/man1/i3-config-wizard.1"
   install -Dm644 man/i3-input.1 \
-    ${pkgdir}/usr/share/man/man1/i3-input.1
+    "${pkgdir}/usr/share/man/man1/i3-input.1"
   install -Dm644 man/i3-msg.1 \
-    ${pkgdir}/usr/share/man/man1/i3-msg.1
+    "${pkgdir}/usr/share/man/man1/i3-msg.1"
   install -Dm644 man/i3-migrate-config-to-v4.1 \
-    ${pkgdir}/usr/share/man/man1/i3-migrate-config-to-v4.1
+    "${pkgdir}/usr/share/man/man1/i3-migrate-config-to-v4.1"
   install -Dm644 man/i3-nagbar.1 \
-    ${pkgdir}/usr/share/man/man1/i3-nagbar.1
+    "${pkgdir}/usr/share/man/man1/i3-nagbar.1"
   install -Dm644 man/i3-dmenu-desktop.1 \
-    ${pkgdir}/usr/share/man/man1/i3-dmenu-desktop.1
+    "${pkgdir}/usr/share/man/man1/i3-dmenu-desktop.1"
   install -Dm644 man/i3-dump-log.1 \
-    ${pkgdir}/usr/share/man/man1/i3-dump-log.1
+    "${pkgdir}/usr/share/man/man1/i3-dump-log.1"
   install -Dm644 man/i3-sensible-editor.1 \
-    ${pkgdir}/usr/share/man/man1/i3-sensible-editor.1
+    "${pkgdir}/usr/share/man/man1/i3-sensible-editor.1"
   install -Dm644 man/i3-sensible-pager.1 \
-    ${pkgdir}/usr/share/man/man1/i3-sensible-pager.1
+    "${pkgdir}/usr/share/man/man1/i3-sensible-pager.1"
   install -Dm644 man/i3-sensible-terminal.1 \
-    ${pkgdir}/usr/share/man/man1/i3-sensible-terminal.1
+    "${pkgdir}/usr/share/man/man1/i3-sensible-terminal.1"
 
   install -Dm644 LICENSE \
-    ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
