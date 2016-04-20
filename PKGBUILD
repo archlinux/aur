@@ -11,7 +11,7 @@ install="${pkgname}.install"
 depends=('gtk2' 'gtk3>=3.18' "gtk3<=${_gtk3_version}.99")
 optdepends=('paper-icon-theme-git: A fitting icon theme'
             'gnome-tweak-tool: A graphical tool to tweak gnome settings')
-source=("${pkgname}.tar.gz::https://github.com/tista500/Adapta/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tista500/Adapta/archive/${pkgver}.tar.gz")
 sha256sums=(10abd6be8a90cb933805fdcfe5b68b0e8a9b25e1d3a0633149a1e005aba7fdf6)
 
 _theme_name=Adapta
