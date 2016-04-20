@@ -7,9 +7,9 @@ arch=(i686 x86_64)
 url="http://dockapps.windowmaker.org/file.php/id/78"
 license=('GPL')
 depends=('libdockapp')
-source=(http://ftp.de.debian.org/debian/pool/main/w/wmnetload/wmnetload_1.3.orig.tar.gz \
-        http://tnemeth.free.fr/projets/programmes/wmnetload-1.3-tn1.patch \
-        http://tnemeth.free.fr/projets/programmes/wmnetload-1.3-tn2.patch)
+source=("https://github.com/bbidulock/wmnetload/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
+        "http://tnemeth.free.fr/projets/programmes/wmnetload-1.3-tn1.patch"
+        "http://tnemeth.free.fr/projets/programmes/wmnetload-1.3-tn2.patch")
 md5sums=('104f594c8b30d3a0895c03679e759997'
          '1ba977d044d035d9ae088f72380af1e0'
          '9703e76da9777cb60d3358e5761f0841')
