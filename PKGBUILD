@@ -2,8 +2,8 @@
 
 _srcname=leap_pycommon
 pkgname=python2-$_srcname
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc='Common utilities for leap python modules.'
 arch=('any')
 url='https://bitmask.net/'
@@ -17,12 +17,13 @@ depends=(
   'python2-dirspec')
 # Disable tests for now as they fail
 #checkdepends=(
-  #'python2-mock'
-  #'python2-pep8'
+#  'python2-mock'
+#  'python2-setuptools_trial'
+#  'python2-pep8'
 #)
 source=("https://github.com/leapcode/$_srcname/archive/$pkgver.tar.gz")
 validpgpkeys=('BE23FB4A0E9DB36ECB9AB8BE23638BF72C593BC1')
-sha256sums=('a42371c0ac5fcd5fad402d5c54b03e9c526adec7efc512710f8cff90665da0a3')
+sha256sums=('5cf2039f4a7a6e5a85ce4868a2c5397c90b454819dfef5993b4aff55e8d5b483')
 
 build() {
   cd "$srcdir/$_srcname-$pkgver"
@@ -30,8 +31,8 @@ build() {
 }
 
 #check() {
-  #cd "$srcdir/$_srcname-$pkgver"
-  #trial leap.common
+#  cd "$srcdir/$_srcname-$pkgver"
+#  trial leap.common
 #}
 
 package() {
