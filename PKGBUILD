@@ -2,8 +2,8 @@
 
 pkgname="cryptocat-bin"
 _pkgname="cryptocat-bin"
-pkgver="3.1.03"
-pkgrel="2"
+pkgver="3.1.04"
+pkgrel="1"
 pkgdesc="Chat with your friends, privately."
 arch=("x86_64")
 url="https://crypto.cat/"
@@ -12,10 +12,10 @@ depends=("alsa-lib" "desktop-file-utils" "gconf" "gtk2" "libnotify" "nss" "pytho
 conflicts=("cryptocat")
 options=("!strip")
 
-sha256sums=("e57b6f09459a5ddb96986a34610ad19c8110da05ccd7ac26faf2ab8df36e1373"
+sha256sums=('SKIP'
 'SKIP')
 
-source=("https://cryptocat.blob.core.windows.net/release/Cryptocat-linux-x64.zip"
+source=("https://download.crypto.cat/client/Cryptocat-linux-x64.zip"
 	"Cryptocat.desktop")
 
 
