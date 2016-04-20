@@ -1,0 +1,11 @@
+--- splice.c	2016-04-19 20:37:29.238055553 -0600
++++ splice.c.fixed	2016-04-19 20:38:16.523286227 -0600
+@@ -67,7 +67,7 @@
+     }
+     read(f2,buff+offset,size);
+     close(f2);
+-    f1=open(argv[1],O_CREAT|O_TRUNC|O_WRONLY);
++    f1=open(argv[1],O_CREAT|O_TRUNC|O_WRONLY,0644);
+     if (f1<0) {
+ 	perror("Couldn't open file1 for writing.\n");
+ 	exit(1);
