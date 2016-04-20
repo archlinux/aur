@@ -2,11 +2,12 @@
 
 pkgname=jazz
 pkgver=r840
-pkgrel=1
+pkgrel=2
 pkgdesc="A fairly standard chess program"
 arch=('i686' 'x86_64')
 url="http://www.eglebbk.dds.nl/program/chess-index.html"
 license=('GPL3')
+depends=('readline')
 makedepends=('cmake')
 source=("http://www.eglebbk.dds.nl/program/download/${pkgname}-${pkgver#r}-src.tar.gz"
         "install-lib.patch")
