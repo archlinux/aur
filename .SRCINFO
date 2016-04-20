@@ -1,6 +1,6 @@
 pkgbase = cms-git
 	pkgdesc = CMS, or Contest Management System, is a distributed system for running and (to some extent) organizing a programming contest.
-	pkgver = r3154.52af128
+	pkgver = r3327.d453771
 	pkgrel = 1
 	url = http://cms-dev.github.io/
 	install = cms-git.install
@@ -12,6 +12,8 @@ pkgbase = cms-git
 	depends = testlib
 	depends = postgresql
 	depends = postgresql-libs
+	depends = libyaml
+	depends = libcups
 	depends = python2
 	depends = iso-codes
 	depends = shared-mime-info

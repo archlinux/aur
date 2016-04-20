@@ -4,14 +4,14 @@
 CMSUSER_GID=26950
 
 pkgname=cms-git
-pkgver=r3177.5993662
+pkgver=r3327.d453771
 pkgrel=1
 pkgdesc="CMS, or Contest Management System, is a distributed system for running and (to some extent) organizing a programming contest."
 arch=('any')
 url="http://cms-dev.github.io/"
 license=('AGPL3')
 depends=(
-  'isolate' 'testlib' 'postgresql' 'postgresql-libs' 'python2' 'iso-codes' 'shared-mime-info'
+  'isolate' 'testlib' 'postgresql' 'postgresql-libs' 'libyaml' 'libcups' 'python2' 'iso-codes' 'shared-mime-info'
 )
 optdepends=(
   'fpc: support for Pascal submissions'
@@ -68,18 +68,11 @@ package() {
 
   # This will hopefully go away with https://github.com/cms-dev/cms/issues/281
   install -d $pkgdir/usr/bin
-  for cmd in \
-    cmsContestWebServer cmsResourceService cmsScoringService cmsDropDB \
-    cmsPrintingService cmsInitDB cmsAdminWebServer cmsWorker cmsChecker \
-    cmsEvaluationService cmsProxyService cmsRankingWebServer cmsLogService \
-    cmsSpoolExporter cmsTestFileCacher cmsAdaptContest cmsAddTask cmsMake \
-    cmsYamlImporter cmsRunTests cmsRWSHelper cmsRemoveTask cmsAddUser \
-    cmsContestExporter cmsDumpUpdater cmsDumpExporter cmsYamlReimporter \
-    cmsContestImporter cmsAddContest cmsComputeComplexity cmsRemoveUser \
-    cmsDumpImporter cmsReplayContest
+  for fullcmd in $pkgdir/usr/lib/cms/venv/bin/cms*
   do
+    cmd=$(basename $fullcmd)
     # Fix the shebang
-    sed -i "s|$pkgdir/usr/lib/cms/venv|/usr/lib/cms/venv|" $pkgdir/usr/lib/cms/venv/bin/$cmd
+    sed -i "s|$pkgdir/usr/lib/cms/venv|/usr/lib/cms/venv|" $fullcmd
 
     # Create link
     ln -s /usr/lib/cms/venv/bin/$cmd $pkgdir/usr/bin/$cmd
