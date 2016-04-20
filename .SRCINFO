@@ -1,0 +1,18 @@
+pkgbase = citro3d
+	pkgdesc = Provides an easy to use stateful interface to the PICA200 GPU of the Nintendo 3DS.
+	pkgver = r67.2cc0a08
+	pkgrel = 1
+	url = https://github.com/fincs/citro3d
+	arch = i686
+	arch = x86_64
+	license = custom:BSD-like
+	makedepends = git
+	depends = devkitarm
+	depends = ctrulib-git
+	options = !strip
+	options = staticlibs
+	source = citro3d::git+https://github.com/fincs/citro3d.git
+	sha256sums = SKIP
+
+pkgname = citro3d-git
+
