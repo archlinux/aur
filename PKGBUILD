@@ -77,7 +77,8 @@ depends=(${pkgname%%-*})
 package() {
   compose_dependencies
   prepare_target
-  cp --no-preserve=ownership,mode -r . "$destdir/$id"
+  install -d "$destdir/$id"
+  cp --no-preserve=ownership,mode -r * "$destdir/$id"
 }
 
 # Hidden from mksrcinfo in silly subfunction.
