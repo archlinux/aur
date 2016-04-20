@@ -14,6 +14,7 @@ pkgname=("${pkgbase}"
          "${pkgbase}-fpm"
          "${pkgbase}-embed"
          "${pkgbase}-phpdbg"
+         "${pkgbase}-dblib"
          "${pkgbase}-pear"
          "${pkgbase}-enchant"
          "${pkgbase}-gd"
@@ -132,6 +133,7 @@ build() {
 		--with-mysqli=shared,mysqlnd \
 		--with-openssl=shared \
 		--with-pcre-regex=/usr \
+		--with-pdo-dblib=shared,/usr \
 		--with-pdo-mysql=shared,mysqlnd \
 		--with-pdo-odbc=shared,unixODBC,/usr \
 		--with-pdo-pgsql=shared \
@@ -243,7 +245,7 @@ package_php56() {
 	# remove static modules
 	rm -f ${pkgdir}/usr/lib/${pkgbase}/modules/*.a
 	# remove modules provided by sub packages
-	rm -f ${pkgdir}/usr/lib/${pkgbase}/modules/{enchant,gd,imap,intl,ldap,mcrypt,mssql,odbc,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl}.so
+	rm -f ${pkgdir}/usr/lib/${pkgbase}/modules/{enchant,gd,imap,intl,ldap,mcrypt,mssql,odbc,pdo_odbc,pgsql,pdo_pgsql,pspell,snmp,sqlite3,pdo_sqlite,tidy,xsl,pdo_dblib}.so
 
 	# remove empty directory
 	rmdir ${pkgdir}/usr/include/php/include
@@ -326,6 +328,14 @@ package_php56-phpdbg() {
 
 	install -d -m755 ${pkgdir}/usr/bin
 	install -D -m755 ${srcdir}/build-phpdbg/sapi/phpdbg/phpdbg ${pkgdir}/usr/bin/${pkgbase}dbg
+}
+
+package_php56-dblib() {
+	pkgdesc='dblib module for PHP'
+	depends=("${pkgbase}")
+	provides=("${_pkgbase}-dblib=$pkgver")
+
+	install -D -m755 ${srcdir}/build-php/modules/pdo_dblib.so ${pkgdir}/usr/lib/php/modules/pdo_dblib.so
 }
 
 package_php56-pear() {
