@@ -3,7 +3,7 @@
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 # TODO Add serverAgent stuff to the package.
 pkgname=jmeter-plugins
-pkgver=1.3.1
+pkgver=1.4.0
 #_saver=2.2.1
 pkgrel=1
 pkgdesc="Custom set of plugins for Apache JMeter."
@@ -24,9 +24,9 @@ source=(
 # "${_dl_url}/JMeterPlugins-Hadoop-${pkgver}.zip"
 # "${_dl_url}/JMeterPlugins-WebDriver-${pkgver}.zip"
 )
-sha256sums=('33ed06ce794819a50d57eda8624f41a97b9901c17c7bb5aec89bc4a7959edffe'
-            'e921f55c2e838990e4fcd08e55b66f2bea3ba4ebe365284cb6e633c020f6917f'
-            '95c7bd3c1d3352a775a5ee3152a6e200829435afa6b6dd5ba6ccdd20cdacca19')
+sha256sums=('3f740bb9b9a7120ed72548071cd46a5f92929e1ab196acc1b2548549090a2148'
+            'de35e653250882268aa24d011ec0f2afbc13e1c552fbb676c67515bc80ef3194'
+            '81d600a5bda6fdb362573d55c11208b2635728a2c18b7f647b9c7413c0f33ef3')
 
 noextract=(
   "JMeterPlugins-Standard-${pkgver}.zip"
