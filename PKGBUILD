@@ -4,7 +4,7 @@
 _pkgbase=icedtea-web
 pkgname=icedtea-web-jre32
 conflicts=('icedtea-web')
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Free web browser plugin to run applets written in Java and an implementation of Java Web Start (uses 32-bit JRE)'
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ source=(
   http://icedtea.classpath.org/download/source/${_pkgbase}-${pkgver}.tar.gz
   fix-package-info.patch
 )
-sha256sums=('a9b46ab6c9dc303c89651143596bc5abea29242b9bdcabdd2dab7c606592c920'
+sha256sums=('ce67034096d6b960e2b6cfb5c41a7bd6b30eb2ec7f13bf3ecdb477ff6ce69300'
             '3da531a0b2ba99152fe9410591ade01b6ea63a926cc36f3fa0ab39955708940c')
 
 prepare() {
