@@ -2,7 +2,7 @@
 
 pkgname=pycharm-professional
 pkgver=2016.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Powerful Python and Django IDE. Professional version."
 arch=('any')
 options=('!strip')
@@ -15,7 +15,9 @@ depends=('java-runtime-common' 'java-runtime>=8' 'ttf-font' 'libxtst' 'libxslt')
 source=(https://download.jetbrains.com/python/$pkgname-$pkgver-no-jdk.tar.gz
         'pycharm-professional.desktop'
         'pycharm-professional.install'
-        'pycharm')
+        'pycharm'
+        'charm.desktop'
+        'charm')
 optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'ipython: For enhanced interactive Python shell v3 inside Pycharm'
             'openssh: For deployment and remote connections'
@@ -34,8 +36,10 @@ optdepends=('ipython2: For enhanced interactive Python shell v2 inside Pycharm'
             'python-tox: Python environments for testing tool with Python 3')
 sha256sums=('5525914782ab7c0b2e4dafa228d053525494acbe4cb47e84e6a44be2c21a646d'
             '016db1860a8b36d408c827f90aeb04b9d55cf21ea36788a9d8510cc54fae1c49'
-            '6442ec9f0690f743da697a2a65b0784017de501e7f39d5de0879153fbf85dc7a'
-            'ad59415f8ac2c623f9c61453caf70bf75b6b14db2f09807e4ea339a2dc740be9')
+            '438fbf23fa2020392df6360d39516a27dfadfa00654ae25f596ba04054121d4e'
+            'ad59415f8ac2c623f9c61453caf70bf75b6b14db2f09807e4ea339a2dc740be9'
+            'a90a2b645e733627fefe568ae82fc96716772c13b4431760a822c0c64b0596e9'
+            '0d6c311067aa925e4f73ab41f4955b033dbc00e0a65c940ceb27e6dae5bb7bb0')
 
 package() {
   # base
@@ -55,6 +59,10 @@ package() {
   
   # app file desktop
   install -Dm 644 pycharm-professional.desktop $pkgdir/usr/share/applications/
+  
+  # install charm application - for edit a single file in Pycharm
+  install -Dm 755 charm $pkgdir/opt/pycharm-professional/bin/
+  install -Dm 644 charm.desktop $pkgdir/usr/share/applications/
   
   # delete some conflicts files for i686 
   if [[ $CARCH = 'i686' ]]; then
