@@ -1,20 +1,20 @@
 # AUR/linux-lts-tomoyo PKGBUILD
 # Maintainer: dysphoria <>
 #
-# arch/core/linux-lts PKGBUILD 247257 2015-10-26 14:15:42
+# arch/core/linux-lts $Id: PKGBUILD 265036 2016-04-16 07:05:34Z andyrtr $
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-lts-tomoyo
-_srcname=linux-4.1
-pkgver=4.1.20
+_srcname=linux-4.4
+pkgver=4.4.7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
-provides=('linux-lts' 'linux-tomoyo')
+provides=('linux-lts' 'linux-tomoyo' 'linux-lts-tomoyo')
 options=('!strip')
 source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
         https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.{xz,sign}
@@ -22,16 +22,19 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "$pkgbase.preset"
-        'change-default-console-loglevel.patch')
+        'change-default-console-loglevel.patch'
+        '0001-sdhci-revert.patch')
+
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
-sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
+sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            'c9cb7370fe790df645a13967919628e5bcf1ff333f334fedac6a3c474714c45d'
+            '34a0e0bc123fe2224a83e13a4da25f7f816438fd77c58dce19588441f5166f0e'
             'SKIP'
-            'cbf851d69d0363a617664aabbc8124f57282a297d820ac87179f8e0aa53ec1b7'
-            '4c9ceb17f518d71e7fee48a6511f0d4475dc0d2139c13f6206818372795aec1c'
+            'b11702727b1503e5a613946790978481d34d8ecc6870337fadd3ce1ef084a8e2'
+            '68c7296ff2f5f55d69e83aa4d20f925df740b1eb1e6bdb0f13e8a170360ed09f'
             '4e1fcb722d069ce8bf8c4e720e42a400a91b9aa73304d8a47e34814b5fd210db'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
              )
@@ -45,6 +48,11 @@ prepare() {
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
+
+  # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
+  # fixes #47778 sdhci broken on some boards
+  # https://bugzilla.kernel.org/show_bug.cgi?id=106541
+  patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
@@ -104,7 +112,7 @@ _package() {
   conflicts=("kernel26${_kernelname}")
   replaces=("kernel26${_kernelname}")
   backup=("etc/mkinitcpio.d/${pkgbase}.preset")
-  install=linux-lts-tomoyo.install
+  install=${pkgbase}.install
 
   cd "${srcdir}/${_srcname}"
 
