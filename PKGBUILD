@@ -1,22 +1,24 @@
-# Maintainer: eagletmt <eagletmt@gmail.com>
+# Contributor: eagletmt <eagletmt@gmail.com>
+# Maintainer: kaptoxic
+
 pkgname=teyjus
-pkgver=2.0_b2
+pkgver=2.1
 pkgrel=1
 pkgdesc='An efficient implementation of the higher-order logic programming language Lambda Prolog'
-url='http://code.google.com/p/teyjus/'
+url='http://teyjus.cs.umn.edu/'
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('glibc')
 makedepends=('ocaml' 'omake' 'flex' 'bison')
-source=(http://teyjus.googlecode.com/files/$pkgname-source-${pkgver/_/-}.tar.gz)
+source=(https://github.com/teyjus/teyjus/archive/v${pkgver/_/-}.tar.gz)
 
 build () {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
   omake
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-$pkgver"
 
   mkdir -p "$pkgdir/usr/bin"
   local bin
@@ -30,4 +32,4 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('80de9349841bf93ae67101d66e389d61')
+md5sums=('e146dc66f1c526d3906112cc5edfb93c')
