@@ -1,6 +1,6 @@
 pkgbase = bin32-jre
 	pkgdesc = Oracle Java Runtime Enviroment (32-bit)
-	pkgver = 8u77
+	pkgver = 8u92
 	pkgrel = 1
 	url = http://www.oracle.com/technetwork/java/javase/downloads/index.html
 	install = bin32-jre.install
@@ -43,10 +43,10 @@ pkgbase = bin32-jre
 	backup = etc/java32-jre8/psfont.properties.ja
 	backup = etc/java32-jre8/psfontj2d.properties
 	backup = etc/java32-jre8/sound.properties
-	source = http://download.oracle.com/otn-pub/java/jdk/8u77-b03/jre-8u77-linux-i586.tar.gz
+	source = http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jre-8u92-linux-i586.tar.gz
 	source = http://download.oracle.com/otn-pub/java/jce/8/jce_policy-8.zip
 	source = policytool32-jre8.desktop
-	md5sums = 2a92cc0efa5e087230b0b77cef8a569e
+	md5sums = e2157870ce7f0484f347b8374da863a0
 	md5sums = b3c7031bc65c28c2340302065e7d00d3
 	md5sums = 271b97a9b95d809a99999ec5fb74313c
 
