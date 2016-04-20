@@ -67,7 +67,7 @@ build() {
   cd "${srcdir}/tensorflow"
 
   PYTHON_BIN_PATH=/usr/bin/python ./configure
-  bazel build --jobs 2 -c opt ${_build_opts} //tensorflow/tools/pip_package:build_pip_package
+  bazel build -c opt ${_build_opts} //tensorflow/tools/pip_package:build_pip_package
 
   msg2 "Building pip package..."
   bazel-bin/tensorflow/tools/pip_package/build_pip_package ${srcdir}/tmp
