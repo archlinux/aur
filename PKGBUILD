@@ -2,19 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.25
 
 pkgname='perl-fvwmpiazza'
-pkgver='0.3'
+pkgver='0.3001'
 pkgrel='1'
 pkgdesc="Fvwm module for tiling windows"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-class-base' 'perl-yaml-syck')
+depends=('fvwm' 'perl-class-base' 'perl-yaml-syck')
 makedepends=()
-url='http://search.cpan.org/dist/FvwmPiazza'
-source=('http://search.cpan.org/CPAN/authors/id/R/RU/RUBYKAT/FvwmPiazza-0.3.tar.gz')
-md5sums=('75f99074e811227a510d09dc17d9c246')
-sha512sums=('dfb4138a1c1664c9142d429b783f2ad2571ac7bf344b5bd21834a0c6de7eac4ca37de971713a73f3f2fc4337260c9ba369c07af350f00b7804b8c969a03b6a48')
-_distdir="FvwmPiazza-0.3"
+url='http://search.mcpan.org/dist/FvwmPiazza'
+source=('http://search.cpan.org/CPAN/authors/id/R/RU/RUBYKAT/FvwmPiazza-0.3001.tar.gz')
+md5sums=('0afdfbbbb0f41acc4d2967238c9e9ca0')
+sha512sums=('3a3ef0a18a6fbcd498be1c6a41b7d22f691be0f43cd8a53781d00b12d60dffb33b5ec4187909062d59b5e3a1819f2c794f60ebe08d78e95a4aa84768578c8abf')
+_distdir="FvwmPiazza-0.3001"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
