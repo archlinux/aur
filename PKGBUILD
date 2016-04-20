@@ -4,14 +4,14 @@ pkgname=libmir-git
 _gitname=mir
 pkgver=v0.13.2.2.g08a91a7
 pkgrel=1
-pkgdesc="Generic Numeric Library for the D Programming language"
+pkgdesc="Generic Numerical Library for the D Programming language"
 arch=('i686' 'x86_64')
-url="https://github.com/DlangScience/mir"
+url="https://github.com/libmir/mir"
 license=('BSL')
 depends=('libphobos-devel' 'dmd')
 makedepends=('git')
 optdepends=('ldc: faster numeric operations')
-source=("git://github.com/DlangScience/$_gitname.git")
+source=("git://github.com/libmir/$_gitname.git")
 md5sums=('SKIP')
 conflicts=('libmir')
 
