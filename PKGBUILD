@@ -1,7 +1,7 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=rabbit_tree
 pkgver=2014
-pkgrel=1
+pkgrel=2
 pkgdesc='Radix bit tries for implementing associative arrays and sets in C.'
 arch=(any)
 license=(GPL)
