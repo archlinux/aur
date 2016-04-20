@@ -12,8 +12,8 @@
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'mesa-vulkan-intel-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-libgl-git' 'mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=11.3.0_devel.80298.1d2ac7a
-pkgrel=2
+pkgver=11.3.0_devel.80341.899bd63
+pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm'  'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm-svn'
@@ -204,6 +204,9 @@ package_mesa-git () {
   mv -v "${srcdir}"/fakeinstall/usr/lib/*.so* "${pkgdir}/usr/lib/"
 
   mv -v "${srcdir}/fakeinstall/usr/include" "${pkgdir}/usr/"
+  # remove vulkan headers as they are provided by vulkan-headers package
+  rm -rf ${pkgdir}/usr/include/vulkan
+
   mv -v "${srcdir}/fakeinstall/usr/lib/pkgconfig" "${pkgdir}/usr/lib/"
  
   install -v -m755 -d "${pkgdir}/usr/lib/mesa"
