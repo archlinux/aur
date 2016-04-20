@@ -9,7 +9,7 @@ backup=('etc/kingfisher/kingfisher.conf')
 url="http://sourceforge.net/projects/kingfisherqm/"
 depends=("postgresql" "postgresql-libs" "cups" "php" "php-apache" "apache" "perl" "perl-proc-daemon" "perl-proc-pid-file" "perl-dbd-pg" "perl-ipc-shareable" "perl-gdgraph" "perl-gdgraph-3d" "python" "pkpgcounter") 
 options=('!makeflags')
-install=('kingfisher.install')
+install='kingfisher.install'
 source=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz/download" kingfisher.install)
 md5sums=('9849252841240d87e89196060b9054e2'
 	 'ab1c8d8acf5cc8094b49def4953fac6d') 
