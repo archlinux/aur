@@ -1,6 +1,6 @@
 # Maintainer: Jordan James Klassen (forivall) <forivall@gmail.com>
 pkgname=caprine-bin
-pkgver=1.1.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Unofficial Facebook Messenger app"
 arch=('x86_64')
@@ -15,9 +15,11 @@ conflicts=('caprine')
 
 source=(
   "Caprine-linux-v${pkgver}.zip::https://github.com/sindresorhus/caprine/releases/download/v${pkgver}/Caprine-linux-${pkgver}.zip"
+  "https://github.com/sindresorhus/caprine/blob/${pkgver}/media/Icon.png"
   "caprine.desktop")
 noextract=("Caprine-linux-v${pkgver}.zip")
-sha256sums=('d147af8b878542741f86e67a74c2087779d0f2c06dec5ac882bc680d2dbbae9f'
+sha256sums=('a605a2e3059aca4d17cb3ebc07f7345a478da6c1cb1592cabe40aa8149629560'
+            'bbd20584730d43e622114f3128370a2d79da07a98f9f91f6120ae8054805e628'
             '12b68650885651f78c6c7c2eb81fe0042474a0e7b1a857213732a449106aeaf8')
 
 package() {
@@ -26,5 +28,5 @@ package() {
   mkdir -p "${pkgdir}/usr/bin"
   ln -s "/usr/share/caprine/Caprine" "${pkgdir}/usr/bin/caprine"
   RPM_BUILD_ROOT="$pkgdir" desktop-file-install "${srcdir}/caprine.desktop"
-  install -Dm644 "${pkgdir}/usr/share/caprine/resources/app/media/Icon.png" "${pkgdir}/usr/share/pixmaps/Caprine.png"
+  install -Dm644 "${srcdir}/Icon.png" "${pkgdir}/usr/share/pixmaps/Caprine.png"
 }
