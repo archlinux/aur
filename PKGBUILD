@@ -38,6 +38,6 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   install -Dm755 ncc $pkgdir/usr/bin/ncc
-  install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
+  install -Dm644 README $pkgdir/usr/share/doc/${pkgname%-*}/README
 }
 
