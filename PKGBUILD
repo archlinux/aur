@@ -1,22 +1,22 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=maown
-pkgver=2015
+pkgver=2016
 pkgrel=1
 pkgdesc='Monitor a shared directory and automatically adjust file ownership and permissions.'
 arch=(i686 x86_64)
 license=(GPL)
 url="http://xyne.archlinux.ca/projects/maown"
 source=(
-  http://xyne.archlinux.ca/projects/maown/src/maown-2015.tar.xz
-  http://xyne.archlinux.ca/projects/maown/src/maown-2015.tar.xz.sig
+  http://xyne.archlinux.ca/projects/maown/src/maown-2016.tar.xz
+  http://xyne.archlinux.ca/projects/maown/src/maown-2016.tar.xz.sig
 )
 sha512sums=(
-  3236b776bc7368d955bfd7b5b44eee97f5f78748cbbbb48bdc47fb4cdad8cf1dc7865c98a228fd6f6a29487de0bf6156657967427e0db604d7d6f98972b8b87e
-  d94d580f51ce8e9ead521da5d13be6783ecea75c30af3444f10b41373194b27bed489b1cef20e8fd4b423c12e4f2e5cedce54aad459e92e90b3a36faa902e537
+  8da3bf533f860321233e7073d915168945ff199e5f180592383ebdad87707b3672b382e9e6bf02b9d4ebca39146217b22294cfdc2f87445cdc3fe329ca27cecc
+  923dbc95d72c824a5a68665d24ab9511809a6d1a969ab3ae6948b39c965a10e076d6ee1fc02b7e224a95bef36f69e535ca240d17265421f2e3ebaecce61f3d7e
 )
 md5sums=(
-  8405415c90d1ae4e3198203e64290e81
-  8a60c3f08da526d5c8007e7063578dff
+  1f5e5cc864cb11b8b38e654483cbcc2e
+  1a6c3ca813c6cb6e1db686eb571f9890
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
