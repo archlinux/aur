@@ -1,0 +1,66 @@
+diff -wbBur mysql-connector-odbc-5.3.4-src/driver/catalog_no_i_s.c mysql-connector-odbc-5.3.4-src.my/driver/catalog_no_i_s.c
+--- mysql-connector-odbc-5.3.4-src/driver/catalog_no_i_s.c	2014-06-19 02:50:16.000000000 +0400
++++ mysql-connector-odbc-5.3.4-src.my/driver/catalog_no_i_s.c	2014-09-08 18:47:59.685268667 +0400
+@@ -1093,7 +1093,7 @@
+   unsigned long *lengths;
+   SQLRETURN rc= SQL_SUCCESS;
+ 
+-  my_init_dynamic_array(&records, sizeof(MY_FOREIGN_KEY_FIELD), 0, 0);
++  my_init_dynamic_array(&records, sizeof(MY_FOREIGN_KEY_FIELD), 0, 0, 0);
+ 
+   /* Get the list of tables that match szCatalog and szTable */
+   pthread_mutex_lock(&stmt->dbc->lock);
+diff -wbBur mysql-connector-odbc-5.3.4-src/driver/desc.c mysql-connector-odbc-5.3.4-src.my/driver/desc.c
+--- mysql-connector-odbc-5.3.4-src/driver/desc.c	2014-06-19 02:50:16.000000000 +0400
++++ mysql-connector-odbc-5.3.4-src.my/driver/desc.c	2014-09-08 18:48:41.027931609 +0400
+@@ -63,13 +63,13 @@
+      but in desc_get_rec we manually get a pointer to it. This avoids
+      having to call set_dynamic after modifying the DESCREC.
+   */
+-  if (my_init_dynamic_array(&desc->records, sizeof(DESCREC), 0, 0))
++  if (my_init_dynamic_array(&desc->records, sizeof(DESCREC), 0, 0, 0))
+   {
+     x_free((char *)desc);
+     return NULL;
+   }
+ 
+-  if (my_init_dynamic_array(&desc->bookmark, sizeof(DESCREC), 0, 0))
++  if (my_init_dynamic_array(&desc->bookmark, sizeof(DESCREC), 0, 0, 0))
+   {
+     delete_dynamic(&desc->records);
+     x_free((char *)desc);
+@@ -997,7 +997,7 @@
+   delete_dynamic(&dest->records);
+   if (my_init_dynamic_array(&dest->records, sizeof(DESCREC),
+                             src->records.max_element,
+-                            src->records.alloc_increment))
++                            src->records.alloc_increment, 0))
+   {
+     return set_desc_error(dest, "HY001",
+               "Memory allocation error",
+diff -wbBur mysql-connector-odbc-5.3.4-src/driver/handle.c mysql-connector-odbc-5.3.4-src.my/driver/handle.c
+--- mysql-connector-odbc-5.3.4-src/driver/handle.c	2014-06-19 02:50:16.000000000 +0400
++++ mysql-connector-odbc-5.3.4-src.my/driver/handle.c	2014-09-08 18:48:24.994858266 +0400
+@@ -403,7 +403,7 @@
+     }
+   }
+ 
+-  my_init_dynamic_array(*param_bind, sizeof(MYSQL_BIND), elements, 10);
++  my_init_dynamic_array(*param_bind, sizeof(MYSQL_BIND), elements, 10, 0);
+   memset((*param_bind)->buffer, 0, sizeof(MYSQL_BIND) *
+ 											(*param_bind)->max_element);
+ 
+diff -wbBur mysql-connector-odbc-5.3.4-src/driver/parse.c mysql-connector-odbc-5.3.4-src.my/driver/parse.c
+--- mysql-connector-odbc-5.3.4-src/driver/parse.c	2014-06-19 02:50:16.000000000 +0400
++++ mysql-connector-odbc-5.3.4-src.my/driver/parse.c	2014-09-08 18:48:30.494769081 +0400
+@@ -129,8 +129,8 @@
+ 
+     /* TODO: Store offsets rather than ptrs. In this case we will be fine
+        if work with copy of the originally parsed string */
+-    my_init_dynamic_array(&pq->token,     sizeof(uint), 20, 10);
+-    my_init_dynamic_array(&pq->param_pos, sizeof(uint), 10, 10);
++    my_init_dynamic_array(&pq->token,     sizeof(uint), 20, 10, 0);
++    my_init_dynamic_array(&pq->param_pos, sizeof(uint), 10, 10, 0);
+   }
+ 
+   return pq;
