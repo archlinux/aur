@@ -1,0 +1,13 @@
+pkgbase = fin-git
+	pkgdesc = Zero-configuration, concurrent plugin manager for the fish shell in one file
+	pkgver = VERSION
+	pkgrel = 1
+	url = https://github.com/fisherman/fin
+	arch = any
+	license = MIT
+	makedepends = git
+	source = git+https://github.com/fisherman/fin.git
+	md5sums = SKIP
+
+pkgname = fin-git
+
