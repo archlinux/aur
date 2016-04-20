@@ -42,7 +42,8 @@ query-version() {
 }
 eval "package_$pkgname()" '{
   prepare_target
-  cp --no-preserve=ownership,mode -r . "$destdir/$id"
+  install -d "$destdir/$id"
+  cp --no-preserve=ownership,mode -r * "$destdir/$id"
 }'
 
 for target in "${optdepends[@]}"; do
