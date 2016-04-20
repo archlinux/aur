@@ -3,10 +3,10 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=geth
-pkgver=1.3.6
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="The go-ethereum commandline client (geth cli)."
-arch=('x86_64')
+arch=('i686' 'x86_64')
 depends=(
   'gmp'
   'leveldb'
@@ -22,15 +22,23 @@ provides=('geth')
 url="https://github.com/ethereum/go-ethereum"
 license=('GPL')
 source=(
-  "${pkgname}-${pkgver}.tar.bz2::https://github.com/ethereum/go-ethereum/releases/download/v1.3.6/geth-Linux64-20160402135800-1.3.6-9e323d6.tar.bz2"
+  "${pkgname}-${pkgver}-32.tar.bz2::https://github.com/ethereum/go-ethereum/releases/download/v1.4.0/geth-1.4.0-rc-8241fa5-linux-386.tar.bz2"
+  "${pkgname}-${pkgver}-64.tar.bz2::https://github.com/ethereum/go-ethereum/releases/download/v1.4.0/geth-1.4.0-rc-8241fa5-linux-amd64.tar.bz2"
   "LICENSE.txt::https://raw.githubusercontent.com/ethereum/go-ethereum/master/COPYING"
 )
 sha256sums=(
-  '47cd1a8fb1d12bc127690838aa1d88aea4a77c4c9de09123fe5446efd7e39dc5'
+  '6ef30e52de4201eb1a43b775d87e7b92e60e56b201e1fea57e9f83a0f7fa61fe'
+  'b28293ac19e93f8b23568db6a65bede57099276b42306b5462c007e45a1c6bd0'
   '48e234e35cf83b4f2543b0fbafcf7d33843378cc1a829654d5fc23f4e1b1e581'
 )
 
 package() {
-  install -Dm755 "$srcdir/geth" "$pkgdir/usr/bin/geth"
+
+  if [ "${CARCH}" = "x86_64" ]; then
+    install -Dm755 "$srcdir/geth-1.4.0-rc-8241fa5-linux-amd64" "$pkgdir/usr/bin/geth"
+  else
+    install -Dm755 "$srcdir/geth-1.4.0-rc-8241fa5-linux-386" "$pkgdir/usr/bin/geth"
+  fi
+
   install -Dm644 "$srcdir/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
