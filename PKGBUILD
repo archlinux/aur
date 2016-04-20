@@ -2,7 +2,7 @@
 
 pkgname=rimworld
 pkgver=0.13.1135  # see ${srcdir}/Version.txt
-pkgrel=2
+pkgrel=3
 pkgdesc="A sci-fi colony simulation game driven by an intelligent AI storyteller."
 arch=('i686' 'x86_64')
 url="http://rimworldgame.com/"
