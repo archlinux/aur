@@ -21,7 +21,7 @@ replaces=('icedtea-web-java7')
 install=install_${pkgname}.sh
 
 # Due to broken path names in the tarball that fails with LANG=C in our chroot
-noextract=${_pkgbase}-${pkgver}.tar.gz
+noextract=(${_pkgbase}-${pkgver}.tar.gz)
 source=(
   http://icedtea.classpath.org/download/source/${_pkgbase}-${pkgver}.tar.gz
   fix-package-info.patch
