@@ -5,8 +5,8 @@
 
 _pkgname=testng
 pkgname=java-${_pkgname}
-pkgver=6.9.10
-pkgrel=2
+pkgver=6.9.11
+pkgrel=1
 pkgdesc='A testing framework inspired from JUnit and NUnit'
 arch=('any')
 url='http://testng.org/doc/index.html'
@@ -14,7 +14,7 @@ license=('APACHE')
 depends=("java-runtime")
 makedepends=("maven" "java-environment")
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/cbeust/testng/archive/${pkgver}.tar.gz")
-sha256sums=('2155f0461f6b80433781968b9465627f877ea579086cb4149ca68e5e711d8127')
+sha256sums=('e10c49a31a8d95a3786cf2235c4d033c3719592e4c86242f325131d50e5f7f0b')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
