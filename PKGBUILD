@@ -2,11 +2,11 @@
 # Contributor: onny <onny@project-insanity.org>
 
 pkgname=sha3sum-git
-pkgver=0.230.cde3d62
+pkgver=0.233.1.0.2.g297f992
 pkgrel=1
 pkgdesc="Checksum utility for Keccak and its close derivatives SHA-3, SHAKE and RawSHAKE"
 url="https://github.com/maandree/sha3sum"
-license="AGPL3"
+license=("AGPL3")
 arch=('i686' 'x86_64')
 makedepends=('auto-auto-complete' 'texman' 'texlive-plainextra')
 depends=('argparser' 'libkeccak')
