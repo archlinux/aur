@@ -2,10 +2,10 @@
 
 pkgname=compiz-monowall-plugin-git
 pkgver=0.4.37666c2
-pkgrel=1
+pkgrel=2
 pkgdesc="Compiz 0.8.x plugin to switch workspaces independently on each connected monitor"
 url="https://github.com/blackhole89/compiz-monowall"
-license="GPL2"
+license=("GPL2")
 arch=('i686' 'x86_64')
 makedepends=('git')
 depends=('compiz-core<0.9.0' 'compiz-bcop')
