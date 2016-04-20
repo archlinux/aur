@@ -5,32 +5,33 @@
 #   package contents to /usr/bin/ and /usr/share/.
 
 pkgname=gearhead
-pkgver=1.300
-pkgrel=2
+_reponame=gearhead-1
+pkgver=1.301
+pkgrel=1
 pkgdesc="A rougelike mecha role playing game"
 arch=(i686 x86_64)
 url="http://www.gearheadrpg.com/"
 license=('LGPL')
 depends=(sdl sdl_image sdl_ttf)
 makedepends=(fpc)
-source=("https://github.com/jwvhewitt/${pkgname}-1/archive/v${pkgver}.tar.gz"
+source=("https://github.com/jwvhewitt/${_reponame}/archive/v${pkgver}.tar.gz"
 		${pkgname}.sh
 		${pkgname}.desktop
 		${pkgname}.png)
-md5sums=('82be0ad5093eeecbe6feea1b8fa2acd5'
+md5sums=('c65732798458861786908c1bbd424ee7'
          'cd699f36df6275bdb6b345cb5ac8f8f1'
          'a97a4a561783e23767e223476c0e7899'
          '19f59e008bbe3fdcf39363818d3a5cf1')
 
 build() {
-	cd "${pkgname}-1-${pkgver}"
+	cd "${_reponame}-${pkgver}"
 
 	fpc -dSDLMODE gharena
 }
 
 package() {
 	# Install the game itself.
-	cd "${pkgname}-1-${pkgver}"
+	cd "${_reponame}-${pkgver}"
 	install -d "${pkgdir}/opt/${pkgname}"
 	cp -ar -t "${pkgdir}/opt/${pkgname}" Image Design GameData Series doc
 	install -Dm755 gharena "${pkgdir}/opt/${pkgname}"
