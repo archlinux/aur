@@ -2,7 +2,7 @@
 # Contributor: TZ86
 
 pkgname=vivaldi-snapshot
-pkgver=1.1.453.6
+pkgver=1.1.453.30
 pkgrel=1
 pkgdesc='An advanced browser made with the power user in mind. (weekly snapshot)'
 url="https://vivaldi.com"
@@ -15,10 +15,10 @@ optdepends=(
     'vivaldi-snapshot-ffmpeg-codecs: playback of proprietary video/audio'
     'google-chrome: Widevine DRM Plugin'
 )
-source_i686=("https://vivaldi.com/download/snapshot/vivaldi-snapshot-${pkgver}-1.i386.rpm")
-source_x86_64=("https://vivaldi.com/download/snapshot/vivaldi-snapshot-${pkgver}-1.x86_64.rpm")
-sha256sums_i686=('f8367c91a82181a859f082eeb45237262744be6fc500ccd95248b05225ce9aa0')
-sha256sums_x86_64=('eb53d12177a35212024217a3706b6286c65d8cfa1cfd88c97dd9fc26fac28ef3')
+source_i686=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${pkgver}-1.i386.rpm")
+source_x86_64=("https://downloads.vivaldi.com/snapshot/vivaldi-snapshot-${pkgver}-1.x86_64.rpm")
+sha256sums_i686=('7330f76ee88165f9a2d83fbbb1ea553d9453a6c00dfbba49a2457c0ddba21e9c')
+sha256sums_x86_64=('8cb5faf947867a0eea1fda29e2e4d10495ddf2f1cb40ad62c807cdda360d78e1')
 
 package() {
     cp -a {opt,usr} "$pkgdir"
