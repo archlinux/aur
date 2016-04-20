@@ -8,7 +8,7 @@ arch=('i686' 'x86_64')
 url='https://github.com/Airblader/i3/tree/gaps'
 license=('BSD')
 provides=('i3-wm')
-conflicts=('i3-wm' 'i3bar' 'i3bar-git' 'i3-git' 'i3-gaps-next-git')
+conflicts=('i3-wm' 'i3bar' 'i3bar-git' 'i3-git' 'i3-gaps-next-git' 'i3-gaps')
 groups=('i3-vcs')
 depends=('xcb-util-keysyms' 'xcb-util-wm' 'libev' 'yajl'
          'startup-notification' 'pango' 'perl' 'xcb-util-cursor'

@@ -32,6 +32,7 @@ pkgbase = i3-gaps-git
 	conflicts = i3bar-git
 	conflicts = i3-git
 	conflicts = i3-gaps-next-git
+	conflicts = i3-gaps
 	options = docs
 	options = !strip
 	source = git://github.com/Airblader/i3#branch=gaps
