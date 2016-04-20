@@ -6,7 +6,7 @@
 _pkgname=r8168
 pkgname=r8168-pf
 pkgver=8.041.00
-pkgrel=3
+pkgrel=4
 pkgdesc="A kernel module for Realtek 8168 network cards(pf kernel)"
 url="http://www.realtek.com.tw"
 license=("GPL")
@@ -14,8 +14,15 @@ arch=('i686' 'x86_64')
 depends=('glibc' 'linux-pf')
 makedepends=('linux-pf-headers')
 install=$_pkgname.install
-source=("$_pkgname-$pkgver.tar.gz"::"https://github.com/mtorromeo/r8168/archive/$pkgver.tar.gz")
-sha256sums=('d56f60e4157ccbf8f8717270b1acb391b0a959d9a96c2f0b4a91c683aa8b83a5')
+source=("$_pkgname-$pkgver.tar.gz"::"https://github.com/mtorromeo/r8168/archive/$pkgver.tar.gz"
+       "linux-4.5.patch")
+sha256sums=('d56f60e4157ccbf8f8717270b1acb391b0a959d9a96c2f0b4a91c683aa8b83a5'
+            'e05a4bccf28beecc97db246064a5fe80d1303476b76086bd262c9c8db82b2e6e')
+
+prepare() {
+	cd "$_pkgname-$pkgver"
+	patch -p1 -i ../linux-4.5.patch
+}
 
 build() {
 	_kernver=$(pacman -Q linux-pf | sed -r 's#.* ([0-9]+\.[0-9]+).*#\1#')
