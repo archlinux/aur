@@ -1,10 +1,10 @@
 pkgbase=linux-criu
-# $Id: PKGBUILD 264859 2016-04-14 05:06:34Z tpowa $
+# $Id: PKGBUILD 265148 2016-04-19 06:55:26Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 _srcname=linux-4.5
-pkgver=4.5
+pkgver=4.5.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -13,8 +13,8 @@ makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -23,8 +23,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
             'SKIP'
-            '5a03c1633062f82dab75c8afa4dcb51659943f8785c4fbe46e31ff8917e9a3c6'
-            '8012d5000f2c67ef60b7ca5033b322c78c1924d56ee1df8d6d7537d957aaf8a5'
+            '060ad091ebfa2b63d62e86beaf68c3a5d4638c506c3ac941c1825ba756e830b1'
+            'SKIP'
+            'ea4a96673984db9139c447c8c78bfc124ed4fe169d380745b6fefedb738b423b'
+            'bca44f0aa5ff047832ba78326072306a9aeb1d0222b9dd51ef0517443e6831be'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
@@ -38,7 +40,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  # patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
