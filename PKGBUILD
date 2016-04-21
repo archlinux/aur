@@ -1,22 +1,23 @@
-# $Id: PKGBUILD 153377 2015-12-15 13:13:19Z mtorromeo $
+# $Id: PKGBUILD 171381 2016-04-19 06:54:58Z tpowa $
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Contributor: Bob Fanger < bfanger(at)gmail >
 # Contributor: Filip <fila pruda com>, Det < nimetonmaili(at)gmail >
-# AUFS ver   : GI_Jack <iamjacksemail@hackermail.com>
 
 pkgname=r8168-aufs
 _pkgname=r8168
 pkgver=8.041.00
-pkgrel=1
-pkgdesc="A kernel module for Realtek 8168 network cards(aufs_friendly kernel)"
+pkgrel=9
+pkgdesc="A kernel module for Realtek 8168 network cards(-aufs_friendly kernel)"
 url="http://www.realtek.com.tw"
 license=("GPL")
 arch=('i686' 'x86_64')
 depends=('glibc' 'linux-aufs_friendly')
 makedepends=('linux-aufs_friendly-headers')
 install=$_pkgname.install
-source=(https://github.com/mtorromeo/r8168/archive/$pkgver/$_pkgname-$pkgver.tar.gz)
-sha256sums=('d56f60e4157ccbf8f8717270b1acb391b0a959d9a96c2f0b4a91c683aa8b83a5')
+source=(https://github.com/mtorromeo/r8168/archive/$pkgver/$pkgname-$pkgver.tar.gz
+        linux-4.5.patch)
+sha256sums=('d56f60e4157ccbf8f8717270b1acb391b0a959d9a96c2f0b4a91c683aa8b83a5'
+            'e05a4bccf28beecc97db246064a5fe80d1303476b76086bd262c9c8db82b2e6e')
 
 build() {
 	_kernver=$(pacman -Q linux-aufs_friendly | sed -r 's#.* ([0-9]+\.[0-9]+).*#\1#')
