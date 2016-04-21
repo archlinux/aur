@@ -1,6 +1,6 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@gpcsolutions.fr>
 pkgname=gandi.cli
-pkgver=0.17
+pkgver=0.18
 pkgrel=1
 pkgdesc="Gandi command line interface"
 arch=('any')
@@ -19,25 +19,25 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/Gandi/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('54451ae272b620da36e0beebc02c6fade08e3ac25c35393f4b8ffd76e2c2482b')
+sha256sums=('c9d743713df2e08c97ec21e5a78fe4b57b7bd1eaf06ef9abd269ff11d46c87a2')
 
 build() {
   # Building the manpage
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   rst2man --no-generator gandicli.man.rst > gandi.1
 }
 
 check() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py test
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py nosetests
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}/" --optimize=1
   # Installing the manpage
-  install -d $pkgdir/usr/share/man/man1/
-  install -m 644 *.1 $pkgdir/usr/share/man/man1/
+  install -d "${pkgdir}/usr/share/man/man1/"
+  install -m 644 *.1 "${pkgdir}/usr/share/man/man1/"
 }
 
 # vim:set ts=2 sw=2 et:
