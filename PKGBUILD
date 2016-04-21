@@ -17,7 +17,9 @@ _gourl="github.com/zquestz/${pkgname}"
 build() {
   cd "${pkgname}-${pkgver}"
   export GOPATH="${srcdir}"
+  export GOBIN="${srcdir}/bin"
   go get -v ${_gourl}
+  make install
 }
 
 package() {
