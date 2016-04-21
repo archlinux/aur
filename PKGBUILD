@@ -31,9 +31,9 @@ prepare(){
 	if [ ! -f "../$_pianoteqfilename" ]
 	then
             echo "File not found!"
-            echo -e "For this package a mannual download of the pianoteq software is needed: 'https://www.pianoteq.com/download?file=pianoteq_stage_linux_v561.7z'\nThe archive should be in the same dir as the PKGBUILD!"
+            echo -e "For this package a mannual download of the pianoteq software is needed: 'https://www.pianoteq.com/download?file=pianoteq_stage_linux_v561-.7z'\nThe archive should be in the same dir as the PKGBUILD!"
             exit;
-        fi 
+        fi
         # move the dependency to ./src/
         mv ../$_pianoteqfilename ./
 	# Check integrity:
@@ -42,6 +42,7 @@ prepare(){
  	7z x $_pianoteqfilename
 	# Generate Desktop Entry:
 	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" --name='pianoteq 5' --exec='pianoteq\ 5' --categories 'Audio;Sequencer;Midi;AudioVideoEditing;Music;AudioVideo;'
+	echo "Note: Try running pianoteq from a shell, if problems occur!"
 }
 
 package(){
