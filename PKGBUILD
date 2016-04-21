@@ -2,8 +2,8 @@
 
 pkgname=firefox-esr-zh-cn
 _pkgname=firefox-esr
-pkgver=45.0.2esr
-pkgrel=3
+pkgver=45.1.0esr
+pkgrel=1
 pkgdesc="Chinese Simplified For Firefox ESR"
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/zh-CN/firefox/channel/#esr"

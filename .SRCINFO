@@ -1,7 +1,7 @@
 pkgbase = firefox-esr-zh-cn
 pkgdesc = Chinese Simplified For Firefox ESR
-pkgver = 45.0.2esr
-pkgrel = 3
+pkgver = 45.1.0esr
+pkgrel = 1
 url = https://www.mozilla.org/zh-CN/firefox/channel/#esr
 install = firefox-esr-zh-cn.install
 arch = i686
@@ -27,10 +27,10 @@ optdepends = ffmpeg: additional video and audio decoders
 optdepends = libpulse: PulseAudio driver
 optdepends = networkmanager: Location detection via available WiFi networks
 optdepends = upower: Battery API
-provides = firefox=45.0.2esr
+provides = firefox=45.1.0esr
 source = firefox-esr-zh-cn.desktop
 source = vendor.js
-source = https://ftp.mozilla.org/pub/firefox/candidates/45.0.2esr-candidates/build3/linux-/zh-CN/firefox-45.0.2esr.tar.bz2
+source = https://ftp.mozilla.org/pub/firefox/candidates/45.1.0esr-candidates/build1/linux-/zh-CN/firefox-45.1.0esr.tar.bz2
 sha512sums = SKIP
 sha512sums = SKIP
 sha512sums = 
