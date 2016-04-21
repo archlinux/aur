@@ -1,6 +1,5 @@
-upwork_amd64*.deb
-upwork_i386*.deb
-upwork-*.pkg.tar.xz
-upwork-*.src.tar.gz
-src/
-pkg/
+*
+!PKGBUILD
+!.SRCINFO
+!*.install
+!.gitignore
