@@ -1,0 +1,32 @@
+--- utility.cpp	2016-04-21 12:02:53.487397154 +0200
++++ utility2.cpp	2016-04-21 12:15:00.352270643 +0200
+@@ -171,25 +171,25 @@
+ 
+ QString Utility::dataPath()
+ {
+-    return QDir::homePath() + "/Arena Tracker";
++    return QDir::homePath() + "/.arena-tracker";
+ }
+ 
+ 
+ QString Utility::gameslogPath()
+ {
+-    return dataPath() + "/Games Drafts Logs";
++    return dataPath() + "/logs";
+ }
+ 
+ 
+ QString Utility::hscardsPath()
+ {
+-    return dataPath() + "/Hearthstone Cards";
++    return dataPath() + "/cards";
+ }
+ 
+ 
+ QString Utility::extraPath()
+ {
+-    return dataPath() + "/Extra";
++    return "/usr/share/arena-tracker/extra";
+ }
+ 
+ 
