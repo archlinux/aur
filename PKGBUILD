@@ -2,8 +2,8 @@
 
 pkgname=rclone-bin
 _srcname=rclone
-pkgver=1.28
-pkgrel=10
+pkgver=1.29
+pkgrel=11
 pkgdesc="Rclone is a command line program to sync files and directories to and from Google Drive, Amazon S3, Openstack Swift / Rackspace cloud files / Memset Memstore, Dropbox, Google Cloud Storage and the local filesystem."
 url="http://rclone.org/"
 license=('MIT')
@@ -12,8 +12,8 @@ _arch='linux-386'
 [ "$CARCH" = 'x86_64' ] && _arch='linux-amd64'
 source_i686=("http://downloads.rclone.org/rclone-v$pkgver-linux-386.zip")
 source_x86_64=("http://downloads.rclone.org/rclone-v$pkgver-linux-amd64.zip")
-md5sums_i686=('711be348928f724329362175976277fd')
-md5sums_x86_64=('e9f099b34cd33cb81fb39fdd6e8a26cd')
+md5sums_i686=('cfdba98fe2045a44293e75471c92e06f')
+md5sums_x86_64=('6fe77aada0dce4c8786836d1233cc967')
 
 package() {
   mkdir -p $pkgdir/usr/bin || return 1
