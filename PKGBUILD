@@ -4,14 +4,17 @@
 
 _pkgname=vokoscreen
 pkgname=${_pkgname}-git
-pkgver=2.4.18.beta.1.g9577fa1
+pkgver=2.4.21.beta.3.gd2d38f3
 pkgrel=2
 pkgdesc='An easy to use screencast creator. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
 url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
 license=('GPL2')
 
-depends=('ffmpeg' 'lame' 'qt5-x11extras' 'desktop-file-utils')
+depends=(
+	'qt5-x11extras' 'ffmpeg' 'lame'
+	'desktop-file-utils' 'xdg-utils' 'lsof'
+)
 optdepends=(
 	'pulseaudio-alsa: for PulseAudio support'
 )
@@ -23,12 +26,12 @@ install=${pkgname}.install
 
 source=(
 	"git+https://github.com/vkohaupt/${_pkgname}.git"
-	'lrelease_fix.patch'
+	'fix_lrelease.patch'
 	'desktop_file.patch'
 )
 sha512sums=(
 	'SKIP'
-	'c88025e797daa551d9fb74d4edefd04f0f5034dd3a67163518687eb41a0a03b6b50074179bc9b8d620277ac96a53ccd100b788ebffb40e7dd741869e4e9bbab3'
+	'9e4b70ccca8fd3b2abb5e21a379334fcb79c41383e6362e6f6c984a7c0f52aacbf419524b062c8905bf46846d1ba8a38056e37bb7dc1b139e6a5b6982be9e296'
 	'3ddc567f831b9f6e2672997a77a099cf8fdd5a6a1d79157738c1670c9106fd6c4e09d74287a770c19bac23dcb73a19ce69cc1ac893d4988f75c7ac35668f7a90'
 )
 
@@ -41,8 +44,8 @@ pkgver() {
 prepare() {
 	cd "${srcdir}"/${_pkgname}
 
-	# lrelease fix
-	patch -Np1 < ../lrelease_fix.patch
+	# Fix lrelease path
+	patch -Np1 < ../fix_lrelease.patch
 
 	# Desktop entry
 	patch -Np1 < ../desktop_file.patch
@@ -63,8 +66,7 @@ build() {
 	cd "${srcdir}"/build
 	qmake-qt5 ../${_pkgname} \
 		CONFIG+=release \
-		CONFIG+=c++14 \
-		-spec linux-g++
+		CONFIG+=c++14
 
 	make -j${njobs}
 }
