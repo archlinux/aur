@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A command line tool to create C files from binary files."
 arch=('i686' 'x86_64')
 url="https://sourceforge.net/projects/bin2c/"
-license=('custom:BSD-like')
+license=('Public Domain')
 sha256sums=('b2eef0a7ce77bb853b6496103727ce0614bfb69bc0f134813586ef12d6ae90e3')
 makedepends=('gcc')
 
