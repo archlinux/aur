@@ -5,7 +5,7 @@
 
 pkgname=libgcj16-bin
 pkgver=5.3.1_14
-pkgrel=1
+pkgrel=2
 pkgdesc="Dynamically load and interpret java class files. Built from binary \
 executables available in Debian repositories."
 url=http://gcc.gnu.org/java/
@@ -13,6 +13,7 @@ arch=(i686 x86_64)
 license=(GPL)
 conflicts=(gcc-gcj)
 depends=(zlib)
+replaces=(libgcj)
 
 source_i686=(http://httpredir.debian.org/debian/pool/main/g/gcc-5/${pkgname%-*}_${pkgver%_*}-${pkgver##*_}_i386.deb)
 source_x86_64=(http://httpredir.debian.org/debian/pool/main/g/gcc-5/${pkgname%-*}_${pkgver%_*}-${pkgver##*_}_amd64.deb)
