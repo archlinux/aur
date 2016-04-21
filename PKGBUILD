@@ -3,7 +3,7 @@
 pkgname="cryptocat-bin"
 _pkgname="cryptocat-bin"
 pkgver="3.1.07"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Chat with your friends, privately."
 arch=("x86_64")
 url="https://crypto.cat/"
@@ -13,10 +13,12 @@ conflicts=("cryptocat")
 options=("!strip")
 
 sha256sums=('SKIP'
+'SKIP'
 'SKIP')
 
 source=("https://download.crypto.cat/client/Cryptocat-linux-x64.zip"
-	"Cryptocat.desktop")
+	"Cryptocat.desktop"
+	"Cryptocat.png")
 
 
 package() {
