@@ -1,7 +1,7 @@
 pkgname=('python2-linux-gpib')
 _pkgname=('linux-gpib')
-pkgver=4.0.2
-pkgrel=2
+pkgver=4.0.3
+pkgrel=1
 pkgdesc='A support package for GPIB (IEEE 488) hardware - Python 2 bindings'
 arch=('i686' 'x86_64')
 url='http://linux-gpib.sourceforge.net/'
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('linux-gpib' 'python2')
 source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}%20for%203.x.x%20and%202.6.x%20kernels/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 
-md5sums=('dee2981476bd9c9f467efd3010095935')
+md5sums=('2d97191e538a57ba7350fcc011ee2596')
 
 
 build() {
