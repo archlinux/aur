@@ -3,7 +3,7 @@
 # Contributor: Bill Durr <billyburly [at] gmail [dot] com>
 pkgname=crashplan
 pkgver=4.6.0
-pkgrel=4
+pkgrel=5
 pkgdesc="An online/offsite backup solution"
 url="http://www.crashplan.com"
 arch=('i686' 'x86_64')
@@ -78,6 +78,4 @@ package() {
 	install -Dm 644 "$srcdir/crashplan-install/scripts/run.conf" "$pkgdir/opt/$pkgname/bin/run.conf"
 	install -Dm 755 "$srcdir/crashplan-install/scripts/CrashPlanEngine" "$pkgdir/opt/$pkgname/bin/CrashPlanEngine"
 	install -Dm 755 "$srcdir/crashplan-install/scripts/CrashPlan.desktop" "$pkgdir/usr/share/applications/crashplan.desktop"
-	rm -rf "$pkgdir/opt/$pkgname/upgrade"
-	install -dm 000 "$pkgdir/opt/$pkgname/upgrade"
 }

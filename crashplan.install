@@ -3,7 +3,16 @@ post_install () {
 	post_upgrade
 }
 
-post_upgrade () {
+pre_upgrade () {
 	# Pacman doesn't retroactively change folder permissions, just warns about differences
-	chmod 000 /opt/crashplan/upgrade
+	pre_remove
+	chmod 755 /opt/crashplan/upgrade
+}
+
+post_upgrade () {
+	chattr +i /opt/crashplan/upgrade
+}
+
+pre_remove () {
+	chattr -i /opt/crashplan/upgrade
 }
