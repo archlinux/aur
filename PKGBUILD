@@ -2,7 +2,7 @@
 # Contributor: John K. Luebs <jkl@johnluebs.com>
 
 pkgname=gapi-ocaml
-pkgver=0.2.8
+pkgver=0.2.10
 pkgrel=1
 pkgdesc="A simple OCaml client for Google Services."
 arch=("x86_64" "i686")
@@ -20,7 +20,7 @@ depends=(
 )
 source=(https://github.com/astrada/$pkgname/archive/v$pkgver.tar.gz)
 options=('!strip' 'staticlibs')
-md5sums=('0547ec33a53ad275281c66d22a9e55b6')
+md5sums=('14ddd4dfbabdc560c9719bcffeafe58b')
 
 
 build() {
