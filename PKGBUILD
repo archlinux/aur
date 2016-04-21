@@ -6,8 +6,8 @@
 
 pkgname=unity-editor-beta
 _version=5.4.0
-_build=b13
-_buildtag=20160406
+_build=b15
+_buildtag=20160418
 pkgver=${_version}${_build}+${_buildtag}
 pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
@@ -39,7 +39,7 @@ source=("http://download.unity3d.com/download_unity/linux/unity-editor-installer
         'monodevelop-unity-beta'
         'unity-monodevelop-beta.png')
 noextract=("unity-editor-installer-${pkgver}.sh")
-sha256sums=('4ef35a56bb9d53843e2572e134bd7d40560e9143660c3a31b3b5d1ee2a9b072c'
+sha256sums=('fc2f878af5ffed4c3693f3cddeaba833291c89cc44a7204f10b6d08ae6cdf68f'
             'aca6e932a624acd98f634428af0b33a36587b6c41887969477db944975d4d8b4'
             'a6183b216e30a472b9592059f64a3a6279a9d3e56c5c343c93713b03fa863c4c'
             '336ffc3f63e622aa394e1022c15a58ce94865d7b6d9465cbcca4ce943285763a'
