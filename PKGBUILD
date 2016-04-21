@@ -97,7 +97,7 @@ prepare() {
     --exclude .git \
     --exclude .gitignore
 
-  export DFHACKVER="${pkgver}-$(_dfhack_pkgrel)"
+  export DFHACKVER="${pkgver}-${_dfhack_pkgrel}"
 
   cd $srcdir/dfhack/build
   cmake .. -DCMAKE_INSTALL_PREFIX=$pkgdir/opt/$pkgname/df_linux \
