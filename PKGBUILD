@@ -3,7 +3,7 @@ pkgname=purescript
 pkgver=0.8.5.0
 pkgrel=1
 pkgdesc="PureScript Programming Language Compiler"
-url="http://hackage.haskell.org/package/${pkgname}"
+url="http://www.purescript.org"
 license=('custom:MIT')
 arch=('i686' 'x86_64')
 makedepends=('ghc' 'haskell-glob<0.8' 'haskell-aeson<0.12' 'haskell-aeson-better-errors>=0.8' 'haskell-ansi-wl-pprint' 'haskell-base-compat>=0.6.0' 'haskell-bower-json>=0.7' 'haskell-boxes<0.2.0' 'haskell-bytestring' 'haskell-containers' 'haskell-directory' 'haskell-dlist' 'haskell-filepath' 'haskell-haskeline>=0.7.0.0' 'haskell-language-javascript' 'haskell-lifted-base<0.2.4' 'haskell-monad-control<1.1' 'haskell-mtl' 'haskell-optparse-applicative>=0.10.0' 'haskell-parallel' 'haskell-parsec' 'haskell-pattern-arrows<0.1' 'haskell-process' 'haskell-safe<0.4' 'haskell-semigroups<0.19' 'haskell-split' 'haskell-syb' 'haskell-text' 'haskell-time' 'haskell-transformers' 'haskell-transformers-base<0.5' 'haskell-transformers-compat>=0.3.0' 'haskell-unordered-containers' 'haskell-utf8-string<2' 'haskell-vector' 'haskell-pipes-http')
