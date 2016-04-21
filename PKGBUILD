@@ -1,7 +1,7 @@
 # Maintainer: Lauri Niskanen <ape@ape3000.com>
 
 pkgname=coffeelint
-pkgver=1.15.0
+pkgver=1.15.2
 pkgrel=1
 pkgdesc="Style checker for CoffeeScript"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=('npm')
 optdepends=()
 source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tgz)
-md5sums=('0c551830cd2c6031f0905d101177433e')
+md5sums=('2b58e65a3fe4d07f39695285cabfd11a')
 
 package() {
   cd "$srcdir"
