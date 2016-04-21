@@ -6,7 +6,7 @@ pkgname=my-little-investigations
 _gitrepo=https://github.com/mdevlamynck/${pkgname}.git
 #_gitrepo=https://github.com/GabuEx/${pkgname}.git
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An Ace Attorney like game based on My Little Pony : Friendship is Magic"
 arch=('i686' 'x86_64')
 url="http://www.equestriandreamers.com/"
@@ -14,7 +14,7 @@ license=('MIT')
 groups=('')
 replaces=('my-little-investigation')
 depends=('sdl2' 'sdl2_image' 'sdl2_ttf' 'sdl2_mixer' 'ffmpeg' 'crypto++') # 'xdelta3')
-makedepends=('cmake' 'git')
+makedepends=('cmake' 'git' 'imagemagick')
 install=mli.install
 source=(
 	"git+${_gitrepo}"
