@@ -1,8 +1,9 @@
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: chimeracoder <dev@chimeracoder.net>
 # Generator  : CPANPLUS::Dist::Arch 1.29
 
 pkgname='perl-moosex-types-datetime'
-pkgver='0.10'
+pkgver='0.13'
 pkgrel='1'
 pkgdesc="DateTime related constraints and coercions for"
 arch=('any')
@@ -12,10 +13,10 @@ depends=('perl-datetime>=0.4302' 'perl-datetime-locale>=0.40' 'perl-datetime-tim
 makedepends=()
 checkdepends=('perl-test-fatal>=0')
 url='http://search.cpan.org/dist/MooseX-Types-DateTime'
-source=('http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Types-DateTime-0.10.tar.gz')
-md5sums=('3f9a0b5c99949df997da1af47047c30d')
-sha512sums=('16a30b8940dd60790ae26e5e628556520589f6a8abeadb95c184aa901aa48fe53e49c09395522cb1cc2d82b3eaf46fd61e0f0f7ccc823bfedf7e9c93016049f1')
-_distdir="MooseX-Types-DateTime-0.10"
+source=("http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/MooseX-Types-DateTime-$pkgver.tar.gz")
+md5sums=('c4ba197decb5b6a2e45120a4a987e25d')
+sha512sums=('aadd07960d4d20ed5926ea6e14650bf2162a73e40e3e26797ad0323a083c1796f7d623b895e3a612da89315387082a9835380ff2ed7d74455a2074c818533dc5')
+_distdir="MooseX-Types-DateTime-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
