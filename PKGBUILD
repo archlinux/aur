@@ -1,4 +1,4 @@
-# Maintainer: maz-1 < ohmygod19993 at gamil dot com >
+# Maintainer: zyldragoon < zyldragoon@gmail.com >
 _pkgname=appmenu-qt5
 pkgname=${_pkgname}-bzr
 pkgver=r38
