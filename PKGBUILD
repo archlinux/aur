@@ -1,6 +1,6 @@
 pkgname=openvpn-update-resolv-conf-git
 pkgver=r24.994574f
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenVPN Update resolvconf"
 arch=('any')
 url="https://github.com/masterkorp/openvpn-update-resolv-conf"
@@ -13,6 +13,8 @@ pkgver() {
   cd $srcdir/openvpn-update-resolv-conf
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
+provides=('openvpn-update-resolv-conf')
+conflicts=('openvpn-update-resolv-conf')
 
 package() {
   # Install vim files.
