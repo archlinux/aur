@@ -1,7 +1,7 @@
 # Maintainer: Peter Hoeg <first name at last name dot com>
 
 pkgname=jdupes
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="jdupes is a program for identifying duplicate files residing within specified directories"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ provides=('jdupes')
 conflicts=('fdupes-jody-git')
 source=("${pkgname}-${pkgver}.zip::${url}/archive/v${pkgver}.zip"
         "LICENSE")
-sha256sums=('6b223d7e3e10de840ccbf895965472d6bf11e83c7fae24beb0b6986dc050a17b'
+sha256sums=('c47ed91d90390e19cb747e01b6922265f6f530f0a5e5b69b7f591ba32f1816b4'
             'ff95e2262ce1dd788e66c6c8763354e350a46044b8532d92146b7b03a319481a')
 
 build() {
