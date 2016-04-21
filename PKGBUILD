@@ -4,7 +4,7 @@
 
 _pkgname=testng
 pkgname=java-${_pkgname}-doc
-pkgver=6.9.10
+pkgver=6.9.11
 pkgrel=2
 pkgdesc='Documentation for TestNG'
 arch=('any')
@@ -12,7 +12,7 @@ url='http://testng.org/doc/index.html'
 license=('APACHE')
 makedepends=("maven" "java-environment")
 source=("https://github.com/cbeust/testng/archive/${pkgver}.zip")
-sha1sums=('2835b4a7604d9df18b14cc4f82b94d18be390022')
+sha1sums=('d3e0677587f173b232321c0e165d8cd0fa57a573')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
