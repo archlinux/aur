@@ -1,4 +1,4 @@
-# Maintainer: zyldragoon < zyldragoon@gmail.com >
+# Maintainer: Len Zhang < zyldragoon@gmail.com >
 _pkgname=appmenu-qt5
 pkgname=${_pkgname}-bzr
 pkgver=r38
