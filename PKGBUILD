@@ -1,8 +1,8 @@
 # Maintainer: Jonah Bernhard <jonah.bernhard at gmail dot com>
 pkgname=mlbviewer-svn
-pkgver=r662
+pkgver=r663
 _pkgname=${pkgname%-svn}
-pkgrel=2
+pkgrel=1
 pkgdesc="A collection of tools to view and listen to streaming baseball games from MLB.TV."
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/mlbviewer"
@@ -15,9 +15,8 @@ conflicts=('mlbviewer')
 provides=('mlbviewer')
 install="${_pkgname}.install"
 source=("${pkgname}::svn://svn.code.sf.net/p/mlbviewer/code/trunk"
-        "mlbhls::git+https://github.com/tonycpsu/mlbtv-hls-nexdef#branch=experimental"
-        "mlbviewer-60fps.patch")
-sha1sums=('SKIP' 'SKIP' 'f3c3c29e1421f77fb047da9b43de84b756cb1009')
+        "mlbhls::git+https://github.com/tonycpsu/mlbtv-hls-nexdef#branch=experimental")
+sha1sums=('SKIP' 'SKIP')
 
 
 pkgver() {
@@ -30,8 +29,6 @@ build() {
   # python2
   cd ${srcdir}/${pkgname}
   sed -i 's:#!/usr/bin/env python:#!/usr/bin/env python2:' *.py
-
-  patch -p0 < $srcdir/mlbviewer-60fps.patch
 
   # build mlbhls for nexdef
   cd ${srcdir}/mlbhls
