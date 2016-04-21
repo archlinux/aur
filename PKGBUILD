@@ -1,7 +1,6 @@
 # $Id: PKGBUILD 263841 2016-04-03 20:40:11Z anatolik $
 # Maintainer: TJM <tommy.mairo@gmail.com>
 
-pkgbase=vim
 pkgname=(vim-clipboard)
 pkgver=7.4.1689
 _versiondir=74

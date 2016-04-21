@@ -1,4 +1,4 @@
-pkgbase = vim
+pkgbase = vim-clipboard
 	pkgver = 7.4.1689
 	pkgrel = 2
 	url = http://www.vim.org
