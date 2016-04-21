@@ -1,4 +1,4 @@
-# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com> PGP-Key: 78695CFD
+# Maintainer: Piotr Gorski <lucjan.lucjanov@gmail.com> PGP-Key: BDB26C5A
 # Contributor: shivik <> PGP-Key: 761E423C
 # Contributor: Michael Duell <mail@akurei.me> PGP-Key: 6EE23EBE
 
