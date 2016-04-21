@@ -1,15 +1,11 @@
-rebuild_module_dependencies() {
-    depmod $(cat "@MODULES_PATH@/version")
-}
-
 post_install() {
-    rebuild_module_dependencies
+    depmod --quick
 }
 
 post_upgrade() {
-    rebuild_module_dependencies
+    depmod --quick
 }
 
 post_remove() {
-    rebuild_module_dependencies
+    depmod
 }

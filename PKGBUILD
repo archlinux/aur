@@ -26,9 +26,7 @@ package() {
     _kernver=$(pacman -Q linux | sed -r 's#.* ([0-9]+\.[0-9]+).*#\1#')
     _extramodules="/usr/lib/modules/extramodules-$_kernver-ARCH"
 
-    sed -i "s#@MODULES_PATH@#$_extramodules#g" "$startdir/$install"
-
-    find './' -name '*.ko' -exec gzip -1 {} \;
+    find './' -name '*.ko' -exec gzip --force --fast {} \;
     install -Dm644 'igb.ko.gz' "$pkgdir/$_extramodules/igb.ko.gz"
 
     install -Dm644 '../COPYING' "$pkgdir/usr/share/licenses/$pkgname/COPYING"
