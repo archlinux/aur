@@ -4,21 +4,18 @@
 # Contributor: pmelo86 <patrick at patrickmelo dot eti dot br>
 
 pkgname=lightdm-webkit-greeter-bzr
-pkgver=r24
+pkgver=r75
 pkgrel=1
-pkgdesc="Webkit greeter for LightDM"
+pkgdesc="A greeter for LightDM that uses Webkit for theming. (bzr version)"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/lightdm-webkit-greeter"
 license=('GPL3' 'LGPL3')
 depends=('lightdm' 'webkitgtk')
-makedepends=('bzr' 'gnome-common' 'intltool')
+makedepends=('bzr' 'gnome-doc-utils' 'gobject-introspection' 'intltool')
 provides=("lightdm-webkit-greeter")
 conflicts=("lightdm-webkit-greeter")
-backup=("etc/lightdm/lightdm-webkit-greeter.conf")
-source=("${pkgname%-*}::bzr+http://bazaar.launchpad.net/~lightdm-team/lightdm-webkit-greeter/trunk/"
-        "${pkgname%-*}.conf")
-sha256sums=('SKIP'
-            '96c76474299ea286b39a9327b760393ca8f6bfb6065ae3eb118d22609bcf9980')
+source=("${pkgname%-*}::bzr+http://bazaar.launchpad.net/~lightdm-webkit-greeter-team/lightdm-webkit-greeter/trunk/")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}"/${pkgname%-*}
@@ -37,5 +34,4 @@ package() {
 
   make DESTDIR="${pkgdir}" install
   install -dm 755 "${pkgdir}"/etc/lightdm
-  install -m 644 ../${pkgname%-*}.conf "${pkgdir}"/etc/lightdm/${pkgname%-*}.conf
 }
