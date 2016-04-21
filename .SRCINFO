@@ -7,6 +7,8 @@ pkgbase = fontconfig-ubuntu
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = python2
+	makedepends = docbook2x
 	depends = expat
 	depends = freetype2-ubuntu
 	provides = fontconfig=2.11.94

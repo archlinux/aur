@@ -11,6 +11,7 @@ arch=('i686' 'x86_64')
 url="https://launchpad.net/ubuntu/+source/fontconfig"
 license=('custom')
 depends=('expat' 'freetype2-ubuntu')
+makedepends=('python2' 'docbook2x')
 conflicts=('fontconfig')
 provides=("fontconfig=$pkgver")
 options=('!libtool')
@@ -37,12 +38,12 @@ prepare() {
 build() {
   cd fontconfig-$pkgver
 
-  # make sure there's no rpath trouble and sane .so versioning - FC and Gentoo do this as well
-  msg2 "Running libtoolize.."
-  libtoolize -f
+  # # make sure there's no rpath trouble and sane .so versioning - FC and Gentoo do this as well
+  # msg2 "Running libtoolize.."
+  # libtoolize -f
 
-  msg2 "Running autoreconf.."
-  autoreconf -fi
+  # msg2 "Running autoreconf.."
+  # autoreconf -fi
 
   # Enable Position Independent Code for prelinking
   export CFLAGS="$CFLAGS -fPIC"
