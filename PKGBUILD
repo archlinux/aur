@@ -3,7 +3,7 @@
 pkgname="cryptocat-bin"
 _pkgname="cryptocat-bin"
 pkgver="3.1.07"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Chat with your friends, privately."
 arch=("x86_64")
 url="https://crypto.cat/"
@@ -42,6 +42,6 @@ package() {
 	install -Dm644 "${srcdir}/Cryptocat.desktop" "${pkgdir}/usr/share/applications/Cryptocat.desktop"
 
 	# Icon
-	install -Dm644 "logo.png" "${pkgdir}/usr/share/pixmaps/Cryptocat.png"
+	install -Dm644 "${srcdir}/Cryptocat.png" "${pkgdir}/usr/share/pixmaps/Cryptocat.png"
 
 }
