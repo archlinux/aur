@@ -8,6 +8,7 @@ pkgbase = appmenu-qt5-bzr
 	license = GPL
 	makedepends = bzr
 	depends = libdbusmenu-qt5
+	depends = gtk2
 	conflicts = appmenu-qt5
 	source = bzr+lp:appmenu-qt5
 	md5sums = SKIP
