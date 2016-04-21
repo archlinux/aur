@@ -18,7 +18,7 @@ _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=51.0.2704.7
+pkgver=51.0.2704.19
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -76,14 +76,12 @@ optdepends=('chromium-pepper-flash-dev: PPAPI Flash Player (Dev Channel) (64bits
             )
 source=("https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz"
         "chromium-launcher-${_launcher_ver}.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v${_launcher_ver}.tar.gz"
-        'chromium-dev.desktop'
-        'chromium-dev.xml'
         'chromium-dev.svg'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r2.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-snapshot-toolchain-r1.patch'
         # Misc Patches
-        'enable_vaapi_on_linux-r7.diff'
+        'enable_vaapi_on_linux-r8.diff'
         'chromium-system-jinja-r9.patch'
         'minizip.patch::http://pastebin.com/raw/QCqSDam5'
         # Patch from crbug (chromium bugtracker)
@@ -92,15 +90,13 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
 sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?marker=chromium-${pkgver}.tar.x | awk -v FS='<td>"' -v RS='"</td>' '$0=$2' | head -n1)"
           "$(curl -sL "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes" | grep sha1 | cut -d " " -f3)"
           'd18f8d96e80be9c31d994cc6362d7d8041c53319'
-          '0acc45b901418f270d0b2068502e39c407c74ea4'
-          '2b98c549332e7337307ce287e150930cfc1dfa5f'
           '336976cb66bf8df71fc7f2e92aa723891b6efb53'
           # Patch form Gentoo
           #'c24d14029714d2295f3220a7173a5a7362f578a2'
           '450cd81653499eb50f0f7df1b0d4d1c1620365a5'
           '7b9c1a7e0e581413dbebb0e894f68ce2f2ba0e6a'
           # Misc Patches
-          'a1bf7f2f23544ef9612513c9271cb98963075dae'
+          '69d217a07f2490413d0bb9e069115dbfc6741497'
           '1063521b4e3bf1bb25b666ef7423968886fe055c'
           'bc90b327b05dbecaa88da43211ae0a4ed0c6c57f'
           # Patch from crbug (chromium bugtracker)
@@ -345,10 +341,7 @@ _flags=("-Dclang=${_use_clang}"
         "-Duse_gtk3=${_use_gtk3}"
         "-Duse_pulseaudio=${_use_pulseaudio}"
         '-Duse_sysroot=0'
-        '-Duse_ash=0'
-        '-Duse_ozone=0'
         '-Duse_xkbcommon=1'
-        '-Dchromeos=0'
         '-Dwerror='
         )
 
@@ -448,7 +441,7 @@ prepare() {
   patch -p0 -i "${srcdir}/chromium-snapshot-toolchain-r1.patch"
 
   # Misc Patches:
-  patch -p1 -i "${srcdir}/enable_vaapi_on_linux-r7.diff"
+  patch -p1 -i "${srcdir}/enable_vaapi_on_linux-r8.diff"
   patch -p0 -i "${srcdir}/chromium-system-jinja-r9.patch"
   patch -p1 -i "${srcdir}/minizip.patch"
 
@@ -621,13 +614,21 @@ package() {
   popd &> /dev/null
 
   # Install some external files
-  install -Dm644 chromium-dev.desktop "${pkgdir}/usr/share/applications/chromium-dev.desktop"
+  install -Dm644 "chromium-${pkgver}/chrome/installer/linux/common/desktop.template" "${pkgdir}/usr/share/applications/chromium-dev.desktop"
+  sed -e 's|@@MENUNAME@@|Chromium-dev|g' \
+      -e 's|@@USR_BIN_SYMLINK_NAME@@|chromium-dev|g' \
+      -e 's|@@PACKAGE@@|chromium-dev|g' \
+      -i "${pkgdir}/usr/share/applications/chromium-dev.desktop"
   install -Dm644 chromium-dev.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/chromium-dev.svg"
   install -Dm644 "chromium-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/chromium-dev/LICENSE"
 
   # install gnome stuff if is detected
   if [ "${_use_gnome}" = "1" ]; then
-    install -Dm644 chromium-dev.xml "${pkgdir}/usr/share/gnome-control-center/default-apps/chromium-dev.xml"
+    install -Dm644 "chromium-${pkgver}/chrome/installer/linux/common/default-app.tempate" "${pkgdir}/usr/share/gnome-control-center/default-apps/chromium-dev.xml"
+    sed -e 's|@@MENUNAME@@|Chromium-dev|g' \
+        -e 's|@@INSTALLDIR@@|/usr/bin|g' \
+        -e 's|@@PACKAGE@@|chromium-dev|g' \
+        -i "${pkgdir}/usr/share/gnome-control-center/default-apps/chromium-dev.xml"
   fi
 
   # Manually strip binaries so that 'nacl_irt_*.nexe' is left intact

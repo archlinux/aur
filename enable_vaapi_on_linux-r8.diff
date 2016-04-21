@@ -18,53 +18,32 @@
    media::VideoDecodeAccelerator::SupportedProfiles vda_profiles;
  #if defined(USE_V4L2_CODEC)
    vda_profiles = V4L2VideoDecodeAccelerator::GetSupportedProfiles();
-@@ -125,11 +125,11 @@
- #if defined(OS_WIN)
-     &GpuVideoDecodeAcceleratorFactoryImpl::CreateDXVAVDA,
- #endif
--#if defined(OS_CHROMEOS) && defined(USE_V4L2_CODEC)
-+#if (defined(OS_CHROMEOS) || defined(OS_LINUX)) && defined(USE_V4L2_CODEC)
+@@ -125,7 +125,7 @@
      &GpuVideoDecodeAcceleratorFactoryImpl::CreateV4L2VDA,
      &GpuVideoDecodeAcceleratorFactoryImpl::CreateV4L2SVDA,
  #endif
 -#if defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)
-+#if (defined(OS_CHROMEOS) || defined(OS_LINUX)) && defined(ARCH_CPU_X86_FAMILY)
++#if (defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)) || defined(OS_LINUX)
      &GpuVideoDecodeAcceleratorFactoryImpl::CreateVaapiVDA,
  #endif
  #if defined(OS_MACOSX)
-@@ -166,7 +166,7 @@
- }
- #endif
- 
--#if defined(OS_CHROMEOS) && defined(USE_V4L2_CODEC)
-+#if (defined(OS_CHROMEOS) || defined(OS_LINUX)) && defined(USE_V4L2_CODEC)
- scoped_ptr<media::VideoDecodeAccelerator>
- GpuVideoDecodeAcceleratorFactoryImpl::CreateV4L2VDA(
-     const gpu::GpuPreferences& gpu_preferences) const {
 @@ -194,7 +194,7 @@
  }
  #endif
  
 -#if defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)
-+#if (defined(OS_CHROMEOS) || defined(OS_LINUX)) && defined(ARCH_CPU_X86_FAMILY)
++#if (defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)) || defined(OS_LINUX)
  scoped_ptr<media::VideoDecodeAccelerator>
  GpuVideoDecodeAcceleratorFactoryImpl::CreateVaapiVDA(
      const gpu::GpuPreferences& gpu_preferences) const {
 --- chromium-51.0.2704.7/content/common/gpu/media/gpu_video_decode_accelerator_factory_impl.h.orig	2016-04-15 16:30:24.365900056 +0200
 +++ chromium-51.0.2704.7/content/common/gpu/media/gpu_video_decode_accelerator_factory_impl.h	2016-04-15 16:37:53.679361457 +0200
-@@ -89,13 +89,13 @@
-   scoped_ptr<media::VideoDecodeAccelerator> CreateDXVAVDA(
-       const gpu::GpuPreferences& gpu_preferences) const;
- #endif
--#if defined(OS_CHROMEOS) && defined(USE_V4L2_CODEC)
-+#if (defined(OS_CHROMEOS) || defined(OS_LINUX)) && defined(USE_V4L2_CODEC)
-   scoped_ptr<media::VideoDecodeAccelerator> CreateV4L2VDA(
-       const gpu::GpuPreferences& gpu_preferences) const;
+@@ -89,7 +89,7 @@
    scoped_ptr<media::VideoDecodeAccelerator> CreateV4L2SVDA(
        const gpu::GpuPreferences& gpu_preferences) const;
  #endif
 -#if defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)
-+#if (defined(OS_CHROMEOS) || defined(OS_LINUX)) && defined(ARCH_CPU_X86_FAMILY)
++#if (defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)) || defined(OS_LINUX)
    scoped_ptr<media::VideoDecodeAccelerator> CreateVaapiVDA(
        const gpu::GpuPreferences& gpu_preferences) const;
  #endif
@@ -75,7 +54,7 @@
  }
  
 -#if (defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)) || defined(OS_MACOSX)
-+#if ((defined(OS_CHROMEOS) || defined(OS_LINUX)) && defined(ARCH_CPU_X86_FAMILY)) || defined(OS_MACOSX)
++#if (defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)) || defined(OS_MACOSX) || defined(OS_LINUX)
  static bool BindImage(const base::WeakPtr<gpu::GpuCommandBufferStub>& stub,
                        uint32_t client_texture_id,
                        uint32_t texture_target,
@@ -84,7 +63,7 @@
    make_context_current_cb_ =
        base::Bind(&MakeDecoderContextCurrent, stub_->AsWeakPtr());
 -#if (defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)) || defined(OS_MACOSX)
-+#if ((defined(OS_CHROMEOS) || defined(OS_LINUX)) && defined(ARCH_CPU_X86_FAMILY)) || defined(OS_MACOSX)
++#if (defined(OS_CHROMEOS) && defined(ARCH_CPU_X86_FAMILY)) || defined(OS_MACOSX) || defined(OS_LINUX)
    bind_image_cb_ = base::Bind(&BindImage, stub_->AsWeakPtr());
  #endif
    get_gles2_decoder_cb_ = base::Bind(&GetGLES2Decoder, stub_->AsWeakPtr());

@@ -2,10 +2,8 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!chromium-dev.desktop
 !chromium-dev.install
-!chromium-dev.xml
 !chromium-dev.svg
-!enable_vaapi_on_linux-r7.diff
+!enable_vaapi_on_linux-r8.diff
 !chromium-widevine-r0.patch
 !chromium-system-jinja-r9.patch
