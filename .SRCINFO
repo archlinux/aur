@@ -1,0 +1,13 @@
+pkgbase = gitflow-avh-git
+	pkgdesc = A collection of git extetions for Vincent Driessen's branching model.
+	pkgver = 1.9.1.r15.g5bcfed9
+	pkgrel = 1
+	url = https://github.com/petervanderdoes/gitflow-avh
+	arch = any
+	license = BSD
+	depends = git
+	source = gitflow-avh-git::git://github.com/petervanderdoes/gitflow-avh.git
+	md5sums = SKIP
+
+pkgname = gitflow-avh-git
+
