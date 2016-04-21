@@ -1,7 +1,7 @@
 pkgbase=python-voluptuous
 pkgname=('python-voluptuous' 'python2-voluptuous')
 pkgver=0.8.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Voluptuous is a Python data validation library"
 arch=('any')
 url='https://pypi.python.org/pypi/voluptuous'
@@ -14,6 +14,7 @@ package_python-voluptuous() {
   depends=('python')
 
   cd $srcdir/voluptuous-$pkgver
+  install -D -m644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
   python setup.py install --root=$pkgdir
   chmod a+r -R $pkgdir/usr/lib/python3.5/site-packages/voluptuous-$pkgver-py3.5.egg-info
 }
@@ -22,6 +23,7 @@ package_python2-voluptuous() {
   depends=('python2')
 
   cd $srcdir/voluptuous-$pkgver
+  install -D -m644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
   python2 setup.py install --root=$pkgdir
   chmod a+r -R $pkgdir/usr/lib/python2.7/site-packages/voluptuous-$pkgver-py2.7.egg-info
 }
