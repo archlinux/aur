@@ -2,7 +2,7 @@
 
 pkgname=appmenu-qt
 pkgver=0.2.6
-pkgrel=3
+pkgrel=1
 pkgdesc="Add support for application menu to Qt"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/appmenu-qt"
