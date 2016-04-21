@@ -1,0 +1,17 @@
+pkgbase = brother-hll2300d
+        pkgdesc = Brother HL-L2300D CUPS driver
+        pkgver = 3.2.0_1
+        pkgrel = 1
+        url = http://www.brother.com
+        arch = x86_64
+        arch = i686
+        license = custom:Brother
+        depends = perl
+        depends = bash
+        depends = lib32-glibc
+        source = http://download.brother.com/welcome/dlf101899/hll2300dcupswrapper-3.2.0-1.i386.rpm
+        source = http://download.brother.com/welcome/dlf101898/hll2300dlpr-3.2.0-1.i386.rpm
+        md5sums = 788bb36490f3615c47ad601a261e5f54
+        md5sums = 86f88229cd00833a3ad4620207aa3829
+
+pkgname = brother-hll2300d
