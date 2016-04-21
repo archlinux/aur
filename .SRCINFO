@@ -1,6 +1,6 @@
 pkgbase = haskell-hscurses
 	pkgdesc = NCurses bindings for Haskell
-	pkgver = 1.4.1.2
+	pkgver = 1.4.2.0
 	pkgrel = 1
 	url = http://hackage.haskell.org/package/hscurses
 	install = haskell-hscurses.install
@@ -8,14 +8,15 @@ pkgbase = haskell-hscurses
 	arch = x86_64
 	license = LGPL
 	depends = ghc
+	depends = haskell-exceptions
 	depends = haskell-mtl>=1.0
 	depends = haskell-old-locale
 	depends = haskell-old-time
 	depends = haskell-unix
 	depends = ncurses
 	options = strip
-	source = http://hackage.haskell.org/packages/archive/hscurses/1.4.1.2/hscurses-1.4.1.2.tar.gz
-	md5sums = d2eb344369bfdc99137cb89e3b5e2438
+	source = http://hackage.haskell.org/packages/archive/hscurses/1.4.2.0/hscurses-1.4.2.0.tar.gz
+	md5sums = 1091e611c597b587975f2f15e6165874
 
 pkgname = haskell-hscurses
 

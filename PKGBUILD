@@ -3,14 +3,14 @@
 
 _hkgname=hscurses
 pkgname=haskell-hscurses
-pkgver=1.4.1.2
+pkgver=1.4.2.0
 pkgrel=1
 pkgdesc="NCurses bindings for Haskell"
 url="http://hackage.haskell.org/package/${_hkgname}"
 license=('LGPL')
 arch=('i686' 'x86_64')
 makedepends=()
-depends=('ghc' 'haskell-mtl>=1.0' 'haskell-old-locale' 'haskell-old-time' 'haskell-unix' 'ncurses')
+depends=('ghc' 'haskell-exceptions' 'haskell-mtl>=1.0' 'haskell-old-locale' 'haskell-old-time' 'haskell-unix' 'ncurses')
 options=('strip')
 source=(http://hackage.haskell.org/packages/archive/${_hkgname}/${pkgver}/${_hkgname}-${pkgver}.tar.gz)
 install=${pkgname}.install
@@ -32,4 +32,4 @@ package() {
     ln -s /usr/share/doc/${pkgname}/html ${pkgdir}/usr/share/doc/ghc/html/libraries/${_hkgname}
     runhaskell Setup copy --destdir=${pkgdir}
 }
-md5sums=('d2eb344369bfdc99137cb89e3b5e2438')
+md5sums=('1091e611c597b587975f2f15e6165874')
