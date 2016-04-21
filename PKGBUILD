@@ -2,14 +2,14 @@
 # Upstream URL: https://www.x64architecture.com/libicuid
 
 pkgname=libicuid
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='I C U ID is a modern library that provides a C interface for the CPUID opcode'
 arch=('i686' 'x86_64')
 url='https://www.x64architecture.com/libicuid'
 license=('isc')
 source=("https://github.com/x64architecture/libicuid/archive/${pkgver}.tar.gz")
-sha256sums=('f34b6d44086d8c2501a5e8422f2f3e7c3121c64f51110b945aa8601caac5570f')
+sha256sums=('941e2a12025a923f43188a193bba93c7d1554fc25e9072448b25deabd8a0d415')
 makedepends=('cmake')
 
 prepare() {
