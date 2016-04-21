@@ -3,7 +3,7 @@
 
 pkgname=('linux-gpib')
 pkgver=4.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A support package for GPIB (IEEE 488) hardware.'
 arch=('i686' 'x86_64')
 url='http://linux-gpib.sourceforge.net/'
@@ -16,7 +16,7 @@ source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}%20for%20
 install='linux-gpib.install'
 backup=('etc/gpib.conf')
 
-_kernver=4.4
+_kernver=4.5
 _extramodules=/usr/lib/modules/extramodules-${_kernver}-ARCH
 
 md5sums=('2d97191e538a57ba7350fcc011ee2596'
