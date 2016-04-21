@@ -23,7 +23,7 @@ conflicts=('icecream-git')
 backup=('etc/icecream.conf')
 arch=('i686' 'x86_64')
 install=icecream.install
-source=("https://github.com/icecc/$pkgname/archive/1.1rc1/$pkgname-$pkgver.tar.gz"
+source=("https://github.com/icecc/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.gz"
         icecream.conf
         icecream.service
         icecream-scheduler.service
