@@ -10,6 +10,7 @@ depends=('gcc-libs')
 makedepends=('git' 'cmake' 'make')
 source=("$pkgname"::'git+https://github.com/unittest-cpp/unittest-cpp.git')
 md5sums=('SKIP')
+conflicts=('unittestpp')
 
 pkgver() {
   cd "$srcdir/$pkgname"

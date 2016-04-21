@@ -10,6 +10,7 @@ pkgbase = unittest-cpp-git
 	makedepends = cmake
 	makedepends = make
 	depends = gcc-libs
+	conflicts = unittestpp
 	source = unittest-cpp-git::git+https://github.com/unittest-cpp/unittest-cpp.git
 	md5sums = SKIP
 
