@@ -9,8 +9,8 @@
 # 7b4c22ce2e99c6e18c986bd28d31e9e17c85d5ea
 
 pkgname=icecream
-pkgver=1.1rc1
-pkgrel=4
+pkgver=1.1rc2
+pkgrel=1
 pkgdesc="takes compile jobs from your build and distributes it to remote machines allowing a parallel build on several machines."
 url="http://en.opensuse.org/Icecream"
 license=('GPL2')
@@ -30,7 +30,7 @@ source=("https://github.com/icecc/$pkgname/archive/$pkgver/$pkgname-$pkgver.tar.
         icecreamd
         icecream-schedulerd
         ld-icecream.conf)
-sha256sums=('95bdb66228cc8f5d97a829f1ee4e3f2d32caf064e9614919e8af0f708a13c654'
+sha256sums=('479d4dd3bc752b3ac5289c9bcfe0270ef3522a325c0945ddb273ded767688958'
             '4c1b993761600955a2be53e945a698638ef861a513258956d8aac0e0f8df3dfe'
             '3bd9286e2a4ef29a41fe414caf3ffb56ae24e2287272dc0d60d62599d20d8cf9'
             '9b756a140ac3983efa4cddf6590af72d3681834b95ef1f879f34da775dd418cd'
