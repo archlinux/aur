@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Cryptocat
 Comment=Chat with your friends, privately.
-Exec=cryptocat %U
+Exec=Cryptocat %U
 Icon=Cryptocat
 StartupNotify=false
 Categories=Network;
