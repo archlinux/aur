@@ -1,10 +1,10 @@
 # Maintainer: Saiki81 <saikia81 at hotmail dot com>
 # adapted from package: pianoteq-stage-trial-bin
-# adapted pkgbuild creator: CrocoDuck <crocoduck dot oducks at gmail dot com> 
+# adapted from pkgbuild creator: CrocoDuck <crocoduck dot oducks at gmail dot com> 
 
 
 pkgname=pianoteq-stage
-pkgver=5.5.1
+pkgver=5.6.1
 pkgrel=1
 pkgdesc="Virtual piano instrument using physical modelling synthesis. Both standalone and plugin versions."
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ sha256sums=('94ee64cf6688a49d74f0bf70d811e7466abac103feeab17496a89f828afcc6d3')
 # Define the target archive filename:
 _pianoteqfilename=pianoteq_stage_linux_v${pkgver//./}.7z
 # Define its checksum:
-_pianoteqsha256sum=c6304a2c6c6c422df5216976715b0bec2e77ad257adfad697d3902401d1bdda0
+_pianoteqsha256sum=35e7d7d132e0e797c333f19dde19c102afd099dc6d6fe0b05793c6cfb310124e
 
 prepare(){
         # the source package must be downloaded manually
@@ -31,7 +31,7 @@ prepare(){
 	if [ ! -f "../$_pianoteqfilename" ]
 	then
             echo "File not found!"
-            echo -e "For this package a mannual download of the pianoteq software is needed: 'https://www.pianoteq.com/download?file=pianoteq_stage_linux_v551.7z'\nThe archive should be in the same dir as the PKGBUILD!"
+            echo -e "For this package a mannual download of the pianoteq software is needed: 'https://www.pianoteq.com/download?file=pianoteq_stage_linux_v561.7z'\nThe archive should be in the same dir as the PKGBUILD!"
             exit;
         fi 
         # move the dependency to ./src/
