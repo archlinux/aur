@@ -1,9 +1,9 @@
 # Maintainer: Konstantin Semenov <zemen17@gmail.com>
 
 pkgname=libfprint-vfs0050
-epoch=1
-pkgver=0.6.0
-pkgrel=2
+epoch=2
+pkgver=r300.95473fc
+pkgrel=1
 pkgdesc="Library for fingerprint readers with vfs0050 driver"
 arch=(i686 x86_64)
 url="https://github.com/zemen/libfprint"
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd libfprint
-  git describe --long --tags 2>/dev/null | sed 's/^v_//;s/\([^-]*-g\)/r\1/;s/[-_]/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
