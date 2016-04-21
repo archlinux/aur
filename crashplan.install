@@ -7,7 +7,7 @@ pre_upgrade () {
 	# Pacman doesn't retroactively change folder permissions, just warns about differences
 	pre_remove
 	chmod 755 /opt/crashplan/upgrade
-	rm -f /opt/crashplan/upgrade/1435*
+	rm -rf /opt/crashplan/upgrade/1435*
 }
 
 post_upgrade () {
