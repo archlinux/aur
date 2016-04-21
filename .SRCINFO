@@ -1,6 +1,6 @@
 pkgbase = python-django-appconf
 	pkgdesc = A helper class for handling configuration defaults of packaged Django apps gracefully
-	pkgver = 1.0.1
+	pkgver = 1.0.2
 	pkgrel = 1
 	url = https://github.com/django-compressor/django-appconf
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-django-appconf
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://github.com/django-compressor/django-appconf/archive/v1.0.1.tar.gz
-	sha256sums = 1574e5cbdc402d5e8e7b078513c1083a168c746282e50c06fbe10c98f97aee89
+	source = https://github.com/django-compressor/django-appconf/archive/v1.0.2.tar.gz
+	sha256sums = 7ed2a219b0195d13c7f7e82d77710c3a3478c997049a3749aaf16a319a084933
 
 pkgname = python-django-appconf
 	depends = python-django
