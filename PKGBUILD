@@ -2,7 +2,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=networkmanager-openvpn
-pkgver=1.1.93
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="NetworkManager VPN plugin for OpenVPN"
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=(libnm-gtk libsecret openvpn)
 makedepends=(intltool python)
 install=networkmanager-openvpn.install
 source=(http://ftp.gnome.org/pub/GNOME/sources/NetworkManager-openvpn/${pkgver::3}/NetworkManager-openvpn-${pkgver}.tar.xz)
-sha256sums=('5de542e995526306bd872ca9c289298bca5660d0ebb8b2b018a4466d27fb6d01')
+sha256sums=('6a633880ca5583e6ed28b16acfa255cf5b36551581a78cd88e8930890e0026de')
 
 build() {
   cd NetworkManager-openvpn-$pkgver
