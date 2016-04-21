@@ -91,14 +91,18 @@ build() {
 package() {
   cd thunderbird-$pkgver
 
+  # Create directories
+  install -d "$pkgdir"/usr/bin
+  install -d "$pkgdir"/usr/share/applications
+  install -d "$pkgdir"/opt
+
   # Put together
   msg2 "Running make install.."
-  make package
+  make -f client.mk DESTDIR="$pkgdir" install
 
   # Install
   msg2 "Moving stuff in place..."
-  cd dist
-  tar -xf thunderbird-*.tar.bz2
+  cd obj-$CARCH-unknown-linux-gnu/dist
   cp -r thunderbird/ "$pkgdir"/opt/$pkgname
   
   # /usr/bin symlink
@@ -109,7 +113,7 @@ package() {
 
   # Icons
   for i in 16x16 22x22 24x24 32x32 48x48 256x256; do
-    install -Dm644 "$srcdir"/comm-*/other-licenses/branding/thunderbird/mailicon${i/x*}.png \
+    install -Dm644 "$srcdir"/thunderbird-$pkgver/other-licenses/branding/thunderbird/mailicon${i/x*}.png \
                    "$pkgdir"/usr/share/icons/hicolor/$i/apps/$pkgname.png
   done
 
