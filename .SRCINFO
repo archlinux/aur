@@ -1,0 +1,14 @@
+pkgbase = nsec3walker
+	pkgdesc = walk NSEC3 secured DNSSEC zones
+	pkgver = 2010.12.23
+	pkgrel = 1
+	url = https://dnscurve.org/nsec3walker.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = python
+	source = https://dnscurve.org/nsec3walker-20101223.tar.gz
+	md5sums = 4ab591a5bb0c89bcd87a93c1e03bcd39
+
+pkgname = nsec3walker
+
