@@ -1,6 +1,6 @@
 # Maintainer: Po-An,Yang(Antonio) <yanganto@gmail.com>
 pkgname=networkminer
-pkgver=1.6.1
+pkgver=2.0
 pkgrel=1
 epoch=
 pkgdesc="A packet analyzer"
@@ -19,13 +19,14 @@ backup=()
 options=()
 install=
 changelog=
-source=("http://sourceforge.net/projects/networkminer/files/networkminer/NetworkMiner-1.6.1/NetworkMiner_1-6-1.zip")
-noextract=("NetworkMiner_1-6-1.zip")
-md5sums=("e039890b2e820bc82faa8e9919c15b4a")
+source=("https://www.netresec.com/?download=NetworkMiner")
+noextract=("NetworkMiner_2-0.zip")
+md5sums=("d094ec9b3fb673ca9c24705be9da1ac9")
 validpgpkeys=()
 
 prepare() {
-	unzip NetworkMiner_1-6-1.zip 
+	mv \?download=NetworkMiner NetworkMiner_2-0.zip
+	unzip -o NetworkMiner_2-0.zip 
 }
 
 build() {
@@ -35,7 +36,7 @@ check(){
 	echo No check needed
 }
 package() {
-	cp -R $srcdir/NetworkMiner_1-6-1 $pkgdir/opt/
+	cp -R $srcdir/NetworkMiner_2-0 $pkgdir/opt/
 	chmod +x $pkgdir/opt/NetworkMiner.exe
 	chmod -R go+w $pkgdir/opt/AssembledFiles/
 	chmod -R go+w $pkgdir/opt/Captures/
