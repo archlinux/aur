@@ -1,0 +1,12 @@
+_update() {
+	echo -e "\e[34;1m==>\e[39;1m Updating icon cache...\e[0m"
+	gtk-update-icon-cache -q /usr/share/icons/Flattr
+}
+
+post_install() {
+	_update
+}
+
+post_upgrade() {
+	_update
+}
