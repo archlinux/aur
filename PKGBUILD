@@ -1,16 +1,16 @@
 pkgname=mingw-w64-hunspell
-pkgver=1.3.3
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Spell checker and morphological analyzer library (mingw-w64)"
 arch=(any)
-url="http://hunspell.sourceforge.net/"
+url="http://hunspell.github.io/"
 license=("GPL" "LGPL" "MPL")
 makedepends=(mingw-w64-configure)
 depends=(mingw-w64-gettext)
-options=(!strip !buildflags staticlibs)
-source=("http://downloads.sourceforge.net/hunspell/hunspell-$pkgver.tar.gz"
+options=(!strip !buildflags staticlibs !debug)
+source=("https://github.com/hunspell/hunspell/archive/v${pkgver}.tar.gz"
 "hunspell-1.3.2-canonicalhost.patch")
-md5sums=('4967da60b23413604c9e563beacc63b4'
+md5sums=('423cff69e68c87ac11e4aa8462951954'
          'f8a5c0f3692a390d98daf0406da59cdf')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -29,8 +29,11 @@ build() {
       --disable-rpath \
       --enable-threads=win32 \
       --without-ui \
-      --without-readline \
-      --with-experimental
+      --without-readline
+		# temporarily copy hunvisapi.h to work around build process
+		# where the file is not spotted.
+		cp ${srcdir}/hunspell-${pkgver}/build-${_arch}/src/hunspell/hunvisapi.h \
+       "${srcdir}/hunspell-${pkgver}/src/hunspell"
     make
     popd
   done
