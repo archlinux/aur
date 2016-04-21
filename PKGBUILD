@@ -8,7 +8,7 @@
 # Contributor: Tobias Hunger <tobias dot hunger at gmail dot com>
 
 pkgname=qtcreator-git
-pkgver=v4.0.0.beta1.r31.g0a89b89
+pkgver=v4.0.0.rc1.r117.g03acd1f
 pkgrel=1
 pkgdesc='Lightweight, cross-platform integrated development environment'
 arch=('i686' 'x86_64')
@@ -32,8 +32,8 @@ optdepends=('qt5-doc: for the integrated Qt documentation'
 provides=('qtcreator')
 conflicts=('qtcreator')
 install='qtcreator-git.install'
-source=("git://code.qt.io/qt-creator/qt-creator.git#branch=4.0"
-        "git://code.qt.io/qt-labs/qbs.git#branch=1.5"
+source=("git://code.qt.io/qt-creator/qt-creator.git"
+        "git://code.qt.io/qt-labs/qbs.git"
         'qtcreator.desktop')
 md5sums=('SKIP'
          'SKIP'
