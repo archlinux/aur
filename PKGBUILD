@@ -1,5 +1,5 @@
 # Maintainer: Kilian Köppchen <kiliankoeppchen at gmail dot com>
-pkgname=unittest-cpp-git-git
+pkgname=unittest-cpp-git
 pkgver=v1.4.r210.g90357e2
 pkgrel=1
 pkgdesc="Lightweight unit testing framework for C++"

@@ -1,4 +1,4 @@
-pkgbase = unittest-cpp-git-git
+pkgbase = unittest-cpp-git
 	pkgdesc = Lightweight unit testing framework for C++
 	pkgver = v1.4.r210.g90357e2
 	pkgrel = 1
@@ -10,8 +10,8 @@ pkgbase = unittest-cpp-git-git
 	makedepends = cmake
 	makedepends = make
 	depends = gcc-libs
-	source = unittest-cpp-git-git::git+https://github.com/unittest-cpp/unittest-cpp.git
+	source = unittest-cpp-git::git+https://github.com/unittest-cpp/unittest-cpp.git
 	md5sums = SKIP
 
-pkgname = unittest-cpp-git-git
+pkgname = unittest-cpp-git
 
