@@ -1,7 +1,7 @@
 pkgbase = dwarffortress-lnp-git
 	pkgdesc = Installer for the Lazy Newb Pack to run Dwarf Fortress. Includes vanilla dwarf fortress, dfhack and graphics
-	pkgver = 42.05
-	pkgrel = 3
+	pkgver = 42.06
+	pkgrel = 1
 	epoch = 0
 	install = dwarffortress-lnp-git.install
 	arch = x86_64
@@ -45,11 +45,11 @@ pkgbase = dwarffortress-lnp-git
 	options = !buildflags
 	source = git+https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux
 	source = git+https://github.com/DFgraphics/DFgraphics.git
-	source = git+https://github.com/DFHack/dfhack.git#tag=0.42.05-alpha1
-	source = git+https://github.com/svenstaro/dwarf_fortress_unfuck.git#tag=0.42.05
+	source = git+https://github.com/DFHack/dfhack.git#tag=0.42.06-beta1
+	source = git+https://github.com/svenstaro/dwarf_fortress_unfuck.git
 	source = git+https://github.com/mifki/df-twbt.git
 	source = hg+https://bitbucket.org/Pidgeot/python-lnp
-	source = http://bay12games.com/dwarves/df_42_05_linux.tar.bz2
+	source = http://bay12games.com/dwarves/df_42_06_linux.tar.bz2
 	source = DFAnnouncementFilter.zip::http://dffd.bay12games.com/download.php?id=7905&f=DFAnnouncementFilter.zip
 	source = dfhack-twbt.patch
 	source = dfhack-visualizers.patch
@@ -62,7 +62,7 @@ pkgbase = dwarffortress-lnp-git
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
-	md5sums = 79d2768e7f3ff0d086caa980331466c4
+	md5sums = 47f5a2ea1c4de2b742b50dd876b73feb
 	md5sums = affd6273731c321d364c55a8da314fea
 	md5sums = 856c54681faed3608cd951bf286d12d5
 	md5sums = 771d7eaaf1bd78c7da953ffd30e93c20

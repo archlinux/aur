@@ -4,10 +4,10 @@
 
 
 pkgname=dwarffortress-lnp-git
-pkgver=42.05
-_pkgver=42_05
-_dfhack_pkgrel=alpha1
-pkgrel=3
+pkgver=42.06
+_pkgver=42_06
+_dfhack_pkgrel=beta1
+pkgrel=1
 epoch=0
 pkgdesc="Installer for the Lazy Newb Pack to run Dwarf Fortress. Includes vanilla dwarf fortress, dfhack and graphics"
 arch=(x86_64)
@@ -40,7 +40,7 @@ changelog=
 source=(git+"https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux"
         git+"https://github.com/DFgraphics/DFgraphics.git"
         git+"https://github.com/DFHack/dfhack.git"#"tag=0.${pkgver}-${_dfhack_pkgrel}"
-        git+"https://github.com/svenstaro/dwarf_fortress_unfuck.git"#"tag=0.${pkgver}"
+        git+"https://github.com/svenstaro/dwarf_fortress_unfuck.git"
         git+"https://github.com/mifki/df-twbt.git"
         hg+"https://bitbucket.org/Pidgeot/python-lnp"
         "http://bay12games.com/dwarves/df_${_pkgver}_linux.tar.bz2"
@@ -60,7 +60,7 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         '79d2768e7f3ff0d086caa980331466c4'
+         '47f5a2ea1c4de2b742b50dd876b73feb'
          'affd6273731c321d364c55a8da314fea'
          '856c54681faed3608cd951bf286d12d5'
          '771d7eaaf1bd78c7da953ffd30e93c20'
@@ -97,7 +97,7 @@ prepare() {
     --exclude .git \
     --exclude .gitignore
 
-  export DFHACKVER="${pkgver}-r5"
+  export DFHACKVER="${pkgver}-$(_dfhack_pkgrel)"
 
   cd $srcdir/dfhack/build
   cmake .. -DCMAKE_INSTALL_PREFIX=$pkgdir/opt/$pkgname/df_linux \
