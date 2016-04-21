@@ -63,7 +63,7 @@ md5sums=('SKIP'
          '47f5a2ea1c4de2b742b50dd876b73feb'
          'affd6273731c321d364c55a8da314fea'
          '856c54681faed3608cd951bf286d12d5'
-         '771d7eaaf1bd78c7da953ffd30e93c20'
+         '5cc79b5dc202d8faa02086293badfcee'
          '389e34b6937f843c8f635d5e7326c9fc'
          'bba8ab4d3f70cea8b812e78445fef1f0'
          '38b526554d151e79476a7a81d285d689')
