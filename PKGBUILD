@@ -3,7 +3,7 @@
 
 pkgname=('linux-gpib-dkms')
 _pkgname='linux-gpib'
-pkgver=4.0.2
+pkgver=4.0.3
 pkgrel=1
 pkgdesc='A support package for GPIB (IEEE 488) hardware (DKMS version).'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("http://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}%20for%
 install='linux-gpib.install'
 backup=('etc/gpib.conf')
 
-md5sums=('dee2981476bd9c9f467efd3010095935'
+md5sums=('2d97191e538a57ba7350fcc011ee2596'
          'f6efe56c98febd2618c120000d1c31aa'
          'e9e167c378e5f49623368636a227916e')
 
