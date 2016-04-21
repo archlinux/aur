@@ -18,6 +18,8 @@ source=("${url}/archive/${pkgver}.tar.gz"
         "${url}/releases/download/${pkgver}/leiningen-${pkgver}-standalone.zip.asc")
 noextract=("leiningen-${pkgver}-standalone.zip")
 
+# validpgpkeys=('2E708FB2FCECA07FF8184E275A92E04305696D78')
+
 package() {
   cd ${srcdir}/leiningen-${pkgver}
   install -m 755 -D bin/lein-pkg ${pkgdir}/usr/bin/lein
@@ -30,3 +32,4 @@ package() {
 sha256sums=('9e6a6c7b6e032921a37d5be8fcdc2c0288d3698f759e22bdd29de4eb327ebeab'
             'd70078fba85d5f405d042a6d7bad3a1e5b4aafae565c2d581feb999e95ae6394'
             'SKIP')
+
