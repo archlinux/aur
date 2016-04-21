@@ -9,7 +9,7 @@ pkgdesc="Team App (ex. oDesk)"
 arch=('i686' 'x86_64')
 url="https://www.upwork.com/downloads/new-team-application"
 license=('unknown')
-conflicts=('upwork')
+conflicts=('upwork' 'upwork-beta')
 depends=('gtk2' 'nss' 'gconf' 'alsa-lib' 'glu' 'libxtst' 'gtkglext' 'libgcrypt15' 'libxss')
 install=upwork.install
 
