@@ -5,8 +5,8 @@
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 
 pkgname=network-ups-tools
-pkgver=2.7.3
-pkgrel=3
+pkgver=2.7.4
+pkgrel=1
 pkgdesc="NUT is a collection of programs for monitoring and administering UPS hardware"
 arch=('i686' 'x86_64')
 url="http://www.networkupstools.org/"
@@ -15,17 +15,9 @@ depends=('openssl' 'libusb-compat' 'libltdl' 'neon' 'net-snmp')
 makedepends=('asciidoc')
 backup=(etc/ups/{ups.conf,upsd.conf,upsd.users,upsmon.conf,upssched.conf})
 install=nut.install
-source=("http://www.networkupstools.org/source/2.7/nut-${pkgver}.tar.gz"
-        "https://github.com/networkupstools/nut/commit/c98fab9f5dec993aa9f5e0a3e79de53ae9ecd32b.patch")
+source=("http://www.networkupstools.org/source/2.7/nut-${pkgver}.tar.gz")
 options=('!emptydirs' '!libtool')
-sha256sums=('ff44d95d06a51559a0a018eef7f8d17911c1002b6352a7d7580ff75acb12126b'
-            '2227fedd3ad1c392d1a359f456b7d6889b4d0ca8e0e4df5ce6930c1f24e99a1f')
-
-prepare() {
-  cd "$srcdir/nut-$pkgver"
-  # https://github.com/networkupstools/nut/issues/200
-  patch -p1 -i "$srcdir/c98fab9f5dec993aa9f5e0a3e79de53ae9ecd32b.patch"
-}
+sha256sums=('980e82918c52d364605c0703a5dcf01f74ad2ef06e3d365949e43b7d406d25a7')
 
 build() {
   cd "$srcdir/nut-$pkgver"
