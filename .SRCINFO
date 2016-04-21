@@ -1,0 +1,45 @@
+pkgbase = vim
+	pkgver = 7.4.1689
+	pkgrel = 2
+	url = http://www.vim.org
+	arch = i686
+	arch = x86_64
+	license = custom:vim
+	makedepends = gpm
+	makedepends = python2
+	makedepends = python
+	makedepends = ruby
+	makedepends = libxt
+	makedepends = desktop-file-utils
+	makedepends = gtk2
+	makedepends = gtk3
+	makedepends = lua
+	makedepends = gawk
+	makedepends = tcl
+	source = vim-7.4.1689.tar.gz::http://github.com/vim/vim/archive/v7.4.1689.tar.gz
+	source = vimrc
+	source = archlinux.vim
+	sha1sums = 9fdd5cadca97baabc475b154f249b4b8d03fff07
+	sha1sums = 15ebf3f48693f1f219fe2d8edb7643683139eb6b
+	sha1sums = 94f7bb87b5d06bace86bc4b3ef1372813b4eedf2
+
+pkgname = vim-clipboard
+	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor
+	depends = vim-runtime=7.4.1689-2
+	depends = gpm
+	depends = acl
+	optdepends = python2: Python 2 language support
+	optdepends = python: Python 3 language support
+	optdepends = ruby: Ruby language support
+	optdepends = lua: Lua language support
+	optdepends = perl: Perl language support
+	optdepends = tcl: Tcl language support
+	provides = xxd
+	provides = vim-minimal
+	provides = vim-python3
+	conflicts = gvim
+	conflicts = vim-minimal
+	conflicts = vim-python3
+	replaces = vim-python3
+	replaces = vim-minimal
+
