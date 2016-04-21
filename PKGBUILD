@@ -7,7 +7,7 @@ pkgname=dwarffortress-lnp-git
 pkgver=42.05
 _pkgver=42_05
 _dfhack_pkgrel=alpha1
-pkgrel=2
+pkgrel=3
 epoch=0
 pkgdesc="Installer for the Lazy Newb Pack to run Dwarf Fortress. Includes vanilla dwarf fortress, dfhack and graphics"
 arch=(x86_64)
@@ -64,7 +64,7 @@ md5sums=('SKIP'
          'affd6273731c321d364c55a8da314fea'
          '856c54681faed3608cd951bf286d12d5'
          '771d7eaaf1bd78c7da953ffd30e93c20'
-         '5ffa5c697e1d6d364c9077fec03f83c3'
+         '389e34b6937f843c8f635d5e7326c9fc'
          'bba8ab4d3f70cea8b812e78445fef1f0'
          '38b526554d151e79476a7a81d285d689')
 
