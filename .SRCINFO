@@ -1,0 +1,15 @@
+pkgbase = appmenu-qt
+	pkgdesc = Add support for application menu to Qt
+	pkgver = 0.2.6
+	pkgrel = 3
+	url = https://launchpad.net/appmenu-qt
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	depends = libdbusmenu-qt
+	source = http://launchpad.net/appmenu-qt/trunk/0.2.6/+download/appmenu-qt-0.2.6.tar.bz2
+	md5sums = 90cce750e5412d43ce075b0a9bdb6782
+
+pkgname = appmenu-qt
+
