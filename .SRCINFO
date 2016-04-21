@@ -1,16 +1,16 @@
 pkgbase = python-spidev
 	pkgdesc = Python bindings for Linux SPI access through spidev
-	pkgver = 2.0
+	pkgver = 3.2
 	pkgrel = 1
-	url = https://github.com/rpodgorny/py-spidev
+	url = https://github.com/doceme/py-spidev
 	arch = i686
 	arch = x86_64
 	arch = armv6h
+	arch = armv7h
 	license = GPL
-	makedepends = git
 	depends = python
-	source = python-spidev::git://github.com/rpodgorny/py-spidev
-	sha256sums = SKIP
+	source = https://pypi.python.org/packages/source/s/spidev/spidev-3.2.tar.gz
+	md5sums = f601676f1bb48b9aa3b3897f95216365
 
 pkgname = python-spidev
 
