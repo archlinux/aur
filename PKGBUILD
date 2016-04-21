@@ -2,36 +2,29 @@
 # Contributor: Lucky <archlinux@builds.lucky.li>
 
 pkgname=tpacpi-bat-git
-_pkgname="${pkgname%-*}"
-pkgver=94.06ec1d5
+pkgver=106.f58e2ae
 pkgrel=1
-pkgdesc="A Perl script with ACPI calls for recent ThinkPads (such as T420 and W520) whose battery thresholds are not supported by tp_smapi"
-url="https://github.com/teleshoes/tpacpi-bat"
-license=("GPLv3")
-arch=("any")
-depends=("perl" "acpi_call")
-makedepends=("git")
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
-source=("git://github.com/teleshoes/tpacpi-bat.git"
-        "tlp.patch")
-md5sums=("SKIP"
-         "9799f80a35939a0dd009d05c94418fbf")
+pkgdesc='A Perl script with ACPI calls for recent ThinkPads (such as T420 and W520) whose battery thresholds are not supported by tp_smapi'
+url='https://github.com/teleshoes/tpacpi-bat'
+license=('GPLv3')
+arch=('any')
+depends=('perl' 'acpi_call')
+makedepends=('git')
+conflicts=('tpacpi-bat')
+provides=('tpacpi-bat')
+backup=('etc/conf.d/tpacpi')
+source=('git://github.com/teleshoes/tpacpi-bat.git')
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname}"
+  cd ${pkgname/-git/}
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
-
-prepare() {
-  cd "${_pkgname}"
-#  patch -uNp1 -i "${srcdir}/tlp.patch"
-}
-
 package() {
-  cd "${_pkgname}"
+  cd ${pkgname/-git/}
 
-  install -Dm755 "${_pkgname}"            "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm644 "${_pkgname%-*}.service"    "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+  install -Dm755 tpacpi-bat ${pkgdir}/usr/bin/tpacpi-bat
+  install -Dm644 examples/systemd_dynamic_threshold/tpacpi.service ${pkgdir}/usr/lib/systemd/system/tpacpi-bat.service
+  install -Dm644 examples/systemd_dynamic_threshold/tpacpi.conf.d ${pkgdir}/etc/conf.d/tpacpi
 }
