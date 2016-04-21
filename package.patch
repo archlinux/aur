@@ -1,6 +1,6 @@
 diff -aur -bZwB -x .git cadabra2-git.old/core/cadabra2 cadabra2-git/core/cadabra2
---- cadabra2-git.old/core/cadabra2	2016-03-08 06:55:56.245442657 -0500
-+++ cadabra2-git/core/cadabra2	2016-03-08 06:56:27.278519443 -0500
+--- cadabra2-git.old/core/cadabra2.in	2016-03-08 06:55:56.245442657 -0500
++++ cadabra2-git/core/cadabra2.in	2016-03-08 06:56:27.278519443 -0500
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
 +#!/usr/bin/env python2
