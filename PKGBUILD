@@ -2,7 +2,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Based on SUSE spec https://build.opensuse.org/package/files?package=rt3562sta&project=driver%3Awireless
 
-pkgname=rt3562sta
+pkgname=rt3562sta-aufs_friendly
 _pkgname=rt3562sta
 pkgver=2.4.1.1_r3
 _patchrel=${pkgver/*_r/}
