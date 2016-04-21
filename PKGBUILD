@@ -8,7 +8,7 @@
 
 _name=ffmpeg
 pkgname=ffmpeg-libfdk_aac
-pkgver=3.0
+pkgver=3.0.1
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (Same as official package except with libfdk-aac support)'
@@ -16,9 +16,10 @@ arch=('i686' 'x86_64')
 url='http://ffmpeg.org/'
 license=('GPL3' 'custom:libfdk-aac')
 depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame'
-         'libass' 'libbluray' 'libmodplug' 'libpulse' 'libsoxr' 'libssh'
-         'libtheora' 'libva' 'libvdpau' 'libwebp' 'opencore-amr' 'openjpeg'
-         'opus' 'schroedinger' 'sdl' 'speex' 'v4l-utils' 'xvidcore' 'zlib'
+         'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug'
+         'libpulse' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
+         'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
+         'v4l-utils' 'xvidcore' 'zlib'
          'libdcadec.so' 'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so'
          'libvpx.so' 'libx264.so' 'libx265.so'
 	 'libfdk-aac')
@@ -31,7 +32,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=("$_name")
 source=(http://ffmpeg.org/releases/$_name-$pkgver.tar.bz2{,.asc})
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8') # ffmpeg-devel
-sha256sums=('f19ff77a2f7f736a41dd1499eef4784bf3cb7461f07c13a268164823590113c0'
+sha256sums=('f7f7052c120f494dd501f96becff9b5a4ae10cfbde97bc2f1e9f0fd6613a4984'
             'SKIP')
 
 build() {
@@ -54,6 +55,7 @@ build() {
     --enable-libfreetype \
     --enable-libfribidi \
     --enable-libgsm \
+    --enable-libiec61883 \
     --enable-libmodplug \
     --enable-libmp3lame \
     --enable-libopencore_amrnb \
