@@ -1,6 +1,6 @@
 # Maintainer: MadPhysicist <jfoxrabinovitz at gmail dot com>
 pkgname=panoply
-pkgver=4.4.3
+pkgver=4.5.0
 pkgrel=1
 pkgdesc='NetCDF, HDF and GRIB Data Viewer by NASA GISS'
 arch=('any')
@@ -29,7 +29,7 @@ source=("http://www.giss.nasa.gov/tools/panoply/PanoplyJ-${pkgver}.zip"
         'panoply128.png'
         'panoply.desktop')
 noextract=()
-sha1sums=('fd54862976977a5b9958aad5b8a14868e24d58a3'
+sha1sums=('041158bc337f4ec2e44d6df77194f34efbb75ed0'
           'a83855747414873269e21aaff1a53d13ab5de304'
           '707208d062922b5426303238870e0dd269257697'
           '97c70755c7d87217556de5b2f1012b3be0d375fb'
