@@ -2,12 +2,12 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 # Based on SUSE spec https://build.opensuse.org/package/files?package=rt3562sta&project=driver%3Awireless
 
-pkgname=rt3562sta-aufs_friendly
+pkgname=rt3562sta-aufs
 _pkgname=rt3562sta
 pkgver=2.4.1.1_r3
 _patchrel=${pkgver/*_r/}
 pkgrel=9
-pkgdesc="Ralink RT3562 PCI WLAN adaptors kernel module"
+pkgdesc="Ralink RT3562 PCI WLAN adaptors kernel module(aufs_friendly kernel)"
 arch=(i686 x86_64)
 url="http://www.mediatek.com/en/products/connectivity/wifi/consumer-electronics/pcie/rt3562/"
 license=('GPL')
