@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=earlyoom
 pkgver=0.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Early OOM Daemon for Linux"
 arch=('any')
 url="https://github.com/rfjakob/earlyoom"
@@ -21,7 +21,7 @@ package() {
 	cd "$pkgname-$pkgver"
 
 	# earlyoom's install script doesn't support a staged build or prefix configuration, so do this by hand.
-	install -D -m 755 ./earlyoom "$pkdgir/usr/bin/earyloom"
-	install -D -m 644 ./earlyoom.service "$pkgdir/usr/lib/systemd/system/earlyoom.service"
-	sed -i s|/usr/local/bin/earlyoom|/usr/bin/earlyoom|g "$pkgdir/lib/systemd/system/earlyoom.service"
+	install -D -m 755 ./earlyoom "${pkgdir}/usr/bin/earyloom"
+	install -D -m 644 ./earlyoom.service "${pkgdir}/usr/lib/systemd/system/earlyoom.service"
+	sed -i s~/usr/local/bin/earlyoom~/usr/bin/earlyoom~g "${pkgdir}/usr/lib/systemd/system/earlyoom.service"
 }
