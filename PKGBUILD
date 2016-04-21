@@ -1,6 +1,6 @@
 # Maintainer: Myles English <myles at rockhead dot biz>
 pkgname=petsc
-pkgver=3.6.3
+pkgver=3.6.4
 pkgrel=1
 _config=linux-c-opt
 # if --with-debugging=yes is set then PETSC_ARCH is automatically set to
@@ -16,16 +16,17 @@ makedepends=('gcc' 'gcc-fortran' 'cmake')
 optdepends=('trilinos: support for trilinos'
     'ptscotch: support for ptscotch parallel graph partitioning library'
     'parmetis: support for parmetis parallel graph partitioning library'
-    'metis: support for metis graph partitioning library'
-    'pastix: support for the pastix solver'
-    'superlu: support for the superlu sparse solver'
-    'hdf5: support for the parallel version of hdf5'
-    'mumps: support for the mumps sparse solver'
+    'metis:    support for metis graph partitioning library'
+    'pastix:   support for the pastix solver'
+    'superlu:  support for the superlu sparse solver'
+    'hdf5:     support for the parallel version of hdf5'
+    'mumps:    support for the mumps sparse solver'
+    'fftw:     support for the fftw fast Fourier transform'
     )
 install=petsc.install
 source=(http://ftp.mcs.anl.gov/pub/petsc/release-snapshots/${pkgname}-${pkgver/_/-}.tar.gz test_optdepends.sh)
-md5sums=('91dd3522de5a5ef039ff8f50800db606'
-         '6b43720319ec1460e76302fb35b21d47')
+md5sums=('7632da2375a3df35b8891c9526dbdde7'
+         'e60925d1f552303198106bf98eb2bfa5')
 
 _install_dir=/opt/petsc/${_config}
 petsc_arch="arch-${_config}"

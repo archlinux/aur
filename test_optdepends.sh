@@ -19,6 +19,11 @@ if [ -f "/usr/lib/libmumps_common.so" ]; then
 	CONFOPTS="${CONFOPTS} --with-mumps=1"
 fi
 
+# Add fftw support
+if [ -f "/usr/lib/libfftw3_mpi.so" ]; then
+	CONFOPTS="${CONFOPTS} --with-fftw=1"
+fi
+
 # Add hdf5 support
 if [[ "$(h5stat -V)" ]]; then
 	CONFOPTS="${CONFOPTS} --with-hdf5=1"
