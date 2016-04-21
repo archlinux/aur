@@ -1,0 +1,15 @@
+[Unit]
+Description=Pen load balancer - Sample HTTP config.
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/pen -u pen -C /var/run/pen/http.ctl -F /etc/pen/conf/http.conf -p /var/run/pen/http.pid 80
+Type=forking
+PIDFile=/var/run/pen/http.pid
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+

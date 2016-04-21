@@ -1,0 +1,22 @@
+# Install file for Pen
+
+post_install() {
+	# Add pen user
+	useradd -s /sbin/nologin -p $(openssl rand -base64 32) pen
+	# Create run directory
+	systemd-tmpfiles --create
+}
+
+post_remove() {
+	# Remove run directory
+	rm -Rf "/var/run/pen"
+	# Remove pen user & group
+	cat <<EOF
+
+==> **Notice**
+==> Please remove the pen user if no longer required.
+==> # userdel pen 
+
+EOF
+
+}
