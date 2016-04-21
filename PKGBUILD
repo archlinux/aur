@@ -2,7 +2,7 @@
 
 _themename=urbanlifestyle
 pkgname=sddm-${_themename}-theme
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='A simple and colorful SDDM theme.'
 arch=('any')
@@ -16,18 +16,18 @@ install=${pkgname}.install
 
 source=(
 	"${_themename}-${pkgver}.tar.gz::https://github.com/AlfredoRamos/${pkgname}/archive/${pkgver}.tar.gz"
-	'password_focus_fix.patch'
+	'fix_password_focus.patch'
 )
 
 sha512sums=(
-	'2606688a61e755dddd83c1ea8d7810071b857ed7ac9192a21a9f2b9945a7d906a2ed6dd63fa63bd85753981fefaed6bff696532a3af8ad1691fac9cb20cb464c'
-	'a70a38b86de090c7abff3690cedfa6a2f555316c49c2fb2b1621643c812efc7c7e123c8fc05402c2b5bb39dc3502fec39e1ecf0d9af4c842da25c0913e82c87f'
+	'3365e5bbcdf5e743d6a90dc5bbd6e86909b2f04e1b4d0d528a8849806a1a1be3fbc6be0eeea77a007a48855bc5fdb2d38c5f9c85b483117fc8a50b870b6fa006'
+	'c3866c90e6af3ac9d00eefe117cb38800af949978ff97ca82b908e312849f341df624fb5dc0a9a0b0d7cd1ce73aad258439621f365ee2434d3d7beeed231efe7'
 )
 
 prepare() {
-	# Password focus fix
+	# Fix password focus
 	cd "${srcdir}"/${pkgname}-${pkgver}
-	patch -Np1 < ../password_focus_fix.patch
+	patch -Np1 < ../fix_password_focus.patch
 }
 
 package() {
