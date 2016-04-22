@@ -3,15 +3,15 @@
 
 pkgname=xprofile
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool to manage and automatically apply xrandr configurations."
 arch=('any')
 url="https://github.com/nrocco/xprofile"
 license=('GPL')
 depends=('python'
-		 'xorg-xrandr')
-makedepends=('python-setuptools'
-			 'python-docutils')
+		 'xorg-xrandr'
+         'python-docutils')
+makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/x/$pkgname/$pkgname-$pkgver.tar.gz")		
 md5sums=('be4c3a06f7a54ddae8e307f661ddf2b6')
 sha256sums=('bdf80dd6b17f626c304dfa5dcac6f1a4505753a45368a1490cb36cd8164a5242')

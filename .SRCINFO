@@ -1,14 +1,14 @@
 pkgbase = xprofile
 	pkgdesc = A tool to manage and automatically apply xrandr configurations.
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nrocco/xprofile
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
-	makedepends = python-docutils
 	depends = python
 	depends = xorg-xrandr
+	depends = python-docutils
 	source = https://pypi.python.org/packages/source/x/xprofile/xprofile-1.2.0.tar.gz
 	md5sums = be4c3a06f7a54ddae8e307f661ddf2b6
 	sha256sums = bdf80dd6b17f626c304dfa5dcac6f1a4505753a45368a1490cb36cd8164a5242
