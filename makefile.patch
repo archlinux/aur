@@ -1,0 +1,18 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,6 +1,5 @@
+ CXX=g++
+ DEBUG?=0
+-CXXFLAGS?=-c
+ LDFLAGS=-pthread
+ LDLIBS=-lrt
+ ifneq ($(OS), Windows_NT)
+@@ -32,7 +31,7 @@ $(EXECUTABLE):$(OBJECTS)
+ 	$(CXX) $(LDFLAGS) $(OBJECTS) -o $@ $(LDLIBS)
+ 
+ .cpp.o:
+-	$(CXX) $(CXXFLAGS) $< -o $@
++	$(CXX) $(CXXFLAGS) -c $< -o $@
+ 
+ $(SRC)/main.o: $(SRC)/parameter.h $(SRC)/matrix.h $(SRC)/fastq.h $(SRC)/common.h
+ $(SRC)/parameter.o: $(SRC)/parameter.h $(SRC)/fastq.h $(SRC)/common.h

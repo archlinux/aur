@@ -1,0 +1,15 @@
+pkgbase = skewer
+	pkgdesc = A fast and sensitive adapter trimmer for illumina paired-end sequences
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/relipmoc/skewer
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = https://github.com/relipmoc/skewer/archive/0.2.2.tar.gz
+	source = makefile.patch
+	sha1sums = 110d99ccee1e420c06b0848a9281a5b509aa32bd
+	sha1sums = 8041ecd529da1b6fe2233af9144e236464486c7d
+
+pkgname = skewer
+
