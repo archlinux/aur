@@ -8,7 +8,7 @@ pkgdesc="Userspace tracing library for LTTng"
 arch=('i686' 'x86_64')
 url="http://lttng.org/"
 license=('GPL2' 'LGPL2.1')
-depends=('liburcu>=0.7.2' 'util-linux')
+depends=('liburcu>=0.7.2' 'util-linux' 'python')
 makedepends=('git' 'asciidoc' 'xmlto')
 provides=('lttng-ust')
 conflicts=('lttng-ust')
