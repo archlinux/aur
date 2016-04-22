@@ -1,6 +1,6 @@
 pkgbase = nvidia-beta
 	pkgdesc = NVIDIA driver for Arch's official 'linux' package (beta version)
-	pkgver = 364.16
+	pkgver = 364.19
 	pkgrel = 1
 	url = http://www.nvidia.com/
 	install = nvidia-beta.install
@@ -9,17 +9,17 @@ pkgbase = nvidia-beta
 	license = custom:NVIDIA
 	makedepends = linux-headers
 	depends = linux
-	depends = nvidia-utils-beta>=364.16
+	depends = nvidia-utils-beta>=364.19
 	depends = libgl
 	provides = nvidia
 	conflicts = nvidia-96xx
 	conflicts = nvidia-173xx
 	conflicts = nvidia
 	options = !strip
-	source_i686 = NVIDIA-Linux-x86-364.16.run::https://developer.nvidia.com/linux32bit
-	md5sums_i686 = c25de6f7e328c6eab5305be0cd0b02d5
-	source_x86_64 = NVIDIA-Linux-x86_64-364.16.run::https://developer.nvidia.com/linux64bit
-	md5sums_x86_64 = 5d954bfb0be8532779a4ca1741851493
+	source_i686 = http://us.download.nvidia.com/XFree86/Linux-x86/364.19/NVIDIA-Linux-x86-364.19.run
+	md5sums_i686 = 8a4015213c4a8f1c80e9520d04a32a7b
+	source_x86_64 = http://us.download.nvidia.com/XFree86/Linux-x86_64/364.19/NVIDIA-Linux-x86_64-364.19-no-compat32.run
+	md5sums_x86_64 = ad7a0b1855b3913390fb75b4cc3a26dc
 
 pkgname = nvidia-beta
 
