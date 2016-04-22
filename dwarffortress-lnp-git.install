@@ -5,6 +5,7 @@ post_install() {
   echo 'Refer to ~./dwarffortress-lnp-git/LNP/ for local LNP base directory'
   echo 'Optional utilites can be installed by adding a symlink to /opt/dwarffortress-lnp-git/LNP/utilities'
   echo 'If you run into issues, try examining ~/.dwarffortress-lnp-git/df_linux/distro_specific_fixes.sh for distro related problems.'
+  echo 'NOTE: For graphics in 42.06, you may have to manually edit the df_maxversion value in manifest.json files in the pack subfolders of ~/.dwarffortress-lnp-git/LNP/graphics'
 }
 
 post_upgrade() {
