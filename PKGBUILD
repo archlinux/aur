@@ -1,11 +1,11 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-json-marshal
-pkgver=0.0.3
-pkgrel=2
+pkgver=0.0.8
+pkgrel=1
 pkgdesc="Simple serialisation of objects to JSON"
 arch=('any')
-depends=('perl6' 'perl6-json-name' 'perl6-json-tiny')
+depends=('perl6' 'perl6-json-fast' 'perl6-json-name')
 checkdepends=('perl')
 makedepends=('alacryd' 'git')
 groups=('perl6')
