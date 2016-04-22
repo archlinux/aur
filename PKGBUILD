@@ -1,10 +1,11 @@
 # Contributer: Donald Carr<sirspudd@gmail.com>
 
 pkgname=qtcreator-prerelease
-pkgver=4.0.0
-_pkgver=${pkgver}-beta1
+_pkgvermajmin=4.0
+pkgver=${_pkgvermajmin}.0
+_pkgver=${pkgver}-rc1
 _filename=qt-creator-opensource-src-${_pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Qt Creator prerelease'
 arch=('x86_64')
 url='http://qt.io/ide'
@@ -13,8 +14,8 @@ provides=('qtcreator')
 conflicts=('qtcreator')
 depends=('qt5-base')
 makedepends=('gcc' 'qt5-base')
-source=("https://download.qt.io/development_releases/qtcreator/4.0/4.0.0-beta1/${_filename}.tar.gz")
-sha256sums=('a7d95b5c64db413e0a89fe879a5a5ba614bb7c00ae94ba2736a3d9c462969fcb')
+source=("https://download.qt.io/development_releases/qtcreator/${_pkgvermajmin}/${_pkgver}/${_filename}.tar.gz")
+sha256sums=('33e478b4c5d024bcab07fa6974b2af6818666812ff88f153405bedb557e0c566')
 
 build() {
   cd "$srcdir/${_filename}"
