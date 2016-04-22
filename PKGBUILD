@@ -1,7 +1,7 @@
 # Maintainer: Denis Kasak <dkasak|AT|termina.org.uk>
 
 pkgname=ekho
-pkgver=6.4.2
+pkgver=6.5
 pkgrel=1
 pkgdesc="Chinese text-to-speech (TTS) software for Cantonese, Mandarin, Zhaoan Hakka, Tibetan, Ngangien and Korean"
 arch=('i686' 'x86_64')
@@ -32,4 +32,4 @@ package() {
   make DESTDIR="${pkgdir}/" install
 }
 
-md5sums=('c38f9fe9479e5f0f4f4e1450095fef39')
+md5sums=('d70ab33ee4070d62d452be595a92d2f2')
