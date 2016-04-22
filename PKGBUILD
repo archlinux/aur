@@ -2,7 +2,7 @@
 
 pkgname=messengerfordesktop-git
 pkgver=v1.4.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Beautiful desktop client for Facebook Messenger. Sytten's fork"
 arch=('i686' 'x86_64')
 url="http://messengerfordesktop.com/"
@@ -30,7 +30,7 @@ build() {
 package() {
   cd "${srcdir}/messengerfordesktop-git/build/Messenger/${_arch}"
   mkdir -p "${pkgdir}/opt/MessengerForDesktop/"
-  install -D -m644 "Messenger"    "${pkgdir}/opt/MessengerForDesktop/Messenger"
+  install -D -m755 "Messenger"    "${pkgdir}/opt/MessengerForDesktop/Messenger"
   install -D -m644 "nw.pak"       "${pkgdir}/opt/MessengerForDesktop/nw.pak"
   install -D -m644 "icudtl.dat"   "${pkgdir}/opt/MessengerForDesktop/icudtl.dat"
 
