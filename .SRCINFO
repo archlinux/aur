@@ -1,7 +1,7 @@
 pkgbase = firefox-beta-zh-cn
 pkgdesc = Chinese Simplified For Firefox Beta
 pkgver = 46.0
-pkgrel = 4
+pkgrel = 5
 url = https://www.mozilla.org/zh-CN/firefox/channel/#beta
 install = firefox-beta-zh-cn.install
 arch = i686
@@ -13,6 +13,7 @@ makedepends = pacman>=4.2.0
 depends = alsa-lib
 depends = dbus-glib
 depends = desktop-file-utils
+depends = flashplugin
 depends = gtk2
 depends = gtk3
 depends = hicolor-icon-theme

@@ -3,12 +3,12 @@
 pkgname=firefox-beta-zh-cn
 _pkgname=firefox-beta
 pkgver=46.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Chinese Simplified For Firefox Beta"
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/zh-CN/firefox/channel/#beta"
 license=('MPL' 'GPL' 'LGPL')
-depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'gtk2' 'gtk3' 'hicolor-icon-theme'
+depends=('alsa-lib' 'dbus-glib' 'desktop-file-utils' 'flashplugin' 'gtk2' 'gtk3' 'hicolor-icon-theme'
          'icu' 'libevent' 'libvpx' 'libxt' 'mime-types' 'nss' 'sqlite')
 optdepends=('ffmpeg: additional video and audio decoders'
             'libpulse: PulseAudio driver'
