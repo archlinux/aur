@@ -4,7 +4,7 @@
 
 pkgname=gscreenshot
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A GUI front-end for scrot"
 arch=('any')
@@ -18,8 +18,7 @@ depends=("python"
         "gtk3"
         "python-setuptools"
         "python-gobject")
-makedepends=("unzip"
-        "fakeroot")
+makedepends=("fakeroot")
 checkdepends=()
 optdepends=()
 provides=()
