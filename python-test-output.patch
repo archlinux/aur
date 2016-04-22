@@ -1,0 +1,15 @@
+--- ./test/com/facebook/buck/cli/ExternalTestRunnerIntegrationTest.java.orig	2016-04-22 15:23:01.347436678 -0700
++++ ./test/com/facebook/buck/cli/ExternalTestRunnerIntegrationTest.java	2016-04-22 15:23:24.214103542 -0700
+@@ -72,9 +72,9 @@
+     result.assertSuccess();
+     assertThat(
+         result.getStdout(),
+-        is(equalTo("[[0.0, [u'dir/simple.py']], " +
+-            "[0.75, [u'dir/also_simple.py', u'dir/simple.py']], " +
+-            "[1.0, [u'dir/also_simple.py']]]\n")));
++        is(equalTo("[[0.0, ['dir/simple.py']], " +
++            "[0.75, ['dir/also_simple.py', 'dir/simple.py']], " +
++            "[1.0, ['dir/also_simple.py']]]\n")));
+   }
+ 
+   @Test
