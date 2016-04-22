@@ -1,5 +1,5 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-javascript-v8'
 pkgver='0.07'
@@ -8,9 +8,9 @@ pkgdesc="Perl interface to the V8 JavaScript engine"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl' 'v8>=3.19.18.4')
-makedepends=('perl-extutils-xspp>=0.11')
-url='http://search.cpan.org/dist/JavaScript-V8'
+depends=('perl-extutils-xspp>=0.11' 'v8-3.14')
+makedepends=()
+url='https://metacpan.org/release/JavaScript-V8'
 source=('http://search.cpan.org/CPAN/authors/id/D/DG/DGL/JavaScript-V8-0.07.tar.gz')
 md5sums=('88e34b4706916c10b9fc37cde7cad1ab')
 sha512sums=('dea46904f3dd24a2ed1eca35a67bde7b0df50b9bfad7eca29e0680fc18027a22f7d02c22ffc6d97cbffafc0afb2222dda830c33183c9e4a60f672debb881bcca')
