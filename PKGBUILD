@@ -1,11 +1,11 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-json-unmarshal
-pkgver=0.03
-pkgrel=2
+pkgver=0.05
+pkgrel=1
 pkgdesc="Turn JSON into objects"
 arch=('any')
-depends=('perl6' 'perl6-json-name' 'perl6-json-tiny')
+depends=('perl6' 'perl6-json-fast' 'perl6-json-name')
 checkdepends=('perl')
 makedepends=('alacryd' 'git')
 groups=('perl6')
