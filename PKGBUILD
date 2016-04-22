@@ -1,9 +1,9 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-test-meta
-pkgver=0.0.1
+pkgver=0.0.4
 pkgrel=1
-pkgdesc="Test that a Perl 6 project has a good and proper META file"
+pkgdesc="Test a distribution's META file"
 arch=('any')
 depends=('perl6' 'perl6-meta6')
 checkdepends=('perl')
@@ -23,6 +23,9 @@ check() {
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
+
+  msg2 'Installing license...'
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 
   msg2 'Installing documentation...'
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
