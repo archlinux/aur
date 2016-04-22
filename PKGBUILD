@@ -6,7 +6,7 @@
 pkgname=firefox-theme-nasa-night-launch
 pkgdesc="Dark theme for Firefox. Inspired by the night launch of STS-116."
 pkgver=0.6.20160329
-pkgrel=2
+pkgrel=3
 url="http://home.comcast.net/~username54321/starfield/index.html"
 license=('custom')
 md5sums=('79aaf0d3b9cc2aaa48e5776901f4aab0')
@@ -15,7 +15,7 @@ md5sums=('79aaf0d3b9cc2aaa48e5776901f4aab0')
 
 source+=(
   "${pkgname}.zip::https://addons.mozilla.org/firefox/downloads/latest/${pkgname#*-*-}/platform:2/"
-  "version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/${pkgname#*-*-}"
+  ".version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/${pkgname#*-*-}"
 )
 md5sums+=('SKIP')
 noextract+=("${pkgname}.zip")
@@ -39,7 +39,7 @@ pkgver() {
 
 # Retrieve current compatibility information from addons.mozilla.org API.
 query-version() {
-  xmllint version --xpath \
+  xmllint .version --xpath \
     "//application[appID='$2']/$1_version/text()"
 }
 version-range() {
