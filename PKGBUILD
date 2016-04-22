@@ -4,19 +4,18 @@
 
 pkgbase=python-pgpy
 pkgname=('python-pgpy' 'python2-pgpy')
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Pretty Good Privacy for Python - a pure Python OpenPGP implementation."
 arch=('any')
 license=('BSD')
-url="https://github.com/Commod0re/PGPy"
-makedepends=('python-setuptools' 'python-cryptography' 'python-singledispatch' 'python-six'
-             'python2-setuptools' 'python2-cryptography' 'python2-enum34' 'python2-singledispatch' 'python2-six')
-source=("https://pypi.python.org/packages/source/P/PGPy/PGPy-${pkgver}.tar.gz")
-##TODO: sum this shit
-sha256sums=('8ff7df1765b1977505c8dd1a77c4755fe849f792653307fc77f5171d30cd55cd')
-sha384sums=('56e66e067cb643423fe2bffa2c7a3d825e34b2b2b76ca43f0549792d7bcca1b9bcf3b9d797e0435d0576a3ebe4653640')
-sha512sums=('d5f8b67c22e75c739200022ddbe0ecbbfe1784ca19fa8e8db09f6d72a96c5c1fbbb0e4b101a7cb2694d25d304126ab12848cd752507526ff313b78ab28b95178')
+url="https://github.com/SecurityInnovation/PGPy"
+makedepends=('python-setuptools' 'python-cryptography' 'python-six' 'python-pyasn1'
+             'python2-setuptools' 'python2-cryptography' 'python2-enum34' 'python2-singledispatch' 'python2-six' 'python2-pyasn1')
+source=("https://pypi.python.org/packages/0a/2c/bfe57ac97d31fcd7172df43770d68bab1fbd38d629448ec8013f4714e779/PGPy-0.4.0a.tar.gz")
+sha256sums=('0025d65f2db2886868ac5af68a85322d255ed52211756c6141c9d46264091da2')
+sha384sums=('4ea26e952e6004778661072dbe4644351716b53122f4e96b8d2c44e57c31e23dc5e62e74f5700f628db2c163e01317c8')
+sha512sums=('527625a143e6fc221f7f5d84455546b9687287059c1b28f4e16db46f80a2227e69f0781b95752797c212d3ff788979622331285a55f32bd3bbe4f108328ae2ed')
 
 prepare() {
     cp -a PGPy-${pkgver}{,-python2}
@@ -33,7 +32,7 @@ build() {
 }
 
 package_python-pgpy() {
-    depends=('python-cryptography>=0.5.2' 'python-singledispatch' 'python-six>=1.7.2')
+    depends=('python-cryptography>=1.1.0' 'python-six>=1.9.0' 'python-pyasn1')
 
     cd PGPy-${pkgver}
     python3 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
@@ -41,7 +40,7 @@ package_python-pgpy() {
 }
 
 package_python2-pgpy() {
-    depends=('python2-cryptography>=0.5.2' 'python2-six>=1.7.2' 'python2-enum34' 'python-singledispatch')
+    depends=('python2-cryptography>=1.1.0' 'python2-six>=1.9.0' 'python2-enum34' 'python2-singledispatch' 'python2-pyasn1')
 
     cd PGPy-${pkgver}-python2
     python2 setup.py install --root="${pkgdir}" --optimize=1 --skip-build
