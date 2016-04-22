@@ -1,0 +1,18 @@
+#### joe made this: http://goel.io/joe
+
+#####=== ArchLinuxPackages ===#####
+
+*.tar
+*.tar.*
+*.jar
+*.exe
+*.msi
+*.zip
+*.tgz
+*.log
+*.log.*
+*.sig
+
+pkg/
+src/
+
