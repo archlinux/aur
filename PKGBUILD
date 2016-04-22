@@ -4,7 +4,7 @@
 
 pkgname=firefox-theme-ft-deepdark
 pkgver=14.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Smooth dark theme for Firefox'
 url='https://addons.mozilla.org/en-us/firefox/addon/ft-deepdark/'
 license=('custom:noncommercial')
@@ -14,7 +14,7 @@ md5sums=('3990c3cb5d16b325b621a91518c95064')
 
 source+=(
   "${pkgname}.zip::https://addons.mozilla.org/firefox/downloads/latest/${pkgname#*-*-}/platform:2/"
-  "version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/${pkgname#*-*-}"
+  ".version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/${pkgname#*-*-}"
 )
 md5sums+=('SKIP')
 noextract+=("${pkgname}.zip")
@@ -38,7 +38,7 @@ pkgver() {
 
 # Retrieve current compatibility information from addons.mozilla.org API.
 query-version() {
-  xmllint version --xpath \
+  xmllint .version --xpath \
     "//application[appID='$2']/$1_version/text()"
 }
 version-range() {
