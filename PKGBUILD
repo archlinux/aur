@@ -4,13 +4,13 @@ pkgrel=5
 pkgdesc="An all-in-one script for connecting with 3G"
 arch=(any)
 url="http://www.sakis3g.com"
-license="GPL2"
+license=("GPL2")
 depends=('ppp' 'net-tools')
 optdepends=('usb_modeswitch: for switching USB modems'
             'kdialog: Graphical UI'
             'zenity: Graphical UI'
             'Xdialog: Graphical UI'
-            'whiptail: Text UI'
+	    'libnewt: (whiptail) Text UI'
             'dialog: Text UI'
             'konsole: Terminal emulator'
             'xterm: Terminal emulator'
