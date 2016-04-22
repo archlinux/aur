@@ -1,12 +1,12 @@
 pkgbase = micropsi2
 	pkgdesc = artificial intelligence toolkit implementing concepts from the cognitive architecture MicroPsi
-	pkgver = 0.7a5
+	pkgver = 0.8a6
 	pkgrel = 1
 	url = http://www.micropsi.com/
 	arch = any
 	license = unknown
-	source = https://github.com/joschabach/micropsi2/archive/0.7-alpha5.tar.gz
-	md5sums = e38ef506522949b3436b4c8138bcab8c
+	source = https://github.com/joschabach/micropsi2/archive/0.8-alpha6.tar.gz
+	md5sums = e2c9a662798de696ee38a995db270d16
 
 pkgname = micropsi2
 
