@@ -1,0 +1,14 @@
+pkgbase = python2-mercurial_extension_utils
+	pkgdesc = Mercurial Extension Utils
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/mercurial_extension_utils
+	arch = any
+	license = BSD
+	makedepends = python2-distribute
+	depends = python2
+	source = https://pypi.python.org/packages/source/m/mercurial_extension_utils/mercurial_extension_utils-1.2.0.tar.gz
+	md5sums = 16a8cced2c422eb9ae506a5da3479bf8
+
+pkgname = python2-mercurial_extension_utils
+
