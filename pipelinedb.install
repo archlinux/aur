@@ -1,0 +1,25 @@
+post_install() {
+  if [ ! -d '/var/lib/postgres' ]; then
+    mkdir -p '/var/lib/postgres'
+  fi
+  if ! getent group postgres >/dev/null; then
+    groupadd -g 88 postgres
+  fi
+  if ! getent passwd postgres >/dev/null; then
+    useradd -c 'PostgreSQL user' -u 88 -g postgres -d '/var/lib/postgres' -s /bin/bash postgres
+    passwd -l postgres >/dev/null
+  fi
+  if [ ! -d '/var/lib/postgres/data' ]; then
+    mkdir -p '/var/lib/postgres/data'
+    chown postgres:postgres '/var/lib/postgres/data'
+  fi
+}
+
+post_upgrade() {
+  post_install $1
+  # FS#23858, fix postgres user shell issue
+  postgres_shell=$(getent passwd postgres | cut -d: -f7)
+  if [ "$postgres_shell" = "/sbin/nologin" ]; then
+    chsh -s /bin/bash postgres
+  fi
+}
