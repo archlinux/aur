@@ -57,7 +57,7 @@ package_20_version() {
     tr '\n," ' '\n' | sed 's/3\.//g;/^$/d' | sort -n -t. -k 1,1))
   depends+=("gnome-shell>=3.${compatibles[0]}")
   local max="${compatibles[-1]}"
-  if [ "3.$max" != $(
+  if [ "$max" != $(
     gnome-shell --version | grep -Po '(?<=GNOME Shell 3\.)[[:digit:]]+'
   ) ]; then
     depends+=("gnome-shell<3.$((${max%%.*} + 1))")
