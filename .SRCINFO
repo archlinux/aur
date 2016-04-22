@@ -1,0 +1,17 @@
+pkgbase = steam-tools
+	pkgdesc = Some useful tools for use with steam client and websites.
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/ShyPixie/steam-tools
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	depends = python-beautifulsoup4
+	depends = python-requests
+	depends = python-crypto
+	source = https://github.com/ShyPixie/steam-tools/archive/v0.6.2-beta.tar.gz
+	sha256sums = 9263ff7bb91cdc495772f5b5486cadf482c3723701ba1bb251f94ca8c0b742d2
+
+pkgname = steam-tools
+
