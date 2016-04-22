@@ -1,15 +1,17 @@
 pkgbase = xubuntu-community-artwork
-	pkgdesc = Community wallpapers included with Xubuntu 14.04, 14.10 and 15.04
-	pkgver = 14.04.0
-	pkgrel = 4
-	url = http://xubuntu.org/news/community-wallpaper-contest-winners
+	pkgdesc = Community wallpapers from Xubuntu 14.04 & 16.04
+	pkgver = 16.04.0
+	pkgrel = 2
+	url = http://xubuntu.org/news/xubuntu-16-04-wallpaper-competition-winners/
 	arch = any
-	license = CC-BY-SA
+	license = custom
 	provides = xubuntu-community-wallpapers
-	source = http://archive.ubuntu.com/ubuntu/pool/universe/x/xubuntu-community-artwork/xubuntu-community-artwork_14.04.0.tar.gz
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/x/xubuntu-community-artwork/xubuntu-community-artwork_16.04.0.tar.xz
 	source = xubuntu-community-wallpapers.xml
-	sha512sums = 02fb511a090dd38adc28c6c79b10045f94a05ea948c4a0974a3ca209c8586c61e69f1b04d36426d00f9c14661a0fb9ed56b660f01f1e40fac321d98df86af482
-	sha512sums = a19e33ef92f18144f575e9165b2fa4a44c1f52ecc8f8d28324d43c9d3e176d3d11935194dbffaa496bc5a874e56e90cf3ef5fa9cbe226c17ec93eaf7399669d5
+	source = LICENSE
+	sha512sums = cca20d1e317168a00bbae5e3aadcf73db8c0f12504701aa36be2d53de7b9cef7919cbba07c53a08685845c4986ee88b2f3ba62ebde8cabf657626d36b5e6318c
+	sha512sums = 05c24292941c42086007aa1c8b77f8b3293c3956ee1ae04498f54f5b96a9b987ed7443aa3c9ade9c834e9074ae82822da18ad667a329f581bfcf4850bdc93fc9
+	sha512sums = 1357f5461c3a8a13d7f55ce8744770c69e681062319b535b4aec813caa2911c675ce59e77f9ad2810dd58c4e7f9898a8607d4f9f7b4133e9f0de5c4e5dd1673b
 
 pkgname = xubuntu-community-artwork
 
