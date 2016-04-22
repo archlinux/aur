@@ -2,14 +2,14 @@
 
 _pkgname=breeze-icons
 pkgname="${_pkgname}-git"
-pkgver=5.21.0.rc2.r3.g1355d32
+pkgver=5.21.0.r57.g7160ed6
 pkgrel=1
 pkgdesc="Breeze icon themes for KDE Plasma. (GIT version)"
 arch=('any')
 url="https://quickgit.kde.org/?p=${_pkgname}.git"
 license=('LGPL')
 groups=('kf5')
-makedepends=('extra-cmake-modules-git' 'qt5-base' 'git')
+makedepends=('extra-cmake-modules-git' 'git' 'qt5-base')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("${_pkgname}::git://anongit.kde.org/${_pkgname}.git")
@@ -21,6 +21,7 @@ pkgver(){
 }
 
 prepare() {
+    rm -rf build
     mkdir -p build
 }
 
