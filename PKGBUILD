@@ -2,8 +2,8 @@
 
 pkgname=perl6-json-name
 _p6name=JSON-Name
-pkgver=0.0.1
-pkgrel=2
+pkgver=0.0.2
+pkgrel=1
 pkgdesc="Provides a trait to store an alternative JSON Name"
 arch=('any')
 depends=('perl6')
@@ -13,7 +13,7 @@ groups=('perl6')
 url="https://github.com/jonathanstowe/JSON-Name"
 license=('PerlArtistic')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/jonathanstowe/$_p6name/tar.gz/v$pkgver)
-sha256sums=('eb4ed029d0765b3c73b675ebd5f70a0714c1da4fc3fd68f1f6d7b5c83cebba31')
+sha256sums=('52ef61e99d49282d1a657c2581ae83f3dffacab2d7a41ea22fbbc28b2233747a')
 
 check() {
   cd "$srcdir/$_p6name-$pkgver"
