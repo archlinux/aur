@@ -4,7 +4,7 @@
 
 pkgname=firefox-extension-flash-video-downloader
 pkgver=11.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='download your favorite videos in 1 click'
 url='http://www.flashvideodownloader.org/'
 license=('MPLv1.1')
@@ -17,8 +17,11 @@ source+=(
   "version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/${pkgname#*-*-}"
 )
 md5sums+=('SKIP')
+noextract+=("${pkgname}.zip")
+makedepends+=(unzip)
 
 prepare() {
+  unzip "${pkgname}.zip"
   rm ${pkgname}.zip
 }
 
