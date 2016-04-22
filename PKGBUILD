@@ -6,7 +6,7 @@
 # Contributor: teratomata <teratomat@gmail.com>
 
 pkgname=mathematica
-pkgver=10.4.0
+pkgver=10.4.1
 pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ url="http://www.wolfram.com/mathematica/"
 license=('proprietary')
 depends=('ttf-bitstream-vera' 'libxcursor' 'alsa-lib' 'libxml2')
 source=("file://Mathematica_${pkgver}_LINUX.sh")
-md5sums=('fdc04160ef3cfcb120766393306b5c5f')
+md5sums=('ea1f13a88279e6fc2ed1edc80e7a1612')
 install='mathematica.install'
 options=('!strip')
 
@@ -59,7 +59,7 @@ package() {
 
     cd ${pkgdir}/opt/Mathematica/SystemFiles/Installation
 
-    desktopFile='wolfram-mathematica10.desktop'
+    desktopFile='wolfram-mathematica.desktop'
     sed -Ei 's|^(\s*TryExec=).*|\1/usr/bin/Mathematica|g' $desktopFile
     sed -Ei 's|^(\s*Exec=).*|\1/usr/bin/Mathematica %F|g' $desktopFile
     cp $desktopFile ${pkgdir}/usr/share/applications/

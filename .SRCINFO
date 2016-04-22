@@ -1,6 +1,6 @@
 pkgbase = mathematica
 	pkgdesc = A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing.
-	pkgver = 10.4.0
+	pkgver = 10.4.1
 	pkgrel = 1
 	url = http://www.wolfram.com/mathematica/
 	install = mathematica.install
@@ -12,8 +12,8 @@ pkgbase = mathematica
 	depends = alsa-lib
 	depends = libxml2
 	options = !strip
-	source = file://Mathematica_10.4.0_LINUX.sh
-	md5sums = fdc04160ef3cfcb120766393306b5c5f
+	source = file://Mathematica_10.4.1_LINUX.sh
+	md5sums = ea1f13a88279e6fc2ed1edc80e7a1612
 
 pkgname = mathematica
 
