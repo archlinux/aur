@@ -1,0 +1,13 @@
+pkgbase = armake-git
+	pkgdesc = An open-source implementation of the Arma modding tools.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/KoffeinFlummi/armake
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	source = git+https://github.com/KoffeinFlummi/armake.git
+	sha256sums = SKIP
+
+pkgname = armake-git
+
