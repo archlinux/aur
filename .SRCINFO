@@ -1,0 +1,13 @@
+pkgbase = blender-plugin-blendrig-git
+	pkgdesc = BlenRig rigging system for Blender
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://cloud.blender.org/p/blenrig/
+	arch = any
+	groups = blender
+	license = AGPL
+	makedepends = unzip
+	depends = blender
+
+pkgname = blender-plugin-blendrig-git
+
