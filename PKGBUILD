@@ -1,7 +1,7 @@
 
 _pkgname=dontpanic
 pkgname=${_pkgname}-git
-pkgver=1.2.r10.g2111bf5
+pkgver=v1.3.r0.gcebd777
 pkgrel=1
 pkgdesc="Dontpanic is a python app to look for any movie or serie and watch them in 'streaming'. It looks like popcorntime, but doesn't depend of a centralized api."
 arch=(any)
