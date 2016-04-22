@@ -20,7 +20,7 @@ post_remove() {
 }
 
 compile_scripts() {
-	zsh /etc/zsh/zlogin
+	echo | zsh --login
 }
 
 remove_compiled_scripts() {
