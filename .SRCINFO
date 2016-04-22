@@ -1,11 +1,13 @@
 pkgbase = mozilla-extension-stylish
 	pkgdesc = Customize your favorite web sites with user styles.
 	pkgver = 2.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://userstyles.org/
 	arch = any
 	license = GPL
+	makedepends = unzip
 	makedepends = rasqal
+	noextract = mozilla-extension-stylish.zip
 	source = mozilla-extension-stylish.zip::https://addons.mozilla.org/firefox/downloads/latest/stylish/platform:2/
 	source = version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/stylish
 	md5sums = 479f2f2be86d2be266e8189e1410f7e9

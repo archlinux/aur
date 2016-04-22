@@ -5,7 +5,7 @@
 
 pkgname=mozilla-extension-stylish
 pkgver=2.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Customize your favorite web sites with user styles.'
 url='https://userstyles.org/'
 license=('GPL')
@@ -19,8 +19,11 @@ source+=(
   "version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/${pkgname#*-*-}"
 )
 md5sums+=('SKIP')
+noextract+=("${pkgname}.zip")
+makedepends+=(unzip)
 
 prepare() {
+  unzip "${pkgname}.zip"
   rm ${pkgname}.zip
 }
 
