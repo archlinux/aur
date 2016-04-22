@@ -1,13 +1,15 @@
 # Maintainer: buzz <buzz-AT-l4m1-DOT-de>
 pkgname=volctl
-pkgver=0.3
+_gitname=volctl
+pkgver=0.3.r0.gc5a4b3f
 pkgrel=1
 pkgdesc="Per-application volume control for GNU/Linux desktops"
 arch=("any")
 url="https://buzz.github.io/volctl/"
 license=("GPL")
 groups=()
-depends=("python2" "python2-gobject" "pulseaudio")
+depends=("python2" "python2-gobject" "pulseaudio" "desktop-file-utils")
+install=volctl.install
 optdepends=("pavucontrol: mixer support")
 makedepends=("git")
 provides=()
@@ -15,32 +17,17 @@ conflicts=()
 replaces=()
 backup=()
 options=(!emptydirs)
-install=
-source=()
+source=("git+https://github.com/buzz/volctl.git")
+md5sums=("SKIP")
 
-_gitroot="https://github.com/buzz/volctl.git"
-_gitname="volctl"
-
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+pkgver() {
+    cd "${_gitname}"
+    git describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+    cd "${_gitname}"
+    python2 setup.py install --root="${pkgdir}/" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:

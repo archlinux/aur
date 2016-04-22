@@ -1,0 +1,7 @@
+\#*#
+.#*
+*~
+volctl-*.pkg.tar.xz
+volctl/
+src/
+pkg/

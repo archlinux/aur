@@ -9,7 +9,6 @@ pkgbase = volctl
 	depends = python2
 	depends = python2-gobject
 	depends = pulseaudio
-	depends = pavucontrol
 	optdepends = pavucontrol: mixer support
 	options = !emptydirs
 
