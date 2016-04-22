@@ -1,6 +1,6 @@
 # Maintainer: Myles English <myles at rockhead dot biz>
 pkgname=slepc
-pkgver=3.6.2
+pkgver=3.6.3
 pkgrel=1
 pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GNUv3')
 depends=('python2' 'gcc' 'gcc-fortran' 'petsc>=3.6.0')
 install=slepc.install
 source=(http://www.grycap.upv.es/slepc/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
-md5sums=('ff4b7e313f968c94fee677e14a7e6514')
+md5sums=('673b877e3f386bc8e28e24d14e8246f3')
 
 export MAKEFLAGS="-j1"
 
@@ -53,6 +53,7 @@ package() {
     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/slepc/conf/slepc_rules"
     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/slepc/conf/slepc_variables"
     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/slepc/conf/slepcvariables"
+    sed -i 's#'"${_build_dir}"'#"${_install_dir}"#g' "${pkgdir}${_install_dir}/lib/slepc/conf/uninstall.py"
     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/slepc/conf/uninstall.py"
     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/pkgconfig/SLEPc.pc"
     sed -i 's#'"${pkgdir}"'##g' "${pkgdir}${_install_dir}/lib/slepc/conf/modules/${pkgname}/${pkgver}"
