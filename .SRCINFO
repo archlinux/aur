@@ -1,0 +1,16 @@
+pkgbase = rtl8192eu
+	pkgdesc = Driver for the Realtek8192eu chipset
+	pkgver = 4.3.1.1
+	pkgrel = 1
+	url = https://github.com/Mange/rtl8192eu-linux-driver
+	install = rtl8192eu.install
+	arch = x86_64
+	license = GPL
+	makedepends = linux-headers
+	makedepends = git
+	depends = dkms
+	source = git+https://github.com/Mange/rtl8192eu-linux-driver.git#commit=a322c84595b526fc27b979109998188b4ff8042e
+	md5sums = SKIP
+
+pkgname = rtl8192eu
+
