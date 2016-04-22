@@ -54,10 +54,6 @@ _installprefix=${_baseprefix}/${pkgname}
 _qt_package_name_prefix="qt-everywhere-opensource-src"
 _source_package_name=${_qt_package_name_prefix}-${_pkgver}
 
-# Work around packaging bug (lack of postfix in 5.7.0-alpha)
-#_source_unpackaged_name=${_source_package_name}
-_source_unpackaged_name=${_qt_package_name_prefix}-${pkgver}
-
 pkgdesc="Qt SDK for the Raspberry Pi${_piver}"
 arch=("x86_64")
 url="http://www.qt.io"
@@ -112,7 +108,7 @@ if $_build_from_head; then
 fi
 
 build() {
-  local _srcdir="${srcdir}/${_source_unpackaged_name}"
+  local _srcdir="${srcdir}/${_source_package_name}"
   local _basedir="${_srcdir}/qtbase"
   local _waylanddir="${_srcdir}/qtwayland"
   local _webenginedir="${_srcdir}/qtwebengine"
@@ -220,7 +216,7 @@ create_install_script()
 }
 
 package() {
-  local _srcdir="${srcdir}/${_source_unpackaged_name}"
+  local _srcdir="${srcdir}/${_source_package_name}"
   local _bindir="${_srcdir}"
 
   create_install_script
