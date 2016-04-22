@@ -6,7 +6,7 @@ pkgbase=linux-bld       # Build kernel with a different name
 _srcname=linux-4.5
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.5.1
+pkgver=4.5.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/rmullick/linux"
@@ -35,11 +35,11 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
             'SKIP'
-            '060ad091ebfa2b63d62e86beaf68c3a5d4638c506c3ac941c1825ba756e830b1'
+            'a9913a04ddbd06acde9b00b3179c41fddb99f61168ef5d01d3e8cf72385038b1'
             'SKIP'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
-            '4e520b53399541b5d166fba4be397756278cbcbc260be87bd3ff324496ac3619'
-            '30660541b981bfbf60db8ffdbf75dca63648ca19bc2fba564b4561f6ecc7bf1b'
+            '2355efbab340d16c1b60a7805b987a78e57266809ba6c986ceef68ef7ce71db0'
+            'cee1781f96e55a909757c4533cdacb57c3ffe6f6f01f709e8a5a837dc4a68bba'
             '8da1d80c0bd568781568da4f669f39fed94523312b9d37477836bfa6faa9527f'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'd1cf14cc696b0f716454fe8eb9746383700889d5d22ad829611f0433cc77b4ce'
