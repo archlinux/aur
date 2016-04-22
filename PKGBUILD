@@ -2,12 +2,12 @@
 
 pkgname=htslib
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="library for high-throughput sequencing data formats"
 arch=('i686' 'x86_64')
 url="https://github.com/samtools/htslib"
 license=('custom')
-depends=('zlib')
+depends=('curl' 'zlib')
 provides=('tabix')
 replaces=('tabix')
 conflicts=('tabix')
@@ -17,7 +17,11 @@ md5sums=('39d475730a66401e4d45398c95c414f7')
 build() {
   cd $srcdir/$pkgname-$pkgver
 
-  ./configure --prefix=/usr
+  ./configure \
+    --prefix=/usr \
+    --enable-libcurl \
+    --enable-plugins \
+    --with-plugin-dir=/usr/lib/htslib/plugins
 
   make
 }
