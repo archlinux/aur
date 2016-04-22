@@ -1,7 +1,7 @@
 pkgbase = spotify-beta
 	pkgdesc = A proprietary peer-to-peer music streaming service
 	pkgver = 1.0.27.71
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.spotify.com
 	changelog = spotify.changelog
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = spotify-beta
 	depends = libcurl-compat
 	depends = libxss
 	depends = rtmpdump
+	depends = zenity
 	optdepends = desktop-file-utils: Adds URI support to compatible desktop environments
 	optdepends = ffmpeg-compat: Adds support for playback of local files
 	optdepends = libnotify: Adds desktop notifications
