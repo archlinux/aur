@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+function post_install () {
+	echo "Register new module. Check /opt/Citrix/ICAClient/config/module.ini if something does not work."
+	cd /opt/Citrix/ICAClient/config
+	../rtme/RTMEconfig -install
+	mv module.ini module.ini.pacsave
+	mv new_module.ini module.ini
+}
+
+function post_upgrade () {
+	post_install
+}
+
+function pre_remove () {
+	echo "Unregister new module. Check /opt/Citrix/ICAClient/config/module.ini if something does not work."
+	cd /opt/Citrix/ICAClient/config
+	../rtme/RTMEconfig -remove
+	mv module.ini module.ini.pacsave
+	mv new_module.ini module.ini
+}
