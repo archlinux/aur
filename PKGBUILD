@@ -1,7 +1,7 @@
 # Maintainer: Simon Tunnat <simon+aur@tunn.at>
 # Previous maintainer: anekos <anekos@snca.net>
 pkgname=growl-for-linux
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=2
 pkgdesc="Growl for Linux"
 url="http://mattn.github.com/growl-for-linux/"
@@ -17,7 +17,7 @@ options=('!libtool')
 
 
 source=("$pkgname-$pkgver.tar.gz::https://github.com/mattn/growl-for-linux/archive/${pkgver}.tar.gz")
-md5sums=('65b89ab4a5d7eeeb4ecc12fb26afcf32')
+md5sums=('4beb35833241e44406b5da4d7ba4463f')
 dirname="growl-for-linux-${pkgver}"
 
 build () {

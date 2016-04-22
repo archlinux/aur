@@ -1,6 +1,6 @@
 pkgbase = growl-for-linux
 	pkgdesc = Growl for Linux
-	pkgver = 0.8.1
+	pkgver = 0.8.2
 	pkgrel = 2
 	url = http://mattn.github.com/growl-for-linux/
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = growl-for-linux
 	optdepends = libnotify
 	conflicts = growl-for-linux-git
 	options = !libtool
-	source = growl-for-linux-0.8.1.tar.gz::https://github.com/mattn/growl-for-linux/archive/0.8.1.tar.gz
-	md5sums = 65b89ab4a5d7eeeb4ecc12fb26afcf32
+	source = growl-for-linux-0.8.2.tar.gz::https://github.com/mattn/growl-for-linux/archive/0.8.2.tar.gz
+	md5sums = 4beb35833241e44406b5da4d7ba4463f
 
 pkgname = growl-for-linux
 
