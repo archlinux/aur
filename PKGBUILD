@@ -212,9 +212,6 @@ package_nvidia-utils-beta() {
   install -Dm644 nvidia-cuda-mps-control.1.gz "$pkgdir"/usr/share/man/man1/nvidia-cuda-mps-control.1.gz
   install -Dm755 nvidia-cuda-mps-server "$pkgdir"/usr/bin/nvidia-cuda-mps-server
 
-  # NVIDIA GRID licensing daemon (for sharing virtual GPU (vGPU) hardware acceleration between multiple users)
-  install -Dm644 nvidia-gridd.1.gz "$pkgdir"/usr/share/man/man1/nvidia-gridd.1.gz
- 
   # For loading the kernel module and creating the character device files
   install -Dm4755 nvidia-modprobe "$pkgdir"/usr/bin/nvidia-modprobe
   install -Dm644 nvidia-modprobe.1.gz "$pkgdir"/usr/share/man/man1/nvidia-modprobe.1.gz
