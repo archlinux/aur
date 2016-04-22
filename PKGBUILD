@@ -2,7 +2,7 @@
 
 pkgname=xubuntu-community-artwork
 pkgver=16.04.0
-pkgrel=1
+pkgrel=3
 pkgdesc="Community wallpapers from Xubuntu 14.04 & 16.04"
 arch=(any)
 url="http://xubuntu.org/news/xubuntu-16-04-wallpaper-competition-winners/"
@@ -15,7 +15,7 @@ sha512sums=('cca20d1e317168a00bbae5e3aadcf73db8c0f12504701aa36be2d53de7b9cef7919
             '1357f5461c3a8a13d7f55ce8744770c69e681062319b535b4aec813caa2911c675ce59e77f9ad2810dd58c4e7f9898a8607d4f9f7b4133e9f0de5c4e5dd1673b')
 
 package() {
-  mkdir -p "$pkgdir"/usr/share/xfce4/backdrops/ "$pkgdir"/usr/share/gnome-background-properties/
+  mkdir -p "$pkgdir"/usr/share/xfce4/backdrops/ "$pkgdir"/usr/share/gnome-background-properties/ "$pkgdir"/usr/share/license/"$pkgname"/
   cd "$srcdir"/$pkgname-$pkgver/usr/share/xfce4/backdrops/
   cp *.jpg "$pkgdir"/usr/share/xfce4/backdrops/
   cp "$srcdir"/xubuntu-community-wallpapers.xml "$pkgdir"/usr/share/gnome-background-properties/ 

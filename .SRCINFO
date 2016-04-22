@@ -1,7 +1,7 @@
 pkgbase = xubuntu-community-artwork
 	pkgdesc = Community wallpapers from Xubuntu 14.04 & 16.04
 	pkgver = 16.04.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://xubuntu.org/news/xubuntu-16-04-wallpaper-competition-winners/
 	arch = any
 	license = custom
