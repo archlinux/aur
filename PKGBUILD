@@ -5,7 +5,7 @@
 
 pkgname=mozilla-extension-stylish
 pkgver=2.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Customize your favorite web sites with user styles.'
 url='https://userstyles.org/'
 license=('GPL')
@@ -16,7 +16,7 @@ md5sums=('479f2f2be86d2be266e8189e1410f7e9')
 
 source+=(
   "${pkgname}.zip::https://addons.mozilla.org/firefox/downloads/latest/${pkgname#*-*-}/platform:2/"
-  "version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/${pkgname#*-*-}"
+  ".version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/${pkgname#*-*-}"
 )
 md5sums+=('SKIP')
 noextract+=("${pkgname}.zip")
@@ -40,7 +40,7 @@ pkgver() {
 
 # Retrieve current compatibility information from addons.mozilla.org API.
 query-version() {
-  xmllint version --xpath \
+  xmllint .version --xpath \
     "//application[appID='$2']/$1_version/text()"
 }
 eval "package_$pkgname()" '{
