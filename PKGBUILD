@@ -25,7 +25,7 @@ _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 
 # PKGBUILD
 
-pkgrel=6
+pkgrel=7
 _piver=2
 
 _pkgvermajmin="5.7"
@@ -47,7 +47,7 @@ _packaginguser=$(whoami)
 _libspkgname="${pkgname}-target-libs"
 _mkspec="linux-rpi${_piver}-g++"
 
-_pkgver=${pkgver}-alpha
+_pkgver=${pkgver}-beta
 
 _baseprefix=/opt
 _installprefix=${_baseprefix}/${pkgname}
@@ -66,7 +66,7 @@ depends=("qpi-toolchain" "qtcreator")
 makedepends=("git" "pkgconfig" "gcc")
 source=("git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/development_releases/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.7z")
 
-sha256sums=("SKIP" "5d8d12bc72f12532323737894beadd0d0021ee1b4321e53798e722b0352bbc24")
+sha256sums=("SKIP" "d3df816772492d3d4e9bd542d5dfb45071821ab973ab8c426ae96fda4a47a8b9")
 
 options=('!strip')
 install=qpi.install
