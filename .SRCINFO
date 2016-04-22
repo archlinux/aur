@@ -1,0 +1,14 @@
+pkgbase = cinnamon-theme-numix-git
+	pkgdesc = A cinnamon theme
+	pkgver = r88.0227932
+	pkgrel = 1
+	url = https://github.com/zagortenay333/numix-cinnamon
+	arch = any
+	license = AGPL3
+	makedepends = git
+	depends = cinnamon
+	source = cinnamon-theme-numix-git::git+https://github.com/zagortenay333/numix-cinnamon.git
+	md5sums = SKIP
+
+pkgname = cinnamon-theme-numix-git
+
