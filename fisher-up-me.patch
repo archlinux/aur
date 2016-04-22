@@ -1,0 +1,34 @@
+22,30d21
+< if test ! -z "$fisher_home"
+<     __fisher_msg_log__ "Removing old fisherman's home:"
+<     __fisher_msg_log__ "$fisher_home"
+< 
+<     command rm -rf "$fisher_home"
+< 
+<     __fisher_msg_log__
+< end
+< 
+54,58d44
+<         /^set (-g)? fisher_home/ {
+<             print("# " $0)
+<             next
+<         }
+< 
+64,68d49
+<         /^source \$fisher_home\/config.fish/ {
+<             print("# " $0)
+<             next
+<         }
+< 
+102,110d82
+< 
+< set -l fisher_new_home "$xdg_config/fish/functions/fisher.fish"
+< 
+< __fisher_msg_log__ "Installing the new fisherman in:"
+< __fisher_msg_log__ "$fisher_new_home"
+< __fisher_msg_log__
+< 
+< curl --progress-bar -Lo "$fisher_new_home" --create-dirs git.io/fisherman
+< 
+120d91
+< source "$fisher_new_home"
