@@ -10,7 +10,7 @@ pkgbase = gnome-shell-extension-dash-to-dock-git
 	makedepends = git
 	depends = dconf
 	depends = gnome-shell
-	provides = gnome-shell-extension-dash-to-dock=53.r0.g1452801
+	provides = gnome-shell-extension-dash-to-dock=53
 	conflicts = gnome-shell-extension-dash-to-dock
 	source = gnome-shell-extension-dash-to-dock::git+https://github.com/micheleg/dash-to-dock/
 	md5sums = SKIP
