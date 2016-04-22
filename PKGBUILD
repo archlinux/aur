@@ -3,19 +3,19 @@
 pkgname=mattermost-desktop
 pkgdesc="Mattermost chat desktop client for Linux"
 _pkgname=desktop
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Mattermost Desktop (Beta) for Linux"
 arch=('i686' 'x86_64')
 url="https://github.com/mattermost/desktop"
 license=('MIT')
-builddepends=('npm', 'gendesk')
-depends=()
+makedepends=('npm' 'gendesk')
+depends=('gconf')
 optdepends=()
 
 source=("https://github.com/mattermost/desktop/archive/v${pkgver}.tar.gz")
 
-sha256sums=('accfa8a28391b9cf6baa013a2abf3389c1427bd4be01da513b809fd0dadb6736')
+sha256sums=('0b77a1463f75900d6b516bd8456f6a702747e4798ed932986b4970ba873a495f')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
