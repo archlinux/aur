@@ -155,7 +155,7 @@ package() {
 
   ln -s "/opt/$pkgname/python-lnp/launch.py" "$pkgdir/opt/$pkgname/PyLNP"
 
-  rsync -ap $srcdir/DFgraphics/* "$pkgdir/opt/$pkgname/LNP/graphics" \
+  rsync -ap $srcdir/DFgraphics/graphics-packs/* "$pkgdir/opt/$pkgname/LNP/graphics" \
     --exclude .git \
     --exclude .gitmodules \
     --exclude .gitignore
