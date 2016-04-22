@@ -2,8 +2,8 @@
 
 pkgname=msiklm-git
 _pkgname=msiklm
-pkgver=20160417.d3f15b9
-pkgrel=1
+pkgver=20160421.04fd5ad
+pkgrel=2
 pkgdesc='A simple backlighting manager for MSI steelseries keyboards'
 arch=('i686' 'x86_64')
 license=('GPL3')
@@ -29,5 +29,6 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}"
-    install -Dm755 msiklm "$pkgdir/usr/bin/msiklm"
+    mkdir -p ${pkgdir}/usr/bin
+    make INSTALLPREFIX=${pkgdir}/usr/bin install
 }
