@@ -1,0 +1,22 @@
+pkgbase = mylar-git
+	pkgdesc = automated Comic Book downloader for use with SABnzbd, NZBGet and torrents
+	pkgver = r632.8082a61
+	pkgrel = 1
+	url = https://github.com/evilhero/mylar
+	install = mylar.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = python2
+	provides = mylar
+	conflicts = mylar
+	source = mylar-git::git+https://github.com/evilhero/mylar.git
+	source = mylar.service
+	md5sums = SKIP
+	md5sums = 08513f5d6eebd4d2beba454361cd55ac
+	sha256sums = SKIP
+	sha256sums = 35d90980145bb8665e2b8bb8e9d196fbeaab881ea98b92b7eaa73277f429ae16
+
+pkgname = mylar-git
+

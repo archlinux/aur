@@ -1,0 +1,8 @@
+# Arch stuff
+pkg/*
+src/*
+*.pkg.tar.*
+
+
+# mylar's repo
+mylar-git/

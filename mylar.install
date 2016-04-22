@@ -1,0 +1,9 @@
+post_install() {
+  echo <<EOF
+mylar requires a ComicVine API key to really function
+Input the API key using the web interface
+Config file is at /etc/mylar/config.ini and data is stored in /var/lib/mylar
+No executable, use the systemd unit (# systemd start mylar)
+See https://github.com/evilhero/mylar for more info on configuring it.
+EOF
+}
