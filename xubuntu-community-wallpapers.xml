@@ -55,4 +55,94 @@
     <shade_type>solid</shade_type>
   </wallpaper>
 
+  <wallpaper>
+    <name>Kinkaku Ji</name>
+    <filename>/usr/share/xfce4/backdrops/Kinkaku_Ji_by_Elizabeth_K_Joseph.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#ffffff</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+
+  <wallpaper>
+    <name>Mountainous View</name>
+    <filename>/usr/share/xfce4/backdrops/Mountainous_View_by_Sven_Scheuermeier.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#ffffff</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+
+  <wallpaper>
+    <name>My Nut</name>
+    <filename>/usr/share/xfce4/backdrops/My_Nut_by_bluesabreWife.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#ffffff</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+
+  <wallpaper>
+    <name>The Sky Is The Limit</name>
+    <filename>/usr/share/xfce4/backdrops/The_Sky_Is_The_Limit_by_Kaushik_Panchal.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#ffffff</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+
+  <wallpaper>
+    <name>Untitled by Mike Sinko (1)</name>
+    <filename>/usr/share/xfce4/backdrops/Untitled_0026_by_Mike_Sinko.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#ffffff</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+
+  <wallpaper>
+    <name>Untitled by Mike Sinko (2)</name>
+    <filename>/usr/share/xfce4/backdrops/Untitled_0535_by_Mike_Sinko.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#ffffff</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+
+  <wallpaper>
+    <name>Untitled by Mike Sinko (3)</name>
+    <filename>/usr/share/xfce4/backdrops/Untitled_7019_by_Mike_Sinko.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#ffffff</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+
+  <wallpaper>
+    <name>Untitled by Aaron Burden</name>
+    <filename>/usr/share/xfce4/backdrops/Untitled_by_Aaron_Burden.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#ffffff</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+
+  <wallpaper>
+    <name>Untitled by Troy Jarrell</name>
+    <filename>/usr/share/xfce4/backdrops/Untitled_by_Troy_Jarrell.jpg</filename>
+    <options>zoom</options>
+    <pcolor>#ffffff</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+
+  <wallpaper>
+    <name>Yellow Jacket by Manuel Frei</name>
+    <filename>/usr/share/xfce4/backdrops/Yellow_Jacket_by_Manuel_Frei.png</filename>
+    <options>zoom</options>
+    <pcolor>#ffffff</pcolor>
+    <scolor>#000000</scolor>
+    <shade_type>solid</shade_type>
+  </wallpaper>
+
 </wallpapers>
