@@ -11,7 +11,10 @@ license=('BSD')
 groups=()
 depends=('python' 'python-psutil' 'python-pycosat>=0.6.1' 'python-requests' 'python-yaml')
 makedepends=()
-optdepends=('python-conda-env: to use the conda env command')
+optdepends=(
+  'python-conda-env: to use the conda env command'
+  'python-conda-build: to use the conda build command'
+)
 provides=('conda')
 conflicts=()
 replaces=()
