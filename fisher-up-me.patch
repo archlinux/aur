@@ -1,4 +1,7 @@
-22,30d21
+0a1,2
+> #!/bin/env fish
+> 
+22,30d23
 < if test ! -z "$fisher_home"
 <     __fisher_msg_log__ "Removing old fisherman's home:"
 <     __fisher_msg_log__ "$fisher_home"
@@ -8,19 +11,19 @@
 <     __fisher_msg_log__
 < end
 < 
-54,58d44
+54,58d46
 <         /^set (-g)? fisher_home/ {
 <             print("# " $0)
 <             next
 <         }
 < 
-64,68d49
+64,68d51
 <         /^source \$fisher_home\/config.fish/ {
 <             print("# " $0)
 <             next
 <         }
 < 
-102,110d82
+102,110d84
 < 
 < set -l fisher_new_home "$xdg_config/fish/functions/fisher.fish"
 < 
@@ -30,5 +33,5 @@
 < 
 < curl --progress-bar -Lo "$fisher_new_home" --create-dirs git.io/fisherman
 < 
-120d91
+120d93
 < source "$fisher_new_home"
