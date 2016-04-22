@@ -1,8 +1,8 @@
 # Maintainer: Jacob Mischka <jacob@mischka.me>
 # Comaintainer: Pedro A. López-Valencia <https://aur.archlinux.org/user/vorbote>
 pkgname=brave
-pkgver=0.9.1
-pkgrel=3
+pkgver=0.9.2
+pkgrel=1
 pkgdesc='Web browser that blocks ads and trackers by default.'
 arch=('x86_64')
 url='https://www.brave.com/'
@@ -14,12 +14,13 @@ provides=('brave-browser')
 source=("https://github.com/brave/browser-laptop/archive/v"$pkgver"dev.tar.gz"
         "MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt"
 	'brave.desktop')
-sha384sums=('b8c779c62230987125b59803bf22c863734a7291f5ee5c5dd6f6d7f1e5b540c78ae0d3065b6f3a26ef1124c2da85a32a'
+sha384sums=('341c0b433ea21d72dec8c69d53a05c8ebb9035d7cb89854a5b361bcac5d1036550ecfce3ff44e2f3b239e20be731be10'
             'b27caa103555393992e6e1de1c2663f3ecf8339054e1aee8961406c8cbc9d677ba78b4bab6efe7210143818f9207d16b'
             'f950675fb4a3f9e48374f8a2667e7a45889206a3062c8182e474143607fc26bd17e852a1ef494607dbd3ff4de325e05f')
 
 build() {
 	cd "$srcdir"/browser-laptop-"$pkgver"dev
+	npm install node-gyp@3.2.1
 	npm install
 	CHANNEL=dev npm run build-package
 }
