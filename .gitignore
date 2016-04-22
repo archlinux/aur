@@ -1,0 +1,6 @@
+*.zip
+*.tar
+pkg/
+src/
+Mongotron-linux-x64/
+
