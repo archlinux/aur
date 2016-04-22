@@ -1,0 +1,14 @@
+pkgbase = myththeme-mythbuntu
+	pkgdesc = Mythbuntu theme for MythTV
+	pkgver = 28.20
+	pkgrel = 2
+	url = https://github.com/MythTV-Themes/Mythbuntu
+	arch = any
+	license = LGPL
+	depends = mythtv>=0.27
+	depends = ttf-dejavu
+	source = https://github.com/MythTV-Themes/Mythbuntu/archive/master.zip
+	md5sums = cf4f2911860ddf60403c45685241b60f
+
+pkgname = myththeme-mythbuntu
+
