@@ -3,7 +3,7 @@
 # Based on [extra]'s nvidia-utils: https://www.archlinux.org/packages/extra/x86_64/nvidia-utils/
 
 pkgname=('nvidia-utils-beta' 'nvidia-libgl-beta' 'opencl-nvidia-beta')
-pkgver=364.16
+pkgver=364.19
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -13,19 +13,16 @@ options=('!strip')
 # Installer name
 case "$CARCH" in
   i686)   _pkg="NVIDIA-Linux-x86-$pkgver" ;;
-  # x86_64) _pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32" ;;
-  x86_64) _pkg="NVIDIA-Linux-x86_64-$pkgver" ;;
+  x86_64) _pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32" ;;
 esac
 
 # Source
 source=('20-nvidia.conf')
-# source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
-# source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
-source_i686=("NVIDIA-Linux-x86-$pkgver.run::https://developer.nvidia.com/linux32bit")
-source_x86_64=("NVIDIA-Linux-x86_64-$pkgver.run::https://developer.nvidia.com/linux64bit")
+source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
+source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
 md5sums=('2640eac092c220073f0668a7aaff61f7')
-md5sums_i686=('c25de6f7e328c6eab5305be0cd0b02d5')
-md5sums_x86_64=('5d954bfb0be8532779a4ca1741851493')
+md5sums_i686=('8a4015213c4a8f1c80e9520d04a32a7b')
+md5sums_x86_64=('ad7a0b1855b3913390fb75b4cc3a26dc')
 
 _create_links() {
   # create missing soname links
