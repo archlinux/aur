@@ -4,7 +4,7 @@
 
 pkgname=firefox-extension-hide-tab-bar-with-one-tab
 pkgver=1.5.1.signed
-pkgrel=2
+pkgrel=3
 pkgdesc='Hide the tab bar if there is only one tab.'
 url='http://forums.mozillazine.org/viewtopic.php?f=48&t=2141579'
 license=('MPLv2')
@@ -14,7 +14,7 @@ md5sums=('0177f69d998d66a9f181b5744bee21a1')
 
 source+=(
   "${pkgname}.zip::https://addons.mozilla.org/firefox/downloads/latest/${pkgname#*-*-}/platform:2/"
-  "version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/${pkgname#*-*-}"
+  ".version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/${pkgname#*-*-}"
 )
 md5sums+=('SKIP')
 noextract+=("${pkgname}.zip")
@@ -38,7 +38,7 @@ pkgver() {
 
 # Retrieve current compatibility information from addons.mozilla.org API.
 query-version() {
-  xmllint version --xpath \
+  xmllint .version --xpath \
     "//application[appID='$2']/$1_version/text()"
 }
 version-range() {
