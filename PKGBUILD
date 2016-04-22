@@ -624,7 +624,7 @@ package() {
 
   # install gnome stuff if is detected
   if [ "${_use_gnome}" = "1" ]; then
-    install -Dm644 "chromium-${pkgver}/chrome/installer/linux/common/default-app.tempate" "${pkgdir}/usr/share/gnome-control-center/default-apps/chromium-dev.xml"
+    install -Dm644 "chromium-${pkgver}/chrome/installer/linux/common/default-app.template" "${pkgdir}/usr/share/gnome-control-center/default-apps/chromium-dev.xml"
     sed -e 's|@@MENUNAME@@|Chromium-dev|g' \
         -e 's|@@INSTALLDIR@@|/usr/bin|g' \
         -e 's|@@PACKAGE@@|chromium-dev|g' \
