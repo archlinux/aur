@@ -1,0 +1,14 @@
+pkgbase = cinnamon-applet-weather-git
+	pkgdesc = Cinnamon desktop applet for displaying local weather conditions
+	pkgver = r539.3889698
+	pkgrel = 1
+	url = https://github.com/ccprog/cinnamon-weather
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = cinnamon
+	source = cinnamon-applet-weather-git::git+https://github.com/ccprog/cinnamon-weather.git#branch=ccprog-yahoo-new-format
+	sha256sums = SKIP
+
+pkgname = cinnamon-applet-weather-git
+
