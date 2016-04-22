@@ -6,7 +6,7 @@
 # Contributor: orbisvicis <orbisvicis at gmail dot com>
 pkgname=darktable-git
 _gitname=darktable
-pkgver=release.2.1.0.r985.g32e41ad
+pkgver=release.2.1.0.r990.g4a7c617
 pkgrel=1
 pkgdesc="A virtual lighttable and darkroom for photographers"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ pkgver() {
   cd $_gitname
   git clean -dfx > /dev/null 2>&1
   git reset --hard > /dev/null 2>&1
-  git checkout 32e41adb81243caf3ebb06f6d7c306f496876212 > /dev/null 2>&1
+  git checkout 4a7c61786ba422e160d8cd32ba4be84335216a73 > /dev/null 2>&1
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
