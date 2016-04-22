@@ -1,5 +1,5 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-io-util'
 pkgver='1.5'
@@ -10,10 +10,10 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/IO-Util'
-source=('http://search.cpan.org/CPAN/authors/id/D/DO/DOMIZIO/IO-Util-1.5.tar.gz')
-md5sums=('520ce0056f3e5816ae82bc93bf413507')
-sha512sums=('5936241cdab8d601523efe1f2e9d3c7b3a99e46f59eb9a1ea7d273f2c1d36c6bdc75d2c5483d36f65e498384756a59adc0ba82a50bb4d7c34d5c73d52faa8867')
+url='https://metacpan.org/release/IO-Util'
+source=('http://search.cpan.org/CPAN/authors/id/D/DO/DOMIZIO/IO-Util-1.5.tar.gz' 'test_pod.patch')
+md5sums=('520ce0056f3e5816ae82bc93bf413507'
+         '01f1451584758582a3835d278df90125')
 _distdir="IO-Util-1.5"
 
 build() {
@@ -24,6 +24,7 @@ build() {
       MODULEBUILDRC=/dev/null
 
     cd "$srcdir/$_distdir"
+    patch -Np1 -i ../test_pod.patch
     /usr/bin/perl Makefile.PL
     make
   )

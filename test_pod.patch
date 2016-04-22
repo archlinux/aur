@@ -1,0 +1,10 @@
+--- IO-Util-1.5/t/test_pod.t.orig	2016-04-22 17:55:26.026666668 -0600
++++ IO-Util-1.5/t/test_pod.t	2016-04-22 17:55:33.306666668 -0600
+@@ -5,6 +5,7 @@ use Test::More;
+ 
+ eval "use Test::Pod 1.00";
+ plan skip_all => "Test::Pod 1.00 required for testing POD" if $@;
++plan skip_all => 'these tests are for authors only!' unless $ENV{AUTHOR_TESTING} or $ENV{RELEASE_TESTING};
+ my @poddirs = qw( blib ../lib);
+ all_pod_files_ok( all_pod_files( @poddirs ) );
+ 
