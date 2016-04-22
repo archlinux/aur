@@ -1,7 +1,7 @@
 # Maintainer: Acidhub <contact@acidhub.click>
 
 pkgname=nullidentdmod-git
-pkgver=20150624.24.d8ec051
+pkgver=20160422.33.1d810ba
 pkgrel=1
 pkgdesc="Minimal identd server with customizable userid"
 conflicts=('oidentd' 'nullidentd' 'pindetd' 'nullidentdmod')
