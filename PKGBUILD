@@ -8,7 +8,7 @@ arch=('any')
 license=('CCPL:cc-by')
 url='http://www.cmake.org/documentation/'
 source=("https://www.cmake.org/cmake/help/v${pkgver:0:3}/CMake.qch")
-md5sums=('63403f8d30fab7acb8485096eeb85074')
+md5sums=('2d674795af5aaa529bb0a20529509e31')
 
 package() {
   mkdir -p "$pkgdir/usr/share/doc/qt"
