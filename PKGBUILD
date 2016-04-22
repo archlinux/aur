@@ -18,6 +18,7 @@ source=('file://numix_square.zip')
 md5sums=('a471f9a10d4c6db318bd7409542b64c2')
 DLAGENTS+=("file::/usr/bin/echo Unable to find %u. You need to download this file manually to \"$PWD\".")
 options=('!strip')
+install="$pkgname.install"
 
 # needed to preserve linkname
 makedepends=('unzip')

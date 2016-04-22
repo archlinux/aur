@@ -1,0 +1,12 @@
+post-install() {
+  gtk-update-icon-cache -ftq usr/share/icons/Numix-Square
+  gtk-update-icon-cache -ftq usr/share/icons/Numix-Square-Light
+}
+
+post-upgrade() {
+  post-install
+}
+
+post-remove() {
+  post-install
+}
