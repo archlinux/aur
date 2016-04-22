@@ -6,9 +6,11 @@
 pkgname=modelio-bin
 
 # Version
-pkgver=3.4.1
-pkgrel=3
+pkgver=3.5.0
+pkgrel=1
 #epoch=
+_ver=3.5
+_timestamp=201604202300
 
 # Generic
 pkgdesc="The opensource modeling environment"
@@ -36,15 +38,15 @@ changelog=changelog
 
 # Sources
 source=("modelio.desktop")
-source_i686=("http://sourceforge.net/projects/modeliouml/files/3.4.1/modelio-open-201512081403-linux.gtk.x86.tar.gz/download")
-source_x86_64=("http://sourceforge.net/projects/modeliouml/files/3.4.1/modelio-open-201512081403-linux.gtk.x86_64.tar.gz/download")
+source_i686=("https://sourceforge.net/projects/modeliouml/files/${pkgver}/modelio-open-${_timestamp}-linux.gtk.x86.tar.gz/download")
+source_x86_64=("https://sourceforge.net/projects/modeliouml/files/${pkgver}/modelio-open-${_timestamp}-linux.gtk.x86_64.tar.gz/download")
 #noextract=()
 #validpgpkeys=()
 
 # Integrity
 md5sums=('SKIP')
-md5sums_i686=('0e698d5bef02e0981912c1f6fdc3f98b')
-md5sums_x86_64=('715bf11e8b935254795c8d6f8086131b')
+md5sums_i686=('7d3a83b17cd7ad2624ec85bed430f7cf')
+md5sums_x86_64=('698a8c10d764b8dafad4aac0e9204d69')
 #sha1sums=()
 #sha256sums=()
 
@@ -64,5 +66,5 @@ package() {
     install -dm755 "$pkgdir/usr/share/applications/"
     install -dm755 "$pkgdir/opt/modelio"
     install -Dm755 "$srcdir/modelio.desktop" "$pkgdir/usr/share/applications/"
-    cp -ru $srcdir/Modelio\ 3.4/* "$pkgdir/opt/modelio/"
+    cp -ru $srcdir/Modelio\ ${_ver}/* "$pkgdir/opt/modelio/"
 }

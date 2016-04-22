@@ -1,39 +1,37 @@
-Released on November 24th 2015
+Released on April 22th 2016
 
+New features:
+
+New ‘Update model components’ feature.
+New BPMN import/export feature.
 Evolutions:
 
-    Diagrams layout assistant is now customizable.
-    Floating labels are no more taken into account by the layout assistant.
-    Views positions are now saved when closing a project.
-
+Reorganisation of the Import/Export menu for Model, XMI and BPMN.
 Fixes / Improvements:
 
-    Fixes in the Patterns feature.
-    Fix Use Cases edition boxes.
-    Fixes in Sequence diagrams.
-    Fixes in Activity diagrams.
-    Fixes in XMI import/export.
-
+Fix saving views positions.
+Fixes in XMI import/export.
+Fixes in BPMN transformation commands.
+Fixes in saving diagram styles.
 Notes:
 
 The Rich Note feature has been validated under the following platforms:
 
-    Windows Seven SP1 and Windows 8.1 using the following ‘offices’:
-        MS Office 2003 (32-bit only)
-        MS Office 2007 (32 and 64-bit)
-        MS Office 2010 (32 and 64-bit)
-        MS Office 2013 (32 and 64-bit)
-        OpenOffice 3.4.1 (32-bit only)
-        LibreOffice 3.4.5 (32-bit only)
-        LibreOffice 3.5.4 (32-bit only)
-        LibreOffice 3.6.1 (32-bit only)
-        LibreOffice 4.1.5 (32-bit only)
-        LibreOffice 4.2.0 (32-bit only)
-    Ubuntu 12.04 & 14.04 and CentOS 6 & 7 using the following ‘offices’:
-        OpenOffice 3.3.0 (32 and 64-bit)
-        LibreOffice 3.4.5 (32 and 64-bit)
-        LibreOffice 3.5.4 (32 and 64-bit)
-        LibreOffice 3.6.1 (32 and 64-bit)
-        LibreOffice 4.1.3 (32-bit only)
-
+Windows Seven SP1 and Windows 8.1 using the following ‘offices’:
+MS Office 2003 (32-bit only)
+MS Office 2007 (32 and 64-bit)
+MS Office 2010 (32 and 64-bit)
+MS Office 2013 (32 and 64-bit)
+OpenOffice 3.4.1 (32-bit only)
+LibreOffice 3.4.5 (32-bit only)
+LibreOffice 3.5.4 (32-bit only)
+LibreOffice 3.6.1 (32-bit only)
+LibreOffice 4.1.5 (32-bit only)
+LibreOffice 4.2.0 (32-bit only)
+Ubuntu 12.04 & 14.04 and CentOS 6 & 7 using the following ‘offices’:
+OpenOffice 3.3.0 (32 and 64-bit)
+LibreOffice 3.4.5 (32 and 64-bit)
+LibreOffice 3.5.4 (32 and 64-bit)
+LibreOffice 3.6.1 (32 and 64-bit)
+LibreOffice 4.1.3 (32-bit only)
 (Recommended versions are in bold)
