@@ -4,7 +4,7 @@
 
 pkgname=firefox-theme-ft-deepdark
 pkgver=14.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Smooth dark theme for Firefox'
 url='https://addons.mozilla.org/en-us/firefox/addon/ft-deepdark/'
 license=('custom:noncommercial')
@@ -17,8 +17,11 @@ source+=(
   "version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/${pkgname#*-*-}"
 )
 md5sums+=('SKIP')
+noextract+=("${pkgname}.zip")
+makedepends+=(unzip)
 
 prepare() {
+  unzip "${pkgname}.zip"
   rm ${pkgname}.zip
 }
 
