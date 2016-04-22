@@ -1,12 +1,14 @@
 pkgbase = thunderbird-theme-tt-deepdark
 	pkgdesc = Smooth dark theme for Thunderbird
 	pkgver = 10.0.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://addons.mozilla.org/de/thunderbird/addon/tt-deepdark/
 	arch = any
 	license = custom:noncommercial
+	makedepends = unzip
 	makedepends = rasqal
 	depends = thunderbird
+	noextract = thunderbird-theme-tt-deepdark.zip
 	source = thunderbird-theme-tt-deepdark.zip::https://addons.mozilla.org/firefox/downloads/latest/tt-deepdark/platform:2/
 	source = version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/tt-deepdark
 	md5sums = 3885774cdb2aaa33494002b1a2703ae1
