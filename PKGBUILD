@@ -8,7 +8,7 @@
 _lib32=0
 
 pkgname=('nvidia-full-beta' 'nvidia-utils-full-beta' 'nvidia-libgl-full-beta' 'opencl-nvidia-full-beta')
-pkgver=364.16
+pkgver=364.19
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -17,25 +17,22 @@ makedepends=('linux-headers')
 options=('!strip')
 
 # Installer name
-# _pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32"
-_pkg="NVIDIA-Linux-x86_64-$pkgver"
+_pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32"
 if [[ $CARCH = i686 ]]; then
   _pkg="NVIDIA-Linux-x86-$pkgver"
 elif [[ $_lib32 = 1 ]] || pacman -Q lib32-nvidia-utils-full-beta &>/dev/null; then
   pkgname+=('lib32-nvidia-utils-full-beta' 'lib32-nvidia-libgl-full-beta' 'lib32-opencl-nvidia-full-beta')
-  # _pkg="NVIDIA-Linux-x86_64-$pkgver"
+  _pkg="NVIDIA-Linux-x86_64-$pkgver"
 fi
 
 # Source
 source=('20-nvidia.conf')
-# source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
-# source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
-source_i686=("NVIDIA-Linux-x86-$pkgver.run::https://developer.nvidia.com/linux32bit")
-source_x86_64=("NVIDIA-Linux-x86_64-$pkgver.run::https://developer.nvidia.com/linux64bit")
+source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
+source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
 md5sums=('2640eac092c220073f0668a7aaff61f7')
-md5sums_i686=('c25de6f7e328c6eab5305be0cd0b02d5')
-md5sums_x86_64=('5d954bfb0be8532779a4ca1741851493')
-# [[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('f158981302a9da47967f29dc958dc923')
+md5sums_i686=('8a4015213c4a8f1c80e9520d04a32a7b')
+md5sums_x86_64=('ad7a0b1855b3913390fb75b4cc3a26dc')
+[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('a7ca202401b5fd27f04f89c0dedaaf59')
 
 # Auto-detect patches (e.g. nvidia-linux-4.1.patch)
 for _patch in $(ls "$startdir"/*.patch 2>/dev/null); do
