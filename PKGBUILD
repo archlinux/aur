@@ -18,7 +18,7 @@ source=("${url}/archive/${pkgver}.tar.gz"
         "${url}/releases/download/${pkgver}/leiningen-${pkgver}-standalone.zip.asc")
 noextract=("leiningen-${pkgver}-standalone.zip")
 
-# validpgpkeys=('2E708FB2FCECA07FF8184E275A92E04305696D78')
+validpgpkeys=('2E708FB2FCECA07FF8184E275A92E04305696D78')
 
 package() {
   cd ${srcdir}/leiningen-${pkgver}
