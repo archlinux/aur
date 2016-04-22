@@ -1,0 +1,15 @@
+pkgbase = m4acut
+	pkgdesc = Losslessly & gaplessly cut m4a (AAC in MP4) files.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/nu774/m4acut
+	arch = x86_64
+	arch = i686
+	license = ZLIB
+	license = BSD
+	depends = l-smash
+	source = https://github.com/nu774/m4acut/archive/v0.1.2.tar.gz
+	sha256sums = 16e4637d278113afd99823c9b34cc62263a7b008c3cd9ef934fc09672de03439
+
+pkgname = m4acut
+
