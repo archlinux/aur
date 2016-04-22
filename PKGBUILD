@@ -2,14 +2,14 @@
 
 pkgname=lttng-ust-git
 _gitname="lttng-ust"
-pkgver=2.7.0.rc1.28.g0dafcd6
+pkgver=2.8.0.rc1.21.g6488ae4
 pkgrel=1
 pkgdesc="Userspace tracing library for LTTng"
 arch=('i686' 'x86_64')
 url="http://lttng.org/"
 license=('GPL2' 'LGPL2.1')
 depends=('liburcu>=0.7.2' 'util-linux')
-makedepends=('git')
+makedepends=('git' 'asciidoc' 'xmlto')
 provides=('lttng-ust')
 conflicts=('lttng-ust')
 optdepends=('babeltrace')
