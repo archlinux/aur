@@ -4,7 +4,7 @@
 
 pkgname=firefox-extension-hide-tab-bar-with-one-tab
 pkgver=1.5.1.signed
-pkgrel=1
+pkgrel=2
 pkgdesc='Hide the tab bar if there is only one tab.'
 url='http://forums.mozillazine.org/viewtopic.php?f=48&t=2141579'
 license=('MPLv2')
@@ -17,8 +17,11 @@ source+=(
   "version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/${pkgname#*-*-}"
 )
 md5sums+=('SKIP')
+noextract+=("${pkgname}.zip")
+makedepends+=(unzip)
 
 prepare() {
+  unzip "${pkgname}.zip"
   rm ${pkgname}.zip
 }
 
