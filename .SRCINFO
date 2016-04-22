@@ -1,11 +1,12 @@
 pkgbase = python2-mercurial_keyring
 	pkgdesc = Mercurial Keyring Extension
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://pypi.python.org/pypi/mercurial_keyring
 	arch = any
 	license = BSD
 	makedepends = python2-distribute
+	depends = python2-mercurial_extension_utils
 	depends = python-keyrings-alt
 	depends = python2
 	source = http://pypi.python.org/packages/source/m/mercurial_keyring/mercurial_keyring-1.1.2.tar.gz
