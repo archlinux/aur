@@ -2,12 +2,11 @@
 pkgname=adapta-gtk-theme
 _gtk3_version='3.20'
 pkgver="${_gtk3_version}.3.80"
-pkgrel=1
+pkgrel=2
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
 url="https://github.com/tista500/Adapta"
 license=('GPL2')
-install="${pkgname}.install"
 depends=('gtk2>=2.24.29'
          'gtk3>=3.18'
          "gtk3<=${_gtk3_version}.99")
