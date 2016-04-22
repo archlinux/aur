@@ -1,0 +1,8 @@
+post_install() {
+    cat << EOF
+==> Install linux-user-ns-enabled kernel from AUR if you're using default without USER_NS_ENABLED option (can be checked with # zgrep CONFIG_USER_NS /proc/config.gz)
+==> Probably you need to set up /etc/subuid /etc/subgid files
+==> More info how to get Vagga to work see here: http://vagga.readthedocs.org/en/latest/installation.html
+EOF
+}
+
