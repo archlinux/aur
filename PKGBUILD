@@ -2,8 +2,8 @@
 
 _gemname=pcaprub
 pkgname=ruby-${_gemname}
-pkgver=0.12.1
-pkgrel=2
+pkgver=0.12.4
+pkgrel=1
 pkgdesc='Consistent interface to libpcap packet capture library'
 url='https://github.com/pcaprub/pcaprub'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('ruby' 'libpcap')
 options=('!emptydirs')
 source=(https://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
 noextract=(${_gemname}-${pkgver}.gem)
-sha512sums=('afbffd6453339cc5208ed81db120b3a32e449fb73cbeaba5dde4acebcc9be853e73c7331f49ba8a1e0165ccff4fdb7d21ece5ed834eea6871607d19ca46be0df')
+sha512sums=('707221429dcdf95eba24076589054dd022ba8a479148c3ec8ce9667016225ee64bed13d3fdf8ebd46027244feec8e77a484c67f040d0439bfa44d9212997645b')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
