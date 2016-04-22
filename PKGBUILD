@@ -2,7 +2,7 @@
 
 # Maintainer: Frederic Van Assche <frederic@fredericva.com>
 pkgname=garfieldpp-svn
-pkgver=r389
+pkgver=r421
 pkgrel=1
 pkgdesc="Garfield++ is a toolkit for the detailed simulation of detectors which use gases or semi-conductors as sensitive medium"
 arch=('i686' 'x86_64')
@@ -68,3 +68,9 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
+sha256sums=('aa721f27406960e63a682afd8c599c71dd31d18ee6014cadee31293549bf1771'
+            'b859ef8d6f29de9939b795bde520a3231686ac8932ef878a3b3a279b5ae023ef'
+            '6afedcbaf7a98bee9a6d414dc0d8aecf76178644c6aa087565bd134ecdfeab46')
+sha256sums=('aa721f27406960e63a682afd8c599c71dd31d18ee6014cadee31293549bf1771'
+            'b859ef8d6f29de9939b795bde520a3231686ac8932ef878a3b3a279b5ae023ef'
+            '19b56366f715f50b3f4f9d72d496a6ac03f8a5bd00e72531b71c5abffb3c8ca8')

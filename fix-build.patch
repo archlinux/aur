@@ -1,6 +1,6 @@
---- a/CMakeLists.txt	2015-10-23 16:00:22.514878358 +0200
-+++ b/CMakeLists.txt	2015-10-23 15:59:49.793208265 +0200
-@@ -61,7 +61,7 @@
+--- a/CMakeLists.txt	2016-03-25 13:53:48.920466589 +0100
++++ b/CMakeLists.txt	2016-03-25 13:54:16.473581073 +0100
+@@ -79,7 +79,7 @@
  SET_SOURCE_FILES_PROPERTIES( ${heed_sources} PROPERTIES LANGUAGE CXX)
  
  ## Flags to pass to the compiler #######################
@@ -9,20 +9,32 @@
  
  # Add common flags for gfortran and g++
  ADD_DEFINITIONS( "-c" )
-@@ -79,11 +79,11 @@
+@@ -99,10 +99,10 @@
  SET_SOURCE_FILES_PROPERTIES( ${heed_sources} PROPERTIES COMPILE_FLAGS "-DNOT_INCLUDE_GASLIB_IN_PACSLIB -DGARFIELD_HEED_INTERFACE -DUSE_SRANLUX -DEXCLUDE_FUNCTIONS_WITH_HISTDEF -DINS_CRETURN -DFUNNAMESTACK")
  
  ## create dictionary  ##################################
 -SET( ROOT_DICT_CINT_DEFINITIONS "-DHANDLE_DICT_EXCEPTIONS=IGNORED_FOR_CINT" )
--INCLUDE( ${ROOT_DICT_MACROS_FILE} )
 -PREPARE_ROOT_DICT_HEADERS( Include )
 -GEN_ROOT_DICT_SOURCES( GarfieldDict.cxx )
 -LIST( APPEND garfield_sources ${ROOT_DICT_OUTPUT_SOURCES} )
 +#SET( ROOT_DICT_CINT_DEFINITIONS "-DHANDLE_DICT_EXCEPTIONS=IGNORED_FOR_CINT" )
-+#INCLUDE( ${ROOT_DICT_MACROS_FILE} )
 +#PREPARE_ROOT_DICT_HEADERS( Include )
 +#GEN_ROOT_DICT_SOURCES( GarfieldDict.cxx )
 +#LIST( APPEND garfield_sources ${ROOT_DICT_OUTPUT_SOURCES} )
  
  MESSAGE( STATUS "###########################################################" )
  MESSAGE( STATUS "Considered Garfield files :             ${garfield_sources}" )
+@@ -156,8 +156,8 @@
+         DESTINATION ${CMAKE_INSTALL_PREFIX}/cmake
+         COMPONENT cmakefiles )
+ # install pcm file in case of root 6
+-IF(ROOT_VERSION VERSION_GREATER 6.0)
+-    INSTALL( FILES ${PROJECT_BINARY_DIR}/rootdict/${PROJECT_NAME}Dict_rdict.pcm 
+-             DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/ 
+-             COMPONENT dict)
+-ENDIF()   
++#IF(ROOT_VERSION VERSION_GREATER 6.0)
++#    INSTALL( FILES ${PROJECT_BINARY_DIR}/rootdict/${PROJECT_NAME}Dict_rdict.pcm 
++#             DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/ 
++#             COMPONENT dict)
++#ENDIF()   
