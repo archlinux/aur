@@ -7,6 +7,7 @@ arch = any
 license = GPL2
 makedepends = unzip
 depends = keepass
+depends = xdotool
 source = https://downloads.sourceforge.net/keepass/KeePass-2.32-Chinese_Simplified.zip
 sha512sums = SKIP
 
