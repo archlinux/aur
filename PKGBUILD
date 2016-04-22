@@ -1,4 +1,4 @@
-# Maintainer: Sebastian Lau <archlinux _at_ slau _dot_ info>
+# Maintainer: Sebastian Lau <lauseb644 _at_ gmail _dot_ com>
 
 _mintrel=betsy
 pkgname=nemo-compare
@@ -9,6 +9,7 @@ arch=("any")
 url="https://github.com/linuxmint/nemo-extensions"
 license=('GPL3')
 depends=('nemo>=1' 'nemo-python>=1.0' 'python2-xdg' 'pygtk')
+groups=('nemo-extensions')
 optdepends=('kdiff3: Additional comparison options (preferred diff, three-way, multi-compare)'
 	   'diffuse: Additional comparison options (preferred diff, three-way, multi-compare)'
 	   'kompare: Additional comparison options (preferred diff, three-way, multi-compare)'
