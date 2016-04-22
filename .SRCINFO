@@ -1,0 +1,14 @@
+pkgbase = pygobject-docs-git
+	pkgdesc = Devhelp documentation for PyGObject libraries
+	pkgver = r1.gaded0d4
+	pkgrel = 1
+	url = https://github.com/lazka/pgi-docs-devhelp
+	arch = any
+	license = LGPL2
+	depends = devhelp
+	options = !strip
+	source = git+https://github.com/lazka/pgi-docs-devhelp.git
+	md5sums = SKIP
+
+pkgname = pygobject-docs-git
+
