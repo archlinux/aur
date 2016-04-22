@@ -2,7 +2,7 @@
 
 pkgbase=linux-vfio-lts
 _srcname=linux-4.1
-pkgver=4.1.21
+pkgver=4.1.22
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -23,7 +23,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         )
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            '7a2213fa9f9926a49dbdc4871d58a3498a03396a9b0167c1090712bf0a2a18e2'
+            '0d9411d7cc7b32ac17538885aa1d3861cd34af09637c1aa81b228d2e0a732956'
             'SKIP'
             '377e1fcbe5e2e55b5de2b89d9ae220fd5eb8eff4ff910699e6bd1353e2f108e7'
             'cadeea098ece40c4afc255b9d010a799ce101a08afb7fe221952f2e2832e5eaf'
