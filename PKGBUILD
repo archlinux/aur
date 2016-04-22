@@ -4,7 +4,7 @@
 
 pkgname=thunderbird-theme-tt-deepdark
 pkgver=10.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Smooth dark theme for Thunderbird'
 url='https://addons.mozilla.org/de/thunderbird/addon/tt-deepdark/'
 license=('custom:noncommercial')
@@ -14,7 +14,7 @@ md5sums=('3885774cdb2aaa33494002b1a2703ae1')
 
 source+=(
   "${pkgname}.zip::https://addons.mozilla.org/firefox/downloads/latest/${pkgname#*-*-}/platform:2/"
-  "version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/${pkgname#*-*-}"
+  ".version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/${pkgname#*-*-}"
 )
 md5sums+=('SKIP')
 noextract+=("${pkgname}.zip")
@@ -38,7 +38,7 @@ pkgver() {
 
 # Retrieve current compatibility information from addons.mozilla.org API.
 query-version() {
-  xmllint version --xpath \
+  xmllint .version --xpath \
     "//application[appID='$2']/$1_version/text()"
 }
 version-range() {
