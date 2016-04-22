@@ -2,3 +2,4 @@
 /src/
 /*.tar.*
 /lttng-ust/
+/*.log
