@@ -8,7 +8,7 @@ pkgdesc="Userspace tracing library for LTTng"
 arch=('i686' 'x86_64')
 url="http://lttng.org/"
 license=('LGPL2.1' 'GPL2' 'MIT')
-depends=('liburcu>=0.7.2' 'util-linux')
+depends=('liburcu>=0.7.2' 'util-linux' 'python')
 optdepends=('babeltrace')
 options=('!libtool')
 source=(http://lttng.org/files/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
