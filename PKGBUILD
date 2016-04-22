@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-json-class
-pkgver=0.0.2
-pkgrel=3
+pkgver=0.0.6
+pkgrel=1
 pkgdesc="Role to provide simple serialisation/deserialisation of objects to/from JSON"
 arch=('any')
 depends=('perl6' 'perl6-json-marshal' 'perl6-json-unmarshal')
