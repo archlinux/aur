@@ -4,7 +4,7 @@
 
 pkgname=firefox-extension-flash-video-downloader
 pkgver=11.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='download your favorite videos in 1 click'
 url='http://www.flashvideodownloader.org/'
 license=('MPLv1.1')
@@ -14,7 +14,7 @@ md5sums=('bae77fbd0d6fe5c839ef266f69dd87bc')
 
 source+=(
   "${pkgname}.zip::https://addons.mozilla.org/firefox/downloads/latest/${pkgname#*-*-}/platform:2/"
-  "version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/${pkgname#*-*-}"
+  ".version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/${pkgname#*-*-}"
 )
 md5sums+=('SKIP')
 noextract+=("${pkgname}.zip")
@@ -38,7 +38,7 @@ pkgver() {
 
 # Retrieve current compatibility information from addons.mozilla.org API.
 query-version() {
-  xmllint version --xpath \
+  xmllint .version --xpath \
     "//application[appID='$2']/$1_version/text()"
 }
 version-range() {
