@@ -1,7 +1,7 @@
 # Maintainer: dumblob <dumblob@gmail.com>
 # Contributor: dumblob <dumblob@gmail.com>
 
-pkgver=7.2.1
+pkgver=7.2.2
 pkgrel=1
 
 _basename=bonita-bpm-community
@@ -17,8 +17,8 @@ arch=('i686' 'x86_64')
 source_x86_64=("http://download.forge.objectweb.org/bonita/BonitaBPMCommunity-${pkgver}-x86_64.run")
 # http://www.bonitasoft.com/products/download/bonita-bpm-linux-6-4-2-32bit?skip=true
 source_i686=(  "http://download.forge.objectweb.org/bonita/BonitaBPMCommunity-${pkgver}-x86.run")
-sha256sums_x86_64=('423478418235f49047e166f59251327f7a7e02c64f64be84f43274ebf6c98a59')  # 7.2.1
-sha256sums_i686=(  '5e5ac876982a1ffb4e39caabf3f1b4a6991121cebd6c957d1f9d96c0d9f3d8e0')  # 7.2.1
+sha256sums_x86_64=('d69ed52e8fbd4fdcb393d19101e64f8e7bb82993919f5446a52f20bed374ddcd')  # 7.2.2
+sha256sums_i686=(  '0467df04a8505d4ac2494bf132ddad73c947f7f394a03684292e2bd45f3aa83f')  # 7.2.2
 install=bonita-bpm-community.install
 
 depends=('ffmpeg-compat' 'java-environment' 'libxslt' 'python' 'gtk2')
