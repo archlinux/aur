@@ -1,7 +1,7 @@
 # Maintainer: Myles English <myles at rockhead.biz>
 # Contributor: Feng Wang <wanng.fenng@gmail.com>
 pkgname=trilinos
-pkgver=12.4.2
+pkgver=12.6.2
 pkgrel=1
 pkgdesc="An effort to develop algorithms and enabling technologies within an object-oriented software framework for the solution of large-scale, complex multi-physics engineering and scientific problems."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ conflicts=('gtest')
 source=(http://trilinos.org/oldsite/download/files/${pkgname}-${pkgver}-Source.tar.bz2)
 makedepends=('python2' 'python2-numpy' 'swig' 'gcc' 'gcc-fortran' 'openmpi' 'perl' 'blas' 'lapack' 'cmake')
 # gcc-fortran gcc-fortran-multilib
-md5sums=('6256264c5c8bc47253dbb38eb6ba26d1')
+md5sums=('4bcb91234399ada370be73d11e2df403')
 
 build() {
   #export CFLAGS="$CFLAGS -g -O1"
