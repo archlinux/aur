@@ -2,7 +2,7 @@
 
 _pkgname=truecraft
 pkgname=truecraft-git
-pkgver=r790.4dd67d3
+pkgver=r792.e5aaf73
 pkgrel=1
 epoch=1
 pkgdesc="A completely clean-room implementation of Minecraft beta 1.7.3 (circa September 2011)."
@@ -19,12 +19,11 @@ md5sums=('SKIP'
          '2e23dc787e60fa1184bca7025589660d')
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
+    cd "${_pkgname}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-    cd ${srcdir}
+prepare() {
     cat > "${_pkgname}.sh" << EOF
 #!/usr/bin/env sh
 mkdir -p \$HOME/.config/truecraft
@@ -44,8 +43,10 @@ Terminal=false
 Type=Application
 Categories=Game;
 EOF
+}
 
-    cd ${srcdir}/${_pkgname}
+build() {
+    cd "${_pkgname}"
     git reset --hard
     git submodule update --init --recursive || return 1
     nuget restore
@@ -56,17 +57,16 @@ EOF
 }
 
 package() {
-    cd ${srcdir}/${_pkgname}
+    install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm644 "${_pkgname}.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
+    install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+
+    cd "${_pkgname}"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
     cd 'TrueCraft.Launcher/bin/Release/'
 
     find . -type f -exec install -Dm644 {} \
         "${pkgdir}/usr/share/${_pkgname}/{}" \;
-
-    cd ${srcdir}
-    install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 "${_pkgname}.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
-    install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
 
