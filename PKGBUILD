@@ -19,7 +19,7 @@ source=(
   "caprine.desktop")
 noextract=("Caprine-linux-v${pkgver}.zip")
 sha256sums=('a605a2e3059aca4d17cb3ebc07f7345a478da6c1cb1592cabe40aa8149629560'
-            'bbd20584730d43e622114f3128370a2d79da07a98f9f91f6120ae8054805e628'
+            'e9cf18877fe54746d16d5f2106a67899c38f91b24d039cef43d75c62da25fc38'
             '12b68650885651f78c6c7c2eb81fe0042474a0e7b1a857213732a449106aeaf8')
 
 package() {
