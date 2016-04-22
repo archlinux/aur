@@ -1,7 +1,7 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
 pkgname=adapta-gtk-theme
 _gtk3_version='3.20'
-pkgver="${_gtk3_version}.3.70"
+pkgver="${_gtk3_version}.3.80"
 pkgrel=1
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
@@ -17,7 +17,7 @@ optdepends=('gnome-shell>=3.18: The GNOME Shell'
             'paper-icon-theme-git: A fitting icon theme'
             'gnome-tweak-tool: A graphical tool to tweak gnome settings')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tista500/Adapta/archive/${pkgver}.tar.gz")
-sha256sums=(373824d8ddde32d9a8add8b07f6e84655e3429d568a4fa860470aec17d6c2949)
+sha256sums=(6ba7ab22b49cc7705491c893dc2a669b8c4ba6dde257dab8d50e49fcc1249dbd)
 
 _theme_name=Adapta
 _extracted_folder="${_theme_name}-$pkgver"
