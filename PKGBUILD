@@ -1,7 +1,7 @@
 
 _pkgname=x-tile
 pkgname=${_pkgname}-git
-pkgver=2.5.r4.g6f39fd8
+pkgver=2.5.1.r5.gb4e85cd
 pkgrel=1
 pkgdesc="X-tile is an application that allows you to select a number of windows and tile them in different ways. It works on any X desktop (gnome, kde, xfce, lxde…)."
 arch=(any)
