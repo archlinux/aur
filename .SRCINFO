@@ -1,0 +1,15 @@
+pkgbase = cinnamon-applet-cpu-temperatur-git
+	pkgdesc = Shows CPU Temperature on Cinnamon panel
+	pkgver = r21.39e264f
+	pkgrel = 1
+	url = https://github.com/fevimu/cinnamon-applet-cpu-temperature
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = cinnamon
+	depends = lm_sensors
+	source = cinnamon-applet-cpu-temperatur-git::git+https://github.com/fevimu/cinnamon-applet-cpu-temperature.git
+	sha256sums = SKIP
+
+pkgname = cinnamon-applet-cpu-temperatur-git
+
