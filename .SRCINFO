@@ -1,0 +1,14 @@
+pkgbase = python2-asciitree
+	pkgdesc = draws tree structures using characters.
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = http://github.com/mbr/asciitree
+	arch = any
+	license = MIT
+	depends = python2
+	options = !emptydirs
+	source = http://github.com/mbr/asciitree/archive/0.3.1.tar.gz
+	md5sums = 5f34f6f32fda90eb30df3ee6ccfa4494
+
+pkgname = python2-asciitree
+
