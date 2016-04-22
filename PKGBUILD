@@ -6,7 +6,7 @@
 pkgname=firefox-theme-nasa-night-launch
 pkgdesc="Dark theme for Firefox. Inspired by the night launch of STS-116."
 pkgver=0.6.20160329
-pkgrel=1
+pkgrel=2
 url="http://home.comcast.net/~username54321/starfield/index.html"
 license=('custom')
 md5sums=('79aaf0d3b9cc2aaa48e5776901f4aab0')
@@ -18,8 +18,11 @@ source+=(
   "version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/${pkgname#*-*-}"
 )
 md5sums+=('SKIP')
+noextract+=("${pkgname}.zip")
+makedepends+=(unzip)
 
 prepare() {
+  unzip "${pkgname}.zip"
   rm ${pkgname}.zip
 }
 
