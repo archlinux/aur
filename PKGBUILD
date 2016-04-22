@@ -19,7 +19,7 @@ conflicts+=("$_gitname")
 
 # Move down repository content for easier access by following functions.
 prepare() {
-  cp -rf --reflink=auto "$_gitname"/* .
+  cp -rfT --reflink=auto "$_gitname" .
   rm -rf "$_gitname"
 }
 
