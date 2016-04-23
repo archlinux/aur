@@ -1,17 +1,16 @@
 # Maintainer: kikadf <kikadf.01@gmail.com>
 
 pkgname=plasma5-applets-yahoo-weather-widget
-pkgver=5.1.1
+pkgver=5.2.0
 pkgrel=1
 pkgdesc="A simple weather widget that makes use of beloved Yahoo! Weather data"
 arch=('any')
 url="http://kde-apps.org/content/show.php/Yahoo%21+Weather+Widget?content=164194"
-_watch="lynx -dump -listonly "https://github.com/librehat/com.librehat.yahooweather/tags" | sed -n 's|.*archive/v\([5-9].*\).tar.gz|\1|p' | head -1"
 license=(GPL)
-depends=(plasma-workspace qt5-declarative)
-makedepends=(extra-cmake-modules)
-source=("https://github.com/librehat/com.librehat.yahooweather/archive/v$pkgver.tar.gz")
-md5sums=('5bbba5d11011e93dea8c05d46a9fc9f3')
+depends=('plasma-workspace' 'qt5-declarative')
+makedepends=('extra-cmake-modules')
+source=(https://github.com/librehat/com.librehat.yahooweather/archive/v$pkgver.tar.gz)
+md5sums=('fb6e9dfaeeabfcd3ebb910cd5a7df728')
 
 prepare() {
   cd com.librehat.yahooweather-$pkgver
