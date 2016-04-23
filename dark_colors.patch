@@ -40,7 +40,7 @@
  $dark_shadow: #000;
 --- a/gtk-3.20/scss/_global.scss
 +++ b/gtk-3.20/scss/_global.scss
-@@ -3,22 +3,26 @@
+@@ -3,22 +3,22 @@
  @import "functions";
  
  // default color scheme
@@ -60,7 +60,7 @@
 +$tooltip_bg_color: #2d2d2d;
 +$tooltip_fg_color: #dedede;
  
- $selected_borders_color: if($variant == 'light', shade($bg_color, .85), shade($bg_color, .88));
+ $selected_borders_color: if($variant == 'light', darken($selected_bg_color, 30%), darken($selected_bg_color, 20%));
  $borders_color: if($variant == 'light', shade($bg_color, .85), shade($bg_color, .88));
  $borders_edge: if($variant == 'light', transparentize(white, 0.2), transparentize($fg_color, 0.93));
  
@@ -69,10 +69,6 @@
 -$dark_fg_color: #eee;
 +$dark_bg_color: #333;
 +$dark_fg_color: #dcdcdc;
-+
-+// shadows
-+$dark_shadow: #000;
-+$light_shadow: #fff;
  
  // shadows
  $dark_shadow: #000;
