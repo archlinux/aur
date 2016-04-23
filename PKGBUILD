@@ -13,10 +13,10 @@ source=("https://www.khronos.org/registry/spir-v/api/${pkgver}/spirv.h"
         "https://www.khronos.org/registry/spir-v/specs/${pkgver}/SPIRV.html"
         "https://www.khronos.org/registry/spir-v/specs/${pkgver}/images/SPIR_Nov14.svg"
         "https://www.khronos.org/registry/spir-v/specs/${pkgver}/images/Khronos_Dec14.svg")
-sha1sums=('ca2eb5fb825fc4655746bd476fe7a9f095e03037'
-          '3a6dae5aca1cc25ca5498cd98a9a0b54d577e4df'
-          '645965fb74c4ef85c2046963624453497952029d'
-          '6b0ba3017b06301fc7b03fb589d9fed8e1641b26'
+sha1sums=('cfe39221179271fb8e3467c532780436b22944bf'
+          '271d6f216dbe2a1bb1814e7bf03cb796a3e0e370'
+          '4fdb3cd5b529b647662b4435e4e58d78b80bc9c9'
+          '325db7264c2a18e621fedba22784d06b0c9276c0'
           '52590721a4be88dcd10000d4b723694f70ebb301'
           'c2608bbbb93ed17f122855d150bea9699181b8eb')
 
