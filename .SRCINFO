@@ -1,7 +1,7 @@
 pkgbase = whatsie
 	pkgver = 2.0.14
-	pkgrel = 7
+	pkgrel = 8
 	arch = any
 	license = MIT
-	depends = dpkg
+	depends = 'desktop-file-utils' 'gconf' 'gtk2' 'gvfs' 'hicolor-icon-theme' 'libgudev' 'libgcrypt' 'libnotify' 'libxtst' 'nss' 'python' 'xdg-utils' 'libcap'
 pkgname = whatsie

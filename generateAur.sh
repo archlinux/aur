@@ -1,5 +1,5 @@
 pkgver=2.0.14
-pkgrel=7
+pkgrel=8
 echo "pkgname=whatsie
 pkgver=$pkgver
 pkgrel=$pkgrel
@@ -17,10 +17,10 @@ package() {
   msg2 \"Extracting the data.tar.gz...\"
   bsdtar -xf data.tar.gz -C \"\$pkgdir/\"
 
-  # msg2 \"Fixing permissions of documentation folder...\"
-  # chmod -R 755 \"\$pkgdir/opt/\"
-  # chmod -R 755 \"\$pkgdir/etc/\"
-  # chmod -R 755 \"\$pkgdir/usr/\"
+  msg2 \"Fixing permissions of documentation folder...\"
+  chmod -R 755 \"\$pkgdir/opt/\"
+  chmod -R 755 \"\$pkgdir/etc/\"
+  chmod -R 755 \"\$pkgdir/usr/\"
 }" > PKGBUILD
 
 
@@ -57,11 +57,11 @@ echo "pkgbase = whatsie
 	pkgrel = $pkgrel
 	arch = any
 	license = MIT
-	depends = dpkg
+	depends = 'desktop-file-utils' 'gconf' 'gtk2' 'gvfs' 'hicolor-icon-theme' 'libgudev' 'libgcrypt' 'libnotify' 'libxtst' 'nss' 'python' 'xdg-utils' 'libcap'
 pkgname = whatsie" > .SRCINFO
 
 chmod 755 .PKGINFO
-chmod 755 .BUILDINFO
+chmod 755 .SRCINFO
 git add -A
 git commit -m "Release $pkgver PackageRel $pkgrel"
 git push AUR master
