@@ -2,7 +2,7 @@
 
 pkgname=skroll-git
 _pkgname=skroll
-pkgver=v0.6.r1.g2fb17ec
+pkgver=0.6.r1.g2fb17ec
 pkgrel=1
 pkgdesc="Scrolls text"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ source=('git://z3bra.org/skroll')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "$_pkgname"
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {

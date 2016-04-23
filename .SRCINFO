@@ -1,6 +1,6 @@
 pkgbase = skroll-git
 	pkgdesc = Scrolls text
-	pkgver = v0.6.r1.g2fb17ec
+	pkgver = 0.6.r1.g2fb17ec
 	pkgrel = 1
 	url = http://git.z3bra.org/skroll/log.html
 	arch = i686
