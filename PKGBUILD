@@ -1,7 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 
 pkgname=spirv-tools-git
-pkgver=r445.4d2f223
+pkgver=r520.9166854
 pkgrel=1
 pkgdesc='API and commands for processing SPIR-V modules'
 url='https://github.com/KhronosGroup/SPIRV-Tools'
@@ -29,12 +29,16 @@ package() {
   cd "${srcdir}"/SPIRV-Tools
 
   # Tools
+  pushd tools
   install -dm755                   "${pkgdir}"/usr/bin/
   install -m755 spirv-{as,dis,val} "${pkgdir}"/usr/bin/
+  popd
 
   # Library
-  install -dm755    "${pkgdir}"/usr/lib/
-  install -m644 *.a "${pkgdir}"/usr/lib/
+  pushd source
+  install -dm755                 "${pkgdir}"/usr/lib/
+  install -m644 libSPIRV-Tools.a "${pkgdir}"/usr/lib/
+  popd
 
   # License
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE

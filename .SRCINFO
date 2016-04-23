@@ -1,6 +1,6 @@
 pkgbase = spirv-tools-git
 	pkgdesc = API and commands for processing SPIR-V modules
-	pkgver = r445.4d2f223
+	pkgver = r520.9166854
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/SPIRV-Tools
 	arch = i686
