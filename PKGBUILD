@@ -1,9 +1,9 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=remmina-plugin-open
-pkgver=1.2.2.0
-pkgrel=2
-_builderver=1.2.2.0
+pkgver=1.2.3.0
+pkgrel=1
+_builderver=1.2.3.0
 pkgdesc="A protocol plugin for Remmina to open a document with its associated application."
 arch=('i686' 'x86_64')
 url="http://www.muflone.com/${pkgname}/"
@@ -15,8 +15,8 @@ optdepends=('xdg-utils: for Automatically detected option'
 install="${pkgname}.install"
 source=("remmina-plugin-builder_${_builderver}.tar.gz::https://github.com/muflone/remmina-plugin-builder/archive/${_builderver}.tar.gz"
         "${pkgname}_${pkgver}.tar.gz::https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('bce686835b951dc49263dd760ea3a216618e5d5b1f6652da94edf4ba95081434'
-            'a8c6d09041ae1c658856d607f82f86be7536cbd8c268330d7ab4ae986435c313')
+sha256sums=('a36bfd9f97f462ba3af024e9a8e84df26bc6bed87281db9b6a24f2630f4deb56'
+            'd60aca4a97b17e0240c18d0f5503d13ceada867bd149bd4aa99549606256de99')
 
 prepare() {
   msg2 'To build for Remmina < 1.2 set -DREMMINA_VER_1_1=ON'
