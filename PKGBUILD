@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.27
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-geo-ip'
-pkgver='1.43'
+pkgver='1.45'
 pkgrel='1'
 pkgdesc="Look up location and network information by IP Address"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=0' 'geoip>=1.5.1')
+depends=('perl' 'geoip>=1.6.6')
 makedepends=()
-url='http://search.cpan.org/dist/Geo-IP'
-source=('http://search.cpan.org/CPAN/authors/id/B/BO/BORISZ/Geo-IP-1.43.tar.gz')
-md5sums=('1a24af3f3b78f7a6c613e06b91593d10')
-sha512sums=('f848b4204138db82213b09d9193afc98d8bff04290cb4ad147196e136e3f2e17205bbc3123892208fedb20ae2785d0573517cd3c7de7804ce9424ee9688ce5fb')
-_distdir="Geo-IP-1.43"
+url='https://metacpan.org/release/Geo-IP'
+source=('http://search.cpan.org/CPAN/authors/id/M/MA/MAXMIND/Geo-IP-1.45.tar.gz')
+md5sums=('781fbf2a6b6505e86e3e5ebe05254928')
+sha512sums=('0737459b50251f64a0230176721e6a0cf7fb701451b3488c0a0628a183233b5346b7311a80fe35752104ab6812c6791cd4bafbbfa9e7ff51aa6bd4d489655af3')
+_distdir="Geo-IP-1.45"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
