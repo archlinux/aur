@@ -5,8 +5,8 @@
 # Contributor: stonecrest <stonecrest[at]gmail[dot]com>
 
 pkgname='python-mpd2'
-pkgver=0.5.4
-pkgrel=2
+pkgver=0.5.5
+pkgrel=1
 pkgdesc="Python MPD client library"
 url="http://pypi.python.org/pypi/python-mpd2"
 license=('GPL3')
@@ -19,6 +19,6 @@ package() {
   cd "$srcdir/python-mpd2-$pkgver"
   python3 setup.py install --root="$pkgdir/" --optimize=1
 }
-md5sums=('d891c3313011dbc6b294c2abf8b87da6')
-sha1sums=('af0b2a837603a9eb9a06217e262a08222fc4b40e')
-sha256sums=('1cc8f404652a069b3ef2c11de9a8893863be291dc4af5c792eeab0ab06e80ec1')
+md5sums=('de7af99823cf098acf92d451db2401eb')
+sha1sums=('5992324c9ae0340204f783e6f97c56c7888e06ef')
+sha256sums=('310e738c4f7ce5b5b10394ec3f182c5240dd3ec55ec59a375924c8004fbb5e51')
