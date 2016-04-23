@@ -1,5 +1,5 @@
 pkgver=2.0.14
-pkgrel=8
+pkgrel=9
 echo "pkgname=whatsie
 pkgver=$pkgver
 pkgrel=$pkgrel
@@ -57,7 +57,7 @@ echo "pkgbase = whatsie
 	pkgrel = $pkgrel
 	arch = any
 	license = MIT
-	depends = 'desktop-file-utils' 'gconf' 'gtk2' 'gvfs' 'hicolor-icon-theme' 'libgudev' 'libgcrypt' 'libnotify' 'libxtst' 'nss' 'python' 'xdg-utils' 'libcap'
+	depends = desktop-file-utils gconf gtk2 gvfs hicolor-icon-theme libgudev libgcrypt libnotify libxtst nss python xdg-utils libcap
 pkgname = whatsie" > .SRCINFO
 
 chmod 755 .PKGINFO
