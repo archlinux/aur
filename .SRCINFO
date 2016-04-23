@@ -1,7 +1,7 @@
 pkgbase = pulseaudio-git
 	pkgdesc = A featureful, general-purpose sound server
-	pkgver = v6.0.126.g8f12ef9
-	pkgrel = 2
+	pkgver = v8.0.76.gb5e5475
+	pkgrel = 1
 	url = http://pulseaudio.org/
 	arch = i686
 	arch = x86_64

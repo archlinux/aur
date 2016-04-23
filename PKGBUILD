@@ -10,8 +10,8 @@
 _pkgname="pulseaudio"
 pkgname="$_pkgname-git"
 pkgdesc="A featureful, general-purpose sound server"
-pkgver=v6.0.126.g8f12ef9
-pkgrel=2
+pkgver=v8.0.76.gb5e5475
+pkgrel=1
 arch=("i686" "x86_64" "armv7h")
 url="http://pulseaudio.org/"
 license=("GPL" "LGPL")
