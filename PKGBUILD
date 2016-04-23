@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-module-corelist'
-pkgver='2.94'
+pkgver='5.20160320'
 pkgrel='1'
 pkgdesc="what modules shipped with versions of perl"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/Module-CoreList'
-source=('http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/Module-CoreList-2.94.tar.gz')
-md5sums=('5ae59b3e0d088134d5894ee74162655d')
-sha512sums=('6016dab517a5f11f7d41833ab7e4d37a16b2a0fdb9f23af185ad1d84de524bb81b41b12ece22b4e854047be29e1c84fde7554b8bd8cdfaf74201688d98e51265')
-_distdir="Module-CoreList-2.94"
+url='https://metacpan.org/release/Module-CoreList'
+source=('http://search.cpan.org/CPAN/authors/id/B/BI/BINGOS/Module-CoreList-5.20160320.tar.gz')
+md5sums=('48774f0c33e949d7d7ac14977dfa38de')
+sha512sums=('4cb8c1467c5be46cae43c6685393fd057f0254d2e7b84fe843872d6aa704919b0bf21dff89f361e312ca0dfade1e9edfee08f05408b64ea35c6829cd75caf0f8')
+_distdir="Module-CoreList-5.20160320"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
