@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-unicode-normalize'
-pkgver='1.18'
+pkgver='1.25'
 pkgrel='1'
 pkgdesc="Unicode Normalization Forms"
-arch=('any')
+arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.mcpan.org/dist/Unicode-Normalize'
-source=('http://search.mcpan.org/CPAN/authors/id/S/SA/SADAHIRO/Unicode-Normalize-1.18.tar.gz')
-md5sums=('41060b0a2715fcaf4d337b417736a574')
-sha512sums=('e76adbada2ba21306bd34d1296af63f6ad9994c88789338104ff64d1983895a4aeb7b7c66b0f483429450ba2683759d58818380aa8452cde966ee539a7352e75')
-_distdir="Unicode-Normalize-1.18"
+url='https://metacpan.org/release/Unicode-Normalize'
+source=('http://search.cpan.org/CPAN/authors/id/K/KH/KHW/Unicode-Normalize-1.25.tar.gz')
+md5sums=('8f25327bbccc33717b7d85433e1083bd')
+sha512sums=('f28c19e0293cf75cc0aab669ae0a0543f6a1a39e1e50ff32ab37abd8e85efc73e8b9075e581212b6da576ecbf8c0e9ddb7b9b352674aa3a04c77f9aaf4717866')
+_distdir="Unicode-Normalize-1.25"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
