@@ -26,6 +26,6 @@ package() {
   cd "$_pkgname"
   make PREFIX="/usr" DESTDIR="${pkgdir}" MANPREFIX="/usr/share/man" install
   gzip -f9 skroll.1
-  install -Dm644 README "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
