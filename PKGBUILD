@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-anyevent-http'
-pkgver='2.21'
+pkgver='2.22'
 pkgrel='1'
 pkgdesc="simple but non-blocking HTTP/HTTPS client"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-anyevent>=5.33' 'perl-common-sense>=3.3')
 makedepends=()
-url='http://search.mcpan.org/dist/AnyEvent-HTTP'
-source=('http://search.mcpan.org/CPAN/authors/id/M/ML/MLEHMANN/AnyEvent-HTTP-2.21.tar.gz')
-md5sums=('bbd8b067a5de3dcb1be865e84993cfc7')
-sha512sums=('c3b940d9b419102bf49b8c38f991e350ca25eaf87255e1de6c49f1172091e8c0cb692d191e406f80ac05f77297b7c95fdb551893bbea02b0d18e08374a30b0e4')
-_distdir="AnyEvent-HTTP-2.21"
+url='https://metacpan.org/release/AnyEvent-HTTP'
+source=('http://search.cpan.org/CPAN/authors/id/M/ML/MLEHMANN/AnyEvent-HTTP-2.22.tar.gz')
+md5sums=('e27736c4592031adccfa0638419a3b70')
+sha512sums=('3408b5339cc85e8d37dc6c4f40a0f1ad9436fb9b261e6a14b5a7913f8ee6c2ba7e80aec376af48190c76219fbcadf9c68c2d67c4ab60c77044093f6ec70f4aac')
+_distdir="AnyEvent-HTTP-2.22"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
