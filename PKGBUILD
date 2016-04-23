@@ -4,7 +4,7 @@ pkgdesc="ROS - Rosbridge provides a JSON API to ROS functionality for non-ROS pr
 url='http://ros.org/wiki/rosbridge_suite'
 
 pkgname='ros-indigo-rosbridge-suite'
-pkgver='0.7.13'
+pkgver='0.7.14'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
