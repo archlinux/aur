@@ -1,43 +1,48 @@
 # Maintainer: Ben Morgan <neembi@gmail.com>
 # vim: set ts=2 sw=2:
 pkgname=repoctl
-pkgver=0.13
+pkgver=0.14
 pkgrel=1
 pkgdesc="A supplement to repo-add and repo-remove which simplifies managing local repositories"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/cassava/repoctl"
 license=('MIT')
 depends=('pacman')
-makedepends=('go')
+makedepends=('go' 'git')
 options=('!strip')
-source=(https://github.com/cassava/repoctl/releases/download/v0.13/repoctl-0.13.tar.gz)
-md5sums=('4f218f588e21fc955801a82ed837e5c6')
+source=(https://github.com/cassava/repoctl/releases/download/v${pkgver}/repoctl-${pkgver}.tar.gz)
+md5sums=('a5a2b12e80728311cc40dc8e75e1956b')
+
+prepare() {
+  dest="$srcdir/src/github.com/cassava"
+  mkdir -p "$dest"
+  mv "$srcdir/$pkgname-$pkgver" "$dest/repoctl"
+  cd "$srcdir"
+  ln -s "$dest/repoctl" "$pkgname-$pkgver"
+
+}
 
 build() {
-  # Get and build the builder.
-  gopath=${srcdir}/go
-  if [[ -d ${gopath} ]]; then
-    rm -rf ${gopath}
-  fi
-  mkdir ${gopath}
-  GOPATH=${gopath} go get github.com/constabulary/gb/...
-
-  cd ${srcdir}/${pkgname}-${pkgver}
-  ${gopath}/bin/gb build
+  src="$srcdir/src/github.com/cassava/repoctl"
+  cd "$src/cmd/repoctl"
+  GOPATH="$srcdir" go build
+  cd "$src/cmd/repols"
+  GOPATH="$srcdir" go build
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Install repoctl program
-  mkdir -p ${pkgdir}/usr/bin
-  install -m755 bin/repoctl ${pkgdir}/usr/bin/
+  install -d "$pkgdir/usr/bin"
+  install -m755 cmd/repoctl/repoctl "$pkgdir/usr/bin/"
+  install -m755 cmd/repols/repols "$pkgdir/usr/bin/"
 
   # Install other documentation
-  mkdir -p ${pkgdir}/usr/share/doc/repoctl
-  install -m644 TODO.md README.md NEWS.md ${pkgdir}/usr/share/doc/repoctl/
+  install -d "$pkgdir/usr/share/doc/repoctl"
+  install -m644 README.md NEWS.md "$pkgdir/usr/share/doc/repoctl/"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/repoctl/LICENSE"
 
   # Install completion files
-  mkdir -p ${pkgdir}/usr/share/zsh/site-functions/
-  install -m644 contrib/zsh_completion ${pkgdir}/usr/share/zsh/site-functions/_repoctl
+  install -Dm644 contrib/zsh_completion "$pkgdir/usr/share/zsh/site-functions/_repoctl"
 }
