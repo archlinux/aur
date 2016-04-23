@@ -1,21 +1,21 @@
-# Maintainer: BlackICE (manfredi at gmail.com)
+# Maintainer: Acidhub (contact at acidhub.click)
 
 pkgname=wine-pixi
-url='http://appdb.winehq.org/objectManager.php?sClass=version&iId=25412'
+url='http://www.wyrdysm.com'
 pkgdesc='Digipen Freshman Game - Showcase in IGF 2012'
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('Free to use and share')
 
 source=('http://www.wyrdysm.com/th15Stuf/Pixi_IGFv1.1.zip'
         'LICENSE' 'pixi.desktop' 'pixi.png' 'pixi.sh')
         
-md5sums=('de1a08f317afcd9e8c101b0972de9656'
-         '779044cf14091cb2129e12d5c3e1725e'
-         '49ba015be435fe194b157f3b95ee4b46'
-         '57b5aede1f007945194904475e129a97'
-         '296fa5ef79e7a79d42a58f6c25569fda')
+sha256sums=('22542c8374fa944b697adf8508a670c828c150fc03a26d52eb7f3a8985355552'
+            '27635d4ed7740d185172f475ef14891c888127640a0f6bd73356bc4e2062ce03'
+            '7dce96e04e8050be92bdb0c0d4e545233e80469a8bc6ae26adde87052fd20db5'
+            '403332789d07391f6c1a8aa18b9d7a46a6051a8c2dcaf8c975007cf2b7a9ddef'
+            '74a17563882fce59ea22c3e9c4902062d97a8e66f09e9bfb25a6f131c0e20318')
          
 depends=('wine' 'lib32-openal' 'lib32-libpng' 'lib32-mpg123')
 
