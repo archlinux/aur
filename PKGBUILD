@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-core-addrindex-git
-pkgver=20160227
+pkgver=20160414
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P node with addrindex"
 arch=('i686' 'x86_64')
@@ -12,7 +12,6 @@ depends=('boost'
 makedepends=('autoconf'
              'automake'
              'binutils'
-             'gcc'
              'git'
              'libtool'
              'm4'
