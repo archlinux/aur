@@ -52,26 +52,8 @@ optdepend = gir1.2-gnomekeyring-1.0
 optdepend = libgnome-keyring
 optdepend = lsb-release" > .PKGINFO
 
-echo "pkgbase = whatsie
-	pkgver = $pkgver
-	pkgrel = $pkgrel
-	arch = any
-	license = MIT
-	depends = desktop-file-utils
-	depends = gconf
-	depends = gtk2
-	depends = gvfs
-	depends = hicolor-icon-theme
-	depends = libgudev
-	depends = libgcrypt
-	depends = libnotify
-	depends = libxtst
-	depends = nss
-	depends = python
-	depends = xdg-utils
-	depends = libcap
-pkgname = whatsie" > .SRCINFO
 
+makepkg --printsrcinfo > .SRCINFO
 chmod 755 .PKGINFO
 chmod 755 .SRCINFO
 git add -A
