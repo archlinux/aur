@@ -1,17 +1,19 @@
 pkgbase = netextender
-        pkgdesc = SonicWALL SSL VPN Client
-        pkgver = 8.1.789
-        pkgrel = 2
-        url = http://www.sonicwall.com/us/en/products/324.html
-        install = netextender.install
-        arch = i686
-        arch = x86_64
-        license = custom
-        depends = java-environment
-        depends = bash
-        source_i686 = https://sslvpn.demo.sonicwall.com/NetExtender.Linux.8.1.789.x86.tgz
-        sha256sums_i686 = d2e2944780d0a177b65c67743711c9da08d3921e610d3692e6d3fda5ad0423eb
-        source_x86_64 = https://sslvpn.demo.sonicwall.com/NetExtender.Linux.8.1.789.x86_64.tgz
-        sha256sums_x86_64 = 0f604c42cc199a70b5a0b07988b2f7b6f6e2d331dabcb493a795fb7505f022dd
+	pkgdesc = SonicWALL SSL VPN Client
+	pkgver = 8.1.789
+	pkgrel = 3
+	url = http://www.sonicwall.com/us/en/products/324.html
+	install = netextender.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = java-environment
+	depends = bash
+	depends = ppp
+	source_i686 = https://sslvpn.demo.sonicwall.com/NetExtender.Linux.8.1.789.x86.tgz
+	sha256sums_i686 = d2e2944780d0a177b65c67743711c9da08d3921e610d3692e6d3fda5ad0423eb
+	source_x86_64 = https://sslvpn.demo.sonicwall.com/NetExtender.Linux.8.1.789.x86_64.tgz
+	sha256sums_x86_64 = 0f604c42cc199a70b5a0b07988b2f7b6f6e2d331dabcb493a795fb7505f022dd
 
 pkgname = netextender
+
