@@ -1,0 +1,11 @@
+--- image-to-gcode	2016-04-23 08:02:14.000000000 +0200
++++ emc/usr_intf/axis/scripts/image-to-gcode.py	2016-04-23 08:00:16.004178946 +0200
+@@ -23,7 +23,7 @@
+ import gettext;
+ gettext.install("linuxcnc", localedir=os.path.join(BASE, "share", "locale"), unicode=True)
+ 
+-import Image
++from PIL import Image
+ 
+ try:
+     import numpy.numarray as numarray

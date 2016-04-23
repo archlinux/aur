@@ -2,7 +2,7 @@
 # Contributor: Alec Ari <neotheuser@ymail.com>
 
 pkgname=linuxcnc-sim
-pkgver=20160411
+pkgver=20160419
 pkgrel=1
 pkgdesc="It can interpret G-code and simulate a CNC machine (formerly EMC2)."
 arch=('i686' 'x86_64')
@@ -11,10 +11,11 @@ url="http://linuxcnc.org/"
 depends=('bc' 'bwidget' 'tcl' 'tk' 'xorg-server' 'python2-libgnome' 'python2-imaging' 'tkimg' 'python2-gtkglext' 'tclx' 'boost' 'boost-libs')
 install=$pkgname.install
 _gitname='linuxcnc'
-source=($_gitname::'git://git.linuxcnc.org/git/linuxcnc.git' 'boost.patch')
+source=($_gitname::'git://git.linuxcnc.org/git/linuxcnc.git' 'boost.patch' 'image-to-gcode.patch')
 #source=($_gitname::'git://git.linuxcnc.org/git/linuxcnc.git#tag=739df958aca9d246daad36f439c82bfbeac681b9' 'boost.patch')
 md5sums=('SKIP'
-        'ba6948dc5dc155849f55039e454cdbd6')
+        'ba6948dc5dc155849f55039e454cdbd6'
+        'c31d34a7ba567bd664f362a52f8bb03b')
 makedepends=('git')
 PKGEXT='.pkg.tar'
 
@@ -26,6 +27,8 @@ pkgver() {
 build () {
   find . -iname fixpaths.py -o -iname checkglade|xargs perl -p -i -e "s/python/python2/"
   cd $srcdir/$_gitname/src
+  pwd
+  patch -p0 <../../image-to-gcode.patch
 #  patch -p1 <../../boost.patch
 #  #This Makefile line fixes a seg fault due to changed CFLAGS
 # cp -PR $srcdir/Makefile $srcdir/$pkgname-$pkgver/src/Makefile
