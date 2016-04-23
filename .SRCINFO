@@ -1,6 +1,6 @@
 pkgbase = appmenu-qt5-bzr
 	pkgdesc = Qt5-compatible approach of the existing appmenu-qt.
-	pkgver = r38
+	pkgver = r40
 	pkgrel = 1
 	url = https://launchpad.net/appmenu-qt5
 	arch = i686

@@ -1,7 +1,7 @@
 # Maintainer: Len Zhang < zyldragoon@gmail.com >
 _pkgname=appmenu-qt5
 pkgname=${_pkgname}-bzr
-pkgver=r38
+pkgver=r40
 pkgrel=1
 pkgdesc="Qt5-compatible approach of the existing appmenu-qt."
 arch=('i686' 'x86_64')
