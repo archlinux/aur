@@ -1,0 +1,13 @@
+
+post_install() {
+    echo ""
+  echo -e "\033[37;41;1m Read First \033[0m"  
+  echo "Please copy the /usr/share/wallchange/wallchange.conf configuration file to you home folder(~/.wallchange.conf). Enjoy!"
+  echo ""
+}
+
+op=$1
+shift
+$op "$@"
+
+
