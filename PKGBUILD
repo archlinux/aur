@@ -3,14 +3,17 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=extra-cmake-modules-git
-pkgver=5.16.0.r2701.7d6915b
+pkgver=5.21.0.r2731.b946897
 pkgrel=1
 pkgdesc='Extra modules and scripts for CMake'
 arch=('any')
 url='https://projects.kde.org/projects/kdesupport/extra-cmake-modules'
 license=('LGPL')
 depends=('cmake')
-makedepends=('git' 'python-sphinx')
+makedepends=('git'
+             'cmake'
+             'python-sphinx'
+             )
 conflicts=('extra-cmake-modules')
 provides=('extra-cmake-modules')
 source=('git://anongit.kde.org/extra-cmake-modules.git')
@@ -31,6 +34,7 @@ build() {
   cmake ../extra-cmake-modules \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_QTHELP_DOCS=ON \
     -DBUILD_TESTING=OFF
   make
 }
