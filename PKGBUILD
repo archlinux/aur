@@ -1,6 +1,6 @@
 pkgname=whatsie
 pkgver=2.0.14
-pkgrel=10
+pkgrel=11
 pkgdesc="A simple & beautiful desktop client for WhatsApp Web."
 arch=('x86_64')
 url="https://github.com/Aluxian/Whatsie"

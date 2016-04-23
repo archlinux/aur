@@ -1,5 +1,5 @@
 pkgver=2.0.14
-pkgrel=10
+pkgrel=11
 echo "pkgname=whatsie
 pkgver=$pkgver
 pkgrel=$pkgrel
