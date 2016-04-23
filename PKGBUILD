@@ -1,18 +1,17 @@
 # Maintainer: Juraj Fiala <doctorjellyface at riseup dot net>
 
 pkgbase=adwaita-qt
-pkgname=('adwaita-qt5' 'adwaita-qt4' 'adwaita-qt-common')
-pkgver=0.3.1
-pkgrel=9
+pkgname=("${pkgbase}5" "${pkgbase}4" "$pkgbase-common")
+pkgver=0.4
+pkgrel=1
 pkgdesc='The stylesheet to bend Qt applications to look like they belong into GNOME Shell'
 arch=('any' 'i686' 'x86_64')
-url='https://github.com/MartinBriza/adwaita-qt'
+url="https://github.com/MartinBriza/$pkgbase"
 license=('GPL' 'LGPL')
 groups=('adwaita-qt')
 makedepends=('cmake' 'qt4' 'qt5-base')
-# Use master until Arch specific fix lands into stable.
-source=("https://github.com/MartinBriza/adwaita-qt/archive/master.zip")
-md5sums=('SKIP')
+source=("https://github.com/MartinBriza/$pkgbase/archive/$pkgver.tar.gz")
+sha256sums=('48ccf17088afb77e98fe409f4dc6fdccd035bbdbcb51f0c2f0da00ef204daba0')
 
 prepare() {
   mkdir -p build{-qt5,-qt4,-common}
@@ -20,13 +19,13 @@ prepare() {
 
 build() {
   cd build-qt5
-  cmake ../${pkgbase}-master \
+  cmake ../$pkgbase-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
   make
 
   cd ../build-qt4
-  cmake ../${pkgbase}-master \
+  cmake ../$pkgbase-$pkgver \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_QT4=ON
@@ -57,5 +56,5 @@ package_adwaita-qt4() {
 package_adwaita-qt-common() {
   arch=('any')
 
-  install -Dm644 -t "${pkgdir}/usr/share/themes/Adwaita/qt/assets/" "$srcdir/${pkgbase}-master/assets/"*.png
+  install -Dm644 -t "$pkgdir/usr/share/themes/Adwaita/qt/assets/" "$srcdir/$pkgbase-$pkgver/assets/"*.png
 }
