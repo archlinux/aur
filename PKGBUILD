@@ -6,7 +6,7 @@
 
 pkgname=tvheadend-git
 _gitname='tvheadend-git'
-pkgver=4.1.r1834.g957b835
+pkgver=4.1.r1931.gc3eefc6
 pkgrel=1
 pkgdesc="TV streaming server for Linux"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -18,14 +18,12 @@ optdepends=('xmltv: For an alternative source of programme listings')
 provides=('tvheadend')
 conflicts=('tvheadend' 'hts-tvheadend' 'hts-tvheadend-svn' 'tvheadend-git')
 install=tvheadend.install
+backup=('etc/conf.d/tvheadend')
 
 source=("${_gitname}::git+https://github.com/tvheadend/tvheadend.git#branch=master"
-        "dvb-scan-tables::git+https://github.com/tvheadend/dtv-scan-tables.git#branch=tvheadend"
-        'tvheadend.service')
-
+        "dvb-scan-tables::git+https://github.com/tvheadend/dtv-scan-tables.git#branch=tvheadend")
 md5sums=('SKIP'
-         'SKIP'
-         'b546f4486f0d28bea13ad1fb676acb27')
+         'SKIP')
 
 pkgver() {
     cd "${srcdir}/${_gitname}"
@@ -60,7 +58,17 @@ build() {
 package() {
     cd "${srcdir}/${_gitname}"
     make DESTDIR="$pkgdir/" install
-    install -D -m 644 "$srcdir/tvheadend.service" \
+
+    install -D -m 644 "${srcdir}/${_gitname}/rpm/tvheadend.service" \
         "$pkgdir/usr/lib/systemd/system/tvheadend.service"
+    sed -i 's|/etc/sysconfig|/etc/conf.d|g' "$pkgdir/usr/lib/systemd/system/tvheadend.service"
+
+    install -d "$pkgdir/etc/conf.d"
+    cat << EOF > "$pkgdir/etc/conf.d/tvheadend"
+# Configuration file for the tvheadend service.
+
+MALLOC_ARENA_MAX=4
+OPTIONS="-u hts -g video -6 --http_port 9981 --htsp_port 9982"
+EOF
 }
 
