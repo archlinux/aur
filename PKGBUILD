@@ -1,15 +1,16 @@
-# Maintainer: Georgyo
+# Maintainer: George Shammas
+# Contributor: Ainola
 # Contributor: Jeff Sharpe
 # Contributor: Roman Pearah
 
 pkgname=netextender
 pkgver=8.1.789
-pkgrel=3
+pkgrel=4
 pkgdesc="SonicWALL SSL VPN Client"
 arch=('i686' 'x86_64')
 url="http://www.sonicwall.com/us/en/products/324.html"
 license=('custom')
-depends=('java-environment' 'bash' 'ppp')
+depends=('java-environment' 'bash' 'ppp' 'net-tools')
 source_i686=("https://sslvpn.demo.sonicwall.com/NetExtender.Linux.${pkgver}.x86.tgz")
 source_x86_64=("https://sslvpn.demo.sonicwall.com/NetExtender.Linux.${pkgver}.x86_64.tgz")
 sha256sums_i686=('d2e2944780d0a177b65c67743711c9da08d3921e610d3692e6d3fda5ad0423eb')
