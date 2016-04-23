@@ -1,15 +1,6 @@
 diff --git a/drivers/gpu/drm/i915/intel_fifo_underrun.c b/drivers/gpu/drm/i915/intel_fifo_underrun.c
 --- a/drivers/gpu/drm/i915/intel_fifo_underrun.c
 +++ b/drivers/gpu/drm/i915/intel_fifo_underrun.c
-@@ -112,7 +112,7 @@
- 		I915_WRITE(reg, pipestat | PIPE_FIFO_UNDERRUN_STATUS);
- 		POSTING_READ(reg);
- 
--		DRM_ERROR("pipe %c underrun\n", pipe_name(crtc->pipe));
-+		DRM_DEBUG("pipe %c underrun\n", pipe_name(crtc->pipe));
- 	}
- 
- 	spin_unlock_irq(&dev_priv->irq_lock);
 @@ -133,7 +133,7 @@
  		POSTING_READ(reg);
  	} else {
