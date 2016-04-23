@@ -1,0 +1,18 @@
+pkgbase = frotz-git
+	pkgdesc = Z-machine interpreter for interactive fiction games
+	pkgver = 2.44.r33.ga98137e
+	pkgrel = 1
+	url = http://frotz.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	conflicts = frotz
+	replaces = frotz
+	source = git+https://github.com/DavidGriffith/frotz
+	md5sums = SKIP
+
+pkgname = frotz-ncurses-git
+	depends = ncurses
+
+pkgname = frotz-dumb-git
+
