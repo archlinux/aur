@@ -2,8 +2,8 @@
 
 _pkgname=scraw
 pkgname=$_pkgname-git
-pkgver=0.2.0.r0.g4a95995
-pkgrel=2
+pkgver=0.2.1.r0.ge5b26b9
+pkgrel=1
 pkgdesc="Steam Controller C library (git version)"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/dennis-hamester/scraw"
@@ -11,6 +11,7 @@ license=('custom:ISC')
 makedepends=('cmake' 'doxygen')
 depends=('libusb')
 provides=('scraw')
+conflicts=('scraw')
 source=("git+https://gitlab.com/dennis-hamester/scraw.git")
 sha256sums=('SKIP')
 
