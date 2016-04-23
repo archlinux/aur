@@ -7,7 +7,7 @@
 _bldtype=Release
 
 _mozcver=2.17.2315.102
-_dicver=20160317
+_dicver=20160418
 _revision=1
 
 _fcitxver=2.17.2313.102.1
@@ -25,7 +25,7 @@ source=(mozc-neologd-ut-${pkgver}.tar.xz::https://sourceforge.net/projects/trick
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitxver}.patch
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz)
 
-sha1sums=('c44dc7c92f03442cf6a4607c56352640084df743'
+sha1sums=('57b5d6b6d02ea01142ab2f09116fd5d861fa0f18'
           '31de8917e9369bfd638e5725d57469bfde6aeb84'
           '883f4fc489a9ed1c07d2d2ec37ca72509f04ea5d')
 
