@@ -1,12 +1,13 @@
 pkgname=gien
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for exporting Github issue tracker contents to local mbox email storage"
 arch=('any')
 license=('GPL')
 url="https://github.com/2ion/gien"
 depends=(\
-  'python'                \
+  'python'\
+  'python-markdown'\
   'python-pygithub')
 makedepends=('cython' 'pkg-config' 'gcc')
 options=(!emptydirs)

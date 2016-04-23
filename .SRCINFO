@@ -1,7 +1,7 @@
 pkgbase = gien
 	pkgdesc = Tool for exporting Github issue tracker contents to local mbox email storage
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/2ion/gien
 	arch = any
 	license = GPL
@@ -9,6 +9,7 @@ pkgbase = gien
 	makedepends = pkg-config
 	makedepends = gcc
 	depends = python
+	depends = python-markdown
 	depends = python-pygithub
 	options = !emptydirs
 	source = https://github.com/2ion/gien/archive/master.tar.gz
