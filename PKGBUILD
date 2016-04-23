@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-class-accessor-lite'
-pkgver='0.05'
+pkgver='0.08'
 pkgrel='1'
 pkgdesc="a minimalistic variant of Class::Accessor"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/Class-Accessor-Lite'
-source=('http://search.cpan.org/CPAN/authors/id/K/KA/KAZUHO/Class-Accessor-Lite-0.05.tar.gz')
-md5sums=('c487f0ebe2038363b68e9e68ae4beb54')
-sha512sums=('cee27783cc8c367a066cf941d034216fd4d70482825734d15bf4db818f83e0d96a9a4c5d171f1ceccb63ce7175e4df8cf42da58f413915c6190dde301ce738b2')
-_distdir="Class-Accessor-Lite-0.05"
+url='https://metacpan.org/release/Class-Accessor-Lite'
+source=('http://search.cpan.org/CPAN/authors/id/K/KA/KAZUHO/Class-Accessor-Lite-0.08.tar.gz')
+md5sums=('6ed2f281887efa598183433c09695489')
+sha512sums=('e23afed2c0c7eb887d23c80dca1b8b0cc42d38c86f8fcceb87d384b10403e0d74d3ae3b41a9654f4fcb58462ec138f0266a0b7e94d389ecb91d271600c6e293b')
+_distdir="Class-Accessor-Lite-0.08"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
