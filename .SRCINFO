@@ -1,7 +1,7 @@
 pkgbase = jamin-cvs
 	pkgdesc = A JACK Audio Connection Kit Audio Mastering interface
 	pkgver = 0.98.3
-	pkgrel = 5
+	pkgrel = 6
 	url = http://jamin.sourceforge.net/
 	install = jamin-cvs.install
 	arch = i686
