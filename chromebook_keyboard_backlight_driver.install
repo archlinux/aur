@@ -16,8 +16,9 @@ post_install() {
 	local _conf='chromebook_keyboard_backlight_driver.conf'
 	depmod -a
 	_spit 'note' "Added $_conf to ${_confd}."
-	_spit "If not desired, please remove manually. Otherwise, reboot for changes."
-	_spit "After rebooting, check dmesg, lsmod, or '/sys/class/leds' to verify."
+	_spit "For 'backlight' variant, toggle commented lines where appropriate."
+	_spit "Or, delete file to prevent auto-loading entirely. Otherwise, reboot."
+	_spit "Afterwards, check dmesg, lsmod, or '/sys/class/leds' to verify."
 }
 
 post_upgrade() {
