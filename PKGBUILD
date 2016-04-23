@@ -1,20 +1,21 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-twiggy'
-pkgver='0.1023'
+pkgver='0.1025'
 pkgrel='1'
 pkgdesc="AnyEvent HTTP server for PSGI (like Thin)"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-anyevent' 'perl-http-message' 'perl-plack>=0.99' 'perl-try-tiny')
-makedepends=('perl-test-requires' 'perl-test-tcp')
-url='http://search.cpan.org/dist/Twiggy'
-source=('http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Twiggy-0.1023.tar.gz')
-md5sums=('683b399ce829eb66cea9e0b072af233d')
-sha512sums=('cea59446cc95184db37eff3706010765488bfb5e42ed7dc3e379de5f4e99645dd80507f1c0ad686511a152bb4269f4e92204598506eb1b5e46dabaac5b896e60')
-_distdir="Twiggy-0.1023"
+depends=('perl-anyevent' 'perl-http-message' 'perl-plack>=0.99' 'perl-try-tiny' 'perl>=5.8.1')
+makedepends=()
+checkdepends=('perl-test-requires' 'perl-test-tcp')
+url='https://metacpan.org/release/Twiggy'
+source=('http://search.cpan.org/CPAN/authors/id/M/MI/MIYAGAWA/Twiggy-0.1025.tar.gz')
+md5sums=('afd58d121cf96178d9dad8a5f30a6d57')
+sha512sums=('72b811add821b57eefe3ad3e1df9dd11e00408c5c3daac25e3b3f748e25e0e294fa0e1d1795589e0cd125538c5ae46538a4f8c9e2810e59616c23405969c443f')
+_distdir="Twiggy-0.1025"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
