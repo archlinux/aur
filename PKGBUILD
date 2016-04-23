@@ -1,23 +1,23 @@
-# Maintainer: Lara Maia <lara@craft.net.br>
+# Maintainer: Fernando Manfredi <contact at acidhub.click>
+# Contributor: Lara Maia <lara@craft.net.br>
 
 pkgname=wine-pixi2
-url='https://www.digipen.edu/?id=1170&proj=26000'
+url='http://games.digipen.edu/games/pixi'
 pkgdesc='Digipen Sophomore Game - Final Version'
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 license=('Free to use and share')
 
-source=('http://lara.craft.net.br/pixi-2.zip'
+source=('http://acidhub.click/downloads/pixi-2.zip'
         'pixi2.desktop' 'pixi2.sh' 'LICENSE')
         
-md5sums=('6dd1652d26df493aee13a7df3fdaf7c6'
-         'e577c6fbd8e49132a823fc616c541227'
-         '9e9d133b559ef4db4df4f31fd0127ae9'
-         '779044cf14091cb2129e12d5c3e1725e')
+sha256sums=('0af3adebfa8d905414681da4167156cab476017f7e7eecd6bef076fac7804bfc'
+            '1df73c58999fbf4902b8ef280f8f622fa700c5a4ab8631b378392bd617a3379a'
+            'ee187f4cac804123afa902d38d27399b6d3dc0e2e28882c18c25d618e11b8e3b'
+            '27635d4ed7740d185172f475ef14891c888127640a0f6bd73356bc4e2062ce03')
          
 depends=('wine' 'lib32-openal')
-
 
 package() {
 	cd "$scrdir"
@@ -26,5 +26,5 @@ package() {
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/pixi2/LICENSE
 	
 	mkdir -p "$pkgdir"/usr/share/pixi2/
-	cp -rf Pixi_Final/* "$pkgdir"/usr/share/pixi2/
+	cp -rf Pixi/* "$pkgdir"/usr/share/pixi2/
 }
