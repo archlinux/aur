@@ -1,6 +1,6 @@
 pkgname=jamin-cvs
 pkgver=0.98.3
-pkgrel=5
+pkgrel=6
 pkgdesc="A JACK Audio Connection Kit Audio Mastering interface"
 arch=('i686' 'x86_64')
 url="http://jamin.sourceforge.net/"
@@ -27,7 +27,7 @@ build() {
 
 
 	cd ${srcdir}/jamin
-	./autogen.sh --prefix=/usr
+	./autogen.sh --prefix=/usr --libdir=/usr/lib
 	make
 }
 
