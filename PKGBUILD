@@ -1,15 +1,15 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=freeoffice
-pkgver=703
+pkgver=755
 pkgrel=1
 pkgdesc="A complete, reliable, lightning-fast and Microsoft Office-compatible office suite with a word processor, spreadsheet, and presentation graphics software."
 arch=(i686 x86_64)
 url="http://www.freeoffice.com/"
 license=('custom')
 depends=('xdg-utils' 'shared-mime-info' 'gtk-update-icon-cache' 'desktop-file-utils')
-depends_i686=('libxrender')
-depends_x86_64=('lib32-gcc-libs' 'lib32-libxmu' 'lib32-libxrender')
+depends_i686=('libxrender' 'libxrandr' 'libgl')
+depends_x86_64=('lib32-gcc-libs' 'lib32-libxmu' 'lib32-libxrender' 'lib32-libxrandr' 'lib32-libgl')
 install="${pkgname}.install"
 source=("http://www.softmaker.net/down/softmaker-${pkgname}-${pkgver}.tgz"
         "${pkgname}-textmaker"
@@ -18,7 +18,7 @@ source=("http://www.softmaker.net/down/softmaker-${pkgname}-${pkgver}.tgz"
         "${pkgname}-textmaker.desktop"
         "${pkgname}-planmaker.desktop"
         "${pkgname}-presentations.desktop")
-sha256sums=('01c50d877ff9e7d149e7cbac927450e275197a1dc6d9ad1c9de2477f88e26a81'
+sha256sums=('8a02aa49c175c132b35634bdeec0e072441d6d574d7705825d3629b62c451657'
             '0437328f3fddf93e18ad3df270971802c2e0fcaf3f030588c1301767a968da69'
             'c90e2575c71f03f0b627e4f6c70f437b9c40e5878bf9f553a4244b4a1f6dbd3c'
             'e6bc7608e58f44b55654c5d1fc93d442a400de638e2cbc6d5a3b3a8fbceaa0e4'
