@@ -4,7 +4,7 @@ pkgdesc="ROS - A WebSocket interface to rosbridge."
 url='http://ros.org/wiki/rosbridge_server'
 
 pkgname='ros-indigo-rosbridge-server'
-pkgver='0.6.8'
+pkgver='0.7.14'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,15 +15,13 @@ ros_makedepends=(ros-indigo-rosbridge-library
   ros-indigo-rosapi
   ros-indigo-rospy)
 makedepends=('cmake' 'git' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  python2-pillow)
+  ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-rosbridge-library
   ros-indigo-rosauth
   ros-indigo-rosapi
   ros-indigo-rospy)
-depends=(${ros_depends[@]}
-  python2-pillow)
+depends=(${ros_depends[@]})
 
 _tag=release/indigo/rosbridge_server/${pkgver}-${_pkgver_patch}
 _dir=rosbridge_server
