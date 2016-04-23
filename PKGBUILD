@@ -4,7 +4,7 @@ pkgdesc="ROS - Messages for automatic topic configuration using rosserial."
 url='http://ros.org/wiki/rosserial_msgs'
 
 pkgname='ros-indigo-rosserial-msgs'
-pkgver='0.6.3'
+pkgver='0.6.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
