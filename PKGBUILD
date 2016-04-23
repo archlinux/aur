@@ -4,7 +4,7 @@ pkgdesc="ROS - A Python-based implementation of the ROS serial protocol."
 url='http://ros.org/wiki/rosserial_python'
 
 pkgname='ros-indigo-rosserial-python'
-pkgver='0.6.3'
+pkgver='0.6.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
