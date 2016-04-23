@@ -1,31 +1,31 @@
-# Maintainer: David Mougey <imapiekindaguy at gmail dot com>
+# Maintainer: Bruce Lee <cainsdao AT tuta D0T io>
 
 pkgname=skroll-git
-_pkgname=${pkgname%-git}
-pkgver=0.2.r15.g500beaf
+_pkgname=skroll
+pkgver=v0.6.r1.g2fb17ec
 pkgrel=1
-pkgdesc='Scrolls text'
+pkgdesc="Scrolls text"
 arch=('i686' 'x86_64')
-url='http://git.z3bra.org/cgit.cgi/skroll'
-license=('WTFPL')
-makedepends=('git')
-provides=('skroll')
-conflicts=('skroll')
+url="http://git.z3bra.org/skroll/log.html"
+license=('WTFPLv2')
+makedepends=('git' 'gzip')
 source=('git://z3bra.org/skroll')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
-    printf "0.%s.r%s.g%s" "$(grep -i version LICENSE | grep -oP 'Version [0-9]{1,2}' | cut -d' ' -f2)" \
-        "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$_pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$srcdir/$_pkgname"
-    make
+  cd "$_pkgname"
+  make
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    make PREFIX=/usr DESTDIR="$pkgdir" install
+  cd "$_pkgname"
+  make PREFIX="/usr" DESTDIR="${pkgdir}" MANPREFIX="/usr/share/man" install
+  gzip -f9 skroll.1
+  install -Dm644 README "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/doc/${pkgname}/README"
 }
