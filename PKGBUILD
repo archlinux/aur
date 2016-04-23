@@ -2,16 +2,16 @@
 # Contributor: Alad Wenter <alad@archlinux.info>
 
 pkgname=aurutils-with-signing
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Helper tools for the AUR, forked to add support for signing packages'
 arch=('any')
 url='https://github.com/djmattyg007/aurutils-with-signing'
 license=('ISC')
 source=("https://github.com/djmattyg007/aurutils-with-signing/archive/${pkgver}.tar.gz")
-sha256sums=('dcf672a056d53fbbd69af82903d5c6e57de342045f37357ff992d72a95c4e8a5')
+sha256sums=('cd691609296f919a77b35db2346034b6ff853f1cee75303953b91fc9791d0eac')
 conflicts=('aurutils')
-depends=('pacman>=5.0' 'git' 'repose' 'jshon' 'pacutils' 'expac' 'aria2' 'devtools' 'python-srcinfo' 'datamash')
+depends=('pacman' 'git' 'repose' 'jshon' 'pacutils' 'expac' 'aria2' 'devtools' 'python-srcinfo' 'datamash')
 checkdepends=('shellcheck')
 makedepends=('git')
 optdepends=(
@@ -22,8 +22,9 @@ optdepends=(
 
 check() {
     cd "aurutils-with-signing-${pkgver}/bin"
-    LC_ALL=C shellcheck -e 2016,2034,2174 -x aurbuild aurgrab
-    LC_ALL=C shellcheck -e 2016,2174 -x aurchain aurqueue aursearch aursift aursplit aurstranger aursync repofind
+    # Make errors with C locale visible
+    LANG=C shellcheck -x aurbuild aurchain aurgrab aursearch aursift aursplit aurstranger aursync repofind
+    LANG=C shellcheck -e 2016 -x aurqueue
 }
 
 package() {
@@ -35,6 +36,6 @@ package() {
 
     install -m755 bin/aur* bin/repofind "${pkgdir}/usr/bin/"
     install -m644 LICENSE "${pkgdir}/usr/share/licenses/aurutils-with-signing/"
-    install -m644 CREDITS README.org doc/aurutils.example.json "${pkgdir}/usr/share/doc/aurutils-with-signing/"
+    install -m644 CREDITS README doc/aurutils.example.json "${pkgdir}/usr/share/doc/aurutils-with-signing/"
     install -m644 doc/*.1 "${pkgdir}/usr/share/man/man1/"
 }
