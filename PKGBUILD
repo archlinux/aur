@@ -1,8 +1,8 @@
 # Maintainer: Dennis Hamester <dennis.hamester@startmail.com>
 
-_commit='e93a2481c8630d7901b679ab666f6c61b74f6bf9'
+_commit='63e48e5bc40ee3db2d74b736dbc2b134cf8fc396'
 pkgname=scrawpp
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Steam Controller C++ library"
 arch=('any')
@@ -11,7 +11,7 @@ license=('custom:ISC')
 makedepends=('cmake')
 depends=('scraw')
 source=("scrawpp-v$pkgver.tar.gz::https://gitlab.com/dennis-hamester/scrawpp/repository/archive.tar.gz?ref=v$pkgver")
-sha256sums=('4c313d04f8f719538128bac9783b2c413237d3f15297426093c13c8729d2c745')
+sha256sums=('57a378e08a7efb5491488c9c2c8c1a3a44a1c9c8142880588f58cec8d18eb52d')
 
 build() {
   cd ${pkgname}-v${pkgver}-${_commit}
