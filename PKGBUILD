@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-router-simple'
-pkgver='0.15'
+pkgver='0.17'
 pkgrel='1'
 pkgdesc="simple HTTP router"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-class-accessor-lite>=0.05' 'perl>=5.008_001')
+depends=('perl-class-accessor-lite' 'perl')
 makedepends=()
-url='http://search.mcpan.org/dist/Router-Simple'
-source=('http://search.mcpan.org/CPAN/authors/id/T/TO/TOKUHIROM/Router-Simple-0.15.tar.gz')
-md5sums=('b50f47030795d7e33e07f22bc6f60119')
-sha512sums=('3c5f4a2f70bdc578e32f7fad23d9d3e22f6de26dc1abc8f280ea59b15b307bfa55907902de9e9cfde5c80f89f360ac6f75c77e436320dd4e1be52f536e386387')
-_distdir="Router-Simple-0.15"
+url='https://metacpan.org/release/Router-Simple'
+source=('http://search.cpan.org/CPAN/authors/id/T/TO/TOKUHIROM/Router-Simple-0.17.tar.gz')
+md5sums=('96473bf45f61ed8e241e0410d4039b44')
+sha512sums=('4fbc4fb375d873d7c06d18da49855b81336744bc712035c6557914e275099d93aee4ab787bb1e7b3b730a109b716b4f572fc538d1d574ff709968a1b3767a963')
+_distdir="Router-Simple-0.17"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
