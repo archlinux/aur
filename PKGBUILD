@@ -10,11 +10,11 @@ arch=('any')
 url='http://www.ubnt.com/'
 license=('custom')
 depends=('mongodb' 'java-runtime')
-conflicts=('unifi-controller')
-# needed to not break configuration accross upgrades
+provides=('unifi')
+conflicts=('unifi')
 backup=('opt/unifi/data/system.properties')
 install=unifi.install
-source=("UniFi-$pkgver.zip::http://dl.ubnt.com/unifi/$pkgver-$_pkgver/UniFi.unix.zip"
+source=('UniFi-$pkgver.zip::http://dl.ubnt.com/unifi/$pkgver-$_pkgver/UniFi.unix.zip'
         'unifi.service')
 md5sums=('bd42952cb6ef6bce7f9f5c164e457b58'
          '04934ee4be43b6f80db610d140edf49f')
