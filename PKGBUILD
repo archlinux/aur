@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Florian Jacob <projects+arch AT florianjacob )DOT( de>
 pkgname=earlyoom
 pkgver=0.10
 pkgrel=4
