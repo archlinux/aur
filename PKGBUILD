@@ -3,7 +3,7 @@
 pkgbase="python-theano"
 pkgname=("python-theano" "python2-theano")
 _pkgname="Theano"
-pkgver="0.8.1"
+pkgver="0.8.2"
 pkgrel="1"
 pkgdesc='Definition and optimized evaluation of mathematical expressions on Numpy arrays.'
 arch=('any')
@@ -22,16 +22,16 @@ optdepends=('python-sympy: Recommended'
             'python2-pydot-ng'
             'python-pydot'
             'python2-pygpu')
-source=("http://pypi.python.org/packages/source/T/Theano/Theano-${pkgver}.tar.gz"
-        "0001-Fix-problem-with-python-3.5.patch")
-sha256sums=('2f1d9ad7ecf136e7978a6720fa9286f7b02221c5599b935e9f7fa14cd29cb19d'
-            'b522bb513278635487a8e50f5d6b1aca003900cc92fd2450ac843daeb6c69216')
+source=("http://pypi.python.org/packages/30/3d/2354fac96ca9594b755ec22d91133522a7db0caa0877165a522337d0ed73/Theano-${pkgver}.tar.gz")
+sha256sums=('7463c8f7ed1a787bf881f36d38a38607150186697e7ce7e78bfb94b7c6af8930')
 
+#https://pypi.python.org/packages/30/3d/2354fac96ca9594b755ec22d91133522a7db0caa0877165a522337d0ed73/Theano-0.8.2.tar.gz
+            
 prepare() {
   cd "${_pkgname}-${pkgver}"
   chmod +x "${_pkgname}.egg-info"
   chmod 644 ${_pkgname}.egg-info/*
-  patch -p1 < ../0001-Fix-problem-with-python-3.5.patch
+  chmod -R a+r ./
   cd "$srcdir/"
   cp -a "${_pkgname}-${pkgver}" "${_pkgname}-${pkgver}-py2"
   cd "${_pkgname}-${pkgver}"
@@ -82,12 +82,12 @@ package_python2-theano() {
   mv "${pkgdir}/usr/bin/theano-cache" "${pkgdir}/usr/bin/theano2-cache"
   mv "${pkgdir}/usr/bin/theano-nose" "${pkgdir}/usr/bin/theano2-nose"
   mv "${pkgdir}/usr/bin/theano-test" "${pkgdir}/usr/bin/theano2-test"
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python2-theano"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python2-theano/LICENSE.txt"
 }
 
 package_python-theano() {
   depends=('python' 'python-numpy')
   cd "$srcdir/${_pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir"/ --optimize=1
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-theano"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/python-theano/LICENSE.txt"
 }
