@@ -1,14 +1,11 @@
 post_install() {
-    ldconfig
+	ldconfig
 }
 
 post_upgrade() {
-    ldconfig
+	ldconfig
 }
 
 post_remove() {
-    ldconfig
+	ldconfig
 }
-
-# vim:set ts=2 sw=2 et:
-
