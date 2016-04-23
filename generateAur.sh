@@ -1,36 +1,28 @@
 pkgver=2.0.14
+pkgrel=2
+echo "pkgname=whatsie
+pkgver=2.0.14
 pkgrel=1
-echo "# Maintainer: Michael Latman <mlatman@gmail.com>
-pkgname=whatsie
-pkgver=$pkgver
-pkgrel=$pkgrel
 epoch=
 pkgdesc=\"A simple & beautiful desktop client for WhatsApp Web.\"
-arch=('any')
-url=\"https://whatsie.chat\"
+arch=('x86_64')
+url=\"https://github.com/Aluxian/Whatsie\"
 license=('MIT')
-groups=()
-depends=(\"dpkg\")
-makedepends=()
-checkdepends=()
-optdepends=('lsb-release')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=\".INSTALL\"
-changelog=
-source=()
-noextract=()
-md5sums=()
-validpgpkeys=()
-package(){
-wget \"https://github.com/Aluxian/Whatsie/releases/download/v\$pkgver/whatsie-\$pkgver-linux-amd64.deb\" -P build_step/
-dpkg -x \"build_step/whatsie-\$pkgver-linux-amd64.deb\" \"\$pkgdir/\"
+depends=('desktop-file-utils' 'gconf' 'gtk2' 'gvfs' 'hicolor-icon-theme' 'libgudev' 'libgcrypt' 'libnotify' 'libxtst' 'nss' 'python' 'xdg-utils' 'libcap')
+optdepends=('hunspell: spell check')
+options=('!docs' '!emptydirs')
+install=.install
+source=(\"whatsie-$pkgver-linux-amd64.deb::https://github.com/Aluxian/Whatsie/releases/download/v$pkgver/whatsie-$pkgver-linux-amd64.deb\")
+md5sums=('a7e1cb4c020c98aa74cc75e1cac22014')
+package() {
+  msg2 \"Extracting the data.tar.gz...\"
+  bsdtar -xf data.tar.gz -C \"$pkgdir/\"
 
-}
-md5sums=()" > PKGBUILD
+  msg2 \"Fixing permissions of documentation folder...\"
+  chmod -R 755 \"$pkgdir\"/opt/
+  chmod -R 755 \"$pkgdir\"/etc/
+  chmod -R 755 \"$pkgdir\"/usr/
+}" > PKGBUILD
 
 
 echo "pkgname = whatsie
@@ -69,7 +61,7 @@ echo "pkgbase = whatsie
 	depends = dpkg
 pkgname = whatsie" > .SRCINFO
 
-git add -A
-git commit -m "Release $pkgver PackageRel $pkgrel"
-git push AUR master
-yaourt -S whatsie
+ git add -A
+ git commit -m "Release $pkgver PackageRel $pkgrel"
+ git push AUR master
+ yaourt -S whatsie
