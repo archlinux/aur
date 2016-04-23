@@ -1,7 +1,7 @@
 # Maintainer: grimi <grimi at poczta dot fm>
 
 pkgname=numix-themes-green
-pkgver=2.5.1.r199.bde0a73
+pkgver=2.5.1.r210.3c82d31
 pkgrel=1
 pkgdesc="A flat and light theme with a modern look using Green color (GNOME, MATE, Openbox, Unity, XFCE)"
 arch=('any')
@@ -9,21 +9,20 @@ url='http://numixproject.org/'
 license=('GPL3')
 depends=('gtk-engine-murrine')
 makedepends=('git' 'ruby-bundler' 'imagemagick')
-_commit='bde0a7364864b0e3b8265c5b13969757295e1e17'
-source=("git+https://github.com/shimmerproject/Numix.git#commit=${_commit}" "Gemfile")
-sha256sums=('SKIP'
-            'b1061ba7ce09c9eb3e41f59362aa8c21d27073b0658f13fb5eabdaea654afe2c')
+_commit='3c82d31944793e125f54ca443be6d4b01c6a67d7'
+source=("git+https://github.com/numixproject/numix-gtk-theme.git#commit=${_commit}")
+sha256sums=('SKIP')
 
 
 
 pkgver() {
-   cd Numix
+   cd numix-gtk-theme
    git describe --tags | sed 's/^v//; s/-/.r/; s/-g/./'
 }
 
 
 prepare() {
-   cd Numix
+   cd numix-gtk-theme
    for FILE in gtk-2.0/gtkrc \
       gtk-3.0/scss/_global.scss \
       gtk-3.0/assets/*.svg \
@@ -37,10 +36,12 @@ prepare() {
       unity/*.svg \
       index.theme
    do
-      sed -i 's/#f0544c/#697740/Ig' "${FILE}"
-      sed -i 's/#d64937/#697740/Ig' "${FILE}"
-      sed -i 's/#f06860/#697740/Ig' "${FILE}"
-      sed -i 's/#f44336/#697740/Ig' "${FILE}"
+      sed -i 's/#f0544c/#697740/Ig'  "${FILE}"
+      sed -i 's/#d64937/#697740/Ig'  "${FILE}"
+      sed -i 's/#f06860/#697740/Ig'  "${FILE}"
+      sed -i 's/#f44336/#697740/Ig'  "${FILE}"
+      sed -i 's/#444444/#333333/g'   "${FILE}"
+      sed -i 's/#444/#333/g'         "${FILE}"
       sed -i 's/Numix/Numix-Green/I' "${FILE}"
    done
 
@@ -55,20 +56,22 @@ prepare() {
          convert -resize 16x16 -background none "${FILE}" "${FILE%.svg}.png"
       fi
    done
+
+   echo -e "source 'https://rubygems.org'\ngem 'sass'" > Gemfile
 }
 
 
 build() {
-   cd Numix
+   cd numix-gtk-theme
    bundle install --path .
    make SASS="bundle exec sass"
 }
 
 
 package() {
-   cd Numix
-   install -dm 755 "${pkgdir}"/usr/share/themes/Numix-Green
+   cd numix-gtk-theme
    rm -rf .git .gitignore CREDITS LICENSE README.md
+   install -dm 755 "${pkgdir}"/usr/share/themes/Numix-Green
    cp -dr --no-preserve='ownership,mode' * "${pkgdir}"/usr/share/themes/Numix-Green
 }
 
