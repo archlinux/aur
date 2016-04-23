@@ -1,7 +1,7 @@
-# Maintainer : Thomas Weißschuh <thomas t-8ch.de>
+# Maintainer : Thomas Weißschuh <aur t-8ch.de>
 
 pkgname=hsqldb2-java
-pkgver=2.3.2
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="HSQLDB Java libraries, Version 2"
 arch=('any')
@@ -36,4 +36,4 @@ package() {
           "${srcdir}/hsqldb-${pkgver}/hsqldb/doc/hsqldb_lic.txt" \
           "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
-sha256sums=('573082ab3f1c8f02c1f496b9aae15b74f1b5aedf3812ef300e90ead3047e5fb0')
+sha256sums=('b9a84c79a62fd0ca4af126f49aed8a6d21440f1007f1e13e8cfeb8a67dbd473e')
