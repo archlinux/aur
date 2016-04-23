@@ -1,0 +1,19 @@
+pkgbase = luaunbound
+	pkgdesc = drop-in replacement for Prosodys internal DNS library with a binding to libunbound
+	pkgver = 2016.01.10
+	pkgrel = 1
+	url = https://www.zash.se/luaunbound.html
+	install = luaunbound.install
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	makedepends = mercurial
+	makedepends = unbound
+	makedepends = lua
+	depends = unbound
+	optdepends = luajit: jit for lua
+	source = luaunbound::hg+https://code.zash.se/luaunbound
+	sha512sums = SKIP
+
+pkgname = luaunbound
+
