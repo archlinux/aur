@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides service calls for getting ros meta-information, like lis
 url='http://ros.org/wiki/rosapi'
 
 pkgname='ros-indigo-rosapi'
-pkgver='0.7.13'
+pkgver='0.7.14'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
