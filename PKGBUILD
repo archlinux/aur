@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-validate-tiny'
-pkgver='0.984'
+pkgver='1.551'
 pkgrel='1'
 pkgdesc="Minimalistic data validation"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-list-moreutils')
 makedepends=()
-url='http://search.cpan.org/dist/Validate-Tiny'
-source=('http://search.cpan.org/CPAN/authors/id/M/MI/MINIMAL/Validate-Tiny-0.984.tar.gz')
-md5sums=('363d1de0023cc6db962ebc2e49d16538')
-sha512sums=('4eca7035316468e99ed02c97a2b2b8801a94f18db46fa535c2b0267b8fb5d780091357448f6b7b63161cff8c537e2d41c49aff3176a4c0d88db4fa0a55a54b2f')
-_distdir="Validate-Tiny-0.984"
+url='https://metacpan.org/release/Validate-Tiny'
+source=('http://search.cpan.org/CPAN/authors/id/M/MI/MINIMAL/Validate-Tiny-1.551.tar.gz')
+md5sums=('3dc67956003849aea1f55dfebbccd1de')
+sha512sums=('541d48b13fe6fe55a30893e82daabad6119cabf93d0825ffcb6f32d629784a8ecc7b47e2b534bc3465c7441cc7640209860388b144e8c766b9bce1658d4cde6d')
+_distdir="Validate-Tiny-1.551"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
