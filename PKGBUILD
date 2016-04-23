@@ -13,7 +13,7 @@ source=("whatsie-$pkgver-linux-amd64.deb::https://github.com/Aluxian/Whatsie/rel
 md5sums=('a7e1cb4c020c98aa74cc75e1cac22014')
 package() {
   msg2 "Extracting the data.tar.gz..."
-  sudo bsdtar -xf data.tar.gz -C "$pkgdir/"
+  bsdtar -xf data.tar.gz -C "$pkgdir/"
 
   # msg2 "Fixing permissions of documentation folder..."
   # chmod -R 755 "$pkgdir/opt/"
