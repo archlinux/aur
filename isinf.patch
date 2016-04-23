@@ -1,0 +1,10 @@
+--- src/dosbox/src/fpu/fpu_instructions.h	2016-04-22 22:09:06.159430638 -0400
++++ src/dosbox/src/fpu/fpu_instructions.h	2016-04-22 22:09:50.657045747 -0400
+@@ -282,6 +282,7 @@ static void FPU_FBST(PhysPt addr) {
+ # include <math.h>
+ # include <cmath>
+ # define isdenormal(x) (!std::isnormal(x))
++# define isinf(x) (std::isinf(x))
+ #endif
+ 
+ static void FPU_FADD(Bitu op1, Bitu op2){
