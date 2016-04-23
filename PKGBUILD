@@ -4,7 +4,7 @@ pkgdesc="ROS - Metapackage for core of rosserial."
 url='http://ros.org/wiki/rosserial'
 
 pkgname='ros-indigo-rosserial'
-pkgver='0.6.3'
+pkgver='0.6.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
