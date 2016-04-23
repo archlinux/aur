@@ -1,0 +1,17 @@
+--- src/stp-2.1.2/CMakeLists.txt	2015-10-28 19:35:49.000000000 -0400
++++ src/stp-2.1.2/CMakeLists.txt	2016-04-23 19:34:26.720530911 -0400
+@@ -260,14 +260,6 @@
+         PARENT_SCOPE)
+ endfunction()
+ 
+-find_program (GIT_EXECUTABLE git)
+-if (GIT_EXECUTABLE)
+-  include(GetGitRevisionDescription)
+-  get_git_head_revision(GIT_REFSPEC GIT_SHA)
+-  MESSAGE(STATUS "GIT hash found: ${GIT_SHA}")
+-else()
+-  set(GIT_SHA "GIT-hash-notfound")
+-endif()
+ set(STP_FULL_VERSION "2.1.2")
+ 
+ string(REPLACE "." ";" STP_FULL_VERSION_LIST ${STP_FULL_VERSION})
