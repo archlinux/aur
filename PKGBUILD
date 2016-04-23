@@ -2,13 +2,13 @@
 # vim: set ts=2 sw=2:
 pkgname=repoctl
 pkgver=0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A supplement to repo-add and repo-remove which simplifies managing local repositories"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/cassava/repoctl"
 license=('MIT')
 depends=('pacman')
-makedepends=('go' 'git')
+makedepends=('go')
 options=('!strip')
 source=(https://github.com/cassava/repoctl/releases/download/v${pkgver}/repoctl-${pkgver}.tar.gz)
 md5sums=('a5a2b12e80728311cc40dc8e75e1956b')
