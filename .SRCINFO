@@ -1,14 +1,13 @@
 pkgbase = repoctl
 	pkgdesc = A supplement to repo-add and repo-remove which simplifies managing local repositories
 	pkgver = 0.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cassava/repoctl
 	arch = i686
 	arch = x86_64
 	arch = armv7h
 	license = MIT
 	makedepends = go
-	makedepends = git
 	depends = pacman
 	options = !strip
 	source = https://github.com/cassava/repoctl/releases/download/v0.14/repoctl-0.14.tar.gz
