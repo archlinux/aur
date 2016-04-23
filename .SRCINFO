@@ -1,6 +1,6 @@
 pkgbase = scrawpp-git
 	pkgdesc = Steam Controller C++ library (git version)
-	pkgver = 0.2.0.r0.ge93a248
+	pkgver = 0.2.1.r0.g63e48e5
 	pkgrel = 1
 	url = https://gitlab.com/dennis-hamester/scrawpp
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = scrawpp-git
 	makedepends = cmake
 	depends = scraw-git
 	provides = scrawpp
+	conflicts = scrawpp
 	source = git+https://gitlab.com/dennis-hamester/scrawpp.git
 	sha256sums = SKIP
 
