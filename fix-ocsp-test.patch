@@ -1,0 +1,41 @@
+From f7ce0134742f496a20aaf53ac4c6b77ea6ae1d7d Mon Sep 17 00:00:00 2001
+From: Nikos Mavrogiannopoulos <nmav@redhat.com>
+Date: Fri, 8 Apr 2016 13:36:44 +0200
+Subject: [PATCH] pkix.asn: corrected byKey definition
+
+OCSP is defined in an EXPLICIT tags module, and as such
+we must tag explicitly all of its tags.
+---
+ lib/pkix.asn        | 2 +-
+ lib/pkix_asn1_tab.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/pkix.asn b/lib/pkix.asn
+index aa0c574..9657bde 100644
+--- a/lib/pkix.asn
++++ b/lib/pkix.asn
+@@ -620,7 +620,7 @@ ResponseData ::= SEQUENCE {
+ ResponderID ::= CHOICE {
+ -- Changed to work with the libtasn1 parser.
+    byName   [1] EXPLICIT RDNSequence, --Name
+-   byKey    [2] OCTET STRING --SHA-1 hash of responder's public key 
++   byKey    [2] EXPLICIT OCTET STRING --SHA-1 hash of responder's public key 
+ }
+ 
+ SingleResponse ::= SEQUENCE {
+diff --git a/lib/pkix_asn1_tab.c b/lib/pkix_asn1_tab.c
+index 60dba18..cc26868 100644
+--- a/lib/pkix_asn1_tab.c
++++ b/lib/pkix_asn1_tab.c
+@@ -467,7 +467,7 @@ const asn1_static_node pkix_asn1_tab[] = {
+   { "byName", 1610620930, "RDNSequence"},
+   { NULL, 2056, "1"},
+   { "byKey", 536879111, NULL },
+-  { NULL, 4104, "2"},
++  { NULL, 2056, "2"},
+   { "SingleResponse", 1610612741, NULL },
+   { "certID", 1073741826, "CertID"},
+   { "certStatus", 1073741826, "CertStatus"},
+--
+libgit2 0.24.0
+

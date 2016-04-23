@@ -8,7 +8,7 @@
 _pkgbasename=gnutls
 pkgname=lib32-${_pkgbasename}28
 pkgver=3.3.22
-pkgrel=2
+pkgrel=3
 pkgdesc="A library which provides a secure layer over a reliable transport layer (32-bit, legacy version)"
 arch=('x86_64')
 license=('GPL3' 'LGPL2.1')
@@ -18,10 +18,20 @@ depends=("${_pkgbasename}28" 'lib32-zlib' 'lib32-nettle' 'lib32-p11-kit'
 provides=('lib32-libgnutls28')
 conflicts=('lib32-libgnutls28')
 makedepends=('gcc-multilib' 'lib32-libidn')
-source=(ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3/${_pkgbasename}-${pkgver}.tar.xz{,.sig})
+_downloadUrl="ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3/${_pkgbasename}-${pkgver}.tar.xz"
+source=("${_downloadUrl}"
+        "${_downloadUrl}.sig"
+        'fix-ocsp-test.patch')
 sha256sums=('0ffa233e022e851f3f5f7811ac9223081a0870d5a05a7cf35a9f22e173c7b009'
-            'SKIP')
+            'SKIP'
+            '1cd916ca3e6b8261df8d1869138aa0b15fe700d650020fd914980e96dafb6dc4')
 validpgpkeys=(1F42418905D8206AA754CCDC29EE58B996865171)
+
+prepare() {
+    cd "${srcdir}/${_pkgbasename}-${pkgver}"
+
+    patch -p1 -i "${srcdir}/fix-ocsp-test.patch"
+}
 
 build() {
   export CFLAGS="-m32 ${CFLAGS}"
