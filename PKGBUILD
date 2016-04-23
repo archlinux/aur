@@ -1,17 +1,17 @@
 # Maintainer: Dennis Hamester <dennis.hamester@startmail.com>
 
-_commit='4a95995c1fbf9927560cfee43402832087732b8a'
+_commit='e5b26b939db75b57c9e592aebe1396180cdd0730'
 pkgname=scraw
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Steam Controller C library"
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="https://gitlab.com/dennis-hamester/scraw"
 license=('custom:ISC')
 makedepends=('cmake' 'doxygen')
 depends=('libusb')
 source=("scraw-v$pkgver.tar.gz::https://gitlab.com/dennis-hamester/scraw/repository/archive.tar.gz?ref=v$pkgver")
-sha256sums=('f16fd502484a41ddcc2a92c72500ba2d80c7f44bfd2f1e7b9bc9672309ae8e5e')
+sha256sums=('fec3f5e3503b1fba5c2905d52c9f56f9611deb2fdfdc592bcf598be2a9f2bc76')
 
 build() {
   cd ${pkgname}-v${pkgver}-${_commit}

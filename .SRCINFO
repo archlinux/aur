@@ -1,6 +1,6 @@
 pkgbase = scraw
 	pkgdesc = Steam Controller C library
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://gitlab.com/dennis-hamester/scraw
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = scraw
 	makedepends = cmake
 	makedepends = doxygen
 	depends = libusb
-	source = scraw-v0.2.0.tar.gz::https://gitlab.com/dennis-hamester/scraw/repository/archive.tar.gz?ref=v0.2.0
-	sha256sums = f16fd502484a41ddcc2a92c72500ba2d80c7f44bfd2f1e7b9bc9672309ae8e5e
+	source = scraw-v0.2.1.tar.gz::https://gitlab.com/dennis-hamester/scraw/repository/archive.tar.gz?ref=v0.2.1
+	sha256sums = fec3f5e3503b1fba5c2905d52c9f56f9611deb2fdfdc592bcf598be2a9f2bc76
 
 pkgname = scraw
 
