@@ -6,7 +6,7 @@
 
 pkgname=ubuntu-themes
 _actual_ver=14.04
-_extra_ver=+16.04.20160324.1
+_extra_ver=+16.04.20160415
 pkgver=${_actual_ver}${_extra_ver/\+/.}
 pkgrel=1
 pkgdesc='Ubuntu monochrome icon theme, Ambiance and Radiance themes, and Ubuntu artwork'
@@ -20,7 +20,7 @@ provides=('light-themes' 'ubuntu-mono')
 conflicts=('light-themes' 'ubuntu-mono')
 install=${pkgname}.install
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${_actual_ver}${_extra_ver}.orig.tar.gz")
-sha256sums=('896a1223d5a8592969739f23514b4bd4ea1b561c9c58be6efb640722e68c5173')
+sha256sums=('f5cbcfb3728c27295c981ef34f92dae9b48f4a8d114f63ff5bde5846b46cd383')
 
 build() {
     # Python 2 fix
