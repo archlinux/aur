@@ -6,14 +6,14 @@
 
 pkgname=linuxsampler-svn
 _pkgname="${pkgname%-svn}"
-pkgver=r2835
+pkgver=r2887
 pkgrel=1
 pkgdesc="Sampler backend, including sampler engine, audio and MIDI drivers, network layer (LSCP) API and native C++ API"
 arch=("i686" "x86_64")
 url="http://www.linuxsampler.org/"
 license=("GPL" "custom")
 depends=("libgig-svn" "jack" "sqlite" "perl-xml-parser")
-makedepends=("subversion" "ladspa" "dssi")
+makedepends=("subversion" "ladspa" "dssi" "bison" "flex")
 optdepends=()
 provides=('linuxsampler')
 conflicts=('linuxsampler')
