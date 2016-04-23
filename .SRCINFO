@@ -1,0 +1,21 @@
+pkgbase = kmailapplet-git
+	pkgdesc = A Mail Applet for the system tray to watch your Maildir box and get notifications whenever there's a new mail.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://gitlab.students.cs.unibo.it/cardace/KMailApplet
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = make
+	makedepends = qt5-base
+	depends = glibc
+	depends = gcc-libs
+	depends = boost-libs
+	depends = qt5-base
+	provides = kmailapplet-git=1.0
+	conflicts = kmailapplet-git
+	source = kmailapplet-git::git+https://gitlab.students.cs.unibo.it/cardace/KMailApplet.git
+	md5sums = SKIP
+
+pkgname = kmailapplet-git
+
