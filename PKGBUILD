@@ -24,8 +24,8 @@ if [ "${_compile}" -eq 0 ]; then
 	source_i686=("${pkgname}_${pkgver}-${pkgrel}${pkgrel_status}_i386.deb::http://ftp.us.debian.org/debian/pool/main/v/vlc/${pkgname}_${pkgver}-${pkgrel}${pkgrel_status}_i386.deb")
 	source_x86_64=("${pkgname}_${pkgver}-${pkgrel}${pkgrel_status}_amd64.deb::http://ftp.us.debian.org/debian/pool/main/v/vlc/${pkgname}_${pkgver}-${pkgrel}${pkgrel_status}_amd64.deb")
 
-md5sums_i686=('1b5f42f6f935cd3e741923e93ac642ce')
-md5sums_x86_64=('e673ee0ccf37824f25d65df0f923207a')
+md5sums_i686=('dcfeb0698727fcd2e5ff7ea0c824b962')
+md5sums_x86_64=('1fc586747b97bb235d78883e2e4aab00')
 else
 	options=("!libtool" "!emptydirs")
 	source+=("git://git.videolan.org/${pkgname%%-*}/${pkgname%%-*}-${pkgver:0:3}.git")
