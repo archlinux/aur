@@ -1,6 +1,6 @@
 pkgbase = plasma5-applets-volumewin7mixer
 	pkgdesc = A fork of the default volume plasmoid with a Windows 7 theme (vertical sliders)
-	pkgver = r7
+	pkgver = r10
 	pkgrel = 1
 	url = https://github.com/Zren/plasma-applets/tree/master/org.kde.plasma.volumewin7mixer
 	arch = any

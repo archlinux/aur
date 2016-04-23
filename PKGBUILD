@@ -1,7 +1,7 @@
 # Maintainer: kikadf <kikadf.01@gmail.com>
 
 pkgname=plasma5-applets-volumewin7mixer
-pkgver=r7
+pkgver=r10
 pkgrel=1
 pkgdesc="A fork of the default volume plasmoid with a Windows 7 theme (vertical sliders)"
 arch=('any')
