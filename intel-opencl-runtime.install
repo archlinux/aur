@@ -1,11 +1,11 @@
 post_install() {
-  ldconfig
+	ldconfig
 }
 
 post_upgrade() {
-  ldconfig
+	ldconfig
 }
 
 post_remove() {
-  ldconfig
+	ldconfig
 }
