@@ -16,11 +16,11 @@ md5sums=('60df60279146b3bba56921ab997347de'
 
 package() {
     cd "$pkgname-$pkgver"
-    install -d $pkgdir/usr/bin
     install -d $pkgdir/usr/share/libalpm/hooks
-    install -D snapper-pac-pre $pkgdir/usr/bin/
-    install -D snapper-pac-post $pkgdir/usr/bin/
-    install -D snapper-pac-grub $pkgdir/usr/bin/
+    install -d $pkgdir/usr/share/libalpm/hooks.bin/snap-pac
+    install -D snapper-pac-pre $pkgdir/usr/share/libalpm/hooks.bin/snap-pac
+    install -D snapper-pac-post $pkgdir/usr/share/libalpm/hooks.bin/snap-pac
+    install -D snapper-pac-grub $pkgdir/usr/share/libalpm/hooks.bin/snap-pac
     install -D 10_snapper-pre.hook $pkgdir/usr/share/libalpm/hooks/
     install -D 10_snapper-post.hook $pkgdir/usr/share/libalpm/hooks/
     install -D 99_grub-config.hook $pkgdir/usr/share/libalpm/hooks/

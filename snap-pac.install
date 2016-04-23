@@ -28,7 +28,7 @@ post_upgrade() {
 }
 
 pre_remove() {
-    /usr/bin/rm -v /etc/snapper/.snap-pac-pre
+    /usr/bin/rm -v /usr/share/libalpm/hooks.bin/snap-pac/.pre
     echo "NOTE: No post snapshot will be performed for this transaction, since you are removing the pacman hooks."
 }
 
