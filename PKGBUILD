@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-plack-middleware-methodoverride'
-pkgver='0.12'
+pkgver='0.15'
 pkgrel='1'
-pkgdesc="Override REST methods to Plack apps via POST"
+pkgdesc=""
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-plack' 'perl-uri' 'perl>=5.8.1')
 makedepends=()
-url='http://search.mcpan.org/dist/Plack-Middleware-MethodOverride'
-source=('http://search.mcpan.org/CPAN/authors/id/A/AR/ARISTOTLE/Plack-Middleware-MethodOverride-0.12.tar.gz')
-md5sums=('02971e5e0d3350730a0c30481672ac0b')
-sha512sums=('150aeb8cc940fa83fae81f7b8a20432a48b4e0ba35a04c558e3f7b4dc9eeb24897ae9351492de511ce457623e2190b518c87cfdc189b40559c9009fe9d7b0991')
-_distdir="Plack-Middleware-MethodOverride-0.12"
+url='https://metacpan.org/release/Plack-Middleware-MethodOverride'
+source=('http://search.cpan.org/CPAN/authors/id/D/DW/DWHEELER/Plack-Middleware-MethodOverride-0.15.tar.gz')
+md5sums=('6422375e0f1ab232839becb04d3d4098')
+sha512sums=('5da480668764cb5e45889cce0ccd2090f5429288b95d470201bf6b76ca69a27488e58c8964e048efbb3f168760ca843f058ad5a1359f9c9ad671eb099e8316d3')
+_distdir="Plack-Middleware-MethodOverride-0.15"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
