@@ -1,13 +1,13 @@
 pkgname=prosody-mod-mam-hg
-pkgver=r1767.ca48eea4785c
+pkgver=r2165.e0b8b8a50013
 pkgrel=1
 pkgdesc="XEP-0313: Message Archive Management for Prosody"
 arch=('any')
-url="https://code.google.com/p/prosody-modules/wiki/mod_mam"
+url="https://modules.prosody.im/mod_mam.html"
 license=('MIT')
 depends=('prosody-hg')
 makedepends=('mercurial')
-source=("hg+https://code.google.com/p/prosody-modules/")
+source=("hg+https://hg.prosody.im/prosody-modules/")
 sha1sums=('SKIP')
 
 pkgver() {
