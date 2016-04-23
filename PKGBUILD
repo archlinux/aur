@@ -1,13 +1,13 @@
-# Maintainer: Sebastian Lau <archlinux _at_ slau _dot_ info>
+# Maintainer: Sebastian Lau <lauseb644 _at_ gmail _dot_ com>
 # Contributor: Skad <skadprog@gmail.com>
 pkgname="grive-tools"
 pkgver=1.15
-pkgrel=3
+pkgrel=4
 pkgdesc="Grive Tools will assist in the installation and setup of Google Drive under GTK"
 arch=('any')
 url="http://www.thefanclub.co.za/how-to/ubuntu-google-drive-client-grive-and-grive-tools"
 license=('LGPL3')
-depends=('grive' 'lsb-release' 'libappindicator-gtk3' 'python2' 'glib2' 'zenity' 'python2-pyinotify' 'python2-gobject' 'expect')
+depends=('lsb-release' 'libappindicator-gtk3' 'python2' 'glib2' 'zenity' 'python2-pyinotify' 'python2-gobject' 'expect')
 source=("https://launchpad.net/~thefanclub/+archive/grive-tools/+files/${pkgname}_${pkgver}.tar.gz"	)
 md5sums=('SKIP')
 install='grive-tools.install'
@@ -22,9 +22,11 @@ package() {
 	fi
 
 	sed -i 's|\(/usr/bin/env python\)|\12|' opt/thefanclub/$pkgname/grive-indicator
+	sed -i 's|thefanclub\/||' usr/share/applications/*
 	chmod 755 opt/thefanclub/$pkgname/grive-indicator
 	mv opt/thefanclub/$pkgname opt
 	rmdir opt/thefanclub
+	sed -i 's|thefanclub\/||' opt/grive-tools/grive-indicator
 	cp -r opt usr $pkgdir/
 
 }
