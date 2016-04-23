@@ -1,8 +1,8 @@
 pkgver=2.0.14
 pkgrel=2
 echo "pkgname=whatsie
-pkgver=2.0.14
-pkgrel=1
+pkgver=$pkgver
+pkgrel=$pkgrel
 epoch=
 pkgdesc=\"A simple & beautiful desktop client for WhatsApp Web.\"
 arch=('x86_64')
