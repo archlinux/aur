@@ -23,7 +23,7 @@ package() {
 	cd "${srcdir}"/opencl_runtime_*/
 
 	# Copy license
-	install -Dm644 EULA.txt "${pkgdir}"/usr/share/licenses/opencl-runtime/license
+	install -Dm644 EULA.txt "${pkgdir}"/usr/share/licenses/intel-opencl-runtime/license
 
 	# Unpack RPM
 	rm rpm/opencl-1.2-base-pset-*.rpm
