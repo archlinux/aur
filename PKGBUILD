@@ -6,7 +6,7 @@ _compile=0
 
 pkgname=vlc-plugin-fluidsynth
 pkgver=2.2.2
-pkgrel=5
+pkgrel=6
 pkgrel_status=
 pkgdesc="FluidSynth plugin for VLC"
 arch=('i686' 'x86_64')
