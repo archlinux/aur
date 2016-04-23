@@ -1,20 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-uri-db'
-pkgver='0.15'
+pkgver='0.17'
 pkgrel='1'
-pkgdesc="URI::db - Database URIs"
+pkgdesc=""
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-uri>=1.40' 'perl-uri-nested>=0.10' 'perl')
+depends=('perl-module-build>=0.30' 'perl-uri>=1.40' 'perl-uri-nested>=0.10')
 makedepends=()
-url='http://search.mcpan.org/dist/URI-db'
-source=('http://search.mcpan.org/CPAN/authors/id/D/DW/DWHEELER/URI-db-0.15.tar.gz')
-md5sums=('1bcc2205ce7ffd393634127d699bf971')
-sha512sums=('9331c3b7da20e1a8a4500f069f34e04459c214147b116386c4413a0a88a55671a8be42285c4a3ddb5eba5d7d8dbfa4527029a7ccf3444193609777756bf8d3bb')
-_distdir="URI-db-0.15"
+url='https://metacpan.org/release/URI-db'
+source=('http://search.cpan.org/CPAN/authors/id/D/DW/DWHEELER/URI-db-0.17.tar.gz')
+md5sums=('492b2fcf576a11a56f9984418ed02bcf')
+sha512sums=('31e7284e7662d11c3b27c4f232d023b610187d82d17b5cc2ea3519a5a759a91d8b36f3a3947a905e516a92ebab5201f2a696b479cf95c2b5fdf43f797b4f6a12')
+_distdir="URI-db-0.17"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
