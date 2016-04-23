@@ -11,7 +11,7 @@ depends=('python2' 'python2-lxml' 'python2-pycurl')
 makedepends=('python2' 'python2-setuptools')
 license=('ASL 2.0')
 source=("http://resources.ovirt.org/pub/ovirt-3.6-snapshot/src/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('d542a8227faadb536dee03b4f67d25123db4e13e3df2da525389f9f905df384c')
+sha256sums=('8f76544cca345cfffb3212ba5d65594f5cf1a4d20f602cd50b9f9111898f602f')
 
 prepare() {
   pushd "${srcdir}/${pkgname}"
