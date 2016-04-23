@@ -1,13 +1,13 @@
 pkgname=prosody-mod-csi-hg
-pkgver=r1769.f2705465cab4
+pkgver=r2165.e0b8b8a50013
 pkgrel=1
 pkgdesc="XEP-0352: Client State Indication for prosody"
 arch=('any')
-url="https://code.google.com/p/prosody-modules/wiki/mod_csi"
+url="https://modules.prosody.im/mod_csi.html"
 license=('MIT')
 depends=('prosody')
 makedepends=('mercurial')
-source=("hg+https://code.google.com/p/prosody-modules/")
+source=("hg+https://hg.prosody.im/prosody-modules/")
 sha1sums=('SKIP')
 
 pkgver() {
