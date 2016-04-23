@@ -1,7 +1,24 @@
 0a1,2
 > #!/bin/env fish
 > 
-22,30d23
+5,30d6
+< if functions -q fisher
+<     if not fisher -v | command awk '
+<         {
+<             split($3, v, ".")
+< 
+<             if (v[1] > 1) {
+<                 exit 1
+<             }
+<         }
+<     '
+<         __fisher_msg_log__ "You seem to be running fisherman >=2.0.0 :)"
+<         functions -e __fisher_msg_log__
+<         read -p "echo Press enter to exit..."
+<         exit
+<     end
+< end
+< 
 < if test ! -z "$fisher_home"
 <     __fisher_msg_log__ "Removing old fisherman's home:"
 <     __fisher_msg_log__ "$fisher_home"
@@ -11,19 +28,46 @@
 <     __fisher_msg_log__
 < end
 < 
-54,58d46
+48,85d23
+< set -l fish_config "$xdg_config/fish/config.fish"
+< 
+< if test -s "$fish_config"
+< 
+<     command awk '
+< 
 <         /^set (-g)? fisher_home/ {
 <             print("# " $0)
 <             next
 <         }
 < 
-64,68d51
+<         /^set (-g)? fisher_config/ {
+<             print("# " $0)
+<             next
+<         }
+< 
 <         /^source \$fisher_home\/config.fish/ {
 <             print("# " $0)
 <             next
 <         }
 < 
-102,110d84
+<         {
+<             print $0
+<         }
+< 
+<     ' < "$fish_config" > "$fish_config-tmp-copy"
+< 
+<     command mv "$fish_config-tmp-copy" "$fish_config"
+< 
+<     __fisher_msg_log__ "I have commented out the old fisherman's init code"
+<     __fisher_msg_log__ "from your fish configuration file:"
+<     __fisher_msg_log__ "$fish_config"
+<     __fisher_msg_log__
+<     __fisher_msg_log__ "We don't need this code anymore, so you can remove it."
+<     __fisher_msg_log__
+< end
+< 
+< 
+102,110d39
 < 
 < set -l fisher_new_home "$xdg_config/fish/functions/fisher.fish"
 < 
@@ -33,5 +77,5 @@
 < 
 < curl --progress-bar -Lo "$fisher_new_home" --create-dirs git.io/fisherman
 < 
-120d93
+120d48
 < source "$fisher_new_home"
