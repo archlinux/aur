@@ -12,7 +12,7 @@
 # update and just generally don't seem to care much.
 pkgname=synergy
 pkgver=1.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Share a single mouse and keyboard between multiple computers"
 url="http://synergy-foss.org"
 arch=('i686' 'x86_64')
@@ -24,13 +24,13 @@ optdepends=(
   'openssl: encryption support'
 )
 source=(synergy-${pkgver}.tar.gz::https://github.com/symless/synergy/archive/v${pkgver}-stable.tar.gz
-        synergys_at.socket
-        synergys_at.service
+        synergys.socket
+        synergys.service
         fix-incompetence.patch
         wrapper)
 sha512sums=('025305fc1aca425b27c1d4f16dd0c6ee7798c048e234c8a27272b81b03c0c1cb35fab6639707c1b55d58e7676fe2abf058b6f93e994ae5b256034c32c6fe806a'
             'f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62'
-            'e85cc3452bb8ba8fcccb1857386c77eb1e4cabb149a1c492c56b38e1b121ac0e7d96c6fcbd3c9b522d3a4ae9d7a9974f4a89fc32b02a56f665be92af219e371c'
+            '9663a11b915e10e60317e732a4d1191e8f8ff19176994c27dd20aa445daab7565bd624e5575c9c639d144293879fbe8376834a076723f778fd322ebd1c9f2029'
             'd598f05614d0db894781e85ecab9a1196da3df6967e3bd44f5b8246c7cba76859734cf953edddf0addf6464f62f88b99da52fb5674e8db4a58bf971d078da83a'
             'a2e126ad3ac53fb855a331134982f86ef81ffc75b73e73b242e6f854fe7e2daec160fac2161acdc7020cd7f57ae0a8826ac7a249ad10b03db614ada0062b3e93')
 
@@ -85,17 +85,17 @@ package() {
   install -Dm 755 bin/plugins/libns.so "${pkgdir}/usr/lib/${pkgname}/libns.so"
 
   # install config
-  install -Dm 644 "doc/${pkgname}.conf.example" "${pkgdir}/etc/${pkgname}.conf.example" 
+  install -Dm 644 "doc/${pkgname}.conf.example" "${pkgdir}/etc/${pkgname}.conf.example"
   install -Dm 644 "doc/${pkgname}.conf.example-advanced" "${pkgdir}/etc/${pkgname}.conf.example-advanced"
-  install -Dm 644 "doc/${pkgname}.conf.example-basic" "${pkgdir}/etc/${pkgname}.conf.example-basic" 
+  install -Dm 644 "doc/${pkgname}.conf.example-basic" "${pkgdir}/etc/${pkgname}.conf.example-basic"
 
   # install manfiles
   install -Dm 644 "doc/${pkgname}c.man" "${pkgdir}/usr/share/man/man1/${pkgname}c.1"
   install -Dm 644 "doc/${pkgname}s.man" "${pkgdir}/usr/share/man/man1/${pkgname}s.1"
 
   # install systemd service and socket
-  install -Dm 644 "${srcdir}/synergys_at.service" "${pkgdir}/usr/lib/systemd/system/synergys@.service"
-  install -Dm 644 "${srcdir}/synergys_at.socket" "${pkgdir}/usr/lib/systemd/system/synergys@.socket"
+  install -Dm 644 "${srcdir}/synergys.service" "${pkgdir}/usr/lib/systemd/user/synergys.service"
+  install -Dm 644 "${srcdir}/synergys.socket" "${pkgdir}/usr/lib/systemd/user/synergys.socket"
 
   # install desktop/icon stuff
   install -Dm 644 "res/synergy.ico" "${pkgdir}/usr/share/icons/synergy.ico"
