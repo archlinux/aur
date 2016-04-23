@@ -1,6 +1,6 @@
 pkgname=whatsie
 pkgver=2.0.14
-pkgrel=16
+pkgrel=17
 pkgdesc="A simple & beautiful desktop client for WhatsApp Web."
 arch=('x86_64')
 url="https://github.com/Aluxian/Whatsie"
@@ -16,7 +16,7 @@ package() {
   bsdtar -xf data.tar.gz -C "$pkgdir/"
 
   msg2 "Fixing permissions of documentation folder..."
-  chmod -R 755 "$pkgdir/opt/"
-  chmod -R 755 "$pkgdir/etc/"
-  chmod -R 755 "$pkgdir/usr/"
+  chmod -R 775 "$pkgdir/opt/"
+  chmod -R 775 "$pkgdir/etc/"
+  chmod -R 775 "$pkgdir/usr/"
 }
