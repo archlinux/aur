@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-enum'
-pkgver='1.016'
+pkgver='1.11'
 pkgrel='1'
 pkgdesc="C style enumerated types and bitmask flags in Perl"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/enum'
-source=('http://search.cpan.org/CPAN/authors/id/Z/ZE/ZENIN/enum-1.016.tar.gz')
-md5sums=('aace7ee8648e5d20c0e81f5a51cb6604')
-sha512sums=('31e0d61a8770a82dd984b14db7b9fe5a65883b6e3d76ba237220c8d54c19d26d95d5c2e1e1099a1b4e8c64e03d464c50c837eb160300abb5d080064c2186bbc6')
-_distdir="enum-1.016"
+url='https://metacpan.org/release/enum'
+source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/enum-1.11.tar.gz')
+md5sums=('61b1a67dfaf8e16db0c3e80824797c1b')
+sha512sums=('53d7137f42e4845887f6067f16e68141827379c40c50299d36f4c44ba005cea52610c55a7eb09600ff36aac87d11b9c992e63007c1e4fe11a12e381d7515f733')
+_distdir="enum-1.11"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
