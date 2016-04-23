@@ -4,7 +4,7 @@ pkgdesc="ROS - Generalized client side source for rosserial."
 url='http://ros.org/wiki/rosserial_client'
 
 pkgname='ros-indigo-rosserial-client'
-pkgver='0.6.3'
+pkgver='0.6.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
