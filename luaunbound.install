@@ -1,5 +1,5 @@
 post_install(){
-    echo "To enable luaunbound, add the following to the global section of your `prosody.cfg.lua`:"
-    echo 'RunScript "use\_unbound.lua"'
+    echo "To enable luaunbound, add the following to the global section of your 'prosody.cfg.lua':"
+    echo "RunScript 'use\_unbound.lua'"
     echo "More config info can be found in /usr/share/doc/luaunbound/README"
 }

@@ -1,7 +1,7 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname=luaunbound-hg
 pkgver=r180.f270a1cf86ce
-pkgrel=1
+pkgrel=2
 pkgdesc="drop-in replacement for Prosodys internal DNS library with a binding to libunbound"
 url="https://www.zash.se/luaunbound.html"
 arch=('i686' 'x86_64')
@@ -19,12 +19,6 @@ pkgver() {
     cd "$pkgname"
     printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
-
-#pkgver() {
-#    cd ${pkgname}
-#    hg log -r . --template '{latesttag}.{latesttagdistance}.{node|short}\n'
-#}
-
 build() {
     cd "$srcdir/$pkgname"
     ./squish.sh > use_unbound.lua
