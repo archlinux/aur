@@ -1,6 +1,6 @@
 pkgname=whatsie
 pkgver=2.0.14
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="A simple & beautiful desktop client for WhatsApp Web."
 arch=('x86_64')
