@@ -1,14 +1,14 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=texinfo-svn
 pkgver=7124
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU documentation system for on-line information and printed output"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/texinfo/"
 license=('GPL')
 groups=('base' 'base-devel')
 depends=('coreutils')
-makedepends=('subversion')
+makedepends=('subversion' 'help2man')
 provides=('texinfo')
 conflicts=('texinfo')
 install=texinfo.install
