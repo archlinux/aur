@@ -12,7 +12,7 @@ source=(${url}/archive/${pkgver}.tar.gz
         snap-pac.install)
 install="snap-pac.install"
 md5sums=('60df60279146b3bba56921ab997347de'
-         '026a50b8958363cdaf225d3d895e2647')
+         '105b609a167bc15f54b6f19efcf411f4')
 
 package() {
     cd "$pkgname-$pkgver"
