@@ -1,5 +1,5 @@
 pkgver=2.0.14
-pkgrel=14
+pkgrel=15
 echo "pkgname=whatsie
 pkgver=$pkgver
 pkgrel=$pkgrel
@@ -24,33 +24,6 @@ package() {
 }" > PKGBUILD
 
 
-echo "pkgname = whatsie
-pkgver = $pkgver
-pkgdesc = A simple & beautiful desktop client for WhatsApp Web.
-url = https://whatsie.chat
-builddate = 1460577681
-packager = whatsie
-arch = x86_64
-size = 140662880
-license = MIT
-backup = etc/xdg/autostart/whatsie.desktop
-depend = bash-completion
-depend = desktop-file-utils
-depend = gconf
-depend = gtk2
-depend = gvfs
-depend = hicolor-icon-theme
-depend = libcap
-depend = libgcrypt
-depend = libgcrypt11
-depend = libnotify
-depend = libsystemd
-depend = libxtst
-depend = nss
-depend = xdg-utils
-optdepend = gir1.2-gnomekeyring-1.0
-optdepend = libgnome-keyring
-optdepend = lsb-release" > .PKGINFO
 
 
 makepkg --printsrcinfo > .SRCINFO
