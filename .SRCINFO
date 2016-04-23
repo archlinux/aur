@@ -1,15 +1,17 @@
 pkgbase = r-cran-distr
 	pkgdesc = Object oriented implementation of distributions
-	pkgver = 2.5.3
+	pkgver = 2.6
 	pkgrel = 1
 	url = http://cran.r-project.org/web/packages/distr/index.html
 	arch = any
 	license = LGPL3
+	makedepends = r
+	makedepends = r-cran-startupmsg
+	makedepends = r-cran-sfsmisc
+	makedepends = r-cran-sweavelistingutils
 	depends = r
-	optdepends = r-cran-distrex
-	optdepends = r-cran-sweavelistingutils
-	source = http://cran.r-project.org/src/contrib/distr_2.5.3.tar.gz
-	md5sums = c704f5360fa5c3bc41bb423024e8878f
+	source = http://cran.r-project.org/src/contrib/distr_2.6.tar.gz
+	md5sums = 55edbe6f900a6d859f35289adfa3ed55
 
 pkgname = r-cran-distr
 
