@@ -1,8 +1,8 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-want'
-pkgver='0.26'
+pkgver='0.29'
 pkgrel='1'
 pkgdesc="A generalisation of wantarray"
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='https://metacpan.org/release/Want'
-source=('http://search.cpan.org/CPAN/authors/id/R/RO/ROBIN/Want-0.26.tar.gz')
-md5sums=('3f63f10da1d5407d72a64ef62b5e6264')
-sha512sums=('4b10d483068f0ab976c247b416477fe42903e06abf46678d5c5cb2308732b69038761b7aaefe42e232d666c3032e6cf303c11918f10dde1572bf25aa3ae1e8bd')
-_distdir="Want-0.26"
+source=('http://search.cpan.org/CPAN/authors/id/R/RO/ROBIN/Want-0.29.tar.gz')
+md5sums=('33b2dae5db59781b9a0434fa1db04aab')
+sha512sums=('08df985de16b5e9dd67d6ed38d319da2511e92098f95a861a5a695eed8d77eaf412671b626e4da29b536147ad4da4a8cfdfd789ef204dac240073091481f3c1a')
+_distdir="Want-0.29"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
