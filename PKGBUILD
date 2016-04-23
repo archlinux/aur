@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-json-pp'
-pkgver='2.27202'
+pkgver='2.27400'
 pkgrel='1'
 pkgdesc="JSON::XS compatible pure-Perl module."
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/JSON-PP'
-source=('http://search.cpan.org/CPAN/authors/id/M/MA/MAKAMAKA/JSON-PP-2.27202.tar.gz')
-md5sums=('d7d6cbd3589e793aaa66a88833c02ce0')
-sha512sums=('e8374a30e107f02c1226d33fb5cf063142a9c26445fed0acf0d56de901b4be007af75f1a90578568d0eb25301c8ee5eb963a7b29b6dcd4bad421d980b485d211')
-_distdir="JSON-PP-2.27202"
+url='https://metacpan.org/release/JSON-PP'
+source=('http://search.cpan.org/CPAN/authors/id/M/MA/MAKAMAKA/JSON-PP-2.27400.tar.gz')
+md5sums=('544b03d04d141d66cc27c8b9f835195f')
+sha512sums=('b872ea18bebd369824319dce2186de5d6f85a0a5576e814e9dd74647df510d1b3cde9f4facacdd238458733b51b2651cd2c4f52bca39528097e3500aac2f704d')
+_distdir="JSON-PP-2.27400"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
