@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-test-checkmanifest'
-pkgver='1.28'
+pkgver='1.29'
 pkgrel='1'
 pkgdesc="Check if your Manifest matches your distro"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.mcpan.org/dist/Test-CheckManifest'
-source=('http://search.cpan.org/CPAN/authors/id/R/RE/RENEEB/Test-CheckManifest-1.28.tar.gz')
-md5sums=('5d26d71cede4310f7c8463cac283f5c9')
-sha512sums=('5e77e1259c35be90642ef34f957119de25edf2bdea282bc3f5536cff005e9322d8220db2f3adc4d88ae71fc5e02e8a3da3b2d8341dce38afacc773e117a0ab3b')
-_distdir="Test-CheckManifest-1.28"
+url='https://metacpan.org/release/Test-CheckManifest'
+source=('http://search.cpan.org/CPAN/authors/id/R/RE/RENEEB/Test-CheckManifest-1.29.tar.gz')
+md5sums=('7ad56b6f7149b3b08f4030175deadb99')
+sha512sums=('5844a950d623d3e96c75a6d5cc4dc545962b1f67348fca87251d84d1603da6b264e9c71bc272409731a645d8b04b92982b2fc7e4283e4ae6f3e560a53b6cb566')
+_distdir="Test-CheckManifest-1.29"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
