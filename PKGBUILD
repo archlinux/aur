@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-exporter-easy'
-pkgver='0.16'
+pkgver='0.18'
 pkgrel='1'
 pkgdesc="Takes the drudgery out of Exporting symbols"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/Exporter-Easy'
-source=('http://search.cpan.org/CPAN/authors/id/F/FD/FDALY/Exporter-Easy-0.16.tar.gz')
-md5sums=('16f44909db2e85578ed2f26db490312b')
-sha512sums=('039c119344a92e2d2e549d0f9910d17d3d05eaeeb3b292de398893b1e2ca134122e75be7cdc820b3c8a4ebb7e9f657f0657a2376dc13eb36a40c4296a4fda93a')
-_distdir="Exporter-Easy-0.16"
+url='https://metacpan.org/release/Exporter-Easy'
+source=('http://search.cpan.org/CPAN/authors/id/N/NE/NEILB/Exporter-Easy-0.18.tar.gz')
+md5sums=('aaa738fc934725c12f54eaa3a1eace78')
+sha512sums=('f57782bf9444831f613c2410f08a6414f0cb14fb25ed3a76f48c7385ebe5c615e7cb142de0b3d4038e4a5ea38d51da76432541807385d54fbf96b71887b357de')
+_distdir="Exporter-Easy-0.18"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
