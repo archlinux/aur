@@ -5,24 +5,24 @@
 
 pkgname=logrotate-nosystemd
 _pkgname=logrotate
-pkgver=3.9.1
+pkgver=3.9.2
 pkgrel=1
 pkgdesc="Rotates system logs automatically"
 arch=('i686' 'x86_64')
-url="https://fedorahosted.org/logrotate/"
+url="https://github.com/logrotate/logrotate"
 license=('GPL')
 groups=('base')
 depends=('popt' 'gzip' 'acl')
 optdepends=('cron: scheduled log rotation')
-provides=($_pkgname)
-conflicts=($_pkgname)
-replaces=($_pkgname)
+provides=('logrotate')
+conflicts=('logrotate')
+replaces=('logrotate')
 backup=('etc/logrotate.conf')
-source=("https://fedorahosted.org/releases/l/o/logrotate/logrotate-${pkgver}.tar.gz"
+source=("https://github.com/logrotate/logrotate/archive/${pkgver}.tar.gz"
         'paths.patch'
         'logrotate.conf'
         'logrotate.cron.daily')
-md5sums=('4492b145b6d542e4a2f41e77fa199ab0'
+md5sums=('584bca013dcceeb23b06b27d6d0342fb'
          'e76526bcd6fc33c9d921e1cb1eff1ffb'
          '94dae4d3eded2fab9ae879533d3680db'
          'dd5fd26724274fd9c827eadad60ff4c5')
