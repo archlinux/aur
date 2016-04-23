@@ -2,7 +2,7 @@
 _dbtype=mysql
 _pkgname=zabbix
 pkgname=${_pkgname}-server-${_dbtype}
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=("i686"
@@ -32,9 +32,9 @@ install="${_pkgname}-server.install"
 options=("emptydirs")
 source=("http://downloads.sourceforge.net/sourceforge/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "${_pkgname}-server.install")
-md5sums=("890d9eec69304ad552959fabe0a5d122"
+md5sums=("9b16ba5a69cb1c0be78d65feda61af47"
          "ff761cbdafa70b6c4b26a39b8115ac64")
-sha1sums=("2e4e870bc3359f594d2d661f7e1fe9e8163ef79e"
+sha1sums=("2de4f6f245e02786ff51747db5fad933b626387a"
           "173b60c310ae9453a0e75429b0917ad8bbf31e6f")
 
 prepare() {
@@ -44,6 +44,7 @@ Defaults visiblepw
 
 # User privilege specification
 zabbix ALL=(root) NOPASSWD: /usr/bin/nmap
+zabbix ALL=(root) NOPASSWD: /usr/bin/arping
 EOL
 
 cat << EOL > "${srcdir}/${_pkgname}-server.service"
