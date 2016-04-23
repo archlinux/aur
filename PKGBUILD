@@ -2,7 +2,7 @@
 # Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani at gmail dot com>
 
 pkgname=krita-git
-pkgver=3.0.89.r40008.e05682d
+pkgver=3.0.90.r40500.e457160
 pkgrel=1
 pkgdesc="A free digital painting application. Digital Painting, Creative Freedom!. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ install=krita-git.install
 
 pkgver() {
   cd krita
-  _ver="$(cat CMakeLists.txt | grep -m3 -e CALLIGRA_STABLE_VERSION_MAJOR -e CALLIGRA_STABLE_VERSION_MINOR -e CALLIGRA_VERSION_RELEASE | cut -d ')' -f1 | grep -o "[[:digit:]]*" | paste -sd'.')"
+  _ver="$(cat CMakeLists.txt | grep -m3 -e KRITA_STABLE_VERSION_MAJOR -e KRITA_STABLE_VERSION_MINOR -e KRITA_VERSION_RELEASE | cut -d ')' -f1 | grep -o "[[:digit:]]*" | paste -sd'.')"
   echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
