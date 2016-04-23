@@ -1,6 +1,6 @@
 pkgbase = whatsie
 	pkgver = 2.0.14
-	pkgrel = 13
+	pkgrel = 14
 	arch = any
 	license = MIT
 	depends = desktop-file-utils
