@@ -1,0 +1,1 @@
+update_pkgver=$(wget -q -O- http://repo.vivaldi.com/archive/rpm/x86_64/ | sed -rne 's/.*(vivaldi-snapshot.*rpm).*/\1/p' | sort -V | tail -n1 | sed -rne 's/.*([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+).*/\1/p')
