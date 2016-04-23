@@ -1,6 +1,6 @@
 pkgname=whatsie
 pkgver=2.0.14
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A simple & beautiful desktop client for WhatsApp Web."
 arch=('x86_64')
@@ -14,10 +14,10 @@ source=("whatsie-2.0.14-linux-amd64.deb::https://github.com/Aluxian/Whatsie/rele
 md5sums=('a7e1cb4c020c98aa74cc75e1cac22014')
 package() {
   msg2 "Extracting the data.tar.gz..."
-  sudo bsdtar -xf data.tar.gz -C "/"
+  sudo bsdtar -xf data.tar.gz -C "$pkgdir/"
 
   msg2 "Fixing permissions of documentation folder..."
-  chmod -R 755 ""/opt/
-  chmod -R 755 ""/etc/
-  chmod -R 755 ""/usr/
+  chmod -R 755 "$pkgdir"/opt/
+  chmod -R 755 "$pkgdir"/etc/
+  chmod -R 755 "$pkgdir"/usr/
 }
