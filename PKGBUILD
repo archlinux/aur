@@ -4,7 +4,7 @@
 
 pkgname=runescape-launcher
 pkgver=2.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="RuneScape Game Client"
 arch=(x86_64)
 license=(custom)
@@ -13,7 +13,7 @@ depends=(
     glew1.10
     libcurl-compat
     libpng12
-    libvorbis
+    gst-plugins-base
     sdl2
     webkitgtk2
     desktop-file-utils
