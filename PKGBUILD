@@ -3,7 +3,7 @@
 
 pkgname=paper-gtk-theme-git
 _pkgname=paper-gtk-theme
-pkgver=215.bdca59f
+pkgver=244.de443e3
 pkgrel=1
 pkgdesc="A modern desktop theme suite. Its design is mostly flat with a minimal use of shadows for depth."
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=("gtk-engine-murrine: gtk2 bindings"
 	"gtk3: gtk3 bindings")
 # Optional dependencies for developers
 #optdepends=("python: scripts to simplify the rendering process"
-#	"inkscape: edit theme assets")
+#	"inkscape: recommended editing software for theme assets")
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
