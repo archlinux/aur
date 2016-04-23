@@ -1,12 +1,12 @@
 pkgbase = earlyoom
 	pkgdesc = Early OOM Daemon for Linux
 	pkgver = 0.10
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/rfjakob/earlyoom
 	arch = any
 	license = MIT
-	source = https://github.com/florianjacob/earlyoom/archive/v0.10.tar.gz
-	md5sums = da4e9939aee80e31f8ea63c8e8ce1f38
+	source = https://github.com/rfjakob/earlyoom/archive/v0.10.tar.gz
+	md5sums = e5119cc19ad66c24bb3754e5487d79d0
 
 pkgname = earlyoom
 

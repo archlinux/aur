@@ -1,15 +1,15 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=earlyoom
 pkgver=0.10
-pkgrel=3
+pkgrel=4
 pkgdesc="Early OOM Daemon for Linux"
 arch=('any')
 url="https://github.com/rfjakob/earlyoom"
 license=('MIT')
 source=(
-	"https://github.com/florianjacob/$pkgname/archive/v$pkgver.tar.gz"
+	"https://github.com/rfjakob/$pkgname/archive/v$pkgver.tar.gz"
 )
-md5sums=('da4e9939aee80e31f8ea63c8e8ce1f38')
+md5sums=('e5119cc19ad66c24bb3754e5487d79d0')
 
 build() {
 	cd "$pkgname-$pkgver"
