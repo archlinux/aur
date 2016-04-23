@@ -1,5 +1,5 @@
 pkgver=2.0.14
-pkgrel=5
+pkgrel=6
 echo "pkgname=whatsie
 pkgver=$pkgver
 pkgrel=$pkgrel
@@ -60,6 +60,8 @@ echo "pkgbase = whatsie
 	depends = dpkg
 pkgname = whatsie" > .SRCINFO
 
+chmod 755 .PKGINFO
+chmod 755 .BUILDINFO
 git add -A
 git commit -m "Release $pkgver PackageRel $pkgrel"
 git push AUR master
