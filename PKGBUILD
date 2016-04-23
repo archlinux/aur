@@ -1,8 +1,8 @@
 # Maintainer: Dennis Hamester <dennis.hamester@startmail.com>
 
-_commit='0e55e1092d97ef793064561d27eb078b277ac4cb'
+_commit='0e7a2de02532756bc6096c5841567e5cb5b41b45'
 pkgname=scd
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Free and open source driver for the Steam Controller"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('custom:ISC')
 makedepends=('cmake' 'scrawpp')
 depends=('scraw')
 source=("scd-v$pkgver.tar.gz::https://gitlab.com/dennis-hamester/scd/repository/archive.tar.gz?ref=v$pkgver")
-sha256sums=('a9967c8b51f899e7039d500dce7c3cfc4add271d3d7700259a2ea16977c71cde')
+sha256sums=('c794a3b9053ce72ed0a0ad01a63bd27636466da7f5b06d5e8e3d93917f28e6f8')
 
 build() {
   cd ${pkgname}-v${pkgver}-${_commit}
