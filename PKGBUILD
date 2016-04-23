@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=bitcoin-headless-addrindex
-pkgver=0.12.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="Bitcoin Core headless P2P wallet with addrindex"
 arch=('i686' 'x86_64')
@@ -12,7 +12,6 @@ depends=('boost'
 makedepends=('autoconf'
              'automake'
              'binutils'
-             'gcc'
              'libtool'
              'm4'
              'make'
@@ -20,7 +19,7 @@ makedepends=('autoconf'
 optdepends=('miniupnpc: build with support for UPnP')
 license=('MIT')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/btcdrak/${pkgname%%-*}/tar.gz/v$pkgver-addrindex)
-sha256sums=('f1b6b185e868bd4bec942b562757485e2a10eafceef88e53dc750df5c049730c')
+sha256sums=('454d8780089428cb28e18ad0fde9235557d125a2c3469f1b054a674314ef5b89')
 provides=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-tx')
 conflicts=('bitcoin-cli' 'bitcoin-daemon' 'bitcoin-qt' 'bitcoin-tx')
 
