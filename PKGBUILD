@@ -1,7 +1,7 @@
 #Maintainer: smcdougall <smcdougall.mot at gmail dot com>
 
 pkgname=gnome-shell-extension-multi-monitors-add-on-git
-pkgver=20151020
+pkgver=20160423
 pkgrel=1
 pkgdesc="Extension inspired by https://github.com/darkxst/multiple-monitor-panels and rewritten from scratch for gnome-shell version 3.10.4. Adds panels and thumbnails for additional monitors. Settings changes are applied in dynamic fashion, no restart needed."
 arch=('any')
