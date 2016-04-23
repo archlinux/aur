@@ -4,9 +4,11 @@
 pkgname=clerk-git
 pkgver=596.d8f6310
 pkgrel=1
-pkgdesc="clerk - mpd client for dmenu/rofi"
+pkgdesc="clerk - mpd client for rofi"
 arch=('any')
 url='https://github.com/carnager/clerk'
+conflicts=('clerk')
+provides=('clerk')
 license=('GPL')
 depends=('mpc' 'python-mpd2' 'python-notify2' 'rofi-git')
 optdepends=('mpd-sima: similar artists mode')
