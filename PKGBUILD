@@ -21,7 +21,7 @@ optdepends=('fb-client:         Upload to paste.xinu.at (or selfhosted filebin)'
 options=(!strip)
 install="teiler.install"
 makedepends=('git')
-source=('git+http://git.53280.de/teiler')
+source=('git+https://git.53280.de/teiler')
 
 pkgver() {
     cd teiler
