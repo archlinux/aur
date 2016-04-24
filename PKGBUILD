@@ -20,7 +20,6 @@ _gitname=vk
 build() {
   cd "$srcdir/$_gitname"
   dub build
-  strip vk
 }
 
 package() {
