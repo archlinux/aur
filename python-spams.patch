@@ -1,6 +1,18 @@
+diff -Naur trunka/linalg/linalg.h trunk/linalg/linalg.h
+--- trunka/linalg/linalg.h	2016-04-24 08:33:27.339077788 -0500
++++ trunk/linalg/linalg.h	2016-04-24 08:34:03.125869367 -0500
+@@ -1679,7 +1679,7 @@
+          up.copy(u);
+       }
+       lambda+=theta*norm;
+-      if isnan(lambda) {
++      if (isnan(lambda)) {
+          std::cerr << "eigLargestSymApprox failed" << std::endl;
+          exit(1);
+       }
 diff -Naur trunka/swig/python/mkpy trunk/swig/python/mkpy
---- trunka/swig/python/mkpy	2016-02-18 14:39:43.250176140 -0600
-+++ trunk/swig/python/mkpy	2016-02-18 14:39:56.713436537 -0600
+--- trunka/swig/python/mkpy	2016-04-24 08:33:27.339077788 -0500
++++ trunk/swig/python/mkpy	2016-04-24 08:34:03.125869367 -0500
 @@ -10,8 +10,8 @@
      exec /cygdrive/c/MinGW/msys/1.0/bin/bash $0 $optx $*
  fi
@@ -22,8 +34,8 @@ diff -Naur trunka/swig/python/mkpy trunk/swig/python/mkpy
      }
      if [ -e $nom.cpp ]; then
 diff -Naur trunka/swig/python/numpy.i trunk/swig/python/numpy.i
---- trunka/swig/python/numpy.i	2016-02-18 14:39:43.250176140 -0600
-+++ trunk/swig/python/numpy.i	2016-02-18 14:39:56.713436537 -0600
+--- trunka/swig/python/numpy.i	2016-04-24 08:33:27.342411134 -0500
++++ trunk/swig/python/numpy.i	2016-04-24 08:34:03.125869367 -0500
 @@ -107,9 +107,11 @@
      if (PyDict_Check(    py_obj)) return "dict"        ;
      if (PyList_Check(    py_obj)) return "list"        ;
@@ -37,47 +49,47 @@ diff -Naur trunka/swig/python/numpy.i trunk/swig/python/numpy.i
      return "unkown type";
    }
 diff -Naur trunka/swig/python/py_typemaps.i trunk/swig/python/py_typemaps.i
---- trunka/swig/python/py_typemaps.i	2016-02-18 14:39:43.253509455 -0600
-+++ trunk/swig/python/py_typemaps.i	2016-02-18 14:40:13.583345144 -0600
+--- trunka/swig/python/py_typemaps.i	2016-04-24 08:33:27.342411134 -0500
++++ trunk/swig/python/py_typemaps.i	2016-04-24 08:34:24.975945317 -0500
 @@ -64,13 +64,11 @@
  %typemap(in,numinputs=0,fragment="NumPy_Fragments") (Vector<DATA_TYPE> **ARGOUT_VECTOR)
  (Vector<DATA_TYPE>  *data_temp)
  {
 -	# argout in
-	$1 = &data_temp;
+ 	$1 = &data_temp;	
  }
-
- %typemap(argout) (Vector<DATA_TYPE> **ARGOUT_VECTOR )
+ 
+ %typemap(argout) (Vector<DATA_TYPE> **ARGOUT_VECTOR ) 
  {
 -	  # test argout
-	  if(data_temp$argnum != NULL) {
-	    npy_intp n = data_temp$argnum->n();
-	    npy_intp dims[1] = {n};
+ 	  if(data_temp$argnum != NULL) {
+ 	    npy_intp n = data_temp$argnum->n();
+ 	    npy_intp dims[1] = {n};
 @@ -142,13 +140,11 @@
  %typemap(in,numinputs=0,fragment="NumPy_Fragments") (Matrix<DATA_TYPE> **ARGOUT_MATRIX)
  (Matrix<DATA_TYPE>  *data_temp)
  {
 -	# argout in
-	$1 = &data_temp;
+ 	$1 = &data_temp;	
  }
-
- %typemap(argout) (Matrix<DATA_TYPE> **ARGOUT_MATRIX )
+ 
+ %typemap(argout) (Matrix<DATA_TYPE> **ARGOUT_MATRIX ) 
  {
 -	  # test argout
-	  if(data_temp$argnum != NULL) {
-	    npy_intp m = data_temp$argnum->m();
-	    npy_intp n = data_temp$argnum->n();
+ 	  if(data_temp$argnum != NULL) {
+ 	    npy_intp m = data_temp$argnum->m();
+ 	    npy_intp n = data_temp$argnum->n();
 @@ -328,7 +324,6 @@
  }
- %typemap(argout) (SpMatrix<DATA_TYPE> **ARGOUT_SPMATRIX )
+ %typemap(argout) (SpMatrix<DATA_TYPE> **ARGOUT_SPMATRIX ) 
  {
 -# test argout
    if(data_temp$argnum != NULL) {
      npy_intp m = data_temp$argnum->m();
      npy_intp n = data_temp$argnum->n();
 diff -Naur trunka/swig/python/setup.py.in trunk/swig/python/setup.py.in
---- trunka/swig/python/setup.py.in	2016-02-18 14:39:43.253509455 -0600
-+++ trunk/swig/python/setup.py.in	2016-02-18 14:39:56.713436537 -0600
+--- trunka/swig/python/setup.py.in	2016-04-24 08:33:27.342411134 -0500
++++ trunk/swig/python/setup.py.in	2016-04-24 08:34:03.125869367 -0500
 @@ -7,7 +7,7 @@
  # includes numpy : package numpy.distutils , numpy.get_include()
  # python setup.py build --inplace
