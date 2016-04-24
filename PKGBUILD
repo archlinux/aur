@@ -4,7 +4,7 @@ pkgbase=('python-pydot-ng')
 pkgname=('python-pydot-ng' 'python2-pydot-ng')
 _module='pydot_ng'
 pkgver='1.0.0'
-pkgrel=3
+pkgrel=4
 pkgdesc="Python interface to Graphviz's Dot Language, updated version"
 url="https://github.com/pydot/pydot-ng"
 depends=('python-pyparsing' 'python-pygraphviz')
@@ -24,7 +24,7 @@ prepare() {
 
 package_python2-pydot-ng() {
     conflicts=('python2-pydot')
-    cd "${srcdir}/${_module}-${pkgver}"
+    cd "${srcdir}/${_module}-${pkgver}-py2"
     python2 setup.py install --root="${pkgdir}" --optimize=1
     install -Dm644 ../LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
