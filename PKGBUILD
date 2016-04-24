@@ -24,7 +24,7 @@ optdepends=('rxvt-unicode: The terminal emulator used in the default config.'
 options=('docs' '!strip')
 source=("https://github.com/Airblader/i3/archive/${pkgver}.tar.gz"
         'fix-out-of-tree-build.patch')
-sha1sums=('SKIP' 'SKIP')
+sha1sums=('6e747e001b9c8b9667641cff63af943ab034aaf6' 'SKIP')
 
 build() {
   cd "${srcdir}/${_pkgsourcename}-${pkgver}"
