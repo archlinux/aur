@@ -27,5 +27,5 @@ check_hostid() {
 
 run_depmod() {
     echo ">>> Updating SPL module dependencies"
-    depmod 4.4.8-1-lts
+    depmod -a 4.4.8-1-lts
 }
