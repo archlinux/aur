@@ -1,7 +1,8 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Alexey Stukalov <astukalov@gmail.com>
+
 pkgname=smartsynchronize
-pkgver=3.4.4
+pkgver=3.4.5
 pkgrel=1
 pkgdesc="Comparing Directories the Smart Way"
 arch=("any")
@@ -10,7 +11,7 @@ license=('custom')
 depends=('java-runtime' 'gtk2' 'gtk-update-icon-cache')
 source=("http://www.syntevo.com/downloads/${pkgname}/${pkgname}-generic-${pkgver//\./_}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('ffbfd78554f0d7eab7f1080e3ded67504160c21979c1da5464abf3c114be8b89'
+sha256sums=('d9fbc7b0fd90a33d05fdc0c6647df3ddd3701ff9ab0af248ff48f63b0f8351c1'
             'ee21447d20ef52b65f5becb7a004c10acb925d4219d42f3be2aae61115d9f52f')
 install="${pkgname}.install"
 
