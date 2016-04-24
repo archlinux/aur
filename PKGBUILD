@@ -17,7 +17,7 @@
 #
 pkgname="zfs-utils-linux-lts"
 pkgver=0.6.5.6_4.4.8_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("spl-linux-lts"
          "linux-lts>=4.4.8" "linux-lts<4.5"
@@ -31,7 +31,7 @@ source=("http://archive.zfsonlinux.org/downloads/zfsonlinux/zfs/zfs-0.6.5.6.tar.
 sha256sums=("c349d46d86b4f61cd53a0891acad916cfc3f0d6754127db7f60a0bd98185aeff"
             "b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540"
             "1e20071fa61a33874505dae0f2d71bb560f43e7faaea735cbde770ea10c133df"
-            "438a1399d1df5ef20eff37b4d775595fae9943d0c5c105c7bc286b2babcd759e")
+            "67a96169d36853d8f18ee5a2443ecfcd2461a20f9109f4b281bee3945d83518a")
 license=("CDDL")
 groups=("archzfs-linux-lts")
 provides=("zfs-utils-linux-lts")

@@ -68,6 +68,9 @@ run_hook() {
     fi
 
     case $zfs in
+        "")
+            # skip this line/dataset
+            ;;
         auto|bootfs)
             ZFS_DATASET='bootfs'
             mount_handler="zfs_mount_handler"
@@ -87,6 +90,10 @@ run_hook() {
         [ -c "/dev/zfs" ] && break
         sleep 1
     done
+}
+
+run_latehook () {
+    /usr/bin/zpool import -N -a $ZPOOL_FORCE
 }
 
 # vim:set ts=4 sw=4 ft=sh et:
