@@ -13,6 +13,11 @@ source=("http://spams-devel.gforge.inria.fr/hitcounter2.php?file=33816/spams-pyt
 md5sums=('bad3e1d319c6986bdda5afe1695713bd'
          '3b208b139fbe40034578987d849f405f')
 
+prepare() {
+  cd "$srcdir"/spams-python
+  sed -i "s|if isnan(lambda) {|if (isnan(lambda)) {|g" spams/linalg/linalg.h 
+}
+
 build() {
   cd "$srcdir"/spams-python
   patch -Np1 -i ../python2-spams.patch
