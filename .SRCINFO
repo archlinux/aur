@@ -1,0 +1,17 @@
+pkgbase = ttf-babel-sans
+	pkgdesc = Babel Sans TrueType Font
+	pkgver = 20160423
+	pkgrel = 1
+	url = http://manfred-klein.ina-mar.com/
+	install = ttf-babel-sans.install
+	arch = any
+	license = custom
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://moorstation.org/typoasis/designers/klein03/text02/pc/Babel.zip
+	source = LICENSE
+	sha256sums = c732b7522031516f15af6242f0e63d79197050eb9970f7280c9199214d14ee35
+	sha256sums = 0b371bda434a543dfdb517c79d9b5eaef03a989c4004b60573e7abd05553afa4
+
+pkgname = ttf-babel-sans
+
