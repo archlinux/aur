@@ -2,7 +2,7 @@
 
 pkgname=gtk-arc-flatabulous-theme-git
 _pkgname=arc-flatabulous-theme
-pkgver=525.d725559
+pkgver=528.e278c1f
 pkgrel=1
 pkgdesc="Arc theme with Flatabulous window controls."
 arch=('any')
