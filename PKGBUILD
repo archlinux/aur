@@ -17,11 +17,12 @@ pkgname=(
          'papirus-konsole-colorscheme-git'
          'papirus-plasma-theme-git'
          'papirus-qtcurve-theme-git'
+         'papirus-sddm-theme-git'
          'papirus-smplayer-theme-git'
          'papirus-vlc-theme-git'
          'papirus-yakuake-theme-git' 
          )
-pkgver=r610.bc77d3e
+pkgver=r617.566cf9a
 pkgrel=1
 pkgdesc="Papirus Suite for KDE (git version)"
 arch=('any')
@@ -71,10 +72,11 @@ package_papirus-git() {
              'papirus-aurorae-theme-git'
              'papirus-color-scheme-git'
              'papirus-gtk-theme-git'
-             'papirus-plasma-theme-git' 
              'papirus-icon-theme-kde-git'
              'papirus-konsole-colorscheme-git'
+             'papirus-plasma-theme-git' 
              'papirus-qtcurve-theme-git'
+             'papirus-sddm-theme-git'
              'papirus-yakuake-theme-git'
              )
     optdepends=(
@@ -163,6 +165,7 @@ package_papirus-k3b-theme-git() {
     options=()
     makedepends=('git')
     depends=('k3b')
+    optdepends=()
     install -dm755 ${pkgdir}/usr/share/{k3b/pics,apps/k3b/pics}
     cp -r ${srcdir}/${_pkgname}/kde-pack/k3b-themes/* ${pkgdir}/usr/share/k3b/pics/
     cp -r ${srcdir}/${_pkgname}/kde-pack/k3b-themes/* ${pkgdir}/usr/share/apps/k3b/pics/
@@ -222,11 +225,25 @@ package_papirus-qtcurve-theme-git() {
     find "${pkgdir}" -type d -exec chmod 755 {} +
 }
 
+package_papirus-sddm-theme-git() {
+    pkgdesc="Papirus theme for SDDM (git version)"
+    options=()
+    makedepends=('git')
+    depends=('sddm' 'sddm-kcm')
+    optdepends=()
+    conflicts=('papirus-sddm-theme')
+    install -Dm644 -t "${pkgdir}/usr/share/sddm/themes/papirus/"      ${srcdir}/${_pkgname}/kde-pack/sddm-themes/papirus/*
+    install -Dm644 -t "${pkgdir}/usr/share/sddm/themes/papirus-dark/" ${srcdir}/${_pkgname}/kde-pack/sddm-themes/papirus-dark/*
+    find "${pkgdir}" -type f -exec chmod 644 {} +
+    find "${pkgdir}" -type d -exec chmod 755 {} +
+}
+
 package_papirus-smplayer-theme-git() {
     pkgdesc="Papirus theme for SMPlayer (git version)"
     options=()
     makedepends=('git')
     depends=('smplayer')
+    optdepends=()
     conflicts=('papirus-smplayer-theme')
     install -Dm644 -t "${pkgdir}/usr/share/smplayer/themes/Papirus/"        ${srcdir}/${_pkgname}/players-skins/smplayer-themes/Papirus/*
     install -Dm644 -t "${pkgdir}/usr/share/smplayer/themes/PapirusDark/"    ${srcdir}/${_pkgname}/players-skins/smplayer-themes/PapirusDark/*
@@ -239,6 +256,7 @@ package_papirus-vlc-theme-git() {
     options=()
     makedepends=('git')
     depends=('vlc')
+    optdepends=()
     conflicts=('papirus-vlc-theme')
     install -Dm644 -t "${pkgdir}/usr/share/vlc/skins2/" ${srcdir}/${_pkgname}/players-skins/vlc-skins/*.vlt
     find "${pkgdir}" -type f -exec chmod 644 {} +
@@ -250,6 +268,7 @@ package_papirus-yakuake-theme-git() {
     options=()
     makedepends=('git')
     depends=('yakuake')
+    optdepends=()
     conflicts=('papirus-yakuake-theme' 'yakuake-skin-papirus' 'yakuake-skin-papirus-dark' 'yakuake-skin-papirus-dark-frameworks' 'yakuake-skin-papirus-frameworks')
     install -dm755 ${pkgdir}/usr/share/{apps/yakuake/skins,yakuake/skins}
     cp -r ${srcdir}/${_pkgname}/kde-pack/yakuake-skins/papirus* ${pkgdir}/usr/share/yakuake/skins/
