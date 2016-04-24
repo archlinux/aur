@@ -2,8 +2,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mist
-pkgver=0.7.0
-_pkgver=0-7-0
+pkgver=0.7.2
+_pkgver=0-7-2
 pkgrel=1
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
 arch=('i686' 'x86_64')
@@ -42,8 +42,8 @@ source=(
   "icon.png"
 )
 sha256sums=(
-  "5a3db305209de08b5a10987467163ec3c4ba02983b7ca6b0dd3b3e0967776c15"
-  "681e9db64e771e73ee03a8a204fe542e7d3c69d50f85ced1f94b71a10bd5bd83"
+  "3376b77d954f7602d8f9ed6b6c465f666d3844397fa40ad343b8a7d57b981966"
+  "b03b531ba9863f4d176b0e84449079f7756839cf237599a9cbbe2ec7a824e12c"
   "d044844dd8ef1fef2ced861e5a86bf0d9af1b06ade6965dab1f12dbc612da207"
   "f9dfeddf9730ab693e3dc69d6dd0ad48525de1e40e1c8fb46ed081a3e7bd5f93"
 )
