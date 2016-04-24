@@ -2,10 +2,10 @@
 
 pkgname=perl-proc-waitstat
 pkgver="1.00"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="interpret and act on wait() status values"
 arch=('any')
-url="http://search.cpan.org/dist/Daemon-Generic"
+url="http://www.argon.org/~roderick/"
 license=('none')
 depends=('perl' 'perl-ipc-signal')
 options=('!emptydirs')
