@@ -5,6 +5,7 @@ pkgbase = nevow
 	url = http://pypi.python.org/pypi/Nevow
 	arch = any
 	license = custom
+	makedepends = python2-setuptools
 	depends = python2
 	depends = twisted
 	source = https://pypi.python.org/packages/source/N/Nevow/Nevow-0.13.0.tar.gz
