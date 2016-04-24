@@ -1,7 +1,7 @@
 # Maintainer: goll <adrian.goll+aur[at]gmail>
 
 pkgname=sslscan-git
-pkgver=368.734799d
+pkgver=376.6891c0d
 pkgrel=1
 pkgdesc="sslscan tests SSL/TLS enabled services to discover supported cipher suites"
 arch=('i686' 'x86_64')
