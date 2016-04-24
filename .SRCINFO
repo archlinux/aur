@@ -1,6 +1,6 @@
 pkgbase = cryptojka
 	pkgdesc = de/encryption character by character
-	pkgver = 0.4.12
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = http://gitlab.com/JKANetwork/cryptoJKA
 	install = cryptojka.install
@@ -8,8 +8,8 @@ pkgbase = cryptojka
 	arch = x86_64
 	license = GPL3
 	options = !emptydirs
-	source = https://gitlab.com/JKANetwork/cryptoJKA/raw/master/last-version/cryptojka-0.4.12.tbz2
-	md5sums = 2787f56fd129d0911e7987a74623a8c2
+	source = https://gitlab.com/JKANetwork/cryptoJKA/raw/master/last-version/cryptojka-0.5.0.tbz2
+	md5sums = 0318e3912c7525a8c96952804e21fde4
 
 pkgname = cryptojka
 

@@ -1,8 +1,8 @@
-#Package cryptojka by JoseluCross and Kprkpr from JKA - Network
+#Package cryptojka by JoseluCross and Kprkpr from JKA Network
 #PKGBUILD mantainer: JoseluCross, Kprkpr
 
 pkgname=cryptojka
-pkgver=0.4.12
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="de/encryption character by character"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://gitlab.com/JKANetwork/cryptoJKA"
 license=('GPL3')
 options=(!emptydirs)
 source=(https://gitlab.com/JKANetwork/cryptoJKA/raw/master/last-version/$pkgname-$pkgver.tbz2)
-md5sums=('2787f56fd129d0911e7987a74623a8c2')
+md5sums=('0318e3912c7525a8c96952804e21fde4')
 install=$pkgname.install
 build(){
   cd "$srcdir/$pkgname-$pkgver"
