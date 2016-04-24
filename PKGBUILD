@@ -1,5 +1,4 @@
-# Contributor: Lex Black <autumn-wind at web dot de>
-# Maintainer: dawidd6 <dawidd0811@gmail.com>
+# Maintainer: MissingNoIOI <missingno@akuma.pictures>
 
 pkgname=yafc
 pkgver=1.3.7
