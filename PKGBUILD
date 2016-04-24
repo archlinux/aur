@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=v6shell-git
-pkgver=20140410.r13.g5698178
+pkgver=4.2.0.r3.gc2c95b6
 pkgrel=1
 epoch=
 pkgdesc="V6 Thompson Shell Port"
@@ -37,7 +37,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir/" PREFIX=/usr LIBEXECDIR=/usr/bin install
-  install -Dm644 README  $pkgdir/usr/share/doc/$pkgname/README
+  install -Dm644 README $pkgdir/usr/share/doc/$pkgname/README
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
