@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=owncloud-archive
-pkgver=9.0.0
+pkgver=9.0.1
 pkgrel=1
 pkgdesc="ownCloud server release, installed from the official .tar.bz2 archive"
 url="https://owncloud.org"
@@ -16,7 +16,6 @@ optdepends=('php-apache: to use the Apache web server'
       'php-ldap: LDAP authentication'
       'php-intl'
       'php-apcu'
-      'php-xcache'
       'mariadb: to use the MySQL database backend'
       'smbclient: to mount SAMBA shares'
       'php-mcrypt'
@@ -28,7 +27,7 @@ backup=('etc/webapps/owncloud/apache.example.conf')
 install=${pkgname}.install
 validpgpkeys=('E3036906AD9F30807351FAC32D5D5E97F6978A26')
 source=("https://download.owncloud.org/community/owncloud-${pkgver}.tar.bz2"{,.asc} "apache.example.conf")
-md5sums=('1f14d7f2faa0ba704901e062301854db'
+md5sums=('1ce7ad9f4970b0cd64a23af0bbe280d9'
          'SKIP'
          'bf523e475fd8cf1e2048018952da5c34')
 
