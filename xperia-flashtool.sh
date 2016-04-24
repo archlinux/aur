@@ -26,10 +26,10 @@ EOF
   esac
 fi
 
-if [ -d "/usr/share/java/xperia-flashtool/firmwares" ]
+if [ -d "/usr/lib/xperia-flashtool/firmwares" ]
 then
   mkdir -p "$HOME/.flashTool/firmwares"
-  mv /usr/share/java/xperia-flashtool/firmwares/* "$HOME/.flashTool/firmwares"
+  mv /usr/lib/xperia-flashtool/firmwares/* "$HOME/.flashTool/firmwares"
 fi
 
-/usr/share/java/xperia-flashtool/${APP_CMD} $@
+/usr/lib/xperia-flashtool/${APP_CMD} $@
