@@ -10,6 +10,7 @@ pkgdesc="Python wrappers for the Crypto++ library"
 arch=('i686' 'x86_64')
 url='http://allmydata.org/trac/pycryptopp'
 license=('GPL')
+makedepends=('python2-setuptools')
 depends=('python2' 'crypto++')
 
 source=("https://pypi.python.org/packages/source/p/$pkgname/$pkgname-$pkgver.$_pkgtag.tar.gz"
