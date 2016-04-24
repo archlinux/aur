@@ -1,0 +1,8 @@
+post_install() {
+  grep -qe '^/usr/bin/loksh$' etc/shells || echo '/usr/bin/loksh' >> etc/shells
+}
+
+pre_remove() {
+  sed -ri '\|^/usr/bin/loksh$|d' etc/shells
+}
+
