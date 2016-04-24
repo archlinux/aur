@@ -46,8 +46,8 @@ diff -rupN linux-3.17.old/drivers/gpu/drm/i915/i915_drv.h linux-3.17/drivers/gpu
  	bool disable_display;
  	bool disable_vtd_wa;
 +	bool enable_hd_vgaarb;
- 	int use_mmio_flip;
- 	bool mmio_debug;
+ 	bool enable_guc_submission;
+	int guc_log_level;
  };
 diff -rupN linux-3.17.old/drivers/gpu/drm/i915/i915_params.c linux-3.17/drivers/gpu/drm/i915/i915_params.c
 --- linux-3.17.old/drivers/gpu/drm/i915/i915_params.c	2014-10-05 17:23:04.000000000 -0200
@@ -68,7 +68,7 @@ diff -rupN linux-3.17.old/drivers/gpu/drm/i915/i915_params.c linux-3.17/drivers/
 +MODULE_PARM_DESC(enable_hd_vgaarb,
 +	"Enable support for VGA arbitration on Intel HD IGD. (default: false)");
 +
- module_param_named(use_mmio_flip, i915.use_mmio_flip, int, 0600);
+ module_param_named_unsafe(use_mmio_flip, i915.use_mmio_flip, int, 0600);
  MODULE_PARM_DESC(use_mmio_flip,
  		 "use MMIO flips (-1=never, 0=driver discretion [default], 1=always)");
 diff -rupN linux-3.17.old/drivers/gpu/drm/i915/intel_display.c linux-3.17/drivers/gpu/drm/i915/intel_display.c
