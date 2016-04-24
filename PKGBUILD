@@ -2,7 +2,7 @@
 pkgname=cheesecutter
 _pkgname=CheeseCutter
 pkgver=2.8s
-pkgrel=2
+pkgrel=3
 pkgdesc="Tracker program for composing music for the C64 SID chip"
 arch=('x86_64')
 url="http://theyamo.kapsi.fi/ccutter/"
@@ -13,12 +13,12 @@ source=("https://github.com/theyamo/${_pkgname}/archive/v${pkgver}-release.tar.g
 sha256sums=('fcdddb15829bcb561dba39a42da69847c508d31501f6121745b491d2ba168619')
 
 build() {
-	cd "${srcdir}/${_pkgname}-${pkgver}-release"
-	make release
+    cd "${srcdir}/${_pkgname}-${pkgver}-release"
+    make release
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}-release"
+    cd "${srcdir}/${_pkgname}-${pkgver}-release"
 
     install -dm755 ${pkgdir}/usr/bin
     install -m755 ccutter ${pkgdir}/usr/bin
@@ -29,6 +29,9 @@ package() {
 
     install -dm755 ${pkgdir}/usr/share/doc/${pkgname}
     install -m644 doc/README ${pkgdir}/usr/share/doc/${pkgname}
+
+    install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
+    install -m644 LICENSE.md ${pkgdir}/usr/share/licenses/${pkgname}
 
     install -dm755 ${pkgdir}/usr/share/pixmaps
     install -m644 icons/cc32.png ${pkgdir}/usr/share/pixmaps
