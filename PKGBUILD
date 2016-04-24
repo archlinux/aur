@@ -1,7 +1,7 @@
 # Contributor: David Vachulka <arch_dvx@users.sourceforge.net>
 
 pkgname=dxde
-pkgver=1.10.0
+pkgver=1.20.0
 pkgrel=1
 pkgdesc="Program pro vedeni danove evidence"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('wxgtk>=3.0.0' 'openssl' 'fontconfig')
 makedepends=('cmake')
 install=${pkgname}.install
 source=(http://files.dxsolutions.org/$pkgname-$pkgver.tar.gz)
-md5sums=('65c1a31a5ecb4e29e33e54e6bafd98ed')
+md5sums=('ef55c657ebbdb6d898f22f60f31d980d')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
