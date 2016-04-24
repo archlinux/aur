@@ -5,7 +5,7 @@ _fred=#tag=build01472
 _contrib=#tag=v50
 _wot=#tag=build0018
 #_wot=#commit=f8d98130e65de53bb315312f6300ebd28d7399c2
-_keyutils=#tag=v5025
+_keyutils=#tag=v5026
 _upnp=#tag=10007
 
 pkgname=freenet
