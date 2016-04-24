@@ -21,7 +21,7 @@ check_initramfs() {
             echo '>>> "hooks" list and then regenerate the initial ramdisk.'
         else
             echo ">>> Generating initial ramdisk, using mkinitcpio. Please wait..."
-            mkinitcpio -p linux
+            mkinitcpio -p linux-lts
         fi
     fi
 }
