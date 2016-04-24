@@ -14,7 +14,7 @@ source=("$pkgname::git+https://github.com/ichigo663/KMailApplet.git")
 md5sums=("SKIP")
 
 pkgver() {
-    cd "$srcdir/$pkgname"
+    cd "$pkgname"
     git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
