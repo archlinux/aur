@@ -1,0 +1,34 @@
+From 6c62adb1722a96370dbe8d294d36f9382b0788fa Mon Sep 17 00:00:00 2001
+From: Niko Tyni <ntyni@debian.org>
+Date: Sun, 27 Dec 2015 11:47:24 +0200
+Subject: [PATCH] Perl >= 5.21.4 compatibility
+
+This fixes test failures since perl commit v5.21.3-654-ga65cc14 .
+
+Bug: https://rt.cpan.org/Public/Bug/Display.html?id=94945
+Bug-Debian: https://bugs.debian.org/787499
+---
+ EntersubForCV.xs | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/EntersubForCV.xs b/EntersubForCV.xs
+index 870d470..4acbcab 100644
+--- a/EntersubForCV.xs
++++ b/EntersubForCV.xs
+@@ -60,7 +60,12 @@ entersub_cb (pTHX_ OP *op, void *user_data) {
+ 		return op;
+ 	}
+ 
+-	cv = GvCV (cGVOPx_gv (kid));
++	GV *gv = cGVOPx_gv (kid);
++	if (SvROK(gv)) { /* since v5.21.3-654-ga65cc14 */
++		cv = (CV *)SvRV(gv);
++	} else {
++		cv = GvCV (gv);
++	}
+ 
+ 	if (ud->cv == cv) {
+ 		op = ud->cb (aTHX_ op, cv, ud->ud);
+-- 
+2.6.4
+
