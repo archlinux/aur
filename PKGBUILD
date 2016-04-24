@@ -1,39 +1,40 @@
-# Maintainer: Philipp Klein <philipptheklein@gmail.com>
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: Philipp Klein <philipptheklein@gmail.com>
+
 pkgname=gdrive
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
-pkgdesc="Command line utility for uploading and downloading single files to your Google Drive"
+pkgdesc="Google Drive CLI Client"
 arch=('x86_64' 'i686')
 url="https://github.com/prasmussen/gdrive"
 license=('MIT')
-groups=()
-depends=()
-makedepends=("go")
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/prasmussen/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('e3cbd0d28669753c914af7c4832319d32586f6257bbd5f10d950bc4ed8322429')
-noextract=()
+makedepends=('git' 'go' 'godep')
+options=('!strip' '!emptydirs')
+#source=(https://github.com/prasmussen/$pkgname/archive/$pkgver.tar.gz)
+source=($pkgname-$pkgver::git://github.com/prasmussen/gdrive.git#commit=97981f7fd205353907135eacfc0e0ade24b88269)
+sha256sums=('SKIP')
+
+_gourl=github.com/prasmussen/gdrive
+_gobuild=build/src/$_gourl
+
+prepare() {
+  mkdir -p "$(dirname $_gobuild)"
+  cp -a "$srcdir/$pkgname-$pkgver" $_gobuild
+
+  cd $pkgname-$pkgver
+  GOPATH="$srcdir/build" godep restore
+}
 
 build() {
-    cd "$pkgname-$pkgver"
-
-    go build
+  GOPATH="$srcdir/build" go install -v -x $_gourl
 }
+
+#check() {
+#  GOPATH="$srcdir/build" go test -v -x $_gourl
+#}
 
 package() {
-    cd "$pkgname-$pkgver"
-
-    install -dm755 "$pkgdir/usr/bin"
-    install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-    install -m755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$pkgname"
-    install -m644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+  cd build
+  install -Dm755 bin/gdrive "$pkgdir/usr/bin/gdrive"
 }
 
-# vim:sw=4:ts=4:et
