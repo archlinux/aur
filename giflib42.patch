@@ -1,0 +1,31 @@
+diff -Naur mapsoft-20160202-alt1-orig/core/loaders/image_gif.cpp mapsoft-20160202-alt1/core/loaders/image_gif.cpp
+--- mapsoft-20160202-alt1-orig/core/loaders/image_gif.cpp	2016-02-02 10:06:27.000000000 +0300
++++ mapsoft-20160202-alt1/core/loaders/image_gif.cpp	2016-04-24 01:00:26.646894860 +0300
+@@ -1,8 +1,14 @@
+ #include "image_gif.h"
+-#include <gif_lib.h>
++#include <giflib4/gif_lib.h>
+ 
+ namespace image_gif{
+ 
++#if defined(GIFLIB_MAJOR) && defined(GIFLIB_MINOR) && ((GIFLIB_MAJOR == 4 && GIFLIB_MINOR >= 2) || GIFLIB_MAJOR > 4)
++void PrintGifError(){
++  std::cerr <<  GifErrorString();
++}
++#endif
++
+ iPoint
+ size(const char *file){
+ 
+diff -Naur mapsoft-20160202-alt1-orig/man/SConscript mapsoft-20160202-alt1/man/SConscript
+--- mapsoft-20160202-alt1-orig/man/SConscript	2016-02-02 10:06:27.000000000 +0300
++++ mapsoft-20160202-alt1/man/SConscript	2016-04-24 01:00:49.733561646 +0300
+@@ -5,7 +5,7 @@
+ def m4pod2man(env, name, ext, deps):
+    """Setup command for pod2man conversion by <name> argument"""
+    cmd = env.Command(name+'.'+ext, name+'.m4pod',
+-     "m4 %s.m4pod | pod2man -n %s -c mapsoft -r mapsoft > %s.%s"
++     "m4 %s.m4pod | /usr/bin/core_perl/pod2man -n %s -c mapsoft -r mapsoft > %s.%s"
+       % (name, name, name, ext), chdir = 1)
+    env.Depends(cmd, map (lambda(s): "inc/"+s+".m4", Split(deps)))
+ e.AddMethod(m4pod2man)
