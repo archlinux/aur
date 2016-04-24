@@ -3,14 +3,14 @@
 
 pkgname='gauche-git'
 pkgver=0.9.5.pre1.9166
-pkgrel=1
+pkgrel=2
 pkgdesc="R7RS Scheme implementation developed to be a handy script interpreter"
 arch=('i686' 'x86_64')
 url='http://practical-scheme.net/gauche/index.html'
 license=('BSD')
 # gauche only needed if this is the first build of gauche-git,
 # afterwards gauche-git will provide gauche
-depends=('zlib' 'gdbm' 'libatomic_ops' 'gauche') 
+depends=('zlib' 'gdbm' 'libatomic_ops' 'gauche' 'slib') 
 makedepends=('bash' 'git') 
 provides=('gauche')
 conflicts=('gauche')
