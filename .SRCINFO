@@ -1,7 +1,7 @@
 pkgbase = iproute2-selinux
 	pkgdesc = IP Routing Utilities with SELinux support
-	pkgver = 4.1.1
-	pkgrel = 1
+	pkgver = 4.5.0
+	pkgrel = 2
 	url = http://www.linuxfoundation.org/collaborate/workgroups/networking/iproute2
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = iproute2-selinux
 	depends = libselinux
 	optdepends = linux-atm: ATM support
 	provides = iproute
-	provides = iproute2=4.1.1-1
+	provides = iproute2=4.5.0-2
 	conflicts = iproute
 	conflicts = iproute2
 	replaces = iproute
@@ -25,14 +25,13 @@ pkgbase = iproute2-selinux
 	backup = etc/iproute2/rt_realms
 	backup = etc/iproute2/rt_scopes
 	backup = etc/iproute2/rt_tables
-	source = http://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-4.1.1.tar.xz
-	source = http://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-4.1.1.tar.sign
+	source = http://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-4.5.0.tar.xz
+	source = http://www.kernel.org/pub/linux/utils/net/iproute2/iproute2-4.5.0.tar.sign
 	source = iproute2-fhs.patch
-	source = unwanted-link-help.patch
-	sha1sums = 750c17e720b43041c23fed7b8cf0118c0e841036
+	validpgpkeys = 9F6FC345B05BE7E766B83C8F80A77F6095CDE47E
+	sha1sums = f6271aaf9b24b9c465622bea8a29a883034d8d49
 	sha1sums = SKIP
 	sha1sums = 2dc6d8f1a2495a0d51eaa303dcc78ecc0c477935
-	sha1sums = 3b1335f4025f657f388fbf4e5a740871e3129c2a
 
 pkgname = iproute2-selinux
 
