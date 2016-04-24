@@ -2,12 +2,12 @@
 pkgname=cheesecutter
 _pkgname=CheeseCutter
 pkgver=2.8s
-pkgrel=1
+pkgrel=2
 pkgdesc="Tracker program for composing music for the C64 SID chip"
 arch=('x86_64')
 url="http://theyamo.kapsi.fi/ccutter/"
 license=('GPL2')
-depends=('sdl')
+depends=('gcc-libs' 'sdl' 'zlib')
 makedepends=('acme-git' 'gdc')
 source=("https://github.com/theyamo/${_pkgname}/archive/v${pkgver}-release.tar.gz")
 sha256sums=('fcdddb15829bcb561dba39a42da69847c508d31501f6121745b491d2ba168619')
@@ -34,4 +34,8 @@ package() {
     install -m644 icons/cc32.png ${pkgdir}/usr/share/pixmaps
     install -m644 icons/cc48.png ${pkgdir}/usr/share/pixmaps
     install -m644 icons/cc96.png ${pkgdir}/usr/share/pixmaps
+    install -m644 icons/cc96.png ${pkgdir}/usr/share/pixmaps/ccutter-96.png
+
+    install -dm755 ${pkgdir}/usr/share/${pkgname}/tunes
+    install -m644 tunes/test.ct ${pkgdir}/usr/share/${pkgname}/tunes
 }
