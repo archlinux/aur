@@ -30,7 +30,7 @@ backup=("etc/videoserverd.conf"
 build() {
   cd "${srcdir}"
   bsdtar xf "data.tar.gz"
-  rm "opt/ivideon/ivideon-server/init_ctl.sh"
+  rm "opt/ivideon/ivideon-server/install_services.sh"
   rm "opt/ivideon/ivideon-server/initd.sh"
   rm "opt/ivideon/ivideon-server/serverctl.sh"
 }
