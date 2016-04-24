@@ -3,14 +3,14 @@
 _name="cclib"
 pkgbase="python-${_name}"
 pkgname=("python-${_name}" "python2-${_name}")
-pkgver="1.3.2"
+pkgver="1.4"
 pkgrel="1"
 pkgdesc="A library for parsing and interpreting the results of computational chemistry packages."
 arch=("any")
 url="http://cclib.github.io"
 license=("LGPL")
 source=("https://github.com/${_name}/${_name}/releases/download/v${pkgver}/cclib-${pkgver}.tar.gz")
-sha256sums=('5b7c14713b38ac5ac1c1819357c7fd72d83d26c9a8774a336f31ded52b7e7111')
+sha256sums=('abc2c0ef124f073db923c9208c3074bac5fc3a84b7ba6e3559f9f7f524c3a034')
 
 package_python-cclib() {
   depends=("python" "python-numpy")
