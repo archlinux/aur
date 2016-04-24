@@ -1,20 +1,19 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-badger'
 pkgver='0.09'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl Application Programming Toolkit"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/Badger'
-source=('http://search.cpan.org/CPAN/authors/id/A/AB/ABW/Badger-0.09.tar.gz')
-md5sums=('708a5d94c029d04251660b488e75542e')
-sha512sums=('690cfe2fd506e48cc9c9b40b6efe9021b5284b44fe60d9cae872ad959a50a991366af3fc4e1457739fd4eaa22edba466862fbab7ba8dad987349e9d5fea3d6be')
-_distdir="Badger-0.09"
+url='https://metacpan.org/release/Badger'
+source=('https://github.com/abw/Badger/archive/master.zip')
+md5sums=('b2a025e7a7fbd8f4dd3d3b8e85fa581a')
+_distdir="Badger-master"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
