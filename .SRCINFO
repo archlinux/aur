@@ -1,6 +1,6 @@
 pkgbase = nvidia-grsec
 	pkgver = 364.16
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.nvidia.com/
 	install = nvidia-grsec.install
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = nvidia-grsec
 
 pkgname = nvidia-grsec
 	pkgdesc = NVIDIA drivers for linux-grsec kernel
-	depends = linux>=4.4
-	depends = linux<4.5
+	depends = linux-grsec>=4.4
+	depends = linux-grsec<4.5
 	depends = nvidia-utils=364.16
 	depends = libgl
 

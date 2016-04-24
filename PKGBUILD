@@ -8,7 +8,7 @@ pkgbase=nvidia-grsec
 pkgname=(nvidia-grsec nvidia-grsec-dkms)
 pkgver=364.16
 _extramodules=extramodules-4.4.8-grsec
-pkgrel=3
+pkgrel=4
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -63,7 +63,7 @@ build() {
 
 package_nvidia-grsec() {
     pkgdesc="NVIDIA drivers for linux-grsec kernel"
-    depends=('linux>=4.4' 'linux<4.5' "nvidia-utils=${pkgver}" 'libgl')
+    depends=('linux-grsec>=4.4' 'linux-grsec<4.5' "nvidia-utils=${pkgver}" 'libgl')
     install=nvidia-grsec.install
 
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
@@ -94,5 +94,5 @@ package_nvidia-grsec-dkms() {
     cd ${_pkg}
     install -dm 755 "${pkgdir}"/usr/{lib/modprobe.d,src}
     cp -dr --no-preserve='ownership' kernel-dkms "${pkgdir}/usr/src/nvidia-grsec-${pkgver}"
-    echo 'blacklist nouveau' > "${pkgdir}/usr/lib/modprobe.d/nvidia-grsec.conf"
+    echo 'blacklist nouveau' >> "${pkgdir}/usr/lib/modprobe.d/nvidia-grsec.conf"
 }
