@@ -1,9 +1,9 @@
 # Maintainer: Ordoe ordoe <aur@cach.co>
 
 _npmname=meteor-build-client
-_npmver=0.2.2
+_npmver=0.3.0
 pkgname=meteor-build-client
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A tool to bundle the client part of a Meteor app."
 arch=(any)
@@ -12,7 +12,7 @@ license=()
 depends=('meteor-js' 'nodejs' 'npm')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=('54035ef9aeecdf2b0de28cd8adbd6b2cac13e5d67855d4c71e6cc01734d6e547')
+sha256sums=('06e48214cc8989ecb501f9781a53f16d6ac8879297e9cb5fe648f7d628f0bf08')
 
 package() {
   cd $srcdir
