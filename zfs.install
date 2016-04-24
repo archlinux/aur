@@ -11,17 +11,10 @@ post_upgrade() {
 }
 
 check_initramfs() {
-    echo ">>> Updating module dependencies. Please wait ..."
-
-    _kernel_version_x32_full="4.4.7-1"
-    _kernel_version_x64_full="4.4.7-1"
-
-    [[ $CARCH == "i686" ]] && _kernel_version_full=${_kernel_version_x32_full} || _kernel_version_full=${_kernel_version_x64_full}
-
-    depmod ${_kernel_version_full}-lts
-
+    echo ">>> Updating ZFS module dependencies"
+    depmod 4.4.8-1-lts
     MK_CONF=$(grep -v '#' /etc/mkinitcpio.conf | grep zfs >/dev/null; echo $?);
-    if [[ $MK_CONF == '0' ]]; then
+    if [[ ${MK_CONF} == '0' ]]; then
         if [[ $1 == 'remove' ]]; then
             echo '>>> The ZFS packages have been removed, but "zfs" remains in the "hooks"'
             echo '>>> list in mkinitcpio.conf! You will need to remove "zfs" from the '
