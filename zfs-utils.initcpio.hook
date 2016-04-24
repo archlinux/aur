@@ -92,7 +92,6 @@ run_hook() {
     done
 }
 
-
 run_latehook () {
     /usr/bin/zpool import -N -a $ZPOOL_FORCE
 }
