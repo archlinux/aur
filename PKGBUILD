@@ -11,6 +11,7 @@ depends=('python3' 'python-gobject' 'gtk3' 'python-pillow')
 makedepends=('git')
 optdepends=('imagemagick: for the optimization of images'
             'jhead: for much better autorotation depending on EXIF data')
+conflicts=('vimiv')
 backup=('etc/vimiv/vimivrc' 'etc/vimiv/keys.conf')
 source=("$pkgname::git+${url}.git")
 md5sums=('SKIP')
