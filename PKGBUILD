@@ -7,7 +7,7 @@ pkgbase=linux-pae
 #pkgbase=linux-pae
 _srcname=linux-4.5
 pkgver=4.5.1
-pkgrel=1
+pkgrel=2
 arch=(i686)
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -51,11 +51,7 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  if [ "${CARCH}" = "x86_64" ]; then
-    cat "${srcdir}/config.x86_64" > ./.config
-  else
-    cat "${srcdir}/config" > ./.config
-  fi
+  cat "${srcdir}/config" > ./.config
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
