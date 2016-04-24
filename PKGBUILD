@@ -14,41 +14,40 @@ backup=(etc/login.defs
         etc/pam.d/{chpasswd,newusers,groupadd,groupdel,groupmod}
         etc/pam.d/{chgpasswd,groupmems}
         etc/default/useradd)
-provides=shadow
-#to create debug symbols as well, add debug in the options
+provides=(shadow)
+replaces=(shadow)
+conflicts=(shadow)
 options=(strip)
 install='shadow.install'
+validpgpkeys=('D5C2F9BFCA128BBA22A77218872F702C4D6E25A8')  # Christian Perrier
 source=("http://pkg-shadow.alioth.debian.org/releases/shadow-$pkgver.tar.xz"{,.sig}
-        LICENSE
-        chgpasswd
-        chpasswd
-        defaults.pam
-        login.defs
-        newusers
-        passwd
-        shadow.{timer,service}
-        useradd.defaults
-        xstrdup.patch
-        shadow-strncpy-usage.patch
-        lastlog.tmpfiles
-	username-allow-capitals.patch
+		LICENSE 					chgpasswd
+		chpasswd					defaults.pam
+		login.defs					newusers
+		passwd						shadow.{timer,service}
+		useradd.defaults			xstrdup.patch
+		shadow-strncpy-usage.patch	lastlog.tmpfiles
+		username-allow-capitals.patch
 )
-sha1sums=('0917cbadd4ce0c7c36670e5ecd37bbed92e6d82d'
-          'SKIP'
-          '33a6cf1e44a1410e5c9726c89e5de68b78f5f922'
-          '4ad0e059406a305c8640ed30d93c2a1f62c2f4ad'
-          '12427b1ca92a9b85ca8202239f0d9f50198b818f'
-          '0e56fed7fc93572c6bf0d8f3b099166558bb46f1'
-          'e92045fb75e0c21a3f294a00de0bd2cd252e9463'
-          '12427b1ca92a9b85ca8202239f0d9f50198b818f'
-          '611be25d91c3f8f307c7fe2485d5f781e5dee75f'
-          'a154a94b47a3d0c6c287253b98c0d10b861226d0'
-          'e40fc20894e69a07fb0070b41f567d0c27133720'
-          '9ae93de5987dd0ae428f0cc1a5a5a5cd53583f19'
-          '6010fffeed1fc6673ad9875492e1193b1a847b53'
-          '21e12966a6befb25ec123b403cd9b5c492fe5b16'
-          'f57ecde3f72b4738fad75c097d19cf46a412350f'
-          '0fa4e993557025c77253535324f384ef49a3a9f2')
+
+sha1sums=(
+	'0917cbadd4ce0c7c36670e5ecd37bbed92e6d82d'	#shadow-$pkgver.tar.xz
+	'SKIP'										#shadow-$pkgver.tar.xz.sig
+	'33a6cf1e44a1410e5c9726c89e5de68b78f5f922'	#LICENSE
+	'4ad0e059406a305c8640ed30d93c2a1f62c2f4ad'	#chgpasswd
+	'12427b1ca92a9b85ca8202239f0d9f50198b818f'	#chpasswd
+	'0e56fed7fc93572c6bf0d8f3b099166558bb46f1'	#defaults.pam
+	'e92045fb75e0c21a3f294a00de0bd2cd252e9463'	#login.defs
+	'12427b1ca92a9b85ca8202239f0d9f50198b818f'	#newusers
+	'611be25d91c3f8f307c7fe2485d5f781e5dee75f'	#paswd
+	'a154a94b47a3d0c6c287253b98c0d10b861226d0'	#shadow.timer
+	'e40fc20894e69a07fb0070b41f567d0c27133720'	#shadow.service
+	'9ae93de5987dd0ae428f0cc1a5a5a5cd53583f19'	#useradd.defaults
+	'6010fffeed1fc6673ad9875492e1193b1a847b53'	#xstrdup.patch
+	'21e12966a6befb25ec123b403cd9b5c492fe5b16'	#shadow-strncpy-usage.patch
+	'f57ecde3f72b4738fad75c097d19cf46a412350f'	#lastlog.tmpfiles
+	'0fa4e993557025c77253535324f384ef49a3a9f2'	#username-allow-capitals.patch
+)
 
 prepare() {
   cd "shadow-$pkgver"
