@@ -10,7 +10,8 @@ license=('BSD')
 makedepends=('python' 'python-setuptools')
 depends=('python' 'python-dateutil')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+# Temporary URL until PyPI sorts their nonsense out
+source=("http://pypi.debian.net/datecalc/datecalc-0.1.0.tar.gz")
 md5sums=('6595b77472431152ea4ce581b954acaa')
 
 package() {

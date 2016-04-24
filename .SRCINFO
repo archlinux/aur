@@ -10,7 +10,7 @@ pkgbase = datecalc
 	depends = python
 	depends = python-dateutil
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/d/datecalc/datecalc-0.1.0.tar.gz
+	source = http://pypi.debian.net/datecalc/datecalc-0.1.0.tar.gz
 	md5sums = 6595b77472431152ea4ce581b954acaa
 
 pkgname = datecalc
