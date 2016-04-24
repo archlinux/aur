@@ -1,7 +1,7 @@
 # Maintainer: Chris Warrick <aur@chriswarrick.com>
 pkgname=datecalc
 _pyname=datecalc
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='A simple date calculator.'
 arch=('any')
@@ -10,9 +10,10 @@ license=('BSD')
 makedepends=('python' 'python-setuptools')
 depends=('python' 'python-dateutil')
 options=(!emptydirs)
-# Temporary URL until PyPI sorts their nonsense out
-source=("http://pypi.debian.net/datecalc/datecalc-0.1.0.tar.gz")
-md5sums=('6595b77472431152ea4ce581b954acaa')
+#source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+# URL changed temporarily due to PyPI making things harder
+source=("https://pypi.debian.net/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+md5sums=('c5cb17b9e7ecd7002a34774424bc04d6')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"

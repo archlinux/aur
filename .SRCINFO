@@ -1,6 +1,6 @@
 pkgbase = datecalc
 	pkgdesc = A simple date calculator.
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Kwpolska/datecalc
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = datecalc
 	depends = python
 	depends = python-dateutil
 	options = !emptydirs
-	source = http://pypi.debian.net/datecalc/datecalc-0.1.0.tar.gz
-	md5sums = 6595b77472431152ea4ce581b954acaa
+	source = https://pypi.debian.net/datecalc/datecalc-0.1.1.tar.gz
+	md5sums = c5cb17b9e7ecd7002a34774424bc04d6
 
 pkgname = datecalc
 
