@@ -1,7 +1,7 @@
 # Maintainer: Marcin Mielniczuk <marmistrz@inboxalias.com>
 pkgname=arename
 pkgver=4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="automatic audio file renaming tool"
 arch=("any")
 url="http://ft.bewatermyfriend.org/computer/arename.html"
@@ -18,7 +18,7 @@ build() {
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	mkdir -p "$pkgdir"/usr
-	make install prefix="$pkgdir"/usr libpath=share/perl5
+	make install prefix="$pkgdir"/usr libpath=share/perl5/site_perl
 	make install-doc prefix="$pkgdir"/usr
 }
 
