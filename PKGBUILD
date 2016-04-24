@@ -9,7 +9,7 @@ url="https://github.com/andreax79/python-cstruct"
 arch=('any')
 license=('MIT')
 depends=('python')
-makedepends=('python' 'python2')
+makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 source=('https://pypi.python.org/packages/source/c/cstruct/cstruct-1.0.tar.gz')
 md5sums=('b12c1f3718875cafd52bc9222bd21dd5')
 
