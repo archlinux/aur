@@ -1,0 +1,8 @@
+post_install() {
+  grep -qe '^/usr/bin/rc$' etc/shells || echo '/usr/bin/rc' >> etc/shells
+}
+
+pre_remove() {
+  sed -ri '\|^/usr/bin/rc$|d' etc/shells
+}
+
