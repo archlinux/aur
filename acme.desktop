@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Acme
+GenericName=Editor
+Comment=Editor from Plan9
+Exec=acme
+Icon=acme
+Terminal=false
+StartupNotify=false
+Categories=Application;Development;TextEditor;
