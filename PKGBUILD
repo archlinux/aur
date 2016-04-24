@@ -2,7 +2,7 @@
 # Maintainer: Andy Pieters <arch at AndyPieters dot me dot uk>
 pkgname=shadow-capitals
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Password and account management tool suite with support for shadow files and PAM; Patched to allow capitals in user, and group names"
 arch=('i686' 'x86_64')
 url='http://pkg-shadow.alioth.debian.org/'
