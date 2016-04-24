@@ -13,7 +13,7 @@ _log_path="/var/log/${_pkgname}"
 
 
 pkgname=nginx-mainline-boringssl
-pkgver=1.9.14
+pkgver=1.9.15
 pkgrel=1
 pkgdesc="lightweight HTTP server, statically linked against BoringSSL."
 arch=('i686' 'x86_64')
@@ -52,7 +52,7 @@ source=( "nginx.conf"
 sha256sums=('8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
             'adcf6507abb2d4edbc50bd92f498ba297927eed0460d71633df94f79637aa786'
             '225228970d779e1403ba4314e3cd8d0d7d16f8c6d48d7a22f8384db040eb0bdf'
-            '2b4893076d28e6b4384bba8c4fdebfca6de6f8f68ec48a1ca94b9b855ff457d2'
+            'cc89b277cc03f403c0b746d60aa5943cdecf59ae48278f8cb7e2df0cbdb6dac3'
             'dc1ea1a0323759d49a7dc2c6173811bda319c36aa4a14b775d6f589fe9c6a4c2'
             'SKIP')
 
