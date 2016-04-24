@@ -1,7 +1,7 @@
 # Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=libmill
-pkgver=1.9
+pkgver=1.10
 pkgrel=1
 pkgdesc='Go-style concurrency in C'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ options=('!buildflags')
 makedepends=('gcc')
 license=('MIT')
 source=("https://github.com/sustrik/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('126c2b7cfa62efb3015ca5590f4425dc967d153814905230ae284df9463a8f26')
+sha256sums=('1915b06eb175ae2c193cd376d800e11e72b02f21227ff45ee2b885416676a0d7')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
