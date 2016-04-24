@@ -13,8 +13,8 @@ makedepends=('krb5' 'readline' 'libssh')
 optdepends=("krb5: required for Kerberos 5 support"
             "readline: required for tab completion and history support"
             "libssh: required for scp and sftp support")
-source=(http://yafc-ftp.com/upload/$pkgname-$pkgver.tar.xz{,.asc})
-sha512sums=('3b72aa3d321f622fc68288c5a504110759ea403f07a1dadfef13bbf3831347992c725338269a6d7933d9d65d03eb6594ca6d7d4c771dad5ae598041779dee2d2'
+source=(http://www.yafc-ftp.com/downloads/$pkgname-$pkgver.tar.xz{,.asc})
+sha512sums=('2547cf3d6f1918a5cd2d3bc29455311d48fcd7dbccfdc8ae4ce08d1fd63cfabae07b70ebf005206a61937bd5b686e19d3af095f876616a5ac4b0593e90cd39c5'
             'SKIP')
 
 validpgpkeys=('F78CBA07817BB149A11D339069F2FC516EA71993') # Sebastian Ramacher
