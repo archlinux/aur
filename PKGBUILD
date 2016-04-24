@@ -1,5 +1,5 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-audio-ecasound'
 pkgver='1.01'
@@ -8,9 +8,9 @@ pkgdesc="Perl binding to the ecasound sampler, recorder, fx-processor"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl' 'ecasound')
 makedepends=()
-url='http://search.cpan.org/dist/Audio-Ecasound'
+url='https://metacpan.org/release/Audio-Ecasound'
 source=('http://search.cpan.org/CPAN/authors/id/B/BO/BOWMANBS/Audio-Ecasound-1.01.tar.gz')
 md5sums=('dfa32c87cfa1fe8432c94c041acd4b09')
 sha512sums=('1201ca722d6810263c3356fa714c9b19e25203118462b34b3114d5f42ec74c4b21ba7dc84ad5f72d6271b3f7bc6ed39aee1103b6d581f89c8ae9fd96c83941f6')
