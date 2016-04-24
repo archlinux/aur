@@ -1,6 +1,6 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
-pkgbase="wxwidgets-light"
+pkgbase=wxwidgets-light
 pkgname=('wxbase-light' 'wxgtk-light' 'wxcommon-light')
 pkgver=3.0.2
 pkgrel=6
@@ -18,17 +18,15 @@ makedepends=('git'
 source=("wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
         'config.conf'
         'wx-config.sh'
-        'make-abicheck-non-fatal.patch')
+        'make-abicheck-non-fatal.patch'
+        )
 sha1sums=('SKIP'
           '55436b5c57eae798f716e3e486c6834d6274cec5'
           '47df8d82e6c9671212428ea769ff4a3e3f725917'
-          'dfe38650c655395b90bf082b5734c4093508bfa3')
+          'dfe38650c655395b90bf082b5734c4093508bfa3'
+          )
 
 prepare() {
-
-  export CC=clang
-  export CXX=clang++
-  
   # C++ ABI check is too strict and breaks with GCC 5.1
   # https://bugzilla.redhat.com/show_bug.cgi?id=1200611
   patch -d wxwidgets -Np1 -i ../make-abicheck-non-fatal.patch
