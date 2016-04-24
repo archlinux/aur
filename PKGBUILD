@@ -1,7 +1,7 @@
 # Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=emulationstation-autoscraper
-pkgver=162.99358ba
+pkgver=172.c4cfec9
 pkgrel=1
 pkgdesc="An auto-scraper for EmulationStation written in Go using hashes"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
