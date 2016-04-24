@@ -1,5 +1,6 @@
 *.tar.gz
 *.tar.xz
 *.tgz
+*.tar
 pkg/
 src/

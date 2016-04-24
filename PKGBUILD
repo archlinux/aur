@@ -1,16 +1,16 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=ucsc-kent-genome-tools
-pkgver=327
+pkgver=331
 pkgrel=1
 pkgdesc="UCSC genome browser 'kent' bioinformatic utilities"
 arch=('i686' 'x86_64')
 url="http://hgdownload.soe.ucsc.edu/admin/exe/"
-license=other
+license=('other')
 install=$pkgname.install
 depends=('mariadb-clients' 'libpng' 'openssl')
 source=(http://hgdownload.soe.ucsc.edu/admin/exe/userApps.v${pkgver}.src.tgz)
-sha1sums=('0294bf61a0ac8c0d57d1e354ad3eb17187cdecb9')
+sha1sums=('d2a99387a559ae525f078dbfdaa4ab7158098331')
 
 prepare() {
   cd "${srcdir}/userApps/"
