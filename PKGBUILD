@@ -10,6 +10,7 @@ url="http://www.teamviewer.com"
 license=('custom')
 depends=('bash')
 conflicts=('teamviewer')
+provides=('teamviewer')
 install=${pkgname}.install
 
 if [[ $CARCH == 'i686' ]]; then
