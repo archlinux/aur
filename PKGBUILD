@@ -2,7 +2,7 @@
 # Contributor: Giulio Guzzinati <guzzinati.giulio at gmail>
 
 pkgname=imagej
-pkgver=1.50g
+pkgver=1.50h
 _pkgver=149
 pkgrel=1
 epoch=2
