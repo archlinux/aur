@@ -11,9 +11,9 @@ options=('!emptydirs')
 depends=('perl-xml-libxml' 'perl>=5.6.2')
 makedepends=('perl-lib-abs>=0.90')
 url='https://metacpan.org/release/XML-Hash-LX'
-source=('http://search.cpan.org/CPAN/authors/id/M/MO/MONS/XML-Hash-LX-0.0603.tar.gz')
-md5sums=('43103ac528427f1cf7212ad5412ade2d')
-sha512sums=('d31af10d5ae924c86d439bd38643a84c13d7c1a9085c4f89534644025b18bc1cfbac96d767e8541e2ba7dd702012732ce3bd394bfb10f5248bfab6ccc6f689e3')
+source=('http://search.cpan.org/CPAN/authors/id/M/MO/MONS/XML-Hash-LX-0.0603.tar.gz' 'XML-Hash-LX-0.0603-Fix-unpredictable-order-at-empty-attr-test.patch')
+md5sums=('43103ac528427f1cf7212ad5412ade2d' 'abed43872f86f69892ca6754962106e0')
+
 _distdir="XML-Hash-LX-0.0603"
 
 build() {
@@ -24,6 +24,7 @@ build() {
       MODULEBUILDRC=/dev/null
 
     cd "$srcdir/$_distdir"
+    patch -Np1 -i ../XML-Hash-LX-0.0603-Fix-unpredictable-order-at-empty-attr-test.patch
     /usr/bin/perl Makefile.PL
     make
   )

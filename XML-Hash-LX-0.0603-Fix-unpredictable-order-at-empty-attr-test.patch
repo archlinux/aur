@@ -1,0 +1,31 @@
+From 19c3c8bbb1646dc5bfe7f0d3df5efb3ba58ada80 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Mon, 9 Jun 2014 17:41:32 +0200
+Subject: [PATCH] Fix unpredictable order at 'empty attr' test
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+RT#81645
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ t/01-conv.t | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/01-conv.t b/t/01-conv.t
+index f7b06c5..30f24dc 100644
+--- a/t/01-conv.t
++++ b/t/01-conv.t
+@@ -297,7 +297,7 @@ our $xml = qq{<?xml version="1.0" encoding="utf-8"?>\n};
+ }
+ {
+ 	is
+-		$data = hash2xml( { node => { -attr => undef, '#cdata' => undef, '/' => undef, x=>undef } }, cdata => '#cdata', comm => '/' ),
++		$data = hash2xml( { node => [ { -attr => undef }, { '#cdata' => undef }, { '/' => undef }, { x=>undef } ] }, cdata => '#cdata', comm => '/' ),
+ 		qq{$xml<node attr=""><!----><x/></node>\n},
+ 		'empty attr',
+ 	;
+-- 
+1.9.3
+
