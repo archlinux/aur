@@ -7,8 +7,8 @@
 # ! WARNING !
 #
 # The archzfs packages are kernel modules, so these PKGBUILDS will only work with the kernel package they target. In this
-# case, the archzfs-linux packages will only work with the default package! To have a single PKGBUILD target many kernels
-# would make for a cluttered PKGBUILD!
+# case, the archzfs-linux packages will only work with the default linux package! To have a single PKGBUILD target many
+# kernels would make for a cluttered PKGBUILD!
 #
 # If you have a custom kernel, you will need to change things in the PKGBUILDS. If you would like to have AUR or archzfs repo
 # packages for your favorite kernel package built using the archzfs build tools, submit a request in the Issue tracker on the
@@ -16,7 +16,7 @@
 #
 pkgname="spl-linux"
 pkgver=0.6.5.6_4.5.1_1
-pkgrel=1
+pkgrel=3
 pkgdesc="Solaris Porting Layer kernel modules."
 depends=("spl-utils-linux" "kmod"
          "linux>=4.5.1" "linux<4.6"
