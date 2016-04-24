@@ -4,7 +4,7 @@ pkgbase="python-theano"
 pkgname=("python-theano" "python2-theano")
 _pkgname="Theano"
 pkgver="0.8.2"
-pkgrel="1"
+pkgrel="2"
 pkgdesc='Definition and optimized evaluation of mathematical expressions on Numpy arrays.'
 arch=('any')
 url='http://www.deeplearning.net/software/theano/'
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('python'  'python-numpy' 
          'python2' 'python2-numpy')
 makedepends=('python-distribute' 'python2-distribute')
-checkdepends=('python-nose'      'python2-nose')
+checkdepends=('python-nose' 'python-nose-parameterized' 'python2-nose' 'python2-nose-parameterized')
 optdepends=('python-sympy: Recommended'
             'cuda>=7.0:'    #Can cause tests to fail
             'python-pydot-ng: Preferred over python-pydot'
@@ -24,9 +24,7 @@ optdepends=('python-sympy: Recommended'
             'python2-pygpu')
 source=("http://pypi.python.org/packages/30/3d/2354fac96ca9594b755ec22d91133522a7db0caa0877165a522337d0ed73/Theano-${pkgver}.tar.gz")
 sha256sums=('7463c8f7ed1a787bf881f36d38a38607150186697e7ce7e78bfb94b7c6af8930')
-
-#https://pypi.python.org/packages/30/3d/2354fac96ca9594b755ec22d91133522a7db0caa0877165a522337d0ed73/Theano-0.8.2.tar.gz
-            
+         
 prepare() {
   cd "${_pkgname}-${pkgver}"
   chmod +x "${_pkgname}.egg-info"
@@ -63,16 +61,16 @@ build() {
 #    THEANO_FLAGS='device=cpu,\
 #                optdb.max_use_ratio=200,\
 #                exception_verbosity=high' \
-#  OMP_NUM_THREADS=4 \
-#  nosetests2 -v -d
-#   
+#                OMP_NUM_THREADS=4 \
+#                nosetests2 -v -d
+#
 #  msg "Checking Python 3"
 #  cd "$srcdir/${_pkgname}-${pkgver}"/build/lib/theano/
 #  THEANO_FLAGS='device=cpu,\
 #                optdb.max_use_ratio=200,\
 #                exception_verbosity=high' \
-#  OMP_NUM_THREADS=4 \
-#  nosetests3 -v -d
+#                OMP_NUM_THREADS=4 \
+#                nosetests3 -v -d
 #}
 
 package_python2-theano() {
