@@ -1,12 +1,12 @@
 # Maintainer: Gavin Lloyd <gavinhungry@gmail.com>
 
 pkgname=lastwake-git
-pkgver=0.6.7eee207
+pkgver=0.8.1828084
 pkgrel=1
 pkgdesc="Wake/suspend time systemd journal analyzer"
 arch=('any')
 url="https://github.com/arigit/lastwake.py"
-license=('unknown')
+license=('GPL3')
 depends=('python-systemd')
 makedepends=('git')
 source=("${pkgname}::git+${url}.git#branch=master")

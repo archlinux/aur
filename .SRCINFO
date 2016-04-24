@@ -1,10 +1,10 @@
 pkgbase = lastwake-git
 	pkgdesc = Wake/suspend time systemd journal analyzer
-	pkgver = 0.6.7eee207
+	pkgver = 0.8.1828084
 	pkgrel = 1
 	url = https://github.com/arigit/lastwake.py
 	arch = any
-	license = unknown
+	license = GPL3
 	makedepends = git
 	depends = python-systemd
 	source = lastwake-git::git+https://github.com/arigit/lastwake.py.git#branch=master
