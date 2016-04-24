@@ -6,9 +6,9 @@
 
 pkgbase=nvidia-grsec
 pkgname=(nvidia-grsec nvidia-grsec-dkms)
-pkgver=364.16
+pkgver=364.19
 _extramodules=extramodules-4.4.8-grsec
-pkgrel=4
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -16,19 +16,16 @@ makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-
 license=('custom')
 options=(!strip)
 #source=("https://www.grsecurity.net/~paxguy1/nvidia-drivers-${pkgver}-pax.patch")
-#364.16 patch not on the website, and no errors reported (as of this change) with this patch
+#Latest patch not on the website, and no errors reported (as of this change) with this patch
 source=("https://www.grsecurity.net/~paxguy1/nvidia-drivers-364.12-pax.patch")
-# Temporarily changed as the scripts aren't in the main FTP yet, see package nvidia-utils for more details
-#source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
-#source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-source_i686=("NVIDIA-Linux-x86-${pkgver}.run::https://developer.nvidia.com/linux32bit")
-source_x86_64=("NVIDIA-Linux-x86_64-${pkgver}.run::https://developer.nvidia.com/linux64bit")
+source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
+source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
 sha512sums=('a83c264564850d5e31d5673ec332f5a55f95ebdd07415a72bd702e635bca1d4b5a5d30531be89376e2846fee46e273620e0001dd4381cc3b41127e4764901f27')
-sha512sums_i686=('6878c7552eda31c0ea8092dfd5050611f15c1d94a778e945fdc1190860ad13878308323bf6b0f420002b5322adb7d5b545bf69c5336c9cacf16030b799e0ca67')
-sha512sums_x86_64=('a937f736f90e3bf9f9b1539be58445d2b7957a7bad2ab6babf9c04bf550e81990d1358e0b0bda3de537500584073500d260da9dfb909701bdffb268ca3db62da')
+sha512sums_i686=('2b1cb0769d8c4d817588ab1071dbdbeda54291274392fd74009fc666bf198e6fcba1fe15db9d925a56ef98b147b48e58042a079b4f5773e95efe85531e25b01a')
+sha512sums_x86_64=('3a383ad10f9f01e2bc9ff1f62dcaad205f4586cb0e72568a24ac504f991af5961e5730262608596435b549c0d05110e2b3a51b424f383b5ad5b0de147c2fd1c8')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
-[[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}"
+[[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
 prepare() {
     sh "${_pkg}.run" --extract-only
