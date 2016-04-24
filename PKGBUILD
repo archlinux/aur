@@ -13,16 +13,21 @@ conflicts=("$pkgname")
 source=("$pkgname::git+https://github.com/ichigo663/KMailApplet.git")
 md5sums=("SKIP")
 
+pkgver() {
+    cd "$srcdir/$pkgname"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
-		cd "$srcdir/$pkgname"
-		qmake -o Makefile build.pro
+    cd "$srcdir/$pkgname"
+    qmake -o Makefile build.pro
     make
 }
 
 package() {
-		cd "$srcdir/$pkgname"
-		cp -r usr etc $pkgdir
-		chmod -R 755 "$pkgdir/usr" "$pkgdir/etc"
-		mkdir -p "$pkgdir/usr/bin/"
-		cp KMailApplet "$pkgdir/usr/bin/"
+    cd "$srcdir/$pkgname"
+    cp -r usr etc $pkgdir
+    chmod -R 755 "$pkgdir/usr" "$pkgdir/etc"
+    mkdir -p "$pkgdir/usr/bin/"
+    cp KMailApplet "$pkgdir/usr/bin/"
 }
