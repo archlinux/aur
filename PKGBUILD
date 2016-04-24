@@ -23,10 +23,10 @@ else
 fi
 
 source=()
+source_i686=("${_deburl}/libtasn1-3_${pkgver}-${pkgrel}+${_debver}_i386.deb")
+source_x86_64=("${_deburl}/libtasn1-3_${pkgver}-${pkgrel}+${_debver}_amd64.deb")
 md5sums_i686=('0ace24882b82b0264e5e7af689a15fb7')
 md5sums_x86_64=('bdc85decdb298bb1b2db74f938062428')
-source_i686="${_deburl}/libtasn1-3_${pkgver}-${pkgrel}+${_debver}_i386.deb"
-source_x86_64="${_deburl}/libtasn1-3_${pkgver}-${pkgrel}+${_debver}_amd64.deb"
 
 package() {
 	cd $srcdir
