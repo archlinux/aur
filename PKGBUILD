@@ -7,7 +7,7 @@
 
 pkgbase=handbrake-git
 pkgname=('handbrake-gtk-git' 'handbrake-cli-git')
-pkgver=r7170
+pkgver=r7177
 pkgrel=1
 pkgdesc="Multiplatform, multithreaded DVD to MPEG-4/H264/Theora converter"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ url="http://handbrake.fr/"
 license=('GPL')
 options=('!makeflags')
 md5sums=('SKIP')
-makedepends=('libnotify' 'git' 'cmake' 'intltool' 'python2' 'gettext' 'subversion' 'yasm' 'prelink'
-	    'jansson')
+makedepends=('libnotify' 'git' 'cmake' 'intltool' 'python2' 'gettext' 'subversion' 'yasm'
+	    'jansson' 'paxtest')
 source=("git+https://github.com/HandBrake/HandBrake.git")
 md5sums=('SKIP')
 _gitname="HandBrake"
@@ -62,7 +62,7 @@ package_handbrake-gtk-git() {
 
   cd "$srcdir"/"$_gitname"
   make -C "build" DESTDIR="$pkgdir/" install
-  execstack -c "$pkgdir/usr/bin/ghb"
+  /usr/lib/paxtest/execstack -c "$pkgdir/usr/bin/ghb"
 
   rm -f "$pkgdir/usr/bin/HandBrakeCLI"
 
@@ -78,5 +78,5 @@ package_handbrake-cli-git() {
   conflicts=('handbrake-cli')
 
   install -D -m755 "$srcdir/$_gitname/build/HandBrakeCLI" "$pkgdir/usr/bin/HandBrakeCLI"
-  execstack -c "$pkgdir/usr/bin/HandBrakeCLI"
+  /usr/lib/paxtest/execstack -c "$pkgdir/usr/bin/HandBrakeCLI"
 }
