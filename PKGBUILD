@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname='gauche-git'
-pkgver=0.9.5.pre1.9164
+pkgver=0.9.5.pre1.9166
 pkgrel=1
 pkgdesc="R7RS Scheme implementation developed to be a handy script interpreter"
 arch=('i686' 'x86_64')
@@ -40,6 +40,6 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install-pkg install-doc
   install -D -m644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
 }
