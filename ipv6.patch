@@ -1,0 +1,11 @@
+--- src/resolv.c
++++ src/resolv.c.mod
+@@ -84,7 +84,7 @@ static struct sockaddr *choose_any(struct ResolvQuery *);
+ 
+ int resolv_init(struct ev_loop *loop, char **nameservers, int nameserver_num)
+ {
+-    resolv_mode = MODE_IPV4_FIRST;
++    resolv_mode = MODE_IPV6_FIRST;
+ 
+     struct dns_ctx *ctx = &dns_defctx;
+     if (nameservers == NULL) {
