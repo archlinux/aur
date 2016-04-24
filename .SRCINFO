@@ -1,0 +1,22 @@
+pkgbase = swift-explorer
+	pkgdesc = User-friendly tool to manage files in an OpenStack Storage system (SWIFT)
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = http://www.619.io/swift-explorer
+	arch = any
+	license = apachev2
+	depends = jre
+	noextract = SwiftExplorer-${pkgver}-jar-with-dependencies.jar
+	source = SwiftExplorer-1.0.8-jar-with-dependencies.jar::https://bintray.com/artifact/download/roikku/generic/SwiftExplorer-1.0.8-jar-with-dependencies.jar
+	source = swift-explorer.sh
+	source = swift-explorer.png
+	source = swift-explorer.desktop
+	source = LICENSE
+	md5sums = 6ac8027644a95b2eebd9c8d194fffa16
+	md5sums = 0f2a52319a239eb70d0849b0223aad3b
+	md5sums = 2a8d702d3c76a5c627dacd4534d5581d
+	md5sums = d64f444c2a263ec4db1a584b88b117ef
+	md5sums = d2794c0df5b907fdace235a619d80314
+
+pkgname = swift-explorer
+

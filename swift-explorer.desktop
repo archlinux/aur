@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Swift Explorer
+GenericName=Swift Explorer
+Comment=User-friendly tool to manage files in an OpenStack Storage system (SWIFT)
+Icon=/usr/share/pixmaps/swift-explorer.png
+Exec="/usr/bin/swift-explorer"
+Categories=System
+Path=
