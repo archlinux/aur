@@ -7,16 +7,16 @@
 # ! WARNING !
 #
 # The archzfs packages are kernel modules, so these PKGBUILDS will only work with the kernel package they target. In this
-# case, the archzfs-linux packages will only work with the default package! To have a single PKGBUILD target many kernels
-# would make for a cluttered PKGBUILD!
+# case, the archzfs-linux packages will only work with the default linux package! To have a single PKGBUILD target many
+# kernels would make for a cluttered PKGBUILD!
 #
 # If you have a custom kernel, you will need to change things in the PKGBUILDS. If you would like to have AUR or archzfs repo
 # packages for your favorite kernel package built using the archzfs build tools, submit a request in the Issue tracker on the
 # archzfs github page.
 #
 pkgname="zfs-utils-linux-git"
-pkgver=0.6.5_r218_g8fc5674_4.5.1_1
-pkgrel=1
+pkgver=0.6.5_r219_gda5e151_4.5.1_1
+pkgrel=3
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("spl-linux-git"
          "linux>=4.5.1" "linux<4.6"
@@ -30,7 +30,7 @@ source=("git+https://github.com/zfsonlinux/zfs.git"
 sha256sums=("SKIP"
             "b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540"
             "1e20071fa61a33874505dae0f2d71bb560f43e7faaea735cbde770ea10c133df"
-            "438a1399d1df5ef20eff37b4d775595fae9943d0c5c105c7bc286b2babcd759e")
+            "67a96169d36853d8f18ee5a2443ecfcd2461a20f9109f4b281bee3945d83518a")
 license=("CDDL")
 groups=("archzfs-linux-git")
 provides=("zfs-utils-linux-git")
