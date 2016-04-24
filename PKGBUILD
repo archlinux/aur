@@ -7,7 +7,7 @@ pkgdesc="Minion is a relatively new constraint solver which is fast and scales w
 arch=('i686' 'x86_64')
 url="http://constraintmodelling.org/minion/"
 license=('GNU General Public License Version 2')
-makedepends=('python2' 'cmake')
+makedepends=('python2' 'cmake' 'mercurial')
 source=("hg+https://bitbucket.org/stacs_cp/minion")
 md5sums=('SKIP')
 
