@@ -8,7 +8,7 @@ replaces=("xfce4-netspeed-plugin")
 pkgdesc="Netspeed plugin for xfce4 panel. Like gnome netspeed applet. Uses default route 
 as first choice for automatic selection"
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/xfce4-netspeed-plugin/"
 license=('GPL')
