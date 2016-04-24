@@ -16,22 +16,16 @@ check_hostid() {
     # Check /etc/hostid to see if it set to the sentinel value, see
     # https://wiki.archlinux.org/index.php/ZFS for more information.
     HOSTID=$(hostid)
-    if [ "0x$HOSTID" == "0xffffffff" ]; then
+    if [ "0x${HOSTID}" == "0xffffffff" ]; then
         # Generate a new hostid
         : >/etc/hostid
         HOSTID=$(hostid)
         # hostid is 4 byte little endian
-        printf $(echo -n $HOSTID | sed 's/\(..\)\(..\)\(..\)\(..\)/\\x\4\\x\3\\x\2\\x\1/') >/etc/hostid
+        printf $(echo -n $HOSTID | sed 's/\(..\)\(..\)\(..\)\(..\)/\x\4\x\3\x\2\x\1/') >/etc/hostid
     fi
 }
 
 run_depmod() {
-    echo ">>> Updating module dependencies. Please wait ..."
-
-    _kernel_version_x32_full="4.5.1-1"
-    _kernel_version_x64_full="4.5.1-1"
-
-    [[ $CARCH == "i686" ]] && _kernel_version_full=${_kernel_version_x32_full} || _kernel_version_full=${_kernel_version_x64_full}
-
-    depmod ${_kernel_version_full}-ARCH
+    echo ">>> Updating SPL module dependencies"
+    depmod 4.5.1-1-ARCH
 }
