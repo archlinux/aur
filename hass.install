@@ -1,0 +1,16 @@
+HASS_USER=hass
+
+post_install() {
+  getent passwd ${HASS_USER} > /dev/null || useradd -U -s /bin/false -r ${HASS_USER} > /dev/null
+  mkdir -p /var/lib/hass
+  chown -R ${HASS_USER} /var/lib/hass
+}
+
+post_upgrade() {
+  post_install
+  systemctl status home-assistant.service && systemctl daemon-reload && systemctl restart home-assistant.service
+}
+
+post_remove() {
+  userdel -f ${HASS_USER}
+}
