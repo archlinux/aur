@@ -8,7 +8,6 @@ arch=('any')
 url="https://github.com/karlch/vimiv"
 license=('MIT')
 depends=('python3' 'python-gobject' 'gtk3' 'python-pillow')
-makedepends=('git')
 optdepends=('imagemagick: for the optimization of images'
             'jhead: for much better autorotation depending on EXIF data')
 conflicts=('vimiv-git')
