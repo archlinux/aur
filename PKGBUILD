@@ -1,22 +1,22 @@
-model="9140cdn"
+model="9142cdn"
 pkgname="brother-mfc-$model"
-pkgver="1.1.2"
-pkgrel=2
-_revision=1
-pkgdesc="LPR and CUPS driver for the Brother MFC-9140CDN"
+pkgver="1.1.3"
+pkgrel=1
+_revision=0
+pkgdesc="LPR and CUPS driver for the Brother MFC-9142CDN"
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 arch=('i686' 'x86_64')
-license='unknown'
+license=(custom:"brother commercial license")
 install="brother-mfc-${model}.install"
 if [ "$CARCH" == 'i686' ]; then
    depends=('deb2targz' 'perl')
 elif [ "$CARCH" == 'x86_64' ]; then
    depends=('deb2targz' 'perl' 'lib32-libcups')
 fi
-source=("http://download.brother.com/welcome/dlf100405/mfc${model}lpr-${pkgver}-${_revision}.i386.deb"
-         "http://download.brother.com/welcome/dlf100407/mfc${model}cupswrapper-${pkgver}-${_revision}.i386.deb")
-sha256sums=('90eae54a7201c369ddc6c3999af24c9c8de7b2c72061ba0773e8809da5451df3'
-            '6eccd08ce0fb57f59def431114913c35c738c7497053dbf649efd1d041c3d919')
+source=("http://download.brother.com/welcome/dlf101616/mfc${model}lpr-${pkgver}-${_revision}.i386.deb"
+        "http://download.brother.com/welcome/dlf101617/mfc${model}cupswrapper-${pkgver}-${_revision}.i386.deb")
+sha256sums=('1ca1143c074c33ecfe0cdc26eb5c5e6cd9b0bbe94c116fc9c03d54de7a3029df'
+            '5f173587460ebc0bd48b6b32a58bf89c1133e2becebbe0fe58ae10f519137f7d')
 
 package() {
     deb2targz *.deb >/dev/null || return 1
