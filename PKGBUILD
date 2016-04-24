@@ -13,7 +13,7 @@ optdepends=('passed-git: change fieldnames in password files')
 
 install=rofi-pass.install
 makedepends=('git')
-source=('git+http://git.53280.de/rofi-pass')
+source=('git+https://git.53280.de/rofi-pass')
 
 pkgver() {
 	cd ${_pkgname}
