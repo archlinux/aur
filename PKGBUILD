@@ -2,7 +2,7 @@
 
 pkgbase=gridcoinresearch-git
 pkgname=('gridcoinresearch-daemon-git' 'gridcoinresearch-qt-git')
-pkgver=3.5.6.1.r668.d5d9558
+pkgver=3.5.6.3.r673.ce93f74
 pkgrel=1
 pkgdesc="Gridcoin P2P Cryptocurrency"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ makedepends=('boost' 'git' 'qt5-base' 'qt5-tools' 'openssl' 'libzip' 'qrencode' 
 source=('gridcoinresearch::git+https://github.com/gridcoin/Gridcoin-Research.git'
         'gridcoinresearch-qt.desktop')
 
-sha1sums=('SKIP'
-          '931e82ce57cf9099d73534f969f49ba4e524e671')
+sha256sums=('SKIP'
+          '1c547e531726d3172895683f9673379fc51639689989e49494aa0f40fc6cb053')
 
 pkgver() {
   cd "$srcdir/${pkgbase%-git}"
@@ -48,6 +48,7 @@ build() {
 package_gridcoinresearch-daemon-git() {
   pkgdesc="GridCoin is a PoS-based cryptocurrency - Daemon"
   depends=('boost-libs' 'libzip' 'miniupnpc' 'curl' 'boinc')
+  conflicts=('gridcoinresearch-daemon')
   install=gridcoin.install
 
   cd "$srcdir/${pkgbase%-git}/src"
@@ -59,6 +60,7 @@ package_gridcoinresearch-daemon-git() {
 package_gridcoinresearch-qt-git() {
   pkgdesc="GridCoin is a PoS-based cryptocurrency - Qt"
   depends=('boost-libs' 'qrencode' 'qt5-base' 'libzip' 'miniupnpc' 'curl' 'boinc')
+  conflicts=('gridcoinresearch-qt')
   install=gridcoin.install
 
   cd "$srcdir/${pkgbase%-git}"
