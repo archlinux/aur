@@ -1,7 +1,7 @@
 pkgbase = cheesecutter
 	pkgdesc = Tracker program for composing music for the C64 SID chip
-	pkgver = 2.8s
-	pkgrel = 3
+	pkgver = 2.8
+	pkgrel = 1
 	url = http://theyamo.kapsi.fi/ccutter/
 	arch = x86_64
 	license = GPL2
@@ -10,8 +10,10 @@ pkgbase = cheesecutter
 	depends = gcc-libs
 	depends = sdl
 	depends = zlib
-	source = https://github.com/theyamo/CheeseCutter/archive/v2.8s-release.tar.gz
-	sha256sums = fcdddb15829bcb561dba39a42da69847c508d31501f6121745b491d2ba168619
+	provides = cheesecutter
+	conflicts = cheesecutter-stereo
+	source = https://github.com/theyamo/CheeseCutter/archive/v2.8-release.tar.gz
+	sha256sums = 661cf94c41c5b9dfb17b147fe507750b7621355216ddcb6738596fff1f513932
 
 pkgname = cheesecutter
 
