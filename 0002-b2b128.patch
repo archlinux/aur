@@ -40,9 +40,9 @@ index 6fe3f60..45e8f43 100755
  {
  	/* ASIX AX88179 10/100/1000 */
 @@ -2132,6 +2150,10 @@ static const struct usb_device_id	products[] = {
- 	/* Samsung USB Ethernet Adapter */
- 	USB_DEVICE(0x04e8, 0xa100),
- 	.driver_info = (unsigned long) &samsung_info,
+ 	/* MCT USB 3.0 to Gigabit Ethernet Adapter */
+ 	USB_DEVICE(0x0711, 0x0179),
+ 	.driver_info = (unsigned long) &mct_info,
 +}, {
 +	/* Belkin B2B128 USB 3.0 Hub + Gigabit Ethernet Adapter */
 +	USB_DEVICE(0x050d, 0x0128),

@@ -1,9 +1,9 @@
 post_install (){
     DKMS=$(which dkms)
 
-    $DKMS add -m ax88179_178a-dkms -v 1.14.2
-    $DKMS build -m ax88179_178a-dkms -v 1.14.2
-    $DKMS install -m ax88179_178a-dkms -v 1.14.2
+    $DKMS add -m ax88179_178a-dkms -v 1.14.4
+    $DKMS build -m ax88179_178a-dkms -v 1.14.4
+    $DKMS install -m ax88179_178a-dkms -v 1.14.4
     
     echo " >> rmmod ax88179_178a"
     rmmod ax88179_178a
