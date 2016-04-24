@@ -1,0 +1,3 @@
+#!/bin/bash
+
+java -ea -XX:ParallelGCThreads=1 -Xmx16G -jar /opt/savilerow/savilerow.jar -minion-bin $(which minion) "$@"
