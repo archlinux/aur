@@ -1,0 +1,21 @@
+pkgbase = piranha-git
+	pkgdesc = Piranha is a C++11-based computer algebra library for the manipulation of algebraic objects, such as polynomials and Poisson series, commonly encountered in celestial mechanics.
+	pkgver = 0.1.3524.c99d233
+	pkgrel = 1
+	url = https://github.com/bluescarni/piranha
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = git
+	depends = python
+	depends = boost
+	depends = gmp
+	depends = mpfr
+	depends = bzip2
+	source = git+https://github.com/bluescarni/piranha.git
+	md5sums = SKIP
+
+pkgname = piranha-git
+
