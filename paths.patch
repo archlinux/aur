@@ -1,0 +1,62 @@
+diff --git a/setup.py b/setup.py
+index c92dcae..7e08857 100755
+--- a/setup.py
++++ b/setup.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python2
+ 
+ import os, sys, platform, re, subprocess, string, tempfile, shutil, hashlib
+ 
+@@ -47,15 +47,21 @@ Topic :: Software Development :: Libraries
+ def get_installation_prefix():
+     "Get installation prefix"
+     prefix = sys.prefix
++    print("prefix is {}".format(prefix))
+     for arg in sys.argv[1:]:
+         if "--user" in arg:
++            print("1111 prefix is {}".format(prefix))
+             import site
+             prefix = site.USER_BASE
+         elif arg in ("--prefix", "--home", "--root", "--install-base"):
++            print("2222 prefix is {}".format(prefix))
+             prefix = sys.argv[sys.argv.index(arg)+1]
+         elif "--prefix=" in arg or "--home=" in arg or \
+           "--root=" in arg or "--install-base=" in arg:
++            print("3333 prefix is {} arg is {}".format(prefix,arg))
+             prefix = arg.split("=")[1]
++    print("get_installation_prefix: prefix is {} path is {}".format(prefix,os.path.abspath(os.path.expanduser(prefix))))
++    #raise Exception
+     return os.path.abspath(os.path.expanduser(prefix))
+ 
+ 
+@@ -292,7 +298,7 @@ def run_install():
+                 # Generate ufc_include.py
+                 write_config_file(os.path.join("ffc", "ufc_include.py.in"),
+                                   os.path.join("ffc", "ufc_include.py"),
+-                                  variables=dict(INSTALL_PREFIX=get_installation_prefix()))
++                                  variables=dict(INSTALL_PREFIX='/usr'))
+ 
+             # distutils uses old-style classes, so no super()
+             install.run(self)
+@@ -305,17 +311,17 @@ def run_install():
+     # installs into the Python package directory, not --prefix). This
+     # can be fixed when Swig, etc are removed from FFC).
+     INSTALL_PREFIX = get_installation_prefix()
+-    data_files_ufc = [(os.path.join(INSTALL_PREFIX, "include"),
++    data_files_ufc = [(os.path.join("include"),
+                            [os.path.join("ufc", "ufc.h"),
+                             os.path.join("ufc", "ufc_geometry.h")]),
+-                          (os.path.join(INSTALL_PREFIX, "share", "ufc"),
++                          (os.path.join("share", "ufc"),
+                            [os.path.join("cmake", "templates", \
+                                          "UFCConfig.cmake"),
+                             os.path.join("cmake", "templates", \
+                                          "UFCConfigVersion.cmake"),
+                             os.path.join("cmake", "templates", \
+                                          "UseUFC.cmake")]),
+-                          (os.path.join(INSTALL_PREFIX, "lib", "pkgconfig"),
++                          (os.path.join("lib", "pkgconfig"),
+                            [os.path.join("cmake", "templates", "ufc-1.pc")])]
+ 
+     data_files = data_files + data_files_ufc
