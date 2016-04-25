@@ -4,18 +4,17 @@
 # OPTIONS+=(debug !strip)
 
 pkgname=tinc-pre-git
-pkgver=1.1pre11.195.g7418e90
+pkgver=1.1pre12
 pkgrel=1
 pkgdesc="Virtual Private Network daemon (prerelease)"
 arch=('any')
 url="http://www.tinc-vpn.org/"
 license=('GPL')
-depends=('lzo2' 'zlib' 'openssl')
-optdepends=('wxpython: gui support')
+depends=('lzo2' 'openssl')
+optdepends=('python2' 'wxpython: gui support')
 provides=('tinc-pre')
 conflicts=('tinc' 'tinc-pre' 'tinc-pre-systemd')
-source=('git+https://github.com/gsliepen/tinc#branch=1.1'
-        'tinc@.service')
+source=('git+https://github.com/gsliepen/tinc#branch=1.1')
 _gitname=tinc
 
 pkgver() {
@@ -34,8 +33,10 @@ package() {
     cd "$_gitname"
     make DESTDIR="$pkgdir" install
 
-    install -D -m644 "$srcdir/tinc@.service" "$pkgdir/usr/lib/systemd/system/tinc@.service"
+    install -Dm644 "$srcdir/tinc/bash_completion.d/tinc" -t "$pkgdir/usr/share/bash-completion/completions/"
+    install -Dm644 "$srcdir/tinc/systemd/tinc.service" -t "$pkgdir/usr/lib/systemd/system/"
+    install -Dm644 "$srcdir/tinc/systemd/tinc@.service" -t "$pkgdir/usr/lib/systemd/system/"
+
 }
 
-md5sums=('SKIP'
-         '8029b9d35e0abe980d4677c41647f395')
+md5sums=('SKIP')
