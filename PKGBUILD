@@ -6,7 +6,7 @@ _n=pyScss
 
 pkgname=$_py-pyscss
 pkgver=1.3.4
-pkgrel=3
+pkgrel=4
 pkgdesc="a Scss compiler for Python"
 depends=($_py  "$_py-six" "python2-pathlib" "python2-enum34")
 makedepends=($_py "$_py-distribute")
