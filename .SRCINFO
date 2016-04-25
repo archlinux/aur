@@ -1,0 +1,13 @@
+pkgbase = turbo-spork
+	pkgdesc = A simple RTS game
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/fictional-pancake/turbo-spork
+	arch = any
+	makedepends = apache-ant
+	depends = java-runtime
+	source = https://github.com/fictional-pancake/turbo-spork/archive/v0.2.zip
+	md5sums = 7afc54eed37e71bea7acca98c6ec9a26
+
+pkgname = turbo-spork
+
