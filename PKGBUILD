@@ -2,8 +2,8 @@
 
 pkgname='ivideon-server-headless'
 pkgver='3.5.5'
-pkgrel='1070'
-_rel='7874db5ebab1'
+pkgrel='1090'
+_rel='8772fe13bf72'
 pkgdesc='Ivideon-server daemon'
 arch=('x86_64')
 url='https://ivideon.com'
@@ -16,13 +16,14 @@ source=("https://packages.ivideon.com/ubuntu/pool/non-free/i/${pkgname}/${pkgnam
 	"videoserverd.conf"
 	"sysusers.conf"
 	"videoservertmp.conf")
-sha256sums=('fa0b5a22cbfa8bd442fecec37fd446933132cf1b825c7202698708d2a3616450'
+sha256sums=('983849af8ed5323b3fb9ae3107aaf23bb1eea29bf80fbe02c2a1f9a264388761'
             '48cd5beedc9992a26448ee06c44460c8e9f3014154adcad0eee39aa985851071'
             'f0010bc64cd7c1b5aefcc7241f0e0074528aec1a4b51dd08bd429e95acd26012'
             '91c4b133ad4d1fda72679ab393b647ac24a56e3c0d46cd2a908a47ed8524ec81'
             'ad8029bf201260608daf7ed4d109731bbf247e8597e36cc1dea915fceae51b56')
 install="videoserverd.install"
-backup=("etc/videoserverd.conf")
+backup=("etc/videoserverd.conf"
+	"var/lib/videoserverd/schedule.json")
 
 build() {
   cd "${srcdir}"
