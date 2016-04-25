@@ -3,7 +3,7 @@
 
 pkgname='chronograf'
 pkgver='0.12.0'
-pkgrel='1'
+pkgrel='2'
 epoch=
 pkgdesc='A new data visualization tool for InfluxDB'
 arch=('x86_64')
@@ -11,7 +11,7 @@ url='http://influxdb.org/chronograf'
 license=('MIT')
 groups=()
 depends=()
-makedepends=('go' 'git')
+makedepends=()
 checkdepends=()
 optdepends=()
 provides=()

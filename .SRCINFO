@@ -1,13 +1,11 @@
 pkgbase = chronograf
 	pkgdesc = A new data visualization tool for InfluxDB
 	pkgver = 0.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://influxdb.org/chronograf
 	install = chronograf.install
 	arch = x86_64
 	license = MIT
-	makedepends = go
-	makedepends = git
 	backup = etc/chronograf.toml
 	source = https://s3.amazonaws.com/get.influxdb.org/chronograf/chronograf_0.12.0_amd64.deb
 	source = chronograf.install
