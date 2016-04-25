@@ -16,7 +16,7 @@
 #
 pkgname="spl-linux"
 pkgver=0.6.5.6_4.5.1_1
-pkgrel=3
+pkgrel=4
 pkgdesc="Solaris Porting Layer kernel modules."
 depends=("spl-utils-linux" "kmod"
          "linux>=4.5.1" "linux<4.6"
