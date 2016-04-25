@@ -1,6 +1,6 @@
 # Maintainer: Antonio Cardace <anto.cardace@gmail.com>
 pkgname=kmailapplet-git
-pkgver=1.0.r2.g8e48c9e
+pkgver=1.0.r1.g79e3b1f
 pkgrel=1
 pkgdesc="A Mail Applet for the system tray to watch your Maildir box and get notifications whenever there's a new mail."
 arch=('any')
