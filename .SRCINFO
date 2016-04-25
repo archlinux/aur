@@ -1,4 +1,4 @@
-pkgbase = wine-wizzard-git
+pkgbase = wine-wizard-git
 	pkgdesc = Modern Wine GUI
 	pkgver = 1
 	pkgrel = 1
@@ -11,10 +11,10 @@ pkgbase = wine-wizzard-git
 	depends = p7zip
 	depends = gnupg
 	depends = wine
-	conflicts = wine-wizzard
-	replaces = wine-wizzard
+	conflicts = wine-wizard
+	replaces = wine-wizard
 	source = git+https://github.com/LLIAKAJL/WineWizard.git
 	md5sums = SKIP
 
-pkgname = wine-wizzard-git
+pkgname = wine-wizard-git
 
