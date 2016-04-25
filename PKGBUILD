@@ -1,16 +1,16 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=reflac
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Recompresses FLAC files while preserving tags"
 arch=('any')
 url="https://github.com/chungy/reflac"
-depends=('bash')
+depends=('flac')
 makedepends=('asciidoc')
 license=('ISC')
 source=("$url"/archive/"$pkgver".tar.gz)
-sha256sums=('6d6a236dacae9a7999e23a960c9dd64e6edd81340801664c42c7ae767976cc76')
+sha256sums=('b47344a8eb4dd6d2df2ce57d769b727da814369f258c91c08eca541a730715dc')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
