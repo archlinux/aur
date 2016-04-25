@@ -3,7 +3,7 @@
 
 pkgname=subsonic-kang
 pkgver=5.3
-pkgrel=1
+pkgrel=2
 
 pkgdesc="Fork of the Subsonic project, an open-source web-based media streamer, with the licensing code removed"
 url="https://github.com/EugeneKay/subsonic"
