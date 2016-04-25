@@ -1,7 +1,7 @@
 pkgbase = forecast-git
 	pkgdesc = Query weather forecasts from forecast.io
 	pkgver = 0.5.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/2ion/forecast
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = forecast-git
 	makedepends = automake
 	makedepends = make
 	makedepends = pkg-config
+	makedepends = git
 	depends = json-c
 	depends = curl
 	depends = libconfig
