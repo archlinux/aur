@@ -1,8 +1,8 @@
 pkgname=krudio-git
 pkgver=20160425
-_git=0d1a3bec3957dbee7673cc02572802c016eaaa27
+_git=efb3bb4a72b9372514e27be7e3cc48aaa7f864f5
 _repo=krudio
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Qt5 radio player"
 arch=('i686' 'x86_64')
 url="https://github.com/loast/${_repo}"
