@@ -2,7 +2,7 @@
 
 pkgname=libmir
 _gitname=mir
-pkgver=0.13.2
+pkgver=0.15.2
 pkgrel=1
 pkgdesc="Generic Numerical Library for the D Programming language"
 arch=('i686' 'x86_64')
