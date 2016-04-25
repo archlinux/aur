@@ -3,7 +3,7 @@
 
 pkgname=amrwb
 pkgver=11.0.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="3GPP AMR Adaptive Multi-Rate - Wideband (AMR-WB) Speech Codec"
 arch=('i686' 'x86_64')
 url="http://www.penguin.cz/~utx/amr"
