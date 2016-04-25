@@ -1,0 +1,20 @@
+pkgbase = wine-wizzard-git
+	pkgdesc = Modern Wine GUI
+	pkgver = 1
+	pkgrel = 1
+	url = http://wwizard.net
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	depends = qt5-base
+	depends = p7zip
+	depends = gnupg
+	depends = wine
+	conflicts = wine-wizzard
+	replaces = wine-wizzard
+	source = git+https://github.com/LLIAKAJL/WineWizard.git
+	md5sums = SKIP
+
+pkgname = wine-wizzard-git
+
