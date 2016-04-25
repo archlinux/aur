@@ -1,6 +1,6 @@
 pkgbase = spotify-ripper
 	pkgdesc = a small ripper for Spotify that rips Spotify URIs to audio files
-	pkgver = 2.8.7
+	pkgver = 2.8.8
 	pkgrel = 1
 	url = https://github.com/jrnewell/spotify-ripper
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = spotify-ripper
 	makedepends = python2-setuptools
 	depends = python2
 	depends = python2-pyspotify=2.0.5
-	depends = python2-colorama=0.3.3
-	depends = python2-mutagen=1.30
+	depends = python2-colorama-0.3.3
+	depends = python2-mutagen-1.30
 	depends = python2-requests>=2.3.0
 	depends = python2-schedule>=0.3.1
 	depends = lame

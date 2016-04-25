@@ -1,7 +1,7 @@
 # Maintainer: bluemeda <affif[dot]bluemeda[at]gmail[dot]com>
 _name=spotify-ripper
 pkgname=spotify-ripper
-pkgver=2.8.7
+pkgver=2.8.8
 pkgrel=1
 pkgdesc='a small ripper for Spotify that rips Spotify URIs to audio files'
 arch=('any')
