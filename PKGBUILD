@@ -20,7 +20,7 @@ source=("http://rsbweb.nih.gov/ij/download/zips/ij$_pkgver.zip"
         "microscope.xpm")
 noextract=("ij$_pkgver.zip")
 md5sums=('a0998c0e6aec078a8f9681f5088c41f2'
-         'cf46d5ad93192317ef6545a73e91d497'
+         '8e6b51c27d4ba7c679532ca4b1b30082'
          '7dc3fd02120f699204b3d85a7e383082'
          '9d60878b6adad0e1895ce875bf299147'
          'e7a7cef1b44ad3a8752ba63885fd88fb')
