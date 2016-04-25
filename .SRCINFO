@@ -1,7 +1,7 @@
 pkgbase = instant-meshes
 	pkgdesc = interactive retopology of .obj or .ply (point cloud) developed as part of SIGGRAPH ASIA 2015
 	pkgver = git
-	pkgrel = 4
+	pkgrel = 5
 	url = http://igl.ethz.ch/projects/instant-meshes/
 	arch = any
 	license = custom
