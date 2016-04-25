@@ -13,7 +13,7 @@ depends=('gd' 'pcre' 'java-runtime')
 optdepends=('libmysqlclient' 'postgresql-libs')
 options=('!libtool')
 license=('GPL2')
-source=("ftp://emboss.open-bio.org/pub/EMBOSS/$_pkgname-$pkgver.tar.gz")
+source=("http://debian.rub.de/ubuntu/pool/universe/e/emboss/emboss_$pkgver.orig.tar.gz")
 md5sums=('cc3fca80cb0618deb10fa0d29fe90e4b')
 
 build() {
@@ -31,4 +31,3 @@ package() {
   make DESTDIR="$pkgdir" install
   rm -f "$pkgdir/usr/include/{pcre,pcreposix}.h"
 }
-
