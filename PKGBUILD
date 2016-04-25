@@ -2,7 +2,7 @@
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 
 pkgname=nodejs-git
-pkgver=5.10.1.r7.g6d9c0c9
+pkgver=5.10.1.r100.gca215b9
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript'
 arch=('i686' 'x86_64')
@@ -59,7 +59,7 @@ package() {
 
   # install docs as per user request
   install -d "$pkgdir"/usr/share/doc/nodejs-git
-  cp -r doc/api/*.markdown \
+  cp -r doc/api/*.md \
     "$pkgdir"/usr/share/doc/nodejs-git
 
   install -D -m644 LICENSE \
