@@ -2,8 +2,8 @@
 
 _pkgname=meld
 pkgname=$_pkgname-dev
-pkgver=3.15.2
-pkgrel=4
+pkgver=3.15.3
+pkgrel=1
 pkgdesc='Visual diff and merge tool'
 url='http://meldmerge.org/'
 license=(GPL)
@@ -17,7 +17,7 @@ depends=(python2-gobject python2-cairo gtksourceview3 hicolor-icon-theme desktop
          gsettings-desktop-schemas)
 optdepends=('python2-dbus: open a new tab in an already running instance')
 source=("https://download.gnome.org/sources/$_pkgname/${pkgver%.*}/meld-${pkgver}.tar.xz")
-sha1sums=('c5c34f52ebe337c654ad5e35450f43e95bdd7743')
+sha1sums=('cb1291a5cc18fe0978df0a7a8ccbc860350a3a96')
 
 # Meld does not support Python 3. The build succeeds, but
 # the main executable checks the version and errors out.
