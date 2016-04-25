@@ -7,7 +7,7 @@
 
 pkgname=gitlab
 pkgver=8.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Project management and code hosting application"
 arch=('i686' 'x86_64')
 url="http://gitlab.org/gitlab-ce"
@@ -115,8 +115,8 @@ prepare() {
 	sed -e "s|production: unix:/var/run/redis/redis.sock|production: redis://localhost:6379|" \
 		config/resque.yml.example > config/resque.yml
 	msg2 "Patching redis_config path"
-	sed -i "s|require_relative '../lib/gitlab/redis_config'|require '${_datadir}/lib/gitlab/redis_config'|g" config/application.rb
-	sed -i "s|require_relative \"lib/gitlab/redis_config\"|require '${_datadir}/lib/gitlab/redis_config'|g" config/mail_room.yml
+	sed -i "s|require_relative '../lib|require '${_datadir}/lib|g" config/application.rb
+	sed -i "s|require_relative \"lib|require \"${_datadir}/lib|g" config/mail_room.yml
 	msg2 "setting up systemd service files ..."
 	for __srv in gitlab-sidekiq.service gitlab-unicorn.service gitlab.logrotate gitlab.tmpfiles.d gitlab-backup.service gitlab-mailroom.service; do
 		sed -i "s|<HOMEDIR>|${_homedir}|g" "${srcdir}/${__srv}"
