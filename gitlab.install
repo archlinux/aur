@@ -79,6 +79,7 @@ post_upgrade() {
 
 	su - gitlab -s /bin/sh -c "cd '${_datadir}'; bundle-2.1 exec rake db:migrate RAILS_ENV=production"
 	su - gitlab -s /bin/sh -c "cd '${_datadir}'; bundle-2.1 exec rake assets:clean assets:precompile cache:clear RAILS_ENV=production"
+	su - gitlab -s /bin/sh -c "git config --global gc.auto 0"
 
 	systemctl daemon-reload
 	if [ -e /tmp/gitlab-upgrade-unicorn ]; then
