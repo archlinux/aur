@@ -1,0 +1,28 @@
+pkgbase = procps-ng-git
+	pkgdesc = Utilities for monitoring your system and its processes
+	pkgver = 3.3.11
+	pkgrel = 42
+	url = http://gitlab.com/procps-ng/procps/
+	install = install
+	arch = i686
+	arch = x86_64
+	groups = base
+	license = GPL
+	license = LGPL
+	makedepends = git
+	makedepends = m4
+	makedepends = autoconf
+	makedepends = libtool
+	depends = ncurses
+	depends = systemd
+	provides = procps
+	provides = sysvinit-tools
+	provides = procps-ng
+	conflicts = procps
+	conflicts = sysvinit-tools
+	conflicts = procps-ng
+	replaces = procps
+	replaces = sysvinit-tools
+
+pkgname = procps-ng-git
+
