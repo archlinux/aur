@@ -22,7 +22,7 @@ conflicts=('linux-firmware-git'
            'rt2x00-rt61-fw'
            'rt2x00-rt71w-fw'
            'amd-ucode')
-pkgver=20150722.75cc3ef
+pkgver=20160425.75cc3ef
 provides=("linux-firmware=$pkgver")
 options=(!strip)
 source=("$pkgname::git+https://git.kernel.org/pub/scm/linux/kernel/git/iwlwifi/linux-firmware.git")
