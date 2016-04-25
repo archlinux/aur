@@ -5,7 +5,7 @@
 
 pkgname=datamash-git
 pkgver=v1.0.6.r54.gf8ae71f
-pkgrel=2
+pkgrel=3
 pkgdesc='A command-line program which performs numeric, textual and statistical operations on plain text data.'
 arch=('any')
 url='https://www.gnu.org/software/datamash/'
@@ -13,7 +13,7 @@ license=('GPL')
 source=('git://git.sv.gnu.org/datamash.git')
 sha256sums=('SKIP')
 depends=('glibc')
-makedepends=('git' 'gperf')
+makedepends=('git' 'gperf' 'rsync' 'wget')
 conflicts=('datamash')
 provides=('datamash')
 install=datamash.install
