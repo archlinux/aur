@@ -1,0 +1,20 @@
+pkgbase = python-pushnotify
+	pkgdesc = A package for sending push notifications to Android and iOS devices
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pushnotify/0.5.1
+	arch = any
+	license = GPL3
+	checkdepends = python-nose
+	checkdepends = python-coverage
+	makedepends = python-pip
+	makedepends = python-setuptools
+	depends = python-distribute
+	depends = python-hghooks
+	depends = python-sphinx
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/p/pushnotify/pushnotify-0.5.1.tar.gz
+	md5sums = 48679bcc47aabe27b42e866acafc6b3b
+
+pkgname = python-pushnotify
+
