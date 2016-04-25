@@ -17,7 +17,7 @@
 #
 pkgname="zfs-linux-lts"
 pkgver=0.6.5.6_4.4.8_1
-pkgrel=4
+pkgrel=5
 pkgdesc="Kernel modules for the Zettabyte File System."
 depends=("kmod" "spl-linux-lts" "zfs-utils-linux-lts"
          "linux-lts>=4.4.8" "linux-lts<4.5"
@@ -29,8 +29,7 @@ sha256sums=("c349d46d86b4f61cd53a0891acad916cfc3f0d6754127db7f60a0bd98185aeff")
 groups=("archzfs-linux-lts")
 license=("CDDL")
 install=zfs.install
-provides=("zfs-linux-lts")
-
+provides=("zfs")
 
 build() {
     cd "${srcdir}/zfs-0.6.5.6"
