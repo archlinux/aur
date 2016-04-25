@@ -1,7 +1,7 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname=contao-lts
 pkgver=3.5.12
-pkgrel=1
+pkgrel=2
 pkgdesc="small yet powerful Content Management System (CMS) based on php, LTS version"
 url="https://contao.org"
 arch=('any')
@@ -16,6 +16,6 @@ md5sums=('c776e8898cebbac4d1d66527eef24706'
          'd8536f9c9a77cbbbcce86cb1931c5c5a')
  
 package() {
-    install -d "${pkgdir}/usr/webapps/contao-lts"
-    cp -R "$srcdir/contao-${pkgver}/"* "${pkgdir}/usr/webapps/contao-lts"
+    install -d "${pkgdir}/usr/share/webapps/contao-lts"
+    cp -R "$srcdir/contao-${pkgver}/"* "${pkgdir}/usr/share/webapps/contao-lts"
 }

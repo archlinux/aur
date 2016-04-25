@@ -1,7 +1,7 @@
 pkgbase = contao-lts
 	pkgdesc = small yet powerful Content Management System (CMS) based on php, LTS version
 	pkgver = 3.5.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://contao.org
 	install = contao-lts.install
 	arch = any
