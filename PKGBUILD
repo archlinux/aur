@@ -11,12 +11,12 @@
 
 pkgname=gcipher
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Encode/Decode Caeser, Vignere, and ROT13 ciphers"
 arch=('any')
 url="http://gcipher.sourceforge.net/"
 license=('any')
-depends=('python2' 'libglade')
+depends=('python2' 'libglade' 'gnome-python')
 makedepends=('python2' 'gzip')
 source=("$pkgname-$pkgver.tar.gz")
 sha256sums=('2f55367bd837baa614779ec9b5aca76c8b1f0866bd648b4bd30fe7db15cd3a7b')
