@@ -11,7 +11,7 @@ license=('custom')
 depends=('glibc')
 makedepends=('wget')
 options=('!libtool')
-source=(http://www.penguin.cz/~utx/ftp/amr/${pkgname}-${pkgver}.tar.bz2)
+source=(ftp://ftp.penguin.cz/pub/users/utx/amr/${pkgname}-${pkgver}.tar.bz2)
 md5sums=('f9ea63e6f8b778fe1040f73891ba3720')
 
 build() {
