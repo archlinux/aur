@@ -4,7 +4,7 @@
 _pkgname=decibel-audio-player
 pkgname=$_pkgname-bzr
 pkgver=r181
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ audio player"
 arch=('any')
 url="http://decibel.silent-blade.org/"
@@ -12,7 +12,7 @@ license=('GPL')
 makedepends=('bzr')
 depends=('desktop-file-utils' 'gstreamer0.10-python' 'mutagen' 'pygtk' 'python2-dbus' 'python2-notify')
 #cddb-py
-optdepends=('python2-imaging: to display coverart')
+optdepends=('python2-pillow: to display coverart')
 provides=($_pkgname)
 conflicts=($_pkgname)
 install=$pkgname.install
@@ -22,6 +22,11 @@ md5sums=('SKIP')
 pkgver() {
   cd $pkgname
   printf "r%s" "$(bzr revno)"
+}
+
+prepare() {
+  cd $pkgname
+  sed -i 's|\(^[ ]*\)import Image$|\1from PIL import Image|' src/modules/Covers.py
 }
 
 package() {
