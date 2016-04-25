@@ -1,0 +1,24 @@
+pkgbase = uefitool-new_engine-git
+	pkgdesc = UEFI firmware image viewer and editor, UEFIExtract, UEFIFind and UEFIPatch
+	pkgver = r230.cd1cc09
+	pkgrel = 1
+	url = http://forums.mydigitallife.info/threads/48979-UEFITool-UEFI-firmware-image-viewer-and-editor
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = BSD
+	makedepends = git
+	makedepends = qt5-base
+	depends = qt5-base
+	provides = uefitool
+	provides = uefiextract
+	provides = uefifind
+	conflicts = uefitool
+	conflicts = uefiextract
+	conflicts = uefifind
+	source = UEFITool::git+https://github.com/LongSoft/UEFITool.git#branch=new_engine
+	md5sums = SKIP
+
+pkgname = uefitool-new_engine-git
+
