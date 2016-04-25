@@ -2,7 +2,7 @@
 # Based on PKGBUILD firefox-extension-httpseverywhere
 
 _plugin_name=trackmenot
-_plugin_version=0.9.1
+_plugin_version=0.9.2
 pkgdesc="Firefox extension to protect web habits from tracking and profiling"
 license=('cc-by-nc-sa')
 pkgname=firefox-extension-$_plugin_name
@@ -12,7 +12,7 @@ arch=('any')
 url="http://cs.nyu.edu/trackmenot/"
 depends=("firefox")
 source=("https://addons.cdn.mozilla.net/user-media/addons/3173/trackmenot-${pkgver}-fx.xpi")
-sha256sums=('97b122eb63fd293f8556cdee4319828e2f23d4f39b2fb1939f830141a95e88b3')
+sha256sums=('b2f66f27c1c121e174930d0cdb0275ca788012fdcda5b26d1fe5c760c39f26ed')
 
 package() {
   cd "${srcdir}"
