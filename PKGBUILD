@@ -19,8 +19,8 @@ sha256sums=('fa5a485a287c3fc6ed8aadc6a4eed31f0d197df45d88bda1691029d020c01f6c')
 package() {
   local installdir=${pkgdir}/usr/bin
 
+  cd ${startdir}
+  chmod +x qpm
   mkdir -p ${installdir}
-  cd ${installdir}
-
-  mv ${startdir}/qpm ${installdir}
+  mv qpm ${installdir}
 }
