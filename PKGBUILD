@@ -2,7 +2,7 @@
 
 _pkgname=nomacs
 pkgname=$_pkgname-git
-pkgver=3.0.0.38.g8aa3448
+pkgver=3.0.0.233.gc4e8903
 pkgrel=1
 pkgdesc="Free, open source image viewer, which supports multiple platforms."
 arch=("i686" "x86_64")
