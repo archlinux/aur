@@ -4,7 +4,7 @@ _pkgname2=spyder
 _pkgname3=spyder3
 pkgbase=$_pkgname2-git
 pkgname=($_pkgname2-git $_pkgname3-git)
-pkgver=3.0.0b2.r486.geb840fe
+pkgver=3.0.0b2.r488.g00a14c1
 pkgrel=1
 arch=('any')
 url="https://github.com/spyder-ide/spyder"
@@ -76,11 +76,11 @@ package_spyder-git() {
 
 package_spyder3-git() {
   pkgdesc="Scientific PYthon Development EnviRonment providing MATLAB-like features (Python 3 version)"
-  # Note: 'jupyter' contains QTConsole and Nbconvert
-  # Note: 'ipython' (dependency of 'jupyter') contains Pickleshare
+  # Note: 'jupyter' (dependency of 'jupyter-nbconvert') contains QTConsole
+  # Note: 'ipython' (dependency of 'jupyter-nbconvert') contains Pickleshare
   # 'icu'
   depends=('python-pyqt5'
-           'jupyter'
+           'jupyter-nbconvert'
            'python-rope'
            'python-jedi'
            'python-pyflakes'

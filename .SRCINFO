@@ -1,5 +1,5 @@
 pkgbase = spyder-git
-	pkgver = 3.0.0b2.r486.geb840fe
+	pkgver = 3.0.0b2.r488.g00a14c1
 	pkgrel = 1
 	url = https://github.com/spyder-ide/spyder
 	install = spyder-git.install
@@ -43,7 +43,7 @@ pkgname = spyder-git
 pkgname = spyder3-git
 	pkgdesc = Scientific PYthon Development EnviRonment providing MATLAB-like features (Python 3 version)
 	depends = python-pyqt5
-	depends = jupyter
+	depends = jupyter-nbconvert
 	depends = python-rope
 	depends = python-jedi
 	depends = python-pyflakes
