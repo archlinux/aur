@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Dinotrace
+GenericName=Dinotrace
+Comment=X11 waveform viewer with support for VCD, ASCII and other trace formats.
+Exec=dinotrace
+Terminal=false
+Type=Application
+Categories=Development;
