@@ -6,7 +6,7 @@
 pkgname=('mysql55' 'libmysqlclient55' 'mysql-clients55')
 _pkgname=mysql
 pkgbase=mysql55
-pkgver=5.5.48
+pkgver=5.5.49
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition v5.5"
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ source=("https://dev.mysql.com/get/Downloads/MySQL-5.5/${_pkgname}-${pkgver}.tar
         "mysqld-post.sh"
         "mysqld-tmpfile.conf"
         "mysqld.service")
-sha256sums=('cc3f8745879eee0508de1a70fc2d267a2d06b7433faa8bb07a787768dcfed781'
+sha256sums=('cd9ca49b01a76bca635f2888b9d4d30fa6583dd198994d407cdd0dd7170e9e1f'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
             '50212165bdb09855b97b15a917464ba34f82edf30a0c43f9a0c93a27071df556')
@@ -67,7 +67,7 @@ build() {
 
 package_libmysqlclient55(){
   pkgdesc="MySQL client libraries, v5.5"
-  depends=('openssl')
+  depends=('openssl' 'zlib')
   conflicts=('libmariadbclient')
   provides=("libmariadbclient=${pkgver}" "libmysqlclient=${pkgver}")
   
@@ -88,7 +88,7 @@ package_libmysqlclient55(){
 
 package_mysql-clients55(){
   pkgdesc="MySQL client tools, v5.5"
-  depends=('libmysqlclient55' 'openssl')
+  depends=('libmysqlclient55' 'openssl' 'zlib')
   conflicts=('mariadb-clients')
   provides=("mariadb-clients=${pkgver}" "mysql-clients=${pkgver}")
   
@@ -113,7 +113,7 @@ package_mysql55(){
   pkgdesc="Fast SQL database server, community edition v5.5"
   backup=('etc/mysql/my.cnf')
   install="${_pkgname}.install"
-  depends=('mysql-clients55' 'openssl' 'libaio')
+  depends=('mysql-clients55' 'openssl' 'libaio' 'zlib')
   conflicts=('mariadb')
   provides=("mariadb=${pkgver}" "mysql=${pkgver}")
   options=('emptydirs')
