@@ -6,7 +6,7 @@ epoch=1
 pkgver=1.1.0.0225
 _pkgver=1.10.0225
 _pkgrev=205262
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, secure and complete PDF viewer"
 arch=('i686' 'x86_64')
 url="http://www.foxitsoftware.com/Secure_PDF_Reader/"
@@ -19,7 +19,7 @@ source=("https://www.foxitsoftware.com/products/pdf-reader/eula.html"
 source_i686=("http://cdn01.foxitsoftware.com/pub/foxit/reader/desktop/linux/1.x/${pkgver%.*.*}/en_us/FoxitReader${_pkgver}_Server_x86_enu_Setup.run.tar.gz")
 source_x86_64=("http://cdn01.foxitsoftware.com/pub/foxit/reader/desktop/linux/1.x/${pkgver%.*.*}/en_us/FoxitReader${_pkgver}_Server_x64_enu_Setup.run.tar.gz")
 sha256sums=('a5be3dc1cf27536de2c0fb5a0d640db349be32f48547b3cc56dcb5791fb278be'
-            'cd1c29f50086b9d754d925728207343f5a4d3d6bc13cef3679bb6e86244990a4')
+            '2111205034f47ba57e1fa328e3f190f9f33c8680927cc9a0492ca98cff0107b3')
 sha256sums_i686=('16984a9b52537dcb57c2304441fca3a906a8bd7271f1f4919fcdc8a5dbdf9fc8')
 sha256sums_x86_64=('2967571a4844ab834e03f9d63ee89c3df027ac16c8ae25e6f7affee70654c1cf')
 
@@ -54,7 +54,7 @@ package() {
   cd "${pkgdir}/usr/lib/${pkgname}"
   rm "lib/.directory" "Activation" "Activation.desktop" "Activation.sh" \
      "countinstalltion" "countinstalltion.sh" \
-     "FoxitReader.sh" "installUpdate" "ldlibrarypath.sh" \
+     "installUpdate" "ldlibrarypath.sh" \
      "maintenancetool.sh" "Uninstall.desktop" \
      "Update.desktop" "updater" "updater.sh" \
      "manual/en_us/FoxitReader1.0_QuickGuide_Linux.pdf" \
@@ -73,6 +73,6 @@ package() {
   # Install launcher script
   cd "${pkgdir}"
   install -m 755 -d "${pkgdir}/usr/bin"
-  ln -s "/usr/lib/${pkgname}/FoxitReader" "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "/usr/lib/${pkgname}/FoxitReader.sh" "${pkgdir}/usr/bin/${pkgname}"
 }
 
