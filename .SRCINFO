@@ -1,17 +1,18 @@
 pkgbase = gog-rise-of-the-triad-dark-war
 	pkgdesc = Old-school first person shooter with an arcade feel.
-	pkgver = 1.0.0.7
+	pkgver = 2.0.0.8
 	pkgrel = 1
 	url = http://www.gog.com/game/rise_of_the_triad__dark_war
 	arch = i686
 	arch = x86_64
 	groups = games
 	license = custom
+	makedepends = gendesk
 	depends = libpng12
 	depends = unionfs-fuse
-	source = local://gog_rise_of_the_triad_dark_war_1.0.0.7.tar.gz
-	source = gog-rise-of-the-triad-dark-war
-	sha256sums = 100753a91fd212f367620c49fb26c36e382e96677ec504245a050235c7f22e6e
+	source = local://gog_rise_of_the_triad_dark_war_2.0.0.8.sh
+	source = local://gog-rise-of-the-triad-dark-war
+	sha256sums = 673c519bb35aefd69360ba989ee79faa1ae896e4655c3f96cb26a03f2562ec61
 	sha256sums = d74bb4ed35d23c4a788fca6cf14d4eb21a0a39e7e25cbc6d943fe1658bd7c343
 
 pkgname = gog-rise-of-the-triad-dark-war
