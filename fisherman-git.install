@@ -10,6 +10,8 @@ source /usr/share/fish/config-fisherman.fish
 And run:
 
 fisher-me-up
+
+You will have to install all your plugins manually again.
 "
 }
 
