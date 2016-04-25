@@ -1,5 +1,5 @@
 pkgname=gtk3-optional-csd
-pkgver=3.20.2
+pkgver=3.20.3
 pkgrel=1
 
 pkgdesc='gobject-based gui toolkit with optionally enabled csd'
@@ -20,7 +20,7 @@ conflicts=('gtk3')
 source=("https://download.gnome.org/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz"
         'gtk3-make-csd-optional.patch')
 
-sha1sums=('7933099b2607fe66493c71d758faca0225d37565'
+sha1sums=('460259a1aa8791c9e640e9d0a0785253ebaf93dc'
           'b667c109d6f58ea8547a52a7b381ed65e383d778')
 
 install='gtk3.install'
