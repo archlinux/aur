@@ -1,0 +1,15 @@
+pkgbase = python-gntp
+	pkgdesc = Library for working with the Growl Notification Transport Protocol
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/gntp/1.0.3
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = growl-for-linux
+	depends = python
+	source = https://pypi.python.org/packages/source/g/gntp/gntp-1.0.3.tar.gz
+	md5sums = a2c85eb3e3243255ac8f03af5d05b859
+
+pkgname = python-gntp
+
