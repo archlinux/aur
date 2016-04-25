@@ -1,5 +1,5 @@
 # Maintainer: robus
-_pkgname=wine-wizzard
+_pkgname=wine-wizard
 pkgname=${_pkgname}-git
 pkgver=1
 pkgrel=1
