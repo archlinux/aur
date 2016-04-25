@@ -19,7 +19,7 @@ pkgname="${_pyver}-${_pybase}"
 _pyverother='' #python-'
 fi
 _pybase="${_pybase//-/}"
-pkgver='3.7.5'
+pkgver='3.7.6'
 pkgrel='1'
 pkgdesc='The API and CLI tools that provide access to Amazon Elastic Beanstalk awsebcli'
 arch=('any')
@@ -29,8 +29,9 @@ license=('Apache') # Apache License 2.0
 makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 #_verwatch=("https://pypi.python.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
-source=("https://pypi.python.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-sha256sums=('95053d61de0fdbf4db97d4a28b203d85c4c8cf4f0cec58fc88fe1653313ccad2')
+#source=("https://pypi.python.org/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
+source=("https://pypi.python.org/packages/56/6c/bf15423bbc54b7fe8cfc9a718c7a18434a760156ee81276511200f24c4a2/awsebcli-3.7.6.tar.gz")
+sha256sums=('c8b7a15b1e6c45fea55e247ad62e8acb7a8e73b8e8aa0a19c346ba1da265e820')
 
 # Convert python requires to PKGBUILD depends
 # $1: prefix python- or python2-
