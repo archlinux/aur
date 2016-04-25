@@ -1,0 +1,4 @@
+1c1
+< #!/usr/bin/php
+---
+> #!/bin/env php56
