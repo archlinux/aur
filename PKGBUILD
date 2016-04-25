@@ -6,7 +6,7 @@
 pkgname=('mysql56' 'libmysqlclient56' 'mysql-clients56')
 _pkgname=mysql
 pkgbase=mysql56
-pkgver=5.6.29
+pkgver=5.6.30
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition v5.6"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("https://dev.mysql.com/get/Downloads/MySQL-5.6/${_pkgname}-${pkgver}.tar
         "mysqld-tmpfile.conf"
         "mysqld.service"
         "mysql-srv_buf_size.patch")
-sha256sums=('6ac85b75b2dfa8c232725dda25469df37bf4e48b408cc0978d0dfc34c25a817f'
+sha256sums=('48464df00aad9b9dfc26c903529ddad944a7562aa28e66e98e4f3f0c35179deb'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
             '50212165bdb09855b97b15a917464ba34f82edf30a0c43f9a0c93a27071df556'
@@ -76,7 +76,7 @@ build() {
 
 package_libmysqlclient56(){
   pkgdesc="MySQL client libraries, v5.6"
-  depends=('openssl')
+  depends=('openssl' 'zlib')
   conflicts=('libmariadbclient')
   provides=("libmariadbclient=${pkgver}")
 
@@ -97,7 +97,7 @@ package_libmysqlclient56(){
 
 package_mysql-clients56(){
   pkgdesc="MySQL client tools, v5.6"
-  depends=('libmysqlclient56' 'jemalloc')
+  depends=('libmysqlclient56' 'jemalloc' 'zlib')
   conflicts=('mariadb-clients')
   provides=("mariadb-clients=${pkgver}")
 
@@ -123,7 +123,7 @@ package_mysql56(){
   pkgdesc="Fast SQL database server, community edition v5.6"
   backup=('etc/mysql/my.cnf')
   install="${_pkgname}.install"
-  depends=('mysql-clients56' 'libaio')
+  depends=('mysql-clients56' 'libaio' 'zlib')
   conflicts=('mariadb')
   provides=("mariadb=${pkgver}")
   options=('emptydirs')
