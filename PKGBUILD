@@ -13,6 +13,7 @@ arch=('i686' 'x86_64')
 license=('GPLv3')
 conflicts=("$_pkgname")
 replaces=("$_pkgname")
+provides=("$_pkgname=$pkgver")
 depends=("qt5-base" "p7zip" "gnupg" "wine")
 
 makedepends=("git")

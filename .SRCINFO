@@ -11,6 +11,7 @@ pkgbase = wine-wizard-git
 	depends = p7zip
 	depends = gnupg
 	depends = wine
+	provides = wine-wizard=1
 	conflicts = wine-wizard
 	replaces = wine-wizard
 	source = git+https://github.com/LLIAKAJL/WineWizard.git
