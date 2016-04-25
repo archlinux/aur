@@ -3,7 +3,7 @@
 # Contributor: Nils <mail n-sch de>
 
 pkgname=emacs-markdown-mode-git
-pkgver=2.1.r110.g57d9daf
+pkgver=2.1.r114.gf3928b7
 pkgrel=1
 pkgdesc='Emacs markdown-mode'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('emacs')
 install=${pkgname}.install
 provides=('emacs-markdown-mode')
 conflicts=('emacs-markdown-mode')
-source=("$pkgname"::'git://jblevins.org/git/markdown-mode.git')
+source=("$pkgname"::'git://github.com/jrblevin/markdown-mode.git')
 md5sums=('SKIP')
 
 pkgver() {
