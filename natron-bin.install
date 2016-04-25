@@ -1,9 +1,0 @@
-pre_remove() {
-	sudo /opt/Natron2/NatronSetup
-}
-
-post_install() {
-	curl -O http://downloads.natron.fr/Linux/releases/64bit/files/Natron-2.0.0-RC5-Linux-x86_64bit.tgz
-	tar xf Natron-2.0.0-RC5-Linux-x86_64bit.tgz
-	sudo ./Natron-2.0.0-RC5-Linux-x86_64bit
-}
