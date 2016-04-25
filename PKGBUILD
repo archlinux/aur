@@ -2,7 +2,7 @@
 # Maintainer: Matthew Pallissard <matthew.paul@pallissard.net>
 
 pkgname=linux-firmware-git-iwlwifi
-pkgrel=3
+pkgrel=4
 pkgdesc="Emmanuel Grumbach's fork of linux-firmware.git"
 makedepends=('git')
 arch=('any')
