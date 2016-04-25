@@ -1,5 +1,5 @@
 # Maintainer: Christoph Scholz <christoph.scholz@gmail.com>
-
+pkgdesc="A tile cache and WMS proxy."
 pkgbase=python-mapproxy
 pkgname=('python-mapproxy' 'python2-mapproxy')
 pkgver=1.8.2
