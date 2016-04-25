@@ -9,7 +9,7 @@ pkgdesc="Light-weight, high-performance XML database system and XPath/XQuery pro
 arch=('i686' 'x86_64')
 url="http://basex.org/"
 license=('BSD')
-depends=('java-environment-common' 'bash')
+depends=('java-runtime' 'bash')
 source=("http://files.basex.org/releases/${pkgver}/BaseX${pkgver//./}.zip" 
         "basex.sh" 
         "BaseX.desktop")
