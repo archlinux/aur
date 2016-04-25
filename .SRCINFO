@@ -1,0 +1,19 @@
+pkgbase = audi-git
+	pkgdesc = Implementation of an automated differentiation system using generalized dual numbers (i.e. truncated Taylor expansions).
+	pkgver = 0.1.167.ff0740e
+	pkgrel = 1
+	url = https://github.com/darioizzo/audi
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = git
+	depends = python
+	depends = boost
+	depends = piranha-git
+	source = git+https://github.com/darioizzo/audi.git
+	md5sums = SKIP
+
+pkgname = audi-git
+
