@@ -1,7 +1,7 @@
 pkgbase = python2-tensorflow-git
 	pkgdesc = Open source software library for numerical computation using data flow graphs (Python 2)
 	pkgver = 0.8.0rc0.r281.g55068f3
-	pkgrel = 2
+	pkgrel = 3
 	url = http://tensorflow.org
 	arch = x86_64
 	license = Apache
