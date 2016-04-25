@@ -11,7 +11,7 @@ depends=('curl')
 optdepends=('xsel: automatically putting the URL on the X selection for easy pasting'
 			'xclip: an alternative to xsel')
 source=("https://github.com/ram-on/imgurbash2/archive/${pkgver}.tar.gz")
-sha256sums=('80c6859ffc0b49ccb8e3beac0d0ca8412de83b823fef1adf9152e06c21c40ce1')
+sha256sums=('6f21ab00d5491cae62fdd3ac0068d344a03d99bd35f688487ae1ec17ff62056f')
 
 package() {
 	cd "$pkgname-$pkgver"
