@@ -16,7 +16,7 @@
 #
 pkgname="zfs-utils-linux-git"
 pkgver=0.6.5_r219_gda5e151_4.5.1_1
-pkgrel=3
+pkgrel=4
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("spl-linux-git"
          "linux>=4.5.1" "linux<4.6"
