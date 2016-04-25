@@ -9,7 +9,7 @@
 # Maintainer: Fabien Devaux <fdev31@gmail.com>
 pkgname=blender-plugin-retopoflow
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A suite of retopology tools for Blender"
 arch=('any')
 url="https://cgcookiemarkets.com/all-products/retopoflow/"
@@ -18,7 +18,7 @@ groups=()
 depends=('blender')
 makedepends=('git')
 provides=()
-conflicts=()
+conflicts=("blender-plugin-retopoflow-git")
 replaces=()
 backup=()
 options=()
@@ -45,7 +45,7 @@ build() {
   msg "Starting build..."
 
   rm -rf "$srcdir/$_gitname-build"
-  git clone -b v1.2.0 "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  git clone -b "v$pkgver" "$srcdir/$_gitname" "$srcdir/$_gitname-build"
 }
 
 package() {
