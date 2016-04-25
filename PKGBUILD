@@ -16,7 +16,7 @@
 #
 pkgname="spl-utils-linux-git"
 pkgver=0.6.5_r49_g224817e_4.5.1_1
-pkgrel=4
+pkgrel=5
 pkgdesc="Solaris Porting Layer kernel module support files."
 arch=("x86_64")
 url="http://zfsonlinux.org/"
@@ -26,8 +26,8 @@ sha256sums=("SKIP"
             "ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e")
 groups=("archzfs-linux-git")
 license=("GPL")
-provides=("spl-utils-linux-git")
 makedepends=("git")
+replaces=("spl-utils-git")
 
 build() {
     cd "${srcdir}/spl"
