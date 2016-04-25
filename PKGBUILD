@@ -4,12 +4,12 @@
 _pkgname=libevhtp
 pkgname="${_pkgname}"-seafile
 pkgver=1.2.9
-pkgrel=5
+pkgrel=6
 pkgdesc="A more flexible replacement for libevent's httpd API. [Built for seafile]"
 arch=('i686' 'x86_64' 'armv5te' 'armv6h' 'armv7h')
 url="https://github.com/ellzey/libevhtp"
 license=('BSD')
-depends=('libevent>=2.0.0')
+depends=('libevent>=2.0.0' 'oniguruma')
 makedepends=('cmake')
 provides=('libevhtp')
 conflicts=('libevhtp')
