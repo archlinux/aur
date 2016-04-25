@@ -10,7 +10,7 @@ license=('BSD')
 depends=('gstreamer' 'python' 'python-requests')
 conflicts=('define-git')
 source=("https://github.com/SethDusek/define/archive/$pkgver.tar.gz")
-md5sums=('44dd91c4f4d29fd0d11940145feb4392')
+md5sums=('6354dee0228a69eca2c00941cace52e2')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
