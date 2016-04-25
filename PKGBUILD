@@ -17,7 +17,7 @@
 #
 pkgname="spl-linux-lts"
 pkgver=0.6.5.6_4.4.8_1
-pkgrel=4
+pkgrel=5
 pkgdesc="Solaris Porting Layer kernel modules."
 depends=("spl-utils-linux-lts" "kmod"
          "linux-lts>=4.4.8" "linux-lts<4.5"
@@ -29,8 +29,7 @@ sha256sums=("167595fe76eb5497c3a1ffe396b6300155d0cbe46d06824a710099ca1ae1b8bd")
 groups=("archzfs-linux-lts")
 license=("GPL")
 install=spl.install
-provides=("spl-linux-lts")
-
+provides=("spl")
 
 build() {
     cd "${srcdir}/spl-0.6.5.6"
