@@ -3,7 +3,7 @@
 # Contributor: Pieter Robyns <pieter.robyns@uhasselt.be>
 pkgname=python2-tensorflow-git
 pkgver=0.8.0rc0.r281.g55068f3
-pkgrel=1
+pkgrel=2
 url="http://tensorflow.org"
 license=('Apache')
 arch=('x86_64')
@@ -75,6 +75,8 @@ package() {
 
   TMP_PKG=`find ${srcdir}/tmp-${PYTHON} -name "tensor*.whl"`
   pip2 install --ignore-installed --upgrade --no-deps --root=${pkgdir} ${TMP_PKG}
+  msg2 "Moving tensorboard binary..."
+  mv "${pkgdir}/usr/bin/tensorboard" "${pkgdir}/usr/bin/tensorboard2"
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
 }
