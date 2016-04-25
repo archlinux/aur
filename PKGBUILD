@@ -1,7 +1,7 @@
 # Maintainer: Davi da Silva Böger <dsboger[at]gmail[dot]com>
 pkgname=fmit-git
 _pkgname=fmit
-pkgver=1.0.13.r0.1c70e6a
+pkgver=1.0.14.r0.a247884
 pkgrel=1
 pkgdesc="Free Music Instrument Tuner"
 url="https://github.com/gillesdegottex/fmit"
