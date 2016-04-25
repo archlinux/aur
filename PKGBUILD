@@ -1,10 +1,10 @@
 # Maintainer: Jonne Haß <me@jhass.eu>
 pkgname=completion
-pkgver=r245.a54c2c5
+pkgver=r273.1e5d4e3
 pkgrel=1
 pkgdesc="Editor and language agnostic completion backend"
 url="https://github.com/quarnster/completion"
-arch=('i636', 'x86_64')
+arch=('i636' 'x86_64')
 license=('BSD')
 makedepends=('git' 'go')
 options=('!strip' '!emptydirs')
@@ -21,8 +21,9 @@ prepare() {
   mkdir -p go
   export GOPATH="$srcdir/go"
   go get -d github.com/quarnster/parser
-  go get -d github.com/howeyc/fsnotify
+  go get -d gopkg.in/fsnotify.v1
   go get -d github.com/robmerrell/comandante
+  go get -d github.com/quarnster/util
   ln -sf go/src/github.com/quarnster/parser parser
   ln -sf "$srcdir/$pkgname" go/src/github.com/quarnster/$pkgname
   cd "$srcdir/$pkgname"
