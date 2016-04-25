@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://github.com/HaCk3Dq/vk"
 license=('Apache')
 depends=('curl' 'openssl' 'ncurses>=5.7')
-makedepends=('dub' 'dmd')
+makedepends=('dub' 'dmd' 'git')
 optdepends=('mplayer: for music playback')
 provides=("$pkgname")
 conflicts=()
