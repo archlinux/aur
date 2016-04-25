@@ -2,7 +2,7 @@
 # Contributer: Justin Dray <justin@dray.be>
 
 pkgname='chronograf'
-pkgver='0.10.0'
+pkgver='0.12.0'
 pkgrel='1'
 epoch=
 pkgdesc='A new data visualization tool for InfluxDB'
@@ -25,12 +25,12 @@ source=("https://s3.amazonaws.com/get.influxdb.org/chronograf/chronograf_${pkgve
         "$pkgname.install"
         "$pkgname.service"
 		  "LICENSE")
-changelog=
-noextract=()
-md5sums=('6f536cd293a8dd41d0b93a8815c8822c'
+md5sums=('3392f10416e43ae818d1fda2f83e3514'
          '5eeadbb9b80534dcf87ce3a9131ab75e'
          '396feb4648ea8447c3d69bc97a80b9be'
          '51c3bce403f0005b9ef91ab20cc00964')
+changelog=
+noextract=()
 
 prepare() {
 	bsdtar xf data.tar.gz
