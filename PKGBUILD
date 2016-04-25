@@ -2,7 +2,7 @@
 
 _npmname=ionic
 _npmver=2.0.0-beta.25
-pkgname=nodejs-ionic
+pkgname=nodejs-ionic-beta
 pkgver=2.0.0.25
 pkgrel=1
 pkgdesc="A tool for creating and building Ionic 2 Framework mobile apps. (beta)"
