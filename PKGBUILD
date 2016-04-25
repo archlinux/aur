@@ -1,6 +1,6 @@
 # Maintainer: Ammann Max <maximilian.ammann@googlemail.com>
 pkgname=golden-cheetah-git
-pkgver=v4.0.DEV1601.r37.8dc42e2
+pkgver=v4.0.DEV1601.r346.d6a3d3e
 pkgrel=1
 pkgdesc="Cycling Power Analysis Software. We believe that cyclists and triathletes should be able to download their power data to the
 computer of their choice, analyze it in whatever way they see fit, and share their methods of
@@ -12,7 +12,7 @@ makedepends=(bison flex 'gcc' 'make' 'qt5-tools' )
 depends=('qt5-base' 'qt5-svg' qt5-location qt5-declarative qt5-webchannel qt5-sensors qt5-serialport qt5-webkit qt5-multimedia qt5-script)
 optdepends=('vlc' 'qwtplot3d-svn' 'srmio' 'libftd2xx' 'libkml' 'libical' 'libusb' 'libsamplerate')
 options=('!strip' '!buildflags' 'staticlibs')
-source=('golden-cheetah::git+https://github.com/GoldenCheetah/GoldenCheetah.git#commit=8dc42e233e2ede85cec281820806c3ae234dec48'
+source=('golden-cheetah::git+https://github.com/GoldenCheetah/GoldenCheetah.git#commit=d6a3d3eb57e2a248edb1b3b0c28ae5e0bfb4669d'
 GoldenCheetah.desktop gc.png gcconfig.pri)
 md5sums=('SKIP' af5e5a4376ee82ccfb69aa455b35a2d9 e1fb382b4a7316da1ffd435e45e50c4a '3857988a67fdf94b999fc05753ac2494')
 
@@ -43,8 +43,6 @@ package() {
   mkdir -p "$pkgdir/usr/bin/"
   cp "${srcdir}/golden-cheetah/src/GoldenCheetah" "$pkgdir/usr/bin/"
   mkdir -p "$pkgdir/usr/lib/udev/rules.d/"
-  cp "${srcdir}/golden-cheetah/src/linux/51-garmin-usb.rules" "$pkgdir/usr/lib/udev/rules.d/"
-  chmod a+r "$pkgdir/usr/lib/udev/rules.d/51-garmin-usb.rules"
   mkdir -p "$pkgdir/usr/share/applications/"
   cp "${srcdir}/GoldenCheetah.desktop" "$pkgdir/usr/share/applications/"
   mkdir -p "$pkgdir/usr/share/pixmaps/"
