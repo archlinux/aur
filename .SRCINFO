@@ -1,7 +1,7 @@
 pkgbase = krudio-git
 	pkgdesc = Simple Qt5 radio player
-	pkgver = 20160424
-	pkgrel = 3
+	pkgver = 20160425
+	pkgrel = 1
 	url = https://github.com/loast/krudio
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = krudio-git
 	depends = libnotify
 	depends = qt5-multimedia
 	depends = hicolor-icon-theme
-	source = krudio-20160424.tar.gz::https://github.com/loast/krudio/archive/d176cd355945bcb262e19df105f963d6e1bef1a8.tar.gz
+	source = krudio-20160425.tar.gz::https://github.com/loast/krudio/archive/0d1a3bec3957dbee7673cc02572802c016eaaa27.tar.gz
 	md5sums = SKIP
 
 pkgname = krudio-git
