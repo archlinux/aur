@@ -1,13 +1,13 @@
 # Maintainer: James W. Barnett <jbarnet4 at tulane dot edu>
 pkgname=snap-pac
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Make pacman automatically use snapper to create pre/post snapshots like openSUSE's YaST"
 arch=(any)
 url="https://github.com/wesbarnett/snap-pac"
 license=('LGPL')
 depends=(snapper)
-optdepends=('grub-btrfs-git: Add snapshots to GRUB menu')
+optdepends=('grub-btrfs: Add snapshots to GRUB menu')
 source=(${url}/archive/${pkgver}.tar.gz
         snap-pac.install)
 install="snap-pac.install"
