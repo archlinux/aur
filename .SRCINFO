@@ -1,4 +1,4 @@
-pkgbase = opencv
+pkgbase = opencv2
 	pkgdesc = Open Source Computer Vision Library (Legacy Version)
 	pkgver = 2.4.12.3
 	pkgrel = 1

@@ -2,7 +2,8 @@
 # Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
-pkgbase=opencv
+_pkgbase=opencv
+pkgbase=opencv2
 pkgname=('opencv2' 'opencv2-samples')
 pkgver=2.4.12.3
 pkgrel=1
@@ -16,7 +17,7 @@ optdepends=('opencv-samples'
             'eigen2'
             'libcl: For coding with OpenCL'
             'python2-numpy: Python 2.x interface')
-source=("$pkgbase-$pkgver.zip::https://github.com/Itseez/opencv/archive/$pkgver.zip" opencv-ffmpeg3.patch)
+source=("$_pkgbase-$pkgver.zip::https://github.com/Itseez/opencv/archive/$pkgver.zip" opencv-ffmpeg3.patch)
 md5sums=('eaede6500e9c2d56683196b0576db1f7'
          'c752f3e83ebb021171fdd04aa7fb2e5a')
 
@@ -45,13 +46,13 @@ _cmakeopts=('-D WITH_OPENCL=ON'
 [[ "$CARCH" = 'x86_64' ]] && _cmakeopts+=('-D ENABLE_SSE3=OFF')
 
 prepare() {
-  cd $pkgbase-$pkgver
+  cd $_pkgbase-$pkgver
 # Fix build with ffmpeg 3.0 (Debian)
   patch -p1 -i ../opencv-ffmpeg3.patch
 }
 
 build() {
-  cd "$srcdir/$pkgbase-$pkgver"
+  cd "$srcdir/$_pkgbase-$pkgver"
 
   cmake ${_cmakeopts[@]} .
 
@@ -62,20 +63,20 @@ package_opencv2() {
   options=('staticlibs')
   conflicts=('opencv')
 
-  cd "$srcdir/$pkgbase-$pkgver"
+  cd "$srcdir/$_pkgbase-$pkgver"
 
   make DESTDIR="$pkgdir" install
 
   # install license file
-  install -Dm644 "$srcdir/$pkgbase-$pkgver/LICENSE" \
+  install -Dm644 "$srcdir/$_pkgbase-$pkgver/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   cd "$pkgdir/usr/share"
 
   # separate samples package; also be -R friendly
   if [[ -d OpenCV/samples ]]; then
-    mv OpenCV/samples "$srcdir/$pkgbase-samples"
-    mv OpenCV $pkgbase # otherwise folder naming is inconsistent
+    mv OpenCV/samples "$srcdir/$_pkgbase-samples"
+    mv OpenCV $_pkgbase # otherwise folder naming is inconsistent
   elif [[ ! -d OpenCV ]]; then
     warning "Directory naming issue; samples package may not be built!"
   fi
@@ -87,7 +88,7 @@ package_opencv2-samples() {
   unset optdepends
   conflicts=('opencv-samples')
 
-  mkdir -p "$pkgdir/usr/share/$pkgbase"
+  mkdir -p "$pkgdir/usr/share/$_pkgbase"
   cp -r "$srcdir/opencv-samples" "$pkgdir/usr/share/opencv/samples"
 
   # install license file
