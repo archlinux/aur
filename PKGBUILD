@@ -1,16 +1,16 @@
 # Maintainer: Kyle Keen <keenerd@gmail.com>
 pkgname=halide-bin
-pkgver=20151217
+pkgver=20160302
 pkgrel=1
 pkgdesc="A language for image processing and computational photography, precompiled version."
 arch=('x86_64')
 url="http://halide-lang.org/"
 license=('MIT')
 depends=('gcc>4.6')
-source_i686=("https://github.com/halide/Halide/releases/download/release_2015_12_17/halide-linux-32-gcc49-trunk-7c6a3e25caa31a3c466f97a5b6e4281c0f3a3678.tgz")
-source_x86_64=("https://github.com/halide/Halide/releases/download/release_2015_12_17/halide-linux-64-gcc49-trunk-7c6a3e25caa31a3c466f97a5b6e4281c0f3a3678.tgz")
-md5sums_i686=("d4c8d9f86f7c28dbe4e53f24d5b0a4a4")
-md5sums_x86_64=("8f0f42e44b3aa95d7771582577b6f27f")
+source_i686=("https://github.com/halide/Halide/releases/download/release_2016_03_02/halide-linux-32-gcc53-trunk-65bbac2967ebd59994e613431fd5236baf8a5829.tgz")
+source_x86_64=("https://github.com/halide/Halide/releases/download/release_2016_03_02/halide-linux-64-gcc53-trunk-65bbac2967ebd59994e613431fd5236baf8a5829.tgz")
+md5sums_i686=("3ff00841cbaee2b99138ce83ab066fe2")
+md5sums_x86_64=("91c7e10fe2f5b44c378c3c94bcb2d790")
 
 package() {
   cd "$srcdir/halide"
