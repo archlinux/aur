@@ -2,7 +2,7 @@
 # Contributor: Vladislav Odobesku positivcheg94@gmail.com
 
 pkgname=python-tensorflow-git
-pkgver=0.8.0rc0.r38.gcf1659d
+pkgver=0.8.0rc0.r281.g55068f3
 pkgrel=1
 
 pkgdesc="Open source software library for numerical computation using data flow graphs."
@@ -11,8 +11,8 @@ license=('Apache2')
 
 arch=('i686' 'x86_64')
 
-provides=('tensorflow')
-conflicts=('tensorflow' 'tensorflow-git', 'python-tensorflow')
+provides=('python-tensorflow')
+conflicts=('python-tensorflow')
 depends=('python-numpy' 'swig' 'python-wheel' 'python-protobuf3')
 makedepends=('git' 'python-pip' 'bazel' 'rsync')
 optdepends=('cuda: GPU support'
