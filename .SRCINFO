@@ -1,15 +1,15 @@
 pkgbase = blender-plugin-manuelbastionilab
 	pkgdesc = powerful 3d humanoids creator
-	pkgver = 1.0.0
+	pkgver = 1.2.0
 	pkgrel = 1
-	url = http://www.manuelbastioni.com/manuellab.php
+	url = http://www.manuelbastioni.com
 	arch = any
 	groups = blender
 	license = AGPL
 	makedepends = unzip
 	depends = blender
-	source = http://download.tuxfamily.org/manuellab/manuellab_100.zip
-	md5sums = f8577b1cf2ce17f591819d556cd3d9a9
+	source = http://download.tuxfamily.org/manuellab/manuelbastionilab_120.zip
+	sha256sums = 5c395216e1114260d190ebecec245dd5c19295fba52bb3d9c91cb49febc181ce
 
 pkgname = blender-plugin-manuelbastionilab
 
