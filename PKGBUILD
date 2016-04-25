@@ -3,17 +3,17 @@
 # Contributer: TryA -  https://bbs.archlinux.org/viewtopic.php?id=114996
 
 pkgname=mprime
-pkgver=287
-pkgrel=3
+pkgver=289
+pkgrel=1
 pkgdesc="A GIMPS, distributed computing project client, dedicated to finding Mersenne primes."
 arch=('x86_64')
 url="http://www.mersenne.org"
 license=('custom')
 depends=('curl')
 conflicts=('mprime-bin')
-source=("http://www.mersenneforum.org/gimps/p95v${pkgver}.source.zip"
+source=("http://www.mersenne.org/ftp_root/gimps/p95v${pkgver}.source.zip"
 unfuck_makefile.patch)
-sha256sums=('a2053861b15d48f931fa9587621b7da285beacda38cd9e8bb77709eeb6c6d251'
+sha256sums=('3433dc86cc129bbe9ba2af6428dd206f2d643fb2e33b6231e0b8c0fc0f0dcd89'
             '51b9f8a404b3fb6c5cb36e30ab7edde73cfc1f910dbd52cecc58370081142114')
 
 prepare () {
