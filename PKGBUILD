@@ -18,7 +18,6 @@ source=("https://github.com/tensorflow/tensorflow/archive/v${pkgver}.tar.gz"
 sha256sums=('67160b20ade786b2ebbb2f979d9da6cbdd22895ce99b2960100687f470dae9ed'
             '87ec95e580ec315fdec2d8c1590c332e61486d387f0d6e6540e74a18e44fd2ab'
             '513f634cc1cab44eb17204616617695ea23355462f918873678fcac1a95ae778')
-provides=('tensorflow')
 conflicts=('python2-tensorflow-cuda' 'tensorflow-git')
 
 _build_opts=""
@@ -70,7 +69,6 @@ build() {
 package() {
   cd "${srcdir}/tensorflow-${pkgver}"
 
-  _site_packages=$(${PYTHON} -c "import site; print(site.getsitepackages()[0])")
   TMP_PKG=`find ${srcdir}/tmp-${PYTHON} -name "tensor*.whl"`
   pip2 install --ignore-installed --upgrade --no-deps --root=${pkgdir} ${TMP_PKG}
 

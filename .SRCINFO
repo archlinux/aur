@@ -16,7 +16,6 @@ pkgbase = python2-tensorflow
 	depends = python2-protobuf3
 	optdepends = cuda: GPU support
 	optdepends = cudnn: GPU support
-	provides = tensorflow
 	conflicts = python2-tensorflow-cuda
 	conflicts = tensorflow-git
 	source = https://github.com/tensorflow/tensorflow/archive/v0.8.0rc0.tar.gz
