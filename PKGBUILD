@@ -3,7 +3,7 @@
 
 pkgname=pcb-git
 _gitname=pcb
-pkgver=20160310
+pkgver=20160425
 pkgrel=1
 pkgdesc='Interactive printed circuit board editor'
 url='http://pcb.geda-project.org/'
@@ -17,7 +17,7 @@ optdepends=('tk: additional tools'
 makedepends=('autoconf' 'automake' 'bison' 'flex' 'git' 'intltool' 'tk')
 provides=('pcb')
 conflicts=('pcb')
-source=('git://git.geda-project.org/pcb.git'
+source=("git://git.geda-project.org/${_gitname}.git"
        'fix-gts-search-missing-libm.patch')
 md5sums=('SKIP'
          '85ba1f0766697fdec313aa4d84f11d99')
@@ -36,6 +36,7 @@ build() {
   ./configure \
       --prefix=/usr \
       --enable-dbus \
+      --disable-doc \
       --disable-update-mime-database \
       --disable-update-desktop-database \
       --disable-gl  # FIXME: `configure` looks for weird libs
@@ -45,7 +46,4 @@ build() {
 package() {
   cd "${srcdir}/${_gitname}"
   make -j1 prefix="$pkgdir/usr" install
-
-  # TODO: generate docs, too
-  rm "$pkgdir/usr/share/info/dir"
 }

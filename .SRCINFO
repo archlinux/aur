@@ -1,6 +1,6 @@
 pkgbase = pcb-git
 	pkgdesc = Interactive printed circuit board editor
-	pkgver = 20160310
+	pkgver = 20160425
 	pkgrel = 1
 	url = http://pcb.geda-project.org/
 	install = pcb.install
