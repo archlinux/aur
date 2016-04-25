@@ -85,7 +85,6 @@ package_opencv2-samples() {
   pkgdesc+=" (samples)"
   depends=("opencv2=$pkgver") # sample codes change with lib/API
   unset optdepends
-  optdepends=("python2")
   conflicts=('opencv-samples')
 
   mkdir -p "$pkgdir/usr/share/$pkgbase"
