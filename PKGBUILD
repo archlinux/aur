@@ -6,7 +6,7 @@ pkgdesc="Systemd service for automatic ZFS zpool scrubbing"
 arch=('any')
 url="https://github.com/lnicola/systemd-zpool-scrub"
 license=('MIT')
-depends=('zfs-utils')
+depends=('zfs-utils-linux')
 source=("git+https://github.com/lnicola/systemd-zpool-scrub.git")
 md5sums=('SKIP')
 
