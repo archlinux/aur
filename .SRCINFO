@@ -1,7 +1,7 @@
 pkgbase = cfengine
 	pkgdesc = Automated suite of programs for configuring and maintaining Unix-like computers.
 	pkgver = 3.7.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cfengine.org
 	install = cfengine.install
 	arch = i686
@@ -22,11 +22,13 @@ pkgbase = cfengine
 	source = cf-execd.service
 	source = cf-monitord.service
 	source = cf-serverd.service
+	source = cfengine3.service
 	md5sums = dcd0a8b9490dfafad124c5135900f08b
 	md5sums = f7d1260a6fe9f6ce9a00c70c984a7252
-	md5sums = dba17dc5133b8fa86de11577120d46c5
-	md5sums = a2f9db31408f288cb934397ffb474db3
-	md5sums = ff28f7de9b81b4673082a2640a318896
+	md5sums = a6d35b4460d5478afe03c7b920f09da6
+	md5sums = 674271fe623d27b0410642cabc1d442e
+	md5sums = 542358aab95c89017ca6dc65b864c079
+	md5sums = 2f950573baa3dfa7ee06e011ece2f2d8
 
 pkgname = cfengine
 

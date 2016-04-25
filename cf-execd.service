@@ -1,6 +1,7 @@
 [Unit]
 Description=CFEngine Execution Daemon
-After=syslog.target
+After=network.target
+PartOf=cfengine3.service
 
 [Service]
 ExecStart=/var/cfengine/bin/cf-execd
@@ -8,4 +9,5 @@ Type=forking
 PIDFile=/var/cfengine/cf-execd.pid
 
 [Install]
+WantedBy=cfengine3.service
 WantedBy=multi-user.target

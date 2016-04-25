@@ -1,6 +1,7 @@
 [Unit]
 Description=CFEngine Monitoring Daemon
-After=syslog.target
+PartOf=cfengine3.service
+After=network.target
 
 [Service]
 ExecStart=/var/cfengine/bin/cf-monitord
@@ -8,4 +9,5 @@ Type=forking
 PIDFile=/var/cfengine/cf-monitord.pid
 
 [Install]
+WantedBy=cfengine3.service
 WantedBy=multi-user.target

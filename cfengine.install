@@ -30,7 +30,7 @@ post_install() {
  #fi
 
  echo -e "\nBootstrap cfengine with cf-agent --bootstrap <IP address of policy server>\n"
-
+ echo -e "\nRun systemctl enable cfengine3 to enable CFEngine 3\n"
 }
 post_remove() {
 

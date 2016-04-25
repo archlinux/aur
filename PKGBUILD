@@ -7,7 +7,7 @@
 
 pkgname=cfengine
 pkgver=3.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Automated suite of programs for configuring and maintaining Unix-like computers.'
 url='http://www.cfengine.org'
 license=('GPL3')
@@ -20,12 +20,14 @@ source=("${pkgname}-${pkgver}.tar.gz::https://cfengine-package-repos.s3.amazonaw
         "cfengine-masterfiles-${pkgver}.tar.gz::https://cfengine-package-repos.s3.amazonaws.com/tarballs/cfengine-masterfiles-${pkgver}.tar.gz"
         'cf-execd.service'
         'cf-monitord.service'
-        'cf-serverd.service')
+        'cf-serverd.service'
+	'cfengine3.service')
 md5sums=('dcd0a8b9490dfafad124c5135900f08b'
          'f7d1260a6fe9f6ce9a00c70c984a7252'
-         'dba17dc5133b8fa86de11577120d46c5'
-         'a2f9db31408f288cb934397ffb474db3'
-         'ff28f7de9b81b4673082a2640a318896')
+         'a6d35b4460d5478afe03c7b920f09da6'
+         '674271fe623d27b0410642cabc1d442e'
+         '542358aab95c89017ca6dc65b864c079'
+         '2f950573baa3dfa7ee06e011ece2f2d8')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
@@ -64,6 +66,9 @@ package() {
 	  ${pkgdir}/usr/lib/systemd/system/cf-serverd.service
   install -D -m644 ${srcdir}/cf-monitord.service \
 	  ${pkgdir}/usr/lib/systemd/system/cf-monitord.service
+  install -D -m644 ${srcdir}/cfengine3.service \
+	  ${pkgdir}/usr/lib/systemd/system/cfengine3.service
+
 
   install -d -m755 ${pkgdir}/var/cfengine/bin
   install -d -m755 ${pkgdir}/var/cfengine/masterfiles
