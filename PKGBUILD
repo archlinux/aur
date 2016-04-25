@@ -4,23 +4,23 @@
 # For improvements/fixes to this package, please send a pull request:
 # https://github.com/Cutehacks/qpm
 
-_pkgver=0.10.0
 pkgname=qpm
-pkgver=v${_pkgver}
-pkgrel=1
+pkgver=v0.10.0
+pkgrel=2
 pkgdesc='Qt Package Manager'
 arch=('x86_64' 'i686')
 url='http://qpm.io'
-provides=('qpm')
-conflicts=('qpm-git')
 license=('LGPL')
-makedepends=('go')
-source=("https://github.com/Cutehacks/qpm/archive/${pkgver}.tar.gz")
-sha256sums=('2c56aa81e46fb144ff25b14a26476862462510e38cf1265b24c38e3ac4636ee5')
-_srcdirname=${pkgname}-${_pkgver}
+provides=('qpm')
+makedepends=('go' 'git')
+source=("git://github.com/Cutehacks/qpm#tag=${pkgver}")
+sha256sums=('SKIP')
 
 build() {
-  cd "${_srcdirname}"
+  cd "$pkgname"
+
+  git submodule init
+  git submodule update
 
   export GOPATH=${PWD}
   export PATH=${GOPATH}/bin:${PATH}
@@ -29,7 +29,7 @@ build() {
 }
 
 package() {
-  cd "${_srcdirname}"
+  cd "$pkgname"
 
   local installdir=${pkgdir}/usr/bin
 
