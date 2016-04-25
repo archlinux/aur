@@ -2,7 +2,7 @@ _homedir=/opt/subsonic-kang
 _playlistdir=/var/lib/subsonic-kang/playlists
 
 post_install() {
-
+    chmod +x /opt/subsonic-kang/subsonic.sh
     getent group subsonic &>/dev/null || groupadd --system subsonic > /dev/null
     getent passwd subsonic &>/dev/null || useradd --system \
                                                   --home-dir /opt/subsonic-kang \
