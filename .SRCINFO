@@ -1,6 +1,6 @@
 pkgbase = blender-plugin-archimesh
 	pkgdesc = Blender add-on for creating architecture elements.
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 3
 	url = https://github.com/Antonioya/blender/tree/master/archimesh
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = blender-plugin-archimesh
 	license = GPL
 	makedepends = unzip
 	depends = blender
-	source = https://github.com/Antonioya/blender/raw/master/archimesh/archimesh_v1_1_1.zip
-	md5sums = eb12c367d4b61e36dbf57e019979179a
+	source = https://github.com/Antonioya/blender/raw/master/archimesh/archimesh_v1_1_2.zip
+	md5sums = 5aa0f2c2e7ecfec01957b809674c3409
 
 pkgname = blender-plugin-archimesh
 
