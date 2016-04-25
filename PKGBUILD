@@ -3,7 +3,7 @@
 # Contributor: Pieter Robyns <pieter.robyns@uhasselt.be>
 pkgname=python2-tensorflow
 pkgver=0.8.0rc0
-pkgrel=3
+pkgrel=4
 url="http://tensorflow.org"
 license=('Apache')
 arch=('x86_64')
@@ -76,5 +76,5 @@ package() {
   mv "${pkgdir}/usr/bin/tensorboard" "${pkgdir}/usr/bin/tensorboard2"
 
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_name}/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
