@@ -2,14 +2,15 @@
 
 _pkgname=define
 pkgname=define-git
-pkgver=r32.ee0ba49
+pkgver=r211.1629b86
 pkgrel=1
 pkgdesc="Terminal dictionary"
 arch=('any')
 url="https://github.com/SethDusek/define"
 license=('BSD')
 depends=('gstreamer' 'python' 'python-requests')
-makedepends=('git')
+optdepends=('hunspell')
+makedepends=('python-setuptools' 'git')
 conflicts=('define')
 source=('git://github.com/SethDusek/define.git')
 md5sums=('SKIP')
