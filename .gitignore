@@ -1,2 +1,5 @@
-src/
-pkg/
+src
+pkg
+pqiv
+pqiv-git-*
+.update
