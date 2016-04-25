@@ -13,12 +13,12 @@ url="http://www.roguetemple.com/z/hyper.php"
 license=('GPL2')
 depends=('sdl_gfx' 'sdl_ttf' 'sdl_mixer' 'mesa')
 source=("http://www.roguetemple.com/z/hyper/$pkgname-${_pkgver}${_music}.zip")
-md5sums=('608ed73457dbf0d48ced2f88b8236fe5')
+md5sums=('bded083adda84a70286fefd20c53ad06')
 if [[ "$_music" == "" ]]; then
-    md5sums=('84ac1476327206b107c9b5e8670461b5')
+    md5sums=('ed8e026d14332deb1808bb841ea041f1')
 fi
 if [[ "$_music"  == "-lo" ]]; then
-    md5sums=('f12dd51a268d87512d44d9718dd2aa50')
+    md5sums=('74a053f1cdccdcde9433293cea1160cb')
 fi
 
 build() {
