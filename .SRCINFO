@@ -1,0 +1,17 @@
+pkgbase = ttf-aileron
+	pkgdesc = A grotesque sans-serif font by dot colon.
+	pkgver = 0.102
+	pkgrel = 1
+	url = http://dotcolon.net/font/aileron/
+	install = ttf.install
+	arch = i686
+	arch = x86_64
+	license = custom:CC0
+	provides = ttf-aileron
+	source = http://dotcolon.net/DL/font/aileron.zip
+	source = http://creativecommons.org/publicdomain/zero/1.0/legalcode.txt
+	md5sums = c2c609c1043931188df4838d66367e55
+	md5sums = 65d3616852dbf7b1a6d4b53b00626032
+
+pkgname = ttf-aileron
+
