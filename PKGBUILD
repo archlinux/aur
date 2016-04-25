@@ -15,8 +15,8 @@
 # archzfs github page.
 #
 pkgname="zfs-utils-linux-git"
-pkgver=0.6.5_r219_gda5e151_4.5.1_1
-pkgrel=4
+pkgver=0.6.5_r225_g325414e_4.5.1_1
+pkgrel=5
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("spl-linux-git"
          "linux>=4.5.1" "linux<4.6"
@@ -33,8 +33,8 @@ sha256sums=("SKIP"
             "67a96169d36853d8f18ee5a2443ecfcd2461a20f9109f4b281bee3945d83518a")
 license=("CDDL")
 groups=("archzfs-linux-git")
-provides=("zfs-utils-linux-git")
 makedepends=("git")
+replaces=("zfs-utils-git")
 
 build() {
     cd "${srcdir}/zfs"
@@ -49,15 +49,12 @@ build() {
 package() {
     cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
-
     # Remove uneeded files
     rm -r "${pkgdir}"/etc/init.d
     rm -r "${pkgdir}"/usr/lib/dracut
-
     # move module tree /lib -> /usr/lib
     cp -r "${pkgdir}"/{lib,usr}
     rm -r "${pkgdir}"/lib
-
     # Install the support files
     install -D -m644 "${srcdir}"/zfs-utils.initcpio.hook "${pkgdir}"/usr/lib/initcpio/hooks/zfs
     install -D -m644 "${srcdir}"/zfs-utils.initcpio.install "${pkgdir}"/usr/lib/initcpio/install/zfs
