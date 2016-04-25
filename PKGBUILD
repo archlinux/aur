@@ -5,7 +5,7 @@
 
 pkgname=('mysql' 'libmysqlclient' 'mysql-clients')
 pkgbase=mysql
-pkgver=5.7.11
+pkgver=5.7.12
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("https://dev.mysql.com/get/Downloads/MySQL-5.7/${pkgbase}-${pkgver}.tar.
         "mysqld-post.sh"
         "mysqld-tmpfile.conf"
         "mysqld.service")
-sha256sums=('54f8c7af87d3d8084419bde2b9f0d8970b3dada0757b015981b02f35a3681f0e'
+sha256sums=('32843cb6d22ab22cd2340262b53c0d6009b5bd41b1fa4102beda19635a5c1c87'
             '47f11c8844e579d02691a607fbd32540104a9ac7a2534a8ddaef50daf502baac'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
@@ -72,7 +72,7 @@ build() {
 
 package_libmysqlclient(){
   pkgdesc="MySQL client libraries"
-  depends=('openssl')
+  depends=('openssl' 'zlib')
   conflicts=('libmariadbclient')
   provides=("libmariadbclient=${pkgver}")
 
@@ -93,7 +93,7 @@ package_libmysqlclient(){
 
 package_mysql-clients(){
   pkgdesc="MySQL client tools"
-  depends=('libmysqlclient' 'jemalloc' 'openssl')
+  depends=('libmysqlclient' 'jemalloc' 'openssl' 'zlib')
   conflicts=('mariadb-clients')
   provides=("mariadb-clients=${pkgver}")
 
@@ -122,7 +122,7 @@ package_mysql(){
   pkgdesc="Fast SQL database server, community edition"
   backup=('etc/mysql/my.cnf')
   install="${pkgbase}.install"
-  depends=('mysql-clients' 'libaio' 'jemalloc' 'openssl')
+  depends=('mysql-clients' 'libaio' 'jemalloc' 'openssl' 'zlib')
   conflicts=('mariadb')
   provides=("mariadb=${pkgver}")
   options=('emptydirs')
