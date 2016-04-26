@@ -1,0 +1,9 @@
+post_install() {
+  ln -s /opt/gaiasky/gaiasky /usr/bin/gaiasky
+  cp /opt/gaiasky/gaiasky.desktop /usr/share/applications/
+}
+
+post_remove() {
+  rm /usr/bin/gaiasky
+  rm /usr/share/applications/gaiasky.desktop
+}
