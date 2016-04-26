@@ -4,7 +4,7 @@
 _pkgname=qtox
 pkgname=qtox-git
 pkgver=1.4.0.r14.g5045c46
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful Tox client written in C++/Qt that follows the Tox design guidelines.'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/tux3/qTox'
@@ -12,8 +12,9 @@ license=('GPL3')
 depends=('desktop-file-utils'
          'libxss'
          'openal'
-         'opencv'
          'qrencode'
+         'gtk2'
+         'ffmpeg'
          'qt5-svg'
          'sqlcipher'
          'toxcore')
