@@ -13,6 +13,7 @@ install=nessus.install
 
 # Download the rpm from <http://www.tenable.com/products/nessus/select-your-operating-system>
 # Nessus-6.6.1-fc20.x86_64.rpm
+./getnessus.sh
 source=($_bigver.x86_64.rpm
         nessus.sh
         LICENSE.NESSUS
