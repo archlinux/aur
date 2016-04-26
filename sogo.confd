@@ -1,0 +1,4 @@
+# Logging options
+# Log to stdout by default (systemd journal)
+# Comment the following line to log based on GNUStep or sogo.conf parameters
+SOGOLOGOPTS="-WOLogFile '-'"

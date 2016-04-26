@@ -1,0 +1,12 @@
+[Unit]
+Description=Sogo Daemon
+After=network.target slapd.service memcached.service postfix.service dovecot.service postgresql.service
+
+[Service]
+User=sogo
+RuntimeDirectory=sogo
+EnvironmentFile=-/etc/conf.d/sogo
+ExecStart=/usr/bin/sogod -WOPidFile /var/run/sogo/sogo.pid -WONoDetach YES $SOGOLOGOPTS
+
+[Install]
+WantedBy=multi-user.target

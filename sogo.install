@@ -1,0 +1,19 @@
+post_install() {
+  useradd -r -d /etc/sogo sogo &>/dev/null
+  mkdir -p /var/log/sogo
+  chown -R sogo:sogo /etc/sogo /var/log/sogo
+  systemctl daemon-reload
+  echo "NOTE: If upgrading from a 2.1.x version of sogo, you must run the SQL update"
+  echo "script for your installed SQL server, located in /usr/lib/sogo/scripts."
+}
+
+pre_remove() {
+  userdel sogo
+  groupdel sogo
+}
+
+post_upgrade() {
+  systemctl daemon-reload
+  echo "NOTE: If upgrading from a 2.1.x version of sogo, you must run the SQL update"
+  echo "script for your installed SQL server, located in /usr/lib/sogo/scripts."
+}
