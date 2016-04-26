@@ -3,7 +3,7 @@
 pkgbase=gridcoinresearch-git
 pkgname=('gridcoinresearch-daemon-git' 'gridcoinresearch-qt-git')
 pkgver=3.5.6.3.r673.ce93f74
-pkgrel=1
+pkgrel=2
 pkgdesc="Gridcoin P2P Cryptocurrency"
 arch=('i686' 'x86_64')
 url="http://gridcoin.us"
@@ -41,7 +41,7 @@ build() {
 
   cd ..
 
-  qmake "USE_QRCODE=1 USE_UPNP=1 NO_UPGRADE=1"
+  qmake "USE_QRCODE=1" "USE_UPNP=1" "NO_UPGRADE=1"
   make ${MAKEFLAGS}
 }
 
