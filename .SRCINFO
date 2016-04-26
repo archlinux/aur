@@ -1,0 +1,18 @@
+pkgbase = r-cran-gdal
+	pkgdesc = Bindings for the Geospatial Data Abstraction Library
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/rgdal/index.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = GPL3
+	depends = gdal>=1.6.3
+	depends = proj>=4.4.9
+	depends = r
+	depends = r-cran-sp
+	source = https://cran.r-project.org/src/contrib/rgdal_1.1-8.tar.gz
+	md5sums = 52cda5344085fe3a088b21be80505b43
+
+pkgname = r-cran-gdal
+
