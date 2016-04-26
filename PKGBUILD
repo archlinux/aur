@@ -1,7 +1,7 @@
 # Maintainer: Olaf Bauer <hydro@freenet.de>
 
 pkgname=udfclient
-pkgver=0.8
+pkgver=0.8.5
 pkgrel=1
 pkgdesc="a userland implementation of the UDF filingsystem"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('custom:Clarified Artistic')
 depends=(glibc)
 makedepends=('bmake')
 source=(${url}releases/UDFclient.$pkgver.tgz)
-md5sums=('573b0ced0d591c2b5db0e43524aaacc8')
+md5sums=('24d1fa36cc2c52153e6fa165deec435b')
 
 build() {
   cd "$srcdir/UDFclient.$pkgver"
