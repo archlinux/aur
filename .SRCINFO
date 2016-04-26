@@ -1,6 +1,6 @@
 pkgbase = qtox-git
 	pkgdesc = Powerful Tox client written in C++/Qt that follows the Tox design guidelines.
-	pkgver = 1.4.0.r12.g6cd1830
+	pkgver = 1.4.0.r14.g5045c46
 	pkgrel = 1
 	url = https://github.com/tux3/qTox
 	install = qtox-git.install
