@@ -1,7 +1,7 @@
 # Maintainer: grimi <grimi at poczta dot fm>
 
 pkgname=numix-themes-green
-pkgver=2.5.1.r210.3c82d31
+pkgver=2.5.1.r233.a6be634
 pkgrel=1
 pkgdesc="A flat and light theme with a modern look using Green color (GNOME, MATE, Openbox, Unity, XFCE)"
 arch=('any')
@@ -9,7 +9,7 @@ url='http://numixproject.org/'
 license=('GPL3')
 depends=('gtk-engine-murrine')
 makedepends=('git' 'ruby-bundler' 'imagemagick')
-_commit='3c82d31944793e125f54ca443be6d4b01c6a67d7'
+_commit='a6be63453516d3be718ddffc9f791ecc34da70bf'
 source=("git+https://github.com/numixproject/numix-gtk-theme.git#commit=${_commit}")
 sha256sums=('SKIP')
 
@@ -45,7 +45,10 @@ prepare() {
       sed -i 's/Numix/Numix-Green/I' "${FILE}"
    done
 
-   # fix name
+   # fix openbox bg
+   #sed -i 's/bg.color: #333333/bg.color: #444444/g' openbox-3/themerc
+
+   # fix name change
    cp gtk-3.0/assets/radio-{selected,checked}.svg
    cp gtk-3.0/assets/radio-{selected,checked}-dark.svg
 
@@ -70,7 +73,7 @@ build() {
 
 package() {
    cd numix-gtk-theme
-   rm -rf .git .gitignore CREDITS LICENSE README.md
+   rm -rf .git .gitignore CREDITS LICENSE README.md Makefile Gemfile{,.lock}
    install -dm 755 "${pkgdir}"/usr/share/themes/Numix-Green
    cp -dr --no-preserve='ownership,mode' * "${pkgdir}"/usr/share/themes/Numix-Green
 }
