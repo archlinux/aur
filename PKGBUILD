@@ -2,8 +2,8 @@
 
 pkgname=firefox-beta-zh-cn
 _pkgname=firefox-beta
-pkgver=46.0
-pkgrel=5
+pkgver=47.0b1
+pkgrel=1
 pkgdesc="Chinese Simplified For Firefox Beta"
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/zh-CN/firefox/channel/#beta"
