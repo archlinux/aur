@@ -2,7 +2,7 @@
 
 pkgname=flif-git
 _pkgname=FLIF
-pkgver=r377.f17e189
+pkgver=r567.db62345
 pkgrel=1
 pkgdesc="Free Lossless Image Format"
 arch=("i686" "x86_64")
@@ -23,6 +23,7 @@ pkgver() {
 build() {
   cd "$srcdir/${_pkgname}/src"
   make all
+  make decoder
 }
 
 package() {
@@ -31,7 +32,7 @@ package() {
   install -dm755 "${pkgdir}/usr/lib/"
   install -dm755 "${pkgdir}/usr/share/man/man1/"
   install -dm755 "${pkgdir}/usr/include/${_pkgname}"
-  install -m755 flif viewflif "${pkgdir}/usr/bin"
+  install -m755 flif viewflif dflif "${pkgdir}/usr/bin"
   install -m755 libflif_dec.so "${pkgdir}/usr/lib/"
   install -m755 libflif.so "${pkgdir}/usr/lib/"
   install -m 644 library/*.h "${pkgdir}/usr/include/${_pkgname}"
