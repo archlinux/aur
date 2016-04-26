@@ -1,6 +1,6 @@
 pkgbase = emacs25-git
 	pkgdesc = GNU Emacs. Version 25 development and maintenance branch.
-	pkgver = 25.0.93.r124751
+	pkgver = 25.0.93.r124753
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs25-git.install
