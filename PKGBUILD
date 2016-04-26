@@ -2,7 +2,7 @@
 # Submitter: Steffen L. Norgren (incongruous) <steffen[at]norgren[dot]ca>
 
 pkgname=luv-icon-theme-git
-pkgver=0.1.r3.g3de1abd
+pkgver=0.3.r4.g3c53fec
 pkgrel=1
 pkgdesc="The spiritual successor to Flattr, a flat but complex icon theme for freedesktop environments."
 arch=('any')
