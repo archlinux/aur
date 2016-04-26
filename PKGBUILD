@@ -1,8 +1,8 @@
 # Maintainer: twa022 <twa022 at gmail dot com>
 
 pkgname=nemo-emblems
-pkgver=2.8.1
-_mintrel=rosa
+pkgver=3.0.0
+_mintrel=betsy
 pkgrel=1
 pkgdesc="Nemo file emblems extension"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ options=('!libtool' '!emptydirs')
 install="$pkgname".install
 
 source=("${pkgname}-${pkgver}.tar.gz::http://packages.linuxmint.com/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}+${_mintrel}.tar.gz")
-sha256sums=('135ab0036a272c5ec323a37b1763caca8d3c453fa45da8914659e18eca94eae2')
+sha256sums=('de1afcca1f15eaf8265bdb02c690556a128623b3b8892735d1f5e7316e01cdd0')
 
 prepare() {
   cd ${srcdir}/${pkgname}-${pkgver}+${_mintrel}
