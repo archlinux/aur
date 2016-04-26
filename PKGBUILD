@@ -11,7 +11,6 @@ depends=('gtk2' 'libpng12'
          'hicolor-icon-theme')
 optdepends=('libjpeg6: jpeg support'
             'java-runtime: epubcheck support')
-replaces=('jutoh-bin')
 install=jutoh.install
 
 source=('jutoh.sh')
