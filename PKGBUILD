@@ -2,7 +2,7 @@
 # Contributor: Vladislav Odobesku positivcheg94@gmail.com
 
 pkgname=python-tensorflow-git
-pkgver=0.8.0rc0.r281.g55068f3
+pkgver=0.8.0rc0.r287.gd8e8b87
 pkgrel=1
 
 pkgdesc="Open source software library for numerical computation using data flow graphs."
@@ -30,11 +30,17 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/tensorflow"
+  cd ${srcdir}/tensorflow
   git submodule init
   git config submodule.google/protobuf.url ${srcdir}/protobuf
   git submodule update
-  mkdir -p "${srcdir}/tmp"
+
+  # clean and create the directory to store the wheel file
+  if [ -d ${srcdir}/tmp ]; then
+    rm -rf ${srcdir}/tmp
+  else
+    mkdir -p ${srcdir}/tmp
+  fi
 
   # fix build on Arch Linux
   # see https://github.com/tensorflow/tensorflow/issues/1346
@@ -49,8 +55,12 @@ prepare() {
     export TF_UNOFFICIAL_SETTING=1
     export CUDA_TOOLKIT_PATH=/opt/cuda
     export CUDNN_INSTALL_PATH=/opt/cuda
-    # Adapt to your needs:
-    # export TF_CUDA_COMPUTE_CAPABILITIES="3.0,3.5"
+    # adapt to your needs or comment for interactive config
+    msg2 "Using custom config in PKGBUILD"
+    msg2 "Modify or comment settings for interactive config"
+    export TF_CUDA_VERSION=7.5
+    export TF_CUDNN_VERSION=5
+    export TF_CUDA_COMPUTE_CAPABILITIES=3.5,5.2
   else
     msg2 "CUDA support disabled"
     export TF_NEED_CUDA=0
