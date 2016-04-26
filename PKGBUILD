@@ -2,8 +2,8 @@
 # Contributor: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
 # Contributor: Pieter Robyns <pieter.robyns@uhasselt.be>
 pkgname=python2-tensorflow-git
-pkgver=0.8.0rc0.r281.g55068f3
-pkgrel=3
+pkgver=0.8.0rc0.r287.gd8e8b87
+pkgrel=1
 url="http://tensorflow.org"
 license=('Apache')
 arch=('x86_64')
@@ -19,7 +19,7 @@ sha256sums=('SKIP'
             'SKIP'
             '513f634cc1cab44eb17204616617695ea23355462f918873678fcac1a95ae778')
 provide=('python2-tensorflow')
-conflicts=('python2-tensorflow' 'python2-tensorflow-cuda' 'tensorflow-git')
+conflicts=('python2-tensorflow' 'python2-tensorflow-cuda')
 
 _build_opts=""
 
@@ -64,7 +64,7 @@ build() {
   PYTHON_BIN_PATH=/usr/bin/${PYTHON} ./configure
 
   msg2 "Running bazel build..."
-  bazel build -c opt --python2_path ${PYTHON} ${_build_opts} //tensorflow/tools/pip_package:build_pip_package
+  bazel build -c opt --jobs 2 --python2_path ${PYTHON} ${_build_opts} //tensorflow/tools/pip_package:build_pip_package
 
   msg2 "Building pip package..."
   bazel-bin/tensorflow/tools/pip_package/build_pip_package "${srcdir}/tmp-${PYTHON}"
