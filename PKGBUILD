@@ -2,7 +2,7 @@
 
 pkgname=imgur-screenshot-git
 _pkgname=imgur-screenshot
-pkgver=1.7.2.r0.gdc8eaa6
+pkgver=1.7.3.r0.g56c0da1
 pkgrel=1
 pkgdesc="Take screenshot selection, upload to imgur + more cool things"
 arch=('any')
