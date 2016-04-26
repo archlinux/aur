@@ -1,0 +1,18 @@
+pkgbase = xneur-fresh
+	pkgdesc = X Neural Switcher detects the language of input and corrects keyboard layout if needed
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = http://www.xneur.ru
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gstreamer0.10
+	depends = enchant
+	depends = libnotify
+	depends = gtk3
+	depends = hicolor-icon-theme
+	source = https://launchpad.net/~andrew-crew-kuznetsov/+archive/xneur-stable/+files/xneur_0.18.0+git5.orig.tar.gz
+	md5sums = e236550817260e42650e551023732705
+
+pkgname = xneur-fresh
+
