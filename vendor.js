@@ -8,6 +8,7 @@ pref("browser.tabs.loadInBackground",false);
 pref("browser.tabs.closeWindowWithLastTab", false);
 pref("browser.urlbar.suggest.searches", true);
 pref("browser.urlbar.trimURLs", false);
+pref("devtools.webide.enabled", false);
 pref("extensions.autoDisableScopes", 0);
 pref("full-screen-api.approval-required", false);
 pref("layout.word_select.eat_space_to_next_word", false); 
