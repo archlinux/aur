@@ -2,7 +2,7 @@
 
 pkgname="repo-maintainer"
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for maintaining repositories for ArchLinux"
 arch=('any')
 url="https://git.0ptr.de/nullptr_t/repo-maintainer"
@@ -11,6 +11,7 @@ depends=('yaourt' 'libnotify')
 makedepends=()
 source=("git+https://git.0ptr.de/nullptr_t/$pkgname.git#tag=v$pkgver")
 md5sums=('SKIP')
+backup=('etc/repo-maintainer.conf')
 
 
 package() {
