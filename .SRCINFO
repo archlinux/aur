@@ -12,8 +12,6 @@ pkgbase = caddy-all-features
 	provides = caddy
 	conflicts = caddy
 	conflicts = caddy-git
-	source = caddy.service
-	sha256sums = 244fa03febae623f1b10adfb6883a9573ba81747b8e535bb23101ab230ccbf95
 	source_i686 = https://caddyserver.com/download/build?os=linux&features=cors,git,hugo,ipfilter,jsonp,jwt,mailout,prometheus,realip,search,upload&arch=386
 	sha256sums_i686 = SKIP
 	source_x86_64 = https://caddyserver.com/download/build?os=linux&features=cors,git,hugo,ipfilter,jsonp,jwt,mailout,prometheus,realip,search,upload&arch=amd64

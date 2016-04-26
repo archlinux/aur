@@ -49,9 +49,6 @@ install='caddy.install'
 provides=('caddy')
 conflicts=('caddy' 'caddy-git')
 
-source=('caddy.service')
-sha256sums=('244fa03febae623f1b10adfb6883a9573ba81747b8e535bb23101ab230ccbf95')
-
 printf -v _features '%s,' "${_features[@]}"
 _features=${_features%,}
 _url_prefix="https://caddyserver.com/download/build?os=linux&features=${_features}"
@@ -67,5 +64,6 @@ sha256sums_armv6h=('SKIP')
 
 package() {
   install -Dm755 "$srcdir/caddy" "$pkgdir/usr/bin/caddy"
-  install -Dm644 "${srcdir}/caddy.service" "${pkgdir}/usr/lib/systemd/system/caddy.service"
+  install -Dm644 "${srcdir}/init/linux-systemd/caddy@.service" "${pkgdir}/usr/lib/systemd/system/caddy@.service"
+  install -Dm644 "${srcdir}/init/linux-systemd/README.md" "${pkgdir}/usr/share/doc/caddy/systemd-service.md"
 }
