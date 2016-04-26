@@ -12,7 +12,7 @@ arch=('x86_64')
 _arch=i686
 license=('MPL' 'GPL' 'LGPL')
 url="http://www.mozilla.org/projects/firefox"
-depends=('lib32-dbus-glib' 'lib32-gtk2' 'lib32-libxt' 'lib32-alsa-lib' 'lib32-nss' 'lib32-xcb-util')
+depends=('lib32-dbus-glib' 'lib32-gtk3' 'lib32-libxt' 'lib32-alsa-lib' 'lib32-nss' 'desktop-file-utils')
 optdepends=('bin32-firefox-i18n: i18n support'
             'lib32-flashplugin: flash support'
             'bin32-acroread: adobe reader plugin'
