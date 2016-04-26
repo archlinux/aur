@@ -1,9 +1,8 @@
-# Contributor: Cyberpunk <aur_linuxero@outlook.com>
-# Maintainer: Cyberpunk <aur_linuxero@outlook.com>
+# Contributor: Fixed Torres <aur_linuxero@outlook.com>
+# Maintainer: Fixed Torres <aur_linuxero@outlook.com>
 
 pkgname=sayonara-player-git
-pkgver=0.8.2_git2_20160226
-_pkgver=0.8.2-git2-20160226
+pkgver=0.8.3_git0_20160424
 pkgrel=1
 pkgdesc="Is a small, clear and fast audio player for Linux written in C++, supported by the Qt framework. It uses Gstreamer as audio backend."
 arch=('i686' 'x86_64')
@@ -12,7 +11,7 @@ license=('GPL3')
 depends=('qt5-base' 'taglib' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'libmtp')
 optdepends=('lame' 'gst-plugins-ugly')
 makedepends=('cmake' 'qt5-tools')
-conflicts=('sayonara-player-svn' ''sayonara-player'')
+conflicts=('sayonara-player-svn' 'sayonara-player')
 source=("${pkgname}::git+https://git.sayonara-player.com/sayonara.git")
  
 build() {
