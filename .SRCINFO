@@ -1,0 +1,19 @@
+pkgbase = kdeneur
+	pkgdesc = KDE frontend for X Neural Switcher (XNeur)
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = http://xneur.ru/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = gcc
+	makedepends = make
+	depends = qt4
+	depends = kdelibs
+	depends = kdelibs4support
+	depends = xneur>=0.18.0
+	source = https://launchpad.net/~andrew-crew-kuznetsov/+archive/xneur-stable/+files/kdeneur_0.18.0+git6.orig.tar.gz
+	md5sums = 2ddfa9a611d17e6ea795fa582cacdec3
+
+pkgname = kdeneur
+
