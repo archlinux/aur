@@ -1,6 +1,6 @@
 pkgbase = steam-wrapper-git
 	pkgdesc = Steam wrapper for common operations (git version)
-	pkgver = 0.2.0.r79.a0fb02b
+	pkgver = 0.2.3.r100.9663bba
 	pkgrel = 1
 	url = https://github.com/pyamsoft/steam-wrapper.git
 	arch = i686
