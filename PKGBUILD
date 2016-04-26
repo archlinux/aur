@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://caddyserver.com"
 license=('Apache')
 install='caddy.install'
-conflicts=('caddy-git')
+conflicts=('caddy' 'caddy-git')
 
 source=('caddy.service')
 sha256sums=('244fa03febae623f1b10adfb6883a9573ba81747b8e535bb23101ab230ccbf95')
