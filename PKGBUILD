@@ -5,7 +5,7 @@ pkgdesc="KDE frontend for X Neural Switcher (XNeur)"
 arch=('i686' 'x86_64')
 url="http://xneur.ru/"
 license=('GPLv3')
-depends=('qt4' 'kdelibs' 'kdelibs4support' "xneur>=${pkgver}")
+depends=('qt4' 'kdelibs' 'kdelibs4support' "xneur-fresh>=${pkgver}")
 makedepends=('gcc' 'make')
 source=("https://launchpad.net/~andrew-crew-kuznetsov/+archive/xneur-stable/+files/${pkgname}_${pkgver}+git6.orig.tar.gz")
 md5sums=('2ddfa9a611d17e6ea795fa582cacdec3')

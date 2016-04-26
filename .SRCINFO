@@ -11,7 +11,7 @@ pkgbase = kdeneur
 	depends = qt4
 	depends = kdelibs
 	depends = kdelibs4support
-	depends = xneur>=0.18.0
+	depends = xneur-fresh>=0.18.0
 	source = https://launchpad.net/~andrew-crew-kuznetsov/+archive/xneur-stable/+files/kdeneur_0.18.0+git6.orig.tar.gz
 	md5sums = 2ddfa9a611d17e6ea795fa582cacdec3
 
