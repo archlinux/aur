@@ -5,7 +5,7 @@
 
 pkgname=nvidia-96xx-dkms
 pkgver=96.43.23
-pkgrel=5
+pkgrel=6
 pkgdesc="NVIDIA kernel module sources (DKMS), 96xx branch"
 arch=('i686' 'x86_64')
 [ "$CARCH" = "i686"   ] && _arch=x86
@@ -18,7 +18,6 @@ optdepends=('linux-headers: build the module for Arch kernel'
 provides=("nvidia=${pkgver}" 'nvidia-dkms')
 conflicts=('nvidia')
 license=('custom')
-install=nvidia-dkms.install
 source=("http://us.download.nvidia.com/XFree86/Linux-${_arch}/${pkgver}/${_pkg}.run"
          173.14.36-37.patch
          173.14.37-38.patch
