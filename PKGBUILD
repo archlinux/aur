@@ -1,7 +1,7 @@
 # Maintainer: DJ Lucas <dj_AT_linuxfromscratch_DOT_org>
 
 pkgname=samba-dhcpd-update
-pkgver=20151205
+pkgver=20160426
 pkgrel=1
 arch=('any')
 pkgdesc="Allow dhcpd to update Samba DNS"
