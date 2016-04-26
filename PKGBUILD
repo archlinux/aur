@@ -11,7 +11,7 @@ source=("https://launchpad.net/~andrew-crew-kuznetsov/+archive/xneur-stable/+fil
 md5sums=('e236550817260e42650e551023732705')
 
 build() {
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/xneur-$pkgver
 
 	./configure --prefix=/usr --sysconfdir=/etc \
    	--without-xosd \
@@ -20,6 +20,6 @@ build() {
 }
 
 package() {
-	cd $srcdir/$pkgname-$pkgver
+	cd $srcdir/xneur-$pkgver
     make DESTDIR=${pkgdir} install
 }
