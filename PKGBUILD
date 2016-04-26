@@ -8,11 +8,11 @@
 _qt_module=qttools
 pkgname="mingw-w64-qt5-tools"
 pkgver=5.6.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 pkgdesc="A cross-platform application and UI framework (Development Tools, QtHelp; mingw-w64)"
-depends=('mingw-w64-qt5-base')
-makedepends=('mingw-w64-gcc' 'mingw-w64-qt5-declarative')
+depends=('mingw-w64-qt5-declarative')
+makedepends=('mingw-w64-gcc')
 options=('!strip' '!buildflags' 'staticlibs')
 license=('GPL3' 'LGPL')
 url="https://www.qt.io/"
