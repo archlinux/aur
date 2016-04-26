@@ -1,7 +1,7 @@
 # Maintainer: Szilveszter Székely <szekelyszilv at gmail dot com>
 pkgname=jutoh
 pkgver=2.43
-pkgrel=1
+pkgrel=2
 pkgdesc="An ebook creation tool"
 arch=('i686' 'x86_64')
 url="http://www.jutoh.com"
