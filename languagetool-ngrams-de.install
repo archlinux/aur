@@ -1,0 +1,6 @@
+post_install() {
+  echo ''
+  echo 'Do not forget to add "ngramDir=/usr/share/ngrams" in ~/.languagetool[-ooo].cfg or use the respecting LanguageTool GUI to point to "/usr/share/ngrams"!'
+  echo 'Test your installation with this sentence: "Während Sie das Ganze mir einem Holzlöffel oder einem Paar Stäbchen rühren …"'
+  echo ''
+}
