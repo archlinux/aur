@@ -1,8 +1,12 @@
 # Maintainer: Martchus <martchus@gmx.net>
+
+# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
+# you also find the URL of a binary repository.
+
 _reponame=passwordmanager
 pkgname=passwordmanager
-pkgver=2.1.0
-pkgrel=1
+pkgver=2.1.1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="A simple password store using AES-256-CBC encryption via OpenSSL."
 license=('GPL')
@@ -11,15 +15,15 @@ makedepends=('cmake' 'qt5-tools')
 install=${pkgname}.install
 url="https://github.com/Martchus/${_reponame}"
 source=("passwordmanager-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('85b436cf43d1bc9cd83ef1f756d85870b3c066aa1103ef290a364ed0c642e907')
+sha256sums=('ad2b91f2b1a54668d06c258686ec48f41f3ffd34cbbcd1ec4bb2a3226e3a9b4b')
 
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr"
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr" -DQUICK_GUI="no"
   make
 }
 
 package() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame-$pkgver}"
-  make install
+  make DESTDIR="${pkgdir}" install
 }
