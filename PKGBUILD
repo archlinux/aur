@@ -7,7 +7,7 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=pd-l2ork
-pkgver=1642.e3e30ff
+pkgver=1644.ec3b96b
 pkgrel=1
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData"
 url="http://l2ork.music.vt.edu/main/?page_id=56"
@@ -19,16 +19,22 @@ depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
   'libdc1394' 'libdv' 'libgl' 'libiec61883' 'libjpeg' 'libquicktime'
   'libraw1394' 'libsndobj-cvs' 'libv4l' 'libvorbis' 'lua51' 'portaudio'
   'smpeg' 'speex' 'stk' 'tk' 'tkpng' 'vlc' 'xapian-tcl-bindings')
-makedepends=('git' 'subversion' 'swig' 'curl' 'rsync')
+makedepends=('autoconf' 'automake' 'libtool' 'git' 'subversion' 'swig' 'curl' 'rsync')
 conflicts=('pd-l2ork')
 install=pd-l2ork.install
 options=('!makeflags')
-source=("$pkgname::git+https://github.com/pd-l2ork/pd.git")
-md5sums=(SKIP)
+source=("$pkgname::git+https://github.com/pd-l2ork/pd.git"
+	"menu_openfile.patch")
+md5sums=('SKIP' '6eb362b0165fc9fc4409e3db5d2278c2')
 
 pkgver() {
   cd $srcdir/$pkgname
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $srcdir/$pkgname
+  patch -p1 < ../menu_openfile.patch
 }
 
 build() {
