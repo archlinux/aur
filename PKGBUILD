@@ -1,16 +1,15 @@
 # Maintainer: X0rg
 
-_kernel=$(pacman -Qqo /usr/lib/modules/`uname -r` | grep linux | grep -v headers)
 _gitname=darling
 pkgname=$_gitname-git
-pkgver=1197.b37d736
+pkgver=1230.63c6f36
 pkgrel=1
 pkgdesc="A Darwin/OS X emulation layer for Linux"
 arch=('x86_64') # Can only be built on x86_64 systems
 url="http://www.darlinghq.org"
 license=('GPL3')
 groups=('darling-git')
-depends=('darling-mach-git' 'xz' 'fuse' 'libxml2' 'icu' 'openssl' 'lbzip2' 'zlib' 'libunwind' 'curl' 'systemd' 'libffi' 'bzip2' 'libxslt')
+depends=('darling-mach-git' 'xz' 'fuse' 'libxml2' 'icu' 'openssl' 'lbzip2' 'zlib' 'libunwind' 'curl' 'systemd' 'libffi' 'bzip2' 'libxslt' 'wget')
 depends_x86_64=('lib32-systemd' 'lib32-libffi' 'lib32-bzip2' 'lib32-libxslt')
 makedepends=('git' 'cmake' 'clang' 'bison' 'flex')
 makedepends_x86_64=('gcc-multilib')
