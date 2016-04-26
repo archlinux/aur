@@ -10,10 +10,9 @@ arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/tux3/qTox'
 license=('GPL3')
 depends=('desktop-file-utils'
-         'gtk2'
          'libxss'
          'openal'
-         'ffmpeg'
+         'opencv'
          'qrencode'
          'qt5-svg'
          'sqlcipher'
