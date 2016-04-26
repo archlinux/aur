@@ -1,7 +1,7 @@
 # Maintainer: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 pkgname=opensmtpd-extras
 pkgver=5.7.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Additional filters, tables, queues, etc. for OpenSMTPd"
 arch=('i686' 'x86_64')
 url="https://opensmtpd.org"
@@ -18,8 +18,10 @@ optdepends=('python2: python support for filters, tables, scheduler, and queues'
             'hiredis: redis support for tables'
             'sqlite: sqlite support for tables')
 backup=('etc/smptd/filter-regex.conf')
-source=("https://www.opensmtpd.org/archives/$pkgname-$pkgver.tar.gz")
-sha256sums=('b56dc24427afe7d6156c85232427fe33a260aca8873eb118d0229dff3a248dce')
+source=("https://www.opensmtpd.org/archives/$pkgname-$pkgver.tar.gz"
+        "fix-for-glibc-getaddrinfo-quirks.patch")
+sha256sums=('b56dc24427afe7d6156c85232427fe33a260aca8873eb118d0229dff3a248dce'
+            '73b6f3d80e2b273c80e31620de7b9e5d4f44ed4cd34bc00431121974e7ff9c81')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -29,6 +31,9 @@ prepare() {
 
   # Fix config file locations
   sed -i 's;/etc/mail/filter-regex.conf;/etc/smtpd/filter-regex.conf;g' "extras/wip/filters/filter-regex/filter_regex.c"
+
+  # Apply patches
+  patch -Np1 <../fix-for-glibc-getaddrinfo-quirks.patch
 }
 
 build() {

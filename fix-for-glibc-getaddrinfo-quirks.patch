@@ -1,0 +1,16 @@
+diff -aur opensmtpd-extras-5.7.1.pristine/extras/wip/filters/filter-dnsbl/filter_dnsbl.c opensmtpd-extras-5.7.1.new/extras/wip/filters/filter-dnsbl/filter_dnsbl.c
+--- opensmtpd-extras-5.7.1.pristine/extras/wip/filters/filter-dnsbl/filter_dnsbl.c	2016-04-26 21:46:19.862094043 +0200
++++ opensmtpd-extras-5.7.1.new/extras/wip/filters/filter-dnsbl/filter_dnsbl.c	2016-04-26 21:50:52.375447401 +0200
+@@ -40,7 +40,11 @@
+ 	if (ar->ar_addrinfo)
+ 		freeaddrinfo(ar->ar_addrinfo);
+ 
+-	if (ar->ar_gai_errno != EAI_NODATA)
++	/*
++	 * There seems to be a dispute about defining EAI_NONAME and EAI_NODATA properly in glibc and relatives.
++	 * Thus, the constants were replaced by their values.
++	 */
++	if (ar->ar_gai_errno != -5 && ar->ar_gai_errno != -2)
+ 		filter_api_reject(*q, FILTER_CLOSE);
+ 	else
+ 		filter_api_accept(*q);
