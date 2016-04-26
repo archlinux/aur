@@ -2,7 +2,7 @@
 
 pkgname=conky-bargile
 pkgver=0.1a
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet another conky-lua theme, this one includes some kind of an engine"
 arch=('any')
 url="https://github.com/Noeljunior/conky-bargile"
