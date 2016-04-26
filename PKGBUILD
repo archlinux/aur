@@ -4,7 +4,7 @@
 # Committer: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=tcl85
-pkgver=8.5.17
+pkgver=8.5.19
 pkgrel=1
 pkgdesc="The Tcl scripting language, 8.5 series"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ url="http://tcl.sourceforge.net/"
 license=('custom')
 provides=("tcl" "tcl=${pkgver}")
 source=(http://downloads.sourceforge.net/sourceforge/tcl/tcl${pkgver}-src.tar.gz)
-md5sums=('bac917ce5e1cf029bffc766aa884635b')
+md5sums=('4f4e1c919f6a6dbb37e9a12d429769a6')
 options=('staticlibs')
 
 build() {
