@@ -4,7 +4,7 @@
 # Contributor: G. Richard Bellamy <rbellamy@pteradigm.com>
 pkgname=dbschema
 pkgver=7.3.23
-pkgrel=1
+pkgrel=2
 pkgdesc='Relational Data Browse, Query Builder, SQL Editor, schema deployment and synchronization.'
 arch=('i686' 'x86_64')
 url='http://www.dbschema.com/'
@@ -20,7 +20,7 @@ package(){
   install -dm755 ${pkgdir}/opt
   cp -r DbSchema ${pkgdir}/opt/${pkgname}
 
-  chmod 755 ${pkgdir}/opt/${pkgname}/DbSchema.sh
+  chmod 755 ${pkgdir}/opt/${pkgname}/DbSchema
 
   install -Dm755 dbschema ${pkgdir}/usr/bin/dbschema
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
