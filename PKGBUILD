@@ -25,7 +25,7 @@ _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 
 # PKGBUILD
 
-pkgrel=7
+pkgrel=8
 _piver=2
 
 _pkgvermajmin="5.7"
@@ -156,13 +156,9 @@ fi
   cd ${_basedir}
   patch -p1 < ${_patch_dir}/0001-Make-CFLAGS-CXXFLAGS-behave-consistently-in-config.t.patch
   patch -p1 < ${_patch_dir}/0002-Adjust-egl-config.test-to-pass-sysrooted-libs.patch
-  cd ${_waylanddir}
-  patch -p1 < ${_patch_dir}/0001-Adjust-Raspberry-Pi-integration-to-new-API.patch
   cd ${_webenginedir}
   patch -p1 < ${_patch_dir}/0001-Include-neon-support-for-any-fpu-.-neon.patch
   patch -p1 < ${_patch_dir}/0001-Always-define-arm_thumb.patch
-  cd ${_locationdir}
-  patch -p1 < ${_patch_dir}/0001-Fix-qreal-double-mingling.patch
 
   # end patch
 
@@ -196,7 +192,6 @@ fi
     -no-xcb \
     \
     -skip qtscript \
-    -skip qtenginio \
     \
     -sysroot ${_sysroot} \
     -device ${_mkspec} \
