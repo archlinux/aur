@@ -1,6 +1,6 @@
 pkgbase = caddy-all-features
 	pkgdesc = A configurable, general-purpose HTTP/2 web server for any platform (All features enabled)
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://caddyserver.com
 	install = caddy.install
@@ -12,11 +12,11 @@ pkgbase = caddy-all-features
 	conflicts = caddy-git
 	source = caddy.service
 	sha256sums = 244fa03febae623f1b10adfb6883a9573ba81747b8e535bb23101ab230ccbf95
-	source_i686 = https://caddyserver.com/download/build?os=linux&features=cors,git,hugo,ipfilter,jsonp,search&arch=386
+	source_i686 = https://caddyserver.com/download/build?os=linux&features=cors,git,hugo,ipfilter,jsonp,jwt,mailout,prometheus,realip,search,upload&arch=386
 	sha256sums_i686 = SKIP
-	source_x86_64 = https://caddyserver.com/download/build?os=linux&features=cors,git,hugo,ipfilter,jsonp,search&arch=amd64
+	source_x86_64 = https://caddyserver.com/download/build?os=linux&features=cors,git,hugo,ipfilter,jsonp,jwt,mailout,prometheus,realip,search,upload&arch=amd64
 	sha256sums_x86_64 = SKIP
-	source_armv6h = https://caddyserver.com/download/build?os=linux&features=cors,git,hugo,ipfilter,jsonp,search&arch=arm
+	source_armv6h = https://caddyserver.com/download/build?os=linux&features=cors,git,hugo,ipfilter,jsonp,jwt,mailout,prometheus,realip,search,upload&arch=arm
 	sha256sums_armv6h = SKIP
 
 pkgname = caddy-all-features

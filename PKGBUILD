@@ -1,6 +1,7 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 # Contributor: Tom Richards <tom [at] tomrichards [dot] net>
 
+# Comment out any feature you don't want; by default, everything is included
 
 # Enable Cross Origin Resource Sharing
 _features+=(cors)
@@ -17,13 +18,27 @@ _features+=(ipfilter)
 # Wrap regular JSON responses as JSONP
 _features+=(jsonp)
 
+# JSON webtoken middleware
+_features+=(jwt)
+
+# SMTP client with REST API and GPG support
+_features+=(mailout)
+
+# Prometheus monitoring metrics
+_features+=(prometheus)
+
+# Sets `X-Forwarded-For` header when caddy runs behind a proxy
+_features+=(realip)
+
 # Activates a site search engine
 _features+=(search)
 
+# File upload API
+_features+=(upload)
 
 
 pkgname=caddy-all-features
-pkgver=0.8.2
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="A configurable, general-purpose HTTP/2 web server for any platform (All features enabled)"
 arch=('i686' 'x86_64' 'armv6h')
