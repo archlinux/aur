@@ -1,6 +1,6 @@
 # Maintainer: substanceof <vk-cli.dev[at]ya[dot]ru>
 pkgname=vk-cli
-pkgver=0.7a1
+pkgver=0.7.1a
 pkgrel=1
 pkgdesc="A console (ncurses) client for vk.com written in D"
 arch=('x86_64')
