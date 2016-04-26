@@ -1,5 +1,5 @@
 pkgname=wlc-git
-pkgver=r893.8047fa7
+pkgver=v0.0.1.r25.g1102ef9
 pkgrel=1
 
 pkgdesc='wayland compositor library'
@@ -24,7 +24,7 @@ sha1sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
     cd wlc
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe | sed 's/-/.r/; s/-/./'
 }
 
 prepare() {
