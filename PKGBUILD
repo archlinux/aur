@@ -35,7 +35,7 @@
 #######################################################################
 # Assign "YES" to the variable you want enabled, empty otherwise
 #######################################################################
-GTK3="YES"       # Leave empty to compile with gtk+ 2 support
+GTK3=            # Leave empty to compile with gtk+ 2 support
 LTO=             # Enable link-time optimization. Broken.
 CAIRO=           # Very broken for me. Use at own risk.
 XWIDGETS=        # Use GTK+ native widgets pulled from webkitgtk.
@@ -44,7 +44,7 @@ DOCS_PDF=        # Generate and install pdf documentation.
 #######################################################################
 
 pkgname=emacs-git
-pkgver=25.1.50.r125630
+pkgver=25.1.50.r125748
 pkgrel=1
 pkgdesc="GNU Emacs. Version 25 development and maintenance branch."
 arch=('i686' 'x86_64')

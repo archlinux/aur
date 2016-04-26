@@ -1,6 +1,6 @@
 pkgbase = emacs-git
 	pkgdesc = GNU Emacs. Version 25 development and maintenance branch.
-	pkgver = 25.1.50.r125630
+	pkgver = 25.1.50.r125748
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs-git.install
@@ -14,7 +14,7 @@ pkgbase = emacs-git
 	depends = desktop-file-utils
 	depends = alsa-lib
 	depends = imagemagick
-	depends = gtk3
+	depends = gtk2
 	provides = emacs
 	conflicts = emacs
 	source = emacs-git::git://git.savannah.gnu.org/emacs.git
