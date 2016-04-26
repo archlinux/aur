@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 url="http://www.gdal.org/"
 license=('custom')
 depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf'
-         'openjpeg2' 'poppler' 'python2' 'python2-numpy' 'cfitsio' 'sqlite' 'libmariadbclient' 'postgresql-libs')
+         'openjpeg2' 'poppler' 'python2' 'python2-numpy' 'cfitsio' 'sqlite' 'libmariadbclient' 'postgresql-libs' 'hdf4-nonetcdf')
 makedepends=('perl' 'swig' 'chrpath' 'doxygen')
 optdepends=('postgresql: postgresql database support'
             'mariadb: mariadb database support'

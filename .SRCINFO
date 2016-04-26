@@ -28,6 +28,7 @@ pkgbase = gdal-hdf4
 	depends = sqlite
 	depends = libmariadbclient
 	depends = postgresql-libs
+	depends = hdf4-nonetcdf
 	optdepends = postgresql: postgresql database support
 	optdepends = mariadb: mariadb database support
 	optdepends = perl: perl binding support
