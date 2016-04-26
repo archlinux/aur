@@ -9,6 +9,7 @@ url="https://git.0ptr.de/nullptr_t/repo-maintainer"
 license=('GPL3')
 depends=('yaourt' 'git' 'libnotify')
 makedepends=()
+conflicts=('repo-scripts')
 source=("git+https://git.0ptr.de/nullptr_t/$pkgname.git#tag=v$pkgver")
 md5sums=('SKIP')
 backup=('etc/repo-maintainer.conf')
