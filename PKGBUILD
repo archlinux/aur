@@ -12,8 +12,8 @@ makedepends=()
 provides=('steam-wrapper')
 conflicts=('steam-wrapper')
 license=('GPLv2')
-url="https://github.com/pyamsoft/${pkgname}/archive/${pkgver}.tar.gz"
-source=("$url")
+url="https://github.com/pyamsoft/${pkgname}"
+source=("$url/archive/${pkgver}.tar.gz")
 sha256sums=('2c03982001d41d2a5b52457bfa659328f14ddf1b6422d41222c08f0e75a60b48')
 
 package() {
