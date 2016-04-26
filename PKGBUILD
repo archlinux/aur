@@ -1,5 +1,4 @@
-# Contributor: Sergey Kolesov <cucullus.at.mail.ru>
-# Previously contributed by StormBlast and Vyazovoi
+# Maintainer: zekeer <isoniasid@gmail.ru>
 
 pkgname=gxneur-fresh
 pkgver=0.18.0
