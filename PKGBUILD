@@ -40,7 +40,7 @@ _features+=(upload)
 
 pkgname=caddy-all-features
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A configurable, general-purpose HTTP/2 web server for any platform (All features enabled)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://caddyserver.com"
