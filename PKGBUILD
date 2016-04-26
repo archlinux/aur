@@ -64,7 +64,7 @@ package() {
 
   msg2 "Copying licence"
   install -Dm644 ${srcdir}/jutoh-data/license.txt \
-                 ${pkgdir}/usr/share/licenses/jutoh-bin/LICENSE
+                 ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 
   msg2 "Copying files"
   install -dm755 ${pkgdir}/usr/share/jutoh
