@@ -1,0 +1,14 @@
+pkgbase = gcl
+	pkgdesc = GNU Common Lisp
+	pkgver = 2.6.13_pre
+	pkgrel = 1
+	url = http://www.gnu.org/software/gcl/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	source = git+git://git.sv.gnu.org/gcl.git#branch=Version_2_6_13pre
+	md5sums = SKIP
+
+pkgname = gcl
+
