@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 pkgname=showcase-git
-pkgver=r6
+pkgver=r7
 pkgrel=1
 pkgdesc='Fullscreen Kiosk application that rotating over a set of html pages'
 arch=(i686 x86_64)
@@ -28,5 +28,4 @@ build() {
 package() {
   cd showcase
   make install DESTDIR="$pkgdir"
-  install -Dm644 xinitrc "$pkgdir"/var/lib/showcase/.xinitrc
 }
