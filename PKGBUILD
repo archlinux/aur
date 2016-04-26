@@ -17,8 +17,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_gitrepo"
-  # Git tag
-  echo $(git describe --tags|sed 's/v//;s/-/./g')
+  # Latest annotated tag (release)
+  git describe --abbrev=0 | sed 's/^v//'
 }
 
 build() {
