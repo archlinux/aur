@@ -5,7 +5,7 @@ _module="${_name#python-}"
 _cmd="${_module%client}"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="4.1.2"
+pkgver="4.2.0"
 pkgrel="1"
 pkgdesc="CLI and Client Library for OpenStack Networking"
 arch=("any")
@@ -13,7 +13,7 @@ url="https://github.com/openstack/${_name}"
 license=("Apache")
 makedepends=("python-pbr>=1.8" "python2-pbr>=1.8")
 source=("https://tarballs.openstack.org/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('9686417fa44629f31e3ad0a07f179fae4615ae23bd91f9352ab9caa83c0c2422')
+sha256sums=('c2d95172f544c5fc209622d750906c84643f142d2c3299dd40e930d4ca60f039')
 
 prepare() {
     cd "${srcdir}/${_name}-${pkgver}"
