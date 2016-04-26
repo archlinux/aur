@@ -44,8 +44,8 @@ DOCS_PDF=        # Generate and install pdf documentation.
 #######################################################################
 
 pkgname=emacs-git
-pkgver=25.1.50.r125748
-pkgrel=1
+pkgver=25.1.50.r125750
+pkgrel=2
 pkgdesc="GNU Emacs. Version 25 development and maintenance branch."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -100,9 +100,9 @@ build() {
 #######################################################################
 #######################################################################
   if [[ $GTK3 = "YES" ]]; then 
-    _conf+=('--with-xtoolkit=gtk3' '--without-gconf' '--with-gsettings'); 
+    _conf+=('--with-xtoolkit=gtk3' '--without-gconf' '--without-gsettings'); 
   else
-    _conf+=('with-xtoolkit=gtk2' '--with-gconf' '--without-gsettings');
+    _conf+=('--with-xtoolkit=gtk2' '--without-gconf' '--without-gsettings');
   fi
   if [[ $LTO = "YES" ]]; then _conf+=('--enable-link-time-optimization'); fi
   if [[ $CAIRO = "YES" ]]; then _conf+=('--with-cairo'); fi
