@@ -7,12 +7,12 @@ arch=('x86_64')
 url="https://github.com/HaCk3Dq/vk"
 license=('Apache')
 depends=('curl' 'openssl' 'ncurses>=5.7')
-makedepends=('dub' 'dmd' 'git')
+makedepends=('dub' 'dmd>=2.071.0' 'git')
 optdepends=('mplayer: for music playback')
 provides=("$pkgname")
 conflicts=()
 
-source=('git+https://github.com/HaCk3Dq/vk.git#tag=0.7a1')
+source=("git+https://github.com/HaCk3Dq/vk.git#tag=${pkgver}")
 md5sums=('SKIP')
 
 _gitname=vk
