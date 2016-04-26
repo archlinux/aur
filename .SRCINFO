@@ -1,7 +1,7 @@
 pkgbase = caddy
 	pkgdesc = A configurable, general-purpose HTTP/2 web server for any platform
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://caddyserver.com
 	install = caddy.install
 	arch = i686
@@ -11,8 +11,6 @@ pkgbase = caddy
 	license = Apache
 	conflicts = caddy
 	conflicts = caddy-git
-	source = caddy.service
-	sha256sums = 244fa03febae623f1b10adfb6883a9573ba81747b8e535bb23101ab230ccbf95
 	source_i686 = https://github.com/mholt/caddy/releases/download/v0.8.3/caddy_linux_386.tar.gz
 	sha256sums_i686 = 25b173dc2f47bd22c48efb6831c713f3100c9d70a04d69f81bc3dc236abc7624
 	source_x86_64 = https://github.com/mholt/caddy/releases/download/v0.8.3/caddy_linux_amd64.tar.gz
