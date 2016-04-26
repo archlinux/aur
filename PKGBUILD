@@ -1,7 +1,7 @@
 # Maintainer: Christoph Korn <christoph.korn at posteo dot de>
 pkgname=chatty
-pkgver=0.8.1
-pkgrel=3
+pkgver=0.8.2
+pkgrel=1
 pkgdesc="Twitch Chat Client for Desktop"
 arch=('any')
 url="http://chatty.github.io/" 
@@ -18,14 +18,14 @@ source=("https://github.com/chatty/chatty/archive/v${pkgver}.tar.gz"
         "manifest.patch"
         "disable_version_check.patch"
         "build.patch")
-md5sums=('ec686a2146c166bf50ee330a9c590f82'
+md5sums=('1172b5f7d788a7258fbbec07f6ca7dcc'
          '2bdf69cd81d941dba97d55694f9da26d'
          '9d8950b786e1af5614bc705ad478b019'
          '8f74b121a39705a33687ddf26dfdd2ac'
-         '6464228eceee06c4f8987df9b44bab65'
-         '1432edb5b8a728106bd7e76e042c8e9f'
-         '6c62ed9c73b42b9a629d796b3358c193'
-         'ff584c4f1ce48e0ae48a4fc131999be2')
+         'b94cff3408dc359815283663610ab866'
+         '4de1c8a5b0fb16932b6106d8bdd193f7'
+         '4e3d8490acd2f8ba700d03809a8ca8cf'
+         '096e2ad8590ff0b8e6a57869c8e79c3c')
 
 prepare() {
   cd chatty-${pkgver}

@@ -1,8 +1,8 @@
 # make an own build.xml because the sources do not contain all build files
-diff --git a/build.xml b/build.xml
-index aa14e9f..c752517 100644
---- a/build.xml
-+++ b/build.xml
+Index: chatty-0.8.2/build.xml
+===================================================================
+--- chatty-0.8.2.orig/build.xml	2016-04-26 22:53:02.932618803 +0200
++++ chatty-0.8.2/build.xml	2016-04-26 22:53:39.409388013 +0200
 @@ -1,79 +1,29 @@
 -<?xml version="1.0" encoding="UTF-8"?>
 -<!-- You may freely edit this file. See commented blocks below for -->
@@ -82,7 +82,6 @@ index aa14e9f..c752517 100644
 -			<fileset dir="assets/sounds" />
 -		</copy>
 -	</target>
--</project>
 +<project name="chatty" default="jar">
 +  <target name="clean">
 +    <delete dir="bin"/>
@@ -111,7 +110,4 @@ index aa14e9f..c752517 100644
 +        <zipgroupfileset dir="assets/lib" />
 +     </jar>
 +  </target>
-+</project>
--- 
-2.5.0
-
+ </project>

@@ -1,9 +1,9 @@
 # disable version check. updates come via package management
-diff --git a/src/chatty/Chatty.java b/src/chatty/Chatty.java
-index 2fdc077..5c39dd8 100644
---- a/src/chatty/Chatty.java
-+++ b/src/chatty/Chatty.java
-@@ -53,7 +53,7 @@ public class Chatty {
+Index: chatty-0.8.2/src/chatty/Chatty.java
+===================================================================
+--- chatty-0.8.2.orig/src/chatty/Chatty.java	2016-04-26 22:46:41.680640379 +0200
++++ chatty-0.8.2/src/chatty/Chatty.java	2016-04-26 22:50:03.208841787 +0200
+@@ -58,7 +58,7 @@
       * Enable Version Checker (if you compile and distribute this yourself, you
       * may want to disable this)
       */
@@ -12,11 +12,11 @@ index 2fdc077..5c39dd8 100644
      
      /**
       * The regular URL of the textfile where the most recent version is stored.
-diff --git a/src/chatty/TwitchClient.java b/src/chatty/TwitchClient.java
-index 8bea1db..b900837 100644
---- a/src/chatty/TwitchClient.java
-+++ b/src/chatty/TwitchClient.java
-@@ -262,7 +262,7 @@ public class TwitchClient {
+Index: chatty-0.8.2/src/chatty/TwitchClient.java
+===================================================================
+--- chatty-0.8.2.orig/src/chatty/TwitchClient.java	2016-04-26 22:47:26.953580371 +0200
++++ chatty-0.8.2/src/chatty/TwitchClient.java	2016-04-26 22:51:15.054348837 +0200
+@@ -298,7 +298,7 @@
          checkForVersionChange();
          // Check version, if enabled in this build
          if (Chatty.VERSION_CHECK_ENABLED) {
@@ -25,7 +25,7 @@ index 8bea1db..b900837 100644
          }
          
          // Connect or open connect dialog
-@@ -370,44 +370,7 @@ public class TwitchClient {
+@@ -368,44 +368,7 @@
       * Checks for a new version if the last check was long enough ago.
       */
      private void checkNewVersion() {
@@ -48,9 +48,9 @@ index 8bea1db..b900837 100644
 -        }
 -        settings.setLong("versionLastChecked", System.currentTimeMillis());
 -        g.printSystem("Checking for new version..");
-         
+-        
 -        new Version(new VersionListener() {
--
+ 
 -            @Override
 -            public void versionChecked(String version, String info, boolean isNewVersion) {
 -                if (isNewVersion) {
@@ -70,11 +70,11 @@ index 8bea1db..b900837 100644
      }
      
      /**
-diff --git a/src/chatty/Version.java b/src/chatty/Version.java
-index 2f6d9c4..6ac5227 100644
---- a/src/chatty/Version.java
-+++ b/src/chatty/Version.java
-@@ -32,8 +32,8 @@ public class Version {
+Index: chatty-0.8.2/src/chatty/Version.java
+===================================================================
+--- chatty-0.8.2.orig/src/chatty/Version.java	2016-04-26 22:47:26.953580371 +0200
++++ chatty-0.8.2/src/chatty/Version.java	2016-04-26 22:51:48.071042729 +0200
+@@ -32,8 +32,8 @@
      }
      
      private void checkForNewVersion() {
@@ -85,6 +85,3 @@ index 2f6d9c4..6ac5227 100644
      }
      
      /**
--- 
-2.5.0
-

@@ -1,14 +1,10 @@
 # make a proper manifest
-diff --git a/manifest.mf b/manifest.mf
-index 1574df4..79d6981 100644
---- a/manifest.mf
-+++ b/manifest.mf
-@@ -1,3 +1,2 @@
--Manifest-Version: 1.0
+Index: chatty-0.8.2/manifest.mf
+===================================================================
+--- chatty-0.8.2.orig/manifest.mf	2016-04-26 22:45:58.827753038 +0200
++++ chatty-0.8.2/manifest.mf	2016-04-26 22:46:24.096275971 +0200
+@@ -1,3 +1,3 @@
+ Manifest-Version: 1.0
 -X-COMMENT: Main-Class will be added automatically by build
--
-+Manifest-Version: 1.0
 +Main-Class: chatty.Chatty
--- 
-2.5.0
-
+ 
