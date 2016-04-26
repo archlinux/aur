@@ -1,16 +1,18 @@
 pkgbase = vim-elixir-git
 	pkgdesc = Vim configuration files for Elixir
-	pkgver = r211.f2c747d
+	pkgver = r251.fe61852
 	pkgrel = 1
 	url = https://github.com/elixir-lang/vim-elixir
+	install = vim-elixir-git.install
 	arch = any
 	license = Apache
 	makedepends = git
-	optdepends = vim-matchit: Use % to jump between "do" and "end"
 	source = git+https://github.com/elixir-lang/vim-elixir.git
 	source = manifest.txt
+	source = vim-elixir-git.install
 	sha256sums = SKIP
-	sha256sums = 77928ee91ea696f23888d086a543cfc9a0e6f619fd3b5a3d5f4d017c5f8fa888
+	sha256sums = f912b234fdd331da79d7953e237fbb22aefcaded65c6a10f1345c4ad34d1185c
+	sha256sums = 8541cd602af3eb0350d80328a9cda051b7f7f1675446c8f083605514afbc1e91
 
 pkgname = vim-elixir-git
 
