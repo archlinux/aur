@@ -1,0 +1,18 @@
+pkgbase = gxneur-fresh
+	pkgdesc = GTK frontend for XNeur
+	pkgver = 0.18.0
+	pkgrel = 1
+	url = http://www.xneur.ru
+	install = gxneur-fresh.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libglade
+	depends = xneur-fresh>=0.18.0
+	depends = hicolor-icon-theme
+	depends = gconf
+	source = https://launchpad.net/~andrew-crew-kuznetsov/+archive/xneur-stable/+files/gxneur_0.18.0+git5.orig.tar.gz
+	md5sums = aaa4a8c7666c620b7b366a56ed95ce96
+
+pkgname = gxneur-fresh
+
