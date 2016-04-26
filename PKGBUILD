@@ -3,7 +3,7 @@
 
 pkgname=klayout
 pkgver=0.24.6
-pkgrel=1
+pkgrel=2
 pkgdesc="High Performance Layout Viewer And Editor. Support of GDS and OASIS files."
 arch=('i686' 'x86_64')
 url="http://www.klayout.org/"
