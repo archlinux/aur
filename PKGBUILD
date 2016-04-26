@@ -15,7 +15,7 @@ depends=('ffmpeg' 'maim' 'slop' 'xclip' 'xininfo-git' 'rofi' 'diffutils')
 optdepends=('fb-client:         Upload to paste.xinu.at (or selfhosted filebin)'
             'openssh:           Upload to SSH server'
             'copyq:             Copy Images to Clipboard'
-            'imgur:             Upload images to imgur.com'
+            'imgurbash2:             Upload images to imgur.com'
             'libnotify:         Notifications')
 
 options=(!strip)
