@@ -1,5 +1,6 @@
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 # Contributor: Tom Richards <tom [at] tomrichards [dot] net>
+# Contributor: Andreas Linz <alinz [at] klingt [dot] net>
 
 # Comment out any feature you don't want; by default, everything is included
 
