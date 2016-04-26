@@ -1,7 +1,7 @@
 # Maintainer: Sebastian Lau <lauseb644 _at_ gmail _dot_ com>
 
 pkgname="repo-maintainer"
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Tools for maintaining repositories for ArchLinux"
 arch=('any')
