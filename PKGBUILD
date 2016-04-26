@@ -2,7 +2,7 @@
 # Contributor: Peter Hoeg <peter@hoeg.com>
 
 _pkgver_major=2
-_pkgver_minor=019
+_pkgver_minor=020
 pkgname=otf-hack
 pkgver=${_pkgver_major}.${_pkgver_minor}
 pkgrel=1
@@ -12,8 +12,8 @@ license=('SIL Open Font License 1.1 and Bitstream Vera License')
 url="http://sourcefoundry.org/hack/"
 depends=('fontconfig' 'xorg-fonts-encodings' 'xorg-font-utils')
 install=$pkgname.install
-source=("https://github.com/chrissimpkins/Hack/releases/download/v${pkgver}/Hack-v${_pkgver_major}_${_pkgver_minor}-otf.zip")
-sha256sums=('d5047f620a2003ea215852554ddeb7dcd19aa9de5520937c96704fbb417e13bb')
+source=("https://github.com/chrissimpkins/Hack/releases/download/v${pkgver}/Hack-v${_pkgver_major}_${_pkgver_minor}-otf.tar.xz")
+sha256sums=('d35c178915e7a474e0cd69333353db4be9758bf38d61474caa8922e8e5d3ce32')
 
 package() {
   install -Dm644 -t $pkgdir/usr/share/fonts/OTF $srcdir/Hack-*.otf
