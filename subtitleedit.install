@@ -1,0 +1,44 @@
+# Colored makepkg-like functions
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+_update() {
+	if hash update-desktop-database 2>/dev/null; then
+		msg_blue "Updating desktop MIME database..."
+		update-desktop-database -q
+	fi
+
+	if hash update-mime-database 2>/dev/null; then
+		msg_blue "Updating MIME database..."
+		update-mime-database usr/share/mime >/dev/null
+	fi
+	
+	if hash xdg-icon-resource 2>/dev/null; then
+		msg_blue "Updating icon cache..."
+		xdg-icon-resource forceupdate --theme hicolor &>/dev/null
+	fi
+}
+
+post_install() {
+	_update
+
+	note "The launcher is called: 'subtitleedit'"
+}
+
+post_upgrade() {
+	_update
+}
+
+post_remove() {
+	_update
+}

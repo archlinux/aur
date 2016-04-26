@@ -1,0 +1,29 @@
+pkgbase = subtitleedit-bin
+	pkgdesc = A free editor for video subtitles (running on mono)
+	pkgver = 3.4.12
+	pkgrel = 1
+	url = http://www.nikse.dk/SubtitleEdit
+	install = subtitleedit.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = mono
+	optdepends = vlc: video support
+	optdepends = hicolor-icon-theme: icon file hierarchy
+	optdepends = desktop-file-utils: update desktop MIME database
+	optdepends = shared-mime-info: update MIME database
+	optdepends = xdg-utils: update icon cache
+	provides = subtitleedit
+	conflicts = subtitleedit
+	noextract = SE3412.zip
+	source = https://github.com/SubtitleEdit/subtitleedit/releases/download/3.4.12/SE3412.zip
+	source = subtitleedit.desktop
+	source = subtitleedit.png
+	source = subtitleedit.sh
+	sha1sums = b2215e3c579d62901dda0b68f534dfa9fbc26527
+	sha1sums = 90ea38fe066ea5f4bc62ed61c35dbbbd9182be82
+	sha1sums = 136eebf583acdc4af8bbfc82a06ee5634bf13052
+	sha1sums = 98827b12f571b1ca46ac96ef687d15480fa7390a
+
+pkgname = subtitleedit-bin
+

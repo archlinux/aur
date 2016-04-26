@@ -1,0 +1,26 @@
+[Desktop Entry]
+Name=Subtitle Edit
+GenericName=Subtitle Editor
+Comment=A subtitle editor based on mono
+Comment[bg]=Редактор на субтитри, базиращ се на mono
+Comment[cs]=Titulkový editor založený na mono
+Comment[el]=Ένας επεξεργαστής υπότιτλων βασισμένος σε mono
+Comment[en_GB]=A subtitle editor based on mono
+Comment[eo]=Redaktilo por subtekstoj bazita je mono
+Comment[es]=Un editor de subtítulos basado en mono
+Comment[fr]=Un éditeur de sous-titres basé sur mono
+Comment[gl]=Un editor de subtítulos basado en mono
+Comment[lt]=Subtitrų tvarkyklė paremta mono
+Comment[pl]=Edytor napisów oparty o mono
+Comment[pt_BR]=Um editor de legendas baseado no mono
+Comment[ru]=Редактор субтитров на базе mono
+Comment[tr]=mono üzerine geliştirilmiş altyazı düzenleyicisi
+Comment[zh_CN]=一个基于 mono 的字幕编辑器
+Comment[zh_TW]=一個基於 mono 的字幕編輯器
+Exec=subtitleedit %F
+Terminal=false
+Type=Application
+Icon=subtitle-edit
+Categories=Video;AudioVideo;AudioVideoEditing;
+StartupNotify=true
+MimeType=application/x-microdvd;application/x-subrip;application/x-subviewer;text/x-mpsub;text/x-ssa;
