@@ -6,7 +6,8 @@ pkgbase = caddy-all-features
 	install = caddy.install
 	arch = i686
 	arch = x86_64
-	arch = armv6h
+	arch = armv7h
+	arch = aarch64
 	license = Apache
 	provides = caddy
 	conflicts = caddy-git
@@ -16,8 +17,6 @@ pkgbase = caddy-all-features
 	sha256sums_i686 = SKIP
 	source_x86_64 = https://caddyserver.com/download/build?os=linux&features=cors,git,hugo,ipfilter,jsonp,jwt,mailout,prometheus,realip,search,upload&arch=amd64
 	sha256sums_x86_64 = SKIP
-	source_armv6h = https://caddyserver.com/download/build?os=linux&features=cors,git,hugo,ipfilter,jsonp,jwt,mailout,prometheus,realip,search,upload&arch=arm
-	sha256sums_armv6h = SKIP
 
 pkgname = caddy-all-features
 
