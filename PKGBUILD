@@ -5,7 +5,7 @@
 
 pkgname=intel-opencl-sdk
 pkgver=2016
-pkgrel=1
+pkgrel=2
 pkgdesc="Intel SDK for OpenCL Applications"
 arch=('x86_64')
 url="https://software.intel.com/en-us/intel-opencl/download"
@@ -13,6 +13,7 @@ license=('custom:intel')
 depends=('libcl' 'libpng12')
 makedepends=('rpmextract')
 optdepends=('intel-opencl-runtime: OpenCL runtime for Intel Core and Xeon processors')
+conflicts=('opencl-headers')
 install=intel-opencl-sdk.install
 source=(http://registrationcenter-download.intel.com/akdlm/irc_nas/8522/intel_sdk_for_opencl_${pkgver}_6.0.0.1049_x64.tgz)
 sha256sums=('7878850173ca4dc97a7897bc561199f7f13987ee12d82c886b94a63fd71c1e5f')
@@ -30,6 +31,7 @@ package() {
   mkdir -p "${pkgdir}/opt/intel/opencl-sdk"
   cp -r opt/intel/opencl-*/* "${pkgdir}/opt/intel/opencl-sdk"
   rm -rf "${pkgdir}"/opt/intel/opencl-sdk/uninstall*
+  mv "${pkgdir}"/opt/intel/opencl-sdk/include "${pkgdir}"/usr/include
 
   # Fix runtime_lib_dir and sdk_dir
   sed -i -e 's|/etc/alternatives/opencl-intel-tools|/opt/intel/opencl-sdk|g' \
