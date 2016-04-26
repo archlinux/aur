@@ -11,8 +11,7 @@ url="http://decibel.silent-blade.org/"
 license=('GPL')
 makedepends=('bzr')
 depends=('desktop-file-utils' 'gstreamer0.10-python' 'mutagen' 'pygtk' 'python2-dbus' 'python2-notify')
-#cddb-py
-optdepends=('python2-pillow: to display coverart')
+optdepends=('cddb-py: CDDB info' 'python2-pillow: cover art')
 provides=($_pkgname)
 conflicts=($_pkgname)
 install=$pkgname.install
