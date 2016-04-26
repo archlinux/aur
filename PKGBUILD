@@ -2,14 +2,13 @@
 pkgname=openhantek
 pkgver=0.2.0
 _fwpkgver=0.7.0
-pkgrel=7
+pkgrel=8
 pkgdesc="Qt4 UI for Hantek DSO-2090/2150/2250/5200/5200A oscilloscopes. Includes firmware"
 arch=('i686' 'x86_64')
 url="http://www.openhantek.org/"
 license=('GPL')
 depends=('qt4' 'libusb' 'fftw' 'libgl' 'fxload')
 makedepends=('binutils' 'unzip')
-install=openhantek.install
 source=(http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgname-$pkgver.tar.bz2 \
 http://downloads.sourceforge.net/project/$pkgname/$pkgname-extractfw/$pkgname-extractfw-0.7.0.tar.bz2)
 md5sums=('57732229f063f582bfaa3c3cc942dae2'
@@ -43,6 +42,7 @@ build() {
   sed -i 's|/local/|/|g'   90-hantek.rules
   sed -i 's/SYSFS/ATTRS/g' 90-hantek.rules
   sed -i 's/520A/520a/g'   90-hantek.rules
+  sed -i 's/, MODE="0660", GROUP="plugdev"/, TAG+="uaccess", RUN{builtin}+="uaccess"/' 90-hantek.rules
 }
 
 package() {
