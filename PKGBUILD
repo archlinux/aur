@@ -2,7 +2,7 @@
 pkgname=arena-tracker-git
 _pkgname=arena-tracker
 pkgver=r475.61c3927
-pkgrel=1
+pkgrel=2
 pkgdesc="Hearthstone tool to track cards in Arena."
 arch=(x86_64)
 url="https://github.com/supertriodo/Arena-Tracker/"

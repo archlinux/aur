@@ -1,9 +1,5 @@
 post_install() {
 	update-desktop-database -q
-	echo Updating font cache....
-	fc-cache -fs
-	mkfontscale /usr/share/fonts/TTF
-	mkfontdir /usr/share/fonts/TTF
 }
 
 post_upgrade() {
