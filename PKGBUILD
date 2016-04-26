@@ -4,22 +4,28 @@
 # Contributor: David Manouchehri <manouchehri@riseup.net>
 
 pkgname=nomachine
-pkgver=5.1.22
-pkgrel_i686=7
-pkgrel_x86_64=5
+pkgver=5.1.24
+pkgrel_i686=1
+pkgrel_x86_64=1
+pkgrel_armv6hl=2
+pkgrel_armv6hl=2
 pkgrel=1
 pkgdesc="Remote desktop application"
 groups=('network')
 url="http://www.nomachine.com"
 license=('custom:"NoMachine EULA"')
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'armv6hl' 'armv7hl')
 options=('!strip')
 conflicts=('nxmanager nxwebplayer nxserver nxnode nxclient')
 depends=('bash')
-sha512sums_x86_64=('dd66df89f737764a2c44d92fb79c57e30f524772bb30a79d4f8d6b25fa8e7501b4a633f9ae10736df335e6150d1a6a08fffccdc5849bc0acc723128b05347b54')
+sha512sums_x86_64=('540aa74db143ff568312cd2b0c2a8756e5b7fd986f8eed47cc2f7c932331fff42530122f696780ed44e4a5145f51b61c909fadf3da6320dfa63a8505564ff6f2')
 source_x86_64=("http://download.nomachine.com/download/5.1/Linux/${pkgname}_${pkgver}_${pkgrel_x86_64}_x86_64.tar.gz")
-sha512sums_i686=('8a28805ae47bbf2d1ba6d6592dc7e61d743b707b4ba2a6fcfce8ad5b83679c991019938ab2c1e61c8d871dd173d2b1b6ffeb754ed68aa300fe2bff61112746f4')
+sha512sums_i686=('11c554bc1862eaa86781a9b7e66a5e0749127b26e3e132eb4d0ae6ca39c315a62807026b4e44817717575476ad18fb8bf4ffe9f433876385fb356b34b02d69d5')
 source_i686=("http://download.nomachine.com/download/5.1/Linux/${pkgname}_${pkgver}_${pkgrel_i686}_i686.tar.gz")
+sha512sums_armv6hl=('1837d654429337b6b98ef7e04e5b3769815243621c550d23b1ae8cb98aff82d7f6d0fd2bdd7cfd79627c4c1a428cc9e1c618b05431d9a9713fee47b403c61c75')
+source_armv6hl=("http://download.nomachine.com/download/5.1/Linux/${pkgname}_${pkgver}_${pkgrel_armv6hl}_armv6hl.tar.gz")
+sha512sums_armv7hl=('ebd485e74f754f239af4e279276a6d2bd536f4840a88a667c9e3f73bc1821bedfda86f52b8cee88db92b5e311c68c297881e46623aa35b42befb69fb6c80acdf')
+source_armv7hl=("http://download.nomachine.com/download/5.1/Linux/${pkgname}_${pkgver}_${pkgrel_armv7hl}_armv7hl.tar.gz")
 install=nomachine.install
 
 package()
