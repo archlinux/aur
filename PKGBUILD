@@ -16,7 +16,7 @@ url="https://github.com/cisco/ChezScheme"
 license=('APL')
 groups=()
 depends=()
-makedepends=('git')
+makedepends=('git' 'ncurses' 'libx11' 'xproto')
 provides=(chez-scheme)
 conflicts=(petite-chez-scheme)
 replaces=(petite-chez-scheme)
@@ -24,8 +24,6 @@ backup=()
 options=()
 install=
 source=()
-
-
 noextract=()
 #generate with 'makepkg -g'
 
