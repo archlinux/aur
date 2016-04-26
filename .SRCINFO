@@ -1,6 +1,6 @@
 pkgbase = caddy-git
 	pkgdesc = A configurable, general-purpose HTTP/2 web server for any platform
-	pkgver = r1039.1cfd960
+	pkgver = r1224.2138270
 	pkgrel = 1
 	url = https://github.com/mholt/caddy
 	install = caddy.install
@@ -11,8 +11,6 @@ pkgbase = caddy-git
 	makedepends = jq
 	provides = caddy
 	conflicts = caddy
-	source = caddy.service
-	md5sums = 13772e64a93685262018194da32a6f1b
 
 pkgname = caddy-git
 

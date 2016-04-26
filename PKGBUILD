@@ -2,7 +2,7 @@
 # Contributor: Tom Richards <tom [at] tomrichards [dot] net>
 
 pkgname=caddy-git
-pkgver=r1039.1cfd960
+pkgver=r1224.2138270
 pkgrel=1
 pkgdesc="A configurable, general-purpose HTTP/2 web server for any platform"
 arch=('any')
@@ -12,8 +12,6 @@ install='caddy.install'
 conflicts=('caddy')
 provides=('caddy')
 makedepends=('go' 'curl' 'jq')
-source=('caddy.service')
-md5sums=('13772e64a93685262018194da32a6f1b')
 
 pkgver() {
   api='https://api.github.com/repos/mholt/caddy'
@@ -31,6 +29,7 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/bin/caddy" "$pkgdir/usr/bin/caddy"
-  install -Dm644 "${srcdir}/caddy.service" "${pkgdir}/usr/lib/systemd/system/caddy.service"
+  install -Dm755 "${srcdir}/bin/caddy" "$pkgdir/usr/bin/caddy"
+  install -Dm644 "${srcdir}/caddy/dist/init/linux-systemd/caddy@.service" "${pkgdir}/usr/lib/systemd/system/caddy@.service"
+  install -Dm644 "${srcdir}/caddy/dist/init/linux-systemd/README.md" "${pkgdir}/usr/share/doc/caddy/systemd-service.md"
 }
