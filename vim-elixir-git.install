@@ -1,0 +1,4 @@
+post_upgrade() {
+  echo "In order to use '%' to jump between 'do' and 'end', you need to"
+  echo "activate the matchit plugin in your .vimrc."
+}

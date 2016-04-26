@@ -2,7 +2,6 @@
 ./compiler
 ./compiler/exunit.vim
 ./ftdetect
-./ftdetect/eelixir.vim
 ./ftdetect/elixir.vim
 ./ftplugin
 ./ftplugin/eelixir.vim
