@@ -1,6 +1,6 @@
 pkgbase=swift-development
 pkgname=(swift-development swift-lldb-development)
-_swiftver=DEVELOPMENT-SNAPSHOT-2016-04-12-a
+_swiftver=DEVELOPMENT-SNAPSHOT-2016-04-25-a
 pkgver=${_swiftver//-/.}
 pkgrel=2
 pkgdesc="The Swift programming language and debugger - latest development snapshot"
@@ -25,16 +25,16 @@ source=(
     "swift-no-docs.patch"
     "binutils226-swift.patch" "binutils226-swift-driver.patch"
 )
-sha256sums=('290470b39b188ca564dfff487035435d062fa83649689c0cff5e7ad386efceb4'
-            '0e8bfc92508c14f0ed80b4811c06df403639fcbd27422ba4551b15799793ef23'
-            '2bc379ad1b105783b17f87424e6681aaa1df903319326861f71bdb93bd5fa98e'
-            'c1843835f0d339ffef8b8e804449bc650a3b302b7558b33d7c8127cf164875a2'
-            '0a9738951bc17d28e507eea39798ec9eeaadf4927b4bb6d78d88ebb580973bf8'
-            'c1f907429d7addc0aefb2c14328093e1d4aeca285f3b9f6a413c6f6be71e094f'
-            '22e3e0aa0c9851db6418590b1473b6dcf86733a9f40f1f084e3311279ea5e971'
-            '666be3e751f50f3932730e88f18d61cb61dfdd771b8a272179f969736da22086'
-            '942c3494c182cb767ac71ad0be2baebf34274ec38901fbdebf61ba912b2f73b1'
-            '3d616a043ffff2ecbcaa2367347168f5a2220d222faa9812abada902b59d88d5'
+sha256sums=('3c20a1558aed5555d26d8d39c828517409f362f4037ecd3b47886609d04ab857'
+            'ecfebafc1e85870724c95edcffa516b105cce29cc06b4bf20e07f81c4c95a12a'
+            '75802cee5118f2e50e2b9a3b652ec53ff33e15d01bc72598888667c58d4e7b59'
+            '5e309b1a1130024e262299b21d745d37b960ba14b965e06683956eb9849bb893'
+            '71d8526ff148e482e481c9e16cef8f7df21d057512553cf1f66e7a591af5fdf9'
+            'a4c41dace5cea1ef305bdcddfa4c45e25d7ff781f43b939363f5eeb06514ad67'
+            'c8270d9162971b890aa7e67f799104c8513f4f1947dab1df4e224bb420ea140c'
+            '34862472a13820be6394f997d77630e8c5d8d2f0835bd65d917184fd58f3f062'
+            '699a48f6ba6f2f09cb40a427759f750b39cdbc0c2044ca8e74370684ad533594'
+            '1744c2f23210719575ef1da8a134dbf1fb911cd0eb640ff95091bcec5f994618'
             '1a8663c48a1a203d1825ae62a7e4191e4980a2dad461d4d88152221ad9e2171d'
             '2d8afb6a3d6f7aca1636eae961e4d1e7f486df420e1a726c69d027e4b65c73c5'
             '0aa6868dac834ab13a9f61a0e406c6dc25f39afdf086cb93d90d85c39083e589')
