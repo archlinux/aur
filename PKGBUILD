@@ -12,7 +12,7 @@ pkgdesc="It's Magit! A Emacs mode for Git."
 arch=('any')
 url="http://github.com/${_gitname}/${_gitname}"
 license=('GPL3')
-depends=('emacs' 'git' 'emacs-dash=2.12.1' 'emacs-with-editor-git=2.5.0')
+depends=('emacs' 'git' 'emacs-dash>=2.12.1' 'emacs-with-editor-git>=2.5.0')
 makedepends=('ed')
 provides=('emacs-magit')
 install="${pkgname}.install"
