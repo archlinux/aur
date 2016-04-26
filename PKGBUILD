@@ -1,23 +1,17 @@
-# Maintainer: Gabriel Laskar <gabriel@lse.epita.fr>
+# Maintaine: <gmail.com: Jesse Jaara>
+# Contributor: Gabriel Laskar <gabriel@lse.epita.fr>
+
 _modulename=pandocfilters
 pkgname=python-$_modulename
-pkgver=1.2.4
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A python module for writing pandoc filters"
 arch=(any)
 url="https://pypi.python.org/pypi/pandocfilters"
 license=('BSD')
-groups=()
 depends=('python')
-makedepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=(!emptydirs)
-install=
 source=(https://pypi.python.org/packages/source/p/${_modulename}/${_modulename}-${pkgver}.tar.gz)
-md5sums=('2ed8c06cda706a12b0dd48b7593bebc4')
+md5sums=('3b39f22a53cd14fd49a8963dc5cc524e')
 
 package() {
   cd "$srcdir/${_modulename}-$pkgver"

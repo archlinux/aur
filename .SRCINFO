@@ -1,14 +1,13 @@
 pkgbase = python-pandocfilters
 	pkgdesc = A python module for writing pandoc filters
-	pkgver = 1.2.4
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/pandocfilters
 	arch = any
 	license = BSD
 	depends = python
-	options = !emptydirs
-	source = https://pypi.python.org/packages/source/p/pandocfilters/pandocfilters-1.2.4.tar.gz
-	md5sums = 2ed8c06cda706a12b0dd48b7593bebc4
+	source = https://pypi.python.org/packages/source/p/pandocfilters/pandocfilters-1.3.0.tar.gz
+	md5sums = 3b39f22a53cd14fd49a8963dc5cc524e
 
 pkgname = python-pandocfilters
 
