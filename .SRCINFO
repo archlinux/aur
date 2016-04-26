@@ -10,6 +10,7 @@ pkgbase = caddy-all-features
 	arch = aarch64
 	license = Apache
 	provides = caddy
+	conflicts = caddy
 	conflicts = caddy-git
 	source = caddy.service
 	sha256sums = 244fa03febae623f1b10adfb6883a9573ba81747b8e535bb23101ab230ccbf95

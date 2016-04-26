@@ -47,8 +47,7 @@ url="https://caddyserver.com"
 license=('Apache')
 install='caddy.install'
 provides=('caddy')
-conflicts=('caddy')
-conflicts=('caddy-git')
+conflicts=('caddy' 'caddy-git')
 
 source=('caddy.service')
 sha256sums=('244fa03febae623f1b10adfb6883a9573ba81747b8e535bb23101ab230ccbf95')
