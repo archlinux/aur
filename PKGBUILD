@@ -1,6 +1,6 @@
 # Maintainer: David Donchez <david.donchez@gmail.com>
 pkgname=kpm
-pkgver=v0.14.0
+pkgver=v0.14.4
 pkgrel=1
 pkgdesc="CLI to deploy and manage applications stack on Kubernetes"
 arch=('any')
@@ -16,7 +16,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("$pkgname::https://github.com/kubespray/kpm/archive/$pkgver.zip")
-sha256sums=('430295b6583fae61c6f297ed39173b97f9796ffc4d48eb057d7b5f84fa2f6cf1')
+sha256sums=('07c6599e62dcc7eb27a54d03863e9795c406f509ff443adaf770ffaac3574c5c')
 
 package() {
   # striping char from tag
