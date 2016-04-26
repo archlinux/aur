@@ -3,13 +3,13 @@
 # Contributor:	Jonatan Sastre <jsastreh [ at ] hotmail.com>
 pkgname=gnuradio-git
 _gitname=gnuradio
-pkgver=v3.7.7.1.131.g71ab508
+pkgver=v3.7.9.2.178.g6a33fff
 pkgrel=1
 pkgdesc="General purpose DSP and SDR toolkit.  With drivers for usrp and fcd."
 arch=('i686' 'x86_64')
 url="http://gnuradio.org"
 license=('GPL')
-depends=('fftw' 'python2-numpy' 'cppunit' 'gsl' 'blas' 'guile' 'boost-libs>=1.53' 'libusbx' 'portaudio' 'libuhd' 'zeromq')
+depends=('fftw' 'python2-numpy' 'cppunit' 'gsl' 'blas' 'guile' 'boost-libs>=1.53' 'libusbx' 'portaudio' 'libuhd' 'zeromq' 'libvolk-git')
 makedepends=('git' 'boost' 'cmake' 'python2-lxml' 'python2-cheetah' 'glu' 'swig'
     'pygtk' 'wxpython' 'python2-pyqwt' 'qwtplot3d')
 optdepends=('boost: gr_modtool'
@@ -38,12 +38,7 @@ build() {
   export PYTHON=python2
   cd "$srcdir/$_gitname"
 
-  # to pull in volk
-  git submodule init
-  git pull --recurse-submodules=on
-  git submodule update
-
-  sed -i -e "s|GR_PKG_LIBEXEC_DIR|GR_RUNTIME_DIR|" grc/freedesktop/CMakeLists.txt
+  sed -i -e "s|GR_PKG_LIBEXEC_DIR|GR_RUNTIME_DIR|" grc/scripts/freedesktop/CMakeLists.txt
   sed -i -e "s|/qwt$|/qwt5|" -e "s| qwt | qwt5 |" cmake/Modules/FindQwt.cmake
   sed -i -e "s| sphinx-build$| sphinx-build2|" cmake/Modules/FindSphinx.cmake
   msg "Starting build."
@@ -56,6 +51,7 @@ build() {
     -DENABLE_GRC=ON \
     -DENABLE_GR_WXGUI=ON \
     -DENABLE_GR_QTGUI=ON \
+    -DENABLE_INTERNAL_VOLK=OFF \
     -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev ../
   make
 }
@@ -67,7 +63,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/$_gitname/grc/freedesktop"
+  cd "$srcdir/$_gitname/grc/scripts/freedesktop"
   install -Dm644 gnuradio-grc.desktop "$pkgdir/usr/share/applications/$pkgbase.desktop"
   cd "$srcdir/$_gitname/build"
   make DESTDIR="$pkgdir" install
