@@ -1,0 +1,15 @@
+pkgbase = r-cran-sp
+	pkgdesc = Bindings for the Geospatial Data Abstraction Library
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://cran.r-project.org/web/packages/sp/index.html
+	arch = x86_64
+	arch = i686
+	license = GPL2
+	license = GPL3
+	depends = r
+	source = https://cran.r-project.org/src/contrib/sp_1.2-3.tar.gz
+	md5sums = f0e24d993dec128642ee66b6b47b10c1
+
+pkgname = r-cran-sp
+
