@@ -6,11 +6,11 @@ pkgver=0.24.6
 pkgrel=1
 pkgdesc="High Performance Layout Viewer And Editor. Support of GDS and OASIS files."
 arch=('i686' 'x86_64')
-url="http://www.klayout.de/"
+url="http://www.klayout.org/"
 license=('GPL')
 depends=('qt4' 'ruby2.1')
 source=(
-	http://www.klayout.de/downloads/klayout-${pkgver}.tar.gz
+	http://www.klayout.org/downloads/klayout-${pkgver}.tar.gz
 	klayoutEditor.desktop
 	klayoutViewer.desktop
 )
