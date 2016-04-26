@@ -4,7 +4,7 @@
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
 pkgname=tk85
-pkgver=8.5.17
+pkgver=8.5.19
 pkgrel=1
 pkgdesc="A windowing toolkit for use with tcl, 8.5 series"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('custom')
 depends=('tcl85' 'libxss' 'libxft')
 provides=("tk" "tk=${pkgver}")
 source=(http://downloads.sourceforge.net/sourceforge/tcl/tk${pkgver}-src.tar.gz)
-md5sums=('33ae493313369f3d3f292e4a9644a294')
+md5sums=('e89df710447cce0fc0bde65667c12f85')
 options=('staticlibs')
 
 build() {
