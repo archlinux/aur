@@ -21,6 +21,7 @@ optdepends=('postgresql: postgresql database support'
 provides=('gdal')
 conflicts=('gdal')
 options=('!emptydirs')
+changelog=$pkgname_gdal.changelog
 source=(http://download.osgeo.org/${pkgname_gdal}/${pkgver}/${pkgname_gdal}-${pkgver}.tar.gz
         gdal-python-install.patch)
 sha256sums=('db7722caf8d9dd798ec18012b9cacf40a518918466126a88b9fd277bd7d40cc4'
