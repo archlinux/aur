@@ -9,11 +9,10 @@ md5sums=('a030a311d0f26633f63aa3c64f84b28e')
 
 build() {
     cd ${srcdir}/
-    mkdir -pv "$srcdir/$pkgname-$pkgver"
-    tar -xf TOSHIBA_e-STUDIO_CUPS_7.31/CUPS/Colour/normal/TOSHIBA_ColorMFP_CUPS.tar -C "$srcdir/$pkgname-$pkgver"
+    tar -xf TOSHIBA_e-STUDIO_CUPS_7.31/CUPS/Colour/normal/TOSHIBA_ColorMFP_CUPS.tar
 }
 
 package() {
     cd ${srcdir}
-    mv "$pkgname-$pkgver" "$pkgdir"
+    cp -rv "$srcdir/usr" "$pkgdir"
 }
