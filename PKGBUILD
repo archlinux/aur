@@ -2,7 +2,7 @@
 
 pkgname=ring-kde
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="KDE client for Ring"
 arch=("i686" "x86_64")
 url="http://ring.cx/"
@@ -12,7 +12,6 @@ depends=("libringclient" "knotifyconfig" "hicolor-icon-theme")
 makedepends=("git" "extra-cmake-modules" "python" "glu" "kinit")
 source=("git://anongit.kde.org/${pkgname}#commit=4c39a138be4352a6a0409806110630045aa14f49")
 sha256sums=('SKIP')
-install=${pkgname}.install
 
 build() {
     cd "${pkgname}"
