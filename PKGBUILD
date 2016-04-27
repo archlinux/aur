@@ -36,12 +36,12 @@ _target_alias='i686-pc-msdosdjgpp'
 prepare() {
 	cd "$srcdir"
 
-	sed -ie "s/i586-pc-msdosdjgpp/$_target_alias/" \
+	sed -i -e "s/i586-pc-msdosdjgpp/$_target_alias/" \
 		src/makefile.def
 
 	# gcc provides its own float.h which masks this one
 	ln -fs float.h include/djfloat.h
-	sed -ie 's/<float\.h>/<djfloat.h>/' \
+	sed -i -e 's/<float\.h>/<djfloat.h>/' \
 		src/libc/emu387/npxsetup.c \
 		src/libc/go32/dpmiexcp.c \
 		src/utils/redir.c
@@ -52,7 +52,7 @@ prepare() {
 	patch -Np0 < ../fseeko64.patch
 
 	# cosmetics
-	sed -ie '/@$(MISC) echo - / d; s/^\t@/\t/' \
+	sed -i -e '/@$(MISC) echo - / d; s/^\t@/\t/' \
 		src/makefile.inc
 }
 
