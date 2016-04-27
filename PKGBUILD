@@ -44,7 +44,7 @@ DOCS_PDF=        # Generate and install pdf documentation.
 #######################################################################
 
 pkgname=emacs25-git
-pkgver=25.0.93.r124753
+pkgver=25.0.93.r124757
 pkgrel=1
 pkgdesc="GNU Emacs. Version 25 development and maintenance branch."
 arch=('i686' 'x86_64')
@@ -62,7 +62,6 @@ if [[ $DOCS_PDF = "YES" ]]; then makedepends+=('texlive-core'); fi
 #######################################################################
 conflicts=('emacs')
 provides=('emacs')
-install="$pkgname".install
 source=("$pkgname::git://git.savannah.gnu.org/emacs.git#branch=emacs-25")
 md5sums=('SKIP')
 #source=("$pkgname::git+http://git.savannah.gnu.org/r/emacs.git#branch=emacs-25")
