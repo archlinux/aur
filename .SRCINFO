@@ -5,6 +5,7 @@ pkgbase = python-pystache
 	url = http://github.com/defunkt/pystache
 	arch = any
 	license = MIT
+	makedepends = python-setuptools
 	depends = python
 	provides = python-pystache
 	conflicts = python-pystache
