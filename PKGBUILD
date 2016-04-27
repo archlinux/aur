@@ -4,14 +4,14 @@
  
 pkgname=nvidia-bfq-340xx
 pkgver=340.96
-_extramodules=extramodules-4.4-bfq
-pkgrel=2
+_extramodules=extramodules-4.5-bfq
+pkgrel=4
 _pkgdesc="NVIDIA 340xx drivers for linux-bfq."
 pkgdesc="$_pkgdesc"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
-depends=('linux-bfq>=4.4' 'linux-bfq<4.5' "nvidia-340xx-libgl" "nvidia-340xx-utils=${pkgver}")
-makedepends=('linux-bfq-headers>=4.4' 'linux-bfq-headers<4.5')
+depends=('linux-bfq>=4.5' 'linux-bfq<4.6' "nvidia-340xx-libgl" "nvidia-340xx-utils=${pkgver}")
+makedepends=('linux-bfq-headers>=4.5' 'linux-bfq-headers<4.6')
 conflicts=('nvidia-bfq' 'nvidia-bfq-304xx')
 license=('custom')
 install=nvidia-bfq-340xx.install
