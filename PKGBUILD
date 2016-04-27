@@ -2,8 +2,8 @@
 
 pkgname=minion
 pkgver=2.0
-pkgrel=2
-pkgdesc="Minion is a relatively new constraint solver which is fast and scales well as problem size increases"
+pkgrel=3
+pkgdesc="A relatively new constraint solver which is fast and scales well as problem size increases"
 arch=('i686' 'x86_64')
 url="http://constraintmodelling.org/minion/"
 license=('GNU General Public License Version 2')
