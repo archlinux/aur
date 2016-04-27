@@ -16,7 +16,7 @@ pkgname=firefox-nightly-fr
 pkgdesc='Standalone Web Browser from Mozilla — Nightly build (fr)'
 url='https://nightly.mozilla.org/'
 _version="49.0a1"
-pkgver=49.0a1.20160425
+pkgver=49.0a1.20160427
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -39,7 +39,6 @@ sha512sums=("${_checksum}"
             '725babc1365e02a30f50aafbc069b04a97cd247f76240b99b0a734dcce0e560f30cfd441efe9b0b9edcc48f327c8adad34e1ae45c2ba047205c84921d5e43e59'
             '2df6b84978ec459ffad3e0d285c816da07a890db30284d3b2bec250472c10e08003edf705278cb97e02a52fb5f1325d962c08d5fbcf98f484e982a97e381407b'
             'bae5a952d9b92e7a0ccc82f2caac3578e0368ea6676f0a4bc69d3ce276ef4f70802888f882dda53f9eb8e52911fb31e09ef497188bcd630762e1c0f5293cc010')
-install=firefox-nightly.install
 
 pkgver() {
   SRC_VER="${_name}-${_version}.en-US.linux-${CARCH}.txt"
