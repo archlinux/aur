@@ -12,7 +12,6 @@ depends=('librsvg')
 makedepends=('git')
 provides=('flattr-icon-theme' 'luv-icon-theme')
 conflicts=('flattr-icon-theme' 'luv-icon-theme')
-install="${pkgname}.install"
 source=("${pkgname}"::'git+https://github.com/NitruxSA/luv-icon-theme.git')
 md5sums=('SKIP')
 

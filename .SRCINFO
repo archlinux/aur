@@ -3,7 +3,6 @@ pkgbase = luv-icon-theme-git
 	pkgver = 0.3.r4.g3c53fec
 	pkgrel = 1
 	url = https://github.com/NitruxSA/luv-icon-theme
-	install = luv-icon-theme-git.install
 	arch = any
 	license = custom:CC BY-SA 4.0
 	makedepends = git
