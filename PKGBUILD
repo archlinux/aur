@@ -3,17 +3,16 @@
 
 pkgname=kjots
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A note taking application for KDE"
 url="https://www.kde.org/applications/utilities/kjots/"
 arch=(i686 x86_64)
 license=(GPL)
-depends=(kcmutils kontactinterface akonadi akonadi-notes kdelibs4support kpimtextedit hicolor-icon-theme)
-makedepends=(extra-cmake-modules kdoctools boost)
+depends=(kcmutils kontactinterface akonadi akonadi-notes kpimtextedit hicolor-icon-theme)
+makedepends=(extra-cmake-modules kdoctools boost python kdelibs4support)
 source=("http://download.kde.org/stable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz")
 conflicts=(kdepim-kjots)
 replaces=(kdepim-kjots)
-install=$pkgname.install
 md5sums=('edb0a82781dbb75d1fe69f2eb6f7cf28')
 
 prepare() {
