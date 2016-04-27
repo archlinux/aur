@@ -1,6 +1,6 @@
 pkgbase = firefox-developer-zh-cn
 pkgdesc = Chinese Simplified For Firefox Developer (Aurora)
-pkgver = 47.0a2
+pkgver = 48.0a2
 pkgrel = 1
 url = https://www.mozilla.org/zh-CN/firefox/developer/
 install = firefox-developer-zh-cn.install
@@ -30,7 +30,7 @@ optdepends = upower: Battery API
 provides = firefox developer
 source = firefox-developer-zh-cn.desktop
 source = vendor.js
-source = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-aurora-l10n/firefox-47.0a2.zh-CN.linux-.tar.bz2
+source = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-aurora-l10n/firefox-48.0a2.zh-CN.linux-.tar.bz2
 sha512sums = SKIP
 sha512sums = SKIP
 sha512sums = 

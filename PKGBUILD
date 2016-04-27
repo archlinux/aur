@@ -2,7 +2,7 @@
 
 pkgname=firefox-developer-zh-cn
 _pkgname=firefox-developer
-pkgver=47.0a2
+pkgver=48.0a2
 pkgrel=1
 pkgdesc="Chinese Simplified For Firefox Developer (Aurora)"
 arch=('i686' 'x86_64')
