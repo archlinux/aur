@@ -1,13 +1,11 @@
 pkgbase = epymc
 	pkgdesc = Media Center based on EFL
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/DaveMDS/epymc
-	install = epymc.install
 	arch = any
 	license = GPL3
 	depends = python-efl
-	depends = hicolor-icon-theme
 	optdepends = lirc: remote contol support
 	optdepends = python-mutagen: Music module
 	optdepends = python-beautifulsoup4: Online Channels module
