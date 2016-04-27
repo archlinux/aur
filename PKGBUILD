@@ -4,7 +4,7 @@
 _pkgbase='citra'
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-git" "$_pkgbase-qt-git")
-pkgver=r3317.becb758
+pkgver=r3548.fda578e
 pkgrel=1
 pkgdesc="An experimental open-source Nintendo 3DS emulator/debugger"
 arch=('i686' 'x86_64')
@@ -14,9 +14,9 @@ makedepends=('git' 'cmake' 'sdl2' 'qt5-base' 'shared-mime-info' 'desktop-file-ut
 source=("$_pkgbase::git+https://github.com/citra-emu/citra"
         'git+https://github.com/citra-emu/ext-boost'
         'git+https://github.com/svn2github/inih'
-        'git+https://github.com/neobrain/nihstro')
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
-install='citra.install'
+        'git+https://github.com/neobrain/nihstro'
+        'git+https://github.com/citra-emu/soundtouch')
+md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
 	cd "$srcdir/$_pkgbase"
@@ -31,6 +31,7 @@ prepare() {
 	git config submodule.boost.url "$srcdir/ext-boost"
 	git config submodule.inih.url "$srcdir/inih"
 	git config submodule.nihstro.url "$srcdir/nihstro"
+	git config submodule.soundtouch.url "$srcdir/soundtouch"
 	git submodule update
 }
 
