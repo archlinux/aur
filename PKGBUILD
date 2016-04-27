@@ -13,7 +13,6 @@ depends=('mlt-python-bindings' 'pygoocanvas' 'sdl' 'librsvg' 'mplayer'
 	 'ladspa' 'sox' 'vid.stab' 'qt5-svg' 'sdl_image')
 optdepends=('frei0r-plugins: effects'
 	    'libquicktime' 'libavc1394' 'faac' 'jack' 'jack-rack')
-install=openshot.install
 source=(http://launchpad.net/openshot/${pkgver%.*}/$pkgver/+download/$pkgname-$pkgver.tar.gz)
 md5sums=('5ec82a7e8b7700ee4a359458aedf19e9')
 
