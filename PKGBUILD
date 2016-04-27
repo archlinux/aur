@@ -3,14 +3,13 @@
 
 pkgname=fcitx-rime
 pkgver=0.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Fcitx Wrapper for librime'
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx"
 license=('GPL')
 depends=('fcitx' "librime" "brise")
 makedepends=('cmake')
-install=fcitx-rime.install
 source=("http://download.fcitx-im.org/$pkgname/$pkgname-${pkgver}.tar.xz")
 
 build() {
