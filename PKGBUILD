@@ -3,16 +3,15 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.17.99.46408.g2261964
-pkgrel=1
+pkgver=1.17.99.47007.gfa344ea
+pkgrel=2
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'custom')
 depends=('avahi' 'bullet' 'curl' 'fontconfig' 'fribidi' 'gst-plugins-base-libs' 'luajit' 'libexif'
          'libgl' 'libinput' 'libpulse' 'libwebp' 'libxcomposite' 'libxcursor' 'libxinerama'
-         'libxkbcommon' 'libxp' 'libxrandr' 'libxss' 'libunwind' 'openjpeg' 'shared-mime-info'
-         'wayland')
+         'libxkbcommon' 'libxp' 'libxrandr' 'libxss' 'libunwind' 'openjpeg' 'wayland')
 makedepends=('git' 'python2')
 optdepends=('evas_generic_loaders-git: More video/graphic/icon loaders for Evas'
             'geoclue: For elocation'
@@ -25,7 +24,6 @@ optdepends=('evas_generic_loaders-git: More video/graphic/icon loaders for Evas'
 provides=("$_pkgname=$pkgver" "elementary=$pkgver" "elementary-git=$pkgver")
 conflicts=("$_pkgname" 'elementary' 'elementary-git' 'elementary_test' 'elementary_test-git')
 options=('debug')
-install="$_pkgname.install"
 source=("git://git.enlightenment.org/core/$_pkgname.git")
 sha256sums=('SKIP')
 
