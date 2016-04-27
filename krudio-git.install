@@ -1,0 +1,24 @@
+#/bin/bash
+
+post_install() {
+ln -s /usr/share/krudio/icons/krudio.svg /usr/share/icons/hicolor/48x48/apps/krudio.svg
+ln -s /usr/share/krudio/icons/krudiotray-dark-off16.svg /usr/share/icons/hicolor/16x16/status/krudiotray-dark-off16.svg
+ln -s /usr/share/krudio/icons/krudiotray-dark-on16.svg /usr/share/icons/hicolor/16x16/status/krudiotray-dark-on16.svg
+ln -s /usr/share/krudio/icons/krudiotray-light-off16.svg /usr/share/icons/hicolor/16x16/status/krudiotray-light-off16.svg
+ln -s /usr/share/krudio/icons/krudiotray-light-on16.svg /usr/share/icons/hicolor/16x16/status/krudiotray-light-on16.svg
+ln -s /usr/share/krudio/icons/krudiotray-dark-off22.svg /usr/share/icons/hicolor/22x22/status/krudiotray-dark-off22.svg
+ln -s /usr/share/krudio/icons/krudiotray-dark-on22.svg /usr/share/icons/hicolor/22x22/status/krudiotray-dark-on22.svg
+ln -s /usr/share/krudio/icons/krudiotray-light-off22.svg /usr/share/icons/hicolor/22x22/status/krudiotray-light-off22.svg
+ln -s /usr/share/krudio/icons/krudiotray-light-on22.svg /usr/share/icons/hicolor/22x22/status/krudiotray-light-on22.svg
+ln -s /usr/share/krudio/icons/krudiotray-dark-off24.svg /usr/share/icons/hicolor/24x24/status/krudiotray-dark-off24.svg
+ln -s /usr/share/krudio/icons/krudiotray-dark-on24.svg /usr/share/icons/hicolor/24x24/status/krudiotray-dark-on24.svg
+ln -s /usr/share/krudio/icons/krudiotray-light-off24.svg /usr/share/icons/hicolor/24x24/status/krudiotray-light-off24.svg
+ln -s /usr/share/krudio/icons/krudiotray-light-on24.svg /usr/share/icons/hicolor/24x24/status/krudiotray-light-on24.svg
+}
+
+post_remove() {
+rm /usr/share/icons/hicolor/48x48/apps/krudio.svg
+rm -rf /usr/share/icons/hicolor/16x16/status/krudiotray*
+rm -rf /usr/share/icons/hicolor/22x22/status/krudiotray*
+rm -rf /usr/share/icons/hicolor/24x24/status/krudiotray*
+}
