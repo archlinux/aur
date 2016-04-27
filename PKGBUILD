@@ -2,8 +2,8 @@
 
 _pkgname=rage
 pkgname=$_pkgname-git
-pkgver=0.1.4.r95.4093611
-pkgrel=1
+pkgver=0.1.4.r132.48d9936
+pkgrel=2
 pkgdesc="Video Player based on EFL - Development version"
 arch=('i686' 'x86_64')
 url="https://www.enlightenment.org/p.php?p=about/rage"
@@ -12,7 +12,6 @@ depends=('elementary')
 makedepends=('git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-install=$_pkgname.install
 source=("git://git.enlightenment.org/apps/$_pkgname.git")
 sha256sums=('SKIP')
 
