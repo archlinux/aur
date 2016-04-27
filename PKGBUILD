@@ -2,7 +2,7 @@
 
 pkgname=ffdiaporama
 pkgver=2.2.D759
-pkgrel=1
+pkgrel=2
 pkgdesc="Movie creator from photos and video clips"
 arch=('i686' 'x86_64')
 url="http://ffdiaporama.tuxfamily.org"
@@ -11,7 +11,6 @@ depends=('qt5-svg' 'qt5-tools' 'qt5-imageformats' 'qt5-multimedia' 'ffmpeg' 'pul
 optdepends=('ffdiaporama-texturemate: Additional background-images'
             'ffdiaporama-openclipart: use the openclipart-library')
 provides=('ffdiaporama-rsc')
-install=${pkgname}.install
 source=(http://download.tuxfamily.org/ffdiaporama/Packages/Devel/ffdiaporama_bin_2.2.devel.2014.0701.tar.gz
         http://download.tuxfamily.org/ffdiaporama/Packages/Devel/ffdiaporama_rsc_2.2.devel.2014.0503.tar.gz
         ffmpeg3.0.patch)
