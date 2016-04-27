@@ -20,7 +20,7 @@ source=(http://xfce4-netspeed-plugin.googlecode.com/files/${srcname}-${pkgver}.t
 	default-route.patch)
 md5sums=('b88cacc3ecd53798d76855e35a7a4d79'
          'b2ebab59089be208323356fef393640a'
-	 '7c9fb6fc30af1613019c5ee1c7ab177d')
+	 '04466c8f600e04975146174a0adb25d2')
 
 build() {
   cd "${srcdir}"/${srcname}
