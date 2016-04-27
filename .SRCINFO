@@ -1,0 +1,16 @@
+pkgbase = libwebcam-git
+	pkgdesc = A library that is designed to simplify the development of webcam applications
+	pkgver = 20160427
+	pkgrel = 1
+	url = http://sourceforge.net/projects/libwebcam/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = linux-headers
+	depends = libxml2
+	source = fix_path.patch
+	sha512sums = bd2c86e5e32a20a85bb36cdcfb47737a6bbf6dfd2b44126de679d7cd241eefcdec8983a54236d0ee574c2439c3deafafba3d02695ce5d8128a6646d7c9395d6e
+
+pkgname = libwebcam-git
+

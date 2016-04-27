@@ -1,0 +1,16 @@
+--- a/libwebcam/uvcdynctrl/CMakeLists.txt	2016-04-27 13:52:51.432376590 -0400
++++ b/libwebcam/uvcdynctrl/CMakeLists.txt	2016-04-27 13:53:29.121677785 -0400
+@@ -102,11 +102,11 @@
+ # Note that having absolute paths here requires CPACK_SET_DESTDIR to be set to "ON".
+ install (
+ 	FILES	udev/rules/80-uvcdynctrl.rules
+-	DESTINATION /lib/udev/rules.d
++	DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/udev/rules.d
+ )
+ install (
+ 	PROGRAMS	udev/scripts/uvcdynctrl
+-	DESTINATION	/lib/udev
++	DESTINATION	${CMAKE_INSTALL_PREFIX}/lib/udev
+ )
+ install (
+ 	DIRECTORY	data
