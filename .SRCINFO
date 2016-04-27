@@ -1,9 +1,8 @@
 pkgbase = moserial
 	pkgdesc = Clean, friendly gtk-based serial terminal for the gnome desktop
 	pkgver = 3.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://live.gnome.org/moserial
-	install = moserial.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
