@@ -1,5 +1,5 @@
 _depmod() {
-	EXTRAMODULES='extramodules-4.4-bfq'
+	EXTRAMODULES='extramodules-4.5-bfq'
 	depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
 }
 
