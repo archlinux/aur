@@ -22,7 +22,7 @@ pkgname=(
          'papirus-vlc-theme-git'
          'papirus-yakuake-theme-git' 
          )
-pkgver=r617.566cf9a
+pkgver=r624.eda134b
 pkgrel=1
 pkgdesc="Papirus Suite for KDE (git version)"
 arch=('any')
@@ -44,7 +44,7 @@ package_bomi-skin-papirus-git() {
     pkgdesc="Papirus theme for Bomi"
     options=()
     makedepends=('git')
-    depends=('bomi')
+    depends=('bomi-fresh')
     optdepends=()
     conflicts=('bomi-skin-papirus')
     install -dm755 ${pkgdir}/usr/share/bomi/skins
