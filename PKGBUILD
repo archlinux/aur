@@ -12,7 +12,6 @@ depends=('mutagen' 'gtk3' 'python2-gobject' 'python2-cairo')
 makedepends=('intltool' 'gettext')
 #optdepends=('python2-musicbrainzngs: for "MusicBrainz Lookup" plugin')
 conflicts=('quodlibet')
-install=exfalso.install
 _base_src="${_pkgbase}-${pkgver}.tar.gz"
 _base_url="https://bitbucket.org/lazka/${_pkgbase}-files/raw/default/releases"
 source=("${_base_url}/${_base_src}" "${_base_url}/${_base_src}.sig")
