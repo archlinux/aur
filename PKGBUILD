@@ -1,9 +1,9 @@
 # Maintainer: Ashley Towns <mail(at)ashleytowns(dot)id(dot)au>
 
-_version=2.2
+_version=2.2.1
 pkgname=swift-bin
 pkgver=${_version//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="The Swift programming language, the binary drops from the official website"
 arch=('x86_64')
 url="https://swift.org"
@@ -16,10 +16,10 @@ provides=('swift-language')
 replaces=('swift-language-bin')
 
 source=(
-  "https://swift.org/builds/swift-2.2-release/ubuntu1510/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu15.10.tar.gz"
-  "https://swift.org/builds/swift-2.2-release/ubuntu1510/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu15.10.tar.gz.sig"
+  "https://swift.org/builds/swift-${_version}-release/ubuntu1510/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu15.10.tar.gz"
+  "https://swift.org/builds/swift-${_version}-release/ubuntu1510/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu15.10.tar.gz.sig"
 )
-sha256sums=('e529bd7ac72b13a8d181f35e38f95836ac6af7b0968815459ac168e26e4e41c1'
+sha256sums=('9ed7f9e13d62ba30b3f74fecb7814b2e8892dfe7edb5451b16ca32d83268b668'
             'SKIP')
 
 package() {
