@@ -3,14 +3,13 @@
 
 pkgname=fcitx-kkc
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Fcitx Wrapper for libkkc"
 arch=('i686' 'x86_64')
 url="https://github.com/fcitx/fcitx-kkc"
 license=('GPL')
 depends=('fcitx' 'libkkc' 'libkkc-data' 'skk-jisyo' 'fcitx-qt4')
 makedepends=('cmake')
-install=$pkgname.install
 source=(http://download.fcitx-im.org/${pkgname}/${pkgname}-${pkgver}.tar.xz)
 
 build(){
