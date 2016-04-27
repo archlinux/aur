@@ -3,7 +3,7 @@
 pkgbase=mpv
 pkgname=mpv-light
 pkgver=0.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Video player based on MPlayer/mplayer2, with selection of features.'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -14,7 +14,6 @@ optdepends=('youtube-dl: for video-sharing websites playback')
 options=('!emptydirs' '!buildflags')
 provides=("${pkgbase}")
 conflicts=("${pkgbase}")
-install=mpv.install
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/mpv-player/${pkgbase}/archive/v${pkgver}.tar.gz")
 sha256sums=('602cd2b0f5fc7e43473234fbb96e3f7bbb6418f15eb8fa720d9433cce31eba6e')
 
