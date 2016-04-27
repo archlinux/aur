@@ -1,43 +1,55 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
+
 pkgname=spigot
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance Minecraft server implementation"
 arch=(any)
-url="http://www.spigotmc.org/"
+url="https://www.spigotmc.org/"
 license=("LGPL")
 depends=(java-runtime-headless screen sudo fontconfig bash)
+optdepends=("tar: needed in order to create world backups"
+"netcat: required in order to suspend an idle server")
 makedepends=(java-environment git)
-optdepends=("tar: needed in order to create world backups")
+provides=("minecraft-server=${pkgver%_*}" "bukkit=${pkgver%_*}" "craftbukkit=${pkgver%_*}")
 conflicts=(bukkit craftbukkit spigot-patcher)
-provides=(bukkit "craftbukkit=${pkgver%_*}" "minecraft-server=${pkgver%_*}")
-install=${pkgname}.install
+backup=("etc/conf.d/${pkgname}")
+install="${pkgname}.install"
 source=("https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar"
-        "${pkgname}-backup.service"
-        "${pkgname}-backup.timer"
-        "${pkgname}.service"
-        "${pkgname}.conf"
-        "${pkgname}.sh")
+"${pkgname}-backup.service"
+"${pkgname}-backup.timer"
+"${pkgname}.service"
+"${pkgname}.conf"
+"${pkgname}.sh")
 noextract=("BuildTools.jar")
 md5sums=('SKIP'
-         'fd17202ba0bb7796439f0b2f6bc53be4'
+         '7bb2dc610c5f55e133bd41ab608ec7a1'
          '872d2e03799f1f8f0c75acdebce91894'
-         '580c470c92d88ae2362250d59bd33b10'
-         '675f4b1080f2543f43058c7124dcafc2'
-         '0f79c1689c5fc4dbd5408a1a37118950')
-backup=("etc/conf.d/${pkgname}")
+         '1eb2d5f485cf9eff7a99c826ad56fcf4'
+         'f04e0bcf8d771b0d1dc0206dc173d77a'
+         '6ee73f849e2caf6d8c89c73a80cc0c33')
+
+_game="spigot"
+_server_root="/srv/craftbukkit"
 
 build() {
 	export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=1g"
-	java -jar BuildTools.jar --rev $pkgver
-}
-package() {
-	install -Dm644 ${pkgname}.conf              "${pkgdir}/etc/conf.d/${pkgname}"
-  install -Dm755 ${pkgname}.sh                "${pkgdir}/usr/bin/${pkgname}"
-	install -Dm644 ${pkgname}-${pkgver}.jar     "${pkgdir}/srv/craftbukkit/${pkgname}.jar"
-	install -Dm644 ${pkgname}.service           "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-	install -Dm644 ${pkgname}-backup.service    "${pkgdir}/usr/lib/systemd/system/${pkgname}-backup.service"
-	install -Dm644 ${pkgname}-backup.timer      "${pkgdir}/usr/lib/systemd/system/${pkgname}-backup.timer"
+	java -jar BuildTools.jar --rev ${pkgver}
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+	install -Dm644 ${_game}.conf              "${pkgdir}/etc/conf.d/${_game}"
+	install -Dm755 ${_game}.sh                "${pkgdir}/usr/bin/${_game}"
+	install -Dm644 ${_game}.service           "${pkgdir}/usr/lib/systemd/system/${_game}.service"
+	install -Dm644 ${_game}-backup.service    "${pkgdir}/usr/lib/systemd/system/${_game}-backup.service"
+	install -Dm644 ${_game}-backup.timer      "${pkgdir}/usr/lib/systemd/system/${_game}-backup.timer"
+	install -Dm644 ${_game}-${pkgver}.jar     "${pkgdir}${_server_root}/${_game}.${pkgver}.jar"
+	ln -s "${_game}.${pkgver}.jar" "${pkgdir}${_server_root}/${_game}.jar"
+
+	# Link the log files
+	mkdir -p "${pkgdir}/var/log/"
+	ln -s "${_server_root}/logs" "${pkgdir}/var/log/${_game}"
+
+	# Give the group write permissions and set user or group ID on execution
+	chmod g+ws "${pkgdir}${_server_root}"
+}

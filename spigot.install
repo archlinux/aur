@@ -1,58 +1,64 @@
-USER="craftbukkit"
-SERVER_ROOT="/srv/craftbukkit"
+_game="spigot"
+_user="craftbukkit"
+_server_root="/srv/craftbukkit"
 
 post_install() {
-	getent group "${USER}" &>/dev/null
+	getent group "${_user}" &>/dev/null
 	if [ $? -ne 0 ]; then
-		echo -e "\e[34;1m==>\e[39;1m Adding ${USER} system group... \e[0m"
-		groupadd -r ${USER} 1>/dev/null
+		echo -e "\e[34;1m==>\e[39;1m Adding ${_user} system group... \e[0m"
+		groupadd -r ${_user} 1>/dev/null
 	fi
 
-	getent passwd "${USER}" &>/dev/null
+	getent passwd "${_user}" &>/dev/null
 	if [ $? -ne 0 ]; then
-		echo -e "\e[34;1m==>\e[39;1m Adding ${USER} system user... \e[0m"
-		useradd -r -g ${USER} -d "${SERVER_ROOT}" ${USER} 1>/dev/null
+		echo -e "\e[34;1m==>\e[39;1m Adding ${_user} system user... \e[0m"
+		useradd -r -g ${_user} -d "${_server_root}" ${_user} 1>/dev/null
 	fi
 
-	chown -R ${USER}:${USER} "${SERVER_ROOT}"
+	chown -R ${_user}:${_user} "${_server_root}"
 
-	echo -e "\e[34;1m==>\e[39;1m NOTE: The world data is stored under ${SERVER_ROOT} and the server runs \e[0m"
-	echo -e "\e[34;1m==>\e[39;1m as ${USER} user to increase security. \e[0m"
-	echo -e "\e[34;1m==>\e[39;1m NOTE: Use the spigot script under /usr/bin/spigot to start, stop or backup the server \e[0m"
-	echo -e "\e[34;1m==>\e[39;1m and the configuration file under /etc/conf.d/spigot to adjust it to your liking. \e[0m"
-	echo -e "\e[34;1m==>\e[39;1m NOTE: For the server to start you have to accept the EULA in ${SERVER_ROOT}/eula.txt \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m NOTE: The world data is stored under ${_server_root} and the server runs \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m as ${_user} user to increase security. \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m NOTE: Use the ${_game} script under /usr/bin/${_game} to start, stop or backup the server \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m and the configuration file under /etc/conf.d/${_game} to adjust it to your liking. \e[0m"
+	echo -e "\e[34;1m==>\e[39;1m NOTE: For the server to start you have to accept the EULA in ${_server_root}/eula.txt \e[0m"
 	echo -e "\e[34;1m==>\e[39;1m which is generated after the first server start. \e[0m"
 }
 
 post_upgrade() {
-	chown -R ${USER}:${USER} "${SERVER_ROOT}"
+	chown -R ${_user}:${_user} "${_server_root}"
 
-	if [[ -f /etc/conf.d/minecraft.pacnew ]]; then
+	if [[ -f /etc/conf.d/${_game}.pacnew ]]; then    # TODO: remove oneday
 		echo -e "\e[34;1m==>\e[39;1m NOTE: There was a new change on how backup files are handled! Unfortunately this makes \e[0m"
 		echo -e "\e[34;1m==>\e[39;1m old backups incompatible with the newly implemeted restore feature. Bare in mind that no data is lost \e[0m"
 		echo -e "\e[34;1m==>\e[39;1m neither are those backups useless. They just will not work with the restore capability of the management script. \e[0m"
-		echo -e "\e[34;1m==>\e[39;1m NOTE: Please merge the new configuration file into /etc/conf.d/minecraft by e.g. using pacdiff. \e[0m"
+		echo -e "\e[34;1m==>\e[39;1m NOTE: Please merge the new configuration file into /etc/conf.d/${_game} by e.g. using pacdiff. \e[0m"
+	fi
+
+	if [[ -d /srv/spigot ]]; then    # TODO: remove oneday
+		echo -e "\e[34;1m==>\e[39;1m NOTE: The server root in the config files and script was moved to /srv/craftbukkit in order to restore compatibility \e[0m"
+		echo -e "\e[34;1m==>\e[39;1m with craftbukkit plugins. Please move your exisiting game save, plugins, backups, logs etc. to this new loaction. \e[0m"
 	fi
 }
 
 pre_remove() {
-	echo -e "\e[34;1m==>\e[39;1m Stopping and disabling spigot daemon... \e[0m"
-	systemctl stop spigot.service
-	systemctl disable spigot.service
+	echo -e "\e[34;1m==>\e[39;1m Stopping and disabling ${_game}... \e[0m"
+	systemctl stop ${_game}.service
+	systemctl disable ${_game}.service
 
-	/usr/bin/spigot stop > /dev/null
+	/usr/bin/${_game} stop > /dev/null
 }
 
 post_remove() {
-	echo -e "\e[34;1m==>\e[39;1m Removing ${USER} system user and group... \e[0m"
-	if getent passwd ${USER} >/dev/null 2>&1; then
-		userdel ${USER} 2>/dev/null
-	fi
-	if getent group ${USER} >/dev/null 2>&1; then
-		groupdel ${USER}
-	fi
-
 	# Notifying the user of kept dirs
-	[[ -d "${SERVER_ROOT}" ]] && chown -R root:root "${SERVER_ROOT}" && echo -e "\e[34;1m==>\e[39;1m NOTE: Game saves in ${SERVER_ROOT} were kept on your system.\e[0m"
-	[[ -f "/etc/conf.d/spigot" ]] && echo -e "\e[34;1m==>\e[39;1m NOTE: Your configuration file /etc/conf.d/spigot was kept on your system.\e[0m"
+	[[ -d "${_server_root}" ]] && chown -R root:root "${_server_root}" && echo -e "\e[34;1m==>\e[39;1m NOTE: Game saves in ${_server_root} were kept on your system.\e[0m"
+	[[ -f "/etc/conf.d/${_game}" ]] && echo -e "\e[34;1m==>\e[39;1m NOTE: Your configuration file /etc/conf.d/${_game} was kept on your system.\e[0m"
+
+	echo -e "\e[34;1m==>\e[39;1m Removing ${_user} system user and group... \e[0m"
+	if getent passwd ${_user} >/dev/null 2>&1; then
+		userdel ${_user} 2>/dev/null
+	fi
+	if getent group ${_user} >/dev/null 2>&1; then
+		groupdel ${_user}
+	fi
 }

@@ -3,9 +3,11 @@ Description=Spigot
 After=local-fs.target network.target
 
 [Service]
+Type=forking
 ExecStart=/usr/bin/spigot start
 ExecStop=/usr/bin/spigot stop
-Type=forking
+User=craftbukkit
+Group=craftbukkit
 
 [Install]
 WantedBy=multi-user.target
