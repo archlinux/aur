@@ -4,29 +4,24 @@
 # Contributor: Dr.Egg <rwhite@archlinux.us>
 
 pkgname=musescore-git
-pkgver=r10171.3d5f12d
+pkgver=r10399.cb65146
 _branch=master
 pkgrel=1
 pkgdesc='Latest git-version of the sheet music editor MuseScore'
 arch=('i686' 'x86_64')
 url='https://github.com/musescore/MuseScore'
 license=('GPL')
-depends=('desktop-file-utils'
-	'gtk-update-icon-cache'
-	'libpulse'
-	'portaudio'
-	'qt5-quick1'
-	'qt5-svg'
+depends=('qt5-svg'
 	'qt5-tools'
+	'qt5-webengine'
 	'shared-mime-info')
 makedepends=('cmake'
 	'doxygen'
 	'git'
 	'lame'
 	'qt5-script'
-	'texlive-bin')
+	'texlive-core')
 optdepends=('lame: MP3 export')
-conflicts=('')
 install='musescore.install'
 
 source=("git+$url.git#branch=$_branch")
@@ -40,10 +35,19 @@ pkgver() {
 build() {
   cd MuseScore
   make revision
-  make PREFIX='/usr' SUFFIX="-git" LABEL="Git Build" release
+  cmake -DCMAKE_BUILD_TYPE=RELEASE \
+	-DCMAKE_INSTALL_PREFIX="/usr" \
+	-DMSCORE_INSTALL_SUFFIX="-git" \
+	-DMUSESCORE_LABEL="Git Build" \
+	-DBUILD_LAME="ON" \
+	-DCMAKE_SKIP_RPATH="FALSE" \
+	-DBUILD_JACK=OFF \
+	-DBUILD_PORTAUDIO=OFF .
+  make lrelease
+  make
 }
 
 package() {
-  cd MuseScore/build.release
+  cd MuseScore
   make DESTDIR="${pkgdir}" SUFFIX="-git" LABEL="Git Build" install
 }
