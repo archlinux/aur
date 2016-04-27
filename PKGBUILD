@@ -2,22 +2,22 @@
 # Contributor: Serede Sixty Six <serede.dev@gmail.com>
 
 pkgname=nemo-terminal
-pkgver=2.8.1
-_mintrel=rosa
-pkgrel=5
+pkgver=3.0.0
+_mintrel=betsy
+pkgrel=1
 pkgdesc="An embedded terminal for Nemo, the Cinnamon file manager."
 arch=('any')
 url="https://github.com/linuxmint/nemo-extensions"
 license=('GPL2')
 groups=('nemo-extensions')
-depends=('nemo-python' 'vte3' 'gobject-introspection-runtime')
+depends=('nemo>=3.0' 'nemo<3.1' 'nemo-python' 'vte3' 'gobject-introspection-runtime')
 optdepends=("python2-xdg: Integration with freedesktop.org standards")
 install="${pkgname}.install"
 
 options=('!libtool' '!emptydirs')
 
 source=("http://packages.linuxmint.com/pool/main/n/nemo-terminal/${pkgname}_${pkgver}+${_mintrel}.tar.gz")
-sha256sums=('17eb327a6065f52384dc344c83f1b97e75170989420be1138b2d01d09d2852eb')
+sha256sums=('af6039abf8376c2170cd09ba516387bd132faf4c1ff3647b6a57744b30c52d70')
 
 
 prepare() {
