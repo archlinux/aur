@@ -2,7 +2,7 @@
 
 pkgname=drozer
 pkgver=2.3.4
-pkgrel=2
+pkgrel=2.1
 pkgdesc='Comprehensive security and attack framework for Android'
 arch=('i686' 'x86_64')
 url='https://labs.mwrinfosecurity.com/tools/drozer'
@@ -42,7 +42,9 @@ package() {
 	
 	# Install rest of files
 	cp -dr --no-preserve=ownership usr/{bin,share} "${pkgdir}"/usr/
-	cp -dr --no-preserve=ownership usr/local/lib "${pkgdir}"/usr/
+
+	mkdir -p "${pkgdir}"/usr/lib/python2.7/
+	cp -dr --no-preserve=ownership usr/local/lib/python2.7/dist-packages/{drozer,mwr,pydiesel} "${pkgdir}"/usr/lib/python2.7/
 	
 
 

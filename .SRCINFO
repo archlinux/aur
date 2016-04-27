@@ -1,7 +1,7 @@
 pkgbase = drozer
 	pkgdesc = Comprehensive security and attack framework for Android
 	pkgver = 2.3.4
-	pkgrel = 2
+	pkgrel = 2.1
 	url = https://labs.mwrinfosecurity.com/tools/drozer
 	arch = i686
 	arch = x86_64
