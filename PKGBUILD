@@ -2,14 +2,13 @@
 
 pkgname=fcitx-hangul
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Hangul (Korean) support for fcitx"
 arch=('i686' 'x86_64')
 url="https://github.com/fcitx/fcitx-hangul"
 license=('GPL2')
 depends=('fcitx' 'libhangul')
 makedepends=('cmake' 'intltool')
-install=$pkgname.install
 source=("http://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz")
 sha512sums=('07085508da98c49bcecf75fbfad6681263a735a1efcc4fb7a6fa05cb215dfe0c338e95e26cc55e488501b5abbc1007464b1bbf488f07aaca2d1a0a18c8173074')
 
