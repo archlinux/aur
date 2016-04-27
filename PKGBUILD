@@ -1,8 +1,8 @@
 # firefox-esr-privacy
 pkgname=firefox-esr-privacy
 _basever=45
-pkgver=45.0.2
-pkgrel=2
+pkgver=45.1.0
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -13,6 +13,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'xorg-server' 'in
 install=firefox.install
 options=('!emptydirs')
 conflicts=('firefox')
+provides=('firefox')
 source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         firefox-install-dir.patch
         firefox-${_basever}-disable-location.services.mozilla.com.patch
@@ -25,7 +26,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${pkgver}esr/so
         firefox.desktop
         firefox-fixed-loading-icon.png
         mozconfig)
-sha256sums=('939ac36c4bf30794e76e87903c0e0f5a813807310226c52f0fcd573275067ed3'
+sha256sums=('8bdc4a0f6d0ca4f28e888ca0044ba735ddc78302820b5ffcc25cd65064ff40a1'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '8d9afa1f940a9dac689ead40a57990d1491f34a1787b2222f8f5b5e485d54103'
             '4ffefee2f47e2de114df0d8a0c9a7b964d6e6959ce691e274e259ad8fd85682e'
