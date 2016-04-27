@@ -1,4 +1,3 @@
-# $Id: PKGBUILD 67819 2012-03-14 16:22:14Z spupykin $
 # Maintainer: Johannes Löthberg <johannes@kyriasis.com>
 # Contributor: Daniel Wallace <danielwallace at gtmanfred dot com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
@@ -11,17 +10,17 @@ pkgrel=1
 pkgdesc="PDF support for Zathura (MuPDF backend)"
 url="https://pwmt.org/projects/zathura-pdf-mupdf/"
 arch=('i686' 'x86_64')
-license=('custom')
+license=('zlib')
 
 conflicts=('zathura-pdf-poppler')
 
 depends=('zathura' 'jbig2dec' 'openjpeg2' 'cairo')
-makedepends=('mupdf>=1.9')
+makedepends=('libmupdf>=1.9')
 
 source=(https://pwmt.org/projects/zathura/plugins/download/zathura-pdf-mupdf-$pkgver.tar.gz
-  mupdf-1.9.patch)
+        mupdf-1.9.patch)
 sha1sums=('ae0be41ea7c75b8ddc083fe01f1366673ea9751a'
-  'f26adb3a7c69cf7a2e957d211e8faffe79c923c7')
+          'f26adb3a7c69cf7a2e957d211e8faffe79c923c7')
 
 prepare() {
   patch -d zathura-pdf-mupdf-$pkgver -Np1 < mupdf-1.9.patch
