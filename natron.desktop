@@ -7,6 +7,6 @@ MimeType=application/x-natron
 Exec=natron %U
 GenericName=Compositing software
 Comment=Node-graph based compositing software
-Icon=/opt/natron/share/pixmaps/natronIcon256_linux.png
+Icon=natronIcon256_linux
 Categories=Graphics;2DGraphics;RasterGraphics;
 
