@@ -1,7 +1,7 @@
 # Maintainer: vitamin1980 <vitamin.novgorod @ yandex.ru>
 
 pkgname='tor-browser-ru'
-pkgver='5.5.4'
+pkgver='5.5.5'
 _language='ru'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
