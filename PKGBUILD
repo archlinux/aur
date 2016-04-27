@@ -3,7 +3,7 @@
 pkgbase=bird-babel-git
 pkgname=('bird-babel-git' 'bird6-babel-git')
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://bird.network.cz/'
 license=('GPL2')
