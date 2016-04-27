@@ -1,6 +1,6 @@
 pkgbase = python-hg
 	pkgdesc = Next generation of the python high-level scripting language
-	pkgver = 3.6.0a0.r100157.7fb10bdbe01b
+	pkgver = 3.6.0a0.r101162+.f4c6dab59cd8+
 	pkgrel = 1
 	url = http://www.python.org/
 	arch = i686
@@ -22,7 +22,7 @@ pkgbase = python-hg
 	options = debug
 	options = !strip
 	options = !makeflags
-	source = hg+https://hg.python.org/cpython
+	source = hg+https://hg.python.org/cpython#branch=default
 	sha256sums = SKIP
 
 pkgname = python-hg

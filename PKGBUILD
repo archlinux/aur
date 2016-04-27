@@ -1,7 +1,7 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 
 pkgname=python-hg
-pkgver=3.6.0a0.r100157.7fb10bdbe01b
+pkgver=3.6.0a0.r101162+.f4c6dab59cd8+
 pkgrel=1
 _pybasever=3.6
 _pkgname=cpython
@@ -13,7 +13,7 @@ depends=('expat' 'bzip2' 'gdbm' 'openssl' 'libffi' 'zlib')
 makedepends=('tk>=8.6.0' 'sqlite' 'valgrind' 'bluez-libs' 'mercurial')
 optdepends=('tk: for tkinter' 'sqlite')
 options=(debug !strip !makeflags)
-source=(hg+https://hg.python.org/cpython)
+source=("hg+https://hg.python.org/cpython#branch=default")
 sha256sums=('SKIP')
 
 pkgver() {
