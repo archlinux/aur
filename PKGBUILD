@@ -2,20 +2,20 @@
 # Contributor: Serede Sixty Six <serede.dev@gmail.com>
 
 pkgname=nemo-image-converter
-pkgver=2.8.0
-_mintrel=rosa
-pkgrel=2
+pkgver=3.0.0
+_mintrel=betsy
+pkgrel=1
 pkgdesc="nemo extension to mass resize or rotate images"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo-extensions"
 license=('GPL2')
 groups=('nemo-extensions')
-depends=('nemo' 'imagemagick')
+depends=('nemo>=3.0' 'nemo<3.1' 'imagemagick')
 makedepends=('gnome-common')
 install="${pkgname}.install"
 
 source=("http://packages.linuxmint.com/pool/main/n/${pkgname}/${pkgname}_${pkgver}+${_mintrel}.tar.gz")
-sha256sums=('59dd194d32b20d40230a84b249733ccab0d846ecd299d611d25cee5367cdd0af')
+sha256sums=('87f795984d246c33921b84ac0aec5bbfc5be935c2b83a396e063344ab2203a61')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}+${_mintrel}"
