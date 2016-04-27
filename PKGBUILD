@@ -3,7 +3,7 @@
 # Contributor: Rutger Broekhoff
 pkgname=natron-bin
 pkgver=2.0.2
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 pkgdesc='Video compositing software similar to Nuke and Adobe After Effects'
 url='http://natron.fr/'
@@ -14,11 +14,11 @@ conflicts=('natron' 'natron-rc' 'natron-bin-dev')
 
 options=('!strip' '!upx')
 
-source=("natron.desktop")
+source=("natron.desktop" "x-natron.xml")
 source_i686=("http://downloads.natron.fr/Linux/releases/32bit/files/Natron-$pkgver-Linux-x86_32bit.tar.xz")
 source_x86_64=("http://downloads.natron.fr/Linux/releases/64bit/files/Natron-$pkgver-Linux-x86_64bit.tar.xz")
 
-md5sums=('5c65b106c295abe0b5346eff18a06767')
+md5sums=('5c65b106c295abe0b5346eff18a06767' 'ca5186feb5a7f336517c015f72d0f8c8')
 md5sums_i686=('bba88a39dcdce3fc2a5a188d6c73362a')
 md5sums_x86_64=('ade5286ff47cd299ec01cff9e02812cd')
 
@@ -35,5 +35,7 @@ package() {
 	install -d "$pkgdir"/usr/bin
 	ln -s ../../opt/natron/Natron "$pkgdir"/usr/bin/natron
         install -D "$pkgdir"/opt/natron/share/pixmaps/natronIcon256_linux.png "$pkgdir"/usr/share/pixmaps/natronIcon256_linux.png
+        install -D "$pkgdir"/opt/natron/share/pixmaps/natronProjectIcon_linux.png "$pkgdir"/usr/share/pixmaps/natronProjectIcon_linux.png
         install -Dm644 "$srcdir"/natron.desktop "$pkgdir"/usr/share/applications/natron.desktop
+        install -D "$srcdir"/x-natron.xml "$pkgdir"/usr/share/mime/packages/x-natron.xml
 }
