@@ -3,13 +3,13 @@
 
 _mintrel=betsy
 pkgname=nemo-dropbox
-pkgver=2.8.0
-pkgrel=3
+pkgver=3.0.0
+pkgrel=1
 pkgdesc="Dropbox for Linux - Nemo extension"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo-extensions"
 license=('custom:CC-BY-ND-3' 'GPL')
-depends=('libnotify' 'nemo' 'hicolor-icon-theme' 'dropbox')
+depends=('libnotify' 'nemo>=3.0' 'nemo<3.1' 'hicolor-icon-theme' 'dropbox')
 makedepends=('python2-docutils' 'python2' 'pygtk')
 conflicts=('nautilus-dropbox' 'caja-dropbox')
 install=${pkgname}.install
@@ -17,7 +17,7 @@ options=('!libtool' '!emptydirs')
 
 source=("http://packages.linuxmint.com/pool/main/n/$pkgname/${pkgname}_${pkgver}%2b${_mintrel}.tar.gz")
 #http://packages.linuxmint.com/pool/main/n/$pkgname/$pkgname_$pkgver%2b$_mintrel.tar.gz
-md5sums=('1d7ff4cb2c2dbf9bc7331d2aee5d6e08')
+md5sums=('725d19b9fa05fad32daa9ca5affb29c4')
 
 build() {
   cd ${pkgname}-${pkgver}+${_mintrel}
