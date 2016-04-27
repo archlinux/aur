@@ -1,5 +1,7 @@
 post_install() {
-  depmod -a
+  kernver="`pacman -Qe linux | awk '{print $2"-ARCH"}'`"
+  echo -e "Probe modules"
+  depmod ${kernver}
 }
 
 post_remove() {

@@ -3,7 +3,7 @@
 
 pkgname='xtables-addons'
 pkgver='2.10'
-pkgrel='5'
+pkgrel='6'
 pkgdesc='Xtables-addons is a set of additional extensions for the Xtables packet filter that is present in the Linux kernel'
 arch=('i686' 'x86_64')
 license=('GPL2')
