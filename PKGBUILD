@@ -51,8 +51,8 @@ _BFQ_enable_=
 
 pkgname=(linux-ck linux-ck-headers)
 _kernelname=-ck
-_srcname=linux-4.4
-pkgver=4.4.8
+_srcname=linux-4.5
+pkgver=4.5.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -60,9 +60,9 @@ license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc')
 options=('!strip')
 _ckpatchversion=1
-_ckpatchname="patch-4.4-ck${_ckpatchversion}"
+_ckpatchname="patch-4.5-ck${_ckpatchversion}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-v7r11"
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.5.0-v7r11"
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
@@ -70,29 +70,27 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 'config.x86_64' 'config'
 'linux-ck.preset'
 'change-default-console-loglevel.patch'
-'0001-sdhci-revert.patch'
 # ck1
-"http://ck.kolivas.org/patches/4.0/4.4/4.4-ck${_ckpatchversion}/${_ckpatchname}.xz"
+"http://ck.kolivas.org/patches/4.0/4.5/4.5-ck${_ckpatchversion}/${_ckpatchname}.xz"
 # gcc
 "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
 # bfq
-"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.4.0.patch"
-"${_bfqpath}/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.4.0.patch"
+"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.5.0.patch"
+"${_bfqpath}/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.5.0.patch"
 "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch")
-sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
+sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
             'SKIP'
-            '11ec99ae0600bd831ff8d71b77e64592f4b6918b7857fd9ff0284ea4cf267b4e'
+            'a9913a04ddbd06acde9b00b3179c41fddb99f61168ef5d01d3e8cf72385038b1'
             'SKIP'
-            'a6163f4b7933b4a5091aff370dfb44c94f94d8582ed9453dd31402840fc8dfc6'
-            '7eae5c2dd95ab15957bde0c5568f3c00a63298f5065e4aec8289a8abc0a16723'
+            '7df3d420abbaac2268f3c5baac0b5eaf0cf12cec5051389a20f0eca7e1814a75'
+            '293c8814a3ec1e6d66b509c0a4896fe9a76fd0b4d639e476857720c54b02d266'
             '2b3ebf5446aa3cac279842ca00bc1f2d6b7ff1766915282c201d763dbf6ca07e'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
-            'a800a076e7f9ab07e8baee33919f8731087f876000f8ab6a327521a7a772838f'
+            '582faf80f7ee1e6d9844c598893101d0cf941afa92fc2981e909f1382a36710a'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
-            'd1cf14cc696b0f716454fe8eb9746383700889d5d22ad829611f0433cc77b4ce'
-            'b17c3fb18c5b8c20a45a38198f293679ca6aef08d16f12cd816a5cfafac4b2c4'
-            '69a21bc286a628128cfc4723558829cb6ff6c2d7c4dfd4468457898674187b25')
+            '5d19ecb91320a64f0abb6c8e70205fef848ada967093faa94e4c0c39c340d0c8'
+            '9c1e11772ff29d37dacc9246f63e24d5154eb61682ba2b7e175a9ccbdc7116e1'
+            'e0c9474431b60ca9fc3da04e7610748219da143440f1d7f5152572c7c63b52e0')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -104,11 +102,6 @@ prepare() {
 	# add upstream patch
 	patch -p1 -i "${srcdir}/patch-${pkgver}"
 
-	# revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
-	# fixes #47778 sdhci broken on some boards
-	# https://bugzilla.kernel.org/show_bug.cgi?id=106541
-	patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
-
 	# set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
 	# remove this when a Kconfig knob is made available by upstream
 	# (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
@@ -117,7 +110,7 @@ prepare() {
 	# patch source with ck patchset with BFS
 	# fix double name in EXTRAVERSION
 	sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
-	msg "Patching source with ck1 including BFS v0.467"
+	msg "Patching source with ck1 including BFS v0.469"
 	patch -Np1 -i "${srcdir}/${_ckpatchname}"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
@@ -241,8 +234,8 @@ build() {
 }
 
 package_linux-ck() {
-	pkgdesc='Linux Kernel with the ck1 patchset featuring the Brain Fuck Scheduler v0.467.'
-	#_Kpkgdesc='Linux Kernel and modules with the ck1 patchset featuring the Brain Fuck Scheduler v0.467.'
+	pkgdesc='Linux Kernel with the ck1 patchset featuring the Brain Fuck Scheduler v0.469.'
+	#_Kpkgdesc='Linux Kernel and modules with the ck1 patchset featuring the Brain Fuck Scheduler v0.469.'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
 	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-ck: nVidia drivers for linux-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
