@@ -1,8 +1,8 @@
 # Maintainer: Harry Jeffery <harry|@|exec64|.|co|.|uk>
 
 pkgname=imv
-pkgver=2.0.0
-pkgrel=3
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Image viewer for Wayland and X11"
 url="http://github.com/eXeC64/imv"
 arch=('x86_64' 'i686')
