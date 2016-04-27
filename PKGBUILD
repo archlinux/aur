@@ -4,7 +4,7 @@
 
 pkgname=cmake
 pkgver=3.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform open-source make system'
 arch=('i686' 'x86_64')
 url="http://www.cmake.org/"
@@ -13,7 +13,6 @@ depends=('curl' 'libarchive' 'shared-mime-info' 'jsoncpp')
 makedepends=('qt5-base' 'python-sphinx' 'emacs')
 optdepends=('qt5-base: cmake-gui'
             'libxkbcommon-x11: cmake-gui')
-install="${pkgname}.install"
 source=("http://www.cmake.org/files/v${pkgver%.*}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('701386a1b5ec95f8d1075ecf96383e02')
 
