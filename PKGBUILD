@@ -11,7 +11,6 @@ depends=('qt5-multimedia' 'fftw' 'portaudio' 'hicolor-icon-theme')
 makedepends=('git' 'qt5-base' 'qt5-tools')
 conflicts=('fmit')
 provides=('fmit')
-install="${pkgname}.install"
 source=('git+https://github.com/gillesdegottex/fmit')
 md5sums=('SKIP')
 
