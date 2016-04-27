@@ -6,6 +6,7 @@ _gitrev=229
 _gitver=1ce41570
 _fullname="$pkgname-$pkgver.$_gitrev-$_gitver"
 _webclientver=f61ba32 # Set in CMakeModules/WebClientVariables.cmake
+_webclientbuild=122
 pkgrel=1
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64')
@@ -13,7 +14,6 @@ license=('GPL')
 url='https://github.com/plexinc/plex-media-player'
 depends=('mpv' 'qt5-webengine>=5.6' 'libcec' 'sdl2')
 makedepends=('cmake')
-install='plex-media-player.install'
 source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive/v${pkgver}.${_gitrev}-${_gitver}.tar.gz"
         "https://dl.tingping.se/mirror/plex-web-client-konvergo-${_webclientver}.cpp.tbz2"
         'plex-media-player.desktop')
@@ -29,7 +29,7 @@ sha256sums=('e7d27493d30532080ad6589187bc8f6d45b3a52f83b9f763470e01f78e6a539f'
 # a GPL compatible license so everything should be kosher.
 #
 # The orignal URL should it be needed:
-# "https://nightlies.plex.tv/directdl/plex-dependencies/plex-web-client-plexmediaplayer/latest/plex-web-client-konvergo-${_webclientver}.cpp.tbz2"
+# "https://nightlies.plex.tv/directdl/plex-dependencies/plex-web-client-plexmediaplayer/${_webclientbuild}/plex-web-client-konvergo-${_webclientver}.cpp.tbz2"
 #
 
 prepare() {
