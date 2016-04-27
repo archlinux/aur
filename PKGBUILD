@@ -45,7 +45,7 @@ DOCS_PDF=        # Generate and install pdf documentation.
 
 pkgname=emacs25-git
 pkgver=25.0.93.r124757
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Version 25 development and maintenance branch."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -56,7 +56,9 @@ makedepends=('git')
 #######################################################################
 if [[ $GTK3 = "YES" ]]; then depends+=('gtk3'); else depends+=('gtk2'); fi
 if [[ $CAIRO = "YES" ]]; then depends+=('cairo'); fi
-if [[ $XWIDGETS = "YES" ]]; then depends+=('webkitgtk'); fi
+if [[ $XWIDGETS = "YES" ]]; then
+  if [[ $GTK3 = "YES" ]]; then depends+=('webkitgtk'); else depends+=('webkitgtk2'); fi
+fi
 if [[ $DOCS_PDF = "YES" ]]; then makedepends+=('texlive-core'); fi
 #######################################################################
 #######################################################################
