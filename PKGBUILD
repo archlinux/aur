@@ -5,10 +5,10 @@ pkgver=2.0.2
 pkgrel=1
 pkgdesc="dnswalk is a DNS debugger"
 url="http://sourceforge.net/projects/dnswalk/"
-license="GPL"
+license=('GPL')
 arch=(i686 x86_64)
 depends=('perl-net-dns')
-source=('http://heanet.dl.sourceforge.net/sourceforge/dnswalk/dnswalk-2.0.2.tar.gz' 'dnswalk.patch' 'makereports.patch')
+source=("http://heanet.dl.sourceforge.net/sourceforge/dnswalk/dnswalk-$pkgver.tar.gz" 'dnswalk.patch' 'makereports.patch')
 md5sums=('62b9302822353fad71d51aefdae1cad1' 'e3cde1f934cf4ffc815453640efdad5c' '02778b076ed29d2a46d27e0d2513a8f3')
 
 prepare() {
