@@ -6,7 +6,7 @@
 # See http://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines
 # for more information on packaging from GIT sources.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Peter Feigl <craven@gmx.net>
 pkgname=chez-scheme-git
 pkgver=9.4
 pkgrel=1
@@ -57,11 +57,7 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname-build"
-  make DESTDIR="$pkgdir/" install
-  mv $pkgdir/usr/bin/scheme $pkgdir/usr/bin/chez-scheme
-  mv $pkgdir/usr/share/man/man1/scheme.1.gz $pkgdir/usr/share/man/man1/chez-scheme.1.gz
-  mv $pkgdir/usr/lib/csv${pkgver}/ta6le/scheme.boot $pkgdir/usr/lib/csv${pkgver}/ta6le/chez-scheme.boot
-  mv $pkgdir/usr/lib/csv${pkgver}/ta6le/scheme.h $pkgdir/usr/lib/csv${pkgver}/ta6le/chez-scheme.h
+  make DESTDIR="$pkgdir/" install InstallSchemeName=chez-scheme
 }
 
 # vim:set ts=2 sw=2 et:
