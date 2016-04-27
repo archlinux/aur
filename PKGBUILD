@@ -11,7 +11,6 @@ depends=('alsa-lib' 'nss' 'gtk2' 'gconf' 'libxss' 'libxtst' 'desktop-file-utils'
 optdepends=('curl: opera crash reporter and autoupdate checker'
 	'libnotify: native desktop notifications'
 	"${pkgname}-ffmpeg-codecs: support h.264 and mp3 codecs")
-install=opera.install
 options=(!strip)
 backup=("etc/${pkgname}/default")
 source=('opera'
