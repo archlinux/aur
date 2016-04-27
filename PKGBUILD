@@ -1,15 +1,15 @@
 # Maintainer: Jordan Christiansen <xordspar0@gmail.com>
 
 pkgname=ninekey
-pkgver=0.1.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="A barebones hotkey/launcher application"
 arch=('any')
 url="https://github.com/xordspar0/${pkgname}"
 license=('MIT')
-depends=('python' 'python-pyqt4')
+depends=('python' 'python-pyqt5')
 source=("https://github.com/xordspar0/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('3651539f2b4850e4e979afefba77dc5d7729dfd72d316c2c8d49dff14ae55eca')
+sha256sums=('1215d962a70f01cfc0f3f83b61d08657bbd6c3e0c1774e519ccdf6158a59268c')
 
 package() {
 	cd ${pkgname}-${pkgver}
