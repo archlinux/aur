@@ -2,7 +2,7 @@
 
 pkgname=brave-bin
 pkgver=0.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A web browser that stops ads and trackers by default. Binary release."
 arch=('x86_64') # Upstream supports x86_64 only
 url="https://www.brave.com/"
@@ -12,7 +12,6 @@ optdepends=('cups: Printer support')
 provides=('brave' 'brave-browser')
 conflicts=('brave')
 replaces=('brave-browser-bin')
-install=$pkgname.install
 source=("$pkgname-$pkgver.tar.bz2::https://github.com/brave/browser-laptop/releases/download/v"$pkgver"dev/Brave-Linux-x64.tar.bz2"
         "brave.png::https://github.com/brave/browser-laptop/raw/master/res/app.png"
         "MPL2::https://raw.githubusercontent.com/brave/browser-laptop/master/LICENSE.txt"
