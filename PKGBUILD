@@ -3,7 +3,7 @@
 _pkgbase=quodlibet
 pkgname=exfalso
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GTK+ audio tag editor"
 arch=('any')
 url="https://quodlibet.readthedocs.org/"
