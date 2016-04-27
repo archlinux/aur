@@ -7,11 +7,9 @@ arch=('i686' 'x86_64')
 url="http://www.jutoh.com"
 license=('custom: Jutoh')
 depends=('gtk2' 'libpng12'
-         'shared-mime-info' 'desktop-file-utils' 'xdg-utils'
-         'hicolor-icon-theme')
+         'desktop-file-utils')
 optdepends=('libjpeg6: jpeg support'
             'java-runtime: epubcheck support')
-install=jutoh.install
 
 source=('jutoh.sh')
 source_i686=(http://www.jutoh.com/Jutoh-${pkgver}-i386.tar.gz)
