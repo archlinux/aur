@@ -10,12 +10,13 @@
 
 pkgname=strongswan
 pkgver=5.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="open source IPsec implementation"
 url='http://www.strongswan.org'
 license=("GPL")
 arch=('i686' 'x86_64')
 depends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'libsystemd')
+makedepends=('curl' 'gmp' 'iproute2' 'openssl' 'sqlite' 'libcap' 'libsystemd' 'systemd')
 conflicts=('openswan')
 options=(!libtool)
 backup=(
