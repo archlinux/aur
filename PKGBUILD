@@ -14,7 +14,6 @@ else
   source=(http://zbyedidia.webfactional.com/micro/binaries/micro-linux32.tar.gz)
 fi
 
-source=(http://zbyedidia.webfactional.com/micro/binaries/micro-linux64.tar.gz)
 md5sums=(SKIP)
 package(){
  install -Dm755 $srcdir/$pkgname/micro "$pkgdir/usr/bin/micro"
