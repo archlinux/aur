@@ -3,7 +3,7 @@
 
 pkgname=grass
 pkgver=7.0.3
-pkgrel=1
+pkgrel=2
 _shortver=${pkgver%.*}; _shortver=${_shortver/./}
 pkgdesc='Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization'
 arch=('i686' 'x86_64')
@@ -12,7 +12,6 @@ license=('GPL')
 depends=('fftw' 'gdal' 'glu' 'python2-pillow' 'subversion' 'wxpython')
 makedepends=('libxt')
 optdepends=('postgresql: PostgreSQL database interface')
-install=$pkgname.install
 source=("http://grass.osgeo.org/grass$_shortver/source/$pkgname-$pkgver.tar.gz")
 md5sums=('dfbd39829036ee2d59b13c35a183ec0e')
 
