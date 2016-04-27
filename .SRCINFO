@@ -1,0 +1,16 @@
+pkgbase = libchardet-fresh
+	pkgdesc = Mozilla's Universal Charset Detector C/C++ API
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = http://http.debian.net/debian/pool/main/libc/libchardet/
+	arch = i686
+	arch = x86_64
+	license = MPL
+	depends = gcc-libs
+	depends = bash
+	options = !libtool
+	source = http://http.debian.net/debian/pool/main/libc/libchardet/libchardet_1.0.4.orig.tar.bz2
+	md5sums = 93edadd9353325405d6e092127339f33
+
+pkgname = libchardet-fresh
+
