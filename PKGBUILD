@@ -2,8 +2,8 @@
 
 pkgname=savilerow
 pkgver=1.6.4
-pkgrel=1
-pkgdesc="Savile Row is a modelling assistant for CP"
+pkgrel=2
+pkgdesc="A modelling assistant for CP"
 arch=('i686' 'x86_64')
 url="http://savilerow.cs.st-andrews.ac.uk"
 license=('GPL')
