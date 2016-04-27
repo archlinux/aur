@@ -2,13 +2,14 @@
 # Contributor: Dominik Heidler <dheidler@gmail.com>
 
 pkgname=gqrx-git
-pkgver=20130809
+pkgver=20160423
 pkgrel=1
 pkgdesc="SDR receiver for Funcube Dongle, RTL-SDR, USRP and OsmoSDR devices."
 arch=('i686' 'x86_64')
 url="http://www.oz9aec.net/index.php/gnu-radio/gqrx-sdr"
 license=('GPL')
-depends=('qt4>=4.6' 'boost-libs' 'fftw' 'libusb' 'gsl' 'alsa-lib' 'libpulse' 'libuhd' 'pulseaudio' 'gnuradio' 'gr-osmosdr-git' 'python2-cheetah')
+depends=('qt5-base' 'boost-libs' 'fftw' 'libusb' 'gsl' 'alsa-lib' 'libpulse' 'libuhd' 'pulseaudio' 'gnuradio' 'python2-cheetah')
+optdepends=('gr-osmosdr-git: support of OsmoSDR devices')
 makedepends=('make' 'patch' 'boost' 'git')
 conflicts=('gqrx')
 #_gitroot=https://github.com/phirsch/gqrx
@@ -28,7 +29,7 @@ build() {
 #	msg "Applying patch for new funcube lib location"
 #	patch -p1 < ../fcd_in_gnuradio.patch
 	cd "$_gitname"
-	qmake-qt4
+	qmake-qt5
     make clean
 	make
 }
