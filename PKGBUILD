@@ -8,10 +8,10 @@ url="https://github.com/zyedidia/micro"
 license=('MIT')
 makedepends=('go' 'git')
 optdepends=(xclip)
-source=("${_pkgname}"::"https://github.com/zyedidia/micro.git")
+source=("${pkgname}"::"git+https://github.com/zyedidia/micro.git")
 md5sums=(SKIP)
 pkgver() {
-	cd "${srcdir}/${_pkgname}"
+	cd "${srcdir}/${pkgname}"
 	echo "$(git rev-parse --short HEAD)"
 }
 build(){
