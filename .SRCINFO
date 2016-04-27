@@ -1,6 +1,6 @@
 pkgbase = cpustat
 	pkgdesc = High Frequency Performance Measurements for Linux
-	pkgver = 20160308
+	pkgver = 20160427
 	pkgrel = 1
 	url = https://github.com/uber-common/cpustat
 	arch = x86_64
