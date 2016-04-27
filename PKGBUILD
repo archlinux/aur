@@ -1,6 +1,6 @@
 pkgname=arch-silence-grub-theme
 pkgver=r1.3c851d8
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch Silence - GRUB2 theme"
 arch=('any')
 license=('GPL')
