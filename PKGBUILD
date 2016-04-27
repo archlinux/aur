@@ -1,13 +1,13 @@
-# Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani at gmail dot com>
+# Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
 
 pkgbase=mpd
 pkgname=mpd-minimal
 pkgver=0.19.14
 pkgrel=1
-pkgdesc='Flexible, powerful, server-side application for playing music. Minmal version with only flac playback through socket connection.'
+pkgdesc='Flexible, powerful, server-side application for playing music. Minimal version with only flac playback through socket connection.'
 url='http://www.musicpd.org/'
 license=('GPL')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 depends=('alsa-lib' 'flac' 'glib2' 'icu' 'libmpdclient' 'sqlite') # 'libsystemd'
 makedepends=('boost')
 provides=("mpd=$pkgver")
