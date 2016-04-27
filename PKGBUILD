@@ -2,14 +2,13 @@
 
 pkgname=fcitx-sayura
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Sinhala Transe IME engine for fcitx."
 arch=('i686' 'x86_64')
 url="https://github.com/fcitx/fcitx-sayura"
 license=('GPL')
-depends=('fcitx>=4.2.8')
+depends=('fcitx')
 makedepends=('cmake' 'intltool')
-install=${pkgname}.install
 source=("http://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz")
 
 build() {
