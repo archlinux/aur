@@ -11,7 +11,6 @@ options=('!libtool')
 depends=('gtk3' 'libnotify' 'curl' 'libproxy' 'geoip'
          'desktop-file-utils')
 makedepends=('intltool' 'git' 'appstream-glib' 'autoconf-archive')
-install='trg.install'
 provides=('transmission-remote-gtk')
 conflicts=('transmission-remote-gtk')
 source=('git+https://github.com/transmission-remote-gtk/transmission-remote-gtk.git')
