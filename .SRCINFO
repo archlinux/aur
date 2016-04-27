@@ -1,7 +1,7 @@
 pkgbase = swift-bin
 	pkgdesc = The Swift programming language, the binary drops from the official website
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://swift.org
 	arch = x86_64
 	license = apache
@@ -12,7 +12,7 @@ pkgbase = swift-bin
 	depends = libutil-linux
 	depends = libbsd
 	depends = clang
-	depends = libtinfo
+	depends = libtinfo-5
 	depends = python2-six
 	depends = libxml2
 	provides = swift-language
