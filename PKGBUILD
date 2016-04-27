@@ -13,7 +13,6 @@ optdepends=('python2-nautilus: for "Open Terminix Here" support in nautilus')
 makedepends=('git' 'dmd' 'dub')
 provides=('terminix')
 conflicts=('terminix')
-install=$pkgname.install
 source=('git+https://github.com/gnunn1/terminix')
 md5sums=('SKIP')
 
