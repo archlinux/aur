@@ -3,7 +3,7 @@
 pkgbase=naemon
 pkgname=('naemon-core' 'naemon-livestatus' 'naemon-thruk')
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://naemon.org"
 license=('GPL2')

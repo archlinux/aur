@@ -13,7 +13,3 @@ pre_remove() {
     systemctl stop naemon
   fi
 }
-
-post_remove() {
-  userdel naemon
-}
