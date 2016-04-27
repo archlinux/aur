@@ -5,9 +5,9 @@
 # Contributor: Jeramy Rutley <jrutley@gmail.com>
 
 pkgname=ruby2.2
-pkgver=2.2.4
+pkgver=2.2.5
 pkgdesc='An object-oriented language for quick and easy programming'
-pkgrel=2
+pkgrel=1
 arch=(i686 x86_64)
 url='http://www.ruby-lang.org/en/'
 license=(BSD custom)
@@ -58,4 +58,4 @@ package() {
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
   install -D -m644 BSDL "${pkgdir}/usr/share/licenses/$pkgname/BSDL"
 }
-sha256sums=('d28bff4641e382681c58072ddc244d025ac47ff71dd9426a92fcfc3830d1773c')
+sha256sums=('f86feaa0a578e8da0924ced3ec68b25b50d69fc9a72cc8d919bc3c73f85f87d7')
