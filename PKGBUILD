@@ -1,8 +1,8 @@
 # Maintainer: Vyacheslav Konovalov <vyachkonovalov@gmail.com>
 
 pkgname=robomongo
-pkgver=0.9.0_rc8
-_ref='b54c0967620e9d6c934f81f5760e741575a7ef7e'
+pkgver=0.9.0_rc9
+_ref='8cedcc5d555d49994419db14e499a00f19bcb7f6'
 _pkgname=$pkgname-${_ref}
 pkgrel=1
 pkgdesc='Shell-centric cross-platform open source MongoDB management tool'
@@ -16,7 +16,7 @@ source=('git+https://github.com/paralect/robomongo-shell.git#branch=roboshell-v3
         "https://github.com/paralect/robomongo/archive/${_ref}.tar.gz"
         'robomongo.desktop')
 sha256sums=('SKIP'
-            '9b05c6216dcf5b0cee04afc5c741bc8d0aeeba6e3b944a42efef9fcaad148388'
+            'a098c3e1e7a368335e4e5a37c067f12714794472a32b2c47774ad624e8972834'
             'bdd63f5d4bd35dd865a0164f285d19555e4ecafb2d11d01f67bdb86bd730a13d')
 
 build() {
