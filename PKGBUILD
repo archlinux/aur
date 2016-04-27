@@ -1,9 +1,9 @@
-# Maintainer: Jonathan Steel <jsteel@aur.archlinux.org>
+# Maintainer: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: Muhammed Uluyol <muhammedu@gmail.com>
 
 pkgname=scratch
 pkgver=1.4.0.7
-pkgrel=5
+pkgrel=6
 pkgdesc="Create and share your own interactive stories, games, music and art"
 arch=('i686' 'x86_64')
 url="http://scratch.mit.edu"
@@ -11,25 +11,24 @@ license=('GPL2')
 depends=('squeak-vm' 'shared-mime-info' 'desktop-file-utils' 'pango'
          'gtk-update-icon-cache')
 backup=('usr/lib/scratch/Scratch.ini')
-install=$pkgname.install
 source=(http://download.scratch.mit.edu/$pkgname-$pkgver.src.tar.gz)
 md5sums=('f948e9e6de3ec9c7c7b4cc2a1975eb5a')
 
 prepare() {
-  cd "$srcdir"/$pkgname-$pkgver.src
+  cd $pkgname-$pkgver.src
 
   # Fix FS#41125
   sed -i 's/-xshm //' src/$pkgname
 }
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver.src
+  cd $pkgname-$pkgver.src
 
   make build
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver.src
+  cd $pkgname-$pkgver.src
 
   install -Dm755 src/$pkgname "$pkgdir"/usr/bin/$pkgname
   install -Dm644 Scratch.image "$pkgdir"/usr/lib/$pkgname/Scratch.image
