@@ -1,9 +1,10 @@
+# Maintainer: zekeer <isoniasid@gmail.com>
 pkgname=bomi-fresh
 pkgver=0.9.11
 pkgrel=1
 pkgdesc="Powerful and easy-to-use GUI multimedia player based on mpv"
 arch=('any')
-url="http://$pkgname-player.github.io"
+url="http://bomi-player.github.io"
 license=('GPL')
 provides=('cmplayer')
 depends=('qt5-base' 'qt5-declarative' 'qt5-x11extras' 'qt5-quickcontrols' 'qt5-svg'
