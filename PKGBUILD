@@ -13,7 +13,7 @@ optdepends=('languagetool: system wide installation of LT'
 'openoffice-extension-languagetool: standalone LT for OpenOffice')
 makedepends=('unzip')
 install=${pkgname}.install
-source=(${pkgname}-${pkgver}.zip::"http://languagetool.org/download/ngram-data/ngrams-ru-${pkgver}.zip")
+source=(${pkgname}-${pkgver}.zip::"http://languagetool.org/download/ngram-data/untested/ngram-ru-${pkgver}.zip")
 noextract=(${pkgname}-${pkgver}.zip)
 md5sums=('SKIP')
 

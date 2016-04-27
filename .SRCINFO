@@ -11,7 +11,7 @@ pkgbase = languagetool-ngrams-ru
 	optdepends = libreoffice-extension-languagetool: standalone LT for LibreOffice
 	optdepends = openoffice-extension-languagetool: standalone LT for OpenOffice
 	noextract = languagetool-ngrams-ru-20150914.zip
-	source = languagetool-ngrams-ru-20150914.zip::http://languagetool.org/download/ngram-data/ngrams-ru-20150914.zip
+	source = languagetool-ngrams-ru-20150914.zip::http://languagetool.org/download/ngram-data/untested/ngram-ru-20150914.zip
 	md5sums = SKIP
 
 pkgname = languagetool-ngrams-ru
