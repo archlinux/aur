@@ -12,7 +12,6 @@ depends=('desktop-file-utils' 'gstreamer0.10-base' 'xcb-util-cursor' 'libxml2'
 	'openssl' 'libxslt' 'libpulse' 'glib2' 'libxcb')
 # The dependencies were reconstructed in order to fit the ones from debian
 options=(!strip)
-install="${pkgname}.install"
 source_i686=("https://zoom.us/client/latest/zoom_${pkgver}_i386.deb")
 source_x86_64=("https://zoom.us/client/latest/zoom_${pkgver}_amd64.deb")
 md5sums_i686=('df467cf71f69efc99aef87a0d9f5090e')

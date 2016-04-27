@@ -3,7 +3,6 @@ pkgbase = zoom
 	pkgver = 1.1.44485.0317
 	pkgrel = 1
 	url = https://zoom.us/
-	install = zoom.install
 	arch = i686
 	arch = x86_64
 	license = custom
