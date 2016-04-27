@@ -10,7 +10,7 @@
 pkgname=chez-scheme-git
 pkgver=9.4
 pkgrel=1
-pkgdesc="Chez Scheme, threaded"
+pkgdesc="Chez Scheme is an implementation of the Revised6 Report on Scheme [27] (R6RS) with numerous language and programming environment extensions. (threaded build)"
 arch=(i686 x86_64)
 url="https://github.com/cisco/ChezScheme"
 license=('APL')

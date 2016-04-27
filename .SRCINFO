@@ -1,5 +1,5 @@
 pkgbase = chez-scheme-git
-	pkgdesc = Chez Scheme, threaded
+	pkgdesc = Chez Scheme is an implementation of the Revised6 Report on Scheme [27] (R6RS) with numerous language and programming environment extensions. (threaded build)
 	pkgver = 9.4
 	pkgrel = 1
 	url = https://github.com/cisco/ChezScheme
