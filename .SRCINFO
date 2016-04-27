@@ -1,7 +1,7 @@
 pkgbase = krudio-git
 	pkgdesc = Simple Qt5 radio player
 	pkgver = 20160427
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/loast/krudio
 	arch = i686
 	arch = x86_64
