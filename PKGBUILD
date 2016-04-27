@@ -6,7 +6,7 @@ pkgdesc="An ebook creation tool"
 arch=('i686' 'x86_64')
 url="http://www.jutoh.com"
 license=('custom: Jutoh')
-depends=('gtk2' 'libpng12'
+depends=('gtk2' 'libpng12' 'libsm'
          'desktop-file-utils')
 optdepends=('libjpeg6: jpeg support'
             'java-runtime: epubcheck support')
