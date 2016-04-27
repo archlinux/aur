@@ -3,7 +3,6 @@ pkgbase = qgis
 	pkgver = 2.14.1
 	pkgrel = 1
 	url = http://qgis.org/
-	install = qgis.install
 	arch = i686
 	arch = x86_64
 	license = GPL
