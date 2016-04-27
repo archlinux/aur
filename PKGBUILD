@@ -335,7 +335,7 @@ package_php56-dblib() {
 	depends=("${pkgbase}")
 	provides=("${_pkgbase}-dblib=$pkgver")
 
-	install -D -m755 ${srcdir}/build-php/modules/pdo_dblib.so ${pkgdir}/usr/lib/php/modules/pdo_dblib.so
+	install -D -m755 ${srcdir}/build-php/modules/pdo_dblib.so ${pkgdir}/usr/lib/${pkgbase}/modules/pdo_dblib.so
 }
 
 package_php56-pear() {
