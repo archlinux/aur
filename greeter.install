@@ -1,16 +1,16 @@
 # Colored makepkg-like functions
-msg_blue() {
-    printf "${blue} **${bold} $1${all_off}\n"
-}
+#msg_blue() {
+#    printf "${blue} **${bold} $1${all_off}\n"
+#}
 
-note() {
-    printf "${blue}==>${yellow} NOTE: $1 ${blue}<==${all_off}\n"
-}
+#note() {
+#    printf "${blue}==>${yellow} NOTE: $1 ${blue}<==${all_off}\n"
+#}
 
-all_off="$(tput sgr0)"
-bold="${all_off}$(tput bold)"
-blue="${bold}$(tput setaf 4)"
-yellow="${bold}$(tput setaf 3)"
+#all_off="$(tput sgr0)"
+#bold="${all_off}$(tput bold)"
+#blue="${bold}$(tput setaf 4)"
+#yellow="${bold}$(tput setaf 3)"
 
 #post_install() {
 #	echo "Setting greeter to webkit2 in lightdm.conf"
