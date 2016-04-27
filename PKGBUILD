@@ -6,12 +6,12 @@
 
 pkgname=viber
 pkgver=6.0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary cross-platform IM and VoIP software"
 arch=('x86_64')
 url="http://viber.com"
 license=('custom')
-depends=('libxss' 'xcb-util-renderutil' 'libcurl-compat')
+depends=('libxss' 'xcb-util-image' 'xcb-util-keysyms' 'xcb-util-renderutil' 'xcb-util-wm' 'libcurl-compat')
 options=('!strip')
 source=("http://download.cdn.viber.com/cdn/desktop/Linux/${pkgname}.deb"
         "eula.html"
