@@ -1,0 +1,10 @@
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!adchpp-hg.install
+!adchpp.service
+!adchpp.sysuser
+!adchpp.tmpfile
+!adchpp.sh
+

@@ -1,0 +1,11 @@
+[Unit]
+Description=ADCH++ - Advanced DirectConnect Hub
+After=network.target
+
+[Service]
+User=adchpp
+ExecStart=/usr/bin/adchpp
+ExecStop=/bin/kill -s SIGINT -q 5 $MAINPID
+
+[Install]
+WantedBy=multi-user.target

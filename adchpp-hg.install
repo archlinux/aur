@@ -1,0 +1,32 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+yellow="${bold}$(tput setaf 3)"
+blue="${bold}$(tput setaf 4)"
+green="${bold}$(tput setaf 2)"
+
+post_install() {
+  post_upgrade $1
+}
+
+post_upgrade() {
+  systemd-sysusers adchpp.conf
+  systemd-tmpfiles --create adchpp.conf
+
+  install -dm744 -o adchpp -g adchpp /var/log/adchpp
+  install -dm744 -o adchpp -g adchpp /var/lib/adchpp
+}
+
+post_remove() {
+  paths=(/etc/adchpp /var/lib/adchpp /var/log/adchpp)
+
+  first=true
+  for path in ${paths[@]}; do
+    if [ -d $path ]; then
+      if $first; then
+        first=false
+        printf "${green}==>${all_off} ${bold}Leftover Paths:${all_off}\n"
+      fi
+      printf "${blue}  -> ${all_off} ${bold}$path${all_off}\n"
+    fi
+  done
+}
