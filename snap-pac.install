@@ -7,7 +7,7 @@ post_install() {
 }
 
 pre_upgrade() {
-    /usr/bin/bash -c "[[ -f /usr/share/libalpm/hooks.bin/snap-pac/.pre ]] && mv /usr/share/libalpm/hooks.bin/snap-pac/.pre /tmp/snap-pac-pre_root"
+    /usr/bin/bash -c "if [[ -f /usr/share/libalpm/hooks.bin/snap-pac/.pre ]]; then mv /usr/share/libalpm/hooks.bin/snap-pac/.pre /tmp/snap-pac-pre_root; fi"
     return
 }
 
