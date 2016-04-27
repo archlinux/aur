@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=adchpp
-pkgver=2.12.0
+pkgver=2.12.1
 pkgrel=1
 pkgdesc="ADCH++ is a hub software for the ADC network."
 url='http://adchpp.sourceforge.net'
@@ -27,7 +27,7 @@ source=("http://downloads.sourceforge.net/project/adchpp/Releases/ADCH%2B%2B%202
         'http://data.gpo.zugaina.org/klondike/net-p2p/adchpp/files/adchpp-2.11.0-fix_cflags.patch'
         'https://dl.dropboxusercontent.com/u/6596386/adchpp-2.9.0-fix_store_files_in_config_dir_access.guard_plugin.patch'
         'https://dl.dropboxusercontent.com/u/6596386/adchpp-2.9.0-fix_log_path.patch')
-sha1sums=('257bb2eb5f69dd87f83a8624169628cf19d7412a'
+sha1sums=('5c69f0bda7c5ce17518a10710b35bef07d5a5b1a'
           'd903e8241dec8e6c96b741f52a43a75894471cf7'
           'b834071b7bd39effcdc6bdeaa61f3e877757583b'
           'd8c98ccc13ffda1c68bd1d356f51ae99dd1a5ba2'
@@ -36,7 +36,7 @@ sha1sums=('257bb2eb5f69dd87f83a8624169628cf19d7412a'
           '04c2bba95ab80d56a0e56fa9cd3f0b2edce88e23'
           'c201970be161b01d30a4c6761235f47aad9fec4e'
           '1e40351b4be6441979229d63210b43817c9819bf')
-install="adchpp.install"
+install=adchpp.install
 
 [ "$CARCH" = "i686" ] && _arch="x86"
 [ "$CARCH" = "x86_64" ] && _arch="x64"
@@ -92,7 +92,7 @@ package() {
   install -Dm644 etc/adchpp.xml "${pkgdir}/etc/adchpp/adchpp.xml"
   install -Dm644 etc/Script.xml "${pkgdir}/etc/adchpp/Script.xml"
 
-  (cd plugins/Script/examples &> /dev/null; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/adchpp/scripts/${i}"; done)
+  (cd plugins/Script/examples; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/adchpp/scripts/${i}"; done)
   for i in $(find pyutil rbutil -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/adchpp/${i}"; done
 
   (cd build/docs; for i in $(find . -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/doc/adchpp/${i}"; done)
