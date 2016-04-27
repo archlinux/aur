@@ -1,0 +1,27 @@
+pkgbase = drozer
+	pkgdesc = Comprehensive security and attack framework for Android
+	pkgver = 2.3.4
+	pkgrel = 2
+	url = https://labs.mwrinfosecurity.com/tools/drozer
+	arch = i686
+	arch = x86_64
+	license = bsd
+	depends = bash
+	depends = python2
+	depends = python2-protobuf
+	depends = python2-pyopenssl
+	depends = python2-twisted
+	provides = drozer
+	options = !strip
+	source_i686 = https://labs.mwrinfosecurity.com/system/assets/931/original/drozer_2.3.4.deb
+	depends_i686 = bash
+	depends_i686 = python2
+	depends_i686 = python2-protobuf
+	depends_i686 = python2-pyopenssl
+	depends_i686 = python2-twisted
+	md5sums_i686 = 901c7775fa2eb0e0c9943d380cf902a2
+	source_x86_64 = https://labs.mwrinfosecurity.com/system/assets/931/original/drozer_2.3.4.deb
+	md5sums_x86_64 = 901c7775fa2eb0e0c9943d380cf902a2
+
+pkgname = drozer
+
