@@ -2,7 +2,7 @@
 
 pkgname=perl-magick
 pkgver=6.9.3
-_srcrel=0
+_srcrel=8
 pkgrel=1
 pkgdesc="An objected-oriented Perl interface to ImageMagick"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://www.imagemagick.org/script/perl-magick.php"
 license=('Apache 2.0')
 deps=('perl')
 source=("http://www.imagemagick.org/download/ImageMagick-$pkgver-$_srcrel.tar.xz")
-md5sums=('87939f4f82d6f24a28d3106a58d523d8')
+md5sums=('5dcd975b0f6f70cc1f0f26a882a99ba7')
 
 build() {
         cd "$srcdir/ImageMagick-$pkgver-$_srcrel"
