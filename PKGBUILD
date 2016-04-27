@@ -2,7 +2,7 @@
 
 pkgname=webtorrent-desktop
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Streaming torrent client."
 arch=('x86_64')
 url="https://webtorrent.io/desktop"
@@ -14,6 +14,8 @@ sha256sums=('82972f1e1a5ebbef5e7097bba5bfe6320204c1e249e40f67b5d5938ae5644252')
 
 build() {
   cd "$pkgname-$pkgver"
+
+  sed -i "/'build-version'/d" bin/package.js
 
   npm run package -- linux zip
 }

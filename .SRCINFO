@@ -1,7 +1,7 @@
 pkgbase = webtorrent-desktop
 	pkgdesc = Streaming torrent client.
 	pkgver = 0.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://webtorrent.io/desktop
 	arch = x86_64
 	license = MIT
