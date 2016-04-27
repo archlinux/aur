@@ -1,24 +1,22 @@
 # $Id: PKGBUILD 239402 2015-05-15 12:36:25Z foutrelis $
 # Maintainer : Figue <ffigue@gmail.com>
+# Contributor : Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor : Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=45.0.2
+pkgver=45.1.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.mozilla.org/en-US/firefox/organizations/"
-depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
+depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
          'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
-         'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite')
-makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake'
-             'xorg-server-xvfb' 'libpulse' 'gst-plugins-base-libs'
-             'inetutils')
+         'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
+makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
+             'xorg-server-xvfb' 'libpulse' 'inetutils')
 optdepends=('networkmanager: Location detection via available WiFi networks'
-            'gst-plugins-good: h.264 video'
-            'gst-libav: h.264 video'
             'upower: Battery API')
 provides=(firefox)
 conflicts=(firefox)
@@ -26,13 +24,15 @@ install=firefox.install
 options=('!emptydirs' '!makeflags')
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         mozconfig firefox.desktop firefox-install-dir.patch vendor.js
-        firefox-fixed-loading-icon.png)
-sha256sums=('939ac36c4bf30794e76e87903c0e0f5a813807310226c52f0fcd573275067ed3'
+        firefox-fixed-loading-icon.png
+        no-libnotify.patch)
+sha256sums=('8bdc4a0f6d0ca4f28e888ca0044ba735ddc78302820b5ffcc25cd65064ff40a1'
             'ffcb2a0ba2ed08f74931a11043717391ef380234cadccc6f0c13f1186ad80e8b'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
-            '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213')
+            '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213'
+            'e4ebdd14096d177d264a7993dbd5df46463605ff45f783732c26d30b9caa53a7')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -47,12 +47,14 @@ prepare() {
   cp ../mozconfig .mozconfig
   patch -Np1 -i ../firefox-install-dir.patch
 
+  # Notifications with libnotify are broken
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1236150
+  patch -Np1 -i ../no-libnotify.patch
+
   echo -n "$_google_api_key" >google-api-key
   echo "ac_add_options --with-google-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
 
   mkdir "$srcdir/path"
-
-  # WebRTC build tries to execute "python" and expects Python 2
   ln -s /usr/bin/python2 "$srcdir/path/python"
 
   # configure script misdetects the preprocessor without an optimization level
@@ -103,7 +105,7 @@ package() {
   ln -s /usr/share/hunspell "$pkgdir/usr/lib/firefox/dictionaries"
   ln -s /usr/share/hyphen "$pkgdir/usr/lib/firefox/hyphenation"
 
-  #workaround for now
-  #https://bugzilla.mozilla.org/show_bug.cgi?id=658850
+  # Replace duplicate binary with symlink
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }
