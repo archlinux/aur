@@ -10,7 +10,6 @@ license=('GPL3')
 options=('!libtool')
 depends=('gtk3' 'polkit')
 makedepends=('intltool' 'git' 'autoconf-archive')
-install='sysprof2.install'
 provides=('sysprof')
 conflicts=('sysprof')
 source=('git+https://git.gnome.org/browse/sysprof')

@@ -3,7 +3,6 @@ pkgbase = sysprof2-git
 	pkgver = 3.20.0.r25.gb97425b
 	pkgrel = 1
 	url = https://github.com/chergert/sysprof2
-	install = sysprof2.install
 	arch = i686
 	arch = x86_64
 	arch = armv6h
