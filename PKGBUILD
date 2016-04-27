@@ -16,14 +16,16 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}"/libatomic_ops-$_tag
-  # add atomic_ops.c for x86_64-w64-mingw32 target to avoid undefined refs tp AO_pause
-  sed -i "s|libatomic_ops_gpl_la_SOURCES = atomic_ops_stack.c|libatomic_ops_gpl_la_SOURCES = atomic_ops.c atomic_ops_stack.c|g" src/Makefile.am
+
+  # Fix makefile preventing AO_pause undefined in libatomic_ops_gpl
+  wget -c https://github.com/ivmai/libatomic_ops/commit/c63463.patch
+  patch -p1 -i c63463.patch
+
   autoreconf -fi
 }
 
 build() {
   cd "${srcdir}"/libatomic_ops-$_tag
-  
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure ..
