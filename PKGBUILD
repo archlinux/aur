@@ -2,7 +2,7 @@
 
 pkgname=yawls-bzr
 _pkgname=yawls
-pkgver=1.2.2.1.r22
+pkgver=1.2.2.2.r22
 _pkgver=1.2.2 # For avoiding errors with pkgver()
 pkgrel=1
 pkgdesc="Adjust the brightness level of your display by using the internal/external webcam of your notebook as an ambient light sensor - Bazaar sources"
@@ -38,7 +38,7 @@ source=(
 	'bzr+lp:yawls'
 	${pkgname}d.service
 	)
-install=("$pkgname.install")
+install="$pkgname.install"
 # Got from Launchpad downloads page: https://launchpad.net/yawls/+download
 md5sums=('SKIP'
          'ae6497e82edd0e43914ebc72f1975fa0')
@@ -78,6 +78,9 @@ prepare() {
 	# We use systemd on Arch
 	sed "s/invoke-rc.d --quiet yawls stop/systemctl stop yawlsd/" -i yawls
 	sed "s/invoke-rc.d --quiet yawls start/systemctl start yawlsd/" -i yawls
+
+	# Fix build on OpenCV 3
+	sed "s/highgui/videoio/" -i src/com/blogspot/thedsweb/engine/Brightness.java
 }
 
 build() {
