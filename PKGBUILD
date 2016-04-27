@@ -1,10 +1,10 @@
 # Maintainer: Ashley Towns <mail(at)ashleytowns(dot)id(dot)au>
 
-_version=DEVELOPMENT-SNAPSHOT-2016-03-16-a
+_version=DEVELOPMENT-SNAPSHOT-2016-04-25-a
 
 pkgname=swift-development-bin
 pkgver=${_version//-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="The Swift programming language, the development snapshot binary drops from the official website"
 arch=('x86_64')
 url="https://swift.org"
@@ -21,7 +21,7 @@ source=(
   "https://swift.org/builds/development/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz.sig"
   "swift.conf"
 )
-sha256sums=('9f15fd7614a4e2a0c62202526b58604642b2ed338839f80cb70146c1a5bd4c0a'
+sha256sums=('835952d52de5193b20468558523968721f55c19036608f36d3011bcd1be6f0dd'
             'SKIP'
             'c93a77b3a9b2647266a5ccdbe77f47d51cb7051d23ee7cca6258564daf713f35')
 
@@ -47,7 +47,7 @@ package() {
     find "${pkgdir}/usr/lib" -type f -exec chmod a+r {} \; 
 
     # Update glibc map paths
-    sed -i 's/\/x86_64-linux-gnu//g' "${pkgdir}/usr/lib/swift/glibc/module.map"
+    sed -i 's/\/x86_64-linux-gnu//g' "${pkgdir}/usr/lib/swift/linux/x86_64/glibc.modulemap"
 
     # Adds swift libs to the ldpath 
     install -Dm644 $srcdir/swift.conf $pkgdir/etc/ld.so.conf.d/swift.conf
