@@ -3,7 +3,6 @@ pkgbase = unity-editor-bin
 	pkgver = 5.4.0b15+20160418
 	pkgrel = 1
 	url = https://unity3d.com/
-	install = unity-editor-bin.install
 	arch = x86_64
 	license = custom
 	depends = desktop-file-utils

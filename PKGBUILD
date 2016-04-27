@@ -26,7 +26,6 @@ optdepends=('ffmpeg: for WebGL exporting'
 provides=("unity-editor=${pkgver}")
 conflicts=('unity-editor')
 options=(!strip)
-install="${pkgname}.install"
 source=("http://download.unity3d.com/download_unity/linux/unity-editor-${pkgver}_amd64.deb")
 md5sums=('815ab60084ef0be7960ed1b53b85cb9a')
 
