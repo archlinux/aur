@@ -6,7 +6,7 @@ pkgdesc="X Neural Switcher detects the language of input and corrects keyboard l
 url="http://www.xneur.ru"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('gstreamer0.10' 'enchant' 'libnotify' 'gtk3' 'hicolor-icon-theme')
+depends=('gstreamer0.10' 'enchant' 'libnotify' 'gtk2' 'hicolor-icon-theme')
 source=("https://launchpad.net/~andrew-crew-kuznetsov/+archive/xneur-stable/+files/xneur_${pkgver}+git5.orig.tar.gz")
 md5sums=('e236550817260e42650e551023732705')
 
@@ -15,7 +15,7 @@ build() {
 
 	./configure --prefix=/usr --sysconfdir=/etc \
    	--without-xosd \
-	--with-gtk=gtk3
+	--with-gtk=gtk2
 	make
 }
 
