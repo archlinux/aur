@@ -2,7 +2,7 @@
 
 pkgname=arena-tracker
 pkgver=3.44
-pkgrel=1
+pkgrel=2
 pkgdesc="Tracks your Hearthstone Arena matches and cards"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://github.com/supertriodo/Arena-Tracker/"
@@ -33,11 +33,8 @@ package() {
 	install -m755 $srcdir/"Arena Tracker v$pkgver Linux"/ArenaTracker $pkgdir/opt/$pkgname/$pkgname
 	install -m755 $srcdir/ArenaTracker.ico $pkgdir/usr/share/icons/$pkgname.ico
 	install -m755 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-	cp -R $srcdir/"Arena Tracker v$pkgver Linux"/HSCards $pkgdir/opt/$pkgname/HSCards
 	ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
-	ln -s "/opt/$pkgname/HSCards/" "$pkgdir/usr/bin/"
-	chmod 0777 "$pkgdir/opt/$pkgname/HSCards/"
 }
-md5sums=('065e2cf58d8eee2ba10833b948dae16d'
+md5sums=('118c82a9954c2a177be16a2afce3f8b3'
 	'81cbf4e6a4d8711ba29ad526b4c2c755'
 	'c81a05fdc3b96092fb363f841267e21f')
