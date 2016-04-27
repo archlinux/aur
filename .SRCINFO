@@ -1,0 +1,18 @@
+pkgbase = languagetool-ngrams-he
+	pkgdesc = Finding errors using n-gram data, hebrew text
+	pkgver = 20150916
+	pkgrel = 1
+	url = http://wiki.languagetool.org/finding-errors-using-n-gram-data
+	install = languagetool-ngrams-he.install
+	arch = any
+	license = LGPL
+	makedepends = unzip
+	optdepends = languagetool: system wide installation of LT
+	optdepends = libreoffice-extension-languagetool: standalone LT for LibreOffice
+	optdepends = openoffice-extension-languagetool: standalone LT for OpenOffice
+	noextract = languagetool-ngrams-he-20150916.zip
+	source = languagetool-ngrams-he-20150916.zip::http://languagetool.org/download/ngram-data/untested/ngram-he-20150916.zip
+	md5sums = SKIP
+
+pkgname = languagetool-ngrams-he
+
