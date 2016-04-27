@@ -20,7 +20,6 @@ depends=('gcc-libs' 'libxt' 'freetype2' 'libxext' 'glib2' 'ttf-font'
          'shared-mime-info' 'hicolor-icon-theme' 'desktop-file-utils')
 optdepends=('gstreamer0.10-base-plugins: HTML5 Video support'
             'gstreamer0.10-good: HTML5 Video support')
-install=opera.install
 options=(!strip !zipman)
 
 if [[ ${CARCH} == i686 ]]; then
