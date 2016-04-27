@@ -3,7 +3,7 @@
 
 pkgname=fcitx-anthy
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Fcitx Wrapper for anthy."
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx"
@@ -11,7 +11,6 @@ license=('GPL')
 depends=('fcitx' 'anthy')
 makedepends=('cmake' 'intltool')
 source=("http://download.fcitx-im.org/$pkgname/$pkgname-$pkgver.tar.xz")
-install=fcitx-anthy.install
 
 build(){
   cd ${pkgname}-${pkgver}
