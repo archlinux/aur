@@ -4,9 +4,8 @@
 
 pkgname=android-studio-dummy
 _pkgname=android-studio
-pkgver=2.0.0.20
+pkgver=2.1.0.9
 pkgrel=1
-_build=143.2739321
 pkgdesc='A new Android development environment based on IntelliJ IDEA, dummy package'
 arch=('i686' 'x86_64')
 url='http://developer.android.com/sdk/installing/studio.html'
