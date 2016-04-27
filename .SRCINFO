@@ -1,7 +1,7 @@
 pkgbase = jcryptool
 	pkgdesc = A cryptographer's e-learning application. You can use it to apply and analyse cryptographic algorithms.
 	pkgver = 0.9.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cryptool.org/en/jcryptool
 	install = jcryptool.install
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = jcryptool
 	source = http://www.cryptool.org/jctdownload/Builds/downloads/weekly/jcryptool-0.9.9-linux.gtk.x86_64.tar.gz
 	source = jcryptool.desktop
 	source = jcryptool.png
-	sha512sums = 33ef49c750d968a0f088f712292e51741b1c60e71fa1b0eafc36f9390acfb8970897a9385ceceaabd0c40164728f6f2ccc59702d8886b5ee8ce29e18b8736fdc
+	sha512sums = 9cf896b72ae5ebcb90067d8e8902f92f4a1a0a40d6c7195e7e8121f5a08b4bb2bbb99c5eb818821c4c471ff79e683750d676d868ae35f2197facdea5932b450d
 	sha512sums = d0bd2e8b4a52b52280c9dcf45ae1e1db11876dfe6cefd34e095f5218c4c9fabb1abefcd38c92f74e3ef1b825794d720655dc45a03f08cbfc3f5b01f1f5994302
 	sha512sums = e5e0ac2721ad3919b85fdf7da2fc14d491e89965aabf4c7ca6db840b70bd72ca37ddb63222ee21727607348651125fb34c5e62c2cb9d49e5856678187cb35f6c
 
