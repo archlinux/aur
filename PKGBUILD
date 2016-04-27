@@ -2,15 +2,14 @@
 
 pkgname=fcitx-googlepinyin
 pkgver=0.1.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Fcitx Wrapper for googlepinyin"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/fcitx"
 license=('GPL')
-depends=('fcitx>=4.2.0' 'libgooglepinyin>=0.1.2')
+depends=('fcitx' 'libgooglepinyin')
 makedepends=('cmake' 'intltool')
 source=("http://fcitx.googlecode.com/files/${pkgname}-${pkgver}.tar.xz")
-install=fcitx-googlepinyin.install
 md5sums=('7ee33bbb66d29536819b0d2f73b69713')
 
 build() {
