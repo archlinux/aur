@@ -4,13 +4,12 @@
 
 pkgname=nitrogen
 pkgver=1.5.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Background browser and setter for X windows"
 arch=('i686' 'x86_64')
 url="http://projects.l3ib.org/nitrogen/"
 license=('GPL')
 depends=('gtkmm' 'hicolor-icon-theme' 'librsvg')
-install=nitrogen.install
 source=(http://projects.l3ib.org/nitrogen/files/${pkgname}-${pkgver}.tar.gz
         nitrogen-1.5.2-X11-linker-flags.patch)
 md5sums=('dd779a252a222eb9d329d74b809cfe73'
