@@ -41,6 +41,17 @@ prepare() {
 	sed -i -e "s/i586-pc-msdosdjgpp/$_target_alias/" \
 		src/makefile.def
 
+	# enable building without an ldscript
+	echo 'char **_environ;' > src/libc/crt0/environ.c
+	sed -i -e '/dfinfo\.c/ a \
+SRC += environ.c' \
+		src/libc/crt0/makefile
+
+	# fix gcc6 build
+	echo -Wno-nonnull-compare >> src/gcc.opt
+	echo -Wno-misleading-indentation >> src/gcc.opt
+	echo -Wno-unused-const-variable >> src/gcc.opt
+
 	# gcc provides its own float.h which masks this one
 	ln -fs float.h include/djfloat.h
 	sed -i -e 's/<float\.h>/<djfloat.h>/' \
