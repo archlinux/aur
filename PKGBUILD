@@ -15,6 +15,7 @@ pkgver() {
 	echo "$(git rev-parse --short HEAD)"
 }
 build(){
+ cd "${srcdir}/${pkgname}"
  export GOPATH=${srcdir}/${pkgname}
  make
  make install
