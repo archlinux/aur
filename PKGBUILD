@@ -1,7 +1,7 @@
 #Maintainer James W. Barnett < jbarnet 4 at tulane dot edu >
 pkgname=gromacs-mpi
 _pkgname=gromacs
-pkgver=5.1
+pkgver=5.1.2
 pkgrel=1
 pkgdesc='A versatile package to perform molecular dynamics, i.e. simulate the Newtonian equations of
 motion for systems with hundreds to millions of particles.'
@@ -18,7 +18,7 @@ optdepends=('lapack: normal modes and matrix manipulation'
             'vmd: visualization')
 options=('!libtool')
 source=(ftp://ftp.gromacs.org/pub/gromacs/gromacs-${pkgver}.tar.gz)
-md5sums=('e5ba00d47c4c6dec107951a7d4605f31')
+md5sums=('614d0be372f1a6f1f36382b7a6fcab98')
 
 build() {
   mkdir -p ${srcdir}/${_pkgname}-${pkgver}/build
@@ -38,20 +38,20 @@ check() {
 
 package() {
   cd ${srcdir}/${_pkgname}-${pkgver}/build
+
   make DESTDIR=${pkgdir} install
-  mkdir -p ${pkgdir}/etc/profile.d/
-  mkdir -p ${pkgdir}/usr/share/bash-completion/completions
-  mv ${pkgdir}/usr/bin/gmx-completion.bash "${pkgdir}/usr/share/bash-completion/completions/gmx-completion.bash"
-  mv ${pkgdir}/usr/bin/gmx-completion-gmx.bash "${pkgdir}/usr/share/bash-completion/completions/gmx-completion-gmx.bash"
-  sed -e "s:\$GMXBIN/gmx-completion.bash:/usr/share/bash-completion/completions/gmx-completion.bash:g" \
-      -e "s:\$GMXBIN/gmx-completion-\*.bash:/usr/share/bash-completion/completions/gmx-completion-\*.bash:g" \
-        ${pkgdir}/usr/bin/GMXRC.bash > ${pkgdir}/etc/profile.d/GMXRC.bash
-  chmod 755 ${pkgdir}/etc/profile.d/GMXRC.bash
-  rm -f ${pkgdir}/usr/bin/GMXRC.bash
-  sed "s:/usr/bin:/etc/profile.d:" ${pkgdir}/usr/bin/GMXRC > ${pkgdir}/etc/profile.d/GMXRC
-  chmod 755 ${pkgdir}/etc/profile.d/GMXRC
-  mv ${pkgdir}/usr/bin/GMXRC.* ${pkgdir}/etc/profile.d/
+
+  sed -i "s:/usr/bin:/etc/profile.d:" ${pkgdir}/usr/bin/GMXRC
+  sed -i -e "s:\$GMXBIN/gmx-completion.bash:/usr/share/bash-completion/completions/gmx-completion.bash:g" \
+         -e "s:\$GMXBIN/gmx-completion-\*.bash:/usr/share/bash-completion/completions/gmx-completion-\*.bash:g" \
+            ${pkgdir}/usr/bin/GMXRC.bash
+  install -d ${pkgdir}/etc/profile.d/
+  install -Dm 755 ${pkgdir}/usr/bin/GMXRC* ${pkgdir}/etc/profile.d/
+  rm -f ${pkgdir}/usr/bin/GMXRC*
+
+  install -d ${pkgdir}/usr/share/bash-completion/completions
+  install -Dm 755 ${pkgdir}/usr/bin/gmx-completion.* ${pkgdir}/usr/share/bash-completion/completions/
   rm -f ${pkgdir}/usr/bin/completion.*
-  rm -f ${pkgdir}/usr/bin/GMXRC
+
 }
 
