@@ -3,7 +3,7 @@
 
 pkgname=dub-git
 _gitname=dub
-pkgver=0.9.25.alpha.1.r0.c2aae40
+pkgver=0.9.25.beta.2.r0.6d60f6a
 pkgrel=1
 pkgdesc="Package manager for D packages, git version"
 arch=('i686' 'x86_64')
