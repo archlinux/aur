@@ -1,9 +1,8 @@
 pkgbase = megasync-qt5
 	pkgdesc = Sync your files to your Mega account (qt5 version)
 	pkgver = 2.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mega.nz/#sync
-	install = megasync.install
 	arch = i686
 	arch = x86_64
 	license = custom
