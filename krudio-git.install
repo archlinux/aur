@@ -18,7 +18,7 @@ ln -s /usr/share/krudio/icons/krudiotray-light-on24.svg /usr/share/icons/hicolor
 
 post_remove() {
 rm /usr/share/icons/hicolor/48x48/apps/krudio.svg
-rm -rf /usr/share/icons/hicolor/16x16/status/krudiotray*
-rm -rf /usr/share/icons/hicolor/22x22/status/krudiotray*
-rm -rf /usr/share/icons/hicolor/24x24/status/krudiotray*
+rm /usr/share/icons/hicolor/16x16/status/krudiotray*
+rm /usr/share/icons/hicolor/22x22/status/krudiotray*
+rm /usr/share/icons/hicolor/24x24/status/krudiotray*
 }
