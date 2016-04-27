@@ -24,7 +24,7 @@ noextract=("google-chrome-unstable-${_rpm_ver}-${_rpm_rel}.x86_64.rpm")
 
 pkgver() {
   bsdtar -xf "google-chrome-unstable-${_rpm_ver}-${_rpm_rel}.x86_64.rpm" opt/google/chrome-unstable/{chrome,libwidevinecdm.so}
-  echo "$(strings opt/google/chrome-unstable/chrome | sed -n '/ (version:/{n;p}')"
+  echo "$(strings opt/google/chrome-unstable/chrome | awk 'match($0, /\(version: ([^ ]*)/, a) {print a[1];}' |tr -d \))"
 }
 
 package() {
