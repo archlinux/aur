@@ -3,13 +3,13 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-git
-pkgver=0.20.99.21223.gd7f7eb9
-pkgrel=1
+pkgver=0.20.99.21376.gbcefcdf
+pkgrel=2
 pkgdesc="Enlightenment window manager - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD')
-depends=('efl-git' 'xcb-util-keysyms' 'hicolor-icon-theme'
+depends=('efl-git' 'xcb-util-keysyms' 'shared-mime-info'
          'desktop-file-utils' 'udisks2' 'ttf-font' 'mesa')
   [[ ! $(pacman -T bluez-libs) ]] && depends+=('bluez-libs') #l2ping support in enlightenment_sys is detected at build time
 makedepends=('git')
@@ -26,7 +26,6 @@ conflicts=("$_pkgname")
 backup=('etc/enlightenment/sysactions.conf'
         'etc/xdg/menus/e-applications.menu')
 options=('debug')
-install=enlightenment.install
 source=("git://git.enlightenment.org/core/$_pkgname.git")
 sha256sums=('SKIP')
 

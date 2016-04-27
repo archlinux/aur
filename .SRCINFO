@@ -1,16 +1,15 @@
 pkgbase = enlightenment-git
 	pkgdesc = Enlightenment window manager - Development version
-	pkgver = 0.20.99.21223.gd7f7eb9
-	pkgrel = 1
+	pkgver = 0.20.99.21376.gbcefcdf
+	pkgrel = 2
 	url = http://www.enlightenment.org
-	install = enlightenment.install
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = git
 	depends = efl-git
 	depends = xcb-util-keysyms
-	depends = hicolor-icon-theme
+	depends = shared-mime-info
 	depends = desktop-file-utils
 	depends = udisks2
 	depends = ttf-font
@@ -24,7 +23,7 @@ pkgbase = enlightenment-git
 	optdepends = geoclue2: geolocation module
 	optdepends = packagekit: packagekit module
 	optdepends = xorg-server-xwayland: xwayland module
-	provides = enlightenment=0.20.99.21223.gd7f7eb9
+	provides = enlightenment=0.20.99.21376.gbcefcdf
 	provides = notification-daemon
 	conflicts = enlightenment
 	options = debug
