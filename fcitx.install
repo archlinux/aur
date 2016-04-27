@@ -1,14 +1,4 @@
-post_upgrade() {
-  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-  update-desktop-database -q
-  update-mime-database usr/share/mime &> /dev/null
-}
-
 post_install() {
   echo "You should at least install one of kcm-fcitx (For Qt/KDE users) or fcitx-configtool (For GTK+ users) to enable Fcitx configuration GUI."
-  post_upgrade
 }
 
-post_remove() {
-  post_upgrade
-}
