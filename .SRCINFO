@@ -1,6 +1,6 @@
 pkgbase = sftpman
 	pkgdesc = Application that handles sshfs/sftp file systems mounting.
-	pkgver = 0.6.1
+	pkgver = 0.6.2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/spantaleev/sftpman
@@ -12,7 +12,7 @@ pkgbase = sftpman
 	depends = sshfs
 	depends = python-setuptools
 	optdepends = sftpman-gtk: GTK frontend
-	source = vcs-repository::git://github.com/spantaleev/sftpman.git#tag=0.6.1
+	source = vcs-repository::git://github.com/spantaleev/sftpman.git#tag=0.6.2
 	md5sums = SKIP
 
 pkgname = sftpman
