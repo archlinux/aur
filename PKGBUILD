@@ -1,20 +1,22 @@
 pkgbase=('curlbomb')
 pkgname=('curlbomb')
 _module='curlbomb'
-pkgver='1.3.0'
+pkgver='1.3.1'
 pkgrel=0
 pkgdesc="An HTTP server for serving one-time-use shell scripts"
 url="https://github.com/EnigmaCurry/curlbomb"
 depends=('python'
-	 'python-tornado')
-optdepends=('openssh: SSH tunnel support'
-            'gnupg: Encrypted SSL certificate support'
+	 'python-tornado'
+	 'python-requests')
+optdepends=('openssh: SSH tunnel support (--ssh)'
+            'openssl: TLS security (--ssl)'
+            'gnupg: Encrypted SSL certificate and resource support'
 	    'python-notify2: Desktop notification support')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/e2/7d/bb718da97006405a3fbc75a03fe51a92b142643517c0cc2c09155692b7b9/curlbomb-1.3.0.tar.gz")
-md5sums=('2cd2c48f6f1bf91530da7f3bb18adab7')
+source=("https://pypi.python.org/packages/1d/c8/27fb878ae84d4c98c9b9fb3d91abef81a11f33ba7e4f3ca364209df83505/curlbomb-1.3.1.tar.gz")
+md5sums=('1c3df5046475e503dacd81f45a62e083')
 
 package() {
     depends+=()
