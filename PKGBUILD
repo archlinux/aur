@@ -8,7 +8,7 @@
 pkgbase=scribus
 pkgname=scribus-devel
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Desktop publishing software'
 url='http://www.scribus.net/'
 license=('GPL')
@@ -23,8 +23,6 @@ source=("http://downloads.sourceforge.net/${pkgbase}/${pkgbase}-${pkgver}.tar.xz
 sha256sums=('1882e68713d91c2ab9d6ec7a251dbbe31a4438ee68e63e62d36770541e6f4a38' 'SKIP')
 conflicts=("${pkgbase}")
 provides=("${pkgbase}")
-
-install=${pkgname}.install
 
 prepare() {
     cd "${srcdir}/${pkgbase}-${pkgver}"
