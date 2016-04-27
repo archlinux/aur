@@ -1,7 +1,7 @@
 pkgbase = hostsblock-git
 	pkgdesc = A script and cronjob that downloads, sorts, and installs multiple ad- and malware-blocking hosts files.
 	pkgver = r78.1584916
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gaenserich.github.com/hostsblock/
 	install = hostsblock.install
 	arch = any

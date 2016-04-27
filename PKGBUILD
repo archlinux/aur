@@ -3,7 +3,7 @@ pkgname=hostsblock-git
 provides=('hostsblock')
 conflicts=('hostsblock')
 pkgver=r78.1584916
-pkgrel=1
+pkgrel=2
 pkgdesc="A script and cronjob that downloads, sorts, and installs multiple ad- and malware-blocking hosts files."
 arch=('any')
 url="http://gaenserich.github.com/hostsblock/"
@@ -24,12 +24,12 @@ source=('git+https://github.com/gaenserich/hostsblock')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$pkgname"
+	cd "$srcdir/hostsblock"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-	cd $srcdir/$pkgname
+	cd $srcdir/hostsblock
 	install -Dm744 src/hostsblock.sh "$pkgdir"/usr/bin/hostsblock
 	install -Dm744 src/hostsblock-urlcheck.sh "$pkgdir"/usr/bin/hostsblock-urlcheck
 	install -Dm644 src/hostsblock-common.sh "$pkgdir"/usr/lib/hostsblock-common.sh
