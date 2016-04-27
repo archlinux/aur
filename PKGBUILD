@@ -2,7 +2,7 @@
 
 pkgname=yawls
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Adjust the brightness level of your display by using the internal/external webcam of your notebook as an ambient light sensor"
 url="https://launchpad.net/yawls"
 arch=('any')
@@ -34,7 +34,7 @@ source=(
 	https://launchpad.net/${pkgname}/${pkgver%?}x/${pkgver}/+download/${pkgname}_${pkgver}.tar.gz{,.asc}
 	${pkgname}d.service
 	)
-install=("$pkgname.install")
+install="$pkgname.install"
 # Got from Launchpad downloads page: https://launchpad.net/yawls/+download
 md5sums=('e898ad27f010b621404be95baea3dbeb'
          'SKIP'
@@ -68,6 +68,9 @@ prepare() {
 	# We use systemd on Arch
 	sed "s/invoke-rc.d --quiet yawls stop/systemctl stop yawlsd/" -i yawls
 	sed "s/invoke-rc.d --quiet yawls start/systemctl start yawlsd/" -i yawls
+
+	# Fix build on OpenCV 3
+	sed "s/highgui/videoio/" -i src/com/blogspot/thedsweb/engine/Brightness.java
 }
 
 build() {
