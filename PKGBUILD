@@ -3,7 +3,7 @@
 
 pkgname=djgpp-djcrx
 pkgver=2.05
-pkgrel=3
+pkgrel=4
 pkgdesc="Headers and utilities for the djgpp cross-compiler"
 arch=(i686 x86_64)
 url="http://www.delorie.com/djgpp/"
