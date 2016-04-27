@@ -1,9 +1,9 @@
-# Maintainer: Felix Yan <felixonmars@gmail.com>
+# Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Auguste Pop <auguste [at] gmail [dot] com>
 
 pkgname=osdlyrics
 pkgver=0.4.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A lyric show compatible with various media players"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/osd-lyrics/"
@@ -11,7 +11,6 @@ license=('GPL3')
 depends=('gtk2' 'dbus-glib' 'curl' 'libnotify' 'libmpd' 'xmms2'
          'desktop-file-utils' 'hicolor-icon-theme' 'sqlite')
 makedepends=('intltool')
-install=$pkgname.install
 source=("http://osd-lyrics.googlecode.com/files/$pkgname-$pkgver.tar.gz")
 md5sums=('a14a3fbfe07eb7137074126db63b9aa2')
 
