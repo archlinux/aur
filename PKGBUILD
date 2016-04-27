@@ -13,12 +13,12 @@ source=("git+https://gitlab.labs.nic.cz/labs/bird.git"
         'bird.service'
         'bird6.service'
         '0001-Teach-bvsnprintf-to-print-64-bit-router-IDs.patch'
-        '0002-Add-the-Babel-protocol.patch')
+        '0002-Add-the-Babel-routing-protocol-RFC6126.patch')
 md5sums=('SKIP'
-         '69221e063a3f07dcad519d5eeacaae75'
+         '69221e063a3f07dcad519d5eeacaae75' 
          '5b172bd052b523efd95ee018e891e181'
-         'bd6d67d08374c0ecece8fd265b3ff586'
-         '32e8083379096db86677629e6a083534')
+         '4e8d8c8afa581ffe15044772c3ade0ab'
+         '6cae1325e149d490456515c7e32f20b8')
 _gitname=bird
 
 build() {

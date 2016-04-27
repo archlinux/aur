@@ -1,12 +1,10 @@
-From e448a7d3659229d49ce9bfaa053c07ae27d9939e Mon Sep 17 00:00:00 2001
+From 06c5f3e8666231ccc3030e6b1df9083956198dfb Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Toke=20H=C3=B8iland-J=C3=B8rgensen?= <toke@toke.dk>
-Date: Thu, 14 Jan 2016 23:24:59 +0100
-Subject: [PATCH 2/2] Add the Babel protocol.
+Date: Mon, 4 Apr 2016 14:13:31 -0300
+Subject: [PATCH 2/2] Add the Babel routing protocol (RFC6126).
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-
-This adds the Babel routing protocol (RFC6126) to Bird.
 
 This patch set implements the IPv6 subset of RFC6126, but does not
 implement any of the extensions. It will, however, peacefully coexist
@@ -15,8 +13,9 @@ ignoring the extension TLVs).
 
 Signed-off-by: Toke Høiland-Jørgensen <toke@toke.dk>
 ---
+ .gitignore           |   13 +
  configure.in         |    3 +
- doc/bird.sgml        |   91 +++
+ doc/bird.sgml        |   93 +++
  lib/bitops.h         |    3 +-
  lib/ip.h             |    1 +
  nest/proto.c         |    3 +
@@ -25,13 +24,14 @@ Signed-off-by: Toke Høiland-Jørgensen <toke@toke.dk>
  proto/Doc            |    1 +
  proto/babel/Doc      |    2 +
  proto/babel/Makefile |    5 +
- proto/babel/babel.c  | 1905 ++++++++++++++++++++++++++++++++++++++++++++++++++
- proto/babel/babel.h  |  348 +++++++++
- proto/babel/config.Y |  127 ++++
- proto/babel/packet.c |  863 +++++++++++++++++++++++
+ proto/babel/babel.c  | 1945 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ proto/babel/babel.h  |  349 +++++++++
+ proto/babel/config.Y |  129 ++++
+ proto/babel/packet.c |  871 ++++++++++++++++++++++
  proto/babel/packet.h |  127 ++++
  sysdep/autoconf.h.in |    1 +
- 16 files changed, 3490 insertions(+), 3 deletions(-)
+ 17 files changed, 3556 insertions(+), 3 deletions(-)
+ create mode 100644 .gitignore
  create mode 100644 proto/babel/Doc
  create mode 100644 proto/babel/Makefile
  create mode 100644 proto/babel/babel.c
@@ -40,8 +40,27 @@ Signed-off-by: Toke Høiland-Jørgensen <toke@toke.dk>
  create mode 100644 proto/babel/packet.c
  create mode 100644 proto/babel/packet.h
 
+diff --git a/.gitignore b/.gitignore
+new file mode 100644
+index 0000000..d31792b
+--- /dev/null
++++ b/.gitignore
+@@ -0,0 +1,13 @@
++doc/*.html
++doc/prog.sgml
++doc/prog.log
++obj/
++autom4te.cache
++bird
++birdc
++birdcl
++config.*
++configure
++cscope.files
++patches
++Makefile
 diff --git a/configure.in b/configure.in
-index c81709e..1265565 100644
+index b9220a1..16a0b41 100644
 --- a/configure.in
 +++ b/configure.in
 @@ -206,6 +206,9 @@ fi
@@ -55,10 +74,10 @@ index c81709e..1265565 100644
  
  if test "$with_protocols" = all ; then
 diff --git a/doc/bird.sgml b/doc/bird.sgml
-index 86df045..24e3b94 100644
+index 1a5fbaf..e2438e9 100644
 --- a/doc/bird.sgml
 +++ b/doc/bird.sgml
-@@ -1365,6 +1365,97 @@ corresponding protocol sections.
+@@ -1380,6 +1380,99 @@ corresponding protocol sections.
  
  <chapt>Protocols
  
@@ -119,7 +138,7 @@ index 86df045..24e3b94 100644
 +
 +      <tag>hello interval <m/num/</tag>
 +      Interval at which periodic "hello" messages are sent on this interface,
-+      in seconds. Default: 20 seconds for wired interfaces, 4 seconds for wireless.
++      in seconds. Default: 4 seconds.
 +
 +      <tag>update interval <m/num/</tag>
 +      Interval at which periodic (full) updates are sent. Default: 4 times the
@@ -131,18 +150,20 @@ index 86df045..24e3b94 100644
 +
 +      <tag>tx class|dscp|priority <m/number/</tag>
 +      These options specify the ToS/DiffServ/Traffic class/Priority of the
-+      outgoing RIP packets. See <ref id="dsc-prio" name="tx class"> common
++      outgoing Babel packets. See <ref id="dsc-prio" name="tx class"> common
 +      option for detailed description.
 +
 +      <tag>rx buffer <m/number/</tag>
 +      This option specifies the size of buffers used for packet processing.
 +      The buffer size should be bigger than maximal size of received packets.
-+      The default value is the interface MTU.
++      The default value is the interface MTU, and the value will be clamped to a
++      minimum of 512 bytes + IP packet overhead.
 +
 +      <tag>tx length <m/number/</tag>
 +      This option specifies the maximum length of generated Babel packets. To
 +      avoid IP fragmentation, it should not exceed the interface MTU value.
-+      The default value is the interface MTU value.
++      The default value is the interface MTU value, and the value will be
++      clamped to a minimum of 512 bytes + IP packet overhead.
 +
 +      <tag>check link <m/switch/</tag>
 +      If set, the hardware link state (as reported by OS) is taken into
@@ -181,7 +202,7 @@ index 5bc44e0..978eb11 100644
  #define IP4_NONE		_MI4(0)
  #define IP6_NONE		_MI6(0,0,0,0)
 diff --git a/nest/proto.c b/nest/proto.c
-index d04da33..0ae0ff3 100644
+index 436377f..3e97e9d 100644
 --- a/nest/proto.c
 +++ b/nest/proto.c
 @@ -919,6 +919,9 @@ protos_build(void)
@@ -208,7 +229,7 @@ index 8c49154..ec78735 100644
  /*
   *	Routing Protocol Instance
 diff --git a/nest/route.h b/nest/route.h
-index c435b9e..918a6e5 100644
+index 9368808..3969db6 100644
 --- a/nest/route.h
 +++ b/nest/route.h
 @@ -220,6 +220,12 @@ typedef struct rte {
@@ -281,15 +302,15 @@ index 0000000..a27b010
 +include ../../Rules
 diff --git a/proto/babel/babel.c b/proto/babel/babel.c
 new file mode 100644
-index 0000000..8f46fd4
+index 0000000..8c64baa
 --- /dev/null
 +++ b/proto/babel/babel.c
-@@ -0,0 +1,1905 @@
+@@ -0,0 +1,1945 @@
 +/*  -*- c-file-style: "gnu"; indent-tabs-mode: nil; -*-
 + *
 + *	The Babel protocol
 + *
-+ *	Copyright (c) 2015 Toke Høiland-Jørgensen
++ *	Copyright (c) 2015-2016 Toke Høiland-Jørgensen
 + *
 + *	Can be freely distributed and used under the terms of the GNU GPL.
 + *
@@ -330,15 +351,18 @@ index 0000000..8f46fd4
 +
 +
 +#define BAD(x) { log(L_REMOTE "%s: " x, p->p.name); return 1; }
++#define OUR_ROUTE(r) (r->neigh == NULL)
 +
-+/* Is one number larger than another mod 65535? Since diff_mod64k is always >=
-+   0, just use a simple cutoff value to determine if the difference is small
-+   enough that one is really larger. Since these comparisons are only made for
-+   values that should not differ by more than a few numbers, this should be
-+   safe. */
++/* Is one number larger than another mod 2^16? This is based on the definition
++   of serial number space in RFC1982.
++
++   The simple comparison works because if b - a > 0x8000 then (since the u16
++   values wrap) either b is larger than a by more than 2**15 (which means a > b
++   in sequence number space), OR a is larger than b by LESS than 2**15 (which
++   also means that a > b in sequence number space.*/
 +static inline u16 ge_mod64k(u16 a, u16 b)
 +{
-+  return ((u16) a-b) < 0xfff0;
++  return (a == b || b - a > 0x8000);
 +}
 +
 +static void babel_expire_hello(struct babel_neighbor *n);
@@ -353,6 +377,7 @@ index 0000000..8f46fd4
 +static void babel_send_wildcard_request(struct babel_iface *ifa);
 +static int  babel_cache_seqno_request(struct babel_proto *p, ip_addr prefix, u8 plen,
 +			       u64 router_id, u16 seqno);
++static void babel_trigger_iface_update(struct babel_iface *ifa);
 +static void babel_trigger_update(struct babel_proto *p);
 +static void babel_send_seqno_request(struct babel_entry *e);
 +static inline void babel_kick_timer(struct babel_proto *p);
@@ -497,7 +522,7 @@ index 0000000..8f46fd4
 +static void
 +babel_refresh_route(struct babel_route *r)
 +{
-+  if (!r->neigh || r != r->e->selected_in) return;
++  if (OUR_ROUTE(r) || r != r->e->selected_in) return;
 +  babel_send_route_request(r->e, r->neigh);
 +}
 +
@@ -775,13 +800,13 @@ index 0000000..8f46fd4
 +  /* try to find the best feasible route */
 +  WALK_LIST(r, e->routes)
 +    if ((!cur || r->metric < cur->metric)
-+        && r->neigh /* prevent propagating out own routes back to core */
++        && !OUR_ROUTE(r) /* prevent propagating our own routes back to core */
 +        && babel_is_feasible(babel_find_source(e, r->router_id),
 +                       r->seqno, r->advert_metric))
 +      cur = r;
 +
-+  if (cur && cur->neigh && ((!e->selected_in && cur->metric < BABEL_INFINITY)
-+			   || (e->selected_in && cur->metric < e->selected_in->metric)))
++  if (cur && !OUR_ROUTE(cur) && ((!e->selected_in && cur->metric < BABEL_INFINITY)
++                                 || (e->selected_in && cur->metric < e->selected_in->metric)))
 +                           {
 +      TRACE(D_EVENTS, "Picked new route for prefix %I/%d: router id %lR metric %d",
 +	    e->n.prefix, e->n.pxlen, cur->router_id, cur->metric);
@@ -1016,6 +1041,16 @@ index 0000000..8f46fd4
 +  } FIB_WALK_END;
 +}
 +
++static void
++babel_trigger_iface_update(struct babel_iface *ifa)
++{
++    if (ifa->up && !ifa->want_triggered)
++    {
++      ifa->want_triggered = now;
++      babel_iface_kick_timer(ifa);
++    }
++}
++
 +/* Sends and update on all interfaces. */
 +static void
 +babel_trigger_update(struct babel_proto *p)
@@ -1024,18 +1059,10 @@ index 0000000..8f46fd4
 +    return;
 +  struct babel_iface *ifa;
 +  TRACE(D_EVENTS, "Sending global update. Seqno %d", p->update_seqno);
-+  WALK_LIST(ifa, p->interfaces) {
 +
-+    if (!ifa->up)
-+      continue;
++  WALK_LIST(ifa, p->interfaces)
++    babel_trigger_iface_update(ifa);
 +
-+    /* already triggered */
-+    if (ifa->want_triggered)
-+      continue;
-+
-+    ifa->want_triggered = now;
-+    babel_iface_kick_timer(ifa);
-+  }
 +  p->triggered = 1;
 +}
 +
@@ -1146,8 +1173,8 @@ index 0000000..8f46fd4
 +	e->n.prefix, e->n.pxlen, in->router_id);
 +  WALK_LIST(r, e->routes)
 +  {
-+    if (r->router_id == in->router_id && r->neigh
-+       && !ipa_equal(r->neigh->addr,sender))
++    if (r->router_id == in->router_id && !OUR_ROUTE(r)
++        && !ipa_equal(r->neigh->addr,sender))
 +    {
 +      if (!babel_cache_seqno_request(p, e->n.prefix, e->n.pxlen, in->router_id, in->seqno))
 +	return;
@@ -1373,8 +1400,8 @@ index 0000000..8f46fd4
 +  }
 +  else
 +  {
++    babel_trigger_iface_update(ifa);
 +    e->updated = now;
-+    ifa->want_triggered = now;
 +  }
 +}
 +
@@ -1402,8 +1429,8 @@ index 0000000..8f46fd4
 +  r = e->selected_out;
 +  if (r->router_id != tlv->router_id || ge_mod64k(r->seqno, tlv->seqno))
 +  {
++    babel_trigger_iface_update(ifa);
 +    e->updated = now;
-+    ifa->want_triggered = now;
 +    return;
 +  }
 +
@@ -1432,7 +1459,21 @@ index 0000000..8f46fd4
 + * @t: Timer.
 + *
 + * This function is called by the per-interface timer and triggers sending of
-+ * periodic Hello's and both triggered and periodic updates.
++ * periodic Hello's and both triggered and periodic updates. Periodic Hello's
++ * and updates are simply handled by setting the next_{hello,regular} variables
++ * on the interface, and triggering an update (and resetting the variable)
++ * whenever 'now' exceeds that value.
++ *
++ * For triggered updates, babel_trigger_iface_update() will set the
++ * want_triggered field on the interface to a timestamp value. If this is set
++ * (and the next_triggered time has passed; this is a rate limiting mechanism),
++ * babel_send_update() will be called with this timestamp as the second
++ * parameter. This causes updates to be send consisting of only the routes that
++ * have changed since the time saved in want_triggered.
++ *
++ * Mostly when an update is triggered, the route being modified will be set to
++ * the value of 'now' at the time of the trigger; the >= comparison for
++ * selecting which routes to send in the update will make sure this is included.
 + */
 +static void
 +babel_iface_timer(timer *t)
@@ -1546,8 +1587,8 @@ index 0000000..8f46fd4
 +  if (!ifa->sk)
 +    return;
 +
-+  uint rbsize = ifa->cf->rx_buffer ?: ifa->iface->mtu;
-+  uint tbsize = ifa->cf->tx_length ?: ifa->iface->mtu;
++  uint rbsize = ifa->cf->rx_buffer ?: MAX(BABEL_MIN_MTU, ifa->iface->mtu);
++  uint tbsize = ifa->cf->tx_length ?: MAX(BABEL_MIN_MTU, ifa->iface->mtu);
 +  rbsize = MAX(rbsize, tbsize);
 +
 +  sk_set_rbsize(ifa->sk, rbsize);
@@ -1728,7 +1769,7 @@ index 0000000..8f46fd4
 +{
 +  struct iface *iface;
 +
-+  WALK_LIST(iface, p->interfaces)
++  WALK_LIST(iface, iface_list)
 +  {
 +    if (! (iface->flags & IF_UP))
 +      continue;
@@ -2066,6 +2107,7 @@ index 0000000..8f46fd4
 +  struct babel_proto *p = (struct babel_proto *)P;
 +  struct babel_entry *e;
 +  struct babel_route *r;
++  u8 trigger_upd = 0;
 +
 +  if (new)
 +  {
@@ -2073,7 +2115,7 @@ index 0000000..8f46fd4
 +    e = babel_get_entry(p, net->n.prefix, net->n.pxlen);
 +    r = (new->attrs->src->proto == P) ? e->selected_in : babel_get_route(e, NULL);
 +
-+    if (!r->neigh)
++    if (OUR_ROUTE(r))
 +    {
 +      r->seqno = p->update_seqno;
 +      r->router_id = p->router_id;
@@ -2083,22 +2125,41 @@ index 0000000..8f46fd4
 +    if (r != e->selected_out) {
 +      e->selected_out = r;
 +      e->updated = now;
++      trigger_upd = 1;
 +    }
 +  }
 +  else
 +  {
 +    TRACE(D_EVENTS, "Lost route from nest: %I/%d", net->n.prefix, net->n.pxlen);
-+    /* route has gone away; send retraction */
 +    e = babel_find_entry(p, net->n.prefix, net->n.pxlen);
-+    if (e && e->selected_out && !e->selected_out->neigh)
++    if (e && e->selected_out)
 +    {
-+      /* no neighbour, so our route */
-+      e->selected_out->metric = BABEL_INFINITY;
-+      e->selected_out->expires = now + BABEL_HOLD_TIME;
++      if(OUR_ROUTE(e->selected_out)) {
++        /* We originate this route, so set its metric to infinity and set an
++           expiry time. This causes a retraction to be sent, and later the route
++           to be flushed once the hold time has passed. */
++        e->selected_out->metric = BABEL_INFINITY;
++        e->selected_out->expires = now + BABEL_HOLD_TIME;
++        trigger_upd = 1;
++      } else {
++        /* This is a route originating from someone else that was lost;
++           presumably because an export filter was updated to filter it. This
++           means we can't set the metric to infinity (it would be overridden on
++           subsequent updates from the peer originating the route), so just
++           clear the exported route.
++
++           This causes peers to expire the route after a while (like if we just
++           shut down), but it's the best we can do in these circumstances; and
++           since export filters presumably aren't updated that often this is
++           acceptable. */
++        e->selected_out = NULL;
++      }
 +      e->updated = now;
 +    }
 +  }
-+  babel_trigger_update(p);
++
++  if(trigger_upd)
++    babel_trigger_update(p);
 +}
 +
 +static int
@@ -2192,15 +2253,15 @@ index 0000000..8f46fd4
 +};
 diff --git a/proto/babel/babel.h b/proto/babel/babel.h
 new file mode 100644
-index 0000000..9a4bab4
+index 0000000..6f65e97
 --- /dev/null
 +++ b/proto/babel/babel.h
-@@ -0,0 +1,348 @@
+@@ -0,0 +1,349 @@
 +/*  -*- c-file-style: "gnu"; indent-tabs-mode: nil; -*-
 + *
 + *	The Babel protocol
 + *
-+ *	Copyright (c) 2015 Toke Høiland-Jørgensen
++ *	Copyright (c) 2015-2016 Toke Høiland-Jørgensen
 + *
 + *	Can be freely distributed and used under the terms of the GNU GPL.
 + *
@@ -2232,7 +2293,7 @@ index 0000000..9a4bab4
 +#define BABEL_INFINITY 0xFFFF
 +
 +  /* default hello intervals in seconds */
-+#define BABEL_HELLO_INTERVAL_WIRED    20
++#define BABEL_HELLO_INTERVAL_WIRED    4
 +#define BABEL_HELLO_INTERVAL_WIRELESS 4
 +#define BABEL_UPDATE_INTERVAL_FACTOR  4
 +#define BABEL_IHU_INTERVAL_FACTOR     3
@@ -2251,6 +2312,7 @@ index 0000000..9a4bab4
 +
 +/* ip header + udp header + babel header */
 +#define BABEL_OVERHEAD (SIZE_OF_IP_HEADER+UDP_HEADER_LENGTH+sizeof(struct babel_pkt_header))
++#define BABEL_MIN_MTU  (512 + BABEL_OVERHEAD)
 +
 +struct babel_pkt_header {
 +  u8 magic;
@@ -2546,12 +2608,14 @@ index 0000000..9a4bab4
 +void babel_show_entries(struct proto *P, char *iff);
 diff --git a/proto/babel/config.Y b/proto/babel/config.Y
 new file mode 100644
-index 0000000..fb0cf8c
+index 0000000..f3b297f
 --- /dev/null
 +++ b/proto/babel/config.Y
-@@ -0,0 +1,127 @@
+@@ -0,0 +1,129 @@
 +/*
 + *	BIRD -- Babel Configuration
++ *
++ *	Copyright (c) 2015-2016 Toke Høiland-Jørgensen
 + *
 + *	Can be freely distributed and used under the terms of the GNU GPL.
 + */
@@ -2679,15 +2743,15 @@ index 0000000..fb0cf8c
 +CF_END
 diff --git a/proto/babel/packet.c b/proto/babel/packet.c
 new file mode 100644
-index 0000000..e6f33eb
+index 0000000..799e73b
 --- /dev/null
 +++ b/proto/babel/packet.c
-@@ -0,0 +1,863 @@
+@@ -0,0 +1,871 @@
 +/**  -*- c-file-style: "gnu"; indent-tabs-mode: nil; -*-
 + *
 + *	The Babel protocol
 + *
-+ *	Copyright (c) 2015 Toke Høiland-Jørgensen
++ *	Copyright (c) 2015-2016 Toke Høiland-Jørgensen
 + *
 + *	Can be freely distributed and used under the terms of the GNU GPL.
 + *
@@ -2706,14 +2770,14 @@ index 0000000..e6f33eb
 +#define TLV_SIZE(t) (t->type == BABEL_TLV_PAD0 ? 1 : t->length + sizeof(struct babel_pkt_tlv_header))
 +
 +
-+static inline ip_addr
++static inline ip6_addr
 +get_ip6_ll(void *p)
 +{
 +  return ipa_build6(0xfe800000,0,get_u32(p),get_u32(p+sizeof(u32)));
 +}
 +
 +static inline void
-+put_ip6_ll(void *p, ip_addr addr)
++put_ip6_ll(void *p, ip6_addr addr)
 +{
 +  put_u32(p, _I2(addr));
 +  put_u32(p+sizeof(u32), _I3(addr));
@@ -2914,6 +2978,10 @@ index 0000000..e6f33eb
 +  {
 +    if (TLV_SIZE(hdr) < sizeof(struct babel_pkt_tlv_next_hop)+8) return PARSE_ERROR;
 +    state->next_hop = get_ip6_ll(&pkt_tlv->addr);
++  } else if (pkt_tlv->ae == BABEL_AE_IP6) {
++    if (TLV_SIZE(hdr) < sizeof(struct babel_pkt_tlv_next_hop)+sizeof(ip6_addr))
++      return PARSE_ERROR;
++    state->next_hop = get_ip6(&pkt_tlv->addr);
 +  }
 +  return PARSE_SUCCESS;
 +}
@@ -2964,7 +3032,7 @@ index 0000000..e6f33eb
 +                                      len - pkt_tlv->omitted);
 +    /* make sure the tail is zeroed */
 +    if (len < 16) memset(buf+len, 0, 16-len);
-+    tlv->update.prefix = get_ipa(buf);
++    tlv->update.prefix = get_ip6(buf);
 +  }
 +  if (pkt_tlv->flags & BABEL_FLAG_DEF_PREFIX)
 +  {
@@ -3024,7 +3092,7 @@ index 0000000..e6f33eb
 +  else
 +  {
 +    memcpy(buf, &pkt_tlv->addr, len);
-+    tlv->route_request.prefix = get_ipa(buf);
++    tlv->route_request.prefix = get_ip6(buf);
 +  }
 +
 +  return PARSE_SUCCESS;
@@ -3075,7 +3143,7 @@ index 0000000..e6f33eb
 +  else
 +  {
 +    memcpy(buf, &pkt_tlv->addr, len);
-+    tlv->seqno_request.prefix = get_ipa(buf);
++    tlv->seqno_request.prefix = get_ip6(buf);
 +  }
 +
 +  tlv->seqno_request.sender = state->saddr;
@@ -3363,7 +3431,11 @@ index 0000000..e6f33eb
 +  struct babel_tlv_node *tlvn = sl_alloc(p->tlv_slab);
 +  tlvn->tlv = *tlv;
 +  add_tail(&ifa->tlv_queue, NODE tlvn);
-+  ev_schedule(ifa->send_event);
++
++  /* Only schedule send if there's not already data in the socket buffer.
++     Otherwise we may overwrite the data already in the buffer. */
++  if(ifa->sk->tbuf == ifa->sk->tpos)
++    ev_schedule(ifa->send_event);
 +}
 +
 +
@@ -3548,7 +3620,7 @@ index 0000000..e6f33eb
 +}
 diff --git a/proto/babel/packet.h b/proto/babel/packet.h
 new file mode 100644
-index 0000000..17b29bf
+index 0000000..bcd193a
 --- /dev/null
 +++ b/proto/babel/packet.h
 @@ -0,0 +1,127 @@
@@ -3556,7 +3628,7 @@ index 0000000..17b29bf
 + *
 + *	The Babel protocol
 + *
-+ *	Copyright (c) 2015 Toke Høiland-Jørgensen
++ *	Copyright (c) 2015-2016 Toke Høiland-Jørgensen
 + *
 + *	Can be freely distributed and used under the terms of the GNU GPL.
 + *
@@ -3692,5 +3764,5 @@ index a9e46e2..c73270c 100644
  /* We use multithreading */
  #undef USE_PTHREADS
 -- 
-2.7.0
+2.8.0
 

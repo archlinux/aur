@@ -1,6 +1,6 @@
-From 749f5fba78b6d8d62a40f3c4e493256f7c431307 Mon Sep 17 00:00:00 2001
+From b7bd78c3b6908d3eabee74fb0ca3c6785038a74a Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Toke=20H=C3=B8iland-J=C3=B8rgensen?= <toke@toke.dk>
-Date: Thu, 14 Jan 2016 23:24:58 +0100
+Date: Mon, 4 Apr 2016 14:13:30 -0300
 Subject: [PATCH 1/2] Teach bvsnprintf() to print 64-bit router IDs.
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
@@ -88,5 +88,5 @@ index e4cc300..a067fe9 100644
  			goto str;
  
 -- 
-2.7.0
+2.8.0
 
