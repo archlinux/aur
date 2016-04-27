@@ -18,6 +18,7 @@ source=(
 	ttyscrn.patch
 	nmemalign.patch
 	fseeko64.patch
+	asm.patch
 )
 makedepends=(djgpp-gcc)
 sha512sums=(
@@ -27,6 +28,7 @@ sha512sums=(
 	'f5d2220384795ca2ce70e8e2315afb77d84fb5600bd3d947a72110613d700d55a575f165560a820d43f7483b3709ed65152c8bbb7a77dd7a290090459cf4acb7'
 	'28acca2ecc8641fb27c2211f223df13efe7e070785c554928912ca1c8425d971da22a4d7afc1dfce9250e2479d0c4da162422c6c121f6789c0c446c141dd2a11'
 	'c004d2e5fd484f86986584e03003f62003ed6a3b8473c44e2f6e99562276e464b54e59cbe629e2d07e7d5d03159d2beddfeef2b96d8adb694a7c6f9072e06332'
+	'2deade5e1b87c2df5cfce9fa41fb375c9f80bc2ff20db9cb19a828b2baada5effd37dc9f8abf6d98574d1e5f487c147d3fcc347a9e5c5848a851e0455111af8f'
 )
 options=(!buildflags !strip)
 install=info.install
@@ -50,6 +52,7 @@ prepare() {
 	patch -Np0 < ../ttyscrn.patch
 	patch -Np0 < ../nmemalign.patch
 	patch -Np0 < ../fseeko64.patch
+	patch -Np0 < ../asm.patch
 
 	# cosmetics
 	sed -i -e '/@$(MISC) echo - / d; s/^\t@/\t/' \

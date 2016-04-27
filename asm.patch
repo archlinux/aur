@@ -1,0 +1,11 @@
+--- src/libc/go32/dpmiexcp.c
++++ src/libc/go32/dpmiexcp.c
+@@ -197,7 +197,7 @@
+   
+   /* check video mode for original here and reset (not if PC98) */
+   if(ScreenPrimary != 0xa0000 && _farpeekb(_dos_ds, 0x449) != old_video_mode) {
+-    asm volatile ("pusha;movzbl _old_video_mode,%eax; int $0x10;popa;nop");
++    asm volatile ("pusha; int $0x10; popa; nop" : : "a" ((__UINT32_TYPE__)old_video_mode));
+   }
+   en = (signum >= EXCEPTION_COUNT) ? 0 : 
+   exception_names[signum];
