@@ -2,8 +2,9 @@
 
 pkgname=avbin
 pkgver=10
-pkgrel=1
+pkgrel=2
 _gittag="$pkgname-$pkgver"
+_gitsubmodule="https://github.com/AVbin/libav.git"
 pkgdesc="Cross-platform media decoding library"
 arch=('i686' 'x86_64')
 url="http://avbin.github.com/"
@@ -20,7 +21,14 @@ sha256sums=('SKIP')
 prepare() {
     cd "${srcdir}/${pkgname}"
 
+    if [ ! -e libav/Makefile ]; then
+        git rm libav
+        git submodule add --force ${_gitsubmodule} libav
+    fi
+
     git checkout "${_gittag}"
+    cd libav
+    git checkout v9.5
 }
 
 build() {
@@ -29,8 +37,8 @@ build() {
     target="linux-$(echo $CARCH | sed -e 's/_/-/')"
     msg "Building target ${target}..."
     # Linux Makefile uses LDFLAGS directly for ld command line
-    export LDFLAGS="$(echo $LDFLAGS | sed -e 's/^-Wl//')"
-    ./build.sh --fast ${target}
+    export LDFLAGS="$(echo $LDFLAGS | sed -e 's/^-Wl,//')"
+    bash -x build.sh --fast ${target}
 }
 
 package() {
