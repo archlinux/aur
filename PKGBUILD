@@ -3,7 +3,7 @@ pkgname=('curlbomb')
 _module='curlbomb'
 pkgver='1.3.1'
 pkgrel=0
-pkgdesc="An HTTP server for serving one-time-use shell scripts"
+pkgdesc="A personal HTTP server for serving one-time-use shell scripts"
 url="https://github.com/EnigmaCurry/curlbomb"
 depends=('python'
 	 'python-tornado'
