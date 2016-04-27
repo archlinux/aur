@@ -3,7 +3,7 @@
 pkgbase=bird-babel-git
 pkgname=('bird-babel-git' 'bird6-babel-git')
 pkgver=1.5.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='http://bird.network.cz/'
 license=('GPL2')
@@ -26,7 +26,7 @@ build() {
   autoconf
 
   patch -p1 < $srcdir/0001-Teach-bvsnprintf-to-print-64-bit-router-IDs.patch
-  patch -p1 < $srcdir/0002-Add-the-Babel-protocol.patch
+  patch -p1 < $srcdir/0002-Add-the-Babel-routing-protocol-RFC6126.patch
 
   [[ -e _build4 ]] && rm -rf _build4
   [[ -e _build6 ]] && rm -rf _build6

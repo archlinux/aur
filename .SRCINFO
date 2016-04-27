@@ -1,6 +1,6 @@
 pkgbase = bird-babel-git
 	pkgver = 1.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://bird.network.cz/
 	arch = i686
 	arch = x86_64
