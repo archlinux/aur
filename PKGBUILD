@@ -2,7 +2,7 @@
 
 _npmname=http-server
 pkgname=nodejs-$_npmname
-pkgver=0.7.2
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="A simple zero-configuration command-line http server"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha1sums=('ff02e9338bfd9d3687668f090e088a7606eeb12e')
+sha1sums=('8f1b06bdc733618d4dc42831c7ba1aff4e06001a')
 
 package() {
   cd "$srcdir"
