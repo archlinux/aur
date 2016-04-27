@@ -1,0 +1,12 @@
+
+post_install() {
+  echo '==> To select the arch-silence theme you must:'
+  echo '==>  1. Open the file "/etc/default/grub" and inside it update the variable GRUB_THEME="/boot/grub/themes/arch-silence/theme.txt"'
+  echo '==>  2. Update the grub config by running "grub-mkconfig -o /boot/grub/grub.cfg"'
+}
+
+# should run in the pre phase and check that a different theme was chosen
+# if this is not the case then the removal should be denied
+post_remove() {
+  echo '==> Make sure you selected a different theme and updated your grub config.'
+}
