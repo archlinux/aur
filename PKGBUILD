@@ -2,7 +2,7 @@
 # Contributor: Serede Sixty Six <serede.dev@gmail.com>
 
 pkgname=nemo-audio-tab
-pkgver=2.8.0
+pkgver=3.0.0
 _mintrel=betsy
 pkgrel=1
 pkgdesc="View audio tag information from the file manager's properties tab"
@@ -10,13 +10,13 @@ arch=('any')
 url="https://github.com/linuxmint/nemo-extensions"
 license=('GPL2')
 groups=('nemo-extensions')
-depends=('nemo-python' 'python-mutagen')
+depends=('nemo>=3.0' 'nemo<3.1' 'nemo-python' 'python-mutagen')
 makedepends=('python-distutils-extra')
 
 options=('!libtool' '!emptydirs')
 
 source=("http://packages.linuxmint.com/pool/main/n/${pkgname}/${pkgname}_${pkgver}+${_mintrel}.tar.gz")
-sha256sums=('76e7610c4a5e707f5a90a400716c04ea50d21dbd3a89958ecfffe5cd1e026663')
+sha256sums=('3442e3aeb7fb8718ed18ba2bb4be54143fd2253d5df3ed75c1ca3f6954076d92')
 
 package() {
   # Python2 fix
