@@ -24,11 +24,11 @@ _uploadprogress_ver="v0.9.1"
 _uploadprogress_dirname="ngx_uploadprogress"
 _upstreamfair_hash="a18b4099fbd458111983200e098b6f0c8efed4bc"
 _upstreamfair_dirname="ngx_upstreamfair"
-_fancyindex_ver="v0.3.5"
+_fancyindex_ver="v0.3.6"
 _fancyindex_dirname="ngx_fancyindex"
-_authpam_ver="1.4"
+_authpam_ver="1.5.1"
 _authpam_dirname="ngx_authpam"
-_pagespeed_ver="1.10.33.2"
+_pagespeed_ver="1.11.33.0"
 _pagespeed_dirname="ngx_pagespeed"
 _rtmp_ver="v1.1.7"
 _rtmp_dirname="ngx_rtmp"
@@ -40,7 +40,7 @@ _accesskey_ver="2.0.3"
 _accesskey_dirname="ngx_accesskey"
 
 pkgname=nginx-custom-dev
-pkgver=1.9.10
+pkgver=1.9.15
 pkgrel=1
 pkgdesc="Development version of lightweight HTTP server and IMAP/POP3 proxy server with standard, additional and 3d party modules"
 arch=('i686' 'x86_64')
@@ -94,17 +94,17 @@ md5sums=('d56559ed5e8cc0b1c7adbe33f2300c4c'
          '845cab784b50f1666bbf89d7435ac7af'
          '79031b58828462dec53a9faed9ddb36a'
          '6696dc228a567506bca3096b5197c9db'
-         '64cc970988356a5e0fc4fcd1ab84fe57'
-         '6d28dfd6cef1f130a1df97d61425798c'
+         '13cd38e9da3789035750dd45882c4a26'
+         '76ac525432d459a4615a3a8638195ba9'
          '3d4ec04bbc16c3b555fa20392c1119d1'
          '68a1af12d5c1218fb2b3e05ed7ff6f0c'
          'f7dee95dbe8ada5f4d8e9d59ca1f4797'
          '838081f1398965fbf3037bc38d1c2208'
          '6fe61c5b44b2e338c66e1e33ff7e95ab'
          'ac5e7f485476af70e0ee1c52016cddaf'
-         'a5c0fb3af7158297c1457739947b9b0c'
-         'dffa6d500ea1af840b28c1c4244b1fcf'
-         '0c3b1e0c0884b899c37c0cb92b306bcd'
+         '1e0bbd4535386970d63f51064626bc9a'
+         '7756ea8925cefe8ed531b3d5b50ca9d2'
+         'c503b01cb92f95a5548cf86a2e7415e5'
          'a81e63cd4cf28eaf0c87d27c44e4c44a'
          '2cb502dbda335be4ebd5fed0b3182bae'
          '1bc31058991268e4cfdb44e9b6d8b3b3'
@@ -179,9 +179,9 @@ build() {
     --add-module=../${_fancyindex_dirname} \
     --add-module=../${_authpam_dirname} \
     --add-module=../${_pagespeed_dirname} \
+    --add-module=../${_accesskey_dirname} \
     --add-module=../${_rtmp_dirname} \
-    --add-module=../${_davext_dirname} \
-    --add-module=../${_accesskey_dirname}
+    --add-module=../${_davext_dirname}
 
   make
 }
