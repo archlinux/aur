@@ -1,0 +1,6 @@
+post_install() {
+  echo ''
+  echo 'Do not forget to add "ngramDir=/usr/share/ngrams" in ~/.languagetool[-ooo].cfg or use LanguageTool GUI config to point to "/usr/share/ngrams"!'
+  echo 'Test your installation with this sentence: "Alabama has for of the largest stadiums."'
+  echo ''
+}

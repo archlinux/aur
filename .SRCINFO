@@ -1,0 +1,18 @@
+pkgbase = languagetool-ngrams-en
+	pkgdesc = Finding errors using n-gram data, english text
+	pkgver = 20150817
+	pkgrel = 1
+	url = http://wiki.languagetool.org/finding-errors-using-n-gram-data
+	install = languagetool-ngrams-en.install
+	arch = any
+	license = LGPL
+	makedepends = unzip
+	optdepends = languagetool: system wide installation of LT
+	optdepends = libreoffice-extension-languagetool: standalone LT for LibreOffice
+	optdepends = openoffice-extension-languagetool: standalone LT for OpenOffice
+	noextract = languagetool-ngrams-en-20150817.zip
+	source = languagetool-ngrams-en-20150817.zip::http://languagetool.org/download/ngram-data/ngrams-en-20150817.zip
+	md5sums = SKIP
+
+pkgname = languagetool-ngrams-en
+
