@@ -3,15 +3,14 @@
 pkgbase=notepadqq-src
 pkgname=notepadqq
 pkgver=0.51.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Notepad++-like editor for Linux'
 arch=('i686' 'x86_64')
 url='http://notepadqq.altervista.org/wp/'
 license=('GPL3')
-depends=('qt5-webkit' 'qt5-svg' 'desktop-file-utils' 'hicolor-icon-theme')
+depends=('qt5-webkit' 'qt5-svg')
 makedepends=('git' 'qt5-tools')
 options=('!emptydirs')
-install=$pkgname.install
 source=("git://github.com/notepadqq/notepadqq.git#tag=v$pkgver"
         'git://github.com/notepadqq/CodeMirror.git')
 sha256sums=('SKIP'
