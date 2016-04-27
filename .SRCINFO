@@ -1,9 +1,8 @@
 pkgbase = glade-git
 	pkgdesc = User interface builder for GTK+ and GNOME.
-	pkgver = 3.20.0.r211.g74b21b3
+	pkgver = 3.20.0.r217.g7f336d4
 	pkgrel = 1
 	url = http://glade.gnome.org/
-	install = glade.install
 	arch = i686
 	arch = x86_64
 	license = GPL

@@ -4,7 +4,7 @@
 
 pkgname=glade-git
 _gitname=glade
-pkgver=3.20.0.r211.g74b21b3
+pkgver=3.20.0.r217.g7f336d4
 pkgrel=1
 pkgdesc="User interface builder for GTK+ and GNOME."
 provides=('glade')
@@ -17,7 +17,6 @@ makedepends=('intltool' 'gtk-doc' 'gobject-introspection' 'python2-gobject' 'its
 optdepends=('python2: Python widgets support'
             'devhelp: help browser')
 url="http://glade.gnome.org/"
-install=glade.install
 source=("git://git.gnome.org/$_gitname")
 sha256sums=(SKIP)
 
