@@ -5,7 +5,7 @@ pkgbase=peerunity
 _gitname=Peerunity
 pkgdesc="Community made Peercoin client."
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/Peerunity/Peerunity"
 makedepends=('boost' 'qrencode' 'miniupnpc' 'qt4')
@@ -13,10 +13,10 @@ depends=('boost-libs' 'openssl' 'miniupnpc' 'qt4')
 license=('MIT')
 source=("https://github.com/peerunity/peerunity/archive/v$pkgver.tar.gz"
 	"upnp-1.9.patch"
-  "peerunityd@.service"
-  "peerunityd-tor@.service"
-  "peerunity@.service"
-  "peerunity-tor@.service"
+	"peerunityd@.service"
+	"peerunityd-tor@.service"
+	"peerunity@.service"
+	"peerunity-tor@.service"
 	"peerunity.desktop"
 )
 sha256sums=('b76ed814f19d7c2474801e4846c267a44059e09224f63ffe8686923c3d2deb31'
@@ -72,12 +72,12 @@ package_peerunity() {
   cd "$srcdir/Peerunity-$pkgver"
 
   install -Dm644 share/pixmaps/$pkgbase.ico "${pkgdir}/usr/share/pixmaps/$pkgbase.ico"
-  install -Dm644 share/pixmaps/${pkgbase}64.png "${pkgdir}/usr/share/pixmaps/$pkgbase.ico"
-  install -Dm644 share/pixmaps/${pkgbase}64.xpm "${pkgdir}/usr/share/pixmaps/$pkgbase.ico"
-  install -Dm644 share/pixmaps/${pkgbase}128.png "${pkgdir}/usr/share/pixmaps/$pkgbase.ico"
-  install -Dm644 share/pixmaps/${pkgbase}128.xpm "${pkgdir}/usr/share/pixmaps/$pkgbase.ico"
-  install -Dm644 share/pixmaps/${pkgbase}256.png "${pkgdir}/usr/share/pixmaps/$pkgbase.ico"
-  install -Dm644 share/pixmaps/${pkgbase}256.xpm "${pkgdir}/usr/share/pixmaps/$pkgbase.ico"
+  install -Dm644 share/pixmaps/${pkgbase}64.png "${pkgdir}/usr/share/pixmaps/${pkgbase}64.png"
+  install -Dm644 share/pixmaps/${pkgbase}64.xpm "${pkgdir}/usr/share/pixmaps/${pkgbase}64.xpm"
+  install -Dm644 share/pixmaps/${pkgbase}128.png "${pkgdir}/usr/share/pixmaps/${pkgbase}128.png"
+  install -Dm644 share/pixmaps/${pkgbase}128.xpm "${pkgdir}/usr/share/pixmaps/${pkgbase}128.xpm"
+  install -Dm644 share/pixmaps/${pkgbase}256.png "${pkgdir}/usr/share/pixmaps/${pkgbase}256.png"
+  install -Dm644 share/pixmaps/${pkgbase}256.xpm "${pkgdir}/usr/share/pixmaps/${pkgbase}256.xpm"
   
   install -Dm755 peerunity "$pkgdir"/usr/bin/peerunity
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
