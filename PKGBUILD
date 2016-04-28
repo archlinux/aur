@@ -4,13 +4,12 @@
 
 pkgname=convertall
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Unit conversion program (Qt)"
 arch=('any')
 url="http://convertall.bellz.org/"
 license=('GPL')
 depends=('python-pyqt4' 'desktop-file-utils')
-install="convertall.install"
 source=("http://download.sourceforge.net/project/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz" 
         'convertall.desktop')
 sha256sums=('11bae7cbde7a06579cf5b650659f54c9621eae043ad975e6ad29cee6d08d220e'

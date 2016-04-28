@@ -1,9 +1,8 @@
 pkgbase = convertall
 	pkgdesc = Unit conversion program (Qt)
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://convertall.bellz.org/
-	install = convertall.install
 	arch = any
 	license = GPL
 	depends = python-pyqt4
