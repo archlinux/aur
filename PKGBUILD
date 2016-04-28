@@ -7,7 +7,7 @@ pkgdesc="PostgreSQL driver for asyncio"
 arch=(any)
 url="http://aiopg.readthedocs.org/"
 license=('MIT')
-depends=('python')
+depends=('python-psycopg2')
 makedepends=('python-setuptools')
 source=("http://pypi.python.org/packages/source/a/aiopg/aiopg-$pkgver.tar.gz")
 
