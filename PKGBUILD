@@ -3,14 +3,13 @@
 
 pkgname=vivaldi-beta
 pkgver=1.0.403.24
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind. (beta)'
 url="https://vivaldi.com"
-install=vivaldi.install
 options=(!strip !zipman)
 license=('custom')
 arch=('i686' 'x86_64')
-depends=('gtk2' 'nss' 'libxtst' 'gconf' 'libxss' 'freetype2' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'alsa-lib')
+depends=('gtk2' 'nss' 'libxtst' 'gconf' 'libxss' 'freetype2' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'alsa-lib' 'hicolor-icon-theme')
 optdepends=(
     'vivaldi-beta-ffmpeg-codecs: playback of proprietary video/audio'
     'google-chrome: Widevine DRM Plugin'
