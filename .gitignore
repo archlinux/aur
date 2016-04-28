@@ -1,5 +1,6 @@
 *.pkg.tar.xz
 *.src.tar.gz
 *.src.tar.xz
+kakoune-git
 pkg
 src

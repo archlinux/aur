@@ -1,8 +1,9 @@
-# Maintainer: Guillaume ALAUX <Guillaume at ALAUX dot net>
+# Maintainer: Gokcehan Kara <gokcehankara@gmail.com>
+# Contributor: Guillaume ALAUX <Guillaume at ALAUX dot net>
 # Contributor: Shizeeg Unadequatov <shizeeque@gmail.com>
 
 pkgname=kakoune-git
-pkgver=r3963.c8490c4
+pkgver=r4053.61c155f
 pkgrel=1
 pkgdesc='Code editor heavily inspired by Vim'
 arch=('i686' 'x86_64')
