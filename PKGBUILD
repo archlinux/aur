@@ -9,33 +9,24 @@ arch=('i686' 'x86_64')
 url="https://github.com/javierllorente/qactus"
 license=('GPL2' 'GPL3')
 depends=('qtkeychain-qt5')
-makedepends=('git' 'harfbuzz')
-conflicts=("${pkgname%-*}")
-provides=("${pkgname%-*}")
-install="${pkgname%-*}.install"
+makedepends=('git')
+conflicts=('qactus')
+provides=('qactus')
 source=('git://github.com/javierllorente/qactus.git')
 md5sums=('SKIP')
 
 pkgver() {
-	cd "${pkgname%-*}"
-
-	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd qactus
+  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "${pkgname%-*}"
-
-	if [[ -d build ]]; then
-	rm -rf build
-	fi
-	mkdir build && cd build
-
-	qmake-qt5 PREFIX=/usr ../qactus.pro
-	make
+  cd qactus
+  qmake-qt5 PREFIX=/usr qactus.pro
+  make
 }
 
 package() {
-	cd "${pkgname%-*}"/build
-
-	make INSTALL_ROOT="${pkgdir}" install
+  cd qactus
+  make INSTALL_ROOT="${pkgdir}" install
 }
