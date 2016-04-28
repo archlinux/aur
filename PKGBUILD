@@ -4,7 +4,7 @@
 
 pkgname=ksysguard
 pkgver=5.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Track and control the processes running in your system'
 arch=('i686' 'x86_64')
 url='https://userbase.kde.org/KSysGuard'
@@ -14,7 +14,6 @@ depends=('knewstuff' 'libksysguard' 'lm_sensors' 'xdg-utils'
 makedepends=('extra-cmake-modules' 'kdoctools' 'python')
 conflicts=('kdebase-workspace')
 groups=('plasma')
-install="${pkgname}.install"
 source=("http://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz")
 md5sums=('21ab8596a2e47f00e9823d1ad4e64e5d')
 
