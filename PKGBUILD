@@ -4,8 +4,6 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Maintainer: rubenvb vanboxem <dottie> ruben <attie> gmail <dottie> com
 
-_targets="i686-pc-msdosdjgpp"
-
 pkgname=djgpp-binutils
 pkgver=2.26
 pkgrel=1
@@ -26,35 +24,34 @@ sha512sums=(
 )
 validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93') # Tristan Gingold <adacore dot com, gingold>
 
+_target="i686-pc-msdosdjgpp"
+
 prepare() {
-  cd ${srcdir}/binutils-${pkgver}
+	cd "$srcdir/binutils-$pkgver"
 
-  #do not install libiberty
-  sed -i 's/install_to_$(INSTALL_DEST) //' libiberty/Makefile.in
+	#do not install libiberty
+	sed -i 's/install_to_$(INSTALL_DEST) //' libiberty/Makefile.in
 
-  # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+	# hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
+	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 }
 
 build() {
-  for _target in $_targets; do
-    msg "Building ${_target} cross binutils"
-    mkdir -p ${srcdir}/binutils-${_target} && cd "${srcdir}/binutils-${_target}"
-    $srcdir/binutils-${pkgver}/configure --prefix=/usr \
-        --target="${_target}" \
-        --infodir="/usr/share/info/${_target}" \
-        --datadir="/usr/${_target}/share" \
-        --disable-lto --enable-plugins \
-        --disable-multilib --disable-nls \
-        --disable-werror
-     make
-  done
+	msg "Building $_target cross binutils"
+	mkdir -p "$srcdir/binutils-$_target"
+	cd "$srcdir/binutils-$_target"
+	"$srcdir/binutils-$pkgver"/configure --prefix=/usr \
+		--target="${_target}" \
+		--infodir="/usr/share/info/$_target" \
+		--datadir="/usr/$_target/share" \
+		--disable-lto --enable-plugins \
+		--disable-multilib --disable-nls \
+		--disable-werror
+	make
 }
 
 package() {
-  for _target in ${_targets}; do
-    msg "Installing ${_target} cross binutils"
-    cd ${srcdir}/binutils-${_target}
-    make DESTDIR=${pkgdir} install
-  done
+	msg "Installing $_target cross binutils"
+	cd "$srcdir/binutils-$_target"
+	make DESTDIR="$pkgdir" install
 }
