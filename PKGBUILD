@@ -5,22 +5,22 @@
 pkgbase="zfs-dkms"
 pkgname=("zfs-dkms" "zfs-utils")
 pkgver=0.6.5.6
-pkgrel=1
+pkgrel=2
 license=('CDDL')
-makedepends=("spl-dkms=${pkgver}")
+makedepends=("git" "spl-dkms=${pkgver}")
 arch=("i686" "x86_64")
 url="http://zfsonlinux.org/"
-source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"
+source=("git+https://github.com/zfsonlinux/zfs.git#tag=zfs-${pkgver}"
         "zfs.bash-completion-r1"
         "zfs.initcpio.install"
         "zfs.initcpio.hook")
-sha256sums=('c349d46d86b4f61cd53a0891acad916cfc3f0d6754127db7f60a0bd98185aeff'
+sha256sums=('SKIP'
             'b60214f70ffffb62ffe489cbfabd2e069d14ed2a391fac0e36f914238394b540'
             '1e20071fa61a33874505dae0f2d71bb560f43e7faaea735cbde770ea10c133df'
             '250f1232c464a81cc9c8b8ee05f21d752ebeebbc8614fae1c6d0bc600e816ac1')
 
 build() {
-    cd "${srcdir}/zfs-${pkgver}"
+    cd "${srcdir}/zfs"
     ./autogen.sh
 
     ./configure --prefix=/usr \
@@ -44,11 +44,11 @@ package_zfs-dkms() {
 
     dkmsdir="${pkgdir}/usr/src/zfs-${pkgver}"
     install -d "${dkmsdir}"
-
-    cd "${srcdir}"
-    tar -xzf "zfs-${pkgver}.tar.gz" -C "${dkmsdir}" --strip-components 1
+    cp -a ${srcdir}/zfs/. ${dkmsdir}
 
     cd "${dkmsdir}"
+    make clean distclean
+    find . -name ".git*" -print0 | xargs -0 rm -fr --
     scripts/dkms.mkconf -v ${pkgver} -f dkms.conf -n zfs
     chmod g-w,o-w -R .
 }
@@ -57,7 +57,7 @@ package_zfs-utils() {
     pkgdesc="Kernel module support files for the Zettabyte File System."
     conflicts=("zfs-utils-git" "zfs-utils-lts")
 
-    cd "${srcdir}/zfs-${pkgver}"
+    cd "${srcdir}/zfs"
     make DESTDIR="${pkgdir}" install
 
     # Remove uneeded files
