@@ -1,6 +1,6 @@
 pkgbase = mpv-legacy-af-git
 	pkgdesc = Video player based on MPlayer/mplayer2. This version retains the legacy HRTF and bs2b audio filters.
-	pkgver = 0.17.0+1
+	pkgver = 0.17.0+2
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/2ion/mpv
