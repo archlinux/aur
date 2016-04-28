@@ -7,13 +7,14 @@
 #
 
 pkgname=platformio
-pkgver=2.8.6
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
 url="https://github.com/platformio/platformio/"
 license=('Apache')
 depends=('python2'
+	 'python2-setuptools'
          'python2-click'
          'python2-bottle'
          'python2-lockfile'
@@ -25,7 +26,7 @@ optdepends=('energia: For MSP430 based projects'
 conflicts=('platformio-git')
 source=("https://github.com/platformio/platformio/archive/v${pkgver}.tar.gz"
 	"setup.patch")
-sha256sums=('801f51c4d879117701c7223d539837e6f3be298648534260caf5fa6d98595c33'
+sha256sums=('e6c593b65e98e767e3763eac409a1580c9e1c3f39517f304cb6cc04fdf9be09b'
 	    '536217552b06ef562469268a8f0115a31bf052308f891a228adf94e314ce3730')
 
 prepare() {
