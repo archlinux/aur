@@ -3,14 +3,13 @@
 
 pkgname=kino
 pkgver=1.3.4
-pkgrel=5
+pkgrel=6
 pkgdesc="A non-linear DV editor"
 arch=('i686' 'x86_64')
 url="http://www.kinodv.org/"
 license=('GPL')
 depends=('libavc1394' 'libiec61883' 'libdv' 'libglade' 'libxv' 'libsamplerate' 'libsm' 'desktop-file-utils')
 makedepends=('intltool' 'v4l-utils')
-install=kino.install
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         'videodev-header.patch')
 md5sums=('52f8ce690e45a089e3edc6c7af61a05c'
