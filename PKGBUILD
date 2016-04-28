@@ -3,7 +3,7 @@
 # Contributor: Matthew Bentley <matthew@mtbentley.us>
 
 pkgname=godot
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 url="http://www.godotengine.org"
@@ -25,7 +25,7 @@ source=(
   godot.desktop
   icon.png
 )
-md5sums=('83e1ec74ca3156af548f0e829085cdf7'
+md5sums=('7a7ef730a1083518a04bb9ac746c0a19'
          'dca7c5c5682bdc8cc83386034e0d7d07'
          'f756e85756a9cbc06a328414abf74585')
 
@@ -49,7 +49,3 @@ package() {
   install -D -m755 bin/godot.x11.opt.tools.${_arch} "${pkgdir}"/usr/bin/godot
   install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/godot/LICENSE
 }
-
-md5sums=('5539d540b932d1bd34c0645d8d713d21'
-         'dca7c5c5682bdc8cc83386034e0d7d07'
-         'f756e85756a9cbc06a328414abf74585')
