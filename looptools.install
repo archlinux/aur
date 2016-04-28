@@ -1,4 +1,0 @@
-LT_DIR=usr/bin
-post_install() {
-  (cd ${LT_DIR}; mv fcc fcc-looptools; rm -f f++; ln -sf fcc-looptools f++-looptools)
-}
