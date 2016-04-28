@@ -2,7 +2,7 @@
 
 pkgname=netdata-git
 _gitname=netdata
-pkgver=v1.0.0.r78.g52c3674
+pkgver=v1.1.0.r62.gc41b6c1
 pkgrel=1
 pkgdesc="Real-time performance monitoring, in the greatest possible detail, over the web."
 url="https://github.com/firehol/netdata/wiki"
