@@ -3,18 +3,17 @@
 # Contributor: Heeru Kiyura <M8R-p9i5nh@mailinator.com>
 
 pkgname=conkeror-git
-pkgver=1.0.0.r0.gab02f17
+pkgver=1.0.0.r3.gf336aa6
 pkgrel=1
 pkgdesc='A highly programmable web browser based on Mozilla XULRunner'
 arch=('i686' 'x86_64')
 url='http://conkeror.mozdev.org/'
 license=('MPL' 'GPL' 'LGPL')
-depends=('firefox' 'desktop-file-utils')
+depends=('firefox')
 makedepends=('git')
 provides=('conkeror')
 conflicts=('conkeror')
 changelog='Changelog'
-install='conkeror-git.install'
 source=('git+http://repo.or.cz/conkeror.git')
 md5sums=('SKIP')
 
