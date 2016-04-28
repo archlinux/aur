@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://twitter.com/hmknapp"
 license=('Freeware')
 options=(!strip)
-source=("$pkgname-$pkgver.tar.gz::https://www.dropbox.com/s/nxlo4xhvav0flmh/$pkgname-$pkgver.tar.gz?dl=1")
+source=("$pkgname-$pkgver.tar.gz::https://www.dropbox.com/s/v57vszfkz62ls8r/$pkgname-$pkgver.tar.gz?dl=1")
 md5sums=("3f3eafca3ef84b66f3122959f9387847")
 
 package() {
