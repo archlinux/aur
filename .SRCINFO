@@ -1,9 +1,8 @@
 pkgbase = gsview
 	pkgdesc = A nice looking GUI for ghostscript with some extraction features
 	pkgver = 4.9
-	pkgrel = 11
+	pkgrel = 12
 	url = http://pages.cs.wisc.edu/~ghost/gsview/get49.htm
-	install = gsview.install
 	arch = i686
 	arch = x86_64
 	license = custom:Aladdin Free Public License
