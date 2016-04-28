@@ -34,7 +34,6 @@ optdepends=('ffmpeg: for WebGL exporting'
             'android-udev: for Android Remote')
 conflicts=('unity3d')
 replaces=('unity3d')
-install="${pkgname}.install"
 source=("http://download.unity3d.com/download_unity/linux/unity-editor-installer-${pkgver}.sh"
         'EULA'
         'unity-editor'
