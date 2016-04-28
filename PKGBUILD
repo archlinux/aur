@@ -12,7 +12,7 @@
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'mesa-vulkan-intel-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-libgl-git' 'mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=11.3.0_devel.80749.7e7710a
+pkgver=11.3.0_devel.80761.1a8c2cc
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto' 
@@ -60,8 +60,8 @@ build () {
                --enable-va \
                --enable-opencl \
                --enable-opencl-icd \
-               --enable-glx-tls
-#               --with-vulkan-drivers=intel
+               --enable-glx-tls \
+               --with-vulkan-drivers=intel
 
 
 
@@ -139,12 +139,12 @@ package_mesa-vulkan-intel-git() {
   replaces=('vulkan-intel')
   conflicts=('vulkan-intel')
   
-  #install -m755 -d ${pkgdir}/etc
-  #mv -v ${srcdir}/fakeinstall/etc/vulkan ${pkgdir}/etc/
+  install -m755 -d ${pkgdir}/etc
+  mv -v ${srcdir}/fakeinstall/etc/vulkan ${pkgdir}/etc/
 
-  #install -m755 -d ${pkgdir}/usr/{include/vulkan,lib}
-  #mv -v ${srcdir}/fakeinstall/usr/lib/libvulkan_intel.so ${pkgdir}/usr/lib/
-  #mv -v ${srcdir}/fakeinstall/usr/include/vulkan/vulkan_intel.h ${pkgdir}/usr/include/vulkan
+  install -m755 -d ${pkgdir}/usr/{include/vulkan,lib}
+  mv -v ${srcdir}/fakeinstall/usr/lib/libvulkan_intel.so ${pkgdir}/usr/lib/
+  mv -v ${srcdir}/fakeinstall/usr/include/vulkan/vulkan_intel.h ${pkgdir}/usr/include/vulkan
 
   install -m755 -d "${pkgdir}/usr/share/licenses/mesa-vulkan-intel-git"
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-vulkan-intel-git/"
