@@ -2,7 +2,7 @@
 # build for gimp-git, with gegl support
 
 pkgname=libmypaint-git
-pkgver=1.1.r545
+pkgver=1.1.r591
 pkgrel=1
 pkgdesc="a library for making brushstrokes which is used by MyPaint and other projects"
 arch=('i686' 'x86_64')
