@@ -1,0 +1,17 @@
+pkgbase = python-python-jenkins
+	pkgdesc = A python wrapper for the Jenkins REST API which aims to provide a more conventionally pythonic way of controlling a Jenkins server.
+	pkgver = 0.4.12
+	pkgrel = 1
+	url = http://git.openstack.org/cgit/openstack/python-jenkins
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = python-six
+	depends = python-multi_key_dict
+	source = https://pypi.python.org/packages/source/p/python-jenkins/python-jenkins-0.4.12.tar.gz
+	md5sums = 7d57db182ff9e12f2280e1672e40e46d
+
+pkgname = python-python-jenkins
+
