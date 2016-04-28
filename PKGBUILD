@@ -6,7 +6,7 @@
 
 pkgname=mysql-workbench-git
 pkgver=6.3.6.r0.gd46b227
-pkgrel=3
+pkgrel=4
 # mysql & mysql-connector-c++ from git
 _gdal_version=2.0.2
 _boost_version=1.59.0
@@ -23,7 +23,6 @@ optdepends=('gnome-keyring: store SSH/MySQL passwords in GNOME password manager'
 provides=('mysql-workbench')
 conflicts=('mysql-workbench')
 makedepends=('git' 'cmake' 'boost' 'mesa' 'swig' 'imagemagick')
-install=mysql-workbench.install
 validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5')
 source=('git://github.com/mysql/mysql-workbench.git'
 	'git://github.com/mysql/mysql-server.git'
