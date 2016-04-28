@@ -1,7 +1,7 @@
 # Maintainer: Aaron Abbott <aabmass at gmail dot com>
 pkgname=neovim-qt-git
-pkgver=r219.49a61e0
-pkgrel=2
+pkgver=r325.cec1120
+pkgrel=1
 pkgdesc="A Qt gui for Neovim (Neovim RPC and GUI using Qt5)."
 arch=('i686' 'x86_64')
 url="https://github.com/equalsraf/neovim-qt"
@@ -35,7 +35,7 @@ build() {
   cmake -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Release \
     -DUSE_SYSTEM_MSGPACK=ON -DCMAKE_INSTALL_PREFIX=/usr ..
 
-  make
+  make ${MAKEFLAGS}
 }
 
 package() {
@@ -47,4 +47,8 @@ package() {
 
   # install the custom license
   install -D -m644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  
+  # install desktop files
+  install -D -m644 ../src/gui/nvim-qt.desktop "${pkgdir}"/usr/share/applications/nvim-qt.desktop
+  install -D -m644 ../third-party/neovim.png "${pkgdir}"/usr/share/pixmaps/nvim-qt.png
 }
