@@ -1,7 +1,7 @@
 From d2702eb8157f845c81b1a6049139f342f12db494 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Ky=C3=B6sti=20M=C3=A4lkki?= <kyosti.malkki@gmail.com>
 Date: Mon, 26 Aug 2013 19:19:44 +0300
-Subject: [PATCH 2/2] usb serial gadget: no TTY hangup on USB disconnect [WIP]
+Subject: [PATCH 2/3] usb serial gadget: no TTY hangup on USB disconnect [WIP]
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
