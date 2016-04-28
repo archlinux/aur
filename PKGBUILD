@@ -67,7 +67,9 @@ SRC += environ.c' \
 
 	# cosmetics
 	sed -i -e '/@$(MISC) echo - / d; s/^\t@/\t/' \
-		src/makefile.inc
+		src/makefile.inc \
+		src/libc/makefile \
+		src/utils/makefile
 }
 
 build() {
