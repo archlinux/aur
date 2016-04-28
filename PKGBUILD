@@ -8,7 +8,6 @@ url="http://m64py.sourceforge.net"
 license=("GPL")
 depends=(mupen64plus sdl2 python-pyqt5 desktop-file-utils libxkbcommon-x11)
 makedepends=(python-distribute)
-install='m64py.install'
 source=("http://downloads.sourceforge.net/m64py/m64py-${pkgver}.tar.gz")
 md5sums=('170c980bb4266162cb61a931f529a8b2')
 
