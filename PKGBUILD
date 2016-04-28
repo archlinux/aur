@@ -1,12 +1,12 @@
-# Maintainer: Andrea Zagli <andrea.zagli.free@gmail.com>
+# Maintainer: Darryl Pogue <darryl@dpogue.ca>
 
 pkgname="gplugin"
-pkgver=0.0.21
+pkgver=0.27
 pkgrel=1
 arch=('i868' 'x86_64')
 pkgdesc="A GObject based library that implements a reusable plugin system"
 license=("LGPL 2")
-url="https://bitbucket.org/rw_grim/gplugin"
+url="https://bitbucket.org/gplugin/main"
 depends=("gtk3")
 makedepends=("cmake"
              "gcc"
@@ -15,7 +15,7 @@ makedepends=("cmake"
              "help2man"
              "gettext")
 options=('strip' '!debug' 'staticlibs')
-source=("$pkgname::hg+https://bitbucket.org/rw_grim/$pkgname#tag=v$pkgver")
+source=("$pkgname::hg+https://bitbucket.org/$pkgname/main#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
