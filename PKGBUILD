@@ -15,7 +15,7 @@ makedepends=( 'kmod' 'inetutils' 'bc')
 options=('!strip')
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 _bfqversion=v7r11
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-${_bfqversion}"
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.5.0-${_bfqversion}"
 _BLDpatch="BLD-4.5.patch"
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
@@ -27,8 +27,8 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux-bld.preset'
         'change-default-console-loglevel.patch'
-	"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqversion}-4.4.0.patch"
-	"${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqversion}-I-O-sched-for-4.4.0.patch"
+	"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqversion}-4.5.0.patch"
+	"${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqversion}-I-O-sched-for-4.5.0.patch"
 	"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqversion}-for.patch"
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
         )
@@ -42,9 +42,9 @@ sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
             'cee1781f96e55a909757c4533cdacb57c3ffe6f6f01f709e8a5a837dc4a68bba'
             '8da1d80c0bd568781568da4f669f39fed94523312b9d37477836bfa6faa9527f'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'd1cf14cc696b0f716454fe8eb9746383700889d5d22ad829611f0433cc77b4ce'
-            'b17c3fb18c5b8c20a45a38198f293679ca6aef08d16f12cd816a5cfafac4b2c4'
-            '69a21bc286a628128cfc4723558829cb6ff6c2d7c4dfd4468457898674187b25'
+            '5d19ecb91320a64f0abb6c8e70205fef848ada967093faa94e4c0c39c340d0c8'
+            '9c1e11772ff29d37dacc9246f63e24d5154eb61682ba2b7e175a9ccbdc7116e1'
+            'e0c9474431b60ca9fc3da04e7610748219da143440f1d7f5152572c7c63b52e0'
             'adf9a38282035ce3ab609ebac0e134aa4dac41d5189291b884156793d1cb295d')
 
 validpgpkeys=(
