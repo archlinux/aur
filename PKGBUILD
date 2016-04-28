@@ -3,21 +3,19 @@
 
 pkgname=antimicro
 pkgver=2.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical program used to map keyboard keys and mouse controls to gamepad buttons"
 arch=('i686' 'x86_64')
 url="https://github.com/Ryochan7/antimicro"
 license=('GPL3')
-depends=('libxkbcommon-x11' 'libxtst' 'qt5-base' 'sdl2')
+depends=('libxkbcommon-x11' 'libxtst' 'qt5-base' 'sdl2' 'shared-mime-info' 'desktop-file-utils')
 makedepends=('cmake' 'gettext' 'itstool' 'qt5-tools')
-install="${pkgname}.install"
 #source=("${pkgname}-${pkgver}.tar.gz::ttps://github.com/Ryochan7/${pkgname}/archive/${pkgver}.tar.gz")
-source=("http://pkgs.fedoraproject.org/lookaside/pkgs/${pkgname}/${pkgname}-${pkgver}.tar.gz/2064888967031e847c255efef941b45e/${pkgname}-${pkgver}.tar.gz")
-md5sums=('2064888967031e847c255efef941b45e')
+source=("http://ppa.launchpad.net/ryochan7/${pkgname}/ubuntu/pool/main/a/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz")
+md5sums=('5c78c37a8f854e24f6f9521569f8a1c9')
 
 build() {
-  #cd ${pkgname}-${pkgver}
-  cd ${pkgname}-*/
+  cd ${pkgname}-${pkgver}
 
   mkdir -p build && cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DUSE_SDL_2=ON -DWITH_XTEST=ON \
@@ -26,8 +24,7 @@ build() {
 }
 
 package() {
-  #cd ${pkgname}-${pkgver}/build
-  cd ${pkgname}-*/build/
+  cd ${pkgname}-${pkgver}/build
 
   make DESTDIR="${pkgdir}" install
 }
