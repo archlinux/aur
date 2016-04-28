@@ -1,8 +1,8 @@
 # Maintainer: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=revomath
-pkgver=3.2.3
-pkgrel=2
+pkgver=3.2.4
+pkgrel=1
 pkgdesc="High performance math library (Intel MKL) for Microsoft R Open"
 arch=('x86_64')
 license=('custom')
@@ -12,8 +12,8 @@ conflicts=('microsoft-r-open-blas')
 depends=('microsoft-r-open')
 install='revomath.install'
 source=("https://mran.revolutionanalytics.com/install/mro/${pkgver}/RevoMath-${pkgver}.tar.gz")
-md5sums=('a29138dbb6cd29003bd794b0ef515e5a')
-sha512sums=('295efb39044f4b883a7b1eb52cd9cc53d7a170126b83a6c4a930d60c51bf09443c59e53884f484f1b77956d41c4fe1b64995ffebbafc2ff6246a6e72d82f084b')
+md5sums=('13ac010c4873d4e3baed98cdafe764e1')
+sha512sums=('7788c303c396bc376aba2499fa1f986755dec3add5084f1a6d0791118ae4d990f605e70b3dc65e049ab223e484eccf0881903499ce777eb264c9bd4343b203fd')
 
 package() {
   mkdir -p "${pkgdir}/usr/lib/MRO-${pkgver}/R-${pkgver}/lib64/R/lib"
