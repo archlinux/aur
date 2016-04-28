@@ -4,7 +4,7 @@
 pkgname=gnome-gmail
 pkgver=2.0.1
 _pkgbranch=master
-pkgrel=1
+pkgrel=2
 pkgdesc="It allows desktop mail actions, such as 'Send File as Email' or web 'mailto' links, to be handled by the Gmail web client."
 arch=('any')
 url="https://davesteele.github.io/gnome-gmail/index.html"
