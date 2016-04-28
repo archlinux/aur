@@ -1,20 +1,20 @@
 # Maintainer: Xentec <xentec at aix0 dot eu>
-
-_name=cppformat
-pkgname=${_name}-git
-pkgver=2.0.0.r2.g48e2548
+_name=fmt
+pkgname="lib${_name}-git"
+pkgver=2.0.0.r179.g7dac3c4
 pkgrel=1
 pkgdesc="Small, safe and fast formatting library for C++"
 arch=('i686' 'x86_64')
 url="http://cppformat.github.io"
 license=('BSD')
 
-conflicts=('cppformat')
 depends=('gcc-libs')
 makedepends=('cmake' 'git' 'doxygen' 'nodejs-less' 'python-virtualenv')
 checkdepends=('gmock')
+conflicts=('libfmt' 'cppformat')
+replaces=('cppformat-git')
 
-source=("$pkgname"::'git+https://github.com/cppformat/cppformat')
+source=("$pkgname"::'git+https://github.com/fmtlib/fmt')
 sha256sums=('SKIP')
 
 pkgver() {
