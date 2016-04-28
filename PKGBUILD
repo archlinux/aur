@@ -4,7 +4,7 @@
 # delete the $srcdir directory before building
 
 pkgname=lilypond-git
-pkgver=2.19.40.1.8.gb184142
+pkgver=2.19.40.1.13.g7d3fa8c
 pkgrel=1
 pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -21,9 +21,11 @@ makedepends=('fontforge'
              't1utils'
 	     'ghostscript'
 	     'dblatex'
-             'texlive-core>=2011.23170')
-optdepends=('netpbm: building HTML documentation'
-            'imagemagick: building HTML documentation'
+	     'texlive-langcyrillic'
+             'tex-gyre-fonts'
+	     'texi2html'
+	     'netpbm')
+optdepends=('imagemagick: building HTML documentation'
             'ttf-kochi-substitute: building HTML documentation'
             'texi2html>=1.82: building HTML documentation'
             'rsync: installing HTML documentation')
