@@ -1,7 +1,7 @@
 # Maintainer: Ashwin Vishnu <ashuwish+arch at gmail dot com>
 
 pkgname=sendanywhere
-pkgver=2.3.15
+pkgver=2.4.11.2
 pkgrel=1
 pkgdesc="Direct file sharing across all platforms/devices. Send Anywhere is a multi-platform file sharing service where users can directly share digital content in real time."
 arch=('i686' 'x86_64')
@@ -15,8 +15,9 @@ source_i686=("https://update.send-anywhere.com/linux_downloads/sendanywhere_late
 source_x86_64=("https://update.send-anywhere.com/linux_downloads/sendanywhere_latest_amd64.deb")
 # sha256sums_i686=('SKIP')
 # sha256sums_x86_64=('SKIP')
-sha256sums_i686=('f26538a9922272bdbdc0f0df9e36a7a0b6958aab065a9083bb95bea9f0951291')
-sha256sums_x86_64=('b6ceaafac14557225eb6b5665deb68bfc93b6a341add93f613578562aee3f85f')
+sha256sums_i686=('c4e679d563d851dfa89da8430cc9a69c6e4d3a9a71e4cbf45f17c3ae5bdeae1d')
+sha256sums_x86_64=('5bfdfd4ec4ecdad6fbec4394580319844f27784eeb15b00ce18d1b551bdeffd8')
+
 
 pkgver() {
    cd $srcdir
