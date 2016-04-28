@@ -1,12 +1,13 @@
 pkgbase = feynhiggs
 	pkgdesc = FeynHiggs is a Fortran code for the (diagrammatic) calculation of the masses, mixings and much more of the Higgs bosons in the MSSM with real/complex parameters at the highest level of accuracy.
 	pkgver = 2.11.3
-	pkgrel = 4
+	pkgrel = 5
 	url = http://wwwth.mpp.mpg.de/members/heinemey/feynhiggs/cFeynHiggs.html
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	depends = gcc-fortran
+	options = staticlibs
 	source = http://wwwth.mpp.mpg.de/members/heinemey/feynhiggs/newversion/FeynHiggs-2.11.3.tar.gz
 	sha256sums = 570746c34efbbfba45b39ea7110b0069354747138ad149204f09819548b87f6a
 
