@@ -1,7 +1,7 @@
 # Contributor: Connor Behan <connor.behan@gmail.com>
 
 pkgname=gracegtk
-pkgver=0.9.2
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="A port of the Grace plotting tool to gtk2"
 arch=(i686 x86_64)
@@ -9,8 +9,7 @@ url="http://plasma-gate.weizmann.ac.il/Grace/"
 depends=('libjpeg' 'fftw' 't1lib' 'netcdf' 'pdflib-lite' 'gtk2')
 makedepends=('linuxdoc-tools' 'gcc-fortran')
 license=('GPL')
-install=gracegtk.install
-source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}_2014_08_25_08h44.tgz window_close.patch $pkgname.png $pkgname.desktop $pkgname-mimetypes ggrace)
+source=(http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}_2016_04_20_16h15.tgz window_close.patch $pkgname.png $pkgname.desktop $pkgname-mimetypes ggrace)
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
@@ -29,6 +28,8 @@ build() {
   sed -i -e 's|SIZEOF_DOUBLE|sizeof(double)|g' src/*.c
   sed -i -e 's|SIZEOF_CHAR|sizeof(char)|g' src/*.c
   sed -i -e 's|SIZEOF_VOID_P|sizeof(void *)|g' src/*.c grace_np/*.c
+
+  sed -i -e 's| -V -qversion||g' ./configure
   ./configure --prefix=/usr --with-f77=/usr/bin/gfortran
   make
 }
@@ -48,4 +49,4 @@ package() {
   install -D -m644 "$srcdir/$pkgname-mimetypes" "$pkgdir/usr/share/mime/packages/$pkgname.xml"
 }
 
-md5sums=('4b63d4e98c21ad2c56257b5f2b1971b5' '05b430f86615ab1aea79cee6ca204792' 'ef085e503d30207035f5dfbef648ed36' '8427067a73698b5425901866ca3195d0' '3beba5237f56a2ff28b6cd878865b25c' 'c22c24f810bf0e1f9b8ca8713be19e3e')
+md5sums=('b6716781546a5ff89825cc7f9f3799b8' '05b430f86615ab1aea79cee6ca204792' 'ef085e503d30207035f5dfbef648ed36' '8427067a73698b5425901866ca3195d0' '3beba5237f56a2ff28b6cd878865b25c' 'c22c24f810bf0e1f9b8ca8713be19e3e')
