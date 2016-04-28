@@ -8,6 +8,7 @@ url="https://github.com/zyedidia/micro"
 license=('MIT')
 makedepends=('go' 'git')
 optdepends=(xclip)
+conflicts=("micro")
 source=("${pkgname}"::"git+https://github.com/zyedidia/micro.git")
 md5sums=(SKIP)
 pkgver() {
