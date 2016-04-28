@@ -4,7 +4,7 @@
 
 pkgbase="zfs-dkms-git"
 pkgname=("zfs-dkms-git" "zfs-utils-dkms-git")
-pkgver=0.6.5_r189_g541a090
+pkgver=0.6.5_r229_g1ab3678
 pkgrel=1
 license=('CDDL')
 makedepends=("git" "spl-dkms-git")
@@ -49,11 +49,11 @@ package_zfs-dkms-git() {
 
     dkmsdir="${pkgdir}/usr/src/zfs-${pkgver%%_*}"
     install -d "${dkmsdir}"
-
-    cd "${srcdir}/zfs"
-    git archive --format=tar HEAD | tar -x -C "${dkmsdir}"
+    cp -a ${srcdir}/zfs/. ${dkmsdir}
 
     cd "${dkmsdir}"
+    make clean distclean
+    find . -name ".git*" -print0 | xargs -0 rm -fr --
     scripts/dkms.mkconf -v ${pkgver%%_*} -f dkms.conf -n zfs
     chmod g-w,o-w -R .
 }
