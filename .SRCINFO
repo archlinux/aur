@@ -1,7 +1,7 @@
 pkgbase = openlp
 	pkgdesc = Church presentation software.
 	pkgver = 2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://openlp.org/
 	install = openlp.install
 	arch = any
@@ -15,6 +15,7 @@ pkgbase = openlp
 	depends = python-beautifulsoup4
 	depends = python-pyenchant
 	depends = python-alembic
+	depends = qt5-multimedia
 	optdepends = libreoffice-fresh: Display impress presentations
 	optdepends = vlc: Play multimedia
 	optdepends = mupdf: Display pdfs
