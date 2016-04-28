@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=todoman
-pkgver=1.6.0
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="A simple CalDav-based todo manager."
 arch=("any")
@@ -12,8 +12,8 @@ depends=(python-icalendar python-urwid python-xdg python-ansi
          python-setuptools-scm)
 optdepends=('python-click-repl-git: the repl command.')
 checkdepends=('python-pytest' 'python-hypothesis')
-source=("https://pypi.python.org/packages/source/t/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('ef411ddfee02c2261e124af15699cac2')
+source=("https://pypi.io/packages/source/t/$pkgname/$pkgname-$pkgver.tar.gz")
+md5sums=('08c3a798d800a12e270ae6706352db8f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
