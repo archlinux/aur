@@ -1,6 +1,6 @@
 # Maintainer: Ramana Kumar <ramana at member dot fsf dot org>
 pkgname=polyml-fixes-git
-pkgver=5.6r2075.99bc5ee
+pkgver=5.6r2078.167eaf7
 pkgrel=1
 pkgdesc="Poly/ML implementation of Standard ML (latest release + fixes)"
 arch=('i686' 'x86_64')
