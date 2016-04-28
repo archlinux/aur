@@ -1,6 +1,6 @@
 # Maintainer: Cedric Girard <girard.cedric@gmail.com>
 pkgname='python2-flask-restplus'
-pkgver='0.9.0'
+pkgver='0.9.2'
 pkgrel='1'
 pkgdesc='custom actions for flask to help manage your application'
 arch=('any')
@@ -10,8 +10,8 @@ depends=('python2-flask>=0.8' 'python2-six>=1.3.0' 'python2-jsonschema' 'python2
 checkdepends=('python2-blinker' 'python2-rednose' 'python2-nose' 'python2-mock' 'python2-tzlocal')
 makedepends=('setuptools')
 
-source=("http://pypi.python.org/packages/source/f/flask-restplus/flask-restplus-${pkgver}.tar.gz")
-sha1sums=('4d319bf6bd15177041555d1fb7a1466451186dc2')
+source=("https://pypi.io/packages/source/f/flask-restplus/flask-restplus-${pkgver}.tar.gz")
+sha1sums=('0b386cfffe8fbf07092bd0b02e887cae4a1c7360')
 
 build() {
   cd "flask-restplus-${pkgver}"
