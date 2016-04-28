@@ -11,7 +11,7 @@
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
 _pkgbasever=4.5-gnu
-_pkgver=4.5.1-gnu
+_pkgver=4.5.2-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -63,7 +63,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0010-stmmac-fix-MDIO-settings.patch')
 sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
-            'bde6fa0cee5ee3d32c6e4336b23f87cbe37b74b9d4d1603d1d421dc1e44d2ab9'
+            '7918a8c102c5f47dbe778f5541656c875b844d6e4da514a42c8855ff6a7f3733'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -71,15 +71,15 @@ sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '40eadc1b5f9d11b4cd183491973c866d5fd96c15f75f0a82af52d0ae170948cd'
-            '668df07cc6664ec056365702c7554bad1182460e80b3705bfd5d12283b6ed499'
-            '7eccf2c95c69b07bddbac5bf336e694b5cc21bc77feb01a07275606568ce3ee8'
+            'f9e48134bf87eae133a62c0bc14792e7d4b46b07c95f59ad7f922eb2fc4db826'
+            '8badab6aaab04e7b06fb9e0028cd182e653e6bc26788e7a911bb61955566f187'
+            '31688993de97f53eec81b843450c95e227c4a47b501bc4249164796a80a857f3'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '91e087cddaf2149d050b90720d5b3004263ec3ab07dece0241551d045ff0a91f'
             '96c6c7d4057b8d08238adae85d476c863c082770a182057163a45480511d35a8'
             '2ca85ee212ef8d8aab3d3c2a0cef304a355d86e7aa520e19471f56ace68a0cf4'
-            'b878510fb1ba2c83999b9faf9bf270779d6f1a1c33ec39fb3701d3e2aba053dc'
+            '869920d51c7f414d4fdd8227bfdcea2b4c81de92ee91d462a77685947a850b93'
             'SKIP'
             'd09937cbca4f408dbcde270e465bdfe0589a0b41ed07d260a596a38fe6cca987'
             'cc1f1b5026b373da4a5c2e8c82bc2b0f8a20e295353c201579140a04f2452545'
