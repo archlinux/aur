@@ -1,0 +1,6 @@
+[Unit]
+Description=Check and renew ACME TLS certificates
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/letsencrypt.sh --cron
