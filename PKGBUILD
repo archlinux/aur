@@ -6,12 +6,12 @@
 pkgbase=linux-next-git
 pkgname=("${pkgbase}")
 _srcname=linux-next
-pkgver=20160322
+pkgver=20160428
 pkgrel=1
 arch=('any')
 url="http://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'linux-firmware' 'mkinitcpio')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'linux-firmware' 'mkinitcpio' 'binutils')
 options=('!strip')
 source=(git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git)
 md5sums=('SKIP')

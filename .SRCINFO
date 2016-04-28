@@ -1,5 +1,5 @@
 pkgbase = linux-next-git
-	pkgver = 20160322
+	pkgver = 20160428
 	pkgrel = 1
 	url = http://www.kernel.org/
 	arch = any
@@ -12,6 +12,7 @@ pkgbase = linux-next-git
 	makedepends = git
 	makedepends = linux-firmware
 	makedepends = mkinitcpio
+	makedepends = binutils
 	options = !strip
 	source = git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git
 	md5sums = SKIP
@@ -24,8 +25,8 @@ pkgname = linux-next-git
 	depends = kmod
 	depends = mkinitcpio>=18
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = kernel26-next-git=20160322
-	provides = kernel26-next-git-headers=20160322
+	provides = kernel26-next-git=20160428
+	provides = kernel26-next-git-headers=20160428
 	conflicts = kernel26-next-git
 	conflicts = kernel26-next-git-headers
 	replaces = kernel26-next-git
