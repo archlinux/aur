@@ -2,7 +2,7 @@
 
 pkgname=arronax
 pkgver=0.06
-pkgrel=2
+pkgrel=3
 pkgdesc='A program to create and modify starters/launchers (technically: .desktop files) for applications and locations (URLs).'
 arch=('any')
 license=('GPL3')
@@ -10,7 +10,6 @@ url="http://www.florian-diesch.de/software/arronax/"
 depends=('python2-gobject' 'desktop-file-utils' 'python2-setuptools' 'python2-xdg')
 makedepends=('python2-distutils-extra')
 optdepends=('python2-nautilus: Arronax as Nautilus extension')
-install=$pkgname.install
 
 source=(http://www.florian-diesch.de/software/$pkgname/dist/$pkgname-$pkgver.tar.gz)
 
