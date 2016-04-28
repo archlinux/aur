@@ -8,7 +8,7 @@
 # Contributor: Rafał Przywara <ptah.peteh (at) gmail (dot) com>
 
 pkgname=rakudo-star
-pkgver=2016.01
+pkgver=2016.04
 pkgrel=2
 pkgdesc="Rakudo Perl6 on MoarVM with additional modules"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ makedepends=('perl>=5.8')
 provides=('rakudo-star' 'rakudo-moarvm')
 conflicts=('rakudo-star' 'rakudo-moarvm')
 source=(http://rakudo.org/downloads/star/$pkgname-$pkgver.tar.gz)
-sha512sums=('3a93ee634bdcb286533a5535cd27889983d7e2fb6b997a952f00fff678e052875b6f40f831567b321a912af20f5c45ffc097a8f2b47a7ed19071579541ca57e5')
+sha512sums=('bd6537f090dd258a6f843596a813452a5f62bdc96839f78243e93f32cfa9a70bfdc054ddb923aa8823c3fe3cf3e5698ead6d91cabbe0004979e6967d10d1c8bb')
 
 build() {
   cd "$pkgname-$pkgver"
