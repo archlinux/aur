@@ -1,6 +1,6 @@
 pkgbase = awesome-git
 	pkgdesc = Highly configurable framework window manager
-	pkgver = 3.5.2.539.g2c3c6b5
+	pkgver = 3.5.2.1519.g2010901
 	pkgrel = 1
 	url = http://awesome.naquadah.org/
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = awesome-git
 	depends = libxdg-basedir
 	depends = libxkbcommon-x11
 	depends = lua
-	depends = lua-lgi
+	depends = lua-lgi-git
 	depends = pango
 	depends = startup-notification
 	depends = xcb-util-cursor
@@ -34,7 +34,7 @@ pkgbase = awesome-git
 	provides = awesome
 	conflicts = awesome
 	backup = etc/xdg/awesome/rc.lua
-	source = awesome-git::git://github.com/awesomeWM/awesome.git
+	source = awesome-git::git+https://github.com/awesomeWM/awesome.git
 	md5sums = SKIP
 
 pkgname = awesome-git
