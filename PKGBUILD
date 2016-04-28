@@ -6,7 +6,7 @@
 
 pkgname=djgpp-binutils
 pkgver=2.26
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross binutils for the djgpp cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils"

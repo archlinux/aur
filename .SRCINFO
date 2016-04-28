@@ -1,7 +1,7 @@
 pkgbase = djgpp-binutils
 	pkgdesc = Cross binutils for the djgpp cross-compiler
 	pkgver = 2.26
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnu.org/software/binutils
 	arch = i686
 	arch = x86_64
