@@ -1,7 +1,7 @@
 # Maintainer: Christoph Korn <christoph.korn at posteo dot de>
 pkgname=beebeep
-_pkgver=691
-pkgver=3.0.5
+_pkgver=721
+pkgver=3.0.6
 pkgrel=1
 pkgdesc="Secure LAN Messenger"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ source=("http://netcologne.dl.sourceforge.net/project/${pkgname}/Sources/${pkgna
         "${pkgname}.xpm"
         "${pkgname}.desktop"
         "${pkgname}_script")
-md5sums=('92b17a4563c5199983157fa95ae3ac7e'
-         'cdf0b999e22d0cc030359cbb95d794dd'
+md5sums=('7cb8733a729697720cbb50658c9a760c'
+         '1fd1055035e7e8167bed78a0c92f675a'
          '08e15ed0d7e938c863e5437984e9c597'
          'e89c5abe353abcbbbb2b9ae9be3e46bc'
          'a282005b0f8ee2dffc42704612ad95fe')

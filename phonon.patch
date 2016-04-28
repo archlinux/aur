@@ -1,7 +1,7 @@
-diff -Nur beebeep-code-650orig/src/AudioManager.h beebeep-code-650/src/AudioManager.h
---- beebeep-code-650orig/src/AudioManager.h	2016-02-05 16:09:37.000000000 +0100
-+++ beebeep-code-650/src/AudioManager.h	2016-02-13 00:14:21.197259670 +0100
-@@ -33,7 +33,7 @@
+diff -Nur a/src/gui/AudioManager.h b/src/gui/AudioManager.h
+--- a/src/gui/AudioManager.h	2016-03-21 20:32:34.000000000 +0100
++++ b/src/gui/AudioManager.h	2016-04-28 23:31:35.395392769 +0200
+@@ -26,7 +26,7 @@
  
  #include "Config.h"
  #ifdef BEEBEEP_USE_PHONON4
