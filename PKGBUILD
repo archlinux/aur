@@ -4,7 +4,7 @@
 
 pkgbase="spl-dkms-git"
 pkgname=("spl-dkms-git" "spl-utils-dkms-git")
-pkgver=0.6.5_r49_g224817e
+pkgver=0.6.5_r52_gea2633a
 pkgrel=1
 license=('GPL')
 makedepends=("git")
@@ -45,11 +45,11 @@ package_spl-dkms-git() {
 
     dkmsdir="${pkgdir}/usr/src/spl-${pkgver%%_*}"
     install -d "${dkmsdir}"
-
-    cd "${srcdir}/spl"
-    git archive --format=tar HEAD | tar -x -C "${dkmsdir}"
+    cp -a ${srcdir}/spl/. ${dkmsdir}
 
     cd "${dkmsdir}"
+    make clean distclean
+    find . -name ".git*" -print0 | xargs -0 rm -fr --
     scripts/dkms.mkconf -v ${pkgver%%_*} -f dkms.conf -n spl
     chmod g-w,o-w -R .
 }
