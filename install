@@ -6,7 +6,6 @@ post_install()
 
 post_upgrade()
 {
-	glib-compile-schemas /usr/share/glib-2.0/schemas || true
 	echo 'You most likely want to enable the new configuration by logging out and in again.'
 }
 
