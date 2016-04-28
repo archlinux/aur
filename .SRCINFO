@@ -1,10 +1,10 @@
 pkgbase = ninekey
 	pkgdesc = A barebones hotkey/launcher application
 	pkgver = 0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xordspar0/ninekey
 	arch = any
-	license = MIT
+	license = GPL
 	depends = python
 	depends = python-pyqt5
 	source = https://github.com/xordspar0/ninekey/archive/v0.2.tar.gz
