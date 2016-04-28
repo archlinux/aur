@@ -1,0 +1,13 @@
+pkgbase = cs2-git
+	pkgdesc = Second version of scaling algorithm for minimum-cost flow problems
+	pkgver = r1.6ba8344
+	pkgrel = 1
+	url = http://www.avglab.com/andrew/soft.html
+	arch = any
+	license = custom
+	makedepends = git
+	source = cs2-git::git+https://github.com/iveney/cs2
+	md5sums = SKIP
+
+pkgname = cs2-git
+
