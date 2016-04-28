@@ -1,7 +1,7 @@
 # Maintainer: josephgbr <rffontenelle@gmail.com>
 
 pkgname=teeworlds-ddnet
-pkgver=9.2
+pkgver=9.3.1
 pkgrel=1
 pkgdesc="A customized version by DDRaceNetwork of this 2D shooting game"
 arch=('i686' 'x86_64')
@@ -13,16 +13,15 @@ provides=('teeworlds')
 conflicts=('teeworlds')
          # PNG converted from DDNet.ico from https://github.com/ddnet/ddnet
 source=(teeworlds-ddnet.png)
-source_i686=("$url/downloads/DDNet-$pkgver-linux_x86.tar.gz"
+source_i686=("$url/downloads/DDNet-$pkgver-linux_x86.tar.xz"
              "$url/downloads/GraphicsTools-linux_x86.tar.gz")
-source_x86_64=("$url/downloads/DDNet-$pkgver-linux_x86_64.tar.gz"
+source_x86_64=("$url/downloads/DDNet-$pkgver-linux_x86_64.tar.xz"
                "$url/downloads/GraphicsTools-linux_x86_64.tar.gz")
 md5sums=('41465eb3a4ecf2e7f7afe5a5f0c84386')
-md5sums_i686=('360999bdcbe4a44798aef0acfb9f4238'
+md5sums_i686=('4118f46a0d549d7060edbd0c5d130bb7'
               '566354c3b4510b032af7d891381ee711')
-md5sums_x86_64=('22f9211764e7cb4683d8a22f3cecb4a8'
+md5sums_x86_64=('a825c9305044c2b3cc4498ce0b92a335'
                 'fc32ca52ae9be02f68b6c257153dbd37')
-noextract=('database.zip')
 
 # Check hashs manually (replace $pkgver):
 # curl -sL http://ddnet.tw/downloads/md5sums | grep -E DDNet-$pkgver-linux
