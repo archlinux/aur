@@ -2,8 +2,8 @@
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 pkgname="efitools"
-pkgver=1.5.3
-pkgrel=2
+pkgver=1.7.0
+pkgrel=1
 pkgdesc="Tools for manipulating UEFI secure boot platforms"
 url="https://build.opensuse.org/package/show/home:jejb1:UEFI/efitools"
 arch=('x86_64')
