@@ -1,0 +1,44 @@
+pkgbase = postgresql-9.4
+	pkgdesc = A powerful, open source object-relational database system
+	pkgver = 9.4.7
+	pkgrel = 1
+	url = http://www.postgresql.org/
+	install = postgresql.install
+	arch = i686
+	arch = x86_64
+	license = custom:PostgreSQL
+	makedepends = python2
+	makedepends = perl
+	makedepends = tcl>=8.6.0
+	depends = libxml2
+	depends = krb5
+	depends = openssl>=1.0.0
+	depends = readline>=6.0
+	optdepends = python2: for PL/Python support
+	optdepends = perl: for PL/Perl support
+	optdepends = tcl: for PL/Tcl support
+	optdepends = postgresql-old-upgrade: upgrade from previous major version using pg_upgrade
+	provides = postgresql=9.4.7
+	provides = postgresql-libs=9.4.7
+	provides = postgresql-client=9.4.7
+	conflicts = postgresql
+	conflicts = postgresql-libs
+	conflicts = postgresql-testing
+	conflicts = postgresql-client
+	source = https://ftp.postgresql.org/pub/source/v9.4.7/postgresql-9.4.7.tar.bz2
+	source = postgresql-run-socket.patch
+	source = postgresql.pam
+	source = postgresql.logrotate
+	source = postgresql.service
+	source = postgresql.tmpfiles.conf
+	source = postgresql-check-db-dir
+	sha256sums = cc795e6c35b30e697e5891e3056376af685f848a4e67fab1702e74a2385f81e0
+	sha256sums = 8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9
+	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
+	sha256sums = 6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e
+	sha256sums = c69b614731fdd3f4e127540814f5999f423363523c5209e252e19b1d4362ad68
+	sha256sums = 7e086d70e0dcaa6ce45693b4e826ce92d770192b3aff5642319b1ef279d88dc4
+	sha256sums = b3ed31e5882e5bdf4515d488d3f2db874ff5561be3091eab29810f831038a888
+
+pkgname = postgresql-9.4
+
