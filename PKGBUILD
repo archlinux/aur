@@ -1,3 +1,4 @@
+# Maintainer: grimi <grimi at poczta dot fm>
 # Maintainer: Thomas Nordenmark <t.nordenmark@gmail.com>
 # Developer: Travis Nickles <nickles.travis@gmail.com>
 
