@@ -3,7 +3,7 @@
 _srcname=leap.bitmask
 pkgname=bitmask_client
 pkgver=0.9.1
-pkgrel=5
+pkgrel=6
 pkgdesc='Encrypted communication for mere mortals.'
 arch=('any')
 url='https://bitmask.net/'
@@ -46,7 +46,6 @@ makedepends=(
   #'python2-flake8'
   #'python2-tox'
 #)
-install=$pkgname.install
 source=(
   "https://github.com/leapcode/$pkgname/archive/$pkgver.tar.gz"
   "https://github.com/leapcode/$pkgname/archive/debian/experimental.zip"
