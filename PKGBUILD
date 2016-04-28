@@ -10,21 +10,10 @@ pkgdesc="An automated music engraving system (Git snapshot)"
 arch=('i686' 'x86_64')
 url="http://lilypond.org/"
 license=('GPL')
-depends=('fontconfig'
-         'freetype2'
-         'guile=2.0.11'
-         'pango'
-         'python2')
-makedepends=('fontforge'
-             'git'
-             'gsfonts-cyr'
-             't1utils'
-	     'ghostscript'
-	     'dblatex'
-	     'texlive-langcyrillic'
-             'tex-gyre-fonts'
-	     'texi2html'
-	     'netpbm')
+depends=('guile=2.0.11' 'pango' 'python2')
+makedepends=('fontforge' 'git' 'gsfonts-cyr' 't1utils' 'ghostscript'
+	     'dblatex' 'texlive-langcyrillic' 'tex-gyre-fonts'
+	     'texi2html' 'netpbm')
 optdepends=('imagemagick: building HTML documentation'
             'ttf-kochi-substitute: building HTML documentation'
             'texi2html>=1.82: building HTML documentation'
