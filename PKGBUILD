@@ -7,6 +7,7 @@ arch=('x86_64' 'i686')
 url="https://github.com/zyedidia/micro"
 license=('MIT')
 optdepends=(xclip)
+conflicts=("micro-git")
 
 if [[ $CARCH == 'x86_64' ]]; then
   source=(http://zbyedidia.webfactional.com/micro/binaries/micro-linux64.tar.gz)
