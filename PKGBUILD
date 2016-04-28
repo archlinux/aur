@@ -12,7 +12,8 @@
 
 pkgbase=lib32-mesa-git
 pkgname=('lib32-mesa-vdpau-git' 'lib32-mesa-vulkan-intel-git' 'lib32-mesa-libgl-git' 'lib32-libva-mesa-driver-git' 'lib32-mesa-git')
-pkgver=11.3.0_devel.80298.1d2ac7a
+pkgdesc="an open-source implementation of the OpenGL specification, git version for multilib applications"
+pkgver=11.3.0_devel.80749.7e7710a
 pkgrel=1
 arch=('x86_64')
 makedepends=('python2' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'lib32-libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto'
@@ -23,11 +24,10 @@ makedepends=('python2' 'lib32-libxml2' 'lib32-expat' 'lib32-libx11' 'glproto' 'l
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa#branch=master'
-        'LICENSE'
-        'vulkan-fix-install-data-local.patch')
+        'LICENSE')
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
-         '3db37a8e69dc3580ceb634305e654ec2')
+         )
 
 pkgver() {
     cd "${srcdir}/mesa"
@@ -37,11 +37,6 @@ pkgver() {
 _mesaver() {
     path="${srcdir}/mesa/VERSION"
     [ -f $path ] && cat "$path"
-}
-
-prepare() {
-  cd mesa
-  patch -p1 -i "${srcdir}/vulkan-fix-install-data-local.patch"
 }
 
 build() {
@@ -59,7 +54,6 @@ build() {
                --with-dri-driverdir=/usr/lib32/xorg/modules/dri \
                --with-gallium-drivers=i915,ilo,r300,r600,radeonsi,nouveau,swrast,virgl \
                --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
-               --with-vulkan-drivers=intel \
                --with-egl-platforms=x11,drm,wayland \
                --with-sha1=libnettle \
                --enable-texture-float \
@@ -72,8 +66,9 @@ build() {
                --enable-vdpau \
                --enable-va \
                --with-va-libdir=/usr/lib32/dri \
-               --enable-glx-tls \
-
+               --enable-glx-tls
+#               --with-vulkan-drivers=intel \
+               
 #
 # configure flag                description                                                             default                                         overridden
 #  --enable-debug               use debug compiler flags and macros                                     [default=disabled]
@@ -144,10 +139,11 @@ package_lib32-mesa-vulkan-intel-git() {
 #  install -m755 -d ${pkgdir}/etc
 #  mv -v ${srcdir}/fakeinstall/etc/vulkan ${pkgdir}/etc/
 
-  install -m755 -d ${pkgdir}/usr/lib32
-  mv -v ${srcdir}/fakeinstall/usr/lib32/libvulkan_intel.so ${pkgdir}/usr/lib32/
-  # already installed by mesa-vulkan-intel-git
-  #  mv -v ${srcdir}/fakeinstall/usr/include/vulkan/vulkan_intel.h ${pkgdir}/usr/include/vulkan
+  #install -m755 -d ${pkgdir}/usr/lib32
+  #mv -v ${srcdir}/fakeinstall/usr/lib32/libvulkan_intel.so ${pkgdir}/usr/lib32/
+  
+# already installed by mesa-vulkan-intel-git
+#  mv -v ${srcdir}/fakeinstall/usr/include/vulkan/vulkan_intel.h ${pkgdir}/usr/include/vulkan
 
   install -m755 -d "${pkgdir}/usr/share/licenses/lib32-mesa-vulkan-intel-git"
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/lib32-mesa-vulkan-intel-git/"

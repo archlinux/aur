@@ -1,5 +1,6 @@
 pkgbase = lib32-mesa-git
-	pkgver = 11.3.0_devel.80298.1d2ac7a
+	pkgdesc = an open-source implementation of the OpenGL specification, git version for multilib applications
+	pkgver = 11.3.0_devel.80749.7e7710a
 	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = x86_64
@@ -35,10 +36,8 @@ pkgbase = lib32-mesa-git
 	makedepends = lib32-libxvmc
 	source = mesa::git://anongit.freedesktop.org/mesa/mesa#branch=master
 	source = LICENSE
-	source = vulkan-fix-install-data-local.patch
 	md5sums = SKIP
 	md5sums = 5c65a0fe315dd347e09b1f2826a1df5a
-	md5sums = 3db37a8e69dc3580ceb634305e654ec2
 
 pkgname = lib32-mesa-vdpau-git
 	pkgdesc = Mesa VDPAU drivers (32-bit)
