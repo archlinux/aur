@@ -1,14 +1,15 @@
 # Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=html-xml-utils
-pkgver=6.9
+pkgver=7.0
 pkgrel=1
-pkgdesc="A number of simple utilities for manipulating HTML and XML files."
-arch=(i686 x86_64)
-url="http://www.w3.org/Tools/HTML-XML-utils/"
-license=('custom')
-source=("http://www.w3.org/Tools/HTML-XML-utils/$pkgname-$pkgver.tar.gz")
-sha256sums=('9cf401dc84ca01752adf1f2d9862c4f227bb089504ed9d03d7fd40603e87fab2')
+pkgdesc='A number of simple utilities for manipulating HTML and XML files.'
+arch=('i686' 'x86_64')
+url='http://www.w3.org/Tools/HTML-XML-utils/'
+license=('W3C')
+depends=('curl')
+source=("$url/$pkgname-$pkgver.tar.gz")
+sha256sums=('e7d30de4fb4731f3ecd4622ac30db9fb82e1aa0ab190ae13e457360eea9460b0')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -19,5 +20,4 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir" install
-	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
