@@ -3,16 +3,15 @@
 _pkgname=antimicro
 pkgname=${_pkgname}-qt4
 pkgver=2.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical program used to map keyboard keys and mouse controls to gamepad buttons (QT4 version)"
 arch=('i686' 'x86_64')
 url="https://github.com/Ryochan7/antimicro"
 license=('GPL3')
-depends=('libxtst' 'qt4' 'sdl2' 'shared-mime-info')
+depends=('libxtst' 'qt4' 'sdl2' 'shared-mime-info' 'desktop-file-utils')
 makedepends=('cmake' 'itstool')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
-install="${pkgname}.install"
 #source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Ryochan7/${_pkgname}/archive/${pkgver}.tar.gz")
 source=("http://pkgs.fedoraproject.org/lookaside/pkgs/${_pkgname}/${_pkgname}-${pkgver}.tar.gz/2064888967031e847c255efef941b45e/${_pkgname}-${pkgver}.tar.gz")
 md5sums=('2064888967031e847c255efef941b45e')
