@@ -1,9 +1,10 @@
+# Maintainer: Iru Cai <mytbk920423@gmail.com>
 # Maintainer: Alexander Hunziker <alex.hunziker@gmail.com>
 # Contributor: Alessio Biancalana <dottorblaster@gmail.com>
 
 pkgname=gimp-git
 epoch=1
-pkgver=2.9.2.137.g5c0f4b5
+pkgver=2.9.2.884.g52af914
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
