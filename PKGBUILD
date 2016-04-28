@@ -52,7 +52,7 @@ source=(
 )
 validpgpkeys=('BE23FB4A0E9DB36ECB9AB8BE23638BF72C593BC1')
 sha256sums=('7e907adeef60c61378c505d29f69d1cf777495215b356ce7ea3b0dc2b5c70dab'
-            '3e5678ff608aca5ee034584014e0e4ae8a539c70d453949d322c138ba48a5cea')
+            'SKIP')
 
 prepare() {
   # Workaround version acquire fail
