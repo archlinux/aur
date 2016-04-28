@@ -10,6 +10,7 @@ url="http://fallabs.com/qdbm/index.html"
 license=('LGPL2.1')
 depends=('zlib')
 source=(http://fallabs.com/qdbm/${pkgname}-${pkgver}.tar.gz)
+sha256sums=('b466fe730d751e4bfc5900d1f37b0fb955f2826ac456e70012785e012cdcb73e')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
@@ -27,6 +28,4 @@ package() {
 
   make DESTDIR=${pkgdir} install
 }
-
-md5sums=('66b3bd69a651316b8d6adc2f21cf3225')
 
