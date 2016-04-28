@@ -3,12 +3,13 @@
 _pkgname=LoopTools
 pkgname=looptools
 pkgver=2.13
-pkgrel=2
+pkgrel=3
 pkgdesc="package for evaluation of scalar and tensor one-loop integrals"
 arch=("i686" "x86_64")
 url="http://www.feynarts.de/looptools"
 license=('GPL')
 depends=("gcc-fortran")
+install=looptools.install
 source=("http://www.feynarts.de/looptools/${_pkgname}-$pkgver.tar.gz")
 sha256sums=('8065eb9b7546cea34a9ad77d67f4efd440a58c6548e66e7f1761ecee41605bc3')
 
