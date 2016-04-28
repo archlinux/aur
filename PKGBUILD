@@ -1,4 +1,5 @@
 # Maintainer: zekeer <isoniasid@gmail.com>
+
 pkgname=bomi-fresh
 pkgver=0.9.11
 pkgrel=1
