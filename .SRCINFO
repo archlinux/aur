@@ -1,6 +1,6 @@
 pkgbase = urho3d-git
 	pkgdesc = Urho3D is a free lightweight, cross-platform 2D and 3D game engine implemented in C++ and released under the MIT license. This is git version of this package.
-	pkgver = 1.4.r455.ga3e0072-1
+	pkgver = 1.5.r717.g8d2c723
 	pkgrel = 1
 	url = http://urho3d.github.io
 	install = urho3d-git.install
@@ -12,7 +12,7 @@ pkgbase = urho3d-git
 	depends = libx11
 	depends = libgl
 	depends = libxrandr
-	provides = urho3d=1.4.r455.ga3e0072-1
+	provides = urho3d=1.5.r717.g8d2c723
 	conflicts = urho3d
 	replaces = urho3d
 	source = git+https://github.com/urho3d/Urho3D.git

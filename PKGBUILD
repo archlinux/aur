@@ -1,7 +1,7 @@
 _pkgname=urho3d
 pkgname=${_pkgname}-git
-pkgver=1.4.r455.ga3e0072
-pkgrel=2
+pkgver=1.5.r717.g8d2c723
+pkgrel=1
 pkgdesc="Urho3D is a free lightweight, cross-platform 2D and 3D game engine implemented in C++ and released under the MIT license. This is git version of this package."
 arch=('i686' 'x86_64')
 url="http://urho3d.github.io"
@@ -33,4 +33,5 @@ package() {
     make DESTDIR="$pkgdir/" install
 	cd "$pkgdir/usr/bin"
 	mv "./Editor.sh" "./urho3d-editor.sh"
+	rm lua luac
 }
