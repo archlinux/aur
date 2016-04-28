@@ -3,7 +3,7 @@
 _pkgname=FeynHiggs
 pkgname=feynhiggs
 pkgver=2.11.3
-pkgrel=3
+pkgrel=4
 pkgdesc="FeynHiggs is a Fortran code for the (diagrammatic) calculation of the masses, mixings and much more of the Higgs bosons in the MSSM with real/complex parameters at the highest level of accuracy."
 arch=("i686" "x86_64")
 url="http://wwwth.mpp.mpg.de/members/heinemey/feynhiggs/cFeynHiggs.html"
@@ -24,4 +24,6 @@ package() {
   cd "${_pkgname}-$pkgver"
   make PREFIX="$pkgdir/usr" install
   install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  cd $pkgdir/usr/bin; mv fcc fcc-feynhiggs; mv table table-feynhiggs
+  cd $pkgdir/usr/include; mkdir -p FeynHiggs; mv *.h FeynHiggs
 }
