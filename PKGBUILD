@@ -2,7 +2,7 @@
 
 pkgname=mapbbcode-share-git
 pkgver=2015.12.18
-pkgrel=1
+pkgrel=2
 pkgdesc='Web backend for mapbbcode.'
 arch=('any')
 url='https://github.com/MapBBCode/share.mapbbcode.org'
@@ -11,6 +11,7 @@ source=("git+https://github.com/MapBBCode/share.mapbbcode.org.git")
 sha256sums=('SKIP')
 depends=('php')
 makedepends=('git')
+backup=('etc/webapps/mapbbcode-share-git/config.php')
 
 package() {
     _srcdir="${srcdir}/share.mapbbcode.org"
