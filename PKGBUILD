@@ -7,7 +7,7 @@
 # Maintainer: Simon Conseil <contact+aur at saimon dot org>
 
 pkgname=libmtp-git
-pkgver=1.1.10.r1.g3664e00
+pkgver=1.1.11.r34.gbbfa5a3
 pkgrel=1
 pkgdesc="Library implementation of the Media Transfer Protocol"
 arch=("i686" "x86_64")
