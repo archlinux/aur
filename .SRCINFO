@@ -1,9 +1,8 @@
 pkgbase = gtk
 	pkgdesc = A multi-platform toolkit (v1)
 	pkgver = 1.2.10
-	pkgrel = 15
+	pkgrel = 16
 	url = http://www.gtk.org/
-	install = gtk.install
 	arch = i686
 	arch = x86_64
 	license = LGPL
