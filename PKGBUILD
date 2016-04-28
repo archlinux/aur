@@ -5,7 +5,7 @@
 pkgbase=reduce-svn
 _pkgbase=reduce
 pkgname=(reduce-csl-svn reduce-psl-svn reduce-common-svn reduce-addons-svn)
-pkgver=20160420.3606
+pkgver=20160427.3635
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://reduce-algebra.sourceforge.net/"
@@ -56,7 +56,6 @@ package_reduce-csl-svn() {
   conflicts=('reduce-csl' 'reduce-algebra')
   pkgdesc='REDUCE Computer Algebra System -- CSL version'
   #pkgdesc="A portable general-purpose computer algebra system (CSL version)"
-  install=reduce-csl-svn.install
 
   install -Dm755 redcsl ${pkgdir}/usr/bin/redcsl
   install -Dm755 csl ${pkgdir}/usr/bin/csl
@@ -134,7 +133,6 @@ package_reduce-addons-svn() {
     'reduce-psl: REDUCE Computer Algebra System'
     'python2-pyside: for QT-based GUI'
   )
-  install=reduce-addons-svn.install
 
   cd "${srcdir}/${_pkgbase}-build"
 
