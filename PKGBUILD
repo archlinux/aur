@@ -2,7 +2,7 @@
 
 pkgname=xfce4-clipman-plugin-passive
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Clipman without buggy selection stealing"
 arch=(i686 x86_64)
 license=('GPL')
@@ -14,7 +14,6 @@ replaces=('xfce4-clipman-plugin')
 conflicts=('xfce4-clipman-plugin')
 provides=('xfce4-clipman-plugin')
 options=('!libtool')
-install=xfce4-clipman-plugin.install
 source=(nosteal.patch http://archive.xfce.org/src/panel-plugins/xfce4-clipman-plugin/1.2/xfce4-clipman-plugin-${pkgver}.tar.bz2)
 
 build() {
