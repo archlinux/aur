@@ -1,10 +1,4 @@
-_update_caches() {
-  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-  update-desktop-database -q
-}
-
 post_install() {
-  _update_caches
   cat <<EOF
 For OpenRCT2 to run you must install the assets from a retail copy of
 RollerCoaster Tycoon 2. See the following page for more information on
@@ -21,12 +15,4 @@ For example:
   [general]
   game_path = "/path/to/RCT2"
 EOF
-}
-
-post_upgrade () {
-  _update_caches
-}
-
-post_remove() {
-  _update_caches
 }
