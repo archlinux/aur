@@ -33,16 +33,21 @@ build() {
 	cd "$pkgname"
 	mkdir -p build && cd build
 
+	if check_option "docs" "y"; then
+		BUILD_DOCS=1
+	fi
+
 	cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DBUILD_SHARED_LIBS=1 \
 		-DFMT_TEST=0 \
+		-DFMT_DOC=$BUILD_DOCS \
 		-Wno-dev \
 		..
 
 	make
-	make doc
+	[ $BUILD_DOCS ] && make doc || true
 }
 
 check() {
