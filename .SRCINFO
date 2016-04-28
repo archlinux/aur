@@ -1,6 +1,6 @@
 pkgbase = openxenmanager-git
 	pkgdesc = An opensource multiplatform clone of Citrix XenCenter
-	pkgver = r222.8c58103
+	pkgver = r227.ea4f348
 	pkgrel = 1
 	url = https://github.com/OpenXenManager/openxenmanager
 	arch = any
