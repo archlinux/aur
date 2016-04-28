@@ -2,7 +2,7 @@
 # Contributor: Connor Behan <connor.behan@gmail.com>
 
 pkgname=libprelude
-pkgver=1.2.6
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Provides the framework for using the Prelude system"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ options=('!libtool')
 license=('GPLv2')
 depends=('gnutls' 'python2')
 makedepends=('swig')
-source=(https://www.prelude-siem.org/attachments/download/410/$pkgname-$pkgver.tar.gz)
+source=(https://www.prelude-siem.org/attachments/download/569/$pkgname-$pkgver.tar.gz)
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
@@ -27,4 +27,4 @@ package() {
   make DESTDIR="$pkgdir" install
 }
 
-md5sums=('6a5aa32864ca6d74e1c7af0cdab7bf40')
+md5sums=('c93f5735c3dd162835b5597542f05282')

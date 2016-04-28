@@ -1,6 +1,6 @@
 pkgbase = libprelude
 	pkgdesc = Provides the framework for using the Prelude system
-	pkgver = 1.2.6
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://www.prelude-siem.org
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = libprelude
 	depends = gnutls
 	depends = python2
 	options = !libtool
-	source = https://www.prelude-siem.org/attachments/download/410/libprelude-1.2.6.tar.gz
-	md5sums = 6a5aa32864ca6d74e1c7af0cdab7bf40
+	source = https://www.prelude-siem.org/attachments/download/569/libprelude-3.0.0.tar.gz
+	md5sums = c93f5735c3dd162835b5597542f05282
 
 pkgname = libprelude
 
