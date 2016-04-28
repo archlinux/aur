@@ -1,9 +1,8 @@
 pkgbase = glib
 	pkgdesc = Common C routines used by Gtk+ and other libs
 	pkgver = 1.2.10
-	pkgrel = 13
+	pkgrel = 14
 	url = http://www.gtk.org/
-	install = glib.install
 	arch = i686
 	arch = x86_64
 	license = LGPL
