@@ -1,0 +1,15 @@
+_msg(){
+    echo 'To configure the PEARL_HOME directory:'
+    echo '    /opt/pearl/bin/pearl init'
+}
+
+# arg 1:  the new package version
+post_install() {
+    _msg
+}
+
+# arg 1:  the new package version
+# arg 2:  the old package version
+post_upgrade() {
+    _msg
+}
