@@ -9,7 +9,7 @@ pkgdesc="A more flexible replacement for libevent's httpd API. [Built for seafil
 arch=('i686' 'x86_64' 'armv5te' 'armv6h' 'armv7h')
 url="https://github.com/ellzey/libevhtp"
 license=('BSD')
-depends=('libevent>=2.0.0' 'oniguruma')
+depends=('libevent>=2.0.0')
 makedepends=('cmake')
 provides=('libevhtp')
 conflicts=('libevhtp')
