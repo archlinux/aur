@@ -5,7 +5,7 @@
 
 pkgname=intel-opencl-sdk
 pkgver=2016
-pkgrel=4
+pkgrel=5
 pkgdesc="Intel SDK for OpenCL Applications"
 arch=('x86_64')
 url="https://software.intel.com/en-us/intel-opencl/download"
@@ -32,8 +32,6 @@ package() {
 
   # Cleanup
   rm -rf "${pkgdir}"/opt/intel/opencl-sdk/uninstall*
-  # Headers are provided by 'opencl-headers' package	
-  rm -rf "${pkgdir}"/opt/intel/opencl-sdk/include
 
   # Fix runtime_lib_dir and sdk_dir
   sed -i -e 's|/etc/alternatives/opencl-intel-tools|/opt/intel/opencl-sdk|g' \
