@@ -2,7 +2,7 @@
 
 pkgname=xarchiver-assume-name
 pkgver=0.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Xarchiver with the ability to archive directories without a name change"
 arch=('i686' 'x86_64')
 url="http://xarchiver.sourceforge.net/"
@@ -17,7 +17,6 @@ optdepends=('zip: ZIP support'
             'lzop: LZOP support'
             'cpio: RPM support'
             'unrar: RAR support')
-install=xarchiver.install
 source=(http://downloads.sourceforge.net/xarchiver/xarchiver-$pkgver.tar.bz2
         fix-rpm-support.patch
         fix-password-protected.patch

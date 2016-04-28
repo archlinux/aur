@@ -1,9 +1,8 @@
 pkgbase = xarchiver-assume-name
 	pkgdesc = Xarchiver with the ability to archive directories without a name change
 	pkgver = 0.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://xarchiver.sourceforge.net/
-	install = xarchiver.install
 	arch = i686
 	arch = x86_64
 	groups = xfce4-goodies
