@@ -1,0 +1,23 @@
+[Unit]
+Description=Peerunity daemon - Tor
+After=network.target
+Requires=tor.service
+Conflicts=peerunityd@%i.service
+Conflicts=peerunityd-tor@%i.service
+Conflicts=peerunity@$%i.service
+
+[Service]
+User=%i
+Group=users
+Type=simple
+Restart=on-failure
+RestartSec=15
+ExecStart=/usr/bin/peerunityd -proxy=127.0.0.1:9050
+## security
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,22 @@
+[Unit]
+Description=Peerunity
+After=network.target
+After=graphical.target
+
+[Service]
+User=%i
+Group=users
+Type=simple
+Restart=on-failure
+RestartSec=15
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=%h/.Xauthority
+ExecStart=/usr/bin/peerunity
+## security
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=full
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target
