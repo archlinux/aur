@@ -3,7 +3,7 @@
 
 pkgname=qactus-git
 pkgver=v0.7.0.r36.g8560b4c
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt-based OBS notifier application."
 arch=('i686' 'x86_64')
 url="https://github.com/javierllorente/qactus"
@@ -29,4 +29,5 @@ build() {
 package() {
   cd qactus
   make INSTALL_ROOT="${pkgdir}" install
+  install -Dm644 qactus.desktop "$pkgdir/usr/share/applications/qactus.desktop"
 }
