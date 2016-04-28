@@ -51,9 +51,6 @@ prepare() {
 	patch -Np0 < ../nmemalign.patch
 	patch -Np0 < ../fseeko64.patch
 
-	sed -ie '/XNOPGGPP/ s/$/ -Wno-strict-aliasing/' \
-		src/libemu/src/makefile
-
 	# cosmetics
 	sed -ie '/@$(MISC) echo - / d; s/^\t@/\t/' \
 		src/makefile.inc
