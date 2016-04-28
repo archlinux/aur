@@ -2,7 +2,7 @@
 
 pkgname=thunar-extended
 pkgver=1.6.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Thunar with split view, cursor audio preview and extra options for trash, desktop files and user actions"
 arch=(i686 x86_64)
 license=('GPL2' 'LGPL2.1')
@@ -22,7 +22,6 @@ optdepends=('gvfs: for trash support, mounting with udisk and remote filesystems
 	    'thunar-archive-plugin: create and deflate archives'
 	    'thunar-media-tags-plugin: view/edit id3/ogg tags')
 options=('!libtool')
-install=thunar.install
 source=(http://archive.xfce.org/src/xfce/thunar/1.6/Thunar-${pkgver}.tar.bz2
 	notrash.patch
 	uca_num_files.patch

@@ -1,9 +1,8 @@
 pkgbase = thunar-extended
 	pkgdesc = Thunar with split view, cursor audio preview and extra options for trash, desktop files and user actions
 	pkgver = 1.6.10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://thunar.xfce.org
-	install = thunar.install
 	arch = i686
 	arch = x86_64
 	groups = xfce4
