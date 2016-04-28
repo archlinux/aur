@@ -2,8 +2,8 @@
 # Contributor : Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 pkgname="sbsigntools"
-pkgver=0.7
-pkgrel=3
+pkgver=0.8
+pkgrel=1
 pkgdesc="Tools to add signatures to EFI binaries and Drivers"
 arch=('x86_64')
 url="https://build.opensuse.org/package/show/home:jejb1:UEFI/sbsigntools"
