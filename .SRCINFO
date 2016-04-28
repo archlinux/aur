@@ -1,9 +1,8 @@
 pkgbase = tbe
 	pkgdesc = The Butterfly Effect is a physics-based puzzle game
 	pkgver = 0.9.2.1
-	pkgrel = 2
-	url = https://github.com/kaa-ching/tbe
-	install = tbe.install
+	pkgrel = 3
+	url = http://the-butterfly-effect.org/
 	arch = i686
 	arch = x86_64
 	license = GPL2
