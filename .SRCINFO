@@ -1,7 +1,7 @@
 pkgbase = blender-better-collada-git
 	pkgdesc = Better Collada exporter for Blender, made for the Godot Engine
 	pkgver = 1405.f220183
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/okamstudio/godot/tree/master/tools/export/blender25
 	arch = any
 	license = MIT

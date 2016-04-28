@@ -23,6 +23,6 @@ package() {
   _addondir="$pkgdir/usr/share/blender/2.77/scripts/addons/io_scene_dae"
   install -dm755 $_addondir
   install -Dm644 $srcdir/$pkgname/tools/export/blender25/io_scene_dae/*.py $_addondir
-  install -dm755 $pkgdir/share/licenses/$pkgname/licenses
-  install -Dm644 $srcdir/$pkgname/LICENSE.md $pkgdir/share/licenses/$pkgname/licenses
+  install -dm755 $pkgdir/usr/share/licenses/$pkgname/licenses
+  install -Dm644 $srcdir/$pkgname/LICENSE.md $pkgdir/usr/share/licenses/$pkgname/licenses
 }
