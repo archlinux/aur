@@ -2,8 +2,8 @@
 # Upstream URL: https://github.com/actionless/oomox
 
 pkgname=oomox-git
-pkgver=0.14.1
-pkgrel=2
+pkgver=0.15
+pkgrel=1
 pkgdesc="Graphical application for generating different color variations of Numix theme (GTK2, GTK3)"
 arch=('x86_64' 'i686')
 url="https://github.com/actionless/oomox"
