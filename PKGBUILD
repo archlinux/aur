@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-knock
 _pkgbasever=4.5-gnu
-_pkgver=4.5.1-gnu
+_pkgver=4.5.2-gnu
 _knockpatchver=4.2_2
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -20,7 +20,7 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
-pkgrel=1.1
+pkgrel=1
 rcnrel=armv7-x2
 arch=('i686' 'x86_64' 'armv7h')
 url="https://gnunet.org/knock"
@@ -67,7 +67,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0010-stmmac-fix-MDIO-settings.patch')
 sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
-            'bde6fa0cee5ee3d32c6e4336b23f87cbe37b74b9d4d1603d1d421dc1e44d2ab9'
+            '7918a8c102c5f47dbe778f5541656c875b844d6e4da514a42c8855ff6a7f3733'
             'SKIP'
             'c7c4ab580f00dca4114c185812a963e73217e6bf86406c240d669026dc3f98a4'
             'SKIP'
@@ -77,15 +77,15 @@ sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'e5ac9db034eb0e06a134ca953fa26a1bc651a24c6949beaeedf6163eab0e7636'
-            'b67fca020055afa88653fddf9615d833d8d5fc8b0557697a528b3514b817ae71'
-            '582337684f3b5aae22553af1f664463c4d52d2910f0cdc574b04c9df1d02b85d'
+            'b11f370374e7618e7eadbbebf5951412c447a1be5f0bd3cdf30ccc79a0d22711'
+            '1254c43baa6099782daef8dda9bb4a38462826ba4b8de53cdcd1478dfb9b03d0'
+            '5d6809be07bc020a1429bc0694feba6a3800a0f5a7f6d4de79a36f2c6a2ff0bf'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '91e087cddaf2149d050b90720d5b3004263ec3ab07dece0241551d045ff0a91f'
             '96c6c7d4057b8d08238adae85d476c863c082770a182057163a45480511d35a8'
             '2ca85ee212ef8d8aab3d3c2a0cef304a355d86e7aa520e19471f56ace68a0cf4'
-            'b878510fb1ba2c83999b9faf9bf270779d6f1a1c33ec39fb3701d3e2aba053dc'
+            '869920d51c7f414d4fdd8227bfdcea2b4c81de92ee91d462a77685947a850b93'
             'SKIP'
             'd09937cbca4f408dbcde270e465bdfe0589a0b41ed07d260a596a38fe6cca987'
             'cc1f1b5026b373da4a5c2e8c82bc2b0f8a20e295353c201579140a04f2452545'
