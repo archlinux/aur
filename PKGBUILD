@@ -1,7 +1,7 @@
 pkgname=sabnzbd
 _pkgname=SABnzbd
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A web-interface based binary newsgrabber with NZB file support"
 url="http://www.sabnzbd.org"
 arch=("any")
@@ -12,9 +12,9 @@ depends=("curl" "par2cmdline"
 optdepends=("xdg-utils: registration of .nzb files" "python2-feedparser: rss support" "python2-pyopenssl: ssl support" "par2cmdline-tbb: par2 multi-threading")
 install="${pkgname}.install"
 backup=("etc/conf.d/sabnzbd" "opt/${pkgname}/${pkgname}.ini")
-source=("https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz"
+source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-src.tar.gz"
         "${pkgname}" "${pkgname}.desktop" "addnzb.sh" "nzb-2.png" "sab2_64.png" "x-nzb.xml" "${pkgname}.service" "${pkgname}.confd")
-md5sums=('4e99369e73dee02c4a8382f035ec9610'
+md5sums=('012cfd6c10e0f926f8695e4ab56ebe17'
          '48d60a1c626503c7fef1bc5374390513'
          'f9bd5485072714b11f8c30a28024dc4d'
          '69b9bcbcf67ff3e7a4cdd9f26e001341'
@@ -27,11 +27,7 @@ md5sums=('4e99369e73dee02c4a8382f035ec9610'
 package() {
   mkdir -p "${pkgdir}/opt/${pkgname}"
   touch "${pkgdir}/opt/${pkgname}/${pkgname}.ini"
-  cp -r "${srcdir}/${pkgname}-${pkgver}/"* "${pkgdir}/opt/${pkgname}"
-
-  # remove Windows and OS X files
-  rm -r "${pkgdir}/opt/${pkgname}/win"
-  rm -r "${pkgdir}/opt/${pkgname}/osx"
+  cp -r "${srcdir}/${_pkgname}-${pkgver}/"* "${pkgdir}/opt/${pkgname}"
 
   # Fix for issues with Python 3
   find "${pkgdir}/opt/${pkgname}" -type f -exec sed -i 's/python/python2/g' {} \;
