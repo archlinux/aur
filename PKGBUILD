@@ -1,5 +1,5 @@
 pkgname=sdformat
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="SDF Converter for gazebo"
 arch=('i686' 'x86_64')
@@ -9,22 +9,28 @@ depends=('boost' 'tinyxml' 'ignition-math>=2')
 makedepends=('cmake' 'doxygen' 'ruby>=1.9.1')
 
 source=("http://osrf-distributions.s3.amazonaws.com/${pkgname}/releases/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('b0f94bb40b0d83e35ff250a7916fdfd6df5cdc1e60c47bc53dd2da5e2378163e')
+sha256sums=('0f63e446a29073affed2427214aa04d23c1cb8331cdd1bd7d48768d7eee5862a')
 
-build() {
+prepare(){
   cd "${srcdir}/${pkgname}-${pkgver}"
-
   mkdir -p build && cd build
 
   cmake .. -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX=/usr \
            -DCMAKE_INSTALL_LIBDIR=lib
+}
 
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}/build"
   make
 }
 
+# check() {
+#   cd "${srcdir}/${pkgname}-${pkgver}/build"
+#   make test
+# }
+
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}/build"
-
   make DESTDIR="$pkgdir/" install
 }
