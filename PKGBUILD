@@ -53,7 +53,6 @@ package() {
 
   cp -rp ${_srcpath}/* ${pkgdir}/opt/fortinet/${pkgname}
 
-  chmod -R 777 ${pkgdir}/opt/fortinet/
   chmod 555 ${pkgdir}/opt/fortinet/${pkgname}/helper
 
   install -Dm 644 ${srcdir}/${pkgname}.png ${pkgdir}/opt/fortinet/${pkgname}/icons/
