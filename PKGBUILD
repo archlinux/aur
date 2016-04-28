@@ -4,7 +4,7 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 pkgname=storcli
 _pkgname=StorCLI
 pkgver=1.19.04
-pkgrel=1
+pkgrel=2
 _pkgrel=1
 pkgdesc="CLI program for LSI MegaRAID cards, also works with some Dell PERC RAID cards (successor to megaraid-cli)"
 arch=('i686' 'x86_64')
@@ -12,6 +12,8 @@ url="https://www.thomas-krenn.com/en/wiki/StorCLI"
 license=('custom')
 makedepends=('rpmextract')
 install=${pkgname}.install
+conflicts=('megaraid-cli')
+
 if [[ "${CARCH}" == 'x86_64' ]];
 then
   _arch='amd64'
@@ -21,6 +23,7 @@ then
   _arch='i386'
   _bits=''
 fi
+
 #source_x86_64=("http://archive.thomas-krenn.com/packages/pool/optional/s/${pkgname}/${pkgname}_${pkgver}_amd64.deb"
 #		"${pkgname}_${pkgver}_amd64.deb.sig")
 #source_i686=("http://archive.thomas-krenn.com/packages/pool/optional/s/${pkgname}/${pkgname}_${pkgver}_i386.deb"
@@ -32,16 +35,17 @@ source=("https://square-r00t.net/files/arch/${pkgname}/${pkgver}_${_pkgname}.zip
 sha512sums=('3086360a4c40755cdcaa8faa7192adccae5555cf3aaa741be583fa3559a7dedc14652489d8248a69465040871710917d09461644df3d1d2d31fe6d6e0957196b'
             'SKIP')
 
-conflicts=('megaraid-cli')
+build() {
+	cd ${srcdir}/${pkgname}_all_os/Linux
+	# Ugh. Avago doesn't distribute binaries, only RPMs. Lame.
+        rpmextract.sh ${pkgname}-${pkgver}-${_pkgrel}.noarch.rpm
+}
 
 package() {
-	cd ${srcdir}/${pkgname}_all_os/Linux
 	#ar x ${pkgname}_${pkgver}_${_arch}.deb
 	#tar -zxf data.tar.gz
 	#install -D -m755 "${srcdir}/usr/sbin/storcli${_bits}" "${pkgdir}/usr/bin/storcli"
 
-	# Ugh. Avago doesn't distribute binaries, only RPMs. Lame.
-        rpmextract.sh ${pkgname}-${pkgver}-${_pkgrel}.noarch.rpm
 	install -d -m 0755 ${pkgdir}/usr/bin
 	install -d -m 0755 ${pkgdir}/usr/share/${pkgname}
 	install -d -m 0755 ${pkgdir}/usr/share/licenses/${pkgname}
