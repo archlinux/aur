@@ -12,7 +12,7 @@
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'mesa-vulkan-intel-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-libgl-git' 'mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=11.3.0_devel.80341.899bd63
+pkgver=11.3.0_devel.80749.7e7710a
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto' 
@@ -22,11 +22,10 @@ makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm>=2.4.66' 'dri2p
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa#branch=master'
-        'LICENSE'
-        'vulkan-fix-install-data-local.patch')
+        'LICENSE')
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
-         '3db37a8e69dc3580ceb634305e654ec2')
+         )
 
 pkgver() {
     cd mesa
@@ -38,11 +37,6 @@ _mesaver() {
     [ -f $path ] && cat "$path"
 }
 
-prepare() {
-  cd mesa
-  patch -p1 -i "${srcdir}/vulkan-fix-install-data-local.patch"
-}
-
 build () {
   cd mesa
 
@@ -51,7 +45,6 @@ build () {
                --with-dri-driverdir=/usr/lib/xorg/modules/dri \
                --with-gallium-drivers=i915,ilo,r300,r600,radeonsi,nouveau,svga,swrast,virgl \
                --with-dri-drivers=i915,i965,r200,radeon,nouveau,swrast \
-               --with-vulkan-drivers=intel \
                --with-egl-platforms=x11,drm,wayland \
                --with-clang-libdir=/usr/lib \
                --with-sha1=libnettle \
@@ -68,6 +61,10 @@ build () {
                --enable-opencl \
                --enable-opencl-icd \
                --enable-glx-tls
+#               --with-vulkan-drivers=intel
+
+
+
 
 #
 # configure flag                description                                                             default                                         overridden
@@ -135,19 +132,19 @@ package_opencl-mesa-git () {
 }
 
 package_mesa-vulkan-intel-git() {
-  # using vulkan-intel-git would be better, but thatpackage already exists
+  # using vulkan-intel-git would be better, but that package already exists
   pkgdesc="Vulkan driver for selected intel graphic chipsets"
   depends=('vulkan-icd-loader' 'libgcrypt' 'wayland' 'libxcb' "mesa-git=${pkgver}")
   provides=('vulkan-intel')
   replaces=('vulkan-intel')
   conflicts=('vulkan-intel')
   
-  install -m755 -d ${pkgdir}/etc
-  mv -v ${srcdir}/fakeinstall/etc/vulkan ${pkgdir}/etc/
+  #install -m755 -d ${pkgdir}/etc
+  #mv -v ${srcdir}/fakeinstall/etc/vulkan ${pkgdir}/etc/
 
-  install -m755 -d ${pkgdir}/usr/{include/vulkan,lib}
-  mv -v ${srcdir}/fakeinstall/usr/lib/libvulkan_intel.so ${pkgdir}/usr/lib/
-  mv -v ${srcdir}/fakeinstall/usr/include/vulkan/vulkan_intel.h ${pkgdir}/usr/include/vulkan
+  #install -m755 -d ${pkgdir}/usr/{include/vulkan,lib}
+  #mv -v ${srcdir}/fakeinstall/usr/lib/libvulkan_intel.so ${pkgdir}/usr/lib/
+  #mv -v ${srcdir}/fakeinstall/usr/include/vulkan/vulkan_intel.h ${pkgdir}/usr/include/vulkan
 
   install -m755 -d "${pkgdir}/usr/share/licenses/mesa-vulkan-intel-git"
   install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-vulkan-intel-git/"

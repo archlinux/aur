@@ -1,9 +1,0 @@
-diff -aur mesa.pristine/src/intel/vulkan/Makefile.am mesa.new/src/intel/vulkan/Makefile.am
---- mesa.pristine/src/intel/vulkan/Makefile.am	2016-04-16 15:48:19.000000000 +0200
-+++ mesa.new/src/intel/vulkan/Makefile.am	2016-04-16 16:12:04.667578182 +0200
-@@ -209,4 +209,4 @@
- include $(top_srcdir)/install-lib-links.mk
- 
- install-data-local:
--	$(INSTALL_DATA) -D $(srcdir)/intel_icd.json $(VULKAN_ICD_INSTALL_DIR)/intel_icd.json
-+	$(INSTALL_DATA) -D $(srcdir)/intel_icd.json $(DESTDIR)$(VULKAN_ICD_INSTALL_DIR)/intel_icd.json
