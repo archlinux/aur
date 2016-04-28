@@ -5,7 +5,7 @@
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=gdal-hdf4
-pkgname_gdal=gdal
+_pkgname=gdal
 pkgver=2.0.2
 pkgrel=4
 pkgdesc="A translator library for raster geospatial data formats, with support to HDF4 format (requested to use MODIStsp tool: http://github.com/lbusett/MODIStsp)"
@@ -18,21 +18,21 @@ makedepends=('perl' 'swig' 'chrpath' 'doxygen')
 optdepends=('postgresql: postgresql database support'
             'mariadb: mariadb database support'
             'perl:  perl binding support')
-provides=('gdal')
+provides=('gdal==2.0.2')
 conflicts=('gdal')
 options=('!emptydirs')
-changelog=$pkgname_gdal.changelog
-source=(http://download.osgeo.org/${pkgname_gdal}/${pkgver}/${pkgname_gdal}-${pkgver}.tar.gz
+changelog=$_pkgname.changelog
+source=(http://download.osgeo.org/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.gz
         gdal-python-install.patch)
 sha256sums=('db7722caf8d9dd798ec18012b9cacf40a518918466126a88b9fd277bd7d40cc4'
             '823199fdedf5953d9b6bffb0e58a810490e958054f5a9da9d5cd1818f89cd51a')
 
 prepare() {
-  cd "${srcdir}"/$pkgname_gdal-$pkgver
+  cd "${srcdir}"/$_pkgname-$pkgver
   patch -Np0 -i "${srcdir}"/gdal-python-install.patch
 
 # python2 fixes
-  sed -i 's_python python1.5_python2 python python1.5_' configure
+ sed -i 's_python python1.5_python2 python python1.5_' configure
   for file in swig/python/{,osgeo/,samples/,scripts/}*.py; do
       sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' $file
   done
@@ -42,14 +42,14 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}"/$pkgname_gdal-$pkgver
+  cd "${srcdir}"/$_pkgname-$pkgver
   export CFLAGS="$CFLAGS -fno-strict-aliasing"
 
 # bug #23654
   export LDFLAGS="$LDFLAGS -Wl,--as-needed" 
 
   ./configure --prefix=/usr --with-netcdf --with-libtiff --with-sqlite3 --with-geotiff \
-              --with-mysql --with-python --with-curl --with-hdf4 --with-hdf5 --with-perl --with-geos \
+              --with-mysql --with-python=/usr/bin/python2 --with-curl --with-hdf4 --with-hdf5 --with-perl --with-geos \
               --with-png --with-poppler --with-spatialite --with-openjpeg
 
 # workaround for bug #13646
@@ -61,12 +61,12 @@ build() {
 }
 
 package () {
-  cd "${srcdir}"/$pkgname_gdal-$pkgver
+  cd "${srcdir}"/$_pkgname-$pkgver
   make DESTDIR="${pkgdir}" install
   make DESTDIR="${pkgdir}" install-man
 
 # install license
-  install -Dm644 LICENSE.TXT "${pkgdir}"/usr/share/licenses/$pkgname_gdal/LICENSE
+  install -Dm644 LICENSE.TXT "${pkgdir}"/usr/share/licenses/$_pkgname/LICENSE
 
 #FS15477 clean up junks
   rm -f "${pkgdir}"/usr/bin/*.dox

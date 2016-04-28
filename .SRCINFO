@@ -33,7 +33,7 @@ pkgbase = gdal-hdf4
 	optdepends = postgresql: postgresql database support
 	optdepends = mariadb: mariadb database support
 	optdepends = perl: perl binding support
-	provides = gdal
+	provides = gdal==2.0.2
 	conflicts = gdal
 	options = !emptydirs
 	source = http://download.osgeo.org/gdal/2.0.2/gdal-2.0.2.tar.gz
