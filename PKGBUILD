@@ -2,8 +2,8 @@
 
 pkgname=mist-git
 _pkgname=mist
-pkgver=0.7.1.r0.g4f8614c
-_pkgver=0-7-1
+pkgver=0.7.2.r0.gc1bec3c
+_pkgver=0-7-2
 pkgrel=1
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
 arch=('i686' 'x86_64')
@@ -56,7 +56,7 @@ sha256sums=(
 
 pkgver() {
   cd ${srcdir}/${pkgname}
-  git checkout -q wallet
+  git checkout -q develop
   git pull -q
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
@@ -64,7 +64,7 @@ pkgver() {
 build() {
   msg2 'Building Mist...'
   cd ${srcdir}/${pkgname}
-  git checkout wallet
+  git checkout develop
   git pull
   git submodule update --init
   npm install electron-prebuilt
