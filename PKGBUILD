@@ -8,7 +8,7 @@
 
 pkgname=grace-openmotif
 pkgver=5.1.25
-pkgrel=1
+pkgrel=2
 pkgdesc="2D plotting tool"
 arch=(i686 x86_64)
 url="http://plasma-gate.weizmann.ac.il/Grace/"
@@ -17,7 +17,6 @@ replaces=('grace')
 conflicts=('grace')
 provides=('grace')
 license=('GPL')
-install=grace.install
 # patches
 # mkstemp.patch : move tmpnam to mkstemp (adapted from debian)
 # netcdf_fftw2.patch : fix configure instead of aclocal.m4
