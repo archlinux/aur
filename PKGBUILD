@@ -32,7 +32,6 @@ optdepends=('ffmpeg: for WebGL exporting'
             'java-environment: for Android and Tizen exporting'
             'android-sdk: for Android Remote'
             'android-udev: for Android Remote')
-install="${pkgname}.install"
 source=("http://download.unity3d.com/download_unity/linux/unity-editor-installer-${pkgver}.sh"
         'EULA'
         'unity-editor-beta'

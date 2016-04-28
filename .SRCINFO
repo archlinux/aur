@@ -5,7 +5,6 @@ pkgbase = unity-editor-beta
 	pkgver = 5.4.0b16+20160503
 	pkgrel = 1
 	url = https://unity3d.com/
-	install = unity-editor-beta.install
 	arch = x86_64
 	license = custom
 	depends = desktop-file-utils
