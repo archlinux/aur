@@ -1,0 +1,20 @@
+post_install() {
+	echo
+	echo -e "\e[33mSetup: edit /etc/slim.conf and replace\e[0m"
+	echo -e "\e[33mthe line current_theme with:\e[0m"
+	echo -e "\e[1;33mcurrent_theme     rainbowdash-archlinux\e[0m"
+	echo
+}
+
+post_remove() {
+	echo
+	echo -e "\e[31;1mMake sure you edit /etc/slim.conf and replace\e[0m"
+	echo -e "\e[31;1mthe line current_theme with another theme than rainbowdash-archlinux,\e[0m"
+	echo -e "\e[31;1motherwise slim won't work.\e[0m"
+	echo
+}
+
+op=$1
+shift
+$op $*
+
