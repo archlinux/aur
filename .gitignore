@@ -11,8 +11,8 @@ pkg/
 *.txz
 *.tbz
 *.tbz2
-*.zip
 *.run
+*.zip
 *.7z
 *.rar
 *.deb
