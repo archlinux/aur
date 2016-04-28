@@ -1,6 +1,6 @@
 pkgbase = qactus-git
 	pkgdesc = A Qt-based OBS notifier application.
-	pkgver = v0.6.0.r1.gd99d5cd
+	pkgver = v0.7.0.r36.g8560b4c
 	pkgrel = 1
 	url = https://github.com/javierllorente/qactus
 	arch = i686

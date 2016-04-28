@@ -2,7 +2,7 @@
 # Contributor: 
 
 pkgname=qactus-git
-pkgver=v0.6.0.r1.gd99d5cd
+pkgver=v0.7.0.r36.g8560b4c
 pkgrel=1
 pkgdesc="A Qt-based OBS notifier application."
 arch=('i686' 'x86_64')
