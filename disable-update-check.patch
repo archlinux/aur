@@ -1,0 +1,11 @@
+--- a/lib/preferences.txt	2014-09-16 15:42:47.000000000 +0200
++++ b/lib/preferences.txt	2016-04-29 15:01:28.940567416 +0200
+@@ -63,7 +63,7 @@
+ # by default, check the processing server for any updates
+ # (please avoid disabling, this also helps us know basic numbers 
+ # on how many people are using Processing)
+-update.check = true
++update.check = false
+ 
+ # on windows, automatically associate .pde files with processing.exe
+ platform.auto_file_type_associations = true

@@ -6,7 +6,7 @@
 pkgname=arduino10
 epoch=1
 pkgver=1.0.6
-pkgrel=5
+pkgrel=6
 pkgdesc="Arduino prototyping platform SDK (old version)"
 arch=('i686' 'x86_64')
 url="http://arduino.cc/en/Main/Software"
@@ -17,12 +17,14 @@ makedepends=('icoutils')
 install="arduino10.install"
 source=('arduino-fix-arguments.patch'
         'arduino10.desktop'
-        'arduino10.xml')
+        'arduino10.xml'
+        'disable-update-check.patch')
 source_i686+=("http://downloads.arduino.cc/arduino-${pkgver}-linux32.tgz")
 source_x86_64+=("http://downloads.arduino.cc/arduino-${pkgver}-linux64.tgz")
 sha256sums=('631921fce485d14c79bcdc31d5d6f3a95d729d49975390b6b785fe49d238ff65'
             '00b6ab429a7f85fe4b2e571c08fea50f615d8e5b6b570797b01f293ff9bb57f8'
-            '473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68')
+            '473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68'
+            '7c05abf88596c362de4be7afeef5e310e9a70b7bbefef8af844f8c0dee2e7b3c')
 sha256sums_i686=('f059a572231abafb92099a3a404c0a41502c3413668610676c40029384edc658')
 sha256sums_x86_64=('1ff175c487de335981d3aad64cf212b56cb2c778a6bdd6655045335ffc65e147')
 
@@ -30,6 +32,7 @@ prepare() {
   cd "arduino-${pkgver}"
 
   patch -Np1 <"${srcdir}/arduino-fix-arguments.patch"
+  patch -Np1 <"${srcdir}/disable-update-check.patch"
 
   icotool -x -o .. lib/arduino_icon.ico
 }
