@@ -1,39 +1,41 @@
-# Maintainer: Lara Maia <lara@craft.net.br>
-pkgname=python-wiringpi2-git
-pkgver=86.4ad103c
-pkgrel=2
-epoch=1
-pkgdesc="Python-wrapped version of Gordon Henderson's WiringPI version 2."
-url="https://github.com/WiringPi/WiringPi2-Python"
-arch=('x86_64' 'i686' 'armv6h')
+# Maintainer: Lara Maia <dev@lara.click>
+# Co-maintainer: Fernando Manfredi <contact at acidhub.click>
+
+
+pkgname=python-wiringpi-git
+pkgver=126.4ca39a6
+pkgrel=1
+pkgdesc="Python-wrapped version of Gordon Henderson's WiringPI."
+url="https://github.com/WiringPi/WiringPi-Python"
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'armv8h')
 license=('GPLv3')
 depends=('python')
 makedepends=('git' 'python-setuptools' 'swig')
-conflicts=('python-wiringpi2')
-provides=('python-wiringpi2')
-source=(git+https://github.com/WiringPi/WiringPi2-Python.git)
-md5sums=('SKIP')
+replaces=('python-wiringpi2-git')
+conflicts=('python-wiringpi')
+provides=('python-wiringpi')
+source=(git+https://github.com/WiringPi/WiringPi-Python.git)
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir"/WiringPi2-Python
+    cd "$srcdir"/WiringPi-Python
     echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
-    cd "$srcdir"/WiringPi2-Python
-    git revert --no-edit 962b0d087fa78b247be426ed9442ea00af4bb93e
+    cd "$srcdir"/WiringPi-Python
+    git submodule init
+    git submodule update
     swig -python wiringpi.i
 }
 
 build() {
-    cd "$srcdir"/WiringPi2-Python
-    
+    cd "$srcdir"/WiringPi-Python
     python setup.py build
 }
 
 package() {
-    cd "$srcdir"/WiringPi2-Python
-    
+    cd "$srcdir"/WiringPi-Python
     python setup.py install --prefix=/usr --root=$pkgdir
 }
 
