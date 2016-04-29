@@ -6,14 +6,14 @@
 
 pkgname=rofi-git
 _gitname=rofi
-pkgver=0.15.12.r259.gb13bff6
+pkgver=1.0.0.r9.g7861b73
 pkgrel=1
 pkgdesc="A window switcher, run dialog and dmenu replacement"
 arch=('i686' 'x86_64')
 url="https://davedavenport.github.io/rofi/"
 license=('MIT')
-depends=('cairo' 'freetype2' 'libx11' 'libxcb' 'libxdg-basedir' 'libxkbcommon'
-  'libxkbcommon-x11' 'pango' 'startup-notification' 'xcb-util' 'xcb-util-wm')
+depends=(libx11 libxft freetype2 libxdg-basedir pango startup-notification
+         libxcb libxkbcommon libxkbcommon-x11 xcb-util xcb-util-wm)
 optdepends=('i3-wm: use as a window switcher')
 makedepends=('git')
 provides=('rofi')
@@ -44,7 +44,7 @@ package() {
   cd "$srcdir/$_gitname"
   make install install-man DESTDIR="$pkgdir"
 
-  # Install examples to /usr/share/doc/rofi/examples
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/rofi/COPYING"
   install -dm755 "$pkgdir/usr/share/doc/rofi/examples"
   install -Dm755 Examples/*.sh "$pkgdir/usr/share/doc/rofi/examples"
 }
