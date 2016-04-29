@@ -7,8 +7,8 @@ pkgbase = fira-code-git
 	arch = i686
 	arch = x86_64
 	makedepends = git
-	provides = ${pkgname%-git}
-	conflicts = ${pkgname%-git}
+	provides = ${pkgname}
+	conflicts = ${pkgname}
 	source = fira-code-git::git+https://github.com/tonsky/FiraCode.git
 	md5sums = SKIP
 
