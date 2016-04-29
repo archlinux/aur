@@ -1,8 +1,8 @@
 # Maintainer Daichi Shinozaki <dsdseg@gmail.com>
 _npmname=nan
-_npmver=1.8.4
+_npmver=2.3.2
 pkgname=nodejs-nan # All lowercase
-pkgver=1.8.4
+pkgver=2.3.2
 pkgrel=1
 pkgdesc="Native Abstractions for Node.js"
 arch=(any)
@@ -11,7 +11,7 @@ license=( "MIT" )
 depends=('nodejs')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=('3c76b5382eab33e44b758d2813ca9d92e9342f34')
+sha1sums=('4d4ecf17e1da4e989efb4f273d8d00201cad087e')
 
 package() {
   cd "$srcdir"
