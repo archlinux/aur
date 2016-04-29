@@ -1,6 +1,6 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 pkgname=ssh-askpass-fullscreen
-pkgver=1.0
+pkgver=1.1
 pkgrel=3
 pkgdesc="A small SSH Askpass replacement written with GTK2"
 url="http://github.com/atj/ssh-askpass-fullscreen"
@@ -9,10 +9,10 @@ license=('GPL')
 provides=('x11-ssh-askpass')
 conflicts=('x11-ssh-askpass')
 depends=('gtk2' 'openssh')
-source=(https://github.com/downloads/atj/$pkgname/$pkgname-$pkgver.tar.bz2
+source=(https://github.com/atj/$pkgname/archive/v$pkgver.tar.gz
         ssh-askpass-fullscreen.sh)
-md5sums=('368406f2c001a272e844230f2dcd4018'
-         '1f653619805275a8348c55bdb978d514')
+md5sums=('fec8e50adcd997f85acdc9f8769ad6f9'
+         '23a0f7bba208252cfef4e3b8206b31a3')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver/src"

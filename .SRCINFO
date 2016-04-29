@@ -1,6 +1,6 @@
 pkgbase = ssh-askpass-fullscreen
 	pkgdesc = A small SSH Askpass replacement written with GTK2
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 3
 	url = http://github.com/atj/ssh-askpass-fullscreen
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = ssh-askpass-fullscreen
 	depends = openssh
 	provides = x11-ssh-askpass
 	conflicts = x11-ssh-askpass
-	source = https://github.com/downloads/atj/ssh-askpass-fullscreen/ssh-askpass-fullscreen-1.0.tar.bz2
+	source = https://github.com/atj/ssh-askpass-fullscreen/archive/v1.1.tar.gz
 	source = ssh-askpass-fullscreen.sh
-	md5sums = 368406f2c001a272e844230f2dcd4018
-	md5sums = 1f653619805275a8348c55bdb978d514
+	md5sums = fec8e50adcd997f85acdc9f8769ad6f9
+	md5sums = 23a0f7bba208252cfef4e3b8206b31a3
 
 pkgname = ssh-askpass-fullscreen
 
