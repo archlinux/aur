@@ -1,4 +1,4 @@
-# Maintainer Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
+# Maintainer: Pedro A. López-Valencia <https://aur.archlinux.org/users/vorbote>
 
 #######################################################################
 # CAVEAT LECTOR
@@ -22,20 +22,20 @@
 #  calculated at all. Emacs opens in a very small frame.
 #  From within emacs, search for the options initial-frame-alist
 #  and default-frame-alist to set up emacs frame geometry to
-#  your personal preference.
+#  your personal preference. Switching to GTK+2 fixes it for now.
 #
 #######################################################################
 
 #######################################################################
 #
-# Still reading? Here kid, have enough rope to hang yourself.
+# Still reading? Here kid, have enough rope to hang yourself. :-)
 #
 #######################################################################
 
 #######################################################################
 # Assign "YES" to the variable you want enabled, empty otherwise
 #######################################################################
-GTK3=            # Leave empty to compile with gtk+ 2 support
+GTK3=            # Leave empty to compile with gtk+ 2 support. BTW, gtk3 is broken.
 LTO=             # Enable link-time optimization. Broken.
 CAIRO=           # Very broken for me. Use at own risk.
 XWIDGETS=        # Use GTK+ native widgets pulled from webkitgtk.
@@ -44,9 +44,9 @@ DOCS_PDF=        # Generate and install pdf documentation.
 #######################################################################
 
 pkgname=emacs-git
-pkgver=25.1.50.r125751
-pkgrel=2
-pkgdesc="GNU Emacs. Version 25 development and maintenance branch."
+pkgver=25.1.50.r125786
+pkgrel=1
+pkgdesc="GNU Emacs. Master development branch."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL')
@@ -56,7 +56,7 @@ makedepends=('git')
 #######################################################################
 if [[ $GTK3 = "YES" ]]; then depends+=('gtk3'); else depends+=('gtk2'); fi
 if [[ $CAIRO = "YES" ]]; then depends+=('cairo'); fi
-if [[ $XWIDGETS = "YES" ]]; then 
+if [[ $XWIDGETS = "YES" ]]; then
   if [[ $GTK3 = "YES" ]]; then depends+=('webkitgtk'); else depends+=('webkitgtk2'); fi
 fi
 if [[ $DOCS_PDF = "YES" ]]; then makedepends+=('texlive-core'); fi
@@ -66,6 +66,7 @@ conflicts=('emacs')
 provides=('emacs')
 source=("$pkgname::git://git.savannah.gnu.org/emacs.git")
 md5sums=('SKIP')
+#source=("$pkgname::git+http://git.savannah.gnu.org/r/emacs.git#branch")
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -101,9 +102,9 @@ build() {
 #######################################################################
 #######################################################################
   if [[ $GTK3 = "YES" ]]; then 
-    _conf+=('--with-xtoolkit=gtk3' '--without-gconf' '--without-gsettings'); 
+    _conf+=('--with-x-toolkit=gtk3' '--without-gconf' '--with-gsettings'); 
   else
-    _conf+=('--with-xtoolkit=gtk2' '--without-gconf' '--without-gsettings');
+    _conf+=('--with-x-toolkit=gtk2' '--with-gconf' '--without-gsettings');
   fi
   if [[ $LTO = "YES" ]]; then _conf+=('--enable-link-time-optimization'); fi
   if [[ $CAIRO = "YES" ]]; then _conf+=('--with-cairo'); fi

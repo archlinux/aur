@@ -1,7 +1,7 @@
 pkgbase = emacs-git
-	pkgdesc = GNU Emacs. Version 25 development and maintenance branch.
-	pkgver = 25.1.50.r125751
-	pkgrel = 2
+	pkgdesc = GNU Emacs. Master development branch.
+	pkgver = 25.1.50.r125786
+	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = i686
 	arch = x86_64
