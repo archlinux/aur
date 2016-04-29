@@ -45,6 +45,8 @@ prepare() {
 	sed -i -e "s/i586-pc-msdosdjgpp/$_target_alias/" \
 		src/makefile.def \
 		src/dxe/makefile.dxe
+	sed -i -e 's/ln/ln -f/' \
+		src/dxe/makefile.dxe
 
 	# enable building without an ldscript
 	echo 'char **_environ;' > src/libc/crt0/environ.c
@@ -80,6 +82,7 @@ SRC += environ.c' \
 
 build() {
 	cd "$srcdir/src"
+	make clean
 	make -j1
 	cd "$srcdir/src/dxe"
 	make -f makefile.dxe
