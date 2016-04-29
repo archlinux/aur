@@ -3,8 +3,8 @@
 
 pkgname=ttf-iran-nastaliq
 pkgver=2.0b
-pkgrel=2
-pkgdesc="A free Unicode calligraphic persian font created by Iran Supreme Council of Information and Communication Technology (SCICT)."
+pkgrel=3
+pkgdesc="A free Unicode calligraphic Persian font created by Iran Supreme Council of Information and Communication Technology (SCICT)."
 arch=('any')
 url="http://www.scict.ir/portal/Home/Default.aspx?CategoryID=c7a865b2-7b95-4169-ad94-f9de320528d7"
 license=('custom')
