@@ -8,7 +8,7 @@ pkgbase = trashman
 	depends = python
 	depends = python-setuptools
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/t/trashman/trashman-1.5.0.tar.gz
+	source = https://pypi.io/packages/source/t/trashman/trashman-1.5.0.tar.gz
 	md5sums = 761837310ac289fa9d596047b85466aa
 
 pkgname = trashman
