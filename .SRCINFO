@@ -10,7 +10,7 @@ pkgbase = python-cloudpickle
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/c/cloudpickle/cloudpickle-0.2.1.tar.gz
+	source = https://pypi.io/packages/source/c/cloudpickle/cloudpickle-0.2.1.tar.gz
 	md5sums = d6c92acdfa253a50b2ef86a1b6443e39
 
 pkgname = python-cloudpickle

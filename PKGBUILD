@@ -10,7 +10,7 @@ url='https://github.com/cloudpipe/cloudpickle'
 license=('BSD')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+source=("https://pypi.io/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('d6c92acdfa253a50b2ef86a1b6443e39')
 
 prepare() {
