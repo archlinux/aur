@@ -19,16 +19,19 @@
 
 set -u
 pkgname='ghostpdl'
-pkgver='9.18'
+pkgver='9.19'
 pkgrel='1'
 pkgdesc='Ghostscript RIP for PS, PDF, PCL-5, PCL-XL, SVG and XPS.'
 arch=('i686' 'x86_64')
 url='http://www.ghostscript.com'
 license=('AGPL')
 depends=('ghostscript' 'glu' 'freeglut' 'libjpeg' 'libxt')
-_verwatch=('http://downloads.ghostscript.com/public/' "${pkgname}-\(.*\)\.tar\.bz2" 'l')
-source=("${_verwatch[0]}${pkgname}-${pkgver}.tar.bz2") # .gz and .bz2 are available. Unpacking .bz2 is a LOT slower so is not suited for package testing.
-sha256sums=('bfb0bf5bd17694686bbf505dc47c1c1788f8795a4136bfde1c604006476c8160')
+#_verwatch=('http://downloads.ghostscript.com/public/' "${pkgname}-\(.*\)\.tar\.bz2" 'l')
+#source=("${_verwatch[0]}${pkgname}-${pkgver}.tar.bz2") # .gz and .bz2 are available. Unpacking .bz2 is a LOT slower so is not suited for package testing.
+_giturl="https://github.com/ArtifexSoftware/${pkgname}-downloads"
+_verwatch=("${_giturl}/releases" "${_giturl##*\.com}/releases/download/gs[0-9\.]\+/${pkgname}-\([0-9\.]\+\)\.tar\.gz" 'l')
+source=("${_giturl}/releases/download/gs${pkgver//./}/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('7db9aaa9ae3d3368bcd9b49b13ac3ca396df3ccef69b326cfc63a964486e4681')
 
 prepare() {
   set -u
