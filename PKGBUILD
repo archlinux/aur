@@ -53,14 +53,14 @@ build() {
               --disable-docs --libexecdir=/usr/lib/qemu \
               --disable-gtk --disable-snappy --disable-lzo --enable-linux-aio --enable-seccomp \
               --localstatedir=/var \
-              --enable-tpm \
+              --enable-tpm --enable-spice \
               --enable-modules --enable-curl
   make V=99
 }
 
 package() {
   pkgdesc='A generic and open source processor emulator. This is a stripped-down version for running on a headless server. It does not install extra arches either.'
-  depends=('pixman' 'gnutls' 'dtc')
+  depends=('pixman' 'gnutls' 'dtc' 'spice')
   optdepends=('ovmf: Tianocore UEFI firmware for qemu'
               'samba: SMB/CIFS server support'
               'qemu-arch-extra-git: extra architectures support'
