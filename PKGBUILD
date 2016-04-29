@@ -4,7 +4,7 @@
 
 pkgname=dwarftherapist-git
 epoch=1
-pkgver=33.0.0_r0_g72e768f
+pkgver=37.0.0_r8_g7b378a4
 pkgrel=1
 pkgdesc="Heavily modified version of the original Dwarf Therapist."
 url="https://github.com/splintermind/Dwarf-Therapist"
@@ -14,11 +14,9 @@ depends=('qt5-declarative' 'hicolor-icon-theme')
 makedepends=('git' 'texlive-latexextra')
 install="dwarftherapist.install"
 source=($pkgname::git+"https://github.com/splintermind/Dwarf-Therapist.git#branch=DF2016"
-       'dwarftherapist.desktop'
-       'dwarftherapist.install')
+        'dwarftherapist.desktop')
 md5sums=('SKIP'
-         '32c80fd6e3b86900c1677b4e2859b07b'
-         'caae1175c3bb8104bdc9e3014e648e57')
+         '32c80fd6e3b86900c1677b4e2859b07b')
 
 pkgver() {
   cd $pkgname

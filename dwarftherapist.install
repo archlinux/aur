@@ -1,6 +1,5 @@
 post_install() {
   setcap cap_sys_ptrace=ep /usr/bin/dwarftherapist
-  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
 }
 
 post_upgrade() {
