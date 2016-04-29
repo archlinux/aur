@@ -1,7 +1,7 @@
 #moved to AUR4: GI_Jack <iamjacksemail@hackermail.com>
 
 pkgname='arachni'
-pkgver=1.2.1
+pkgver=1.4.4.gcd7b47b
 pkgrel=1
 groups=('blackarch' 'blackarch-webapp')
 pkgdesc='A feature-full, modular, high-performance Ruby framework aimed towards helping penetration testers and administrators evaluate the security of web applications.'
