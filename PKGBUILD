@@ -22,7 +22,7 @@
 #  calculated at all. Emacs opens in a very small frame.
 #  From within emacs, search for the options initial-frame-alist
 #  and default-frame-alist to set up emacs frame geometry to
-#  your personal preference.
+#  your personal preference. Switching to GTK+2 fixes it for now.
 #
 #######################################################################
 
@@ -44,8 +44,8 @@ DOCS_PDF=        # Generate and install pdf documentation.
 #######################################################################
 
 pkgname=emacs25-git
-pkgver=25.0.93.r124757
-pkgrel=2
+pkgver=25.0.93.r124764
+pkgrel=1
 pkgdesc="GNU Emacs. Version 25 development and maintenance branch."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -102,9 +102,9 @@ build() {
 #######################################################################
 #######################################################################
   if [[ $GTK3 = "YES" ]]; then 
-    _conf+=('--with-xtoolkit=gtk3' '--without-gconf' '--with-gsettings'); 
+    _conf+=('--with-x-toolkit=gtk3' '--without-gconf' '--with-gsettings'); 
   else
-    _conf+=('--with-xtoolkit=gtk2' '--with-gconf' '--without-gsettings');
+    _conf+=('--with-x-toolkit=gtk2' '--with-gconf' '--without-gsettings');
   fi
   if [[ $LTO = "YES" ]]; then _conf+=('--enable-link-time-optimization'); fi
   if [[ $CAIRO = "YES" ]]; then _conf+=('--with-cairo'); fi
