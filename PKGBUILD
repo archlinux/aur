@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/getmicah/spotify-now"
 license=('MIT')
 makedepends=('git')
-conflicts=('spotify-now')
+conflicts=()
 source=("git://github.com/getmicah/$_pkgname.git")
 sha256sums=('SKIP')
 
