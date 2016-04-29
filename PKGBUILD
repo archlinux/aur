@@ -10,7 +10,7 @@ url='http://husl-colors.org/'
 license=('MIT')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+source=("https://pypi.io/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "LICENSE")
 md5sums=('7228a056708ac92a8b1cc20a0ab18639'
          '7801e93600a1a8b0f0ad99cfb605a18f')
