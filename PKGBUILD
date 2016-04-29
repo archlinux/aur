@@ -2,13 +2,13 @@
 
 pkgname=joxi
 pkgver=2.4.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Easy to use screenshot sharing application (Russian)"
 arch=('i386' 'x86_64')
 url="http://joxi.ru/"
 license=('unknown')
 options=('emptydirs')
-depends=('qt4' 'libpng12' 'quazip' 'opencv' 'openssl098')
+depends=('qt4' 'libpng12' 'quazip' 'opencv<3' 'openssl098')
 
 if [ "${CARCH}" = 'x86_64' ]; then
   ARCH='amd64'

@@ -1,7 +1,7 @@
 pkgbase = joxi
 	pkgdesc = Easy to use screenshot sharing application (Russian)
 	pkgver = 2.4.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://joxi.ru/
 	arch = i386
 	arch = x86_64
@@ -9,14 +9,14 @@ pkgbase = joxi
 	depends = qt4
 	depends = libpng12
 	depends = quazip
-	depends = opencv
+	depends = opencv<3
 	depends = openssl098
 	options = emptydirs
 	source = http://bc.cdn.joxi.ru/download/joxi_amd64.deb
 	source = joxi.desktop
 	source = joxi.sh
 	md5sums = 9be5f0051b4d2c8ae0669115ccb74d17
-	md5sums = 81f6ecd94e39bff6fd71034b9ff180c7
+	md5sums = 66ef866e3fe32bbfd9eb72fe5ce02b7e
 	md5sums = 93274063806e203654b13884b6e6871c
 
 pkgname = joxi
