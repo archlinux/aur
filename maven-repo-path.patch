@@ -1,0 +1,22 @@
+diff --git a/lib/java/build.xml b/lib/java/build.xml
+--- a/lib/java/build.xml
++++ b/lib/java/build.xml
+@@ -317,7 +317,9 @@
+     <artifact:writepom pomRefId="pom" file="${pom.xml}"/>
+ 
+     <!-- Download the dependencies -->
+-    <artifact:dependencies filesetId="build-dependency-jars" pomRefId="pom"/>
++    <artifact:dependencies filesetId="build-dependency-jars" pomRefId="pom">
++      <localRepository path="${basedir}/local-repo"/>
++    </artifact:dependencies>
+ 
+     <!-- Copy the dependencies to the build/lib dir -->
+     <copy todir="${build.dir}/lib">
+@@ -327,6 +329,7 @@
+ 
+     <!-- Dependencies needed for testing -->
+     <artifact:dependencies filesetId="test-dependency-jars" useScope="runtime">
++      <localRepository path="${basedir}/local-repo"/>
+       <dependency groupId="org.slf4j" artifactId="slf4j-log4j12" version="1.5.8"/>
+       <dependency groupId="junit" artifactId="junit" version="4.4"/>
+     </artifact:dependencies>
