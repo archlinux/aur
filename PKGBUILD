@@ -3,13 +3,14 @@
 
 _pkgname=rebar3
 pkgname=${_pkgname}-git
-pkgver=3366.7d29b74
+pkgver=3404.c11cf0b
 pkgrel=1
 pkgdesc="A sophisticated build-tool for Erlang projects that follows OTP principles."
 arch=('any')
 url="https://github.com/rebar/rebar3"
 license=('APACHE')
 depends=('erlang-nox')
+optdepends=('rebar3-zsh: ZSH completion')
 conflicts=('rebar3')
 provides=('rebar3')
 makedepends=('git')
