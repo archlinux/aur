@@ -69,15 +69,6 @@ pkgver(){
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-  cd git-annex
-  msg2 "Features: ${_features[*]}"
-  stack init --force --system-ghc
-  stack setup
-  mkdir -p "bin"
-  stack install --local-bin-path "bin" $_stack_flags
-}
-
 # This involves a recompile, uncomment if you're patient.
 # check() {
 #   cd git-annex
@@ -85,6 +76,10 @@ build() {
 # }
 
 package() {
+  cd git-annex
+  msg2 "Features: ${_features[*]}"
+  stack init --force --system-ghc
+  stack setup
   mkdir -p "$pkgdir/usr/bin"
-  cp git-annex/bin/* "$pkgdir/usr/bin"
+  stack install --local-bin-path "$pkgdir/usr/bin" $_stack_flags
 }
