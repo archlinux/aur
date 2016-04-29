@@ -10,7 +10,7 @@ pkgbase = python-kwpbar
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/k/kwpbar/kwpbar-0.1.1.tar.gz
+	source = https://pypi.io/packages/source/k/kwpbar/kwpbar-0.1.1.tar.gz
 	md5sums = 690f047d87983602016989bfc57bfb2b
 
 pkgname = python-kwpbar
