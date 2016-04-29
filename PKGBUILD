@@ -21,6 +21,7 @@ source=(
 	asm.patch
 	dxegen.patch
 	gcc6.patch
+	environ.c
 )
 makedepends=(djgpp-gcc)
 sha512sums=(
@@ -33,6 +34,7 @@ sha512sums=(
 	'2deade5e1b87c2df5cfce9fa41fb375c9f80bc2ff20db9cb19a828b2baada5effd37dc9f8abf6d98574d1e5f487c147d3fcc347a9e5c5848a851e0455111af8f'
 	'5359b385ec47628ac44b60f73c3b80eca059eea1ecdde5f10b6ce3cdbcbe7a1ea166cdb0d30e818554259820802d4cf031edbd0e384c96d752e3434b555e439e'
 	'7e8aae28b8bcd49fd4c62539eb861be313811958f8f66d1c793e63f86cc9c9d722d60a8a229f6e5065c2348f6429c7a9c653531ab34daddbaecf1b7fc145e5b8'
+	'fd2eed593e1e39d7c1dd5ef2f5364463fb5684a5ce245b4fe6b05e1be32ce358dbf74468c7aa31e9a3322e57c20b3ccf3f6abe158a4a1975a5c86d1ebc0167c8'
 )
 options=(!buildflags !strip)
 install=info.install
@@ -49,7 +51,7 @@ prepare() {
 		src/dxe/makefile.dxe
 
 	# enable building without an ldscript
-	echo 'char **_environ;' > src/libc/crt0/environ.c
+	ln -fs '../../../environ.c' src/libc/crt0/environ.c
 	sed -i -e '/dfinfo\.c/ a \
 SRC += environ.c' \
 		src/libc/crt0/makefile
