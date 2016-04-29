@@ -45,7 +45,7 @@ DOCS_PDF=        # Generate and install pdf documentation.
 
 pkgname=emacs-git
 pkgver=25.1.50.r125786
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs. Master development branch."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -66,7 +66,7 @@ conflicts=('emacs')
 provides=('emacs')
 source=("$pkgname::git://git.savannah.gnu.org/emacs.git")
 md5sums=('SKIP')
-#source=("$pkgname::git+http://git.savannah.gnu.org/r/emacs.git#branch")
+#source=("$pkgname::git+http://git.savannah.gnu.org/r/emacs.git")
 
 pkgver() {
   cd "$srcdir/$pkgname"
