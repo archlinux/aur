@@ -3,7 +3,7 @@
 pkgname=comodo
 pkgver=1.1.268025
 _revision=1
-pkgrel=6
+pkgrel=7
 pkgdesc="An antivirus suite with real-time protection"
 arch=('x86_64' 'i686')
 url="https://www.comodo.com/"

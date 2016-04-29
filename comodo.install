@@ -3,7 +3,6 @@ post_install() {
 }
 
 _common() {
-  update-desktop-database -q
   /usr/bin/printf '----------------------------------------------------\n'
   /usr/bin/printf '     Comodo has been installed to /opt/COMODO.\n'
   if [[ "$1" != "update" ]]; then
@@ -29,7 +28,6 @@ _common() {
 }
 
 post_remove() {
-  update-desktop-database -q
   /usr/bin/printf '----------------------------------------------------\n'
   /usr/bin/printf '   Be aware that you may still have redirfs/avflt\n'
   /usr/bin/printf ' kernel modules loaded/installed on your system. You\n'

@@ -1,7 +1,7 @@
 pkgbase = comodo
 	pkgdesc = An antivirus suite with real-time protection
 	pkgver = 1.1.268025
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.comodo.com/
 	install = comodo.install
 	arch = x86_64
