@@ -1,5 +1,4 @@
-# Maintainer: Marco Pompili <marcs.pompili at gmail dot com>
-# Contributor: Marco Pompili <marcs.pompili at gmail dot com>
+# Maintainer: Marco Pompili <aur@emarcs.org>
 
 pkgname=openframeworks
 pkgver=0.9.3
