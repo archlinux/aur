@@ -1,13 +1,13 @@
 pkgname=jackett
-pkgver=0.7.232
+pkgver=0.7.235
 pkgrel=1
 pkgdesc='User any tracker with Sonarr'
 arch=('any')
 license=('GPL')
 url='https://github.com/Jackett/Jackett'
 depends=('mono' 'curl')
-source=('https://github.com/Jackett/Jackett/releases/download/v0.7.232/Jackett.Binaries.Mono.tar.gz' 'jackett.service')
-md5sums=('fba9fd819aede513c0c795453648a3a0'
+source=('https://github.com/Jackett/Jackett/releases/download/v0.7.235/Jackett.Binaries.Mono.tar.gz' 'jackett.service')
+md5sums=('6aa5a55b89b3d375acbaaaee06984929'
          '5983ba69e0289be2c27ce9423df408ab')
 install=$pkgname.install
 
