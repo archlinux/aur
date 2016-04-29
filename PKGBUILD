@@ -2,7 +2,7 @@
 pkgname=arrayfire-git
 pkgdesc="High performance software library for parallel computing with an easy-to-use API"
 url='http://arrayfire.com'
-pkgver=3.3.1
+pkgver=3.3.2
 arch=('i686' 'x86_64')
 pkgrel=1
 license=('BSD')
@@ -13,7 +13,8 @@ optdepends=('cuda: Required for using CUDA backend'
             'libclc: Required for using OpenCL backend')
 source=(git+https://github.com/arrayfire/arrayfire)
 md5sums=('SKIP')
-conflicts=('arrayfire')
+provides=('arrayfire=${pkgver}' 'forge')
+conflicts=('arrayfire' 'forge')
 
 check() {
   cd "${srcdir}/arrayfire/build"
@@ -21,7 +22,7 @@ check() {
 
 build() {
   cd "${srcdir}/arrayfire/"
-  git checkout master
+  git checkout v${pkgver}
   git submodule init
   git submodule update
 
