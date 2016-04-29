@@ -11,19 +11,19 @@
 # Contributor: djnm <nmihalich [at} gmail dott com>
 
 pkgname=dwarffortress-spacefox
-pkgver=0.42.05
-_dfver=42_05
-_sfver=42.05
-_ufver=0.42.05
-pkgrel=2
+pkgver=0.42.06
+_dfver=42_06
+_sfver=42.06a
+_ufver=0.42.06
+pkgrel=1
 pkgdesc="A single-player fantasy game. You control a dwarven outpost or an adventurer in a randomly generated persistent world. Packed with Spacefox's tileset and graphics pack.  Does not replace other dwarffortress packages."
 arch=(i686 x86_64)
 url="http://www.bay12forums.com/smf/index.php?topic=129219.0"
 install="dwarffortress-sf.install"
 license=('custom:dwarffortress-sf')
 makedepends=(unrar unzip git cmake)
-depends_i686=(glew glu gtk2 libsndfile libxdamage ncurses openal sdl_image sdl_ttf)
-depends_x86_64=(lib32-glew lib32-glu lib32-gtk2 lib32-libsndfile lib32-libxdamage lib32-ncurses lib32-openal lib32-sdl_image lib32-sdl_ttf)
+depends_i686=(glew glu gtk2 libsndfile libxdamage ncurses openal sdl_image sdl_ttf zlib)
+depends_x86_64=(lib32-glew lib32-glu lib32-gtk2 lib32-libsndfile lib32-libxdamage lib32-ncurses lib32-openal lib32-sdl_image lib32-sdl_ttf lib32-zlib)
 optdepends=('nvidia-utils: If you have nvidia graphics'
             'catalyst-utils: If you have ATI graphics'
             'alsa-lib: for alsa sound'
@@ -48,9 +48,9 @@ source=("df_${_dfver}.tar.bz2::http://www.bay12games.com/dwarves/df_${_dfver}_li
         "dwarffortress-sf.png"
         "LICENSE-sf")
 
-md5sums=('79d2768e7f3ff0d086caa980331466c4'
-         '8614f9eb6ccfbba46c1c1e0225555624'
-         '9c5399cf2980a221ca30e6d6e9fc7645'
+md5sums=('47f5a2ea1c4de2b742b50dd876b73feb'
+         'f72c86fc57a6c165e9153f5f7134372e'
+         '96a026706eb7858063668fa84eab1211'
          '53c9d5bfcb35281c81b78fea23da0698'
          '60de2d654998220f426bbe41f2e57471'
          'b1d51f82400073af9bb179e34a9209d0'
