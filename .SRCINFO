@@ -1,7 +1,7 @@
 pkgbase = djgpp-djcrx
 	pkgdesc = Headers and utilities for the djgpp cross-compiler
 	pkgver = 2.05
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.delorie.com/djgpp/
 	install = info.install
 	arch = i686
