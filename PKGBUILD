@@ -1,14 +1,14 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=mktxn
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc="Double-entry bookkeeping transaction journal parser and serializer"
 arch=('any')
 depends=('perl6'
          'perl6-config-toml'
-         'perl6-digest-xxhash'
-         'perl6-json-tiny')
+         'perl6-json-tiny'
+         'perl6-txn-parser')
 checkdepends=('perl')
 makedepends=('alacryd' 'git')
 groups=('perl6' 'nightscape')
