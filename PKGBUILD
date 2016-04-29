@@ -3,7 +3,7 @@
 
 pkgname=openframeworks
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="openFrameworks is an open source C++ toolkit for creative coding."
 url="http://openframeworks.cc/"
 arch=('x86_64' 'i686')
@@ -19,11 +19,14 @@ install=openframeworks.install
 [[ "$CARCH" == "i686" ]] && _arch="linux" || _arch="linux64"
 _name="of_v${pkgver}_${_arch}_release"
 
-source=("http://www.openframeworks.cc/versions/v${pkgver}/${_name}.tar.gz" "of-make-workspace")
+source=("http://www.openframeworks.cc/versions/v${pkgver}/${_name}.tar.gz"
+				"rtAudio.patch"
+				"of-make-workspace")
 
 [[ "$CARCH" == "i686" ]] && md5sums=("5b9a6cf3e8ba372eba59a13cb403ea00") || md5sums=("95c5f436a66489ed1ca460bf593bdbe1")
 
-md5sums+=("594d0a3c82e0451f7b7fb353e3b658c6")
+md5sums+=("31600cdc597a275295fa35cf178f83c0"
+					"594d0a3c82e0451f7b7fb353e3b658c6")
 
 prepare() {
 	export OF_ROOT=${srcdir}/${_name}
@@ -53,8 +56,11 @@ prepare() {
 
     cd ${OF_ROOT}/scripts/apothecary
     ./apothecary -j${cores} update poco
-
 	fi
+
+	msg2 "Fix RtAudio.h path"
+	cd $srcdir
+	patch ${srcdir}/${_name}/libs/openFrameworks/sound/ofRtAudioSoundStream.cpp rtAudio.patch
 }
 
 build() {
