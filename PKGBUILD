@@ -1,7 +1,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-covolunablu-gaming       # Build kernel with a different name
-_srcname=linux-4.4
-pkgver=4.4.5
+_srcname=linux-4.5
+pkgver=4.5.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -24,23 +24,21 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-sdhci-revert.patch'
-        "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-v7r11/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.4.0.patch"
-        "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-v7r11/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.4.0.patch"
-        "http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-v7r11/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch"
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.5.0-v7r11/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.5.0.patch'
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.5.0-v7r11/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.5.0.patch'
+        'http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.5.0-v7r11/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch'
         "https://raw.githubusercontent.com/ValveSoftware/steamos_kernel/8e9ecc9caee1ae1d18c2cc4572729ef355091b6e/drivers/input/joystick/xpad.c")
 
-sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
+sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
             'SKIP'
-            'a570680ad5624eff0687c74d652158cbd9ec92fdd177ac5ff812988a24d54ab5'
+            'a9913a04ddbd06acde9b00b3179c41fddb99f61168ef5d01d3e8cf72385038b1'
             'SKIP'
-            '931914bdf174b32cb09be2cc07890f1219f78705856b909656c11ea4db013a60'
-            '14a909cd5b6139d0290319ff4130d9ea9067645c27e922fdcbfdf02f1af716b6'
+            'a5e555a756d859d5446ef0038fd208e960bb3844e5f3d7edef810d22f240978f'
+            'd04ce6f3864e23c850267082c144def7a419c5f4f961926b901757c912f58590'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
-            'd1cf14cc696b0f716454fe8eb9746383700889d5d22ad829611f0433cc77b4ce'
-            'b17c3fb18c5b8c20a45a38198f293679ca6aef08d16f12cd816a5cfafac4b2c4'
+            '5d19ecb91320a64f0abb6c8e70205fef848ada967093faa94e4c0c39c340d0c8'
+            '9c1e11772ff29d37dacc9246f63e24d5154eb61682ba2b7e175a9ccbdc7116e1'
             '69a21bc286a628128cfc4723558829cb6ff6c2d7c4dfd4468457898674187b25'
             'a1d3a169196c07de2a2ab6bee89e1def9e09e1d06da4cd4dfa03fefc972928e1')
 
@@ -60,19 +58,14 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
-  # fixes #47778 sdhci broken on some boards
-  # https://bugzilla.kernel.org/show_bug.cgi?id=106541
-  patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
-
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
   # add BFQ
-  patch -p1 -i "${srcdir}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.4.0.patch"
-  patch -p1 -i "${srcdir}/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.4.0.patch"
+  patch -p1 -i "${srcdir}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.5.0.patch"
+  patch -p1 -i "${srcdir}/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.5.0.patch"
   patch -p1 -i "${srcdir}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch"
 
   # use steamos version of xpad
