@@ -39,7 +39,8 @@ prepare() {
 	cd "$srcdir"
 
 	sed -i -e "s/i586-pc-msdosdjgpp/$_target_alias/" \
-		src/makefile.def
+		src/makefile.def \
+		src/dxe/makefile.dxe
 
 	# enable building without an ldscript
 	echo 'char **_environ;' > src/libc/crt0/environ.c
@@ -74,8 +75,9 @@ SRC += environ.c' \
 
 build() {
 	cd "$srcdir/src"
-
 	make -j1
+	cd "$srcdir/src/dxe"
+	make -f makefile.dxe
 }
 
 package() {
@@ -86,10 +88,17 @@ package() {
 	cp -r "$srcdir/include" "$pkgdir/usr/$_target_alias"
 
 	cd "$srcdir/hostbin"
-	for _file in dxegen.exe stubedit.exe stubify.exe; do
+	for _file in stubedit.exe stubify.exe; do
 		install -Dm 0755 "$_file" "$pkgdir/usr/$_target_alias/bin/${_file%.exe}"
 		ln -s "../$_target_alias/bin/${_file%.exe}" "$pkgdir/usr/bin/$_target_alias-${_file%.exe}"
 	done
+
+	cd "$srcdir/src/dxe"
+	for _file in dxe3gen dxe3res; do
+		install -Dm 0755 "$_file" "$pkgdir/usr/$_target_alias/bin/$_file"
+		ln -s "../$_target_alias/bin/$_file" "$pkgdir/usr/bin/$_target_alias-$_file"
+	done
+	ln -s dxe3gen "$pkgdir/usr/$_target_alias/bin/dxegen"
 
 	install -Dm644 "$srcdir/copying.dj" "$pkgdir/usr/share/licenses/$pkgname/copying.dj"
 
