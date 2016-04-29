@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/Kwpolska/upass'
 license=('BSD')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+source=("https://pypi.io/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('bd99e2b8075992c72faa8e74d730faad')
 depends=('pass' 'python' 'python-setuptools' 'python-urwid' 'python-pyperclip')
 

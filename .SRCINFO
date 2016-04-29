@@ -11,7 +11,7 @@ pkgbase = upass
 	depends = python-urwid
 	depends = python-pyperclip
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/u/upass/upass-0.1.7.tar.gz
+	source = https://pypi.io/packages/source/u/upass/upass-0.1.7.tar.gz
 	md5sums = bd99e2b8075992c72faa8e74d730faad
 
 pkgname = upass
