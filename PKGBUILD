@@ -93,7 +93,7 @@ package() {
 	cp -r "$srcdir/include" "$pkgdir/usr/$_target_alias"
 
 	cd "$srcdir/hostbin"
-	for _file in stubedit.exe stubify.exe; do
+	for _file in djasm.exe mkdoc.exe stubedit.exe stubify.exe; do
 		install -Dm 0755 "$_file" "$pkgdir/usr/$_target_alias/bin/${_file%.exe}"
 		ln -s "../$_target_alias/bin/${_file%.exe}" "$pkgdir/usr/bin/$_target_alias-${_file%.exe}"
 	done
