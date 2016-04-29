@@ -3,7 +3,7 @@
 pkgbase=mingw-w64-evince-light
 _pkgbase=evince
 pkgname=mingw-w64-evince-light
-pkgver=3.18.2
+pkgver=3.20.0
 pkgrel=1
 pkgdesc="GNOME document viewer ported for win32, built with pdf support"
 url="https://wiki.gnome.org/Apps/Evince"
@@ -35,7 +35,7 @@ source=("http://ftp.gnome.org/pub/GNOME/sources/${_pkgbase}/${pkgver%.*}/${_pkgb
         "ev_spawn.patch"
         "ev_poppler.patch"
 )
-sha256sums=('42ad6c7354d881a9ecab136ea84ff867acb942605bcfac48b6c12e1c2d8ecb17'
+sha256sums=('cf8358a453686c2a7f85d245f83fe918c0ce02eb6532339f3e02e31249a5a280'
             '90d572fabbb33a91731807216c9ab57847b0a90f657b62c391a83e6510cfadcc'
             '4b13bc32d7656e4011baf11d84b1e201e8b0b97c2ed9094fa6a2463eb6ba2629'
            )
