@@ -1,0 +1,14 @@
+pkgbase = spotify-now-git
+	pkgdesc = Get information on the current Spotify song
+	pkgver = 22.9443251
+	pkgrel = 1
+	url = https://github.com/getmicah/spotify-now
+	arch = any
+	license = MIT
+	makedepends = git
+	conflicts = spotify-now
+	source = git://github.com/getmicah/spotify-now.git
+	sha256sums = SKIP
+
+pkgname = spotify-now-git
+
