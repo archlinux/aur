@@ -1,7 +1,7 @@
 pkgbase = teensyduino
 	pkgdesc = Arduino SDK with Teensyduino
 	pkgver = 1.28
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.pjrc.com/teensy/teensyduino.html
 	install = teensyduino.install
 	arch = i686
