@@ -2,7 +2,7 @@
 
 pkgname=ttf-samim
 pkgver=0.10.3
-pkgrel=2
+pkgrel=1
 pkgdesc="A beautiful Persian font."
 arch=('any')
 url="https://rastikerdar.github.io/samim-font/"
