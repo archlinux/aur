@@ -1,9 +1,8 @@
 pkgbase = easytag-gtk2
 	pkgdesc = Simple application for viewing and editing tags in audio files
 	pkgver = 2.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://easytag.sourceforge.net/
-	install = easytag.install
 	arch = i686
 	arch = x86_64
 	license = GPL

@@ -8,7 +8,7 @@
 pkgname=easytag-gtk2
 _basename=easytag
 pkgver=2.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple application for viewing and editing tags in audio files'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -18,7 +18,6 @@ depends=('id3lib' 'libid3tag' 'gtk2' 'libvorbis' 'flac' 'speex' 'wavpack' 'tagli
          'desktop-file-utils' 'hicolor-icon-theme' 'opusfile')
 provides=("$_basename")
 conflicts=("$_basename")
-install=${_basename}.install
 source=(http://download.gnome.org/sources/${_basename}/${pkgver:0:3}/${_basename}-${pkgver}.tar.xz)
 sha256sums=('26437f0d698c3b16794336c335b40f53fa26aefeb77322e45e4e2501c4cff14a')
 
