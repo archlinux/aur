@@ -1,9 +1,9 @@
 # Maintainer : Florent H. CARRÉ <colundrum@gmail.com>
 
 _npmname=generator-gulp-angular
-_npmversion=1.0.2
+_npmversion=1.1.0
 pkgname=nodejs-$_npmname
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Yeoman generator for Gulp & Angular"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('ruby-sass: needed to build ruby sass preprocessed projects'
             'java-runtime: needed to do e2e protractor tests')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmversion.tgz)
 noextract=($_npmname-$_npmversion.tgz)
-sha1sums=('07b172528b31e35f2b5d5aec2cdfad7df1d15f18')
+sha1sums=('1.1.0')
 install=${pkgname}.install
 
 package() {
