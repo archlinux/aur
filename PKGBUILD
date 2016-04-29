@@ -36,7 +36,7 @@ build() {
       -DBUILD_EXAMPLES=ON \
       -DBUILD_DOCS=ON
 
-  make
+  make -j1
 }
 
 package() {
