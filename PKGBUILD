@@ -47,6 +47,8 @@ build() {
   export ARFLAGS="rv"
   # http://permalink.gmane.org/gmane.comp.emulators.qemu/238740
   export CFLAGS+=' -fPIC'
+  #Invoke pacman to install lite version of spice
+  pacman -Sdd spice-protocol spice --noconfirm
   # gtk gui breaks keymappings at the moment
   ./configure --prefix=/usr --sysconfdir=/etc \
               --python=/usr/bin/python2 --smbd=/usr/bin/smbd \
@@ -56,7 +58,6 @@ build() {
               --enable-tpm --enable-spice \
               --enable-modules --enable-curl
   make V=99
-pacman -Sdd spice-protocol spice --noconfirm
 }
 
 package() {
