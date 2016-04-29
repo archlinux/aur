@@ -6,7 +6,7 @@
 pkgname=arduino10
 epoch=1
 pkgver=1.0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Arduino prototyping platform SDK (old version)"
 arch=('i686' 'x86_64')
 url="http://arduino.cc/en/Main/Software"

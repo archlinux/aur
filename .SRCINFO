@@ -1,7 +1,7 @@
 pkgbase = arduino10
 	pkgdesc = Arduino prototyping platform SDK (old version)
 	pkgver = 1.0.6
-	pkgrel = 2
+	pkgrel = 4
 	epoch = 1
 	url = http://arduino.cc/en/Main/Software
 	install = arduino.install
