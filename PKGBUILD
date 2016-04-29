@@ -4,12 +4,11 @@
 
 pkgname=hasciicam
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Renders video input as ascii (to the terminal, textfile, or live webpage)"
 url="http://ascii.dyne.org/"
 depends=('aalib' 'libv4l')
 arch=('i686' 'x86_64')
-install=$pkgname.install
 source=("https://files.dyne.org/$pkgname/${pkgname}_$pkgver.tar.gz")
 md5sums=('4d77c6a4cf6e2b1474d5fec0ff450b80')
 license=('GPL3')
