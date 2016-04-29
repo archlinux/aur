@@ -74,7 +74,7 @@ build() {
 		--target="${_target}" \
 		--enable-languages=c,objc,c++,obj-c++ \
 		--enable-shared --enable-static \
-		--enable-threads=no --enable-fully-dynamic-string --disable-libstdcxx \
+		--enable-threads=no --enable-fully-dynamic-string \
 		--with-system-zlib --enable-cloog-backend=isl \
 		--enable-lto --disable-dw2-exceptions --disable-libgomp \
 		--disable-multilib --enable-checking=release
