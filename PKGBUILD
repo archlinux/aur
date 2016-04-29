@@ -3,8 +3,8 @@
 
 _pkgname=qtox
 pkgname=qtox-git
-pkgver=1.4.0.r14.g5045c46
-pkgrel=2
+pkgver=1.4.0.r22.g899a2eb
+pkgrel=1
 pkgdesc='Powerful Tox client written in C++/Qt that follows the Tox design guidelines.'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://github.com/tux3/qTox'
@@ -21,7 +21,6 @@ depends=('desktop-file-utils'
 makedepends=('git' 'qt5-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-install=$pkgname.install
 source=("$_pkgname::git+https://github.com/tux3/qTox.git")
 sha512sums=('SKIP')
 
