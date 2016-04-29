@@ -16,7 +16,7 @@ makedepends=('pixman' 'glib2'
              'gnutls' 'util-linux' 'curl' 'libsasl'
              'libcap-ng' 'libaio' 'libseccomp'
              'python2'
-             'dtc' 'git' 'texi2html' 'perl' 'spice')
+             'dtc' 'git' 'texi2html' 'perl')
 source=(git://git.qemu.org/qemu.git
         qemu.sysusers
         qemu-ga.service
@@ -60,7 +60,7 @@ build() {
 
 package() {
   pkgdesc='A generic and open source processor emulator. This is a stripped-down version for running on a headless server. It does not install extra arches either.'
-  depends=('pixman' 'gnutls' 'dtc' 'spice')
+  depends=('pixman' 'gnutls' 'dtc')
   optdepends=('ovmf: Tianocore UEFI firmware for qemu'
               'samba: SMB/CIFS server support'
               'qemu-arch-extra-git: extra architectures support'
