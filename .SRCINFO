@@ -1,6 +1,6 @@
 pkgbase = pkgbuilder-git
 	pkgdesc = A Python AUR helper/library. (git version)
-	pkgver = 4.2.8.r1.g5ca3ee0
+	pkgver = 4.2.9.r1.g2a12868
 	pkgrel = 1
 	url = https://github.com/Kwpolska/pkgbuilder
 	arch = any
