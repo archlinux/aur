@@ -9,7 +9,7 @@ url='https://github.com/Kwpolska/think'
 license=('BSD')
 depends=('python' 'python-setuptools')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+source=("https://pypi.io/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('718724c66abb7be7ec5382651a0be8a9')
 
 package() {
