@@ -2,7 +2,7 @@
 # Contributor: Laurie Clark-Michalek <bluepepper@archlinux.us>
 # Maintainer: 4javier <4javiereg4_at@_gmail_dot._com>
 pkgname=simpleburn
-pkgver=1.7.3
+pkgver=1.7.3.1
 pkgrel=1
 pkgdesc="A simple GTK+ application for burning CDs and DVDs"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=('mpg123: needed for burning audio CD from MP3 encoded files'
 			'mplayer: needed for video DVD extraction'
 			'mencoder: needed for video DVD extraction')
 source=(http://simpleburn.tuxfamily.org/IMG/gz/$pkgname-$pkgver.tar.gz )
-md5sums=('aa8afe9575903e8e20e8a566c543c4f8')
+md5sums=('5176865020440b2c3eadab76435f6833')
 
 
 build() {
