@@ -1,0 +1,33 @@
+pkgbase = git-annex-stack
+	pkgdesc = manage files with git, without checking their contents into git (stack build)
+	pkgver = 6.20160419.r9.g4482caf
+	pkgrel = 1
+	url = http://git-annex.branchable.com/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = ghc
+	makedepends = haskell-stack
+	makedepends = dbus
+	depends = curl
+	depends = git
+	depends = gmp
+	depends = gnupg
+	depends = gsasl
+	depends = libidn
+	depends = libxml2
+	depends = lsof
+	depends = nss-mdns
+	depends = openssh
+	depends = rsync
+	depends = util-linux
+	provides = git-annex=6.20160419.r9.g4482caf
+	conflicts = git-annex-git
+	conflicts = git-annex
+	conflicts = git-annex-cabal
+	options = !makeflags
+	source = git-annex::git://git.kitenet.net/git-annex
+	sha256sums = SKIP
+
+pkgname = git-annex-stack
+
