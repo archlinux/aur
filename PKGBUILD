@@ -10,7 +10,7 @@ url='https://pypi.python.org/pypi/bbcode'
 license=('BSD')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
+source=("https://pypi.io/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "LICENSE")
 md5sums=('f42fcbb57b8526d0a7c276297e83676b'
          'f013c3769d2db3f0f790d19978c5031d')
