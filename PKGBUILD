@@ -12,5 +12,5 @@ source=("spotify-now")
 md5sums=('8505cbb6dea332f8837c5596bb7e305a')
 
 package() {
-  install -Dm755 "$pkgdir/usr/bin" "$srcdir/spotify-now"
+  install -Dm755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
 }
