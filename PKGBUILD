@@ -6,10 +6,10 @@
 # This package binaries are built using the aur firefox-gtk2 PKGBUILD.
 
 pkgname=firefox-gtk2-bin
-pkgver=45.0.2
+pkgver=46.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.mozilla.org/firefox/"
 depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
@@ -24,13 +24,11 @@ conflicts=("firefox")
 source=(firefox.desktop
         vendor.js
         firefox-symbolic.svg)
-source_i686=(https://github.com/iPotable/firefox-gtk2-bin-archlinux/raw/master/firefox-${pkgver}.en-US.linux-i686.tar.bz2)
 source_x86_64=(https://github.com/iPotable/firefox-gtk2-bin-archlinux/raw/master/firefox-${pkgver}.en-US.linux-x86_64.tar.bz2)
 sha256sums=('c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9')
-sha256sums_i686=('260fe4fa6a2bb09780608588dc85312a1cb3ab599f9a6827245d0beddd416c5e')
-sha256sums_x86_64=('00c55230f9db213dbfcccfc8012c086c4a6f425d88f015f9ddf7f18904c42e0d')
+sha256sums_x86_64=('fb0d134f74a9e1a47e0c722175f4aec83bfc1403ea3aead7c0a815921f4aeb0f')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 package() {
