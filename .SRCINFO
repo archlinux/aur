@@ -1,12 +1,12 @@
 pkgbase = dottle
 	pkgdesc = POSIX script to manage dotfiles
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/ludat/dottle/
 	arch = any
 	license = MIT
-	source = https://github.com/ludat/dottle/releases/download/v0.2.0/dottle
-	md5sums = 82c647a62bd657d351d53a66c85a51df
+	source = https://github.com/ludat/dottle/releases/download/v0.2.1/dottle
+	md5sums = 8043ff5a59040cf3565ead7fc8ca616c
 
 pkgname = dottle
 
