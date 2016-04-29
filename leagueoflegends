@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+if [ ! -d $HOME/.leagueoflegends ]; then
+  mkdir -p $HOME/.leagueoflegends
+  ln -s /var/games/leagueoflegends/lol.launcher.admin.exe $HOME/.leagueoflegends
+  ln -s /var/games/leagueoflegends/lol.launcher.exe $HOME/.leagueoflegends
+  ln -s /var/games/leagueoflegends/RADS $HOME/.leagueoflegends
+fi
+
+[ $(uname -m) = 'x86_64' ] && export WINEARCH=win32 WINEPREFIX=$HOME/.wine32
+winetricks -q adobeair vcrun2005 vcrun2008 d3dx9 d3dx10 wininet corefonts
+#export WINEDLLOVERRIDES='' #dnsapi=' #,wininet='
+if [ $(uname -m) = 'x86_64' ]; then
+  LD_PRELOAD=/usr/lib32/libjpeg.so.62 wine $HOME/.leagueoflegends/lol.launcher.admin.exe
+else
+  wine $HOME/.leagueoflegends/lol.launcher.admin.exe
+fi
+
