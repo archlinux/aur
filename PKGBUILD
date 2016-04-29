@@ -26,7 +26,7 @@ build() {
   cp "${srcdir}/Mongotron-linux-x64/resources/app.asar" "tmp-build/"
   cd "tmp-build/"
   npm install asar
-  asar extract app.asar ./
+  ./node_modules/.bin/asar extract app.asar ./
 }
 
 package() {
