@@ -2,7 +2,7 @@
 pkgname=fisherman-git
 _gitname=fisherman
 pkgver=2.2.0.r6.g4436c20
-pkgrel=1
+pkgrel=2
 pkgdesc="A blazing fast, modern plugin manager for fish"
 arch=('any')
 url="http://fisherman.sh/"
@@ -10,6 +10,7 @@ license=('MIT')
 depends=('fish' 'git')
 optdepends=()
 makedepends=('git')
+conflicts=('fisherman')
 install=fisherman-git.install
 source=(
   "git+https://github.com/fisherman/fisherman.git"
