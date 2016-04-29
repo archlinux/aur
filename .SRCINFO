@@ -1,0 +1,16 @@
+pkgbase = fira-code-git
+	pkgdesc = Fira Code font. Monospaced font with programming ligatures
+	pkgver = r107.bbdcdff
+	pkgrel = 1
+	url = https://github.com/tonsky/FiraCode
+	install = fira-code-git.install
+	arch = i686
+	arch = x86_64
+	makedepends = git
+	provides = ${pkgname%-git}
+	conflicts = ${pkgname%-git}
+	source = fira-code-git::git+https://github.com/tonsky/FiraCode.git
+	md5sums = SKIP
+
+pkgname = fira-code-git
+
