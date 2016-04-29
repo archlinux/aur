@@ -20,6 +20,7 @@ source=(
 	fseeko64.patch
 	asm.patch
 	dxegen.patch
+	gcc6.patch
 )
 makedepends=(djgpp-gcc)
 sha512sums=(
@@ -31,6 +32,7 @@ sha512sums=(
 	'c004d2e5fd484f86986584e03003f62003ed6a3b8473c44e2f6e99562276e464b54e59cbe629e2d07e7d5d03159d2beddfeef2b96d8adb694a7c6f9072e06332'
 	'2deade5e1b87c2df5cfce9fa41fb375c9f80bc2ff20db9cb19a828b2baada5effd37dc9f8abf6d98574d1e5f487c147d3fcc347a9e5c5848a851e0455111af8f'
 	'5359b385ec47628ac44b60f73c3b80eca059eea1ecdde5f10b6ce3cdbcbe7a1ea166cdb0d30e818554259820802d4cf031edbd0e384c96d752e3434b555e439e'
+	'7e8aae28b8bcd49fd4c62539eb861be313811958f8f66d1c793e63f86cc9c9d722d60a8a229f6e5065c2348f6429c7a9c653531ab34daddbaecf1b7fc145e5b8'
 )
 options=(!buildflags !strip)
 install=info.install
@@ -51,9 +53,7 @@ SRC += environ.c' \
 		src/libc/crt0/makefile
 
 	# fix gcc6 build
-	echo -Wno-nonnull-compare >> src/gcc.opt
-	echo -Wno-misleading-indentation >> src/gcc.opt
-	echo -Wno-unused-const-variable >> src/gcc.opt
+	patch -Np0 < ../gcc6.patch
 
 	# gcc provides its own float.h which masks this one
 	ln -fs float.h include/djfloat.h
