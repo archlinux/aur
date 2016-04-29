@@ -2,6 +2,4 @@
 !PKGBUILD
 !.SRCINFO
 !.gitignore
-!icon-cache-refresh.install
 !plasma-refresh.install
-

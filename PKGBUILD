@@ -29,8 +29,8 @@ arch=('any')
 url="https://github.com/varlesh/${_pkgname}"
 license=('CCPL:by-sa')
 options=()
-makedepends=('git' 'gtk-update-icon-cache' 'xdg-utils')
-depends=()
+makedepends=('git'  'xdg-utils')
+depends=('gtk-update-icon-cache')
 conflicts=('papirus')
 source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
@@ -132,9 +132,8 @@ package_papirus-gtk-theme-git() {
 package_papirus-icon-theme-gtk-git() {
     pkgdesc="Papirus icon theme for GTK (git version)"
     options=('!strip')
-    makedepends=('git' 'gtk-update-icon-cache' 'xdg-utils')
-    install='icon-cache-refresh.install'
-    depends=()
+    makedepends=('git' 'xdg-utils')
+    depends=('gtk-update-icon-cache')
     optdepends=()
     conflicts=('papirus-gtk-icon-theme' 'papirus-gtk-icon-theme-git' 'papirus-icon-theme-gtk')
     install -dm755 ${pkgdir}/usr/share/icons
@@ -146,9 +145,8 @@ package_papirus-icon-theme-gtk-git() {
 package_papirus-icon-theme-kde-git() {
     pkgdesc="Papirus icon theme for KDE (git version)"
     options=('!strip')
-    makedepends=('git' 'gtk-update-icon-cache' 'xdg-utils')
-    install='icon-cache-refresh.install'
-    depends=()
+    makedepends=('git' 'xdg-utils')
+    depends=('gtk-update-icon-cache')
     optdepends=()
     conflicts=('papirus-icon-theme' 'papirus-icon-theme-kde' 'papirus-icon-theme-git')
     install -dm755 ${pkgdir}/usr/share/{icons,apps/amarok/icons/papirus{,-black-panel,-dark}}
