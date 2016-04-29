@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-json-fast
-pkgver=0.3
-pkgrel=3
+pkgver=0.4
+pkgrel=1
 pkgdesc="A naive, fast json parser and serializer"
 arch=('any')
 depends=('perl6')
