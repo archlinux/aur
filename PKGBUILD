@@ -46,6 +46,7 @@ package() {
   install -Dm644 Qtesseract5Ressources_rc.py "${pkgdir}/usr/share/qtesseract5/Qtesseract5Ressources_rc.py"
   install -Dm644 ui_Qtesseract5.py "${pkgdir}/usr/share/qtesseract5/ui_Qtesseract5.py"
   install -Dm644 Qtesseract5_fr_FR.qm "${pkgdir}/usr/share/qtesseract5/Qtesseract5_fr_FR.qm"
+  install -Dm644 man/qtesseract5.1 "${pkgdir}/usr/share/man/man1/qtesseract5.1"
 
   (cd icons; for i in $(find . -name *.png -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/icons/hicolor/${i}"; done)
 }
