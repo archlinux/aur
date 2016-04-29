@@ -2,7 +2,7 @@
 
 pkgname=git-annex-stack
 pkgdesc='manage files with git, without checking their contents into git (stack build)'
-pkgver=6.20160419.r9.g4482caf
+pkgver=6.20160419.r10.g24c224f
 pkgrel=1
 
 url='http://git-annex.branchable.com/'
@@ -74,7 +74,8 @@ build() {
   msg2 "Features: ${_features[*]}"
   stack init --force --system-ghc
   stack setup
-  stack build $_stack_flags
+  mkdir -p "bin"
+  stack install --local-bin-path "bin" $_stack_flags
 }
 
 # This involves a recompile, uncomment if you're patient.
@@ -84,7 +85,6 @@ build() {
 # }
 
 package() {
-  cd git-annex
   mkdir -p "$pkgdir/usr/bin"
-  stack install --local-bin-path "$pkgdir/usr/bin"
+  cp git-annex/bin/* "$pkgdir/usr/bin"
 }

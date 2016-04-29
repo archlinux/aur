@@ -1,6 +1,6 @@
 pkgbase = git-annex-stack
 	pkgdesc = manage files with git, without checking their contents into git (stack build)
-	pkgver = 6.20160419.r9.g4482caf
+	pkgver = 6.20160419.r10.g24c224f
 	pkgrel = 1
 	url = http://git-annex.branchable.com/
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = git-annex-stack
 	depends = openssh
 	depends = rsync
 	depends = util-linux
-	provides = git-annex=6.20160419.r9.g4482caf
+	provides = git-annex=6.20160419.r10.g24c224f
 	conflicts = git-annex-git
 	conflicts = git-annex
 	conflicts = git-annex-cabal
