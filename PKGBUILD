@@ -2,7 +2,7 @@
 # Contributor: vitamin1980 <vitamin.novgorod @ yandex.ru>
 
 pkgname=oxygen-gtk3-git
-pkgver=20150818_vgtk3_1.4.1_12_g705b7
+pkgver=20160429_vgtk3_1.4.1_12_g705b7
 pkgrel=1
 pkgdesc="Port of the default KDE widget theme (Oxygen) to GTK3"
 arch=('i686' 'x86_64')
