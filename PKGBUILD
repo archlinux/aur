@@ -1,8 +1,8 @@
 # Maintainer: Cayde Dixon <me@cazzar.net>
 
 pkgname=discord-canary
-pkgver=0.0.4
-pkgrel=2
+pkgver=0.0.5
+pkgrel=1
 pkgdesc='Discord Canary linux release'
 arch=('x86_64')
 url='https://discordapp.com/'
@@ -16,7 +16,7 @@ source_x86_64=("https://cdn-canary.discordapp.com/apps/linux/${pkgver}/discord-c
 sha256sums=('04120aec68647be5de5689ead51ba3fc976ada3cf6616144b97d2b75e0782eae'
             '688f418cd32a682c6d331c211fedd48ff86ee8ba5a7640f589eadb32996af80f'
             '912cb31b21023980614437b859bb11f39697108c0e9ca21778f81da8065a0815')
-sha256sums_x86_64=('891c27657642d13b40f7cde979885fcc8266882c0525864e17f358ba06290bcf')
+sha256sums_x86_64=('1338afd112728a5475374c300c2f664d46b4c197389f750a48e51c30e36edd00')
 
 package() {
   # Install the main files.
