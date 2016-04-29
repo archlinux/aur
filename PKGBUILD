@@ -1,15 +1,15 @@
-# Maintainer: FadeMind <fademind@gmail.com>
+# Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
+# Contributor: FadeMind <fademind@gmail.com>
 # Contributor: Richard Jackson <rj@iinet.net.au>
 pkgname=abiword-gtk2
 _pkgname=abiword
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Fully-featured word processor, GTk2, No plugins, Lite version'
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('fribidi' 'wv' 'librsvg' 'enchant' 'desktop-file-utils' 'gtk2' 'libxslt')
 makedepends=('pkgconfig' 'boost')
-install=$pkgname.install
 conflicts=('abiword' 'abiword-plugins')
 url='http://www.abisource.com'
 source=("$_pkgname-$pkgver.tar.gz::http://abisource.com/downloads/$_pkgname/$pkgver/source/$_pkgname-$pkgver.tar.gz")
