@@ -56,6 +56,7 @@ build() {
               --enable-tpm --enable-spice \
               --enable-modules --enable-curl
   make V=99
+pacman -Sdd spice-protocol spice --noconfirm
 }
 
 package() {
