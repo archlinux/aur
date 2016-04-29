@@ -1,5 +1,1 @@
-packagerelease_x86_64=$(curl -sS https://vivaldi.com/download/ | sed -rne 's/.*vivaldi-stable-([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+-[0-9]+)\.x86_64\.rpm.*/\1/p')
-version_x86_64=${packagerelease_x86_64%%-*}
-pkgrel_x86_64=${packagerelease_x86_64##*-}
-update_pkgver="$version_x86_64"
-update_pkgrel="$pkgrel_x86_64"
+update_pkgver=$(curl -sS https://vivaldi.com/download/ | sed -rne 's/.*vivaldi-stable-([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)-[0-9]+\.x86_64\.rpm.*/\1/p')

@@ -3,21 +3,20 @@
 
 pkgname=vivaldi
 pkgver=1.1.453.47
-pkgrel=1
+pkgrel=2
 pkgdesc='An advanced browser made with the power user in mind.'
 url="https://vivaldi.com"
-install=${pkgname}.install
 options=(!strip !zipman)
 license=('custom')
 arch=('i686' 'x86_64')
-depends=('gtk2' 'nss' 'libxtst' 'gconf' 'libxss' 'freetype2' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'alsa-lib')
+depends=('gtk2' 'nss' 'libxtst' 'gconf' 'libxss' 'freetype2' 'ttf-font' 'desktop-file-utils' 'shared-mime-info' 'alsa-lib' 'hicolor-icon-theme')
 makedepends=('w3m')
 optdepends=(
     'vivaldi-ffmpeg-codecs: playback of proprietary video/audio'
     'google-chrome: Widevine DRM Plugin'
 )
-source_i686=("https://downloads.vivaldi.com/stable/vivaldi-stable-${pkgver}-$pkgrel.i386.rpm")
-source_x86_64=("https://downloads.vivaldi.com/stable/vivaldi-stable-${pkgver}-$pkgrel.x86_64.rpm")
+source_i686=("https://downloads.vivaldi.com/stable/vivaldi-stable-${pkgver}-1.i386.rpm")
+source_x86_64=("https://downloads.vivaldi.com/stable/vivaldi-stable-${pkgver}-1.x86_64.rpm")
 sha256sums_i686=('bee287c816b07af30fe8f6dc4f8e1025276fe979c7a1f1e370ff4f9a52058274')
 sha256sums_x86_64=('6b24ba9a9190f4376ac93ef2062872863e69bd3d3db808c00d29f714e34321a3')
 
