@@ -1,7 +1,7 @@
 # Maintainer: getmicah (https://micahcowell.com)
 pkgname=spotify-now
 _pkgname=spotify-now
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="DELETION REQUEST. Please use the Git version available on the aur."
 arch=('any')
