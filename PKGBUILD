@@ -12,7 +12,7 @@ makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools'
              'python-pyinotify' 'python-six' 'python-cloudpickle'
              'python2-pyinotify' 'python2-six' 'python2-cloudpickle')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+source=("https://pypi.io/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('9968e1a669bad0a999212ab9f5c591a3')
 
 prepare() {

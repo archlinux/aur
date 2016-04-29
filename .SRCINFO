@@ -16,7 +16,7 @@ pkgbase = python-doit
 	makedepends = python2-six
 	makedepends = python2-cloudpickle
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/d/doit/doit-0.29.0.tar.gz
+	source = https://pypi.io/packages/source/d/doit/doit-0.29.0.tar.gz
 	md5sums = 9968e1a669bad0a999212ab9f5c591a3
 
 pkgname = python-doit
