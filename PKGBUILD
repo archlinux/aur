@@ -19,7 +19,7 @@ pkgbase=kodi-git
 pkgname=('kodi-git' 'kodi-eventclients-git')
 _gitname='xbmc'
 pkgver=20160427.4015436
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://kodi.tv"
 license=('GPL2')
@@ -31,7 +31,7 @@ makedepends=(
   'libvdpau' 'libxrandr' 'libxslt' 'lzo' 'nasm' 'nss-mdns' 'python2-pillow'
   'python2-pybluez' 'python2-simplejson' 'rtmpdump' 'sdl2' 'sdl_image'
   'shairplay' 'smbclient' 'swig' 'taglib' 'tinyxml' 'unzip' 'upower' 'yajl' 'zip'
-  'mesa' 'libcrossguid-git' 'libdcadec.so'
+  'mesa' 'libcrossguid-git' 'dcadec'
 )
 source=(
   "$_gitname::git://github.com/xbmc/xbmc.git"
@@ -97,7 +97,7 @@ package_kodi-git() {
     'bluez-libs' 'fribidi' 'glew' 'hicolor-icon-theme' 'libcdio'
     'libjpeg-turbo' 'libmariadbclient' 'libmicrohttpd' 'libpulse' 'libssh'
     'libva' 'libxrandr' 'libxslt' 'lzo' 'sdl2' 'smbclient' 'taglib' 'tinyxml'
-    'yajl' 'mesa' 'libdcadec.so'
+    'yajl' 'mesa' 'dcadec' 'desktop-file-utils'
   )
   optdepends=(
     'gdb: for meaningful backtraces in case of trouble - STRONGLY RECOMMENDED'
@@ -114,7 +114,6 @@ package_kodi-git() {
     'unzip: Archives support'
     'upower: Display battery level'
   )
-  install="kodi-git.install"
   provides=('xbmc' 'kodi')
   conflicts=('xbmc' 'kodi')
   replaces=('xbmc-svn' 'xbmc-git')
