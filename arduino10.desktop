@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Arduino (legacy)
+GenericName=Arduino IDE (legacy)
+Comment=The open-source Arduino environment (legacy)
+TryExec=arduino10
+Exec=arduino10 %U
+Icon=arduino10
+Type=Application
+Terminal=false
+MimeType=text/x-arduino;
+Categories=Development;
+StartupWMClass=processing-app-Base

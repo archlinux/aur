@@ -6,7 +6,7 @@
 pkgname=arduino10
 epoch=1
 pkgver=1.0.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Arduino prototyping platform SDK (old version)"
 arch=('i686' 'x86_64')
 url="http://arduino.cc/en/Main/Software"
@@ -14,18 +14,17 @@ options=(!strip staticlibs)
 license=('GPL' 'LGPL')
 depends=('gtk2' 'libusb-compat' 'java-runtime' 'java-rxtx' 'desktop-file-utils')
 makedepends=('icoutils')
-conflicts=('arduino' 'arduino-toolchain')
-install="arduino.install"
+install="arduino10.install"
 source=('arduino-fix-arguments.patch'
-        'arduino.desktop'
-        'arduino.xml')
+        'arduino10.desktop'
+        'arduino10.xml')
 source_i686+=("http://downloads.arduino.cc/arduino-${pkgver}-linux32.tgz")
 source_x86_64+=("http://downloads.arduino.cc/arduino-${pkgver}-linux64.tgz")
 sha256sums=('631921fce485d14c79bcdc31d5d6f3a95d729d49975390b6b785fe49d238ff65'
-            'ee29f80cc63cf3a21e844372721686372c2ca4b36e35430350d72e0b788a0ae2'
+            '00b6ab429a7f85fe4b2e571c08fea50f615d8e5b6b570797b01f293ff9bb57f8'
             '473b82156505e9bd903e4d8484e8d183f2e3bf3c1f7e29940b815929ae597b68')
-sha256sums_i686+=('f059a572231abafb92099a3a404c0a41502c3413668610676c40029384edc658')
-sha256sums_x86_64+=('1ff175c487de335981d3aad64cf212b56cb2c778a6bdd6655045335ffc65e147')
+sha256sums_i686=('f059a572231abafb92099a3a404c0a41502c3413668610676c40029384edc658')
+sha256sums_x86_64=('1ff175c487de335981d3aad64cf212b56cb2c778a6bdd6655045335ffc65e147')
 
 prepare() {
   cd "arduino-${pkgver}"
@@ -41,25 +40,25 @@ package() {
   mkdir -p "${pkgdir}/usr/bin"
   mkdir -p "${pkgdir}/usr/share/"{doc,applications,mime/packages}
 
-  # copy the whole SDK to /usr/share/arduino/
-  cp -a . "${pkgdir}/usr/share/arduino"
+  # copy the whole SDK to /usr/share/arduino10/
+  cp -a . "${pkgdir}/usr/share/arduino10"
 
   # use system's RXTX library
-  ln -sf /usr/lib/librxtxSerial.so "${pkgdir}/usr/share/arduino/lib/librxtxSerial.so"
-  ln -sf /usr/lib/librxtxSerial.so "${pkgdir}/usr/share/arduino/lib/librxtxSerial64.so"
-  ln -sf /usr/share/java/rxtx/RXTXcomm.jar "${pkgdir}/usr/share/arduino/lib/RXTXcomm.jar"
+  ln -sf /usr/lib/librxtxSerial.so "${pkgdir}/usr/share/arduino10/lib/librxtxSerial.so"
+  ln -sf /usr/lib/librxtxSerial.so "${pkgdir}/usr/share/arduino10/lib/librxtxSerial64.so"
+  ln -sf /usr/share/java/rxtx/RXTXcomm.jar "${pkgdir}/usr/share/arduino10/lib/RXTXcomm.jar"
 
   # at least support the FHS a little bit
-  ln -s /usr/share/arduino/arduino "${pkgdir}/usr/bin/arduino"
-  ln -s /usr/share/arduino/reference "${pkgdir}/usr/share/doc/arduino"
+  ln -s /usr/share/arduino10/arduino "${pkgdir}/usr/bin/arduino10"
+  ln -s /usr/share/arduino10/reference "${pkgdir}/usr/share/doc/arduino10"
 
   # desktop icon
   for size in 16 32 48 256; do
     install -Dm644 ../arduino_icon_*_${size}x${size}x32.png \
-      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/arduino.png"
+      "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/arduino10.png"
   done
 
   # desktop and mimetype files
-  install -m644 "${srcdir}/arduino.desktop" "${pkgdir}/usr/share/applications/"
-  install -m644 "${srcdir}/arduino.xml" "${pkgdir}/usr/share/mime/packages/"
+  install -m644 "${srcdir}/arduino10.desktop" "${pkgdir}/usr/share/applications/"
+  install -m644 "${srcdir}/arduino10.xml" "${pkgdir}/usr/share/mime/packages/"
 }
