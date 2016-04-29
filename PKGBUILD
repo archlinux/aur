@@ -2,8 +2,8 @@
 
 pkgname=ttf-irfonts
 pkgver=1.0
-pkgrel=1
-pkgdesc="Iran Supreme Council of Information and Communication Technology (SCICT) standard persian fonts series."
+pkgrel=2
+pkgdesc="Iran Supreme Council of Information and Communication Technology (SCICT) standard Persian fonts series."
 arch=('any')
 url="http://scict.ir"
 license=('custom')
