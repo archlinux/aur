@@ -10,13 +10,11 @@ pkgdesc="Heavily modified version of the original Dwarf Therapist."
 url="https://github.com/splintermind/Dwarf-Therapist"
 arch=('x86_64' 'i686')
 license=('MIT')
-depends=('qt5-declarative' 'hicolor-icon-theme')
+depends=('qt5-declarative' 'hicolor-icon-theme' 'libcap')
 makedepends=('git' 'texlive-latexextra')
 install="dwarftherapist.install"
-source=($pkgname::git+"https://github.com/splintermind/Dwarf-Therapist.git#branch=DF2016"
-        'dwarftherapist.desktop')
-md5sums=('SKIP'
-         '32c80fd6e3b86900c1677b4e2859b07b')
+source=($pkgname::git+"https://github.com/splintermind/Dwarf-Therapist.git#branch=DF2016")
+md5sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -38,7 +36,7 @@ package() {
   make INSTALL_ROOT="$pkgdir" install
   rm "$pkgdir/usr/bin/dwarftherapist"
   mv "$pkgdir/usr/bin/DwarfTherapist" "$pkgdir/usr/bin/dwarftherapist"
-  install -Dm644 "$srcdir/dwarftherapist.desktop" \
+  install -Dm644 "dist/dwarftherapist.desktop" \
     "$pkgdir"/usr/share/applications/dwarftherapist.desktop
   install -Dm644 resources/img/hammer.png \
     "$pkgdir"/usr/share/icons/hicolor/128x128/apps/dwarftherapist.png

@@ -12,10 +12,9 @@ pkgbase = dwarftherapist-git
 	makedepends = texlive-latexextra
 	depends = qt5-declarative
 	depends = hicolor-icon-theme
+	depends = libcap
 	source = dwarftherapist-git::git+https://github.com/splintermind/Dwarf-Therapist.git#branch=DF2016
-	source = dwarftherapist.desktop
 	md5sums = SKIP
-	md5sums = 32c80fd6e3b86900c1677b4e2859b07b
 
 pkgname = dwarftherapist-git
 
