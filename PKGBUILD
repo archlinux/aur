@@ -9,7 +9,7 @@ license=('GPL')
 arch=('i686' 'x86_64')
 url="http://www.icinga.org"
 depends=('boost-libs' 'yajl')
-makedepends=('boost' 'cmake' 'libmariadbclient' 'postgresql-libs' 'yajl')
+makedepends=('boost' 'cmake' 'libmariadbclient' 'postgresql-libs')
 optdepends=('monitoring-plugins: plugins needed for icinga checks'
             'libmariadbclient: for MySQL support'
             'postgresql-libs: for PostgreSQL support')
