@@ -2,7 +2,7 @@
 
 pkgname=fisherman
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A blazing fast, modern plugin manager for fish"
 arch=('any')
 url="http://fisherman.sh/"
@@ -34,4 +34,7 @@ package() {
   # install Fisherman the global fish directory
   cd "${pkgname}-${pkgver}"
   install -Dm 644 fisher.fish "${fishpath}/functions/fisher.fish"
+  # README and LICENSE
+  install -Dm 644 LICENSE "${sharepath}/licenses/${pkgname}/LICENSE"
+  install -Dm 644 README.md "${sharepath}/doc/${pkgname}/README"
 }
