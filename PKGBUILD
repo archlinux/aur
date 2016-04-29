@@ -2,11 +2,11 @@
 
 pkgname=ttf-sina
 pkgver=1.0
-pkgrel=1
-pkgdesc="Sina Pardazesh persian font series."
+pkgrel=2
+pkgdesc="Sina Pardazesh Persian font series."
 arch=('any')
 url="http://www.sinapardazesh.ir/"
-license=('custom')
+license=('unknown')
 groups=(persian-fonts)
 depends=('fontconfig' 'xorg-font-utils' 'unzip')
 source=("$pkgname.zip::http://www.sinapardazeshsoft.ir/download/Fonts/SinaPack%20fonts.zip")
