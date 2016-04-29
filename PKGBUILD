@@ -18,19 +18,15 @@ pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
 license=('GPL' 'LGPL')
-depends=('qt5-multimedia' 'qt5-x11extras' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd' 'sqlcipher' 'desktop-file-utils')
+depends=('qt5-multimedia' 'qt5-x11extras' 'libupnp' 'libgnome-keyring' 'libxss' 'libmicrohttpd' 'sqlcipher')
 makedepends=('git' 'qt5-tools')
 optdepends=('tor: tor hidden node support'
             'i2p: i2p hidden node support')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
-install="${_pkgname}.install"
-source=("${_pkgname}::git+https://github.com/RetroShare/RetroShare.git"
-        'retroshare.install')
-
-sha256sums=('SKIP'
-            '44ea7d8b0208e8954391184dcbb8ff94b2efc246580057a1d2b2e73ad262aad2')
+source=("${_pkgname}::git+https://github.com/RetroShare/RetroShare.git")
+sha256sums=('SKIP')
 
 # Add missing dependencies if needed
 [[ "$_build_voip" == 'true' ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
