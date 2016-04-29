@@ -2,7 +2,7 @@
 # vim: set expandtab ts=2 sw=2:
 
 pkgname=gx-go
-pkgver=0.3.0.r0.g68d91f3
+pkgver=1.2.0.r1.g9d167af
 pkgrel=1
 epoch=
 pkgdesc="A tool to use with the gx package manager for packages written in go."
