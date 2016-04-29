@@ -1,5 +1,4 @@
-# Maintainer: graysky <graysky AT archlinux DOT us>
-# Contributer: Serge Ziryukin <ftrvxmtrx@gmail.com>
+# Maintainer: getmicah (https://micahcowell.com)
 pkgname=spotify-now-git
 _pkgname=spotify-now
 pkgver=22.9443251
