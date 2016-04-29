@@ -9,7 +9,7 @@ url='https://github.com/Kwpolska/cheqlist'
 license=('BSD')
 depends=('python' 'python-setuptools' 'python-pyqt5')
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
+source=("https://pypi.io/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('91cc3a654bdf15a643e6c83f7cdc8a16')
 install=cheqlist.install
 

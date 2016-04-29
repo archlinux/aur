@@ -10,7 +10,7 @@ pkgbase = cheqlist
 	depends = python-setuptools
 	depends = python-pyqt5
 	options = !emptydirs
-	source = https://pypi.python.org/packages/source/c/cheqlist/cheqlist-0.1.6.tar.gz
+	source = https://pypi.io/packages/source/c/cheqlist/cheqlist-0.1.6.tar.gz
 	md5sums = 91cc3a654bdf15a643e6c83f7cdc8a16
 
 pkgname = cheqlist
