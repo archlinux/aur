@@ -1,0 +1,19 @@
+pkgbase = aqemu-git
+	pkgdesc = QEMU GUI written in Qt (Qt5 rewrite)
+	pkgver = v0.9.0.r47.gf120698
+	pkgrel = 1
+	url = https://github.com/tobimensch/aqemu
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = qt5-base
+	depends = qemu
+	depends = qt5-base
+	depends = libvncserver
+	conflicts = aqemu
+	source = aqemu::git+https://github.com/tobimensch/aqemu.git
+	md5sums = SKIP
+
+pkgname = aqemu-git
+
