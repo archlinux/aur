@@ -2,7 +2,7 @@
 
 pkgname=ttf-gandom
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A beautiful Persian font."
 arch=('any')
 url="https://rastikerdar.github.io/gandom-font/"
@@ -19,5 +19,5 @@ prepare() {
 }
 package() {  
   install -m 644 -Dt $pkgdir/usr/share/fonts/$pkgname $srcdir/$pkgname/gandom*
-  install -Dm 644 $srcdir/$pkgname/license $pkgdir/usr/share/licenses/LICENSE    
+  install -Dm 644 $srcdir/$pkgname/license $pkgdir/usr/share/licenses/$pkgname/LICENSE    
 }
