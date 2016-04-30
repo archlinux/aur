@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=cryfs
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="Cryptographic filesystem for the cloud"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ url="https://www.cryfs.org"
 license=('LGPL3')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/cryfs/$pkgname/tar.gz/$pkgver
         git+https://github.com/cryfs/cryfs.wiki)
-sha256sums=('124ac3315161c702eef4ba2e5720a39b7ab8f012aefd9313578373c2150a62f0'
+sha256sums=('2752599323cc647454adbf7fbdf87ec18fda6fe37e16f88a031af0faedeb3357'
             'SKIP')
 
 build() {
