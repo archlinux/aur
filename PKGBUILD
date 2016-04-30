@@ -3,7 +3,7 @@
 # https://aur.archlinux.org/packages/ghdl/
 
 pkgname=ghdl-gcc-git
-pkgver=0.34dev.git20151207
+pkgver=0.34dev.git20160402
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='VHDL simulator - GCC flavour'
@@ -24,8 +24,8 @@ source=(
 	#"ghdl::git://git.code.sf.net/p/ghdl-updates/ghdl-updates.git"
 	"ghdl::git://github.com/tgingold/ghdl.git"
 	"ftp://ftp.gnu.org/gnu/gcc/gcc-${_gccver}/gcc-${_gccver}.tar.bz2"
-	"http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
-	"http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz"
+	"ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
+	"ftp://gcc.gnu.org/pub/gcc/infrastructure/cloog-${_cloogver}.tar.gz"
 )
 md5sums=(
 	'SKIP'
