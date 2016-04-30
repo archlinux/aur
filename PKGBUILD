@@ -4,7 +4,7 @@
 # https://wiki.archlinux.org/index.php/Creating_packages
 
 pkgname=junest-git
-pkgver=r197.cfa5127
+pkgver=r221.3609954
 pkgrel=1
 pkgdesc="The Arch Linux based distro that runs upon any Linux distros without root access"
 arch=('any')
@@ -49,9 +49,8 @@ package() {
     mkdir -p "${pkgdir}/opt/"
     cp -R "${srcdir}/${pkgname%-git}" "${pkgdir}/opt/${pkgname%-git}"
 
-    mkdir -p "${pkgdir}/etc/profile.d/"
-    echo 'export PATH=$PATH:/opt/junest/bin/' > "${pkgdir}/etc/profile.d/junest"
-    chmod +x "${pkgdir}/etc/profile.d/junest"
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s ../../opt/${pkgname%-git}/bin/${pkgname%-git} ${pkgdir}/usr/bin/${pkgname%-git}
 }
 
 # vim:set ts=2 sw=2 et:
