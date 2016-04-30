@@ -2,7 +2,7 @@
 # Contributor: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
 # Contributor: Pieter Robyns <pieter.robyns@uhasselt.be>
 pkgname=python2-tensorflow-git
-pkgver=0.8.0rc0.r287.gd8e8b87
+pkgver=0.8.0rc0.r411.g5e22e3a
 pkgrel=1
 url="http://tensorflow.org"
 license=('Apache')
@@ -11,7 +11,7 @@ pkgdesc="Open source software library for numerical computation using data flow 
 depends=('python2' 'python2-numpy' 'python2-protobuf3')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
-makedepends=('python2' 'python2-pip' 'python2-wheel' 'bazel' 'swig' 'git')
+makedepends=('python2-pip' 'python2-wheel' 'bazel' 'swig' 'git' 'rsync')
 source=("git+https://github.com/tensorflow/tensorflow.git"
         "git+https://github.com/google/protobuf.git"
         "flags.patch")
@@ -64,7 +64,7 @@ build() {
   PYTHON_BIN_PATH=/usr/bin/${PYTHON} ./configure
 
   msg2 "Running bazel build..."
-  bazel build -c opt --jobs 2 --python2_path ${PYTHON} ${_build_opts} //tensorflow/tools/pip_package:build_pip_package
+  bazel build -c opt --jobs 10 --python2_path ${PYTHON} ${_build_opts} //tensorflow/tools/pip_package:build_pip_package
 
   msg2 "Building pip package..."
   bazel-bin/tensorflow/tools/pip_package/build_pip_package "${srcdir}/tmp-${PYTHON}"
