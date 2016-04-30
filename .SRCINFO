@@ -1,0 +1,16 @@
+pkgbase = retroarch-rbp-bin
+	pkgdesc = Simple frontend for the Libretro API
+	pkgver = 1.3.2
+	pkgrel = 1
+	url = http://www.libsdl.org
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	license = GPL
+	provides = retroarch
+	conflicts = retroarch retroarch-git
+	source = http://downloads.petrockblock.com/retropiebinaries/jessie/rpi2/emulators/retroarch.tar.gz
+	md5sums = b86dfce155c294fc10db728fb884c839
+
+pkgname = retroarch-rbp-bin
+
