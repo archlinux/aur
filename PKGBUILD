@@ -1,5 +1,6 @@
-# Maintainer: Julien Nicoulaud <julien.nicoulaud@gmail.com>
-# Source: https://github.com/nicoulaj/archlinux-packages
+# Contributor: kaptoxic@yahoo.com
+# Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
+
 pkgname=soot
 pkgver=2.5.0
 pkgrel=1
@@ -8,7 +9,6 @@ arch=(any)
 url="http://www.sable.mcgill.ca/soot"
 license=(LGPL)
 depends=(java-runtime bash)
-changelog=Changelog
 source=("http://www.sable.mcgill.ca/software/${pkgname}-${pkgver}.jar")
 noextract=(${pkgname}-${pkgver}.jar)
 md5sums=('4fc1880f4bf183dfced1bf3a6e9479ae')
