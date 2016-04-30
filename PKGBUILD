@@ -7,10 +7,10 @@
 
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless2.8
-pkgver=2.8.6
+pkgver=2.8.7
 pkgrel=1
 epoch=1
-pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems.'
+pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://ffmpeg.org/'
 license=('GPL3') #enabling libfdk_aac makes ffmpeg incompatible with the GPL!
@@ -27,7 +27,7 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
 conflicts=('ffmpeg')
 replaces=('ffmpeg')
 source=(http://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.bz2)
-sha256sums=('40611e329bc354592c6f8f1deb033c31b91f80e91f5707ca4f9afceca78d8e62')
+sha256sums=('8777ce4a335640fdd13680ba423ef6da330ff5071bfbe27cdbb452379167efe5')
 
 build() {
   cd ${_pkgname}-${pkgver}
