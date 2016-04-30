@@ -7,14 +7,13 @@
 _name=tomb
 pkgbase="${_name}-git"
 pkgname=("${_name}-git" "${_name}-kdf-git")
-pkgver=2.2.r0.g017aee0
-pkgrel=1
+pkgver=2.2.r3.gff57aa3
+pkgrel=2
 pkgdesc="simple tool to manage encrypted storage"
 arch=('any')
 url="http://tomb.dyne.org/"
 license=('GPL3')
 makedepends=('git' 'libgcrypt')
-install="${pkgname}.install"
 conflicts=("${_name}")
 provides=("${_name}")
 source=("${_name}::git://github.com/dyne/${_name//t/T}.git"
