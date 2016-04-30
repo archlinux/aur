@@ -5,7 +5,7 @@ pkgbase=qcma-git
 pkgname=('qcma-git'
          'qcma-kdenotifier-git'
          'qcma-appindicator-git')
-pkgver=v0.3.10.0.g7886238
+pkgver=v0.3.12.0.g498ebb1
 pkgrel=1
 pkgdesc="Content Manager Assistant for the PS Vita. (GIT version)"
 arch=('i686' 'x86_64')
@@ -49,7 +49,6 @@ package_qcma-git() {
            )
   conflicts=('qcma')
   provides=('qcma')
-  install=qcma-git.install
 
   make -C build/common INSTALL_ROOT="${pkgdir}" install
   make -C build/cli INSTALL_ROOT="${pkgdir}" install
@@ -74,7 +73,6 @@ package_qcma-appindicator-git() {
            )
   conflicts=('qcma-appindicator')
   provides=('qcma-appindicator')
-  install=qcma-git.install
 
   make -C build/appindicator INSTALL_ROOT="${pkgdir}" install
 }
