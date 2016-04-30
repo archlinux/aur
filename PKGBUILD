@@ -15,6 +15,8 @@ source=("https://www.prelude-siem.org/pkg/src/3.0.0/$pkgname-$pkgver.tar.gz"
         "prelude-lml.service"
         "prelude-lml-conf.patch")
 install="$pkgname.install"
+backup=('etc/prelude-lml/prelude-lml.conf'
+        'etc/prelude-lml/plugins.rules')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
