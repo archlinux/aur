@@ -1,7 +1,7 @@
 pkgbase = spotcommander
 	pkgdesc = The most intuitive and feature-rich remote control for Spotify for Linux.
-	pkgver = 12.5
-	pkgrel = 3
+	pkgver = 12.6
+	pkgrel = 1
 	url = http://www.olejon.net/code/spotcommander
 	install = spotcommander.install
 	arch = any
@@ -13,9 +13,10 @@ pkgbase = spotcommander
 	depends = qt4
 	depends = inotify-tools
 	depends = xdotool
+	depends = xautomation
 	depends = python2-xdg
-	source = http://www.olejon.net/code/spotcommander/files/spotcommander-12.5.tar.bz2
-	md5sums = d51fd04ae5d472242665c046b04399a6
+	source = http://www.olejon.net/code/spotcommander/files/spotcommander-12.6.tar.bz2
+	md5sums = a7db5ffa6942cb88bad8f15d307070ee
 
 pkgname = spotcommander
 
