@@ -1,6 +1,6 @@
 pkgname=rbtools
 verprefix=0.7
-pkgver=${verprefix}.5
+pkgver=${verprefix}.6
 pkgrel=1
 pkgdesc="Client tools for Review Board"
 arch=('any')
@@ -9,7 +9,7 @@ license=('custom:MIT')
 depends=('python2' 'python2-setuptools' 'python2-six')
 makedepends=('python2-setuptools')
 source=(http://downloads.reviewboard.org/releases/RBTools/${verprefix}/RBTools-${pkgver}.tar.gz)
-md5sums=('16e27916e2716e96f6c07c05cc6f1974')
+md5sums=('1a7411703dada83c6fd5e3f3125a9840')
 
 build() {
   cd "$srcdir/RBTools-$pkgver"
