@@ -1,0 +1,25 @@
+pkgbase = prewikka
+	pkgdesc = Prewikka
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://www.prelude-siem.org
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = python2-setuptools
+	makedepends = python2-lesscpy
+	makedepends = gettext
+	depends = python2
+	depends = python2-cheetah
+	depends = python2-babel
+	depends = python2-dateutil
+	depends = python2-pytz
+	depends = xorg-fonts-type1
+	depends = libprelude
+	depends = libpreludedb
+	backup = etc/prewikka/prewikka.conf
+	source = https://www.prelude-siem.org/pkg/src/3.0.0/prewikka-3.0.0.tar.gz
+	md5sums = a0827a7740061830ac639e7d5d86f5a9
+
+pkgname = prewikka
+
