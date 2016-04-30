@@ -1,14 +1,15 @@
 pkgbase=python-commonmark
 pkgname=('python-commonmark' 'python2-commonmark')
-pkgver=0.5.5
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Python parser for the CommonMark Markdown spec"
 url="https://pypi.python.org/pypi/CommonMark"
 arch=(any)
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://github.com/rtfd/CommonMark-py/archive/${pkgver}.tar.gz")
-md5sums=('a2dbf2dba32d5df7921cad8d542d4ca8')
+#source=("https://github.com/rtfd/CommonMark-py/archive/${pkgver}.tar.gz")
+source=("https://github.com/rolandshoemaker/CommonMark-py/archive/v${pkgver}.tar.gz")
+md5sums=('ea391af8f27597d83e1b222dc37b410f')
 
 build() {
   cp -r "${srcdir}"/CommonMark-py-$pkgver "${srcdir}"/CommonMark-py-$pkgver-py2
