@@ -4,23 +4,21 @@
 
 pkgname=code-browser
 pkgver=4.9
-pkgrel=1
+pkgrel=2
 pkgdesc="folding text editor, designed to hierarchically structure any kind of text file and especially source code"
 arch=(i686 x86_64)
 url="http://code-browser.sourceforge.net/index.html"
 license=('GPL2')
-depends=('copper' 'gtk2' 'desktop-file-utils' 'hicolor-icon-theme')
+depends=('copper' 'gtk2' 'desktop-file-utils' 'gtk-update-icon-cache')
 depends_x86_64=('llvm')
 options=(!makeflags)
-install=code-browser.install
-source=(http://tibleiz.net/download/code-browser-${pkgver}-src.tar.gz
+source=( #http://tibleiz.net/download/code-browser-${pkgver}-src.tar.gz
+        http://tibleiz.net/download/code-browser-${pkgver}-src.zip
         code-browser.desktop
-        cb.png
-        code-browser.install)
-md5sums=('db60b59a6eaf94af24c832371cb03bc5'
+        cb.png)
+md5sums=('b871f1b076ff657d3a4b1e929ceced91'
          '05b38d1b5cd303042aaaf50714655d83'
-         '153dab5bcff69701d74ee911d80d6f83'
-         'cfd68c62a2b8e556bdf33bdb6af33a2f')
+         '153dab5bcff69701d74ee911d80d6f83')
 
 
 prepare() {
