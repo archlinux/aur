@@ -1,7 +1,7 @@
 pkgbase = djgpp-gcc
 	pkgdesc = Cross GCC for the djgpp cross-compiler
 	pkgver = 6.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
