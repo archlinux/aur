@@ -1,0 +1,4 @@
+adplug/
+src/
+pkg/
+*.pkg.tar.xz
