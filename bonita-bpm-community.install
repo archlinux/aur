@@ -1,11 +1,22 @@
+conf_note() {
+  printf '%s\n' \
+    'All current and previous configuration and diagram history in' \
+    '  $XDG_CONFIG_HOME/bonitasoft/ and' \
+    '  $XDG_DATA_HOME/bonitasoft/' \
+    'is considered frozen. Default configuration and empty history' \
+    'in newly created directories is used instead.'
+}
+
 post_install() {
   update-desktop-database -q
+  conf_note
 }
 
 post_upgrade() {
-  post_install
+  update-desktop-database -q
+  conf_note
 }
 
 post_remove() {
-  post_install
+  update-desktop-database -q
 }
