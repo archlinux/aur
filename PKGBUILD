@@ -7,7 +7,6 @@ pkgdesc='Open source re-implementation of Roller Coaster Tycoon 2 (requires full
 arch=('i686' 'x86_64')
 url='https://github.com/OpenRCT2/OpenRCT2'
 license=('GPL3')
-depends=('gtk-update-icon-cache' 'desktop-file-utils')
 depends_i686=('sdl2' 'sdl2_ttf' 'curl' 'jansson' 'speexdsp' 'fontconfig'
               'libpng')
 depends_x86_64=('lib32-sdl2' 'lib32-sdl2_ttf' 'lib32-curl' 'lib32-jansson'
