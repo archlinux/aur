@@ -4,7 +4,7 @@
 _pkgbase=smuxi
 pkgbase=${_pkgbase}-git
 pkgname=('smuxi-server-git' 'smuxi-git')
-pkgver=1.0.r1.g15529e8
+pkgver=1.0.r120.gb1bca5b
 pkgrel=1
 pkgdesc="free, distributed and user-friendly IRC / Twitter / XMPP / Campfire / JabbR client for GNOME/GTK+"
 arch=('any')
@@ -68,8 +68,7 @@ package_smuxi-server-git() {
 
 package_smuxi-git() {
   pkgdesc+=" (frontends)"
-  depends=('smuxi-server' 'notify-sharp' 'gtkspell' 'stfl' 'hicolor-icon-theme' 'xdg-utils')
-  install=smuxi.install
+  depends=('smuxi-server' 'notify-sharp' 'gtkspell' 'stfl' 'desktop-file-utils' 'gtk-update-icon-cache' 'xdg-utils')
   conflicts=('smuxi')
   provides=('smuxi=1.0')
 
