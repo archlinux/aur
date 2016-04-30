@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kpmcore-git
-pkgver=2.0.0.r68.f69254f
+pkgver=2.1.1.r109.e5641bf
 pkgrel=1
 pkgdesc="Library for managing partitions. Common code for KDE Partition Manager and other projects. (GIT version)"
 arch=('i686' 'x86_64')
@@ -18,7 +18,10 @@ optdepends=('e2fsprogs: ext2/3/4 support'
             'dosfstools: FAT32 support')
 conflicts=('kpmcore')
 provides=('kpmcore')
-makedepends=('extra-cmake-modules' 'git' 'python')
+makedepends=('extra-cmake-modules'
+             'git'
+             'python'
+             )
 source=('git://anongit.kde.org/kpmcore.git')
 sha1sums=('SKIP')
 
@@ -37,7 +40,7 @@ build() {
   cmake ../kpmcore \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
