@@ -14,7 +14,6 @@ makedepends=('intltool')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 replaces=('xfce-utils')
-install=$_pkgname.install
 source=(http://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
 sha256sums=('49bfe38623b5a6e65b8a654d353f439e6dcf981aaf831fe2e31d59dacd95c618')
 
