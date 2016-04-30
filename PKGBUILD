@@ -5,7 +5,7 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=('julia-git' 'julia-git-docs')
-pkgver=0.5.0.dev.r28171.g9a3fb2d
+pkgver=0.5.0.dev.r30802.g7315f52
 pkgrel=1
 pkgdesc='High-level, high-performance, dynamic programming language'
 arch=('i686' 'x86_64')
@@ -79,6 +79,9 @@ package_julia-git() {
 
   # Install license
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgbase/LICENSE.md"
+
+  # Remove files that don't belong into the package
+  find ${pkgdir} -name ".gitignore" -delete
 }
 
 package_julia-git-docs() {
@@ -104,6 +107,9 @@ package_julia-git-docs() {
   #install -D -m644 man/julialanguage.1 $pkgdir/usr/share/man/man1/julialanguage.1
   #install -D -m644 texinfo/JuliaLanguage.info $pkgdir/usr/share/info/julialanguage.info
   #install -D -m644 latex/JuliaLanguage.pdf $pkgdir/usr/share/julia/doc/julialanguage.pdf
+
+  # Remove files that don't belong into the package
+  find ${pkgdir} -name ".gitignore" -delete
 }
 
 # vim:set ts=2 sw=2 et:
