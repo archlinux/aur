@@ -1,0 +1,15 @@
+pkgbase = ananicy-git
+	pkgdesc = Ananicy - is Another auto nice daemon, with community rules support
+	pkgver = 0.0000001
+	pkgrel = 1
+	url = https://github.com/Nefelim4ag/Ananicy.git
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = systemd
+	depends = bash
+	source = ananicy-git::git://github.com/Nefelim4ag/Ananicy.git#branch=master
+	md5sums = SKIP
+
+pkgname = ananicy-git
+
