@@ -1,10 +1,11 @@
 # Upstream Maintainer (i3-wm): Thorsten Töpper <atsutane-tu@freethoughts.de>
 # Patch Contributor: Marius Muja <mariusm@cs.ubc.ca>
+# Patch Contributor: mickael9 <mickael9@gmail.com>
 # Package Maintainer: cornholio <vigo.the.unholy.carpathian@gmail.com>
 
 pkgname=i3-wm-iconpatch
 _pkgsourcename=i3
-pkgver=4.11
+pkgver=4.12
 pkgrel=1
 pkgdesc='An improved dynamic tiling window manager (with titlebar icon patch)'
 arch=('i686' 'x86_64')
@@ -23,9 +24,9 @@ options=('docs' '!strip')
 source=("http://i3wm.org/downloads/${_pkgsourcename}-${pkgver}.tar.bz2"
         "http://i3wm.org/downloads/${_pkgsourcename}-${pkgver}.tar.bz2.asc"
         "iconsupport.patch")
-sha1sums=('85d04492214bd26c2804dfa83c979fda54b51c08'
+sha1sums=('264e682c7404ee8d5da76e3d652c546db1662a2b'
           'SKIP'
-          '54d9b36aeb5ee725f4a6a14f90a169f01352f552')
+          'e279bed82dc0a5cbd9f1f17370f47decba5c6970')
 
 build() {
   cd "$srcdir/$_pkgsourcename-$pkgver"

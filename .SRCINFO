@@ -1,6 +1,6 @@
 pkgbase = i3-wm-iconpatch
 	pkgdesc = An improved dynamic tiling window manager (with titlebar icon patch)
-	pkgver = 4.11
+	pkgver = 4.12
 	pkgrel = 1
 	url = http://i3wm.org/
 	arch = i686
@@ -25,12 +25,12 @@ pkgbase = i3-wm-iconpatch
 	conflicts = i3-wm
 	options = docs
 	options = !strip
-	source = http://i3wm.org/downloads/i3-4.11.tar.bz2
-	source = http://i3wm.org/downloads/i3-4.11.tar.bz2.asc
+	source = http://i3wm.org/downloads/i3-4.12.tar.bz2
+	source = http://i3wm.org/downloads/i3-4.12.tar.bz2.asc
 	source = iconsupport.patch
-	sha1sums = 85d04492214bd26c2804dfa83c979fda54b51c08
+	sha1sums = 264e682c7404ee8d5da76e3d652c546db1662a2b
 	sha1sums = SKIP
-	sha1sums = 54d9b36aeb5ee725f4a6a14f90a169f01352f552
+	sha1sums = e279bed82dc0a5cbd9f1f17370f47decba5c6970
 
 pkgname = i3-wm-iconpatch
 
