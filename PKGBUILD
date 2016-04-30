@@ -16,7 +16,6 @@ depends=('alsa-lib' 'desktop-file-utils' 'gconf' 'gtk2' 'libgnome-keyring' 'libn
 optdepends=('gvfs: file deletion support')
 makedepends=('git' 'npm')
 conflicts=('atom-editor-bin' 'atom-editor-git')
-install=atom.install
 source=("https://github.com/atom/atom/archive/v${pkgver}.tar.gz"
         'package.patch')
 sha256sums=('5074b59ddaca5525eb48098dee6fe63013799cbc77749add314b9e1bc894b8f4'
