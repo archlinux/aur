@@ -3,25 +3,22 @@
 # Contributor: scj <scj(at)archlinux(dot)us>
 
 pkgname=incron
-pkgver=0.5.10
-pkgrel=8
+pkgver=0.5.12
+pkgrel=1
 pkgdesc="Like the regular cron but is driven by filesystem events instead of time periods"
 arch=('i686' 'x86_64')
-url="http://incron.aiken.cz/"
+url="https://github.com/ar-/incron"
 license=('GPL')
 depends=('gcc-libs' 'bash')
 install=incron.install
 options=('emptydirs')
-source=("http://inotify.aiken.cz/download/incron/$pkgname-$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ar-/incron/archive/$pkgver.tar.gz"
 	'incrond.service')
-md5sums=('67f8b671db8169edccc8ef11c7d2c8be'
+md5sums=('f7456b73875f44f36eaa818e3f105f76'
          '4be206ba6ecacd9d2006cdc72b4604db')
 
 prepare() {
   cd "${srcdir}"/$pkgname-$pkgver
-  sed -i '1,1i#include <unistd.h>' inotify-cxx.cpp icd-main.cpp
-  sed -i '1,1i#include <stdio.h>' icd-main.cpp inotify-cxx.cpp usertable.cpp appargs.cpp
-  sed -i 's|strchr(s,|(char*)strchr(s,|' incroncfg.cpp
   sed -i 's|$(DESTDIR)$(PREFIX)/sbin/|$(DESTDIR)$(PREFIX)/bin/|g' Makefile
 }
 
@@ -38,6 +35,7 @@ package() {
   make PREFIX="${pkgdir}"/usr \
     MANPATH="${pkgdir}"/usr/share/man \
     USERDATADIR="${pkgdir}"/var/spool/incron \
+    INITDIR="${pkgdir}"/etc \
     CFGDIR="${pkgdir}"/etc \
     SYSDATADIR="${pkgdir}"/etc/incron.d install
 
