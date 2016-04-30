@@ -19,7 +19,6 @@ optdepends=('gnome-keyring: for keyring support when GNOME compatibility is enab
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 replaces=('xfce-utils')
-install=$_pkgname.install
 source=(http://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
 sha256sums=('2ce40531bfe83e3e58795b07e0baf8e7622fd76f3f3db18dc1557b333ec8dece')
 
