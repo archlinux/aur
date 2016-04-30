@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-terminal-git
-pkgver=20150805.3bef587
+pkgver=20160328.8c4701a
 pkgrel=1
 pkgdesc="The Hawaii Terminal Emulator"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
