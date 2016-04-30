@@ -1,46 +1,30 @@
 # Original Maintainer: Antoine Lubineau <antoine@lubignon.info>
 # Current Maintainer: Leopold Bloom <blinxwang@gmail.com>
 pkgname=beignet
-pkgver=1.1.1
-pkgrel=6
+pkgver=1.1.2
+pkgrel=1
 pkgdesc='A GPGPU System for Intel Ivybridge GPUs'
 arch=('x86_64')
 url='http://cgit.freedesktop.org/beignet/'
 license=('LGPL2.1')
-depends=('glu' 'libsm' 'libxext' 'mesa' 'ncurses' 'ocl-icd' 'llvm')
+depends=('glu' 'libsm' 'libxext' 'mesa' 'ncurses' 'ocl-icd' 'opencl-headers' 'llvm')
 makedepends=('clang' 'cmake' 'python2')
-provides=('opencl-intel' 'opencl-headers' 'opencl-headers12')
-conflicts=('opencl-intel' 'opencl-headers' 'opencl-headers12')
-replaces=('opencl-intel' 'opencl-headers' 'opencl-headers12')
+provides=('opencl-intel')
+conflicts=('opencl-intel')
 source=("https://01.org/sites/default/files/beignet-$pkgver-source.tar.gz"
-	"llvm-3.7-patch-1.patch"
-	"llvm-3.7-patch-2.patch"
-	"llvm-3.7-patch-3.patch"
-	"llvm-3.7-patch-4.patch"
-	"llvm-3.7-patch-5.patch"
 	"isnan.patch")
-sha256sums=('9bf4c69eb4fbd3c7cc9ef75c1952bca6f05259ffbe753a27e08ed98bb32e1119'
-	    'SKIP'
-	    'SKIP'
-	    'SKIP'
-	    'SKIP'
-	    'SKIP'
+sha256sums=('6a8d875afbb5e3c4fc57da1ea80f79abadd9136bfd87ab1f83c02784659f1d96'
 	    'SKIP')
-
-build() {
-	cp llvm-3.7-patch-1.patch "$srcdir/Beignet-$pkgver-Source"
-	cp llvm-3.7-patch-2.patch "$srcdir/Beignet-$pkgver-Source"
-	cp llvm-3.7-patch-3.patch "$srcdir/Beignet-$pkgver-Source"
-	cp llvm-3.7-patch-4.patch "$srcdir/Beignet-$pkgver-Source"
-	cp llvm-3.7-patch-5.patch "$srcdir/Beignet-$pkgver-Source"
+prepare() {
 	cp isnan.patch "$srcdir/Beignet-$pkgver-Source"
 	cd "$srcdir/Beignet-$pkgver-Source"
-	patch -Np1 -i llvm-3.7-patch-1.patch
-	patch -Np1 -i llvm-3.7-patch-2.patch
-	patch -Np1 -i llvm-3.7-patch-3.patch
-	patch -Np1 -i llvm-3.7-patch-4.patch
-	patch -Np1 -i llvm-3.7-patch-5.patch
 	patch -Np1 -i isnan.patch
+	cd "include/CL"
+	rm {opencl.h,cl_platform.h,cl_gl_ext.h,cl.h,cl.hpp,cl_egl.h,cl_ext.h,cl_gl.h}
+	touch dummy.hpp
+}
+
+build() {
 	mkdir -p "$srcdir/Beignet-$pkgver-Source/build"
 	cd "$srcdir/Beignet-$pkgver-Source/build"
 	cmake .. \
