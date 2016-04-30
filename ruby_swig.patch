@@ -1,0 +1,39 @@
+--- libprelude-3.0.0/bindings/ruby/Prelude.cxx	2016-04-22 23:26:58.270000362 +0200
++++ libprelude-3.0.0/bindings/ruby/Prelude.cxx	2016-04-28 11:37:20.826666666 +0200
+@@ -867,7 +867,17 @@
+ #define  SWIG_NullReferenceError   -13
+ 
+ 
+-
++#ifdef __cplusplus
++// Work around C++ incompatibility in Ruby 2.3.0 headers:
++// https://bugs.ruby-lang.org/issues/11962
++# include <ruby/config.h>
++# ifdef HAVE_BUILTIN___BUILTIN_CHOOSE_EXPR_CONSTANT_P
++#  undef HAVE_BUILTIN___BUILTIN_CHOOSE_EXPR_CONSTANT_P
++# endif
++# ifdef HAVE_BUILTIN___BUILTIN_TYPES_COMPATIBLE_P
++#  undef HAVE_BUILTIN___BUILTIN_TYPES_COMPATIBLE_P
++# endif
++#endif
+ #include <ruby.h>
+ 
+ /* Ruby 1.9.1 has a "memoisation optimisation" when compiling with GCC which
+@@ -2596,6 +2606,17 @@
+ 
+ extern "C" {
+ 
++#ifdef __cplusplus
++// Work around C++ incompatibility in Ruby 2.3.0 headers:
++// https://bugs.ruby-lang.org/issues/11962
++# include <ruby/config.h>
++# ifdef HAVE_BUILTIN___BUILTIN_CHOOSE_EXPR_CONSTANT_P
++#  undef HAVE_BUILTIN___BUILTIN_CHOOSE_EXPR_CONSTANT_P
++# endif
++# ifdef HAVE_BUILTIN___BUILTIN_TYPES_COMPATIBLE_P
++#  undef HAVE_BUILTIN___BUILTIN_TYPES_COMPATIBLE_P
++# endif
++#endif
+ #include <ruby.h>
+ /*
+  * cannot put libmissing into the include path, as it will trigger
