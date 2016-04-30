@@ -1,5 +1,7 @@
---- NetworkManager-1.0.0.orig/src/devices/wifi/nm-device-wifi.c	2015-02-09 09:44:12.098688713 +0100
-+++ NetworkManager-1.0.0/src/devices/wifi/nm-device-wifi.c	2015-02-09 09:44:45.430954930 +0100
+--- NetworkManager-1.2.0.orig/src/devices/wifi/nm-device-wifi.c	
+2015-02-09 09:44:12.098688713 +0100
++++ NetworkManager-1.2.0/src/devices/wifi/nm-device-wifi.c	
+2015-02-09 09:44:45.430954930 +0100
 @@ -1362,15 +1362,13 @@
  	case NM_DEVICE_STATE_IP_CHECK:
  	case NM_DEVICE_STATE_SECONDARIES:
