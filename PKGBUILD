@@ -16,7 +16,6 @@ optdepends=('unzip: zipped skins support'
 provides=("${_pkgname}=${pkgver}")
 conflicts=('audacious')
 replaces=('audacious-player')
-install=$_pkgname.install
 source=(http://distfiles.audacious-media-player.org/$_pkgname-$pkgver.tar.bz2)
 sha256sums=('04f9eaba4522ce9674e6ed8afc7bd6b5fa9a1e240f8090589fc1874f6659f340')
 
