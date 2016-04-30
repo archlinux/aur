@@ -25,5 +25,5 @@ build () {
 
 package () {
 	cd "$pkgname"
-	make install prefix="${pkgdir}"
+	make install prefix="${pkgdir}/usr"
 }
