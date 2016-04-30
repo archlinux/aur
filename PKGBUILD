@@ -3,15 +3,15 @@
 
 pkgname=ostorybook
 _pkgname=oStorybook
-pkgver=4.10.1
+pkgver=4.10.03
 pkgrel=1
 pkgdesc="Open Source Novel Writing Software for Novelists, Authors and Creative Writers"
 arch=(any)
-url="http://sourceforge.net/projects/ostorybook/"
+url="http://ostorybook.tuxfamily.org"
 license=(GPL)
 depends=(java-runtime-headless=8)
-source=("http://master.dl.sourceforge.net/project/${pkgname}/${_pkgname}-${pkgver}-linux.bin")
-sha256sums=('6991e226905c6fda5caccc6b7956491d8fa61b3cfff631ca10744c3f0d5a42d3')
+source=("http://download.tuxfamily.org/ostorybook/${pkgver}/oStorybook-${pkgver}-linux.bin")
+sha256sums=('4e9cd6526a74b8927c6a6545995b01a79ff8b892f68d54b76ad0a6ef10946b22')
 options=('!strip')
 
 package()
