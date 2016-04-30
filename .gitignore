@@ -8,5 +8,4 @@
 *.tar.xz
 *.tar.xz.sig
 *.src.tar.gz
-*.zip
 *.tar.gz
