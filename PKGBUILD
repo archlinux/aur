@@ -3,7 +3,7 @@
 
 _pkgname=music-file-organizer
 pkgname=music-file-organizer-git
-pkgver=latest
+pkgver=1.0.r5.gb5e828d
 pkgrel=1
 pkgdesc='Audio file organizer that reads tags and renames files (development version)'
 url='http://git.zx2c4.com/music-file-organizer'
