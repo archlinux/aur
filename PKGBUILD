@@ -6,10 +6,10 @@ pkgrel=1
 pkgdesc="Hawaii Shell"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://hawaiios.org'
-license=('GPL', 'LGPL')
+license=('GPL' 'LGPL')
 depends=('qt5-tools' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'qt5-svg'
          'greenisland-git' 'pam' 'libpulse' 'libqtxdg' 'glib2' 'networkmanager-qt'
-         'hawaii-icon-theme-git' 'hawaii-wallpapers-git' 'libhawaii-git' 'solid'
+         'hawaii-icon-theme-git' 'hawaii-wallpapers-git' 'libhawaii-git' 'fluid-git' 'solid'
          'ttf-dejavu' 'ttf-droid')
 optdepends=('weston: nested mode support'
             'pulseaudio: audio support'
