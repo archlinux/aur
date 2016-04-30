@@ -3,13 +3,12 @@
 
 pkgname=kchmviewer
 pkgver=7.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A .chm files (MS HTML help file format) viewer"
 arch=('i686' 'x86_64')
 url="http://kchmviewer.sourceforge.net/"
 license=('GPL')
 depends=('desktop-file-utils' 'chmlib' 'xdg-utils' 'libzip' 'qt5-webkit')
-install=$pkgname.install
 changelog=$pkgname.changelog
 source=(http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz)
 sha256sums=('c81f8fb7ac1fe8a5284e03b0d91def61cbd5638f2276c5de8046251755352e53')
