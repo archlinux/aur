@@ -1,16 +1,17 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-workspace-git
-pkgver=20151201.3b3942f
+pkgver=20160428.cd41612
 pkgrel=1
 pkgdesc="Hawaii workspace"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/hawaii-desktop/hawaii-workspace"
-license=('GPL2')
-depends=('qt5-base' 'qt5-quickcontrols' 'polkit-qt5')
+license=('GPL')
+depends=('libhawaii-git' 'fluid-git' 'polkit-qt5' 'qt5-gstreamer')
 makedepends=('git' 'gdb' 'extra-cmake-modules' 'greenisland-git')
 groups=('hawaii-git')
 options=('debug')
+install=$pkgname.install
 
 _gitroot="git://github.com/hawaii-desktop/hawaii-workspace.git"
 _gitbranch=master
