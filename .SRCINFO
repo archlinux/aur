@@ -1,0 +1,21 @@
+pkgbase = rtorrent-cdl
+	pkgdesc = Ncurses BitTorrent client based on libTorrent with compact layout for download list
+	pkgver = 0.9.6
+	pkgrel = 1
+	url = http://rakshasa.github.io/rtorrent/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = libtorrent=0.13.6
+	depends = curl
+	depends = xmlrpc-c
+	depends = libsigc++
+	provides = rtorrent
+	conflicts = rtorrent
+	source = rtorrent-0.9.6.tar.gz::https://github.com/rakshasa/rtorrent/archive/0.9.6.tar.gz
+	source = rtorrent-cdl.diff
+	sha1sums = 27505081254618077c291eb1ee36bfb41f974834
+	sha1sums = 58bead603a95f99c791ebe99531142d3332af757
+
+pkgname = rtorrent-cdl
+
