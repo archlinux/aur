@@ -9,45 +9,47 @@
 # Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
 pkgname=networkmanager-consolekit
-pkgver=1.0.12
+pkgver=1.2.0
 pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL2.1')
 url="http://www.gnome.org/projects/NetworkManager/"
-depends=("libnm-glib>=${pkgver}" 'iproute2' 'libnl' 'polkit-consolekit' 'consolekit' 
-         'wpa_supplicant' 'dhclient' 'libsoup' 'libmm-glib' 'libnewt' 'libndp' 
-         'libteam' 'libgudev')
-makedepends=('intltool' 'iptables' 'gobject-introspection' 'gtk-doc' 
-             "ppp=$_pppver" 'modemmanager' 'rp-pppoe' 'vala' 'perl-yaml' 
+depends=("libnm-glib>=${pkgver}" 'iproute2' 'polkit-consolekit' 'consolekit'
+         'wpa_supplicant' 'libsoup' 'libmm-glib' 'libnewt' 'libndp' 'libteam')
+makedepends=('intltool' 'dhclient' 'iptables' 'gobject-introspection' 'gtk-doc'
+             "ppp=$_pppver" 'modemmanager' 'rp-pppoe' 'vala' 'perl-yaml'
              'python-gobject')
 optdepends=('modemmanager: for modem management service'
+            'dhclient: External DHCP client'
             'dhcpcd: alternative DHCP client; does not support DHCPv6'
-            'iptables: connection sharing'
             'dnsmasq: connection sharing'
             'bluez: bluetooth support'
             'openresolv: resolvconf support'
-            'ppp: dialup connection support')
+            'ppp: dialup connection support'
+            'rp-pppoe: ADSL support')
 provides=("networkmanager=$pkgver")
 replaces=('networkmanager')
 conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 install=networkmanager.install
 source=(https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
+        hidepid.patch
         NetworkManager.conf 
-        disable_set_hostname.patch 
         networkmanager.rc
         )
-sha256sums=('3a470f8c60109b1acb5784ddc2423501706b5fe34c793a6faee87e591eb04a9e'
-            '2c6a647b5aec9f3c356d5d95251976a21297c6e64bd8d2a59339f8450a86cb3b'
-            '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460'
+sha256sums=('e947cf30fa3d19dce88e6f6af51f06dc282b7db7996f946aaa37b03526ef2a80'
+            '1de5b511b6b4a933739b0ef48ede1830fa3d6dea2277c1302b12b08fa83a73f1'
+            '452e4f77c1de92b1e08f6f58674a6c52a2b2d65b7deb0ba436e9afa91ee15103'
             'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc')
 
 prepare() {
   cd NetworkManager-$pkgver
 
-  patch -Np1 -i ../disable_set_hostname.patch
+  # https://bugs.archlinux.org/task/48984
+  patch -Np1 -i ../hidepid.patch
+
   2to3 -w libnm src tools
   NOCONFIGURE=1 ./autogen.sh
 }
@@ -80,6 +82,8 @@ build() {
     --enable-doc \
     --enable-gtk-doc
 
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
+
   make
 }
 
@@ -99,4 +103,6 @@ package() {
   install -D -m755 "${srcdir}/networkmanager.rc"   "${pkgdir}/etc/rc.d/networkmanager"
 
   rm -r "${pkgdir}/var/run"
+  rmdir -p --ignore-fail-on-non-empty \
+    "$pkgdir"/usr/{share/{vala/vapi,gir-1.0},lib/girepository-1.0}
 }
