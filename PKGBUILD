@@ -7,7 +7,7 @@
 
 _pkgname=autorandr
 pkgname=autorandr-git
-pkgver=r198.ac540ff
+pkgver=r210.582290b
 pkgrel=1
 pkgdesc='Auto-detect the connect display hardware and load the appropiate X11 setup using xrandr. Formerly autodisper. No disper support.'
 arch=('any')
