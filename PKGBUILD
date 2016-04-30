@@ -4,8 +4,8 @@
 pkgname=sylpheed-lite
 _pkgname=sylpheed
 pkgver=3.5.0
-pkgrel=1
-pkgdesc="Lightweight in lightweight and user-friendly e-mail client "
+pkgrel=2
+pkgdesc="Lightweight in lightweight and user-friendly e-mail client"
 arch=('i686' 'x86_64')
 url="http://sylpheed.sraoss.jp/en/"
 license=('GPL')
@@ -13,7 +13,6 @@ depends=('gpgme' 'desktop-file-utils')
 makedepends=('openssl')
 options=('!libtool')
 conflicts=('sylpheed')
-install="$pkgname.install"
 source=("http://sylpheed.sraoss.jp/$_pkgname/v${pkgver%.*}/$_pkgname-$pkgver.tar.gz"
     "http://sylpheed.sraoss.jp/$_pkgname/v${pkgver%.*}/$_pkgname-$pkgver.tar.gz.asc")
 validpgpkeys=('8CF3A5AC417ADE72B0AA4A835024337CC00C2E26') # Hiroyuki Yamamoto
