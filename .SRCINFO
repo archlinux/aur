@@ -1,0 +1,26 @@
+pkgbase = prelude-manager
+	pkgdesc = Prelude-Manager
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://www.prelude-siem.org
+	install = prelude-manager.install
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = tcp_wrappers
+	makedepends = libmaxminddb-git
+	makedepends = libprelude
+	makedepends = libpreludedb
+	depends = gnutls
+	depends = gtk-doc
+	source = https://www.prelude-siem.org/pkg/src/3.0.0/prelude-manager-3.0.0.tar.gz
+	source = prelude-manager.run
+	source = prelude-manager-conf.patch
+	source = prelude-manager.service
+	md5sums = cf412ea1d5768fd76f0922036445d677
+	md5sums = 322d772d96107414152b926c5650b6b6
+	md5sums = c51ab90ed0c242ae3ce752db97ac24cc
+	md5sums = 8217d594e84867d077a007fe42cfef15
+
+pkgname = prelude-manager
+

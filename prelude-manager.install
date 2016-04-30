@@ -1,0 +1,9 @@
+post_install() {
+  systemd-tmpfiles --create prelude-manager.conf
+  systemctl daemon-reload
+}
+
+post_upgrade() {
+  systemd-tmpfiles --create prelude-manager.conf
+  systemctl daemon-reload
+}
