@@ -9,7 +9,7 @@ pkgdesc="Python image viewer with vim-like keybindings. Git-Version"
 arch=('any')
 url="https://github.com/Narrat/Pim"
 license=('MIT')
-depends=('python-gobject')
+depends=('desktop-file-utils' 'python-gobject')
 makedepends=('git')
 conflicts=('pim')
 provides=('pim=0.8.0')
