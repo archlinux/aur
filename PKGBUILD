@@ -8,8 +8,8 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt             # Build kernel with a different name
 _srcname=linux-4.4
-_pkgver=4.4.6
-_rtpatchver=rt13
+_pkgver=4.4.7
+_rtpatchver=rt16
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -31,12 +31,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         '0001-sdhci-revert.patch'
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch')
 
-
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            'efea93ff30955d445344a83c36678fa8e64111219eeafea2a41fd4ee11f79d68'
+            '34a0e0bc123fe2224a83e13a4da25f7f816438fd77c58dce19588441f5166f0e'
             'SKIP'
-            '7e3f24585066e915b6da25183458285e44a9262ca407502cceebe5f73c23be45'
+            '2ff8616f1fcbf8070650fe0287523c57f556c76c0e8acabd627f4acf2737b387'
             'SKIP'
             'e3129f704cf59f4ba3ad074504b007e47a591b9b2a3b2a2869b7c381ff880afb'
             'dd9e0be59672bba6e7a9572f6794139a19bf43d8e64785681a14cb2abea88a67'
