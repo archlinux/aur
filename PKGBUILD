@@ -21,14 +21,14 @@ build() {
 }
 
 package_python-recommonmark() {
-  depends=('python-docutils')
+  depends=('python-docutils' 'python-commonmark')
 
   cd "${srcdir}/recommonmark-$pkgver"
   python setup.py install --root="${pkgdir}"
 }
 
 package_python2-recommonmark() {
-  depends=('python2-docutils')
+  depends=('python2-docutils' 'python2-commonmark')
 
   cd "${srcdir}/recommonmark-$pkgver"
   python2 setup.py install --root="${pkgdir}"
