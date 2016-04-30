@@ -10,15 +10,14 @@
 
 pkgname=opera
 pkgver=36.0.2130.65
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast and secure web browser"
 url="http://www.opera.com/"
-install=${pkgname}.install
 options=(!strip !zipman)
 license=('custom:opera')
 backup=("etc/$pkgname/default")
 arch=('i686' 'x86_64')
-depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'libxtst' 'gconf' 'libxss' 'alsa-lib' 'nss' 'ttf-font' 'libnotify')
+depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'libxtst' 'gconf' 'libxss' 'alsa-lib' 'nss' 'ttf-font' 'libnotify' 'hicolor-icon-theme')
 makedepends=('patchelf')
 optdepends=(
     'curl: opera crash reporter and autoupdate checker'
