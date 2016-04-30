@@ -27,4 +27,12 @@
 #	msg_blue "or replace the latter with the former."
 #}
 
+post_install() {
+	return
+}
+
+post_upgrade() {
+	return
+}
+
 # -*- mode: bash;-*-
