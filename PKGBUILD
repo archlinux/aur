@@ -1,7 +1,7 @@
 # Maintainer: buzz <buzz-AT-l4m1-DOT-de>
 pkgname=volctl
 _gitname=volctl
-pkgver=0.3.r0.gc5a4b3f
+pkgver=0.4.r0.g76122e5
 pkgrel=1
 pkgdesc="Per-application volume control for GNU/Linux desktops"
 arch=("any")
