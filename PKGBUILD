@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-system-preferences-git
-pkgver=20150503.4a3ca3e
+pkgver=20160418.2672153
 pkgrel=1
 pkgdesc="Hawaii system preferences"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
