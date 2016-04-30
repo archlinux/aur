@@ -95,4 +95,5 @@ package() {
 	rm -r "${pkgdir}/usr/share"
 	rm -f "${pkgdir}/usr/lib"/libcc1.so*
 	rm -f "${pkgdir}/usr/lib"/libcc1.a
+	rm -f "${pkgdir}/usr/lib/gcc/$_target/$pkgver/include-fixed"
 }
