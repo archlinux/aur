@@ -17,7 +17,6 @@ optdepends=('pygtk: Banshee control, Rhythmbox control Helper'
             'python2-gconf: Open terminal here Helper'
             'python2-libgnome: Zeitgeist journal Helper'
             'zeitgeist: Zeitgeist journal, Zeitgeist menus Helper')
-install=$pkgname.install
 source=(http://launchpad.net/dockmanager/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz)
 
 build() {
