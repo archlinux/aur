@@ -3,13 +3,12 @@
 
 pkgname=opendict
 pkgver=0.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Multiplatform computer dictionary software"
 arch=('any')
 url="http://opendict.sourceforge.net/"
 license=('GPL')
-depends=('wxpython' 'xdg-utils')
-install=${pkgname}.install
+depends=('wxpython' 'xdg-utils' 'desktop-file-utils' 'gtk-update-icon-cache')
 source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz)
 md5sums=('a274896b4ee943de4f3200cfba4bbdde')
 
