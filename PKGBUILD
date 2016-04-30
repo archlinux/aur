@@ -15,7 +15,6 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 #replaces=('libxfcegui4') - later when all is ported
 options=('!libtool')
-install=libxfce4ui.install
 source=(http://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
 
 build() {
