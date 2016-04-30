@@ -2,7 +2,7 @@
 # build for raspberry pi
 
 pkgname=hyperion-rpi-bin
-pkgver=20160325.f64b6eb.v1011
+pkgver=20160430.fc7bc3c.v1011
 pkgrel=1
 pkgdesc="An opensource 'AmbiLight' implementation (build for raspberry pi) (binary)"
 
@@ -23,12 +23,12 @@ backup=(
 )
 
 source=(
-  "https://raw.githubusercontent.com/tvdzwan/hyperion/master/deploy/hyperion_rpi.tar.gz"
+  "https://raw.githubusercontent.com/tvdzwan/hyperion/V1.01.1/deploy/hyperion_rpi.tar.gz"
   "hyperiond.service"
   "LICENSE"
 )
 sha256sums=(
-  '5b13083eebd33635a18665c68bfdf3443c025f89feed49c595c8dabc1a15ee7c'
+  'be992190562031b43337374d6a573f6dff76ff7d466375c1e423b41f34fd6d1d'
   'aab12fb3d901ea4c8694bd713b1a2187beae6a6ed40f3355d12fc7ad50aaf3fe'
   '85f28018f946ca13b6de640c45e011cd9fe56114d474cb990d4d1ff91ae1cd60'
 )
