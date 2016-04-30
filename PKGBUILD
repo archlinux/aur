@@ -12,7 +12,7 @@ depends=('minetest')
 makedepends=('git')
 provides=("$_gitname")
 install=$pkgname.install
-source=("$_gitname::git+git://github.com/tenplus1/mobs.git")
+source=("$_gitname::git+git://github.com/tenplus1/mobs_redo.git")
 md5sums=('SKIP')
 
 pkgver() {
