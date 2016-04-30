@@ -1,6 +1,6 @@
 # Maintainer: Papajoker <papajoke [at] archlinux [dot] info>
 pkgname=pachook
-pkgver=0.1.3.r0.g00c985b
+pkgver=0.1.3.r1.g5d6fe4f
 pkgrel=1
 pkgdesc="simple administrator pacman hooks"
 arch=('any')
