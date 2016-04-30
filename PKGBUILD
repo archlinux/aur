@@ -1,6 +1,6 @@
 # Maintainer: Papajoker <papajoke [at] archlinux [dot] info>
 pkgname=pachook
-pkgver=0.1.2.r0.ga833abf
+pkgver=0.1.3.r0.g00c985b
 pkgrel=1
 pkgdesc="simple administrator pacman hooks"
 arch=('any')
@@ -19,7 +19,7 @@ pkgver() {
 package() {
   cd "$srcdir/$pkgname"
   install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
-  cp -r usr ${pkgdir}/
+  #cp -r usr ${pkgdir}/
   cp -r etc ${pkgdir}/
 }
 
