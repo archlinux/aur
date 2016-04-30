@@ -1,8 +1,8 @@
 # Maintainer: Patrizio Bekerle <patrizio at bekerle dot com>
 
 pkgname=qownnotes
-pkgver=16.04.17
-tag="b18b9e5c7a8480655676449b2b6faca10cc681f6"
+pkgver=16.04.18
+tag="7f6be30442a36ac5c4173bc145f286f99712c3b7"
 pkgrel=1
 pkgdesc="Open source notepad and todo list manager with markdown support and ownCloud integration"
 arch=('i686' 'x86_64')
@@ -63,4 +63,5 @@ package() {
     install -D -m 0644 languages/QOwnNotes_nl.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_nl.qm
     install -D -m 0644 languages/QOwnNotes_hu.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_hu.qm
     install -D -m 0644 languages/QOwnNotes_ja.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_ja.qm
+    install -D -m 0644 languages/QOwnNotes_it.qm $pkgdir/usr/share/QOwnNotes/languages/QOwnNotes_it.qm
 }
