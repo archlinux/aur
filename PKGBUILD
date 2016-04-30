@@ -58,9 +58,8 @@ build() {
 
 package_julia-git() {
   backup=('etc/ld.so.conf.d/julia.conf' 'etc/julia/juliarc.jl')
-  depends=('arpack' 'fftw' 'gmp' 'libgit2' 'libunwind' 'llvm' 'mpfr' 'openlibm' 'openspecfun' 'pcre2' 'suitesparse' 'patchelf' 'hicolor-icon-theme' 'xdg-utils') # 'utf8proc' (AUR) 'intel-mkl' (AUR)
+  depends=('arpack' 'fftw' 'gmp' 'libgit2' 'libunwind' 'llvm' 'mpfr' 'openlibm' 'openspecfun' 'pcre2' 'suitesparse' 'patchelf' 'hicolor-icon-theme' 'xdg-utils' 'desktop-file-utils' 'gtk-update-icon-cache') # 'utf8proc' (AUR) 'intel-mkl' (AUR)
   optdepends=('gnuplot: If using the Gaston Package from julia')
-  install=julia.install
   provides=('julia')
   conflicts=('julia')
   backup=('etc/julia/juliarc.jl')
