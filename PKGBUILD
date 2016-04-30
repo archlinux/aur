@@ -55,6 +55,8 @@ prepare() {
 	sed -i 's/install_to_$(INSTALL_DEST) //' libiberty/Makefile.in
 	# hack! - some configure tests for header files using "$CPP $CPPFLAGS"
 	sed -i "/ac_cpp=/ s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+	# make xmmintrin.h includable from C++
+	patch -Np0 < ../gcc-make-xmmintrin-header-cplusplus-compatible.patch
 	# actually build the lto plugin
 	patch -Np0 < ../lto.patch
 
