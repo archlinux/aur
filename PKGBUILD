@@ -1,6 +1,6 @@
 pkgname=ghdl
 pkgver=0.33
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc='VHDL simulator'
 url='http://sourceforge.net/projects/ghdl-updates/'
@@ -16,8 +16,8 @@ _cloogver=0.18.1
 
 source=(
   "git://github.com/tgingold/ghdl#tag=v${pkgver}"
-  "ftp://ftp.gnu.org/gnu/gcc/gcc-${_gccver}/gcc-${_gccver}.tar.bz2"
-  "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
+  "ftp://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.bz2"
+  "ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
   "http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz"
 )
 md5sums=(
