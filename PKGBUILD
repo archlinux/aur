@@ -2,7 +2,7 @@
 # Contributor: mickele <mimocciola@yahoo.com>
 pkgname=gmsh
 pkgver=2.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An automatic 3D finite element mesh generator with pre and post-processing facilities."
 arch=('i686' 'x86_64')
 url="http://www.geuz.org/gmsh/"
@@ -13,10 +13,11 @@ optdepends=('gmsh-docs: docs for gmsh'
             'python2: for onelab.py'
             'python: for onelab.py')
 options=(!emptydirs)
-source=("${url}src/${pkgname}-${pkgver}-source.tgz" gmsh.desktop gmsh.completion)
+source=("${url}src/${pkgname}-${pkgver}-source.tgz" gmsh.desktop gmsh.completion string-refpointer.diff)
 md5sums=('03cbeb28c1e2b4fd5c2065be25df8b8f'
          'e63dc24ba025741fc1a82633b475e4a8'
-         '9ee4b5bf27956de5aa412bbc939660d3')
+         '9ee4b5bf27956de5aa412bbc939660d3'
+         'ef9faa9020a790eead71201a12685d84')
 
 build() {
    cd "${srcdir}/${pkgname}-${pkgver}-source"
@@ -26,6 +27,9 @@ build() {
        -i Fltk/graphicWindow.cpp
    sed -e "s|http://geuz.org/gmsh/doc/|file:///usr/share/licenses/gmsh/|" \
        -i Fltk/helpWindow.cpp
+
+   # Fix MED file saving, provided by Michele Mocciola 
+   patch -Np1 -i "${srcdir}/string-refpointer.diff"
 
    mkdir -p build
 
