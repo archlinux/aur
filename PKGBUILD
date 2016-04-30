@@ -14,7 +14,6 @@ depends=('exo' 'garcon-devel' 'libxfce4ui' 'libwnck' 'hicolor-icon-theme'
 makedepends=('intltool' 'gtk-doc')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
-install=$_pkgname.install
 source=(http://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
 
 sha256sums=('b19263cb821fee29285728541554ae028df27c859bed3a9a88346017f8ea05ff')
