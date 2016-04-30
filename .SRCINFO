@@ -1,5 +1,5 @@
 pkgbase = prewikka
-	pkgdesc = Prewikka
+	pkgdesc = Graphical front-end analysis console for the Prelude Framework
 	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://www.prelude-siem.org

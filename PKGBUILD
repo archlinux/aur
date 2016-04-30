@@ -3,7 +3,7 @@
 pkgname=prewikka
 pkgver=3.0.0
 pkgrel=1
-pkgdesc="Prewikka"
+pkgdesc="Graphical front-end analysis console for the Prelude Framework"
 arch=('i686' 'x86_64')
 url="http://www.prelude-siem.org"
 license=('GPLv2')
