@@ -4,7 +4,7 @@
 # https://wiki.archlinux.org/index.php/Creating_packages
 
 pkgname=pearl-git
-pkgver=r71.2915577
+pkgver=r75.6458dc7
 pkgrel=1
 pkgdesc="Package manager for dotfiles, plugins, programs and any form of code accessible via git. Allow to easily share and sync packages across systems and have them ready to work out of the box."
 arch=('any')
@@ -49,11 +49,8 @@ package() {
     mkdir -p "${pkgdir}/opt/"
     cp -R "${srcdir}/${pkgname%-git}" "${pkgdir}/opt/${pkgname%-git}"
 
-    mkdir -p "${pkgdir}/etc/profile.d/"
-    echo "export PATH=\$PATH:/opt/${pkgname%-git}/bin" > "${pkgdir}/etc/profile.d/${pkgname%-git}"
-    chmod +x "${pkgdir}/etc/profile.d/${pkgname%-git}"
-    echo "set -x PATH \$PATH /opt/${pkgname%-git}/bin" > "${pkgdir}/etc/profile.d/${pkgname%-git}.fish"
-    chmod +x "${pkgdir}/etc/profile.d/${pkgname%-git}.fish"
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s ../../opt/${pkgname%-git}/bin/${pkgname%-git} ${pkgdir}/usr/bin/${pkgname%-git}
 }
 
 # vim:set ts=2 sw=2 et:
