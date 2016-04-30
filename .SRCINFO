@@ -1,0 +1,35 @@
+pkgbase = prelude-correlator
+	pkgdesc = Real time correlator of events received by Prelude Manager
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://www.prelude-siem.org
+	install = prelude-correlator.install
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	makedepends = python2-setuptools
+	makedepends = libprelude
+	depends = python2
+	optdepends = python-netaddr
+	backup = etc/prelude-correlator/prelude-correlator.conf
+	backup = etc/prelude-correlator/rules/python/BruteForcePlugin.py
+	backup = etc/prelude-correlator/rules/python/BusinessHourPlugin.py
+	backup = etc/prelude-correlator/rules/python/CIArmyPlugin.py
+	backup = etc/prelude-correlator/rules/python/DshieldPlugin.py
+	backup = etc/prelude-correlator/rules/python/EventScanPlugin.py
+	backup = etc/prelude-correlator/rules/python/EventStormPlugin.py
+	backup = etc/prelude-correlator/rules/python/EventSweepPlugin.py
+	backup = etc/prelude-correlator/rules/python/FirewallPlugin.py
+	backup = etc/prelude-correlator/rules/python/__init__.py
+	backup = etc/prelude-correlator/rules/python/OpenSSHAuthPlugin.py
+	backup = etc/prelude-correlator/rules/python/SpamhausDropPlugin.py
+	backup = etc/prelude-correlator/rules/python/WormPlugin.py
+	source = https://www.prelude-siem.org/pkg/src/3.0.0/prelude-correlator-3.0.1.tar.gz
+	source = prelude-correlator.run
+	source = prelude-correlator.service
+	md5sums = 640e83c63c16ddb0d30b9640387e626b
+	md5sums = 14ebf22ed2f185b2966d3424c917f835
+	md5sums = d1cc9943e848a63d109620af0842efba
+
+pkgname = prelude-correlator
+
