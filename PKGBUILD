@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=libhawaii-git
-pkgver=20150924.402cdab
+pkgver=20160418.2588bd4
 pkgrel=1
 pkgdesc="Hawaii libraries"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
