@@ -2,7 +2,7 @@
 # This script is licensed under the MIT license.
 
 pkgname=gpmdp
-pkgver=3.2.1
+pkgver=3.2.4
 pkgrel=1
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music. Stable release."
 arch=('i686' 'x86_64')
@@ -15,11 +15,11 @@ license=('MIT')
 case $CARCH in
 	'x86_64')
 		_arch='amd64'
-		md5sums=('e83a13cdefcad28597edd341f227fff9')
+		md5sums=('b38ee2ce8bd4a213c3d9de38860ef672')
 		;;
 	'i686')
 		_arch='i386'
-		md5sums=('fe4c1df31120f5972b281197cde2bbca')
+		md5sums=('6faf476948590f840b28a5201dc59d9a')
 		;;
 esac
 
