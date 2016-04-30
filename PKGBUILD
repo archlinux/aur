@@ -1,11 +1,11 @@
-# Maintainer: Leonard de Ruijter <alderuijter@gmail.com>
+# Maintainer: Leonard de Ruijter <dev@systeemdenker.nl>
 # Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 # Contributor: Sergei Lebedev <superbobry@gmail.com>
 # Contributor: Justin Davis <jrcd 83 at gmail>
 
 pkgname=ocaml-biniou
 _oname=biniou
-pkgver=1.0.10
+pkgver=1.0.11
 pkgrel=1
 pkgdesc='A binary data serialization format inspired by JSON'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ depends=('glibc')
 makedepends=('ocaml-easy-format' 'ocaml-findlib')
 url='http://mjambon.com/biniou.html'
 source=("https://github.com/mjambon/${_oname}/archive/v${pkgver}.tar.gz")
-sha256sums=('239f046b9edd07256a2001c78c70dd97fc7dfca8c7a999153eee729867c79bad')
+sha256sums=('e92141c8edfdaaf011f198729b4df0589421f982da061375c8e3fc194503f074')
 build() {
   cd $srcdir/$_oname-$pkgver
   make && make doc   
