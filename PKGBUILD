@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=fluid-git
-pkgver=20160317.0154e77
+pkgver=20160328.2fdadf1
 pkgrel=1
 pkgdesc="Components for Qt Quick applications"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ provides=('fluid')
 groups=('hawaii-git')
 options=('debug')
 
-_gitroot="git://github.com/hawaii-desktop/${pkgname}.git"
+_gitroot="git://github.com/hawaii-desktop/fluid.git"
 _gitbranch=master
 _gitname=$pkgname
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
