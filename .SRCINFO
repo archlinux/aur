@@ -1,0 +1,15 @@
+pkgbase = rpatool-git
+	pkgdesc = rpatool is a simple tool allowing you to create, modify and extract Ren'Py Archive (.rpa/.rpi) files. Currently, only writing to RPAv2/RPAv3 archives is supported.
+	pkgver = r6.07549d2
+	pkgrel = 1
+	url = https://github.com/Shizmob/rpatool
+	arch = i686
+	arch = x86_64
+	license = custom:WTFPL
+	makedepends = git
+	depends = python2
+	source = git://github.com/Shizmob/rpatool.git
+	md5sums = SKIP
+
+pkgname = rpatool-git
+
