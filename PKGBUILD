@@ -1,3 +1,4 @@
+# Maintainer: Jelle van der Waa <jelle@vdwaa.nl>
 # Contributor: Jelle van der Waa <jelle@vdwaa.nl>
 
 pkgbase=python-webencodings
@@ -7,7 +8,7 @@ pkgrel=1
 arch=('any')
 url="https://github.com/SimonSapin/python-webencodings"
 license=('BSD')
-makedepends=('python2' 'python' 'unzip')
+makedepends=('python2' 'python' 'python-setuptools' 'python2-setuptools')
 source=(https://pypi.python.org/packages/a4/1b/5add42eff950cf85ecdd3244fc7e7eef8ebb81131289ad69b8b0089f86ab/webencodings-0.4.tar.gz)
 md5sums=('67812574c852836036e6cdc8a951e28f')
 
@@ -16,7 +17,7 @@ pkgdesc="This is a Python implementation of the WHATWG Encoding standard."
 depends=('python')
     cd ${srcdir}/webencodings-${pkgver}
 
-    python3 setup.py install --root=${pkgdir}
+    LANG="en_US.UTF-8" python3 setup.py install --root=${pkgdir}
 }
 
 package_python2-webencodings() {
