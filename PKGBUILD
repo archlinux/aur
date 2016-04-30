@@ -4,7 +4,7 @@
 # Contributor: spider-mario <spidermario@free.fr>
 
 pkgname=ariamaestosa
-pkgver=1.4.11
+pkgver=1.4.12
 pkgrel=1
 pkgdesc='MIDI editor, player, tracker and composer'
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ optdepends=('timidity++: for midi playback'
 makedepends=('scons' 'setconf')
 install="$pkgname.install"
 source=("http://downloads.sourceforge.net/$pkgname/AriaSrc-$pkgver.tar.bz2")
-sha256sums=('7e83a7f8eee21d064d063974a39fa32ed15d823405d10bfb52510ef44dfac93d')
+sha256sums=('5439914962f3c84386992af2227f6841139594ff02d7270d0687ce3470d84b8d')
 
 prepare() {
   cd "AriaSrc-$pkgver"
