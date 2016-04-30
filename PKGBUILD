@@ -192,15 +192,16 @@ _opt_pro5_exe='bbx4'     # default: pro5, this link will be created in /usr/bin 
 set -u
 pkgname='basis-pro5'
 pkgver='15.01'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='BASIS BBx Progression Pro/5 Business BASIC eXtended for BBj'
 url='http://www.basis.com/'
 license=('custom')
-depends=('glibc' 'jdk' 'wget') # The Windows install recommends jdk over jre so we do to. OpenJDK does not work.
+depends=('glibc' 'jdk' 'wget') # The Windows install recommends jdk over jre so we do too. OpenJDK does not work.
 options=('!docs' 'emptydirs' '!strip') # strip is so poorly implemented that it changes the content and date on executables, even when there's nothing to strip! What were they thinking?
 install="${pkgname}-install.sh" # I can find no way to get makepkg to delete this when done
 #_verwatch=("${url}availability" '<td class="revision".*">\([0-9\.]\+\).*' 'f') # Almost works
-_blmjar='BLM1600_03-11-2016_1203.jar'
+#_blmjar='BLM1600_03-11-2016_1203.jar'
+_blmjar='BLM1600_04-11-2016_1107.jar'
 source=("http://public.basis.com/blm/jar/${_blmjar}")
 
 _file='@::file://@' # convince the git submission that these files aren't on the web and don't need to be supplied
