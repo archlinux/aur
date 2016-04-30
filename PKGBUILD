@@ -3,7 +3,7 @@
 pkgname=prelude-manager
 pkgver=3.0.0
 pkgrel=1
-pkgdesc="Prelude-Manager"
+pkgdesc="Bus communication for all Prelude modules"
 arch=('i686' 'x86_64')
 url="http://www.prelude-siem.org"
 license=('GPLv2')
