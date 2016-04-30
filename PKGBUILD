@@ -7,11 +7,12 @@ pkgdesc="Prelude-Manager"
 arch=('i686' 'x86_64')
 url="http://www.prelude-siem.org"
 license=('GPLv2')
-depends=('gnutls' 'gtk-doc')
+makedepends=('gtk-doc')
 # libmaxminddb-git and not libmaxminddb because libmaxminddb do not provide ".pc" file
-makedepends=('tcp_wrappers' 'libmaxminddb-git' 'libprelude' 'libpreludedb')
+depends=('tcp_wrappers' 'libmaxminddb-git' 'libprelude' 'libpreludedb')
 source=("https://www.prelude-siem.org/pkg/src/3.0.0/$pkgname-$pkgver.tar.gz" "prelude-manager.run" "prelude-manager-conf.patch" "prelude-manager.service")
 install="$pkgname.install"
+backup=('etc/prelude-manager/prelude-manager.conf')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
