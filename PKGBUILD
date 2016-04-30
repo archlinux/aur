@@ -3,7 +3,7 @@
 
 _pkgname=aurvote
 pkgname=aurvote-git
-pkgver=r17.b25edcc
+pkgver=r27.fd413f1
 pkgrel=1
 pkgdesc='Vote for your favorite AUR packages (development version)'
 url='http://git.archlinux.fr/aurvote.git'
