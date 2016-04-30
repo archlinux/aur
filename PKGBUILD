@@ -14,7 +14,6 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 makedepends=('intltool')
 options=('!libtool')
-install=$_pkgname.install
 source=(http://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
 
 build() {
