@@ -1,3 +1,5 @@
+# Maintainer: Ferdinand B <theferdi265@gmail.com>
+#  forked from aur/vlock-original
 # Maintainer: Hexchain Tong <i@hexchain.org>
 # Maintainer: Chris Down <chris@chrisdown.name>
 # Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
@@ -5,7 +7,7 @@
 # Contributor: Corrado Primier <bardo@aur.archlinux.org>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
-pkgname=vlock-original
+pkgname=vlock-original-noroot
 pkgver=2.2.3
 pkgrel=3
 pkgdesc="A small console locking program"
@@ -20,7 +22,7 @@ md5sums=('SKIP')
 
 build() {
     cd "$srcdir/vlock"
-    ./configure --prefix=/usr --sbindir=/usr/bin
+    ./configure --prefix=/usr --sbindir=/usr/bin --disable-root-password
     make
 }
 
