@@ -8,20 +8,20 @@
 # http://smath.info/?file=739152 
 
 pkgname=smath
-pkgver=0_97_5890
-pkgrel=2
+pkgver=0_98_5935
+pkgrel=1
 pkgdesc="A mathematical program with many features and paper-like interface, similar to Mathcad"
 arch=('i686' 'x86_64')
 url="http://smath.info"
 license=('CCPL')
 groups=('math')
-depends=('mono')
+depends=('mono' 'giflib<5.1.2')
 install=smath.install
 backup=(opt/$pkgname/settings.inf)
-source=("https://dl.dropboxusercontent.com/u/24193509/SMathStudioDesktop.0_97_5890.Mono.tar.gz" 
+source=("https://dl.dropboxusercontent.com/u/24193509/SMathStudioDesktop.0_98_5935.Mono.tar.gz" 
 	"smath.desktop" 
 	"https://dl.dropboxusercontent.com/u/24193509/SMathStudioLogo256.png")
-md5sums=('c33f8b9a43ac064459016f725a4a4868'
+md5sums=('963250d74ddfabf7c7806d6ef95ca66c'
          'af70c1bfb5bcdaab7f952339ebb2435e'
          'ed3720462decbcfa63df5c9d04fb03f9')
 
