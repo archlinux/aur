@@ -12,14 +12,12 @@ Can be tested with:
   HOME=/ LC_ALL=C mutt -e 'unset sidebar_visible' -s test recipient
 
 Closes: #502627
-
-Gbp-Pq: Topic mutt-patched
 ---
  compose.c | 2 ++
  1 file changed, 2 insertions(+)
 
 diff --git a/compose.c b/compose.c
-index b63695f..0fa6df2 100644
+index 7ff2996..42bdb46 100644
 --- a/compose.c
 +++ b/compose.c
 @@ -32,6 +32,7 @@

@@ -5,17 +5,15 @@ Subject: sidebar-newonly
 patches written by Steve Kemp, it adds two new functionalities to the sidebar,
 so only the mailbox with new messages will be shown (and/or) selected
 See Debian bug http://bugs.debian.org/532510
-
-Gbp-Pq: Topic mutt-patched
 ---
  OPS         |  2 ++
  curs_main.c |  2 ++
  functions.h |  4 ++++
- init.h      |  5 +++++
+ init.h      |  6 +++++-
  mutt.h      |  2 ++
  pager.c     |  2 ++
  sidebar.c   | 55 +++++++++++++++++++++++++++++++++++++++++++++++++++++--
- 7 files changed, 70 insertions(+), 2 deletions(-)
+ 7 files changed, 70 insertions(+), 3 deletions(-)
 
 diff --git a/OPS b/OPS
 index b036db9..1ed9c96 100644
@@ -28,10 +26,10 @@ index b036db9..1ed9c96 100644
 +OP_SIDEBAR_NEXT_NEW "go down to next mailbox with new mail"
 +OP_SIDEBAR_PREV_NEW "go to previous mailbox with new mail"
 diff --git a/curs_main.c b/curs_main.c
-index ea530a6..acb106d 100644
+index 7583eba..3ad22c4 100644
 --- a/curs_main.c
 +++ b/curs_main.c
-@@ -2326,6 +2326,8 @@ int mutt_index_menu (void)
+@@ -2429,6 +2429,8 @@ int mutt_index_menu (void)
        case OP_SIDEBAR_SCROLL_DOWN:
        case OP_SIDEBAR_NEXT:
        case OP_SIDEBAR_PREV:
@@ -63,13 +61,14 @@ index ef8937a..363b4d5 100644
    { NULL,		0,				NULL }
  };
 diff --git a/init.h b/init.h
-index 166671b..a5d4238 100644
+index 2e7371c..b7aff80 100644
 --- a/init.h
 +++ b/init.h
-@@ -2059,6 +2059,11 @@ struct option_t MuttVars[] = {
-   ** you're not using IMAP folders, you probably prefer setting this to "/"
-   ** alone.
+@@ -2108,7 +2108,11 @@ struct option_t MuttVars[] = {
+   ** .pp
+   ** Should folders be indented in the sidebar.
    */
+-
 +  {"sidebar_newmail_only", DT_BOOL, R_BOTH, OPTSIDEBARNEWMAILONLY, 0 },
 +  /*
 +  ** .pp
@@ -79,12 +78,12 @@ index 166671b..a5d4238 100644
    /*
    ** .pp
 diff --git a/mutt.h b/mutt.h
-index 5f25406..d73e514 100644
+index 91e58e9..2a9f1e0 100644
 --- a/mutt.h
 +++ b/mutt.h
-@@ -529,6 +529,8 @@ enum
+@@ -538,6 +538,8 @@ enum
    OPTDONTHANDLEPGPKEYS,	/* (pseudo) used to extract PGP keys */
-   OPTUNBUFFEREDINPUT,   /* (pseudo) don't use key buffer */
+   OPTIGNOREMACROEVENTS, /* (pseudo) don't process macro/push/exec events while set */
  
 +  OPTSIDEBARNEWMAILONLY,
 +
@@ -92,10 +91,10 @@ index 5f25406..d73e514 100644
  };
  
 diff --git a/pager.c b/pager.c
-index 5cfcb75..8d64fe1 100644
+index 676fd39..9a2b269 100644
 --- a/pager.c
 +++ b/pager.c
-@@ -2789,6 +2789,8 @@ search_next:
+@@ -2808,6 +2808,8 @@ search_next:
        case OP_SIDEBAR_SCROLL_DOWN:
        case OP_SIDEBAR_NEXT:
        case OP_SIDEBAR_PREV:
@@ -105,10 +104,10 @@ index 5cfcb75..8d64fe1 100644
   	break;
  
 diff --git a/sidebar.c b/sidebar.c
-index 8f58f85..51a25ca 100644
+index b75a0e3..c298599 100644
 --- a/sidebar.c
 +++ b/sidebar.c
-@@ -269,8 +269,21 @@ int draw_sidebar(int menu) {
+@@ -297,8 +297,21 @@ int draw_sidebar(int menu) {
  			SETCOLOR(MT_COLOR_NEW);
  		else if ( tmp->msg_flagged > 0 )
  		        SETCOLOR(MT_COLOR_FLAGGED);
@@ -131,8 +130,8 @@ index 8f58f85..51a25ca 100644
 +                }
  
  		move( lines, 0 );
- 		if ( Context && !strcmp( tmp->path, Context->path ) ) {
-@@ -336,6 +349,29 @@ int draw_sidebar(int menu) {
+ 		if ( Context && Context->path &&
+@@ -358,6 +371,29 @@ int draw_sidebar(int menu) {
  	return 0;
  }
  
@@ -162,7 +161,7 @@ index 8f58f85..51a25ca 100644
  
  void set_buffystats(CONTEXT* Context)
  {
-@@ -352,18 +388,33 @@ void set_buffystats(CONTEXT* Context)
+@@ -376,18 +412,33 @@ void set_buffystats(CONTEXT* Context)
  
  void scroll_sidebar(int op, int menu)
  {

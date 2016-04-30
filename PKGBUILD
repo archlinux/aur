@@ -3,8 +3,8 @@
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=mutt-sidebar
-pkgver=1.5.24
-pkgrel=10
+pkgver=1.6.0
+pkgrel=1
 pkgdesc='Small but very powerful text-based mail client'
 arch=('i686' 'x86_64' 'armv7h' 'armv7l')
 url='http://www.mutt.org/'
@@ -15,9 +15,12 @@ conflicts=('mutt')
 provides=('mutt')
 source=("https://bitbucket.org/mutt/mutt/downloads/mutt-${pkgver}.tar.gz"
         "trash-folder.patch"
-        "http://lunar-linux.org/~tchan/mutt/patch-1.5.24.sidebar.20151111.txt"
-        "patch-for-first-char-jf.patch"
-        "shortpath.patch")
+        "sidebar.patch"
+        "sidebar-delimnullwide.patch"
+        "sidebar-newonly.patch"
+        "sidebar-compose.patch"
+       )
+validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA')
 
 prepare() {
   cd "$srcdir/mutt-$pkgver"
@@ -27,13 +30,10 @@ prepare() {
   patch -Np1 -i "$srcdir"/trash-folder.patch
 
   # patch to add sidebar support
-  patch -Np1 -i "$srcdir"/patch-1.5.24.sidebar.20151111.txt
-
-  # patch for first char in mailboxdir
-  patch -i "$srcdir"/patch-for-first-char-jf.patch
-
-  # patch to fix shortpath
-  patch -i "$srcdir"/shortpath.patch
+  patch -p 1 -i "$srcdir"/sidebar.patch
+  patch -p 1 -i "$srcdir"/sidebar-delimnullwide.patch
+  patch -p 1 -i "$srcdir"/sidebar-newonly.patch
+  patch -p 1 -i "$srcdir"/sidebar-compose.patch
 
   # fix automake issue
   autoreconf -vfi
@@ -60,9 +60,9 @@ package() {
   rm "$pkgdir"/usr/bin/{flea,muttbug}
   rm "$pkgdir"/usr/share/man/man1/{flea,muttbug}.1
 }
-
-sha512sums=('f7fe7edf9d1701a8e92761b1f5e6ef2e3a3b513af7898872cbe36a8800714cb76945788a60d2008820c57bc5344a4147e2686f690da42cfc8a912e3a432452b1'
+sha512sums=('601d5f70c7cd30903799714cd85b80f9650a029e621d044075e123656411dde809d5cef24a40ba49860bc242cf4a0b914c703deb5a7125b3a24eeb93f4ae3c4c'
             '13f2f6402d3bb407d5e0a04049f7be27c9dbc0ccb9681fe7640d060cc3c13d76a8cf9985da8daa680058603b317f9dbf1b2125aa9e103c625add0d8d530b2538'
-            '2e622a34a1d101fe9370cc015b8253492d1649fcb593c6f9cbf6eb3b54119eaca836114dc4e3da83bc8fd9de434503c7d2295981a68dc05fd8e710925e2b1f77'
-            '16ba918a8d5ef091cd7556e97189b43a0afdc1fc23a8bb9ece6a97281223090a5e680886233d2aa52e5340c402d19c68801b51eec13ae61cd8d301418470f11d'
-            '9fe87a338090ac53856893f3392a6f94d5a855cff1338fb6d1a0ef8774e57b20e6a75212b43c266066fbaae7ff21978c8437aee2e601a20eaccadf6cb1425397')
+            '636309d514834c16ae51691aec757d35fb999404fd29ad41f80bd70f9b9370cb74a2ee84000599ffbd6f197a5316a89567ced9ac6dedaf6270b9aa4fbc90be71'
+            'defb96553dd26e7909ec06964729217c75a1bbb88bb00b6c4a07703b4c64952d06bfe1cd9f1c1aa9a6bf6cfbc5b0cc3933002387ca3b55b6399b1445474bd929'
+            'b0f9184564eb75c36c3f807a7088f2c83a72fcfc1b91feed94919e98bbbbcc74fb07776d730871ca4caa87a044fbd00f906dfbb1928b8fd5f23d1526d6375dbd'
+            'c7c1df28937b64777e66ef86a198bb168532093066c00c8aa349d76aa7a7d7f799fcc1fe0d7eb5e59a73223a43cdb4c38ab1881d644fd5ae5467844f44cb2dd9')
