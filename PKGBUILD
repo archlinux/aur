@@ -16,7 +16,7 @@ license=(custom MIT)
 makedepends=(perl)
 
 source=(http://mattmahoney.net/dc/zpaq${_zpaq_ver}.zip)
-sha512sums=('a94753f4374cfe1ce294224a2ca7e0c4a02d7ae57eaefc1606fedcd61b5cfa868e100abae0f7e343527223cf87325486699c6812d44dde8ccc22c61cf30e2033')
+sha512sums=('b6896360caa761e0177402ca973f6111cc1976bc36a5aaf68e85d10c01999fcea851e1d2948fb3e2fe28c44b4944a5200db36db14a93f515279a3f8d3e677350')
 
 build()
 {
