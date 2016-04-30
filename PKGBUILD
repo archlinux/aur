@@ -10,7 +10,7 @@ arch=('i686')
 url="http://www.queasygames.com/gate88/"
 license=("custom")
 groups=('games')
-depends=(sdl sdl_mixer sdl_net libvorbis mesa)
+depends=(sdl sdl_mixer sdl_net libvorbis mesa desktop-file-utils gtk-update-icon-cache)
 source=(http://www.queasygames.com/gate88/Gate88_$pkgver.tar.gz
     gate88
     gate88.desktop
