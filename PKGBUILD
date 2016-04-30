@@ -12,11 +12,10 @@ license=('GPL2')
 depends=('copper' 'gtk2' 'desktop-file-utils' 'gtk-update-icon-cache')
 depends_x86_64=('llvm')
 options=(!makeflags)
-source=( #http://tibleiz.net/download/code-browser-${pkgver}-src.tar.gz
-        http://tibleiz.net/download/code-browser-${pkgver}-src.zip
+source=(http://tibleiz.net/download/code-browser-${pkgver}-src.tar.gz
         code-browser.desktop
         cb.png)
-md5sums=('b871f1b076ff657d3a4b1e929ceced91'
+md5sums=('db60b59a6eaf94af24c832371cb03bc5'
          '05b38d1b5cd303042aaaf50714655d83'
          '153dab5bcff69701d74ee911d80d6f83')
 
