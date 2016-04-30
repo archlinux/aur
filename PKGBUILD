@@ -2,7 +2,7 @@
 
 _pkgname=webui-aria2
 pkgname="$_pkgname-git"
-pkgver=r370.e48a7a7
+pkgver=r407.ed546be
 pkgrel=1
 pkgdesc="Pure HTML/CSS/JS frontend for aria2"
 arch=('any')
