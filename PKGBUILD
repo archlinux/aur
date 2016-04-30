@@ -4,7 +4,10 @@
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Maintainer: rubenvb vanboxem <dottie> ruben <attie> gmail <dottie> com
 
-pkgname=djgpp-gcc
+pkgbase=djgpp-gcc
+pkgname=(
+	djgpp-gcc
+)
 pkgver=6.1.0
 _target="i686-pc-msdosdjgpp"
 _islver=0.16.1
@@ -81,7 +84,7 @@ build() {
 	make all
 }
 
-package() {
+package_djgpp-gcc() {
 	cd "${srcdir}/gcc-build-${_target}"
 	make DESTDIR="${pkgdir}" install
 	strip "${pkgdir}/usr/bin/${_target}"-*
