@@ -1,0 +1,12 @@
+pkgbase = pwclient-git
+	pkgdesc = Command-line client for patchwork
+	pkgver = r753.0a0f9d5
+	pkgrel = 1
+	url = https://github.com/getpatchwork/patchwork
+	arch = any
+	license = GPL
+	source = https://github.com/getpatchwork/patchwork/tree/master/patchwork/bin/pwclient
+	sha256sums = SKIP
+
+pkgname = pwclient-git
+
