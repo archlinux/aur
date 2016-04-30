@@ -2,7 +2,7 @@
 # Contributor: dumblob <dumblob@gmail.com>
 
 pkgver=7.2.2
-pkgrel=1
+pkgrel=2
 
 _basename=bonita-bpm-community
 _basenamever="${_basename}-$pkgver"
