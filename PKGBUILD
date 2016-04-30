@@ -3,18 +3,18 @@
 # Contributor: Pedro Gabriel <pedrogabriel@dcc.ufmg.br>
 
 pkgname=mintlocale
-pkgver=1.3.1
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="Locale selection for the Cinnamon Desktop"
 arch=('any')
 url="https://github.com/linuxmint/mintlocale"
 license=('GPL2')
 depends=('python2-gobject')
-source=("http://packages.linuxmint.com/pool/main/m/mintlocale/mintlocale_$pkgver.tar.gz"
+source=("http://packages.linuxmint.com/pool/main/m/mintlocale/mintlocale_$pkgver.tar.xz"
 	"apt_pkg.patch")
 
-sha256sums=('2124bcc023cccd13ff53a9ab50e177f2d5616224ac63edb6a348809bb3b491d9'
-            'd18b6ae1a699b5a31436bbaf2a18d96d64a54e33a6d5daa1c60dfb0250f2dbc2')
+sha256sums=('e188e695b53667f0be746d6ab58ea24fa31771090e6ec77c64365591aa1703fd'
+            'b065dc500075a5648a4aa15c98b701af7816d3d0ee2822330635b5fe6740d116')
 
 
 prepare() {
