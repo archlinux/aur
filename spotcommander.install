@@ -13,8 +13,8 @@ post_install()
 
 	echo -e "\n# Start SpotCommander configuration" >> /etc/httpd/conf/httpd.conf
 	echo "LoadModule mpm_prefork_module modules/mod_mpm_prefork.so" >> /etc/httpd/conf/httpd.conf
-	echo "LoadModule php5_module modules/libphp5.so" >> /etc/httpd/conf/httpd.conf
-	echo "Include conf/extra/php5_module.conf" >> /etc/httpd/conf/httpd.conf
+	echo "LoadModule php7_module modules/libphp7.so" >> /etc/httpd/conf/httpd.conf
+	echo "Include conf/extra/php7_module.conf" >> /etc/httpd/conf/httpd.conf
 	echo "Include conf/extra/spotcommander.conf" >> /etc/httpd/conf/httpd.conf
 	echo -e "# End SpotCommander configuration\n" >> /etc/httpd/conf/httpd.conf
 
