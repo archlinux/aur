@@ -4,14 +4,14 @@
 
 _pkgname=charybdis
 pkgname=charybdis-git
-pkgver=latest
+pkgver=charybdis.3.5.0.r945.g5a77522
 pkgrel=1
 pkgdesc='A highly scalable IRCv3-compliant IRCd (development version)'
 url='http://atheme.org/project/charybdis'
 license=('GPL2')
 options=('!strip')
 install=charybdis.install
-source=('git+https://github.com/atheme/charybdis.git'
+source=('git+https://github.com/charybdis-ircd/charybdis'
         'charybdis.service'
         'charybdis.tmpfiles')
 sha256sums=('SKIP'
@@ -27,11 +27,14 @@ pkgver() {
   cd "${srcdir}/${_pkgname}"
 
   # Get the version number.
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "${srcdir}/${_pkgname}"
+
+  # Set up the build.
+  ./autogen.sh
 
   # Configure the build.
   ./configure \
