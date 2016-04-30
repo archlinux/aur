@@ -3,7 +3,7 @@
 
 _pkgname=mutt-kz
 pkgname=mutt-kz-git
-pkgver=latest
+pkgver=mutt.1.6.rel.r236.g73ff2ad
 pkgrel=1
 pkgdesc='Small but powerful text-based mail client (experimental fork) (development version)'
 url='https://github.com/karelzak/mutt-kz'
@@ -20,7 +20,7 @@ pkgver() {
   cd "${srcdir}/${_pkgname}"
 
   # Get the version number.
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
