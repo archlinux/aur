@@ -17,7 +17,7 @@ _makenconfig=	# Tweak kernel options prior to a build via nconfig
 _localmodcfg=	# Compile ONLY probed modules
 _use_current=	# Use the current kernel's .config file
 _BFQ_enable_=	# Enable BFQ as the default I/O scheduler
-_NUMAdisable=y	# Disable NUMA in kernel config
+_NUMAdisable=	# Disable NUMA in kernel config
 
 ### DOCS
 # This package has shipped with GCC optimisations since the 3.6.9-3 release, currently with enable_additional_cpu_optimizations_for_gcc.patch.
@@ -29,12 +29,17 @@ _NUMAdisable=y	# Disable NUMA in kernel config
 # http://www.linuxforge.net/docs/linux/linux-gcc.php
 # http://gcc.gnu.org/onlinedocs/gcc/i386-and-x86_002d64-Options.html
 
+# DETAILS FOR _makenconfig=
+# Tweak kernel options prior to a build via nconfig
+
 # DETAILS FOR _1k_HZ_ticks
 # Running with a 1000 HZ tick rate (vs the ARCH 300) is reported to solve the
 # issues with the bfs/linux 3.1x and suspend. For more see:
 # http://ck-hack.blogspot.com/2013/09/bfs-0441-311-ck1.html?showComment=1378756529345#c5266548105449573343
 
 # DETAILS FOR _NUMAdisable=
+### Do not disable NUMA until CK figures out why doing so causes panics for
+### some users!
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU actually runs slower with NUMA enabled.
 # See, https://bugs.archlinux.org/task/31187
@@ -51,7 +56,7 @@ _NUMAdisable=y	# Disable NUMA in kernel config
 # give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
 # This PKGBUILD will call it directly to probe all the modules you have logged!
 #
-# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed_db
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 
 # DETAILS FOR _use_current=
 # Use the current kernel's .config file
@@ -61,7 +66,7 @@ _NUMAdisable=y	# Disable NUMA in kernel config
 # a new kernel is released, but again, convenient for package bumps.
 
 # DETAILS FOR _BFQ_enable=
-# Alternative I/O scheduler by Paolo.
+# Alternative I/O scheduler by Paolo Valente
 # Set this if you want it enabled globally i.e. for all devices in your system
 # If you want it enabled on a device-by-device basis, leave this unset and see:
 # https://wiki.archlinux.org/index.php/Linux-ck#How_to_Enable_the_BFQ_I.2FO_Scheduler
@@ -70,50 +75,50 @@ _NUMAdisable=y	# Disable NUMA in kernel config
 
 pkgname=(linux-lts-ck linux-lts-ck-headers)
 _kernelname=-lts-ck
-_srcname=linux-4.1
-pkgver=4.1.20
+_srcname=linux-4.4
+pkgver=4.4.8
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=('GPL2')
 makedepends=('kmod' 'inetutils' 'bc')
 options=('!strip')
-_ckpatchversion=2
-_ckpatchname="patch-4.1-ck${_ckpatchversion}"
+_ckpatchversion=1
+_ckpatchname="patch-4.4-ck${_ckpatchversion}"
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
-_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.1.0-v7r8"
+_bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.4.0-v7r11"
 
-source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-		"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-		"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-		"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
-		'config.x86_64' 'config'
-		'linux-lts-ck.preset'
-		'change-default-console-loglevel.patch'
-		# ck2
-		"http://ck.kolivas.org/patches/4.0/4.1/4.1-ck${_ckpatchversion}/${_ckpatchname}.bz2"
-		'bfs-009-add-preempt_offset-argument-to-should_resched.patch'
-		# gcc
-		"http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
-		# bfq
-		"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r8-4.1.patch"
-		"${_bfqpath}/0002-block-introduce-the-BFQ-v7r8-I-O-sched-for-4.1.patch"
-		"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r8-for-4.1.0.patch")
+source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
+        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        'config.x86_64' 'config'
+        'linux-lts-ck.preset'
+        'change-default-console-loglevel.patch'
+        '0001-sdhci-revert.patch'
+        # ck1
+        "http://ck.kolivas.org/patches/4.0/4.4/4.4-ck${_ckpatchversion}/${_ckpatchname}.xz"
+        # gcc
+        "http://repo-ck.com/source/gcc_patch/${_gcc_patch}.gz"
+        # bfq
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-v7r11-4.4.0.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-v7r11-I-O-sched-for-4.4.0.patch"
+        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-v7r11-for.patch")
 
-sha512sums=('168ef84a4e67619f9f53f3574e438542a5747f9b43443363cb83597fcdac9f40d201625c66e375a23226745eaada9176eb006ca023613cec089349e91751f3c0'
+sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '5c919982d33270c75b49e1deda32a9704ac8c68c4f07595471357c6b98694a4429dbd85bb31f662e63150294c031205b2d31426e117d0197ce7afdfd45f1c313'
+            '11ec99ae0600bd831ff8d71b77e64592f4b6918b7857fd9ff0284ea4cf267b4e'
             'SKIP'
-            '76dd25223cba6dd2c7033c5ff7d370e741b0a708a389a4ff6479146edc768c5bb51c44211fd7402f4e79cf3fd50fff92f1517ea55e0fe809f37ded6b07267171'
-            '8fe96d603341da028b832a85db8aee78fc712a182346fd9de78db00f869d1c2267ac9c4ea86d5a9160b5afd95fb3750061053772aabd1043cf43b20a84f4f4a5'
-            'd365341656f0acf68f9e0bf62f27b14c3eb8583d332f26cdd6b5290153c5bf04d7ac1495bace54f387959ac5330113466fefd73b83663a28e6fcf20224741ca5'
-            'd9d28e02e964704ea96645a5107f8b65cae5f4fb4f537e224e5e3d087fd296cb770c29ac76e0ce95d173bc420ea87fb8f187d616672a60a0cae618b0ef15b8c8'
-            '356e144f858b6015415b2c3f781ca534e5f77b818302e404c3d3b35c088f4a4163356b67f98bfc95175bd52bd8b3e9a9a3e336cbcd8adf6c2d388700ce630d4d'
-            'f445f12f1d79d9f464f8d337d0b72bac4a74e8064826e2a1ccd86da3b6aaef829912e2f7a11bf8e729e4ac3e4e853139abd2d028ee35bd32613615e230f943b1'
-            '62fdd5c0a060a051b64093d71fbb028781061ccb7a28c5b06739a0b24dac0945740d9b73ff170784f60005a589774bcc14f56523ec51557eb3a677f726ec34cf'
-            '383cd020ab882389731ef78abca727eccc8247ed82b95c89df93d7065bfde093b82e32190ad1fb29b37de35eb20b40339f2c02ad694a3978884255b193f5bc1a'
-            'f7bcb50e7de166e0d89194a3cad1feae99c4a5a9918e8af691d7635ed8ef64762ff2af4702dc6ba0eef0fc01ad75173abddbf01ae89bc6e03ace5e54f4098b12'
-            '1db70764577d3e8d5e65351bdef7f2cf61d2546138a6342c4bf4e5e6738b8e06b5291a9a0c12f9fc2c8cb620048006d05474cf75902cb26e7504038150cf0a44')
+            '85a1a38ee265eaf2965ca49000a950061b0fadf69f01ddcd50a91a98f6d04b2d'
+            'd4a2a40eb860f3a7cf692ff7196fedb20fac27b6839aaa788df468b26190aea7'
+            '92c0d1b82502c5b4055620867dd308f32f25bcea00e7d6eb2cf5aaa3f43de10a'
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
+            'a800a076e7f9ab07e8baee33919f8731087f876000f8ab6a327521a7a772838f'
+            'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
+            'd1cf14cc696b0f716454fe8eb9746383700889d5d22ad829611f0433cc77b4ce'
+            'b17c3fb18c5b8c20a45a38198f293679ca6aef08d16f12cd816a5cfafac4b2c4'
+            '69a21bc286a628128cfc4723558829cb6ff6c2d7c4dfd4468457898674187b25')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -125,6 +130,11 @@ prepare() {
 	# add upstream patch
 	patch -p1 -i "${srcdir}/patch-${pkgver}"
 
+	# revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
+	# fixes #47778 sdhci broken on some boards
+	# https://bugzilla.kernel.org/show_bug.cgi?id=106541
+	patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
+
 	# set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
 	# remove this when a Kconfig knob is made available by upstream
 	# (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
@@ -133,12 +143,8 @@ prepare() {
 	# patch source with ck patchset with BFS
 	# fix double name in EXTRAVERSION
 	sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "${srcdir}/${_ckpatchname}"
-	msg "Patching source with ck2 including BFS v0.464"
+	msg "Patching source with ck1 including BFS v0.467"
 	patch -Np1 -i "${srcdir}/${_ckpatchname}"
-
-	# build issue fix for 4.1.12
-	# http://ck-hack.blogspot.com/2015/08/bfs-464-linux-41-ck2.html?showComment=1445937376359#c8153343895524903784
-	patch -Np1 -i "${srcdir}/bfs-009-add-preempt_offset-argument-to-should_resched.patch"
 
 	# Patch source to enable more gcc CPU optimizatons via the make nconfig
 	msg "Patching source with gcc patch to enable more cpus types"
@@ -146,7 +152,6 @@ prepare() {
 	
 	msg "Patching source with BFQ patches"
 	for p in $(ls ${srcdir}/000{1,2,3}-block*.patch); do
-		msg " $p"
 		patch -Np1 -i "$p"
 	done
 
@@ -213,8 +218,8 @@ prepare() {
 	### Optionally enable BFQ as the default I/O scheduler
 	if [ -n "$_BFQ_enable_" ]; then
 		msg "Setting BFQ as default I/O scheduler..."
-		sed -i -e '/CONFIG_DEFAULT_IOSCHED/ s,deadline,bfq,' \
-			-i -e 's/CONFIG_DEFAULT_DEADLINE=y/# CONFIG_DEFAULT_DEADLINE is not set\nCONFIG_DEFAULT_BFQ=y/' ./.config
+		sed -i -e '/CONFIG_DEFAULT_IOSCHED/ s,cfq,bfq,' \
+			-i -e s'/CONFIG_DEFAULT_CFQ=y/# CONFIG_DEFAULT_CFQ is not set\nCONFIG_DEFAULT_BFQ=y/' ./.config
 	fi
 
 	# set extraversion to pkgrel
@@ -248,11 +253,11 @@ prepare() {
 	yes "" | make config >/dev/null
 
 	# save configuration for later reuse
-#	if [ "${CARCH}" = "x86_64" ]; then
-#		cat .config > "${startdir}/config.x86_64.last"
-#	else
-#		cat .config > "${startdir}/config.last"
-#	fi
+	if [ "${CARCH}" = "x86_64" ]; then
+		cat .config > "${startdir}/config.x86_64.last"
+	else
+		cat .config > "${startdir}/config.last"
+	fi
 }
 
 build() {
@@ -262,16 +267,16 @@ build() {
 }
 
 package_linux-lts-ck() {
-	pkgdesc='Linux Kernel with the ck2 patchset featuring the Brain Fuck Scheduler v0.464.'
-	#_Kpkgdesc='Linux Kernel and modules with the ck2 patchset featuring the Brain Fuck Scheduler v0.464.'
+	pkgdesc='Linux Kernel with the ck1 patchset featuring the Brain Fuck Scheduler v0.467.'
+	#_Kpkgdesc='Linux Kernel and modules with the ck1 patchset featuring the Brain Fuck Scheduler v0.467.'
 	#pkgdesc="${_Kpkgdesc}"
 	depends=('coreutils' 'linux-firmware' 'mkinitcpio>=0.7')
-	optdepends=('crda: to set the correct wireless channels of your country'  'nvidia-dkms: nVidia drivers for linux-lts-ck' 'nvidia-340xx-dkms: nVidia drivers for linux-lts-ck' 'modprobed_db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
+	optdepends=('crda: to set the correct wireless channels of your country' 'nvidia-dkms: nVidia drivers for linux-lts-ck' 'nvidia-340xx-dkms: nVidia drivers for linux-lts-ck' 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
 	provides=("linux-lts-ck=${pkgver}")
 	replaces=('kernel26-lts-ck')
 	backup=("etc/mkinitcpio.d/linux-lts-ck.preset")
 	install=linux-lts-ck.install
-	groups=('lts-ck-generic')
+	#groups=('lts-ck-generic')
 
 	cd "${_srcname}"
 
@@ -309,10 +314,10 @@ package_linux-lts-ck() {
 	# remove the firmware
 	rm -rf "${pkgdir}/lib/firmware"
 	# make room for external modules
-	ln -s "../extramodules-${_basekernel}${_kernelname:lts-ck}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
+	ln -s "../extramodules-${_basekernel}${_kernelname:ck}" "${pkgdir}/lib/modules/${_kernver}/extramodules"
 	# add real version for building modules and running depmod from post_install/upgrade
-	mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:lts-ck}"
-	echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:lts-ck}/version"
+	mkdir -p "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:ck}"
+	echo "${_kernver}" > "${pkgdir}/lib/modules/extramodules-${_basekernel}${_kernelname:ck}/version"
 
 	# Now we call depmod...
 	depmod -b "${pkgdir}" -F System.map "${_kernver}"
@@ -332,8 +337,7 @@ package_linux-lts-ck-headers() {
 	#pkgdesc="${_Hpkgdesc}"
 	depends=('linux-lts-ck') # added to keep kernel and headers packages matched
 	provides=("linux-lts-ck-headers=${pkgver}" "linux-headers=${pkgver}")
-	replaces=('kernel26-ck-lts-headers')
-	groups=('lts-ck-generic')
+	#groups=('lts-ck-generic')
 
 	install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
@@ -432,7 +436,7 @@ package_linux-lts-ck-headers() {
 	#cp fs/xfs/xfs_sb.h "${pkgdir}/usr/lib/modules/${_kernver}/build/fs/xfs/xfs_sb.h"
 
 	# copy in Kconfig files
-	for i in $(find . -name "Kconfig*"); do
+for i in $(find . -name "Kconfig*"); do
 		mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
 		cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
 	done
@@ -454,4 +458,9 @@ package_linux-lts-ck-headers() {
 
 	 # remove unneeded architectures
 	 rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+
+	 # remove a files already in linux-docs package
+	 rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-01"
+	 rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.recursion-issue-02"
+	 rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild/Kconfig.select-break"
 }
