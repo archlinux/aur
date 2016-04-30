@@ -15,7 +15,6 @@ conflicts=('xfce4-menueditor' "${_pkgname}")
 provides=("${_pkgname}=${pkgver}")
 replaces=('xfce4-menueditor')
 options=('!libtool')
-install=xfdesktop.install
 source=(http://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2)
 
 build() {
