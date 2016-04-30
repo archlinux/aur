@@ -1,0 +1,21 @@
+pkgbase = iloot-git
+	pkgdesc = OpenSource tool for iCloud backup extraction
+	pkgver = r87.9362ac9
+	pkgrel = 1
+	url = https://github.com/jamesan/$_pkgname
+	arch = any
+	license = unknown
+	makedepends = git
+	depends = python2-gevent
+	depends = python2-protobuf
+	depends = python2-crypto
+	depends = python2-hurry-filesize
+	provides = iloot=r87.9362ac9
+	conflicts = iloot
+	source = iloot::git+https://github.com/hackappcom/iloot.git
+	source = shellscript
+	md5sums = SKIP
+	md5sums = 9cf1b8a0865b80792d2c9293ab791062
+
+pkgname = iloot-git
+
