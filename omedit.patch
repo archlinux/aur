@@ -1,0 +1,20 @@
+--- src/openmodelica-git/OMEdit/qjson/CMakeLists.txt 2016-04-30 15:46:03.528157798 +0200
++++ src/openmodelica-git/OMEdit/qjson/CMakeLists.txt 2016-04-30 11:23:51.000000000 +0200
+@@ -40,12 +40,12 @@
+ # (This will have no effect with CMake < 2.8)
+ SET(QT_USE_IMPORTED_TARGETS TRUE)
+
+-option(QT4_BUILD "Force building with Qt4 even if Qt5 is found")
+-IF (WIN32)
++#option(QT4_BUILD "Force building with Qt4 even if Qt5 is found")
++#IF (WIN32)
+ # set(QT4_BUILD ON)
+-ELSE(WIN32)
+-set(QT4_BUILD ON)
+-ENDIF(WIN32)
++#ELSE(WIN32)
++#set(QT4_BUILD ON)
++#ENDIF(WIN32)
+
+ IF (NOT QT4_BUILD)
+   FIND_PACKAGE( Qt5Core QUIET )

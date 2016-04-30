@@ -1,7 +1,7 @@
 # Maintainer: Xwang <xwaang1976@gmail.com>
 pkgname=openmodelica-git
 pkgver=1.10.0.dev.r329.g314a0a3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Open Source Modelica Suite"
 arch=('i686' 'x86_64')
 url="https://openmodelica.org"
@@ -14,11 +14,9 @@ makedepends=('autoconf' 'automake' 'libtool' 'gcc' 'gcc-fortran-multilib' 'boost
 provides=('openmodelica')
 conflicts=('openmodelica' 'openmodelica-svn')
 
-#source=($pkgname::git+https://github.com/OpenModelica/OpenModelica) 
-#md5sums=('SKIP')
+source=("omedit.patch") 
+md5sums=('79376887eb1c754893b2e1cf01720145')
 
-source=() 
-md5sums=()
 
 prepare() {
     # clone all submodules
@@ -31,6 +29,9 @@ prepare() {
     sed -i 's,../,https://github.com/OpenModelica/,g' .gitmodules
     git submodule sync
     git submodule update --init --recursive
+    cd "$srcdir"
+    patch -p1 < ${srcdir}/omedit.patch
+    cd "$srcdir/$pkgname"
 }
 
 pkgver() {
