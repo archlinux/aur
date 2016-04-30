@@ -1,7 +1,7 @@
 # Maintainer: Yuexuan Gu <lastavengers@outlook.com>
 
 pkgname=srain
-pkgver=0.02
+pkgver=0.03
 pkgrel=1
 pkgdesc="it does not look like a irc client"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'make' 'gcc' 'pkg-config' 'gettext' 'curl')
 conflicts=('srain')
 provides=('srain')
 source=("https://github.com/LastAvenger/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('7a2152e3b6fef4b8ffd9887b71296f84f6d346779e767370dd07e62868e7e8d6')
+sha256sums=('422a99128394397f269cfd2e27efca192ab7b231ba32d5e7dcf728a66baa947d')
 
 build() {
     cd ${pkgname}-${pkgver}
