@@ -2,7 +2,7 @@
 # Contributor: Stas Solovey <whats_up@tut.by>
 pkgname=hunspell-ru
 pkgver=20131101
-pkgrel=1
+pkgrel=2
 pkgdesc="Russian hunspell dictionary"
 arch=('any')
 url='https://code.google.com/p/hunspell-ru/'
@@ -16,6 +16,6 @@ package() {
   install -Dm644 ru_RU.aff "$pkgdir/usr/share/hunspell/ru_RU.aff"
 
   install -dm755 "$pkgdir/usr/share/myspell/dicts"
-  ln -s /usr/share/hunspell/ru_RU.dic "$pkgdir/usr/share/myspell/dicts/ru_RU.dic"
-  ln -s /usr/share/hunspell/ru_RU.aff "$pkgdir/usr/share/myspell/dicts/ru_RU.aff"
+  ln -s ../../hunspell/ru_RU.dic "$pkgdir/usr/share/myspell/dicts/ru_RU.dic"
+  ln -s ../../hunspell/ru_RU.aff "$pkgdir/usr/share/myspell/dicts/ru_RU.aff"
 }
