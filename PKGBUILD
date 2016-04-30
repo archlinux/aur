@@ -2,8 +2,8 @@
 
 pkgroot=ucsf-chimera
 pkgname=ucsf-chimera
-pkgver=1.10.1
-pkgrel=3
+pkgver=1.11
+pkgrel=1
 pkgdesc='Extensible molecular modeling system'
 url='https://rbvi.ucsf.edu/chimera/'
 _source=https://rbvi.ucsf.edu/chimera/cgi-bin/secure/chimera-get.py
