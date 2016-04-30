@@ -1,0 +1,15 @@
+pkgbase = libstxxl
+	pkgdesc = Standard Template Library for Extra Large Data Sets
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://stxxl.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = custom:Boost
+	depends = gcc-libs-multilib
+	options = staticlibs
+	source = https://github.com/stxxl/stxxl/releases/download/1.4.1/stxxl-1.4.1.tar.gz
+	md5sums = 78a3957f604f2946b5425abadeb364ac
+
+pkgname = libstxxl
+
