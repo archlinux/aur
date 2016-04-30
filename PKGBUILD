@@ -1,9 +1,9 @@
-# Maintainer: Leonard de Ruijter <alderuijter@gmail.com>
+# Maintainer: Leonard de Ruijter <dev@systeemdenker.nl>
 # Contributor: Serge Zirukin <ftrvxmtrx@gmail.com>
 # Contributor: Justin Davis <jrcd 83 at gmail>
 
 pkgname=cppo
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="The C preprocessor written in OCaml"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('ocaml-findlib')
 url='http://mjambon.com/cppo.html'
 source=("https://github.com/mjambon/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('2e3e658b0ba24d7217c59e76df3e92d4e03866143da8d206b3267cebccfefc69')
+sha256sums=('c49e3080b3326466c7ddd97100c63bd568301802b3e48cebea3406e1ca76ebc8')
 build() {
   cd $srcdir/$pkgname-$pkgver
   make
