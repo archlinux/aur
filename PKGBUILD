@@ -1,13 +1,13 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-widget-styles-git
-pkgver=20150330.b1e5148
+pkgver=20160229.20ffdad
 pkgrel=1
 pkgdesc="Hawaii widget styles"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/hawaii-desktop"
 license=('LGPL')
-depends=('qt5-quickcontrols')
+depends=('fluid-git')
 makedepends=('git' 'extra-cmake-modules')
 
 _gitroot="git://github.com/mauios/hawaii-widget-styles.git"
