@@ -1,4 +1,5 @@
-# Maintainer: Julian Xhokaxhiu    <info at julianxhokaxhiu dot com>
+# Maintainer: Cecile Tonglet <cecile.tonglet@gmail.com>
+# Contributor: Julian Xhokaxhiu    <info at julianxhokaxhiu dot com>
 # Contributor: almostalive   <almostalive2003 at gmail dot com>
 # Contributor: Themaister    <maister@archlinux.us>
 
