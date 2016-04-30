@@ -2,8 +2,8 @@
 # Contributor: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
 # Contributor: Pieter Robyns <pieter.robyns@uhasselt.be>
 pkgname=python2-tensorflow
-pkgver=0.8.0rc0
-pkgrel=5
+pkgver=0.8.0
+pkgrel=1
 url="http://tensorflow.org"
 license=('Apache')
 arch=('x86_64')
@@ -11,11 +11,11 @@ pkgdesc="Open source software library for numerical computation using data flow 
 depends=('python2' 'python2-numpy' 'python2-protobuf3')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
-makedepends=('python2' 'python2-pip' 'python2-wheel' 'bazel' 'swig' 'git')
+makedepends=('python2-pip' 'python2-wheel' 'bazel' 'swig' 'rsync')
 source=("https://github.com/tensorflow/tensorflow/archive/v${pkgver}.tar.gz"
 	"https://github.com/google/protobuf/archive/fb714b3606bd663b823f6960a73d052f97283b74.tar.gz"
         "flags.patch")
-sha256sums=('67160b20ade786b2ebbb2f979d9da6cbdd22895ce99b2960100687f470dae9ed'
+sha256sums=('f201ba7fb7609a6416968d4e1920d87d67be693b5bc7d34b6b4a79860a9a8a4e'
             '87ec95e580ec315fdec2d8c1590c332e61486d387f0d6e6540e74a18e44fd2ab'
             '513f634cc1cab44eb17204616617695ea23355462f918873678fcac1a95ae778')
 conflicts=('python2-tensorflow-cuda' 'python2-tensorflow-cuda')
@@ -60,7 +60,7 @@ build() {
   PYTHON_BIN_PATH=/usr/bin/${PYTHON} ./configure
 
   msg2 "Running bazel build..."
-  bazel build -c opt --jobs 2 --python2_path ${PYTHON} ${_build_opts} //tensorflow/tools/pip_package:build_pip_package
+  bazel build -c opt --jobs 10 --python2_path ${PYTHON} ${_build_opts} //tensorflow/tools/pip_package:build_pip_package
 
   msg2 "Building pip package..."
   bazel-bin/tensorflow/tools/pip_package/build_pip_package "${srcdir}/tmp-${PYTHON}"
