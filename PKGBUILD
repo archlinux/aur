@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=hawaii-icon-theme-git
-pkgver=20150927.3963442
+pkgver=20160313.dfa9938
 pkgrel=1
 pkgdesc="Hawaii icon theme"
 arch=('any')
