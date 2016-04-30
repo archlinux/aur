@@ -2,9 +2,9 @@
 
 _pkgname=bumblebeed-resume
 pkgname=bumblebeed-resume-git
-pkgver=20160422
+pkgver=20160430
 pkgrel=1
-pkgdesc="Simple systemd service for restart bumblebeed service after resume"
+pkgdesc="Simple systemd service for prevent TURN ON NVIDIA GPU after resume"
 arch=('any')
 url="https://github.com/FadeMind/${_pkgname}"
 license=('GPL2')
