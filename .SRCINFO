@@ -1,6 +1,6 @@
 pkgbase = python-social-auth
 	pkgdesc = an easy-to-setup social authentication/registration mechanism with support for several frameworks and auth providers
-	pkgver = 0.2.18
+	pkgver = 0.2.19
 	pkgrel = 1
 	url = https://github.com/omab/python-social-auth
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-social-auth
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://github.com/omab/python-social-auth/archive/v0.2.18.tar.gz
-	sha256sums = 6b84fce9eac86c198341e1885631dd899cdd1a2d57f7eb13651c73289e25ea07
+	source = https://github.com/omab/python-social-auth/archive/v0.2.19.tar.gz
+	sha256sums = 3aa8d4758f377dc3ddad46d6de6366176293fd78a3489db16047a4ffb5a38996
 
 pkgname = python-social-auth
 	depends = python-openid
