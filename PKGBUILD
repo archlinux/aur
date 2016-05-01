@@ -15,13 +15,13 @@ _dejavu_font_dir="/usr/share/fonts/TTF"
 _gs_font_dir="/usr/share/fonts/Type1"
 _windows_font_dir="/usr/share/fonts/WindowsFonts"
 pkgname=imagemagick-full-git
-pkgver=7.0.0.0.r10577.g0ff89d1
-pkgrel=3
+pkgver=7.0.1.1.r10810.g5e3914e
+pkgrel=1
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features, Git version)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
 license=('custom')
-depends=('jemalloc' 'bzip2' 'libx11' 'libxext' 'libxt' 'libsm' 'zlib' 'autotrace-nomagick' 'fftw'
+depends=('jemalloc' 'bzip2' 'libx11' 'libxext' 'libxt' 'libsm' 'zlib' 'autotrace-nomagick' 'fftw' 'flif-git'
          'libfpx' 'djvulibre' 'fontconfig' 'freetype2' 'libraqm' 'ghostscript' 'gsfonts' 'graphviz'
          'jbigkit' 'libjpeg-turbo' 'lcms' 'lcms2' 'openjpeg2' 'liblqr' 'xz' 'openexr' 'pango' 'libpng' 
          'librsvg' 'libtiff' 'libwebp' 'libwmf' 'libxml2' 'libmpeg2' 'opencl-headers' 'ocl-icd')
@@ -62,6 +62,7 @@ pkgver() {
 build() {
 	cd "${srcdir}/${pkgname}"
 	
+	CPPFLAGS="-I/usr/include/FLIF" \
 	./configure \
 	        --prefix=/usr \
 	        --sysconfdir=/etc \
@@ -90,6 +91,7 @@ build() {
 	        --with-autotrace \
 	        --without-dps \
 	        --with-fftw \
+	        --with-flif \
 	        --with-fpx \
 	        --with-djvu \
 	        --with-fontconfig \
