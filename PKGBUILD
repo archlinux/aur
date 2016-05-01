@@ -1,7 +1,7 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-81-libretro-git
-pkgver=103.24f5f83
+pkgver=104.721abbc
 pkgrel=1
 pkgdesc="A port of the EightyOne ZX81 Emulator to libretro (WIP)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
