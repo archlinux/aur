@@ -23,7 +23,7 @@ groups=("development" "IDE" "editor" "jetbrains")
 source=("file://riderRS-${_buildver}.tar.gz"
         "${pkgname}.desktop")
 sha256sums=('f49c806790d3fac2e629181da5e4d623c4b185e7138dd51b79df6ebd4c0ea506'
-            'da5f1c679605da35ae1fce934bed2439f4454062dc7661d1676bdd6a1d777146')
+            'e2782e2af1b0fb35c4fcf7c53fde1d215a069b027818ad125b2cb0bc0481dbfc')
 
 package() {
     cd "${srcdir}"
