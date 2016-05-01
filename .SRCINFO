@@ -1,6 +1,6 @@
 pkgbase = kayleevc
 	pkgdesc = Somewhat fancy voice command recognition software
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/Ratfink/kaylee
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = kayleevc
 	depends = gst-plugins-base
 	depends = python-gobject
 	depends = python-requests
-	source = https://github.com/Ratfink/kaylee/archive/v0.1.0.tar.gz
-	sha256sums = 698ca55c787a021181c9ee1171b6fd906d7134d17bd25a3d0204c28ad9bd550a
+	source = https://github.com/Ratfink/kaylee/archive/v0.1.1.tar.gz
+	sha256sums = b3eb487aeced02016ffd66c1d87d3e25224335b0bd111f9708bd43c4b43fb75c
 
 pkgname = kayleevc
 

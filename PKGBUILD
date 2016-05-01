@@ -1,7 +1,7 @@
 # Author: Clayton G. Hobbs <clay@lakeserv.net>
 
 pkgname=kayleevc
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Somewhat fancy voice command recognition software"
 arch=('any')
@@ -9,8 +9,8 @@ url="https://github.com/Ratfink/kaylee"
 license=(GPL3)
 depends=('python' 'pocketsphinx' 'gstreamer' 'gst-plugins-base'
   'python-gobject' 'python-requests')
-source=(https://github.com/Ratfink/kaylee/archive/v0.1.0.tar.gz)
-sha256sums=('698ca55c787a021181c9ee1171b6fd906d7134d17bd25a3d0204c28ad9bd550a')
+source=(https://github.com/Ratfink/kaylee/archive/v${pkgver}.tar.gz)
+sha256sums=('b3eb487aeced02016ffd66c1d87d3e25224335b0bd111f9708bd43c4b43fb75c')
 makedepends=('python')
 
 package() {
