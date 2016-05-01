@@ -2,7 +2,7 @@
 
 pkgname=owncloud-archive
 pkgver=9.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="ownCloud server release, installed from the official .tar.bz2 archive"
 url="https://owncloud.org"
 arch=('any')
@@ -26,10 +26,11 @@ options=('!strip')
 backup=('etc/webapps/owncloud/apache.example.conf')
 install=${pkgname}.install
 validpgpkeys=('E3036906AD9F30807351FAC32D5D5E97F6978A26')
-source=("https://download.owncloud.org/community/owncloud-${pkgver}.tar.bz2"{,.asc} "apache.example.conf")
+source=("https://download.owncloud.org/community/owncloud-${pkgver}.tar.bz2"{,.asc} "apache.example.conf" "set-oc-perms.sh")
 md5sums=('1ce7ad9f4970b0cd64a23af0bbe280d9'
          'SKIP'
-         'bf523e475fd8cf1e2048018952da5c34')
+         'bf523e475fd8cf1e2048018952da5c34'
+         '30333bf6beb39b5048fcb85c74e690c0')
 
 options=(!strip emptydirs)
 
@@ -39,7 +40,8 @@ package() {
 
   mkdir -p "${pkgdir}/usr/share/webapps"
   cp -a owncloud "${pkgdir}/usr/share/webapps/."
-  
+ 
+  install -D -m755 ${srcdir}/set-oc-perms.sh "${pkgdir}/sbin/set-oc-perms"
   install -m644 -D ${srcdir}/apache.example.conf -t ${pkgdir}/etc/webapps/owncloud
   mkdir -p ${pkgdir}/usr/bin
   ln -s /usr/share/webapps/owncloud/occ ${pkgdir}/usr/bin/occ
