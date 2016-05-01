@@ -1,0 +1,22 @@
+From 46b6e863ad7e1362cc3644004a022b8dcbe2860e Mon Sep 17 00:00:00 2001
+From: Brenton Horne <brentonhorne77@gmail.com>
+Date: Wed, 13 Apr 2016 15:24:34 +1000
+Subject: [PATCH] Update package.json
+
+---
+ package.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/package.json b/package.json
+index d5c4c6a..5341d8f 100644
+--- a/package.json
++++ b/package.json
+@@ -12,7 +12,7 @@
+     "url": "https://github.com/atom/atom/issues"
+   },
+   "license": "MIT",
+-  "electronVersion": "0.36.8",
++  "electronVersion": "0.36.12",
+   "dependencies": {
+     "async": "0.2.6",
+     "atom-keymap": "6.3.2",
