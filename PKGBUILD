@@ -19,9 +19,9 @@ source=("https://github.com/atom/atom/archive/v${_pkgver}-beta${_pkgbeta}.tar.gz
         "atom-beta.desktop"
         "package.patch")
 
-sha256sums=('updpkgsums'
-            'updpkgsums'
-            'updpkgsums')
+sha256sums=('58c79049787a0b844c434d1364bb25ed2ce8176eaf565efaf9312bc6e68bca99'
+            '10e158a590ff3a52481ea30f3742c170c7b49557fc7f7af875394de91048311f'
+            'fbd8e29cdde10d430d809ffb2bdd52c5a0af3af96ad882c4754c553fefa7b2db')
 
 prepare() {
 	cd "atom-${_pkgver}-beta${_pkgbeta}"
