@@ -1,4 +1,4 @@
-# Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
+# Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 # Submitter: Martin Wimpress <code@flexion.org>
 
 pkgname=paper-gtk-theme-git
