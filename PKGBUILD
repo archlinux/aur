@@ -1,5 +1,5 @@
 pkgname=python-pyautogui
-pkgver=0.9.31
+pkgver=0.9.33
 pkgrel=1
 pkgdesc="A cross-platform GUI automation Python module for human beings"
 arch=('any')
@@ -8,7 +8,7 @@ license=('BSD')
 makedepends=('python-setuptools')
 depends=('python-xlib' 'python-pillow')
 source=(https://pypi.python.org/packages/source/P/PyAutoGUI/PyAutoGUI-${pkgver}.zip)
-md5sums=('ae5c9468911863bd9d174642abd5bc18')
+md5sums=('c0c83ce432e1099ebc3ace31001edcee')
 
 package() {
   cd "$srcdir/PyAutoGUI-${pkgver}"
