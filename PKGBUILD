@@ -22,7 +22,7 @@ build () {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  install -Dm744 sat-shell "${pkgdir}/usr/bin/sat-shell"
+  install -Dm755 sat-shell "${pkgdir}/usr/bin/sat-shell"
 }
 
 # vim:set ts=2 sw=2 et:
