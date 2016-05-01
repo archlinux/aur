@@ -1,7 +1,7 @@
 # Maintainer: Moritz Lipp <mail@mlq.me>
 pkgname=fmbt
 _pkgname=fMBT
-pkgver=0.30
+pkgver=0.31
 pkgrel=1
 epoch=
 pkgdesc="Free Model Based tool"
@@ -32,7 +32,7 @@ depends=(
   'tesseract-data-eng'
   )
   source=(https://github.com/01org/$_pkgname/archive/v$pkgver.tar.gz)
-md5sums=('b7df5c2731da457b9f4ae4928d2bcb33')
+md5sums=('14f11badf6e0c5062ba37685034c1709')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
