@@ -2,8 +2,8 @@
 # Contributor: Hubert Jarosz <marqin.pl+aur at gmail dot com> PGP: 0xFFECF63C1AAB83FF
 
 pkgname=renderdoc-git
-pkgver=r2777.9ee529e
-pkgrel=2
+pkgver=r3059.d98c29b
+pkgrel=1
 pkgdesc="OpenGL and Vulkan debugging tool"
 arch=(i686 x86_64)
 url="https://github.com/baldurk/renderdoc"
@@ -11,10 +11,10 @@ license=("MIT")
 depends=(qt5-x11extras)
 source=("git+https://github.com/baldurk/renderdoc"
         "renderdoc.desktop"
-        "patch1.diff")
+        "cflags.patch")
 sha256sums=('SKIP'
             'eab4941dc17fbbdcb9e34a698c3b304d212be54956daeb0c3b1cf5b7f2b00984'
-            'f166de9d2bb46b8d64e73e7e8afe026525ecfb58d47fc5dacf0b0fff7a57adf2')
+            '21ba3fb37c0db0c9772ab3229431fc365289ae5e25eb7cb345632f2e87f74195')
 conflicts=('renderdoc')
 provides=('renderdoc')
 
@@ -25,19 +25,32 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}"/renderdoc
-  patch -p1 < ../patch1.diff
+  patch -sp1 -i ../cflags.patch
 }
 
 build() {
   cd "${srcdir}"/renderdoc
+
+  mkdir -p build
+  pushd build
+  cmake \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DENABLE_QRENDERDOC=OFF \
+    ..
   make
+  popd
+
+  pushd qrenderdoc
+  qmake "CONFIG+=release" "DESTDIR=${srcdir}/renderdoc/build/bin" .
+  make
+  popd
 }
 
 package() {
   cd "${srcdir}"
   install -Dm644 renderdoc.desktop "$pkgdir/usr/share/applications/renderdoc.desktop"
 
-  cd "${srcdir}"/renderdoc/bin
+  cd "${srcdir}"/renderdoc/build/bin
   install -Dm644 librenderdoc.so "$pkgdir/usr/lib/librenderdoc.so"
   install -Dm755 qrenderdoc "$pkgdir/usr/bin/qrenderdoc"
   install -Dm755 renderdoccmd "$pkgdir/usr/bin/"

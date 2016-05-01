@@ -1,7 +1,7 @@
 pkgbase = renderdoc-git
 	pkgdesc = OpenGL and Vulkan debugging tool
-	pkgver = r2777.9ee529e
-	pkgrel = 2
+	pkgver = r3059.d98c29b
+	pkgrel = 1
 	url = https://github.com/baldurk/renderdoc
 	arch = i686
 	arch = x86_64
@@ -11,10 +11,10 @@ pkgbase = renderdoc-git
 	conflicts = renderdoc
 	source = https://github.com/baldurk/renderdoc
 	source = renderdoc.desktop
-	source = patch1.diff
+	source = cflags.patch
 	sha256sums = SKIP
 	sha256sums = eab4941dc17fbbdcb9e34a698c3b304d212be54956daeb0c3b1cf5b7f2b00984
-	sha256sums = f166de9d2bb46b8d64e73e7e8afe026525ecfb58d47fc5dacf0b0fff7a57adf2
+	sha256sums = 21ba3fb37c0db0c9772ab3229431fc365289ae5e25eb7cb345632f2e87f74195
 
 pkgname = renderdoc-git
 
