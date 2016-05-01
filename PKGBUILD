@@ -1,14 +1,14 @@
 pkgname=reaper
-pkgver=5.1rc1
-pkgrel=2
+pkgver=5.20b10
+pkgrel=1
 pkgdesc="digital audio workstation"
 arch=('x86_64')
 url="http://www.reaper.fm"
 license=('GPL')
 depends=('gdk-pixbuf2' 'gtk3' 'jack')
-source=("http://www.landoleet.org/dev/${pkgname}_51rc1_developer_linux_x86_64.tar.xz"
+source=("http://www.landoleet.org/dev/${pkgname}_520beta10_developer_linux_x86_64.tar.xz"
 	"git+http://www-dev.cockos.com/wdl/WDL.git")
-md5sums=('736eb3f248682ff16d5354b613b379e1' 'SKIP')
+md5sums=('9ef4051a370a49bb517818a30b156047' 'SKIP')
 
 build() {
   cd "${srcdir}/WDL/WDL/swell"
