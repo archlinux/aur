@@ -1,5 +1,4 @@
-# Contributor: rich_o <rich_o@lavabit.com>
-# Maintainer: rich_o <rich_o@lavabit.com>
+# Maintainer: Felix Wiegand <koffeinflummi@gmail.com>
 
 _pkgname="armake"
 pkgname="${_pkgname}-git"
