@@ -1,9 +1,8 @@
 pkgbase = pithos-git
 	pkgdesc = Pandora Internet Radio player for GNOME
-	pkgver = 1.1.1.r43.gb325db4
+	pkgver = 1.1.1.r80.g2edf730
 	pkgrel = 1
 	url = https://pithos.github.io/
-	install = pithos-git.install
 	arch = any
 	license = GPL3
 	makedepends = git
@@ -27,9 +26,7 @@ pkgbase = pithos-git
 	provides = pithos
 	conflicts = pithos-bzr
 	conflicts = pithos
-	source = pithos-git.install
 	source = git+https://github.com/pithos/pithos.git
-	sha256sums = 5b3bb0f5a3cfe676eb716f3728ba3ba606e6eaa205b7f2050ba8ab9e6ded98d5
 	sha256sums = SKIP
 
 pkgname = pithos-git
