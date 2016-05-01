@@ -3,7 +3,7 @@
 # Special thanks to the Linux Mint project, without them this would not exist.
 
 pkgname='mint-x-icons'
-pkgver='1.3.4'
+pkgver='1.3.5'
 pkgrel='1'
 pkgdesc='Mint-X Icon themes.  A mint/metal theme based on mintified versions of Clearlooks Revamp, Elementary and Faenza.'
 arch=('any')
@@ -13,7 +13,7 @@ source=("${url}/${pkgname}_${pkgver}.tar.xz")
 depends=('gdk-pixbuf2' 'gtk-update-icon-cache')
 options=('!strip')
 install="${pkgname}.install"
-sha256sums=('cda6bda228d4b66149c5ecc44c9331a8b3c9ef3b98c4c092e76c59d33cb1cc9a')
+sha256sums=('d53a531683b6b6106440c159b6820ebe2045c36ef5bf86f855e2f73ea04a440f')
 
 prepare() {
 	find "${srcdir}" -type d ! -perm 755 -exec chmod 755 {} +
