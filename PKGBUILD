@@ -1,6 +1,6 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=lsp-plugins-lv2-bin
-pkgver=1.0.4
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Linux Studio Plugins: LV2 format"
 arch=('i686' 'x86_64')
@@ -9,10 +9,10 @@ license=('custom')
 depends=('libsndfile' 'gtk2')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source_i686=("http://downloads.sourceforge.net/project/lsp-plugins/v1.0.4/${pkgname%-*}-$pkgver-i586.tar.gz")
-source_x86_64=("http://downloads.sourceforge.net/project/lsp-plugins/v1.0.4/${pkgname%-*}-$pkgver-x86_64.tar.gz")
-sha1sums_i686=('6081ed5ad79e090ade05b797b38114342edb3598')
-sha1sums_x86_64=('7610265da6f849f9fa6f28b479f7836837a654d0')
+source_i686=("http://downloads.sourceforge.net/project/lsp-plugins/v${pkgver}/${pkgname%-*}-$pkgver-i586.tar.gz")
+source_x86_64=("http://downloads.sourceforge.net/project/lsp-plugins/v${pkgver}/${pkgname%-*}-$pkgver-x86_64.tar.gz")
+sha1sums_i686=('21b6c83be8e201241c714bf9bb3527a4d795fcc7')
+sha1sums_x86_64=('26628fb1424b7132a4b110e47fd8efdbd7a47c09')
 
 package() {
 	cd $srcdir
