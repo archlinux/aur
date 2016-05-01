@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Exec=biniax2
+Name=Biniax2
+GenericName=Arcade game : match two similar fruits, and they will disappear, just clear your way and avoid being blocked
+Comment=
+Icon=/usr/share/icons/hicolor/32x32/apps/biniax2.png
+Terminal=false
+Type=Application
+Categories=Qt;Game;ArcadeGame;
