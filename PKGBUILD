@@ -9,7 +9,7 @@ pkgdesc="a free, open, and libre browser modification of the Chromium code base"
 arch=('i686' 'x86_64')
 url="https://iridiumbrowser.de/"
 license=('BSD')
-depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
+depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
          'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
          'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
          'libvpx' 'perl' 'perl-file-basedir' 'desktop-file-utils'
@@ -60,10 +60,13 @@ prepare() {
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
 
-  # Remove bundled ICU; its header files appear to get picked up instead of
-  # the system ones, leading to errors during the final link stage.
-  # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/BNGvJc08B6Q
-  find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
+  # Commentception – use bundled ICU due to build failures (50.0.2661.75)
+  # See https://crbug.com/584920 and https://crbug.com/592268
+  # ---
+  ## Remove bundled ICU; its header files appear to get picked up instead of
+  ## the system ones, leading to errors during the final link stage.
+  ## https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/BNGvJc08B6Q
+  #find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
@@ -119,7 +122,7 @@ build() {
     -Duse_system_flac=1
     -Duse_system_ffmpeg=0
     -Duse_system_harfbuzz=1
-    -Duse_system_icu=1
+    -Duse_system_icu=0
     -Duse_system_libevent=1
     -Duse_system_libjpeg=1
     -Duse_system_libpng=1
@@ -198,6 +201,8 @@ package() {
   ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/chromium/LICENSE"
+
+  install -Dm644 out/Release/icudtl.dat "${pkgdir}/usr/lib/chromium/icudtl.dat"
 }
 
 # vim:set ts=2 sw=2 et:
