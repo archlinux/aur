@@ -4,15 +4,15 @@ _name="GitPython"
 _module="git"
 
 pkgname=("python-${_module}" "python2-${_module}")
-pkgver="2.0.1"
+pkgver="2.0.2"
 pkgrel="1"
 pkgdesc="Python Git Library"
 arch=("any")
 url="https://github.com/gitpython-developers/${_name}"
 license=("BSD")
 makedepends=("python-setuptools" "python2-setuptools")
-source=("https://pypi.python.org/packages/ff/9c/26c5ba8648d110db18c225e93c3df5e771318bdd17b723da45ef24464f78/${_name}-${pkgver}.tar.gz")
-sha256sums=('0e2893a59db37d7c06607507211fee9ec0a93b89fa56b0067eaad1b8ecdf0562')
+source=("https://pypi.python.org/packages/bd/2b/61086a6b73e5255d2e6f07807ec6974e2f485d22183671c86c2c2064624b/${_name}-${pkgver}.tar.gz")
+sha256sums=('d168fe7bd585757dd9f54708b065c07fd85597923513041f8c192135441004a1')
 
 prepare() {
     cp -a "${srcdir}/${_name}-${pkgver}" "${srcdir}/${_name}-${pkgver}-python2"
