@@ -41,7 +41,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/webapps"
   cp -a owncloud "${pkgdir}/usr/share/webapps/."
  
-  install -D -m755 ${srcdir}/set-oc-perms.sh "${pkgdir}/usr/sbin/set-oc-perms"
+  install -D -m755 ${srcdir}/set-oc-perms.sh "${pkgdir}/usr/bin/set-oc-perms"
   install -m644 -D ${srcdir}/apache.example.conf -t ${pkgdir}/etc/webapps/owncloud
   mkdir -p ${pkgdir}/usr/bin
   ln -s /usr/share/webapps/owncloud/occ ${pkgdir}/usr/bin/occ
