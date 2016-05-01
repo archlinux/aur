@@ -1,7 +1,7 @@
 # Maintainer: Mike Cooper <mythmon@gmail.com>
 
 pkgname=fortune-mod-all-en
-pkgver=11
+pkgver=12
 pkgrel=1
 pkgdesc="Meta package for all English fortunes"
 arch=('i686' 'x86_64')
@@ -41,7 +41,6 @@ depends=(
   'fortune-mod-entourage-ari_gold'
   'fortune-mod-eureka'
   'fortune-mod-farscape'
-  'fortune-mod-firefly'
   'fortune-mod-freshprince'
   'fortune-mod-fringe'
   'fortune-mod-fullhouse'
@@ -49,7 +48,6 @@ depends=(
   'fortune-mod-hitchhiker'
   'fortune-mod-homeland'
   'fortune-mod-iasip'
-  'fortune-mod-issa-haiku'
   'fortune-mod-joel'
   'fortune-mod-kernelnewbies'
   'fortune-mod-kylexy'
@@ -58,7 +56,6 @@ depends=(
   'fortune-mod-lost'
   'fortune-mod-lostgirl'
   'fortune-mod-marriedwithchildren'
-  'fortune-mod-matrix'
   'fortune-mod-mentalist'
   'fortune-mod-metalocalypse'
   'fortune-mod-misfits'
@@ -69,8 +66,6 @@ depends=(
   'fortune-mod-mynameisearl'
   'fortune-mod-newgirl'
   'fortune-mod-peepshow'
-  'fortune-mod-portal'
-  'fortune-mod-portal2'
   'fortune-mod-prettylittleliars'
   'fortune-mod-protolol-git'
   'fortune-mod-psych'
