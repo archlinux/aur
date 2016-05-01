@@ -6,7 +6,8 @@ _pkgbeta=3
 _pkgver=1.8.0
 pkgver="${_pkgver}.beta${_pkgbeta}"
 pkgrel=1
-pkgdesc='Chrome-based text editor from Github - Beta Channel'
+pkgdesc='Chrome-based text editor from Github - Beta Channel (A hackable text editor
+for the 21st Century)'
 arch=('x86_64' 'i686')
 url='https://github.com/atom/atom'
 license=('MIT')
