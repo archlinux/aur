@@ -1,6 +1,6 @@
 pkgbase = atom-editor-beta
-	pkgdesc = Chrome-based text editor from Github - Beta Channel (A hackable text editor for the 21st Century)
-	pkgver = 1.8.0.beta3
+	pkgdesc = Chrome-based text editor from GitHub - Beta Channel
+	pkgver = 1.8.0.3
 	pkgrel = 1
 	url = https://github.com/atom/atom
 	install = atom.install
@@ -10,7 +10,6 @@ pkgbase = atom-editor-beta
 	makedepends = git
 	makedepends = npm
 	depends = alsa-lib
-	depends = desktop-file-utils
 	depends = gconf
 	depends = gtk2
 	depends = libgnome-keyring
@@ -20,16 +19,9 @@ pkgbase = atom-editor-beta
 	depends = nss
 	depends = python2
 	optdepends = gvfs: file deletion support
-	conflicts = atom-editor-bin
-	conflicts = atom-editor-git
 	conflicts = atom-editor-beta-bin
-	conflicts = atom-editor
 	source = https://github.com/atom/atom/archive/v1.8.0-beta3.tar.gz
-	source = atom-beta.desktop
-	source = package.patch
 	sha256sums = 58c79049787a0b844c434d1364bb25ed2ce8176eaf565efaf9312bc6e68bca99
-	sha256sums = 10e158a590ff3a52481ea30f3742c170c7b49557fc7f7af875394de91048311f
-	sha256sums = fbd8e29cdde10d430d809ffb2bdd52c5a0af3af96ad882c4754c553fefa7b2db
 
 pkgname = atom-editor-beta
 
