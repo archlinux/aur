@@ -1,7 +1,7 @@
 pkgbase = clfft
 	pkgdesc = A software library containing FFT functions written in OpenCL
-	pkgver = 2.4
-	pkgrel = 2
+	pkgver = 2.12.0
+	pkgrel = 1
 	url = https://github.com/clMathLibraries/clFFT
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,8 @@ pkgbase = clfft
 	makedepends = opencl-headers
 	makedepends = cmake
 	depends = libcl
-	source = https://github.com/clMathLibraries/clFFT/archive/v2.4.tar.gz
-	md5sums = 32f1c5e18d0827550a96ac5f0d369120
-	sha512sums = 3450f3ee962e1722c765e962178c57df0bf298508603ac5b4ec12bd6396dc10279136d5b91383b9da56d95cebd0e552bf78e2c01ccaeb8cd43ed947b7d536209
+	source = https://github.com/clMathLibraries/clFFT/archive/v2.12.0.tar.gz
+	sha512sums = 8ee21847f2877989a1b6a62f62807e2cfd6d6845ed36702de775eb9dbccfed898e9969cce7bb93827745b5d65a5d91aaf07c565c92e65b6fefe3028efa9c23c9
 
 pkgname = clfft
 

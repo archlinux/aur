@@ -2,8 +2,8 @@
 # Contributor: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=clfft
-pkgver=2.4
-pkgrel=4
+pkgver=2.12.0
+pkgrel=1
 pkgdesc="A software library containing FFT functions written in OpenCL"
 arch=("i686" "x86_64")
 url="https://github.com/clMathLibraries/clFFT"
@@ -13,8 +13,7 @@ makedepends=('opencl-headers' 'cmake')
 checkdepends=('fftw' 'gtest')
 
 source=("https://github.com/clMathLibraries/clFFT/archive/v${pkgver}.tar.gz")
-md5sums=('32f1c5e18d0827550a96ac5f0d369120')
-sha512sums=('3450f3ee962e1722c765e962178c57df0bf298508603ac5b4ec12bd6396dc10279136d5b91383b9da56d95cebd0e552bf78e2c01ccaeb8cd43ed947b7d536209')
+sha512sums=('8ee21847f2877989a1b6a62f62807e2cfd6d6845ed36702de775eb9dbccfed898e9969cce7bb93827745b5d65a5d91aaf07c565c92e65b6fefe3028efa9c23c9')
 
 if [ "$CARCH" == "x86_64" ]; then
 _bits=64
@@ -25,13 +24,13 @@ fi
 build() {
   mkdir -p "${srcdir}/build"
   cd "${srcdir}/build"
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "../clFFT-${pkgver}/src"
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr "../clFFT-${pkgver}/src" #-DBUILD_TEST=true 
   make
 }
 
 check() {
   cd "${srcdir}/build"
-#  ./staging/Test
+  #./staging/Test
 }
 
 package() {
