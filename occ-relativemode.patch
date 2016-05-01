@@ -1,0 +1,36 @@
+diff -aur netgen-5.3.1/libsrc/occ/occgeom.cpp netgen-5.3.1.patched/libsrc/occ/occgeom.cpp
+--- netgen-5.3.1/libsrc/occ/occgeom.cpp	2014-08-29 11:54:03.000000000 +0200
++++ netgen-5.3.1.patched/libsrc/occ/occgeom.cpp	2016-05-01 16:07:05.320269578 +0200
+@@ -1034,20 +1034,6 @@
+ 
+ 
+ 
+-   void OCCGeometry :: WriteOCC_STL(char * filename)
+-   {
+-      cout << "writing stl..."; cout.flush();
+-      StlAPI_Writer writer;
+-      writer.RelativeMode() = Standard_False;
+-
+-      writer.SetDeflection(0.02);
+-      writer.Write(shape,filename);
+-
+-      cout << "done" << endl;
+-   }
+-
+-
+-
+    // Philippose - 23/02/2009
+    /* Special IGES File load function including the ability
+    to extract individual surface colours via the extended
+diff -aur netgen-5.3.1/libsrc/occ/occgeom.hpp netgen-5.3.1.patched/libsrc/occ/occgeom.hpp
+--- netgen-5.3.1/libsrc/occ/occgeom.hpp	2014-08-29 11:54:03.000000000 +0200
++++ netgen-5.3.1.patched/libsrc/occ/occgeom.hpp	2016-05-01 16:08:01.966629365 +0200
+@@ -385,8 +385,6 @@
+       void GetNotDrawableFaces (stringstream & str);
+       bool ErrorInSurfaceMeshing ();
+ 
+-     void WriteOCC_STL(char * filename);
+-
+      virtual int GenerateMesh (Mesh*& mesh, MeshingParameters & mparam, 
+          int perfstepsstart, int perfstepsend);
+ 
