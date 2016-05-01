@@ -3,7 +3,7 @@
 
 pkgname=urbanlightscape
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A photo filter for exposure, brightness and lighting correction"
 arch=(i686 x86_64)
 url="http://www.indii.org/software/urbanlightscape"
@@ -11,9 +11,9 @@ license=('GPL')
 depends=('wxgtk' 'desktop-file-utils')
 makedepends=('boost')
 source=("http://www.indii.org/files/${pkgname}/releases/${pkgname}-${pkgver}.tar.gz"
-        "http://www.indii.org/images/${pkgname}_128.png" "${pkgname}.desktop")
+        "${pkgname}.png" "${pkgname}.desktop")
 md5sums=('e5097a9a48f2f2cde1d641380f050dc6'
-         'b6940433e6e0bcd85fea1e311c520804'
+         'd15892b7d1d5cfd41297413099d7c97c'
          '295a61ac999850102e1330548b5a4d61')
 
 build() {
@@ -31,7 +31,6 @@ package() {
     "$pkgdir/usr/share/applications/${pkgname}.desktop"
 
   # icon
-  install -Dm644 ../${pkgname}_128.png \
+  install -Dm644 ../${pkgname}.png \
     "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
-
