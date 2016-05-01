@@ -5,7 +5,7 @@
 
 pkgname=pithos
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Pandora Internet Radio player for GNOME'
 arch=('any')
 url="http://pithos.github.io/"
@@ -21,7 +21,6 @@ optdepends=('libkeybinder3: for media keys plugin'
             'libnotify: Notification support'
             'python-dbus: MPRIS/Screensaver Pause/Gnome mediakeys support')
 source=("https://github.com/pithos/pithos/archive/${pkgver}.tar.gz")
-install="$pkgname.install"
 sha256sums=('560cc42410981c4578505bf67635c75d11b63fe8ff5d4d73e154e016e7fe5465')
 
 package() {
