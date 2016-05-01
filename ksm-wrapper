@@ -2,7 +2,7 @@
 # Rewrite of ksm-wrapper to use /usr/lib
 sofile=/usr/lib/ksm_preload/libksm_preload.so
 case " $LD_PRELOAD " in
-    (*[: ]"$sofile"[: ]*) ;;
+    (*[:\ ]"$sofile"[:\ ]*) ;;
     (*) LD_PRELOAD="${LD_PRELOAD:+$LD_PRELOAD }$sofile"
         export LD_PRELOAD;;
 esac
