@@ -9,7 +9,7 @@ epoch=3
 
 makedepends=('cups' 'perl' 'libxml2' 'enscript' 'perl' 'net-snmp' 'bash')
 url="http://www.linuxprinting.org/foomatic.html"
-options=('!emptydirs')
+options=('!emptydirs' '!strip')
  
 source=(foomatic-db-${pkgver}.tar.xz::http://www.openprinting.org/download/foomatic/foomatic-db-current.tar.xz)
 sha256sums=('SKIP')
