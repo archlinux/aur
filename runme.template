@@ -1,15 +1,26 @@
 #!/bin/bash
 #
 export KMP_AFFINITY=nowarnings,compact
- 
-echo -e "Edit \E[31m/etc/linpack.conf\E[37m to adjust the amount of physical memory to consume."
+
+SKEL_CONFIG="/usr/share/linpack"
+CONFIG="$SKEL_CONFIG/linpack.conf"
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+
+[[ -f "$SKEL_CONFIG/linpack.conf" ]] || {
+	echo "ERROR: Missing $SKEL_CONFIG/linpack.conf - reinstall this package." ; exit 1 ; }
+
+[[ -d $XDG_CONFIG_HOME ]] || mkdir $XDG_CONFIG_HOME
+[[ -f "$XDG_CONFIG_HOME/linpack.conf" ]] || cp "$CONFIG" "$XDG_CONFIG_HOME"
+
+echo -e "Edit \E[31m$XDG_CONFIG_HOME/linpack.conf\E[37m to adjust the amount of physical memory to consume."
 echo
 echo -e "Starting calculation.... hit ctrl+c to stop."
 echo -e "Consult \E[31m~/lin_xeon@TARGET_BIT@.txt\E[37m for results as they are caculated."
 
 date
 date >> ~/lin_xeon@TARGET_BIT@.txt
-/usr/bin/xlinpack_xeon@TARGET_BIT@ /etc/linpack.conf >> ~/lin_xeon@TARGET_BIT@.txt
+
+/usr/bin/xlinpack_xeon@TARGET_BIT@ $XDG_CONFIG_HOME/linpack.conf >> ~/lin_xeon@TARGET_BIT@.txt
 date >> ~/lin_xeon@TARGET_BIT@.txt
 echo -n "Done: "
 date
