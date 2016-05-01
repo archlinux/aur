@@ -17,5 +17,5 @@ package()
 	cp -r usr $pkgdir
 }
 source=(https://github.com/RunGp/Nvidiux/archive/1.3.1.tar.gz)
-md5sums=('bc2ec77d8d9ac592fedf569f9a3d1daf ')
+md5sums=('bc2ec77d8d9ac592fedf569f9a3d1daf')
 
