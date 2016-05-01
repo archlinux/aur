@@ -3,17 +3,18 @@
 # Contributor: Andrew Panchenko <panchenkoac at gmail>
 
 pkgname=qmmp-svn
-pkgver=1.1.0.svn.r5646
+pkgver=1.1.0.svn.r6276
 pkgrel=1
 pkgdesc="A Qt based audio-player. (SVN Version)"
 arch=('i686' 'x86_64')
-url="http://qmmp.ylsoftware.com"
+url='http://qmmp.ylsoftware.com'
 license=('GPL')
 depends=('curl'
          'hicolor-icon-theme'
          'qt5-x11extras'
          'xdg-utils'
-         'taglib')
+         'taglib'
+         )
 makedepends=('subversion'
              'cmake'
              'flac'
@@ -41,7 +42,9 @@ makedepends=('subversion'
              'faad2'
              'libbs2b'
              'taglib'
-             'alsa-lib')
+             'alsa-lib'
+             'qt5-multimedia'
+             )
 optdepends=('qmmp-plugin-pack-svn: for mpg123, ffap and qtui plugin'
             'flac: native FLAC support'
             'jack2: JACK sound output'
@@ -55,7 +58,7 @@ optdepends=('qmmp-plugin-pack-svn: for mpg123, ffap and qtui plugin'
             'libsndfile: sampled sound support'
             'projectm: visual efects support'
             'ffmpeg: FFmpeg engine (include lot of audio formats) support'
-            'mplayer: Mplayer enguine (include lot of audio formats) support'
+            'mplayer: Mplayer engine (include lot of audio formats) support'
             'libsamplerate: audio filter support'
             'libbs2b: audio filter support'
             'wavpack: WavPack audio support'
@@ -67,12 +70,13 @@ optdepends=('qmmp-plugin-pack-svn: for mpg123, ffap and qtui plugin'
             'libgme: video game music format suppoort'
             'libmad: MPEG audio decoder support'
             'libvorbis: Vorbis audio support'
-            'libogg: OGG audio support')
+            'libogg: OGG audio support'
+            'qt5-multimedia: Qt media output support'
+            )
 provides=('qmmp')
 conflicts=('qmmp')
 source=('qmmp::svn+svn://svn.code.sf.net/p/qmmp-dev/code/branches/qmmp-1.1')
 sha1sums=('SKIP')
-install=qmmp-svn.install
 
 pkgver() {
   cd qmmp
