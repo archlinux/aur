@@ -1,6 +1,6 @@
 # Maintainer: Matej Grabovsky <matej.grabovsky at gmail>
 pkgname=proverif
-pkgver=1.93
+pkgver=1.94
 pkgrel=1
 pkgdesc='Cryptographic protocol verifier in the formal model'
 arch=('i686' 'x86_64')
@@ -8,8 +8,8 @@ url='http://prosecco.gforge.inria.fr/personal/bblanche/proverif/'
 license=('GPL')
 depends=('ocaml')
 source=("http://prosecco.gforge.inria.fr/personal/bblanche/proverif/proverif$pkgver.tar.gz")
-sha1sums=('6ec37f0057728ed90b34bd9345992e9792009744')
-sha256sums=('37c7c955284d1c387a74c60aae78aa83d46167eb76edb2c0d06b1bb7f604def0')
+sha1sums=('c4a7ebfde065a66690f37d74e346e61a91294182')
+sha256sums=('a65c854d0b538053f0eb5b4550d8215cf6da486a1820c7dbb90a7873e6836237')
 
 build() {
   cd "$srcdir/proverif$pkgver"
