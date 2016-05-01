@@ -1,4 +1,4 @@
-# Maintainer: Darren Hobin <firstname daughhhttt lastname atttt live ddddott calm>
+# Maintainer: Darren Hobin <firstname lastname atttt live daughhhttt calm>
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 _pkgname="efitools"
