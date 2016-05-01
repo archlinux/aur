@@ -1,24 +1,24 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=theshell
-pkgver=1.2
+pkgver=1.3
 pkgrel=0
 pkgdesc="Desktop Shell that gets out of your way"
 arch=("x86_64")
 url="https://github.com/vicr123/theshell"
 license=('GPL3')
-depends=('kwidgetsaddons' 'xdg-utils' 'wmctrl' 'kwin' 'networkmanager' 'xorg-xbacklight')
+depends=('kwidgetsaddons' 'xdg-utils' 'wmctrl' 'kwin' 'networkmanager' 'xorg-xbacklight' 'redshift')
 optdepends=('alsa-utils: for volume controls'
 	    'pocketsphinx: for theWave'
 	    'festival: for theWave')
-makedepends=('qtchooser' 'git' 'clang')
+makedepends=('qtchooser' 'git')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/theshell#branch=master')
 md5sums=('SKIP')
 
 build() {
 	cd "$pkgname-$pkgver"
 	qdbuscpp2xml -M -s notificationdbus.h -o org.freedesktop.Notifications.xml
-	qmake theShell.pro -r -spec linux-clang
+	qmake theShell.pro
 	make
 }
 
