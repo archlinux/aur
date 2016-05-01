@@ -4,7 +4,7 @@ _srcname="ImageMagick"
 _srcver="6.9.3-8"
 pkgname=imagemagick-full-doc
 pkgver="$(echo ${_srcver} | tr '-' '.')"
-pkgrel=1
+pkgrel=2
 pkgdesc="The ImageMagick documentation (utilities manuals and libraries API)"
 arch=('any')
 url="http://www.imagemagick.org/"
@@ -25,6 +25,6 @@ package() {
 	
 	make DESTDIR="$pkgdir/" install-data-html
 	
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 }
