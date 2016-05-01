@@ -1,0 +1,4 @@
+post_install() {
+echo "Place The follwing: . /path/to/z.sh"
+echo "In your $HOME/.bashrc or $HOME/.zshrc file accordingly."
+}
