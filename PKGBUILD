@@ -1,17 +1,15 @@
 # Maintainer: 3ED <krzysztof1987@gmail.com>
 
 pkgname=daydreamer
-pkgver=8.4
+pkgver=9.0
 pkgrel=1
-_app_player=("0Byn3Yo_yFz45Q1ZSbjdKUkp2Mk0" "8.4" "DayDreamer8.4.jar")
+_app_player=("0Byn3Yo_yFz45dVV6N3ZudTRUMjg" "9.0" "DayDreamer9.0.jar")
 pkgdesc="Day Dreamer is interactive fiction player written in java (ddg/ddz format)"
 arch=('any')
 url="https://drive.google.com/folderview?id=0Byn3Yo_yFz45ak11MXl6U05mYVE&usp=sharing"
 license=('CCPL:BY-ND-NC')
 depends=('java-runtime-common')
 makedepends=('librsvg')
-install=daydreamer.install
-
 conflicts=(daydreamer-common)
 provides=(daydreamer-common)
 
@@ -22,7 +20,7 @@ source=("${pkgname}-${_app_player[1]}.zip::https://drive.google.com/uc?export=do
         "daydreamer-save.svg"
         "daydreamer-game.svg"
         "daydreamer.svg")
-sha512sums=('61300d514b45de5b2e37037139a6f636a49fbf9391e2d8757bb577d6c0e1537816de24dc1554fdbb8c44fd1177812a5f2716f401cfbf8d6dc6fa2131bb5810a1'
+sha512sums=('2a88f42aa800aec86c99a61a8810c9667098226ed3c0ab3bcba7b16a5b21132f63e33addbf27eb047af546cefd366d6b9a9a20640e277d44ed10bc50dc4c426f'
             'a88082bcccf82dee9035a6f26651d970e623acda31c5b97b86dc78f6bf76542091012db284d0f620119a6e9d4b1743bd5a2e2cf91b232ef25720b32fd984d5bc'
             'b02deb777a20e5adba60829a4916b3f13f22a9334d06068d4c73cd72a3863201eba2d6917171479f293cfe87b608538386a335a277876dc47c73604d09598759'
             'c812d292be1c455d006f8909527718a9d93dd9bb071e8cf66cdafea2f6860fb90a12a0776f677e1c09c2c5d3912e42397c573ef2c74fab1c608893ec1ad6842c'
