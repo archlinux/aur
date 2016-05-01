@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git')
 provides=('libdvdcss' 'libdvdcss.so')
 conflicts=('libdvdcss')
-source=('git+http://git.videolan.org/git/libdvdcss.git')
+source=('git+https://git.videolan.org/git/libdvdcss.git')
 sha1sums=('SKIP')
 
 pkgver() {
