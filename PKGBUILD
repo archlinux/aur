@@ -2,7 +2,7 @@
 # Original PKGBUILD Contributor: Patrick Bartels <p4ddy.b@gmail.com>
 # Thanks to Bregol
 pkgname="linux-zen-git"
-pkgver=4.5.2+575989+gde2f20f
+pkgver=4.5.2+575985+gb29c6f3
 pkgdesc="Featureful kernel including various new features, code and optimizations to better suit desktops"
 url="https://github.com/damentz/zen-kernel"
 license=("GPL2")
@@ -80,9 +80,6 @@ build() {
 	warning "Press ENTER if you want to build the kernel or CTRL+C to abort..."
 	read
 	
-	msg "Applying temp fix for max_numa_distance in smpboot.c"
-	sed -i 's/extern\ int\ sched\_max\_numa\_distance/int\ sched\_max\_numa\_distance\ \=\ \-1/g' "${srcdir}/zen-kernel/arch/x86/kernel/smpboot.c"
-
 	cd "${srcdir}/build"
 	msg2 "Building kernel..."; make -j $_CORES bzImage
 	msg2 "Building modules..."; make -j $_CORES modules
