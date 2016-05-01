@@ -1,4 +1,4 @@
-# Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
+# Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 # Contributer: Philip Abernethy <chais.z3r0@gmail.com>
 # Contributer: sowieso <sowieso@dukun.de>
 
