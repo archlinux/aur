@@ -1,6 +1,5 @@
 # Contributor: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
-# Contributor: Brenton Horne <brentonhorne77 at gmail dot com>
-# Maintainer: Jeffrey Shaffner <risoft@gmail.com>
+# Maintainer: Brenton Horne <brentonhorne77 at gmail dot com>
 
 pkgname=atom-editor-beta
 _pkgrel=3
