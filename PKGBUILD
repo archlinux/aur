@@ -19,7 +19,6 @@ sha1sums=('SKIP'
           '80beaa22bab87925a38a9be56abdb7cb77d4ac5e'
           '50f23061fcd03e0aafdefb3b676f1846c036c856'
           '96d3a0168f392af655e2b309711d7810ad3c022f')
-install=dsview.install
 
 pkgver() {
   cd DSView
