@@ -1,0 +1,14 @@
+pkgbase = gpmdp-bash
+	pkgdesc = Bash script for printing info from Google Play Music Desktop Player
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/iandrewt/gpmdp-bash
+	install = gpmdp-bash.install
+	arch = any
+	license = MIT
+	depends = google-play-music-desktop-player-git
+	source = https://github.com/iandrewt/gpmdp-bash/archive/v1.0.1.tar.gz
+	md5sums = 13b09fdd7a663b07d8f836dcba507c9d
+
+pkgname = gpmdp-bash
+
