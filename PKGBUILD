@@ -1,4 +1,4 @@
-# Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
+# Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=munge
