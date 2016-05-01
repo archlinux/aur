@@ -4,7 +4,7 @@ pkgname=wingide
 _wingver=5.1.11
 _wingrel=1
 pkgver=$_wingver.$_wingrel
-pkgrel=1
+pkgrel=2
 epoch=2 #bump this when adding a new patch
 pkgdesc="Wing IDE Professional is the full-featured Python IDE for professional programmers."
 url="http://www.wingware.com"
@@ -21,14 +21,16 @@ fi
 if [[ ! -z "$_wingpatch_i686" ]]; then
     _wingpatch_i686=( "${_wingpatch_i686[@]/#/$_patch_url_prefix}" )
 fi
-source_x86_64=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_wingrel-x86_64-linux.tar.gz" $_wingpatch_x86_64)
-source_i686=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_wingrel-i386-linux.tar.gz" $_wingpatch_i686)
+source_x86_64=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_wingrel-x86_64-linux.tar.gz" ${_wingpatch_x86_64[*]})
+source_i686=("http://wingware.com/pub/$pkgname/$_wingver/$pkgname-$_wingver-$_wingrel-i386-linux.tar.gz" ${_wingpatch_i686[*]})
 depends=('hicolor-icon-theme' 'libpng' 'python2' 'xdg-utils')
 options=(!strip !emptydirs)
 md5sums_i686=('392b8f3a0e2dcb69fd2d8316bd88b028'
-              'fd1b66865a42b27fd6344b71e747c654')
+              'fd1b66865a42b27fd6344b71e747c654'
+              'ec4937a0b3fc32f553d7ea9d65cf11d9')
 md5sums_x86_64=('ddacf06b4cc9577b9b80cbbb79de2d32'
-                'fd1b66865a42b27fd6344b71e747c654')
+                'fd1b66865a42b27fd6344b71e747c654'
+                'ec4937a0b3fc32f553d7ea9d65cf11d9')
 install=${pkgname}.install
 
 prepare() {
