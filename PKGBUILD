@@ -50,7 +50,7 @@ prepare() {
   touch chrome/test/data/webui/i18n_process_css_test.html
 
   # https://code.google.com/p/chromium/issues/detail?id=541273
-  sed -i "/'target_name': 'libvpx'/s/libvpx/&_new/" build/linux/unbundle/libvpx.gyp
+  #sed -i "/'target_name': 'libvpx'/s/libvpx/&_new/" build/linux/unbundle/libvpx.gyp
 
   # Enable support for the Widevine CDM plugin
   # The actual libraries are not included, but can be copied over from Chrome:
