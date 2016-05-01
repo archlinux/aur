@@ -3,7 +3,7 @@
 pkgname=flite-fpic
 _pkgname=flite
 pkgver=1.4
-pkgrel=7
+pkgrel=8
 pkgdesc="A lighweight version of festival speech synthesis compiled with -fPIC"
 arch=('i686' 'x86_64')
 url="http://www.speech.cs.cmu.edu/flite/"
@@ -11,6 +11,7 @@ license=('custom')
 depends=('glibc' 'alsa-lib')
 provides=('flite' 'flite-fpic')
 replaces=('flite')
+options=('!makeflags')
 source=(http://www.festvox.org/flite/packed/${_pkgname}-${pkgver}/${_pkgname}-${pkgver}-release.tar.bz2
 	${pkgname}.patch)
 md5sums=('b7c3523b3bbc6f29ce61e6650cd9a428'
@@ -28,8 +29,8 @@ build() {
   #we want the 16k, not 8k voice
   sed -i 's/cmu_us_kal/cmu_us_kal16/' config/config
   
-  #when multithreaded - there is some trouble when compiling
-  MAKEFLAGS="-j1" make
+  #no parallel builds
+  make -j1
 }
 
 package() {
