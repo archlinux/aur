@@ -24,4 +24,3 @@ pkgbase = grive-git
 	sha256sums = SKIP
 
 pkgname = grive-git
-

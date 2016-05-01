@@ -1,4 +1,4 @@
-# Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
+# Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 # Contributor: Tom Moore <tmoore01 at gmail dot com>
 # Contributer: Allen Choong <allencch at hotmail dot com>
 # Contributer: Andrea Scarpino <andrea@archlinux.org>
