@@ -51,6 +51,7 @@ makedepends=('git'
              )
 optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
             'zsh-completions: Additional completion definitions for Zsh users'
+            'mpv-bash-completion-git: Additional completion definitions for Bash users'
             )
 provides=('mpv')
 conflicts=('mpv')
