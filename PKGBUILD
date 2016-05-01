@@ -23,11 +23,13 @@ options=('!strip')
 source=(https://downloads.iridiumbrowser.de/source/iridium-browser-${pkgver}.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
-        chromium-widevine.patch)
+        chromium-widevine.patch
+        fix_PNGImageDecoder.patch)
 sha256sums=('439de1a7819eb5c4ba2a2f82a8e226f27270f23b9c7a5cd452d994836b07b9b6'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
-            '4660344789c45c9b9e52cb6d86f7cb6edb297b39320d04f6947e5216d6e5f64c')
+            '4660344789c45c9b9e52cb6d86f7cb6edb297b39320d04f6947e5216d6e5f64c'
+            '42086dbe5c68744a6bed4e4af6035defbd6e1dfc1c3f32a4711c5c953f938698')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -51,6 +53,8 @@ prepare() {
 
   # https://code.google.com/p/chromium/issues/detail?id=541273
   #sed -i "/'target_name': 'libvpx'/s/libvpx/&_new/" build/linux/unbundle/libvpx.gyp
+
+  patch -p0 -i ../fix_PNGImageDecoder.patch
 
   # Enable support for the Widevine CDM plugin
   # The actual libraries are not included, but can be copied over from Chrome:
