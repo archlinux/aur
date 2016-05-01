@@ -1,0 +1,26 @@
+pkgbase = plover-git
+	pkgdesc = Open Source Stenography Software
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = http://plover.stenoknight.com/
+	arch = any
+	license = GPL2
+	makedepends = python2-mock
+	makedepends = python2-pytest
+	makedepends = python2-pytest-runner
+	depends = python2
+	depends = python2-appdirs
+	depends = python2-hidapi
+	depends = python2-pyserial
+	depends = python2-setuptools
+	depends = python2-simplejson
+	depends = python2-xlib
+	depends = wmctrl
+	depends = wxpython
+	provides = plover
+	conflicts = plover-git
+	source = plover-git::git+https://github.com/openstenoproject/plover.git
+	sha1sums = SKIP
+
+pkgname = plover-git
+
