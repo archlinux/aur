@@ -1,9 +1,10 @@
-# Maintainer: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
+# Maintainer: Darren Hobin <firstname daughhhttt lastname atttt live ddddott calm>
+# Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
 _pkgname="efitools"
 pkgname="${_pkgname}-git"
 
-pkgver=1.5.3.3.g613cf53
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Tools to Create and Setup own UEFI Secure Boot Certificates, Keys and Signed Binaries - GIT Version"
 url="http://blog.hansenpartnership.com/efitools-1-4-with-linux-key-manipulation-utilities-released/"
