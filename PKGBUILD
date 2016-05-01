@@ -1,8 +1,8 @@
 # Maintainer: Tinu Weber <takeya@bluewin.ch>
 
 pkgname=cc-tool-git
-pkgver=r6.6a8ab82
-pkgrel=3
+pkgver=r8.4ad4fc8
+pkgrel=1
 pkgdesc="Support for Texas Instruments CC Debugger"
 arch=('x86_64')
 url='https://github.com/dashesy/cc-tool.git'
