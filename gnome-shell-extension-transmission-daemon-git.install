@@ -1,6 +1,4 @@
 post_install() {
-  post_upgrade
-
   echo ''
   echo '==> To enable:'
   echo '==> Reload Gnome Shell with Alt-F2 r'
@@ -8,12 +6,3 @@ post_install() {
   echo '==> or run "gnome-shell-extension-tool -e transmission-daemon@patapon.info"'
   echo ''
 }
-
-post_upgrade() {
-  glib-compile-schemas /usr/share/glib-2.0/schemas
-}
-
-post_remove() {
-  post_upgrade
-}
-
