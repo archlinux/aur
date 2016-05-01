@@ -3,13 +3,13 @@
 
 pkgname=owncloud-news-updater
 pkgver=8.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="This Python library is a parllel feed updater for the ownCloud News app"
 arch=('any')
 url="https://github.com/owncloud/news-updater"
 license=('GPL3')
 depends=('python')
-optdepends=('owncloud-news-app: Updating a local instance of the ownCloud News app')
+optdepends=('owncloud-app-news: Updating a local instance of the ownCloud News app')
 backup=("etc/webapps/owncloud/news/${pkgname}.ini")
 makedepends=('python-setuptools')
 options=('!strip')
