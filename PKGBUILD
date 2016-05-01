@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=libdvdnav-git
-pkgver=5.0.3.4.g8a270d6
+pkgver=5.0.3.5.g0e0ed2a
 pkgrel=1
 pkgdesc="Library to navigate DVD disks. (GIT version)"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('libdvdread-git')
 makedepends=('git')
 provides=('libdvdnav' 'libdvdnav.so')
 conflicts=('libdvdnav')
-source=("git://git.videolan.org/libdvdnav.git")
+source=("git+https://git.videolan.org/git/libdvdnav.git")
 sha1sums=('SKIP')
 
 pkgver() {
@@ -26,7 +26,9 @@ prepare() {
 
 build() {
   cd libdvdnav
-  ./configure --prefix=/usr --enable-static=no
+  ./configure \
+    --prefix=/usr \
+    --enable-static=no
   make
 }
 
