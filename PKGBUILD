@@ -3,16 +3,17 @@
 _author=PJACKLAM
 _perlmod=Math-BigInt
 pkgname=perl-math-bigint
-pkgver=1.999715
+pkgver=1.999722
 pkgrel=1
 pkgdesc="Big integer calculations using the GNU Multiple Precision Arithmetic Library."
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://search.cpan.org/~$_author/$_perlmod-$pkgver/"
 license=('GPL' 'PerlArtistic')
-depends=('perl>=5.20.0' 'gmp')
+depends=('perl>=5.20.0')
+provides=('perl-math-bigfloat' 'perl-math-bigint-calc' 'perl-math-bigint-calcemu')
 options=(!emptydirs)
 source=(http://cpan.perl.org/modules/by-authors/id/P/PJ/$_author/$_perlmod-$pkgver.tar.gz)
-sha256sums=('cfae5c43c4cabe92a940f13e4a23515be4e0dbe72cba8d448a3e96f869794987')
+sha256sums=('c76a2d5e6a996186a42a7e516b8d82217fb0cd18c7e1e55241322c4a859ccf40')
 
 
 build() {
