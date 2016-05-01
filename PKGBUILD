@@ -1,10 +1,10 @@
 # Maintainer: Salan54 <salan at fremenil dot com>
 # Created: 2013-01-29
 
-_gitname=zulucrypt
+_gitname=zuluCrypt
 _build=build
-pkgname=${_gitname}-git
-pkgver=4.7.7
+pkgname=zulucrypt-git
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="a cli and gui frontend to cryptsetup."
 arch=('x86_64' 'i686')
