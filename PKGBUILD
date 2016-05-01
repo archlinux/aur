@@ -1,4 +1,4 @@
-# Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
+# Maintainer: Gordian Edenhofer <gordian.edenhofer[at]gmail[dot]com>
 
 pkgname=zoom
 pkgver=2.0.49177.0430
