@@ -4,9 +4,14 @@
 # Previous Maintainer: Simon Tunnat <simon+aur@tunn.at>
 # Contributor: Bartlomiej Piotrowski <nospam@bpiotrowski.pl>
 
+# during times when two firefox-esr versions overlap, if environment variable 
+# $FIREFOX_ESR_BIN_PREFER_OLDER is set, the older version will be built.
+# e.g., on 2016.05.01 versions 38.8.0 and 45.1.0 were both simulaneously 
+# available/supported by mozilla.  
+
 pkgname=firefox-esr-bin
 _pkgname=${pkgname/-bin/}
-pkgver=38.7.1
+pkgver=45.1.0
 pkgrel=1
 pkgdesc='Standalone web browser from mozilla.org - Extended Support Release'
 url='http://www.mozilla.org/en-US/firefox/organizations/'
@@ -16,17 +21,23 @@ optdepends=('libgnome: fixes file association/default browser issues on GNOME de
 			'gstreamer0.10: HTML5 video'
 			'gstreamer0.10-good-plugins: h.264 video'
 			)
-provides=('firefox=38')
+provides=('firefox=45')
 license=('MPL' 'GPL' 'LGPL')
 install=$_pkgname.install
+sha512sums=('e59058d89c4896ee44040f209cae07a7ad6c8119dfdc214091bb255f6ca717cb9eae903c01b6550f72f7438e19f1b9650a68141100f7d9cdd306ed40ddc3439d'
+            '2c2c70cb48202d47e7d3b376b8181e7398b23bb83f5da7724f6290709fe1ff3dca9d9c5666310982569beeeba39ec2d55a4372819f9914c79c6583de7eec06ba'
+            '8942b11a7cb3761de1185491397185743adf49daa27a2806d14a328a2be8e2cb566c71dc6449016549cb3bd0d328cfe15944490be749a4add213194f6153c3d0')
+[[ "$CARCH" == "i686" ]] && sha512sums[0]='f69f52450c606f05041364784eb2ad36e4d368a1583c017c0b672986ac620f17399ddee49d66e90fb992bdd6173340a01d48d7583b3792ab06413f9dc773915d'
+if [[ -n "$FIREFOX_ESR_BIN_PREFER_OLDER" ]]; then
+    pkgver=38.8.0
+    provides=('firefox=38')
+    sha512sums[0]='644dec9233a30b8929e8eb38aecab6f78be234c08c62fa038f7c8f5b8bdfed50ba053a402f92747e730147107d6e3408a21641de93792d35dc87967017065c90'
+    [[ "$CARCH" == "i686" ]] && sha512sums[0]='25bd1f1be5c62b3b5acfae25bfefdb87ea20594730f1dec43ddec4af3d56b1b5b586c78f28595cda9c15904eb8d0b4806c312337d48d872361769a4fc81e3df3'
+fi
 source=(http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${pkgver}esr/linux-$CARCH/en-US/firefox-${pkgver}esr.tar.bz2
         $_pkgname.desktop 
         $_pkgname-safe.desktop)
-sha512sums=('e0893404e3d9d2dd13c4aaed340e357230bcc7051c54c792f0538341d750681ef398be7756de5636547bf65e384c9cf4a157eb969058c0c703b0c563d0904482'
-            '2c2c70cb48202d47e7d3b376b8181e7398b23bb83f5da7724f6290709fe1ff3dca9d9c5666310982569beeeba39ec2d55a4372819f9914c79c6583de7eec06ba'
-            '8942b11a7cb3761de1185491397185743adf49daa27a2806d14a328a2be8e2cb566c71dc6449016549cb3bd0d328cfe15944490be749a4add213194f6153c3d0')
-[[ "$CARCH" == "i686" ]] && sha512sums[0]='6d6504dd43a852342cb02b6b4d35627c429f64c3462f299288ce6405da81ec7da45c653f060ba8c0c3055dd55c18d62ea35f54a51addf6912fdec8d269bbdd65'
- 
+
 package() {
     cd $srcdir
     
