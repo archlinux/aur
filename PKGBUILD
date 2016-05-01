@@ -1,4 +1,4 @@
-# Maintainer: Gordian Edenhofer <gordian.edenhofer[at]gmail[dot]com>
+# Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 # Watch new releases at http://forum.unity3d.com/threads/unity-on-linux-release-notes-and-known-issues.350256/
 
