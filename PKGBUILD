@@ -2,7 +2,7 @@
 # Contributor: Andrew Panchenko <panchenkoac at gmail>
 
 pkgname=qmmp-plugin-pack-svn
-pkgver=1.1.0.svn.r5969
+pkgver=1.1.0.svn.r6276
 pkgrel=1
 pkgdesc="Qmmp Plugin Pack. (SVN Version)"
 arch=('i686' 'x86_64')
@@ -14,9 +14,13 @@ makedepends=('subversion'
              'yasm'
              'mpg123'
              'libxmp'
+             'libsamplerate'
+             'taglib'
              )
 optdepends=('mpg123: alternative Mpeg-1-2-3 support'
+            'taglib: Mpeg-1-2-3 tag support'
             'libxmp: support for chiptune formats (Amiga, Atari, ..)'
+            'libsamplerate: Sample Rate Conversion'
             )
 provides=('qmmp-plugin-pack')
 conflicts=('qmmp-plugin-pack')
