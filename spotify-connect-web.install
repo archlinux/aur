@@ -1,9 +1,5 @@
 
 post_upgrade() {
-	# compile cffi
-	cd /usr/lib/spotify-connect-web/
-        python2 -c "from connect_ffi import ffi, lib"
-
 	systemctl daemon-reload
 }
 

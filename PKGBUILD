@@ -1,13 +1,13 @@
 # Maintainer: crystaly <crystaly [ at ] posteo [ dot ] de>
 pkgname=spotify-connect-web
-pkgver=r57.ef8430d
-pkgrel=3
+pkgver=r55.979f510
+pkgrel=1
 pkgdesc="Simple Web client for accessing Spotify connect api (Raspberry Pi 2)"
-arch=('armv7h')
+arch=('any')
 url="https://github.com/chukysoria/spotify-connect-web"
-license=('unknown')
+license=('Apache')
 groups=()
-depends=('python2-flask' 'python2-flask-bootstrap' 'python2-pyalsaaudio' 'python2-gevent' 'python2-cffi' 'python2-pycparser' 'python2')
+depends=('python2-flask' 'python2-flask-bootstrap' 'python2-flask-cors' 'python2-pyalsaaudio' 'python2-gevent' 'python2-cffi' 'python2-pycparser' 'python2')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -16,16 +16,12 @@ backup=()
 options=()
 install="${pkgname}.install"
 source=('git+https://github.com/chukysoria/spotify-connect-web#branch=master'
-	'https://github.com/sashahilton00/spotify-connect-resources/raw/master/armhf%20version/libspotify_embedded_shared.so'
 	'spotify-connect-web@.service'
-	'spotify-connect-web.install'
-	'0001-Fix-0.8.patch')
+	'spotify-connect-web.install')
 noextract=()
 sha256sums=('SKIP'
-            '05a1d441fee75bae6d6b8c94538389e232bea79133cda673e780ca3b97e6a95d'
-            '2f418748822fb87caf84c603478be9e409651b6a62a5957882138b37b0b37987'
-            '876ca4593670c1ca9b968e93413b90f51b4d10c325a7dbb313052037e6a9888c'
-            '5cf33136d33b756e9ed55f92d579d4056df3338b58977d058e29b6c63865fba6')
+            '42a8a539419e6841cb3b00570ca998f884eae899b4275a072ce5e8c57bf23527'
+            'b70e8014ef0bc217e8837d8979930d2f1d2ff3cfd18aff8e117f8e9736e9789e')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -37,12 +33,9 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
 
-	# merge pull-request wich fixes alsaaudio
-	git merge ef8430d
+	# fix volmin/volmax parameters not being applied
+	sed -i 's|.mixer_load()|.mixer_load(self.args.mixer, self.args.volmin, self.args.volmax)|g' connect_console.py
 
-	# patch pyalsaaudio 0.8
-	patch -p1 -i "$srcdir/0001-Fix-0.8.patch"
-	
 	# replace python by python2
 	sed -i 's|^#!/usr/bin/env python$|#!/usr/bin/env python2|g' *.py
 
@@ -56,12 +49,9 @@ build() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 
-	# copy libspotify.so to /usr/lib
-	install -D -m644 "$srcdir/libspotify_embedded_shared.so" "${pkgdir}/usr/lib/libspotify_embedded_shared.so"
-	
 	# copy app files
 	install -d -m755 "${pkgdir}/usr/lib/${pkgname}"
-	install -D -m 644 *.py *.pyc *.h "${pkgdir}/usr/lib/${pkgname}"
+	install -D -m 644 *.py *.pyc "${pkgdir}/usr/lib/${pkgname}"
 	
 	install -D -m644 "$srcdir/spotify-connect-web@.service" "${pkgdir}/usr/lib/systemd/system/spotify-connect-web@.service"
 
