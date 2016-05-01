@@ -1,7 +1,7 @@
 # Maintainer: spider-mario <spidermario@free.fr>
 pkgname=cinnxp
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="XP-like theme for Cinnamon"
 arch=('any')
 url="http://cinnamon-spices.linuxmint.com/themes/view/498"
@@ -12,6 +12,9 @@ source=("cinnxp-$pkgver.zip"::https://cinnamon-spices.linuxmint.com/uploads/them
 sha512sums=('e98117649ece3a97560c0a9883f02483a949fa8381406c510ea52068fb3598b3f10da4b7720426b4f9b354c4f4552d6aa23aeb6d5130198492d1bba773fc1d6c')
 
 package() {
-	cd pkg
-	cp -aR usr "$pkgdir"/usr
+	cd "$pkgdir"
+	cp -R "$srcdir"/pkg/usr .
+	cd usr
+	find -type d -exec chmod 755 '{}' +
+	find -type f -exec chmod 644 '{}' +
 }
