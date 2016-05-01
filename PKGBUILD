@@ -18,7 +18,7 @@ _srcname="ImageMagick"
 _srcver="6.9.3-8"
 pkgname=imagemagick-full
 pkgver="$(echo ${_srcver} | tr '-' '.')"
-pkgrel=2
+pkgrel=3
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
@@ -114,6 +114,6 @@ package() {
 	
 	make -j1 DESTDIR="$pkgdir/" install
 	
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 }
