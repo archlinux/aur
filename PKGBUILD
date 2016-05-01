@@ -1,7 +1,7 @@
 # Maintainer: Poppy Schmo <poppyschmo at users dot noreply.github.com>
 pkgname=chromebook_keyboard_backlight_driver
-pkgver=1.0.r7.7b8a863
-pkgrel=2
+pkgver=1.0.r9.fa4f860
+pkgrel=1
 epoch=
 pkgdesc="Keyboard backlight driver for various chromebook models"
 arch=('i686' 'x86_64')
@@ -28,9 +28,7 @@ build() {
 
 package() {
 	local _excl='_bl' # don't autoload chromeos_keyboard_bl.ko variant
-	local _shortr=$(uname -r \
-		| sed 's/\([0-9]\.[0-9]\+\)\.[0-9]\+-[0-9]\+\(-[A-Z]\+\)/\1\2/')
-	local _destd=${pkgdir}'/usr/lib/modules/extramodules-'"$_shortr"
+	local _destd=${pkgdir}$(echo /usr/lib/modules/extramodules*)
 	local _confd=${pkgdir}'/etc/modules-load.d'
 	local _conf='chromebook_keyboard_backlight_driver.conf'
 	local _docd=${pkgdir}'/usr/share/doc/'${pkgname}
