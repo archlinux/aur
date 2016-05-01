@@ -18,7 +18,7 @@ _srcname="ImageMagick"
 _srcver="6.9.3-8"
 pkgname=imagemagick-full
 pkgver="$(echo ${_srcver} | tr '-' '.')"
-pkgrel=1
+pkgrel=2
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
@@ -27,8 +27,10 @@ depends=('jemalloc' 'bzip2' 'libx11' 'libxext' 'libxt' 'libsm' 'zlib' 'autotrace
          'libfpx' 'djvulibre' 'fontconfig' 'freetype2' 'libraqm' 'ghostscript' 'gsfonts' 'graphviz'
          'jbigkit' 'libjpeg-turbo' 'lcms' 'lcms2' 'openjpeg2' 'liblqr' 'xz' 'openexr' 'pango' 'libpng' 
          'librsvg' 'libtiff' 'libwebp' 'libwmf' 'libxml2' 'libmpeg2' 'opencl-headers' 'ocl-icd')
-provides=('imagemagick' 'libMagickCore-6.Q32HDRI.so' 'libMagickWand-6.Q32HDRI.so' 
-          'libMagick++-6.Q32HDRI.so')
+provides=("imagemagick"
+          "libMagickCore-${pkgver%%.*}.Q32HDRI.so"
+          "libMagickWand-${pkgver%%.*}.Q32HDRI.so"
+            "libMagick++-${pkgver%%.*}.Q32HDRI.so")
 conflicts=('imagemagick' 'imagemagick-git' 'imagemagick-fftw' 'imagemagick-no-hdri')
 backup=("etc/ImageMagick-${pkgver%%.*}/coder.xml"
         "etc/ImageMagick-${pkgver%%.*}/colors.xml"
