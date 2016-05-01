@@ -11,7 +11,7 @@ provides=('cmplayer')
 depends=('qt5-base' 'qt5-declarative' 'qt5-x11extras' 'qt5-quickcontrols' 'qt5-svg'
          'libdvdread' 'libdvdnav' 'libcdio-paranoia' 'libcdio' 'smbclient'
          'alsa-lib' 'libpulse' 'jack' 'libbluray'
-         'libva' 'libvdpau' 'libgl' 'libchardet-fresh' 'fribidi' 'libass' 'ffmpeg')
+         'libva' 'libvdpau' 'libgl' 'libchardet-fresh' 'fribidi' 'libass' 'ffmpeg' 'ffmpeg2.8')
 optdepends=('libva-intel-driver: hardware acceleration support for Intel GPU'
             'mesa-vdpau: hardware acceleration support for AMD/NVIDIA opensource driver'
             'youtube-dl: streaming website support including YouTube'

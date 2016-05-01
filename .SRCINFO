@@ -26,6 +26,7 @@ pkgbase = bomi-fresh
 	depends = fribidi
 	depends = libass
 	depends = ffmpeg
+	depends = ffmpeg2.8
 	optdepends = libva-intel-driver: hardware acceleration support for Intel GPU
 	optdepends = mesa-vdpau: hardware acceleration support for AMD/NVIDIA opensource driver
 	optdepends = youtube-dl: streaming website support including YouTube
