@@ -19,7 +19,7 @@ conflicts=('pacman' 'pacman-contrib')
 options=('!libtool' '!strip')
 backup=(etc/pacman.conf
         etc/makepkg.conf)
-source=(git://projects.archlinux.org/pacman.git)
+source=(git://git.archlinux.org/pacman.git)
 sha1sums=('SKIP')
 
 pkgver() {
