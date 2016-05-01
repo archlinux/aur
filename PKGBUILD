@@ -1,4 +1,4 @@
-# Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
+# Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 # Submitter: L <alaviss0@gmail.com>
 
 pkgname=gnome-shell-theme-elegance-colors-git
