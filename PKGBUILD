@@ -1,4 +1,4 @@
-#  Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
+# Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgbase=python-acme-git
 pkgname=("python-acme-git" "python2-acme-git")
