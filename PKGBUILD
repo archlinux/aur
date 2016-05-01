@@ -6,7 +6,7 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-staging-steam
-pkgver=1.9.5
+pkgver=1.9.8
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -14,7 +14,7 @@ _pkgbasever=${pkgver/rc/-rc}
 source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbasever.tar.gz"
         30-win32-aliases.conf
 	steam.patch)
-sha1sums=('1caa585b63f21a68835226c2c201deda8d9c5093'
+sha1sums=('a57c8e5621657525c2950d117e6b17e8325bbe71'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           '5fe7c53773b3bc2b6b3e9f1b7bee90e97c67f761')
 
@@ -23,7 +23,6 @@ url="http://www.wine-staging.com"
 arch=(i686 x86_64)
 options=(staticlibs)
 license=(LGPL)
-install=wine-staging.install
 
 _depends=(
   attr             lib32-attr
@@ -90,6 +89,7 @@ optdepends=(
   libva                 lib32-libva
   gtk3                  lib32-gtk3
   gst-plugins-base-libs lib32-gst-plugins-base-libs
+  vulkan-icd-loader     lib32-vulkan-icd-loader
   cups
   samba           dosbox
 )
