@@ -1,7 +1,8 @@
-# Maintainer: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
+# Maintainer: Jeffrey Shaffner <risoftwi@gmail.com>
+# Contributer: Matheus de Alcantara <matheus.de.alcantara@gmail.com>
 
 pkgname=atom-editor-beta
-_pkgbeta=2
+_pkgbeta=3
 _pkgver=1.8.0
 pkgver="${_pkgver}.beta${_pkgbeta}"
 pkgrel=1
@@ -18,9 +19,9 @@ source=("https://github.com/atom/atom/archive/v${_pkgver}-beta${_pkgbeta}.tar.gz
         "atom-beta.desktop"
         "package.patch")
 
-sha256sums=('a2f93ef7816c158b8aa4fe369bc2801c130e71e7f505ef3ad741cfc683589b36'
-            '10e158a590ff3a52481ea30f3742c170c7b49557fc7f7af875394de91048311f'
-            'fbd8e29cdde10d430d809ffb2bdd52c5a0af3af96ad882c4754c553fefa7b2db')
+sha256sums=('updpkgsums'
+            'updpkgsums'
+            'updpkgsums')
 
 prepare() {
 	cd "atom-${_pkgver}-beta${_pkgbeta}"
