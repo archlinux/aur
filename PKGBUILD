@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=mpv-build-git
-pkgver=20160401.64791a0
+pkgver=20160501.f54e555
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 (uses statically linked ffmpeg). (GIT version)"
 arch=('i686' 'x86_64' )
@@ -50,11 +50,12 @@ makedepends=('git'
              'fribidi'
              )
 optdepends=('youtube-dl: Another way to view youtuve videos with mpv'
-            'zsh-completions: Additional completion definitions for Zsh users')
+            'zsh-completions: Additional completion definitions for Zsh users'
+            'mpv-bash-completion-git: Additional completion definitions for Bash users'
+            )
 provides=('mpv')
 conflicts=('mpv')
 options=('!emptydirs')
-install=mpv-build-git.install
 source=('git+https://github.com/mpv-player/mpv-build.git'
         'git+https://github.com/mpv-player/mpv.git'
         'ffmpeg::git+https://github.com/FFmpeg/FFmpeg.git'
