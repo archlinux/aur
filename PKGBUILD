@@ -1,4 +1,4 @@
-# Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
+# Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 # Contributor: Gustavo Castro <gustawho[at]gmail[dot]com>
 # Submitter: acrox999 <acrox999[at]gmail[dot]com>
 
