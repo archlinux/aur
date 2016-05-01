@@ -14,7 +14,7 @@ makedepends=('git'
              )
 provides=('libaacs' 'libaacs.so')
 conflicts=('libaacs')
-source=('git+http://git.videolan.org/git/libaacs.git')
+source=('git+https://git.videolan.org/git/libaacs.git')
 sha1sums=('SKIP')
 
 pkgver() {
