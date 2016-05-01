@@ -1,7 +1,7 @@
 # Maintainer: Chris Rizzitello <sithlord48@gmail.com>
 pkgname=hyne-git
 confilicts=('hyne')
-pkgver=1.9.0
+pkgver=1.9.1.r1.g3534474
 pkgrel=1
 pkgdesc="Final Fantasy 8 Save Editor"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ md5sums=(SKIP)
 
 pkgver() {
   cd "hyne"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
