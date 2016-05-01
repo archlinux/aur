@@ -8,13 +8,14 @@ pkgname=('elektra-git'
          'elektra-glib-git'
          'java-elektra-git'
          )
-pkgver=0.8.15.226.gc5dd537
+pkgver=0.8.16.4.g19b3225
 pkgrel=1
 pkgdesc="A universal hierarchical configuration store. (GIT version)"
 arch=('i686' 'x86_64')
 url='http://libelektra.org'
 license=('BSD')
 makedepends=('qt5-declarative'
+             'qt5-quickcontrols'
              'yajl'
              'augeas'
              'discount'
@@ -33,6 +34,8 @@ makedepends=('qt5-declarative'
              'ruby-ronn'
              'tcl'
              'jna'
+             'curl'
+             'hicolor-icon-theme'
              )
 provides=('elektra')
 conflicts=('elektra')
@@ -64,21 +67,25 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_TESTING=ON \
     -DBUILD_STATIC=OFF \
-    -DBUILD_FULL=OFF \
     -DTOOLS=ALL \
-    -DPLUGINS=ALL \
+    -DPLUGINS='ALL;-experimental' \
     -DBINDINGS=ALL \
     -DLUA_INCLUDE_DIR=/usr/include/lua5.2 \
     -DJAVA_INCLUDE_PATH="${JAVA_HOME}/include"
 
-  make
+  LC_ALL=C make
 }
 
 package_elektra-git() {
   pkgdesc="A universal hierarchical configuration store. (GIT version)"
-  optdepends=('augeas: augeas plugin'
+  depends=('hicolor-icon-theme'
+           'gcc-libs'
+           )
+  optdepends=('curl: curl plugin'
+              'augeas: augeas plugin'
               'yajl: yajl plugin'
               'qt5-declarative: qt-gui'
+              'qt5-quickcontrols: qt-gui'
               'discount: qt-gui'
               'python-elektra-git: Python bindings'
               'python2-elektra-git: Python 2 bindings and gen tool'
@@ -178,6 +185,7 @@ package_elektra-glib-git() {
 package_java-elektra-git() {
   pkgdesc="Java bindings for Elektra. (GIT version)"
   depends=('elektra-git'
+           'glibc'
            'java-environment=8'
            'jna'
            )
