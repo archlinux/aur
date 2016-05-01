@@ -2,7 +2,7 @@
 
 pkgname=demlo
 pkgver=2
-pkgrel=1
+pkgrel=2
 pkgdesc="A dynamic and extensible music library organizer"
 arch=("i686" "x86_64")
 url="http://ambrevar.bitbucket.org/$pkgname/"
@@ -17,7 +17,7 @@ build() {
 }
 
 check() {
-	GOPATH="$GOPATH:$srcdir" go test -v -x "$_gourl"
+	GOPATH="$srcdir" go test -v -x "$_gourl"
 }
 
 package() {
