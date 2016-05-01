@@ -1,8 +1,8 @@
 # Maintainer: Tomas Jasek <tomsik68(at)gmail(dot)com>
 
 pkgname="papyrus"
-pkgver="1.1.3"
-pkgrel=1
+pkgver="1.1.4"
+pkgrel=2
 pkgdesc="Graphical editing tool for UML based on eclipse."
 arch=('i686' 'x86_64')
 url="http://www.eclipse.org/papyrus/"
@@ -17,10 +17,10 @@ backup=()
 options=()
 install=
 changelog=
-source_i686=("http://ftp.snt.utwente.nl/pub/software/eclipse//modeling/mdt/papyrus/rcp/mars/1.1.3/papyrus-mars-${pkgver}-linux32.tar.gz")
-md5sums_i686=('c9c4a1d743ded0e221ccaf66826c97bf')
-md5sums_x86_64=('1a7781a582036b7d07acbdf9d4dee9ed')
-source_x86_64=("http://ftp.snt.utwente.nl/pub/software/eclipse//modeling/mdt/papyrus/rcp/mars/1.1.3/papyrus-mars-${pkgver}-linux64.tar.gz")
+source_i686=("http://ftp.snt.utwente.nl/pub/software/eclipse//modeling/mdt/papyrus/rcp/mars/${pkgver}/papyrus-mars-${pkgver}-linux32.tar.gz")
+md5sums_i686=('01f352ceed549a1373a0ea905b9962e3')
+md5sums_x86_64=('7f3a26468f09e205c8ea9f8a126f6991')
+source_x86_64=("http://ftp.snt.utwente.nl/pub/software/eclipse//modeling/mdt/papyrus/rcp/mars/${pkgver}/papyrus-mars-${pkgver}-linux64.tar.gz")
 noextract=()
 
 build() {
