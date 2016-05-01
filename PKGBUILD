@@ -2,7 +2,7 @@
 
 pkgname=imagemagick-full-doc-git
 pkgver=7.0.0.0.r10577.g0ff89d1
-pkgrel=1
+pkgrel=2
 pkgdesc="The ImageMagick documentation (utilities manuals and libraries API)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
@@ -36,5 +36,5 @@ package() {
 	make DESTDIR="$pkgdir/" install-data-html
 	
 	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -D -m644 NOTICE "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
+	install -D -m644 NOTICE  "${pkgdir}/usr/share/licenses/${pkgname}/NOTICE"
 }
