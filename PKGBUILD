@@ -15,7 +15,7 @@
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.79160.gb73c271
+pkgver=N.79701.gb286ff6
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
@@ -74,11 +74,13 @@ build() {
 	    _cuda="--enable-cuda"
 	    _cudainc="-I/opt/cuda/include"
 	    _cudalib="-L/opt/cuda/lib64"
+	    _libnpp="--enable-libnpp"
 	    _intelsdklib="-Wl,-rpath -Wl,/opt/intel/mediasdk/lib64"
 	else
 	    _cuda=""
 	    _cudainc=""
 	    _cudalib=""
+	    _libnpp=""
 	    _intelsdklib=""
 	fi
 	
@@ -133,6 +135,7 @@ build() {
 	        --enable-libmodplug \
 	        --enable-libmp3lame \
 	        --enable-libnut \
+	        $_libnpp \
 	        --enable-libopencore-amrnb \
 	        --enable-libopencore-amrwb \
 	        --enable-libopencv \
