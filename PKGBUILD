@@ -2,14 +2,14 @@
 
 _pkgname=scd
 pkgname=$_pkgname-git
-pkgver=0.2.0.r0.g0e7a2de
+pkgver=0.2.0.r2.g217375e
 pkgrel=1
 pkgdesc="Free and open source driver for the Steam Controller (git version)"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/dennis-hamester/scd"
 license=('custom:ISC')
-makedepends=('cmake' 'scrawpp-git')
-depends=('scraw-git')
+makedepends=('cmake' 'scrawpp-git' 'boost')
+depends=('scraw-git' 'boost-libs')
 provides=('scd')
 conflicts=('scd')
 source=("git+https://gitlab.com/dennis-hamester/scd.git")
