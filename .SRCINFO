@@ -1,0 +1,24 @@
+pkgbase = wangle-git
+	pkgdesc = A full featured, high performance C++ futures implementation
+	pkgver = 0.13.0.r152.g0eae7be
+	pkgrel = 1
+	url = https://github.com/facebook/wangle
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	depends = folly
+	depends = boost
+	depends = boost-libs
+	depends = openssl
+	depends = glog
+	depends = gflags
+	provides = wangle
+	conflicts = wangle
+	replaces = wangle
+	source = git+https://github.com/facebook/wangle.git
+	md5sums = SKIP
+
+pkgname = wangle-git
+
