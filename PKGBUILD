@@ -7,7 +7,7 @@ license=('MIT')
 pkgdesc='i3 compatible window manager for Wayland'
 makedepends=("cmake" "git" "asciidoc")
 depends=(
-	"wlc" "xorg-server-xwayland"
+	"wlc-git" "xorg-server-xwayland"
 	"xcb-util-image" "json-c"
 	"pango" "cairo"
 	"wayland" "gdk-pixbuf2"
