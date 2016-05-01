@@ -1,6 +1,6 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=uenv-git
-pkgver=0.3.r0.gcae0b56
+pkgver=0.4.1.r0.g3610050
 _basename=uenv
 pkgrel=1
 pkgdesc="Useful scripts, systemd timer/service units and their configuration"
@@ -21,15 +21,14 @@ optdepends=(
   'jack2: For profile based JACK user service'\
   'linux-rt: For cpupower and JACK services'\
   'mpd: For mpd user service connecting to server profiles'\
-  'offlineimap: For offlineimap as systemd user service'\
   'openssh: For ssh-agent as systemd user service'\
   'rtorrent: For rtorrent user and system service'\
   'tmux: For monitoring, rtorrent and tmux user services'\
   'update-mirrorlist: For timed pacman mirrorlist updates'\
   'weechat: For weechat in a separate tmux environment'
 )
-provides=('uenv' 'postpone-screensaver')
-conflicts=('uenv' 'postpone-screensaver')
+provides=('uenv')
+conflicts=('uenv')
 replaces=()
 backup=(
   'etc/jack/fw1'\
@@ -39,7 +38,7 @@ backup=(
 )
 options=()
 install=
-source=('bare/uenv::git://sleepmap.de/uenv.git')
+source=('bare/uenv::git://sleepmap.de/software/uenv.git')
 noextract=()
 md5sums=('SKIP')
 
