@@ -18,7 +18,7 @@ source=("https://github.com/tensorflow/tensorflow/archive/v${pkgver}.tar.gz"
 sha256sums=('f201ba7fb7609a6416968d4e1920d87d67be693b5bc7d34b6b4a79860a9a8a4e'
             '87ec95e580ec315fdec2d8c1590c332e61486d387f0d6e6540e74a18e44fd2ab'
             '513f634cc1cab44eb17204616617695ea23355462f918873678fcac1a95ae778')
-conflicts=('python2-tensorflow-cuda' 'python2-tensorflow-cuda')
+conflicts=('python2-tensorflow-cuda' 'python2-tensorflow-git')
 
 _build_opts=""
 
