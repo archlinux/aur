@@ -1,0 +1,10 @@
+[Unit]
+After=default.target
+
+[Service]
+Type=simple
+User=http
+ExecStart=/usr/bin/owncloud-news-updater -c /etc/webapps/owncloud/news/owncloud-news-updater.ini
+
+[Install]
+WantedBy=default.target

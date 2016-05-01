@@ -1,0 +1,15 @@
+post_install() {
+  echo "Please edit your config in /etc/webapps/owncloud/news/owncloud-news-updater.ini"
+  echo "Follow instructions on how to setup your ownCloud instance here: https://github.com/owncloud/news-updater"
+  echo "To enable/ start the service, run:"
+  echo "    systemctl enable owncloud-news-updater.service"
+  echo "    systemctl start owncloud-news-updater.service"
+  echo "Reload after configuration changes:"
+  echo "    systemctl restart owncloud-news-updater.service"
+  echo ""
+  echo "Note: Only use the owncloud-news-updater.timer, if you have set testrun=true in your config!"
+  echo "To then enable/start it, run:"
+  echo "    systemctl enable owncloud-news-updater.timer"
+  echo "    systemctl start owncloud-news-updater.timer"
+}
+

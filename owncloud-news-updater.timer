@@ -1,0 +1,10 @@
+[Unit]
+Description=OwnCloud News Updater Timer
+
+[Timer]
+OnBootSec=15min
+OnUnitInactiveSec=15min
+Persistent=true
+
+[Install]
+WantedBy=multi-user.target
