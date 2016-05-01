@@ -1,4 +1,4 @@
-#  Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
+# Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgname=letsencrypt-git
 _pkgname=letsencrypt
