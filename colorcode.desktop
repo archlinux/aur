@@ -7,4 +7,4 @@ Comment=
 Icon=/usr/share/icons/hicolor/32x32/apps/colorcode.png
 Terminal=false
 Type=Application
-Categories=Games;
+Categories=Qt;Game;LogicGame;
