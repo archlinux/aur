@@ -5,7 +5,7 @@
 
 pkgname=('handbrake-fdkaac' 'handbrake-cli-fdkaac')
 pkgver=0.10.5
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://handbrake.fr/"
 license=('GPL')
@@ -53,7 +53,6 @@ package_handbrake-fdkaac() {
   depends+=('libx264.so')
   optdepends=('gst-plugins-good: for video previews'
               'gst-libav: for video previews')
-  install=$pkgname.install
 
   cd "$srcdir/HandBrake-$pkgver/build"
 
