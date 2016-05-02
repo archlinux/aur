@@ -1,16 +1,15 @@
 pkgbase = ruby-msgpack
 	pkgdesc = MessagePack, a binary-based efficient data interchange format.
-	pkgver = 0.5.11
+	pkgver = 0.7.5
 	pkgrel = 1
 	url = http://msgpack.org/
 	arch = i686
 	arch = x86_64
 	license = Apache 2.0
 	depends = ruby
-	noextract = msgpack-0.5.11.gem
-	options = !emptydirs
-	source = https://rubygems.org/downloads/msgpack-0.5.11.gem
-	sha1sums = db297d2b717028b9ef2eee43c0ac910f6886932f
+	noextract = msgpack-0.7.5.gem
+	source = http://gems.rubyforge.org/gems/msgpack-0.7.5.gem
+	sha256sums = ccb200af9a4fafad22af4c23617a7d41c955d8de6973ee597ef27fb0bf7d0721
 
 pkgname = ruby-msgpack
 
