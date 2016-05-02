@@ -1,7 +1,7 @@
 #Maintainer: M0Rf30
 
 pkgname=whatweb-git
-pkgver=3955.362145c
+pkgver=4171.945341b
 pkgrel=1
 pkgdesc="Next generation web scanner that identifies what websites are running."
 arch=('i686' 'x86_64')
