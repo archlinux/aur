@@ -1,4 +1,4 @@
-# Maintainer: Jure Varlec <jure.varlec@gmail.com>
+# Maintainer: Jure Varlec <jure@varlec.si>
 # Contributor: Giuseppe Marco Randazzo <gmrandazzo@gmail.com>
 pkgname=ball
 _pkgname=BALL
