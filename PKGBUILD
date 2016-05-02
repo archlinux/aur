@@ -11,6 +11,6 @@ source=("https://manjaro.ru/aur/arc-dark-lxqt-manjaro/$pkgname-$pkgver-$pkgrel.t
 md5sums=('c85427d791f849ce487746ed9908771c')
 
 package(){
-  mkdir -p $pkgdir/usr/share/icons
-  cp -a $srcdir/$pkgname $pkgdir/usr/share/icons
+  mkdir -p $pkgdir/usr/share/lxqt/themes
+  cp -a $srcdir/$pkgname $pkgdir/usr/share/lxqt/themes
 }
