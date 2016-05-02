@@ -6,10 +6,10 @@ pkgdesc="Breeze Snow cursor theme."
 arch=('any')
 url="https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/"
 license=('GPL')
-source=("https://web.archive.org/web/https://share.kde.org/index.php/s/0961e0d81ccf38e12950e1fc435450a4/download")
+source=("https://code.jpope.org/jpope/breeze_cursor_sources/raw/master/breeze-snow-cursor-theme.zip")
 makedepends=('unzip')
 
-sha256sums=('9fbc4110202627cd664be26a2e01f50ec9198dff6a81f2cb98b75d70359d6483')
+sha256sums=('1390272e693f258dc55f86fbd5c99f0f36cfb4e71f22e9062b8d6ff14483562e')
 
 package() {
     cd $srcdir/Breeze_Snow
