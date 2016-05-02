@@ -1,0 +1,12 @@
+pkgbase = arc-dark-lxqt-manjaro
+	pkgdesc = Arc-dark theme for lxqt panel
+	pkgver = 1
+	pkgrel = 1
+	url = https://manjaro.ru/
+	arch = any
+	license = cc-by-nc-nd-4.0
+	source = https://manjaro.ru/aur/arc-dark-lxqt-manjaro/arc-dark-lxqt-manjaro-1-1.tar.gz
+	md5sums = c85427d791f849ce487746ed9908771c
+
+pkgname = arc-dark-lxqt-manjaro
+
