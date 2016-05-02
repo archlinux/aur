@@ -1,6 +1,6 @@
 # Maintainer: Bjoern Franke <bjo@nord-west.org>
 pkgname=jameica
-pkgver=2.6.3
+pkgver=2.6.4
 _pkgver=2.6
 pkgrel=1
 pkgdesc="Jameica is a JAVA GUI framework basing on SWT"
@@ -12,10 +12,10 @@ makedepends=('unzip')
 # See https://willuhn.de/products/jameica/download.php for checksums
 if [ "$CARCH" = "i686" ]; then
   source=("${pkgname}-${pkgver}::https://www.willuhn.de/projects/jameica/releases/$_pkgver/jameica/$pkgname-linux.zip")
-  sha1sums=('f8731aa817210fd5b3c1961b42ae7d41d5bf2aaf')
+  sha1sums=('f659abd95ac062846f14c067fea5061bd5c4cd54')
 elif [ "$CARCH" = "x86_64" ]; then
   source=("${pkgname}-${pkgver}::https://www.willuhn.de/projects/jameica/releases/$_pkgver/jameica/$pkgname-linux64.zip")
-  sha1sums=('e8c11bc0e7be9dc251732604f2002255ae0899f4')
+  sha1sums=('7d3d6104b75d41b0baebdf7cbbdf3fca64012e13')
 fi
 
 build() {
