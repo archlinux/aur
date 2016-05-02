@@ -1,12 +1,13 @@
 # Maintainer: C. Dominik Bódi <dominik dot bodi at gmx dot de>
 pkgname=signing-party
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="Collection for all kinds of pgp related things, including signing scripts, party preparation scripts etc."
 url="http://pgp-tools.alioth.debian.org/"
 arch=(i686 x86_64)
 license=(GPL)
-depends=(perl-class-methodmaker
+depends=(libmd
+         perl-class-methodmaker
          perl-gd
 	 perl-gnupg-interface
 	 perl-mailtools
@@ -19,14 +20,16 @@ makedepends=(subversion
              quilt)
 optdepends=('python: keyart support'
             'qrencode: QR code support in gpg-key2latex'
-            'texlive-core: QR code support in gpg-key2latex')
+            'texlive-latexextra: QR code support in gpg-key2latex'
+	    'noto-fonts: fonts for pretty printouts'
+	    'noto-fonts-cjk: fonts for pretty printouts')
 conflicts=(caff mutt sig2dot signing-party-svn)
 install=$pkgname.install
 source=("http://httpredir.debian.org/debian/pool/main/s/signing-party/signing-party_$pkgver.orig.tar.gz"
         "series"
         "gpgwrap_makefile.patch")
 
-sha256sums=('ad5d06c6c58de17aee104b9cf2f3a954cd9b854e5a77c1a8b62cf0a67c63168f'
+sha256sums=('ea208ccfa7a430daeb9d6de1e49bad7cdb65b299a287f8b6fe5ce41cded0e7db'
             'ca79e24dfd09a261e32a51382c81340b47fee0b0d34287adb4c0974eb33d06ea'
             '2816acc843c914b60110c7829cf44eb350f140df664998f3837d2731028c2f34')
 
@@ -39,11 +42,17 @@ prepare() {
 
 build() {
   cd "keyanalyze/pgpring"
-  sed -e '/AM_C_PROTOTYPES/d' -i configure.in
+#  sed -e '/AM_C_PROTOTYPES/d' -i configure.in
   touch NEWS README AUTHORS ChangeLog
+  echo "before aclocal"
   aclocal
+  echo "before autoconf"
   autoconf
+  echo "before autoheader"
+  autoheader
+  echo "before automake"
   automake --add-missing
+  echo "before configure"
   ./configure
   make
   cd $srcdir
