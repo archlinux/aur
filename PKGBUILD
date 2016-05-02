@@ -9,13 +9,12 @@ _localepurge=
 
 pkgname=sigil-git
 pkgver=0.9.5.r32.g81277c2
-pkgrel=1
+pkgrel=2
 pkgdesc="A WYSIWYG ebook editor"
 arch=('i686' 'x86_64')
 url="https://github.com/Sigil-Ebook/Sigil"
 license=('GPL3')
-depends=('qt5-webkit' 'hunspell' 'desktop-file-utils' 'minizip'
-         'gtk-update-icon-cache' 'python-lxml' 'python-six')
+depends=('qt5-webkit' 'hunspell' 'minizip' 'python-lxml' 'python-six')
 makedepends=('git' 'qt5-tools' 'qt5-svg' 'cmake')
 optdepends=('hunspell-en: for English dictionary support'
             'hyphen-en: for English hyphenation support in plugins'
