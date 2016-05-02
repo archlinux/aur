@@ -9,7 +9,10 @@ arch=('i686' 'x86_64')
 url='https://screencloud.net/'
 license=('GPL2')
 
-depends=('qt5-x11extras' 'qt5-svg' 'qt5-multimedia' 'pythonqt-qt5' 'quazip-qt5' 'xdg-utils' 'hicolor-icon-theme')
+depends=(
+	'qt5-x11extras' 'qt5-svg' 'qt5-multimedia' 'pythonqt-qt5'
+	'quazip-qt5' 'xdg-utils' 'hicolor-icon-theme'
+)
 optdepends=(
 	'python-crypto: for SFTP support'
 )
@@ -17,14 +20,8 @@ makedepends=('cmake' 'git' 'qt5-tools')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 
-install=${pkgname}.install
-
-source=(
-	"git+https://github.com/olav-st/${_pkgname}.git"
-)
-sha512sums=(
-	'SKIP'
-)
+source=("git+https://github.com/olav-st/${_pkgname}.git")
+sha512sums=('SKIP')
 
 pkgver() {
 	# Updating package version
