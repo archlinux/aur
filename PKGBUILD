@@ -1,7 +1,7 @@
 # Maintainer: Afri 5chdn <aur@cach.co>
 
 pkgname=parity
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="The fast, light, robust Ethereum client."
 arch=('x86_64')
@@ -10,11 +10,11 @@ provides=('parity')
 url="https://ethcore.io/parity.html"
 license=('GPL')
 source=(
-  "${pkgname}-${pkgver}.deb::https://github.com/ethcore/parity/releases/download/v1.0.2/parity_linux_1.0.2-0_amd64.deb"
+  "${pkgname}-${pkgver}.deb::https://github.com/ethcore/parity/releases/download/v${pkgver}/parity_linux_${pkgver}-0_amd64.deb"
   "COPYING::https://raw.githubusercontent.com/ethcore/parity/master/LICENSE"
 )
 sha256sums=(
-  '0ee68396e36625540a370042aa7a6f16d475f2269c997c5b82455e58eaad05d3'
+  'e4be93b8fb2b6ee9e9f752eac461e99943499638d3718c847e000c403db7fdb7'
   'd62f065830aa3739cc031156b9690805c7b2e811b4a178c8b4acd8725d561c94'
 )
 
