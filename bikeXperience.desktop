@@ -5,4 +5,4 @@ Exec=bikeXperience
 Icon=/usr/share/icons/hicolor/100x100/apps/bxpicon.png
 Terminal=false
 Type=Application
-Categories=Office;
+Categories=Utility;DataVisualization;Office;Geography;
