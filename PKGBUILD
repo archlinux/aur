@@ -1,5 +1,5 @@
 pkgname=mingw-w64-hdf5
-pkgver=1.8.15_patch1
+pkgver=1.10.0
 pkgrel=1
 arch=('any')
 pkgdesc="General purpose library and file format for storing scientific data (mingw-w64)"
@@ -8,8 +8,9 @@ license=('custom')
 depends=('mingw-w64-crt' 'mingw-w64-zlib')
 makedepends=('mingw-w64-cmake' 'wine')
 options=('!strip' '!buildflags' 'staticlibs')
-source=("https://www.hdfgroup.org/ftp/HDF5/releases/hdf5-${pkgver/_/-}/src/hdf5-${pkgver/_/-}.tar.bz2")
 sha1sums=('82ed248e5d0293bc1dba4c13c9b2880a26643ee0')
+source=(ftp://ftp.hdfgroup.org/HDF5/releases/hdf5-1.10/hdf5-${pkgver}/src/hdf5-${pkgver}.tar.bz2)
+sha1sums=('5866dbbcd24485f6b206413e73f7205cb3c1196e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -21,6 +22,9 @@ prepare () {
 
   # run H5detect.exe, H5make_libsettings.exe through wine
   sed -i "s|set (CMD $<TARGET_FILE:H5|set (CMD wine $<TARGET_FILE:H5|g" src/CMakeLists.txt
+
+  # error: redefinition of ‘struct timezone’
+  sed -i "s|struct timezone {|struct timezonezzzz {|g" src/H5win32defs.h
 }
 
 build() {
