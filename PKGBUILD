@@ -2,7 +2,7 @@
 
 _pkgname=juffed
 pkgname=${_pkgname}-qt5-git
-pkgver=0.10.77.g54b9cb4
+pkgver=0.10.85.g5ba17f9
 pkgrel=2
 pkgdesc='A lightweight cross-platform text editor. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
@@ -14,26 +14,18 @@ makedepends=('git' 'cmake' 'qt5-tools')
 provides=("${_pkgname}=${pkgver}" "${_pkgname}-plugins=${pkgver}")
 conflicts=("${_pkgname}" "${_pkgname}-git")
 
-install=${pkgname}.install
-
-source=(
-	"git+https://github.com/Mezomish/${_pkgname}.git"
-	"${pkgname}.install"
-)
-sha512sums=(
-	'SKIP'
-	'ac9be39d90d5696142b61e00f74577cec23d379be128965642a92cabefd5ed9c511fedeb7cec068f24224d96aa5ace9992920c5a4dd54f90c59a93442f14079a'
-)
+source=("git+https://github.com/Mezomish/${_pkgname}.git")
+sha512sums=('SKIP')
 
 pkgver() {
 	# Updating package version
-	cd ${srcdir}/${_pkgname}
+	cd "${srcdir}"/${_pkgname}
 	git describe --long --tags 2>/dev/null | sed -r 's/^juffed-//;s/-/./g'
 }
 
 prepare() {
 	# Make build directory
-	mkdir -p ${srcdir}/build
+	mkdir -p "${srcdir}"/build
 }
 
 build() {
@@ -45,7 +37,7 @@ build() {
 	fi
 	
 	# Building package
-	cd ${srcdir}/build
+	cd "${srcdir}"/build
 	cmake ../${_pkgname} \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DLIB_INSTALL_DIR=/usr/lib \
@@ -56,6 +48,6 @@ build() {
 
 package() {
 	# Installing package
-	cd ${srcdir}/build
-	make DESTDIR=${pkgdir} install
+	cd "${srcdir}"/build
+	make DESTDIR="${pkgdir}" install
 }
