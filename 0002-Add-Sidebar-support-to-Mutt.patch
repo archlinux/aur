@@ -1,7 +1,7 @@
-From e1291c4429b8f968599ff30d8b27c760174d23c3 Mon Sep 17 00:00:00 2001
+From 1b1af8cf91e0ccdd2e02b0460c67d0be7a042d77 Mon Sep 17 00:00:00 2001
 From: Darshit Shah <darnir@gmail.com>
-Date: Sun, 31 Jan 2016 12:28:31 +0100
-Subject: [PATCH 2/4] Add support for sidebars in Mutt'
+Date: Mon, 2 May 2016 11:42:21 +0200
+Subject: [PATCH 2/4] Add Sidebar support to Mutt
 
 ---
  Makefile.am    |   1 +
@@ -31,27 +31,27 @@ Subject: [PATCH 2/4] Add support for sidebars in Mutt'
  muttlib.c      |  48 +++++++
  mx.c           |  24 +++-
  mx.h           |   1 +
- pager.c        |  42 +++++-
+ pager.c        |  43 ++++--
  pattern.c      |  38 ++++++
  protos.h       |   7 +
- sidebar.c      | 404 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ sidebar.c      | 405 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  sidebar.h      |  36 +++++
- 32 files changed, 971 insertions(+), 40 deletions(-)
+ 32 files changed, 971 insertions(+), 42 deletions(-)
  create mode 100644 sidebar.c
  create mode 100644 sidebar.h
 
 diff --git a/Makefile.am b/Makefile.am
-index a02591f..703cbb7 100644
+index 9ee3fae..6076f84 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -33,6 +33,7 @@ mutt_SOURCES = \
- 	rfc822.c rfc1524.c rfc2047.c rfc2231.c rfc3676.c \
+@@ -34,6 +34,7 @@ mutt_SOURCES = \
  	score.c send.c sendlib.c signal.c sort.c \
  	status.c system.c thread.c charset.c history.c lib.c \
+ 	muttlib.c editmsg.c mbyte.c \
 +	sidebar.c \
- 	muttlib.c editmsg.c mbyte.c mutt_idna.c \
  	url.c ascii.c crypt-mod.c crypt-mod.h safe_asprintf.c
  
+ nodist_mutt_SOURCES = $(BUILT_SOURCES)
 diff --git a/OPS b/OPS
 index 8414a8b..ef14453 100644
 --- a/OPS
@@ -73,7 +73,7 @@ index 6a47dd7..a17259d 100644
 +patch-1.5.23.sidebar.20140412.txt
  patch-1.5.16hg.cd.trash_folder.vl.1
 diff --git a/buffy.c b/buffy.c
-index c713d16..b5441f2 100644
+index dd3def0..65cd659 100644
 --- a/buffy.c
 +++ b/buffy.c
 @@ -161,6 +161,49 @@ void mutt_buffy_cleanup (const char *buf, struct stat *st)
@@ -341,15 +341,15 @@ index 6e29603..19d4734 100644
    { NULL,		0 }
  };
 diff --git a/compose.c b/compose.c
-index a0f9c4a..9a304ce 100644
+index 7b9cf7d..ed4d438 100644
 --- a/compose.c
 +++ b/compose.c
 @@ -72,7 +72,7 @@ enum
  
  #define HDR_XOFFSET 10
  #define TITLE_FMT "%10s" /* Used for Prompts, which are ASCII */
--#define W (COLS - HDR_XOFFSET)
-+#define W (COLS - HDR_XOFFSET - SidebarWidth)
+-#define W (MuttIndexWindow->cols - HDR_XOFFSET)
++#define W (MuttIndexWindow->cols - HDR_XOFFSET - SidebarWidth)
  
  static const char * const Prompts[] =
  {
@@ -357,26 +357,26 @@ index a0f9c4a..9a304ce 100644
  
  static void redraw_crypt_lines (HEADER *msg)
  {
--  mvaddstr (HDR_CRYPT, 0, "Security: ");
-+  mvaddstr (HDR_CRYPT, SidebarWidth, "Security: ");
+-  mutt_window_mvaddstr (MuttIndexWindow, HDR_CRYPT, 0, "Security: ");
++  mutt_window_mvaddstr (MuttIndexWindow, HDR_CRYPT, SidebarWidth, "Security: ");
  
    if ((WithCrypto & (APPLICATION_PGP | APPLICATION_SMIME)) == 0)
    {
 @@ -145,7 +145,7 @@ static void redraw_crypt_lines (HEADER *msg)
        addstr (_(" (OppEnc mode)"));
  
-   clrtoeol ();
--  move (HDR_CRYPTINFO, 0);
-+  move (HDR_CRYPTINFO, SidebarWidth);
-   clrtoeol ();
+   mutt_window_clrtoeol (MuttIndexWindow);
+-  mutt_window_move (MuttIndexWindow, HDR_CRYPTINFO, 0);
++  mutt_window_move (MuttIndexWindow, HDR_CRYPTINFO, SidebarWidth);
+   mutt_window_clrtoeol (MuttIndexWindow);
  
    if ((WithCrypto & APPLICATION_PGP)
 @@ -162,7 +162,7 @@ static void redraw_crypt_lines (HEADER *msg)
        && (msg->security & ENCRYPT)
        && SmimeCryptAlg
        && *SmimeCryptAlg) {
--      mvprintw (HDR_CRYPTINFO, 40, "%s%s", _("Encrypt with: "),
-+      mvprintw (HDR_CRYPTINFO, SidebarWidth + 40, "%s%s", _("Encrypt with: "),
+-    mutt_window_mvprintw (MuttIndexWindow, HDR_CRYPTINFO, 40, "%s%s", _("Encrypt with: "),
++    mutt_window_mvprintw (MuttIndexWindow, HDR_CRYPTINFO, SidebarWidth + 40, "%s%s", _("Encrypt with: "),
  		NONULL(SmimeCryptAlg));
    }
  }
@@ -384,8 +384,8 @@ index a0f9c4a..9a304ce 100644
    int c;
    char *t;
  
--  mvaddstr (HDR_MIX, 0,     "     Mix: ");
-+  mvaddstr (HDR_MIX, SidebarWidth,     "     Mix: ");
+-  mutt_window_mvaddstr (MuttIndexWindow, HDR_MIX, 0,     "     Mix: ");
++  mutt_window_mvaddstr (MuttIndexWindow, HDR_MIX, SidebarWidth,     "     Mix: ");
  
    if (!chain)
    {
@@ -393,8 +393,8 @@ index a0f9c4a..9a304ce 100644
      if (t && t[0] == '0' && t[1] == '\0')
        t = "<random>";
      
--    if (c + mutt_strlen (t) + 2 >= COLS)
-+    if (c + mutt_strlen (t) + 2 >= COLS - SidebarWidth)
+-    if (c + mutt_strlen (t) + 2 >= MuttIndexWindow->cols)
++    if (c + mutt_strlen (t) + 2 >= MuttIndexWindow->cols - SidebarWidth)
        break;
  
      addstr (NONULL(t));
@@ -402,8 +402,8 @@ index a0f9c4a..9a304ce 100644
  
    buf[0] = 0;
    rfc822_write_address (buf, sizeof (buf), addr, 1);
--  mvprintw (line, 0, TITLE_FMT, Prompts[line - 1]);
-+  mvprintw (line, SidebarWidth, TITLE_FMT, Prompts[line - 1]);
+-  mutt_window_mvprintw (MuttIndexWindow, line, 0, TITLE_FMT, Prompts[line]);
++  mutt_window_mvprintw (MuttIndexWindow, line, SidebarWidth, TITLE_FMT, Prompts[line]);
    mutt_paddstr (W, buf);
  }
  
@@ -411,12 +411,12 @@ index a0f9c4a..9a304ce 100644
    draw_envelope_addr (HDR_TO, msg->env->to);
    draw_envelope_addr (HDR_CC, msg->env->cc);
    draw_envelope_addr (HDR_BCC, msg->env->bcc);
--  mvprintw (HDR_SUBJECT, 0, TITLE_FMT, Prompts[HDR_SUBJECT - 1]);
-+  mvprintw (HDR_SUBJECT, SidebarWidth, TITLE_FMT, Prompts[HDR_SUBJECT - 1]);
+-  mutt_window_mvprintw (MuttIndexWindow, HDR_SUBJECT, 0, TITLE_FMT, Prompts[HDR_SUBJECT]);
++  mutt_window_mvprintw (MuttIndexWindow, HDR_SUBJECT, SidebarWidth, TITLE_FMT, Prompts[HDR_SUBJECT]);
    mutt_paddstr (W, NONULL (msg->env->subject));
    draw_envelope_addr (HDR_REPLYTO, msg->env->reply_to);
--  mvprintw (HDR_FCC, 0, TITLE_FMT, Prompts[HDR_FCC - 1]);
-+  mvprintw (HDR_FCC, SidebarWidth, TITLE_FMT, Prompts[HDR_FCC - 1]);
+-  mutt_window_mvprintw (MuttIndexWindow, HDR_FCC, 0, TITLE_FMT, Prompts[HDR_FCC]);
++  mutt_window_mvprintw (MuttIndexWindow, HDR_FCC, SidebarWidth, TITLE_FMT, Prompts[HDR_FCC]);
    mutt_paddstr (W, fcc);
  
    if (WithCrypto)
@@ -424,43 +424,43 @@ index a0f9c4a..9a304ce 100644
  #endif
  
    SETCOLOR (MT_COLOR_STATUS);
--  mvaddstr (HDR_ATTACH - 1, 0, _("-- Attachments"));
-+  mvaddstr (HDR_ATTACH - 1, SidebarWidth, _("-- Attachments"));
-   clrtoeol ();
+-  mutt_window_mvaddstr (MuttIndexWindow, HDR_ATTACH - 1, 0, _("-- Attachments"));
++  mutt_window_mvaddstr (MuttIndexWindow, HDR_ATTACH - 1, SidebarWidth, _("-- Attachments"));
+   mutt_window_clrtoeol (MuttIndexWindow);
  
    NORMAL_COLOR;
 @@ -302,7 +302,7 @@ static int edit_address_list (int line, ADDRESS **addr)
    /* redraw the expanded list so the user can see the result */
    buf[0] = 0;
    rfc822_write_address (buf, sizeof (buf), *addr, 1);
--  move (line, HDR_XOFFSET);
-+  move (line, HDR_XOFFSET+SidebarWidth);
+-  mutt_window_move (MuttIndexWindow, line, HDR_XOFFSET);
++  mutt_window_move (MuttIndexWindow, line, HDR_XOFFSET + SidebarWidth);
    mutt_paddstr (W, buf);
    
    return 0;
-@@ -563,7 +563,7 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
+@@ -564,7 +564,7 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
  	if (mutt_get_field ("Subject: ", buf, sizeof (buf), 0) == 0)
  	{
  	  mutt_str_replace (&msg->env->subject, buf);
--	  move (HDR_SUBJECT, HDR_XOFFSET);
-+	  move (HDR_SUBJECT, HDR_XOFFSET + SidebarWidth);
+-	  mutt_window_move (MuttIndexWindow, HDR_SUBJECT, HDR_XOFFSET);
++	  mutt_window_move (MuttIndexWindow, HDR_SUBJECT, HDR_XOFFSET + SidebarWidth);
  	  if (msg->env->subject)
  	    mutt_paddstr (W, msg->env->subject);
  	  else
-@@ -581,7 +581,7 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
+@@ -582,7 +582,7 @@ int mutt_compose_menu (HEADER *msg,   /* structure for new message */
  	{
  	  strfcpy (fcc, buf, fcclen);
  	  mutt_pretty_mailbox (fcc, fcclen);
--	  move (HDR_FCC, HDR_XOFFSET);
-+	  move (HDR_FCC, HDR_XOFFSET + SidebarWidth);
+-	  mutt_window_move (MuttIndexWindow, HDR_FCC, HDR_XOFFSET);
++	  mutt_window_move (MuttIndexWindow, HDR_FCC, HDR_XOFFSET + SidebarWidth);
  	  mutt_paddstr (W, fcc);
  	  fccSet = 1;
  	}
 diff --git a/configure.ac b/configure.ac
-index 2947392..43a8ff7 100644
+index 6096dbb..481ca63 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -1301,6 +1301,8 @@ if test $mutt_cv_langinfo_yesexpr = yes; then
+@@ -1308,6 +1308,8 @@ if test $mutt_cv_langinfo_yesexpr = yes; then
    AC_DEFINE(HAVE_LANGINFO_YESEXPR,1,[ Define if you have <langinfo.h> and nl_langinfo(YESEXPR). ])
  fi
  
@@ -470,7 +470,7 @@ index 2947392..43a8ff7 100644
  have_openjade="no"
  AC_PATH_PROG([OSPCAT], [ospcat], [none])
 diff --git a/curs_main.c b/curs_main.c
-index a76aac9..aaeb13d 100644
+index 280b7b4..beac144 100644
 --- a/curs_main.c
 +++ b/curs_main.c
 @@ -26,7 +26,9 @@
@@ -483,7 +483,7 @@ index a76aac9..aaeb13d 100644
  
  #ifdef USE_POP
  #include "pop.h"
-@@ -595,20 +597,31 @@ int mutt_index_menu (void)
+@@ -593,20 +595,31 @@ int mutt_index_menu (void)
         menu->redraw |= REDRAW_STATUS;
       if (do_buffy_notify)
       {
@@ -517,29 +517,29 @@ index a76aac9..aaeb13d 100644
      }
  
      if (menu->menu == MENU_MAIN)
-@@ -630,9 +643,12 @@ int mutt_index_menu (void)
+@@ -628,9 +641,12 @@ int mutt_index_menu (void)
  
        if (menu->redraw & REDRAW_STATUS)
        {
 +        DrawFullLine = 1;
  	menu_status_line (buf, sizeof (buf), menu, NONULL (Status));
 +        DrawFullLine = 0;
- 	move (option (OPTSTATUSONTOP) ? 0 : LINES-2, 0);
+         mutt_window_move (MuttStatusWindow, 0, 0);
  	SETCOLOR (MT_COLOR_STATUS);
 +        set_buffystats(Context);
- 	mutt_paddstr (COLS, buf);
+ 	mutt_paddstr (MuttStatusWindow->cols, buf);
  	NORMAL_COLOR;
  	menu->redraw &= ~REDRAW_STATUS;
-@@ -652,7 +668,7 @@ int mutt_index_menu (void)
+@@ -650,7 +666,7 @@ int mutt_index_menu (void)
  	menu->oldcurrent = -1;
  
        if (option (OPTARROWCURSOR))
--	move (menu->current - menu->top + menu->offset, 2);
-+	move (menu->current - menu->top + menu->offset, SidebarWidth + 2);
+-	mutt_window_move (MuttIndexWindow, menu->current - menu->top + menu->offset, 2);
++	mutt_window_move (MuttIndexWindow, menu->current - menu->top + menu->offset, SidebarWidth + 2);
        else if (option (OPTBRAILLEFRIENDLY))
- 	move (menu->current - menu->top + menu->offset, 0);
+ 	mutt_window_move (MuttIndexWindow, menu->current - menu->top + menu->offset, 0);
        else
-@@ -1091,6 +1107,7 @@ int mutt_index_menu (void)
+@@ -1090,6 +1106,7 @@ int mutt_index_menu (void)
  	  break;
  
  	CHECK_MSGCOUNT;
@@ -547,7 +547,7 @@ index a76aac9..aaeb13d 100644
  	CHECK_READONLY;
  	{
  	  int oldvcount = Context->vcount;
-@@ -1150,6 +1167,7 @@ int mutt_index_menu (void)
+@@ -1149,6 +1166,7 @@ int mutt_index_menu (void)
  	  menu->redraw = REDRAW_FULL;
  	break;
  
@@ -555,7 +555,7 @@ index a76aac9..aaeb13d 100644
        case OP_MAIN_CHANGE_FOLDER:
        case OP_MAIN_NEXT_UNREAD_MAILBOX:
  
-@@ -1181,7 +1199,11 @@ int mutt_index_menu (void)
+@@ -1180,7 +1198,11 @@ int mutt_index_menu (void)
  	{
  	  mutt_buffy (buf, sizeof (buf));
  
@@ -568,7 +568,7 @@ index a76aac9..aaeb13d 100644
  	  {
  	    if (menu->menu == MENU_PAGER)
  	    {
-@@ -1199,6 +1221,7 @@ int mutt_index_menu (void)
+@@ -1198,6 +1220,7 @@ int mutt_index_menu (void)
  	}
  
  	mutt_expand_path (buf, sizeof (buf));
@@ -576,7 +576,7 @@ index a76aac9..aaeb13d 100644
  	if (mx_get_magic (buf) <= 0)
  	{
  	  mutt_error (_("%s is not a mailbox."), buf);
-@@ -2310,6 +2333,12 @@ int mutt_index_menu (void)
+@@ -2309,6 +2332,12 @@ int mutt_index_menu (void)
  	mutt_what_key();
  	break;
  
@@ -590,7 +590,7 @@ index a76aac9..aaeb13d 100644
  	if (menu->menu == MENU_MAIN)
  	  km_error_key (MENU_MAIN);
 diff --git a/flags.c b/flags.c
-index ad3051b..4eda32b 100644
+index 4ce8b42..5389243 100644
 --- a/flags.c
 +++ b/flags.c
 @@ -22,8 +22,10 @@
@@ -641,7 +641,7 @@ index 7a1c5a9..39dc50b 100644
  };
  
 diff --git a/globals.h b/globals.h
-index 27b8ac1..84ef941 100644
+index 241758d..92de9db 100644
 --- a/globals.h
 +++ b/globals.h
 @@ -118,6 +118,9 @@ WHERE short SearchContext;
@@ -654,7 +654,7 @@ index 27b8ac1..84ef941 100644
  WHERE char *Signature;
  WHERE char *SimpleSearch;
  #if USE_SMTP
-@@ -214,6 +217,9 @@ WHERE short ScoreThresholdDelete;
+@@ -215,6 +218,9 @@ WHERE short ScoreThresholdDelete;
  WHERE short ScoreThresholdRead;
  WHERE short ScoreThresholdFlag;
  
@@ -665,10 +665,10 @@ index 27b8ac1..84ef941 100644
  WHERE short ImapKeepalive;
  WHERE short ImapPipelineDepth;
 diff --git a/handler.c b/handler.c
-index 4944d49..4762e8f 100644
+index 670b27b..07fa561 100644
 --- a/handler.c
 +++ b/handler.c
-@@ -1601,6 +1601,11 @@ static int run_decode_and_handler (BODY *b, STATE *s, handler_t handler, int pla
+@@ -1602,6 +1602,11 @@ static int run_decode_and_handler (BODY *b, STATE *s, handler_t handler, int pla
    int decode = 0;
    int rc = 0;
  
@@ -680,7 +680,7 @@ index 4944d49..4762e8f 100644
    fseeko (s->fpin, b->offset, 0);
  
    /* see if we need to decode this part before processing it */
-@@ -1618,6 +1623,14 @@ static int run_decode_and_handler (BODY *b, STATE *s, handler_t handler, int pla
+@@ -1619,6 +1624,14 @@ static int run_decode_and_handler (BODY *b, STATE *s, handler_t handler, int pla
      {
        /* decode to a tempfile, saving the original destination */
        fp = s->fpout;
@@ -695,7 +695,7 @@ index 4944d49..4762e8f 100644
        mutt_mktemp (tempfile, sizeof (tempfile));
        if ((s->fpout = safe_fopen (tempfile, "w")) == NULL)
        {
-@@ -1625,6 +1638,7 @@ static int run_decode_and_handler (BODY *b, STATE *s, handler_t handler, int pla
+@@ -1626,6 +1639,7 @@ static int run_decode_and_handler (BODY *b, STATE *s, handler_t handler, int pla
          dprint (1, (debugfile, "Can't open %s.\n", tempfile));
          return -1;
        }
@@ -703,7 +703,7 @@ index 4944d49..4762e8f 100644
        /* decoding the attachment changes the size and offset, so save a copy
          * of the "real" values now, and restore them after processing
          */
-@@ -1653,8 +1667,19 @@ static int run_decode_and_handler (BODY *b, STATE *s, handler_t handler, int pla
+@@ -1654,8 +1668,19 @@ static int run_decode_and_handler (BODY *b, STATE *s, handler_t handler, int pla
        /* restore final destination and substitute the tempfile for input */
        s->fpout = fp;
        fp = s->fpin;
@@ -723,7 +723,7 @@ index 4944d49..4762e8f 100644
  
        /* restore the prefix */
        s->prefix = savePrefix;
-@@ -1680,6 +1705,10 @@ static int run_decode_and_handler (BODY *b, STATE *s, handler_t handler, int pla
+@@ -1681,6 +1706,10 @@ static int run_decode_and_handler (BODY *b, STATE *s, handler_t handler, int pla
  
        /* restore the original source stream */
        safe_fclose (&s->fpin);
@@ -734,7 +734,7 @@ index 4944d49..4762e8f 100644
        s->fpin = fp;
      }
    }
-@@ -1719,6 +1748,11 @@ int mutt_body_handler (BODY *b, STATE *s)
+@@ -1720,6 +1749,11 @@ int mutt_body_handler (BODY *b, STATE *s)
    handler_t handler = NULL;
    int rc = 0;
  
@@ -765,10 +765,10 @@ index d99a99a..5068fca 100644
          return;
        }
 diff --git a/imap/imap.c b/imap/imap.c
-index 0c58ce7..ea158c1 100644
+index 1b63b3a..c11b993 100644
 --- a/imap/imap.c
 +++ b/imap/imap.c
-@@ -1526,7 +1526,7 @@ int imap_buffy_check (int force)
+@@ -1535,7 +1535,7 @@ int imap_buffy_check (int force)
  
      imap_munge_mbox_name (idata, munged, sizeof (munged), name);
      snprintf (command, sizeof (command),
@@ -778,10 +778,10 @@ index 0c58ce7..ea158c1 100644
      if (imap_exec (idata, command, IMAP_CMD_QUEUE) < 0)
      {
 diff --git a/init.h b/init.h
-index 97da2b1..8f04e7d 100644
+index 728bfb7..48c02fe 100644
 --- a/init.h
 +++ b/init.h
-@@ -2034,6 +2034,54 @@ struct option_t MuttVars[] = {
+@@ -2050,6 +2050,54 @@ struct option_t MuttVars[] = {
    ** not used.
    ** (PGP only)
    */
@@ -849,7 +849,7 @@ index 2b2c9a1..000503d 100644
  /* mx_open_new_message() */
  #define M_ADD_FROM	(1<<0)	/* add a From_ line */
 diff --git a/main.c b/main.c
-index e43d3ad..8280274 100644
+index 82fd46d..5434610 100644
 --- a/main.c
 +++ b/main.c
 @@ -50,6 +50,7 @@
@@ -860,7 +860,7 @@ index e43d3ad..8280274 100644
  #include <sys/utsname.h>
  
  #ifdef HAVE_GETOPT_H
-@@ -556,7 +557,7 @@ init_extended_keys();
+@@ -558,7 +559,7 @@ init_extended_keys();
  
  int main (int argc, char **argv)
  {
@@ -869,7 +869,7 @@ index e43d3ad..8280274 100644
    char *subject = NULL;
    char *includeFile = NULL;
    char *draftFile = NULL;
-@@ -1037,6 +1038,13 @@ int main (int argc, char **argv)
+@@ -1189,6 +1190,13 @@ int main (int argc, char **argv)
        strfcpy (folder, NONULL(Spoolfile), sizeof (folder));
      mutt_expand_path (folder, sizeof (folder));
  
@@ -883,7 +883,7 @@ index e43d3ad..8280274 100644
      mutt_str_replace (&CurrentFolder, folder);
      mutt_str_replace (&LastFolder, folder);
  
-@@ -1059,6 +1067,7 @@ int main (int argc, char **argv)
+@@ -1211,6 +1219,7 @@ int main (int argc, char **argv)
      if((Context = mx_open_mailbox (folder, ((flags & M_RO) || option (OPTREADONLY)) ? M_READONLY : 0, NULL))
         || !explicit_folder)
      {
@@ -892,7 +892,7 @@ index e43d3ad..8280274 100644
        if (Context)
  	FREE (&Context);
 diff --git a/mbox.c b/mbox.c
-index cdc8109..4926859 100644
+index 95cba65..3e85518 100644
 --- a/mbox.c
 +++ b/mbox.c
 @@ -100,6 +100,7 @@ int mmdf_parse_mailbox (CONTEXT *ctx)
@@ -912,7 +912,7 @@ index cdc8109..4926859 100644
  #ifdef NFS_ATTRIBUTE_HACK
    if (sb.st_mtime > sb.st_atime)
 diff --git a/menu.c b/menu.c
-index 828df9c..49012a8 100644
+index a715fb9..efe7eec 100644
 --- a/menu.c
 +++ b/menu.c
 @@ -24,6 +24,7 @@
@@ -923,16 +923,16 @@ index 828df9c..49012a8 100644
  
  char* SearchBuffers[MENU_MAX];
  
-@@ -184,7 +185,7 @@ static void menu_pad_string (char *s, size_t n)
+@@ -184,7 +185,7 @@ static void menu_pad_string (MUTTMENU *menu, char *s, size_t n)
  {
    char *scratch = safe_strdup (s);
    int shift = option (OPTARROWCURSOR) ? 3 : 0;
--  int cols = COLS - shift;
-+  int cols = COLS - shift - SidebarWidth;
+-  int cols = menu->indexwin->cols - shift;
++  int cols = menu->indexwin->cols - shift - SidebarWidth;
  
    mutt_format_string (s, n, cols, cols, FMT_LEFT, ' ', scratch, mutt_strlen (scratch), 1);
    s[n - 1] = 0;
-@@ -237,6 +238,7 @@ void menu_redraw_index (MUTTMENU *menu)
+@@ -235,6 +236,7 @@ void menu_redraw_index (MUTTMENU *menu)
    int do_color;
    int attr;
  
@@ -940,75 +940,75 @@ index 828df9c..49012a8 100644
    for (i = menu->top; i < menu->top + menu->pagelen; i++)
    {
      if (i < menu->max)
-@@ -247,7 +249,7 @@ void menu_redraw_index (MUTTMENU *menu)
-       menu_pad_string (buf, sizeof (buf));
+@@ -245,7 +247,7 @@ void menu_redraw_index (MUTTMENU *menu)
+       menu_pad_string (menu, buf, sizeof (buf));
  
        ATTRSET(attr);
--      move(i - menu->top + menu->offset, 0);
-+      move(i - menu->top + menu->offset, SidebarWidth);
+-      mutt_window_move (menu->indexwin, i - menu->top + menu->offset, 0);
++      mutt_window_move (menu->indexwin, i - menu->top + menu->offset, SidebarWidth);
        do_color = 1;
  
        if (i == menu->current)
-@@ -270,7 +272,7 @@ void menu_redraw_index (MUTTMENU *menu)
+@@ -268,7 +270,7 @@ void menu_redraw_index (MUTTMENU *menu)
      else
      {
        NORMAL_COLOR;
--      CLEARLINE(i - menu->top + menu->offset);
-+      CLEARLINE_WIN (i - menu->top + menu->offset);
+-      mutt_window_clearline (menu->indexwin, i - menu->top + menu->offset);
++      CLEARLINE_WIN (menu->indexwin, i - menu->top + menu->offset);
      }
    }
    NORMAL_COLOR;
-@@ -287,7 +289,7 @@ void menu_redraw_motion (MUTTMENU *menu)
+@@ -285,7 +287,7 @@ void menu_redraw_motion (MUTTMENU *menu)
      return;
    }
    
--  move (menu->oldcurrent + menu->offset - menu->top, 0);
-+  move (menu->oldcurrent + menu->offset - menu->top, SidebarWidth);
+-  mutt_window_move (menu->indexwin, menu->oldcurrent + menu->offset - menu->top, 0);
++  mutt_window_move (menu->indexwin, menu->oldcurrent + menu->offset - menu->top, SidebarWidth);
    ATTRSET(menu->color (menu->oldcurrent));
  
    if (option (OPTARROWCURSOR))
-@@ -299,13 +301,13 @@ void menu_redraw_motion (MUTTMENU *menu)
+@@ -297,13 +299,13 @@ void menu_redraw_motion (MUTTMENU *menu)
      {
        menu_make_entry (buf, sizeof (buf), menu, menu->oldcurrent);
-       menu_pad_string (buf, sizeof (buf));
--      move (menu->oldcurrent + menu->offset - menu->top, 3);
-+      move (menu->oldcurrent + menu->offset - menu->top, SidebarWidth + 3);
+       menu_pad_string (menu, buf, sizeof (buf));
+-      mutt_window_move (menu->indexwin, menu->oldcurrent + menu->offset - menu->top, 3);
++      mutt_window_move (menu->indexwin, menu->oldcurrent + menu->offset - menu->top, SidebarWidth + 3);
        print_enriched_string (menu->color(menu->oldcurrent), (unsigned char *) buf, 1);
      }
  
      /* now draw it in the new location */
      SETCOLOR(MT_COLOR_INDICATOR);
--    mvaddstr(menu->current + menu->offset - menu->top, 0, "->");
-+    mvaddstr(menu->current + menu->offset - menu->top, SidebarWidth, "->");
+-    mutt_window_mvaddstr (menu->indexwin, menu->current + menu->offset - menu->top, 0, "->");
++    mutt_window_mvaddstr (menu->indexwin, menu->current + menu->offset - menu->top, SidebarWidth, "->");
    }
    else
    {
-@@ -318,7 +320,7 @@ void menu_redraw_motion (MUTTMENU *menu)
+@@ -316,7 +318,7 @@ void menu_redraw_motion (MUTTMENU *menu)
      menu_make_entry (buf, sizeof (buf), menu, menu->current);
-     menu_pad_string (buf, sizeof (buf));
+     menu_pad_string (menu, buf, sizeof (buf));
      SETCOLOR(MT_COLOR_INDICATOR);
--    move(menu->current - menu->top + menu->offset, 0);
-+    move(menu->current - menu->top + menu->offset, SidebarWidth);
+-    mutt_window_move (menu->indexwin, menu->current + menu->offset - menu->top, 0);
++    mutt_window_move (menu->indexwin, menu->current + menu->offset - menu->top, SidebarWidth);
      print_enriched_string (menu->color(menu->current), (unsigned char *) buf, 0);
    }
    menu->redraw &= REDRAW_STATUS;
-@@ -330,7 +332,7 @@ void menu_redraw_current (MUTTMENU *menu)
+@@ -328,7 +330,7 @@ void menu_redraw_current (MUTTMENU *menu)
    char buf[LONG_STRING];
    int attr = menu->color (menu->current);
-   
--  move (menu->current + menu->offset - menu->top, 0);
-+  move (menu->current + menu->offset - menu->top, SidebarWidth);
-   menu_make_entry (buf, sizeof (buf), menu, menu->current);
-   menu_pad_string (buf, sizeof (buf));
  
-@@ -873,7 +875,7 @@ int mutt_menuLoop (MUTTMENU *menu)
+-  mutt_window_move (menu->indexwin, menu->current + menu->offset - menu->top, 0);
++  mutt_window_move (menu->indexwin, menu->current + menu->offset - menu->top, SidebarWidth);
+   menu_make_entry (buf, sizeof (buf), menu, menu->current);
+   menu_pad_string (menu, buf, sizeof (buf));
+ 
+@@ -875,7 +877,7 @@ int mutt_menuLoop (MUTTMENU *menu)
      
      
      if (option (OPTARROWCURSOR))
--      move (menu->current - menu->top + menu->offset, 2);
-+      move (menu->current - menu->top + menu->offset, SidebarWidth + 2);
+-      mutt_window_move (menu->indexwin, menu->current - menu->top + menu->offset, 2);
++      mutt_window_move (menu->indexwin, menu->current - menu->top + menu->offset, SidebarWidth + 2);
      else if (option (OPTBRAILLEFRIENDLY))
-       move (menu->current - menu->top + menu->offset, 0);
+       mutt_window_move (menu->indexwin, menu->current - menu->top + menu->offset, 0);
      else
 diff --git a/mh.c b/mh.c
 index bc87660..3121fca 100644
@@ -1048,10 +1048,10 @@ index bc87660..3121fca 100644
  {
    int fd;
 diff --git a/mutt.h b/mutt.h
-index 837859a..44c799c 100644
+index 4505ba2..cf742b2 100644
 --- a/mutt.h
 +++ b/mutt.h
-@@ -422,6 +422,10 @@ enum
+@@ -429,6 +429,10 @@ enum
    OPTSAVEEMPTY,
    OPTSAVENAME,
    OPTSCORE,
@@ -1062,7 +1062,7 @@ index 837859a..44c799c 100644
    OPTSIGDASHES,
    OPTSIGONTOP,
    OPTSORTRE,
-@@ -867,6 +871,7 @@ typedef struct _context
+@@ -874,6 +878,7 @@ typedef struct _context
  {
    char *path;
    FILE *fp;
@@ -1070,7 +1070,7 @@ index 837859a..44c799c 100644
    time_t mtime;
    off_t size;
    off_t vsize;
-@@ -902,6 +907,7 @@ typedef struct _context
+@@ -909,6 +914,7 @@ typedef struct _context
    unsigned int quiet : 1;	/* inhibit status messages? */
    unsigned int collapsed : 1;   /* are all threads collapsed? */
    unsigned int closing : 1;	/* mailbox is being closed */
@@ -1079,18 +1079,18 @@ index 837859a..44c799c 100644
    /* driver hooks */
    void *data;			/* driver specific data */
 diff --git a/mutt_curses.h b/mutt_curses.h
-index 93d9aea..ac9f677 100644
+index d3efd70..b1d61b2 100644
 --- a/mutt_curses.h
 +++ b/mutt_curses.h
-@@ -64,6 +64,7 @@
- #undef lines
- #endif /* lines */
+@@ -66,6 +66,7 @@
  
-+#define CLEARLINE_WIN(x) move(x,SidebarWidth), clrtoeol()
- #define CLEARLINE(x) move(x,0), clrtoeol()
- #define CENTERLINE(x,y) move(y, (COLS-strlen(x))/2), addstr(x)
+ #define CLEARLINE(win,x) mutt_window_clearline(win, x)
+ #define CENTERLINE(win,x,y) mutt_window_move(win, y, (win->cols-strlen(x))/2), addstr(x)
++#define CLEARLINE_WIN(win, x) mutt_window_move(win, x,SidebarWidth), mutt_window_clrtoeol(win)
  #define BEEP() do { if (option (OPTBEEP)) beep(); } while (0)
-@@ -123,6 +124,8 @@ enum
+ 
+ #if ! (defined(USE_SLANG_CURSES) || defined(HAVE_CURS_SET))
+@@ -122,6 +123,8 @@ enum
    MT_COLOR_BOLD,
    MT_COLOR_UNDERLINE,
    MT_COLOR_INDEX,
@@ -1100,10 +1100,10 @@ index 93d9aea..ac9f677 100644
    MT_COLOR_MAX
  };
 diff --git a/mutt_menu.h b/mutt_menu.h
-index 8192019..aea89f1 100644
+index 6f4ed74..f4c9b9b 100644
 --- a/mutt_menu.h
 +++ b/mutt_menu.h
-@@ -34,6 +34,7 @@
+@@ -35,6 +35,7 @@
  #define REDRAW_FULL		(1<<5)
  #define REDRAW_BODY		(1<<6)
  #define REDRAW_SIGWINCH		(1<<7)
@@ -1112,19 +1112,19 @@ index 8192019..aea89f1 100644
  #define M_MODEFMT "-- Mutt: %s"
  
 diff --git a/muttlib.c b/muttlib.c
-index 7850d63..602ec60 100644
+index bad91d3..d806730 100644
 --- a/muttlib.c
 +++ b/muttlib.c
-@@ -1282,6 +1282,8 @@ void mutt_FormatString (char *dest,		/* output buffer */
+@@ -1283,6 +1283,8 @@ void mutt_FormatString (char *dest,		/* output buffer */
  	  pl = pw = 1;
  
  	/* see if there's room to add content, else ignore */
 +        if ( DrawFullLine )
 +        {
- 	if ((col < COLS && wlen < destlen) || soft)
+ 	if ((col < cols && wlen < destlen) || soft)
  	{
  	  int pad;
-@@ -1325,6 +1327,52 @@ void mutt_FormatString (char *dest,		/* output buffer */
+@@ -1347,6 +1349,52 @@ void mutt_FormatString (char *dest,		/* output buffer */
  	  col += wid;
  	  src += pl;
  	}
@@ -1136,7 +1136,7 @@ index 7850d63..602ec60 100644
 +	  int pad;
 +
 +	  /* get contents after padding */
-+	  mutt_FormatString (buf, sizeof (buf), 0, src + pl, callback, data, flags);
++	  mutt_FormatString (buf, sizeof (buf), 0, cols,  src + pl, callback, data, flags);
 +	  len = mutt_strlen (buf);
 +	  wid = mutt_strwidth (buf);
 +
@@ -1259,7 +1259,7 @@ index dd77ba4..9cf1193 100644
  
  int maildir_read_dir (CONTEXT *);
 diff --git a/pager.c b/pager.c
-index 8bfe72c..4a38124 100644
+index d47842a..234fc20 100644
 --- a/pager.c
 +++ b/pager.c
 @@ -29,6 +29,7 @@
@@ -1270,48 +1270,50 @@ index 8bfe72c..4a38124 100644
  
  #include "mutt_crypt.h"
  
-@@ -1096,6 +1097,7 @@ static int format_line (struct line_t **lineInfo, int n, unsigned char *buf,
+@@ -1102,6 +1103,7 @@ static int format_line (struct line_t **lineInfo, int n, unsigned char *buf,
    wchar_t wc;
    mbstate_t mbstate;
-   int wrap_cols = mutt_term_width ((flags & M_PAGER_NOWRAP) ? 0 : Wrap);
+   int wrap_cols = mutt_window_wrap_cols (pager_window, (flags & M_PAGER_NOWRAP) ? 0 : Wrap);
 +  wrap_cols -= SidebarWidth;
  
    if (check_attachment_marker ((char *)buf) == 0)
-     wrap_cols = COLS;
-@@ -1573,6 +1575,7 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
- 
-   int bodyoffset = 1;			/* offset of first line of real text */
-   int statusoffset = 0; 		/* offset for the status bar */
+     wrap_cols = pager_window->cols;
+@@ -1585,6 +1587,7 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
+   mutt_window_t *index_window = NULL;
+   mutt_window_t *pager_status_window = NULL;
+   mutt_window_t *pager_window = NULL;
 +  int statuswidth;
-   int helpoffset = LINES - 2;		/* offset for the help bar. */
-   int bodylen = LINES - 2 - bodyoffset; /* length of displayable area */
  
-@@ -1747,7 +1750,7 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
+   MUTTMENU *index = NULL;		/* the Pager Index (PI) */
+   int indexlen = PagerIndexLines;	/* indexlen not always == PIL */
+@@ -1773,7 +1776,7 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
      if ((redraw & REDRAW_BODY) || topline != oldtopline)
      {
        do {
--	move (bodyoffset, 0);
-+	move (bodyoffset, SidebarWidth);
+-        mutt_window_move (pager_window, 0, 0);
++        mutt_window_move (pager_window, 0, SidebarWidth);
  	curline = oldtopline = topline;
  	lines = 0;
  	force_redraw = 0;
-@@ -1760,6 +1763,7 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
- 			    &QuoteList, &q_level, &force_redraw, &SearchRE) > 0)
+@@ -1787,7 +1790,7 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
+                             pager_window) > 0)
  	    lines++;
  	  curline++;
-+	  move(lines + bodyoffset, SidebarWidth);
+-          mutt_window_move (pager_window, lines, 0);
++          mutt_window_move (pager_window, lines, SidebarWidth);
  	}
  	last_offset = lineInfo[curline].offset;
        } while (force_redraw);
-@@ -1772,6 +1776,7 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
+@@ -1799,7 +1802,7 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
+ 	if (option (OPTTILDE))
  	  addch ('~');
- 	addch ('\n');
  	lines++;
-+	move(lines + bodyoffset, SidebarWidth);
+-        mutt_window_move (pager_window, lines, 0);
++        mutt_window_move (pager_window, lines, SidebarWidth);
        }
        NORMAL_COLOR;
  
-@@ -1789,29 +1794,39 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
+@@ -1817,29 +1820,39 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
        hfi.ctx = Context;
        hfi.pager_progress = pager_progress_str;
  
@@ -1323,31 +1325,31 @@ index 8bfe72c..4a38124 100644
  	strfcpy(pager_progress_str, (topline == 0) ? "all" : "end", sizeof(pager_progress_str));
  
        /* print out the pager status bar */
--      move (statusoffset, 0);
-+      move (statusoffset, SidebarWidth);
+-      mutt_window_move (pager_status_window, 0, 0);
++      mutt_window_move (pager_status_window, 0, SidebarWidth);
        SETCOLOR (MT_COLOR_STATUS);
 +      if(option(OPTSTATUSONTOP) && PagerIndexLines > 0) {
-+          CLEARLINE_WIN (statusoffset);
++          CLEARLINE_WIN (pager_status_window, 0);
 +      } else {
-+          CLEARLINE (statusoffset);
++          CLEARLINE (pager_status_window, 0);
 +          DrawFullLine = 1; /* for mutt_make_string_info */
 +      }
  
        if (IsHeader (extra) || IsMsgAttach (extra))
        {
--	size_t l1 = COLS * MB_LEN_MAX;
+-	size_t l1 = pager_status_window->cols * MB_LEN_MAX;
 +	size_t l1 = statuswidth * MB_LEN_MAX;
  	size_t l2 = sizeof (buffer);
  	hfi.hdr = (IsHeader (extra)) ? extra->hdr : extra->bdy->hdr;
  	mutt_make_string_info (buffer, l1 < l2 ? l1 : l2, NONULL (PagerFmt), &hfi, M_FORMAT_MAKEPRINT);
--	mutt_paddstr (COLS, buffer);
+-	mutt_paddstr (pager_status_window->cols, buffer);
 +	mutt_paddstr (statuswidth, buffer);
        }
        else
        {
  	char bn[STRING];
  	snprintf (bn, sizeof (bn), "%s (%s)", banner, pager_progress_str);
--	mutt_paddstr (COLS, bn);
+-	mutt_paddstr (pager_status_window->cols, bn);
 +	mutt_paddstr (statuswidth, bn);
        }
 +      if(!option(OPTSTATUSONTOP) || PagerIndexLines == 0)
@@ -1355,21 +1357,20 @@ index 8bfe72c..4a38124 100644
        NORMAL_COLOR;
        if (option(OPTTSENABLED) && TSSupported)
        {
-@@ -1827,16 +1842,22 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
-       /* redraw the pager_index indicator, because the
+@@ -1856,16 +1869,21 @@ mutt_pager (const char *banner, const char *fname, int flags, pager_t *extra)
         * flags for this message might have changed. */
-       menu_redraw_current (index);
+       if (index_window->rows > 0)
+         menu_redraw_current (index);
 +      draw_sidebar(MENU_PAGER);
  
        /* print out the index status bar */
        menu_status_line (buffer, sizeof (buffer), index, NONULL(Status));
   
--      move (indexoffset + (option (OPTSTATUSONTOP) ? 0 : (indexlen - 1)), 0);
-+      move (indexoffset + (option (OPTSTATUSONTOP) ? 0 : (indexlen - 1)),
-+          (option(OPTSTATUSONTOP) ? 0: SidebarWidth));
+-      mutt_window_move (index_status_window, 0, 0);
++      mutt_window_move (index_status_window, 0, (option(OPTSTATUSONTOP) ? 0 : SidebarWidth));
        SETCOLOR (MT_COLOR_STATUS);
--      mutt_paddstr (COLS, buffer);
-+      mutt_paddstr (COLS - (option(OPTSTATUSONTOP) ? 0 : SidebarWidth), buffer);
+-      mutt_paddstr (index_status_window->cols, buffer);
++      mutt_paddstr (index_status_window->cols - (option(OPTSTATUSONTOP) ? 0 : SidebarWidth), buffer);
        NORMAL_COLOR;
      }
  
@@ -1380,7 +1381,7 @@ index 8bfe72c..4a38124 100644
      redraw = 0;
  
      if (option(OPTBRAILLEFRIENDLY)) {
-@@ -2777,6 +2798,13 @@ search_next:
+@@ -2807,6 +2825,13 @@ search_next:
  	mutt_what_key ();
  	break;
  
@@ -1485,7 +1486,7 @@ index d954cdc..eb13a21 100644
    }
  
 diff --git a/protos.h b/protos.h
-index 2012df4..e0a257c 100644
+index 0eebe95..b32de91 100644
 --- a/protos.h
 +++ b/protos.h
 @@ -36,6 +36,13 @@ struct hdr_format_info
@@ -1504,10 +1505,10 @@ index 2012df4..e0a257c 100644
  int mutt_extract_token (BUFFER *, BUFFER *, int);
 diff --git a/sidebar.c b/sidebar.c
 new file mode 100644
-index 0000000..5025931
+index 0000000..7c262ab
 --- /dev/null
 +++ b/sidebar.c
-@@ -0,0 +1,404 @@
+@@ -0,0 +1,405 @@
 +/*
 + * Copyright (C) ????-2004 Justin Hibbits <jrh29@po.cwru.edu>
 + * Copyright (C) 2004 Thomer M. Gil <mutt@thomer.com>
@@ -1586,6 +1587,7 @@ index 0000000..5025931
 +sidebar_format_str (char *dest,
 +			size_t destlen,
 +			size_t col,
++			int cols,
 +			char op,
 +			const char *src,
 +			const char *prefix,
@@ -1644,9 +1646,9 @@ index 0000000..5025931
 +	}
 +
 +	if(optional)
-+		mutt_FormatString (dest, destlen, col, ifstring, sidebar_format_str, (unsigned long) sbe, flags);
++		mutt_FormatString (dest, destlen, col, cols, ifstring, sidebar_format_str, (unsigned long) sbe, flags);
 +	else if (flags & M_FORMAT_OPTIONAL)
-+		mutt_FormatString (dest, destlen, col, elsestring, sidebar_format_str, (unsigned long) sbe, flags);
++		mutt_FormatString (dest, destlen, col, cols, elsestring, sidebar_format_str, (unsigned long) sbe, flags);
 +
 +	return (src);
 +}
@@ -1668,7 +1670,7 @@ index 0000000..5025931
 +    safe_realloc(&entry, SBvisual + 2);
 +    entry[SBvisual + 1] = '\0';
 +
-+    mutt_FormatString (entry, SBvisual+1, 0, SidebarFormat, sidebar_format_str, (unsigned long) &sbe, 0);
++    mutt_FormatString (entry, SBvisual+1, 0, SidebarWidth,  SidebarFormat, sidebar_format_str, (unsigned long) &sbe, 0);
 +
 +    return entry;
 +}
@@ -1788,7 +1790,7 @@ index 0000000..5025931
 +                lines++; /* either one will occupy the first line */
 +
 +	if ( known_lines != LINES || TopBuffy == 0 || BottomBuffy == 0 )
-+		calc_boundaries(menu);
++		calc_boundaries();
 +	if ( CurBuffy == 0 ) CurBuffy = Incoming;
 +
 +	tmp = TopBuffy;
@@ -1820,7 +1822,7 @@ index 0000000..5025931
 +		/* calculate depth of current folder and generate its display name with indented spaces */
 +		int sidebar_folder_depth = 0;
 +		char *sidebar_folder_name;
-+		sidebar_folder_name = option(OPTSIDEBARSHORTPATH) ? mutt_basename(tmp->path) : tmp->path + maildir_is_prefix*(strlen(Maildir) + 1);
++		sidebar_folder_name = option(OPTSIDEBARSHORTPATH) ? (char *) mutt_basename(tmp->path) : tmp->path + maildir_is_prefix*(strlen(Maildir) + 1);
 +		if ( maildir_is_prefix && option(OPTSIDEBARFOLDERINDENT) ) {
 +			char *tmp_folder_name;
 +			int i;
@@ -1832,7 +1834,7 @@ index 0000000..5025931
 +				if (option(OPTSIDEBARSHORTPATH)) {
 +					tmp_folder_name = strrchr(tmp->path, '.');
 +					if (tmp_folder_name == NULL)
-+						tmp_folder_name = mutt_basename(tmp->path);
++						tmp_folder_name = (char *) mutt_basename(tmp->path);
 +					else
 +						tmp_folder_name++;
 +				}
@@ -1895,21 +1897,21 @@ index 0000000..5025931
 +		case OP_SIDEBAR_SCROLL_UP:
 +			CurBuffy = TopBuffy;
 +			if ( CurBuffy != Incoming ) {
-+				calc_boundaries(menu);
++				calc_boundaries();
 +				CurBuffy = CurBuffy->prev;
 +			}
 +			break;
 +		case OP_SIDEBAR_SCROLL_DOWN:
 +			CurBuffy = BottomBuffy;
 +			if ( CurBuffy->next ) {
-+				calc_boundaries(menu);
++				calc_boundaries();
 +				CurBuffy = CurBuffy->next;
 +			}
 +			break;
 +		default:
 +			return;
 +	}
-+	calc_boundaries(menu);
++	calc_boundaries();
 +	draw_sidebar(menu);
 +}
 diff --git a/sidebar.h b/sidebar.h
@@ -1955,5 +1957,5 @@ index 0000000..c11d46d
 +
 +#endif /* SIDEBAR_H */
 -- 
-2.7.0
+2.8.2
 

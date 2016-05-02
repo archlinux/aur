@@ -1,4 +1,4 @@
-From d45768e1316bdba966a43006b0280561d82107da Mon Sep 17 00:00:00 2001
+From ee8f34247f1753644e833ab33994469317cd2031 Mon Sep 17 00:00:00 2001
 From: Darshit Shah <darnir@gmail.com>
 Date: Sun, 31 Jan 2016 12:28:55 +0100
 Subject: [PATCH 3/4] Patch for first char jf
@@ -8,18 +8,18 @@ Subject: [PATCH 3/4] Patch for first char jf
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/sidebar.c b/sidebar.c
-index 5025931..b8cc0a4 100644
+index 7c262ab..f111da4 100644
 --- a/sidebar.c
 +++ b/sidebar.c
-@@ -310,7 +310,7 @@ int draw_sidebar(int menu) {
+@@ -311,7 +311,7 @@ int draw_sidebar(int menu) {
  		/* calculate depth of current folder and generate its display name with indented spaces */
  		int sidebar_folder_depth = 0;
  		char *sidebar_folder_name;
--		sidebar_folder_name = option(OPTSIDEBARSHORTPATH) ? mutt_basename(tmp->path) : tmp->path + maildir_is_prefix*(strlen(Maildir) + 1);
-+		sidebar_folder_name = option(OPTSIDEBARSHORTPATH) ? mutt_basename(tmp->path) : tmp->path + maildir_is_prefix*(strlen(Maildir));
+-		sidebar_folder_name = option(OPTSIDEBARSHORTPATH) ? (char *) mutt_basename(tmp->path) : tmp->path + maildir_is_prefix*(strlen(Maildir) + 1);
++		sidebar_folder_name = option(OPTSIDEBARSHORTPATH) ? (char *) mutt_basename(tmp->path) : tmp->path + maildir_is_prefix*(strlen(Maildir));
  		if ( maildir_is_prefix && option(OPTSIDEBARFOLDERINDENT) ) {
  			char *tmp_folder_name;
  			int i;
 -- 
-2.7.0
+2.8.2
 

@@ -1,4 +1,4 @@
-From 520d1efb044915df291af4e5a175a57e32a9ac46 Mon Sep 17 00:00:00 2001
+From 0df7394cfc4ca76db507fe8f2511f89b785a0136 Mon Sep 17 00:00:00 2001
 From: Darshit Shah <darnir@gmail.com>
 Date: Sun, 31 Jan 2016 12:04:40 +0100
 Subject: [PATCH 1/4] Add Trashfolder support to Mutt
@@ -23,7 +23,7 @@ index e69de29..6a47dd7 100644
 @@ -0,0 +1 @@
 +patch-1.5.16hg.cd.trash_folder.vl.1
 diff --git a/commands.c b/commands.c
-index 2a0cdc9..554efb6 100644
+index 38c5474..3e7aa2b 100644
 --- a/commands.c
 +++ b/commands.c
 @@ -720,6 +720,7 @@ int _mutt_save_message (HEADER *h, CONTEXT *ctx, int delete, int decode, int dec
@@ -35,7 +35,7 @@ index 2a0cdc9..554efb6 100644
    return 0;
  }
 diff --git a/flags.c b/flags.c
-index f0f3d81..ad3051b 100644
+index f34b375..4ce8b42 100644
 --- a/flags.c
 +++ b/flags.c
 @@ -65,7 +65,13 @@ void _mutt_set_flag (CONTEXT *ctx, HEADER *h, int flag, int bf, int upd_ctx)
@@ -72,7 +72,7 @@ index f0f3d81..ad3051b 100644
  
        if (!mutt_bit_isset(ctx->rights,M_ACL_SEEN))
 diff --git a/globals.h b/globals.h
-index 850750f..27b8ac1 100644
+index abefade..241758d 100644
 --- a/globals.h
 +++ b/globals.h
 @@ -141,6 +141,7 @@ WHERE char *StChars;
@@ -104,10 +104,10 @@ index 02a726f..951e078 100644
          mutt_set_flag (ctx, h, M_TAG, 0);
      }
 diff --git a/init.h b/init.h
-index 6cc1a0c..97da2b1 100644
+index d3dea7f..728bfb7 100644
 --- a/init.h
 +++ b/init.h
-@@ -3379,6 +3379,16 @@ struct option_t MuttVars[] = {
+@@ -3420,6 +3420,16 @@ struct option_t MuttVars[] = {
    ** provided that ``$$ts_enabled'' has been set. This string is identical in
    ** formatting to the one used by ``$$status_format''.
    */
@@ -125,7 +125,7 @@ index 6cc1a0c..97da2b1 100644
    { "tunnel",            DT_STR, R_NONE, UL &Tunnel, UL 0 },
    /*
 diff --git a/mutt.h b/mutt.h
-index 2b2af85..837859a 100644
+index de26fd8..4505ba2 100644
 --- a/mutt.h
 +++ b/mutt.h
 @@ -182,6 +182,7 @@ enum
@@ -136,7 +136,7 @@ index 2b2af85..837859a 100644
    M_FLAG,
    M_TAG,
    M_UNTAG,
-@@ -712,6 +713,7 @@ typedef struct header
+@@ -719,6 +720,7 @@ typedef struct header
    unsigned int mime : 1;    		/* has a MIME-Version header? */
    unsigned int flagged : 1; 		/* marked important? */
    unsigned int tagged : 1;
@@ -144,7 +144,7 @@ index 2b2af85..837859a 100644
    unsigned int deleted : 1;
    unsigned int changed : 1;
    unsigned int attach_del : 1; 		/* has an attachment marked for deletion */
-@@ -884,6 +886,7 @@ typedef struct _context
+@@ -891,6 +893,7 @@ typedef struct _context
    int new;			/* how many new messages? */
    int unread;			/* how many unread messages? */
    int deleted;			/* how many deleted messages */
@@ -153,10 +153,10 @@ index 2b2af85..837859a 100644
    int msgnotreadyet;		/* which msg "new" in pager, -1 if none */
  
 diff --git a/muttlib.c b/muttlib.c
-index a57dbf4..7850d63 100644
+index 58954fd..bad91d3 100644
 --- a/muttlib.c
 +++ b/muttlib.c
-@@ -1511,7 +1511,9 @@ int mutt_save_confirm (const char *s, struct stat *st)
+@@ -1533,7 +1533,9 @@ int mutt_save_confirm (const char *s, struct stat *st)
  
    if (magic > 0 && !mx_access (s, W_OK))
    {
@@ -262,7 +262,7 @@ index acc81d4..3af4ded 100644
    if (ctx->magic == M_IMAP)
      rc = imap_sync_mailbox (ctx, purge, index_hint);
 diff --git a/postpone.c b/postpone.c
-index d6eb83c..008af8a 100644
+index cec150f..fdeb172 100644
 --- a/postpone.c
 +++ b/postpone.c
 @@ -277,6 +277,9 @@ int mutt_get_postponed (CONTEXT *ctx, HEADER *hdr, HEADER **cur, char *fcc, size
@@ -276,5 +276,5 @@ index d6eb83c..008af8a 100644
    PostCount = PostContext->msgcount - PostContext->deleted;
  
 -- 
-2.7.0
+2.8.2
 

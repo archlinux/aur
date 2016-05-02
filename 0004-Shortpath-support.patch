@@ -1,18 +1,18 @@
-From cd81d74c41d8fd8cf79463c22a121cfd9abd50bf Mon Sep 17 00:00:00 2001
+From 3210886bc4f47856165064ff35c6c9e5370685e4 Mon Sep 17 00:00:00 2001
 From: Darshit Shah <darnir@gmail.com>
 Date: Sun, 31 Jan 2016 12:30:08 +0100
 Subject: [PATCH 4/4] Shortpath support
 
 ---
- sidebar.c | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
+ sidebar.c | 16 +++++++++++-----
+ 1 file changed, 11 insertions(+), 5 deletions(-)
 
 diff --git a/sidebar.c b/sidebar.c
-index b8cc0a4..e956faa 100644
+index f111da4..b4d95f5 100644
 --- a/sidebar.c
 +++ b/sidebar.c
-@@ -313,6 +313,8 @@ int draw_sidebar(int menu) {
- 		sidebar_folder_name = option(OPTSIDEBARSHORTPATH) ? mutt_basename(tmp->path) : tmp->path + maildir_is_prefix*(strlen(Maildir));
+@@ -314,6 +314,8 @@ int draw_sidebar(int menu) {
+ 		sidebar_folder_name = option(OPTSIDEBARSHORTPATH) ? (char *) mutt_basename(tmp->path) : tmp->path + maildir_is_prefix*(strlen(Maildir));
  		if ( maildir_is_prefix && option(OPTSIDEBARFOLDERINDENT) ) {
  			char *tmp_folder_name;
 +			char *tmp_folder_name_dot;
@@ -20,26 +20,27 @@ index b8cc0a4..e956faa 100644
  			int i;
  			tmp_folder_name = tmp->path + strlen(Maildir) + 1;
  			for (i = 0; i < strlen(tmp->path) - strlen(Maildir); i++) {
-@@ -320,11 +322,15 @@ int draw_sidebar(int menu) {
+@@ -321,11 +323,15 @@ int draw_sidebar(int menu) {
  			}
  			if (sidebar_folder_depth > 0) {
  				if (option(OPTSIDEBARSHORTPATH)) {
 -					tmp_folder_name = strrchr(tmp->path, '.');
 -					if (tmp_folder_name == NULL)
+-						tmp_folder_name = (char *) mutt_basename(tmp->path);
+-					else
+-						tmp_folder_name++;
 +					tmp_folder_name_dot = strrchr(tmp->path, '.');
 +					tmp_folder_name_slash = strrchr(tmp->path, '/');
 +
-+                                        if (tmp_folder_name_dot == NULL && tmp_folder_name_slash == NULL)
- 						tmp_folder_name = mutt_basename(tmp->path);
--					else
--						tmp_folder_name++;
-+                                        else if (tmp_folder_name_dot > tmp_folder_name_slash)
-+                                                tmp_folder_name = tmp_folder_name_dot + 1;
-+                                        else
-+                                                tmp_folder_name = tmp_folder_name_slash + 1;
++                    if (tmp_folder_name_dot == NULL && tmp_folder_name_slash == NULL)
++						tmp_folder_name =  (char *) mutt_basename(tmp->path);
++                    else if (tmp_folder_name_dot > tmp_folder_name_slash)
++                        tmp_folder_name = tmp_folder_name_dot + 1;
++                    else
++                        tmp_folder_name = tmp_folder_name_slash + 1;
  				}
  				else
  					tmp_folder_name = tmp->path + strlen(Maildir) + 1;
 -- 
-2.7.0
+2.8.2
 
