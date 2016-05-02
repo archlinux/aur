@@ -6,7 +6,7 @@
 
 pkgname=iceweasel-extension-archsearch
 pkgver=0.8.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Iceweasel Arch search engines (AUR, Pkgs, BBS, Wiki, etc.)"
 arch=('any')
 url="http://archlinux.org/"
@@ -28,11 +28,8 @@ md5sums=('df18835df1ea78bc3fc0e05f934b1e46'
          'bd0896ec148707b6980d23adc6015448')
 
 package() {
-#  _ffver=`pacman -Q firefox | cut -f2 -d\ | cut -f1 -d-`
-#  depends=("firefox>=${_ffver}" "firefox<=${_ffver/0/99}")
-
   cd "${srcdir}"
-  local _prefix="${pkgdir}"/etc/iceweasel/searchplugins/common/
+  local _prefix="${pkgdir}"/usr/lib/iceweasel/distribution/searchplugins/common
 
   for i in ${source[@]}; do
     install -D -m 0644 "${srcdir}"/$i ${_prefix}/$i
