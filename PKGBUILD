@@ -2,7 +2,7 @@
 
 pkgname="cryptocat-bin"
 _pkgname="cryptocat-bin"
-pkgver="3.1.14"
+pkgver="3.1.16"
 pkgrel="1"
 pkgdesc="Chat with your friends, privately."
 arch=("x86_64")
