@@ -7,7 +7,7 @@ url=https://github.com/AladW/aurutils
 license=('ISC')
 source=("$url/archive/$pkgver.tar.gz")
 md5sums=('e1d0033cc330e1901710c7970823a9f2')
-depends=('pacman>=5.0' 'git' 'jshon' 'expac' 'aria2>=1.23.0')
+depends=('pacman>=5.0' 'git' 'jshon' 'expac' 'aria2')
 	 'repose' 'pacutils' 'datamash'
 checkdepends=('shellcheck')
 makedepends=('git')
