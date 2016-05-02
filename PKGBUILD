@@ -1,7 +1,7 @@
 # Mantainer:  David Fabijan <mclenin.at.gmail.com>
 
 pkgname=latexdraw
-pkgver=3.3.2
+pkgver=3.3.3
 pkgrel=1
 pkgdesc='Create svg graphics and/or pstricks code usable in latex documents.'
 arch=('any')
@@ -13,31 +13,23 @@ optdepends=('texlive-pstricks: use generated code in LaTeX documents'
 source=(http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/LaTeXDraw-${pkgver}-bin.zip
         latexdraw.sh)
 install=latexdraw.install
-md5sums=('73f7cbaf733f78c2c37aea3b261f6651'
+md5sums=('aeae9b39aedd6295213059b6bc6609a6'
          '8f7e3de38675797b824c5a8878e4c694')
 
 package() {
     cd ${srcdir}/LaTeXDraw-${pkgver}/data
 
     install -Dm755 LaTeXDraw.jar ${pkgdir}/usr/share/java/${pkgname}/LaTeXDraw.jar
-    install -Dm755 lib/malai.swing-1.3.jar ${pkgdir}/usr/share/java/${pkgname}/lib/malai.swing-1.3.jar
-    install -Dm755 lib/malai.core-1.3.jar ${pkgdir}/usr/share/java/${pkgname}/lib/malai.core-1.3.jar
-    install -Dm755 lib/scala-library-2.11.7.jar ${pkgdir}/usr/share/java/${pkgname}/lib/scala-library-2.11.7.jar
-    install -Dm755 lib/scala-parser-combinators_2.11-1.0.4.jar ${pkgdir}/usr/share/java/${pkgname}/lib/scala-parser-combinators_2.11-1.0.4.jar
-    install -Dm755 lib/pdf-renderer-1.0.5.jar ${pkgdir}/usr/share/java/${pkgname}/lib/pdf-renderer-1.0.5.jar
-    install -Dm755 lib/jlibeps-0.1.jar ${pkgdir}/usr/share/java/${pkgname}/lib/jlibeps-0.1.jar
+    install -d ${pkgdir}/usr/share/java/${pkgname}/lib/
+    install -Dm755 lib/*.jar ${pkgdir}/usr/share/java/${pkgname}/lib/
 
     sed -i 's:Icon=/usr/share/latexdraw/images/app/latexdraw.png:Icon=latexdraw:' gnome/latexdraw.desktop
 
     install -Dm644 gnome/${pkgname}.desktop ${pkgdir}/usr/share/applications/${pkgname}.desktop
     install -Dm644  gnome/${pkgname}.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
 
-    install -Dm644  templates/Classic\ grid.svg  ${pkgdir}//usr/share/latexdraw/templates/Classic\ grid.svg
-    install -Dm644  templates/Condenser.svg  ${pkgdir}//usr/share/latexdraw/templates/Condenser.svg
-    install -Dm644  templates/embrace.svg  ${pkgdir}//usr/share/latexdraw/templates/embrace.svg
-    install -Dm644  templates/man.svg  ${pkgdir}//usr/share/latexdraw/templates/man.svg
-    install -Dm644  templates/question.svg  ${pkgdir}//usr/share/latexdraw/templates/question.svg
-
+    install -d ${pkgdir}/usr/share/latexdraw/templates/
+    install -Dm644  templates/*.svg  ${pkgdir}/usr/share/latexdraw/templates/
 
     install -Dm755 ${srcdir}/${pkgname}.sh      ${pkgdir}/usr/bin/${pkgname}
     
