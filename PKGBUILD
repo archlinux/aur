@@ -1,6 +1,6 @@
 # Maintainer: Liganic <liganic-aur@gmx.net>
 pkgname=cpplint
-pkgver=10
+pkgver=11
 pkgrel=0
 pkgdesc="Automated checker to make sure a C++ file follows Google's C++ style guide."
 arch=('i686' 'x86_64')
@@ -10,8 +10,8 @@ groups=()
 depends=('python2')
 source=('https://raw.githubusercontent.com/google/styleguide/gh-pages/cpplint/cpplint.py'
 'https://raw.githubusercontent.com/google/styleguide/gh-pages/cpplint/README')
-sha256sums=('7d84109c443030ae33978322469c3b82c40f52e654f2759b356c3f071fe0e749'
-            '3a6ce0d4007b6d3dac0925ecf2c5f40e9f8ab50dfcc1fd1caad349b5e8ba7a40')
+sha256sums=('21898350f6c9b293758e3a55c63ef5531dde1c0b468ff1ca4cc401f68004e9d0'
+            'a2a49a15fc0db21a0c130e57fb5894954d81bc95962fc90be2e70d2daaa27d89')
 
 build() {
   sed -i 's/\/usr\/bin\/env python/\/usr\/bin\/env python2/' $srcdir/cpplint.py
