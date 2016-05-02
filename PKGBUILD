@@ -3,8 +3,8 @@
 # Contributor: Daniel Bomar <dbdaniel42@gmail.com>
 
 pkgname=libjson-rpc-cpp-git
-pkgver=20160317
-pkgrel=2
+pkgver=0.6.0.r28.g4066b2b
+pkgrel=1
 pkgdesc="C++ framework for json-rpc 1.0 and 2.0"
 arch=('i686' 'x86_64')
 depends=('argtable' 'curl' 'jsoncpp' 'libmicrohttpd')
@@ -20,9 +20,11 @@ install=libjson-rpc-cpp.install
 
 pkgver() {
   cd ${pkgname%-git}
-  git log -1 --format="%cd" --date=short | sed "s|-||g"
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
-
 prepare() {
  cd "${srcdir}"/${pkgname%-git}
 }
