@@ -1,8 +1,8 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=alacryd
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="Expedient Perl6 module installation"
 arch=('any')
 depends=('perl6')
@@ -10,7 +10,7 @@ groups=('perl6')
 url="https://github.com/atweiden/alacryd"
 license=('UNLICENSE')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/atweiden/$pkgname/tar.gz/$pkgver)
-sha256sums=('a933f1837ee934b521516930ba3eee25c241b8bb718e58d6a47b6c90e48cab74')
+sha256sums=('668d1129fdcb5d015c2a3b3626a1b039b112758ac0c29fd9722c470341b3d09f')
 install=alacryd.install
 
 package() {
@@ -37,4 +37,6 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
+  find "$pkgdir" -type f -print0 | xargs -0 sed -i "s,$pkgdir,,g"
+  find "$pkgdir" -type f -print0 | xargs -0 sed -i "s,$srcdir,,g"
 }
