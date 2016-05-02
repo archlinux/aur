@@ -6,15 +6,13 @@
 
 pkgname=scribus1.5
 pkgver=21022
-pkgrel=1
+pkgrel=2
 pkgdesc="A desktop publishing program - Version 1.5 svn"
 arch=('i686' 'x86_64')
 license=('custom:(L)GPL')
 url="http://www.scribus.net"
 install=${pkgname}.install
-depends=('hunspell' 'podofo' 'python2' 'libcups' 'graphicsmagick'
-	 'shared-mime-info' 'poppler' 'libcdr' 'desktop-file-utils'
-	 'libvisio' 'libpagemaker' 'qt5-declarative')
+depends=('boost' 'hunspell' 'podofo' 'python2' 'libcups' 'graphicsmagick' 'lib2geom' 'shared-mime-info' 'poppler' 'libcdr' 'desktop-file-utils' 'libvisio' 'libpagemaker' 'qt5-declarative')
 makedepends=('subversion' 'cmake' 'qt5-tools')
 optdepends=('libmspub: Microsoft Publisher file format parser library' 'libwpg: Library for importing and converting Corel WordPerfect(tm) Graphics images' 'openscenegraph: An Open Source, high performance real-time graphics toolkit')
 #conflicts=('scribus')
@@ -52,3 +50,4 @@ package () {
   make DESTDIR="$pkgdir" install
     install -Dm644 COPYING "$pkgdir"/opt/share/licenses/$pkgname/COPYING
 }
+

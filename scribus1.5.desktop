@@ -70,6 +70,8 @@ X-DBUS-StartupType=
 X-KDE-SubstituteUID=false
 X-KDE-Username=
 
+Name[en_US.UTF-8]=Scribus.desktop
+
 [X-Property::X-KDE-NativeExtension]
 Type=QString
 Value=.sla
