@@ -1,0 +1,15 @@
+diff -up src/wmtime.app/wmgeneral/list.h.orig src/wmtime.app/wmgeneral/list.h
+--- src/wmtime.app/wmgeneral/list.h.orig	2016-05-01 20:48:08.000000000 -0600
++++ src/wmtime.app/wmgeneral/list.h	2016-05-01 20:48:15.000000000 -0600
+@@ -29,11 +29,7 @@ Boston, MA 02111-1307, USA.  */
+ #ifndef __LIST_H_
+ #define __LIST_H_
+ 
+-#if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+-# define INLINE inline
+-#else
+ # define INLINE
+-#endif
+ 
+ typedef struct LinkedList {
+   void *head;
