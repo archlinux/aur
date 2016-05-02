@@ -98,7 +98,7 @@ package_djgpp-gcc() {
 	strip "${pkgdir}/usr/bin"/*
 	# remove unnecessary files
 	rm -r "${pkgdir}/usr/share"
+	rm -r "${pkgdir}/usr/lib/gcc/$_target/$pkgver/include-fixed"
 	rm -f "${pkgdir}/usr/lib"/libcc1.so*
 	rm -f "${pkgdir}/usr/lib"/libcc1.a
-	rm -f "${pkgdir}/usr/lib/gcc/$_target/$pkgver/include-fixed"
 }
