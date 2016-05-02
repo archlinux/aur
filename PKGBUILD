@@ -8,7 +8,7 @@
 
 _pack=optim
 pkgname=octave-$_pack
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Non-linear optimization toolkit."
 arch=(any)
@@ -24,7 +24,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('f5a8894d2e485a429804067a46bcd963')
+md5sums=('a97dd1ed0fa30d44e1320f28abad9431')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
