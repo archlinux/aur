@@ -50,8 +50,7 @@ package() {
   msg2 "Packing all together"
   make DESTDIR="${pkgdir}" install
   msg2 "Add MIT License to package"
-  install -D -m644 "${srcdir}/${pkgname%-git}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
-
+  install -D -m644 "${srcdir}/${pkgname%-git}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   msg 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
 }
