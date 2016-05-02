@@ -3,7 +3,7 @@
 pkgname=ball
 _pkgname=BALL
 pkgver=1.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Application framework in C++ for Computational Molecular Biology and Molecular Modeling."
 arch=("i686" "x86_64")
 url="http://www.ball-project.org/"
