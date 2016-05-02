@@ -1,8 +1,8 @@
 pkgname=psp-gcc
-pkgver=4.6.4
+pkgver=4.9.3
 pkgrel=1
 pkgdesc="The GNU Compiler Collection - C and C++ frontends (psp)"
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
 license=('GPL' 'LGPL' 'FDL' 'custom')
 groups=('psp')
@@ -16,8 +16,8 @@ source=("http://ftp.gnu.org/pub/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.bz2"
         "http://www.multiprecision.org/mpc/download/mpc-1.0.2.tar.gz"
         "http://www.mpfr.org/mpfr-3.1.2/mpfr-3.1.2.tar.bz2"
         "patch-gcc_cp_cfns.h")
-md5sums=('b407a3d1480c11667f293bfb1f17d1a4'
-         'fde0c20f56e608715ec13d5d8b8c8e59'
+md5sums=('6f831b4d251872736e8e9cc09746f327'
+         '472c84cce740a223420e186a35954fe4'
          'a082867cbca5e898371a97bb27b31fea'
          '68fadff3358fb3e7976c7a398a0af4c3'
          'ee2c3ac63bf0c2359bf08fc3ee094c19'
@@ -26,7 +26,7 @@ md5sums=('b407a3d1480c11667f293bfb1f17d1a4'
 prepare ()
 {
   cd "$srcdir/gcc-$pkgver"
-  rm -f gcc/config/mips/allegrex.md gcc/config/mips/psp.h gcc/config/mips/t-allegrex
+  rm -f gcc/config/mips/allegrex.md gcc/config/mips/psp.h libgcc/config/mips/t-allegrex
   patch -p1 -i "$srcdir"/gcc-$pkgver-PSP.patch
   patch -p0 -i "$srcdir"/patch-gcc_cp_cfns.h
   ln -sf "$srcdir"/gmp-5.1.3 gmp
@@ -48,6 +48,5 @@ package()
   cd "$srcdir/gcc-$pkgver/build-psp"
   make install DESTDIR="$pkgdir"
   rm -r "$pkgdir"/usr/share
-  rm "$pkgdir"/usr/lib/libiberty.a
 }
 
