@@ -2,20 +2,20 @@
 
 pkgname=grub-theme-midna
 _pkgname=midna
-pkgver=1.1
+pkgver=2.0
 pkgrel=1
-pkgdesc="Midna Grub-theme, based on Monochrome-light."
+pkgdesc="Midna Grub-theme."
 url="http://kaosx.us"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 license=('GPL' 'CC-SA')
 depends=('grub-common')
 install=grub-themes.install
-source=("http://kaosx.us/repo/core/$pkgname-$pkgver-$pkgrel-x86_64.pkg.tar.xz")
+source=("http://sourceforge.net/projects/kaosx/files/sources/grub-themes/${_pkgname}-${pkgver}.xz")
 
 package() {
   cd "${srcdir}"
   
-  cp -dpr --no-preserve=ownership -R usr "${pkgdir}/"
+  install -dm755 "$pkgdir/usr/share/grub/themes"
+  cp -dpr --no-preserve=ownership "${_pkgname}" "${pkgdir}/usr/share/grub/themes"
 }
-
-md5sums=('227f8e496c9493bd872e5042fde77877')
+md5sums=('8cffcfa4a57ea7dc1b976f67664de21f')

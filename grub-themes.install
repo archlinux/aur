@@ -1,13 +1,18 @@
 post_install() {
-
-  sed -i -e 's,.*GRUB_THEME=.*,GRUB_THEME="/usr/share/grub/themes/midna/theme.txt",' /etc/default/grub
-  sed -i -e 's,.*GRUB_GFXMODE=.*,GRUB_GFXMODE=1024x768,' /etc/default/grub
- 
   cat << _EOF 
-
-==> Installation: Theme is added to your /etc/default/grub: GRUB_THEME="/usr/share/grub/themes/midna/theme.txt"
-==> Update grub:# grub-mkconfig -o /boot/grub/grub.cfg
+==> Please set some variables in /etc/default/grub
+==> GRUB_THEME="/usr/share/grub/themes/midna/theme.txt
+==> GRUB_GFXMODE=1024x768
+==> Now update grub:# grub-mkconfig -o /boot/grub/grub.cfg
 ==> to activate it
 
 _EOF
+}
+
+post_upgrade() {
+
+    if [ ! -f /boot/loader/loader.conf ] && ! grep -q NotoSans-Bold-14.pf2 /boot/grub/grub.cfg; then
+      grub-mkconfig -o /boot/grub/grub.cfg
+    fi
+  
 }
