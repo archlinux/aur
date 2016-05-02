@@ -9,7 +9,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-git
-pkgver=2.56.0.r34.g321a80c
+pkgver=2.56.0.r42.ga238a71
 pkgrel=1
 pkgdesc="Ebook management application, from git"
 arch=('i686' 'x86_64')
@@ -17,11 +17,10 @@ url="http://calibre-ebook.com/"
 license=('GPL3')
 depends=('python2-dateutil' 'python2-cssutils' 'python2-mechanize' 'mtdev'
          'podofo' 'poppler' 'libwmf' 'imagemagick' 'chmlib' 'python2-lxml'
-         'libusbx' 'python2-pillow' 'shared-mime-info' 'python2-dnspython'
+         'libusbx' 'python2-pillow' 'python2-dnspython'
          'python2-pyqt5' 'python2-psutil' 'icu' 'libmtp' 'python2-dbus'
          'python2-netifaces' 'python2-cssselect' 'python2-apsw'
-         'qt5-webkit' 'desktop-file-utils' 'qt5-svg' 'python2-pygments'
-         'desktop-file-utils' 'gtk-update-icon-cache' 'optipng')
+         'qt5-webkit' 'qt5-svg' 'python2-pygments' 'optipng')
 makedepends=('git' 'qt5-x11extras' 'xdg-utils')
 optdepends=('ipython2: to use calibre-debug'
             'udisks: required for mounting certain devices')
