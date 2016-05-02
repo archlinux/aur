@@ -2,7 +2,7 @@
 pkgname=alpscore-git
 pkgver=0.5.4.r1.g0dd4ffe
 pkgrel=1
-pkgdesc="ALPS Core libraries for numerical simulations of condensed matter systems based on ALPS."
+pkgdesc="ALPS Core libraries for numerical simulations of condensed matter systems."
 arch=(i686 x86_64)
 url="http://alpscore.org"
 license=('GPL')

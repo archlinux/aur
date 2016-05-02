@@ -1,5 +1,5 @@
 pkgbase = alpscore-git
-	pkgdesc = ALPS Core libraries for numerical simulations of condensed matter systems based on ALPS.
+	pkgdesc = ALPS Core libraries for numerical simulations of condensed matter systems.
 	pkgver = 0.5.4.r1.g0dd4ffe
 	pkgrel = 1
 	url = http://alpscore.org
