@@ -1,7 +1,7 @@
 # Contributor: Berseker < berseker86 at gmail.com >
 pkgname=gphotoframe
-pkgver=1.3
-_realver=1.3
+pkgver=2.0.3
+_realver=2.0-a3
 pkgrel=1
 pkgdesc="Gnome Photo Frame is a photo frame gadget for the GNOME Desktop."
 arch=('i686' 'x86_64')
@@ -17,10 +17,10 @@ conflicts=('gphotoframe-git')
 options=()
 source=(http://gphotoframe.googlecode.com/files/$pkgname-$_realver.tar.gz)
 
-build() {
+package() {
   cd "$srcdir/$pkgname-$_realver"
   python2 setup.py install --prefix=$pkgdir/usr/ || return 1
   gconf-merge-schema gphotoframe.schemas
 }
 
-md5sums=('84742206179e00073d489cea16b225d6')
+md5sums=('7fde61994803182c1af93e6b4f4cb5b4')
