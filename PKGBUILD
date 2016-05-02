@@ -1,7 +1,7 @@
 #Maintainer: aksr <aksr at t-com dot me>
 pkgname=tin-unstable
 _pkgname=tin
-pkgver=2.3.1
+pkgver=2.3.3
 pkgrel=1
 pkgdesc="A threaded NNTP and spool based UseNet newsreader."
 arch=('i686' 'x86_64')
@@ -11,11 +11,11 @@ depends=('ncurses' 'ispell' 'perl' 'gnupg' 'dante' 'icu' 'libidn')
 conflicts=('tin')
 source=("ftp://ftp.tin.org/pub/news/clients/tin/unstable/$_pkgname-$pkgver.tar.gz"
         'LICENSE')
-md5sums=('32bb77201391052c3e54b15ecadc2963'
+md5sums=('c584477e0e552820dbd3088eecd13af4'
          '22de35b1bdc6f0df87c93ae794198b21')
-sha1sums=('bee82da1e349a6a3954ab63d82a193e510aa1ff9'
+sha1sums=('c1f81772caa0ffe47c1400eb7c9ac18204b3cd51'
           '07e1217ee68bb20f0ad2670e84116a0d67243063')
-sha256sums=('d53ee03850988c96162f2a30a24f63a6976612f04fc049fd1e0c17d0d4567083'
+sha256sums=('825b82bcf9bb30fe40dd036397a91e1e83515910f0f5a3811786d7625f2a96d4'
             '5ccb431a94c2d2f093b8f93325075e5ad886772ba2a452478120b86ce71c0683')
 
 build() {
