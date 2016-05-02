@@ -2,9 +2,10 @@
 # Contributors: Thom Wiggers <thom@thomwiggers.nl>
 # Contributors: hoban
 # Contributors: Nrm
-
+# Contributors: MattScherbatsky
+ 
 pkgname=subsonic
-pkgver=5.3
+pkgver=6.0
 pkgrel=1
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
@@ -12,8 +13,8 @@ url="http://subsonic.org/"
 license=('GPL')
 depends=('java-runtime-headless')
 conflicts=('subsonic')
-source=(http://prdownloads.sourceforge.net/subsonic/subsonic-${pkgver}-standalone.tar.gz      
-	    'subsonic.service')
+source=(http://subsonic.org/download/subsonic-${pkgver}-standalone.tar.gz      
+        'subsonic.service')
 backup=('var/lib/subsonic/db' 'var/lib/subsonic/subsonic.properties' 'var/lib/subsonic/subsonic.sh')
 install=$pkgname.install
  
@@ -30,6 +31,6 @@ package() {
   cp $srcdir/subsonic.service $pkgdir/usr/lib/systemd/system
   chmod +x $pkgdir/var/lib/subsonic/subsonic.sh
 }
-
-md5sums=('c3f66d64565f76fd01b5f81caba91b3b'
+ 
+md5sums=('5bfb0c06585d087801a6b67c6cb2bd78'
          '7cbbb9c8357992385c929e9f05be00be')
