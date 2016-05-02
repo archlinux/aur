@@ -1,0 +1,13 @@
+diff --git a/python/mozbuild/mozbuild/frontend/context.py b/python/mozbuild/mozbuild/frontend/context.py
+index 41ae8ae..dcc3263 100644
+--- a/python/mozbuild/mozbuild/frontend/context.py
++++ b/python/mozbuild/mozbuild/frontend/context.py
+@@ -408,8 +408,6 @@ class Path(ContextDerivedValue, unicode):
+ class SourcePath(Path):
+     """Like Path, but limited to paths in the source directory."""
+     def __init__(self, context, value):
+-        if value.startswith('!'):
+-            raise ValueError('Object directory paths are not allowed')
+         if value.startswith('%'):
+             raise ValueError('Filesystem absolute paths are not allowed')
+         super(SourcePath, self).__init__(context, value)

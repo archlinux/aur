@@ -25,12 +25,12 @@ _pgo=false
 
 # We're getting this from Debian Sid
 _debname=firefox
-_debver=45.0.2
+_brandingver=45.0
+_brandingrel=2
+_debver=46.0
 _debrel=1
 _debrepo=http://ftp.debian.org/debian/pool/main/f
 _parabolarepo=https://repo.parabola.nu/other/iceweasel
-_brandingver=45.0
-_brandingrel=2
 
 pkgname=iceweasel
 pkgver=${_debver}.deb${_debrel}
@@ -38,7 +38,7 @@ pkgrel=1
 pkgdesc="Debian Browser based on Mozilla Firefox, with Parabola GNU/Linux-libre branding"
 arch=('i686' 'x86_64')
 license=('GPL' 'MPL' 'LGPL')
-depends=(alsa-lib dbus-glib desktop-file-utils ffmpeg gtk2 gtk3 hicolor-icon-theme hunspell icu libevent libvpx libxt mime-types mozilla-common nss sqlite startup-notification ttf-font)
+depends=(alsa-lib dbus-glib desktop-file-utils ffmpeg gtk2 gtk3 hunspell icu libevent libvpx libxt mime-types mozilla-common nss sqlite startup-notification ttf-font)
 makedepends=(autoconf2.13 diffutils gconf imake inetutils libidl2 libpulse librsvg-stable libxslt mesa pkg-config python2 quilt unzip yasm zip nss imagemagick)
 options=(!emptydirs !makeflags debug)
 if $_pgo; then
@@ -50,7 +50,6 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 			'ffmpeg: H264/AAC/MP3 decoding'
             'iceweasel-extension-archsearch: Iceweasel Arch search engines')
 url="https://wiki.debian.org/it/Iceweasel"
-install=iceweasel.install
 provides=("$pkgname"="$_debver")
 source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.xz"
 		"${_debrepo}/${_debname}/${_debname}_${_debver}-${_debrel}.debian.tar.xz"
@@ -59,19 +58,19 @@ source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.xz"
 		iceweasel.desktop
 		iceweasel-install-dir.patch
 		vendor.js
-		iceweasel-fixed-loading-icon.png
+		no-libnotify.patch
 		iceweasel-gtk3-20.patch
-		no-libnotify.patch)
-md5sums=('b84c7cd075972f87b00681b3901c9d90'
-         'c21e8865ab7e49f4ff2dd05b5e6bcae9'
+		enable-object-directory-paths.patch)
+md5sums=('978831bfb5a8ae0e08c033f51bb3c09c'
+         '96aca0023736939749e30c33b8e7c9aa'
          '18ddaa5f1b70cbf12110471d50746339'
-         '9f8cd36718fa474ce593c90979d14b38'
+         'c12060755cf7580e987144d5a4fea0df'
          '7b9e5996dd9fe0b186a43a297db1c6b5'
          '1c42509891cf6843660a5f3c69896e80'
          '35adf69c840aadeb138d1b0be3af63b5'
-         '6e335a517c68488941340ee1c23f97b0'
-		 '118fcac8fdeafeb6a41f2dc0dc313538'
-         'c4a7a21445579167bff3d787e887903e')
+         'c4a7a21445579167bff3d787e887903e'
+         '4398feb7543ef216a9f4a3690ea97180'
+         'c1efa8d67e411ec0b23e6edbb69248b3')
 
 prepare() {
   cd "$srcdir/$_debname-$_debver"
@@ -88,6 +87,9 @@ prepare() {
   sed -i 's/MOZ_APP_PROFILE=mozilla\/firefox/MOZ_APP_PROFILE=mozilla\/iceweasel/g' "debian/branding/configure.sh"
 
   quilt push -av
+
+  # Enable object directory paths for Iceweasel rebranding
+  patch -Np1 -i "$srcdir/enable-object-directory-paths.patch"
 
   # Install to /usr/lib/$pkgname
   patch -Np1 -i "$srcdir/iceweasel-install-dir.patch"
@@ -107,25 +109,17 @@ prepare() {
   #echo 'mk_add_options MOZ_MAKE_FLAGS="-j2"' >> .mozconfig
 
   mkdir "$srcdir/python2-path"
-
-  # WebRTC build tries to execute "python" and expects Python 2
   ln -s /usr/bin/python2 "$srcdir/python2-path/python"
-
-  # configure script misdetects the preprocessor without an optimization level
-  # https://bugs.archlinux.org/task/34644
-  sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' configure
-
-  # Fix tab loading icon (flickers with libpng 1.6)
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=841734
-  cp "$srcdir/iceweasel-fixed-loading-icon.png" browser/themes/linux/tabbrowser/loading.png
 }
 
 
 build() {
   cd "$srcdir/$_debname-$_debver"
 
+  # _FORTIFY_SOURCE causes configure failures
+  CPPFLAGS+=" -O2"
+
   export PATH="$srcdir/path:$PATH"
-  export PYTHON="/usr/bin/python2"
 
   if $_pgo; then
     # Do PGO
@@ -165,10 +159,10 @@ package() {
   # We don't want the development stuff
   rm -rf "$pkgdir"/usr/{include,lib/$pkgname-devel,share/idl}
 
-  # Workaround for now: https://bugzilla.mozilla.org/show_bug.cgi?id=658850
+  # Replace duplicate binary with symlink
   ln -sf $pkgname "$pkgdir/usr/lib/$pkgname/$pkgname-bin"
   
     
   # Add Debian searchplugin
-  install -Dm644 "$srcdir/$_debname-$_debver/debian/debsearch.xml" "${pkgdir}/usr/lib/$pkgname/browser/searchplugins"
+  #install -Dm644 "$srcdir/$_debname-$_debver/debian/debsearch.xml" "${pkgdir}/usr/lib/firefox/distribution/searchplugins/common/"
 }
