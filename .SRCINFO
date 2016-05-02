@@ -11,11 +11,8 @@ pkgbase = efitools-git
 	makedepends = gnu-efi-libs
 	makedepends = help2man
 	makedepends = perl-file-slurp
+	makedepends = sbsigntools
 	depends = openssl
-	depends = sbsigntools
-	depends = efivar
-	depends = efibootmgr
-	depends = dosfstools
 	optdepends = mactel-boot: For bless command in Apple Mac systems
 	provides = efitools=1.7.0
 	conflicts = efitools
