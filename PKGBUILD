@@ -3,12 +3,12 @@
 
 pkgname=tintii
 pkgver=2.10.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A smart photo filter for striking colour select effects"
 arch=(i686 x86_64)
 url="http://www.indii.org/software/${pkgname}"
 license=('GPL')
-depends=('wxgtk' 'desktop-file-utils')
+depends=('wxgtk' 'desktop-file-utils' 'bc')
 makedepends=('boost')
 source=("http://www.indii.org/files/tint/releases/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.png"
