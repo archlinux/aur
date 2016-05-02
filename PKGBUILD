@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gambit-c-git
-pkgver=4.8.5.r18.g408bb44
+pkgver=4.8.5.r33.g9aad110
 pkgrel=1
 pkgdesc="Scheme R5RS interpreter and compiler (via C) - git version"
 arch=('i686' 'x86_64')
@@ -23,7 +23,6 @@ pkgver() {
 }
 
 build() {
-  LANG=C
   cd "$srcdir/gambit-scheme"
   ./configure \
       --prefix=/usr \
@@ -32,11 +31,21 @@ build() {
       --libdir=/usr/lib/gambit-c \
       --enable-c-opt \
       --enable-gcc-opts \
-      --enable-single-host \
+      --disable-shared
+  make latest-release
+  
+  ./configure \
+      --prefix=/usr \
+      --docdir=/usr/share/gambit-c \
+      --infodir=/usr/share/info \
+      --libdir=/usr/lib/gambit-c \
+      --enable-c-opt \
+      --enable-gcc-opts \
       --disable-shared \
       --enable-compiler-name=gambitc \
-      --enable-interpreter-name=gambiti 
-    make from-scratch
+      --enable-interpreter-name=gambiti \
+      --enable-single-host
+  make from-scratch
 }
 
 check() {
