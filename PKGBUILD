@@ -2,7 +2,7 @@
 # Submitter: Steffen L. Norgren (incongruous) <steffen[at]norgren[dot]ca>
 
 pkgname=luv-icon-theme-git
-pkgver=0.3.r4.g3c53fec
+pkgver=0.4.r4.gfc1b701
 pkgrel=1
 pkgdesc="The spiritual successor to Flattr, a flat but complex icon theme for freedesktop environments."
 arch=('any')
@@ -26,12 +26,12 @@ pkgver() {
 package() {
 	cd "${srcdir}/${pkgname}"
 
-	install -dm755 "${pkgdir}/usr/share/icons/Luv"
-	install -dm755 "${pkgdir}/usr/share/icons/Luv Dark"
-	cp -dpr --no-preserve=ownership ./Lüv/* "${pkgdir}/usr/share/icons/Luv"
-	cp -dpr --no-preserve=ownership ./Lüv\ Dark/* "${pkgdir}/usr/share/icons/Luv Dark"
+	install -dm755 "${pkgdir}/usr/share/icons/Lüv"
+	install -dm755 "${pkgdir}/usr/share/icons/Lüv Dark"
+	cp -dpr --no-preserve=ownership ./Lüv/* "${pkgdir}/usr/share/icons/Lüv"
+	cp -dpr --no-preserve=ownership ./Lüv\ Dark/* "${pkgdir}/usr/share/icons/Lüv Dark"
 
 	install -Dm644 "./Lüv/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 "./CREDITS" "${pkgdir}/usr/share/licenses/${pkgname}/CREDITS"
-	rm "${pkgdir}"/usr/share/icons/{Luv,Luv\ Dark}/LICENSE
+	rm "${pkgdir}"/usr/share/icons/{Lüv,Lüv\ Dark}/LICENSE
 }
