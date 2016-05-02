@@ -1,0 +1,9 @@
+post_upgrade() {
+  setconf -a /etc/os-release VERSION_ID=`date +"%Y.%d.%m"`
+}
+
+post_install() {
+  post_upgrade
+}
+
+# vim:set ts=2 sw=2 et:
