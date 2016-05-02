@@ -1,8 +1,10 @@
+# Maintainer: Grégoire Seux <grego_aur@familleseux.net>
+# Contributor: Dean Galvin <deangalvin3@gmail.com>
 _pkgname="homeassistant"
 pkgname="python-home-assistant"
 pkgdesc='Home Assistant is an open-source home automation platform running on Python 3'
 pkgver=0.17.3
-pkgrel=1
+pkgrel=2
 url="https://home-assistant.io/"
 license=('MIT')
 arch=('any')
