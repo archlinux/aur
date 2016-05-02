@@ -14,10 +14,10 @@ depends=(
 	'libx11'
 )
 optdepends=(
-			'libappindicator-gtk2: to hide Telegram in the tray bar (GTK2-based desktop environment)'
-			'libappindicator-gtk3: to hide Telegram in the tray bar (GTK3-based desktop environment)'
-			'libappindicator-sharp: to hide Telegram in the tray bar (Unity-based desktop environment)'
-			)
+	'libappindicator-gtk2: to hide Telegram in the tray bar (GTK2-based desktop environment)'
+	'libappindicator-gtk3: to hide Telegram in the tray bar (GTK3-based desktop environment)'
+	'libappindicator-sharp: to hide Telegram in the tray bar (Unity-based desktop environment)'
+)
 conflicts=('telegram-desktop')
 provides=('telegram-desktop')
 replaces=('telegram-bin')
