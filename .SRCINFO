@@ -1,7 +1,7 @@
 pkgbase = zoom
 	pkgdesc = Video Conferencing and Web Conferencing Service
 	pkgver = 2.0.49177.0430
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zoom.us/
 	arch = i686
 	arch = x86_64
@@ -19,7 +19,7 @@ pkgbase = zoom
 	depends = libgl
 	depends = openssl
 	depends = libxslt
-	depends = libpulse
+	depends = pulseaudio
 	depends = glib2
 	depends = libxcb
 	options = !strip

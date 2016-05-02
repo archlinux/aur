@@ -2,14 +2,14 @@
 
 pkgname=zoom
 pkgver=2.0.49177.0430
-pkgrel=1
+pkgrel=2
 pkgdesc="Video Conferencing and Web Conferencing Service"
 arch=('i686' 'x86_64')
 license=('custom')
 url="https://zoom.us/"
 depends=('desktop-file-utils' 'gstreamer0.10-base' 'xcb-util-cursor' 'libxml2'
 	'libsm' 'sqlite' 'libxrender' 'fontconfig' 'libxcomposite' 'libxi' 'libgl'
-	'openssl' 'libxslt' 'libpulse' 'glib2' 'libxcb')
+	'openssl' 'libxslt' 'pulseaudio' 'glib2' 'libxcb')
 # The dependencies were reconstructed in order to fit the ones from debian
 options=(!strip)
 source_i686=("https://zoom.us/client/latest/zoom_${pkgver}_i386.deb")
