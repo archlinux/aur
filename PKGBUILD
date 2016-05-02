@@ -1,0 +1,21 @@
+# Maintainer: Daniel Lima <danielm@tinyhub.tk>
+
+pkgname=ccv-samples
+pkgver=0.7.rc2
+pkgrel=1
+pkgdesc='Samples included in the CCV Library repository'
+arch=('i686' 'x86_64')
+url='http://libccv.org/'
+license=('BSD3')
+makedepends=('subversion' 'gcc')
+source=('svn+https://github.com/liuliu/ccv/trunk/samples'
+        'https://raw.githubusercontent.com/liuliu/ccv/stable/COPYING')
+sha256sums=('SKIP'
+            'SKIP')
+
+package() {
+	install -D -m644 COPYING $pkgdir/usr/share/licenses/ccv/COPYING.samples
+	mkdir -p $pkgdir/usr/share/ccv
+	cp -r samples $pkgdir/usr/share/ccv/samples
+}
+
