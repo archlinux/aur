@@ -16,11 +16,12 @@
 
 pkgname=fwlogwatch
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A packet filter/firewall/IDS log analyzer"
 arch=('i686' 'x86_64')
 depends=('zlib>=1.0.9')
-backup=(etc/conf.d/fwlogwatch)
+backup=('etc/conf.d/fwlogwatch'
+        'etc/fwlogwatch.config')
 url="http://fwlogwatch.inside-security.de/"
 license=('GPL')
 source=("http://fwlogwatch.inside-security.de/sw/$pkgname-$pkgver.tar.gz"
