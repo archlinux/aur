@@ -2,16 +2,15 @@
 
 pkgname=snorenotify
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Multi-platform Qt5 notification framework'
 arch=('i686' 'x86_64')
 url='https://github.com/Snorenotify/Snorenotify'
 license=('LGPL3')
-depends=('qt5-base' 'qt5-quick1' 'hicolor-icon-theme')
+depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=('cmake' 'doxygen' 'extra-cmake-modules')
-install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz::https://github.com/Snorenotify/Snorenotify/archive/v$pkgver.tar.gz)
-md5sums=('1092b2dd9024d6c6a714455b64f7f934')
+sha256sums=('2e3f5fbb80ab993f6149136cd9a14c2de66f48cabce550dead167a9448f5bed9')
 
 build() {
   cd "${srcdir}"/$pkgname-$pkgver
