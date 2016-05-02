@@ -1,0 +1,22 @@
+pkgbase = xfce4-diskperf-plugin-git
+	pkgdesc = Plugin for the Xfce4 panel displaying instant disk/partition performance
+	pkgver = 2.5.5.r23.gfe6abce
+	pkgrel = 1
+	url = http://goodies.xfce.org/projects/panel-plugins/xfce4-diskperf-plugin
+	install = xfce4-diskperf-plugin.install
+	arch = i686
+	arch = x86_64
+	groups = xfce4-goodies
+	license = GPL
+	makedepends = xfce4-dev-tools
+	makedepends = intltool
+	makedepends = git
+	depends = xfce4-panel
+	provides = xfce4-diskperf-plugin
+	conflicts = xfce4-diskperf-plugin
+	options = !libtool
+	source = git://git.xfce.org/panel-plugins/xfce4-diskperf-plugin
+	sha256sums = SKIP
+
+pkgname = xfce4-diskperf-plugin-git
+
