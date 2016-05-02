@@ -41,7 +41,7 @@ package() {
 	ln -s "/usr/share/${_pkgname}/Cryptocat" "${pkgdir}/usr/bin/Cryptocat"
 
 	# Desktop file
-	install -Dm644 "${srcdir}/Cryptocat.desktop" "${pkgdir}/usr/share/applications/Cryptocat"
+	install -Dm644 "${srcdir}/Cryptocat.desktop" "${pkgdir}/usr/share/applications/Cryptocat.desktop"
 
 	# Icon
 	install -Dm644 "${srcdir}/Cryptocat.png" "${pkgdir}/usr/share/pixmaps/Cryptocat.png"
