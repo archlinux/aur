@@ -3,7 +3,7 @@
 
 pkgname=firefox-extension-scriptish
 pkgver=0.1.11.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Firefox add-on for user scripts (fork of Greasemonkey)"
 arch=('any')
 url="https://addons.mozilla.org/firefox/addon/scriptish/"
@@ -13,7 +13,7 @@ makedepends=('unzip')
 conflicts=('scriptish')
 replaces=('scriptish')
 source=("https://addons.cdn.mozilla.net/user-media/addons/231203/scriptish-0.1.11-fx+sm.xpi")
-sha256sums=('edc002a8e44f7620b277038828a7f4e5319b0a8a6cc9a7f87f88627c96903bc9')
+sha256sums=('403dd50a57df9a7a9f583b2cf65beb6c2ffdb9532ecfc0c6c7e0a7778d3a6476')
 noextract=('scriptish-0.1.11-fx+sm.xpi')
 
 prepare(){
