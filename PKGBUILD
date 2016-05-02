@@ -15,17 +15,20 @@ provides=()
 source=("http://build-archive.informatik.uni-tuebingen.de/ball/BALL/stable/v1.4.2/${_pkgname}-${pkgver}.tar.gz"
 	"${_pkgname}-${pkgver}-PersistentObject_cast.patch"
 	"${_pkgname}-${pkgver}-Qt_macro.patch"
+        "${_pkgname}-${pkgver}-link_view_X11.patch"
 	)
 
 md5sums=('5a6153d07b417421feb702cd0a5bd2df'
 	 'fd446b28c76146b057e3b642f9b19f72'
 	 'ef374b4e94456be9860a2923a1b20077'
+         '49c955cae5602d3a804732239849f304'
 	 )
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
   patch -p1 < $srcdir/${_pkgname}-${pkgver}-PersistentObject_cast.patch
   patch -p1 < $srcdir/${_pkgname}-${pkgver}-Qt_macro.patch
+  patch -p1 < $srcdir/${_pkgname}-${pkgver}-link_view_X11.patch
   cd ..
   mkdir -p build
   cd build
