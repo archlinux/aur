@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=alacryd-git
-pkgver=20160409
+pkgver=20160502
 pkgrel=1
 pkgdesc="Expedient Perl6 module installation"
 arch=('any')
@@ -44,4 +44,6 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
+  find "$pkgdir" -type f -print0 | xargs -0 sed -i "s,$pkgdir,,g"
+  find "$pkgdir" -type f -print0 | xargs -0 sed -i "s,$srcdir,,g"
 }
