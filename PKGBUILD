@@ -2,8 +2,8 @@
 # Maintainer : Zoe <chp321@gmail.com>
 
 pkgname=packup
-pkgver=3.e8af569
-pkgrel=4
+pkgver=0.4
+pkgrel=1
 pkgdesc="A simple Pacman backup and restore script."
 arch=('any')
 url="https://github.com/ghost1227/packup"
@@ -14,10 +14,10 @@ source=(git://github.com/ghost1227/packup)
 md5sums=('SKIP')
 
 
-pkgver() {
-  cd $pkgname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
+#pkgver() {
+#  cd $pkgname
+#  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+#}
 
 package() {
   cd ${srcdir}/${pkgname}
