@@ -3,12 +3,12 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=firefox-theme-ft-deepdark
-pkgver=14.0
-pkgrel=3
+pkgver=14.0.1
+pkgrel=1
 pkgdesc='Smooth dark theme for Firefox'
 url='https://addons.mozilla.org/en-us/firefox/addon/ft-deepdark/'
 license=('custom:noncommercial')
-md5sums=('3990c3cb5d16b325b621a91518c95064')
+md5sums=('62916260fb8eea4436575002d9f5c178')
 
 [ "$arch" ] || arch=('any')
 
