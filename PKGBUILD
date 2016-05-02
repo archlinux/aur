@@ -3,12 +3,12 @@
 
 pkgname=urbanlightscape
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A photo filter for exposure, brightness and lighting correction"
 arch=(i686 x86_64)
 url="http://www.indii.org/software/urbanlightscape"
 license=('GPL')
-depends=('wxgtk' 'desktop-file-utils')
+depends=('wxgtk' 'desktop-file-utils' 'bc')
 makedepends=('boost')
 source=("http://www.indii.org/files/${pkgname}/releases/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.png" "${pkgname}.desktop")
