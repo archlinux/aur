@@ -1,0 +1,16 @@
+pkgbase = rabbitsign
+	pkgdesc = Digitally signs software for Texas Instruments calculators
+	pkgver = 2.1
+	pkgrel = 3
+	url = http://www.ticalc.org/archives/files/fileinfo/383/38392.html
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = gmp
+	source = rabbitsign-2.1.tar.gz
+	source = http://brandonw.net/calcstuff/keys.zip
+	md5sums = dffa5c7da9be215f7501e2aac86ce960
+	md5sums = 6a5d57da784ea37993b601ce1e93590b
+
+pkgname = rabbitsign
+
