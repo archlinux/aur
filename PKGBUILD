@@ -1,12 +1,12 @@
 # Maintainer: TingPing <tingping@tingping.se>
 
 pkgname=plex-media-player
-pkgver=1.0.6
-_gitrev=229
-_gitver=1ce41570
+pkgver=1.1.0
+_gitrev=292
+_gitver=0035cdec
 _fullname="$pkgname-$pkgver.$_gitrev-$_gitver"
-_webclientver=f61ba32 # Set in CMakeModules/WebClientVariables.cmake
-_webclientbuild=122
+_webclientver=4cbcd79 # Set in CMakeModules/WebClientVariables.cmake
+_webclientbuild=132
 pkgrel=1
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64')
@@ -18,8 +18,8 @@ source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive
         "https://dl.tingping.se/mirror/plex-web-client-konvergo-${_webclientver}.cpp.tbz2"
         'plex-media-player.desktop')
 noextract=("plex-web-client-konvergo-$_webclientver.cpp.tbz2")
-sha256sums=('e7d27493d30532080ad6589187bc8f6d45b3a52f83b9f763470e01f78e6a539f'
-            '4e99bbd7f3116542c0927ad1476c8cbe31fb288bac2cb8fa1e9f2680c4a6773c'
+sha256sums=('0c3d411579c25184701b19b6e5cb4f5aa27234d02153190a6afbe0beaa6384a4'
+            'd1a2b0d34e137f3eb7a0c09d7da76f30158b5ac9504289c1b74bd56ae1a58995'
             'b03845b761cc18a88252b72d0c83e439006224660444d9174f53cc577f9498b6')
 
 # NOTE:
@@ -39,14 +39,6 @@ prepare() {
 	sed -i 's|include(GetGitRevisionDescription)||
 	        s|get_git_head_revision(REFSPEC FULL_GIT_REVISION)||' \
 	       CMakeModules/VersionConfiguration.cmake
-
-	# This isn't necessary and fails
-	sed -i 's|file(WRITE ${QTROOT}/bin/qt.conf ${QTCONFCONTENT})||' \
-	       CMakeModules/QtConfiguration.cmake
-
-	# Fix build error: https://github.com/plexinc/plex-media-player/issues/256
-	sed -i 's|^if(QT5_CFLAGS)$|list(APPEND QT5_CFLAGS -fPIC)\nif(QT5_CFLAGS)|' \
-	       CMakeModules/QtConfiguration.cmake
 
 	# Use our downloaded copy of web-client
 	mkdir -p build/src
