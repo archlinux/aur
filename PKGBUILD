@@ -1,7 +1,5 @@
-DB_TYPE='mysql'
-JAVA_GATEWAY='no' # work in progress
-# Set here the desired database type: 'mysql', 'postgresql' or 'sqlite3'
-# Set JAVA_GATEWAY to 'yes' if you intend to use it.
+DB_TYPE='mysql'    # the desired database type: 'mysql', 'postgresql' or 'sqlite3'
+JAVA_GATEWAY='no'  # work in progress
 
 # Maintainer: Arthur Țițeică / arthur dot titeica with gmail
 # Contributor: Idares <idares at seznam dot cz>
@@ -15,7 +13,7 @@ pkgname=('zabbix3-server'
          'zabbix3-java-gateway'
          'zabbix3-proxy'
          'zabbix3-common')
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Zabbix is an enterprise-class open source distributed monitoring solution."
 arch=('i686' 'x86_64')
@@ -170,11 +168,12 @@ package_zabbix3-common() {
   install -D -m644 "${srcdir}/zabbix.sysusers"         "${pkgdir}/usr/lib/sysusers.d/zabbix-common.conf"
 }
 
-md5sums=('890d9eec69304ad552959fabe0a5d122'
+
+md5sums=('9b16ba5a69cb1c0be78d65feda61af47'
          '2550b61809e65b3506954605edc07066'
          '564022867b5bdfa3a98a4ed46ac97f47'
          'cfb62758de880609adb67d0c09d662c5'
-         'ddae0a6e9e63548cb53e1b2004b6dc69'
-         'a74ec7fcbdc113ead7e0c83062c66805'
-         '748c4661596ef21370e3d43b461e7376'
+         '7530bb7aa3c7d65ead750b26363bc180'
+         '1835e5757963907559b07017de319d54'
+         'fcb894dd463b71c4ac84717ca670d457'
          '5588ec58fa98bed19a1333cdffd352c6')

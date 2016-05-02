@@ -9,6 +9,10 @@ ExecStart=/usr/sbin/zabbix_proxy
 ExecReload=/usr/sbin/zabbix_proxy -R config_cache_reload
 PIDFile=/run/zabbix/zabbix_proxy.pid
 Restart=on-abnormal
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=yes
 
 [Install]
 WantedBy=multi-user.target
