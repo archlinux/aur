@@ -16,10 +16,16 @@ optdepends=('devtools: build in an nspawn container'
 
 check() {
   cd "$pkgname-$pkgver"
-  make check
+  LANG=C shellcheck -e 2016 -x bin/*
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  install -d "$pkgdir"/usr/{bin,share{/zsh/site-functions,/man/man1,{/licenses,/doc}/aurutils}}
+
+  install -m755 bin/*          "$pkgdir"/usr/bin/
+  install -m644 completions/*  "$pkgdir"/usr/share/zsh/site-functions/
+  install -m644 doc/*          "$pkgdir"/usr/share/man/man1/
+  install -m644 LICENSE        "$pkgdir"/usr/share/licenses/aurutils/
+  install -m644 CREDITS README "$pkgdir"/usr/share/doc/aurutils/
 }
