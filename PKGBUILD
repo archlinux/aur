@@ -1,7 +1,7 @@
 # Maintainer: Benoit Pierre <benoit.pierre@gmail.com>
 
 pkgname=plover-git
-pkgdesc="Open Source Stenography Software"
+pkgdesc="Free and open source real-time stenography engine."
 pkgver=3.0.0
 pkgrel=1
 arch=('any')
@@ -24,7 +24,7 @@ makedepends=(
 )
 provides=('plover')
 conflicts=('plover-git')
-url="http://plover.stenoknight.com/"
+url="http://www.openstenoproject.org/plover/"
 source=($pkgname::git+https://github.com/openstenoproject/plover.git)
 sha1sums=(SKIP)
 

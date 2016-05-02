@@ -1,8 +1,8 @@
 pkgbase = plover-git
-	pkgdesc = Open Source Stenography Software
+	pkgdesc = Free and open source real-time stenography engine.
 	pkgver = 3.0.0
 	pkgrel = 1
-	url = http://plover.stenoknight.com/
+	url = http://www.openstenoproject.org/plover/
 	arch = any
 	license = GPL2
 	makedepends = python2-mock
