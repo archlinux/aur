@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/bymeadhbh/fygar"
 license=('GPL3')
 depends=('packer')
-source=(git+https://github.com/byaoibhinn/${_pkgname}.git)
+source=(git+https://github.com/bymeadhbh/${_pkgname}.git)
 md5sums=('SKIP')
 
 package() {
