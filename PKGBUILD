@@ -6,10 +6,10 @@ pkgdesc="Breeze Hacked cursor theme."
 arch=('any')
 url="https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/"
 license=('GPL')
-source=("https://web.archive.org/web/https://share.kde.org/index.php/s/66c54f4c02790f979b17c131a07f1b69/download")
+source=("https://code.jpope.org/jpope/breeze_cursor_sources/raw/master/breeze-hacked-cursor-theme.zip")
 makedepends=('unzip')
 
-sha256sums=('f0d595217484000388e412d46e12c42ac8053d29ffbd9cc1f24cc5e9555a4259')
+sha256sums=('675b9d1f8e0718505da82abcf0e3377e1e509bd0be71e3c0998136c3895a6b15')
 
 package() {
     cd $srcdir/Breeze_Hacked
