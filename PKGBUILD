@@ -33,6 +33,7 @@ package() {
   install -D -m755 "Messenger"    "${pkgdir}/opt/MessengerForDesktop/Messenger"
   install -D -m644 "nw.pak"       "${pkgdir}/opt/MessengerForDesktop/nw.pak"
   install -D -m644 "icudtl.dat"   "${pkgdir}/opt/MessengerForDesktop/icudtl.dat"
+  install -D -m644 "libffmpegsumo.so"   "${pkgdir}/opt/MessengerForDesktop/libffmpegsumo.so"
 
   cd "${srcdir}/messengerfordesktop-git/assets-linux"
   install -D -m644 "${srcdir}/messengerfordesktop-git/assets-linux/messengerfordesktop.desktop" "${pkgdir}/usr/share/applications/messengerfordesktop.desktop"
