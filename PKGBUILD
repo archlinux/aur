@@ -4,7 +4,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=flow
-pkgver=0.23.1
+pkgver=0.24.1
 pkgrel=1
 pkgdesc="A static typechecker for JavaScript"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=(
     'Makefile-fPIC.patch'
 )
 sha256sums=(
-    '099c924b9709ec8664cd60de2c8aa0e7b9698a9497fe41e74a9c46e37700ad98'
+    '15865797704ecb8784a5fbc667a467a058e4a0a91f9ea3365da2b2c64409cece'
     '85c7dc96e0ad270edc8f5dc631069282fb5be4a044a80878cd357642316066b8'
 )
 
@@ -44,7 +44,7 @@ check() {
 
   msg 'Checking...'
   if [ -z "${FLOW_RUNTESTS_PARALLELISM}" ]; then
-    FLOW_RUNTESTS_PARALLELISM=4 make test
+    /usr/bin/env FLOW_RUNTESTS_PARALLELISM=2 make test
   else
     make test
   fi
