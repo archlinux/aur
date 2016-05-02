@@ -8,8 +8,8 @@ pkgdesc='Advanced DICOM viewer and dicomizer'
 arch=('i686' 'x86_64')
 url='https://github.com/gerddie/ginkgocadx'
 license=('LGPL3')
-depends=('jsoncpp' 'wxgtk' 'dcmtk-git' 'itk-git' 'vtk6' 'openmpi')
-makedepends=('git' 'cmake' 'tcp_wrappers-libs' 'glu' 'python2' 'qt5-base' 'qt5-webkit' 'webkitgtk2'
+depends=('jsoncpp' 'wxgtk' 'dcmtk-git' 'itk-git' 'vtk6=6.3.0' 'openmpi')
+makedepends=('git' 'cmake' 'tcp_wrappers-libs' 'glu' 'python2' 'qt5-webkit' 'webkitgtk2'
             'gdal' 'unixodbc' 'ffmpeg')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "$_pkgname-2" "ginkgocadx-bin")
@@ -23,7 +23,7 @@ pkgver() {
 
 prepare() {
 
-  # make Ginkgo CADx accept VTK 6.*3*.0
+  # Make Ginkgo CADx accept VTK 6.*3*.0
   cd $_pkgname
   sed -i 's:FIND_PACKAGE(VTK 6.2.0 REQUIRED):FIND_PACKAGE(VTK 6.3.0 REQUIRED):' ./CMakeLists.txt
 
