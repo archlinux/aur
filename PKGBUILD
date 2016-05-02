@@ -4,7 +4,7 @@
 
 pkgname=pstate-frequency
 pkgdesc="Easily control Intel p-state driver"
-pkgver=3.1.0
+pkgver=3.2.0
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('git')
@@ -13,13 +13,12 @@ optdepends=('x86_energy_perf_policy: For the x86_energy_perf_policy-sleep.servic
 provides=('pstate-frequency')
 conflicts=('pstate-frequency')
 license=('GPLv2')
-url="https://github.com/pyamsoft/pstate-frequency/archive/${pkgver}.tar.gz"
+url="https://github.com/pyamsoft/pstate-frequency"
 source=(
-        "${url}"
+        "${url}/archive/${pkgver}.tar.gz"
         "00-fix-prefix.patch")
-sha256sums=(
-        'b12325d4d09d610bd5bed2ff20391da8d9c32f6ab710afff5bab211e5cae1e6c'
-        'e5423df20c03ef19448a78a1ae39e630d90f63c6c4e0962296ad292665575f0d')
+sha256sums=('155f7d9abbd096900a23efea73b04b257e360aa4a7148ad63228d0f0ae72b2af'
+            'e5423df20c03ef19448a78a1ae39e630d90f63c6c4e0962296ad292665575f0d')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
