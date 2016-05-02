@@ -1,0 +1,22 @@
+pkgbase = xfce4-smartbookmark-plugin-git
+	pkgdesc = Plugin for the Xfce4 panel that lets you quicksearch from selected websites
+	pkgver = 0.4.6.r22.g6be4a75
+	pkgrel = 1
+	url = http://goodies.xfce.org/projects/panel-plugins/xfce4-smartbookmark-plugin
+	install = xfce4-smartbookmark-plugin.install
+	arch = i686
+	arch = x86_64
+	groups = xfce4-goodies
+	license = GPL
+	makedepends = xfce4-dev-tools
+	makedepends = intltool
+	makedepends = git
+	depends = xfce4-panel
+	provides = xfce4-smartbookmark-plugin
+	conflicts = xfce4-smartbookmark-plugin
+	options = !libtool
+	source = git://git.xfce.org/panel-plugins/xfce4-smartbookmark-plugin
+	sha256sums = SKIP
+
+pkgname = xfce4-smartbookmark-plugin-git
+
