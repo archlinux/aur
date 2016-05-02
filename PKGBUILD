@@ -1,7 +1,7 @@
 # Maintainer: Ole Jon Bjørkum <mail at olejon dot net>
 
 pkgname=spotcommander
-pkgver=12.6
+pkgver=12.7
 pkgrel=1
 pkgdesc="The most intuitive and feature-rich remote control for Spotify for Linux."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('apache' 'php' 'php-apache' 'php-sqlite' 'qt4' 'inotify-tools' 'xdotool' 'xautomation' 'python2-xdg')
 install=$pkgname.install
 source=($url/files/$pkgname-$pkgver.tar.bz2)
-md5sums=('a7db5ffa6942cb88bad8f15d307070ee')
+md5sums=('f253bf450ce7560c54e903566d07af90')
 
 package()
 {
