@@ -1,0 +1,13 @@
+pkgbase = plank-theme-arc
+	pkgdesc = Arc theme for Plank
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/horst3180/arc-theme
+	arch = any
+	license = GPL3
+	depends = plank
+	source = https://manjaro.ru/aur/plank-theme/plank-theme-arc.tar.gz
+	md5sums = 54299efc703ec148d023f4035ac839ed
+
+pkgname = plank-theme-arc
+

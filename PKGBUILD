@@ -1,0 +1,22 @@
+# Maintainer: zekeer <isoniasid@gmail.com> 
+
+pkgname=plank-theme-arc
+pkgver=0.1
+pkgrel=1
+pkgdesc='Arc theme for Plank'
+arch=('any')
+url='https://github.com/horst3180/arc-theme'
+license=('GPL3')
+depends=('plank')
+source=("https://manjaro.ru/aur/plank-theme/$pkgname.tar.gz")
+md5sums=('54299efc703ec148d023f4035ac839ed')
+
+build() {
+	true
+}
+
+package() {
+	cd $srcdir/$pkgname
+	mkdir -p $pkgdir/usr/share/plank/themes
+	cp -r Arc $pkgdir/usr/share/plank/themes
+}
