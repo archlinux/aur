@@ -12,6 +12,7 @@ depends=('gcc-libs' 'cairo' 'libxtst' 'alsa-lib' 'gtk2' 'gconf' 'libnotify' 'fon
 makedepends=('git' 'gulp' 'npm')
 source=("$pkgname::git+https://github.com/Sytten/Facebook-Messenger-Desktop.git")
 md5sums=('SKIP')
+install="$pkgname.install"
 
 if [ $(uname -m) == "i686" ]
  then
