@@ -3,7 +3,7 @@
 _pkgname=vtk
 pkgname=$_pkgname-git
 pkgver=7.0.0.1245.g99f5e84
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source software system for image processing, 3D graphics, volume rendering and visualization'
 arch=('i686' 'x86_64')
 url='http://www.vtk.org'
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('gl2ps')
 makedepends=('git' 'cmake' 'hdf5' 'libjpeg-turbo' 'libtiff' 'doxygen' 'java-environment' 'python' 'tk')
 provides=("$_pkgname")
-conflicts=("$_pkgname")
+conflicts=("$_pkgname" "$_pkgname6")
 source=("git+https://gitlab.kitware.com/vtk/vtk.git")
 sha256sums=("SKIP")
 
