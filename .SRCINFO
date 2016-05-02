@@ -1,4 +1,4 @@
-pkgbase = neomutt
+pkgbase = neomutt-git
 	pkgdesc = Small but powerful text-based mail client
 	pkgver = neomutt.20160502.r0.gfcf870a
 	pkgrel = 1
@@ -23,5 +23,5 @@ pkgbase = neomutt
 	source = git+https://github.com/neomutt/neomutt.git#branch=neomutt
 	sha256sums = SKIP
 
-pkgname = neomutt
+pkgname = neomutt-git
 

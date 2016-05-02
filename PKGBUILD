@@ -2,7 +2,7 @@
 # Contributor: boyska <piuttosto@logorroici.org>
 
 _pkgname=neomutt
-pkgname=neomutt
+pkgname=neomutt-git
 pkgver=neomutt.20160502.r0.gfcf870a
 pkgrel=1
 pkgdesc='Small but powerful text-based mail client'
