@@ -9,7 +9,7 @@
 # All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
 
 pkgname=calibre-git
-pkgver=2.54.0.r53.g5272f9e
+pkgver=2.56.0.r34.g321a80c
 pkgrel=1
 pkgdesc="Ebook management application, from git"
 arch=('i686' 'x86_64')
@@ -27,7 +27,6 @@ optdepends=('ipython2: to use calibre-debug'
             'udisks: required for mounting certain devices')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install=calibre.install
 source=("git://github.com/kovidgoyal/${pkgname%-git}.git"
         "git://github.com/kovidgoyal/${pkgname%-git}-translations.git")
 md5sums=('SKIP'
