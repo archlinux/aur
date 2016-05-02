@@ -5,7 +5,7 @@
 _pkgname=vokoscreen
 pkgname=${_pkgname}-git
 pkgver=2.4.21.beta.3.gd2d38f3
-pkgrel=2
+pkgrel=3
 pkgdesc='An easy to use screencast creator. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
 url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
@@ -21,8 +21,6 @@ optdepends=(
 makedepends=('git' 'qt5-tools')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-
-install=${pkgname}.install
 
 source=(
 	"git+https://github.com/vkohaupt/${_pkgname}.git"
