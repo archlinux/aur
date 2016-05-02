@@ -1,8 +1,8 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=libretro-snes9x-git
-pkgver=r506.debfafb
-pkgrel=2
+pkgver=r515.1ce4378
+pkgrel=1
 pkgdesc='Super Nintendo Entertainment System core'
 arch=('i686' 'x86_64')
 url='https://github.com/libretro/snes9x'
@@ -10,6 +10,8 @@ license=('custom' 'GPL2' 'LGPL2.1')
 groups=('libretro')
 depends=('gcc-libs' 'glibc')
 makedepends=('git')
+provides=('libretro-snes9x')
+conflicts=('libretro-snes9x')
 source=('libretro-snes9x::git+https://github.com/libretro/snes9x.git'
         'https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/snes9x_libretro.info')
 sha256sums=('SKIP'
