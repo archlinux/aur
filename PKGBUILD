@@ -5,7 +5,7 @@
 
 pkgname=flexget-git
 _pkgname=Flexget
-pkgver=1.2.503.r8477.c45edd6
+pkgver=2.0.10.r9250.58bd0b6
 pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
@@ -25,18 +25,17 @@ depends=('python2'
          'python2-html5lib>=0.11'
          'python2-pyrss2gen' #AUR#
          'python2-pynzb' #AUR#
-         'python2-progressbar'
          'python2-rpyc' #AUR#
          'python2-jinja'
          'python2-requests>=2.8.0'
          'python2-requests<3.0'
-         'python2-dateutil<2.5.2'
+         'python2-dateutil>=2.5.2'
          'python2-jsonschema>=2.0' #AUR#
-         'python2-path' #AUR#
-         'python2-guessit>=2.0.1'
+         'python2-path>=8.1.1'
+         'python2-pathlib>=1.0'
+         'python2-guessit<=2.0.4'
          'python2-apscheduler<3.1.0' #AUR#
          'python2-pytvmaze>=1.4.8'
-         'python2-ordereddict>=1.1'
          'python2-cherrypy>=3.7.0'
          'python2-flask>=0.7'
          'python2-flask-restful>=0.3.3' #AUR#
@@ -45,7 +44,8 @@ depends=('python2'
          'python2-flask-login>=0.3.2'
          'python2-flask-cors>=2.1.2'
          'python2-pyparsing>=2.0.3'
-         'python2-safe'
+         'python2-safe>=0.4'
+         'python2-future>=0.15.2'
          )
 optdepends=('python2-guppy: for memusage plugin' #AUR#
             'python2-transmissionrpc: Transmission support' #AUR#
@@ -108,7 +108,7 @@ package() {
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 
   # Make sure the perms allow reading by all
-  chmod ugo+r ${pkgdir}/usr/lib/python2.7/site-packages/FlexGet-1.2.*.dev0-py2.7.egg-info/*
+  chmod ugo+r ${pkgdir}/usr/lib/python2.7/site-packages/FlexGet-2.0.*.dev0-py2.7.egg-info/*
 
   # install systemd user unit
   install -Dm644 ../flexget.service "${pkgdir}"/usr/lib/systemd/user/flexget.service
