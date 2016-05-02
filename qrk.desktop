@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=QRK Registrier Kasse
+Comment=A cash register for small companies (mainly for Austrian companies)
+Exec=qrk
+Icon=qrk.png
+Path=/tmp
+Terminal=false
+Type=Application
+Categories=Office;
+StartupNotify=false
