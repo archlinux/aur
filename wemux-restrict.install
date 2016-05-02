@@ -1,0 +1,3 @@
+post_install() {
+  echo "==> Must add host user(s) to /etc/wemux/wemux.conf"
+}
