@@ -14,7 +14,7 @@ depends=('python2-matrix-angular-sdk-git'
          'python2-pillow' 'python2-pydenticon' 'python2-ujson' 'python2-blist'
          'python2-pysaml2'
          'python2-systemd' 'python2-unpaddedbase64' 'python2-canonicaljson'
-		 'python2-signedjson' 'python2-pymacaroons-pynacl' 'python2-netaddr')
+         'python2-signedjson' 'python2-pymacaroons-pynacl' 'python2-netaddr')
 makedepends=('python2-twisted' 'python2-mock' 'python2-setuptools_trial')
 source=("git://github.com/matrix-org/synapse.git#branch=develop"
 		'sysusers-synapse.conf'
