@@ -1,30 +1,25 @@
 pkgname=aurutils
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc='helper tools for the arch user repository'
 arch=('any')
 url=https://github.com/AladW/aurutils
 license=('ISC')
-source=("https://github.com/AladW/aurutils/archive/$pkgver.tar.gz")
-md5sums=('fd112110e905afde4c8105fe72f27348')
-depends=('pacman>=5.0' 'git' 'repose' 'jshon' 'pacutils' 'expac' 'aria2' 'datamash')
+source=("$url/archive/$pkgver.tar.gz")
+md5sums=('e1d0033cc330e1901710c7970823a9f2')
+depends=('pacman>=5.0' 'git' 'jshon' 'expac' 'aria2>=1.23.0')
+	 'repose' 'pacutils' 'datamash'
 checkdepends=('shellcheck')
 makedepends=('git')
-optdepends=('devtools: aurbuild -c'
+optdepends=('devtools: build in an nspawn container'
 	    'vifm: improved build file interaction')
 
 check() {
   cd "$pkgname-$pkgver"
-  LANG=C shellcheck -e 2016 -x bin/*
+  make check
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  install -d "$pkgdir"/usr/{bin,share{/man/man1,{/licenses,/doc}/aurutils}}
-
-  install -m755 bin/* "$pkgdir"/usr/bin/
-  install -m644 LICENSE "$pkgdir"/usr/share/licenses/aurutils/
-  install -m644 CREDITS README "$pkgdir"/usr/share/doc/aurutils/
-  install -m644 doc/* "$pkgdir"/usr/share/man/man1/
+  make DESTDIR="$pkgdir/" install
 }
-
