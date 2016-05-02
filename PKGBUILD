@@ -4,7 +4,7 @@ pkgname=hibiscus-nightly
 pkgver=2.7.0
 pkgrel=1
 pkgdesc="Hibiscus Plugin for Jameica Plattform"
-arch=(armv6h armv7h armv8h i686 x86_64)
+arch=(armv6h armv7h aarch64 i686 x86_64)
 url="http://www.willuhn.de/products/hibiscus/"
 license=('GPL')
 depends=('jameica-nightly>=2.7')
