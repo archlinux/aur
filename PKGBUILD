@@ -6,7 +6,7 @@
      
 pkgname=med-salome
 _pkgname=med
-pkgver=3.0.8
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - This version is built to be linked against salome-med on x86_64"
 url="http://www.code-aster.org/outils/med/"
@@ -21,22 +21,28 @@ backup=()
 arch=('i686' 'x86_64')
 source=("http://files.salome-platform.org/Salome/other/${_pkgname}-${pkgver}.tar.gz")
 
-
 # _installdir=/opt/${pkgname}
 _installdir=/usr
 _sharedir=${_installdir}/share/${pkgname}
 
+prepare() {
+  cd ${srcdir}/${_pkgname}-${pkgver}_SRC || return 1
+ 
+  # patch to avoid inconcsistency between med_proto.h and MEDequivInfo.c
+  sed -i -e "s|int fid|med_idt fid|" ./src/2.3.6/ci/MEDequivInfo.c
+}
+
 build() {
   export PYTHON="python2"
 
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd ${srcdir}/${_pkgname}-${pkgver}_SRC
  
   ./configure --with-f90=gfortran --prefix=${_installdir}  --with-med_int=int --datadir=${_sharedir}
   make
 }
  
 package() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd ${srcdir}/${_pkgname}-${pkgver}_SRC
  
   make DESTDIR=${pkgdir} install
   
@@ -46,13 +52,8 @@ package() {
   # now move the testprograms to share, we don't want all the stuff in the bindir
   for _FILE in usescases unittests testf testc testpy
   do
-    mv ${pkgdir}${_installdir}/bin/${_FILE} ${pkgdir}${_sharedir}/
-  done
-
-  cd "${pkgdir}${_sharedir}/testpy"
-  for _FILE in `ls *.py`
-  do
-    sed -e "s|/usr/bin/env python|/usr/bin/env python2|" -i ${_FILE}
+    rm -rf ${pkgdir}${_installdir}/bin/${_FILE}
   done
 }
-md5sums=('8adb41767474d262abca1ce031d08f47')
+
+md5sums=('a1e1eb068f20634f5ea797914241eb51')
