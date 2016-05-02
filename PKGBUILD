@@ -6,7 +6,7 @@
 
 pkgname=iceweasel-extension-archforumsearch-it
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Iceweasel search engines for Arch Linux Italian forum"
 arch=('any')
 url="http://www.archlinux.it/forum/"
@@ -19,7 +19,7 @@ md5sums=('22afcceb949a93e52e4e355877496a03'
 
 package() {
   cd "${srcdir}"
-  local _prefix="${pkgdir}"/etc/iceweasel/searchplugins/common/
+  local _prefix="${pkgdir}"/usr/lib/iceweasel/distribution/searchplugins/common
 
   for i in ${source[@]}; do
     install -D -m 0644 "${srcdir}"/$i ${_prefix}/$i
