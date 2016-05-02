@@ -2,7 +2,7 @@
 
 pkgname=messengerfordesktop-git
 pkgver=v1.4.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Beautiful desktop client for Facebook Messenger. Sytten's fork"
 arch=('i686' 'x86_64')
 url="http://messengerfordesktop.com/"
