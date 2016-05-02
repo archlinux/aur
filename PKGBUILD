@@ -1,7 +1,7 @@
 # Maintainer: Leonard König <leonard.r.koenig at googlemail dot com>
 pkgname='endless-sky-git'
 _gitname='endless-sky'
-pkgver=0.8.4.r4.ga1ed871
+pkgver=0.9.0.r21.g7c74390
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://endless-sky.github.io/"
@@ -44,7 +44,7 @@ package() {
   # resources
   ## They explicitly want this path. Although one could workaround with '-r' param
   install --directory ${pkgdir}/usr/share/games/${_gitname}
-  cp -rf data images sounds extra ${pkgdir}/usr/share/games/${_gitname}/
+  cp -rf data images sounds ${pkgdir}/usr/share/games/${_gitname}/
   install -D --mode=644 credits.txt ${pkgdir}/usr/share/games/${_gitname}/credits.txt
   install -D --mode=644 keys.txt ${pkgdir}/usr/share/games/${_gitname}/keys.txt
 
