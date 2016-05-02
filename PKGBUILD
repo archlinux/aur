@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ruby-sequel
-pkgver=4.33.0
+pkgver=4.34.0
 pkgrel=1
 pkgdesc="The Database Toolkit for Ruby"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('ruby')
 optdepends=('ruby-sqlite3: SQLite support')
 source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem)
-sha256sums=('082647c7a3fdecd5b0449a88384679b596f6a1ca7cfa4ab75356dc9f72213072')
+sha256sums=('a1071d17fa8b8c3a0778ed2d530036f6ce89b6248ad4b5fb7b5231ee6e6b4c63')
 noextract=("${pkgname#*-}-${pkgver}.gem")
 provides=('sequel' 'ruby-sequel')
 conflicts=('sequel')
