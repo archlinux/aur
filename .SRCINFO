@@ -19,9 +19,13 @@ pkgbase = messengerfordesktop-git
 	depends = libnotify
 	depends = fontconfig
 	depends = nss
+	depends = xorg-xprop
+	depends = xorg-xwininfo
 	options = !strip
 	source = messengerfordesktop-git::git+https://github.com/Sytten/Facebook-Messenger-Desktop.git
+	source = start.sh
 	md5sums = SKIP
+	md5sums = ce686652299792c01f4605cf995c4d87
 
 pkgname = messengerfordesktop-git
 

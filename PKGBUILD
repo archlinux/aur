@@ -8,10 +8,12 @@ arch=('i686' 'x86_64')
 url="http://messengerfordesktop.com/"
 license=('MIT')
 options=(!strip)
-depends=('gcc-libs' 'cairo' 'libxtst' 'alsa-lib' 'gtk2' 'gconf' 'libnotify' 'fontconfig' 'nss')
+depends=('gcc-libs' 'cairo' 'libxtst' 'alsa-lib' 'gtk2' 'gconf' 'libnotify' 'fontconfig' 'nss' 'xorg-xprop' 'xorg-xwininfo')
 makedepends=('git' 'gulp' 'npm')
-source=("$pkgname::git+https://github.com/Sytten/Facebook-Messenger-Desktop.git")
-md5sums=('SKIP')
+source=("$pkgname::git+https://github.com/Sytten/Facebook-Messenger-Desktop.git"
+				"start.sh")
+md5sums=('SKIP'
+         'ce686652299792c01f4605cf995c4d87')
 install="$pkgname.install"
 
 if [ $(uname -m) == "i686" ]
@@ -29,6 +31,8 @@ build() {
 }
 
 package() {
+	install -D -m755 "${srcdir}/start.sh"	  "${pkgdir}/opt/MessengerForDesktop/start.sh"
+	
   cd "${srcdir}/messengerfordesktop-git/build/Messenger/${_arch}"
   mkdir -p "${pkgdir}/opt/MessengerForDesktop/"
   install -D -m755 "Messenger"    "${pkgdir}/opt/MessengerForDesktop/Messenger"
@@ -37,6 +41,7 @@ package() {
   install -D -m644 "libffmpegsumo.so"   "${pkgdir}/opt/MessengerForDesktop/libffmpegsumo.so"
 
   cd "${srcdir}/messengerfordesktop-git/assets-linux"
+	sed -i '6s/.*/Exec=sh \/opt\/MessengerForDesktop\/start.sh/' messengerfordesktop.desktop 
   install -D -m644 "${srcdir}/messengerfordesktop-git/assets-linux/messengerfordesktop.desktop" "${pkgdir}/usr/share/applications/messengerfordesktop.desktop"
   install -D -m644 "icons/256/messengerfordesktop.png"     "${pkgdir}/usr/share/pixmaps/messengerfordesktop.png"
 }
