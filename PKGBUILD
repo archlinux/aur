@@ -7,7 +7,7 @@ pkgdesc='Samples included in the CCV Library repository'
 arch=('i686' 'x86_64')
 url='http://libccv.org/'
 license=('BSD3')
-makedepends=('subversion' 'gcc')
+makedepends=('subversion')
 source=('svn+https://github.com/liuliu/ccv/trunk/samples'
         'https://raw.githubusercontent.com/liuliu/ccv/stable/COPYING')
 sha256sums=('SKIP'
