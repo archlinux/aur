@@ -7,8 +7,7 @@ arch=(i686 x86_64)
 url="http://alpscore.org"
 license=('GPL')
 depends=('cmake>=2.8.12' 'boost>=1.54.0' 'hdf5>=1.8')
-optdepends=('openmpi: for MPI support'
-            'doxygen: for building low-level docs')
+optdepends=('openmpi: for MPI support')
 provides=($pkgname=$pkgver)
 conflicts=(alpscore-git alps)
 source=("https://github.com/ALPSCore/ALPSCore/archive/v$pkgver.tar.gz")
@@ -18,7 +17,7 @@ build() {
 	cd "ALPSCore-$pkgver"
     mkdir -p build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DDocumentation=OFF ..
 	make
 }
 
