@@ -2,7 +2,7 @@
 
 pkgname=ultra-flat-icons
 pkgver=1.3.4
-pkgrel=5
+pkgrel=6
 pkgdesc='A simple flat icon theme, derived from Flattr icon theme.'
 arch=('any')
 url='http://gnome-look.org/content/show.php?content=167477'
@@ -12,18 +12,15 @@ depends=('xdg-utils')
 provides=("${pkgname}=${pkgver}")
 
 options=(!strip !emptydirs)
-install=${pkgname}.install
 
 # Original source
 # https://www.dropbox.com/s/dktl70lh4lnhp0a/ultra-flat-icons.tar.gz
 source=(
 	"https://www.dropbox.com/s/35k1ckffe17ba8r/${pkgname}-${pkgver}.tar.gz"
-	"${pkgname}.install"
 	'index_theme_fix.patch'
 )
 sha512sums=(
 	'b39093e0ea3d79d01616058a8b03d2aa570e1728b642eac41bd0f0f1dbcd77416ac017fd1378c6118579463a018273cdfd5220712508336bc63b8c147eb5b1a2'
-	'60c88422a3e2a5f3e21f9ae50e7810b2b9f8227023162ba004448ddf3823ad34120c6a73df2bab3a74af77c6c3b5cd406a9f8e7cb3db69ba8af7eda775889ffe'
 	'3ce42f27f494f8b4a715e646faeb611d4e573a2bc5960b7f340426bded98c85f2c3ea2a1a1c88256c861558c1f4a4e0408b5f3696ec60c87eb7bd5bf2bf8145c'
 )
 
