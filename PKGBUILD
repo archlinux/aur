@@ -8,9 +8,9 @@ arch=('i686' 'x86_64')
 url="http://code.google.com/p/gphotoframe/"
 license=('GPL3')
 groups=()
-depends=('pygtk' 'twisted' 'pyxdg' 'python2-gdata')
+depends=('pygtk' 'twisted' 'pyxdg' 'python2-gdata' 'python2-oauth')
 makedepends=('python2-distutils-extra')
-optdepends=('python-simplejson' 'python-feedparser' 'python-clutter' 
+optdepends=('python2-simplejson' 'python2-feedparser' 'python2-clutter' 
 'gnome-python-desktop')
 provides=('gphotoframe')
 conflicts=('gphotoframe-git')
