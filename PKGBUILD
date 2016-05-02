@@ -4,12 +4,12 @@
 
 pkgname=qbittorrent-git
 pkgver=3.3.4.r490.gef6e848
-pkgrel=1
+pkgrel=2
 pkgdesc="A bittorrent client powered by C++, Qt5 and the good libtorrent library (development version)"
 arch=('i686' 'x86_64')
 url="http://www.qbittorrent.org/"
 license=('custom' 'GPL')
-depends=('libtorrent-rasterbar' 'qt5-base' 'desktop-file-utils' 'xdg-utils')
+depends=('libtorrent-rasterbar' 'qt5-base')
 makedepends=('boost' 'git' 'qt5-tools')
 optdepends=('python: needed for torrent search tab')
 conflicts=('qbittorrent')
