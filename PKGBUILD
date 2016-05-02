@@ -1,20 +1,26 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=krusader-git
-pkgver=15.08.beta.r5123.a475f14
+pkgver=15.08.beta.r5199.4f2dddf
 pkgrel=1
 pkgdesc="Advanced twin panel file manager for KDE. (GIT version)"
 arch=('i686' 'x86_64')
 url='http://www.krusader.org'
 license=('GPL')
-depends=('kparts' 'hicolor-icon-theme')
-makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'python' 'acl')
+depends=('kparts'
+         'hicolor-icon-theme'
+         )
+makedepends=('extra-cmake-modules'
+             'kdoctools'
+             'git'
+             'python'
+             'acl'
+             )
 optdepends=('acl: Access control list utilities')
 provides=('krusader')
 conflicts=('krusader')
 source=('git://anongit.kde.org/krusader')
 sha1sums=('SKIP')
-install=krusader-git.install
 
 pkgver() {
   cd krusader
@@ -25,10 +31,10 @@ pkgver() {
 prepare() {
   mkdir -p build
 
-#   sed -e '6s|#||g' \
-#       -e 's|LibKonq|KF5Konq|g' \
-#       -e 's|LIBKONQ|KF5Konq|g' \
-#       -i krusader/krusader/CMakeLists.txt
+  sed -e '6s|#||g' \
+      -e 's|LibKonq|KF5Konq|g' \
+      -e 's|LIBKONQ|KF5Konq|g' \
+      -i krusader/krusader/CMakeLists.txt
 }
 
 build() {
@@ -36,7 +42,7 @@ build() {
   cmake ../krusader \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
