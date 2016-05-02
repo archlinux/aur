@@ -6,7 +6,7 @@ pkgbase = breeze-red-cursor-theme
 	arch = any
 	license = GPL
 	makedepends = unzip
-	source = https://web.archive.org/web/https://share.kde.org/index.php/s/67ff3ae466f4670a8edb25d2d67f3c7e/download
+	source = https://code.jpope.org/jpope/breeze_cursor_sources/raw/master/breeze-red-cursor-theme.zip
 	sha256sums = 8b952060fffffd0e704501dfb568779782517a649c897e7f5f5fff638a1b5b32
 
 pkgname = breeze-red-cursor-theme

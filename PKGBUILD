@@ -6,7 +6,7 @@ pkgdesc="Breeze Red cursor theme."
 arch=('any')
 url="https://kver.wordpress.com/2015/01/09/curses-i-mean-cursors/"
 license=('GPL')
-source=("https://web.archive.org/web/https://share.kde.org/index.php/s/67ff3ae466f4670a8edb25d2d67f3c7e/download")
+source=("https://code.jpope.org/jpope/breeze_cursor_sources/raw/master/breeze-red-cursor-theme.zip")
 makedepends=('unzip')
 
 sha256sums=('8b952060fffffd0e704501dfb568779782517a649c897e7f5f5fff638a1b5b32')
