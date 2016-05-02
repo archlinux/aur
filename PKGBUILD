@@ -113,7 +113,7 @@ build() {
     -Dlinux_use_bundled_binutils=0
     -Dlinux_use_bundled_gold=0
     -Dlinux_use_gold_flags=0
-    -Dicu_use_data_file_flag=0
+    -Dicu_use_data_file_flag=1
     -Dlogging_like_official_build=1
     -Dtracing_like_official_build=1
     -Dfieldtrial_testing_like_official_build=1
