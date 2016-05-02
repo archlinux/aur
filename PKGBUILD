@@ -24,7 +24,7 @@ build()
   cd "$pkgname-$pkgver"
   msg 'Building C++ extensions...'
   python setup.py build_ext
-  msg 'Sucessfully built C++ extensions'
+  msg 'successfully built C++ extensions'
 }
 
 
