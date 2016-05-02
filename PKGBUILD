@@ -1,7 +1,7 @@
-# Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
+# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
 
 pkgname=ruby-kramdown
-pkgver=1.8.0
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='A fast, pure-Ruby Markdown-superset converter'
 arch=(any)
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('ruby')
 source=("https://rubygems.org/downloads/kramdown-${pkgver}.gem")
 noextract=("kramdown-${pkgver}.gem")
-md5sum=('8bdb6aed0244d0fe77b2f5b49c44da0c8d597e7909b9f59052f7846bd1b85170')
+sha512sums=('fa0c8f1de6ea7306c7ca47a99f0d3e4a2e720e8d7d00f85a811b0ddd7f533960d583f94dee59f1d04900069163dd583c70520bedeeada77d673ff1b3d8b3782e')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
@@ -21,4 +21,3 @@ package() {
   install -D -m644 "${pkgdir}/${_gemdir}/gems/kramdown-${pkgver}/COPYING" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
 }
-md5sums=('ad7f75fe981513f7ae18e93504d13406')
