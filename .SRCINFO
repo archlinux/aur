@@ -1,7 +1,7 @@
 pkgbase = ball
 	pkgdesc = Application framework in C++ for Computational Molecular Biology and Molecular Modeling.
 	pkgver = 1.4.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.ball-project.org/
 	arch = i686
 	arch = x86_64
@@ -21,12 +21,14 @@ pkgbase = ball
 	depends = lapack
 	depends = boost-libs
 	depends = libgl
-	source = BALL-1.4.2.tar.gz::http://www.ball-project.org/Downloads/v1.4.2/BALL-1.4.2.tar.gz/@@download
+	source = http://build-archive.informatik.uni-tuebingen.de/ball/BALL/stable/v1.4.2/BALL-1.4.2.tar.gz
 	source = BALL-1.4.2-PersistentObject_cast.patch
 	source = BALL-1.4.2-Qt_macro.patch
+	source = BALL-1.4.2-link_view_X11.patch
 	md5sums = 5a6153d07b417421feb702cd0a5bd2df
 	md5sums = fd446b28c76146b057e3b642f9b19f72
 	md5sums = ef374b4e94456be9860a2923a1b20077
+	md5sums = 49c955cae5602d3a804732239849f304
 
 pkgname = ball
 
