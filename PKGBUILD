@@ -10,8 +10,8 @@ license=('BSD3')
 depends=('gsl' 'libpng' 'zlib' 'fftw' 'blas' 'liblinear') 
 makedepends=('subversion' 'gcc')
 optdepends=('ccv-samples: sample datasets')
-source=('svn+https://github.com/liuliu/ccv/r0.7-rc2/doc'
-        'svn+https://github.com/liuliu/ccv/r0.7-rc2/lib'
+source=('svn+https://github.com/liuliu/ccv/trunk/doc'
+        'svn+https://github.com/liuliu/ccv/trunk/lib'
         'https://raw.githubusercontent.com/liuliu/ccv/stable/COPYING')
 sha256sums=('SKIP'
             'SKIP'
