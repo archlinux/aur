@@ -8,8 +8,7 @@ url="http://alpscore.org"
 license=('GPL')
 depends=('cmake>=2.8.12' 'boost>=1.54.0' 'hdf5>=1.8')
 makedepends=(git)
-optdepends=('openmpi: for MPI support'
-            'doxygen: for building low-level docs')
+optdepends=('openmpi: for MPI support')
 provides=(${pkgname%-*}=$pkgver)
 conflicts=(alpscore alps)
 source=($pkgname::git+https://github.com/ALPSCore/ALPSCore.git)
@@ -24,7 +23,7 @@ build() {
     cd "$pkgname"
     mkdir -p build
     cd build
-    cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DDocumentation=OFF ..
 	make
 }
 

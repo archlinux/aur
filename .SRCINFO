@@ -11,7 +11,6 @@ pkgbase = alpscore-git
 	depends = boost>=1.54.0
 	depends = hdf5>=1.8
 	optdepends = openmpi: for MPI support
-	optdepends = doxygen: for building low-level docs
 	provides = alpscore=0.5.4.r1.g0dd4ffe
 	conflicts = alpscore
 	conflicts = alps
