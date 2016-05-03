@@ -45,6 +45,6 @@ package() {
 
 	# Icon
 	install -Dm644 "${srcdir}/Cryptocat.png" "${pkgdir}/usr/share/cryptocat-bin/logo.png"
-	ln -s "/usr/share/cryptocat-bin/logo.png" "${pkgdir}/usr/share/pixmaps/Cryptocat.png"
+	ln -s "${pkgdir}/usr/share/pixmaps/Cryptocat.png" "${pkgdir}/usr/share/cryptocat-bin/logo.png"
 
 }
