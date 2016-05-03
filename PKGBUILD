@@ -1,6 +1,6 @@
 # Maintainer: Luca Weiss <WEI16416@spengergasse.at>
 pkgname=qtshutdownmenu-git
-pkgver=r3.c08b4f7
+pkgver=r4.314f35e
 pkgrel=1
 pkgdesc="Graphical shutdown util with PyQt5 and lock script for i3"
 arch=('any')
@@ -24,6 +24,6 @@ package() {
   install -Dm755 "shutdownmenu.py" "$pkgdir/usr/bin/qtshutdownmenu"
   install -Dm755 "lock.sh" "$pkgdir/usr/bin/lock"
   install -Dm755 "icon.png" "$pkgdir/usr/share/icons/lock.png"
-  install -Dm755 "qtshutdownmenu.desktop" "$pkgdir/usr/share/applications/"
+  install -Dm755 "qtshutdownmenu.desktop" "$pkgdir/usr/share/applications/qtshutdownmenu.desktop"
 }
 
