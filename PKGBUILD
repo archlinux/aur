@@ -9,28 +9,35 @@
 pkgbase=lib32-networkmanager
 pkgname=(lib32-networkmanager lib32-libnm-glib)
 _pkgname=NetworkManager
-pkgver=1.0.10
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Network Management daemon, 32bit libraries"
-arch=(i686 x86_64)
+arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="http://www.gnome.org/projects/NetworkManager/"
-makedepends=(intltool dhclient iptables gobject-introspection gtk-doc
-             lib32-dbus-glib iproute2 lib32-libnl lib32-nss lib32-polkit wpa_supplicant
-             lib32-libsoup lib32-systemd lib32-libgudev lib32-libndp
-             lib32-libteam vala perl-yaml python2-gobject networkmanager)
-checkdepends=(libx11 python2-dbus)
-source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:3}/$_pkgname-$pkgver.tar.xz
-        disable_set_hostname.patch)
-sha256sums=('1bcfce8441dfd9f432a100d06b54f3831a2275cccc3b74b1b4c09a011e179fbc'
-            '25056837ea92e559f09563ed817e3e0cd9333be861b8914e45f62ceaae2e0460')
+_pppver=2.4.7
+makedepends=(intltool dhclient iptables gobject-introspection gtk-doc #lib32-bluez-libs
+             "ppp=$_pppver" lib32-dbus-glib iproute2 lib32-nss lib32-polkit wpa_supplicant
+             lib32-libsoup lib32-systemd lib32-libgudev lib32-libndp lib32-libmm-glib rp-pppoe
+             lib32-libteam vala perl-yaml python-gobject networkmanager modemmanager)
+checkdepends=(libx11 python-dbus)
+source=(https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
+        hidepid.patch dhcpv6-mixed.patch)
+sha256sums=('e947cf30fa3d19dce88e6f6af51f06dc282b7db7996f946aaa37b03526ef2a80'
+            '1de5b511b6b4a933739b0ef48ede1830fa3d6dea2277c1302b12b08fa83a73f1'
+            'f7771790485f24d788fe35f5922ad044a29c6d89b34458d9e99938503b2a3b39')
 
 prepare() {
-  mkdir path
-  ln -s /usr/bin/python2 path/python
-
   cd NetworkManager-$pkgver
-  patch -Np1 -i ../disable_set_hostname.patch
+
+  # https://bugs.archlinux.org/task/48984
+  patch -Np1 -i ../hidepid.patch
+
+  # https://bugs.archlinux.org/task/49081
+  patch -Np1 -i ../dhcpv6-mixed.patch
+
+  2to3 -w libnm src tools
+
   NOCONFIGURE=1 ./autogen.sh
 }
 
@@ -58,31 +65,35 @@ build() {
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
     --with-udev-dir=/usr/lib/udev \
     --with-resolvconf=/usr/bin/resolvconf \
+    --with-pppd=/usr/bin/pppd \
+    --with-pppd-plugin-dir=/usr/lib/pppd/$_pppver \
+    --with-pppoe=/usr/bin/pppoe \
     --with-kernel-firmware-dir=/usr/lib/firmware \
     --with-nmtui=no \
     --with-session-tracking=systemd \
-    --without-modem-manager-1 \
+    --with-modem-manager-1 \
+    --with-libaudit=no \
     --disable-static \
     --enable-more-warnings=no \
     --disable-wimax \
-    --disable-ppp \
     --enable-modify-system \
     --disable-doc \
-    --disable-gtk-doc \
-    --disable-qt # disable qt examples, lib32-qt4 contains wrong include dirs in pkgconfig
+    --disable-gtk-doc
+
+  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' -e 's/    if test "$export_dynamic" = yes && test -n "$export_dynamic_flag_spec"; then/      func_append compile_command " -Wl,-O1,--as-needed"\n      func_append finalize_command " -Wl,-O1,--as-needed"\n\0/' libtool
 
   make
 }
 
 check() {
-  export PATH="$srcdir/path:$PATH"
   cd NetworkManager-$pkgver
   make -k check
 }
 
 package_lib32-networkmanager() {
-  depends=(lib32-libnm-glib iproute2 lib32-libnl lib32-polkit wpa_supplicant dhclient
+  depends=(lib32-libnm-glib lib32-libmm-glib iproute2 lib32-polkit wpa_supplicant
            lib32-libsoup  lib32-libndp lib32-libteam lib32-libgudev networkmanager)
+  #optdepends=('lib32-bluez: Bluetooth support')
 
   cd $_pkgname-$pkgver
   make DESTDIR="$pkgdir" install
