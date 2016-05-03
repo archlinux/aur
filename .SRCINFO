@@ -1,7 +1,7 @@
 pkgbase = intel-parallel-studio-xe
 	pkgdesc = Intel C++ C and FORTRAN compiler - Intel Parallel Studio XE - Cluster Edition - icc icpc ifort ipp mkl
 	pkgver = 2016.16.0.3.3.210
-	pkgrel = 4
+	pkgrel = 1
 	url = http://software.intel.com/en-us/articles/non-commercial-software-download/
 	arch = x86_64
 	license = custom
@@ -49,6 +49,31 @@ pkgbase = intel-parallel-studio-xe
 	sha256sums = e515cb28bf40cdb0db818db6a2688a0028575153a1b9d5acfb0bc5f13fe45722
 	sha256sums = 8c6a1f7b1b12d498e68b3085d8b2fcd050505209b7c0f2b870ba5f65ee135a90
 	sha256sums = 228ac25e147adb9b872e1a562e522d2fd48809ccae89b765112009896a6d55a5
+
+pkgname = intel-compiler-base
+	pkgdesc = Intel C/C++
+	install = intel-composer.install
+
+pkgname = intel-fortran-compiler
+	pkgdesc = Intel Fortran compiler
+	install = intel-composer.install
+	depends = intel-compiler-base
+
+pkgname = intel-ipp
+	pkgdesc = Intel Integrated Performance Primitives
+	install = intel-composer.install
+
+pkgname = intel-mkl
+	pkgdesc = Intel Math Kernel Library (Intel® MKL)
+	install = intel-mkl.install
+	backup = etc/intel-mkl-th.conf
+
+pkgname = intel-mpi
+	pkgdesc = Intel MPI library
+
+pkgname = intel-tbb_psxe
+	pkgdesc = Intel Threading Building Blocks (TBB)
+	install = intel-tbb.install
 
 pkgname = intel-vtune-amplifier-xe
 	pkgdesc = Performance profiler for serial and parallel performance analysis

@@ -33,8 +33,7 @@
 #     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 pkgbase="intel-parallel-studio-xe"
-pkgname=('intel-vtune-amplifier-xe' 'intel-inspector-xe' 'intel-advisor-xe' )
-#pkgname=('intel-compiler-base' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-mpi' 'intel-tbb_psxe' 'intel-vtune-amplifier-xe' 'intel-inspector-xe' 'intel-advisor-xe' )
+pkgname=('intel-compiler-base' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-mpi' 'intel-tbb_psxe' 'intel-vtune-amplifier-xe' 'intel-inspector-xe' 'intel-advisor-xe' )
 PKGEXT='.pkg.tar.gz'
 
 ########################################
@@ -57,7 +56,7 @@ _v_b='210'
 
 _update='3'
 
-pkgrel=4
+pkgrel=1
 #http://registrationcenter-download.intel.com/akdlm/irc_nas/9061/parallel_studio_xe_2016_update3.tgz
 
 _sp=''
