@@ -1,7 +1,7 @@
 # Maintainer: Raimar Bühmann <raimar _at_ buehmann _dot_ de>
 
 pkgname=anki-drive-sdk-git
-pkgver=0.3.0.r26.20160218
+pkgver=0.3.0.r29.20160429
 pkgrel=1
 pkgdesc="C implementation of message protocols and data parsing to communicate with Anki Drive vehicles"
 arch=('i686' 'x86_64')
@@ -12,10 +12,8 @@ optdepends=('bluez-utils: for command line tool hciconfig')
 makedepends=('cmake' 'gcc')
 source=(
 	"$pkgname::git+https://github.com/anki/drive-sdk.git"
-	'fix-creating-turn-message-by-using-correct-size.patch'
 )
-md5sums=('SKIP'
-         'dc52ebb3421760cb5b72d116a624ce16')
+md5sums=('SKIP')
 pkgver() {
 	# remove ".r*.*" from package version
 	_pkgverTriple=$(echo $pkgver | sed "s/\.r.*//g")
@@ -29,7 +27,6 @@ pkgver() {
 }
 prepare() {
 	cd $pkgname
-	patch -Np1 -i ../fix-creating-turn-message-by-using-correct-size.patch
 }
 build() {
 	cd "$pkgname"
