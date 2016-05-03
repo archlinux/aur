@@ -1,0 +1,77 @@
+diff --git a/README.md b/README.md
+index b93ec71..fbd3ce2 100644
+--- a/README.md
++++ b/README.md
+@@ -50,8 +50,8 @@ Dependencies
+ 
+ You will need these to compile libgroove.
+ 
+-* [cmake](http://www.cmake.org/)
+-* [libav](http://libav.org)
++* [cmake](http://www.cmake.org/) >= 2.8.5
++* [libav](http://libav.org) >= 3.0
+   * suggested flags: `--enable-shared --disable-static --enable-libmp3lame --enable-libvorbis --enable-gpl`
+ * [libebur128](https://github.com/jiixyj/libebur128)
+   * make sure it is compiled with the speex dependency so that true peak
+diff --git a/groove/encoder.c b/groove/encoder.c
+index 42a55bd..d9f25ca 100644
+--- a/groove/encoder.c
++++ b/groove/encoder.c
+@@ -91,7 +91,7 @@ static int encode_buffer(struct GrooveEncoder *encoder, struct GrooveBuffer *buf
+         return -1;
+ 
+     av_write_frame(e->fmt_ctx, &e->pkt);
+-    av_free_packet(&e->pkt);
++    av_packet_unref(&e->pkt);
+ 
+     return 0;
+ }
+diff --git a/groove/file.c b/groove/file.c
+index bc3c6ad..fe54c48 100644
+--- a/groove/file.c
++++ b/groove/file.c
+@@ -111,7 +111,7 @@ void groove_file_close(struct GrooveFile *file) {
+     if (f->audio_stream_index >= 0) {
+         AVCodecContext *avctx = f->ic->streams[f->audio_stream_index]->codec;
+ 
+-        av_free_packet(&f->audio_pkt);
++        av_packet_unref(&f->audio_pkt);
+ 
+         f->ic->streams[f->audio_stream_index]->discard = AVDISCARD_ALL;
+         avcodec_close(avctx);
+@@ -199,7 +199,7 @@ static int tempfileify(char * str, size_t max_len) {
+ static void cleanup_save(struct GrooveFile *file) {
+     struct GrooveFilePrivate *f = (struct GrooveFilePrivate *) file;
+ 
+-    av_free_packet(&f->audio_pkt);
++    av_packet_unref(&f->audio_pkt);
+     avio_closep(&f->oc->pb);
+     if (f->tempfile_exists) {
+         if (remove(f->oc->filename) != 0)
+@@ -355,7 +355,7 @@ int groove_file_save(struct GrooveFile *file) {
+             av_log(NULL, AV_LOG_ERROR, "error writing frame\n");
+             return -1;
+         }
+-        av_free_packet(pkt);
++        av_packet_unref(pkt);
+     }
+ 
+     if (av_write_trailer(f->oc) < 0) {
+diff --git a/groove/playlist.c b/groove/playlist.c
+index 0230d03..709f8cf 100644
+--- a/groove/playlist.c
++++ b/groove/playlist.c
+@@ -595,11 +595,11 @@ static int decode_one_frame(struct GroovePlaylist *playlist, struct GrooveFile *
+     }
+     if (pkt->stream_index != f->audio_stream_index) {
+         // we're only interested in the One True Audio Stream
+-        av_free_packet(pkt);
++        av_packet_unref(pkt);
+         return 0;
+     }
+     audio_decode_frame(playlist, file);
+-    av_free_packet(pkt);
++    av_packet_unref(pkt);
+     return 0;
+ }
+ 
