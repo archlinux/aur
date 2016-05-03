@@ -1,7 +1,7 @@
 # Maintainer: Nicolas LLOBERA <nllobera@gmail.com>
 pkgname="hl-git"
 pkgver=1.69
-pkgrel=1
+pkgrel=2
 pkgdesc="Highlight (colorize) text data using regular expressions"
 
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/mbornet-hl/hl"
 license=('GPL3')
 
 depends=('glibc')
-makedepends=('gcc' 'flex' 'make' 'git')
+makedepends=('gcc' 'git' 'gzip' 'flex' 'make')
 
 source=("git+https://github.com/mbornet-hl/hl")
 md5sums=(SKIP)
@@ -22,12 +22,18 @@ pkgver() {
 build() {
 	cd "$srcdir/hl/src"
 	rm hl
+	# remove the inline keyword (https://github.com/mbornet-hl/hl/issues/4)
 	sed "s/inline //g" -i cr_main.c
 	make
 }
 
 package() {
-	cd "$srcdir/hl/src"
 	install -d "$pkgdir/usr/bin"
-	install -m755 hl "$pkgdir/usr/bin/hl"
+	install -m755 "$srcdir/hl/src/hl" "$pkgdir/usr/bin"
+	gzip -9 -c "$srcdir/hl/man1/hl.1" > "$srcdir/hl/man1/hl.1.gz"
+	install -d "$pkgdir/usr/share/man/man1"
+	install -m644 "$srcdir/hl/man1/hl.1.gz" "$pkgdir/usr/share/man/man1"
+	gzip -9 -c "$srcdir/hl/man5/hl.5" > "$srcdir/hl/man5/hl.5.gz"
+	install -d "$pkgdir/usr/share/man/man5"
+	install -m644 "$srcdir/hl/man5/hl.5.gz" "$pkgdir/usr/share/man/man5"
 }
