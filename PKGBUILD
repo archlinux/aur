@@ -3,13 +3,13 @@
 pkgname="knime-desktop-full"
 _pkgname="knime-desktop"
 _upstream_name="knime"
-pkgver="2.12.0"
+pkgver="3.1.2"
 pkgrel="1"
 pkgdesc="A user-friendly graphical workbench for the entire data analysis process (with all free extensions)"
 url="http://www.knime.org/"
 license=('custom')
 arch=('i686' 'x86_64')
-depends=('java-environment' 'cairo' 'python2')
+depends=('java-environment' 'python')
 makedepends=('imagemagick')
 optdepends=('bash: Required for bash-scriptable nodes'
             'r: Required for R-scriptable nodes')
@@ -19,15 +19,15 @@ provides=('knime-desktop')
 changelog="ChangeLog"
 _CARCH="${CARCH}"
 [ "${CARCH}" = 'i686' ] && _CARCH='x86'
-source=("http://www.knime.org/knime_downloads/linux/${_upstream_name}-full_${pkgver}.linux.gtk.${_CARCH}.tar.gz"
+source=("https://download.knime.org/analytics-platform/linux/${_upstream_name}-full_${pkgver}.linux.gtk.${_CARCH}.tar.gz"
         'knime.sh'
         'knime-desktop.desktop'
         'LICENSE')
-md5sums=('04115481f9540f113a4af4f72f968353'
+md5sums=('e05aaf04e139586a5c5f4c0cd02f43f1'
          '597314dbe6d4aae1d8381388d83d4b81'
          '8ec3f57e90588fac3f202e0509db2d08'
          '9e93e4def16f04f7808bddb48da3c009')
-[ "${CARCH}" = 'x86_64' ] && md5sums[0]='3ba9784b6102e3399c9d6402d553e468'
+[ "${CARCH}" = 'x86_64' ] && md5sums[0]='2623ad5c349d5b8251aa418df1a5b488'
 
 package() {
     installpath="/usr/share/java"
@@ -47,15 +47,8 @@ package() {
     install -d -m755 "${pkgdir}/usr/share/pixmaps"
     convert "${srcdir}/${_upstream_name}-full_${pkgver}/icon.xpm" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
 
-    msg2 "Remove the provided libraries (cairo, jre)"
-    rm    "${pkgdir}/${programpath}/libcairo-swt.so"  # Provided by `cairo`
+    msg2 "Remove the provided libraries (jre)"
     rm -r "${pkgdir}/${programpath}/jre/"             # Provided by `java-environment`
-
-    msg2 "Link 'libcairo' to the system"
-    ln -s "/usr/lib/libcairo.so" "${pkgdir}/${programpath}/libcairo-swt.so"
-
-    msg2 "Change necessary files to python2 shellbang"
-    sed -i "s|#!/usr/bin/python|#!/usr/bin/python2|" "${pkgdir}/${programpath}/plugins/org.apache.ant_1.8.2.v20120109-1030/bin/runant.py"
 }
 
 # vim:set ts=4 sw=4 et:
