@@ -1,7 +1,7 @@
 
 pkgname=nginx-mainline-passenger
-pkgver=1.9.14
-pkgrel=4
+pkgver=1.9.15
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release, including support for Phusion Passenger'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
@@ -25,7 +25,7 @@ source=($url/download/nginx-$pkgver.tar.gz
         service
         logrotate
 	nginx.conf)
-md5sums=('a25818039f34b5d54b017d44c76321c4'
+md5sums=('13cd38e9da3789035750dd45882c4a26'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7'
          '288ef522c59aef7f2ddb4bba27e3367c')
@@ -60,7 +60,7 @@ _mainline_flags=(
 )
 
 _passenger_flags=(
-  --add-module=$(/usr/lib/passenger/bin/passenger-config --nginx-addon-dir)
+  --add-dynamic-module=$(/usr/lib/passenger/bin/passenger-config --nginx-addon-dir)
 )
 
 build() {
