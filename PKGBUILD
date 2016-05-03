@@ -1,5 +1,4 @@
-# Maintainer: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
-# Contributor: boyska <piuttosto@logorroici.org>
+# Maintainer: Chris Salzberg <chris@dejimata.com>
 
 pkgname=neomutt
 pkgver=20160502
