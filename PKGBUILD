@@ -2,7 +2,7 @@
 
 pkgname=arc-dark-lxqt-manjaro
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Arc-dark theme for lxqt panel"
 url="https://manjaro.ru/"
 license=("cc-by-nc-nd-4.0")
