@@ -1,9 +1,9 @@
 # Maintainer: TingPing <tingping@tingping.se>
 
 pkgname=plex-media-player
-pkgver=1.1.0
-_gitrev=292
-_gitver=0035cdec
+pkgver=1.1.1
+_gitrev=293
+_gitver=cc2cc067
 _fullname="$pkgname-$pkgver.$_gitrev-$_gitver"
 _webclientver=4cbcd79 # Set in CMakeModules/WebClientVariables.cmake
 _webclientbuild=132
@@ -18,7 +18,7 @@ source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive
         "https://dl.tingping.se/mirror/plex-web-client-konvergo-${_webclientver}.cpp.tbz2"
         'plex-media-player.desktop')
 noextract=("plex-web-client-konvergo-$_webclientver.cpp.tbz2")
-sha256sums=('0c3d411579c25184701b19b6e5cb4f5aa27234d02153190a6afbe0beaa6384a4'
+sha256sums=('ac746bd2a5196c8ea1bf62a99c43f44f90b092410302524bb68fcd79336c3734'
             'd1a2b0d34e137f3eb7a0c09d7da76f30158b5ac9504289c1b74bd56ae1a58995'
             'b03845b761cc18a88252b72d0c83e439006224660444d9174f53cc577f9498b6')
 
