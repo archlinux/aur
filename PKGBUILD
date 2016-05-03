@@ -3,14 +3,13 @@
 
 pkgname=leafpad
 pkgver=0.8.18.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A notepad clone for GTK+ 2.0"
 arch=('i686' 'x86_64')
 url="http://tarot.freeshell.org/leafpad/"
 license=('GPL')
-depends=('gtk2' 'desktop-file-utils')
+depends=('gtk2')
 makedepends=('intltool')
-install=leafpad.install
 source=(http://download.savannah.gnu.org/releases/${pkgname}/${pkgname}-${pkgver}.tar.gz)
 md5sums=('254a72fc67505e3aa52884c729cd7b97')
 
