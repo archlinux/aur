@@ -1,0 +1,27 @@
+diff -up src/wmgtemp-1.1/src/wmgeneral/list.h.orig src/wmgtemp-1.1/src/wmgeneral/list.h
+--- src/wmgtemp-1.1/src/wmgeneral/list.h.orig	2016-05-03 08:38:13.000000000 -0600
++++ src/wmgtemp-1.1/src/wmgeneral/list.h	2016-05-03 08:38:24.000000000 -0600
+@@ -29,11 +29,7 @@ Boston, MA 02111-1307, USA.  */
+ #ifndef __LIST_H_
+ #define __LIST_H_
+ 
+-#if defined(__GNUC__) && !defined(__STRICT_ANSI__)
+-# define INLINE inline
+-#else
+ # define INLINE
+-#endif
+ 
+ typedef struct LinkedList {
+   void *head;
+diff -up src/wmgtemp-1.1/src/wmgtemp.c.orig src/wmgtemp-1.1/src/wmgtemp.c
+--- src/wmgtemp-1.1/src/wmgtemp.c.orig	2016-05-03 08:36:54.000000000 -0600
++++ src/wmgtemp-1.1/src/wmgtemp.c	2016-05-03 08:37:05.000000000 -0600
+@@ -20,6 +20,8 @@
+ #include <signal.h>
+ #include <getopt.h>
+ 
++#define inline
++
+ /* Defines */
+ #define BitOff(a,x)  ((void)((a) &= ~(1 << (x))))
+ #define BitOn(a,x)   ((void)((a) |=  (1 << (x))))
