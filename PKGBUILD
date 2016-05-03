@@ -4,7 +4,7 @@
 pkgname=musicqueue
 _incr="6"
 pkgver="0.4.${_incr}"
-pkgrel="1"
+pkgrel="2"
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
 url='http://musicqueue.furcat.ca/'
