@@ -4,16 +4,17 @@
 
 _pkgname=FanFicFare
 pkgname=fanficfare-git
-pkgver=2.3.1.r0.g6b8ccc0
-pkgrel=1
+pkgver=2.3.1.r12.g0cd7126
+pkgrel=2
 pkgdesc="A tool for downloading fanfiction to eBook formats"
 arch=('any')
 url="https://github.com/JimmXinu/${_pkgname}"
 license=('Apache')
-depends=('python2' 'python2-beautifulsoup4' 'python2-chardet' 'python2-html5lib')
+depends=('python2' 'python2-beautifulsoup4' 'python2-chardet' 'python2-html5lib'
+         'python2-html2text')
 makedepends=('git')
-provides=('fanficfare')
-conflicts=('fanficfare')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("git://github.com/JimmXinu/${_pkgname}")
 sha256sums=('SKIP')
 
