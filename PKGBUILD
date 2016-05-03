@@ -1,8 +1,8 @@
 # Maintainer: Robin Baumgartner <robin@baumgartners.ch>
 # Contributor: Florian Walch <florian.walch@gmx.at>
 pkgname=tryton
-pkgver=3.8.5
-_pkgdir=3.8
+pkgver=4.0.0
+_pkgdir=4.0
 pkgrel=1
 pkgdesc="A three-tiers high-level general purpose application platform (client application)"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('python2-simplejson: Faster JSON processing'
 makedepends=('python2-distribute')
 source=("http://downloads.tryton.org/$_pkgdir/$pkgname-$pkgver.tar.gz"
         'tryton.desktop')
-md5sums=('e97ecb526d64061d242e8d46fde97d63'
+md5sums=('3e173ebb6ca7b583e636e9d5511eb70d'
          '7ca15ad6c790c78817fe1a1b6a2c3fcf')
 
 build() {
