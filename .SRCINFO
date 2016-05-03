@@ -1,13 +1,13 @@
 pkgbase = mod_pagespeed-git
 	pkgdesc = Google's httpd module to optimize serving web sites
-	pkgver = 1.9.32.10
+	pkgver = 1.10.33.5
 	pkgrel = 1
 	url = https://developers.google.com/speed/pagespeed/module/
 	install = mod_pagespeed.install
 	arch = i686
 	arch = x86_64
 	license = Apache
-	makedepends = git>=1.8 subversion>=1.8 python2>=2.7 gperf>=3.0 depot_tools
+	makedepends = git>=1.8 subversion>=1.8 python2>=2.7 gperf>=3.0 depot-tools-git unzip
 	depends = apache>=2.4.2
 	provides = mod_pagespeed
 	conflicts = mod_pagespeed
