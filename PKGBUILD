@@ -1,8 +1,8 @@
-# $Id$
-# Maintainer: Thomas Lange <thomas-lange2@gmx.de>
+# Maintainer: kaptoxic@yahoo.com
+# Contributor: Thomas Lange <thomas-lange2@gmx.de>
 
 pkgname=setlx
-pkgver=2.3.4
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Interpreter for the SetlX programming language'
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 depends=('java-runtime')
 source=(http://download.randoom.org/setlX/pc/setlX_v${pkgver//./-}.binary_only.zip
         LICENSE)
-sha256sums=('81e3172a3ebee4a32f44818088145cad8f8b639d3556197d21ecfb3bbfb8d08b'
+sha256sums=('fbe461e75e91e851b8449694607cc3fb8faa28fdd41e3a094e70d6b2b704e882'
             'c4ac68ea51527f7cc2859cac9f2fed74e9072fb7595a08d3f958cc2aa5fb99e5')
 
 package() {
