@@ -1,0 +1,23 @@
+pkgbase = papirus-icons-git
+	pkgdesc = Papirus Icons for LXQT,Xfce, Mate, Cinnamon, Gnome (git version)
+	pkgver = r4.affc0a1
+	pkgrel = 1
+	url = https://github.com/manjarqo/papirus-icons
+	arch = any
+	license = CCPL:by-sa
+	makedepends = git
+	makedepends = xdg-utils
+	depends = gtk-update-icon-cache
+	conflicts = papirus
+	source = papirus-icons-git::git+https://github.com/manjarqo/papirus-icons.git
+	sha256sums = SKIP
+
+pkgname = papirus-icons-git
+	pkgdesc = Papirus Icons for LXQT,Xfce, Mate, Cinnamon, Gnome (git version)
+	depends = gtk-update-icon-cache
+	optdepends = 
+	conflicts = papirus-gtk-icon-theme
+	conflicts = papirus-gtk-icon-theme-git
+	conflicts = papirus-icon-theme-gtk
+	options = !strip
+
