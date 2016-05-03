@@ -3,13 +3,14 @@
 
 PKGNAMESHORT=musicqueue
 pkgname=${PKGNAMESHORT}-git
-pkgver=0.4.3
-pkgrel=3
+increment="6"
+pkgver="0.4.${increment}"
+pkgrel="1"
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
 url='http://musicqueue.furcat.ca/'
 license=('GPL3')
-depends=('curl' 'desktop-file-utils' 'libgpod' 'taglib' 'wxgtk' 'gdk-pixbuf2')
+depends=('openssl' 'wxsqlite3' 'curl' 'desktop-file-utils' 'libgpod' 'taglib' 'wxgtk' 'gdk-pixbuf2')
 makedepends=('cmake')
 optdepends=('gstreamer0.10-good-plugins: Support for additional file formats'
             'gstreamer0.10-bad-plugins: Support for additional file formats'
@@ -37,7 +38,7 @@ build() {
     -DwxWidgets_CONFIG_EXECUTABLE='/usr/bin/wx-config' \
     -DCMAKE_CXX_STANDARD='11' \
     -DCMAKE_CXX_FLAGS='-Wno-deprecated-declarations' \
-    -D_GUREVISION_:STRING="${pkgrel}"
+    -D_GUREVISION_:STRING="${increment}"
   make
 }
 
