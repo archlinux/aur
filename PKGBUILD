@@ -12,7 +12,7 @@ makedepends=('boost' 'chrpath')
 conflicts=()
 replaces=()
 backup=()
-source=('IfcPlusPlus::git://github.com/berndhahnebach/IfcPlusPlus.git' 'qt5.patch')
+source=('IfcPlusPlus::git://github.com/berndhahnebach/IfcPlusPlus.git' 'qt5.patch' 'osg340.patch')
 
 pkgver() {
   cd IfcPlusPlus
@@ -27,6 +27,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/IfcPlusPlus"
   patch -Np1 -i "${srcdir}/qt5.patch"
+  patch -Np1 -i "${srcdir}/osg340.patch"
 }
 
 build() {
@@ -47,4 +48,5 @@ package() {
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 md5sums=('SKIP'
-         '3df56628d79a15799aede92466db77a3')
+         '3df56628d79a15799aede92466db77a3'
+         '70c0472dac19f4be7c8984cfcdbe54f2')
