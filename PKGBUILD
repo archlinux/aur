@@ -3,7 +3,7 @@
 pkgname=(python-slugify python2-slugify)
 pkgbase=python-slugify
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python slugify application that handles unicode"
 arch=(any)
 url="https://github.com/un33k/python-slugify"
@@ -23,4 +23,5 @@ package_python2-slugify() {
   depends=("python2" "python2-unidecode>=0.04.16")
   cd "$srcdir/$pkgbase-$pkgver"
   python2 setup.py install --root="$pkgdir" --optimize=1
+  mv "$pkgdir/usr/bin/slugify" "$pkgdir/usr/bin/slugify2"
 }
