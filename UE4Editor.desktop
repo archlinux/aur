@@ -2,8 +2,9 @@
 Type=Application
 Name=Unreal Engine 4 Editor
 Comment=Editor for Unreal Engine 4
-Path=/opt/unreal-engine
-Exec=/opt/unreal-engine/Engine/Binaries/Linux/UE4Editor
+Path=/opt/unreal-engine/Engine/Binaries/Linux/
+Exec=/opt/unreal-engine/Engine/Binaries/Linux/UE4Editor %F
+MimeType=text/x-uproject
 Icon=UE4Editor
 Terminal=false
 Categories=Development;

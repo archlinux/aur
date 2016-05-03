@@ -7,7 +7,7 @@
 
 pkgname='unreal-engine'
 pkgver=4.11.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
 url='https://www.unrealengine.com/'
@@ -34,7 +34,14 @@ package() {
   install -Dm644 LICENSE.pdf "$pkgdir/usr/share/licenses/UnrealEngine/LICENSE.pdf"
 
   install -d "$pkgdir/opt/$pkgname"
+
+  # copy the entire build dir, ~22 GiB
+  # @todo only copy what is needed
   cp -r * "$pkgdir/opt/$pkgname/"
+
+  # make the whole thing world writable, otherwise there is a segmentation fault when starting the editor
+  # @todo find out what specifically needs to writable
+  chmod -R a+w "$pkgdir/opt/$pkgname/"
 
   install -Dm644 Engine/Content/Editor/Slate/About/UE4Icon.png "$pkgdir/usr/share/pixmaps/UE4Editor.png"
   install -Dm644 "$startdir/UE4Editor.desktop" "$pkgdir/usr/share/applications/UE4Editor.desktop"
