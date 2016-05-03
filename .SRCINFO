@@ -1,13 +1,13 @@
 pkgbase = atvrec
 	pkgdesc = Command line TV recorder for Austrian TV stations ORF, ATV, Puls4, ServusTV Mediathek and ORF, ServusTV livestreams
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://twitter.com/hmknapp
 	arch = x86_64
 	license = Freeware
 	options = !strip
 	source = atvrec-1.1.2.tar.gz::https://www.dropbox.com/s/rqvz68dcc2egiov/atvrec-1.1.2.tar.gz?dl=1
-	md5sums = ec9fb43ea6ffb0c00ec373543a9c27d2
+	md5sums = cffb8a9b12bd843e097389c3b075dcf3
 
 pkgname = atvrec
 
