@@ -1,6 +1,6 @@
 # Maintainer: Thomas Jost <schnouki@schnouki.net>
 pkgname=hash-slinger
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc="Tools to generate special DNS records (SSHFP, TLSA)"
 arch=(any)
@@ -14,9 +14,9 @@ optdepends=('openssh: for sshfp'
             'openswan: for ipseckey (if not using libreswan or strongswan)'
             'strongswan: for ipseckey (if not using libreswan or openswan)')
 source=(http://people.redhat.com/pwouters/${pkgname}/${pkgname}-${pkgver}.tar.gz{,.asc})
-md5sums=('9ddea4e6b3df7412213a3a8d33673fab'
+md5sums=('02ed1ae7625a966e9b1e69277dba1623'
          'SKIP')
-sha256sums=('121143efea136958ad6a42cb0a8fa80d95b1e4fc45632019d8f07a534d6efab2'
+sha256sums=('cd888eaee222bbe994d60aab7bc638b6c3417f43b68d0e6a8f1802104f6d7b8d'
             'SKIP')
 validpgpkeys=('F384E78A1D3352D3EB928AB862D3582FE0FD94D2')
 
