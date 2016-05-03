@@ -2,7 +2,7 @@
 
 pkgname=plank-theme-arc
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Arc theme for Plank'
 arch=('any')
 url='https://github.com/horst3180/arc-theme'
@@ -18,5 +18,7 @@ build() {
 package() {
 	cd $srcdir/$pkgname
 	mkdir -p $pkgdir/usr/share/plank/themes
-	cp -r Arc $pkgdir/usr/share/plank/themes
+	install -m 644 Arc/dock.theme "${pkgdir}"/usr/share/plank/themes/Arc/
 }
+
+  
