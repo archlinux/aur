@@ -20,8 +20,10 @@ package() {
   cd "$srcdir/qtshutdownmenu"
   mkdir -p "$pkgdir/usr/bin"
   mkdir -p "$pkgdir/usr/share/icons"
+  mkdir -p "$pkdir/usr/share/applications"
   install -Dm755 "shutdownmenu.py" "$pkgdir/usr/bin/qtshutdownmenu"
   install -Dm755 "lock.sh" "$pkgdir/usr/bin/lock"
   install -Dm755 "icon.png" "$pkgdir/usr/share/icons/lock.png"
+  install -Dm755 "qtshutdownmenu.desktop" "$pkgdir/usr/share/applications/"
 }
 
