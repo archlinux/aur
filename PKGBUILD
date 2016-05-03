@@ -8,28 +8,29 @@ arch=('i686' 'x86_64')
 url="http://kmkeen.com/jshon/"
 license=('MIT')
 depends=('jansson')
+makedepends=('git')
 provides=('jshon')
 conflicts=('jshon')
-source=('git+https://github.com/keenerd/jshon')
+source=("$pkgname::git+https://github.com/keenerd/jshon")
 md5sums=('SKIP')
 
 pkgver() {
-  cd jshon
+  cd "$pkgname"
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd jshon
+  cd "$pkgname"
   sed -i 's/_pbpst/_jshon/' Makefile
 }
 
 build() {
-  cd jshon
+  cd "$pkgname"
   make
 }
 
 package() {
-  cd jshon
+  cd "$pkgname"
   make DESTDIR="$pkgdir" install
   install -Dm644 jshon.1 "$pkgdir/usr/share/man/man1/jshon.1"
   install -Dm644 LICENSE    "$pkgdir/usr/share/licenses/jshon/LICENSE"
