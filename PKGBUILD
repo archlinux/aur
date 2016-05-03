@@ -33,7 +33,8 @@
 #     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 pkgbase="intel-parallel-studio-xe"
-pkgname=('intel-compiler-base' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-mpi' 'intel-tbb_psxe' 'intel-vtune-amplifier-xe' 'intel-inspector-xe' 'intel-advisor-xe' )
+pkgname=('intel-vtune-amplifier-xe' 'intel-inspector-xe' 'intel-advisor-xe' )
+#pkgname=('intel-compiler-base' 'intel-fortran-compiler' 'intel-ipp' 'intel-mkl' 'intel-mpi' 'intel-tbb_psxe' 'intel-vtune-amplifier-xe' 'intel-inspector-xe' 'intel-advisor-xe' )
 PKGEXT='.pkg.tar.gz'
 
 ########################################
@@ -51,37 +52,38 @@ _remove_static_objects_ipp=false
 ########################################
 
 _year='2016'
-_v_a='2'
-_v_b='181' 
+_v_a='3'
+_v_b='210' 
 
-_update='2'
+_update='3'
 
-pkgrel=3
+pkgrel=4
+#http://registrationcenter-download.intel.com/akdlm/irc_nas/9061/parallel_studio_xe_2016_update3.tgz
 
 _sp=''
 
-_icc_ver='16.0.2' # intel-ccompxe-${_v_b}-${_icc_ver}.noarch.rpm
+_icc_ver='16.0.3' # intel-ccompxe-${_v_b}-${_icc_ver}.noarch.rpm
 #_openmp_ver='16.0.1' # intel-openmp-${_v_b}-${_openmp_ver}.${arch}.rpm
-_ipp_ver='9.0.2' # intel-ipp-ac-${_v_b}-${_ipp_ver}.${arch}.rpm
+_ipp_ver='9.0.3' # intel-ipp-ac-${_v_b}-${_ipp_ver}.${arch}.rpm
 _mpi_ver='5.1.3' # intel-mpi-${_v_b}-${_ipp_ver}.${arch}.rpm
-_mkl_ver='11.3.2' # intel-mkl-cluster-${_v_b}-${_mkl_ver}.${arch}.rpm
+_mkl_ver='11.3.3' # intel-mkl-cluster-${_v_b}-${_mkl_ver}.${arch}.rpm
 _tbb_ver='4.4.3' # intel-tbb-${_v_b_}-${_tbb_ver}.noarch.rpm
 #_gdb_ver='7.8.0' # intel-gdb-${_gdb_ver}-${_v_b}.x86_64.rpm
 #_gdb_gt_ver='7.6.0' # intel-gdb-gt-${_gdb_gt_ver}-{_v_b}.x86_64.rpm
-_vtune_ver='16.2.444464' # intel-vtune-amplifier-xe-${year}-*-${_vtune_ver}.${arch}.rpm
-_inspector_ver='16.1.450824' # intel-inspector-xe-${year}-*-${_inspector_ver}.${arch}.rpm
-_advisor_ver='16.1.450722' # intel-advisor-xe-${year}-*-${_advisor_ver}.${arch}.rpm
+_vtune_ver='16.3.463186' # intel-vtune-amplifier-xe-${year}-*-${_vtune_ver}.${arch}.rpm
+_inspector_ver='16.1.460803' # intel-inspector-xe-${year}-*-${_inspector_ver}.${arch}.rpm
+_advisor_ver='16.1.463413' # intel-advisor-xe-${year}-*-${_advisor_ver}.${arch}.rpm
 
 # Different version for docs
-_vtune_man_ver='2.0.444464'
-_inspector_man_ver='1.2.450824'
-_advisor_man_ver='1.30.450722'
+_vtune_man_ver='3.0.463186'
+_inspector_man_ver='1.3.460803'
+_advisor_man_ver='1.40.463413'
 
 
 
 pkgver=${_year}.${_icc_ver}.${_v_a}.${_v_b}
 
-_dir_nr='8676'
+_dir_nr='9061'
 
 options=(strip libtool staticlibs)
 
@@ -116,7 +118,7 @@ source=(
 
 
 sha256sums=(
-    '280bf39c75d7f52f206759ca4d8b6334ab92d5970957b90f5aa286bb0aa8d65e'  # parallel_studio_xe_2016_update2.tgz
+    'aa7c6f1a6603fae07c2b01409c12de0811aa5947eaa71dfb1fe9898076c2773e'  # parallel_studio_xe_2016_update3.tgz
 	'75fcdfc246949341afddcf51b2037f606f25612a04c199ac1a743247aa7c4ea5'  # intel_compilers.sh
 	'624001bbd846f460d46f062acdf78a602c862aa9c956f3f7e4b0ec9d9b38d3fb'  # intel_vtune-amplifier-xe.sh
 	'292a9eea2c9a836ee9dc0d4ff28fc741d5548a3182e4f75aec7b93e1dd7b4f21'  # intel_advisor-xe.sh
@@ -897,5 +899,5 @@ package_intel-inspector-xe() {
 	mv ${xe_build_dir}/etc ${pkgdir}
 	mv ${xe_build_dir}/usr ${pkgdir}
 }
-pkgdesc="ntel C++ C and FORTRAN compiler - Intel Parallel Studio XE - Cluster Edition - icc icpc ifort ipp mkl"
+pkgdesc="Intel C++ C and FORTRAN compiler - Intel Parallel Studio XE - Cluster Edition - icc icpc ifort ipp mkl"
 depends=('bash' 'gcc')
