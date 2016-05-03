@@ -2,7 +2,7 @@
 
 pkgname=omegat-beta
 _pkgname=omegat
-pkgver=3.6.0
+pkgver=3.6.0_01
 pkgrel=1
 pkgdesc="Beta version of a multiplatform CAT tool application, written in Java"
 arch=('any')
@@ -16,7 +16,7 @@ options=('!strip')
 source=(http://downloads.sourceforge.net/${_pkgname}/OmegaT_${pkgver}_Beta_Without_JRE.zip
         http://www.omegat.org/resources/icons.zip
         ${_pkgname}.desktop)
-sha256sums=('586fb168984b30b61c69f34382ff9d879fd2f7c7e2d1360319e4a68bf673fd0b'
+sha256sums=('2dd33f1b782d0587b33b2695bf883f9dce1c0415caab46de615206ef1018722d'
             'e8b14887f513a505def059903348b5a06c0d016450711cf0f235802213a3dbbb'
             '595de7433e91788e15fa7714e6a65188ccf56eeac824b4a48d50a6752b989700')
 
