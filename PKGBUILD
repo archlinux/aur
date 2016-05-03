@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/trol73/mucommander'
 license=('GPL3')
 provides=('trolcommander')
-depends=('java-runtime')
+depends=('java-runtime>=8')
 source=("https://github.com/trol73/mucommander/releases/download/v${pkgver}/${pkgname}_${pkgver}_all.deb")
 sha256sums=('28dd033def40c4f6b0a6cbfce4a5207f20764a6d1839b7e8eb59c2e513c610f4')
 
