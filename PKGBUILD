@@ -1,8 +1,8 @@
 # Maintainer:  VirtualTam <virtualtam@flibidi.net>
 # Contributor: Eugene Yudin aka Infy <Eugene dot Yudin at gmail dot com>
 pkgname=goldendict-qt5-git
-pkgver=1.5.0.RC.587.g1ecf9ae
-pkgrel=3
+pkgver=1.5.0.RC2.1.g526d9d1
+pkgrel=1
 pkgdesc="Feature-rich dictionary lookup program."
 arch=('i686' 'x86_64')
 url="http://goldendict.org/"
@@ -14,12 +14,12 @@ conflicts=('goldendict' 'goldendict-svn' 'goldendict-git-opt')
 provides=('goldendict')
 replaces=('goldendict' 'goldendict-svn' 'goldendict-git-opt')
 _gitname="goldendict"
-source=(git://github.com/goldendict/goldendict.git#branch=qt4x5)
+source=(git://github.com/goldendict/goldendict.git)
 sha256sums=(SKIP)
 
 pkgver() {
   cd ${_gitname}
-  git describe --always | sed 's|-|.|g'
+  git describe --always --tags | sed 's|-|.|g'
 }
 
 prepare() {
