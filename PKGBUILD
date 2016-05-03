@@ -7,7 +7,7 @@
 pkgname=cgns
 _PKGNAME=CGNS
 pkgver=3.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Standard for recording and recovering computer data associated with the numerical solution of fluid dynamics equations'
 arch=('i686' 'x86_64')
 url='http://www.cgns.org'
