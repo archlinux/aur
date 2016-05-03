@@ -3,8 +3,8 @@
 _pkgname=papirus-icons-git
 pkgbase=papirus-icons-git
 pkgname=papirus-icons-git
-pkgver=r4.affc0a1
-_git=affc0a16669a453d760ea14a27f3bed655ce5a08
+pkgver=r6.07910bc
+_git=07910bcbc676de59cdc68c7d7e8bc53b5b8101ff
 _repo=papirus-icons
 pkgrel=1
 pkgdesc="Papirus Icons for LXQT,Xfce, Mate, Cinnamon, Gnome (git version)"
