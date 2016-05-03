@@ -2,13 +2,13 @@
 pkgname=libaesrand-git
 _pkgname=libaesrand
 
-pkgver=0.1.0.r3.g6b974d4
+pkgver=0.1.0.r10.g89a28d1
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
-pkgrel=1
+pkgrel=2
 pkgdesc="AES-based random integer generator functions."
 url="https://github.com/spaceships/libaesrand"
 arch=('x86_64' 'i686')
@@ -26,6 +26,7 @@ source=("git://github.com/spaceships/libaesrand.git")
 
 build() {
     cd $srcdir/${_pkgname}
+    autoreconf -i
     ./configure --prefix=/usr
     make
 }
