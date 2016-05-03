@@ -1,14 +1,14 @@
 # Maintainer: Nicolas LLOBERA <nllobera@gmail.com>
 pkgname="hl-git"
 pkgver=1.69
-pkgrel=3
+pkgrel=4
 pkgdesc="Highlight (colorize) text data using regular expressions"
 
 arch=('i686' 'x86_64')
 url="https://github.com/mbornet-hl/hl"
 license=('GPL3')
 
-depends=('glibc')
+depends=('bash') # Dependency glibc included but already satisfied
 makedepends=('gcc' 'git' 'gzip' 'flex' 'make')
 
 source=("git+https://github.com/mbornet-hl/hl")
@@ -28,17 +28,21 @@ build() {
 }
 
 package() {
-	install -d "$pkgdir/usr/bin"
-	install -m755 "$srcdir/hl/src/hl" "$pkgdir/usr/bin"
+	install -D -m 755 "$srcdir/hl/src/hl" "$pkgdir/usr/bin/hl"
 	
-	install -d "$pkgdir/etc/default"
-	install -m644 "$srcdir/hl/config_files/hl" "$pkgdir/etc/default"
+	install -D -m 644 "$srcdir/hl/config_files/hl" "$pkgdir/etc/default/hl"
 	
-	gzip -9 -c "$srcdir/hl/man1/hl.1" > "$srcdir/hl/man1/hl.1.gz"
-	install -d "$pkgdir/usr/share/man/man1"
-	install -m644 "$srcdir/hl/man1/hl.1.gz" "$pkgdir/usr/share/man/man1"
+	install -d "$pkgdir/usr/lib/hl_bin"
+	cp -R "$srcdir/hl/hl_bin" "$pkgdir/usr/lib"
 	
-	gzip -9 -c "$srcdir/hl/man5/hl.5" > "$srcdir/hl/man5/hl.5.gz"
-	install -d "$pkgdir/usr/share/man/man5"
-	install -m644 "$srcdir/hl/man5/hl.5.gz" "$pkgdir/usr/share/man/man5"
+	install -D -m 755 /dev/null "$pkgdir/etc/profile.d/hl.sh"
+	echo '#!/bin/sh -f
+
+export PATH=/usr/lib/hl_bin:${PATH}' > "$pkgdir/etc/profile.d/hl.sh"
+	
+	install -D -m 644 /dev/null "$pkgdir/usr/share/man/man1/hl.1.gz"
+	gzip -9 -c "$srcdir/hl/man1/hl.1" > "$pkgdir/usr/share/man/man1/hl.1.gz"
+	
+	install -D -m 644 /dev/null "$pkgdir/usr/share/man/man5/hl.5.gz"
+	gzip -9 -c "$srcdir/hl/man5/hl.5" > "$pkgdir/usr/share/man/man5/hl.5.gz"
 }
