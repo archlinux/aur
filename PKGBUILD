@@ -1,8 +1,8 @@
 # Maintainer: Michael Greene <mgreene@securityinnovation.com>
 
 pkgname=eluminance-git
-pkgver=0.9.r66
-pkgrel=1
+pkgver=0.9.r67
+pkgrel=2
 pkgdesc="A fast photo browser, written in Python using EFL"
 arch=('any')
 url="https://github.com/DaveMDS/eluminance"
@@ -27,5 +27,5 @@ build() {
 
 package() {
     cd "${srcdir}/eluminance"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python setup.py install --prefix="/usr" --root="${pkgdir}" --optimize=1
 }

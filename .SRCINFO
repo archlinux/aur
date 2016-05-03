@@ -1,7 +1,7 @@
 pkgbase = eluminance-git
 	pkgdesc = A fast photo browser, written in Python using EFL
-	pkgver = 0.9.r66
-	pkgrel = 1
+	pkgver = 0.9.r67
+	pkgrel = 2
 	url = https://github.com/DaveMDS/eluminance
 	arch = any
 	license = GPL
