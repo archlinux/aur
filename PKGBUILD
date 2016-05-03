@@ -6,7 +6,7 @@ pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release, i
 arch=('i686' 'x86_64')
 url='http://nginx.org'
 license=('custom')
-depends=('pcre' 'zlib' 'openssl' 'geoip' 'passenger')
+depends=('pcre' 'zlib' 'openssl' 'geoip' 'passenger-nginx-module')
 optdepends=('logrotate: rotate nginx/passenger logs')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
@@ -24,11 +24,11 @@ conflicts=('nginx')
 source=($url/download/nginx-$pkgver.tar.gz
         service
         logrotate
-	nginx.conf)
+        nginx.conf)
 md5sums=('13cd38e9da3789035750dd45882c4a26'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7'
-         '288ef522c59aef7f2ddb4bba27e3367c')
+         '929c2b1278c96058bb91b822c55933be')
 
 _common_flags=(
   --with-ipv6
@@ -60,7 +60,7 @@ _mainline_flags=(
 )
 
 _passenger_flags=(
-  --add-dynamic-module=$(/usr/lib/passenger/bin/passenger-config --nginx-addon-dir)
+  --add-module=$(/usr/lib/passenger/bin/passenger-config --nginx-addon-dir)
 )
 
 build() {
