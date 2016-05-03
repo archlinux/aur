@@ -1,0 +1,11 @@
+src/*
+pkg/*
+*.tgz
+*.tar.bz2
+*.tar.gz
+*.tar.xz
+*.zip
+*.gem
+*.air
+*.part
+*~
