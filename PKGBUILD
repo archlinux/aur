@@ -2,7 +2,7 @@
 pkgname=phoenix-git
 _gitname=Phoenix
 pkgver=r1129.0a822e3
-pkgrel=1
+pkgrel=2
 pkgdesc="A super-slick libretro frontend powered by Qt 5"
 arch=('i686' 'x86_64')
 url="https://github.com/team-phoenix/Phoenix"
