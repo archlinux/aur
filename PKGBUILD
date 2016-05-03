@@ -1,5 +1,5 @@
 pkgname=aurutils-git
-pkgver=0.8.2.r11.g60acbd1
+pkgver=0.8.3.r50.g20ac76a
 pkgrel=1
 pkgdesc='helper tools for the aur'
 arch=('any')
@@ -9,7 +9,7 @@ source=("git+$url")
 md5sums=('SKIP')
 conflicts=('aurutils')
 provides=('aurutils')
-depends=('pacman>=5.0' 'expac' 'jshon' 'git' 'aria2'
+depends=('pacman>=5.0' 'git' 'expac-git' 'jshon-git' 'aria2-git'
          'pacutils-git' 'repose-git' 'datamash-git')
 checkdepends=('shellcheck')
 makedepends=('git')
@@ -28,11 +28,12 @@ check() {
 
 package() {
   cd aurutils
-  install -d "$pkgdir"/usr/{bin,share{/zsh/site-functions,/man/man1,{/licenses,/doc}/aurutils}}
+  install -d "$pkgdir"/usr/{bin,share{/zsh/site-functions,/man/{man1,man7},{/licenses,/doc}/aurutils}}
 
-  install -m755 bin/*          "$pkgdir"/usr/bin/
-  install -m644 completions/*  "$pkgdir"/usr/share/zsh/site-functions/
-  install -m644 doc/*          "$pkgdir"/usr/share/man/man1/
-  install -m644 LICENSE        "$pkgdir"/usr/share/licenses/aurutils/
-  install -m644 CREDITS README "$pkgdir"/usr/share/doc/aurutils/
+  install -m755 bin/*         "$pkgdir"/usr/bin/
+  install -m644 completions/* "$pkgdir"/usr/share/zsh/site-functions/
+  install -m644 man1/*        "$pkgdir"/usr/share/man/man1/
+  install -m644 man7/*        "$pkgdir"/usr/share/man/man7/
+  install -m644 LICENSE       "$pkgdir"/usr/share/licenses/aurutils/
+  install -m644 CREDITS       "$pkgdir"/usr/share/doc/aurutils/
 }
