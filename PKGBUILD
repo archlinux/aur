@@ -1,28 +1,30 @@
+# Maintainer: Martchus <martchus@gmx.net>
+
+# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
+# you also find the URL of a binary repository.
+
+_reponame=dvb-firmware
 pkgname=openelec-dvb-firmware
-_pkgver=0.0.1
-pkgver=88.4ded321
+pkgver=0.0.51
 pkgrel=1
-pkgdesc="Set of dvb firmwares from OpenElec project"
-arch=('i686' 'x86_64')
-url="https://github.com/OpenELEC/dvb-firmware.git"
+pkgdesc="DVB firmware from OpenELEC project"
+arch=('any')
+url="https://github.com/OpenELEC/${_reponame}"
 license=('GPL3')
-makedepends=('git diffutils')
+conflicts=('openelec-dvb-firmware')
+provides=('openelec-dvb-firmware')
+makedepends=('linux-firmware')
+source=("https://github.com/OpenELEC/dvb-firmware/archive/${pkgver}.zip")
+sha256sums=('bf4f354d1e428ce72bb845895510086fecccef90a84b5e68660cdeb290f53cf5')
 
-_gitname=dvb-firmware
-source=("git+https://github.com/OpenELEC/${_gitname}.git")
-md5sums=('SKIP')
-
-pkgver() {
-    cd "${_gitname}"
-    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-}
+# linux-firmware is required to make this package to avoid conflicts
+# with files already provided by linux-firmware
 
 package() {
-    TARGET_DIR="${pkgdir}/usr/lib/firmware"
-    mkdir -p $TARGET_DIR
-    FIRMWARE_FILES=$(diff -rq "${_gitname}/firmware" /lib/firmware |grep "Only in ${_gitname}/firmware" |awk -F ": " '{ print $2 }' |tr '\n' ' ')
-    for f in $FIRMWARE_FILES
-    do 
-        cp "${_gitname}/firmware/$f" $TARGET_DIR
-    done
+  cd "${srcdir}/${_reponame}-${pkgver}/firmware"
+  for _file in $(find -type f); do
+    if [[ ! -f /usr/lib/firmware/$_file ]]; then
+      install -Dm644 "$_file" "${pkgdir}/usr/lib/firmware/$_file"
+    fi
+  done
 }
