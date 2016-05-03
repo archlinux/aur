@@ -3,16 +3,16 @@
 # Maintainer: Mantas M. <grawity@gmail.com>
 
 pkgname=pam-afs-session
-pkgver=2.5
-pkgrel=2
+pkgver=2.6
+pkgrel=1
 pkgdesc="PAM module providing AFS session support"
 url="http://www.eyrie.org/~eagle/software/pam-afs-session/"
 arch=('i686' 'x86_64')
 license=("custom")
 depends=('krb5' 'pam')
-source=("http://archives.eyrie.org/software/afs/$pkgname-$pkgver.tar.gz"
-        "http://archives.eyrie.org/software/afs/$pkgname-$pkgver.tar.gz.asc")
-sha256sums=('6b187b6a6efc4a76f651b163108ef8df24262cec9b7f865596ad15551fc48d02'
+source=("https://archives.eyrie.org/software/afs/$pkgname-$pkgver.tar.gz"
+        "https://archives.eyrie.org/software/afs/$pkgname-$pkgver.tar.gz.asc")
+sha256sums=('bf6c2a60a079ec53917d268a97d030735e6189fb56900d35c6f6b0191b5dfcc5'
             'SKIP')
 validpgpkeys=('E784364E8DDE7BB370FBD9EAD15D313882004173')
 
