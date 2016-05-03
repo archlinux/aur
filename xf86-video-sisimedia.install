@@ -1,5 +1,6 @@
 post_install() {
     echo 'A widely used and well-functioning xorg.conf file added to:'
     echo "-> /etc/X11/xorg.conf.d/xf86-video-sisimedia.conf"
-    echo 'You can modify this as you want, upgrades will not overwrite that.'
+    echo 'If you modify that, please rename and save a backup,'
+    echo 'because upgrades will overwrite/reinstall that.'
 }

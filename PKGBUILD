@@ -4,7 +4,7 @@
 
 pkgname=xf86-video-sisimedia
 pkgver=0.9.1
-pkgrel=11
+pkgrel=12
 pkgdesc="X.org SiS 671 video driver"
 arch=('i686' 'x86_64')
 url="http://www.linuxconsulting.ro/xorg-drivers/"
@@ -137,8 +137,6 @@ package() {
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 "${srcdir}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/"
 
-  if [ ! -f "/etc/X11/xorg.conf.d/${pkgname}.conf" ]; then
-    install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d/"
-    install -m644 "${srcdir}/${pkgname}.conf" "${pkgdir}/etc/X11/xorg.conf.d/"
-  fi
+  install -m755 -d "${pkgdir}/etc/X11/xorg.conf.d/"
+  install -m644 "${srcdir}/${pkgname}.conf" "${pkgdir}/etc/X11/xorg.conf.d/"
 }
