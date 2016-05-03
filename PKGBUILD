@@ -2,12 +2,12 @@
 
 pkgname=anki-drive-sdk-git
 pkgver=0.3.0.r29.20160429
-pkgrel=1
+pkgrel=2
 pkgdesc="C implementation of message protocols and data parsing to communicate with Anki Drive vehicles"
 arch=('i686' 'x86_64')
 url="https://github.com/anki/drive-sdk"
 license=('Apache')
-depends=('glib2' 'readline')
+depends=('glib2')
 optdepends=('bluez-utils: for command line tool hciconfig')
 makedepends=('cmake' 'gcc')
 source=(

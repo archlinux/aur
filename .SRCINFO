@@ -1,7 +1,7 @@
 pkgbase = anki-drive-sdk-git
 	pkgdesc = C implementation of message protocols and data parsing to communicate with Anki Drive vehicles
 	pkgver = 0.3.0.r29.20160429
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/anki/drive-sdk
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = anki-drive-sdk-git
 	makedepends = cmake
 	makedepends = gcc
 	depends = glib2
-	depends = readline
 	optdepends = bluez-utils: for command line tool hciconfig
 	source = anki-drive-sdk-git::git+https://github.com/anki/drive-sdk.git
 	md5sums = SKIP
