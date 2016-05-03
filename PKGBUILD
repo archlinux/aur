@@ -3,7 +3,7 @@ _pkgname=enpass
 pkgver=5.2.0
 _pkgver_x86_x64=5.2.0.1
 _pkgver_i686=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A multiplatform password manager"
 arch=('i686' 'x86_64')
 url="http://enpass.io/"
@@ -18,6 +18,9 @@ sha256sums_x86_64=(
 sha256sums_i686=(
     '14695d8549d7ca7ff0612d687b49e4ad6e8a41863be94e8cacabc8c21f6069c5'
 )
+
+# Disable strip as otherwise the browser extension will not work
+options=('!strip')
 
 package() {
     # Extract data
