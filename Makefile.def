@@ -8,6 +8,7 @@
 #
 #  Written: mickele
 #  Created: 12/2014
+#  Last modified: 05/2016
 #
 #  Send bug reports, comments or suggestions to
 #  https://aur.archlinux.org/packages/opensees/
@@ -71,16 +72,13 @@ SRCdir       = $(HOME)/OpenSees/SRC
 ifeq ($(PROGRAMMING_MODE), THREADS)
     SUPERLUdir   = $(HOME)/OpenSees/OTHER/SuperLU_MT
 else
-    SUPERLUdir   = $(HOME)/OpenSees/OTHER/SuperLU_4.1/SRC
+    SUPERLUdir   = $(HOME)/OpenSees/OTHER/SuperLU_5.0/SRC
 endif
-SUPERLU_DISTdir   = $(HOME)/OpenSees/OTHER/SuperLU_DIST_2.5/SRC
+# SUPERLU_DISTdir   = $(HOME)/OpenSees/OTHER/SuperLU_DIST_2.5/SRC
 
 
-# DIRS        = $(AMDdir) $(BLASdir) $(CBLASdir) $(LAPACKdir) \
-# 	$(SUPERLUdir) $(ARPACKdir) $(UMFPACKdir) $(SRCdir) $(METISdir)
-# DIRS        = $(AMDdir) $(SUPERLUdir) $(ARPACKdir) $(UMFPACKdir) $(SRCdir) $(CSPARSEdir)
-DIRS        = $(BLASdir) $(CBLASdir) $(LAPACKdir) $(AMDdir) $(CSPARSEdir) \
-	$(SUPERLUdir) $(ARPACKdir) $(UMFPACKdir) $(SRCdir) $(METISdir)
+DIRS = $(BLASdir) $(CBLASdir) $(LAPACKdir) $(AMDdir) $(CSPARSEdir) \
+       $(SUPERLUdir) $(ARPACKdir) $(UMFPACKdir) $(SRCdir) $(METISdir)
 
 # %-------------------------------------------------------%
 # | SECTION 4: LIBRARIES                                  |
@@ -118,11 +116,10 @@ BLITZ_LIBRARY   =
 AMD_LIBRARY     = $(HOME)/lib/libAmd.a
 
 ifeq ($(GRAPHICS), UsingOpenGL)
-    GRAPHIC_LIBRARY = -lGL -lX11 -lXext -lGLU
+  GRAPHIC_LIBRARY = -lGL -lGLU -lX11
 else
   ifeq ($(GRAPHICS), UsingX11)
-      GRAPHIC_LIBRARY = /usr/lib/libX11.a
-  else
+      GRAPHIC_LIBRARY = -lX11
   endif
 endif
 
@@ -178,6 +175,8 @@ ifeq ($(GRAPHICS), UsingOpenGL)
 else
     ifeq ($(GRAPHICS), UsingX11)
         GRAPHIC_FLAG = -D_X11
+    else
+        GRAPHIC_FLAG = -D_NOGRAPHICS
     endif
 endif
 
@@ -360,7 +359,7 @@ MACHINE_NUMERICAL_LIBS  = $(RELIABILITY_LIBRARY) -lm \
 			  $(GRAPHIC_LIBRARY) $(OPTIMIZATION_LIBRARY) \
 			  $(AMD_LIBRARY) \
 			  $(CSPARSE_LIBRARY) \
-			  -ldl -lgfortran -lpng -lssl
+			  -ldl -lgfortran -lpng
 
 ifeq ($(PROGRAMMING_MODE), SEQUENTIAL)
      PARALLEL_LIB = 
@@ -390,13 +389,15 @@ endif
 MACHINE_INCLUDES = -I/usr/include \
                    -I$(BASE)/include \
 		   -I/usr/include/cxx \
-		   -I$(SUPERLU_DISTdir) $(MUMPS_INCLUDE) \
-		   -I$(HOME)/include -I$(HOME)/blitz \
-		   -I$(UMFPACKdir) -I$(SUPERLUdir)
+		   $(MUMPS_INCLUDE) \
+		   -I$(HOME)/include \
+		   -I$(HOME)/blitz \
+		   -I$(UMFPACKdir) \
+		   -I$(SUPERLUdir)
 
 # this file contains all the OpenSees/SRC includes
 include $(FE)/Makefile.incl
 
-TCL_INCLUDES = 
+TCL_INCLUDES =
 
 INCLUDES = $(TCL_INCLUDES) $(FE_INCLUDES) $(MACHINE_INCLUDES)

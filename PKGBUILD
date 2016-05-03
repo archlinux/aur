@@ -1,7 +1,7 @@
 # Maintainer: mickele
 pkgname=opensees
-pkgver=2.4.6
-pkgrel=2
+pkgver=2.5.0
+pkgrel=1
 pkgdesc="OpenSees, a software framework for developing applications to simulate the performance of structural and geotechnical systems subjected to earthquakes"
 arch=("i686" "x86_64")
 url="http://opensees.berkeley.edu/"
@@ -17,7 +17,7 @@ source=("Makefile.def")
 
 # _svntrunk="svn://opensees.berkeley.edu/usr/local/svn/OpenSees/trunk"
 _svntrunk="svn://peera.berkeley.edu/usr/local/svn/OpenSees/trunk"
-_svnrel="6016"
+_svnrel="6236"
 _svnmod="OpenSees"
 _installdir="/usr"
 
@@ -65,4 +65,4 @@ package(){
   install -D -m644 "${srcdir}/OpenSees/COPYRIGHT" \
 	"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-md5sums=('51bd92d2ef7acf6777c4ad48c8fa7cb3')
+md5sums=('ef90aba7305b6c5de948df9c5ba43df6')
