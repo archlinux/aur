@@ -9,6 +9,7 @@ url="https://github.com/team-phoenix/Phoenix"
 license=('GPL')
 depends=('sdl2' 'qt5-base' 'qt5-multimedia' 'qt5-graphicaleffects' 'qt5-quickcontrols' 'qt5-svg')
 makedepends=('git')
+optdepends=('libretro-bsnes' 'libretro-gambatte' 'libretro-genesis-plus-gx' 'libretro-mgba' 'libretro-nestopia' 'libretro-snes9x')
 provides=('phoenix')
 conflicts=('phoenix')
 source=("git+https://github.com/team-phoenix/$_gitname.git")
