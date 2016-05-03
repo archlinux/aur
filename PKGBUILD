@@ -9,7 +9,7 @@ url='https://github.com/horst3180/arc-theme'
 license=('GPL3')
 depends=('plank')
 source=("https://manjaro.ru/aur/plank-theme/$pkgname.tar.gz")
-md5sums=('54299efc703ec148d023f4035ac839ed')
+md5sums=('60b567398e7e5afecba5ec6e2480994a')
 
 build() {
 	true
