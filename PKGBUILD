@@ -5,7 +5,7 @@
 
 pkgname=bumblebee-git
 _gitname=bumblebee
-pkgver=3.2.1.r16.524ded1
+pkgver=3.2.1.r18.3c6f9c9
 pkgrel=1
 pkgdesc="NVIDIA Optimus support for Linux through VirtualGL or primus"
 arch=('i686' 'x86_64')
@@ -64,6 +64,7 @@ package() {
     # Stop nvidia from loading on boot
     mkdir -p "${pkgdir}/usr/lib/modprobe.d/"
     echo "blacklist nvidia" > "${pkgdir}/usr/lib/modprobe.d/bumblebee.conf"
+    echo "remove nvidia modprobe -r --ignore-remove nvidia-drm nvidia-modeset nvidia-uvm nvidia" >> "${pkgdir}/usr/lib/modprobe.d/bumblebee.conf"
 
     # Install systemd unit
     install -D -m644 "scripts/systemd/bumblebeed.service" "${pkgdir}/usr/lib/systemd/system/bumblebeed.service"
