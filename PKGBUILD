@@ -11,6 +11,6 @@ source=("https://manjaro.ru/aur/arc-dark-lxqt-manjaro/$pkgname.tar.gz")
 md5sums=('4038d8ce73d011dca818c5564ba85210')
 
 package(){
-  install -d $pkgdir/usr/share/lxqt/themes
-  cp -r $srcdir/$pkgname/* $pkgdir/usr/share/lxqt/themes
+  mkdir -p $pkgdir/usr/share/lxqt/themes
+  cp -a $srcdir/$pkgname/* $pkgdir/usr/share/lxqt/themes
 }
