@@ -2,12 +2,13 @@
 pkgname=passenger-nginx-module
 pkgver=5.0.28
 pkgrel=1
-pkgdesc="passenger configured for use as a dynamic nginx module"
+pkgdesc="Passenger configured for use as a static nginx module."
 arch=('i686' 'x86_64')
 url="https://www.phusionpassenger.com/"
 _watch="https://www.phusionpassenger.com/file_releases"
 license=('GPL')
 depends=('ruby' 'ruby-rack' 'curl')
+optdepends=('nginx-mainline-passenger: web server.')
 provides=('passenger')
 conflicts=('passenger')
 options=('!emptydirs' 'staticlibs')
