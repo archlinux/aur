@@ -1,8 +1,8 @@
 # Maintainer:  jyantis <yantis@yantis.net>
 
 pkgname=caffe-git
-pkgver=r3482.813c3c9
-pkgrel=2
+pkgver=rc3.r120.gb86b0ae
+pkgrel=1
 pkgdesc='A fast framework for deep learning built in C++ for speed with a Python 2 interface'
 arch=(x86_64)
 url='https://github.com/BVLC/caffe'
@@ -47,14 +47,12 @@ provides=('caffe' 'pycaffe' 'python2-pycaffe' )
 conflicts=('caffe' 'pycaffe' 'python2-pycaffe' 'pycaffe-git' 'python2-pycaffe-git')
 sha256sums=('SKIP'
             'c12ddbd524c1b5871cb42a8775cf17a3ef86ae8a859837a6c6c4e2c19deca3d5'
-            'd2bd26feb69894bbe2a807e71703472f66d431947d4b760cd25f3243edf30557')
+            'ac0195943510f1dfed85991958455cba6a36058e93f74ad4da0befb6fae84bd5')
 
 pkgver() {
   cd caffe
   set -o pipefail
-  _gitversion=$( git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g' ||
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" )
-  printf "%s" $_gitversion
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
