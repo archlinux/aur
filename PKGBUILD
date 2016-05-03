@@ -10,7 +10,7 @@
 # Contributor: TIanyi Cui <tianyicui@gmail.com>
 
 pkgname=nodejs-0.12
-pkgver=0.12.10
+pkgver=0.12.13
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript (legacy version 0.12)'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ depends=('openssl' 'zlib' 'icu') # 'libuv' 'v8' 'c-ares')
 makedepends=('python2' 'procps-ng')
 optdepends=('npm: nodejs package manager')
 source=("http://nodejs.org/dist/v$pkgver/node-v$pkgver.tar.gz")
-sha256sums=('edbd3710512ec7518a3de4cabf9bfee6d12f278eef2e4b53422c7b063f6b976d')
+sha256sums=('0a972ed6442cb526aa7aa1bcb10aa536b65bd90ab4956b5a1aa51b4b7bb071bd')
 
 prepare() {
   cd node-v$pkgver
