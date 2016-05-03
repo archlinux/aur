@@ -3,14 +3,14 @@
 
 _pkgname=godot
 pkgname=${_pkgname}-git
-pkgver=1.1.r1488.e9bbb97
+pkgver=2.1.r3700.564ba76
 pkgrel=1
-pkgdesc="Godot Game Engine."
+pkgdesc="Godot Game Engine: An advanced, feature packed, multi-platform 2D and 3D game engine."
 url="http://www.godotengine.org"
 license=('MIT')
 arch=('i686' 'x86_64')
-makedepends=('git' 'scons' 'pkg-config')
-depends=('glu' 'libxcursor' 'alsa-lib' 'freetype2' 'mesa')
+makedepends=('git' 'scons' 'pulseaudio')
+depends=('glu' 'libxcursor' 'libxinerama' 'alsa-lib' 'freetype2' 'mesa')
 optdepends=()
 conflicts=("godot")
 provides=("godot")
