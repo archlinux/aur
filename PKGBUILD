@@ -10,7 +10,8 @@ pkgdesc='Library that provides decoding and encoding of audio on a playlist.'
 arch=(i686 x86_64)
 url='https://github.com/andrewrk/libgroove'
 license=(MIT)
-depends=(chromaprint libebur128 libsoundio)  # chromaprint provides ffmpeg
+# chromaprint provides ffmpeg, but we want to pin a minimum version
+depends=(chromaprint 'ffmpeg>=3.0' libebur128 libsoundio)
 makedepends=(cmake yasm)
 provides=(libgroove)
 conflicts=(libgroove)
