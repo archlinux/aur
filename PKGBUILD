@@ -2,12 +2,12 @@
 pkgname=nginx-mainline-passenger
 pkgver=1.9.15
 pkgrel=1
-pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release, including support for Phusion Passenger'
+pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release, including support for Phusion Passenger as a static module.'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
 license=('custom')
 depends=('pcre' 'zlib' 'openssl' 'geoip' 'passenger-nginx-module')
-optdepends=('logrotate: rotate nginx/passenger logs')
+optdepends=('logrotate: rotate nginx/passenger logs.')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
