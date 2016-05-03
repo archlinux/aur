@@ -1,6 +1,6 @@
 pkgbase = python2-cyordereddict
 	pkgdesc = Cython implementation of OrderedDict
-	pkgver = 0.2.2
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/cyordereddict
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = python2-cyordereddict
 	makedepends = python2-setuptools
 	makedepends = cython2
 	depends = python2
-	source = https://github.com/shoyer/cyordereddict/archive/v0.2.2.tar.gz
-	md5sums = d78aebebe365fbcba0ab5823be0e06f5
+	source = https://github.com/shoyer/cyordereddict/archive/v1.0.0.tar.gz
+	md5sums = 6d3144c6edc4703d7faa62512ccf9db8
 
 pkgname = python2-cyordereddict
 

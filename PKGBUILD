@@ -1,6 +1,6 @@
 # Maintainer: Rich Li <rich@dranek.com>
 pkgname='python2-cyordereddict'
-pkgver=0.2.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Cython implementation of OrderedDict"
 url="https://pypi.python.org/pypi/cyordereddict"
@@ -12,7 +12,7 @@ checkdepends=('python2-nose')
 #source=(https://pypi.python.org/packages/source/c/cyordereddict/cyordereddict-"$pkgver".tar.gz)
 source=(https://github.com/shoyer/cyordereddict/archive/v"$pkgver".tar.gz)
 # Note the PyPI and github sources have different checksums. This is because the github version doesn't include the Cython output, but the PyPI does. Since we're using the github source we therefore have Cython as a makedep.
-md5sums=('d78aebebe365fbcba0ab5823be0e06f5')
+md5sums=('6d3144c6edc4703d7faa62512ccf9db8')
  
 build() {
   cd "$srcdir/cyordereddict-$pkgver"
