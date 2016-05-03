@@ -5,7 +5,7 @@
 
 pkgname=silo
 pkgver=4.10.2
-pkgrel=3
+pkgrel=4
 pkgdesc="A Mesh and Field I/O Library and Scientific Database"
 url="https://wci.llnl.gov/simulation/computer-codes/silo"
 arch=('i686' 'x86_64')
