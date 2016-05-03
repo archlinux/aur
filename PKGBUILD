@@ -2,13 +2,15 @@
 
 pkgname=libretro-reicast-git
 pkgver=2261.e622b36
-pkgrel=2
+pkgrel=3
 pkgdesc="libretro implementation of Reicast Sega Dreamcast Emulator"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/reicast-emulator"
-license=('GPL' 'LGPL')
-makedepends=('git')
-depends=('libgl' 'alsa-lib')
+license=('GPL2' 'LGPL')
+makedepends=('git' 'mesa')
+depends=('alsa-lib' 'libgl' 'glibc' 'gcc-libs')
+provides=('libretro-reicast')
+conflicts=('libretro-reicast')
 source=("git://github.com/libretro/reicast-emulator.git"
 	"https://raw.github.com/libretro/libretro-super/master/dist/info/reicast_libretro.info")
 
