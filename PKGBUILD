@@ -3,7 +3,7 @@
 
 _pkgname=libsoundio
 pkgname=${_pkgname}-git
-pkgver=1.1.0.2.gca0ebfd
+pkgver=1.1.0.14.g9c90c0b
 pkgrel=1
 pkgdesc='A C99 library providing cross-platform audio input and output'
 arch=('x86_64')
@@ -12,6 +12,7 @@ license=('MIT')
 source=('git://github.com/andrewrk/libsoundio')
 options=('!buildflags')
 depends=('jack2')
+makedepends=('cmake')
 provides=('libsoundio')
 conflicts=('libsoundio')
 md5sums=('SKIP')
