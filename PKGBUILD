@@ -35,7 +35,7 @@ install='jasper-voice-control.install'
 pkgver() {
   cd "${srcdir}/jasper-client"
   # Use the tag of the last commit
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --always | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
