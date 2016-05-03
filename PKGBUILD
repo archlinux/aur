@@ -3,7 +3,7 @@
 
 pkgname=retroarch
 _pkgname=RetroArch
-pkgver=1.3.2
+pkgver=1.3.4
 pkgrel=1
 pkgdesc="Simple frontend for the Libretro API. Stable version."
 
@@ -25,7 +25,7 @@ source=("https://github.com/libretro/${_pkgname}/archive/v${pkgver}.tar.gz"
         "retroarch.desktop"
         "retroarch-32x32.png"
         "retroarch-64x64.png")
-md5sums=('b9f0789845a0cfcbb0d154708dd20b31'
+md5sums=('f892231e1b4d5724749ce7435b589cb8'
          '8da1d1725bcc4dce7c778c2c37f14996'
          '356fe1a16aff78d62325e319ca95b8e9'
          'e38c12b3c1c2acd08fe5ea7483f62572')
