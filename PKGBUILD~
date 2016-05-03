@@ -1,0 +1,16 @@
+# Author : zekeer <isoniasid@gmail.com>
+
+pkgname=arc-dark-lxqt-manjaro
+pkgver=1
+pkgrel=2
+pkgdesc="Arc-dark theme for lxqt panel"
+url="https://manjaro.ru/"
+license=("MIT")
+arch=(any)
+source=("https://manjaro.ru/aur/arc-dark-lxqt-manjaro/$pkgname.tar.gz")
+md5sums=('0c83179c09291e4f58098371f83a1598')
+
+package(){
+  mkdir -p $pkgdir/usr/share/lxqt/themes/$pkgname
+  cp -a $srcdir/$pkgname/* $pkgdir/usr/share/lxqt/themes/$pkgname
+}
