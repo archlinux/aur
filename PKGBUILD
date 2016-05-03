@@ -1,9 +1,10 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: Mario Finelli <mario at finel dot li>
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 # Contributor: Artem Vorotnikov <artem@vorotnikov.me>
 
 _gemname=rb-fsevent
 pkgname=ruby-$_gemname
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc='Very simple & usable FSEvents API'
 arch=('any')
@@ -12,7 +13,7 @@ license=('MIT')
 depends=('ruby')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha256sums=('420695d066994e2723931d0410a8dde7b50e60b43ecd8bbe8c604724fc3a05c3')
+sha256sums=('9b744c190144ce481500d7f23936512b5f25437b8c2def2d69933fdb1f7593f6')
 options=(!emptydirs)
 
 package() {
