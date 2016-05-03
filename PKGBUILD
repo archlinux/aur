@@ -1,7 +1,7 @@
 # Maintainer: David Pedersen <limero@me.com>
 pkgname=phoenix-git
 _gitname=Phoenix
-pkgver=r969.f3a590a
+pkgver=r1129.0a822e3
 pkgrel=1
 pkgdesc="A super-slick libretro frontend powered by Qt 5"
 arch=('i686' 'x86_64')
@@ -23,8 +23,7 @@ pkgver() {
 build() {
   cd "$_gitname"
 
-  git submodule init
-  git submodule update
+  git submodule update --init --recursive
 
   qmake ../Phoenix PREFIX="$pkgdir"/usr
   make
