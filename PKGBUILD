@@ -2,13 +2,13 @@
 
 pkgname=arc-dark-lxqt-manjaro
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Arc-dark theme for lxqt panel"
 url="https://manjaro.ru/"
 license=("cc-by-nc-nd-4.0")
 arch=(any)
 source=("https://manjaro.ru/aur/arc-dark-lxqt-manjaro/$pkgname.tar.gz")
-md5sums=('4038d8ce73d011dca818c5564ba85210')
+md5sums=('0c83179c09291e4f58098371f83a1598')
 
 package(){
   mkdir -p $pkgdir/usr/share/lxqt/themes/$pkgname
