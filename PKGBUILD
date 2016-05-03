@@ -2,26 +2,26 @@
 # Contributor: Artem Sereda  <overmind88@gmail.com>
 
 pkgname=qtgain
-pkgver=0.9.8
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Simply frontend for mp3gain, vorbisgain and metaflac to replay gain your tracks"
 url="http://www.qt-apps.org/content/show.php/QtGain?content=56842"
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('qt4')
-makedepends=('make' 'gcc')
+depends=('qt5-base')
+makedepends=('make' 'gcc' 'git')
 optdepends=('mp3gain: For MP3 support'
 	'vorbisgain: For OGG support'
 	'flac: For FLAC suppot'
 	'aacgain: For AAC support')
-source=("${pkgname}::git://git.code.sf.net/p/qtgain/code#commit=b45c51bb5a21c2cd3d275cf63876bcc1242a591c"
+source=("${pkgname}::git://git.code.sf.net/p/qtgain/code#commit=829222162cc66865a3c57417d52d12a37a627b3d"
 	'qtgain.desktop')
 md5sums=('SKIP'
          '296ce0f158f8b7d6b80cbfd895e12e5e')
 
 build() {
 	cd "$srcdir/${pkgname}"
-	qmake-qt4
+	qmake-qt5
 	make
 }
 
