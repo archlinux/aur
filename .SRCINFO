@@ -1,7 +1,7 @@
 pkgbase = grass
 	pkgdesc = Geospatial data management and analysis, image processing, graphics/maps production, spatial modeling and visualization
-	pkgver = 7.0.3
-	pkgrel = 2
+	pkgver = 7.0.4
+	pkgrel = 1
 	url = http://grass.osgeo.org/
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = grass
 	depends = subversion
 	depends = wxpython
 	optdepends = postgresql: PostgreSQL database interface
-	source = http://grass.osgeo.org/grass70/source/grass-7.0.3.tar.gz
-	md5sums = dfbd39829036ee2d59b13c35a183ec0e
+	source = http://grass.osgeo.org/grass70/source/grass-7.0.4.tar.gz
+	md5sums = 843e8942c14aa7473380ea70c9b0ec52
 
 pkgname = grass
 
