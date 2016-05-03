@@ -2,7 +2,7 @@
 # Contributor: Vladislav Odobesku positivcheg94@gmail.com
 
 pkgname=python-tensorflow-git
-pkgver=0.8.0rc0.r287.gd8e8b87
+pkgver=0.8.0rc0.r427.gb0b16c2
 pkgrel=1
 
 pkgdesc="Open source software library for numerical computation using data flow graphs."
@@ -55,12 +55,10 @@ prepare() {
     export TF_UNOFFICIAL_SETTING=1
     export CUDA_TOOLKIT_PATH=/opt/cuda
     export CUDNN_INSTALL_PATH=/opt/cuda
-    # adapt to your needs or comment for interactive config
-    msg2 "Using custom config in PKGBUILD"
-    msg2 "Modify or comment settings for interactive config"
-    export TF_CUDA_VERSION=7.5
-    export TF_CUDNN_VERSION=5
-    export TF_CUDA_COMPUTE_CAPABILITIES=3.5,5.2
+    # adapt to your needs
+    # export TF_CUDA_VERSION=7.5
+    # export TF_CUDNN_VERSION=5
+    # export TF_CUDA_COMPUTE_CAPABILITIES=3.5,5.2
   else
     msg2 "CUDA support disabled"
     export TF_NEED_CUDA=0
