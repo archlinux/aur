@@ -9,7 +9,6 @@ url="http://www.omegat.org/en/omegat.html"
 license=('GPL')
 depends=('java-runtime' 'desktop-file-utils')
 conflicts=('omegat-beta')
-install=$pkgname.install
 options=('!strip')
 source=(http://downloads.sourceforge.net/$pkgname/OmegaT_${pkgver}_Without_JRE.zip
         http://www.omegat.org/resources/icons.zip
