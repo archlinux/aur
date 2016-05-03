@@ -34,7 +34,7 @@ pkgver() {
 }
 
 prepare() {
-  gendesk -n --pkgname "$_pkgbase" --pkgdesc "$pkgdesc" --name 'MilkyTracker' \
+  gendesk -f -n --pkgname "$_pkgbase" --pkgdesc "$pkgdesc" --name 'MilkyTracker' \
     --categories 'AudioVideo;Audio;AudioVideoEditing;'
 
   cd "$srcdir/${_pkgbase}"
