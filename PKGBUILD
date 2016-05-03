@@ -14,24 +14,22 @@ license=(MIT)
 makedepends=(
   python-django
   python-setuptools
-  python-six
   python2-django
   python2-setuptools
-  python2-six
 )
 options=(!emptydirs)
 source=("https://github.com/bradleyayers/${_pkgbase}/archive/v${pkgver}.tar.gz")
 sha256sums=('b54cb1eea10aef1c9f0601f80ca58fb0db919dd80ae281797fd9c7933eb34391')
 
 package_python-django-tables2() {
-  depends=(python-django python-six)
+  depends=(python-django)
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   python setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python2-django-tables2() {
-  depends=(python2-django python2-six)
+  depends=(python2-django)
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
   install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
