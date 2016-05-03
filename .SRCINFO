@@ -8,7 +8,7 @@ pkgbase = lua-gumbo-git
 	license = custom:ISC
 	makedepends = git
 	depends = lua
-	depends = gumbo-parser-git
+	depends = gumbo-git
 	source = git+https://github.com/craigbarnes/lua-gumbo.git
 	md5sums = SKIP
 
