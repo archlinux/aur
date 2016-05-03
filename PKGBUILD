@@ -5,9 +5,9 @@
 pkgname=pstate-frequency
 pkgdesc="Easily control Intel p-state driver"
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
-makedepends=('git')
+makedepends=('')
 depends=('coreutils' 'grep')
 optdepends=('x86_energy_perf_policy: For the x86_energy_perf_policy-sleep.service')
 provides=('pstate-frequency')

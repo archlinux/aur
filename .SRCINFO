@@ -1,12 +1,11 @@
 pkgbase = pstate-frequency
 	pkgdesc = Easily control Intel p-state driver
 	pkgver = 3.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyamsoft/pstate-frequency
 	arch = i686
 	arch = x86_64
 	license = GPLv2
-	makedepends = git
 	depends = coreutils
 	depends = grep
 	optdepends = x86_energy_perf_policy: For the x86_energy_perf_policy-sleep.service
