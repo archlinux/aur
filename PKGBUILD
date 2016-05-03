@@ -1,27 +1,27 @@
 # Maintainer: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=oclint
-pkgver=0.8.1
-_pkgver=0.8
+pkgver=0.10.1
 pkgrel=1
-pkgdesc="static code analysis tool for improving quality and reducing defects"
+pkgdesc="A static source code analysis tool to improve quality and reduce
+defects for C, C++ and Objective-C"
 arch=('i686' 'x86_64')
 url="http://oclint.org/"
 license=('BSD')
 dependencies=('clang' 'clang-analyzer' 'llvm' 'llvm-libs')
-makedepends=('cmake' 'subversion' 'python2' 'libxml2')
-source=(http://archives.oclint.org/releases/$_pkgver/$pkgname-$pkgver-src.tar.gz)
-md5sums=('58567911cb0a93858de8ad76590d769a')
+makedepends=('cmake' 'subversion' 'python' 'llvm' 'libxml2')
+source=("https://github.com/oclint/oclint/archive/v${pkgver}.tar.gz")
+md5sums=('625d6a691088c03911a3e8e1e9995cc7')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver-src/oclint-scripts"
+  cd "$srcdir/$pkgname-$pkgver/oclint-scripts"
   ./build -llvm-root=/usr -release
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver-src"
+	cd "$srcdir/$pkgname-$pkgver"
 
-  # Copy llvm LICENSE.txt
+  # FIX: Copy llvm LICENSE file for bundle script
   mkdir -p llvm
   cp /usr/include/llvm/Support/LICENSE.TXT llvm
 
@@ -30,13 +30,9 @@ package() {
   ./bundle -llvm-root=/usr -release
   cd ..
 
-  # Fix python path
-  sed -i '1 s/^.*$/#!\/usr\/bin\/env python2/' ./build/oclint-release/bin/oclint-json-compilation-database
+  mkdir -p $pkgdir/usr/bin
+  install ./build/oclint-release/bin/oclint-$pkgver $pkgdir/usr/bin/oclint
 
-   mkdir -p $pkgdir/usr/bin
-   cp ./build/oclint-release/bin/oclint-$pkgver $pkgdir/usr/bin/oclint
-   cp ./build/oclint-release/bin/oclint-json-compilation-database $pkgdir/usr/bin/oclint-json-compilation-database
- 
-   mkdir -p $pkgdir/usr/lib/oclint
-   cp -r ./build/oclint-release/lib/oclint/* $pkgdir/usr/lib/oclint/
+  mkdir -p $pkgdir/usr/lib/oclint
+  cp -r ./build/oclint-release/lib/oclint/* $pkgdir/usr/lib/oclint/
 }
