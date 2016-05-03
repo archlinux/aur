@@ -19,17 +19,10 @@ build() {
   python2 setup.py build --with-cython
 }
 
-# pyvenv is python 3.4 only, so this has to be updated for python 2.7 
-# check() {
-#   cd "$srcdir/cyordereddict-$pkgver"
-# 
-#   # We use pyvenv to create a virtual environment where the package will be installed, then we can test it. Note that we symlink to the system site-packages so we have (read-only) access to nosetests.
-#   pyvenv arch_test --system-site-packages
-#   _venv_python="arch_test/bin/python"
-# 
-#   ${_venv_python} setup.py install
-#   ${_venv_python} $(which nosetests) cyordereddict ./python3/cyordereddict/test
-# }
+check() {
+  cd "$srcdir/cyordereddict-$pkgver/build/lib.linux-${CARCH}-2.7"
+  nosetests2
+}
  
 package() {
   cd "$srcdir/cyordereddict-$pkgver"
