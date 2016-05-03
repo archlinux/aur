@@ -18,7 +18,7 @@ optdepends=('gstreamer0.10-good-plugins: Support for additional file formats'
             'gvfs: Support for external devices')
 source=("${pkgname}-${pkgver}.tar.gz::\
 https://gitlab.com/digifuzzy/${pkgname}/repository/archive.tar.gz?ref=v${pkgver}")
-sha256sums=('44e2148e5f4e388f8572f2eed374d91deae9725a037473e8a2b7fa2f2c8cf2bd')
+sha256sums=('8ba2cd7680cba901f0f9da89acbdf785b6866c9610fafce7ca468ad5eb9f5afa')
 BUILDFLDR='localbuild'
 
 prepare() {
