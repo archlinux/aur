@@ -2,6 +2,7 @@
 # Maintainer: Malte Veerman <maldela@halloarsch.de>
 
 pkgname=fancontrol-common
+_srcname=fancontrol-gui
 pkgver=v0.4
 pkgrel=1
 pkgdesc="Common resources used by fancontrol-gui and fancontrol-kcm"
