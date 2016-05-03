@@ -1,7 +1,7 @@
 pkgbase = s3fs-fuse-git
-	pkgdesc = FUSED-based file system backed by Amazon S3 with OpenSSL support
-	pkgver = 1.78.r449.3056644
-	pkgrel = 2
+	pkgdesc = FUSE-based file system backed by Amazon S3 with OpenSSL support
+	pkgver = 1.79.r684.845fdb4
+	pkgrel = 1
 	url = https://github.com/s3fs-fuse/s3fs-fuse
 	arch = i686
 	arch = x86_64

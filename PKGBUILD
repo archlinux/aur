@@ -1,9 +1,10 @@
-# Maintainer:  jyantis <yantis@yantis.net>
+# Maintainer:  eadrom <matthewfennell@gmail.com>
+# Contributor:  jyantis <yantis@yantis.net>
 
 pkgname=s3fs-fuse-git
-pkgver=1.78.r449.3056644
-pkgrel=2
-pkgdesc='FUSED-based file system backed by Amazon S3 with OpenSSL support'
+pkgver=1.79.r684.845fdb4
+pkgrel=1
+pkgdesc='FUSE-based file system backed by Amazon S3 with OpenSSL support'
 arch=('i686' 'x86_64')
 url='https://github.com/s3fs-fuse/s3fs-fuse'
 license=('GPL2')
@@ -44,10 +45,9 @@ package() {
   install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Install Documentation
-  install -D -m644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README"
 
   # make install
   make DESTDIR="${pkgdir}/" install
 }
 
-# vim:set ts=2 sw=2 et:
