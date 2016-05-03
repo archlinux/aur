@@ -7,7 +7,7 @@
 
 pkgname=paraview
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Parallel Visualization Application using VTK'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
@@ -55,7 +55,7 @@ build() {
   # flags to enable system libs
   # add PROTOBUF when http://www.vtk.org/Bug/view.php?id=13656 gets fixed
   local cmake_system_flags=""
-  for lib in EXPAT FREETYPE GLEW HDF5 JPEG LIBXML2 OGGTHEORA PNG TIFF ZLIB; do
+  for lib in EXPAT FREETYPE GLEW JPEG LIBXML2 OGGTHEORA PNG TIFF ZLIB; do
     cmake_system_flags+="-DVTK_USE_SYSTEM_${lib}:BOOL=ON "
   done
 
@@ -88,8 +88,9 @@ build() {
    -DVTK_QT_VERSION=5 \
    -DQT_HELP_GENERATOR:FILEPATH=/usr/lib/qt/bin/qhelpgenerator \
    -DQT_QMAKE_EXECUTABLE=qmake-qt5 \
-   -DVISIT_BUILD_READER_CGNS:BOOL=ON \
+   -DVISIT_BUILD_READER_CGNS:BOOL=OFF \
    -DVTK_RENDERING_BACKEND:STRING=OpenGL2 \
+   -DVTK_USE_SYSTEM_HDF5:BOOL=OFF \
    ${cmake_system_flags} \
    ${cmake_system_python_flags} \
    ${ffmpeg_compat_flags} \
