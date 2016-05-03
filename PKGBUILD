@@ -2,7 +2,7 @@
 
 pkgname=thunderbird-enigmail-bin
 _pkg_main_ver=1.9
-pkgver=${_pkg_main_ver}.1
+pkgver=${_pkg_main_ver}.2
 pkgrel=1
 pkgdesc="The Mozilla Thunderbird GnuPG encryption plugin for both 32 and 64 bit systems. Binary version."
 arch=('i686' 'x86_64')
