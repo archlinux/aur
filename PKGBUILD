@@ -10,6 +10,7 @@ license=('MIT')
 source=("https://github.com/andrewrk/$pkgname/archive/$pkgver.tar.gz")
 options=('!buildflags')
 depends=('jack2')
+makedepends=('cmake')
 md5sums=('989d1daf6e9f4b629a4f8f5329c8e21c')
 
 build() {
