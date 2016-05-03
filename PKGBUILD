@@ -17,7 +17,7 @@ build() {
 
 package() {
 	cd $srcdir/$pkgname
-	mkdir -p $pkgdir/usr/share/plank/themes
+	mkdir -p $pkgdir/usr/share/plank/themes/Arc
 	install -m 644 Arc/dock.theme "${pkgdir}"/usr/share/plank/themes/Arc/
 }
 
