@@ -34,7 +34,7 @@ pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
 __basekernel=4.5
 _minor=2
 pkgver=${__basekernel}.${_minor}
-pkgrel=5
+pkgrel=6
 lqxrel=4
 _kernelname=-lqx
 pkgbase=linux-lqx
@@ -43,11 +43,6 @@ _lqxpatchname="${pkgver}-${lqxrel}.patch"
 arch=('i686' 'x86_64')
 license=('GPL2')
 url="http://liquorix.net/"
-
-num_cores="$(grep -E '^processor\s+:\s+[0-9]+$' /proc/cpuinfo | wc -l)"
-if [[ num_cores -eq 0 ]]; then
-   num_cores=1 # Just in-case the regex breaks
-fi
 
 if [ "$_custom" = "x" ]; then
    makedepends=('qt5-base' 'kmod' 'inetutils' 'bc')
@@ -133,7 +128,7 @@ prepare() {
   sed -ri "s|^(SUBLEVEL =).*|\1 ${_minor}|" Makefile
 
   msg "Running make prepare"
-  make -j ${num_cores} prepare
+  make prepare
 
 ### Optionally load needed modules for the make localmodconfig
  # See https://aur.archlinux.org/packages/modprobed-db/
@@ -175,7 +170,7 @@ prepare() {
 build() {
   cd ${srcdir}/linux-${__basekernel}
   msg "Starting build."
-  make -j ${num_cores} ${MAKEFLAGS} LOCALVERSION=${_append_kernel_custom_string} bzImage modules
+  make ${MAKEFLAGS} LOCALVERSION=${_append_kernel_custom_string} bzImage modules
 }
 
 package_linux-lqx() {
@@ -195,7 +190,7 @@ _basekernel=${_kernver%%-*}
 _basekernel=${_basekernel%.*}
 
 mkdir -p "${pkgdir}"/{lib/modules,lib/firmware,boot}
-make -j ${num_cores} LOCALVERSION=${_append_kernel_custom_string} INSTALL_MOD_PATH="${pkgdir}" modules_install
+make LOCALVERSION=${_append_kernel_custom_string} INSTALL_MOD_PATH="${pkgdir}" modules_install
 cp arch/$KARCH/boot/bzImage "${pkgdir}/boot/vmlinuz-linux-lqx"
 
 ############## add vmlinux
