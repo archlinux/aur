@@ -5,7 +5,7 @@ _pkgname="efitools"
 pkgname="${_pkgname}-git"
 
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools to Create and Setup own UEFI Secure Boot Certificates, Keys and Signed Binaries - GIT Version"
 url="http://blog.hansenpartnership.com/efitools-1-4-with-linux-key-manipulation-utilities-released/"
 arch=('x86_64')
@@ -61,6 +61,7 @@ package() {
 	cd "${srcdir}/${_pkgname}_build/"
 	
 	make DESTDIR="${pkgdir}/" install
+	install -Dm644 COPYING "$pkgdir"/usr/share/licenses/efitools-git/COPYING
 	echo
 	
 	## Do not install LockDown.efi

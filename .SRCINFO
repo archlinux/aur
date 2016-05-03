@@ -1,7 +1,7 @@
 pkgbase = efitools-git
 	pkgdesc = Tools to Create and Setup own UEFI Secure Boot Certificates, Keys and Signed Binaries - GIT Version
 	pkgver = 1.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://blog.hansenpartnership.com/efitools-1-4-with-linux-key-manipulation-utilities-released/
 	install = efitools.install
 	arch = x86_64
