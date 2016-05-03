@@ -1,16 +1,16 @@
 pkgbase = terminus-font-ttf
 	pkgdesc = Monospaced bitmap font designed for long work with computers (TTF version)
-	pkgver = 4.40
-	pkgrel = 2
+	pkgver = 4.40.1
+	pkgrel = 1
 	url = http://files.ax86.net/terminus-ttf
 	install = terminus-font-ttf.install
 	arch = any
 	license = custom:OFL
 	depends = fontconfig
 	depends = xorg-font-utils
-	source = http://files.ax86.net/terminus-ttf/files/4.40/terminus-ttf-4.40.zip
-	md5sums = c5dabc9853ae9fa15e484501f9832703
-	sha384sums = dce2835135e7e2028fa78360cf2a1108f3c07defb435c364f6765966ecc825c6e8f5c4b512616a0f1222bcb9ce0fad9f
+	source = http://files.ax86.net/terminus-ttf/files/4.40.1/terminus-ttf-4.40.1.zip
+	md5sums = a61328c79bcc85deb029e36d0c2e52cd
+	sha384sums = aa8333023162f4c7e61a04615c10659f3e7ae009b75e296ad034eccbf4e66bbe4a5e2e22b2ca3aa3bab278fc4bd99d36
 
 pkgname = terminus-font-ttf
 
