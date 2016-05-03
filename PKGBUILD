@@ -2,7 +2,7 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=vulkan-intel-git
-pkgver=11.3.0_devel.80244.696d8ff
+pkgver=11.3.0_devel.80901.3950aa4
 pkgrel=1
 pkgdesc="Intel's Vulkan mesa driver"
 arch=(x86_64)
@@ -36,7 +36,7 @@ build() {
     --with-egl-platforms=x11,drm,wayland \
     --with-gallium-drivers= \
     --with-vulkan-drivers=intel \
-    --with-vulkan-icddir="$srcdir/fakeinstall/etc/vulkan/icd.d"
+#    --with-vulkan-icddir="$srcdir/fakeinstall/etc/vulkan/icd.d"
 
   make
 
