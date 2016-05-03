@@ -2,13 +2,13 @@
 
 pkgname="knime-desktop"
 _upstream_name="knime"
-pkgver="2.12.0"
+pkgver="3.1.2"
 pkgrel="1"
 pkgdesc="A user-friendly graphical workbench for the entire data analysis process"
 url="http://www.knime.org/"
 license=('custom')
 arch=('i686' 'x86_64')
-depends=('java-environment' 'cairo' 'python2')
+depends=('java-environment' 'python')
 makedepends=('imagemagick')
 optdepends=('bash: Required for bash-scriptable nodes'
             'r: Required for R-scriptable nodes')
@@ -16,15 +16,15 @@ options=('!emptydirs')
 changelog="ChangeLog"
 _CARCH="${CARCH}"
 [ "${CARCH}" = 'i686' ] && _CARCH='x86'
-source=("http://www.knime.org/knime_downloads/linux/${_upstream_name}_${pkgver}.linux.gtk.${_CARCH}.tar.gz"
+source=("https://download.knime.org/analytics-platform/linux/${_upstream_name}_${pkgver}.linux.gtk.${_CARCH}.tar.gz"
         'knime.sh'
         'knime-desktop.desktop'
         'LICENSE')
-md5sums=('8215c987dc6f5dfd02afcb2a5036c83a'
+md5sums=('b5529616ee0006875b875587612f0471'
          '597314dbe6d4aae1d8381388d83d4b81'
          '4de9d5ea5f332ce712dc80b52f0e8501'
          '9e93e4def16f04f7808bddb48da3c009')
-[ "${CARCH}" = 'x86_64' ] && md5sums[0]='2f2acafdf0d75b63e82e9f921783477a'
+[ "${CARCH}" = 'x86_64' ] && md5sums[0]='9126fec116299c006b4698a81a45677d'
 
 package() {
     installpath="/usr/share/java"
@@ -44,15 +44,8 @@ package() {
     install -d -m755 "${pkgdir}/usr/share/pixmaps"
     convert "${srcdir}/${_upstream_name}_${pkgver}/icon.xpm" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
-    msg2 "Remove the provided libraries (cairo, jre)"
-    rm    "${pkgdir}/${programpath}/libcairo-swt.so"  # Provided by `cairo`
+    msg2 "Remove the provided libraries (jre)"
     rm -r "${pkgdir}/${programpath}/jre/"             # Provided by `java-environment`
-
-    msg2 "Link 'libcairo' to the system"
-    ln -s "/usr/lib/libcairo.so" "${pkgdir}/${programpath}/libcairo-swt.so"
-
-    msg2 "Change necessary files to python2 shellbang"
-    sed -i "s|#!/usr/bin/python|#!/usr/bin/python2|" "${pkgdir}/${programpath}/plugins/org.apache.ant_1.8.2.v20120109-1030/bin/runant.py"
 }
 
 # vim:set ts=4 sw=4 et:
