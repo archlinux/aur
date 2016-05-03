@@ -1,7 +1,7 @@
 # Maintainer: Giuseppe Borzi <gborzi _AT_ ieee _DOT_ org>
 pkgname=opencblas
 _pkgname=OpenBLAS
-pkgver=0.2.16
+pkgver=0.2.18
 pkgrel=1
 pkgdesc="An optimized CBLAS library based on GotoBLAS2 1.13 BSD "
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ provides=('cblas=3.3.0')
 conflicts=('cblas')
 options=(!makeflags !emptydirs)
 source=(${_pkgname}-v${pkgver}.tar.gz::http://github.com/xianyi/OpenBLAS/archive/v${pkgver}.tar.gz)
-md5sums=('fef46ab92463bdbb1479dcec594ef6dc')
+md5sums=('805e7f660877d588ea7e3792cda2ee65')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -24,7 +24,7 @@ build() {
   NCORE4PROC=`/usr/bin/grep "cores" /proc/cpuinfo|sort|tail -n 1|sed -e 's/cpu cores.*: //'`
   let NCORE=NPROC*NCORE4PROC
   make USE_OPENMP=1 NO_LAPACK=1 NUM_THREADS=$NCORE LIBPREFIX=libcblas \
-    MAJOR_VERSION=3 ONLY_CBLAS=1 libs shared
+    MAJOR_VERSION=3 ONLY_CBLAS=1 NO_AFFINITY=1 libs shared
 }
 
 package() {
