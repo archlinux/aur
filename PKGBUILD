@@ -1,6 +1,6 @@
 # Maintainer: mickele <mimocciola[at]yahoo[dot]com>
 pkgname=python2-ifcopenshell-git
-pkgver=0.r355.gc6a265a
+pkgver=0.r550.gfefa8a0
 pkgrel=1
 pkgdesc="Open source IFC library and geometry engine. Provides only wrapper for python2. GIT version."
 url="http://ifcopenshell.org/"
@@ -35,6 +35,10 @@ prepare(){
   
   sed -e 's|\t#include "../ifcgeom/IfcGeom.h"|\t// #include "../ifcgeom/IfcGeom.h"|' -i src/ifcwrap/IfcPython.i
   sed -e 's|\t#include "../ifcgeom/IfcGeomIterator.h"|\t#include "../ifcgeom/IfcGeomIterator.h"\n\t#include "../ifcgeom/IfcGeom.h"|' -i src/ifcwrap/IfcPython.i
+
+  sed -e "s|FIND_PACKAGE(Boost REQUIRED COMPONENTS system program_options regex thread date_time)|FIND_PACKAGE(Boost REQUIRED COMPONENTS system program_options regex thread date_time)\nADD_DEFINITIONS(-DBOOST_OPTIONAL_USE_OLD_DEFINITION_OF_NONE)|" -i cmake/CMakeLists.txt
+
+  sed -e "s|boost::shared_ptr<Representation::Triangulation<P>>|boost::shared_ptr<Representation::Triangulation<P> >|" -i src/ifcgeom/IfcGeomElement.h
 }
 
 build() {
@@ -45,6 +49,7 @@ build() {
   local _pythonver=$(python2 --version 2>&1)
   cmake ../cmake \
   	-DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_CXX_STANDARD=11 \
 	-DOCC_INCLUDE_DIR=/opt/opencascade/inc \
 	-DOCC_LIBRARY_DIR=/opt/opencascade/lib \
 	-DOPENCOLLADA_INCLUDE_DIR=/usr/include/opencollada \
