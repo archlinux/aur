@@ -1,7 +1,7 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 # Former maintainer: Andrew Lewis <nerf@judo.za.org>
 pkgname=rspamd
-pkgver=1.2.2
+pkgver=1.2.6
 pkgrel=1
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
@@ -17,6 +17,7 @@ backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/dmarc_whitelist.inc'
 		'etc/rspamd/logging.inc'
 		'etc/rspamd/metrics.conf'
+		'etc/rspamd/mime_types.inc'
 		'etc/rspamd/modules.conf'
 		'etc/rspamd/options.inc'
 		'etc/rspamd/rspamd.conf'
@@ -36,11 +37,14 @@ backup=('etc/rspamd/2tld.inc'
 		'etc/rspamd/modules.d/hfilter.conf'
 		'etc/rspamd/modules.d/ip_score.conf'
 		'etc/rspamd/modules.d/maillist.conf'
+		'etc/rspamd/modules.d/mime_types.conf'
 		'etc/rspamd/modules.d/multimap.conf'
 		'etc/rspamd/modules.d/once_received.conf'
 		'etc/rspamd/modules.d/phishing.conf'
 		'etc/rspamd/modules.d/ratelimit.conf'
+		'etc/rspamd/modules.d/rbl.conf'
 		'etc/rspamd/modules.d/regexp.conf'
+		'etc/rspamd/modules.d/rspamd_update.conf'
 		'etc/rspamd/modules.d/spf.conf'
 		'etc/rspamd/modules.d/surbl.conf'
 		'etc/rspamd/modules.d/whitelist.conf')
@@ -50,7 +54,7 @@ install=rspamd.install
 source=("https://www.rspamd.com/downloads/${pkgname}-${pkgver}.tar.xz"
         "rspamd.service")
 
-sha256sums=('3e46509194f28ac36dc1d9a24d68afffed6e20e1a5e0cdb8573ec4fdd80eec73'
+sha256sums=('a1cbc5ccd53a5c9abe2d9f121f5936fcbd9d68f17fa354e8bddf4fcb3fc768c5'
             '3ccbc157c2e73367e7cbab2b19d0847ef58cecb47194c3bdc5f1b118405d3d26')
 
 build() {
