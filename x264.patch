@@ -1,0 +1,12 @@
+diff -aur x264/x264.c x264.new/x264.c
+--- x264/x264.c	2016-05-04 17:09:05.379492358 +0200
++++ x264.new/x264.c	2016-05-04 17:10:33.146812630 +0200
+@@ -442,7 +442,7 @@
+     printf( "                              - valid csps for `lavf' demuxer:\n" );
+     printf( INDENT );
+     size_t line_len = strlen( INDENT );
+-    for( enum PixelFormat i = AV_PIX_FMT_NONE+1; i < AV_PIX_FMT_NB; i++ )
++    for( enum AVPixelFormat i = AV_PIX_FMT_NONE+1; i < AV_PIX_FMT_NB; i++ )
+     {
+         const char *pfname = av_get_pix_fmt_name( i );
+         if( pfname )

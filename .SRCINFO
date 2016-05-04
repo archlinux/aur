@@ -1,6 +1,6 @@
 pkgbase = airtame-streamer
 	pkgdesc = Stream your display to an airtame dongle.
-	pkgver = 1.7.0
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = http://www.airtame.com
 	arch = x86_64
@@ -8,16 +8,18 @@ pkgbase = airtame-streamer
 	makedepends = yasm
 	depends = ffmpeg-compat
 	provides = airtame-streamer
-	source = https://downloads.airtame.com/application/ga/lin_x64/releases/deb/airtame-application_1.7.0_amd64.deb
+	source = https://downloads.airtame.com/application/ga/lin_x64/releases/airtame-application_1.8.0.tar.gz
 	source = enet::git+https://github.com/airtame/enet.git#branch=development
 	source = zlog::git+https://github.com/airtame/zlog.git
-	source = x264::git+git://git.videolan.org/x264.git#commit=6ee94dc898dc029553e308f1e76891ccefb3f0a7
+	source = x264::git+git://git.videolan.org/x264.git#commit=45856b9787eab95434d66b4bc2e18819483f0e43
+	source = x264.patch
 	source = streamer.sh
 	source = airtame-streamer.service
-	md5sums = 1d1e80a27e98cf6d6348b808c0f73a3a
+	md5sums = 2fca3287550b69fa62bf0fc96bb90ff4
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
+	md5sums = f5a931e5171242090179b569b1d8011a
 	md5sums = 785d2c8f992b595a1bff48d6ec82c058
 	md5sums = 99547aa5d4ff813ed62a5378673a4495
 

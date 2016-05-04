@@ -1,6 +1,6 @@
 # Maintainer: Lars Hagström <lars@foldspace.nu>
 pkgname=airtame-streamer
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="Stream your display to an airtame dongle."
 arch=('x86_64')
@@ -11,25 +11,28 @@ provides=("airtame-streamer")
 depends=("ffmpeg-compat")
 makedepends=("yasm")
 install=
-source=("https://downloads.airtame.com/application/ga/lin_x64/releases/deb/airtame-application_${pkgver}_amd64.deb"
+source=("https://downloads.airtame.com/application/ga/lin_x64/releases/airtame-application_${pkgver}.tar.gz"
         "enet::git+https://github.com/airtame/enet.git#branch=development"
         "zlog::git+https://github.com/airtame/zlog.git"
-        "x264::git+git://git.videolan.org/x264.git#commit=6ee94dc898dc029553e308f1e76891ccefb3f0a7"
+        "x264::git+git://git.videolan.org/x264.git#commit=45856b9787eab95434d66b4bc2e18819483f0e43"
+        "x264.patch"
         "streamer.sh"
         "airtame-streamer.service")
-md5sums=('1d1e80a27e98cf6d6348b808c0f73a3a'
+md5sums=('2fca3287550b69fa62bf0fc96bb90ff4'
          'SKIP'
          'SKIP'
          'SKIP'
+         'f5a931e5171242090179b569b1d8011a'
          '785d2c8f992b595a1bff48d6ec82c058'
          '99547aa5d4ff813ed62a5378673a4495')
 
 backup=()
+prepare(){
+  cd "${srcdir}/x264"
+  patch -p1 < ../x264.patch
+}
 
 build() {
-  cd "$srcdir"
-  tar xvfJ data.tar.xz
-
   cd "$srcdir/enet"
   autoreconf -vfi
   ./configure
@@ -60,7 +63,7 @@ package() {
   cp airtame-streamer.service ${pkgdir}/usr/lib/systemd/user/
 
   #move into the streamer directory
-  cd opt/airtame-application/resources/streamer
+  cd airtame-application_${pkgver}/resources/streamer
 
   #copy the executable to bin directory
   cp bin/airtame-streamer ${pkgdir}/opt/airtame/bin
