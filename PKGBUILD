@@ -1,6 +1,6 @@
 #!/bin/zsh
-_nginx_ver_latest=1.9.14
-_nginx_ver_stable=1.8.1
+_nginx_ver_latest=1.9.15
+_nginx_ver_stable=1.10.0
 
 OPTIONS=(!strip debug) #nchan is still young, in case something goes wrong we want good coredumps
 
@@ -31,7 +31,7 @@ pkgver() {
 
 
 pkgname=nginx-nchan-git
-pkgver=1.9.14.nchan.0.99.12.r0.ga50ae6f
+pkgver=1.9.15.nchan.0.99.14.r1.gd1ae5d2
 pkgrel=1
 pkgdesc="Nginx + Nchan - a flexible pub/sub server (git version)"
 arch=('i686' 'x86_64')
@@ -62,12 +62,11 @@ source=("http://nginx.org/download/nginx-${_nginx_ver}.tar.gz"
   "git+https://github.com/slact/nchan.git"
        )
 
-md5sums=('a25818039f34b5d54b017d44c76321c4'
+md5sums=('13cd38e9da3789035750dd45882c4a26'
 	 '845cab784b50f1666bbf89d7435ac7af'
 	 '79031b58828462dec53a9faed9ddb36a'
 	 '6696dc228a567506bca3096b5197c9db'
-	 'SKIP')
-
+         'SKIP')
 
 build() {
   local _src_dir="${srcdir}/nginx-$_nginx_ver"
@@ -89,6 +88,7 @@ build() {
     --user=${_user}
     --group=${_group}
     --with-http_ssl_module
+    --with-http_v2_module
     --with-http_stub_status_module
     --with-http_dav_module
     --with-http_gzip_static_module
