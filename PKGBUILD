@@ -2,7 +2,7 @@
 
 _pkgname=charls
 pkgname=$_pkgname-git
-pkgver=precpp11.183.g7ef088d
+pkgver=2.0.0.alpha001.3.gda6bb90
 pkgrel=1
 pkgdesc='A C++ JPEG-LS library implementation'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd $_pkgname
-  git describe --always | sed 'y/PC/pc/;s:-:.:g'
+  git describe --always | sed 's:-:.:g'
 }
 
 build() {
