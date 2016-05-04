@@ -15,7 +15,7 @@ conflicts=('neovim-qt')
 replaces=()
 backup=()
 options=()
-install=
+install=neovim-qt-git.install
 source=("${pkgname}::git+${url}.git")
 noextract=()
 md5sums=('SKIP')
@@ -41,9 +41,16 @@ build() {
 package() {
   cd "${pkgname}/build"
 
-  # cmake isn't configured to install anything, do it on our own
+  ## cmake isn't configured to install anything, do it on our own
+
+  # install the binaries and libs
   install -D -m755 bin/nvim-qt "${pkgdir}/usr/bin/nvim-qt"
   install -D -m644 lib/libneovim-qt.a "${pkgdir}/usr/lib/libneovim-qt.a"
+
+  # install any plugins packaged with nvim-qt
+  mkdir -p "${pkgdir}/usr/share/nvim"
+  cp -R ../src/gui/runtime "${pkgdir}/usr/share/nvim"
+  find "${pkgdir}/usr/share/nvim/runtime" -type f -exec chmod 644 {} \;
 
   # install the custom license
   install -D -m644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
