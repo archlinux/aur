@@ -2,8 +2,8 @@
 
 pkgname=imagewriter
 pkgver=1.10.1420800585.134a9b3
-_release=1.5
-pkgrel=3
+_release=1.6
+pkgrel=4
 pkgdesc="A graphical utility for writing raw disk images & hybrid isos to USB keys"
 arch=('i686' 'x86_64')
 url='https://github.com/mbarringer/imagewriter'
@@ -12,7 +12,7 @@ depends=('qt4' 'udisks2')
 optdepends=('xdg-su: NEEDED by non-KDE users!'
 	    'kdebase-runtime: provides kdesu')
 source=("http://download.opensuse.org/tumbleweed/repo/src-oss/suse/src/$pkgname-$pkgver-${_release}.src.rpm")
-sha512sums=('46a0009d3d4448d2750eacd80ca281c9dd0715c1a71f55838b2a52d5a4eed6d06f05aab8252657fefcf7b6f7d898426080c171ac0fe40c6d225964371edf1a80')
+sha512sums=('bf721611622bc8aeca5f218e70a165aec9f9ed8cc5a3f2caf335e76db76a28291589602a086a52418567261186a93bf002e7ca7ed97a71c394b169db163a7821')
 
 prepare() {
 	cd $srcdir
