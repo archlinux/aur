@@ -1,44 +1,54 @@
-# Contributor: Various
+# Maintainer: Thomas Berryhill (oats) <tb01110100 at gmail dot com>
+# Contributor: Felix Yan <felixonmars at archlinux dot org>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski at archlinux dot org>
+# Contributor: Thomas Dziedzic <gostrc at gmail dot com>
+# Contributor: Angel Velasquez <angvp at archlinux dot org>
+# Contributor: Alexander Fehr <pizzapunk gmail com>
+# Contributor: Daniel J Griffiths <ghost1227 at archlinux dot us>
 
-_pkgname=aria2
 pkgname=aria2-git
-pkgver=1.16.4.30.gb292ae1
-pkgrel=1
-epoch=1
-pkgdesc="Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink"
+pkgver=1.22.0.30.ge174b90
+pkgrel=2
+pkgdesc='Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink'
 arch=('i686' 'x86_64')
-url="http://aria2.sourceforge.net/"
+url='http://aria2.sourceforge.net/'
 license=('GPL')
-depends=('gnutls' 'libxml2' 'sqlite3' 'c-ares' 'ca-certificates')
-makedepends=('git' 'cppunit' 'python-sphinx')
+conflicts=('aria2')
 provides=('aria2')
-conflicts=('aria2' 'aria2-daemon-svn')
-source=('git://github.com/tatsuhiro-t/aria2.git')
-md5sums=('SKIP')
-
+depends=('gnutls' 'libxml2' 'sqlite' 'c-ares' 'ca-certificates' 'libssh2')
+makedepends=('git' 'python2-sphinx')
+checkdepends=('cppunit')
+source=("$pkgname::git+https://github.com/tatsuhiro-t/aria2.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  git describe --always | sed -e 's|-|.|g' -e 's|release.||'
+  cd "$pkgname"
+  git describe --always | sed -e 's/-/./g' -e 's/release.//'
 }
 
-build(){
-  cd $srcdir/$_pkgname
+build() {
+  cd "$pkgname"
 
   autoreconf -i
-  ./configure --prefix=/usr --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt
+  ./configure \
+    --prefix=/usr \
+    --with-ca-bundle=/etc/ssl/certs/ca-certificates.crt
   make
 }
 
+check() {
+  cd "$pkgname"
+
+  make check
+}
+
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "$pkgname"
+  make DESTDIR="$pkgdir" install
 
-  make DESTDIR=${pkgdir} install
-
-  # add bash completion (aria2 automatically installs to a temporary target directory)
-  install -d ${pkgdir}/usr/share/bash-completion/completions
-  install -m644 ${pkgdir}/usr/share/doc/aria2/bash_completion/aria2c \
-    ${pkgdir}/usr/share/bash-completion/completions
-  rm -rf ${pkgdir}/usr/share/doc/aria2/bash_completion
-} 
-
+  # add bash completion
+  install -d "$pkgdir"/usr/share/bash-completion/completions
+  install -m644 "$pkgdir"/usr/share/doc/aria2/bash_completion/aria2c \
+    "$pkgdir"/usr/share/bash-completion/completions
+  rm -rf "$pkgdir"/usr/share/doc/aria2/bash_completion
+}
