@@ -1,6 +1,6 @@
 pkgbase = shadow-icon-theme-git
 	pkgdesc = A flat colourful icon theme for GNOME 3.10+
-	pkgver = v1.7.1.r1.g4edafb4
+	pkgver = 1.7.1.r1.g4edafb4
 	pkgrel = 1
 	url = http://gnome-look.org/content/show.php/Shadow?content=170398
 	arch = any
