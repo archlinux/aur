@@ -1,0 +1,11 @@
+--- src/pixie.c	2016-05-05 01:04:12.717452646 +0800
++++ src/pixie.c	2016-05-05 01:04:39.887452824 +0800
+@@ -693,8 +693,6 @@
+         :"memory" );
+         return ret;
+ #endif
+-#else
+-#error pixie_locked_xadd_u32: undefined (unknown compiler or OS)
+ #endif
+ }
+ 

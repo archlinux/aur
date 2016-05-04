@@ -1,0 +1,16 @@
+pkgbase = ferret-sidejack
+	pkgdesc = A cookies spoof tool
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = http://pkg.kali.org/pkg/ferret-sidejack
+	arch = x86_64
+	arch = x64
+	license = GPL
+	makedepends = git
+	source = git://git.kali.org/packages/ferret-sidejack.git
+	source = pixie.patch
+	md5sums = SKIP
+	md5sums = df9e9d84f3a5d0283725a9c94f5bf8c5
+
+pkgname = ferret-sidejack
+
