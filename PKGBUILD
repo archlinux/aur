@@ -2,7 +2,7 @@
 
 _gitname=darling
 pkgname=$_gitname-git
-pkgver=1230.63c6f36
+pkgver=r1231.3f53706
 pkgrel=1
 pkgdesc="A Darwin/OS X emulation layer for Linux"
 arch=('x86_64') # Can only be built on x86_64 systems
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$_gitname"
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
