@@ -1,44 +1,33 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
+# Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=multirust-git
-_pkgname=multirust
-pkgver=0.7.0.r0.gb222fcd
-pkgrel=2
-pkgdesc="A tool for managing multiple Rust installations"
+pkgdesc='A tool for managing multiple Rust installations.'
+url='https://github.com/brson/multirust'
+pkgver() { cd ${pkgbase} && git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'; }
+pkgver=0.8.0.r9.g0d98a59
+pkgrel=1
 arch=('any')
-url="https://github.com/brson/multirust"
-license=('MIT')
-source=('git+https://github.com/brson/multirust'
-        'git+https://github.com/rust-lang/rust-installer'
-        'git+https://github.com/rust-lang/rustup')
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP')
+license=('MIT' 'Apache')
+source=("$pkgname::git://github.com/brson/multirust.git")
+sha256sums=('SKIP')
+makedepends=('git')
 depends=('bash' 'curl')
-builddepends=('git')
-optdepends=('gnupg: to verify signatures')
-conflict=('cargo-bin' 'cargo-git' 'rust' 'rust-git' 'rust-nightly' 'rust-nightly-bin' 'multirust')
-provides=('rust' 'cargo')
-
-pkgver() {
-  cd "$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
+provides=('rust' 'cargo' 'rustup')
+conflicts=('multirust' 'rust' 'cargo' 'rustup')
 
 prepare() {
-  cd "$_pkgname"
-  git submodule init
-  git config submodule.rust-installer.url "$srcdir/multirust/src/rust-installer"
-  git config submodule.rustup.url "$srcdir/multirust/src/rustup"
-  git submodule update
+	cd ${pkgbase}
+	git submodule update --init
+	curl -OO https://github.com/rust-lang/rust/blob/master/LICENSE-{MIT,APACHE}
 }
 
 build() {
-  cd "$_pkgname"
-  ./build.sh
+	cd ${pkgbase}
+	bash build.sh
 }
 
 package() {
-  cd "$_pkgname"
-  ./install.sh --prefix="${pkgdir}/usr/"
+	cd ${pkgbase}
+	bash install.sh --prefix="${pkgdir}/usr"
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE-{MIT,APACHE}
 }
