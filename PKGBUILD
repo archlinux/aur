@@ -1,7 +1,7 @@
 # Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=pjson-git
-pkgver=0.6.r41.ge31d735
+pkgver=1.0.r55.g0b7566a
 pkgrel=1
 pkgdesc="Command-line tool to validate and pretty-print JSON and XML (development version)"
 url="http://igorgue.com/pjson"
