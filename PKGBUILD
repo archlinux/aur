@@ -1,6 +1,6 @@
 # Contributor: vantu5z <vantu5z@mail.ru>
 pkgname=rhvoice-dictionary-git
-pkgver=20150923
+pkgver=20160504
 pkgrel=1
 pkgdesc="Русский словарь для RHVoice"
 arch=('i686' 'x86_64')
@@ -33,4 +33,5 @@ package()
     cd "$srcdir/$_gitname"
     mkdir -p ${pkgdir}/etc/RHVoice/dicts/Russian/
     cp -R user_dict.txt "$pkgdir/etc/RHVoice/dicts/Russian/"
+    cp -R street_dict.txt "$pkgdir/etc/RHVoice/dicts/Russian/"
 }
