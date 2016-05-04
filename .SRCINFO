@@ -1,7 +1,7 @@
 pkgbase = airtame-streamer
 	pkgdesc = Stream your display to an airtame dongle.
 	pkgver = 1.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.airtame.com
 	arch = x86_64
 	license = Proprietary
@@ -11,7 +11,7 @@ pkgbase = airtame-streamer
 	source = https://downloads.airtame.com/application/ga/lin_x64/releases/airtame-application_1.8.0.tar.gz
 	source = enet::git+https://github.com/airtame/enet.git#branch=development
 	source = zlog::git+https://github.com/airtame/zlog.git
-	source = x264::git+git://git.videolan.org/x264.git#commit=45856b9787eab95434d66b4bc2e18819483f0e43
+	source = x264::git+git://git.videolan.org/x264.git#commit=6ee94dc898dc029553e308f1e76891ccefb3f0a7
 	source = x264.patch
 	source = streamer.sh
 	source = airtame-streamer.service
