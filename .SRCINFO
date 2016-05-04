@@ -1,29 +1,29 @@
 pkgbase = influxdb-git
 	pkgdesc = Scalable datastore for metrics, events, and real-time analytics
-	pkgver = v0.9.1.rc1.r447.gbe792b9
+	pkgver = 0.12.2.r1035.gf2bb9db
 	pkgrel = 1
 	url = http://influxdb.org/
 	install = influxdb.install
 	arch = i686
 	arch = x86_64
+	arch = armv6h
+	arch = armv7h
 	license = MIT
 	makedepends = autoconf
 	makedepends = protobuf
 	makedepends = bison
 	makedepends = flex
 	makedepends = go
+	makedepends = godep
 	makedepends = gawk
 	makedepends = mercurial
 	makedepends = git
+	makedepends = collectd
 	provides = influxdb
 	conflicts = influxdb
-	backup = etc/influxdb.conf
-	source = git+https://github.com/influxdb/influxdb.git
-	source = influxdb.service
+	backup = etc/influxdb/influxdb.conf
 	source = influxdb.install
 	md5sums = SKIP
-	md5sums = a73293aa5489a70bdfa01f8a5dfee359
-	md5sums = 37772f833acd9f5f8ac9c2bd3f1c3be8
 
 pkgname = influxdb-git
 

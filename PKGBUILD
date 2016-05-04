@@ -1,68 +1,75 @@
-# Maintainer: Justin Dray <justin@dray.be>
+# Maintainer: Janusz Lewandowski <lew21@xtreeme.org>
 # Contributor: Nicolas Leclercq <nicolas.private@gmail.com>
 # Contributor: Charles B. Johnson <mail@cbjohnson.info>
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 # Contributor: Ben Alex <ben.alex@acegi.com.au>
 
-_pkgname='influxdb'
-pkgname="$_pkgname-git"
-pkgver=v0.9.1.rc1.r447.gbe792b9
+pkgname='influxdb-git'
+_gitname='influxdb'
+pkgver=0.12.2.r1035.gf2bb9db
 pkgrel=1
 epoch=
 pkgdesc='Scalable datastore for metrics, events, and real-time analytics'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://influxdb.org/'
 license=('MIT')
 groups=()
-makedepends=('autoconf' 'protobuf' 'bison' 'flex' 'go' 'gawk' 'mercurial' 'git')
+depends=()
+makedepends=('autoconf' 'protobuf' 'bison' 'flex' 'go' 'godep' 'gawk' 'mercurial' 'git' 'collectd')
 checkdepends=()
+optdepends=()
 provides=('influxdb')
 conflicts=('influxdb')
-backup=('etc/influxdb.conf')
+replaces=()
+backup=('etc/influxdb/influxdb.conf')
 options=()
-install="$_pkgname.install"
+install="influxdb.install"
+source=("influxdb.install")
 changelog=
-source=("git+https://github.com/influxdb/influxdb.git"
-        "$_pkgname.service"
-	"$_pkgname.install")
-noextract=()
-md5sums=('SKIP'
-         'a73293aa5489a70bdfa01f8a5dfee359'
-         '37772f833acd9f5f8ac9c2bd3f1c3be8')
+noextract=("$pkgtar")
+md5sums=('SKIP')
 
+prepare()
+{
+  export GOPATH="${srcdir}"
+  export GOBIN="$GOPATH/bin"
+  export INFLUXDBPATH="$GOPATH/src/github.com/influxdata/influxdb"
+  if [ -d $GOBIN ]; then
+    rm -rf $GOBIN;
+  fi;
+
+  go get github.com/influxdata/influxdb
+  cd $INFLUXDBPATH
+  go get github.com/sparrc/gdm
+  $GOBIN/gdm restore
+}
 pkgver() {
-	cd "$_pkgname"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd $INFLUXDBPATH
+  # cutting off 'v' prefix that presents in the git tag
+  git describe --long --tags | sed 's/^v0.10.0/0.12.2/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
-
-build() {
-	export GOPATH="$srcdir"
-	mkdir -p "$srcdir/src/github.com/influxdb"
-	mv "$srcdir/influxdb" "$srcdir/src/github.com/influxdb/"
-	cd "$srcdir/src/github.com/influxdb/influxdb"
-	go get -u -f ./...
-	go build ./...
-	go install ./...
-
-	sed -i 's|/var/opt|/var/lib|g' etc/config.sample.toml
+build()
+{
+  cd $INFLUXDBPATH
+  commit=`git rev-parse HEAD`
+  echo "Building $pkgname version=${pkgver} commit=$commit"
+  go install -ldflags="-X main.version=${pkgver} -X main.commit=$commit" ./...
 }
-
-check() {
-  cd "$srcdir/src/github.com/influxdb/influxdb"
-  # Required for testing
-  go get github.com/davecgh/go-spew/spew
-  go test -v ./...
-}
-
-package() {
+package()
+{
   # systemctl service file
-  install -D -m644  "$srcdir/influxdb.service" "$pkgdir/usr/lib/systemd/system/influxdb.service"
+  install -D -m644  "$INFLUXDBPATH/scripts/influxdb.service" "$pkgdir/usr/lib/systemd/system/influxdb.service"
 
-  # influxdb binary
-  install -D -m755 "$srcdir/bin/influx" "$pkgdir/usr/bin/influx"
-  install -D -m755 "$srcdir/bin/influxd" "$pkgdir/usr/bin/influxd"
-  install -D -m755 "$srcdir/bin/urlgen" "$pkgdir/usr/bin/urlgen"
+  # binaries
+  install -D -m755 "$GOBIN/influxd" "$pkgdir/usr/bin/influxd"
+  install -D -m755 "$GOBIN/influx" "$pkgdir/usr/bin/influx"
+
+  # migration tool from 0.9 to 0.10
+  install -D -m755 "$GOBIN/influx_tsm" "$pkgdir/usr/bin/influx_tsm"
 
   # configuration file
-  install -D -m644 "$srcdir/src/github.com/influxdb/influxdb/etc/config.sample.toml" "$pkgdir/etc/influxdb.conf"
+  install -D -m644 "$INFLUXDBPATH/etc/config.sample.toml" "${pkgdir}/etc/influxdb/influxdb.conf"
+
+  # license
+  install -Dm644 "$INFLUXDBPATH/LICENSE" "${pkgdir}/usr/share/licenses/influxdb/LICENSE"
 }
