@@ -6,7 +6,7 @@ pkgbase = arc-dark-lxqt-manjaro
 	arch = any
 	license = cc-by-nc-nd-4.0
 	source = https://manjaro.ru/aur/arc-dark-lxqt-manjaro/arc-dark-lxqt-manjaro.tar.gz
-	md5sums = 34205d7bae50886266dd8ede94e5fcec
+	md5sums = d3151075468e10066fd0c532efe4538e
 
 pkgname = arc-dark-lxqt-manjaro
 
