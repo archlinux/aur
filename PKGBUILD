@@ -5,7 +5,7 @@
 # Contributor: Filip Wojciechowski <filip at loka dot pl>
 
 pkgname=tagtool
-pkgver=0.13.4
+pkgver=0.14
 pkgrel=1
 pkgdesc='Tool to edit tags in MP3 and Ogg Vorbis files'
 url='https://github.com/impegoraro/tagtool'
@@ -14,9 +14,7 @@ arch=('i686' 'x86_64' 'armv7h')
 makedepends=('intltool')
 depends=('glade' 'id3lib' 'libvorbis')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha1sums=('c48282d5501f984177d102b8acfab2ee35828656')
-
-install=install
+sha1sums=('05eef662d0f0f46983ad9a1e942e6ce4ac66276d')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
