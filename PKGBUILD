@@ -2,7 +2,7 @@
 
 pkgname=liblcf-git
 pkgver=0.4.1.r7.g8031cb7
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to handle RPG Maker 2000/2003 and EasyRPG projects (development version)"
 arch=('i686' 'x86_64')
 url="https://easy-rpg.org/"
@@ -16,7 +16,7 @@ md5sums=('SKIP')
 
 prepare() {
   # fix an error
-  sed -i 's|^time_stamp_CXXFLAGS =|& -std=c++11|' liblcf/Makefile.{in,am}
+  sed -i 's|^time_stamp_CXXFLAGS =|& -std=c++11|' liblcf/Makefile.am
 }
 
 pkgver() {
