@@ -6,8 +6,8 @@
 
 pkgname=firefox-gtk2
 _pkgname=firefox
-pkgver=46.0
-pkgrel=2
+pkgver=46.0.1
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -29,7 +29,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         vendor.js
         firefox-symbolic.svg
         no-libnotify.patch)
-sha256sums=('b35aa05162362d73cd308066adca207f7aa40ceae10931fa4819371df6c4f8bf'
+sha256sums=('98b8292a31b7e3e426f3204de1fed2a6ab38dcf64dd27bdfae556b407a198bf9'
             'ccd81f8a93ef06c55625709ce812ca6b5630f385ba26436665ca6c15158bc11f'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
