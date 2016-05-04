@@ -5,14 +5,14 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=45.1.0
+pkgver=45.1.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.mozilla.org/en-US/firefox/organizations/"
 depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'desktop-file-utils' 'hicolor-icon-theme'
+         'dbus-glib' 'alsa-lib' 'ffmpeg' 'desktop-file-utils'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
              'xorg-server-xvfb' 'libpulse' 'inetutils')
@@ -20,18 +20,15 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'upower: Battery API')
 provides=(firefox)
 conflicts=(firefox)
-install=firefox.install
 options=('!emptydirs' '!makeflags')
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         mozconfig firefox.desktop firefox-install-dir.patch vendor.js
-        firefox-fixed-loading-icon.png
         no-libnotify.patch)
-sha256sums=('8bdc4a0f6d0ca4f28e888ca0044ba735ddc78302820b5ffcc25cd65064ff40a1'
-            'ffcb2a0ba2ed08f74931a11043717391ef380234cadccc6f0c13f1186ad80e8b'
+sha256sums=('a27e36aa1ccebddfe5a113f7f15b09a61e35644be58029b00b0d996a00d04562'
+            '083de691a0e88b8829a110cc783de3cc8d6523be62ae4ea9180c44856d8e24f5'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
-            '68e3a5b47c6d175cc95b98b069a15205f027cab83af9e075818d38610feb6213'
             'e4ebdd14096d177d264a7993dbd5df46463605ff45f783732c26d30b9caa53a7')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
@@ -57,21 +54,15 @@ prepare() {
   mkdir "$srcdir/path"
   ln -s /usr/bin/python2 "$srcdir/path/python"
 
-  # configure script misdetects the preprocessor without an optimization level
-  # https://bugs.archlinux.org/task/34644
-  sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' configure
-
-  # Fix tab loading icon (doesn't work with libpng 1.6)
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=841734
-  cp "$srcdir/firefox-fixed-loading-icon.png" \
-    browser/themes/linux/tabbrowser/loading.png
 }
 
 build() {
   cd firefox-${pkgver}esr
 
   export PATH="$srcdir/path:$PATH"
-  export PYTHON="/usr/bin/python2"
+
+  # _FORTIFY_SOURCE causes configure failures
+  CPPFLAGS+=" -O2"
 
   # Do PGO
   xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24" \
