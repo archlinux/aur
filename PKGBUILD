@@ -21,7 +21,7 @@ pkgver() {
 
 prepare() {
   msg 'Creating shell executable'
-  echo -e '#!/bin/sh\ncd /usr/share/pybitmessage\nexec python2 bitmessagemain.py' > pybitmessage.sh
+  echo -e '#!/bin/sh\ncd /usr/share/'${pkgname}'\nexec python2 bitmessagemain.py' > pybitmessage.sh
   chmod +x pybitmessage.sh
 
   cd "$pkgname"
@@ -39,13 +39,13 @@ package() {
   cp -R src/* "$pkgdir"/usr/share/$pkgname
 
   msg 'Installing desktop icons...'
-  install -D -m644 desktop/pybitmessage.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -D -m644 src/images/can-icon-24px.png "$pkgdir/usr/share/icons/hicolor/24x24/apps/$pkgname.png"
-  install -D -m644 desktop/can-icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$pkgname.svg"
-  install -D -m644 desktop/can-icon.svg "$pkgdir/usr/share/pixmaps/$pkgname.svg"
+  install -D -m644 desktop/pybitmessage.desktop "$pkgdir/usr/share/applications/pybitmessage.desktop"
+  install -D -m644 src/images/can-icon-24px.png "$pkgdir/usr/share/icons/hicolor/24x24/apps/pybitmessage.png"
+  install -D -m644 desktop/can-icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/pybitmessage.svg"
+  install -D -m644 desktop/can-icon.svg "$pkgdir/usr/share/pixmaps/pybitmessage.svg"
 
   msg 'Installing executable...'
-  install -D -m755 $srcdir/pybitmessage.sh "$pkgdir/usr/bin/$pkgname"
+  install -D -m755 $srcdir/pybitmessage.sh "$pkgdir/usr/bin/pybitmessage"
 
   msg 'Installing man page...'
   mkdir -p "$pkgdir/usr/share/man/man1"
