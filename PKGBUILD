@@ -3,8 +3,8 @@
 pkgname="udash-generator"
 pkgdesc="Udash project generator"
 pkgver=0.2.0
-pkgrel=1
-url="http://www.udash.io"
+pkgrel=2
+url="https://github.com/UdashFramework/udash-generator"
 license=('Apache')
 arch=('any')
 source=("https://github.com/UdashFramework/udash-generator/releases/download/v${pkgver}/udash-generator.zip"
