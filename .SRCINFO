@@ -1,0 +1,17 @@
+pkgbase = lib32-eatmydata
+	pkgdesc = library and utilities designed to disable fsync and friends (32-bit version)
+	pkgver = 105
+	pkgrel = 3
+	url = https://launchpad.net/libeatmydata
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	conflicts = eatmydata
+	depends = gcc-multilib
+	source = https://launchpad.net/libeatmydata/trunk/release-105/+download/libeatmydata-105.tar.gz
+	source = eatmydata.patch
+	md5sums = 6681166466e589eb0d71177709361256
+	md5sums = c6715ae1204201921af34a374886eea0
+
+pkgname = lib32-eatmydata
+
