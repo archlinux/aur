@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatvi-git
-pkgver=r1.b1c10bc
+pkgver=r175.3846d47
 pkgrel=1
 epoch=
 pkgdesc="A small ex/vi editor."
@@ -36,5 +36,6 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   install -Dm755 vi $pkgdir/usr/bin/neatvi
+  install -Dm755 README $pkgdir/usr/share/doc/${pkgname%-*}/README
 }
 
