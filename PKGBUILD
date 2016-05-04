@@ -3,7 +3,7 @@ pkgname=(swift swift-lldb)
 _swiftver=2.2.1-RELEASE
 _swiftold=2.2-SNAPSHOT-2016-01-11-a
 pkgver=${_swiftver//-RELEASE/}
-pkgrel=1
+pkgrel=2
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
@@ -20,7 +20,7 @@ source=(
     "swift-cmark-${_swiftver}.tar.gz::https://github.com/apple/swift-cmark/archive/swift-${_swiftver}.tar.gz"
     "swift-no-docs.patch"
 )
-sha256sums=('95fb0da2282da15f2aada66dec07a26630e66caf9d68f2c9f492527e25962096'
+sha256sums=('e971e2287055da72564356f369bad97e95821afb1ef36157e954a04a7e90753a'
             'f7977e5bb275494b5dac4490afc5d634f894ba5f209f3b2dbd5b7e520fa5fce2'
             '40bdfa7eec0497ec69005d6a5d018b12c85aa2c0959d3408ecaaa9e34ff0415f'
             '2098043dbda98374e784d3357f71f8e931aea3ac958c042adf0df0fae7bc22a3'
