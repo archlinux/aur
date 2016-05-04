@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=dooble-common
-pkgver=1.55
+pkgver=1.56
 pkgrel=1
 pkgdesc='Common files for package variants for Dooble'
 url='http://dooble.sourceforge.net/'
@@ -10,7 +10,7 @@ license=('custom:3-clause BSD')
 depends=()
 makedepends=('qtchooser')
 source=("dooble-${pkgver}.tar.gz::https://downloads.sourceforge.net/project/dooble/Version%20${pkgver}/Dooble_Src.d.tar.gz?r=")
-sha256sums=('024003e7c397a925d48e41cba10a2a35b89dd1745120caf4fd2010c1e254c5e5')
+sha256sums=('615c9a7d9e1d90fa9b497106d208733cb843e75368e7aa3bdc0e2e486c590325')
 
 
 build()
@@ -26,10 +26,9 @@ package()
     
     mkdir -p -- "${pkgdir}/usr/share/dooble/Translations"
     mv Translations/*.qm  -- "${pkgdir}/usr/share/dooble/Translations"
-    mv Icons Images Plugins Tab -- "${pkgdir}/usr/share/dooble"
-    
-    mkdir -p -- "${pkgdir}/usr/lib/dooble"
-    mv plugin-spec -- "${pkgdir}/usr/lib/dooble"
+    cd '../Version 2.x'
+    mv Icons Images Tab -- "${pkgdir}/usr/share/dooble"
+    cd -
     
     for s in 16x16 48x48 64x64; do
 	mkdir -p -- "${pkgdir}/usr/share/icons/hicolor/${s}"
