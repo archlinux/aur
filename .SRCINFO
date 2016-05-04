@@ -1,6 +1,6 @@
 pkgbase = datecalc
 	pkgdesc = A simple date calculator.
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/Kwpolska/datecalc
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = datecalc
 	depends = python-dateutil
 	optdepends = python-pyqt5: for Qt GUI
 	options = !emptydirs
-	source = https://pypi.io/packages/source/d/datecalc/datecalc-0.2.0.tar.gz
-	md5sums = 2801e4b6a29b8bf8c64669d8703bd3dc
+	source = https://pypi.io/packages/source/d/datecalc/datecalc-0.2.1.tar.gz
+	md5sums = 2137bfca558e83227a4a2ad82e494a85
 
 pkgname = datecalc
 
