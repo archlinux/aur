@@ -19,5 +19,6 @@ package() {
 	install -D LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 	install -D shrinkpdf.sh "$pkgdir/usr/bin/shrinkpdf.sh"
+	install -D shrinkpdf.sh "$pkgdir/usr/bin/shrinkpdf"
 }
 
