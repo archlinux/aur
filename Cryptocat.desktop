@@ -2,7 +2,7 @@
 Name=Cryptocat
 Comment=Chat with your friends, privately.
 Exec=Cryptocat %U
-Icon=Cryptocat
+Icon=/usr/share/cryptocat-bin/logo.png
 StartupNotify=false
 Categories=Network;
 Type=Application
