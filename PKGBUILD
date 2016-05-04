@@ -1,7 +1,7 @@
 # Maintainer: Vic Luo  <vicluo96@gmail.com>
 # Maintainer: wenLiangcan <boxeed@gmail.com>
 pkgname=xmradio-git
-pkgver=0.5.2.0.g418748a
+pkgver=0.5.2.3.gbf1e4ce
 pkgrel=1
 epoch=1
 pkgdesc="xmradio is a tiny Internet Xia Mi Radio client for Linux, which supports many radio style, skin builtin and many other features."
@@ -47,5 +47,8 @@ build() {
 package() {
     cd "xmradio/build"
     make DESTDIR="$pkgdir/" install
+    if [[ 'x86_64' = "${CARCH}" ]]; then
+        mv "${pkgdir}/usr/"{'lib64','lib'}
+    fi
 }
 
