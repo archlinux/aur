@@ -1,5 +1,5 @@
 post_install() {
-  /usr/bin/printf "--------------------------------------------\n"
+  /usr/bin/printf "----------------------------------------------\n"
   /usr/bin/printf " Start the expressvpn daemon with\n"
   /usr/bin/printf "     systemctl start expressvpnd.service\n"
   /usr/bin/printf " Then activate your expressVPN account with\n"
