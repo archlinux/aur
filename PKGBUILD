@@ -167,7 +167,7 @@ package() {
     "$pkgdir/usr/share/vim/vimfiles"
   cp -r "$srcdir/YouCompleteMe/third_party/"{pythonfutures,requests-futures,retries} \
     "$pkgdir/usr/share/vim/vimfiles/third_party"
-  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_core.so,check_core_version.py,CORE_VERSION} \
+  cp -r "$srcdir/YouCompleteMe/third_party/ycmd/"{ycmd,ycm_core.so,CORE_VERSION} \
     "$pkgdir/usr/share/vim/vimfiles/third_party/ycmd"
 
   if [[ "${_COMPLETER}" == "USE_CLANG_COMPLETER" ]]; then
