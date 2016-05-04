@@ -2,7 +2,7 @@
 # orig Contributor: Denis Wernert <denis@wernert.info>
 pkgname=ocaml-csv
 pkgver=1.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="OCaml CSV parsing library"
 arch=('i686' 'x86_64')
 url="https://github.com/Chris00/ocaml-csv"
@@ -22,7 +22,8 @@ build() {
 
 package() {
   cd csv-$pkgver
-  SITE=$pkgdir`ocamlc -where`/site-lib
+  #SITE=$pkgdir`ocamlc -where`/site-lib
+  SITE=$pkgdir`ocamlc -where`
   install -d $SITE -m 755
   OCAMLFIND_DESTDIR=$SITE make install
 }
