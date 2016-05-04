@@ -7,15 +7,21 @@
 
 pkgname='unreal-engine'
 pkgver=4.11.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
 url='https://www.unrealengine.com/'
 makedepends=('clang35' 'mono' 'dos2unix' 'cmake')
 depends=('icu53' 'xdg-user-dirs')
 license=('custom:UnrealEngine')
-source=(git+ssh://github.com/EpicGames/UnrealEngine.git#tag=$pkgver-release)
-md5sums=(SKIP)
+source=(
+  git+ssh://github.com/EpicGames/UnrealEngine.git#tag=$pkgver-release
+  UE4Editor.desktop
+)
+md5sums=(
+  SKIP
+  7a2db62e8d0e8e6f26424768c412d356
+)
 options=(!strip staticlibs)
 
 build() {
@@ -29,6 +35,8 @@ build() {
 }
 
 package() {
+  install -Dm644 UE4Editor.desktop "$pkgdir/usr/share/applications/UE4Editor.desktop"
+
   cd $srcdir/UnrealEngine
 
   install -Dm644 LICENSE.pdf "$pkgdir/usr/share/licenses/UnrealEngine/LICENSE.pdf"
@@ -44,7 +52,6 @@ package() {
   chmod -R a+w "$pkgdir/opt/$pkgname/"
 
   install -Dm644 Engine/Content/Editor/Slate/About/UE4Icon.png "$pkgdir/usr/share/pixmaps/UE4Editor.png"
-  install -Dm644 "$startdir/UE4Editor.desktop" "$pkgdir/usr/share/applications/UE4Editor.desktop"
 }
 
 # vim:set ts=2 sw=2 et:
