@@ -3,7 +3,7 @@
 # Maintainer: TWPHoenix1982 <rene DOT landscheidt AT gmx DOT de>
 pkgname=xojo
 pkgver=2016r11
-pkgrel=2
+pkgrel=3
 pkgdesc="A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, the web and now with 64Bit and ARM V2 (Raspberry Pi 2) support."
 arch=(i686 x86_64)
 url="http://www.xojo.com"
@@ -11,8 +11,8 @@ license=("custom")
 source=("http://41160df63757fc043cfd-66287f38a83954e31a54d1dbe33e0650.r4.cf2.rackcdn.com/Xojo$pkgver/xojo$pkgver.tgz"
 "xojo.desktop"
 "lingua.desktop"
-"RemoteDebuggerDesktop.desktop"
-"xojo.xpm")
+"RemoteDebuggerDesktop.desktop")
+##"xojo.xpm")
 ##[[ $CARCH == i686 ]] && depends=(gtk2 expat glib2 glibc mesa icu gcc-libs) && makedepends=(lib32-libtinfo libtinfo)
 ##makedepends=(lib32-webkitgtk2)
 [[ $CARCH == i686 ]] && depends=(gtk2 expat glib2 glibc mesa icu gcc-libs) && makedepends=(lib32-libtinfo)
@@ -23,8 +23,7 @@ lib32-icu lib32-gcc-libs) && makedepends=(lib32-libtinfo libtinfo)
 sha256sums=('18a5c6035712cd49079d89f6a165ff9650e2edaa4b43bfe23b038a0333609c62'
             '17250f624de25bb575a3ca5d3158a60cba95248c624d71959c0bcb823384e9ee'
             '7b084164ba9430b389a500a551a0cec5283f4eaa54dc27c01e7f0aa477e69612'
-            '024cbfa8d23766b54aed636a52708f656776a45d6109cde3ca4278d463958e97'
-            '7d87245d685c0cd744f3fdb10b539d361cd86c8e23f3b1dbc86e5ada69d8042f')
+            '024cbfa8d23766b54aed636a52708f656776a45d6109cde3ca4278d463958e97')
 options=(!strip)
 
 package() {
@@ -36,7 +35,7 @@ package() {
 	mkdir -p "$pkgdir/usr/bin" "$pkgdir/opt" "$pkgdir/usr/share/licenses/xojo"
 	# "$pkgdir/usr/lib32"
 	cp -r "xojo$pkgver" "$pkgdir/opt/xojo"
-	cp "xojo.xpm" "$pkgdir/opt/xojo"
+	##cp "xojo.xpm" "$pkgdir/opt/xojo" Now Shipped with the App again.
 	# Reparieren der Dateirechte	
 	chmod 755 "$pkgdir/opt/xojo/Xojo Resources/Linux/HoudiniAssistant"
 	chmod 755 "$pkgdir/opt/xojo/Xojo Resources/Linux/libc++.so.1"
