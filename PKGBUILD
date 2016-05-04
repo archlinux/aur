@@ -1,7 +1,7 @@
 # Maintainer: Harry Jeffery <harry|@|exec64|.|co|.|uk>
 
 pkgname=rosella
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Lightweight ircd"
 arch=('x86_64' 'i686')
