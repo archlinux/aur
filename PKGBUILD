@@ -19,6 +19,6 @@ package() {
     install -D -m644 "${srcdir}/HMCL-$pkgver.jar" "${pkgdir}/usr/share/hmcl/HMCL.jar"
     install -D -m644 "${srcdir}/hmcl.desktop" "${pkgdir}/usr/share/applications/hmcl.desktop"
 }
-sha256sums=('df5b4b8e70eb3b9938754a1e0466009c7b54182f674da5657496248ab985a7c9'
+sha256sums=('56c8d3a2c2764e34d620621e947c34e4c612e2c2b36aae0d59ae3c7fc5d1979b'
             'ea84b0259b815a0afe9f37a8b8d94e2b1110b744e21fabf6dd170a33b91407af'
             '90b92c77b4cb962a9f13dc673b10796648b6c1af13d06fc09698e26854e343e8')
