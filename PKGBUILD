@@ -4,8 +4,8 @@ _kernel=$(pacman -Qqo /usr/lib/modules/`uname -r` | grep linux | grep -v headers
 _gitname=darling
 pkgbase=$_gitname-mach-git
 pkgname=($_gitname-mach-git $_gitname-mach-dkms-git)
-pkgver=23.4036a2b
-pkgrel=3
+pkgver=r23.44cf244
+pkgrel=1
 pkgdesc="Darling's Linux kernel module (darling-mach)"
 arch=('x86_64') # Can only be built on x86_64 systems
 url="http://www.darlinghq.org"
@@ -19,7 +19,7 @@ md5sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir/$_gitname"
-	echo $(git rev-list --count HEAD -- "src/lkm").$(git rev-parse --short HEAD -- "src/lkm")
+	printf "r%s.%s" "$(git rev-list --count HEAD -- 'src/lkm')" "$(git rev-list --abbrev-commit --max-count=1 HEAD -- 'src/lkm')"
 }
 
 build() {
