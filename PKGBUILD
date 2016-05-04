@@ -3,7 +3,7 @@
 
 pkgname=expressvpn
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary VPN client for Linux"
 arch=('x86_64' 'i686')
 url="https://expressvpn.com"
@@ -11,6 +11,7 @@ license=('custom')
 # net-tools is needed for old skool ifconfig
 depends=('net-tools')
 _date=$(date +%Y%m%d)
+install=expressvpn.install
 source=("expressvpnd.service"
         "license-${_date}.html::https://www.expressvpn.com/vpn-software/vpn-linux/open-source")
 _url="https://download.expressvpn.xyz/clients/linux"

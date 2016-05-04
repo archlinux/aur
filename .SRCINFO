@@ -1,8 +1,9 @@
 pkgbase = expressvpn
 	pkgdesc = Proprietary VPN client for Linux
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://expressvpn.com
+	install = expressvpn.install
 	arch = x86_64
 	arch = i686
 	license = custom
