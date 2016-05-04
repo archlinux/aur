@@ -2,7 +2,7 @@
 # Contributor: F0ruD <fzerorubigd[at]gmail[dot]com>
 
 pkgname=winswitch
-pkgver=0.12.21
+pkgver=0.12.22
 pkgrel=1
 pkgdesc="Window-Switch is a client server tool to start and control virtual desktops"
 arch=('any')
@@ -19,7 +19,7 @@ optdepends=('nautilus: nautilus sendto'
 options=('!emptydirs')
 install="$pkgname.install"
 source=("${url}src/$pkgname-$pkgver.src.tar.bz2")
-md5sums=('8d1cf9fa65528d6fdbb058b06f68c787')
+md5sums=('e991a60a01d33a0465bb50668e2e9d8a')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
