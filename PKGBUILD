@@ -1,12 +1,12 @@
-# Maintainer: Markus Theil <aur@thillux.de>
+# Maintainer: b00rt00s <bomby zrzuc at gmail dot com>
+# Contributor: Markus Theil <aur@thillux.de>
 # Contributor: Oleg Smirnov <oleg.smirnov@gmail.com>
 # Contributor: Jason Taylor <jftaylor21@gmail.com>
 # Contributor: Christophe Gueret <tolgam@homegnu.net>
-# Contributor: b00rt00s <b_ged@linuksowo.pl>
 pkgname=blt_tcl85
 _pkgname=blt
 pkgver=2.4z
-pkgrel=1
+pkgrel=2
 pkgdesc="Adds new commands and widgets to the Tcl interpreter. Version for Tcl 8.5"
 url="http://blt.sourceforge.net"
 license=("custom")
