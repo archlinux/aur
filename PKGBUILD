@@ -2,7 +2,7 @@
 _pkgname=project-generator
 pkgname=(${_pkgname} python2-${_pkgname})
 pkgver=0.8.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Project generators for various embedded tools (IDE)"
 url="https://github.com/project-generator/project_generator"
 depends=('python'
@@ -15,7 +15,7 @@ depends=('python'
 optdepends=()
 license=('Apache')
 arch=('any')
-source=("https://github.com/project-generator/${_pkgname/_/-}/archive/v${pkgver}.tar.gz")
+source=("https://github.com/project-generator/${_pkgname/-/_}/archive/v${pkgver}.tar.gz")
 sha512sums=('8eaf11a278d7c62e8ae7118e684e3cd6f4a859acd4e117fca6b980132923b5aebdabbb2ff2f42781e980749e7168989eda645d895644c34adc7de84ea349f369')
 
 prepare() {
