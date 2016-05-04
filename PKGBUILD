@@ -1,16 +1,17 @@
-# Maintainer: Markus Theil <aur@thillux.de>
+# Maintainer: b00rt00s <bomby dot zrzuc at gmail dot com>
+# Contributor: Markus Theil <aur@thillux.de>
 # Contributor: Oleg Smirnov <oleg.smirnov@gmail.com>
 # Contributor: Jason Taylor <jftaylor21@gmail.com>
 # Contributor: Christophe Gueret <tolgam@homegnu.net>
-# Contributor: b00rt00s <b_ged@linuksowo.pl>
 pkgname=blt
 pkgver=2.4z
-pkgrel=11
+pkgrel=12
 pkgdesc="Adds new commands and widgets to the Tcl interpreter."
 url="http://blt.sourceforge.net"
 license=("custom")
 depends=('tk')
 makedepends=('git')
+conflicts=('blt_tcl85')
 arch=('i686' 'x86_64')
 source=('git+https://github.com/thillux/blt.git'
        COPYING)
@@ -30,7 +31,7 @@ build() {
     --mandir=/usr/share/man
 
   # Compile
-  make -j 1 || return 1
+  make -j 1
 }
 
 package() {
