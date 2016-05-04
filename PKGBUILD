@@ -23,6 +23,8 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/sanoid/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/sanoid/LICENSE"
   install -Dm644 sanoid.conf "${pkgdir}/etc/sandoid/sanoid.conf"
+  install -Dm644 sanoid.defaults.conf "${pkgdir}/etc/sandoid/sanoid.defaults.conf"
   install -Dm755 sanoid "${pkgdir}/usr/bin/sanoid"
   install -Dm755 syncoid "${pkgdir}/usr/bin/syncoid"
+  install -Dm755 findoid "${pkgdir}/usr/bin/findoid"
 }
