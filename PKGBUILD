@@ -1,20 +1,13 @@
 pkgname=imaputils
-pkgver=20160413
+pkgver=20160504
 pkgrel=1
 pkgdesc="perl script for managing/searching mail on an IMAP servers from the command line"
 arch=(any)
 url="https://sourceforge.net/projects/imaputils/files/"
 license=('BSD')
 depends=('perl-mail-imapclient' 'perl-datetime-format-mail' 'perl-datetime')
-source=("$pkgname::git://git.code.sf.net/p/imaputils/git"
-	"timeout.patch::http://pastie.org/pastes/10795427/download")
-md5sums=('SKIP'
-         '88bc6befed0cd1476ffeb84eb2d00aea')
-
-prepare() {
-	cd "$pkgname"
-	patch -p1 <$srcdir/timeout.patch
-}
+source=("$pkgname::git://git.code.sf.net/p/imaputils/git")
+md5sums=('SKIP')
 
 package() {
 	cd "$pkgname"
