@@ -54,6 +54,6 @@ build() {
 
 package() {
 	find "$srcdir/.go/bin/" -type f -executable | while read filename; do
-		install -DT "$filename" "$pkgdir/usr/bin/$(basename $filename)"
+		install -DT "$filename" "$pkgdir/usr/bin/$(basename ${filename%*-git})"
 	done
 }
