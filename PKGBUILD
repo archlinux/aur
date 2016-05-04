@@ -1,7 +1,7 @@
 # Maintainer: Nate Simon <aurpkg (at natesimon.net)>
 
 pkgname=xplayer-plparser
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Playlist parser for xplayer. X-Apps Project."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ conflicts=('xplayer-plparser-git' $_pkgname)
 url='https://github.com/linuxmint/xplayer-plparser'
 
 source=("https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('779884f4cea5682d6f84d40eec983537')
+md5sums=('586fe3e544a4ebf0d450861ac65efb49')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
