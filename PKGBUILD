@@ -2,7 +2,7 @@
 
 pkgname=visual-studio-code-git
 pkgdesc='Visual Studio Code for Linux, Open Source version from git'
-pkgver=0.10.12.insiders.r585.g92abb80
+pkgver=1.1.0.insider.r167.g3b31297
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
@@ -17,7 +17,7 @@ source=("git+https://github.com/Microsoft/vscode"
         'product_json.patch')
 sha1sums=('SKIP'
           'a42e461ed586ef0fd31ff911ad662135f4f602aa'
-          'ffe64521128379790749d7e61ba1eeeb7e732dec')
+          'cc69f5b0edaef346e9c39bd10c944730f380dbd3')
 
 case "$CARCH" in
     i686)
@@ -49,7 +49,10 @@ build() {
     cd "${srcdir}/vscode"
 
     ./scripts/npm.sh install
-    gulp vscode-linux-${_vscode_arch}
+
+    # The default memory limit is too low on some systems. This will set it
+    # to 2GB -- change it if this number doesn't work for your system
+    node --max_old_space_size=2048 /usr/bin/gulp vscode-linux-${_vscode_arch}
 }
 
 package() {
