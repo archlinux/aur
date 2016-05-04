@@ -3,14 +3,13 @@
 
 pkgname=xcfa
 pkgver=5.0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="X Convert File Audio"
 arch=('i686' 'x86_64')
 url="http://www.xcfa.tuxfamily.org/"
 license=('GPL3')
-depends=('taglib' 'alsa-lib' 'curl' 'desktop-file-utils' 'vte3')
+depends=('taglib' 'alsa-lib' 'curl' 'vte3')
 optdepends=('dvd+rw-tools' 'cd-discid')
-install=xcfa.install
 source=(http://download.tuxfamily.org/xcfaudio/xcfa_download/src/${pkgname}-${pkgver}.tar.gz)
 sha256sums=('37cb7cbf6707d02b0e2082e49e3a8194b6d2c6cfecd2747f78b1a682c00a6815')
 
