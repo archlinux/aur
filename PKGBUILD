@@ -5,7 +5,7 @@
 pkgbase=digikam
 pkgname=('digikam' 'kipi-plugins')
 pkgver=4.14.0
-pkgrel=6
+pkgrel=7
 pkgdesc="Digital photo management application for KDE"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -39,11 +39,10 @@ build() {
 
 package_digikam() {
   pkgdesc="Digital photo management application for KDE"
-  depends=('kdebase-runtime' 'kdepimlibs4' 'libgphoto2' 'opencv' 'liblqr'
+  depends=('kdebase-runtime' 'libgphoto2' 'opencv' 'liblqr'
            'libkipi4' 'libkexiv2_4' 'libkdcraw4' 'libkface4' 'libkgeomap4' 'lensfun' 
 	   'libpgf' 'libbaloo4')
   optdepends=('kipi-plugins: more tools and plugins')
-  install=digikam.install
 
   cd build/core
   make DESTDIR="${pkgdir}" install
@@ -63,7 +62,7 @@ package_digikam() {
 
 package_kipi-plugins() {
   pkgdesc="A collection of plugins extending the KDE graphics and image applications as digiKam"
-  depends=('kdebase-runtime' 'kdepimlibs4' 'libkdcraw4' 'libkipi4' 'libksane4' 'libkexiv2_4')
+  depends=('kdebase-runtime' 'libkdcraw4' 'libkipi4' 'libksane4' 'libkexiv2_4')
   optdepends=('libkgeomap4: Geolocalize tool'
               'libmediawiki: MediaWiki Export plugin'
               'libkvkontakte: VKontakte.ru Exporter plugin'
@@ -72,7 +71,6 @@ package_kipi-plugins() {
               'imagemagick: Video SlideShow plugin'
 	      'hugin: panorama tools')
   options=('staticlibs')
-  install=kipi-plugins.install
 
   cd build/extra/kipi-plugins
   make DESTDIR="${pkgdir}" install
