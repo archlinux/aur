@@ -2,8 +2,8 @@
 # Maintainer: Branislav Holý <branoholy@gmail.com>
 pkgbase='lsl-core'
 pkgname=('lsl-core' 'lsl-core-lib')
-pkgver='0.1.3'
-pkgrel='4'
+pkgver='0.1.4'
+pkgrel='1'
 pkgdesc='A library for working with LIDAR data'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/branoholy/lsl'
@@ -11,14 +11,14 @@ license=('GPL3')
 makedepends=('cmake>=2.8' 'eigen>=3.0')
 source=("https://github.com/branoholy/lsl/archive/v$pkgver/lsl-$pkgver.tar.gz"
         "https://github.com/branoholy/lsl/releases/download/v$pkgver/lsl-$pkgver.tar.gz.sig")
-md5sums=('1bfbf88bcccc81c519dab49c4e57d07c'
-         '4b01139bfa9f511078a87cef9c19add4')
-sha1sums=('300b86317e4c1c1c18f36c364e7ae132b0d2e4f4'
-          'e5278257cd3f15822faace680d753c21a2876d8a')
-sha256sums=('e1d2d128dabb498670edb29273fb152ee53d6011a912766767e7f2d9efb15a10'
-            '3cd1e64352a4b367654cba0f04709136546589b75a47bff6eefaed5f40ce098d')
-sha512sums=('642e18b422ff32237afdc1b8fc2964ece47fa279e34b4cb6dae626f6632ca34f62a9ada50349bdb5adfb074f75b4c41faf8f4eadeaa26abbb2e04711a5521a3d'
-            '4e716b35bc71b4f51b43857ccd7dc1e4ec5fbb5af22eb60a1d393a59ef62398c3a5b07db6aaab96b7cf220d0b08efa3e28a5060f78589b81c3345990e0dbf1cc')
+md5sums=('2c95dcb03aec9f34035103a79cf093ec'
+         'cf81e1eb8a63f1891709b7563cd1dd0a')
+sha1sums=('0cc769db2b73963ca7ad3868293b619dcb6dff2a'
+          'bb617b941b67e96a855f85953937303d220ead1f')
+sha256sums=('1e733387260a4f361143dcadc4daa5fbf37568814202a1ca43f8c7ddd88f5053'
+            '3e58069b0c100d276d706151d97cc8f07ef59692afa4628d6d27d0d613e8d207')
+sha512sums=('7b9d2396ce16c5089844383564b541de08c696a71d6800e3e5a0b75fcb1b0376d12b121f497f31284e965861dea862b25e8948af95d83dc82bf296f6da54ba76'
+            'c511a63a7f785c86618d95f3739e8894b44b745bbe0254b6e89157aad09f4b2479046a6401152300193e66e773580ab0d67930ea9e014985fcb614ada9a29cf8')
 validpgpkeys=('D25809BF3563AA56A12B0F4D545EDD46FBAC61E6')
 
 build() {
