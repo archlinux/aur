@@ -1,0 +1,18 @@
+pkgbase = everseer-client-git
+	pkgdesc = Electron based multi-machine system monitor
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/gabmus/everseer
+	install = everseer-client-git.install
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = npm
+	depends = gtk2
+	optdepends = openssh: ssh support
+	optdepends = xterm: launch ssh window
+	source = everseer::git+git://github.com/gabmus/everseer
+	md5sums = SKIP
+
+pkgname = everseer-client-git
+
