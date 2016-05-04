@@ -18,8 +18,7 @@ md5sums=('81f6940b016fd953592b7e85a887b3c3')
 sha256sums=('64207be2c69dd0f3d6bb3ea9b904bb0acd23e5729ed9f9a88b30941cb225b351')
 
 
-build()
-{
+build() {
   cd "$srcdir"
   mv jopohl* "$pkgname-$pkgver"
   cd "$pkgname-$pkgver"
@@ -29,8 +28,7 @@ build()
 }
 
 
-package()
-{
+package() {
   cd "$srcdir/$pkgname-$pkgver/"
 
   python setup.py install --root="$pkgdir/" --optimize=1
