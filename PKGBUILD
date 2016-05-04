@@ -1,12 +1,12 @@
 pkgname=aurutils
-pkgver=0.8.4
+pkgver=0.8.5
 pkgrel=2
 pkgdesc='helper tools for the arch user repository'
 arch=('any')
 url=https://github.com/AladW/aurutils
 license=('ISC')
 source=("$url/archive/$pkgver.tar.gz")
-md5sums=('e1d0033cc330e1901710c7970823a9f2')
+md5sums=('65eca72eeefe1ee2db1c56ff844273ea')
 depends=('pacman>=5.0' 'git' 'jshon' 'expac' 'aria2'
 	 'repose' 'pacutils' 'datamash')
 checkdepends=('shellcheck')
