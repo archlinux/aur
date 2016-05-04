@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=dooble-qt4
-pkgver=1.55
+pkgver=1.56
 pkgrel=1
 pkgdesc='A safe WebKit Web browser'
 url='http://dooble.sourceforge.net/'
@@ -10,7 +10,7 @@ license=('custom:3-clause BSD')
 depends=('qtwebkit' 'libspoton=2015.06.17' "dooble-common=${pkgver}")
 makedepends=('qtwebkit' 'sed' 'coreutils')
 source=("dooble-${pkgver}.tar.gz::https://downloads.sourceforge.net/project/dooble/Version%20${pkgver}/Dooble_Src.d.tar.gz?r=")
-sha256sums=('024003e7c397a925d48e41cba10a2a35b89dd1745120caf4fd2010c1e254c5e5')
+sha256sums=('615c9a7d9e1d90fa9b497106d208733cb843e75368e7aa3bdc0e2e486c590325')
 
 # Dependency (from ldd output) tree:
 # qtwebkit
