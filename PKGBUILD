@@ -1,6 +1,6 @@
 pkgname=enpass-bin
 _pkgname=enpass
-pkgver=5.2.0
+pkgver=5.2.1
 _pkgver_x86_x64=5.2.1
 _pkgver_i686=5.2.1
 pkgrel=1
