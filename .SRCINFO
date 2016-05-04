@@ -7,6 +7,7 @@ pkgbase = pulseaudio-dlna-git
 	arch = x86_64
 	license = GPL3
 	makedepends = python2-setuptools
+	depends = dbus-glib
 	depends = python2-pip
 	depends = python2-dbus
 	depends = python2-docopt
