@@ -2,8 +2,8 @@
 # Contributor: Ng Oon-Ee <n g  o o n  e e dot t a l k AT g m a i l DOT c o m>
 # Maintainer: TWPHoenix1982 <rene DOT landscheidt AT gmx DOT de>
 pkgname=xojo
-pkgver=2016r1
-pkgrel=1
+pkgver=2016r11
+pkgrel=2
 pkgdesc="A RAD environment based on BASIC that compiles native applications for Windows, Mac, Linux, the web and now with 64Bit and ARM V2 (Raspberry Pi 2) support."
 arch=(i686 x86_64)
 url="http://www.xojo.com"
@@ -20,7 +20,7 @@ source=("http://41160df63757fc043cfd-66287f38a83954e31a54d1dbe33e0650.r4.cf2.rac
 ##lib32-mesa lib32-icu lib32-gcc-libs) && makedepends=(lib32-webkitgtk2)
 [[ $CARCH == x86_64 ]] && depends=(lib32-gtk2 lib32-expat lib32-glib2 lib32-glibc lib32-mesa 
 lib32-icu lib32-gcc-libs) && makedepends=(lib32-libtinfo libtinfo)
-sha256sums=('cb10ea71de18fa0904fe34f14d08cdd7be4eeb2f602dbefb97d9d0d8fd75c060'
+sha256sums=('18a5c6035712cd49079d89f6a165ff9650e2edaa4b43bfe23b038a0333609c62'
             '17250f624de25bb575a3ca5d3158a60cba95248c624d71959c0bcb823384e9ee'
             '7b084164ba9430b389a500a551a0cec5283f4eaa54dc27c01e7f0aa477e69612'
             '024cbfa8d23766b54aed636a52708f656776a45d6109cde3ca4278d463958e97'
@@ -29,7 +29,7 @@ options=(!strip)
 
 package() {
 	cd $srcdir
-	#mv "xojo2015r4.1" "xojo$pkgver"
+	mv "xojo2016r1.1" "xojo$pkgver"
 	find . -name '.DS_Store' -exec rm {} \;
 	find "./xojo$pkgver/Extras" -type d \( -name 'OS X' -o -name 'Windows' -o -name 'Visual Studio*' -o -name 'Xcode' \) |
     xargs -rtl1 -I {} rm -r {}
