@@ -4,7 +4,7 @@
 
 _gemname=hashery
 pkgname=ruby-$_gemname
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='Facets-bread collection of Hash-like classes.'
 arch=('any')
@@ -14,7 +14,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('8f94ee21ba35f970d188491318f9b79ff7288e517301700e4d342ba9255d5c75')
+sha256sums=('d239cc2310401903f6b79d458c2bbef5bf74c46f3f974ae9c1061fb74a404862')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
