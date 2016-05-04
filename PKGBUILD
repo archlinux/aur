@@ -1,8 +1,8 @@
 # Contributor: orumin <dev@orum.in>
 
 pkgname=ttf-myricam
-pkgver=2.010.20160103
-pkgrel=2
+pkgver=2.011.20160403
+pkgrel=1
 pkgdesc="Japanese TrueType font for developers obtained by mixing Inconsolata and Mgen+"
 arch=('any')
 url="http://myrica.estable.jp/"
@@ -10,8 +10,8 @@ license=('CUSTOM')
 depends=('fontconfig' 'xorg-font-utils')
 makedepends=('unzip')
 install=ttf.install
-source=(https://github.com/tomokuni/Myrica/raw/master/product/MyricaM.zip)
-md5sums=('e74b69150b6c7f14e3c76e167c064d09')
+source=(MyricaM.zip::https://github.com/tomokuni/Myrica/blob/b737107723bfddd917210f979ccc32ab3eb6dc20/product/MyricaM.zip?raw=true)
+md5sums=('2cdccb8361be4982257cc2fab4790290')
 
 package() {
     cd "${srcdir}"
