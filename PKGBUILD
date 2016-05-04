@@ -1,4 +1,4 @@
-# Maintainer: b00rt00s <bomby zrzuc at gmail dot com>
+# Maintainer: b00rt00s <bomby dot zrzuc at gmail dot com>
 # Contributor: Markus Theil <aur@thillux.de>
 # Contributor: Oleg Smirnov <oleg.smirnov@gmail.com>
 # Contributor: Jason Taylor <jftaylor21@gmail.com>
