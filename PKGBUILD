@@ -1,7 +1,7 @@
-# Maintainer: Fabio Zanini <fabio.zanini _at_ tuebingen.mpg.de>
+# Maintainer: Fabio Zanini <fabio.zanini _at_ stanford.edu>
 pkgname='python2-pysam'
-pkgver=0.8.4
-pkgrel=1
+pkgver=0.9.0
+pkgrel=2
 pkgdesc="Python interface for the SAM/BAM sequence alignment and mapping format"
 arch=('x86_64')
 url="https://github.com/pysam-developers/pysam"
@@ -16,11 +16,15 @@ backup=()
 options=(!emptydirs)
 install=
 source=("https://github.com/pysam-developers/pysam/archive/v${pkgver}.tar.gz")
-md5sums=('66bc07593fe420ec415ef24d8b36e996')
+md5sums=('4c80bc1612e18c0d9027b9f000fd38f1')
 
 package() {
   cd "$srcdir/pysam-$pkgver"
+  # Use following line instead to compile with the internal htslib
   python2 setup.py install --root="$pkgdir/" --optimize=1
+  # Use the following line to compile against external htslib from AUR (buggy)
+  #HTSLIB_LIBRARY_DIR=/usr/lib HTSLIB_INCLUDE_DIR=/usr/include python2 setup.py install --root="$pkgdir/" --optimize=1
+
 }
 
 # vim:set ts=2 sw=2 et:
