@@ -4,12 +4,12 @@
 _pkgname=quickfort
 pkgname=${_pkgname}-git
 pkgver=264
-pkgrel=1
+pkgrel=2
 pkgdesc="A Dwarf Fortress utility for building forts from blueprint .CSV files. Git Version."
 arch=(any)
 url="http://github.com/joelpt/${_pkgname}.git"
 license=('custom')
-depends=('python2')
+depends=('python2' 'python2-numpy')
 makedepends=('git' 'sed')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -32,6 +32,7 @@ package() {
   cd "$srcdir/$_pkgname"
   mkdir --parents $pkgdir/usr/share/quickfort/
   cp -r qfconvert/* $pkgdir/usr/share/quickfort/
+  rm $pkgdir/usr/share/quickfort/*.bat
   mkdir --parents $pkgdir/usr/bin/
   touch $pkgdir/usr/bin/qfconvert
   echo "#!/bin/bash" >> $pkgdir/usr/bin/qfconvert
