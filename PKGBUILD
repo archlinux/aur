@@ -15,7 +15,7 @@ _dejavu_font_dir="/usr/share/fonts/TTF"
 _gs_font_dir="/usr/share/fonts/Type1"
 _windows_font_dir="/usr/share/fonts/WindowsFonts"
 _srcname="ImageMagick"
-_srcver="7.0.1-0"
+_srcver="7.0.1-1"
 pkgname=imagemagick-full
 pkgver="$(echo ${_srcver} | tr '-' '.')"
 pkgrel=1
@@ -46,15 +46,8 @@ backup=("etc/ImageMagick-${pkgver%%.*}/coder.xml"
         "etc/ImageMagick-${pkgver%%.*}/type-ghostscript.xml"
         "etc/ImageMagick-${pkgver%%.*}/type-windows.xml")
 options=('!docs' 'libtool' '!emptydirs')
-source=("http://www.imagemagick.org/download/${_srcname}-${_srcver}.tar.xz"
-        "$_srcname"-"$_srcver"-opencl-compile-fix.patch::"http://git.imagemagick.org/repos/ImageMagick/commit/5e3914efb87b8969148283629add8be3978914e1.diff")
-sha256sums=('bd15aaef2aa2393b3d62b821f5752d5f4066a90d3b0d9259d93217ad47c056d9'
-            '67784eeb0b884bbf1f8cda9ea77194cacb6a56f58d95aba8a0dad50aa0c0f4dd')
-
-prepare() {
-	cd "$_srcname"-"$_srcver"
-	patch -p1 -i "${srcdir}/${_srcname}-${_srcver}-opencl-compile-fix.patch"
-}
+source=("http://www.imagemagick.org/download/${_srcname}-${_srcver}.tar.xz")
+sha256sums=('d7b6c9fcd2278e3c29dc57ac2da64673f35a7ca79a74bfe90d173d170db6b2c9')
 
 build() {
 	cd "$_srcname"-"$_srcver"
