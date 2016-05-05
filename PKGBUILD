@@ -46,7 +46,7 @@ build() {
   # qemu vs. make 4 == bad
   export ARFLAGS="rv"
   # http://permalink.gmane.org/gmane.comp.emulators.qemu/238740
-  export CFLAGS+=' -fPIC'
+  #export CFLAGS+=' -fPIC'
   # gtk gui breaks keymappings at the moment
   ./configure --prefix=/usr --sysconfdir=/etc \
               --python=/usr/bin/python2 --smbd=/usr/bin/smbd \
