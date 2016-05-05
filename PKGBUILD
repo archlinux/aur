@@ -26,7 +26,7 @@ license=('GPL3')
 makedepends=('intltool' 'librsvg' 'gtk-update-icon-cache')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-#options=('!strip')
+options=('!strip')
 install="${pkgname}.install"
 source=("https://github.com/GreenRaccoon23/${pkgname}/raw/master/${pkgname}.tar.xz")
 # To revert to an older version, find them here:
