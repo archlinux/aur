@@ -13,7 +13,7 @@ url="https://artpcweb.appspot.com/"
 license=('GPL')
 
 depends=('python2' 'espeak')
-checkdepends=('gdb')
+checkdepends=('bash')
 makedepends=('lxterminal' 'terminator' 'namcap')
 optdepends=('gksu: sudo-save support',
 			'alsa-lib: sound support')
@@ -48,13 +48,13 @@ check() {
 	cd "${srcdir}"
 	#check if exist files base
 
-	if [ -f "${pkgname}"" ]; then
-		if [ -f "${pkgname}.desktop"]; then
-			exit 1
-		fi
-	else
-		exit 0
-	fi
+	#if [ -f "${pkgname}"" ]; then
+	#	if [ -f "${pkgname}.desktop"]; then
+	#		exit 1
+	#	fi
+	#else
+	#	exit 0
+	#fi
 }
 
 package() {
