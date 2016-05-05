@@ -1,8 +1,9 @@
-# Maintainer: Steven Hiscocks <steven [at] hiscocks [dot] me [dot] uk>
+# Maintainer:  DJ Lucas <dj_AT_linuxfromscratch_DOT_org>
+# Contributor: Steven Hiscocks <steven [at] hiscocks [dot] me [dot] uk>
 # Contributor: Andre Wayand <aur-sope@awayand.sleepmail.com>
 pkgname=sope2
-pkgver=2.3.3a
-pkgrel=2
+pkgver=2.3.10
+pkgrel=1
 pkgdesc="application server used by SOGo"
 arch=('i686' 'x86_64')
 url="http://www.sogo.nu/files/downloads/SOGo/Sources/"
@@ -14,6 +15,7 @@ optdepends=('libxml2: parse XML coniguration files'
             'openldap: run directory server for sogo locally'
             'openssl: create SSL secured connectons'
             'postgresql: run database server for sogo locally')
+conflicts=('sope')
 options=('!strip')
 source=("http://www.sogo.nu/files/downloads/SOGo/Sources/SOPE-${pkgver}.tar.gz"
         "sope_configure.patch")
@@ -25,7 +27,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/SOPE"
-  ./configure --prefix="/usr" --disable-strip --disable-debug
+  ./configure --with-gnustep --disable-strip --disable-debug
   make
 }
 
@@ -34,6 +36,6 @@ package() {
   make install DESTDIR="${pkgdir}"
 }
 
-sha256sums=('9a1c31a407ff3a7584d2364e92976e3e9336c8ebaa47223bd9dde5a2be2f129c'
+sha256sums=('b51e5c212f938b6b39000d5149b7da6922f978df291c61e1015d8abcbfcdc245'
             '7ff3387daffd15b5f97146da1fd61aefc9591b7b6a41f1f0e60b572106fdbc9a')
 
