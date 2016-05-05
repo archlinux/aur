@@ -44,4 +44,7 @@ package() {
   # install systemd files
   install -dm755 "$pkgdir/usr/lib/systemd/system/"
   install -Dm644 rcscripts/systemd/*.service "$pkgdir/usr/lib/systemd/system/"
+
+  # fix systemd ExecStart
+  sed -ri 's@^(ExecStart=/usr/)local/s(bin/thinkfan)$@\1\2@' "$pkgdir/usr/lib/systemd/system/thinkfan.service"
 }
