@@ -2,42 +2,31 @@
 
 pkgname=qownnotes
 pkgver=16.05.2
-tag="d2ada1ea9521b9c83fe1775963818f2cd8955c92"
+tag="e1db73f51c6388e067c2f70aea08c35e3ae72eee"
 pkgrel=1
 pkgdesc="Open source notepad and todo list manager with markdown support and ownCloud integration"
 arch=('i686' 'x86_64')
 url='http://www.qownnotes.org/'
 license=('GPL2')
 groups=('qownnotes')
-depends=('qt5-base' 'qt5-svg' 'qt5-script' 'openssl')
-makedepends=('git' 'qt5-tools')
-source=("git://github.com/pbek/QOwnNotes.git#tag=$tag"
-        "git://github.com/pbek/qmarkdowntextedit.git"
-        "git://github.com/pbek/qt-piwik-tracker.git")
-md5sums=('SKIP'
-         'SKIP'
-         'SKIP')
+depends=('qt5-base' 'qt5-svg' 'qt5-declarative' 'openssl')
+makedepends=('qt5-tools')
+source=("http://downloads.sourceforge.net/project/${pkgname}/src/${pkgname}-${pkgver}.tar.xz")
+md5sums=('SKIP')
 
 prepare() {
-    cd "${srcdir}/QOwnNotes"
-
-    git config submodule.src/editor/libs/qmarkdowntextedit.url "$srcdir/qmarkdowntextedit"
-    git config submodule.src/editor/libs/qt-piwik-tracker.url "$srcdir/qt-piwik-tracker"
-    git submodule update --init
-
-    echo "#define VERSION \"${pkgver}\"" > src/version.h
+	cd "${pkgname}-${pkgver}"
     echo "#define RELEASE \"AUR\"" > src/release.h
 }
 
 build() {
-    cd "${srcdir}/QOwnNotes/src"
-
+	cd "${pkgname}-${pkgver}/src"
     qmake
     make
 }
 
 package() {
-    cd "${srcdir}/QOwnNotes/src"
+	cd "${pkgname}-${pkgver}/src"
 
     install -D -m 0755 QOwnNotes $pkgdir/usr/bin/QOwnNotes
     install -D -m 0644 QOwnNotes.desktop $pkgdir/usr/share/applications/QOwnNotes.desktop
