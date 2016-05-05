@@ -1,0 +1,40 @@
+# CPAN Name  : Test::Identity
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
+
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
+pkgdesc='Perl module to test the referential identity of a reference'
+arch=('any')
+url='[% url %]'
+license=('PerlArtistic' 'GPL')
+depends=('perl')
+source=([% source %])
+options=(!emptydirs)
+md5sums=('[% md5sums %]')
+
+sanitize() {
+	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+	export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+}
+
+build() {
+	cd [% distdir %]
+	sanitize
+	perl Build.PL --installdirs vendor --destdir "$pkgdir"
+	perl Build
+}
+
+check() {
+	cd [% distdir %]
+	sanitize
+	perl Build test
+}
+
+package() {
+	cd [% distdir %]
+	sanitize
+	perl Build install
+	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
