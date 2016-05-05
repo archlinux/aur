@@ -9,8 +9,7 @@ pkgdesc='A scientific software package for numerical computations.'
 arch=('i686' 'x86_64')
 url='https://www.scilab.org'
 license=('BSD' 'custom:CeCILL')
-depends=('shared-mime-info'  'desktop-file-utils' 'gtk-update-icon-cache'
-         'suitesparse>=4.4.1'  'arpack' 'fftw'
+depends=('suitesparse>=4.4.1'  'arpack' 'fftw'
          'libmatio' 'tk' 'curl'
          'java-runtime=7'
          'beanshell2' 'eclipse-ecj' 'java-flexdock>=1.2.4' 'fop-hyph'
@@ -35,8 +34,6 @@ sha256sums=('a734519de96d35b8f081768a5584086e46db089ab11c021744897b22ec4d0f5e'
             '64de4a044fb7228cae7003e6f86f6f0958ea10049f2fb24a11a07b0087e4ef36'
             'cda2635f25a56f3c423f7a88791222aae3caad53c086cedc0cfe48011936a5a8'
             '1796919522e00f6f0a38677ba1b79498822a9e75a7e7da2c31ebaa935153d92e')
-
-install=${pkgname}.install
 
 prepare(){
   cd "${srcdir}/${pkgname}-${pkgver}"
