@@ -2,7 +2,7 @@
 
 pkgname=qownnotes
 pkgver=16.05.2
-tag="e1db73f51c6388e067c2f70aea08c35e3ae72eee"
+tag="f6852b74472f16596ec636dc94d7b13f66188c28"
 pkgrel=1
 pkgdesc="Open source notepad and todo list manager with markdown support and ownCloud integration"
 arch=('i686' 'x86_64')
@@ -16,17 +16,17 @@ md5sums=('SKIP')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
-    echo "#define RELEASE \"AUR\"" > src/release.h
+    echo "#define RELEASE \"AUR\"" > release.h
 }
 
 build() {
-	cd "${pkgname}-${pkgver}/src"
+	cd "${pkgname}-${pkgver}"
     qmake
     make
 }
 
 package() {
-	cd "${pkgname}-${pkgver}/src"
+	cd "${pkgname}-${pkgver}"
 
     install -D -m 0755 QOwnNotes $pkgdir/usr/bin/QOwnNotes
     install -D -m 0644 QOwnNotes.desktop $pkgdir/usr/share/applications/QOwnNotes.desktop
