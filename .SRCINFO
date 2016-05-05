@@ -1,0 +1,18 @@
+pkgbase = swingbench
+	pkgdesc = An easy to use Oracle database load generator.
+	pkgver = 2.5.0.971
+	pkgrel = 1
+	url = http://dominicgiles.com/swingbench.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = java-runtime
+	source = http://dominicgiles.com/swingbench/swingbench25971.zip
+	source = swingbench.desktop
+	source = swingbench.png
+	md5sums = 59b6618ea1d7d7f7160c884d4ac57f6f
+	md5sums = e7660576020ff5598cf7ecaa22bb1afa
+	md5sums = 72ad891d515050504e1e0749041ec927
+
+pkgname = swingbench
+

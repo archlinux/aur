@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=SwingBench
+GenericName=An easy to use Oracle database load generator.
+Comment=An easy to use Oracle database load generator.
+Exec=/opt/swingbench/bin/swingbench
+Icon=/usr/share/icons/swingbench.png
+Terminal=false
+Categories=GTK;Development;IDE;
+MimeType=
+StartupNotify=true
