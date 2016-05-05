@@ -1,0 +1,24 @@
+diff -Naur tfel-2.0.3.orig/cmake/modules/gnu-fortran-compiler.cmake tfel-2.0.3/cmake/modules/gnu-fortran-compiler.cmake
+--- tfel-2.0.3.orig/cmake/modules/gnu-fortran-compiler.cmake	2016-05-06 00:33:55.609734905 +0200
++++ tfel-2.0.3/cmake/modules/gnu-fortran-compiler.cmake	2016-05-06 00:41:03.800748528 +0200
+@@ -1,11 +1,15 @@
+ get_filename_component (Fortran_COMPILER_NAME ${CMAKE_Fortran_COMPILER} NAME)
+ if("${CMAKE_Fortran_COMPILER_ID}" STREQUAL "GNU")
+   set(GNU_FORTRAN_COMPILER ON)
+-  if(MSYS OR APPLE OR ("${CMAKE_SYSTEM_NAME}" STREQUAL "FreeBSD"))
+-    add_definitions("-D'F77_FUNC(X,Y)=X##_' -D'F77_FUNC_(X,Y)=X##_'")
+-  else(MSYS OR APPLE OR ("${CMAKE_SYSTEM_NAME}" STREQUAL "FreeBSD"))
++  if(CMAKE_VERSION)
++    if(CMAKE_VERSION VERSION_GREATER 3.1)
++      add_definitions("-D'F77_FUNC(X,Y)=X##_' -D'F77_FUNC_(X,Y)=X##_'")
++    else(CMAKE_VERSION VERSION_GREATER 3.1)
++      add_definitions("-D'F77_FUNC(X,Y)=X\\#\\#_' -D'F77_FUNC_(X,Y)=X\\#\\#_'")
++    endif(CMAKE_VERSION VERSION_GREATER 3.1)
++  else(CMAKE_VERSION)
+     add_definitions("-D'F77_FUNC(X,Y)=X\\#\\#_' -D'F77_FUNC_(X,Y)=X\\#\\#_'")
+-  endif(MSYS OR APPLE OR ("${CMAKE_SYSTEM_NAME}" STREQUAL "FreeBSD"))
++  endif(CMAKE_VERSION)
+ else("${CMAKE_Fortran_COMPILER_ID}" STREQUAL "GNU")
+   message(FATAL_ERROR "unsupported fortran compiler ${Fortran_COMPILER_NAME}")
+ endif("${CMAKE_Fortran_COMPILER_ID}" STREQUAL "GNU")
+\ No newline at end of file
