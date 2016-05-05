@@ -1,5 +1,5 @@
 *.gz
 *.xz
-fortran.vim
+*.vim
 /pkg
 /src
