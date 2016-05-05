@@ -25,12 +25,13 @@ install=${pkgname}.install
 #source=("$pkgname-$pkgver.tar.gz"
 #        "$pkgname-$pkgver.patch")
 
-source=("$pkgname")
+source=("${pkgname}.desktop"
+		"$pkgname")
 
 md5sums=('ccc2acc3cf18f71c517e42fc2eb4d77b')
 
 package() {
-	cd "$pkgname-$pkgver"
+
 	make DESTDIR="$pkgdir/" install
 
 	install -dm755 "${pkgdir}/usr/share/applications"
