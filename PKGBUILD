@@ -8,8 +8,8 @@
 pkgname=('jre7-openjdk-headless-infinality' 'jre7-openjdk-infinality' 'jdk7-openjdk-infinality')
 pkgbase=java7-openjdk
 _java_ver=7
-_icedtea_ver=2.6.4
-_updatever=95
+_icedtea_ver=2.6.6
+_updatever=101
 pkgver=${_java_ver}.u${_updatever}_${_icedtea_ver}
 pkgrel=1
 
@@ -37,14 +37,14 @@ source=(${_icedtea_url}/source/icedtea-${_icedtea_ver}.tar.gz
         fontconfig-paths.diff
         openjdk7_nonreparenting-wm.diff)
 
-sha256sums=('ef5dd43c5f87742ac28519420055ad24acaca55b005b5b2e339cf3e451d716c1'
-            'bb02e71972ad606e739c79fc11c6dc61b4840a526a41049a600a206cc37152e2'
-            '26bbfae0504fb7e83fd5eaba08d9e44e0c07a609cdf7c04fb6832a097b56bc08'
-            '097cb0423271b6439b36db190a66bab9d447dd03ee22e42a6089a3b3b8363f62'
-            'da7604aaaedaab93ba9ad21ee5ee8f18c807606a97d60037ae8c3647e823dfa1'
-            '9d3199c0f9c39238c6920c941026cf8661a92e97845f75d74e9ff277532b5d63'
-            'f9b0ce14c73c263276d3dfe78601714869cd2c0463bd01c637c8556d52a7d7cc'
-            '3747417c3ba69d1ff7d80dc6df19454c4f4023c35f8b711e47baefe2fc772e65'
+sha256sums=('d6d92e9b20e321d51b2f428868b6de3d3ebc2b4eedde19e5cf2e2452da6d0fde'
+            '24f813e6cb938272a4da37b46b48aa86820b13be0747747e6c8fb4aad72cadf3'
+            'ce886c97a150465df3a36c4281d5f36ba8ee2b081b5b76ecfbefaddb723b6a2d'
+            '679eb46054afea3098713beee85639c4a5a5af881e94be527409feaea4272d30'
+            'f9af138096f4d11e381c3cc949dd3ee37cee5bfff15dc21cff5c16a2f9e7c218'
+            '1baa92ca72db1b80fff18ca26bd49e5fd5f2927df9eceebf3456cbd86a710a9f'
+            '54bb2cee7b4fc5bbc63a4c9d7008602e12f75431c7f129ade7c405b53c2363f3'
+            'a4e8f4fef724a34e5eece3c2c1de4e60ff12e752549c8df11ddcd6f3042e0dc2'
             '9ad943ceb3dbcdf45d72974fc3667886a7ed65c69ab9abc17be5412827551a7f'
             '56b919ababb13bd6afdcdaceb112b529b6e82539255f2dae9a7e5eb91645164b')
 
