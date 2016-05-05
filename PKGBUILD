@@ -52,7 +52,7 @@ pkgbase=linux-bfq
 pkgname=('linux-bfq' 'linux-bfq-headers' 'linux-bfq-docs')
 _kernelname=-bfq
 _srcname=linux-4.5
-pkgver=4.5.2
+pkgver=4.5.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://algo.ing.unimo.it"
@@ -437,7 +437,7 @@ package_linux-bfq-docs() {
 
 sha512sums=('cb0d5f30baff37dfea40fbc1119a1482182f95858c883e019ee3f81055c8efbdb9dba7dfc02ebcc4216db38f03ece58688e69efc0fce1dade359af30bd5426de'
             'SKIP'
-            'cc0ba1c2205ab44d41c9792e03e0164cc8bb79eae3d324d138f61ef714513d06abdedc5467d6f0b5fa6601d47032cea66840c01104dfe8f5b606c76483a5355a'
+            'e29e87e8e38f92cac62e351d6d716f0de0b67764de8f8955e3730b6aa5d5090e71c8442ac55547f5f7c776a269e651eaefaadae514a8e0b442df5459409e793b'
             'SKIP'
             'f15460f31c3401356c29459ff880be4c14f468a568c7cf75af162219ace9ddef79499cc6817289c019915bc5af7dd680485def1a4fe4786856dd47390e7f661e'
             '11adc1e6cd3dae38c632f7a3c8c203a9cd13b504e315360caa41bc28677b60e6744890fffe32b42d09251b0a66e89f3c961feb6fb78ad27d10b71ab22cfde6ce'
