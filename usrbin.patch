@@ -1,0 +1,13 @@
+--- Makefile.orig	2013-05-30 17:42:49.851418658 +0100
++++ Makefile	2013-05-30 17:44:41.157482402 +0100
+@@ -18,8 +18,8 @@
+ 
+ install:
+ 	# install exec files
+-	install -d ${DESTDIR}/usr/
+-	cp -a sbin bin ${DESTDIR}/usr/
++	install -d ${DESTDIR}/usr/bin
++	cp -a sbin/* bin/* ${DESTDIR}/usr/bin/
+ 
+ 	# install setup dir
+ 	install -d $(DESTDIR)/$(SHAREDIR)/
