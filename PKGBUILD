@@ -13,7 +13,6 @@ optdepends=('teeworlds-ddnet-skins: more skins for your tee'
             'teeworlds-ddnet-maps-git: mainly important for DDNet Server')
 provides=('teeworlds')
 conflicts=('teeworlds')
-         # PNG converted from DDNet.ico from https://github.com/ddnet/ddnet
 source=("ddnet-$pkgver.tar.gz::https://github.com/ddnet/ddnet/archive/$pkgver.tar.gz")
 source_i686=("https://ddnet.tw/downloads/GraphicsTools-linux_x86.tar.gz")
 source_x86_64=("https://ddnet.tw/downloads/GraphicsTools-linux_x86_64.tar.gz")
