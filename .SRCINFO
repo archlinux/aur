@@ -1,0 +1,14 @@
+pkgbase = termi-git
+	pkgdesc = Images in your terminal, using ANSI and Unicode.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/rr-/termi
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-pip
+	source = termi-git::git://github.com/rr-/termi.git
+	sha256sums = SKIP
+
+pkgname = termi-git
+
