@@ -1,13 +1,14 @@
 pkgbase = couchpotato-git
 	pkgdesc = Automatic Movie Downloading via NZBs & Torrent
 	pkgver = 4869.c4fad95
-	pkgrel = 1
+	pkgrel = 2
 	url = http://couchpota.to/
 	install = couchpotato.install
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = python2
+	depends = python2-lxml
 	provides = couchpotato
 	conflicts = couchpotato
 	source = git://github.com/RuudBurger/CouchPotatoServer.git

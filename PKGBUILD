@@ -3,12 +3,12 @@
 pkgname=couchpotato-git
 _gitname=CouchPotatoServer
 pkgver=4869.c4fad95
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic Movie Downloading via NZBs & Torrent"
 arch=('any')
 url="http://couchpota.to/"
 license=('GPL3')
-depends=('python2')
+depends=('python2' 'python2-lxml')
 makedepends=('git')
 provides=('couchpotato')
 conflicts=('couchpotato')
