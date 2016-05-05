@@ -3,7 +3,7 @@
 
 pkgname=everseer-client-git
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Electron based multi-machine system monitor'
 arch=('x86_64')
 url='https://github.com/gabmus/everseer'
@@ -16,7 +16,7 @@ source=("everseer::git+git://github.com/gabmus/everseer")
 md5sums=('SKIP')
 
 prepare() {
-  cd "$srcdir/everseer/everseer_client"
+  cd "$srcdir/everseer/everseer-client"
   sed -e "s/<%= description %>/$pkgdesc/" \
     -e "s|<%= appName %>|Everseer|"\
     -e "s|<%= installDir %>/share/<%= appFileName %>|/usr/bin|"\
@@ -27,7 +27,7 @@ prepare() {
 build() {
   cd "$srcdir/everseer"
   npm install electron-packager
-  ./node_modules/electron-packager/cli.js everseer_client Everseer --platform=linux --arch=x64
+  ./node_modules/electron-packager/cli.js everseer-client Everseer --platform=linux --arch=x64
 }
 
 package() {
@@ -35,6 +35,6 @@ package() {
   mkdir -p $pkgdir/usr/share/applications
   mkdir -p $pkgdir/usr/bin
   cp -r Everseer-linux-x64 $pkgdir/usr/share/everseer-client
-  cp everseer_client/resources/linux/Everseer.desktop $pkgdir/usr/share/applications/
+  cp everseer-client/resources/linux/Everseer.desktop $pkgdir/usr/share/applications/
   ln -s /usr/share/everseer-client/Everseer $pkgdir/usr/bin/everseer
 }
