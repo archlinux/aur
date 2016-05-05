@@ -5,7 +5,7 @@
 _gitname=mbm-gpsd
 _ghuser=pl4nkton
 pkgname="${_gitname}-${_ghuser}-git"
-pkgver=r51.4e8c57a
+pkgver=r53.b3dee82
 pkgrel=1
 pkgdesc="GPS support files for Ericsson F3507g that provide an easy interface to gpsd (${_ghuser} fork with build fixes)"
 arch=('i686' 'x86_64')
@@ -17,7 +17,6 @@ provides=("${_gitname}")
 conflicts=("${_gitname}")
 source=("git+https://github.com/${_ghuser}/${_gitname}.git/"
 mbm-gpsd.service
-0001-Fix-incorrect-syntax-in-udev.patch
 )
 
 pkgver() {
@@ -27,7 +26,6 @@ pkgver() {
 
 prepare() {
 	cd "${srcdir}/${_gitname}"
-	patch -p1 < 0001-Fix-incorrect-syntax-in-udev.patch
 }
 
 build() {
@@ -48,5 +46,4 @@ package() {
 	rmdir "${pkgdir}/var" "${pkgdir}/usr/sbin/"
 }
 md5sums=('SKIP'
-         'c436e8bcf6b459f8f939e434aed0b9d4'
-         '32275446e564eccb76ea907a63a610fa')
+         'c436e8bcf6b459f8f939e434aed0b9d4')
