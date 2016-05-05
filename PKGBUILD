@@ -2,14 +2,14 @@
 
 pkgname=youtube-dl-git
 _gitname="youtube-dl"
-pkgver=2016.04.06.r7.a1ff3cd
+pkgver=2016.05.01.r42.6f59aa9
 pkgrel=1
 pkgdesc="A small command-line program to download videos from YouTube.com and a few more sites (git version)"
 arch=('any')
 url="https://github.com/rg3/youtube-dl"
 license=('custom')
-depends=('python')
-makedepends=('git' 'python-setuptools' 'pandoc')
+depends=('python' 'python-setuptools')
+makedepends=('git' 'pandoc')
 optdepends=('ffmpeg: for video post-processing'
             'rtmpdump: for rtmp streams support'
             'atomicparsley: for embedding thumbnails into m4a files')
