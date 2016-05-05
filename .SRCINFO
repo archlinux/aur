@@ -1,0 +1,13 @@
+pkgbase = arc-dark-xfce4-terminal
+	pkgdesc = Arc-Dark colorscheme for xfce4-terminal
+	pkgver = 1
+	pkgrel = 1
+	url = https://manjaro.ru/
+	arch = any
+	license = GPL3
+	depends = xfce4-terminal
+	source = https://manjaro.ru/aur/arc-dark-xfce4-terminal/arc-dark-xfce4-terminal.tar.gz
+	md5sums = 9577b8bccf79aab987f814a1c052209e
+
+pkgname = arc-dark-xfce4-terminal
+
