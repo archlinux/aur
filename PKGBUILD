@@ -18,7 +18,7 @@ md5sums=('e5ddd179c6b46af66b305c54fb4c3dc0')
 
 package() {
   pkgdesc="Icons matching Vertex Maia themes, based on Menda Circle"
-  optdepends=('vertex-maia-themes: Official Manjaro Gtk2/3, Metacity, Xfwm, Cinnamon and GNOME Shell themes')
+  optdepends=('menda-maia-themes: Official Manjaro Gtk2/3, Metacity, Xfwm, Cinnamon and GNOME Shell themes')
 
   install -dm755 "${pkgdir}/usr/share/icons"
 
