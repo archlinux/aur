@@ -1,0 +1,16 @@
+pkgbase = deepinwine-qq
+	pkgdesc = Deepin Wine QQ 7.1.
+	pkgver = 7.1.14522deepin5
+	pkgrel = 1
+	url = http://im.qq.com/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = deepin-crossover
+	noextract = deepinwine-qq_7.1.14522deepin5_i386.deb
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepinwine-qq/deepinwine-qq_7.1.14522deepin5_i386.deb
+	md5sums = b6b3d6b428ab41106ba6b0f065b17606
+
+pkgname = deepinwine-qq
+
