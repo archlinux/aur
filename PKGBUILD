@@ -4,14 +4,13 @@
 
 pkgname=gtetrinet
 pkgver=0.7.11
-pkgrel=4
+pkgrel=5
 pkgdesc="A clone of the game Tetrinet for the gnome environment"
 url="http://gtetrinet.sourceforge.net/"
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('libgnomeui>=2.18.1-2' 'desktop-file-utils' 'gtk-update-icon-cache' 'gconf')
 makedepends=('libxml-perl' 'pkgconfig' 'intltool')
-install=gtetrinet.install
 options=('!emptydirs')
 source=(${pkgname}-${pkgver}.tar.bz2::http://ftp.gnome.org/pub/GNOME/sources/gtetrinet/0.7/${pkgname}-${pkgver}.tar.bz2
         format-security.patch)
