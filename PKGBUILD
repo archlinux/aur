@@ -31,16 +31,44 @@ source=("${pkgname}.desktop"
 md5sums=('b92a253536ce1275a8c91d6ed9d7b2f7'
          'ccc2acc3cf18f71c517e42fc2eb4d77b')
 
+build() {
+	
+	#cd "$pkgname-$pkgver"
+	#./configure --prefix=/usr
+	#make
+
+	cd "${srcdir}"
+}
+
+check() {
+	
+	#cd "$pkgname-$pkgver"
+	#make -k check
+
+	cd "${srcdir}"
+	#check if exist files base
+
+	if [ -f "${pkgname}"" ]; then
+		if [ -f "${pkgname}.desktop"]; then
+
+		fi
+	else
+		exit 0
+	fi
+}
+
 package() {
 
 	cd "${srcdir}"
 
+	install -dm755 "${pkgdir}/usr/bin"
+	
 	cp --preserve=mode -r "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
 	install -dm755 "${pkgdir}/usr/share/applications"
 
 	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
-	install -dm755 "${pkgdir}/usr/bin"
 	
+
 }
