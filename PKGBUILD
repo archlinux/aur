@@ -2,7 +2,7 @@
 
 _pkgname=openbazaard
 pkgname=${_pkgname}-git
-pkgver=1006.7fe9d86
+pkgver=1016.258a5e6
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
@@ -16,7 +16,7 @@ depends=(
 	python2-gnupg-isis
 	python2-libbitcoinclient
 	python2-miniupnpc
-	python2-protobuf3
+	python2-protobuf3-coex
 	python2-pyelliptic
 	python2-pynacl
 	python2-pystun
@@ -46,6 +46,10 @@ backup=("var/lib/${_pkgname}/ob.cfg"
 
 package(){
   cd $srcdir
+
+msg2 "Use python2-protobuf3-coex requirements"
+  find . -type f -exec sed -i 's/google.protobuf/google.protobuf3/g' {} +   
+  find . -type f -name "*.proto" -exec sed -i 's/protoc/protobuf3-protoc/g' {} +
 
 msg2 "Install systemd service"
   install -Dm644 $srcdir/${_pkgname}.service $pkgdir/usr/lib/systemd/system/${_pkgname}.service
