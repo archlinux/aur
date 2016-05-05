@@ -5,14 +5,16 @@ pkgname=flaketill-says
 pkgver=0.0.1
 pkgrel=2
 
-pkgdesc="An app for your console to proyects manager, for example if you write on your console application flaketill says: What do yo do? In the future i'll build an app like jarvis but for moment is a dream"
+pkgdesc="An app for your console to proyects manager, for example if you write on your \
+console application flaketill says: What do yo do? In 
+the future i'll build an app like jarvis but for moment is a dream"
 arch=('x86_64')
 url="https://artpcweb.appspot.com/"
 license=('GPL')
 
 depends=('python2' 'espeak')
 checkdepends=('gdb')
-makedepends=('lx-terminal' 'terminator' 'namcap')
+makedepends=('lxterminal' 'terminator' 'namcap')
 optdepends=('gksu: sudo-save support',
 			'alsa-lib: sound support')
 
