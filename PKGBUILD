@@ -1,19 +1,43 @@
-# Maintainer: Steven Hiscocks <steven [at] hiscocks [dot] me [dot] uk>
+# Maintainer: DJ Lucas <dj_AT_linuxfromscratch_DOT_org>
+# Contributor: Steven Hiscocks <steven [at] hiscocks [dot] me [dot] uk>
 # Contributor:  Andre Wayand <aur-sogo@awayand.sleepmail.com>
-pkgbase=sogo2
-pkgname=('sogo2'
-         'sogo2-openchange'
-         'sogo2-activesync')
-pkgver=2.3.3a
-pkgrel=3
+pkgname=sogo2
+pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
+pkgver=2.3.10
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.sogo.nu/"
 license=('GPL')
+depends=("sope2>=${pkgver}"
+         'gnustep-base'
+         'libmemcached'
+         'memcached')
 makedepends=('gcc-objc'
              'gnustep-base'
              'libwbxml'
-             'libmemcached'
-             "sope>=${pkgver}")
+             'libmemcached')
+conflicts=('sogo'
+           'sogo-openchange'
+           'sogo2-openchange')
+replaces=('sogo-activesync'
+          'sogo2-activesync')
+provides=('sogo-activsync'
+          'sogo2-activesync')
+optdepends=(
+        'postgresql: run database server for sogo locally'
+        'mariadb: run database server for sogo locally'
+        'openldap: run directory server for sogo locally'
+        'postfix: run smtp server for sogo locally'
+        'dovecot: run imap server for sogo locally'
+        'courier-imap: run imap server for sogo locally'
+        'nginx: webserver to provide web interface locally'
+        'apache: webserver to provide web interface locally'
+        'lighttpd: webserver to provide web interface locally'
+        'funambol: sync mobile devices with sogo contacts, events, tasks via SyncML')
+backup=('etc/sogo/sogo.conf'
+        'etc/httpd/conf/extra/SOGo.conf'
+        'etc/conf.d/sogo')
+install=sogo.install
 options=('!strip')
 source=(
   http://www.sogo.nu/files/downloads/SOGo/Sources/SOGo-${pkgver}.tar.gz
@@ -29,29 +53,13 @@ prepare() {
 
 build() {
   cd "$srcdir/SOGo-${pkgver}"
-  ./configure --prefix=$(gnustep-config --variable=GNUSTEP_SYSTEM_ROOT) --disable-debug
+  ./configure --prefix=$(gnustep-config --variable=GNUSTEP_SYSTEM_ROOT) \
+              --disable-strip \
+              --disable-debug
   make
 }
 
-package_sogo2() {
-pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
-depends=("sope>=${pkgver}" 'gnustep-base' 'libmemcached' 'memcached')
-optdepends=(
-	'postgresql: run database server for sogo locally'
-	'mariadb: run database server for sogo locally'
-	'openldap: run directory server for sogo locally'
-	'postfix: run smtp server for sogo locally'
-	'dovecot: run imap server for sogo locally'
-	'courier-imap: run imap server for sogo locally'
-	'nginx: webserver to provide web interface locally'
-	'apache: webserver to provide web interface locally'
-	'lighttpd: webserver to provide web interface locally'
-	'funambol: sync mobile devices with sogo contacts, events, tasks via SyncML')
-backup=('etc/sogo/sogo.conf'
-        'etc/httpd/conf/extra/SOGo.conf'
-        'etc/conf.d/sogo')
-install=sogo.install
-replaces=('sogo')
+package() {
 
   cd "${srcdir}/SOGo-${pkgver}"
   make install DESTDIR="${pkgdir}" GNUSTEP_SYSTEM_ADMIN_TOOLS="/usr/bin"
@@ -68,28 +76,31 @@ replaces=('sogo')
                       "${pkgdir}"/usr/lib/sogo/scripts/
   install -D -m 0644 "${srcdir}"/sogo.confd \
                      "${pkgdir}"/etc/conf.d/sogo
-}
-
-package_sogo2-openchange() {
-pkgdesc="OpenChange module for SOGo"
-depends=("sogo=${pkgver}" 'openchange')
-replaces=('sogo-openchange')
-
-  cd "${srcdir}/SOGo-${pkgver}/OpenChange"
-  sed 's@-Wall@-Wall -fobjc-exceptions@' -i GNUmakefile
-  make PYTHON=/usr/bin/python2 install DESTDIR="${pkgdir}" GNU_SYSTEM_ADMIN_TOOLS="/usr/bin"
-}
-
-package_sogo2-activesync() {
-pkgdesc="ActiveSync module for SOGo"
-depends=("sogo=${pkgver}" 'libwbxml')
-replaces=('sogo-activesync')
-
+  # ActiveSync
   cd "${srcdir}/SOGo-${pkgver}/ActiveSync"
-  make PYTHON=/usr/bin/python2 install DESTDIR="${pkgdir}" GNU_SYSTEM_ADMIN_TOOLS="/usr/bin"
+  make PYTHON=/usr/bin/python2 install DESTDIR="${pkgdir}" \
+       GNU_SYSTEM_ADMIN_TOOLS="/usr/bin"
 }
 
-sha256sums=('cc0ed55f30ef889d8d7f2d55b48066a501e9285317e0dfc63e0a12235a68382c'
+# Split packages left in place for a few revisions...
+#package_sogo-openchange() {
+#pkgdesc="OpenChange module for SOGo"
+#depends=("sogo=${pkgver}" 'openchange')
+#
+#  cd "${srcdir}/SOGo-${pkgver}/OpenChange"
+#  sed 's@-Wall@-Wall -fobjc-exceptions@' -i GNUmakefile
+#  make PYTHON=/usr/bin/python2 install DESTDIR="${pkgdir}" GNU_SYSTEM_ADMIN_TOOLS="/usr/bin"
+#}
+
+#package_sogo-activesync() {
+#pkgdesc="ActiveSync module for SOGo"
+#depends=("sogo=${pkgver}" 'libwbxml')
+#
+#  cd "${srcdir}/SOGo-${pkgver}/ActiveSync"
+#  make PYTHON=/usr/bin/python2 install DESTDIR="${pkgdir}" GNU_SYSTEM_ADMIN_TOOLS="/usr/bin"
+#}
+
+sha256sums=('c51c5d2c43b686868a906839eea721e15bfdadcbff537b1aa377ca268818a1af'
             'e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1'
             '0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c'
             '8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7')
