@@ -24,6 +24,6 @@ build() {
 
 package() {
 	cd "$pkgname"
-	mkdir $pkgdir/usr $pkgdir/usr/sbin
-	install bin/ferret $pkgdir/usr/sbin/$pkgname
+	mkdir $pkgdir/usr $pkgdir/usr/bin
+	install bin/ferret $pkgdir/usr/bin/$pkgname
 }
