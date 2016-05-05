@@ -4,7 +4,7 @@
 
 pkgname=zeal-git
 _appname=zeal
-pkgver=0.2.1.152.g334e897
+pkgver=0.2.1.169.g4cec3c5
 pkgrel=1
 pkgdesc="An offline API documentation browser"
 arch=('i686' 'x86_64')
@@ -15,7 +15,6 @@ depends=('libarchive' 'qt5-webkit' 'qt5-imageformats' 'qt5-x11extras'
 makedepends=('git')
 conflicts=('zeal')
 source=("git+https://github.com/zealdocs/$_appname")
-install=zeal-git.install
 sha1sums=('SKIP')
 
 pkgver() {
