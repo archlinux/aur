@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emacs-xwidget-git
-pkgver=25.1.50.r125995
+pkgver=25.1.50.r125998
 pkgrel=1
 pkgdesc="The famous editor from xwidget_mvp branch"
 arch=('i686' 'x86_64')
@@ -15,7 +15,6 @@ makedepends=('git' 'texinfo' 'glproto')
 options=('docs' '!emptydirs' '!makeflags')
 provides=('emacs')
 conflicts=('emacs')
-install=emacs.install
 source=("git://git.savannah.gnu.org/emacs.git")
 md5sums=('SKIP')
 _gitname="emacs"
