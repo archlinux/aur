@@ -4,3 +4,5 @@ srcdir
 pkg
 pkgdir
 *.xz
+*.gz
+*.pac.*
