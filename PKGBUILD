@@ -9,7 +9,7 @@
 pkgname=fwknop-git
 _pkgname=${pkgname/-git}
 pkgver=2.6.8.2341.29411de
-pkgrel=2
+pkgrel=3
 pkgdesc='FireWall KNock OPerator: Single Packet Authorization and Port Knocking'
 url='https://www.cipherdyne.org/fwknop'
 arch=('i686' 'x86_64')
@@ -21,7 +21,6 @@ makedepends=('git')
 provides=('fwknop')
 conflicts=('fwknop')
 options=('!libtool')
-install=fwknop.install
 source=(${pkgname}::git+https://github.com/mrash/fwknop
         fwknopd.service)
 sha512sums=('SKIP'
