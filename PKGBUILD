@@ -33,16 +33,10 @@ license=('GPL3')
 makedepends=('intltool' 'librsvg' 'gtk-update-icon-cache')
 provides=("${pkgname%-*}" "${pkgname}")
 conflicts=("${pkgname%-*}" "${pkgname}")
-#options=('!strip')
+options=('!strip')
 install="${pkgname%-*}.install"
 source=("git+https://github.com/GreenRaccoon23/${pkgname%-*}.git")
 md5sums=("SKIP")
-
-_error2() {
-  for e; do
-    echo "    ${e}";
-  done;
-}
 
 pkgver() {
   cd "$srcdir/${pkgname%-*}"
@@ -59,7 +53,9 @@ prepare() {
 
   error "Required font 'Roboto' is not installed."
   error "Please install a font package which includes 'Roboto', such as:"
-  _error2 ttf-roboto ttf-roboto-font ttf-google-fonts-git ttf-google-fonts-hg otf-google-fonts-hg;
+  for e in ttf-roboto ttf-roboto-font ttf-google-fonts-git ttf-google-fonts-hg otf-google-fonts-hg; do
+    echo "${e}";
+  done;
   return 1;
 }
 
