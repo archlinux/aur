@@ -1,0 +1,164 @@
+diff --git a/dlls/wbemprox/builtin.c b/dlls/wbemprox/builtin.c
+index 13f708f..ddb8d7d 100644
+--- a/dlls/wbemprox/builtin.c
++++ b/dlls/wbemprox/builtin.c
+@@ -2927,7 +2927,7 @@ static UINT32 get_bits_per_pixel( UINT *hres, UINT *vres )
+     ReleaseDC( NULL, hdc );
+     return ret;
+ }
+-static WCHAR *get_pnpdeviceid( DXGI_ADAPTER_DESC *desc )
++static WCHAR *get_pnpdeviceid( DXGI_ADAPTER_DESC1 *desc )
+ {
+     static const WCHAR fmtW[] =
+         {'P','C','I','\\','V','E','N','_','%','0','4','X','&','D','E','V','_','%','0','4','X',
+@@ -2940,14 +2940,93 @@ static WCHAR *get_pnpdeviceid( DXGI_ADAPTER_DESC *desc )
+     return ret;
+ }
+
++/* some games like to continuously ask for the video controller
++   since dxgi is expensive, cache results for subsequent calls */
++static IDXGIFactory1 *factory = NULL;
++static IDXGIAdapter1 *adapter = NULL;
++static struct record_videocontroller *static_rec = NULL;
++
++static void cache_videocontroller(struct record_videocontroller *rec)
++{
++    if (!(static_rec = heap_alloc(sizeof(struct record_videocontroller))))
++        return;
++
++    static_rec->adapter_dactype       = heap_strdupW( rec->adapter_dactype );
++    static_rec->adapter_ram           = rec->adapter_ram;
++    static_rec->availability          = rec->availability;
++    static_rec->caption               = heap_strdupW( rec->caption );
++    static_rec->current_bitsperpixel  = rec->current_bitsperpixel;
++    static_rec->current_horizontalres = rec->current_horizontalres;
++    static_rec->current_refreshrate   = rec->current_refreshrate;
++    static_rec->current_scanmode      = rec->current_scanmode;
++    static_rec->current_verticalres   = rec->current_verticalres;
++    static_rec->description           = heap_strdupW( rec->description );
++    static_rec->device_id             = heap_strdupW( rec->device_id );
++    static_rec->driverversion         = heap_strdupW( rec->driverversion );
++    static_rec->name                  = heap_strdupW( rec->name );
++    static_rec->pnpdevice_id          = heap_strdupW( rec->pnpdevice_id );
++    static_rec->videoarchitecture     = rec->videoarchitecture;
++    static_rec->videomemorytype       = rec->videomemorytype;
++    static_rec->videoprocessor        = heap_strdupW( rec->videoprocessor );
++}
++
++static void videocontroller_from_cache(struct record_videocontroller *rec)
++{
++    rec->adapter_dactype       = heap_strdupW( static_rec->adapter_dactype );
++    rec->adapter_ram           = static_rec->adapter_ram;
++    rec->availability          = 3; /* Running or Full Power */
++    rec->caption               = heap_strdupW( static_rec->caption );
++    rec->current_bitsperpixel  = static_rec->current_bitsperpixel;
++    rec->current_horizontalres = static_rec->current_horizontalres;
++    rec->current_refreshrate   = 0; /* default refresh rate */
++    rec->current_scanmode      = 2; /* Unknown */
++    rec->current_verticalres   = static_rec->current_verticalres;
++    rec->description           = heap_strdupW( static_rec->description );
++    rec->device_id             = heap_strdupW( static_rec->device_id );
++    rec->driverversion         = heap_strdupW( static_rec->driverversion );
++    rec->name                  = heap_strdupW( static_rec->name );
++    rec->pnpdevice_id          = heap_strdupW( static_rec->pnpdevice_id );
++    rec->videoarchitecture     = 2; /* Unknown */
++    rec->videomemorytype       = 2; /* Unknown */
++    rec->videoprocessor        = heap_strdupW( static_rec->videoprocessor );
++}
++
++void free_videocontroller_cache()
++{
++    if (!static_rec)
++        return;
++
++    heap_free(static_rec->adapter_dactype);
++    heap_free(static_rec->caption);
++    heap_free(static_rec->description);
++    heap_free(static_rec->device_id);
++    heap_free(static_rec->driverversion);
++    heap_free(static_rec->name);
++    heap_free(static_rec->pnpdevice_id);
++    heap_free(static_rec->videoprocessor);
++
++    heap_free(static_rec);
++    static_rec = NULL;
++
++    if (factory)
++    {
++        IDXGIFactory1_Release( factory );
++        factory = NULL;
++    }
++
++    if (adapter)
++    {
++        IDXGIAdapter1_Release( adapter );
++        adapter = NULL;
++    }
++}
++
+ static enum fill_status fill_videocontroller( struct table *table, const struct expr *cond )
+ {
+     static const WCHAR fmtW[] = {'%','u',' ','x',' ','%','u',' ','x',' ','%','I','6','4','u',' ','c','o','l','o','r','s',0};
+     struct record_videocontroller *rec;
+     HRESULT hr;
+-    IDXGIFactory *factory = NULL;
+-    IDXGIAdapter *adapter = NULL;
+-    DXGI_ADAPTER_DESC desc;
++    DXGI_ADAPTER_DESC1 desc;
+     UINT row = 0, hres = 1024, vres = 768, vidmem = 512 * 1024 * 1024;
+     const WCHAR *name = videocontroller_deviceidW;
+     enum fill_status status = FILL_STATUS_UNFILTERED;
+@@ -2955,14 +3034,24 @@ static enum fill_status fill_videocontroller( struct table *table, const struct
+
+     if (!resize_table( table, 1, sizeof(*rec) )) return FILL_STATUS_FAILED;
+
++    rec = (struct record_videocontroller *)table->data;
++    if (static_rec && factory && IDXGIFactory1_IsCurrent(factory))
++    {
++        TRACE("using cached data at %p\n", static_rec);
++        videocontroller_from_cache(rec);
++        goto done_cached;
++    }
++
++    free_videocontroller_cache();
++
+     memset (&desc, 0, sizeof(desc));
+-    hr = CreateDXGIFactory( &IID_IDXGIFactory, (void **)&factory );
++    hr = CreateDXGIFactory1( &IID_IDXGIFactory, (void **)&factory );
+     if (FAILED(hr)) goto done;
+
+-    hr = IDXGIFactory_EnumAdapters( factory, 0, &adapter );
++    hr = IDXGIFactory1_EnumAdapters1( factory, 0, &adapter );
+     if (FAILED(hr)) goto done;
+
+-    hr = IDXGIAdapter_GetDesc( adapter, &desc );
++    hr = IDXGIAdapter1_GetDesc1( adapter, &desc );
+     if (SUCCEEDED(hr))
+     {
+         vidmem = desc.DedicatedVideoMemory;
+@@ -2970,7 +3059,6 @@ static enum fill_status fill_videocontroller( struct table *table, const struct
+     }
+
+ done:
+-    rec = (struct record_videocontroller *)table->data;
+     rec->adapter_dactype       = videocontroller_dactypeW;
+     rec->adapter_ram           = vidmem;
+     rec->availability          = 3; /* Running or Full Power */
+@@ -2990,14 +3078,15 @@ done:
+     wsprintfW( mode, fmtW, hres, vres, (UINT64)1 << rec->current_bitsperpixel );
+     rec->videomodedescription  = heap_strdupW( mode );
+     rec->videoprocessor        = heap_strdupW( name );
++    cache_videocontroller(rec);
++
++done_cached:
+     if (!match_row( table, row, cond, &status )) free_row_values( table, row );
+     else row++;
+
+     TRACE("created %u rows\n", row);
+     table->num_rows = row;
+
+-    if (adapter) IDXGIAdapter_Release( adapter );
+-    if (factory) IDXGIFactory_Release( factory );
+     return status;
+ }
+

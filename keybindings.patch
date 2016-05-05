@@ -1,0 +1,25 @@
+From 43984f355a2905e16075a9df3d7fbe463761e853 Mon Sep 17 00:00:00 2001
+From: Ken Thomases <ken@codeweavers.com>
+Date: Thu, 31 May 2012 15:33:23 -0500
+Subject: [PATCH 1/1] winex11: Be more conservative when matching keys from built-in layout tables.
+
+---
+ dlls/winex11.drv/keyboard.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/dlls/winex11.drv/keyboard.c b/dlls/winex11.drv/keyboard.c
+index 82fd26a..a2237e2 100644
+--- a/dlls/winex11.drv/keyboard.c
++++ b/dlls/winex11.drv/keyboard.c
+@@ -1729,7 +1729,7 @@ void X11DRV_InitKeyboard( Display *display )
+                          * with appropriate ShiftMask and Mode_switch, use XLookupString
+                          * to get character in the local encoding.
+                          */
+-                        ckey[i] = keysym & 0xFF;
++                        ckey[i] = (keysym <= 0x7F) ? keysym : 0;
+                     }
+ 		} else {
+ 		  ckey[i] = KEYBOARD_MapDeadKeysym(keysym);
+-- 
+1.7.2.5
+

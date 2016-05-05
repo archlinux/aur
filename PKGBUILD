@@ -9,20 +9,30 @@
 # -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
 
 pkgname=wine-gaming-nine
-pkgver=1.9.8
+pkgver=1.9.9
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
-_winesrcdir="pontostroy-wine-$_pkgbasever"
+_winesrcdir="wine-patched-nine-staging-nine-v$_pkgbasever"
 
-source=("https://github.com/mradermaxlol/pontostroy-wine/archive/v$_pkgbasever.tar.gz"
+source=("https://github.com/mradermaxlol/wine-patched-nine/archive/staging-nine-v$_pkgbasever.tar.gz"
 		30-win32-aliases.conf
+		heap_perf.patch
+		keybindings.patch
+		mipmap.patch
+		steam.patch
+		wbemprox_query_v2.patch
         )
-sha1sums=('4cba3dfba02ebced92ddba82a15b8105e0ae86a8'
+sha1sums=('af040bfe14ec2e77e3232a7834f4abf68a38c7a7'
 		  '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
+		  '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
+		  'f3febb8836f38320742a546c667106608d4c4395'
+		  'c3096fccbac23e520d03f592db7f23350cbbc0bc'
+		  '74aae040fde9ff3c9e8da9c840557e87afdbc3a0'
+		  '644e141125a9f2407e64d23c85ec84a691c7caae'
           )
 
-pkgdesc="Based off wine-staging (pontostroy version), including the gallium-nine patches and some more hacks"
+pkgdesc="Based off wine-staging, including the gallium-nine patches and some more hacks"
 url="http://www.wine-staging.com"
 arch=(i686 x86_64)
 options=(staticlibs)
@@ -117,11 +127,18 @@ fi
 
 prepare()
 {
-    cd pontostroy-wine-$_pkgbasever
+    cd "$_winesrcdir"
 
     sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i configure*
 
+    patch -p1 < "$srcdir/heap_perf.patch"
+    patch -p1 -R < "$srcdir/keybindings.patch"
+    patch -p1 < "$srcdir/mipmap.patch"
+    patch -p1 < "$srcdir/steam.patch"
+    patch -p1 < "$srcdir/wbemprox_query_v2.patch"
+
     autoreconf -f
+
 
     cd $srcdir
 

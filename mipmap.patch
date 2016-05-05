@@ -1,0 +1,18 @@
+diff --git a/dlls/wined3d/resource.c b/dlls/wined3d/resource.c
+index b76783f..aa45d5c 100644
+--- a/dlls/wined3d/resource.c
++++ b/dlls/wined3d/resource.c
+@@ -352,8 +352,12 @@ BOOL wined3d_resource_allocate_sysmem(struct wined3d_resource *resource)
+     void **p;
+     SIZE_T align = RESOURCE_ALIGNMENT - 1 + sizeof(*p);
+     void *mem;
++    UINT size = resource->size;
+
+-    if (!(mem = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, resource->size + align)))
++    if (resource->width <= 64 && resource->height <= 64)
++        size *= 2;
++
++    if (!(mem = HeapAlloc(GetProcessHeap(), HEAP_ZERO_MEMORY, size + align)))
+         return FALSE;
+
+     p = (void **)(((ULONG_PTR)mem + align) & ~(RESOURCE_ALIGNMENT - 1)) - 1;
