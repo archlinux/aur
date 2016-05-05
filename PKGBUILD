@@ -1,5 +1,5 @@
 # Contributor: Simon Bachmann <simonbachmann@freesurf.ch>
-# Maintainer: Anton Larionov <diffident dot cat at gmail dot com>
+# Contributor: Anton Larionov <diffident dot cat at gmail dot com>
 # Maintainer: SanskritFritz (gmail)
 
 pkgname=mirrormagic-bin
@@ -11,6 +11,8 @@ arch=('i686' 'x86_64')
 url="http://www.artsoft.org/mirrormagic/"
 license=('GPL2')
 depends=('sdl_image' 'sdl_mixer')
+provides=('mirrormagic')
+replaces=('mirrormagic')
 
 source=("http://www.artsoft.org/RELEASES/unix/mirrormagic/$_pkgname-$pkgver.tar.gz"
         "$_pkgname.sh"
