@@ -27,7 +27,7 @@ prepare() {
         --name 'Teeworlds' --categories 'Game;ArcadeGame'
       
       # Server
-    convert "ddnet-$pkgver/other/icons/DDNet.ico" "$srcdir/${pkgname}_srv.png"
+    convert "ddnet-$pkgver/other/icons/DDNet-Server.ico" "$srcdir/${pkgname}_srv.png"
       # This desktop file, combined with 'teeworlds-ddnet-maps-git' pkg will
       # run DDNet Server with all votes, maps etc. -- no score/ranking, though
     gendesk -f -n --pkgname "${pkgname}_srv" --pkgdesc "DDNet Server" --terminal=true \
