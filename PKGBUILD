@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
 pkgname=zzuf-git
-pkgver=0.14.669.d16576b
+pkgver=0.15.680.14138cd
 pkgrel=1
 pkgdesc="Transparent application input fuzzer"
 url='https://github.com/samhocevar/zzuf'
@@ -33,8 +33,7 @@ build() {
 
 check() {
   cd ${pkgname}
-  # ignore test results because of upstream bug #7
-  make check||true
+  make check
 }
 
 package() {
