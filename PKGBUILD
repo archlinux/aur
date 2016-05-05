@@ -43,6 +43,7 @@ build() {
     -DUSE_QT5=ON \
     -DWITH_KDE=OFF \
     -DCMAKE_BUILD_TYPE="Release" \
+    -DHAVE_SSL=TRUE \
     -DWANT_CORE=ON \
     -DWANT_MONO=OFF \
     -DWANT_QTCLIENT=OFF \
@@ -59,6 +60,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr/ \
     -DUSE_QT5=ON \
     -DWITH_KDE=OFF \
+    -DHAVE_SSL=TRUE \
     -DCMAKE_BUILD_TYPE="Release" \
     -DWANT_CORE=OFF \
     -DWANT_QTCLIENT=ON \
@@ -74,6 +76,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr/ \
     -DUSE_QT5=ON \
     -DWITH_KDE=OFF \
+    -DHAVE_SSL=TRUE \
     -DCMAKE_BUILD_TYPE="Release" \
     -DWANT_CORE=OFF \
     -DWANT_QTCLIENT=OFF \
