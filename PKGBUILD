@@ -3,7 +3,7 @@
 
 pkgname=google-webdesigner
 pkgver=1.6.0.0429
-pkgrel=1
+pkgrel=2
 pkgdesc="Create engaging, interactive HTML5-based designs and motion graphics that can run on any device."
 arch=('x86_64')
 url="https://www.google.com/webdesigner"
