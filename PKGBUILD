@@ -3,30 +3,25 @@
 # Contributor: ilikenwf
 # Contributor: American_Jesus
 pkgname=palemoon-beta
-pkgver=26.2.0_RC3
+pkgver=26.2.2_RC1
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
 url="http://www.palemoon.org/"
 license=('MPL' 'GPL' 'LGPL')
-depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib' 'hunspell'
+depends=('gtk2' 'dbus-glib' 'desktop-file-utils' 'libxt' 'mime-types' 'nss' 'alsa-lib'
          'nspr' 'libjpeg-turbo' 'zlib' 'bzip2' 'libpng' 'libevent' 'libvpx' 'startup-notification')
-makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'gstreamer' 'gst-plugins-base' 'libpulse')
-optdepends=('networkmanager: Location detection via available WiFi networks'
-            'libpulse: PulseAudio audio driver'
+makedepends=('git' 'python2' 'autoconf2.13' 'unzip' 'zip' 'yasm' 'gstreamer' 'gst-plugins-base' 'libpulse' 'hunspell')
+optdepends=('libpulse: PulseAudio audio driver'
             'hunspell: spell checker and morphological analyzer'
             'hyphen: library for hyphenation and justification'
-            'gst-plugins-bad'
-            'gst-plugins-good'
-            'gst-plugins-ugly')
+            'gst-libav: h.264 support'
+            'gst-plugins-good: h.264 support')
 conflicts=('palemoon' 'palemoon-bin')
-install=palemoon.install
 source=(git+"https://github.com/MoonchildProductions/Pale-Moon#tag=$pkgver"
-        palemoon.desktop
         mozconfig.in)
 md5sums=('SKIP'
-         'ba2923c637c7324c2f5b151f0b22da6a'
-         '5c4f064028750abff77eaac03d7515e1')
+         'c3af6b33006a95e8844cbe4fea8b2309')
 
 prepare() {
   sed 's#%SRCDIR%#'"$srcdir"'#g' mozconfig.in > mozconfig
@@ -53,7 +48,6 @@ package() {
   install -d "$pkgdir"/usr/{bin,lib}
   cp -r palemoon/ "$pkgdir/usr/lib/$pkgname"
   ln -s "../lib/$pkgname/palemoon" "$pkgdir/usr/bin/palemoon"
-  install -Dm644 "$srcdir/palemoon.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 
   # icons
   install -Dm644 palemoon/browser/chrome/icons/default/default16.png \
@@ -74,4 +68,7 @@ package() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   #ln -sf palemoon "$pkgdir/usr/lib/$pkgname/palemoon-bin"
   rm -f "$pkgdir/usr/lib/$pkgname/palemoon-bin"
+
+  # install desktop file
+  install -Dm644 "$srcdir/Pale-Moon/browser/branding/official/palemoon.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }

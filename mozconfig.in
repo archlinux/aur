@@ -31,6 +31,7 @@ ac_add_options --disable-updater
 ac_add_options --disable-webrtc
 ac_add_options --disable-websms-backend
 ac_add_options --disable-windows-mobile-components
+ac_add_options --disable-valgrind
 
 # disable tests, debug
 ac_add_options --disable-tests
