@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=flaketill-says
+GenericName=Management proyects on console
+Comment=A management proyect for your console
+Exec=flaketill-says %F
+Terminal=true
+MimeType=text/plain;
+Icon=flaketill-says
+Categories=Development;
+StartupNotify=true
+StartupWMClass=flaketill-says

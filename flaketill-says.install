@@ -1,0 +1,19 @@
+post_install() {
+  # Update icon cache.
+  gtk-update-icon-cache -f '/usr/share/icons/hicolor' > /dev/null 2>&1
+
+  # Note admin after install/update on how to change th update_check setting.
+  cat << _EOF
+
+  ==> flaketill-says install/upgrade note:
+  ------------------------------------------------------------------------------
+    To config the app for updates,
+    add the following setting to your User Preferences file:
+    "updates": true
+
+_EOF
+}
+
+post_upgrade() {
+  post_install
+}

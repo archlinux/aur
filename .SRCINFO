@@ -1,0 +1,21 @@
+pkgbase = flaketill-says
+	pkgdesc = An app for your console to proyects manager, for example if you write on your console application flaketill says: What do yo do? In the future i'll build an app like jarvis but for moment is a dream
+	pkgver = 0.0.1
+	pkgrel = 2
+	url = https://artpcweb.appspot.com/
+	install = flaketill-says.install
+	arch = x86_64
+	license = GPL
+	checkdepends = gdb
+	makedepends = lx-terminal
+	makedepends = terminator
+	makedepends = namcap
+	depends = python2
+	depends = espeak
+	optdepends = gksu: sudo-save support,
+	optdepends = alsa-lib: sound support
+	source = flaketill-says
+	md5sums = ccc2acc3cf18f71c517e42fc2eb4d77b
+
+pkgname = flaketill-says
+

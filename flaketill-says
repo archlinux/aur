@@ -1,0 +1,138 @@
+#!/usr/bin/env sh
+# -*- coding: UTF-8 -*- 
+# Copyright (C) 2014 Armando Ibarra
+#  v0.1 alpha - 2014
+# 
+
+#----------------------------------------------------------------------
+# Template file sh or bash 
+#
+# Author: Ing. Armando Ibarra - armandoibarra1@gmail.com
+# Email: armandoibarra1@gmail.com
+# Date: 13/06/2014 
+# Purpose:
+#    Performs the install wps lenguages (like spanish)
+#    this shell script try to install depencences 
+#    on linux OS, invokes some system commands like
+#    sudo, pacman, apt-get install, etc
+#
+#----------------------------------------------------------------------
+# NOTES:    
+#----------------------------------------------------------------------
+#	 I prefer LibreOffice but if you want use wps on spanish this bash 
+#    script can help you
+
+#    Test on Archlinux,ubuntu 13.10 and Xubuntu 14.04
+#----------------------------------------------------------------------
+
+###############################################################################
+
+# Licensed under the GNU GPL v3 - http://www.gnu.org/licenses/gpl-3.0.txt
+# - or any later version.
+
+# WPS install languages
+# A bash script installing/building all needed dependencies to 
+# build wps languages for just some Linux distributions.
+
+# @author: Ing. Armando Ibarra
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+###############################################################################
+
+#variables
+
+#autor and project data
+AUTHOR='Ing. Armando Ibarra <armandoibarra1@gmail.com>'
+COPYRIGHT='Copyright (c) 2014, armandoibarra1@gmail.com'
+LICENSE='GNU GPL Version 3'
+
+WEB_SITE="https://github.com/erpmtics/erpmtics"
+VERSION_SCRIPT="0.0.1 alpha"
+
+#colors bash script
+GREEN="\033[1;32m"
+RESET="\033[0m"
+WHITE="\033[1;37m"
+BLUE="\033[1;34m"
+RED="\033[1;31m" 
+YELLOW="\033[1;33m"
+
+THIS_SCRIPT_PATH=`readlink -f $0`
+THIS_SCRIPT_DIR=`dirname ${THIS_SCRIPT_PATH}`
+TMP_CONF=$HOME"/.erpmtics"
+
+# An error exit function
+
+error()
+{
+
+	echo -e "$RED ${PROGNAME}: ${1:-"Unknown Error"} $RESET" 1>&2
+
+}
+
+error_exit()
+{
+
+	echo -e "$RED ${PROGNAME}: ${1:-"Unknown Error"} $RESET" 1>&2
+	exit 1
+}
+
+show_msn_w()
+{
+
+	echo -e "$WHITE $1 $RESET"
+}
+
+show_msn_warn()
+{
+
+	echo -e "$RED $1 $RESET"
+}
+
+report_bug() 
+{
+
+  show_msn_warn "###############_::: Error detected ::: ##############"
+  show_msn_w "Please file a bug report at  $BLUE ${WEB_SITE} $RESET"
+  show_msn_w "Project: $BLUE erpmtics $RESET"
+  show_msn_w "Scripts: $BLUE linux/scripts/packages/wps_es.sh $RESET"
+  show_msn_w "Component: $BLUE Packages $RESET"
+  show_msn_w "Label: $BLUE erpmtics $RESET"
+  show_msn_w "Version:  $BLUE $VERSION_SCRIPT $RESET"
+  show_msn_w " "
+  echo -e ""$GREEN"Please detail your operating system type, version and any other relevant details" ""$RESET""
+}
+
+show_msn_w "$GREEN installation completed $RESET"
+
+#i don't use cat beacuse the script show with colors on shell
+show_msn_w "#######################$RED IMPORTANT $RESET #######################"
+show_msn_w "#####  If are install flaketill-says, please go to home:"
+show_msn_w "#####                                              			   "
+show_msn_w "#####  On your terminal                                        "
+show_msn_w "#####  1. [$USER@$HOSTNAME build]$ cd $HOME			          "
+show_msn_w "#####  2. [$USER@$HOSTNAME build]$ ls | grep \"es.zip\"        "
+show_msn_w "#####                                             			   "
+show_msn_w "#####  if exist file called:  es.zip                           "
+show_msn_w "#####  1. Open flaketill-says                                 "
+show_msn_w "#####     [$USER@$HOSTNAME build]$ wps                         "
+show_msn_w "#####                                             			   "
+show_msn_w "#####  Go to change language and then click on Install new language "
+show_msn_w "#####  and finally (Restart)             							"
+show_msn_w "#####   															"
+show_msn_w "#######################$RED IMPORTANT $RESET #######################"
+
+
+exit 0
