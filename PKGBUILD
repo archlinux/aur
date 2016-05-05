@@ -3,7 +3,7 @@
 # Contributor: Alexandru Ianu <alexandru . ianu @ gmail . com>
 # Submiter to AUR: Pablo Lezaeta <prflr88 (arro'a) gmail puntocom>
 
-pkgname=vertex-maia-icon-theme
+pkgname=menda-maia-icon-theme
 pkgver=20160421
 pkgrel=1
 _pkgbase=menda-icon-themes
