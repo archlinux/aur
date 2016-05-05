@@ -8,7 +8,7 @@ User=quassel
 Group=quassel
 PIDFile=/var/run/quassel.pid
 EnvironmentFile=/etc/conf.d/quassel
-ExecStart=/usr/bin/quasselcore --listen=${LISTEN} --configdir=/var/lib/quassel
+ExecStart=/usr/bin/quasselcore --configdir=/var/lib/quassel
 
 [Install]
 WantedBy=multi-user.target

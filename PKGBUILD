@@ -6,8 +6,8 @@
 _pkgbase=quassel
 pkgbase=${_pkgbase}-light
 pkgname=('quassel-client-light' 'quassel-core-light' 'quassel-monolithic-light')
-pkgver=0.12.2
-pkgrel=3
+pkgver=0.12.4
+pkgrel=1
 pkgdesc="Next-generation distributed IRC client (minimal dependencies)"
 arch=('i686' 'x86_64')
 url="http://quassel-irc.org/"
@@ -16,20 +16,18 @@ makedepends=('cmake')
 source=(http://quassel-irc.org/pub/${_pkgbase}-$pkgver.tar.bz2
         ${_pkgbase}.service
         ${_pkgbase}.conf)
-sha256sums=('6bd6f79ecb88fb857bea7e89c767a3bd0f413ff01bae9298dd2e563478947897'
-            '828aaf27696ffe2aa4b80755a09bdf264f644d9539366981697a73bb23340d7b'
-            'f3031ea8217e01ba42cea14606169e3e27affa5918968ffd5a03c21ae92fe2b8'
+sha256sums=('93e4e54cb3743cbe2e5684c2fcba94fd2bc2cd739f7672dee14341b49c29444d'
+            '5dbe20290f3361b9b7a74a52905137e76b656976febf2d31082a2276f9dcde7f'
             'f3031ea8217e01ba42cea14606169e3e27affa5918968ffd5a03c21ae92fe2b8')
 
 prepare() {
+  cd "${srcdir}"
+  mkdir build{,-client,-mono}
   cd ${_pkgbase}-$pkgver
 }
 
 build() {
   cd "${srcdir}"
-  [[ ! -d build ]] && mkdir build
-  [[ ! -d build-client ]] && mkdir build-client
-  [[ ! -d build-mono ]] && mkdir build-mono
 
   # Core
   cd "${srcdir}"/build
@@ -37,7 +35,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr/ \
     -DUSE_QT5=ON \
     -DWITH_KDE=OFF \
-    -DCMAKE_BUILD_TYPE="Release" \
     -DHAVE_SSL=TRUE \
     -DWANT_CORE=ON \
     -DWANT_MONO=OFF \
@@ -56,11 +53,11 @@ build() {
     -DUSE_QT5=ON \
     -DWITH_KDE=OFF \
     -DHAVE_SSL=TRUE \
-    -DCMAKE_BUILD_TYPE="Release" \
     -DWANT_CORE=OFF \
     -DWANT_QTCLIENT=ON \
     -DWANT_MONO=OFF \
     -DWITH_WEBKIT=OFF \
+    -DCMAKE_BUILD_TYPE="Release" \
     ../quassel-${pkgver}/ \
     -Wno-dev
   make
@@ -72,11 +69,11 @@ build() {
     -DUSE_QT5=ON \
     -DWITH_KDE=OFF \
     -DHAVE_SSL=TRUE \
-    -DCMAKE_BUILD_TYPE="Release" \
     -DWANT_CORE=OFF \
     -DWANT_QTCLIENT=OFF \
     -DWANT_MONO=ON \
     -DWITH_WEBKIT=OFF \
+    -DCMAKE_BUILD_TYPE="Release" \
     ../quassel-${pkgver}/ \
     -Wno-dev
   make
@@ -84,10 +81,11 @@ build() {
 
 package_quassel-core-light() {
 pkgdesc="Next-generation distributed IRC client - core only (minimal dependencies)"
-depends=('qt5-base' 'qt5-script')
+depends=('qca-qt5' 'qt5-script')
+optdepends=('postgresql: PostgreSQL database support')
 backup=(etc/conf.d/quassel)
 provides=('quassel-core')
-install=quassel.install
+install=${_pkgbase}.install
   cd "${srcdir}"/build
 
   make DESTDIR="${pkgdir}" install
@@ -106,7 +104,6 @@ pkgdesc="Next-generation distributed IRC client - client only (minimal dependenc
 depends=('qt5-base')
 provides=('quassel-client')
 conflicts=('quassel-monolithic')
-install=quassel-client.install
   cd "${srcdir}"/build-client
 
   make DESTDIR="${pkgdir}" install
@@ -114,10 +111,10 @@ install=quassel-client.install
 
 package_quassel-monolithic-light() {
 pkgdesc="Next-generation distributed IRC client - monolithic (minimal dependencies)"
-depends=('qt5-base' 'qt5-script')
+depends=('qt5-script')
+optdepends=('postgresql: PostgreSQL database support')
 provides=('quassel-monolithic')
 conflicts=('quassel-client')
-install=quassel-monolithic.install
   cd "${srcdir}"/build-mono
 
   make DESTDIR="${pkgdir}" install
