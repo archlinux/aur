@@ -2,7 +2,7 @@
 
 _pkgname=nm-tray
 pkgname=$_pkgname-git
-pkgver=r27.3f80ec0
+pkgver=r34.261cfb6
 pkgrel=1
 pkgdesc='Pure Qt NetworkManager front-end residing in panels'
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 build() {
   mkdir -p build
   cd build
-  cmake $srcdir/$_pkgname -DCMAKE_INSTALL_PREFIX=/usr
+  cmake $srcdir/$_pkgname -DBIN_NM_VERSION=1.0.6 -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
