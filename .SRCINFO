@@ -1,9 +1,10 @@
 pkgbase = python2-shaape-git
+	pkgdesc = ascii art to image converter designed to be used with asciidoc
 	pkgver = 1.1.1.r2.gc8c8dd7
 	pkgrel = 1
 	url = https://github.com/christiangoltz/shaape
 	arch = any
-	license = GPL
+	license = BSD
 	depends = python2
 	depends = pygtk
 	provides = python2-shaape
