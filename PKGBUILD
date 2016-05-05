@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=pick-git
-pkgver=1.1.1.r2.gafecec0
+pkgver=1.3.0.r13.ge79f95b
 pkgrel=1
 epoch=
 pkgdesc="Fuzzy select anything."
@@ -31,7 +31,10 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   autoreconf -i
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr \
+              --datarootdir="/usr/share" \
+              --mandir="/usr/share/man" \
+              --docdir="/usr/share/doc/${pkgname%-*}"
   make
 }
 
@@ -43,6 +46,6 @@ check() {
 package() {
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir/" install
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE"
 }
 
