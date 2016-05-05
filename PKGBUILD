@@ -1,6 +1,6 @@
 # Maintainer: Alexandr Boiko <brdcom@ya.ru>
 pkgname=accel-ppp-ipoe-module
-pkgver=1.10.0
+pkgver=1.10.2
 pkgrel=1
 pkgdesc="Ipoe kernel module for accel-ppp running under linux"
 arch=('i686' 'x86_64')
@@ -11,7 +11,8 @@ makedepends=('dkms' 'linux-headers' "accel-ppp-ipoe-dkms=$pkgver")
 conflicts=('')
 install='accel-ppp-ipoe-module.install'
 
-_extramodules=extramodules-4.2-ARCH
+#_extramodules=extramodules-4.4-lts
+_extramodules=extramodules-4.5-ARCH
 
 prepare() {
 	# dkms need modification to be run as user
