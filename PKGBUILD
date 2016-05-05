@@ -1,6 +1,6 @@
 # Maintainer: Alexandr Boiko <brdcom@ya.ru>
 pkgname=accel-ppp-ipoe-module-git
-pkgver=VERSION
+pkgver=r1344.f5a97ed
 pkgrel=1
 pkgdesc="Ipoe kernel module for accel-ppp running under linux"
 arch=('i686' 'x86_64')
