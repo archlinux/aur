@@ -1,0 +1,10 @@
+*.pac.*
+*.xz
+*.part
+src
+srcdir
+pkg
+pkgdir
+*.gz
+xcursor-maia*
+maia-cursor
