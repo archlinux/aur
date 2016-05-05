@@ -2,11 +2,10 @@
 # Note: My first PKGBUILD ever, bare with me :) I have been inpired a lot in other PKGBUILDs, like google-chrome's one.
 
 pkgname=google-webdesigner
-#pkgver=1.2.0.1203
-pkgver=1.5.4.0113
+pkgver=1.6.0.0429
 pkgrel=1
 pkgdesc="Create engaging, interactive HTML5-based designs and motion graphics that can run on any device."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://www.google.com/webdesigner"
 license=('custom:webdesigner')
 depends=('gtk2' 'libudev.so.0' 'gconf')
@@ -16,12 +15,12 @@ options=('!emptydirs' '!strip')
 install=${pkgname}.install
 _source_arch="i386"
 [ "${CARCH}" = 'x86_64' ] && _source_arch="amd64"
-md5sums=('e669bd6fd0163f37d9ec970db7bcfc31')
-[ "${CARCH}" = 'i686' ] && md5sums[0]='04ab693e6baa641ebcbdcc9512d4f57e' # i686 not tested by me
+md5sums=('1b052ba2622b5d15d7961862f2a20af8')
+#[ "${CARCH}" = 'i686' ] && md5sums[0]='04ab693e6baa641ebcbdcc9512d4f57e' # i686 not tested by me
 source=("google-webdesigner_current_${_source_arch}.deb::https://dl.google.com/linux/direct/google-webdesigner_current_${_source_arch}.deb")
 
 package() {
-  msg2 "Extracting the data.tar.lzma"
+  msg2 "Extracting the data.tar.gz"
   tar -xf data.tar.gz -C "${pkgdir}/"
 
   msg2 "Moving icons in place"
