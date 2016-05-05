@@ -1,34 +1,21 @@
-# Maintainer: Alexandr Boiko <brdcom@ya.ru>
+pkgbase = accel-ppp-ipoe-dkms-git
+	pkgdesc = Accel-ppp ipoe kernel module sources
+	pkgver = r1344.f5a97ed
+	pkgrel = 1
+	url = http://sourceforge.net/apps/trac/accel-ppp/
+	install = accel-ppp-ipoe-dkms-git.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = dkms
+	depends = gcc
+	depends = make
+	optdepends = linux-headers
+	provides = accel-ppp-ipoe-module-git
+	source = accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code
+	source = dkms.conf
+	md5sums = SKIP
+	md5sums = d22fcb11a0a88b8505efdb39218ffbd4
 
-pkgname=accel-ppp-ipoe-dkms-git
-_pkgname=accel-ppp
-pkgver=r1179.b8b91d8
-pkgrel=1
-pkgdesc='Accel-ppp ipoe kernel module sources'
-arch=('i686' 'x86_64')
-url='http://sourceforge.net/apps/trac/accel-ppp/'
-license=('GPL')
-depends=('dkms' 'gcc' 'make')
-provides=('accel-ppp-ipoe-module-git')
-optdepends=('linux-headers')
-source=('accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code'
-        'dkms.conf')
+pkgname = accel-ppp-ipoe-dkms-git
 
-md5sums=('SKIP'
-         '1af1d013743f7e67a84dd6605fc0045c')
-
-install=accel-ppp-ipoe-dkms-git.install
-
-pkgver() {
-    cd "$srcdir/${_pkgname%-git}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-package() {
-    cd "$srcdir/${_pkgname%-git}"
-    install -dm755 "$pkgdir/usr/src"
-    cd drivers
-    cp -r ipoe "$pkgdir/usr/src/accel-ppp-ipoe-$pkgver"
-    install -Dm0644 "$srcdir/dkms.conf" "$pkgdir/usr/src/accel-ppp-ipoe-$pkgver/dkms.conf"
-}
-
-# vim:set ts=4 sw=4 et:
