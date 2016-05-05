@@ -3,7 +3,7 @@
 # Contributor: Pranay Kanwar <pranay.kanwar@gmail.com>
 
 pkgname=zzuf
-pkgver=0.14
+pkgver=0.15
 pkgrel=1
 pkgdesc="Transparent application input fuzzer"
 url='https://github.com/samhocevar/zzuf'
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 license=('custom:WTF')
 depends=('glibc')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/samhocevar/zzuf/archive/v${pkgver}.tar.gz)
-sha512sums=('52f54505b08c77e3fffee6ad15f2012e480a8a71164ecafff98ce9273e0a31a2c4d112dd79154c5c24fea5485831618afad48a9725357dd9e4caf8b539f7acbe')
+sha512sums=('7eb67b3531ceec68ec9cac2d3c7f5212dcf63a3bd706bd9d40e9b7f762e8f0e225606a9de4e13826ce20d0e385205720dcc40a5745f52eede67ffe2a8c9e5a20')
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -26,8 +26,7 @@ build() {
 
 check() {
   cd ${pkgname}-${pkgver}
-  # ignore test results because of upstream bug #7
-  make check||true
+  make check
 }
 
 package() {
