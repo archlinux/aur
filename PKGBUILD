@@ -2,6 +2,7 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 # Contributor: Jonathan Chan <jyc@fastmail.fm>
+# Contributor: misc <tastky@gmail.com>
 
 pkgbase=linux-git
 _srcname=linux
@@ -231,6 +232,10 @@ _package-headers() {
 
   # Fix file conflict with -doc package
   rm "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/kbuild"/Kconfig.*-*
+
+  # Add objtool for CONFIG_STACK_VALIDATION
+  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
+  cp -a tools/objtool "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
