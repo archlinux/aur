@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-prompt_toolkit
-pkgver=0.60
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Library for building powerful interactive command lines in Python"
 arch=('any')
@@ -13,9 +13,9 @@ makedepends=('python2-setuptools')
 url="https://github.com/jonathanslenders/python-prompt-toolkit"
 license=('BSD')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/source/p/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('516826aff6a09536037b6d02a9a3451d')
-sha256sums=('b44acc4cf3fb9f7331343ae170eac06f853a66e28cdd4ccfeee7c8dad0dec33d')
+source=(https://pypi.python.org/packages/0b/2c/ab26db81e5b9c2f179a2e9d797f2ce0d11f7cc3308830831de0daad8629e/${pkgname#python2-}-$pkgver.tar.gz)
+md5sums=('922bfba0f0aff76d9d076a41b0b802a4')
+sha256sums=('5108ed9e6e40d28cb1dc90ba563987859231289700d0def999007b08f4f74ea4')
 conflicts=('python2-prompt-toolkit')
 
 build() {
