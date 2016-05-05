@@ -3,9 +3,9 @@
 # Contributor: Oscar Carlsson <oscar.carlsson (at) gmail.com>
 
 pkgname=hunspell-sv
-pkgver=20150707
-_pkgver=2.37
-__pkgver=2-37
+pkgver=20151223
+_pkgver=2.39
+__pkgver=2-39
 pkgrel=1
 pkgdesc="Swedish dictionaries for Hunspell"
 arch=('any')
