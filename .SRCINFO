@@ -1,0 +1,16 @@
+pkgbase = python2-shaape-git
+	pkgver = 1.1.1.r2.gc8c8dd7
+	pkgrel = 1
+	url = https://github.com/christiangoltz/shaape
+	arch = any
+	license = GPL
+	depends = python2
+	depends = pygtk
+	provides = python2-shaape
+	conflicts = python2-shaape
+	options = !emptydirs
+	source = git+https://github.com/christiangoltz/shaape
+	md5sums = SKIP
+
+pkgname = python2-shaape-git
+
