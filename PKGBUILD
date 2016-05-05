@@ -50,7 +50,7 @@ check() {
 
 	if [ -f "${pkgname}"" ]; then
 		if [ -f "${pkgname}.desktop"]; then
-
+			exit 1
 		fi
 	else
 		exit 0
@@ -62,13 +62,11 @@ package() {
 	cd "${srcdir}"
 
 	install -dm755 "${pkgdir}/usr/bin"
-	
+
 	cp --preserve=mode -r "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
 	install -dm755 "${pkgdir}/usr/share/applications"
 
 	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-
-	
 
 }
