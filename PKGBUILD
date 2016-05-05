@@ -33,9 +33,14 @@ md5sums=('b92a253536ce1275a8c91d6ed9d7b2f7'
 
 package() {
 
-	make DESTDIR="$pkgdir/" install
+	cd "${srcdir}"
+
+	cp --preserve=mode -r "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
 	install -dm755 "${pkgdir}/usr/share/applications"
 
 	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+	install -dm755 "${pkgdir}/usr/bin"
+	
 }
