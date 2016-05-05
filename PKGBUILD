@@ -1,6 +1,6 @@
 # Maintainer: Lubomir 'Kuci' Kucera <kuci24-at-gmail-dot-com>
 
-_rev=r08
+_rev=r09
 _sdkver=6.0
 _sdkint=23
 pkgname=android-x86-system-image-${_sdkint}
@@ -13,7 +13,7 @@ license=('custom')
 depends=("android-platform-${_sdkint}")
 options=('!strip')
 source=("http://dl.google.com/android/repository/sys-img/android/sysimg_x86-${_sdkint}_${_rev}.zip")
-sha1sums=('127b2143b686fead099ef6b58691d9b467f23770')
+sha1sums=('0ce9229974818179833899dce93f228a895ec6a2')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/system-images/android-${_sdkint}/default"
