@@ -1,7 +1,10 @@
-# Maintainer: M0Rf30 Contributor: Tobias Luther <tobias [at] tonstrom [dot] de> Contributor: GraveDigger Contributor: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: M0Rf30 
+# Contributor: Tobias Luther <tobias [at] tonstrom [dot] de> 
+# Contributor: GraveDigger 
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 
 pkgname=idjc
-pkgver=0.8.15
+pkgver=0.8.16
 pkgrel=1
 pkgdesc='Powerful client for individuals interested in streaming live radio shows'
 url='http://idjc.sourceforge.net/'
@@ -33,4 +36,4 @@ package() {
     sed -i 's|#! /usr/bin/python22.7|#! /usr/bin/python2|' ${pkgdir}/usr/bin/idjc
 }
 
-md5sums=('b2beea54bb7147504d6a712784ba7794')
+md5sums=('40346a16fca39e4fa306399974e5c2cb')
