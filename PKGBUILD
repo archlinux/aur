@@ -2,7 +2,7 @@
 
 _pkgname=breeze-icons
 pkgname="${_pkgname}-git"
-pkgver=5.21.0.r65.g9ec4027
+pkgver=5.21.0.r70.g8984eb6
 pkgrel=1
 pkgdesc="Breeze icon themes for KDE Plasma. (GIT version)"
 arch=('any')
@@ -12,8 +12,10 @@ groups=('kf5')
 makedepends=('extra-cmake-modules-git' 'git' 'qt5-base')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git://anongit.kde.org/${_pkgname}.git")
-sha256sums=('SKIP')
+source=("${_pkgname}::git://anongit.kde.org/${_pkgname}.git"
+        "fix_size_field_errors.patch")
+sha256sums=('SKIP'
+            'b1838cadf6ea1f465265b949e04f27bf0a59a8e2919db57c3225c86bbc0a1966')
 
 pkgver(){
     cd ${srcdir}/${_pkgname}
@@ -21,6 +23,8 @@ pkgver(){
 }
 
 prepare() {
+    ### https://git.reviewboard.kde.org/r/127839/
+    patch -Np1 -i ${srcdir}/fix_size_field_errors.patch
     rm -rf build
     mkdir -p build
 }
