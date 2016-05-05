@@ -1,14 +1,14 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=deepinwine-qq
 pkgver=7.1.14522deepin5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Deepin Wine QQ 7.1."
 arch=('i686' 'x86_64')
 url="http://im.qq.com/"
 license=('unknown')
 groups=()
-depends=('deepin-crossover')
+depends=('deepin-crossover' 'crossover')
 makedepends=('tar')
 checkdepends=()
 optdepends=()
