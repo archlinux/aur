@@ -1,6 +1,6 @@
 pkgbase = mbm-gpsd-pl4nkton-git
 	pkgdesc = GPS support files for Ericsson F3507g that provide an easy interface to gpsd (pl4nkton fork with build fixes)
-	pkgver = r51.4e8c57a
+	pkgver = r53.b3dee82
 	pkgrel = 1
 	url = https://github.com/pl4nkton/mbm-gpsd
 	arch = i686
@@ -16,10 +16,8 @@ pkgbase = mbm-gpsd-pl4nkton-git
 	conflicts = mbm-gpsd
 	source = git+https://github.com/pl4nkton/mbm-gpsd.git/
 	source = mbm-gpsd.service
-	source = 0001-Fix-incorrect-syntax-in-udev.patch
 	md5sums = SKIP
 	md5sums = c436e8bcf6b459f8f939e434aed0b9d4
-	md5sums = 32275446e564eccb76ea907a63a610fa
 
 pkgname = mbm-gpsd-pl4nkton-git
 
