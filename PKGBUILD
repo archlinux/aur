@@ -2,13 +2,13 @@
 
 pkgname=lhs2tex
 pkgver=1.19
-pkgrel=1
+pkgrel=2
 pkgdesc="Preprocessor for typesetting Haskell sources with LaTeX"
 url="https://www.andres-loeh.de/lhs2tex/"
 license=("GPL")
 source=("http://hackage.haskell.org/package/$pkgname/$pkgname-$pkgver.tar.gz")
 makedepends=('ghc' 'haskell-directory' 'haskell-filepath' 'haskell-mtl' 'haskell-process' 'haskell-regex-compat')
-depends=('gmp' 'libffi')
+depends=('gmp' 'libffi' 'texlive-latexextra')
 arch=('i686' 'x86_64')
 md5sums=('4414be7f90d7a805bb3fec843b547cfa')
 
