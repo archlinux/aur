@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=2.0.2
+Name=Mirror Magic
+Comment=A game with a magic ray and many, many mirrors...
+Exec=mirrormagic
+Terminal=false
+Categories=Application;Game;
+Icon=/usr/share/mirrormagic/graphics/mirrormagic_icon.xbm
