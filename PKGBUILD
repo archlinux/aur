@@ -1,6 +1,6 @@
 # Maintainer: Bradley Cicenas <bradley.cicenas@gmail.com>
 pkgname=slackcat
-pkgver=0.6
+pkgver=1.0
 pkgrel=${PKGREL:-1}
 pkgdesc="Commandline utility for posting snippets to Slack"
 arch=('i686' 'x86_64')
@@ -24,11 +24,7 @@ backup=(
 )
 
 pkgver() {
-	cd "$srcdir/$pkgname"
-	local date=$(git log -1 --format="%cd" --date=short | sed s/-//g)
-	local count=$(git rev-list --count HEAD)
-	local commit=$(git rev-parse --short HEAD)
-	echo "$date.${count}_$commit"
+	cat "$srcdir/$pkgname/VERSION"
 }
 
 build() {
@@ -54,8 +50,7 @@ build() {
 	git submodule update
 
 	echo "Running 'go get'..."
-	GO15VENDOREXPERIMENT=1 go get \
-		-ldflags="-X main.version=$pkgver-$pkgrel"
+	go get -ldflags="-X main.version=$pkgver-$pkgrel"
 }
 
 package() {
