@@ -2,7 +2,7 @@
 
 pkgname=keratin-git
 _gitname=keratin
-pkgver=1.0.0.r19.gf7e558b
+pkgver=1.0.0.r21.g7ea78cd
 pkgrel=1
 epoch=1
 pkgdesc='A fork of clipmenu, a simple clipboard manager using dmenu and xsel/xclip'
