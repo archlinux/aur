@@ -1,0 +1,23 @@
+This is docker-git package based package that directly supports i686 machines. It consists of the most important features like creating and running containers and nothing more for now. When running or building it will automatically use x64 images which is invalid. Please create your own base images with commands below.
+
+# Installing docker 
+makepkg
+sudo pacman -U docker-git-1:1.11.0-1-i686.pkg.tar.xz
+usermod -G docker -a user-name
+newgrp docker
+
+## Creating base images
+# base/archlinux
+cd src/docker/contrib
+sudo pacman -S arch-install-scripts
+sudo pacman -S expect
+sudo ./mkimage-arch.sh # if there is a problem with umount this means timeout is too small for the machine (60s) set it to higher value!
+
+# debian
+cd src/docker/contrib
+sudo ./mkimage.sh -t debian debootstrap --variant=minbase jessie
+
+# ubuntu
+yaourt -S ubuntu-keyring
+sudo ./mkimage.sh -t ubuntu  debootstrap --include=ubuntu-minimal --components=main,universe trusty
+

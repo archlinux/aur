@@ -1,0 +1,33 @@
+post_install() {
+	grep -q '^docker:' /etc/group || groupadd --system docker
+	systemctl daemon-reload
+	echo "To make Docker fully functional, consider performing the following actions:"
+	echo "  + Start the docker daemon:"
+	echo "      $ sudo systemctl start docker"
+	echo "  + (OPTIONAL) Start the docker daemon at boot:"
+	echo "      $ sudo systemctl enable docker"
+	echo "  + Add your user to the docker group to run the docker client without sudo:"
+	echo "      $ sudo usermod -a -G docker <username>"
+	echo "    Login again for the change to take effect or run the following command"
+	echo "    for a change affecting only the current shell:"
+	echo "      $ newgrp docker"
+	echo "  + Enable IPv4 forwarding to allow internet connections inside the containers."
+	echo "    See /etc/sysctl.d/docker.conf for WARNING and instructions."
+}
+
+pre_upgrade() {
+	systemctl stop docker
+}
+
+post_upgrade() {
+	systemctl daemon-reload
+}
+
+pre_remove() {
+	systemctl stop docker
+	grep -q '^docker:' /etc/group && groupdel docker
+}
+
+post_remove() {
+	systemctl daemon-reload
+}
