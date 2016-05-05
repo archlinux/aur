@@ -6,8 +6,8 @@
 
 _pkgbase=vlc
 pkgname=vlc-nox
-pkgver=2.2.2
-pkgrel=2
+pkgver=2.2.3
+pkgrel=1
 pkgdesc="A multi-platform MPEG, VCD/DVD, and DivX player (without X support)"
 arch=('i686' 'x86_64')
 url="http://www.videolan.org/vlc/"
@@ -57,7 +57,7 @@ options=('!emptydirs')
 install=${_pkgbase}.install
 source=("http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz"
         "lua53_compat.patch")
-md5sums=('f98d60f0f59ef72b6e3407f2ff09bda6'
+md5sums=('ecbc65be549e5cc83e4cbe0129e66dcd'
          '96d3b346d9149ffb1b430066dfb6249a')
 
 prepare() {
