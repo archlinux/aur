@@ -1,0 +1,6 @@
+#folders
+pkg
+src
+
+#files
+*.pkg.tar.xz
