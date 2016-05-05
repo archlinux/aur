@@ -63,7 +63,7 @@ package() {
   install -Dm644 ../teeworlds-ddnet.desktop "$pkgdir"/usr/share/applications/teeworlds-ddnet.desktop
   install -Dm644 ../teeworlds-ddnet_srv.desktop "$pkgdir"/usr/share/applications/teeworlds-ddnet_srv.desktop
   install -Dm644 ../teeworlds-ddnet-5.png   "$pkgdir"/usr/share/pixmaps/teeworlds-ddnet.png
-  install -Dm644 ../teeworlds-ddnet_srv-5.png   "$pkgdir"/usr/share/pixmaps/teeworlds-ddnet_srv.png
+  install -Dm644 ../teeworlds-ddnet_srv-8.png   "$pkgdir"/usr/share/pixmaps/teeworlds-ddnet_srv.png
   
     # Install license files
   install -Dm644 license.txt "$pkgdir"/usr/share/licenses/$pkgname/license.txt
