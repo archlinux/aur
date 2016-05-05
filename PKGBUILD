@@ -12,8 +12,8 @@ license=('custom')
 arch=('i686' 'x86_64')
 [ "$CARCH" = 'i686' ] && _pkgarch=i386
 [ "$CARCH" = 'x86_64' ] && _pkgarch=x86_64
-_wingpatch_x86_64=("fix-autoclose-5.1.11p1-all.tar" "fix-nonpy-indent-5.1.11p2-all.tar")
-_wingpatch_i686=("fix-autoclose-5.1.11p1-all.tar" "fix-nonpy-indent-5.1.11p2-all.tar")
+_wingpatch_x86_64=("fix-autoclose-5.1.11p1-all.tar" "fix-nonpy-indent-5.1.11p2-all.tar" "all-classes-5.1.11p3-all.tar")
+_wingpatch_i686=("fix-autoclose-5.1.11p1-all.tar" "fix-nonpy-indent-5.1.11p2-all.tar" "all-classes-5.1.11p3-all.tar")
 _patch_url_prefix=http://wingware.com/pub/$pkgname/$_wingver/patches/
 if [[ ! -z "$_wingpatch_x86_64" ]]; then
     _wingpatch_x86_64=( "${_wingpatch_x86_64[@]/#/$_patch_url_prefix}" )
@@ -27,10 +27,12 @@ depends=('hicolor-icon-theme' 'libpng' 'python2' 'xdg-utils')
 options=(!strip !emptydirs)
 md5sums_i686=('392b8f3a0e2dcb69fd2d8316bd88b028'
               'fd1b66865a42b27fd6344b71e747c654'
-              'ec4937a0b3fc32f553d7ea9d65cf11d9')
+              'ec4937a0b3fc32f553d7ea9d65cf11d9'
+              'bf9cf9df754f06cb8d7fe9d056fa8d7e')
 md5sums_x86_64=('ddacf06b4cc9577b9b80cbbb79de2d32'
                 'fd1b66865a42b27fd6344b71e747c654'
-                'ec4937a0b3fc32f553d7ea9d65cf11d9')
+                'ec4937a0b3fc32f553d7ea9d65cf11d9'
+                'bf9cf9df754f06cb8d7fe9d056fa8d7e')
 install=${pkgname}.install
 
 prepare() {
