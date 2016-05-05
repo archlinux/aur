@@ -2,7 +2,7 @@
 
 pkgname=openbazaard
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
 url="http://openbazaar.org"
@@ -15,7 +15,7 @@ depends=(
 	python2-gnupg-isis
 	python2-libbitcoinclient
 	python2-miniupnpc
-	python2-protobuf3
+	python2-protobuf3-coex
 	python2-pyelliptic
 	python2-pynacl
 	python2-pystun
@@ -46,6 +46,10 @@ _srcfolder=OpenBazaar-Server-$pkgver
 
 package(){
   cd $srcdir
+
+msg2 "Use python2-protobuf3-coex requirements"
+  find . -type f -exec sed -i 's/google.protobuf/google.protobuf3/g' {} +   
+  find . -type f -name "*.proto" -exec sed -i 's/protoc/protobuf3-protoc/g' {} +  
 
 msg2 "Install systemd service"
   install -Dm644 $srcdir/${pkgname}.service $pkgdir/usr/lib/systemd/system/${pkgname}.service
