@@ -31,7 +31,8 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   autoreconf -i
-  ./configure --prefix=/usr \
+  ./configure --prefix="/usr" \
+              --bindir="/usr/bin" \
               --datarootdir="/usr/share" \
               --mandir="/usr/share/man" \
               --docdir="/usr/share/doc/${pkgname%-*}"
