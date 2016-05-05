@@ -1,43 +1,48 @@
-# Maintainer: josephgbr <rffontenelle@gmail.com>
+# Maintainer: rafaelff <rafaelff@gnome.org>
 
 pkgname=teeworlds-ddnet
-pkgver=9.3.1
+pkgver=10.0.1
 pkgrel=1
 pkgdesc="A customized version by DDRaceNetwork of this 2D shooting game"
 arch=('i686' 'x86_64')
 url="https://ddnet.tw"
 license=('custom')
-depends=('alsa-lib' 'glu' 'sdl' 'freetype2' 'openssl098')
-makedepends=('gendesk' 'unzip')
+depends=('alsa-lib' 'glu' 'sdl2' 'freetype2' 'openssl098')
+makedepends=('bam' 'imagemagick' 'gendesk')
+optdepends=('teeworlds-ddnet-skins: more skins for your tee'
+            'teeworlds-ddnet-maps-git: mainly important for DDNet Server')
 provides=('teeworlds')
 conflicts=('teeworlds')
          # PNG converted from DDNet.ico from https://github.com/ddnet/ddnet
-source=(teeworlds-ddnet.png)
-source_i686=("$url/downloads/DDNet-$pkgver-linux_x86.tar.xz"
-             "$url/downloads/GraphicsTools-linux_x86.tar.gz")
-source_x86_64=("$url/downloads/DDNet-$pkgver-linux_x86_64.tar.xz"
-               "$url/downloads/GraphicsTools-linux_x86_64.tar.gz")
-md5sums=('41465eb3a4ecf2e7f7afe5a5f0c84386')
-md5sums_i686=('4118f46a0d549d7060edbd0c5d130bb7'
-              '566354c3b4510b032af7d891381ee711')
-md5sums_x86_64=('a825c9305044c2b3cc4498ce0b92a335'
-                'fc32ca52ae9be02f68b6c257153dbd37')
-
-# Check hashs manually (replace $pkgver):
-# curl -sL http://ddnet.tw/downloads/md5sums | grep -E DDNet-$pkgver-linux
+source=("ddnet-$pkgver.tar.gz::https://github.com/ddnet/ddnet/archive/$pkgver.tar.gz")
+source_i686=("https://ddnet.tw/downloads/GraphicsTools-linux_x86.tar.gz")
+source_x86_64=("https://ddnet.tw/downloads/GraphicsTools-linux_x86_64.tar.gz")
+md5sums=('cc7d8bdfd862ec75c222eb33f55859e5')
+md5sums_i686=('566354c3b4510b032af7d891381ee711')
+md5sums_x86_64=('fc32ca52ae9be02f68b6c257153dbd37')
 
 prepare() {
-  gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
-    --name 'Teeworlds' --categories 'Game;ArcadeGame'
-  
-  # Skin database. See more in https://ddnet.tw/skins/
-  rm -fR database.zip database.dir
-  curl -O "$url/skins/zip/database.zip"
-  unzip -q database.zip
+      # Client
+    convert "ddnet-$pkgver/other/icons/DDNet.ico" "$srcdir/$pkgname.png"
+    gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
+        --name 'Teeworlds' --categories 'Game;ArcadeGame'
+      
+      # Server
+    convert "ddnet-$pkgver/other/icons/DDNet.ico" "$srcdir/${pkgname}_srv.png"
+      # This desktop file, combined with 'teeworlds-ddnet-maps-git' pkg will
+      # run DDNet Server with all votes, maps etc. -- no score/ranking, though
+    gendesk -f -n --pkgname "${pkgname}_srv" --pkgdesc "DDNet Server" --terminal=true \
+        --exec='sh -c "cd /usr/share/teeworlds/data && teeworlds-ddnet_srv"' \
+        --name 'DDNet Server' --categories 'Game;ArcadeGame'     
+}
+
+build() {
+  cd ddnet-$pkgver
+  bam release
 }
 
 package() {
-  cd DDNet-$pkgver-linux_*
+  cd ddnet-$pkgver
   
     # Install DDNet client/server binaries
   install -Dm755 DDNet "$pkgdir"/usr/bin/teeworlds-ddnet
@@ -55,13 +60,11 @@ package() {
   mkdir -p "$pkgdir"/usr/share/teeworlds/data
   cp -r data/* "$pkgdir"/usr/share/teeworlds/data
   
-    # Install skins provided by Skins Database
-  cp ../database.dir/* "$pkgdir"/usr/share/teeworlds/data/skins/
-  find "$pkgdir"/usr/share/teeworlds/data/skins/ -type f -exec chmod 644 {} \;
-  
     # Install desktop and icon files
-  install -Dm644 ../$pkgname.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
-  install -Dm644 ../$pkgname.png     "$pkgdir"/usr/share/pixmaps/$pkgname.png
+  install -Dm644 ../teeworlds-ddnet.desktop "$pkgdir"/usr/share/applications/teeworlds-ddnet.desktop
+  install -Dm644 ../teeworlds-ddnet_srv.desktop "$pkgdir"/usr/share/applications/teeworlds-ddnet_srv.desktop
+  install -Dm644 ../teeworlds-ddnet-5.png   "$pkgdir"/usr/share/pixmaps/teeworlds-ddnet.png
+  install -Dm644 ../teeworlds-ddnet_srv-5.png   "$pkgdir"/usr/share/pixmaps/teeworlds-ddnet_srv.png
   
     # Install license files
   install -Dm644 license.txt "$pkgdir"/usr/share/licenses/$pkgname/license.txt
