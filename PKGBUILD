@@ -14,7 +14,6 @@ makedepends=('git')
 conflicts=('emacs')
 provides=('emacs')
 options=('docs' '!emptydirs' '!makeflags')
-install=emacs.install
 source=("git://git.savannah.gnu.org/emacs.git")
 md5sums=('SKIP')
 
