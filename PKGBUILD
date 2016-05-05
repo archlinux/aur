@@ -28,7 +28,8 @@ install=${pkgname}.install
 source=("${pkgname}.desktop"
 		"$pkgname")
 
-md5sums=('ccc2acc3cf18f71c517e42fc2eb4d77b')
+md5sums=('b92a253536ce1275a8c91d6ed9d7b2f7'
+         'ccc2acc3cf18f71c517e42fc2eb4d77b')
 
 package() {
 

@@ -7,13 +7,14 @@ pkgbase = flaketill-says
 	arch = x86_64
 	license = GPL
 	checkdepends = gdb
-	makedepends = lx-terminal
+	makedepends = lxterminal
 	makedepends = terminator
 	makedepends = namcap
 	depends = python2
 	depends = espeak
 	optdepends = gksu: sudo-save support,
 	optdepends = alsa-lib: sound support
+	source = flaketill-says.desktop
 	source = flaketill-says
 	md5sums = ccc2acc3cf18f71c517e42fc2eb4d77b
 
