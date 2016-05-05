@@ -1,7 +1,8 @@
-# Mantainer: M0Rf30
+# Maintainer: M0Rf30
+
 pkgname=libshout-idjc
-pkgver=2.3.1
-pkgrel=2
+pkgver=2.4.1
+pkgrel=1
 pkgdesc="Libshout-idjc is libshout plus some extensions for IDJC."
 arch=(i686 x86_64)
 url="http://idjc.sourceforge.net/"
@@ -13,6 +14,7 @@ license=('LGPL')
 build()
 {
   cd "$srcdir/$pkgname-$pkgver"
+  autoreconf -fi
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make LDFLAGS+=-lspeex
 }
@@ -22,4 +24,4 @@ package() {
   make DESTDIR="${pkgdir}" install
 }
 
-md5sums=('7b2cb89f1e7863522597b1e27fd4a2b7')
+md5sums=('206bdb6018440f4a24b81039fce48bee')
