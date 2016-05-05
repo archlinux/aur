@@ -1,7 +1,7 @@
 # Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
 
 pkgname=obbrowser
-pkgver=0.05
+pkgver=0.06
 pkgrel=1
 
 pkgdesc="Recursively browse the filesystem through openbox3 pipe menus. (with icons)"
@@ -12,7 +12,7 @@ license=('GPLv3')
 
 depends=('perl>=5.14.0' 'perl-data-dump' 'perl-linux-desktopfiles>=0.08' 'perl-file-mimeinfo')
 source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('aecab19c197aebb66417433ec96f7e2e9a1387a4720d39547854b609da5af3d4')
+sha256sums=('b674bb27e5c03078bddd015c1b9fe7bf0d4848c48ba451c8cb26f6e89eab0172')
 
 package() {
     cd "$pkgname-$pkgver"
