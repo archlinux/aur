@@ -4,6 +4,6 @@ Version=1.0
 Name=Horizon Launcher
 Comment=A customizable, cross-platform and open-source launcher for launching all your games on Steam and other gaming services
 Exec=horizon-launcher
-Icon=horizon-launcher
+Icon=horizon
 Terminal=false
 Categories=Game;

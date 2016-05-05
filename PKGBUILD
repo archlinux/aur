@@ -1,7 +1,7 @@
 # Maintainer: PureTryOut
 pkgname=horizon-launcher-git
-pkgver=r739.ad2d3c6
-pkgrel=2
+pkgver=r781.e299c5b
+pkgrel=3
 epoch=
 pkgdesc="A customizable, cross-platform and open-source launcher for launching all your games on Steam and other gaming services"
 arch=('x86_64')
@@ -23,7 +23,7 @@ source=('horizon-launcher-git::git+https://github.com/horizonlauncher/client.git
 	'horizon-launcher.desktop')
 noextract=()
 sha256sums=('SKIP'
-	'cfae40664d6fca23ae03721142f88bb3b65f0ebd5b7dd1fdb141ce91f9130d30')
+	'c9046f7a6d678e0565e36458ca003c3757ac861e4f9cae8ff0989755cbcb5543')
 validpgpkeys=()
 
 pkgver() {
@@ -53,5 +53,5 @@ package() {
 
 	# .desktop file and icon
 	install -Dm644 "$srcdir/horizon-launcher.desktop" "$pkgdir"/usr/share/applications/horizon-launcher.desktop
-	install -Dm644 Resource/Icons/Horizon_Icon.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/horizon-launcher.png
+	install -Dm644 Resource/Icons/Horizon.svg "$pkgdir"/usr/share/icons/hicolor/scalable/apps/horizon.svg
 }
