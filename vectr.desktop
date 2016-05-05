@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Vectr
+GenericName=Vector Graphics Design
+Comment=Free Design App For Web + Desktop
+Exec=vectr
+Icon=vectr
+Terminal=false
+Type=Application
+Categories=Graphics;
