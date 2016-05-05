@@ -3,7 +3,7 @@
 
 _gemname=hitimes
 pkgname=ruby-${_gemname}
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc='Fast, high resolution timer library for recording performance metrics'
 url='https://github.com/copiousfreetime/hitimes'
@@ -12,12 +12,7 @@ license=('ISC')
 depends=('ruby')
 options=('!emptydirs')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/copiousfreetime/hitimes/archive/v${pkgver}.tar.gz)
-sha512sums=('f547507f7346ecfcd80a3d7e7706fa6ec46c969d1d6e81a243a009c1d00adff5ededde945512045e2774f92622f25b9e9d590d6e47ea890edaab2ad66016ec75')
-
-prepare() {
-  cd ${_gemname}-${pkgver}
-  sed 's|1.2.2|1.2.3|g' -i *.gemspec
-}
+sha512sums=('8d4c6ab8a56d8fee5e3968d07a344ec9407dcca2bf18847740f6a53a665980b387dbdf70d0cb5535254b231edacd686dd9aeb7e584e2c5217f616c2333fc1891')
 
 build() {
   cd ${_gemname}-${pkgver}
