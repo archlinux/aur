@@ -1,4 +1,4 @@
-# Maintainer: rafaelff <rffontenelle@gmail.com>
+# Maintainer: rafaelff <rafaelff@gnome.org>
 
 pkgname=teeworlds-ddnet-skins
 pkgver=20160505              # change to current date when updating the pkg
