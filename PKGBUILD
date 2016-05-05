@@ -38,11 +38,16 @@ sha256sums=('a734519de96d35b8f081768a5584086e46db089ab11c021744897b22ec4d0f5e'
 prepare(){
   cd "${srcdir}/${pkgname}-${pkgver}"
 
+  # http://bugzilla.scilab.org/show_bug.cgi?id=13813
   patch -p2 < "${srcdir}"/${pkgname}-${pkgver}-batik-1.8.patch
+  # http://bugzilla.scilab.org/show_bug.cgi?id=14009
   patch -p2 < "${srcdir}"/${pkgname}-${pkgver}-fop-2.0.patch
+  # http://bugzilla.scilab.org/show_bug.cgi?id=13724
   patch -p2 < "${srcdir}"/${pkgname}-${pkgver}-xmlgraphics-common-2.0.patch
-  patch < "${srcdir}"/${pkgname}-${pkgver}-strict-jar.patch
+  # http://bugzilla.scilab.org/show_bug.cgi?id=13809
   patch -p1 < "${srcdir}"/${pkgname}-${pkgver}-jogl.patch
+  # Linked to https://codereview.scilab.org/#/c/18089/
+  patch < "${srcdir}"/${pkgname}-${pkgver}-strict-jar.patch
 }
 
 build() {
