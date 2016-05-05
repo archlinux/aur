@@ -20,8 +20,8 @@ md5sums=('1b052ba2622b5d15d7961862f2a20af8')
 source=("google-webdesigner_current_${_source_arch}.deb::https://dl.google.com/linux/direct/google-webdesigner_current_${_source_arch}.deb")
 
 package() {
-  msg2 "Extracting the data.tar.gz"
-  tar -xf data.tar.gz -C "${pkgdir}/"
+  msg2 "Extracting the data.tar.xz"
+  tar -xf data.tar.xz -C "${pkgdir}/"
 
   msg2 "Moving icons in place"
   # Icons
