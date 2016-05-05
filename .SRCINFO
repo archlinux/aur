@@ -1,6 +1,6 @@
 pkgbase = curlbomb
 	pkgdesc = A personal HTTP server for serving one-time-use shell scripts
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 0
 	url = https://github.com/EnigmaCurry/curlbomb
 	arch = any
@@ -9,15 +9,17 @@ pkgbase = curlbomb
 	depends = python
 	depends = python-tornado
 	depends = python-requests
+	depends = python-psutil
 	optdepends = openssh: SSH tunnel support (--ssh)
 	optdepends = openssl: TLS security (--ssl)
 	optdepends = gnupg: Encrypted SSL certificate and resource support
 	optdepends = python-notify2: Desktop notification support
-	source = https://pypi.python.org/packages/1d/c8/27fb878ae84d4c98c9b9fb3d91abef81a11f33ba7e4f3ca364209df83505/curlbomb-1.3.1.tar.gz
-	md5sums = 1c3df5046475e503dacd81f45a62e083
+	source = https://pypi.python.org/packages/a2/1f/68aa9f434ac7765d9f9fd7aaa2e80e7326bd94a0995631468cc6778de850/curlbomb-1.4.0.tar.gz
+	md5sums = 096bae423eb4bf680716b9715af6125f
 
 pkgname = curlbomb
 	depends = python
 	depends = python-tornado
 	depends = python-requests
+	depends = python-psutil
 
