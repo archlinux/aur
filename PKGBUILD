@@ -2,17 +2,17 @@
 # Maintainer: Edvinas Valatka <edacval@gmail.com>
 
 pkgname=seafile-client
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
-pkgdesc="This is seafile client for synchronizing your local files with seafile server. Qt4 version."
+pkgdesc="GUI client for synchronizing your local files with seafile server"
 arch=('i686' 'x86_64')
 url="https://github.com/haiwen/seafile-client/"
 license=('Apache')
-depends=('seafile-shared' 'qt4>=4.8.0' 'qtwebkit' 'gtk-update-icon-cache')
-makedepends=("cmake" "seafile-shared>=${pkgver}" )
+depends=("seafile-shared" "qt5-webkit" "qt5-base" "gtk-update-icon-cache" "qt5-webengine")
+makedepends=("cmake" "qt5-tools" "seafile-shared>=${pkgver}")
 options=('!libtool' '!emptydirs')
 conflicts=('seafile-client-qt5')
-install=seafile-client.install
+provides=('seafile-client-qt5')
 source=("${pkgname}-v${pkgver}.tar.gz::https://github.com/haiwen/${pkgname}/archive/v${pkgver}.tar.gz")
 
 build () {
@@ -25,4 +25,4 @@ package () {
     cd "${srcdir}/${pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
 }
-sha256sums=('d2046b52abc630704ec4aacaf9b308dabea40c020efd7e31cf3d81a8b408f5db')
+sha256sums=('0148cbdb97dcd58e6ebec738c8f6bc476192f0b9156f0783199f1213c4d0322f')
