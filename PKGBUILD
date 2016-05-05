@@ -1,8 +1,8 @@
 # Contributor: Brian F.G. <bidulock@openss7.org>
 # Maintainer: Alexandr Boiko <brdcom@ya.ru>
 pkgname=accel-ppp
-pkgver=1.10.1
-pkgrel=2
+pkgver=1.10.2
+pkgrel=1
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
@@ -21,7 +21,7 @@ source=(http://sourceforge.net/projects/$pkgname/files/$pkgname-$pkgver.tar.bz2
 	accel-pppd.service
 	dictionary.accel_ipoe
 	dictionary.ppp)
-md5sums=('68a617acb228bf8e16a91196902e4307'
+md5sums=('31f8408691b67e1504e31b6773d2d9d1'
          '0536dd60960e76cf5a6cdbf0518782d8'
          '816dd5ea9534a077dfd63b6cd529738a'
          '5be7d42b434b74d7e692b19a9e3c4297'
@@ -78,3 +78,10 @@ package() {
 	install -Dm0644 "$srcdir/$pkgname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
+md5sums=('31f8408691b67e1504e31b6773d2d9d1'
+         '0536dd60960e76cf5a6cdbf0518782d8'
+         '816dd5ea9534a077dfd63b6cd529738a'
+         '5be7d42b434b74d7e692b19a9e3c4297'
+         'e13fc55329910cd4dd0a9ee0b43bad97'
+         '7e58716f1249f924ce218bd348d4c03a'
+         '4e0d4fc5975ea8794ea286e8fbfa56cd')
