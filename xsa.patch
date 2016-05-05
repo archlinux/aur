@@ -1,0 +1,30 @@
+--- x2DBRI-new.ppd	2016-05-05 08:04:03.249009665 -0500
++++ x2DBRI.ppd	2016-05-05 08:12:32.729927284 -0500
+@@ -1010,6 +1010,27 @@
+ 
+ *JCLBegin:"<1B>%-12345X@PJL JOB<0A>@PJL<0A>@PJL COMMENT XRXbegin<0A>"
+ 
++*% Generic Accounting 
++*% See http://www.office.xerox.com/support/dctips/dc09cc0452.pdf
++*JCLOpenUI *JCLAccounting/Accounting: PickOne
++*OrderDependency: 10.1 JCLSetup *JCLAccounting 
++*% Change the value of DefaultJCLAccounting based on what type of Xerox Standard Accounting you desire to use
++*% XSAUser = XSA User Based Accounting
++*% XSAGeneral = XSA General Based Accounting
++*% XSAGroup = XSA Group Based Accounting
++*% XNAGroup = XNA Group Based Accounting
++*DefaultJCLAccounting: XSADisabled
++*JCLAccounting XSADisabled/Disabled: ""
++*% Replace MyUserID with the user's User ID
++*JCLAccounting XSAUser/XSA User Based Accounting: "@PJL COMMENT OID_ATT_ACCOUNTING_INFORMATION_AVP <22>XRX_USERID,MyUserID<22>;<0A>"
++*% Replace MyUserID with the User ID, and MyGeneralAcctID with user's general account ID
++*JCLAccounting XSAGeneral/XSA General Based Accounting: "@PJL COMMENT OID_ATT_ACCOUNTING_INFORMATION_AVP <22>XRX_USERID,MyUserID<22>;<0A>@PJL COMMENT OID_ATT_ACCOUNTING_INFORMATION_AVP <22>XRX_GENERALACCT,MyGeneralAcctID<22>;<0A>"
++*% Replace MyUserID with the User ID, and MyGeneralAcctID with user's general account ID
++*JCLAccounting XSAGroup/XSA Group Based Accounting: "@PJL COMMENT OID_ATT_ACCOUNTING_INFORMATION_AVP <22>XRX_USERID,MyUserID<22>;<0A>@PJL COMMENT OID_ATT_ACCOUNTING_INFORMATION_AVP <22>XRX_GROUPACCT,MyGroupAcctID<22>;<0A>"
++*% Replace MyUserID with the User ID, and MyAcctID with user's accounting ID
++*JCLAccounting XNAGroup/XNA Group Based Accounting: "@PJL COMMENT OID_ATT_ACCOUNTING_INFORMATION_AVP <22>XRX_USERID,MyUserID<22>;<0A>@PJL COMMENT OID_ATT_ACCOUNTING_INFORMATION_AVP <22>XRX_ACCTID,MyAcctID<22>;<0A>"
++*JCLCloseUI: *JCLAccounting 
++
+ *%				Banner Sheet
+ *JCLOpenUI *JCLBanner/Banner Sheet: Boolean
+ *OrderDependency: 10.0 JCLSetup *JCLBanner

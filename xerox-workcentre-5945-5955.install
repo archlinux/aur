@@ -1,0 +1,26 @@
+pre_install() {
+    return
+}
+
+post_install() {
+    echo "=> If you wish to use Xerox Standard Accounting, find the 'Generic "
+    echo "=> Accounting Section' in '/usr/share/foomatic/db/source/PPD/Xerox/xrx5955.ppd' and"
+    echo "=> following the instructions in the comments." 
+    return
+}
+
+pre_upgrade() {
+    return
+}
+
+post_upgrade() {
+    return
+}
+
+pre_remove() {
+    return
+}
+
+post_remove() {
+    return
+}
