@@ -3,7 +3,7 @@
 # Contributor: fxbru <frxbru[at]gmail>
 
 pkgname=sqlmap-git
-pkgver=1.0.7119.242800c
+pkgver=1.0.5.7183.263730f
 pkgrel=1
 pkgdesc='Automatic SQL injection and database takeover tool'
 url='http://sqlmap.org'
@@ -47,7 +47,14 @@ package() {
 cd /opt/${pkgname}
 python2 sqlmap.py "\$@"
 EOF
+  cat > "${pkgdir}/usr/bin/sqlmapapi" << EOF
+#!/bin/sh
+cd /opt/${pkgname}
+python2 sqlmapapi.py "\$@"
+EOF
+
   chmod 755 "${pkgdir}/usr/bin/sqlmap"
+  chmod 755 "${pkgdir}/usr/bin/sqlmapapi"
 }
 
 # vim: ts=2 sw=2 et:
