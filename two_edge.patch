@@ -1,0 +1,19 @@
+--- a/muttprint	2016-05-05 13:48:50.515950744 +1200
++++ b/muttprint	2016-05-05 13:52:10.722623902 +1200
+@@ -643,14 +643,14 @@
+ 	if ($Config{PAPERSAVE} eq "on") {
+ 		if ($useCups) {
+ 			$Config{PRINT_COMMAND} =~ 
+-				s/\$CUPS_OPTIONS/ -o sides=two-sided-long-edge \$CUPS_OPTIONS/;
++				s/\$CUPS_OPTIONS/ -o sides=two-sided-short-edge \$CUPS_OPTIONS/;
+ 		} else { # no cups
+ 			modifyPS("landscape");
+ 		}
+ 	} else { # no papersave
+ 		if ($useCups) {
+ 			$Config{PRINT_COMMAND} =~ 
+-				s/\$CUPS_OPTIONS/ -o sides=two-sided-short-edge \$CUPS_OPTIONS/;
++				s/\$CUPS_OPTIONS/ -o sides=two-sided-long-edge \$CUPS_OPTIONS/;
+ 		} else { # no cups
+ 			modifyPS("portrait");
+ 		}
