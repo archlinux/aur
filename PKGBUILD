@@ -26,10 +26,12 @@ install=${pkgname}.install
 #        "$pkgname-$pkgver.patch")
 
 source=("${pkgname}.desktop"
-		"$pkgname")
+		"$pkgname"
+		"LICENSE")
 
 md5sums=('b92a253536ce1275a8c91d6ed9d7b2f7'
-         'ccc2acc3cf18f71c517e42fc2eb4d77b')
+         'ccc2acc3cf18f71c517e42fc2eb4d77b'
+         '985eca66feaf0170850231d4616b3074')
 
 build() {
 	

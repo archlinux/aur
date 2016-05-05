@@ -6,7 +6,7 @@ pkgbase = flaketill-says
 	install = flaketill-says.install
 	arch = x86_64
 	license = GPL
-	checkdepends = gdb
+	checkdepends = bash
 	makedepends = lxterminal
 	makedepends = terminator
 	makedepends = namcap
@@ -16,8 +16,10 @@ pkgbase = flaketill-says
 	optdepends = alsa-lib: sound support
 	source = flaketill-says.desktop
 	source = flaketill-says
+	source = LICENSE
 	md5sums = b92a253536ce1275a8c91d6ed9d7b2f7
 	md5sums = ccc2acc3cf18f71c517e42fc2eb4d77b
+	md5sums = 985eca66feaf0170850231d4616b3074
 
 pkgname = flaketill-says
 
