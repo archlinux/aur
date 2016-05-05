@@ -4,8 +4,8 @@ CP_DIR="/opt/couchpotato"
 
 ## arg 1:  the new package version
 post_install() {
-  groupadd ${CP_GROUP} &> /dev/null
-  useradd -g ${CP_GROUP} -d ${CP_DIR} -s /bin/false ${CP_USER} &> /dev/null
+  getent group ${CP_GROUP} &> /dev/null || groupadd -r ${CP_GROUP} &> /dev/null
+  getent passwd ${CP_USER} &> /dev/null || useradd -r -g ${CP_GROUP} -d ${CP_DIR} -s /usr/bin/nologin ${CP_USER} &> /dev/null
   chown -R ${CP_USER}:${CP_GROUP} ${CP_DIR}
   echo "  >> If you want a custom user or path for CouchPotato, remember to edit the service file as well."
 }

@@ -2,7 +2,7 @@
 
 pkgname=couchpotato-git
 _gitname=CouchPotatoServer
-pkgver=2054.fc8db13
+pkgver=4869.c4fad95
 pkgrel=1
 pkgdesc="Automatic Movie Downloading via NZBs & Torrent"
 arch=('any')
@@ -10,9 +10,11 @@ url="http://couchpota.to/"
 license=('GPL3')
 depends=('python2')
 makedepends=('git')
+provides=('couchpotato')
+conflicts=('couchpotato')
 install='couchpotato.install'
 source=('git://github.com/RuudBurger/CouchPotatoServer.git' 'couchpotato.service')
-md5sums=('SKIP' '82813cd00a17dd78f10756d71c7eb848')
+md5sums=('SKIP' 'af02374e700522e56cb9bc606bf31731')
 
 pkgver() {
   cd $_gitname
@@ -22,6 +24,9 @@ pkgver() {
 package() {
   mkdir -p "${pkgdir}/opt/"
   cp -r "$srcdir/$_gitname" "${pkgdir}/opt/couchpotato"
+
+   # Fix for issues with Python 3
+  find "${pkgdir}/opt/couchpotato" -type f -exec sed -i 's/env python/env python2/g' {} \;
 
   install -Dm644 "${srcdir}/couchpotato.service" "${pkgdir}/usr/lib/systemd/system/couchpotato.service"
 }
