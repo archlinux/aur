@@ -1,0 +1,42 @@
+# CPAN Name  : Future
+# Contributor: [% packager %]
+# Generator  : CPANPLUS::Dist::Arch [% version %]
+
+pkgname=[% pkgname %]
+pkgver=[% pkgver %]
+pkgrel=[% pkgrel %]
+pkgdesc='Perl module to deal with operation awaiting completion'
+arch=('any')
+url='[% url %]'
+license=('PerlArtistic' 'GPL')
+makedepends=('perl-module-build>=0.4004')
+checkdepends=('perl-test-fatal' 'perl-test-identity' 'perl-test-refcount')
+depends=('perl>=5.15.8')
+source=([% source %])
+options=(!emptydirs)
+md5sums=('[% md5sums %]')
+
+sanitize() {
+	unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
+	export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
+}
+
+build() {
+	cd [% distdir %]
+	sanitize
+	perl Build.PL --installdirs vendor --destdir "$pkgdir"
+	perl Build
+}
+
+check() {
+	cd [% distdir %]
+	sanitize
+	perl Build test
+}
+
+package() {
+	cd [% distdir %]
+	sanitize
+	perl Build install
+	find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
