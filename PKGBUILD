@@ -4,7 +4,7 @@
 
 pkgname=picard
 pkgver=1.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Official MusicBrainz tagger'
 url='http://picard.musicbrainz.org/'
 license=('GPL')
@@ -15,8 +15,6 @@ optdepends=('chromaprint: fingerprinting'
 makedepends=('python2-discid')
 source=("http://ftp.musicbrainz.org/pub/musicbrainz/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha1sums=('084fdb184cb1d970dce953dd6c684932d464bf54')
-
-install=install
 
 build() {
 	cd "${srcdir}/picard-release-${pkgver}"
