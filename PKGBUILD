@@ -6,14 +6,14 @@ pkgname=hunspell-sv
 pkgver=20151223
 _pkgver=2.39
 __pkgver=2-39
-pkgrel=1
+pkgrel=2
 pkgdesc="Swedish dictionaries for Hunspell"
 arch=('any')
 url="http://www.dsso.se/"
 license=('LGPL3')
 depends=('hunspell')
 source=("http://extensions.libreoffice.org/extension-center/swedish-spelling-dictionary-den-stora-svenska-ordlistan/releases/$_pkgver/ooo_swedish_dict_$__pkgver.oxt")
-sha256sums=('d5f0851912a46adecce3a2bba3ea7fb8a12986ffcc80efe9d56586523bb51c5e')
+sha256sums=('c58b7797de1cca1c7f8333a009a2ab391ef0bd89e4b815671148f4b137fe5aab')
 
 package() {
   cd $srcdir/dictionaries
