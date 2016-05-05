@@ -4,13 +4,13 @@ pkgbase='selfhtml'
 pkgname=('selfhtml-de' 'selfhtml-fr')
 pkgver='8.1.2'
 pkgdesc='An excellent HTML reference which also covers other web topics'
-pkgrel=3
+pkgrel=4
 arch=('any')
 url='http://selfhtml.org'
 license=('custom')
-source=('http://ftp.uni-ulm.de/mirrors/selfhtml/selfhtml812.zip'
-        'http://actuel.fr.selfhtml.org/supplements/selfhtml80fr.zip'
-        'http://actuel.fr.selfhtml.org/supplements/selfhtml812-update.zip')
+source=('http://files.ax86.net/mirror/selfhtml/selfhtml812.zip'
+        'http://files.ax86.net/mirror/selfhtml/selfhtml80fr.zip'
+        'http://files.ax86.net/mirror/selfhtml/selfhtml812-update.zip')
 noextract=('selfhtml812.zip'
            'selfhtml80fr.zip'
            'selfhtml812-update.zip')
