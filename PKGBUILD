@@ -26,11 +26,6 @@ backup=('etc/ansible/ansible.cfg')
 source=($pkgname::git+https://github.com/ansible/ansible.git)
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$pkgname"
-  printf "%s.%s.%s" "$(cat VERSION)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 build() {
   cd $pkgname
   git submodule update --init --recursive
