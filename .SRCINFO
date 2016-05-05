@@ -1,0 +1,16 @@
+pkgbase = deepin-crossover
+	pkgdesc = Deepin CrossOver.
+	pkgver = 0.5.14
+	pkgrel = 1
+	url = https://www.codeweavers.com/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = lib32-libx11
+	noextract = deepin-crossover_0.5.14_i386.deb
+	source = https://mirrors.ustc.edu.cn/deepin/pool/non-free/d/deepin-crossover/deepin-crossover_0.5.14_i386.deb
+	md5sums = c5f59fd1d4ed2b1df597e0d4290fbbaf
+
+pkgname = deepin-crossover
+
