@@ -4,12 +4,13 @@
 
 pkgname=scilab
 pkgver=5.5.2
-pkgrel=8
+pkgrel=9
 pkgdesc='A scientific software package for numerical computations.'
 arch=('i686' 'x86_64')
 url='https://www.scilab.org'
 license=('BSD' 'custom:CeCILL')
 depends=('suitesparse>=4.4.1'  'arpack' 'fftw'
+         'hdf5-1.8.16'
          'libmatio' 'tk' 'curl'
          'java-runtime=7'
          'beanshell2' 'eclipse-ecj' 'java-flexdock>=1.2.4' 'fop-hyph'
@@ -27,13 +28,15 @@ source=("${url}/download/${pkgver}/${pkgname}-${pkgver}-src.tar.gz"
         "${pkgname}-${pkgver}-fop-2.0.patch"
         "${pkgname}-${pkgver}-xmlgraphics-common-2.0.patch"
         "${pkgname}-${pkgver}-strict-jar.patch"
-        "${pkgname}-${pkgver}-jogl.patch")
+        "${pkgname}-${pkgver}-jogl.patch"
+        "${pkgname}-${pkgver}-hdf5-LD_LIBRARY_PATH.patch")
 sha256sums=('a734519de96d35b8f081768a5584086e46db089ab11c021744897b22ec4d0f5e'
             '4f243e32be0aa2755405e121e7a23a370276c98e00d1b016bd43df56a76782ca'
             'a8e03352cdaa5955414945e3fc8f56a035793869934345eef301cc6124b7ec95'
             '64de4a044fb7228cae7003e6f86f6f0958ea10049f2fb24a11a07b0087e4ef36'
             'cda2635f25a56f3c423f7a88791222aae3caad53c086cedc0cfe48011936a5a8'
-            '1796919522e00f6f0a38677ba1b79498822a9e75a7e7da2c31ebaa935153d92e')
+            '1796919522e00f6f0a38677ba1b79498822a9e75a7e7da2c31ebaa935153d92e'
+            '16162ee93fa56edc78141a1a0335bf87585cc3468a5161baf11f62a36efef8ac')
 
 prepare(){
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -48,6 +51,8 @@ prepare(){
   patch -p1 < "${srcdir}"/${pkgname}-${pkgver}-jogl.patch
   # Linked to https://codereview.scilab.org/#/c/18089/
   patch < "${srcdir}"/${pkgname}-${pkgver}-strict-jar.patch
+  # http://bugzilla.scilab.org/show_bug.cgi?id=14539
+  patch -p0 < "${srcdir}"/${pkgname}-${pkgver}-hdf5-LD_LIBRARY_PATH.patch
 }
 
 build() {
@@ -56,6 +61,7 @@ build() {
   # Newer version (>7) of java does not work
   export JAVA_HOME=/usr/lib/jvm/java-7-openjdk
 
+  export LD_LIBRARY_PATH=/opt/hdf5-1.8.16/lib:${LD_LIBRARY_PATH}
   ./configure \
     --prefix=/usr \
     --with-gcc \
@@ -65,6 +71,8 @@ build() {
     --with-umfpack \
     --with-fftw \
     --with-modelica \
+    --with-hdf5-include=/opt/hdf5-1.8.16/include \
+    --with-hdf5-library=/opt/hdf5-1.8.16/lib \
     --with-install-help-xml \
     --enable-build-help \
     --enable-build-localization \

@@ -1,0 +1,11 @@
+--- bin/scilab.old	2016-05-05 14:33:17.561897912 +0200
++++ bin/scilab	2016-05-05 14:33:45.272026743 +0200
+@@ -40,6 +40,8 @@
+ #
+ ###
+ 
++export LD_LIBRARY_PATH=/opt/hdf5-1.8.16/lib:${LD_LIBRARY_PATH}
++
+ if test ! -z "$SCIVERBOSE"; then
+     SCIVERBOSE=1
+ else
