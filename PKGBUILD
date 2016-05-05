@@ -67,6 +67,8 @@ package() {
 
 	cp --preserve=mode -r "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
+	install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
 	install -dm755 "${pkgdir}/usr/share/applications"
 
 	install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
