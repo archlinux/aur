@@ -2,8 +2,8 @@
 
 pkgname=perl6-config-toml
 pkgver=0.0.1
-pkgrel=4
-pkgdesc="TOML parser for Perl 6"
+pkgrel=5
+pkgdesc="TOML file parser and writer"
 arch=('any')
 depends=('perl6' 'perl6-crane')
 checkdepends=('perl')
