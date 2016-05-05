@@ -2,16 +2,15 @@
 
 pkgname=mendeleydesktop
 pkgver=1.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Academic software for managing and sharing research papers (desktop client)"
 url=http://www.mendeley.com/release-notes/
 arch=(i686 x86_64)
 depends=(python2 qtwebkit)
 optdepends=(gconf)
 license=(custom:mendeley_eula)
-install=mendeleydesktop.install
-md5sums_i686=('48417538df6a36661c44a08bbd45652b' '44c54032370c2a7cbc6667af6d19acf7')
-md5sums_x86_64=('cda785b501a642c6a69baeb14a26ddea' '44c54032370c2a7cbc6667af6d19acf7')
+md5sums_i686=('48417538df6a36661c44a08bbd45652b')
+md5sums_x86_64=('cda785b501a642c6a69baeb14a26ddea')
 if [[ $CARCH = i686 ]];then
   _arch=i486
 else
@@ -19,10 +18,8 @@ else
 fi
 #http://desktop-download.mendeley.com/download/linux/mendeleydesktop-1.16.-linux-i486.tar.bz2
 #http://desktop-download.mendeley.com/download/linux/mendeleydesktop-1.16.-linux-x86_64.tar.bz2
-source_i686=("http://desktop-download.mendeley.com/download/linux/$pkgname-$pkgver-linux-i486.tar.bz2"
-        'mendeleydesktop.install')
-source_x86_64=("http://desktop-download.mendeley.com/download/linux/$pkgname-$pkgver-linux-x86_64.tar.bz2"
-        'mendeleydesktop.install')
+source_i686=("http://desktop-download.mendeley.com/download/linux/$pkgname-$pkgver-linux-i486.tar.bz2")
+source_x86_64=("http://desktop-download.mendeley.com/download/linux/$pkgname-$pkgver-linux-x86_64.tar.bz2")
 
 
 package() {
