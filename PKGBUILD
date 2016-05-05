@@ -45,7 +45,7 @@ package() {
   install -D -m644 "$srcdir/saleae-logic.desktop" \
     "$pkgdir/usr/share/applications/saleae-logic.desktop"
   # docs
-  install -Dm644 ../../*.pdf "$pkgdir/usr/share/doc/saleae-logic/"
+  install -Dm644 "$srcdir/"*.pdf "$pkgdir/usr/share/doc/saleae-logic/"
   # udev
   sed -i 's/SYSFS/ATTRS/g' Drivers/99-SaleaeLogic.rules
   install -Dm644 Drivers/99-SaleaeLogic.rules "$pkgdir/usr/lib/udev/rules.d/99-SaleaeLogic.rules" 
