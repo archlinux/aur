@@ -9,8 +9,8 @@ url="https://github.com/BlackArch/blackarch/tree/master/packages/blackarch-menus
 license=('GPL')
 depends=('xdg-utils')
 conflicts=('blackarch-menus')
-source=('https://drive.google.com/uc?export=download&id=0B_PopwyKmOH9eUNuTEFoS1hVT3M')
-md5sums=('aae513c215627183599cfa609576d2e5')
+source=('https://drive.google.com/uc?export=download&id=0B_PopwyKmOH9WTNLX2o3WUxHMnc')
+md5sums=('db27d8b60ab6a8ada62fae66b5836d45')
 
 prepare() {
 	cd desktop_files
@@ -23,10 +23,12 @@ prepare() {
 
 package() {
 	install -m755 -d "${pkgdir}/etc/xdg/menus/applications-merged"
+	install -m755 -d "${pkgdir}/usr/local/bin"
 	install -m755 -d "${pkgdir}/usr/share/applications"
 	install -m755 -d "${pkgdir}/usr/share/desktop-directories"
 
 	install -m644 desktop_files/X-BlackArch.menu "${pkgdir}/etc/xdg/menus/applications-merged/"
+	install -m755 desktop_files/appHelper.sh "${pkgdir}/usr/local/bin"
 	install -m644 desktop_files/*.desktop "${pkgdir}/usr/share/applications/"
 	install -m644 desktop_files/*.directory "${pkgdir}/usr/share/desktop-directories/"
 }

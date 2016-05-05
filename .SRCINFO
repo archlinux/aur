@@ -7,8 +7,8 @@ pkgbase = blackarch-menus-extended
 	license = GPL
 	depends = xdg-utils
 	conflicts = blackarch-menus
-	source = https://drive.google.com/uc?export=download&id=0B_PopwyKmOH9eUNuTEFoS1hVT3M
-	md5sums = aae513c215627183599cfa609576d2e5
+	source = https://drive.google.com/uc?export=download&id=0B_PopwyKmOH9WTNLX2o3WUxHMnc
+	md5sums = db27d8b60ab6a8ada62fae66b5836d45
 
 pkgname = blackarch-menus-extended
 
