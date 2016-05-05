@@ -7,7 +7,7 @@
      
 pkgname=med
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - MED is code-aster exchange module linked to hdf5"
 url="http://www.code-aster.org/outils/med/"
 license=('LGPL')
@@ -19,8 +19,14 @@ conflicts=('med_fichier')
 replaces=('med_fichier')
 backup=()
 arch=('i686' 'x86_64')
-source=("http://files.salome-platform.org/Salome/other/${pkgname}-${pkgver}.tar.gz")
-md5sums=('a1e1eb068f20634f5ea797914241eb51')
+source=("http://files.salome-platform.org/Salome/other/${pkgname}-${pkgver}.tar.gz"
+        "patch-include_2.3.6_med.h.in"
+        "patch-include_med.h.in"
+        "patch-src_2.3.6_ci_MEDequivInfo.c")
+md5sums=('a1e1eb068f20634f5ea797914241eb51'
+         'b83949326d7ae0ca77a06822b754a329'
+         '14a151cea108388d7a3b4c62887169f6'
+         '8f0cbf6f08783a6ba68ff5ab240dd62e')
  
 build() {
   if [ "$CARCH" = "x86_64" ]; then
@@ -42,6 +48,11 @@ build() {
  
   # patch H5public_extract.h.in
   sed -i -e '/^#typedef/ s/#/\/\//' ./include/H5public_extract.h.in
+  
+  #patch for hdf5-1.10
+  patch -p0 < ${srcdir}/patch-include_2.3.6_med.h.in
+  patch -p0 < ${srcdir}/patch-include_med.h.in
+  patch -p0 < ${srcdir}/patch-src_2.3.6_ci_MEDequivInfo.c
  
   ./configure --with-f90=mpif90 --prefix=/usr --datadir=/usr/share/med --with-swig=yes || return 1
   make || return 1
