@@ -7,7 +7,7 @@
 # Contributor: al.janitor <al.janitor [at] sdf [dot] org>
 
 pkgname=metasploit-git
-pkgver=4.11.12.37348.8b32f22
+pkgver=4.11.25.38215.891a788
 pkgrel=1
 epoch=1
 pkgdesc="An advanced open-source platform for developing, testing, and using exploit code"
@@ -36,7 +36,7 @@ pkgver() {
 build() {
   cd ${pkgname}
   bundle install -j"$(nproc)" --no-cache --deployment
-  find vendor/bundle/ruby/*/gems/robots-* -exec chmod o+r '{}' \;
+  find vendor/bundle/ruby -exec chmod o+r '{}' \;
 }
 
 package() {
