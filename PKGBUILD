@@ -29,7 +29,7 @@ md5sums=('SKIP')
 
 build() {
   cd "$_pkgname"
-  sed -i 's/maxVersion="[^"]*/maxVersion="46/' pentadactyl/install.rdf 
+  #sed -i 's/maxVersion="[^"]*/maxVersion="47/' pentadactyl/install.rdf 
   make -C pentadactyl xpi
 }
 
