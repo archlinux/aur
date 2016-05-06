@@ -9,9 +9,10 @@ arch=('i686' 'x86_64')
 url='http://sourceforge.net/apps/trac/accel-ppp/'
 license=('GPL')
 depends=('dkms' 'gcc' 'make')
-provides=('accel-ppp-ipoe-module' 'accel-ppp-ipoe-module-lts')
-optdepends=('linux-headers'
-            'linux-lts-headers')
+replaces=('accel-ppp-ipoe-module' 'accel-ppp-ipoe-module-git' 'accel-ppp-ipoe-module-lts')
+conflicts=('accel-ppp-ipoe-dkms-git')
+optdepends=('linux-headers: build modules against Arch kernel'
+            'linux-lts-headers: build modules against LTS kernel')
 source=(http://sourceforge.net/projects/$_pkgname/files/$_pkgname-$pkgver.tar.bz2
         dkms.conf)
 
