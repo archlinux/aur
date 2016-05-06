@@ -1,0 +1,13 @@
+pkgbase = larceny
+	pkgdesc = Larceny is a simple and efficient implementation of the Scheme programming language.
+	pkgver = 0.98
+	pkgrel = 1
+	url = http://www.larcenists.org/index.html
+	arch = i686
+	arch = x86_64
+	license = unknown
+	source = http://www.larcenists.org/LarcenyReleases/larceny-0.98-bin-native-ia32-linux86.tar.gz
+	md5sums = 3838232de0a603ddcacebae90a16e1c9
+
+pkgname = larceny
+
