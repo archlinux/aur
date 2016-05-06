@@ -1,0 +1,13 @@
+*.pac.*
+*.otf
+*.ttf
+*.pfa
+*.pfb
+*.afm
+*.pfm
+*.zip
+src
+srcdir
+pkg
+pkgdir
+*.pkg.*
