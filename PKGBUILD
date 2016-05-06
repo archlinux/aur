@@ -2,18 +2,17 @@
 
 pkgbase=pantheon-default-settings-bzr
 pkgname=('elementary-dpms-helper-bzr' 'pantheon-default-settings-bzr')
-pkgver=r181
+pkgver=r187
 pkgrel=1
 arch=('any')
 url='https://code.launchpad.net/~elementary-os/elementaryos/default-settings-loki'
 license=('GPL')
 groups=('pantheon-unstable')
 makedepends=('bzr')
-install='pantheon-default-settings.install'
 source=('pantheon-default-settings::bzr+lp:~elementary-os/elementaryos/default-settings-loki'
         'arch-tweaks.patch')
 sha256sums=('SKIP'
-            '303efd641a5f993b8c5c0d3123fc2395b341ac254c5484c7074bfce9182ec3ad')
+            'f01524e5f3671c2bb4ec38c9e56f087abbe3e176ca00070ff6b399546e287c8f')
 
 pkgver() {
   cd pantheon-default-settings
