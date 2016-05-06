@@ -3,8 +3,8 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Contributor: M.Carreira <arch@carreira.com.pt>
 
 pkgname=mondo
-pkgver=3.2.1
-pkgrel=2
+pkgver=3.2.2
+pkgrel=1
 pkgdesc="A disaster recovery solution to create backup media that can be used to redeploy the damaged system"
 arch=('i686' 'x86_64')
 url="http://www.mondorescue.org/"
@@ -15,7 +15,7 @@ optdepends=('lzop: File compressor using lzo lib'
   'lzo: A portable lossless data compression library')
 source=("ftp://ftp.mondorescue.org/src/${pkgname}-${pkgver}.tar.gz"
 	"${pkgname}-${pkgver}.tar.gz.sig")
-sha512sums=('a41ae71fd7f7da14da77a5fb7db97543fb226e3f0e04814a3e542196b263b53d146b1ede19a90f5717e898125d90744f45b963132fe9742d8cb71603a1d1eaef'
+sha512sums=('41225f2101a70f2f538a66c90bbb4f230f5ac80263b86096c94abb2dd32426a96b84422cdb73c0f91f83404194607c270be81071d8d1b31849a0a2b0784841a6'
             'SKIP')
 
 
