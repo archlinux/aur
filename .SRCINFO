@@ -1,0 +1,12 @@
+pkgbase = foment-git
+	pkgdesc = Foment scheme
+	pkgver = 20160506
+	pkgrel = 1
+	url = https://github.com/leftmike/foment.git
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+
+pkgname = foment-git
+
