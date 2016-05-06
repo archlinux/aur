@@ -52,8 +52,8 @@ pkgbase=linux-rt-bfq
 pkgname=('linux-rt-bfq' 'linux-rt-bfq-headers' 'linux-rt-bfq-docs')
 _kernelname=-rt-bfq
 _srcname=linux-4.4
-_pkgver=4.4.7
-_rtpatchver=rt16
+_pkgver=4.4.9
+_rtpatchver=rt17
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -458,9 +458,9 @@ package_linux-rt-bfq-docs() {
 
 sha512sums=('13c8459933a8b80608e226a1398e3d1848352ace84bcfb7e6a4a33cb230bbe1ab719d4b58e067283df91ce5311be6d2d595fc8c19e2ae6ecc652499415614b3e'
             'SKIP'
-            'b88e8fdfcba306b49bb1d6d3e6cf5a97ee47481b0b801c199db9bade4f1298930ae3d1fe36d003a7927867bd5a092eeecdcbd151c9b2e85470c69f99b0d4bcc5'
+            '19d2192d36b8ea9def64396d878b14db00e8f738bc399b769f9ca31a495cb64bb6b4b60b9477ca3830db07283b43d2b57037f3d54beb8fe9f1fcbca6263e1c2c'
             'SKIP'
-            '87699fb92cb1d045adb5dbc53e271679a0a8ceea304d2b9a8a90d9f52b3f9cb80d5f51d59e98284a62da4602f38b053b4d1a448649aa900effd8a60ec6a02547'
+            'a65998402e354b7065b088968b051518da9a2b42c6a84395b9814f30f4340a37c25eb5a3128c28ec2454b1fe603d7026c92694eaa0432d116614cdcf01386416'
             'SKIP'
             'bfd5d1a2d8f203e4d13914d311e8cc79b81695a41dc24179074cb05a5a9b5b0cc89a77062c6b8f79c850281aaa0d02dce40e23750aea7d1015f675c1cc024027'
             '275b7573adf648325ab950f8a8be7753f2efac0c4cd5030d31b0482fca0b9b9886c85dec989acde15eadf128366c250ecbd19d5527bfb41f472425fef43e93fd'
