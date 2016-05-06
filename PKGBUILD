@@ -1,35 +1,37 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=elementary-scan-bzr
-pkgver=r607
+pkgver=607
 pkgrel=1
 pkgdesc='Simple Scanning Utility'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/elementary-scan'
 license=('GPL2')
-depends=('granite-bzr' 'launchpad-integration-gtk3' 'libgee06' 'sane' 'scour')
+depends=('launchpad-integration-gtk3' 'libgee' 'sane' 'scour'
+         'libgranite.so')
 makedepends=('bzr' 'gnome-common' 'intltool' 'vala')
-provides=("${pkgname%-*}" 'simple-scan')
-conflicts=("${pkgname%-*}" 'simple-scan')
-install="${pkgname%-*}.install"
+provides=('elementary-scan' 'simple-scan')
+conflicts=('elementary-scan' 'simple-scan')
+install='elementary-scan.install'
 source=('bzr+lp:elementary-scan')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-*}
+  cd elementary-scan
 
-  printf "r%s" "$(bzr revno)"
+  bzr revno
 }
 
 build() {
-  cd ${pkgname%-*}
+  cd elementary-scan
 
-  ./autogen.sh --prefix='/usr'
+  ./autogen.sh \
+    --prefix='/usr'
   make
 }
 
 package() {
-  cd ${pkgname%-*}
+  cd elementary-scan
 
   make DESTDIR="${pkgdir}" install
 }
