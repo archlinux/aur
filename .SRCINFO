@@ -1,0 +1,21 @@
+pkgbase = alink
+	pkgdesc = DOS linker which can be used to link 16-bit PE executables targetting DOS or WIN32
+	pkgver = 1.6
+	pkgrel = 1
+	arch = x86_64
+	arch = i386
+	arch = i686
+	arch = armv7h
+	arch = all
+	makedepends = unzip
+	source = http://alink.sourceforge.net/files/alinksrc.zip
+	source = alink.patch
+	source = util.patch
+	source = _Makefile
+	sha256sums = SKIP
+	sha256sums = 6befbba84b2e3709d802a49fd4eb7da475254615c45866744af4fed2727b1af9
+	sha256sums = c59fd325f3462c2f596da003e27621aae4104b47e046f9482692930e1884a951
+	sha256sums = 2f38c38879c345292f4ff09f771ec4b7385e20edc14a661968916e219b70c8ea
+
+pkgname = alink
+

@@ -1,0 +1,14 @@
+--- alink.h	1999-03-26 11:11:42.000000000 +0100
++++ alink.h	2016-05-06 14:58:55.979603280 +0200
+@@ -590,3 +590,11 @@
+ 
+ extern int buildDll;
+ extern PUCHAR stubName;
++
++
++
++#ifdef __linux__
++#define stricmp strcasecmp
++char* strupr(char* a);
++char* strdup(const char* string);
++#endif

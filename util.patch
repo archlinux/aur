@@ -1,0 +1,29 @@
+--- util.c	1999-03-26 11:09:12.000000000 +0100
++++ util.c	2016-05-06 14:59:25.352936954 +0200
+@@ -299,3 +299,26 @@
+     *plist=list;
+ }
+ 
++#ifdef __linux__
++char *strupr (char *a)
++{
++ char *ret = a;
++
++while (*a != '\0')
++    {
++     if (islower(*a))
++        *a = toupper(*a);
++     ++a;
++    }
++ return ret;
++}
++
++char *strdup (const char *string)
++{
++ char *new;
++
++if (NULL != (new = malloc(strlen(string) + 1)))
++    strcpy(new, string);
++ return new;
++}
++#endif
