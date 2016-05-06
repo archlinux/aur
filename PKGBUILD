@@ -3,12 +3,12 @@
 pkgname=ricin
 _pkgname=Ricin
 pkgver=0.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A dead-simple but powerful Tox client."
 url="https://github.com/RicinApp/Ricin"
 arch=('i686' 'x86_64')
 license=('GPL3')
-makedepends=('git' 'meson-git' 'ninja' 'vala')
+makedepends=('git' 'meson' 'ninja' 'vala')
 depends=('gtk3'
          'toxcore'
          'glib2'
