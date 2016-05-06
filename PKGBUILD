@@ -1,7 +1,7 @@
 # Source: https://github.com/nicoulaj/archlinux-packages
 pkgname=h2
-pkgver=1.4.190
-_releasever=2015-10-11
+pkgver=1.4.191
+_releasever=2016-01-21
 pkgrel=1
 pkgdesc="Java SQL database engine."
 arch=(any)
@@ -9,7 +9,7 @@ url="http://www.h2database.com"
 license=(MPL EPL)
 depends=('java-runtime>=6' 'bash')
 source=("http://www.h2database.com/h2-${_releasever}.zip")
-md5sums=('fa103a4ef6db6a4523054c9fed5cec2c')
+md5sums=('bb27685d47e918a18614b9202ec297d4')
 
 build() {
   msg2 "Generate executable script..."
