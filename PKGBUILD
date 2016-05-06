@@ -2,7 +2,7 @@
 
 pkgname=lifeograph
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="off-line and private journal and note taking application"
 arch=('i686' 'x86_64')
 license=('GNU GPL v3')
