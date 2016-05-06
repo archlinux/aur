@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=aegisub-git
-pkgver=3.2.2.r277.26fea0e
+pkgver=3.2.2.r293.0e8bc44
 pkgrel=1
 pkgdesc='A general-purpose subtitle editor with ASS/SSA support'
 arch=('i686' 'x86_64')
@@ -17,7 +17,6 @@ optdepends=('libpulse: Pulseaudio backend'
             'portaudio: Portaudio backend')
 provides=('aegisub')
 conflicts=('aegisub')
-install='aegisub.install'
 source=('aegisub::git+https://github.com/Aegisub/Aegisub.git'
         'git+https://github.com/Aegisub/assdraw.git')
 sha256sums=('SKIP'
