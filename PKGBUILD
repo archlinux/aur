@@ -35,7 +35,7 @@ build() {
 
   ./GenerateProjectFiles.sh
 
-  make UE4Editor UE4Game UnrealPak CrashReportClient ShaderCompileWorker UnrealLightmass
+  make UE4Game-Linux-Shipping UnrealPak CrashReportClient ShaderCompileWorker UnrealLightmass
   make -j1 ShaderCompileWorker
 }
 
