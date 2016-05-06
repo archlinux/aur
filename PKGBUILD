@@ -1,6 +1,6 @@
 pkgname=grads
 pkgver=2.1.a3
-pkgrel=3
+pkgrel=4
 pkgdesc="The Grid Analysis and Display System (GrADS) is an interactive \
 desktop tool that is used for easy access, manipulation, and visualization \
 of earth science data. The format of the data may be either binary, GRIB, \
