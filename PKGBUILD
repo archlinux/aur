@@ -26,6 +26,11 @@ build(){
   cd "ngs-java"
   ./configure --prefix="$pkgdir/usr/"
   cd ".."
+  make || echo "hack: cannot configure ngs-bam until the rest is compiled; but make fails because ngs-bam is not configured"
+
+  cd "ngs-bam"
+  ./configure --prefix="$pkgdir/usr/"
+  cd ".."
   make
 }
 
