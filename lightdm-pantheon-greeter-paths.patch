@@ -1,6 +1,6 @@
-diff -rupN pantheon-greeter-2.0.0.orig/CMakeLists.txt pantheon-greeter-2.0.0/CMakeLists.txt
---- pantheon-greeter-2.0.0.orig/CMakeLists.txt	2015-04-06 23:37:23.000000000 +0200
-+++ pantheon-greeter-2.0.0/CMakeLists.txt	2015-04-14 12:43:10.943603059 +0200
+diff -rupN lightdm-pantheon-greeter.orig/CMakeLists.txt lightdm-pantheon-greeter/CMakeLists.txt
+--- lightdm-pantheon-greeter.orig/CMakeLists.txt	2016-05-06 10:51:40.257595927 +0200
++++ lightdm-pantheon-greeter/CMakeLists.txt	2016-05-06 10:51:47.284064288 +0200
 @@ -8,7 +8,7 @@ list (APPEND CMAKE_MODULE_PATH ${CMAKE_S
  
  set (CONF_DIR "/etc/lightdm")
@@ -8,9 +8,9 @@ diff -rupN pantheon-greeter-2.0.0.orig/CMakeLists.txt pantheon-greeter-2.0.0/CMa
 -set (PKGDATADIR "${DATADIR}/pantheon-greeter")
 +set (PKGDATADIR "${DATADIR}/lightdm-pantheon-greeter")
  set (CMAKE_INSTALL_PREFIX /usr)
- set (VERSION "2.0.0")
+ set (VERSION "2.0.2")
  
-@@ -62,9 +62,9 @@ add_subdirectory (po)
+@@ -61,9 +61,9 @@ add_subdirectory (po)
  
  include (GSettings)
  
@@ -67,11 +67,11 @@ diff -rupN pantheon-greeter-2.0.0.orig/data/pantheon-greeter.desktop pantheon-gr
 -Type=Application
 -X-Ubuntu-Gettext-Domain=pantheon-greeter
 -Name[en_US]=pantheon-greeter
-diff -rupN pantheon-greeter-2.0.0.orig/src/PantheonGreeter.vala pantheon-greeter-2.0.0/src/PantheonGreeter.vala
---- pantheon-greeter-2.0.0.orig/src/PantheonGreeter.vala	2015-04-06 23:37:23.000000000 +0200
-+++ pantheon-greeter-2.0.0/src/PantheonGreeter.vala	2015-04-20 11:57:44.000000000 +0000
-@@ -81,7 +81,7 @@ public class PantheonGreeter : Gtk.Windo
- 
+diff -rupN lightdm-pantheon-greeter.orig/src/PantheonGreeter.vala lightdm-pantheon-greeter/src/PantheonGreeter.vala
+--- lightdm-pantheon-greeter.orig/src/PantheonGreeter.vala	2016-05-06 10:51:40.264262406 +0200
++++ lightdm-pantheon-greeter/src/PantheonGreeter.vala	2016-05-06 10:51:47.284064288 +0200
+@@ -100,7 +100,7 @@ public class PantheonGreeter : Gtk.Windo
+         
          settings = new KeyFile ();
          try {
 -            settings.load_from_file (Constants.CONF_DIR+"/pantheon-greeter.conf",
@@ -79,3 +79,15 @@ diff -rupN pantheon-greeter-2.0.0.orig/src/PantheonGreeter.vala pantheon-greeter
                      KeyFileFlags.KEEP_COMMENTS);
          } catch (Error e) {
              warning (e.message);
+diff -rupN lightdm-pantheon-greeter.orig/src/Wallpaper.vala lightdm-pantheon-greeter/src/Wallpaper.vala
+--- lightdm-pantheon-greeter.orig/src/Wallpaper.vala	2016-05-06 10:51:40.264262406 +0200
++++ lightdm-pantheon-greeter/src/Wallpaper.vala	2016-05-06 10:54:05.226841092 +0200
+@@ -58,7 +58,7 @@ public class Wallpaper : Clutter.Group {
+         var settings = new KeyFile();
+         string default_wallpaper = "/usr/share/backgrounds/elementaryos-default";
+         try{
+-            settings.load_from_file(Constants.CONF_DIR+"/pantheon-greeter.conf",
++            settings.load_from_file(Constants.CONF_DIR+"/lightdm-pantheon-greeter.conf",
+                     KeyFileFlags.KEEP_COMMENTS);
+             default_wallpaper = settings.get_string ("greeter", "default-wallpaper");
+         } catch (Error e) {
