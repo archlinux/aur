@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 _gemname=experiment
 pkgname=$_gemname
-pkgver=0.7.2
+pkgver=0.8.1
 pkgrel=3
 pkgdesc="A tool for running concurrent multi-configuration experiments"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('ruby'
          'ruby-rugged')
 makedepends=('rubygems')
 source=(${_gemname}-${pkgver}.tar.gz::https://codeload.github.com/jonhoo/${_gemname}/tar.gz/v${pkgver})
-sha256sums=('403e3c2875574664764e02a429d21f6736ae7701e705c016fd77e488cbcda064')
+sha256sums=('2980be5f213a417a22e907a6abc2ba6a25f5b651fe6d75ff7f91b40684f5ec76')
 
 build() {
   cd "$srcdir/${_gemname}-$pkgver"
