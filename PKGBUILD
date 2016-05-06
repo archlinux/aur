@@ -3,9 +3,9 @@
 pkgname=supercollider-git
 _name="supercollider"
 pkgver=3.7.1.r280.g3cdfdfc
-pkgrel=1
+pkgrel=2
 pkgdesc="An environment and programming language for real time audio synthesis and algorithmic composition."
-url="http://supercollider.sourceforge.net/"
+url="http://supercollider.github.io/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL3')
 depends=('jack' 'fftw' 'cwiid' 'qtwebkit' 'libsndfile')
@@ -18,10 +18,8 @@ optdepends=('emacs: emacs interface'
             'screen: vim interface')
 conflicts=('supercollider')
 provides=('supercollider')
-source=("${_name}::git+https://github.com/supercollider/supercollider.git"
-        "libatomic.patch")
-md5sums=('SKIP'
-         '2956e6172cafcc9a38bdfdd2bc33e87b')
+source=("${_name}::git+https://github.com/supercollider/supercollider.git")
+md5sums=('SKIP')
 install="$_name.install"
 
 pkgver() {
