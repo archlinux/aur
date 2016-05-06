@@ -2,7 +2,7 @@
 # Contributor: Diego <cdprincipe@gmail.com>
 
 pkgname=numix-themes-git
-pkgver=2.5.1.r133.20c317a
+pkgver=2.5.1.r246.2ba74a2
 pkgrel=1
 pkgdesc='A flat and light theme with a modern look (GNOME, Openbox, Unity, Xfce)'
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('gdk-pixbuf2' 'git' 'glib2' 'libxml2' 'ruby-sass')
 optdepends=('gtk-engine-murrine: GTK2 theme engine')
 provides=('numix-themes')
 conflicts=('numix-themes')
-source=('numix-themes::git+https://github.com/shimmerproject/Numix.git')
+source=('numix-themes::git+https://github.com/numixproject/numix-gtk-theme.git')
 md5sums=('SKIP')
 
 pkgver() {
