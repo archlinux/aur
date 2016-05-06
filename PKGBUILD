@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="ALPS Core libraries for numerical simulations of condensed matter systems."
 arch=(i686 x86_64)
 url="http://alpscore.org"
-license=('GPL')
+license=('GPL2')
 depends=('cmake>=2.8.12' 'boost>=1.54.0' 'hdf5>=1.8')
 makedepends=(git)
 optdepends=('openmpi: for MPI support')
