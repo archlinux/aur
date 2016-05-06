@@ -1,14 +1,14 @@
 # Maintainer: Alexandr Boiko <brdcom@ya.ru>
 pkgname=accel-ppp-ipoe-module
 pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Ipoe kernel module for accel-ppp running under linux"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
 license=('GPL')
 depends=('linux')
 makedepends=('dkms' 'linux-headers' "accel-ppp-ipoe-dkms=$pkgver")
-conflicts=('')
+conflicts=('accel-ppp-ipoe-module-git')
 install='accel-ppp-ipoe-module.install'
 
 #_extramodules=extramodules-4.4-lts
