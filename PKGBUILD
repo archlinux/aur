@@ -3,7 +3,7 @@
 
 pkgname=kwave
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A sound editor for KDE."
 arch=('i686' 'x86_64')
 url='http://kwave.sourceforge.net'
@@ -20,6 +20,7 @@ makedepends=('cmake'
              'kdoctools'
              'doxygen'
              'python'
+             'libmad'
              'librsvg')
 optdepends=('libmad: MP3 plugin'
             'opus: OGG plugin')
