@@ -81,7 +81,8 @@ build() {
         export LEDAPS_AUX_DIR="$PREFIX/../var/lib/espa/$pkgname/static_data/ledaps"
         export L8_AUX_DIR="$PREFIX/../var/lib/espa/$pkgname/static_data/l8_sr"
  
-        make
+        make all
+        make all-aux
 }
 
 package() {
@@ -92,4 +93,5 @@ package() {
         cd "$srcdir/$pkgname"
         install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
         make PREFIX="$pkgdir$PREFIX" install
+        make PREFIX="$pkgdir$PREFIX" install-aux
 }
