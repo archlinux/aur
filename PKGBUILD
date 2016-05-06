@@ -5,7 +5,7 @@
 
 pkgname=openafs-modules-dkms
 _srcname=openafs
-pkgver=1.6.17
+pkgver=1.6.18
 pkgrel=1
 pkgdesc="Kernel module for OpenAFS (dkms)"
 arch=('i686' 'x86_64' 'armv7h')
@@ -17,22 +17,28 @@ conflicts=('openafs-features-libafs' 'openafs-modules' 'openafs<1.6.6-2')
 options=(!emptydirs)
 source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
         dkms.conf
-        0001-Linux-4.4-key_payload-has-no-member-value.patch
-        0002-Linux-4.4-Use-locks_lock_file_wait.patch
-        0003-Linux-4.4-Do-not-use-splice.patch)
-sha256sums=('96413a2dbffdc9170cc5dde6aa5ad0ae2383c6106994285ed8f186928813a398'
+        0001-Linux-3.13-Check-return-value-from-bdi_init.patch
+        0002-Linux-4.5-no-highmem-in-symlink-ops.patch
+        0003-Linux-4.5-get_link-instead-of-follow_link-put_link.patch
+        0004-Linux-lock-the-parent-dentry-for-lookup_one_len.patch
+        0005-Linux-4.5-don-t-access-i_mutex-directly.patch)
+sha256sums=('b3c35e7be6b6c86b91e7c699fd015f53c87bc19d1ae8ec3ec9cda6b97327d3b6'
             'ea7d1e6dfb5006016e25738be722c8793765f52ad55c0bbf588dd7fdf2bdd2bf'
-            'f498b60b99f75a2cfbe01cc91c5de0585c225231b4850816c8b080edd7402a98'
-            'ff962b1bcfeedaed0f74570e8d248b4e42a3391654bf49b4bb25e19d80b6c4ac'
-            '2c2c14f2f1f88eb43a7160f3112cd63e4ea74884322b76b71308b88b32caafdb')
+            'bec998ce038349025fe030c692f7f0fe46bbe8922433cf6be6298aac536f34cf'
+            'd18b1278c097825801fa1c721cae861f985d9da5460475b74cefe1eb789a1f92'
+            '6336dde35c68c74ae9427b312f170481616d8d347ec4ddfa2966a683797361b0'
+            'fa485ab7a54499eb87b91ec8ea3f33e0894e9e4dc1d0bb825d5ac84a2f3cbc93'
+            'e3f369f000df13a4d207c1533d63ffa0b139c3d374294f6d1fbc77f5e5b9b4df')
 
 prepare() {
   cd ${srcdir}/${_srcname}-${pkgver}
 
-  # Patches required to build against Linux 4.4
-  patch -p1 < ${srcdir}/0001-Linux-4.4-key_payload-has-no-member-value.patch
-  patch -p1 < ${srcdir}/0002-Linux-4.4-Use-locks_lock_file_wait.patch
-  patch -p1 < ${srcdir}/0003-Linux-4.4-Do-not-use-splice.patch
+  # Patches required to build against Linux 4.5
+  patch -p1 < ${srcdir}/0001-Linux-3.13-Check-return-value-from-bdi_init.patch
+  patch -p1 < ${srcdir}/0002-Linux-4.5-no-highmem-in-symlink-ops.patch
+  patch -p1 < ${srcdir}/0003-Linux-4.5-get_link-instead-of-follow_link-put_link.patch
+  patch -p1 < ${srcdir}/0004-Linux-lock-the-parent-dentry-for-lookup_one_len.patch
+  patch -p1 < ${srcdir}/0005-Linux-4.5-don-t-access-i_mutex-directly.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q
