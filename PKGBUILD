@@ -2,10 +2,10 @@
 
 pkgname=asekey
 pkgver=3.7
-pkgrel=2
+pkgrel=3
 pkgdesc="ASEKey USB and SIM Reader driver for PCSC Lite"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
-license="LGPL"
+license=("LGPL")
 depends=('pcsclite')
 url="http://www.athena-scs.com/support/software-driver-downloads"
 source=("http://www.athena-scs.com/docs/reader-drivers/asekey-3-7-tar.bz2"
