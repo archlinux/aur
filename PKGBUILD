@@ -20,6 +20,7 @@ build() {
 package() {
   cd "$pkgname"
   make prefix=/usr DESTDIR="$pkgdir" install
+  install -m 755 metazone "$pkgdir"/usr/bin/metazone
 }
 
 # vim: ts=2:sw=2:et
