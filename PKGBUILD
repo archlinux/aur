@@ -1,7 +1,7 @@
 # Maintainer: Philip Abernethy <chais.z3r0@gmail.com>
 
 pkgname=lib32-libfmod
-pkgver=4.44.50
+pkgver=4.44.61
 pkgrel=1
 pkgdesc="Libraries of the fmodex audio engine"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="http://www.fmod.org/"
 license=('custom')
 conflicts=('fmodex')
 source=("http://www.fmod.org/download/fmodex/api/Linux/fmodapi${pkgver//./}linux.tar.gz")
-sha512sums=('310c441a206f5355a44c047d1d0ebfd4d2c7c769db45e3a6e6f2741417a157075c069fecb8de989d459a731f55edbfc5a5b47dde4ea008aad39549ed7f137d2f')
+sha512sums=('dfbb588b670c5f01fac9a263a55687736c711a2148cb24cb5fba2d4b26e7a6b6c046cdeffbfeb8e67aa1e7ea1a29a13c074a67dd3eecf4ed5557992f73ee42d9')
 
 package() {
 	install -Dm644 ${srcdir}/fmodapi${pkgver//./}linux/api/lib/libfmodex-${pkgver}.so ${pkgdir}/usr/lib32/libfmodex-${pkgver}.so
