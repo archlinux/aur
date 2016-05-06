@@ -10,12 +10,15 @@ pkgbase = accel-ppp-ipoe-dkms-git
 	depends = dkms
 	depends = gcc
 	depends = make
-	optdepends = linux-headers
-	provides = accel-ppp-ipoe-module-git
+	optdepends = linux-headers: build modules against Arch kernel
+	optdepends = linux-lts-headers: build modules against LTS kernel
+	replaces = accel-ppp-ipoe-module
+	replaces = accel-ppp-ipoe-module-git
+	replaces = accel-ppp-ipoe-module-lts
 	source = accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code
 	source = dkms.conf
 	md5sums = SKIP
-	md5sums = bb0d3a131f571fc88f49d508e7026a2b
+	md5sums = 62ed71ee1ee1c812d3cda24b72392dcd
 
 pkgname = accel-ppp-ipoe-dkms-git
 

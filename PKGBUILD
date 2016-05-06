@@ -9,13 +9,14 @@ arch=('i686' 'x86_64')
 url='http://sourceforge.net/apps/trac/accel-ppp/'
 license=('GPL')
 depends=('dkms' 'gcc' 'make')
-provides=('accel-ppp-ipoe-module-git')
-optdepends=('linux-headers')
+replaces=('accel-ppp-ipoe-module' 'accel-ppp-ipoe-module-git' 'accel-ppp-ipoe-module-lts')
+optdepends=('linux-headers: build modules against Arch kernel'
+            'linux-lts-headers: build modules against LTS kernel')
 source=('accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code'
         'dkms.conf')
 
 md5sums=('SKIP'
-         'bb0d3a131f571fc88f49d508e7026a2b')
+         '62ed71ee1ee1c812d3cda24b72392dcd')
 
 install=accel-ppp-ipoe-dkms-git.install
 
