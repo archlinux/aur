@@ -1,6 +1,6 @@
 pkgbase = alpscore-git
 	pkgdesc = ALPS Core libraries for numerical simulations of condensed matter systems.
-	pkgver = 0.5.4.r1.g0dd4ffe
+	pkgver = 0.5.4.r9.g97556b9
 	pkgrel = 1
 	url = http://alpscore.org
 	arch = i686
@@ -11,7 +11,7 @@ pkgbase = alpscore-git
 	depends = boost>=1.54.0
 	depends = hdf5>=1.8
 	optdepends = openmpi: for MPI support
-	provides = alpscore=0.5.4.r1.g0dd4ffe
+	provides = alpscore=0.5.4.r9.g97556b9
 	conflicts = alpscore
 	conflicts = alps
 	source = alpscore-git::git+https://github.com/ALPSCore/ALPSCore.git

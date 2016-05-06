@@ -1,6 +1,6 @@
 # Maintainer: Jia Li <lijia1608@gmail.com>
 pkgname=alpscore-git
-pkgver=0.5.4.r1.g0dd4ffe
+pkgver=0.5.4.r9.g97556b9
 pkgrel=1
 pkgdesc="ALPS Core libraries for numerical simulations of condensed matter systems."
 arch=(i686 x86_64)
