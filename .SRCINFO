@@ -1,7 +1,7 @@
 pkgbase = accel-ppp-ipoe-module-git
 	pkgdesc = Ipoe kernel module for accel-ppp running under linux
 	pkgver = r1344.f5a97ed
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/apps/trac/accel-ppp/
 	install = accel-ppp-ipoe-module-git.install
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = accel-ppp-ipoe-module-git
 	makedepends = linux-headers
 	makedepends = accel-ppp-ipoe-dkms-git=r1344.f5a97ed
 	depends = linux
+	conflicts = accel-ppp-ipoe-module
 	source = accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code
 	md5sums = SKIP
 
