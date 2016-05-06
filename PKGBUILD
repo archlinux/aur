@@ -11,7 +11,7 @@ arch=('x86_64')
 url='https://www.epicgames.com/unrealtournament/'
 makedepends=('clang35' 'mono' 'dos2unix' 'cmake' 'lsb-release')
 depends=('icu53' 'xdg-user-dirs')
-license=('custom:UnrealEngine')
+license=('custom:UnrealTournament')
 source=(
   git+ssh://github.com/EpicGames/UnrealTournament.git#tag=$pkgver
   UnrealTournament.desktop
@@ -44,7 +44,7 @@ package() {
 
   cd $srcdir/UnrealTournament
 
-  install -Dm644 LICENSE.pdf "$pkgdir/usr/share/licenses/UnrealEngine/LICENSE.pdf"
+  install -Dm644 LICENSE.pdf "$pkgdir/usr/share/licenses/UnrealTournament/LICENSE.pdf"
 
   install -d "$pkgdir/opt/$pkgname"
 
