@@ -1,26 +1,34 @@
-#Contributor: sxe <sxxe@gmx.de>
+# Maintainer: Josip Ponjavic <josipponjavic at gmail dot com>
+# Contributor: sxe <sxxe@gmx.de>
 
 pkgname=ffmpegthumbs-mattepaint
-pkgver=0.4
-pkgrel=2
+pkgver=0.6
+pkgrel=1
 pkgdesc="An alternative version of the standard KDE ffmpegthumbs."
 arch=('i686' 'x86_64')
 url="http://kde-look.org/content/show.php/FFMpegThumbs-MattePaint?content=153902"
-depends=('kdebase-workspace>=4.3.0')
-makedepends=('cmake' 'automoc4' 'gcc')
-source=("http://kde-look.org/CONTENT/content-files/153902-${pkgname}-${pkgver}.tar.gz")
 license=('GPL')
-md5sums=('89398e47e3290bbc02893bcca82a8ae8')
+depends=('ffmpeg2.8' 'kio' 'perl')
+makedepends=('extra-cmake-modules')
+source=("http://kde-look.org/CONTENT/content-files/153902-${pkgname}.tar.gz")
+sha256sums=('83e8a37ffd8a3b5d427a05b8500dbe4e206e30a5fccc3b52ca9e427ddab8b964')
+
+prepare() {
+  mkdir -p build
+}
 
 build() {
-        cd $srcdir/${pkgname}-${pkgver}
-        cmake -DCMAKE_INSTALL_PREFIX=`kde4-config --prefix` -DCMAKE_BUILD_TYPE=Release .
-        make
+  cd build
+  export PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig"
+  cmake ../${pkgname}/KF5/${pkgname} \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+  make
 }
 
 package() {
-        cd $srcdir/${pkgname}-${pkgver}
-        make DESTDIR=$pkgdir install
-	kbuildsycoca4
+  cd build
+  make DESTDIR=$pkgdir install
 }
-
