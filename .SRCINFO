@@ -1,0 +1,18 @@
+pkgbase = everseer-server-git
+	pkgdesc = Electron based multi-machine system monitor, server version
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/gabmus/everseer
+	arch = x86_64
+	license = GPLv3
+	makedepends = git
+	makedepends = npm
+	depends = gtk2
+	depends = python-psutil
+	depends = pm2
+	optdepends = openssh: ssh support
+	source = everseer::git+git://github.com/gabmus/everseer
+	md5sums = SKIP
+
+pkgname = everseer-server-git
+
