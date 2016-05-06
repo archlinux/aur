@@ -18,8 +18,6 @@ source=('accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code'
 md5sums=('SKIP'
          '62ed71ee1ee1c812d3cda24b72392dcd')
 
-install=accel-ppp-ipoe-dkms-git.install
-
 pkgver() {
     cd "$srcdir/${_pkgname%-git}"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
