@@ -2,12 +2,12 @@
 
 _pkgname=vim-monokai
 pkgname=${_pkgname}-git
-pkgver=r26.55ff654
+pkgver=r27.2b40c36
 pkgrel=2
 pkgdesc='A port of the Monokai color scheme for Vim by sickill.'
 arch=('any')
 url='https://github.com/sickill/vim-monokai'
-license=('unknown')
+license=('MIT')
 groups=('vim-plugins')
 
 optdepends=(
@@ -35,5 +35,9 @@ package() {
 	# Installing package
 	cd "${srcdir}"/${_pkgname}
 	mkdir -p "${pkgdir}"/usr/share/vim/vimfiles
-	cp -R ./colors "${pkgdir}"/usr/share/vim/vimfiles
+	cp -R colors "${pkgdir}"/usr/share/vim/vimfiles
+
+	# Install licence
+	mkdir -p "${pkgdir}"/usr/share/licenses/${pkgname}
+	cp LICENSE.txt "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
