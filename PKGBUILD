@@ -6,7 +6,7 @@
 _pkgbasename=ffmpeg
 pkgname=lib32-$_pkgbasename
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (32 bit)"
 arch=('x86_64')
@@ -26,7 +26,7 @@ depends=("$_pkgbasename"
       'lib32-xvidcore' 'lib32-zlib'
       'lib32-libvorbis' 'libvorbis.so' 'libvorbisenc.so'
       'lib32-libx264' 'libx264.so'
-      'lib32-libvpx' #'libvpx.so' # see https://bugs.archlinux.org/task/49043
+      'lib32-libvpx' 'libvpx.so'
       )
 makedepends=('hardening-wrapper' 'lib32-ladspa' 'yasm')
 optdepends=('lib32-ladspa: LADSPA filters')
