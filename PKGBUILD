@@ -3,7 +3,7 @@
 # Contributor: TuxSpirit <tuxspirit@archlinux.fr>
 
 pkgname=peazip-gtk2
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="GTK2 archiver utility"
 arch=(i686 x86_64)
@@ -19,10 +19,10 @@ source=("$pkgname-$pkgver.tgz"::"https://github.com/giorgiotani/PeaZip/releases/
         "http://www.peazip.org/downloads/additional/peazip_optional_formats_plugin-1.LINUX.INST.tar.gz"
         "${pkgname%-*}.desktop")
 noextract=($pkgname-$pkgver.tgz)
-sha256sums=('aaa143630a97317032a101e5976419335054bfdeca34701a298612f04b788497'
+sha256sums=('3104c655ed61b70971a0d018fda31acba440701a00b965bf87fdc454a351bb9c'
             '7f3fc1ea200d482500360eadda9298c4d5900ca822d21b5a0e11ff9de4d499ff'
             '4d876c6a61f25a7e2f3dfa69b1c80e61fdda9220bbf8e23a407e34eae377091b')
-sha512sums=('0bca1ed7086ae82f74ba65d3dafc8632776c2afa9662cd886834461db0da1f90df104e893667bc48860d7997076fd36949b0225764f226b0a8709751ca293735'
+sha512sums=('ed63d1f3ef9d60486715970f5b6c9f74746988748bae9eb287aed5f09683917e662c0d1e76a226532d978758b98d6cf568b9eaa21e192b0b486e887035cf3beb'
             '8b308510a2c81ad2704cef19ed3fb2baf1dde0e123cf3e4c96e5e42a330e23002f3443c9fce009120492afc82b0ab063344c8029fe6fe851a4bea4814bacdaa8'
             'bc86d42b33285c2709081ddca7c06fe789cc2d42c69c4cbed595c077a776d91e5526eb799dcdc404375a3bfb212927165a02d3d79301f53adb8a89039bf7bb5f')
 
