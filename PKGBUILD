@@ -8,7 +8,9 @@ arch=('any')
 url="https://github.com/BlackArch/blackarch/tree/master/packages/blackarch-menus"
 license=('GPL')
 depends=('xdg-utils')
+provides=('blackarch-menus')
 conflicts=('blackarch-menus')
+replaces=('blackarch-menus')
 source=('https://drive.google.com/uc?export=download&id=0B_PopwyKmOH9WTNLX2o3WUxHMnc')
 md5sums=('db27d8b60ab6a8ada62fae66b5836d45')
 
