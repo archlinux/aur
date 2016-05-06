@@ -8,14 +8,14 @@
 
 pkgname=gtk3-light
 pkgver=3.20.3
-pkgrel=4
+pkgrel=4.1
 pkgdesc="GTK3 without colord."
 arch=(i686 x86_64)
 url="http://www.gtk.org/"
 install=gtk3.install
 depends=(atk cairo gtk-update-icon-cache libcups libxcursor libxinerama libxrandr libxi libepoxy
          libxcomposite libxdamage pango shared-mime-info at-spi2-atk wayland libxkbcommon
-         adwaita-icon-theme json-glib rest librsvg wayland-protocols desktop-file-utls)
+         adwaita-icon-theme json-glib rest librsvg wayland-protocols desktop-file-utils)
 makedepends=(gobject-introspection libcanberra gtk-doc)
 optdepends=('libcanberra: gtk3-widget-factory demo')
 provides=("gtk3=$pkgver")
