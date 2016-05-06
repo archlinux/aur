@@ -4,7 +4,8 @@
 
 pkgname=geth
 pkgver=1.4.1
-pkgrel=1
+_commit="rc-4b9de75"
+pkgrel=2
 pkgdesc="The go-ethereum commandline client (geth cli)."
 arch=('i686' 'x86_64')
 depends=(
@@ -22,8 +23,8 @@ provides=('geth')
 url="https://github.com/ethereum/go-ethereum"
 license=('GPL')
 source=(
-  "${pkgname}-${pkgver}-32.tar.bz2::https://github.com/ethereum/go-ethereum/releases/download/v1.4.1/geth-1.4.1-rc-4b9de75-linux-386.tar.bz2"
-  "${pkgname}-${pkgver}-64.tar.bz2::https://github.com/ethereum/go-ethereum/releases/download/v1.4.1/geth-1.4.1-rc-4b9de75-linux-amd64.tar.bz2"
+  "${pkgname}-${pkgver}-32.tar.bz2::https://github.com/ethereum/go-ethereum/releases/download/v$pkgver/geth-$pkgver-$_commit-linux-386.tar.bz2"
+  "${pkgname}-${pkgver}-64.tar.bz2::https://github.com/ethereum/go-ethereum/releases/download/v$pkgver/geth-$pkgver-$_commit-linux-amd64.tar.bz2"
   "LICENSE.txt::https://raw.githubusercontent.com/ethereum/go-ethereum/master/COPYING"
 )
 sha256sums=(
@@ -35,9 +36,9 @@ sha256sums=(
 package() {
 
   if [ "${CARCH}" = "x86_64" ]; then
-    install -Dm755 "$srcdir/geth-1.4.0-rc-8241fa5-linux-amd64" "$pkgdir/usr/bin/geth"
+    install -Dm755 "$srcdir/geth-$pkgver-$_commit-linux-amd64" "$pkgdir/usr/bin/geth"
   else
-    install -Dm755 "$srcdir/geth-1.4.0-rc-8241fa5-linux-386" "$pkgdir/usr/bin/geth"
+    install -Dm755 "$srcdir/geth-$pkgver-$_commit-linux-386" "$pkgdir/usr/bin/geth"
   fi
 
   install -Dm644 "$srcdir/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
