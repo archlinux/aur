@@ -2,7 +2,7 @@
 
 pkgname=lightdm-pantheon-greeter
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Pantheon greeter for LightDM'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/pantheon-greeter'
@@ -16,7 +16,7 @@ install='lightdm-pantheon-greeter.install'
 source=("lightdm-pantheon-greeter-${pkgver}.tgz::https://launchpad.net/pantheon-greeter/freya/${pkgver}/+download/pantheon-greeter-${pkgver}.tar.xz"
         'lightdm-pantheon-greeter-paths.patch')
 sha256sums=('41c51a424828ad2d454e6def8259c42f62f868a7b55302fc585c5ce6f5fc70cd'
-            '164d93b3dd75a5dfa2ecb4095bbf0f366e778544b4769b4a5c47be1cef952d1b')
+            '8246073b9a242d8b2a097845af8aa8b33f8c0ba4c6815342b51a1f9c13b1afa8')
 
 prepare() {
   cd pantheon-greeter-${pkgver}
