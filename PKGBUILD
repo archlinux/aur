@@ -3,12 +3,12 @@
 
 _gitname=poldi
 pkgname=${_gitname}-git
-pkgver=r121.49a1cab
+pkgver=r122.ee253cc
 pkgrel=1
 pkgdesc="PAM module for authentication using a smartcard"
 arch=('i686' 'x86_64')
 url="http://git.gnupg.org/cgi-bin/gitweb.cgi?p=poldi.git"
-license="GPL"
+license=("GPL")
 depends=('libgcrypt' 'libgpg-error' 'libksba' 'pam')
 makedepends=('git' 'autoconf' 'automake')
 optdepends=('logrotate: To avoid giant logfiles')
