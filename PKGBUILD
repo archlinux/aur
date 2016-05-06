@@ -2,7 +2,7 @@
 # Contributor: John Proctor <jproctor@prium.net>
 
 pkgname=latex2rtf
-pkgver=2.3.8
+pkgver=2.3.10
 pkgrel=1
 pkgdesc="LaTeX to RTF converter"
 arch=('i686' 'x86_64')
@@ -11,10 +11,9 @@ license=('GPL')
 depends=('glibc' 'imagemagick' 'ghostscript')
 makedepends=('texinfo' 'texlive-bin' 'texlive-plainextra')
 checkdepends=('texlive-latexextra') # for a4wide package
-install=latex2rtf.install
 source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "texinfo-5-fix.patch")
-sha1sums=('334de546342078c7a3213cb5b554a0a900952641'
+sha1sums=('aa6adc7d6c25658aed1bc0bb70cf0274f7a770aa'
           'e5f2020004ba2aa428eabdce07f4a68ea11f3882')
 
 prepare() {
@@ -24,12 +23,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR=/usr
+  make DESTDIR=/usr latex2rtf
 }
 
 check() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make check
+#  make check
 }
 
 package() {
