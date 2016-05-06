@@ -3,7 +3,7 @@
 # Contributor: Tom Vincent <http://www.tlvince.com/contact/>
 
 pkgname=mutt-kiss
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Small but very powerful text-based mail client. Sans POP/IMAP/SMTP/SSL, with forgotten attachments patch."
 arch=('i686' 'x86_64')
@@ -16,8 +16,7 @@ backup=('etc/Muttrc')
 install=$pkgname.install
 source=("https://bitbucket.org/mutt/mutt/downloads/mutt-$pkgver.tar.gz"
         "mutt-attach.patch")
-sha1sums=('bab62759af0873a94dc8b85a62a7a9e09e33c6bb'
-          '1ca3a0ab5c4a965d180bd310ba15cfe42c6a4e12'
+sha1sums=('ff1c76209a5c299018fc72b9e2e1ab98bf5138dd'
           '94da52d50508d8951aa78ca4b073023414866be1')
 
 prepare() {
