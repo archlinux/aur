@@ -3,7 +3,7 @@
 
 pkgname=libfreenect2
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source drivers for the Kinect for Windows v2"
 arch=(i686 x86_64)
 url="http://openkinect.org"
@@ -34,5 +34,5 @@ package() {
 	cd "${srcdir}/libfreenect2-$pkgver"
 	make DESTDIR="${pkgdir}" install
 	mkdir -p ${pkgdir}/usr/lib/udev/rules.d
-	install platform/linux/udev/90-kinect2.rules ${pkgdir}/usr/lib/udev/rules.d/90-kinect2.rules
+	install platform/linux/udev/90-kinect2.rules ${pkgdir}/usr/lib/udev/rules.d/65-kinect2.rules
 }
