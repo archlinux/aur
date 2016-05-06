@@ -1,8 +1,8 @@
 # Contributor: Graziano Giuliani
 
 pkgname=g2clib
-pkgver=1.4.0
-pkgrel=6
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="GRIB2 encoder/decoder (C version)"
 url="http://www.nco.ncep.noaa.gov/pmb/codes/GRIB2"
 license=("custom:NWS")
@@ -12,7 +12,7 @@ dependes=(jasper libpng)
 options=('staticlibs')
 source=(http://www.nco.ncep.noaa.gov/pmb/codes/GRIB2/${pkgname}-${pkgver}.tar
         NWS_license.txt)
-md5sums=('f0cbab4ebbaec6d8dd15da1a36c93675'
+md5sums=('8f088bb3a831bb4e7835d0a67c28873c'
          '64f9f7f5ad383df409986d8a67d2fa78')
 
 build() {
@@ -26,7 +26,8 @@ build() {
 package() {
   cd ${srcdir}/${pkgname}-${pkgver}
   mkdir -p ${pkgdir}/usr/{lib,include,share/licenses/${pkgname}}
-  install -m 644 libgrib2c.a ${pkgdir}/usr/lib
+  install -m 644 libg2c_v1.6.0.a ${pkgdir}/usr/lib/libg2c_v1.6.0.a
+  ln -sf libg2c_v1.6.0.a ${pkgdir}/usr/lib/libg2c.a
   install -m 644 *.h ${pkgdir}/usr/include
   install -m 644 ${srcdir}/NWS_license.txt \
     ${pkgdir}/usr/share/licenses/${pkgname}/NWS
