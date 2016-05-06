@@ -6,6 +6,7 @@
 pkgname=intel-opencl-runtime
 epoch=1
 pkgver=16.1
+_package=opencl_runtime_${pkgver}_x64_rh_5.2.0.10002
 pkgrel=2
 pkgdesc="OpenCL runtime for Intel Core and Xeon processors"
 arch=('x86_64')
@@ -14,11 +15,11 @@ license=('custom:intel')
 depends=('numactl' 'intel-tbb' 'zlib')
 optdepends=('intel-opencl-sdk: Intel SDK for OpenCL Applications')
 provides=('opencl')
-source=(http://registrationcenter-download.intel.com/akdlm/irc_nas/9019/opencl_runtime_${pkgver}_x64_rh_5.2.0.10002.tgz)
+source=(http://registrationcenter-download.intel.com/akdlm/irc_nas/9019/${_package}.tgz)
 sha256sums=('b39bb90f35640cd8d3fd6fc173cf24d969b81da4554a32484c9b2520a8c010c6')
 
 package() {
-	cd "${srcdir}"/opencl_runtime_${pkgver}_x64_rh_5.2.0.10002/
+	cd "${srcdir}"/${_package}/
 
 	# Copy license
 	install -Dm644 EULA.txt "${pkgdir}"/usr/share/licenses/intel-opencl-runtime/license
