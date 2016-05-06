@@ -1,0 +1,17 @@
+pkgbase = xkev-git
+	pkgdesc = Simply simulate KeyPress/KeyRelease
+	pkgver = 20160222.54fc638
+	pkgrel = 1
+	epoch = 1
+	url = http://github.com/vlaadbrain/xkev
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	provides = xkev
+	conflicts = xkev
+	source = git://github.com/vlaadbrain/xkev.git
+	sha1sums = SKIP
+
+pkgname = xkev-git
+
