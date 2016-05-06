@@ -2,11 +2,11 @@
 
 pkgname=intel-xdk-iot
 pkgver=3022
-pkgrel=1
+pkgrel=2
 _rpmver=2.0-0
 pkgdesc='JavaScript on-board app and HTML5 companion app development'
 arch=('i686' 'x86_64')
-url='http://xdk.intel.com/iot'
+url='https://software.intel.com/en-us/iot/software/ide/intel-xdk-iot-edition'
 license=('custom')
 depends=('libudev0' 'libnotify')
 makedepends=('rpmextract')
