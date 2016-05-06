@@ -7,7 +7,7 @@ pkgbase = arc-dark-xfce4-terminal
 	license = GPL3
 	depends = xfce4-terminal
 	source = https://manjaro.ru/aur/arc-dark-xfce4-terminal/arc-dark-xfce4-terminal.tar.gz
-	md5sums = 9577b8bccf79aab987f814a1c052209e
+	md5sums = f3f72afd7b788849e21a240643d4ea2d
 
 pkgname = arc-dark-xfce4-terminal
 

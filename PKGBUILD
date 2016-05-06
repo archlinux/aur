@@ -9,7 +9,7 @@ depends=('xfce4-terminal')
 url="https://manjaro.ru/"
 license=('GPL3')
 source=(https://manjaro.ru/aur/arc-dark-xfce4-terminal/$pkgname.tar.gz)
-md5sums=('9577b8bccf79aab987f814a1c052209e')
+md5sums=('f3f72afd7b788849e21a240643d4ea2d')
 
 package() {
   cd "$srcdir/"
