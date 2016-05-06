@@ -8,25 +8,27 @@
 
 pkgname=gtk3-light
 pkgver=3.20.3
-pkgrel=1
+pkgrel=4
 pkgdesc="GTK3 without colord."
-arch=('i686' 'x86_64')
+arch=(i686 x86_64)
 url="http://www.gtk.org/"
 install=gtk3.install
-depends=('atk' 'cairo' 'gtk-update-icon-cache' 'libcups' 'libxcursor' 'libxinerama' 'libxrandr' 'libxi' 'libepoxy'
-         'libxcomposite' 'libxdamage' 'pango' 'shared-mime-info' 'at-spi2-atk' 'wayland' 'libxkbcommon'
-         'adwaita-icon-theme' 'json-glib' 'rest' 'librsvg' 'wayland-protocols')
-makedepends=('gobject-introspection' 'libcanberra' 'gtk-doc')
+depends=(atk cairo gtk-update-icon-cache libcups libxcursor libxinerama libxrandr libxi libepoxy
+         libxcomposite libxdamage pango shared-mime-info at-spi2-atk wayland libxkbcommon
+         adwaita-icon-theme json-glib rest librsvg wayland-protocols desktop-file-utls)
+makedepends=(gobject-introspection libcanberra gtk-doc)
 optdepends=('libcanberra: gtk3-widget-factory demo')
 provides=("gtk3=$pkgver")
-conflicts=('gtk3')
+conflicts=(gtk3)
 options=('!docs') # Remove '!docs' if you want gtk3 docs
 backup=(etc/gtk-3.0/settings.ini)
-license=('LGPL')
+license=(LGPL)
 source=(https://download.gnome.org/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz
-        settings.ini)
+        settings.ini
+        gtk-query-immodules-3.0.hook)
 sha256sums=('3834f3bf23b260b3e5ebfea41102e2026a8af29e36c3620edf4a5cf05e82f694'
-            '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202')
+            '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
+            'de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845')
 
 prepare() {
     cd "gtk+-$pkgver"
@@ -54,7 +56,9 @@ build() {
 package() {
     cd "$srcdir/gtk+-$pkgver"
     make DESTDIR="$pkgdir" install
+
     install -Dm644 ../settings.ini "$pkgdir/usr/share/gtk-3.0/settings.ini"
+    install -Dm644 ../gtk-query-immodules-3.0.hook "$pkgdir/usr/share/libalpm/hooks/gtk-query-immodules-3.0.hook"
 
     # split this out to use with gtk2 too
     rm "$pkgdir/usr/bin/gtk-update-icon-cache"
