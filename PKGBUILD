@@ -1,7 +1,7 @@
 # Maintainer : Antonio Orefice <xt7player@gmail.com>
 
 pkgname=higgins-git
-pkgver=20160407
+pkgver=20160505
 pkgrel=1
 pkgdesc="Gambas apps launcher"
 arch=('any')
