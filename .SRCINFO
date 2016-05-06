@@ -1,0 +1,23 @@
+pkgbase = alphaplot
+	pkgdesc = Application for Scientific Data Analysis and Visualization, fork of SciDavis
+	pkgver = 0.01
+	pkgrel = 1
+	install = alphaplot.install
+	arch = i686
+	arch = x86_64
+	license = GPL-2
+	makedepends = boost
+	makedepends = cmake
+	depends = gsl
+	depends = glu
+	depends = mesa
+	depends = muparser
+	depends = python2-pyqt4
+	depends = shared-mime-info
+	depends = qwt5
+	depends = qwtplot3d
+	source = git+https://github.com/narunlifescience/alphaplot.git
+	sha256sums = SKIP
+
+pkgname = alphaplot
+
