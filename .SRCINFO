@@ -1,5 +1,5 @@
 pkgbase = alphaplot
-	pkgdesc = Application for Scientific Data Analysis and Visualization, fork of SciDavis
+	pkgdesc = Application for Scientific Data Analysis and Visualization, fork of SciDavis / QtiPlot
 	pkgver = 0.01
 	pkgrel = 1
 	install = alphaplot.install
