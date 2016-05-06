@@ -13,7 +13,7 @@ _SLACKWARECOLORS=false 	# elvis colorscheme from slackware not installed by defa
 
 pkgname=elvis
 pkgver=2.2_0
-pkgrel=3
+pkgrel=4
 url="http://elvis.the-little-red-haired-girl.org/"
 #url="http://elvis.vi-editor.org/"
 pkgdesc="A vi clone with optional X support.  Stable or beta version."
@@ -29,8 +29,8 @@ source=("http://www.the-little-red-haired-girl.org/pub/elvis/elvis-${pkgver}.tar
 	"http://cvsweb.netbsd.org/bsdweb.cgi/~checkout~/pkgsrc/editors/elvis/patches/patch-ae"
 	"ftp://ftp.slackware.com/pub/slackware/slackware-13.0/source/a/elvis/elvis.clr")
 md5sums=('6831b8df3e4a530395e66c2889783752'
-         '8d9df9aa5edcf8e0b8a2f5d59d1c30c7'
-         '2bec41d9f09542e2ef41de1e6b41727e'
+         '106a047c6256695f874a1e4ac16386a9'
+         'd993e8367da29268547d071dfc4d43b9'
          'c47a70cb176ebf2eb99b055c4048a560')
 
 _DESKTOPFILE="[Desktop Entry]\\nType=Application\\nVersion=1.0\\nName=Elvis\\nComment=A simple text editor\\nExec=elvis\\nIcon=$pkgname\\nTerminal=true\\nCategories=Editors;Programming;Accessories"
