@@ -1,0 +1,15 @@
+pkgbase = bones
+	pkgdesc = A simple Scheme compiler for x86_64 systems
+	pkgver = 20150929
+	pkgrel = 1
+	url = http://www.call-with-current-continuation.org/bones/
+	arch = x86_64
+	license = unknown
+	makedepends = nasm
+	makedepends = gcc
+	depends = nasm
+	source = http://www.call-with-current-continuation.org/bones/bones.tar.gz
+	md5sums = 82f99018a2e0c50e8a802f39ab1d3a40
+
+pkgname = bones
+
