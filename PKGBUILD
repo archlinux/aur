@@ -7,7 +7,7 @@ pkgdesc="A customized version by DDRaceNetwork of this 2D shooting game"
 arch=('i686' 'x86_64')
 url="https://ddnet.tw"
 license=('custom')
-depends=('alsa-lib' 'glu' 'sdl2' 'freetype2' 'openssl098')
+depends=('alsa-lib' 'glu' 'sdl2' 'freetype2' 'opusfile' 'curl')
 makedepends=('bam' 'imagemagick' 'gendesk')
 optdepends=('teeworlds-ddnet-skins: more skins for your tee'
             'teeworlds-ddnet-maps-git: mainly important for DDNet Server')
