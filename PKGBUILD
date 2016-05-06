@@ -2,7 +2,7 @@
 
 pkgname=tailor
 pkgver="0.9.1"
-pkgrel=0
+pkgrel=1
 pkgdesc="Cross-platform static analyzer and linter for Swift"
 arch=("x86_64")
 url="https://tailor.sh/"
@@ -22,6 +22,6 @@ package() {
 
     install -m755 -d "$pkgdir/usr/share/tailor"
     cp -R ${srcdir}/${pkgname}-${pkgver}/* "$pkgdir/usr/share/tailor"
-    ln -s "$pkgdir/usr/share/tailor/bin/tailor" "$pkgdir/usr/bin/tailor"
-    ln -s "$pkgdir/usr/share/tailor/bin/tailor.1" "$pkgdir/usr/share/man/man1/tailor.1"
+    ln -s /usr/share/tailor/bin/tailor "$pkgdir/usr/bin/tailor"
+    ln -s $pkgdir/usr/share/tailor/bin/tailor.1 "$pkgdir/usr/share/man/man1/tailor.1"
 }

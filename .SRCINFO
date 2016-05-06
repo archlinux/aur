@@ -1,7 +1,7 @@
 pkgbase = tailor
 	pkgdesc = Cross-platform static analyzer and linter for Swift
 	pkgver = 0.9.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://tailor.sh/
 	arch = x86_64
 	license = MIT
