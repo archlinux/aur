@@ -2,7 +2,7 @@
 # Maintainer: Aaron Baker <aa{last name}99{at}gmail{dt}org>
 
 pkgname=sra-tools
-pkgver=2.5.8
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="The SRA Toolkit and SDK from NCBI is a collection of tools and libraries for using data in the INSDC Sequence Read Archives."
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('fuse: mount remote genome reference files')
 provides=('sra-tools')
 license=('custom:PublicDomain')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ncbi/sra-tools/archive/$pkgver.tar.gz")
-sha256sums=('7527585226fd1255cc662209309e4aebf38136082034ba25e1d79506bdfb8a57')
+sha256sums=('7aa1ec118486cd877bf2976818a3f319674584f3d04931a6ce2a92f6a9defbc1')
 
 prepare(){
   cd $pkgname-$pkgver
