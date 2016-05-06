@@ -2,7 +2,7 @@
 
 pkgname=supercollider-git
 _name="supercollider"
-pkgver=3.7.0.beta1.r14.gdabcb9a
+pkgver=3.7.1.r280.g3cdfdfc
 pkgrel=1
 pkgdesc="An environment and programming language for real time audio synthesis and algorithmic composition."
 url="http://supercollider.sourceforge.net/"
@@ -18,7 +18,7 @@ optdepends=('emacs: emacs interface'
             'screen: vim interface')
 conflicts=('supercollider')
 provides=('supercollider')
-source=("${_name}::git+https://github.com/supercollider/supercollider.git#branch=3.7"
+source=("${_name}::git+https://github.com/supercollider/supercollider.git"
         "libatomic.patch")
 md5sums=('SKIP'
          '2956e6172cafcc9a38bdfdd2bc33e87b')
@@ -27,13 +27,6 @@ install="$_name.install"
 pkgver() {
   cd "$_name"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/Version.//g'
-}
-
-prepare() {
-  cd $srcdir/$_name
-  msg "Applying patch for fixing linking failure with GCC > 5.1"
-  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=65913
-  patch -Np1 -i ../libatomic.patch
 }
 
 build() {
