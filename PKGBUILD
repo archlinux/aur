@@ -1,5 +1,5 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-gtk2-webkit-mechanize'
 pkgver='0.01'
@@ -8,9 +8,10 @@ pkgdesc="Mechanize like module using WebKit browser"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-gtk2-webkit')
+depends=('perl-gtk2-webkit>=0')
 makedepends=()
-url='http://search.cpan.org/dist/Gtk2-WebKit-Mechanize'
+checkdepends=('ttf-dejavu' 'xorg-server-xvfb')
+url='https://metacpan.org/release/Gtk2-WebKit-Mechanize'
 source=('http://search.cpan.org/CPAN/authors/id/B/BO/BOSU/Gtk2-WebKit-Mechanize-0.01.tar.gz')
 md5sums=('42f275d630e97d26ccd156e725b934ff')
 sha512sums=('93cc11dfc0cd84d619688d579d3e0e1e98343256be69a8f6c977cf66fc036e3621c4e873d99116fd13f95877124216af609af7d6b527f5b5180dc19cb9ccbe3c')
@@ -32,7 +33,7 @@ build() {
 check() {
   cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test
+    xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24" make test
   )
 }
 
