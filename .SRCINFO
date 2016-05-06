@@ -1,0 +1,13 @@
+pkgbase = ypsilon-scheme
+	pkgdesc = The implementation of R6RS Scheme Programming Language for real-time applications.
+	pkgver = 0.9.6.update3
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	license = unknown
+	makedepends = cpio
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ypsilon/ypsilon-0.9.6.update3.tar.gz
+	md5sums = b330ebabce9b665418f3c347a43dcd24
+
+pkgname = ypsilon-scheme
+
