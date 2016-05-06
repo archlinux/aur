@@ -19,8 +19,11 @@ depends=(
         'gambas3-gb-settings>=3.1.1'
 		'gambas3-gb-form-stock>=3.1.1'
 		'gambas3-gb-desktop-x11'
+		'gambas3-gb-web'
 		'gambas3-gb-net'
-		'mlocate')
+		'gambas3-gb-dbus'
+		'gambas3-gb-image'
+		'xbindkeys')
 
 _gitroot="https://github.com/kokoko3k/higgins.git"
 
