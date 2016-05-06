@@ -2,7 +2,7 @@
 
 pkgname=khard-git
 _gitname=khard
-pkgver=0.8.1.r0.g0d1179c
+pkgver=0.9.0.r1.g06d8700
 pkgrel=1
 pkgdesc="Console CardDAV client"
 license=("GPL3")
