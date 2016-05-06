@@ -17,9 +17,7 @@ _srcpath=$srcdir/$_pkgid
 
 build(){
 	cd $srcdir/$_pkgid
-	./configure --enable-shared \
-		--prefix=/usr \
-		--cxx-common="-D_GLIBCXX_USE_CXX11_ABI=0 -fPIC" 
+	./configure --prefix=/usr --cxx-common='-O3 -march=native -mtune=native' 
 	make ${MAKEFLAGS}
 }
 
@@ -29,7 +27,7 @@ package() {
 		install -D -m 755 $srcdir/$_pkgid/bin/$_bin $pkgdir/usr/bin/$_bin
 	done
 	install -D $srcdir/pythia.sh $pkgdir/etc/profile.d/pythia.sh
-	rsync -rlp $srcdir/$_pkgid/include/* $pkgdir/include/
+	rsync -rlp $srcdir/$_pkgid/include/* $pkgdir/usr/include/
 	rsync -rlp $srcdir/$_pkgid/lib/* $pkgdir/usr/lib/
 	rsync -rlp $srcdir/$_pkgid/share/* $pkgdir/usr/share/
 	rsync -rlp $srcdir/$_pkgid/examples $pkgdir/usr/share/Pythia8/
