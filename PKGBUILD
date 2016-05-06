@@ -3,7 +3,7 @@
 _version=2.2.1
 pkgname=swift-bin
 pkgver=${_version//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="The Swift programming language, the binary drops from the official website"
 arch=('x86_64')
 url="https://swift.org"
@@ -19,7 +19,7 @@ source=(
   "https://swift.org/builds/swift-${_version}-release/ubuntu1510/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu15.10.tar.gz"
   "https://swift.org/builds/swift-${_version}-release/ubuntu1510/swift-${_version}-RELEASE/swift-${_version}-RELEASE-ubuntu15.10.tar.gz.sig"
 )
-sha256sums=('9ed7f9e13d62ba30b3f74fecb7814b2e8892dfe7edb5451b16ca32d83268b668'
+sha256sums=('6b03743e4b5182c105f80573ea0ab9e469f91553fb23a59015349c6a03a0097c'
             'SKIP')
 
 package() {
