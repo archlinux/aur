@@ -3,7 +3,7 @@
 
 pkgname=kwave
 pkgver=0.9.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A sound editor for KDE."
 arch=('i686' 'x86_64')
 url='http://kwave.sourceforge.net'
@@ -27,7 +27,6 @@ optdepends=('libmad: MP3 plugin'
 conflicts=('kwave-git')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver-1.tar.bz2")
 sha256sums=('5698bc0c3970b50ad47de6c8f9f2fae3921b7403eec341d7117fa732a9f2fc1f')
-install=kwave.install
 
 prepare() {
   mkdir -p build
