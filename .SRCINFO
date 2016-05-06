@@ -1,0 +1,13 @@
+pkgbase = mythes-nb
+	pkgdesc = Norwegian thesaurus
+	pkgver = 2.2
+	pkgrel = 1
+	url = http://no.speling.org/
+	arch = any
+	license = GPL
+	depends = mythes
+	source = https://alioth.debian.org/frs/download.php/file/4168/no_NO-pack2-2.2.zip
+	md5sums = 256d6fe2ea5f1842090d7d05e90c5383
+
+pkgname = mythes-nb
+
