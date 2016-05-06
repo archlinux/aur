@@ -1,6 +1,6 @@
 pkgbase = alphaplot
 	pkgdesc = Application for Scientific Data Analysis and Visualization, fork of SciDavis / QtiPlot
-	pkgver = 0.01
+	pkgver = 0.01_alpha_prerelease_git
 	pkgrel = 1
 	install = alphaplot.install
 	arch = i686
@@ -12,7 +12,6 @@ pkgbase = alphaplot
 	depends = glu
 	depends = mesa
 	depends = muparser
-	depends = python2-pyqt4
 	depends = shared-mime-info
 	depends = qwt5
 	depends = qwtplot3d

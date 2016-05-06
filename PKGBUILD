@@ -1,7 +1,7 @@
 # Contributor: Arun Narayanankutty <n.arun.lifescience@gmail.com>
 
 pkgname=alphaplot
-pkgver=0.01
+pkgver=0.01_alpha_prerelease_git
 pkgrel=1
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of SciDavis / QtiPlot"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('GPL-2')
 
 # make dependancies
 makedepends=('boost' 'cmake')
-depends=('gsl' 'glu' 'mesa' 'muparser' 'python2-pyqt4' 'shared-mime-info'
+depends=('gsl' 'glu' 'mesa' 'muparser' 'shared-mime-info'
          'qwt5' 'qwtplot3d')
 
 # source download from git repo & prepare
@@ -31,7 +31,4 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}"
   make INSTALL_ROOT="${pkgdir}" DESTDIR="${pkgdir}" install
-
-  # remove liborigin files since it uses static library
-  rm -rf "${pkgdir}/usr/local"
 } 
