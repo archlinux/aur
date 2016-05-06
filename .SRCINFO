@@ -5,7 +5,7 @@ pkgbase = alpscore
 	url = http://alpscore.org
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	depends = cmake>=2.8.12
 	depends = boost>=1.54.0
 	depends = hdf5>=1.8
