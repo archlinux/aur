@@ -1,7 +1,7 @@
 # Maintainer: Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=ncregrid
 pkgver=1.4b
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool (written in FORTRAN-90) for data transfer of gridded 2- and 3-dimensional (spatial) geophysical/geochemical scalar fields between grids of different resolutions."
 arch=(i686 x86_64)
 url="http://www.pa.op.dlr.de/~PatrickJoeckel/ncregrid/index.html"
