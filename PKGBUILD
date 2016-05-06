@@ -11,8 +11,8 @@ depends=('xdg-utils')
 provides=('blackarch-menus')
 conflicts=('blackarch-menus')
 replaces=('blackarch-menus')
-source=('https://drive.google.com/uc?export=download&id=0B_PopwyKmOH9WTNLX2o3WUxHMnc')
-md5sums=('db27d8b60ab6a8ada62fae66b5836d45')
+source=('https://drive.google.com/uc?export=download&id=0B_PopwyKmOH9WUUxRG1uQ0NVZVE')
+md5sums=('84cdec2016c5b0f1958623295d9fa736')
 
 prepare() {
 	cd desktop_files
