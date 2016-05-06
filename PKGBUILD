@@ -2,7 +2,7 @@
 
 pkgname=arc-dark-xfce4-terminal
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Arc-Dark colorscheme for xfce4-terminal"
 arch=('any')
 depends=('xfce4-terminal')
