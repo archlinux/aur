@@ -3,7 +3,7 @@
 
 pkgname=lib32-slang
 pkgver=2.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc='S-Lang is a powerful interpreted language'
 arch=('x86_64')
 url='http://www.jedsoft.org/slang/'
@@ -25,7 +25,8 @@ build() {
     --prefix='/usr' \
     --libdir='/usr/lib32' \
     --sysconfdir='/etc' \
-    --with-onig='no'
+    --without-onig \
+    --without-png
   make
 }
 
