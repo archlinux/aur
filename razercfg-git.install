@@ -2,18 +2,14 @@ post_install() {
   ldconfig
   udevadm control --reload-rules
   systemctl daemon-reload
-  echo "Enabling razerd.service"
-  systemctl enable razerd.service
-  echo "Starting razerd.service"
-  systemctl start razerd.service
+  echo "You can start razerd.service with 'systemctl start razerd.service' or autostart it with 'systemctl enable razerd.service'."
 }
 
 post_upgrade() {
   ldconfig
   udevadm control --reload-rules
   systemctl daemon-reload
-  systemctl restart razerd.service
-  echo "Restarting razerd.service"
+  echo "Please restart razerd.service!"
 }
 
 pre_remove() {

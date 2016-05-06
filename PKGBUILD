@@ -2,7 +2,7 @@
 
 pkgname=razercfg-git
 pkgrel=1
-pkgver=0.33.r15.g95e1d71
+pkgver=0.33.r40.ge50dac1
 pkgver() {
   cd razercfg
   git describe --long | sed 's/^razercfg-//;s/\([^-]*-g\)/r\1/;s/-/./g'
