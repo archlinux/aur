@@ -6,7 +6,7 @@
 # Maintainer: Peter <craven@gmx.net>
 pkgname=larceny
 pkgver=0.98
-pkgrel=1
+pkgrel=2
 pkgdesc="Larceny is a simple and efficient implementation of the Scheme programming language."
 arch=(i686 x86_64)
 url="http://www.larcenists.org/index.html"
@@ -40,7 +40,7 @@ package() {
   install -D COPYRIGHT ${pkgdir}/usr/share/larceny/COPYRIGHT
   install -D README-FIRST.txt ${pkgdir}/usr/share/larceny/README-FIRST.txt
   install -D scheme-script ${pkgdir}/usr/share/larceny/scheme-script
-  cp -R lib ${pkgdir}/usr/share/larceny/
-  cp -R doc ${pkgdir}/usr/share/larceny/
+  cp --preserve=timestamps -R lib ${pkgdir}/usr/share/larceny/
+  cp --preserve=timestamps -R doc ${pkgdir}/usr/share/larceny/
 }
 
