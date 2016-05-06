@@ -2,7 +2,7 @@
 
 pkgname=accel-ppp-ipoe-dkms-git
 _pkgname=accel-ppp
-pkgver=r1179.b8b91d8
+pkgver=r1344.f5a97ed
 pkgrel=1
 pkgdesc='Accel-ppp ipoe kernel module sources'
 arch=('i686' 'x86_64')
