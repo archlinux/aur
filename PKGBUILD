@@ -2,7 +2,7 @@
 # Maintainer:  Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=nco
 pkgver=4.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="netCDF Operators allow users to manipulate and analyse data stored in NetCDF files"
 url="http://nco.sourceforge.net/"
 license=("GPL")
