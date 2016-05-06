@@ -1,14 +1,14 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 pkgname=rustup
 pkgver=0.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="The Rust toolchain installer"
 arch=('any')
 url="https://github.com/rust-lang-nursery/rustup.rs<Paste>"
 license=('MIT' 'Apache')
-makedepends=('cargo')
-provides=('rust' 'cargo' 'rust-nightly')
-conflicts=('rust' 'cargo' 'rust-nightly' 'multirust' 'multirust-git')
+makedepends=('cargo-nightly')
+provides=('rust' 'cargo' 'rust-nightly' 'cargo-nightly')
+conflicts=('rust' 'cargo' 'rust-nightly' 'rust-nightly-bin' 'multirust' 'multirust-git')
 replaces=('multirust' 'multirust-git')
 install='post.install'
 source=("${pkgname}-${pkgver}.tgz::https://github.com/rust-lang-nursery/rustup.rs/archive/${pkgver}.tar.gz")
