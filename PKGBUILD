@@ -4,33 +4,26 @@ pkgname=('peerunityd' 'peerunity')
 pkgbase=peerunity
 _gitname=Peerunity
 pkgdesc="Community made Peercoin client."
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/Peerunity/Peerunity"
 makedepends=('boost' 'qrencode' 'miniupnpc' 'qt4')
 depends=('boost-libs' 'openssl' 'miniupnpc' 'qt4')
 license=('MIT')
 source=("https://github.com/peerunity/peerunity/archive/v$pkgver.tar.gz"
-	"upnp-1.9.patch"
 	"peerunityd@.service"
 	"peerunityd-tor@.service"
 	"peerunity@.service"
 	"peerunity-tor@.service"
 	"peerunity.desktop"
 )
-sha256sums=('b76ed814f19d7c2474801e4846c267a44059e09224f63ffe8686923c3d2deb31'
-            '3060917f8e327002da842534265392a1849239ec5049f25c1ae8a81c3952e7b1'
+sha256sums=('353079447ef2f03cfa740a23307e9b07240da12c6bb067cf1bf42347c887d210'
             '8d25b07ca8e3a7d972d584600a0083fe52b811efc0af0f98eba39c22cd173336'
             '5765241c7a1db1742cb034cd220cc65221f0c041299b9783ecc609aaa8ac120f'
             '7f8d2021ed95edb09971246e1fa578064057d7e4134c99558901d0d1960e80d9'
             'a9919759f080d09d1604962affc9117f444903ecddd0544e42ff291a0d05000d'
             '250aa80695bbb95228286850856d1f1bac9336c98e884cba0b148c9b837d196c')
-
-prepare() {
-  cd "$srcdir/${_gitname}-$pkgver"
-  patch -p1 -i ../upnp-1.9.patch
-}
 
 build() {
   cd "$srcdir/${_gitname}-${pkgver}"
