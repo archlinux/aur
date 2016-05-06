@@ -8,9 +8,11 @@ pkgver=1.0.0.52
 pkgrel=3
 pkgdesc="A launcher for the Steam client from Valve Corporation"
 arch=("i686" "x86_64")
-url="http://steampowered.com/"
+url="http://store.steampowered.com/news/?feed=steam_client"
 license=('custom')
 install=steam.install
+# http://repo.steampowered.com/steam/pool/steam/s/steam/
+# files on http://repo.steampowered.com/steam/pool/steam/s/steam/ because I can't push in repo, some bug in AUR
 source=("http://repo.steampowered.com/${_realname}/pool/${_realname}/s/${_realname}/${_realname}_${pkgver}.tar.gz"
         'https://dl.devtrue.net/archlinux/steam/alsa_sdl_audiodriver.patch'
         'https://dl.devtrue.net/archlinux/steam/99-steam-controller-perms.rules')
