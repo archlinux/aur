@@ -9,7 +9,7 @@
 
 pkgname=radium
 pkgver=3.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
 url="http://users.notam02.no/~kjetism/radium/"
@@ -46,13 +46,18 @@ build() {
 package() {
     cd "${pkgname}-${pkgver}"
 
-    # Remove objects created during packages compilation.
-    rm -rf "bin/packages"
-
     mkdir -p "${pkgdir}/opt/radium"
     mkdir -p "${pkgdir}/usr/bin"
     cp -va "bin/." "${pkgdir}/opt/radium/"
     ln -s "/opt/radium/radium" "${pkgdir}/usr/bin/radium"
+
+    # Remove objects created during packages compilation.
+    rm -rf "${pkgdir}/opt/radium/packages"
+
+    # Restore s7 sources - needed to make the Scheme parts of Radium work
+    mkdir -p "${pkgdir}/opt/radium/packages"
+    tar -xvf "bin/packages/s7.tar.gz" -C "${pkgdir}/opt/radium/packages" \
+      --no-same-owner --no-same-permissions
 }
 
 # vim:set ts=4 sw=4 et:
