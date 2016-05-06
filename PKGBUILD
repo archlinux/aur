@@ -1,18 +1,29 @@
-# Maintainer: Santi Villalba <sdvillal@gmail.com>
+# Maintainer: Cedric Girard <girard.cedric@gmail.com>
+_pythonmod=guessit
 pkgname=python2-guessit
-pkgver=0.10.3
+pkgver=2.0.5
 pkgrel=1
-pkgdesc="A library for guessing information from video files."
-arch=(any)
-url="http://pypi.python.org/pypi/guessit"
-license=(LGPL)
-depends=(python2 python2-babelfish python2-stevedore)
-makedepends=(python2-distribute)
-conflicts=(${pkgname}-git)
-source=(http://pypi.python.org/packages/source/g/guessit/guessit-${pkgver}.tar.gz)
-md5sums=('11e658f9b0473d61d681579c03c196c3')
+pkgdesc="a library for guessing information from video filenames"
+arch=('any')
+url="http://pypi.python.org/pypi/${_pythonmod}"
+license=('GPL3')
+replaces=('python2-guessit-rc')
+depends=('python2' 'python2-rebulk>=0.7.1' 'python2-regex' 'python2-babelfish>=0.5.5' 'python2-dateutil<2.5.2')
+makedepends=('python2-setuptools')
+source=("https://pypi.io/packages/source/${_pythonmod:0:1}/${_pythonmod}/${_pythonmod}-$pkgver.tar.gz")
+md5sums=('6afe4e2e37cd66cde465d7df6fd50203')
+
+prepare() {
+  cd ${srcdir}/${_pythonmod}-$pkgver
+  find -type f -exec sed -i '1 s|python$|python2|' {} +
+}
+
+build() {
+  cd ${srcdir}/${_pythonmod}-$pkgver
+  python2 setup.py build
+}
 
 package() {
-  cd "${srcdir}/guessit-${pkgver}"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  cd ${srcdir}/${_pythonmod}-$pkgver
+  python2 setup.py install --root=${pkgdir}
 }
