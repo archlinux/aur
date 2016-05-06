@@ -3,7 +3,6 @@ pkgbase = accel-ppp-ipoe-dkms
 	pkgver = 1.10.2
 	pkgrel = 1
 	url = http://sourceforge.net/apps/trac/accel-ppp/
-	install = accel-ppp-ipoe-dkms.install
 	arch = i686
 	arch = x86_64
 	license = GPL

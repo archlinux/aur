@@ -18,8 +18,6 @@ source=(http://sourceforge.net/projects/$_pkgname/files/$_pkgname-$pkgver.tar.bz
 
 md5sums=('31f8408691b67e1504e31b6773d2d9d1'
          'e760913b2eef629cbad23925b5645367')
-    
-install=accel-ppp-ipoe-dkms.install
 
 package() {
     cd "$srcdir"
