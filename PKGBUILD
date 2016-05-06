@@ -3,8 +3,8 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 # Past maintainer: Fina Miñano <cicely@algofacil.info>
 # Contributor: Fina Miñano <cicely@algofacil.info>
 pkgname=mindi
-pkgver=3.0.1
-pkgrel=2
+pkgver=3.0.2
+pkgrel=1
 pkgdesc="Create bootable disks or CD image with your system files, to allow system maintenance"
 arch=('i686' 'x86_64')
 url="http://www.mondorescue.org/"
@@ -17,7 +17,7 @@ depends=('bzip2>=0.9' 'udev>=173' 'cdrkit' 'ncurses' 'binutils' 'gawk' 'dosfstoo
 
 source=("ftp://ftp.mondorescue.org/src/${pkgname}-${pkgver}.tar.gz"
 	"${pkgname}-${pkgver}.tar.gz.sig")
-sha512sums=('397f25484d38eb465bbb074d5e75cb0aff0c32ebad0ec28e002edfd915a8593c36f1ae4b7aa7038bf4d6d1c998e175fc78bea51b55886d0755dcecb3393326bf'
+sha512sums=('cce9c063d6bf41320da12fdb5385f32886fe5ddc6aa8f2ee3c7e0325ded15d8d04889d545671c473e75beb053d8e9b37a0742a04b172f507aee4e97b922ce841'
             'SKIP')
 
 package() {
