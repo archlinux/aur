@@ -1,14 +1,14 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-client-git
-pkgver=20160401
-pkgrel=2
+pkgver=20160426
+pkgrel=1
 pkgdesc="Bitcoin Client Protocol Library"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
-         'czmq-git'
-         'czmqpp-git'
+         'czmq'
+         'czmqpp'
          'icu'
          'libbitcoin'
          'libsecp256k1'
