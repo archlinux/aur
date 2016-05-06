@@ -12,6 +12,7 @@ conflicts=('')
 install='accel-ppp-ipoe-module-git.install'
 source=('accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code')
 md5sums=('SKIP')
+#_extramodules=extramodules-4.4-lts
 _extramodules=extramodules-4.5-ARCH
 _pkgname=accel-ppp
 
