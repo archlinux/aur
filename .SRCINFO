@@ -1,8 +1,8 @@
 pkgbase = xxdiff-hg
 	pkgdesc = A graphical browser for file and directory differences.
-	pkgver = 447.b193
+	pkgver = 469.ae1e
 	pkgrel = 1
-	url = http://furius.ca/xxdiff
+	url = https://bitbucket.org/blais/xxdiff
 	arch = x86_64
 	arch = i686
 	license = GPL2

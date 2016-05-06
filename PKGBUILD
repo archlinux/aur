@@ -1,14 +1,12 @@
 # Contributor: andreas_baumann <abamann@yahoo.com>
 # Maintainer: Daniel YC Lin <dlin.tw at gmail>
 
-# For update to newest source
-# hg clone --insecure https://hg.furius.ca/public/xxdiff
-
 pkgname=xxdiff-hg
-pkgver=448.c5de
+pkgver=469.ae1e
 pkgrel=1
 pkgdesc="A graphical browser for file and directory differences."
-url="http://furius.ca/xxdiff"
+#url="http://furius.ca/xxdiff"
+url="https://bitbucket.org/blais/xxdiff"
 license=('GPL2')
 depends=('qt4')
 #makedepends=('flex>=2.5.31' 'bison27' 'mercurial' 'python-docutils')
