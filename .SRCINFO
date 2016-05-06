@@ -1,6 +1,6 @@
 pkgbase = ncbi-vdb
 	pkgdesc = The SRA Toolkit and SDK from NCBI is a collection of tools and libraries for using data in the INSDC Sequence Read Archives.
-	pkgver = 2.5.8
+	pkgver = 2.6.2
 	pkgrel = 1
 	url = https://github.com/ncbi/ncbi-vdb
 	arch = x86_64
@@ -9,8 +9,10 @@ pkgbase = ncbi-vdb
 	depends = ngs
 	depends = hdf5
 	provides = ncbi-vdb
-	source = https://github.com/ncbi/ncbi-vdb/archive/2.5.8.tar.gz
-	sha256sums = 7a0ccc3434220e5288a016e4a9e24d4a1deae2a7d5de594fc94b2442172b3229
+	source = https://github.com/ncbi/ncbi-vdb/archive/2.6.2.tar.gz
+	source = ncbi-vdb-2.6.2.patch
+	sha256sums = c310edacd1a4f98a5cfab702f3eede98977ef64831f002fddd7728ed7e2034f4
+	sha256sums = 4062cc8018e26192eaaff6d27205a3854e223f2e9c75b2d935a283bf85e1f99c
 
 pkgname = ncbi-vdb
 

@@ -2,7 +2,7 @@
 # Maintainer: Aaron Baker <aa{last name}99{at}gmail{dt}org>
 
 pkgname=ncbi-vdb
-pkgver=2.5.8
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="The SRA Toolkit and SDK from NCBI is a collection of tools and libraries for using data in the INSDC Sequence Read Archives."
 arch=('x86_64')
@@ -10,11 +10,13 @@ url="https://github.com/ncbi/ncbi-vdb"
 depends=('libxml2' 'ngs' 'hdf5')
 provides=('ncbi-vdb')
 license=('custom:PublicDomain')
-source=("https://github.com/ncbi/ncbi-vdb/archive/$pkgver.tar.gz")
-sha256sums=('7a0ccc3434220e5288a016e4a9e24d4a1deae2a7d5de594fc94b2442172b3229')
+source=("https://github.com/ncbi/ncbi-vdb/archive/$pkgver.tar.gz" "$pkgname-$pkgver.patch")
+sha256sums=('c310edacd1a4f98a5cfab702f3eede98977ef64831f002fddd7728ed7e2034f4' '4062cc8018e26192eaaff6d27205a3854e223f2e9c75b2d935a283bf85e1f99c')
 
 prepare(){
   cd "${pkgname}-${pkgver}"
+  # stop NCBI root checks for great good
+  patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
 }
 
 build(){
