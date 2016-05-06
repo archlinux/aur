@@ -9,6 +9,7 @@ arch=('i686' 'x86_64' 'armv7h')
 url='http://code.google.com/p/wsgi-intercept/'
 license=('MIT')
 depends=('python')
+makedepends=('python-setuptools')
 source=("http://pypi.python.org/packages/source/w/wsgi_intercept/wsgi_intercept-$pkgver.tar.gz")
 md5sums=('791abe4c1c7200dc5e205163acc9d110')
 
