@@ -3,7 +3,7 @@
 pkgname=alphaplot
 pkgver=0.01
 pkgrel=1
-pkgdesc="Application for Scientific Data Analysis and Visualization, fork of SciDavis"
+pkgdesc="Application for Scientific Data Analysis and Visualization, fork of SciDavis / QtiPlot"
 arch=('i686' 'x86_64')
 license=('GPL-2')
 
