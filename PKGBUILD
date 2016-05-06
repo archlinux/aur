@@ -2,19 +2,19 @@
 # Contributor: Nick Østergaard <oe.nick at gmail dot com>
 
 pkgname=synology-assistant
-pkgver=5566
-_sver=5.2
-pkgrel=3
+pkgver=7319
+_sver=6.0
+pkgrel=1
 pkgdesc="It helps you set up and install DSM on your DiskStation"
 arch=('i686' 'x86_64')
 url="https://www.synology.com/en-global/releaseNote/Assistant"
 license=('unknown')
 install=synology-assistant.install
 
-source_x86_64=(http://global.download.synology.com/download/Tools/Assistant/${_sver}-${pkgver}/Ubuntu/x86_64/SynologyAssistant-${_sver}-${pkgver}_amd64.deb)
-md5sums_i686=('db0a70fe2bf14840229d88b71b6c4994')
-md5sums_x86_64=('05849dc21a46e39e879f24c549004533')
-source_i686=(http://global.download.synology.com/download/Tools/Assistant/${_sver}-${pkgver}/Ubuntu/i686/SynologyAssistant-${_sver}-${pkgver}_i386.deb)
+source_x86_64=(https://global.download.synology.com/download/Tools/Assistant/${_sver}-${pkgver}/Ubuntu/x86_64/synology-assistant_${_sver}-${pkgver}_amd64.deb)
+md5sums_i686=('044d9b7ed636699e3d7bd1e389c847c0')
+md5sums_x86_64=('af0cfd4e7adabda0d30a4e9243a8c872')
+source_i686=(https://global.download.synology.com/download/Tools/Assistant/${_sver}-${pkgver}/Ubuntu/i686/synology-assistant_${_sver}-${pkgver}_i386.deb)
 
 prepare() {
     cd "${srcdir}"
