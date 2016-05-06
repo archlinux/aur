@@ -6,7 +6,7 @@
 # Maintainer: Peter <craven@gmx.net>
 pkgname=ypsilon-scheme
 pkgver=0.9.6.update3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="The implementation of R6RS Scheme Programming Language for real-time applications."
 arch=(x86_64 i686)
@@ -31,7 +31,9 @@ validpgpkeys=()
 
 build() {
 	cd "ypsilon-$pkgver"
-	make
+	sed -i 's|/usr/local|/usr|' Makefile
+	sed -i 's|/usr/local/share/ypsilon|/usr/share/ypsilon|' src/core.h
+	make PREFIX=/usr
 }
 
 package() {

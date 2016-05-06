@@ -1,7 +1,7 @@
 pkgbase = ypsilon-scheme
 	pkgdesc = The implementation of R6RS Scheme Programming Language for real-time applications.
 	pkgver = 0.9.6.update3
-	pkgrel = 1
+	pkgrel = 2
 	arch = x86_64
 	arch = i686
 	license = unknown
