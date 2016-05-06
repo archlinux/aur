@@ -1,18 +1,15 @@
 # Maintainer: Philip Abernethy <chais.z3r0@gmail.com>
 
 pkgname=libfmod
-pkgver=4.44.59
+pkgver=4.44.61
 pkgrel=1
 pkgdesc="Libraries of the fmodex audio engine"
 arch=('i686' 'x86_64')
 url="http://www.fmod.org/"
 license=('custom')
 conflicts=('fmodex')
-
-DLAGENTS+=("fmod::/usr/bin/echo Could not find %u. Please register/log in at http://www.fmod.org/download-previous-products/ and download it to \"$(pwd)\"")
-
-source=("fmod://fmodapi${pkgver//./}linux.tar.gz")
-sha512sums=('64e28a11e2654615e96790d0926430f233726607c2f74b7223d10e5616c9af6d82c161c83410c1a1658b02c24be8eed5003ff699d5c3ab75dd154a45ef66940c')
+source=("http://www.fmod.org/download/fmodex/api/Linux/fmodapi${pkgver//./}linux.tar.gz")
+sha512sums=('dfbb588b670c5f01fac9a263a55687736c711a2148cb24cb5fba2d4b26e7a6b6c046cdeffbfeb8e67aa1e7ea1a29a13c074a67dd3eecf4ed5557992f73ee42d9')
 
 package() {
 	if [ $CARCH == 'i686' ]; then
