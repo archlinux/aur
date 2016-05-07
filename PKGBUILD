@@ -4,7 +4,7 @@
 
 pkgname=global
 pkgver=6.5.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A source code tag system"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/global/"
@@ -13,7 +13,6 @@ depends=('libltdl' 'bash' 'perl')
 optdepends=('idutils' 'ctags' 'python-pygments')
 makedepends=('python')
 options=(!emptydirs !libtool)
-install=global.install
 source=(http://tamacom.com/global/${pkgname}-${pkgver}.tar.gz)
 md5sums=('a6693598b4cd0890c648aa2cbfa92fe7')
 sha256sums=('af16e0a686a46f759156cb685e25f345680703f43f93af1ce8d834caaf541da6')
