@@ -7,8 +7,6 @@ makedepends=('cmake' 'libuecc>=3')
 depends=('glibc')
 url="https://github.com/tcatm/ecdsautils"
 license=('BSD')
-conflicts=("${_pkgname}")
-provides=("${_pkgname}=${_pkgver}")
 
 source=(https://github.com/tcatm/ecdsautils/archive/v${pkgver}.tar.gz)
 sha256sums=('a828417c985ccfc623bb613e92ccc8af6c6f24a5bcab8b112b90c033a816204f')
