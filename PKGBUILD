@@ -2,7 +2,7 @@
 
 pkgname=python-osc
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Open Sound Control server and client implementations in pure Python'
 arch=('any')
 url='https://github.com/attwad/python-osc'
@@ -20,8 +20,8 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --prefix=/usr --root="${pkgdir}/"
-  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
   install -d "${pkgdir}/usr/share/doc/${pkgname}/scripts"
   install -d "${pkgdir}/usr/share/doc/${pkgname}/examples"
   install -Dm644 scripts/*.py "${pkgdir}/usr/share/doc/${pkgname}/scripts/"
