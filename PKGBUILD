@@ -3,7 +3,7 @@
 _pkgname=doctl
 pkgname=doctl-bin
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line tool for DigitalOcean services"
 url="https://github.com/digitalocean/doctl"
 license=('Apache')
