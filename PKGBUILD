@@ -17,7 +17,7 @@ _srcpath=$srcdir/$_pkgid
 
 build(){
 	cd $srcdir/$_pkgid
-	./configure --prefix=/usr --cxx-common='-O3 -march=native -mtune=native' 
+	./configure --prefix=/usr --cxx-common='-O3 -march=native' 
 	make ${MAKEFLAGS}
 }
 
