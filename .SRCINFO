@@ -26,7 +26,7 @@ pkgbase = freenet
 	source = git+https://github.com/freenet/fred.git#tag=build01472
 	source = git+https://github.com/freenet/contrib.git#tag=v50
 	source = git+https://github.com/freenet/plugin-UPnP.git#tag=10007
-	source = git+https://github.com/freenet/plugin-KeyUtils.git#tag=v5025
+	source = git+https://github.com/freenet/plugin-KeyUtils.git#tag=v5026
 	source = git+https://github.com/freenet/plugin-WebOfTrust.git#tag=build0018
 	source = https://downloads.freenetproject.org/alpha/opennet/seednodes.fref
 	source = IpToCountry.dat::http://software77.net/geo-ip/?DL=4
@@ -56,7 +56,7 @@ pkgbase = freenet
 	sha256sums = 16924be3c8f1322b659f3ff08060a43f45f2e8de6f95af28d86fe9876e79008d
 	sha256sums = d0ae14598f9c528d2ab7bb8ed00e785a5440f692712cd362d69328aba25efb57
 	sha256sums = 96effcca2581c1ab42a4828c770b48d54852edf9e71cefc9ed2ffd6590571ad1
-	sha256sums = f1ecddb5395892e0b2e6282bc3a1437d06afa52758057850ecccfa0a79c45c5d
+	sha256sums = 1966a96a0733cb19b8172f03b3582141fea8f82abcc4b79800ba0a92a5c1122d
 	sha256sums = 9ec758801a9864ae10caf851ee60ed22c3ef44428e77689c203d9b890921a6d2
 	sha256sums = 236adfd42be0a7a74f2dec1356e517442b2ddcbb5d44cb0dab3671b6fddfca79
 	sha256sums = 865c1f259d9c544861cc12b4ea64ad35ec6388c1392b3e5247eaed0f316e42b7
