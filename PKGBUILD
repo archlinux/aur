@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail>
 # Contributor: Mikkel Oscar Lyderik <mikkeloscar at gmail dot com>
 pkgname=git-lfs
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="An open source Git extension for versioning large files"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('go' 'ruby-ronn')
 depends=('git')
 install=${pkgname}.install
 source=("https://github.com/github/$pkgname/archive/v$pkgver.tar.gz")
-sha1sums=('24c90274f7287949ada49fd95e8234ec5a111c83')
+sha1sums=('ac763f547bf2856745505a14699e8835d6fb6aea')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -38,5 +38,4 @@ package() {
   install -d "$pkgdir"/usr/share/man/man1
   install -Dm644 docs/man/*.1 "$pkgdir"/usr/share/man/man1
 }
-
 # vim:set ts=2 sw=2 et:
