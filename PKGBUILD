@@ -10,7 +10,7 @@
 
 _pkgname=socat2
 pkgname=${_pkgname}-git
-pkgver=2.0.0.b6.120.g2dee720
+pkgver=2.0.0.b9.0.g7beb9b3
 pkgrel=1
 pkgdesc='Multipurpose relay (development version)'
 url='http://www.dest-unreach.org/socat/socat-version2.html'
@@ -18,15 +18,25 @@ license=('GPL2')
 arch=('i686' 'x86_64')
 depends=('readline' 'openssl')
 makedepends=('yodl')
-source=("$_pkgname"::"git+http://repo.or.cz/socat.git#branch=socat2")
-sha256sums=('SKIP')
-provides=('socat')
-conflicts=('socat')
+source=(
+    "$_pkgname"::"git+http://repo.or.cz/socat.git#branch=socat2"
+    sslv3.patch
+)
+sha256sums=(
+    'SKIP'
+    '3744575806f489ad0d3673e6a397badd4b61ecbd6e474ece67b347e13c5076b5'
+)
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
 
     git describe --long --tags | sed 's/^tag-//;s/-/./g'
+}
+
+prepare() {
+    cd "${srcdir}/${_pkgname}"
+
+    patch -Np1 -i ../sslv3.patch
 }
 
 build() {
@@ -46,4 +56,11 @@ package() {
     cd "${srcdir}/${_pkgname}"
 
     make DESTDIR="${pkgdir}" install
+
+    # Make it co-installable with socat
+    find "${pkgdir}/usr/bin/" -type f -executable -exec mv {} {}2 \;
+    find "${pkgdir}/usr/share/man" -type f | while read manfile
+    do
+        mv $manfile ${manfile%.*}2.${manfile##*.}
+    done
 }
