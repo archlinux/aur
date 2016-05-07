@@ -1,9 +1,8 @@
 pkgbase = thunar-split
 	pkgdesc = Modern file manager for Xfce - patched to include split pane and upstream bug fixes
 	pkgver = 1.6.10
-	pkgrel = 1
+	pkgrel = 2
 	url = http://thunar.xfce.org
-	install = thunar.install
 	arch = i686
 	arch = x86_64
 	groups = xfce4

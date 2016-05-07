@@ -2,7 +2,7 @@
 
 pkgname=thunar-split
 pkgver=1.6.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern file manager for Xfce - patched to include split pane and upstream bug fixes"
 arch=(i686 x86_64)
 url="http://thunar.xfce.org"
@@ -21,7 +21,6 @@ optdepends=('gvfs: for trash support, mounting with udisk and remote filesystems
             'thunar-archive-plugin: create and deflate archives'
             'thunar-media-tags-plugin: view/edit id3/ogg tags')
 options=('!libtool')
-install=thunar.install
 source=(http://archive.xfce.org/src/xfce/thunar/1.6/Thunar-${pkgver}.tar.bz2
         split_pane.patch
         20150702-Fix-crashes-when-reloading.patch
