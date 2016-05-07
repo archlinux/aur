@@ -1,7 +1,7 @@
 pkgbase = accel-ppp-git
 	pkgdesc = High performance PPTP/L2TP/PPPoE/IPoE server
 	pkgver = r1344.f5a97ed
-	pkgrel = 1
+	pkgrel = 2
 	url = http://sourceforge.net/apps/trac/accel-ppp/
 	install = accel-ppp.install
 	arch = i686
@@ -15,7 +15,8 @@ pkgbase = accel-ppp-git
 	depends = openssl>=1.0.0
 	depends = pcre>=8.30
 	depends = libnl
-	optdepends = accel-ppp-ipoe-module-git
+	optdepends = accel-ppp-ipoe-dkms-git
+	optdepends = accel-ppp-vlanmon-dkms-git
 	optdepends = logrotate
 	conflicts = accel-ppp
 	options = docs
