@@ -4,20 +4,19 @@
 
 pkgname=gnumeric-minimal
 _pkgname=gnumeric
-pkgver=1.12.28
+pkgver=1.12.29
 pkgrel=1
 pkgdesc="A GNOME-less spreadsheet program"
 arch=('i686' 'x86_64')
 url="http://www.gnome.org/projects/gnumeric/"
 license=('GPL')
-depends=("goffice>=0.10.28" 'desktop-file-utils')
+depends=("goffice>=0.10.28")
 makedepends=('intltool')
-install=gnumeric-minimal.install
 conflicts=('gnumeric')
 provides=('gnumeric')
 options=('libtool')
 source=(http://ftp.gnome.org/pub/gnome/sources/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.xz revert-warnings.patch::https://projects.archlinux.de/svntogit/packages.git/plain/trunk/revert-warnings.patch?h=packages/gnumeric)
-sha256sums=('02d4ad13389e51f24638a0a59dbfb870ec8120efc453b2dca8804167f2b94dbb'
+sha256sums=('5a35c56679027e5d0e61f67358c2feee458dc0f62494e32281c9a1a579ba7fb5'
             'bcafca016b809000c2a5bf911e2e3dfa4de28f9e541d9964574cac5c7ce09e53')
 options=('!makeflags')
 
