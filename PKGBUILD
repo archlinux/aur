@@ -3,17 +3,17 @@
 
 _plugin_name=feedly-notifier
 pkgname=firefox-extension-${_plugin_name}
-pkgver=2.10.12
-pkgrel=2
+pkgver=2.11.1
+pkgrel=1
 pkgdesc="Firefox extension for reading news from rss aggregator Feedly."
 license=('MPL 2.0')
 arch=('any') 
 url="https://addons.mozilla.org/firefox/addon/${_plugin_name}/"
 depends=("firefox")
 makedepends=('unzip')
-source=("https://addons.cdn.mozilla.net/user-media/addons/456474/${_plugin_name/-/_}-${pkgver}-fx.xpi")
+source=(https://addons.cdn.mozilla.net/user-media/addons/456474/${_plugin_name/-/_}-${pkgver}-fx.xpi)
+sha256sums=('23e3d5846c6f7210a87e70407a2f0fa23db6da47b81cdde714ba0e7e1ec2fa84')
 noextract=("${_plugin_name/-/_}-${pkgver}-fx.xpi")
-sha256sums=('1d955cb6a82703dcd7204a8c977f0a20be168d4c0edafa900d6180c2d6d69609')
 
 prepare(){
     unzip -qqo ${_plugin_name/-/_}-${pkgver}-fx.xpi
