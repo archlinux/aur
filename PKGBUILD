@@ -2,9 +2,10 @@
 
 pkgname=libsquish
 pkgver=1.13
-pkgrel=1
+pkgrel=2
 pkgdesc='DXT compression library'
 depends=('gcc-libs')
+makedepends=('cmake')
 arch=('i686' 'x86_64')
 url='http://sourceforge.net/projects/libsquish/'
 license=('MIT')
