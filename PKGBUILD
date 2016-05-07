@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url="http://kxstudio.sf.net/cadence"
 license=('GPL2')
 depends=('python-pyqt4' 'python-dbus' 'jack')
+makedepends=('git')
 optdepends=(
     'a2jmidid: alsa-midi bridge'
     'pulseaudio-jack: pulseaudio bridge'
