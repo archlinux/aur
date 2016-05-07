@@ -6,8 +6,8 @@ pkgrel=2
 pkgdesc="OpenSSL certificate manager with OpenVPN support"
 arch=('any')
 url="https://www.secure-computing.net"
-license=('GPL')
-depends=('perl')
+license=('BSD3CLAUSE')
+depends=('perl' 'openssl')
 source=("http://distcache.FreeBSD.org/ports-distfiles/$pkgname-$pkgver.tar.xz")
 sha256sums=('ebe6667c1beb79c7a12400e8a19bb4ec9f78ea7f72e0363d1eb10ed7f4b357ba')
 
