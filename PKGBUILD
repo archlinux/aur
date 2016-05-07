@@ -16,15 +16,11 @@ source=("https://github.com/skilion/onedrive/archive/v$pkgver.tar.gz")
 sha256sums=('c54fad2b452a6a84e009f8743efecdaaca37abcbfe046fc830d7e101cac3594d')
  
 prepare() {
-  cd $pkgname-$pkgver
-  
-  sed -i 's|/usr/local|/usr|g' onedrive.service
+  sed -i 's|/usr/local|/usr|g' $pkgname-$pkgver/onedrive.service
 }
 
 build() {
-  cd $pkgname-$pkgver
-
-  make
+  make -C $pkgname-$pkgver
 }
  
 package() {
