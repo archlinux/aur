@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=imagemagick-full-doc-git
-pkgver=7.0.1.1.r10810.g5e3914e
+pkgver=7.0.1.2.r10838.ga58ba05
 pkgrel=1
 pkgdesc="The ImageMagick documentation (utilities manuals and libraries API)"
 arch=('i686' 'x86_64')
