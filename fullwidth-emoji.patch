@@ -50,3 +50,18 @@
  }
  
  /* Cursor left N columns. */
+diff --git i/src/app.vala w/src/app.vala
+index 8104964..cc871d8 100644
+--- i/src/app.vala
++++ w/src/app.vala
+@@ -214,8 +214,8 @@ class Window : Gtk.ApplicationWindow
+   private uint launch_idle_id;
+ 
+   private string[] builtin_dingus = {
+-    "(((gopher|news|telnet|nntp|file|http|ftp|https)://)|(www|ftp)[-A-Za-z0-9]*\\.)[-A-Za-z0-9\\.]+(:[0-9]*)?",
+-    "(((gopher|news|telnet|nntp|file|http|ftp|https)://)|(www|ftp)[-A-Za-z0-9]*\\.)[-A-Za-z0-9\\.]+(:[0-9]*)?/[-A-Za-z0-9_\\$\\.\\+\\!\\*\\(\\),;:@&=\\?/~\\#\\%]*[^]'\\.}>\\) ,\\\"]"
++    "((((filesystem|gopher|news|telnet|nntp|file|http|ftp|https):)+//)|(www|ftp)[-A-Za-z0-9]*\\.)[-A-Za-z0-9\\.]+(:[0-9]*)?",
++    "((((filesystem|gopher|news|telnet|nntp|file|http|ftp|https):)+//)|(www|ftp)[-A-Za-z0-9]*\\.)[-A-Za-z0-9\\.]+(:[0-9]*)?/[-A-Za-z0-9_\\$\\.\\+\\!\\*\\(\\),;:@&=\\?/~\\#\\%]*[^]'\\.}>\\) ,\\\"]"
+   };
+ 
+   private const GLib.ActionEntry[] action_entries = {
