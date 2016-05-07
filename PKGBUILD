@@ -4,7 +4,7 @@
 _npmname=tldr
 _pkgname=nodejs-tldr
 pkgname=nodejs-tldr-git
-pkgver=r1596.5841b53
+pkgver=r1629.89ad0da
 pkgrel=1
 pkgdesc="Simplified and community-driven man pages (git version)"
 arch=('any')
