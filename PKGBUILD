@@ -1,7 +1,7 @@
 # Maintainer: crystaly <crystaly [ at ] posteo [ dot ] de>
 pkgname=spotify-connect-web
 pkgver=r55.979f510
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple Web client for accessing Spotify connect api (Raspberry Pi 2)"
 arch=('any')
 url="https://github.com/chukysoria/spotify-connect-web"
@@ -35,6 +35,9 @@ prepare() {
 
 	# fix volmin/volmax parameters not being applied
 	sed -i 's|.mixer_load()|.mixer_load(self.args.mixer, self.args.volmin, self.args.volmax)|g' connect_console.py
+
+	# fix missing sleep import
+	sed -i '/^from gevent/i from gevent import sleep' main.py 
 
 	# replace python by python2
 	sed -i 's|^#!/usr/bin/env python$|#!/usr/bin/env python2|g' *.py
