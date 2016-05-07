@@ -1,0 +1,14 @@
+pkgbase = nyancat-console-git
+	pkgdesc = lightweight port of 'nyancat lost in space'
+	pkgver = 0.0.8.224.0be8282
+	pkgrel = 1
+	url = https://github.com/fanglingsu/nyancat-console/
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = ncurses
+	source = nyancat-console-git::git+https://github.com/fanglingsu/nyancat-console
+	sha256sums = SKIP
+
+pkgname = nyancat-console-git
+
