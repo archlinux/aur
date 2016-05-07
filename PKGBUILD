@@ -32,6 +32,11 @@ prepare() {
   find . -type f -print0 | xargs -0 sed -i 's#/usr/bin/env python#/usr/bin/env python2#g'
 }
 
+build() {
+  cd "$srcdir/$pkgname/src/bitmsghash"
+  make
+}
+
 package() {
   cd "$pkgname"
 
