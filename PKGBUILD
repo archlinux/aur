@@ -2,7 +2,7 @@
 
 pkgname=electronic-wechat-git
 _pkgname=electronic-wechat
-pkgver=1.2.0.0.g275edce
+pkgver=1.2.0.13.gf7f116c
 pkgrel=1
 pkgdesc="An Electron application for WeChat"
 arch=('any')
@@ -37,16 +37,24 @@ EOF
 
     cat > "${_pkgname}.sh" << EOF
 #!/usr/bin/env sh
-cd /usr/share/${_pkgname}/
-electron ./src/main.js \$*
+electron /usr/share/${_pkgname}/ \$*
 EOF
+}
+
+build() {
+    cd "${_pkgname}"
+    sed -i 's/^.*"electron-prebuilt".*$//;s/^.*"electron-packager".*$//' package.json
+    npm install --production
 }
 
 package() {
     cd "${_pkgname}"
-    find ./{src,assets} -type f -exec install -Dm644 {} \
+
+    find ./{'assets','node_modules','src','package.json'} -type f -exec install -Dm644 {} \
         "${pkgdir}/usr/share/${_pkgname}/{}" \;
+
     install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+
     install -Dm644 "${srcdir}/${_desktop}" "${pkgdir}/usr/share/applications/${_desktop}"
     install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 }
