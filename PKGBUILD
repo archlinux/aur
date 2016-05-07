@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-ess-git
-pkgver=15.09.354.g22d1a7f
+pkgver=16.04.358.ga54e3ee
 pkgrel=1
 pkgdesc="Emacs Speaks Statistics: A Universal Interface for \
  Statistical Analysis - git-version"
@@ -19,7 +19,7 @@ _gitname="emacs-ess"
 
 pkgver() {
   cd "$_gitname"
-  git describe --tags | tr '-' '.' |cut -c2-
+  printf "16.04%s" $(git describe --tags | tr '-' '.' |cut -c7-)
 }
 
 prepare() {
