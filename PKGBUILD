@@ -3,7 +3,7 @@
 
 pkgname=freedoko
 pkgver=0.7.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Free version of the german card game Doppelkopf"
 arch=('i686' 'x86_64')
 url="http://free-doko.sourceforge.net/en/FreeDoko.html"
@@ -28,10 +28,6 @@ prepare() {
 
 build() {
   cd "$srcdir/FreeDoko_$pkgver"
-
-  # glibmm 2.46 uses C++11 features
-  CXXFLAGS+=' -std=c++11'
-
   make compile
   make documentation
 }
