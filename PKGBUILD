@@ -2,7 +2,7 @@
 # Based on UMS PKGBUILD
 
 pkgname=umsjava7
-pkgver=6.2.2
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="Universal Media Server: a DLNA-compliant UPnP Media Server. Build based on Java 7."
 arch=('any')
@@ -17,12 +17,12 @@ optdepends=('vlc: Internet video/audio support'
 backup=(opt/$pkgname/UMS.conf \
         opt/$pkgname/WEB.conf)
 install=umsjava7.install
-source=("http://downloads.sourceforge.net/project/unimediaserver/Official%20Releases/Linux/UMS-$pkgver-Java7.tgz"
+source=("http://app.oldfoss.com:81/download/Universal-Media-Server/1462601149UMS-6.3.0-Java7.tgz"
         "$pkgname.desktop"
         "$pkgname.service"
         "$pkgname.install"
         'ums')
-sha512sums=('32760f51ffd035b767da6a82f27c0c6924e212c6c86f3da8202d5747e16a10507f54d67b71e7d36bf00da21fca6bbc2e4608e9262e82035ee639dde4abc6b1ac'
+sha512sums=('98171bf7e642ba45a111fa8e2b5af1031fd1b2b112b5d8ce3c774aa9aea7015839e67d422acd4d40d0acf3f54a357e068c105aa0e6f30d8ac95fd141227780a9'
             '580080b4d8b831803f2c2dfe46bb69996374fb3659b0cd495563ac09b5fdd09634cf20767fe0caa08d5dfbb70767683e00222a2a829b558cc17ea806c8ef6090'
             '00e57bd860b34068f76a8deb10676e58e935f325b136c89979e108f60f0ed0f1cea0c04925bb57af47db7a5bbc69b13c9568c62b0add99ffbb1654e93aa48233'
             'f995d6fbebf08e88bf2e1675c626e7be88c27f615891f0b4108375b2c8a57881c238b7109f2c0d48ec22105670f33c408ce48ecb9a17cc8db326ffd1a3419803'
