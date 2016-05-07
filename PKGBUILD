@@ -5,7 +5,7 @@
 # Contributor: karol_007 <karol.blazewicz@gmail.com>
 
 pkgname=zabbix-proxy-sqlite
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Software for monitoring of your applications, network and servers."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -58,7 +58,7 @@ package() {
 	install -D -m 0644 $srcdir/zabbix-proxy.sysusers $pkgdir/usr/lib/sysusers.d/zabbix-proxy.conf
 }
 
-sha512sums=('ee24883e37335bfe274a20fe43bd8ff1d1814e240177d7486363691374f8a07ef12506724ea9422efb11eaa8b2f49f2639dec774db160ffa00cb08a60a3fac78'
+sha512sums=('eca4fe8e5292680d965b7b7cea57c980941c413711c53b1d395062f95e71d1f57e976a0a8619fa00cdaacb193ab29c9aba6d13bb539a856c58293cc1768b5711'
             '78a0ff34910815eff8af5f2d66a650ae2e265c9a42e81b16bdf916f676861546e3fb915fe8b0841e95d674ff0bca3cbdb0ff6d00472448025110e215efa9a1a4'
             '6e4e8f16e467afe472e958a3ca4246fd499d56c67544ee5b21fdf94cee698534f9bc3caedc49a207f652500e25d4251d6b708e098fa82858aeb385ab4fbba314'
             'fa42d06ebf0ada6e80efa6479034afedf6ff6d2e8e6cb9e4bb34c682f438eb37c97a25eb76bf19576944781ff057603f851a0333109de065dec6feadb916228d'
