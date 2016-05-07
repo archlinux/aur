@@ -1,6 +1,6 @@
 pkgbase = respeqt-git
 	pkgdesc = RespeQt emulates Atari SIO peripherals when connected to an Atari 8-bit computer with an SIO2PC cable.
-	pkgver = r2.r9.gcdde594
+	pkgver = r3.r9.geceb20c
 	pkgrel = 2
 	url = https://github.com/jzatarski/RespeQt
 	arch = x86_64
