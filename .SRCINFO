@@ -6,7 +6,8 @@ pkgbase = mkws
 	arch = i686
 	arch = x86_64
 	license = GPL
-	depends = python3
+	depends = python
+	depends = python-docopt
 	source = mkws::git+https://github.com/briansteffens/mkws.git
 	md5sums = SKIP
 
