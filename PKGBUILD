@@ -3,13 +3,12 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=scribus-svn
-pkgver=21293
+pkgver=21297
 pkgrel=1
 pkgdesc="A desktop publishing program - Version from SVN"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
 url="http://www.scribus.net"
-install=${pkgname}.install
 depends=('hunspell' 'podofo' 'python2' 'libcups' 'graphicsmagick'
 	 'shared-mime-info' 'poppler' 'libcdr' 'desktop-file-utils'
 	 'libvisio' 'libpagemaker' 'qt5-declarative' 'libmspub' 'openscenegraph')
