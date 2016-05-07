@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 pkgname=context-minimals-git
-pkgver=2016.03.04
+pkgver=2016.04.10
 pkgrel=1
 pkgdesc="A standalone ConTeXt distribution"
 url="http://www.contextgarden.net"
@@ -52,7 +52,7 @@ pkgver() {
   grep -e '\\edef\\contextversion' tex/texmf-context/tex/context/base/mkiv/context.mkiv | sed -n 's/.*{\(.*\) .*}/\1/p'
 }
 
-build() {
+prepare() {
  msg "Downloading the latest scripts first"
  rsync -rlpt $_rsyncurl $srcdir || return 1
  msg "Initializing download directory"
