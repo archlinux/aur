@@ -1,28 +1,32 @@
-# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Maintainer: Sebastian Lau <lauseb644 _at_ gmail _dot_ com>
+# Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=nemo-media-columns
-_ver=2.6.0+rafaela
-pkgver=2.6.0
+_mintrel=betsy
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Nemo extension to display music/EXIF and PDF metadata info"
 arch=(any)
 url="http://packages.linuxmint.com/pool/main/n/nemo-media-columns/"
 license=(GPL)
-depends=(mutagen nemo-python python2-exiv2 python2-pillow python2-pypdf)
-source=("http://packages.linuxmint.com/pool/main/n/nemo-media-columns/nemo-media-columns_${_ver}.tar.gz"
+depends=('nemo>=3.0' 'nemo<3.1' 'mutagen' 'nemo-python' 'python2-exiv2' 'python2-pillow' 'python2-pypdf')
+source=("http://packages.linuxmint.com/pool/main/n/${pkgname}/${pkgname}_${pkgver}+${_mintrel}.tar.xz"
         fixes.patch)
-sha512sums=('064305dedd94b8c53c993a0ce6944925e40d70fedb45d7571a7b85537de21c856bafd987db3aa4cd8c78f2b078d4702b72af76da488ddfa5c884beb4f952046a'
-            '0f352129c727a74be9bdae32c86ea32a801449bcdeb86376cc10a53f9974441eb788f23156d58d97e2066eff2255aeb9c4ddd9c7ffd8430c4b957c57aa4cda2d')
+md5sums=('316e8d7b14fade3e227c5a693f3837b2'
+         '967e13e185e0a082ce5dd258cd0d9916')
 
 prepare() {
-  cd "${pkgname}-${_ver}"
+  cd "${pkgname}-${pkgver}+${_mintrel}"
+
+  # Python2 fix
+#  find -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
   sed -i "s|^\(#!.*python\)$|\12|" nemo-media-columns.py
   patch -p1 -i ../fixes.patch
 }
 
 package() {
-  cd "${pkgname}-${_ver}"
+  cd "${pkgname}-${pkgver}+${_mintrel}"
+
   install -dm755 "${pkgdir}/usr/share/nemo-python/extensions/"
-  install -m644 nemo-media-columns.py \
-                "${pkgdir}/usr/share/nemo-python/extensions/"
+  install -m644 nemo-media-columns.py "${pkgdir}/usr/share/nemo-python/extensions/"
 }
