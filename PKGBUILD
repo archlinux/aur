@@ -1,7 +1,7 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 pkgname=mysql-utilities-beta
 _pkgname=mysql-utilities
-pkgver=1.6.2
+pkgver=1.6.3
 pkgrel=1
 pkgdesc="A collection of command-line utilities that are used for maintaining and administering MySQL servers"
 arch=('any')
@@ -17,7 +17,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=(http://cdn.mysql.com/Downloads/MySQLGUITools/${_pkgname}-${pkgver}.tar.gz)
-md5sums=('68b99fc66fd4e7a1a64160e41e543890')
+md5sums=('62e36f2c66ee6c275a03586cb645accb')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
