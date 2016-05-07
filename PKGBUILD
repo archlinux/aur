@@ -12,7 +12,7 @@ depends=()
 optdepends=()
 options=('strip')
 source=(https://github.com/digitalocean/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}-linux-amd64.tar.gz)
-sha256sums=('d1d8e26aec9e2c7e3cbab23ee9011b16d3f631e1f346a7d60cb9b338619b27d6')
+sha256sums=('d98a60ac8755e75c190763385cb397609880dddbbf4ba15d1bb3467b9a6679e2')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin/"
