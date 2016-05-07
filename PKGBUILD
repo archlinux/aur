@@ -1,6 +1,6 @@
 _pkgname=libav
 pkgname=$_pkgname-git-no-libs
-pkgver=v12_dev0.r2370.gab9068c
+pkgver=v12_dev0.r2683.ge944310
 pkgrel=1
 pkgdesc='Open source audio and video processing tools'
 arch=('i686' 'x86_64')
