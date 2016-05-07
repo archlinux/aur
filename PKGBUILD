@@ -16,7 +16,6 @@ depends=('fribidi' 'wv' 'goffice' 'desktop-file-utils' 'redland' 'libical' 'loud
 makedepends=('asio' 'boost' 'gobject-introspection' 'python2' 'libwpd' 'subversion')
 conflicts=('abiword' 'abiword-plugins')
 replaces=('abiword' 'abiword-plugins')
-install=abiword.install
 options=('!makeflags')
 source=(abiword::svn+http://svn.abisource.com/abiword/trunk aiksaurus-plugin.m4 plugin-builtin.m4 plugin-configure.m4 plugin-makefiles.m4)
 sha256sums=('SKIP'
