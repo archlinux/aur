@@ -2,13 +2,13 @@
 
 pkgname=lgogdownloader
 pkgver=2.28
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source downloader for GOG.com games, uses the GOG.com API"
 url="https://sites.google.com/site/gogdownloader/"
 arch=(i686 x86_64)
 license=(WTFPL)
 depends=('boost' 'jsoncpp' 'liboauth' 'rhash' 'tinyxml' 'htmlcxx' 'curl')
-makedepends=('help2man' 'cmake')
+makedepends=('help2man' 'cmake' 'gcc<=5.3.0')
 source=("http://sites.google.com/site/gogdownloader/$pkgname-$pkgver.tar.gz")
 sha256sums=('551aa431a1a8d1123fc68dd7504368a7b9f07da5108236a4b91d0d10d67dd16e')
 prepare() {
