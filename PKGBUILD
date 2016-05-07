@@ -4,30 +4,28 @@
 
 pkgname=bibletime-git
 _gitname="bibletime"
-pkgver=v2.10_rc1.r796.gfb42edb
+pkgver=v2.11_beta1.r7.g1be749c
 pkgrel=1
 epoch=2
 pkgdesc="Bible study tool."
 arch=('x86_64' 'i686')
 url="http://www.bibletime.info/"
 license=('GPL2')
-depends=('sword' 'openssl' 'clucene' 'qtwebkit')
+depends=('sword' 'qt5-webengine')
 makedepends=('cmake' 'git')
 provides=('bibletime')
 conflicts=('bibletime')
 source=("git://github.com/bibletime/bibletime.git")
 md5sums=('SKIP')
-install=$pkgname.install
 
 pkgver() {
 	cd "$_gitname"
-#	git log -1 --format="%cd" --date=short | sed 's|-|.|g'
 	git describe --long | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 
 }
 
 build() {
-	mkdir "$srcdir/$_gitname/build_dir"
+	mkdir -p "$srcdir/$_gitname/build_dir"
 	cd "$srcdir/$_gitname/build_dir"
 
 	CXXFLAGS+=" -fpermissive"
