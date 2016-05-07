@@ -12,7 +12,6 @@ makedepends=('boost')
 depends=('fribidi' 'wv' 'enchant' 'desktop-file-utils' 'goffice')
 conflicts=('abiword' 'abiword-plugins')
 provides=('abiword')
-install=abiword-minimal.install
 options=('!makeflags' '!libtool')
 source=("http://www.abisource.com/downloads/abiword/${pkgver}/source/abiword-${pkgver}.tar.gz"
 	abiword-3.0.0-librevenge.patch
