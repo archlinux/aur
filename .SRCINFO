@@ -1,0 +1,14 @@
+pkgbase = mkws
+	pkgdesc = Quickly generate throwaway development environments for quick tests, calculations, etc.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/briansteffens/mkws
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python3
+	source = mkws::git+https://github.com/briansteffens/mkws.git
+	md5sums = SKIP
+
+pkgname = mkws
+
