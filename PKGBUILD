@@ -5,7 +5,7 @@
 
 pkgname=('heimdall-nogui-git')
 _gitname="heimdall"
-pkgver=1.4.1.r25.ga59a290
+pkgver=1.4.1.r34.g7ebee1e
 pkgrel=1
 pkgdesc="A cross-platform open-source utility to flash firmware (aka ROMs) onto Samsung Galaxy S devices."
 arch=('i686' 'x86_64')
