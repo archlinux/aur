@@ -1,0 +1,16 @@
+diff --git a/initialize/config.go b/initialize/config.go
+index 94a47fa..9bbd177 100644
+--- a/initialize/config.go
++++ b/initialize/config.go
+@@ -100,9 +100,9 @@ func Apply(cfg config.CloudConfig, ifaces []network.InterfaceGenerator, env *Env
+ 	}
+ 
+ 	if len(cfg.SSHAuthorizedKeys) > 0 {
+-		err := system.AuthorizeSSHKeys("core", env.SSHKeyName(), cfg.SSHAuthorizedKeys)
++		err := system.AuthorizeSSHKeys("root", env.SSHKeyName(), cfg.SSHAuthorizedKeys)
+ 		if err == nil {
+-			log.Printf("Authorized SSH keys for core user")
++			log.Printf("Authorized SSH keys for root user")
+ 		} else {
+ 			return err
+ 		}

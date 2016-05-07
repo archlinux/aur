@@ -1,16 +1,18 @@
 pkgname=coreos-cloudinit-git
-pkgver=1.9.2.r0.g6e9109e
-pkgrel=1
+pkgver=1.10.1.r0.g1cd1ecb
+pkgrel=5
 pkgdesc="coreos-cloudinit"
 arch=('x86_64')
 url="https://github.com/coreos/coreos-cloudinit"
 license=(apache)
 makedepends=('go')
-provides=('coreos-cloudinit')
-replaces=('cloud-init' 'coreos-cloudinit' 'coreos-cloudinit-git')
-conflicts=('cloud-init' 'coreos-cloudinit' 'coreos-cloudinit-git')
-source=("$pkgname::git+$url" "coreos-cloudinit.service")
-sha256sums=('SKIP' 'b2fc8da498f3a87e4ba3ea6422cb006f1195e0281b2b062a6b2805b3c035fcb2')
+conflicts=('cloud-init' 'coreos-cloudinit')
+source=("$pkgname::git+$url" "coreos-cloudinit.service" "switch_core_user.patch")
+sha256sums=(
+  'SKIP' 
+  'a640d582e7fc9024d8a7c394f390020bfabf1c5a0d32d659693f9a2db8275d58' 
+  '704088383d9201932c7a78d05781435bac7eb8e1d009999a849ac44b27d9d56a'
+)
 optdepends=('update-ssh-keys: ssh key management support')
 
 pkgver() {
@@ -20,6 +22,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
+  patch -p1 < ../switch_core_user.patch
   ./build
 }
 
