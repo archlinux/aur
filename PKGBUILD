@@ -2,16 +2,15 @@
 
 pkgname=vicare-scheme-git
 pkgver=20160219.9b1a216
-pkgrel=1
+pkgrel=2
 pkgdesc="R6RS scheme implementation, from github's master branch"
 arch=('i686' 'x86_64')
 url="http://marcomaggi.github.io/vicare.html"
 license=('GPL3')
-depends=('gmp')
+depends=('gmp' 'readline')
 makedepends=('git')
 provides=('vicare-scheme')
 conflicts=('vicare-scheme')
-install=vicare-scheme.install
 source=("vicare-scheme::git+https://github.com/marcomaggi/vicare.git")
 md5sums=('SKIP')
 options=('!makeflags')
@@ -29,7 +28,8 @@ build() {
   mkdir build
   cd build
   ../configure --prefix=/usr --libexecdir=/usr/lib \
-	 --enable-maintainer-mode
+	       --enable-maintainer-mode --disable-rpath \
+	       --with-libiconv --with-readline
   make
 }
 
