@@ -1,7 +1,10 @@
-# Maintainer: strigyskow
+# Maintainer: Samuel Mesa <samuelmesa dot gmail.com>
+# Initial Maintainer: strigyskow
+# Contributor: snork
+
 pkgname=spatialite-gui
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="spatialite-gui is an open source Graphical User Interface (GUI) tool supporting SpatiaLite."
 url="https://www.gaia-gis.it/fossil/spatialite_gui/index"
 arch=('x86_64' 'i686')
@@ -17,6 +20,7 @@ md5sums=('c917f40810607784528b4db58cd36efb')
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   sed -ie 's/(wx-config --libs)/(wx-config --libs all)/g' ./configure.ac
+  sed -ie 's/-lgeos_c/-lgeos_c -lsqlite3/' configure.ac
   autoconf
   ./configure --prefix="/usr"
   make
