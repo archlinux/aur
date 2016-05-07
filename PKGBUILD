@@ -4,7 +4,7 @@
 
 pkgname=galois
 pkgver=0.4
-pkgrel=3
+pkgrel=4
 pkgdesc='A computer game of the "falling blocks" type, but with unique features'
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/galois/"
@@ -22,7 +22,6 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  CXXFLAGS+=' -std=c++11'
   ./configure --prefix=/usr
   make
 }
