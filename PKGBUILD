@@ -16,12 +16,12 @@
 #
 #
 pkgname="spl-linux-lts"
-pkgver=0.6.5.6_4.4.8_1
-pkgrel=5
+pkgver=0.6.5.6_4.4.9_1
+pkgrel=1
 pkgdesc="Solaris Porting Layer kernel modules."
 depends=("spl-utils-linux-lts" "kmod"
-         "linux-lts>=4.4.8" "linux-lts<4.5"
-         "linux-lts-headers>=4.4.8" "linux-lts-headers<4.5")
+         "linux-lts>=4.4.9" "linux-lts<4.5"
+         "linux-lts-headers>=4.4.9" "linux-lts-headers<4.5")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("http://archive.zfsonlinux.org/downloads/zfsonlinux/spl/spl-0.6.5.6.tar.gz")
@@ -35,7 +35,7 @@ build() {
     cd "${srcdir}/spl-0.6.5.6"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.4.8-1-lts/build \
+                --with-linux=/usr/lib/modules/4.4.9-1-lts/build \
                 --with-config=kernel
     make
 }
@@ -45,5 +45,5 @@ package() {
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.4.8-1-lts/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.4.9-1-lts/Module.symvers
 }
