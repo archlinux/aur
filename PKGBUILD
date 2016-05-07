@@ -15,7 +15,7 @@ optdepends=('wine: for installing and configuring the game')
 conflicts=('ags-git')
 install=ags.install
 source=("https://github.com/adventuregamestudio/ags/archive/v.${pkgver}.tar.gz")
-sha256sums=('f125555ebaf6b93503d6b12735bbdb56acc73bc8c0bac397eb6cbd8c3e00a6b6')
+sha256sums=('604395a6b736461a38ad3e93aef9cd60769075ccbc9dc03b4e42cbb766e74375')
 
 prepare() {
   cd "$srcdir/ags-v.${pkgver}"
