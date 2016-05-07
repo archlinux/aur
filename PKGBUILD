@@ -56,7 +56,7 @@ _v_b='210'
 
 _update='3'
 
-pkgrel=1
+pkgrel=2
 #http://registrationcenter-download.intel.com/akdlm/irc_nas/9061/parallel_studio_xe_2016_update3.tgz
 
 _sp=''
@@ -539,7 +539,7 @@ package_intel-ipp() {
 	set_build_vars
 
 	pkgdesc="Intel Integrated Performance Primitives"
-	pkgver=${_year}.${_ipp_ver}.${_v_b}
+	pkgver=${_pkg_ver}
 	#depends=('intel-compiler-base')
 	install=intel-composer.install
 
@@ -596,7 +596,7 @@ package_intel-mkl() {
 	set_build_vars
 
 	pkgdesc="Intel Math Kernel Library (Intel® MKL) "
-	pkgver=${_year}.${_mkl_ver}.${_v_b}
+	pkgver=${_pkg_ver}
 	#depends=('intel-compiler-base')
 	install=intel-mkl.install
 	backup=('etc/intel-mkl-th.conf')
@@ -658,7 +658,7 @@ package_intel-mpi() {
 	set_build_vars
 
     pkgdesc="Intel MPI library"
-	pkgver=${_year}.${_mpi_ver}.${_v_b}
+	pkgver=${_pkg_ver}
 	#depends=('intel-compiler-base')
 	#install=intel-mpi.install
 
@@ -711,7 +711,7 @@ package_intel-tbb_psxe() {
 	set_build_vars
 
 	pkgdesc="Intel Threading Building Blocks (TBB)"
-	pkgver=${_year}.${_tbb_ver}.${_v_b}
+	pkgver=${_pkg_ver}
 	#depends=('intel-compiler-base')
 	install=intel-tbb.install
 
@@ -767,7 +767,7 @@ package_intel-vtune-amplifier-xe() {
 	set_build_vars
 
 	pkgdesc="Performance profiler for serial and parallel performance analysis"
-	pkgver=${_year}.${_vtune_ver}.${_v_b}
+	pkgver=${_pkg_ver}
 	depends=('pangox-compat')
 	
 	echo -e " # intel-vtune-amplifier-xe: Start building"
@@ -814,7 +814,7 @@ package_intel-advisor-xe() {
 	set_build_vars
 
 	pkgdesc="Threading design and prototyping tool for software architects"
-	pkgver=${_year}.${_advisor_ver}.${_v_b}
+	pkgver=${_pkg_ver}
 	
 	echo -e " # intel-advisor-xe: Start building"
 	mkdir -p ${xe_build_dir}/opt
@@ -858,7 +858,7 @@ package_intel-advisor-xe() {
 package_intel-inspector-xe() {
 	set_build_vars
 	pkgdesc="Memory and thread debugger"
-	pkgver=${_year}.${_inspector_ver}.${_v_b}
+	pkgver=${_pkg_ver}
 	
 	echo -e " # intel-inspector-xe: Start building"
 	mkdir -p ${xe_build_dir}/opt
