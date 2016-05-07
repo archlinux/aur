@@ -1,7 +1,7 @@
 # Maintainer: wangjiezhe <wangjiezhe AT yandex AT com>
 
 pkgname=librsb
-pkgver=1.2.0_rc2
+pkgver=1.2.0_rc3
 pkgrel=1
 pkgdesc="A shared memory parallel sparse matrix library including Sparse BLAS."
 arch=('any')
@@ -13,29 +13,29 @@ optdepends=()
 options=()
 source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver//_/-}.tar.gz"
         "https://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver//_/-}.tar.gz.asc")
-md5sums=('839b51d0ab124522f735533a853bdb0f'
+md5sums=('03db5e5cf1dc8bd5bc373ca2624e0423'
          'SKIP')
 validpgpkeys=('1DBB555AEA359B8AAF0C6B88E0E669C8EF1258B8')
 
 prepare() {
-	cd "${pkgname}-${pkgver//_/-}"
-	sed -i "s/CC -V/CC -v/g" configure aclocal.m4
-	sed -i 's/{CC} -V/{CC} -v/g' configure configure.ac
+        cd "${pkgname}-${pkgver//_/-}"
+        sed -i "s/CC -V/CC -v/g" configure aclocal.m4
+        sed -i 's/{CC} -V/{CC} -v/g' configure configure.ac
 }
 
 build() {
-	cd "${pkgname}-${pkgver//_/-}"
-	./configure --prefix=/usr \
-		CFLAGS='-fPIC -g -O2'
-	make
+        cd "${pkgname}-${pkgver//_/-}"
+        ./configure --prefix=/usr \
+                CFLAGS='-fPIC -g -O2'
+        make
 }
 
 check() {
-	cd "${pkgname}-${pkgver//_/-}"
-	make -k check
+        cd "${pkgname}-${pkgver//_/-}"
+        make -k check
 }
 
 package() {
-	cd "${pkgname}-${pkgver//_/-}"
-	make DESTDIR="${pkgdir}/" install
+        cd "${pkgname}-${pkgver//_/-}"
+        make DESTDIR="${pkgdir}/" install
 }
