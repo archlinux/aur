@@ -17,10 +17,12 @@ options=('!libtool' '!emptydirs')
 source=(
 	"http://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2"
 	"http://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.bz2.sig"
+	xtors.patch
 )
 sha512sums=(
 	'e77e1b8dbbcbaf9ac2fae95c4403615808af3be03b2e1d32448cd3a7d32c43273f8bcace3f2de84ec120a982879295673029da306e2885dbf5f990584932cfc7'
 	'SKIP'
+	'd1d1052167e84720a771cd526166997c8a2b14135bb7c1f956d7940cfc2336191825118426cfe4c5fdfd1c8718088c1ba327d90874658baf2738c8d5a7ed0bec'
 )
 validpgpkeys=('EAF1C276A747E9ED86210CBAC3126D3B4AE55E93') # Tristan Gingold <adacore dot com, gingold>
 
@@ -34,6 +36,9 @@ prepare() {
 
 	# hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
 	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
+
+	# put .ctors and .dtors where they belong
+	patch -Np1 < ../xtors.patch
 }
 
 build() {
