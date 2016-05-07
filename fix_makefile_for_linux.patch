@@ -1,0 +1,18 @@
+--- a/Makefile	2016-05-07 07:55:21.507821486 -0400
++++ b/Makefile	2016-05-07 08:06:14.815977404 -0400
+@@ -21,10 +21,12 @@ build-devel:
+ install:
+ 
+ 	[ -e "${DESTDIR}/${ETCDIR}/ssl-admin" ] || mkdir -p ${DESTDIR}/${ETCDIR}/ssl-admin
++	[ -e "${DESTDIR}/${BINDIR}" ] || mkdir -p "${DESTDIR}/${BINDIR}"
++	[ -e "${DESTDIR}/${MANDIR}/man1" ] || mkdir -p "${DESTDIR}/${MANDIR}/man1"
++	[ -e "${DESTDIR}/${MANDIR}/man5" ] || mkdir -p "${DESTDIR}/${MANDIR}/man5"
+ 	${SED_CMD} s+~~~ETCDIR~~~+${ETCDIR}+g man1/ssl-admin.1 > ${DESTDIR}/${MANDIR}/man1/ssl-admin.1
+ 	${SED_CMD} s+~~~ETCDIR~~~+${ETCDIR}+g man5/ssl-admin.conf.5 > ${DESTDIR}/${MANDIR}/man5/ssl-admin.conf.5
+-	install -c -m 0660 -S -v ssl-admin.conf ${DESTDIR}/${ETCDIR}/ssl-admin/ssl-admin.conf.sample
+-	install -c -m 0660 -S -v openssl.conf ${DESTDIR}/${ETCDIR}/ssl-admin/openssl.conf.sample
++	install -c -m 0660 -S -v ssl-admin.conf ${DESTDIR}/${ETCDIR}/ssl-admin/ssl-admin.conf
++	install -c -m 0660 -S -v openssl.conf ${DESTDIR}/${ETCDIR}/ssl-admin/openssl.conf
+ 	${SED_CMD} -e "s+~~~ETCDIR~~~+${ETCDIR}+g" -e "s+~~~BUILD~~~+prod+g" ssl-admin > ssl-admin.mod
+ 	install -c -m 0755 -S -v ssl-admin.mod ${DESTDIR}/${BINDIR}/ssl-admin
+-	chmod 0444 ${DESTDIR}/${ETCDIR}/ssl-admin/*.conf.sample
