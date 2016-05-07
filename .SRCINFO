@@ -1,0 +1,18 @@
+pkgbase = pk-update-icon
+	pkgdesc = Displays an update-notification tray icon
+	pkgver = 2
+	pkgrel = 1
+	url = https://code.guido-berhoerster.org/projects/pk-update-icon
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = intltool
+	depends = libnotify
+	depends = libunique
+	depends = packagekit
+	optdepends = gnome-packagekit
+	source = https://code.guido-berhoerster.org/projects/pk-update-icon/downloads/pk-update-icon-2.tar.gz
+	sha256sums = dbd89b77ee25bfa4ffdbc1c7d1c3d7fe818bb02e509cb6c13ce9b8a34ba41dac
+
+pkgname = pk-update-icon
+
