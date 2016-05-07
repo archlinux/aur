@@ -1,18 +1,19 @@
 # Maintainer: Martchus <martchus@gmx.net>
 # Contributor: Mladen Milinkovic <maxrd2@smoothware.net>
 
-# You can install/update Subtitle Composer from repository if you add following to /etc/pacman.conf
+# You can install/update Subtitle Composer from repository
+# if you add following to /etc/pacman.conf (x86_64 only)
 # [subtitlecomposer]
 # # Subtitle Composer
 # SigLevel = PackageRequired
 # Server = http://smoothware.net/$repo/$arch
 
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
-# you also find the URL of a binary repository.
+# you also find the URL of (another) binary repository (i686 and x86_64).
 
 pkgname=subtitlecomposer
-pkgver=0.6.3
-pkgrel=2
+pkgver=0.6.4
+pkgrel=1
 pkgdesc="A KDE subtitle editor"
 arch=('i686' 'x86_64')
 url="https://github.com/maxrd2/${pkgname}"
@@ -23,14 +24,13 @@ makedepends=('extra-cmake-modules')
 # building of plugins for MPV and Xine player backends.
 makedepends+=('xine-lib')
 makedepends+=('mpv')
-install=${pkgname}.install
 optdepends=('mpv: for MPV backend'
             'mplayer: for MPlayer backend'
             'xine-lib: for Xine backend'
             'ruby: for scripting'
             'python: for scripting')
 source=("https://github.com/maxrd2/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('5dd2a74f16bc3c0b8771690a0fdc0a6928c38578ad2d27a1c84df6890e41fbf8')
+sha256sums=('030f3a33dccdc95b890c06de6f2566c4e6ec85264c8bc47430c72c137ce74f91')
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
