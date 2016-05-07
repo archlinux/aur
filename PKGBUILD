@@ -60,7 +60,7 @@ build() {
   cd icu/source
   mkdir -p nativebuild && pushd nativebuild
   CFLAGS=-fno-stack-protector
-  ../configure --enable-static --disable-shared
+  CC=gcc CXX=g++ ../configure --enable-static --disable-shared
   make
   popd
   for _arch in ${_architectures}; do
