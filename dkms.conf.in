@@ -6,6 +6,7 @@ PRE_BUILD="configure
   --prefix=/usr
   --bindir=/usr/bin
   --sbindir=/usr/bin
+  --with-linux-srcdir=/usr/lib/modules/$kernelver/build
   --disable-perl-binding
   --disable-guile-binding
   --disable-php-binding
