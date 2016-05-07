@@ -4,7 +4,7 @@
 # Contributor: Sergiusz Urbaniak <sergiusz.urbaniak@gmail.com>
 pkgname=plan9port-git
 pkgver=r3479.35d4392
-pkgrel=1
+pkgrel=2
 pkgdesc="A port of many Plan 9 libraries and programs to Unix."
 arch=('i686' 'x86_64')
 url="https://github.com/9fans/plan9port"
@@ -12,7 +12,7 @@ url="http://swtch.com/plan9port/"
 license=('custom')
 depends=('xorg-server' 'libxt' 'libxext' 'fuse')
 optdepends=('python2: for the codereview script')
-makedepends=('git')
+makedepends=('git' 'gendesk')
 provides=('plan9port')
 install='plan9.install'
 conflicts=('9base' 'plan9port')
