@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=texinfo-svn
-pkgver=7148
+pkgver=7152
 pkgrel=1
 pkgdesc="GNU documentation system for on-line information and printed output"
 arch=('i686' 'x86_64')
@@ -11,7 +11,6 @@ depends=('coreutils')
 makedepends=('subversion' 'help2man')
 provides=('texinfo')
 conflicts=('texinfo')
-install=texinfo.install
 source=("texinfo::svn://svn.sv.gnu.org/texinfo/trunk")
 md5sums=('SKIP')
 options=('!makeflags' 'libtool')
