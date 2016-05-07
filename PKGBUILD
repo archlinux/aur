@@ -2,11 +2,11 @@
 # Maintainer: hexchain <i at hexchain.org>
 
 pkgname=electronic-wechat
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A better WeChat client"
 arch=('x86_64')
-url="https://github.com/geeeeeeeeek/wechat-electron/"
+url="https://github.com/geeeeeeeeek/electronic-wechat"
 license=('custom')
 depends=('nss' 'gtk2' 'libnotify' 'libxtst' 'alsa-lib' 'gconf')
 makedepends=('git' 'npm' 'imagemagick')
