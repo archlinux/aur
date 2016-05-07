@@ -7,32 +7,29 @@
 
 pkgname=paraview
 pkgver=5.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Parallel Visualization Application using VTK'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
 license=('custom')
-depends=('qt5-tools' 'openmpi' 'python2' 'ffmpeg' 'boost' 'cgns' 'glew'
-	 'expat' 'freetype2' 'hdf5' 'libjpeg' 'libxml2' 'libtheora' 'libpng' 'libtiff' 'zlib')
+depends=('qt5-tools' 'openmpi' 'python2' 'ffmpeg' 'boost' 'glew'
+	 'expat' 'freetype2' 'libjpeg' 'libxml2' 'libtheora' 'libpng' 'libtiff' 'zlib')
 makedepends=('cmake' 'mesa' 'gcc-fortran')
 optdepends=('python2-matplotlib: Needed to support equation rendering using MathText markup language'
 	        'python2-numpy: Needed for using some filters such as "Python Calculator"')
 source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}-source.tar.gz"
-	    'paraview.png'
-	    'paraview.desktop'
 	    'paraview_32bit.patch'
 	    '0001-find_hdf5.patch'
-	    'ffmpeg3_compat.patch')
+	    'ffmpeg3_compat.patch'
+	    'vtk-gcc6.patch')
 sha1sums=('3d72635df84421c2bc4d59ec4a121348966ec28f'
-          'a2dff014e1235dfaa93cd523286f9c97601d3bbc'
-          '1f94c8ff79bb2bd2c02d6b403ea1f4599616531b'
 	  'c25134330c582371e1009b51445cdb435144b53f'
 	  '3f8701c349194cff12f5d1104fbc070a52dd3da1'
-	  'a78177f8dd6dedd9ad189fa12730ec53c7d02508')
+	  'a78177f8dd6dedd9ad189fa12730ec53c7d02508'
+	  'b9f32419d0d0b1c03dc99eae932ec1c03a936cf0')
 
 prepare() {
   cd "${srcdir}/ParaView-v${pkgver}-source"
-
   patch -p1 -i ../paraview_32bit.patch
 
   # Find HDF before the check (for NetCDF)
@@ -42,6 +39,8 @@ prepare() {
   cd "${srcdir}/ParaView-v${pkgver}-source/VTK"
   
   patch -p1 -i ../../ffmpeg3_compat.patch
+  
+  patch -p1 -i ../../vtk-gcc6.patch
 
   
   rm -rf "${srcdir}/build"
@@ -106,8 +105,4 @@ package() {
 
   #Install license
   install -Dm644 "${srcdir}/ParaView-v${pkgver}-source/License_v1.2.txt" "${pkgdir}/usr/share/licenses/paraview/LICENSE"
-
-  #Install desktop shortcuts
-  install -Dm644 "${srcdir}/paraview.png" "${pkgdir}/usr/share/pixmaps/paraview.png"
-  desktop-file-install --dir="${pkgdir}"/usr/share/applications "${srcdir}/paraview.desktop"
 }
