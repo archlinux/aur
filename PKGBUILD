@@ -3,7 +3,7 @@
 _pkgname=fs-uae
 pkgname=fs-uae-devel
 pkgver=2.7.13dev
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform Amiga emulator based on UAE/WinUAE (development version)."
 arch=("i686" "x86_64")
 url="http://fs-uae.net/download-devel"
@@ -24,6 +24,7 @@ md5sums=('0ee14afd4e04374de3698631f9668d3d')
 build() {
    cd ${_pkgname}-${pkgver}
 
+   export CXXFLAGS+=" -std=gnu++98"
    ./configure --prefix=/usr
    make
 }
