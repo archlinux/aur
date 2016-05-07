@@ -4,8 +4,8 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=frescobaldi
-pkgver=2.18.2
-pkgrel=2
+pkgver=2.19.0
+pkgrel=1
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
 url="http://www.frescobaldi.org/"
@@ -14,7 +14,7 @@ depends=(
   'hyphen'
   'poppler'
   'python>=3.2'
-  'python-ly>=0.9.3'
+  'python-ly>=0.9.4'
   'python-poppler-qt4'
   'python-pyqt4>=4.8.3'
   'qt4>=4.7'
@@ -37,7 +37,7 @@ optdepends=(
 )
 source=(https://github.com/wbsoft/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz)
 install=${pkgname}.install
-md5sums=('cdd8bc65323195a683efbef278e552e7')
+md5sums=('e5ff8cdbec7b83601afb576c94e7aecb')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
