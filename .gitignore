@@ -1,4 +1,5 @@
 pkg
 src
-pioneer-*.pkg.tar.xz
+*.tar.gz
+*.tar.xz
 *.zip
