@@ -2,18 +2,18 @@
 
 pkgname=mpd-sacd
 pkgver=0.20
-pkgrel=4
+pkgrel=5
 pkgdesc='MPD with patches for SACD and DVDA ISO playback.'
 url='http://git.musicpd.org/cgit/manisiutkin/mpd.git/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('libao' 'ffmpeg' 'libmodplug' 'audiofile' 'libshout' 'libmad' 'curl' 'faad2'
          'sqlite' 'jack' 'libmms' 'wavpack' 'avahi' 'libid3tag' 'yajl' 'libmpdclient'
-         'icu' 'libupnp' 'libnfs' 'libsamplerate' 'libsoxr' 'smbclient')
+         'icu' 'libupnp' 'libnfs' 'libsamplerate' 'libsoxr' 'smbclient' 'libcdio-paranoia')
 makedepends=('boost' 'doxygen')
 conflicts=('mpd')
 provides=('mpd=0.20')
-source=('git://git.musicpd.org/manisiutkin/mpd.git'
+source=('git://git.musicpd.org/manisiutkin/mpd.git#commit=c9d51633a1f720d1d1ffa1748bf8cd257d1e1560'
         'tmpfiles.d'
         'conf')
 sha1sums=('SKIP'
@@ -35,6 +35,7 @@ build() {
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \
+		--enable-cdio-paranoia \
 		--enable-libmpdclient \
 		--enable-jack \
 		--enable-soundcloud \
