@@ -1,4 +1,5 @@
 # Maintainer: David Parrish <daveparrish@tutanota.com>
+# Maintainer: David Parrish <BM-2cU1Bk3fXVo9VrGpo2YQFJ1it31gSuAy5j>
 
 pkgname=pybitmessage-git
 pkgver=v0.6.0.r1.gaf0dfdc
