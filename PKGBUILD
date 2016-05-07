@@ -26,8 +26,8 @@ source_x86_64=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/linux-x
 sha512sums=('fc83c23f67cc5d399bc655d2486936db3ab500bafe399a905a17a0b0f63ad9befb782fc9c07d467a65a80a00e3ce984700ec3cf60e4cb3e1b29b20954c6fa775'
             '3cf4194575041bbe344d6cd17e473eb78caf7e2e1aa8b1309151f7e4677c33571014ba6d7aba267398c3ba69c825c64363272b82b15f7dbb8ae5e3e825f439b7'
             'aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5')
-sha512sums_i686=('')
-sha512sums_x86_64=('')
+sha512sums_i686=('1885a840e5782b699e5522180420bd25446711a2aefae6292996ea7b35919e09142ee44affd59ae6fb8d06c8ac067fcf1399d4920048ce9aef3da05bf7ea7860')
+sha512sums_x86_64=('c72b61a541e8aabe3c8be20105971eae99f6d91d55c554e8215760663915a50e49a8dbf328a34fc7e87840addcb0ef663968768e4c3fb6fdc56e2f1d4cdfe307')
 # RC
 if [[ $_build = ? ]]; then
   source_i686=("https://ftp.mozilla.org/pub/thunderbird/candidates/$_major-candidates/build$_build/linux-i686/en-US/thunderbird-$_major.tar.bz2")

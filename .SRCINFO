@@ -37,7 +37,9 @@ pkgbase = thunderbird-beta-bin
 	sha512sums = 3cf4194575041bbe344d6cd17e473eb78caf7e2e1aa8b1309151f7e4677c33571014ba6d7aba267398c3ba69c825c64363272b82b15f7dbb8ae5e3e825f439b7
 	sha512sums = aeb444784732267f1b1e87e6084a776f82a1912c4c2637d2cf1de1c135dd9d41d2ef66d2bd3f9cbd3a79fad32d17ea6e2968ba644d5f887cb66ba6c09a2098f5
 	source_i686 = https://ftp.mozilla.org/pub/thunderbird/candidates/45.1.0-candidates/build2/linux-i686/en-US/thunderbird-45.1.0.tar.bz2
+	sha512sums_i686 = 1885a840e5782b699e5522180420bd25446711a2aefae6292996ea7b35919e09142ee44affd59ae6fb8d06c8ac067fcf1399d4920048ce9aef3da05bf7ea7860
 	source_x86_64 = https://ftp.mozilla.org/pub/thunderbird/candidates/45.1.0-candidates/build2/linux-x86_64/en-US/thunderbird-45.1.0.tar.bz2
+	sha512sums_x86_64 = c72b61a541e8aabe3c8be20105971eae99f6d91d55c554e8215760663915a50e49a8dbf328a34fc7e87840addcb0ef663968768e4c3fb6fdc56e2f1d4cdfe307
 
 pkgname = thunderbird-beta-bin
 
