@@ -11,17 +11,17 @@ depends=(
   'hyphen'
   'poppler'
   'python>=3.2'
-  'python-ly'
-  'python-poppler-qt4'
-  'python-pyqt4>=4.8.3'
-  'qt4>=4.7'
+  'python-ly>=0.9.4'
+  'python-poppler-qt5'
+  'python-pyqt5>=5.4'
+  'qt5-base>=5.4'
   'tango-icon-theme'
 )
 optdepends=(
   'lilypond: Music engraving (recommended)'
 # python-portmidi is currently a python2 package
 #  'python-portmidi: MIDI playback (default engine)'
-  'python-pygame-hg: MIDI playback (alternate engine)'
+  'python-pygame: MIDI playback (alternate engine)'
   'portmidi: MIDI playback (fallback engine)'
   'hyphen-de: German hyphenation rules'
   'hyphen-en: English hyphenation rules'
@@ -37,9 +37,6 @@ provides=('frescobaldi')
 source=("${pkgname}"::'git://github.com/wbsoft/frescobaldi.git')
 install=frescobaldi-git.install
 md5sums=('SKIP')
-
-_gitroot='https://github.com/wbsoft/frescobaldi.git'
-_gitname='frescobaldi'
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
