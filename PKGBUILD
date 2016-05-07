@@ -9,7 +9,7 @@ _micro=.3
 pkgbase=compiz-core
 pkgname=(compiz-core compiz-gtk)
 pkgver="${_pkgver}${_micro}"
-pkgrel=1
+pkgrel=2
 pkgdesc="This is the latest stable release of Compiz without DE deps"
 url="https://github.com/compiz-reloaded/${_upstream}/"
 license=('GPL' 'LGPL' 'MIT')
@@ -45,7 +45,12 @@ build()
 
   NOCONFIGURE=1 ./autogen.sh
   ./configure "${_configure_opts[@]}"
-        
+
+  if ! grep -q pkg_cv_GTK config.log;then
+    # make sure only compiz-core is created if gtk is missing
+    msg "Making sure only $pkgbase is made, gtk+2 is missing"
+    pkgname=("$pkgbase")
+  fi
   make
 }
 
@@ -57,9 +62,19 @@ package_compiz-core() {
   conflicts=('compiz' 'compiz-core-git' 'compiz-git')
 
   make DESTDIR="${pkgdir}" install
-  rm "${pkgdir}/usr/bin/gtk-window-decorator"
-  rm "${pkgdir}/usr/share/glib-2.0/schemas/org.compiz-0.gwd.gschema.xml"
-  rm "${pkgdir}/usr/share/icons/hicolor/"*"/apps/gtk-decorator."*
+
+  local REMOVE_THESE=(
+    "${pkgdir}/usr/bin/gtk-window-decorator"
+    "${pkgdir}/usr/share/glib-2.0/schemas/org.compiz-0.gwd.gschema.xml"
+    "${pkgdir}/usr/share/icons/hicolor/"*"/apps/gtk-decorator."*
+  )
+  # Believe it or not, you CAN fill an array using wildcards in bash
+
+  for fname in "${REMOVE_THESE[@]}";do
+    if [ -e "$fname" ];then
+      rm "$fname"
+    fi
+  done
 }
 
 package_compiz-gtk()
@@ -67,18 +82,30 @@ package_compiz-gtk()
   if (("${_use_marco}"));then
     #separating libmarco-private would be nice, but this is a workaround for now
     depends+=('marco')
+  else
+    depends+=('gtk2')
   fi
   pkgdesc+=" (GTK+ window decorator)"
   conflicts=('compiz-gtk-git')
 
   cd "${srcdir}/${_upstream}-${pkgver}/gtk"
   make DESTDIR="${pkgdir}" install
-  rm "${pkgdir}/usr/share/applications/compiz.desktop"
 
   cd "${srcdir}/${_upstream}-${pkgver}/images"
   make DESTDIR="${pkgdir}" install
-  rm "${pkgdir}/usr/share/icons/hicolor/"*"/apps/compiz."*
-  rm "${pkgdir}/usr/share/compiz/"*.png
+
+  local REMOVE_THESE=(
+    "${pkgdir}/usr/share/icons/hicolor/"*"/apps/compiz."*
+    "${pkgdir}/usr/share/compiz/"*.png
+    "${pkgdir}/usr/share/applications/compiz.desktop"
+  )
+  # Believe it or not, you CAN fill an array using wildcards in bash
+
+  for fname in "${REMOVE_THESE[@]}";do
+    if [ -e "$fname" ];then
+      rm "$fname"
+    fi
+  done
 }
 
 sha256sums=('6fc5176e3af5d6f434f26d1b654460aeeb3faf723db37f0957b46c2c23955032')
