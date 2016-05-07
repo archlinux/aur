@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=mystuff
-pkgver=2.7
+pkgver=2.8
 pkgrel=1
 pkgdesc="Create a custom menu in a popup window"
 url="http://www.kornelix.com/mystuff"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('gtk3')
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-md5sums=('39951e3b27800089acf95371ce8657b4')
+md5sums=('eafa317ae1a5e88fc066651db79c3d99')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
