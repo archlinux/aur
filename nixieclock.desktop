@@ -3,5 +3,5 @@ Type=Application
 Name=Nixie Clock
 Comment=Simple desktop clock mimicking nixie tube digits
 Exec=nixieclock
-Icon=nixieclock-icon.png
-Categories=Utility;Clock;Amusement
+Icon=nixieclock
+Categories=Utility;Clock;Amusement;
