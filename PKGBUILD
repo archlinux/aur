@@ -23,7 +23,6 @@ conflicts=('inkscape')
 options=('!libtool')
 source=('inkscape::bzr+http://bazaar.launchpad.net/~inkscape.dev/inkscape/trunk/')
 md5sums=('SKIP')
-install=inkscape-bzr.install
 _bzrmod="inkscape"
 
 pkgver() {
