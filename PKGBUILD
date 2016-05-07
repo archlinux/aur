@@ -8,14 +8,15 @@ url="http://marcomaggi.github.io/vicare.html"
 arch=('i686' 'x86_64')
 license=('GPL3')
 depends=('gmp')
-install=$pkgname.install
 source=("https://bitbucket.org/marcomaggi/$pkgname/downloads/$pkgname-${pkgver}.tar.xz")
 md5sums=('fd7dcfc1189a6c2636d606f86ed6f0bd')
+
 build() {
   cd $srcdir/$pkgname-${_pkgver}
-  ./configure --prefix=/usr --libexecdir=/usr/lib
+  ./configure --prefix=/usr --libexecdir=/usr/lib --disable-rpath
   make 
 }
+
 package() {
   cd $srcdir/$pkgname-${_pkgver}
   make DESTDIR=$pkgdir install
