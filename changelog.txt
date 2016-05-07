@@ -1,3 +1,6 @@
+Git commits dc9f278->71cb09c
+	* Dependencies added to setup.py (enum34 apparently)
+
 Git commits ab60329->dc9f278
 	* Fix typo (LPAD -> RPAD)
 
