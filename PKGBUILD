@@ -8,8 +8,8 @@ url="https://github.com/pioneerspacesim/pioneer"
 license=('GPL')
 provides=('pioneer')
 conflicts=('pioneer-bin' 'pioneer')
-depends=('libsigc++' 'sdl2_image' 'freetype2' 'libvorbis' 'assimp' 'hicolor-icon-theme' 'xdg-utils')
-makedepends=('gcc' 'git' 'automake' 'pkg-config' 'naturaldocs')
+depends=('libsigc++' 'sdl2_image' 'freetype2' 'libvorbis' 'assimp' 'hicolor-icon-theme')
+makedepends=('naturaldocs')
 source=("$pkgname::git+https://github.com/pioneerspacesim/pioneer" 'pioneer.desktop')
 md5sums=('SKIP'
          'f2301fe8850926b2d9bd89e3ab1158a8')
