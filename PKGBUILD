@@ -7,7 +7,7 @@ _phcver=0.3.2
 pkgver=$_phcver.12.20
 _realver=pack-rev20
 pkgrel=1
-pkgdesc="frequency driver for Intel CPUs with undervolting feature"
+pkgdesc="Frequency driver for Intel CPUs with undervolting feature"
 url="http://www.linux-phc.org"
 arch=('any')
 license=('GPL')
@@ -15,7 +15,7 @@ depends=('dkms')
 provides=('linux-phc')
 backup=('etc/default/phc-intel')
 install=phc-intel.install
-source=(phc-intel-$_realver.tar.bz2::$url/forum/download/file.php?id=169
+source=($pkgname-$_realver.tar.bz2::$url/forum/download/file.php?id=169
         phc-intel.{default,sh,sleep,system-sleep}
         dkms.conf)
 sha256sums=('69b8f975271496764b9ca6da5f1c1f1193fd4b09b38017875fbd0b54ab1c5507'
@@ -26,7 +26,7 @@ sha256sums=('69b8f975271496764b9ca6da5f1c1f1193fd4b09b38017875fbd0b54ab1c5507'
             '7b44882a96eeb7c79dbb7fe5b1ff8cded68c2b6a374c95bdc5e08c414cfd3549')
 
 prepare() {
-	cd phc-intel-$_realver
+	cd $pkgname-$_realver
 	sed -i 's,all: .prepare $(TARGET),all: $(TARGET)\n$(SOURCE): .prepare,' Makefile
 	sed -i 's,/sbin/modprobe phc-intel |,/sbin/modprobe phc-intel \&\& /usr/bin/phc-intel set |,' phc-intel.modprobe
 }
@@ -38,7 +38,7 @@ package() {
 	install -Dm755 phc-intel.sleep "$pkgdir/usr/lib/pm-utils/sleep.d/00phc-intel"
 	install -Dm755 phc-intel.system-sleep "$pkgdir/usr/lib/systemd/system-sleep/phc-intel"
 
-	cd phc-intel-$_realver
+	cd $pkgname-$_realver
 	install -Dm644 phc-intel.modprobe "$pkgdir/usr/lib/modprobe.d/phc-intel.conf"
 	cp -R inc Makefile "$pkgdir/usr/src/phc-intel-$_phcver/"
 }

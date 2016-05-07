@@ -1,5 +1,5 @@
 pkgbase = phc-intel
-	pkgdesc = frequency driver for Intel CPUs with undervolting feature
+	pkgdesc = Frequency driver for Intel CPUs with undervolting feature
 	pkgver = 0.3.2.12.20
 	pkgrel = 1
 	url = http://www.linux-phc.org
