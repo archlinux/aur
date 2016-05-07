@@ -1,7 +1,7 @@
 # Maintainer: Laurent Carlier <lordheavym@gmail.com>
 
 pkgname=libclc
-pkgver=0.2.0+274+4346c30
+pkgver=0.2.0+290+b518692
 pkgrel=1
 pkgdesc="Library requirements of the OpenCL C programming language"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://libclc.llvm.org/"
 license=('MIT')
 makedepends=('clang' 'llvm' 'python2' 'git')
 options=('staticlibs')
-source=('git+http://llvm.org/git/libclc#commit=4346c30')
+source=('git+http://llvm.org/git/libclc#commit=b518692')
 md5sums=(SKIP)
 
 pkgver() {
@@ -23,7 +23,6 @@ build() {
   cd libclc
   
   sed -i 's/"python < $in >/sys.executable + " < $in >/g' configure.py
-#  sed -i 's/python < $in >/python2 < $in >/g' configure.py
   
   python2 ./configure.py --prefix=/usr
   make
