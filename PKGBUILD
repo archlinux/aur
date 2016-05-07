@@ -6,7 +6,7 @@
 
 pkgname=('pidgin' 'libpurple' 'finch')
 pkgver=2.10.12
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://pidgin.im/"
 license=('GPL')
@@ -46,7 +46,6 @@ package_pidgin(){
   depends=('libpurple' 'startup-notification' 'gtkspell' 'libxss' 'libsm'
            'gst-plugins-base' 'gst-plugins-good' 'hicolor-icon-theme')
   optdepends=('aspell: for spelling correction')
-  install=pidgin.install
 
   cd $pkgbase-$pkgver
 
