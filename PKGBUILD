@@ -1,15 +1,16 @@
-# Contributor: Doug Newgard <scimmia at archlinux dot info>
+# Maintainer: Doug Newgard <scimmia at archlinux dot info>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
  
 pkgname=onedrive
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Free OneDrive client written in D'
 arch=('i686' 'x86_64')
 url='https://github.com/skilion/onedrive'
 license=('GPL3')
 depends=('curl' 'sqlite')
 makedepends=('dmd')
+backup=('etc/onedrive.conf')
 install=$pkgname.install
 source=("https://github.com/skilion/onedrive/archive/v$pkgver.tar.gz")
 sha256sums=('c54fad2b452a6a84e009f8743efecdaaca37abcbfe046fc830d7e101cac3594d')
