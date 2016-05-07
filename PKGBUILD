@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 pkgname=context-minimals-git
-pkgver=2016.04.10
+pkgver=2016.05.07
 pkgrel=1
 pkgdesc="A standalone ConTeXt distribution"
 url="http://www.contextgarden.net"
@@ -58,7 +58,7 @@ prepare() {
  msg "Initializing download directory"
 
  mkdir -p $srcdir/tex/texmf-cache || return 1
-
+ 
  msg "Starting download or update of ConTeXt distribution"
  PATH=$scrdir/tex/texmf-$platform/bin:$PATH \
  $srcdir/bin/texlua $srcdir/bin/mtxrun --script $srcdir/bin/mtx-update.lua  \
@@ -99,5 +99,8 @@ package()
 {
  install -d $pkgdir/opt || return 1
  msg "Copying files"
- cp -r --preserve=links $srcdir/tex $pkgdir/$_dest || return 1
+ # cp -r does not delete old files that are present in texmf-cache from
+ # previous installation
+ # cp -r --preserve=links $srcdir/tex $pkgdir/$_dest || return 1
+ rsync -az --links --delete --info=progress2 $srcdir/tex/ $pkgdir/$_dest || return 1
 }
