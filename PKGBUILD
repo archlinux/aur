@@ -81,16 +81,9 @@ package() {
 	install -Dm0644 "$srcdir/$_pkgname.lua" "$pkgdir/etc/$_pkgname.lua"
 	install -Dm0644 "$srcdir/$_pkgname.logrotate" "$pkgdir/etc/logrotate.d/$_pkgname"
 	install -Dm0644 "$srcdir/dictionary.accel_ipoe" "$pkgdir/usr/share/accel-ppp/radius/dictionary.accel_ipoe"
-	install -Dm0644 "$srcdir/dictionary.ppp" "$pkgdir/usr/share/accel-ppp/radius/dictionary.ppp"
+	install -Dm0644 "$srcdir/dictionary.abills" "$pkgdir/usr/share/accel-ppp/radius/dictionary.abills"
 	install -Dm0644 "$pkgdir/etc/$_pkgname.conf.dist" "$pkgdir/etc/$_pkgname.conf"
 	install -Dm0644 "$srcdir/$_pkgname/accel-pppd/extra/net-snmp/ACCEL-PPP-MIB.txt" "$pkgdir/usr/share/snmp/mibs/ACCEL-PPP-MIB.txt"
 	install -Dm0644 "$srcdir/$_pkgname/COPYING" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
 
-md5sums=('SKIP'
-         '0536dd60960e76cf5a6cdbf0518782d8'
-         '816dd5ea9534a077dfd63b6cd529738a'
-         '5be7d42b434b74d7e692b19a9e3c4297'
-         '6fba5fa70c43eb4b5bd44e392c963ec5'
-         '4e0d4fc5975ea8794ea286e8fbfa56cd'
-         '7e58716f1249f924ce218bd348d4c03a')
