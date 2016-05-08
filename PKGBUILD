@@ -3,13 +3,15 @@
 
 pkgname=sentry
 pkgver=8.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python-based realtime logging and aggregation server."
 arch=(any)
 url="http://pypi.python.org/pypi/sentry"
 license=(BSD)
 depends=(
     jansson
+    libxml2
+    libxslt
     python2
     postgresql
     redis
@@ -38,6 +40,11 @@ package () {
     # Begin Sentry installation for our specific version via PyPI. This
     # guarantees we'll grab all of the appropriate dependencies and
     # automates the process.
+    #
+    # If you're running GCC 6.1 and Sentry won't build, uncomment the following
+    # line and comment-out or remove the one immediately after it. If you wish
+    # to be more specific, replace -Wno-error with -Wno-misleading-indentation.
+    #CFLAGS="-Wno-error" "${pkgdir}/opt/sentry/bin/pip" install "sentry==${pkgver}"
     "${pkgdir}/opt/sentry/bin/pip" install "sentry==${pkgver}"
 
     # Make certain the virtualenv is relocatable.
