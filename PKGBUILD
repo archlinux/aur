@@ -15,11 +15,14 @@ optdepends=('wine: for installing and configuring the game')
 conflicts=('ags-git')
 install=ags.install
 source=("https://github.com/adventuregamestudio/ags/archive/v.${pkgver}.tar.gz")
-sha256sums=('604395a6b736461a38ad3e93aef9cd60769075ccbc9dc03b4e42cbb766e74375')
+sha256sums=('f2b31a3d5152fd50d6a9fae1e019dcf3d0823f5968d5fbe344478c524afa7d9f')
 
 prepare() {
   cd "$srcdir/ags-v.${pkgver}"
   sed -i 's/-Wfatal-errors\ //' Engine/Makefile-defs.linux
+
+  # Can be removed onnext release
+  # (see https://github.com/adventuregamestudio/ags/issues/327)
   sed -i 's/-ldumb/-ldumb -lm/' Engine/Makefile-defs.linux
 }
 
