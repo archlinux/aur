@@ -6,7 +6,7 @@
 
 pkgname=modeller
 pkgver=9.16
-pkgrel=2
+pkgrel=3
 pkgdesc="3D Structure Homology Modeller"
 arch=('i686' 'x86_64')
 url="http://salilab.org/modeller/"
@@ -81,6 +81,11 @@ package() {
     done
     ln -s "$_MODINSTALL/lib/$_EXECUTABLE_TYPE/python2.5/_modeller.so" "$pkgdir/usr/lib/python2.7/site-packages/_modeller.so"
     ln -s "$_MODINSTALL/lib/$_EXECUTABLE_TYPE/python3.3/_modeller.so" "$pkgdir/usr/lib/python3.5/site-packages/_modeller.so"
+
+    # add profile.d file
+    install -dm755 "$pkgdir/etc/profile.d"
+    echo "export MODINSTALL${pkgver/./v}='/usr/lib/modeller'" > "$pkgdir/etc/profile.d/$pkgname.sh"
+    chmod 755 "$pkgdir/etc/profile.d/$pkgname.sh"
 
     # install license
     install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
