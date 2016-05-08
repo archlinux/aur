@@ -1,5 +1,5 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
-# Contributor:: Evangelos Foutras <evangelos@foutrelis.com>
+# Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: tobias [tobias at archlinux.org]
 
 pkgname=mousepad-gtk3
@@ -8,13 +8,12 @@ pkgver=0.4.0
 pkgrel=2
 pkgdesc="Simple text editor for Xfce"
 arch=('i686' 'x86_64')
-url=http://www.xfce.org/
+url="http://www.xfce.org/"
 license=('GPL2')
 groups=('xfce4-goodies')
 depends=('gtksourceview3' 'dbus-glib' 'dconf' 'desktop-file-utils')
 makedepends=('intltool' 'perl')
 conflicts=('mousepad')
-install=${_pkgname}.install
 source=(http://archive.xfce.org/src/apps/${_pkgname}/${pkgver%.*}/${_pkgname}-$pkgver.tar.bz2)
 md5sums=('f55314c5dda6323883241e6cf01550a7')
 
