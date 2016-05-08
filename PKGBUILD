@@ -1,5 +1,5 @@
 pkgname=mariadb-connector-c
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="MariaDB Connector/C is used to connect applications developed in C/C++ to MariaDB and MySQL databases."
 arch=('i686' 'x86_64')
@@ -8,14 +8,17 @@ license=("LGPL")
 depends=('openssl' 'zlib')
 makedepends=('cmake')
 source=("https://downloads.mariadb.org/interstitial/connector-c-${pkgver}/mariadb-connector-c-${pkgver}-src.tar.gz")
-sha1sums=('68a7a9175bddc8717aefad3b82186af39d26f8d8')
+sha1sums=('89031eeb4cf56affea30a3d66ff2c6c29462da3d')
 
-build() {
-  cd "$srcdir/"
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}-src"
 
   rm -rf build
   mkdir build
-  cd build
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}-src/build"
 
   cmake \
       -DCMAKE_BUILD_TYPE=RELEASE \
@@ -30,7 +33,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/build"
+  cd "${srcdir}/${pkgname}-${pkgver}-src/build"
 
   make DESTDIR="${pkgdir}" install
 }
