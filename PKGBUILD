@@ -16,7 +16,6 @@ url="http://www.opendesign.com/guestfiles"
 license=('custom')
 conflicts=('teighaviewer-qt4')
 depends=('qt5-base' 'libxfixes' 'libgl' 'libxkbcommon-x11' 'bash' 'hicolor-icon-theme')
-install=${pkgname}.install
 source=('license')
 DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 source_i686=(https://www.opendesign.com/files/guestdownloads/TeighaViewer/TeighaViewer_QT5_lnxX86_4.7dll.deb)
