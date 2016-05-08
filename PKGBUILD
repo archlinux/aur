@@ -9,7 +9,7 @@ license=(GPL3)
 arch=(any)
 depends=(btfs xdg-utils python-xdg python-pytoml python-bencodepy)
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('ba9824f8d1cfd8423e4124d45a7050ea85234bc63530318015854b74fae14e89')
+sha256sums=('fec0efc51fb3d46fc9de97ede7bf13926d521c5c322def70e6d6f1b19c987a8f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
