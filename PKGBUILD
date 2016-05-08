@@ -1,7 +1,7 @@
 # Maintainer: Alexandr Boiko <brdcom@ya.ru>
 pkgname=accel-ppp-git
 pkgver=r1344.f5a97ed
-pkgrel=3
+pkgrel=4
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
@@ -24,7 +24,7 @@ source=('accel-ppp::git+git://git.code.sf.net/p/accel-ppp/code'
 md5sums=('SKIP'
          '0536dd60960e76cf5a6cdbf0518782d8'
          '816dd5ea9534a077dfd63b6cd529738a'
-         '5be7d42b434b74d7e692b19a9e3c4297'
+         '312fd63b9688a05b71a6b33ddd3a9f4b'
          '6fba5fa70c43eb4b5bd44e392c963ec5'
          '4e0d4fc5975ea8794ea286e8fbfa56cd'
          '7e58716f1249f924ce218bd348d4c03a')
@@ -73,7 +73,6 @@ package() {
 	[ -d "$pkgdir/usr/lib64" ] && mv "$pkgdir/usr/lib64" "$pkgdir/usr/lib"
 	install -dm0755 "$pkgdir/etc/logrotate.d"
 	install -dm0755 "$pkgdir/etc/snmp"
-	install -dm0755 "$pkgdir/var/lib/accel-ppp"
 	touch "$pkgdir/etc/snmp/$_pkgname.conf"
 	install -Dm0644 "$srcdir/$_pkgname/README" "$pkgdir/usr/share/doc/$_pkgname/README"
 	install -Dm0644 "$srcdir/accel-pppd.service" "$pkgdir/usr/lib/systemd/system/accel-pppd.service"
