@@ -38,7 +38,6 @@ optdepends=('pycddb: CD metadata retrieval'
 	'moodbar: moodbar plugin'
 	'python2-mmkeys: XKeys plugin')
 source=("https://github.com/exaile-dev/exaile/archive/$pkgver.tar.gz")
-install=$pkgname.install
 sha512sums=('9337b86ed2f6a13071615bd46a7a05a6564011a4e1fef4cb42925336864c07854cfe497d8defe65c4e287fd9546de6a51543180c5ce6a84525506e57209914be')
 
 build() {
