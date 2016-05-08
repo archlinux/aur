@@ -1,11 +1,11 @@
-# $Id: PKGBUILD 265821 2016-04-21 19:11:15Z tpowa $
+# $Id: PKGBUILD 267196 2016-05-07 19:06:47Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-c720       # Build kernel with a different name
 _srcname=linux-4.5
-pkgver=4.5.2
+pkgver=4.5.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -24,10 +24,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
             'SKIP'
-            'a9913a04ddbd06acde9b00b3179c41fddb99f61168ef5d01d3e8cf72385038b1'
+            '02a1a3fb190031130f6a304a1d3ebb72ce0b4e6dcc608c9e423780e4df10dec7'
             'SKIP'
             '56a56f6b0d8edaa6f58342ab9d54392503dfa6ca884a0b936cbf0206604758d2'
-            'a620878880ff170db3901cca2d6f331b7d2ab2e45446ad267577fa3ae113159e'
+            '9f47a5804452f97de5fdc44f670fd50e2561f19f7e4ec1857cea0bdbe5612db5'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
