@@ -6,7 +6,7 @@
 
 pkgname=med-openmpi
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - MED is code-aster exchange module linked to hdf5"
 url="http://www.code-aster.org/outils/med/"
 license=("LGPL")
@@ -17,13 +17,16 @@ conflicts=('med')
 replaces=('med')
 arch=('i686' 'x86_64')
 source=("http://files.salome-platform.org/Salome/other/${pkgname//-openmpi/}-${pkgver}.tar.gz"
-	h5public_extract.patch)
+	"h5public_extract.patch"
+	"signature_conflict_fix.patch")
 md5sums=('a1e1eb068f20634f5ea797914241eb51'
-         '156ab9456bab7b70237d0fc785b97e7c')
+         '156ab9456bab7b70237d0fc785b97e7c'
+         '1e9f5c1ff2ecc08d8179178eebe03882')
 
 prepare() {
   cd ${srcdir}/${pkgname//-openmpi/}-${pkgver}_SRC || return 1
   patch -Np1 -i ../h5public_extract.patch
+  patch -Np1 -i ../signature_conflict_fix.patch
 }
 
 build() {
