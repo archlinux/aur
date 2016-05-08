@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/Streetwalrus/shogun"
 license=('MIT')
 depends=('python>=3.5' 'python-jinja>=2.0' 'ninja')
+makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/Streetwalrus/shogun/archive/v$pkgver.tar.gz")
 md5sums=('8fc645550ed537b33692a064953aa925')
