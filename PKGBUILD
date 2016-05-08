@@ -2,7 +2,7 @@
 
 pkgname=nodejs-riot
 _npmname=riot
-pkgver=2.3.18
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A React-like user interface micro-library"
 arch=('any')
