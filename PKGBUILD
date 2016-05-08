@@ -4,11 +4,11 @@ pkgver=0.3.r0.g9e9c603
 pkgrel=1
 pkgdesc="Racket script to show system information, lightweight alternative to screenfetch."
 arch=('any')
-url="https://github.com/telegram-wired/infornography"
+url="https://github.com/goodmind/infornography"
 license=('MIT')
 depends=('racket')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/telegram-wired/infornography.git")
+source=("$pkgname::git+https://github.com/goodmind/infornography.git")
 md5sums=('SKIP')
 
 pkgver() {
