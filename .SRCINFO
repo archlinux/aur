@@ -1,7 +1,7 @@
 pkgbase = i3-gaps-next-git
 	pkgdesc = A fork of i3wm tiling window manager (development branch) with more features, including gaps
 	pkgver = 4.12.77.ge7dbfac
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Airblader/i3/tree/gaps-next
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = i3-gaps-next-git
 	depends = pango
 	depends = perl
 	depends = xcb-util-cursor
+	depends = xcb-util-xrm
 	depends = libxkbcommon-x11
 	optdepends = rxvt-unicode: The terminal emulator used in the default config.
 	optdepends = dmenu: As menu.
