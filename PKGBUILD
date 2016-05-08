@@ -2,8 +2,8 @@
 # Maintainer: Zeph <zeph33@gmail.com>
 
 pkgname=pamac-aur
-pkgver=4.0rc2
-_pkgver=24090fafce8ca7138cc5ebe5aa914165fa8e3bd9
+pkgver=4.0
+_pkgver=4.0.0
 pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm"
 arch=('any')
@@ -21,8 +21,8 @@ conflicts=('pamac')
 options=(!emptydirs)
 install=pamac.install
 
-source=("pamac-$pkgver-$pkgrel.tar.xz::https://github.com/manjaro/pamac/archive/$_pkgver.tar.gz")
-sha256sums=('10fceb76697b120681ca1a8476299f840af1133574583d01879dc22a07948587')
+source=("pamac-$pkgver-$pkgrel.tar.gz::https://github.com/manjaro/pamac/archive/v$_pkgver.tar.gz")
+sha256sums=('4a6a592b47713f6c9d058c240386f4f9456362ecda33251b324e18410d2e70d1')
   
 prepare() {
   # adjust version string
