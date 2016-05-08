@@ -1,7 +1,7 @@
 # Contributor: SSF <punx69 at gmx dot net>
 
 pkgname=thinkfan-git
-pkgver=1.0_beta1.r1.72bb1ff
+pkgver=1.0_beta2.r0.f48e803
 pkgrel=1
 pkgdesc="The minimalist fan control program"
 arch=('i686' 'x86_64')
@@ -22,9 +22,6 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-
-  # fix cmake file
-  sed -i 's/^\(install(FILES \)NEWS /\1/' CMakeLists.txt
 
   cmake -DUSE_ATASMART:BOOL=ON \
         -DCMAKE_BUILD_TYPE:STRING="Release" \
