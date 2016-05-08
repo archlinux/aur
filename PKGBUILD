@@ -7,7 +7,7 @@ _pkgname=xfce4-settings
 pkgname=xfce4-settings-blank-screen-fix
 conflicts=('xfce4-settings')
 pkgver=4.12.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Settings manager for xfce with fix for blank screen bug"
 arch=('i686' 'x86_64')
 url="http://www.xfce.org/"
@@ -17,7 +17,6 @@ depends=('exo' 'garcon' 'libxfce4ui' 'libnotify' 'libxklavier'
          'gnome-icon-theme' 'gnome-themes-standard')
 makedepends=('intltool' 'xf86-input-libinput')
 optdepends=('libcanberra: for sound control')
-install=$_pkgname.install
 source=(http://archive.xfce.org/src/xfce/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2
         default-xsettings-xml.patch
         blank-screen-fix.patch)
