@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonyJD dot net
 pkgname=debhelper-python2
 _pkgname=python-defaults
-pkgver=2.7.9
+pkgver=2.7.11
 pkgrel=1
 _pkgrel=1
 pkgdesc="debhelper scripts for Python 2: pyversions, python2.pm"
@@ -21,7 +21,7 @@ backup=()
 options=()
 install=
 source=(http://ftp.debian.org/debian/pool/main/p/$_pkgname/${_pkgname}_$pkgver-$_pkgrel.tar.gz makefile_supported.patch)
-md5sums=('8e24223ea104fe178162180fa62f6625'
+md5sums=('0f119432bf36065d00f836ccc9a2f1d6'
          'ba61b80b7461b85283b6695e1bf6a768')
 
 prepare() {
