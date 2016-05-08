@@ -1,5 +1,5 @@
 # Contributor: Vryali <vryali at gmail dot com>
-# Maintainer: josephgbr <rafael.f.f1@gmail.com>
+# Maintainer: rafaelff <rafaelff@gnome.org>
 
 # NOTE: the source gw802linuxclientmulti is a ~200MB file,
 #       but the package to be installed has only ~56MB.
@@ -14,7 +14,7 @@ url="http://gwclient.provo.novell.com/"
 arch=('i686' 'x86_64')
 license=(custom)
 install=$pkgname.install
-depends=('libgnome' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('libgnome' 'gtk-update-icon-cache' 'desktop-file-utils')
 depends_i686=('glibc' 'libstdc++5' 'java-runtime' 'libxrender' 'libgnome' 'libxt')
 depends_x86_64=('lib32-glibc' 'lib32-libstdc++5' 'java32-runtime' 'lib32-libxrender' 'lib32-libxt')
 makedepends=('rpmextract' 'prelink')
