@@ -1,27 +1,26 @@
 # Maintainer: Johannes Dewender  arch at JonnyJD dot net
 pkgname=coverity-submit
-pkgver=1.13
+pkgver=1.17
 pkgrel=1
 pkgdesc="Submitting Coverity builds"
 arch=('any')
 url="http://www.catb.org/esr/coverity-submit/"
 license=('BSD')
-depends=('python2' 'curl')
+depends=('python' 'curl')
 optdepends=('cov-analysis: available after login at coverity')
 makedepends=('pychecker')
 source=(http://www.catb.org/~esr/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('afc40b86f9911617b5c309d3330a65c8')
+md5sums=('513c97c376542cae7560a9be3ee29dc1')
 
-build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	sed -i -e "s|/usr/bin/env python|/usr/bin/env python2|" coverity-submit
+#build() {
+#	cd "$srcdir/$pkgname-$pkgver"
 	# make build builds the man page, which doesn't work for unknown reasons
-}
+#}
 
-check() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make pychecker
-}
+#check() {
+#	cd "$srcdir/$pkgname-$pkgver"
+#	make pychecker
+#}
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
