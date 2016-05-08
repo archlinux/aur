@@ -1,7 +1,7 @@
 # Maintainer: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=girl
-pkgver=8.0.1
+pkgver=8.4.2
 pkgrel=1
 pkgdesc="GNOME Internet Radio Locator"
 arch=(i686 x86_64)
@@ -9,13 +9,12 @@ license=(GPL)
 depends=(libgnomeui totem streamripper desktop-file-utils)
 makedepends=(intltool)
 url="https://wiki.gnome.org/Apps/Girl"
-install=girl.install
 source=(https://download.gnome.org/sources/$pkgname/${pkgver:0:3}/$pkgname-$pkgver.tar.xz)
-sha256sums=('a2fa78b0b9e61842f85c1ba371b6c61d20d48a3a2672a2e3871b2135bc177db2')
+sha256sums=('408be03ee949ce3582db6d14001e9c3d9157ee8600d3bf6b10895630bfeef866')
 
 build() {
   cd $pkgname-$pkgver
-  ./configure --prefix=/usr --with-recording
+  ./configure --prefix=/usr --with-recording --enable-gtk-doc
   make
 }
 
