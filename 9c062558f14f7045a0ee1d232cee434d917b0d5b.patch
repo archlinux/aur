@@ -1,0 +1,70 @@
+From 9c062558f14f7045a0ee1d232cee434d917b0d5b Mon Sep 17 00:00:00 2001
+From: Michael Grant <mgrant@hcn-inc.com>
+Date: Thu, 12 Mar 2015 23:39:23 -0400
+Subject: [PATCH] Fixes Issue#43
+ (https://github.com/pysimplesoap/pysimplesoap/issues/43) "Python3 give syntax
+ errors when installing from pypi"
+
+---
+ pysimplesoap/c14n.py   | 8 ++++----
+ pysimplesoap/xmlsec.py | 7 ++++---
+ 2 files changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/pysimplesoap/c14n.py b/pysimplesoap/c14n.py
+index be2180a..5749e49 100644
+--- a/pysimplesoap/c14n.py
++++ b/pysimplesoap/c14n.py
+@@ -174,7 +174,7 @@ def __init__(self, node, write, **kw):
+         elif node.nodeType == Node.DOCUMENT_TYPE_NODE:
+             pass
+         else:
+-            raise TypeError, str(node)
++            raise TypeError(str(node))
+ 
+ 
+     def _inherit_context(self, node):
+@@ -217,7 +217,7 @@ def _do_document(self, node):
+             elif child.nodeType == Node.DOCUMENT_TYPE_NODE:
+                 pass
+             else:
+-                raise TypeError, str(child)
++                raise TypeError(str(child))
+     handlers[Node.DOCUMENT_NODE] = _do_document
+ 
+ 
+@@ -346,9 +346,9 @@ def _do_element(self, node, initial_other_attrs = [], unused = None):
+                     
+                 if not ns_rendered.has_key(prefix) and not ns_local.has_key(prefix):
+                     if not ns_unused_inherited.has_key(prefix):
+-                        raise RuntimeError,\
++                        raise RuntimeError(\
+                             'For exclusive c14n, unable to map prefix "%s" in %s' %(
+-                            prefix, node)
++                            prefix, node))
+                     
+                     ns_local[prefix] = ns_unused_inherited[prefix]
+                     del ns_unused_inherited[prefix]
+diff --git a/pysimplesoap/xmlsec.py b/pysimplesoap/xmlsec.py
+index 4cb5fa9..2127c26 100644
+--- a/pysimplesoap/xmlsec.py
++++ b/pysimplesoap/xmlsec.py
+@@ -203,15 +203,16 @@ def x509_verify(cacert, cert, binary=False):
+ if __name__ == "__main__":
+     # basic test of enveloping signature (the reference is a part of the xml)
+     sample_xml = """<Object xmlns="http://www.w3.org/2000/09/xmldsig#" Id="object">data</Object>"""
+-    print canonicalize(sample_xml)
++    output = canonicalize(sample_xml)
++    print (output)
+     vars = rsa_sign(sample_xml, '#object', "no_encriptada.key", "password")
+-    print SIGNED_TMPL % vars
++    print (SIGNED_TMPL % vars)
+ 
+     # basic test of enveloped signature (the reference is the document itself)
+     sample_xml = """<?xml version="1.0" encoding="UTF-8"?><Object>data%s</Object>"""
+     vars = rsa_sign(sample_xml % "", '', "no_encriptada.key", "password",
+                     sign_template=SIGN_ENV_TMPL, c14n_exc=False)
+-    print sample_xml % (SIGNATURE_TMPL % vars)
++    print (sample_xml % (SIGNATURE_TMPL % vars))
+ 
+     # basic signature verification:
+     public_key = x509_extract_rsa_public_key(open("zunimercado.crt").read())
