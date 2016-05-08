@@ -1,4 +1,5 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
+# Contributor: simonp
 # Contributor: Martin Ortbauer <mortbauer@gmail.com>
 # Original: Michele Mocciola <mickele>
 # Contributor: Brice Méalier <mealier_brice@yahoo.fr>
