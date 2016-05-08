@@ -27,7 +27,7 @@ build() {
   [ -d build ] && rm -rf build
   mkdir build
   cd build
-  ../configure --prefix=/usr --libexecdir=/usr/lib \
+  ../configure --prefix=/usr --exec-prefix=/usr --libexecdir=/usr/lib \
 	       --enable-maintainer-mode --disable-rpath \
 	       --with-libiconv --with-readline
   make
