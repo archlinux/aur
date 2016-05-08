@@ -1,0 +1,15 @@
+pkgbase = limf-git
+	pkgdesc = A tool for uploading files to pomf.se clones
+	pkgver = 140
+	pkgrel = 1
+	url = http://github.com/lich/limf
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-requests
+	source = git+https://github.com/lich/limf.git
+	md5sums = SKIP
+
+pkgname = limf-git
+
