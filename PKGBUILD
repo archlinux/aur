@@ -8,7 +8,7 @@ pkgdesc="Simple service menu that show the mediainfo about the selected media."
 arch=('any')
 url="http://kde-apps.org/content/show.php?action=content&content=141946"
 license=('GPL')
-depends=('kdebase-dolphin' 'kdebase-kdialog' 'mediainfo')
+depends=('dolphin' 'kdebase-kdialog' 'mediainfo')
 source=(http://kde-apps.org/CONTENT/content-files/141946-MediaInfoKDE.desktop)
 md5sums=('8a14b856b510378a2dcf8bc4d2eec0c8')
 
