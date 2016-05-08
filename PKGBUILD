@@ -19,10 +19,12 @@ optdepends=('asciidoc: required to produce the HTML version of the FAQ'
 	'curl: required for remote monitoring'
 	'libgtop: required for CPU usage')
 conflicts=('libappindicator-gtk2' 'libappindicator-activate-gtk2' 'libappindicator-gtk2-ubuntu' 'lib32-libappindicator-gtk2')
-source=("http://wpitchoune.net/$pkgname/files/$pkgname-$pkgver.tar.gz"
+source=("http://wpitchoune.net/$pkgname/files/$pkgname-$pkgver.tar.gz"{,.asc}
 	"psensor-libmicrohttpd.patch")
 md5sums=('c3a3c1dea4dbfe12bbfb8088b86c3d4f'
+         'SKIP'
          '6d0414028c191c9c88f42dc765f3ecfd')
+validpgpkeys=('BB5213F337DAF58190686F07733A866882A3F5F6') # Jean-Philippe Orsini
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
