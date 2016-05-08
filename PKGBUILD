@@ -3,14 +3,15 @@
 _pkgbase=schroedinger
 pkgname=lib32-${_pkgbase}
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="An implemenation of the Dirac video codec in ANSI C code (32 bit)"
 arch=('x86_64')
-url="http://www.diracvideo.org/"
+#url="http://www.diracvideo.org/"
+url="https://launchpad.net/schroedinger/"
 license=('GPL2' 'LGPL2.1' 'MPL' 'MIT')
 depends=('lib32-orc' 'lib32-gcc-libs' "${_pkgbase}")
 makedepends=('gcc-multilib')
-source=(http://www.diracvideo.org/download/schroedinger/${_pkgbase}-${pkgver}.tar.gz)
+source=(http://launchpad.net/$_pkgbase/trunk/$pkgver/+download//${_pkgbase}-${pkgver}.tar.gz)
 md5sums=('da6af08e564ca1157348fb8d92efc891')
 
 build() {
