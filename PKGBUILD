@@ -78,10 +78,3 @@ package() {
 	install -Dm0644 "$srcdir/$pkgname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-md5sums=('31f8408691b67e1504e31b6773d2d9d1'
-         '0536dd60960e76cf5a6cdbf0518782d8'
-         '816dd5ea9534a077dfd63b6cd529738a'
-         '312fd63b9688a05b71a6b33ddd3a9f4b'
-         '6fba5fa70c43eb4b5bd44e392c963ec5'
-         '4e0d4fc5975ea8794ea286e8fbfa56cd'
-         '7e58716f1249f924ce218bd348d4c03a')
