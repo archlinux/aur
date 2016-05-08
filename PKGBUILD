@@ -5,7 +5,7 @@
 #Contributor: Ariel Kanterewicz <asdkant@gmail.com>
 
 pkgname=qbzr
-pkgver=0.23.1
+pkgver=0.23.2
 pkgrel=1
 pkgdesc="A GUI front end for Bazaar based on the Qt toolkit."
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('python2-pygments: for syntax highlighting'
 'python2-pyenchant: for spell checking in commit dialogs')
 
 source=("http://launchpad.net/${pkgname}/${pkgver%.*}/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
-md5sums=('594796b2cf9887d895545d7ed84e3879')
+md5sums=('d5e913bdc2cb94d084c196dfed6d3275')
 
 prepare() {
 	cd ${srcdir}/${pkgname}
