@@ -1,6 +1,6 @@
 pkgbase = routersploit
 	pkgdesc = An open-source exploitation framework dedicated to embedded devices.
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/reverse-shell/routersploit
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = routersploit
 	depends = python2-beautifulsoup4
 	depends = python2-pysnmp
 	conflicts = routersploit-git
-	source = https://github.com/reverse-shell/routersploit/archive/v2.0.0.tar.gz
-	md5sums = e6403d0f7a7fdb51183b62df0eb09225
+	source = https://github.com/reverse-shell/routersploit/archive/v2.1.0.tar.gz
+	md5sums = c36bba4da755332d48ef84d1e4659025
 
 pkgname = routersploit

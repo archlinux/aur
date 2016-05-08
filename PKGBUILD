@@ -1,7 +1,7 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgname=routersploit
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="An open-source exploitation framework dedicated to embedded devices."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/reverse-shell/routersploit"
 depends=('readline' 'python2-requests' 'python2-paramiko' 'python2-beautifulsoup4' 'python2-pysnmp')
 conflicts=("${pkgname}-git")
 source=("https://github.com/reverse-shell/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('e6403d0f7a7fdb51183b62df0eb09225')
+md5sums=('c36bba4da755332d48ef84d1e4659025')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
