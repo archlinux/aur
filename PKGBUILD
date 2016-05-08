@@ -2,7 +2,7 @@
 
 pkgname=ygopro
 pkgver=1.033.7
-pkgrel=2
+pkgrel=3
 pkgdesc="YGOPRO is a free online dueling system made for playing Yu-Gi-Oh! duels."
 arch=('i686' 'x86_64')
 url='https://github.com/cromerc/ygopro'
@@ -11,13 +11,14 @@ depends=('openal' 'openssl' 'freetype2' 'libevent' 'lua52' 'libcurl-compat')
 backup=(opt/ygopro/system.conf)
 source=("https://github.com/cromerc/ygopro/archive/${pkgver}-${pkgrel}.tar.gz")
 sha256sums=('003226eccdfbfe4855c17b303eb2fc8ac84d8dffe1fefd36110c941744e846de')
+options=('!strip' 'emptydirs')
 
 package() {
 	cd "${srcdir}/ygopro-${pkgver}-${pkgrel}"
 	mkdir -pv "$pkgdir/usr/share/pixmaps"
 	mkdir -pv "$pkgdir/usr/share/applications"
 	mv -v "YGOPro.png" "$pkgdir/usr/share/pixmaps/YGOPro.png"
-    mv -v "YGOPro.desktop" "$pkgdir/usr/share/applications/YGOPro.desktop"
+	mv -v "YGOPro.desktop" "$pkgdir/usr/share/applications/YGOPro.desktop"
 	mkdir -pv "$pkgdir/opt/ygopro"
 	cp -dRv * "$pkgdir/opt/ygopro"
 	cd "$pkgdir/opt/ygopro"
