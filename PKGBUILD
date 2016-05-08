@@ -1,7 +1,7 @@
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 # Contributor: Bartosz Feński <fenio@debian.org>
 pkgname=dh-make
-pkgver=2.201605
+pkgver=2.201606
 pkgrel=1
 pkgdesc="tool that converts source archives into Debian package source"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://packages.debian.org/sid/dh-make"
 license=('GPL')
 depends=('dpkg' 'perl' 'make')
 source=(http://ftp.debian.org/debian/pool/main/d/$pkgname/${pkgname}_$pkgver.tar.xz)
-sha256sums=('19a0bf5179d600785177aaf3d74ecedf7f565a5b8b609f5a947d5c8c51275aa9')
+sha256sums=('a86c2a80d1e5d3d3c9a15eca4beed28e0a0a2f99bdb8f756a0abfdd6005c10ec')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
