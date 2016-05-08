@@ -14,7 +14,6 @@ license=('GPL')
 depends=('pygtk' 'python2-pysqlite' 'usermode>=1.36')
 makedepends=('intltool' 'gettext' 'python2' 'desktop-file-utils')
 options=(!emptydirs)
-install=$pkgname.install
 source=("${_pkgname}::svn+https://svn.code.sf.net/p/gnetworkmonitor/code/trunk")
 md5sums=('SKIP')
 
