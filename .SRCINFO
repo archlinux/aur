@@ -1,5 +1,5 @@
 pkgbase = terminus-font-ttf
-	pkgdesc = Monospaced bitmap font designed for long work with computers (TTF version)
+	pkgdesc = Monospaced bitmap font designed for long work with computers (TTF version, mainly for Java applications)
 	pkgver = 4.40.1
 	pkgrel = 1
 	url = http://files.ax86.net/terminus-ttf
