@@ -1,5 +1,5 @@
-pkgbase = grub-git
-	pkgdesc = GNU GRand Unified Bootloader (2) - GIT Version
+pkgbase = grub-f2fs
+	pkgdesc = GNU GRand Unified Bootloader (2) - GIT Version with F2FS Support
 	pkgver = 2.02.beta2.428.g697ecef
 	pkgrel = 1
 	url = https://www.gnu.org/software/grub/
@@ -30,6 +30,7 @@ pkgbase = grub-git
 	optdepends = libisoburn: Provides xorriso for generating grub rescue iso using grub-mkrescue
 	optdepends = os-prober: To detect other OSes when generating grub.cfg in BIOS systems
 	optdepends = mtools: For grub-mkrescue FAT FS support
+	optdepends = f2fs-tools: For f2fs filesystem support
 	provides = grub=2.02.beta2.428.g697ecef
 	provides = grub-common=2.02.beta2.428.g697ecef
 	provides = grub-bios=2.02.beta2.428.g697ecef
@@ -43,6 +44,7 @@ pkgbase = grub-git
 	conflicts = grub-emu
 	conflicts = grub-bzr
 	conflicts = grub-legacy
+	conflicts = grub-git
 	options = !makeflags
 	backup = boot/grub/grub.cfg
 	backup = etc/default/grub
@@ -53,6 +55,7 @@ pkgbase = grub-git
 	source = http://ftp.gnu.org/gnu/unifont/unifont-6.3.20131217/unifont-6.3.20131217.bdf.gz.sig
 	source = grub-10_linux-detect-archlinux-initramfs.patch
 	source = grub-add-GRUB_COLOR_variables.patch
+	source = grub-add-f2fs-support-v8.patch
 	source = 60_memtest86+
 	source = grub.default
 	source = grub.cfg
@@ -62,9 +65,10 @@ pkgbase = grub-git
 	sha1sums = SKIP
 	sha1sums = 7ffd63c38d74f969f72e38fea3500345c5b968b2
 	sha1sums = c03d2ea83aa6a44dc383fbf67c29c20469e57f1b
+	sha1sums = 13ef175e398f56af052330331a54b853e0f29031
 	sha1sums = 10e30eb68fb95c86301112ac95c5b7515413152a
 	sha1sums = 55cf103b60f405bd37d44dd24357dedfff0214ee
 	sha1sums = 5b7fcb0718a23035c039eb2fda9e088bb13ae611
 
-pkgname = grub-git
+pkgname = grub-f2fs
 
