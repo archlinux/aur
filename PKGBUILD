@@ -1,8 +1,8 @@
 # Contributor: Johannes Dewender   arch at JonnyJD dot net
 pkgname=('php-musicbrainz')
 _pkgname=MusicBrainz
-pkgver=0.2.1
-pkgrel=2
+pkgver=0.2.2
+pkgrel=1
 pkgdesc="PHP library to access MusicBrainz's Web Service v2"
 arch=('any')
 url="https://github.com/mikealmond/MusicBrainz"
@@ -14,7 +14,7 @@ optdepends=(
 )
 
 source=(https://github.com/mikealmond/$_pkgname/archive/v$pkgver.tar.gz)
-sha256sums=('55ec80f4156a6ed0a5054bdc0c7d9c2473281f919fe1c9982b899f96a453b2b8')
+sha256sums=('ee53a5dd0f20a30ab86388523ac16c57af5d507afa93478577eda388463ed027')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
