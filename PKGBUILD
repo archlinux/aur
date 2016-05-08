@@ -4,7 +4,7 @@
 pkgname=nemo-image-converter
 pkgver=3.0.0
 _mintrel=betsy
-pkgrel=1
+pkgrel=2
 pkgdesc="nemo extension to mass resize or rotate images"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo-extensions"
