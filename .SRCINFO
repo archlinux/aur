@@ -1,0 +1,25 @@
+pkgbase = codexl-bin
+	pkgdesc = Comprehensive tool suite that enables developers to harness the benefits of CPUs, GPUs and APUs
+	pkgver = 2.0.12400
+	pkgrel = 1
+	url = http://gpuopen.com/compute-product/codexl/
+	arch = x86_64
+	license = MIT
+	depends = libpng12
+	depends = libgl
+	depends = libcl
+	depends = xorg-xhost
+	noextract = CodeXL_Linux_x86_64_2.0.12400.tar.gz
+	options = staticlibs
+	options = libtool
+	options = !strip
+	options = !upx
+	source = https://github.com/GPUOpen-Tools/CodeXL/releases/download/v2.0/CodeXL_Linux_x86_64_2.0.12400.tar.gz
+	source = codexl.png
+	source = codexl.desktop
+	md5sums = ee622a5d41b8115e2ab274800d812552
+	md5sums = 34792207ff65c7b2314a9bd8cbeb4e1f
+	md5sums = a80e16b7378abdd3e0d6d34e485246e1
+
+pkgname = codexl-bin
+
