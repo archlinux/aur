@@ -2,9 +2,9 @@
 # Maintainer: Scott Furry <scott.wl.furry@gmail.com>
 
 pkgname=musicqueue
-_incr="6"
+_incr="7"
 pkgver="0.4.${_incr}"
-pkgrel="3"
+pkgrel="1"
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
 url='http://musicqueue.furcat.ca/'
@@ -18,7 +18,7 @@ optdepends=('gstreamer0.10-good-plugins: Support for additional file formats'
             'gvfs: Support for external devices')
 source=("${pkgname}-${pkgver}.tar.gz::\
 https://gitlab.com/digifuzzy/${pkgname}/repository/archive.tar.gz?ref=v${pkgver}")
-sha256sums=('48126858f947d6c688cb8a680e2ae6fc4b6986253cbfc8995c76bbed02e6af68')
+sha256sums=('99913c388eedda4e82a61002bb1ee7d34dce47784110acc30d5985cff173e0ec')
 BUILDFLDR='localbuild'
 
 prepare() {
