@@ -8,6 +8,7 @@ pkgbase = xcb-util-xrm
 	license = MIT
 	makedepends = git
 	makedepends = xorg-util-macros
+	makedepends = xcb-util
 	depends = libxcb
 	provides = xcb-util-xrm
 	conflicts = xcb-util-xrm-git
