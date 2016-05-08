@@ -7,7 +7,6 @@ arch=('i686' 'x86_64')
 license=(custom)
 provides=('nmclient')
 conflictis=('nmclient2')
-install=$pkgname.install
 depends=('bash' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('unzip' 'rpmextract')
 depends_i686=('jre' 'glib2' 'libxext' 'gtk2')
