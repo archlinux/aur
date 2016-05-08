@@ -9,7 +9,7 @@ url="http://swift.org/"
 license=('apache')
 depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
          'sqlite' 'ncurses')
-makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.6' 'python2-six' 'perl'
+makedepends=('git' 'cmake' 'ninja' 'swig' 'clang-svn' 'python2-six' 'perl'
              'binutils>=2.26')
 source=(
     "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
