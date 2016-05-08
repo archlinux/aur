@@ -22,7 +22,7 @@ pkgname=(
          'papirus-vlc-theme-git'
          'papirus-yakuake-theme-git' 
          )
-pkgver=r624.eda134b
+pkgver=r628.b3cc033
 pkgrel=1
 pkgdesc="Papirus Suite for KDE (git version)"
 arch=('any')
@@ -268,7 +268,7 @@ package_papirus-yakuake-theme-git() {
     depends=('yakuake')
     optdepends=()
     conflicts=('papirus-yakuake-theme' 'yakuake-skin-papirus' 'yakuake-skin-papirus-dark' 'yakuake-skin-papirus-dark-frameworks' 'yakuake-skin-papirus-frameworks')
-    install -dm755 ${pkgdir}/usr/share/{apps/yakuake/skins,yakuake/skins}
+    install -dm755 ${pkgdir}/usr/share/yakuake/skins
     cp -r ${srcdir}/${_pkgname}/kde-pack/yakuake-skins/papirus* ${pkgdir}/usr/share/yakuake/skins/
     find "${pkgdir}" -type f -exec chmod 644 {} +
     find "${pkgdir}" -type d -exec chmod 755 {} +
