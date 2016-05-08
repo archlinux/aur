@@ -1,4 +1,4 @@
-# Maintainer: josephgbr <rafael.f.f1@gmail.com>
+# Maintainer: rafaelff <rafaelff@gnome.org>
 # Co-maintainer: Quintus <quintus@quintilianus.eu>
 
 pkgname=tsc
@@ -11,7 +11,6 @@ url="http://www.secretchronicles.de/en/"
 license=('GPL3')
 depends=("sdl_image" "sdl_ttf" "sdl_mixer" "devil" "boost-libs" "libxml++" "glew" "pcre" "gtk-update-icon-cache")
 makedepends=("cmake" "ruby" "gperf" "pkg-config" "bison" "boost" "gettext")
-install="$pkgname.install"
 source=("ftp://ftp.secretchronicles.de/releases/TSC-$_ver.tar.xz" "fix-manpage.patch")
 sha256sums=("c8a9ca3975f9de16aa59fab2a7864c3c541963b46c2c40533632c4fc621b407a"
 	        "eb4ac81523e4367ebc9c907e1a4a1d08fec3ddcbca83febaef81eb727a2a8c1f")
