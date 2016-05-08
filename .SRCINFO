@@ -1,0 +1,29 @@
+pkgbase = dnsdist
+	pkgdesc = Highly DNS-, DoS- and abuse-aware loadbalancer
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://dnsdist.org/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = boost
+	makedepends = git
+	makedepends = pandoc
+	makedepends = ragel
+	depends = libedit
+	depends = libsodium
+	depends = libsystemd
+	depends = lua52
+	depends = protobuf
+	provides = dnsdist
+	conflicts = dnsdist
+	source = https://downloads.powerdns.com/releases/dnsdist-1.0.0.tar.bz2
+	source = https://downloads.powerdns.com/releases/dnsdist-1.0.0.tar.bz2.asc
+	validpgpkeys = B76CD4671C0968BAA87DE61C5E50715BF2FFE1A7
+	md5sums = b3bd87d28965eced28feac651b174935
+	md5sums = SKIP
+	sha512sums = 89a926900c0fb16ed64dce1bc5a075899633ede7e4539bc17b388d4535aa751f2649bc66c77cff15bf964371ee44b7fbfa55c08eec625d72eb0eeab590e2cc14
+	sha512sums = SKIP
+
+pkgname = dnsdist
+
