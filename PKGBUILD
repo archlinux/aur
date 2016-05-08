@@ -1,6 +1,6 @@
-# Maintainer: Your Name <petar.petrov.georgiev@gmail.com>
+# Maintainer: Petar Petrov <petar.petrov.georgiev at gmail d0t com>
 pkgname=savagewheels
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Savage Wheels is a 2D car crashing arcade game similar to the old classic Destruction Derby."
 arch=('i686' 'x86_64')
@@ -18,9 +18,9 @@ backup=()
 options=()
 install=
 changelog=
-source=(https://github.com/petarov/savagewheels/archive/v$pkgver.tar.gz https://github.com/petarov/savagewheels/releases/download/v1.4/savagewheels-gamedata.tar.gz)
+source=(https://github.com/petarov/savagewheels/archive/$pkgver.tar.gz https://github.com/petarov/savagewheels/releases/download/v1.4/savagewheels-gamedata.tar.gz)
 noextract=(savagewheels-gamedata.tar.gz)
-md5sums=('8154fe4ba5471dac31319b93d247785e'
+md5sums=('9785c07d85d89517e6167bffb002381c'
          '98f2c9750c0dab008fbb74fa97a5f10d')
 
 if [ "${CARCH}" = 'x86_64' ] ; then
@@ -40,9 +40,18 @@ prepare() {
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
 	cd release
-	cmake -G "Unix Makefiles" ../ -DCMAKE_BUILD_TYPE:STRING=Release
+	cmake -G "Unix Makefiles" ../ \
+    -DCMAKE_BUILD_TYPE:STRING=Release \
+    -DINSTALL_DATADIR=/usr/share/$pkgname \
+    -DINSTALL_LIBEXECDIR=/usr/local/bin \
+    -DCMAKE_INSTALL_DATADIR=$pkgdir/usr/share/$pkgname \
+    -DCMAKE_INSTALL_DATAROOTDIR=$pkgdir/usr/share \
+    -DCMAKE_INSTALL_DOCDIR=$pkgdir/usr/share/doc/$pkgname \
+    -DCMAKE_INSTALL_LIBEXECDIR=$pkgdir/usr/local/bin \
+    -DCMAKE_INSTALL_BINDIR=$pkgdir/usr/local/sbin \
+    -DCMAKE_INSTALL_SBINDIR=$pkgdir/usr/local/sbin \
+    -DCMAKE_INSTALL_PREFIX=$pkgdir
 	make
-	cpack -G TGZ
 }
 
 check() {
@@ -54,13 +63,12 @@ check() {
 }
 
 package() {
-	install -d "$pkgdir/opt"
-	
-	install_name="savagewheels-$pkgver-Linux-$_arch"
-	tgzfile="$install_name.tar.gz"
-	cd "$srcdir/$pkgname-$pkgver/release"
-	tar zxf $tgzfile -C "$pkgdir/opt"
-	
-	cd "$pkgdir/opt"
-	mv $install_name $pkgname
+  cd "$srcdir/$pkgname-$pkgver"
+	cd release
+  make install
+
+  # .desktop entries
+  cd "$srcdir/$pkgname-$pkgver"
+  install -Dm644 sw1.png "$pkgdir"/usr/share/pixmaps/sw1.png
+  install -Dm644 savagewheels.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
 }
