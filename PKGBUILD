@@ -9,13 +9,13 @@
 pkgname=teighafileconverter-qt5
 _altname=teighafileconverter
 pkgver=4.00.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Converts files between the .dwg and .dxf file formats, QT5 version"
 arch=('i686' 'x86_64')
 url="https://www.opendesign.com/guestfiles"
 license=('custom')
 conflicts=('teighafileconverter-qt4')
-depends=('qt5-base' 'libxfixes' 'libgl' 'bash' 'gtk-update-icon-cache' 'update-desktop-database')
+depends=('qt5-base' 'libxfixes' 'libgl' 'bash' 'gtk-update-icon-cache' 'desktop-file-utils')
 source=('license')
 DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 source_i686=(https://www.opendesign.com/files/guestdownloads/TeighaFileConverter/TeighaFileConverter_QT5_lnxX86_4.7dll.deb)
