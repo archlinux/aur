@@ -11,9 +11,9 @@ url="http://gpuopen.com/compute-product/codexl/"
 license=('MIT')
 options=('staticlibs' 'libtool' '!strip' '!upx')
 depends=('libpng12' 'libgl' 'libcl' 'xorg-xhost')
-source=(https://github.com/GPUOpen-Tools/CodeXL/releases/download/v${pkgver%.*}/CodeXL_Linux_${CARCH}_${pkgver}.tar.gz
-        codexl.png
-        codexl.desktop)
+source=("https://github.com/GPUOpen-Tools/CodeXL/releases/download/v${pkgver%.*}/CodeXL_Linux_${CARCH}_${pkgver}.tar.gz"
+        'codexl.png'
+        'codexl.desktop')
 md5sums=('ee622a5d41b8115e2ab274800d812552'
          '34792207ff65c7b2314a9bd8cbeb4e1f'
          'a80e16b7378abdd3e0d6d34e485246e1')
