@@ -1,6 +1,6 @@
 #Maintainer: hexchain <i at hexchain.org>
 pkgname=hmcl
-pkgver=2.4.1.48
+pkgver=2.4.1.50
 pkgrel=1
 pkgdesc="Hello Minecraft! Launcher, a powerful Minecraft launcher."
 arch=(any)
@@ -19,6 +19,6 @@ package() {
     install -D -m644 "${srcdir}/HMCL-$pkgver.jar" "${pkgdir}/usr/share/hmcl/HMCL.jar"
     install -D -m644 "${srcdir}/hmcl.desktop" "${pkgdir}/usr/share/applications/hmcl.desktop"
 }
-sha256sums=('56c8d3a2c2764e34d620621e947c34e4c612e2c2b36aae0d59ae3c7fc5d1979b'
+sha256sums=('0300218f29af82e9b302a94b37a4c9a92aea26b960bfd1b2e16c0130ac61cfcf'
             'ea84b0259b815a0afe9f37a8b8d94e2b1110b744e21fabf6dd170a33b91407af'
-            '90b92c77b4cb962a9f13dc673b10796648b6c1af13d06fc09698e26854e343e8')
+            '2b1a94c2d5695a2803aa012121f45afb265aa2eae8228f143c4bbcdac62f079e')
