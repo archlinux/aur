@@ -2,7 +2,7 @@
 pkgname=yusuke-git
 _gitname=yusuke
 pkgver=20160508
-pkgrel=1
+pkgrel=2
 pkgdesc="pacman update notifier"
 
 arch=('i686' 'x86_64')

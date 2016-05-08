@@ -1,7 +1,7 @@
 pkgbase = yusuke-git
 	pkgdesc = pacman update notifier
-	pkgver = 20151010.736
-	pkgrel = 1
+	pkgver = 20160508
+	pkgrel = 2
 	url = https://github.com/graypawn/yusuke
 	arch = i686
 	arch = x86_64
@@ -14,4 +14,3 @@ pkgbase = yusuke-git
 	md5sums = SKIP
 
 pkgname = yusuke-git
-
