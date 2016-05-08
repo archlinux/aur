@@ -10,7 +10,6 @@ license=('GPL')
 depends=('pygtk>=2.10' 'desktop-file-utils')
 makedepends=('gendesk')
 options=(!emptydirs)
-install=apoo.install
 source=("http://http.debian.net/debian/pool/main/a/apoo/${pkgname}_${pkgver}.orig.tar.gz")
 md5sums=('d27455bbefe361d53c95ba9d746f52a6')
 _categories="Education;Science;ComputerScience;"
