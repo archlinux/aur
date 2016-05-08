@@ -1,10 +1,10 @@
 ARMORY_IMG_DIR="/usr/share/armory/img"
 
- post_install() {
+post_install() {
   xdg-icon-resource install --novendor --context apps --size 64 "${ARMORY_IMG_DIR}/armory_icon_64x64.png" armoryicon
   xdg-icon-resource install --novendor --context apps --size 64 "${ARMORY_IMG_DIR}/armory_icon_64x64.png" armoryofflineicon
   xdg-icon-resource install --novendor --context apps --size 64 "${ARMORY_IMG_DIR}/armory_icon_green_64x64.png" armorytestneticon
- }
+}
 
 pre_remove() {
   xdg-icon-resource uninstall --size 64 armoryicon
