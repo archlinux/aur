@@ -1,0 +1,55 @@
+diff -ur kqrcode-plugins-0.6.0_orig/qrcontact/CMakeLists.txt kqrcode-plugins-0.6.0/qrcontact/CMakeLists.txt
+--- kqrcode-plugins-0.6.0_orig/qrcontact/CMakeLists.txt	2011-08-08 00:36:06.000000000 +0200
++++ kqrcode-plugins-0.6.0/qrcontact/CMakeLists.txt	2016-05-06 22:07:17.451048080 +0200
+@@ -1,7 +1,3 @@
+-project(qrcontact-plugin)
+-
+-cmake_minimum_required(VERSION 2.6.2) # may be lower
+-
+ find_package(KDE4 REQUIRED)
+ include(KDE4Defaults)
+ include(MacroLibrary)
+diff -ur kqrcode-plugins-0.6.0_orig/qremail/CMakeLists.txt kqrcode-plugins-0.6.0/qremail/CMakeLists.txt
+--- kqrcode-plugins-0.6.0_orig/qremail/CMakeLists.txt	2011-08-08 00:50:54.000000000 +0200
++++ kqrcode-plugins-0.6.0/qremail/CMakeLists.txt	2016-05-06 22:07:08.012010649 +0200
+@@ -1,7 +1,3 @@
+-project(qremail-plugin)
+-
+-cmake_minimum_required(VERSION 2.6.2) # may be lower
+-
+ find_package(KDE4 REQUIRED)
+ include(KDE4Defaults)
+ include(MacroLibrary)
+diff -ur kqrcode-plugins-0.6.0_orig/qrsms/CMakeLists.txt kqrcode-plugins-0.6.0/qrsms/CMakeLists.txt
+--- kqrcode-plugins-0.6.0_orig/qrsms/CMakeLists.txt	2011-08-08 00:51:09.000000000 +0200
++++ kqrcode-plugins-0.6.0/qrsms/CMakeLists.txt	2016-05-06 22:07:10.236019510 +0200
+@@ -1,7 +1,3 @@
+-project(qrsms-plugin)
+-
+-cmake_minimum_required(VERSION 2.6.2) # may be lower
+-
+ find_package(KDE4 REQUIRED)
+ include(KDE4Defaults)
+ include(MacroLibrary)
+diff -ur kqrcode-plugins-0.6.0_orig/qrweblink/CMakeLists.txt kqrcode-plugins-0.6.0/qrweblink/CMakeLists.txt
+--- kqrcode-plugins-0.6.0_orig/qrweblink/CMakeLists.txt	2011-08-08 00:52:55.000000000 +0200
++++ kqrcode-plugins-0.6.0/qrweblink/CMakeLists.txt	2016-05-06 22:07:12.571028785 +0200
+@@ -1,7 +1,3 @@
+-project(qrweblink-plugin)
+-
+-cmake_minimum_required(VERSION 2.6.2) # may be lower
+-
+ find_package(KDE4 REQUIRED)
+ include(KDE4Defaults)
+ include(MacroLibrary)
+diff -ur kqrcode-plugins-0.6.0_orig/qrwifi/CMakeLists.txt kqrcode-plugins-0.6.0/qrwifi/CMakeLists.txt
+--- kqrcode-plugins-0.6.0_orig/qrwifi/CMakeLists.txt	2011-08-08 00:51:30.000000000 +0200
++++ kqrcode-plugins-0.6.0/qrwifi/CMakeLists.txt	2016-05-06 22:07:14.777037523 +0200
+@@ -1,7 +1,3 @@
+-project(qrwifi-plugin)
+-
+-cmake_minimum_required(VERSION 2.6.2) # may be lower
+-
+ find_package(KDE4 REQUIRED)
+ include(KDE4Defaults)
+ include(MacroLibrary)
