@@ -5,13 +5,13 @@ pkgver=r18.ea240bd
 pkgrel=1
 pkgdesc='Iconic bitmap font based on stlarch with additional glyphs'
 arch=('any')
-url='https://github.com/gstk/siji'
+url='https://github.com/stark/siji'
 depends=('fontconfig' 'xorg-font-utils')
 optdepends=('xorg-xfd: use view.sh script to view glyphs')
 makedepends=('git')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://github.com/gstk/siji")
+source=("${_pkgname}::git+https://github.com/stark/siji")
 install=$pkgname.install
 md5sums=('SKIP')
 
