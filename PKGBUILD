@@ -1,7 +1,7 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 pkgname=rustup
-pkgver=0.1.8
-pkgrel=3
+pkgver=0.1.9
+pkgrel=1
 pkgdesc="The Rust toolchain installer"
 arch=('any')
 url="https://github.com/rust-lang-nursery/rustup.rs<Paste>"
@@ -12,7 +12,7 @@ conflicts=('rust' 'cargo' 'rust-nightly' 'rust-nightly-bin' 'multirust' 'multiru
 replaces=('multirust' 'multirust-git')
 install='post.install'
 source=("${pkgname}-${pkgver}.tgz::https://github.com/rust-lang-nursery/rustup.rs/archive/${pkgver}.tar.gz")
-md5sums=('37b65682bee29bcb5acf79e93511f41a')
+md5sums=('010ffd8a9cb6917a136b3266667ca0b8')
 
 build() {
 	cd "$pkgname.rs-$pkgver"
