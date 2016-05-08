@@ -2,31 +2,43 @@
 # Contributor: M0Rf30
 # Contributor: Samsagax <samsagax@gmail.com>
 
-pkgname=bbswitch
+pkgbase=bbswitch
+pkgname=(bbswitch bbswitch-dkms)
 pkgver=0.8
 _extramodules=extramodules-4.5-ARCH # Don't forget to update bbswitch.install
-pkgrel=48
+pkgrel=49
 pkgdesc="Kernel module allowing to switch dedicated graphics card on Optimus laptops"
 arch=('i686' 'x86_64')
 url="http://github.com/Bumblebee-Project/bbswitch"
 license=('GPL')
-depends=('linux>=4.5' 'linux<4.6')
-makedepends=('linux-headers>=4.5' 'linux-headers<4.6')
-install=bbswitch.install
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Bumblebee-Project/bbswitch/archive/v${pkgver}.tar.gz")
+makedepends=('linux-headers>=4.5' 'linux-headers<4.6' 'linux>=4.5' 'linux<4.6')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/Bumblebee-Project/bbswitch/archive/v${pkgver}.tar.gz")
 md5sums=('5b116b31ace3604ddf9d1fc1f4bc5807')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgbase}-${pkgver}
 
   _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
 
   make KDIR=/lib/modules/${_kernver}/build
 }
 
-package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+package_bbswitch() {
+  depends=('linux>=4.5' 'linux<4.6')
+  install=bbswitch.install
+
+  cd ${srcdir}/${pkgbase}-${pkgver}
    
   install -Dm644 bbswitch.ko "${pkgdir}"/usr/lib/modules/${_extramodules}/bbswitch.ko
   gzip "${pkgdir}/usr/lib/modules/${_extramodules}/bbswitch.ko"                      
+}
+
+package_bbswitch-dkms() {
+  depends=('dkms')
+
+  cd ${srcdir}/${pkgbase}-${pkgver}
+
+  install -dm755 "${pkgdir}/usr/src/${pkgbase}-${pkgver}/"
+
+  install -Dm644 Makefile bbswitch.c dkms/dkms.conf "${pkgdir}/usr/src/${pkgbase}-${pkgver}/"
 }
