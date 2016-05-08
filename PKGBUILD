@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=vicare-scheme-git
-pkgver=20160219.9b1a216
-pkgrel=3
+pkgver=20160508.f50b766
+pkgrel=1
 pkgdesc="R6RS scheme implementation, from github's master branch"
 arch=('i686' 'x86_64')
 url="http://marcomaggi.github.io/vicare.html"
@@ -27,7 +27,7 @@ build() {
   [ -d build ] && rm -rf build
   mkdir build
   cd build
-  ../configure --prefix=/usr --exec-prefix=/usr --libexecdir=/usr/lib \
+  ../configure --prefix=/usr --libexecdir=/usr/lib \
 	       --enable-maintainer-mode --disable-rpath \
 	       --with-libiconv --with-readline
   make
