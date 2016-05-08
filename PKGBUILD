@@ -1,15 +1,15 @@
 # Maintainer: Sebastian Bøe <sebastianbooe at gmail dot com>
 
 pkgname=yosys-git
-pkgrel=2
-pkgver=r2449.7d3a3a3
+pkgrel=1
+pkgver=r2755.5700148
 pkgdesc='A framework for RTL synthesis'
 arch=('x86_64' 'i686')
 url='http://www.clifford.at/yosys/'
 license=('custom:ISC')
 provides=("yosys")
 conflicts=("yosys")
-depends=('tcl' 'libffi' 'clang' 'python')
+depends=('tcl' 'libffi' 'python')
 optdepends=('graphviz: Schematics display support')
 makedepends=('git' 'mercurial')
 source=('git+https://github.com/cliffordwolf/yosys.git'
@@ -19,6 +19,7 @@ sha512sums=('SKIP'
 
 build(){
     cd ${srcdir}/yosys
+    make config-gcc
     make
 }
 
