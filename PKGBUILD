@@ -1,4 +1,4 @@
-# Maintainer: Rafael Ferreira <rafael.f.f1@gmail.com>
+# Maintainer: rafaelff <rafaelff@gnome.org>
 
 _name=gnome-2048
 pkgname=$_name-git
@@ -11,7 +11,6 @@ license=('GPL')
 depends=('clutter-gtk' 'libgee' 'libgames-support-git')
 makedepends=('vala' 'yelp-tools' 'gnome-common' 'intltool' 'git' 'appstream-glib')
 options=(!libtool)
-install=$_name.install
 provides=($_name)
 conflicts=($_name)
 source=(git+https://git.gnome.org/browse/$_name)
