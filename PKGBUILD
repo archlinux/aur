@@ -16,7 +16,6 @@ conflicts=('vino')
 groups=('gnome')
 url="http://www.gnome.org"
 options=(!emptydirs)
-install=vino.install
 source=(http://ftp.gnome.org/pub/gnome/sources/${_pkgname}/${pkgver%.*}/${_pkgname}-$pkgver.tar.xz)
 sha256sums=('be665ff7a76076902a84cab69e7c3a6a7ddf2c634cc648aa35189895eefaac28')
 
