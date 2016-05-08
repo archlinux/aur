@@ -3,9 +3,10 @@
 pkgname=b1freearchiver
 pkgdesc="Most friendly and simple free file archiver"
 pkgver=1.5.86.4849
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
-depends=(qtwebkit python)
+depends=(qtwebkit)
+optdepends=(python: dolphin service menu support)
 url="http://www.b1.org"
 license=('custom')
 options=(strip)
@@ -15,12 +16,12 @@ case "$CARCH" in
 	'i686')
 		_arch1=32
 		_arch2=i386
-		md5sums=(SKIP)
+		md5sums=('0f3c5f0010f9cf67974c1f81f5f1413b')
 		;;
 	'x86_64')
 		_arch1=64
 		_arch2=amd64
-		md5sums=(SKIP)
+		md5sums=('e8fd7a8306b23aa9db6cfbfe55bd2954')
 		;;
 esac    
 
