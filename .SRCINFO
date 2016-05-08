@@ -2,7 +2,7 @@
 # Mon Jul 27 11:54:43 UTC 2015
 pkgbase = grappl
 	pkgdesc = grappl is a clever little tool that lets you host any type of server anywhere for free, with no port forwarding and no VPS. Your router doesn't even have to support uPnP. You don't even have to have a router. You can do it through your phone!
-	pkgver = latest
+	pkgver = 1.5.9 
 	pkgrel = 24
 	url = http://www.grappl.io/
 	arch = any
