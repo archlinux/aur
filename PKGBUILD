@@ -2,12 +2,12 @@
 
 pkgname=vicare-scheme-git
 pkgver=20160219.9b1a216
-pkgrel=2
+pkgrel=3
 pkgdesc="R6RS scheme implementation, from github's master branch"
 arch=('i686' 'x86_64')
 url="http://marcomaggi.github.io/vicare.html"
 license=('GPL3')
-depends=('gmp' 'readline')
+depends=('gmp')
 makedepends=('git')
 provides=('vicare-scheme')
 conflicts=('vicare-scheme')
@@ -17,12 +17,12 @@ options=('!makeflags')
 _gitname="vicare-scheme"
 
 pkgver() {
-  cd "$srcdir"/"$_gitname"
+  cd "$_gitname"
   git log -1 --format='%cd.%h' --date=short | tr -d -
 }
 
 build() {
-  cd "$srcdir"/"$_gitname"
+  cd "$_gitname"
   sh ./autogen.sh
   [ -d build ] && rm -rf build
   mkdir build
@@ -34,11 +34,11 @@ build() {
 }
 
 check() {
-  cd "$srcdir/$_gitname/build"
+  cd "$_gitname"/build
   make check||true
 }
 
 package() {
-  cd "$srcdir/$_gitname/build"
+  cd "$_gitname"/build
   make DESTDIR="$pkgdir" install
 }
