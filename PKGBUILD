@@ -12,9 +12,9 @@ noextract=('GrapplLauncher.jar')
 source=(grappl http://grappl.io:888/html/GrapplLauncher.jar
          grappl.desktop LICENSE)
 md5sums=('0444a7ce5951bea43fe4eabe005f06a0'
-                  'b4bc164aa18db8354a987df00f93fe62'
-                  '89fa4b959482d90728302fdefdef21e4'
-                  '7d93f005407dc76be53fc76ab46e05d0')
+         'b996d16cd60208d5122c00949ef24051'
+         '89fa4b959482d90728302fdefdef21e4'
+         '7d93f005407dc76be53fc76ab46e05d0')
 
 package() {
     cd "$srcdir"
