@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=emscripten-git
-pkgver=1.36.3.26.gc12215c
+pkgver=1.36.3.35.g3ac9030
 pkgrel=1
 pkgdesc="LLVM-to-JavaScript compiler"
 arch=('i686' 'x86_64')
@@ -59,7 +59,7 @@ prepare() {
 
 build() {
   cd $srcdir/emscripten-fastcomp/build
-  CC=clang CXX=clang++ cmake .. -DPYTHON_EXECUTABLE=/usr/bin/python2 \
+  cmake .. -DPYTHON_EXECUTABLE=/usr/bin/python2 \
     -DCMAKE_BUILD_TYPE=Release \
     -DLLVM_TARGETS_TO_BUILD="X86;JSBackend" \
     -DLLVM_BUILD_RUNTIME=OFF \
