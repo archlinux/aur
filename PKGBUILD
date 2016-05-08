@@ -2,8 +2,8 @@
 
 pkgname=python2-mdp-git
 pkgver=0.0.1
-pkgrel=1
-pkgdesc="C++ toolbox aimed at representing and solving common AI problems"
+pkgrel=2
+pkgdesc="A C++ framework for MDPs and POMDPs with Python bindings"
 arch=('any')
 url="https://github.com/Svalorzen/AI-Toolbox"
 license=('GPL3')
