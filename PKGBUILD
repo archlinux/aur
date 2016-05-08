@@ -23,7 +23,7 @@ BUILDFLDR='localbuild'
 
 prepare() {
   # extracted folder has HEAD hash appended to folder name
-  mv ${pkgname}-v${pkgver}-* ${pkgname}-${pkgver}
+  mv "${pkgname}-v${pkgver}-"* "${pkgname}-${pkgver}"
   # remove previous local build folder
   if [ -d ${pkgname}-${pkgver}/${BUILDFLDR} ]
   then
