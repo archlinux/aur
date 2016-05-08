@@ -1,0 +1,40 @@
+Index: TSC-2.0.0/tsc/Rakefile
+===================================================================
+--- TSC-2.0.0/tsc/Rakefile
++++ TSC-2.0.0/tsc/Rakefile	2015-10-06 20:20:51.899195698 +0200
+@@ -19,7 +19,7 @@
+ 
+ CLOBBER.include("build", "crossbuild", "docs/scripting/html", "docs/scripting/rdoc", "docs/api")
+ 
+-str = File.read("CMakeLists.txt")
++str = File.open("CMakeLists.txt", "r:UTF-8"){|f| f.read}
+ TSC_VERSION_MAJOR = str.match(/^set\(TSC_VERSION_MAJOR (\d+)\)/)[1]
+ TSC_VERSION_MINOR = str.match(/^set\(TSC_VERSION_MINOR (\d+)\)/)[1]
+ TSC_VERSION_PATCH = str.match(/^set\(TSC_VERSION_PATCH (\d+)\)/)[1]
+@@ -30,7 +30,7 @@
+ rule %r{credits.cpp} => ["docs/authors.txt", "docs/specialthanks.txt"] do |t|
+   puts "Converting docs/authors.txt and docs/specialthanks.txt to C++ source file"
+ 
+-  File.open(t.name, "w") do |f|
++  File.open(t.name, "w:UTF-8") do |f|
+     # Write first part
+     f.puts(%Q!#include "#{Dir.pwd}/src/core/global_game.hpp"
+ #include "#{Dir.pwd}/src/core/main.hpp"
+@@ -39,7 +39,7 @@
+ 
+ 	const std::string g_credits = "\\\n!)
+ 
+-    File.open("docs/authors.txt") do |f2|
++    File.open("docs/authors.txt", "r:UTF-8") do |f2|
+       # Skip to real content
+       loop do
+         line = f2.gets
+@@ -58,7 +58,7 @@
+     f.puts("-- Special Thanks --\\n\\")
+     f.puts("\\n\\")
+ 
+-    File.open("docs/specialthanks.txt") do |f2|
++    File.open("docs/specialthanks.txt", "r:UTF-8") do |f2|
+       # Skip to real content
+       loop do
+         line = f2.gets
