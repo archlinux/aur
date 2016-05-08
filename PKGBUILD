@@ -1,4 +1,4 @@
-# Maintainer: josephgbr <rafael.f.f1@gmail.com>
+# Maintainer: rafaelff <rafaelff@gnome.org>
 
 # NOTE about libgl dependency (same note applies to its 'lib32-' version)
 # if you have and use 'mesa',     install 'mesa-libgl'
@@ -17,10 +17,9 @@ license=('custom')
 DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 conflicts=('teighaviewer' 'teighaviewer-qt5')
 provides=('teighaviewer')
-depends=('bash' 'hicolor-icon-theme')
+depends=('bash' 'gtk-update-icon-cache' 'update-desktop-database')
 depends_i686=('qt4' 'libgl')
 depends_x86_64=('lib32-qt4' 'lib32-libgl')
-install=${pkgname}.install
 source=(https://www.opendesign.com/files/guestdownloads/TeighaViewer/TeighaViewer_QT4_lnxX86_4.4dll.deb
         'license')
 md5sums=('cca742852192bf55d046469e9bd703d3'
