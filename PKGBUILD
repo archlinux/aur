@@ -5,7 +5,7 @@
 pkgname=mousepad-gtk3
 _pkgname=mousepad
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple text editor for Xfce"
 arch=('i686' 'x86_64')
 url="http://www.xfce.org/"
