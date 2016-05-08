@@ -4,7 +4,3 @@ post_install() {
   /bin/systemctl enable "${units[@]}"
   /bin/systemctl start "${units[@]}"
 }
-
-post_remove() {
-  /bin/systemctl disable "${units[@]}"
-}
