@@ -1,0 +1,32 @@
+From 448eb757893e3875336004ca8375eb1219b72634 Mon Sep 17 00:00:00 2001
+From: hpi1 <hpi1@anonymous.org>
+Date: Thu, 28 Apr 2016 16:44:26 +0300
+Subject: [PATCH] bdj: update linux Java search path list and preferred JVM
+
+1) JAVA_HOME
+2) System default JVM
+3) OpenJDK 7
+4) OpenJDK 8
+5) OpenJDK 6
+---
+ src/libbluray/bdj/bdj.c |    6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/libbluray/bdj/bdj.c b/src/libbluray/bdj/bdj.c
+--- a/src/libbluray/bdj/bdj.c
++++ b/src/libbluray/bdj/bdj.c
+@@ -202,9 +202,12 @@ static void *_load_jvm(const char **p_java_home)
+ # else
+     static const char *jvm_path[] = {NULL, JDK_HOME,
+                                     "/usr/lib/jvm/default-java",
+-                                    "/usr/lib/jvm/java-6-openjdk",
+-                                    "/usr/lib/jvm/java-7-openjdk",
+-                                    "/etc/java-config-2/current-system-vm"};
++                                    "/usr/lib/jvm/default",
++                                    "/etc/java-config-2/current-system-vm",
++                                    "/usr/lib/jvm/java-7-openjdk",
++                                    "/usr/lib/jvm/java-8-openjdk",
++                                    "/usr/lib/jvm/java-6-openjdk",
++    };
+     static const char  jvm_dir[]  = "jre/lib/" JAVA_ARCH "/server";
+     static const char  jvm_lib[]  = "libjvm";

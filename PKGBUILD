@@ -14,8 +14,16 @@ depends=("$_pkgbase" 'lib32-fontconfig' 'lib32-glibc' 'lib32-freetype2' 'lib32-l
 makedepends=('gcc-multilib' 'apache-ant' 'java-environment')
 optdepends=('java-environment: BD-J library')
 provides=('libbluray.so')
-source=("ftp://ftp.videolan.org/pub/videolan/$_pkgbase/$pkgver/$_pkgbase-$pkgver.tar.bz2")
-sha512sums=('f7fda2ef4c0ec70eb9a38aed0e76d21d8784410cb13713e7ee66ecd23a1cc58325977b046d40c526554a4a4e4cf96706a233e15451bf34892aff201b47e25aef')
+source=("ftp://ftp.videolan.org/pub/videolan/$_pkgbase/$pkgver/$_pkgbase-$pkgver.tar.bz2"
+'libbluray-jdk8.patch')
+sha512sums=('f7fda2ef4c0ec70eb9a38aed0e76d21d8784410cb13713e7ee66ecd23a1cc58325977b046d40c526554a4a4e4cf96706a233e15451bf34892aff201b47e25aef'
+            'a984861ad5073bfdafd9980bd5b37146de4896dad6672dfc8f1c5b49bc0a73a5a1f86fbe5fc40aa29848678cafe71e13d2834956e03b92af5dcde33b36b787e7')
+
+prepare() {
+  cd $_pkgbase-$pkgver
+
+  patch -Np1 -i ../libbluray-jdk8.patch
+}
 
 build() {
   export CC='gcc -m32'
