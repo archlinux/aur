@@ -1,0 +1,70 @@
+update_desktop() {
+
+  xdg-icon-resource forceupdate --theme hicolor &>/dev/null
+  update-mime-database /usr/share/mime &>/dev/null
+  update-desktop-database -q
+
+}
+
+post_install() {
+
+update_desktop
+
+echo "Starting python script for procesing uuid."
+
+python - <<END
+
+CONFIG_DIR = '/etc/xdg/b1.org'
+CONFIG_INI = '/etc/xdg/b1.org/B1Manager.conf'
+
+import sys
+import os
+import uuid
+from configparser import RawConfigParser as ConfParser
+from configparser import Error
+
+p = ConfParser()
+p.optionxform = str
+
+try:
+    results = p.read(CONFIG_INI)
+except Error as msg:
+    if not os.path.exists(CONFIG_DIR):
+        os.makedirs(CONFIG_DIR)
+    with open('example.cfg', 'w') as configfile:
+        configfile.write('[General]\n')
+        configfile.write('UID = {%s}\n'%str(uuid.uuid1()))
+    sys.exit(0)
+else:
+    if 'General' in p.sections():
+        b1_uuid = p.get('General', 'UID')
+    else:
+        b1_uuid = None
+
+    if (b1_uuid is not None) and (len(b1_uuid) > 0):
+            sys.exit(0)
+    else:
+        p.add_section('General')
+    
+    p.set('General', 'UID', '{%s}'%str(uuid.uuid1()))
+    if not os.path.exists(CONFIG_DIR):
+        os.makedirs(CONFIG_DIR)
+    with open(CONFIG_INI, 'w') as configfile:
+        p.write(configfile)
+    sys.exit(0)
+
+END
+
+}
+
+post_upgrade() {
+
+  update_desktop
+
+}
+
+post_remove() {
+
+  update_desktop
+
+}

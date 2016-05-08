@@ -1,0 +1,5 @@
+*
+!.gitignore
+!PKGBUILD
+!b1freearchiver.install
+!.SRCINFO
