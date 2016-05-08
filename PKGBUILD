@@ -12,9 +12,6 @@ source=("$pkgname"::'git+https://gitcafe.com/WaWei/sky-grub-theme.git')
 # Because the sources are not static, skip Git checksum:
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$srcdir/$pkgname"
-}
 
 package() {
   cd "$srcdir/$pkgname/Sky"
