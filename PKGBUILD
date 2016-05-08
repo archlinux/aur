@@ -9,7 +9,6 @@ url="http://www.tscprinters.com"
 license=('GPL')
 depends=(gtk2)
 makedepends=(unzip)
-install=$pkgname.install
 source_i686=($url/cms/upload/download_en/Linux32_v$pkgver.zip)
 source_x86_64=($url/cms/upload/download_en/Linux64_v$pkgver.zip)
 md5sums_i686=(51b1d2b9e657307b3d7c687effe311e2)
