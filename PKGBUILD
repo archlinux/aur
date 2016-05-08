@@ -22,7 +22,7 @@ noextract=("$(basename "${source[0]}")")
 package() {
   install -dm755 "${pkgdir}/opt/CodeXL"
   pushd "${pkgdir}/opt/CodeXL" >/dev/null
-    tar --strip-components=1 -xf "${srcdir}/$(basename "${source[0]}")"
+    tar --strip-components=1 -xf "${srcdir}/${noextract[0]}"
   popd >/dev/null
 
   install -dm755 "${pkgdir}/usr/bin"
