@@ -1,9 +1,0 @@
-
-post_install() {
-	echo "Type 'groupwise' to start using the mail client."
-}
-
-post_upgrade() {
-  post_install
-}
-1
