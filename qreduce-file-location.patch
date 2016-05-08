@@ -7,7 +7,7 @@ diff -ur generic.orig/libreduce/Makefile generic/libreduce/Makefile
  	cd $(BUILD); \
 -	../src/configure --disable-universal; \
 +	../src/configure --disable-universal --disable-logfile; \
- 	make
+ 	$(MAKE)
  
  clean:
 diff -ur generic.orig/qreduce/qreduce.py generic/qreduce/qreduce.py

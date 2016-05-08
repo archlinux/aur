@@ -5,7 +5,7 @@
 pkgbase=reduce-svn
 _pkgbase=reduce
 pkgname=(reduce-csl-svn reduce-psl-svn reduce-common-svn reduce-addons-svn)
-pkgver=20160427.3635
+pkgver=20160508.3660
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://reduce-algebra.sourceforge.net/"
@@ -13,6 +13,7 @@ license=('BSD')
 groups=('science')
 makedepends=('subversion' 'texlive-htmlxml' 'imagemagick') # for documentation
 depends=('ncurses' 'libxext' 'libxrandr' 'libxft' 'freetype2' 'expat' 'libx11' 'libxcursor')
+options=('!ccache')
 source=("${_pkgbase}::svn+http://svn.code.sf.net/p/reduce-algebra/code/trunk"
         'csl' 'redcsl' 'redpsl'
         'redcsl.desktop' 'qreduce.desktop'
@@ -23,7 +24,7 @@ sha256sums=('SKIP'
             '3d383ac93cb831a5a142395e76a9c275dc7e49dc150763610869e56e5a795e65'
             '22c7c510fba9ec2bcb8f476af0c96055a915a31f34c01ece43ff21d0dfa9dd0d'
             '9dce4d401c759c933ebc3ffbe0eff86150f04829ca10a9fd6f6faba4498f47ad'
-            'e387eada63c3e15cb75f5f5a5060491831f607d93c7f97b30262fc30cf1ebea3')
+            '5896e2252dd87b764143dbf8d9889e289811a3020dd019386debee5bb02a142d')
 
 pkgver() {
   cd ${srcdir}/${_pkgbase}
@@ -44,7 +45,7 @@ build() {
   ./configure --with-csl
   ./configure --with-psl
   make -j1
-  (cd generic/redfront && make -j1)
+  # (cd generic/redfront && make -j1)
   (cd generic/casefold && cc casefold.c -o casefold)
   (cd generic/libreduce && make PYTHON=/usr/bin/python2 -j1)
   (cd generic/emacs && makeinfo reduce-ide.texinfo)
@@ -140,8 +141,8 @@ package_reduce-addons-svn() {
   install -d ${pkgdir}/usr/share/doc/reduce-addons
   install -d ${pkgdir}/usr/share/emacs/site-lisp/reduce
 
-  install -D generic/redfront/${CARCH}-unknown-linux-gnu/redfront/redfront ${pkgdir}/usr/bin/redfront
-  install -Dm644 generic/redfront/src/redfront.1 ${pkgdir}/usr/share/man/man1/redfront.1
+  # install -D generic/redfront/${CARCH}-unknown-linux-gnu/redfront/redfront ${pkgdir}/usr/bin/redfront
+  # install -Dm644 generic/redfront/src/redfront.1 ${pkgdir}/usr/share/man/man1/redfront.1
 
   install -D generic/breduce/breduce ${pkgdir}/usr/bin/breduce
   install -Dm644 generic/breduce/breduce.1 ${pkgdir}/usr/share/man/man1/breduce.1
@@ -160,13 +161,13 @@ package_reduce-addons-svn() {
   install -Dm644 generic/emacs/reduce-ide.info ${pkgdir}/usr/share/info/reduce-ide.info
 
   cd "${pkgdir}/usr/bin"
-  ln -s redfront rfcsl
-  ln -s redfront rfpsl
+  # ln -s redfront rfcsl
+  # ln -s redfront rfpsl
   ln -s ../share/qreduce/qreduce.py qreduce
 
-  cd "${pkgdir}/usr/share/man/man1"
-  ln -s redfront.1 rfcsl.1
-  ln -s redfront.1 rfpsl.1
+  # cd "${pkgdir}/usr/share/man/man1"
+  # ln -s redfront.1 rfcsl.1
+  # ln -s redfront.1 rfpsl.1
 
   cd "${pkgdir}/usr/share/qreduce"
   ln -s ../../lib/reduce/RedPy.so
