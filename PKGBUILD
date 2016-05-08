@@ -1,6 +1,6 @@
 # Maintainer: Aditya Mahajan <adityam at umich dot edu>
 pkgname=context-minimals-git
-pkgver=2016.05.07
+pkgver=2016.05.08
 pkgrel=1
 pkgdesc="A standalone ConTeXt distribution"
 url="http://www.contextgarden.net"
@@ -54,7 +54,7 @@ pkgver() {
 
 prepare() {
  msg "Downloading the latest scripts first"
- rsync -rlpt $_rsyncurl $srcdir || return 1
+ rsync -rlpt --info=progress2 $_rsyncurl $srcdir || return 1
  msg "Initializing download directory"
 
  mkdir -p $srcdir/tex/texmf-cache || return 1
@@ -63,6 +63,7 @@ prepare() {
  PATH=$scrdir/tex/texmf-$platform/bin:$PATH \
  $srcdir/bin/texlua $srcdir/bin/mtxrun --script $srcdir/bin/mtx-update.lua  \
       --platform=$_platform --texroot=$srcdir/tex --engine=all --modules=all \
+      --flags="-rpztl --info=progress2" \
       --context=beta  --update  --force --make || return 1
 
  # The setuptex that comes with minimals does not work in a multi-user
