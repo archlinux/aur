@@ -5,15 +5,15 @@ python=python
 name=musicbrainzngs
 
 pkgname=$python-$name
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="bindings for the MusicBrainz NGS web service (WS/2)"
 url="http://python-musicbrainzngs.readthedocs.org/"
-license="BSD"
+license=('BSD')
 arch=('any')
 depends=('python')
 source=(http://pypi.python.org/packages/source/m/$name/$name-$pkgver.tar.gz)
-md5sums=('9e17a181af72d04a291c9a960bc73d44')
+md5sums=('22616f1710f13a8da933920089c51441')
 
 prepare() {
   cd $srcdir/$name-$pkgver
