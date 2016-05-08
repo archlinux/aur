@@ -16,6 +16,7 @@ source=("${url}/releases/download/${pkgver}/${_pkgbase}-${pkgver}.tar.xz")
 md5sums=('d4b78e6a0794a9d386ece5cd08eb2d3e')
 
 build() {
+  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   export CC='gcc -m32'
   cd "$srcdir/${_pkgbase}-${pkgver}"
   ./configure --prefix=/usr --libdir=/usr/lib32 --host=i686-linux-gnu \
