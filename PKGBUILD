@@ -22,11 +22,10 @@ arch=('i686' 'x86_64')
 url="http://support.amd.com/en-us/download/desktop?os=Linux+x86"
 license=('custom')
 options=('staticlibs' 'libtool' '!upx' '!strip')
-depends=('dkms' 'linux>=3.0' 'linux<4.6')
+depends=('dkms')
 makedepends=('gcc-libs' 'gcc>4.0.0')
-optdepends=('linux-headers: build the module against Arch kernel (requires at least one set of kernel headers)'
-            'linux-ck-headers: build the module against Linux-ck kernel (requires at least one set of kernel headers)'
-            'linux-lts-headers: build the module against LTS Arch kernel (requires at least one set of kernel headers)')
+optdepends=('linux-headers<4.6: build the module against Arch kernel (requires at least one set of kernel headers)'
+            'linux-lts-headers<4.6: build the module against LTS Arch kernel (requires at least one set of kernel headers)')
 
 # try to ensure that this package cannot be installed concurrently with any of
 # the other 'catalyst'-series packages
