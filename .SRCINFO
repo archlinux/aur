@@ -1,6 +1,6 @@
 pkgbase = armake-git
 	pkgdesc = An open-source implementation of the Arma modding tools.
-	pkgver = 1.0
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/KoffeinFlummi/armake
 	arch = i686
