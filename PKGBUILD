@@ -3,7 +3,7 @@
 
 pkgbase=lib32-smbclient
 pkgname=('lib32-libwbclient' 'lib32-smbclient')
-pkgver=4.4.0
+pkgver=4.4.2
 pkgrel=1
 pkgdesc="Tools to access a server's filespace and printers via SMB"
 arch=('x86_64')
@@ -15,7 +15,7 @@ makedepends=('lib32-avahi' 'lib32-gnutls' 'lib32-libbsd' 'lib32-libcap' \
              'lib32-tevent' 'lib32-ldb' 'lib32-libarchive')
 source=("http://us1.samba.org/samba/ftp/stable/samba-${pkgver}.tar.gz"
         'libsystemd.patch')
-md5sums=('e42b884d0e07528c8571641a4df40666'
+md5sums=('03a65a3adf08ceb1636ad59d234d7f9d'
          'ab4d156dd6be268aaf462fbd7f40a55b')
 
 prepare() {
