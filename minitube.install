@@ -1,10 +1,4 @@
-post_install() {
-  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
-  update-desktop-database -q
-}
-
 post_upgrade() {
-  post_install
   cat << EOF
 
   # Google is now requiring an API key in order to access YouTube Data web services.
@@ -12,8 +6,4 @@ post_upgrade() {
   # /etc/profile.d/minitube.sh as the GOOGLE_API_KEY environmental variable.
 
 EOF
-}
-
-post_remove() {
-  post_install
 }
