@@ -5,7 +5,7 @@ pkgdesc="A graphical tool to choose the GPU used for 3D rendering with PRIME. Re
 arch=('any')
 url="https://github.com/ChristophHaag/gpuchooser"
 license=('GPL')
-depends=('python-pyqt5' 'mesa-demos')
+depends=('python-pyqt5' 'mesa-demos' 'driconf')
 source=("git+https://github.com/ChristophHaag/gpuchooser.git")
 md5sums=("SKIP")
 
