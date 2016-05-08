@@ -19,7 +19,6 @@ optdepends=('asciidoc: required to produce the HTML version of the FAQ'
 	'curl: required for remote monitoring'
 	'libgtop: required for CPU usage')
 conflicts=('libappindicator-gtk2' 'libappindicator-activate-gtk2' 'libappindicator-gtk2-ubuntu' 'lib32-libappindicator-gtk2')
-install=$pkgname.install
 source=("http://wpitchoune.net/$pkgname/files/$pkgname-$pkgver.tar.gz"
 	"psensor-libmicrohttpd.patch")
 md5sums=('c3a3c1dea4dbfe12bbfb8088b86c3d4f'
