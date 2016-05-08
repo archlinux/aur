@@ -8,7 +8,7 @@ url="https://joel.porquet.org/wiki/hacking/jinstall/"
 arch=('any')
 license=('GPL3')
 depends=('python' 'python-urwid')
-makedepends=('git')
+makedepends=('git' 'python-setuptools')
 
 source=("${pkgname}::git+https://joel.porquet.org/cgit/cgit.cgi/jinstall.git/")
 md5sums=('SKIP')
