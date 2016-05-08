@@ -2,8 +2,8 @@
 
 pkgname=plasma5-applet-awesome-widgets
 _pkgname=awesome-widgets
-pkgver=3.1.1
-pkgrel=3
+pkgver=3.1.2
+pkgrel=1
 pkgdesc="Collection of minimalistic Plasmoids which look like Awesome WM widgets (ex-PyTextMonitor)"
 arch=('i686' 'x86_64')
 url="https://arcanis.me/projects/awesome-widgets"
@@ -15,20 +15,14 @@ optdepends=("catalyst: for GPU monitor"
             "mpd: for music player monitor"
             "nvidia-utils: for GPU monitor")
 makedepends=('cmake' 'extra-cmake-modules' 'python')
-source=(https://github.com/arcan1s/awesome-widgets/releases/download/V.${pkgver}/${_pkgname}-${pkgver}-src.tar.xz
-        "total-memory-fix.patch")
+source=(https://github.com/arcan1s/awesome-widgets/releases/download/V.${pkgver}/${_pkgname}-${pkgver}-src.tar.xz)
 install=${pkgname}.install
-md5sums=('1a4dc1d912b663dfd24d00712ab68f07'
-         'f48d4e4f99fc03e5c04c7de231acb682')
+md5sums=('99514bf6d1a5ca8660dd0210ee58af28')
 backup=('etc/xdg/plasma-dataengine-extsysmon.conf')
 
 prepare() {
   rm -rf "${srcdir}/build"
   mkdir "${srcdir}/build"
-
-  # fix total memory calculations
-  cd "${_pkgname}"
-  patch -p2 -i "${srcdir}/total-memory-fix.patch"
 }
 
 build () {
