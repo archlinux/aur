@@ -7,7 +7,7 @@
 pkgname=compiz
 pkgver=0.9.12.2
 _pkgseries=0.9.12
-pkgrel=11
+pkgrel=12
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
@@ -26,7 +26,8 @@ source=("https://launchpad.net/${pkgname}/${_pkgseries}/${pkgver}/+download/${pk
         "switcher-background.patch"
         "cmake3.patch"
         "cube-texture.patch"
-	"marco-in-mate.patch")
+	"marco-in-mate.patch"
+        "trailfocus-fix.patch")
 sha256sums=('8917ac9e6dfdacc740780e1995e932ed865d293ae87821e7a280da5325daec80'
             'f4897590b0f677ba34767a29822f8f922a750daf66e8adf47be89f7c2550cf4b'
             '16ddb6311ce42d958505e21ca28faae5deeddce02cb558d55e648380274ba4d9'
@@ -35,7 +36,8 @@ sha256sums=('8917ac9e6dfdacc740780e1995e932ed865d293ae87821e7a280da5325daec80'
             'e3125ed3a7e87a7d4bdaa23f1b6f654a02d0b050ad7a694ce9165fff2c6ff310'
             'e5016fd62f9c9659d887eeafd556c18350615cd6d185c8ffa08825465890c5e0'
             '81780f8c56f5b27b09394ae9ed59d10ae50c58f9ade445e9f85d7c2a00445f7e'
-            '0d7474aee60c1a482cf26d5d0be6ec2e1b1067fa1d601fdf4aa19a71b07e41d3')
+            '0d7474aee60c1a482cf26d5d0be6ec2e1b1067fa1d601fdf4aa19a71b07e41d3'
+            '01e94ac52cd39eb5462a8505c7df61c7b14b05159de64f8700dfadb524bdb2ce')
 install=${pkgname}.install
 
 prepare() {
@@ -71,6 +73,9 @@ prepare() {
   
   # Use the Marco gsettings in MATE session (commits 3997+4002)
   patch -p1 -i "${srcdir}/marco-in-mate.patch"
+
+  # Fix ambiguous function call in trailfocus plugin
+  patch -Np1 -i "${srcdir}/trailfocus-fix.patch"
 }
 
 build() {
