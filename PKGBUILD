@@ -1,4 +1,4 @@
-# Maintainer: josephgbr <rafael.f.f1@gmail.com>
+# Maintainer: rafaelff <rafaelff@gnome.org>
 
 # NOTE about libgl dependency (same note applies to its 'lib32-' version)
 # if you have and use 'mesa',     install 'mesa-libgl'
@@ -16,7 +16,6 @@ url="https://www.opendesign.com/guestfiles"
 license=('custom')
 conflicts=('teighafileconverter-qt4')
 depends=('qt5-base' 'libxfixes' 'libgl' 'bash' 'hicolor-icon-theme')
-install=${pkgname}.install
 source=('license')
 DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 source_i686=(https://www.opendesign.com/files/guestdownloads/TeighaFileConverter/TeighaFileConverter_QT5_lnxX86_4.7dll.deb)
@@ -39,25 +38,25 @@ package() {
         "${pkgdir}/usr/lib/teighafileconverter/${file}"
   done
   
-  # binary
+    # binary
   install -Dm755 usr/bin/TeighaFileConverter \
     "${pkgdir}/usr/bin/teighafileconverter"
   sed -e "s#usr/bin/TeighaFileConverter_${pkgver}#usr/lib/teighafileconverter#" \
     -i "${pkgdir}/usr/bin/${_altname}"
   
-  # desktop item
+    # desktop item
   install -Dm644 usr/share/applications/TeighaFileConverter_${pkgver}.desktop \
     "${pkgdir}/usr/share/applications/teighafileconverter.desktop"
   sed -e "s#/TeighaFileConverter#/teighafileconverter#" \
     -i "${pkgdir}/usr/share/applications/teighafileconverter.desktop"
   
-  # hicolor icons
+    # hicolor icons
   for icon in $(find usr/share/icons -type f); do
     install -Dm644 ${icon} \
         "${pkgdir}/${icon}"
   done
   
-  # copyright
+    # copyright
   install -Dm644 usr/share/doc/TeighaFileConverter/copyright \
     "${pkgdir}/usr/share/licenses/${_altname}/COPYRIGHT"
   install -Dm644 "$srcdir"/license \
