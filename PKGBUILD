@@ -1,10 +1,10 @@
-# Maintainer: Rafael Ferreira <rafael.f.f1@gmail.com>
+# Maintainer: rafaelff <rafaelff@gnome.org>
 # Contributor: Thomas Jost <schnouki@schnouki.net>
 # Contributor: Alexander 'hatred' Drozdov <adrozdoff@gmail.com>
 
 _name=gnome-commander
 pkgname=$_name-git
-pkgver=1.4.0.209.gd0350bb
+pkgver=1.4.0.367.g9330040
 pkgrel=1
 pkgdesc="Graphical two-pane filemanager for GNOME"
 arch=('i686' 'x86_64')
@@ -13,7 +13,6 @@ license=('GPL')
 depends=('libgnomeui' 'gnome-vfs' 'gconf' 'python2' 'libsm' 'libunique')
 makedepends=('perl-xml-parser' 'gnome-doc-utils' 'intltool' 'gnome-common' 'git')
 options=(!libtool)
-install=$_name.install
 provides=($_name)
 conflicts=($_name)
 source=(git://git.gnome.org/$_name)
