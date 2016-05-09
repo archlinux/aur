@@ -2,7 +2,7 @@
 
 pkgname=albiononline
 pkgver=20160422110312
-pkgrel=1
+pkgrel=2
 pkgdesc="The first true cross-platform Sandbox MMO"
 url="https://albiononline.com/"
 arch=('x86_64')
@@ -13,6 +13,8 @@ source=("https://live.albiononline.com/clients/${pkgver}/albion-online-setup" "a
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
 md5sums=('b16377f21de62edb1d5efe2f5e19d946'
          'cec7e1ad7f4f8acfc0628d0dd8d421e6')
+
+install=${pkgname}.install
 
 package() {
   mkdir -p "${pkgdir}/opt/albiononline"
