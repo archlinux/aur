@@ -7,7 +7,7 @@
 pkgname=compiz
 pkgver=0.9.12.2
 _pkgseries=0.9.12
-pkgrel=12
+pkgrel=13
 pkgdesc="Composite manager for Aiglx and Xgl, with plugins and CCSM"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/compiz"
@@ -38,7 +38,6 @@ sha256sums=('8917ac9e6dfdacc740780e1995e932ed865d293ae87821e7a280da5325daec80'
             '81780f8c56f5b27b09394ae9ed59d10ae50c58f9ade445e9f85d7c2a00445f7e'
             '0d7474aee60c1a482cf26d5d0be6ec2e1b1067fa1d601fdf4aa19a71b07e41d3'
             '01e94ac52cd39eb5462a8505c7df61c7b14b05159de64f8700dfadb524bdb2ce')
-install=${pkgname}.install
 
 prepare() {
   cd "${pkgname}-${pkgver}"
