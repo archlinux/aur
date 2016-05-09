@@ -7,6 +7,7 @@ arch=('x86_64')
 url="http://www.fadeinpro.com/"
 # No license file is provided.
 license=('custom')
+depends=('libpng12')
 source=("http://www.fadeinpro.com/download/demo/fadein-linux-amd64-demo.tar.gz")
 md5sums=('4fbcea9f5ab0db17404766002d04b995')
 
