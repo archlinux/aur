@@ -1,7 +1,7 @@
 #PKGBUILD Maintainer: Rafael Reggiani Manzo <rr.manzo#gmail.com>
 
 pkgname=codeclimate
-pkgver=0.24.0
+pkgver=0.26.0
 pkgrel=1
 pkgdesc="Command line interface for the Code Climate analysis platform. It allows you to run Code Climate engines on your local machine inside of Docker containers. Make sure that your current user belongs to docker group and that docker is running."
 groups=('codeclimate')
