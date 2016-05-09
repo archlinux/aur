@@ -5,15 +5,4 @@ post_install() {
   echo "  Copy those subfolders to one of the following locations:"
   echo "      - /usr/share/openxcom/UFO"
   echo "      - <user home folder>/.local/share/openxcom/UFO"
-
-  post_upgrade
-}
-
-post_upgrade() {
-  update-desktop-database -q
-  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
-}
-
-post_remove() {
-  post_upgrade
 }
