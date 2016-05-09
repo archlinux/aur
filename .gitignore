@@ -1,0 +1,4 @@
+src/
+pkg/
+supermodel-svn/
+*.pkg.tar.xz
