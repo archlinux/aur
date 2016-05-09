@@ -10,7 +10,7 @@
 # Contributor: TIanyi Cui <tianyicui@gmail.com>
 
 pkgname=nodejs-4-lts
-pkgver=4.4.3
+pkgver=4.4.4
 pkgrel=1
 pkgdesc='Evented I/O for V8 javascript (version 4 with long term support)'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ depends=('openssl' 'zlib' 'icu' 'libuv' 'http-parser') # 'v8')
 makedepends=('python2' 'procps-ng')
 optdepends=('npm: nodejs package manager')
 source=("http://nodejs.org/dist/v$pkgver/node-v$pkgver.tar.gz")
-sha256sums=('8e67b95721aab7bd721179da2fe5dd97f9acc1306c15c9712ee103bcd6381638')
+sha256sums=('53c694c203ee18e7cd393612be08c61ed6ab8b2a165260984a99c014d1741414')
 
 prepare() {
   cd node-v$pkgver
