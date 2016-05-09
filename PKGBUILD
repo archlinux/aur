@@ -37,7 +37,7 @@ pkgver() {
 build() {
   cd -- "$srcdir/$_pkgname"
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DWANT_QT5=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo
-  make #-j1
+  make -j${nproc}
 }
 
 package() {
