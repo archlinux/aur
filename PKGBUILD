@@ -2,7 +2,7 @@
 
 pkgname=jmeter-plugins-extraslib
 _pkgname=JMeterPlugins-ExtrasLibs
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Additional plugins that do require additional libs to run."
 arch=(any)
@@ -11,7 +11,7 @@ license=(APACHE)
 depends=('jmeter>=2.10')
 options=(!strip)
 source=(http://jmeter-plugins.org/downloads/file/${_pkgname}-${pkgver}.zip)
-md5sums=('061fe56fbc618fb7a869c97a80f03c69')
+md5sums=('476d989653a4b42ea63061f1b8d67b20')
 
 package() {
   cd ${srcdir}/lib/
