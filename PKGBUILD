@@ -1,7 +1,7 @@
 # Maintainer: João Miguel <jmcf125 at openmailbox dot org>
 pkgname=ghc-raspbian-bin
-pkgver=7.8.4
-pkgrel=9
+pkgver=7.10.3
+pkgrel=7
 pkgdesc="GHC binaries for Raspberry Pi from Raspian repositories"
 arch=('armv6h')
 url="https://www.haskell.org/ghc/"
