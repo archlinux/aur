@@ -2,13 +2,13 @@
 _pkgname=util-xrm
 pkgname=xcb-${_pkgname}-git
 pkgver=v1.0.r9.g38925b3
-pkgrel=1
+pkgrel=2
 pkgdesc='XCB utility functions for the X resource manager'
 arch=('i686' 'x86_64')
 url="https://github.com/Airblader/xcb-util-xrm"
 license=('MIT')
-depends=('libxcb')
-makedepends=('git' 'xorg-util-macros' 'xcb-util')
+depends=('xcb-util')
+makedepends=('git' 'xorg-util-macros' 'libx11')
 provides=("xcb-${_pkgname}")
 conflicts=("xcb-${_pkgname}")
 source=("$_pkgname::git+http://github.com/Airblader/xcb-util-xrm")
