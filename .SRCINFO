@@ -1,0 +1,11 @@
+pkgbase = candra-themes-3.20-1
+	pkgdesc = A light-and-dark, and dark-and-darker set of themes.
+	pkgver = 05082016
+	pkgrel = 1
+	url = http://www.deviantart.com/art/Candra-Themes-3-20-1-05082016-607878370
+	arch = any
+	source = https://www.dropbox.com/s/x16uuh6kc2cxx2l/candra_themes_3_20_1_05082016_by_killhellokitty-da1wxya.zip
+	md5sums = 5007396e1de4e86e99164ae4ce62695b
+
+pkgname = candra-themes-3.20-1
+
