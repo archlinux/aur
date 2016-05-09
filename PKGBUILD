@@ -5,7 +5,7 @@ pkgname=('cnijfilter-mp550')
 _pkgname=cnijfilter
 
 pkgver=3.20
-pkgrel=11
+pkgrel=12
 _pkgreview=1
 
 pkgdesc="Canon IJ Printer Driver (For Multifunction MP550 series)"
@@ -14,11 +14,11 @@ url="http://www.canon-europe.com/Support/Consumer_Products/products/Fax__Multifu
 arch=('i686' 'x86_64')
 license=('custom')
 
-makedepends_x86_64=('gcc-multilib' 'lib32-popt')
-depends_x86_64=('lib32-gtk2' 'lib32-libxml2')
+makedepends_x86_64=('gcc-multilib')
+depends_x86_64=('lib32-gtk2')
 
-makedepends_i686=('gcc' 'popt')
-depends_i686=('gtk2' 'libxml2')
+makedepends_i686=('gcc')
+depends_i686=('gtk2')
 
 makedepends=('autoconf>=2.13' 'automake>=1.6' 'tar' 'make')
 depends=("${_pkgname}-common=4.00")
@@ -53,6 +53,8 @@ build() {
   cd ${srcdir}/${_pkgname}-source-${pkgver}-${_pkgreview}
 
   export CC="gcc -m32"
+  # Required for the glib2
+  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   make mp550
 }
 
@@ -61,7 +63,9 @@ package() {
   make PACKAGEDIR=${pkgdir} installmp550
 
   install -d ${pkgdir}/usr/lib32/bjlib
+  install -d ${pkgdir}/usr/lib/bjlib
   install -m 644 359/database/* ${pkgdir}/usr/lib32/bjlib/
+  ln -rs ${pkgdir}/usr/lib32/bjlib/* ${pkgdir}/usr/lib/bjlib/
   install -s -m 755 359/libs_bin/*.so.* ${pkgdir}/usr/lib32/
 
   install -D LICENSE-cnijfilter-${pkgver}EN.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-cnijfilter-${pkgver}EN.txt
