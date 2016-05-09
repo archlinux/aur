@@ -1,23 +1,21 @@
-# Maintainer: Noel Maersk <veox-at-wemakethings-dot-net>
-# Contributor: Gergely Tamas <dice-at-mfa-dot-kfki-dot-hu>
+# Maintainer: Noel Maersk <veox the wemakethings toad net>
+# Contributor: Gergely Tamas <dice the mfa toad kfki toad hu>
 # Contributor: Jan Spakula bender02 at archlinux dot us
 
 pkgname=rdup
-pkgver=1.1.14
-pkgrel=3
+pkgver=1.1.15
+pkgrel=1
 pkgdesc="Generates a file list suitable for making backups. Processing tool included."
 url="http://archive.miek.nl/projects/rdup"
 license=("GPL3")
 depends=('glib2' 'pcre' 'libarchive' 'nettle')
 arch=('i686' 'x86_64')
-source=(http://archive.miek.nl/projects/$pkgname/$pkgname-$pkgver.tar.bz2
-        libarchive-depr-fix.patch)
-sha1sums=('49dc7570122bfa362f36a26a2ffa8bfe8ad55182'
-          '69cd5825f7ec196f3bf906565f373fde9275cfc8')
+source=(https://github.com/miekg/$pkgname/archive/$pkgver.tar.gz)
+md5sums=('22636438d7cd35f73ddd0a80bf3cf42b')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  patch -p2 < "$srcdir/libarchive-depr-fix.patch"
+  autoreconf -fi
   ./configure --prefix=/usr --sysconfdir=/etc
   make -j1
 }
