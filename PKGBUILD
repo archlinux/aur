@@ -1,3 +1,4 @@
+# Contributor: daurnimator <quae@daurnimator.com>
 # Contributor: Lex Black <autumn-wind at web dot de>
 # Contributor: Karro <karolina.lindqvist@kramnet.se>
 # Contributor: maoserr
