@@ -41,7 +41,7 @@ package() {
     cp -r ./lib/* "${pkgdir}/opt/pt/lib"
 
     # Help Files that are optinal uncomment to include them (55 MB)
-    # cp -r ./help/* ${pkgdir}/opt/pt/help
+    # cp -r ./help/* "${pkgdir}/opt/pt/help"
 
     # Mime Info for PKA, PKT, PKZ
     install -D -m644 ./bin/Cisco-pka.xml "${pkgdir}/usr/share/mime/packages/Cisco-pka.xml"
@@ -77,5 +77,5 @@ package() {
     # Desktop File
     install -D -m644 ./bin/Cisco-PacketTracer.desktop "${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop"
     sed 's/\/usr\/local\/PacketTracer6/\/opt\/pt/' -i "${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop"
-    rm ${pkgdir}/opt/pt/bin/Cisco-PacketTracer.desktop
+    rm "${pkgdir}/opt/pt/bin/Cisco-PacketTracer.desktop"
 }
