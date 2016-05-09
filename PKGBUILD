@@ -4,7 +4,7 @@ pkgname=('cnijfilter-mp640')
 _pkgname=cnijfilter
 
 pkgver=3.20
-pkgrel=2
+pkgrel=3
 _pkgreview=1
 
 pkgdesc="Canon IJ Printer Driver (For Multifunction MP640 series)"
@@ -13,11 +13,11 @@ url="http://www.canon-europe.com/support/consumer_products/products/fax__multifu
 arch=('i686' 'x86_64')
 license=('custom')
 
-makedepends_x86_64=('gcc-multilib' 'lib32-popt')
-depends_x86_64=('lib32-gtk2' 'lib32-libxml2')
+makedepends_x86_64=('gcc-multilib')
+depends_x86_64=('lib32-gtk2')
 
-makedepends_i686=('gcc' 'popt')
-depends_i686=('gtk2' 'libxml2')
+makedepends_i686=('gcc')
+depends_i686=('gtk2')
 
 makedepends=('autoconf>=2.13' 'automake>=1.6' 'tar' 'make')
 depends=("${_pkgname}-common=4.00")
@@ -52,6 +52,8 @@ build() {
   cd ${srcdir}/${_pkgname}-source-${pkgver}-${_pkgreview}
 
   export CC="gcc -m32"
+  # Required for the glib2
+  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   make mp640
 }
 
@@ -60,7 +62,9 @@ package() {
   make PACKAGEDIR=${pkgdir} installmp640
 
   install -d ${pkgdir}/usr/lib32/bjlib
+  install -d ${pkgdir}/usr/lib/bjlib
   install -m 644 362/database/* ${pkgdir}/usr/lib32/bjlib/
+  ln -rs ${pkgdir}/usr/lib32/bjlib/* ${pkgdir}/usr/lib/bjlib/
   install -s -m 755 362/libs_bin/*.so.* ${pkgdir}/usr/lib32/
 
   install -D LICENSE-cnijfilter-${pkgver}EN.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-cnijfilter-${pkgver}EN.txt
