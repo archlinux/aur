@@ -23,5 +23,5 @@ package() {
     install -m755 -d "$pkgdir/usr/share/tailor"
     cp -R ${srcdir}/${pkgname}-${pkgver}/* "$pkgdir/usr/share/tailor"
     ln -s /usr/share/tailor/bin/tailor "$pkgdir/usr/bin/tailor"
-    ln -s /usr/share/tailor/bin/tailor.1 "$pkgdir/usr/share/man/man1/tailor.1"
+    ln -s /usr/share/tailor/tailor.1 "$pkgdir/usr/share/man/man1/tailor.1"
 }
