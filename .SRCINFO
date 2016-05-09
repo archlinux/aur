@@ -1,5 +1,5 @@
 pkgbase = firefox-developer-de
-	pkgdesc = Standalone web browser from mozilla.org, developer build
+	pkgdesc = Standalone web browser from mozilla.org, developer build - German
 	pkgver = 48.0a2
 	pkgrel = 1
 	url = http://www.mozilla.org/firefox/developer
