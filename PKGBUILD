@@ -8,8 +8,8 @@
 pkgbase=linux-mainline               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.5
-_patchname=patch-4.6-rc6
-pkgver=4.6rc6
+_patchname=patch-4.6-rc7
+pkgver=4.6rc7
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
