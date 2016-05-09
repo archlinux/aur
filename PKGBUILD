@@ -2,7 +2,7 @@
 
 pkgname=jmeter-plugins-standard
 _pkgname=JMeterPlugins-Standard
-pkgver=1.2.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Basic plugins for everyday needs."
 arch=(any)
@@ -11,7 +11,7 @@ license=(APACHE)
 depends=('jmeter>=2.10')
 options=(!strip)
 source=(http://jmeter-plugins.org/downloads/file/${_pkgname}-${pkgver}.zip)
-md5sums=('7aea7cf210028d6b236cef935b12ec88')
+md5sums=('704307743a810f23a4ac47e6541a4d3f')
 
 package() {
   install -Dm644 "${srcdir}/lib/ext/${_pkgname}.jar" "${pkgdir}/opt/jmeter/lib/ext/${_pkgname}.jar"
