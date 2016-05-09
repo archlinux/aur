@@ -1,4 +1,5 @@
-# Maintainer: George Eleftheriou <eleftg>
+# Maintainer:  Oliver Goethel <deezy>
+# Contributor: George Eleftheriou <eleftg>
 # Contributor: Mathias Anselmann <mathias.anselmann@gmail.com>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 # Contributor: Thomas Dziedzic < gostrc at gmail >
@@ -7,7 +8,7 @@
 
 pkgname=paraview
 pkgver=5.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Parallel Visualization Application using VTK'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
@@ -21,16 +22,20 @@ source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}-source.tar
 	    'paraview_32bit.patch'
 	    '0001-find_hdf5.patch'
 	    'ffmpeg3_compat.patch'
-	    'vtk-gcc6.patch')
+	    'vtk-gcc6.patch'
+	    'paraview-desktop.patch')
 sha1sums=('3d72635df84421c2bc4d59ec4a121348966ec28f'
 	  'c25134330c582371e1009b51445cdb435144b53f'
 	  '3f8701c349194cff12f5d1104fbc070a52dd3da1'
 	  'a78177f8dd6dedd9ad189fa12730ec53c7d02508'
-	  'b9f32419d0d0b1c03dc99eae932ec1c03a936cf0')
+	  'b9f32419d0d0b1c03dc99eae932ec1c03a936cf0'
+	  'd7da23daca34cd015294c4d2f702cdc4a81f0853')
 
 prepare() {
   cd "${srcdir}/ParaView-v${pkgver}-source"
   patch -p1 -i ../paraview_32bit.patch
+  
+  patch -p1 -i ../paraview-desktop.patch
 
   # Find HDF before the check (for NetCDF)
   patch "VTK/ThirdParty/netcdf/vtknetcdf/CMakeLists.txt" \
