@@ -2,7 +2,7 @@
 pkgbase=python-h5py-openmpi
 pkgname=(python-h5py-openmpi python2-h5py-openmpi)
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="General-purpose Python bindings for the HDF5 library - OpenMPI version"
 url="http://www.h5py.org/"
 arch=('i686' 'x86_64')
@@ -12,6 +12,10 @@ source=("https://pypi.python.org/packages/source/h/h5py/h5py-$pkgver.tar.gz"
 	DOCS_LICENSE.txt)
 sha256sums=('b2afc35430d5e4c3435c996e4f4ea2aba1ea5610e2d2f46c9cae9f785e33c435'
             '9a1e349d9e7513d2f7149b5e4f563c296ee32f60a6bd60b7e966c6140f68279d')
+
+prepare() {
+  cp -a h5py-$pkgver{,-py2}
+}
 
 build() {
   cd "$srcdir"/h5py-$pkgver
