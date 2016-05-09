@@ -1,6 +1,6 @@
 pkgbase = ananicy-git
 	pkgdesc = Ananicy - is Another auto nice daemon, with community rules support
-	pkgver = 20.6eaeb61
+	pkgver = 33.c3500f1
 	pkgrel = 1
 	url = https://github.com/Nefelim4ag/Ananicy.git
 	install = ananicy-git.install
