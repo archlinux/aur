@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=cqrlogo
-pkgver=0.5.3
-pkgrel=3
+pkgver=0.5.4
+pkgrel=1
 pkgdesc="CGI QR-Code logo for web services"
 arch=('i686' 'x86_64')
 url="https://github.com/eworm-de/cqrlogo"
@@ -22,7 +22,7 @@ backup=('etc/cqrlogo.conf'
 	'etc/lighttpd/conf.d/cqrlogo.conf')
 validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183')
 source=("http://www.eworm.de/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
-sha256sums=('c3d9e3ccdf0a364a2ba980f2e73d4388198439f08e0300372dd29cfe400ea3da'
+sha256sums=('26bf9c8b8fdab7337a0115a641d63ca2e4ff91db73b43475cc751f5a878b1aa6'
             'SKIP')
 
 build() {
