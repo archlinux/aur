@@ -5,7 +5,7 @@
 pkgname=emerald0.9
 _realname=emerald
 pkgver=0.9.5
-pkgrel=19
+pkgrel=20
 pkgdesc="Emerald window decorator (0.9 version)"
 arch=('i686' 'x86_64')
 url="http://www.compiz.org/"
