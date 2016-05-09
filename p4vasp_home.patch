@@ -1,0 +1,52 @@
+--- Makefile	2014-03-02 15:58:56.500145994 -0300
++++ Makefile	2014-03-07 02:57:31.418682724 -0300
+@@ -13,7 +13,12 @@
+ # BINDIR        - where the executable will go (e.g. /usr/bin)       #
+ ######################################################################
+ 
+--include install/Configuration.mk
++P4VASP_HOME   = $(DESTDIR)
++SITE_PACKAGES = $(P4VASP_HOME)/python-packages
++INCLUDEDIR    = $(P4VASP_HOME)/include
++LIBDIR        = $(P4VASP_HOME)/lib
++BINDIR        = $(P4VASP_HOME)/bin
++
+ 
+ P4VCONFIG     = lib/p4vasp/config.py
+ VINFO         = vinfo.py
+@@ -55,7 +55,7 @@
+ 	cd odpdom && $(MAKE) libODP.a	
+ 	cd src && $(MAKE)
+ p4vasp_config:
+-	echo "p4vasp_home='$(P4VASP_HOME)'" >$(P4VCONFIG)
++	echo "p4vasp_home='/opt/p4vasp'" >$(P4VCONFIG)
+ 	cat $(VINFO) >> $(P4VCONFIG)
+ devver:
+ 	echo "name       ='p4vasp-devel'" > $(VINFO)
+@@ -150,7 +150,7 @@
+ clean: clean_p4vasp clean_odpdom
+ cleanall: cleanall_p4vasp cleanall_odpdom cleanall_doc
+ 	
+-install_pythonpkg:p4vasp
++install_pythonpkg:
+ 	mkdir -p $(SITE_PACKAGES)/p4vasp
+ 	cd lib; cp -R p4vasp $(SITE_PACKAGES); cd ..
+ 	chmod -R 755 $(SITE_PACKAGES)/p4vasp
+@@ -164,7 +164,7 @@
+ 	chmod -R 755 $(SITE_PACKAGES)/p4vasp/piddle	
+ 	cd src; install -m755  cp4vasp.py _cp4vasp.so $(SITE_PACKAGES); cd ..
+ 	
+-install_gui:install_pythonpkg uninstallsh launcher
++install_gui:install_pythonpkg
+ 	mkdir -p     $(P4VASP_HOME)
+ 	cp -R data   $(P4VASP_HOME)
+ 	cp -R utils  $(P4VASP_HOME)
+@@ -207,7 +207,7 @@
+ 	chmod -R 755   $(P4VASP_HOME)/doc/intro
+ 	chmod    644   $(P4VASP_HOME)/doc/intro/*
+ 		
+-install_devel:install_pythonpkg
++install_devel:
+ 	mkdir -p $(LIBDIR)
+ 	mkdir -p $(INCLUDEDIR)/ODP
+ 	mkdir -p $(INCLUDEDIR)/p4vasp

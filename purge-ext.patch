@@ -1,0 +1,38 @@
+Description: Don't build convenience libraries in ext
+Note: adapted by karamaz0v from debian patch to use after applying python2-call.patch
+Author: Stefano Rivera <stefanor@ubuntu.com>
+Author: Graham Inggs <graham@nerve.org.za>
+Forwarded: not-needed
+Last-Update: 2013-09-28
+--- Makefile
++++ Makefile
+@@ -46,7 +46,7 @@
+ 	cd install && python2 configure.py local
+ config:
+ 	cd install && python2 configure.py
+-p4vasp: p4vasp_config uninstallsh fltk appletlist
++p4vasp: p4vasp_config uninstallsh appletlist
+ 	cd odpdom && $(MAKE) libODP.a	
+ 	cd src && $(MAKE)
+ p4vasp_config:
+@@ -143,7 +143,7 @@
+ 	cd ext && sh clean.sh
+         
+ clean: clean_p4vasp clean_odpdom
+-cleanall: cleanall_p4vasp cleanall_odpdom cleanall_doc cleanall_ext
++cleanall: cleanall_p4vasp cleanall_odpdom cleanall_doc
+ 	
+ install_pythonpkg:p4vasp
+ 	mkdir -p $(SITE_PACKAGES)/p4vasp
+--- src/Configuration.mk
++++ src/Configuration.mk
+@@ -1,5 +1,5 @@
+-LIBS=  -L../odpdom -lODP `python2 fltk-config.py --use-gl --ldstaticflags` -lpthread
+-CFLAGS= -g -O0 -fpic  -Wall $(FLAGS) `python2 fltk-config.py --cxxflags` -I$(PYINCLUDE) \
++LIBS=  -L../odpdom -lODP $(shell fltk-config --use-gl --ldflags) -lGLU -lGL -lm -lpthread
++CFLAGS= -g -O0 -fpic  -Wall $(FLAGS) $(shell fltk-config --cxxflags) -I$(PYINCLUDE) \
+         -Iinclude -I../odpdom/include
+ PYINCLUDE=`python2 -c "import sys;import os.path;print os.path.join(sys.prefix,\"include\",\"python\"+sys.version[:3])"`
+-LDFLAGS= -shared -L.
+\ No newline at end of file
++LDFLAGS= -shared -L.

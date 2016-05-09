@@ -1,0 +1,32 @@
+pkgbase = p4vasp
+	pkgdesc = A visualization suite for the Vienna Ab-initio Simulation Package (VASP)
+	pkgver = 0.3.29
+	pkgrel = 1
+	url = http://www.p4vasp.at/
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = python2
+	depends = mesa
+	depends = fltk
+	depends = glu
+	depends = swig
+	options = !strip
+	options = staticlibs
+	source = http://www.p4vasp.at/index.php/downloads/finish/2-source-code/16-p4vasp-0-3-29/p4vasp-0.3.29.tgz
+	source = p4vasp.desktop
+	source = p4vasp.png
+	source = python2-call.patch
+	source = purge-ext.patch
+	source = swig.patch
+	source = p4vasp_home.patch
+	md5sums = 845063c013e726a1f695399825082bdd
+	md5sums = f6cd7d2771e3e8cb83238542b486471b
+	md5sums = 071dea8ea3223048466933a6e175a262
+	md5sums = 6af582aec9b6aee3070051c318de10d9
+	md5sums = 3420044e9a173caab2d0c30df0851e10
+	md5sums = 33d9191f7a2e46ae9a292f07d67720a0
+	md5sums = 0eaf2bae665eae3da2c4f923218e5224
+
+pkgname = p4vasp
+

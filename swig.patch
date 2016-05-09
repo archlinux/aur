@@ -1,0 +1,17 @@
+Description: Modern Python versions require swig to be run with the -classic
+ option.
+Author: Stefano Rivera <stefanor@ubuntu.com>
+Author: Graham Inggs <graham@nerve.org.za>
+Forwarded: not-needed
+Last-Update: 2012-10-17
+--- src/Makefile
++++ src/Makefile
+@@ -18,7 +18,7 @@
+ #       -DNO_GL_LISTS_S 
+ #       -DNO_THREADS \
+        
+-SWIGFLAGS= -python -c++  $(FLAGS) -I../odpdom/include -Iinclude
++SWIGFLAGS= -python -classic -c++  $(FLAGS) -I../odpdom/include -Iinclude
+       
+ SWIG = swig
+ 

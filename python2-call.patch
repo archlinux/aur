@@ -1,0 +1,734 @@
+Description: this patch change all the python calls to python2 ones, 
+since the default python call is linked to python3 in ArchLinux.
+Author: karamaz0v <nihilum at gmail.com>
+Last-Update: 2014-03-02
+--- diagnostic.py	
++++ diagnostic.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ 
+ print "p4vasp Diagnostics"
+--- lib/p4vasp/applet/Applet.py	
++++ lib/p4vasp/applet/Applet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/AppletTree_old.py	
++++ lib/p4vasp/applet/AppletTree_old.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/AppletTree.py	
++++ lib/p4vasp/applet/AppletTree.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/BuilderApplet.py	
++++ lib/p4vasp/applet/BuilderApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/CommitApplet.py	
++++ lib/p4vasp/applet/CommitApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/DBApplet.py	
++++ lib/p4vasp/applet/DBApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/DielectricApplet.py	
++++ lib/p4vasp/applet/DielectricApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/EditSubZMatApplet.py	
++++ lib/p4vasp/applet/EditSubZMatApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/ElectronicApplet.py	
++++ lib/p4vasp/applet/ElectronicApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/ElectronicControlApplet.py	
++++ lib/p4vasp/applet/ElectronicControlApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/EnergyConvergenceApplet.py	
++++ lib/p4vasp/applet/EnergyConvergenceApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/ExportApplet.py	
++++ lib/p4vasp/applet/ExportApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/ForcesConvergenceApplet.py	
++++ lib/p4vasp/applet/ForcesConvergenceApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/GraphWindowApplet.py	
++++ lib/p4vasp/applet/GraphWindowApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/InfoApplet.py	
++++ lib/p4vasp/applet/InfoApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/KpointsViewerApplet.py	
++++ lib/p4vasp/applet/KpointsViewerApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/LatticeApplet.py	
++++ lib/p4vasp/applet/LatticeApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/LocalPotentialApplet.py	
++++ lib/p4vasp/applet/LocalPotentialApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/MeasureApplet.py	
++++ lib/p4vasp/applet/MeasureApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/MoveApplet.py	
++++ lib/p4vasp/applet/MoveApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/MultiplyCellApplet.py	
++++ lib/p4vasp/applet/MultiplyCellApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/NewApplet.py	
++++ lib/p4vasp/applet/NewApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/RotateApplet.py	
++++ lib/p4vasp/applet/RotateApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/SelectionApplet.py	
++++ lib/p4vasp/applet/SelectionApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/SelForcesConvergenceApplet.py	
++++ lib/p4vasp/applet/SelForcesConvergenceApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/ShowHideControlApplet.py	
++++ lib/p4vasp/applet/ShowHideControlApplet.py	
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/STMWindowApplet.py
++++ lib/p4vasp/applet/STMWindowApplet.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/STMWindowControlApplet.py	
++++ lib/p4vasp/applet/STMWindowControlApplet.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/StructureApplet.py
++++ lib/p4vasp/applet/StructureApplet.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/StructureWindowApplet.py	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/applet/StructureWindowApplet.py	2014-03-02 15:58:55.980137843 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/StructureWindowControlApplet.py	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/applet/StructureWindowControlApplet.py	2014-03-02 15:58:55.990137999 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/applet/VACApplet.py	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/applet/VACApplet.py	2014-03-02 15:58:56.000138156 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/ConvexShape.py	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/ConvexShape.py	2014-03-02 15:58:56.013471698 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ from math import *
+ from p4vasp.paint3d.OpenGLPaint3D import *
+ from p4vasp.paint3d.PovrayPaint3D import *
+--- lib/p4vasp/db.py	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/db.py	2014-03-02 15:58:56.020138470 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ from string import *
+ from UserList import *
+--- lib/p4vasp/GraphCanvas_gtk1.py	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/GraphCanvas_gtk1.py	2014-03-02 15:58:56.030138626 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/GraphCanvas.py	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/GraphCanvas.py	2014-03-02 15:58:56.043472169 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/message.py	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/message.py	2014-03-02 15:58:56.046805554 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #
+ # HappyDoc:docStringFormat='ClassicStructuredText'
+ #
+--- lib/p4vasp/piddle/piddleGTK/tests.py_	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/piddle/piddleGTK/tests.py_	2014-03-07 03:15:30.708515076 -0300
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """Test script for piddle.GTK.
+ 
+--- lib/p4vasp/piddle/piddleGTKp4/tests.py_	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/piddle/piddleGTKp4/tests.py_	2014-03-07 03:15:59.552330761 -0300
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """Test script for piddle.GTK.
+ 
+--- lib/p4vasp/piddle/piddleGTK2p4/tests.py_	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/piddle/piddleGTK2p4/tests.py_	2014-03-07 03:09:34.835155041 -0300
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#!/usr/bin/env python2
+ 
+ """Test script for piddle.GTK.
+ 
+--- lib/p4vasp/piddle/piddleGTK2p4/core.py	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/piddle/piddleGTK2p4/core.py	2014-03-02 15:58:56.056805711 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ """Slightly modified PIDDLE canvas implementations for PyGTK.
+ 
+ The real documentation is in piddleGTK.
+--- lib/p4vasp/Property.py	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/Property.py	2014-03-02 15:58:56.066805868 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #
+ # HappyDoc:docStringFormat='ClassicStructuredText'
+ #
+--- lib/p4vasp/Selection.py	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/Selection.py	2014-03-02 15:58:56.073472639 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/sellang.py	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/sellang.py	2014-03-02 15:58:56.076806025 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/setupstore.py	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/setupstore.py	2014-03-02 15:58:56.083472796 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- lib/p4vasp/SQLSystemPM.py	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/SQLSystemPM.py	2014-03-02 15:58:56.093472953 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #
+ # HappyDoc:docStringFormat='ClassicStructuredText'
+ #
+--- lib/p4vasp/store.py	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/store.py	2014-03-02 15:58:56.103473109 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #
+ # HappyDoc:docStringFormat='ClassicStructuredText'
+ #
+--- lib/p4vasp/StructureWindow.py	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/StructureWindow.py	2014-03-02 15:58:56.110139880 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #
+ # HappyDoc:docStringFormat='ClassicStructuredText'
+ #
+--- lib/p4vasp/SystemPM.py	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/SystemPM.py	2014-03-02 15:58:56.123473423 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #
+ # HappyDoc:docStringFormat='ClassicStructuredText'
+ #
+@@ -95,7 +95,7 @@ Following calculation properties are ava
+ 
+   example:
+ 
+-    #!/usr/bin/python
++    #!/usr/bin/python2
+     from p4vasp.SystemPM import *
+     s=XMLSystemPM('vasprun.xml')
+     poscar=s.INITIAL_STRUCTURE
+--- lib/p4vasp/util.py	2014-02-18 17:07:00.000000000 -0300
++++ lib/p4vasp/util.py	2014-03-02 15:58:56.130140194 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #
+ # HappyDoc:docStringFormat='ClassicStructuredText'
+ #
+--- Makefile	2014-02-18 17:07:00.000000000 -0300
++++ Makefile	2014-03-02 15:58:56.500145994 -0300
+@@ -43,9 +43,9 @@ P4V           = p4v
+ 
+ all: p4vasp
+ local:
+-	cd install && python configure.py local
++	cd install && python2 configure.py local
+ config:
+-	cd install && python configure.py
++	cd install && python2 configure.py
+ p4vasp: p4vasp_config uninstallsh fltk appletlist
+ 	cd odpdom && $(MAKE) libODP.a	
+ 	cd src && $(MAKE)
+@@ -66,9 +66,9 @@ launcher:
+ 	echo "export PYTHONPATH=\$$PYTHONPATH:"$(SITE_PACKAGES) >>$(P4V)
+ 	echo "export APPMENU_DISPLAY_BOTH=1" >>$(P4V)
+ 	echo "export P4VASP_HOME="$(P4VASP_HOME) >> $(P4V)
+-	echo "exec python "$(BINDIR)"/p4v.py \$$1 \$$2 \$$3" >>$(P4V)
++	echo "exec python2 "$(BINDIR)"/p4v.py \$$1 \$$2 \$$3" >>$(P4V)
+ appletlist:
+-	cd install && python makeappletlist.py
++	cd install && python2 makeappletlist.py
+ bashrc:setenvironment
+ 	echo "" >> ~/.bashrc
+ 	cat $(SETENVIRONMENT) >> ~/.bashrc
+--- odpdom/Makefile	2014-02-18 17:07:00.000000000 -0300
++++ odpdom/Makefile	2014-03-02 15:58:56.506812765 -0300
+@@ -9,7 +9,7 @@ FLAGS   = -DPY_DOMEXC_MODULE="\"xml.dom.
+ #          -DNO_POS_CACHE
+ #	  -DNO_THROW
+ 
+-PYINCLUDE=`python -c "import sys;import os.path;print os.path.join(sys.prefix,\"include\",\"python\"+sys.version[:3])"`
++PYINCLUDE=`python2 -c "import sys;import os.path;print os.path.join(sys.prefix,\"include\",\"python\"+sys.version[:3])"`
+ CFLAGS  = -fpic -g $(FLAGS) -I$(PYINCLUDE)  -Iinclude
+ 
+ SWIGFLAGS = -python -c++ $(FLAGS)
+--- odpdom/setup.py	2014-02-18 17:07:00.000000000 -0300
++++ odpdom/setup.py	2014-03-02 15:58:56.350143643 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ from distutils.core import setup, Extension
+ from glob import *
+--- p4v.py
++++ p4v.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # Copyright (C) 2003 Orest Dubay <orest.dubay@univie.ac.at>
+ 
+ from __future__ import generators
+--- src/Configuration.mk
++++ src/Configuration.mk
+@@ -1,5 +1,5 @@
+-LIBS=  -L../odpdom -lODP `python fltk-config.py --use-gl --ldstaticflags` -lpthread
+-CFLAGS= -g -O0 -fpic  -Wall $(FLAGS) `python fltk-config.py --cxxflags` -I$(PYINCLUDE) \
++LIBS=  -L../odpdom -lODP `python2 fltk-config.py --use-gl --ldstaticflags` -lpthread
++CFLAGS= -g -O0 -fpic  -Wall $(FLAGS) `python2 fltk-config.py --cxxflags` -I$(PYINCLUDE) \
+         -Iinclude -I../odpdom/include
+-PYINCLUDE=`python -c "import sys;import os.path;print os.path.join(sys.prefix,\"include\",\"python\"+sys.version[:3])"`
++PYINCLUDE=`python2 -c "import sys;import os.path;print os.path.join(sys.prefix,\"include\",\"python\"+sys.version[:3])"`
+ LDFLAGS= -shared -L.
+\ No newline at end of file
+--- src/fltk-config.py	2014-02-18 17:07:00.000000000 -0300
++++ src/fltk-config.py	2014-03-02 15:58:56.360143799 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ 
+ import os
+ import os.path
+--- test/testColladaPaint3D.py	2014-02-18 17:07:00.000000000 -0300
++++ test/testColladaPaint3D.py	2014-03-02 15:58:56.156807279 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ import unittest
+ from p4vasp.paint3d.ColladaPaint3D import *
+ from p4vasp.matrix import Vector
+--- test/testIsosurface.py	2014-02-18 17:07:00.000000000 -0300
++++ test/testIsosurface.py	2014-03-02 15:58:56.163474050 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ import unittest
+ from p4vasp.isosurface import *
+ from cp4vasp import *
+--- test/testPovrayPaint3D.py	2014-02-18 17:07:00.000000000 -0300
++++ test/testPovrayPaint3D.py	2014-03-02 15:58:56.170140821 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ import unittest
+ from p4vasp.paint3d.PovrayPaint3D import *
+ from p4vasp.matrix import Vector
+--- test/test.py	2014-02-18 17:07:00.000000000 -0300
++++ test/test.py	2014-03-02 15:58:56.346810257 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python2
+ # Copyright (C) 2012 Orest Dubay <dubay@danubiananotech.com>
+ import unittest
+ import testSystemPM
+--- utils/bandfolding.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/bandfolding.py	2014-03-02 15:58:56.186807749 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/bands.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/bands.py	2014-03-02 15:58:56.190141135 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/bondevolution.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/bondevolution.py	2014-03-02 15:58:56.196807906 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/CHGCAR2cube.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/CHGCAR2cube.py	2014-03-02 15:58:56.203474677 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  This utility is a part of p4vasp package.
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+--- utils/dos.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/dos.py	2014-03-02 15:58:56.206808062 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/extract.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/extract.py	2014-03-02 15:58:56.213474834 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/final2poscar.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/final2poscar.py	2014-03-02 15:58:56.220141605 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/final2xyz.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/final2xyz.py	2014-03-02 15:58:56.226808376 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/finaldist.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/finaldist.py	2014-03-02 15:58:56.233475147 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/getenergy.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/getenergy.py	2014-03-02 15:58:56.240141918 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ from p4vasp.SystemPM import *
+ from glob import glob
+--- utils/groups_distance.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/groups_distance.py	2014-03-02 15:58:56.243475304 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/initial2poscar.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/initial2poscar.py	2014-03-02 15:58:56.253475461 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/initial2xyz.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/initial2xyz.py	2014-03-02 15:58:56.256808846 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/ipr.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/ipr.py	2014-03-02 15:58:56.263475617 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/isosurfaceexporter.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/isosurfaceexporter.py	2014-03-02 15:58:56.270142389 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/kpoints_all.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/kpoints_all.py	2014-03-02 15:58:56.276809160 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/minforce_poscar.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/minforce_poscar.py	2014-03-02 15:58:56.283475931 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/mirror.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/mirror.py	2014-03-02 15:58:56.290142702 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/nanotube.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/nanotube.py	2014-03-02 15:58:56.296809473 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ import sys
+ from math import *
+--- utils/notselective.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/notselective.py	2014-03-02 15:58:56.303476244 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/povraysphere.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/povraysphere.py	2014-03-02 15:58:56.306809630 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/remove.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/remove.py	2014-03-02 15:58:56.313476401 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/replicate.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/replicate.py	2014-03-02 15:58:56.320143172 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/scanPotcar.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/scanPotcar.py	2014-03-02 15:58:56.330143329 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ from string import *
+ from glob import glob
+ import os.path
+--- utils/select.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/select.py	2014-03-02 15:58:56.336810100 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ #  p4vasp is a GUI-program and a library for processing outputs of the
+ #  Vienna Ab-inition Simulation Package (VASP)
+ #  (see http://cms.mpi.univie.ac.at/vasp/Welcome.html)
+--- utils/sortatomsZ.py	2014-02-18 17:07:00.000000000 -0300
++++ utils/sortatomsZ.py	2014-03-02 15:58:56.340143486 -0300
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ 
+ from p4vasp.Structure import *
+ from sys import argv

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Categories=Science;
+Comment=Visualization suite for VASP
+Exec=/usr/bin/p4v
+Icon=p4vasp-icon
+Name=p4vasp
+Type=Application
