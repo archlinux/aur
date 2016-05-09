@@ -13,7 +13,7 @@ makedepends=('dpkg')
 install="${pkgname}.install"
 _filename="ghc_${pkgver}-${pkgrel}+rpi1_armhf.deb"
 source=("http://archive.raspbian.org/raspbian/pool/main/g/ghc/$_filename")
-sha256sums=('6ed9c001044d1f200c5b0af7658e01ff2093210804ffe92d6d32e9aaa1f29353')
+sha256sums=('61b90723e5a10cf32964bb7292f4ae914f45dcbc2e9bd169f3b4fe137fe3dbc4')
 
 package() {
    echo '==> Extracting with dpkg. Note: packaging may take over 40 minutes.'
