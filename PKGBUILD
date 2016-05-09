@@ -7,8 +7,8 @@
 pkgname=('cnijfilter-common')
 _pkgname=cnijfilter
 
-pkgver=4.00
-pkgrel=3
+pkgver=4.10
+pkgrel=1
 _pkgreview=1
 
 pkgdesc="Canon IJ Printer Driver (Common Package)"
@@ -29,15 +29,15 @@ makedepends=('autoconf>=2.13' 'automake>=1.6' 'tar' 'make')
 
 install=cnijfilter-common.install
 
-# File size: 7786960 bytes
-source=("cnijfilter-source-4.00-1.tar.gz::http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwNTUxNTAx&cmp=ACB&lang=EN"
+# File size: 7683230 bytes
+source=("cnijfilter-source-4.10-1.tar.gz::http://pdisp01.c-wss.com/gdl/WWUFORedirectTarget.do?id=MDEwMDAwNTg1ODAx&cmp=ACB&lang=EN"
 	"cups.patch"
 	"buildfiles.patch"
 	"mychanges.patch")
-sha512sums=('f90a5beec88812f65e8f52f287db8cefbb9c13eabbb7a1117c72d4af238126c282ebbca09ef96f3147d3bd5281f227402ae7564a68d32002eb033833a8080d72'
-            'fe33272a243c164e574db591ccca09ef804c899d66ed2e2e3225cfaab503df016fb8f8c6da9e4989fcd8f38678884c989d87c02e47d95aafb60a776df158c7be'
-            '9b1081c964c7894eefa8b4d11b04c7eafda208f629a373a09999fe8fe8f5ce85f6a697bb14e20a3b3ce795d578d46fde5a431b3f29eb4f0ee70e67477bf6f4c2'
-            '4bd4d2854edfacb59e5b54b1eec348a982e25ba28608d1700e25efea9a54339be234ceaa9b6a013245d4135da14b34cd0d01ae91c315e63ff57565cd5ee1363f')
+sha512sums=('58198e92e360c71c95423bfa8278f449eb645245af1b96770323cb6f4b2b7186e5ab326d58377c20627c750d3d8c253addf637f9d18e085b1c89a81d6239ab51'
+            '141a78c2353b3864b5a468fb6f4cf74fef5bf53ae75ac8932d6d853adc4044254a5371dcba1d05358b6075b6f38783f580ac7137088b91c10b1e412581144843'
+            'fb73e2e0653f2654a9c5211b5dc3e06ce24cd2f5bf64a27009f5446e69c7f02d78bb201f15da0f68ad01b1cb4e699c808eccb9df690ffea07b6d5a59ab5629f3'
+            '210902afe06240def9d6e662f5c21a8e99eeac6104798230f196e269e07b20b265bd360a15aed921ab73e7aff91c4a8e3212585091d86e89bac42e4b32ed1afd')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-source-${pkgver}-${_pkgreview}/"
