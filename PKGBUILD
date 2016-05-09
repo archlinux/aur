@@ -6,32 +6,33 @@
 
 pkgname=chromium-gtk3
 _pkgname=chromium
-pkgver=49.0.2623.112
+pkgver=50.0.2661.94
 pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, an attempt at creating a safer, faster, and more stable browser (GTK3 version)"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
-depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
+depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
          'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
          'speech-dispatcher' 'pciutils' 'libpulse' 'harfbuzz' 'libsecret'
          'libvpx' 'perl' 'perl-file-basedir' 'desktop-file-utils'
-         'hicolor-icon-theme' 'gtk3')
-makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
+         'hicolor-icon-theme')
+makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'gtk2')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
-optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
+optdepends=('gtk2: for flashplugin'
+            'kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
 conflicts=('chromium')
 replaces=('chromium')
 options=('!strip')
 install=chromium.install
-source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
+source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
         chromium-widevine.patch)
-sha256sums=('443b6d5f0d07f336783e700edc4ecae96769e105d0f8553e98fefae747302cf0'
+sha256sums=('66f0516b076d42b3f00a5fa4ebf31304cb98973179b1cb2fecda8e0b186dba19'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '4660344789c45c9b9e52cb6d86f7cb6edb297b39320d04f6947e5216d6e5f64c')
@@ -56,9 +57,6 @@ fi
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
 
-  # Fix build with gtk3, already merged to upstream for 50 version  
-  sed -i 's#^// Default tints.$#\0\nconst color_utils::HSL kDefaultTintFrameInactive = { -1, -1, 0.75f };#' chrome/browser/ui/libgtk2ui/gtk2_ui.cc
-
   # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/9JX1N2nf4PU/discussion
   touch chrome/test/data/webui/i18n_process_css_test.html
 
@@ -71,10 +69,13 @@ prepare() {
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
     patch -Np1
 
-  # Remove bundled ICU; its header files appear to get picked up instead of
-  # the system ones, leading to errors during the final link stage.
-  # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/BNGvJc08B6Q
-  find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
+  # Commentception – use bundled ICU due to build failures (50.0.2661.75)
+  # See https://crbug.com/584920 and https://crbug.com/592268
+  # ---
+  ## Remove bundled ICU; its header files appear to get picked up instead of
+  ## the system ones, leading to errors during the final link stage.
+  ## https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/BNGvJc08B6Q
+  #find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
@@ -117,7 +118,7 @@ build() {
     -Dlinux_use_bundled_binutils=0
     -Dlinux_use_bundled_gold=0
     -Dlinux_use_gold_flags=0
-    -Dicu_use_data_file_flag=0
+    -Dicu_use_data_file_flag=1
     -Dlogging_like_official_build=1
     -Dtracing_like_official_build=1
     -Dfieldtrial_testing_like_official_build=1
@@ -125,12 +126,12 @@ build() {
     -Dlibspeechd_h_prefix=speech-dispatcher/
     -Dffmpeg_branding=Chrome
     -Dproprietary_codecs=1
-    -Duse_gnome_keyring=1
+    -Duse_gnome_keyring=0
     -Duse_system_bzip2=1
     -Duse_system_flac=1
     -Duse_system_ffmpeg=0
     -Duse_system_harfbuzz=1
-    -Duse_system_icu=1
+    -Duse_system_icu=0
     -Duse_system_libevent=1
     -Duse_system_libjpeg=1
     -Duse_system_libpng=1
@@ -213,6 +214,8 @@ package() {
   ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/chromium/LICENSE"
+
+  install -Dm644 out/Release/icudtl.dat "${pkgdir}/usr/lib/chromium/icudtl.dat"
 }
 
 # vim:set ts=2 sw=2 et:
