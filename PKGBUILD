@@ -5,7 +5,7 @@
 pkgname=xfce4-panel-compiz
 _realname=xfce4-panel
 pkgver=4.12.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Panel for the Xfce desktop environment with fixes for Compiz"
 arch=('i686' 'x86_64')
 url="http://www.xfce.org/"
@@ -16,7 +16,6 @@ depends=('exo' 'garcon' 'libxfce4ui' 'libwnck' 'hicolor-icon-theme'
 makedepends=('intltool' 'gtk-doc')
 provides=("$_realname=$pkgver")
 conflicts=("$_realname")
-install=$_realname.install
 source=(http://archive.xfce.org/src/xfce/$_realname/${pkgver%.*}/$_realname-$pkgver.tar.bz2
         workspace-pager.patch
         button-visibility.patch)
