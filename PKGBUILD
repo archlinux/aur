@@ -15,7 +15,7 @@ url='http://wiki.qemu.org/'
 makedepends=('pixman' 'glib2'
              'gnutls' 'util-linux' 'curl' 'libsasl'
              'libcap-ng' 'libaio' 'libseccomp'
-             'python2'
+             'python2' 'usbredir' 'lzo'
              'dtc' 'git' 'texi2html' 'perl')
 source=(git://git.qemu.org/qemu.git
         qemu.sysusers
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
             'dd43e2ef062b071a0b9d0d5ea54737f41600ca8a84a8aefbebb1ff09f978acfb'
             '0b4f3283973bb3bc876735f051d8eaab68f0065502a3a5012141fad193538ea1'
             '60dcde5002c7c0b983952746e6fb2cf06d6c5b425d64f340f819356e561e7fc7'
-            '6710a5db47761c5d9b23a243c9d4a129d3eda2c505fc0acc1e428b0e111f1575')
+            '0df69a77645c9a05f98635773666b6212084525d7801ef8382242b06baebe5aa')
 
 _extra_arches=(aarch64 alpha arm armeb cris lm32 m68k microblaze microblazeel mips
 mips64 mips64el mipsel mipsn32 mipsn32el or32 ppc ppc64 ppc64abi32 ppc64le s390x
@@ -51,7 +51,7 @@ build() {
   ./configure --prefix=/usr --sysconfdir=/etc \
               --python=/usr/bin/python2 --smbd=/usr/bin/smbd \
               --disable-docs --libexecdir=/usr/lib/qemu \
-              --disable-gtk --disable-snappy --disable-lzo --enable-linux-aio --enable-seccomp \
+              --disable-gtk --disable-snappy --enable-lzo --enable-linux-aio --enable-seccomp \
               --localstatedir=/var \
               --enable-tpm \
               --enable-modules --enable-curl
@@ -60,7 +60,7 @@ build() {
 
 package() {
   pkgdesc='A generic and open source processor emulator. This is a stripped-down version for running on a headless server. It does not install extra arches either.'
-  depends=('pixman' 'gnutls' 'dtc')
+  depends=('pixman' 'gnutls' 'dtc' 'usbredir' 'lzo')
   optdepends=('ovmf: Tianocore UEFI firmware for qemu'
               'samba: SMB/CIFS server support'
               'qemu-arch-extra-git: extra architectures support'
