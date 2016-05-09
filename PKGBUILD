@@ -2,49 +2,49 @@
 
 pkgbase=python-pyexecjs
 pkgname=('python-pyexecjs' 'python2-pyexecjs')
-pkgver=1.3.1
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Run JavaScript code from Python."
 arch=('any')
 url="https://pypi.python.org/pypi/PyExecJS"
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=(https://pypi.python.org/packages/source/P/PyExecJS/PyExecJS-${pkgver}.tar.gz)
-md5sums=('cb64d118cc48af724088f35a2e9955aa')
+makedepends=('python-packaging' 'python2-packaging' 'git')
+changelog=changelog
+source=(git+https://github.com/doloopwhile/PyExecJS.git#tag=v$pkgver)
+sha512sums=('SKIP')
 
 prepare() {
-  cp -r PyExecJS-$pkgver PyExecJS-$pkgver-python
-  cp -r PyExecJS-$pkgver PyExecJS-$pkgver-python2
+  cp -a PyExecJS{,-python2}
 }
 
 build() {
-  cd "PyExecJS-$pkgver-python"
+  cd "PyExecJS"
   python setup.py build
 
-  cd "../PyExecJS-$pkgver-python2"
+  cd "../PyExecJS-python2"
   python2 setup.py build
 }
 
 check() {
-  cd "PyExecJS-$pkgver-python"
+  cd "PyExecJS"
   LC_CTYPE=en_US.utf8 python test_execjs.py || warning "Tests failed"
 
-  cd "../PyExecJS-$pkgver-python2"
+  cd "../PyExecJS-python2"
   LC_CTYPE=en_US.utf8 python2 test_execjs.py || warning "Tests failed"
 }
 
 package_python-pyexecjs() {
-  depends=('python' 'python-six')
+  depends=('python-six')
 
-  cd "PyExecJS-$pkgver-python"
-  python setup.py install --root="$pkgdir" -O1
+  cd "PyExecJS"
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 package_python2-pyexecjs() {
-  depends=('python2' 'python2-six')
+  depends=('python2-six')
 
-  cd "PyExecJS-$pkgver-python2"
-  python2 setup.py install --root="$pkgdir" -O1
+  cd "PyExecJS-python2"
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

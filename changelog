@@ -1,0 +1,32 @@
+2016-05-09 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+	* 1.4.0:
+    Fixed required libraries.
+    Fixed order of output of --print-available-runtimes.
+    Execute some JavaScript runtime with pipe/stdin (without temporary file).
+ 	* 1.3.1:
+ 	  Fixed --print-available-runtimes fails in Python 2.7.
+ 	* 1.3.0:
+ 	  Added cwd argument.
+ 	* 1.2.0:
+    Supported Python 3.5
+    Supported Nashorn(Java 8 JavaScript engine) as runtime
+    Dropped support for Python 2.6 and 3.2
+ 	* 1.1.0:
+    Supported Python 3.4
+    Supported SlimerJS as runtime
+    Supported PhantomJS as runtime
+    Fixed JScript runtime on Windows 8
+ 	* 1.0.5:
+    Supported Python 3.3
+    Fixed file handle leaking
+    Fixed issue with passenger-nginx-4.0
+ 	* 1.0.4:
+ 	  Removed “import execjs” (it prevent execution of setup.py by Python 2.6)
+ 	* 1.0.3:
+ 	  Javascript sources were embeded in init.py. ‘which’ command were reimplemented by pure python.
+ 	* 1.0.2:
+ 	  Python 2.6.x was supported.
+ 	* 1.0.1:
+ 	  Forgotten shell=True was added to Popen.
+ 	* 1.0.0:
+ 	  First release.
