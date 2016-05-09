@@ -7,8 +7,8 @@
 
 
 pkgname=gtk3-light
-pkgver=3.20.3
-pkgrel=4.1
+pkgver=3.20.4
+pkgrel=1
 pkgdesc="GTK3 without colord."
 arch=(i686 x86_64)
 url="http://www.gtk.org/"
@@ -26,7 +26,7 @@ license=(LGPL)
 source=(https://download.gnome.org/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz
         settings.ini
         gtk-query-immodules-3.0.hook)
-sha256sums=('3834f3bf23b260b3e5ebfea41102e2026a8af29e36c3620edf4a5cf05e82f694'
+sha256sums=('e7e3aaf54a54dd1c1ca0588939254abe31329e0bcd280a12290d5306b41ea03f'
             '01fc1d81dc82c4a052ac6e25bf9a04e7647267cc3017bc91f9ce3e63e5eb9202'
             'de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845')
 
