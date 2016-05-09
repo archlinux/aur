@@ -1,15 +1,21 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=opendht
-pkgver=0.5.2
+pkgver=0.5.1.r79.g13f8c13
 pkgrel=1
+epoch=1
 pkgdesc="A C++11 implementation of the Kademlia DHT (Distributed Hash Table)"
 arch=('i686' 'x86_64')
 depends=('gnutls' 'nettle' 'readline')
 makedepends=('git' 'msgpack-c')
 url="https://github.com/savoirfairelinux/opendht"
 license=('GPL3')
-source=("git://github.com/savoirfairelinux/opendht#tag=${pkgver}")
+source=("git://github.com/savoirfairelinux/opendht#commit=13f8c13ac4ebb3b43474d91ca48b42a1019083f4")
 sha256sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 build() {
   cd "${pkgname}"
