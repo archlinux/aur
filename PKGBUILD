@@ -26,7 +26,7 @@ build() {
     ./autogen.sh --with-gtk=3.0 --prefix="/usr" \
          --localstatedir="/var" \
          --libexecdir="/usr/lib/xed"
-    make
+    make CFLAGS='-w -O2'
 }
 
 package(){
