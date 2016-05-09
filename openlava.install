@@ -1,0 +1,22 @@
+#
+# Openlava install script
+#
+post_install(){
+cat << EOF
+==> Copying template config files to /opt/openlava/etc/ 
+==> Install user openlava 
+==> Changing ownership of /opt/openlava/ 
+==> NOTE: For new install copy the following into etc dir
+cd ./src/openlava-3.1pre1/config;cp lsb.hosts lsb.params lsb.queues lsb.users lsf.cluster.openlava lsf.conf lsf.shared lsf.tasks openlava.* 	/opt/openlava/etc
+EOF
+useradd -r openlava
+chown -R openlava:openlava /opt/openlava
+}
+
+post_remove(){
+cat << EOF
+==> Removing user openlava 
+EOF
+#userdel openlava
+
+}

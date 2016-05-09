@@ -1,0 +1,18 @@
+pkgbase = openlava
+	pkgdesc = A open source cluster scheduler
+	pkgver = 3.2
+	pkgrel = 1
+	url = http://www.openlava.org/
+	install = openlava.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = autoconf
+	provides = openlava=3.2
+	conflicts = openlava
+	backup = opt/openlava-3.2/conf/lsf.conf
+	source = https://github.com/openlava/openlava/archive/3.2.tar.gz
+	sha256sums = f985d117a7405ebdfc11646e549d2a8869b521ce02c630c2e6e413cf57c2a2e0
+
+pkgname = openlava
+
