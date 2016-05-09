@@ -1,6 +1,6 @@
 # Maintainer: Fabian <plusfabi[AT+thegoogleadress]>
 pkgname=pokemon-revolution-online-bin
-pkgver=0.94.20160327
+pkgver=0.94.20160509
 pkgrel=1
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
@@ -10,10 +10,9 @@ depends=('gcc-libs-multilib')
 optdepends=('gtk2: required for the Unity ScreenSelector plugin')
 conflicts=('pokemon-revolution-online')
 changelog="change.log"
-source=('http://tiny.cc/PROLinux' 'net.pokemon-revolution-online.desktop' 'change.log' 'pokemonrevolution' 'copyright' 'pokemonrevolution.svg')
-md5sums=('4ca6f28da8d25670ac4b13146dd38a3c'
-         '3215173b6f1673d868e71f1d953ed9d2'
-         'd791b50b1432a9dd8ca5e342e03a991c'
+source=('net.pokemon-revolution-online.desktop' 'change.log' 'pokemonrevolution' 'copyright' 'pokemonrevolution.svg')
+md5sums=('3215173b6f1673d868e71f1d953ed9d2'
+         '1a6d6b3aeee7c84cd38cafb715ffec8a'
          '1b667f450341675b6b2c1750e034516c'
          '0efcd0393015ff149217f9ced4670513'
          '8446ead3097e1b87e3a63b667d956569')
@@ -25,6 +24,34 @@ package() {
     ## i know this isnt a good thing and nobody wants to see this on aur, but itll make things easier for me #Fabian
     ## directory files naming is usually VNAMING_Date, binary VNAMING.x86_64 
     __VNAMING="PROLinux64_94" 
+    
+    __DLDIR=$(xdg-user-dir DOWNLOAD)
+    __DDLA="http://tiny.cc/PROLinux"
+    __DDLFN="PRO94_3_Linux.zip"
+    __DDLFMD5="2badf060f386cd06dd8160fa23950bde"
+    
+    ## "Something's missing"? -> No One Cares - Atreyu c;
+    if [ ! -f ${__DLDIR}/${__DDLFN} ]; then
+    {
+        echo "${__DLDIR}/${__DDLFN} not found, please download it"
+        echo "Download: ${__DDLA}"
+        exit 1
+    }
+    fi
+    ## lets check the md5sum
+    if [ "$(md5sum ${__DLDIR}/${__DDLFN} | awk '{print $1}')" != "${__DDLFMD5}" ]; then 
+    { 
+        echo "${__DLDIR}/${__DDLFN} MD5 MISMATCH, please remove the old file before downloading"
+        echo "rm \"${__DLDIR}/${__DDLFN}\""
+        echo "Download: ${__DDLA}"
+        echo
+        echo "maybe this pkgbuild is out-of-date. please report this:"
+        echo "https://aur.archlinux.org/packages/pokemon-revolution-online-bin/"
+        exit 1
+    } 
+    fi
+    
+    bsdtar -x -p -f "${__DLDIR}/${__DDLFN}"
     
     # CREATE FOLDERS
     ## copy the folderstructure of the original without content.    
@@ -66,9 +93,10 @@ package() {
     # COPYRIGHT FILE
     ## move the copyright text
     install -D -m644 "${srcdir}/copyright" \
-    "${pkgdir}/usr/share/licenses/pokemon-revolution-online/copyright"
+    "${pkgdir}/usr/share/licenses/pokemon-revolution-online-bin/copyright"
+}
 
-    # RM PROLinux
-    ## lets remove the zip file since it'll save some space and we dont need it anymore
-    rm ../PROLinux
+post_install() {
+    xdg-icon-resource forceupdate
+    update-desktop-database -q
 }

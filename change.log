@@ -1,12 +1,16 @@
 Game Changelog
 http://pokemon-revolution-online.net/Forum/viewtopic.php?f=14&t=4563
 
-Packaging
-switch from AUR pokemon-revolution-online to pokemon-revolution-online-bin
-cause we dont have the sources, its binary only
+0.94.20160509-1
+* new version of PRO
+* no automatic mode anymore, you have to download it yourself -> since DDL is always down
+* added a postinstall part to update *.desktop files
+
 
 0.94.20160327-1
 * PRO 0.94
+* switch from AUR pokemon-revolution-online to pokemon-revolution-online-bin
+cause we dont have the sources, its binary only
 
 0.93_3.20160206-2
 * remove that X-DBUS-StartupType in *.desktop
