@@ -31,6 +31,7 @@ source=("${url}/${_series}/${pkgver}/+download/${_name}-${pkgver}.tar.bz2"
         "cmake3.patch"
         "cube-texture.patch"
         "marco-in-mate.patch"
+        "trailfocus-fix.patch"
         "${pkgname}-defaults.patch"
         "${pkgname}.gschema.override"
         "compiz-gtk-decorator-theme-selector"
@@ -49,6 +50,7 @@ sha256sums=('8917ac9e6dfdacc740780e1995e932ed865d293ae87821e7a280da5325daec80'
             'e5016fd62f9c9659d887eeafd556c18350615cd6d185c8ffa08825465890c5e0'
             '81780f8c56f5b27b09394ae9ed59d10ae50c58f9ade445e9f85d7c2a00445f7e'
             '0d7474aee60c1a482cf26d5d0be6ec2e1b1067fa1d601fdf4aa19a71b07e41d3'
+            '01e94ac52cd39eb5462a8505c7df61c7b14b05159de64f8700dfadb524bdb2ce'
             'cdc9eeaa213dbde3bceb2d0a73171ed319929b6a5146ff55fcd4f17df7b25d13'
             '443f85eae424e8aa993f786f3f90dcf92a5454f728f574a5311bb4747ac54288'
             '04c7d417602c144313e808d5e1bde198ee677412c97d7405cf6092e8794f95b7'
@@ -96,6 +98,9 @@ prepare() {
   
   # Use the Marco gsettings in MATE session (commits 3997+4002)
   patch -p1 -i "${srcdir}/marco-in-mate.patch"
+
+  # Fix ambiguous function call in trailfocus plugin
+  patch -p1 -i "${srcdir}/trailfocus-fix.patch"
   
   # Manjaro defaults
   patch -p1 -i "${srcdir}/${pkgname}-defaults.patch"
