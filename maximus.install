@@ -1,8 +1,7 @@
 pkgname=maximus
 
 post_install() {
-  usr/sbin/gconfpkg --install ${pkgname}
-  update-desktop-database -q
+  usr/bin/gconfpkg --install ${pkgname}
 }
 
 pre_upgrade() {
@@ -14,9 +13,5 @@ post_upgrade() {
 }
 
 pre_remove() {
-  usr/sbin/gconfpkg --uninstall ${pkgname}
-}
-
-post_remove() {
-  update-desktop-database -q
+  usr/bin/gconfpkg --uninstall ${pkgname}
 }

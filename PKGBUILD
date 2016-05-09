@@ -3,7 +3,7 @@
 
 pkgname=maximus
 pkgver=0.4.14
-pkgrel=5
+pkgrel=6
 pkgdesc="A desktop daemon which will automatically maximise and, optionally, un-decorate windows."
 arch=("i686" "x86_64")
 url="https://launchpad.net/maximus"
