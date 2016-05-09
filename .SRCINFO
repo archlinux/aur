@@ -1,6 +1,6 @@
 pkgbase = python-mdtraj
 	pkgdesc = A modern, open library for the analysis of molecular dynamics trajectories
-	pkgver = 1.6.1
+	pkgver = 1.7
 	pkgrel = 1
 	url = http://mdtraj.org/
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = python-mdtraj
 	makedepends = cython2
 	makedepends = cython
 	options = !libtool
-	source = https://github.com/SimTk/mdtraj/archive/1.6.1.tar.gz
-	sha1sums = bd1ca717595cbbc852d08463e9dbe01a8de9f941
+	source = https://github.com/SimTk/mdtraj/archive/1.7.tar.gz
+	sha1sums = f73b00b53d91999743311b8c818c27a06ea16753
 
 pkgname = python2-mdtraj
 	depends = python2-numpy
