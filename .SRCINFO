@@ -7,11 +7,11 @@ pkgbase = nginx-mod-echo-git
 	arch = x86_64
 	license = custom
 	makedepends = git
-	depends = nginx-mainline=1.9.14
+	depends = nginx=1.10.0
 	source = git://github.com/openresty/echo-nginx-module.git
-	source = http://nginx.org/download/nginx-1.9.14.tar.gz
+	source = http://nginx.org/download/nginx-1.10.0.tar.gz
 	md5sums = SKIP
-	md5sums = a25818039f34b5d54b017d44c76321c4
+	md5sums = c184c873d2798c5ba92be95ed1209c02
 
 pkgname = nginx-mod-echo-git
 
