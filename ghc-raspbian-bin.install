@@ -14,4 +14,5 @@ pre_upgrade() {
 post_upgrade() {
    echo '==> All cabalized packages need to be reinstalled now.'
    echo '==> See /usr/share/haskell/ for a tentative list of affected packages.'
+   post_install
 }
