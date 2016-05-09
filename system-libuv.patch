@@ -1,8 +1,8 @@
 diff --git a/setup.py b/setup.py
-index c17d552..9a75928 100644
+index c17d552..0d20456 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -35,13 +35,7 @@ class libuv_build_ext(build_ext):
+@@ -35,14 +35,7 @@ class libuv_build_ext(build_ext):
          subprocess.run(['make', j_flag], cwd=LIBUV_DIR, env=env, check=True)
  
      def build_extensions(self):
@@ -13,7 +13,8 @@ index c17d552..9a75928 100644
 -            raise RuntimeError('failed to build libuv')
 -
 -        self.extensions[-1].extra_objects.extend([libuv_lib])
+-        self.compiler.add_include_dir(os.path.join(LIBUV_DIR, 'include'))
 +        self.compiler.add_library('uv')
-         self.compiler.add_include_dir(os.path.join(LIBUV_DIR, 'include'))
  
          if sys.platform.startswith('linux'):
+             self.compiler.add_library('rt')
