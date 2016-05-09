@@ -5,7 +5,7 @@ pkgname=('cnijfilter-mp550')
 _pkgname=cnijfilter
 
 pkgver=3.20
-pkgrel=12
+pkgrel=13
 _pkgreview=1
 
 pkgdesc="Canon IJ Printer Driver (For Multifunction MP550 series)"
@@ -21,7 +21,7 @@ makedepends_i686=('gcc')
 depends_i686=('gtk2')
 
 makedepends=('autoconf>=2.13' 'automake>=1.6' 'tar' 'make')
-depends=("${_pkgname}-common=4.00")
+depends=("${_pkgname}-common=4.10")
 
 install=cnijfilter-mp550.install
 
