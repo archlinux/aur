@@ -3,14 +3,15 @@
 # Contributors: hoban
 # Contributors: Nrm
 # Contributors: MattScherbatsky
- 
+# Contributors: robozman
+
 pkgname=subsonic
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free, web-based media streamer and jukebox."
 arch=('any')
 url="http://subsonic.org/"
-license=('GPL')
+license=('CUSTOM')
 depends=('java-runtime-headless')
 conflicts=('subsonic')
 source=(http://subsonic.org/download/subsonic-${pkgver}-standalone.tar.gz      
