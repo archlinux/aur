@@ -1,6 +1,6 @@
 pkgbase = roccat-tools
 	pkgdesc = Userland applications to configure and make extended use of ROCCAT devices
-	pkgver = 4.0.0
+	pkgver = 5.0.0
 	pkgrel = 1
 	url = http://roccat.sourceforge.net
 	arch = i686
@@ -17,8 +17,8 @@ pkgbase = roccat-tools
 	depends = libgudev
 	depends = lua>=5.3
 	optdepends = kmod-roccat: Adds support for the old kone device.
-	source = http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-4.0.0.tar.bz2
-	md5sums = 1cd462a09f10fd16369b1aca1234cbd4
+	source = http://downloads.sourceforge.net/project/roccat/roccat-tools/roccat-tools-5.0.0.tar.bz2
+	md5sums = ef757d1d5d9602e6d5bee7df55a1fe75
 
 pkgname = roccat-tools-common
 	pkgdesc = ROCCAT tools common files
