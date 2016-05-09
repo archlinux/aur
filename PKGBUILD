@@ -26,7 +26,6 @@ makedepends=('extra-cmake-modules' 'git')
 makedepends+=('xine-lib')
 makedepends+=('mpv')
 conflicts=(${_name})
-install=${_name}.install
 optdepends=('mpv: for MPV backend'
             'mplayer: for MPlayer backend'
             'xine-lib: for Xine backend'
