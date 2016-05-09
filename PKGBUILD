@@ -3,12 +3,12 @@
 pkgname=webtorrent-desktop-bin
 _pkgname=webtorrent-desktop
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Streaming torrent client."
 arch=('x86_64')
 url="https://webtorrent.io/desktop"
 license=('MIT')
-makedepends=('npm')
+depends=('gconf')
 provides=('webtorrent-desktop')
 conflicts=('webtorrent-desktop' 'webtorrent-desktop-git')
 source=("https://github.com/feross/${_pkgname}/releases/download/v${pkgver}/WebTorrent-v${pkgver}-linux.zip")
