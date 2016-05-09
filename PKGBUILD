@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.0.0.r2268.gb696a50
+pkgver=1.0.0.r2288.g17c6f32
 pkgrel=1
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
@@ -51,8 +51,11 @@ prepare() {
 	# ISO image with EFI support
 	git cherry-pick -n ff8c8dc5
 
-	# build fixes
+	# build fix - no PIE
 	git cherry-pick -n 6eb2017e
+
+	# build fix - ath9k: fix buffer overrun for ar9287
+	git cherry-pick -n 70248573
 
 	# read and set keymap
 	[ -s /etc/vconsole.conf ] && source /etc/vconsole.conf
