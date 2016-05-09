@@ -1,0 +1,15 @@
+--- gcc-5.3.0/gcc/cp/cfns.h	2016-05-07 19:39:04.976724823 +0200
++++ gcc-5.3.0/gcc/cp/cfns.h	2016-05-07 19:37:59.000000000 +0200
+@@ -124,9 +124,9 @@ hash (register const char *str, register
+ 
+ #ifdef __GNUC__
+ __inline
+-#ifdef __GNUC_STDC_INLINE__
+-__attribute__ ((__gnu_inline__))
+-#endif
++//#ifdef __GNUC_STDC_INLINE__
++//__attribute__ ((__gnu_inline__))
++//#endif
+ #endif
+ const char *
+ libc_name_p (register const char *str, register unsigned int len)

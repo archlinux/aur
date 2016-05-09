@@ -1,0 +1,49 @@
+pkgbase = gcc53-alternative-multilib
+	pkgdesc = The GNU Compiler Collection 5.3 for multilib
+	pkgver = 5.3.0
+	pkgrel = 1
+	url = http://gcc.gnu.org
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	license = FDL
+	license = custom
+	checkdepends = dejagnu
+	checkdepends = inetutils
+	makedepends = binutils>=2.25
+	makedepends = libmpc
+	makedepends = doxygen
+	makedepends = lib32-glibc>=2.23
+	options = !emptydirs
+	source = ftp://gcc.gnu.org/pub/gcc/releases/gcc-5.3.0/gcc-5.3.0.tar.bz2
+	source = http://isl.gforge.inria.fr/isl-0.17.tar.bz2
+	source = http://www.bastoul.net/cloog/pages/download/cloog-0.18.1.tar.gz
+	md5sums = c9616fd448f980259c31de613e575719
+	md5sums = 47dcb4fc963a9a625ccb47b72a167ffa
+	md5sums = e34fca0540d840e5d0f6427e98c92252
+
+pkgname = gcc53-alternative-multilib
+	pkgdesc = The GNU Compiler Collection 5.3 - C and C++ frontends for multilib
+	install = gcc53-alternative.install
+	groups = multilib-devel
+	depends = gcc53-alternative-libs-multilib=5.3.0-1
+	depends = binutils>=2.25
+	depends = libmpc
+	provides = gcc53=5.3.0-1
+	options = staticlibs
+
+pkgname = gcc53-alternative-libs-multilib
+	pkgdesc = Runtime GCC 5.3 libraries for multilib
+	install = gcc53-alternative-libs.install
+	depends = glibc>=2.23
+	depends = lib32-gcc53-alternative-libs=5.3.0-1
+	provides = gcc53-alternative-libs=5.3.0-1
+	options = !emptydirs
+	options = !strip
+
+pkgname = lib32-gcc53-alternative-libs
+	pkgdesc = Runtime GCC 5.3 libraries (32-bit)
+	depends = lib32-glibc>=2.23
+	options = !emptydirs
+	options = !strip
+
