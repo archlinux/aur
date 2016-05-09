@@ -1,0 +1,34 @@
+#!/bin/bash
+
+CHECKSUM_DIR=/var/lib/block-device-checksums
+
+RED="\e[91m"
+BOLD="\e[1m"
+NORMAL="\e[0m"
+
+cd $CHECKSUM_DIR
+
+devices=$(ls | sed "s/\.\(before\|after\)$//" | uniq)
+
+fail=0
+for dev in $devices; do
+  before=$(cat $dev.before | cut -d' ' -f 1)
+  after=$(cat $dev.after | cut -d' ' -f 1)
+  if [[ $before == $after ]]; then
+    if [[ $1 != "-q" && $1 != "--quiet" ]]; then
+      echo "$dev: PASS ($before)"
+    fi
+  else
+    echo -e "${RED}$dev: FAIL${NORMAL}"
+    for when in before after; do
+      echo -e "  ${BOLD}$(ls --full-time $dev.$when | cut -d' ' -f 6-7):${NORMAL} ${!when}"
+    done
+    fail=1
+  fi
+done
+
+if [[ $fail != 0 ]]; then
+  echo
+  echo -e "${RED}WARNING: Some block device checksums failed validation."
+  exit 1
+fi

@@ -1,0 +1,14 @@
+[Unit]
+Description=Checksum %I on shutdown and boot
+Before=local-fs-pre.target shutdown.target
+StopWhenUnneeded=yes
+DefaultDependencies=no
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/bash -c "dd if=/dev/%I bs=1M status=none | sha1sum -b > /var/lib/block-device-checksums/%i.after"
+ExecStop=/usr/bin/bash -c "dd if=/dev/%I bs=1M status=none | sha1sum -b > /var/lib/block-device-checksums/%i.before"
+
+[Install]
+WantedBy=local-fs-pre.target

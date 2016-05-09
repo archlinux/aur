@@ -1,0 +1,13 @@
+[Unit]
+Description=Checksum %I on sleep and resume
+Before=sleep.target
+StopWhenUnneeded=yes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/bash -c "sync && dd if=/dev/%I bs=1M iflag=direct status=none | sha1sum -b > /var/lib/block-device-checksums/%i.before"
+ExecStop=/usr/bin/bash -c "dd if=/dev/%I bs=1M iflag=direct status=none | sha1sum -b > /var/lib/block-device-checksums/%i.after"
+
+[Install]
+WantedBy=sleep.target
