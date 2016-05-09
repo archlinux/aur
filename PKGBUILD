@@ -12,7 +12,7 @@ pkgname=('scangearmp-mpseries-common'
 _pkgname=scangearmp
 
 pkgver=1.40
-pkgrel=8
+pkgrel=9
 _pkgreview=1
 
 pkgdesc="Canon IJ Scanner Driver for MP250, MP270, MP490, MP550, MP560, and MP640 series"
@@ -50,6 +50,8 @@ build() {
   cd "${srcdir}/${_pkgname}-source-${pkgver}-${_pkgreview}/scangearmp"
 
   export CC="gcc -m32"
+  # Required for the glib2
+  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
 
   ./autogen.sh --prefix=/usr --libdir=/usr/lib32
   if [ -x /usr/bin/libtool ]; then
@@ -87,6 +89,9 @@ package_scangearmp-mpseries-common() {
   done
   chmod 644 ${pkgdir}/usr/lib32/libsane-canon_mfp.a
 
+  install -d ${pkgdir}/usr/lib/bjlib
+  ln -rs ${pkgdir}/usr/lib32/bjlib/* ${pkgdir}/usr/lib/bjlib/
+
   install -D LICENSE-scangearmp-${pkgver}EN.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-scangearmp-${pkgver}EN.txt
 }
 
@@ -96,12 +101,14 @@ scangearmp-mpverseries-packager() {
   cd "${srcdir}/${_pkgname}-source-${pkgver}-${_pkgreview}"
 
   install -d ${pkgdir}/usr/lib32/bjlib
+  install -d ${pkgdir}/usr/lib/bjlib
   for libname in ${mpid}/libs_bin/*.so.*; do
     install -s -m 755 ${libname} ${pkgdir}/usr/lib32
   done
   for auxname in ${mpid}/*.{tbl,DAT}; do
     install -m 644 ${auxname} ${pkgdir}/usr/lib32/bjlib
   done
+  ln -rs ${pkgdir}/usr/lib32/bjlib/* ${pkgdir}/usr/lib/bjlib/
 
   install -D LICENSE-scangearmp-${pkgver}EN.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-scangearmp-${pkgver}EN.txt
 }
