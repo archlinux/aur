@@ -3,11 +3,9 @@ post_install() {
   # create kvm group
   systemd-sysusers qemu.conf
 
-  # trigger events on modules files when already loaded
-  for _f in /sys/devices/virtual/misc/{kvm,vhost-net}; do
-    [[ -e "$_f" ]] &&  udevadm trigger "$_f"
-  done
-  :
+  # retrigger events on modules files when already loaded
+  [[ -e /dev/kvm ]] && udevadm trigger /dev/kvm
+  [[ -e /dev/vhost-net ]] && udevadm trigger /dev/vhost-net
 }
 
 # arg 1:  the new package version
