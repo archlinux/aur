@@ -22,7 +22,7 @@ makedepends_i686=('gcc')
 depends_i686=('gtk2')
 
 makedepends=('autoconf>=2.13' 'automake>=1.6' 'tar' 'make')
-depends=("${_pkgname}-common=4.00")
+depends=("${_pkgname}-common=4.10")
 
 install=cnijfilter-mx920.install
 
