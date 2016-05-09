@@ -7,7 +7,7 @@
 pkgname=med-salome
 _pkgname=med
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - This version is built to be linked against salome-med on x86_64"
 url="http://www.code-aster.org/outils/med/"
 license=('LGPL')
@@ -19,41 +19,52 @@ conflicts=("med_fichier" "med")
 replaces=("med_fichier" "med")
 backup=()
 arch=('i686' 'x86_64')
-source=("http://files.salome-platform.org/Salome/other/${_pkgname}-${pkgver}.tar.gz")
+source=("http://files.salome-platform.org/Salome/other/${_pkgname}-${pkgver}.tar.gz"
+        "patch-include_2.3.6_med.h.in"
+        "patch-include_med.h.in"
+        "patch-src_2.3.6_ci_MEDequivInfo.c")
+	
 
 # _installdir=/opt/${pkgname}
 _installdir=/usr
 _sharedir=${_installdir}/share/${pkgname}
 
 prepare() {
-  cd ${srcdir}/${_pkgname}-${pkgver}_SRC || return 1
- 
-  # patch to avoid inconcsistency between med_proto.h and MEDequivInfo.c
-  sed -i -e "s|int fid|med_idt fid|" ./src/2.3.6/ci/MEDequivInfo.c
+  cd ${srcdir}/${_pkgname}-${pkgver}_SRC
+
+  # patch H5public_extract.h.in
+  sed -i -e '/^#typedef/ s/#/\/\//' ./include/H5public_extract.h.in
+  
+  #patch for hdf5-1.10
+  patch -p0 < ${srcdir}/patch-include_2.3.6_med.h.in
+  patch -p0 < ${srcdir}/patch-include_med.h.in
+  patch -p0 < ${srcdir}/patch-src_2.3.6_ci_MEDequivInfo.c
 }
 
 build() {
-  export PYTHON="python2"
+  export PYTHON="$(which python2)"
 
   cd ${srcdir}/${_pkgname}-${pkgver}_SRC
  
-  ./configure --with-f90=gfortran --prefix=${_installdir}  --with-med_int=int --datadir=${_sharedir}
+  ./configure --with-f90=gfortran --prefix=${_installdir}  --with-med_int=int --datadir=${_sharedir} --with-swig=yes
   make
 }
  
 package() {
   cd ${srcdir}/${_pkgname}-${pkgver}_SRC
- 
-  make DESTDIR=${pkgdir} install
-  
-  ln -sf mdump3 ${pkgdir}/usr/bin/mdump
-  ln -sf xmdump3 ${pkgdir}/usr/bin/xmdump
 
+  make DESTDIR=${pkgdir} install || return 1
+  
   # now move the testprograms to share, we don't want all the stuff in the bindir
-  for _FILE in usescases unittests testf testc testpy
-  do
-    rm -rf ${pkgdir}${_installdir}/bin/${_FILE}
-  done
+  cp -dpr --no-preserve=ownership ${pkgdir}/usr/bin/testc ${pkgdir}${_sharedir}/testc
+  cp -dpr --no-preserve=ownership ${pkgdir}/usr/bin/testf ${pkgdir}${_sharedir}
+  cp -dpr --no-preserve=ownership ${pkgdir}/usr/bin/unittests ${pkgdir}${_sharedir}
+  cp -dpr --no-preserve=ownership ${pkgdir}/usr/bin/usescases ${pkgdir}${_sharedir}
+  rm -r ${pkgdir}/usr/bin/{usescases,unittests,testf,testc}
 }
 
 md5sums=('a1e1eb068f20634f5ea797914241eb51')
+md5sums=('a1e1eb068f20634f5ea797914241eb51'
+         'b83949326d7ae0ca77a06822b754a329'
+         '14a151cea108388d7a3b4c62887169f6'
+         '8f0cbf6f08783a6ba68ff5ab240dd62e')
