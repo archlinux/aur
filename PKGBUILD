@@ -1,21 +1,21 @@
 # Maintainer: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 
-_ngx_ver=1.9.14
+_ngx_ver=1.10.0
 _mod_name=headers-more
 
 pkgname=nginx-mod-headers-more-git
 pkgver=0.29.r8.gf5559ec
-pkgrel=2
+pkgrel=3
 pkgdesc='Nginx module for setting and clearing input and output headers'
 arch=('i686' 'x86_64')
 url='https://github.com/openresty/headers-more-nginx-module'
 license=('custom')
-depends=("nginx-mainline=$_ngx_ver")
+depends=("nginx=$_ngx_ver")
 makedepends=('git')
 source=(git://github.com/openresty/${_mod_name}-nginx-module.git
         http://nginx.org/download/nginx-${_ngx_ver}.tar.gz)
 md5sums=('SKIP'
-         'a25818039f34b5d54b017d44c76321c4')
+         'c184c873d2798c5ba92be95ed1209c02')
 
 _ngx_flags=(
   --with-file-aio
