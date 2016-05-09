@@ -24,7 +24,7 @@ md5sums=(
 )
 
 build() {
-  cd $srcdir/$pkgname
+  cd "$pkgname"
   make iup iupcd iupcontrols iupgl iup_pplot iupim iupimglib ledc iupview \
     TEC_UNAME_DIR=. TEC_UNAME_LIB_DIR=. \
     CD_LIB=/usr/lib \
@@ -32,18 +32,19 @@ build() {
     IM_LIB=/usr/lib \
     IM_INC=/usr/include/im \
     ZLIB_LIB=/usr/lib \
-    IUPLIB="$srcdir/$pkgname"/lib
+    IUPLIB="$srcdir/$pkgname"/lib \
+    USE_LUA53=Yes \
+    LUA_LIB=/usr/lib \
+    NO_LUALINK=1
 }
 
 package() {
-  cd $srcdir/$pkgname
-
   install -m755 -d $pkgdir/usr/lib
-  install -m644 $srcdir/iup/lib/* $pkgdir/usr/lib
-  install -m755 -d $pkgdir/usr/share/$pkgname
-  install -m644 $srcdir/iup-${pkgver}_Docs.pdf $pkgdir/usr/share/$pkgname
+  install -m644 iup/lib/* $pkgdir/usr/lib
   install -m755 -d $pkgdir/usr/include/iup
-  install -m644 $srcdir/iup/include/* $pkgdir/usr/include/iup
+  install -m644 iup/include/* $pkgdir/usr/include/iup
+  install -m755 -d $pkgdir/usr/share/$pkgname
+  install -m644 iup-${pkgver}_Docs.pdf $pkgdir/usr/share/$pkgname
   mkdir -p $pkgdir/usr/share/licenses/iup
   install -m644 $srcdir/iup/COPYRIGHT $pkgdir/usr/share/licenses/iup
 }
