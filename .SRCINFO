@@ -1,6 +1,6 @@
 pkgbase = drush-alternative
 	pkgdesc = Drush is a command line shell and Unix scripting interface for Drupal
-	pkgver = 8.1.1
+	pkgver = 8.1.2
 	pkgrel = 1
 	url = https://github.com/drush-ops/drush
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = drush-alternative
 	makedepends = php-composer
 	makedepends = git
 	depends = php
-	provides = drush=8.1.1
+	provides = drush=8.1.2
 	conflicts = drush
 	source = drush::git+https://github.com/drush-ops/drush.git
 	sha512sums = SKIP
