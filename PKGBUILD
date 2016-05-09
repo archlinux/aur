@@ -1,7 +1,7 @@
 # Maintainer: George Angelopoulos <george@usermod.net>
 pkgname=fadein
 pkgver=2.0.542
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional screenwriting software (DEMO)"
 arch=('x86_64')
 url="http://www.fadeinpro.com/"
