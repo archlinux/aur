@@ -5,7 +5,7 @@
 
 pkgname=openxcom
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="An open-source reimplementation of the famous X-COM game"
 arch=('i686' 'x86_64')
 url="http://openxcom.org/"
@@ -15,19 +15,28 @@ makedepends=('boost' 'glu' 'xmlto' 'docbook-xml' 'docbook-xsl')
 optdepends=('openxcom-data-steam: Original XCom data files from steam')
 install="${pkgname}.install"
 source=("https://github.com/SupSuper/OpenXcom/archive/v1.0.tar.gz"
+        "abs-fix.patch"
+        "auto_ptr-fix.patch"
         "${pkgname}.install")
 sha256sums=('45acb280010a01d60506b1c5f2951ae501c012cc6161aac470bd15c1e6981246'
+            'e4e3f082202e47ee7f8e9448d3d8111bba9a67d72f0fea32c3d6af788e7f91fe'
+            '40b52c623a71fa8986296e8e6c3c775fe4751fe1846722ef1442bd171ac31a8b'
             '33a412d870d8c1399738b71f772aaa5954d0028a9c42373ca4a27124c154956d')
 
+prepare() {
+  cd OpenXcom-1.0
+  patch -p1 -i "$srcdir/abs-fix.patch"
+  patch -p1 -i "$srcdir/auto_ptr-fix.patch"
+}
 
 build() {
-  cd "${srcdir}/OpenXcom-1.0"
+  cd OpenXcom-1.0
   ./autogen.sh
   ./configure --prefix=/usr --without-docs
   make
 }
 
 package() {
-  cd "${srcdir}/OpenXcom-1.0"
+  cd OpenXcom-1.0
   make DESTDIR="$pkgdir" install
 }

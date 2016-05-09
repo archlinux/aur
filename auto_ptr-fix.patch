@@ -1,0 +1,75 @@
+diff -aur a/src/Ruleset/RuleAlienMission.cpp b/src/Ruleset/RuleAlienMission.cpp
+--- a/src/Ruleset/RuleAlienMission.cpp	2016-05-09 14:33:33.955934374 +0100
++++ b/src/Ruleset/RuleAlienMission.cpp	2016-05-09 14:33:15.148834301 +0100
+@@ -85,7 +85,7 @@
+ 			if (assoc.end() == existing)
+ 			{
+ 				// New entry, load and add it.
+-				std::auto_ptr<WeightedOptions> nw(new WeightedOptions);
++				std::unique_ptr<WeightedOptions> nw(new WeightedOptions);
+ 				nw->load(nn->second);
+ 				assoc.insert(std::make_pair(month, nw.release()));
+ 			}
+diff -aur a/src/Ruleset/Ruleset.cpp b/src/Ruleset/Ruleset.cpp
+--- a/src/Ruleset/Ruleset.cpp	2016-05-09 14:37:50.699784577 +0100
++++ b/src/Ruleset/Ruleset.cpp	2016-05-09 14:41:53.193130469 +0100
+@@ -437,7 +437,7 @@
+ 		}
+ 		else
+ 		{
+-			std::auto_ptr<MCDPatch> patch(new MCDPatch());
++			std::unique_ptr<MCDPatch> patch(new MCDPatch());
+ 			patch->load(*i);
+ 			_MCDPatches[type] = patch.release();
+ 			_MCDPatchesIndex.push_back(type);
+@@ -446,7 +446,7 @@
+  	for (YAML::const_iterator i = doc["extraSprites"].begin(); i != doc["extraSprites"].end(); ++i)
+ 	{
+ 		std::string type = (*i)["type"].as<std::string>();
+-		std::auto_ptr<ExtraSprites> extraSprites(new ExtraSprites());
++		std::unique_ptr<ExtraSprites> extraSprites(new ExtraSprites());
+ 		extraSprites->load(*i, _modIndex);
+ 		_extraSprites.push_back(std::make_pair(type, extraSprites.release()));
+ 		_extraSpritesIndex.push_back(type);
+@@ -454,7 +454,7 @@
+  	for (YAML::const_iterator i = doc["extraSounds"].begin(); i != doc["extraSounds"].end(); ++i)
+ 	{
+ 		std::string type = (*i)["type"].as<std::string>();
+-		std::auto_ptr<ExtraSounds> extraSounds(new ExtraSounds());
++		std::unique_ptr<ExtraSounds> extraSounds(new ExtraSounds());
+ 		extraSounds->load(*i, _modIndex);
+ 		_extraSounds.push_back(std::make_pair(type, extraSounds.release()));
+ 		_extraSoundsIndex.push_back(type);
+@@ -468,7 +468,7 @@
+ 		}
+ 		else
+ 		{
+-			std::auto_ptr<ExtraStrings> extraStrings(new ExtraStrings());
++			std::unique_ptr<ExtraStrings> extraStrings(new ExtraStrings());
+ 			extraStrings->load(*i);
+ 			_extraStrings[type] = extraStrings.release();
+ 			_extraStringsIndex.push_back(type);
+diff -aur a/src/Savegame/AlienStrategy.cpp b/src/Savegame/AlienStrategy.cpp
+--- a/src/Savegame/AlienStrategy.cpp	2016-05-09 14:37:50.704784621 +0100
++++ b/src/Savegame/AlienStrategy.cpp	2016-05-09 14:41:39.184983581 +0100
+@@ -87,7 +87,7 @@
+ 	{
+ 		std::string region = (*nn)["region"].as<std::string>();
+ 		const YAML::Node &missions = (*nn)["missions"];
+-		std::auto_ptr<WeightedOptions> options(new WeightedOptions());
++		std::unique_ptr<WeightedOptions> options(new WeightedOptions());
+ 		options->load(missions);
+ 		_regionMissions.insert(std::make_pair(region, options.release()));
+ 	}
+diff -aur a/src/Savegame/SavedGame.cpp b/src/Savegame/SavedGame.cpp
+--- a/src/Savegame/SavedGame.cpp	2016-05-09 14:37:50.704784621 +0100
++++ b/src/Savegame/SavedGame.cpp	2016-05-09 14:41:29.698884793 +0100
+@@ -371,7 +371,7 @@
+ 	{
+ 		std::string missionType = (*it)["type"].as<std::string>();
+ 		const RuleAlienMission &mRule = *rule->getAlienMission(missionType);
+-		std::auto_ptr<AlienMission> mission(new AlienMission(mRule));
++		std::unique_ptr<AlienMission> mission(new AlienMission(mRule));
+ 		mission->load(*it, *this);
+ 		_activeMissions.push_back(mission.release());
+ 	}
