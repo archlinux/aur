@@ -1,0 +1,12 @@
+# Message displayed for a fresh install.
+post_install() { 
+  echo ""
+  echo "***************************************************************"
+  echo " Supermodel has been installed in /usr/share/supermodel."
+  echo " However, Supermodel can be run by typing supermodel and it's options:"
+  echo " supermodel <romset> [options]"
+  echo ""
+  echo " Note: You need to provide the full path to the romset."
+  echo "***************************************************************"
+  echo ""
+}

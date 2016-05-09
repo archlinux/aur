@@ -1,0 +1,19 @@
+pkgbase = supermodel-svn
+	pkgdesc = A Sega Model 3 Arcade Emulator
+	pkgver = 0.3a
+	pkgrel = 1
+	url = http://www.supermodel3.com/
+	install = supermodel.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = mesa
+	depends = sdl
+	depends = zlib
+	source = supermodel.sh
+	source = supermodel-svn::svn+https://svn.code.sf.net/p/model3emu/code/trunk
+	md5sums = ea8274c2a37acddd026fce9c831530cc
+	md5sums = SKIP
+
+pkgname = supermodel-svn
+
