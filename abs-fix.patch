@@ -1,18 +1,42 @@
-diff -aur a/src/Geoscape/Globe.cpp b/src/Geoscape/Globe.cpp
---- a/src/Geoscape/Globe.cpp	2016-05-09 14:23:24.784162800 +0100
-+++ b/src/Geoscape/Globe.cpp	2016-05-09 14:22:48.994666182 +0100
-@@ -1390,12 +1390,12 @@
+From 49bec0851fc6e5365cac0f71b2c40a80ddf95e77 Mon Sep 17 00:00:00 2001
+From: Louis Delacroix <yoursecretsaresafe@googlemail.com>
+Date: Sun, 16 Nov 2014 20:47:41 +0000
+Subject: [PATCH] Fix use of abs() for floating point arguments
+
+---
+ src/Battlescape/ProjectileFlyBState.cpp | 2 +-
+ src/Geoscape/Globe.cpp                  | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/Battlescape/ProjectileFlyBState.cpp b/src/Battlescape/ProjectileFlyBState.cpp
+index c890d12..2ea67ae 100644
+--- a/src/Battlescape/ProjectileFlyBState.cpp
++++ b/src/Battlescape/ProjectileFlyBState.cpp
+@@ -651,7 +651,7 @@ int ProjectileFlyBState::getMaxThrowDistance(int weight, int strength, int level
+         if (curZ < 0 && dz < 0) //roll back
+         {
+             dz = std::max(dz, -1.0);
+-            if (abs(dz)>1e-10) //rollback horizontal
++            if (std::abs(dz)>1e-10) //rollback horizontal
+                 dist -= curZ / dz;
+             break;
+         }
+diff --git a/src/Geoscape/Globe.cpp b/src/Geoscape/Globe.cpp
+index e5249ce..1a360dd 100755
+--- a/src/Geoscape/Globe.cpp
++++ b/src/Geoscape/Globe.cpp
+@@ -1217,12 +1217,12 @@ void Globe::drawVHLine(Surface *surface, double lon1, double lat1, double lon2,
  
  	if (fabs(sx)<0.01)
  	{
 -		seg = abs( sy/(2*M_PI)*48 );
-+		seg = std::abs( sy/(2*M_PI)*48 );
++		seg = std::abs(sy/(2*M_PI)*48);
  		if (seg == 0) ++seg;
  	}
  	else
  	{
 -		seg = abs( sx/(2*M_PI)*96 );
-+		seg = std::abs( sx/(2*M_PI)*96 );
++		seg = std::abs(sx/(2*M_PI)*96);
  		if (seg == 0) ++seg;
  	}
  
