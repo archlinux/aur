@@ -8,7 +8,7 @@ pkgname=('cnijfilter-common')
 _pkgname=cnijfilter
 
 pkgver=4.00
-pkgrel=2
+pkgrel=3
 _pkgreview=1
 
 pkgdesc="Canon IJ Printer Driver (Common Package)"
@@ -19,11 +19,11 @@ license=('custom')
 
 conflicts=('lib32-cnijfilter320')
 
-makedepends_x86_64=('gcc-multilib' 'lib32-popt')
-depends_x86_64=('lib32-libcups' 'lib32-popt')
+makedepends_x86_64=('gcc-multilib')
+depends_x86_64=('lib32-libcups' 'lib32-popt' 'lib32-libusb' 'lib32-libxml2')
 
-makedepends_i686=('gcc' 'popt')
-depends_i686=('libcups' 'popt')
+makedepends_i686=('gcc')
+depends_i686=('libcups' 'popt' 'libusb' 'libxml2')
 
 makedepends=('autoconf>=2.13' 'automake>=1.6' 'tar' 'make')
 
@@ -64,8 +64,8 @@ package() {
   install -s -m 755 com/libs_bin32/lib*.so.* ${pkgdir}/usr/lib32
   install -D LICENSE-cnijfilter-${pkgver}EN.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-cnijfilter-${pkgver}EN.txt
   if [ "${CARCH}" = 'x86_64' ]; then
-    install -d ${pkgdir}/usr/lib
-    ln -s /usr/lib32/bjlib ${pkgdir}/usr/lib/bjlib
+    install -d ${pkgdir}/usr/lib/bjlib
+    ln -rs ${pkgdir}/usr/lib32/bjlib/* ${pkgdir}/usr/lib/bjlib/
     mv ${pkgdir}/usr/lib/cups/backend ${pkgdir}/usr/lib32/cups/
     install -d ${pkgdir}/usr/lib/cups/backend
     ln -rs ${pkgdir}/usr/lib32/cups/backend/* ${pkgdir}/usr/lib/cups/backend/
