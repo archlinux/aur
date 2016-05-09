@@ -11,7 +11,6 @@ depends=(\
   'qt5-svg' 'qt5-graphicaleffects' 'qt5-webkit' 'phonon-qt4' 'qt5-serialport'\
   'qt5-quickcontrols')
 makedepends=('git')
-md5sums=()  # generate with 'makepkg -g'
 
 source=('qgroundcontrol::git+https://github.com/mavlink/qgroundcontrol.git')
 md5sums=('SKIP')
