@@ -1,0 +1,34 @@
+pkgbase = sun-wtk
+	pkgdesc = Sun Java Wireless Toolkit for CLDC (J2ME, MIDP).
+	pkgver = 2.5.2_01
+	pkgrel = 2
+	url = http://www.oracle.com/technetwork/java/index-jsp-137162.html
+	install = sun-wtk.install
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = java-runtime
+	depends = lib32-gcc-libs
+	depends = lib32-libxt
+	optdepends = java-environment: to do development
+	optdepends = bin32-jre7-openjdk: to run `emulator`
+	provides = j2me
+	source = https://dl.dropboxusercontent.com/u/17413859/sun_java_wireless_toolkit-2.5.2_01-linuxi486.bin.sh
+	source = sun-wtk.install
+	source = sun-wtk.sh
+	source = sun-wtk.csh
+	source = ktoolbar.desktop
+	source = ktoolbar.png
+	source = LICENSE
+	sha256sums = 416ea8c8dc56e3563fc92e89bb9dde243662272bc4c88121d8fc1074044b4bb2
+	sha256sums = 759b4401b6f3870076702ea3e42a201315c9eb2abf78581accc879ac05e34917
+	sha256sums = e317910622eb03d747f2ce89e4b985a11a874446e0a84af09f8f5d1fcec15dd8
+	sha256sums = 612fd83b88ceb6a0475f7bf773c803d364db8c00c458927b53317131d6358a14
+	sha256sums = 9fe9d03d544a7ddbcccf079889a23ad1fc5d5dbc3f2d3c53203bc4955bbaf265
+	sha256sums = 68629d04e2b02ba4938a20bdf86ff879fa3a7cdf864a2819da8df4ba49e42851
+	sha256sums = 7749af872ba607cae59f7b5a74811c76d3b73dc42120b4473be8a051f779587e
+	depends_i686 = gcc-libs
+	depends_i686 = libxt
+
+pkgname = sun-wtk
+

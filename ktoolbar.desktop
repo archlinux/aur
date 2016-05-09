@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=KToolbar
+Version=2.5.2
+Comment=Sun Wireless Toolkit KToolbar
+Exec=/opt/sun-wtk/bin/ktoolbar
+Icon=ktoolbar
+Terminal=false
+Type=Application
+Categories=Application;Development
