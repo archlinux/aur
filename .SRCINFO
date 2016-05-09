@@ -1,7 +1,7 @@
 pkgbase = mu-git
 	pkgdesc = mu and mu4e from git
-	pkgver = v0.9.16.59.geab45dc
-	pkgrel = 2
+	pkgver = v0.9.16.95.g7585506
+	pkgrel = 1
 	url = http://www.djcbsoftware.nl/code/mu
 	install = mu-git.install
 	arch = i686

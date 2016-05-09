@@ -2,8 +2,8 @@
 # Thanks to the maintainers and contributors of the mu binary package
 
 pkgname=mu-git
-pkgver=v0.9.16.59.geab45dc
-pkgrel=2
+pkgver=v0.9.16.95.g7585506
+pkgrel=1
 install=mu-git.install
 pkgdesc="mu and mu4e from git"
 arch=('i686' 'x86_64')
@@ -27,11 +27,10 @@ build() {
   cd mu
   autoreconf -i
   sed -i 's|MUGDIR|"/usr/share/pixmaps"|' toys/mug/mug.c
-  ./configure --prefix=/usr --disable-webkit --disable-gtk
+  ./configure --prefix=/usr --disable-webkit --disable-gtk --enable-mu4e
 }
 
 package() {
   cd mu
   make DESTDIR=$pkgdir install
-  install -Dm644 COPYING $pkgdir/usr/share/licenses/mu/COPYING
 }
