@@ -1,7 +1,7 @@
 pkgbase = hdf5-fortran-openmpi
 	pkgdesc = General purpose library and file format for storing scientific data
-	pkgver = 1.8.16
-	pkgrel = 2
+	pkgver = 1.10.0
+	pkgrel = 1
 	url = http://www.hdfgroup.org/HDF5/
 	arch = i686
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = hdf5-fortran-openmpi
 	depends = openmpi
 	provides = hdf5
 	conflicts = hdf5
-	source = ftp://ftp.hdfgroup.org/HDF5/current/src/hdf5-1.8.16.tar.bz2
-	sha1sums = a7b631778cb289edec670f665d2c3265983a0d53
+	source = ftp://ftp.hdfgroup.org/HDF5/releases/hdf5-1.10/hdf5-1.10.0/src/hdf5-1.10.0.tar.bz2
+	sha1sums = 5866dbbcd24485f6b206413e73f7205cb3c1196e
 
 pkgname = hdf5-fortran-openmpi
 
