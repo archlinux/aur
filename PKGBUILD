@@ -4,7 +4,7 @@
 # Contributor: maoserr
 
 pkgname=iup
-pkgver=3.15
+pkgver=3.18
 pkgrel=1
 pkgdesc="C cross platform GUI toolkit"
 arch=('i686' 'x86_64')
@@ -16,30 +16,30 @@ options=(staticlibs)
 source=(
   "http://downloads.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Sources.tar.gz"
   "http://heanet.dl.sourceforge.net/project/iup/${pkgver}/Docs%20and%20Sources/iup-${pkgver}_Docs.pdf"
-  makfiles.patch
 )
 
 md5sums=(
-  'a9af7f6229f998b059ed6dbcf53fcdaf'
-  '367b7142a2f077c6a68cc9d76f20866a'
-  '9c50f5376fe5cc0f459ec0148c452c57'
+  '60a3b03b14056364379cc195f95f897f'
+  '08455b56beb828ab1a814299b217b5f9'
 )
-
-prepare() {
-  cd $srcdir/$pkgname
-  patch -b -p0 <../makfiles.patch
-}
 
 build() {
   cd $srcdir/$pkgname
-  make iup iupcd iupcontrols iupgl iup_pplot iupim iupimglib ledc iupview
+  make iup iupcd iupcontrols iupgl iup_pplot iupim iupimglib ledc iupview \
+    TEC_UNAME_DIR=. TEC_UNAME_LIB_DIR=. \
+    CD_LIB=/usr/lib \
+    CD_INC=/usr/include/cd \
+    IM_LIB=/usr/lib \
+    IM_INC=/usr/include/im \
+    ZLIB_LIB=/usr/lib \
+    IUPLIB="$srcdir/$pkgname"/lib
 }
 
 package() {
   cd $srcdir/$pkgname
 
   install -m755 -d $pkgdir/usr/lib
-  install -m644 $srcdir/iup/lib/Linux*/* $pkgdir/usr/lib
+  install -m644 $srcdir/iup/lib/* $pkgdir/usr/lib
   install -m755 -d $pkgdir/usr/share/$pkgname
   install -m644 $srcdir/iup-${pkgver}_Docs.pdf $pkgdir/usr/share/$pkgname
   install -m755 -d $pkgdir/usr/include/iup
