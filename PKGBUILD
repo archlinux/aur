@@ -3,7 +3,7 @@
 
 _pkgname=drush
 pkgname=${_pkgname}-alternative
-pkgver=8.1.0
+pkgver=8.1.1
 pkgrel=1
 pkgdesc="Drush is a command line shell and Unix scripting interface for Drupal"
 arch=('any')
