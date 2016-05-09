@@ -2,12 +2,13 @@
 
 pkgname="cryptocat-bin"
 _pkgname="cryptocat-bin"
-pkgver="3.1.19"
+pkgver="3.1.22"
 pkgrel="1"
 pkgdesc="Chat with your friends, privately."
 arch=("x86_64")
 url="https://crypto.cat/"
 license=("GPL3")
+makedepends=("unzip")
 depends=("alsa-lib" "desktop-file-utils" "gconf" "gtk2" "libnotify" "nss" "python" "ttf-font")
 conflicts=("cryptocat")
 options=("!strip")
