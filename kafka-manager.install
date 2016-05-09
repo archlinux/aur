@@ -1,0 +1,5 @@
+post_install() {
+    groupadd -f --system kafka-manager
+    id -u kafka-manager &> /dev/null || useradd -M --system -g kafka-manager kafka-manager --shell /usr/bin/nologin
+}
+
