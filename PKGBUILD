@@ -5,7 +5,7 @@
 
 pkgname=freetype2-infinality
 pkgver=2.6.3
-pkgrel=1
+pkgrel=2
 _patchrel=2016.03.26
 _commit=36b60ecefe1fd0e042cad51105b0ffb29315e577
 pkgdesc="TrueType font rendering library with Infinality patches and custom settings."
@@ -15,8 +15,8 @@ license=('GPL' 'MIT')
 groups=('infinality-bundle')
 url="http://freetype.sourceforge.net"
 depends=('zlib' 'bzip2' 'sh' 'xorg-xrdb' 'libpng' 'harfbuzz')
-conflicts=('freetype2' 'freetype2-infinality')
-provides=("freetype2=$pkgver" 'freetype2-infinality' 'freetype2-infinality-ultimate')
+conflicts=('freetype2')
+provides=("freetype2=$pkgver" 'libfreetype.so' 'freetype2-infinality-ultimate')
 install='infinality.install'
 source=(http://downloads.sourceforge.net/sourceforge/freetype/freetype-${pkgver}.tar.bz2
         "01-freetype-2.6.3-enable-valid.patch::https://raw.githubusercontent.com/bohoomil/fontconfig-ultimate/${_commit}/freetype/01-freetype-2.6.2-enable-valid.patch"
