@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-buildozer
-pkgver=0.31
+pkgver=0.32
 pkgrel=1
 pkgdesc="Generic Python packager for Android / iOS and Desktop"
 arch=('any')
@@ -11,9 +11,9 @@ optdepends=('python2-paramiko: remote builds')
 url="https://github.com/kivy/buildozer"
 license=('MIT')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/source/b/${pkgname#python2-}/${pkgname#python2-}-$pkgver.tar.gz)
-md5sums=('76a7e63a0aaedbe5f449628c8ae6b530')
-sha256sums=('7ef8a3be5362fc3e047cdeeaff46954ab667b9ae12023a525ed04ea3e697e41f')
+source=(https://pypi.python.org/packages/62/a4/fab757fd32c020b41626af656f6f848d8d8a1b9eeb4d29967b6aef998857/buildozer-0.32.tar.gz)
+md5sums=('1476976728af21346f39b3c24edbd363')
+sha256sums=('73aa4704f369cf4b6df32bda78a1a5fbdbfaeef609b9ad6a1e2c5bce4deded36')
 provides=('buildozer' 'python2-buildozer')
 conflicts=('buildozer')
 
