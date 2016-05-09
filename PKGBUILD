@@ -10,11 +10,7 @@ pkgdesc="C cross platform GUI toolkit"
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/iup/"
 license=('MIT')
-depends=('libcd')
-optdepends=('lua: bindings for Lua are available'
-            'cd: for additional controls support'
-            'im: for advanced imaging support'
-            'mesa: for OpenGL support')
+depends=('libcd', 'libim')
 options=(staticlibs)
 
 source=(
