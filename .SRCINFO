@@ -1,0 +1,12 @@
+pkgbase = maya-gtk3-theme
+	pkgdesc = Numix-like theme with Macbuntu buttons added.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/Maya?content=175443
+	arch = any
+	license = GPL
+	source = https://www.dropbox.com/s/v7u5x2nj6fy7uoz/175443-Maya.zip
+	md5sums = 4d75d9d492c3b689711a9fb096d34664
+
+pkgname = maya-gtk3-theme
+
