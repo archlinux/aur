@@ -1,7 +1,7 @@
 # Maintainer: agnotek <agnostic [dot] sn [at] gmail [dot] com>
 
 pkgname=ytplmp4
-pkgver=9.0
+pkgver=9.1
 pkgrel=1
 pkgdesc="YTPLMP4 - YouTube Playlist to MP3. Download single songs or playlists from Youtube and Soundcloud."
 arch=('any')

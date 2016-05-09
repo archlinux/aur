@@ -11,7 +11,7 @@
 # no copyright, just copyleft for my work
 #
 #set -x
-ytplver=9.0
+ytplver=9.1
 confver=2
 ### ChangeLog ###
 chngvar=('Changelog YTPLMP3 - 20160124<br>')
@@ -260,6 +260,8 @@ fi
 if [ $procdllst = false ] ; then 
 	ytpl2mp3=$(cat /tmp/yttb1)
 	rm -f /tmp/yttb1
+#echo -e "CHECK THIS:\n$ytpl2mp3"
+#sleep 20
 	echo "versconf=$confver" > $confile
 	echo "logdate=$chngdate" >> $confile
 	diruse=$(echo "$ytpl2mp3" | cut -d, -f1)
@@ -453,17 +455,33 @@ function newid3tags() {
 	getduration "$nufile"
 	i3info=$( echo "$i3info" | sed "s/[&]/&amp;/g")
 	[ -z "$id3gen" ] && dispgen="$lstgen" || dispgen="$id3gen!$lstgen"
-	newid3t="$(yad --form --width 250 --title="$ytpltitle" --center --window-icon="multimedia-player-symbolic" --timeout=$compdur --timeout-indicator=bottom \
-	--text="File:$i3info\nGenre: $id3gen\nDuration: $durcomp       Bitrate: $mp3bitr" \
-	--separator="%" \
-	--field="Artist" \
-	--field="Title" \
-	--field="Album" \
-	--field="Comment" \
-	--field="Genre:CBE" \
-	--field="Rename File using ID3-Tag?:CHK" \
-	"$id3art" "$id3tit" "$id3alb" "$comurl" "$dispgen" "TRUE" "" 2>/dev/null )"
-
+	if [ $sndcldfl = true ] ; then 
+#		lstgen=$(echo ${tagge[@]} | sed "s/'//g" | sed 's/ /!/g')	
+#		sndcldgen=$(echo $sndtag | sed 's/!/\n/g')
+		sndcldgen=$(echo ${tagge[@]} | sed 's/ /\n/g')
+		newid3t="$(yad --form --width 250 --title="$ytpltitle" --center --window-icon="multimedia-player-symbolic" --timeout=$compdur --timeout-indicator=bottom \
+		--text="File:$i3info\nGenre: $id3gen\nDuration: $durcomp       Bitrate: $mp3bitr" \
+		--field="Soundcloud Tags:TXT" \
+		--separator="%" \
+		--field="Artist" \
+		--field="Title" \
+		--field="Album" \
+		--field="Comment" \
+		--field="Genre:CBE" \
+		--field="Rename File using ID3-Tag?:CHK" \
+		"$sndcldgen" "$id3art" "$id3tit" "$id3alb" "$comurl" "$dispgen" "TRUE" "" 2>/dev/null )"
+	else
+		newid3t="$(yad --form --width 250 --title="$ytpltitle" --center --window-icon="multimedia-player-symbolic" --timeout=$compdur --timeout-indicator=bottom \
+		--text="File:$i3info\nGenre: $id3gen\nDuration: $durcomp       Bitrate: $mp3bitr" \
+		--separator="%" \
+		--field="Artist" \
+		--field="Title" \
+		--field="Album" \
+		--field="Comment" \
+		--field="Genre:CBE" \
+		--field="Rename File using ID3-Tag?:CHK" \
+		"$id3art" "$id3tit" "$id3alb" "$comurl" "$dispgen" "TRUE" "" 2>/dev/null )"
+	fi
 	case "$?" in
 		1 )
 			gen3di="**** deleted ****"
@@ -508,6 +526,7 @@ function settags() {
 	id3alb=$6
 	comurl=$7
 	yearls=$8
+
 	curl --connect-timeout 10 -s -L --user-agent 'Mozilla/5.0' "$id3pic" -o "/tmp/1.jpg"
 	jpgfle=/tmp/1.jpg
 	if [ -z "$yearls" ] ; then yearls=$(date +%Y); 	fi
@@ -560,6 +579,7 @@ function downsong() { # Parse json for one song
 }
 
 function fromjsontomp3() { # use the json to download info and mp3
+set -x
 	clientID="$2"
 	songID="$1"
 	songinfo=$(CURL "https://api.soundcloud.com/tracks/$songID.json?client_id=$clientID" | tr "," "\n")
@@ -575,12 +595,14 @@ function fromjsontomp3() { # use the json to download info and mp3
 	fi
 	imageurl=$(echo -e "$songinfo" | grep "artwork_url" | cut -d '"' -f 4 | sed 's/large/t500x500/g')
 	genre=$(echo -e "$songinfo" | grep "genre" | cut -d '"' -f4 | sed "s/[&]/&amp;/g" )
-	declare -a tagge=($(echo -e "$songinfo" | grep "tag_list" | cut -d '"' -f4 | sed "s/&amp;/&/g")) # | sed "s/\\\\\"/'/g" | sed 's/"//g'
+	declare -a tagge=($(echo -e "$songinfo" | grep "tag_list" | cut -d '"' -f4 | sed "s/&amp;/&/g" | sed "s/\"/'/g" | sed 's/"//g'))
+# echo -e "$songinfo" | grep "tag_list" | cut -d '"' -f4- | sed "s/&amp;/&/g" | sed 's/"//g' | sed 's/[\]/\n/g' | sed 's/ /\n/g'
 	if `echo "${tagge[@]}" | grep -F '"' 1>/dev/null 2>&1` || `echo "${tagge[@]}" | grep -F '\' 1>/dev/null 2>&1` || [ -z "$tagge" ] ; then
 		tagge=($genre)
 	else
 		tagge+=(***_Soundcloud_Tags_above_***)
 	fi
+set +x
 	rlsyear=$(echo "$songinfo" | grep '"created_at"' | cut -d'"' -f4 | cut -c1-4)
 	songpermalink=$(echo -e "$songinfo" | grep -m2 "permalink_url" | tail -n1 | cut -d '"' -f 4)
 
@@ -776,7 +798,7 @@ function chk_sndcld(){
 }
 ########################################################
 
-exec 3> >(yad --progress --title="$ytpltitle" --text="downloading the videos and converting them to mp3\nDestination: $diruse $logininfo" --width=500 --height 500 --window-icon="multimedia-player-symbolic" --center --auto-kill --log-on-top --enable-log="" --log-expanded 2>/dev/null 
+exec 3> >(yad --progress --title="$ytpltitle" --text="downloading the videos and converting them to mp3\nDestination: $diruse $logininfo" --width=500 --height=500 --window-icon="multimedia-player-symbolic" --center --auto-kill --log-on-top --log-height=400 --enable-log="" --log-expanded 2>/dev/null 
 )
 
 echo "5" >&3;
