@@ -1,6 +1,6 @@
 pkgname=mymc
 pkgver=2.6
-pkgrel=9
+pkgrel=10
 pkgdesc="A public domain utility for working with PlayStation 2 memory card images"
 arch=(any)
 url="http://www.csclub.uwaterloo.ca:11068/mymc"
@@ -12,7 +12,7 @@ source=("mymc.zip::https://github.com/Ben0mega/mymc/archive/04dd9c490b0d8b59e6ba
 "mymc.png")
 depends=(wxpython)
 makedepends=(dos2unix python2)
-md5sums=('20ac84e48c337f1b99c1d9725cc7e0f4'
+md5sums=('SKIP'
          '0e546fd12536a089d3bd67e27ff1d1ac'
          '5c8c4d84a9a180201680d86ec731e999'
          '77e983041fbb0d9b19ab16e8e94ad205'
@@ -25,7 +25,7 @@ prepare() {
 
 package() {
 	cd "$srcdir/mymc-"*
-	find . -name '*.py' -o -name '*.txt' | xargs -rtl1 -I {} install -Dm755 {} "$pkgdir/usr/share/mymc/"{}
+	find . -name '*.py' -o -name '*.txt' | xargs -I {} install -Dm755 {} "$pkgdir/usr/share/mymc/"{}
 	python2 -m compileall "$pkgdir/usr/share/mymc"
 	install -Dm755 "$srcdir/mymc.sh" "$pkgdir/usr/bin/mymc"
 	install -m755 "$srcdir/mymc-gui.sh" "$pkgdir/usr/bin/mymc-gui"
