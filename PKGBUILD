@@ -1,7 +1,7 @@
-# Maintainer: Anselmo L. S. Melo <anselmolsm@gmail.com>
+# Maintainer: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=qgroundcontrol-git
-pkgver=2.5.0
-pkgrel=2
+pkgver=r8396.2b64576
+pkgrel=1
 pkgdesc="Micro air vehicle ground control station."
 arch=('any')
 url="http://qgroundcontrol.org/"
@@ -13,39 +13,29 @@ depends=(\
 makedepends=('git')
 md5sums=()  # generate with 'makepkg -g'
 
-_gitroot="https://github.com/mavlink/qgroundcontrol.git"
-_gitname=qgroundcontrol
+source=('qgroundcontrol::git+https://github.com/mavlink/qgroundcontrol.git')
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/${pkgname%-git}"
+  git submodule update --init
+  mkdir build
+}
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  ## Un-comment the following line to get the stable version:
-  # git checkout Stable_V2.5
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-
-  cd "$srcdir/$_gitname-build"
-  git submodule init && git submodule update
-  mkdir build && cd build
+  cd "$srcdir/${pkgname%-git}/build"
   qmake ../qgroundcontrol.pro
   make
 }
 
 package() {
   mkdir -p "${pkgdir}/opt" "${pkgdir}/usr/bin"
-  cp -R "$srcdir/$_gitname-build/build/release" "${pkgdir}/opt/qgroundcontrol"
+  cp -R "$srcdir/${pkgname%-git}/build/release" "${pkgdir}/opt/qgroundcontrol"
   cat <<EndOfFile > "${pkgdir}/usr/bin/qgroundcontrol"
 #!/bin/bash
 cd /opt/qgroundcontrol/
