@@ -5,7 +5,7 @@ _mod_name=echo
 
 pkgname=nginx-mod-${_mod_name}-git
 pkgver=0.58.r15.g4f7aa50
-pkgrel=2
+pkgrel=3
 pkgdesc='Nginx module that brings shell-style goodiesto nginx config file'
 arch=('i686' 'x86_64')
 url='https://github.com/openresty/echo-nginx-module'
