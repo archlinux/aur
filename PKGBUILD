@@ -10,7 +10,7 @@ pkgdesc="C cross platform GUI toolkit"
 arch=('i686' 'x86_64')
 url="http://www.tecgraf.puc-rio.br/iup/"
 license=('MIT')
-depends=('libcd', 'libim')
+depends=('libcd' 'libim')
 options=(staticlibs)
 
 source=(
