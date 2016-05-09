@@ -1,0 +1,6 @@
+pkg
+src
+armake
+*.tar.xz
+*.tar.gz
+*.pkg.tar
