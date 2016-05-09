@@ -3,8 +3,8 @@
 pkgbase=(virtualbox-think-modules)
 pkgname=(virtualbox-think-host-modules virtualbox-think-guest-modules)
 pkgdesc='Host and guest  kernel modules for VirtualBox running under linux-think'
-pkgver=5.0.16
-pkgrel=4
+pkgver=5.0.20
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
