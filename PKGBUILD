@@ -184,6 +184,12 @@ build() {
     make ocaml_doc
 }
 
+check() {
+    cd "${srcdir}/build"
+    make check
+    make check-clang
+}
+
 package_llvm-svn() {
     pkgdesc='The LLVM Compiler Infrastructure'
     depends=(
