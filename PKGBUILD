@@ -17,7 +17,7 @@
 #
 pkgname="spl-utils-linux-lts"
 pkgver=0.6.5.6_4.4.9_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Solaris Porting Layer kernel module support files."
 arch=("x86_64")
 url="http://zfsonlinux.org/"
@@ -28,6 +28,7 @@ sha256sums=("167595fe76eb5497c3a1ffe396b6300155d0cbe46d06824a710099ca1ae1b8bd"
 groups=("archzfs-linux-lts")
 license=("GPL")
 provides=("spl-utils")
+makedepends=("linux-lts-headers=4.4.9")
 
 build() {
     cd "${srcdir}/spl-0.6.5.6"
