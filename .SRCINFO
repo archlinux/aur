@@ -19,11 +19,9 @@ pkgbase = bcwc-pcie-dkms
 	source = bcwc-pcie-dkms::git+https://github.com/patjak/bcwc_pcie.git
 	source = bcwc-pcie.modprobe.conf
 	source = bcwc-pcie.modules-load.conf
-	source = dkms.conf
 	md5sums = SKIP
 	md5sums = 7531f220d5c3dd0ab5c31c445d526d7f
 	md5sums = d8dc0e4e125b7887b226bda0c28f30be
-	md5sums = 8233699ece37142eeae95cd67eb5298b
 
 pkgname = bcwc-pcie-dkms
 

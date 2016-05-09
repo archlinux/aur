@@ -15,12 +15,10 @@ install="$pkgname.install"
 
 source=("$pkgname::git+https://github.com/patjak/bcwc_pcie.git"
         "bcwc-pcie.modprobe.conf"
-        "bcwc-pcie.modules-load.conf"
-        "dkms.conf")
+        "bcwc-pcie.modules-load.conf")
 md5sums=('SKIP'
          '7531f220d5c3dd0ab5c31c445d526d7f'
-         'd8dc0e4e125b7887b226bda0c28f30be'
-         '8233699ece37142eeae95cd67eb5298b')
+         'd8dc0e4e125b7887b226bda0c28f30be')
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -30,7 +28,7 @@ pkgver() {
 package() {
   cd "$srcdir/"
 
-  install -Dm 644 dkms.conf "${pkgdir}/usr/src/bcwc-pcie-${pkgver}/dkms.conf"
+  install -Dm 644 $pkgname/dkms.conf "${pkgdir}/usr/src/bcwc-pcie-${pkgver}/dkms.conf"
 
   cd $srcdir/$pkgname
   for FILE in $(find -type f); do
