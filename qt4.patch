@@ -1,0 +1,82 @@
+--- CMakeLists.txt	2015-07-30 11:53:25.000000000 -0500
++++ CMakeLists.edit	2016-05-07 16:33:31.686800346 -0500
+@@ -140,20 +140,12 @@
+ 
+ OPTION(USE_V8 "Use V8 instead of Duktape if V8 is found" OFF)
+ 
+-FIND_PACKAGE(Qt5Core QUIET)
+-FIND_PACKAGE(Qt5Widgets QUIET)
+-FIND_PACKAGE(Qt5Gui QUIET)
+-FIND_PACKAGE(Qt5OpenGL QUIET)
+-IF ( Qt5Core_FOUND AND Qt5Widgets_FOUND AND Qt5Gui_FOUND AND Qt5OpenGL_FOUND )
+-    SET(QT_INCLUDES ${Qt5Widgets_INCLUDE_DIRS} ${Qt5OpenGL_INCLUDE_DIRS})
+-ELSE()
+-    FIND_PACKAGE(Qt4)
+-    IF (QT4_FOUND)
+-        INCLUDE(${QT_USE_FILE})
+-		SET(QT_INCLUDES ${QT_INCLUDES} ${QT_INCLUDE_DIR} ${QT_QTCORE_INCLUDE_DIR} ${QT_QTGUI_INCLUDE_DIR}${QT_QTOPENGL_INCLUDE_DIR} )
+-        SET(QT_ALL_LIBRARIES ${QT_LIBRARIES} ${QT_QTCORE_LIBRARY} ${QT_QTWEBKIT_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${QT_QTXML_LIBRARY} ${QT_QTOPENGL_LIBRARY})
+-    ENDIF (QT4_FOUND)
+-ENDIF ()
++FIND_PACKAGE(Qt4 QUIET)
++IF (QT4_FOUND)
++    INCLUDE(${QT_USE_FILE})
++    SET(QT_INCLUDES ${QT_INCLUDES} ${QT_INCLUDE_DIR} ${QT_QTCORE_INCLUDE_DIR} ${QT_QTGUI_INCLUDE_DIR}${QT_QTOPENGL_INCLUDE_DIR} )
++    SET(QT_ALL_LIBRARIES ${QT_LIBRARIES} ${QT_QTCORE_LIBRARY} ${QT_QTWEBKIT_LIBRARY} ${QT_QTNETWORK_LIBRARY} ${QT_QTXML_LIBRARY} ${QT_QTOPENGL_LIBRARY})
++ENDIF (QT4_FOUND)
+ 
+ OPTION(OSGEARTH_USE_QT "Enable to use Qt (build Qt-dependent libraries, plugins and examples)" ON)
+
+--- src/applications/osgearth_demo/CMakeLists.txt	2015-07-30 11:53:25.000000000 -0500
++++ src/applications/osgearth_demo/CMakeLists.txt.new	2016-05-09 13:45:47.059451159 -0500
+@@ -16,6 +16,7 @@
+         ${QT_QTCORE_LIBRARY}
+         ${QT_QTGUI_LIBRARY}
+         ${QT_QTOPENGL_LIBRARY}
++        X11
+     )
+ ENDIF()
+ 
+--- src/applications/osgearth_package_qt/CMakeLists.txt	2016-05-09 13:46:42.436470156 -0500
++++ src/applications/osgearth_package_qt/CMakeLists.txt.new	2016-05-09 13:46:49.986518236 -0500
+@@ -59,6 +59,7 @@
+     ${QT_QTCORE_LIBRARY}
+     ${QT_QTGUI_LIBRARY}
+     ${QT_QTOPENGL_LIBRARY}
++    X11
+ )
+ 
+ #### end var setup  ###
+
+--- src/applications/osgearth_qt/CMakeLists.txt	2015-07-30 11:53:25.000000000 -0500
++++ src/applications/osgearth_qt/CMakeLists.txt.new	2016-05-09 14:18:52.975674161 -0500
+@@ -38,6 +38,7 @@
+     ${QT_QTCORE_LIBRARY}
+     ${QT_QTGUI_LIBRARY}
+     ${QT_QTOPENGL_LIBRARY}
++    X11
+ )
+ 
+ #### end var setup  ###
+
+--- src/applications/osgearth_qt_simple/CMakeLists.txt	2015-07-30 11:53:25.000000000 -0500
++++ src/applications/osgearth_qt_simple/CMakeLists.txt.new	2016-05-09 13:53:10.705621515 -0500
+@@ -34,6 +34,7 @@
+     ${QT_QTCORE_LIBRARY}
+     ${QT_QTGUI_LIBRARY}
+     ${QT_QTOPENGL_LIBRARY}
++    X11
+ )
+ 
+ #### end var setup  ###
+
+--- src/applications/osgearth_qt_windows/CMakeLists.txt	2015-07-30 11:53:25.000000000 -0500
++++ src/applications/osgearth_qt_windows/CMakeLists.txt.new	2016-05-09 13:48:04.726994717 -0500
+@@ -29,6 +29,7 @@
+     ${QT_QTCORE_LIBRARY}
+     ${QT_QTGUI_LIBRARY}
+     ${QT_QTOPENGL_LIBRARY}
++    X11
+ )
+ 
+ #### end var setup  ###
