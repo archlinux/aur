@@ -31,6 +31,7 @@ prepare() {
 build() {
   # Required for go get
   export GOPATH="$srcdir"
+  export GOBIN="$srcdir/bin"
   export PATH=$PATH:$GOPATH/bin
 
   msg2 'Installing dependencies...'
