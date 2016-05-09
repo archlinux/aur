@@ -1,8 +1,8 @@
 # Maintainer: Dan Johansen <strit83 at gmail dot com>
 
 pkgname=arena-tracker
-pkgver=3.44
-pkgrel=2
+pkgver=3.45
+pkgrel=1
 pkgdesc="Tracks your Hearthstone Arena matches and cards"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://github.com/supertriodo/Arena-Tracker/"
@@ -35,6 +35,6 @@ package() {
 	install -m755 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 	ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
-md5sums=('118c82a9954c2a177be16a2afce3f8b3'
+md5sums=('f86124797ae57392b8a0d3031b614af3'
 	'81cbf4e6a4d8711ba29ad526b4c2c755'
 	'c81a05fdc3b96092fb363f841267e21f')
