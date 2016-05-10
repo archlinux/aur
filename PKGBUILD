@@ -2,7 +2,7 @@
 
 _npmname=strongloop
 pkgname=nodejs-$_npmname
-pkgver=6.0.0
+pkgver=6.0.1
 pkgrel=1
 pkgdesc="Strongloop controller CLI"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm' 'python2')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('d1fad3747439a4018569e7fa844ab043d1979d653bd4356e1808aa902b2fa3f8')
+sha256sums=('da187f084e84a28eb06b10d161208780f251984d34f08360323a06728bb3cc8d')
 
 package() {
   cd "$srcdir"
