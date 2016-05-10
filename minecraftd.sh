@@ -89,7 +89,7 @@ idle_server_daemon() {
 			# and since playernames may not contain this string the clean player-list can be easily retrieved.
 			if [[ $? -eq 0 && -z $(sleep 0.6; tail -n 1 "${LOGPATH}/latest.log" | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' | sed 's/.*\: //' | tr -d '\n') ]]; then
 				# No player was seen on the server through list
-				no_player=$((no_player + CHECK_PLAYER_TIME))
+				no_player=$(( no_player + CHECK_PLAYER_TIME ))
 				# Stop the game server if no player was active for at least ${IDLE_IF_TIME}
 				if [[ "${no_player}" -ge "${IDLE_IF_TIME}" ]]; then
 					IDLE_SERVER="false" ${myname} stop
@@ -100,8 +100,8 @@ idle_server_daemon() {
 						[[ $i -eq 100 ]] && echo -e "An \e[39;1merror\e[0m occurred while trying to reset the idle_server!"
 						sleep 0.1
 					done
-					# Reset timer
-					no_player=0
+					# Reset timer and give the player 300 seconds to connect after pinging
+					no_player=$(( IDLE_IF_TIME - 300 ))
 					# Game server is down, listen on port ${GAME_PORT} for incoming connections
 					echo "Netcat is listening on port ${GAME_PORT} for incoming connections..."
 					${NETCAT_CMD} -v -l -p ${GAME_PORT}
@@ -109,11 +109,12 @@ idle_server_daemon() {
 					IDLE_SERVER="false" ${myname} start
 				fi
 			elif [[ $? -eq 0 ]]; then
+				# Reset timer since there is an active player on the server
 				no_player=0
 			fi
 		else
-			# Reset timer
-			no_player=0
+			# Reset timer and give the player 300 seconds to connect after pinging
+			no_player=$(( IDLE_IF_TIME - 300 ))
 			# Game server is down, listen on port ${GAME_PORT} for incoming connections
 			echo "Netcat is listening on port ${GAME_PORT} for incoming connections..."
 			${NETCAT_CMD} -v -l -p ${GAME_PORT}
@@ -317,7 +318,7 @@ backup_restore() {
 		i=1
 		for f in "${BACKUP_DEST}"/[0-9_.]*; do
 			echo -e "    \e[39;1m$i)\e[0m\t$f"
-			i=$((i+1))
+			i=$(( i + 1 ))
 		done
 		echo -en "Restore backup number: "
 
@@ -329,7 +330,7 @@ backup_restore() {
 			n=1
 			for f in "${BACKUP_DEST}"/[0-9_.]*; do
 				[[ ${n} -eq $user_choice ]] && FILE="$f"
-				n=$((n+1))
+				n=$(( n + 1 ))
 			done
 			if [[ -z $FILE ]]; then
 				>&2 echo -e "\e[39;1mFailed\e[0m to interpret your input. Please enter the digit of the presented options."

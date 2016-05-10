@@ -3,8 +3,8 @@
 # Contributer: sowieso <sowieso@dukun.de>
 
 pkgname=minecraft-server
-pkgver=1.9.2
-pkgrel=4
+pkgver=1.9.4
+pkgrel=1
 pkgdesc="Minecraft server unit files, script, and jar"
 arch=('any')
 url="http://minecraft.net/"
@@ -22,12 +22,12 @@ source=("https://s3.amazonaws.com/Minecraft.Download/versions/${pkgver}/minecraf
 	"minecraftd.conf"
 	"minecraftd.sh")
 noextract=("minecraft_server.${pkgver}.jar")
-md5sums=('560d467028f17a70997151ed0053deb6'
+md5sums=('292feb3085809e714da2ca75514b9d5b'
          'b786935d6517d46fe0944377daba32b8'
          'fef6fadd0739ae03ff71ba61025be207'
          'afb84ad0316af0aca421b36eaa2bbd90'
          '00045683c06924d765ac14887218ffcc'
-         '1f31f0e0ee859ed43b512121b61edc69')
+         'ae1a827fe7fa5ff62b1b5627d6850c82')
 
 _game="minecraft"
 _server_root="/srv/minecraft"
