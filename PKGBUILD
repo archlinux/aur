@@ -1,18 +1,18 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgname=letshelp-certbot-git
-_reponame="letsencrypt"
-pkgver=0.5.0.r57.g86e09d5
+_reponame="certbot"
+pkgver=0.5.0.r118.ga6d5b52
 pkgrel=1
 pkgdesc="Let's help Certbot client"
 arch=('any')
 license=('Apache')
-url="https://github.com/letsencrypt/${_reponame}"
+url="https://github.com/certbot/${_reponame}"
 depends=('python2-setuptools' 'python2-mock')
 makedepends=('git')
 provides=("letshelp-certbot=${pkgver}" "letshelp-letsencrypt=${pkgver}")
 conflicts=("letshelp-certbot" "letshelp-letsencrypt")
-source=("${_reponame}"::"git+https://github.com/letsencrypt/letsencrypt")
+source=("${_reponame}"::"git+https://github.com/certbot/${_reponame}")
 md5sums=('SKIP')
 
 pkgver() {
