@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=yubikey-personalization-gui-git
-pkgver=3.1.21.r0.gf76aa60
+pkgver=3.1.24.r3.g99fc66d
 pkgrel=1
 pkgdesc='Yubico YubiKey Personalization GUI - git checkout'
 arch=('i686' 'x86_64')
@@ -11,7 +11,6 @@ depends=('yubikey-personalization' 'qt5-base' 'libxkbcommon-x11')
 makedepends=('git' 'imagemagick')
 provides=('yubikey-personalization-gui' 'yubikey-personalization-tool')
 conflicts=('yubikey-personalization-gui' 'yubikey-personalization-tool')
-install=yubikey-personalization-gui.install
 source=('git://github.com/Yubico/yubikey-personalization-gui.git')
 sha256sums=('SKIP')
 
