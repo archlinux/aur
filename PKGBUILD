@@ -2,7 +2,7 @@
 
 pkgname=gambit
 pkgver=14.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tools for doing computation in game theory - git version"
 arch=('i686' 'x86_64')
 url="http://www.gambit-project.org"
@@ -27,8 +27,7 @@ build() {
   libtoolize
   automake --add-missing
   autoconf
-  [[ $CARCH == "X86_64" ]] && CXXFLAGS+=" -std=c++03" ./configure --prefix=/usr --disable-enumpoly
-  [[ $CARCH == "i686" ]] && CXXFLAGS+=" -std=c++03" ./configure --prefix=/usr
+  CXXFLAGS+=" -std=c++03" ./configure --prefix=/usr --disable-enumpoly
   make 
 }
 
