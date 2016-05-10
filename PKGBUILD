@@ -6,6 +6,7 @@ pkgrel=1
 pkgdesc='Iconic bitmap font based on stlarch with additional glyphs'
 arch=('any')
 url='https://github.com/stark/siji'
+license=('MIT')
 depends=('fontconfig' 'xorg-font-utils')
 optdepends=('xorg-xfd: use view.sh script to view glyphs')
 makedepends=('git')
@@ -24,4 +25,5 @@ package() {
   cd "${srcdir}/${_pkgname}"
   install -D -m644 pcf/siji.pcf "${pkgdir}/usr/share/fonts/misc/siji.pcf"
   install -D -m755 view.sh "${pkgdir}/usr/share/${_pkgname}/view.sh"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 }
