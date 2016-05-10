@@ -1,11 +1,11 @@
 # Maintainer: Stephen Martin <stephenSRMMartin at gmail dot com>
 pkgname=jasp-rbundle
-pkgver=2015.12.02
+pkgver=2016.01.20
 pkgrel=1
 pkgdesc="A bundle of R packages needed by JASP desktop"
 url="http://cran.r-project.org/"
-arch='any'
-depends='r'
+arch=('any')
+depends=('r')
 makedepends=('r' 'gcc-fortran')
 source=("rbundle.R")
 
