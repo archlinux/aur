@@ -15,7 +15,7 @@ makedepends=('extra-cmake-modules' 'kdoctools' 'python')
 conflicts=('kdebase-workspace')
 groups=('plasma')
 source=("http://download.kde.org/stable/plasma/${pkgver}/$pkgname-$pkgver.tar.xz")
-md5sums=('00ff425df99a2cce249b379bac4413ac')
+md5sums=('d05d3d5dc685314f11eafa8356a18445')
 
 prepare() {
   mkdir -p build
