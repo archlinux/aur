@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=yubikey-personalization-git
-pkgver=1.17.2.r26.g71b248e
+pkgver=1.17.3.r20.g74d0873
 pkgrel=1
 pkgdesc='Yubico YubiKey Personalization library and tool - git checkout'
 arch=('i686' 'x86_64')
@@ -11,7 +11,6 @@ depends=('libusb' 'yubico-c-client')
 makedepends=('git' 'asciidoc')
 provides=('ykpers' 'yubikey-personalization')
 conflicts=('ykpers' 'yubikey-personalization')
-install=yubikey-personalization.install
 source=('git://github.com/Yubico/yubikey-personalization.git')
 sha256sums=('SKIP')
 
