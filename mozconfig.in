@@ -1,6 +1,6 @@
 export MOZILLA_OFFICIAL=1
-export CC=gcc
-export CXX=g++
+export CC=gcc-5
+export CXX=g++-5
 mk_add_options PYTHON=/usr/bin/python2
 ac_add_options --enable-official-branding
 ac_add_options --with-distribution-id=Palemoon
