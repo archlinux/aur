@@ -1,0 +1,24 @@
+diff --git a/os_dep/linux/rtw_android.c b/os_dep/linux/rtw_android.c
+index fc2f8d8..d31974f 100644
+--- a/os_dep/linux/rtw_android.c
++++ b/os_dep/linux/rtw_android.c
+@@ -42,6 +42,10 @@
+ #define strncasecmp strnicmp
+ #endif
+ 
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(4, 6, 0))
++#define in_compat_syscall is_compat_task
++#endif
++
+ extern void macstr2num(u8 *dst, u8 *src);
+ 
+ const char *android_wifi_cmd_str[ANDROID_WIFI_CMD_MAX] = {
+@@ -512,7 +516,7 @@ int rtw_android_priv_cmd(struct net_device *net, struct ifreq *ifr, int cmd)
+ 		goto exit;
+ 	}
+ #ifdef CONFIG_COMPAT
+-	if (is_compat_task()) {
++	if (in_compat_syscall()) {
+ 		/* User space is 32-bit, use compat ioctl */
+ 		compat_android_wifi_priv_cmd compat_priv_cmd;
+ 
