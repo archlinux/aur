@@ -8,7 +8,7 @@ pkgbase = git-secret
 	makedepends = git
 	makedepends = ruby-ronn
 	depends = git
-	depends = gpg
+	depends = gnupg
 
 pkgname = git-secret
 
