@@ -2,7 +2,7 @@
 
 pkgname=ygopro-bin
 pkgver=1.033.7
-pkgrel=1
+pkgrel=2
 _pkgrel=2
 pkgdesc="YGOPRO is a free online dueling system made for playing Yu-Gi-Oh! duels."
 arch=('i686' 'x86_64')
@@ -13,6 +13,7 @@ backup=(opt/ygopro/system.conf)
 source=("https://github.com/cromerc/ygopro/archive/${pkgver}-${_pkgrel}.tar.gz")
 sha256sums=('003226eccdfbfe4855c17b303eb2fc8ac84d8dffe1fefd36110c941744e846de')
 options=('!strip' 'emptydirs')
+install=${pkgname}.install
 
 package() {
 	cd "${srcdir}/ygopro-${pkgver}-${_pkgrel}"
@@ -28,8 +29,4 @@ package() {
 	mkdir -pv "$pkgdir/usr/lib"
 	cd "$pkgdir/usr/lib"
 	ln -s liblua5.2.so liblua5.2.so.0
-}
-
-post_remove() {
-	rm -R /opt/ygopro
 }
