@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('openal' 'openssl' 'freetype2' 'libevent' 'lua52' 'libcurl-compat' 'libcurl-gnutls')
 backup=(opt/ygopro/system.conf)
 source=("https://github.com/cromerc/ygopro/archive/${pkgver}-${_pkgrel}.tar.gz")
-sha256sums=('31926636827ececbbbbedb3589fe18a847fedad2845fa08ae2083871200923ec')
+sha256sums=('003226eccdfbfe4855c17b303eb2fc8ac84d8dffe1fefd36110c941744e846de')
 options=('!strip' 'emptydirs')
 
 package() {
