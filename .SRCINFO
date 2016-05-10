@@ -1,6 +1,6 @@
 pkgbase = feeluown-dev-git
 	pkgdesc = 个性化音乐服务 For Mac And Linux 开发版
-	pkgver = 0.1
+	pkgver = 20160509.a4a5525
 	pkgrel = 1
 	url = https://github.com/cosven/FeelUOwn
 	arch = any
