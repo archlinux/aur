@@ -1,0 +1,31 @@
+diff --git a/redis.conf b/redis.conf
+index 6efb6ac..344e021 100644
+--- a/redis.conf
++++ b/redis.conf
+@@ -45,7 +45,7 @@
+ # Examples:
+ #
+ # bind 192.168.1.100 10.0.0.1
+-# bind 127.0.0.1 ::1
++bind 127.0.0.1 ::1
+ #
+ # ~~~ WARNING ~~~ If the computer running Redis is directly exposed to the
+ # internet, binding to all the interfaces is dangerous and will expose the
+@@ -118,7 +118,7 @@
+ # On other kernels the period depends on the kernel configuration.
+ #
+ # A reasonable value for this option is 60 seconds.
+-tcp-keepalive 0
++tcp-keepalive 60
+ 
+ ################################# GENERAL #####################################
+ 
+@@ -243,7 +243,7 @@
+ # The Append Only File will also be created inside this directory.
+ #
+ # Note that you must specify a directory here, not a file name.
+-dir ./
++dir /var/lib/redis/
+ 
+ ################################# REPLICATION #################################
+  

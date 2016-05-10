@@ -1,0 +1,4 @@
+redis
+src
+pkg
+*.pkg*

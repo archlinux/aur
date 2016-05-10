@@ -1,0 +1,8 @@
+post_install() {
+  getent group redis >/dev/null || groupadd --system redis
+  getent passwd redis >/dev/null || useradd --system -g redis \
+    -d /var/lib/redis -s /bin/false redis
+
+  install -dm700 var/lib/redis
+  chown redis:redis var/lib/redis
+}
