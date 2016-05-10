@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="GIMP Scheme (.scm) script for splitting separate sub-images from a composite image that has a uniform background. Creates a new image from each; will call the \'deskew\' plugin on each image (if it is installed)."
 
 arch=('any')
-url=('https://github.com/FrancoisMalan/DivideScannedImages')
+url="https://github.com/FrancoisMalan/DivideScannedImages"
 license=('GPL')
 
 depends=('gimp')
