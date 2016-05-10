@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-crypt-argon2
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Easy Argon2 password hashing and key derivation in Perl6"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ prepare() {
 
   # from Build.pm, to avoid makedepends+=('panda' 'perl6-librarymake')
   _extdir=$(find ext/ -mindepth 1 -maxdepth 1 -type d -name "argon2*")
-  _resdir=resources
+  _resdir=resources/libraries
   _so=$(perl6 -e 'say $*VM.config<dll>.subst(/^.*\%s(.*)/, -> $/ { "$0" })')
   _make=$(perl6 -e 'say $*VM.config<make>')
 
@@ -28,10 +28,7 @@ prepare() {
   pushd $_extdir
   $_make libs
   popd
-  mv $_extdir/libargon2$_so $_resdir/libargon2$_so
-
-  msg2 'Fixing META.info...'
-  sed -i "/\"resources\"/s/libargon2/libargon2$_so/" META.info
+  mv $_extdir/libargon2$_so $_resdir
 }
 
 check() {
