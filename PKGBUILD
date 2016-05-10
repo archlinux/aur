@@ -23,7 +23,7 @@ prepare() {
 build() {
   cd ${srcdir}/GtkD-${pkgver}
 
-  LDFLAGS='' make DC='dmd' \
+  LDFLAGS='' make DC='dmd' DCFLAGS='-O -release -inline' \
     shared-libs \
     shared-gstreamer \
     shared-vte
