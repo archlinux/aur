@@ -16,13 +16,16 @@ md5sums_i686=('175769c393cd97b07f194fc6a237d18a')
 md5sums_x86_64=('69a29c81706452ad751ea86c1c83352e')
 
 package() {
-  cd "$srcdir/bin"
+  cd "$srcdir"
 
-  make DESTDIR="$pkgdir/" install
-  make DESTDIR="$pkgdir/" sysmenu
-  make DESTDIR="$pkgdir/" desktop
-  make DESTDIR="$pkgdir/" filetype
+  install -d $pkgdir/opt/$pkgname
+  cp -r $pkgname/* $pkgdir/opt/$pkgname
 
-  export PATH=$PATH:/usr/local/ayam/bin
-  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/ayam/bin/plugins
+  #make prefix="$pkgdir/usr/" install
+  #make prefix="$pkgdir/usr/" sysmenu
+  #make prefix="$pkgdir/usr/" desktop
+  #make prefix="$pkgdir/usr/" filetype
+
+  export PATH=$PATH:/opt/ayam/bin
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ayam/bin/plugins
 }
