@@ -2,7 +2,7 @@
 
 _name=packer
 pkgname=packer-io
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Packer is a tool for creating identical machine images for multiple platforms from a single source configuration."
 url="http://www.packer.io"
@@ -12,11 +12,23 @@ depends=(unzip)
 optdepends=()
 conflicts=()
 if test "$CARCH" == i686; then
-source=("${_name}-${pkgver}.zip::https://releases.hashicorp.com/packer/${pkgver}/packer_${pkgver}_linux_386.zip")
-sha256sums=('0d2460f645e73e070cb203e540b64624027f27d82268f7d939898af1c358abaf')
+source=(
+  "${_name}-${pkgver}.zip::https://releases.hashicorp.com/packer/${pkgver}/packer_${pkgver}_linux_386.zip"
+  'https://raw.githubusercontent.com/mitchellh/packer/master/contrib/zsh-completion/_packer'
+)
+sha256sums=(
+  '9146b94115684a9725b2c1b5e5fbc412f30caaca136dbad4028423d6d6d3b6e4'
+  '070675905e14b839420282b280a15a7a72ed34c78ad403532ecd3ed5d9768459'
+)
 else
-source=("${_name}-${pkgver}.zip::https://releases.hashicorp.com/packer/${pkgver}/packer_${pkgver}_linux_amd64.zip")
-sha256sums=('eadd33bc0f8fa42034059fc1cda5f43ed6f540746e767480f0706ebed49b45e5')
+source=(
+  "${_name}-${pkgver}.zip::https://releases.hashicorp.com/packer/${pkgver}/packer_${pkgver}_linux_amd64.zip"
+  'https://raw.githubusercontent.com/mitchellh/packer/master/contrib/zsh-completion/_packer'
+)
+sha256sums=(
+  '7d51fc5db19d02bbf32278a8116830fae33a3f9bd4440a58d23ad7c863e92e28'
+  '070675905e14b839420282b280a15a7a72ed34c78ad403532ecd3ed5d9768459'
+)
 fi
 noextract=(${source[@]%%::*})
 
@@ -37,4 +49,5 @@ package() {
       install -Dm755 "$file" "${pkgdir}/usr/bin/${file}"
     fi
   done
+  install -Dm644 ${srcdir}/_packer ${pkgdir}/usr/share/site-functions/_packer
 }
