@@ -5,6 +5,7 @@ pkgbase = ruby-bdb
 	url = http://github.com/$pkgname/$_gemname
 	arch = i686
 	arch = x86_64
+	license = MIT
 	depends = ruby
 	depends = ruby-tuple
 	depends = db4.8
