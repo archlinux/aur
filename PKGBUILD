@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gambit-git
-pkgver=15.0.0.r16.g05c2e6f
+pkgver=15.0.0.r18.g7542497
 pkgrel=1
 pkgdesc="Tools for doing computation in game theory - git version"
 arch=('i686' 'x86_64')
@@ -11,26 +11,34 @@ depends=('wxgtk')
 makedepends=('git')
 provides=('gambit')
 conflicts=('gambit')
-source=(git+https://github.com/gambitproject/gambit.git)
-md5sums=('SKIP')
+source=(git+https://github.com/gambitproject/gambit.git 'ludecomp.diff')
+options=('!makeflags')
+md5sums=('SKIP'
+         '4086c9c74892440e00c9be7f8ace4bce')
 
 pkgver() {
-  cd "$srcdir/gambit"
+  cd "gambit"
   git describe --tags|sed 's+-+.r+'| sed 's+-+.+' | cut -c2-
 }
 
+prepare() {
+  cd "gambit"
+  patch -p1 < "$srcdir"/ludecomp.diff
+}
+
 build() {
-  cd "$srcdir/gambit"
+  cd "gambit"
   aclocal
   libtoolize
   automake --add-missing
   autoconf
 
-  ./configure  --prefix=/usr 
+  [[ $CARCH == "X86_64" ]] && CXXFLAGS+=" -std=c++03" ./configure --prefix=/usr --disable-enumpoly
+  [[ $CARCH == "i686" ]] && CXXFLAGS+=" -std=c++03" ./configure --prefix=/usr
   make 
 }
 
 package() {
-  cd "$srcdir/gambit"
+  cd "gambit"
   make DESTDIR="$pkgdir/" install
 }
