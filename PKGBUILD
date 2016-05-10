@@ -2,7 +2,7 @@
 
 pkgname=yubikey-neo-manager-git
 pkgver=1.4.0.r3.gcd0de3a
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross platform personalization tool for the YubiKey NEO - git checkout"
 arch=('i686' 'x86_64')
 url="https://github.com/Yubico/yubikey-neo-manager"
@@ -12,7 +12,6 @@ depends=('yubikey-personalization' 'libykneomgr' 'libu2f-host'
 makedepends=('git' 'python2-pyside-tools' 'imagemagick')
 provides=('yubikey-neo-manager')
 conflicts=('yubikey-neo-manager')
-install=yubikey-neo-manager.install
 source=('git://github.com/Yubico/yubikey-neo-manager.git'
 	'git://github.com/Yubico/python-yubicommon.git')
 sha256sums=('SKIP' 'SKIP')
