@@ -1,0 +1,14 @@
+pkgbase = philesight
+	pkgdesc = A tool to browse your filesystem and see where the diskspace is being used at a glance (fork of filelight for headless environments).
+	pkgver = 20120427
+	pkgrel = 1
+	url = http://zevv.nl/play/code/philesight
+	arch = any
+	license = GPL
+	depends = ruby-cairo
+	depends = ruby-bdb
+	source = http://zevv.nl/play/code/philesight/philesight-20120427.tgz
+	md5sums = bfc4113ef97df0dc1399f20e6bed9261
+
+pkgname = philesight
+
