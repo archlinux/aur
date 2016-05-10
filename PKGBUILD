@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=juliadoc-git
-pkgver=r46.804a631
+pkgver=r48.4ead737
 pkgrel=1
 pkgdesc="Python package providing Sphinx extensions and a theme for the Julia language"
 arch=('any')
