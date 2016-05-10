@@ -7,7 +7,8 @@ pkgname=('gcc5')
 pkgver=5.3.0
 _pkgver=5
 _islver=0.15
-pkgrel=1
+pkgrel=2
+_snapshot=5-20160503
 pkgdesc="The GNU Compiler Collection"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
@@ -15,12 +16,14 @@ url="http://gcc.gnu.org"
 makedepends=('binutils>=2.26' 'libmpc' 'doxygen')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs')
-source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
+source=(#ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
+        ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
-md5sums=('c9616fd448f980259c31de613e575719'
+md5sums=('907f3b860ebbaf33b3ccd3c15dddc9b1'
          '8428efbbc6f6e2810ce5c1ba73ecf98c')
 
-_basedir=gcc-${pkgver}
+#_basedir=gcc-${pkgver}
+_basedir=gcc-${_snapshot}
 _libdir="usr/lib/gcc/$CHOST/$pkgver"
 
 prepare() {
@@ -71,20 +74,19 @@ build() {
   make
 }
 
-package()
-{
+package() {
   cd ${srcdir}/gcc-build
 
   make -j1 DESTDIR=${pkgdir} install
   
-  ## Lazy way of dealing with conflicting files...
+  # Lazy way of dealing with conflicting files...
   rm -rf ${pkgdir}/usr/share/{info,locale,man}
 
   # Seems to be the same file for GCC 5 and 6
   rm ${pkgdir}/usr/lib/libcc1*
   
   # Install Runtime Library Exception
-  install -Dm644 ${srcdir}/gcc-${pkgver}/COPYING.RUNTIME \
+  install -Dm644 ${srcdir}/${_basedir}/COPYING.RUNTIME \
     ${pkgdir}/usr/share/licenses/$pkgname/RUNTIME.LIBRARY.EXCEPTION
 
   # create symlinks
