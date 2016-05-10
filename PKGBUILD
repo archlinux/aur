@@ -2,7 +2,7 @@
 
 pkgname=mktxn
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Double-entry bookkeeping transaction journal parser and serializer"
 arch=('any')
 depends=('perl6'
@@ -14,13 +14,15 @@ makedepends=('alacryd' 'git')
 groups=('perl6' 'nightscape')
 url="https://github.com/atweiden/mktxn"
 license=('UNLICENSE')
-source=($pkgname-$pkgver::git+https://github.com/atweiden/mktxn)
-sha256sums=('SKIP')
+source=($pkgname-$pkgver::git+https://github.com/atweiden/mktxn
+        git+https://github.com/atweiden/txn-examples)
+sha256sums=('SKIP' 'SKIP')
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Running tests...'
+  cp -dpr --no-preserve=ownership "$srcdir/txn-examples" t/data
   PERL6LIB=lib prove -r -e perl6
 }
 
