@@ -15,7 +15,7 @@ license=('custom')
 depends=('zlib' 'sh' 'gcc-libs' 'openmpi')
 makedepends=('time' 'gcc-fortran')
 conflicts=('hdf5')
-provides=('hdf5')
+provides=('hdf5' 'hdf5-openmpi')
 source=(ftp://ftp.hdfgroup.org/HDF5/releases/${_pkgname}-1.10/${_pkgname}-${pkgver}/src/${_pkgname}-${pkgver}.tar.bz2)
 sha1sums=('5866dbbcd24485f6b206413e73f7205cb3c1196e')
 
