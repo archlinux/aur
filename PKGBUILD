@@ -1,7 +1,7 @@
 # Maintainer: Juhani Numminen <juhaninumminen0@gmail.com>
 
 pkgname=pentobi
-pkgver=11.0
+pkgver=12.0
 pkgrel=1
 pkgdesc="computer opponent for the board game Blokus"
 arch=('i686' 'x86_64')
@@ -13,12 +13,13 @@ makedepends=('cmake' 'extra-cmake-modules' 'kio' 'qt5-tools')
 optdepends=('kio: KDE thumbnailer')
 install=${pkgname}.install
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
-md5sums=('5f0f1800d5137a31965158642c4f7a86'
+md5sums=('2768f46ffbe04c73442c3c912a5ef780'
          'SKIP')
 validpgpkeys=('CF7C1AEE933D1A03C6D13FF922922BFEEB0F9942') # Markus Enzenberger
 
 prepare() {
   mkdir -p build
+  sed -i 's/Callisto$/Callisto;/' "${pkgname}-${pkgver}/data/pentobi.desktop.in"
 }
 
 build() {
