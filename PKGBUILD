@@ -4,9 +4,9 @@
 
 set -u
 pkgname='miller'
-pkgver='3.5.0'
+pkgver='4.0.0'
 pkgrel='1'
-pkgdesc="Miller is like sed, awk, cut, join, and sort for name-indexed data such as CSV"
+pkgdesc='sed, awk, cut, join, and sort for name-indexed data such as CSV and tabular JSON.'
 arch=('x86_64' 'i686')
 url='https://github.com/johnkerl/miller'
 license=('MIT')
@@ -15,7 +15,7 @@ makedepends=('make' 'gcc' 'flex' 'ctags' 'valgrind' 'asciidoc' 'autoconf')
 _verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
 _srcdir="${pkgname}-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('2928fb8ca5fc76de7a440aba18e681f2b2518a2b583b70fe9187fd7a90931048')
+sha256sums=('c702eb3423e96fb2f39d6339117fd7678ac1b63258d0bd9b8c76859993ec1a0c')
 
 prepare() {
   set -u
@@ -32,7 +32,8 @@ build() {
   set -u
   cd "${_srcdir}"
   if grep -q 'am__is_gnu_make' 'Makefile'; then # 2.2.1 and newer
-    make -s -j "$(nproc)"
+    local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
+    make -s -j "${_nproc}"
   else
     make -s -j1
   fi
