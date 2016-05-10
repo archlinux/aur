@@ -6,7 +6,7 @@ _pkgbase=opencv
 pkgbase=opencv2
 pkgname=('opencv2' 'opencv2-samples')
 pkgver=2.4.12.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source Computer Vision Library (Legacy Version)"
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -17,11 +17,17 @@ optdepends=('opencv-samples'
             'eigen2'
             'libcl: For coding with OpenCL'
             'python2-numpy: Python 2.x interface')
-source=("$_pkgbase-$pkgver.zip::https://github.com/Itseez/opencv/archive/$pkgver.zip" opencv-ffmpeg3.patch)
+source=("$_pkgbase-$pkgver.zip::https://github.com/Itseez/opencv/archive/$pkgver.zip"
+        "opencv-ffmpeg3.patch"
+        "gcc6.patch"
+        "opencv_eebd4cad665f4f1270ca58bb13e9708e130f9b30.patch")
 md5sums=('eaede6500e9c2d56683196b0576db1f7'
-         'c752f3e83ebb021171fdd04aa7fb2e5a')
+         'c752f3e83ebb021171fdd04aa7fb2e5a'
+         'b07ddc26e72d3ece0348870b076dbbc0'
+         '538acb39a89085f2944a7e0149fb7a0c')
 
-_cmakeopts=('-D WITH_OPENCL=ON'
+_cmakeopts=('-D WITH_CUDA=OFF' # Disable CUDA for now because GCC 6.1.1 and nvcc don't play along yet
+            '-D WITH_OPENCL=ON'
             '-D WITH_OPENGL=ON'
             '-D WITH_TBB=ON'
             '-D WITH_XINE=ON'
