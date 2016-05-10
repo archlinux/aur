@@ -1,0 +1,16 @@
+pkgbase = python2-flask-migrate
+	pkgdesc = SQLAlchemy database migrations for Flask applications using Alembic
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/Flask-Migrate
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-flask
+	depends = python2-alembic
+	optdepends = python2-nose
+	source = https://pypi.python.org/packages/source/F/Flask-Migrate/Flask-Migrate-1.8.0.tar.gz
+	md5sums = 5ca0ebb9ee2b1c29d11268f01d652927
+
+pkgname = python2-flask-migrate
+
