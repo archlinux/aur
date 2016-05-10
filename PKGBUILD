@@ -3,7 +3,7 @@
 
 pkgname=kitch
 pkgver=17.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The best way to play itch.io games."
 
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ install="kitch.install"
 
 # sic. - source is in itch repo, kitch is a dummy repo for canary-channel github releases
 source=("https://github.com/itchio/itch/archive/v${pkgver}-canary.tar.gz")
-sha256sums=('0333b72ca70f05a02881c902eda36c76fd803cf7bd9d241a2224ca2e9acc6269')
+sha256sums=('0c4d8fd081634c88718383c492f3a60af53f0d66a3078213b053aa497ca0e6c2')
 
 [ "$CARCH" = "i686" ]   && _ELECTRON_ARCH=ia32; _ITCH_ARCH=i386
 [ "$CARCH" = "x86_64" ] && _ELECTRON_ARCH=x64;  _ITCH_ARCH=amd64
