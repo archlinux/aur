@@ -55,6 +55,10 @@ prepare() {
   cd $_pkgbase-$pkgver
 # Fix build with ffmpeg 3.0 (Debian)
   patch -p1 -i ../opencv-ffmpeg3.patch
+# Hack/Workaround for gcc 6.1
+  patch -p1 -i ../gcc6.patch
+# Patch for gcc 6.1/cmake
+  patch -p1 -i ../opencv_eebd4cad665f4f1270ca58bb13e9708e130f9b30.patch
 }
 
 build() {
