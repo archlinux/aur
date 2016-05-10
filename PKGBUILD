@@ -6,9 +6,9 @@
 
 pkgname=mysql-workbench-git
 pkgver=6.3.6.r0.gd46b227
-pkgrel=4
+pkgrel=5
 # mysql & mysql-connector-c++ from git
-_gdal_version=2.0.2
+_gdal_version=2.1.0
 _boost_version=1.59.0
 pkgdesc='A cross-platform, visual database design tool developed by MySQL - git checkout'
 arch=('i686' 'x86_64')
@@ -27,15 +27,17 @@ validpgpkeys=('A4A9406876FCBD3C456770C88C718D3B5072E1F5')
 source=('git://github.com/mysql/mysql-workbench.git'
 	'git://github.com/mysql/mysql-server.git'
 	'git://github.com/mysql/mysql-connector-cpp.git'
-	"http://download.osgeo.org/gdal/${_gdal_version}/gdal-${_gdal_version}.tar.gz"
+	"http://download.osgeo.org/gdal/${_gdal_version}/gdal-${_gdal_version}.tar.xz"
 	"https://downloads.sourceforge.net/project/boost/boost/${_boost_version}/boost_${_boost_version//./_}.tar.bz2"
+	'0001-do-not-pass-type-to-std-make_pair.patch'
 	'0001-mysql-workbench-no-check-for-updates.patch'
 	'arch_linux_profile.xml')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'db7722caf8d9dd798ec18012b9cacf40a518918466126a88b9fd277bd7d40cc4'
+            '568b43441955b306364fcf97fb47d4c1512ac6f2f5f76b2ec39a890d2418ee03'
             '727a932322d94287b62abb1bd2d41723eec4356a7728909e38adb65ca25241ca'
+            '9088cdcf82c1a925806d9162702e19c94fa21d89d422370df3f5700e204f5b32'
             'b189e15c6b6f5a707357d9a9297f39ee3a33264fd28b44d5de6f537f851f82cf'
             '2ade582ca25f6d6d748bc84a913de39b34dcaa6e621a77740fe143007f2833af')
 
@@ -55,6 +57,10 @@ pkgver() {
 }
 
 prepare() {
+	cd "${srcdir}/mysql-server/"
+
+	patch -Np1 < "${srcdir}"/0001-do-not-pass-type-to-std-make_pair.patch
+
 	cd "${srcdir}/mysql-workbench/"
 
 	# Disable 'Help' -> 'Check for Updates'
