@@ -69,6 +69,7 @@ build() {
       --enable-checking=release \
       --program-suffix=-${_pkgver} \
       --enable-version-specific-runtime-libs
+      #--enable-install-libiberty
 
   make
 }
