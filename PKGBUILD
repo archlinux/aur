@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis-git
-pkgver=0.2.r172.gd90f2af
+pkgver=0.2.r242.ge2e0162
 pkgrel=1
 pkgdesc='modern, legacy free, simple yet efficient vim-like editor - git checkout'
 arch=('i686' 'x86_64')
@@ -49,6 +49,7 @@ build() {
 	make
 
 	markdown README.md > README.html
+	markdown lexers/README.md > lexers/README.html
 }
 
 check() {
@@ -65,5 +66,8 @@ package() {
 	install -D -m0644 'LICENSE' "${pkgdir}/usr/share/licenses/vis/LICENSE"
 	install -D -m0644 'README.md' "${pkgdir}/usr/share/doc/vis/README.md"
 	install -D -m0644 'README.html' "${pkgdir}/usr/share/doc/vis/README.html"
+
+	ln -s ../../vis/lexers/README.md "${pkgdir}/usr/share/doc/vis/README-lexers.md"
+	ln -s ../../vis/lexers/README.html "${pkgdir}/usr/share/doc/vis/README-lexers.html"
 }
 
