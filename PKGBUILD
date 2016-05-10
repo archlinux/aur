@@ -2,7 +2,7 @@
 # Contributor: bender02 at gmx dot com
 
 pkgname=mini_httpd
-pkgver=1.23
+pkgver=1.24
 pkgrel=1
 pkgdesc="A small and simple forking http server. CGI, SSL, auth, vhosts, ipv6."
 url="http://www.acme.com/software/mini_httpd/"
@@ -21,15 +21,15 @@ source=("http://www.acme.com/software/${pkgname}/${pkgname}-${pkgver}.tar.gz"
 	'sample_perl.cgi'
 	'LICENSE')
 
-sha1sums=('0701ca607f8b8a0c8e0409084d0ac8720beb87f2'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-        'SKIP'
-	'SKIP'
-        'SKIP')
+sha1sums=('23f9a9f126e417c4eb9b565960b638d383862c32'
+          'df01a85e20a1f684ba3ee80525b0ecd7c1b24b4a'
+          'a941b5fc254320a1415397fd25c96bdb6ee13bf3'
+          '2d7bebd481f60cc45477be3fe28c6fa62f19ac79'
+          'd89ad3868cb321236bf2e5a217794d4645d797f4'
+          '7a4b2d1e2c27ff68d62acc7dc6617b3748ada212'
+          '5db8e184731f377b5082e40c007e035b8af69197'
+          '2f74e5454fa60885e95d56e9de6ce8ed0f984f86'
+          '531a46799b6780d88ec1431785f290fa164da041')
 
 install=mini_httpd.install
 
