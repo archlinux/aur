@@ -1,7 +1,7 @@
 # Maintainer: Yuval Adam <yuval at y3xz dot com> PGP-Key: 271386AA2EB7672F
 
 pkgname=openbsc
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="Free software implementations for the GSM/G3PP protocol stacks"
 arch=('any')
