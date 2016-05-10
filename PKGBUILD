@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis-standalone-git
-pkgver=0.2.r183.geb176b4
+pkgver=0.2.r242.ge2e0162
 pkgrel=1
 _pkgver_libmusl=1.1.14
 _pkgver_ncurses=6.0
@@ -59,9 +59,12 @@ pkgver() {
 build() {
 	cd vis/
 
+	unset CFLAGS LDFLAGS
+
 	make PREFIX='/usr/' standalone
 
 	markdown README.md > README.html
+	markdown lexers/README.md > lexers/README.html
 }
 
 package() {
@@ -72,5 +75,8 @@ package() {
 	install -D -m0644 'LICENSE' "${pkgdir}/usr/share/licenses/vis/LICENSE"
 	install -D -m0644 'README.md' "${pkgdir}/usr/share/doc/vis/README.md"
 	install -D -m0644 'README.html' "${pkgdir}/usr/share/doc/vis/README.html"
+
+	ln -s ../../vis/lexers/README.md "${pkgdir}/usr/share/doc/vis/README-lexers.md"
+	ln -s ../../vis/lexers/README.html "${pkgdir}/usr/share/doc/vis/README-lexers.html"
 }
 
