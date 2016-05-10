@@ -11,7 +11,7 @@
 
 pkgname=nodejs-4-lts
 pkgver=4.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Evented I/O for V8 javascript (version 4 with long term support)'
 arch=('i686' 'x86_64')
 url='http://nodejs.org/'
@@ -52,18 +52,25 @@ build() {
     --shared-http-parser
     # --shared-v8
 
-  make
+  # Workaround for g++ 6.x build issues,
+  # see https://github.com/nodejs/node/issues/6648
+  make -j8 CXX="g++ -fno-delete-null-pointer-checks"
+  #make
 }
 
 check() {
   cd node-v$pkgver
-  make test
+  # Workaround for g++ 6.x build issues
+  make -j8 CXX="g++ -fno-delete-null-pointer-checks" test
+  #make test
 }
 
 package() {
   cd node-v$pkgver
 
-  make DESTDIR="$pkgdir" install
+  # Workaround for g++ 6.x build issues
+  make -j8 CXX="g++ -fno-delete-null-pointer-checks" DESTDIR="$pkgdir" install
+  #make DESTDIR="$pkgdir" install
 
   # install docs as per user request
   install -d "$pkgdir"/usr/share/doc/nodejs
