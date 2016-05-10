@@ -1,0 +1,16 @@
+pkgbase = asciidoc-plantuml-git
+	pkgdesc = Use plantuml syntax to generate various uml documents in asciidoc
+	pkgver = r4.68fd0d0
+	pkgrel = 1
+	url = https://github.com/jmesmon/asciidoc-plantuml.git
+	arch = any
+	license = BSD
+	depends = plantuml
+	provides = asciidoc-plantuml
+	conflicts = asciidoc-plantuml
+	options = !emptydirs
+	source = git+https://github.com/jmesmon/asciidoc-plantuml.git
+	md5sums = SKIP
+
+pkgname = asciidoc-plantuml-git
+
