@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=netlink-notify-git
-pkgver=0.6.3.r3.gdde8c75
+pkgver=0.7.4.r2.gb08dc6a
 pkgrel=1
 pkgdesc="Notify about netlink changes - git checkout"
 arch=('i686' 'x86_64')
@@ -11,16 +11,21 @@ makedepends=('git' 'imagemagick' 'markdown')
 provides=('netlink-notify')
 conflicts=('netlink-notify')
 license=('GPL')
-install=netlink-notify.install
 source=('git://github.com/eworm-de/netlink-notify.git')
+sha256sums=('SKIP')
 
 pkgver() {
 	cd netlink-notify/
 
 	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
+		printf '%s.r%s.g%s' \
+			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
+			"$(git rev-list --count ${GITTAG}..)" \
+			"$(git log -1 --format='%h')"
 	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+		printf '0.r%s.g%s' \
+			"$(git rev-list --count master)" \
+			"$(git log -1 --format='%h')"
 	fi
 }
 
@@ -36,4 +41,3 @@ package() {
 	make DESTDIR="${pkgdir}" install
 }
 
-sha256sums=('SKIP')
