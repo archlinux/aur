@@ -15,9 +15,9 @@ pkgbase = feeluown-dev-git
 	depends = xdg-utils
 	depends = python-yaml
 	depends = fcitx-qt5
-	provides = feeluown,
+	provides = feeluown
 	provides = feeluown-git
-	conflicts = feeluown,
+	conflicts = feeluown
 	conflicts = feeluown-git
 	source = git://github.com/cosven/FeelUOwn.git#branch=dev
 	source = https://raw.githubusercontent.com/cosven/FeelUOwn/master/feeluown/feeluown.png
