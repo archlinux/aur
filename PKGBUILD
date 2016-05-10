@@ -23,7 +23,6 @@ md5sums=('907f3b860ebbaf33b3ccd3c15dddc9b1'
 
 #_basedir=gcc-${pkgver}
 _basedir=gcc-${_snapshot}
-_libdir="usr/lib/gcc/$CHOST/$pkgver"
 
 prepare() {
   cd ${srcdir}/${_basedir}
