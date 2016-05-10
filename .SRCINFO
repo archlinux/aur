@@ -1,0 +1,15 @@
+pkgbase = python2-flask-moment
+	pkgdesc = Formatting of dates and times in Flask templates using moment.js.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/Flask-Moment
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-flask
+	optdepends = python2-nose
+	source = https://pypi.python.org/packages/source/F/Flask-Moment/Flask-Moment-0.5.1.tar.gz
+	md5sums = 6aa1764769e86aea1a2a64e36cd76181
+
+pkgname = python2-flask-moment
+
