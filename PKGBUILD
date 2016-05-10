@@ -2,13 +2,13 @@
 
 pkgbase=python-acme-git
 pkgname=("python-acme-git" "python2-acme-git")
-_reponame="letsencrypt"
-pkgver=0.5.0.r57.g86e09d5
+_reponame="certbot"
+pkgver=0.5.0.r118.ga6d5b52
 pkgrel=1
 pkgdesc="ACME protocol implementation for Python"
 arch=('any')
 license=('Apache')
-url="https://github.com/letsencrypt/${_reponame}"
+url="https://github.com/certbot/${_reponame}"
 depends=('')
 makedepends=('git' 'python-setuptools' 'python2-setuptools' 'python-pyasn1' 'python2-pyasn1'
 	'python-cryptography' 'python2-cryptography' 'python-pyopenssl' 'python2-pyopenssl'
@@ -18,7 +18,7 @@ makedepends=('git' 'python-setuptools' 'python2-setuptools' 'python-pyasn1' 'pyt
 	'python-mock' 'python2-mock')
 provides=("")
 conflicts=("")
-source=("${_reponame}"::"git+https://github.com/letsencrypt/letsencrypt")
+source=("${_reponame}"::"git+https://github.com/certbot/${_reponame}")
 md5sums=('SKIP')
 
 pkgver() {
