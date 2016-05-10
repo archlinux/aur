@@ -4,7 +4,7 @@
 # Contributor: Sebastian Voecking <voeck@web.de>
 
 pkgname=root
-pkgver=6.06.02
+pkgver=6.06.04
 pkgrel=1
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
@@ -36,26 +36,23 @@ source=("https://root.cern.ch/download/root_v${pkgver}.source.tar.gz"
 'rootd'
 'root.xml'
 'python3.diff'
-'param.diff')
-md5sums=('e9b8b86838f65b0a78d8d02c66c2ec55'
+'call_PyErr_Clear_if_no_such_attribute.patch')
+md5sums=('55a2f98dd4cea79c9c4e32407c2d6d17'
          '0e883ad44f99da9bc7c23bc102800b62'
          'efd06bfa230cc2194b38e0c8939e72af'
          'e2cf69b204192b5889ceb5b4dedc66f7'
          '1777520d65cc545b5416ee2fed0cd45c'
-         'b76fed6aae7b48c8ec0b756670ccde91')
+         'f36f7bff97ed7232d8534c2ef166b2bf')
 						   
 prepare(){
 	## https://sft.its.cern.ch/jira/browse/ROOT-6924
 	cd ${pkgname}-${pkgver}
 
 	patch -p1 < ${srcdir}/python3.diff
-	#patch -p1 < ${srcdir}/param.diff
 	2to3 -w etc/dictpch/makepch.py 2>&1 > /dev/null
 
-	#msg 'python2 switch'
-	#find . -type f -exec sed -e 's_#!/usr/bin/env python_&2_' \
-	#	-e 's/python -O/python2 -O/g' \
-	#	-e 's/python -c/python2 -c/g' -i {} \;
+        ## https://sft.its.cern.ch/jira/browse/ROOT-7640
+        patch -p1 < ${srcdir}/call_PyErr_Clear_if_no_such_attribute.patch
 }
 
 build() {
