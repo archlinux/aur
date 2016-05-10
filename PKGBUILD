@@ -4,11 +4,11 @@
 # Contributor: Malte Rabenseifner <malte@zearan.de> 
 
 pkgname=murmur-ice
-pkgver=1.2.15
+pkgver=1.2.16
 pkgrel=1
 pkgdesc="The voice chat application server for Mumble"
 arch=('i686' 'x86_64')
-url="http://mumble.sourceforge.net"
+url="https://github.com/mumble-voip/mumble"
 license=('BSD')
 depends=('avahi' 'lsb-release' 'protobuf' 'qt4' 'icu' 'zeroc-ice' 'python-zeroc-ice' 'python2-zeroc-ice')
 makedepends=('boost')
@@ -45,7 +45,7 @@ package() {
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
-md5sums=('3052ed64d1f4d4e5bf60095df53c7758'
+md5sums=('58e7574af80e36e0b943df0e6a44d6ce'
          'eddea4cdbd0bde4b960a67e16b5d5478'
          'd27a9adcd7561859e7b033046729bc0e')
 # vim: sw=2:ts=2 et:
