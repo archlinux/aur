@@ -2,7 +2,7 @@
 
 pkgname=perl6-txn-parser
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Double-entry bookkeeping transaction journal parser"
 arch=('any')
 depends=('perl6' 'perl6-digest-xxhash')
@@ -11,13 +11,15 @@ makedepends=('alacryd' 'git')
 groups=('perl6')
 url="https://github.com/atweiden/txn-parser"
 license=('UNLICENSE')
-source=($pkgname-$pkgver::git+https://github.com/atweiden/txn-parser)
-sha256sums=('SKIP')
+source=($pkgname-$pkgver::git+https://github.com/atweiden/txn-parser
+        git+https://github.com/atweiden/txn-examples)
+sha256sums=('SKIP' 'SKIP')
 
 check() {
   cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Running tests...'
+  cp -dpr --no-preserve=ownership "$srcdir/txn-examples" t/data
   PERL6LIB=lib prove -r -e perl6
 }
 
