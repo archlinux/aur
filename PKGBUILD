@@ -6,7 +6,7 @@
 pkgbase=linux-next-git
 pkgname=("${pkgbase}")
 _srcname=linux-next
-pkgver=20160509
+pkgver=20160511
 pkgrel=1
 arch=('any')
 url="http://www.kernel.org/"
@@ -51,6 +51,7 @@ pkgver() {
 prepare() {
   cd "${_srcname}"
 
+  msg "Reset to git tag: ${linux_next_git_tag}"
   git reset --hard ${linux_next_git_tag}
 
   #################
@@ -91,6 +92,7 @@ export KARCH=not_supported
 
 build() {
   cd "${_srcname}"
+  msg "Remove .git dir for save memory in tmpfs"
   [ -d .git ] && rm -rf .git &
   if [ "${KARCH}" == "not_supported" ]; then
     echo "$CARCH not supported by package, report to the maintainer"
