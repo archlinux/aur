@@ -16,7 +16,7 @@ sha1sums=("dd36a6e40b694f5343c11ae4aa9b71f8d9aa66fd")
 
 package() {
     install -d -m 755 ${pkgdir}/opt
-    mv ${srcdir}/vert.x-${pkgver}/ ${pkgdir}/opt/vertx
+    mv ${srcdir}/vertx/ ${pkgdir}/opt/vertx
 
     install -d -m 755 ${pkgdir}/usr/bin
     ln -s /opt/vertx/bin/vertx ${pkgdir}/usr/bin
