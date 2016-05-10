@@ -15,7 +15,7 @@ conflicts=('libkscreen-frameworks')
 replaces=('libkscreen-frameworks')
 provides=('libkscreen-frameworks')
 source=("http://download.kde.org/stable/plasma/${pkgver}/libkscreen-$pkgver.tar.xz")
-md5sums=('a0a1a8ed67b63dae13d17c76399fd461')
+md5sums=('3ed24822d058c5efa15cb2f55590d325')
 
 prepare() {
   mkdir -p build
