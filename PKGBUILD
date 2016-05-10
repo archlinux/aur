@@ -7,14 +7,13 @@ pkgname=('gcc5')
 pkgver=5.3.0
 _pkgver=5
 _islver=0.15
-pkgrel=2
+pkgrel=3
 _snapshot=5-20160503
 pkgdesc="The GNU Compiler Collection"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
-makedepends=('binutils>=2.26' 'libmpc' 'doxygen')
-checkdepends=('dejagnu' 'inetutils')
+makedepends=('binutils>=2.26' 'libmpc')
 options=('!emptydirs')
 source=(#ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
         ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
