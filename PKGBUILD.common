@@ -2,7 +2,7 @@
 # Contributor: Daniel Albers <daniel@lbe.rs>
 
 pkgver=15.2.2
-pkgrel=3
+pkgrel=4
 arch=(i686 x86_64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
@@ -53,8 +53,8 @@ _configure_args="--prefix=/usr \
   --with-dir-group=bareos \
   --with-sd-user=bareos \
   --with-sd-group=bareos \
-  --with-fd-user=bareos \
-  --with-fd-group=bareos"
+  --with-fd-user=root \
+  --with-fd-group=root"
 
 prepare() {
   # bareos must use python2
