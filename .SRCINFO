@@ -1,13 +1,13 @@
 pkgbase = certbot-plugins-git
 	pkgdesc = Plugins for Certbot
-	pkgver = 0.5.0.r57.g86e09d5
+	pkgver = 0.5.0.r118.ga6d5b52
 	pkgrel = 1
-	url = https://github.com/letsencrypt/letsencrypt
+	url = https://github.com/certbot/certbot
 	arch = any
 	license = Apache
 	makedepends = git
-	makedepends = certbot=0.5.0.r57.g86e09d5
-	makedepends = python2-acme=0.5.0.r57.g86e09d5
+	makedepends = certbot=0.5.0.r118.ga6d5b52
+	makedepends = python2-acme=0.5.0.r118.ga6d5b52
 	makedepends = python2-pyopenssl
 	makedepends = python2-pyparsing
 	makedepends = python2-setuptools
@@ -15,33 +15,33 @@ pkgbase = certbot-plugins-git
 	makedepends = python2-zope-interface
 	makedepends = python2-zope-component
 	makedepends = python2-augeas
-	source = letsencrypt::git+https://github.com/letsencrypt/letsencrypt
+	source = certbot::git+https://github.com/certbot/certbot
 	md5sums = SKIP
 
 pkgname = certbot-nginx-git
 	pkgdesc = Nginx plugin for Certbot
-	depends = certbot=0.5.0.r57.g86e09d5
-	depends = python2-acme=0.5.0.r57.g86e09d5
+	depends = certbot=0.5.0.r118.ga6d5b52
+	depends = python2-acme=0.5.0.r118.ga6d5b52
 	depends = python2-pyopenssl
 	depends = python2-pyparsing
 	depends = python2-setuptools
 	depends = python2-mock
 	depends = python2-zope-interface
-	provides = certbot-nginx=0.5.0.r57.g86e09d5
-	provides = letsencrypt-nginx=0.5.0.r57.g86e09d5
+	provides = certbot-nginx=0.5.0.r118.ga6d5b52
+	provides = letsencrypt-nginx=0.5.0.r118.ga6d5b52
 	conflicts = certbot-nginx
 	conflicts = letsencrypt-nginx
 
 pkgname = certbot-apache-git
 	pkgdesc = Apache plugin for Certbot
-	depends = certbot=0.5.0.r57.g86e09d5
-	depends = python2-acme=0.5.0.r57.g86e09d5
+	depends = certbot=0.5.0.r118.ga6d5b52
+	depends = python2-acme=0.5.0.r118.ga6d5b52
 	depends = python2-augeas
 	depends = python2-setuptools
 	depends = python2-mock
 	depends = python2-zope-component
 	depends = python2-zope-interface
-	provides = certbot-apache=0.5.0.r57.g86e09d5
-	provides = letsencrypt-apache=0.5.0.r57.g86e09d5
+	provides = certbot-apache=0.5.0.r118.ga6d5b52
+	provides = letsencrypt-apache=0.5.0.r118.ga6d5b52
 	conflicts = certbot-apache
 	conflicts = letsencrypt-apache
