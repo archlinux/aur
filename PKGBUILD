@@ -1,5 +1,5 @@
 pkgname=paper-icon-theme-git
-pkgver=ae82c98
+pkgver=368.45207e8
 pkgrel=1
 pkgdesc="Paper is an icon theme for GTK based desktops and fits perfectly the paper-gtk-theme"
 arch=(any)
@@ -14,9 +14,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  # Use the tag of the last commit
-  git describe --always | sed 's|-|.|g'
-  #printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
