@@ -4,7 +4,7 @@
 pkgbase="ptpython"
 pkgname=("ptpython" "ptpython2")
 pkgver="0.34"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Python REPL build on top of prompt_toolkit"
 arch=("any")
 url="https://github.com/jonathanslenders/ptpython"
