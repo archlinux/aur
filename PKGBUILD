@@ -3,14 +3,13 @@
 
 pkgname=freedoko
 pkgver=0.7.14
-pkgrel=3
+pkgrel=4
 pkgdesc="Free version of the german card game Doppelkopf"
 arch=('i686' 'x86_64')
 url="http://free-doko.sourceforge.net/en/FreeDoko.html"
 license=('GPL')
 depends=('gtkmm' 'gnet' 'freealut')
 makedepends=('asciidoc' 'texlive-latexextra')
-conflicts=('freedoko-bin32')
 source=("http://downloads.sourceforge.net/free-doko/FreeDoko_$pkgver.src.zip"
         "freedoko-0.7.14-archlinux.patch")
 sha256sums=('a27ab7acabb28aa8d038f0022377ea3e68d52626d454beaf0f65e0b91c777de9'
