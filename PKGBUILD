@@ -3,7 +3,7 @@
 _name=packer
 pkgname=packer-io
 pkgver=0.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Packer is a tool for creating identical machine images for multiple platforms from a single source configuration."
 url="http://www.packer.io"
 arch=('x86_64' 'i686')
@@ -49,5 +49,5 @@ package() {
       install -Dm755 "$file" "${pkgdir}/usr/bin/${file}"
     fi
   done
-  install -Dm644 ${srcdir}/_packer ${pkgdir}/usr/share/site-functions/_packer
+  install -Dm644 ${srcdir}/_packer ${pkgdir}/usr/share/zsh/site-functions/_packer
 }
