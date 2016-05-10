@@ -1,7 +1,7 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
 pkgname=adapta-gtk-theme
 _gtk3_version='3.21'
-pkgver="${_gtk3_version}.1.118"
+pkgver="${_gtk3_version}.1.122"
 pkgrel=1
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
@@ -18,20 +18,14 @@ optdepends=('gnome-shell>=3.18: The GNOME Shell'
             'paper-icon-theme-git: A fitting icon theme'
             'gnome-tweak-tool: A graphical tool to tweak gnome settings')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tista500/Adapta/archive/${pkgver}.tar.gz")
-sha256sums=(c21864f2445f44820a596c8614641f7a8aea7492b3697a040e26c26bdc0ea6f4)
-
-_theme_name=Adapta
-_extracted_folder="${_theme_name}-$pkgver"
+sha256sums=(0a21ae315f476c10bedd8479a8dc3ec496d0ffc3e3295d9882fa81975a92065c)
 
 package() {
-    default="${pkgdir}/usr/share/themes/${_theme_name}"
-    nokto="${default}-Nokto"
-    install -dm755 "$default"
-    cp -dpr --no-preserve=ownership "${_extracted_folder}/." "$default"
-
-    install -dm755 "$nokto"
-    cp -dpr --no-preserve=ownership "${_extracted_folder}/." "$nokto"
-
-    mv "${nokto}/index.theme"{-nokto,}
-    mv "${nokto}/gtk-2.0/gtkrc"{-dark,}
+    cd "Adapta-${pkgver}"
+    prefix="${pkgdir}/usr"
+    install -dm755 "$prefix"
+    ./autogen.sh --prefix "$prefix" --enable-gtk_next --enable-chrome
+    make
+    make install
 }
+
