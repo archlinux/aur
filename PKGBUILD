@@ -19,10 +19,6 @@ source=('git://github.com/cosven/FeelUOwn.git#branch=dev'
 md5sums=('SKIP')
 _desktop="${_pkgname}.desktop"
 
-pkgver() {
-    cd "$srcdir/$_pkgname"
-    git describe --tags --long | sed 's/^v//;s/release./r/;s/-/./g'
-}
 
 build() {
     cd "$srcdir"
