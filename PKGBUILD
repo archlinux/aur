@@ -1,4 +1,4 @@
-# Maintainer: wenLiangcan <boxeed at gmail dot com>
+# Maintainer: bruceutut <zy183525594@163.com>
 
 pkgname=feeluown-dev-git
 _pkgname=FeelUOwn
