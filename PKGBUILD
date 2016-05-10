@@ -37,6 +37,10 @@ prepare() {
   cd transmission-$pkgver-seq
   echo ${svnrev} > REVISION
   patch -p1 -i "$srcdir/transmission-2.90-libsystemd.patch"
+
+  # Prevent m4_copy error when running aclocal
+  # m4_copy: won't overwrite defined macro: glib_DEFUN
+  rm m4/glib-gettext.m4 || true
 }
 
 build() {
