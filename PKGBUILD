@@ -1,8 +1,8 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgname=certbot-git
-_reponame="letsencrypt"
-pkgver=0.5.0.r57.g86e09d5
+_reponame="certbot"
+pkgver=0.5.0.r118.ga6d5b52
 pkgrel=1
 pkgdesc="A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free."
 arch=('any')
@@ -18,7 +18,8 @@ optdepends=("certbot-apache: Apache plugin for Let’s Encrypt client"
 makedepends=('git')
 provides=("certbot=${pkgver}" "letsencrypt=${pkgver}")
 conflicts=("certbot" "letsencrypt")
-source=("${_reponame}"::"git+https://github.com/letsencrypt/letsencrypt")
+replaces=("letsencrypt-git")
+source=("${_reponame}"::"git+https://github.com/certbot/${_reponame}")
 md5sums=('SKIP')
 
 pkgver() {
