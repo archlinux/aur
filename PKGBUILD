@@ -2,7 +2,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=libkcompactdisc
-pkgver=16.04.0
+pkgver=16.04.1
 pkgrel=1
 pkgdesc="A library for interfacing with CDs"
 url='https://www.kde.org/applications/multimedia/'
@@ -13,7 +13,7 @@ makedepends=('cmake' 'automoc4')
 replaces=('kdemultimedia-kioslave')
 conflicts=('kdemultimedia-kioslave')
 source=("http://download.kde.org/stable/applications/${pkgver}/src/${pkgname}-${pkgver}.tar.xz")
-sha1sums=('3056a34f14b67a7520f1764522c7841d01b0f47b')
+sha1sums=('61f90ee3c48c51d1491b33758ffd98db4c12efe9')
 
 build() {
   cd "${srcdir}"
