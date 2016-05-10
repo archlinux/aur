@@ -12,8 +12,8 @@ conflicts=()
 source_i686=(https://sourceforge.net/projects/ayam/files/Ayam/1.23/ayam1.23.linux.i386.tar.gz/download)
 source_x86_64=(https://sourceforge.net/projects/ayam/files/Ayam/1.23/ayam1.23.linux.amd64.tar.gz/download)
 
-md5sums_i686=(40a1e3eb94faa8e4ec6c9ea41cf8a35b)
-md5sums_x86_64=(40a1e3eb94faa8e4ec6c9ea41cf8a35b)
+md5sums_i686=('175769c393cd97b07f194fc6a237d18a')
+md5sums_x86_64=('175769c393cd97b07f194fc6a237d18a')
 
 package() {
   cd "$srcdir/bin"
