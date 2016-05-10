@@ -90,7 +90,6 @@ package() {
 
   # create symlinks
   cd ${pkgdir}/usr/bin
-  rm ${CHOST}-gcc-${pkgver}
   for ii in c++ cpp g++ gcc gcc-ar gcc-nm gcc-ranlib gfortran; do
     ln -s ${ii}-${_pkgver} ${ii}-${pkgver}
     ln -s ${CHOST}-${ii}-${_pkgver} ${CHOST}-${ii}-${pkgver}
