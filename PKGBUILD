@@ -6,7 +6,7 @@ pkgver=20160229
 pkgrel=1
 pkgdesc="Lightweight weather GTK tray application."
 arch=('any')
-url="https://github.com/decayofmind/weatherboy"
+url="https://github.com/sid-the-sloth/weatherbot"
 license=('GPL')
 depends=('python2' 'python2-gobject' 'python2-dateutil' 'python2-requests' 'python2-cairo' 'pygtk' 'gtk2')
 # Author stopped creating tags early 2015
