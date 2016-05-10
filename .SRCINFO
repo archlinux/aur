@@ -1,0 +1,22 @@
+pkgbase = tis-interpreter-git
+	pkgdesc = An interpreter for finding subtle bugs in programs written in standard C
+	pkgver = r47.e8de317
+	pkgrel = 1
+	url = https://github.com/TrustInSoft/tis-interpreter
+	arch = i686
+	arch = x86_64
+	license = LGPL2.1
+	makedepends = git
+	depends = ocaml
+	depends = ocaml-findlib
+	depends = zarith
+	depends = ocaml-easy-format
+	depends = ocaml-biniou
+	depends = ocaml-yojson
+	provides = tis-interpreter
+	conflicts = tis-interpreter
+	source = git+https://github.com/TrustInSoft/tis-interpreter
+	sha256sums = SKIP
+
+pkgname = tis-interpreter-git
+
