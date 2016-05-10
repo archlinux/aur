@@ -9,6 +9,8 @@ depends=('libtiff4')
 makedepends=('coreutils')
 conflicts=()
 
+_prefix=/opt/$pkgname
+
 source_i686=(http://downloads.sourceforge.net/$pkgname/$pkgname$pkgver.linux.i386.tar.gz)
 source_x86_64=(http://downloads.sourceforge.net/$pkgname/$pkgname$pkgver.linux.amd64.tar.gz)
 
@@ -21,10 +23,21 @@ package() {
   install -d $pkgdir/opt/$pkgname
   cp -r $pkgname/* $pkgdir/opt/$pkgname
 
-  #make prefix="$pkgdir/usr/" install
-  #make prefix="$pkgdir/usr/" sysmenu
-  #make prefix="$pkgdir/usr/" desktop
-  #make prefix="$pkgdir/usr/" filetype
+#desktop
+#  sed -e "s:/usr/local/ayam:$_prefix:g" $pkgdir/$_prefix/bin/ayam-desktop.desktop > $pkgdir/$_prefix/bin/ayam.desktop
+#  chmod 755 $pkgdir/$_prefix/bin/ayam.desktop
+#  xdg-desktop-icon install --novendor $pkgdir/$_prefix/bin/ayam.desktop
+
+#sysmenu
+  sed -e "s:/usr/local/ayam:$_prefix:g" $pkgdir/$_prefix/bin/ayam-desktop.desktop > $pkgdir/$_prefix/bin/ayam.desktop
+  install -d $pkgdir/usr/share/applications
+  cp $pkgdir/$_prefix/bin/ayam.desktop $pkgdir/usr/share/applications/ayam.desktop
+#  chmod 755 $pkgdir/usr/share/applications/ayam.desktop
+
+#filetype
+#  xdg-mime install $pkgdir/$_prefix/bin/ayam-filetype.xml
+#  xdg-mime default ayam.desktop application/ayam
+#  xdg-icon-resource install --novendor --context mimetypes --size 32 $pkgdir/$_prefix/bin/ayam_icon_32.png application-ayam
 
   export PATH=$PATH:/opt/ayam/bin
   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/ayam/bin/plugins
