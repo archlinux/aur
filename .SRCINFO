@@ -1,7 +1,7 @@
 pkgbase = plover
 	pkgdesc = Free and open source real-time stenography engine.
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openstenoproject.org/plover/
 	arch = any
 	license = GPL2
@@ -20,7 +20,9 @@ pkgbase = plover
 	provides = plover
 	conflicts = plover-git
 	source = https://github.com/openstenoproject/plover/archive/v3.0.0.tar.gz
+	source = fix_wx_pynotify_crash.patch
 	sha1sums = 89ca6af3fe002be218158930d105d25c1e1282be
+	sha1sums = b455b23628f0cc3b1bc290a3f55df901fbad8fc1
 
 pkgname = plover
 
