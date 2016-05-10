@@ -11,7 +11,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://veracrypt.codeplex.com/"
 license=('custom')
 depends=('fuse' 'wxgtk>=3.0')
-makedepends=('nasm')
+makedepends=('nasm' 'gcc<6.0')
 install='veracrypt.install'
 
 source=("${pkgname}_${pkgver}_Source.tar.bz2::https://sourceforge.net/projects/${pkgname}/files/${_pkgname} ${pkgver}/${pkgname}_${pkgver}_Source.tar.bz2/download"
