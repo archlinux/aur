@@ -33,8 +33,7 @@ build() {
   automake --add-missing
   autoconf
 
-  [[ $CARCH == "X86_64" ]] && CXXFLAGS+=" -std=c++03" ./configure --prefix=/usr --disable-enumpoly
-  [[ $CARCH == "i686" ]] && CXXFLAGS+=" -std=c++03" ./configure --prefix=/usr
+  CXXFLAGS+=" -std=c++03" ./configure --prefix=/usr --disable-enumpoly
   make 
 }
 
