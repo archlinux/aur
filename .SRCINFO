@@ -1,0 +1,27 @@
+pkgbase = feeluown-dev-git
+	pkgdesc = 个性化音乐服务 For Mac And Linux 开发版
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/cosven/FeelUOwn
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = python-pyqt5
+	depends = python-requests
+	depends = python-quamash
+	depends = python-sqlalchemy
+	depends = python-dbus
+	depends = qt5-multimedia
+	depends = xdg-utils
+	depends = python-yaml
+	depends = fcitx-qt5
+	provides = feeluown,
+	provides = feeluown-git
+	conflicts = feeluown,
+	conflicts = feeluown-git
+	source = git://github.com/cosven/FeelUOwn.git#branch=dev
+	source = https://raw.githubusercontent.com/cosven/FeelUOwn/master/feeluown/feeluown.png
+	md5sums = SKIP
+
+pkgname = feeluown-dev-git
+
