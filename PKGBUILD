@@ -1,11 +1,11 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-openssl
-pkgver=0.0.1
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="OpenSSL bindings for Perl 6"
 arch=('any')
-depends=('openssl' 'perl6' 'perl6-digest' 'perl6-find-bundled')
+depends=('openssl' 'perl6' 'perl6-digest')
 checkdepends=('perl')
 makedepends=('alacryd' 'git')
 groups=('perl6')
