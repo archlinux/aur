@@ -1,34 +1,30 @@
-# Maintainer: João Raimundo <joao.raimundo@gmail.com>
+# Maintainer: Manuel Hüsers <manuel.huesers@uni-ol.de>
+# Contributor: João Raimundo <joao.raimundo@gmail.com>
 # Contributor: Daniel Renninghoff <renninghoff at archlinux dot info>
 # Contributor: Carl George <carl at carlgeorge dot us>
 pkgname=mint-themes
-pkgver=3.18+2
+pkgver=3.18+3
 pkgrel=1
 pkgdesc="Mint-X GTK2, GTK3, Metacity and Xfce theme."
 arch=('any')
-url="http://packages.linuxmint.com/pool/main/m/mint-themes"
 license=('GPL3')
-optdepends=('gtk-engine-murrine: for the GTK2 theme'
-            'mint-x-icons: Mint icon theme')
+url='http://linuxmint.com'
+optdepends=('gtk-engine-murrine: for GTK2 theme'
+	'mint-x-icons: Mint icon theme')
 conflicts=('mint-x-theme')
-source=("${url}/${pkgname}_1.4.6.tar.gz"
-        "${url}-gtk3/${pkgname}-gtk3_3.18+2.tar.xz")
+options=('!emptydirs')
+source=("https://ftp.fau.de/mint/packages/pool/main/m/${pkgname}/${pkgname}_1.4.6.tar.gz"
+	"https://ftp.fau.de/mint/packages/pool/main/m/${pkgname}-gtk3/${pkgname}-gtk3_${pkgver}.tar.xz")
 sha256sums=('49efc330923d4aef8d55ac589bca57882a9c52f69d8efa4c588863575b09e0d2'
-            '371a9c37b6261f65cd9180948f5197698c802efc7bddfa6f182da0f33c4a3435')
+	'18f79142fe724e1f6028bf1396f574d9a380f94879de8b87f879f8327758efd7')
 
 prepare() {
-	# fix permissions
-	find ${srcdir} -type f ! -perm 644 -print0 | xargs -0 chmod --quiet 644
+	find ${srcdir} -name .gitkeep -type f -delete
+	find ${srcdir} -type d ! -perm 755 -exec chmod 755 {} +
+	find ${srcdir} -type f ! -perm 644 -exec chmod 644 {} +
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  install -d "$pkgdir/usr/share"
-  install -d "$pkgdir/usr/lib/libreoffice/share/config"
-  cp -a usr/share/themes "$pkgdir/usr/share"
-  if [ -f usr/share/libreoffice/share/config/images_human.zip ]; then
-    cp -a usr/share/libreoffice/share/config/images_human.zip "$pkgdir/usr/lib/libreoffice/share/config"
-  fi
-  cd "$srcdir/${pkgname}-gtk3"
-  cp -R usr/share/themes "$pkgdir/usr/share"
+	cp -dr --no-preserve=ownership "${srcdir}/${pkgname}/usr" "${pkgdir}/"
+	cp -dr --no-preserve=ownership "${srcdir}/${pkgname}-gtk3/usr" "${pkgdir}/"
 }
