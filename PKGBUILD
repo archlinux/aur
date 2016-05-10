@@ -1,7 +1,7 @@
 # Maintainer: Jerome Leclanche <jerome@leclan.ch>
 
 pkgname=ofono
-pkgver=1.17
+pkgver=1.18
 pkgrel=1
 pkgdesc="Infrastructure for building mobile telephony (GSM/UMTS) applications"
 url="https://01.org/ofono"
@@ -13,7 +13,7 @@ source=(
 	"https://www.kernel.org/pub/linux/network/$pkgname/$pkgname-$pkgver.tar.sign"
 )
 sha256sums=(
-	"cbf20f07fd15253c682b23c1786d517f505c3688f7c4ea93da777e1523b89635"
+	"53cdbf342913f46bce4827241c60e24255a3d43a94945edf77482ae5b312d51f"
 	"SKIP"
 )
 validpgpkeys=("E932D120BC2AEC444E558F0106CA9F5D1DCF2659") # Marcel Holtmann <marcel@holtmann.org>
