@@ -52,7 +52,7 @@ package() {
 	mkdir -p "$pkgdir/usr/lib"
 	mkdir -p "$pkgdir/usr/bin"
 	cp -r "$srcdir/INJECTION_${_release_ver}_src" "${pkgdir}/usr/lib/injection"
-	install -D -m644 $srcdir/INJECTION_${_release_ver}/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	install -D -m644 $srcdir/INJECTION_${_release_ver}_src/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 	install -m 755 "${srcdir}/injection.sh" "${pkgdir}/usr/lib/injection/injection.sh"
 	ln -s '/usr/lib/injection/injection.sh' "${pkgdir}/usr/bin/injection"
 }
