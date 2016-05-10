@@ -22,6 +22,7 @@ pkgbase = feeluown-dev-git
 	source = git://github.com/cosven/FeelUOwn.git#branch=dev
 	source = https://raw.githubusercontent.com/cosven/FeelUOwn/master/feeluown/feeluown.png
 	md5sums = SKIP
+	md5sums = SKIP
 
 pkgname = feeluown-dev-git
 

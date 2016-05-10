@@ -16,7 +16,7 @@ provides=("feeluown" "feeluown-git")
 conflicts=("feeluown" "feeluown-git")
 source=('git://github.com/cosven/FeelUOwn.git#branch=dev'
         'https://raw.githubusercontent.com/cosven/FeelUOwn/master/feeluown/feeluown.png')
-md5sums=('SKIP')
+md5sums=('SKIP' 'SKIP')
 _desktop="${_pkgname}.desktop"
 
 
