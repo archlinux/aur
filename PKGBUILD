@@ -7,7 +7,7 @@
 pkgname=hdf5-fortran-openmpi
 _pkgname=hdf5
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="General purpose library and file format for storing scientific data"
 url="http://www.hdfgroup.org/HDF5/"
