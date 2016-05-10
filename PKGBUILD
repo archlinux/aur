@@ -82,6 +82,9 @@ package() {
   # Lazy way of dealing with conflicting files...
   rm -rf ${pkgdir}/usr/share/{info,locale,man}
 
+  # Move potentially conflicting stuff to version specific subdirectory
+  $(ls "$pkgdir"/usr/lib/gcc/$CHOST/lib* &> /dev/null) && mv "$pkgdir"/usr/lib/gcc/$CHOST/lib* "$pkgdir/usr/lib/gcc/$CHOST/$pkgver/"
+
   # Seems to be the same file for GCC 5 and 6
   rm ${pkgdir}/usr/lib/libcc1*
   
