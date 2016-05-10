@@ -1,9 +1,9 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-crypt-random
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
-pkgdesc="Random numbers and bytes emulating arc4random"
+pkgdesc="Random numbers and bytes mimicking arc4random"
 arch=('any')
 depends=('perl6' 'perl6-if')
 checkdepends=('perl')
