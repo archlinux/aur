@@ -4,7 +4,7 @@
 _pkgname=drupalconsole
 pkgname=${_pkgname}
 pkgver=1.0.0_alpha2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Drupal Console is a suite of tools that you run on a command line interface (CLI) to generate boilerplate code and interact with a Drupal 8 installation."
 arch=('any')
 url="http://drupalconsole.com/"
@@ -17,6 +17,12 @@ sha512sums=('SKIP')
 
 build() {
   cd "${srcdir}/${_pkgname}"
+
+  # Increase open files limit to be able to compress the phar contents
+  # ulimit -n 4096
+  # Remove the compression option from configuration
+  sed -i '/compression/d' box.json
+
   php /usr/bin/composer install --no-dev
   php -d phar.readonly=Off /usr/bin/php-box build
 }
