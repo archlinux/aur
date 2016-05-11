@@ -10,7 +10,7 @@ pkgbase = firefox-theme-ft-deepdark
 	depends = firefox
 	noextract = firefox-theme-ft-deepdark.zip
 	source = firefox-theme-ft-deepdark.zip::https://addons.mozilla.org/firefox/downloads/latest/ft-deepdark/platform:2/
-	source = .version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/ft-deepdark
+	source = .version::https://services.addons.mozilla.org/firefox/api/1.5/addon/ft-deepdark
 	md5sums = 6bd4cf826aae34f9fbcce6a2949ddf29
 	md5sums = SKIP
 
