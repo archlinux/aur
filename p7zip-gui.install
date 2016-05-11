@@ -1,6 +1,8 @@
 post_install() {
-	[[ -x usr/bin/update-desktop-database ]] && update-desktop-database -q || true
-	[[ -x usr/bin/gtk-update-icon-cache ]] && gtk-update-icon-cache -q -t -f usr/share/icons/hicolor || true
+	printf ">>> WARNING\n"
+	printf ">>> As of version 15.09, upstream is considering 7zFM broken.\n"
+	printf ">>> Use it only for viewing archives. Every manipulation of archives\n"
+	printf ">>> using this tool can produce unpredictable results.\n"
 	[[ -x usr/bin/kbuildsycoca5 ]] && kbuildsycoca5 &> /dev/null || true
 }
 

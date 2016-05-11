@@ -7,22 +7,22 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=p7zip-gui
-pkgver=9.38.1
-pkgrel=4
+pkgver=15.14.1
+pkgrel=1
 pkgdesc='Graphic user interface (alpha quality) for the 7zip file archiver'
 url='http://p7zip.sourceforge.net/'
-license=('GPL' 'custom')
+license=('custom:unRAR' 'LGPL')
 arch=('i686' 'x86_64')
-depends=('p7zip' 'gcc-libs' 'wxgtk')
+depends=('p7zip' 'wxgtk')
 optdepends=('desktop-file-utils: desktop entries')
-makedepends=('webkitgtk2')
+makedepends=('python' 'webkitgtk2')
 makedepends_i686=('nasm')
 makedepends_x86_64=('yasm')
 options=(!makeflags)
 install='p7zip-gui.install'
 source=("http://downloads.sourceforge.net/project/p7zip/p7zip/${pkgver}/p7zip_${pkgver}_src_all.tar.bz2"
         '7zFM.desktop')
-sha256sums=('fd5019109c9a1bf34ad3257d37a6853eae8151ff50345f0a3ffba7d8c5fdb995'
+sha256sums=('699db4da3621904113e040703220abb1148dfef477b55305e2f14a4f1f8f25d4'
             '8cb662ccbacd1badc2c41ff00618c53d1c7fb8bca5472cca4ac7bd7f619acb27')
 
 prepare() {
@@ -34,11 +34,14 @@ prepare() {
 	fi
 	sed -i 's/x86_64-linux-gnu//g' CPP/7zip/*/*/*.depend
 	rm GUI/kde4/p7zip_compress.desktop # FS#43766
+	cd Utils
+	sed -i 's/_do_not_use//g' generate.py
+	./generate.py
 }
 
 build() {
 	cd ${srcdir}/p7zip_${pkgver}
-	make 7zFM 7zG OPTFLAGS="-Wno-narrowing ${CFLAGS}"
+	make 7zFM 7zG OPTFLAGS="${CFLAGS}"
 }
 
 package() {
@@ -59,7 +62,8 @@ package() {
 	cp GUI/kde4/* ${pkgdir}/usr/share/kservices5/ServiceMenus
 	cp ../7zFM.desktop ${pkgdir}/usr/share/applications
 	ln -s 7zCon.sfx ${pkgdir}/usr/lib/p7zip/7z.sfx
-	install -d ${pkgdir}/usr/share/doc/p7zip/DOC/MANUAL
-	cp -r GUI/help/fm ${pkgdir}/usr/share/doc/p7zip/DOC/MANUAL
-	chmod -R a+r,u+w,a+X ${pkgdir}/usr
+	# disabled due FS#49303
+	#install -d ${pkgdir}/usr/share/doc/p7zip/DOC/MANUAL
+	#cp -r GUI/help/fm ${pkgdir}/usr/share/doc/p7zip/DOC/MANUAL
+	chmod +x ${pkgdir}/usr/bin/p7zipForFilemanager
 }
