@@ -2,25 +2,29 @@
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/mozilla-extensions>.
 # You may find it convenient to file issues and pull requests there.
 
-pkgname=firefox-extension-omnisidebar-git
+pkgname=firefox-extension-omnisidebar
 pkgver=1.6.12
-pkgrel=2
+pkgrel=1
 pkgdesc='A firefox add-on designed to provide more control over the behavior of the sidebar.'
-url='https://github.com/Quicksaver/OmniSidebar'
 arch=('any')
 license=('MPLv2')
 depends=('firefox')
+md5sums=('f1d3d2d524eae66becd4df650e2fb200')
 
-makedepends+=('git')
-source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
+[ "$arch" ] || arch=('any')
+
+source+=(
+  "${pkgname}.zip::https://addons.mozilla.org/firefox/downloads/latest/${_extname=${pkgname#*-*-}}/platform:2/"
+  ".version::https://services.addons.mozilla.org/firefox/api/1.5/addon/$_extname"
+)
+[ ${url++} ] || url="https://addons.mozilla.org/${pkgname%%-*}/addon/$_extname/"
 md5sums+=('SKIP')
-provides+=("$_gitname=$pkgver")
-conflicts+=("$_gitname")
+noextract+=("${pkgname}.zip")
+makedepends+=(unzip)
 
-# Move down repository content for easier access by following functions.
 prepare() {
-  cp -rfT --reflink=auto "$_gitname" .
-  rm -rf "$_gitname"
+  unzip "${pkgname}.zip"
+  rm ${pkgname}.zip
 }
 
 makedepends+=(rasqal)
@@ -30,15 +34,14 @@ sparql() {
     -D "${2:-install.rdf}" -r csv 2>/dev/null | tr -d '\r' | tail -n 1 | head -c -1
 }
 
-# Retrieve current compatibility information from install.rdf.
-query-version() {
-  sparql "[] em:id '$2' ; em:${1}Version ?x" install.rdf
-}
-
 pkgver() {
   sparql '<urn:mozilla:install-manifest> em:version ?x' | tr - .
-  echo -n .
-printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+# Retrieve current compatibility information from addons.mozilla.org API.
+query-version() {
+  xmllint .version --xpath \
+    "//application[appID='$2']/$1_version/text()"
 }
 version-range() {
   local emid=$(emid $1)
