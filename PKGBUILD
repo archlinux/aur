@@ -20,7 +20,7 @@ provides=('rust')
 build() {
   cd rustc-nightly
 
-  CXX=clang++ ./configure --prefix=/usr --enable-docs --disable-rpath 
+  CC=clang CXX=clang++ ./configure --prefix=/usr --enable-docs --disable-rpath 
 
   # avoid python makedepend (force fallback to python2)
   sed -i 's/^PYTHONVERSION.*/PYTHONVERSION := 3/' src/llvm/Makefile.rules
