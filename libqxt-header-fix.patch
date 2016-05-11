@@ -1,0 +1,19 @@
+diff -rupN libqxt.old/src/network/qxtnetwork.h libqxt/src/network/qxtnetwork.h
+--- libqxt.old/src/network/qxtnetwork.h	2010-11-07 09:18:41.000000000 -0500
++++ libqxt/src/network/qxtnetwork.h	2011-08-25 19:18:47.000000000 -0400
+@@ -26,13 +26,13 @@
+ #define QXTNETWORK_H_INCLUDED
+ 
+ #include "qxtjsonrpcclient.h"
+-#include "qxtjsonrpcresponse.h"
++#include "qxtjsonrpccall.h"
+ #include "qxtmailmessage.h"
+ #include "qxtmailattachment.h"
+ #include "qxtsmtp.h"
+ #include "qxtrpcpeer.h"
+ #include "qxttcpconnectionmanager.h"
+ #include "qxtxmlrpcclient.h"
+-#include "qxtxmlrpcresponse.h"
++#include "qxtxmlrpccall.h"
+ 
+ #endif // QXTNETWORK_H_INCLUDED

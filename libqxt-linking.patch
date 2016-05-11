@@ -1,0 +1,8 @@
+diff -rupN libqxt.old/config.tests/xrandr/xrandr.pro libqxt/config.tests/xrandr/xrandr.pro
+--- libqxt.old/config.tests/xrandr/xrandr.pro	2010-11-07 09:18:41.000000000 -0500
++++ libqxt/config.tests/xrandr/xrandr.pro	2010-11-25 05:28:29.000000000 -0500
+@@ -5,3 +5,4 @@ DEPENDPATH += .
+ INCLUDEPATH += .
+ SOURCES += main.cpp
+ !win32:LIBS+=-lXrandr
++LIBS+=-lX11

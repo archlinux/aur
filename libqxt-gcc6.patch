@@ -1,0 +1,11 @@
+--- a/src/core/qxtslotjob.cpp	2011-11-24 16:10:32.000000000 -0600
++++ b/src/core/qxtslotjob.cpp	2016-03-07 16:20:32.758268253 -0600
+@@ -174,7 +174,7 @@ This uses QxtSignalWaiter so it will _no
+ 
+ QVariant QxtFuture::delayedResult(int msec)
+ {
+-    if (!waiter->wait(msec, false))
++    if (!waiter->wait(msec, NULL))
+         return QVariant();
+     return job->result();
+ }
