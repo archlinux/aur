@@ -1,10 +1,10 @@
 pkgbase=linux-criu
-# $Id: PKGBUILD 267189 2016-05-07 18:25:16Z tpowa $
+# $Id: PKGBUILD 267301 2016-05-10 06:18:09Z tpowa $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 _srcname=linux-4.5
-pkgver=4.5.2
+pkgver=4.5.3
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -23,7 +23,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
             'SKIP'
-            'a9913a04ddbd06acde9b00b3179c41fddb99f61168ef5d01d3e8cf72385038b1'
+            '02a1a3fb190031130f6a304a1d3ebb72ce0b4e6dcc608c9e423780e4df10dec7'
             'SKIP'
             'c17d5bb5aec27f21a5fd2d794d78aa56069a25f854629a805458c73b647951a3'
             '4462f951f725f42d3885fe68c8cf7fefbf5417801bda0a4d7944c266abdabb7c'
