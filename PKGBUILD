@@ -2,24 +2,24 @@
 # Contributor: Fernando Fernandez <fernando@softwareperonista.com.ar>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
-pkgbase=vte3-notification
-pkgname=(vte3-notification vte-notification-common)
-pkgver=0.44.1
+pkgbase='vte3-notification'
+pkgname=("${pkgbase}" 'vte-notification-common')
+pkgver=0.44.2
 pkgrel=1
 pkgdesc='Virtual Terminal Emulator widget for use with GTK3 with Fedora patches'
 arch=('i686' 'x86_64')
+url='https://wiki.gnome.org/Apps/Terminal/VTE'
 license=('LGPL')
-options=('!emptydirs')
 makedepends=('intltool' 'gobject-introspection' 'gtk3' 'vala' 'gperf' 'glade')
-url='https://www.gnome.org'
+options=('!emptydirs')
 source=(
 	"https://download.gnome.org/sources/vte/${pkgver::4}/vte-${pkgver}.tar.xz"
 	'vte291-command-notify.patch'
 	'add-zsh-notfication-support.patch'
 )
 sha256sums=(
-	'712dd548339f600fd7e221d12b2670a13a4361b2cd23ba0e057e76cc19fe5d4e'
-	'09f83509922514e12724d6a7e62a4a33dfe3ec2ced7221d7742bf9a332dea6ea'
+	'a1ea594814bb136a3a9a6c7656b46240571f6a198825c1111007fe99194b0949'
+	'2a009b57d433b8b5e54831dc40a654631b68490ec2eaf4361797ebcc96af87cf'
 	'150a151404ca565f70259044661b2ef5cda43142ca677e7da324614eef8cf45a'
 )
 
@@ -32,9 +32,9 @@ prepare () {
 
 build() {
 	cd "vte-${pkgver}"
-	./configure --prefix=/usr --sysconfdir=/etc \
-		--libexecdir=/usr/lib/vte \
-		--localstatedir=/var --disable-static \
+	./configure --prefix='/usr' --sysconfdir='/etc' \
+		--libexecdir='/usr/lib/vte' \
+		--localstatedir='/var' --disable-static \
 		--enable-introspection --enable-glade-catalogue
 	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
 	make
@@ -52,9 +52,10 @@ package_vte3-notification(){
 
 package_vte-notification-common() {
 	pkgdesc='Common files used by vte and vte3'
+	arch=('any')
 	provides=("vte-common=${pkgver}")
 	conflicts=('vte-common')
 	cd "vte-${pkgver}"
 
-	install -Dm644 src/vte.sh "${pkgdir}/etc/profile.d/vte.sh"
+	install -Dm644 'src/vte.sh' "${pkgdir}/etc/profile.d/vte.sh"
 }

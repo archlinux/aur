@@ -1,7 +1,7 @@
-From ef29016cabfb42ce62d06b2f5db20c213073deec Mon Sep 17 00:00:00 2001
+From f3ed32458c6dd092421977691b069bc8508b649f Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Wed, 7 Jan 2015 16:01:00 +0100
-Subject: [PATCH 1/3] emulation: Add sequences and signals for desktop
+Subject: [PATCH 1/4] emulation: Add sequences and signals for desktop
  notification
 
 Add sequences
@@ -30,22 +30,22 @@ https://bugzilla.gnome.org/show_bug.cgi?id=711059
  9 files changed, 137 insertions(+), 1 deletion(-)
 
 diff --git a/src/caps.cc b/src/caps.cc
-index d4ac3d8b01aa..bf79b08181f1 100644
+index f5ad64a1c7b2..d74971870955 100644
 --- a/src/caps.cc
 +++ b/src/caps.cc
-@@ -254,6 +254,8 @@ const char _vte_xterm_capability_strings[] =
-         ENTRY(OSC "117" BEL, "reset-highlight-background-color")
+@@ -255,6 +255,8 @@ const char _vte_xterm_capability_strings[] =
          ENTRY(OSC "118" BEL, "reset-tek-cursor-color")
          ENTRY(OSC "119" BEL, "reset-highlight-foreground-color")
+         ENTRY(OSC "777;%s" BEL, "urxvt-777")
 +        ENTRY(OSC "777;%s;%s;%s" BEL, "send-notification")
 +        ENTRY(OSC "777;%s;%s" BEL, "send-notification")
  
          COMMENT(/* Set text parameters, ST-terminated versions. */)
          ENTRY(OSC ";%s" ST, "set-icon-and-window-title") COMMENT(/* undocumented default */)
-@@ -289,6 +291,8 @@ const char _vte_xterm_capability_strings[] =
-         ENTRY(OSC "117" ST, "reset-highlight-background-color")
+@@ -291,6 +293,8 @@ const char _vte_xterm_capability_strings[] =
          ENTRY(OSC "118" ST, "reset-tek-cursor-color")
          ENTRY(OSC "119" ST, "reset-highlight-foreground-color")
+         ENTRY(OSC "777;%s" ST, "urxvt-777")
 +        ENTRY(OSC "777;%s;%s;%s" ST, "send-notification")
 +        ENTRY(OSC "777;%s;%s" ST, "send-notification")
  
@@ -62,10 +62,10 @@ index 0276422ec6d4..2c35c685930a 100644
  VOID:STRING,UINT
  VOID:UINT,UINT
 diff --git a/src/vte.cc b/src/vte.cc
-index 5ba70d3d8a13..721ad1ab3135 100644
+index 8f7a18b8b0c6..aa80a02f5120 100644
 --- a/src/vte.cc
 +++ b/src/vte.cc
-@@ -8515,6 +8515,9 @@ VteTerminalPrivate::~VteTerminalPrivate()
+@@ -8518,6 +8518,9 @@ VteTerminalPrivate::~VteTerminalPrivate()
  
  	remove_update_timeout(this);
  
@@ -75,7 +75,7 @@ index 5ba70d3d8a13..721ad1ab3135 100644
  	/* discard title updates */
          g_free(m_window_title);
          g_free(m_window_title_changed);
-@@ -10549,6 +10552,15 @@ VteTerminalPrivate::emit_pending_signals()
+@@ -10552,6 +10555,15 @@ VteTerminalPrivate::emit_pending_signals()
  
  	emit_adjustment_changed();
  
@@ -180,19 +180,19 @@ index 696750b585f0..cb57a60c4e7e 100644
          char* m_window_title;
          char* m_window_title_changed;
 diff --git a/src/vteseq-n.gperf b/src/vteseq-n.gperf
-index 4e2f3376d969..407139c37bfb 100644
+index e58dd9475a22..2788d541d3ef 100644
 --- a/src/vteseq-n.gperf
 +++ b/src/vteseq-n.gperf
-@@ -168,3 +168,4 @@ struct vteseq_n_struct {
- #"reset-mouse-cursor-foreground-color", VTE_SEQUENCE_HANDLER_NULL
+@@ -169,3 +169,4 @@ struct vteseq_n_struct {
  "set-current-directory-uri", VTE_SEQUENCE_HANDLER(vte_sequence_handler_set_current_directory_uri)
  "set-current-file-uri", VTE_SEQUENCE_HANDLER(vte_sequence_handler_set_current_file_uri)
+ "urxvt-777", VTE_SEQUENCE_HANDLER(vte_sequence_handler_urxvt_777)
 +"send-notification", VTE_SEQUENCE_HANDLER(vte_sequence_handler_send_notification)
 diff --git a/src/vteseq.cc b/src/vteseq.cc
-index 1a646029abbe..53ce98332e43 100644
+index c83391c7dc0f..0152c1a55ecb 100644
 --- a/src/vteseq.cc
 +++ b/src/vteseq.cc
-@@ -2334,6 +2334,96 @@ vte_sequence_handler_return_terminal_id (VteTerminalPrivate *that, GValueArray *
+@@ -2322,6 +2322,96 @@ vte_sequence_handler_return_terminal_id (VteTerminalPrivate *that, GValueArray *
  	vte_sequence_handler_send_primary_device_attributes (that, params);
  }
  
@@ -293,10 +293,10 @@ index 1a646029abbe..53ce98332e43 100644
 2.5.0
 
 
-From e8ec1e70715efe5887b84df0edcbcc9d56a623ad Mon Sep 17 00:00:00 2001
+From 937ea8e74fdfa983766647e55257d56b9b23bb5c Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Thu, 29 Jan 2015 13:09:17 +0100
-Subject: [PATCH 2/3] vte.sh: Emit OSC 777 from PROMPT_COMMAND
+Subject: [PATCH 2/4] vte.sh: Emit OSC 777 from PROMPT_COMMAND
 
 https://bugzilla.gnome.org/show_bug.cgi?id=711059
 ---
@@ -324,10 +324,10 @@ index 2d211caa2f17..1c0543bd9d26 100644
 2.5.0
 
 
-From f919c5c63471e9878a10518d8e8813cf59586f84 Mon Sep 17 00:00:00 2001
+From 7e529abe60dffbb304117dfa8f44a7c275acf7ee Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Thu, 22 Jan 2015 16:37:10 +0100
-Subject: [PATCH 3/3] vteapp: Add a test for the notification-received signal
+Subject: [PATCH 3/4] vteapp: Add a test for the notification-received signal
 
 ---
  src/app.vala | 7 +++++++
@@ -358,6 +358,42 @@ index 81049640358f..364836a61f1c 100644
  } /* class Window */
  
  class App : Gtk.Application
+-- 
+2.5.0
+
+
+From cf9441b98846e21b179d3c3b186db7521bdb2759 Mon Sep 17 00:00:00 2001
+From: Debarshi Ray <debarshir@gnome.org>
+Date: Mon, 9 May 2016 12:48:46 +0200
+Subject: [PATCH 4/4] Fix the order of vfunc pointers in VteTerminalClass to
+ undo ABI break
+
+https://bugzilla.gnome.org/show_bug.cgi?id=711059
+---
+ src/vte/vteterminal.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/vte/vteterminal.h b/src/vte/vteterminal.h
+index cb00855f0cf8..7dc616c13fbb 100644
+--- a/src/vte/vteterminal.h
++++ b/src/vte/vteterminal.h
+@@ -71,7 +71,6 @@ struct _VteTerminalClass {
+ 	void (*child_exited)(VteTerminal* terminal, int status);
+ 	void (*encoding_changed)(VteTerminal* terminal);
+ 	void (*char_size_changed)(VteTerminal* terminal, guint char_width, guint char_height);
+-	void (*notification_received)(VteTerminal* terminal, const gchar *summary, const gchar *body);
+ 	void (*window_title_changed)(VteTerminal* terminal);
+ 	void (*icon_title_changed)(VteTerminal* terminal);
+ 	void (*selection_changed)(VteTerminal* terminal);
+@@ -104,6 +103,8 @@ struct _VteTerminalClass {
+ 
+ 	void (*bell)(VteTerminal* terminal);
+ 
++	void (*notification_received)(VteTerminal* terminal, const gchar *summary, const gchar *body);
++
+         /* Padding for future expansion. */
+         gpointer padding[15];
+ 
 -- 
 2.5.0
 
