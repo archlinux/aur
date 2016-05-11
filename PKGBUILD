@@ -43,39 +43,39 @@ validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 prepare() {
   cd firefox-${pkgver}esr
 
-  cp ${srcdir}/mozconfig mozconfig
+  cp "$srcdir"/mozconfig mozconfig
   
   # Disable sponsored tiles
-  patch -Np1 -i ${srcdir}/firefox-${_basever}-disable-sponsored-tiles.patch
+  patch -Np1 -i "$srcdir"/firefox-${_basever}-disable-sponsored-tiles.patch
 
   # Disable Loop (Firefox Hello) and Pocket integration
-  patch -Np1 -i ${srcdir}/firefox-${_basever}-disable-loop-pocket.patch
+  patch -Np1 -i "$srcdir"/firefox-${_basever}-disable-loop-pocket.patch
   # Remove loop and pocket source directories
   rm -fr browser/extensions/loop/ browser/components/pocket/
 
   # Disable geo IP lookup on first run
-  patch -Np1 -i ${srcdir}/firefox-${_basever}-disable-location.services.mozilla.com.patch
+  patch -Np1 -i "$srcdir"/firefox-${_basever}-disable-location.services.mozilla.com.patch
   
   # Set some sensible defaults
-  patch -Np1 -i ${srcdir}/firefox-${_basever}-prefs.patch
+  patch -Np1 -i "$srcdir"/firefox-${_basever}-prefs.patch
   
   # Disable telemetry options
-  patch -Np1 -i ${srcdir}/firefox-${_basever}-disable-telemetry.patch
+  patch -Np1 -i "$srcdir"/firefox-${_basever}-disable-telemetry.patch
   
   # Disable infobar "Firefox automatically sends some data to Mozilla..."
-  patch -Np1 -i ${srcdir}/firefox-${_basever}-disable-data-sharing-infobar.patch
+  patch -Np1 -i "$srcdir"/firefox-${_basever}-disable-data-sharing-infobar.patch
   
   # Disable reader view
-  patch -Np1 -i ${srcdir}/firefox-${_basever}-disable-reader.patch
+  patch -Np1 -i "$srcdir"/firefox-${_basever}-disable-reader.patch
   
   # Fix build with Fontconfig 2.6
   sed -i '/^ftcache.h/a ftfntfmt.h' config/system-headers
   
   # Fix tab loading icon not working with libpng 1.6
-  cp ${srcdir}/firefox-fixed-loading-icon.png browser/themes/linux/tabbrowser/loading.png
+  cp "$srcdir"/firefox-fixed-loading-icon.png browser/themes/linux/tabbrowser/loading.png
   
   # Install in /usr/lib/firefox without version number
-  patch -Np1 -i ${srcdir}/firefox-install-dir.patch
+  patch -Np1 -i "$srcdir"/firefox-install-dir.patch
 
   # Don't install files from the browser/features directory
   # This directory only contains the loop program, which is not built
@@ -95,7 +95,7 @@ package() {
   cd firefox-${pkgver}esr
   make -f client.mk DESTDIR="$pkgdir" INSTALL_SDK= install
 
-  install -Dm644 ${srcdir}/firefox.desktop "$pkgdir/usr/share/applications/firefox.desktop"
+  install -Dm644 "$srcdir"/firefox.desktop "$pkgdir/usr/share/applications/firefox.desktop"
 
   # Use system-provided dictionaries
   rm -rf "$pkgdir"/usr/lib/firefox/{dictionaries,hyphenation}
