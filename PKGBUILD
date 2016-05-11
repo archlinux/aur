@@ -1,30 +1,32 @@
 # Maintainer: XZS <d dot f dot fischer at web dot de>
-# Contributor: hashstat <hashstat .AT. yahoo .DOT. com>
-# Contributor: Anshuman Bhaduri <anshuman dot bhaduri0 at gmail dot com>
-# Contributor: bzt <unmacaque@gmail.com>
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/mozilla-extensions>.
 # You may find it convenient to file issues and pull requests there.
 
-pkgname=mozilla-extension-gnome-keyring-git
+pkgname=mozilla-extension-gnome-keyring
 pkgver=0.11
-pkgrel=4
+pkgrel=1
 pkgdesc="Mozilla extension to store passwords and form logins in gnome-keyring."
 arch=(any)
-url='https://github.com/swick/mozilla-gnome-keyring'
+_extname=mozilla-gnome-keyring
 license=(GPLv3)
 depends=(libgnome-keyring)
 optdepends=(firefox thunderbird)
+md5sums=('01360c61d9587f233552155f4cb9db41')
 
-makedepends+=('git')
-source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
+[ "$arch" ] || arch=('any')
+
+source+=(
+  "${pkgname}.zip::https://addons.mozilla.org/firefox/downloads/latest/${_extname=${pkgname#*-*-}}/platform:2/"
+  ".version::https://services.addons.mozilla.org/firefox/api/1.5/addon/$_extname"
+)
+[ ${url++} ] || url="https://addons.mozilla.org/${pkgname%%-*}/addon/$_extname/"
 md5sums+=('SKIP')
-provides+=("$_gitname=$pkgver")
-conflicts+=("$_gitname")
+noextract+=("${pkgname}.zip")
+makedepends+=(unzip)
 
-# Move down repository content for easier access by following functions.
 prepare() {
-  cp -rfT --reflink=auto "$_gitname" .
-  rm -rf "$_gitname"
+  unzip "${pkgname}.zip"
+  rm ${pkgname}.zip
 }
 
 makedepends+=(rasqal)
@@ -34,21 +36,15 @@ sparql() {
     -D "${2:-install.rdf}" -r csv 2>/dev/null | tr -d '\r' | tail -n 1 | head -c -1
 }
 
-# Retrieve current compatibility information from install.rdf.
-query-version() {
-  sparql "[] em:id '$2' ; em:${1}Version ?x" install.rdf
-}
-
 pkgver() {
   sparql '<urn:mozilla:install-manifest> em:version ?x' | tr - .
-  echo -n .
-printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
-  rm LICENSE Makefile
+# Retrieve current compatibility information from addons.mozilla.org API.
+query-version() {
+  xmllint .version --xpath \
+    "//application[appID='$2']/$1_version/text()"
 }
-
 eval "package_$pkgname()" '{
   prepare_target
   cp --no-preserve=ownership,mode -r . "$destdir/$id"
