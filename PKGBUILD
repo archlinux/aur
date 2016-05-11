@@ -2,7 +2,7 @@
 
 pkgname=datagrip
 _pkgname=DataGrip
-pkgver=2016.1
+pkgver=2016.1.1
 pkgrel=1
 pkgdesc='Smart SQL Editor and Advanced Database Client Packed Together for Optimum Productivity'
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ conflicts=('0xdbe' '0xdbe-eap')
 source=(https://download.jetbrains.com/$pkgname/${pkgname}-${pkgver}.tar.gz
         jetbrains-datagrip.desktop
         datagrip.sh)
-sha256sums=('9bd8a78ff5ad8344dbd111bf3a48a277f71fd8a8347d3fb9a1c09af4320eb9e3'
+sha256sums=('0e402ce0496b8c16676483afad8bdd562f7f3bd018d0c0ff2eb3fc2e1488ecac'
             '60624032f3952952e31d0ccd0eec9c602b6612ad204b5d6ee0f35152a4e219eb'
             '43c1a922107c352d83a7b7f718f014a6e9e769dc2da0ea25813e0677fa035844')
 
