@@ -1,8 +1,8 @@
 # Maintainer: Kobus van Schoor <pbscube at gmail dot com>
 pkgname=dotgit
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
-pkgdesc="A simple bash program to backup all your dotfiles (read multiple hosts) in a single git repo"
+pkgdesc="An easy to use dotfiles manager that can keep multiple configs in a single repo"
 url="http://github.com/Cube777/dotgit"
 arch=('any')
 depends=('git' 'sed' 'grep' 'bash' )
