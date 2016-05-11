@@ -2,7 +2,7 @@
 # Contributor: Vladislav Odobesku positivcheg94@gmail.com
 
 pkgname=python-tensorflow-git
-pkgver=0.8.0rc0.r427.gb0b16c2
+pkgver=0.8.0rc0.r595.g5681406
 pkgrel=1
 
 pkgdesc="Open source software library for numerical computation using data flow graphs."
@@ -14,7 +14,7 @@ arch=('i686' 'x86_64')
 provides=('python-tensorflow')
 conflicts=('python-tensorflow')
 depends=('python-numpy' 'swig' 'python-wheel' 'python-protobuf3')
-makedepends=('git' 'python-pip' 'bazel' 'rsync')
+makedepends=('git' 'python-pip' 'bazel' 'rsync' 'gcc5')
 optdepends=('cuda: GPU support'
             'cudnn: GPU support')
 source=("git+https://github.com/tensorflow/tensorflow"
@@ -47,7 +47,7 @@ prepare() {
   patch -Np1 -i ../fix_cuda_compilation.patch
 
   # setup environment variables
-  export GCC_HOST_COMPILER_PATH=/usr/bin/gcc
+  export GCC_HOST_COMPILER_PATH=/usr/bin/gcc-5
   if (pacman -Q cuda &>/dev/null && pacman -Q cudnn &>/dev/null); then
     msg2 "CUDA support enabled"
     _build_opts="--config=cuda"
