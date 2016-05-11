@@ -11,7 +11,7 @@ options=(!strip)
 makedepends=('xdg-utils' 'desktop-file-utils')
 depends=('gconf' 'gtk2' 'libnotify' 'libxtst' 'nss' 'alsa-lib')
 optdepends=('gvfs')
-conflicts=('caprine')
+conflicts=('anatine')
 
 source=(
   "Anatine-linux-v${pkgver}.zip::https://github.com/sindresorhus/anatine/releases/download/${pkgver}/Anatine-linux-${pkgver}.zip"
