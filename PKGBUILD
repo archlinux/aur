@@ -1,11 +1,11 @@
 pkgname=clrmamepro
 pkgver=4.029.a
-pkgrel=1
+pkgrel=2
 pkgdesc="A ROM manager for MAME."
 arch=('any')
 url="http://mamedev.emulab.it/clrmamepro/"
 license=('custom')
-depends=('wine' 'xdg-utils')
+depends=('wine')
 makedepends=('icoutils')
 source=("http://mamedev.emulab.it/clrmamepro/binaries/cmp${pkgver//./}_32.zip"
         "clrmamepro"
