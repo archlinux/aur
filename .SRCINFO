@@ -1,0 +1,16 @@
+pkgbase = python2-flask-pagedown
+	pkgdesc = Implementation of StackOverflow's PageDown markdown editor for Flask-WTF.
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/Flask-PageDown
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2-flask
+	depends = markdown
+	optdepends = python2-nose
+	source = https://pypi.python.org/packages/source/F/Flask-PageDown/Flask-PageDown-0.2.1.tar.gz
+	md5sums = a7e83929daecb3c5d9e9ec153f827f6a
+
+pkgname = python2-flask-pagedown
+
