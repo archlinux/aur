@@ -1,7 +1,7 @@
 # Maintainer: Robin Nehls <aur@manol.is>
 
 pkgname=gr-fosphor-git
-pkgver=e1eb11b
+pkgver=r128.e1eb11b
 pkgrel=1
 pkgdesc="GNU Radio block for RTSA-like spectrum visualization using OpenCL and OpenGL acceleration"
 arch=('any')
@@ -18,7 +18,7 @@ _gitname=gr-fosphor
 
 pkgver() {
   cd $_gitname
-  echo $(git describe --always | sed 's/-/./g')
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
