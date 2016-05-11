@@ -4,7 +4,8 @@
 
 pkgname=grafana-bin
 _pkgname=grafana
-pkgver=2.6.0
+pkgver="3.0.1"
+_pkgver="3.0.1-"
 pkgrel=1
 pkgdesc="A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb - binary version"
 url="http://grafana.org"
@@ -14,18 +15,19 @@ arch=('x86_64')
 license=('Apache')
 install=${_pkgname}.install
 backup=("etc/${_pkgname}/${_pkgname}.ini")
-source=("https://grafanarel.s3.amazonaws.com/builds/${_pkgname}-${pkgver}.linux-x64.tar.gz"
+source=("https://grafanarel.s3.amazonaws.com/builds/${_pkgname}-${_pkgver}.linux-x64.tar.gz"
         "grafana.service")
-sha256sums=('4b0d61b42168e8e3368c91c1783908bd23ab07a203d26e9572f855b565e18ac4'
+sha256sums=('0d6739ab4f2008f77f7993b5703d7905ba8b79e5162ee7d7e25636e216139893'
             '44ceb7aad648c8e46a65026109fc0327bc6e01ba7060d97d9e83a3e8ad65379c')
 
 
 package() {
   install -Dm644 "${srcdir}/grafana.service" "$pkgdir/usr/lib/systemd/system/grafana.service"
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${_pkgver}"
   install -dm755 "${pkgdir}/var/lib/grafana"
   install -dm755 "${pkgdir}/var/log/grafana"
   install -Dm755 bin/grafana-server "$pkgdir/usr/bin/grafana-server"
+  install -Dm755 bin/grafana-cli "$pkgdir/usr/bin/grafana-cli"
   install -Dm644 conf/sample.ini "$pkgdir/etc/${_pkgname}/${_pkgname}.ini"
   install -Dm644 conf/defaults.ini "$pkgdir/usr/share/grafana/conf/defaults.ini"
   cp -r vendor public "$pkgdir/usr/share/grafana/"
