@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=routino-svn
 pkgver=r1832
-pkgrel=3
+pkgrel=4
 pkgdesc='Router for OpenStreetMap Data'
 arch=('i386' 'x86_64')
 url='http://www.routino.org/'
@@ -27,13 +27,6 @@ prepare() {
 }
 
 build() {
-    if echo $MAKEFLAGS | grep  -q -- '-j[2-9]'
-    then
-        error "Routino parallele compilation failed. Please unset -j make flag and relaunch the build."
-        plain "$(gettext "Aborting...")"
-        exit 1
-    fi
-
     cd "$pkgname"
 
     make
