@@ -1,12 +1,12 @@
 # Maintainer: Urs Wolfer <uwolfer @ fwo.ch>
 
 pkgname=intellij-idea-ultimate-edition
-pkgver=2016.1.1
-_buildver=145.597.3
+pkgver=2016.1.2
+_buildver=145.971.21
 pkgrel=1
 pkgdesc="An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity."
 arch=('any')
-url="http://www.jetbrains.com/idea/"
+url="https://www.jetbrains.com/idea/"
 backup=("usr/share/${pkgname}/bin/idea.vmoptions" "usr/share/${pkgname}/bin/idea64.vmoptions" "usr/share/${pkgname}/bin/idea.properties")
 license=('Commercial')
 depends=('java-environment' 'giflib' 'libxtst')
@@ -15,7 +15,7 @@ source=(https://download.jetbrains.com/idea/ideaIU-$pkgver.tar.gz \
         intellijidea.sh \
         jetbrains-idea.desktop
 )
-sha256sums=('d5a7d2d657fe2ad170716054c6ccd164e509cf50ee6eee8b61fe3490071940df'
+sha256sums=('fe51f5e0cd9dde166ff5ff7194221c760e3e5a12e0e3423b7ebb10d42de9b737'
             'ed7883b33b6fa9f2e303e5549bd238ceb552ec11ca116730271a58aca685229a'
             '83af2ba8f9f14275a6684e79d6d4bd9b48cd852c047dacfc81324588fa2ff92b'
 )
@@ -23,22 +23,27 @@ package() {
   cd "$srcdir"
 
   install -d -m755 "$pkgdir"/usr/{bin,share}
-  cp -a "idea-IU-$_buildver" "$pkgdir/usr/share/$pkgname"
-  chown -R root:root $pkgdir/usr/share
+  cp -a "idea-IU-$_buildver" "$pkgdir"/usr/share/"$pkgname"
 
-  find "$pkgdir"/usr/share/$pkgname -type d -exec chmod 0755 {} ';'
-  find "$pkgdir"/usr/share/$pkgname -type f -exec chmod 0644 {} ';'
+  # make sure that all files are owned by root
+  chown -R root:root "$pkgdir"/usr/share
 
-  chmod +x "$pkgdir"/usr/share/$pkgname/bin/idea.sh
-  chmod +x "$pkgdir"/usr/share/$pkgname/bin/fsnotifier
-  chmod +x "$pkgdir"/usr/share/$pkgname/bin/fsnotifier64
+  find "$pkgdir"/usr/share/"$pkgname" -type d -exec chmod 0755 {} ';'
+  find "$pkgdir"/usr/share/"$pkgname" -type f -exec chmod 0644 {} ';'
 
-  install -D -m755 $srcdir/intellijidea.sh $pkgdir/usr/bin/$pkgname
-  install -D -m644 $srcdir/jetbrains-idea.desktop $pkgdir/usr/share/applications/jetbrains-idea.desktop
-  install -D -m644 $srcdir/idea-IU-$_buildver/bin/idea.png $pkgdir/usr/share/pixmaps/$pkgname.png
+  chmod +x "$pkgdir"/usr/share/"$pkgname"/bin/idea.sh
+  chmod +x "$pkgdir"/usr/share/"$pkgname"/bin/fsnotifier
+  chmod +x "$pkgdir"/usr/share/"$pkgname"/bin/fsnotifier64
+
+  install -D -m755 "$srcdir"/intellijidea.sh "$pkgdir"/usr/bin/"$pkgname"
+  install -D -m644 "$srcdir"/jetbrains-idea.desktop "$pkgdir"/usr/share/applications/jetbrains-idea.desktop
+  install -D -m644 "$srcdir"/idea-IU-$_buildver/bin/idea.png "$pkgdir"/usr/share/pixmaps/"$pkgname".png
 
   # workaround FS#40934
-  sed -i 's|lcd|on|'  "$pkgdir"/usr/share/$pkgname/bin/*.vmoptions
+  sed -i 's|lcd|on|'  "$pkgdir"/usr/share/"$pkgname"/bin/*.vmoptions
+
+  # remove the bundled jre
+  rm -rf "$pkgdir"/usr/share/"$pkgname"/jre
 }
 
 # vim:set ts=2 sw=2 et:
