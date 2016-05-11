@@ -12,7 +12,7 @@ pkgbase = sftpman
 	depends = sshfs
 	depends = python-setuptools
 	optdepends = sftpman-gtk: GTK frontend
-	source = vcs-repository::git://github.com/spantaleev/sftpman.git#tag=0.6.2
+	source = git+https://github.com/spantaleev/sftpman.git#tag=0.6.2
 	md5sums = SKIP
 
 pkgname = sftpman
