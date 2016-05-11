@@ -31,7 +31,7 @@ pkgver() {
   cd $_pkgname
 
   local efl_version=$(grep -m1 EFL_VERSION configure.ac | awk -F [][] '{print $2 "." $4 "." $6}')
-  efl_version=$(awk -F , -v efl_version=${efl_version%.} '/^AC_INIT/ {gsub(/efl_version/, efl_version); gsub(/[\[\] -]/, ""); print $2}' configure.ac)
+  efl_version=$efl_version$(awk 'match($0, /^AC_INIT\(.*\[efl_version-?([^\]]*)\]/, a) {print a[1]}' configure.ac)
 
   printf "%s.%s.g%s" "$efl_version" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
