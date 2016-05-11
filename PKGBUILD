@@ -5,8 +5,8 @@
 pkgbase=linux-zen           # Build -zen kernel
 #pkgbase=linux-custom       # Build kernel with a different name
 _srcname=linux-4.5
-_zenpatch=9ce52c5edb6009b0c8e77335091b16f2c1c13fff
-pkgver=4.5.3
+_zenpatch=zen-4.5.4-0e6f3784431a3c624eaaa00217de426c470e741d.diff
+pkgver=4.5.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/zen-kernel/zen-kernel"
@@ -17,24 +17,27 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        "http://pkgbuild.com/~heftig/zen-patches/${_zenpatch}.xz"
+        "http://pkgbuild.com/~heftig/zen-patches/${_zenpatch}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
-        "zen-${_zenpatch}.patch::$url/commit/${_zenpatch}.patch"
         'change-default-console-loglevel.patch')
 sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
             'SKIP'
-            '02a1a3fb190031130f6a304a1d3ebb72ce0b4e6dcc608c9e423780e4df10dec7'
+            '6a9cfe691ac77346c48b7f83375a1880ebb379594de1000acad45da45d711e42'
+            'SKIP'
+            'afb1e305fde0a46615634850a22be594cdc28891c6dbdf0321524b06c64fe52b'
             'SKIP'
             'c312718d978176347d1094c5e0317cfe1dc73c6c2b8fb3677ead2c732c2ef32e'
             '92fd527086f962bd7d587f8e2cb1cab742f434b3ca71102b72f2a14bf0ed82bb'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
-            '97c6f357d94d895a669a09871f15717fe5ca6e0c3765326a81a80384fc9623b1'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
+              '8218F88849AAC522E94CF470A5E9288C4FA415FA' # Jan Alexander Steffens (heftig)
              )
 
 _kernelname=${pkgbase#linux}
@@ -49,7 +52,7 @@ prepare() {
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
   # add zen patch
-  patch -p1 -i "${srcdir}/zen-${_zenpatch}.patch"
+  patch -p1 -i "${srcdir}/${_zenpatch}"
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
