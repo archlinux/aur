@@ -1,0 +1,20 @@
+pkgbase = mt7610u_sta-dkms-git
+	pkgdesc = Kernel module for MediaTek MT7610U WiFi chipset featured in TP-Link Archer T2U and T2UH, TP-Link TL-WDN5200, ASUS USB-AC50, ASUS USB-AC51, Comcast Xfinity KXW02AAA, D-Link DWA-171 rev B1 and more
+	pkgver = r24.33d969a
+	pkgrel = 1
+	url = https://github.com/Myria-de/mt7610u_wifi_sta_v3002_dpo_20130916
+	install = mt7610u_sta.install
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	provides = mt7610u_sta=r24.33d969a
+	provides = mt7610u_wifi_sta=r24.33d969a
+	conflicts = mt7610u_sta
+	conflicts = mt7610u_wifi_sta
+	source = mt7610u_sta::git+https://github.com/Myria-de/mt7610u_wifi_sta_v3002_dpo_20130916.git
+	source = dkms.conf
+	md5sums = SKIP
+	md5sums = c4eeb4bab9e0b6d24f632bc173695b70
+
+pkgname = mt7610u_sta-dkms-git

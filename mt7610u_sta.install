@@ -1,0 +1,11 @@
+_upgrade() {
+	echo -e "\e[34;1m==>\e[39;1m NOTE: The module is named mt7650u_sta . Use modprobe to load it without restarting. \e[0m"
+}
+
+post_install() {
+	_upgrade
+}
+
+post_upgrade() {
+	_upgrade
+}
