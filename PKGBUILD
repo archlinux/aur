@@ -1,6 +1,6 @@
 # Maintainer: Cobra <cobra [at] go-linux [dot] info>
 pkgname=portfolio
-pkgver=0.23.0
+pkgver=0.23.1
 pkgrel=1
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ _DEST="/usr/share/portfolio"
 [ "$CARCH" = "x86_64" ] && _platform="x86_64"
 
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz")
-sha1sums=("8a66ae9207ca1547257da5e39b572cda07e68d00")
+sha1sums=("c7e0725b28b9109569d5cb4c35af43f674070c50")
 
 build() {
     export MAVEN_OPTS="-Xmx1g"
