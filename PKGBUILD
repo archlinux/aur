@@ -96,13 +96,13 @@ package() {
 }
 
 package_firefox-theme-gnome-git() {
-  real_depends_theme
+  real_depends
 
   package theme
 }
 
 # Hide the versioned dependency from .SRCINFO generation in a subfunction.
-real_depends_theme() {
+real_depends() {
   depends+=($(version-range firefox))
 }
 
@@ -111,13 +111,6 @@ package_firefox-extension-gnome-theme-tweak-git() {
   conflicts=('firefox-extension-gnome-theme-tweak')
   pkgdesc='Extension for customizing GNOME theme.'
   depends=('firefox-theme-gnome')
-  real_depends_extension
 
   package extension
-}
-
-# Hide the versioned dependency from mksrcinfo, as the pkgver
-# function has to update the value before it can be properly used.
-real_depends_extension() {
-  depends=("firefox-theme-gnome=$pkgver")
 }
