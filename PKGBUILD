@@ -6,9 +6,9 @@
 
 pkgname=phpstorm
 _pkgname=PhpStorm
-pkgver=2016.1
-_pkgver=145.258.2
-pkgrel=4
+pkgver=2016.1.1
+_pkgver=145.970.40
+pkgrel=1
 pkgdesc="Lightweight and Smart PHP IDE"
 arch=('x86_64' 'i686')
 options=('!strip')
@@ -19,7 +19,7 @@ optdepends=('java-environment>=8: use system java'
 source=(https://download.jetbrains.com/webide/${_pkgname}-${pkgver}.tar.gz
         jetbrains-phpstorm.desktop
         phpstorm.sh)
-sha256sums=('48b3b1d4e4dec954bb224193aea367b6aa6893d286c0e022775e9f81527251ce'
+sha256sums=('442d98120763932bc34545df022171baca5d2bc44e34b1f36f949e4355b99441'
             '406b491d489228f7e4ba32ef160684bbef5056dacb233ac5d2ca9bca3013c939'
             '669c2138305c0fec856121138827123805d46786a698c1b7b01b06005b8fb423')
 
