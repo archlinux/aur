@@ -2,7 +2,7 @@
 
 pkgname=python2-livereload
 _pkgname=livereload
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=2
 pkgdesc='Python LiveReload is an awesome tool for web developers'
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('python2-setuptools')
 replaces=('livereload')
 conflicts=('livereload')
 source=("https://pypi.python.org/packages/source/l/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('8ebfe29fc9dd3bbe0cdf2ca6745eb2b7')
+md5sums=('e79d3de78f11b459392f347f7bb20309')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
