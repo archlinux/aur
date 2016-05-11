@@ -1,6 +1,6 @@
 pkgbase = tigervnc-git
 	pkgdesc = Suite of VNC servers and clients. Based on the VNC 4 branch of TightVNC.
-	pkgver = r3167.36eac99
+	pkgver = r3320.3821d7e
 	pkgrel = 1
 	url = http://www.tigervnc.org
 	arch = i686
@@ -45,15 +45,13 @@ pkgbase = tigervnc-git
 	conflicts = tigervnc
 	conflicts = tightvnc
 	source = git+https://github.com/TigerVNC/tigervnc.git
-	source = ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-1.18.0.tar.bz2
+	source = ftp://ftp.freedesktop.org/pub/xorg/individual/xserver/xorg-server-1.18.3.tar.bz2
 	source = vncserver.service
 	source = vncviewer.desktop
-	source = xorg118.patch
 	md5sums = SKIP
-	md5sums = 3c1c1057d3ad27380d8dd87ffcc182cd
+	md5sums = 043d720bf2472a65bb8f0daa97f83dfa
 	md5sums = a8a20685c23a50f86a13c33ce96a7ba7
 	md5sums = b200d83c60e80c6f9693ea19a2d9f5b0
-	md5sums = 731083cf1bd4d5ca338bc1f680a361b8
 
 pkgname = tigervnc-git
 
