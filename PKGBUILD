@@ -1,6 +1,7 @@
 # Maintainer: Lukas Sabota <LTsmooth42 _at_ gmail _dot_ com>
 # Contributor: Lukas Sabota <LTsmooth42 _at_ gmail _dot_ com>
 pkgname=yumbootstrap-git
+_pkgname=yumbootstrap
 pkgver=78.a99c946
 pkgrel=1
 pkgdesc="Tool for installing Yum-based distributions (Red Hat, CentOS, Fedora) in a chroot directory"
@@ -16,34 +17,16 @@ replaces=()
 backup=()
 options=(!emptydirs)
 install=
-source=()
-md5sums=()
-
-_gitroot=https://github.com/dozzie/yumbootstrap.git
-_gitname=yumbootstrap
+source=(${_pkgname}::git+https://github.com/dozzie/yumbootstrap.git)
+md5sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${_gitname}"
+	cd "${srcdir}/${_pkgname}"
 	echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/${_pkgname}"
   python2 setup.py install --root="$pkgdir/" --optimize=1
   sed -i 's/python/python2/' bin/yumbootstrap distros/scripts/*.py
 
