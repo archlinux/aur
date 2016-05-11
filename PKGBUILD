@@ -1,5 +1,5 @@
 pkgname=wp-cli
-pkgver=0.22.0
+pkgver=0.23.1
 pkgrel=1
 pkgdesc="A command-line tool for managing WordPress"
 url="http://wp-cli.org/"
@@ -13,7 +13,7 @@ replaces=()
 backup=()
 source=("https://github.com/wp-cli/wp-cli/archive/v${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/wp-cli/wp-cli/v${pkgver}/utils/wp-completion.bash")
-md5sums=('035a6009bc2d10a4e285742eb65498a0'
+md5sums=('972ed2da3afdaf41a85d3a04fbc35a86'
          'f8acb424f1460428796451679631be86')
 
 prepare() {
