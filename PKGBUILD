@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 license=('GPL2')
 url="https://github.com/derekstavis/${_gitname}/tree/${_gitbranch}"
 depends=('curl' 'libevent' 'gtk3' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('gtk3' 'intltool' 'curl' 'libevent')
+makedepends=('gtk3' 'intltool' 'curl' 'libevent' 'autoconf')
 optdepends=('notification-daemon: Desktop notification support'
             'transmission-cli: daemon and web support')
 options=('!emptydirs')
@@ -27,6 +27,7 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_gitname}/"
+	rm m4/glib-gettext.m4
 	./autogen.sh --prefix=/usr
 	make
 }
