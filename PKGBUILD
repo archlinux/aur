@@ -9,7 +9,7 @@
 pkgbase=lib32-networkmanager
 pkgname=(lib32-networkmanager lib32-libnm-glib)
 _pkgname=NetworkManager
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Network Management daemon, 32bit libraries"
 arch=(x86_64)
@@ -21,20 +21,11 @@ makedepends=(intltool dhclient iptables gobject-introspection gtk-doc #lib32-blu
              lib32-libsoup lib32-systemd lib32-libgudev lib32-libndp lib32-libmm-glib rp-pppoe
              lib32-libteam vala perl-yaml python-gobject networkmanager modemmanager)
 checkdepends=(libx11 python-dbus)
-source=(https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
-        hidepid.patch dhcpv6-mixed.patch)
-sha256sums=('e947cf30fa3d19dce88e6f6af51f06dc282b7db7996f946aaa37b03526ef2a80'
-            '1de5b511b6b4a933739b0ef48ede1830fa3d6dea2277c1302b12b08fa83a73f1'
-            'f7771790485f24d788fe35f5922ad044a29c6d89b34458d9e99938503b2a3b39')
+source=(https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz)
+sha256sums=('41d8082e027f58bb5fa4181f93742606ab99c659794a18e2823eff22df0eecd9')
 
 prepare() {
   cd NetworkManager-$pkgver
-
-  # https://bugs.archlinux.org/task/48984
-  patch -Np1 -i ../hidepid.patch
-
-  # https://bugs.archlinux.org/task/49081
-  patch -Np1 -i ../dhcpv6-mixed.patch
 
   2to3 -w libnm src tools
 
@@ -47,6 +38,8 @@ build() {
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  #TODO: enable this, as soon as lib32-libmm-glib and lib32-gudev install their .pc files correctly!
+  #export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
   export LIBRARY_PATH="/usr/lib32:$LIBRARY_PATH"
 
   cd $_pkgname-$pkgver
