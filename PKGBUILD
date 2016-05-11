@@ -1,6 +1,6 @@
 # Maintainer: Jordan James Klassen (forivall) <forivall@gmail.com>
 pkgname=caprine-bin
-pkgver=1.2.2
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Unofficial Facebook Messenger app"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
   "https://raw.githubusercontent.com/sindresorhus/caprine/v${pkgver}/media/Icon.png"
   "caprine.desktop")
 noextract=("Caprine-linux-v${pkgver}.zip")
-sha256sums=('a605a2e3059aca4d17cb3ebc07f7345a478da6c1cb1592cabe40aa8149629560'
+sha256sums=('269662a011b3ffe0198231fa3ad24cf089ce9a0430da1733cb5269b648db2482'
             'e9cf18877fe54746d16d5f2106a67899c38f91b24d039cef43d75c62da25fc38'
             '12b68650885651f78c6c7c2eb81fe0042474a0e7b1a857213732a449106aeaf8')
 
