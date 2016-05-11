@@ -11,14 +11,14 @@ depends=('gtk3' 'python-gobject' 'sftpman>=0.5.0' 'python-setuptools')
 makedepends=('git')
 optdepends=("openssh-askpass: allows you to enter passwords during mounting [install requires session restart]")
 install=$pkgname.install
-source=('vcs-repository::git://github.com/spantaleev/sftpman-gtk.git#tag='$pkgver)
+source=('git+https://github.com/spantaleev/sftpman-gtk.git#tag='$pkgver)
 md5sums=('SKIP')
 
 package() {
-	cd "$srcdir/vcs-repository"
-	python setup.py install --prefix=/usr --root=$pkgdir/ --optimize=1
+	cd "$srcdir/$pkgname"
+	python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
 
-	install -Dm 644 $srcdir/vcs-repository/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-	install -Dm 644 $srcdir/vcs-repository/$pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
-	install -Dm 644 $srcdir/vcs-repository/LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
+	install -Dm 644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
+	install -Dm 644 $pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
+	install -Dm 644 LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
