@@ -1,7 +1,7 @@
 # Maintainer: rafaelff <rafaelff@gnome.org>
 
 pkgname=teeworlds-ddnet-maps-git
-pkgver=r485.909872e
+pkgver=r492.a1e8560
 pkgrel=1
 pkgdesc="All released maps with server configs of DDraceNetwork"
 arch=(any)
