@@ -2,12 +2,12 @@
  
 pkgname=liveusb-creator
 pkgver=3.13.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Fedora's Live USB Creator"
 arch=('any')
 url="https://fedorahosted.org/liveusb-creator/"
 license=('GPL')
-depends=('python2' 'udisks2' 'urlgrabber')
+depends=('python2-pyqt4' 'udisks2' 'urlgrabber')
 source=("https://fedorahosted.org/releases/l/i/liveusb-creator/liveusb-creator-${pkgver}.tar.bz2")
 sha256sums=('4a7ad306eefad66a98cc5693ebacb9e60d4c41644621e554da69c211a945c2c0')
  
