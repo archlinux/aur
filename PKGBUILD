@@ -2,27 +2,30 @@
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/mozilla-extensions>.
 # You may find it convenient to file issues and pull requests there.
 
-pkgname=mozilla-extension-gnotifier-git
+pkgname=mozilla-extension-gnotifier
 pkgver=1.9.7
 pkgrel=1
-pkgdesc='Add-on for Firefox and Thunderbird to enable integration with GNOME native notification system.'
-url='https://github.com/mkiol/GNotifier'
+pkgdesc='Add-on for Firefox and Thunderbird. Replaces built-in notifications with the OS native notifications. It'
 arch=('any')
 license=('GPL3')
 depends=('libnotify')
-makedepends=('nodejs-jpm' 'unzip')
 optdepends=(firefox thunderbird)
+md5sums=('5cb3275123e67b9ca99502d875dc1d01')
 
-makedepends+=('git')
-source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
+[ "$arch" ] || arch=('any')
+
+source+=(
+  "${pkgname}.zip::https://addons.mozilla.org/firefox/downloads/latest/${_extname=${pkgname#*-*-}}/platform:2/"
+  ".version::https://services.addons.mozilla.org/firefox/api/1.5/addon/$_extname"
+)
+[ ${url++} ] || url="https://addons.mozilla.org/${pkgname%%-*}/addon/$_extname/"
 md5sums+=('SKIP')
-provides+=("$_gitname=$pkgver")
-conflicts+=("$_gitname")
+noextract+=("${pkgname}.zip")
+makedepends+=(unzip)
 
-# Move down repository content for easier access by following functions.
 prepare() {
-  cp -rfT --reflink=auto "$_gitname" .
-  rm -rf "$_gitname"
+  unzip "${pkgname}.zip"
+  rm ${pkgname}.zip
 }
 
 makedepends+=(rasqal)
@@ -32,24 +35,18 @@ sparql() {
     -D "${2:-install.rdf}" -r csv 2>/dev/null | tr -d '\r' | tail -n 1 | head -c -1
 }
 
-# Retrieve current compatibility information from install.rdf.
-query-version() {
-  sparql "[] em:id '$2' ; em:${1}Version ?x" install.rdf
+pkgver() {
+  sparql '<urn:mozilla:install-manifest> em:version ?x' | tr - .
 }
 
-pkgver() {
-  find -iname '*.json' -exec sed -n \
-    's/.*"version"\s*:\s*"\([[:digit:].]*\)"\s*,.*/\1/p' \
-    '{}' \; -quit 2>/dev/null | tr '\n' '.'
-printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+# Retrieve current compatibility information from addons.mozilla.org API.
+query-version() {
+  xmllint .version --xpath \
+    "//application[appID='$2']/$1_version/text()"
 }
 
 build() {
-  cp -r --reflink=auto source/* .
-  rm -r xpi misc *.md win8* source resources lib/{windows,osx}.js
-  jpm xpi
-  unzip -o *.xpi
-  rm *.xpi
+  rm -r resources lib/{windows,osx}.js
 }
 
 eval "package_$pkgname()" '{
