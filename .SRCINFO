@@ -1,18 +1,19 @@
-pkgbase = firefox-extension-beyond-australis-git
-	pkgdesc = A Firefox add-on to improve the feeling of using the new Australis theme.
+pkgbase = firefox-extension-beyond-australis
+	pkgdesc = Australis was the code name for the current Firefox theme, it aimed to make a great browser look awesome. Now you can go one step further and also make it feel awesome to use!
 	pkgver = 1.4.4
-	pkgrel = 2
-	url = https://github.com/Quicksaver/The-Fox--Only-Better
+	pkgrel = 1
+	url = https://addons.mozilla.org/firefox/addon/the-fox-only-better/
 	arch = any
 	license = MPLv2
-	makedepends = git
+	makedepends = unzip
 	makedepends = rasqal
 	depends = firefox
-	provides = firefox-extension-beyond-australis=1.4.4
-	conflicts = firefox-extension-beyond-australis
 	replaces = firefox-extension-the-fox-only-better
-	source = firefox-extension-beyond-australis::git+https://github.com/Quicksaver/The-Fox--Only-Better
+	noextract = firefox-extension-beyond-australis.zip
+	source = firefox-extension-beyond-australis.zip::https://addons.mozilla.org/firefox/downloads/latest/the-fox-only-better/platform:2/
+	source = .version::https://services.addons.mozilla.org/firefox/api/1.5/addon/the-fox-only-better
+	md5sums = c53bfb0c076ca54c8eead8a08f781c22
 	md5sums = SKIP
 
-pkgname = firefox-extension-beyond-australis-git
+pkgname = firefox-extension-beyond-australis
 

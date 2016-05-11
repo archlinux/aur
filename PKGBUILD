@@ -2,26 +2,31 @@
 # This PKGBUILD is maintained on GitHub <https://github.com/dffischer/mozilla-extensions>.
 # You may find it convenient to file issues and pull requests there.
 
-pkgname=firefox-extension-beyond-australis-git
+pkgname=firefox-extension-beyond-australis
 pkgver=1.4.4
-pkgrel=2
-pkgdesc='A Firefox add-on to improve the feeling of using the new Australis theme.'
-url='https://github.com/Quicksaver/The-Fox--Only-Better'
+pkgrel=1
+pkgdesc='Australis was the code name for the current Firefox theme, it aimed to make a great browser look awesome. Now you can go one step further and also make it feel awesome to use!'
+_extname=the-fox-only-better
 arch=('any')
 license=('MPLv2')
 depends=('firefox')
 replaces=('firefox-extension-the-fox-only-better')
+md5sums=('c53bfb0c076ca54c8eead8a08f781c22')
 
-makedepends+=('git')
-source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
+[ "$arch" ] || arch=('any')
+
+source+=(
+  "${pkgname}.zip::https://addons.mozilla.org/firefox/downloads/latest/${_extname=${pkgname#*-*-}}/platform:2/"
+  ".version::https://services.addons.mozilla.org/firefox/api/1.5/addon/$_extname"
+)
+[ ${url++} ] || url="https://addons.mozilla.org/${pkgname%%-*}/addon/$_extname/"
 md5sums+=('SKIP')
-provides+=("$_gitname=$pkgver")
-conflicts+=("$_gitname")
+noextract+=("${pkgname}.zip")
+makedepends+=(unzip)
 
-# Move down repository content for easier access by following functions.
 prepare() {
-  cp -rfT --reflink=auto "$_gitname" .
-  rm -rf "$_gitname"
+  unzip "${pkgname}.zip"
+  rm ${pkgname}.zip
 }
 
 makedepends+=(rasqal)
@@ -31,15 +36,14 @@ sparql() {
     -D "${2:-install.rdf}" -r csv 2>/dev/null | tr -d '\r' | tail -n 1 | head -c -1
 }
 
-# Retrieve current compatibility information from install.rdf.
-query-version() {
-  sparql "[] em:id '$2' ; em:${1}Version ?x" install.rdf
-}
-
 pkgver() {
   sparql '<urn:mozilla:install-manifest> em:version ?x' | tr - .
-  echo -n .
-printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+# Retrieve current compatibility information from addons.mozilla.org API.
+query-version() {
+  xmllint .version --xpath \
+    "//application[appID='$2']/$1_version/text()"
 }
 version-range() {
   local emid=$(emid $1)
