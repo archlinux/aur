@@ -1,0 +1,13 @@
+diff --git a/gulpfile.js b/gulpfile.js
+index e05c18a..d31ca4b 100644
+--- a/gulpfile.js
++++ b/gulpfile.js
+@@ -85,7 +85,7 @@ var createNewFileName = function(os) {
+     if(os.indexOf('linux') !== -1) {
+         newOs = os.replace('linux-x64','linux64').replace('linux-ia32','linux32');
+     }
+-    return './dist_'+ type +'/'+ filenameUppercase +'-'+ newOs + '-'+ version.replace(/\./g,'-');
++    return './dist_'+ type +'/'+ filenameUppercase +'-'+ newOs;
+ };
+
+
