@@ -1,8 +1,8 @@
 # Maintainer: Carlos Silva <r3pek@r3pek.org>
 
 pkgname=corebird
-pkgver=1.2
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="Native Gtk+ Twitter Client"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -24,7 +24,7 @@ depends=('gtk3>=3.14'
 	 'librsvg')
 makedepends=('vala>=0.28' 'automake')
 source=(https://github.com/baedert/corebird/archive/${pkgver}.tar.gz)
-sha1sums=('8f498b39ba920bd1fb42dac90ced600c5a6e50a5')
+sha1sums=('839de48252fd61e44119409b3590ca8469e165d8')
 install=corebird.install
 
 build() {
