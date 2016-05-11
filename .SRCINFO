@@ -1,7 +1,7 @@
 pkgbase = pylama_pylint
 	pkgdesc = Pylint support for pylama
 	pkgver = 2.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/klen/pylama_pylint
 	arch = any
 	license = BSD
