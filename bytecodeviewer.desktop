@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Bytecode Viewer
+Comment=A Java decompiler, editor, debugger, and more
+Exec=bytecodeviewer
+Icon=bytecodeviewer
+Terminal=false
+Type=Application
+Categories=Development;
+Keywords=decompile;decompiler;java;fernflower;procyon;
