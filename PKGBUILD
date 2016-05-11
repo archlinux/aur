@@ -11,7 +11,7 @@ groups=('frc-2015')
 depends=('arm-frc-linux-gnueabi-gcc'
          'arm-frc-linux-gnueabi-wpilib-git'
          'arm-frc-linux-gnueabi-frcmake-hg'
-	 'arm-frc-linux-gnueabi-gdb')
+         'arm-frc-linux-gnueabi-gdb')
 source=()
 
 

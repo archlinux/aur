@@ -10,7 +10,6 @@ pkgbase = frc-2015
 	depends = arm-frc-linux-gnueabi-wpilib-git
 	depends = arm-frc-linux-gnueabi-frcmake-hg
 	depends = arm-frc-linux-gnueabi-gdb
-	source =
 
 pkgname = frc-2015
 
