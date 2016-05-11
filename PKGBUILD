@@ -3,14 +3,14 @@
 # Contributor: Louis Tim Larsen <louis(a)louis.dk>
 pkgname='ambiance-radiance-colors-suite'
 pkgver='16.04.1'
-pkgrel=1
+pkgrel=2
 pkgdesc="Ambiance & Radiance Colors Suite for Unity, Gnome Classic, MATE, XFCE, LXDE and Openbox desktops"
 arch=('any')
 license=('GPL2')
 options=('!strip' '!zipman')
 url="http://www.ravefinity.com/p/ambiance-radiance-colors-suite.html"
-depends=('gtk3>=3.14' 'gtk-engine-murrine')
-optdepends=('rave-x-colors')
+depends=('gtk-engine-murrine')
+optdepends=('rave-x-colors' 'gtk3>=3.14' 'gtk3<3.20')
 source=("$pkgname-$pkgver.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QAd18yRG9WWGs3R1E")
 md5sums=('97bdc67e1fa4afb0fb5d00ef14647757')
 
