@@ -20,10 +20,10 @@ source=(https://www.dropbox.com/sh/enwavibssmyxkq0/AADyVjdkULjkChZf_hxtC6VQa/0.0
         git://github.com/sirnuke/steambridge.git)
 sha256sums=(3f5d88539ce9cdffc109113172d1adb0dd58be93982b242528cb344031a17f7c SKIP)
 
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  sed -r '/_VERSION_LONG\s/!d;s/^[^"]*"([^-]*)[^:]*:(.{7}).*$/\1.g\2/' libraries/common/include/config.h
-}
+#pkgver() {
+#  cd "$srcdir/$_pkgname"
+#  sed -r '/_VERSION_LONG\s/!d;s/^[^"]*"([^-]*)[^:]*:(.{7}).*$/\1.g\2/' libraries/common/include/config.h
+#}
 
 build() {
   cd "$_pkgname"
