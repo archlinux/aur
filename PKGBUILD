@@ -1,6 +1,6 @@
 # Maintainer: Gökberk Yaltıraklı <webdosusb at gmail dot com>
 pkgname=notes
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Note taking application, write down your thoughts."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ makedepends=('qtcreator')
 provides=('notes')
 conflicts=('notes')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/nuttyartist/notes/archive/v$pkgver.tar.gz")
-md5sums=('b642fdada866bc2cdd24bf834abbaa68')
+md5sums=('db29395c1e156aeaf8f51c9dfbb1bdc8')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -37,7 +37,7 @@ EOF
 
 package() {
   cd "$pkgname-$pkgver"
-  install -Dm755 bin/Notes $pkgdir/usr/bin/$pkgname
+  install -Dm755 build/Notes $pkgdir/usr/bin/$pkgname
   install -Dm644 src/images/notes_icon.png $pkgdir/usr/share/pixmaps/${pkgname}_icon.png
   install -Dm644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
