@@ -1,12 +1,11 @@
 pkgbase = notes
 	pkgdesc = Note taking application, write down your thoughts.
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nuttyartist/notes
 	arch = i686
 	arch = x86_64
 	license = MPL
-	makedepends = qtcreator
 	depends = qt5-base
 	provides = notes
 	conflicts = notes

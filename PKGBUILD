@@ -1,13 +1,13 @@
 # Maintainer: Gökberk Yaltıraklı <webdosusb at gmail dot com>
 pkgname=notes
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Note taking application, write down your thoughts."
 arch=('i686' 'x86_64')
 url="https://github.com/nuttyartist/notes"
 license=('MPL')
 depends=('qt5-base')
-makedepends=('qtcreator')
+makedepends=()
 provides=('notes')
 conflicts=('notes')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/nuttyartist/notes/archive/v$pkgver.tar.gz")
