@@ -2,9 +2,8 @@
 
 pkgname=mist-git
 _pkgname=mist
-pkgver=0.7.2.r1.g80ec64f
-_pkgver=0-7-3
-pkgrel=1
+pkgver=0.7.3.r33.g6db4ac3
+pkgrel=2
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
 arch=('i686' 'x86_64')
 depends=(
@@ -47,11 +46,13 @@ source=(
   "${pkgname}::git+https://github.com/ethereum/mist"
   "mist.desktop"
   "icon.png"
+  "mist-pathfix.patch"
 )
 sha256sums=(
   "SKIP"
   "d044844dd8ef1fef2ced861e5a86bf0d9af1b06ade6965dab1f12dbc612da207"
   "f9dfeddf9730ab693e3dc69d6dd0ad48525de1e40e1c8fb46ed081a3e7bd5f93"
+  "3b5837e569b0d7b5b510a3084788c13faa51c7ff3777fcbea5dbee697a24ec74"
 )
 
 pkgver() {
@@ -67,6 +68,7 @@ build() {
   git checkout develop
   git pull
   git submodule update --init
+  git apply "${srcdir}/mist-pathfix.patch"
   npm install electron-prebuilt
   npm install meteor-build-client
   npm install gulp
@@ -82,7 +84,7 @@ package() {
 
   msg2 'Installing Mist...'
   install -d "${pkgdir}/usr/share/mist"
-  cp -a "${srcdir}/${pkgname}/dist_wallet/Ethereum-Wallet-linux${_arch}-${_pkgver}/." "${pkgdir}/usr/share/${_pkgname}"
+  cp -a "${srcdir}/${pkgname}/dist_wallet/Ethereum-Wallet-linux${_arch}/." "${pkgdir}/usr/share/${_pkgname}"
   install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/mist"
 
   install -d "${pkgdir}/usr/share/applications"
