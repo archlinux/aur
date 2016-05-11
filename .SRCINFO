@@ -3,7 +3,6 @@ pkgbase = corebird
 	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/baedert/corebird
-	install = corebird.install
 	arch = i686
 	arch = x86_64
 	license = GPL

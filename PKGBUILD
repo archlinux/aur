@@ -25,7 +25,6 @@ depends=('gtk3>=3.14'
 makedepends=('vala>=0.28' 'automake')
 source=(https://github.com/baedert/corebird/archive/${pkgver}.tar.gz)
 sha1sums=('839de48252fd61e44119409b3590ca8469e165d8')
-install=corebird.install
 
 build() {
   cd corebird-${pkgver}
