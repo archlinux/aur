@@ -1,25 +1,18 @@
-pkgbase = firefox-theme-adwaita-git
-	pkgdesc = Adwaita theme for Firefox (Matches the default Gnome Shell theme)
-	pkgver = 45.1
-	pkgrel = 2
-	url = https://github.com/gnome-integration-team/firefox-gnome
+pkgbase = firefox-extension-gnome-theme-tweak
+	pkgdesc = Extension for customizing GNOME theme.
+	pkgver = 42.1
+	pkgrel = 1
+	url = https://addons.mozilla.org/firefox/addon/gnome-theme-tweak/
 	arch = any
-	license = MPL
+	license = MPLv2
 	makedepends = unzip
-	makedepends = zip
-	makedepends = git
 	makedepends = rasqal
 	depends = firefox
-	provides = firefox-theme-gnome=45.1
-	conflicts = firefox-theme-gnome
-	source = firefox-theme-gnome::git+https://github.com/gnome-integration-team/firefox-gnome
+	noextract = firefox-extension-gnome-theme-tweak.zip
+	source = firefox-extension-gnome-theme-tweak.zip::https://addons.mozilla.org/firefox/downloads/latest/gnome-theme-tweak/platform:2/
+	source = .version::https://services.addons.mozilla.org/firefox/api/1.5/addon/gnome-theme-tweak
+	md5sums = c7a571c9eb70d671cbbec08973d37e4f
 	md5sums = SKIP
 
-pkgname = firefox-theme-gnome-git
-
-pkgname = firefox-extension-gnome-theme-tweak-git
-	pkgdesc = Extension for customizing GNOME theme.
-	depends = firefox-theme-gnome
-	provides = firefox-extension-gnome-theme-tweak
-	conflicts = firefox-extension-gnome-theme-tweak
+pkgname = firefox-extension-gnome-theme-tweak
 
