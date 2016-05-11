@@ -14,8 +14,8 @@ md5sums=('79aaf0d3b9cc2aaa48e5776901f4aab0')
 [ "$arch" ] || arch=('any')
 
 source+=(
-  "${pkgname}.zip::https://addons.mozilla.org/firefox/downloads/latest/${pkgname#*-*-}/platform:2/"
-  ".version::https://services.addons.mozilla.org/en-US/firefox/api/1.5/addon/${pkgname#*-*-}"
+  "${pkgname}.zip::https://addons.mozilla.org/firefox/downloads/latest/${_extname=${pkgname#*-*-}}/platform:2/"
+  ".version::https://services.addons.mozilla.org/firefox/api/1.5/addon/$_extname"
 )
 md5sums+=('SKIP')
 noextract+=("${pkgname}.zip")
