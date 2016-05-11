@@ -7,15 +7,13 @@
 
 pkgname=mozilla-extension-gnome-keyring-git
 pkgver=0.11
-pkgrel=3
+pkgrel=4
 pkgdesc="Mozilla extension to store passwords and form logins in gnome-keyring."
 arch=(any)
 url='https://github.com/swick/moz-gnome-keyring-integration'
 license=(GPLv3)
 depends=(libgnome-keyring)
 optdepends=(firefox thunderbird)
-provides=({firefox,thunderbird}-gnome-keyring)
-conflicts=({firefox,thunderbird}-gnome-keyring-git)
 
 makedepends+=('git')
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")
