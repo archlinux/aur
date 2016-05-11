@@ -3,7 +3,7 @@
 # Contributor: Kyle Manna <kyle(at)kylemanna(dot)com>
 
 pkgname=slack-desktop
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux"
 arch=('i686' 'x86_64')
@@ -15,8 +15,8 @@ optdepends=('gnome-keyring')
 source_x86_64=("https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-${pkgver}-amd64.deb")
 source_i686=("https://slack-ssb-updates.global.ssl.fastly.net/linux_releases/slack-desktop-${pkgver}-i386.deb")
 
-sha256sums_x86_64=('8f8d4c7515463e7e8c68e9499f39a6e20fca759bcab059e0bd03d69978b0e85e')
-sha256sums_i686=('945e3430bb372cd1b12e044d823372664ad4c9cae9c2c64696ddf9a09afbc88f')
+sha256sums_x86_64=('05600dcffbe1cee102410e48e612a9b4e57d7717deeb16b23d7111105b77da59')
+sha256sums_i686=('a72e7f22b6ca3f93ba03ebf6d5a31a92a839d313e02b3a5d32ecb73eedbbe2df')
 
 package() {
     bsdtar -O -xf "slack-desktop-${pkgver}"*.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
@@ -32,6 +32,5 @@ package() {
     # Move license
     install -dm755 ${pkgdir}/usr/share/licenses/${pkgname}
     mv ${pkgdir}/usr/lib/slack/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}
-    mv ${pkgdir}/usr/lib/slack/LICENSES.chromium.html ${pkgdir}/usr/share/licenses/${pkgname}
     ln -s ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE ${pkgdir}/usr/lib/slack/resources/LICENSE
 }
