@@ -9,7 +9,7 @@
 
 # Globe Plugin and Map Server are disabled in cmake by default.
 # Uncomment them in the build() portion if you'd like them enabled.
-# You will also need to install osgearth or fcgi, respectively, before building.
+# You will also need to install osgearth-qt4 or fcgi, respectively, before building.
 
 pkgname=qgis
 pkgver=2.14.2
@@ -75,7 +75,7 @@ package() {
   [[ -n "$(sed -n '/^GRASS_PREFIX:/ s/.*=//p' CMakeCache.txt)" ]] && optdepends+=('grass6: GRASS6 plugin')
   [[ -n "$(sed -n '/^GRASS_PREFIX7:/ s/.*=//p' CMakeCache.txt)" ]] && optdepends+=('grass: GRASS7 plugin')
   [[ "$(sed -n '/^WITH_SERVER:/ s/.*=//p' CMakeCache.txt)" == "TRUE" ]] && optdepends+=('fcgi: Map Server')
-  [[ "$(sed -n '/^WITH_GLOBE:/ s/.*=//p' CMakeCache.txt)" == "TRUE" ]] && optdepends+=('osgearth: Globe plugin')
+  [[ "$(sed -n '/^WITH_GLOBE:/ s/.*=//p' CMakeCache.txt)" == "TRUE" ]] && optdepends+=('osgearth-qt4: Globe plugin')
 
   make DESTDIR="$pkgdir" install
 
