@@ -326,7 +326,7 @@ package_intel-compiler-base() {
 
 	set_build_vars
 
-	pkgdesc="Intel C/C++"
+	pkgdesc="Intel C/C++ $_icc_ver"
 	pkgver=${_pkg_ver}
 	install=intel-composer.install
 	
@@ -418,7 +418,7 @@ package_intel-fortran-compiler() {
 
 	set_build_vars
 
-	pkgdesc="Intel Fortran compiler"
+	pkgdesc="Intel Fortran compiler $_icc_ver"
 	pkgver=${_pkg_ver}
 	depends=('intel-compiler-base')
 	install=intel-composer.install
@@ -538,7 +538,7 @@ package_intel-ipp() {
 
 	set_build_vars
 
-	pkgdesc="Intel Integrated Performance Primitives"
+	pkgdesc="Intel Integrated Performance Primitives $_ipp_ver"
 	pkgver=${_pkg_ver}
 	#depends=('intel-compiler-base')
 	install=intel-composer.install
@@ -595,7 +595,7 @@ package_intel-mkl() {
 
 	set_build_vars
 
-	pkgdesc="Intel Math Kernel Library (Intel® MKL) "
+	pkgdesc="Intel Math Kernel Library (Intel® MKL) $_mkl_ver"
 	pkgver=${_pkg_ver}
 	#depends=('intel-compiler-base')
 	install=intel-mkl.install
@@ -657,7 +657,7 @@ package_intel-mpi() {
 
 	set_build_vars
 
-    pkgdesc="Intel MPI library"
+    pkgdesc="Intel MPI library $_mpi_ver"
 	pkgver=${_pkg_ver}
 	#depends=('intel-compiler-base')
 	#install=intel-mpi.install
@@ -710,7 +710,7 @@ package_intel-tbb_psxe() {
 
 	set_build_vars
 
-	pkgdesc="Intel Threading Building Blocks (TBB)"
+	pkgdesc="Intel Threading Building Blocks (TBB) $_tbb_ver"
 	pkgver=${_pkg_ver}
 	#depends=('intel-compiler-base')
 	install=intel-tbb.install
@@ -766,7 +766,7 @@ package_intel-vtune-amplifier-xe() {
 
 	set_build_vars
 
-	pkgdesc="Performance profiler for serial and parallel performance analysis"
+	pkgdesc="Performance profiler for serial and parallel performance analysis $_vtune_ver"
 	pkgver=${_pkg_ver}
 	depends=('pangox-compat')
 	
@@ -813,7 +813,7 @@ package_intel-advisor-xe() {
 
 	set_build_vars
 
-	pkgdesc="Threading design and prototyping tool for software architects"
+	pkgdesc="Threading design and prototyping tool for software architects $_advisor_ver"
 	pkgver=${_pkg_ver}
 	
 	echo -e " # intel-advisor-xe: Start building"
@@ -857,7 +857,7 @@ package_intel-advisor-xe() {
 
 package_intel-inspector-xe() {
 	set_build_vars
-	pkgdesc="Memory and thread debugger"
+	pkgdesc="Memory and thread debugger $_inspector_ver"
 	pkgver=${_pkg_ver}
 	
 	echo -e " # intel-inspector-xe: Start building"
