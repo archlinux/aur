@@ -1,5 +1,6 @@
 *
 !PKGBUILD
-!terminix-git.install
 !.SRCINFO
 !.gitignore
+!0001-Update-LINGUAS-with-latest-po-files.patch
+!0002-Add-experimental-support-for-building-terminix-with-.patch

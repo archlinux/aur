@@ -1,0 +1,262 @@
+From 99be56f3a54dc7badfc39f624c22e7332330fcb0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Davi=20da=20Silva=20B=C3=B6ger?= <dsboger@gmail.com>
+Date: Tue, 10 May 2016 23:54:11 -0300
+Subject: [PATCH 2/2] Add experimental support for building terminix with
+ autotools (no gettext string extraction yet)
+
+---
+ Makefile.am                | 35 +++++++++++++++++++++
+ autogen.sh                 |  3 ++
+ configure.ac               | 34 ++++++++++++++++++++
+ data/icons/Makefile.am     |  5 +++
+ data/resources/Makefile.am | 10 ++++++
+ po/Makevars                | 78 ++++++++++++++++++++++++++++++++++++++++++++++
+ po/POTFILES.in             | 29 +++++++++++++++++
+ 7 files changed, 194 insertions(+)
+ create mode 100644 Makefile.am
+ create mode 100644 autogen.sh
+ create mode 100644 configure.ac
+ create mode 100644 data/icons/Makefile.am
+ create mode 100644 data/resources/Makefile.am
+ create mode 100644 po/Makevars
+ create mode 100644 po/POTFILES.in
+
+diff --git a/Makefile.am b/Makefile.am
+new file mode 100644
+index 0000000..0628531
+--- /dev/null
++++ b/Makefile.am
+@@ -0,0 +1,35 @@
++bin_PROGRAMS = terminix
++terminix_SOURCES = $(shell find source -name '*\.d')
++terminix.o: $(terminix_SOURCES)
++	$(DC) $(DCFLAGS) $(DEPS_CFLAGS) $(DEPS_LIBS) -c $^ -of$@
++terminix$(EXEEXT): terminix.o
++	$(DC) $(DEPS_LIBS) $^ -of$@
++
++gschemasdir = $(datadir)/glib-2.0/schemas/
++gschemas_DATA = data/gsettings/com.gexperts.Terminix.gschema.xml
++
++colorschemesdir = $(datadir)/terminix/schemes/
++colorschemes_DATA = $(shell find data/schemes/ -name '*\.json')
++
++dbusservicesdir = $(datadir)/dbus-1/services/
++dbusservices_DATA = data/dbus/com.gexperts.Terminix.service
++
++appdatadir = $(datadir)/appdata/
++appdata_DATA = data/appdata/com.gexperts.Terminix.appdata.xml
++$(appdata_DATA): $(appdata_DATA).in
++	$(MSGFMT) --xml -d po --template=$< -o $@
++
++desktopdir = $(datadir)/applications/
++desktop_DATA = data/pkg/desktop/com.gexperts.Terminix.desktop
++$(desktop_DATA): $(desktop_DATA).in
++	$(MSGFMT) --desktop -d po --template=$< -o $@
++
++nautilusextdir = $(datadir)/nautilus-python/extensions/
++nautilusext_DATA = data/nautilus/open-terminix.py
++
++EXTRA_DIST = $(gschemas_DATA) $(colorschemes_DATA) $(dbusservices_DATA) $(appdata_DATA).in $(desktop_DATA).in $(nautilusext_DATA) LICENSE README.md
++
++CLEANFILES = terminix.o $(appdata_DATA) $(desktop_DATA)
++
++SUBDIRS = data/icons data/resources po
++ACLOCAL_AMFLAGS = -I m4
+diff --git a/autogen.sh b/autogen.sh
+new file mode 100644
+index 0000000..6fad1bf
+--- /dev/null
++++ b/autogen.sh
+@@ -0,0 +1,3 @@
++#!/usr/bin/sh
++
++autoreconf --install || exit 1
+diff --git a/configure.ac b/configure.ac
+new file mode 100644
+index 0000000..209a511
+--- /dev/null
++++ b/configure.ac
+@@ -0,0 +1,34 @@
++#                                               -*- Autoconf -*-
++# Process this file with autoconf to produce a configure script.
++
++AC_PREREQ([2.69])
++AC_INIT([Terminix], [0.60], [https://github.com/gnunn1/terminix])
++AC_CONFIG_SRCDIR([source/gx/terminix/application.d])
++AC_CONFIG_AUX_DIR([acaux])
++
++AC_ARG_VAR([DC], [D compiler executable])
++AC_ARG_VAR([DEPS_CFLAGS], [pkg-config CFLAGS for dependencies])
++AC_ARG_VAR([DEPS_LIBS], [pkg-config LIBS for dependencies])
++AC_ARG_VAR([DCFLAGS], [flags for dmd compiler])
++
++# Full optimization flags
++#DCFLAGS='-O -inline -release -version=StdLoggerDisableTrace'
++DCFLAGS='-O'
++AC_SUBST([DCFLAGS])
++
++# Checks for programs.
++AC_PROG_INSTALL
++AC_PATH_PROG([DC], [dmd])
++AC_PATH_PROG([GLIB_COMPILE_RES], [glib-compile-resources])
++PKG_PROG_PKG_CONFIG
++AM_GNU_GETTEXT([external])
++AM_GNU_GETTEXT_VERSION([0.19.7])
++
++# Checks for libraries.
++PKG_CHECK_MODULES([DEPS], [gtkd-3-dmd >= 3.3.0 vted-3-dmd >= 3.3.0],,
++				  [PKG_CHECK_MODULES([DEPS], [gtkd-3 >= 3.3.0 vted-3 >= 3.3.0])])
++# TODO: test if library was compiled with @DC@?
++
++AM_INIT_AUTOMAKE([1.15 foreign])
++AC_CONFIG_FILES([Makefile data/icons/Makefile data/resources/Makefile po/Makefile.in])
++AC_OUTPUT
+diff --git a/data/icons/Makefile.am b/data/icons/Makefile.am
+new file mode 100644
+index 0000000..e4e2cab
+--- /dev/null
++++ b/data/icons/Makefile.am
+@@ -0,0 +1,5 @@
++
++iconsdir = $(datadir)/icons
++nobase_icons_DATA = $(shell find hicolor -name '*\.png')
++
++EXTRA_DIST = $(nobase_icons_DATA)
+diff --git a/data/resources/Makefile.am b/data/resources/Makefile.am
+new file mode 100644
+index 0000000..e351a74
+--- /dev/null
++++ b/data/resources/Makefile.am
+@@ -0,0 +1,10 @@
++
++resources = $(shell find css icons ui)
++
++gresourcedir = $(datadir)/terminix/resources/
++gresource_DATA = terminix.gresource
++$(gresource_DATA): $(gresource_DATA).xml $(resources)
++	$(GLIB_COMPILE_RES) $<
++
++EXTRA_DIST = $(gresource_DATA).xml $(resources)
++CLEANFILES = $(gresource_DATA)
+diff --git a/po/Makevars b/po/Makevars
+new file mode 100644
+index 0000000..fdfa5db
+--- /dev/null
++++ b/po/Makevars
+@@ -0,0 +1,78 @@
++# Makefile variables for PO directory in any package using GNU gettext.
++
++# Usually the message domain is the same as the package name.
++DOMAIN = $(PACKAGE)
++
++# These two variables depend on the location of this directory.
++subdir = po
++top_builddir = ..
++
++# These options get passed to xgettext.
++XGETTEXT_OPTIONS = --keyword=_ --keyword=N_ --language=vala --from-code=utf-8
++
++# This is the copyright holder that gets inserted into the header of the
++# $(DOMAIN).pot file.  Set this to the copyright holder of the surrounding
++# package.  (Note that the msgstr strings, extracted from the package's
++# sources, belong to the copyright holder of the package.)  Translators are
++# expected to transfer the copyright for their translations to this person
++# or entity, or to disclaim their copyright.  The empty string stands for
++# the public domain; in this case the translators are expected to disclaim
++# their copyright.
++COPYRIGHT_HOLDER = Gerald Nunn
++
++# This tells whether or not to prepend "GNU " prefix to the package
++# name that gets inserted into the header of the $(DOMAIN).pot file.
++# Possible values are "yes", "no", or empty.  If it is empty, try to
++# detect it automatically by scanning the files in $(top_srcdir) for
++# "GNU packagename" string.
++PACKAGE_GNU =
++
++# This is the email address or URL to which the translators shall report
++# bugs in the untranslated strings:
++# - Strings which are not entire sentences, see the maintainer guidelines
++#   in the GNU gettext documentation, section 'Preparing Strings'.
++# - Strings which use unclear terms or require additional context to be
++#   understood.
++# - Strings which make invalid assumptions about notation of date, time or
++#   money.
++# - Pluralisation problems.
++# - Incorrect English spelling.
++# - Incorrect formatting.
++# It can be your email address, or a mailing list address where translators
++# can write to without being subscribed, or the URL of a web page through
++# which the translators can contact you.
++MSGID_BUGS_ADDRESS =
++
++# This is the list of locale categories, beyond LC_MESSAGES, for which the
++# message catalogs shall be used.  It is usually empty.
++EXTRA_LOCALE_CATEGORIES =
++
++# This tells whether the $(DOMAIN).pot file contains messages with an 'msgctxt'
++# context.  Possible values are "yes" and "no".  Set this to yes if the
++# package uses functions taking also a message context, like pgettext(), or
++# if in $(XGETTEXT_OPTIONS) you define keywords with a context argument.
++USE_MSGCTXT = no
++
++# These options get passed to msgmerge.
++# Useful options are in particular:
++#   --previous            to keep previous msgids of translated messages,
++#   --quiet               to reduce the verbosity.
++MSGMERGE_OPTIONS =
++
++# These options get passed to msginit.
++# If you want to disable line wrapping when writing PO files, add
++# --no-wrap to MSGMERGE_OPTIONS, XGETTEXT_OPTIONS, and
++# MSGINIT_OPTIONS.
++MSGINIT_OPTIONS =
++
++# This tells whether or not to regenerate a PO file when $(DOMAIN).pot
++# has changed.  Possible values are "yes" and "no".  Set this to no if
++# the POT file is checked in the repository and the version control
++# program ignores timestamps.
++PO_DEPENDS_ON_POT = no
++
++# This tells whether or not to forcibly update $(DOMAIN).pot and
++# regenerate PO files on "make dist".  Possible values are "yes" and
++# "no".  Set this to no if the POT file and PO files are maintained
++# externally.
++DIST_DEPENDS_ON_UPDATE_PO = no
+diff --git a/po/POTFILES.in b/po/POTFILES.in
+new file mode 100644
+index 0000000..3ed3d7c
+--- /dev/null
++++ b/po/POTFILES.in
+@@ -0,0 +1,29 @@
++source/gx/i18n/l10n.d
++source/gx/terminix/application.d
++source/gx/terminix/sidebar.d
++source/gx/terminix/prefwindow.d
++source/gx/terminix/preferences.d
++source/gx/terminix/encoding.d
++source/gx/terminix/profilewindow.d
++source/gx/terminix/shortcuts.d
++source/gx/terminix/constants.d
++source/gx/terminix/common.d
++source/gx/terminix/colorschemes.d
++source/gx/terminix/cmdparams.d
++source/gx/terminix/appwindow.d
++source/gx/terminix/terminal/layout.d
++source/gx/terminix/terminal/search.d
++source/gx/terminix/terminal/vtenotification.d
++source/gx/terminix/terminal/terminal.d
++source/gx/terminix/terminal/actions.d
++source/gx/terminix/session.d
++source/gx/util/array.d
++source/gx/gtk/resource.d
++source/gx/gtk/threads.d
++source/gx/gtk/actions.d
++source/gx/gtk/vte.d
++source/gx/gtk/util.d
++source/gx/gtk/cairo.d
++source/app.d
++data/pkg/desktop/com.gexperts.Terminix.desktop.in
++data/appdata/com.gexperts.Terminix.appdata.xml.in
+-- 
+2.8.2
+

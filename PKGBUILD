@@ -2,50 +2,43 @@
 
 pkgname=terminix-git
 _pkgname=terminix
-pkgver=0.59.0.r4.3cddd63
+pkgver=0.60.r0.d88d46d
 pkgrel=1
 pkgdesc="A tiling terminal emulator based on GTK+ 3 (git master)"
 arch=('x86_64')
 url="http://github.com/gnunn1/terminix"
 license=('MPL')
-depends=('gtk3' 'dconf' 'gsettings-desktop-schemas' 'vte3' 'hicolor-icon-theme')
+depends=('gtk3' 'dconf' 'gsettings-desktop-schemas' 'vte3' 'hicolor-icon-theme' 'gtkd-dmd')
 optdepends=('python2-nautilus: for "Open Terminix Here" support in nautilus')
-makedepends=('git' 'dmd' 'dub')
+makedepends=('git' 'dmd')
 provides=('terminix')
 conflicts=('terminix')
-source=('git+https://github.com/gnunn1/terminix')
-md5sums=('SKIP')
+source=('git+https://github.com/gnunn1/terminix' \
+  '0001-Update-LINGUAS-with-latest-po-files.patch' \
+  '0002-Add-experimental-support-for-building-terminix-with-.patch')
+sha512sums=('SKIP' '03f1920ccd1b3deafdc52c066660fe00367a0ffa3c95305051281a9e3630de2be69cd0312d4d4402b704196e18ce9f25769c18f992ae9f0f5a710f50803912ed' '8ca045e34478cd36f784ae977b77d374c67583ee3c2e35a1f4e4fbb72936b5d86e14e5e85a6ebf3976ba9d8dde8632c85c02bb874cad5f99288675e4c7c3e5df')
 
 pkgver() {
   cd "$_pkgname"
   git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd ${_pkgname}
+  patch -p1 <../0001-Update-LINGUAS-with-latest-po-files.patch
+  patch -p1 <../0002-Add-experimental-support-for-building-terminix-with-.patch
+  chmod u+x autogen.sh
+  ./autogen.sh
+}
+
 build() {
-  # Either clone or pull GtkD repo
-  _gtkdrepo="$srcdir/gtk-d"
-  if [ -d "$_gtkdrepo" ]; then
-    git --git-dir="$_gtkdrepo/.git" pull
-  else
-    git clone https://github.com/gtkd-developers/GtkD.git "$_gtkdrepo"
-  fi
-  
-  _gtkdver=$(git --git-dir="$_gtkdrepo/.git" describe --tags --abbrev=0 | sed 's/^v//')
-
-  # Register local GtkD repository in dub
-  dub add-local "$_gtkdrepo" $_gtkdver
-
-  # Build terminix
-  cd "$_pkgname"
-  dub build --build=release
-  
-  # De-register local GtkD repository in dub
-  dub remove-local "$_gtkdrepo"
+  cd ${_pkgname}
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-  cd "$_pkgname"
-  ./install.sh $pkgdir/usr
-  rm $pkgdir/usr/share/glib-2.0/schemas/gschemas.compiled 
+  cd ${_pkgname}
+  make DESTDIR=${pkgdir} install
 }
 
