@@ -5,13 +5,13 @@
 
 _pkgname=guitarix
 pkgname=$_pkgname-git
-pkgver=0.34.0.r139.g68994a4
+pkgver=0.35.0.r6.g3ec2109
 pkgrel=1
 pkgdesc="a virtual guitar amplifier for Linux"
 arch=('i686' 'x86_64')
 url="http://guitarix.sourceforge.net"
 license=('GPL')
-depends=('gtkmm' 'liblrdf' 'boost-libs' 'zita-convolver' 'eigen' 'bluez-libs' 'lilv' 'ffmpeg' 'webkitgtk2' 'ttf-roboto')
+depends=('gtkmm' 'liblrdf' 'boost-libs' 'zita-convolver' 'eigen' 'lilv' 'ffmpeg' 'webkitgtk2')
 makedepends=('git' 'python2' 'boost' 'intltool' 'lv2' 'gperf')
 optdepends=('meterbridge: sound meters')
 provides=("$_pkgname" 'guitarix2' 'gx_head')
@@ -34,7 +34,8 @@ build() {
                         --no-ldconfig \
                         --no-faust \
                         --optimization \
-                        --lib-dev
+                        --lib-dev	\
+                        --install-roboto-font
   python2 waf build
 }
 
