@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=anatine %U
+Name=Anatine
+GenericName=Pristing Twitter Client
+Icon=Anatine
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Network;InstantMessaging;
