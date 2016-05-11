@@ -32,7 +32,6 @@ build() {
   cd "usr/share/${_gitname}/fmlock.source"
   ./compile.sh && ./install.sh
 
-  rm -R  ../mapandlock.source
   rm -R  ../fmlock.source
 }
 
