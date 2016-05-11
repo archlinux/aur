@@ -3,7 +3,7 @@
 
 pkgname='perl-cryptx'
 _cpanname='CryptX'
-pkgver='0.033'
+pkgver='0.034'
 pkgrel='1'
 pkgdesc="Crypto toolkit (self-contained no external libraries needed)"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ options=('!emptydirs')
 depends=('perl-json>=2.01' 'perl>=5.06')
 url='https://metacpan.org/release/CryptX'
 source=("https://cpan.metacpan.org/authors/id/M/MI/MIK/${_cpanname}-${pkgver}.tar.gz")
-md5sums=('4718ccd443e3b212340b7ca2e342daca')
+md5sums=('f343d1853ae2ac5c11b01d6086b4f972')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
