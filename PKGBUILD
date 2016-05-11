@@ -5,7 +5,7 @@
 
 _pkgbase='libdbusmenu'
 pkgbase="lib32-${_pkgbase}"
-pkgname=("lib32-${_pkgbase}-glib" "lib32-${_pkgbase}-gtk"{2,3})
+pkgname=("${pkgbase}-glib" "${pkgbase}-gtk"{2,3})
 pkgver=16.04.0
 pkgrel=1
 pkgdesc="A library for passing menus over DBus (32-bit)"
@@ -53,7 +53,7 @@ package_lib32-libdbusmenu-glib() {
 
 package_lib32-libdbusmenu-gtk2() {
 	pkgdesc+=" (GTK+ 2 library)"
-	depends=('lib32-gtk2' "lib32-${_pkgbase}-glib" "${_pkgbase}-gtk2")
+	depends=('lib32-gtk2' "${pkgbase}-glib" "${_pkgbase}-gtk2")
 
 	cd "${srcdir}/${pkgname}"
 	make -j1 -C "${_pkgbase}-glib" DESTDIR="${pkgdir}" install
@@ -64,7 +64,7 @@ package_lib32-libdbusmenu-gtk2() {
 
 package_lib32-libdbusmenu-gtk3() {
 	pkgdesc+=" (GTK+ 3 library)"
-	depends=('lib32-gtk3' "lib32-${_pkgbase}-glib" "${_pkgbase}-gtk3")
+	depends=('lib32-gtk3' "${pkgbase}-glib" "${_pkgbase}-gtk3")
 
 	cd "${srcdir}/${pkgname}"
 	make -j1 -C "${_pkgbase}-glib" DESTDIR="${pkgdir}" install
