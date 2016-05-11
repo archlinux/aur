@@ -12,8 +12,6 @@ url="https://github.com/gnome-integration-team/firefox-gnome"
 arch=('any')
 license=('MPL')
 depends=("firefox")
-provides=('firefox-theme-adwaita')
-conflicts=('firefox-theme-adwaita')
 makedepends=('unzip' 'zip')
 
 makedepends+=('git')

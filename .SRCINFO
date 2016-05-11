@@ -10,9 +10,7 @@ pkgbase = firefox-theme-adwaita-git
 	makedepends = git
 	makedepends = rasqal
 	depends = firefox
-	provides = firefox-theme-adwaita
 	provides = firefox-theme-gnome=45.1
-	conflicts = firefox-theme-adwaita
 	conflicts = firefox-theme-gnome
 	source = firefox-theme-gnome::git+https://github.com/gnome-integration-team/firefox-gnome
 	md5sums = SKIP
