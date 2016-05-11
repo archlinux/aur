@@ -14,12 +14,12 @@ url="https://launchpad.net/${_pkgbase}"
 license=('GPL3' 'LGPL2.1' 'LGPL3')
 makedepends=('gnome-common' 'gnome-doc-utils' 'gobject-introspection' 'intltool' 'vala' 'valgrind-multilib' 'gcc-multilib' 'lib32-gtk'{2,3})
 options=('!emptydirs')
-source=("https://launchpad.net/libdbusmenu/${pkgver%.?}/${pkgver}/+download/${_pkgbase}-${pkgver}.tar.gz")
+source=("https://launchpad.net/${_pkgbase}/${pkgver%.?}/${pkgver}/+download/${_pkgbase}-${pkgver}.tar.gz")
 sha512sums=('ee9654ac4ed94bdebc94a6db83b126784273a417a645b2881b2ba676a5f67d7fc95dd2bb37bfb0890aa47299ed73cb21ed7de8b75f3fed6b69bfd39065062241')
 
 prepare() {
 	cd "${srcdir}"
-	rm -rf "${_pkgbase}-gtk"{2,3} &> /dev/null
+	rm -rf "${pkgbase}-gtk"{2,3} &> /dev/null
 	cp -rp "${_pkgbase}-${pkgver}" "${pkgbase}-gtk2"
 	mv     "${_pkgbase}-${pkgver}" "${pkgbase}-gtk3"
 }
