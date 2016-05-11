@@ -1,4 +1,4 @@
-From 1c10221dc88f6bd79f9150d00582382840d06b0c Mon Sep 17 00:00:00 2001
+From 9ef3a75e6dcc347c023cf9c927383596912a7f2c Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
 Subject: [PATCH 1/6] Restore transparency
@@ -245,10 +245,10 @@ index 33a34abc2f93..92e8bb387d03 100644
  
  static void
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index 8b788491f807..eb75b42a23b3 100644
+index 80e54b002819..0642ccecda30 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
-@@ -2616,6 +2616,8 @@ terminal_window_init (TerminalWindow *window)
+@@ -2618,6 +2618,8 @@ terminal_window_init (TerminalWindow *window)
    TerminalWindowPrivate *priv;
    TerminalApp *app;
    TerminalSettingsList *profiles_list;
@@ -257,7 +257,7 @@ index 8b788491f807..eb75b42a23b3 100644
    GtkActionGroup *action_group;
    GtkAction *action;
    GtkUIManager *manager;
-@@ -2630,6 +2632,11 @@ terminal_window_init (TerminalWindow *window)
+@@ -2632,6 +2634,11 @@ terminal_window_init (TerminalWindow *window)
  
    gtk_widget_init_template (GTK_WIDGET (window));
  
@@ -273,7 +273,7 @@ index 8b788491f807..eb75b42a23b3 100644
 2.5.0
 
 
-From a4c0ef989373dab0b6c1506cade6646a8c1779ee Mon Sep 17 00:00:00 2001
+From 0bdf26225511bac8d00c08477dee431f04763330 Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
 Subject: [PATCH 2/6] window: Make the drawing robust across all themes
@@ -293,10 +293,10 @@ https://bugzilla.gnome.org/show_bug.cgi?id=730016
  1 file changed, 21 insertions(+)
 
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index eb75b42a23b3..58ec94aee3d2 100644
+index 0642ccecda30..1616689b3765 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
-@@ -2288,6 +2288,26 @@ terminal_window_realize (GtkWidget *widget)
+@@ -2290,6 +2290,26 @@ terminal_window_realize (GtkWidget *widget)
  }
  
  static gboolean
@@ -323,7 +323,7 @@ index eb75b42a23b3..58ec94aee3d2 100644
  terminal_window_state_event (GtkWidget            *widget,
                               GdkEventWindowState  *event)
  {
-@@ -2816,6 +2836,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
+@@ -2818,6 +2838,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
  
    widget_class->show = terminal_window_show;
    widget_class->realize = terminal_window_realize;
@@ -335,7 +335,7 @@ index eb75b42a23b3..58ec94aee3d2 100644
 2.5.0
 
 
-From e85b099179ce4cbdedac269460b82aff38a0fa91 Mon Sep 17 00:00:00 2001
+From 8ecbda047d7c15bd6b387e9b7128e688708303e7 Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
 Subject: [PATCH 3/6] screen, window: Extra padding around transparent
@@ -427,10 +427,10 @@ index 92e8bb387d03..1718d42edaa8 100644
  terminal_screen_button_press (GtkWidget      *widget,
                                GdkEventButton *event)
 diff --git a/src/terminal-window.c b/src/terminal-window.c
-index 58ec94aee3d2..49cb3dc74f08 100644
+index 1616689b3765..353647903af0 100644
 --- a/src/terminal-window.c
 +++ b/src/terminal-window.c
-@@ -2293,15 +2293,21 @@ terminal_window_draw (GtkWidget *widget,
+@@ -2295,15 +2295,21 @@ terminal_window_draw (GtkWidget *widget,
  {
    if (gtk_widget_get_app_paintable (widget))
      {
@@ -462,7 +462,7 @@ index 58ec94aee3d2..49cb3dc74f08 100644
 2.5.0
 
 
-From 38cd660bbd57cd3223a7714acac33cbd1d046982 Mon Sep 17 00:00:00 2001
+From 7b7857a6a836ffa7e0f463ac29275b6a8046a578 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 27 Jan 2015 18:40:13 +0100
 Subject: [PATCH 4/6] Support desktop notifications from OSC 777
@@ -784,7 +784,7 @@ index 20cfbceb36b0..a987025e0524 100644
 2.5.0
 
 
-From f3027e8dc64dfbb4d3e54b11d759b4ec3ed222d4 Mon Sep 17 00:00:00 2001
+From b4649ac67420b236eab398cb1dc95584ad5c3178 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Thu, 29 Jan 2015 11:47:21 +0100
 Subject: [PATCH 5/6] Sprinkle debug messages for notifications
@@ -867,7 +867,7 @@ index 9a769146c5d7..31843a09d055 100644
 2.5.0
 
 
-From 2253900d75d67d8cfa040a7763504c48c7b790d6 Mon Sep 17 00:00:00 2001
+From 6e4294c058e911b58b259b74236fa468d2f80a67 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
 Subject: [PATCH 6/6] Restore translations for transparency
@@ -918,7 +918,7 @@ Subject: [PATCH 6/6] Restore translations for transparency
  po/ko.po          | 3 +++
  po/ku.po          | 4 ++--
  po/lt.po          | 3 +++
- po/lv.po          | 3 +++
+ po/lv.po          | 2 ++
  po/mai.po         | 4 ++--
  po/mg.po          | 4 ++--
  po/mk.po          | 4 ++--
@@ -959,7 +959,7 @@ Subject: [PATCH 6/6] Restore translations for transparency
  po/zh_CN.po       | 3 +++
  po/zh_HK.po       | 3 +++
  po/zh_TW.po       | 3 +++
- 86 files changed, 209 insertions(+), 96 deletions(-)
+ 86 files changed, 208 insertions(+), 96 deletions(-)
 
 diff --git a/po/am.po b/po/am.po
 index 27a7e9640668..04a8ad9f36a3 100644
@@ -1037,7 +1037,7 @@ index b0f2e3eac8b8..877f114954e0 100644
  #: ../src/gnome-terminal.glade2.h:103
  msgid "_Update login records when command is launched"
 diff --git a/po/be.po b/po/be.po
-index fca0ae4617d4..74ff3291321a 100644
+index 1e45906547be..cd3fe0b7b6b2 100644
 --- a/po/be.po
 +++ b/po/be.po
 @@ -2015,3 +2015,6 @@ msgstr ""
@@ -1100,7 +1100,7 @@ index 49e710859ac9..fccfa86de311 100644
  msgid "Keyboard shortcut to make font normal-size"
  msgstr "Kratica tastature za postavljanje fonta na normalnu veličinu"
 diff --git a/po/ca.po b/po/ca.po
-index 55caef12594f..d201f403e2e4 100644
+index c80c2572d11e..abe75f0ba7f1 100644
 --- a/po/ca.po
 +++ b/po/ca.po
 @@ -2304,3 +2304,6 @@ msgstr "Tanca la _finestra"
@@ -1163,7 +1163,7 @@ index 66c0aac6320e..7c0681159ee0 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/de.po b/po/de.po
-index f0f16e036272..48efa8f1ba12 100644
+index a6983deeffff..90424ed94627 100644
 --- a/po/de.po
 +++ b/po/de.po
 @@ -3259,8 +3259,8 @@ msgstr "Fenster _schließen"
@@ -1301,7 +1301,7 @@ index 52856cbdd6a4..2a89999af2bf 100644
 +msgid "Transparent background"
 +msgstr "پس‌زمینه‌ی شفاف"
 diff --git a/po/fi.po b/po/fi.po
-index 02bddc5c6407..cf84950057eb 100644
+index a8cd6e1cb1f1..db7df1010def 100644
 --- a/po/fi.po
 +++ b/po/fi.po
 @@ -2294,6 +2294,9 @@ msgstr "_Sulje ikkuna"
@@ -1499,7 +1499,7 @@ index 8415e88f94ff..3717b7e75dcd 100644
  
  #: ../src/gnome-terminal.glade2.h:87
 diff --git a/po/kk.po b/po/kk.po
-index 3573937d4f88..862b095e4988 100644
+index 92d0f5cd5d7a..64f742eab956 100644
 --- a/po/kk.po
 +++ b/po/kk.po
 @@ -2208,3 +2208,6 @@ msgstr "Терезені жа_бу"
@@ -1558,14 +1558,13 @@ index 974c35354b07..6b1674621446 100644
 +msgid "Transparent background"
 +msgstr "Permatomas fonas"
 diff --git a/po/lv.po b/po/lv.po
-index 42a9b35ad3eb..8cb9a837d66b 100644
+index 0892f4b063c2..a6aec64d211f 100644
 --- a/po/lv.po
 +++ b/po/lv.po
-@@ -2261,3 +2261,6 @@ msgstr ""
- #: ../src/terminal-window.c:3727
+@@ -2231,3 +2231,5 @@ msgstr ""
  msgid "C_lose Window"
  msgstr "Aizvērt _logu"
-+
+ 
 +msgid "Transparent background"
 +msgstr "Caurspīdīgs fons"
 diff --git a/po/mai.po b/po/mai.po
@@ -1801,10 +1800,10 @@ index b1de52c2ff34..a16ac4937d1a 100644
  #: ../src/profile-preferences.glade.h:70
  msgid "_Update login records when command is launched"
 diff --git a/po/pt.po b/po/pt.po
-index a361c662424f..ac7297e80ec4 100644
+index 0de7ba0d39f9..fce6e92ec874 100644
 --- a/po/pt.po
 +++ b/po/pt.po
-@@ -3033,8 +3033,8 @@ msgstr "Fechar jane_La"
+@@ -3193,8 +3193,8 @@ msgstr "Fechar jane_la"
  #~ msgid "Background image _scrolls"
  #~ msgstr "Imagem de fundo _rola"
  
@@ -1816,7 +1815,7 @@ index a361c662424f..ac7297e80ec4 100644
  #~ msgid "S_hade transparent or image background:"
  #~ msgstr "Transparente som_breado ou imagem de fundo:"
 diff --git a/po/pt_BR.po b/po/pt_BR.po
-index 25cfa6ef2614..94a8df632ae6 100644
+index ff624815e4a9..d87c3702f3bd 100644
 --- a/po/pt_BR.po
 +++ b/po/pt_BR.po
 @@ -3056,3 +3056,6 @@ msgstr "_Fechar janela"

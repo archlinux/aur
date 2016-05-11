@@ -2,20 +2,20 @@
 # Contributor: Fernando Fernandez <fernando@softwareperonista.com.ar>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgname=gnome-terminal-fedora
-_pkgname=gnome-terminal
-pkgver=3.20.1
+_pkgname='gnome-terminal'
+pkgname="${_pkgname}-fedora"
+pkgver=3.20.2
 pkgrel=1
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 arch=('i686' 'x86_64')
+url='https://wiki.gnome.org/Apps/Terminal'
 license=('GPL')
-depends=('vte3-notification>=0.44.0' 'gsettings-desktop-schemas' 'dconf' 'gtk3>=3.12.0' 'glib2>=2.42.0')
+depends=('vte3-notification>=0.44.2' 'gsettings-desktop-schemas' 'dconf' 'gtk3>=3.12.0' 'glib2>=2.42.0')
 makedepends=('gnome-doc-utils' 'intltool' 'itstool' 'docbook-xsl' 'desktop-file-utils'
              'libnautilus-extension' 'appdata-tools' 'gnome-shell' 'gconf' 'vala' 'yelp-tools')
-options=('!emptydirs')
-url='https://www.gnome.org'
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
+options=('!emptydirs')
 install="${pkgname}.install"
 source=(
 	"https://download.gnome.org/sources/${_pkgname}/${pkgver::4}/${_pkgname}-${pkgver}.tar.xz"
@@ -24,9 +24,9 @@ source=(
 	'org.gnome.Terminal.gschema.override'
 )
 sha256sums=(
-	'98b7f48b13b37f05c92aa6b09006f608985efaf5440a1d76c28eda5f46b50894'
+	'f5383060730f1de70af35e917f82d5b6a14d963ad9cfd6a0e705f90011645a23'
 	'83c42ed513e374c181b23da4f9fce39e197c1e09ae328147b2b2bcdfbc4c99d7'
-	'e9a0c700dd6e52073048d5f025108c583529abae9dce743f40a27fa95f7cb883'
+	'34d2fb95873334dd79ff76dda6a69692b0f390e9ac1c9795052020e847a680ed'
 	'5409b35d1940443d29d810de0560d3303eb74c009e661e8fbfa1030e5ffde92e'
 )
 
@@ -41,10 +41,10 @@ prepare () {
 
 build() {
 	cd "${_pkgname}-${pkgver}"
-	./configure --prefix=/usr \
-	            --sysconfdir=/etc \
-	            --localstatedir=/var \
-	            --libexecdir=/usr/lib/${_pkgname} \
+	./configure --prefix='/usr' \
+	            --sysconfdir='/etc' \
+	            --localstatedir='/var' \
+	            --libexecdir="/usr/lib/${_pkgname}" \
 	            --disable-static \
 	            --disable-gterminal \
 	            --disable-migration \
