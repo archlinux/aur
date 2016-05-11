@@ -4,7 +4,7 @@
 
 pkgname=ffmpeg-full
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with all options)'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('GPL3' 'custom:UNREDISTRIBUTABLE')
 depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame'
          'libass' 'libavc1394' 'libbluray' 'libiec61883' 'libmodplug'
          'libpulse' 'libsoxr' 'libssh' 'libtheora' 'libva' 'libvdpau' 'libwebp'
-         'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
+         'netcdf' 'opencore-amr' 'openjpeg' 'opus' 'schroedinger' 'sdl' 'speex'
          'v4l-utils' 'xvidcore' 'zlib'
          'libdcadec.so' 'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so'
          'libvpx.so' 'libx264.so' 'libx265.so'
@@ -43,18 +43,16 @@ build() {
   ./configure \
     --prefix=/usr \
     --extra-cflags="-I/usr/include/nvidia-sdk" \
+    --extra-cxxflags="-std=gnu++98" \
     --disable-debug \
     --disable-static \
     --disable-stripping \
-    --enable-dxva2 \
-    --enable-vaapi \
-    --enable-vdpau \
-    --enable-shared \
     --enable-avisynth \
     --enable-avresample \
     --enable-chromaprint \
     --enable-decoder=atrac3 \
     --enable-decoder=atrac3p \
+    --enable-dxva2 \
     --enable-fontconfig \
     --enable-frei0r \
     --enable-gcrypt \
@@ -120,6 +118,7 @@ build() {
     --enable-libzimg \
     --enable-libzmq \
     --enable-libzvbi \
+    --enable-netcdf \
     --enable-nonfree \
     --enable-nvenc \
     --enable-openal \
@@ -127,7 +126,10 @@ build() {
     --enable-opengl \
     --enable-openssl \
     --enable-runtime-cpudetect \
+    --enable-shared \
     --enable-swresample \
+    --enable-vaapi \
+    --enable-vdpau \
     --enable-version3
 
   make
@@ -142,46 +144,5 @@ package() {
   install -Dm755 tools/qt-faststart "$pkgdir"/usr/bin/qt-faststart
   install -Dm644 "$srcdir"/UNREDISTRIBUTABLE.txt "$pkgdir/usr/share/licenses/$pkgname/UNREDISTRIBUTABLE.txt"
 }
-
-# How to audit the ./configure flags:
-#
-# cut -c 3- <<'# EOF' | sh
-# cd src/ffmpeg-2.2.1
-# export DISABLED='
-# # debugging flags follow:
-# --enable-coverage
-# --enable-extra-warnings
-# --enable-ftrapv
-# --enable-memalign-hack
-# --enable-memory-poisoning
-# --enable-random
-# --enable-xmm-clobber-test
-# # we do not want this:
-# --enable-cross-compile          # not cross building
-# --enable-gray                   # slow
-# --enable-hardcoded-tables       # no advantage
-# --enable-lto                    # slow build
-# --enable-shared                 # handled by options before --prefix
-# --enable-small                  # we want SPEED instead
-# --enable-incompatible-fork-abi  # DO NOT WANT
-# --enable-incompatible-libav-abi #
-# --enable-neon-clobber-test      # debug stuff
-# --enable-rpath                  # not needed
-# --enable-raise-major            # incompatible
-# # this stuff does not build:
-# --enable-libflite               # configure fail: /usr/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../lib/libflite.a(au_alsa.o): In function "audio_open_alsa": (.text+0x20): undefined reference to "snd_pcm_hw_params_sizeof"
-# --enable-libilbc                # configure fail: /tmp/ffconf.lccg5Ux6.c:1:18: fatal error: ilbc.h: No such file or directory
-# --enable-libnut                 # configure fail: ERROR: libnut not found (libnut-git installs no library)
-# --enable-libquvi                # configure fail: ERROR: libquvi not found (wrong version)
-# --enable-libshine               # configure fail: ERROR: libshine not found: /tmp/ffconf.K2xc6imx.c:2:53: error: ‘shine_encode_frame‘ undeclared (first use in this function)
-# --enable-libstagefright-h264    # not in AUR
-# --enable-libxavs                # does not build from AUR: /usr/bin/ld: common/i386/deblock.o: relocation R_X86_64_32 against ".rodata" can not be used when making a shared object; recompile with -fPIC
-# --enable-decklink               # do not ask me, will try again later. which AUR package?
-# # this stuff is not for linux/x86:
-# --enable-sram                   # not x86
-# --enable-thumb                  # not x86
-# '
-# ./configure --help | perl -ne 'for(/--enable-([0-9a-z-]+)\s/) { if($ENV{DISABLED} !~ /^--enable-$_\b/m) { print "    --enable-$_ \\\n"; } }' | sort -u
-# EOF
 
 # vim:set ts=2 sw=2 et:
