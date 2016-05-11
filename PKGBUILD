@@ -1,7 +1,7 @@
 # Maintainer: jdn06 <jdn06.jdn06@outlook.fr>
 pkgname=aqualung-git
 _pkgname=aqualung
-pkgver=1.02g6b39024
+pkgver=1.05g05dfcb7
 pkgrel=1
 pkgdesc="High quality music player w/ gapless support"
 arch=('i686' 'x86_64')
