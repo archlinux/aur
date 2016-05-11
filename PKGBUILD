@@ -1,9 +1,9 @@
-# Maintainer: Shujie Zhang <zhang.shujie87@gmail.com>
+# Maintainer: David Runge <dave@sleepmap.de>
 # Contributor: Shujie Zhang <zhang.shujie87@gmail.com>
 
 pkgname=owncloud-news-updater
 pkgver=9.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="This Python library is a parllel feed updater for the ownCloud News app"
 arch=('any')
 url="https://github.com/owncloud/news-updater"
