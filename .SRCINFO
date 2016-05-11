@@ -1,0 +1,19 @@
+pkgbase = syncthing-inotify-git
+	pkgdesc = Inotify file watcher for Syncthing
+	pkgver = 0.7.r9.gef7839c
+	pkgrel = 1
+	url = https://github.com/syncthing/syncthing-inotify
+	arch = i686
+	arch = x86_64
+	license = MPL
+	makedepends = git
+	makedepends = go
+	makedepends = godep
+	depends = syncthing
+	provides = syncthing-inotify
+	conflicts = syncthing-inotify
+	source = syncthing-inotify-0.7.r9.gef7839c::git+https://github.com/syncthing/syncthing-inotify.git
+	sha256sums = SKIP
+
+pkgname = syncthing-inotify-git
+
