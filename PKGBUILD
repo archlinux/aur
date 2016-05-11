@@ -18,6 +18,7 @@ source+=(
   "${pkgname}.zip::https://addons.mozilla.org/firefox/downloads/latest/${_extname=${pkgname#*-*-}}/platform:2/"
   ".version::https://services.addons.mozilla.org/firefox/api/1.5/addon/$_extname"
 )
+[ ${url++} ] || url="https://addons.mozilla.org/${pkgname%%-*}/addon/$_extname/"
 md5sums+=('SKIP')
 noextract+=("${pkgname}.zip")
 makedepends+=(unzip)
