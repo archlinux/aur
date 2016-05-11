@@ -1,0 +1,14 @@
+post_install(){
+    echo "Creating user augenkrebs for use with the systemd service"
+    useradd -u 42 -m augenkrebs &>/dev/null
+    echo "If you want to use the systemd service in /usr/lib/systemd/system,"
+    echo "please edit it beforehand to include the log in manager of your"
+    echo "choice as target. "
+    echo "You will also probably need to create and edit the X startup file"
+    echo "of the augenkrebs user."
+}
+
+post_remove(){
+    userdel augenkrebs &>/dev/null
+}
+

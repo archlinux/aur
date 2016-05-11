@@ -1,0 +1,19 @@
+pkgbase = augenkrebs-git
+	pkgdesc = Control VLC playback via a web interface. Internetabspielgerät @shackspace.
+	pkgver = v0.3.r0.g7d54496
+	pkgrel = 1
+	url = http://github.com/shackspace/augenkrebs/
+	install = augenkrebs.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-flask
+	depends = vlc
+	depends = ttf-freefont
+	depends = chromium
+	source = augenkrebs-git::git://github.com/shackspace/augenkrebs.git
+	md5sums = SKIP
+
+pkgname = augenkrebs-git
+

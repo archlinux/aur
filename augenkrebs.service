@@ -1,0 +1,17 @@
+[Unit]
+Description=augenkrebs server
+After=network.target
+#After=slim.target 
+# ^replace by the X target of your choice
+
+[Service]
+Type=simple
+User=augenkrebs
+ExecStart=/usr/bin/augenkrebs
+Environment=DISPLAY=:0
+
+# Give a reasonable amount of time for the server to start up/shut down
+TimeoutSec=300
+
+[Install]
+WantedBy=graphical.target
