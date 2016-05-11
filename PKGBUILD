@@ -32,7 +32,7 @@ prepare() {
   echo "and it will take a lot of time (~ hours)."
   echo "It is better to compile it using makepkg directly."
   sleep 5
-  cd "$srcdir"/gcc
+  cd "$srcdir"/gcc-${_commit}*
 
   # Link isl/cloog for in-tree builds
   ln -sf ../isl-${_islver} isl
@@ -57,7 +57,7 @@ prepare() {
 build() {
 
   # Configure and build gcc-gcj.
-  cd $srcdir/gcc/build
+  cd ${srcdir}/gcc-${_commit}*/build
 
   ../configure                          \
       --prefix=/usr                     \
@@ -87,7 +87,7 @@ build() {
 package() {
 
   # Install libjava.
-  cd ${srcdir}/gcc/build
+  cd ${srcdir}/gcc-${_commit}*/build
   make -j1 DESTDIR=${pkgdir} install-target-libjava
 
   # Install java-common.
