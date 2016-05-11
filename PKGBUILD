@@ -8,7 +8,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-patched
 pkgver=9.22
-pkgrel=3
+pkgrel=4
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with fixed font spacing'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -40,7 +40,7 @@ prepare() {
   patch -p0 -i ../font-width-fix.patch
   patch -p0 -i ../line-spacing-fix.patch
   patch -p0 -i ../sgr-mouse-mode.patch
-  patch -p1 -i ../enable-wide-glyphs.patch
+  # patch -p1 -i ../enable-wide-glyphs.patch
 }
 
 build() {
