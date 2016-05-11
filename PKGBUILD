@@ -1,11 +1,13 @@
-#Maintainer: DaZ <daz.root+arch@gmail.com> 
+# Maintainer: nixi <nixiawoo@gmail.com>
+# Contributor: DaZ <daz.root+arch@gmail.com> 
+
 pkgname=slic3r-bin
-pkgrel=1
+pkgrel=2
 pkgdesc="An STL-to-GCODE translator for RepRap 3D printers, aiming to be a modern and fast alternative to Skeinforge"
 pkgver=1.2.9
 _pkgver="1-2-9-stable"
 arch=('i686' 'x86_64')
-url=("http://www.slic3r.org")
+url="http://www.slic3r.org"
 conflicts=('slic3r' 'slic3r-git' 'slic3r-bin')
 depends=('perl' 'libpng12')
 provides=('slic3r')
@@ -17,7 +19,6 @@ if [ "$CARCH" = "i686" ]; then
              '042b380323c81e7fef15c6907e4ed07f')
 elif [ "$CARCH" = "x86_64" ]; then
     _arch='x86_64'
-
     md5sums=('b7858f87d9c2612cf46f3760e8dc9796'
             '042b380323c81e7fef15c6907e4ed07f')
 fi
@@ -25,8 +26,7 @@ fi
 source=("http://dl.slic3r.org/linux/slic3r-linux-${_arch}-${_pkgver}.tar.gz"
         "slic3r.desktop")
 
-package()
-{
+package() {
     install -d "${pkgdir}/opt"
 
     cp -R "${srcdir}/Slic3r" "${pkgdir}/opt/slic3r"
