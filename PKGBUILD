@@ -15,11 +15,11 @@
 # archzfs github page.
 #
 pkgname="spl-linux-git"
-pkgver=0.6.5_r53_g5e39e4f_4.5.2_1
+pkgver=0.6.5_r53_g5e39e4f_4.5.3_1
 pkgrel=1
 pkgdesc="Solaris Porting Layer kernel modules."
-depends=("spl-utils-linux-git" "kmod" "linux=4.5.2")
-makedepends=("linux-headers=4.5.2" "git")
+depends=("spl-utils-linux-git" "kmod" "linux=4.5.3")
+makedepends=("linux-headers=4.5.3" "git")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
 source=("git+https://github.com/zfsonlinux/spl.git")
@@ -34,7 +34,7 @@ build() {
     cd "${srcdir}/spl"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
-                --with-linux=/usr/lib/modules/4.5.2-1-ARCH/build \
+                --with-linux=/usr/lib/modules/4.5.3-1-ARCH/build \
                 --with-config=kernel
     make
 }
@@ -44,5 +44,5 @@ package() {
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
     # Remove reference to ${srcdir}
-    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.5.2-1-ARCH/Module.symvers
+    sed -i "s+${srcdir}++" ${pkgdir}/usr/src/spl-*/4.5.3-1-ARCH/Module.symvers
 }
