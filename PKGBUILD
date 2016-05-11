@@ -1,8 +1,9 @@
-# Maintainer: David Runge <david[d]runge[a]frqrec[d]com>
+# Maintainer: David Runge <dave@sleepmap.de>
+
 pkgname=grub-customizer
-pkgver=5.0.4
+pkgver=5.0.6
 pkgbranch=5.0
-pkgrel=2
+pkgrel=1
 pkgdesc="A graphical grub2 settings manager"
 url="https://launchpad.net/grub-customizer"
 arch=('i686' 'x86_64')
@@ -16,7 +17,7 @@ options=()
 install=${pkgname}.install
 source=("https://launchpad.net/${pkgname}/${pkgbranch}/${pkgver}/+download/${pkgname}_${pkgver}.tar.gz" \
         grub.cfg)
-md5sums=('5ae791e8f6adace61c50cf114c3fa3e9'
+md5sums=('9c8f40bfbe0476c57bf6269ba5c9535c'
          'f914f23d66341925238fd0d1922d2b85')
 package(){
   cd "$srcdir"/$pkgname-$pkgver/
