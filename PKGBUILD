@@ -11,10 +11,10 @@ source=(git://github.com/flonatel/pipexec.git)
 md5sums=(SKIP)
 _pkgname=pipexec
 
-pkgver() {
-  cd "$_pkgname"
-  git describe --long --tags | sed 's/-.*-/-/;s/-/./'
-}
+#pkgver() {
+#  cd "$_pkgname"
+#  git describe --long --tags | sed 's/-.*-/-/;s/-/./'
+#}
 
 build() {
   cd "$_pkgname"
