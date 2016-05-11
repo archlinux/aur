@@ -1,0 +1,15 @@
+pkgbase = hostmux-git
+	pkgdesc = A wrapper script for tmux to multiplex commands to ssh hosts
+	pkgver = 1.1.0.r1.g9de5250
+	pkgrel = 1
+	url = http://github.com/hukl/hostmux
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = tmux
+	optdepends = zsh: completion file
+	source = hostmux-git::git+http://github.com/hukl/hostmux.git
+	md5sums = SKIP
+
+pkgname = hostmux-git
+
