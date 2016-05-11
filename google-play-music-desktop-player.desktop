@@ -8,3 +8,4 @@ Type=Application
 StartupNotify=true
 Categories=GNOME;GTK;Multimedia;
 MimeType=text/plain;
+StartupWMClass=Google Play Music Desktop Player

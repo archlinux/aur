@@ -16,7 +16,7 @@ source=("git+https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player
         "google-play-music-desktop-player.desktop"
         "google-play-music-desktop-player-git.install")
 md5sums=('SKIP'
-         '377409fe129d5c93f4edf7e598a6e67f'
+         '0021bdeb1bb7961a56cea2db9ca75245'
          'e297b473f8fd1b6f26642da1d7206123')
 
 pkgver() {
