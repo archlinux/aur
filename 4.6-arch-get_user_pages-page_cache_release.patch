@@ -1,0 +1,38 @@
+--- 16.5/common/lib/modules/fglrx/build_mod/firegl_public.c	2015-12-18 19:47:41.000000000 +0100
++++ 16.5b/common/lib/modules/fglrx/build_mod/firegl_public.c	2016-05-09 20:29:48.227025117 +0200
+@@ -3220,7 +3220,11 @@
+     int ret;
+ 
+     down_read(&current->mm->mmap_sem);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,6,0)
++    ret = get_user_pages_remote(current, current->mm, vaddr, page_cnt, 1, 0, (struct page **)page_list, NULL);
++#else
+     ret = get_user_pages(current, current->mm, vaddr, page_cnt, 1, 0, (struct page **)page_list, NULL);
++#endif
+     up_read(&current->mm->mmap_sem);
+ 
+     return ret;
+@@ -3238,7 +3242,11 @@
+     int ret;
+ 
+     down_read(&current->mm->mmap_sem);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,6,0)
++    ret = get_user_pages_remote(current, current->mm, vaddr, page_cnt, 0, 0, (struct page **)page_list, NULL);
++#else
+     ret = get_user_pages(current, current->mm, vaddr, page_cnt, 0, 0, (struct page **)page_list, NULL);
++#endif
+     up_read(&current->mm->mmap_sem);
+ 
+     return ret;
+@@ -3249,7 +3257,11 @@
+     unsigned int i;
+     for (i=0; i<page_cnt; i++)
+     {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4,6,0)
++        put_page((struct page*)page_list[i]);
++#else
+         page_cache_release((struct page*)page_list[i]);
++#endif
+     }
+ }
+ 
