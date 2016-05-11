@@ -23,7 +23,7 @@ prepare() {
 }
 
 pkgver() {
-  strings opt/google/chrome/chrome | sed -n '/ (version:/{n;p}'
+  awk 'match($0,/\(version: \0?([0-9.]+)/,a) {print a[1];}' opt/google/chrome/chrome
 }
 
 package() {
