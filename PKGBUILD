@@ -3,7 +3,7 @@
 # Contributor: Sascha Biermmanns <saschakb at gmail dot com>
 
 pkgname=sbase-git
-pkgver=0.r1472.g47c05f9
+pkgver=0.r1717.gc7ea20a
 pkgrel=1
 pkgdesc='A suckless variant of the *nix core utilities - git checkout'
 arch=('i686' 'x86_64')
@@ -30,7 +30,7 @@ pkgver() {
 
 build() {
 	cd ${srcdir}/sbase/
-#	sed -i 's/-D_BSD_SOURCE//' config.mk
+
 	make
 }
 
