@@ -1,6 +1,6 @@
 pkgbase = mpir
 	pkgdesc = Library for multiple precision integers and rationals
-	pkgver = 2.7.0
+	pkgver = 2.7.2
 	pkgrel = 1
 	url = http://www.mpir.org/
 	install = mpir.install
@@ -8,8 +8,8 @@ pkgbase = mpir
 	arch = x86_64
 	license = LGPL
 	depends = gcc-libs
-	source = http://www.mpir.org/mpir-2.7.0.tar.lz
-	md5sums = b1d6cd2c6ab8693bb71148c638a07bc7
+	source = http://www.mpir.org/mpir-2.7.2.tar.lz
+	md5sums = 2d47419dac50cc4a89c8c23421e66db1
 
 pkgname = mpir
 
