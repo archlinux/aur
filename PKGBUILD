@@ -3,13 +3,12 @@
 
 pkgname=vivacious-colors-gtk-theme
 pkgver=16.04.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Vivacious Colors GTK Theme by the RAVEfinity Open Design Team. Features a clean, vibrant and customizable look in 4 Styles. Light, Dark, Blackout, Fusion (Hybrid). Every style comes in 13 vivid colors. In Regular & Pro Versions."
 arch=('any')
 url="http://www.ravefinity.com/p/vivacious-colors-gtk-theme.html"
 license=('GPL2')
 options=('!strip' '!zipman')
-url="https://aur.archlinux.org/packages/vivacious-colors-gtk-theme/"
 depends=('gtk-engine-murrine')
 optdepends=('vivacious-colors' 'gtk3>=3.16' 'gtk3<3.20')
 source=("$pkgname-$pkgver.tar.gz::https://googledrive.com/host/0B7iDWdwgu9QARTktREI0bWVTbzg")
