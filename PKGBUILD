@@ -1,7 +1,7 @@
 # Maintainer: Lukas Werling <lukas.werling@gmail.com>
 pkgname=elm-platform
-pkgver=0.16
-pkgrel=2
+pkgver=0.17
+pkgrel=1
 pkgdesc="Bundle of all core development tools for the Elm language."
 arch=('i686' 'x86_64')
 url="http://elm-lang.org"
@@ -16,18 +16,11 @@ source=(
   elm-reactor.zip::https://github.com/elm-lang/elm-reactor/archive/${pkgver}.zip
   elm-repl.zip::https://github.com/elm-lang/elm-repl/archive/${pkgver}.zip
 )
-sha256sums=('c43af1b31dc714ad8855559beedfc1aafc3c39a6c7a495803bf959d7fcb16504'
-            '9a55965c8cdfbecb62c71f2474a49f0f40b7f356cf5400aaee841fc88c161962'
-            '82520c6d97ffde781149cf53e65e2fc81b3a39578912a0f053af9d9ccf26df2c'
-            '35d83d6c2d0b4590070cb219176fe8ad3e442b314f652b539b4980f6038937dc'
-            '930fc39b361675909f755ec1badfed451552c106ca0cc6a8778155569f1a5d4d')
-
-prepare() {
-  # Don't use cabal's path system for finding data files in elm-reactor as the
-  # paths during build will differ from those during execution.
-  cd "$srcdir/elm-reactor-$pkgver"
-  sed -i 's#Reactor\.getDataFileName#(\\n -> return $ "/usr/share/elm-reactor/" ++ n)#' "backend/Utils.hs"
-}
+sha256sums=('1dc1a5fa5cd09936dee8fbba1f0197527bb988b2cc045919ce6bbb9a6706e122'
+            'dc474d7192ecb440db279e142d0d1605bf8fc76ff0328088f8d931780b4c4f5c'
+            '041c37f908272ac1e17c8aeaf09aac1e08404e8511ea7edb69c7899bd1291731'
+            'f03b07018eb3c3c4cc4c8f311b8f33572371e20ae51f4eb4fb5247d98e5f51dc'
+            'e4c7fa471cfc1b7fc37e38a4cdaffe90b3f06c5f52fc20e6e8167eb1ef8defe6')
 
 # This does not actually use the build script in the elm-lang/elm-platform
 # repository, but the commands below are taken from there.
@@ -45,7 +38,7 @@ build() {
   cabal sandbox add-source ${repos[@]}
   cabal install -j --only-dependencies --ghc-options='-w' ${repos[@]}
 
-  cabal install -j --ghc-options='-XFlexibleContexts' ${repos1[@]}
+  cabal install -j ${repos1[@]}
   PATH="$(pwd)/.cabal-sandbox/bin:$PATH" cabal install -j ${repos2[@]}
 }
 
@@ -58,9 +51,6 @@ package() {
   install -Dm755 "$binpath/elm-package" "$pkgdir/usr/bin/elm-package"
   install -Dm755 "$binpath/elm-reactor" "$pkgdir/usr/bin/elm-reactor"
   install -Dm755 "$binpath/elm-repl"    "$pkgdir/usr/bin/elm-repl"
-
-  install -d -m755 "$pkgdir/usr/share/elm-reactor"
-  cp -r -t "$pkgdir/usr/share/elm-reactor" elm-reactor-$pkgver/assets/*
 
   install -Dm644 "elm-compiler-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/elm-platform/LICENSE"
 }
