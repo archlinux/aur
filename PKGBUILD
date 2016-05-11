@@ -6,7 +6,7 @@
 
 pkgname=gcc-gcj
 pkgver=6.1.1
-pkgrel=1
+pkgrel=2
 _islver=0.17
 _cloogver=0.18.4
 _commit=80f78834
@@ -20,10 +20,10 @@ optdepends=('python2: for running /usr/bin/aot-compile'
   'java-environment: for runnig some jars')
 options=('!libtool')
 install=$pkgname.install
-source=("git://gcc.gnu.org/git/gcc.git#commit=${_commit}"
+source=("https://github.com/gcc-mirror/gcc/archive/${_commit}.tar.gz"
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
 	"http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz")
-sha512sums=('SKIP'
+sha512sums=('fdd9204e4c76895240401aa77dccb860cda4ff44a6a18a817da208c69878ceca32c0281d6e234616cf01eec04d6510e8e0eed23b8d609472efbc23fe2027eb6b'
             '8a2a51d8acbf966c37868fd714ee46cf0b87e1f9d8d9d3148eb2c4b331b7170916d7392fee7fa0af73988a3b8583a6e937dd643b5a574b7e61a09c5bc3347c27'
             'd35d67b08ffe13c1a010b65bfe4dd02b0ae013d5b489e330dc950bd3514defca8f734bd37781856dcedf0491ff6122c34eecb4b0fe32a22d7e6bdadea98c8c23')
 
