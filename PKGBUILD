@@ -6,7 +6,7 @@
 
 pkgname=clion
 _pkgname=CLion
-pkgver=2016.1.1
+pkgver=2016.1.2
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc="C/C++ IDE. Free 30-day trial."
@@ -21,13 +21,13 @@ optdepends=(
   'gcc: GNU compiler'
   'clang: LLVM compiler'
   'biicode: C/C++ dependency manager'
-  'gtest: C++ testing',
-  'swift-language: Swift programming language support (Also requires the plugin)',
-  'python: Python programming language support (Also requires the plugin)',
+  'gtest: C++ testing'
+  'swift-language: Swift programming language support (Also requires the plugin)'
+  'python: Python programming language support (Also requires the plugin)'
   'python2: Python 2 programming language support (Also requires the plugin)'
 )
 source=("https://download.jetbrains.com/cpp/${_pkgname}-${_pkgver}.tar.gz")
-sha256sums=('917b3fbd6127fb7ab49732c4078a7ea1f3e06a5f1ac763b72d1b7c4ef3ccb07a')
+sha256sums=('3c840d557595e0f29f9f9229be005be2c022799537fd3af9a0949bc5c564473c')
 noextract=("${_pkgname}-${_pkgver}.tar.gz")
 
 package() {
