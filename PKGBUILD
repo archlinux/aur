@@ -1,7 +1,7 @@
 # Maintainer: Robin Nehls <aur@manol.is>
 
 pkgname=gr-fosphor-git
-pkgver=4ae2f53
+pkgver=e1eb11b
 pkgrel=1
 pkgdesc="GNU Radio block for RTSA-like spectrum visualization using OpenCL and OpenGL acceleration"
 arch=('any')
