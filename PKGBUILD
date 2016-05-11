@@ -1,4 +1,4 @@
-# Maintainer: Samuel Mesa <samuelmesa@linuxmail.org>
+# Maintainer: Samuel Fernando Mesa Giraldo <samuelmesa@linuxmail.org>
 # Maintainer: SaultDon <sault.don gmail>
 # Contributor: Luigi Ranghetti <luigi.ranghetti@gmail.com>
 # Contributor: Dominik Fuchs <dominik.fuchs@wur.nl>
