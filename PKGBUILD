@@ -1,12 +1,12 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=claws-mail-git
-pkgver=3.13.2.r0.g60ad263
+pkgver=3.13.2.r137.gc4ebc9d
 pkgrel=1
 pkgdesc='A GTK+ based e-mail client - git checkout'
 arch=('i686' 'x86_64')
 license=('GPL3')
-url="http://www.claws-mail.org/"
+url='http://www.claws-mail.org/'
 depends=('gtk2' 'gnutls' 'startup-notification' 'enchant' 'gpgme' 'libetpan' 'compface'
 	'libsm' 'dbus-glib' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('git' 'spamassassin' 'bogofilter' 'valgrind'
@@ -31,7 +31,6 @@ optdepends=('python2:           needed for some tools and python plugin'
 replaces=('sylpheed-claws' 'claws-mail-extra-plugins')
 conflicts=('claws-mail-extra-plugins' 'claws-mail')
 provides=('claws' 'claws-mail')
-install=claws-mail.install
 source=('claws-mail::git://git.claws-mail.org/claws.git'
 	'http://www.eworm.de/download/linux/claws-timestamp.patch'
 	'http://www.eworm.de/download/linux/claws-git-version.patch')
