@@ -4,7 +4,7 @@
 
 pkgname=android-studio-dummy
 _pkgname=android-studio
-pkgver=2.1.0.9
+pkgver=2.1.1.0
 pkgrel=1
 pkgdesc='A new Android development environment based on IntelliJ IDEA, dummy package'
 arch=('i686' 'x86_64')
