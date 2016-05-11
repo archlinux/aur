@@ -3,13 +3,14 @@
 pkgname=plover
 pkgdesc="Free and open source real-time stenography engine."
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 license=('GPL2')
 depends=(
   'python2'
   'python2-appdirs'
   'python2-hidapi'
+  'python2-notify'
   'python2-pyserial'
   'python2-setuptools'
   'python2-simplejson'
