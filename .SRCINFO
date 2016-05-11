@@ -2,7 +2,7 @@ pkgbase = mozilla-extension-gnome-keyring-git
 	pkgdesc = Mozilla extension to store passwords and form logins in gnome-keyring.
 	pkgver = 0.11
 	pkgrel = 4
-	url = https://github.com/swick/moz-gnome-keyring-integration
+	url = https://github.com/swick/mozilla-gnome-keyring
 	arch = any
 	license = GPLv3
 	makedepends = git
@@ -10,7 +10,7 @@ pkgbase = mozilla-extension-gnome-keyring-git
 	depends = libgnome-keyring
 	provides = mozilla-extension-gnome-keyring=0.11
 	conflicts = mozilla-extension-gnome-keyring
-	source = mozilla-extension-gnome-keyring::git+https://github.com/swick/moz-gnome-keyring-integration
+	source = mozilla-extension-gnome-keyring::git+https://github.com/swick/mozilla-gnome-keyring
 	md5sums = SKIP
 
 pkgname = mozilla-extension-gnome-keyring-git
