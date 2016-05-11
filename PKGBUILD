@@ -8,10 +8,11 @@ arch=('x86_64' 'i686')
 url="https://github.com/gauteh/astroid"
 license=('GPL')
 groups=()
-depends=('notmuch' 'boost' 'boost-libs' 'gmime' 'gtkmm3' 'webkitgtk' 'gvim' 'libsass')
+depends=('notmuch' 'boost' 'boost-libs' 'gmime' 'gtkmm3' 'webkitgtk' 'libsass')
 makedepends=('scons' 'git' 'pkg-config')
 checkdepends=('notmuch-runtime')
-optdepends=()
+optdepends=('gvim: default editor'
+            'emacs: can be used as editor')
 provides=()
 conflicts=()
 replaces=()
