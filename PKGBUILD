@@ -3,7 +3,7 @@
 pkgname=plover-git
 pkgdesc="Free and open source real-time stenography engine."
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('GPL2')
 depends=(
@@ -30,7 +30,7 @@ sha1sums=(SKIP)
 
 pkgver() {
   cd "$pkgname"
-  git describe --tags | sed -n '/^v\([0-9.]\+\)\(-[0-9]\+\)\?\(-[0-9a-z]\+\)\?$/{s//\1\2\3/;s/-/./g;p;Q0};Q1'
+  git describe --tags --match='v[0-9]*' | sed -n '/^v\([0-9.]\+\)\(-[0-9]\+\)\?\(-[0-9a-z]\+\)\?$/{s//\1\2\3/;s/-/./g;p;Q0};Q1'
 }
 
 check() {
