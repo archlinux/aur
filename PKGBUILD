@@ -6,25 +6,36 @@
 
 pkgname=saga-gis
 _pkgname=saga
-pkgver=2.2.5
+pkgver=2.2.7
 pkgrel=1
 pkgdesc="A Geographic Information System (GIS) software with immense capabilities for geodata processing and analysis."
 url="http://www.saga-gis.org"
 license=("GPL3")
 arch=('i686' 'x86_64')
 depends=('wxgtk>=3.0.0'
+         'webkitgtk2'
          'proj'
          'gdal'
          'libtiff'
          'unixodbc'
          'jasper'
          'swig')
-optdepends=('opencv'
+optdepends=('opencv2'
             'vigra'
             'liblas'
             'libharu')
-source=("http://iweb.dl.sourceforge.net/project/saga-gis/SAGA%20-%202.2/SAGA%20${pkgver}/saga_${pkgver}.tar.gz")
-md5sums=('1553a967e8859d13bb8878f06a4ea549')
+source=("http://iweb.dl.sourceforge.net/project/saga-gis/SAGA%20-%202.2/SAGA%20${pkgver}/saga_${pkgver}.tar.gz"
+        "fix-opencv-module.patch")
+md5sums=('1b3aee20799b70c584d161dfae0ef354'
+         'b0ddf6378f393cf644ce5d26648ddd17')
+
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  dos2unix src/modules/imagery/imagery_opencv/opencv_nnet.h
+  dos2unix src/modules/imagery/imagery_opencv/opencv_nnet.cpp
+  # Fix build with opencv (Debian)
+  patch -Np0 -i "${srcdir}/fix-opencv-module.patch"
+}
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -46,7 +57,7 @@ build() {
               LIBS="`wx-config --version=3.0 --libs`"
 
   msg "Start compiling ..."
-  make -j5
+  make -j4
 }
 
 package () {
