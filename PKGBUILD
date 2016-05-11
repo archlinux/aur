@@ -6,7 +6,7 @@
 
 pkgname=sky
 pkgver=2.0.495
-pkgrel=1
+pkgrel=2
 pkgdesc="Lync & Skype for business on Linux"
 
 arch=(
@@ -39,17 +39,10 @@ package() {
     ar x "sky_ubuntu${_arch}_v${pkgver}.deb" >/dev/null
     tar -zxf data.tar.gz
 
-    local icu_libs
-    icu_libs="libicudata libicule libicutest libicuio libicui18n 
-        libicutu libicuuc libiculx"
-
-    # fix broken rpaths of bundled icu libs
-    chrpath -d "${srcdir}"/opt/sky_linux/sky
-    for lib in libsipw ${icu_libs}; do
-        chrpath -d "${srcdir}"/opt/sky_linux/lib/${lib}.so*
-    done
-    chrpath -d "${srcdir}/opt/sky_linux/platforminputcontexts/libfcitxplatforminputcontextplugin.so"
-
+		# delete broken and excessive RPATH/RUNPATH
+    find "${srcdir}/opt/sky_linux" -type f -name '*.so*' -exec chrpath -d {} \;
+    chrpath -d "${srcdir}/opt/sky_linux/sky"
+    
     cp -rf "${srcdir}/etc" "${pkgdir}/"
     install -Dm 644 "${srcdir}/usr/share/applications/sky.desktop" "${pkgdir}/usr/share/applications/sky.desktop"
     install -Dm 644 "${srcdir}/usr/share/pixmaps/sky.png" "${pkgdir}/usr/share/pixmaps/sky.png"
