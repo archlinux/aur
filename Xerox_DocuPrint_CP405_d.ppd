@@ -1,0 +1,2258 @@
+*PPD-Adobe: "4.3"
+*% Adobe Systems PostScript(R) Printer Description File
+*% Copyright 1987-1996 Adobe Systems Incorporated.
+*% All Rights Reserved.
+*% Permission is granted for redistribution of this file as
+*% long as this copyright notice is intact and the contents
+*% of the file is not altered in any way from its original form.
+*% End of Copyright statement
+*FileVersion: "0.9"
+*FormatVersion: "4.3"
+*LanguageEncoding: UTF-8
+*LanguageVersion: English
+*Manufacturer: "FX"
+*PCFileName: "FXKLAEE1.PPD"
+*Product: "(DocuPrint CP405 d)"
+*PSVersion: "(3018.103) 1"
+*ShortNickName: "FX DocuPrint CP405 d PS"
+*ModelName: "FX DocuPrint CP405 d v3018.103 PS"
+*NickName: "FX DocuPrint CP405 d PS v0.9"
+
+*% ==== Device Capabilities ===============
+*LanguageLevel: "3"
+*Protocols: TBCP PJL
+*1284Modes Parallel: Compat Nibble ECP
+*1284DeviceID: "MFG:FUJI XEROX;CMD:PJL,RASTER,DOWNLOAD,HBPL,PCLXL,PCL,POSTSCRIPT;MDL:DocuPrint CP405 d;CID:FX_PCL_COLOR;DES:FX DPCP405d;CLS:PRINTER;"
+
+
+
+*% === Options and Constraints =========
+*OpenGroup: InstallableOptions/Options Installed
+*OpenUI *InstalledMemory/Memory: PickOne
+*DefaultInstalledMemory: 1024Meg
+*InstalledMemory 256Meg/Standard 256MB: ""
+*InstalledMemory 512Meg/512MB: ""
+*InstalledMemory 768Meg/768MB: ""
+*InstalledMemory 1024Meg/1024MB: ""
+*?InstalledMemory: "
+    save
+    (Unknown) currentsystemparams /RamSize get
+    dup 268435456 eq{exch pop (256Meg) exch}if
+    dup 536870912 eq{exch pop (512Meg) exch}if
+    dup 805306368 eq{exch pop (768Meg) exch}if
+    dup 1073741824 eq{exch pop (1024Meg) exch}if
+    pop = flush
+    restore
+"
+*End
+*CloseUI: *InstalledMemory
+
+*OpenUI *FXPaperTrayConfiguration/Paper Tray Configuration: PickOne
+*DefaultFXPaperTrayConfiguration: 2Tray
+*FXPaperTrayConfiguration 1Tray/1-Tray: ""
+*FXPaperTrayConfiguration 2Tray/2-Tray: ""
+*?FXPaperTrayConfiguration: "
+save mark
+{
+  5 dict
+  dup 0 (1Tray) put
+  dup 1 (2Tray) put
+  currentpagedevice /InputAttributes get
+  4 -1 0 { 2 copy known { exch pop get exit }{ pop } ifelse } for
+  = flush
+} stopped { (Unknown) = flush } if
+cleartomark restore
+"
+*End
+*CloseUI: *FXPaperTrayConfiguration
+
+*OpenUI *FXHardDisk/Storage Device: PickOne
+*DefaultFXHardDisk: HardDisk
+*FXHardDisk None/Not Available: ""
+*FXHardDisk HardDisk/Hard Disk: ""
+*FXHardDisk RAMDisk/RAM Disk: ""
+*?FXHardDisk: "
+  save
+  (%disk0%) /IODevice resourcestatus
+  {pop pop (HardDisk)}
+  {
+    /Custom /ProcSet 2 copy resourcestatus {
+      pop pop
+      findresource /currentstorage get exec
+      {(RAMDisk)}{(None)} ifelse
+    } {(Unknown)} ifelse
+  } ifelse
+  = flush
+  restore
+"
+*End
+*CloseUI: *FXHardDisk
+
+*CloseGroup: InstallableOptions
+
+*UIConstraints: *FXPaperTrayConfiguration 1Tray *InputSlot 2ndTray
+*UIConstraints: *InputSlot 2ndTray *FXPaperTrayConfiguration 1Tray
+
+*UIConstraints: *FXHardDisk None *Collate True
+*UIConstraints: *Collate True *FXHardDisk None
+
+*UIConstraints: *InstalledMemory 256Meg *FXHardDisk RAMDisk
+*UIConstraints: *FXHardDisk RAMDisk *InstalledMemory 256Meg
+
+
+*UIConstraints: *PageSize Env10 *InputSlot 1stTray
+*UIConstraints: *PageSize Env10 *InputSlot 2ndTray
+*UIConstraints: *PageSize EnvMonarch *InputSlot 1stTray
+*UIConstraints: *PageSize EnvMonarch *InputSlot 2ndTray
+*UIConstraints: *PageSize EnvC5 *InputSlot 1stTray
+*UIConstraints: *PageSize EnvC5 *InputSlot 2ndTray
+*UIConstraints: *PageSize EnvDL *InputSlot 1stTray
+*UIConstraints: *PageSize EnvDL *InputSlot 2ndTray
+*UIConstraints: *InputSlot 1stTray *PageSize Env10
+*UIConstraints: *InputSlot 2ndTray *PageSize Env10
+*UIConstraints: *InputSlot 1stTray *PageSize EnvMonarch
+*UIConstraints: *InputSlot 2ndTray *PageSize EnvMonarch
+*UIConstraints: *InputSlot 1stTray *PageSize EnvC5
+*UIConstraints: *InputSlot 2ndTray *PageSize EnvC5
+*UIConstraints: *InputSlot 1stTray *PageSize EnvDL
+*UIConstraints: *InputSlot 2ndTray *PageSize EnvDL
+
+*UIConstraints: *PageSize Env10 *Duplex DuplexNoTumble
+*UIConstraints: *PageSize Env10 *Duplex DuplexTumble
+*UIConstraints: *PageSize EnvMonarch *Duplex DuplexNoTumble
+*UIConstraints: *PageSize EnvMonarch *Duplex DuplexTumble
+*UIConstraints: *PageSize EnvC5 *Duplex DuplexNoTumble
+*UIConstraints: *PageSize EnvC5 *Duplex DuplexTumble
+*UIConstraints: *PageSize EnvDL *Duplex DuplexNoTumble
+*UIConstraints: *PageSize EnvDL *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageSize Env10
+*UIConstraints: *Duplex DuplexTumble *PageSize Env10
+*UIConstraints: *Duplex DuplexNoTumble *PageSize EnvMonarch
+*UIConstraints: *Duplex DuplexTumble *PageSize EnvMonarch
+*UIConstraints: *Duplex DuplexNoTumble *PageSize EnvC5
+*UIConstraints: *Duplex DuplexTumble *PageSize EnvC5
+*UIConstraints: *Duplex DuplexNoTumble *PageSize EnvDL
+*UIConstraints: *Duplex DuplexTumble *PageSize EnvDL
+
+*UIConstraints: *PageSize Env10 *MediaType Default
+*UIConstraints: *PageSize Env10 *MediaType Stationary
+*UIConstraints: *PageSize Env10 *MediaType PrepunchedPaper
+*UIConstraints: *PageSize Env10 *MediaType LetterheadPaper
+*UIConstraints: *PageSize Env10 *MediaType LabelPaper
+*UIConstraints: *PageSize Env10 *MediaType ColoredPaper
+*UIConstraints: *PageSize EnvMonarch *MediaType Default
+*UIConstraints: *PageSize EnvMonarch *MediaType Stationary
+*UIConstraints: *PageSize EnvMonarch *MediaType PrepunchedPaper
+*UIConstraints: *PageSize EnvMonarch *MediaType LetterheadPaper
+*UIConstraints: *PageSize EnvMonarch *MediaType LabelPaper
+*UIConstraints: *PageSize EnvMonarch *MediaType ColoredPaper
+*UIConstraints: *PageSize EnvC5 *MediaType Default
+*UIConstraints: *PageSize EnvC5 *MediaType Stationary
+*UIConstraints: *PageSize EnvC5 *MediaType PrepunchedPaper
+*UIConstraints: *PageSize EnvC5 *MediaType LetterheadPaper
+*UIConstraints: *PageSize EnvC5 *MediaType LabelPaper
+*UIConstraints: *PageSize EnvC5 *MediaType ColoredPaper
+*UIConstraints: *PageSize EnvDL *MediaType Default
+*UIConstraints: *PageSize EnvDL *MediaType Stationary
+*UIConstraints: *PageSize EnvDL *MediaType PrepunchedPaper
+*UIConstraints: *PageSize EnvDL *MediaType LetterheadPaper
+*UIConstraints: *PageSize EnvDL *MediaType LabelPaper
+*UIConstraints: *PageSize EnvDL *MediaType ColoredPaper
+*UIConstraints: *MediaType Default *PageSize Env10
+*UIConstraints: *MediaType Stationary *PageSize Env10
+*UIConstraints: *MediaType PrepunchedPaper *PageSize Env10
+*UIConstraints: *MediaType LetterheadPaper *PageSize Env10
+*UIConstraints: *MediaType LabelPaper *PageSize Env10
+*UIConstraints: *MediaType ColoredPaper *PageSize Env10
+*UIConstraints: *MediaType Default *PageSize EnvMonarch
+*UIConstraints: *MediaType Stationary *PageSize EnvMonarch
+*UIConstraints: *MediaType PrepunchedPaper *PageSize EnvMonarch
+*UIConstraints: *MediaType LetterheadPaper *PageSize EnvMonarch
+*UIConstraints: *MediaType LabelPaper *PageSize EnvMonarch
+*UIConstraints: *MediaType ColoredPaper *PageSize EnvMonarch
+*UIConstraints: *MediaType Default *PageSize EnvC5
+*UIConstraints: *MediaType Stationary *PageSize EnvC5
+*UIConstraints: *MediaType PrepunchedPaper *PageSize EnvC5
+*UIConstraints: *MediaType LetterheadPaper *PageSize EnvC5
+*UIConstraints: *MediaType LabelPaper *PageSize EnvC5
+*UIConstraints: *MediaType ColoredPaper *PageSize EnvC5
+*UIConstraints: *MediaType Default *PageSize EnvDL
+*UIConstraints: *MediaType Stationary *PageSize EnvDL
+*UIConstraints: *MediaType PrepunchedPaper *PageSize EnvDL
+*UIConstraints: *MediaType LetterheadPaper *PageSize EnvDL
+*UIConstraints: *MediaType LabelPaper *PageSize EnvDL
+*UIConstraints: *MediaType ColoredPaper *PageSize EnvDL
+
+*UIConstraints: *InputSlot 1stTray *MediaType LabelPaper
+*UIConstraints: *InputSlot 1stTray *MediaType Envelope
+*UIConstraints: *InputSlot 2ndTray *MediaType LabelPaper
+*UIConstraints: *InputSlot 2ndTray *MediaType Envelope
+*UIConstraints: *MediaType LabelPaper *InputSlot 1stTray
+*UIConstraints: *MediaType Envelope *InputSlot 1stTray
+*UIConstraints: *MediaType LabelPaper *InputSlot 2ndTray
+*UIConstraints: *MediaType Envelope *InputSlot 2ndTray
+
+*UIConstraints: *InputSlot 1stTray *FXSubPaperSelection Policy3
+*UIConstraints: *InputSlot 1stTray *FXSubPaperSelection Policy5
+*UIConstraints: *InputSlot 1stTray *FXSubPaperSelection Policy4
+*UIConstraints: *InputSlot 1stTray *FXSubPaperSelection Policy6
+*UIConstraints: *InputSlot 2ndTray *FXSubPaperSelection Policy3
+*UIConstraints: *InputSlot 2ndTray *FXSubPaperSelection Policy5
+*UIConstraints: *InputSlot 2ndTray *FXSubPaperSelection Policy4
+*UIConstraints: *InputSlot 2ndTray *FXSubPaperSelection Policy6
+*UIConstraints: *FXSubPaperSelection Policy3 *InputSlot 1stTray
+*UIConstraints: *FXSubPaperSelection Policy5 *InputSlot 1stTray
+*UIConstraints: *FXSubPaperSelection Policy4 *InputSlot 1stTray
+*UIConstraints: *FXSubPaperSelection Policy6 *InputSlot 1stTray
+*UIConstraints: *FXSubPaperSelection Policy3 *InputSlot 2ndTray
+*UIConstraints: *FXSubPaperSelection Policy5 *InputSlot 2ndTray
+*UIConstraints: *FXSubPaperSelection Policy4 *InputSlot 2ndTray
+*UIConstraints: *FXSubPaperSelection Policy6 *InputSlot 2ndTray
+
+*UIConstraints: *Duplex DuplexNoTumble *MediaType ThickPaper2
+*UIConstraints: *Duplex DuplexNoTumble *MediaType LabelPaper
+*UIConstraints: *Duplex DuplexNoTumble *MediaType SpecialPaper
+*UIConstraints: *Duplex DuplexNoTumble *MediaType CoatingPaper3
+*UIConstraints: *Duplex DuplexNoTumble *MediaType Envelope
+*UIConstraints: *Duplex DuplexTumble *MediaType ThickPaper2
+*UIConstraints: *Duplex DuplexTumble *MediaType LabelPaper
+*UIConstraints: *Duplex DuplexTumble *MediaType SpecialPaper
+*UIConstraints: *Duplex DuplexTumble *MediaType CoatingPaper3
+*UIConstraints: *Duplex DuplexTumble *MediaType Envelope
+*UIConstraints: *MediaType ThickPaper2 *Duplex DuplexNoTumble
+*UIConstraints: *MediaType LabelPaper *Duplex DuplexNoTumble
+*UIConstraints: *MediaType SpecialPaper *Duplex DuplexNoTumble
+*UIConstraints: *MediaType CoatingPaper3 *Duplex DuplexNoTumble
+*UIConstraints: *MediaType Envelope *Duplex DuplexNoTumble
+*UIConstraints: *MediaType ThickPaper2 *Duplex DuplexTumble
+*UIConstraints: *MediaType LabelPaper *Duplex DuplexTumble
+*UIConstraints: *MediaType SpecialPaper *Duplex DuplexTumble
+*UIConstraints: *MediaType CoatingPaper3 *Duplex DuplexTumble
+*UIConstraints: *MediaType Envelope *Duplex DuplexTumble
+
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageSize A4
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageSize A5
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageSize B5
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageSize Letter
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageSize FanFoldGermanLegal
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageSize Legal
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageSize Executive
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageSize Env10
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageSize EnvMonarch
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageSize EnvC5
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageSize EnvDL
+*UIConstraints: *PageSize A4 *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageSize A5 *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageSize B5 *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageSize Letter *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageSize FanFoldGermanLegal *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageSize Legal *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageSize Executive *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageSize Env10 *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageSize EnvMonarch *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageSize EnvC5 *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageSize EnvDL *FXMSILeadingEdge LongEdge
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageSize A4
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageSize A5
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageSize B5
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageSize Letter
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageSize FanFoldGermanLegal
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageSize Legal
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageSize Executive
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageSize Env10
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageSize EnvMonarch
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageSize EnvC5
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageSize EnvDL
+*UIConstraints: *PageSize A4 *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageSize A5 *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageSize B5 *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageSize Letter *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageSize FanFoldGermanLegal *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageSize Legal *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageSize Executive *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageSize Env10 *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageSize EnvMonarch *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageSize EnvC5 *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageSize EnvDL *FXMSILeadingEdge LongEdgeR
+
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageRegion A4
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageRegion A5
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageRegion B5
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageRegion Letter
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageRegion FanFoldGermanLegal
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageRegion Legal
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageRegion Executive
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageRegion Env10
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageRegion EnvMonarch
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageRegion EnvC5
+*UIConstraints: *FXMSILeadingEdge LongEdge *PageRegion EnvDL
+*UIConstraints: *PageRegion A4 *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageRegion A5 *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageRegion B5 *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageRegion Letter *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageRegion FanFoldGermanLegal *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageRegion Legal *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageRegion Executive *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageRegion Env10 *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageRegion EnvMonarch *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageRegion EnvC5 *FXMSILeadingEdge LongEdge
+*UIConstraints: *PageRegion EnvDL *FXMSILeadingEdge LongEdge
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageRegion A4
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageRegion A5
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageRegion B5
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageRegion Letter
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageRegion FanFoldGermanLegal
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageRegion Legal
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageRegion Executive
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageRegion Env10
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageRegion EnvMonarch
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageRegion EnvC5
+*UIConstraints: *FXMSILeadingEdge LongEdgeR *PageRegion EnvDL
+*UIConstraints: *PageRegion A4 *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageRegion A5 *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageRegion B5 *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageRegion Letter *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageRegion FanFoldGermanLegal *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageRegion Legal *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageRegion Executive *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageRegion Env10 *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageRegion EnvMonarch *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageRegion EnvC5 *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageRegion EnvDL *FXMSILeadingEdge LongEdgeR
+*UIConstraints: *PageRegion Env10 *InputSlot 1stTray
+*UIConstraints: *PageRegion Env10 *InputSlot 2ndTray
+*UIConstraints: *PageRegion EnvMonarch *InputSlot 1stTray
+*UIConstraints: *PageRegion EnvMonarch *InputSlot 2ndTray
+*UIConstraints: *PageRegion EnvC5 *InputSlot 1stTray
+*UIConstraints: *PageRegion EnvC5 *InputSlot 2ndTray
+*UIConstraints: *PageRegion EnvDL *InputSlot 1stTray
+*UIConstraints: *PageRegion EnvDL *InputSlot 2ndTray
+*UIConstraints: *InputSlot 1stTray *PageRegion Env10
+*UIConstraints: *InputSlot 2ndTray *PageRegion Env10
+*UIConstraints: *InputSlot 1stTray *PageRegion EnvMonarch
+*UIConstraints: *InputSlot 2ndTray *PageRegion EnvMonarch
+*UIConstraints: *InputSlot 1stTray *PageRegion EnvC5
+*UIConstraints: *InputSlot 2ndTray *PageRegion EnvC5
+*UIConstraints: *InputSlot 1stTray *PageRegion EnvDL
+*UIConstraints: *InputSlot 2ndTray *PageRegion EnvDL
+*UIConstraints: *PageRegion Env10 *Duplex DuplexNoTumble
+*UIConstraints: *PageRegion Env10 *Duplex DuplexTumble
+*UIConstraints: *PageRegion EnvMonarch *Duplex DuplexNoTumble
+*UIConstraints: *PageRegion EnvMonarch *Duplex DuplexTumble
+*UIConstraints: *PageRegion EnvC5 *Duplex DuplexNoTumble
+*UIConstraints: *PageRegion EnvC5 *Duplex DuplexTumble
+*UIConstraints: *PageRegion EnvDL *Duplex DuplexNoTumble
+*UIConstraints: *PageRegion EnvDL *Duplex DuplexTumble
+*UIConstraints: *Duplex DuplexNoTumble *PageRegion Env10
+*UIConstraints: *Duplex DuplexTumble *PageRegion Env10
+*UIConstraints: *Duplex DuplexNoTumble *PageRegion EnvMonarch
+*UIConstraints: *Duplex DuplexTumble *PageRegion EnvMonarch
+*UIConstraints: *Duplex DuplexNoTumble *PageRegion EnvC5
+*UIConstraints: *Duplex DuplexTumble *PageRegion EnvC5
+*UIConstraints: *Duplex DuplexNoTumble *PageRegion EnvDL
+*UIConstraints: *Duplex DuplexTumble *PageRegion EnvDL
+*UIConstraints: *PageRegion Env10 *MediaType Default
+*UIConstraints: *PageRegion Env10 *MediaType Stationary
+*UIConstraints: *PageRegion Env10 *MediaType PrepunchedPaper
+*UIConstraints: *PageRegion Env10 *MediaType LetterheadPaper
+*UIConstraints: *PageRegion Env10 *MediaType LabelPaper
+*UIConstraints: *PageRegion Env10 *MediaType ColoredPaper
+*UIConstraints: *PageRegion EnvMonarch *MediaType Default
+*UIConstraints: *PageRegion EnvMonarch *MediaType Stationary
+*UIConstraints: *PageRegion EnvMonarch *MediaType PrepunchedPaper
+*UIConstraints: *PageRegion EnvMonarch *MediaType LetterheadPaper
+*UIConstraints: *PageRegion EnvMonarch *MediaType LabelPaper
+*UIConstraints: *PageRegion EnvMonarch *MediaType ColoredPaper
+*UIConstraints: *PageRegion EnvC5 *MediaType Default
+*UIConstraints: *PageRegion EnvC5 *MediaType Stationary
+*UIConstraints: *PageRegion EnvC5 *MediaType PrepunchedPaper
+*UIConstraints: *PageRegion EnvC5 *MediaType LetterheadPaper
+*UIConstraints: *PageRegion EnvC5 *MediaType LabelPaper
+*UIConstraints: *PageRegion EnvC5 *MediaType ColoredPaper
+*UIConstraints: *PageRegion EnvDL *MediaType Default
+*UIConstraints: *PageRegion EnvDL *MediaType Stationary
+*UIConstraints: *PageRegion EnvDL *MediaType PrepunchedPaper
+*UIConstraints: *PageRegion EnvDL *MediaType LetterheadPaper
+*UIConstraints: *PageRegion EnvDL *MediaType LabelPaper
+*UIConstraints: *PageRegion EnvDL *MediaType ColoredPaper
+*UIConstraints: *MediaType Default *PageRegion Env10
+*UIConstraints: *MediaType Stationary *PageRegion Env10
+*UIConstraints: *MediaType PrepunchedPaper *PageRegion Env10
+*UIConstraints: *MediaType LetterheadPaper *PageRegion Env10
+*UIConstraints: *MediaType LabelPaper *PageRegion Env10
+*UIConstraints: *MediaType ColoredPaper *PageRegion Env10
+*UIConstraints: *MediaType Default *PageRegion EnvMonarch
+*UIConstraints: *MediaType Stationary *PageRegion EnvMonarch
+*UIConstraints: *MediaType PrepunchedPaper *PageRegion EnvMonarch
+*UIConstraints: *MediaType LetterheadPaper *PageRegion EnvMonarch
+*UIConstraints: *MediaType LabelPaper *PageRegion EnvMonarch
+*UIConstraints: *MediaType ColoredPaper *PageRegion EnvMonarch
+*UIConstraints: *MediaType Default *PageRegion EnvC5
+*UIConstraints: *MediaType Stationary *PageRegion EnvC5
+*UIConstraints: *MediaType PrepunchedPaper *PageRegion EnvC5
+*UIConstraints: *MediaType LetterheadPaper *PageRegion EnvC5
+*UIConstraints: *MediaType LabelPaper *PageRegion EnvC5
+*UIConstraints: *MediaType ColoredPaper *PageRegion EnvC5
+*UIConstraints: *MediaType Default *PageRegion EnvDL
+*UIConstraints: *MediaType Stationary *PageRegion EnvDL
+*UIConstraints: *MediaType PrepunchedPaper *PageRegion EnvDL
+*UIConstraints: *MediaType LetterheadPaper *PageRegion EnvDL
+*UIConstraints: *MediaType LabelPaper *PageRegion EnvDL
+*UIConstraints: *MediaType ColoredPaper *PageRegion EnvDL
+
+*% ==== SecurityPrint ====
+*UIConstraints: *FXHardDisk None *FXSecurityPrint Security
+*UIConstraints: *FXHardDisk None *FXSecurityPrint Private
+*UIConstraints: *FXHardDisk None *FXSecurityPrint Public
+*UIConstraints: *FXHardDisk None *FXSecurityPrint Proof
+*UIConstraints: *FXSecurityPrint Security *FXHardDisk None
+*UIConstraints: *FXSecurityPrint Private *FXHardDisk None
+*UIConstraints: *FXSecurityPrint Public *FXHardDisk None
+*UIConstraints: *FXSecurityPrint Proof *FXHardDisk None
+
+*UIConstraints: *FXSecurityPrint Security *FXSecurityUserID None
+*UIConstraints: *FXSecurityPrint Private *FXSecurityUserID None
+*UIConstraints: *FXSecurityPrint Public *FXSecurityUserID None
+*UIConstraints: *FXSecurityPrint Proof *FXSecurityUserID None
+*UIConstraints: *FXSecurityUserID None *FXSecurityPrint Security
+*UIConstraints: *FXSecurityUserID None *FXSecurityPrint Private
+*UIConstraints: *FXSecurityUserID None *FXSecurityPrint Public
+*UIConstraints: *FXSecurityUserID None *FXSecurityPrint Proof
+
+*UIConstraints: *FXSecurityPrint Security *FXSecurityPasswd None
+*UIConstraints: *FXSecurityPrint Private *FXSecurityPasswd None
+*UIConstraints: *FXSecurityPasswd None *FXSecurityPrint Security
+*UIConstraints: *FXSecurityPasswd None *FXSecurityPrint Private
+
+*UIConstraints: *FXSecurityPrint Security *FXSecurityJobName None
+*UIConstraints: *FXSecurityPrint Private *FXSecurityJobName None
+*UIConstraints: *FXSecurityPrint Public *FXSecurityJobName None
+*UIConstraints: *FXSecurityPrint Proof *FXSecurityJobName None
+*UIConstraints: *FXSecurityJobName None *FXSecurityPrint Security
+*UIConstraints: *FXSecurityJobName None *FXSecurityPrint Private
+*UIConstraints: *FXSecurityJobName None *FXSecurityPrint Public
+*UIConstraints: *FXSecurityJobName None *FXSecurityPrint Proof
+
+*UIConstraints: *FXSecurityPrint Off *FXSecurityUserID User1
+*UIConstraints: *FXSecurityPrint Off *FXSecurityUserID User2
+*UIConstraints: *FXSecurityPrint Off *FXSecurityUserID User3
+*UIConstraints: *FXSecurityPrint Off *FXSecurityUserID User4
+*UIConstraints: *FXSecurityPrint Off *FXSecurityUserID User5
+*UIConstraints: *FXSecurityUserID User1 *FXSecurityPrint Off
+*UIConstraints: *FXSecurityUserID User2 *FXSecurityPrint Off
+*UIConstraints: *FXSecurityUserID User3 *FXSecurityPrint Off
+*UIConstraints: *FXSecurityUserID User4 *FXSecurityPrint Off
+*UIConstraints: *FXSecurityUserID User5 *FXSecurityPrint Off
+
+*UIConstraints: *FXSecurityPrint Off *FXSecurityPasswd Passwd1
+*UIConstraints: *FXSecurityPrint Off *FXSecurityPasswd Passwd2
+*UIConstraints: *FXSecurityPrint Off *FXSecurityPasswd Passwd3
+*UIConstraints: *FXSecurityPrint Off *FXSecurityPasswd Passwd4
+*UIConstraints: *FXSecurityPrint Off *FXSecurityPasswd Passwd5
+*UIConstraints: *FXSecurityPrint Public *FXSecurityPasswd Passwd1
+*UIConstraints: *FXSecurityPrint Public *FXSecurityPasswd Passwd2
+*UIConstraints: *FXSecurityPrint Public *FXSecurityPasswd Passwd3
+*UIConstraints: *FXSecurityPrint Public *FXSecurityPasswd Passwd4
+*UIConstraints: *FXSecurityPrint Public *FXSecurityPasswd Passwd5
+*UIConstraints: *FXSecurityPrint Proof *FXSecurityPasswd Passwd1
+*UIConstraints: *FXSecurityPrint Proof *FXSecurityPasswd Passwd2
+*UIConstraints: *FXSecurityPrint Proof *FXSecurityPasswd Passwd3
+*UIConstraints: *FXSecurityPrint Proof *FXSecurityPasswd Passwd4
+*UIConstraints: *FXSecurityPrint Proof *FXSecurityPasswd Passwd5
+*UIConstraints: *FXSecurityPasswd Passwd1 *FXSecurityPrint Off
+*UIConstraints: *FXSecurityPasswd Passwd2 *FXSecurityPrint Off
+*UIConstraints: *FXSecurityPasswd Passwd3 *FXSecurityPrint Off
+*UIConstraints: *FXSecurityPasswd Passwd4 *FXSecurityPrint Off
+*UIConstraints: *FXSecurityPasswd Passwd5 *FXSecurityPrint Off
+*UIConstraints: *FXSecurityPasswd Passwd1 *FXSecurityPrint Public
+*UIConstraints: *FXSecurityPasswd Passwd2 *FXSecurityPrint Public
+*UIConstraints: *FXSecurityPasswd Passwd3 *FXSecurityPrint Public
+*UIConstraints: *FXSecurityPasswd Passwd4 *FXSecurityPrint Public
+*UIConstraints: *FXSecurityPasswd Passwd5 *FXSecurityPrint Public
+*UIConstraints: *FXSecurityPasswd Passwd1 *FXSecurityPrint Proof
+*UIConstraints: *FXSecurityPasswd Passwd2 *FXSecurityPrint Proof
+*UIConstraints: *FXSecurityPasswd Passwd3 *FXSecurityPrint Proof
+*UIConstraints: *FXSecurityPasswd Passwd4 *FXSecurityPrint Proof
+*UIConstraints: *FXSecurityPasswd Passwd5 *FXSecurityPrint Proof
+
+*UIConstraints: *FXSecurityPrint Off *FXSecurityJobName Document1
+*UIConstraints: *FXSecurityPrint Off *FXSecurityJobName Document2
+*UIConstraints: *FXSecurityPrint Off *FXSecurityJobName Document3
+*UIConstraints: *FXSecurityPrint Off *FXSecurityJobName Document4
+*UIConstraints: *FXSecurityPrint Off *FXSecurityJobName Document5
+*UIConstraints: *FXSecurityJobName Document1 *FXSecurityPrint Off
+*UIConstraints: *FXSecurityJobName Document2 *FXSecurityPrint Off
+*UIConstraints: *FXSecurityJobName Document3 *FXSecurityPrint Off
+*UIConstraints: *FXSecurityJobName Document4 *FXSecurityPrint Off
+*UIConstraints: *FXSecurityJobName Document5 *FXSecurityPrint Off
+
+*% JCL Information ================
+*JCLBegin: "<1B>%-12345X"
+*JCLToPSInterpreter: "@PJL ENTER LANGUAGE=POSTSCRIPT<0A>"
+*JCLEnd: "<04>"
+
+*JCLOpenUI *FXSecurityPrint/Job Type: PickOne
+*OrderDependency: 20.0 JCLSetup *FXSecurityPrint
+*DefaultFXSecurityPrint: Off
+*FXSecurityPrint Off/Normal Print: ""
+*FXSecurityPrint Public/Public MailBox Print: "@PJL SET HOLD=STORE<0A>@PJL SET HOLDTYPE=PUBLIC<0A>"
+*FXSecurityPrint Private/Private MailBox Print: "@PJL SET HOLD=STORE<0A>@PJL SET HOLDTYPE=PRIVATE<0A>"
+*FXSecurityPrint Security/Secure Print: "@PJL SET HOLD=STORE<0A>@PJL SET HOLDTYPE=SECURE<0A>"
+*FXSecurityPrint Proof/Proof Print: "@PJL SET HOLD=PROOF<0A>"
+*JCLCloseUI: *FXSecurityPrint
+
+*JCLOpenUI *FXSecurityUserID/User ID: PickOne
+*OrderDependency: 21.0 JCLSetup *FXSecurityUserID
+*DefaultFXSecurityUserID: None
+*FXSecurityUserID None/-: ""
+*FXSecurityUserID User1/User 1: "@PJL SET USERNAME=<22>User 1<22><0A>"
+*FXSecurityUserID User2/User 2: "@PJL SET USERNAME=<22>User 2<22><0A>"
+*FXSecurityUserID User3/User 3: "@PJL SET USERNAME=<22>User 3<22><0A>"
+*FXSecurityUserID User4/User 4: "@PJL SET USERNAME=<22>User 4<22><0A>"
+*FXSecurityUserID User5/User 5: "@PJL SET USERNAME=<22>User 5<22><0A>"
+*JCLCloseUI: *FXSecurityUserID
+
+*JCLOpenUI *FXSecurityPasswd/Password: PickOne
+*OrderDependency: 22.0 JCLSetup *FXSecurityPasswd
+*DefaultFXSecurityPasswd: None
+*FXSecurityPasswd None/-: ""
+*FXSecurityPasswd Passwd1/1947: "@PJL SET HOLDKEY=<22>QV9HQA==<22><0A>"
+*FXSecurityPasswd Passwd2/3729: "@PJL SET HOLDKEY=<22>Q1FBTg==<22><0A>"
+*FXSecurityPasswd Passwd3/4197: "@PJL SET HOLDKEY=<22>RFdKQA==<22><0A>"
+*FXSecurityPasswd Passwd4/6835: "@PJL SET HOLDKEY=<22>Rl5AQg==<22><0A>"
+*FXSecurityPasswd Passwd5/9284: "@PJL SET HOLDKEY=<22>SVRLQw==<22><0A>"
+*JCLCloseUI: *FXSecurityPasswd
+
+*JCLOpenUI *FXSecurityJobName/Document Name: PickOne
+*OrderDependency: 23.0 JCLSetup *FXSecurityJobName
+*DefaultFXSecurityJobName: None
+*FXSecurityJobName None/-: ""
+*FXSecurityJobName Document1/Document 1: "@PJL SET JOBNAME=<22>Document 1<22><0A>"
+*FXSecurityJobName Document2/Document 2: "@PJL SET JOBNAME=<22>Document 2<22><0A>"
+*FXSecurityJobName Document3/Document 3: "@PJL SET JOBNAME=<22>Document 3<22><0A>"
+*FXSecurityJobName Document4/Document 4: "@PJL SET JOBNAME=<22>Document 4<22><0A>"
+*FXSecurityJobName Document5/Document 5: "@PJL SET JOBNAME=<22>Document 5<22><0A>"
+*JCLCloseUI: *FXSecurityJobName
+
+
+*% ==== Device Capabilities ===============
+*FreeVM: "18091064"
+*VMOption 256Meg/Standard 256MB: "18091064"
+*VMOption 512Meg/512MB: "18091064"
+*VMOption 768Meg/768MB: "18091064"
+*VMOption 1024Meg/1024MB: "18091064"
+
+
+*ColorDevice: True
+*DefaultColorSpace: CMYK
+*VariablePaperSize: True
+*LandscapeOrientation: Plus90
+*TTRasterizer: Type42
+*?TTRasterizer: "
+save
+    42 /FontType resourcestatus
+    {pop pop (Type42)}{(No Type42)} ifelse = flush
+restore
+"
+*End
+*FileSystem: True
+*?FileSystem: "
+  save false
+   (%disk?%)
+   { currentdevparams dup /Writeable known
+      { /Writeable get {pop true} if }  { pop } ifelse
+    } 10 string /IODevice resourceforall
+    {(True)}{(False)} ifelse = flush
+ restore
+"
+*End
+
+*Throughput: "35"
+*Password: "()"
+*ExitServer: "
+ count 0 eq
+ { false } { true exch startjob } ifelse
+ not {
+     (WARNING: Cannot modify initial VM.) =
+     (Missing or invalid password.) =
+     (Please contact the author of this software.) = flush quit
+     } if
+"
+*End
+*Reset: "
+ count 0 eq
+ { false } { true exch startjob } ifelse
+ not {
+    (WARNING: Cannot reset printer.) =
+    (Missing or invalid password.) =
+    (Please contact the author of this software.) = flush quit
+    } if
+ systemdict /quit get exec
+ (WARNING : Printer Reset Failed.) = flush
+"
+*End
+
+*DefaultResolution: 600dpi
+*?Resolution: "
+save
+    currentpagedevice /HWResolution get dup aload pop eq
+    {0 get cvi 9 string cvs print}
+    {aload pop exch cvi 9 string cvs print (x) print cvi 9 string cvs print}
+    ifelse (dpi) =
+restore
+"
+*End
+
+*AccurateScreensSupport: True
+*SuggestedJobTimeout: "0"
+*SuggestedWaitTimeout: "300"
+*PrintPSErrors: True
+
+
+*% Halftone Information ===============
+*DefaultHalftoneType: 5
+*ScreenFreq: "141.0"
+*ScreenAngle: "45.0"
+*DefaultScreenProc: Dot
+*ScreenProc Dot: "{180 mul cos exch 180 mul cos add 2 div} bind"
+*ScreenProc Line: "{ pop }"
+*ScreenProc Ellipse: "{ dup 5 mul 8 div mul exch dup mul exch add sqrt 1 exch sub }"
+*DefaultTransfer: Null
+*Transfer Null: "{ }"
+*Transfer Null.Inverse: "{ 1 exch sub }"
+
+
+*% InputSlot Information ================
+*RequiresPageRegion 1stTray: True
+*RequiresPageRegion 2ndTray: True
+*RequiresPageRegion BypassTray: True
+
+*OpenUI *InputSlot/Paper Tray: PickOne
+*OrderDependency: 55.0 AnySetup *InputSlot
+*DefaultInputSlot: AutoSelect
+*InputSlot AutoSelect/AutoSelect: ""
+*InputSlot 1stTray/Tray 1: "
+  currentpagedevice /InputAttributes get dup 0 known
+  {0 get dup null eq
+   { pop }
+   { dup length 4 add dict copy
+     dup /DeferredMediaSelection true put
+     dup /MediaPosition 0 put
+     dup /TraySwitch false put
+     dup /ManualFeed false put
+     setpagedevice
+   } ifelse }
+  {pop}
+  ifelse
+"
+*End
+*InputSlot 2ndTray/Tray 2: "
+  currentpagedevice /InputAttributes get dup 1 known
+  {1 get dup null eq
+   { pop }
+   { dup length 4 add dict copy
+     dup /DeferredMediaSelection true put
+     dup /MediaPosition 1 put
+     dup /TraySwitch false put
+     dup /ManualFeed false put
+     setpagedevice
+   } ifelse }
+  {pop}
+  ifelse
+"
+*End
+*InputSlot BypassTray/Bypass Tray: "1 dict dup/ManualFeed true put setpagedevice"
+*?InputSlot: "
+save mark
+{
+  2 dict
+  dup 0 (1stTray) put
+  dup 1 (2ndTray) put
+
+  currentpagedevice /ManualFeed 2 copy known {
+    get {(BypassTray) false}{true} ifelse
+  }{
+    pop pop true
+  } ifelse
+  {
+    currentpagedevice /MediaPosition 2 copy known {
+      get dup null eq {
+        (AutoSelect)
+      }{
+        get
+      } ifelse
+    }{
+      pop pop (Unknown)
+    } ifelse
+  } if
+  = flush
+} stopped {(Unknown) = flush } if
+cleartomark restore
+"
+*End
+*CloseUI: *InputSlot
+
+*OpenUI *Duplex/2 Sided Print: PickOne
+*OrderDependency: 110.0 AnySetup *Duplex
+*DefaultDuplex: None
+*Duplex None/1 Sided Print: "
+    userdict /$$OEMPreConfigDict known {
+        userdict /$$OEMPreConfigDict get /Duplex 2 copy known {
+            get exec false
+        }{
+            pop pop true
+        } ifelse
+    }{
+        true
+    } ifelse
+    {
+        1 dict
+        dup /Duplex false put
+        setpagedevice
+    } if
+"
+*End
+*Duplex DuplexNoTumble/2 Sided Print: "
+    userdict /$$OEMPreConfigDict known {
+        userdict /$$OEMPreConfigDict get /Duplex 2 copy known {
+            get exec false
+        }{
+            pop pop true
+        } ifelse
+    }{
+        true
+    } ifelse
+    {
+        2 dict dup /Duplex true put
+        dup /Tumble false put setpagedevice
+    } if
+"
+*End
+*Duplex DuplexTumble/2 Sided, Flip on Short Edge: "
+    userdict /$$OEMPreConfigDict known {
+        userdict /$$OEMPreConfigDict get /Duplex 2 copy known {
+            get exec false
+        }{
+            pop pop true
+        } ifelse
+    }{
+        true
+    } ifelse
+    {
+        2 dict dup /Duplex true put
+        dup /Tumble true put setpagedevice
+    } if
+"
+*End
+*?Duplex: "
+save
+   currentpagedevice /Duplex known
+   { currentpagedevice /Duplex get
+       { currentpagedevice /Tumble get
+          {(DuplexTumble)}{(DuplexNoTumble)}ifelse
+       }
+       { (None) } ifelse
+   }
+   { (None)}
+   ifelse = flush
+restore
+"
+*End
+*CloseUI: *Duplex
+
+
+*% Paper Handling ===================
+*OpenUI *PageSize: PickOne
+*OrderDependency: 60.0 AnySetup *PageSize
+*DefaultPageSize: A4
+*PageSize A4/A4 (210 x 297mm): "
+    6 dict dup /PageSize [595 842] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageSize A5/A5 (148 x 210mm): "
+    6 dict dup /PageSize [420 595] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageSize B5/B5 (182 x 257mm): "
+    6 dict dup /PageSize [516 729] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageSize Letter/Letter (8.5 x 11"): "
+    6 dict dup /PageSize [612 792] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageSize FanFoldGermanLegal/Folio (8.5 x 13"): "
+    6 dict dup /PageSize [612 936] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageSize Legal/Legal (8.5 x 14"): "
+    6 dict dup /PageSize [612 1008] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageSize Executive/Executive (7.25 x 10.5"): "
+    6 dict dup /PageSize [522 756] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageSize Env10/Com 10 (4.125 x 9.5"): "
+    6 dict dup /PageSize [297 684] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageSize EnvMonarch/Monarch (3.875 x 7.5"): "
+    6 dict dup /PageSize [279 540] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageSize EnvC5/C5 Envelope: "
+    6 dict dup /PageSize [459 649] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageSize EnvDL/DL Envelope: "
+    6 dict dup /PageSize [312 624] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*?PageSize: "
+  save
+   currentpagedevice /PageSize get aload pop
+   2 copy gt {exch} if
+   (Unknown)
+   11 dict
+   dup [595 842] (A4) put
+   dup [420 595] (A5) put
+   dup [516 729] (B5) put
+   dup [612 792] (Letter) put
+   dup [612 936] (FanFoldGermanLegal) put
+   dup [612 1008] (Legal) put
+   dup [522 756] (Executive) put
+   dup [297 684] (Env10) put
+   dup [279 540] (EnvMonarch) put
+   dup [459 649] (EnvC5) put
+   dup [312 624] (EnvDL) put
+   { exch aload pop 4 index sub abs 5 le exch
+   5 index sub abs 5 le and
+      {exch pop exit} {pop} ifelse
+   } bind forall
+   = flush pop pop
+   restore
+"
+*End
+*CloseUI: *PageSize
+
+*OpenUI *PageRegion: PickOne
+*OrderDependency: 80.0 AnySetup *PageRegion
+*DefaultPageRegion: A4
+*PageRegion A4/A4 (210 x 297mm): "
+    6 dict dup /PageSize [595 842] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageRegion A5/A5 (148 x 210mm): "
+    6 dict dup /PageSize [420 595] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageRegion B5/B5 (182 x 257mm): "
+    6 dict dup /PageSize [516 729] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageRegion Letter/Letter (8.5 x 11"): "
+    6 dict dup /PageSize [612 792] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageRegion FanFoldGermanLegal/Folio (8.5 x 13"): "
+    6 dict dup /PageSize [612 936] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageRegion Legal/Legal (8.5 x 14"): "
+    6 dict dup /PageSize [612 1008] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageRegion Executive/Executive (7.25 x 10.5"): "
+    6 dict dup /PageSize [522 756] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageRegion Env10/Com 10 (4.125 x 9.5"): "
+    6 dict dup /PageSize [297 684] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageRegion EnvMonarch/Monarch (3.875 x 7.5"): "
+    6 dict dup /PageSize [279 540] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageRegion EnvC5/C5 Envelope: "
+    6 dict dup /PageSize [459 649] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*PageRegion EnvDL/DL Envelope: "
+    6 dict dup /PageSize [312 624] put dup /ImagingBBox null put
+    dup /LeadingEdge null put
+    dup /MediaClass null put currentpagedevice
+    dup /MediaPosition get null eq
+    {/Policies 2 copy known
+      {get /PageSize 2 copy known
+        {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+        {pop pop} ifelse
+      }{pop pop} ifelse
+    }{pop} ifelse setpagedevice
+"
+*End
+*CloseUI: *PageRegion
+
+*% The following entries provide information about specific paper keywords.
+*DefaultImageableArea: A4
+*ImageableArea A4/A4 (210 x 297mm): "11.62 11.62 583.65 830.27 "
+*ImageableArea A5/A5 (148 x 210mm): "11.62 11.62 407.91 583.65 "
+*ImageableArea B5/B5 (182 x 257mm): "11.62 11.62 504.28 716.88 "
+*ImageableArea Letter/Letter (8.5 x 11"): "11.62 11.62 600.38 780.38 "
+*ImageableArea FanFoldGermanLegal/Folio (8.5 x 13"): "11.62 11.62 600.38 924.38 "
+*ImageableArea Legal/Legal (8.5 x 14"): "11.62 11.62 600.38 996.38 "
+*ImageableArea Executive/Executive (7.25 x 10.5"): "11.62 11.62 510.38 744.38 "
+*ImageableArea Env10/Com 10 (4.125 x 9.5"): "11.62 11.62 285.38 672.38 "
+*ImageableArea EnvMonarch/Monarch (3.875 x 7.5"): "11.62 11.62 267.38 528.38 "
+*ImageableArea EnvC5/C5 Envelope: "11.62 11.62 447.59 637.51 "
+*ImageableArea EnvDL/DL Envelope: "11.62 11.62 300.19 612.00 "
+*?ImageableArea: "
+save
+   3 dict begin
+   /cvp { (                ) cvs print ( ) print } bind def
+   /upperright {10000 mul floor 10000 div} bind def
+   /lowerleft {10000 mul ceiling 10000 div} bind def
+   newpath clippath pathbbox
+   4 -2 roll exch 2 {lowerleft cvp} repeat
+   exch 2 {upperright cvp} repeat (\n) print flush
+   end
+restore
+"
+*End
+
+*% These provide the physical dimensions of the paper (by keyword)
+*DefaultPaperDimension: A4
+*PaperDimension A4/A4 (210 x 297mm): "595 842"
+*PaperDimension A5/A5 (148 x 210mm): "420 595"
+*PaperDimension B5/B5 (182 x 257mm): "516 729"
+*PaperDimension Letter/Letter (8.5 x 11"): "612 792"
+*PaperDimension FanFoldGermanLegal/Folio (8.5 x 13"): "612 936"
+*PaperDimension Legal/Legal (8.5 x 14"): "612 1008"
+*PaperDimension Executive/Executive (7.25 x 10.5"): "522 756"
+*PaperDimension Env10/Com 10 (4.125 x 9.5"): "297 684"
+*PaperDimension EnvMonarch/Monarch (3.875 x 7.5"): "279 540"
+*PaperDimension EnvC5/C5 Envelope: "459 649"
+*PaperDimension EnvDL/DL Envelope: "312 624"
+
+*% Custom Page Sizes ===================
+*% min: 216 pts x 360 pts   (76.2mm * 127mm)
+*% max: 612 pts x 1008 pts  (215.9mm * 355.6mm)
+*HWMargins: 11 11 11 11
+*LeadingEdge Short: ""
+*DefaultLeadingEdge: Short
+*MaxMediaWidth: "612"
+*MaxMediaHeight: "1008"
+*NonUIOrderDependency: 70.0 AnySetup *CustomPageSize
+*CustomPageSize True: "
+4 dict dup /LeadingEdge null put
+dup /MediaClass null put currentpagedevice
+dup /MediaPosition get null eq
+{/Policies 2 copy known
+  {get /PageSize 2 copy known
+    {get dup 3 ge exch 6 le and {dup /DeferredMediaSelection false put} if}
+    {pop pop} ifelse
+  }{pop pop} ifelse
+}{pop} ifelse setpagedevice
+userdict /4.3PPDCompliant known
+    {userdict /4.3PPDCompliant get } {false} ifelse
+{
+  pop pop pop
+  3 dict begin
+    /PageSize [
+      4 -2 roll
+    ] def
+  /ImagingBBox null def
+  currentdict end setpagedevice
+}{
+  pop pop pop
+  3 dict begin
+    /PageSize [
+      4 -2 roll exch
+    ] def
+  /ImagingBBox null def
+  currentdict end setpagedevice
+} ifelse
+"
+*End
+
+*ParamCustomPageSize Height:       1 points 360 1008
+*ParamCustomPageSize Width:        2 points 216 612
+*ParamCustomPageSize WidthOffset:  3 points 0 0
+*ParamCustomPageSize HeightOffset: 4 points 0 0
+*ParamCustomPageSize Orientation:  5 int 1 1
+
+*% Gray Balance Information ===================
+*OpenUI *FXGrayBalance/Gray Guaranteed: Boolean
+*OrderDependency: 30.0 AnySetup *FXGrayBalance
+*DefaultFXGrayBalance: True
+*FXGrayBalance False/Off: "1 dict dup 2 dict dup/Type 26 put dup/RGBToK 0 put/DeviceRenderingInfo exch put setpagedevice"
+*FXGrayBalance True/On: "1 dict dup 2 dict dup/Type 26 put dup/RGBToK 1 put/DeviceRenderingInfo exch put setpagedevice"
+*?FXGrayBalance: "
+save
+  currentpagedevice /DeviceRenderingInfo 2 copy known {
+    get dup /Type get 26 eq {
+      /RGBToK get
+      [(False) (True) (Unknown) (Unknown)] exch get
+    }
+    {pop (Unknown)} ifelse
+  }
+  {pop pop (Unknown)} ifelse
+  = flush
+restore
+"
+*End
+*CloseUI: *FXGrayBalance
+
+*% LeadingEdge ===============
+*OpenUI *FXMSILeadingEdge/Feed Orientation: PickOne
+*OrderDependency: 100.0 AnySetup *FXMSILeadingEdge
+*DefaultFXMSILeadingEdge: ShortEdge
+*FXMSILeadingEdge LongEdge/Landscape: "currentpagedevice/ManualFeed get{1 dict dup/LeadingEdge 1 put setpagedevice}if"
+*FXMSILeadingEdge LongEdgeR/Landscape (Rotated): "currentpagedevice/ManualFeed get{1 dict dup/LeadingEdge 3 put setpagedevice}if"
+*FXMSILeadingEdge ShortEdge/Portrait: "currentpagedevice/ManualFeed get{1 dict dup/LeadingEdge 0 put setpagedevice}if"
+*FXMSILeadingEdge ShortEdgeR/Portrait (Rotated): "currentpagedevice/ManualFeed get{1 dict dup/LeadingEdge 2 put setpagedevice}if"
+*?FXMSILeadingEdge: "
+  save
+    currentpagedevice /LeadingEdge get dup null eq
+    {pop (ShortEdge)}
+    {[(ShortEdge)(LongEdge)(ShortEdgeR)(LongEdgeR)] exch get} ifelse = flush
+  restore
+"
+*End
+*CloseUI: *FXMSILeadingEdge
+
+*% Collate ===============
+*OpenUI *Collate/Collated: Boolean
+*OrderDependency: 15.0 AnySetup *Collate
+*DefaultCollate: False
+*Collate False/Off: "1 dict dup/Collate false put setpagedevice"
+*Collate True/On: "1 dict dup/Collate true put setpagedevice"
+*?Collate: "save currentpagedevice/Collate get{(True)}{(False)}ifelse = flush restore"
+*CloseUI: *Collate
+
+*% MediaType ===============
+*OpenUI *MediaType/Paper Type: PickOne
+*OrderDependency: 90.0 AnySetup *MediaType
+*DefaultMediaType: Default
+*MediaType Default/None: ""
+*MediaType Stationary/Plain: "1 dict dup/MediaClass(stationary)put setpagedevice"
+*MediaType ThickPaper/Lightweight Cardstock: "1 dict dup/MediaClass(thick1)put setpagedevice"
+*MediaType PrepunchedPaper/Hole Punched: "1 dict dup/MediaClass(prepunched)put setpagedevice"
+*MediaType ThickPaper2/Heavyweight Cardstock: "1 dict dup/MediaClass(thick2)put setpagedevice"
+*MediaType LetterheadPaper/Letterhead: "1 dict dup/MediaClass(letterhead)put setpagedevice"
+*MediaType LabelPaper/Labels: "1 dict dup/MediaClass(label)put setpagedevice"
+*MediaType ColoredPaper/Colored: "1 dict dup/MediaClass(colored)put setpagedevice"
+*MediaType SpecialPaper/Other Type: "1 dict dup/MediaClass(special)put setpagedevice"
+*MediaType CoatingPaper2/Lightweight Glossy Cardstock: "1 dict dup/MediaClass(coating2)put setpagedevice"
+*MediaType CoatingPaper3/Heavyweight Glossy Cardstock: "1 dict dup/MediaClass(coating3)put setpagedevice"
+*MediaType Envelope/Envelope: "1 dict dup/MediaClass(envelope)put setpagedevice"
+*?MediaType: "
+ save mark {
+  20 dict
+   dup (stationary) (Stationary) put
+   dup (thick1) (ThickPaper) put
+   dup (prepunched) (PrepunchedPaper) put
+   dup (thick2) (ThickPaper2) put
+   dup (letterhead) (LetterheadPaper) put
+   dup (label) (LabelPaper) put
+   dup (colored) (ColoredPaper) put
+   dup (special) (SpecialPaper) put
+   dup (coating2) (CoatingPaper2) put
+   dup (coating3) (CoatingPaper3) put
+   dup (envelope) (Envelope) put
+  currentpagedevice /MediaClass get get = flush
+ } stopped { (Unknown) = flush } if
+ cleartomark restore
+"
+*End
+*CloseUI: *MediaType
+
+*% SPS ===============
+*OpenUI *FXSubPaperSelection/Substitute Tray: PickOne
+*OrderDependency: 35.0 AnySetup *FXSubPaperSelection
+*DefaultFXSubPaperSelection: Policy0
+*FXSubPaperSelection Policy0/Printer Default: ""
+*FXSubPaperSelection Policy2/Display Message: "
+  currentpagedevice /InputAttributes get /Priority get {
+    currentpagedevice /InputAttributes get exch get dup null eq {
+      pop
+    }{
+      4 dict begin
+        /PageSize get /PageSize exch def
+        /MediaClass null def
+        1 dict begin /PageSize 1 def currentdict end
+        /Policies exch def
+        /DeferredMediaSelection true def
+      currentdict end setpagedevice
+      exit
+    } ifelse
+  } forall
+"
+*End
+*FXSubPaperSelection Policy3/Use Closest Size (Reduce to Fit): "
+  currentpagedevice /InputAttributes get /Priority get {
+    currentpagedevice /InputAttributes get exch get dup null eq {
+      pop
+    }{
+      4 dict begin
+        /PageSize get /PageSize exch def
+        /MediaClass null def
+        1 dict begin /PageSize 3 def currentdict end
+        /Policies exch def
+        /DeferredMediaSelection false def
+      currentdict end setpagedevice
+      exit
+    } ifelse
+  } forall
+"
+*End
+*FXSubPaperSelection Policy5/Use Closest Size (100%): "
+  currentpagedevice /InputAttributes get /Priority get {
+    currentpagedevice /InputAttributes get exch get dup null eq {
+      pop
+    }{
+      4 dict begin
+        /PageSize get /PageSize exch def
+        /MediaClass null def
+        1 dict begin /PageSize 5 def currentdict end
+        /Policies exch def
+        /DeferredMediaSelection false def
+      currentdict end setpagedevice
+      exit
+    } ifelse
+  } forall
+"
+*End
+*FXSubPaperSelection Policy4/Use Larger Size (Reduce to Fit): "
+  currentpagedevice /InputAttributes get /Priority get {
+    currentpagedevice /InputAttributes get exch get dup null eq {
+      pop
+    }{
+      4 dict begin
+        /PageSize get /PageSize exch def
+        /MediaClass null def
+        1 dict begin /PageSize 4 def currentdict end
+        /Policies exch def
+        /DeferredMediaSelection false def
+      currentdict end setpagedevice
+      exit
+    } ifelse
+  } forall
+"
+*End
+*FXSubPaperSelection Policy6/Use Larger Size (100%): "
+  currentpagedevice /InputAttributes get /Priority get {
+    currentpagedevice /InputAttributes get exch get dup null eq {
+      pop
+    }{
+      4 dict begin
+        /PageSize get /PageSize exch def
+        /MediaClass null def
+        1 dict begin /PageSize 6 def currentdict end
+        /Policies exch def
+        /DeferredMediaSelection false def
+      currentdict end setpagedevice
+      exit
+    } ifelse
+  } forall
+"
+*End
+*FXSubPaperSelection SMH/Feed from Bypass Tray: "
+  currentpagedevice /InputAttributes get /Priority get {
+    currentpagedevice /InputAttributes get exch get dup null eq {
+      pop
+    }{
+      4 dict begin
+        /PageSize get /PageSize exch def
+        /MediaClass null def
+        1 dict begin /PageSize 2 def currentdict end
+        /Policies exch def
+        /DeferredMediaSelection true def
+      currentdict end setpagedevice
+      exit
+    } ifelse
+  } forall
+"
+*End
+*?FXSubPaperSelection: "
+  save
+  [(Policy0)(Policy2)(SMH)(Policy3)(Policy4)(Policy5)(Policy6)(Unknown)]
+  currentpagedevice /Policies get /PageSize get get = flush
+  restore
+"
+*End
+*CloseUI: *FXSubPaperSelection
+
+*OpenUI *FXCustomPageSizeCorrection/Custom Paper Auto Orientation: Boolean
+*OrderDependency: 1.0 Prolog *FXCustomPageSizeCorrection
+*DefaultFXCustomPageSizeCorrection: True
+*FXCustomPageSizeCorrection False/Off: "userdict /4.3PPDCompliant true put"
+*FXCustomPageSizeCorrection True/On: "userdict /4.3PPDCompliant false put"
+*?FXCustomPageSizeCorrection: "
+    save
+    (Unknown)
+    userdict /4.3PPDCompliant known
+        {userdict /4.3PPDCompliant get
+            {pop (False) }{pop (True)} ifelse
+        } if
+        = flush
+    restore
+"
+*End
+*CloseUI: *FXCustomPageSizeCorrection
+
+*OpenUI *Smoothing/Image Enhancement: Boolean
+*OrderDependency: 180.0 AnySetup *Smoothing
+*DefaultSmoothing: True
+*Smoothing False/Off: "
+  2 dict dup /PostRenderingEnhance true put
+  dup /PostRenderingEnhanceDetails 2 dict
+  dup /Type 32 put
+  dup /REValue 0 put
+  put setpagedevice
+"
+*End
+*Smoothing True/On: "
+  2 dict dup /PostRenderingEnhance true put
+  dup /PostRenderingEnhanceDetails 2 dict
+  dup /Type 32 put
+  dup /REValue 1 put
+  put setpagedevice
+"
+*End
+*?Smoothing: "
+  save
+    currentpagedevice /PostRenderingEnhance 2 copy known {
+      get {
+        currentpagedevice /PostRenderingEnhanceDetails 2 copy known
+          { get dup /Type get 32 eq {
+             /REValue get 1 eq
+             {(True)}{(False)}ifelse
+             }
+             {pop (Unknown)} ifelse
+          }
+          { pop pop (Unknown)} ifelse
+      }{(False)} ifelse
+    }{(Unknown)}ifelse
+    = flush
+  restore
+"
+*End
+*CloseUI: *Smoothing
+
+*% TonerSaver Information ===================
+
+*OpenUI *FXTonerSaver/Draft Mode: PickOne
+*OrderDependency: 32.0 AnySetup *FXTonerSaver
+*DefaultFXTonerSaver: False
+*FXTonerSaver False/Off: "1 dict dup/PostRenderingEnhanceDetails 2 dict dup/Type 32 put dup/TonerSaver 0 put put setpagedevice"
+*FXTonerSaver Mode1/On(Light): "1 dict dup/PostRenderingEnhanceDetails 2 dict dup/Type 32 put dup/TonerSaver 2 put put setpagedevice"
+*FXTonerSaver Mode2/On(Lighter): "1 dict dup/PostRenderingEnhanceDetails 2 dict dup/Type 32 put dup/TonerSaver 3 put put setpagedevice"
+*FXTonerSaver Mode3/On(Lightest): "1 dict dup/PostRenderingEnhanceDetails 2 dict dup/Type 32 put dup/TonerSaver 4 put put setpagedevice"
+*?FXTonerSaver: "
+save mark
+{
+  5 dict
+  dup 0 (False) put
+  dup 2 (Mode1) put
+  dup 3 (Mode2) put
+  dup 4 (Mode3) put
+  currentpagedevice /PostRenderingEnhanceDetails get
+  dup /Type get 32 eq
+  { /TonerSaver get get }
+  { pop (Unknown) } ifelse
+  = flush
+} stopped { (Unknown) = flush } if
+cleartomark restore
+"
+*End
+*CloseUI: *FXTonerSaver
+
+*OpenUI *FXSaveBlankSheet/Skip Blank Pages: Boolean
+*OrderDependency: 37.0 AnySetup *FXSaveBlankSheet
+*DefaultFXSaveBlankSheet: False
+*FXSaveBlankSheet False/Off: ""
+*FXSaveBlankSheet True/On: "/Custom/ProcSet 2 copy resourcestatus{pop pop findresource/skippage get exec}{pop pop}ifelse"
+*?FXSaveBlankSheet: "(False)pop(True)pop(Unknown)== flush"
+*CloseUI: *FXSaveBlankSheet
+
+*OpenUI *FXHalftoneMode/Halftone Screen Lock: Boolean
+*OrderDependency: 36.0 AnySetup *FXHalftoneMode
+*DefaultFXHalftoneMode: True
+*FXHalftoneMode False/Off: "<</HalftoneMode 0>>setuserparams"
+*FXHalftoneMode True/On: "<</HalftoneMode 1>>setuserparams"
+*?FXHalftoneMode: "save[(False)(True)]currentuserparams/HalftoneMode get get = flush restore"
+*CloseUI: *FXHalftoneMode
+
+*OpenUI *FXMonochromePriority/High speed for monochrome documents: Boolean
+*OrderDependency: 145.0 AnySetup *FXMonochromePriority
+*DefaultFXMonochromePriority: False
+*FXMonochromePriority False/Off: "
+/Custom /ProcSet resourcestatus
+ { pop pop /Custom /ProcSet findresource dup /setprocessmode known
+   {/setprocessmode get 1 exch exec}{pop} ifelse
+ }if
+"
+*End
+*FXMonochromePriority True/On: "
+/Custom /ProcSet resourcestatus
+ { pop pop /Custom /ProcSet findresource dup /setprocessmode known
+   {/setprocessmode get 0 exch exec}{pop} ifelse
+ }if
+"
+*End
+*?FXMonochromePriority: "
+save
+ /Custom /ProcSet resourcestatus
+ { pop pop /Custom /ProcSet findresource dup /currentprocessmode known
+   {/currentprocessmode get exec 0 eq {(True)}{(False)} ifelse}{pop (Unknown)} ifelse
+ }if
+ = flush
+restore
+"
+*End
+*CloseUI: *FXMonochromePriority
+
+*% ColorMode Information ===================
+*OpenUI *FXColorMode/Output Color: PickOne
+*OrderDependency: 18.0 AnySetup *FXColorMode
+*DefaultFXColorMode: Color
+*FXColorMode Color/Color: "1 dict dup/ProcessColorModel/DeviceCMYK put setpagedevice"
+*FXColorMode Black/Black and White: "1 dict dup/ProcessColorModel/DeviceGray put setpagedevice"
+*?FXColorMode: "save currentpagedevice/ProcessColorModel get cvn/DeviceGray eq{(Black)}{(Color)}ifelse = flush restore"
+*CloseUI: *FXColorMode
+
+*OpenGroup: FXGraphicsGroup/1. Graphics
+*% OutputMode Information ===================
+*OpenUI *FXOutputMode/Image Quality: PickOne
+*OrderDependency: 10.0 AnySetup *FXOutputMode
+*DefaultFXOutputMode: HighSpeed
+*FXOutputMode HighSpeed/Standard: "
+    2 dict dup /HWResolution [600 600] put
+    dup 2 dict dup /Type 26 put dup /ValuesPerColorComponent 2 put
+    /DeviceRenderingInfo exch put
+    setpagedevice
+"
+*End
+*FXOutputMode HighQuality/High Quality: "
+    2 dict dup /HWResolution [600 600] put
+    dup 2 dict dup /Type 26 put dup /ValuesPerColorComponent 256 put
+    /DeviceRenderingInfo exch put
+    setpagedevice
+"
+*End
+*FXOutputMode HighResolution/High Resolution: "
+    2 dict dup /HWResolution [1200 1200] put
+    dup 2 dict dup /Type 26 put dup /ValuesPerColorComponent 2 put
+    /DeviceRenderingInfo exch put
+    setpagedevice
+"
+*End
+*?FXOutputMode: "
+save
+  currentpagedevice dup /HWResolution get 0 get cvi 1200 eq {
+    pop (HighResolution)
+  }{
+    /DeviceRenderingInfo 2 copy known { 
+      get dup /Type get 26 eq {
+        /ValuesPerColorComponent get 256 eq {(HighQuality)}{(HighSpeed)}ifelse
+      }{pop (Unknown)} ifelse
+    }{ pop pop (Unknown)} ifelse
+  } ifelse
+  = flush
+restore
+"
+*End
+*CloseUI: *FXOutputMode
+
+*% Brightness Information ==========================
+*OpenUI *FXBrightness/Brightness: PickOne
+*OrderDependency: 26.0 AnySetup *FXBrightness
+*DefaultFXBrightness: Normal
+*FXBrightness Bright5/Brighten (+5): "1 dict dup 2 dict dup/Type 26 put dup/Brightness 5 put/DeviceRenderingInfo exch put setpagedevice"
+*FXBrightness Bright4/Brighten (+4): "1 dict dup 2 dict dup/Type 26 put dup/Brightness 4 put/DeviceRenderingInfo exch put setpagedevice"
+*FXBrightness Bright3/Brighten (+3): "1 dict dup 2 dict dup/Type 26 put dup/Brightness 3 put/DeviceRenderingInfo exch put setpagedevice"
+*FXBrightness Bright2/Brighten (+2): "1 dict dup 2 dict dup/Type 26 put dup/Brightness 2 put/DeviceRenderingInfo exch put setpagedevice"
+*FXBrightness Bright1/Brighten (+1): "1 dict dup 2 dict dup/Type 26 put dup/Brightness 1 put/DeviceRenderingInfo exch put setpagedevice"
+*FXBrightness Normal/Normal: "1 dict dup 2 dict dup/Type 26 put dup/Brightness 0 put/DeviceRenderingInfo exch put setpagedevice"
+*FXBrightness Dark1/Subdue (-1): "1 dict dup 2 dict dup/Type 26 put dup/Brightness -1 put/DeviceRenderingInfo exch put setpagedevice"
+*FXBrightness Dark2/Subdue (-2): "1 dict dup 2 dict dup/Type 26 put dup/Brightness -2 put/DeviceRenderingInfo exch put setpagedevice"
+*FXBrightness Dark3/Subdue (-3): "1 dict dup 2 dict dup/Type 26 put dup/Brightness -3 put/DeviceRenderingInfo exch put setpagedevice"
+*FXBrightness Dark4/Subdue (-4): "1 dict dup 2 dict dup/Type 26 put dup/Brightness -4 put/DeviceRenderingInfo exch put setpagedevice"
+*FXBrightness Dark5/Subdue (-5): "1 dict dup 2 dict dup/Type 26 put dup/Brightness -5 put/DeviceRenderingInfo exch put setpagedevice"
+*?FXBrightness: "
+save
+  currentpagedevice /DeviceRenderingInfo 2 copy known {
+    get dup /Type get 26 eq {
+      /Brightness get
+      11 dict
+      dup 5 (Bright5) put
+      dup 4 (Bright4) put
+      dup 3 (Bright3) put
+      dup 2 (Bright2) put
+      dup 1 (Bright1) put
+      dup 0 (Normal) put
+      dup -1 (Dark1) put
+      dup -2 (Dark2) put
+      dup -3 (Dark3) put
+      dup -4 (Dark4) put
+      dup -5 (Dark5) put
+      exch get
+    }
+    {pop (Unknown)} ifelse
+  }
+  {pop pop (Unknown)} ifelse
+  = flush
+restore
+"
+*End
+*CloseUI: *FXBrightness
+
+*% RGB Color Correction Information ==========================
+*OpenUI *FXRGBImageType/Image Type: PickOne
+*OrderDependency: 25.0 AnySetup *FXRGBImageType
+*DefaultFXRGBImageType: Standard
+*FXRGBImageType Standard/Standard: "1 dict dup 2 dict dup/Type 26 put dup/RGBCorrection 3 put/DeviceRenderingInfo exch put setpagedevice"
+*FXRGBImageType Photo/Photos: "1 dict dup 2 dict dup/Type 26 put dup/RGBCorrection 1 put/DeviceRenderingInfo exch put setpagedevice"
+*FXRGBImageType Presentation/Presentation: "1 dict dup 2 dict dup/Type 26 put dup/RGBCorrection 4 put/DeviceRenderingInfo exch put setpagedevice"
+*FXRGBImageType sRGB/Design: "1 dict dup 2 dict dup/Type 26 put dup/RGBCorrection 2 put/DeviceRenderingInfo exch put setpagedevice"
+*FXRGBImageType POP/POP: "1 dict dup 2 dict dup/Type 26 put dup/RGBCorrection 6 put/DeviceRenderingInfo exch put setpagedevice"
+*FXRGBImageType Off/Off: "1 dict dup 2 dict dup/Type 26 put dup/RGBCorrection 0 put/DeviceRenderingInfo exch put setpagedevice"
+*?FXRGBImageType: "
+save
+  currentpagedevice /DeviceRenderingInfo 2 copy known {
+    get dup /Type get 26 eq {
+      /RGBCorrection get
+      [(Off)(Photo)(sRGB)(Standard)(Presentation)(Unknown)(POP)] exch get
+    }
+    {pop (Unknown)} ifelse
+  }
+  {pop pop (Unknown)} ifelse
+  = flush
+restore
+"
+*End
+*CloseUI: *FXRGBImageType
+
+*% EngineScreen Information ===================
+*OpenUI *FXEngineScreen/Screen: PickOne
+*OrderDependency: 28.0 AnySetup *FXEngineScreen
+*DefaultFXEngineScreen: Auto
+*FXEngineScreen Auto/Auto Screening: "
+  1 dict dup
+  /PostRenderingEnhanceDetails 2 dict
+  dup /Type 32 put dup /EngineScreen 2 put put
+  dup /PostRenderingEnhance true put setpagedevice
+"
+*End
+*FXEngineScreen Screen1/Fineness: "
+  1 dict dup
+  /PostRenderingEnhanceDetails 2 dict
+  dup /Type 32 put dup /EngineScreen 0 put put
+  dup /PostRenderingEnhance true put setpagedevice
+"
+*End
+*FXEngineScreen Screen2/Standard: "
+  1 dict dup
+  /PostRenderingEnhanceDetails 2 dict
+  dup /Type 32 put dup /EngineScreen 1 put put
+  dup /PostRenderingEnhance true put setpagedevice
+"
+*End
+*FXEngineScreen Screen3/Gradation: "
+  1 dict dup
+  /PostRenderingEnhanceDetails 2 dict
+  dup /Type 32 put dup /EngineScreen 3 put put
+  dup /PostRenderingEnhance true put setpagedevice
+"
+*End
+*?FXEngineScreen: "
+save
+  currentpagedevice /PostRenderingEnhanceDetails 2 copy known {
+    get dup /Type get 32 eq {
+      /EngineScreen get [(Screen1) (Screen2) (Auto) (Screen3)] exch get
+    }
+    {pop (Unknown)} ifelse
+  }
+  {pop pop (Unknown)} ifelse
+  = flush
+restore
+"
+*End
+*CloseUI: *FXEngineScreen
+
+*OpenUI *FXInvalidateColorProfile/Invalidate Color Profile: Boolean
+*OrderDependency: 120.0 AnySetup *FXInvalidateColorProfile
+*DefaultFXInvalidateColorProfile: False
+*FXInvalidateColorProfile False/Off: "/Custom/ProcSet findresource/seticp 2 copy known{get false exch exec}{pop pop}ifelse"
+*FXInvalidateColorProfile True/On: "/Custom/ProcSet findresource/seticp 2 copy known{get true exch exec}{pop pop}ifelse"
+*?FXInvalidateColorProfile: "
+    save mark {
+        /Custom /ProcSet findresource /currenticp get exec
+        {(True)}{(False)} ifelse = flush
+    } stopped { (Unknown) = flush } if
+    cleartomark restore
+"
+*End
+*CloseUI: *FXInvalidateColorProfile
+
+*OpenUI *FXColorBalanceAdjustment/Adjust Color Balance: Boolean
+*OrderDependency: 40.0 AnySetup *FXColorBalanceAdjustment
+*DefaultFXColorBalanceAdjustment: False
+*FXColorBalanceAdjustment False/Off: "false/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorBalanceAdjustment True/On: "true/Custom/ProcSet findresource/setcolorbalance get exec"
+*?FXColorBalanceAdjustment: "(False)pop(True)pop(Unknown)== flush"
+*CloseUI: *FXColorBalanceAdjustment
+
+*CloseGroup: FXGraphicsGroup
+
+*OpenGroup: FXColorAdjustmentGroup/2. Color Adjustment
+*OpenUI *FXRGBCorrection/RGB Color Correction: PickOne
+*OrderDependency: 29.0 AnySetup *FXRGBCorrection
+*DefaultFXRGBCorrection: None
+*FXRGBCorrection None/No Correction: ""
+*FXRGBCorrection Perceptual/Perceptual: "1 dict dup 2 dict dup/Type 26 put dup/RGBCorrection 10 put/DeviceRenderingInfo exch put setpagedevice"
+*FXRGBCorrection Saturation/Saturation: "1 dict dup 2 dict dup/Type 26 put dup/RGBCorrection 11 put/DeviceRenderingInfo exch put setpagedevice"
+*FXRGBCorrection RelativeC/Relative Colorimetric: "1 dict dup 2 dict dup/Type 26 put dup/RGBCorrection 12 put/DeviceRenderingInfo exch put setpagedevice"
+*FXRGBCorrection AbsoluteC/Absolute Colorimetric: "1 dict dup 2 dict dup/Type 26 put dup/RGBCorrection 13 put/DeviceRenderingInfo exch put setpagedevice"
+*?FXRGBCorrection: "
+save
+  currentpagedevice /DeviceRenderingInfo 2 copy known {
+    get dup /Type get 26 eq {
+      /RGBCorrection get
+      10 dict
+      dup 10 (Perceptual) put
+      dup 11 (Saturation) put
+      dup 12 (RelativeC) put
+      dup 13 (AbsoluteC) put
+      exch 2 copy known {get} {pop pop (None)} ifelse
+    }
+    {pop (Unknown)} ifelse
+  }
+  {pop pop (Unknown)} ifelse
+  = flush
+restore
+"
+*End
+*CloseUI: *FXRGBCorrection
+
+*OpenUI *FXRGBInputProfile/Source RGB Profile: PickOne
+*OrderDependency: 31.0 AnySetup *FXRGBInputProfile
+*DefaultFXRGBInputProfile: SRGB
+*FXRGBInputProfile SRGB/sRGB: "1 dict dup 2 dict dup/Type 26 put dup/RGBSpace 0 put/DeviceRenderingInfo exch put setpagedevice"
+*FXRGBInputProfile AdobeRGB/Adobe RGB (1998): "1 dict dup 2 dict dup/Type 26 put dup/RGBSpace 1 put/DeviceRenderingInfo exch put setpagedevice"
+*?FXRGBInputProfile: "
+save
+  currentpagedevice /DeviceRenderingInfo 2 copy known {
+    get dup /Type get 26 eq {
+      /RGBSpace get 
+      [(SRGB) (AdobeRGB)] exch get
+    }
+    {pop (Unknown)} ifelse
+  }
+  {pop pop (Unknown)} ifelse
+  = flush
+restore
+"
+*End
+*CloseUI: *FXRGBInputProfile
+
+*OpenUI *FXRGBGammaCorrection/RGB Gamma Correction: PickOne
+*OrderDependency: 27.0 AnySetup *FXRGBGammaCorrection
+*DefaultFXRGBGammaCorrection: Standard
+*FXRGBGammaCorrection Lightest/1.0: "1 dict dup 2 dict dup/Type 26 put dup/GammaCorrection 1 put/DeviceRenderingInfo exch put setpagedevice"
+*FXRGBGammaCorrection Light/1.4: "1 dict dup 2 dict dup/Type 26 put dup/GammaCorrection 2 put/DeviceRenderingInfo exch put setpagedevice"
+*FXRGBGammaCorrection Standard/1.8: "1 dict dup 2 dict dup/Type 26 put dup/GammaCorrection 3 put/DeviceRenderingInfo exch put setpagedevice"
+*FXRGBGammaCorrection Dark/2.2: "1 dict dup 2 dict dup/Type 26 put dup/GammaCorrection 4 put/DeviceRenderingInfo exch put setpagedevice"
+*FXRGBGammaCorrection Darkest/2.6: "1 dict dup 2 dict dup/Type 26 put dup/GammaCorrection 5 put/DeviceRenderingInfo exch put setpagedevice"
+*FXRGBGammaCorrection Off/Off: "1 dict dup 2 dict dup/Type 26 put dup/GammaCorrection 0 put/DeviceRenderingInfo exch put setpagedevice"
+*?FXRGBGammaCorrection: "
+save
+  currentpagedevice /DeviceRenderingInfo 2 copy known {
+    get dup /Type get 26 eq {
+      /GammaCorrection get
+      [(Off) (Lightest) (Light) (Standard) (Dark) (Darkest)] exch get
+    }
+    {pop (Unknown)} ifelse
+  }
+  {pop pop (Unknown)} ifelse
+  = flush
+restore
+"
+*End
+*CloseUI: *FXRGBGammaCorrection
+
+*OpenUI *FXColorTemperature/RGB Color Temperature: PickOne
+*OrderDependency: 33.0 AnySetup *FXColorTemperature
+*DefaultFXColorTemperature: TemperatureD65
+*FXColorTemperature TemperatureD50/5000K (D50): "1 dict dup 2 dict dup/Type 26 put dup/WhitePoint 0 put/DeviceRenderingInfo exch put setpagedevice"
+*FXColorTemperature TemperatureD65/6500K (D65): "1 dict dup 2 dict dup/Type 26 put dup/WhitePoint 1 put/DeviceRenderingInfo exch put setpagedevice"
+*FXColorTemperature Temperature9300K/9300K: "1 dict dup 2 dict dup/Type 26 put dup/WhitePoint 2 put/DeviceRenderingInfo exch put setpagedevice"
+*?FXColorTemperature: "
+save
+  currentpagedevice /DeviceRenderingInfo 2 copy known {
+    get dup /Type get 26 eq {
+      /WhitePoint get 
+      [(TemperatureD50) (TemperatureD65) (Temperature9300K)] exch get
+    }
+    {pop (Unknown)} ifelse
+  }
+  {pop pop (Unknown)} ifelse
+  = flush
+restore
+"
+*End
+*CloseUI: *FXColorTemperature
+
+*CloseGroup: FXColorAdjustmentGroup
+*OpenGroup: FXColorBalanceGroupC/3. Color Balance C
+*OpenUI *FXColorDensityCyanLow/Low Density (C): PickOne
+*OrderDependency: 41.0 AnySetup *FXColorDensityCyanLow
+*DefaultFXColorDensityCyanLow: 0
+*FXColorDensityCyanLow +3/Darker (+3): "/Cyan/Low 3/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityCyanLow +2/Darker (+2): "/Cyan/Low 2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityCyanLow +1/Darker (+1): "/Cyan/Low 1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityCyanLow 0/Normal: "/Cyan/Low 0/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityCyanLow -1/Lighter (-1): "/Cyan/Low -1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityCyanLow -2/Lighter (-2): "/Cyan/Low -2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityCyanLow -3/Lighter (-3): "/Cyan/Low -3/Custom/ProcSet findresource/setcolorbalance get exec"
+*?FXColorDensityCyanLow: "(+3)pop(+2)pop(+1)pop(0)pop(-1)pop(-2)pop(-3)pop(Unknown)== flush"
+*CloseUI: *FXColorDensityCyanLow
+
+*OpenUI *FXColorDensityCyanMid/Medium Density (C): PickOne
+*OrderDependency: 42.0 AnySetup *FXColorDensityCyanMid
+*DefaultFXColorDensityCyanMid: 0
+*FXColorDensityCyanMid +3/Darker (+3): "/Cyan/Middle 3/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityCyanMid +2/Darker (+2): "/Cyan/Middle 2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityCyanMid +1/Darker (+1): "/Cyan/Middle 1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityCyanMid 0/Normal: "/Cyan/Middle 0/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityCyanMid -1/Lighter (-1): "/Cyan/Middle -1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityCyanMid -2/Lighter (-2): "/Cyan/Middle -2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityCyanMid -3/Lighter (-3): "/Cyan/Middle -3/Custom/ProcSet findresource/setcolorbalance get exec"
+*?FXColorDensityCyanMid: "(+3)pop(+2)pop(+1)pop(0)pop(-1)pop(-2)pop(-3)pop(Unknown)== flush"
+*CloseUI: *FXColorDensityCyanMid
+
+*OpenUI *FXColorDensityCyanHigh/High Density (C): PickOne
+*OrderDependency: 43.0 AnySetup *FXColorDensityCyanHigh
+*DefaultFXColorDensityCyanHigh: 0
+*FXColorDensityCyanHigh +3/Darker (+3): "/Cyan/High 3/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityCyanHigh +2/Darker (+2): "/Cyan/High 2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityCyanHigh +1/Darker (+1): "/Cyan/High 1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityCyanHigh 0/Normal: "/Cyan/High 0/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityCyanHigh -1/Lighter (-1): "/Cyan/High -1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityCyanHigh -2/Lighter (-2): "/Cyan/High -2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityCyanHigh -3/Lighter (-3): "/Cyan/High -3/Custom/ProcSet findresource/setcolorbalance get exec"
+*?FXColorDensityCyanHigh: "(+3)pop(+2)pop(+1)pop(0)pop(-1)pop(-2)pop(-3)pop(Unknown)== flush"
+*CloseUI: *FXColorDensityCyanHigh
+
+*CloseGroup: FXColorBalanceGroupC
+
+*OpenGroup: FXColorBalanceGroupM/4. Color Balance M
+*OpenUI *FXColorDensityMagentaLow/Low Density (M): PickOne
+*OrderDependency: 44.0 AnySetup *FXColorDensityMagentaLow
+*DefaultFXColorDensityMagentaLow: 0
+*FXColorDensityMagentaLow +3/Darker (+3): "/Magenta/Low 3/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityMagentaLow +2/Darker (+2): "/Magenta/Low 2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityMagentaLow +1/Darker (+1): "/Magenta/Low 1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityMagentaLow 0/Normal: "/Magenta/Low 0/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityMagentaLow -1/Lighter (-1): "/Magenta/Low -1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityMagentaLow -2/Lighter (-2): "/Magenta/Low -2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityMagentaLow -3/Lighter (-3): "/Magenta/Low -3/Custom/ProcSet findresource/setcolorbalance get exec"
+*?FXColorDensityMagentaLow: "(+3)pop(+2)pop(+1)pop(0)pop(-1)pop(-2)pop(-3)pop(Unknown)== flush"
+*CloseUI: *FXColorDensityMagentaLow
+
+*OpenUI *FXColorDensityMagentaMid/Medium Density (M): PickOne
+*OrderDependency: 45.0 AnySetup *FXColorDensityMagentaMid
+*DefaultFXColorDensityMagentaMid: 0
+*FXColorDensityMagentaMid +3/Darker (+3): "/Magenta/Middle 3/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityMagentaMid +2/Darker (+2): "/Magenta/Middle 2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityMagentaMid +1/Darker (+1): "/Magenta/Middle 1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityMagentaMid 0/Normal: "/Magenta/Middle 0/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityMagentaMid -1/Lighter (-1): "/Magenta/Middle -1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityMagentaMid -2/Lighter (-2): "/Magenta/Middle -2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityMagentaMid -3/Lighter (-3): "/Magenta/Middle -3/Custom/ProcSet findresource/setcolorbalance get exec"
+*?FXColorDensityMagentaMid: "(+3)pop(+2)pop(+1)pop(0)pop(-1)pop(-2)pop(-3)pop(Unknown)== flush"
+*CloseUI: *FXColorDensityMagentaMid
+
+*OpenUI *FXColorDensityMagentaHigh/High Density (M): PickOne
+*OrderDependency: 46.0 AnySetup *FXColorDensityMagentaHigh
+*DefaultFXColorDensityMagentaHigh: 0
+*FXColorDensityMagentaHigh +3/Darker (+3): "/Magenta/High 3/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityMagentaHigh +2/Darker (+2): "/Magenta/High 2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityMagentaHigh +1/Darker (+1): "/Magenta/High 1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityMagentaHigh 0/Normal: "/Magenta/High 0/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityMagentaHigh -1/Lighter (-1): "/Magenta/High -1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityMagentaHigh -2/Lighter (-2): "/Magenta/High -2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityMagentaHigh -3/Lighter (-3): "/Magenta/High -3/Custom/ProcSet findresource/setcolorbalance get exec"
+*?FXColorDensityMagentaHigh: "(+3)pop(+2)pop(+1)pop(0)pop(-1)pop(-2)pop(-3)pop(Unknown)== flush"
+*CloseUI: *FXColorDensityMagentaHigh
+
+*CloseGroup: FXColorBalanceGroupM
+
+*OpenGroup: FXColorBalanceGroupY/5. Color Balance Y
+
+*OpenUI *FXColorDensityYellowLow/Low Density (Y): PickOne
+*OrderDependency: 47.0 AnySetup *FXColorDensityYellowLow
+*DefaultFXColorDensityYellowLow: 0
+*FXColorDensityYellowLow +3/Darker (+3): "/Yellow/Low 3/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityYellowLow +2/Darker (+2): "/Yellow/Low 2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityYellowLow +1/Darker (+1): "/Yellow/Low 1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityYellowLow 0/Normal: "/Yellow/Low 0/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityYellowLow -1/Lighter (-1): "/Yellow/Low -1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityYellowLow -2/Lighter (-2): "/Yellow/Low -2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityYellowLow -3/Lighter (-3): "/Yellow/Low -3/Custom/ProcSet findresource/setcolorbalance get exec"
+*?FXColorDensityYellowLow: "(+3)pop(+2)pop(+1)pop(0)pop(-1)pop(-2)pop(-3)pop(Unknown)== flush"
+*CloseUI: *FXColorDensityYellowLow
+
+*OpenUI *FXColorDensityYellowMid/Medium Density (Y): PickOne
+*OrderDependency: 48.0 AnySetup *FXColorDensityYellowMid
+*DefaultFXColorDensityYellowMid: 0
+*FXColorDensityYellowMid +3/Darker (+3): "/Yellow/Middle 3/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityYellowMid +2/Darker (+2): "/Yellow/Middle 2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityYellowMid +1/Darker (+1): "/Yellow/Middle 1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityYellowMid 0/Normal: "/Yellow/Middle 0/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityYellowMid -1/Lighter (-1): "/Yellow/Middle -1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityYellowMid -2/Lighter (-2): "/Yellow/Middle -2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityYellowMid -3/Lighter (-3): "/Yellow/Middle -3/Custom/ProcSet findresource/setcolorbalance get exec"
+*?FXColorDensityYellowMid: "(+3)pop(+2)pop(+1)pop(0)pop(-1)pop(-2)pop(-3)pop(Unknown)== flush"
+*CloseUI: *FXColorDensityYellowMid
+
+*OpenUI *FXColorDensityYellowHigh/High Density (Y): PickOne
+*OrderDependency: 49.0 AnySetup *FXColorDensityYellowHigh
+*DefaultFXColorDensityYellowHigh: 0
+*FXColorDensityYellowHigh +3/Darker (+3): "/Yellow/High 3/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityYellowHigh +2/Darker (+2): "/Yellow/High 2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityYellowHigh +1/Darker (+1): "/Yellow/High 1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityYellowHigh 0/Normal: "/Yellow/High 0/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityYellowHigh -1/Lighter (-1): "/Yellow/High -1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityYellowHigh -2/Lighter (-2): "/Yellow/High -2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityYellowHigh -3/Lighter (-3): "/Yellow/High -3/Custom/ProcSet findresource/setcolorbalance get exec"
+*?FXColorDensityYellowHigh: "(+3)pop(+2)pop(+1)pop(0)pop(-1)pop(-2)pop(-3)pop(Unknown)== flush"
+*CloseUI: *FXColorDensityYellowHigh
+
+*CloseGroup: FXColorBalanceGroupY
+
+*OpenGroup: FXColorBalanceGroupK/6. Color Balance K
+
+*OpenUI *FXColorDensityBlackLow/Low Density (K): PickOne
+*OrderDependency: 50.0 AnySetup *FXColorDensityBlackLow
+*DefaultFXColorDensityBlackLow: 0
+*FXColorDensityBlackLow +3/Darker (+3): "/Black/Low 3/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityBlackLow +2/Darker (+2): "/Black/Low 2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityBlackLow +1/Darker (+1): "/Black/Low 1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityBlackLow 0/Normal: "/Black/Low 0/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityBlackLow -1/Lighter (-1): "/Black/Low -1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityBlackLow -2/Lighter (-2): "/Black/Low -2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityBlackLow -3/Lighter (-3): "/Black/Low -3/Custom/ProcSet findresource/setcolorbalance get exec"
+*?FXColorDensityBlackLow: "(+3)pop(+2)pop(+1)pop(0)pop(-1)pop(-2)pop(-3)pop(Unknown)== flush"
+*CloseUI: *FXColorDensityBlackLow
+
+*OpenUI *FXColorDensityBlackMid/Medium Density (K): PickOne
+*OrderDependency: 51.0 AnySetup *FXColorDensityBlackMid
+*DefaultFXColorDensityBlackMid: 0
+*FXColorDensityBlackMid +3/Darker (+3): "/Black/Middle 3/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityBlackMid +2/Darker (+2): "/Black/Middle 2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityBlackMid +1/Darker (+1): "/Black/Middle 1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityBlackMid 0/Normal: "/Black/Middle 0/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityBlackMid -1/Lighter (-1): "/Black/Middle -1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityBlackMid -2/Lighter (-2): "/Black/Middle -2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityBlackMid -3/Lighter (-3): "/Black/Middle -3/Custom/ProcSet findresource/setcolorbalance get exec"
+*?FXColorDensityBlackMid: "(+3)pop(+2)pop(+1)pop(0)pop(-1)pop(-2)pop(-3)pop(Unknown)== flush"
+*CloseUI: *FXColorDensityBlackMid
+
+*OpenUI *FXColorDensityBlackHigh/High Density (K): PickOne
+*OrderDependency: 52.0 AnySetup *FXColorDensityBlackHigh
+*DefaultFXColorDensityBlackHigh: 0
+*FXColorDensityBlackHigh +3/Darker (+3): "/Black/High 3/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityBlackHigh +2/Darker (+2): "/Black/High 2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityBlackHigh +1/Darker (+1): "/Black/High 1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityBlackHigh 0/Normal: "/Black/High 0/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityBlackHigh -1/Lighter (-1): "/Black/High -1/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityBlackHigh -2/Lighter (-2): "/Black/High -2/Custom/ProcSet findresource/setcolorbalance get exec"
+*FXColorDensityBlackHigh -3/Lighter (-3): "/Black/High -3/Custom/ProcSet findresource/setcolorbalance get exec"
+*?FXColorDensityBlackHigh: "(+3)pop(+2)pop(+1)pop(0)pop(-1)pop(-2)pop(-3)pop(Unknown)== flush"
+*CloseUI: *FXColorDensityBlackHigh
+
+*CloseGroup: FXColorBalanceGroupK
+
+*OpenUI *FXSetTrapMode/Trapping: Boolean
+*OrderDependency: 148.0 AnySetup *FXSetTrapMode
+*DefaultFXSetTrapMode: False
+*FXSetTrapMode False/Off: "
+/Custom /ProcSet resourcestatus
+ { pop pop /Custom /ProcSet findresource dup /settrapmode known
+   {/settrapmode get 1 exch exec}{pop} ifelse
+ } if
+"
+*End
+*FXSetTrapMode True/On: "
+/Custom /ProcSet resourcestatus
+ { pop pop /Custom /ProcSet findresource dup /settrapmode known
+   {/settrapmode get 0 exch exec}{pop} ifelse
+ } if
+"
+*End
+*?FXSetTrapMode: "
+save
+ /Custom /ProcSet resourcestatus
+ { pop pop /Custom /ProcSet findresource dup /currenttrapmode known
+   {/currenttrapmode get exec 0 eq {(True)}{(False)} ifelse}{pop (Unknown)} ifelse
+ } {(Unknown)} ifelse
+ = flush
+restore
+"
+*End
+*CloseUI: *FXSetTrapMode
+
+*OpenUI *FXLetterHeadDuplexMode/Letterhead Duplex Mode: PickOne
+*OrderDependency: 147.0 AnySetup *FXLetterHeadDuplexMode
+*DefaultFXLetterHeadDuplexMode: DupAuto
+*FXLetterHeadDuplexMode DupAuto/Auto: ""
+*FXLetterHeadDuplexMode DupOff/Off: "
+/Custom /ProcSet resourcestatus
+ { pop pop /Custom /ProcSet findresource dup /setlhduplexmode known
+   {/setlhduplexmode get 1 exch exec}{pop} ifelse
+ }if
+"
+*End
+*FXLetterHeadDuplexMode DupOn/On: "
+/Custom /ProcSet resourcestatus
+ { pop pop /Custom /ProcSet findresource dup /setlhduplexmode known
+   {/setlhduplexmode get 0 exch exec}{pop} ifelse
+ }if
+"
+*End
+*?FXLetterHeadDuplexMode: "
+save
+ /Custom /ProcSet resourcestatus
+ { pop pop /Custom /ProcSet findresource dup /currentlhduplexmode known
+   {/currentlhduplexmode get exec 0 eq {(DupOn)}{(DupOff)} ifelse}{pop (Unknown)} ifelse
+ } {(Unknown)} ifelse
+ = flush
+restore
+"
+*End
+*CloseUI: *FXLetterHeadDuplexMode
+
+*% Font Information =====================
+
+*FCacheSize 256Meg: 1258291
+*FCacheSize 512Meg: 1258291
+*FCacheSize 768Meg: 1258291
+*FCacheSize 1024Meg: 1258291
+
+*DefaultFont: Courier
+
+*Font AlbertusMT-Italic: Standard "(001.001)" Standard ROM 
+*Font AlbertusMT-Light: Standard "(001.001)" Standard ROM 
+*Font AlbertusMT: Standard "(001.001)" Standard ROM 
+*Font AntiqueOlive-Bold: Standard "(001.002)" Standard ROM 
+*Font AntiqueOlive-Compact: Standard "(001.002)" Standard ROM 
+*Font AntiqueOlive-Italic: Standard "(001.002)" Standard ROM 
+*Font AntiqueOlive-Roman: Standard "(001.002)" Standard ROM 
+*Font Apple-Chancery: Standard "(001.002)" ExtendedRoman ROM 
+*Font Arial-BoldItalicMT: Standard "(001.003)" Standard ROM 
+*Font Arial-BoldMT: Standard "(001.003)" Standard ROM 
+*Font Arial-ItalicMT: Standard "(001.003)" Standard ROM 
+*Font ArialMT: Standard "(001.003)" Standard ROM 
+*Font AvantGarde-Book: Standard "(003.000)" Standard ROM 
+*Font AvantGarde-BookOblique: Standard "(003.000)" Standard ROM 
+*Font AvantGarde-Demi: Standard "(003.000)" Standard ROM 
+*Font AvantGarde-DemiOblique: Standard "(003.000)" Standard ROM 
+*Font Bodoni-Bold: Standard "(001.003)" Standard ROM 
+*Font Bodoni-BoldItalic: Standard "(001.003)" Standard ROM 
+*Font Bodoni-Italic: Standard "(001.003)" Standard ROM 
+*Font Bodoni-Poster: Standard "(001.003)" Standard ROM 
+*Font Bodoni-PosterCompressed: Standard "(001.002)" Standard ROM 
+*Font Bodoni: Standard "(001.003)" Standard ROM 
+*Font Bookman-Demi: Standard "(003.000)" Standard ROM 
+*Font Bookman-DemiItalic: Standard "(003.000)" Standard ROM 
+*Font Bookman-Light: Standard "(003.000)" Standard ROM 
+*Font Bookman-LightItalic: Standard "(003.000)" Standard ROM 
+*Font Carta: Special "(001.001)" Special ROM 
+*Font Chicago: Standard "(001.000)" ExtendedRoman ROM 
+*Font Clarendon-Bold: Standard "(001.002)" Standard ROM 
+*Font Clarendon-Light: Standard "(001.002)" Standard ROM 
+*Font Clarendon: Standard "(001.002)" Standard ROM 
+*Font CooperBlack-Italic: Standard "(001.004)" Standard ROM 
+*Font CooperBlack: Standard "(001.004)" Standard ROM 
+*Font Copperplate-ThirtyThreeBC: Standard "(001.003)" Standard ROM 
+*Font Copperplate-ThirtyTwoBC: Standard "(001.003)" Standard ROM 
+*Font Coronet-Regular: Standard "(001.002)" Standard ROM 
+*Font Courier-Bold: Standard "(004.000)" Standard ROM 
+*Font Courier-BoldOblique: Standard "(004.000)" Standard ROM 
+*Font Courier-Oblique: Standard "(004.000)" Standard ROM 
+*Font Courier: Standard "(004.000)" Standard ROM 
+*Font Eurostile-Bold: Standard "(001.002)" Standard ROM 
+*Font Eurostile-BoldExtendedTwo: Standard "(001.003)" Standard ROM 
+*Font Eurostile-ExtendedTwo: Standard "(001.003)" Standard ROM 
+*Font Eurostile: Standard "(001.003)" Standard ROM 
+*Font Geneva: Standard "(001.000)" ExtendedRoman ROM 
+*Font GillSans-Bold: Standard "(001.002)" Standard ROM 
+*Font GillSans-BoldCondensed: Standard "(001.002)" Standard ROM 
+*Font GillSans-BoldItalic: Standard "(001.003)" Standard ROM 
+*Font GillSans-Condensed: Standard "(001.002)" Standard ROM 
+*Font GillSans-ExtraBold: Standard "(001.002)" Standard ROM 
+*Font GillSans-Italic: Standard "(001.003)" Standard ROM 
+*Font GillSans-Light: Standard "(001.002)" Standard ROM 
+*Font GillSans-LightItalic: Standard "(001.003)" Standard ROM 
+*Font GillSans: Standard "(001.003)" Standard ROM 
+*Font Goudy-Bold: Standard "(001.003)" Standard ROM 
+*Font Goudy-BoldItalic: Standard "(001.003)" Standard ROM 
+*Font Goudy-ExtraBold: Standard "(001.002)" Standard ROM 
+*Font Goudy-Italic: Standard "(001.003)" Standard ROM 
+*Font Goudy: Standard "(001.004)" Standard ROM 
+*Font Helvetica-Bold: Standard "(003.000)" Standard ROM 
+*Font Helvetica-BoldOblique: Standard "(003.000)" Standard ROM 
+*Font Helvetica-Condensed-Bold: Standard "(003.000)" Standard ROM 
+*Font Helvetica-Condensed-BoldObl: Standard "(003.000)" Standard ROM 
+*Font Helvetica-Condensed-Oblique: Standard "(003.000)" Standard ROM 
+*Font Helvetica-Condensed: Standard "(003.000)" Standard ROM 
+*Font Helvetica-Narrow-Bold: Standard "(003.000)" Standard ROM 
+*Font Helvetica-Narrow-BoldOblique: Standard "(003.000)" Standard ROM 
+*Font Helvetica-Narrow-Oblique: Standard "(003.000)" Standard ROM 
+*Font Helvetica-Narrow: Standard "(003.000)" Standard ROM 
+*Font Helvetica-Oblique: Standard "(003.000)" Standard ROM 
+*Font Helvetica: Standard "(003.000)" Standard ROM 
+*Font HoeflerText-Black: Standard "(001.000)" ExtendedRoman ROM 
+*Font HoeflerText-BlackItalic: Standard "(001.000)" ExtendedRoman ROM 
+*Font HoeflerText-Italic: Standard "(001.000)" ExtendedRoman ROM 
+*Font HoeflerText-Ornaments: Special "(001.001)" Special ROM 
+*Font HoeflerText-Regular: Standard "(001.000)" ExtendedRoman ROM 
+*Font JoannaMT-Bold: Standard "(001.001)" Standard ROM 
+*Font JoannaMT-BoldItalic: Standard "(001.001)" Standard ROM 
+*Font JoannaMT-Italic: Standard "(001.001)" Standard ROM 
+*Font JoannaMT: Standard "(001.001)" Standard ROM 
+*Font LetterGothic-Bold: Standard "(001.007)" Standard ROM 
+*Font LetterGothic-BoldSlanted: Standard "(001.006)" Standard ROM 
+*Font LetterGothic-Slanted: Standard "(001.005)" Standard ROM 
+*Font LetterGothic: Standard "(001.005)" Standard ROM 
+*Font LubalinGraph-Book: Standard "(001.004)" Standard ROM 
+*Font LubalinGraph-BookOblique: Standard "(001.004)" Standard ROM 
+*Font LubalinGraph-Demi: Standard "(001.004)" Standard ROM 
+*Font LubalinGraph-DemiOblique: Standard "(001.004)" Standard ROM 
+*Font Marigold: Standard "(001.001)" Standard ROM 
+*Font MonaLisa-Recut: Standard "(001.001)" Standard ROM 
+*Font Monaco: Standard "(001.001)" ExtendedRoman ROM 
+*Font NewCenturySchlbk-Bold: Standard "(003.000)" Standard ROM 
+*Font NewCenturySchlbk-BoldItalic: Standard "(003.000)" Standard ROM 
+*Font NewCenturySchlbk-Italic: Standard "(003.000)" Standard ROM 
+*Font NewCenturySchlbk-Roman: Standard "(003.000)" Standard ROM 
+*Font NewYork: Standard "(001.000)" ExtendedRoman ROM 
+*Font OCRBLetM: Standard "(1.05)" Standard ROM 
+*Font Optima-Bold: Standard "(001.007)" Standard ROM 
+*Font Optima-BoldItalic: Standard "(001.001)" Standard ROM 
+*Font Optima-Italic: Standard "(001.001)" Standard ROM 
+*Font Optima: Standard "(001.006)" Standard ROM 
+*Font Oxford: Standard "(001.001)" Standard ROM 
+*Font Palatino-Bold: Standard "(003.000)" Standard ROM 
+*Font Palatino-BoldItalic: Standard "(003.000)" Standard ROM 
+*Font Palatino-Italic: Standard "(003.000)" Standard ROM 
+*Font Palatino-Roman: Standard "(003.000)" Standard ROM 
+*Font StempelGaramond-Bold: Standard "(001.003)" Standard ROM 
+*Font StempelGaramond-BoldItalic: Standard "(001.003)" Standard ROM 
+*Font StempelGaramond-Italic: Standard "(001.003)" Standard ROM 
+*Font StempelGaramond-Roman: Standard "(001.003)" Standard ROM 
+*Font Symbol: Special "(001.008)" Special ROM 
+*Font Tekton: Standard "(001.002)" Standard ROM 
+*Font Times-Bold: Standard "(003.000)" Standard ROM 
+*Font Times-BoldItalic: Standard "(003.000)" Standard ROM 
+*Font Times-Italic: Standard "(003.000)" Standard ROM 
+*Font Times-Roman: Standard "(003.000)" Standard ROM 
+*Font TimesNewRomanPS-BoldItalicMT: Standard "(001.003)" Standard ROM 
+*Font TimesNewRomanPS-BoldMT: Standard "(001.004)" Standard ROM 
+*Font TimesNewRomanPS-ItalicMT: Standard "(001.003)" Standard ROM 
+*Font TimesNewRomanPSMT: Standard "(001.003)" Standard ROM 
+*Font Univers-Bold: Standard "(001.004)" Standard ROM 
+*Font Univers-BoldExt: Standard "(001.001)" Standard ROM 
+*Font Univers-BoldExtObl: Standard "(001.001)" Standard ROM 
+*Font Univers-BoldOblique: Standard "(001.004)" Standard ROM 
+*Font Univers-Condensed: Standard "(001.003)" Standard ROM 
+*Font Univers-CondensedBold: Standard "(001.002)" Standard ROM 
+*Font Univers-CondensedBoldOblique: Standard "(001.002)" Standard ROM 
+*Font Univers-CondensedOblique: Standard "(001.003)" Standard ROM 
+*Font Univers-Extended: Standard "(001.001)" Standard ROM 
+*Font Univers-ExtendedObl: Standard "(001.001)" Standard ROM 
+*Font Univers-Light: Standard "(001.004)" Standard ROM 
+*Font Univers-LightOblique: Standard "(001.004)" Standard ROM 
+*Font Univers-Oblique: Standard "(001.004)" Standard ROM 
+*Font Univers: Standard "(001.004)" Standard ROM 
+*Font Wingdings-Regular: Special "(001.001)" Special ROM 
+*Font ZapfChancery-MediumItalic: Standard "(003.000)" Standard ROM 
+*Font ZapfDingbats: Special "(002.000)" Special ROM 
+
+*?FontQuery: "
+ save
+   { count 1 gt
+      { exch dup 127 string cvs (/)
+        print print (:) print
+        /Font resourcestatus {pop pop (Yes)} {(No)} ifelse =
+      } { exit } ifelse
+   } bind loop
+   (*) = flush
+ restore
+"
+*End
+
+*?FontList: "
+save
+  (*) {cvn ==} 128 string /Font resourceforall
+  (*) = flush
+restore
+"
+*End
+
+*% Printer Messages (verbatim from printer):
+*Message: "%%[ exitserver: permanent state may be changed ]%%"
+*Message: "%%[ Flushing: rest of job (to end-of-file) will be ignored ]%%"
+*Message: "\FontName\ not found, using Courier"
+
+*% Status (format: %%[ status: <one of these> ] %%)
+*Status: "busy"
+*Status: "idle"
+*Status: "initializing"
+*Status: "PrinterError"
+*Status: "PrinterError: belt error"
+*Status: "PrinterError: belt life over"
+*Status: "PrinterError: belt out"
+*Status: "PrinterError: cover open"
+*Status: "PrinterError: disk full"
+*Status: "PrinterError: download error"
+*Status: "PrinterError: error"
+*Status: "PrinterError: memory full"
+*Status: "PrinterError: no paper"
+*Status: "PrinterError: no paper tray"
+*Status: "PrinterError: NVRAM malfunction"
+*Status: "PrinterError: paper jam"
+*Status: "PrinterError: paper size mismatch"
+*Status: "PrinterError: service call"
+*Status: "PrinterError: toner error"
+*Status: "PrinterError: toner life over"
+*Status: "PrinterError: toner out"
+*Status: "PrinterError: toner over"
+
+*% Input Sources (format: %%[ status: <stat>; source: <one of these> ]%% )
+*Source: "USB"
+*Source: "LPR"
+*% Printer Error (format: %%[ PrinterError: <one of these> ]%%)
+*PrinterError: "belt error"
+*PrinterError: "belt life over"
+*PrinterError: "belt out"
+*PrinterError: "cover open"
+*PrinterError: "disk full"
+*PrinterError: "download error"
+*PrinterError: "error"
+*PrinterError: "memory full"
+*PrinterError: "no paper"
+*PrinterError: "no paper tray"
+*PrinterError: "NVRAM malfunction"
+*PrinterError: "paper jam"
+*PrinterError: "paper size mismatch"
+*PrinterError: "service call"
+*PrinterError: "toner error"
+*PrinterError: "toner life over"
+*PrinterError: "toner out"
+*PrinterError: "toner over"
+
+*% Color Separation Information =====================
+*%*DefaultGuaranteedMaxSeparations: 1
+*%*GuaranteedMaxSeparations 4: ""
+*%*GuaranteedMaxSeparations 3: ""
+*%*GuaranteedMaxSeparations 2: ""
+*%*GuaranteedMaxSeparations 1: ""
+*%*?GuaranteedMaxSeparations: "currentpagedevice /MaxSeparations get ="
+
+*% Produced using PPDTool 2.3's BLDPPD43.PS file
+*% Last Edit Date: April 25 2012
+*% end of PPD file
+
