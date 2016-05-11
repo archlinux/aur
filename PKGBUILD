@@ -5,7 +5,7 @@
 
 pkgname=('gcc5')
 pkgver=5.3.0
-_pkgver=5
+_pkgver=6
 _islver=0.15
 pkgrel=3
 _snapshot=5-20160503
@@ -90,12 +90,4 @@ package() {
   # Install Runtime Library Exception
   install -Dm644 ${srcdir}/${_basedir}/COPYING.RUNTIME \
     ${pkgdir}/usr/share/licenses/$pkgname/RUNTIME.LIBRARY.EXCEPTION
-
-  # create symlinks
-  cd ${pkgdir}/usr/bin
-  for ii in c++ cpp g++ gcc gcc-ar gcc-nm gcc-ranlib gfortran; do
-    ln -s ${ii}-${_pkgver} ${ii}-${pkgver}
-    ln -s ${CHOST}-${ii}-${_pkgver} ${CHOST}-${ii}-${pkgver}
-  done
-  ln -s gcov-${_pkgver} gcov-${pkgver}
 }
