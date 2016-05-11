@@ -1,23 +1,23 @@
 # Maintainer: Zdenek Janak <janak@physics.muni.cz>
 
 pkgname=fitspng
-pkgver=0.3.4
+pkgver=0.3.5
 pkgrel=1
 pkgdesc="FITS to PNG convertor"
 arch=('i686' 'x86_64')
 url="http://integral.physics.muni.cz/fitspng/"
 license=('GPL3')
-depends=('libpng>=1.4.0' 'cfitsio')
+depends=('libpng' 'cfitsio')
 source=(ftp://integral.physics.muni.cz/pub/$pkgname/$pkgname-$pkgver.tar.gz)
-md5sums=('d2dca46ee675f1f8185d2822b19b3d83')
+md5sums=('9e56912e06376602c89083d240921c2b')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./configure --prefix=/usr CFLAGS=-lm
+  cd "$pkgname-$pkgver"
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
 }
