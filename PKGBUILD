@@ -15,7 +15,7 @@ license=(GPLv3)
 depends=(libgnome-keyring)
 optdepends=(firefox thunderbird)
 provides=({firefox,thunderbird}-gnome-keyring)
-conflicts=({firefox,thunderbird}-gnome-keyring{,-git,-bin})
+conflicts=({firefox,thunderbird}-gnome-keyring-git)
 
 makedepends+=('git')
 source+=("${_gitname:=${pkgname%-git}}::${_giturl:-git+$url}")

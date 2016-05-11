@@ -11,12 +11,8 @@ pkgbase = mozilla-extension-gnome-keyring-git
 	provides = firefox-gnome-keyring
 	provides = thunderbird-gnome-keyring
 	provides = mozilla-extension-gnome-keyring=0.11
-	conflicts = firefox-gnome-keyring
 	conflicts = firefox-gnome-keyring-git
-	conflicts = firefox-gnome-keyring-bin
-	conflicts = thunderbird-gnome-keyring
 	conflicts = thunderbird-gnome-keyring-git
-	conflicts = thunderbird-gnome-keyring-bin
 	conflicts = mozilla-extension-gnome-keyring
 	source = mozilla-extension-gnome-keyring::git+https://github.com/swick/moz-gnome-keyring-integration
 	md5sums = SKIP
