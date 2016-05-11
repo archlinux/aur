@@ -5,12 +5,12 @@
 
 pkgname=pdftk
 pkgver=2.02
-pkgrel=8
+pkgrel=9
 pkgdesc="Pdftk is a simple tool for doing everyday things with PDF documents"
 arch=('i686' 'x86_64')
 url="http://www.pdfhacks.com/pdftk"
 license=("GPL")
-makedepends=('gcc-gcj' 'gcc-gcj-ecj')
+depends=('gcc-gcj' 'gcc-gcj-ecj')
 options=('!makeflags')
 source=("http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/${pkgname}-${pkgver}-src.zip"
 	"Makefile.Arch"
