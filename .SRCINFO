@@ -1,7 +1,7 @@
 pkgbase = accel-ppp
 	pkgdesc = High performance PPTP/L2TP/PPPoE/IPoE server
 	pkgver = 1.10.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://sourceforge.net/apps/trac/accel-ppp/
 	install = accel-ppp.install
 	arch = i686
@@ -32,7 +32,7 @@ pkgbase = accel-ppp
 	md5sums = 0536dd60960e76cf5a6cdbf0518782d8
 	md5sums = 816dd5ea9534a077dfd63b6cd529738a
 	md5sums = 312fd63b9688a05b71a6b33ddd3a9f4b
-	md5sums = 6fba5fa70c43eb4b5bd44e392c963ec5
+	md5sums = a171d28760bf411be85dc4a964df2c0a
 	md5sums = 4e0d4fc5975ea8794ea286e8fbfa56cd
 	md5sums = 7e58716f1249f924ce218bd348d4c03a
 
