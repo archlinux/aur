@@ -7,14 +7,14 @@ pkgdesc="Watch for changes in block devices by checksumming on boot/resume and s
 license=('BSD')
 arch=('any')
 url="https://github.com/giddie/checksum-block-device"
-backup=('etc/profile.d/block-device-checksum-report')
+backup=('etc/profile.d/block-device-checksum-report.sh')
 source=(https://github.com/giddie/checksum-block-device/archive/${pkgver}.tar.gz
         profile.d-hook.sh)
 md5sums=('ef140ca6a6c01e463dc68fbe71f57d0b'
          '3bd3a08e7c9fc9dd005520301a0da5de')
 
 package() {
-  cd ${srcdir}/${pkgname}-master
+  cd ${srcdir}/${pkgname}-${pkgver}
 
   install -D -m 644 checksum-block-device@.service ${pkgdir}/usr/lib/systemd/system/checksum-block-device@.service
   install -D -m 644 checksum-block-device-on-sleep@.service ${pkgdir}/usr/lib/systemd/system/checksum-block-device-on-sleep@.service
