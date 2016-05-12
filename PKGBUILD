@@ -26,5 +26,4 @@ source=("https://github.com/bareos/bareos/archive/Release/${pkgver}.tar.gz"
         "PKGBUILD.common")
 
 sha256sums=('f314e7d3e99e92b4261af97888ddcdaaedf513b638745b07270db3e6930e9008'
-            'fcd764fbe49f8e2c0a2379f3dc404859bea8c6dbdacd58e0afc17f81d5b17f7d')
-
+            '828ca13226118420bc3774d85a750efdb38b0107b7d8a8763dea2e1b7bd802f2')
