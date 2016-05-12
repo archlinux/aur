@@ -1,7 +1,7 @@
 pkgbase = gimp-plugin-deskew-git
 	pkgdesc = Auto straighten lines of text in scanned documents
 	pkgver = 1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/prokoudine/gimp-deskew-plugin
 	arch = x86_64
 	license = GPL
@@ -9,8 +9,8 @@ pkgbase = gimp-plugin-deskew-git
 	depends = gimp
 	provides = gimp-plugin-deskew
 	conflicts = gimp-plugin-deskew
-	source = autogen.sh.patch
-	md5sums = 90ce5c6a84fb8b67a034badad0dd6758
+	source = autogen.patch
+	sha256sums = b64799de98d8089790752d35ad8b1b1c5bc387a725b21cf2bd08589b26258b58
 
 pkgname = gimp-plugin-deskew-git
 

@@ -1,0 +1,12 @@
+--- autogen.sh	2016-05-12 18:59:11.639463589 -0400
++++ autogen_new.sh	2016-05-12 19:07:13.118343037 -0400
+@@ -86,6 +86,9 @@
+ elif (automake-1.14 --version) < /dev/null > /dev/null 2>&1; then
+    AUTOMAKE=automake-1.14
+    ACLOCAL=aclocal-1.14
++elif (automake-1.15 --version) < /dev/null > /dev/null 2>&1; then
++   AUTOMAKE=automake-1.15
++   ACLOCAL=aclocal-1.15
+ else
+     echo
+     echo "  You must have automake 1.6 or newer installed to compile $PROJECT."

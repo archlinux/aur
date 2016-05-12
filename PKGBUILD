@@ -6,7 +6,7 @@
 
 pkgname=gimp-plugin-deskew-git
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Auto straighten lines of text in scanned documents"
 arch=('x86_64')
 #(old) url="http://www.cubewano.org/gimp-deskew-plugin/"
@@ -16,13 +16,13 @@ depends=('gimp')
 makedepends=('git')
 provides=('gimp-plugin-deskew')
 conflicts=('gimp-plugin-deskew')
-source=('autogen.sh.patch')
-md5sums=('90ce5c6a84fb8b67a034badad0dd6758')
+source=('autogen.patch')
+sha256sums=('b64799de98d8089790752d35ad8b1b1c5bc387a725b21cf2bd08589b26258b58')
 
 _gitroot='git://github.com/prokoudine/gimp-deskew-plugin.git'
 _gitname='gimp-deskew-plugin'
 
-build() {
+package() {
   cd "$srcdir"
   msg "Connecting to GIT server...."
 
@@ -45,7 +45,7 @@ build() {
   #
   # Of course it's incompatible with newest autoconf >_<
   msg "Patching autogen.sh for autoconf-1.12"
-  patch -u -F5 -N autogen.sh ../../autogen.sh.patch
+  patch -u -F5 -N autogen.sh ../../autogen.patch
   msg "autogen.sh"
   ./autogen.sh --prefix=/usr
   msg "make"
@@ -53,9 +53,8 @@ build() {
   msg "make install"
   make DESTDIR="$pkgdir/" install
   # hack to correct broken make --install
-  mv $pkgdir/usr/usr/lib $pkgdir/usr/
-  rmdir $pkgdir/usr/usr
+  mv "$pkgdir/usr/usr/lib" "$pkgdir/usr"
+  rmdir "$pkgdir/usr/usr"
 }
 
-# vim:set ts=2 sw=2 et:
 
