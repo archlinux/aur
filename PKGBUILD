@@ -1,8 +1,7 @@
 # Maintainer: Mathias Bragagia <youremail@domain.com>
-#'gtk-theme-arc-git'
 pkgname=kana-p
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lite desktop manager - use lightdm, awesome and compton - BETA"
 arch=('any')
 url="https://github.com/bragagia/kana-p"
@@ -164,6 +163,7 @@ depends=(
 	'qt4'
 	'qt5-base'
 	'numix-bevel-icon-theme-git'
+	'gtk-theme-arc-git'
 
 	'rxvt-unicode'
 	'rxvt-unicode-terminfo'
