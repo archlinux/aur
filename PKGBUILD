@@ -5,7 +5,7 @@
 
 pkgname=libcurl-compat-nostatic
 _pkgname=curl
-pkgver=7.46.0
+pkgver=7.48.0
 pkgrel=1
 pkgdesc="An URL retrieval library (old version) without static libs"
 arch=('i686' 'x86_64')
@@ -16,8 +16,8 @@ options=('strip')
 conflicts=('libcurl-gnutls' 'libcurl-compat')
 provides=('libcurl-compat')
 replaces=('libcurl-compat')
-source=("http://curl.haxx.se/download/${_pkgname}-$pkgver.tar.gz")
-md5sums=('230e682d59bf8ab6eca36da1d39ebd75')
+source=("http://curl.haxx.se/download/${_pkgname}-$pkgver.tar.bz2")
+md5sums=('d42e0fc34a5cace5739631cc040974fe')
 install=libcurl-compat.install
 
 build() {
