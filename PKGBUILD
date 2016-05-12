@@ -19,6 +19,11 @@ pkgver() {
   echo $(git describe --always --long | sed 's/^[v]//;s/-/-r/' | tr - .)
 }
 
+prepare() {
+  cd $srcdir/$_gitname
+  sed -i 's/NAMES qsciscintilla qt5scintilla2)/NAMES qsciscintilla qt5scintilla2 qscintilla2-qt5)/g' $srcdir/$_gitname/cmake/FindQScintilla.cmake
+}
+
 build() {
   cd $srcdir/$_gitname
 
