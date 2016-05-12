@@ -10,6 +10,7 @@ depends=(
   'python2'
   'python2-appdirs'
   'python2-hidapi'
+  'python2-notify'
   'python2-pyserial'
   'python2-setuptools'
   'python2-simplejson'
