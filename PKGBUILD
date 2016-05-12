@@ -2,13 +2,14 @@
 
 pkgname=certbot-git
 _reponame="certbot"
-pkgver=0.5.0.r118.ga6d5b52
+pkgver=0.5.0.r153.g41f347d
 pkgrel=1
 pkgdesc="A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free."
 arch=('any')
 license=('Apache')
 url="https://letsencrypt.org/"
-depends=('ca-certificates' "python2-acme=$pkgver" 'python2-configargparse' 'python2-configobj'
+# Most AUR helpers unfortunately do not support versioned deps in the AUR ("python2-acme=${pkgver}")
+depends=('ca-certificates' 'python2-acme' 'python2-configargparse' 'python2-configobj'
 	'python2-cryptography' 'python2-pyopenssl' 'python2-mock' 'python2-parsedatetime'
 	'python2-psutil' 'python2-pyrfc3339' 'python2-pythondialog' 'python2-pytz'
 	'python2-requests' 'python2-setuptools' 'python2-six' 'python2-zope-component'
