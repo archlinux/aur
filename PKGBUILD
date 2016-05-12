@@ -4,8 +4,8 @@ pkgname=nginx-mainline-waf
 _pkgname=nginx
 provides=('nginx')
 conflicts=('nginx')
-pkgver=1.9.12
-pkgrel=3
+pkgver=1.9.15
+pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline, Brotli
 Support, with Naxsi, Certificate Transparency, GeoIP (GeoIP Legacy).'
 arch=('i686' 'x86_64')
