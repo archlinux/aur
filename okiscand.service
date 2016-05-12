@@ -1,0 +1,10 @@
+[Unit]
+Description=OKI Scan Service
+
+[Service]
+Type=forking
+ExecStart=/usr/libexec/okimfpdrv/scand
+PIDFile=/var/run/okiscand.pid
+
+[Install]
+WantedBy=multi-user.target
