@@ -2,7 +2,7 @@
 # Maintainer: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=xubuntu-artwork
-pkgver=16.04.1
+pkgver=16.04.2
 pkgrel=1
 _uver=wily
 pkgdesc="Xubuntu themes and artwork"
@@ -39,6 +39,6 @@ package() {
   msg2 "Remove redundant and empty files."
   rm -frv "${pkgdir}"/usr/share/xfce4/backdrops
 }
-# I use MD5 because is what "makepkg -g" give by default, blame Allan
 
-md5sums=('ad7058efdaef7a3fabf4651b09aa74f7')
+# I use MD5 because is what "makepkg -g" give by default, blame Allan
+md5sums=('165d4c5cc1d23c1490243b4f85230db6')
