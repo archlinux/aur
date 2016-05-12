@@ -1,7 +1,7 @@
 pkgbase = openscap
 	pkgdesc = Open Source Security Compliance Solution
-	pkgver = 1.2.8
-	pkgrel = 4
+	pkgver = 1.2.9
+	pkgrel = 1
 	url = www.open-scap.org
 	arch = x86_64
 	license = GPL
@@ -21,10 +21,10 @@ pkgbase = openscap
 	depends = perl
 	depends = perl-xml-parser
 	depends = perl-xml-xpath
-	source = https://github.com/OpenSCAP/openscap/releases/download/1.2.8/openscap-1.2.8.tar.gz
+	source = https://github.com/OpenSCAP/openscap/releases/download/1.2.9/openscap-1.2.9.tar.gz
 	source = fails_and_fix.patch
 	source = xpath.patch
-	md5sums = d26a148d834635363ac8cdd707828302
+	md5sums = 6a07b94d2d92dfec2818556ca117147a
 	md5sums = 7882c8b0010db0920d1cabbd2aabcc07
 	md5sums = 6dc765fcfba0e5c4ee277635d58584e2
 

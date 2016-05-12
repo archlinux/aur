@@ -1,8 +1,8 @@
 # Maintainer: Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
 
 pkgname=openscap
-pkgver=1.2.8
-pkgrel=4
+pkgver=1.2.9
+pkgrel=1
 pkgdesc="Open Source Security Compliance Solution"
 
 # i686 is theoretically bulitable, if anyone needs it
@@ -21,7 +21,7 @@ optdepends=()
 source=("https://github.com/OpenSCAP/openscap/releases/download/$pkgver/$pkgname-$pkgver.tar.gz"
         "fails_and_fix.patch"
         "xpath.patch")
-md5sums=('d26a148d834635363ac8cdd707828302'
+md5sums=('6a07b94d2d92dfec2818556ca117147a'
          '7882c8b0010db0920d1cabbd2aabcc07'
          '6dc765fcfba0e5c4ee277635d58584e2')
 
@@ -40,11 +40,11 @@ build() {
 	make # -j4
 }
 
-check() {
-	# Notice: It may take a long time to complete the check.
-	cd "$pkgname-$pkgver"
-	make check
-}
+# Notice: It may take a long time to complete the check.
+# check() {
+#	cd "$pkgname-$pkgver"
+#	make check
+#}
 
 package() {
 	cd "$pkgname-$pkgver"
