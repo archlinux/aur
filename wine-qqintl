@@ -1,0 +1,72 @@
+#!/bin/sh
+WINEPREFIX=$HOME/.deepinwine/qqintl
+APPDIR=/opt/deepinwine/qqintl
+EXECUTE=$WINEPREFIX/drive_c/Program\ Files/Tencent/QQIntl/Bin/QQ.exe
+APPTAR=QQIntl.tar.gz
+WINEDIR=/usr
+PACKAGENAME=Deepinwine-QQIntl
+
+helpapp()
+{
+	echo " Commands:"
+	echo " -r/--reinstall 	Fix error or reinstall $PACKAGENAME"
+	echo " -k/--kill	Kill wine progrem"
+	echo " -e/--regedit	Start regedit editor"
+	echo " -c/--winecfg	Start winecfg to tweak wine environment"
+	echo " -h/--help	Program help info"
+}
+reinstallapp()
+{
+	echo "Reinstall $PACKAGENAME....."
+	read -p "*	Are you sure?(Y/N)" ANSWER
+	if [ "$ANSWER" = "Y" -o "$ANSWER" = "y" -o -z $ANSWER ];then
+		rm -r $WINEPREFIX
+		installapp
+	else
+		exit 0
+	fi
+}
+installapp()
+{
+	echo "Install $PACKAGENAME....."
+	if [ -e $WINEPREFIX ];then
+		echo "PACKAGE had installed,If has trouble, Please use --reinstall(-r) to reinstall $PACKAGENAME"
+	else
+		mkdir -p $WINEPREFIX
+		tar -xzf $APPDIR/$APPTAR -C $WINEPREFIX
+		env WINEPREFIX=$WINEPREFIX $WINEDIR/bin/wine "$EXECUTE"
+	fi
+}
+
+runapp()
+{
+	if [ -e $WINEPREFIX ];then
+		env WINEPREFIX=$WINEPREFIX $WINEDIR/bin/wine "$EXECUTE"
+	else
+		installapp
+	fi
+}
+case $1 in
+	"--reinstall"| "-r")
+		reinstallapp
+		;;
+	"--kill"| "-k")
+		env WINEPREFIX=$WINEPREFIX $WINEDIR/bin/wineserver -k
+		;;
+	"--regedit"| "-e")
+		env WINEPREFIX=$WINEPREFIX $WINEDIR/bin/regedit
+		;;
+	"--winecfg"| "-c")
+		env WINEPREFIX=$WINEPREFIX $WINEDIR/bin/winecfg
+		;;
+	"--help"| "-h")
+		helpapp
+		;;
+	*)
+		if [ -z $1 ];then
+			runapp
+		else
+			echo "Invalid option: $1"
+		fi
+		;;
+esac
