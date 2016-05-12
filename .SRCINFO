@@ -1,0 +1,25 @@
+pkgbase = log4cxx-svn
+	pkgdesc = A C++ port of Log4j, SVN trunk version
+	pkgver = 464
+	pkgrel = 1
+	url = http://logging.apache.org/log4cxx
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = svn
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = patch
+	makedepends = zip
+	makedepends = gzip
+	makedepends = sed
+	depends = apr-util
+	depends = libxml2
+	provides = log4cxx
+	conflicts = log4cxx
+	source = log4cxx::svn+http://svn.apache.org/repos/asf/incubator/log4cxx/trunk@1737849
+	md5sums = SKIP
+
+pkgname = log4cxx-svn
+
