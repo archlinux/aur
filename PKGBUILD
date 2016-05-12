@@ -1,7 +1,8 @@
-#Maintainer: Iwan Timmer <irtimmer@gmail.com>
+# Maintainer: Quey-Liang Kao<s101062801@m101.nthu.edu.tw>
+# Contributor: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=runc-git
-pkgver=v0.0.5.r482.g8b0f6a7
+pkgver=v0.0.5.r560.gc6a791b
 pkgrel=1
 pkgdesc="Container CLI tools"
 depends=('glibc')
