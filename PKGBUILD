@@ -1,7 +1,7 @@
 # Maintainer: Yoann Ono Dit Biot <yoann.onoditbiot@gmail.com>
 pkgname=pydio-sync
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.2.3
+pkgrel=1
 pkgdesc="Pydio synchronisation client"
 arch=('i686' 'x86_64')
 url="https://pyd.io"
@@ -10,7 +10,7 @@ conflicts=('pydio-sync-git' 'pydio-sync-ui-git')
 provides=('pydio-sync')
 options=(!strip)
 depends=('qt5-webkit' 'libsm' 'gstreamer0.10-base')
-source=("https://download.pydio.com/pub/pydio-sync/release/$pkgver/PydioSync-Linux-$pkgver.tar.gz"
+source=("https://download.pydio.com/pub/pydio-sync/release/$pkgver/PydioSync-Linux-Binaries-v$pkgver.tar.gz"
         "pydio.desktop")
 md5sums=('eb3c7bb3d51057dcf1aea0135816263f'
          '24e42bae5d695c42fc7ccc4a30d97583')
