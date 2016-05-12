@@ -55,7 +55,11 @@ prepare()
 
     # Apply the patchset, which mainly changes any ambiguous references
     # to 'python' to 'python2' (as arch uses python3 by default)
-    patch -d "${srcdir}" -p1 < ../arch_aleph_patch.diff
+    # Look for the patch both in
+    #  ./ (i.e srcdir) and ../ (i.e same directory as where PKGFILE lies)
+    # (see git log and https://aur.archlinux.org/packages/cura-aleph-bin/)
+    patch -d "${srcdir}" -p1 < ../arch_aleph_patch.diff \
+        || patch -d "${srcdir}" -p1 < arch_aleph_patch.diff 
 }
 
 package()
