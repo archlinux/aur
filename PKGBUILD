@@ -2,7 +2,7 @@
 
 pkgname=terminix-git
 _pkgname=terminix
-pkgver=0.60.r1.e86636b
+pkgver=0.60.r15.e6f6154
 pkgrel=1
 pkgdesc="A tiling terminal emulator based on GTK+ 3 (git master)"
 arch=('x86_64')
@@ -25,6 +25,11 @@ pkgver() {
 
 prepare() {
   cd ${_pkgname}
+  if test -f Makefile.am; then
+    echo '  -> Makefile.am found in src/ dir. Please remove src/ before rebuilding.'
+    exit 1
+  fi
+
   patch -p1 <../0001-Update-LINGUAS-with-latest-po-files.patch
   patch -p1 <../0002-Add-experimental-support-for-building-terminix-with-.patch
   chmod u+x autogen.sh
