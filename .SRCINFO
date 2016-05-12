@@ -15,7 +15,7 @@ pkgbase = pydio-sync
 	options = !strip
 	source = https://download.pydio.com/pub/pydio-sync/release/1.2.3/PydioSync-Linux-Binaries-v1.2.3.tar.gz
 	source = pydio.desktop
-	md5sums = eb3c7bb3d51057dcf1aea0135816263f
+	md5sums = 7819c65ba9cef79b22bac4c0923b8c84
 	md5sums = 24e42bae5d695c42fc7ccc4a30d97583
 
 pkgname = pydio-sync

@@ -12,7 +12,7 @@ options=(!strip)
 depends=('qt5-webkit' 'libsm' 'gstreamer0.10-base')
 source=("https://download.pydio.com/pub/pydio-sync/release/$pkgver/PydioSync-Linux-Binaries-v$pkgver.tar.gz"
         "pydio.desktop")
-md5sums=('eb3c7bb3d51057dcf1aea0135816263f'
+md5sums=('7819c65ba9cef79b22bac4c0923b8c84'
          '24e42bae5d695c42fc7ccc4a30d97583')
 
 
