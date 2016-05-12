@@ -14,7 +14,7 @@ sha256sums=('46ddc28a6cc4bb951a1ea4bd65832e7cb2f10d4397e18475bb872c83b5c60188')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  qmake -r PREFIX=/usr
+  qmake-qt5 -r PREFIX=/usr
   make && make locale_release
 }
 
