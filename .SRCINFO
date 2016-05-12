@@ -1,6 +1,6 @@
 pkgbase = gpaste-daemon
 	pkgdesc = A clipboard management daemon
-	pkgver = 3.16.2.1
+	pkgver = 3.20
 	pkgrel = 1
 	url = http://www.imagination-land.org/tags/GPaste.html
 	install = gpaste-daemon.install
@@ -12,13 +12,14 @@ pkgbase = gpaste-daemon
 	depends = gtk3
 	depends = systemd
 	depends = xcb-util-keysyms
+	depends = appstream-glib
 	provides = gpaste
 	conflicts = cinnamon-extension-gpaste
 	conflicts = gpaste
 	options = !emptydirs
 	options = !libtool
-	source = http://www.imagination-land.org/files/gpaste/gpaste-3.16.2.1.tar.xz
-	md5sums = 935b66abf61e1a0d6385acdbecbb8134
+	source = http://www.imagination-land.org/files/gpaste/gpaste-3.20.tar.xz
+	md5sums = ae4bc3b07cc943d3640108687050900a
 
 pkgname = gpaste-daemon
 
