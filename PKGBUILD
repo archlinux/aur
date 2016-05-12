@@ -2,7 +2,7 @@
 # Maintainer: Patryk Kowalczyk <patryk at kowalczyk dot ws>
 pkgname=qemu-spice
 _pkgname=qemu
-pkgver=2.5.0
+pkgver=2.6.0
 pkgrel=1
 pkgdesc="Latest stable QEMU with KVM spice usbredir virtfs smartcard seccomp iscsi tpm glusterfs fdt and RDMA live migration"
 arch=(i686 x86_64 armv7h)
