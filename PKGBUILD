@@ -27,7 +27,7 @@ md5sums=(
 options=(!strip staticlibs)
 
 build() {
-  patch < setup-depend-clang35.patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/Setup.sh"
+  patch setup-depend-clang35.patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/Setup.sh"
 
   cd $srcdir/UnrealEngine
   ./Setup.sh
