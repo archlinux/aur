@@ -5,7 +5,7 @@
 # TODO: New version of SQLite. Can we use the distro provided sqlite?
 # TODO: New version of deprecated pbs.py
 # TODO: Implement enclosed sbin patches upstream
-# TODO: Graceful reload like Apache for upgrades to running systems
+# TODO: Graceful reload like Apache httpd for upgrades to running systems
 # TODO: Version numbers in git tags instead of scanning configuration files
 # TODO: Need to rebuild on upgrade: /var/urbackup/'{UrBackupUpdate.exe,UrBackupUpdate.sig}
 # TODO: New feature: [x] Follow symbolic links on Windows clients
@@ -49,14 +49,14 @@ pkgver=1.4.14.r0.gaf82731
 pkgrel=1
 pkgdesc='Client/Server network backup for Windows and Linux, builds server or client'
 arch=('i686' 'x86_64')
-url='http://www.urbackup.org/'
+url='https://www.urbackup.org/'
 license=('GPL')
 depends=('crypto++' 'fuse')
 makedepends=('python3' 'autoconf' 'git')
 provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
 install="${_pkgname}.install"
-_verwatch=("${url/http/https}/download.html" 'https://hndl\.urbackup\.org/Server/[0-9\.]\+/urbackup-server-\([0-9\.]\+\)\.tar\.gz' 'l')
+_verwatch=("${url}/download.html" '//hndl\.urbackup\.org/Server/[0-9\.]\+/urbackup-server-\([0-9\.]\+\)\.tar\.gz' 'l')
 source=('git+https://github.com/uroni/urbackup_backend.git' 'git+https://github.com/uroni/urbackup_frontend_wx.git' 'urbackup-client.service')
 sha256sums=('SKIP'
             'SKIP'
@@ -129,6 +129,13 @@ prepare() {
   sed -i -e 's:/sbin/btrfs:/usr/bin/btrfs:g' 'snapshot_helper/main.cpp'
   sed -i -e 's:/usr/sbin/:/usr/bin/:g' 'urbackupserver/doc/admin_guide.tex' 'urbackup-server.service'
   sed -i -e 's,L"C:\\\\urbackup",\n#ifdef _WIN32\n&\n#else\nL"/urbackup"\n#endif\n,g' 'urbackupserver/server_settings.cpp' # Irksome bug!
+
+  # Quick patches for gcc 6. These need to be fixed by upstream.
+  sed -i -e '# Always use static until you are forced to remove it!' \
+         -e 's:^const char array:static &:g' \
+         -e '# Something conflcts with gcc 6.0' \
+         -e 's:array\[:html_array\[:g' 'stringtools.cpp'
+  sed -i -e 's:^#define _exit exit:// &:g' 'cryptoplugin/dllmain.cpp'
 
   # fix the build scripts
   #sed -i -e 's:response.readall():response.read():g' 'build/replace_versions.py' # python was always a bad choice for these text replacements. As of Python 3.5 this script doesn't work at all and read() is not a proper replacement for readall().
