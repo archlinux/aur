@@ -7,6 +7,7 @@ arch=('i686' 'x86_64')
 pkgdesc="Scanner drivers OKI multifunctional printers"
 url="http://www.oki.co.uk/support/printer/printer-drivers"
 license=('custom')
+backup=('usr/lib/okimfpdrv/device.conf')
 depends=('libusb' 'python2')
 # http://www.oki.co.uk/support/printer/printer-drivers/
 source=("okiscand.service")
@@ -32,7 +33,7 @@ package() {
   rm -r "$pkgdir/etc/init.d"
   mv "$pkgdir/usr/libexec/"* "$pkgdir/usr/lib"
   rmdir "$pkgdir/usr/libexec"
-  ln -s "$pkgdir/usr/lib" "$pkgdir/usr/libexec"
+  ln -s "/usr/lib" "$pkgdir/usr/libexec"
 
   # install the systemd service file
   install -Dm0644 "$srcdir/okiscand.service" "$pkgdir/usr/lib/systemd/system/okiscand.service"
@@ -50,5 +51,8 @@ package() {
   # compile new .pyc and .pyo files
   sleep 1 # make sure the compiled files have higher timestamp
   python2 -O -m compileall "$pkgdir"
+
+  # touch the config file, so it is tracked by pacman
+  touch "$pkgdir/usr/lib/okimfpdrv/device.conf"
 }
 
