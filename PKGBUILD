@@ -2,7 +2,7 @@
 
 pkgname=cambozola
 pkgver=0.936
-pkgrel=1
+pkgrel=2
 pkgdesc="A java servlet for streaming JPEG's from ip Cameras."
 url="http://www.charliemouse.com/code/cambozola/"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('java-runtime')
 makedepends=('apache-ant')
 source=("http://www.andywilcock.com/code/cambozola/cambozola-latest.tar.gz")
-sha256sums=('4e4e92d95673edd051e6b4d36bed8c5328873f5fc374073760b457d4be33415b')
+sha256sums=('a987a49becd8742a671d36ba0e028c7fdfdd6ef65e8d90d18521e545be810e5a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
