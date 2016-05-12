@@ -1,8 +1,8 @@
 #Maintainer: M0Rf30
 
 pkgname=openbazaard
-pkgver=0.1.8
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
 url="http://openbazaar.org"
@@ -70,8 +70,7 @@ msg2 "Python2 bytecode generation"
   msg2 "Remove git folder"
   rm -rf $pkgdir/var/lib/${pkgname}/{.git*,.eslint*,.travis*}
 }
-
-md5sums=('5e7a1c7685c856c549fb62fba27ef22f'
+md5sums=('297d833b462d1f6a8beb60bc26bde425'
          'df247302f02ad1af79e009fa75ced4bc'
          '7949d40abcd8bdaee27ff670d5b6c1c7'
          '3dccb27e5df2324880fde3f1b0972a2c')
