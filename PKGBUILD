@@ -3,7 +3,7 @@
 # Maintainer: Davi da Silva Böger <dsboger@gmail.com>
 
 pkgname=fmit
-pkgver=1.0.14
+pkgver=1.0.15
 pkgrel=1
 pkgdesc="Free Music Instrument Tuner"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('qt5-multimedia' 'fftw' 'portaudio' 'hicolor-icon-theme')
 makedepends=('qt5-base' 'qt5-tools')
 source=("https://github.com/gillesdegottex/fmit/archive/v${pkgver}.tar.gz")
-sha512sums=('a73be2c0259f780757adb56231144c9f81fcfdcf3c34c6a5722acf68eb28e3d3e1f36b9135069aa92e259bb7f91907c3c050885b965f4a1c338c031f7e3ed0d5')
+sha512sums=('44537669391f5043efe35b53d9693f8ab6a151918583d35439c1b29feca4a707225038512c9a2de734ada9e9acb3b4b191b866038edaed9fe8d1fee09c540aac')
 
 build() {
   _fmitdir="${srcdir}/${pkgname}-${pkgver}"
