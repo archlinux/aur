@@ -3,7 +3,7 @@
 
 pkgname=saxon-he
 _major=9.7
-_minor=0.4
+_minor=0.5
 pkgver=${_major}.${_minor}
 _pkgver=$(echo $pkgver | tr . -)
 pkgrel=1
