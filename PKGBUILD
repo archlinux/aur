@@ -1,6 +1,6 @@
 # Maintainer: Tommi Helineva <tommi.helineva+aur@gmail.com>
 pkgname=t-lasku
-pkgver=1.23.0
+pkgver=1.23.1
 pkgrel=1
 pkgdesc="A Finnish invoicing software"
 arch=('i686' 'x86_64')
@@ -11,10 +11,10 @@ optdepends=('postgresql-libs')
 install='t-lasku.install'
 if test "$CARCH" == x86_64; then
   source=(http://helineva.net/t-lasku/t-lasku-$pkgver-amd64.tar.gz)
-  sha1sums=('81b33fa57e339dd81321547aa740e13158fb99cd')
+  sha1sums=('16f21c128625796adcc09e44c70a4d6d831b7c1e')
 else
   source=(http://helineva.net/t-lasku/t-lasku-$pkgver-i386.tar.gz)
-  sha1sums=('8fee0e8fd037130fc3eb872425fdd07c31978293')
+  sha1sums=('f67eb5dd8c5459358807ca133514dcb8f6d0ed58')
 fi
 
 build() {
