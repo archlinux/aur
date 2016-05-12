@@ -3,7 +3,7 @@
 set -u
 _pkgname='uncrustify'
 pkgname="${_pkgname}-git"
-pkgver=0.61.r95.gfc5228e
+pkgver=0.62.r71.g321fc5a
 pkgrel=1
 pkgdesc='A source code beautifier'
 arch=('i686' 'x86_64')
@@ -27,6 +27,7 @@ pkgver() {
 prepare() {
   set -u
   cd "${_srcdir}"
+  ./autogen.sh
   ./configure --prefix='/usr'
   set +u
 }
