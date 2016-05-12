@@ -2,7 +2,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=('seafile-server' 'seafile-client-cli' 'seafile-shared')
-pkgver=5.1.1
+pkgver=5.1.2
 pkgrel=1
 pkgdesc="Seafile is an online file storage and collaboration tool"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -18,7 +18,7 @@ source=("seafile-server-${pkgver}.tar.gz::https://github.com/haiwen/seafile/arch
         "create-default-conf-dir.patch"
         "0001-Revert-server-put-pids-folder-out-of-seafile-data.patch"
         "libseafile.in.patch")
-sha256sums=('60b5bf6cfc3f65359eada827733eb4c4720535db3c6dc1a37be1c3470f7c7030'
+sha256sums=('b813be0710ea5a8580b277e03280c69959aae7fc85bf6d5dcb35ad928c53464e'
             '52fb29858f6424052cf01630ad72b5687a4fb259f23f9efc97f08be04a883218'
             'ae1ed38f94304d27e4ef1ca66e15d544f99681c1e743c510c54d4a112f050421'
             '2a1e079cbea3543f356e6e9571f3d7d2a4b0ab75131ee417115d738ea191c4fb'
@@ -92,7 +92,7 @@ package_seafile-server() {
            "python2-mako" "python2-dateutil" "python2-webpy" "python2-pip"
            "python2-virtualenv" "python2-flup" "python2-six" "python2-chardet"
            "python2-simplejson" "libevhtp-seafile" "git")
-  optdepends=('libmysqlclient: mysql server support' )
+  optdepends=('libmariadbclient: mysql server support' )
   conflicts=("seafile-shared<${pkgver}")
   options=('!libtool' '!emptydirs')
   install=seafile-server.install
