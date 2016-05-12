@@ -1,6 +1,6 @@
 pkgbase = accel-ppp-vlanmon-dkms-git
 	pkgdesc = Accel-ppp vlan_mon kernel module sources
-	pkgver = r1344.f5a97ed
+	pkgver = r1350.d682a0a
 	pkgrel = 1
 	url = http://sourceforge.net/apps/trac/accel-ppp/
 	arch = i686
