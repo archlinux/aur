@@ -1,7 +1,7 @@
 #Maintainer: M0Rf30
 
 pkgname=openbazaard-standalone
-pkgver=0.1.8
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Server daemon for communication between client and OpenBazaar network"
 arch=(any)
@@ -50,7 +50,7 @@ msg2 "Install ${_pkgname} scripts"
   install -Dm755 ob.cfg $pkgdir/var/lib/openbazaard/ob.cfg
 }
 
-md5sums=('5e7a1c7685c856c549fb62fba27ef22f'
+md5sums=('297d833b462d1f6a8beb60bc26bde425'
          '58f846fbc1742fea9d245b6f93f6db15'
          'd66496060ae2a28c6f755a1fb29e3f37'
          '6d5c84bead900b863b864f075bac98e4')
