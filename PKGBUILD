@@ -2,7 +2,7 @@
 
 pkgname=rundeck
 pkgver=2.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source automation service with a web console, command line tools and a WebAPI"
 arch=('i686' 'x86_64')
 url="http://messengerfordesktop.com/"
@@ -13,8 +13,13 @@ source=("https://github.com/rundeck/rundeck/archive/v${pkgver}.tar.gz"
 md5sums=('bee9c70580aa85e92ecfeefec6e673fb'
          'a8e31d4a8d91239bdc326118d6b20c02')
 
-build() {  
+build() {
   cd "${srcdir}/rundeck-${pkgver}"
+  
+  if [[ -z "${JAVA_HOME// }" ]]; then
+      export JAVA_HOME="/usr/lib/jvm/default"
+  fi
+  
   sh ./gradlew build
 }
 
