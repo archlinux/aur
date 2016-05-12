@@ -3,7 +3,6 @@ pkgbase = spotify
 	pkgver = 1.0.29.92
 	pkgrel = 1
 	url = http://www.spotify.com
-	install = spotify.install
 	arch = x86_64
 	arch = i686
 	license = custom:"Copyright (c) 2006-2010 Spotify Ltd"
