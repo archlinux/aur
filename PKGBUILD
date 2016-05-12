@@ -6,7 +6,7 @@
 pkgname=pithos
 pkgver=1.1.2
 pkgrel=2
-pkgdesc='Pandora Internet Radio player for GNOME'
+pkgdesc='Native Pandora Radio client'
 arch=('any')
 url="http://pithos.github.io/"
 license=('GPL3')
