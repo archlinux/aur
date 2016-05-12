@@ -2,7 +2,7 @@
  
 pkgname=guacamole-server
 pkgver=0.9.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Guacamole proxy daemon"
 arch=('i686' 'x86_64')
 url="http://guacamole.sourceforge.net/"
@@ -23,7 +23,7 @@ md5sums=('cce818bfcba35fe0456b45d988118893' 'dfaa29349d2e73af6dac75d6cafbd762')
  
 build() {
 	cd "$srcdir"/$pkgname-$pkgver
- 	./configure --prefix=/usr --sbindir=/usr/bin
+ 	./configure --prefix=/usr --sbindir=/usr/bin CPPFLAGS="-Wno-error=pedantic"
 	make
 }
  
