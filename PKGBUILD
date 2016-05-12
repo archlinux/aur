@@ -3,7 +3,7 @@
 pkgname=python2-flask-sslify
 pkgver=0.1.5
 pkgrel=1
-pkgdesc=""
+pkgdesc="Force SSL on your Flask app."
 arch=('any')
 url="https://pypi.python.org/pypi/Flask-SSLify"
 license=('BSD')
