@@ -24,8 +24,8 @@ options=('!strip')
 install=$pkgname.install
 source=("https://dl.google.com/dl/android/studio/ide-zips/$_pkgver/android-studio-ide-$_build-linux.zip"
         "$_pkgname.desktop")
-sha1sums=('45dad9b76ad0506c354483aaa67ea0e2468d03a5'
-          '55d69ad2da0068d818718b26ba43550fbcbeb7e9')
+sha1sums=('55d69ad2da0068d818718b26ba43550fbcbeb7e9'
+          'baed66cebe2b372700f436b93022a52cbff313be')
 
 if [ "$CARCH" = "x86_64" ]; then
   depends+=('lib32-fontconfig' 'lib32-libxrender' 'lib32-mesa')
