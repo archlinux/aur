@@ -1,12 +1,12 @@
 model="l8850cdw"
-pkgname="brother-mfc-$model"
+pkgname="brother-mfc-${model}"
 pkgver="1.1.2"
 pkgrel=1
 _revision=1
 pkgdesc="LPR and CUPS driver for the Brother MFC-L8850CDW"
 url="http://welcome.solutions.brother.com/bsc/public_s/id/linux/en/index.html"
 arch=('i686' 'x86_64')
-license='unknown'
+license=('unknown')
 install="brother-mfc-${model}.install"
 depends=('tcsh' 'deb2targz' 'perl' 'a2ps' 'lib32-libcups')
 source=("http://download.brother.com/welcome/dlf101092/mfc${model}lpr-${pkgver}-${_revision}.i386.deb"
