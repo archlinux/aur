@@ -1,0 +1,19 @@
+--- xye-0.12.2/src/xsb_level.cpp.orig	2016-05-12 12:03:19.627878868 +0200
++++ xye-0.12.2/src/xsb_level.cpp	2016-05-12 12:04:45.892872617 +0200
+@@ -784,14 +784,14 @@
+ 
+ bool FromXyeDFS(int* mem, unsigned char x, unsigned char y)
+ {
+-    static const unsigned char dx[4] = {0,0,-1,1}, dy[4] = {-1,1,0,0};
++    static const int dx[4] = {0,0,-1,1}, dy[4] = {-1,1,0,0};
+     int &res =  mem[y*XYE_HORZ+x];
+     if( res==0)
+     {
+         res = 1;
+         for (int t=0; t<4; t++)
+         {
+-            unsigned char nx = x+dx[t], ny=y+dy[t];
++            int nx = x+dx[t], ny=y+dy[t];
+             if ( (nx<XYE_HORZ) && (ny<XYE_VERT)
+                  && (( game::Square(x,y)->object == NULL) || ( game::Square(x,y)->object->GetType() == OT_BLOCK))
+                )
