@@ -3,16 +3,17 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=2.6.2
-pkgrel=6
+pkgrel=7
 _wwwpkgname=AdminLTE
 _wwwpkgver=1.2
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
 license=('GPL2')
 url="https://github.com/jacobsalmela/pi-hole"
-depends=('dnsmasq' 'lighttpd' 'php-cgi' 'bc' 'figlet')
+depends=('dnsmasq' 'lighttpd' 'php-cgi' 'bc')
 conflicts=('pi-hole-standalone')
 install=$pkgname.install
+backup=('etc/pihole/whitelist.txt' 'etc/pihole/blacklist.txt')
 
 source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	https://github.com/$_pkgname/$_wwwpkgname/archive/v$_wwwpkgver.tar.gz
@@ -26,7 +27,8 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	$_pkgname-logtruncate.service
 	$_pkgname-logtruncate.timer
 	whitelist.txt
-	blacklist.txt)
+	blacklist.txt
+	unfiglet.patch)
 
 md5sums=('f899e540c76224575d15ed7af928703e'
          '6daf833c014dc65812409a3685f90411'
@@ -40,9 +42,14 @@ md5sums=('f899e540c76224575d15ed7af928703e'
          '7b9925a4516d91cd4282f181a4b4e473'
          '291d3c95e445fe65caf40c3605efd186'
          'd41d8cd98f00b204e9800998ecf8427e'
-         'd41d8cd98f00b204e9800998ecf8427e')
+         'd41d8cd98f00b204e9800998ecf8427e'
+         'f851405b453fb7eab437520645be1ce4')
 
 prepare() {
+  # development branch commit c0e1772e211da9cfdcf3266c18401e1d23720326: replace toilet/figlet with echo
+  cd "$srcdir"/$_pkgname-$pkgver/
+  patch -p1 < "$srcdir"/unfiglet.patch
+
   _ssc="/tmp/sedcontrol"
 
   # undebianizing
@@ -63,9 +70,9 @@ prepare() {
   sed -i '/dnsmasqPid\=/d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
   sed -i 's|\[\[ \$dnsmasqPid \]\]|systemctl is-active dnsmasq 2\>\&1 \>\/dev\/null|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 5" && return 1 ; fi
-  sed -i "s|sudo kill -HUP \"\$dnsmasqPid\"|\$SUDO systemctl reload dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
+  sed -i "s|sudo kill -HUP \"\$dnsmasqPid\"|sudo systemctl reload dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 6" && return 1 ; fi
-  sed -i "s|sudo service dnsmasq start|\$SUDO systemctl start dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
+  sed -i "s|sudo service dnsmasq start|sudo systemctl start dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 7" && return 1 ; fi
 
   sed -n "/dnsmasqPid\=/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
@@ -73,9 +80,9 @@ prepare() {
   sed -i '/dnsmasqPid\=/d' "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
   sed -i 's|\[\[ \$dnsmasqPid \]\]|systemctl is-active dnsmasq 2\>\&1 \>\/dev\/null|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 9" && return 1 ; fi
-  sed -i "s|sudo kill -HUP \"\$dnsmasqPid\"|\$SUDO systemctl reload dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
+  sed -i "s|sudo kill -HUP \"\$dnsmasqPid\"|sudo systemctl reload dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 10" && return 1 ; fi
-  sed -i "s|sudo service dnsmasq start|\$SUDO systemctl start dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
+  sed -i "s|sudo service dnsmasq start|sudo systemctl start dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 11" && return 1 ; fi
 
 
@@ -95,20 +102,14 @@ prepare() {
   sed -i '/#ensure \/etc\/dnsmasq\.d\//,+5d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
 
 
-  # change log location in admin php interface and scripts
+  # change log location to chronometer.sh
   sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log location in admin php interface and scripts" && return 1 ; fi
-
-
-  # original toilet is in aur, enter figlet
-  sed -i "s|toilet -f small -F gay Pi-hole|figlet Pi-hole|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: original toilet is in aur, enter figlet" && return 1 ; fi
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log location to chronometer.sh" && return 1 ; fi
 
 
   # little arch changes to chronometer.sh
-  sed -n "/figlet Pi-hole/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
+  sed -i "s|.*ifconfig eth0.*|NICDEV=\$\(ip route get 8.8.8.8 \| awk '{for\(i=1;i<=NF;i++\)if\(\$\i~/dev/\)print $\(i+1\)}'\)\n&|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: little arch changes to chronometer.sh 1" && return 1 ; fi
-  sed -i "/figlet Pi-hole/a NICDEV=\$\(ip route get 8.8.8.8 | awk '{for\(i=1;i<=NF;i++\)if\(\$\i~/dev/\)print $\(i+1\)}'\)" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
   sed -i "s|\$(ifconfig eth0 \||\$(ifconfig \$NICDEV \||w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: little arch changes to chronometer.sh 2" && return 1 ; fi
   sed -i "s|/inet addr/|/inet /|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
