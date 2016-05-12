@@ -1,17 +1,21 @@
 pkgbase = pydio-sync
 	pkgdesc = Pydio synchronisation client
-	pkgver = 1.0.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://pyd.io
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	depends = qt5-webkit
+	depends = libsm
+	depends = gstreamer0.10-base
 	provides = pydio-sync
 	conflicts = pydio-sync-git
 	conflicts = pydio-sync-ui-git
-	source = https://pyd.io/resources/pydio6/data/public/pydiosync-linux-1-0-2-targz?dl=true&file=/1e481dfadf/PydioSync-Linux-v1.0.2.tar.gz
+	options = !strip
+	source = https://download.pydio.com/pub/pydio-sync/release/1.2.3/PydioSync-Linux-Binaries-v1.2.3.tar.gz
 	source = pydio.desktop
-	md5sums = 501bc58a8b08345e9e2acf5bc5474680
+	md5sums = eb3c7bb3d51057dcf1aea0135816263f
 	md5sums = 24e42bae5d695c42fc7ccc4a30d97583
 
 pkgname = pydio-sync
