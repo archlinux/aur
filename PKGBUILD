@@ -4,7 +4,7 @@
 
 pkgname=asterisk
 pkgver=13.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete PBX solution"
 arch=('i686' 'x86_64')
 backup=('etc/asterisk/acl.conf'
@@ -133,7 +133,7 @@ sha256sums=('df6d00957c38f6e27bcbaf3feb0d55ee436550d6756dcc7e34b52eece7c9050f'
 
 build() {
   cd ${srcdir}/${pkgname}-${pkgver}
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin --with-pjproject-bundled
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin #--with-pjproject-bundled
   make
 }
 
