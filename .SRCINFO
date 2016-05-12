@@ -1,7 +1,7 @@
 pkgbase = rundeck
 	pkgdesc = Open source automation service with a web console, command line tools and a WebAPI
 	pkgver = 2.6.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://messengerfordesktop.com/
 	arch = i686
 	arch = x86_64
