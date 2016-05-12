@@ -1,7 +1,7 @@
-# Maintainer:  jyantis <yantis@yantis.net>
+# Maintainer:  Drew Noel <drewmnoel@gmail.com>
 
 pkgname=caffe-git
-pkgver=rc3.r120.gb86b0ae
+pkgver=rc3.r152.g9c46289
 pkgrel=1
 pkgdesc='A fast framework for deep learning built in C++ for speed with a Python 2 interface'
 arch=(x86_64)
@@ -47,7 +47,7 @@ provides=('caffe' 'pycaffe' 'python2-pycaffe' )
 conflicts=('caffe' 'pycaffe' 'python2-pycaffe' 'pycaffe-git' 'python2-pycaffe-git')
 sha256sums=('SKIP'
             'c12ddbd524c1b5871cb42a8775cf17a3ef86ae8a859837a6c6c4e2c19deca3d5'
-            'ac0195943510f1dfed85991958455cba6a36058e93f74ad4da0befb6fae84bd5')
+            '91ac4b31b72c9c6fb8b1242c945d8caf32f1876ef4befa3c81b7d19940b6a143')
 
 pkgver() {
   cd caffe
