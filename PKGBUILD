@@ -9,7 +9,7 @@ arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="https://github.com/haiwen/ccnet/"
 license=('GPL3')
 depends=('libevent' 'libzdb' 'libsearpc' 'libldap' 'python2')
-makedepends=('vala' 'libmysqlclient' )
+makedepends=('vala' 'libmariadbclient' )
 options=('!makeflags')
 
 source=("${pkgname}-v${pkgver}-server.tar.gz::https://github.com/haiwen/${pkgname}/archive/v${pkgver}-server.tar.gz"
