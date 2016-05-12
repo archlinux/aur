@@ -1,7 +1,7 @@
 # Maintainer: fthiery fthiery@gmail.com
 
 pkgname=keeweb-desktop
-pkgver=1.1.3
+pkgver=1.1.4
 pkgrel=1
 pkgdesc="This webapp is a desktop password manager compatible with KeePass databases."
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=(
     "keeweb.xml"
 )
 sha256sums=(
-    '204659fe44f1c79fe88e4c5f54ab697755251295d52a85d7ae5f511f21cd6ea1'
+    'dd9a5221ea91d52757d8a783ee77d88b74d71c49d7dfadf78e7bed70b6664fbc'
     'd6a5d6402d4c1c211da5f077b77422fc7da4dd4c7208bc77e7e29cf2f5427ca3'
     '179bf1943eef5c618fb9d070e240cde431a796926ed8505eb73ba3eab30eb198'
     '3d017c17a8788166c644e2460ba3596fd503f300342561921201fe5f69e5d194'
