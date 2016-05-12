@@ -29,7 +29,7 @@ build() {
   sed -i 's/-lboost_system-mt/-lboost_system/g' Makefile
   sed -i 's/-lboost_thread-mt/-lboost_thread/g' Makefile
   sed -i 's/-lboost_iostreams-mt/-lboost_iostreams/g' Makefile
-  make game server
+  CXXFLAGS="$CXXFLAGS -std=gnu++98" make game server
 }
 
 package() {
