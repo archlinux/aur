@@ -3,14 +3,15 @@
 pkgbase=certbot-plugins-git
 pkgname=("certbot-nginx-git" "certbot-apache-git")
 _reponame="certbot"
-pkgver=0.5.0.r118.ga6d5b52
+pkgver=0.5.0.r153.g41f347d
 pkgrel=1
 pkgdesc="Plugins for Certbot"
 arch=('any')
 license=('Apache')
 url="https://github.com/certbot/${_reponame}"
 depends=('')
-makedepends=('git' "certbot=$pkgver" "python2-acme=$pkgver" 'python2-pyopenssl'
+# Most AUR helpers unfortunately do not support versioned deps in the AUR ("certbot=$pkgver" "python2-acme=$pkgver")
+makedepends=('git' 'certbot' 'python2-acme' 'python2-pyopenssl'
 	'python2-pyparsing' 'python2-setuptools' 'python2-mock' 'python2-zope-interface'
 	'python2-zope-component' 'python2-augeas')
 provides=("")
@@ -42,7 +43,8 @@ build_certbot-apache-git() {
 
 package_certbot-nginx-git() {
 	pkgdesc="Nginx plugin for Certbot"
-	depends=("certbot=$pkgver" "python2-acme=$pkgver" 'python2-pyopenssl' 'python2-pyparsing'
+	# Most AUR helpers unfortunately do not support versioned deps in the AUR ("certbot=$pkgver" "python2-acme=$pkgver")
+	depends=('certbot' 'python2-acme' 'python2-pyopenssl' 'python2-pyparsing'
 		'python2-setuptools' 'python2-mock' 'python2-zope-interface')
 	provides=("certbot-nginx=${pkgver}" "letsencrypt-nginx=${pkgver}")
 	conflicts=("certbot-nginx" "letsencrypt-nginx")
@@ -53,7 +55,8 @@ package_certbot-nginx-git() {
 
 package_certbot-apache-git() {
 	pkgdesc="Apache plugin for Certbot"
-	depends=("certbot=$pkgver" "python2-acme=$pkgver" 'python2-augeas' 'python2-setuptools'
+	# Most AUR helpers unfortunately do not support versioned deps in the AUR ("certbot=$pkgver" "python2-acme=$pkgver")
+	depends=('certbot' 'python2-acme' 'python2-augeas' 'python2-setuptools'
 		'python2-mock' 'python2-zope-component' 'python2-zope-interface')
 	provides=("certbot-apache=${pkgver}" "letsencrypt-apache=${pkgver}")
 	conflicts=("certbot-apache" "letsencrypt-apache")
