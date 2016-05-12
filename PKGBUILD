@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=sqawk-git
-pkgver=20150128
+pkgver=20160510
 pkgrel=1
 pkgdesc="Like Awk but with SQL and table joins"
 arch=('i686' 'x86_64')
@@ -17,19 +17,27 @@ pkgver() {
   git log -1 --format="%cd" --date=short | sed "s|-||g"
 }
 
+build() {
+  cd ${pkgname%-git}
+
+  msg2 'Building...'
+  make
+}
+
 package() {
   cd ${pkgname%-git}
 
-  msg 'Installing license...'
-  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/${pkgname%-git}/LICENSE"
+  msg2 'Installing license...'
+  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 
-  msg 'Installing documentation...'
-  install -dm 755 "$pkgdir/usr/share/doc/${pkgname%-git}"
-  cp -dpr --no-preserve=ownership README.md examples "$pkgdir/usr/share/doc/${pkgname%-git}"
+  msg2 'Installing documentation...'
+  install -Dm 644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  cp -dpr --no-preserve=ownership examples \
+    "$pkgdir/usr/share/doc/${pkgname%-git}"
 
-  msg 'Installing...'
-  install -Dm 755 sqawk.tcl "$pkgdir/usr/bin/sqawk"
+  msg2 'Installing...'
+  make prefix=/usr DESTDIR="$pkgdir" install
 
-  msg 'Cleaning up pkgdir...'
+  msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
 }
