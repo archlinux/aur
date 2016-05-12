@@ -4,7 +4,7 @@
 
 pkgname=bup-git
 pkgver=1364.cad3c11
-pkgrel=2
+pkgrel=3
 pkgdesc='Efficient file backup system based on the git packfile format'
 arch=('i686' 'x86_64')
 url='https://bup.github.io/'
@@ -26,25 +26,17 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${pkgname}"
 
-	# Fixing numerous false invocations since python2 is needed
-	find . -type f -exec sed -i -e '1s/env python\b/env python2/' {} +
-	sed -i -e 's/find_prog python\b/find_prog python2/' \
-		-e 's/MF_PATH_INCLUDE PYTHON python\b/MF_PATH_INCLUDE PYTHON python2/' \
-		config/configure
-	sed -i -e 's/PYTHON=python\b/PYTHON=python2/' -e '/docs-available/d' Makefile
-	sed -i -e 's/python\b -c/python2 -c/' t/{lib,test-meta,test-ls}.sh
-
-	# Make test suite happy
-	#git config --global user.email "bob@zombo.com"
+	# Configure the program to use python2 everywhere
+	PYTHON=/usr/bin/python2 ./configure
 }
 
 build() {
 	make -C "${srcdir}/${pkgname}"
 }
 
-# Disabled in favor of increased speed
+# Disabled in favor of increased speed - it should pass if run
 #check() {
-#	make -C "${srcdir}/${pkgname}" test -j1
+#	make -C "${srcdir}/${pkgname}" test
 #}
 
 package() {
