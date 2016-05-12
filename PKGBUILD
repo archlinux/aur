@@ -15,18 +15,21 @@ makedepends=('clang35' 'mono' 'dos2unix' 'cmake')
 depends=('icu53' 'xdg-user-dirs')
 license=('custom:UnrealEngine')
 source=(
-  git+ssh://github.com/EpicGames/UnrealEngine.git#tag=$pkgver-release
-  UE4Editor.desktop
+  'git+ssh://github.com/EpicGames/UnrealEngine.git#tag=$pkgver-release'
+  'UE4Editor.desktop'
+  'setup-depend-clang35.patch'
 )
 md5sums=(
-  SKIP
-  7a2db62e8d0e8e6f26424768c412d356
+  'SKIP'
+  '7a2db62e8d0e8e6f26424768c412d356'
+  '0aef7bb2dbb1aeb5c65d3f90ca89009d'
 )
 options=(!strip staticlibs)
 
 build() {
-  cd $srcdir/UnrealEngine
+  patch < setup-depend-clang35.patch
 
+  cd $srcdir/UnrealEngine
   ./Setup.sh
   ./GenerateProjectFiles.sh
 
