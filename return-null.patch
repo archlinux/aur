@@ -1,0 +1,11 @@
+--- src/interface/weapon_menu.cpp.orig	2016-05-09 15:22:36.895266463 +0200
++++ src/interface/weapon_menu.cpp	2016-05-09 15:21:38.518476191 +0200
+@@ -391,7 +391,7 @@
+ Weapon * WeaponsMenu::UpdateCurrentOverflyItem(const Polygon * poly)
+ {
+   if (!show)
+-    return false;
++    return NULL;
+   const std::vector<PolygonItem *>& items = poly->GetItem();
+   WeaponMenuItem * tmp;
+   Interface::GetInstance()->SetCurrentOverflyWeapon(NULL);
