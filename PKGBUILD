@@ -5,42 +5,35 @@
 
 pkgname=gnome-terminal-transparency
 _pkgname=gnome-terminal
-pkgver=3.20.1
-pkgrel=2
+pkgver=3.20.2
+pkgrel=1
 pkgdesc="The GNOME Terminal Emulator, with background transparency"
+url="https://wiki.gnome.org/Apps/Terminal"
 arch=(i686 x86_64)
 license=(GPL)
-depends=(vte3 gsettings-desktop-schemas dconf libnautilus-extension)
-makedepends=(intltool itstool docbook-xsl desktop-file-utils
-             libnautilus-extension appstream-glib gnome-shell gconf vala yelp-tools)
-optdepends=('gconf: settings migration when upgrading from older version')
+depends=(vte3 gsettings-desktop-schemas dconf)
+makedepends=(intltool itstool docbook-xsl libnautilus-extension appdata-tools
+             gnome-shell gconf vala yelp-tools)
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
-options=('!emptydirs')
-url="http://www.gnome.org"
-groups=('gnome')
-install=gnome-terminal-transparency.install
+options=(!emptydirs)
+groups=(gnome)
 changelog=$pkgname.changelog
 source=("https://download.gnome.org/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz"
         'gnome-terminal-transparency.patch'
 )
-sha256sums=('98b7f48b13b37f05c92aa6b09006f608985efaf5440a1d76c28eda5f46b50894'
-            '12f4c7d4ea57abc7730085fe2675cb0c5c1cae81dda41a78444de9dac9aa517e'
+sha256sums=('f5383060730f1de70af35e917f82d5b6a14d963ad9cfd6a0e705f90011645a23'
+            'b28361f4606f495ade3035fcabb5525d4561f2dd2458e25a7e79da8b8634c20d'
 )
 
 prepare () {
 	cd "${_pkgname}-${pkgver}"
-
 	patch -p1 -i '../gnome-terminal-transparency.patch'
-
 	autoreconf -f -i
 }
 
-
 build() {
   cd $_pkgname-$pkgver
-  # Build with prerelease, no tarball yet
-  sed -i -e 's/0.44.0/0.43.92/' configure
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
     --libexecdir=/usr/lib/$_pkgname --disable-static --with-nautilus-extension
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool

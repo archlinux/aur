@@ -1154,14 +1154,13 @@ index 974c353..6b16746 100644
 +msgid "Transparent background"
 +msgstr "Permatomas fonas"
 diff --git a/po/lv.po b/po/lv.po
-index 42a9b35..8cb9a83 100644
+index 0892f4b..a6aec64 100644
 --- a/po/lv.po
 +++ b/po/lv.po
-@@ -2261,3 +2261,6 @@ msgstr ""
- #: ../src/terminal-window.c:3727
+@@ -2231,3 +2231,5 @@ msgstr ""
  msgid "C_lose Window"
  msgstr "Aizvērt _logu"
-+
+
 +msgid "Transparent background"
 +msgstr "Caurspīdīgs fons"
 diff --git a/po/mai.po b/po/mai.po

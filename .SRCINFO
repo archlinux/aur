@@ -1,9 +1,8 @@
 pkgbase = gnome-terminal-transparency
 	pkgdesc = The GNOME Terminal Emulator, with background transparency
-	pkgver = 3.20.1
-	pkgrel = 2
-	url = http://www.gnome.org
-	install = gnome-terminal-transparency.install
+	pkgver = 3.20.2
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Terminal
 	changelog = gnome-terminal-transparency.changelog
 	arch = i686
 	arch = x86_64
@@ -12,9 +11,8 @@ pkgbase = gnome-terminal-transparency
 	makedepends = intltool
 	makedepends = itstool
 	makedepends = docbook-xsl
-	makedepends = desktop-file-utils
 	makedepends = libnautilus-extension
-	makedepends = appstream-glib
+	makedepends = appdata-tools
 	makedepends = gnome-shell
 	makedepends = gconf
 	makedepends = vala
@@ -22,15 +20,13 @@ pkgbase = gnome-terminal-transparency
 	depends = vte3
 	depends = gsettings-desktop-schemas
 	depends = dconf
-	depends = libnautilus-extension
-	optdepends = gconf: settings migration when upgrading from older version
-	provides = gnome-terminal=3.20.1
+	provides = gnome-terminal=3.20.2
 	conflicts = gnome-terminal
 	options = !emptydirs
-	source = https://download.gnome.org/sources/gnome-terminal/3.20/gnome-terminal-3.20.1.tar.xz
+	source = https://download.gnome.org/sources/gnome-terminal/3.20/gnome-terminal-3.20.2.tar.xz
 	source = gnome-terminal-transparency.patch
-	sha256sums = 98b7f48b13b37f05c92aa6b09006f608985efaf5440a1d76c28eda5f46b50894
-	sha256sums = 12f4c7d4ea57abc7730085fe2675cb0c5c1cae81dda41a78444de9dac9aa517e
+	sha256sums = f5383060730f1de70af35e917f82d5b6a14d963ad9cfd6a0e705f90011645a23
+	sha256sums = b28361f4606f495ade3035fcabb5525d4561f2dd2458e25a7e79da8b8634c20d
 
 pkgname = gnome-terminal-transparency
 

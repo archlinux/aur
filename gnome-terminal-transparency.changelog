@@ -1,3 +1,9 @@
+2016-05-12
+	upstream update: 3.20.1 -> 3.20.2
+	modify patch for latvian translation to stay compatible
+	replace makedepends: appstream-glib -> appdata-tools
+	tidy up PKGBUILD
+
 2016-04-13
 	removed gschema-override for theme, which is superfluous from >= 3.20
 
