@@ -1,7 +1,7 @@
 # Maintainer: jjacky
 _pkgname=kalu
 pkgname=$_pkgname-git
-pkgver=4.0.0
+pkgver=4.1.0
 pkgrel=1
 pkgdesc="Upgrade notifier w/ AUR support, watched (AUR) packages, news [GIT]"
 arch=('i686' 'x86_64')
