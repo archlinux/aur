@@ -1,0 +1,11 @@
+[Unit]
+Description=Update pacman mirrorlist
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/reflector-timer
+
+[Install]
+RequiredBy=multi-user.target
