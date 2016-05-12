@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/JustArchi/ArchiSteamFarm"
 license=('Apache')
 depends=('mono')
+changelog=changelog
 backup=('opt/asf/config/ASF.json')
 install=${pkgname}.install
 source=("https://github.com/JustArchi/ArchiSteamFarm/releases/download/${pkgver}/ASF.zip"
