@@ -5,7 +5,7 @@
 pkgname=librime
 pkgver=1.2.20160226
 _commit=df4192cc0980b21bc45f4eb142ba24cfa78a50e0
-pkgrel=1
+pkgrel=2
 pkgdesc="Rime input method engine"
 arch=('i686' 'x86_64')
 url="http://code.google.com/p/rimeime/"
