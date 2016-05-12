@@ -2,11 +2,11 @@
 # Git: https://github.com/nogo/archlinux-pkgbuild
 
 # Uncomment, if you want tha last release
-_version=2.1.1
+_version=2.2.0
 
 pkgname=owncloud-client-git
-pkgver=2.1.1
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="ownCloud client based on mirall"
 arch=('i686' 'x86_64')
 url="http://owncloud.org/"
