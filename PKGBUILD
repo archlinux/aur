@@ -9,7 +9,7 @@
 # Contributor: Valentine Sinitsyn <e_val@inbox.ru>
 
 pkgname=networkmanager-consolekit
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 _pppver=2.4.7
 pkgdesc="NetworkManager with ConsoleKit support for non-systemd systems"
@@ -35,20 +35,15 @@ conflicts=('networkmanager')
 backup=('etc/NetworkManager/NetworkManager.conf')
 install=networkmanager.install
 source=(https://download.gnome.org/sources/NetworkManager/${pkgver:0:3}/NetworkManager-$pkgver.tar.xz
-        hidepid.patch
         NetworkManager.conf 
         networkmanager.rc
         )
-sha256sums=('e947cf30fa3d19dce88e6f6af51f06dc282b7db7996f946aaa37b03526ef2a80'
-            '1de5b511b6b4a933739b0ef48ede1830fa3d6dea2277c1302b12b08fa83a73f1'
+sha256sums=('41d8082e027f58bb5fa4181f93742606ab99c659794a18e2823eff22df0eecd9'
             '452e4f77c1de92b1e08f6f58674a6c52a2b2d65b7deb0ba436e9afa91ee15103'
             'e39a2a0401518abd1d1d060200e2ca0f0854cdc49a5cb286919be177a7cd90fc')
 
 prepare() {
   cd NetworkManager-$pkgver
-
-  # https://bugs.archlinux.org/task/48984
-  patch -Np1 -i ../hidepid.patch
 
   2to3 -w libnm src tools
   NOCONFIGURE=1 ./autogen.sh
