@@ -2,8 +2,8 @@
 # Contributor: Ghislain Viguier <ghislain.viguier@gmail.com>
 
 pkgname=scalasca
-_version=2.2
-_patch=.2
+_version=2.3
+_patch=
 pkgver=${_version}${_patch}
 pkgrel=0
 pkgdesc="Tool for measuring and analyzing runtime behavior of parallel programs."
@@ -14,11 +14,11 @@ depends=('openmpi')
 makedepends=('python2' 'cube-perf' 'scorep' 'openmpi')
 install=scalasca.install
 source=(http://apps.fz-juelich.de/scalasca/releases/$pkgname/$_version/dist/$pkgname-$pkgver.tar.gz)
-sha1sums=('9e8d9e3438f4e78431d3424d5ad07d0e76689b62')
+sha1sums=('2b7bea7013486a6f6a2031b092c89118aaf4cde5')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	./configure --prefix=/usr --with-mpi=openmpi PYTHON=/usr/bin/python2
+	./configure --prefix=/usr --with-mpi=openmpi PYTHON=/usr/bin/python2 CXXFLAGS='-g -O2 -std=c++03' MPI_CXXFLAGS='-g -O2 -std=c++03'
 	make
 }
 
