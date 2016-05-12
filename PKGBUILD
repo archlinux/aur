@@ -5,7 +5,7 @@ _pkgname=nginx
 provides=('nginx')
 conflicts=('nginx')
 pkgver=1.9.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline, Brotli
 Support, with Naxsi, Certificate Transparency, GeoIP (GeoIP Legacy).'
 arch=('i686' 'x86_64')
@@ -117,14 +117,14 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('0afe4a7e589a0de43b7b54aa055a4351'
+md5sums=('13cd38e9da3789035750dd45882c4a26'
          'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7')
-sha1sums=('5945a0701f0ee0755fd20643f755507996a3f7f3'
+sha1sums=('e7b7bcf27671095b4a4110dd831b125c3cf9fcb7'
           'SKIP'
           'SKIP'
           'SKIP'
