@@ -5,7 +5,7 @@
 # comes with this package.
 pkgname=cura-aleph-bin
 pkgver=19.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A full 3D printing solution aimed at RepRaps and the Ultimaker. 
 This is the Aleph Objects fork, specialized for the Lulzbot series of 3D printers."
 arch=('i686' 'x86_64')
@@ -42,6 +42,20 @@ fi
 
 source+=(arch_aleph_patch.diff)
 sha1sums+=('ba7a71da6f433e57e4cb67b9a295d4c249518b6e')
+
+check()
+{
+    echo -e "
+*****************************************************************************
+In order for Cura to communicate with your printer, it needs to run from a
+user which can both read and write to it. On Archlinux, this currently means
+that you need to be in the ** uucp ** group.
+
+To check and make sure, connect the printer and see who has access to it; e.g
+$ ls -l /dev/ttyACM0
+*****************************************************************************
+"
+}
 
 prepare()
 {
