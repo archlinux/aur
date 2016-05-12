@@ -7,7 +7,7 @@
 pkgbase=('qemu-minimal-git')
 _gitname=qemu
 pkgname=('qemu-minimal-git')
-pkgver=2.6.0.r45065.9370a3b
+pkgver=2.6.0.r45341.bfc766d
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -54,7 +54,7 @@ build() {
               --disable-gtk --disable-snappy --enable-lzo --enable-linux-aio --enable-seccomp \
               --localstatedir=/var \
               --enable-tpm \
-              --enable-modules --enable-curl --disable-werror
+              --enable-modules --enable-curl
   make V=99
 }
 

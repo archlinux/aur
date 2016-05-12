@@ -1,5 +1,5 @@
 pkgbase = qemu-minimal-git
-	pkgver = 2.6.0.r45065.9370a3b
+	pkgver = 2.6.0.r45341.bfc766d
 	pkgrel = 1
 	url = http://wiki.qemu.org/
 	arch = i686
