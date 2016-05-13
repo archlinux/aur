@@ -5,13 +5,13 @@ pkgname=qwebapp-git
 pkgver=ea398e2
 pkgrel=1
 pkgdesc="Fast and slick customizable minimalistic web browser used for making desktop launchers for web apps. Works on Linux, Windows and Mac OS X."
-url="https://github.com/zatherz/qwebapp"
+url="https://gitlab.com/zatherz/qwebapp.git"
 arch=('i686' 'x86_64')
 license=('GPL2')
 provides=('qwebapp')
 conflicts=('qwebapp')
 depends=('qt5-base' 'qt5-webkit')
-source=(${pkgname}::git+https://github.com/zatherz/qwebapp.git)
+source=(${pkgname}::git+https://gitlab.com/zatherz/qwebapp.git)
 sha512sums=('SKIP')
 
 pkgver() {
