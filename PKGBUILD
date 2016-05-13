@@ -1,5 +1,5 @@
 # Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
-pkgname=telegram-desktop-light
+pkgname=telegram-desktop-dev
 pkgver=0.9.48
 pkgrel=1
 _qtver=5.6.0
