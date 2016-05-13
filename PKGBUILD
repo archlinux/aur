@@ -16,14 +16,14 @@ url="http://www.hdfgroup.org/HDF5/"
 license=('custom')
 depends=('zlib' 'sh')
 makedepends=('time')
-source=(ftp://ftp.hdfgroup.org/HDF5/current/src/${_pkgname}-${pkgver/_/-}.tar.bz2)
+install="${pkgname}.install"
+source=(ftp://ftp.hdfgroup.org/HDF5/releases/${_pkgname}-${pkgver}/src/${_pkgname}-${pkgver/_/-}.tar.bz2)
 sha1sums=('a7b631778cb289edec670f665d2c3265983a0d53')
-options=(staticlibs)
 
 build() {
   cd "$srcdir/${_pkgname}-${pkgver/_/-}"
 
-  ./configure --prefix=/opt/${pkgname} --enable-static \
+  ./configure --prefix=/opt/${pkgname} \
     --enable-hl \
     --disable-threadsafe \
     --enable-linux-lfs \
@@ -43,5 +43,8 @@ package() {
   install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 "${srcdir}/${_pkgname}-${pkgver/_/-}/COPYING" \
     "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    
+  install -d -m755 "${pkgdir}/etc/ld.so.conf.d"
+  printf "%s\n" "/opt/${pkgname}/lib" > "${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf"
 }
 
