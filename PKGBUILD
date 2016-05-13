@@ -2,7 +2,7 @@
 # Maintainer: Quan Guo <guotsuan@gmail.com>
 
 pkgname=awesome-treetile
-pkgver=2016.03.06.g15a5ecc
+pkgver=2016.05.13.g4cf1497
 pkgrel=1
 pkgdesc='Treetile is binary tree-based, dynamical tiling layout for Awesome 3.5
 and latter.'
