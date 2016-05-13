@@ -2,6 +2,7 @@ pkgbase = scheme-9-from-empty-space
 	pkgdesc = S9fES is a mature, portable, and comprehensible interpreter for R4RS Scheme.
 	pkgver = 20151119
 	pkgrel = 1
+	url = http://www.t3x.org/s9fes/
 	arch = x86_64
 	arch = i686
 	license = unknown
