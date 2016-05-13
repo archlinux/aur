@@ -5,7 +5,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=heirloom-devtools-cvs
 pkgver=2011.06.22
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 pkgdesc="The Heirloom Development tools (yacc, lex, make ...) derived from original UNIX tools."
 url="http://heirloom.sourceforge.net/devtools.html"
@@ -23,7 +23,7 @@ prepare() {
   rm -rf $srcdir/build
   cd "$srcdir/${pkgname%-*}"
   patch -p1 < ../000-config.diff
-  sed -i '53s/auto//' build/make/bsd.cc
+  sed -i '53s/auto//' build/bsd/bsd.cc
 }
 
 build() {
