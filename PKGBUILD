@@ -1,11 +1,12 @@
 # Maintainer: Anselmo L. S. Melo <anselmo.melo@intel.com>
 pkgname=qgroundcontrol-git
-pkgver=r8396.2b64576
+pkgver=r8408.1fb0f04
 pkgrel=1
 pkgdesc="Micro air vehicle ground control station."
 arch=('any')
 url="http://qgroundcontrol.org/"
 license=('GPL3')
+conflicts=('qgroundcontrol')
 depends=(\
   'espeak'  # optional but you have to decide if you want it at built-time\
   'qt5-svg' 'qt5-graphicaleffects' 'qt5-webkit' 'phonon-qt4' 'qt5-serialport'\
@@ -23,7 +24,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/${pkgname%-git}"
   git submodule update --init
-  mkdir build
+  mkdir -p build
 }
 
 build() {
