@@ -1,16 +1,18 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=alacryd-git
-pkgver=20160502
+pkgver=20160513
 pkgrel=1
 pkgdesc="Expedient Perl6 module installation"
 arch=('any')
 depends=('perl6')
+makedepends=('git')
 groups=('perl6')
 url="https://github.com/atweiden/alacryd"
 license=('UNLICENSE')
-source=(git+https://github.com/atweiden/alacryd)
-sha256sums=('SKIP')
+source=(git+https://github.com/atweiden/alacryd
+        git+https://github.com/timo/json_fast)
+sha256sums=('SKIP' 'SKIP')
 provides=('alacryd')
 conflicts=('alacryd')
 install=alacryd.install
@@ -18,6 +20,20 @@ install=alacryd.install
 pkgver() {
   cd ${pkgname%-git}
   git log -1 --format="%cd" --date=short | sed "s|-||g"
+}
+
+prepare() {
+  cd ${pkgname%-git}
+
+  msg2 'Copying JSON::Fast into lib for bootstrapping...'
+  find "$srcdir/json_fast/lib" -exec cp -dpr --no-preserve=ownership '{}' lib \;
+}
+
+check() {
+  cd ${pkgname%-git}
+
+  msg2 'Running tests...'
+  PERL6LIB=lib prove -r -e perl6
 }
 
 package() {
