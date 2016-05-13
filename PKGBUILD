@@ -3,13 +3,12 @@
 
 pkgname='raceintospace'
 pkgver='1.1'
-pkgrel='3'
+pkgrel='4'
 pkgdesc='The computer version of the Liftoff! board game by Fritz Bronner'
 arch=('i686' 'x86_64')
 url='http://www.raceintospace.org/'
 license=('GPL2')
 depends=('sdl' 'libvorbis' 'libtheora')
-install="$pkgname.install"
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
         "$pkgname.desktop")
 md5sums=('898fe3ba5c43f6e7b857f5df0093f7a6'
