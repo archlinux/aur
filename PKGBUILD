@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc=" pugdebug is a standalone debugging client for PHP applications that uses XDebug as the debugging engine"
 arch=('any')
 license=('GPL3')
-url='http://github.com/neovim/python-client'
+url='http://pugdebug.com/'
 depends=('python'
          'pyinstaller'
          'python-virtualenv'
