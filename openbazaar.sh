@@ -1,3 +1,3 @@
 #!/bin/sh
 cd /opt/openbazaar
-electron main.js
+electron037 main.js
