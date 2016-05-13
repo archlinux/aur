@@ -1,0 +1,328 @@
+COREL END USER LICENSE AGREEMENT
+
+IMPORTANT: THIS IS A LICENSE, NOT A SALE
+
+This EULA is not for end-users in Germany.
+The EULA for end-users in Germany can be found under www.corel.com/de/eula/
+
+Unless you have a written agreement with Corel providing for additional Use, the below agreement gives you permission to install and Use one (1) copy of this Product on one (1) 
+computer or electronic device at any given time as set out in more detail below.
+
+IMPORTANT NOTICE: PLEASE READ THIS END-USER LICENSE AGREEMENT (EULA) CAREFULLY BY DOWNLOADING, ACCESSING, INSTALLING OR USING THE SOFTWARE AND DOCUMENTATION (“SOFTWARE”), YOU AGREE TO 
+THE TERMS OF THIS EULA. IF YOU DO NOT AGREE TO THE TERMS OF THIS EULA, DO NOT DOWNLOAD, INSTALL, ACCESS OR USE THE SOFTWARE. THIS EULA CONTAINS DISCLAIMERS OF WARRANTIES AND 
+LIMITATIONS OF LIABILITY AND EXCLUSIVE REMEDIES. THE PROVISIONS BELOW FORM THE ESSENTIAL BASIS OF OUR AGREEMENT.
+
+This EULA is a legal agreement between You and Corel Corporation, including its subsidiaries, affiliates and contractors acting on Our behalf (collectively “Corel”, “Us”, “We”, or 
+“Our”) regarding Your use of the Corel, or one of its subsidiary's Software. Unless You have another written agreement with Corel regarding this Software, then Your use of this 
+Software is governed by this EULA. From time to time, We may in Our sole discretion update or modify this EULA. The most recent version of this EULA is located at: 
+http://www.corel.com/eula.
+
+IF YOU AGREE TO THIS EULA, YOU ARE GRANTED A LIMITED, PERSONAL, WORLDWIDE, ROYALTY-FREE, NON-ASSIGNABLE, NON-SUBLICENSEABLE, NON-TRANSFERABLE AND NON-EXCLUSIVE LICENSE TO USE THE 
+SOFTWARE, WHICH MAY BE LIMITED IN TIME AS SET FORTH BELOW. OTHER THAN IN INSTANCES WHERE SOFTWARE IS HOSTED BY COREL OR AN AUTHORIZED COREL HOSTING PARTNER AND ACCESSED BY YOU 
+REMOTELY, YOU ARE PERMITTED TO USE ONE (1) COPY OF THE SOFTWARE FOR YOUR (A) PRIVATE, NON-COMMERCIAL PURPOSES AS A PRIVATE USER, AND/OR (B) COMMERCIAL PURPOSES AS A SERVICE PROVIDER 
+IN A COMMERCIAL BUSINESS (“BUSINESS USER”). THIS SOFTWARE IS LICENSED PER HOUSEHOLD OR PER SINGLE ADDRESS (“ADDRESS”). EXCEPT FOR THE COREL PRODUCTS LISTED BELOW, YOU MAY ONLY 
+DOWNLOAD AND INSTALL THE SOFTWARE ON ONE COMPUTING DEVICE. YOU MAY NOT RE-INSTALL THE SOFTWARE ON A SECOND COMPUTING DEVICE UNLESS THE ORIGINAL COMPUTING DEVICE FAILS, IF 
+AUTHORIZATION CODES ARE REQUIRED YOU MAY NEED TO CONTACT CUSTOMER SERVICE AND REQUEST APPROVAL TO RE-INSTALL THE SOFTWARE ON A NEW COMPUTING DEVICE, AND YOU CERTIFY TO COREL THAT YOU 
+DEINSTALLED THE SOFTWARE FROM THE FAILED COMPUTING DEVICE. EXCEPT IF LOCATED IN CHINA, INDIA, INDONESIA OR VIETNAM, PRIVATE AND BUSINESS USERS OF AFTERSHOT, COREL CAPTURE, COREL 
+CONNECT, COREL WEBSITE CREATOR, CORELDRAW, COREL DESIGNER, CORELCAD, COREL OFFICE, COREL PAINTER, COREL PDF FUSION, PAINTSHOP PRO, PAINTSHOP PHOTO PRO, PARADOX, COREL PHOTO-PAINT, 
+PRESENTATIONS, QUATTRO PRO, AND WORDPERFECT THAT HAVE MULTIPLE COMPUTING DEVICES (E.G., STAND-ALONE COMPUTER, LAPTOP AND MINI/PORTABLE PC), MAY DOWNLOAD AND INSTALL ANY OF THESE 
+SOFTWARE PRODUCTS ON UP TO THREE (3) SYSTEMS IN A SINGLE ADDRESS, HOWEVER IT CAN ONLY BE USED BY YOU ON ONE (1) SYSTEM AT A TIME. IF YOU HAVE PURCHASED MULTIPLE LICENSES FOR THE 
+SOFTWARE, AT ANY TIME YOU MAY HAVE AS MANY COPIES OF THE SOFTWARE IN USE AS YOU HAVE LICENSES.
+
+IN INSTANCES WHERE SOFTWARE IS HOSTED BY COREL OR AN AUTHORIZED COREL HOSTING PARTNER AND ACCESSED BY YOU REMOTELY, YOU ARE PERMITTED TO USE THE SOFTWARE ONLY ON A SINGLE COMPUTING 
+DEVICE AT ANY MOMENT IN TIME FOR YOUR (A) PRIVATE, NON-COMMERCIAL PURPOSES AS A PRIVATE USER, AND/OR (B) COMMERCIAL PURPOSES AS A SERVICE PROVIDER IN A COMMERCIAL BUSINESS (“BUSINESS 
+USER”). THIS SOFTWARE IS LICENSED PER HOUSEHOLD OR PER SINGLE ADDRESS (“ADDRESS”). EXCEPT FOR THE COREL PRODUCTS LISTED BELOW, YOU MAY ONLY ACCESS AND USE THE SOFTWARE ON ONE 
+COMPUTING DEVICE AT ANY MOMENT IN TIME. EXCEPT IF LOCATED IN CHINA, INDIA, INDONESIA OR VIETNAM, PRIVATE AND BUSINESS USERS OF AFTERSHOT, COREL CAPTURE, COREL CONNECT, COREL WEBSITE 
+CREATOR, CORELDRAW, COREL DESIGNER, CORELCAD, COREL OFFICE, COREL PAINTER, COREL PDF FUSION, PAINTSHOP PRO, PAINTSHOP PHOTO PRO, PARADOX, COREL PHOTO-PAINT, PRESENTATIONS, QUATTRO 
+PRO, AND WORDPERFECT THAT HAVE MULTIPLE COMPUTING DEVICES (E.G., STAND-ALONE COMPUTER, LAPTOP AND MINI/PORTABLE PC, TABLET), MAY ACCESS ANY OF THESE SOFTWARE PRODUCTS ON UP TO THREE 
+(3) COMPUTING DEVICES IN A SINGLE ADDRESS AT ANY MOMENT IN TIME. HOWEVER, THE SOFTWARE CAN ONLY BE ACCESSED AND USED BY YOU ON ONE (1) SYSTEM AT A TIME. IF YOU HAVE PURCHASED MULTIPLE 
+LICENSES TO ACCESS AND USE THE SOFTWARE, AT ANY TIME YOU MAY ACCESS AND USE AS MANY COPIES OF THE SOFTWARE IN USE AS YOU HAVE LICENSES.
+
+LICENSE TO USE THE SOFTWARE. The Software is licensed to You, not sold to You. You must lawfully acquire the Software from Us, or Our authorized resellers. Otherwise You don't have a 
+right to use the Software. You may only purchase and/or download the Software from Corel's or its authorized reseller's store, eStore, or website that is located in the country in 
+which you hold legal residency. This EULA does not apply to any Software installed on a hardware partition, blade, or terminal server, or in any other virtualization environment 
+(collectively “Virtualization Environment”). You may not allow the Software to be accessed, operated, or viewed from, or installed or uploaded to, other computers through a network 
+connection. A separate license agreement must be entered into with Corel to obtain the right to use the Software for a Virtualization Environment, network connections or volume 
+purchases. You agree that if the Software requires mandatory activation or email validation, You will complete the process providing Corel with accurate information. Your use of the 
+Software is suspended until You complete the activation and/or registration process. The Software may include digital images, stock photographs, clip art, fonts, sounds or other 
+artistic works (“Stock Files”). The responsibilities and restrictions relating to the Software apply to the Stock Files. Corel reserves all rights not expressly granted to You in this 
+EULA. BUSINESS USERS: If You are a business, You agree to maintain records, systems and/or procedures that accurately record the number of copies of the Software that have been 
+acquired and installed on Your Computers and will keep the records for two (2) years from the date Your license to use the Software ends. Corel may conduct an audit (remotely or at 
+Your facility) of records and systems from Your business, to verify that Your installation of the Software conforms with a valid license from Corel. Corel will not conduct more than 
+one (1) audit per year. If the audit results find that Your use does not conform to a valid license, then You will immediately obtain a valid license for the Software.
+
+YOUR RESPONSIBILITIES WHILE USING THE SOFTWARE. With regard to Your Use of the Software under this EULA, You have certain responsibilities. The Software may include product activation 
+and other technology designed to prevent unauthorized use and copying. You may not sell, rent, lease, resell, or loan the Software. If You purchase the Software as a gift to a third 
+person, the third person must accept the terms of this EULA before using the Software. You may not reverse engineer, decompile or disassemble the Software. While We own Our Software, 
+You own and are responsible for the content (“Content”) that You create or have created for You resulting from the use of Our Software (including any add-ons or plug-ins to Our 
+Software that You create or have created for You). You agree that, in connection with Your use of the Software, You are responsible for the direct and/or indirect consequences of any 
+of the (a) Content You create and (b) third party photos or images that You use or modify in creating Your Content, especially in situations where You share Your Content with family, 
+friends, clients and/or third parties such as members of social networking sites (e.g., Facebook, Flickr, LinkedIn, etc.). Corel can neither monitor nor control what third party 
+social networking sites or the members or users of such sites do with Your content You share. You are responsible for independently verifying the accuracy and completeness of Your 
+content (e.g. any technical illustrations or diagrams for operation guides, parts catalogs, schematics, writing diagrams, assembly instructions, maintenance manuals, architectural 
+presentations or other materials You create and/or modify using Our Software). You may not modify or create derivative works based upon the Software. You represent and warrant to Us 
+that You will comply with all applicable laws and regulations impacting Your use of the Software including data protection and privacy laws. You agree that You will not use the 
+Software in a way that is unlawful or that violates the rights of a third party. If We get sued or a claim is brought against Us by a third party due to (a) Your actions, (b) Your 
+failure to act when required, or (c) Your content, then You agree to defend, indemnify and hold Corel harmless. You may receive updates, bug fixes, feature enhancements or 
+improvements, or other data relating to the Software (collectively “Updates”) downloaded to Your computer with a notice describing what is included in the Update and the purpose of 
+the Update. In some instances, You will have the option to decline the Update, in which case the Software may not perform properly. In some instances, an Update may be required for 
+functionality of the Software, and You must complete installation in order to continue use of the Software. In instances where the Software is hosted, installation of updates may be 
+automatic.
+
+USER GENERATED FEEDBACK. You have no obligation to provide Corel with ideas, suggestions, documentations and/or proposals (“Feedback”). However, if you submit Feedback to Corel, while 
+you retain ownership of such Feedback, you hereby grant Corel a nonexclusive, royalty-free, fully paid, perpetual, irrevocable, transferable, unlimited license under all of your 
+Intellectual Property Rights to use and otherwise exploit your Feedback for any purpose world-wide. Further, by submitting Feedback, you represent and warrant that (i) your Feedback 
+does not contain the confidential or proprietary information of you or of third parties; (ii) Corel is not under any obligation of confidentiality, express or implied, with respect to 
+the Feedback; (iii) Corel may have something similar to the Feedback already under consideration or in development; and (iv) you are not entitled to any compensation or reimbursement 
+of any kind from Corel for the Feedback under any circumstances.
+
+OUR INTELLECTUAL PROPERTY RIGHTS. The Software is protected by United States and Canadian Intellectual Property laws and international intellectual property laws and treaty 
+provisions. Therefore, You may not distribute the Software without Our permission. If You purchase or download the Software in China, India, Indonesia or Vietnam, You may not copy the 
+Software or printed materials accompanying the Software for any purpose. If You purchase or download the Software in a country not specifically prohibited under this EULA, You may 
+only make one (1) copy of the Software or You may keep one (1) copy of the Software on a single hard drive for backup or archival purposes. For backup or archival purposes only, You 
+may either make only one (1) copy of the Software and the Printed Materials or print one copy of any user documentation if You downloaded the Software or You may keep one (1) copy the 
+Software and printed materials (or User Documentation) on a single hard drive. Otherwise, You may not copy the Software or the printed materials accompanying the Software (or print 
+copies of any user documentation if You downloaded the Software). You agree that Corel, the Corel logos, and other Corel trademarks, service marks, and graphics are trademarks of 
+Corel (some in the United States and/or other countries) or are trademarks of Corel's partners (“Marks”). You are not granted a right to use Marks without the owner's permission. You 
+will not remove, obscure or alter any proprietary notices affixed to or contained within the Software. You understand and agree that We have the right to stop selling, distributing, 
+servicing or updating the Software (any part of it), and services or offerings at any time.
+
+USAGE AUDITING, PIRACY AND OUR PRIVACY POLICY. Our audit and collection of any of Your data and Your use of the Software is subject to Corel's Privacy Policy 
+(http://www.corel.com/privacy). We may audit Your software usage for anti-piracy purposes, to verify a valid registration, and identify if new Updates are available for Your Computer 
+prior to sending You a notice to install a new Software Update, and to assess Your use of the Software. You consent to the Software sending usage data (e.g., the number of instances 
+the Software is launched, the device IP address, and/or the version of the Software), for registration, authentication, use and anti-piracy auditing and enforcement purposes. We may 
+also use the usage data for our own internal statistical and analytical purposes, to evaluate and enhance users' experience of the Software by identifying customer preferences and 
+purchasing trends that we may use for marketing purposes and in respect of operations and development.
+
+PRE-COMMERCIAL RELEASE OR BETA SOFTWARE. If the Software You have received or are accessing with this EULA is a pre-commercial release or a beta version, then You understand the 
+Software is pre-release, non-commercial version and does not represent a final product of Corel. The Software may contain bugs, errors and other problems that could cause computer 
+system failures and data loss. THEREFORE, ALL PRE-RELEASE OR BETA SOFTWARE IS PROVIDED ON AN “AS-IS” BASIS AND COREL DISCLAIMS ANY AND ALL WARRANTIES OR LIABILITY TO YOU OF ANY KIND.
+
+ACADEMIC SOFTWARE. If the Software is identified as an academic or education edition version in the user documentation, on the packaging of the Software or on the purchase or download 
+page of the website, and You qualify as an academic end user, You may install and access one (1) copy of the Software on up to the permitted number of computers, as agreed to by You 
+and Corel, but only for educational purposes and for no other purpose. Academic versions of the Software may not be used for commercial, professional, or other for-profit purposes. 
+Notwithstanding the foregoing, You are not entitled to use the Software unless You qualify in Your jurisdiction as an academic end user (e.g., student or personal learning versions of 
+the Software may only be used by faculty, staff members and degree, diploma or certificate-seeking students at qualified educational institutions). Contact Corel via Our Academic 
+Software web page (http://www.corel.com/education) or Your local Corel authorized reseller to determine whether You qualify as an academic end user and to learn more about Our 
+academic programs and products. Work product and other data created with academic or education edition versions of the Software may contain certain notices and limitations that make 
+the data unusable outside the educational use area. If You combine or link data created with educational institutional versions, student versions, or personal learning editions of the 
+Software with data otherwise created, then that data may also be affected by these notices and limitations. Corel shall have no responsibility or liability whatsoever if You combine 
+or link data created with educational institutional versions, student versions, or personal learning editions of the Software.
+
+STUDENT AND TEACHER, HOME AND STUDENT, HOME EDITION ADDENDUM. IF THIS SOFTWARE IS CLEARLY LABELED A STUDENT AND TEACHER, HOME AND STUDENT OR HOME EDITION, YOUR USE OF THIS SOFTWARE IS 
+GOVERNED BY THE TERMS OF THIS EULA AS MODIFIED BY THIS PARAGRAPH. IN THE EVENT OF ANY CONFLICT BETWEEN THE TERMS OF THIS EULA AND THIS PARAGRAPH, THIS PARAGRAPH SHALL GOVERN. YOU MAY 
+INSTALL AND USE, AT THE SAME TIME, THIS STUDENT AND TEACHER, HOME AND STUDENT OR HOME EDITION SOFTWARE ON UP TO THREE (3) COMPUTERS AT YOUR ADDRESS. NOTWITHSTANDING ANYTHING TO THE 
+CONTRARY IN THIS EULA, YOU MAY NOT (A) TRANSFER OR ASSIGN THIS SOFTWARE TO A THIRD PARTY; OR (B) USE THIS SOFTWARE FOR ANY COMMERCIAL PURPOSE OR IN ANY COMMERCIAL ENTERPRISE OR 
+BUSINESS. THIS SOFTWARE MAY ONLY BE USED FOR PERSONAL PURPOSES IN A NON-COMMERCIAL ENVIRONMENT.
+
+EVALUATION SOFTWARE. If the Software is identified as a demonstration, evaluation, trial, “not for sale” (“NFS”) or “not for resale” (“NFR”) version (“Evaluation Version”) in the 
+applicable user documentation You may install and access one (1) copy of the Software only for the purpose of evaluation and/or demonstration. Unless You are authorized by Corel, You 
+may not use Our Software for competitive analysis, or commercial, professional, or other for-profit purposes. You understand that at the end of the evaluation period, You must either 
+stop using the Software or pay for the Software to continue using it. If You fail to pay for it, then Your license terminates. Upon expiration of the evaluation period, You will 
+immediately discontinue use of the Evaluation Version and delete and destroy all electronic copies of the Evaluation Version including, but not limited to, all user documentation that 
+may have been provided as part of the evaluation from Your computer and any other computer devices on which You have installed the Evaluation Version. Any attempt to circumvent any 
+expiration date technology is in violation of this EULA and will automatically and immediately terminate Your license to use the Evaluation Version.
+
+OEM EDITION PRODUCT. If the Software is identified as an OEM Edition product, You may only use the Software with the original computer or electronic equipment (the “Original 
+Equipment”) with which the Software was first bundled.
+
+LIMITED AND RESTRICTED WARRANTY (COUNTRIES OTHER THAN THOSE LISTED SEPARATELY HEREIN UNDER “ADDITIONAL EULA TERMS”). If You purchased the Software on a computer disc, then Corel 
+warrants that the media on which Software is furnished will be free of defects in materials and workmanship under normal use for a period of ninety (90) days from the date You 
+purchased the Software. The Software when properly installed and under normal use will substantially conform to the features and functionality as set forth in the documentation 
+accompanying the Software, however, the Software may contain normal bugs and errors. Therefore, the Software is provided on an “AS IS” basis with the understanding that bug fixes and 
+Updates will be provided from time to time. This warranty is valid only for the original purchaser of the Software. IF THE DISC IS DEFECTIVE, THEN COREL'S ENTIRE LIABILITY AND YOUR 
+EXCLUSIVE REMEDY UNDER THIS WARRANTY WILL BE REPLACEMENT OF THE DEFECTIVE COMPUTER DISC IF YOU RETURN THE DEFECTIVE DISC TO US WITH A COPY OF YOUR RECEIPT. Your right to a replacement 
+of the Software is void if the damage to the disc is a result of accident, abuse or misapplication. Any replacement Software will be warranted for the remainder of the original 
+warranty period. YOU ASSUME ALL RESPONSIBILITIES FOR CHOOSING, INSTALLING, AND USING THE SOFTWARE. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, COREL DISCLAIMS ALL OTHER 
+WARRANTIES, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT WITH RESPECT TO THE 
+SOFTWARE AND THE ACCOMPANYING WRITTEN MATERIALS. SOME STATES OR COUNTRIES DO NOT ALLOW THE WARRANTY EXCLUSION OR LIMITATIONS; THE ABOVE LIMITATION MAY NOT APPLY TO YOU. In such 
+instances and as long as You obtained the Software from Corel, or a Corel authorized reseller, Corel may remedy substantial defects of the Software at its reasonable discretion by (a) 
+providing a patch, Update or replacement of the Software, or (b) asking for return of the Software and cancelling this EULA. You are entitled to a reduction of the purchase price or a 
+rescission of this EULA only if Corel has repeatedly failed to remedy the defect after a reasonable period of time. If You are a consumer, Your claims under this clause are 
+time-barred in twenty-four (24) months; if You are a business, Your claims under this clause are time-barred in twelve (12) months. If You alter the Software in any way without being 
+authorized by Corel, Corel will not remedy defects caused by such alteration and You are liable for any damages incurred by Corel due to Your unauthorized alteration. IF YOU INSTALL 
+PRE-RELEASE VERSION PRODUCTS MARKED AS SUCH, YOU DO SO AT YOUR OWN RISK. Pre-release version products are to be used only for test purposes in testing environments and must not be 
+used for production purposes. To make a warranty claim You must provide a detailed error description to Corel Customer Service or, at Corel's request, return the Software along with 
+any return materials authorization information provided to You by Corel, at Corel's expense, to Corel Corporation, 1600 Carling Avenue, Ottawa, Ontario, K1Z 8R7, Canada. For further 
+warranty information, please contact Corel Customer Service at www.corel.com.
+
+NO LIABILITY FOR OPEN SOURCE MATERIALS. THE SOFTWARE MAY CONTAIN “OPEN SOURCE” MATERIALS (E.G., ANY SOFTWARE SUBJECT TO OPEN SOURCE, COPYLEFT, GNU GENERAL PUBLIC LICENSE, LIBRARY 
+GENERAL PUBLIC LICENSE, LESSER GENERAL PUBLIC LICENSE, MOZILLA LICENSE, BERKELEY SOFTWARE DISTRIBUTION LICENSE, OPEN SOURCE INITIATIVE LICENSE, MIT, APACHE OR PUBLIC DOMAIN LICENSES, 
+OR SIMILAR LICENSE). COREL MAKES NO WARRANTIES, AND SHALL HAVE NO LIABILITY, DIRECT OR INDIRECT, WHATSOEVER WITH RESPECT TO OPEN SOURCE MATERIALS CONTAINED IN THE SOFTWARE.
+
+INDIRECT AND CONSEQUENTIAL DAMAGES – COUNTRIES OTHER THAN THOSE LISTED SEPARATELY HEREIN UNDER “ADDITIONAL EULA TERMS”
+
+NO LIABILITY FOR INDIRECT OR CONSEQUENTIAL DAMAGES. YOU ASSUME THE ENTIRE COST OF ANY DAMAGE RESULTING FROM THE INFORMATION CONTAINED IN OR COMPILED BY THE SOFTWARE. TO THE MAXIMUM 
+EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL COREL OR ITS SUPPLIERS OR LICENSORS BE LIABLE FOR ANY DAMAGES WHATSOEVER (INCLUDING, WITHOUT LIMITATION, DAMAGES FOR LOSS OF 
+BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR OTHER PECUNIARY LOSS) ARISING OUT OF THE USE OR INABILITY TO USE THE SOFTWARE, EVEN IF SUCH PARTY HAS BEEN 
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. IN NO EVENT WILL COREL'S TOTAL LIABILITY TO YOU FOR ALL DAMAGES IN ANY ONE OR MORE CAUSE OF ACTION EXCEED THE AMOUNT PAID BY YOU FOR THE 
+SOFTWARE. THIS LIMITATION WILL APPLY REGARDLESS OF THE FAILURE OF THE ESSENTIAL PURPOSE OF ANY LIMITED REMEDY. SOME STATES OR COUNTRIES DO NOT ALLOW THE EXCLUSION OR LIMITATION OF 
+LIABILITY FOR CONSEQUENTIAL OR INCIDENTAL DAMAGES; THE ABOVE LIMITATION MAY NOT APPLY TO YOU. In such instances and as long as You obtained the Software from Corel, or a Corel 
+authorized reseller, Corel may be liable to You (a) without limitation for damages You have incurred under or in connection with this EULA only if the damage has been caused by the 
+willful or grossly negligent act of Corel; and (b) for those typical damages that were reasonably foreseeable and which have been caused by any other negligent breach of an essential 
+contractual duty by Corel. Any further liability of Corel is excluded. These aforementioned limitations apply irrespective of their legal basis, in particular with regard to any 
+pre-contractual or auxiliary contractual claims. These limitations shall not apply, however, to any mandatory liability under the applicable product liability laws, nor to any damage 
+which is caused due to the breach of an express warranty to the extent that such express warranty was intended to protect consumers against the specific damage incurred, nor to 
+damages due to loss of life, injury or prejudice to health.
+
+U.S. GOVERNMENT-RESTRICTED RIGHTS. The Software and any accompanying documentation are “commercial computer software” and “commercial computer software documentation,” under DFAR 
+Section 227.7202 and FAR Section 12.212. Any use, modification, reproduction release, performance, display or disclosure of the Software and accompanying documentation by the U.S. 
+government will be governed solely by the terms of this EULA and will be prohibited except to the extent expressly permitted by the terms of this EULA.
+
+EXPORT RESTRICTIONS. You may not download, distribute, export, re-export, or redistribute the Software, including any Corel shareware product, (a) into, or to a national or resident 
+of any country to which the United States has embargoed goods, or (b) to anyone on the United States Treasury Department's list of 'Specially Designated' nationals or the United 
+States Commerce Department's 'Table of Deny Orders'. By downloading or using the Software, You are representing and warranting that You are not located in, under the control of, or a 
+national or resident of any such country or on any such list. Except pursuant to an express, written, fully-executed agreement with Corel, You may not purchase a license to use the 
+Software for the purpose of exporting it to a country other than the original country of sale, nor may You retain the services of a third party to purchase a license to use the 
+Software if in doing so You will require such third party to send (via any means, electronic or otherwise) the Software to You in a country other than the original country of sale.
+
+GENERAL. If You purchased or downloaded the Software in the United States then this EULA is governed by the laws of the United States and the State of California, without reference to 
+conflict of laws principles. Any dispute between You and Corel regarding this EULA will be subject to the exclusive venue of the state and federal courts in the State of California. 
+This EULA specifically excludes the United Nations Convention on Contracts for the International Sale of Goods and any legislation implementing such 'Convention', if otherwise 
+applicable. Except as expressly set forth herein to the extent permitted by applicable law, this EULA shall not prejudice the non-excludable, statutory rights of any party dealing as 
+a consumer. If You acquired the Software in Canada, unless expressly prohibited by local law, this EULA is governed by the laws in force in the Province of Ontario, Canada; and, any 
+dispute between You and Corel regarding this EULA will be subject to the exclusive jurisdiction of the federal and provincial courts sitting in Toronto, Ontario. If You acquired the 
+Software in the European Union, Iceland, Norway, or Switzerland, then local law applies. If You acquired the Software in any other country, then local law may apply. This EULA is the 
+entire agreement between You and Corel and supersedes any other communications or advertisements with respect to the Software and documentation. The Software, or any feature or part 
+thereof, may not be available in all languages or in all countries. If Corel has provided You with a translation of the English language version of this EULA, You agree that such 
+translation is provided for Your convenience only and that the English language version, not the translation, of this EULA will be legally binding on You. The English language version 
+of this EULA and not its translation(s) will govern in the event of a conflict between the English language version and a translation. The original English version of this EULA can be 
+found at www.corel.com/eula.
+
+If and to the extent any provision of this EULA is held illegal, invalid, or unenforceable in whole or in part under applicable law, such provision or such portion thereof shall be 
+ineffective as to the jurisdiction in which it is illegal, invalid, or unenforceable but only to the extent of its illegality, invalidity, or unenforceability and shall be deemed 
+modified to the extent necessary to conform to applicable law so as to give the maximum effect to the intent of the parties. No term or provision in this EULA will be considered 
+waived, and no breach excused, unless such waiver is in writing signed on behalf of the party against whom the waiver is asserted. No waiver (whether express or implied) will 
+constitute consent to, waiver of, or excuse of any other, different, or subsequent breach. No modifications or amendments to this EULA will be binding upon Corel unless made in 
+writing and duly executed by You and an authorized representative of Corel.
+
+Some Corel Software versions may not be compatible with various computer operating systems and Corel may not release Updates. Your Software may not be compatible with computer 
+operating systems that You may purchase now or in the future.
+
+You understand that Corel Software may be incorporated into, and may incorporate itself into, software and other technology owned and controlled by third parties. This EULA remains 
+effective with such incorporation. Any and all other third party software or technology that may be distributed together with the Corel Software (as bundled third party software) may 
+be subject to You explicitly accepting a license agreement with that third party. Corel's licensors shall be a direct and intended third party beneficiary of this EULA.
+
+ADDITIONAL EULA TERMS
+
+ADDITIONAL TERMS APPLICABLE TO FIXED TERM LICENSES / SUBSCRIPTIONS: Subject to the terms and conditions of this EULA, in the instance of a fixed term license or subscription, the 
+license to use the Software begins on date of purchase and shall be for the duration identified by Corel in the applicable invoice, or by the Corel authorized OEM or Corel authorized 
+reseller in its invoice. Use of the software before or beyond the applicable fixed term, or any attempt to defeat the time-control disabling function in the Software, is an 
+unauthorized use and constitutes a material breach of this EULA and applicable law.
+
+ADDITIONAL TERMS APPLICABLE TO USERS OF COREL DVD XPACK, DVD+AVCHD XPACK, ULTIMATE XPACK, MP3 & DVD XPACK (“XPACK LINE OF PRODUCTS”): With respect to Corel's Xpack line of products, 
+You agree that You will not use Corel products in those jurisdictions where use of video and/or audio decoder software is unlawful.
+
+ADDITIONAL TERMS APPLICABLE TO USERS OF WINDVD, VIDEOSTUDIO PRO: You acknowledge that use of the Software in any manner that complies with the MPEG-2 or MPEG-4 standard is expressly 
+prohibited without a license under applicable patents in the MPEG-2 patent portfolio or MPEG-4 patent portfolio, as applicable, which license is available from MPEG LA, L.L.C. 
+(http://www.mpegla.com/main/default.aspx), 6312 S. Fiddlers Green Circle, Suite 400E, Greenwood Village, Colorado, 80111, USA. You acknowledge that the software may be licensed under 
+the VC-1 patent portfolio license for the personal and non-commercial use of a consumer to (a) encode video in compliance with the VC-1 standard (“VC-1 video”) and/or (b) decode VC-1 
+video that was encoded by a consumer engaged in a personal and non-commercial activity and/or was obtained from a video provider licensed to provide VC-1 video. No license is granted 
+or shall be implied for any other use. Additional information may be obtained from MPEG LA, L.L.C. (http://www.mpegla.com/main/default.aspx). You acknowledge that the software may be 
+licensed under the AVC patent portfolio license for the personal and non-commercial use of a consumer to (a) encode video in compliance with the AVC standard (“AVC video”) and/or (b) 
+decode AVC video that was encoded by a consumer engaged in a personal and non-commercial activity and/or was obtained from a video provider licensed to provide AVC video. No license 
+is granted or shall be implied for any other use. Additional information may be obtained from MPEG LA, L.L.C. (http://www.mpegla.com/main/default.aspx). You agree that the software 
+may be licensed under the MP3 license. Supply of the software does not convey a license or imply any right to distribute MP3-encoded or MP3PRO-encoded data in revenue-generating 
+broadcast systems, streaming applications, other content distribution systems, or on physical media. An independent license for such use is required. Additional information may be 
+obtained from the MP3 licensing website (http://mp3licensing.com). If You have purchased the Software as a retail standalone product, Corel has paid the royalties for the above 
+licenses.
+
+ADDITIONAL TERMS APPLICABLE TO USERS OF WORDPERFECT OFFICE: You acknowledge this product may incorporate intellectual property owned by Microsoft® Corporation. The terms and 
+conditions upon which Microsoft licenses its intellectual property can be obtained by contacting Microsoft Corporation 
+http://www.microsoft.com/about/legal/en/us/IntellectualProperty/IPLicensing/.
+ADDITIONAL TERMS APPLICABLE TO USERS OF SOFTWARE LOCATED IN GERMANY OR AUSTRIA: If You obtained the Software from Corel or a Corel authorized reseller in Germany or Austria and such 
+country is Your legal residence, then the Germany and Austrian product liability and other consumer protection laws concerning remedies for defective goods shall apply and govern any 
+inconsistencies between such laws and the provisions of this EULA set forth above.
+
+ADDITIONAL TERMS APPLICABLE TO USERS OF HARDWARE OR SOFTWARE LOCATED IN THE UNITED KINGDOM: If (a) You are acting as a consumer and the United Kingdom is Your legal residence; (b) You 
+entered into this EULA in the United Kingdom; and (c) You have obtained the Software from Corel or a Corel authorized reseller in the United Kingdom (a “Consumer”), then the 
+limitation of liability and warranty provisions set forth in applicable consumer protection and warranty laws of the United Kingdom shall apply and govern any inconsistencies between 
+such laws and the provisions of this EULA set forth above.
+
+ADDITIONAL TERMS APPLICABLE TO USERS OF HARDWARE OR SOFTWARE LOCATED IN AUSTRALIA:
+
+LIMITED WARRANTY (AUSTRALIAN CONSUMERS ONLY):
+
+Our goods come with guarantees that cannot be excluded under the Australian Consumer Law. You are entitled to a replacement or refund for “major failure” and compensation for any 
+other reasonably foreseeable loss or damage. You are also entitled to have the goods repaired or replaced if goods fail to be of acceptable quality and the failure does not amount to 
+a major failure.
+
+The term “major failure” is defined in the Australian Consumer Law and includes but is not limited to where the goods are substantially unfit for purpose and cannot easily and within 
+a reasonable time be remedied to make them fit for such a purpose, or where the goods depart in one or more significant respects, if they were supplied by description – from that 
+description.
+
+The warranty provided under this section is provided by Corel Corporation of 1600 Carling Avenue, Ottawa, Ontario, K1Z 8R7, Canada.
+
+We warrant that the media on which Software is furnished will be free of defects in materials and workmanship under normal use for a period of ninety (90) days from the date You 
+purchased the Software. The benefits provided by this express warranty are in addition to any other rights and remedies of the consumer under any law in relation to the goods or 
+service to which the warranty relates.
+
+The Software when properly installed and under normal use will substantially conform to the features and functionality as set forth in the documentation accompanying the Software, 
+however, the Software may contain normal bugs and errors. Bug fixes and Updates will be provided from time to time.
+
+If the disc is defective, then, without limiting any other obligations at law, Corel will replace the defective computer disc if you return the defective disc to us with a copy of 
+your receipt. Any replacement Software will be warranted for the original warranty period covered by this section.
+
+EXCLUSIONS (AUSTRALIA ONLY)
+
+The warranty provided under this section does not cover defects or problems that arise due to You causing the Software to become of unacceptable quality, such as failure to take 
+reasonable care or damage caused by abnormal use. Further, You assume all responsibilities for choosing, installing, and using the Software.
+
+Except as set out above, to the maximum extent permitted by applicable law, Corel disclaims all other warranties, either express or implied, including but not limited to 
+non-infringement with respect to the Software and the accompanying written materials.
+
+If You alter the Software in any way without being authorised by Corel, Corel will not remedy defects caused by such alteration and You are liable for any damages incurred by Corel 
+due to Your unauthorised alteration. If you install pre-release version products marked as such, you do so at your own risk. Pre-release version products are to be used only for test 
+purposes in testing environments and must not be used for production purposes.
+
+The software may contain “open source” materials (e.g., any software subject to open source, copyleft, gnu general public license, library general public license, lesser general 
+public license, mozilla license, berkeley software distribution license, open source initiative license, mit, apache or public domain licenses, or similar license). To the extent 
+permissible at law Corel makes no warranties, and shall have no liability, direct or indirect, whatsoever with respect to open source materials contained in the software.
+
+HOW TO CLAIM UNDER THE WARRANTY (AUSTRALIA ONLY)
+
+For the warranty to be honoured, you must contact Corel's Customer Service centre http://www.corel.com/support/rma and seek a Return Merchandise Authorisation (RMA) number. More 
+detailed RMA instructions together with shipping information and an RMA number will then be sent to you by email. You will be required to provide proof of purchase and bear the costs 
+of returning the Software. The Software together with all related media and manuals must be returned to Corel TW Corp. (Philippines), 5/F Coherco Corporate Center, 116 V.A. Rufino 
+St., Legaspi Village, Makati City, Metro Manila, Philippines 1229. The Software must also be uninstalled from your computer and any storage devices and you must delete any backup 
+copies. We will endeavour to process your claim within 10 working days from the date Corel receives it. If we accept that the Software is defective, a replacement disc will be 
+provided to you by mail.
+
+INDIRECT AND CONSEQUENTIAL LOSS- AUSTRALIA
+
+TO THE EXTENT PERMITTED UNDER AUSTRALIAN LAW, COREL SHALL HAVE NO LIABILITY FOR INDIRECT OR CONSEQUENTIAL DAMAGES. YOU ASSUME THE ENTIRE COST OF ANY DAMAGE RESULTING FROM THE 
+INFORMATION CONTAINED IN OR COMPILED BY THE SOFTWARE. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT WILL COREL OR ITS SUPPLIERS OR LICENSORS BE LIABLE FOR ANY DAMAGES 
+FOR LOSS OF BUSINESS PROFITS, BUSINESS INTERRUPTION, LOSS OF BUSINESS INFORMATION, OR OTHER INDIRECT PECUNIARY LOSS) ARISING OUT OF THE USE OR INABILITY TO USE THE SOFTWARE, EVEN IF 
+SUCH PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+
+ADDITIONAL TERMS APPLICABLE TO USERS OF SOFTWARE CONTAINING SHAREWARE: Certain Software are shareware and as such are acquired without charge and can be used for a limited period of 
+time for evaluation purposes and are subject to the particular end user license for such shareware.
+
+ADDITIONAL TERMS APPLICABLE TO USERS OF CLIPART, STOCK PHOTO IMAGES, VIDEO CONTENT, AUDIO CLIPS, FONTS AND SAMPLE CONTENT: Our Software may contain or provide access to clipart, photo 
+images, video content, audio clips (collectively referred to as the “Images or Clips”), software data files that render typeface designs when used in conjunction with appropriate 
+hardware and software (for example only, without limitation,.ttf or .otf files) referred to as “Font Software”, and the graphic rendering generated by the Font Software referred to as 
+“Font Output” and sample content such as forms, templates, “tubes”, “creatures” or similar items (collectively referred to as the “Sample Content”) that are either owned by Us or 
+licensed from a third-party. Except as required in the paragraph below or as specified with the content, as a user of Our Software You are free to use, modify and publish the Images 
+or Clips, Font Output or Sample Content as follows: You may (i) incorporate any Images or Clips, Font Output , or Sample Content into Your own original work and publish, display and 
+distribute Your work in any media, provided You include a copyright notice in Your work reflecting on the copyright ownership of both You and Corel as follows: “Copyright (c) 20___ 
+[Your name], Corel Corporation and its licensors. All rights reserved.”; and (ii) make one (1) copy of the Images or Clips, Font Software, or Sample Content for backup or archival 
+purposes. YOU MAY NOT (i) resell, sublicense or otherwise make available the Images or Clips, or Font Software for use or distribution separately or detached from a product or web 
+page. For example, the Images or Clips or Font Output may be used by You as part of a web page design, but not be made available for downloading separately (use of the Font Software 
+as a web font, utilizing the CSS3@font-face specification or similar is specifically prohibited) or in a format designed or intended for permanent storage or re-use by others; (ii) 
+provide the Images or Clips or Font Software to third parties or permit the use of the Images or Clips or Font Software or Font Output by third parties separately or as part of any 
+other product, however, third parties may be provided with copies of the Images or Clips or Font Output (including in digital files) as part of a work product; (iii) create 
+scandalous, obscene, defamatory or immoral works using the Images or Clips, Font Software, Font Output, or Sample Content nor use the Images or Clips, Font Software, Font Output, or 
+Sample Content for any other purpose which is prohibited by law; (iv) or permit the use of the Images or Clips, Font Software, Font Output, or Sample Content or any part thereof as a 
+trademark or service mark, or claim any proprietary rights of any sort in the Images or Clips, Font Software, Font Output, or Sample Content or any part thereof; (v) use any of the 
+Images or Clips which contain identifiable individuals or entities for any commercial purpose including, without limitation, in a manner which suggests their association with or 
+endorsement of any product or service; (vi) use the Images or Clips in electronic format, on-line or in multimedia applications unless the Images or Clips are incorporated for viewing 
+purposes only and no permission is given to download and/or save the Images or Clips for any reason; (vii) rent, lease, sublicense or lend the Images or Clips or Font Software or Font 
+Output, or any copies thereof, to another person or legal entity; (viii) modify the Font Software in any way; (ix) use any Images or Clips presented in any Software splash screens, 
+welcome screens, product packaging and/or marketing collateral; or (x) use any Images or Clips, Font Software or Font Output or Sample Content except as expressly permitted by this 
+EULA. You may, however, transfer all Your rights under this EULA to use the Images or Clips or Font Software to another person or legal entity, provided that (i) You transfer the 
+Software, including the Images or Clips or Font Software, and this EULA, including all copies (except copies incorporated into Your work product as permitted under this EULA), to such 
+person or entity, (ii) You retain no copies, including copies stored on a computer or other storage device, and (iii) the receiving party agrees to be bound by the terms and 
+conditions of this EULA.
+
+September 2013 (1.0)
+
