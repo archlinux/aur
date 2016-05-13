@@ -1,0 +1,12 @@
+pkgbase = rhizome-pi-scheme
+	pkgdesc = rhizome/pi is a Scheme implementation (interpreter and compiler, compiler generates program in C language) conforming to R^5RS.
+	pkgver = 0.57
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	license = unknown
+	source = http://www.kt.rim.or.jp/~qfwfq/packages/rhizome-0.57.tar.gz
+	md5sums = 5fc557fb1a03e47c0037884052f7e438
+
+pkgname = rhizome-pi-scheme
+
