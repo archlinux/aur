@@ -1,0 +1,16 @@
+pkgbase = bakeware-bake-bin
+	pkgdesc = Configure, compile and share systems, toolchains and linux firmware.
+	pkgver = 0.2.8
+	pkgrel = 1
+	url = http://bakeware.io
+	arch = any
+	license = GPL
+	depends = erlang-nox
+	depends = squashfs-tools
+	depends = fwup-git
+	conflicts = bakeware-bake
+	source = https://s3.amazonaws.com/bakeware/bake/bake-0.2.8.tar.gz
+	md5sums = b9abcb48a4d1c13e6004c37df486ec2c
+
+pkgname = bakeware-bake-bin
+
