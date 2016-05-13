@@ -1,11 +1,10 @@
-# Maintainer: Jeremy "Ichimonji10" Audet <ichimonji10 at gmail dot com>
+# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Contributor: Jeremy "Ichimonji10" Audet <ichimonji10 at gmail dot com>
 # Contributor: Lucky <archlinux@builds.lucky.li>
 # Contributor: carstene1ns <arch carsten-teibes de>
-#
-# namcap warns that ruby-cri is an unnecessary dependency. This is untrue.
 
 pkgname=nanoc
-pkgver=4.1.4
+pkgver=4.1.6
 pkgrel=1
 pkgdesc='A simple, flexible static site generator written in Ruby.'
 arch=(any)
@@ -26,7 +25,7 @@ conflicts=(ruby-nanoc3 ruby-nanoc)
 options=(!emptydirs)
 source=("https://github.com/nanoc/nanoc/archive/${pkgver}.tar.gz")
 noextract=("${pkgname}-${pkgver}.gem")
-sha256sums=('4dce6be041d3fbe64d781a1d1b50ce42703fe105a3158f2d770741d42eee1d7e')
+sha256sums=('ed3a8ca6b1c1c946d0bace5819212d8463e0e4c82370bad663af2fbc97672c92')
 
 build() {
   # create gem
