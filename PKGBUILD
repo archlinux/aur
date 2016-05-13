@@ -12,7 +12,6 @@ license=('custom')
 depends=('openjpeg2' 'jbig2dec' 'freetype2' 'harfbuzz' 'libjpeg' 'openssl' 'zlib' 'desktop-file-utils' 'mesa')
 makedepends=('ocaml' 'libmupdf')
 source=(http://repo.or.cz/llpp.git/snapshot/1beb003ca0f4ed90fda2823cb07c2eb674fc3ca4.tar.gz)
-install=llpp.install
 sha256sums=('92723eabd3521cb16d60b8dd6191ec8737240f35bf1fa9a0f82f32f8fd8f32a4')
 
 optdepends=(
