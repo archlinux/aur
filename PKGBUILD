@@ -8,7 +8,7 @@ url="https://bitbucket.org/leledumbo/zita-aj-bridge-gui"
 license=('GPL')
 depends=()
 source=('zitaajbridgegui.png' 'zitaajbridgegui.desktop')
-md5sums=('3c5fbbb345957fa0748e1fdd9a82a0a8' 'c118638bd836b4cbf055fe615ad6ffbd')
+md5sums=('3c5fbbb345957fa0748e1fdd9a82a0a8' '79c54171293d4854cb76667c0a2d48bb')
 install=$pkgname.install
 
 # uncomment for qt version, the default is gtk2
