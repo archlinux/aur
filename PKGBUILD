@@ -10,7 +10,9 @@ pkgrel=2
 rustv="nightly-2016-05-10"
 chn=$(echo "$rustv" | tr '-' ' ' | cut -d' ' -f1)
 date=$(echo "$rustv" | tr '-' ' ' | cut -d' ' -f2- | tr ' ' '-')
-date="-$date"
+if test -n "$date"; then
+	date="-$date"
+fi
 target="rust-$chn-$CARCH-unknown-linux-gnu"
 
 pkgdesc="The Rust toolchain installer"
