@@ -23,6 +23,8 @@ build() {
 		cargo build --release --bin rustup-init
 	elif command -v rustup >/dev/null 2>&1; then
 		msg2 "Building rustup-init using old rustup"
+		# doesn't build with current nightly:
+		# https://github.com/rust-lang-nursery/rustup.rs/commit/76849ce0b78a67ba157eb18fe55e6ff49a380942
 		rustup install nightly-2016-05-10
 		rustup run nightly-2016-05-10 cargo build --release --bin rustup-init
 	elif command -v multirust >/dev/null 2>&1; then
