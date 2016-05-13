@@ -23,7 +23,7 @@ prepare() {
   rm -rf $srcdir/build
   cd "$srcdir/${pkgname%-*}"
   patch -p1 < ../000-config.diff
-  sed -i '53s/auto//' build/bsd/bsd.cc
+  sed -i '53s/auto//' make/bsd/bsd.cc 
 }
 
 build() {
