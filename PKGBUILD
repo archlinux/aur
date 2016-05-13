@@ -5,8 +5,8 @@ _compile=0
 # 1=Download vlc stable git source and compile vlc fluidsynth plugin standalone.
 
 pkgname=vlc-plugin-fluidsynth
-pkgver=2.2.2
-pkgrel=6
+pkgver=2.2.3
+pkgrel=1
 pkgrel_status=
 pkgdesc="FluidSynth plugin for VLC"
 arch=('i686' 'x86_64')
@@ -24,8 +24,8 @@ if [ "${_compile}" -eq 0 ]; then
 	source_i686=("${pkgname}_${pkgver}-${pkgrel}${pkgrel_status}_i386.deb::http://ftp.us.debian.org/debian/pool/main/v/vlc/${pkgname}_${pkgver}-${pkgrel}${pkgrel_status}_i386.deb")
 	source_x86_64=("${pkgname}_${pkgver}-${pkgrel}${pkgrel_status}_amd64.deb::http://ftp.us.debian.org/debian/pool/main/v/vlc/${pkgname}_${pkgver}-${pkgrel}${pkgrel_status}_amd64.deb")
 
-md5sums_i686=('dcfeb0698727fcd2e5ff7ea0c824b962')
-md5sums_x86_64=('1fc586747b97bb235d78883e2e4aab00')
+md5sums_i686=('ec9e01186e687c4b9ade89398df031d5')
+md5sums_x86_64=('e9ac0256f9df4f1a5daaa4e15e979ea9')
 else
 	options=("!libtool" "!emptydirs")
 	source+=("git://git.videolan.org/${pkgname%%-*}/${pkgname%%-*}-${pkgver:0:3}.git")
