@@ -9,7 +9,7 @@ arch=("i686" "x86_64")
 url="http://amarok.kde.org"
 license=('GPL2' 'LGPL2.1' 'FDL')
 depends=('kdebase-runtime' 'mariadb' 'qtscriptgenerator' 'taglib-extras'
-        'liblastfm' 'ffmpeg' 'libofa' 'qjson')
+        'liblastfm' 'ffmpeg2.8' 'libofa' 'qjson')
 makedepends=('pkgconfig' 'automoc4' 'cmake' 'libgpod' 'libmtp' 'loudmouth'
              'libmygpo-qt' 'mesa' 'clamz' 'git' 'gmock')
 optdepends=("libgpod: support for Apple iPod audio devices"
@@ -34,7 +34,7 @@ build() {
     rm -rf build
     mkdir -p build
     cd build
-
+    export PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig"
     cmake "../${pkgname}" -Wno-dev \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
