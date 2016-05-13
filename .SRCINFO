@@ -3,7 +3,6 @@ pkgbase = gcolor3
 	pkgver = 2.1
 	pkgrel = 1
 	url = http://unia.github.io/gcolor3/
-	install = gcolor3.install
 	arch = i686
 	arch = x86_64
 	license = GPL2

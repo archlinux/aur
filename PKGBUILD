@@ -12,7 +12,6 @@ depends=('gtk3' 'hicolor-icon-theme')
 makedepends=('intltool' 'gnome-common')
 conflicts=('gcolor3-git')
 source=(https://github.com/Unia/gcolor3/archive/v$pkgver.tar.gz)
-install=gcolor3.install
 sha256sums=('b7f65c0a44eb52622bf59bd04c15f01e05414167d86c3862863c0f91da60dab9')
 
 build() {
