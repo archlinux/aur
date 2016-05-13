@@ -1,7 +1,7 @@
 # Maintainer: Nabil Freij <nabil.freij@gmail.com>
 
 pkgname=gnome-shell-extension-randwall
-pkgver=10042016
+pkgver=20160511
 pkgrel=1
 pkgdesc="Gnome shell extension, Random Walls, for automatically change your desktop and lockscreen background randomly."
 arch=('any')
