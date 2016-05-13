@@ -1,9 +1,8 @@
 pkgbase = audio-recorder
 	pkgdesc = Free audio-recorder for Linux
 	pkgver = 1.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/~audio-recorder
-	install = audio-recorder.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
