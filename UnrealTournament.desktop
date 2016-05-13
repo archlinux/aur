@@ -2,8 +2,8 @@
 Type=Application
 Name=Unreal Tournament
 Comment=A first-person shooter
-Path=/opt/unreal-tournament/Engine/Binaries/Linux/
-Exec=/opt/unreal-tournament/Engine/Binaries/Linux/UE4-Linux-Shipping UnrealTournament
+Path=/opt/unreal-tournament-4/Engine/Binaries/Linux/
+Exec=/opt/unreal-tournament-4/Engine/Binaries/Linux/UE4Game-Linux-Shipping UnrealTournament
 Icon=UnrealTournament
 Terminal=false
 Categories=Game;

@@ -18,7 +18,7 @@ source=(
 )
 md5sums=(
   SKIP
-  '24b13aa960b3d5ae1275c847edc8455a'
+  '4ab9fb5f8c4b6c6c3fdb8d2e79399b9e'
 )
 options=(!strip staticlibs)
 
@@ -35,7 +35,7 @@ build() {
 
   ./GenerateProjectFiles.sh
 
-  make UE4Game-Linux-Shipping UnrealPak CrashReportClient ShaderCompileWorker UnrealLightmass
+  make UE4Game-Linux-Shipping UE4Game-Linux-Test UnrealPak CrashReportClient ShaderCompileWorker UnrealLightmass
   make -j1 ShaderCompileWorker
 }
 
