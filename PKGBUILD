@@ -3,7 +3,7 @@
 # Submitter: Fredrik Tegenfeldt <fredrik.tegenfeldt@unige.ch>
 
 pkgname=slurm-llnl-git
-pkgver=27818.af1afa3
+pkgver=16.05.0.0rc2.r73.g9de1598
 pkgrel=1
 pkgdesc="Simple Linux Utility for Resource Management (development version)"
 arch=('i686' 'x86_64')
@@ -45,7 +45,10 @@ md5sums=('51e4ae2c51edf7c145d1b87bec4c344e'
 
 pkgver() {
 	cd "${srcdir}/${pkgname}"
-	echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+	( set -o pipefail
+	git describe --long 2>/dev/null | sed 's/^slurm-//;s/\([^-]*-g\)/r\1/;s/-/./g' \
+	|| printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 build() {
