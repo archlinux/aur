@@ -3,7 +3,7 @@
 # Upstream Contributor: Gilrain <pierre.buard+aur gmail com>
 
 pkgname=prismatik-psieg-git
-pkgver=5.11.2.6.r0.71e57cf
+pkgver=5.11.2.7.r0.ge33a117
 pkgrel=1
 pkgdesc="A controller for usb driven LED backlights. An unofficial fork."
 arch=('i686' 'x86_64')
@@ -24,6 +24,8 @@ pkgver() {
 
 build() {
   cd Lightpack/Software
+  mv res/translations/ru_RU.ts res/translations/ru_RU.qm
+  mv res/translations/uk_UA.ts res/translations/uk_UA.qm
   qmake-qt5 -recursive
   make
 }
