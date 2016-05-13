@@ -1,6 +1,3 @@
-# Maintainer: zach <zach {at} zach-adams {dot} com>
-# Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de
-
 pkgname=gtk-theme-arc-flatabulous-git
 _pkgname=arc-flatabulous-theme
 _pkgauthor=andreisergiu98
