@@ -3,9 +3,9 @@
 _pkgname=idos-timetable-data-chaps-all
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_2_26
-pkgrel=1
-pkgdesc="Timetable data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport. Note that some timetables need the purchased version of IDOS to run."
+pkgver=2016_5_10
+pkgrel=3
+pkgdesc="Timetable data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport, some air transport. Note that some timetables need the purchased version of IDOS to run."
 arch=('i686' 'x86_64')
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
 license=('custom')
@@ -27,13 +27,6 @@ provides=(
   "idos-timetable-data=${pkgver}"
 )
 
-replaces=(
-  "${_pkgname}<=${pkgver}"
-  "idos-timetable-data-sk<=${pkgver}"
-  "idos-timetable-data-cz<=${pkgver}"
-  "idos-timetable-data-europe<=${pkgver}"
-  "idos-timetable-data-cis<=${pkgver}"
-)
 conflicts=(
   "${_pkgname}"
   # "idos-timetable-data-zsr-sk"
@@ -60,12 +53,13 @@ pkgver() {
 
 
 package() {
-  _instdirbase='/opt/idos-timetable/timetables'
+  _instdirbase='/opt/idos-timetable'
   _instdir="${pkgdir}/${_instdirbase}"
-
   install -d -m755 "${_instdir}"
 
-  install -D -m644 "${srcdir}"/Data*/* "${_instdir}"
+  cp -r "${srcdir}"/Data* "${_instdir}/"
+  chmod 755 "${_instdir}"/Data*
+  chmod 644 "${_instdir}"/Data*/*
 
 
   install -D -m644 "${srcdir}/info.url" "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
