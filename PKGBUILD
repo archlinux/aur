@@ -1,17 +1,27 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=alacryd
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="Expedient Perl6 module installation"
 arch=('any')
 depends=('perl6')
+makedepends=('git')
 groups=('perl6')
 url="https://github.com/atweiden/alacryd"
 license=('UNLICENSE')
-source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/atweiden/$pkgname/tar.gz/$pkgver)
-sha256sums=('668d1129fdcb5d015c2a3b3626a1b039b112758ac0c29fd9722c470341b3d09f')
+source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/atweiden/$pkgname/tar.gz/$pkgver
+        git+https://github.com/timo/json_fast)
+sha256sums=('60990d71239741cf93b6fa85805c6c53118f239f73b0a1881f84cbcd3600b9aa'
+            'SKIP')
 install=alacryd.install
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  msg2 'Copying JSON::Fast into lib for bootstrapping...'
+  find "$srcdir/json_fast/lib" -exec cp -dpr --no-preserve=ownership '{}' lib \;
+}
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
