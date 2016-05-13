@@ -1,7 +1,7 @@
 # Maintainer: Nabil Freij <nabil.freij@gmail.com>
 
 pkgname=gnome-shell-extension-workspaces-to-dock
-pkgver=r502.d9e11bd
+pkgver=20160513
 pkgrel=1
 pkgdesc="Gnome shell extension, Workspaces to Dock, Transform Gnome Shell's overview workspaces into an intelligent dock."
 arch=('any')
