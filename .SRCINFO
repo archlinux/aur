@@ -1,0 +1,19 @@
+pkgbase = fwup-git
+	pkgdesc = Configurable embedded Linux firmware update creator and runner
+	pkgver = v0.6.1.r3.4da4733
+	pkgrel = 1
+	url = https://github.com/fhunleth/fwup
+	arch = any
+	license = Apache v2.0
+	makedepends = git
+	depends = libsodium
+	depends = libarchive
+	depends = confuse
+	depends = bspwm-git
+	provides = fwup
+	conflicts = fwup
+	source = git+https://github.com/fhunleth/fwup
+	md5sums = SKIP
+
+pkgname = fwup-git
+
