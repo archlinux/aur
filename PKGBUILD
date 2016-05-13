@@ -40,7 +40,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}/build"
-  qmake-qt5 -r .. PREFIX=/usr
+  qmake-qt5 -r .. QMAKE_CFLAGS_ISYSTEM= PREFIX=/usr
   make
 }
 
