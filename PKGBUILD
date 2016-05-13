@@ -4,8 +4,8 @@
 
 pkgbase="spl-dkms"
 pkgname=("spl-dkms" "spl-utils")
-pkgver=0.6.5.6
-pkgrel=2
+pkgver=0.6.5.7
+pkgrel=1
 license=('GPL')
 makedepends=("git")
 arch=("i686" "x86_64")
