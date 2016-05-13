@@ -4,25 +4,25 @@
 
 pkgname=tango-icon-theme
 pkgver=0.8.90
-pkgrel=9
+pkgrel=10
 pkgdesc="Icon theme that follows the Tango visual guidelines"
 arch=('any')
-url="http://tango.freedesktop.org"
+url="http://tango-project.org"
 license=('custom:public domain' 'custom:TRADEMARKS')
-makedepends=('imagemagick' 'icon-naming-utils' 'intltool' 'librsvg')
+makedepends=('imagemagick' 'icon-naming-utils' 'intltool')
 options=(!strip !zipman)
-source=(${url}/releases/${pkgname}-${pkgver}.tar.bz2
+source=(http://http.debian.net/debian/pool/main/t/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz
         http://cinderwick.ca/files/archlinux/artwork-official/symbol.svg
         http://cinderwick.ca/files/archlinux/licensing-docs/TRADEMARKS
         rsvg.patch)
-md5sums=('b7b9b16480afb781a4c13f8bceb8688b'
+md5sums=('0795895d2f20eddcbd2bffe94ed431a6'
          'e9c0c2e165f2883c3fa00277635ae4ae'
          '05066419eb8239652a0467131485db4d'
-         '46f86ad43d793cd5389a7bd9c58a57ae')
+         '40cb8a4dd485bac0851c6fd2915d43ba')
 
 prepare() {
   cd ${pkgname}-${pkgver}
-  patch -p1 < "${srcdir}/rsvg.patch"
+  patch -p0 < "${srcdir}/rsvg.patch"
   autoreconf -fi
 }
 
@@ -51,8 +51,8 @@ package() {
 
   for size in 16 22 24 32 48 64 72 96 128; do
    # replace default logo with Arch Linux's
-   rsvg-convert -w ${size} -h ${size} "${srcdir}/symbol.svg" \
-    -o "${size}x${size}/places/start-here.png"
+   convert -background none "${srcdir}/symbol.svg" -resize ${size}x${size}  \
+    "${size}x${size}/places/start-here.png"
    # create icon for category "Education"
    ln -s "../status/dialog-information.png" \
     "${size}x${size}/categories/applications-science.png"
