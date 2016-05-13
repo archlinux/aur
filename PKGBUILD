@@ -1,8 +1,9 @@
-# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 _extname=languagetool
 pkgname=openoffice-extension-${_extname}
-pkgver=3.0
+pkgver=3.3
 pkgrel=1
 pkgdesc="An Open Source proof­reading soft­ware for English, French, German, Polish, and more than 20 other languages (Apache OpenOffice extension)"
 arch=("any")
@@ -12,7 +13,7 @@ groups=("openoffice-extensions")
 depends=("openoffice" "java-environment")
 makedepends=("maven")
 source=("https://github.com/languagetool-org/languagetool/archive/v${pkgver}.tar.gz")
-md5sums=('1fef322d0571d999d6f92dd5f7d3ce1b')
+md5sums=('3a505b520a24c0bea0542f5aec0edabc')
 
 build() {
     cd "${srcdir}/${_extname}-${pkgver}/"
