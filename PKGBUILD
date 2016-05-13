@@ -2,8 +2,8 @@
 # Contributor: argymeg <argymeg at gmail dot com>
 
 pkgname=firefox-beta
-pkgver=46.0b8
-_realpkgver=46.0b8
+pkgver=47.0b4
+_realpkgver=47.0b4
 _rcbuild=1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org - Beta (build from source)"
@@ -14,22 +14,22 @@ depends=('gtk2' 'gtk3' 'mozilla-common' 'libxt' 'startup-notification' 'mime-typ
          'dbus-glib' 'alsa-lib' 'ffmpeg2.8' 'desktop-file-utils' 'hicolor-icon-theme'
          'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
-             'xorg-server-xvfb' 'libpulse' 'inetutils' 'rust')
+             'xorg-server-xvfb' 'libpulse' 'inetutils' 'rust' 'autoconf2.13')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'upower: Battery API')
 provides=("firefox=$pkgver")
 conflicts=("firefox-beta-bin")
 install=firefox-beta.install
 options=('!emptydirs' '!makeflags')
-source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/candidates/$_realpkgver-candidates/build$_rcbuild/source/firefox-$_realpkgver.source.tar.xz
+source=(https://download-installer.cdn.mozilla.net/pub/firefox/candidates/$_realpkgver-candidates/build$_rcbuild/source/firefox-$_realpkgver.source.tar.xz
         mozconfig
         firefox-beta.desktop
         firefox-install-dir.patch
         vendor.js
         firefox-fixed-loading-icon.png
         no-libnotify.patch)
-sha512sums=('5c7ea044926d40603ffb7c1180289579cc8f74299c1dbc8f9c5c1ef072f0565aeb4aa9ab780879d49a16ddc4448c9b18299fac5f10a95c37df81e1da7663f5f7'
-            'c72792b505031431282a3777bce6d3ee98fe68cc0faf8cadd84afe2b42921da52b9d8ad94e3324f0d0a09e8e298e3bcd2b527b08e92e2a0140434d7767efc422'
+sha512sums=('353ab98ae2358d02b2a78f35303cef465fa21cd0df17bad6bfd3c491052cbccb1e3f6cd78cfbcdfa82b9209810441f88adc023426af15e8c5a1d7fc74e626e6b'
+            '704e1e2b2c7b4ec8a97abeb34a59e51b9f5384ec94f0925dc3b7aa97888b1bfe41c2cc6075797dfb96add8b43e66e7ec2057b827c965d428d7a7f28f6d728909'
             'dd9a563d6ad772ba440a45bbd0ee27943b319edcb785951e62cd4aefe0d33ded2acf9b63a2b15cec89ee184687c68a8d3a1cc06ec98f9a9251602f063fbaef14'
             '266989b0c4a37254a40836a6193284a186230b48716907e4d249d73616f58382b258c41baa8c1ffc98d405f77bfafcd3438f749edcf391c7bd22185399adf4bd'
             'd927e5e882115c780aa0d45034cb1652eaa191d95c15013639f9172ae734245caae070018465d73fdf86a01601d08c9e65f28468621422d799fe8451e6175cb7'
@@ -77,7 +77,7 @@ prepare() {
 
   # configure script misdetects the preprocessor without an optimization level
   # https://bugs.archlinux.org/task/34644
-  sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' configure
+  #sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' configure
 
   # Fix tab loading icon (doesn't work with libpng 1.6)
   # https://bugzilla.mozilla.org/show_bug.cgi?id=841734
@@ -88,6 +88,7 @@ prepare() {
 build() {
   cd firefox-$_realpkgver
 
+  CPPFLAGS+=" -O2"
   export PATH="$srcdir/path:$PATH"
   export PYTHON="/usr/bin/python2"
 
