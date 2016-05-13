@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=heirloom-ex-vi-git
-pkgver=4.1.0.r15.b9e05e0
+pkgver=4.1.0.r4.g4867427.r19.4867427
 pkgrel=1
 epoch=
 pkgdesc="The traditional Vi"
@@ -25,12 +25,13 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  printf "%s.r%s.%s" "$(git describe --tags)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.%s" "$(git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g')" \
+                     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  ./configure --prefix=/usr
+  ./configure
   make
 }
 
