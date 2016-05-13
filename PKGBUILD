@@ -1,16 +1,16 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=lib32-qt5-base-bin
-pkgver=5.5.1_3
+pkgver=5.6.0_5
 pkgrel=1
 pkgdesc="Repackaged qt5-base"
 arch=('x86_64')
 url="http://qt-project.org/"
 license=('GPL3' 'LGPL' 'FDL' 'custom')
-depends=('lib32-libjpeg-turbo' 'lib32-xcb-util-keysyms' 'lib32-libgl' 'lib32-dbus' 'lib32-fontconfig' 'lib32-systemd' 'lib32-xcb-util-wm' 'lib32-libxrender' 'lib32-libxi' 'lib32-sqlite' 'lib32-xcb-util-image' 'lib32-icu'  'qt5-base')
+depends=('lib32-libjpeg-turbo' 'lib32-xcb-util-keysyms' 'lib32-libgl' 'lib32-fontconfig' 'lib32-xcb-util-wm' 'lib32-libxrender' 'lib32-libxi' 'lib32-sqlite' 'lib32-xcb-util-image' 'lib32-icu' 'lib32-libsm' 'lib32-libxkbcommon-x11'  'qt5-base')
 provides=('lib32-qt5-base')
 conflicts=('lib32-qt-base' 'lib32-qt4')
 source=("qt5-base-i686.pkg.tar.xz::https://www.archlinux.org/packages/extra/i686/qt5-base/download/")
-md5sums=('8b787fa1d8a32bca14a55b91b0e086bc')
+md5sums=('911702f5f71f9a7786688304d64c9ba4')
 
 package() {
   cd "$srcdir"
