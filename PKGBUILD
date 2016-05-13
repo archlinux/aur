@@ -1,25 +1,24 @@
 pkgname=aqemu
-pkgver=0.8.2
-pkgrel=5
-pkgdesc="QEMU GUI written in Qt4"
+pkgver=0.9.1
+pkgrel=1
+pkgdesc="QEMU GUI written in Qt5"
 arch=('i686' 'x86_64')
-url="https://sourceforge.net/projects/aqemu/"
+url="https://github.com/tobimensch/aqemu"
 license=('GPL2')
-depends=('qemu' 'qt4' 'openssl' 'libvncserver')
+depends=('qemu' 'qt5-base' 'libvncserver')
 makedepends=('cmake' 'qt5-base')
-source=(https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2 aqemu.patch)
-md5sums=('dcec083f566e0a22df7bfe8e7ca4c593' '4f18e403b98b825a7582aab7c5c3e871')
+source=("aqemu-$pkgver.tar.gz::https://github.com/tobimensch/aqemu/archive/v${pkgver}.tar.gz")
+md5sums=('d2540b513674d7242f112e222ba0fa2a')
 
 build() {
 
-  cd $srcdir/$pkgname-$pkgver
-  patch -p1 -i $srcdir/aqemu.patch
+  cd "$srcdir/$pkgname-$pkgver"
   cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DQT_QMAKE_EXECUTABLE=qmake4
   make
 }
 
-  package() {
+package() {
   
-  cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$pkgdir install
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
 }
