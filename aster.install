@@ -1,6 +1,6 @@
 post_install() {
 
-  sed -e "s|#?vers : VVV?|#?vers : VVV?\nvers : 12.5:/usr/share/aster/12.5|" \
+  sed -e "s|#?vers : VVV?|#?vers : VVV?\nvers : STA12.5:/usr/share/aster/12.5|" \
       -i /etc/codeaster/aster
 
   echo
@@ -23,7 +23,7 @@ post_upgrade() {
 }
 
 post_remove() {
-  sed -e ':a;N;$!ba;s|\nvers : 12.5:/usr/share/aster/12.5||g' \
+  sed -e ':a;N;$!ba;s|\nvers : STA12.5:/usr/share/aster/12.5||g' \
       -i /etc/codeaster/aster
 }
 

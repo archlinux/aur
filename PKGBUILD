@@ -5,7 +5,7 @@ pkgrel=1
 pkgdesc="Code-Aster"
 url="http://www.code-aster.org/"
 license=("GPL")
-depends=('python2' 'astk>=1.13.7' 'metis4' 'med>=3.0.8' 'mumps4')
+depends=('python2' 'astk>=1.13.7' 'metis4' 'med>=3.0.8' 'hdf5-1.8' 'mumps4')
 makedepends=()
 install="${pkgname}.install"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ build() {
   cd "${srcdir}"
 
   cd "${srcdir}/aster-${pkgver}"
-  INCLUDES="/usr/include/metis-4 /usr/include" PYTHON="/usr/bin/python2" LRELEASE="lrelease-qt4" python2 waf configure --prefix="${pkgdir}${_installdir}" --enable-mumps --metis-libs=metis-4 --scotch-libs='esmumps scotch bz2 scotcherr' --install-as=${_installsuff}
+  LIBPATH="/opt/hdf5-1.8/lib /usr/lib" INCLUDES="/opt/hdf5-1.8/include /usr/include/metis-4 /usr/include" PYTHON="/usr/bin/python2" LRELEASE="lrelease-qt4" python2 waf configure --prefix="${pkgdir}${_installdir}" --enable-mumps --metis-libs=metis-4 --scotch-libs='esmumps scotch bz2 scotcherr' --install-as=${_installsuff} --enable-hdf5
   python2 waf build
   # python2 waf build_debug
 }
