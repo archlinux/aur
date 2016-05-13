@@ -1,0 +1,14 @@
+pkgbase = rscheme
+	pkgdesc = RScheme is an open-source (and freely redistributable) implementation of the Scheme language with lots of extensions and additional features beyond the core language.
+	pkgver = 0.7.3.4b7
+	pkgrel = 1
+	arch = x86_64
+	arch = i686
+	license = unknown
+	source = http://www.rscheme.org/rs/b/0.7.3.4/7/rs-0.7.3.4-b7.tar.gz
+	source = rscheme-chroot-make.sh
+	md5sums = 398f5cdeb314a6c8303ada6faa611aef
+	md5sums = c6b5138893cd2941c702f73a1d53338e
+
+pkgname = rscheme
+
