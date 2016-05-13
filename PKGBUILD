@@ -2,8 +2,8 @@
 
 pkgname=gnome-ssh-askpass2
 _pkgname=openssh
-pkgver=6.2p2
-pkgrel=3
+pkgver=7.2p2
+pkgrel=1
 pkgdesc='A GNOME and Gtk2 passphrase requesters for ssh-add.'
 arch=(i686 x86_64)
 url="http://www.openssh.org/portable.html"
@@ -12,9 +12,9 @@ depends=('gtk2')
 provides=('x11-ssh-askpass')
 conflicts=('x11-ssh-askpass' 'ssh-askpass-fullscreen' 'gnome-ssh-askpass')
 
-source=(ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$_pkgname-$pkgver.tar.gz
+source=(http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/$_pkgname-$pkgver.tar.gz
         gnome-ssh-askpass2.sh)
-md5sums=('be46174dcbb77ebb4ea88ef140685de1'
+md5sums=('13009a9156510d8f27e752659075cced'
          '2eb5571a9751c94c90760bf3c05bd095')
 
 build() {
