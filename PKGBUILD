@@ -2,11 +2,11 @@
 # Contributor: spider-mario <spidermario@free.fr>
 
 pkgname=rakudo-git
-pkgver=20160420
+pkgver=20160513
 pkgrel=1
-pkgdesc="Perl6 on MoarVM and the JVM"
+pkgdesc="Perl6 on MoarVM"
 arch=('i686' 'x86_64')
-depends=('java-runtime' 'moarvm' 'nqp')
+depends=('moarvm' 'nqp')
 makedepends=('git' 'make' 'perl')
 optdepends=('gdb: GDB runner'
             'valgrind: Valgrind runner')
@@ -27,7 +27,7 @@ build() {
   cd ${pkgname%-git}
 
   msg2 'Building...'
-  perl Configure.pl --prefix=/usr --backends=moar,jvm
+  perl Configure.pl --prefix=/usr --backends=moar
   make
 }
 
