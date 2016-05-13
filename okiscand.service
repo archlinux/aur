@@ -2,7 +2,7 @@
 Description=OKI Scan Service
 
 [Service]
-Type=forking
+Type=simple
 ExecStart=/usr/libexec/okimfpdrv/scand
 PIDFile=/var/run/okiscand.pid
 

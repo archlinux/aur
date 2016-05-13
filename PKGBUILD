@@ -2,7 +2,7 @@
 pkgname=okimfpsdrv
 pkgver=1.5.0
 _pkgver=1.5-0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="Scanner drivers OKI multifunctional printers"
 url="http://www.oki.co.uk/support/printer/printer-drivers"
@@ -13,7 +13,7 @@ depends=('libusb' 'python2')
 source=("okiscand.service")
 source_i686=("${pkgname}-${_pkgver}-i686.zip::http://www.oki.co.uk/Includes/Pages/FileDownload.aspx?id=tcm:122-156523")
 source_x86_64=("${pkgname}-${_pkgver}-x86_64.zip::http://www.oki.co.uk/Includes/Pages/FileDownload.aspx?id=tcm:122-156524")
-md5sums=('d76afbb748d6daf989520c14876e3767')
+md5sums=('0164a329e93405806dcf20700b01008d')
 md5sums_i686=('090fed6956f8647a6eb099d6f22bddab')
 md5sums_x86_64=('3d8b6d8ff7a52e7e83429406856216bc')
 
