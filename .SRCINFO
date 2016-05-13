@@ -9,7 +9,6 @@ pkgbase = fwup-git
 	depends = libsodium
 	depends = libarchive
 	depends = confuse
-	depends = bspwm-git
 	provides = fwup
 	conflicts = fwup
 	source = git+https://github.com/fhunleth/fwup
