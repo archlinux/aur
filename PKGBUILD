@@ -4,8 +4,8 @@
 
 pkgbase="zfs-dkms"
 pkgname=("zfs-dkms" "zfs-utils")
-pkgver=0.6.5.6
-pkgrel=2
+pkgver=0.6.5.7
+pkgrel=1
 license=('CDDL')
 makedepends=("git" "spl-dkms=${pkgver}")
 arch=("i686" "x86_64")
