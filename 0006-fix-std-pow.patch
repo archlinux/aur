@@ -1,0 +1,10 @@
+--- src/src/gui/xBRZ/xbrz.cpp.orig	2016-05-13 22:35:12.534869565 +0200
++++ src/src/gui/xBRZ/xbrz.cpp	2016-05-13 22:34:35.558177931 +0200
+@@ -15,6 +15,7 @@
+ 
+ #include "xbrz.h"
+ #include <cassert>
++#include <cmath>
+ #include <algorithm>
+ #include <vector>
+ 
