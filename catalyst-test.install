@@ -61,21 +61,13 @@ pre_upgrade(){
     systemctl disable catalyst-hook.service
     # remove existing  fglrx modules
     usr/bin/catalyst_build_module ra
-
-    #this is lordheavy's old section, have to check if it's still needed - V.
-    local curver=$2
-    # $2 is unset due to a bug. Query current version using pacman as fallback
-    [ -n "$curver" ] || curver=$(pacman -Qi catalyst-dkms | awk '/^Version/{print $3}')
-    pre_remove $curver
 }
 
 post_install(){
-    dkms install -m fglrx -v $1
     whisperer
 }
 
 post_upgrade(){
-    dkms install -m fglrx -v $1
     whisperer
 
     ## switch to intel if it was intel before upgrade    
@@ -87,10 +79,6 @@ post_upgrade(){
 	usr/lib/fglrx/switchlibglx intel
 	rm tmp/switch_glx_intel
     fi
-}
-
-pre_remove(){
-    dkms remove -m fglrx -v $1 --all
 }
 
 post_remove(){

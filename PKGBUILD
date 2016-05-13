@@ -27,7 +27,7 @@
 
 pkgname=catalyst-test
 pkgver=15.12
-pkgrel=5
+pkgrel=6
 # _betano=1.0
 _amdver=15.302
 pkgdesc="AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. PRE-GCN Radeons ARE NOT SUPPORTED"
