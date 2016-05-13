@@ -3,17 +3,17 @@
 
 pkgname=llpp
 pkgver=22
-_pkgname=${pkgname}-561dc56
-pkgrel=2
+_pkgname=${pkgname}-1beb003
+pkgrel=3
 pkgdesc='Lightweight, fast and featureful PDF viewer based on MuPDF'
 arch=('i686' 'x86_64')
 url='http://repo.or.cz/w/llpp.git'
 license=('custom')
 depends=('openjpeg2' 'jbig2dec' 'desktop-file-utils')
-makedepends=('ocaml' 'mupdf')
-source=(http://repo.or.cz/llpp.git/snapshot/561dc5673cea431e930668b0d87b0c4b31a36b39.tar.gz)
+makedepends=('ocaml' 'libmupdf')
+source=(http://repo.or.cz/llpp.git/snapshot/1beb003ca0f4ed90fda2823cb07c2eb674fc3ca4.tar.gz)
 install=llpp.install
-sha256sums=('06dff0377bb47c172f5cb498f8bce0f362cca910f90e8663fcd3f1500ce8fa0e')
+sha256sums=('92723eabd3521cb16d60b8dd6191ec8737240f35bf1fa9a0f82f32f8fd8f32a4')
 
 optdepends=(
   # llpp
@@ -39,7 +39,7 @@ options=('!strip')
 build() {
   cd $_pkgname
   sed -i -e 's+-I \$srcdir/mupdf/include -I \$srcdir/mupdf/thirdparty/freetype/include+-I /usr/include/freetype2+' build.sh
-  sed -i -e 's+-lopenjpeg+-lopenjp2+' build.sh
+  sed -i -e 's+-lmupdf +-lfreetype -lz -lharfbuzz -ljbig2dec -lopenjp2 -ljpeg -lmupdf +' build.sh
   sed -i -e 's+-L\$srcdir/mupdf/build/native ++' build.sh
   sh build.sh build/
 }
