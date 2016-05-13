@@ -27,6 +27,8 @@ source=(
 	"$target$date.tar.gz::https://static.rust-lang.org/dist/${date#-}/${target}.tar.gz"
 	"$target$date.tar.gz.asc::https://static.rust-lang.org/dist/${date#-}/${target}.tar.gz.asc"
 )
+# The Rust GPG Key: https://keybase.io/rust
+validpgpkeys=("108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE")
 md5sums=('4d1b35192eeea327e72b5aa254581cca'
          '009ccdef55366033a1db0f74762a7fa3'
          'SKIP')
