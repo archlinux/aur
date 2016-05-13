@@ -2,8 +2,8 @@
 
 _plug=havsfunc
 pkgname=vapoursynth-plugin-${_plug}
-pkgver=r22
-pkgrel=2
+pkgver=r23
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
 url='http://forum.doom9.org/showthread.php?t=166582'
@@ -33,7 +33,7 @@ depends=('vapoursynth-plugin-adjust-git'
          )
 makedepends=('git')
 source=("${_plug}-${pkgver}.tar.gz::https://github.com/HomeOfVapourSynthEvolution/havsfunc/archive/${pkgver}.tar.gz")
-sha1sums=('d5010d6eeb845829bfe2c151dd2f581851e7bb56')
+sha1sums=('f73f291ea0295f0d24504875e6275bd443e22a9f')
 
 _sites_packages="$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")"
 
