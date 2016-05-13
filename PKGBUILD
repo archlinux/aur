@@ -2,7 +2,7 @@
 # Maintainer: Ivailo Monev <xakepa10@gmail.com>
 
 pkgname=copperspice-git
-pkgver=1.2.1.03c219e
+pkgver=1.2.2.c36505f
 pkgrel=1
 pkgdesc='C++ library derived from the existing Qt 4.8 framework'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ options=('debug')
 
 pkgver() {
     cd copperspice
-    printf "1.2.1.%s" "$(git rev-parse --short HEAD)"
+    printf "1.2.2.%s" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -38,7 +38,8 @@ build() {
         -DCMAKE_INSTALL_SYSCONFDIR=/etc \
         -DCMAKE_INSTALL_INCLUDEDIR=include/copperspice \
         -DTOOLS_SUFFIX=-cs \
-        -DWITH_WEBKIT=ON
+        -DWITH_WEBKIT=ON \
+        -DFREETYPE_INCLUDES=/usr/include/freetype2/freetype
     make
 }
 
