@@ -1,7 +1,7 @@
 pkgbase = slack-desktop
 	pkgdesc = Slack Desktop (Beta) for Linux
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://slack.com/apps
 	arch = i686
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = slack-desktop
 	depends = hunspell
 	depends = hunspell-en
 	depends = libgcrypt
+	depends = libgnome-keyring
 	depends = libnotify
 	depends = libxss
 	depends = libxtst
