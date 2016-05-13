@@ -1,6 +1,6 @@
 pkgbase = obmenu-generator
 	pkgdesc = A fast pipe/static menu generator for the Openbox Window Manager (with icons support).
-	pkgver = 0.66
+	pkgver = 0.67
 	pkgrel = 1
 	url = https://github.com/trizen/obmenu-generator
 	install = readme.install
@@ -10,8 +10,8 @@ pkgbase = obmenu-generator
 	depends = perl>=5.14.0
 	depends = perl-data-dump
 	depends = perl-linux-desktopfiles>=0.09
-	source = https://github.com/trizen/obmenu-generator/archive/0.66.tar.gz
-	sha256sums = 6a2c8b2add2fd5bd31b40a67dd6e0920282019e3706f172ad67d6e466f82f769
+	source = https://github.com/trizen/obmenu-generator/archive/0.67.tar.gz
+	sha256sums = ec8c0db9bc78968ac154d70066d20e16ba39ce009bd662b0330d6d6e7850d22f
 
 pkgname = obmenu-generator
 

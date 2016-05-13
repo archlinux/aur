@@ -1,7 +1,7 @@
 # Maintainer: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
 
 pkgname=obmenu-generator
-pkgver=0.66
+pkgver=0.67
 pkgrel=1
 
 pkgdesc="A fast pipe/static menu generator for the Openbox Window Manager (with icons support)."
@@ -12,7 +12,7 @@ license=('GPLv3')
 
 depends=('openbox' 'perl>=5.14.0' 'perl-data-dump' 'perl-linux-desktopfiles>=0.09')
 source=("https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('6a2c8b2add2fd5bd31b40a67dd6e0920282019e3706f172ad67d6e466f82f769')
+sha256sums=('ec8c0db9bc78968ac154d70066d20e16ba39ce009bd662b0330d6d6e7850d22f')
 install='readme.install'
 
 package() {
