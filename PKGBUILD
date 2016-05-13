@@ -6,36 +6,45 @@
 # All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
 # you also find the URL of a binary repository.
 
+# Helper functions for the split builds
+isStatic() {
+  [ $pkgname = "mingw-w64-qt5-base-static" ]
+}
+
+isOpenGL() {
+  [ $pkgname = "mingw-w64-qt5-base-opengl" ]
+}
+
 pkgname=mingw-w64-qt5-base-opengl
 pkgver=5.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A cross-platform application and UI framework (mingw-w64, OpenGL)"
-arch=(i686 x86_64)
+! isStatic && arch=('i686' 'x86_64')
+isStatic && arch=('any') # the static variant doesn't contain any executables which need to be executed on the host
 url="https://www.qt.io/"
 license=("custom, FDL, GPL3, LGPL")
 depends=(
-  mingw-w64-crt
-  mingw-w64-zlib
-  mingw-w64-libjpeg-turbo
-  mingw-w64-libiconv
-  mingw-w64-sqlite
-  mingw-w64-libpng
-  mingw-w64-openssl
-  mingw-w64-libdbus
-  mingw-w64-pcre
-  mingw-w64-harfbuzz
-  mingw-w64-glib2
+  'mingw-w64-crt'
+  'mingw-w64-zlib'
+  'mingw-w64-libjpeg-turbo'
+  'mingw-w64-libiconv'
+  'mingw-w64-sqlite'
+  'mingw-w64-libpng'
+  'mingw-w64-openssl'
+  'mingw-w64-libdbus'
+  'mingw-w64-pcre'
+  'mingw-w64-harfbuzz'
 )
-groups=(mingw-w64-qt mingw-w64-qt5)
+groups=('mingw-w64-qt' 'mingw-w64-qt5')
 optdepends=(
-  "mingw-w64-postgresql-libs: PostgreSQL support"
-  "mingw-w64-mariadb-connector-c: MySQL support"
-  "qtchooser"
+  'mingw-w64-postgresql-libs: PostgreSQL support'
+  'mingw-w64-mariadb-connector-c: MySQL support'
+  'qtchooser'
 )
-makedepends=(mingw-w64-gcc
-             mingw-w64-postgresql-libs
-             mingw-w64-mariadb-connector-c
-             mingw-w64-pkg-config)
+makedepends=('mingw-w64-gcc'
+             'mingw-w64-postgresql-libs'
+             'mingw-w64-mariadb-connector-c'
+             'mingw-w64-pkg-config')
 options=(!strip !buildflags staticlibs)
 _pkgfqn="qtbase-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
@@ -75,15 +84,6 @@ md5sums=('d6b6cfd333c22829c6c85fc52ceed019'
          '62d2977e57fccf1f16d7ea6bf06d3279'
          '83139869355c2d46921adb25e47cf0fa')
 _architectures="x86_64-w64-mingw32 i686-w64-mingw32"
-
-# Helper functions for the split builds
-isStatic() {
-  [ $pkgname = "mingw-w64-qt5-base-static" ]
-}
-
-isOpenGL() {
-  [ $pkgname = "mingw-w64-qt5-base-opengl" ]
-}
 
 isStatic && depends+=("mingw-w64-qt5-base")
 ! isOpenGL && depends+=("mingw-w64-angleproject")
@@ -267,7 +267,7 @@ build() {
       # libraries which various compiled tools (like moc) use. As the libQt5Bootstrap*
       # libraries aren't installed at this point yet, we have to workaround this
       ../${_pkgfqn}/configure -shared $qt_configure_args $qt_configure_args_mysql
-      LD_LIBRARY_PATH=`pwd`/lib make
+      LD_LIBRARY_PATH="$PWD/lib" make
     fi
 
     popd
@@ -337,9 +337,9 @@ package() {
     fi
 
     # keeping prl files for base build since qbs seems to need them.
-    if isStatic; then
-      rm -f "${pkgdir}/usr/${_arch}/lib"{,/qt/plugins/*}/*.prl
-    fi
+    isStatic && rm -f "${pkgdir}/usr/${_arch}/lib"{,/qt/plugins/*}/*.prl
+
+    # remove binaries, strip libs
     find "${pkgdir}/usr/${_arch}" -name "*.exe" -o -name "*.bat" -o -name "*.def" -o -name "*.exp" | xargs -rtl1 rm
     find "${pkgdir}/usr/${_arch}" -name "*.dll" -exec ${_arch}-strip --strip-unneeded {} \;
     find "${pkgdir}/usr/${_arch}" -name "*.a" -o -name "*.dll" | xargs -rtl1 ${_arch}-strip -g
