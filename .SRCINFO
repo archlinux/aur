@@ -1,6 +1,6 @@
 pkgbase = copperspice-git
 	pkgdesc = C++ library derived from the existing Qt 4.8 framework
-	pkgver = 1.2.1.03c219e
+	pkgver = 1.2.2.c36505f
 	pkgrel = 1
 	url = http://www.copperspice.com/
 	arch = i686
