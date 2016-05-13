@@ -3,13 +3,12 @@
 
 pkgname='tong'
 pkgver='1.3'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="Tetris meets Pong, with more twists than a contortionist club's secret handshake"
 arch=('i686' 'x86_64')
 url="http://www.nongnu.org/tong/"
 license=('GPL3')
 depends=('sdl_image' 'sdl_mixer')
-install="$pkgname.install"
 source=("http://www.nongnu.org/tong/$pkgname-$pkgver.tar.gz"
 	"$pkgname.desktop")
 md5sums=('a9d70c7b2f637e9d95e6fbdf6d22782d'
