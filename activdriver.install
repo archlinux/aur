@@ -1,0 +1,19 @@
+post_install() {
+  echo "finding module"
+  depmod
+  echo "inserting module"
+  modprobe promethean
+  echo " "
+  echo "If you don't want the promethean module to be loaded on boot, delete /etc/modules-load.d/promethean.conf or delete the matching lines in PKGBUILD and re-install."
+  echo " "
+}
+
+post_upgrade() {
+  echo "finding module"
+  depmod
+  echo "inserting module"
+  modprobe promethean
+  echo " "
+  echo "If you don't want the promethean module to be loaded on boot, delete /etc/modules-load.d/promethean.conf or delete the matching lines in PKGBUILD and re-install."
+  echo " "
+}
