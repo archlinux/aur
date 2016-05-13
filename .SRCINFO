@@ -1,6 +1,6 @@
 pkgbase = beyond-compare
 	pkgdesc = Compare files and folders, merge changes, synchronize files, and generate reports
-	pkgver = 4.1.5
+	pkgver = 4.1.6
 	pkgrel = 1
 	url = http://www.scootersoftware.com
 	install = beyond-compare.install
@@ -19,10 +19,10 @@ pkgbase = beyond-compare
 	options = !strip
 	source = LICENSE
 	md5sums = 9eeda8a80922a529bd3a8db7a03ad8b0
-	source_i686 = http://www.scootersoftware.com/bcompare-4.1.5.21031_i386.deb
-	md5sums_i686 = 809f2918d1013d100ea3fe6fce285722
-	source_x86_64 = http://www.scootersoftware.com/bcompare-4.1.5.21031_amd64.deb
-	md5sums_x86_64 = 77a11fdc5a91b68a8af469db94b4300f
+	source_i686 = http://www.scootersoftware.com/bcompare-4.1.6.21095_i386.deb
+	md5sums_i686 = 2aeca1aed68b030d8e07be02635cd686
+	source_x86_64 = http://www.scootersoftware.com/bcompare-4.1.6.21095_amd64.deb
+	md5sums_x86_64 = 86e75f23eba079d2348f3277f3786c8f
 
 pkgname = beyond-compare
 
