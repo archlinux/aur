@@ -1,8 +1,8 @@
 # Maintainer: Nabobalis <nabil dot freij at gmail dot com>
 # Contributor: Nabobalis <nabil dot freij at gmail dot com>
 pkgname=python2-sunpy
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.4
+pkgrel=1
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
 url="http://www.sunpy.org/"

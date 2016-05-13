@@ -22,3 +22,27 @@ pkgbase = python2-sunpy
 
 pkgname = python2-sunpy
 
+pkgbase = python2-sunpy
+	pkgdesc = Python library for solar physics
+	pkgver = 0.6.4
+	pkgrel = 1
+	url = http://www.sunpy.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = python2
+	depends = python2-astropy
+	depends = python2-matplotlib
+	depends = python2-scipy
+	depends = python2-pandas
+	depends = python2-requests
+	depends = python2-suds
+	depends = python2-beautifulsoup4
+	optdepends = python2-sqlalchemy: for the database package
+	optdepends = python2-pytest: for running tests
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/s/sunpy/sunpy-0.6.4.tar.gz
+	md5sums = 0abb5b6ce0365000e4bd8c8251344a10
+
+pkgname = python2-sunpy
+
