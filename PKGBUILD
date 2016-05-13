@@ -3,13 +3,12 @@
 
 pkgname='wilink'
 pkgver='2.4.906'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Instant messaging client and SIP softphone for Wifirst customers'
 arch=('i686' 'x86_64')
 url='https://github.com/jlaine/wilink'
 license=('GPL3')
 depends=('libxss' 'qxmpp' 'qt5-multimedia' 'qt5-x11extras' 'qt5-quickcontrols' 'qt5-webkit' 'desktop-file-utils' 'hicolor-icon-theme')
-install="$pkgname.install"
 source=("https://github.com/jlaine/${pkgname}/archive/v${pkgver}.tar.gz")
 sha1sums=('60f912e2ae958e6b7e809a57e08d4a3a57d36ed6')
  
