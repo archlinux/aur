@@ -4,7 +4,7 @@
 pkgbase=gvfs-nosystemd
 _pkgbase=gvfs
 pkgname=$pkgbase
-pkgver=1.28.1
+pkgver=1.28.2
 pkgrel=1
 arch=(i686 x86_64)
 license=(LGPL)
@@ -16,7 +16,7 @@ groups=(gnome)
 conflicts=($_pkgbase)
 provides=($_pkgbase=$pkgver)
 source=(http://ftp.gnome.org/pub/gnome/sources/$_pkgbase/${pkgver:0:4}/$_pkgbase-$pkgver.tar.xz)
-sha256sums=('4ecfe5ac35c1b3e61d6abddc98902b6c7faf243308c60b165f01990783f17999')
+sha256sums=('bc6af45cff7e7e8d33c3a4be1d27e479f10f80105a6f2d1fae75c5c0d40636d9')
 
 prepare() {
   cd "$_pkgbase-$pkgver"

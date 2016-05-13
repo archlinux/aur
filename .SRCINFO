@@ -1,5 +1,5 @@
 pkgbase = gvfs-nosystemd
-	pkgver = 1.28.1
+	pkgver = 1.28.2
 	pkgrel = 1
 	url = http://www.gnome.org
 	arch = i686
@@ -26,10 +26,10 @@ pkgbase = gvfs-nosystemd
 	makedepends = libgudev
 	makedepends = libnfs
 	makedepends = libgdata
-	provides = gvfs=1.28.1
+	provides = gvfs=1.28.2
 	conflicts = gvfs
-	source = http://ftp.gnome.org/pub/gnome/sources/gvfs/1.28/gvfs-1.28.1.tar.xz
-	sha256sums = 4ecfe5ac35c1b3e61d6abddc98902b6c7faf243308c60b165f01990783f17999
+	source = http://ftp.gnome.org/pub/gnome/sources/gvfs/1.28/gvfs-1.28.2.tar.xz
+	sha256sums = bc6af45cff7e7e8d33c3a4be1d27e479f10f80105a6f2d1fae75c5c0d40636d9
 
 pkgname = gvfs-nosystemd
 	pkgdesc = Userspace virtual filesystem implemented as a pluggable module for gio
