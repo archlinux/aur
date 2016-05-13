@@ -3,7 +3,7 @@
 _pkgname=idos-timetable-browser
 pkgname="${_pkgname}"
 pkgver=1.27_lib2.5.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Offline railway and other public transport timetable search engine by CHAPS. (Czech language by default.)"
 arch=('i686' 'x86_64')
 url="http://chaps.cz/eng/download/idos/zip#kotvaprg"
@@ -39,6 +39,7 @@ source=(
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
   "info.url"
+  "README.datafiles.txt"
 )
 
 sha256sums=(
@@ -47,6 +48,7 @@ sha256sums=(
   "e904d167ccdcfb2743f4cfd596aaa9dce8b751fb5c8315b972b42b7cbb3189e6"
   "c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4"
   "d302ccfd82cc9057751f79b6f0f310676b539a201e943ff7c2fd9b9dbaf29b53"
+  "6333e453013c7d5a12782c7c58d97582e402b796e47acd3f335520174009929a"
 )
 
 
@@ -60,18 +62,20 @@ package() {
   _instdir="${pkgdir}/${_instdirbase}"
   _execdir="${pkgdir}/usr/bin"
   install -d -m755 "${_instdir}"
-  cd "${_instdir}"
 
-  unzip "${srcdir}/ttakt.zip"
-  chmod 644 *
-  chmod 755 TT.exe
+  cd "${_instdir}" && {
+    unzip "${srcdir}/ttakt.zip"
+    chmod 644 *
+    chmod 755 TT.exe
+  }
 
-  install -d -m755 timetables
+  install -D -m644 "${srcdir}/info.url"                    "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
+  install -D -m644 "${srcdir}/README.datafiles.txt"        "${pkgdir}/usr/share/doc/${_pkgname}/README.datafiles.txt"
 
-  install -D -m644 "${srcdir}/info.url" "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
+  ln -s "/usr/share/doc/${_pkgname}/README.datafiles.txt"  "${_instdir}/README.datafiles.txt"
 
-  install -D -m644 "${srcdir}/license-dummy.txt" "${pkgdir}/usr/share/licenses/${pkgname}/copying.txt"
-  install -D -m644 "${srcdir}/IDOS-Licence.pdf" "${pkgdir}/usr/share/licenses/${pkgname}/IDOS-Licence.pdf"
+  install -D -m644 "${srcdir}/license-dummy.txt"           "${pkgdir}/usr/share/licenses/${pkgname}/copying.txt"
+  install -D -m644 "${srcdir}/IDOS-Licence.pdf"            "${pkgdir}/usr/share/licenses/${pkgname}/IDOS-Licence.pdf"
 
-  install -D -m755 "${srcdir}/idos-timetable-browser.sh" "${_execdir}/idos-timetable-browser"
+  install -D -m755 "${srcdir}/idos-timetable-browser.sh"   "${_execdir}/idos-timetable-browser"
 }
