@@ -1,12 +1,13 @@
 # Maintainer: Luca Weiss <WEI16416@spengergasse.at>
 pkgname=python-pkgbuild-git
-pkgver=r3.aeca84e
+pkgver=r7.7afcd99
 pkgrel=1
 pkgdesc="Python library to parse pacman's .SRCINFO file"
 arch=('any')
 url="https://github.com/z3ntu/python-pkgbuild"
 license=('MIT')
 depends=('python')
+makedepends=('git')
 options=(!emptydirs)
 source=(git+https://github.com/z3ntu/python-pkgbuild)
 md5sums=(SKIP)
