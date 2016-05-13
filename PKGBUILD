@@ -17,7 +17,9 @@ pkgver() {
 
 package() {
   cd "$srcdir/VLC-Lyrics-Finder"
+
   install -Dm644 lyricsfinder.lua "$pkgdir/usr/lib/vlc/lua/extensions/lyricsfinder.lua"
-  mkdir -p "$pkgdir/usr/share/vlc/lua/extensions/lyricsfinder/locale"
-  cp locale/*.xml "$pkgdir/usr/share/vlc/lua/extensions/lyricsfinder/locale/"
+
+  install -dm755 "$pkgdir/usr/share/vlc/lua/extensions/lyricsfinder/locale"
+  install -m644 locale/*.xml "$pkgdir/usr/share/vlc/lua/extensions/lyricsfinder/locale/"
 }
