@@ -3,7 +3,7 @@ pkgname=imageplay-git
 _reponame=ImagePlay
 _binary=imageplay
 pkgver=6.0.0.r3.g4a81026
-pkgrel=1
+pkgrel=2
 pkgdesc="ImagePlay is a rapid prototyping application for image processing"
 arch=('i686' 'x86_64')
 url="http://imageplay.io"
@@ -12,7 +12,7 @@ depends=('qt5-base' 'freeimage' 'opencv')
 makedepends=('git' 'qtchooser')
 provides=('imageplay')
 conflicts=('imageplay')
-source=("git://github.com/cpvrlab/${_reponame}")
+source=("git+https://github.com/cpvrlab/${_reponame}.git")
 sha256sums=('SKIP')
 
 
