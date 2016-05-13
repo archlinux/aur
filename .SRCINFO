@@ -1,0 +1,19 @@
+pkgbase = emptyepsilon
+	pkgdesc = Open source spaceship bridge simulator
+	pkgver = 2016.05.07
+	pkgrel = 1
+	url = https://github.com/daid/EmptyEpsilon
+	arch = x86
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	makedepends = mesa
+	depends = sfml
+	source = git+https://github.com/daid/EmptyEpsilon.git#tag=EE-2016.05.07
+	source = git+https://github.com/daid/SeriousProton.git#tag=EE-2016.05.07
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = emptyepsilon
+
