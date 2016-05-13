@@ -1,0 +1,7 @@
+pkg/
+python2-neovim-git-*.pkg.*
+python2-neovim-git/
+src/
+pugdebug-git
+LICENSE
+pugdebug-git-*.pkg.*
