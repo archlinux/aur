@@ -14,6 +14,7 @@ depends_i686=('gcc-libs' 'libxt')
 depends_x86_64=('lib32-gcc-libs' 'lib32-libxt')  # lib32-gcc-libs or gcc-libs?
 optdepends=('java-environment: to do development')
 optdepends_x86_64=('bin32-jre7-openjdk: to run `emulator`')  # not sure, maybe needed for other executables
+#makedepends=('zip' 'unzip')  # needed for _CUSTOMIZE_CONFIG_PATH
 provides=('j2me')
 install='sun-wtk.install'
 source=('https://dl.dropboxusercontent.com/u/17413859/sun_java_wireless_toolkit-2.5.2_01-linuxi486.bin.sh'
