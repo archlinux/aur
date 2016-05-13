@@ -22,7 +22,7 @@ sha256sums=('33c6041f314cfe25b7cded4b71736a3986781c505209c1af766723a12d37b53b'
             '1e0ce430a338fc2747c2d2cdd23c1365dbd2e4b20c83cc600a8d641d6d7c9a0e')
 
 prepare() {
-	cd $pkgname_v$pkgver
+	cd ${pkgname}_v$pkgver
 	sed -i 's,/sbin/modprobe phc-k8 |,/sbin/modprobe phc-k8 \&\& /usr/bin/phc-k8 set |,' phc-k8.modprobe
 }
 
@@ -33,7 +33,7 @@ package() {
 	install -Dm755 phc-k8.sleep "$pkgdir/usr/lib/pm-utils/sleep.d/00phc-k8"
 	install -Dm755 phc-k8.system-sleep "$pkgdir/usr/lib/systemd/system-sleep/phc-k8"
 
-	cd $pkgname_v$pkgver
+	cd ${pkgname}_v$pkgver
 	install -Dm644 phc-k8.modprobe "$pkgdir/etc/modprobe.d/phc-k8.conf"
 	install -d "$pkgdir/usr/share/doc/$pkgname"
 	install -m644 Changelog README "$pkgdir/usr/share/doc/$pkgname/"
