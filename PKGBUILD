@@ -1,11 +1,11 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=nqp-git
-pkgver=20160419
+pkgver=20160513
 pkgrel=1
-pkgdesc="Lightweight Perl6-like environment for virtual machines, with MoarVM and JVM support"
+pkgdesc="Lightweight Perl6-like environment for virtual machines, with MoarVM support"
 arch=('i686' 'x86_64')
-depends=('java-runtime' 'moarvm')
+depends=('moarvm')
 makedepends=('git' 'make' 'perl')
 groups=('perl6')
 url="https://github.com/perl6/nqp"
@@ -24,7 +24,7 @@ build() {
   cd ${pkgname%-git}
 
   msg2 'Building...'
-  perl Configure.pl --prefix=/usr --backends=moar,jvm
+  perl Configure.pl --prefix=/usr --backends=moar
   make
 }
 
