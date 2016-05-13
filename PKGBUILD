@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=heirloom-doctools-git
-pkgver=160217
+pkgver=160308.r5.g3ce25a4.r292.3ce25a4
 pkgrel=1
 epoch=
 pkgdesc="The Heirloom Documentation Tools provide troff, nroff, and related utilities." 
@@ -40,7 +40,8 @@ prepare() {
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  printf "%s.r%s.%s" "$(git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g')" \
+                     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
