@@ -1,6 +1,6 @@
 # Maintainer: Franek Madej <franek.madej@gmail.com>
 pkgname=yadm
-pkgver=1.03.r3.g4948f1b
+pkgver=1.04.r10.g86bb3be
 pkgrel=1
 pkgdesc="Yet Another Dotfiles Manager"
 arch=('any')
