@@ -7,13 +7,13 @@
 pkgname=med-salome
 _pkgname=med
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - This version is built to be linked against salome-med on x86_64"
 url="http://www.code-aster.org/outils/med/"
 license=('LGPL')
-depends=('hdf5')
-makedepends=('gcc-fortran' 'coreutils')
-optdepends=('tk' 'python2')
+depends=('hdf5-1.8' 'python2')
+makedepends=('gcc-fortran' 'coreutils' 'swig')
+optdepends=('tk')
 provides=("med={pkgver}")
 conflicts=("med_fichier" "med")
 replaces=("med_fichier" "med")
@@ -45,8 +45,8 @@ build() {
   export PYTHON="$(which python2)"
 
   cd ${srcdir}/${_pkgname}-${pkgver}_SRC
- 
-  ./configure --with-f90=gfortran --prefix=${_installdir}  --with-med_int=int --datadir=${_sharedir} --with-swig=yes
+
+  ./configure --with-f90=gfortran --prefix=${_installdir}  --with-med_int=int --datadir=${_sharedir} --with-swig=yes --with-hdf5=/opt/hdf5-1.8
   make
 }
  
@@ -63,7 +63,6 @@ package() {
   rm -r ${pkgdir}/usr/bin/{usescases,unittests,testf,testc}
 }
 
-md5sums=('a1e1eb068f20634f5ea797914241eb51')
 md5sums=('a1e1eb068f20634f5ea797914241eb51'
          'b83949326d7ae0ca77a06822b754a329'
          '14a151cea108388d7a3b4c62887169f6'
