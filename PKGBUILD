@@ -9,14 +9,15 @@
 
 pkgname=ghetto-skype
 pkgver=1.0.1
-pkgrel=1
-pkgdesc='skype-web in an electron wrapper, with an indicator and desktop notifications'
+pkgrel=2
+pkgdesc='Web Skype + Tray Icon + Notifications'
 arch=('x86_64')
 url='https://github.com/stanfieldr/ghetto-skype'
 license=('GPLv3')
 depends=('libappindicator-gtk2')
 provides=('skype')
 conflicts=('skype')
+depends=('electron')
 makedepends=('git' 'npm')
 install=ghetto-skype.install
 source=("https://github.com/stanfieldr/ghetto-skype/archive/v${pkgver}.tar.gz")
@@ -25,28 +26,23 @@ sha256sums=('191de6e42f16f6b4d90550073247f6745faa7626f3e09dd60821b5c48bec6892')
 prepare() {
   cd "ghetto-skype-$pkgver"
 
-  sed -i -e "s|^INSTALLDIR=.*\$|INSTALLDIR=$srcdir/ghetto-skype-build|gm" \
-         -e "s|^\s*ln -sfn.*$||gm" Makefile
-}
+  echo "Patching browser-window dependency for use with electron-prebuilt..."
+  patch --silent main.js < ../../main.js.patch
 
-build() {
-  cd "$srcdir/ghetto-skype-$pkgver"
-
-  make install
+  echo "Patching the desktop shortcut to use electron-prebuilt..."
+  sed -i 's|^Exec=npm --prefix /opt/ghetto-skype start$|Exec=/usr/bin/ghetto-skype|g' assets/skype.desktop
 }
 
 package() {
-  cd "$srcdir/ghetto-skype-build"
-
   mkdir -p "$pkgdir/opt/ghetto-skype"
-  cp -R . "$pkgdir/opt/ghetto-skype"
+  cp -a "$srcdir/ghetto-skype-$pkgver/." "$pkgdir/opt/ghetto-skype"
 
-  rm "$pkgdir/opt/ghetto-skype/Makefile"
-  #TODO: There are still a bunch of references to $srcdir in the package because
-  #      of the node_modules directory. We should look into how other node apps
-  #      get packaged to prevent this warning.
+  install -Dm644 "$srcdir/ghetto-skype-$pkgver/assets/skype.desktop" "$pkgdir/usr/share/applications/ghetto-skype.desktop"
+  install -Dm644 "$srcdir/ghetto-skype-$pkgver/assets/tray/skype.png" "$pkgdir/usr/share/pixmaps/ghetto-skype.png"
+  install -Dm644 "$srcdir/ghetto-skype-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  install -Dm644 "$srcdir/ghetto-skype-build/assets/skype.desktop" "$pkgdir/usr/share/applications/ghetto-skype.desktop"
-  install -Dm644 "$srcdir/ghetto-skype-build/assets/tray/skype.png" "$pkgdir/usr/share/pixmaps/ghetto-skype.png"
-  install -Dm644 "$srcdir/ghetto-skype-build/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  find "${pkgdir}" -type d -exec chmod 755 {} +
+  find "${pkgdir}" -type f -exec chmod 644 {} +
+
+  install -Dm777 "$srcdir/../ghetto-skype" "$pkgdir/usr/bin/ghetto-skype"
 }
