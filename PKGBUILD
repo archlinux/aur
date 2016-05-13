@@ -1,4 +1,5 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
+# Contributor: jhrdka
 # Contributor: James An <james@jamesan.ca>
 # Contributor: ugaciaka <ugaciaka@gmail.com>
 
@@ -9,7 +10,7 @@ _pkgname=lightscribe-labeler
 
 pkgname=bin32-lightscribe-labeler
 pkgver=1.18.15.1
-pkgrel=3
+pkgrel=4
 pkgdesc="LightScribe Simple Labeler"
 arch=('x86_64')
 url="http://www.pawtec.com/lightscribe"
@@ -18,7 +19,8 @@ depends=('bin32-lightscribe' 'lib32-libstdc++5' 'lib32-qt4' 'lib32-libxi' 'lib32
 provides=("$_pkgname=$pkgver")
 conflicts=($_pkgname)
 options=('!strip')
-source=(http://download.lightscribe.com/ls/lightscribeApplications-$pkgver-linux-2.6-intel.rpm lightscribe-labeler.desktop)
+#source=(http://download.lightscribe.com/ls/lightscribeApplications-$pkgver-linux-2.6-intel.rpm lightscribe-labeler.desktop)
+source=(http://www.pawtec.com/lightscribe_files/Linux/LSL/lightscribeApplications-$pkgver-linux-2.6-intel.rpm lightscribe-labeler.desktop)
 md5sums=('bf5eb9aa41e3b5f4d0c879591464c1db'
          '02f2e57ec1773d906f8b15e6f1f95eae')
 
