@@ -2,7 +2,7 @@
 # Contributor: Nabobalis <nabil dot freij at gmail dot com>
 pkgname=python2-sunpy-git
 _gitname=sunpy
-pkgver=20150626
+pkgver=20160513
 pkgrel=1
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
