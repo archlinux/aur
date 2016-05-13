@@ -6,30 +6,43 @@
 
 pkgname=paraview-salome
 pkgver=4.2.0
-pkgrel=1
+pkgrel=3
 pkgdesc='Parallel Visualization Application using VTK - This version is built to be linked against salome modules'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
 license=('custom')
-depends=('qtwebkit' 'python2' 'ffmpeg-compat' 'boost' 'expat' 'freetype2' 'hdf5' 'libjpeg' 'libxml2' 'libtheora' 'libpng' 'libtiff' 'zlib' 'protobuf')
+depends=('qtwebkit' 'python2' 'ffmpeg' 'boost' 'expat' 'freetype2' 'hdf5-1.8' 'libjpeg' 'libxml2' 'libtheora' 'libpng' 'libtiff' 'zlib' 'protobuf')
 makedepends=('cmake' 'mesa' 'eigen3' 'doxygen')
 optdepends=('python2-matplotlib: Needed to support equation rendering using MathText markup language' 'python2-numpy: Needed for using some filters such as "Python Calculator"')
-source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}-source.tar.gz" "${pkgname}.png" "${pkgname}.desktop" "uint.patch" "gcc49.patch" "ParaView-4.2.0.patch" "surface_lic.png" )
+source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}-source.tar.gz" "${pkgname}.png" "${pkgname}.desktop" "uint.patch" "gcc49.patch" "gcc6.patch" "ffmpeg-3.patch" "ParaView-4.2.0.patch" "surface_lic.png" )
 
 options=(staticlibs)
 provides=("paraview=${pkgver}")
 
-# _installdir=/opt/paraview43
+# _installdir=/opt/${pkgname}
 _installdir=/usr
 
 prepare(){
+  cd "${srcdir}"
+
+  if [ -d build ]; then
+    rm -rf build
+  fi 
+
   cd "${srcdir}/ParaView-v${pkgver}-source"
   
   # patch to solve gcc49 compatiblity
   patch -Np1 -i "${srcdir}/gcc49.patch"
+
+  # patch for gcc6 compatibility
+  sed -i -e "s|345|3456|" {VTK/CMake/GenerateExportHeader.cmake,VTK/CMake/vtkCompilerExtras.cmake}
+  patch -Np1 -i "${srcdir}/gcc6.patch"
   
   # patch to solve uint conversion to int
   patch -Np1 -i "${srcdir}/uint.patch"
+
+  # patch to copile with ffmpeg-3
+  patch -Np1 -i "${srcdir}/ffmpeg-3.patch"
 
   # patch from salome-platform
   patch -Np1 -i "${srcdir}/ParaView-4.2.0.patch"
@@ -53,6 +66,7 @@ build() {
 
   # cmake general settings
   cmake_options+=" -DCMAKE_BUILD_TYPE:STRING=Release"
+  # cmake_options+=" -DCMAKE_CXX_STANDARD=98"
   cmake_options+=" -DCMAKE_INSTALL_PREFIX=${_installdir}"
   cmake_options+=" -DBUILD_SHARED_LIBS=ON"
   cmake_options+=" -DBUILD_TESTING=OFF"
@@ -94,6 +108,15 @@ build() {
   else
     cmake_options+=" -DVTK_WRAP_TCL:BOOL=OFF"
   fi
+
+  # force usage of hdf5-1.8
+  local hdf5dir="/opt/hdf5-1.8"
+  cmake_options+=" -DHDF5_C_COMPILER_EXECUTABLE=${hdf5dir}/bin/h5cc"
+  cmake_options+=" -DHDF5_C_INCLUDE_DIR=${hdf5dir}/include"
+  cmake_options+=" -DHDF5_DIFF_EXECUTABLE=${hdf5dir}/bin/h5diff"
+  cmake_options+=" -DHDF5_HL_INCLUDE_DIR=${hdf5dir}/include"
+  cmake_options+=" -DHDF5_hdf5_LIBRARY_RELEASE=${hdf5dir}/lib/libhdf5.so"
+  cmake_options+=" -DHDF5_hdf5_hl_LIBRARY_RELEASE=${hdf5dir}/lib/libhdf5_hl.so"
 
   # Java settings
   cmake_options+=" -DVTK_WRAP_JAVA:BOOL=OFF"
@@ -163,11 +186,11 @@ build() {
   cmake_options+=" -DPARAVIEW_ENABLE_FFMPEG=ON"
   
   # flags to use ffmpeg-compat instead of ffmpeg
-  cmake_options+=" -DFFMPEG_INCLUDE_DIR=/usr/include/ffmpeg-compat"
-  cmake_options+=" -DFFMPEG_avcodec_LIBRARY=/usr/lib/ffmpeg-compat/libavcodec.so"
-  cmake_options+=" -DFFMPEG_avformat_LIBRARY=/usr/lib/ffmpeg-compat/libavformat.so"
-  cmake_options+=" -DFFMPEG_avutil_LIBRARY=/usr/lib/ffmpeg-compat/libavutil.so"
-  cmake_options+=" -DFFMPEG_swscale_LIBRARY=/usr/lib/ffmpeg-compat/libswscale.so"
+  # cmake_options+=" -DFFMPEG_INCLUDE_DIR=/usr/include/ffmpeg-compat"
+  # cmake_options+=" -DFFMPEG_avcodec_LIBRARY=/usr/lib/ffmpeg-compat/libavcodec.so"
+  # cmake_options+=" -DFFMPEG_avformat_LIBRARY=/usr/lib/ffmpeg-compat/libavformat.so"
+  # cmake_options+=" -DFFMPEG_avutil_LIBRARY=/usr/lib/ffmpeg-compat/libavutil.so"
+  # cmake_options+=" -DFFMPEG_swscale_LIBRARY=/usr/lib/ffmpeg-compat/libswscale.so"
 
   # let's start
   cmake -Wno-dev \
@@ -214,5 +237,7 @@ md5sums=('77cf0e3804eb7bb91d2d94b10bd470f4'
          'e3ba22be644f91da7018f429c3b7dd39'
          'e034fc590bd332175dcd6bf126f14d97'
          '12fa547d0c79ea6a780279712574a5fe'
+         '951e035583c784986a3cd5e7e35519e2'
+         '58055ab1dd936cc233120b10f4e7eaa7'
          '3e4c48633eb337c42653f51e6112f347'
          '2f3f049a703224ca230eadffd5016455')
