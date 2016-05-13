@@ -1,6 +1,6 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 pkgname=rustup
-pkgver=0.1.10
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="The Rust toolchain installer"
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('rust' 'cargo' 'rust-nightly' 'rust-nightly-bin' 'multirust' 'multiru
 replaces=('multirust' 'multirust-git')
 install='post.install'
 source=("${pkgname}-${pkgver}.tgz::https://github.com/rust-lang-nursery/rustup.rs/archive/${pkgver}.tar.gz")
-md5sums=('76364213b15e39e0ebee86985def3a7c')
+md5sums=('4d1b35192eeea327e72b5aa254581cca')
 
 build() {
 	cd "$pkgname.rs-$pkgver"
@@ -23,10 +23,12 @@ build() {
 		cargo build --release --bin rustup-init
 	elif command -v rustup >/dev/null 2>&1; then
 		msg2 "Building rustup-init using old rustup"
-		rustup run nightly cargo build --release --bin rustup-init
+		rustup install nightly-2016-05-10
+		rustup run nightly-2016-05-10 cargo build --release --bin rustup-init
 	elif command -v multirust >/dev/null 2>&1; then
 		msg2 "Building rustup-init using multirust"
-		multirust run nightly cargo build --release --bin rustup-init
+		multirust install nightly-2016-05-10
+		multirust run nightly-2016-05-10 cargo build --release --bin rustup-init
 	else
 		echo "Could not find beta/nightly cargo to use for compilation"
 		exit 1
