@@ -4,7 +4,7 @@
 pkgname=gtk-theme-arc-flatabulous-git
 _pkgname=arc-flatabulous-theme
 _pkgauthor=andreisergiu98
-pkgver=510.cf62cb0
+pkgver=20160513
 pkgrel=1
 pkgdesc="Arc-Flatabulous theme is the Arc theme with Flatabulous window controls. Latest commit from the master branch on Github."
 arch=('any')
