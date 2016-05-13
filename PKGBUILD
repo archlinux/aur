@@ -4,7 +4,7 @@
 
 pkgname=gmusicbrowser
 pkgver=1.1.15
-pkgrel=2
+pkgrel=3
 pkgdesc="A customizable open-source jukebox for large collections"
 arch=('any')
 url="http://gmusicbrowser.org"
@@ -35,7 +35,7 @@ optdepends=('alsa-utils: enables the ALSA backend'
             'perl-net-dbus: control gmusicbrowser through dbus and gnome hotkeys'
             'perl-gtk2-notify: show notifications using libnotify'
             'perl-html-parser: support for accented characters in lyrics plugin')
-conflicts=('gmusicbrowser-devel' 'gmusicbrowser-development' 'gmusicbrowser-git' 'gmusicbrowser-shimmer' 'gmusicbrowser-shimmer-git')
+conflicts=('gmusicbrowser-git' 'gmusicbrowser-shimmer' 'gmusicbrowser-shimmer-git')
 options=('!libtool')
 install=$pkgname.install
 source=($url/download/$pkgname-$pkgver.tar.gz)
