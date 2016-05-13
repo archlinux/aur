@@ -1,18 +1,18 @@
-# $Id: PKGBUILD 229623 2015-01-21 06:23:41Z bisson $
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: Madotsuki <madotsuki@national.shitposting.agency>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 # Contributor: Brad Gordon <brad@rpgcyco.net>
 
 pkgname=libmowgli
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='Performance and usability-oriented extensions to C'
 url='http://atheme.org/projects/libmowgli.html'
 license=('custom')
 arch=('i686' 'x86_64')
 depends=('openssl')
 makedepends=('git')
-source=("${pkgname}-${pkgver}::git+https://github.com/atheme/libmowgli-2.git#tag=${pkgname}-${pkgver}")
+source=("${pkgname}-${pkgver}::git+https://github.com/atheme/libmowgli-2.git")
 sha1sums=('SKIP')
 
 build() {
