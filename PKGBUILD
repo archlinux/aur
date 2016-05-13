@@ -16,7 +16,8 @@ url="http://www.hdfgroup.org/HDF5/"
 license=('custom')
 depends=('zlib' 'sh')
 makedepends=('time')
-source=(ftp://ftp.hdfgroup.org/HDF5/current/src/${_pkgname}-${pkgver/_/-}.tar.bz2)
+install="${pkgname}.install"
+source=(ftp://ftp.hdfgroup.org/HDF5/releases/${_pkgname}-${pkgver}/src/${_pkgname}-${pkgver/_/-}.tar.bz2)
 sha1sums=('640f1a46cb1b353339695355b4fca42df05be765')
 
 build() {
