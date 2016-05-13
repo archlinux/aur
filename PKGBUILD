@@ -1,8 +1,8 @@
 # Maintainer: mickele <mimocciola[__at__]yahoo[__dot__]com>
 pkgname=qcost
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
-pkgdesc="QCost is a software to write."
+pkgdesc="QCost is a software to write bill of quantities in the construction world."
 url="http://ingegnerialibera.altervista.org/wiki/doku.php/qcost:indice"
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -12,7 +12,7 @@ makedepends=()
 conflicts=()
 replaces=()
 backup=()
-source=("http://downloads.sourceforge.net/project/qcost/0.8.1/QCost_${pkgver}_src.tar.gz" "qcost.desktop")
+source=("http://downloads.sourceforge.net/project/qcost/${pkgver}/QCost_${pkgver}_src.tar.bz2" "qcost.desktop")
 
 build() {
   cd "${srcdir}/QCost_${pkgver}_src"
@@ -28,7 +28,5 @@ package() {
   install -D -m 644 "icons/qcost.svg" "${pkgdir}/usr/share/pixmaps/qcost.svg"
   desktop-file-install --dir="${pkgdir}/usr/share/applications" "${srcdir}/qcost.desktop"
 }
-
-
-md5sums=('9129d750a7ac3651bc61646f341b2ba8'
+md5sums=('c82e72b452d280f9f16bc35ebc49e547'
          '49d45054eed165ac72e3287d68bcee2b')
