@@ -3,7 +3,7 @@
 
 pkgname=sfcgal-git
 _pkgname=sfcgal
-pkgver=806.bd9f8cb
+pkgver=0
 pkgrel=1
 pkgdesc="Wrapper around the CGAL library that intents to implement 2D and 3D operations on OGC standards models"
 arch=(i686 x86_64)
