@@ -1,0 +1,14 @@
+pkgbase = libtommath-git
+	pkgdesc = A free open source portable number theoretic multiple-precision integer library written entirely in C
+	pkgver = 447f7b8
+	pkgrel = 1
+	url = http://www.libtom.org/LibTomMath/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	source = libtommath-git-447f7b8::git+https://github.com/libtom/libtommath.git
+	sha1sums = SKIP
+
+pkgname = libtommath-git
+
