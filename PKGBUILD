@@ -1,8 +1,7 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
-
 pkgname=spigot
-pkgver=1.9.2
-pkgrel=2
+pkgver=1.9.4
+pkgrel=1
 pkgdesc="High performance Minecraft server implementation"
 arch=(any)
 url="https://www.spigotmc.org/"
@@ -22,7 +21,7 @@ source=("https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/art
 "${pkgname}.conf"
 "${pkgname}.sh")
 noextract=("BuildTools.jar")
-md5sums=('SKIP'
+md5sums=('98ba43d2f5eafb0d883c0dafc00e19e8'
          '7bb2dc610c5f55e133bd41ab608ec7a1'
          '872d2e03799f1f8f0c75acdebce91894'
          '1eb2d5f485cf9eff7a99c826ad56fcf4'
