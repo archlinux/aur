@@ -1,15 +1,16 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=moarvm-git
-pkgver=20160418
+pkgver=20160513
 pkgrel=1
 pkgdesc="6model-based VM for NQP and Rakudo Perl6"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
-depends=('dyncall' 'libatomic_ops' 'libtommath' 'libuv' 'llvm')
-makedepends=('clang' 'git' 'make' 'perl' 'pkg-config')
+depends=('dyncall' 'libatomic_ops' 'libffi' 'libtommath' 'libuv')
+makedepends=('binutils' 'gcc' 'git' 'make' 'perl' 'pkg-config')
 groups=('perl6')
 url="https://github.com/MoarVM/MoarVM"
 license=('PerlArtistic')
+options=('!purge')
 source=(${pkgname%-git}::git+https://github.com/MoarVM/MoarVM
         dynasm::git+https://github.com/MoarVM/dynasm)
 sha256sums=('SKIP' 'SKIP')
@@ -38,9 +39,10 @@ build() {
   perl Configure.pl \
     --prefix=/usr \
     --toolchain=gnu \
-    --compiler=clang \
+    --compiler=gcc \
     --has-dyncall \
     --has-libatomic_ops \
+    --has-libffi \
     --has-libtommath \
     --has-libuv \
     --optimize
@@ -50,9 +52,15 @@ build() {
 package() {
   cd ${pkgname%-git}
 
+  msg2 'Installing documentation...'
+  install -Dm 644 README.markdown -t "$pkgdir/usr/share/doc/${pkgname%-git}"
+  cp -dpr --no-preserve=ownership docs \
+    "$pkgdir/usr/share/doc/${pkgname%-git}/design"
+
+  msg2 'Installing license...'
+  install -Dm 644 Artistic2.txt CREDITS LICENSE \
+          -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
+
   msg2 'Installing...'
   make DESTDIR="$pkgdir" install
-
-  msg2 'Cleaning up pkgdir...'
-  rm -rf "$pkgdir/usr/include/"{libtommath,libuv}
 }
