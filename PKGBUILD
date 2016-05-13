@@ -4,7 +4,7 @@
 # Contributor: Roman Pearah
 
 pkgname=netextender
-pkgver=8.5.792
+pkgver=8.5.793
 pkgrel=1
 pkgdesc="SonicWALL SSL VPN Client"
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ license=('custom')
 depends=('java-environment' 'bash' 'ppp' 'net-tools')
 source_i686=("https://sslvpn.demo.sonicwall.com/NetExtender.Linux.${pkgver}.x86.tgz")
 source_x86_64=("https://sslvpn.demo.sonicwall.com/NetExtender.Linux.${pkgver}.x86_64.tgz")
-sha256sums_i686=('56bda2fb5a7a76458dbbc887674848d1df85e2335122c2de8258092a0fedf319')
-sha256sums_x86_64=('7f639a068de52d5476919f57e8447475b1017eb5e5ad310c75de70eeece0bca3')
+sha256sums_i686=('10b7e06ea418bef514cc413143c3d73c6032958f9cdf1fadcef8340180392f2f')
+sha256sums_x86_64=('42038fd28989bf76fb1d616a89874cd1cb38b269cd144c9821a7cc9cea3994a2')
 install="${pkgname}.install"
 
 package() {
