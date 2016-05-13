@@ -1,12 +1,13 @@
 # Maintainer: Facundo Tuesca <facutuesca at gmail dot com>
 pkgname="brother-hl2140"
 pkgver="2.0.2_1"
-pkgrel=3
+pkgrel=4
 pkgdesc="LPR and CUPS driver for the Brother HL2140"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
 license=('custom:brother commercial license')
-depends=('cups')
+depends=('cups'
+         'ghostscript')
 install='brother-hl2140.install'
 source=(
 	"http://www.brother.com/pub/bsc/linux/dlf/brhl2140lpr-${pkgver//_/-}.i386.rpm"

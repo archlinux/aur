@@ -1,13 +1,15 @@
 pkgbase = brother-hl2140
 	pkgdesc = LPR and CUPS driver for the Brother HL2140
 	pkgver = 2.0.2_1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://solutions.brother.com/linux/en_us/
 	install = brother-hl2140.install
 	arch = i686
 	arch = x86_64
 	license = custom:brother commercial license
 	depends = cups
+	depends = ghostscript
+	depends = lib32-glibc
 	source = http://www.brother.com/pub/bsc/linux/dlf/brhl2140lpr-2.0.2-1.i386.rpm
 	source = http://www.brother.com/pub/bsc/linux/dlf/cupswrapperHL2140-2.0.2-1.i386.rpm
 	source = cupswrapper-license.txt
