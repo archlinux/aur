@@ -3,26 +3,19 @@
 # Contributor: Jonathan Thomas <jonathan@openshot.org>
 
 pkgname=libopenshot
-pkgver=0.0.6
-pkgrel=4
+pkgver=0.1.1
+pkgrel=1
 pkgdesc="A high quality, open-source video editing, animation, and playback library for C++, Python, and Ruby."
 arch=('i686' 'x86_64')
 url="http://openshot.org/"
 license=('LGPL3')
 depends=('imagemagick' 'ffmpeg' 'libx264' 'libopenshot-audio' 'python' 'qt5-base' 'qt5-multimedia' 'ruby')
 makedepends=('cmake' 'doxygen' 'swig' 'unittestpp')
-source=("https://launchpad.net/libopenshot/0.0/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz" libopenshot-ffmpeg3.patch)
-sha256sums=('8b1009b146ae5fab50a784534f32ef796cf5b4e59617dde7633fa5995e4ef0f9'
-            '2d9d6a881944b6a04da90e89561996eeb46fb62183d12f86e529d29f0cd8be65')
-
-prepare() {
-  cd $pkgname-$pkgver
-# Fix build with ffmpeg 3.0
-  patch -p1 -i ../libopenshot-ffmpeg3.patch
-}
+source=("https://launchpad.net/libopenshot/0.1/${pkgver}/+download/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('7f79084b0fda085ee5740f4907a2ac4bd736de6b3c4958b4441f49eaedfc7eee')
 
 build() {
-	cd "${srcdir}/${pkgname}-${pkgver}"
+#	cd ${pkgname}-${pkgver}
 	mkdir build
 	cd build
 	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DMAGICKCORE_HDRI_ENABLE=1 -DMAGICKCORE_QUANTUM_DEPTH=16 ../
@@ -30,7 +23,8 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname}-${pkgver}/build"
+#	cd ${pkgname}-${pkgver}
+        cd build
 	make DESTDIR="${pkgdir}" install
 }
 
