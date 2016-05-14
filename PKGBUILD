@@ -1,10 +1,10 @@
-# Maintainer: Alexander Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=corrade
 pkgver=2016.05.13
 pkgrel=1
-pkgdesc='C++11/C++14 multiplatform utility library'
+pkgdesc='Utility library for C++11/C++14'
 arch=('x86_64' 'i686')
 url='http://mosra.cz/blog/corrade.php'
 license=('MIT')
@@ -16,7 +16,7 @@ build() {
   mkdir -p build
   cd build
 
-  cmake ../corrade \
+  cmake "../$pkgname" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -GNinja
