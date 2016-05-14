@@ -1,0 +1,19 @@
+--- a/Makefile.Linux	2016-04-07 19:39:17.000000000 +0200
++++ b/Makefile.Linux	2016-05-14 17:04:15.122758334 +0200
+@@ -42,11 +42,11 @@
+ DEFS += -DUSE_CDROM
+ 
+ # optional: avifile
+-DEFS += -DUSE_AVIFILE
+-INCS += `avifile-config --cflags`
+-LIBS += `avifile-config --libs`
+-TARGET += simple_aviplay$(EXESUFFIX)
+-EXT_OBJS += AVIWrapper$(OBJSUFFIX)
++# DEFS += -DUSE_AVIFILE
++# INCS += `avifile-config --cflags`
++# LIBS += `avifile-config --libs`
++# TARGET += simple_aviplay$(EXESUFFIX)
++# EXT_OBJS += AVIWrapper$(OBJSUFFIX)
+ 
+ # optional: lua
+ DEFS += -DUSE_LUA
