@@ -10,12 +10,12 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-lts318       # Build kernel with a different name
 _srcname=linux-3.18
-pkgver=3.18.32
+pkgver=3.18.33
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'gcc5')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.sign"
@@ -29,7 +29,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         )
 sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             'SKIP'
-            '63c163fbb5bb68eed94c7925e807ec34fed1e888112810e6784b874828784c84'
+            '1380ee1cfa7ededaf0b206c0a8e4d364fa16285e0b4b2d653f22f01a29694faf'
             'SKIP'
             'c9821d2a786b569233833c3074c7bb4e9c0d50ab903a9b9aeb8784d95c87a52d'
             '781d5cb410935f3f904a539ecdb0b49f2d87c95a0f05c665b19b97a9d14dd40e'
@@ -91,7 +91,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_srcname}"
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make CC="gcc-5" ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
 _package() {
