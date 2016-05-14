@@ -2,15 +2,18 @@
 
 pkgname=lgogdownloader-git
 pkgver=2.28.r0.gf0f6708
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source downloader for GOG.com games, uses the GOG.com API (git version)"
 url="http://www.gog.com/en/forum/general/lgogdownloader_gogdownloader_for_linux"
 arch=(i686 x86_64)
 license=(WTFPL)
-makedepends=('help2man' 'cmake' 'git' 'gcc<=5.3..0')  
+depends=('boost>=1.6.0-5' 'boost-libs=>1.6.0-5' 'jsoncpp' 'liboauth' 'rhash' 'tinyxml' 'htmlcxx')
+makedepends=('help2man' 'cmake' 'git')  
 provides=('lgogdownloader')
 conflicts=('lgogdownloader')
 _gitname="lgogdownloader"
+source=('git://github.com/Sude-/lgogdownloader.git')
+sha256sums=('SKIP')
 
 # lgogdownloader has a new experimental aria2 feature available
 # set _aria2 to "yes" to enable it
@@ -19,14 +22,14 @@ _gitname="lgogdownloader"
 _aria2="no"
 
 if [ "$_aria2" == "no" ]; then
-	depends=('boost' 'jsoncpp' 'liboauth' 'rhash' 'tinyxml' 'htmlcxx' 'curl')
-	source=('git://github.com/Sude-/lgogdownloader.git')
-	sha256sums=('SKIP')
-elif [ "$_aria2" == "yes" ]; then
 
-	depends=('boost' 'jsoncpp' 'liboauth' 'rhash' 'tinyxml' 'htmlcxx' 'aria2')
+	depends=("$depends" 'curl')
+
+elif [ "$_aria2" == "yes" ]; then
+	depends=("$depends" 'aria2')
+
 	source=(
-		'git://github.com/Sude-/lgogdownloader.git' 
+		"$source" 
 		'https://sites.google.com/site/gogdownloader/use_aria2.diff'
 	)
 	sha256sums=(
@@ -34,7 +37,7 @@ elif [ "$_aria2" == "yes" ]; then
 		'539748573dfde781d29a1fed6bf7f0815353d8e93f1988a73ef9cd13459720ff'
 	)
 else
-	error "$_aria2: Invalid option for _aria2 switch in PKGBUILD."
+	error "$_aria2: Invalid option for _aria2 switch in PKGBUILD. Expected 'yes' or 'no'."
 	return 1
 fi
 
@@ -45,11 +48,6 @@ pkgver() {
 
 prepare() {
 	cd $srcdir/${_gitname}
-
-# This is probably redundant since we flush repos before a rebuild,
-# but we'll need it in the non-git version
-# So it's here for self reference, mostly.
-# Please direct complaints to /dev/null
 
 	if [ ! -d "build" ]; then
 		mkdir build
