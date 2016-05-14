@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/dylanaraps/$pkgname"
 license=('MIT')
 conflicts=(${pkgname}-git)
-depends=('bash' 'xorg-xprop')
+depends=('bash')
 optdepends=(
   'cmus: Current Song'
   'feh: Wallpaper Display'
@@ -17,8 +17,9 @@ optdepends=(
   'nitrogen: Wallpaper Display'
   'scrot: Take a screenshot'
   'w3m: Display Images'
-  'xorg-xdpyinfo: resolution detection (Single Monitor)'
-  'xorg-xrandr: resolution detection (Multi Monitor + Refresh rates)'
+  'xorg-xdpyinfo: Resolution detection (Single Monitor)'
+  'xorg-xrandr: Resolution detection (Multi Monitor + Refresh rates)'
+  'xorg-xprop: Desktop Environment and Window Manager'
 )
 source=("https://github.com/dylanaraps/${pkgname}/archive/${pkgver}.tar.gz")
 md5sums=('3e9fd67a9a003df202e3495e0e17ede4')
