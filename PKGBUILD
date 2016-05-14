@@ -4,14 +4,16 @@
 # Contributor: nous <nous at archlinux.us>
 # Contributor: pressh
 
+
+
 pkgname=kdenlive-git
-pkgver=15.13.0.r7000.33fd3f7
+pkgver=16.07.70.r7382.39c5d39
 pkgrel=1
 pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (GIT Version)"
 arch=('i686' 'x86_64')
 url="http://www.kdenlive.org/"
 license=('GPL')
-depends=('qt5-quickcontrols' 'knewstuff' 'kplotting' 'knotifyconfig' 'mlt' 'hicolor-icon-theme')
+depends=('qt5-webkit' 'kfilemetadata' 'knewstuff' 'kplotting' 'knotifyconfig' 'mlt' 'hicolor-icon-theme')
 makedepends=('extra-cmake-modules' 'kdoctools' 'git' 'v4l-utils')
 optdepends=('ffmpeg: for FFmpeg plugin'
             'cdrkit: for creation of DVD ISO images'
