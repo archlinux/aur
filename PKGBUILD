@@ -37,6 +37,7 @@ build() {
 }
 
 package() {
+    cd "${srcdir}/$pkgname-$pkgver"
     make DESTDIR=${pkgdir} install
     install -Dsm755 "${srcdir}/$pkgname-$pkgver/brightd"   "${pkgdir}/usr/bin/brightd"
     install -Dm644  "${srcdir}/$pkgname-$pkgver/brightd.1" "${pkgdir}/usr/share/man/man1/brightd.1"
