@@ -2,7 +2,7 @@
 # Contributor: Rafael Beraldo <rafaelluisberaldo@gmail.com>
 
 pkgname=abntex2
-pkgver=1.9.5
+pkgver=1.9.6
 pkgrel=1
 pkgdesc="a LaTeX class for writing ABNT-compliant documents"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('LPPL')
 depends=('texlive-core')
 source=("http://dl.bintray.com/laurocesar/generic/${pkgname}.tds-${pkgver}.tar.gz")
 conflicts=('texlive-publishers')
-sha1sums=('f2174fef4a0c21dbe3f058ba1cc166c2f5872fa3')
+sha1sums=('044c074cb263bb7a9cb51f3ce394a15264064190')
 
 install=abntex2.install
 
