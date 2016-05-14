@@ -18,7 +18,7 @@ _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=51.0.2704.19
+pkgver=52.0.2729.3
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -81,26 +81,25 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r2.patch'
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-snapshot-toolchain-r1.patch'
         # Misc Patches
-        'enable_vaapi_on_linux-r8.diff'
+        'enable_vaapi_on_linux-r11.diff'
         'chromium-system-jinja-r9.patch'
         'minizip.patch::http://pastebin.com/raw/QCqSDam5'
         # Patch from crbug (chromium bugtracker)
-        'chromium-widevine-r0.patch' # https://crbug.com/473866
+        'chromium-widevine-r1.patch' # https://crbug.com/473866
         )
-sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?marker=chromium-${pkgver}.tar.x | awk -v FS='<td>"' -v RS='"</td>' '$0=$2' | head -n1)"
-          "$(curl -sL "https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes" | grep sha1 | cut -d " " -f3)"
+sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?marker=chromium-${pkgver}.tar.xz.hashes | awk -v FS='<td>"' -v RS='"</td>' '$0=$2' | head -n1)"
+          "$(curl -sL https://commondatastorage.googleapis.com/chromium-browser-official/chromium-${pkgver}.tar.xz.hashes | grep sha1 | cut -d " " -f3)"
           'd18f8d96e80be9c31d994cc6362d7d8041c53319'
           '336976cb66bf8df71fc7f2e92aa723891b6efb53'
           # Patch form Gentoo
-          #'c24d14029714d2295f3220a7173a5a7362f578a2'
           '450cd81653499eb50f0f7df1b0d4d1c1620365a5'
           '7b9c1a7e0e581413dbebb0e894f68ce2f2ba0e6a'
           # Misc Patches
-          '69d217a07f2490413d0bb9e069115dbfc6741497'
+          'a94c39fb32f0ca5b68f16dde4e117537c652dcc8'
           '1063521b4e3bf1bb25b666ef7423968886fe055c'
           'bc90b327b05dbecaa88da43211ae0a4ed0c6c57f'
           # Patch from crbug (chromium bugtracker)
-          'fa9ff0ff9049784b4a1ec37292530ae61aece610'
+          '3032c9aeb68d80d8ef3cb8029be0d06ee402fa7f'
           )
 options=('!strip')
 install=chromium-dev.install
@@ -197,7 +196,6 @@ _necesary=('base/third_party/dmg_fp'
            'breakpad/src/third_party/curl'
            'chrome/third_party/mozilla_security_manager'
            'courgette/third_party'
-           'crypto/third_party/nss'
            'native_client/src/third_party/dlmalloc'
            'native_client_sdk/src/libraries/third_party/newlib-extras'
            'net/third_party/mozilla_security_manager'
@@ -271,6 +269,7 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/pdfium/third_party/zlib_v128'
            'third_party/polymer'
            'third_party/protobuf'
+           'third_party/protobuf/third_party/six'
            'third_party/qcms'
            'third_party/re2'
            'third_party/sfntly'
@@ -441,13 +440,13 @@ prepare() {
   patch -p0 -i "${srcdir}/chromium-snapshot-toolchain-r1.patch"
 
   # Misc Patches:
-  patch -p1 -i "${srcdir}/enable_vaapi_on_linux-r8.diff"
+  patch -p1 -i "${srcdir}/enable_vaapi_on_linux-r11.diff"
   patch -p0 -i "${srcdir}/chromium-system-jinja-r9.patch"
   patch -p1 -i "${srcdir}/minizip.patch"
 
   # Patch from crbug (chromium bugtracker)
   # https://crbug.com/473866
-  patch -p0 -i "${srcdir}/chromium-widevine-r0.patch"
+  patch -p0 -i "${srcdir}/chromium-widevine-r1.patch"
   sed 's|@WIDEVINE_VERSION@|The Cake Is a Lie|g' -i "third_party/widevine/cdm/stub/widevine_cdm_version.h"
 
   ##

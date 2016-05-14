@@ -19,16 +19,9 @@ ${green}==>${all_off} ${bold}This Chromium package no longer supports custom fla
 }
 
 post_install() {
-  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
-  update-desktop-database -q
   _instructions
 }
 
 post_upgrade() {
-  post_install $1
-}
-
-post_remove() {
-  xdg-icon-resource forceupdate --theme hicolor &> /dev/null
-  update-desktop-database -q
+  _instructions
 }
