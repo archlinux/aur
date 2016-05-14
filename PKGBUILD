@@ -1,7 +1,7 @@
 # Maintainer: mrxx <mrxx at cyberhome dot at>
 
 pkgname=securefs
-pkgver=0.3.2
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A better transparent encryption filesystem"
 arch=('i686' 'x86_64')
@@ -25,5 +25,5 @@ package() {
     cd "$srcdir/$pkgname"
     install -Dm755 build/securefs "$pkgdir"/usr/bin/securefs
     install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-    install -Dm644 docs/changelog.md ${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG
+    install -Dm644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README
 }
