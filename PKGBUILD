@@ -2,20 +2,20 @@
 # Contributor: Joel Pedraza <joel@joelpedraza.com>
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 
-_rev=r02
+_rev=r03
 _sdkver=4.4
 _sdkint=19
 pkgname=android-armv7a-eabi-system-image-${_sdkint}
 pkgver=${_sdkver}_${_rev}
 pkgrel=1
-pkgdesc='Android ARM EABI v7a System Image, API-${_sdkint}'
+pkgdesc="Android ARM EABI v7a System Image, API-${_sdkint}"
 arch=('any')
 url="http://developer.android.com/sdk/index.html"
 license=('custom')
 depends=("android-platform-${_sdkint}")
 options=('!strip')
-source=("http://dl.google.com/android/repository/sysimg_armv7a-${_sdkint}_${_rev}.zip")
-sha1sums=('e0d375397e28e3d5d9577a00132463a4696248e5')
+source=("http://dl.google.com/android/repository/sys-img/android/sysimg_armv7a-${_sdkint}_${_rev}.zip")
+sha1sums=('5daf7718e3ab03d9bd8792b492dd305f386ef12f')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/system-images/android-${_sdkint}/"
