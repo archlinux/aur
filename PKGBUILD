@@ -13,9 +13,9 @@
 pkgname=('tuxjdk' 'tuxjdk-src' 'tuxjdk-doc')
 _java_ver=8
 # Found @ http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
-_jdk_update=66
+_jdk_update=92
 # Found @ http://hg.openjdk.java.net/jdk8u/jdk8u
-_jdk_build=17
+_jdk_build=14
 _tuxjdk_ver=03
 pkgver=${_java_ver}.${_jdk_update}.${_tuxjdk_ver}
 _repo_ver=jdk${_java_ver}u${_jdk_update}-b${_jdk_build}
@@ -25,6 +25,7 @@ url='https://github.com/tuxjdk/tuxjdk'
 license=('custom')
 makedepends=('jdk7-openjdk' 'ccache' 'cpio' 'unzip' 'zip'
              'libxrender' 'libxtst' 'fontconfig' 'libcups' 'alsa-lib'
+             'gcc5'
              'quilt')
 _url_src=http://hg.openjdk.java.net/jdk8u/jdk8u
 source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
@@ -37,15 +38,15 @@ source=(jdk8u-${_repo_ver}.tar.gz::${_url_src}/archive/${_repo_ver}.tar.gz
         nashorn-${_repo_ver}.tar.gz::${_url_src}/nashorn/archive/${_repo_ver}.tar.gz
         https://github.com/tuxjdk/tuxjdk/archive/${pkgver}.tar.gz)
 
-sha256sums=('7bd68bbe99094c46744dbaf5563e3e49b08adc8ed7a8e24d8f10520d42b1a63b'
-            '1dfa95d3e5747a48f2acf91b4c3f3b7233f65fd37078c096015ade80ceb5d93d'
-            'f552ab7216d233296f64cb2551f43090b4ff1c0383bec365c910a913e25e61bb'
-            'a6368996acc5f914acab7b000ce70f387b7994776fb00dc82882bdefc676c77b'
-            '317f85ae5af4d2be44b8b5a4318512d344895e978530cc87544bf9987860b0cb'
-            'e4a95401c4e45fc0471e42b2b62bdfad025eee57715583ce58b0da785159e2eb'
-            'b58d81b7e873c2ebd9f96a6bbd538f68c1f457e4dfea3b262e52973a33f2e6f7'
-            'ad5c17b67999179966175caa35684056a48eb74186191e8f1b8ff900b580b25a'
-            '5ef3211b960858e5a5e168664fd3250821035c894a469f220a45978d401eb68c')
+sha256sums=('19bc6028c18dd1993f734dc49991c181138e2e85ead42354d7236fb3c6169e16'
+            '287edac284f4b97f48a14fea331455c3807bcffd51612278decb0ac265303069'
+            '653821c6d3e542b4922aeedea6e25efb6d3c6ea2aaa0f5b038e6af972accf814'
+            '9a344a13bb327c5533c22c95b2cf3935d1d4c1612366e1d142b265dd6b93fe69'
+            '77aea5c781d6614b4be391befc59e3017d2d9c9303b6bc2ca9d316cb35954a89'
+            '63eff7fe1f6a0dd7ec0c450724a403dcff986e026b5b9ae9ac46edc7222f798c'
+            '374d12d1434172c775f0ecd944d0a903cd56264a4c9d5ef0be038715e47e67fd'
+            '76a18e240a8498c8d2a3a261b7845c8062dbf85941425adcd96f9e879141b3e6'
+            '418a9b7fdec14947cb038df4fdf2371215b26130dc0dec2ba891a212f8806a3c')
 
 case "${CARCH}" in
   'x86_64') _JARCH=amd64 ; _DOC_ARCH=x86_64 ;;
@@ -72,8 +73,6 @@ prepare() {
     mv ../${subrepo}-${_repo_ver} ${subrepo}
   done
 
-  # exit if quilt fails
-  sed -i 's/^$QUILT push -a/$QUILT push -a || exit/' "${srcdir}/${_tuxjdkdir}/applyTuxjdk.sh"
   "${srcdir}/${_tuxjdkdir}/applyTuxjdk.sh"
 }
 
@@ -83,6 +82,10 @@ build() {
   unset JAVA_HOME
   # http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=1346
   export MAKEFLAGS=${MAKEFLAGS/-j*}
+
+  # cannot build on gcc 6+
+  export CC=gcc-5
+  export CXX=g++-5
 
   install -d -m 755 "${srcdir}/${_prefix}/"
   sh configure \
