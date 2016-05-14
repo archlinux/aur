@@ -1,8 +1,8 @@
 # Maintainer: Dominik Heidler <dominik@heidler.eu>
 
 pkgname=libosmocore
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="core libs for osmocom"
 arch=('x86_64' 'i686')
 url="http://bb.osmocom.org/trac/wiki/libosmocore"
