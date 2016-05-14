@@ -1,0 +1,17 @@
+pkgbase = livedumper-git
+	pkgdesc = Livestreamer stream dumper
+	pkgver = v0.3.0.r5.gf644128
+	pkgrel = 1
+	url = https://github.com/m45t3r/livedumper
+	arch = any
+	license = custom: Simplified BSD
+	makedepends = git
+	makedepends = python-setuptools
+	depends = livestreamer
+	depends = python-appdirs
+	depends = python-requests
+	source = git+https://github.com/m45t3r/livedumper.git
+	sha256sums = SKIP
+
+pkgname = livedumper-git
+
