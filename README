@@ -1,17 +1,3 @@
-Very important point to have a full functionnal cocos2d-x install:
-
-*******************
-**    WARNING    **
-*******************
- * All cocos2d scripts use python2. Calling "python2 script" is not enough
-   as other submodule will be called with "env python" (which could point to python3).
-   cocos2d scripts will failed if called with python3.
-
-   In order to use cocos2d wrapper correctly without forcing symlink python to be python2,
-   you can use this : https://wiki.archlinux.org/index.php/python#Dealing_with_version_problem_in_build_scripts
-   A first pattern I suggest is "/opt/cocos2d-x/*"
-
-
 ************************
 **    CONFIGURATION   **
 ************************

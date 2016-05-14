@@ -1,9 +1,10 @@
 # Mantainer: Wilson E. Alvarez <wilson.e.alvarez1@gmail.com>
+# Contributor: DasFranck
 
 _appname=cocos2d-x
 pkgname=cocos2d-x-src
 pkgver=3.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Cocos2D-X is a game engine that supports multiple platforms such as iOS, Android, WinXP/7/8, WP8, BlackBerry, MeeGo, Marmelade, WebOS, Mac OS X"
 arch=('i686' 'x86_64')
 url="http://cdn.cocos2d-x.org/"
@@ -51,6 +52,10 @@ package() {
 	sed -i 's/cpp_tests/cpp-tests/g' "$srcdir/$_appname-$pkgver/tests/cpp-tests/CMakeLists.txt"
 	sed -i 's/js_tests/js-tests/g' "$srcdir/$_appname-$pkgver/tests/js-tests/project/CMakeLists.txt"
 	sed -i 's/lua_tests/lua-tests/g' "$srcdir/$_appname-$pkgver/tests/lua-tests/project/CMakeLists.txt"
+
+	# Replace hardcoded python paths to python2
+	find "$srcdir"/$_appname-$pkgver/ -type f -exec sed -i "s|/usr/bin/python$|/usr/bin/python2|g" {} \;
+	sed -e 's/python/python2/g' -i "$srcdir"/$_appname-$pkgver/tools/cocos2d-console/plugins/plugin_package/sdkbox "$srcdir"/$_appname-$pkgver/tools/cocos2d-console/bin/cocos
 
 	# Packaging source
 	mv "$srcdir"/$_appname-$pkgver/* "$pkgdir/opt/$_appname" 	
