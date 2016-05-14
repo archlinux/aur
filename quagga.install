@@ -1,23 +1,6 @@
-infodir=/usr/share/info
-filelist=(quagga.info quagga.info-1 quagga.info-2)
+# vim: ft=sh ts=2 sw=2 et:
 
 post_install() {
   systemd-sysusers quagga.conf
   systemd-tmpfiles --create quagga.conf
-  post_upgrade
 }
-
-post_upgrade() {
-  if [[ -x /usr/bin/install-info ]]; then
-    for file in "${filelist[@]}"; do
-      install-info "$infodir/$file.gz" "$infodir/dir" 2>/dev/null
-    done
-  fi
-  :
-}
-
-pre_remove() {
-  post_upgrade
-}
-
-# vim: ft=sh ts=2 sw=2 et:
