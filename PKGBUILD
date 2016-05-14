@@ -3,12 +3,12 @@
 
 pkgname=magnum-integration
 pkgver=2016.05.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Integration libraries for Magnum graphics engine'
 arch=('x86_64' 'i686')
 url='http://mosra.cz/blog/magnum.php'
 license=('MIT')
-depends=('magnum' 'bullet')
+depends=('libmagnum' 'bullet')
 makedepends=('cmake' 'git' 'ninja')
 source=('git://github.com/mosra/magnum-integration.git#commit=bd36a8ce1cc2')
 sha1sums=('SKIP')
@@ -27,6 +27,8 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
+  install -Dm644 "magnum-integration/COPYING" \
+    "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
 # vim:set ts=2 sw=2 et:
