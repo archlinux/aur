@@ -1,6 +1,6 @@
 pkgbase = amarok-git
 	pkgdesc = The powerful music player for KDE - GIT version
-	pkgver = v2.8.90.3.gfec8817
+	pkgver = v2.8.90.14.g048ca3d
 	pkgrel = 1
 	url = http://amarok.kde.org
 	install = amarok-git.install

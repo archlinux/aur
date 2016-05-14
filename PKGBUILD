@@ -2,7 +2,7 @@
 # Maintainer: Maël Kerbiriou <mael.kerbiriou-at-free-dot-fr>
 
 pkgname=amarok-git
-pkgver=v2.8.90.3.gfec8817
+pkgver=v2.8.90.14.g048ca3d
 pkgrel=1
 pkgdesc="The powerful music player for KDE - GIT version"
 arch=("i686" "x86_64")
