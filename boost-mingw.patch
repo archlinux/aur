@@ -44,39 +44,3 @@
      return $(tmp) ;
  }
  
---- libs/context/src/asm/jump_i386_ms_pe_gas.asm.mingw	2015-09-02 16:03:06.406321632 +0200
-+++ libs/context/src/asm/jump_i386_ms_pe_gas.asm	2015-09-02 16:04:17.632915315 +0200
-@@ -138,3 +138,6 @@
- 
-     /* indirect jump to context */
-     jmp  *%edx
-+
-+.section .drectve
-+.ascii " -export:\"jump_fcontext\""
---- libs/context/src/asm/jump_x86_64_ms_pe_gas.asm.mingw	2015-09-02 16:03:13.495380721 +0200
-+++ libs/context/src/asm/jump_x86_64_ms_pe_gas.asm	2015-09-02 16:04:12.488872439 +0200
-@@ -223,3 +223,6 @@
-     /* indirect jump to context */
-     jmp  *%r10
- .seh_endproc
-+
-+.section .drectve
-+.ascii " -export:\"jump_fcontext\""
---- libs/context/src/asm/make_i386_ms_pe_gas.asm.mingw	2015-09-02 16:03:22.486455662 +0200
-+++ libs/context/src/asm/make_i386_ms_pe_gas.asm	2015-09-02 16:04:32.409038476 +0200
-@@ -122,3 +122,6 @@
-     hlt
- 
- .def	__exit;	.scl	2;	.type	32;	.endef  /* standard C library function */
-+
-+.section .drectve
-+.ascii " -export:\"make_fcontext\""
---- libs/context/src/asm/make_x86_64_ms_pe_gas.asm.mingw	2015-09-02 16:03:30.631523552 +0200
-+++ libs/context/src/asm/make_x86_64_ms_pe_gas.asm	2015-09-02 16:04:27.433997008 +0200
-@@ -149,3 +149,6 @@
- .seh_endproc
- 
- .def	_exit;	.scl	2;	.type	32;	.endef  /* standard C library function */
-+
-+.section .drectve
-+.ascii " -export:\"make_fcontext\""
