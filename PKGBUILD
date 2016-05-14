@@ -11,7 +11,7 @@ url="https://github.com/itchio/itch"
 license=('MIT')
 
 depends=('alsa-lib' 'libnotify' 'nss' 'gconf' 'gtk2' 'libxtst' 'desktop-file-utils' 'gtk-update-icon-cache' 'p7zip')
-makedepends=('nodejs' 'nodejs-grunt-cli' 'npm' 'ruby')
+makedepends=('nodejs' 'nodejs-grunt-cli' 'npm' 'ruby' 'ruby-bundler')
 options=('!strip')
 install="itch.install"
 
@@ -68,5 +68,6 @@ package() {
 
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  ln -s "/usr/bin/itch" "${pkgdir}"
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -s "/usr/lib/itch/itch" "${pkgdir}/usr/bin/itch"
 }
