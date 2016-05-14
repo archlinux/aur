@@ -1,4 +1,5 @@
-# Maintainer: Donald Carr<sirspudd@gmail.com>
+# Contributor: Donald Carr <sirspudd@gmail.com>
+# Contributor: Jake Petroules <jake.petroules@qt.io>
 # Upstream URL: https://wiki.qt.io/Qt_Build_Suite
 #
 # For improvements/fixes to this package, please send a pull request:
