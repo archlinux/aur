@@ -4,7 +4,7 @@
 pkgname=magnum
 pkgver=2016.05.13
 pkgrel=1
-pkgdesc='C++11/C++14 and OpenGL 2D/3D graphics engine'
+pkgdesc='2D/3D graphics engine for C++11/C++14'
 arch=('x86_64' 'i686')
 url="http://mosra.cz/blog/magnum.php"
 license=('MIT')
@@ -17,7 +17,7 @@ build() {
   mkdir -p build
   cd build
 
-  cmake ../magnum \
+  cmake "../$pkgname" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DWITH_AUDIO=ON \
