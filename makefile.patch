@@ -1,0 +1,22 @@
+--- a/Makefile	2007-07-21 16:37:07.000000000 +0200
++++ b/Makefile	2016-05-14 14:01:46.913853159 +0200
+@@ -1,15 +1,13 @@
+-PREFIX=/
+-
+ brightd: brightd.c
+ 	gcc $(CFLAGS) -g -Wall -lX11 -lXss -o $@ $@.c
+ 
+ install: brightd
+-	install -Ds brightd $(PREFIX)/usr/bin/brightd
+-	install -D brightd.1 $(PREFIX)/usr/share/man/man1/brightd.1
++	install -Ds brightd $(DESTDIR)/usr/bin/brightd
++	install -D brightd.1 $(DESTDIR)/usr/share/man/man1/brightd.1
+ 
+ uninstall:
+-	rm $(PREFIX)/usr/bin/brightd
+-	rm $(PREFIX)/usr/share/man/man1/brightd.1
++	rm $(DESTDIR)/usr/bin/brightd
++	rm $(DESTDIR)/usr/share/man/man1/brightd.1
+ 
+ clean:
+ 	rm -f brightd
