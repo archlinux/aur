@@ -21,7 +21,7 @@ pkgbase = neomutt
 	provides = mutt
 	conflicts = mutt
 	source = https://github.com/neomutt/neomutt/archive/neomutt-20160502.tar.gz
-	sha256sums = SKIP
+	md5sums = 3176d435b046609bff761cba5633d056
 
 pkgname = neomutt
 
