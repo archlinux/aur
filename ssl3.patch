@@ -1,0 +1,16 @@
+diff --git a/src/utils/downloader.c b/src/utils/downloader.c
+index 729cb51..54caf7e 100644
+--- a/src/utils/downloader.c
++++ b/src/utils/downloader.c
+@@ -426,9 +426,11 @@ static int ssl_init(GF_DownloadManager *dm, u32 mode)
+ 		meth = SSLv2_client_method();
+ 		break;
+ #endif
++#ifndef OPENSSL_NO_SSL3_METHOD
+ 	case 2:
+ 		meth = SSLv3_client_method();
+ 		break;
++#endif
+ 	case 3:
+ 		meth = TLSv1_client_method();
+ 		break;
