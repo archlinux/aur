@@ -31,15 +31,16 @@ md5sums=('6b15b179ccc79065a4aef63156b3e5de'
 PKGEXT='.pkg.tar.gz'
 
 prepare() {
-	# Patch
-	patch -Np0 -i ${startdir}/root6.patch
-
 	# Execute cmake
 	echo "You need to build geant4 with option"
 	echo " -DGEANT4_BUILD_MULTITHREADED=OFF"
 	echo "to properly use Gate. It does not yet"
 	echo "work with Geant4 in multithreaded mode."
 	cd ${srcdir}
+
+	# Patch
+	patch -Np0 -i ${startdir}/root6.patch
+
 	[ -d build ] || mkdir build
 	cd build
 	cmake \
