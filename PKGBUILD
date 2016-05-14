@@ -2,7 +2,7 @@
 # Thanks to Adria Arrufat <swiftscythe@gmail.com>
 
 pkgname=clementine-qt5-git
-pkgver=1.2.3.r1648.gc224911
+pkgver=1.3.1.r228.gafe34ee
 pkgrel=1
 pkgdesc="Experimental Qt5 version of Clementine, a modern music player and library organiser."
 arch=('i686' 'x86_64')
@@ -37,7 +37,7 @@ replaces=('clementine' 'clementine-lxqt' 'clementine-git')
 
 pkgver() {
   cd Clementine
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
