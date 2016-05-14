@@ -1,7 +1,7 @@
 # Maintainer: Evert Vorster (evorster@gmail.com)
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 pkgname=movit-git
-pkgver=r639.b757b4f
+pkgver=r765.dd74f9c
 pkgrel=1
 pkgdesc="The modern video toolkit"
 arch=(x86_64)
