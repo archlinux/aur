@@ -1,0 +1,15 @@
+pkgbase = esptool2-git
+	pkgdesc = An esp8266 rom creation tool
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/raburton/esptool2
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = glibc
+	source = esptool2::git+https://github.com/raburton/esptool2.git
+	md5sums = SKIP
+
+pkgname = esptool2-git
+
