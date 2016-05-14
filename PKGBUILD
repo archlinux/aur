@@ -1,13 +1,13 @@
 # Maintainer: larte <lauri.arte@gmail.com>
 pkgname=kubectl-bin
 pkgdesc="Kubernetes.io client binary"
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://kubernetes.io"
 license=('apache')
 source=(https://github.com/kubernetes/kubernetes/releases/download/v$pkgver/kubernetes.tar.gz)
-md5sums=('69e75650de30d5a52d144799e94a168d')
+md5sums=('ab0aca3a20e8eba43c8ff9d672793618')
 package() {
     case $CARCH in
         i686)
