@@ -1,9 +1,9 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Mateusz Herych <heniekk@gmail.com>
 
 pkgname=libident
 pkgver=0.32
-pkgrel=5
+pkgrel=6
 pkgdesc='Library for querying IDENT servers'
 arch=('x86_64' 'i686')
 url='http://www.remlab.net/libident/'
@@ -16,7 +16,7 @@ sha256sums=('8cc8fb69f1c888be7cffde7f4caeb3dc6cd0abbc475337683a720aa7638a174b'
             '81907cda4fe9c925e78bf58bc9c61d1af439784e4f01da4bd6fc7e4d87750f5c')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   ./configure \
     --prefix=/usr \
@@ -26,7 +26,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$pkgname-$pkgver"
 
   make DESTDIR="$pkgdir" install
   install -Dm755 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
