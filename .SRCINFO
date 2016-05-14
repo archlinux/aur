@@ -1,6 +1,6 @@
 pkgbase = sublime-text-dev-imfix
 	pkgver = 3.3114
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.sublimetext.com/3
 	install = sublime_text_3_imfix.install
 	changelog = README.md
