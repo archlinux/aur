@@ -1,7 +1,7 @@
 
 # Maintainer: Jan Frederick Eick <jan-frederick.eick@uni-weimar.de>
 pkgname=beefi-git
-pkgver=0.1
+pkgver=r8.3555c22
 pkgrel=1
 pkgdesc="a bootable EFISTUB kernel image creator (for UEFI systems)"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
-backup=()
+backup=('etc/beefi/beefi.conf' 'etc/pacman.d/hooks/beefi.hook')
 options=()
 install=beefi.install
 source=('git+https://github.com/jfeick/beefi.git')
