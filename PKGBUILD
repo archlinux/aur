@@ -2,24 +2,24 @@
 
 
 pkgname=pharo-launcher
-pkgver=4.0
-pkgrel=4
+pkgver=5.0
+pkgrel=0
 pkgdesc="Pharo Launcher helps you manage your Pharo images"
 arch=(i686 x86_64)
 source=($pkgname-$pkgver.tar.gz)
 url="http://www.pharo-project.org/"
 license=('MIT')
 makedepends=('gendesk')
-depends=('pharo-vm-latest')
+depends=('pharo-vm' 'pharo-spur-vm')
 
 source=(
 	'http://files.pharo.org/media/logo/icon-lighthouse-128x128.png'
-	'http://files.pharo.org/platform/launcher/blessed/PharoLauncher-user-0.2.8-2015.08.08.zip'
+	'http://files.pharo.org/platform/launcher/PharoLauncher-user-stable-2016.03.14.zip'
 )
 
 md5sums=(
 	'dec67d08d24433696375a319de029f34'
-	'9307d28dd0c78e4facbe071697f876e6'
+	'4e6290f0d7561afff2a386ab2802dde6'
 )
 
 prepare() {
@@ -29,6 +29,8 @@ prepare() {
 
 package() {
 	cd $srcdir/
+
+	pharo -vm-display-X11 -headless PharoLauncher.image eval "PhLLaunchImageCommand spurFullPath: '/usr/bin/pharo-spur'. Smalltalk snapshot: true andQuit: true"
 
 	mkdir -p $pkgdir/usr/share/pharo-launcher/
 	mkdir -p $pkgdir/usr/bin/
