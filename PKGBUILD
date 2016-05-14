@@ -1,9 +1,9 @@
-#Maintainer: Michael Straube <m.s.online gmx.de>
+# Maintainer: Michael Straube <m.s.online gmx.de>
 
 pkgname=alterego
 # could not find any version number, so using 1.0
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="You control a hero who has a phantom twin, his alter ego."
 url="http://www.retrosouls.net/?page_id=614"
 arch=('any')
