@@ -1,0 +1,23 @@
+pkgbase = esp-open-sdk
+	pkgdesc = Free and open (as much as possible) integrated SDK for ESP8266 chips
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/pfalcon/esp-open-sdk
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python2-pyserial
+	provides = esp-open-sdk
+	conflicts = esp-open-sdk-git
+	noextract = esp-open-sdk-1.4.0-linux-x86.tar.gz
+	noextract = esp-open-sdk-1.4.0-linux-x86_64.tar.gz
+	options = !strip
+	source_i686 = https://bintray.com/artifact/download/riban/generic/esp-open-sdk-1.4.0-linux-x86.tar.gz
+	md5sums_i686 = a05857285a890b30f112ac571be86cc6
+	source_x86_64 = https://bintray.com/artifact/download/kireevco/generic/esp-open-sdk-1.4.0-linux-x86_64.tar.gz
+	md5sums_x86_64 = 352a5f1b0c7069a8c9fe84e24acbd5ec
+
+pkgname = esp-open-sdk
+
