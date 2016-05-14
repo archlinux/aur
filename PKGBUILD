@@ -5,14 +5,14 @@ pkgver=20160513
 pkgrel=1
 pkgdesc="6model-based VM for NQP and Rakudo Perl6"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
-depends=('dyncall' 'libatomic_ops' 'libffi' 'libtommath' 'libuv')
-makedepends=('binutils' 'gcc' 'git' 'make' 'perl' 'pkg-config')
+depends=('dyncall' 'libatomic_ops' 'libffi' 'libtommath' 'libuv' 'llvm')
+makedepends=('binutils' 'clang' 'git' 'make' 'perl' 'pkg-config')
 groups=('perl6')
 url="https://github.com/MoarVM/MoarVM"
 license=('PerlArtistic')
 options=('!purge')
 source=(${pkgname%-git}::git+https://github.com/MoarVM/MoarVM
-        dynasm::git+https://github.com/MoarVM/dynasm)
+        git+https://github.com/MoarVM/dynasm)
 sha256sums=('SKIP' 'SKIP')
 provides=('moarvm')
 conflicts=('moarvm')
@@ -39,7 +39,7 @@ build() {
   perl Configure.pl \
     --prefix=/usr \
     --toolchain=gnu \
-    --compiler=gcc \
+    --compiler=clang \
     --has-dyncall \
     --has-libatomic_ops \
     --has-libffi \
