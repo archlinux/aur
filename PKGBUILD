@@ -18,8 +18,8 @@ pkgdesc='A voice chat application similar to TeamSpeak (GIT version with JACK Au
 url='https://github.com/mumble-voip/mumble'
 license=('BSD')
 depends=('qt5-base' 'qt5-svg' 'speex' 'lsb-release' 'avahi' 'protobuf' 
-        'jack' 'opus' 'libxi' 'libsndfile' 'xdg-utils' 'qt5-tools')
-makedepends=('boost' 'mesa' 'git')
+        'jack' 'opus' 'libxi' 'libsndfile' 'xdg-utils')
+makedepends=('boost' 'qt5-tools' 'mesa' 'git')
 #optdepends=('portaudio: for portaudio back-end' 'g15daemon: G15 Keyboard support')
 conflicts=('mumble')
 provides=('mumble')
