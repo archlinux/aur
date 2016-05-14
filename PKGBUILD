@@ -3,7 +3,7 @@
 
 pkgname=discord-canary
 pkgver=0.0.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Discord Canary linux release'
 arch=('x86_64')
 url='https://discordapp.com/'
@@ -12,6 +12,7 @@ license=('custom')
 depends=('gtk2' 'gconf' 'libnotify' 'libxss')
 optdepends=('freetype2-infinality: If you have black screens with emojis install this.')
 
+install="DiscordCanary.install"
 source=(DiscordCanary.desktop LICENSE DiscordCanary.sh)
 source_x86_64=("https://cdn-canary.discordapp.com/apps/linux/${pkgver}/discord-canary-${pkgver}.tar.gz") #This is always latest build, right now I do not know of a version param.
 sha256sums=('04120aec68647be5de5689ead51ba3fc976ada3cf6616144b97d2b75e0782eae'
