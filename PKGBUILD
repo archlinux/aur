@@ -10,7 +10,7 @@
 # to the depends and delete "no-g15" in the configure line below
 
 pkgname=mumble-jack-git
-pkgver=2015.06.01
+pkgver=2016.05.13
 _pkgver=1.3.0
 pkgrel=1
 arch=('i686' 'x86_64')
