@@ -10,6 +10,8 @@ pkgbase = livedumper-git
 	depends = livestreamer
 	depends = python-appdirs
 	depends = python-requests
+	provides = livedumper
+	conflicts = livedumper
 	source = git+https://github.com/m45t3r/livedumper.git
 	sha256sums = SKIP
 

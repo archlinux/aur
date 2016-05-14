@@ -9,6 +9,8 @@ url="https://github.com/m45t3r/livedumper"
 license=('custom: Simplified BSD')
 depends=('livestreamer' 'python-appdirs' 'python-requests')
 makedepends=('git' 'python-setuptools')
+provides=('livedumper')
+conflicts=('livedumper')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
