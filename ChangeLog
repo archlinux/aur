@@ -1,3 +1,8 @@
+2016-05-09  André Silva  <emulatorman@parabola.nu>
+
+	* linux-libre-4.5.3_gnu-1
+	* Disabled CONFIG_IO_STRICT_DEVMEM [9]
+
 2015-12-13  André Silva  <emulatorman@parabola.nu>
 
 	* linux-libre-4.3.2_gnu-1
@@ -89,3 +94,4 @@
 [6] https://labs.parabola.nu/issues/750
 [7] https://labs.parabola.nu/issues/857
 [8] https://labs.parabola.nu/issues/858
+[9] https://labs.parabola.nu/issues/1000
