@@ -3,12 +3,12 @@
 
 pkgname=magnum
 pkgver=2016.05.13
-pkgrel=1
+pkgrel=2
 pkgdesc='2D/3D graphics engine for C++11/C++14'
 arch=('x86_64' 'i686')
 url="http://mosra.cz/blog/magnum.php"
 license=('MIT')
-depends=('corrade' 'openal' 'sdl2')
+depends=('libcorrade' 'openal' 'sdl2')
 makedepends=('cmake' 'git' 'ninja')
 source=("git://github.com/mosra/magnum.git#commit=67bd8a9b9938")
 sha1sums=('SKIP')
