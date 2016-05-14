@@ -6,13 +6,13 @@
 pkgname=qt5-doc
 _qtver=5.6.0
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
 pkgdesc='A cross-platform application and UI framework (Documentation)'
 depends=('qt5-base')
-makedepends=('qt5-tools' 'python2')
+makedepends=('qt5-tools' 'python2' 'pciutils' 'libxtst' 'libxcursor' 'libxrandr' 'libxss')
 conflicts=('qt')
 groups=('qt' 'qt5')
 _pkgfqn="qt-everywhere-opensource-src-${_qtver}"
@@ -25,15 +25,24 @@ prepare() {
   # Use python2 for Python 2.x
   find . -name '*.py' -exec sed -i \
     's|#![ ]*/usr/bin/python$|&2|;s|#![ ]*/usr/bin/env python$|&2|' {} +
-  find -name '*.pro' -o -name '*.pri' | xargs sed -i -e 's|python -c|python2 -c|g' -e 's|python \$|python2 \$|g'
+  find -name '*.pro' -o -name '*.pri' -o -name '*.prf' | xargs sed -i -e 's|python -c|python2 -c|g' -e 's|python \$|python2 \$|g'
 
   ln -s /usr/lib/qt/bin qttools/
   ln -s /usr/lib/qt/bin/{rcc,uic,moc} qtbase/bin/
+
+  # workaround c++11 detection with GCC6
+  sed -e '/requires(c++11)/d' -i qtserialbus/qtserialbus.pro
+
+  # Hack to force using python2
+  cd "$srcdir"
+  mkdir -p bin
+  ln -s /usr/bin/python2 bin/python
 }
 
 build() {
   cd ${_pkgfqn}
 
+  export PATH="$srcdir/bin:$PATH"
   PYTHON=/usr/bin/python2 ./configure -confirm-license -opensource \
     -prefix /usr \
     -bindir /usr/lib/qt/bin \
