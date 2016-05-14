@@ -1,9 +1,9 @@
 # Maintainer: Cayde Dixon <me@cazzar.net>
-# Co-Maintainer: Anthony Anderson <aantony4122@gmail.com>
+# Contributor: Anthony Anderson <aantony4122@gmail.com>
 
 pkgname=discord-canary
 pkgver=0.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Discord Canary linux release'
 arch=('x86_64')
 url='https://discordapp.com/'
