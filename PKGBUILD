@@ -2,7 +2,7 @@
 
 _pkgname=shattered-pixel-dungeon
 pkgname=$_pkgname-git
-pkgver=192v0.3.3
+pkgver=199v0.3.5a
 pkgrel=1
 pkgdesc='Shattered fork of the popular rogue-like game'
 url='http://shatteredpixel.tumblr.com'
@@ -23,7 +23,7 @@ sha512sums=(
 
 pkgver() {
   cd $_pkgname
-  printf '%s' "$(git rev-list --count HEAD)$(git log | egrep '^\s*v' | head -n 1 | sed 's|^\s*||;s|:.*$||;s| .*$||')"
+  printf '%s' "$(git rev-list --count HEAD)$(git log | egrep -o 'v[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9a-z]*' | head -n 1)"
 }
 
 build() {
