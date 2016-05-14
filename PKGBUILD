@@ -9,10 +9,10 @@
 # Based on linux-grsec package
 
 pkgbase=linux-libre-grsec-knock
-_pkgbasever=4.4-gnu
-_pkgver=4.4.8-gnu
+_pkgbasever=4.5-gnu
+_pkgver=4.5.4-gnu
 _grsecver=3.1
-_timestamp=201604201957
+_timestamp=201605131918
 _knockpatchver=4.2_2
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
@@ -23,7 +23,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}.${_timestamp}
 pkgver=${_pkgver//-/_}.${_timestamp}
 pkgrel=1
-rcnrel=armv7-x6
+rcnrel=armv7-x2
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.parabola.nu/Grsecurity%2BKnock"
 license=('GPL2')
@@ -68,12 +68,13 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
         '0008-USB-armory-support.patch'
-        '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
-sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
+        '0009-Revert-stmmac-Fix-eth0-No-PHY-found-regression.patch'
+        '0010-stmmac-fix-MDIO-settings.patch')
+sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
-            'a116467dfbac3007775490ca1ced15bf335515d53f63afd3c6588bc0e1652956'
+            '02e00521cf765da05692aea22262e05c96325562667b107be6289354c5eef3fa'
             'SKIP'
-            'c2030e7cc7a52e0bd581cb949c43d194ead2079921517f8f48c158e1d4a030ea'
+            '44db1c514103e17efd1f6b0eb03662734baaed6a6bdcace1fc9136426a9d91c7'
             'SKIP'
             'c7c4ab580f00dca4114c185812a963e73217e6bf86406c240d669026dc3f98a4'
             'SKIP'
@@ -83,26 +84,27 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '64bce353c6da5c852f4b3b6331ddf5386a037fd91190645fe8883863078fe6bc'
-            '8b8b95e08dcfbda80f96574787b5f54773bc08587d7fccf14174a6d4aec7fcf8'
-            'b567d593c81fa46cd65883f4f6031332e99981b8b1a2c3604f057183049ff254'
+            '2419079b2d1e9fff9f8ad65a2488169295155073337395b13b42f4a6ad0e22f7'
+            'fcf330c03778c78053226b21b584517642ca6f0406d9f264a8dbd0e6552bdc6e'
+            '9087bf4590326a4a108cd23ea571ea2671cb5619af58c329926393a7de3b2f8e'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'f0a10ea9a669e5200aa33656565c209718b24ff1add03ac5279c4a1f46ab8798'
+            '91e087cddaf2149d050b90720d5b3004263ec3ab07dece0241551d045ff0a91f'
             '96c6c7d4057b8d08238adae85d476c863c082770a182057163a45480511d35a8'
             '2ca85ee212ef8d8aab3d3c2a0cef304a355d86e7aa520e19471f56ace68a0cf4'
-            'cf1f9c564b43c8eac979ba88e829e71447660265d74f3bff26b24864ef582b5a'
+            '691d016ee1097843333b770b69d7788e6aa9c28a6d813a6b9c156c1e0f5032ca'
             'SKIP'
             '1fc7055041da895d5d023fcf0c5e06d00a3506ae98931138229dba7392e2c382'
-            'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
-            '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
-            '6dadc17ea56d93ec0f1d0c3c98c25a7863e9ba3c4af50dc411d630a1bcc98f08'
-            '9c5d6d035c9a7103f19804c2284291d461d4b848cccd3ec07272bde68ba29513'
-            '6644705cd73c55056b5fed91cfb3199c1114b088d96dbd3c29358cd49863aeba'
-            '08d0aa76393ea2d1a853d0ea9b02aa616224ac915473ab057bb98285212bc994'
-            '1cb502674bf7a1ea79b359d1613fe891ba37f6aa64f5f5eca309d46ba01ab417'
-            '05bf1d8f94feab06bdd9fd958bc9bde4d1249a0cdeb8d3d3e16e6fac6dc5baed'
-            '5e1b8b1e9b3243a5ab315481c39b1b88f28923148659dcc0ac7ed78d9ba4f072')
+            'd09937cbca4f408dbcde270e465bdfe0589a0b41ed07d260a596a38fe6cca987'
+            'cc1f1b5026b373da4a5c2e8c82bc2b0f8a20e295353c201579140a04f2452545'
+            'f68d382f9d5b9948cc0e7062290e1b26d7c3c7e4ba270fda0bd632c24465a40b'
+            '658f619cd11676996919ef290934cfc809db5d0fa35a1ebc475d3ebb59253201'
+            'f7bf7a7cf676571f48c92fc858ddd67cc395105ae633c3d6e5386a4a5c848d81'
+            '939c11540b47f02706f3cff1b76b84a13b4dab9cae438632d4b685b16ed8249e'
+            'db830e53d451c54f84917b663671a6cc9414b043064cdf1a17369c198abee9dd'
+            'ef21f0524fdd559389529bd05b56a3b89642fb10b74de709153d1b3c2e21c126'
+            '9f915fedf2cf03eccfed9025d3883a1158531203a676060a2eae5809ec4989ce'
+            'bbbdd20f4a933ae988e713de5ac3ad08bd453e4e3dfa4cdac2da483dcf2454d8')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -154,7 +156,8 @@ prepare() {
     patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
     patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
     patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
-    patch -p1 -i "${srcdir}/0009-ARM-dts-dove-add-Dove-divider-clocks.patch"
+    patch -p1 -i "${srcdir}/0009-Revert-stmmac-Fix-eth0-No-PHY-found-regression.patch"
+    patch -p1 -i "${srcdir}/0010-stmmac-fix-MDIO-settings.patch"
   fi
 
   # add freedo as boot logo
@@ -298,8 +301,13 @@ _package() {
   cp -a tools/gcc/Makefile "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
   install -m644 tools/gcc/*.so "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
   mkdir -p "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"
-  install -m644 tools/gcc/size_overflow_plugin/Makefile tools/gcc/size_overflow_plugin/*.so \
+  install -m644 tools/gcc/size_overflow_plugin/Makefile tools/gcc/size_overflow_plugin/size_overflow_plugin.so \
     "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"
+  if [[ $CARCH == x86_64 ]]; then
+    mkdir -p "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/rap_plugin"
+    install -m644 tools/gcc/rap_plugin/Makefile tools/gcc/rap_plugin/rap_plugin.so \
+      "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/rap_plugin"
+  fi
 }
 
 _package-headers() {
@@ -329,7 +337,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}"
   cp -a arch/${KARCH}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
   if [ "${CARCH}" = "armv7h" ]; then
-    for i in dove exynos mvebu omap2 versatile; do
+    for i in dove exynos omap2; do
       mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-${i}"
       cp -a arch/${KARCH}/mach-${i}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-${i}/"
     done
