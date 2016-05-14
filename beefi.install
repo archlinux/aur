@@ -1,0 +1,11 @@
+post_upgrade() {
+    echo "--------------------------------------------------------------------------"
+    echo "Attention! Please check /etc/beefi/beefi.conf and etc/pacman.d/hooks/beefi.hook and adjust the files to your kernel package (e.g. linux, linux-ck, ...)"
+    echo "--------------------------------------------------------------------------"
+}
+
+post_install() {
+    echo "--------------------------------------------------------------------------"
+    echo "Please check /etc/beefi/beefi.conf and etc/pacman.d/hooks/beefi.hook and adjust the files to your kernel package (e.g. linux, linux-ck, ...)"
+    echo "--------------------------------------------------------------------------"
+}

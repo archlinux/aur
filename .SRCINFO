@@ -1,0 +1,16 @@
+pkgbase = beefi-git
+	pkgdesc = a bootable EFISTUB kernel image creator (for UEFI systems)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/jfeick/beefi.git
+	install = beefi.install
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = beefi
+	conflicts = beefi
+	source = git+https://github.com/jfeick/beefi.git
+	md5sums = SKIP
+
+pkgname = beefi-git
+
