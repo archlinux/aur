@@ -1,5 +1,6 @@
 # $Id: PKGBUILD 9978 2008-08-21 12:43:50Z allan $
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: Michael Straube <m.s.online gmx.de>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Suzy Williams <suzanne.williams3@verizon.net>
 
@@ -16,16 +17,15 @@ source=("http://www.yabasic.de/download/$pkgname-$pkgver.tar.gz")
 md5sums=('fa1ced26023a688f0573d278dc09f308')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd $pkgname-$pkgver
 
   ./configure --prefix=/usr
   make
 }
 
 package() {
+  cd $pkgname-$pkgver
 
-  cd $srcdir/$pkgname-$pkgver
-  make prefix="${pkgdir}/usr" install
-  install -Dm644 ARTISTIC ${pkgdir}/usr/share/licenses/yabasic/Artistic
+  make prefix="$pkgdir/usr" install
+  install -Dm644 ARTISTIC "$pkgdir/usr/share/licenses/yabasic/Artistic"
 }
-
