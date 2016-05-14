@@ -4,7 +4,7 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20160507.10276
+pkgver=20160514.10334
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('i686' 'x86_64')
@@ -19,9 +19,11 @@ optdepends=('transfig: convert images using fig2ps'
             'imagemagick: convert images'
             'aspell: spell checking')
 makedepends=('ghostscript')
-source=("${_pkgname}::svn://svn.savannah.gnu.org/texmacs/trunk/src")
-sha1sums=('SKIP')
-options=('!emptydirs')
+source=("${_pkgname}::svn://svn.savannah.gnu.org/texmacs/trunk/src"
+        "fix-m4.patch")
+sha1sums=('SKIP'
+          '7157af255642d08a37b518957b10050bb4fc9672')
+options=('!emptydirs' '!ccache')
 provides=('texmacs')
 conflicts=('texmacs')
 
@@ -35,12 +37,16 @@ prepare() {
   svn export "${srcdir}/${_pkgname}" "${srcdir}/${_pkgname}-build"
 
   cd "${srcdir}/${_pkgname}-build"
+
+  patch -Np1 -i ../fix-m4.patch
+
   sed -i 's/env python/env python2/' \
     plugins/{mathematica/bin/realpath.py,python/bin/tm_python,sage/bin/tm_sage} \
     TeXmacs/misc/inkscape_extension/texmacs_reedit.py
   sed -i 's/"python"/"python2"/' plugins/python/progs/init-python.scm
   sed -i '/^LDPATH/d' src/makefile.in
 
+  # sed -i 's/guile18-config/guile-config1.8/g' configure
   sed -e 's/GUILE_BIN="$GUILE_LIB"/GUILE_BIN="$GUILE_LIB$GUILE_VERSION"/g' \
       -e 's/guile18-config/guile-config1.8/g' \
       -i misc/m4/guile.m4
@@ -51,7 +57,6 @@ prepare() {
   sed -i '/update-mime-database/d' Makefile.in
   sed -i '/gtk-update-icon-cache/d' Makefile.in
   sed -i '\/icons\/gnome 2>\/dev\/null/d' Makefile.in
-
 }
 
 build() {
@@ -59,7 +64,7 @@ build() {
   export QMAKE=qmake-qt4
   export MOC=moc-qt4
   export UIC=uic-qt4
-  export LDFLAGS="$LDFLAGS -lz"
+  # export LDFLAGS="$LDFLAGS -lz"
 
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
