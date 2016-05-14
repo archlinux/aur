@@ -4,7 +4,7 @@ pkgdesc="ROS - MAVLink message marshaling library."
 url='http://qgroundcontrol.org/mavlink/'
 
 pkgname='ros-indigo-mavlink'
-pkgver='2015.10.10'
+pkgver='2016.05.05'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
