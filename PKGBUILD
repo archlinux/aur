@@ -2,7 +2,7 @@
 
 _pkgname=fs-uae-launcher
 pkgname=fs-uae-launcher-devel
-pkgver=2.7.13dev
+pkgver=2.7.14dev
 pkgrel=1
 pkgdesc="Launcher and configuration program for FS-UAE (development version)."
 arch=("any")
@@ -15,12 +15,14 @@ source=("http://fs-uae.net/devel/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 #source=("http://ppa.launchpad.net/fengestad/devel/ubuntu/pool/main/f/${_pkgname}/${_pkgname}_${pkgver}.orig.tar.gz")
 provides=("fs-uae-launcher")
 conflicts=("fs-uae-launcher")
-md5sums=('766e0ea9efd377fcdb149ef7dabf1a5b')
+md5sums=('d61eebe80869c9aee00a71d2b5a01487')
 
 
 
 build() {
    cd ${_pkgname}-${pkgver}
+   # argument needed
+   sed 's/__()/__(parent)/' -i fsui/qt/adapter.py
    make
 }
 
