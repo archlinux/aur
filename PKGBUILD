@@ -31,6 +31,9 @@ md5sums=('6b15b179ccc79065a4aef63156b3e5de'
 PKGEXT='.pkg.tar.gz'
 
 prepare() {
+	# Patch
+	patch -Np0 -i ${startdir}/root6.patch
+
 	# Execute cmake
 	echo "You need to build geant4 with option"
 	echo " -DGEANT4_BUILD_MULTITHREADED=OFF"
@@ -43,7 +46,6 @@ prepare() {
 		-DGATE_USE_OPTICAL=ON \
 		-DGATE_USE_STDC11=ON \
 		../Gate-${pkgver}
-	patch -Np0 -i root6.patch
 :
 }
 
