@@ -1,7 +1,7 @@
 # Maintainer: Viacheslav Chimishuk <voice@root.ua>
 
 pkgname=python-pysvn
-pkgver=1.8.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Python3 SVN Extension."
 url="http://pysvn.tigris.org"
@@ -10,7 +10,7 @@ conflicts=('pysvn<=1.7.4-3')
 arch=('i686' 'x86_64')
 license=('APACHE')
 source=("http://pysvn.barrys-emacs.org/source_kits/pysvn-$pkgver.tar.gz")
-md5sums=('3999a7680f4d3c4d3bddfc45edf65788')
+md5sums=('72fa604c1be8d93e3ae3f1e75d4bb70e')
 
 build() {
   cd "$srcdir/pysvn-$pkgver/Source"
