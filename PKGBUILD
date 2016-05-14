@@ -8,7 +8,7 @@ arch=('any')
 license=('unknown')
 url='https://github.com/metulburr/FloodIt'
 depends=('python2-pygame')
-source=("https://github.com/metulburr/FloodIt/archive/${pkgver}.tar.gz"
+source=("https://github.com/metulburr/FloodIt/archive/$pkgver.tar.gz"
         "fix-savepath.patch"
         "floodit.desktop")
 md5sums=('844d6f87d207c855a11238325f7c9ee2'
@@ -16,21 +16,24 @@ md5sums=('844d6f87d207c855a11238325f7c9ee2'
          'b310a9d674c95357dadc10ee290a4dd0')
 
 prepare() {
-  cd "${srcdir}/FloodIt-${pkgver}"
+  cd FloodIt-$pkgver
+
   sed -i 's/python/python2/' game.py
-  patch -p0 < ../fix-savepath.patch
+  patch -p0 < "$srcdir/fix-savepath.patch"
+
+  # create launcher script
+  printf "#!/bin/bash\ncd /usr/share/games/floodit\n./game.py" \
+    > "$srcdir/floodit.sh"
 }
 
 package() {
-  cd "${srcdir}/FloodIt-${pkgver}"
-  mkdir -p "${pkgdir}"/usr/{bin,share/games/floodit}
-  cp -r data resources game.py "${pkgdir}/usr/share/games/floodit/"
+  cd FloodIt-$pkgver
 
-  echo -e "#!/bin/bash\ncd /usr/share/games/floodit\n./game.py" \
-    > "${pkgdir}/usr/bin/floodit"
+  install -dm755 "$pkgdir/usr/share/games/floodit"
+  cp -r data resources game.py "$pkgdir/usr/share/games/floodit/"
 
-  chmod 755 "${pkgdir}/usr/bin/floodit"
+  install -Dm755 "$srcdir/floodit.sh" "$pkgdir/usr/bin/floodit"
 
-  install -Dm644 ../floodit.desktop \
-    "${pkgdir}/usr/share/applications/floodit.desktop"
+  install -Dm644 "$srcdir/floodit.desktop" \
+    "$pkgdir/usr/share/applications/floodit.desktop"
 }
