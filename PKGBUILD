@@ -4,7 +4,7 @@
 pkgname=magnum-examples
 pkgver=2016.05.13
 pkgrel=1
-pkgdesc='Examples for the Magnum OpenGL graphics engine'
+pkgdesc='Examples for the Magnum graphics engine'
 arch=('x86_64' 'i686')
 url='http://mosra.cz/blog/magnum.php'
 license=('MIT')
@@ -17,7 +17,7 @@ build() {
   mkdir -p build
   cd build
 
-  cmake ../magnum-examples \
+  cmake "../$pkgname" \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DWITH_AUDIO_EXAMPLE=ON \
