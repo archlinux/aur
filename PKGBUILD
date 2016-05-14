@@ -3,37 +3,37 @@
 # Contributor: Daniel Milde <daniel@milde.cz>
 
 pkgname=pharo-vm
-pkgver=4.0
-pkgrel=1
-pkgdesc="Stable Pharo-VM. Pharo is a clean, innovative, open-source Smalltalk-inspired environment"
-conflicts=('pharo')
+pkgver=5.0
+pkgrel=0
+pkgdesc="Pharo-VM for Pharo 4 images. Pharo is a clean, innovative, open-source Smalltalk-inspired environment"
+conflicts=('pharo' 'pharo-vm-latest')
 arch=(i686 x86_64)
 source=($pkgname-$pkgver.tar.gz)
-url="http://www.pharo-project.org/"
+url="http://www.pharo.org/"
 license=('MIT')
 if [ "$CARCH" = "x86_64" ]; then
-	depends=('lib32-alsa-lib' 'lib32-libvorbis' 'lib32-pango' 'lib32-mesa' 'nas' 'lib32-dbus-core' 'lib32-libxml2' 'wget' 'unzip')
+  depends=('lib32-alsa-lib' 'lib32-libvorbis' 'lib32-pango' 'lib32-mesa' 'lib32-dbus-core' 'lib32-libxml2' 'wget' 'unzip')
 else
-	depends=('alsa-lib' 'libvorbis' 'pango' 'mesa' 'nas' 'dbus-core' 'libxml2' 'wget' 'unzip')
+  depends=('alsa-lib' 'libvorbis' 'pango' 'mesa' 'dbus-core' 'libxml2' 'wget' 'unzip')
 fi
 
-source=(http://files.pharo.org/sources/PharoV40.sources.zip)
+source=(http://files.pharo.org/sources/PharoV40.sources.zip
+        http://files.pharo.org/vm/pharo/linux/stable-20151211.zip)
 
-md5sums=('f748553d42c7dda963d56286e3be3f08')
+md5sums=('f748553d42c7dda963d56286e3be3f08'
+         '8a7746cbbc6c2457c1c85f96f2a25ce4')
 
 package() {
-	cd $srcdir/
-	wget http://files.pharo.org/vm/pharo/linux/latest.zip
-	unzip latest.zip
-	mkdir -p $pkgdir/usr/share/pharo-vm/
-	mkdir -p $pkgdir/usr/bin/
+  cd $srcdir/
+  mkdir -p $pkgdir/usr/share/pharo/vm/
+  mkdir -p $pkgdir/usr/bin/
 
-	cp -fr $srcdir/* $pkgdir/usr/share/pharo-vm/
-	rm $pkgdir/usr/share/pharo-vm/*.zip
-	chmod +x $pkgdir/usr/share/pharo-vm/pharo
+  cp -fr $srcdir/* $pkgdir/usr/share/pharo/vm/
+  rm $pkgdir/usr/share/pharo/vm/*.zip
+  chmod +x $pkgdir/usr/share/pharo/vm/pharo
 
-	chgrp -R users $pkgdir/usr/share/pharo-vm/
-	chmod -R 775 $pkgdir/usr/share/pharo-vm/
+  chgrp -R users $pkgdir/usr/share/pharo/vm/
+  chmod -R 775 $pkgdir/usr/share/pharo/vm/
 
-	ln -s /usr/share/pharo-vm/pharo $pkgdir/usr/bin/pharo
+  ln -s /usr/share/pharo/vm/pharo $pkgdir/usr/bin/pharo
 }
