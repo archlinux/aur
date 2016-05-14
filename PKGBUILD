@@ -2,7 +2,7 @@
 # Contributor: Quentin Stievenart <acieroid@awesom.eu>
 name='dogpile.cache'
 pkgname=python2-dogpile-cache
-pkgver=0.5.6
+pkgver=0.5.7
 pkgrel=1
 pkgdesc="A caching front-end based on the Dogpile lock."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python2' 'python2-dogpile')
 options=(!emptydirs)
 
 source=("http://pypi.python.org/packages/source/d/$name/$name-$pkgver.tar.gz")
-md5sums=('6283f8e0d94f06d75b6987875cb2e6e8')
+md5sums=('3e58ce41af574aab41d78e9c4190f194')
 
 package() {
   cd "$srcdir/$name-$pkgver"
