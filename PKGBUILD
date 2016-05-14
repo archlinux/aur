@@ -9,7 +9,7 @@ url="https://github.com/dylanaraps/neofetch"
 license=('MIT')
 provides=($_pkgname)
 conflicts=($_pkgname)
-depends=('bash' 'xorg-xprop')
+depends=('bash')
 optdepends=(
   'cmus: Current Song'
   'feh: Wallpaper Display'
@@ -19,7 +19,9 @@ optdepends=(
   'nitrogen: Wallpaper Display'
   'scrot: Take a screenshot'
   'w3m: Display Images'
-  'xorg-xdpyinfo: Resolution Detection'
+  'xorg-xdpyinfo: Resolution detection (Single Monitor)'
+  'xorg-xrandr: Resolution detection (Multi Monitor + Refresh rates)'
+  'xorg-xprop: Desktop Environment and Window Manager'
 )
 makedepends=('git')
 source=("$pkgname::git+https://github.com/dylanaraps/neofetch.git")
