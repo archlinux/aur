@@ -2,7 +2,7 @@
 
 pkgname=docfetcher
 _name=DocFetcher
-pkgver=1.1.14
+pkgver=1.1.17
 pkgrel=1
 pkgdesc="A java open source desktop search application"
 arch=('i686' 'x86_64')
@@ -12,14 +12,16 @@ depends=('java-runtime>=1.6')
 makedepends=('unzip')
 source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/docfetcher-${pkgver}-portable.zip"
   'docfetcher'
-  'swt.patch')
-md5sums=('9336e517d3cc12f47b6a1932eb2c99c3'
+  'swt.patch'
+  'docfetcher.desktop')
+md5sums=('ed2bb1f6cc4b648955badff96459cf23'
          '6a798b893868bf6b5e78093143654b39'
-         '4ee9dd7e1af40f45708423e297c42bd3')
+         '399d4f4294039f8142f32fd770d441d7'
+	 '363fdc2fa2e4e8f090fdc16b86939cb3')
 
 prepare() {
   cd "${srcdir}"
-  unzip -qqo "${pkgname}-${pkgver}-portable.zip"
+  #unzip -qqo "${pkgname}-${pkgver}-portable.zip"
 
   # Patch to add where SWT libraries will be unpacked. See the following link:
   # http://docfetcher.sourceforge.net/wiki/doku.php?id=faq  
@@ -32,6 +34,9 @@ package() {
 
   # Executable
   install -Dm755 "../${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  
+  # .desktop file
+  install -Dm755 "../${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"  
 
   # Remove files from other platforms and other unnecessary ones
   rm -r "${_name}.app"
