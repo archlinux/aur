@@ -2,7 +2,7 @@
 
 pkgname=tresorit
 pkgver=1.0.147.423
-pkgrel=1
+pkgrel=2
 pkgdesc='Encrypted cloud storage for your confidential files. Using Tresorit, files are encrypted before being uploaded to the cloud. Start encrypting files for free.'
 arch=('i686' 'x86_64')
 url="http://www.tresorit.com/"
@@ -14,6 +14,14 @@ source=("https://installerstorage.blob.core.windows.net/public/install/tresorit_
 sha1sums=('994af4c75b2ba8501821fa8e399c0e702fccedd0')
 
 prepare() {
+  # Validate signature
+  head -c1044 tresorit_installer.run | tail -c+20 | xxd -r -p > tresorit_installer.run.signature
+  VERIFICATION_RESULT=`tail -c+1046 tresorit_installer.run | openssl sha512 -verify ../tresorit_installer.run.pubkey -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:-1 -signature tresorit_installer.run.signature`
+  if [ "$VERIFICATION_RESULT" != "Verified OK" ]; then
+    echo "    ! Binary signature verification failed"
+    exit 1
+  fi
+
   SKIP=`head tresorit_installer.run | grep "^SKIP" | sed 's/SKIP=//'`
   mkdir -p tresorit
   tail -n+$SKIP tresorit_installer.run | tar xz -C tresorit
