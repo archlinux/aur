@@ -2,8 +2,8 @@
 
 _pkgname=fs-uae
 pkgname=fs-uae-devel
-pkgver=2.7.13dev
-pkgrel=2
+pkgver=2.7.14dev
+pkgrel=1
 pkgdesc="Cross-platform Amiga emulator based on UAE/WinUAE (development version)."
 arch=("i686" "x86_64")
 url="http://fs-uae.net/download-devel"
@@ -15,7 +15,7 @@ source=("http://fs-uae.net/devel/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 #source=("http://ppa.launchpad.net/fengestad/devel/ubuntu/pool/main/f/${_pkgname}/${_pkgname}_${pkgver}.orig.tar.gz")
 provides=("fs-uae")
 conflicts=("fs-uae")
-md5sums=('0ee14afd4e04374de3698631f9668d3d')
+md5sums=('35365c9dd9ee62713f1a3dcbffc48cdd')
 
 #MAKEFLAGS="-j1"
 
@@ -24,7 +24,6 @@ md5sums=('0ee14afd4e04374de3698631f9668d3d')
 build() {
    cd ${_pkgname}-${pkgver}
 
-   export CXXFLAGS+=" -std=gnu++98"
    ./configure --prefix=/usr
    make
 }
