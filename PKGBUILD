@@ -16,23 +16,26 @@ md5sums=('d018fbfdc0b15b8ac090e918c14b58aa'
          '46d530b31311a689932dd2a9025dd2a3'
          'f3ed74ec7da62c8f88f81a7c2012d040')
 
-package() {
-  cd "$srcdir/AlterEgo_Linux/AlterEgo"
+prepare() {
+  cd AlterEgo_Linux/AlterEgo
 
-  mkdir -p "$pkgdir"/usr/{bin,share/games/alterego}
+  # convert line endings from DOS to Unix
+  sed -i 's/\r$//' AlterEgo.sh
+
+  sed -i '2i cd\ /usr/share/games/alterego' AlterEgo.sh
+}
+
+package() {
+  cd AlterEgo_Linux/AlterEgo
+
+  install -Dm755 AlterEgo.sh "$pkgdir/usr/bin/alterego"
   rm AlterEgo.sh
+
+  install -dm755 "$pkgdir/usr/share/games/alterego"
   cp -r * "$pkgdir/usr/share/games/alterego/"
 
   # game does not run without world writable bit set :-/
-  find ${pkgdir} -type f -exec chmod 666 {} \;
-
-  printf "%s\n%s\n" \
-    '#!/bin/bash' \
-    'cd /usr/share/games/alterego' \
-    'exec mono ./AlterEgo.exe "$@"' \
-    > "$pkgdir/usr/bin/alterego"
-
-  chmod 755 "$pkgdir/usr/bin/alterego"
+  find "$pkgdir/usr/share" -type f -exec chmod 666 {} \;
 
   install -Dm644 "$srcdir/alterego.desktop" \
     "$pkgdir/usr/share/applications/alterego.desktop"
