@@ -1,0 +1,18 @@
+pkgbase = caudio-git
+	pkgdesc = Advanced C++ wrapper around OpenAL
+	pkgver = 2.3.0.r261.8edfaec
+	pkgrel = 1
+	url = https://github.com/R4stl1n/cAudio
+	arch = i686
+	arch = x86_64
+	license = zlib
+	makedepends = git
+	makedepends = cmake
+	depends = openal
+	provides = caudio
+	conflicts = caudio
+	source = git+https://github.com/R4stl1n/cAudio.git
+	md5sums = SKIP
+
+pkgname = caudio-git
+
