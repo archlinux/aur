@@ -4,7 +4,7 @@
 
 pkgname=android-sdk-dummy
 _pkgname=android-sdk
-pkgver=25.1.3
+pkgver=25.1.6
 pkgrel=1
 pkgdesc='Google Android SDK, dummy package'
 arch=('i686' 'x86_64')
