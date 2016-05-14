@@ -1,5 +1,5 @@
 pkgbase = opengate
-	pkgdesc = Open GATE
+	pkgdesc = Open GATE - numerical simulations in medical imaging and radiotherapy
 	pkgver = 7.2
 	pkgrel = 1
 	url = https://github.com/OpenGATE/Gate

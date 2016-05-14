@@ -2,7 +2,7 @@
 pkgname=opengate
 pkgver=7.2
 pkgrel=1
-pkgdesc="Open GATE"
+pkgdesc="Open GATE - numerical simulations in medical imaging and radiotherapy"
 arch=('x86_64')
 url="https://github.com/OpenGATE/Gate"
 license=('LGPL3')
@@ -30,10 +30,17 @@ PKGEXT='.pkg.tar.gz'
 
 prepare() {
 	# Execute cmake
+	echo "You need to build geant4 with option"
+	echo " -DGEANT4_BUILD_MULTITHREADED=OFF"
+	echo "to properly use Gate. It does not yet"
+	echo "work with Geant4 in multithreaded mode."
 	cd ${srcdir}
 	[ -d build ] || mkdir build
 	cd build
-	cmake ../Gate-${pkgver}
+	cmake \
+		-DGATE_USE_OPTICAL=ON \
+		-DGATE_USE_STDC11=ON \
+		../Gate-${pkgver}
 :
 }
 
