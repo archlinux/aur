@@ -6,8 +6,8 @@
 # Contributor: Muflone <webreg@vbsimple.net>
 
 pkgname=httrack
-pkgver=3.48.21
-pkgrel=2
+pkgver=3.48.22
+pkgrel=1
 pkgdesc="An easy-to-use offline browser utility."
 arch=('i686' 'x86_64')
 url="http://www.httrack.com/"
@@ -16,7 +16,7 @@ depends=('bash' 'xdg-utils' 'hicolor-icon-theme' 'openssl')
 options=('!libtool')
 install="$pkgname.install"
 source=("http://mirror.httrack.com/historical/$pkgname-$pkgver.tar.gz")
-md5sums=('c2a2f44da400fe18fad6f98bac49a987')
+md5sums=('843ccd49bfef2309b195479cac07d618')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
