@@ -6,13 +6,13 @@
 # toolchain build order: linux-libre-api-headers->glibc->binutils->gcc->binutils->glibc
 
 pkgname=linux-libre-api-headers
-_pkgbasever=4.4-gnu
-_pkgver=4.4.1-gnu
+_pkgbasever=4.5-gnu
+_pkgver=4.5.2-gnu
 
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.gnu.org/software/libc"
@@ -24,9 +24,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign")
-sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
+sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
-            'ed09b329d879bb758374b6a76acb841cdf63a6638720378657fb2b6eeed6b265'
+            '7918a8c102c5f47dbe778f5541656c875b844d6e4da514a42c8855ff6a7f3733'
             'SKIP')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
