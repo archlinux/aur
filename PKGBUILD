@@ -7,12 +7,12 @@
 
 pkgbase=linux-lts314
 _srcname=linux-3.14
-pkgver=3.14.65
+pkgver=3.14.69
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
-makedepends=('kmod' 'inetutils' 'bc')
+makedepends=('kmod' 'inetutils' 'bc' 'gcc5')
 options=('!strip')
 source=(https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.{xz,sign}
         https://www.kernel.org/pub/linux/kernel/v3.x/patch-${pkgver}.{xz,sign}
@@ -30,7 +30,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.{xz,sign}
 # https://www.kernel.org/pub/linux/kernel/v3.x/sha256sums.asc
 sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             'SKIP'
-            'e462317e3781081ed11dfa18419b4cb9e9ad13e4f4548006ed3db5b96b45a8f7'
+            '29173d300b3b4bd5d2a97480bc7b69e58eaf8d57c00e9bcf60b5f32a0d768132'
             'SKIP'
             'af6a452fcc11cfa6b538f4124b50381f1dc05ca20bf8dc336552fa7cc354bac3'
             'b6f0f344773b51768ca53158a05a16e1328ad0def7b77ca0bce43211216e5cb1'
@@ -112,7 +112,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_srcname}"
 
-  make ${MAKEFLAGS} LOCALVERSION= bzImage modules
+  make CC="gcc-5" ${MAKEFLAGS} LOCALVERSION= bzImage modules
 }
 
 _package() {
