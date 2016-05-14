@@ -1,0 +1,15 @@
+pkgbase = wineqq-longene
+	pkgdesc = Longene Wine QQ 7.8.
+	pkgver = 20151109
+	pkgrel = 1
+	url = http://www.longene.org/
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	noextract = WineQQ7.8-20151109-Longene.deb
+	source = http://www.longene.org/download/WineQQ7.8-20151109-Longene.deb
+	md5sums = ababd6828bc04f130d29c6cef9f252a7
+
+pkgname = wineqq-longene
+
