@@ -43,7 +43,7 @@ prepare() {
 		-DGATE_USE_OPTICAL=ON \
 		-DGATE_USE_STDC11=ON \
 		../Gate-${pkgver}
-	patch -Np0 root6.patch
+	patch -Np0 -i root6.patch
 :
 }
 
