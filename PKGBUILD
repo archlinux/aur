@@ -2,7 +2,7 @@
 
 _name=dtags
 pkgname="${_name}"
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc='Directory Tags for Lazy Programmers'
 url='https://github.com/joowani/dtags'
@@ -12,7 +12,7 @@ depends=('python')
 provides=("${_name}=${pkgver}")
 install="${pkgname}.install"
 source=("${url}/archive/${pkgver}.tar.gz")
-sha256sums=('bc7b747cc13e4d4a5c62d5d87a6acdd814c4a976fdbbaee81a732cd39ec69942')
+sha256sums=('53782887da41327cb1b4f396faa2bc595a8a8f8227df06f49af42bd905f449be')
 
 # Enable for tests
 # check() {
