@@ -1,13 +1,14 @@
 # Maintainer: Tommaso Falchi Delitala <volalto86@gmail.org>
 pkgname=apm_planner
 pkgver=2.0.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Ground Control Station for MAVlink based autopilots (e.g. Ardupilot)"
 arch=('i686' 'x86_64')
 url="http://planner2.ardupilot.com"
 license=('GPL3')
 source=("https://github.com/diydrones/apm_planner/archive/${pkgver}.tar.gz")
 depends=('qt5-base' 'qt5-serialport' 'qt5-svg' 'qt5-script' 'qt5-declarative' 'sdl2' 'flite' 'libsndfile' 'python')
+
 md5sums=('11b5f801d8f0f1fdfeeeda5b41082045')
 
 build() {

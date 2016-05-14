@@ -1,7 +1,7 @@
 pkgbase = apm_planner
 	pkgdesc = Ground Control Station for MAVlink based autopilots (e.g. Ardupilot)
 	pkgver = 2.0.21
-	pkgrel = 1
+	pkgrel = 2
 	url = http://planner2.ardupilot.com
 	arch = i686
 	arch = x86_64
