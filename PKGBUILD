@@ -2,7 +2,7 @@
 
 pkgname=floodit
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A flood it clone written in python'
 arch=('any')
 license=('unknown')
@@ -19,6 +19,7 @@ prepare() {
   cd FloodIt-$pkgver
 
   sed -i 's/python/python2/' game.py
+
   patch -p0 < "$srcdir/fix-savepath.patch"
 
   # create launcher script
