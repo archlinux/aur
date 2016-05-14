@@ -15,7 +15,7 @@ provides=(saleae-logic)
 
 case $CARCH in
   'i686')
-    source=("http://downloads.saleae.com/logic/$pkgver/Logic $pkgver (32-bit).zip"
+    source=("http://downloads.saleae.com/logic/$pkgver/Logic%20$pkgver%20(32-bit).zip"
             "http://downloads.saleae.com/Saleae+Users+Guide.pdf"
             "http://opendesktop.org/CONTENT/content-files/133473-SaleaeLogic.svg"
             "saleae-logic.desktop")
@@ -25,7 +25,7 @@ case $CARCH in
              'cc2a4127af87c8248b08a9cb8d82d542f63cfe77d95478bd469c64fd6722ed7a')
     __arch=' (32-bit)' ;;
   'x86_64')
-    source=("http://downloads.saleae.com/logic/$pkgver/Logic $pkgver (64-bit).zip"
+    source=("http://downloads.saleae.com/logic/$pkgver/Logic%20$pkgver%20(64-bit).zip"
             "http://downloads.saleae.com/Saleae+Users+Guide.pdf"
             "http://opendesktop.org/CONTENT/content-files/133473-SaleaeLogic.svg"
             "saleae-logic.desktop")
