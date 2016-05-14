@@ -10,7 +10,7 @@
 
 pkgbase=linux-libre-pck
 _pkgbasever=4.5-gnu
-_pkgver=4.5.1-gnu
+_pkgver=4.5.4-gnu
 _pckpatchver=pck1
 
 _replacesarchkernel=('linux-zen')
@@ -62,9 +62,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0010-stmmac-fix-MDIO-settings.patch')
 sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
-            'bde6fa0cee5ee3d32c6e4336b23f87cbe37b74b9d4d1603d1d421dc1e44d2ab9'
+            '02e00521cf765da05692aea22262e05c96325562667b107be6289354c5eef3fa'
             'SKIP'
-            '8d0d6cff49ded14e2660fbebe4edaf6433347418ac90374ef2aadb4c55f8d2ed'
+            '3eda100956a1e12fc536c29ea7d32f253aa34eeedde044374e8fb853cfb69b46'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -72,12 +72,12 @@ sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'fb523eec2cc7341b16469447390415d584f4fb9f79702bf21adb848f767800aa'
-            'ee0eff1c84e529feaf716fc4afefc2723901e0b60ac733e4b6a867771b629820'
-            '2ada64f97aaf9f38ad35f1235d93d817535ac3d4b0c21ae303fc3feac4a7d71c'
+            '91158dfb35d93e63d3d3cec3dc723284fd217d53b84217f712c89617fdc33cfe'
+            '746418fa460f9cc68427ea4ce7d4309722e44ae2dc4d432cbf137033d440d63a'
+            '4028fbdd3ebe344c1030508d0320cdfa00ad6eaab824cef4f3ec4e02f76019ff'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'b878510fb1ba2c83999b9faf9bf270779d6f1a1c33ec39fb3701d3e2aba053dc'
+            '832f80b991d3064ab9eea1327b222308f4617ce55e94ffaa28333b656dece4d2'
             'SKIP'
             'd09937cbca4f408dbcde270e465bdfe0589a0b41ed07d260a596a38fe6cca987'
             'cc1f1b5026b373da4a5c2e8c82bc2b0f8a20e295353c201579140a04f2452545'
@@ -179,7 +179,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase^} kernel and modules with a handful of awesome features not merged into mainline [AUFS, BFQ, BFS, KDBUS, Knock, TuxOnIce]"
+  pkgdesc="The ${pkgbase^} kernel and modules with a handful of awesome features not merged into mainline [AUFS, BFQ, BFS, Knock, TuxOnIce]"
   [ "${pkgbase}" = "linux-libre" ] && groups=('base')
   depends=('coreutils' 'linux-libre-firmware' 'kmod')
   optdepends=('crda: to set the correct wireless channels of your country'
