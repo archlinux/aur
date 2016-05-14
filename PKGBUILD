@@ -1,7 +1,7 @@
 # Maintainer: Jack L. Frost <fbt@fleshless.org>
 pkgname=lemonbar
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc='A featherweight, lemon-scented, bar based on xcb.'
 arch=( 'i686' 'x86_64' )
 url='https://github.com/LemonBoy/bar'
@@ -26,4 +26,4 @@ package() {
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha1sums=('33e250c1558ce8a1f4a1d85851a548d00716d6b1')
+sha1sums=('cc578cac439b4500a9c03e144602dd3b0abaeaac')
