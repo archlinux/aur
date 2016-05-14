@@ -1,14 +1,16 @@
 pkgbase = beersmith2
-	pkgdesc = BeerSmith2 features graphical recipe design, over a dozen standalone brewing tools, a beer style guide, inventory management, calendar and integrated shopping list.
+	pkgdesc = BeerSmith features graphical recipe design, over a dozen standalone brewing tools, a beer style guide, inventory management, calendar and integrated shopping list.
 	pkgver = 2.2.12
 	pkgrel = 1
 	url = http://www.beersmith.com
+	arch = i686
 	arch = x86_64
 	license = unknown
 	depends = libpng12
 	depends = webkitgtk2
-	source = https://s3.amazonaws.com/BeerSmith2-2/BeerSmith-2.2.12_amd64.deb
-	md5sums = f23b2a4d64bed4e6edb2c9d33f605a85
+	source_i686 = https://s3.amazonaws.com/BeerSmith2-2/BeerSmith-2.2.12.deb
+	source_x86_64 = https://s3.amazonaws.com/BeerSmith2-2/BeerSmith-2.2.12_amd64.deb
+	md5sums_x86_64 = f23b2a4d64bed4e6edb2c9d33f605a85
 
 pkgname = beersmith2
 
