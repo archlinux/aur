@@ -1,7 +1,7 @@
 # Maintainer: Slithery <aur at slithery dot uk>
 
 pkgname=longview
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="A system monitoring agent for Linode customers."
 arch=('any')
@@ -17,7 +17,7 @@ backup=('etc/linode/longview.key'
         'etc/linode/longview.d/Nginx.conf')
 install=longview.install
 source=($url/archive/v$pkgver.tar.gz)
-sha256sums=('735811fd9118af91f03a4659d7aaa1b9ccb1c29043ebc97dfeb4b08994a18638')
+sha256sums=('60a34af29e29e2c2640e7ee9dadd7771f78c6fb07f679a2887c1ddf704ca30ea')
 
 build() {
     h2ph -d "$srcdir/$pkgname-$pkgver" /usr/include/syscall.h
