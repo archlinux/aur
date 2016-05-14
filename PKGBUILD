@@ -9,6 +9,7 @@ arch=('x86_64' 'i686')
 url='http://mosra.cz/blog/corrade.php'
 license=('MIT')
 makedepends=('cmake' 'git' 'ninja')
+depends=('gcc-libs')
 source=('git://github.com/mosra/corrade.git#commit=142b2a7241')
 sha1sums=('SKIP')
 
@@ -25,6 +26,8 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
+  install -Dm644 "$pkgname/COPYING" \
+    "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
 
 # vim:set ts=2 sw=2 et:
