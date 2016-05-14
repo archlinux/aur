@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=ruby-ruby-progressbar
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Flexible text progress bar library for Ruby"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/jfelchner/ruby-progressbar"
 license=('MIT')
 depends=('ruby')
 source=(https://rubygems.org/downloads/${pkgname##ruby-}-${pkgver}.gem)
-sha256sums=('78020988fc8603843747e316edb8fc50481c6842583eab5749e29fbbc9660f54')
+sha256sums=('95ded755295440de814704970d7ccaf3cb259854534f03a03a6d05918f3eece3')
 noextract=("${pkgname#*-}-${pkgver}.gem")
 
 package() {
