@@ -3,13 +3,13 @@
 
 pkgname=wine-git
 _gitname="wine"
-pkgver=1.7.34.r0.gb34b2ca
-pkgrel=2
+pkgver=1.9.9.r118.ge1970c8
+pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs. Latest GIT version."
 url="http://www.winehq.com"
 arch=('i686' 'x86_64')
-license='LGPL'
-install='wine-git.install'
+options=(staticlibs)
+license=(LGPL)
 
 source=('wine-git::git://source.winehq.org/git/wine.git'
         '30-win32-aliases.conf')
@@ -18,6 +18,8 @@ md5sums=('SKIP'
 
 _depends=(
   fontconfig      lib32-fontconfig
+  lcms2           lib32-lcms2
+  libxml2         lib32-libxml2
   libxcursor      lib32-libxcursor
   libxrandr       lib32-libxrandr
   libxdamage      lib32-libxdamage
@@ -27,60 +29,56 @@ _depends=(
   glu             lib32-glu
   libsm           lib32-libsm
   gcc-libs        lib32-gcc-libs
+  libpcap         lib32-libpcap
   desktop-file-utils
 )
 
-makedepends=(autoconf ncurses bison perl fontforge flex prelink
+makedepends=(autoconf ncurses bison perl fontforge flex
   'gcc>=4.5.0-2'  'gcc-multilib>=4.5.0-2'
-  giflib          lib32-giflib
-  libpng          lib32-libpng
-  gnutls          lib32-gnutls
-  libxinerama     lib32-libxinerama
-  libxcomposite   lib32-libxcomposite
-  libxmu          lib32-libxmu
-  libxxf86vm      lib32-libxxf86vm
-  libxml2         lib32-libxml2
-  libldap         lib32-libldap
-  lcms            lib32-lcms
-  mpg123          lib32-mpg123
-  openal          lib32-openal
-  v4l-utils       lib32-v4l-utils
-  alsa-lib        lib32-alsa-lib
-  libxcomposite   lib32-libxcomposite
-  mesa            lib32-mesa
+  giflib                lib32-giflib
+  libpng                lib32-libpng
+  gnutls                lib32-gnutls
+  libxinerama           lib32-libxinerama
+  libxcomposite         lib32-libxcomposite
+  libxmu                lib32-libxmu
+  libxxf86vm            lib32-libxxf86vm
+  libldap               lib32-libldap
+  mpg123                lib32-mpg123
+  openal                lib32-openal
+  v4l-utils             lib32-v4l-utils
+  libpulse              lib32-libpulse
+  alsa-lib              lib32-alsa-lib
+  libxcomposite         lib32-libxcomposite
+  mesa                  lib32-mesa
+  libcl                 lib32-libcl
+  libxslt               lib32-libxslt
+  gst-plugins-base-libs lib32-gst-plugins-base-libs
   samba
+  opencl-headers
   git
 )
   
 optdepends=(
-  giflib          lib32-giflib
-  libpng          lib32-libpng
-  libldap         lib32-libldap
-  gnutls          lib32-gnutls
-  lcms            lib32-lcms
-  libxml2         lib32-libxml2
-  mpg123          lib32-mpg123
-  openal          lib32-openal
-  v4l-utils       lib32-v4l-utils
-  libpulse        lib32-libpulse
-  alsa-plugins    lib32-alsa-plugins
-  alsa-lib        lib32-alsa-lib
-  libjpeg-turbo   lib32-libjpeg-turbo
-  libxcomposite   lib32-libxcomposite
-  libxinerama     lib32-libxinerama
-  ncurses         lib32-ncurses
-  libcl           lib32-libcl
+  giflib                lib32-giflib
+  libpng                lib32-libpng
+  libldap               lib32-libldap
+  gnutls                lib32-gnutls
+  mpg123                lib32-mpg123
+  openal                lib32-openal
+  v4l-utils             lib32-v4l-utils
+  libpulse              lib32-libpulse
+  alsa-plugins          lib32-alsa-plugins
+  alsa-lib              lib32-alsa-lib
+  libjpeg-turbo         lib32-libjpeg-turbo
+  libxcomposite         lib32-libxcomposite
+  libxinerama           lib32-libxinerama
+  ncurses               lib32-ncurses
+  libcl                 lib32-libcl
+  libxslt               lib32-libxslt
+  gst-plugins-base-libs lib32-gst-plugins-base-libs
   cups
   samba           dosbox
 )
-
-# Check if libowfat is installed.
-# It has to be removed because WINE cannot be build if installed.
-# Thanks to haagch 
-if [ -f /usr/lib/libowfat.a ]; then
-    msg2 "Error: libowfat.a detected. Please remove the libowfat package. WINE cannot be build if installed."
-    exit 0;
-fi
 
 if [[ $CARCH == i686 ]]; then
   # Strip lib32 etc. on i686
@@ -90,6 +88,7 @@ if [[ $CARCH == i686 ]]; then
   optdepends=(${optdepends[@]/*32-*/})
 else
   makedepends=(${makedepends[@]} ${_depends[@]})
+  provides=("bin32-wine=$pkgver" "wine-wow64=$pkgver")
   conflicts=('bin32-wine' 'wine-wow64')
   replaces=('bin32-wine')
 fi
@@ -100,22 +99,21 @@ pkgver() {
   git describe --always --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^wine.//'
 }
 
-build() {
+prepare() {
+  # Allow ccache to work
   cd "$srcdir"
 
-  # ncurses fix
-  sed -i 's|libncurses|libncursesw|g' "$srcdir/$pkgname/configure"
-  sed -i 's|lncurses|lncursesw|g' "$srcdir/$pkgname/configure"
+  sed 's|OpenCL/opencl.h|CL/opencl.h|g' -i $pkgname/configure*
 
   # Get rid of old build dirs
   rm -rf $pkgname-{32,64}-build
   mkdir $pkgname-32-build
+}
 
-  # These additional CPPFLAGS solve FS#27662 and FS#34195
-  export CPPFLAGS="${CPPFLAGS/-D_FORTIFY_SOURCE=2/} -D_FORTIFY_SOURCE=0"
+build() {
+  cd "$srcdir"
 
   if [[ $CARCH == x86_64 ]]; then
-
     msg2 "Building Wine-64..."
 
     mkdir $pkgname-64-build
@@ -124,7 +122,7 @@ build() {
       --prefix=/usr \
       --libdir=/usr/lib \
       --with-x \
-      --without-gstreamer \
+      --with-gstreamer \
       --enable-win64
     # Gstreamer was disabled for FS#33655
 
@@ -143,22 +141,14 @@ build() {
   ../$pkgname/configure \
     --prefix=/usr \
     --with-x \
-    --without-gstreamer \
+    --with-gstreamer \
     "${_wine32opts[@]}"
 
-  # These additional flags solve FS#23277
-  make CFLAGS+="-mstackrealign -mincoming-stack-boundary=2" CXXFLAGS+="-mstackrealign -mincoming-stack-boundary=2"
+  make
 }
 
 package() {
   depends=(${_depends[@]})
-
-  gitver=$(cd "$srcdir/$pkgname" && git describe --long | sed -r 's/^wine-//;s/([^-]*-g)/r\1/;s/-/./g')
-  provides=("wine=$gitver") 
-  if [[ $CARCH == x86_64 ]]; then   
-    provides[2]="bin32-wine=$gitver"
-    provides[3]="wine-wow64=$gitver"
-  fi
 
   msg2 "Packaging Wine-32..."
   cd "$srcdir/$pkgname-32-build"
