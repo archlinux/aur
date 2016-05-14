@@ -1,18 +1,17 @@
 # Maintainer: Nitin Mathew <nitn_mathew2000@hotmail.com>                                                                                             
-                                                                                                                                                                                                                              
 pkgname=settimezone                                                                                                                                 
-pkgver=0.2.1                                                                                                                                 
-pkgrel=3
+pkgver=0.2.2                                                                                                                                 
+pkgrel=1
 pkgdesc="To change the timezone in Arch Linux."                                        
 
 arch=('i686' 'x86_64')
 url="https://github.com/nsmathew/settimezone"
 license=('GPL3')
-depends=('python')
+depends=('python' 'tk')
 makedepends=()
 install=$pkgname.install
 source=(https://github.com/nsmathew/SetTimeZone/archive/v${pkgver}.tar.gz)
-sha256sums=('a3791910bbfc6cbb90228c89ceb146d699e376df11bd0898b8a73fb78a70de35')
+sha256sums=('62c5eaf8d2e6ad8ddf01afbe16d57d9413466cd452f657509e19e748a072c7f9')
 
 package() {
         cd ${srcdir}/${pkgname}-${pkgver}
@@ -23,9 +22,10 @@ package() {
         install -D -m644 resources/settimezone22x22.png ${pkgdir}/usr/share/icons/hicolor/22x22/apps/settimezone.png
         install -D -m644 resources/settimezone32x32.png ${pkgdir}/usr/share/icons/hicolor/32x32/apps/settimezone.png
         install -D -m644 resources/settimezone48x48.png ${pkgdir}/usr/share/icons/hicolor/48x48/apps/settimezone.png
+        install -D -m644 resources/settimezone128x128.png ${pkgdir}/usr/share/icons/hicolor/128x128/apps/settimezone.png
+        install -D -m644 resources/settimezone256x256.png ${pkgdir}/usr/share/icons/hicolor/256x256/apps/settimezone.png
         install -D -m644 resources/settimezone.desktop ${pkgdir}/usr/share/applications/settimezone.desktop
 
 	#Remove the downloaded source
 	cd ../.. && rm -fr v${pkgver}.tar.gz
 }
-
