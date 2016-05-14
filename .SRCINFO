@@ -1,0 +1,20 @@
+pkgbase = opengate
+	pkgdesc = Open GATE
+	pkgver = 7.2
+	pkgrel = 1
+	url = https://github.com/OpenGATE/Gate
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = root
+	makedepends = geant4
+	makedepends = gcc
+	options = !emptydirs
+	options = staticlibs
+	options = libtool
+	options = !strip
+	source = https://github.com/OpenGATE/Gate/archive/v7.2.tar.gz
+	md5sums = 6b15b179ccc79065a4aef63156b3e5de
+
+pkgname = opengate
+
