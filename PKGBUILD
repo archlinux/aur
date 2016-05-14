@@ -9,9 +9,7 @@ arch=('x86_64' 'i686')
 url='http://mosra.cz/blog/corrade.php'
 license=('MIT')
 makedepends=('cmake' 'git' 'ninja')
-provides=('corrade')
-conflicts=('corrade')
-source=("git://github.com/mosra/corrade.git#commit=142b2a7241")
+source=('git://github.com/mosra/corrade.git#commit=142b2a7241')
 sha1sums=('SKIP')
 
 build() {
