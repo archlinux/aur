@@ -23,6 +23,13 @@ prepare() {
   find "$srcdir/json_fast/lib" -exec cp -dpr --no-preserve=ownership '{}' lib \;
 }
 
+check() {
+  cd ${pkgname%-git}
+
+  msg2 'Running tests...'
+  PERL6LIB=lib prove -r -e perl6
+}
+
 package() {
   cd "$srcdir/$pkgname-$pkgver"
 
