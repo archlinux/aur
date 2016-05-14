@@ -4,7 +4,7 @@
 
 pkgname=python-pyclewn
 _pkgname=pyclewn
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="A Vim front-end to the gdb and pdb debuggers"
 license=('GPL2')
@@ -12,23 +12,20 @@ arch=('any')
 url="https://pypi.python.org/pypi/$_pkgname"
 depends=('python' 'gvim>=7.3' 'gdb')
 install=vimdoc.install
-source=(https://pypi.python.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz)
-md5sums=('6ac0fa67c61a052d0192646531a62388')
+source=(http://pypi.python.org/packages/d0/07/9bbe5f9c79d47e39dd932acad608101d9eac35d3ea09eb275b32e86f8022/$_pkgname-$pkgver.tar.gz)
+md5sums=('3f85e50220a5d03777f45cf5aeac22c0')
 
 build() {
   cd $srcdir/$_pkgname-$pkgver
+
   mkdir tmp
   python setup.py install --prefix=/usr --root="$srcdir/$_pkgname-$pkgver/tmp" --optimize=1
-  mv tmp/usr/lib/python3.5/site-packages/ clewn
-  python -c "from clewn import clewn; clewn.get_vimball()"
-  rm -rf clewn tmp
+  mv build/lib/clewn/runtime/$_pkgname-$pkgver.vmb .
   echo ":let g:vimball_home = \"$pkgdir/usr/share/vim/vimfiles\"" > instcmd.txt
   echo ":e $_pkgname-$pkgver.vmb" >> instcmd.txt
   echo ":set nomore" >> instcmd.txt
   echo ":so %" >> instcmd.txt
   echo ":q!" >> instcmd.txt
-  
-       
 }
 
 package() {
