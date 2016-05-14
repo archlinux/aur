@@ -14,7 +14,9 @@ pkgbase = opengate
 	options = libtool
 	options = !strip
 	source = https://github.com/OpenGATE/Gate/archive/v7.2.tar.gz
+	source = root6.patch
 	md5sums = 6b15b179ccc79065a4aef63156b3e5de
+	md5sums = c5eeef3f30223d5eeda7438b4306dad7
 
 pkgname = opengate
 

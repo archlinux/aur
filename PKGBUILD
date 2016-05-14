@@ -19,9 +19,11 @@ backup=()
 options=('!emptydirs' 'staticlibs' 'libtool' '!strip')
 install=
 changelog=
-source=("https://github.com/OpenGATE/Gate/archive/v${pkgver}.tar.gz")
+source=("https://github.com/OpenGATE/Gate/archive/v${pkgver}.tar.gz"
+	"root6.patch")
 noextract=()
-md5sums=('6b15b179ccc79065a4aef63156b3e5de')
+md5sums=('6b15b179ccc79065a4aef63156b3e5de'
+         'c5eeef3f30223d5eeda7438b4306dad7')
 
 # Do not compress the package for installation
 # PKGEXT='.pkg.tar'
@@ -41,6 +43,7 @@ prepare() {
 		-DGATE_USE_OPTICAL=ON \
 		-DGATE_USE_STDC11=ON \
 		../Gate-${pkgver}
+	patch -Np0 root6.patch
 :
 }
 
