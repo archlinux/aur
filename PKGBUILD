@@ -8,15 +8,15 @@ arch=('i686' 'x86_64')
 license=('LGPL')
 url='https://github.com/nurupo/vlc-pause-click-plugin'
 depends=('vlc')
-source=("https://github.com/nurupo/${pkgname}/archive/${pkgver}.tar.gz")
+source=("https://github.com/nurupo/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('b91797713249f4e2bbeb9b5226f7daaf8d15c700b9e0abbd2b6ba0bef7f00573')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}/vlc-2.2.x+/"
+  cd "$pkgname-$pkgver/vlc-2.2.x+/"
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/vlc-2.2.x+/"
-  make DESTDIR="${pkgdir}" install
+  cd "$pkgname-$pkgver/vlc-2.2.x+/"
+  make DESTDIR="$pkgdir" install
 }
