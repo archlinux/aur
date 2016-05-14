@@ -3,7 +3,7 @@
 pkgname="repo-maintainer"
 pkgver=0.3.0
 pkgrel=4
-pkgdesc="Tools for maintaining repositories for ArchLinux"
+pkgdesc="Tools for maintaining repositories for ArchLinux [BETA]"
 arch=('any')
 url="https://git.0ptr.de/nullptr_t/repo-maintainer"
 license=('GPL3')
