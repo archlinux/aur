@@ -1,6 +1,6 @@
 # Maintainer: Dylan Araps <dyl@tfwno.gf>
 pkgname=neofetch
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="CLI script to show your system's info and display an image using w3m."
 arch=('any')
@@ -21,7 +21,7 @@ optdepends=(
   'xorg-xrandr: resolution detection (Multi Monitor + Refresh rates)'
 )
 source=("https://github.com/dylanaraps/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('f6d73367b377aab52f5f29e6c7c12968')
+md5sums=('3e9fd67a9a003df202e3495e0e17ede4')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver/"
