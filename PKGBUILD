@@ -2,7 +2,7 @@
 
 pkgname=factorio
 pkgver=0.12.33
-pkgrel=1
+pkgrel=2
 pkgdesc="A 2D game about building and maintaining factories."
 arch=('i686' 'x86_64')
 url="http://www.factorio.com/"
@@ -20,6 +20,7 @@ elif test "$CARCH" == x86_64; then
 fi
 _gamepkg=factorio_alpha_${__factorio_arch}_$pkgver.tar.gz
 _pkgpaths_tries=("$startdir"
+                 "$SRCDEST"
                  "$HOME/Downloads")
 
 build() {
