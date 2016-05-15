@@ -10,8 +10,8 @@ url="http://aiomysql.readthedocs.org/"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=("http://pypi.python.org/packages/source/a/aiomysql/aiomysql-$pkgver.tar.gz"
-        "http://pypi.python.org/packages/source/P/PyMySQL/PyMySQL-$_pymysqlver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/a/aiomysql/aiomysql-$pkgver.tar.gz"
+        "https://files.pythonhosted.org/packages/source/P/PyMySQL/PyMySQL-$_pymysqlver.tar.gz")
 
 prepare() {
     cd "$srcdir"/aiomysql-$pkgver
