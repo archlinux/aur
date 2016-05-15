@@ -8,8 +8,7 @@ url="http://petr.olsak.net/"
 license=('custom')
 depends=('glibc')
 conflicts=('texlive-bin')
-source=(ftp://math.feld.cvut.cz/pub/olsak/vlna/vlna-$pkgver.tar.gz \
-        LICENSE)
+source=('http://petr.olsak.net/ftp/olsak/vlna/vlna-1.5.tar.gz' 'LICENSE')
 md5sums=('82f975d59692e159794cc6a717e0f75d'
          '51eec77b6812a9b6c0c0d6cb0bf3ced6')
 
