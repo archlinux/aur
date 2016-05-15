@@ -41,7 +41,6 @@ package_konqueror-frameworks-git() {
 	url="http://kde.org/applications/system/konqueror/"
 	conflicts=(kdebase-konqueror konqueror)
 	provides=(konqueror)
-	install=$pkgbase.install
 	cd build/konqueror
 	make DESTDIR="$pkgdir" install
 }
@@ -70,7 +69,6 @@ package_kfind-frameworks-git() {
         conflicts=(kdebase-kfind kfind)
         provides=(kfind)
 	url="http://kde.org/applications/utilities/kfind/"
-	install=$pkgbase.install
 	cd build/kfind
 	make DESTDIR="$pkgdir" install
 }
@@ -81,7 +79,6 @@ package_keditbookmarks-frameworks-git() {
         conflicts=(kdebase-keditbookmarks keditbookmarks)
         provides=(keditbookmarks)
         url="http://www.kde.org/"
-	install=$pkgbase.install
         cd build/keditbookmarks
         make DESTDIR="$pkgdir" install
 }
@@ -99,7 +96,6 @@ package_konq-plugins-frameworks-git() {
         depends=(kdelibs4support khtml tidyhtml)
         conflicts=(kdebase-konq-plugins konq-plugins)
         provides=(konq-plugins)
-        install=$pkgbase.install
         cd build/konq-plugins
         make DESTDIR="$pkgdir" install
 }
