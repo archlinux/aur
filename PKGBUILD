@@ -1,10 +1,10 @@
-# Maintainer: Michael Straube <m.s.online gmx.de>
+# Maintainer: Michael Straube <m.s.online gmx de>
 
 pkgname=alterego
 # could not find any version number, so using 1.0
 pkgver=1.0
 pkgrel=2
-pkgdesc="You control a hero who has a phantom twin, his alter ego."
+pkgdesc="You control a hero who has a phantom twin, his alter ego"
 url="http://www.retrosouls.net/?page_id=614"
 arch=('any')
 license=('custom:free')
@@ -22,6 +22,7 @@ prepare() {
   # convert line endings from DOS to Unix
   sed -i 's/\r$//' AlterEgo.sh
 
+  # patch launcher script
   sed -i '2i cd\ /usr/share/games/alterego' AlterEgo.sh
 }
 
