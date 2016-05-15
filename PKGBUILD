@@ -1,4 +1,4 @@
-# Maintainer: Antonio Rojas 
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=rekonq-frameworks-git
 pkgver=r3726.c60e5b0
@@ -12,7 +12,6 @@ makedepends=('extra-cmake-modules' 'git' 'python')
 conflicts=('rekonq')
 provides=('rekonq')
 source=("git://anongit.kde.org/rekonq.git#branch=frameworks")
-install=$pkgname.install
 sha256sums=('SKIP')
 
 pkgver() {
