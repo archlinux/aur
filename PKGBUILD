@@ -1,10 +1,8 @@
-# Maintainer: Morten linderud <morten@linderud.pw> 
-# Contributor: Patrice Peterson <runiq at archlinux dot us>
+# Maintainer: Patrice Peterson <runiq at archlinux dot us>
 # Contributor: Vivien Didelot <vivien+aur@didelot.org>
-
 pkgname=i3blocks-git
 _pkgname=i3blocks
-pkgver=1.4.r21.g017395f
+pkgver=1.2.r66.g55c9832
 pkgrel=2
 pkgdesc='Define blocks for your i3bar status line'
 arch=('i686' 'x86_64')
@@ -31,7 +29,7 @@ build () {
 }
 
 package () {
-  make -C "$srcdir/$_pkgname" DESTDIR="$pkgdir" PREFIX=/usr LIBEXECDIR=/usr/lib install
+  make -C "$srcdir/$_pkgname" DESTDIR="$pkgdir" PREFIX=/usr install
 }
 
 # vim: et ts=2 sw=2
