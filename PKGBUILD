@@ -4,7 +4,7 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20160514.10334
+pkgver=20160515.10342
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('i686' 'x86_64')
@@ -22,13 +22,13 @@ makedepends=('ghostscript')
 source=("${_pkgname}::svn://svn.savannah.gnu.org/texmacs/trunk/src"
         "fix-m4.patch")
 sha1sums=('SKIP'
-          '7157af255642d08a37b518957b10050bb4fc9672')
+          'e575a43c20ccf230602511be1b2f3917abb9d67f')
 options=('!emptydirs' '!ccache')
 provides=('texmacs')
 conflicts=('texmacs')
 
 pkgver() {
-  cd ${srcdir}/${_pkgname}
+  cd "${srcdir}/${_pkgname}"
   svn info | awk '/Revision/{r=$2}/Date/{gsub(/-/,"");d=$4}END{print d"."r}'
 }
 
@@ -80,6 +80,9 @@ package() {
   sed -i 's|${prefix}|/usr|' "${pkgdir}/usr/bin/fig2ps"
   # fix FS#37518
   sed -i '/^Path=/d' "${pkgdir}/usr/share/applications/texmacs.desktop"
+
+  # fix sage plugin
+  sed -i 's|`which tm_sage`|/usr/lib/TeXmacs/bin/tm_sage|' "${pkgdir}/usr/share/TeXmacs/plugins/sage/progs/init-sage.scm"
 }
 
 # vim:set ts=2 sw=2 et:
