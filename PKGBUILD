@@ -12,7 +12,6 @@ makedepends=(extra-cmake-modules git python kdoctools plasma-workspace)
 conflicts=(apper)
 provides=(apper)
 source=('git://anongit.kde.org/apper.git')
-install=$pkgname.install
 md5sums=('SKIP')
 
 pkgver() {
