@@ -9,7 +9,7 @@ url="https://github.com/mtorromeo/myremotedump"
 license=('BSD')
 depends=(python2 python2-paramiko python2-setproctitle)
 makedepends=(python2-setuptools)
-source=(http://pypi.python.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
