@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <m.s.online gmx.de>
+# Maintainer: Michael Straube <m.s.online gmx de>
 # Contributor: megadriver <megadriver at gmx dot com>
 
 pkgname=barbie-seahorse-adventures
@@ -15,16 +15,16 @@ sha256sums=('915e261ae6b4321a38740c38ddf5f32b791b2c00b6f9f0cdd9fb87b0acf4f9f0'
             '8cbd454193176c8752205395ff27789e16fffad5a65b5826602628443a3bade7')
 
 prepare() {
-  cd "barbie-$pkgver"
+  cd barbie-$pkgver
 
   sed -i 's/env\ python/python2/' run_game.py
 
-  #create launcher script
+  # create launcher script
   printf "#!/bin/bash\n/usr/share/games/barbie/run_game.py\n" > "$srcdir/barbie.sh"
 }
 
 package() {
-  cd "barbie-$pkgver"
+  cd barbie-$pkgver
 
   install -dm755 "$pkgdir"/usr/{bin,share/games/barbie}
 
