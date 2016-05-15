@@ -4,12 +4,12 @@
 _gemname=ruby-filemagic
 pkgname=$_gemname
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Ruby bindings to the magic(4) library'
 arch=(i686 x86_64)
 url='http://github.com/blackwinter/ruby-filemagic'
 license=(Ruby)
-depends=(ruby)
+depends=(ruby file)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
