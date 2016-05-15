@@ -1,5 +1,5 @@
 pkgname=openvr-git
-pkgver=40.cdcd6fc
+pkgver=40.afb25df
 pkgrel=1
 pkgdesc="API and runtime that allows access to VR hardware from multiple vendors. Contains API and samples. The runtime is under SteamVR in Tools on Steam. Note: There's no compositor for linux, so try with hellovr -nocompositor"
 arch=('x86_64')
@@ -51,6 +51,8 @@ package() {
   install "$srcdir/openvr/headers"/* "$pkgdir/usr/include/"
   install -m 555 "$srcdir/openvr/lib/linux64/libopenvr_api.so" "$pkgdir/usr/lib"
   install -m 755 "$srcdir/build/samples/hellovr_opengl/hellovr" "$pkgdir/usr/bin"
+  install -m 755 "$srcdir/build/samples/hellovr_opengl/run_hellovr.sh" "$pkgdir/usr/bin/run_hellovr.sh"
+  install -m 755 "$srcdir/build/samples/cube_texture.png" "$pkgdir/usr/" #TODO: fix source code to look in proper place
 
   install -m 755 "$srcdir/openvr/samples/bin/win32/HelloWorldOverlay" "$pkgdir/usr/bin/openvr-HelloWorldOverlay"
 }
