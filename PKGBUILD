@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-rt
 _pkgbasever=4.4-gnu
-_pkgver=4.4.7-gnu
+_pkgver=4.4.9-gnu
 _rtbasever=4.4
-_rtpatchver=rt16
+_rtpatchver=rt17
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -22,7 +22,7 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}_${_rtpatchver}
 pkgver=${_pkgver//-/_}.${_rtpatchver}
 pkgrel=1
-rcnrel=armv7-x6
+rcnrel=armv7-x7
 arch=('i686' 'x86_64' 'armv7h')
 url="https://rt.wiki.kernel.org/"
 license=('GPL2')
@@ -65,9 +65,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
 sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
-            '589e412cfd54f4683c6b9512d50fe4f25d23f019633f5c57b2c8b083d74f3890'
+            'e4a8cb532d778eb204e35e2b25e15d37852c2df07c610a94827ce8289dd595ab'
             'SKIP'
-            '2ff8616f1fcbf8070650fe0287523c57f556c76c0e8acabd627f4acf2737b387'
+            'ed338f3245c51b2e4499f9c705700cf428d57bdf6f255d70739007e337063357'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -77,13 +77,13 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
             '395079cf7bdaef8fd80dbe8fd9e45d827d44b66f6eeaf87d57c25047a42efeae'
             '93d8c9e4937e59b17336853afcf2ade326ab5182e7bef239b363ec963d698291'
-            '50959af214719962e3b5e5a6215ede80164a8d348e970ae71b7310224fb7cd36'
+            '613cc56d4b27a50ae1631989fb9ed8222b68ffdf0df8dee983a69a5e8fdc71f6'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'f0a10ea9a669e5200aa33656565c209718b24ff1add03ac5279c4a1f46ab8798'
             '96c6c7d4057b8d08238adae85d476c863c082770a182057163a45480511d35a8'
             '2ca85ee212ef8d8aab3d3c2a0cef304a355d86e7aa520e19471f56ace68a0cf4'
-            '5f16832e670ada630e17d4ddecd02d139873e1924bbad5df0693362327ed48c3'
+            'f965912299587a7fcf1ec4bc4fd89c6545c6e4a49144cdb50e074922eb8ee46c'
             'SKIP'
             'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
             '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
