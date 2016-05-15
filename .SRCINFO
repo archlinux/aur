@@ -1,0 +1,13 @@
+pkgbase = wunderground
+	pkgdesc = CLI weather from Weather Underground
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ewwaller/wunderground.py
+	arch = any
+	license = GPL3
+	depends = python
+	source = git+https://github.com/ewwaller/wunderground.py.git
+	md5sums = SKIP
+
+pkgname = wunderground
+
