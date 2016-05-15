@@ -1,8 +1,8 @@
 # $Id$
 # Maintainer: Sven Fischer <aur.archlinux@linux4tw.de>
 
-pkgname=guayadeque-git
-_pkgname=guayadeque
+pkgbase=guayadeque-git
+pkgname=guayadeque
 pkgver=0.4.1
 pkgrel=1
 pkgdesc='Lightweight music player'
@@ -22,17 +22,17 @@ sha512sums=('SKIP'
             '6b634fb99f733c3f35aec8d0827e09d8a51228fe988f3b00d060fc86be2c2415f5e9e34016829e53405eeb5bd42c5e2ff5fd43d77d1bd102fdc0ef5270b3f7c7')
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname}"
   grep "ID_GUAYADEQUE_VERSION" src/Version.h.in | cut -d '"' -f 2
 }
 
 prepare() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname}"
   patch -Np1 -i ../../0001-add-gdk_pixbuf2-lib.patch
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname}"
   ./buildt
   cmake . \
     -DCMAKE_INSTALL_PREFIX=${pkgdir} \
@@ -43,6 +43,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${pkgname}"
   make DESTDIR="${pkgdir}" install
 }
