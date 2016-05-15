@@ -9,7 +9,7 @@ url='https://github.com/mis2/x-corners'
 depends=('libxi')
 makedepends=('libxfixes')
 source=("https://github.com/mis2/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('c6c0df0127dfc1c4d196ff9cb854c3a152b4c8025d9c6096cdbbca64c41ee4c8')
+sha1sums=('791da12039ee0d11cd30c1b5340a945941f366cc')
 
 build() {
   cd $pkgname-$pkgver
