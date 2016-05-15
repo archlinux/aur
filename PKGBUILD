@@ -1,23 +1,26 @@
 # Mantainer: MCMic <come@chilliet.eu>
 
 pkgname=wyrmsun
-pkgver=1.9.9
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="Real-time strategy game based on history, mythology and fiction"
 arch=('i686' 'x86_64')
-url="http://www.indiedb.com/games/wyrmsun"
+url="http://andrettin.github.io/"
 license=('GPL' 'CC-BY-SA')
 depends=('sdl')
 makedepends=('cmake' 'gendesk' 'tolua++')
 source=("wyrmsun-${pkgver}.tar.gz::https://github.com/Andrettin/Wyrmsun/archive/v${pkgver}.tar.gz" 
-        "wyrmgus-${pkgver}.tar.gz::https://github.com/Andrettin/Wyrmgus/archive/v${pkgver}.tar.gz")
-md5sums=('4378095bbd62a97b8cc7b7e97e949265'
-         '562ccdce2881eeb46fa4e076dd322933')
+        "wyrmgus-${pkgver}.tar.gz::https://github.com/Andrettin/Wyrmgus/archive/v${pkgver}.tar.gz"
+        "oaml-1.0.tar.gz::https://github.com/marcelofg55/oaml/archive/v1.0.tar.gz")
+md5sums=('110d4d1e79bfd7162db62738a72fd7ef'
+         'f6ba7d79b2cabb1b1bec2e62a067041d'
+         '97019b32af9a809d812a457a97ed1344')
 _name='Wyrmsun'
 _categories='Game;StrategyGame'
 
 prepare() {
   gendesk -n -f ../PKGBUILD
+  cp -a ${srcdir}/oaml-1.0/* ${srcdir}/Wyrmgus-${pkgver}/src/oaml/
 }
 
 build() {
