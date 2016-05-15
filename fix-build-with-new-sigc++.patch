@@ -1,0 +1,11 @@
+diff -Naur inkscape-0.48.5-orig/src/document.h inkscape-0.48.5/src/document.h
+--- inkscape-0.48.5-orig/src/document.h	2013-06-12 01:09:06.644277000 +0200
++++ inkscape-0.48.5/src/document.h	2016-05-15 13:52:42.175502591 +0200
+@@ -19,7 +19,6 @@
+ #include <gtk/gtk.h>
+ #include <stddef.h>
+ #include <sigc++/sigc++.h>
+-#include <sigc++/class_slot.h>
+ 
+ #include "libcroco/cr-cascade.h"
+ #include <2geom/forward.h>
