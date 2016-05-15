@@ -2,7 +2,7 @@
 
 _gemname=xapian-findex
 pkgname=ruby-$_gemname
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='A simple file indexer and full text search using Xapian'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-xapian ruby-filemagic)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('9565e9b4061632eb973461fe465c9f79fa5d40c2f44b2122c6f5b4e49096bdfa')
+sha256sums=('b7d429b4715418f67ef103e0545a41fa59eb637240654a33cc68681ca19297b7')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
