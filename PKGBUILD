@@ -2,7 +2,7 @@
 
 _pkgname=lxqt-l10n
 pkgname=$_pkgname-git
-pkgver=0.10.95
+pkgver=0.10.95.1.ga2ce46c
 pkgrel=1
 pkgdesc="Translations of all components maintained by the LXQt project"
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --always
+  git describe --always | sed 's:-:.:g'
 }
 
 build() {
