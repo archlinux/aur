@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 _pkgname=qt5-charts
 pkgname=$_pkgname-git
-pkgver=5.7.0.r2779.18b5962
+pkgver=5.8.0.r2800.d27b6b2
 pkgrel=1
 pkgdesc="Provides a set of easy to use chart components"
 arch=('i686' 'x86_64')
