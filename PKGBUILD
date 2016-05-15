@@ -1,8 +1,8 @@
-# Maintainer: Adria Arrufat <swiftscythe@gmail.com>
+# Maintainer: Adria Arrufat <adria.arrufat+AUR@protonmail.ch>
 
 pkgname=dropbox-kde-systray-icons
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Dropbox systray icons that fit better in KDE 4"
 install=dropbox-kde.install
 arch=('any')
@@ -16,7 +16,8 @@ conflicts=('dropbox-faenza-light' 'dropbox-humanity-dark-icons' 'dropbox-dark-pa
 'dropbox-ubuntu-mono-dark' 'dropbox-faenza-dark')
 source=('http://cccliparts.org/CONTENT/content-files/141519-dropbox-icons.tar.gz')
 md5sums=('d4ec417f3906e99f3deef704b38718ae')
-build() {
+
+package() {
   cd ${srcdir}
   install -d ${pkgdir}/usr/share/icons/hicolor/16x16/status
   cp -r dropboxstatus-* ${pkgdir}/usr/share/icons/hicolor/16x16/status
