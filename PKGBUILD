@@ -2,14 +2,14 @@
 
 pkgname=ponscripter
 pkgver=20111009
-pkgrel=2
+pkgrel=3
 pkgdesc="NScripter-style novel-game interpreter with an emphasis on supporting games in Western languages"
 arch=('i686' 'x86_64')
-url="http://onscripter.unclemion.com/"
+url="http://unclemion.com/onscripter/"
 license=('GPL')
 depends=('sdl_mixer' 'sdl_image' 'freetype2' 'gcc-libs')
 # Dependency 'smpeg' 'bzip2' already satisfied
-source=(http://unclemion.com/dev/attachments/download/48/$pkgname-$pkgver-src.tar.bz2)
+source=(http://unclemion.com/onscripter/pub/ponscr/cigales8/$pkgname-$pkgver-src.tar.bz2)
 md5sums=('52927f2a57abe430d86ff4ac05ab7960')
 
 build() {

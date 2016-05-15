@@ -1,8 +1,8 @@
 pkgbase = ponscripter
 	pkgdesc = NScripter-style novel-game interpreter with an emphasis on supporting games in Western languages
 	pkgver = 20111009
-	pkgrel = 2
-	url = http://onscripter.unclemion.com/
+	pkgrel = 3
+	url = http://unclemion.com/onscripter/
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = ponscripter
 	depends = sdl_image
 	depends = freetype2
 	depends = gcc-libs
-	source = http://unclemion.com/dev/attachments/download/48/ponscripter-20111009-src.tar.bz2
+	source = http://unclemion.com/onscripter/pub/ponscr/cigales8/ponscripter-20111009-src.tar.bz2
 	md5sums = 52927f2a57abe430d86ff4ac05ab7960
 
 pkgname = ponscripter
