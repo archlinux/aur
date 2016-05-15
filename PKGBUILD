@@ -1,7 +1,7 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=vlna
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="TeX and LaTeX utility to add the ~ by Czech typesetting conventions"
 arch=('i686' 'x86_64')
 url="http://petr.olsak.net/"
