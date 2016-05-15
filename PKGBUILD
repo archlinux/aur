@@ -9,7 +9,7 @@ url="http://aiopg.readthedocs.org/"
 license=('MIT')
 depends=('python-psycopg2')
 makedepends=('python-setuptools')
-source=("http://pypi.python.org/packages/source/a/aiopg/aiopg-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/a/aiopg/aiopg-$pkgver.tar.gz")
 
 build() {
     cd "$srcdir"/aiopg-$pkgver
