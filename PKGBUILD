@@ -55,6 +55,8 @@ prepare() {
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
 
+  patch -p1 -i ${startdir}/cfns.h.diff
+
   mkdir -p ${srcdir}/gcc-build
 }
 
