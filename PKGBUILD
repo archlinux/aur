@@ -14,7 +14,6 @@ makedepends=(cmake automoc4 boost libxss libbaloo4)
 conflicts=('kdepim-libkdepim<5')
 source=("http://download.kde.org/stable/applications/${_kdeappver}/src/kdepim-${pkgver}.tar.xz")
 sha1sums=('6f74763dda68dbb44394e807eab9204777bddf0a')
-install=$pkgname.install
 
 prepare() {
 	mkdir -p build
