@@ -3,7 +3,7 @@
 
 pkgname=guayadeque-git
 _pkgname=guayadeque
-pkgver=0.4.1
+pkgver=0.4.1.r1903.4487b9a
 pkgrel=1
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
@@ -23,7 +23,8 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  grep "ID_GUAYADEQUE_VERSION" src/Version.h.in | cut -d '"' -f 2
+  local srcversion="$(grep "ID_GUAYADEQUE_VERSION" src/Version.h.in | cut -d '"' -f 2)"
+  printf "%s.r%s.%s" $srcversion "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
