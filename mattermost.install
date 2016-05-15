@@ -5,7 +5,8 @@ post_install() {
     install -dm700 -o mattermost var/lib/mattermost
   fi
 
-  chown mattermost var/log/mattermost
+  chown mattermost etc/webapps/mattermost/config.json \
+                   var/log/mattermost
 }
 
 post_upgrade() {

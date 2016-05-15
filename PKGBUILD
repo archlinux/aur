@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://mattermost.org"
 license=('MIT')
 depends=('glibc')
-makedepends=('go' 'godep' 'ruby' 'npm' 'python2' 'git' 'mercurial')
+makedepends=('go' 'godep' 'npm' 'python2' 'git' 'mercurial')
 backup=('etc/webapps/mattermost/config.json')
 optdepends=('mariadb: SQL server storage'
             'percona-server: SQL server storage'
@@ -17,10 +17,12 @@ optdepends=('mariadb: SQL server storage'
 install=mattermost.install
 source=(https://github.com/mattermost/platform/archive/v$_pkgver/$pkgname-$_pkgver.tar.gz
         mattermost.service
-        mattermost-user.conf)
+        mattermost-user.conf
+				mattermost.sh)
 sha256sums=('4cc023d0b80e1aec59e53b6ebf666512364a58f47c3133b61075e03eed784a2c'
-            'b02a0bdbffd17a3a02b6d0098d2a10363ad595070ce6985513b7e6496f9b655a'
-            '7cd154ed034a09f6671cab68bc9c30a7fd84e777e801e2aaf93a567cfa0dccfd')
+            'b3fbb2d04e72396677b2c8e34df089ff135796f7a0e8a42d45e989773d6d5b07'
+            '7cd154ed034a09f6671cab68bc9c30a7fd84e777e801e2aaf93a567cfa0dccfd'
+            '32105266886cb21eb62537b8f90767428e4bd6f9d5b54d395d7db2847f3746ed')
 
 prepare() {
 	mkdir -p src/github.com/mattermost
@@ -41,21 +43,9 @@ build() {
 	GO_PLATFORM_DIR="$srcdir"/src/github.com/mattermost/platform
 	cd "$GO_PLATFORM_DIR"
 
-	go clean
+	go clean -x
 	godep get
-
-	msg2 "Building react application"
-	pushd "$GO_PLATFORM_DIR"/web/react
-	HOME="$srcdir" npm install
-	npm run build
-	npm run build-libs
-	popd
-
-	msg2 "Building compass stylesheets"
-	pushd "$GO_PLATFORM_DIR"/web/sass-files
-	gem install compass -n "$srcdir"/bin
-	"$srcdir"/bin/compass compile -e production --force
-	popd
+	make build-client
 
 	msg2 "Building go libraries"
 	godep go build
@@ -71,30 +61,17 @@ package() {
 	cd "$GO_PLATFORM_DIR"
 
 	DISTDIR="$pkgdir"/usr/share/webapps/$pkgname
-	install -dm755 "$DISTDIR"/{config,web,api} "$pkgdir"/var/log/$pkgname "$pkgdir"/etc/webapps/mattermost
+	install -dm755 "$DISTDIR"/{bin,config,webapp} "$pkgdir"/var/log/$pkgname "$pkgdir"/etc/webapps/mattermost
 	cd "$DISTDIR"
 
 	ln -s /var/log/$pkgname logs
 
-	cp -RL "$GO_PLATFORM_DIR"/web/{static,templates} web/
-	cp -RL "$GO_PLATFORM_DIR"/api/templates api/
-	cp -RL "$GO_PLATFORM_DIR"/i18n .
+	cp -RL "$GO_PLATFORM_DIR"/webapp/dist webapp/
+	cp -RL "$GO_PLATFORM_DIR"/{fonts,templates,i18n} .
+	rm webapp/dist/*.map
 
-	echo $pkgver > config/build.txt
-	mv web/static/js/bundle{,-$pkgver}.min.js
-	mv web/static/js/libs{,-$pkgver}.min.js
-
-	for ext in js css; do
-		for asset in web/static/$ext/*.$ext; do
-			asset=$(basename "$asset" ".$ext")
-			if [ -f "web/static/$ext/$asset.min.$ext" ]; then
-				sed -ri "s#/static/$ext/$asset\.$ext#/static/$ext/$asset.min.$ext#g" web/templates/head.html
-				rm "web/static/$ext/$asset.$ext"
-			fi
-		done
-	done
-
-	sed -ri "s#/static/js/(bundle|libs)(\.min)?\.js#/static/js/\1-$pkgver.min.js#g" web/templates/head.html
+	mv webapp/dist/bundle{,-$pkgver}.js
+	sed "s#/bundle\.js#/bundle-$pkgver.js#" -i webapp/dist/root.html
 
 	sed -e 's@"StorageDirectory": ".*"@"StorageDirectory": "/var/lib/mattermost/"@g' \
 	    -e 's@tcp(dockerhost:3306)@unix(/run/mysqld/mysqld.sock)@g' \
@@ -103,7 +80,8 @@ package() {
 	ln -s /etc/webapps/mattermost/config.json config/config.json
 
 	cd "$srcdir"
-	install -Dm755 bin/mattermost "$pkgdir"/usr/bin/mattermost
+	install -Dm755 mattermost.sh "$pkgdir"/usr/bin/mattermost
+	install -Dm755 bin/platform "$DISTDIR"/bin/platform
 	install -Dm644 mattermost.service "$pkgdir"/usr/lib/systemd/system/mattermost.service
 	install -Dm644 mattermost-user.conf "$pkgdir"/usr/lib/sysusers.d/mattermost.conf
 
