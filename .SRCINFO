@@ -1,0 +1,13 @@
+pkgbase = vive-udev
+	pkgdesc = Udev rule for the Vive
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/OpenHMD/OpenHMD/commit/c29c99712d6f67a3921cb531a0c74f5f5109cb0f
+	install = vive-udev.install
+	arch = any
+	license = custom
+	source = 83-vive.rules
+	sha256sums = 156d93b59942d89c3838f3ae2f45bd832226d19e1f7f04797f9cb640a09a3124
+
+pkgname = vive-udev
+
