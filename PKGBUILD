@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 _pkgname=qt5-virtualkeyboard
 pkgname=$_pkgname-git
-pkgver=2.0.r332.bfd9b67
+pkgver=5.8.0.r359.9bb0f7c
 pkgrel=1
 pkgdesc="Virtual keyboard for Qt"
 arch=('i686' 'x86_64')
@@ -21,6 +21,7 @@ pkgver() {
 }
 
 prepare() {
+  find . -name '*.cpp' -exec sed -i 's/for (\(.*\) : qAsConst(\([^)]*\)))/foreach (\1, \2)/' {} +
   mkdir -p build
 }
 
