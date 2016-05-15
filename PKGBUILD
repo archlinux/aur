@@ -52,7 +52,7 @@ build() {
 }
 
 package_simulationcraft-data() {
-    pkgdesc+=" data"
+    pkgdesc+=" Data"
     arch=("any")
     
     cd ${srcdirectory}
@@ -75,7 +75,7 @@ package_simulationcraft() {
 
 if [ ${_gui} = true ] ; then
     package_simulationcraft-gui() {
-        pkgdesc+="gui"
+        pkgdesc+=" GUI"
         depends=( 'qt5-base' 'qt5-webkit' "simulationcraft=$pkgver")
         
         cd ${srcdirectory}

@@ -28,12 +28,12 @@ pkgname = simulationcraft
 	depends = simulationcraft-data=623_02
 
 pkgname = simulationcraft-gui
-	pkgdesc = A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage.gui
+	pkgdesc = A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage. GUI
 	depends = qt5-base
 	depends = qt5-webkit
 	depends = simulationcraft=623_02
 
 pkgname = simulationcraft-data
-	pkgdesc = A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage. data
+	pkgdesc = A tool to explore combat mechanics in the popular MMO RPG World of Warcraft (tm). Multi-player event-driven simulator written in C++ that models raid damage. Data
 	arch = any
 
