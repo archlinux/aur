@@ -8,8 +8,6 @@ pkgbase = splitfs-git
 	makedepends = git
 	makedepends = go
 	depends = fuse
-	options = !strip
-	options = !emptydirs
 	source = git://perot.me/splitfs#branch=master
 	source = fuse::git+https://github.com/bazil/fuse
 	source = net::git+https://github.com/golang/net
