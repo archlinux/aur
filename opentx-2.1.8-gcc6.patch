@@ -1,0 +1,882 @@
+diff --git a/companion/src/CMakeLists.txt b/companion/src/CMakeLists.txt
+index 50c3030..d3ee3c1 100644
+--- a/companion/src/CMakeLists.txt
++++ b/companion/src/CMakeLists.txt
+@@ -1,4 +1,6 @@
+ PROJECT( companion )
++cmake_minimum_required(VERSION 3.0)                                             
++set(CMAKE_CXX_STANDARD 11)   
+ 
+ SET(C9X_VERSION_MAJOR "2")
+ SET(C9X_VERSION_MINOR "1")
+@@ -8,7 +10,7 @@ SET(C9X_VERSION_SUFFIX $ENV{OPENTX_VERSION_SUFFIX})
+ SET(C9X_VERSION ${C9X_VERSION_MAJOR}.${C9X_VERSION_MINOR}.${C9X_VERSION_REVISION}${C9X_VERSION_SUFFIX})
+ MESSAGE(STATUS "OpenTX Companion ${C9X_VERSION}")
+ 
+-CMAKE_MINIMUM_REQUIRED( VERSION 2.8.12 )
++#CMAKE_MINIMUM_REQUIRED( VERSION 2.8.12 )
+ 
+ SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+ 
+diff --git a/companion/src/firmwares/opentx/simulator/opentxsimulator.cpp b/companion/src/firmwares/opentx/simulator/opentxsimulator.cpp
+index 9ed6ca9..a95981b 100644
+--- a/companion/src/firmwares/opentx/simulator/opentxsimulator.cpp
++++ b/companion/src/firmwares/opentx/simulator/opentxsimulator.cpp
+@@ -13,10 +13,11 @@
+  * GNU General Public License for more details.
+  *
+  */
+-
++#include <algorithm>
+ #include "opentxsimulator.h"
+ #include <stdio.h>
+ #include <exception>
++
+ #include <map>
+ #include <string>
+ 
+@@ -77,8 +78,9 @@
+ #undef min
+ #undef max
+ 
+-namespace NAMESPACE {
++//namespace NAMESPACE {
+ 
++using namespace std;
+ #if defined(CPUARM)
+ #include "radio/src/pulses/ppm_arm.cpp"
+ #include "radio/src/pulses/pxx_arm.cpp"
+@@ -391,7 +393,7 @@ bool OpenTxSimulator::lcdChanged(bool & lightEnable)
+ 
+ void OpenTxSimulator::start(QByteArray & eeprom, bool tests)
+ {
+-  memcpy(NAMESPACE::eeprom, eeprom.data(), std::min<int>(sizeof(NAMESPACE::eeprom), eeprom.size()));
++  memcpy(/*NAMESPACE::*/::eeprom, eeprom.data(), std::min<int>(sizeof(/*NAMESPACE::*/::eeprom), eeprom.size()));
+   start((const char *)0, tests);
+ }
+ 
+@@ -437,7 +439,7 @@ void OpenTxSimulator::setValues(TxInputs &inputs)
+ 
+ void OpenTxSimulator::setTrim(unsigned int idx, int value)
+ {
+-  idx = NAMESPACE::modn12x3[4*getStickMode() + idx];
++  idx = /*NAMESPACE::*/modn12x3[4*getStickMode() + idx];
+   ::uint8_t phase = getTrimFlightPhase(getFlightMode(), idx);
+   setTrimValue(phase, idx, value);
+ }
+@@ -451,7 +453,7 @@ void OpenTxSimulator::getTrims(Trims & trims)
+   }
+ 
+   for (int i=0; i<2; i++) {
+-    ::uint8_t idx = NAMESPACE::modn12x3[4*getStickMode() + i];
++    ::uint8_t idx = /*NAMESPACE::*/modn12x3[4*getStickMode() + i];
+     ::int16_t tmp = trims.values[i];
+     trims.values[i] = trims.values[idx];
+     trims.values[idx] = tmp;
+@@ -573,9 +575,9 @@ class OpenTxSimulatorFactory: public SimulatorFactory
+     }
+ };
+ 
+-}
++//}
+ 
+ extern "C" DLLEXPORT SimulatorFactory *registerSimu()
+ {
+-  return new NAMESPACE::OpenTxSimulatorFactory();
++  return new /*NAMESPACE::*/OpenTxSimulatorFactory();
+ }
+diff --git a/companion/src/firmwares/opentx/simulator/opentxsimulator.h b/companion/src/firmwares/opentx/simulator/opentxsimulator.h
+index b558657..8c96d98 100644
+--- a/companion/src/firmwares/opentx/simulator/opentxsimulator.h
++++ b/companion/src/firmwares/opentx/simulator/opentxsimulator.h
+@@ -25,7 +25,7 @@
+   #define EEPROM_VARIANT 0x8000
+ #elif defined(PCBTARANIS) && defined(REVPLUS)
+   #define FLAVOUR "taranisplus"
+-  #define NAMESPACE TaranisPlus
++  //#define NAMESPACE TaranisPlus
+   #define EEPROM_VARIANT 0
+ #elif defined(PCBTARANIS)
+   #define FLAVOUR "taranis"
+@@ -45,7 +45,7 @@
+   #define EEPROM_VARIANT 0
+ #elif defined(PCBGRUVIN9X)
+   #define FLAVOUR "gruvin9x"
+-  #define NAMESPACE Gruvin9X
++  //#define NAMESPACE Gruvin9X
+   #define EEPROM_VARIANT 0
+ #elif defined(PCBMEGA2560)
+   #define FLAVOUR "mega2560"
+@@ -53,19 +53,19 @@
+   #define EEPROM_VARIANT 0
+ #elif defined(PCB9XR) && defined(CPUM128)
+   #define FLAVOUR "9xr128"
+-  #define NAMESPACE M128XR
++  //#define NAMESPACE M128XR
+   #define EEPROM_VARIANT 0x8003
+ #elif defined(PCB9X) && defined(CPUM128)
+   #define FLAVOUR "9x128"
+-  #define NAMESPACE M128
++  //#define NAMESPACE M128
+   #define EEPROM_VARIANT 0x8003
+ #elif defined(PCB9XR) && defined(CPUM64)
+   #define FLAVOUR "9xr"
+-  #define NAMESPACE M64XR
++  //#define NAMESPACE M64XR
+   #define EEPROM_VARIANT 0x0003
+ #elif defined(PCB9X) && defined(CPUM64)
+   #define FLAVOUR "9x"
+-  #define NAMESPACE M64
++  //#define NAMESPACE M64
+   #define EEPROM_VARIANT 0x0003
+ #else
+ #error "Unknown board"
+@@ -77,7 +77,7 @@
+   #define DLLEXPORT __declspec(dllexport)
+ #endif
+ 
+-namespace NAMESPACE {
++/*namespace NAMESPACE {*/
+ 
+ class DLLEXPORT OpenTxSimulator : public SimulatorInterface {
+ 
+@@ -134,6 +134,6 @@ class DLLEXPORT OpenTxSimulator : public SimulatorInterface {
+ 
+ };
+ 
+-}
++/*}*/
+ 
+ #endif
+diff --git a/radio/src/audio_arm.cpp b/radio/src/audio_arm.cpp
+index 23b9b4c..322d2d3 100644
+--- a/radio/src/audio_arm.cpp
++++ b/radio/src/audio_arm.cpp
+@@ -35,7 +35,7 @@
+  */
+ 
+ #include "opentx.h"
+-#include <math.h>
++#include <cmath>
+ 
+ extern OS_MutexID audioMutex;
+ 
+@@ -716,7 +716,7 @@ int ToneContext::mixBuffer(AudioBuffer *buffer, int volume, unsigned int fade)
+   remainingDuration = fragment.tone.pause - state.pause;
+   if (remainingDuration > 0) {
+     result = AUDIO_BUFFER_SIZE;
+-    state.pause += min<unsigned int>(AUDIO_BUFFER_DURATION-duration, fragment.tone.pause);
++    state.pause += std::min<unsigned int>(AUDIO_BUFFER_DURATION-duration, fragment.tone.pause);
+     if (fragment.tone.pause > state.pause)
+       return result;
+   }
+@@ -763,7 +763,7 @@ void AudioQueue::wakeup()
+       result = 0;
+     }
+     if (result > 0) {
+-      size = max(size, result);
++      size = std::max(size, result);
+       fade += 1;
+     }
+     else {
+@@ -780,7 +780,7 @@ void AudioQueue::wakeup()
+     // mix the vario context
+     result = varioContext.mixBuffer(buffer, g_eeGeneral.varioVolume, fade);
+     if (result > 0) {
+-      size = max(size, result);
++      size = std::max(size, result);
+       fade += 1;
+     }
+ 
+@@ -788,7 +788,7 @@ void AudioQueue::wakeup()
+     if (isFunctionActive(FUNCTION_BACKGND_MUSIC) && !isFunctionActive(FUNCTION_BACKGND_MUSIC_PAUSE)) {
+       result = backgroundContext.mixBuffer(buffer, g_eeGeneral.backgroundVolume, fade);
+       if (result > 0) {
+-        size = max(size, result);
++        size = std::max(size, result);
+       }
+     }
+ 
+diff --git a/radio/src/eeprom_raw.cpp b/radio/src/eeprom_raw.cpp
+index d97787f..12aa485 100644
+--- a/radio/src/eeprom_raw.cpp
++++ b/radio/src/eeprom_raw.cpp
+@@ -516,7 +516,7 @@ void eepromWriteProcess()
+       EepromFileHeader * header = (EepromFileHeader *)eepromWriteBuffer;
+       header->fileIndex = eepromWriteFileIndex;
+       header->size = eepromWriteSize;
+-      uint32_t size = min<uint32_t>(EEPROM_BUFFER_SIZE-sizeof(EepromFileHeader), eepromWriteSize);
++      uint32_t size = std::min<uint32_t>(EEPROM_BUFFER_SIZE-sizeof(EepromFileHeader), eepromWriteSize);
+       memcpy(eepromWriteBuffer+sizeof(EepromFileHeader), eepromWriteSourceAddr, size);
+       eepromWriteState = EEPROM_WRITING_BUFFER;
+       eepromWrite(eepromWriteDestinationAddr, eepromWriteBuffer, sizeof(EepromFileHeader)+size, false);
+@@ -528,7 +528,7 @@ void eepromWriteProcess()
+ 
+     case EEPROM_WRITE_NEXT_BUFFER:
+     {
+-      uint32_t size = min<uint32_t>(EEPROM_BUFFER_SIZE, eepromWriteSize);
++      uint32_t size = std::min<uint32_t>(EEPROM_BUFFER_SIZE, eepromWriteSize);
+       if (size > 0) {
+         memcpy(eepromWriteBuffer, eepromWriteSourceAddr, size);
+         eepromWriteState = EEPROM_WRITING_BUFFER;
+@@ -629,7 +629,7 @@ const pm_char * eeBackupModel(uint8_t i_fileSrc)
+ 
+   uint32_t address = eepromHeader.files[i_fileSrc+1].zoneIndex * EEPROM_ZONE_SIZE + sizeof(EepromFileHeader);
+   while (size > 0) {
+-    uint16_t blockSize = min<uint16_t>(size, EEPROM_BUFFER_SIZE);
++    uint16_t blockSize = std::min<uint16_t>(size, EEPROM_BUFFER_SIZE);
+     eepromRead(address, eepromWriteBuffer, blockSize);
+     result = f_write(&archiveFile, eepromWriteBuffer, blockSize, &written);
+     if (result != FR_OK || written != blockSize) {
+@@ -692,7 +692,7 @@ const pm_char * eeRestoreModel(uint8_t i_fileDst, char *model_name)
+     eeDeleteModel(i_fileDst);
+   }
+ 
+-  uint16_t size = min<uint16_t>(sizeof(g_model), *(uint16_t*)&buf[6]);
++  uint16_t size = std::min<uint16_t>(sizeof(g_model), *(uint16_t*)&buf[6]);
+   uint32_t address = eepromHeader.files[i_fileDst+1].zoneIndex * EEPROM_ZONE_SIZE;
+ 
+   // erase blocks
+@@ -708,7 +708,7 @@ const pm_char * eeRestoreModel(uint8_t i_fileDst, char *model_name)
+ 
+   // write model
+   do {
+-    uint16_t blockSize = min<uint16_t>(size, EEPROM_BUFFER_SIZE-offset);
++    uint16_t blockSize = std::min<uint16_t>(size, EEPROM_BUFFER_SIZE-offset);
+     result = f_read(&restoreFile, eepromWriteBuffer+offset, blockSize, &read);
+     if (result != FR_OK || read != blockSize) {
+       f_close(&g_oLogFile);
+diff --git a/radio/src/eeprom_rlc.cpp b/radio/src/eeprom_rlc.cpp
+index b11bf52..86deb71 100644
+--- a/radio/src/eeprom_rlc.cpp
++++ b/radio/src/eeprom_rlc.cpp
+@@ -386,13 +386,13 @@ uint16_t RlcFile::readRlc(uint8_t *buf, uint16_t i_len)
+ {
+   uint16_t i = 0;
+   for( ; 1; ) {
+-    uint8_t ln = min<uint16_t>(m_zeroes, i_len-i);
++    uint8_t ln = std::min<uint16_t>(m_zeroes, i_len-i);
+     memclear(&buf[i], ln);
+     i        += ln;
+     m_zeroes -= ln;
+     if (m_zeroes) break;
+ 
+-    ln = min<uint16_t>(m_bRlc, i_len-i);
++    ln = std::min<uint16_t>(m_bRlc, i_len-i);
+     uint8_t lr = read(&buf[i], ln);
+     i        += lr ;
+     m_bRlc   -= lr;
+diff --git a/radio/src/gui/9X/menu_general_calib.cpp b/radio/src/gui/9X/menu_general_calib.cpp
+index 72e04e4..bdfb785 100644
+--- a/radio/src/gui/9X/menu_general_calib.cpp
++++ b/radio/src/gui/9X/menu_general_calib.cpp
+@@ -43,8 +43,8 @@ void menuCommonCalib(uint8_t event)
+ {
+   for (uint8_t i=0; i<NUM_STICKS+NUM_POTS; i++) { // get low and high vals for sticks and trims
+     int16_t vt = anaIn(i);
+-    reusableBuffer.calib.loVals[i] = min(vt, reusableBuffer.calib.loVals[i]);
+-    reusableBuffer.calib.hiVals[i] = max(vt, reusableBuffer.calib.hiVals[i]);
++    reusableBuffer.calib.loVals[i] = std::min(vt, reusableBuffer.calib.loVals[i]);
++    reusableBuffer.calib.hiVals[i] = std::max(vt, reusableBuffer.calib.hiVals[i]);
+     if (i >= POT1 && i <= POT_LAST) {
+       if (IS_POT_WITHOUT_DETENT(i)) {
+         reusableBuffer.calib.midVals[i] = (reusableBuffer.calib.hiVals[i] + reusableBuffer.calib.loVals[i]) / 2;
+diff --git a/radio/src/gui/9X/menu_general_sdmanager.cpp b/radio/src/gui/9X/menu_general_sdmanager.cpp
+index 767b9fc..9cbdbeb 100644
+--- a/radio/src/gui/9X/menu_general_sdmanager.cpp
++++ b/radio/src/gui/9X/menu_general_sdmanager.cpp
+@@ -89,7 +89,7 @@ void onSdManagerMenu(const char *result)
+     strcat(lfn, reusableBuffer.sdmanager.lines[index]);
+     f_unlink(lfn);
+     strncpy(statusLineMsg, reusableBuffer.sdmanager.lines[index], 13);
+-    strcpy_P(statusLineMsg+min((uint8_t)strlen(statusLineMsg), (uint8_t)13), STR_REMOVED);
++    strcpy_P(statusLineMsg+std::min((uint8_t)strlen(statusLineMsg), (uint8_t)13), STR_REMOVED);
+     showStatusLine();
+     if ((uint16_t)menuVerticalPosition == reusableBuffer.sdmanager.count) menuVerticalPosition--;
+     reusableBuffer.sdmanager.offset = menuVerticalOffset-1;
+diff --git a/radio/src/gui/9X/menu_model.cpp b/radio/src/gui/9X/menu_model.cpp
+index 61e44c3..61a9752 100644
+--- a/radio/src/gui/9X/menu_model.cpp
++++ b/radio/src/gui/9X/menu_model.cpp
+@@ -152,7 +152,7 @@ void editName(coord_t x, coord_t y, char *name, uint8_t size, uint8_t event, uin
+ 
+       if (p1valdiff || IS_ROTARY_RIGHT(event) || IS_ROTARY_LEFT(event) || event==EVT_KEY_FIRST(KEY_DOWN) || event==EVT_KEY_FIRST(KEY_UP)
+           || event==EVT_KEY_REPT(KEY_DOWN) || event==EVT_KEY_REPT(KEY_UP)) {
+-         v = checkIncDec(event, abs(v), 0, ZCHAR_MAX, 0);
++         v = checkIncDec(event, std::abs(v), 0, ZCHAR_MAX, 0);
+          if (c <= 0) v = -v;
+       }
+ 
+diff --git a/radio/src/gui/9X/menu_model_inputs_mixes.cpp b/radio/src/gui/9X/menu_model_inputs_mixes.cpp
+index ed57f1c..de5beff 100644
+--- a/radio/src/gui/9X/menu_model_inputs_mixes.cpp
++++ b/radio/src/gui/9X/menu_model_inputs_mixes.cpp
+@@ -419,7 +419,7 @@ void gvarWeightItem(coord_t x, coord_t y, MixData *md, uint8_t attr, uint8_t eve
+ void drawOffsetBar(uint8_t x, uint8_t y, MixData * md)
+ {
+   int offset = GET_GVAR(MD_OFFSET(md), GV_RANGELARGE_NEG, GV_RANGELARGE, mixerCurrentFlightMode);
+-  int weight = abs(GET_GVAR(MD_WEIGHT(md), GV_RANGELARGE_NEG, GV_RANGELARGE, mixerCurrentFlightMode));
++  int weight = std::abs(GET_GVAR(MD_WEIGHT(md), GV_RANGELARGE_NEG, GV_RANGELARGE, mixerCurrentFlightMode));
+   int barMin = offset - weight;
+   int barMax = offset + weight;
+   if (y > 15) {
+@@ -898,8 +898,8 @@ void menuModelExpoMix(uint8_t expo, uint8_t event)
+       break;
+   }
+ 
+-  lcd_outdezAtt(FW*max(sizeof(TR_MENUINPUTS), sizeof(TR_MIXER))+FW+FW/2, 0, getExpoMixCount(expo));
+-  lcd_puts(FW*max(sizeof(TR_MENUINPUTS), sizeof(TR_MIXER))+FW+FW/2, 0, expo ? STR_MAX(MAX_EXPOS) : STR_MAX(MAX_MIXERS));
++  lcd_outdezAtt(FW*std::max(sizeof(TR_MENUINPUTS), sizeof(TR_MIXER))+FW+FW/2, 0, getExpoMixCount(expo));
++  lcd_puts(FW*std::max(sizeof(TR_MENUINPUTS), sizeof(TR_MIXER))+FW+FW/2, 0, expo ? STR_MAX(MAX_EXPOS) : STR_MAX(MAX_MIXERS));
+ 
+   SIMPLE_MENU(expo ? STR_MENUINPUTS : STR_MIXER, menuTabModel, expo ? e_InputsAll : e_MixAll, s_maxLines);
+ 
+diff --git a/radio/src/gui/9X/menu_model_logical_switches.cpp b/radio/src/gui/9X/menu_model_logical_switches.cpp
+index 6ebaa5c..22e912c 100644
+--- a/radio/src/gui/9X/menu_model_logical_switches.cpp
++++ b/radio/src/gui/9X/menu_model_logical_switches.cpp
+@@ -435,7 +435,7 @@ void menuModelLogicalSwitches(uint8_t event)
+           v2_max -= 128;
+         }
+         else {
+-          v2_max = min((uint8_t)127, (uint8_t)v2_max);
++          v2_max = std::min((uint8_t)127, (uint8_t)v2_max);
+           v2_min = -v2_max;
+         }
+         if (cs->v2 > v2_max) {
+diff --git a/radio/src/gui/9X/menu_model_setup.cpp b/radio/src/gui/9X/menu_model_setup.cpp
+index 789d494..ecbfd32 100644
+--- a/radio/src/gui/9X/menu_model_setup.cpp
++++ b/radio/src/gui/9X/menu_model_setup.cpp
+@@ -554,7 +554,7 @@ void menuModelSetup(uint8_t event)
+                 CHECK_INCDEC_MODELVAR_ZERO(event, moduleData.channelsStart, 32-8-moduleData.channelsCount);
+                 break;
+               case 1:
+-                CHECK_INCDEC_MODELVAR(event, moduleData.channelsCount, -4, min<int8_t>(MAX_CHANNELS(moduleIdx), 32-8-moduleData.channelsStart));
++                CHECK_INCDEC_MODELVAR(event, moduleData.channelsCount, -4, std::min<int8_t>(MAX_CHANNELS(moduleIdx), 32-8-moduleData.channelsStart));
+                 if ((k == ITEM_MODEL_EXTERNAL_MODULE_CHANNELS && g_model.moduleData[EXTERNAL_MODULE].type == MODULE_TYPE_PPM)) {
+                   SET_DEFAULT_PPM_FRAME_LENGTH(moduleIdx);
+                 }
+diff --git a/radio/src/gui/9X/menu_model_telemetry.cpp b/radio/src/gui/9X/menu_model_telemetry.cpp
+index d88abf4..f251d49 100644
+--- a/radio/src/gui/9X/menu_model_telemetry.cpp
++++ b/radio/src/gui/9X/menu_model_telemetry.cpp
+@@ -848,10 +848,10 @@ void menuModelTelemetry(uint8_t event)
+               CHECK_INCDEC_MODELVAR(event, g_model.frsky.varioMin, -7, 7);
+               break;
+             case 1:
+-              CHECK_INCDEC_MODELVAR(event, g_model.frsky.varioCenterMin, -16, 5+min<int8_t>(10, g_model.frsky.varioCenterMax+5));
++              CHECK_INCDEC_MODELVAR(event, g_model.frsky.varioCenterMin, -16, 5+std::min<int8_t>(10, g_model.frsky.varioCenterMax+5));
+               break;
+             case 2:
+-              CHECK_INCDEC_MODELVAR(event, g_model.frsky.varioCenterMax, -5+max<int8_t>(-10, g_model.frsky.varioCenterMin-5), +15);
++              CHECK_INCDEC_MODELVAR(event, g_model.frsky.varioCenterMax, -5+std::max<int8_t>(-10, g_model.frsky.varioCenterMin-5), +15);
+               break;
+             case 3:
+               CHECK_INCDEC_MODELVAR(event, g_model.frsky.varioMax, -7, 7);
+diff --git a/radio/src/gui/9X/navigation.cpp b/radio/src/gui/9X/navigation.cpp
+index 1c76c95..cc722e5 100644
+--- a/radio/src/gui/9X/navigation.cpp
++++ b/radio/src/gui/9X/navigation.cpp
+@@ -138,7 +138,7 @@ int checkIncDec(unsigned int event, int val, int i_min, int i_max, unsigned int
+   else if (event==EVT_KEY_FIRST(KEY_LEFT) || event==EVT_KEY_REPT(KEY_LEFT) || (s_editMode>0 && (IS_ROTARY_LEFT(event) || event==EVT_KEY_FIRST(KEY_DOWN) || event==EVT_KEY_REPT(KEY_DOWN)))) {
+ 	do {
+ 	  if (IS_KEY_REPT(event) && (i_flags & INCDEC_REP10)) {
+-		newval -= min(10, val-i_min);
++		newval -= std::min(10, val-i_min);
+ 	  }
+ 	  else {
+ 		newval--;
+@@ -342,7 +342,7 @@ int8_t checkIncDecGen(uint8_t event, int8_t i_val, int8_t i_min, int8_t i_max)
+   #define CURSOR_NOT_ALLOWED_IN_ROW(row)   (MAXCOL(row) == TITLE_ROW)
+ #endif
+ 
+-#define MAXCOL(row)     (horTab ? pgm_read_byte(horTab+min(row, (vertpos_t)horTabMax)) : (const uint8_t)0)
++#define MAXCOL(row)     (horTab ? pgm_read_byte(horTab+std::min(row, (vertpos_t)horTabMax)) : (const uint8_t)0)
+ #define INC(val, min, max) if (val<max) {val++;} else {val=min;}
+ #define DEC(val, min, max) if (val>min) {val--;} else {val=max;}
+ 
+@@ -460,7 +460,7 @@ void check(check_event_t event, uint8_t curr, const MenuHandlerFunc *menuTab, ui
+   if (s_editMode<=0) {
+     if (scrollUD) {
+       l_posVert = limit((int8_t)0, (int8_t)(l_posVert - scrollUD), (int8_t)maxrow);
+-      l_posHorz = min((uint8_t)l_posHorz, MAXCOL(l_posVert));
++      l_posHorz = std::min((uint8_t)l_posHorz, MAXCOL(l_posVert));
+     }
+ 
+     if (p2valdiff && l_posVert>0) {
+@@ -581,7 +581,7 @@ void check(check_event_t event, uint8_t curr, const MenuHandlerFunc *menuTab, ui
+       s_editMode = 0; // if we go down, we must be in this mode
+ #endif
+ 
+-      l_posHorz = min(l_posHorz, MAXCOL(l_posVert));
++      l_posHorz = std::min(l_posHorz, MAXCOL(l_posVert));
+       break;
+ 
+     case EVT_KEY_REPT(KEY_LEFT):  //dec
+@@ -624,7 +624,7 @@ void check(check_event_t event, uint8_t curr, const MenuHandlerFunc *menuTab, ui
+       s_editMode = 0; // if we go up, we must be in this mode
+ #endif
+ 
+-      l_posHorz = min((uint8_t)l_posHorz, MAXCOL(l_posVert));
++      l_posHorz = std::min((uint8_t)l_posHorz, MAXCOL(l_posVert));
+       break;
+   }
+ 
+diff --git a/radio/src/gui/9X/popups.cpp b/radio/src/gui/9X/popups.cpp
+index 1298439..8f726ad 100644
+--- a/radio/src/gui/9X/popups.cpp
++++ b/radio/src/gui/9X/popups.cpp
+@@ -149,7 +149,7 @@ const char * displayPopupMenu(uint8_t event)
+ {
+   const char * result = NULL;
+ 
+-  uint8_t display_count = min<uint8_t>(popupMenuNoItems, POPUP_MENU_MAX_LINES);
++  uint8_t display_count = std::min<uint8_t>(popupMenuNoItems, POPUP_MENU_MAX_LINES);
+   uint8_t y = (display_count >= 5 ? MENU_Y - FH - 1 : MENU_Y);
+   drawFilledRect(MENU_X, y, MENU_W, display_count * (FH+1) + 2, SOLID, ERASE);
+   lcd_rect(MENU_X, y, MENU_W, display_count * (FH+1) + 2);
+diff --git a/radio/src/gui/9X/view_main.cpp b/radio/src/gui/9X/view_main.cpp
+index c3d792b..040b9ce 100644
+--- a/radio/src/gui/9X/view_main.cpp
++++ b/radio/src/gui/9X/view_main.cpp
+@@ -488,7 +488,7 @@ void menuMainView(uint8_t event)
+           y0       = 38+(i%4)*5;
+ 
+           uint16_t lim = g_model.extendedLimits ? 640*2 : 512*2;
+-          int8_t len = (abs(val) * WBAR2 + lim/2) / lim;
++          int8_t len = (std::abs(val) * WBAR2 + lim/2) / lim;
+ 
+           if(len>WBAR2)  len = WBAR2;  // prevent bars from going over the end - comment for debugging
+           lcd_hlineStip(x0-WBAR2, y0, WBAR2*2+1, DOTTED);
+diff --git a/radio/src/gui/9X/view_telemetry.cpp b/radio/src/gui/9X/view_telemetry.cpp
+index d948da6..86fe93e 100644
+--- a/radio/src/gui/9X/view_telemetry.cpp
++++ b/radio/src/gui/9X/view_telemetry.cpp
+@@ -54,12 +54,12 @@ void displayRssiLine()
+     lcd_hline(0, 55, 128, 0); // separator
+     uint8_t rssi;
+ #if !defined(CPUARM)
+-    rssi = min((uint8_t)99, frskyData.rssi[1].value);
++    rssi = std::min((uint8_t)99, frskyData.rssi[1].value);
+     lcd_putsLeft(STATUS_BAR_Y, STR_TX); lcd_outdezNAtt(4*FW+1, STATUS_BAR_Y, rssi, LEADING0, 2);
+     lcd_rect(BAR_LEFT+1, 57, 38, 7);
+     drawFilledRect(BAR_LEFT+1, 58, 4*rssi/11, 5, (rssi < getRssiAlarmValue(0)) ? DOTTED : SOLID);
+ #endif
+-    rssi = min((uint8_t)99, TELEMETRY_RSSI());
++    rssi = std::min((uint8_t)99, TELEMETRY_RSSI());
+     lcd_puts(104, STATUS_BAR_Y, STR_RX); lcd_outdezNAtt(105+4*FW, STATUS_BAR_Y, rssi, LEADING0, 2);
+     lcd_rect(65, 57, 38, 7);
+     uint8_t v = 4*rssi/11;
+diff --git a/radio/src/gui/Taranis/menu_general_calib.cpp b/radio/src/gui/Taranis/menu_general_calib.cpp
+index 2dfb417..40e8e7f 100644
+--- a/radio/src/gui/Taranis/menu_general_calib.cpp
++++ b/radio/src/gui/Taranis/menu_general_calib.cpp
+@@ -58,8 +58,8 @@ void menuCommonCalib(uint8_t event)
+ {
+   for (uint8_t i=0; i<NUM_STICKS+NUM_POTS; i++) { // get low and high vals for sticks and trims
+     int16_t vt = anaIn(i);
+-    reusableBuffer.calib.loVals[i] = min(vt, reusableBuffer.calib.loVals[i]);
+-    reusableBuffer.calib.hiVals[i] = max(vt, reusableBuffer.calib.hiVals[i]);
++    reusableBuffer.calib.loVals[i] = std::min(vt, reusableBuffer.calib.loVals[i]);
++    reusableBuffer.calib.hiVals[i] = std::max(vt, reusableBuffer.calib.hiVals[i]);
+     if (i >= POT1 && i <= POT_LAST) {
+       if (IS_POT_WITHOUT_DETENT(i)) {
+         reusableBuffer.calib.midVals[i] = (reusableBuffer.calib.hiVals[i] + reusableBuffer.calib.loVals[i]) / 2;
+diff --git a/radio/src/gui/Taranis/menu_general_sdmanager.cpp b/radio/src/gui/Taranis/menu_general_sdmanager.cpp
+index b1981a4..021d804 100644
+--- a/radio/src/gui/Taranis/menu_general_sdmanager.cpp
++++ b/radio/src/gui/Taranis/menu_general_sdmanager.cpp
+@@ -205,7 +205,7 @@ void onSdManagerMenu(const char *result)
+     getSelectionFullPath(lfn);
+     f_unlink(lfn);
+     strncpy(statusLineMsg, line, 13);
+-    strcpy_P(statusLineMsg+min((uint8_t)strlen(statusLineMsg), (uint8_t)13), STR_REMOVED);
++    strcpy_P(statusLineMsg+std::min((uint8_t)strlen(statusLineMsg), (uint8_t)13), STR_REMOVED);
+     showStatusLine();
+     REFRESH_FILES();
+   }
+diff --git a/radio/src/gui/Taranis/menu_model.cpp b/radio/src/gui/Taranis/menu_model.cpp
+index fc3062d..752d303 100644
+--- a/radio/src/gui/Taranis/menu_model.cpp
++++ b/radio/src/gui/Taranis/menu_model.cpp
+@@ -160,11 +160,11 @@ void editName(coord_t x, coord_t y, char *name, uint8_t size, uint8_t event, uin
+       if (IS_ROTARY_RIGHT(event) || IS_ROTARY_LEFT(event) || event==EVT_KEY_FIRST(KEY_DOWN) || event==EVT_KEY_FIRST(KEY_UP)
+           || event==EVT_KEY_REPT(KEY_DOWN) || event==EVT_KEY_REPT(KEY_UP)) {
+          if (attr == ZCHAR) {
+-           v = checkIncDec(event, abs(v), 0, ZCHAR_MAX, 0);
++           v = checkIncDec(event, std::abs(v), 0, ZCHAR_MAX, 0);
+            if (c <= 0) v = -v;
+          }
+          else {
+-           v = checkIncDec(event, abs(v), '0', 'z', 0);
++           v = checkIncDec(event, std::abs(v), '0', 'z', 0);
+          }
+ 
+       }
+diff --git a/radio/src/gui/Taranis/menu_model_gvars.cpp b/radio/src/gui/Taranis/menu_model_gvars.cpp
+index b98a902..fb42457 100644
+--- a/radio/src/gui/Taranis/menu_model_gvars.cpp
++++ b/radio/src/gui/Taranis/menu_model_gvars.cpp
+@@ -106,7 +106,7 @@ void menuModelGVars(uint8_t event)
+             vmin = GVAR_MAX+1; vmax = GVAR_MAX+MAX_FLIGHT_MODES-1;
+           }
+           else {
+-            if (abs(v) >= 100)
++            if (std::abs(v) >= 100)
+               lcd_outdezAtt(x, y+1, v, attr | TINSIZE);
+             else
+               lcd_outdezAtt(x, y, v, attr);
+diff --git a/radio/src/gui/Taranis/menu_model_inputs_mixes.cpp b/radio/src/gui/Taranis/menu_model_inputs_mixes.cpp
+index fe3408d..d19f0ca 100644
+--- a/radio/src/gui/Taranis/menu_model_inputs_mixes.cpp
++++ b/radio/src/gui/Taranis/menu_model_inputs_mixes.cpp
+@@ -449,7 +449,7 @@ void gvarWeightItem(coord_t x, coord_t y, MixData *md, uint8_t attr, uint8_t eve
+ void drawOffsetBar(uint8_t x, uint8_t y, MixData * md)
+ {
+   int offset = GET_GVAR(MD_OFFSET(md), GV_RANGELARGE_NEG, GV_RANGELARGE, mixerCurrentFlightMode);
+-  int weight = abs(GET_GVAR(MD_WEIGHT(md), GV_RANGELARGE_NEG, GV_RANGELARGE, mixerCurrentFlightMode));
++  int weight = std::abs(GET_GVAR(MD_WEIGHT(md), GV_RANGELARGE_NEG, GV_RANGELARGE, mixerCurrentFlightMode));
+   int barMin = offset - weight;
+   int barMax = offset + weight;
+   if (y > 15) {
+diff --git a/radio/src/gui/Taranis/menu_model_setup.cpp b/radio/src/gui/Taranis/menu_model_setup.cpp
+index 84001c2..56bf5d5 100644
+--- a/radio/src/gui/Taranis/menu_model_setup.cpp
++++ b/radio/src/gui/Taranis/menu_model_setup.cpp
+@@ -724,7 +724,7 @@ void menuModelSetup(uint8_t event)
+                 CHECK_INCDEC_MODELVAR_ZERO(event, moduleData.channelsStart, 32-8-moduleData.channelsCount);
+                 break;
+               case 1:
+-                CHECK_INCDEC_MODELVAR(event, moduleData.channelsCount, -4, min<int8_t>(MAX_CHANNELS(moduleIdx), 32-8-moduleData.channelsStart));
++                CHECK_INCDEC_MODELVAR(event, moduleData.channelsCount, -4, std::min<int8_t>(MAX_CHANNELS(moduleIdx), 32-8-moduleData.channelsStart));
+                 
+ #if defined(TARANIS_INTERNAL_PPM)
+                 if ((k == ITEM_MODEL_EXTERNAL_MODULE_CHANNELS && g_model.moduleData[EXTERNAL_MODULE].type == MODULE_TYPE_PPM) || (k == ITEM_MODEL_INTERNAL_MODULE_CHANNELS && g_model.moduleData[INTERNAL_MODULE].type == MODULE_TYPE_PPM) || (k == ITEM_MODEL_TRAINER_CHANNELS)) {
+diff --git a/radio/src/gui/Taranis/menu_model_telemetry.cpp b/radio/src/gui/Taranis/menu_model_telemetry.cpp
+index ba5ffac..e6cb4a6 100644
+--- a/radio/src/gui/Taranis/menu_model_telemetry.cpp
++++ b/radio/src/gui/Taranis/menu_model_telemetry.cpp
+@@ -669,10 +669,10 @@ void menuModelTelemetry(uint8_t event)
+         if (attr && s_editMode>0) {
+           switch (menuHorizontalPosition) {
+             case 0:
+-              CHECK_INCDEC_MODELVAR(event, g_model.frsky.varioCenterMin, -16, 5+min<int8_t>(10, g_model.frsky.varioCenterMax+5));
++              CHECK_INCDEC_MODELVAR(event, g_model.frsky.varioCenterMin, -16, 5+std::min<int8_t>(10, g_model.frsky.varioCenterMax+5));
+               break;
+             case 1:
+-              CHECK_INCDEC_MODELVAR(event, g_model.frsky.varioCenterMax, -5+max<int8_t>(-10, g_model.frsky.varioCenterMin-5), +15);
++              CHECK_INCDEC_MODELVAR(event, g_model.frsky.varioCenterMax, -5+std::max<int8_t>(-10, g_model.frsky.varioCenterMin-5), +15);
+               break;
+             case 2:
+               CHECK_INCDEC_MODELVAR_ZERO(event, g_model.frsky.varioCenterSilent, 1);
+diff --git a/radio/src/gui/Taranis/navigation.cpp b/radio/src/gui/Taranis/navigation.cpp
+index 5affbc8..034464c 100644
+--- a/radio/src/gui/Taranis/navigation.cpp
++++ b/radio/src/gui/Taranis/navigation.cpp
+@@ -176,7 +176,7 @@ int checkIncDec(unsigned int event, int val, int i_min, int i_max, unsigned int
+   if (s_editMode>0 && (IS_ROTARY_RIGHT(event) || event==EVT_KEY_FIRST(KEY_UP) || event==EVT_KEY_REPT(KEY_UP))) {
+     do {
+       if (IS_KEY_REPT(event) && (i_flags & INCDEC_REP10)) {
+-        newval += min(10, i_max-val);
++        newval += std::min(10, i_max-val);
+       }
+       else {
+         newval++;
+@@ -195,7 +195,7 @@ int checkIncDec(unsigned int event, int val, int i_min, int i_max, unsigned int
+   else if (s_editMode>0 && (IS_ROTARY_LEFT(event) || event==EVT_KEY_FIRST(KEY_DOWN) || event==EVT_KEY_REPT(KEY_DOWN))) {
+     do {
+       if (IS_KEY_REPT(event) && (i_flags & INCDEC_REP10)) {
+-        newval -= min(10, val-i_min);
++        newval -=std::min(10, val-i_min);
+       }
+       else {
+         newval--;
+@@ -344,7 +344,7 @@ int checkIncDec(unsigned int event, int val, int i_min, int i_max, unsigned int
+ }
+ 
+ #define CURSOR_NOT_ALLOWED_IN_ROW(row)   ((int8_t)MAXCOL(row) < 0)
+-#define MAXCOL_RAW(row) (horTab ? pgm_read_byte(horTab+min(row, (vertpos_t)horTabMax)) : (const uint8_t)0)
++#define MAXCOL_RAW(row) (horTab ? pgm_read_byte(horTab+std::min(row, (vertpos_t)horTabMax)) : (const uint8_t)0)
+ #define MAXCOL(row)     (MAXCOL_RAW(row) >= HIDDEN_ROW ? MAXCOL_RAW(row) : (const uint8_t)(MAXCOL_RAW(row) & (~NAVIGATION_LINE_BY_LINE)))
+ #define COLATTR(row)    (MAXCOL_RAW(row) == (uint8_t)-1 ? (const uint8_t)0 : (const uint8_t)(MAXCOL_RAW(row) & NAVIGATION_LINE_BY_LINE))
+ #define INC(val, min, max) if (val<max) {val++;} else {val=min;}
+@@ -534,7 +534,7 @@ void check(const char *name, check_event_t event, uint8_t curr, const MenuHandle
+       if ((COLATTR(l_posVert) & NAVIGATION_LINE_BY_LINE))
+         l_posHorz = -1;
+       else
+-        l_posHorz = min((uint8_t)l_posHorz, MAXCOL(l_posVert));
++        l_posHorz = std::min((uint8_t)l_posHorz, MAXCOL(l_posVert));
+ 
+       break;
+   }
+diff --git a/radio/src/gui/Taranis/popups.cpp b/radio/src/gui/Taranis/popups.cpp
+index 2544a6b..acb0c03 100644
+--- a/radio/src/gui/Taranis/popups.cpp
++++ b/radio/src/gui/Taranis/popups.cpp
+@@ -127,7 +127,7 @@ const char * displayPopupMenu(uint8_t event)
+ {
+   const char * result = NULL;
+ 
+-  uint8_t display_count = min<unsigned int>(popupMenuNoItems, MENU_MAX_DISPLAY_LINES);
++  uint8_t display_count = std::min<unsigned int>(popupMenuNoItems, MENU_MAX_DISPLAY_LINES);
+   uint8_t y = (display_count >= 5 ? MENU_Y - FH - 1 : MENU_Y);
+   drawFilledRect(MENU_X, y, MENU_W, display_count * (FH+1) + 2, SOLID, ERASE);
+   lcd_rect(MENU_X, y, MENU_W, display_count * (FH+1) + 2);
+@@ -152,7 +152,7 @@ const char * displayPopupMenu(uint8_t event)
+         result = STR_UPDATE_LIST;
+       }
+       else {
+-        s_menu_item = min<uint8_t>(display_count, MENU_MAX_DISPLAY_LINES) - 1;
++        s_menu_item = std::min<uint8_t>(display_count, MENU_MAX_DISPLAY_LINES) - 1;
+         if (popupMenuNoItems > MENU_MAX_DISPLAY_LINES) {
+           popupMenuOffset = popupMenuNoItems - MENU_MAX_DISPLAY_LINES;
+           result = STR_UPDATE_LIST;
+diff --git a/radio/src/gui/Taranis/view_about.cpp b/radio/src/gui/Taranis/view_about.cpp
+index 05c92a8..4abbb76 100644
+--- a/radio/src/gui/Taranis/view_about.cpp
++++ b/radio/src/gui/Taranis/view_about.cpp
+@@ -86,7 +86,7 @@ void menuAboutView(uint8_t event)
+   lcd_putsAtt(64, 0, STR_ABOUTUS, DBLSIZE);
+   lcd_hline(ABOUT_X, 18, 120);
+   lcd_hline(ABOUT_X, 19, 130, GREY_DEFAULT);
+-  LcdFlags att = GREY(max(0, 15-greyIndex/2));
++  LcdFlags att = GREY(std::max(0, 15-greyIndex/2));
+ 
+   uint8_t screenDuration = 150;
+ 
+diff --git a/radio/src/gui/Taranis/view_telemetry.cpp b/radio/src/gui/Taranis/view_telemetry.cpp
+index d675a61..6f41bd0 100644
+--- a/radio/src/gui/Taranis/view_telemetry.cpp
++++ b/radio/src/gui/Taranis/view_telemetry.cpp
+@@ -52,7 +52,7 @@ void displayRssiLine()
+ {
+   if (TELEMETRY_STREAMING()) {
+     lcd_hline(0, 55, 212, 0); // separator
+-    uint8_t rssi = min((uint8_t)99, TELEMETRY_RSSI());
++    uint8_t rssi = std::min((uint8_t)99, TELEMETRY_RSSI());
+     lcd_putsn(0, STATUS_BAR_Y, STR_RX, 2); lcd_outdezNAtt(4*FW, STATUS_BAR_Y, rssi, LEADING0, 2);
+     lcd_rect(BAR_LEFT, 57, 78, 7);
+     drawFilledRect(BAR_LEFT+1, 58, 19*rssi/25, 5, (rssi < getRssiAlarmValue(0)) ? DOTTED : SOLID);
+diff --git a/radio/src/mixer.cpp b/radio/src/mixer.cpp
+index ea2cb74..a80ad31 100644
+--- a/radio/src/mixer.cpp
++++ b/radio/src/mixer.cpp
+@@ -432,7 +432,7 @@ void evalInputs(uint8_t mode)
+       calibratedStick[ch] = v; // for show in expo
+ 
+       // filtering for center beep
+-      uint8_t tmp = (uint16_t)abs(v) / 16;
++      uint8_t tmp = (uint16_t)std::abs(v) / 16;
+ #if defined(CPUARM)
+       if (mode == e_perout_mode_normal) {
+         if (tmp==0 || (tmp==1 && (bpanaCenter & mask))) {
+@@ -739,7 +739,7 @@ void evalFlightModeMixes(uint8_t mode, uint8_t tick10ms)
+         swOn[i].prev = _swPrev;
+       }
+       if (mode==e_perout_mode_normal && swOn[i].delay > 0) {
+-        swOn[i].delay = max<int16_t>(0, (int16_t)swOn[i].delay - tick10ms);
++        swOn[i].delay = std::max<int16_t>(0, (int16_t)swOn[i].delay - tick10ms);
+         if (!mixCondition)
+           v = _swPrev << DELAY_POS_SHIFT;
+         else if (mixEnabled)
+@@ -985,7 +985,7 @@ void evalMixes(uint8_t tick10ms)
+       fp_act[fm] = MAX_ACT;
+     }
+     else {
+-      uint8_t fadeTime = max(g_model.flightModeData[lastFlightMode].fadeOut, g_model.flightModeData[fm].fadeIn);
++      uint8_t fadeTime = std::max(g_model.flightModeData[lastFlightMode].fadeOut, g_model.flightModeData[fm].fadeIn);
+       ACTIVE_PHASES_TYPE transitionMask = ((ACTIVE_PHASES_TYPE)1 << lastFlightMode) + ((ACTIVE_PHASES_TYPE)1 << fm);
+       if (fadeTime) {
+         flightModesFade |= transitionMask;
+diff --git a/radio/src/myeeprom.h b/radio/src/myeeprom.h
+index 04ec31f..8eec72b 100644
+--- a/radio/src/myeeprom.h
++++ b/radio/src/myeeprom.h
+@@ -431,7 +431,7 @@ PACK(typedef struct {
+   int8_t  ppmFrameLength;
+ }) ModuleData;
+ 
+-#define SET_DEFAULT_PPM_FRAME_LENGTH(idx) g_model.moduleData[idx].ppmFrameLength = 4 * max((int8_t)0, g_model.moduleData[idx].channelsCount)
++#define SET_DEFAULT_PPM_FRAME_LENGTH(idx) g_model.moduleData[idx].ppmFrameLength = 4 * std::max((int8_t)0, g_model.moduleData[idx].channelsCount)
+ 
+ #define LEN_SCRIPT_FILENAME    8
+ #define LEN_SCRIPT_NAME        8
+diff --git a/radio/src/opentx.cpp b/radio/src/opentx.cpp
+index 9727b0d..57bceca 100644
+--- a/radio/src/opentx.cpp
++++ b/radio/src/opentx.cpp
+@@ -920,7 +920,7 @@ bool inputsMoved()
+   for (uint8_t i=0; i<NUM_SWITCHES; i++)
+     sum += getValue(MIXSRC_FIRST_SWITCH+i) >> INAC_SWITCHES_SHIFT;
+ 
+-  if (abs((int8_t)(sum-inactivity.sum)) > 1) {
++  if (std::abs((int8_t)(sum-inactivity.sum)) > 1) {
+     inactivity.sum = sum;
+     return true;
+   }
+@@ -1331,7 +1331,7 @@ uint8_t checkTrim(uint8_t event)
+     thro = (idx==THR_STICK && g_model.thrTrim);
+ #endif
+     int8_t trimInc = g_model.trimInc + 1;
+-    int8_t v = (trimInc==-1) ? min(32, abs(before)/4+1) : (1 << trimInc); // TODO flash saving if (trimInc < 0)
++    int8_t v = (trimInc==-1) ? std::min(32, abs(before)/4+1) : (1 << trimInc); // TODO flash saving if (trimInc < 0)
+     if (thro) v = 4; // if throttle trim and trim trottle then step=4
+     int16_t after = (k&1) ? before + v : before - v;   // positive = k&1
+ #if defined(CPUARM)
+@@ -2275,7 +2275,7 @@ void instantTrim()
+ #else
+       int16_t delta = anas[stick];
+ #endif
+-      if (abs(delta) >= INSTANT_TRIM_MARGIN) {
++      if (std::abs(delta) >= INSTANT_TRIM_MARGIN) {
+         int16_t trim = limit<int16_t>(TRIM_EXTENDED_MIN, (delta + trims[stick]) / 2, TRIM_EXTENDED_MAX);
+         setTrimValue(trim_phase, stick, trim);
+       }
+diff --git a/radio/src/opentx.h b/radio/src/opentx.h
+index 0945db0..bbf001e 100644
+--- a/radio/src/opentx.h
++++ b/radio/src/opentx.h
+@@ -1055,7 +1055,7 @@ template<class t> FORCEINLINE t min(t a, t b) { return a<b?a:b; }
+ /// liefert das Maximum der Argumente
+ template<class t> FORCEINLINE t max(t a, t b) { return a>b?a:b; }
+ template<class t> FORCEINLINE t sgn(t a) { return a>0 ? 1 : (a < 0 ? -1 : 0); }
+-template<class t> FORCEINLINE t limit(t mi, t x, t ma) { return min(max(mi,x),ma); }
++template<class t> FORCEINLINE t limit(t mi, t x, t ma) { return std::min(std::max(mi,x),ma); }
+ template<class t> void SWAP(t & a, t & b) { t tmp = b; b = a; a = tmp; }
+ 
+ uint16_t isqrt32(uint32_t n);
+diff --git a/radio/src/pulses/ppm_arm.cpp b/radio/src/pulses/ppm_arm.cpp
+index edd21c5..10d02f4 100644
+--- a/radio/src/pulses/ppm_arm.cpp
++++ b/radio/src/pulses/ppm_arm.cpp
+@@ -45,7 +45,7 @@ void setupPulsesPPM(unsigned int port)                   // Don't enable interru
+   // The pulse ISR is 2mhz that's why everything is multiplied by 2
+ 
+   uint32_t firstCh = g_model.moduleData[port].channelsStart;
+-  uint32_t lastCh = min<unsigned int>(NUM_CHNOUT, firstCh + 8 + g_model.moduleData[port].channelsCount);
++  uint32_t lastCh = std::min<unsigned int>(NUM_CHNOUT, firstCh + 8 + g_model.moduleData[port].channelsCount);
+ 
+ #if defined(PCBSKY9X)
+   // TODO move register stuff to driver
+diff --git a/radio/src/sdcard.cpp b/radio/src/sdcard.cpp
+index fd860c0..610de26 100644
+--- a/radio/src/sdcard.cpp
++++ b/radio/src/sdcard.cpp
+@@ -146,7 +146,7 @@ bool listSdFiles(const char *path, const char *extension, const uint8_t maxlen,
+             }
+           }
+         }
+-        for (uint8_t i=0; i<min(popupMenuNoItems, (uint16_t)MENU_MAX_DISPLAY_LINES); i++) {
++        for (uint8_t i=0; i<std::min(popupMenuNoItems, (uint16_t)MENU_MAX_DISPLAY_LINES); i++) {
+           popupMenuItems[i] = reusableBuffer.modelsel.menu_bss[i];
+         }
+ 
+@@ -161,7 +161,7 @@ bool listSdFiles(const char *path, const char *extension, const uint8_t maxlen,
+             break;
+           }
+         }
+-        for (uint8_t i=0; i<min(popupMenuNoItems, (uint16_t)MENU_MAX_DISPLAY_LINES); i++) {
++        for (uint8_t i=0; i<std::min(popupMenuNoItems, (uint16_t)MENU_MAX_DISPLAY_LINES); i++) {
+           popupMenuItems[i] = reusableBuffer.modelsel.menu_bss[i];
+         }
+       }
+diff --git a/radio/src/strhelpers.cpp b/radio/src/strhelpers.cpp
+index bd11c1e..8c82cde 100644
+--- a/radio/src/strhelpers.cpp
++++ b/radio/src/strhelpers.cpp
+@@ -207,7 +207,7 @@ char *strAppendFilename(char *dest, const char *filename, const int size)
+ #define LEN_FILE_EXTENSION 4
+ char *getFileExtension(char *filename, int size)
+ {
+-  int len = min<int>(size, strlen(filename));
++  int len = std::min<int>(size, strlen(filename));
+   for (int i=len; i>=len-LEN_FILE_EXTENSION; --i) {
+     if (filename[i] == '.') {
+       return &filename[i];
+diff --git a/radio/src/switches.cpp b/radio/src/switches.cpp
+index 4c8dafa..ac32dd8 100644
+--- a/radio/src/switches.cpp
++++ b/radio/src/switches.cpp
+@@ -390,7 +390,7 @@ bool getLogicalSwitch(uint8_t idx)
+             }
+           }
+           else {
+-            result = (abs(diff) >= y);
++            result = (std::abs(diff) >= y);
+           }
+           if (result || update) {
+             LS_LAST_VALUE(mixerCurrentFlightMode, idx) = x;
+@@ -458,7 +458,7 @@ bool getSwitch(swsrc_t swtch)
+   if (swtch == SWSRC_NONE)
+     return true;
+ 
+-  uint8_t cs_idx = abs(swtch);
++  uint8_t cs_idx = std::abs(swtch);
+ 
+   if (cs_idx == SWSRC_ONE) {
+     result = !s_mixer_first_run_done;
+diff --git a/radio/src/targets/simu/simpgmspace.cpp b/radio/src/targets/simu/simpgmspace.cpp
+index c14b932..7daff20 100644
+--- a/radio/src/targets/simu/simpgmspace.cpp
++++ b/radio/src/targets/simu/simpgmspace.cpp
+@@ -461,7 +461,7 @@ bool dacQueue(AudioBuffer *buffer)
+ 
+ void setVolume(uint8_t volume)
+ {
+-  simuAudio.currentVolume = min<int>((volumeScale[min<uint8_t>(volume, VOLUME_LEVEL_MAX)] * simuAudio.volumeGain) / 10, 127);
++  simuAudio.currentVolume = std::min<int>((volumeScale[std::min<uint8_t>(volume, VOLUME_LEVEL_MAX)] * simuAudio.volumeGain) / 10, 127);
+   // TRACE("setVolume(): in: %u, out: %u", volume, simuAudio.currentVolume);
+ }
+ #endif
+diff --git a/radio/src/telemetry/frsky_d_arm.cpp b/radio/src/telemetry/frsky_d_arm.cpp
+index 21d37b4..7aadcc8 100644
+--- a/radio/src/telemetry/frsky_d_arm.cpp
++++ b/radio/src/telemetry/frsky_d_arm.cpp
+@@ -270,7 +270,7 @@ void frskyDSetDefault(int index, uint16_t id)
+   const FrSkyDSensor * sensor = getFrSkyDSensor(id);
+   if (sensor) {
+     TelemetryUnit unit = sensor->unit;
+-    uint8_t prec = min<uint8_t>(2, sensor->prec);
++    uint8_t prec = std::min<uint8_t>(2, sensor->prec);
+     telemetrySensor.init(sensor->name, unit, prec);
+     if (id == D_RSSI_ID) {
+       telemetrySensor.filter = 1;
+diff --git a/radio/src/telemetry/frsky_sport.cpp b/radio/src/telemetry/frsky_sport.cpp
+index c1fe4c7..e9ff064 100644
+--- a/radio/src/telemetry/frsky_sport.cpp
++++ b/radio/src/telemetry/frsky_sport.cpp
+@@ -307,7 +307,7 @@ void frskySportSetDefault(int index, uint16_t id, uint8_t subId, uint8_t instanc
+   const FrSkySportSensor * sensor = getFrSkySportSensor(id, subId);
+   if (sensor) {
+     TelemetryUnit unit = sensor->unit;
+-    uint8_t prec = min<uint8_t>(2, sensor->prec);
++    uint8_t prec = std::min<uint8_t>(2, sensor->prec);
+     telemetrySensor.init(sensor->name, unit, prec);
+     if (id == RSSI_ID) {
+       telemetrySensor.logs = true;
+diff --git a/radio/src/telemetry/telemetry.cpp b/radio/src/telemetry/telemetry.cpp
+index 3462ad5..f015d25 100644
+--- a/radio/src/telemetry/telemetry.cpp
++++ b/radio/src/telemetry/telemetry.cpp
+@@ -388,7 +388,7 @@ void TelemetryItem::eval(const TelemetrySensor & sensor)
+       for (int i=0; i<maxitems; i++) {
+         int8_t source = sensor.calc.sources[i];
+         if (source) {
+-          unsigned int index = abs(source)-1;
++          unsigned int index = std::abs(source)-1;
+           TelemetrySensor & telemetrySensor = g_model.telemetrySensors[index];
+           TelemetryItem & telemetryItem = telemetryItems[index];
+           if (sensor.formula == TELEM_FORMULA_AVERAGE) {
+@@ -419,9 +419,9 @@ void TelemetryItem::eval(const TelemetrySensor & sensor)
+           else {
+             sensorValue = convertTelemetryValue(sensorValue, telemetrySensor.unit, telemetrySensor.prec, sensor.unit, sensor.prec);
+             if (sensor.formula == TELEM_FORMULA_MIN)
+-              value = (count==1 ? sensorValue : min<int32_t>(value, sensorValue));
++              value = (count==1 ? sensorValue : std::min<int32_t>(value, sensorValue));
+             else if (sensor.formula == TELEM_FORMULA_MAX)
+-              value = (count==1 ? sensorValue : max<int32_t>(value, sensorValue));
++              value = (count==1 ? sensorValue : std::max<int32_t>(value, sensorValue));
+             else
+               value += sensorValue;
+           }

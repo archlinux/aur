@@ -1,18 +1,23 @@
-# Maintainer: Jeff Youdontneedtoknow <jeffpublicjr at gmail dot com>
+# Maintainer: Ysblokje <ysblokje at gmail dot com>
+# Previous Maintainer: Jeff Youdontneedtoknow <jeffpublicjr at gmail dot com>
 # Contributer: Arnaud
 pkgname=opentx-companion
-pkgver=2.1.7
+pkgver=2.1.8
 pkgrel=1
 pkgdesc="EEPROM Editor for OpenTX RC transmitter firmwares"
 arch=('x86_64')
 url="http://www.open-tx.org/"
 license=('GPL')
 depends=('phonon' 'qt4' 'sdl')
-makedepends=('subversion' 'cmake' 'xsd' 'python2-pyqt4' 'bc' 'python2' 'avr-gcc' 'avr-libc' 'sed')
+makedepends=('cmake' 'xsd' 'python2-pyqt4' 'bc' 'python2' 'avr-gcc' 'avr-libc' 'sed')
 provides=('companion')
 conflicts=('companion' 'companion9x-svn')
-source=(https://github.com/opentx/opentx/archive/$pkgver.tar.gz)
-md5sums=('ef9f0b7453c85e1f8a31360763715fd3')
+source=("https://github.com/opentx/opentx/archive/$pkgver.tar.gz"
+    'opentx-2.1.8-gcc6.patch'
+)
+md5sums=('c5c8eb1c3ab072523826da71b6940ae0'
+    '155d6672478d3d80400b46ded6edc856'
+)
 
 build() {
   sed -i -e 's/env python/env python2.7/' $srcdir/opentx-$pkgver/radio/util/*.py
@@ -22,6 +27,11 @@ build() {
   cd lbuild
   cmake -DCMAKE_INSTALL_PREFIX=/usr ../src
   make
+}
+
+prepare() {
+  cd $srcdir/opentx-$pkgver
+  patch -p1 -i ../opentx-2.1.8-gcc6.patch
 }
 
 package() {
