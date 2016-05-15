@@ -8,7 +8,7 @@ arch=(any)
 url="http://bitbucket.org/donspaulding/simpledaemon/"
 license=('MIT')
 depends=(python2)
-source=(http://pypi.python.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.tar.gz)
+source=(https://files.pythonhosted.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.tar.gz)
 sha256sums=('bb1f3a5baacbfc770227f6837b01d8dcd0454e90f75c385f6a1b7b74fa80e64c')
 
 build() {
