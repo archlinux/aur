@@ -1,0 +1,11 @@
+--- flightgear/src/Navaids/PositionedOctree.hxx	2016-05-15 18:05:44.904316000 +0530
++++ flightgear/src/Navaids/PositionedOctree.hxx	2016-05-15 18:06:27.696729611 +0530
+@@ -60,7 +60,7 @@
+     _order(x),
+     _inner(v)
+     {
+-      assert(!isnan(x));
++      assert(!std::isnan(x));
+     }
+     
+     Ordered(const Ordered<T>& a) :

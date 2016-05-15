@@ -2,7 +2,7 @@
 # Contributor: jmf <jmf at mesecons dot net>
 # Contributor: Pascal Groschwitz <p.groschwitz@googlemail.com>
 pkgname=flightgear-git
-pkgver=20160416
+pkgver=20160515
 pkgrel=1
 _gitname=flightgear
 pkgdesc="An open-source, multi-platform flight simulator"
@@ -14,11 +14,18 @@ optdepends=()
 makedepends=('boost' 'cmake' 'mesa' 'sharutils' 'simgear-git')
 provides=('flightgear-git')
 conflicts=('flightgear')
-source=(git://git.code.sf.net/p/flightgear/flightgear)
-md5sums=('SKIP')
+source=(git://git.code.sf.net/p/flightgear/flightgear
+        fix.patch)
+md5sums=('SKIP'
+         'a90265027eac1a61ec8f8eb5b6b4a03a')
 
 pkgver() {
   echo "$(date +"%Y%m%d")"
+}
+
+prepare() {
+  cd ${srcdir}
+  patch -p0 -i fix.patch
 }
 
 build() {
