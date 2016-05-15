@@ -4,7 +4,7 @@
 pkgname=gtk-theme-arc-solid-git
 _pkgname=arc-theme
 _pkgauthor=horst3180
-pkgver=520.5ec25f4
+pkgver=531.cc20a2e
 pkgrel=1
 pkgdesc="A flat theme for GTK 3, GTK 2 and Gnome-Shell. With --disable-transparency build option. Latest commit from Github."
 arch=('any')
