@@ -10,7 +10,7 @@ url="https://bitbucket.org/birkenfeld/sphinx-contrib/"
 license=('BSD')
 depends=('python-sphinx')
 options=(!emptydirs)
-source=("http://pypi.python.org/packages/source/s/$_libname/$_libname-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/s/$_libname/$_libname-$pkgver.tar.gz")
 
 build() {
 	cd "$srcdir/$_libname-$pkgver"
