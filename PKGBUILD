@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <m.s.online gmx.de>
+# Maintainer: Michael Straube <m.s.online gmx de>
 pkgname=fluxbox-style-debian-dark
 pkgver=1.3.5
 pkgrel=1
@@ -20,11 +20,11 @@ prepare() {
 }
 
 package() {
-  install -Dm644 "$srcdir/debian/additional-themes/Debian/debian-dark" \
+  install -Dm644 debian/additional-themes/Debian/debian-dark \
     "$pkgdir/usr/share/fluxbox/styles/debian-dark"
 
-  install -Dm644 "$srcdir/debian/additional-themes/Images/Debian/debian-dark.png" \
+  install -Dm644 debian/additional-themes/Images/Debian/debian-dark.png \
     "$pkgdir/usr/share/backgrounds/fluxbox/debian-dark.png"
 
-  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
