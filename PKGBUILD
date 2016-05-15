@@ -9,7 +9,7 @@ url="http://www.orbited.org"
 license=('MIT')
 depends=(python2-simplejson morbid python2-stomper twisted)
 makedepends=(python2-setuptools)
-source=(http://pypi.python.org/packages/source/o/orbited/$pkgname-$pkgver.tar.gz)
+source=(https://files.pythonhosted.org/packages/source/o/orbited/$pkgname-$pkgver.tar.gz)
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
