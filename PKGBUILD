@@ -5,13 +5,13 @@
 _pkgbase=julia
 pkgbase=${_pkgbase}-git
 pkgname=('julia-git' 'julia-git-docs')
-pkgver=0.5.0.dev.r30802.g7315f52
+pkgver=0.5.0.dev.r31095.gd4328ba
 pkgrel=1
 pkgdesc='High-level, high-performance, dynamic programming language'
 arch=('i686' 'x86_64')
 url="http://julialang.org"
 license=('MIT')
-makedepends=('gcc-fortran' 'arpack' 'fftw' 'git' 'gmp' 'libgit2' 'libunwind' 'llvm' 'mpfr' 'openlibm' 'openspecfun' 'pcre2' 'suitesparse' 'patchelf')
+makedepends=('gcc-fortran' 'git')
 # Needed if building the documentation
 #makedepends+=('juliadoc-git' 'texlive-langcjk' 'texlive-latexextra')
 options=('!emptydirs')
