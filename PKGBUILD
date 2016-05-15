@@ -2,7 +2,7 @@ _gitname='splitfs'
 pkgname="$_gitname-git"
 _gitbranch='master'
 pkgver=r4.248a79c
-pkgrel=1
+pkgrel=2
 pkgdesc='FUSE filesystem that chunks files up.'
 arch=('any')
 url="https://github.com/EtiennePerot/$_gitname"
@@ -43,8 +43,8 @@ build() {
 		_srcdir_subdir="$(echo "$_vendor_git_submodule" | cut -d: -f1)"
 		_package_name="$(echo "$_vendor_git_submodule" | cut -d: -f2-)"
 		git config "submodule.vendor/$_package_name.url" "$srcdir/$_srcdir_subdir"
+		git submodule update "vendor/$_package_name"
 	done
-	git submodule update
 	# Actually build.
 	mkdir -p "$srcdir/bin"
 	local _go_binary _binary_name _go_binary_file
