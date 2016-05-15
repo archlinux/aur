@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer: Sven Fischer <>
+# Maintainer: Sven Fischer <aur.archlinux@linux4tw.de>
 
 pkgname=guayadeque-git
 _pkgname=guayadeque
