@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <m.s.online gmx.de>
+# Maintainer: Michael Straube <m.s.online gmx de>
 # Contributor: Robert Knauer <robert@privatdemail.net>
 
 pkgname=freedoko
@@ -16,7 +16,7 @@ sha256sums=('a27ab7acabb28aa8d038f0022377ea3e68d52626d454beaf0f65e0b91c777de9'
             '186ba8739c9df7b8ce09b6dd4ed337fb01e5e16d931af435d921b61fec5d53c8')
 
 prepare() {
-  cd "FreeDoko_$pkgver"
+  cd FreeDoko_$pkgver
 
   # convert line endings from DOS to Unix
   sed -i 's/\r$//' src/Makefile.local.template
@@ -26,13 +26,13 @@ prepare() {
 }
 
 build() {
-  cd "FreeDoko_$pkgver"
+  cd FreeDoko_$pkgver
   make compile
   make documentation
 }
 
 package() {
-  cd "FreeDoko_$pkgver"
+  cd FreeDoko_$pkgver
 
   make DESTDIR="$pkgdir" install
 
