@@ -1,17 +1,17 @@
 # Maintainer: Nitin Mathew <nitn_mathew2000@hotmail.com>                                                                                             
 pkgname=settimezone                                                                                                                                 
-pkgver=0.2.2                                                                                                                                 
+pkgver=0.2.3
 pkgrel=1
-pkgdesc="To change the timezone in Arch Linux."                                        
+pkgdesc="To change the timezone in Arch Linux."
 
 arch=('i686' 'x86_64')
 url="https://github.com/nsmathew/settimezone"
 license=('GPL3')
-depends=('python' 'tk')
+depends=('python','tk')
 makedepends=()
 install=$pkgname.install
 source=(https://github.com/nsmathew/SetTimeZone/archive/v${pkgver}.tar.gz)
-sha256sums=('62c5eaf8d2e6ad8ddf01afbe16d57d9413466cd452f657509e19e748a072c7f9')
+sha256sums=('0ccd152d709c2567324623554acc4d20a05103fee8063529b7e4914f31e4a19e')
 
 package() {
         cd ${srcdir}/${pkgname}-${pkgver}
