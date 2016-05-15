@@ -22,7 +22,7 @@ source=(https://github.com/mattermost/platform/archive/v$_pkgver/$pkgname-$_pkgv
 sha256sums=('4cc023d0b80e1aec59e53b6ebf666512364a58f47c3133b61075e03eed784a2c'
             'b3fbb2d04e72396677b2c8e34df089ff135796f7a0e8a42d45e989773d6d5b07'
             '7cd154ed034a09f6671cab68bc9c30a7fd84e777e801e2aaf93a567cfa0dccfd'
-            '32105266886cb21eb62537b8f90767428e4bd6f9d5b54d395d7db2847f3746ed')
+            '7f4993798d1a2ae9a78fed5fc3fe88d44a7a669e7ffefda7fa6a36c27c6c5840')
 
 prepare() {
 	mkdir -p src/github.com/mattermost
