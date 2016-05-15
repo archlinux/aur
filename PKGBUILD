@@ -12,7 +12,6 @@ url="http://kmplayer.kde.org"
 depends=(kdebase-runtime cairo)
 makedepends=(cmake automoc4 gtk2)
 optdepends=('gtk2: for the Netscape plugin player')
-install=$pkgname.install
 #source=("http://kmplayer.kde.org/pkgs/$pkgname-$pkgver.tar.bz2")
 source=("http://quickgit.kde.org/?p=kmplayer.git&a=snapshot&h=73c171d9674a82b6ab5f19654070bfa816444367&fmt=tbz2")
 md5sums=('9b61af757b661ed602dfffa237fa8fa2')
