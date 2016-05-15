@@ -10,7 +10,7 @@ url="https://github.com/joestump/python-oauth2"
 license=('GPL')
 depends=(python2-httplib2)
 makedepends=(python2-setuptools)
-source=(https://pypi.python.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.post1.tar.gz)
+source=(https://files.pythonhosted.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.post1.tar.gz)
 
 build() {
 	cd "$srcdir/$_libname-$pkgver.post1"
