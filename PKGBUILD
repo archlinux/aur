@@ -1,4 +1,5 @@
-# Maintainer: Patrice Peterson <runiq at archlinux dot us>
+# Maintainer: Morten Linderud <morten@linderud.pw>
+# Contributor: Patrice Peterson <runiq at archlinux dot us>
 # Contributor: Vivien Didelot <vivien+aur@didelot.org>
 pkgname=i3blocks-git
 _pkgname=i3blocks
@@ -16,8 +17,14 @@ optdepends=('acpi: For example battery script'
             'openvpn: For openvpn contrib script')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+https://github.com/vivien/$_pkgname")
-sha256sums=('SKIP')
+source=("git+https://github.com/vivien/$_pkgname" "colors.patch")
+sha256sums=('SKIP'
+            '11aed157515cfa77e1cec693effd7300107d3b7aa8a1b0beacf7b395bf9d46fa')
+
+prepare() {
+  cd "$srcdir/$_pkgname"
+  patch -Np1 <../colors.patch
+}
 
 pkgver () {
   cd "$srcdir/$_pkgname"
@@ -29,7 +36,7 @@ build () {
 }
 
 package () {
-  make -C "$srcdir/$_pkgname" DESTDIR="$pkgdir" PREFIX=/usr install
+  make -C "$srcdir/$_pkgname" DESTDIR="$pkgdir" PREFIX=/usr LIBEXECDIR=/usr/lib install
 }
 
 # vim: et ts=2 sw=2
