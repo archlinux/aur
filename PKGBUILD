@@ -4,7 +4,7 @@
 _gemname=xapian
 pkgname=ruby-$_gemname
 pkgver=1.2.18.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Xapian bindings'
 arch=(i686 x86_64)
 url=''
