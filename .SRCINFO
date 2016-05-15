@@ -1,0 +1,26 @@
+pkgbase = guayadeque
+	pkgdesc = Lightweight music player
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = http://guayadeque.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	depends = curl
+	depends = desktop-file-utils
+	depends = libgpod
+	depends = taglib
+	depends = wxgtk2.8
+	depends = gdk-pixbuf2
+	optdepends = gstreamer0.10-good-plugins: Support for additional file formats
+	optdepends = gstreamer0.10-bad-plugins: Support for additional file formats
+	optdepends = gstreamer0.10-ugly-plugins: Support for additional file formats
+	optdepends = gvfs: Support for external devices
+	source = git+https://github.com/anonbeat/guayadeque.git
+	source = 0001-add-gdk_pixbuf2-lib.patch
+	sha512sums = SKIP
+	sha512sums = 6b634fb99f733c3f35aec8d0827e09d8a51228fe988f3b00d060fc86be2c2415f5e9e34016829e53405eeb5bd42c5e2ff5fd43d77d1bd102fdc0ef5270b3f7c7
+
+pkgname = guayadeque
+
