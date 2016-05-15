@@ -9,7 +9,7 @@ url="http://www.pymysql.org/"
 license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("http://pypi.python.org/packages/source/P/PyMySQL/PyMySQL-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/P/PyMySQL/PyMySQL-$pkgver.tar.gz")
 
 build() {
     cd "$srcdir/PyMySQL-$pkgver"
