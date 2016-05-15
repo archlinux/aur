@@ -8,7 +8,7 @@ url="https://github.com/gabrielfalcao/couleur"
 license=(APACHE)
 depends=('python2-setuptools')
 arch=('any')
-source=("https://pypi.python.org/packages/source/c/couleur/couleur-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/c/couleur/couleur-$pkgver.tar.gz")
 
 build() {
 	cd "$srcdir/couleur-$pkgver"
