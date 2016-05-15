@@ -8,7 +8,8 @@ pkgdesc='A Sega Model 3 Arcade Emulator'
 arch=('i686' 'x86_64')
 url='http://www.supermodel3.com/'
 license=('GPL3')
-depends=('mesa' 'sdl' 'zlib')
+depends=('mesa' 'sdl' 'zlib' 'glu')
+makedepends=('svn')
 install=supermodel.install
 source=('supermodel.sh'
         'multiuser.patch'
