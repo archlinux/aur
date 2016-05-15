@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 _pkgname=qt5-datavis3d
 pkgname=$_pkgname-git
-pkgver=5.7.0.r1385.3fb7ce6
+pkgver=5.8.0.r1391.13a8c4e
 pkgrel=1
 pkgdesc="Provides multiple graph types to visualize data in 3D space both with C++ and Qt Quick 2"
 arch=('i686' 'x86_64')
