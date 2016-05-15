@@ -9,7 +9,7 @@ pkgdesc="Modern Pythonic mail server built like a web application server"
 license=("BSD")
 url="http://lamsonproject.org/"
 depends=('python2-jinja' 'python2-sqlalchemy' 'python2-nose' 'python2-daemon' 'python2-chardet')
-source=("http://pypi.python.org/packages/source/l/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/l/$pkgname/$pkgname-$pkgver.tar.gz")
 arch=('any')
 
 build() {
