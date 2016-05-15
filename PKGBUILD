@@ -1,7 +1,7 @@
 # Maintainer: Mikołaj Milej <mikolajmm+aur@gmail.com>
 
 pkgname=hgflow
-pkgver=0.9.8
+pkgver=0.9.8.1
 pkgrel=1
 pkgdesc="Git flow branching model for mercurial"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('mercurial')
 makedepends=('mercurial')
 source=("https://bitbucket.org/yujiewu/hgflow/downloads/hgflow-v${pkgver}.tar.bz2"
         "${pkgname}.install")
-sha512sums=('9f52b39ecc083f93a9f9d81b58e1e1d7db37dfe2c8a02147d3c34fab2ce6ce4a8519692d715f28797ac964743842bfe9c0ebb05bbc4a58c3327329f431090870'
+sha512sums=('a3aacd58dc0682404ffb328698b5f18f9070e987df554b53d7bb406a001324ed1c60c7d03d7559cd12e15f278574579cd7c511a5c8a71b35da0c0e77a7f8059a'
             '1ec8f7f086115f1fb295694ee39bfacda112da01024130420c31989f94d16e95a49f6b849e09ef639dfe0987bc223fc234187dcd4857532db082bfa5a830f7ef')
 
 package() {
