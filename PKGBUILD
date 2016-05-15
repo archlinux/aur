@@ -26,9 +26,11 @@ prepare() {
 build() {
   cd libgcrypt-${pkgver}
 
+  # Override the defaults with 32-bit options.
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export LDFLAGS='-m32'
+  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
 
   ./configure \
     --prefix='/usr' \
