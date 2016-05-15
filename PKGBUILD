@@ -2,8 +2,8 @@
 
 pkgname=feeluown-dev-git
 _pkgname=FeelUOwn
-_rev=a4a5525
-pkgver=20160509.${_rev}
+_rev=9c09a81
+pkgver=20160514.${_rev}
 pkgrel=1
 pkgdesc="个性化音乐服务 For Mac And Linux 开发版"
 arch=("any")
