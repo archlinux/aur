@@ -1,7 +1,7 @@
 pkgbase = rpatool-git
-	pkgdesc = rpatool is a simple tool allowing you to create, modify and extract Ren'Py Archive (.rpa/.rpi) files. Currently, only writing to RPAv2/RPAv3 archives is supported.
+	pkgdesc = rpatool is a simple tool allowing you to create, modify and extract Ren'Py (renpy) Archive (.rpa/.rpi) files. Currently, only writing to RPAv2/RPAv3 archives is supported.
 	pkgver = r6.07549d2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Shizmob/rpatool
 	arch = i686
 	arch = x86_64
