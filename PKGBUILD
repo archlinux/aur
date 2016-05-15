@@ -1,7 +1,7 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 pkgname=pasystray
 pkgver=0.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="PulseAudio system tray (a replacement for padevchooser)"
 arch=('i686' 'x86_64')
 url="https://github.com/christophgysin/pasystray"
@@ -17,7 +17,6 @@ optdepends=(
     'pavumeter: Launch PulseAudio volume meter from tray icon'
     'paprefs: Launch PulseAudio preferences from tray icon'
 )
-install='pasystray.install'
 source=("https://github.com/christophgysin/${pkgname}/archive/${pkgname}-${pkgver}.tar.gz")
 md5sums=('0ea894a47a8ab10b830051e3bd89294d')
 
