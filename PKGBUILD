@@ -1,4 +1,4 @@
-# Maintainer: Antonio Rojas <nqn1976 @ gmail.com>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kbackgammon
 _pkgname=backgammon
@@ -12,7 +12,6 @@ license=('GPL')
 depends=('kdebase-runtime' 'libkdegames')
 makedepends=('cmake' 'automoc4')
 source=("http://kde-apps.org/CONTENT/content-files/142680-${_pkgname}_${_pkgver}.tar.gz")
-install=$pkgname.install
 md5sums=('4c3a404f80e12b67c34f8da23159a4d4')
 
 build() {
