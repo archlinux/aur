@@ -14,7 +14,7 @@ pkgbase = supermodel-svn
 	source = multiuser.patch
 	source = supermodel-svn::svn+https://svn.code.sf.net/p/model3emu/code/trunk
 	md5sums = ea8274c2a37acddd026fce9c831530cc
-	md5sums = 2169d888da85c9baf9f55fc18c738ef8
+	md5sums = c2384ade773d1534b00e935cb3d5b70c
 	md5sums = SKIP
 
 pkgname = supermodel-svn

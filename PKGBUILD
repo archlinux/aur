@@ -15,7 +15,7 @@ source=('supermodel.sh'
         "${pkgname}::svn+https://svn.code.sf.net/p/model3emu/code/trunk")
 
 md5sums=('ea8274c2a37acddd026fce9c831530cc'
-         '2169d888da85c9baf9f55fc18c738ef8'
+         'c2384ade773d1534b00e935cb3d5b70c'
          'SKIP')
 
 MAKEFLAGS="-j1"
