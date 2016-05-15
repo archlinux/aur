@@ -9,7 +9,7 @@ arch=(any)
 url="https://github.com/jasonrbriggs/stomp.py"
 license=(Apache)
 depends=(python2)
-source=(https://pypi.python.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.tar.gz)
+source=(https://files.pythonhosted.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.tar.gz)
 
 build() {
 	cd "$srcdir"/$_libname-$pkgver
