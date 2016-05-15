@@ -12,7 +12,6 @@ makedepends=('extra-cmake-modules' 'git' 'kdoctools' 'python')
 conflicts=('kdemultimedia-kmix' 'kmix')
 provides=('kmix')
 source=("git://anongit.kde.org/kmix.git")
-install=$pkgname.install
 sha256sums=('SKIP')
 
 pkgver() {
