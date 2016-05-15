@@ -9,7 +9,7 @@ url="http://asyncssh.readthedocs.org/"
 license=('EPL')
 depends=('python')
 makedepends=('python-setuptools')
-source=("http://pypi.python.org/packages/source/a/asyncssh/asyncssh-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/a/asyncssh/asyncssh-$pkgver.tar.gz")
 
 build() {
     cd "$srcdir"/asyncssh-$pkgver
