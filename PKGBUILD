@@ -2,7 +2,7 @@
 
 pkgname=alacryd
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Expedient Perl6 module installation"
 arch=('any')
 depends=('perl6')
@@ -24,7 +24,7 @@ prepare() {
 }
 
 check() {
-  cd ${pkgname%-git}
+  cd "$srcdir/$pkgname-$pkgver"
 
   msg2 'Running tests...'
   PERL6LIB=lib prove -r -e perl6
