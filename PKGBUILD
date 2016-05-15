@@ -1,7 +1,7 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
 _pkgname=pasystray
 pkgname=${_pkgname}-git
-pkgver=0.5.2.r17.gdd927f3
+pkgver=0.5.2.r46.gcd1929a
 pkgrel=1
 pkgdesc="PulseAudio system tray (a replacement for padevchooser)"
 arch=('i686' 'x86_64')
@@ -20,7 +20,6 @@ optdepends=(
 )
 provides=('pasystray')
 conflicts=('pasystray')
-install='pasystray.install'
 source=(git+https://github.com/christophgysin/pasystray.git)
 md5sums=('SKIP')
 
