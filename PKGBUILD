@@ -8,7 +8,7 @@ arch=('any')
 license=('GPL')
 depends=('grub')
 source=("https://github.com/mis2/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('73567860ca4e95ad9f3b51dad00b3735a6eb87d11f7597ca699110fe2d7fefea')
+sha1sums=('04f0662dc3a550cff61c9cfab50669b05bd2ac09')
 
 package() {
   cd $pkgname-$pkgver/theme
