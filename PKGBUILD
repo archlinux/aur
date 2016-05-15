@@ -14,8 +14,8 @@ install=steam.install
 # http://repo.steampowered.com/steam/pool/steam/s/steam/
 # files on http://repo.steampowered.com/steam/pool/steam/s/steam/ because I can't push in repo, some bug in AUR
 source=("http://repo.steampowered.com/${_realname}/pool/${_realname}/s/${_realname}/${_realname}_${pkgver}.tar.gz"
-        'http://dl.devtrue.net/archlinux/steam/alsa_sdl_audiodriver.patch'
-        'http://dl.devtrue.net/archlinux/steam/99-steam-controller-perms.rules')
+        'https://dl.devtrue.net/archlinux/steam/alsa_sdl_audiodriver.patch'
+        'https://dl.devtrue.net/archlinux/steam/99-steam-controller-perms.rules')
 md5sums=('18fe1e009d229ec2eb28e4e7fa87ebc8'
          'ac0e03d70f1101331598b2b32ed9bac3'
          'cd8475f127bd7cec8f98862cb591f095')
