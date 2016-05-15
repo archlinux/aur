@@ -5,7 +5,7 @@
 
 pkgname=lib32-libical
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source reference implementation of the icalendar data type and serialization format (32-bit)"
 arch=('x86_64')
 url='https://github.com/libical/libical'
@@ -22,10 +22,13 @@ prepare() {
 
 build() {
   cd "${pkgname#lib32-}-${pkgver}/build"
+
+  # Override the defaults with 32-bit options.
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export LDFLAGS='-m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
+
   cmake .. \
         -DCMAKE_BUILD_TYPE=Release \
         -DSHARED_ONLY=true \
