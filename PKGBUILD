@@ -9,7 +9,7 @@ url="https://launchpad.net/oursql"
 license=('BSD')
 depends=('python2' 'libmysqlclient')
 makedepends=('python2-setuptools')
-source=(http://pypi.python.org/packages/source/o/oursql/oursql-$pkgver.tar.bz2)
+source=(https://files.pythonhosted.org/packages/source/o/oursql/oursql-$pkgver.tar.bz2)
 
 build() {
 	cd "$srcdir/oursql-$pkgver"
