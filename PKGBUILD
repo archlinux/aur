@@ -37,9 +37,9 @@ build() {
 
   export CC='gcc -m32'
   export CXX='g++ -m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
-  #TODO: enable this, as soon as lib32-libmm-glib and lib32-gudev install their .pc files correctly!
-  #export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
+  # enable this and comment out the LIBDIR if you want or need the old PKG_CONFIG behavior.
+  #export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
   export LIBRARY_PATH="/usr/lib32:$LIBRARY_PATH"
 
   cd $_pkgname-$pkgver
