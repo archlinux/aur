@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=jgnash
-pkgver=2.22.0
+pkgver=2.23.0
 pkgrel=1
 pkgdesc="Cross platform personal finance application written in Java"
 arch=('any')
@@ -9,7 +9,7 @@ url="http://sourceforge.net/projects/jgnash/"
 license=('GPL3')
 depends=('java-runtime')
 source=(http://sourceforge.net/projects/$pkgname/files/Active%20Stable%202.x/$pkgname-$pkgver-bin.zip)
-sha256sums=('658dbac184af028b5579ba340d54798e0c77e828c006b1cca483d35556322528')
+sha256sums=('29dd303d2619665c0045a8b83921a4ca2dc697a1b44775e4b095f42cc1e5ff24')
 
 prepare() {
   cd "${srcdir}"/$pkgname-$pkgver
