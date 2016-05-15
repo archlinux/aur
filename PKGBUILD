@@ -10,7 +10,7 @@ url="http://github.com/j2labs/dictshield"
 license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("http://pypi.python.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.tar.gz"
         LICENSE.md)
 
 build() {
