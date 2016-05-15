@@ -4,7 +4,7 @@ pkgver=1.0.1
 pkgrel=1
 pkgdesc="Interactive command-not-found hook for bash and zsh using the power of pacman"
 arch=('any')
-url="https://github.com/agur4ik"
+url="https://github.com/agur4ik/find-the-command"
 license=('custom:WTFPL')
 depends=('pacman>=5.0')
 optdepends=('zsh: cool interactive shell with plenty of features')
