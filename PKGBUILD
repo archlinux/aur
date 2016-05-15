@@ -1,4 +1,4 @@
-# Maintainer: Michael Straube <m.s.online gmx.de>
+# Maintainer: Michael Straube <m.s.online gmx de>
 
 pkgname=actiona
 pkgver=3.9.1
@@ -13,12 +13,12 @@ source=("https://github.com/Jmgr/$pkgname/archive/v$pkgver.tar.gz")
 sha256sums=('46ddc28a6cc4bb951a1ea4bd65832e7cb2f10d4397e18475bb872c83b5c60188')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   qmake-qt5 -r PREFIX=/usr
   make && make locale_release
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd $pkgname-$pkgver
   make INSTALL_ROOT="$pkgdir" install
 }
