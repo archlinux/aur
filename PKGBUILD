@@ -9,7 +9,7 @@ url="http://cthedot.de/encutils/"
 license=(LGPL3 CCPL)
 depends=('python2')
 arch=('any')
-source=(http://pypi.python.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.zip)
+source=(https://files.pythonhosted.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.zip)
 
 build() {
 	cd "$srcdir/$_libname-$pkgver"
