@@ -3,7 +3,7 @@
 
 pkgname=guayadeque-git
 _pkgname=guayadeque
-pkgver=0.4.1.r1903.4487b9a
+pkgver=0.4.1.r1905.68a2d26
 pkgrel=1
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
@@ -15,21 +15,14 @@ optdepends=('gstreamer0.10-good-plugins: Support for additional file formats'
 			'gstreamer0.10-bad-plugins: Support for additional file formats'
 			'gstreamer0.10-ugly-plugins: Support for additional file formats'
 			'gvfs: Support for external devices')
-#install='guayadeque.install'
-source=('git+https://github.com/anonbeat/guayadeque.git'
-        '0001-add-gdk_pixbuf2-lib.patch')
-sha512sums=('SKIP'
-            '6b634fb99f733c3f35aec8d0827e09d8a51228fe988f3b00d060fc86be2c2415f5e9e34016829e53405eeb5bd42c5e2ff5fd43d77d1bd102fdc0ef5270b3f7c7')
+install='guayadeque-git.install'
+source=('git+https://github.com/anonbeat/guayadeque.git')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   local srcversion="$(grep "ID_GUAYADEQUE_VERSION" src/Version.h.in | cut -d '"' -f 2)"
   printf "%s.r%s.%s" $srcversion "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/${_pkgname}"
-  patch -Np1 -i ../../0001-add-gdk_pixbuf2-lib.patch
 }
 
 build() {
