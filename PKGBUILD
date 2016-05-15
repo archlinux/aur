@@ -9,7 +9,7 @@ url="http://pypi.python.org/pypi/morbid/"
 license=('MIT')
 depends=(python2)
 makedepends=(python2-setuptools)
-source=(http://pypi.python.org/packages/source/m/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(https://files.pythonhosted.org/packages/source/m/$pkgname/$pkgname-$pkgver.tar.gz)
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
