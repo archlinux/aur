@@ -8,7 +8,7 @@ arch=(any)
 url="http://packages.python.org/stompy/introduction.html"
 license=(BSD)
 depends=(python2)
-source=(http://pypi.python.org/packages/source/s/stompy/stompy-$pkgver.tar.gz)
+source=(https://files.pythonhosted.org/packages/source/s/stompy/stompy-$pkgver.tar.gz)
 
 build() {
      cd "$srcdir/stompy-$pkgver"
