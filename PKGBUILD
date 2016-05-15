@@ -14,7 +14,7 @@ optdepends=(
 )
 license=('BSD')
 arch=('any')
-source=(http://pypi.python.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.tar.gz LICENSE)
+source=(https://files.pythonhosted.org/packages/source/${_libname:0:1}/$_libname/$_libname-$pkgver.tar.gz LICENSE)
 
 build() {
 	cd "$srcdir/$_libname-$pkgver"
