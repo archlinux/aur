@@ -1,0 +1,21 @@
+pkgbase = splitfs-git
+	pkgdesc = FUSE filesystem that chunks files up.
+	pkgver = r4.248a79c
+	pkgrel = 1
+	url = https://github.com/EtiennePerot/splitfs
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = go
+	depends = fuse
+	options = !strip
+	options = !emptydirs
+	source = git://perot.me/splitfs#branch=master
+	source = fuse::git+https://github.com/bazil/fuse
+	source = net::git+https://github.com/golang/net
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = splitfs-git
+
