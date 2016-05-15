@@ -6,8 +6,9 @@ arch=('x86_64')
 url="https://github.com/ValveSoftware/openvr"
 license=('custom')
 depends=('libgl' 'sdl2' 'glew')
-optdepends=("oculus-udev: Udev rule to make the rift sensors usable to the user \"plugdev\""
-            "steam: For SteamVR (Duh)")
+optdepends=("oculus-udev: Udev rule to make the rift sensors usable to the \"plugdev\" group"
+            "steam: For SteamVR (Duh)"
+            "vive-udev: Udev rule to make the Vive sensors usable to the \"plugdev\" group")
 makedepends=('git' 'cmake' 'qt5-base') #qt5 for the overlayexample
 provides=("openvr")
 options=('!strip' 'staticlibs')
