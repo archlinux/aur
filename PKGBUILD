@@ -19,10 +19,16 @@ url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=('qca-qt4' 'gdal' 'qwtpolar' 'gsl' 'spatialindex' 'icu'
-         'python2-qscintilla-qt4' 'python2-sip' 'python2-psycopg2'
-         python2-{httplib2,jinja,owslib,pygments,six})
+         'python2-qscintilla-qt4' 'python2-sip' 'python2-httplib2' 'python2-six')
 makedepends=('cmake' 'txt2tags' 'perl')
 optdepends=('gpsbabel: GPS Tool plugin'
+            'python2-jinja: MetaSearch plugin'
+            'python2-owslib: MetaSearch plugin'
+            'python2-pygments: MetaSearch plugin'
+            'python2-psycopg2: DB Manager plugin'
+            'python2-pygments: DB Manager plugin'
+            'python2-pyspatialite: DB Manager plugin'
+            'python2-psycopg2: Processing plugin'
             'python2-pyspatialite: Processing plugin'
             'python2-yaml: Processing plugin')
 source=("http://qgis.org/downloads/$pkgname-$pkgver.tar.bz2")
