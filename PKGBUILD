@@ -9,7 +9,7 @@ url="https://github.com/mtorromeo/xmppcat"
 license=('BSD')
 depends=(python-sleekxmpp python-setproctitle)
 makedepends=(python-setuptools)
-source=(http://pypi.python.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz)
+source=(https://files.pythonhosted.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz)
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
