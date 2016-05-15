@@ -4,17 +4,15 @@
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 
 pkgname=vtk-qt4
-pkgver=6.3.0
-_majorver=6.3
-pkgrel=3
+pkgver=7.0.0
+_majorver=7.0
+pkgrel=1
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization. Linked against QT4'
 arch=('i686' 'x86_64')
 url='http://www.vtk.org/'
 license=('BSD')
-provides=(vtk=6.3.0)
-conflicts=(vtk)
-depends=('boost-libs' 'ffmpeg' 'qtwebkit' 'lesstif' 'jsoncpp'  'gl2ps')
-makedepends=('boost' 'cmake' 'ninja'  'java-environment' 'doxygen' 'gnuplot' 'tk' 'wget' 'python2-matplotlib' 'python2-twisted' 'python2-mpi4py' 'python2-autobahn' 'unixodbc' 'gdal' 'openmpi' 'mariadb' 'glew' )
+depends=('boost-libs' 'gcc-libs' 'gl2ps')
+makedepends=('boost' 'ffmpeg' 'qtwebkit' 'lesstif' 'jsoncpp' 'cmake' 'ninja'  'java-environment' 'doxygen' 'gnuplot' 'tk' 'wget' 'python2-matplotlib' 'python2-twisted' 'python2-mpi4py' 'python2-autobahn' 'unixodbc' 'gdal' 'openmpi' 'mariadb' 'glew' )
 optdepends=('python2: python bindings'
             'java-runtime: java bindings'
             'tk: tcl bindings'
@@ -27,33 +25,33 @@ optdepends=('python2: python bindings'
             'python2-mpi4py: OpenMPI python support'
             'unixodbc'
             'glew'
-            'gl2ps'
             'gdal'
-            'mariadb')
+            'mariadb'
+            'jsoncpp'
+            'ffmpeg'
+            'qtwebkit')
 source=("http://www.vtk.org/files/release/${_majorver}/VTK-${pkgver}.tar.gz"
         "http://www.vtk.org/files/release/${_majorver}/VTKData-${pkgver}.tar.gz"
         "http://www.vtk.org/files/release/${_majorver}/VTKLargeData-${pkgver}.tar.gz"
-        remove-vtkxdmf3.patch
-        find-libxml2.patch
         gdal2.patch
-        ffmpeg3.patch)
+        ffmpeg3.patch
+        gcc6.patch)
+
 options=(staticlibs)
-sha1sums=('452efab1eedf6202f2d9a3362b5f69adfc44edda'
-          '424b138c079a688cd8c52c43d12b54e2f2b06acf'
-          '622a2bd314262961c6d96f2686f96224e8e31de3'
-          'f8c9270941707a296ff5e0ea3c73a1f0407c6f9b'
-          'baa807e4495219b3104b6245ca79b8f33ff299db'
+sha1sums=('7719fac36b36965eaf5076542166ba49bbe7afbb'
+          '1bbaa642a3e3676a58a08c956df73645326c2859'
+          '8d16a1fba15e4eb95c03fe97937488ddcdd7fbd0'
           'c60610e7c8cf0ad93d7c02cbf8a20fc415f59b3e'
-          'a78177f8dd6dedd9ad189fa12730ec53c7d02508')
+          '3ffab6d117dee93bfa1d84305aa8bb8781c2284d'
+          '0c6684c51240c9c52b809694ce41c1308e947bae')
 
 prepare() {
   cd "${srcdir}"/VTK-$pkgver
 
   # fix compilation errors:
-  patch -Np1 -i "${srcdir}"/remove-vtkxdmf3.patch
-  patch -Np1 -i "${srcdir}"/find-libxml2.patch
   patch -Np1 -i "${srcdir}"/gdal2.patch
   patch -Np1 -i "${srcdir}"/ffmpeg3.patch
+  patch -Np1 -i "${srcdir}"/gcc6.patch
 
   sed -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
       -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
@@ -72,9 +70,9 @@ build() {
 
   # flags to enable using system libs
   local cmake_system_flags=""
-  # TODO: try to use system provided XDMF2, XDMF3, LIBPROJ4 NETCDF
+  # TODO: try to use system provided XDMF2, XDMF3, LIBPROJ4 NETCDF and HDF5
   # VTK fails to compile with recent netcdf-cxx package, VTK should be ported to the latest API
-  for lib in HDF5 EXPAT FREETYPE JPEG PNG TIFF ZLIB LIBXML2 OGGTHEORA TWISTED ZOPE SIX AUTOBAHN MPI4PY JSONCPP GLEW GL2PS; do
+  for lib in EXPAT FREETYPE JPEG PNG TIFF ZLIB LIBXML2 OGGTHEORA TWISTED ZOPE SIX AUTOBAHN MPI4PY JSONCPP GLEW GL2PS; do
     cmake_system_flags+="-DVTK_USE_SYSTEM_${lib}:BOOL=ON "
   done
 
@@ -85,24 +83,26 @@ build() {
     -Wno-dev \
     -DCMAKE_SKIP_RPATH=ON \
     -DBUILD_SHARED_LIBS:BOOL=ON \
-    -DCMAKE_INSTALL_PREFIX:FILEPATH=/usr \
+    -DCMAKE_INSTALL_PREFIX:FILEPATH=/opt/${pkgname} \
     -DBUILD_DOCUMENTATION:BOOL=ON \
     -DDOCUMENTATION_HTML_HELP:BOOL=ON \
     -DDOCUMENTATION_HTML_TARZ:BOOL=ON \
-    -DBUILD_EXAMPLES:BOOL=ON \
+    -DBUILD_EXAMPLES:BOOL=OFF \
     -DVTK_USE_FFMPEG_ENCODER:BOOL=ON \
     -DVTK_BUILD_ALL_MODULES:BOOL=ON \
     -DVTK_USE_LARGE_DATA:BOOL=ON \
+    -DVTK_USE_SYSTEM_HDF5:BOOL=OFF \
     -DVTK_QT_VERSION:STRING="4" \
     -DVTK_WRAP_JAVA:BOOL=ON \
     -DVTK_WRAP_PYTHON:BOOL=ON \
     -DVTK_WRAP_TCL:BOOL=ON \
     -DCMAKE_CXX_FLAGS="-D__STDC_CONSTANT_MACROS" \
     -DVTK_CUSTOM_LIBRARY_SUFFIX="" \
-    -DVTK_INSTALL_INCLUDE_DIR:PATH=include/vtk \
+    -DVTK_INSTALL_INCLUDE_DIR:PATH=include \
     ${cmake_system_flags} \
     ${cmake_system_python_flags} \
     -DCMAKE_BUILD_TYPE=Release \
+    "${srcdir}/VTK-$pkgver" \
     "${srcdir}/VTK-$pkgver" \
     -GNinja
 
@@ -114,20 +114,20 @@ package() {
 
   DESTDIR="${pkgdir}" ninja install
   
-  #mkdir -p "$pkgdir/etc/ld.so.conf.d/"
-  #printf "%s\n" "/opt/vtk6/lib" > "$pkgdir/etc/ld.so.conf.d/$pkgname.conf"
+  mkdir -p "$pkgdir/etc/ld.so.conf.d/"
+  printf "%s\n" "/opt/${pkgname}/lib" > "$pkgdir/etc/ld.so.conf.d/$pkgname.conf"
 
   # Move the vtk.jar to the arch-specific location
-  install -dv "${pkgdir}/usr/share/java/vtk"
-  mv -v "${pkgdir}/usr/lib/vtk.jar" "${pkgdir}/usr/share/java/vtk"
-  rm -rf "${pkgdir}/usr/lib/vtk-${_majorver}/java"
-
+  install -dv "${pkgdir}/opt/${pkgname}/share/java/vtk"
+  mv -v "${pkgdir}/opt/${pkgname}/lib/vtk.jar" "${pkgdir}/opt/${pkgname}/share/java/vtk"
+  rm -rf "${pkgdir}/opt/${pkgname}/lib/vtk-${_majorver}/java"
+  
   # Install license
   install -dv "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 "${srcdir}/VTK-$pkgver/Copyright.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
-
+  install -m644 "${srcdir}/VTK-${pkgver}/Copyright.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
+  
   # Fix path of QtDesigner plugin
-  install -dv "${pkgdir}/usr/lib/qt4"
-  mv "$pkgdir"/usr/plugins "$pkgdir"/usr/lib/qt4/plugins
+  install -dv "${pkgdir}/opt/${pkgname}/lib/qt4"
+  mv "${pkgdir}"/opt/${pkgname}/plugins "${pkgdir}"/opt/${pkgname}/lib/qt4/plugins
 }
 
