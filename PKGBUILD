@@ -1,17 +1,16 @@
 # Maintainer: dustball <sebastiansonne at hush dot com>
 
 pkgname=pypy3-pip
-pkgver=8.1.1
+pkgver=8.1.2
 pkgrel=1
 pkgdesc="An easy_install replacement for installing pypi python packages"
 url="http://www.pip-installer.org/"
 arch=('any')
 license=('MIT')
-makedepends=('pypy3' 'pypy3-setuptools')
-source=(http://pypi.python.org/packages/source/p/pip/pip-${pkgver}.tar.gz)
+depends=('pypy3' 'pypy3-setuptools')
+source=(https://pypi.python.org/packages/e7/a8/7556133689add8d1a54c0b14aeff0acb03c64707ce100ecd53934da1aa13/pip-8.1.2.tar.gz#md5=87083c0b9867963b29f7aba3613e8f4a)
 
 package_pypy3-pip() {
-  depends=('pypy3')
 
   cd "$srcdir/pip-$pkgver"
   pypy3 setup.py build
@@ -26,5 +25,5 @@ package_pypy3-pip() {
 	  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-md5sums=('6b86f11841e89c8241d689956ba99ed7')
-sha256sums=('3e78d3066aaeb633d185a57afdccf700aa2e660436b4af618bcb6ff0fa511798')
+md5sums=('87083c0b9867963b29f7aba3613e8f4a')
+sha256sums=('4d24b03ffa67638a3fa931c09fd9e0273ffa904e95ebebe7d4b1a54c93d7b732')
