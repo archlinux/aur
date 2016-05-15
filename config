@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 4.5.1 Kernel Configuration
+# Linux/x86 4.5.3 Kernel Configuration
 #
 # CONFIG_64BIT is not set
 CONFIG_X86_32=y
@@ -1891,7 +1891,7 @@ CONFIG_HMC6352=m
 CONFIG_DS1682=m
 # CONFIG_TI_DAC7512 is not set
 CONFIG_VMWARE_BALLOON=m
-CONFIG_BMP085=y
+CONFIG_BMP085=m
 CONFIG_BMP085_I2C=m
 # CONFIG_BMP085_SPI is not set
 # CONFIG_PCH_PHUB is not set
@@ -7607,3 +7607,4 @@ CONFIG_FONT_AUTOSELECT=y
 # CONFIG_SG_SPLIT is not set
 CONFIG_ARCH_HAS_SG_CHAIN=y
 CONFIG_ARCH_HAS_MMIO_FLUSH=y
+CONFIG_WBT=y
