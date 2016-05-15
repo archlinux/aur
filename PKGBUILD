@@ -16,7 +16,7 @@ depends=(
     'python-docopt'
 )
 makedepends=("python-distribute")
-source=(http://pypi.python.org/packages/source/s/sandman/sandman-$pkgver.tar.gz)
+source=(https://files.pythonhosted.org/packages/source/s/sandman/sandman-$pkgver.tar.gz)
 sha256sums=('83507666077c0ba784b6e388d4eea3d565a6b684300322780c8cf90328026d57')
 
 build() {
