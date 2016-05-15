@@ -9,13 +9,12 @@ arch=('any')
 url='http://www.sagemath.org'
 license=('GPL3')
 depends=('sagemath-git' 'python2-twisted' 'python2-flask-oldsessions' 'python2-flask-openid' 'python2-flask-autoindex' 
-'python2-flask-babel' 'python2-flask-silk' 'python2-webassets')
+'python2-flask-babel' 'python2-flask-silk')
 optdepends=('python2-pyopenssl: to use the notebook in secure mode')
 makedepends=('gendesk')
 conflicts=('sage-notebook')
 provides=('sage-notebook')
 source=("git://github.com/sagemath/sagenb" 'sage.service' 'jmol.patch')
-install=$pkgname.install
 md5sums=('SKIP'
          '61620179a7ecd85401d8e5a6ece3ea41'
          'b29760c97a5328faa179a46008391bf0')
