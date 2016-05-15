@@ -1,7 +1,8 @@
 *.swp
 *~
 
-guayadeque*xz
+guayadeque*.xz
+guayadeque*.tar.gz
 guayadeque/
 pkg/
 src/
