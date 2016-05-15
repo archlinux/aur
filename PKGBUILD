@@ -4,7 +4,7 @@
 
 pkgname=telegram-desktop-bin-dev
 pkgver=0.9.48
-pkgrel=1
+pkgrel=2
 _dev=0 # If it is a dev-only version, set this to 1
 pkgdesc="Official desktop version of Telegram messaging app - Static binaries, developement version"
 arch=('i686' 'x86_64')
@@ -38,7 +38,7 @@ fi
 source_i686=('https://updates.tdesktop.com/tlinux32/tsetup32.'${pkgver}${_devsuffix}'.tar.xz')
 source_x86_64=('https://updates.tdesktop.com/tlinux/tsetup.'${pkgver}${_devsuffix}'.tar.xz')
 # Checksums
-sha256sums=('e3e10fe8620bd4ed8fda41743ad844739757286eeecea5249cf1fcf21a8431bd'
+sha256sums=('32d1597d67a7ef519367e499fcc978da4cce104e370b3787853446d93b1533d6'
             '4226167b476a75e844ddf0d429068e7e901bbde516810a7d4ca90f8405c01eef')
 sha256sums_i686=('368f743d40db44882eaec7b51ad0e910fb07a09e25eb67d61663f5e74b6afd00')
 sha256sums_x86_64=('dbb94716a8bda1da45b1f6cada1e8c380f7c96cd512274dac5fd767275236356')
