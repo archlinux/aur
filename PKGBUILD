@@ -43,6 +43,6 @@ build() {
 }
 
 package() {
-  cd guayadeque-${pkgver}/
-#  make DESTDIR="${pkgdir}" install
+  cd "${srcdir}/${_pkgname}"
+  make DESTDIR="${pkgdir}" install
 }
