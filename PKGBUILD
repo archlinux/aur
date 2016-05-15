@@ -1,13 +1,13 @@
 # Maintainer: marazmista <marazmista@gmail.com>
 
 pkgname=radeon-profile-git
-pkgver=20160124
-pkgrel=2
+pkgver=20160515
+pkgrel=1
 pkgdesc="App for display info about radeon card"
 url="http://github.com/marazmista/radeon-profile"
 arch=('i686' 'x86_64')
 license=('GPL2')
-depends=('qt5-base' 'libxkbcommon-x11')
+depends=('qt5-base' 'libxkbcommon-x11' 'libxrandr')
 optdepends=('radeon-profile-daemon: system daemon for reading card info'
 	'lm_sensors: to show gpu temperature' 
 	'sudo: start with root privilages without password' 
@@ -23,6 +23,10 @@ sha256sums=('SKIP')
 build() {
 mkdir -p build
 cd build
+
+lrelease ../radeon-profile/radeon-profile/radeon-profile.pro
+cp ../radeon-profile/radeon-profile/*.qm .
+
 qmake-qt5 "../radeon-profile/radeon-profile/"
 make
 }
@@ -36,4 +40,9 @@ chmod +x "$pkgdir/usr/bin/radeon-profile"
 
 install -Dm644 "$srcdir/radeon-profile/radeon-profile/extra/radeon-profile.png" "$pkgdir/usr/share/pixmaps/radeon-profile.png"
 install -Dm644 "$srcdir/radeon-profile/radeon-profile/extra/radeon-profile.desktop" "$pkgdir/usr/share/applications/radeon-profile.desktop"
+
+for translation in *.qm
+do
+install -Dm644 "$translation" "$pkgdir/usr/share/radeon-profile/$translation"
+done 
 }
