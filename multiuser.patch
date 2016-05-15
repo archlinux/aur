@@ -1,0 +1,75 @@
+--- a/Src/OSD/SDL/Main.cpp	2016-05-15 18:16:43.001377932 +0200
++++ b/Src/OSD/SDL/Main.cpp	2016-05-15 18:21:03.166635163 +0200
+@@ -512,8 +512,6 @@
+  Configuration file management and input settings.
+ ******************************************************************************/
+ 
+-static const char s_configFilePath[] = { "Config/Supermodel.ini" };
+-
+ // Create and configure inputs
+ static bool ConfigureInputs(CInputs *Inputs, bool configure)
+ {
+@@ -523,6 +521,9 @@
+     ";\n"
+   };
+   
++  char s_configFilePath[512];
++  sprintf(s_configFilePath, "%s/.supermodel/supermodel.ini", getenv("HOME"));
++  
+   // Open and parse configuration file
+   CINIFile INI;
+   INI.Open(s_configFilePath); // doesn't matter if it exists or not, will get overwritten
+@@ -624,6 +625,9 @@
+ // Read settings (from a specific section) from the config file
+ static void ReadConfigFile(const char *section)
+ {
++  char s_configFilePath[512];
++  sprintf(s_configFilePath, "%s/.supermodel/supermodel.ini", getenv("HOME"));
++  
+   CINIFile  INI;  
+   
+   INI.Open(s_configFilePath);
+@@ -719,8 +723,8 @@
+ {
+   CBlockFile  SaveState;
+   
+-  char filePath[24];
+-  sprintf(filePath, "Saves/%s.st%d", Model3->GetGameInfo()->id, s_saveSlot);
++  char filePath[512];
++  sprintf(filePath, "%s/.supermodel/saves/%s.st%d", getenv("HOME"), Model3->GetGameInfo()->id, s_saveSlot);
+   if (OKAY != SaveState.Create(filePath, "Supermodel Save State", "Supermodel Version " SUPERMODEL_VERSION))
+   {
+     ErrorLog("Unable to save state to '%s'.", filePath);
+@@ -744,8 +748,8 @@
+   CBlockFile  SaveState;
+   
+   // Generate file path
+-  char filePath[24];
+-  sprintf(filePath, "Saves/%s.st%d", Model3->GetGameInfo()->id, s_saveSlot);
++  char filePath[512];
++  sprintf(filePath, "%s/.supermodel/saves/%s.st%d", getenv("HOME"), Model3->GetGameInfo()->id, s_saveSlot);
+   
+   // Open and check to make sure format is correct
+   if (OKAY != SaveState.Load(filePath))
+@@ -779,8 +783,8 @@
+ {
+   CBlockFile  NVRAM;
+   
+-  char filePath[24];
+-  sprintf(filePath, "NVRAM/%s.nv", Model3->GetGameInfo()->id);
++  char filePath[512];
++  sprintf(filePath, "%s/.supermodel/NVRAM/%s.nv", getenv("HOME"), Model3->GetGameInfo()->id);
+   if (OKAY != NVRAM.Create(filePath, "Supermodel NVRAM State", "Supermodel Version " SUPERMODEL_VERSION))
+   {
+     ErrorLog("Unable to save NVRAM to '%s'. Make sure directory exists!", filePath);
+@@ -803,8 +807,8 @@
+   CBlockFile  NVRAM;
+   
+   // Generate file path
+-  char filePath[24];
+-  sprintf(filePath, "NVRAM/%s.nv", Model3->GetGameInfo()->id);
++  char filePath[512];
++  sprintf(filePath, "%s/.supermodel/NVRAM/%s.nv", getenv("HOME"), Model3->GetGameInfo()->id);
+   
+   // Open and check to make sure format is correct
+   if (OKAY != NVRAM.Load(filePath))

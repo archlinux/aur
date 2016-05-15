@@ -2,7 +2,7 @@
 # Contributor: Anton Shestakov <engored@ya.ru>
 
 pkgname=supermodel-svn
-pkgver=0.3a
+pkgver=20160515.411
 pkgrel=1
 pkgdesc='A Sega Model 3 Arcade Emulator'
 arch=('i686' 'x86_64')
@@ -11,17 +11,24 @@ license=('GPL3')
 depends=('mesa' 'sdl' 'zlib')
 install=supermodel.install
 source=('supermodel.sh'
+        'multiuser.patch'
         "${pkgname}::svn+https://svn.code.sf.net/p/model3emu/code/trunk")
 
 md5sums=('ea8274c2a37acddd026fce9c831530cc'
+         '2169d888da85c9baf9f55fc18c738ef8'
          'SKIP')
 
 MAKEFLAGS="-j1"
 
+pkgver() {
+	cd "${srcdir}/${pkgname}"
+	svn info | awk '/Revision/{r=$2}/Date/{gsub(/-/,"");d=$4}END{print d"."r}'
+}
+
 build() {
   cd "${srcdir}/supermodel-svn/"
   sed -e "s/-Wall -O3/$CFLAGS/" -i 'Makefiles/Makefile.SDL.UNIX.GCC'
-  # patch -p1 < ../multiuser.patch
+  patch -p1 < ../multiuser.patch
   make -f 'Makefiles/Makefile.SDL.UNIX.GCC'
 }
 
