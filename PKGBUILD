@@ -3,7 +3,7 @@
 pkgname=vive-udev
 pkgver=1
 pkgrel=1
-pkgdesc="Udev rule for the Vive"
+pkgdesc="Udev rule for the Vive for the group \"plugdev\""
 arch=('any')
 url="https://github.com/OpenHMD/OpenHMD/commit/c29c99712d6f67a3921cb531a0c74f5f5109cb0f"
 license=('custom')
