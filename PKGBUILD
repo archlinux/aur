@@ -13,7 +13,6 @@ optdepends=('ebook-tools: mobi and epub support' 'qca-qt5: support for encrypted
 conflicts=(kdegraphics-okular okular)
 provides=(okular)
 source=("git://anongit.kde.org/okular.git#branch=frameworks")
-install=$pkgname.install
 sha256sums=('SKIP')
 
 pkgver() {
