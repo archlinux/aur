@@ -9,7 +9,7 @@ url="http://pyinvoke.org"
 license=('BSD')
 arch=('any')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("http://pypi.python.org/packages/source/i/invoke/invoke-$pkgver.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/i/invoke/invoke-$pkgver.tar.gz"
         "invoke.bash::https://raw.githubusercontent.com/pyinvoke/invoke/$pkgver/completion/bash"
         "invoke.fish::https://raw.githubusercontent.com/pyinvoke/invoke/$pkgver/completion/fish"
         "invoke.zsh::https://raw.githubusercontent.com/pyinvoke/invoke/$pkgver/completion/zsh")
