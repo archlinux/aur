@@ -1,0 +1,7 @@
+*.swp
+*~
+
+guayadeque*xz
+guayadeque/
+pkg/
+src/
