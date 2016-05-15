@@ -1,4 +1,4 @@
-# Maintainer: Antonio Rojas <nqn1976@gmail.com>
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Eric Belanger <belanger@astro.umontreal.ca>
 # Contributor: Martin Lefebvre <dadexter@gmail.com>
 # Contributor: Lee Jackson <tomoe AT lbjackson DOTCOM>
@@ -14,7 +14,6 @@ depends=('kdebase-runtime' 'mplayer')
 makedepends=('cmake' 'automoc4')
 source=("http://download.kde.org/stable/$pkgname/$pkgver/src/$pkgname-$pkgver.tar.xz")
 md5sums=('c1e22416f09a4f723dd976c68e76fe9d')
-install=$pkgname.install
 
 build() {
   cd $srcdir/$pkgname-$pkgver
