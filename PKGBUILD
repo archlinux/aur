@@ -9,7 +9,7 @@ url='http://pypi.python.org/pypi/mailer'
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=("http://pypi.python.org/packages/source/m/mailer/mailer-$pkgver.zip")
+source=("https://files.pythonhosted.org/packages/source/m/mailer/mailer-$pkgver.zip")
 options=(!emptydirs)
 
 package() {
