@@ -29,7 +29,7 @@ prepare() {
 build() {
   cd "${pkgname#lib32-}-${pkgver}"
   export LDFLAGS='-m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
   ./configure --prefix=/usr --libdir=/usr/lib32 --libexecdir=/usr/lib32/fltk --enable-threads --enable-xft --enable-shared CC='gcc -m32' CXX='g++ -m32'
   make
 }
