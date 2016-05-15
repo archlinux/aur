@@ -1,0 +1,17 @@
+pkgbase = find-the-command
+	pkgdesc = Interactive command-not-found hook for bash and zsh using the power of pacman
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/agur4ik
+	install = find-the-command.install
+	arch = any
+	license = custom:WTFPL
+	depends = pacman>=5.0
+	optdepends = zsh: cool interactive shell with plenty of features
+	backup = usr/lib/systemd/system/pacman-files.service
+	backup = usr/lib/systemd/system/pacman-files.timer
+	source = https://github.com/agur4ik/find-the-command/archive/1.0.1.tar.gz
+	md5sums = c4cf0595b020dd7fa9da52944bd49a70
+
+pkgname = find-the-command
+

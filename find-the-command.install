@@ -1,0 +1,34 @@
+post_install() {
+	cat <<EOF
+	>> To enable command-not-found hook for your shell 
+	>> add any of the following to your .bashrc or .zshrc file
+	>> depending on shell you use:
+	>> for bash (interactive):
+	source /usr/share/doc/find-the-command/ftc-interactive.bash
+	>> for non-interactive use:
+	source /usr/share/doc/find-the-command/ftc.bash
+	>> for zsh (interactive):
+	source /usr/share/doc/find-the-command/ftc-interactive.zsh
+	>> non-interactive:
+	source /usr/share/doc/find-the-command/ftc.zsh
+
+	>> It is necessary to create pacman files database, run
+	sudo pacman -Fy
+	>> You may also want to enable timer for regular
+	>> pacman files database update:
+	sudo systemctl enable pacman-files.timer
+EOF
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+	printf "\t>> Disabling pacman files systemd timer\n"
+	sytemctl disable pacman-files.timer
+}
+
+post_remove() {
+	printf "\t>> Don't for get to remove hook from your shell rc-file\n"
+}
