@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-scruffington
-pkgver=0.3.3
+pkgver=0.3.4
 pkgrel=1
 pkgdesc="Handles the loading and management of configuration files, plugins, and other filesystem resources such as temporary files and directories, log files, etc"
 arch=('any')
@@ -13,11 +13,9 @@ makedepends=('python-setuptools')
 url="https://github.com/snare/scruffy"
 license=('Beerware')
 options=('!emptydirs')
-source=(https://pypi.python.org/packages/source/s/${pkgname#python-}/${pkgname#python-}-$pkgver.tar.gz)
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/snare/scruffy/tar.gz/v$pkgver)
-md5sums=('f361647ab3a9a86c1b7246f599525b42')
-sha256sums=('c90a06af72cfac394e1bd2e778b37dd4086696935c31661f716e27697cd35609')
-replaces=('python-scruffy')
+md5sums=('8653d36e23043e7bea425ad2f50e245c')
+sha256sums=('e1999ba3924657f9611f94c6f858c7eac92d754837c19eb73ac611f5ae94972b')
 
 build() {
   cd "$srcdir/scruffy-$pkgver"
