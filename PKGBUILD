@@ -1,4 +1,4 @@
-# Maintainer: Antonio Rojas 
+# Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=kget-frameworks-git
 pkgver=r2719.845570a
@@ -11,7 +11,6 @@ depends=(kdelibs4support kcmutils knotifyconfig qca-qt5 gpgmepp)
 makedepends=(extra-cmake-modules git kdoctools python boost)
 conflicts=(kdenetwork-kget kget)
 provides=(kget)
-install=$pkgname.install
 source=("git://anongit.kde.org/kget.git#branch=kf5_port")
 sha256sums=('SKIP')
 
