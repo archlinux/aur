@@ -1,4 +1,4 @@
-pkgbase = guayadeque
+pkgbase = guayadeque-git
 	pkgdesc = Lightweight music player
 	pkgver = 0.4.1
 	pkgrel = 1
@@ -22,5 +22,5 @@ pkgbase = guayadeque
 	sha512sums = SKIP
 	sha512sums = 6b634fb99f733c3f35aec8d0827e09d8a51228fe988f3b00d060fc86be2c2415f5e9e34016829e53405eeb5bd42c5e2ff5fd43d77d1bd102fdc0ef5270b3f7c7
 
-pkgname = guayadeque
+pkgname = guayadeque-git
 
