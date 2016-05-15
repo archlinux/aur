@@ -16,10 +16,13 @@ sha512sums=('4e0fe2abe85d1c95b41cb3abe1f6333dc3a9eb69dba106a674a78d74a4d5b9c5a19
 
 build() {
   cd "${srcdir}/${pkgname#lib32-}-${pkgver}"
+
+  # Override the defaults with 32-bit options.
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export LDFLAGS='-m32'
-  export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
+
   ./configure --prefix=/usr --libdir=/usr/lib32
   make
 }
