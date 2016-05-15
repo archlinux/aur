@@ -1,13 +1,13 @@
 # Maintainer: Jose Riha
-# $Id: PKGBUILD 265148 2016-04-19 06:55:26Z tpowa $
+# $Id: PKGBUILD 267890 2016-05-12 16:05:36Z tpowa $
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-pae
 #pkgbase=linux-pae
 _srcname=linux-4.5
-pkgver=4.5.1
-pkgrel=2
+pkgver=4.5.4
+pkgrel=1
 arch=(i686)
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -25,9 +25,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
             'SKIP'
-            '060ad091ebfa2b63d62e86beaf68c3a5d4638c506c3ac941c1825ba756e830b1'
+            '6a9cfe691ac77346c48b7f83375a1880ebb379594de1000acad45da45d711e42'
             'SKIP'
-            '6c9f10c6c62854d5a8170381336d4e7fbbad83366dca956435d52fab404fc4ce'
+            '23e5e760498f71276bd97261d041fa9aeb6cc8224caa41f7828850fea51523fc'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
 validpgpkeys=(
