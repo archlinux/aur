@@ -17,7 +17,7 @@ sha512sums=('47772dedfa5d5efdd7ddc2970e64903090b32ac1579d63951e30edde5d886807952
 build() {
   cd "${srcdir}/${pkgname#lib32-}-${pkgver}"
   export LDFLAGS='-m32'
-  export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
+  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
   make CC="gcc -m32" OPT="${CFLAGS} -fPIC -DPIC" ZLIB=no SHARED=no PREFIX=/usr SBINDIR=/usr/bin SHAREDIR=/usr/share/hwdata MANDIR=/usr/share/man LIBDIR=/usr/lib32 lib/libpci.a
   cp lib/libpci.a "${srcdir}/"
   make clean
