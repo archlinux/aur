@@ -11,7 +11,7 @@ provides=('cerbero-profiler')
 
 # release tarball and external dependencies...
 source=("https://store.cerbero.io/static/downloads/profiler/profiler_${pkgver}.tar.gz" 'http://mirrors.kernel.org/ubuntu/pool/main/p/python3.4/libpython3.4_3.4.3-1ubuntu1~14.04.3_amd64.deb' 'http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.50-1ubuntu2.14.04.2_amd64.deb')
-noextract=('libpython3.4_3.4.0-2ubuntu1.1_amd64.deb' 'libpng12-0_1.2.50-1ubuntu2.14.04.2_amd64.deb')
+noextract=('libpython3.4_3.4.3-1ubuntu1~14.04.3_amd64.deb' 'libpng12-0_1.2.50-1ubuntu2.14.04.2_amd64.deb')
 
 #
 # this is where the sha1 hashes were obtained:
@@ -27,8 +27,8 @@ prepare() {
 	# we have to manually extract our two external dependencies since
 	# they both contain files with the same names
 
-	echo "Extracting: libpython3.4_3.4.0-2ubuntu1.1_amd64.deb"
-	ar vx libpython3.4_3.4.0-2ubuntu1.1_amd64.deb >> /dev/null 2>&1
+	echo "Extracting: libpython3.4_3.4.3-1ubuntu1~14.04.3_amd64.deb"
+	ar vx libpython3.4_3.4.3-1ubuntu1~14.04.3_amd64.deb >> /dev/null 2>&1
 	tar xf data.tar.xz >> /dev/null 2>&1
 
 	echo "Extracting: libpng12-0_1.2.50-1ubuntu2.14.04.2_amd64.deb"
