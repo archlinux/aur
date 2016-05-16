@@ -11,9 +11,9 @@ pkgdesc='Canonical JSON'
 license=('Apache')
 arch=('i686' 'x86_64')
 url='https://pypi.python.org/pypi/canonicaljson/'
-#makedepends=('python-setuptools' 'python-simplejson' 'python-frozendict'
-#             'python2-setuptools' 'python2-simplejson' 'python2-frozendict')
-makedepends=('python2-setuptools' 'python2-simplejson' 'python2-frozendict')
+#makedepends=('python-setuptools'
+#             'python2-setuptools')
+makedepends=('python2-setuptools')
 source=("${pkgbase}-${pkgver}.tar.gz::https://github.com/matrix-org/python-canonicaljson/archive/v${pkgver}.tar.gz")
 md5sums=('9bfe11414b3818908bc0be7dbf3cf76c')
 
