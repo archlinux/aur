@@ -1,7 +1,7 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=datovka-git
-pkgver=4.3.1
+pkgver=4.6.0
 pkgrel=1
 pkgdesc="GUI application allowing access to a 'Databox' - an electronic communication interface endorsed by the Czech government"
 arch=('i686' 'x86_64')
@@ -11,7 +11,6 @@ depends=('qt5-base' 'libisds' 'openssl' 'hicolor-icon-theme')
 makedepends=('qt5-tools' 'git')
 conflicts=('datovka')
 provides=('datovka')
-install=$pkgname.install
 source=(git+https://gitlab.labs.nic.cz/labs/qdatovka.git)
 md5sums=('SKIP')
 
