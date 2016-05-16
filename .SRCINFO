@@ -1,0 +1,21 @@
+pkgbase = xfce4-netload-plugin-git
+	pkgdesc = Netload
+	pkgver = 1.1.2.r66.gf0d2499
+	pkgrel = 1
+	url = http://goodies.xfce.org/projects/panel-plugins/xfce4-netload-plugin
+	arch = i686
+	arch = x86_64
+	groups = xfce4-goodies
+	license = GPL
+	makedepends = xfce4-dev-tools
+	makedepends = intltool
+	makedepends = git
+	depends = xfce4-panel
+	provides = xfce4-netload-plugin
+	conflicts = xfce4-netload-plugin
+	options = !libtool
+	source = git://git.xfce.org/panel-plugins/xfce4-netload-plugin
+	sha256sums = SKIP
+
+pkgname = xfce4-netload-plugin-git
+
