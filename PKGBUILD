@@ -3,7 +3,7 @@
 
 pkgname='dbninja'
 pkgver=3.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced web-based application for MySQL database administration and development"
 arch=("any")
 url="http://www.dbninja.com/"
@@ -12,7 +12,7 @@ depends=("php")
 source=('http://www.dbninja.com/download/dbninja.tar.gz'
 		"service")
 md5sums=("81df97958467776051507f82a680efde"
-		"b2d701072978a6c09293b6d78d0ccf1a")
+         "aff1d2120e5e753b160ae8deeb333978")
 
 install="install"
 

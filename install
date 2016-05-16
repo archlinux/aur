@@ -7,7 +7,7 @@ For localhost use please start service:
 	systemctl daemon-reload
 	systemctl start dbninja-localhost.service
 
-Open DbNinja in browser http://127.0.30.36:8080
+Open DbNinja in browser http://localhost:8036
 
 After accepting the license agreement, find the code file:
 	ls /var/lib/dbninja/_users
@@ -20,3 +20,8 @@ EOF
 	
 }
 
+post_upgrade() {
+ cat <<EOF
+	New url for local DbNinja http://localhost:8036
+EOF
+}
