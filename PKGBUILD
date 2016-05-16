@@ -1,18 +1,35 @@
 # Maintainer: Alexander F Rødseth <rodseth@gmail.com>
 
-pkgname=python-clint
+pkgbase=python-clint
+pkgname=(python-clint python2-clint)
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Module for developing commandline applications'
 arch=('any')
 url='http://pypi.python.org/pypi/clint/'
 license=('custom:ISC')
-depends=('python')
+makedepends=('python' 'python2')
 source=("http://pypi.python.org/packages/source/c/clint/clint-$pkgver.tar.gz")
 sha256sums=('05224c32b1075563d0b16d0015faaf9da43aa214e4a2140e51f08789e7a4c5aa')
 
-package() {
+prepare() {
+  cp -a clint-$pkgver{,-py2}
+}
+
+package_python-clint() {
+  depends=('python')
+
   cd "clint-$pkgver"
+
+  python setup.py install \
+    --install-data="/usr/share/doc/$pkgname" --root="$pkgdir"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_python2-clint() {
+  depends=('python2')
+
+  cd "clint-$pkgver-py2"
 
   python setup.py install \
     --install-data="/usr/share/doc/$pkgname" --root="$pkgdir"
