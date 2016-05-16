@@ -8,7 +8,7 @@ pkgdesc='An adaptive Gtk+ theme based on Material Design Guidelines'
 arch=('any')
 url='https://github.com/tista500/Adapta'
 license=('GPL2')
-depends=('gtk2' 'gtk3')
+depends=('gtk-engine-murrine' 'gtk3')
 makedepends=('git')
 optdepends=('gnome-shell: The GNOME Shell'
             'gnome-flashback: The GNOME flashback shell'
