@@ -14,7 +14,7 @@ _pgo=true
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=46.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -49,11 +49,15 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
 	unity-menubar.patch
 	add_missing_pgo_rule.patch
         pgo_fix_missing_kdejs.patch
+        rb39193.patch
+        fix_mozalloc.patch
 )
 
 if [ $_gtk3 ] ; then
     source+=($_patchurl/mozilla-gtk3_20.patch)
 fi
+
+
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
 # get your own set of keys. Feel free to contact foutrelis@archlinux.org for
@@ -86,7 +90,10 @@ prepare() {
   echo -n "$_mozilla_api_key" >mozilla-api-key
   echo "ac_add_options --with-mozilla-api-keyfile=\"$PWD/mozilla-api-key\"" >>.mozconfig
   
-  
+  # Fix mozalloc.h see mozilla Bug #1245076 
+  patch -Np1 -i "$srcdir/fix_mozalloc.patch"
+  patch -Np1 -i "$srcdir/rb39193.patch"
+
   msg "Patching for KDE"
   patch -Np1 -i "$srcdir/mozilla-nongnome-proxies.patch"
   patch -Np1 -i "$srcdir/mozilla-kde.patch"
@@ -113,7 +120,7 @@ prepare() {
   fi
   # configure script misdetects the preprocessor without an optimization level
   # https://bugs.archlinux.org/task/34644
-  sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' configure
+  # sed -i '/ac_cpp=/s/$CPPFLAGS/& -O2/' configure
 
   # WebRTC build tries to execute "python" and expects Python 2
   mkdir -p "$srcdir/path"
@@ -134,8 +141,9 @@ build() {
   export PATH="$srcdir/path:$PATH"
   export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/lib/firefox"
   export PYTHON="/usr/bin/python2"
-  export CPPFLAGS="$CPPFLAGS -mno-avx"
-
+  export CPPFLAGS="$CPPFLAGS -mno-avx -fno-lifetime-dse -fno-delete-null-pointer-checks -Wnull-dereference -O3"
+  export CFLAGS="$CFLAGS -mno-avx -fno-lifetime-dse -fno-delete-null-pointer-checks -Wnull-dereference -O3"
+  
   if [[ -n $_lowmem || $CARCH == i686 ]]; then
     LDFLAGS+=" -Wl,--no-keep-memory"
   fi
@@ -198,7 +206,9 @@ md5sums=('3e3b90268b8a634f7c60a25eb3a04c8c'
          'c6051dc51edf9e6af0270bc333d8a1c2'
          '903307f923a459189a5a6062ff9df38c'
          '0c684360f1df4536512d51873c1d243d'
+         '0c1ed789c06297659137a2ed2ef769f7'
          '06192dd34d7f6078353d4da5725d1d57'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3fa8bd22d97248de529780f5797178af'
+         '43550e772f110a338d5a42914ee2c3a6'
          'e39f1e1f732b55b5ccb007a90b66798c')
