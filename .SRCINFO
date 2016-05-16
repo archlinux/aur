@@ -1,6 +1,6 @@
 pkgbase = pyfa
 	pkgdesc = EVE Online Fitting Assistant
-	pkgver = 1.21.1
+	pkgver = 1.21.2
 	pkgrel = 1
 	url = http://github.com/DarkFenX/Pyfa
 	arch = any
@@ -14,11 +14,11 @@ pkgbase = pyfa
 	depends = python2-urllib3
 	optdepends = python2-matplotlib: for graph plotting
 	optdepends = python2-numpy: for graph plotting
-	source = https://github.com/DarkFenX/Pyfa/releases/download/v1.21.1/pyfa-1.21.1-citadel-1.3-linux.zip
+	source = https://github.com/DarkFenX/Pyfa/releases/download/v1.21.2/pyfa-1.21.2-citadel-1.11-linux.zip
 	source = pyfa.desktop
 	source = pyfa-start.sh
-	md5sums = 60a66aa0f4fe69aeaf757e0bcf577f6d
-	md5sums = b36d3a3667a1ed13b472692f4bcc5bd1
+	md5sums = 19a04ed141fe1c8e953ecda26ae18e4a
+	md5sums = e2d1ba0b625cb86c54a3b68f23264fcd
 	md5sums = 9937192cfce7f5e16e9cf26086f1899c
 
 pkgname = pyfa
