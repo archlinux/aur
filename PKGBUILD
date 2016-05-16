@@ -4,7 +4,7 @@
 
 pkgname=darkplaces
 pkgver=20140513
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced Quake 1 game engine"
 arch=('i686' 'x86_64')
 url="http://icculus.org/twilight/darkplaces/"
@@ -16,24 +16,30 @@ source=(http://icculus.org/twilight/$pkgname/files/darkplacesengine$pkgver.zip
         $pkgname.desktop)
 sha256sums=('69e5a50991884196e403bd6aab4a33bba553a934a167be366672ab4e223b06c9'
             '476f513f85da873ce93c89f2078bf9c2ea244e3e13a19c6ab02e818ddf221c37')
+noextract=(darkplacesengine$pkgver.zip)
+
+prepare() {
+  cd "$srcdir"
+  bsdtar -xf darkplacesengine$pkgver.zip darkplacesenginesource$pkgver.zip
+  bsdtar -xf darkplacesenginesource$pkgver.zip
+  cd "$pkgname"
+
+  # Fix a couple options in the Makefile.
+  sed -i '1i DP_LINK_TO_LIBJPEG=1' makefile
+  sed -i '/(STRIP)/d' makefile.inc
+}
 
 build() {
-  # Extract the package
-  cd $srcdir
-  bsdtar -xf darkplacesenginesource$pkgver.zip || return 1
+  cd "$srcdir/$pkgname"
 
   # Make sure Darkplaces is not compiled with -j > 1.
   MAKEFLAGS="${MAKEFLAGS} -j1"
-
-  # Compile
-  cd $pkgname
-  sed -i -e '1i DP_LINK_TO_LIBJPEG=1' makefile
-  make OPTIM_RELEASE="${CFLAGS}" DP_FS_BASEDIR=/usr/share/quake release || return 1
+  make OPTIM_RELEASE="${CFLAGS}" DP_FS_BASEDIR=/usr/share/games/quake release
 }
 
 package() {
   cd $srcdir/$pkgname
-  install -d $pkgdir/usr/{bin,share/quake}
+  install -d $pkgdir/usr/bin
   install -m755 darkplaces-{dedicated,glx,sdl} $pkgdir/usr/bin
 
   for i in 16 24 32 48 64 72; do
