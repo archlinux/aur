@@ -6,7 +6,7 @@
 # Remove the bundled JRE to save space - make sure you use your own,
 # either through JAVA_HOME or by setting the path to the JDK 
 # in ~/.IntelliJIdea2016.1/config/idea.jdk
-_remove_bundled_jre=y
+_remove_bundled_jre=
 
 ### Do no edit below this line unless you know what you're doing
 
