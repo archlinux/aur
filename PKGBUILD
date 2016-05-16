@@ -2,14 +2,14 @@
 
 pkgname=springseed
 pkgver=2.0
-pkgrel=5
+pkgrel=6
 pkgdesc="Simply awesome note taking."
 
 arch=('arm' 'i686' 'x86_64')
 license=('MIT')
 url="http://getspringseed.com"
 
-depends=('electron')
+depends=('electron<=0.37.8')
 source=(
     "http://assets.apertron.net/springseed.zip"
     "springseed" "springseed.svg" "springseed.desktop")
