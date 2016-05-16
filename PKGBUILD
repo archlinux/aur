@@ -1,0 +1,43 @@
+# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Contributor: Phillip Schichtel <phillip.public@schich.tel>
+
+pkgname=adapta-gtk-theme-git
+pkgver=3.21.1.173.r11.542d953
+pkgrel=1
+pkgdesc='An adaptive Gtk+ theme based on Material Design Guidelines'
+arch=('any')
+url='https://github.com/tista500/Adapta'
+license=('GPL2')
+depends=('gtk2' 'gtk3')
+makedepends=('git')
+optdepends=('gnome-shell: The GNOME Shell'
+            'gnome-flashback: The GNOME flashback shell'
+            'budgie-desktop: The Budgie desktop'
+            'cinnamon: The Cinnamon desktop'
+            'xfdesktop: The Xfce desktop')
+source=('adapta-gtk-theme::git+https://github.com/tista500/Adapta.git')
+sha256sums=('SKIP')
+
+pkgver() {
+  cd adapta-gtk-theme
+
+  git describe --tags | sed 's/-/.r/; s/-g/./'
+}
+
+build() {
+  cd adapta-gtk-theme
+
+  ./autogen.sh \
+    --prefix='/usr' \
+    --enable-chrome \
+    --disable-unity
+  make
+}
+
+package() {
+  cd adapta-gtk-theme
+
+  make DESTDIR="${pkgdir}" install
+}
+
+# vim: ts=2 sw=2 et:
