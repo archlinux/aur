@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=PyParadox (Stellaris)
+GenericName=Stellaris Launcher
+Comment=Nix launcher for Stellaris
+Icon=paradox
+Exec=pyparadox-qt stellaris
+Categories=Game;StrategyGame;
