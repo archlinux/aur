@@ -2,8 +2,8 @@
 # Contributor: Joonas Henriksson
 # Contributor: Rutger Broekhoff
 pkgname=natron-bin
-pkgver=2.0.2
-pkgrel=4
+pkgver=2.0.3
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Video compositing software similar to Nuke and Adobe After Effects'
 url='http://natron.fr/'
@@ -12,15 +12,15 @@ depends=('ffmpeg' 'p7zip')
 optdepends=('blender: for 3d opencolor-io support')
 conflicts=('natron' 'natron-rc' 'natron-bin-dev')
 
-options=('!strip' '!upx')
+options=('!strip')
 
 source=("natron.desktop" "x-natron.xml")
 source_i686=("http://downloads.natron.fr/Linux/releases/32bit/files/Natron-$pkgver-Linux-x86_32bit.tar.xz")
 source_x86_64=("http://downloads.natron.fr/Linux/releases/64bit/files/Natron-$pkgver-Linux-x86_64bit.tar.xz")
 
 md5sums=('5c65b106c295abe0b5346eff18a06767' 'ca5186feb5a7f336517c015f72d0f8c8')
-md5sums_i686=('bba88a39dcdce3fc2a5a188d6c73362a')
-md5sums_x86_64=('ade5286ff47cd299ec01cff9e02812cd')
+md5sums_i686=('515332da84f3403003c370e588a53a30')
+md5sums_x86_64=('562ae14e4d8f8f8acb0ac7b854c9e687')
 
 package() {
 	if [ "$CARCH" = "x86_64" ]; then
