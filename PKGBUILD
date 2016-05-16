@@ -4,7 +4,7 @@
 pkgname=lib32-libsidplay
 _pkgname=libsidplay
 pkgver=1.36.59
-pkgrel=2
+pkgrel=3
 pkgdesc="A library for playing SID music files, lib32."
 arch=('x86_64')
 url="http://critical.ch/distfiles/"
@@ -24,7 +24,7 @@ patch -Np1 -i $srcdir/libsidplay-1.36.59-gcc43.patch
 build() {
 cd ${srcdir}/${_pkgname}-${pkgver}
 export CC="gcc -m32"
-export CXX="g++ -m32"
+export CXX="g++ -m32 -Wno-narrowing"
 export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
 
 ./configure --prefix=/usr --libdir=/usr/lib32 --libexecdir=/usr/lib32
