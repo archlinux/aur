@@ -1,6 +1,6 @@
 pkgname=simpleorcapluginsystem
 pkgver=1.00
-pkgrel=2
+pkgrel=3
 pkgdesc="SOPS Provides a simple plugin system for orca include plugins"
 arch=(any)
 license=('GPL3')
