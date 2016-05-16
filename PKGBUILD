@@ -3,7 +3,7 @@
 pkgbase=python-pysaml2
 pkgname=($pkgbase python2-pysaml2)
 pkgver=4.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Python implementation of SAML Version 2'
 license=('Apache')
 arch=('i686' 'x86_64')
@@ -37,6 +37,9 @@ package_python2-pysaml2() {
 
 	cd "pysaml2-$pkgver-python2"
 	python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+	# rename all executables
+	find "$pkgdir/usr/bin" -type f -exec mv {} {}2 \;
 }
 
 # vim: set ts=4 sw=4 tw=0 ft=sh :
