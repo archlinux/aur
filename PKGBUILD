@@ -8,8 +8,8 @@ pkgdesc='Cryptographic library for Python / a self-contained Python package of l
 license=('BSD')
 arch=('i686' 'x86_64')
 url='https://pypi.python.org/pypi/pycryptodomex'
-makedepends=('python' 'python-setuptools'
-             'python2' 'python2-setuptools')
+makedepends=('python-setuptools'
+             'python2-setuptools')
 source=("https://pypi.python.org/packages/source/p/pycryptodomex/pycryptodomex-${pkgver}.tar.gz")
 md5sums=('5f58848b35a8362d9ebc0f94bd8cc5e7')
 
