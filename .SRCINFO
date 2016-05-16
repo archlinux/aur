@@ -10,6 +10,7 @@ pkgbase = cerbero-profiler
 	depends = findutils
 	depends = coreutils
 	depends = binutils
+	depends = openssl
 	provides = cerbero-profiler
 	noextract = libpython3.4_3.4.3-1ubuntu1~14.04.3_amd64.deb
 	noextract = libpng12-0_1.2.50-1ubuntu2.14.04.2_amd64.deb

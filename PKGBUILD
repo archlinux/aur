@@ -6,7 +6,7 @@ pkgdesc="Cerbero Profiler is a tool designed primarily for malware and forensic 
 arch=('x86_64')
 url="http://cerbero.io/profiler"
 license=('custom')
-depends=('curl' 'tar' 'findutils' 'coreutils' 'binutils')
+depends=('curl' 'tar' 'findutils' 'coreutils' 'binutils' 'openssl')
 provides=('cerbero-profiler')
 
 # release tarball and external dependencies...
@@ -37,21 +37,24 @@ prepare() {
 }
 
 build() {
-	# copy the external dependencies we have downloaded
+	# keep in mind that his is not an official package! ubuntu is the only
+	# officially supported linux distribution!
+
+	# copy the external dependencies we have downloaded from the ubuntu repository
 	cp "${srcdir}/usr/lib/x86_64-linux-gnu/libpython3.4m.so.1.0" "profiler_${pkgver}"
 	cp "${srcdir}/lib/x86_64-linux-gnu/libpng12.so.0.50.0" "profiler_${pkgver}/libpng12.so.0"
 
-	# hardcode dirname to our installation directory
+	# hardcode the 'dirname' variable in the launcher to our installation directory
 	sed -i 's+dirname=`dirname $0`+dirname=/opt/Cerbero/Profiler+g' "profiler_${pkgver}/cerpro.sh"
 
 	# generate a .desktop file for the menu
-	printf '[Desktop Entry]\nComment=Malware and forensic analysis tool.\nExec=/opt/Profiler/cerpro.sh %%U\nIcon=/opt/Cerbero/Profiler/icons/app_256x256.png\nName=Cerbero Profiler\nTerminal=false\nType=Application\nCategories=Development;\n' > "${srcdir}/Cerbero Profiler.desktop"
+	printf '[Desktop Entry]\nComment=Malware and forensic analysis tool.\nExec=/opt/Cerbero/Profiler/cerpro.sh %%U\nIcon=/opt/Cerbero/Profiler/icons/app_256x256.png\nName=Cerbero Profiler\nTerminal=false\nType=Application\nCategories=Development;\n' > "${srcdir}/Cerbero Profiler.desktop"
 }
 
 package() {
 	local menu_folder="${pkgdir}/usr/share/applications"
 
-	# menu item
+	# install the menu item
 	mkdir -p "$menu_folder"
 	mv "${srcdir}/Cerbero Profiler.desktop" "$menu_folder"
 
@@ -61,12 +64,12 @@ package() {
 	mkdir -p "$application_folder"
 	mv "profiler_${pkgver}" "${application_folder}/Profiler"
 
-	# symlink
+	# symlink the main executable to /usr/local/bin so that we can start the program by running the 'cerpro' command
 	local local_bin_folder="${pkgdir}/usr/local/bin"
 	mkdir -p "$local_bin_folder"
 	ln -s "/opt/Cerbero/Profiler/cerpro.sh" "${local_bin_folder}/cerpro"
 
-	# permissions
+	# fix the permissions
 	chown -R root:root "$application_folder"
 	find "$application_folder" -type d -exec chmod 755 {} \;
 	find "$application_folder" -type f -exec chmod 644 {} \;
@@ -75,6 +78,6 @@ package() {
 
 	chmod 755 "${application_folder}/Profiler/cerpro" "${application_folder}/Profiler/file" "${application_folder}/Profiler/jsdbg" "${application_folder}/Profiler/yara" "${application_folder}/Profiler/hdrmgr"
 
-	# license file
+	# install the license file
 	install -D -m644 "${pkgdir}/opt/Cerbero/Profiler/credits.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
