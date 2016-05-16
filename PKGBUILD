@@ -1,13 +1,13 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=perl6-inline-perl5
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="Use Perl 5 code in a Perl 6 program"
 arch=('i686' 'x86_64')
 depends=('perl' 'perl6')
 checkdepends=('perl6-file-temp')
-makedepends=('alacryd' 'gcc' 'git' 'make' 'perl6-librarymake')
+makedepends=('alacryd' 'git' 'make' 'perl6-librarymake')
 groups=('perl6')
 url="https://github.com/niner/Inline-Perl5"
 license=('PerlArtistic')
@@ -52,4 +52,5 @@ package() {
   msg2 'Cleaning up pkgdir...'
   rm -f "$pkgdir/usr/share/perl6/vendor/version"
   find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
+  find "$pkgdir" -type f -print0 | xargs -0 sed -i "s,$pkgdir,,g"
 }
