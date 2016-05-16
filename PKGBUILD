@@ -2,7 +2,7 @@
 
 pkgname=chromium-pepper-flash-standalone
 pkgdesc="Google Chrome's Pepper Flash plugin for Chromium (stable version) - Standalone version"
-pkgver=21.0.0.213
+pkgver=21.0.0.242
 pkgrel=1
 arch=('x86_64')
 url="http://www.google.com/chrome"
@@ -21,9 +21,9 @@ if [ "$CARCH" == i686 ]; then
         sha1sums+=('')
 elif [ "$CARCH" == x86_64 ]; then
         source+=(http://docs.volcanis.me/.pepper-flash/x86_64/libpepflashplayer.so)
-        sha1sums+=('9baa51c1583fb1cb8ff8056b179ffdad2f392688')
+        sha1sums+=('399981e16717fdcb7bac991af2b2e695b2f61896')
         source+=(http://docs.volcanis.me/.pepper-flash/x86_64/manifest.json)
-        sha1sums+=('f19a3e5a9266a5ad0727cac18f4bb22e1b3f1815')
+        sha1sums+=('cc8706878d4e4abba58f48cb9bdf00547d148cd5')
 fi
 
 package() {
