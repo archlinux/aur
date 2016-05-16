@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=ktorrent-git
-pkgver=5.0.0.r2234.19da8bf
+pkgver=5.0.1.r2246.ac8eb6b
 pkgrel=1
 pkgdesc="A powerful BitTorrent client. (GIT version)"
 arch=('i686' 'x86_64')
@@ -32,7 +32,6 @@ provides=('ktorrent')
 conflicts=('ktorrent')
 source=('git://anongit.kde.org/ktorrent.git')
 sha1sums=('SKIP')
-install=ktorrent-git.install
 
 pkgver() {
   cd ktorrent
