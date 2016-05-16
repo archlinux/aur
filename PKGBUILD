@@ -1,7 +1,7 @@
 # Maintainer: Chrys <mail@chrys.de>
 pkgname=ocrdesktop
 pkgver=1.00
-pkgrel=3
+pkgrel=4
 pkgdesc="OCR the current window or desktop and make it browsable for the user"
 arch=('any')
 url="http://www.crivatec.de"
@@ -11,7 +11,7 @@ source=("http://crivatec.de/page/uploads/Downloads/Accessible%20Tools/$pkgname-$
 install='ocrdesktop.install'
 provides=('ocrdesktop')
 conflicts=('ocrdesktop-git')
-md5sums=("fdad271ff8a440f96f9985d90f9d3379")
+md5sums=("2078955d2bc9dac2ca3874585c67c5cf")
 
 package() {
  cd "${srcdir}/"
