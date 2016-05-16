@@ -1,0 +1,24 @@
+pkgbase = cerbero-profiler
+	pkgdesc = Cerbero Profiler is a tool designed primarily for malware and forensic analysis. It supports a huge number of file formats on which it performs analysis and lets the user inspect their internal layout.
+	pkgver = 2.6.0
+	pkgrel = 1
+	url = http://cerbero.io/profiler
+	arch = x86_64
+	license = custom
+	depends = curl
+	depends = tar
+	depends = findutils
+	depends = coreutils
+	depends = binutils
+	provides = cerbero-profiler
+	noextract = libpython3.4_3.4.0-2ubuntu1.1_amd64.deb
+	noextract = libpng12-0_1.2.50-1ubuntu2.14.04.2_amd64.deb
+	source = https://store.cerbero.io/static/downloads/profiler/profiler_2.6.0.tar.gz
+	source = http://mirrors.kernel.org/ubuntu/pool/main/p/python3.4/libpython3.4_3.4.3-1ubuntu1~14.04.3_amd64.deb
+	source = http://mirrors.kernel.org/ubuntu/pool/main/libp/libpng/libpng12-0_1.2.50-1ubuntu2.14.04.2_amd64.deb
+	sha1sums = ae1faf895aadf0812d46410e01a86918a3c2fceb
+	sha1sums = 651c686d24b7310361a739b63228bc312d0e5553
+	sha1sums = 0fd57a753a5e46659492187f804d6981158d8a00
+
+pkgname = cerbero-profiler
+
