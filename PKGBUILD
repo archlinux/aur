@@ -8,7 +8,7 @@
 pkgbase=libappindicator
 pkgname=('libappindicator-gtk2' 'libappindicator-gtk3' 'libappindicator-sharp')
 pkgver=12.10.0
-pkgrel=7
+pkgrel=8
 pkgdesc='Allow applications to export a menu into the Unity Menu bar'
 arch=('i686' 'x86_64')
 url='https://launchpad.net/libappindicator'
@@ -17,8 +17,12 @@ makedepends=('dbus-glib' 'gobject-introspection' 'gtk-sharp-2'
              'libdbusmenu-gtk2' 'libdbusmenu-gtk3' 'libindicator-gtk2'
              'libindicator-gtk3' 'mono' 'perl-xml-libxml' 'pygtk' 'vala')
 options=('!emptydirs')
-source=("http://launchpad.net/libappindicator/${pkgver%.*}/${pkgver}/+download/libappindicator-${pkgver}.tar.gz")
-sha512sums=('317a22a23c8ed84e74207b64b2e9683992d1fb7208176637a051dfe925974f966d1cfa31e650b45eaf839ab61641dee8fbebc8a07882a09b0dd766d88b8d5b9a')
+source=("http://launchpad.net/libappindicator/${pkgver%.*}/${pkgver}/+download/libappindicator-${pkgver}.tar.gz"
+        "python-gtfo.patch"
+        "0001-Add-support-for-Activate-method-for-improved-Plasma-.patch")
+sha512sums=('317a22a23c8ed84e74207b64b2e9683992d1fb7208176637a051dfe925974f966d1cfa31e650b45eaf839ab61641dee8fbebc8a07882a09b0dd766d88b8d5b9a'
+            '891f5097c607770428460fe902214c70fb2a11de9fe1e6d6109ea859b22eda3d7057cab4c5b5444de5f6f3149348c186034dcde8f95c77800bcbd8abcdf7277b'
+            'e2930b9942b800a7a14faf4c27d59073c166e24bb1675f8604a0b5ac3fbd101f3642f7221bc8f5219231c8f021a2a8c4aa203f971ea5f2f9225be83d807cb80e')
 
 prepare() {
 	# Check for debris from previous builds and sweep it up if found.
@@ -28,6 +32,9 @@ prepare() {
 
     sed 's|/cli/|/mono/|' -i bindings/mono/{appindicator-sharp-0.1.pc.in,Makefile.in}
     sed 's/example //g' -i Makefile.in
+
+	patch -p1 -i '../python-gtfo.patch'
+	patch -p1 -i '../0001-Add-support-for-Activate-method-for-improved-Plasma-.patch'
 
     cd ..
 
