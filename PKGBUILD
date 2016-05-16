@@ -1,7 +1,7 @@
 # Maintainer: Christian Mauderer <oss@c-mauderer.de>
 pkgname=stlink-git
-pkgrel=10
-pkgver=r662.fdfb82b
+pkgrel=1
+pkgver=r821.9cf48a7
 pkgdesc="stm32 discovery line linux programmer."
 arch=('i686' 'x86_64')
 url="https://github.com/texane/stlink"
@@ -34,13 +34,19 @@ package() {
 	make DESTDIR="$pkgdir" install
 
 	# install additional files
-	install -Dm644 "stlink_v1.modprobe.conf"   "${pkgdir}/etc/modprobe.d/stlink_v1.modprobe.conf"
-	install -Dm644 "49-stlinkv1.rules"         "${pkgdir}/etc/udev/rules.d/49-stlinkv1.rules"
-	install -Dm644 "49-stlinkv2.rules"         "${pkgdir}/etc/udev/rules.d/49-stlinkv2.rules"
-	install -Dm644 "49-stlinkv2-1.rules"       "${pkgdir}/etc/udev/rules.d/49-stlinkv2-1.rules"
-	install -Dm644 "README"                    "${pkgdir}/usr/share/doc/${pkgname}/README"
-	install -Dm644 "ACKNOWLEDGMENTS"           "${pkgdir}/usr/share/doc/${pkgname}/ACKNOWLEDGMENTS"
-	install -Dm644 "AUTHORS"                   "${pkgdir}/usr/share/doc/${pkgname}/AUTHORS"
-	install -Dm644 "doc/tutorial/tutorial.pdf" "${pkgdir}/usr/share/doc/${pkgname}/tutorial.pdf"
-	install -Dm644 "LICENSE"                   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}/" \
+		"README" \
+		"README.md" \
+		"ACKNOWLEDGMENTS" \
+		"AUTHORS" \
+		"ChangeLog" \
+		"NEWS" \
+		"doc/tutorial.md"
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" \
+		"COPYING" \
+		"LICENSE"
+	install -Dm644 -t "${pkgdir}/etc/modprobe.d/" \
+		etc/modprobe.d/*
+	install -Dm644 -t "${pkgdir}/etc/udev/rules.d/" \
+		etc/udev/rules.d/*
 }
