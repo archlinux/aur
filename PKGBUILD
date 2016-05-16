@@ -2,13 +2,14 @@
 
 pkgbase=python-expects
 pkgname=('python-expects' 'python2-expects')
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="Expressive and extensible TDD/BDD assertion library for Python"
 arch=('any')
 license=('Apache')
 url="https://github.com/jaimegildesagredo/expects"
 makedepends=('python-setuptools' 'python2-setuptools' 'git')
+checkdepends=('python-mamba' 'python2-mamba')
 source=("git+https://github.com/jaimegildesagredo/expects.git#tag=v$pkgver")
 sha512sums=('SKIP')
 
@@ -17,11 +18,19 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/expects"
+  cd "$srcdir"/expects
   python setup.py build
 
-  cd "$srcdir/expects-py2"
+  cd "$srcdir"/expects-py2
   python2 setup.py build
+}
+
+check() {
+  cd "$srcdir"/expects
+  mamba
+
+  cd "$srcdir"/expects-py2
+  mamba2
 }
 
 package_python-expects() {
