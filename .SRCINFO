@@ -1,0 +1,17 @@
+pkgbase = yusuke
+	pkgdesc = pacman update notifier
+	pkgver = 1.7.6
+	pkgrel = 1
+	url = https://github.com/graypawn/yusuke
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = pacman
+	depends = libnotify
+	depends = bash
+	conflicts = yusuke
+	source = https://github.com/graypawn/yusuke/archive/v1.7.6.zip
+	md5sums = c642ace6ecc0c28a8be62d899a9cf48a
+
+pkgname = yusuke
+

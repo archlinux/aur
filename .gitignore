@@ -1,0 +1,7 @@
+*~
+#*
+.#*
+/*.zip
+/*.pkg.tar.xz
+/src/
+/pkg/
