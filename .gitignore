@@ -1,0 +1,4 @@
+/mcabber-highlight/
+*.tar.xz
+/pkg/
+/src/
