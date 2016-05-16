@@ -1,0 +1,80 @@
+diff --git a/src/mcabber-crew/mcabber/mcabber/hooks.c b/src/mcabber-crew/mcabber/mcabber/hooks.c
+index 754dad4..fbea29f 100644
+--- a/mcabber/mcabber/hooks.c
++++ b/mcabber/mcabber/hooks.c
+@@ -241,29 +241,6 @@ void hk_message_in(const char *bjid, const char *resname,
+       wmsg = (char*) msg;
+   }
+ 
+-#ifdef MODULES_ENABLE
+-  {
+-    guint h_result;
+-    hk_arg_t args[] = {
+-      { "jid", bjid },
+-      { "resource", resname },
+-      { "message", msg },
+-      { "groupchat", is_groupchat ? "true" : "false" },
+-      { "delayed", strdelay },
+-      { "error", error_msg_subtype ? "true" : "false" },
+-      { "carbon", carbon ? "true" : "false" },
+-      { NULL, NULL },
+-    };
+-    h_result = hk_run_handlers(HOOK_PRE_MESSAGE_IN, args);
+-    if (h_result == HOOK_HANDLER_RESULT_NO_MORE_HANDLER_DROP_DATA) {
+-      scr_LogPrint(LPRINT_DEBUG, "Message dropped (hook result).");
+-      g_free(bmsg);
+-      g_free(mmsg);
+-      return;
+-    }
+-  }
+-#endif
+-
+   // If this user isn't in the roster, we add it
+   roster_usr = roster_find(bjid, jidsearch, 0);
+   if (!roster_usr) {
+@@ -343,6 +320,33 @@ void hk_message_in(const char *bjid, const char *resname,
+     scr_LogPrint(LPRINT_LOGNORM, "Error message received from <%s>", bjid);
+   }
+ 
++#ifdef MODULES_ENABLE
++  {
++    guint h_result;
++    hk_arg_t args[] = {
++      { "jid", bjid },
++      { "resource", resname },
++      { "message", msg },
++      { "groupchat", is_groupchat ? "true" : "false" },
++      { "delayed", strdelay },
++      { "error", error_msg_subtype ? "true" : "false" },
++      { "carbon", carbon ? "true" : "false" },
++      { NULL, NULL },
++    };
++    h_result = hk_run_handlers(HOOK_PRE_MESSAGE_IN, args);
++    if (h_result == HOOK_HANDLER_RESULT_NO_MORE_HANDLER_DROP_DATA) {
++      scr_LogPrint(LPRINT_DEBUG, "Message dropped (hook result).");
++      g_free(bmsg);
++      g_free(mmsg);
++      return;
++    }
++
++    if (h_result == HOOK_HANDLER_RESULT_HIGHLIGHT_MESSAGE) {
++      message_flags |= HBB_PREFIX_HLIGHT;
++    }
++  }
++#endif
++
+   // Note: the hlog_write should not be called first, because in some
+   // cases scr_write_incoming_message() will load the history and we'd
+   // have the message twice...
+diff --git a/src/mcabber-crew/mcabber/mcabber/hooks.h b/src/mcabber-crew/mcabber/mcabber/hooks.h
+index f427271..ef33f59 100644
+--- a/mcabber/mcabber/hooks.h
++++ b/mcabber/mcabber/hooks.h
+@@ -29,6 +29,7 @@ typedef enum {
+   HOOK_HANDLER_RESULT_ALLOW_MORE_HANDLERS = 0,
+   HOOK_HANDLER_RESULT_NO_MORE_HANDLER,
+   HOOK_HANDLER_RESULT_NO_MORE_HANDLER_DROP_DATA,
++  HOOK_HANDLER_RESULT_HIGHLIGHT_MESSAGE,
+ } hk_handler_result;
+ 
+ typedef struct {
