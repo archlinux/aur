@@ -30,6 +30,8 @@ prepare() {
 build() {
   cd $pkgname-$pkgver
 
+  export CXXFLAGS="-std=c++98 $CXXFLAGS"
+
   # Ancient autoconf used upstream can't handle CPPFLAGS correctly, so set CPP to ignore warnings
   CPP="gcc -E -w" \
   ./configure \
