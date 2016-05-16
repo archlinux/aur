@@ -1,4 +1,3 @@
-# Maintainer: Patrick Darwinkel <patrick@darwinkel.net>
 pkgname=ogar-git
 pkgver=git
 pkgrel=4
