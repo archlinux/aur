@@ -8,7 +8,7 @@ pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('any')
 url="https://vdirsyncer.readthedocs.org/"
 license=('MIT')
-depends=('python-click' 'python-setuptools' 'python-lxml'
+depends=('python-click' 'python-setuptools'
          'python-requests-toolbelt' 'python-atomicwrites'
          'python-click-threading' 'python-click-log')
 optdepends=('python-requests-oauthlib: Remotestorage support')
