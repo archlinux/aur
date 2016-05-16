@@ -8,7 +8,8 @@ pkgdesc='Library to enable your code run as a daemon process on Unix-like system
 license=('MIT')
 arch=('any')
 url='https://pypi.python.org/pypi/daemonize/'
-makedepends=('python2-setuptools')
+makedepends=('python-setuptools'
+             'python2-setuptools')
 source=("https://pypi.python.org/packages/source/d/daemonize/daemonize-${pkgver}.tar.gz")
 md5sums=('17bc788a8524b104d4639a68623461e3')
 
