@@ -3,12 +3,12 @@
 
 pkgname=magnum-plugins
 pkgver=2016.05.13
-pkgrel=2
+pkgrel=3
 pkgdesc='Plugins for the Magnum graphics engine'
 arch=('x86_64' 'i686')
 url='http://mosra.cz/blog/magnum.php'
 license=('MIT')
-depends=('libmagnum' 'libpng' 'libjpeg' 'freetype2')
+depends=('magnum' 'libpng' 'libjpeg' 'freetype2')
 makedepends=('cmake' 'git' 'ninja')
 source=("git://github.com/mosra/magnum-plugins.git#commit=3a1d621")
 sha1sums=('SKIP')
