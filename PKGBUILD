@@ -6,8 +6,8 @@
 _pkgbase=systemd
 pkgbase=systemd-knock
 pkgname=('systemd-knock' 'libsystemd-knock' 'systemd-knock-sysvcompat')
-pkgver=228
-pkgrel=4.1
+pkgver=229
+pkgrel=3
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -45,20 +45,17 @@ validpgpkeys=(
 prepare() {
   cd "$_pkgbase"
 
-  # sd-ndisc: drop RA packets from non-link-local addresses
-  # https://github.com/systemd/systemd/commit/3ccd31635353
-  # https://github.com/systemd/systemd/issues/1866
-  git cherry-pick -n 3ccd31635353
+  # networkd: FIONREAD is not reliable on some sockets
+  git cherry-pick -n 4edc2c9b6b5b921873eb82e58719ed4d9e0d69bf
 
-  # networkd: link - do not drop config for loopback device
-  # https://github.com/systemd/systemd/commit/e5d44b34cca3
-  # https://github.com/systemd/systemd/issues/2023
-  git cherry-pick -n e5d44b34cca3
+  # fix assertion failure in src/core/timer.c on bootup (FS#48197)
+  git cherry-pick -n 3f51aec8647fe13f4b1e46b2f75ff635403adf91
 
-  # virt: detect dmi before cpuid
-  # https://github.com/systemd/systemd/commit/050e65ada2e0
-  # https://github.com/systemd/systemd/issues/1993
-  git cherry-pick -n 050e65ada2e0
+  # fix udevd error checking from cg_unified() (FS#48188)
+  git cherry-pick -n 6d2353394fc33e923d1ab464c8f88df2a5105ffb
+
+  # revert "core: resolve specifier in config_parse_exec()"
+  git cherry-pick -n bd1b973fb326e9b7587494fd6108e5ded46e9163
 
   # Rename "Linux" -> "GNU/Linux"
   patch -Np1 -i "$srcdir/gnu+linux.patch"
@@ -92,7 +89,6 @@ build() {
       --localstatedir=/var \
       --sysconfdir=/etc \
       --enable-lz4 \
-      --enable-compat-libs \
       --enable-tcp-stealth \
       --disable-audit \
       --disable-ima \
@@ -192,10 +188,9 @@ package_systemd-knock() {
 
 package_libsystemd-knock() {
   pkgdesc="systemd client libraries with support for stealth TCP sockets"
-  depends=('glibc' 'libgcrypt' 'lz4' 'xz')
+  depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz')
   license=('GPL2')
-  provides=('libsystemd.so' 'libsystemd-daemon.so' 'libsystemd-id128.so'
-            'libsystemd-journal.so' 'libsystemd-login.so' 'libudev.so' "libsystemd=$pkgver")
+  provides=('libsystemd.so' 'libudev.so' "libsystemd=$pkgver")
   conflicts=('libsystemd')
 
   make -C "$_pkgbase" DESTDIR="$pkgdir" install-libLTLIBRARIES
