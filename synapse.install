@@ -43,6 +43,9 @@ post_install() {
 			--config-path /etc/synapse/homeserver.yaml \
 			--generate-config \
 			--server-name localhost \
-			--bind-port 8448
+			--bind-port 8448 \
+			--report-stats=no
 	fi
+
+	post_upgrade "$1" "0"
 }
