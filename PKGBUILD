@@ -5,8 +5,8 @@
 
 pkgbase=virtualbox-modules-bfq
 pkgname=('virtualbox-host-modules-bfq' 'virtualbox-guest-modules-bfq')
-pkgver=5.0.14
-pkgrel=3
+pkgver=5.0.20
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
@@ -21,10 +21,10 @@ build() {
 	echo "dkms_tree='$srcdir/dkms'" > dkms.conf
 	# build host modules
 	msg2 'Host modules'
-	dkms --dkmsframework dkms.conf build "vboxhost/$pkgver" -k "$_kernver"
+	dkms --dkmsframework dkms.conf build "vboxhost/${pkgver}_OSE" -k "$_kernver"
 	# build guest modules
 	msg2 'Guest modules'
-	dkms --dkmsframework dkms.conf build "vboxguest/$pkgver" -k "$_kernver"
+	dkms --dkmsframework dkms.conf build "vboxguest/${pkgver}_OSE" -k "$_kernver"
 }
 
 package_virtualbox-host-modules-bfq() {
@@ -34,7 +34,7 @@ package_virtualbox-host-modules-bfq() {
 	install=host.install
 
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
-	cd "dkms/vboxhost/$pkgver/$_kernver/$CARCH/module"
+	cd "dkms/vboxhost/${pkgver}_OSE/$_kernver/$CARCH/module"
 	install -m644 * "$pkgdir/usr/lib/modules/$_extramodules"
 	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/host.install"
@@ -47,7 +47,7 @@ package_virtualbox-guest-modules-bfq() {
 	install=guest.install
 
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
-	cd "dkms/vboxguest/$pkgver/$_kernver/$CARCH/module"
+	cd "dkms/vboxguest/${pkgver}_OSE/$_kernver/$CARCH/module"
 	install -m644 * "$pkgdir/usr/lib/modules/$_extramodules"
 	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/guest.install"
