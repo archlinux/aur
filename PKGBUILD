@@ -4,7 +4,7 @@
 pkgname=musicqueue
 _incr="7"
 pkgver="0.4.${_incr}"
-pkgrel="1"
+pkgrel="2"
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
 url='http://musicqueue.furcat.ca/'
@@ -42,7 +42,6 @@ build() {
     -DwxWidgets_wxrc_EXECUTABLE="${prefix}/bin/wxrc"        \
     -DwxWidgets_CONFIG_EXECUTABLE="${prefix}/bin/wx-config" \
     -DCMAKE_CXX_STANDARD='11'                               \
-    -DCMAKE_CXX_FLAGS='-Wno-deprecated-declarations'        \
     -DCMAKE_SKIP_RPATH=FALSE                                \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=FALSE                  \
     -D_GUREVISION_:STRING="${_incr}"
@@ -52,16 +51,4 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}/${BUILDFLDR}
   make DESTDIR="${pkgdir}" install
-}
-
-post_install() {
-  update-desktop-database -q
-}
-
-post_upgrade(){
-  post_install
-}
-
-post_remove(){
-  post_install
 }
