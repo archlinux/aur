@@ -2,7 +2,7 @@
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libdcp
 pkgver=1.3.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A small C++ library which can create and read Digital Cinema Packages using JPEG2000 and WAV files"
 arch=('i686' 'x86_64')
 url="http://carlh.net/libdcp"
