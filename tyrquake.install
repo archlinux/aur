@@ -1,0 +1,6 @@
+post_install() {
+  cat <<EOF
+You need the Quake 1 data files to play.
+Copy the "id1" directory to /usr/share/games/quake
+EOF
+}
