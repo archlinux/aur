@@ -4,7 +4,7 @@
 
 pkgname=qtiplot-opj
 pkgver=0.9.8.9
-pkgrel=14
+pkgrel=15
 pkgdesc="Data analysis and scientific plotting - free clone of Origin, with Origin import enabled"
 # more info in: http://www.staff.science.uu.nl/~zeven101/qtiplot.html
 arch=('i686' 'x86_64')
@@ -16,7 +16,6 @@ makedepends=('pkgconfig' 'unzip' 'boost')
 provides=('qtiplot')
 conflicts=('qtiplot')
 options=('!makeflags')
-install=${pkgname}.install
 
 source=("http://downloads.sourceforge.net/project/qtiplot.berlios/qtiplot-${pkgver}.tar.bz2"
 "http://downloads.sourceforge.net/project/qtiplot.berlios/QTeXEngine-0.3-opensource.zip"
@@ -39,21 +38,21 @@ noextract=("opj.tar.bz2"
 	   "QTeXEngine-0.3-opensource.zip"
 )
 
-md5sums=('652096a365851da3b5f6fefdcbe2aaec'
-         'd1b234623770ec6209b14d1b5137f2f1'
-         '8a6bdb368ab264e36a5210d8ce0f5439'
-         'c84feb6ed8836ed5868b3fe5887dc1c3'
-         'a0a9a28722d8c58c6e3f5bea816eed09'
-         '23c4758e557c30c791c332ece6f63f0d'
-         '66ab87e227dc1436d8a08adaef657d74'
-         '354648b6702d7b7fb71d7d230b6a9bbf'
-         'a433c4c2187a0a988ed849e486349297'
-         '20e01401a57befbef8b98721d6920fd1'
-         'a7c3c43ff10ba117d3e79ad305ba13f0'
-         '58b7f423e59db7764f53988cdbd7308e'
-         'b5e7832b05c991c80b83964670d00af8'
-         'd71623b74a9264225a438553f230cc40'
-         '011b1e8cb040112e5a1e83b5e0a947ad')
+sha256sums=('a523ea259516d7581abaf2fe376507d152db32f71d88176cff18f5bc391b9ef0'
+            'fc60c18bd0af5947d2d7dbc3d1b5b16ed251d9f317cc548228347f081a0b67d5'
+            '6b022dab98511f39eb90e90a0d45d71b8edc5216696f236303638548469d0b61'
+            '0dbe4be9c34d10e64b12251135538f86c7998890233604f2e8ecb3d5d57b230e'
+            '6052482d474e7a52a7aa25c881a1ed90dc9d5aa2fbc79bf5492e7225335d1a1e'
+            '76b9c82c96dbc19ccb27ac9ad445d69fe6cf5a4578007cb4454d123cfb1fde49'
+            'a2c55d6cc2bbb81e0512e553947a52fc4d33534d10e23cffb4bc2b987315f364'
+            '1082beecc11117b28ca546c84f43004c5f7fd55e46087dbd40ed3b4c7491e6cd'
+            'd4e4c9f224ca8aeb7f06fe0c5fc501094ae3ae94f5054c8c6acc90b6b3986e75'
+            '01838b7c4a13dd368ccfef30a5348df9bef83d98fafe54c129428bd88857fff2'
+            '9656b5de3c31dfc86940c72e7362db13127e252b13522c6eec8f438f71d0ae65'
+            'dc3bbb78602fa4aafb59c7b33080ac7fe160d2b88c0e296f2b99b1a738d2e972'
+            'def2ac188d45611e3f3822014edcf5103969f6e10a89e7f14f298dae35b57913'
+            '42239a26459d5892fe59bcdc3057d9a946e5f416b4e791f7ce130a0aa7d139ce'
+            '1f1938cb40b51b4ef4b5266941a8a679c1bb49ada5090105665949ef8f5ca3a3')
 
 
 prepare() {
@@ -77,10 +76,16 @@ cp build.conf qtiplot-${pkgver}/
 
 build() {
 
-cd "$srcdir/qtiplot-${pkgver}"
-lrelease-qt4 qtiplot/translations/*
-qmake-qt4 qtiplot.pro
-make
+	cd "$srcdir/qtiplot-${pkgver}"
+
+	lrelease-qt4 qtiplot/translations/*
+	# fix stuff
+	sed -i 's|/usr/local/|/usr/share/|' qtiplot.pro
+	sed -i 's|<QAssistantClient>|<QtAssistant/qassistantclient.h>|' qtiplot/src/core/ApplicationWindow.cpp
+	sed -i 's#d_python_config_folder + "#"/usr/share/qtiplot#' qtiplot/src/core/ApplicationWindow.cpp
+
+	qmake-qt4 qtiplot.pro QMAKESPEC=linux-g++ QMAKE_CXXFLAGS+="-std=gnu++98"
+	make QTDIR=/usr/ QMAKESPEC=linux-g++
 
 }
 package() {
