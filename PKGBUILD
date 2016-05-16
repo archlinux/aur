@@ -9,6 +9,7 @@ url="http://www.oki.co.uk/support/printer/printer-drivers"
 license=('custom')
 backup=('usr/lib/okimfpdrv/device.conf')
 depends=('libusb' 'python2')
+optdepends=('netpbm: support for additional output formats')
 # http://www.oki.co.uk/support/printer/printer-drivers/
 source=("okiscand.service")
 source_i686=("${pkgname}-${_pkgver}-i686.zip::http://www.oki.co.uk/Includes/Pages/FileDownload.aspx?id=tcm:122-156523")
