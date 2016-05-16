@@ -7,8 +7,8 @@
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-binutils
 pkgver=2.26
-pkgrel=2
-_commit=a4496709
+pkgrel=4
+_commit=43e2c3de
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils/"
@@ -20,10 +20,12 @@ source=(#git://sourceware.org/git/binutils-gdb.git#commit=${_commit}
         binutils-${_commit}.patch)
 md5sums=(#'SKIP'
          '64146a0faa3b411ba774f47d41de239f'
-         '75d2258beeec4b7446db839a0ea615ae')
+         '0820efe4f2087f5f557602a32f561dcd')
 
 prepare() {
   cd binutils-${pkgver}
+
+  patch -p1 -i ${srcdir}/binutils-${_commit}.patch
 
   # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
