@@ -1,0 +1,23 @@
+pkgbase = python-ml_metrics
+	pkgdesc = Python implementation of Metrics implementations a library of various supervised machine learning evaluation metrics
+	pkgver = 2015.09.08.g9a637ae
+	pkgrel = 1
+	url = https://github.com/benhamner/Metrics
+	arch = any
+	license = BSD
+	makedepends = git
+	source = git+https://github.com/benhamner/Metrics.git
+	md5sums = SKIP
+
+pkgname = python-ml_metrics
+	depends = python
+	depends = python-numpy
+	depends = python-pandas
+	provides = python-ml_metrics
+
+pkgname = python2-ml_metrics
+	depends = python2
+	depends = python2-numpy
+	depends = python2-pandas
+	provides = python2-ml_metrics
+
