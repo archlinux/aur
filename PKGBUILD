@@ -4,14 +4,13 @@
 
 pkgname=antimicro
 pkgver=2.21
-pkgrel=2
+pkgrel=3
 pkgdesc="Graphical program used to map keyboard keys and mouse controls to gamepad buttons"
 arch=('i686' 'x86_64')
-url="https://github.com/Ryochan7/antimicro"
+url="https://launchpad.net/~ryochan7"
 license=('GPL3')
 depends=('libxkbcommon-x11' 'libxtst' 'qt5-base' 'sdl2' 'shared-mime-info' 'desktop-file-utils')
 makedepends=('cmake' 'gettext' 'itstool' 'qt5-tools')
-#source=("${pkgname}-${pkgver}.tar.gz::ttps://github.com/Ryochan7/${pkgname}/archive/${pkgver}.tar.gz")
 source=("http://ppa.launchpad.net/ryochan7/${pkgname}/ubuntu/pool/main/a/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz")
 md5sums=('5c78c37a8f854e24f6f9521569f8a1c9')
 
