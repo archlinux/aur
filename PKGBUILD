@@ -7,7 +7,7 @@
 
 pkgname=pyrenamer
 pkgver=0.6.0
-pkgrel=9
+pkgrel=10
 pkgdesc="Mass file renamer"
 arch=('any')
 url="http://www.infinicode.org"
@@ -16,15 +16,14 @@ depends=('python2-gconf')
 makedepends=('perl-xml-parser')
 optdepends=('hachoir-metadata: rename multimedia files metadata'
             'python2-eyed3: rename MP3 files metadata')
-install=$pkgname.install
-source=(http://ftp.de.debian.org/debian/pool/main/p/pyrenamer/pyrenamer_0.6.0.orig.tar.gz)
+source=(http://http.debian.net/debian/pool/main/p/$pkgname/${pkgname}_$pkgver.orig.tar.gz)
 md5sums=('a7159f803cd919ab76f17789189c577b')
 
 prepare() {
   cd $pkgname-$pkgver
   sed -i 's|python python2 python2.5|python2 python2.5|' configure
   sed -i 's|PYTHON=python|PYTHON=python2|' py-compile
-  sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' src/$pkgname
+  sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' src/$pkgname doc/treefilebrowser_example.py
 }
 
 build() {
