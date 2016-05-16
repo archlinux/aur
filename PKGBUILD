@@ -3,12 +3,12 @@
 
 pkgname=magnum-examples
 pkgver=2016.05.13
-pkgrel=2
+pkgrel=3
 pkgdesc='Examples for the Magnum graphics engine'
 arch=('x86_64' 'i686')
 url='http://mosra.cz/blog/magnum.php'
 license=('MIT')
-depends=('libmagnum' 'magnum-plugins' 'magnum-integration' 'bullet' 'openal')
+depends=('magnum-plugins' 'magnum-integration' 'bullet' 'openal')
 makedepends=('cmake' 'git' 'ninja')
 source=('git://github.com/mosra/magnum-examples.git#commit=84e799d52cd5')
 sha1sums=('SKIP')
