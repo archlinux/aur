@@ -1,6 +1,6 @@
 pkgbase = pike
 	pkgdesc = Dynamic programming language with a syntax similar to Java and C
-	pkgver = 8.0.182
+	pkgver = 8.0.240
 	pkgrel = 1
 	url = http://pike.lysator.liu.se/
 	arch = x86_64
@@ -14,9 +14,9 @@ pkgbase = pike
 	depends = libmysqlclient
 	depends = gtkglarea
 	depends = nettle
-	source = http://pike.lysator.liu.se/pub/pike/all/8.0.182/Pike-v8.0.182.tar.gz
+	source = http://pike.lysator.liu.se/pub/pike/all/8.0.240/Pike-v8.0.240.tar.gz
 	source = pike-disable_libdir_reset-0.patch
-	sha256sums = 327335fa19bf40def0374a8f38a09bd236c5802264dc1880290955b51ef1f2a0
+	sha256sums = dba17655b1dae63ca66ec5539ba4f5d8ff1a52faaa5c30b86031744ece2ae7d2
 	sha256sums = 311916764ab9485899c603bbe51ef7b8d9b453c7e0f160ec5bcedcacf8a0ce3d
 
 pkgname = pike
