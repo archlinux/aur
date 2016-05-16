@@ -1,6 +1,6 @@
 pkgbase = xfce4-session-git
 	pkgdesc = Xfce session manager - git checkout
-	pkgver = 4.12.0.r31.ge24603a
+	pkgver = 4.12.0.r101.ge6aafcf
 	pkgrel = 1
 	url = http://www.xfce.org/
 	install = xfce4-session-git.install
@@ -12,7 +12,7 @@ pkgbase = xfce4-session-git
 	makedepends = intltool
 	makedepends = xfce4-dev-tools
 	depends = libxfce4ui
-	depends = libwnck
+	depends = libwnck3
 	depends = libsm
 	depends = polkit
 	depends = xorg-iceauth

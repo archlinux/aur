@@ -7,14 +7,14 @@
 
 _pkgname=xfce4-session
 pkgname=xfce4-session-git
-pkgver=4.12.0.r31.ge24603a
+pkgver=4.12.0.r101.ge6aafcf
 pkgrel=1
 pkgdesc="Xfce session manager - git checkout"
 arch=('i686' 'x86_64')
 url="http://www.xfce.org/"
 license=('GPL2')
 groups=('xfce4')
-depends=('libxfce4ui' 'libwnck' 'libsm' 'polkit' 'xorg-iceauth' 'xorg-xinit'
+depends=('libxfce4ui' 'libwnck3' 'libsm' 'polkit' 'xorg-iceauth' 'xorg-xinit'
          'xorg-xrdb' 'polkit-gnome' 'hicolor-icon-theme')
 makedepends=('git' 'intltool' 'xfce4-dev-tools')
 optdepends=('gnome-keyring: for keyring support when GNOME compatibility is enabled'
