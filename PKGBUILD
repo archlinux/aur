@@ -3,7 +3,7 @@
 pkgbase=python-clint
 pkgname=(python-clint python2-clint)
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Module for developing commandline applications'
 arch=('any')
 url='http://pypi.python.org/pypi/clint/'
@@ -31,7 +31,7 @@ package_python2-clint() {
 
   cd "clint-$pkgver-py2"
 
-  python setup.py install \
+  python2 setup.py install \
     --install-data="/usr/share/doc/$pkgname" --root="$pkgdir"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
