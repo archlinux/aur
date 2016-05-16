@@ -1,7 +1,7 @@
 # Maintainer: Dominik Peteler <archlinux@with-h.at>
 
 pkgname=ldap-account-manager
-pkgver=4.4
+pkgver=5.3
 pkgrel=1
 pkgdesc="A webfrontend for managing entries stored in an LDAP directory"
 arch=('any')
@@ -17,7 +17,7 @@ source=(http://downloads.sourceforge.net/lam/${pkgname}-${pkgver}.tar.bz2
        dont-look-for-alternate-perl.patch
        fix-htmldir-and-docdir.patch
        apache.example.conf)
-md5sums=('7ed89d9fd935ae44fa7236b06a255550'
+md5sums=('f2263f4726776fa748ce7b3ff7f07600'
          'a9674e38ec4a6e2e8c4c939212c60250'
          'd32a8d1d4863fe89fda04722404a621f'
          '288c8e57cc9f701050d35b79d70d66e8')
