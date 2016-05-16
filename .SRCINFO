@@ -1,6 +1,6 @@
 pkgbase = denix-scripts
 	pkgdesc = DeniX scripts
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 0
 	url = https://github.com/denix666/denix-scripts
 	arch = any

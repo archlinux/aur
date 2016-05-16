@@ -1,5 +1,5 @@
 pkgname=denix-scripts
-pkgver=1.1
+pkgver=1.2
 pkgrel=0
 pkgdesc="DeniX scripts"
 arch=("any")
