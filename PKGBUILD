@@ -2,7 +2,7 @@
 
 pkgname=darkplaces-mod
 pkgver=20130301
-pkgrel=1
+pkgrel=2
 pkgdesc="Quake mod specific to Darkplaces"
 arch=('any')
 url="http://icculus.org/twilight/darkplaces/"
@@ -15,13 +15,13 @@ sha256sums=('64cbba822456f4f82c3d9f50cf16122218d70912d5789ba82573e93d35b325fe'
 
 build() {
   # Make saner permission modes
-  find $srcdir -type d -print0 | xargs -0 chmod 755
-  find $srcdir -type f -print0 | xargs -0 chmod 644
+  find "$srcdir/dpmod" -type d -execdir chmod 755 {} +
+  find "$srcdir/dpmod" -type f -execdir chmod 644 {} +
 }
 
 package() {
-  install -Dd $pkgdir/usr/share/quake
-  cp -a $srcdir/dpmod $pkgdir/usr/share/quake
+  install -d "$pkgdir/usr/share/games/quake"
+  cp -a "$srcdir/dpmod" "$pkgdir/usr/share/games/quake"
 
   install -Dm644 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 }
