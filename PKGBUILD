@@ -37,8 +37,4 @@ build() {
 package() {
   cd "${pkgname}/build"
   make DESTDIR="${pkgdir}" install
-  install -Dm644 "../config/cadabra2.desktop" "$pkgdir/usr/share/applications/cadabra2.desktop"
-  install -Dm644 ../images/64x64/cadabra2.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/cadabra2.png"
-  install -Dm644 ../images/256x256/cadabra2.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/cadabra2.png"
-  install -Dm644 ../images/cadabra2.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/cadabra2.svg"
 }
