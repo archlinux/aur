@@ -2,7 +2,7 @@
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libasdcp-cth
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="open source implementation of SMPTE and the MXF Interop Sound & Picture Track File format."
 arch=('i686' 'x86_64')
 url="http://carlh.net/asdcplib"
@@ -26,4 +26,9 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python2 waf install --destdir=$pkgdir
+  cd "${pkgdir}"
+  if [ -d usr/lib64  ]
+  then
+      mv usr/lib64 usr/lib
+  fi
 }
