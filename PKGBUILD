@@ -3,12 +3,12 @@
 
 pkgname=magnum-integration
 pkgver=2016.05.13
-pkgrel=3
+pkgrel=4
 pkgdesc='Integration libraries for Magnum graphics engine'
 arch=('x86_64' 'i686')
 url='http://mosra.cz/blog/magnum.php'
 license=('MIT')
-depends=('libmagnum')
+depends=('magnum')
 makedepends=('cmake' 'git' 'ninja')
 source=('git://github.com/mosra/magnum-integration.git#commit=bd36a8ce1cc2')
 sha1sums=('SKIP')
