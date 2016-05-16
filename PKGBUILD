@@ -6,8 +6,8 @@
 _target_arch=arm
 _target=${_target_arch}-linux-gnueabihf
 pkgname=${_target}-linux-api-headers
-pkgver=4.4.1
-_basever=4.4
+pkgver=4.5.2
+_basever=4.5
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace (${_target})"
 arch=('any')
@@ -17,9 +17,9 @@ source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-${_basever}.tar.xz
         http://www.kernel.org/pub/linux/kernel/v4.x/linux-${_basever}.tar.sign
         http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz
         http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign)
-md5sums=('9a78fa2eb6c68ca5a40ed5af08142599'
+md5sums=('a60d48eee08ec0536d5efb17ca819aef'
          'SKIP'
-         'd9e951895c8c249f0bf52d85f3e63bce'
+         '19a835c1d16183f629d45779f62d36b6'
          'SKIP')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E')  # Greg Kroah-Hartman
