@@ -29,4 +29,10 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python2 waf install --destdir=$pkgdir
+  cd "${pkgdir}"
+  if [ -d usr/lib64  ]
+  then
+      mv usr/lib64 usr/lib
+  fi
 }
+
