@@ -6,33 +6,25 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-gcc-stage1
-pkgver=5.3.0
-_pkgver=5
-_islver=0.15
-pkgrel=5
-_snapshot=5-20160209
+pkgver=6.1.1
+_pkgver=6
+_islver=0.16.1
+pkgrel=1
+_commit=80f78834
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target})"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
-depends=("${_target}-binutils>=2.26" 'libmpc' 'zlib')
+depends=("${_target}-binutils>=2.26-4" 'libmpc' 'zlib')
 options=('!emptydirs' '!distcc' '!strip')
-source=(#ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
-        ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
-        Unlink-the-response-file.patch)
-md5sums=('499161c65b639aa5c12a14944582b7ec'
-         '8428efbbc6f6e2810ce5c1ba73ecf98c'
-         '1f4d4ef71004261376d26d5ba6a84499')
-
-if [ -n "${_snapshot}" ]; then
-  _basedir=gcc-${_snapshot}
-else
-  _basedir=gcc-${pkgver}
-fi
+source=(https://github.com/gcc-mirror/gcc/archive/${_commit}.tar.gz
+        http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
+md5sums=('405eea1379f597d9876e33636c9cb6c7'
+         'ac1f25a0677912952718a51f5bc20f32')
 
 prepare() {
-  cd ${srcdir}/${_basedir}
+  mv gcc-${_commit}* gcc
+  cd ${srcdir}/gcc
 
   # link isl for in-tree build
   ln -s ../isl-${_islver} isl
@@ -40,13 +32,8 @@ prepare() {
   # Do not run fixincludes
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
 
-  echo ${pkgver} > gcc/BASE-VER
-
   # hack! - some configure tests for header files using "$CPP $CPPFLAGS"
   sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
-
-  # https://bugs.archlinux.org/task/47874 - commit f591a95d
-  patch -p1 -i $srcdir/Unlink-the-response-file.patch
 
   mkdir ${srcdir}/gcc-build
 }
@@ -59,7 +46,7 @@ build() {
   CFLAGS=${CFLAGS/-pipe/}
   CXXFLAGS=${CXXFLAGS/-pipe/}
 
-  ${srcdir}/${_basedir}/configure --prefix=/usr \
+  ${srcdir}/gcc/configure --prefix=/usr \
       --program-prefix=${_target}- \
       --with-local-prefix=/usr/${_target} \
       --with-sysroot=/usr/${_target} \
