@@ -7,21 +7,28 @@
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-glibc-headers
 pkgver=2.23
-pkgrel=1
+pkgrel=4
+_commit=a37d61a6
 pkgdesc="GNU C Library headers (${_target})"
 arch=('any')
 url="http://www.gnu.org/software/libc/"
 license=('GPL' 'LGPL')
-depends=("${_target}-linux-api-headers>=4.4.1")
+depends=("${_target}-linux-api-headers>=4.5.2")
 makedepends=("${_target}-gcc-stage1>=5.3.0")
 options=('!buildflags' '!strip' 'staticlibs')
-source=(http://ftp.gnu.org/gnu/libc/glibc-${pkgver}.tar.xz{,.sig})
+source=(http://ftp.gnu.org/gnu/libc/glibc-${pkgver}.tar.xz{,.sig}
+        glibc-${_commit}.patch.xz)
 md5sums=('456995968f3acadbed39f5eba31678df'
-         'SKIP')
+         'SKIP'
+         'bd20955ffd9d0b4ee246e7cca20430bc')
 validpgpkeys=('F37CDAB708E65EA183FD1AF625EF0A436C2A4AFF')  # Carlos O'Donell
 
 prepare() {
-  mkdir glibc-build
+  cd glibc-${pkgver}
+
+  patch -p1 -i ${srcdir}/glibc-${_commit}.patch
+
+  mkdir ${srcdir}/glibc-build
 }
 
 build() {
