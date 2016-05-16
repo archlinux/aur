@@ -8,7 +8,8 @@ pkgdesc='Macaroon library for Python'
 license=('Apache')
 arch=('i686' 'x86_64')
 url='https://pypi.python.org/pypi/pymacaroons-pynacl/'
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools' 'python-pynacl' 'python-six'
+             'python2-setuptools' 'python2-pynacl' 'python2-six')
 source=("git://github.com/matrix-org/pymacaroons#tag=v$pkgver")
 md5sums=('SKIP')
 
@@ -25,14 +26,14 @@ build() {
 }
 
 package_python-pymacaroons-pynacl() {
-	depends+=('python' 'python-pynacl' 'python-six')
+	depends=('python' 'python-pynacl' 'python-six')
 
 	cd pymacaroons
 	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
 
 package_python2-pymacaroons-pynacl() {
-	depends+=('python2' 'python2-pynacl' 'python2-six')
+	depends=('python2' 'python2-pynacl' 'python2-six')
 
 	cd pymacaroons-python2
 	python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
