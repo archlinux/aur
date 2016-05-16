@@ -3,7 +3,7 @@
 # Contributor: flamelab <panosfilip@gmail.com>
 
 pkgname=wingpanel-bzr
-pkgver=r108
+pkgver=r126
 pkgrel=1
 epoch=1
 pkgdesc='The Pantheon Panel'
@@ -17,10 +17,8 @@ makedepends=('bzr' 'cmake' 'vala')
 provides=('wingpanel' 'libwingpanel-2.0.so')
 conflicts=('wingpanel')
 install='wingpanel.install'
-source=('wingpanel::bzr+lp:wingpanel/0.4.x'
-        'wingpanel-fixes.patch')
-sha256sums=('SKIP'
-            '6f5101f8575a612f8e6c6b21ee9323c82ca1ec5c90fc1abf12a8f29ab2733fd7')
+source=('wingpanel::bzr+lp:wingpanel')
+sha256sums=('SKIP')
 
 pkgver() {
   cd wingpanel
@@ -30,8 +28,6 @@ pkgver() {
 
 prepare() {
   cd wingpanel
-
-  patch -Np1 -i ../wingpanel-fixes.patch
 
   if [[ -d build ]]; then
     rm -rf build
