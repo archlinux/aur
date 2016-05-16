@@ -8,7 +8,7 @@ pkgdesc="Setuptools plugin that makes unit tests execute with trial instead of p
 arch=('any')
 license=('SPL')
 url="http://pypi.python.org/pypi/setuptools_trial"
-makedepends=('python2-setuptools' 'python2-twisted')
+makedepends=('python2-setuptools')
 source=("http://pypi.python.org/packages/source/s/setuptools_trial/setuptools_trial-${pkgver}.tar.gz")
 md5sums=('bca42190adf631b213846c2b33f3676f')
 
