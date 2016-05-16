@@ -70,10 +70,11 @@ diff --git a/src/mcabber-crew/mcabber/mcabber/hooks.h b/src/mcabber-crew/mcabber
 index f427271..ef33f59 100644
 --- a/mcabber/mcabber/hooks.h
 +++ b/mcabber/mcabber/hooks.h
-@@ -29,6 +29,7 @@ typedef enum {
+@@ -29,6 +29,8 @@ typedef enum {
    HOOK_HANDLER_RESULT_ALLOW_MORE_HANDLERS = 0,
    HOOK_HANDLER_RESULT_NO_MORE_HANDLER,
    HOOK_HANDLER_RESULT_NO_MORE_HANDLER_DROP_DATA,
++#define HOOK_HANDLER_RESULT_HIGHLIGHT_MESSAGE HOOK_HANDLER_RESULT_HIGHLIGHT_MESSAGE
 +  HOOK_HANDLER_RESULT_HIGHLIGHT_MESSAGE,
  } hk_handler_result;
  

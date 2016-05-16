@@ -16,7 +16,7 @@ source=(
 )
 
 md5sums=('b857d5063795e599c1ac0b5bdaa7d232'
-         'eb243e13d29e7939828655994dec6960')
+         '263f330d3344ce0847631c3aadf4a340')
 
 _hgroot="https://bitbucket.org/McKael/mcabber-crew"
 _hgrepo="mcabber-crew"
