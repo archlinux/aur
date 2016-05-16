@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 244461 2015-08-21 07:49:53Z bisson $
+# $Id: PKGBUILD 268047 2016-05-14 22:24:23Z bisson $
 # Maintainer (Arch): Gaetan Bisson <bisson@archlinux.org>
 # Contributor (Arch): Aaron Griffin <aaron@archlinux.org>
 # Contributor (Arch): judd <jvinet@zeroflux.org>
@@ -7,8 +7,9 @@
 
 _pkgname=openssh
 pkgname=openssh-knock
-pkgver=7.1p1
-pkgrel=1
+pkgver=7.2p2
+_knockpatchver=7.2p2
+pkgrel=2
 pkgdesc='Free version of the SSH connectivity tools, with support for stealth TCP sockets'
 url='http://www.openssh.org/portable.html'
 license=('custom:BSD')
@@ -21,18 +22,18 @@ optdepends=('xorg-xauth: X11 forwarding'
             'x11-ssh-askpass: input passphrase in X')
 validpgpkeys=('59C2118ED206D927E667EBE3D3E5F56B6D920D30'
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456')
-source=("ftp://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${_pkgname}-${pkgver}.tar.gz"{,.asc}
+source=("http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${_pkgname}-${pkgver}.tar.gz"{,.asc}
         #"http://gnunet.org/sites/default/files/${_pkgname}-linux-knock-patch_0.diff"
-        "https://repo.parabola.nu/other/knock/patches/openssh/${_pkgname}-7.0p1-linux-knock-patch.diff"{,.sig}
+        "https://repo.parabola.nu/other/knock/patches/openssh/${_pkgname}-${_knockpatchver}-linux-knock-patch.diff"{,.sig}
         'sshdgenkeys.service'
         'sshd@.service'
         'sshd.service'
         'sshd.socket'
         'sshd.conf'
         'sshd.pam')
-sha1sums=('ed22af19f962262c493fcc6ed8c8826b2761d9b6' 'SKIP'
-          '36fc52e849ef5baf20f48b3d8bd0568849d45dd6' 'SKIP'
-          'cc1ceec606c98c7407e7ac21ade23aed81e31405'
+sha1sums=('70e35d7d6386fe08abbd823b3a12a3ca44ac6d38' 'SKIP'
+          '37d0c4e91e0507b00644f9fa47e3e0e64ad58741' 'SKIP'
+          'caaa801da59a5d14c0c29c43e9de5fef281ea03e'
           '6a0ff3305692cf83aca96e10f3bb51e1c26fccda'
           'ec49c6beba923e201505f5669cea48cad29014db'
           'e12fa910b26a5634e5a6ac39ce1399a132cf6796'
@@ -41,11 +42,9 @@ sha1sums=('ed22af19f962262c493fcc6ed8c8826b2761d9b6' 'SKIP'
 
 backup=('etc/ssh/ssh_config' 'etc/ssh/sshd_config' 'etc/pam.d/sshd')
 
-install=install
-
 prepare() {
 	cd "${srcdir}/${_pkgname}-${pkgver}"
-	patch -Np1 -i "${srcdir}"/${_pkgname}-7.0p1-linux-knock-patch.diff
+	patch -p1 -i "${srcdir}"/${_pkgname}-${_knockpatchver}-linux-knock-patch.diff
 }
 
 build() {
