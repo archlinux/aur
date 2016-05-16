@@ -8,8 +8,8 @@ pkgdesc='Python implementation of SAML Version 2'
 license=('Apache')
 arch=('i686' 'x86_64')
 url='https://pypi.python.org/pypi/pysaml2'
-makedepends=('python' 'python-setuptools'
-             'python2' 'python2-setuptools')
+makedepends=('python-setuptools'
+             'python2-setuptools')
 source=("https://pypi.python.org/packages/source/p/pysaml2/pysaml2-${pkgver}.tar.gz")
 md5sums=('e2b8335a7490f0ca1a1818732d6cdfb1')
 
