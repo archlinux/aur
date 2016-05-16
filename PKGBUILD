@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=haskell-bytestring-builder
-pkgver=0.10.6.0.0
+pkgver=0.10.8.1.0
 pkgrel=1
 pkgdesc="Provides methods for fully evaluating data structures (deep evaluation)"
 arch=('i686' 'x86_64')
@@ -9,14 +9,14 @@ makedepends=('ghc')
 url="https://github.com/lpsmith/bytestring-builder"
 license=('BSD3')
 source=(${pkgname#haskell-}-$pkgver.tar.gz::https://codeload.github.com/lpsmith/${pkgname#haskell-}/tar.gz/v$pkgver)
-sha256sums=('ae682f7fa49092cd9ec5f022de49d343e553a5e86d805692228de1cb496afe5f')
+sha256sums=('030e668719f9dc7e6e229cb5ad424be0edfba267475f36885626b1ed0fc7e271')
 options=('strip')
 install=bytestring-builder.install
 
 build() {
   cd "$srcdir/${pkgname#haskell-}-$pkgver"
 
-  msg 'Building...'
+  msg2 'Building...'
   runhaskell Setup configure \
               --prefix=/usr \
               --docdir=/usr/share/doc/bytestring-builder \
@@ -33,10 +33,10 @@ build() {
 package() {
   cd "$srcdir/${pkgname#haskell-}-$pkgver"
 
-  msg 'Installing license...'
+  msg2 'Installing license...'
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/${pkgname#haskell-}/LICENSE"
 
-  msg 'Installing...'
+  msg2 'Installing...'
   install -Dm 744 register.sh "$pkgdir/usr/share/haskell/${pkgname#haskell-}/register.sh"
   install -Dm 744 unregister.sh "$pkgdir/usr/share/haskell/${pkgname#haskell-}/unregister.sh"
   install -dm 755 "$pkgdir/usr/share/doc/ghc/html/libraries"
