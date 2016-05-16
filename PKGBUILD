@@ -2,7 +2,7 @@
 # Contributor: Stefan Karner <stefan.karner@student.tuwien.ac.at>
 pkgname=libdcp
 pkgver=1.3.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A small C++ library which can create and read Digital Cinema Packages using JPEG2000 and WAV files"
 arch=('i686' 'x86_64')
 url="http://carlh.net/libdcp"
@@ -22,5 +22,9 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   python2 waf install --destdir=$pkgdir
+  if [ -d usr/lib64   ]
+    then
+       mv usr/lib64 usr/lib
+    fi
 }
 
