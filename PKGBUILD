@@ -9,7 +9,6 @@ url='https://labs.nic.cz/cs/datovka.html'
 license=('LGPL')
 depends=('qt5-base' 'libisds' 'openssl' 'hicolor-icon-theme')
 makedepends=('qt5-tools')
-install=$pkgname.install
 source=(https://secure.nic.cz/files/datove_schranky/$pkgver/$pkgname-$pkgver-src.tar.xz)
 sha256sums=('5346a942401f69077bc81eac74bc13750a4bda01619094d3a123317c24ef6070')
 
