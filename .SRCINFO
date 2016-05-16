@@ -1,0 +1,24 @@
+pkgbase = beancount
+	pkgdesc = Double-Entry Accounting from Text Files
+	pkgver = 2.0b11
+	pkgrel = 1
+	url = http://furius.ca/beancount/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = python>=3.5
+	depends = mpdecimal
+	depends = python-dateutil
+	depends = python-ply
+	depends = python-bottle
+	depends = python-lxml
+	depends = python-magic
+	depends = python-beautifulsoup4
+	depends = python-chardet
+	depends = python-google-api-python-client
+	conflicts = beancount-hg
+	source = https://pypi.python.org/packages/21/42/54a272e02d25ec0d336c9524ee6bd18bfa97ee5c284c0d75a8cbf2aeabfa/beancount-2.0b11.tar.gz
+	sha256sums = 101f5a7f7474526d8f8268f9cbaf4647ba14664eceb375479340076d1675f574
+
+pkgname = beancount
+
