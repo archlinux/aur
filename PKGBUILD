@@ -1,9 +1,10 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: youngunix <zagazaw2004 () gmail ()>
+# {former}Maintainer: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: eht16 <enrico.troeger@uvena.de>
 # Contributor: Addict7 <nicolasfloquet@gmail.com>
 
 pkgname=geany-plugins-git
-pkgver=1.24.213.gc12f0d3
+pkgver=1.27.0
 pkgrel=1
 pkgdesc='Various plugins for Geany'
 arch=('x86_64' 'i686')
@@ -15,7 +16,7 @@ optdepends=('hspell: hebrew spell checker')
 install="$pkgname.install"
 provides=('geany-plugins')
 conflicts=('geany-plugins-svn' 'geany-plugins')
-source=('geany-plugins::git://github.com/geany/geany-plugins.git')
+source=('https://github.com/geany/geany-plugins.git')
 md5sums=('SKIP')
 
 # These plugins does not build. Skipping until upstream makes them compile.

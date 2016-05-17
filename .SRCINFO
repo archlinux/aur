@@ -1,6 +1,6 @@
 pkgbase = geany-plugins-git
 	pkgdesc = Various plugins for Geany
-	pkgver = 1.24.213.gc12f0d3
+	pkgver = 1.27.0
 	pkgrel = 1
 	url = http://plugins.geany.org/
 	install = geany-plugins-git.install
@@ -27,7 +27,7 @@ pkgbase = geany-plugins-git
 	provides = geany-plugins
 	conflicts = geany-plugins-svn
 	conflicts = geany-plugins
-	source = geany-plugins::git://github.com/geany/geany-plugins.git
+	source = https://github.com/geany/geany-plugins.git
 	md5sums = SKIP
 
 pkgname = geany-plugins-git
