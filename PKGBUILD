@@ -1,7 +1,7 @@
-# Maintainer: David Parrish <daveparrish@gmail.com>
+# Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=bitsquare-git
-pkgver=v0.3.3.r21.g9d9ce59
+pkgver=v0.4.6.r5.gbf8e3c3
 pkgrel=1
 pkgdesc="Bitsquare is a cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('x86_64')
@@ -10,9 +10,11 @@ license=('AGPL3')
 depends=('bash' 'java-openjfx')
 makedepends=('maven')
 source=("${pkgname}::git+https://github.com/bitsquare/bitsquare.git"
+  "git+https://github.com/bitsquare/bitcoinj.git"
   "bitsquare.sh"
   "bitsquare.desktop")
 sha256sums=('SKIP'
+            'SKIP'
             'b2e5e85f842f0bc9910087d62f78f5fd9fc1b6232849b59e785acbec5d8955cf'
             '15592a05a2a4d6cb65c757e9eec5e3818bf38e7397a3b98e7651a8a3b51f9ba9')
 
@@ -21,9 +23,22 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+  cd "${srcdir}/bitcoinj"
+  git checkout FixBloomFilters
+}
+
 build() {
+  # Use a temporary local maven repository.
+  local mvn_repo="$srcdir/mvn-repository"
+
+  cd "${srcdir}/bitcoinj"
+  echo "Building bitcoinj ..."
+  mvn clean install -Dmaven.repo.local="$mvn_repo" -DskipTests -Dmaven.javadoc.skip=true
+
   cd "${srcdir}/${pkgname}"
-  mvn package
+  echo "Building bitsquare ..."
+  mvn clean package -Dmaven.repo.local="$mvn_repo" -DskipTests
 }
 
 package() {
