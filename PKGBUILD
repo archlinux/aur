@@ -1,7 +1,7 @@
 # Maintainer: b.klettbach@gmail.com
 
 pkgname=multimc5-git
-pkgver=0.4.10.r14.gfc43fd1
+pkgver=0.4.11.r67.ga750f6e
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
@@ -45,6 +45,7 @@ build() {
 package() {
  cd "$srcdir/$pkgname/build"
  make DESTDIR="$pkgdir" install
+ install -D libMultiMC_gui.so $pkgdir/usr/lib/multimc5/bin/libMultiMC_gui.so
  install -D libMultiMC_logic.so $pkgdir/usr/lib/multimc5/bin/libMultiMC_logic.so
  install -D librainbow.so $pkgdir/usr/lib/multimc5/bin/librainbow.so
  install -D $srcdir/multimc5.sh $pkgdir/usr/bin/multimc5
