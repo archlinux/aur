@@ -1,7 +1,7 @@
 pkgbase = fanficfare-git
 	pkgdesc = A tool for downloading fanfiction to eBook formats
-	pkgver = 2.3.1.r12.g0cd7126
-	pkgrel = 2
+	pkgver = 2.3.2.r0.ga593bd2
+	pkgrel = 1
 	url = https://github.com/JimmXinu/FanFicFare
 	arch = any
 	license = Apache
