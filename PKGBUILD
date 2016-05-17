@@ -2,7 +2,7 @@
 
 pkgname=madx-dev
 pkgver=5.02.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Accelerator Optics simulation code, latest development release"
 url="http://cern.ch/mad"
 license=("custom")
@@ -54,6 +54,8 @@ check() {
 package() {
     cd ${srcdir}/build
     make DESTDIR=${pkgdir} install
+    # resolve conflict with 'ndiff' from package 'nmap':
+    mv ${pkgdir}/usr/bin/n{,um}diff
 
     cd ${srcdir}/${sources}
     install -D -m644 License.txt ${pkgdir}/usr/share/licenses/${pkgname}/license.txt
