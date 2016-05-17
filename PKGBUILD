@@ -2,7 +2,7 @@
 
 pkgname='libmini'
 _pkgname=mini
-pkgver=11.5
+pkgver=11.5.3
 pkgrel=1
 pkgdesc="Real-Time Terrain Rendering. Display high-resolution geospatial terrain data at real-time."
 arch=('i686' 'x86_64')
@@ -16,7 +16,8 @@ provides=('libmini')
 conflicts=('libmini-svn')
 options=('staticlibs')
 source=("http://www.open-terrain.org/uploads/ZIP/MINI-${pkgver}.zip")
-md5sums=('09494577cd989c720219e26174585f76')
+md5sums=('7bf2bf6d3ec0c4252aa79db4f80fe4a7')
+
 
 build() {
   cd "${_pkgname}"  
