@@ -1,3 +1,25 @@
+Version 2.3.2 - 17 May 2016
+- Remove some more print output (hopefully the last) in the hopes it will help
+  with Mac.
+- Fix for %p (am/pm) date parsing on non-en_US locales. - AKA Fix for edeniz's
+  date issues with SB.
+- Fix for Yet Another Site Change on quotevcom.
+- Fix for Mac OS X crashes - changes to progress bar dialogs implementation.
+- Update translations.
+- Fix for Mac OS X freezes - set log level to CRITICAL unless calibre in debug
+  or in BG job.
+- Update included html2text for web/plugin, require as dependency for CLI. (Fix
+  for obscure problem with URLs in story with text output.)
+- Change adapter_ncisfictionnet to eFiction Base due to site change.
+- Fixes for ficbook.net changes.
+- Remove dead site: bdsm-geschichten.net
+- Remove dead site: scarhead.net
+- Remove dead site: www.therabidreader.com
+- Remove dead site: grangerenchanted.com
+- Remove dead site: www.nickngreg.nl
+- Remove dead site: tokra.fandomnet.com
+- Remove dead site: buffynfaith.net
+
 Version 2.3.1 - 19 Apr 2016
 - Add additional strings for translations.
 - Add 'Save All Errors' checkbox for plugin save-errors column.
@@ -10,42 +32,3 @@ Version 2.3.1 - 19 Apr 2016
 - Catch more img tag exceptions.
 - Fix series/universe processing in adapter_storiesonlinenet.
 - Fix for literotica.com using str() instead of unicode().
-
-Version 2.3.0 - 20 Mar 2016
-- Fix for adapter_thehexfilesnet missing chapter text.
-- Fixes for finestories.com, now shares code with storiesonline.net, thanks
-  davidfor for this.
-- Allow ini keyword universe_as_series in finestories.com as well as
-  storiesonline.net.
-- Fix for fimfiction.net site update -- thanks Facedeer
-- New site: [url]www.artemis-fowl.com[/url] - Thanks gcomyn!
-- New site: [url]www.naiceanilme.net[/url] - Thanks gcomyn!
-- New site: fanfiction.lucifael.com - Thanks gcomyn!
-- New site: buffygiles.velocitygrass. - Thanks gcomyn!
-- New site: [url]www.andromeda-web.com[/url] - Thanks gcomyn!
-- New site: [url]www.therabidreader.com[/url] - Thanks gcomyn!
-- Performance improvements (extra caching) for complex metadata manipulation.
-- Changes to all plugin logging output (debug) to add datetime and reduce
-  inadvertent smilies. ("FFF:DEBUG")
-- Additional ini options for base_xenforoforum adapters.
-- Add storyUrl ini section feature.  Add custom configuration for individual
-  stories by adding personal.ini sections specifically for them.
-- Fixes for quotev.com, author and chapter list.
-- Add 'averrating' and tweak description: adapter_literotica
-- Fix adapter_literotica setDescription
-- Make HTTP 410 StoryDoesNotExist in tthfanfic.org, make conn fail trace
-  debug, not error level.
-- Allow a second kind of 'chapter missing' for portkey.org.
-- Change fanfiction.mugglenet.com to base_efiction after site update.
-- Hide user/pass in debug log, add 'View Safe personal.ini' option that also
-  hides user/pass.
-- Re-organize personal.ini config tab in plugin.
-- Yet more fixes for quotev.com changes.
-- Find and include chapter specific images for quotev.com.
-- Fix for a bug on a TtH story (empty category tag).
-- Add site specific reads, reviews for hpfandom.net.
-- Fix for base_efiction_adapter stories with spans w/o class attr.
-- Add support for 'This story has not been validated' in base_efiction_adapter
-- Some mcstoriescom stories include <h3> tags that aren't
-  title/chapter/byline.
-- Update translations.
