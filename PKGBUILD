@@ -4,9 +4,11 @@
 
 pkgbase=linux-rc       # Build kernel with a different name
 _srcname=linux-4.5
-pkgver=4.5.5rc1
-_patchname=patch-4.5.5-rc1
-pkgrel=1
+_stable=4.5.4
+_patchver=4.5.5
+pkgver=${_patchver}rc1
+_rcpatch=patch-${_patchver}-rc1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -14,8 +16,11 @@ makedepends=('kmod' 'inetutils' 'bc')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/stable-review/$_patchname.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/stable-review/$_patchname.sign"
+        "http://www.kernel.org/pub/linux/kernel/v4.x/patch-${_stable}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_stable}.sign"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/stable-review/$_rcpatch.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/stable-review/$_rcpatch.sign"
+        
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -23,6 +28,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch')
 
 sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
+            'SKIP'
+            '6a9cfe691ac77346c48b7f83375a1880ebb379594de1000acad45da45d711e42'
             'SKIP'
             'b84124f03dfbaf639a7aed7169372ad70998bf87dc62ab780028f771e1925f51'
             'SKIP'
@@ -41,7 +48,10 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/$_patchname"
+  patch -p1 -i "${srcdir}/patch-${_stable}"
+
+  # add rc patch
+  patch -p1 -i "${srcdir}/$_rcpatch"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
