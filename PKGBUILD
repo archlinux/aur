@@ -1,7 +1,7 @@
 # Maintainer: Samuel Mesa <samuelmesa@linuxmail.org>
 
 pkgname=qtviewer
-pkgver=2.5
+pkgver=2.5.1
 pkgrel=1
 pkgdesc="Real-Time Terrain Rendering. Display high-resolution geospatial terrain data at real-time."
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('cmake' 'subversion' 'qt4')
 optdepends=()
 options=('staticlibs')
 source=("http://www.open-terrain.org/uploads/ZIP/QTVIEWER-${pkgver}.zip")
-md5sums=('617fc89cbe0256d8aeb5abff5415b586')
+md5sums=('6e6496fcf4f0fc8a207261b0625c4a7f')
 
 build() {
   cd "${pkgname}"  
@@ -30,7 +30,7 @@ build() {
   -DBUILD_WITH_QT5=OFF \
   ../${pkgname}
 
-  make -j5
+  make -j2
 }
 
 package() {
