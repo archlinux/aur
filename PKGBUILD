@@ -37,8 +37,8 @@ source=(
     'firefox-nightly-safe.desktop'
     'vendor.js'
 )
-source_i686=("${_url_l10n}/${_file_i686}")
-source_x86_64=("${_url_l10n}/${_file_x86_64}")
+source_i686=("${_url_l10n}/${_file_i686}" "${_url_l10n}/${_sums_i686}"{,.asc})
+source_x86_64=("${_url_l10n}/${_file_x86_64}" "${_url_l10n}/${_sums_x86_64}"{,.asc})
 sha512sums=(
     '725babc1365e02a30f50aafbc069b04a97cd247f76240b99b0a734dcce0e560f30cfd441efe9b0b9edcc48f327c8adad34e1ae45c2ba047205c84921d5e43e59'
     '2df6b84978ec459ffad3e0d285c816da07a890db30284d3b2bec250472c10e08003edf705278cb97e02a52fb5f1325d962c08d5fbcf98f484e982a97e381407b'
@@ -46,24 +46,15 @@ sha512sums=(
 )
 _srcsum_i686="$(curl -s "${_url_l10n}/${_sums_i686}" | grep "${_file_i686}" | grep sha512 | cut -d " " -f1)"
 _srcsum_x86_64="$(curl -s "${_url_l10n}/${_sums_x86_64}" | grep "${_file_x86_64}" | grep sha512 | cut -d " " -f1)"
-sha512sums_i686=("${_srcsum_i686}")
-sha512sums_x86_64=("${_srcsum_x86_64}")
+sha512sums_i686=("${_srcsum_i686}" 'SKIP' 'SKIP')
+sha512sums_x86_64=("${_srcsum_x86_64}" 'SKIP' 'SKIP')
+validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla’s GnuPG release key
 
 pkgver() {
   SRC_VER="${_name}-${_version}.en-US.linux-${CARCH}.txt"
   curl -OR "${_url}/${SRC_VER}"
   echo "${_version}.$(head -n1 ${SRC_VER} | cut -c -8)"
 }
-
-# Uncomment check() to enable GnuPG signature verification. You’ll need Mozilla’s GnuPG release key.
-# Their current fingerprint is 14F2 6682 D091 6CDD 81E3 7B6D 61B7 B526 D98F 0353
-#check() {
-#  CHECKSUM="${_src}-${CARCH}.checksums"
-#  CHECKSIG="${CHECKSUM}.asc"
-#  curl -OR "${_url_l10n}/${CHECKSUM}"
-#  curl -OR "${_url_l10n}/${CHECKSIG}"
-#  gpg --verify ${CHECKSIG} ${CHECKSUM}
-#}
 
 package() {
   OPT_PATH="/opt/${_name}-${_version}"
