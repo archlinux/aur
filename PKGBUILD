@@ -38,11 +38,13 @@ package() {
   # install GTK 2 version and latest GTK 3 version
   for theme in Breeze*; do
     echo "Installing latest GTK 3 version for $theme which is is 3.${_latest["$theme"]}"
-    find "$theme/gtk-"{2.0,"3.${_latest["$theme"]}"} -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/themes/{}" \;
+    find "$theme/"{'gtk-2.0',"gtk-3.${_latest["$theme"]}",'assets'} -type f -exec install -Dm644 '{}' "$pkgdir/usr/share/themes/{}" \;
   done
 
   # ensure the GTK 3 themes are still found
   for theme in Breeze*; do
     mv "$pkgdir/usr/share/themes/${theme}/gtk-3."{"${_latest["$theme"]}",0}
   done
+
+  # TODO: also package the scripts and files for color customization
 }
