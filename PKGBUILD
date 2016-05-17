@@ -1,18 +1,21 @@
 # Maintainer: Maxim Andersson <thesilentboatman@gmail.com>
 
 pkgname=betty
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Friendly English-like interface for your command line"
 arch=('any')
 url="https://github.com/pickhardt/betty"
 license=('Apache')
 depends=('ruby')
-source=("https://github.com/pickhardt/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('ed71e88a659725e0c475888df044c9de3ab1474ff483f0a3bb432949035e62d3')
+# temporary hack since the pkgver is not taged
+source=("https://github.com/pickhardt/${pkgname}/archive/e1fc356c1c9c135a6e647e0c9552685d142e73a4.zip")
+#source=("https://github.com/pickhardt/${pkgname}/archive/v${pkgver}.tar.gz")
+sha256sums=('a61b8025ad37822edbf5ddbf71bdde787c6c40989c26dc1897aae9d22118ee68')
 
 prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-"*
+  #cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Set absolute paths for static files
   sed -i "s^File.dirname(__FILE__) + '/lib^'/usr/lib/${pkgname}^g" main.rb
@@ -21,7 +24,8 @@ prepare() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-"*
+  #cd "${srcdir}/${pkgname}-${pkgver}"
 
   install -d "${pkgdir}/etc/${pkgname}"
 
