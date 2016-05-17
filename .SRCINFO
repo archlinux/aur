@@ -8,6 +8,10 @@ pkgbase = lunarg-vulkan-sdk
 	license = custom
 	depends = amdgpu-pro
 	conflicts = dpkg
+	conflicts = spirv-tools,
+	conflicts = vulkan-icd-loader,
+	conflicts = vulkan-validation-layers,
+	conflicts = vulkan-headers
 
 pkgname = lunarg-vulkan-sdk
 

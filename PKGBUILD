@@ -8,7 +8,7 @@ url='https://vulkan.lunarg.com'
 license=('custom')
 arch=('i686' 'x86_64')
 depends=('amdgpu-pro')
-conflicts=('dpkg' 'spirv-tools', 'vulkan-icd-loader')
+conflicts=('dpkg' 'spirv-tools', 'vulkan-icd-loader', 'vulkan-validation-layers', 'vulkan-headers')
 
 build() {
     sed -i -e '/\#\!\/bin\/sh/,+500d' ../vulkansdk-linux-x86_64-1.0.3.1.run
