@@ -3,11 +3,11 @@
 
 _name=exchangecalendar
 pkgname=thunderbird-${_name}-beta
-pkgver=3.8.0_beta2
-_ver_min=3.8
-_ver=${_ver_min}.0
-_beta=beta1
-pkgrel=2
+_verbeta=beta3
+_vermin=3.8
+_ver=${_vermin}.0
+pkgver=${_ver}_${_verbeta}
+pkgrel=1
 pkgdesc='Thunderbird Addon/Extension and Provider for Microsoft Exchange 2007/2010/2013 Calendar, Tasks, Contacts and Global Address List (GAL)'
 url='https://github.com/Ericsson/exchangecalendar'
 arch=('any')
@@ -19,8 +19,8 @@ options=('!strip' '!libtool' '!staticlibs' '!docs')
 conflicts=('thunderbird-exchangecalendar-git' 'thunderbird-exchangecalendar')
 replaces=('thunderbird-exchangecalendar-git' 'thunderbird-exchangecalendar')
 provides=("${_name}=${pkgver}")
-source=("${pkgname}-${pkgver}.xpi::${url}/releases/download/v${_ver_min}-${_beta}/${_name}-v${_ver}-${_beta}.xpi")
-sha256sums=('a475b444289fb0e19af18007003e3a9f5d7e35939f5ca42cdda16dac12fd7c72')
+source=("${pkgname}-${pkgver}.xpi::${url}/releases/download/v${_vermin}-${_verbeta}/${_name}-v${_ver}-${_verbeta}.xpi")
+sha256sums=('ecd169205709926ca49ac954e5b1d88b934ef671050b398b4d79dbcea8e08655')
 
 package() {
   _extdir=usr/lib/thunderbird/extensions
