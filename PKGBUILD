@@ -2,16 +2,16 @@
 
 pkgname=j7z
 _filename_=J7Z
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="An alternative 7-Zip GUI"
-arch=("any")
 url="http://${_filename_}.Xavion.name"
+arch=("any")
 license=("LGPL3")
 depends=("java-runtime>=7" "p7zip")
 #makedepends=("apache-ant" "java-environment>=7")
-optdepends=("gtk-kde4: KDE style support"
-			"oxygen-gtk: Native 'Oxygen' style"
+optdepends=("oxygen-gtk2: Native 'Oxygen' style"
+			"gtk-kde4: KDE 4 style support"
 			"tar: Supports POSIX attributes"
 			"gzip: Supports GZip archives"
 			"bzip2: Supports BZip2 archives"
@@ -43,5 +43,5 @@ package() {
 	msg "Seek further information or send feedback via the 'Help' menu."
 }
 
-#sha1sums=('7d7fc964de1e6323c6323b960eb3425859ae744a')
-sha1sums=('830623317ffdae88c82a1eefc6f0b760113a8c7d')
+#sha1sums=('728a531cbc26382197c94021e24884823fb13497')
+sha1sums=('00f9fb0a46048fd7a1e2eab3a7997e2571bc1066')
