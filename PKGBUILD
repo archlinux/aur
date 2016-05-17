@@ -1,6 +1,6 @@
 # Maintainer: Benjamin Chrétien <chretien dot b +aur at gmail dot com>
 pkgname=cudnn
-pkgver=5.0.4
+pkgver=5.0.5
 pkgrel=1
 pkgdesc="NVIDIA CUDA Deep Neural Network library"
 arch=('x86_64')
@@ -11,8 +11,8 @@ source=()
 sha256sums=()
 
 _cudnnSrcDir=""
-_cudnnSrcName="cudnn-7.5-linux-x64-v5.0-rc.tgz"
-_cudnnSha256="320d54ab31dd7e1eb57a5fe054fe44143483afe851c900ebe9bb016f61f4519a"
+_cudnnSrcName="cudnn-7.5-linux-x64-v5.0-ga.tgz"
+_cudnnSha256="c4739a00608c3b66a004a74fc8e721848f9112c5cb15f730c1be4964b3a23b3a"
 
 prepare() {
   echo "###################################################################"
