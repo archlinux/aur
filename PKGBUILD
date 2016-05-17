@@ -3,7 +3,7 @@
 
 _pkgname=stupidterm
 pkgname=${_pkgname}-git
-pkgver=v1.r6.g5f3e1fd
+pkgver=v1.r9.g61bf67b
 pkgrel=1
 pkgdesc="A Stupid Terminal based on VTE"
 arch=("i686" "x86_64" "armv5tel" "armv7l")
