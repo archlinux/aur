@@ -17,6 +17,6 @@ post_remove(){
 cat << EOF
 ==> Removing user openlava 
 EOF
-#userdel openlava
+userdel openlava
 
 }

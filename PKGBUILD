@@ -1,9 +1,9 @@
 # Maintainer: Dan Collins <collins.dan.openlava@badbytes.net>
 
 pkgname=openlava
-pkgver=3.2
-pkgvershort=3.2
-pkgrel=1
+pkgver=3.3.1
+pkgvershort=3.3
+pkgrel=2
 pkgdesc="A open source cluster scheduler"
 conflicts=("openlava")
 depends=("autoconf")
@@ -12,7 +12,17 @@ arch=('i686' 'x86_64')
 url="http://www.openlava.org/"
 license=("GPL2")
 install=${pkgname}.install
-backup=("opt/openlava-3.2/conf/lsf.conf"
+bk="opt/openlava/conf/"
+backup=(
+#${bk}"lsf.conf"
+#${bk}"lsf.task"
+#${bk}"lsb.params"
+#${bk}"lsb.queues"
+#${bk}"lsb.users" 
+#${bk}"lsf.cluster.openlava"
+#${bk}"lsf.conf"
+#${bk}"lsf.shared"
+#${bk}"lsf.tasks"
     )
 source=("https://github.com/openlava/openlava/archive/${pkgver}.tar.gz")
 #{,.sig}
@@ -38,9 +48,9 @@ _genfiles() {
 	Type=forking
 	Restart=always
 	#PIDFile=/run/${pkgbase}.pid
-	# EnvironmentFile=-/etc/sysconfig/${pkgbase}-dir
-	ExecStart=/opt/${pkgbase}/etc/openlava start
+	#EnvironmentFile=-/etc/sysconfig/${pkgbase}-dir
     #User=openlava
+	ExecStart=/opt/${pkgbase}/etc/openlava start
 
 	[Install]
 	WantedBy=multi-user.target
@@ -53,7 +63,8 @@ _geninstallscript() {
 	# ${pkgbase^} install script
 	#
 	post_install(){
-	cd config;cp lsb.hosts lsb.params lsb.queues lsb.users \
+	cd config \
+    cp lsb.hosts lsb.params lsb.queues lsb.users \
 	lsf.cluster.openlava lsf.conf lsf.shared lsf.tasks openlava.* \
 	/opt/openlava/etc
 	useradd -r openlava
@@ -71,24 +82,35 @@ build() {
 
     ./bootstrap.sh
 	./configure \
-		--prefix=/opt/openlava/ \
+        --prefix=/opt/openlava/ \
 		--with-systemd=/usr/lib/systemd/system/ \
 
     make clean
 	make
 
-
 }
 
 package() {
 	cd openlava-${pkgver}/
-
+    make clean
 	make DESTDIR=${pkgdir} install
-
 	install -D -m0644 ${srcdir}/openlava.service ${pkgdir}/usr/lib/systemd/system/openlava.service
+    #install -D -m0644 ${srcdir}/openlava-${pkgver}/config/lsb.hosts ${pkgdir}/opt/openlava/etc/lsb.hosts
+    #install -D -m0644 ${srcdir}/openlava-${pkgver}/config/lsb.params ${pkgdir}/opt/openlava/etc/lsb.params
+    #install -D -m0644 ${srcdir}/openlava-${pkgver}/config/lsb.queues ${pkgdir}/opt/openlava/etc/lsb.queues
+    #install -D -m0644 ${srcdir}/openlava-${pkgver}/config/lsb.users ${pkgdir}/opt/openlava/etc/lsb.users
+    #install -D -m0644 ${srcdir}/openlava-${pkgver}/config/lsf.cluster.openlava ${pkgdir}/opt/openlava/etc/lsf.cluster.openlava
+    #install -D -m0644 ${srcdir}/openlava-${pkgver}/config/lsf.conf ${pkgdir}/opt/openlava/etc/lsf.conf
+    #install -D -m0644 ${srcdir}/openlava-${pkgver}/config/lsf.shared ${pkgdir}/opt/openlava/etc/lsf.shared
+    #install -D -m0644 ${srcdir}/openlava-${pkgver}/config/lsf.task ${pkgdir}/opt/openlava/etc/lsf.task
+    #install -D -m0644 ${srcdir}/openlava-${pkgver}/config/openlava ${pkgdir}/opt/openlava/etc/openlava
+    #install -D -m0644 ${srcdir}/openlava-${pkgver}/config/openlava.sh ${pkgdir}/opt/openlava/etc/openlava.sh
+    #install -D -m0644 ${srcdir}/openlava-${pkgver}/config/openlava.setup ${pkgdir}/opt/openlava/etc/openlava.setup
+    #install -D -m0644 ${srcdir}/openlava-${pkgver}/config/openlava.csh ${pkgdir}/opt/openlava/etc/openlava.csh
+    
+    #lsb.params lsb.queues lsb.users \
+    #lsf.cluster.openlava lsf.conf lsf.shared lsf.tasks openlava.* \
+    #opt/openlava/etc
 }
 
-
-
-
-sha256sums=('f985d117a7405ebdfc11646e549d2a8869b521ce02c630c2e6e413cf57c2a2e0')
+sha256sums=('3330ea7a30985d1723f915040ad57cecab15f7886e70cec4e65f87d8b0b2e0e7')
