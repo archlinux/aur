@@ -4,13 +4,13 @@
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.3.11.rc1.r7.gc414029
+pkgver=0.4.1.r165.gf36671d
 pkgrel=1
 pkgdesc='global versioned p2p merkledag file system'
 url="https://github.com/ipfs/$_pkgname"
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
-makedepends=('git' 'go' 'gx' 'gx-go')
+makedepends=('git' 'go')
 optdepends=('fuse: for mounting/advanced use'
             'bash-completion: bash completion support')
 provides=("$_pkgname")

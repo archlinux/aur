@@ -3,3 +3,6 @@
 *.src.tar.gz
 # Ignore temporary files
 *~
+src
+pkg
+go-ipfs
