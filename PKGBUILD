@@ -3,8 +3,8 @@
 # Contributors: Ner0, Sevenseven
 
 pkgname=qbittorrent-git
-pkgver=3.3.4.r490.gef6e848
-pkgrel=2
+pkgver=3.3.4.r529.g673b86c
+pkgrel=1
 pkgdesc="A bittorrent client powered by C++, Qt5 and the good libtorrent library (development version)"
 arch=('i686' 'x86_64')
 url="http://www.qbittorrent.org/"
@@ -30,6 +30,7 @@ build() {
   cd ${pkgname%-*}
 
   ./configure --prefix=/usr
+  qmake-qt5 src/src.pro QMAKE_CFLAGS_ISYSTEM=
   make
 }
 
