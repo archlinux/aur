@@ -3,13 +3,13 @@
 # Contributor: Maxime de Roucy <maxime.deroucy@gmail.com>
 pkgname=cpp2dia
 pkgver=1.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="create UML diagrams for the diagram creation program \"Dia\" from an existing C++ source"
 arch=(i686 x86_64)
 url="http://cpp2dia.sourceforge.net/"
 license=('zlib/libpng')
 depends=('tcl>=8.3' 'graphviz>=1.8' 'dia>=0.88.1' 'ctags>=5.4')
-install=('cpp2dia.install')
+install='cpp2dia.install'
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz"
 	"cpp2dia.patch")
 md5sums=('0c5b5c4e6869f79e58ffa0fde42585d6'
