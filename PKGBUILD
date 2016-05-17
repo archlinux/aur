@@ -2,7 +2,7 @@
 
 pkgname=terraria-server
 pkgver=1.3.0.8
-pkgrel=7
+pkgrel=8
 pkgdesc="Official dedicated server for Terraria"
 arch=('x86_64' 'x86')
 license=('unknown')
@@ -23,7 +23,7 @@ sha256sums=('0ab1ee17d78ae1ec039363519840cb1651c6aa22f5a76f014d9cfdca4fb7a333'
 package() {
     cd "${srcdir}/${pkgname}-linux-${_pkgver}/"
     dest="${pkgdir}/opt/terraria-server"
-    install -o 197 -g 197  -d "${dest}"
+    install -o 697 -g 697  -d "${dest}"
     install -m644 FNA.dll "${dest}/"
     install -m644 FNA.dll.config "${dest}/"
     install -m644 Ionic.Zip.CF.dll "${dest}/"
@@ -37,8 +37,8 @@ package() {
     install -d "${pkgdir}/usr/lib/systemd/system/"
     install -m644 terraria-server@.service "${pkgdir}/usr/lib/systemd/system/"
 
-    install -o 197 -g 197 -d "${pkgdir}/etc/terraria-server/"
-    install -o 197 -g 197 -d "${pkgdir}/var/lib/terraria-server/"
+    install -o 697 -g 697 -d "${pkgdir}/etc/terraria-server/"
+    install -o 697 -g 697 -d "${pkgdir}/var/lib/terraria-server/"
 
     install -d "${pkgdir}/usr/lib/"
     ln -s "/usr/lib/libmonosgen-2.0.so.1.0.0" "${pkgdir}/usr/lib/libmonosgen-2.0.so.0"
