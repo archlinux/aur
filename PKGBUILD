@@ -2,7 +2,7 @@
 # Contributor: Nuno Araujo <nuno.araujo@russo79.com>
 
 pkgname=mnemosyne
-pkgver=2.3.5
+pkgver=2.3.6
 pkgrel=1
 pkgdesc="A flash-card tool with a sophisticated card review algorithm"
 arch=('i686' 'x86_64')
