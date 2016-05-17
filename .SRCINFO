@@ -1,0 +1,15 @@
+pkgbase = dl-c-iso8583
+	pkgdesc = ISO 8583 is a messaging standard used for payment card originated financial transactions.
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = http://www.oscarsanderson.com/iso-8583/
+	arch = x86_64
+	license = custom
+	options = staticlibs
+	source = http://www.oscarsanderson.com/wp-content/uploads/2008/07/dl_c_iso8583_v0_0_4_160708_allfiles.tar
+	source = LICENSE
+	sha256sums = 36a79e43a0abf087a58bff7e86e506a77a4d814b518cb137a00faac6e97c9ab5
+	sha256sums = aaa6de18a2be49b5bcb3acd99bb61c04c7c11042d136fb512ea96d346df6bbed
+
+pkgname = dl-c-iso8583
+
