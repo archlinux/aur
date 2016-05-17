@@ -2,7 +2,7 @@
 
 pkgname=routersploit-git
 _pkgname=routersploit
-pkgver=2.1.0.r3.gaa015de
+pkgver=2.1.0.r45.g2a73e61
 pkgrel=1
 pkgdesc="An open-source exploitation framework dedicated to embedded devices."
 arch=('any')
@@ -25,9 +25,6 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-
-	# Fix wrong python reference
-	sed -i 's/\/usr\/bin\/env python/\/usr\/bin\/python2/' ./rsf.py
 }
 
 package() {
