@@ -11,7 +11,7 @@ diff -rupN a/product.json b/product.json
  	"win32MutexName": "vscodeoss",
  	"licenseUrl": "https://github.com/Microsoft/vscode/blob/master/LICENSE.txt",
  	"darwinBundleIdentifier": "com.visualstudio.code.oss",
--	"welcomePage": "http://go.microsoft.com/fwlink/?LinkId=723048"
+-	"welcomePage": "https://go.microsoft.com/fwlink/?LinkId=723048"
 -}
 \ No newline at end of file
 +	"welcomePage": "http://go.microsoft.com/fwlink/?LinkId=723048",
@@ -21,11 +21,11 @@ diff -rupN a/product.json b/product.json
 +		"cacheUrl": "https://vscode.blob.core.windows.net/gallery/index",
 +		"itemUrl": "https://marketplace.visualstudio.com/items"
 +	},
-+	"documentationUrl": "http://go.microsoft.com/fwlink/?LinkID=533484#vscode",
-+	"releaseNotesUrl": "http://go.microsoft.com/fwlink/?LinkID=533483#vscode",
-+	"twitterUrl": "http://go.microsoft.com/fwlink/?LinkID=533687",
-+	"requestFeatureUrl": "http://go.microsoft.com/fwlink/?LinkID=533482",
-+	"reportIssueUrl": "http://go.microsoft.com/fwlink/?LinkId=534872",
-+	"privacyStatementUrl": "http://go.microsoft.com/fwlink/?LinkID=528096&clcid=0x409",
-+	"commit": "f291f4ad600767626b24a4b15816b04bee9a3049"
++	"documentationUrl": "https://go.microsoft.com/fwlink/?LinkID=533484#vscode",
++	"releaseNotesUrl": "https://go.microsoft.com/fwlink/?LinkID=533483#vscode",
++	"twitterUrl": "https://go.microsoft.com/fwlink/?LinkID=533687",
++	"requestFeatureUrl": "https://go.microsoft.com/fwlink/?LinkID=533482",
++	"reportIssueUrl": "https://go.microsoft.com/fwlink/?LinkId=534872",
++	"privacyStatementUrl": "https://go.microsoft.com/fwlink/?LinkID=528096&clcid=0x409",
++	"commit": "def9e32467ad6e4f48787d38caf190acbfee5880"
 +}
