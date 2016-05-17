@@ -1,7 +1,7 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 pkgname=rustup
 pkgver=0.1.11
-pkgrel=2
+pkgrel=3
 
 # we (currently) need to build using nightly
 # this can hopefully go away eventually
@@ -48,7 +48,7 @@ build() {
 
 	msg2 "Running rustup-init"
 	mkdir -p "$srcdir/tmp/.cargo"
-	env "HOME=$srcdir/tmp" target/release/rustup-init -y --no-modify-path
+	env -u CARGO_HOME "HOME=$srcdir/tmp" target/release/rustup-init -y --no-modify-path
 }
 
 package() {
