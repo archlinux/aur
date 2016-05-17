@@ -8,9 +8,10 @@ pkgbase = yusuke
 	license = GPL3
 	depends = pacman
 	depends = libnotify
-	depends = bash
+	depends = python-gobject
 	conflicts = yusuke
 	source = https://github.com/graypawn/yusuke/archive/v1.7.6.zip
 	md5sums = c642ace6ecc0c28a8be62d899a9cf48a
 
 pkgname = yusuke
+
