@@ -1,0 +1,19 @@
+pkgbase = flatpak-git
+	pkgdesc = An application deployment framework for desktop apps
+	pkgver = 1
+	pkgrel = 1
+	url = http://www.freedesktop.org/software/flatpak
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = docbook-xsl
+	depends = ostree
+	depends = libseccomp
+	depends = fuse
+	depends = libxau
+	depends = json-glib
+	depends = libelf
+
+pkgname = flatpak-git
+
