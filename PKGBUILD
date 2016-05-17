@@ -7,7 +7,7 @@
 pkgbase=pipelinedb
 pkgname=('pipelinedb' 'pipelinedb-libs')
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The streaming SQL database"
 arch=('i686' 'x86_64')
 url="https://www.pipelinedb.com"
@@ -20,10 +20,10 @@ optdepends=()
 backup=()
 options=()
 conflicts=('postgresql' 'postgresql-libs')
-install=
+install=pipelinedb.install
 source=("https://github.com/pipelinedb/pipelinedb/archive/$pkgver.tar.gz"
 	pipelinedb-check-db-dir
-        pipelinedb-run-socket.patch
+    pipelinedb-run-socket.patch
 	pipelinedb.pam 
 	pipelinedb.logrotate
 	pipelinedb.service 
@@ -34,8 +34,8 @@ md5sums=('c29315317744cb0e6eaaea7707673264'
          '75c579eed03ffb2312631f0b649175b4'
          '96f82c38f3f540b53f3e5144900acf17'
          'd28e443f9f65a5712c52018b84e27137'
-         '5e4cee5f654fab2cebb8764a7735c5b1'
-         'e28a4671fa61e5c321683679a0aecc31')
+         'b2ef9bd989cd1b9726f63fa4b8eaff9c'
+         'c7f474fd3e41caa7532df3991b93f609')
 
 build() {
 	cd "pipelinedb-$pkgver"
@@ -59,7 +59,8 @@ build() {
 	--enable-nls \
 	--enable-thread-safety
 	
-        make
+    make
+#   Commented out. Could not build because of the sgml processing error.
 #	make world
 }
 

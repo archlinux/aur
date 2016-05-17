@@ -1,6 +1,6 @@
 post_install() {
-  if [ ! -d '/var/lib/postgres' ]; then
-    mkdir -p '/var/lib/postgres'
+  if [ ! -d '/var/lib/pipelinedb' ]; then
+    mkdir -p '/var/lib/pipelinedb'
   fi
   if ! getent group postgres >/dev/null; then
     groupadd -g 88 postgres
@@ -9,8 +9,8 @@ post_install() {
     useradd -c 'PostgreSQL user' -u 88 -g postgres -d '/var/lib/postgres' -s /bin/bash postgres
     passwd -l postgres >/dev/null
   fi
-  if [ ! -d '/var/lib/postgres/data' ]; then
-    mkdir -p '/var/lib/postgres/data'
+  if [ ! -d '/var/lib/pipelinedb/data' ]; then
+    mkdir -p '/var/lib/pipelinedb/data'
     chown postgres:postgres '/var/lib/postgres/data'
   fi
 }
