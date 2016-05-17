@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+
+[Desktop Entry]
+Type=Application
+Icon=/usr/share/icons/omnetpp.png
+Name=OMNeT ++
+Comment=Start OMNeT++ IDE
+Exec=omnetpp
+Categories=Development;
+Name[it_IT]=OMNeT ++
