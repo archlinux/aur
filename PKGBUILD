@@ -1,7 +1,7 @@
 #Maintainer: Iwan Timmer <irtimmer@gmail.com>
 
 pkgname=docker-swarm
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A Docker-native clustering system"
 depends=('glibc')
@@ -10,7 +10,7 @@ arch=('x86_64' 'i686')
 source=("https://github.com/docker/swarm/archive/v$pkgver.tar.gz")
 url="https://github.com/docker/swarm/"
 license=("Apache")
-sha256sums=('57574e0765d0277e0dab3bc48ab7c8d9778726ea4fb93fc4075da438f3e83c2c')
+sha256sums=('3e7989bdbf360ae0b2fd79f2528ad81865b12bbe90a8e725bf422a26329467bf')
 
 prepare() {
     cd $srcdir
