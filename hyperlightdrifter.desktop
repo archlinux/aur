@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Value=1.0
+Type=Application
+Name=Hyper Light Drifter
+GenericName=Hyper Light Drifter
+Comment=Hyper Light Drifter
+Icon=/opt/HyperLightDrifter/Icon.png
+Exec="/opt/HyperLightDrifter/HyperLightDrifter.x86"
+Categories=Game;
+Path=/opt/HyperLightDrifter

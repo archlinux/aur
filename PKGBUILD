@@ -1,12 +1,12 @@
 # Maintainer: Luca Weiss <WEI16416@spengergasse.at>
-# Contributor: markzz <mark dot weiman at markzz dot com>
-# Contributor: Philip 'Chais' Abernethy <chais dot z30r at gmail dot com>
+# Thanks to "markzz" & "Philip 'Chais' Abernethy" for the besiege PKGBUILD file!
 
 # YOU MUST SUPPLY THE SH FILE INCLUDED WITH YOUR HUMBLE PURCHASE
 
 pkgname=hyperlightdrifter
-pkgver=2016.04.18
-_pkgver=2016-04-18
+_gamename=HyperLightDrifter
+_pkgver=2016-05-09
+pkgver=${_pkgver//-/.}
 pkgrel=1
 _filename="HyperLightDrifter-DRMFree-Linux-${_pkgver}.sh"
 pkgdesc="A 2D action role-playing game (Humble Version)"
@@ -16,23 +16,28 @@ license=('custom')
 depends=('libcurl-compat' 'openal' 'libxcursor' 'libpulse')
 depends_x86_64=('lib32-libcurl-compat' 'lib32-openal' 'lib32-libxcursor' 'lib32-libpulse')
 makedepends=('unzip')
-source=("local://${_filename}")
+source=("local://${_filename}"
+        "hyperlightdrifter.desktop")
 noextract=("${_filename}")
-md5sums=('bae67eb8b26eb10389161992f0257c2c')
+md5sums=('2fda541fb3f089a27dd34867f17eb830'
+         '060673538dadaf471bef5e83475ddf4e')
 
 prepare() {
+  rm -r "${srcdir}/${pkgname}"
   # unzip will issue a warning about extra bytes at beginning of file, ignore it
   unzip $_filename -d "${srcdir}/${pkgname}" || true
 }
 
 package() {
-  mkdir -p "${pkgdir}/opt/${pkgname}/"
+  mkdir -p "${pkgdir}/opt/${_gamename}/"
   mkdir -p "${pkgdir}/usr/bin/"
+  mkdir -p "${pkgdir}/usr/share/applications/"
 
-  install -Dm755 "${srcdir}/${pkgname}/data/x86/HyperLightDrifter.x86" "${pkgdir}/opt/${pkgname}/"
-  cp -r "${srcdir}/${pkgname}/data/noarch/"* "${pkgdir}/opt/${pkgname}/"
+  install -Dm755 "${srcdir}/${pkgname}/data/x86/HyperLightDrifter.x86" "${pkgdir}/opt/${_gamename}/"
+  cp -r "${srcdir}/${pkgname}/data/noarch/"* "${pkgdir}/opt/${_gamename}/"
 
-  ln -s "${pkgdir}/opt/${pkgname}/HyperLightDrifter.x86" "${pkgdir}/usr/bin/hyperlightdrifter"
+  ln -s "${pkgdir}/opt/${_gamename}/HyperLightDrifter.x86" "${pkgdir}/usr/bin/hyperlightdrifter"
+  install -m644 "${srcdir}/hyperlightdrifter.desktop" "${pkgdir}/usr/share/applications/hyperlightdrifter.desktop"
 }
 
 # vim:set ts=8 sts=2 sw=2 et:
