@@ -25,10 +25,9 @@ prepare() {
     cd ${srcdir}/${sources}
     find . -name '._*' -print0 | xargs -0 -r rm
     patch -p0 <../setupGNU.cmake.patch
-    cd ..
 
-    mkdir -p build
-    cd build
+    mkdir -p ${srcdir}/build
+    cd ${srcdir}/build
 
     cmake \
         -DCMAKE_C_COMPILER=gcc \
@@ -39,21 +38,21 @@ prepare() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DBINARY_POSTFIX=_dev \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-        ../${sources}
+        ${srcdir}/${sources}
 }
 
 build() {
-    cd build
+    cd ${srcdir}/build
     make
 }
 
 check() {
-    cd build
+    cd ${srcdir}/build
     # ctest -E LONG
 }
 
 package() {
-    cd build
+    cd ${srcdir}/build
     make DESTDIR=${pkgdir} install
 
     cd ${srcdir}/${sources}
