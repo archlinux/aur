@@ -1,0 +1,13 @@
+pkgbase = hmap2
+	pkgdesc = BSP compile tools for Quake 1
+	pkgver = 20121222
+	pkgrel = 1
+	url = https://icculus.org/twilight/darkplaces/index.html
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source = https://icculus.org/twilight/darkplaces/files/hmap2build20121222.zip
+	md5sums = d99f8b76d40875d91148c9a07e46fd6c
+
+pkgname = hmap2
+
