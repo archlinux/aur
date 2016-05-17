@@ -2,7 +2,7 @@
 # Contributor: Martchus <martchus@gmx.net>
 
 pkgname=gnome-breeze-git
-pkgver=42.f8dafee
+pkgver=97.b329e1c
 pkgrel=1
 pkgdesc="A GTK theme created to match with the new Plasma 5 Breeze (git version)."
 arch=('any')
