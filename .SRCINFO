@@ -1,0 +1,13 @@
+pkgbase = lunarg-vulkan-sdk
+	pkgdesc = Vulkan loader for amdgpu-pro (It sucks, but you have to download it yourself and put it in the same directory as your PKGBUILD, see url), make sure you don't have dpkg installed
+	pkgver = 1.0.3.1
+	pkgrel = 1
+	url = https://vulkan.lunarg.com
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = amdgpu-pro
+	conflicts = dpkg
+
+pkgname = lunarg-vulkan-sdk
+
