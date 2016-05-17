@@ -1,7 +1,7 @@
 # Maintainer: initrdmk <initrdmk at gmail dot com>
 pkgname=luyten
-pkgver=0.4.4
-pkgrel=2
+pkgver=0.4.7
+pkgrel=1
 pkgdesc="An Open Source Java Decompiler Gui for Procyon"
 arch=(any)
 url="https://github.com/deathmarine/Luyten"
@@ -11,8 +11,8 @@ source=("${pkgname}.sh"
         "${pkgname}.desktop"
         "https://github.com/deathmarine/Luyten/releases/download/v${pkgver}/${pkgname}-${pkgver}.jar")
 sha1sums=("d76ce0d7a116b2fa04ca33032b46f896091958aa"
-          "cf7054454537bf97dc8766b74bbb00cd78f7567c"
-          "d4b8e603f7cde409368c10912c7258da9d8618d0")
+          "e7229e537dd154d4cd038ef83073869e16f153bd"
+          "5320accba1194cd6ed348b7dfddcab1c65bbc5eb")
 noextract=("*")
 
 package() {
