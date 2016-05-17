@@ -13,7 +13,6 @@ makedepends=('naturaldocs')
 source=("$pkgname-$pkgver.tar.gz::http://github.com/pioneerspacesim/pioneer/archive/$pkgver.tar.gz" 'pioneer.desktop')
 md5sums=('935967294b47a2ff8a7dfbf223a68b2a'
          'f2301fe8850926b2d9bd89e3ab1158a8')
-install=pioneer.install
 
 build() {
   cd "$pkgname-$pkgver"
