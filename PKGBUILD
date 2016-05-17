@@ -2,21 +2,21 @@
 # Contributor: Aleksei Lissitsin <aleksei.lissitsin@gmail.com>
 
 pkgname=gedit-latex
-pkgver=3.8.0
-pkgrel=2
+pkgver=3.20.0
+pkgrel=1
 pkgdesc="Gedit plugin that provides features to ease the edition of LaTeX documents"
 arch=('i686' 'x86_64')
 url="https://wiki.gnome.org/Apps/Gedit/LaTeXPlugin"
 license=('GPL')
 groups=()
-depends=(gedit rubber texlive-core python-gobject python-dbus python-latex)
+depends=(gedit rubber texlive-core python-gobject python-dbus)
 makedepends=(cairo gettext atk intltool libpeas gtk3 glib2)
 provides=()
 conflicts=(gedit-latex-plugin)
 replaces=(gedit-latex-plugin)
 install=gschemas.install
-source=(http://ftp.gnome.org/pub/GNOME/sources/gedit-latex/3.8/gedit-latex-3.8.0.tar.xz)
-sha256sums=('1a49a57b650e0af446299ba70b237d9066650f21ff938390d5b6261430061309')
+source=(http://ftp.acc.umu.se/pub/GNOME/sources/gedit-latex/3.20/gedit-latex-3.20.0.tar.xz)
+sha256sums=('d7841ef63e410b9b7179b77fe3a2993c717dfd113439230ab0cb5c4d7314f1b9')
 build() {
   cd "$srcdir"
   
