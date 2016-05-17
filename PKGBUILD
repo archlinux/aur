@@ -3,7 +3,7 @@
 pkgname=entropipes
 pkgver=0.7.5
 pkgrel=1
-pkgdesc="Endless Forms Most Beautiful is a crazy platformer with braincrashing mechanics"
+pkgdesc="EntroPipes is a puzzle type game. Simply connect all pipes"
 arch=('i686' 'x86_64')
 url='https://son-link.itch.io/entropipes'
 license=('GPL3')
