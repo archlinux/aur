@@ -2,45 +2,38 @@
 # {former}Maintainer: Alexander Rødseth <rodseth@gmail.com>
 # Contributor: eht16 <enrico.troeger@uvena.de>
 # Contributor: Addict7 <nicolasfloquet@gmail.com>
-
+ 
 pkgname=geany-plugins-git
-pkgver=1.27.0
+pkgver=1.27.0.17.g6122e13
 pkgrel=1
 pkgdesc='Various plugins for Geany'
 arch=('x86_64' 'i686')
 url='http://plugins.geany.org/'
 license=('GPL')
 depends=('geany-git' 'vte' 'lua' 'libwebkit' 'ctpl' 'gpgme' 'gtkspell' 'hicolor-icon-theme')
-makedepends=('git' 'libtool' 'python' 'gpgme' 'ctpl' 'lua' 'intltool' 'vala')
+makedepends=('git' 'libtool' 'python' 'gpgme' 'ctpl' 'lua' 'intltool')
 optdepends=('hspell: hebrew spell checker')
 install="$pkgname.install"
 provides=('geany-plugins')
 conflicts=('geany-plugins-svn' 'geany-plugins')
-source=('https://github.com/geany/geany-plugins.git')
+source=('git://github.com/geany/geany-plugins.git')
 md5sums=('SKIP')
-
-# These plugins does not build. Skipping until upstream makes them compile.
-_skip='geanygendoc,geanyprj,projectorganizer'
-
+ 
 pkgver() {
   cd geany-plugins
   git describe --tags | sed 's/-/./g'
 }
-
-prepare() {
-  # Fix a problem with the waf script
-  sed 's/revision > 0/revision != ""/g' -i geany-plugins/wscript
-}
-
+ 
 build() {
   cd geany-plugins
-  ./waf configure --skip-plugins=$_skip
-  ./waf build
+  ./autogen.sh
+  ./configure --prefix=/usr --disable-geanypy
+  make build
 }
-
+ 
 package() {
   cd geany-plugins
-  ./waf install --destdir="$pkgdir"
+  make install DESTDIR="$pkgdir"
 }
-
+ 
 # vim:set ts=2 sw=2 et:
