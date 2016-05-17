@@ -3,7 +3,7 @@
 pkgname=ricin-git
 _pkgname=Ricin
 pkgver=0.668.96cf22c
-pkgrel=1
+pkgrel=2
 pkgdesc="A dead-simple but powerful Tox client."
 url="https://ricin.im/"
 arch=('i686' 'x86_64')
@@ -30,7 +30,6 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}"
 
-    echo $pkgdir
     ./waf distclean
     ./waf configure --prefix=${pkgdir}/usr --bindir=${pkgdir}/usr/bin
     ./waf build
