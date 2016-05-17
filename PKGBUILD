@@ -1,24 +1,33 @@
 # Maintainer: Martchus <martchus@gmx.net>
 # Contributor: Alexander Rødseth <rodseth@gmail.com>
-# Contributor: Angel Velasquez <angvp@archlinux.org> 
+# Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Ionut Biru  <ibiru@archlinux.ro>
 # Contributor: William Rea <sillywilly@gmail.com>
 # Contributor: Allan McRae <mcrae_allan@hotmail.com>
 
+# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
+# you also find the URL of a binary repository.
+
 _name=geany
 pkgname=mingw-w64-geany
-pkgver=1.26
+pkgver=1.27.9681888
 pkgrel=1
 pkgdesc='Fast and lightweight IDE (mingw-w64)'
 arch=('any')
-url='http://www.geany.org/'
+url='https://www.geany.org/'
 license=('GPL')
 depends=('mingw-w64-crt' 'mingw-w64-gtk2')
-makedepends=('perl-xml-parser' 'setconf' 'intltool' 'mingw-w64-gcc' 'mingw-w64-configure' 'mingw-w64-binutils')
+makedepends=('perl-xml-parser' 'setconf' 'intltool' 'mingw-w64-gcc' 'mingw-w64-configure' 'mingw-w64-binutils' 'git')
 optdepends=('mingw-w64-geany-plugins: various extra features'
             'mingw-w64-python2')
-source=("http://download.geany.org/${_name}-$pkgver.tar.bz2")
-sha256sums=('e38530e87c577e1e9806be3b40e08fb9ee321eb1abc6361ddacdad89c825f90d')
+
+#source=("https://download.geany.org/${_name}-$pkgver.tar.bz2")
+#sha256sums=('846ff699a5944c5c3c068ae0199d4c13946a668bfc6d03f8c79765667c20cadf')
+
+# current stable version doesn't build so I'm using a more recent commit where the issue is fixed
+source=(${_name}-$pkgver::"git+https://github.com/geany/geany.git#commit=9681888")
+sha256sums=('SKIP')
+
 options=(!buildflags staticlibs !strip !emptydirs)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -31,6 +40,17 @@ prepare() {
 
   # Syntax highlighting for PKGBUILD files
   sed -i 's/Sh=/Sh=PKGBUILD;/' data/filetype_extensions.conf
+
+  # Can't run ./autogen.sh since it would check for regular libs and not the
+  # cross versions
+  test -d build-aux || mkdir build-aux
+  echo "no" | glib-gettextize --force --copy
+  intltoolize --copy --force --automake
+  libtoolize --copy --force || glibtoolize --copy --force
+  aclocal -I m4
+  autoheader
+  automake --add-missing --copy --gnu
+  autoconf
 }
 
 build() {
@@ -41,7 +61,8 @@ build() {
     ${_arch}-configure \
         --exec-prefix=/usr/${_arch} \
         --sysconfdir=/etc \
-        --prefix=/usr/${_arch}
+        --prefix=/usr/${_arch} \
+        --disable-html-docs
     make
     popd
   done
