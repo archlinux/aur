@@ -8,10 +8,10 @@ url='https://vulkan.lunarg.com'
 license=('custom')
 arch=('i686' 'x86_64')
 depends=('amdgpu-pro')
-conflicts=('dpkg')
+conflicts=('dpkg' 'spirv-tools', 'vulkan-icd-loader')
 
 build() {
-    sed -i -e '1,501d' ../vulkansdk-linux-x86_64-1.0.3.1.run
+    sed -i -e '/\#\!\/bin\/sh/,+500d' ../vulkansdk-linux-x86_64-1.0.3.1.run
     tar -C "${srcdir}" -xf ../vulkansdk-linux-x86_64-1.0.3.1.run
 }
 
