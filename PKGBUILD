@@ -1,7 +1,7 @@
 # Maintainer: Daniel Maslowski <info at orangecms dot org>
 pkgname=j4status-plugins-git
 _gitname=j4status-plugins
-pkgver=30.98a8146
+pkgver=40.801300f
 pkgrel=1
 pkgdesc="Plugins for j4status"
 arch=('i686' 'x86_64')
@@ -36,7 +36,7 @@ build()
 {
   cd "${srcdir}/${_gitname}"
   ./autogen.sh
-  ./configure --prefix=/usr
+  ./configure --enable-iw-input --prefix=/usr
   make
 }
 
