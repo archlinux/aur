@@ -2,12 +2,12 @@
 pkgname=('python-rtslib-fb' 'python2-rtslib-fb')
 _pkgname=rtslib-fb
 pkgver=2.1.fb60
-pkgrel=1
+pkgrel=2
 pkgdesc="free branch version of the LIO target API"
 arch=('any')
 url="https://github.com/agrover/rtslib-fb"
 license=('Apache')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools' 'python-pyudev' 'python2-pyudev')
 backup=()
 options=()
 install=
@@ -22,7 +22,7 @@ prepare() {
 
 
 package_python-rtslib-fb() {
-  depends=('python' 'python-six')
+  depends=('python' 'python-six' 'python-pyudev')
   conflicts=('python2-rtslib' 'targetcli-fb<=2.1.fb31')
 
   cd "$srcdir/$_pkgname-$pkgver"
@@ -41,7 +41,7 @@ package_python-rtslib-fb() {
 }
 
 package_python2-rtslib-fb() {
-  depends=('python2' 'python2-six')
+  depends=('python2' 'python2-six' 'python2-pyudev')
   conflicts=('python2-rtslib')
 
   cd "$srcdir/$_pkgname-$pkgver"
