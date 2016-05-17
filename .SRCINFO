@@ -1,0 +1,24 @@
+pkgbase = plasma5-applets-playbar2-bigcover-git
+	pkgdesc = Mpris2 Client for Plasma5
+	pkgver = v2.3.r3.gd832a31
+	pkgrel = 1
+	url = https://github.com/droserasprout/plasma5-applets-playbar2-bigcover
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = kdoctools
+	makedepends = extra-cmake-modules
+	depends = plasma-framework
+	depends = plasma-workspace
+	depends = kdeclarative
+	depends = kglobalaccel
+	depends = kconfigwidgets
+	depends = kxmlgui
+	depends = kwindowsystem
+	conflicts = kdeplasma-applets-playbar2
+	source = git+https://github.com/droserasprout/plasma5-applets-playbar2-bigcover.git#branch=master
+	md5sums = SKIP
+
+pkgname = plasma5-applets-playbar2-bigcover-git
+
