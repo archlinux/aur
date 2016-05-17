@@ -2,14 +2,13 @@
 
 pkgname=ricin-git
 _pkgname=Ricin
-_submodule=tox-vapi
-pkgver=0.652.786de97
+pkgver=0.668.96cf22c
 pkgrel=1
 pkgdesc="A dead-simple but powerful Tox client."
-url="https://github.com/RicinApp/Ricin"
+url="https://ricin.im/"
 arch=('i686' 'x86_64')
 license=('GPL3')
-makedepends=('git' 'meson' 'ninja' 'vala')
+makedepends=('git' 'vala' 'python')
 depends=('gtk3'
          'toxcore'
          'glib2'
@@ -31,17 +30,17 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}"
 
-    make autogen
-    make release
-
-    cd build
-    mesonconf.py -Dprefix=/usr
+    echo $pkgdir
+    ./waf distclean
+    ./waf configure --prefix=${pkgdir}/usr --bindir=${pkgdir}/usr/bin
+    ./waf build
 }
 
 package() {
     cd "${srcdir}/${_pkgname}"
+    ./waf install
 
-    make DESTDIR=$pkgdir install
     # cover ${pkgdir}/usr/bin/Ricin"
+    rm "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm755 "build/${_pkgname}" "${pkgdir}/usr/bin/ricin"
 }
