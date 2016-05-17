@@ -10,7 +10,6 @@ pkgbase = firefox-nightly-fr
 	license = LGPL
 	depends = alsa-lib
 	depends = dbus-glib
-	depends = desktop-file-utils
 	depends = gtk2
 	depends = gtk3
 	depends = libxt
