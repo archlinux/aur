@@ -2,7 +2,7 @@
 # Contributer: Griffin Smith <wildgriffin [at] gmail [dot] com>
 # Contributor: Bill Durr <billyburly [at] gmail [dot] com>
 pkgname=crashplan-pro
-pkgver=4.6.0
+pkgver=4.7.0
 pkgrel=1
 pkgdesc="An business online/offsite backup solution"
 url="http://www.crashplan.com/business"
@@ -16,9 +16,9 @@ install=crashplan-pro.install
 source=(http://download1.us.code42.com/installs/linux/install/CrashPlanPRO/CrashPlanPRO_${pkgver}_Linux.tgz
         crashplan-pro
         crashplan-pro.service)
-sha256sums=('32877ccde9a721a54a976e4983f5ba8c80b8b05bae927f05570edbcb53626a5a'
+sha256sums=('6bbdd637c3fff85b66273a9e084814d55f45d5f1575619ce5be19738b2a1f7c4'
             'b306d7da0dd41341512ce80ddcfb21bff8a9bb73ab5018696e69d08b89f7f1b6'
-            'd8667e149439e4c6f35779a6d04ce5215530049579011eb1db5feb2d6976420e')
+            'c631a971f300bfbfe52e3ec8faa4d7b735eaa069d73e11d6021567e29d053dc3')
 
 build() {
   cd $srcdir/crashplan-install
@@ -42,7 +42,7 @@ build() {
   echo "INSTALLDATE=$NOW" >> install.vars
 
   sed -imod "s|Exec=.*|Exec=/opt/$pkgname/bin/CrashPlanDesktop|" scripts/CrashPlan.desktop
-  sed -imod "s|Icon=.*|Icon=/opt/$pkgname/skin/icon_app_64x64.png|" scripts/CrashPlan.desktop
+  sed -imod "s|Icon=.*|Icon=/opt/$pkgname/skin/icon_app_64.74.png|" scripts/CrashPlan.desktop
   sed -imod "s|Categories=.*|Categories=System;|" scripts/CrashPlan.desktop
 }
 
