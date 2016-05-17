@@ -1,6 +1,6 @@
 pkgname=smtube-qt4
 pkgver=16.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Search, download and play videos from YouTube."
 arch=('i686' 'x86_64')
 url="http://smtube.sourceforge.net"
@@ -9,7 +9,7 @@ depends=('qtwebkit')
 optdepends=('mplayer: play media with MPlayer'
             'smplayer: play media with SMPlayer'
             'gnome-mplayer: play media with GNOME MPlayer'
-            'kdemultimedia-dragonplayer: play media with Dragon Player'
+            'dragon: play media with Dragon Player'
             'totem: play media with Totem'
             'vlc: play media with VLC'
             'mpv: play media with mpv')
