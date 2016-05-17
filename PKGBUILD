@@ -14,7 +14,7 @@ done
 
 pkgdesc="A generator for Gnome Shell extensions that hide items from the aggregate menu."
 pkgver=3
-pkgrel=3
+pkgrel=4
 arch=(any)
 url='https://github.com/dffischer/gnome-aggregatemenu-hider'
 license=(GPLv3)
