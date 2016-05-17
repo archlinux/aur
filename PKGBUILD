@@ -7,15 +7,15 @@ pkgver=0.8.90
 pkgrel=10
 pkgdesc="Icon theme that follows the Tango visual guidelines"
 arch=('any')
-url="http://tango-project.org"
+url="http://tango.freedesktop.org"
 license=('custom:public domain' 'custom:TRADEMARKS')
 makedepends=('imagemagick' 'icon-naming-utils' 'intltool')
 options=(!strip !zipman)
-source=(http://http.debian.net/debian/pool/main/t/${pkgname}/${pkgname}_${pkgver}.orig.tar.gz
+source=(${url}/releases/${pkgname}-${pkgver}.tar.bz2
         http://cinderwick.ca/files/archlinux/artwork-official/symbol.svg
         http://cinderwick.ca/files/archlinux/licensing-docs/TRADEMARKS
         rsvg.patch)
-md5sums=('0795895d2f20eddcbd2bffe94ed431a6'
+md5sums=('b7b9b16480afb781a4c13f8bceb8688b'
          'e9c0c2e165f2883c3fa00277635ae4ae'
          '05066419eb8239652a0467131485db4d'
          '40cb8a4dd485bac0851c6fd2915d43ba')
