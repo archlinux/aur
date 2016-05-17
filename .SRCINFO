@@ -1,6 +1,6 @@
 pkgbase = grafana-bin
 	pkgdesc = A general purpose dashboard and graph composer. It supports graphite, influxdb or opentsdb - binary version
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = http://grafana.org
 	install = grafana.install
@@ -9,9 +9,9 @@ pkgbase = grafana-bin
 	provides = grafana
 	conflicts = grafana
 	backup = etc/grafana/grafana.ini
-	source = https://grafanarel.s3.amazonaws.com/builds/grafana-3.0.1-.linux-x64.tar.gz
+	source = https://grafanarel.s3.amazonaws.com/builds/grafana-3.0.2-1463383025.linux-x64.tar.gz
 	source = grafana.service
-	sha256sums = 0d6739ab4f2008f77f7993b5703d7905ba8b79e5162ee7d7e25636e216139893
+	sha256sums = ce246d8474b0dc0977eb842dd915b685885dc8a442f37cfc2fc5eee59b88d4de
 	sha256sums = 44ceb7aad648c8e46a65026109fc0327bc6e01ba7060d97d9e83a3e8ad65379c
 
 pkgname = grafana-bin
