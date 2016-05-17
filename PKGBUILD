@@ -2,13 +2,13 @@
 
 pkgname=esp-open-sdk
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open (as much as possible) integrated SDK for ESP8266 chips"
 arch=('i686' 'x86_64')
 url="https://github.com/pfalcon/esp-open-sdk"
 license=('GPL')
 groups=()
-depends=('python' 'python2-pyserial')
+depends=('python' 'python2' 'python-pyserial' 'python2-pyserial')
 makedepends=('git')
 provides=('esp-open-sdk')
 conflicts=('esp-open-sdk-git')
