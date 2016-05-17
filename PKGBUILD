@@ -2,7 +2,7 @@
 
 pkgname=routersploit
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-source exploitation framework dedicated to embedded devices."
 arch=('any')
 license=('BSD')
@@ -14,9 +14,6 @@ md5sums=('c36bba4da755332d48ef84d1e4659025')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-
-	# Fix wrong python reference
-	sed -i 's/\/usr\/bin\/env python/\/usr\/bin\/python2/' ./rsf.py
 }
 
 package() {

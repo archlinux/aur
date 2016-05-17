@@ -1,7 +1,7 @@
 pkgbase = routersploit
 	pkgdesc = An open-source exploitation framework dedicated to embedded devices.
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/reverse-shell/routersploit
 	arch = any
 	license = BSD
