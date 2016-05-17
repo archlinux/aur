@@ -2,7 +2,7 @@
 
 _gitname=ctroller
 pkgname=${_gitname}-git
-pkgver=r15.66fd87e
+pkgver=r22.49a27aa
 pkgrel=1
 pkgdesc="Use your 3DS as a gamepad on your Linux PC"
 arch=('x86_64')
@@ -25,11 +25,11 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}/linux"
-  make install DESTDIR="${pkgdir}/"
+  make install DESTDIR="${pkgdir}"
 
   cd "${srcdir}/${pkgname}/3DS"
   install -dm755 ${pkgdir}/usr/share/${_gitname}
-  install -Dm644 ctroller.{3dsx,smdh} ${pkgdir}/usr/share/${_gitname}/
+  install -Dm644 ctroller.{3dsx,smdh,cia} ${pkgdir}/usr/share/${_gitname}/
 }
 
 # vim:set ts=2 sw=2 et:
