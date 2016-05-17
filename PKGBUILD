@@ -4,7 +4,7 @@
 # Contributor: Andrey Vlasovskikh <andrey.vlasovskikh@gmail.com>
 
 pkgname=rider-eap
-_buildver=144.5342
+_buildver=146.1906
 _pkgver=1.0
 _eap="True"
 pkgver="${_pkgver}.${_buildver}"
@@ -14,7 +14,7 @@ arch=('any')
 options=('!strip')
 url="https://www.jetbrains.com/rider/"
 license=("custom")
-optdepends=('mono: .Net runtime')
+optdepends=('mono: .NET runtime')
 # makedepends=("wget")
 provides=("rider")
 conflicts=("rider")
@@ -22,7 +22,7 @@ groups=("development" "IDE" "editor" "jetbrains")
 
 source=("file://riderRS-${_buildver}.tar.gz"
         "${pkgname}.desktop")
-sha256sums=('f49c806790d3fac2e629181da5e4d623c4b185e7138dd51b79df6ebd4c0ea506'
+sha256sums=('bf3dc9cabb0be786240df07a8c57c19c31b552140f73812b8c0ced68cf179b3b'
             'e2782e2af1b0fb35c4fcf7c53fde1d215a069b027818ad125b2cb0bc0481dbfc')
 
 package() {
