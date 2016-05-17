@@ -1,0 +1,9 @@
+[Unit]
+Description=InterPlanetary File System (IPFS) daemon
+
+[Service]
+ExecStart=/usr/bin/ipfs daemon
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

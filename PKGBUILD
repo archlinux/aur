@@ -5,7 +5,7 @@
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
 pkgver=0.4.1.r165.gf36671d
-pkgrel=1
+pkgrel=2
 pkgdesc='global versioned p2p merkledag file system'
 url="https://github.com/ipfs/$_pkgname"
 arch=('i686' 'x86_64' 'armv7h')
@@ -15,8 +15,9 @@ optdepends=('fuse: for mounting/advanced use'
             'bash-completion: bash completion support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+${url}.git")
-md5sums=('SKIP')
+source=("git+${url}.git" "ipfs.service")
+sha512sums=('SKIP'
+            '1a6bc7fffc3c3640cda3f33c107424edd698c62bd8509731856b8827ea18be1a1845ef0d5ca15325d48d7d871a78daacc011ff9eacea926bc35899850990c1c6')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -25,7 +26,7 @@ pkgver() {
 
 prepare() {
   mkdir -p "$srcdir"/src/github.com/ipfs
-  ln -s "$srcdir/$_pkgname" "$srcdir"/src/github.com/ipfs/go-ipfs
+  ln -sf "$srcdir/$_pkgname" "$srcdir"/src/github.com/ipfs/go-ipfs
 }
 
 build() {
@@ -49,6 +50,7 @@ package() {
 
   msg2 'Packaging auxiliary files...'
   cd "$_pkgname"
+  install -Dm 644 ../ipfs.service "$pkgdir/usr/lib/systemd/user/ipfs.service"
   install -Dm 644 misc/completion/ipfs-completion.bash "${pkgdir}/usr/share/bash-completions/completions/ipfs"
   install -Dm 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
   install -Dm 644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
