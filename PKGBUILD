@@ -10,26 +10,26 @@ url='https://code.google.com/p/libgrid/'
 license=('GPL')
 provides=("$pkgname")
 
-depends=('libmini-svn' 'libiconv')
+depends=('libmini' 'libiconv')
 makedepends=('cmake' 'subversion')
 optdepends=()
 options=('staticlibs')
-source=("${pkgname}::svn+http://libgrid.googlecode.com/svn/libgrid/grid")
+source=("${_pkgname}::svn+http://svn.code.sf.net/p/gridlib/code/libgrid/grid")
 md5sums=('SKIP')
 
 pkgver() {
-  svnversion "${SRCDEST}/${pkgname}" | tr -d [A-z]
+  svnversion "${SRCDEST}/${_pkgname}" | tr -d [A-z]
 }
 
 prepare () {
-  cd "${pkgname}"
+  cd "${_pkgname}"
 
   mkdir ./grid
   cp -rfv *.h ./grid
 }
 
 build() {
-  cd "${pkgname}"  
+  cd "${_pkgname}"  
 
   if [ -d build ]; then
     rm -rf build
@@ -40,13 +40,13 @@ build() {
 
   cmake ../ \
   -DBUILD_SQUISH_WITH_SSE2=OFF \
-  -DGRID_INCLUDE_DIR=${srcdir}/${pkgname}
+  -DGRID_INCLUDE_DIR=${srcdir}/${_pkgname}
 
   make
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${_pkgname}"
   cd build
 
   make DESTDIR="$pkgdir/" install
