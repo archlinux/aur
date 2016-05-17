@@ -9,7 +9,6 @@ pkgrel=1
 pkgdesc='Various plugins for Geany'
 arch=('x86_64' 'i686')
 url='http://plugins.geany.org/'
-url='https://github.com/geany/geany-plugins'
 license=('GPL')
 depends=('geany-git' 'vte' 'lua' 'libwebkit' 'ctpl' 'gpgme' 'gtkspell' 'hicolor-icon-theme')
 makedepends=('git' 'libtool' 'python' 'gpgme' 'ctpl' 'lua' 'intltool')
