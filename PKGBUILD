@@ -1,24 +1,26 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter <at> gmail <dot> com>
 
 pkgname=webtorrent-desktop
-pkgver=0.3.3
-pkgrel=3
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Streaming torrent client."
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="https://webtorrent.io/desktop"
 license=('MIT')
 depends=('gconf')
 makedepends=('npm' 'git' 'zip')
 conflicts=('webtorrent-desktop-git' 'webtorrent-desktop-bin')
 source=("https://github.com/feross/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('82972f1e1a5ebbef5e7097bba5bfe6320204c1e249e40f67b5d5938ae5644252')
+sha256sums=('3c472ecaa9ed2e7362604b208383aca050dbca59da7bf0607a97413f7e3bca4b')
+
+[ "$CARCH" = "i686" ]   && _platform=ia32
+[ "$CARCH" = "x86_64" ] && _platform=x64
 
 build() {
   cd "$pkgname-$pkgver"
 
-  sed -i "/'build-version'/d" bin/package.js
-
-  npm run package -- linux zip
+  npm install
+  npm run package -- linux --package=zip
 }
 
 package() {
@@ -27,11 +29,9 @@ package() {
   install -dm755 "${pkgdir}/usr/share"
   install -dm755 "${pkgdir}/usr/bin"
 
-  cp -a "WebTorrent-linux-x64" "${pkgdir}/usr/share/${pkgname}"
+  cp -a "WebTorrent-linux-${_platform}" "${pkgdir}/usr/share/${pkgname}"
   ln -s "/usr/share/${pkgname}/WebTorrent" "${pkgdir}/usr/bin/${pkgname}"
 
-  install -Dm644 "WebTorrent-linux-x64/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "WebTorrent-linux-${_platform}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
 
