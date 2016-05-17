@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=kolourpaint-frameworks-git
-pkgver=r2013.821c5c4
+pkgver=r2016.3a48dd1
 pkgrel=1
 pkgdesc="Paint Program. KF5 Frameworks branch. (GIT version)"
 url='http://kde.org/applications/graphics/kolourpaint'
@@ -16,6 +16,7 @@ makedepends=('extra-cmake-modules'
              'kdoctools'
              'git'
              'python'
+             'kdesignerplugin'
              )
 conflicts=('kdegraphics-kolourpaint'
            'kolourpaint'
@@ -23,7 +24,6 @@ conflicts=('kdegraphics-kolourpaint'
 provides=('kolourpaint')
 source=('git://anongit.kde.org/kolourpaint#branch=frameworks')
 sha1sums=('SKIP')
-install=kolourpaint-frameworks-git.install
 
 pkgver() {
   cd kolourpaint
@@ -41,7 +41,7 @@ build() {
   cmake ../kolourpaint \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
