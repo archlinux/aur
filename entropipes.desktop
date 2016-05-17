@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=EntroPipes
+Comment=EntroPipes is a puzzle type game. Simply connect all pipes
+Comment[es]=EntroPipes es un juego del tipo puzzle. Simplemente conecta las tuberias
+Exec=entropipes
+Icon=entropipes
+Terminal=false
+Type=Application
+Categories=Game;
