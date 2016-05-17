@@ -15,7 +15,7 @@ provides=()
 conflicts=()
 replaces=()
 options=('!makeflags')
-source="${pkgname}-${pkgver}.tar.gz::https://github.com/rozos/${_pkgname}/archive/v${pkgver}-lw.tar.gz"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rozos/${_pkgname}/archive/v${pkgver}-lw.tar.gz")
 md5sums=('92bc9db36c9f1f44cc02f7f539969482')
 
 build() {   
