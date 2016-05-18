@@ -7,7 +7,7 @@ pkgdesc="Fast and highly configurable image viewer with a simple and nice interf
 arch=('i686' 'x86_64')
 url="http://photoqt.org/"
 license=('GPL2')
-depends=('exiv2' 'graphicsmagick' 'qt5-imageformats' 'qt5-multimedia' 'qt5-svg' 'qt5-declarative' 'qt5-quickcontrols' 'libraw')
+depends=('exiv2' 'graphicsmagick' 'qt5-imageformats' 'qt5-multimedia' 'qt5-svg' 'qt5-declarative' 'qt5-quickcontrols' 'libraw' 'qt5-graphicaleffects')
 optdepends=('libqpsd-git: PSB/PSD support'
             'xcftools: XCF support')
 makedepends=('cmake' 'qt5-tools')
