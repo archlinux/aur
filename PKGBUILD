@@ -82,6 +82,9 @@ build() {
   unset _JAVA_OPTIONS
   # http://icedtea.classpath.org/bugzilla/show_bug.cgi?id=1346
   export MAKEFLAGS=${MAKEFLAGS/-j*}
+  export CXXFLAGS="${CXXFLAGS} -std=gnu++98"
+  export CFLAGS="${CFLAGS} -std=gnu++98"
+  export CPPFLAGS="${CPPFLAGS} -std=gnu++98"
 
   install -d -m 755 "${srcdir}/${_prefix}/"
   sh configure \
