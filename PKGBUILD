@@ -1,14 +1,13 @@
 pkgname='ttf-mononoki-git'
 pkgdesc='Monospace font for programmers, successor of monoOne'
 pkgver=r65.40b503e
-pkgrel=1
+pkgrel=2
 arch=('any')
 license=('custom:OFL')
-depends=('xorg-font-utils' 'fontconfig')
+depends=('fontconfig')
 url='https://github.com/madmalik/mononoki/'
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
-install="${pkgname}.install"
 conflicts=('ttf-mononoki')
 provides=( "${conflicts[@]}" )
 

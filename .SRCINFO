@@ -1,12 +1,10 @@
 pkgbase = ttf-mononoki-git
 	pkgdesc = Monospace font for programmers, successor of monoOne
 	pkgver = r65.40b503e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/madmalik/mononoki/
-	install = ttf-mononoki-git.install
 	arch = any
 	license = custom:OFL
-	depends = xorg-font-utils
 	depends = fontconfig
 	provides = ttf-mononoki
 	conflicts = ttf-mononoki
