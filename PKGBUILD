@@ -6,7 +6,7 @@
 
 pkgname=acroread
 pkgver=9.5.5
-pkgrel=5
+pkgrel=6
 pkgdesc="Adobe Reader is a PDF file viewer"
 arch=('i686' 'x86_64')
 url="http://www.adobe.com/products/reader/"
@@ -17,7 +17,7 @@ optdepends=('acroread-fonts: CJK and extended font packs'
             'gtk-engine-murrine: fix ugly buttons and scrollbars'
             )
 if [[ $CARCH == "x86_64" ]]; then
-   depends=('desktop-file-utils' lib32-{gtk2,libxml2,libxt,mesa,libidn} 'pangox-compat') &&
+   depends=('desktop-file-utils' lib32-{gtk2,libxml2,libxt,mesa,libidn,glu} 'pangox-compat') &&
    optdepends=('acroread-fonts: CJK and extended font packs'
             'lib32-libcanberra: XDG sound support'
             'lib32-gtk-engine-murrine: fix ugly buttons and scrollbars'
@@ -29,10 +29,10 @@ install=$pkgname.install
 source=($pkgname.desktop
     http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/$pkgver/enu/AdbeRdr$pkgver-1_i486linux_enu.bin)
 noextract=("${source[@]%%::*}")
-sha256sums=('6f72d131fd3ceadead6573fd9520fa073007442ba40b58d457e73c3599fe4173' 
+sha256sums=('4bf5f17edd24569e93d5229d9b35ca00a8b222ae46ba2a2042a4a3c121b27298'
             'f3d060c1ab475a649dec6316c0b5a4a7e1055f9681ec2f35b4f77a070dfb3ea2')
-sha512sums=('e8ee711536892ced9a0f932c8cf44332dabf10754139f93229dd1d38113bf6521ea3fc42a8a54170c85ef9da009d6ae34233cdda8bf798e2f5bf6e0ae61e37d1' 
-            'f9c18ca0dc0687de353afeb90925439a557a14604e6361ff2b229ec29257ff051ea9eac6a90671b38a745473b5c87135377d035520f441ceaabf2510d690675b') 
+sha512sums=('178ca8a3abf630195eaebd6a76a7e5ac19165708acd52b99acab2de3d0bdb57fdf81d666edae41a947fa5a3fc14442c86fa855860d5d3d0d3e1db0386c583b96'
+            'f9c18ca0dc0687de353afeb90925439a557a14604e6361ff2b229ec29257ff051ea9eac6a90671b38a745473b5c87135377d035520f441ceaabf2510d690675b')
 prepare() {
     # Extracting content from bin file
     tail -c+6889 AdbeRdr9.5.5-1_i486linux_enu.bin | xz -qqd | tar x
