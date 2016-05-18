@@ -11,13 +11,9 @@ pkgbase = vera++
 	depends = gcc-libs
 	depends = tcl
 	depends = boost
-	depends = lua51
-	depends = luabind-git
 	depends = python
 	source = https://bitbucket.org/verateam/vera/downloads/vera++-1.3.0.tar.gz
-	source = gcc51.patch::https://bitbucket.org/verateam/vera/commits/79f899a98596bae7fa5af04decac15d0600c8cfa/raw/
 	md5sums = f702f0e99253c7410a02029e185df0a7
-	md5sums = 665e0442cc416936f94cf79ef67725aa
 
 pkgname = vera++
 
