@@ -12,14 +12,14 @@ options=('!strip')
 
 # Installer name
 case "$CARCH" in
-  i686)   _pkg="linux-x86-$pkgver" ;;
-  x86_64) _pkg="linux-x86_64-$pkgver-no-compat32" ;;
+  i686)   _pkg="NVIDIA-Linux-x86-$pkgver" ;;
+  x86_64) _pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32" ;;
 esac
 
 # Source
 source=('20-nvidia.conf')
-source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/linux-x86-$pkgver.run")
-source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/linux-x86_64-$pkgver-no-compat32.run")
+source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
+source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
 md5sums=('2640eac092c220073f0668a7aaff61f7')
 md5sums_i686=('8a4015213c4a8f1c80e9520d04a32a7b')
 md5sums_x86_64=('ad7a0b1855b3913390fb75b4cc3a26dc')
