@@ -1,7 +1,7 @@
 # Contributor: vit01 (vitirk) <me@ii-net.tk>
 
 pkgname='cutiefeed'
-pkgver='0.6.6'
+pkgver='0.6.7'
 pkgdesc="Qt-client for IDEC and ii-based networks (russian)"
 pkgrel=1
 arch=('any')
