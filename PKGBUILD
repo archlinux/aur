@@ -2,15 +2,15 @@
 # Previous maintainer: Daniel Apolinario <dapolinario@gmail.com>
 # Contributor: Roman Timushev <romikt@gmail.com>
 pkgname=gnome-defaults-list
-pkgver=3.14.0
-pkgrel=4
+pkgver=3.18.1.2
+pkgrel=1
 pkgdesc="default file associations for GNOME environment"
-_ubuntuver=2ubuntu4
+_ubuntuver=1ubuntu2
 arch=('any')
-url="http://packages.ubuntu.com/source/vivid/gnome-session"
+url="http://packages.ubuntu.com/source/gnome-session"
 license=('GPL' 'LGPL')
-source=(http://archive.ubuntu.com/ubuntu/pool/main/g/gnome-session/gnome-session_$pkgver-$_ubuntuver.debian.tar.gz)
-md5sums=('c4f3267e501465c7352f47a1d8c65727')
+source=(http://archive.ubuntu.com/ubuntu/pool/main/g/gnome-session/gnome-session_${pkgver}-${_ubuntuver}.debian.tar.xz)
+md5sums=('6e787b23d920cf4b17fa56202b599f53')
 
 package() {
 	install -d "$pkgdir/etc/gnome"
