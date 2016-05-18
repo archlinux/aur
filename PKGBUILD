@@ -3,7 +3,7 @@
 pkgname=python2-modargs
 pkgver=1.7
 pkgrel=1
-pkgdesc="modargs is a simple command line argument parsing library that infers arguments from functions in a module"
+pkgdesc="Modargs is a simple command line argument parsing library that infers arguments from functions in a module."
 url="http://pypi.python.org/pypi/python-modargs"
 depends=('python2' )
 license=('BSD')
