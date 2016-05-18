@@ -1,14 +1,15 @@
 # Maintainer: Thomas Wood <grand.edgemaster@gmail.com>
 pkgname=emojione-color-font
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A color and B&W emoji SVG-in-OpenType font with support for ZWJ, skin tone modifiers and country flags."
 arch=('any')
 url="https://github.com/eosrei/emojione-color-font"
 license=('custom:CCPL:by-4.0' 'MIT')
 
-depends=(fontconfig)
-optdepends=('ttf-bitstream-vera: for bug-free font fallback')
+# ttf-bitstream-vera is required for bug-free font fallback with the provided fontconfig.
+# Please don't complain about it. See: https://github.com/eosrei/emojione-color-font#why-bitstream-vera
+depends=(fontconfig ttf-bitstream-vera)
 
 _pkgver=${pkgver//_/-}
 _archive=EmojiOneColor-SVGinOT-Linux-${_pkgver}
