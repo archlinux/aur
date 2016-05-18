@@ -19,12 +19,14 @@ provides=("nvidia=${pkgver}" 'nvidia-dkms')
 conflicts=('nvidia')
 options=('!strip')
 install=${pkgname}.install
+source=('linux-4.6.patch')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
 source_armv7h=("http://us.download.nvidia.com/XFree86/Linux-x86-ARM/${pkgver}/NVIDIA-Linux-armv7l-gnueabihf-${pkgver}.run")
 # http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run.md5
 # http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run.md5
 # http://us.download.nvidia.com/XFree86/Linux-x86-ARM/${pkgver}/NVIDIA-Linux-armv7l-gnueabihf-${pkgver}.run.md5
+md5sums=('3064bd437b26adac246f301f54f2814c')
 md5sums_i686=('8a4015213c4a8f1c80e9520d04a32a7b')
 md5sums_x86_64=('ad7a0b1855b3913390fb75b4cc3a26dc')
 md5sums_armv7h=('24704c8a6e9cfaabc96feec6e9b9bd86')
@@ -43,6 +45,7 @@ prepare() {
   sh ${_pkg}.run --extract-only
   cd ${_pkg}/kernel
   # patches here
+  patch -p1 --no-backup-if-mismatch -i ../linux-4.6.patch
 
   # Update dkms.conf
   sed -e "s/__VERSION_STRING/${pkgver}/" \
