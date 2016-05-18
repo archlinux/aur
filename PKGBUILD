@@ -1,7 +1,7 @@
 # Maintainer: Benjamin Bukowski <benjamin.bukowski@gmail.com>
 pkgname=firebird-superserver
 pkgver=2.5.5.26952
-pkgrel=1
+pkgrel=2
 pkgdesc="A open source SQL relational database management system (RDMS)"
 arch=('i686' 'x86_64')
 url="http://www.firebirdsql.org/"
@@ -22,10 +22,10 @@ md5sums=('b0b5293991fcf07347b38431c80be1d4'
 build() {
   cd $srcdir/Firebird-$pkgver-0
   
-  ./configure --prefix=/opt/firebird --libdir=/usr/lib --includedir=/usr/include \
-              --enable-superserver --with-system-icu --with-system-editline
-  
-  make
+  ./autogen.sh --prefix=/opt/firebird --libdir=/usr/lib --includedir=/usr/include \
+               --enable-superserver --with-system-icu --with-system-editline
+
+  make CXXFLAGS='-std=gnu++98 -flifetime-dse=1'
 }
 
 package() {
