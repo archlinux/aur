@@ -4,7 +4,7 @@
 
 pkgname=pycarddav-git
 _pkgname=pycarddav
-pkgver=0.7.0.27.gaacefd3
+pkgver=0.7.0.29.gedc9150
 pkgrel=1
 epoch=1
 pkgdesc="pyCardDAV is a simple to use CardDAV CLI client"
@@ -13,7 +13,7 @@ url="http://lostpackets.de/pycarddav/"
 license=('Expat/MIT')
 conflicts=('pycarddav')
 provides=('pycarddav')
-depends=('python2' 'python2-vobject<=0.8.1c' 'python2-requests' 'python2-lxml'
+depends=('python2' 'python2-vobject' 'python2-requests' 'python2-lxml'
 'python2-urwid' 'python2-xdg')
 makedepends=('python-docutils' 'python2-distribute')
 source=("git+https://github.com/geier/${_pkgname}.git")
