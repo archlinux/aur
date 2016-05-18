@@ -1,23 +1,18 @@
 # Maintainer: utsi
 pkgname=qtcreator-cppcheck-plugin
-pkgver=3.6.0
-pkgrel=3
+pkgver=4.0.0
+pkgrel=1
 pkgdesc="Qt Creator Cppcheck integration plugin"
 groups=('qt' 'qt5')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 provides=('qtcreator-cppcheck-plugin')
 conflicts=()
 license=('MIT')
 url="http://downloads.sourceforge.net/project/qtc-cppcheck/bin/${pkgver}/"
-depends=('qtcreator>=3.6.0' 'qtcreator<3.7.0' 'cppcheck')
+depends=('qtcreator>=4.0.0' 'qtcreator<4.1.0' 'cppcheck')
 makedepends=()
-if [ "$CARCH" == x86_64 ]; then
-	source=("${url}/QtcCppcheck-${pkgver}-linux-x64.tar.gz")
-	sha1sums=('62a2a39623ed0bb992605950d33c5f61783108c5')
-elif [ "$CARCH" == i686 ]; then
-	source=("${url}/QtcCppcheck-${pkgver}-linux-x86.tar.gz")
-	sha1sums=('5d92a993a365fbc6b2d651d13b776a6e8959c890')
-fi
+source=("${url}/QtcCppcheck-${pkgver}-linux-x64.tar.gz")
+sha512sums=('f75415a20f551bb693d27ba1efb11b0780013ae6040c625e11534e4118f834bfe4bf3d9cf265dcce1a990e4696b8ac5a99c84f503f59922df9a3214f4e7717f3')
 
 
 package() {
