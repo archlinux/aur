@@ -1,0 +1,18 @@
+pkgbase = sf2dlib-git
+	pkgdesc = Simple and Fast 2D library for the Nintendo 3DS (using ctrulib)
+	pkgver = r105.e9a23af
+	pkgrel = 1
+	url = https://github.com/xerpi/sf2dlib
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = devkitarm
+	depends = ctrulib-git
+	provides = sf2dlib
+	options = !strip
+	options = staticlibs
+	source = sf2dlib-git::git+https://github.com/xerpi/sf2dlib.git
+	sha256sums = SKIP
+
+pkgname = sf2dlib-git
+
