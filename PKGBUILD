@@ -2,7 +2,7 @@
 
 pkgname=ceres-solver
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Solver for nonlinear least squares problems"
 arch=('i686' 'x86_64')
 url="http://ceres-solver.org/"
@@ -22,6 +22,10 @@ _cmakeopts=('-D CMAKE_BUILD_TYPE=Release'
 
 build() {
   cd $srcdir/$pkgname-$pkgver
+
+  # Temporary fix for GCC 6.0
+  sed -i "s/-Werror=extra/-Werror=extra -Wno-error=nonnull-compare -Wno-error=address/g" "CMakeLists.txt"
+
   mkdir -p ./build
   cd ./build
   cmake ${_cmakeopts[@]} ../
