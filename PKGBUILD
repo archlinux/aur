@@ -9,7 +9,7 @@ arch=('x86_64')
 url="http://www.nvidia.com/"
 license=('custom:NVIDIA')
 options=('!strip')
-_pkg="linux-x86-$pkgver"
+_pkg="NVIDIA-Linux-x86-$pkgver"
 source=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/$_pkg.run")
 md5sums=('8a4015213c4a8f1c80e9520d04a32a7b')
 
