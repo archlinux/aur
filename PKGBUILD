@@ -3,7 +3,7 @@
 # Contributor: tomegun
 
 pkgname=rtmpdump-git
-pkgver=0.499.a107cef
+pkgver=0.512.fa8646d
 pkgrel=1
 pkgdesc="A tool to download rtmp and rtmpe streams"
 url="http://rtmpdump.mplayerhq.hu/"

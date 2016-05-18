@@ -1,6 +1,6 @@
 pkgbase = rtmpdump-git
 	pkgdesc = A tool to download rtmp and rtmpe streams
-	pkgver = 0.499.a107cef
+	pkgver = 0.512.fa8646d
 	pkgrel = 1
 	url = http://rtmpdump.mplayerhq.hu/
 	arch = i686
