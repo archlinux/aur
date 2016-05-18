@@ -7,7 +7,7 @@ pkgname=('gcc5')
 pkgver=5.3.0
 _pkgver=5
 _islver=0.15
-pkgrel=4
+pkgrel=5
 _snapshot=5-20160503
 pkgdesc="The GNU Compiler Collection"
 arch=('i686' 'x86_64')
@@ -70,6 +70,7 @@ build() {
       --enable-version-specific-runtime-libs
       #--enable-install-libiberty
 
+  export LD_PRELOAD=/usr/lib/libstdc++.so.6
   make
 }
 
