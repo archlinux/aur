@@ -4,7 +4,7 @@
 
 pkgname=gimp-git
 epoch=1
-pkgver=2.9.2.884.g52af914
+pkgver=2.9.2.1044.g1c6b85d
 pkgrel=1
 pkgdesc="GNU Image Manipulation Program"
 arch=('i686' 'x86_64')
@@ -28,7 +28,6 @@ provides=('gimp')
 conflicts=('gimp')
 replaces=()
 backup=()
-install='gimp-git.install'
 source=(git://git.gnome.org/gimp
 	linux.gpl)
 md5sums=('SKIP'
