@@ -34,7 +34,7 @@ md5sums=('2640eac092c220073f0668a7aaff61f7'
          '3064bd437b26adac246f301f54f2814c')
 md5sums_i686=('8a4015213c4a8f1c80e9520d04a32a7b')
 md5sums_x86_64=('ad7a0b1855b3913390fb75b4cc3a26dc')
-[[ $_pkg = linux-x86_64-$pkgver ]] && md5sums_x86_64=('a7ca202401b5fd27f04f89c0dedaaf59')
+[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('a7ca202401b5fd27f04f89c0dedaaf59')
 
 # Auto-detect patches (e.g. linux-4.1.patch)
 for _patch in $(find "$startdir" -maxdepth 1 -name '*.patch' -printf "%f\n"); do
