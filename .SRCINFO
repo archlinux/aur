@@ -1,0 +1,15 @@
+pkgbase = humanresourcemachine
+	pkgdesc = Assembler programming puzzle game by the makers of WorldOfGoo - game sold separately (HumbleStore)
+	pkgver = 2016.03.23
+	pkgrel = 1
+	url = http://tomorrowcorporation.com/humanresourcemachine
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = sdl2
+	depends = openal
+	source = humblestore://HumanResourceMachine-Linux-2016-03-23.sh
+	md5sums = ac6013284194203c4732e713dcc0f543
+
+pkgname = humanresourcemachine
+
