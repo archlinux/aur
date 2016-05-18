@@ -10,8 +10,8 @@
 
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
-_pkgbasever=4.5-gnu
-_pkgver=4.5.4-gnu
+_pkgbasever=4.6-gnu
+_pkgver=${_pkgbasever}
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -32,8 +32,8 @@ fi
 options=('!strip')
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
-        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
-        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
+        #"http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
+        #"http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm"
@@ -45,9 +45,8 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
-        '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
-        '0003-fix-Atmel-maXTouch-touchscreen-support.patch'
+        '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
+        '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
         "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
@@ -58,12 +57,8 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
-        '0008-USB-armory-support.patch'
-        '0009-Revert-stmmac-Fix-eth0-No-PHY-found-regression.patch'
-        '0010-stmmac-fix-MDIO-settings.patch')
-sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
-            'SKIP'
-            '02e00521cf765da05692aea22262e05c96325562667b107be6289354c5eef3fa'
+        '0008-USB-armory-support.patch')
+sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -71,26 +66,23 @@ sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            'a1a38fe603dc3a25c9e5ebe0c11cae3563de2e19a53531c55624b4e667a9db1e'
-            '7495f9ab1f7c36e0698100e6dcf36213c0e6f71db01c3869fedbf9b3b83c21a9'
-            '47acd8cfa20b898d4f392df2124a344532d8f0ae14141fbdf723c774cdd88479'
+            '61e60b3a914744d85b030aa1c5f923308fcb9c05ac244d01b8b25820de9cdac0'
+            '7959e923a90555432db595b9da677668839bd37ef4f2c920d22eb7ab9013e63e'
+            '7fe3eabb27fbfab161df63dba1d638f60074b8ad8c39f9c78c83d4265027500c'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '91e087cddaf2149d050b90720d5b3004263ec3ab07dece0241551d045ff0a91f'
-            '96c6c7d4057b8d08238adae85d476c863c082770a182057163a45480511d35a8'
-            '2ca85ee212ef8d8aab3d3c2a0cef304a355d86e7aa520e19471f56ace68a0cf4'
-            '832f80b991d3064ab9eea1327b222308f4617ce55e94ffaa28333b656dece4d2'
+            '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
+            '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
+            'd05febd9fdec0ea8c7e21e01beabb6b2b0f7f021d41538077b5c6ec27bacf9fe'
             'SKIP'
-            'd09937cbca4f408dbcde270e465bdfe0589a0b41ed07d260a596a38fe6cca987'
-            'cc1f1b5026b373da4a5c2e8c82bc2b0f8a20e295353c201579140a04f2452545'
-            'f68d382f9d5b9948cc0e7062290e1b26d7c3c7e4ba270fda0bd632c24465a40b'
-            '658f619cd11676996919ef290934cfc809db5d0fa35a1ebc475d3ebb59253201'
-            'f7bf7a7cf676571f48c92fc858ddd67cc395105ae633c3d6e5386a4a5c848d81'
-            '939c11540b47f02706f3cff1b76b84a13b4dab9cae438632d4b685b16ed8249e'
-            'db830e53d451c54f84917b663671a6cc9414b043064cdf1a17369c198abee9dd'
-            'ef21f0524fdd559389529bd05b56a3b89642fb10b74de709153d1b3c2e21c126'
-            '9f915fedf2cf03eccfed9025d3883a1158531203a676060a2eae5809ec4989ce'
-            'bbbdd20f4a933ae988e713de5ac3ad08bd453e4e3dfa4cdac2da483dcf2454d8')
+            '9fc2533ed95497583752c6eca931f24c159be956fcc49d39cac64da7298a9c88'
+            '909c046f6123ec81764fde5d9a78431a9dc3b206ce01119ae4d91be54d9471dd'
+            '11c63a0952293b4fee080c2c0faf8b08283282c0a50694e71cab0c2503478ac5'
+            '49a4fe309e71d3e8cbf4bd98a862c7fcf13cb96d1802dafa8138bbfcf8769725'
+            '586e9f30059534dc3b0e765cb78e52ce75c1a3ea23779a7b86045fac7cba2f65'
+            '9ade3a63d0d1b4004af3733b0853a4c4d6837d933f30a462045214e2a4354a7a'
+            'bd41dd7fa8241781c150f783d55317c2d6d7dd31834619b12504d7277fe91574'
+            'f9626d188c76f387da62c6294b09f5fa4d94f5b1534ce2891bef7a99c7b40d2b')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -116,10 +108,10 @@ prepare() {
   fi
 
   if [ "${CARCH}" = "armv7h" ]; then
-    # RCN patch (CM3 firmware deblobbed and AUFS removed)
-    # Note: AUFS was removed in the RCN patch since it are being supported by
-    # linux-libre-pck through PCK patch for all available architectures.
-    # See https://wiki.parabola.nu/PCK for further details.
+    # RCN patch (CM3 firmware deblobbed, AUFS and RT removed)
+    # Note: For stability reasons, AUFS and RT have been removed in the RCN patch.
+    # We are supporting AUFS in linux-libre-pck through PCK patch and RT through its official
+    # patch in linux-libre-rt. See https://wiki.parabola.nu/PCK for further details about PCK.
     git apply -v "${srcdir}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
 
     # ALARM patches
@@ -131,8 +123,6 @@ prepare() {
     patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
     patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
     patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
-    patch -p1 -i "${srcdir}/0009-Revert-stmmac-Fix-eth0-No-PHY-found-regression.patch"
-    patch -p1 -i "${srcdir}/0010-stmmac-fix-MDIO-settings.patch"
   fi
 
   # add freedo as boot logo
@@ -147,20 +137,14 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  # make the radeon driver load without the firmwares
-  # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
-  if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then ## This patch is only needed for x86 computers, so we disable it for others
-    patch -p1 -i "${srcdir}/0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch"
-  fi
-
   # maintain the TTY over USB disconnects
   # http://www.coreboot.org/EHCI_Gadget_Debug
-  patch -p1 -i "${srcdir}/0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch"
+  patch -p1 -i "${srcdir}/0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch"
 
   # fix Atmel maXTouch touchscreen support
   # https://labs.parabola.nu/issues/877
   # http://www.fsfla.org/pipermail/linux-libre/2015-November/003202.html
-  patch -p1 -i "${srcdir}/0003-fix-Atmel-maXTouch-touchscreen-support.patch"
+  patch -p1 -i "${srcdir}/0002-fix-Atmel-maXTouch-touchscreen-support.patch"
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
@@ -377,6 +361,12 @@ _package-headers() {
     mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
     cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
   done
+
+  # add objtool for external module building and enabled VALIDATION_STACK option
+  if [ -f tools/objtool/objtool ];  then
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+  fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
