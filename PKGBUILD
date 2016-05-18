@@ -4,7 +4,7 @@
 # Contributor: William Ting <william.h.tingATgmail.com>
 
 pkgname=autojump-git
-pkgver=release.v21.7.1.191.g113a84f
+pkgver=22.3.0.r14.g9a6e286
 pkgrel=1
 pkgdesc="A faster way to navigate your filesystem from the command line"
 arch=(any)
@@ -23,7 +23,7 @@ _gitname="autojump"
 
 pkgver() {
     cd ${_gitname}
-    git describe --always | sed 's|-|.|g'
+    git describe --long --tags | sed 's/^release\-v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
