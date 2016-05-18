@@ -1,47 +1,48 @@
-# Maintainer: adagari <adam.garibay at gmail dot com>
+# Maintainer: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani@gmail.com>
+# Contributor: adagari <adam.garibay at gmail dot com>
 
 pkgname=ut4
-pkgver=2899548
+pkgver=2973693
 pkgrel=1
-pkgdesc="PRE-ALPHA of the new Unreal Tournament based on Unreal Engine 4."
+pkgdesc="Pre-Alpha of the new Unreal Tournament based on Unreal Engine 4."
 arch=("x86_64")
-url="https://forums.unrealtournament.com/showthread.php?12011-Unreal-Tournament-Pre-Alpha-Playable-Build"
-DLAGENTS+=('file::/usr/bin/echo "Could not find %u. Manually download it to the build directory, from https://forums.unrealtournament.com/showthread.php?12011-Unreal-Tournament-Pre-Alpha-Playable-Build. Registration required."; exit 1')
+url="https://www.epicgames.com/unrealtournament/"
 license=('custom')
-depends=()
-makedepends=("unzip")
-options=()
-source=("UnrealTournament-Client-XAN-${pkgver}-Linux.zip"
+makedepends=('unzip')
+source=(file://"UnrealTournament-Client-XAN-${pkgver}-Linux.zip"
         "UnrealTournament"
         "UnrealTournament4.desktop")
 noextract=("UnrealTournament-Client-XAN-${pkgver}-Linux.zip")
-md5sums=('71515d05ed84a0f08fdd59eee4b37cbb'
-         '12ff7c29ca0db84e76dfb485e6093f29'
-         '126d209e58c0dd01bc3151b175651105')
-
-_root=LinuxNoEditor
+sha512sums=(
+    'dba70b57524d6f2fb9274c90c5c4218e55deba916245dab3d03ee23296d9e2ea1c71715f342770e7fbcf7d2ae41886b4ea4eb006d8047a1df282a6e31b112bac'
+    'f0e737f9d331e938b5b3433e8e182792339e5ec804923e78beed813e472ab24a45db25c01227e42256dece7170e967f6a87795c3d4591ebcfaa876cee12249b8'
+    '0d0d92628c98113b4fd7ae2ce496fd679e90b115f701979edd99e9cb89826fd647cac15402ba3467755b96173330c7b47505d32798f926803bcf1beaf73f6942'
+)
 
 prepare() {
-    cd $srcdir
+    cd ${srcdir}
     unzip UnrealTournament-Client-XAN-${pkgver}-Linux.zip
 }
 
 package() {
-    install -d "$pkgdir/opt"
-    cp -ra $_root "$pkgdir/opt/ut4"
+    DEST="/opt"
+    RPATH="${pkgdir}${DEST}"
+    DPATH="${RPATH}/ut4"
+    install -d "${RPATH}"
+    cp -ra LinuxNoEditor "${DPATH}"
 
-    chgrp -R games "$pkgdir/opt/ut4"
-    chmod -R a+rw "$pkgdir/opt/ut4/UnrealTournament/Saved"
+    chgrp -R games "${DPATH}"
+    chmod -R a+rw "${DPATH}/UnrealTournament/Saved"
 
-    chmod +x "$pkgdir/opt/ut4/Engine/Binaries/Linux/UE4-Linux-Shipping"
-    chmod +x "$pkgdir/opt/ut4/Engine/Binaries/Linux/UE4-Linux-Test"
+    chmod +x "${DPATH}/Engine/Binaries/Linux/UE4-Linux-Shipping"
+    chmod +x "${DPATH}/Engine/Binaries/Linux/UE4-Linux-Test"
 
-    install -d "$pkgdir/usr/bin"
-    install UnrealTournament "$pkgdir/usr/bin/UnrealTournament"
-    chmod +x "$pkgdir/usr/bin/UnrealTournament"
+    BPATH="${pkgdir}/usr/bin"
+    install -d "${BPATH}"
+    install UnrealTournament "${BPATH}"
+    chmod +x "${BPATH}/UnrealTournament"
 
-    install -d "$pkgdir/usr/share/icons/"
-
-    install -d "$pkgdir/usr/share/applications/"
-    install UnrealTournament4.desktop "$pkgdir/usr/share/applications/"
+    install -d "${pkgdir}/usr/share/applications/"
+    sed -i "s/PATH/${PATH}/g" UnrealTournament4.desktop
+    install UnrealTournament4.desktop "${pkgdir}/usr/share/applications/"
 }

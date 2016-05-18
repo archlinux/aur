@@ -1,18 +1,18 @@
 pkgbase = ut4
-	pkgdesc = PRE-ALPHA of the new Unreal Tournament based on Unreal Engine 4.
-	pkgver = 2899548
+	pkgdesc = Pre-Alpha of the new Unreal Tournament based on Unreal Engine 4.
+	pkgver = 2973693
 	pkgrel = 1
-	url = https://forums.unrealtournament.com/showthread.php?12011-Unreal-Tournament-Pre-Alpha-Playable-Build
+	url = https://www.epicgames.com/unrealtournament/
 	arch = x86_64
 	license = custom
 	makedepends = unzip
-	noextract = UnrealTournament-Client-XAN-2899548-Linux.zip
-	source = https://s3.amazonaws.com/unrealtournament/UnrealTournament-Client-XAN-2899548-Linux.zip
+	noextract = UnrealTournament-Client-XAN-2973693-Linux.zip
+	source = file://UnrealTournament-Client-XAN-2973693-Linux.zip
 	source = UnrealTournament
 	source = UnrealTournament4.desktop
-	md5sums = 71515d05ed84a0f08fdd59eee4b37cbb
-	md5sums = 12ff7c29ca0db84e76dfb485e6093f29
-	md5sums = 126d209e58c0dd01bc3151b175651105
+	sha512sums = dba70b57524d6f2fb9274c90c5c4218e55deba916245dab3d03ee23296d9e2ea1c71715f342770e7fbcf7d2ae41886b4ea4eb006d8047a1df282a6e31b112bac
+	sha512sums = f0e737f9d331e938b5b3433e8e182792339e5ec804923e78beed813e472ab24a45db25c01227e42256dece7170e967f6a87795c3d4591ebcfaa876cee12249b8
+	sha512sums = 0d0d92628c98113b4fd7ae2ce496fd679e90b115f701979edd99e9cb89826fd647cac15402ba3467755b96173330c7b47505d32798f926803bcf1beaf73f6942
 
 pkgname = ut4
 
