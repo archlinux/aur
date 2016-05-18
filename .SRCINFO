@@ -5,7 +5,7 @@ pkgbase = lib32-nvidia-utils-beta
 	arch = x86_64
 	license = custom:NVIDIA
 	options = !strip
-	source = http://us.download.nvidia.com/XFree86/Linux-x86/364.19/NVIDIA-Linux-x86-364.19.run
+	source = http://us.download.nvidia.com/XFree86/Linux-x86/364.19/linux-x86-364.19.run
 	md5sums = 8a4015213c4a8f1c80e9520d04a32a7b
 
 pkgname = lib32-nvidia-utils-beta
