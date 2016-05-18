@@ -1,16 +1,15 @@
 # Contributor: Lee.MaRS <leemars@gmail.com>
 # Contributor: monson <holymonson@gmail.com>
 # Contributor:  Federico Cinelli <cinelli.federico@gmail.com>
-# Maintainer: Pablo Lezaeta <prflr88@gmail.com>
+# former Maintainer: Pablo Lezaeta <prflr88@gmail.com>
 
 pkgname=acroread-fonts
 pkgver=9.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Chinese Simplified, Chinese Traditional, Japanese, Korean and Extended Language font packs for Adobe Acrobat Reader"
 url="http://www.adobe.com/support/downloads/product.jsp?platform=unix&product=10"
 license=('custom')
 arch=('any')
-provides=("acroread-fonts")
 source=("http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/9.1/misc/FontPack910_chs_i486-linux.tar.bz2" 
         "http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/9.1/misc/FontPack910_cht_i486-linux.tar.bz2"
         "http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/9.1/misc/FontPack910_jpn_i486-linux.tar.bz2"
@@ -24,7 +23,7 @@ md5sums=('8abe3f7fb77918a8376b6793b841eaab'
 
 _prefix='/usr/lib/acroread/'
 
-build() {
+prepare() {
     cd "${srcdir}"
     find "${srcdir}" -iname LANG\*.TAR -exec tar -pxf {} \;    
     rm Adobe/Reader9/Resource/CMap/Identity-[HV]
@@ -33,4 +32,5 @@ build() {
 package() {
     mkdir -p "${pkgdir}/${_prefix}"    
     mv "${srcdir}"/Adobe/Reader9/Resource "${pkgdir}/${_prefix}"/    
+    install -Dm644 "$srcdir/JPNKIT/LICREAD.TXT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
