@@ -1,0 +1,9 @@
+post_install() {
+	echo
+	echo "$(tput setaf 4)In order to configure the extensions, please run $(tput setaf 3)themysto install"
+	echo
+}
+
+post_upgrade() {
+	post_install
+}
