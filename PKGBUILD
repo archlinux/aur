@@ -7,11 +7,11 @@
 pkgbase=lib32-bluez
 pkgname=(${pkgbase}{,-libs,-cups,-plugins})
 pkgver=5.39
-pkgrel=1
+pkgrel=2
 url="http://www.bluez.org/"
 arch=('x86_64')
 license=('GPL2')
-makedepends=('gcc-multilib' 'gcc-libs-multilib' 'lib32-dbus' 'lib32-libical' 'lib32-systemd')
+makedepends=('gcc-multilib' 'gcc-libs-multilib' 'lib32-dbus' 'lib32-glib2' 'lib32-libical' 'lib32-readline' 'lib32-systemd')
 source=("http://www.kernel.org/pub/linux/bluetooth/${pkgbase#lib32-}-${pkgver}.tar."{xz,sign})
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
 sha256sums=('21d1bc9150d3576296595217efb98a746b592389d25d5637e8bee5da7272593b'
@@ -20,10 +20,14 @@ validpgpkeys=('E932D120BC2AEC444E558F0106CA9F5D1DCF2659') # Marcel Holtmann <mar
 
 build() {
   cd "${srcdir}/${pkgbase#lib32-}-${pkgver}"
+
+  # Override the defaults with 32-bit options.
   export CC='gcc -m32'
   export CXX='g++ -m32'
   export LDFLAGS='-m32'
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
+#  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
+
   ./configure \
               --prefix=/usr \
               --mandir=/usr/share/man \
