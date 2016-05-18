@@ -9,6 +9,7 @@ arch=("x86_64")
 url="https://www.epicgames.com/unrealtournament/"
 license=('custom')
 makedepends=('unzip')
+DLAGENTS+=("file::/usr/bin/echo Could not find %u. Manually download it to the build directory, from https://forums.unrealtournament.com/showthread.php?12011-Unreal-Tournament-Pre-Alpha-Playable-Build. Registration required.")
 source=(file://"UnrealTournament-Client-XAN-${pkgver}-Linux.zip"
         "UnrealTournament"
         "UnrealTournament4.desktop")
