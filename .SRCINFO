@@ -1,7 +1,7 @@
 pkgbase = nodejs5
 	pkgdesc = Evented I/O for V8 javascript
 	pkgver = 5.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nodejs.org/
 	arch = i686
 	arch = x86_64
