@@ -17,27 +17,32 @@ makedepends=('linux-headers')
 options=('!strip')
 
 # Installer name
-_pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32"
+_pkg="linux-x86_64-$pkgver-no-compat32"
 if [[ $CARCH = i686 ]]; then
-  _pkg="NVIDIA-Linux-x86-$pkgver"
+  _pkg="linux-x86-$pkgver"
 elif [[ $_lib32 = 1 ]] || pacman -Q lib32-nvidia-utils-full-beta &>/dev/null; then
   pkgname+=('lib32-nvidia-utils-full-beta' 'lib32-nvidia-libgl-full-beta' 'lib32-opencl-nvidia-full-beta')
-  _pkg="NVIDIA-Linux-x86_64-$pkgver"
+  _pkg="linux-x86_64-$pkgver"
 fi
 
 # Source
-source=('20-nvidia.conf')
-source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
+source=('20-nvidia.conf'
+        'linux-4.6.patch')
+source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
-md5sums=('2640eac092c220073f0668a7aaff61f7')
+md5sums=('2640eac092c220073f0668a7aaff61f7'
+         '3064bd437b26adac246f301f54f2814c')
 md5sums_i686=('8a4015213c4a8f1c80e9520d04a32a7b')
 md5sums_x86_64=('ad7a0b1855b3913390fb75b4cc3a26dc')
-[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('a7ca202401b5fd27f04f89c0dedaaf59')
+[[ $_pkg = linux-x86_64-$pkgver ]] && md5sums_x86_64=('a7ca202401b5fd27f04f89c0dedaaf59')
 
-# Auto-detect patches (e.g. nvidia-linux-4.1.patch)
-for _patch in $(ls "$startdir"/*.patch 2>/dev/null); do
-  source+=("$_patch")
-  md5sums+=('SKIP')
+# Auto-detect patches (e.g. linux-4.1.patch)
+for _patch in $(find "$startdir" -maxdepth 1 -name '*.patch' -printf "%f\n"); do
+  # Don't duplicate those already defined above
+  if [[ ! ${source[@]} =~ $_patch ]]; then
+    source+=("$_patch")
+    md5sums+=('SKIP')
+  fi
 done
 
 _create_links() {
@@ -127,9 +132,9 @@ package_nvidia-libgl-full-beta() {
   ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/xorg/modules/extensions/libglx.so
 
   # libGL (link)
-  ln -s /usr/lib/nvidia/libGL.so.$pkgver "$pkgdir"/usr/lib/libGL.so.$pkgver
-  ln -s libGL.so.$pkgver "$pkgdir"/usr/lib/libGL.so.1
-  ln -s libGL.so.$pkgver "$pkgdir"/usr/lib/libGL.so
+  ln -s /usr/lib/nvidia/libGL.so.1.0.0 "$pkgdir"/usr/lib/libGL.so.1.0.0
+  ln -s libGL.so.1.0.0 "$pkgdir"/usr/lib/libGL.so.1
+  ln -s libGL.so.1.0.0 "$pkgdir"/usr/lib/libGL.so
 
   # GLX (link)
   ln -s /usr/lib/nvidia/libGLX.so.0 "$pkgdir"/usr/lib/libGLX.so.0
@@ -181,7 +186,7 @@ package_nvidia-utils-full-beta() {
   ln -s libglx.so.$pkgver "$pkgdir"/usr/lib/nvidia/xorg/modules/extensions/libglx.so
 
   # libGL & OpenGL
-  install -Dm755 libGL.so.$pkgver "$pkgdir"/usr/lib/nvidia/libGL.so.$pkgver
+  install -Dm755 libGL.so.1.0.0 "$pkgdir"/usr/lib/nvidia/libGL.so.1.0.0
   install -Dm755 libGLdispatch.so.0 "$pkgdir"/usr/lib/libGLdispatch.so.0
   install -Dm755 libnvidia-glcore.so.$pkgver "$pkgdir"/usr/lib/libnvidia-glcore.so.$pkgver
   install -Dm755 libOpenGL.so.0 "$pkgdir"/usr/lib/libOpenGL.so.0
@@ -383,9 +388,9 @@ package_lib32-nvidia-libgl-full-beta() {
 
   # libGL (link)
   install -d "$pkgdir"/usr/lib32/
-  ln -s /usr/lib32/nvidia/libGL.so.$pkgver "$pkgdir"/usr/lib32/libGL.so.$pkgver
-  ln -s libGL.so.$pkgver "$pkgdir"/usr/lib32/libGL.so.1
-  ln -s libGL.so.$pkgver "$pkgdir"/usr/lib32/libGL.so
+  ln -s /usr/lib32/nvidia/libGL.so.1.0.0 "$pkgdir"/usr/lib32/libGL.so.1.0.0
+  ln -s libGL.so.1.0.0 "$pkgdir"/usr/lib32/libGL.so.1
+  ln -s libGL.so.1.0.0 "$pkgdir"/usr/lib32/libGL.so
 
   # GLX (link)
   ln -s /usr/lib32/nvidia/libGLX.so.0 "$pkgdir"/usr/lib32/libGLX.so.0
@@ -425,7 +430,7 @@ package_lib32-nvidia-utils-full-beta() {
   cd $_pkg
 
   # libGL & OpenGL
-  install -Dm755 32/libGL.so.$pkgver "$pkgdir"/usr/lib32/nvidia/libGL.so.$pkgver
+  install -Dm755 32/libGL.so.1.0.0 "$pkgdir"/usr/lib32/nvidia/libGL.so.1.0.0
   install -Dm755 32/libGLdispatch.so.0 "$pkgdir"/usr/lib32/libGLdispatch.so.0
   install -Dm755 32/libnvidia-glcore.so.$pkgver "$pkgdir"/usr/lib32/libnvidia-glcore.so.$pkgver
   install -Dm755 32/libOpenGL.so.0 "$pkgdir"/usr/lib32/libOpenGL.so.0
