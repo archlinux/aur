@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Soundnode App
+Name=Soundnode
 GenericName=Soundcloud client
-Comment=Soundnode App is the Soundcloud for desktop.
-Exec=/opt/soundnode-app-bin/Soundnode
+Comment=Soundnode is the Soundcloud client for desktop.
+Exec=soundnode
 Icon=/opt/soundnode-app-bin/soundnode.png
 Terminal=false
 Type=Application
-Category=AudioVideo;Player
+Categories=AudioVideo;Player
