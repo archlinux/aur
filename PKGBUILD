@@ -11,7 +11,7 @@ license=('MPL')
 depends=('gtk3' 'vte3' 'dconf' 'gsettings-desktop-schemas' 'gtkd-dmd>=3.3.0')
 optdepends=('python2-nautilus: for "Open Terminix Here" support in nautilus'\
             'vte3-notification: for desktop notifications support')
-makedepends=('git' 'dmd' 'pkg-config')
+makedepends=('git' 'dmd')
 provides=('terminix')
 conflicts=('terminix')
 source=('git+https://github.com/gnunn1/terminix')
