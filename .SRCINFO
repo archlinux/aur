@@ -1,12 +1,15 @@
 pkgbase = rutorrent-git
 	pkgdesc = Web frontend to rTorrent in PHP designed to resemble uTorrent
-	pkgver = r1569.1285473
+	pkgver = r1738.6d6fa34
 	pkgrel = 1
 	url = https://github.com/Novik/ruTorrent
 	install = rutorrent.install
 	arch = any
 	license = GPL
 	makedepends = git
+	depends = php
+	depends = curl
+	depends = mktorrent
 	optdepends = php-geoip: enable geoip plugin
 	optdepends = geoip: enable geoip plugin
 	optdepends = unrar: enable unpack plugin

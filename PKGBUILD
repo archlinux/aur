@@ -2,7 +2,7 @@
 # Contributor: skydrome <skydrome@i2pmail.org>
 
 pkgname='rutorrent-git'
-pkgver=r1569.1285473
+pkgver=r1738.6d6fa34
 pkgrel=1
 pkgdesc="Web frontend to rTorrent in PHP designed to resemble uTorrent"
 url="https://github.com/Novik/ruTorrent"
@@ -12,7 +12,7 @@ arch=('any')
 install=rutorrent.install
 options=(!strip)
 
-#depends=('php' 'curl' 'mktorrent')
+depends=('php' 'curl' 'mktorrent')
 makedepends=('git')
 optdepends=('php-geoip: enable geoip plugin'
             'geoip: enable geoip plugin'
@@ -63,19 +63,19 @@ prepare() {
 
     for i in php stat curl id gzip; do
         sed -i conf/config.php \
-            -e "s:\"$i\".*=> ''.*:\"$i\"   => \'$(which $i)\',:"
+            -e "s:\"$i\".*=> ''.*:\"$i\"   => \'/usr/bin/$i\',:"
     done
 
     for i in rar zip unzip unrar tar; do
         sed -i ../extra/filemanager/conf.php \
-            -e "s:\$pathToExternals\['$i'\] = '':\$pathToExternals\['$i'\] = '$(which $i)':"
+            -e "s:\$pathToExternals\['$i'\] = '':\$pathToExternals\['$i'\] = '/usr/bin/$i':"
         sed -i plugins/unpack/conf.php \
-            -e "s:\$pathToExternals\['$i'\] = '':\$pathToExternals\['$i'\] = '$(which $i)':"
+            -e "s:\$pathToExternals\['$i'\] = '':\$pathToExternals\['$i'\] = '/usr/bin/$i':"
     done
 
     sed -i plugins/create/conf.php \
         -e "s:\$useExternal = false:\$useExternal = true:" \
-        -e "s:\$pathToCreatetorrent = '':\$pathToCreatetorrent = '$(which mktorrent)':"
+        -e "s:\$pathToCreatetorrent = '':\$pathToCreatetorrent = '/usr/bin/$i':"
 
     sed -i php/settings.php \
         -e "s:'/tmp:'/${_webdir}/rutorrent/tmp/:"
