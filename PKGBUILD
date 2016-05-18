@@ -35,5 +35,6 @@ package() {
 	find ./opt -type f -exec install -Dm644 {} \
             "${pkgdir}/{}" \;
 	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/usr/share/applications/${_desktop}" "${pkgdir}/usr/share/applications/${_desktop}"
+        makedir -p "${pkgdir}/usr/bin/"
         ln -s "${srcdir}/${pkgname}-${pkgver}/opt/longene/qq/qq.sh" "${pkgdir}/usr/bin/qq"
 }
