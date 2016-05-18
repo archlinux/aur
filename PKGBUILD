@@ -6,22 +6,21 @@
 # Contributor: Patrik Votoček <patrik[at]votocek[dot]cz>
 
 pkgname=phpstorm-eap
-pkgbuild=145.1503.4
-pkgver=${pkgbuild}
-pkgrel=1
+pkgver=145.1503.4
+pkgrel=2
 pkgdesc="Lightning-smart PHP IDE. Early Access Program."
 arch=('i686' 'x86_64')
 options=(!strip)
 url="http://www.jetbrains.com/phpstorm/"
 license=('custom')
 optdepends=('java-environment>=8: use system java'
-    'java-runtime-common: use system java')
-source=(http://download.jetbrains.com/webide/PhpStorm-EAP-145.1503.4.tar.gz
-	phpstorm-eap.desktop
-    phpstorm-eap.sh)
+            'java-runtime-common: use system java')
+source=("http://download.jetbrains.com/webide/PhpStorm-EAP-${pkgver}.tar.gz"
+        "phpstorm-eap.desktop"
+        "phpstorm-eap.sh")
 sha256sums=('2486dcd1e4fe2804567d678526f5fc31ab973ed973600147769d1c9159654bbe'
-	'479e6ac16424df02ce1610da9eec8cc73a84cac7912e60661d4092954142933e'
-    '7ff963977384e7398890fbd38f91eb68fc7166e2b440325f19770a8a87bbf480')
+            '479e6ac16424df02ce1610da9eec8cc73a84cac7912e60661d4092954142933e'
+            '7ff963977384e7398890fbd38f91eb68fc7166e2b440325f19770a8a87bbf480')
 
 package() {
   install -d -m 755 ${pkgdir}/opt/
@@ -30,7 +29,7 @@ package() {
   install -d -m 755 ${pkgdir}/usr/share/pixmaps/
   install -d -m 755 ${pkgdir}/etc/profile.d/
   
-  cp -R ${srcdir}/PhpStorm-${pkgbuild} ${pkgdir}/opt/${pkgname}
+  cp -R ${srcdir}/PhpStorm-${pkgver} ${pkgdir}/opt/${pkgname}
   
   ln -s /opt/$pkgname/bin/phpstorm.sh "$pkgdir/usr/bin/phpstorm-eap"
   install -D -m 644 ${srcdir}/${pkgname}.desktop ${pkgdir}/usr/share/applications/
