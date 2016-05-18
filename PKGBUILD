@@ -3,7 +3,7 @@
 # Contriutor: Vladimir Turba <turbavladimir@yandex.ru>
 
 pkgname=translate-shell
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="Google Translate to serve as a command-line tool."
 arch=('any')
@@ -24,8 +24,8 @@ optdepends=(
 install=$pkgname.install
 source=("https://github.com/soimort/$pkgname/archive/v$pkgver.tar.gz")
 
-md5sums=('d3c6e8bba84af3177b171b4df57ba08e')
-sha256sums=('cb0da68cc984cb275e3c8fddfb1b56a846cef41dad729890ad9b3d7ef35dc807')
+md5sums=('5491e6776a5270ad36de54e9e9ead985')
+sha256sums=('bfc04124d2fde7924e6b5c3a11fdce7fbd2fdb1819c0b78c3fd0a7d36e330164')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
