@@ -37,9 +37,11 @@ optdepends=(
 source=(
 	"${_pkgbase}-${pkgver}.tar.gz::https://github.com/Itseez/opencv/archive/$pkgver.tar.gz"
 	"5852.patch::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/5852.patch?h=packages/opencv"
+	"gcc6.patch::https://aur.archlinux.org/cgit/aur.git/plain/gcc6.patch?h=opencv2"
 	)
 md5sums=('70e1dd07f0aa06606f1bc0e3fa15abd3'
-         '5bd9cd736b171c15cedee3a32a0c47ff')
+         '5bd9cd736b171c15cedee3a32a0c47ff'
+         'b07ddc26e72d3ece0348870b076dbbc0')
 
 # CMake flags
 _cmakeopts=('-D WITH_OPENCL=ON'
@@ -77,6 +79,7 @@ prepare() {
 	# Patches
 	cd $_pkgbase-$pkgver
 	patch -p1 -i ../5852.patch
+	patch -p1 -i ../gcc6.patch # Thanks to AUR opencv2 package!
 }
 
 build() {

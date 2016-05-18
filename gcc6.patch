@@ -1,0 +1,11 @@
+--- opencv-2.4.12.3/cmake/OpenCVPCHSupport.cmake	2015-10-26 08:56:34.000000000 +0100
++++ opencv-2.4.12.3-patched/cmake/OpenCVPCHSupport.cmake	2016-05-10 11:35:27.976148332 +0200
+@@ -24,7 +24,7 @@
+     ENDIF()
+ 
+     SET(_PCH_include_prefix "-I")
+-    SET(_PCH_isystem_prefix "-isystem")
++    SET(_PCH_isystem_prefix "-I")
+     SET(_PCH_define_prefix "-D")
+ 
+ ELSEIF(CMAKE_GENERATOR MATCHES "^Visual.*$")
