@@ -13,7 +13,7 @@ conflicts=('drive-git')
 options=('!strip' '!emptydirs')
 install=$pkgname.install
 source=("https://github.com/odeke-em/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('6f6bee51b57ed4682861165938bd7491d218a928781cc69d3b333e08c515e581')
+sha256sums=('b419926fa067c0e28aed0e812f041f084f36e9a649518cc8b821f2e084405486')
 
 prepare() {
  mkdir -p "$srcdir/go"
