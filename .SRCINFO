@@ -1,5 +1,5 @@
 pkgbase = humanresourcemachine
-	pkgdesc = Assembler programming puzzle game by the makers of WorldOfGoo - game sold separately (HumbleStore)
+	pkgdesc = Assembler programming puzzle game by the makers of WorldOfGoo - game sold separately
 	pkgver = 2016.03.23
 	pkgrel = 1
 	url = http://tomorrowcorporation.com/humanresourcemachine

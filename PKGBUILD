@@ -2,7 +2,7 @@
 pkgname=humanresourcemachine
 pkgver=2016.03.23
 pkgrel=1
-pkgdesc="Assembler programming puzzle game by the makers of WorldOfGoo - game sold separately (HumbleStore)"
+pkgdesc="Assembler programming puzzle game by the makers of WorldOfGoo - game sold separately"
 url="http://tomorrowcorporation.com/humanresourcemachine"
 arch=('i686' 'x86_64')
 license=('custom')
@@ -10,7 +10,7 @@ depends=("sdl2" "openal")
 source=("humblestore://HumanResourceMachine-Linux-2016-03-23.sh")
 md5sums=('ac6013284194203c4732e713dcc0f543')
 PKGEXT=.pkg.tar
-DLAGENTS+=('humblestore://usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\". Game available from HumbleStore."; exit 1')
+DLAGENTS+=('humblestore://usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\". Game available from GOG or HumbleStore."; exit 1')
 
 package() {
     if [[ $CARCH == 'i686' ]]
