@@ -1,33 +1,31 @@
 # Maintainer: Alexey D. <lq07829icatm@rambler.ru>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Link Dupont <link@subpop.net>
-# Contributor: jaco <jacopo[at]autistici[dot]org>
+# Contributor: artoo at manjaro.org
+# Contributor: nous at archlinux.us
 
 _pkgname=dbus
 _gentoo_uri="https://raw.githubusercontent.com/gentoo/gentoo/master/sys-apps/dbus/files"
-
 pkgname=dbus-openrc
-pkgver=1.10.6
-pkgrel=2
-pkgdesc="Freedesktop.org message bus system, package got from manjaro's official repository"
+pkgver=1.10.8
+pkgrel=5
+pkgdesc="Freedesktop.org message bus system, no systemd."
 url="http://www.freedesktop.org/Software/dbus"
 arch=('i686' 'x86_64')
 license=('GPL' 'custom')
-groups=('openrc-base' 'openrc-desktop')
-depends=('expat' "libdbus=${pkgver}" 'openrc')
+groups=('eudev-base' 'openrc-base' 'openrc-desktop')
+depends=('expat' "libdbus=${pkgver}" 'shadow' 'openrc')
 makedepends=('libx11' 'xmlto' 'docbook-xsl' 'udev')
-optdepends=('libx11: dbus-launch support'
-            'dbus-openrc: dbus openrc initscript')
+optdepends=('libx11: dbus-launch support')
 provides=('dbus-core' "dbus=${pkgver}")
-conflicts=('dbus-core' 'dbus'
-            'systemd-sysvcompat')
-#replaces=('dbus-core' 'dbus')
+conflicts=('dbus-core' 'dbus' 'systemd-sysvcompat')
+replaces=('dbus-openrc>20160101' 'dbus-eudev')
 install=dbus.install
 source=("http://dbus.freedesktop.org/releases/dbus/dbus-$pkgver.tar.gz" #{,.asc}
         "dbus.initd::${_gentoo_uri}/dbus.initd-r1"
-	'30-dbus.sh')
-sha256sums=('b5fefa08a77edd76cd64d872db949eebc02cf6f3f8be82e4bbc641742af5d35f'
-            '7c1429585cd08f57d420b87bebb89c1fccf963414a0d591021df85c8372f5cab'
+        '30-dbus.sh')
+sha256sums=('baf3d22baa26d3bdd9edc587736cd5562196ce67996d65b82103bedbe1f0c014'
+            '4491c09942d72fd464bc1da286c4f5a237ec8debfbaba83c6fbf4a46d46fe51e'
             'dc1ce6d38674bad7a48ad1911576f8bbb3819f1019126fb1ef7c3cfad16bb02a')
 
 build() {
@@ -46,17 +44,16 @@ build() {
         --disable-static \
         --disable-tests \
         --disable-asserts \
-        --disable-systemd \
-        --disable-user-session
+        --disable-libaudit \
+        --disable-systemd
 
     make
 }
-_inst_initd(){
-	install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
 
-	sed -e 's|#!/sbin/runscript|#!/usr/bin/openrc-run|' \
-		-e 's|/var/run|/run|g' \
-		-i ${pkgdir}/etc/init.d/$1
+_inst_initd(){
+	echo $1 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
+	install -Dm755 ${srcdir}/$1.initd ${pkgdir}/etc/init.d/$1
+	sed -e 's|/sbin|/usr/bin|' -e 's|/var/run|/run|g' -i ${pkgdir}/etc/init.d/$1
 }
 
 package(){
