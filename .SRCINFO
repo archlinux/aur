@@ -12,4 +12,5 @@ pkgbase = librealsense
 	md5sums = f2f2bad22f3cffb8f1bb3f509a90f3fb
 
 pkgname = librealsense
+	install = librealsense.install
 

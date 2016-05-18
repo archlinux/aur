@@ -27,13 +27,8 @@ package() {
   mkdir -p $pkgdir/etc/udev/rules.d/
   cp -r lib/* $pkgdir/usr/lib/
   cp -r include/$pkgname/* $pkgdir/usr/include/$pkgname
-  if [ ! [ `getent group realsense` ] ]
-    then
-      groupadd realsense
-  fi
   echo "SUBSYSTEMS==\"usb\", ENV{DEVTYPE}==\"usb_device\", ATTRS{idVendor}==\"8086\", ATTRS{idProduct}==\"0a80\", MODE=\"0666\", GROUP=\"realsense\"" > $pkgdir/$udev_rules
   echo "SUBSYSTEMS==\"usb\", ENV{DEVTYPE}==\"usb_device\", ATTRS{idVendor}==\"8086\", ATTRS{idProduct}==\"0a66\", MODE=\"0666\", GROUP=\"realsense\"" >>$pkgdir/$udev_rules
   echo "SUBSYSTEMS==\"usb\", ENV{DEVTYPE}==\"usb_device\", ATTRS{idVendor}==\"8086\", ATTRS{idProduct}==\"0aa5\", MODE=\"0666\", GROUP=\"realsense\"" >>$pkgdir/$udev_rules
-  udevadm control --reload-rules
-  echo "to use this driver you should add user to realsense group"
+  install=librealsense.install
 }
