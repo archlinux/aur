@@ -23,7 +23,7 @@ sha256sums=('24095ba076e7464bbe5f7f1c73960787b4fadd8c6a051a09e949a4b64a301f84'
          '93d8bc219acc2781f14d832443bc226a4fa6cc751f5ecf5cac5a407187c69160')
 
 prepare() {
-	echo "v${pkgver}" > ${srcdir}/${pkgname}-${pkgver}/version.txt'
+	echo "v${pkgver}" > "${srcdir}/${pkgname}-${pkgver}/version.txt"
 }
 
 package() {
