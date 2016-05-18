@@ -6,7 +6,7 @@
 
 pkgname=displaylink
 pkgver=1.0.335
-pkgrel=7
+pkgrel=8
 pkgdesc="DisplayLink DL-5xxx, DL-41xx and DL-3x00 Driver for Linux"
 arch=('i686' 'x86_64')
 url="http://www.displaylink.com/downloads/ubuntu.php"
@@ -14,7 +14,7 @@ license=('custom' 'GPL2' 'LGPL2.1')
 depends=('dkms')
 install=${pkgname}.install
 changelog="DisplayLink_Ubuntu_1.0.335_release-note.txt"
-source=(http://downloads.displaylink.com/publicsoftware/DisplayLink_Ubuntu_$pkgver.zip 99-displaylink.rules displaylink.service displaylink-sleep.sh https://raw.githubusercontent.com/sinfomicien/displaylink-evdi-opensuse/master/evdi-1.0.68-linux-4.5.0.patch)
+source=(http://downloads.displaylink.com/publicsoftware/DisplayLink_Ubuntu_$pkgver.zip 99-displaylink.rules displaylink.service displaylink-sleep.sh https://raw.githubusercontent.com/sinfomicien/displaylink-evdi-opensuse/f08647a2659b4e18e86aa8a32b0b17646fe0f0d8/evdi-1.0.68-linux-4.5.0.patch)
 md5sums=('006cfb269af80e6fc73bcfe04b693131'
          '37e076a16be49985f1d6800f960d16b4'
          'c141a15e973481c7d961f8e135627ca4'
