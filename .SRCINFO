@@ -6,6 +6,7 @@ pkgbase = yusuke
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = python-setuptools
 	depends = pacman
 	depends = libnotify
 	depends = python-gobject

@@ -11,6 +11,7 @@ license=('GPL3')
 
 conflicts=('yusuke')
 depends=('pacman' 'libnotify' 'python-gobject')
+makedepends=('python-setuptools')
 source=("https://github.com/graypawn/yusuke/archive/v$pkgver.zip")
 md5sums=('38caecff3825c35962971aeae1335e6c')
 
