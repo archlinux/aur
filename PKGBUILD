@@ -5,7 +5,7 @@
 
 pkgname=plexpy
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python based monitoring and tracking tool for Plex Media Server."
 arch=('any')
 url="https://github.com/drzoidberg33/plexpy"

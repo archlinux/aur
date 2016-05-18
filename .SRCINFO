@@ -1,7 +1,7 @@
 pkgbase = plexpy
 	pkgdesc = A Python based monitoring and tracking tool for Plex Media Server.
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/drzoidberg33/plexpy
 	install = plexpy.install
 	arch = any
