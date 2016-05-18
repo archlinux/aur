@@ -7,7 +7,7 @@
 
 pkgname=java-gnome
 pkgver=4.1.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Java bindings to the GNOME platform (including gtk, glib and glade)"
 arch=('i686' 'x86_64')
 url="http://java-gnome.sourceforge.net"
@@ -24,8 +24,15 @@ sha256sums=('060b2b249bad918b91a55a82b8a2ed085bec5734defaf31e6c8c5ad006532373'
 prepare() {
 	# Fix Javadoc 8 doclint annoying behaviour by disabling it
 	# Actually, you've to add a line in the script'$srcdir/build/faster'
-	cd "$srcdir/$pkgname-$pkgver"
-	patch -Np2 -i "$srcdir/jdk8-javadoc_disable-doclint.patch"
+	# Apply only when needed!
+	local java_version=`javac -version 2>&1`
+	java_version=${java_version/javac 1./}
+	java_version=${java_version/.*/}
+	if [ "x$java_version" == "x8" ];
+	then
+		cd "$srcdir/$pkgname-$pkgver"
+		patch -Np2 -i "$srcdir/jdk8-javadoc_disable-doclint.patch"
+	fi
 }
 
 build() {
