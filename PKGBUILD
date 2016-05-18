@@ -17,7 +17,7 @@ udev_rules="etc/udev/rules.d/99-realsense-libusb.rules"
 
 build() {
   cd "$pkgname-$pkgver"
-  make BACKEND=V4L2
+  make
 }
 
 package() {
