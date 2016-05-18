@@ -1,5 +1,5 @@
 pkgname=sat-shell
-pkgver=0.9
+pkgver=1.0
 pkgrel=1
 pkgdesc="sat-shell is an interactive tcl-shell for sat-solver interaction"
 url="https://github.com/TestudoAquatilis/sat-shell"
