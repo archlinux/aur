@@ -23,15 +23,20 @@ case "$CARCH" in
 esac
 
 # Source
+source=('linux-4.6.patch')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
+md5sums=('3064bd437b26adac246f301f54f2814c')
 md5sums_i686=('8a4015213c4a8f1c80e9520d04a32a7b')
 md5sums_x86_64=('ad7a0b1855b3913390fb75b4cc3a26dc')
 
-# Auto-detect patches (e.g. nvidia-linux-4.1.patch)
-for _patch in $(ls "$startdir"/*.patch 2>/dev/null); do
-  source+=("$_patch")
-  md5sums+=('SKIP')
+# Auto-detect patches (e.g. linux-4.1.patch)
+for _patch in $(find "$startdir" -maxdepth 1 -name '*.patch' -printf "%f\n"); do
+  # Don't duplicate those already defined above
+  if [[ ! ${source[@]} =~ $_patch ]]; then
+    source+=("$_patch")
+    md5sums+=('SKIP')
+  fi
 done
 
 prepare() {
