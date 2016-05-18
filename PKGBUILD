@@ -17,16 +17,13 @@ provides=("plexpy")
 install='plexpy.install'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/drzoidberg33/plexpy/archive/v$pkgver.tar.gz" 
 		'plexpy.service'
-		'plexpy.install'
-		'welcome.html.patch')
+		'plexpy.install')
 sha256sums=('bf585245e893477927279e71dfe1c2afe0644b8ea6d0f8332ff3b3c043b7a74e'
          '58300f84762f1362ae4d81aab9bbdf48425735b886807fea847ec256082524a0'
-         '93d8bc219acc2781f14d832443bc226a4fa6cc751f5ecf5cac5a407187c69160'
-         'e8203e18bb168ae50401cb7afacbc5e0e9b0adc9fa1322c7744018b9f8ac1d32')
+         '93d8bc219acc2781f14d832443bc226a4fa6cc751f5ecf5cac5a407187c69160')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	patch -p0 < "${srcdir}/welcome.html.patch"
 	echo "v${pkgver}" > version.txt
 }
 
