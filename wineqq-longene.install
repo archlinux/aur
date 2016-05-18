@@ -1,0 +1,3 @@
+post_install() {
+    ln -s /opt/longene/qq/qq.sh /usr/bin/qq
+}
