@@ -1,0 +1,4 @@
+*.phar
+*.xz
+src/
+pkg/
