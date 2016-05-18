@@ -9,7 +9,7 @@ depends=('python2' )
 license=('BSD')
 arch=('any')
 source=("https://pypi.python.org/packages/source/p/python-modargs/python-modargs-$pkgver.tar.gz"
-        "LICENSE::https://gitorious.org/python-modargs/python-modargs/raw/93dfa839144f77d9422091acaa835d3a72c69060:LICENSE")
+        "LICENSE::https://www.gitorious.org/python-modargs/python-modargs.git/?p=python-modargs:python-modargs.git;a=blob_plain;f=LICENSE;h=f59ac9a1152892dc4aaba5a0eb55a64023fd6bc3;hb=HEAD")
 sha1sums=('ace9bb2af4d6f62501792a3bc0fc39e60df02e2b'
           '7fffa2cb5532406c2c9f5dc54709475b7244cf85')
 
