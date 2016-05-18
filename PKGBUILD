@@ -17,18 +17,18 @@ makedepends=('linux-headers')
 options=('!strip')
 
 # Installer name
-_pkg="linux-x86_64-$pkgver-no-compat32"
+_pkg="NVIDIA-Linux-x86_64-$pkgver-no-compat32"
 if [[ $CARCH = i686 ]]; then
-  _pkg="linux-x86-$pkgver"
+  _pkg="NVIDIA-Linux-x86-$pkgver"
 elif [[ $_lib32 = 1 ]] || pacman -Q lib32-nvidia-utils-full-beta-all &>/dev/null; then
   pkgname+=('lib32-nvidia-utils-full-beta-all' 'lib32-nvidia-libgl-full-beta-all' 'lib32-opencl-nvidia-full-beta-all')
-  _pkg="linux-x86_64-$pkgver"
+  _pkg="NVIDIA-Linux-x86_64-$pkgver"
 fi
 
 # Source
 source=('20-nvidia.conf'
         'linux-4.6.patch')
-source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/linux-x86-$pkgver.run")
+source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
 md5sums=('2640eac092c220073f0668a7aaff61f7'
          '3064bd437b26adac246f301f54f2814c')
