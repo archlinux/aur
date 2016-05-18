@@ -1,6 +1,6 @@
 pkgname='ttf-mononoki-git'
 pkgdesc='Monospace font for programmers, successor of monoOne'
-pkgver=r59.0be5d9d
+pkgver=r65.40b503e
 pkgrel=1
 arch=('any')
 license=('custom:OFL')
