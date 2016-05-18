@@ -48,9 +48,9 @@ package() {
   msg 'Installing shared files...'
   mkdir -p "$pkgdir"/usr/share/$pkgname
   cp -R src/* "$pkgdir"/usr/share/$pkgname
-  # exclude bitmsghash directory
-  rm "$pkgdir"/usr/share/$pkgname/bitmsghash/*
-  rmdir "$pkgdir"/usr/share/$pkgname/bitmsghash
+  # exclude bitmsghash.so and bitmsghash.o
+  rm "$pkgdir"/usr/share/$pkgname/bitmsghash/bitmsghash.so
+  rm "$pkgdir"/usr/share/$pkgname/bitmsghash/bitmsghash.o
 
   msg 'Installing lib files...'
   mkdir -p "$pkgdir"/usr/lib/$pkgname
