@@ -8,7 +8,7 @@ arch=("any")
 url="https://github.com/mikar/${gitname}/tree/legacy"
 license=("MIT")
 conflicts=("blockify-git", "blockify")
-depends=("spotify-stable"
+depends=("spotify-legacy"
          "alsa-utils"
          "pygtk"
 	 "gstreamer0.10-python"
