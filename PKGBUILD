@@ -12,7 +12,7 @@ pkgname=('qemu-git'
          'qemu-block-rbd-git'
          'qemu-block-gluster-git'
          'qemu-guest-agent-git')
-pkgver=2.5.0.r43989.80b5d6b
+pkgver=2.6.0.r45576.a257c74
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -59,7 +59,7 @@ build() {
               --enable-docs --libexecdir=/usr/lib/qemu \
               --disable-gtk --enable-linux-aio --enable-seccomp \
               --localstatedir=/var \
-              --enable-tpm \
+              --enable-tpm --disable-werror \
               --enable-modules --enable-{rbd,glusterfs,libiscsi,curl}
   make V=99
 }
