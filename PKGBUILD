@@ -1,4 +1,4 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer: Mohamar Rios <mohamar.rios@gmail.com>
 
 pkgname=python2-modargs
 pkgver=1.7
