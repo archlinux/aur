@@ -3,20 +3,19 @@
 
 pkgname=gettext-java
 _pkgbase=gettext
-pkgver=0.19.6
+pkgver=0.19.7
 pkgrel=1
 pkgdesc="GNU internationalization library - Java libraries"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.gnu.org/software/gettext/"
 license=('GPL')
 #groups=('base' 'base-devel')
-depends=('gcc-libs' 'acl' 'sh' 'glib2' 'libunistring' "gettext>=$pkgver")
-makedepends=('java-environment')
+depends=('java-environment' "gettext>=$pkgver")
 optdepends=('git: for autopoint infrastructure updates')
 options=(!docs)
-install=gettext.install
+#install=gettext.install
 source=(ftp://ftp.gnu.org/pub/gnu/gettext/${_pkgbase}-${pkgver}.tar.gz{,.sig})
-md5sums=('6d1447f8c5c45c329371ef4bfe7d79a5'
+md5sums=('87c4ab267c4dce8a75db5d057bb3c92f'
          'SKIP')
 validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871') # Daiki Ueno
 
