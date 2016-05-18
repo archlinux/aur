@@ -1,14 +1,14 @@
 # Maintainer: Bruce Zhang <zttt183525594@gmail.com>
 pkgname=wineqq-longene
 pkgver=20151109
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Longene Wine QQ 7.8."
 arch=('i686' 'x86_64')
 url="http://www.longene.org/"
 license=('unknown')
 groups=()
-depends=()
+depends=('lib32-glib2' 'lib32-gtk3')
 makedepends=('tar')
 checkdepends=()
 optdepends=()
@@ -35,5 +35,5 @@ package() {
 	find ./opt -type f -exec install -Dm644 {} \
             "${pkgdir}/{}" \;
 	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/usr/share/applications/${_desktop}" "${pkgdir}/usr/share/applications/${_desktop}"
-	install -Dm755 "${srcdir}/${pkgname}-${pkgver}/usr/bin/qq" "${pkgdir}/usr/bin/qq"
+        ln -s "${srcdir}/${pkgname}-${pkgver}/opt/longene/qq/qq.sh" "${pkgdir}/usr/bin/qq"
 }
