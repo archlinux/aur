@@ -6,6 +6,8 @@ pkgbase = elm-format-0.17-bin
 	arch = i686
 	arch = x86_64
 	license = unknown
+	provides = elm-format
+	conflicts = elm-format-0.16-bin
 	source = https://github.com/avh4/elm-format/releases/download/0.3.0-alpha/elm-format-0.17-0.3.0-alpha-linux-x64.tgz
 	md5sums = 14c3848e8f8a524066f8ec9452a84294
 
