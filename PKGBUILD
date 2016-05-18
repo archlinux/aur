@@ -1,7 +1,7 @@
 # Maintainer: Jingbei Li <i@jingbei.li>
 
 pkgname=libwebsockets
-pkgver=1.7.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A lightweight pure C library built to use minimal CPU and memory resources, and provide fast throughput in both directions."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -10,7 +10,7 @@ depends=('openssl' 'make')
 makedepends=('cmake')
 license=('LGPL')
 source=("https://github.com/warmcat/libwebsockets/archive/v$pkgver.tar.gz")
-md5sums=('b4458f84d2b1b46bfb331354fa072450')
+md5sums=('6f3e38f96604ace7199626af76f3f041')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
