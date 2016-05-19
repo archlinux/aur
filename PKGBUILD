@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
 license=('custom')
 
-depends=()
+depends=("idos-timetable-browser")
 
 makedepends=(
   "wget"
