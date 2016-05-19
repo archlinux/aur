@@ -15,12 +15,11 @@ md5sums=('77e5207f1b2cfb72307087ebceb7b801'
 arch=('any')
 
 package() {
-  pushd "$srcdir"/gdatafs || return 1
-    find . -type f | sed -e 's/\.\///g' | while read file; do
-      if [ $(echo "$file" | grep '.svn' -i -c) = 0 -a $(echo "$file" | grep '.project' -i -c) = 0 -a $(echo "$file" | grep '.classpath' -i -c) = 0 -a $(echo "$file" | grep 'src' -i -c) = 0 ]; then
-        install -D "$file" "$pkgdir"/opt/gdatafs/"$file" || return 1
-      fi || return 1
-    done || return 1
-    install -Dm755 "$srcdir"/gdatafs.sh "$pkgdir"/usr/bin/gdatafs || return 1
-  popd || return 1
+  cd "$srcdir"/gdatafs
+  find . -type f | sed -e 's/\.\///g' | while read file; do
+    if [ $(echo "$file" | grep '.svn' -i -c) = 0 -a $(echo "$file" | grep '.project' -i -c) = 0 -a $(echo "$file" | grep '.classpath' -i -c) = 0 -a $(echo "$file" | grep 'src' -i -c) = 0 ]; then
+      install -D "$file" "$pkgdir"/opt/gdatafs/"$file" || return 1
+    fi || return 1
+  done || return 1
+  install -Dm755 "$srcdir"/gdatafs.sh "$pkgdir"/usr/bin/gdatafs || return 1
 }
