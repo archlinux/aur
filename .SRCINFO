@@ -1,0 +1,14 @@
+pkgbase = gtk-theme-glossyblack
+	pkgdesc = GTK2, GTK3, Metacity, XFCE4 theme.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/?content=162055/
+	arch = any
+	license = GPL
+	depends = gtk-engine-murrine
+	depends = gtk-engines
+	source = git://github.com/redtide/glossyblack-gtk-theme.git
+	md5sums = SKIP
+
+pkgname = gtk-theme-glossyblack
+
