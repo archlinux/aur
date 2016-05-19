@@ -2,7 +2,7 @@
 
 pkgname=displaylink
 pkgver=1.1.62
-pkgrel=1
+pkgrel=2
 pkgdesc="DisplayLink DL-5xxx, DL-41xx and DL-3x00 Driver for Linux"
 arch=('i686' 'x86_64')
 url="http://www.displaylink.com/downloads/ubuntu.php"
@@ -27,7 +27,6 @@ package() {
   install -D -m755 displaylink-sleep.sh "$pkgdir/usr/lib/systemd/system-sleep/displaylink.sh"
 
   echo "Extracting DisplayLink Driver Package"
-  unzip displaylink-driver-$pkgver.zip
   chmod +x displaylink-driver-$pkgver.run
   ./displaylink-driver-$pkgver.run --target $pkgname-$pkgver --noexec
   cd "$pkgname-$pkgver"
