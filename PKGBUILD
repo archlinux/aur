@@ -3,7 +3,7 @@
 
 pkgname=omninotify-omniorb416
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-threaded implementation of the CORBA Notification Service"
 arch=('i686' 'x86_64')
 url="http://omninotify.sourceforge.net/"
@@ -18,9 +18,9 @@ source=(http://downloads.sourceforge.net/omninotify/omniNotify-$pkgver.tar.gz
 
 prepare() {
   cd "$srcdir"/omniNotify
-  patch -Np1 < "$srcdir"/omniNotify-2.1-lib64.patch
+  patch -Np1 < "$srcdir"/omniNotify-2.1.patch
   if test "$CARCH" == x86_64; then
-    patch -Np1 < "$srcdir"/omniNotify-2.1.patch
+    patch -Np1 < "$srcdir"/omniNotify-2.1-lib64.patch
   fi
 }
 
