@@ -1,15 +1,14 @@
-#Maintainer: M0Rf30
-#Contributor: kurych
+#Maintainer: Unknown
 
 pkgname=i2pd-git
 _pkgname=i2pd
-pkgver=2710.eefff14
+pkgver=2.7.0.r7.g3b80de1
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64')
 url="https://github.com/PurpleI2P/i2pd"
 license=('BSD')
-depends=('boost-libs' 'openssl' 'zlib')
+depends=('boost-libs' 'miniupnpc' 'openssl' 'zlib')
 makedepends=('git' 'boost')
 source=('i2pd::git+https://github.com/PurpleI2P/i2pd.git#branch=master'
         i2pd.service
@@ -20,7 +19,7 @@ conflicts=('i2pd')
 
 build() {
   cd $srcdir/i2pd
-  CXXFLAGS="-Wall -O2 -fstack-protector-strong" USE_UPNP=1 make
+  USE_UPNP=1 make
 }
 
 package(){
@@ -34,7 +33,7 @@ package(){
   install -Dm0644 $srcdir/i2pd.service $pkgdir/usr/lib/systemd/system/i2pd.service
   install -Dm0644 $srcdir/i2pd.tmpfiles.conf $pkgdir/usr/lib/tmpfiles.d/i2pd.conf
 
-  install -Dm0644 $srcdir/i2pd/debian/i2pd.conf $pkgdir/${_conf_dest}/i2pd.conf
+  install -Dm0644 $srcdir/i2pd/docs/i2pd.conf $pkgdir/${_conf_dest}/i2pd.conf
   install -Dm0644 $srcdir/i2pd/debian/tunnels.conf $pkgdir/${_conf_dest}/tunnels.conf
   install -Dm0644 $srcdir/i2pd/debian/subscriptions.txt $pkgdir/${_conf_dest}/subscriptions.txt
 
@@ -67,10 +66,10 @@ package(){
 
 pkgver() {
   cd i2pd
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  echo $(git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g')
 }
 
 md5sums=('SKIP'
-         '6684e6f267a524260577e91e94743b53'
+         '13c910900be4df3e0da11fc893f59a6f'
          'acda29e5b46a0c9fade734a6a467b381')
 
