@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bique <bique.alexandre@gmail.com>
 pkgname=scissy
-pkgver=0.13.3
+pkgver=0.13.4
 pkgrel=1
 pkgdesc="Lightweight and standalone git repository server"
 arch=('i686' 'x86_64')
