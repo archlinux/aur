@@ -13,8 +13,8 @@ makedepends=('gcc' 'btrfs-progs')
 url="https://github.com/g2p/bedup"
 conflicts=('vpaint-git')
 provides=()
-source=("https://pypi.python.org/packages/source/b/bedup/bedup-$pkgver.tar.gz")
-md5sums=('cb30bf4a24936fe95310cad42cec0514')
+source=("https://github.com/g2p/bedup/archive/v$pkgver.tar.gz")
+md5sums=('600129fb2e61c6f49034e2475cf1421d')
 conflicts=('bedup-git')
 
 build() {
