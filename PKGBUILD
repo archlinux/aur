@@ -2,14 +2,21 @@
 
 _gitname=ctroller
 pkgname=${_gitname}-git
-pkgver=r22.49a27aa
+pkgver=r23.a8c5e89
 pkgrel=1
 pkgdesc="Use your 3DS as a gamepad on your Linux PC"
 arch=('x86_64')
 url="https://github.com/phijor/ctroller"
 license=('GPL3')
 depends=('glibc')
-makedepends=('git' 'make' 'devkitarm' 'ctrulib-git')
+makedepends=(
+  'git'
+  'make'
+  'devkitarm'
+  'ctrulib-git'
+  'projectctr-makerom-git'
+  'bannertool-git'
+)
 source=("${pkgname}::git+https://github.com/phijor/${_gitname}.git")
 md5sums=('SKIP')
 
