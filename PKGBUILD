@@ -32,17 +32,8 @@ prepare() {
 # Possible options for -DCMAKE_BUILD_TYPE are Release and Debug
 # Debug has console spew
 
-if [ "$_aria2" == "no" ]; then
 	cd build
  	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
-fi
-
-if [ "$_aria2" == "yes" ]; then
-	cp $srcdir/use_aria2.diff $srcdir/${_gitname}
-	patch -p1 < use_aria2.diff
-	cd build
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DWITH_ARIA2=1 -DCMAKE_BUILD_TYPE=Release
-fi
 }
 
 build() {
