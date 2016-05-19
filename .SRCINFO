@@ -1,0 +1,13 @@
+pkgbase = pccts
+	pkgdesc = PCCTS is the Purdue Compiler-Compiler Tool Set
+	pkgver = 1.33MR33
+	pkgrel = 1
+	url = http://www.polhode.com/pccts.html
+	arch = x86_64
+	license = LGPL
+	depends = dpkg
+	source = http://archive.ubuntu.com/ubuntu/pool/universe/p/pccts/pccts_1.33MR33-6_amd64.deb
+	sha1sums = fe6c8efcf6b6ff7f787a15b9419899d2e92946d4
+
+pkgname = pccts
+
