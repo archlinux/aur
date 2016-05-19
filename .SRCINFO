@@ -1,0 +1,36 @@
+pkgbase = avenida
+	pkgdesc = Library with common API for various MATE modules
+	pkgver = 1.14.0
+	pkgrel = 1
+	url = http://mate-desktop.org
+	install = avenida.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = gobject-introspection
+	makedepends = mate-common
+	makedepends = yelp-tools
+	depends = dconf
+	depends = gtk2
+	depends = gtk3
+	depends = startup-notification
+	source = http://pub.mate-desktop.org/releases/1.14/avenida-1.14.0.tar.xz
+	sha1sums = SKIP
+
+pkgname = avenida
+	pkgdesc = Library with common API for various MATE modules (GTK2 version)
+	groups = mate
+	depends = dconf
+	depends = gtk2
+	depends = startup-notification
+	conflicts = avenida-gtk3
+
+pkgname = avenida-gtk3
+	pkgdesc = Library with common API for various MATE modules (GTK3 version [EXPERIMENTAL])
+	groups = mate-gtk3
+	depends = dconf
+	depends = gtk3
+	depends = startup-notification
+	conflicts = avenida
+
