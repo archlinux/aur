@@ -1,6 +1,6 @@
 # Maintainer: Ryo Munakata <afpacket@gmail.com>
 pkgname=glmark2-git
-pkgver=r823.e1969fb
+pkgver=r825.fa71af2
 pkgrel=1
 pkgdesc="OpenGL (ES) 2.0 benchmark (X11, Wayland, DRM)"
 arch=('i686' 'x86_64')
@@ -10,8 +10,14 @@ depends=('libjpeg-turbo' 'libpng12' 'libx11' 'libxcb' 'libgl' 'wayland')
 makedepends=('git' 'python2')
 conflicts=('glmark2')
 provides=('glmark2')
-source=("$pkgname"::'git://github.com/glmark2/glmark2.git')
-md5sums=('SKIP')
+source=(
+    "$pkgname"::'git://github.com/glmark2/glmark2.git'
+    "https://gist.githubusercontent.com/graysky2/83e474d5891cdcd75d8293a47a10b468/raw/892e731ffa98e5901240fbd4127d62c4153eff28/unfuck.patch"
+    )
+md5sums=(
+    'SKIP'
+    'cef375cb34614fbbb26307e06449515d'
+    )
 
 # GLMARK2 features
 GM2_FLAVORS="x11-gl,x11-glesv2,wayland-gl,wayland-glesv2,drm-gl,drm-glesv2"
@@ -21,11 +27,17 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd "${srcdir}/${pkgname}"
+    patch -i "$srcdir/unfuck.patch"
+}
+
 build() {
     cd "${srcdir}/${pkgname}"
     python2 ./waf configure \
         --prefix=/usr \
-        --with-flavors=${GM2_FLAVORS}
+        --with-flavors=${GM2_FLAVORS} \
+        --no-werror
     python2 ./waf -j4
 }
 
