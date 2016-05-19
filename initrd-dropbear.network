@@ -1,0 +1,12 @@
+#
+# https://www.freedesktop.org/software/systemd/man/systemd.network.html
+#
+
+[Match]
+Name=en*
+
+[Network]
+DHCP=ipv4
+
+[DHCP]
+UseHostname=true

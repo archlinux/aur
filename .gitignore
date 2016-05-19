@@ -1,0 +1,16 @@
+
+#
+# eclipse meta data
+#
+.project
+.classpath
+.settings/
+target/
+
+#
+# build resources
+#
+/initrd-dropbear
+/src
+/pkg
+*.xz
