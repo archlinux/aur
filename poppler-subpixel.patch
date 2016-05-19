@@ -1,5 +1,5 @@
 diff --git a/glib/demo/render.c b/glib/demo/render.c
-index 78d24bb..b05d8bf 100644
+index 78d24bb..d482ceb 100644
 --- a/glib/demo/render.c
 +++ b/glib/demo/render.c
 @@ -82,12 +82,14 @@ pgd_render_start (GtkButton     *button,
@@ -17,19 +17,18 @@ index 78d24bb..b05d8bf 100644
  
  	page = poppler_document_get_page (demo->doc, demo->page);
  	if (!page)
-@@ -116,6 +118,22 @@ pgd_render_start (GtkButton     *button,
+@@ -116,6 +118,21 @@ pgd_render_start (GtkButton     *button,
                                                      width, height);
          cr = cairo_create (demo->surface);
  
 +        fo = cairo_font_options_create ();
 +        cairo_get_font_options (cr, fo);
-+        cairo_font_options_set_hint_style (fo, CAIRO_HINT_STYLE_SLIGHT);
 +
 +        subpixel_rendering = poppler_page_support_subpixel_rendering (page);
++        printf("subpixel_rendering %d\n", subpixel_rendering);
 +        if (subpixel_rendering) {
 +                cairo_set_source_rgb (cr, 1., 1., 1.);
 +                cairo_paint (cr);
-+
 +                cairo_font_options_set_antialias (fo, CAIRO_ANTIALIAS_SUBPIXEL);
 +                cairo_font_options_set_subpixel_order (fo, CAIRO_SUBPIXEL_ORDER_RGB);
 +        }
@@ -40,7 +39,7 @@ index 78d24bb..b05d8bf 100644
          cairo_save (cr);
          switch (demo->rotate) {
          case 90:
-@@ -143,9 +161,11 @@ pgd_render_start (GtkButton     *button,
+@@ -143,9 +160,11 @@ pgd_render_start (GtkButton     *button,
                  poppler_page_render (page, cr);
          cairo_restore (cr);
  
@@ -85,35 +84,58 @@ index fdbfd38..0f02a3a 100644
  
  /* A rectangle on a page, with coordinates in PDF points. */
  #define POPPLER_TYPE_RECTANGLE             (poppler_rectangle_get_type ())
-diff --git a/poppler/CairoFontEngine.cc b/poppler/CairoFontEngine.cc
-index 1d611b5..f4ffb08 100644
---- a/poppler/CairoFontEngine.cc
-+++ b/poppler/CairoFontEngine.cc
-@@ -189,7 +189,6 @@ _ft_new_face_uncached (FT_Library lib,
+diff --git a/poppler/CairoOutputDev.cc b/poppler/CairoOutputDev.cc
+index b0987b3..23ab490 100644
+--- a/poppler/CairoOutputDev.cc
++++ b/poppler/CairoOutputDev.cc
+@@ -1402,6 +1402,7 @@ void CairoOutputDev::drawChar(GfxState *state, double x, double y,
+ void CairoOutputDev::endString(GfxState *state)
+ {
+   int render;
++  GfxFontType fontType;
+ 
+   if (!currentFont)
+     return;
+@@ -1419,6 +1420,18 @@ void CairoOutputDev::endString(GfxState *state)
+     goto finish;
    }
  
-   font_face = cairo_ft_font_face_create_for_ft_face (face,
--							  FT_LOAD_NO_HINTING |
- 							  FT_LOAD_NO_BITMAP);
-   if (cairo_font_face_set_user_data (font_face,
- 				     &_ft_cairo_key,
-@@ -358,7 +357,6 @@ _ft_new_face (FT_Library lib,
-   _ft_open_faces = l;
++  fontType = state->getFont()->getType();
++  // Do not enable subpixel rendering for type3 font
++  // For some reason it does not work
++  if (fontType == fontType3) {
++      cairo_save(cairo);
++      cairo_font_options_t *fo;
++      fo = cairo_font_options_create ();
++      cairo_get_font_options (cairo, fo);
++      cairo_font_options_set_antialias (fo, CAIRO_ANTIALIAS_DEFAULT);
++      cairo_set_font_options (cairo, fo);
++  }
++
+   if (!(render & 1)) {
+     LOG (printf ("fill string\n"));
+     cairo_set_source (cairo, fill_pattern);
+@@ -1469,6 +1482,10 @@ void CairoOutputDev::endString(GfxState *state)
+   }
  
-   l->font_face = cairo_ft_font_face_create_for_ft_face (tmpl.face,
--							  FT_LOAD_NO_HINTING |
- 							  FT_LOAD_NO_BITMAP);
-   if (cairo_font_face_set_user_data (l->font_face,
- 				     &_ft_cairo_key,
+ finish:
++  // pair with the previous cairo_save to disable subpixel rendering for type3 fonts
++  if (fontType == fontType3) {
++      cairo_restore(cairo);
++  }
+   gfree (glyphs);
+   glyphs = NULL;
+   if (use_show_text_glyphs) {
 diff --git a/poppler/Gfx.cc b/poppler/Gfx.cc
-index 577c482..7d66588 100644
+index 7d748b9..5caf01b 100644
 --- a/poppler/Gfx.cc
 +++ b/poppler/Gfx.cc
-@@ -4684,6 +4684,60 @@ void Gfx::doImage(Object *ref, Stream *str, GBool inlineImg) {
+@@ -4727,6 +4727,62 @@ void Gfx::doImage(Object *ref, Stream *str, GBool inlineImg) {
    error(errSyntaxError, getPos(), "Bad image parameters");
  }
  
 +GBool Gfx::checkNormalBlendModeOnly(Object *str) {
++  printf("check blender mode start\n");
 +  char *cmd;
 +  Object obj;
 +  Object args[maxArgs];
@@ -135,6 +157,7 @@ index 577c482..7d66588 100644
 +        if (res->lookupGState(args[0].getName(), &obj1)) {
 +          if (!obj1.dictLookup("BM", &obj2)->isNull()) {
 +            if (state->parseBlendMode(&obj2, &mode)) {
++              printf("check blend mode: %d\n", mode);
 +              onlyNormalBlendMode &= (mode == gfxBlendNormal);
 +            }
 +          }
