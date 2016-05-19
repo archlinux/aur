@@ -1,4 +1,4 @@
-pkgbase = devkitarm-portlibs
+pkgbase = devkitarm-portlibs-git
 	pkgdesc = Deflate compression method library (for Nintendo Gamecube/Wii homebrew development)
 	pkgver = r41.5751bcd
 	pkgrel = 1

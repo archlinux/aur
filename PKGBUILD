@@ -13,19 +13,20 @@
 # tinyxml2
 # zlib
 
-pkgbase=devkitarm-portlibs
+_pkgbase=devkitarm-portlibs
+pkgbase=${_pkgbase}-git
 pkgname=(
-    "${pkgbase}-zlib-git"
-    "${pkgbase}-freetype-git"
-    "${pkgbase}-jansson-git"
-    "${pkgbase}-libexif-git"
-    "${pkgbase}-libjpeg-turbo-git"
-    "${pkgbase}-libpng-git"
-    "${pkgbase}-libxmp-lite-git"
-    "${pkgbase}-sqlite-git"
-    "${pkgbase}-tinyxml2-git"
+    "${_pkgbase}-zlib-git"
+    "${_pkgbase}-freetype-git"
+    "${_pkgbase}-jansson-git"
+    "${_pkgbase}-libexif-git"
+    "${_pkgbase}-libjpeg-turbo-git"
+    "${_pkgbase}-libpng-git"
+    "${_pkgbase}-libxmp-lite-git"
+    "${_pkgbase}-sqlite-git"
+    "${_pkgbase}-tinyxml2-git"
 
-    "${pkgbase}-git" # Meta-package depends on all targets
+    "${_pkgbase}-git" # Meta-package depends on all targets
 )
 
 pkgver=r41.5751bcd
@@ -37,12 +38,12 @@ license=('zlib')
 options=(!strip staticlibs)
 depends=('devkitarm')
 makedepends=('git' 'curl')
-source=("$pkgbase::git+https://github.com/devkitPro/3ds_portlibs.git")
+source=("$_pkgbase::git+https://github.com/devkitPro/3ds_portlibs.git")
 sha256sums=('SKIP')
 
 _clean_and_install() {
     _target=$1
-    cd "$pkgbase"
+    cd "$_pkgbase"
     source /etc/profile.d/devkitarm.sh
 
     make clean # Remove any prior built targets
@@ -53,13 +54,13 @@ _clean_and_install() {
 }
 
 pkgver() {
-    cd "$pkgbase"
+    cd "$_pkgbase"
     echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package_devkitarm-portlibs-zlib-git() {
     provides=('devkitarm-portlibs-zlib')
-    cd "$pkgbase"
+    cd "$_pkgbase"
     source /etc/profile.d/devkitarm.sh
 
     make clean # Remove any prior built targets
@@ -122,14 +123,14 @@ package_devkitarm-portlibs-tinyxml2-git(){
 package_devkitarm-portlibs-git(){
     provides=('devkitarm-portlibs')
     depends=(
-        "${pkgbase}-zlib-git"
-        "${pkgbase}-freetype-git"
-        "${pkgbase}-jansson-git"
-        "${pkgbase}-libexif-git"
-        "${pkgbase}-libjpeg-turbo-git"
-        "${pkgbase}-libpng-git"
-        "${pkgbase}-libxmp-lite-git"
-        "${pkgbase}-sqlite-git"
-        "${pkgbase}-tinyxml2-git"
+        "${_pkgbase}-zlib-git"
+        "${_pkgbase}-freetype-git"
+        "${_pkgbase}-jansson-git"
+        "${_pkgbase}-libexif-git"
+        "${_pkgbase}-libjpeg-turbo-git"
+        "${_pkgbase}-libpng-git"
+        "${_pkgbase}-libxmp-lite-git"
+        "${_pkgbase}-sqlite-git"
+        "${_pkgbase}-tinyxml2-git"
     )
 }
