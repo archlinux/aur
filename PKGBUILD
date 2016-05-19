@@ -47,13 +47,11 @@ _source0="$(_get_download_url)"
 source=(
   "vlak16e_sk.exe::${_source0}"
   "license-dummy.txt"
-  "info.url"
 )
 
 sha256sums=(
   'SKIP'
   "14279a732be7d04304ff3860d54e0cf8c1a8ba0a46343eaf9b7ce3a105815946"
-  "eba7d7bd3836b5d67f9a5179f8318c3d62e6bb84d133fbcba326b713c4333a15"
 )
 
 pkgver() {
@@ -77,7 +75,9 @@ package() {
     chmod 644 Data*/*
   }
 
-  install -D -m644 "${srcdir}/info.url" "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
+  install -d -m755 "${pkgdir}/usr/share/doc/${_pkgname}"
+  echo "${url}" > "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
+  chmod 644 "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
 
   install -D -m644 "${srcdir}/license-dummy.txt" "${pkgdir}/usr/share/licenses/${pkgname}/copying.txt"
 }

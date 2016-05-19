@@ -22,10 +22,8 @@ pkgbase = idos-timetable-data-zsr-europe+sk-latest
 	conflicts = idos-timetable-data-zsr-europe
 	source = vlak16e_sk.exe::http://www.zsr.sk/buxus/docs/elis/subory/2016_05_17/vlak16e_sk_17_05_2016.exe
 	source = license-dummy.txt
-	source = info.url
 	sha256sums = SKIP
 	sha256sums = 14279a732be7d04304ff3860d54e0cf8c1a8ba0a46343eaf9b7ce3a105815946
-	sha256sums = eba7d7bd3836b5d67f9a5179f8318c3d62e6bb84d133fbcba326b713c4333a15
 
 pkgname = idos-timetable-data-zsr-europe+sk-latest
 
