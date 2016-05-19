@@ -1,0 +1,13 @@
+diff -ur a/linux/DtaDevLinuxNvme.h b/linux/DtaDevLinuxNvme.h
+--- a/linux/DtaDevLinuxNvme.h	2016-02-18 00:09:02.000000000 +0000
++++ b/linux/DtaDevLinuxNvme.h	2016-05-19 16:42:24.297290059 +0100
+@@ -18,7 +18,8 @@
+ 
+  * C:E********************************************************************** */
+ #pragma once
+-#include "linux/nvme.h"
++#include "/usr/lib/modules/%KVER%/build/include/linux/nvme.h"
++#include <linux/nvme_ioctl.h>
+ #include "DtaStructures.h"
+ #include "DtaDevLinuxDrive.h"
+ 

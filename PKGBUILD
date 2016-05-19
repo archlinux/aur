@@ -2,7 +2,7 @@
 
 pkgname=sedutil
 pkgver=1.12
-pkgrel=1
+pkgrel=2
 pkgdesc="TCG OPAL 2.00 SED Management Program"
 arch=('i686' 'x86_64')
 url="https://github.com/Drive-Trust-Alliance/sedutil"
@@ -22,7 +22,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Drive-Trust-Alliance/${
         'linuxpba.hook'
         'linuxpba.install'
         'getpasswd.c'
-        'add_missing_declarations.patch')
+        'includes.patch')
 sha256sums=('5509d4279cfb316f33730c5cb06f8162ae212c7f4d31d206642d67cc8be245c1'
             '5ab7ef67fea0f4e370d8f0a4da87636a1df18e0edb0152d08f906f38280cc0e8'
             '77c725e4eee095dbede512d2bca13b8f2c139a67b9b87a11d98be94e6df0e1d7'
@@ -33,13 +33,15 @@ sha256sums=('5509d4279cfb316f33730c5cb06f8162ae212c7f4d31d206642d67cc8be245c1'
             'd9a7b66d8365e7f4eb0233b30c0ab70b5e978f6554960bf12994a1f0910c1447'
             'f31a0ba891dd705ef68174afeb651bdc3426a63202d058d98510907de43248f7'
             'e94d011c98bd336f37d6d4923e5d63a22ebd10d8f2c6486b6bcd6617524d6484'
-            '74f41f3dde1d4291757f74e3bc1ab33ae832ee63b6b8879869705baa054ef2d9')
+            'c9ab6e72db01fa0a3d694cccd652917071b35b2c446f2024725eb37aad0caefc')
 PKGEXT='.pkg.tar'
 CPPFLAGS="$CPPFLAGS -O2"
 
 prepare() {
+    KVER="$(uname -r)"
     cd "${srcdir}/${pkgname}-${pkgver}/"
-    patch -p1 < "${srcdir}/add_missing_declarations.patch"
+    patch -p1 < "${srcdir}/includes.patch"
+    sed -i "s/%KVER%/${KVER}/" "./linux/DtaDevLinuxNvme.h"
 }
 
 build() {
