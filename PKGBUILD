@@ -26,6 +26,10 @@ provides=(
   
   "idos-timetable-data-trains-sk=${pkgver}"
   "idos-timetable-data-trains-europe=${pkgver}"
+  
+  "idos-timetable-maps-trains-cz=${pkgver}"
+  "idos-timetable-maps-trains-sk=${pkgver}"
+  "idos-timetable-maps-trains-europe=${pkgver}"
 )
 
 conflicts=(
