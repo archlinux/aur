@@ -2,9 +2,9 @@
 
 pkgname=lxqt-qt5ct
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="LXQt Qt5ct integration"
-url="https://github.com/Zatherz/lxqt-qt5ct"
+url="https://gitlab.com/Zatherz/lxqt-qt5ct"
 
 arch=('i686' 'x86_64')
 license=('LGPL2.1')
@@ -14,13 +14,13 @@ depends=('lxqt-session' "qt5ct")
 provides=('lxqt-qt5ct')
 conflicts=('startlxqt-qt5ct')
 
-source=("https://github.com/zatherz/lxqt-qt5ct/archive/1.0.tar.gz")
+source=("https://gitlab.com/Zatherz/lxqt-qt5ct/repository/archive.tar.gz?ref=1.0")
 
-md5sums=('8963e38fa81faf869fcaee968210f00d')
+md5sums=('4685ac0ff9f5df43b54d3928444a3a14')
 
 
 package() {
-  cd "$srcdir"/${pkgname}-${pkgver}
+  cd "$srcdir"/"${pkgname}-${pkgver}-b8c8b963d0cdcd5a0dedfa98239f43c2a4e84fb6"
   install -d "$pkgdir/usr/bin"
   install -d "$pkgdir/usr/share/xsessions"
 
