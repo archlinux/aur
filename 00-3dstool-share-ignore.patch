@@ -1,0 +1,13 @@
+diff --git a/src/romfs.cpp b/src/romfs.cpp
+index beb0e41..37254f2 100644
+--- a/src/romfs.cpp
++++ b/src/romfs.cpp
+@@ -264,7 +264,7 @@ void CRomFs::setupCreate()
+ void CRomFs::buildBlackList()
+ {
+ 	m_vBlackList.clear();
+-	String sIgnorePath = FGetModuleDir() + STR("/ignore_3dstool.txt");
++	String sIgnorePath = STR("/usr/share/3dstool/ignore_3dstool.txt");
+ 	FILE* fp = FFopenUnicode(sIgnorePath.c_str(), STR("rb"));
+ 	if (fp != nullptr)
+ 	{
