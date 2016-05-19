@@ -3,7 +3,7 @@
 # Contributor:  Andre Wayand <aur-sogo@awayand.sleepmail.com>
 pkgname=sogo
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.sogo.nu/"
@@ -73,6 +73,8 @@ package() {
   install -d -m 0755 "${pkgdir}"/usr/lib/sogo/scripts
   install    -m 0755 "${srcdir}"/SOGo-${pkgver}/Scripts/sql-update-2.2.17_to_2.3.0{,-mysql}.sh \
                       "${pkgdir}"/usr/lib/sogo/scripts/
+  install    -m 0755 "${srcdir}"/SOGo-${pkgver}/Scripts/sql-update-3.0.0-to-combined{,-mysql}.sh \
+                      "${pkgdir}"/usr/lib/sogo/scripts/
   install -D -m 0644 "${srcdir}"/sogo.confd \
                      "${pkgdir}"/etc/conf.d/sogo
   cd "${srcdir}/SOGo-${pkgver}/ActiveSync"
@@ -80,7 +82,7 @@ package() {
 
 }
 
-sha256sums=('1fbeae01b77418eb87b12d8e4ee730b6d508759af1e3cf760743128579401bd8'
+sha256sums=('795564861297d30d730215f80fb41cf90c77e7aa427bdab330bcdc39654a4dc7'
             'e64ea4aa0ddf29785de8d786ab7ab09f940bfe316b6f1deeb8d04d9d16d35db1'
             '0720b9ad35a05d86d794c7adbf18277ecde57ed147e96f6105acca93f19d3b8c'
             '8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7')
