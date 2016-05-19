@@ -2,6 +2,7 @@
 
 _pkgname=idos-timetable-browser
 pkgname="${_pkgname}-latest"
+epoch=0
 pkgver=1.27_lib2.8.0.1
 pkgrel=1
 pkgdesc="Offline railway and other public transport timetable search engine by CHAPS. (Czech language by default.)"
@@ -42,7 +43,6 @@ source=(
   "idos-timetable-browser.sh"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
-  "info.url"
   "README.datafiles.txt"
 )
 
@@ -51,7 +51,6 @@ sha256sums=(
   "5d6e710d03d5832fcdb67726b3ce91ee1a4fe993f258e8a15c49bd51f5224bb5"
   "e904d167ccdcfb2743f4cfd596aaa9dce8b751fb5c8315b972b42b7cbb3189e6"
   "c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4"
-  "d302ccfd82cc9057751f79b6f0f310676b539a201e943ff7c2fd9b9dbaf29b53"
   "45bf7c462d7154360d0007a6d7c00c6aa6b49339b6f178cf24e5b1a40ca702d7"
 )
 
@@ -73,7 +72,9 @@ package() {
     chmod 755 TT.exe
   }
 
-  install -D -m644 "${srcdir}/info.url"                    "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
+  install -d -m755 "${pkgdir}/usr/share/doc/${_pkgname}"
+  echo "${url}" > "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
+  chmod 644 "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
   install -D -m644 "${srcdir}/README.datafiles.txt"        "${pkgdir}/usr/share/doc/${_pkgname}/README.datafiles.txt"
 
   ln -s "/usr/share/doc/${_pkgname}/README.datafiles.txt"  "${_instdir}/README.datafiles.txt"
