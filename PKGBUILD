@@ -7,7 +7,7 @@
 pkgbase=lib32-bluez
 pkgname=(${pkgbase}{,-libs,-cups,-plugins})
 pkgver=5.39
-pkgrel=2
+pkgrel=3
 url="http://www.bluez.org/"
 arch=('x86_64')
 license=('GPL2')
@@ -66,7 +66,7 @@ package_lib32-bluez() {
 
 package_lib32-bluez-libs() {
   pkgdesc="Deprecated libraries for the bluetooth protocol stack (32-bit)"
-  depends=('lib32-glibc')
+  depends=('bluez-libs' 'lib32-glibc')
   license=('LGPL2.1')
 
   cd ${pkgbase#lib32-}-${pkgver}
