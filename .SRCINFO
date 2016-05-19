@@ -1,6 +1,6 @@
 pkgbase = initrd-dropbear
 	pkgdesc = Provider of systemd initramfs dropbear ssh server
-	pkgver = 1.0.0
+	pkgver = r3.dc31af5
 	pkgrel = 1
 	url = https://aur.archlinux.org/initrd-dropbear
 	install = install.sh

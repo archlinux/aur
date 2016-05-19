@@ -7,3 +7,10 @@
 .settings/
 target/
 
+#
+# build resources
+#
+/initrd-dropbear
+/src
+/pkg
+*.xz
