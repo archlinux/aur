@@ -1,5 +1,5 @@
 pkgname=cantata-git
-pkgver=2.0.50.r6087.55fb716
+pkgver=2.0.50.r6107.854eec9
 pkgrel=1
 pkgdesc="Qt5 graphical client for Music Player Daemon (MPD) - git version."
 arch=('i686' 'x86_64')
@@ -14,7 +14,6 @@ makedepends=('git' 'cmake' 'qt5-tools' 'qt5-svg')
 conflicts=('cantata' 'cantata-kde' 'cantata-kde-svn' 'cantata-kde-svn')
 provides=('cantata')
 source=("$pkgname::git+https://github.com/CDrummond/cantata.git")
-install="${pkgname}.install"
 sha1sums=('SKIP')
 
 pkgver() {
