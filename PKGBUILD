@@ -10,7 +10,6 @@ depends=('qca-qt5' 'qt5-x11extras' 'aspell' 'libxss' 'minizip' 'desktop-file-uti
 makedepends=('git' 'qconf-git')
 replaces=('psi' 'psi-qt5-git')
 conflicts=('psi' 'psi-qt5-git')
-install=psi-git.install
 source=('git+https://github.com/psi-im/psi.git'
         'configure.diff')
 md5sums=('SKIP'
