@@ -18,7 +18,7 @@ build() {
     
     cd $location
 
-    [ which makepkg ] || return 1
+    which makepkg || return 1
     
     chown -R nobody $location
  
