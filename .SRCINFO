@@ -1,6 +1,6 @@
 pkgbase = dnf
 	pkgdesc = Package manager forked from Yum, using libsolv as a dependency resolver
-	pkgver = 1.1.8.1
+	pkgver = 1.1.9.1
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/dnf
 	arch = any
@@ -18,8 +18,8 @@ pkgbase = dnf
 	depends = python-pygpgme
 	backup = etc/dnf/automatic.conf
 	backup = etc/dnf/dnf.conf
-	source = https://github.com/rpm-software-management/dnf/archive/dnf-1.1.8-1.tar.gz
-	md5sums = 9b03b9fa338eb6d2fb01981b828cd6ab
+	source = https://github.com/rpm-software-management/dnf/archive/dnf-1.1.9-1.tar.gz
+	md5sums = 00953c1feb6c5dc7e8f437febd316c2d
 
 pkgname = dnf
 
