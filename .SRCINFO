@@ -16,7 +16,7 @@ pkgbase = idos-timetable-maps-chaps-all-latest
 	provides = idos-timetable-maps-trains-europe=2016_5_19
 	provides = idos-timetable-maps-bus-cz=2016_5_19
 	provides = idos-timetable-maps-bus-sk=2016_5_19
-	provides = idos-timetable-maps-bus-MHD-almostall=2016_5_19
+	provides = idos-timetable-maps-bus-MHD-all=2016_5_19
 	conflicts = idos-timetable-maps-chaps-all
 	source = komplet_m.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/KOMPLET_M.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf

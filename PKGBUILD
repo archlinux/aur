@@ -31,7 +31,7 @@ provides=(
   "idos-timetable-maps-trains-europe=${pkgver}"
   "idos-timetable-maps-bus-cz=${pkgver}"
   "idos-timetable-maps-bus-sk=${pkgver}"
-  "idos-timetable-maps-bus-MHD-almostall=${pkgver}"
+  "idos-timetable-maps-bus-MHD-all=${pkgver}"
 )
 
 conflicts=(
