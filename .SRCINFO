@@ -15,7 +15,7 @@ pkgbase = aria2-git
 	depends = c-ares
 	depends = ca-certificates
 	depends = libssh2
-	provides = aria2
+	provides = aria2=1.22.0.30
 	conflicts = aria2
 	source = aria2-git::git+https://github.com/tatsuhiro-t/aria2.git
 	sha256sums = SKIP
