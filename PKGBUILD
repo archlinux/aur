@@ -3,7 +3,7 @@
 pkgname=mattermost-desktop
 pkgdesc="Mattermost chat desktop client for Linux"
 _pkgname=desktop
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Mattermost Desktop (Beta) for Linux"
 arch=('i686' 'x86_64')
@@ -15,12 +15,12 @@ optdepends=()
 
 source=("https://github.com/mattermost/desktop/archive/v${pkgver}.tar.gz")
 
-sha256sums=('0b77a1463f75900d6b516bd8456f6a702747e4798ed932986b4970ba873a495f')
+sha256sums=('f8b22582d585781f7323db2c17a084f78eed4488b6c4053dd9b9237577744cc9')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     npm install
-    npm run package:linux
+    npm run package
 }
 
 prepare() {
