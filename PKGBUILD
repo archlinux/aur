@@ -8,8 +8,8 @@ url='http://gdatafs.sourceforge.net'
 license=('GPL')
 depends=('fuse' 'java-runtime')
 changelog=ChangeLog
-source=(https://sourceforge.net/projects/gdatafs/files/gdatafs%20$pkgver.tar.gz
-        gdatafs.sh)
+source=("https://sourceforge.net/projects/gdatafs/files/gdatafs $pkgver.tar.gz"
+        'gdatafs.sh')
 md5sums=('77e5207f1b2cfb72307087ebceb7b801'
          '76bcee2cd35ec0c78e3a3985dc600882')
 arch=('any')
