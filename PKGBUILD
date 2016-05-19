@@ -1,56 +1,56 @@
 # Maintainer: wenLiangcan <boxeed at gmail dot com>
 
 pkgname=feeluown-git
-_pkgname=FeelUOwn
-pkgver=8.0a.0.g1d8de88
+_pkgname=feeluown
+pkgver=9.1a.22.gd1090d6
 pkgrel=1
 epoch=1
 pkgdesc="个性化音乐服务 For Mac And Linux"
 arch=("any")
 url="https://github.com/cosven/FeelUOwn"
 license=('GPL3')
-depends=('python-pyqt5' 'python-requests' 'python-quamash' 'python-sqlalchemy' 'python-dbus' 'qt5-multimedia' 'xdg-utils' 'python-yaml')
+depends=('python-pyqt5' 'python-requests' 'python-quamash' 'qt5-multimedia' 'python-crypto' 'xdg-utils' 'sh') # 'python-sqlalchemy' 'python-dbus' 'python-yaml')
 optdepends=('vlc')
 makedepends=('git')
 provides=("feeluown")
 conflicts=("feeluown")
-source=('git://github.com/cosven/FeelUOwn.git')
+source=("${_pkgname}"::'git://github.com/cosven/FeelUOwn.git')
 md5sums=('SKIP')
 install="${pkgname}.install"
 _desktop="${_pkgname}.desktop"
 
 pkgver() {
-    cd "$srcdir/$_pkgname"
+    cd "${srcdir}/${_pkgname}"
     git describe --tags --long | sed 's/^v//;s/release./r/;s/-/./g'
 }
 
-build() {
-    cd "$srcdir"
+prepare() {
+    cd "${srcdir}"
     cat > ${_desktop} << EOF
 [Desktop Entry]
 Type=Application
 Name=FeelUOwn
 Comment=FeelUOwn Launcher
 Exec=${_pkgname}
-Icon=/usr/share/${pkgname}/icons/FeelUOwn.png
+Icon=${_pkgname}
 Categories=AudioVideo;Audio;Player;Qt;
 Terminal=false
 StartupNotify=true
 EOF
-
-    cat > "${_pkgname}.sh" << EOF
-#!/usr/bin/env sh
-python /usr/share/${pkgname}/feeluown/main.py \$*
-EOF
 }
 
 package() {
-    cd "$srcdir/$_pkgname"
-    find ./{feeluown,icons} -type f -exec install -Dm644 {} \
-        "${pkgdir}/usr/share/${pkgname}/{}" \;
+    cd "${srcdir}/${_pkgname}"
 
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    python3 setup.py install --root="${pkgdir}" --optimize=1
+    echo "#!/usr/bin/env sh" > "${pkgdir}/usr/bin/feeluown"
+    echo "python -c 'from feeluown import __main__ as fu;fu.main()' \"\$@\"" >> "${pkgdir}/usr/bin/feeluown"
+
+    rm -f "${pkgdir}/usr/bin/"{'feeluown-install-dev','feeluown-genicon','feeluown-update'}
+
+    install -Dm644 './feeluown/feeluown.png' "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
     install -Dm644 "${srcdir}/${_desktop}" "${pkgdir}/usr/share/applications/${_desktop}"
-    install -Dm755 "${srcdir}/${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
 }
+
