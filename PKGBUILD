@@ -26,7 +26,6 @@ provides=(
   "${_pkgname}=${pkgver}"
   
   "idos-timetable-additionalinfo-MHD-IDSJMK=${pkgver}"
-  
 )
 
 conflicts=(
