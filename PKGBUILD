@@ -58,7 +58,8 @@ package() {
 
   cp -r "${srcdir}"/Data* "${_instdir}/"
   chmod 755 "${_instdir}"/Data*
-  chmod 644 "${_instdir}"/Data*/*
+  chmod 755 "${_instdir}"/Data*/*
+  chmod 644 "${_instdir}"/Data*/*/*
 
   install -d -m755 "${pkgdir}/usr/share/doc/${_pkgname}"
   echo "${url}" > "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
