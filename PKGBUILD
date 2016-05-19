@@ -1,6 +1,6 @@
 # Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 pkgname=psi-git
-pkgver=0.16_dev_20151025
+pkgver=0.16_dev_20160519
 pkgrel=1
 pkgdesc="A jabber client. GIT version"
 arch=('i686' 'x86_64')
@@ -11,8 +11,10 @@ makedepends=('git' 'qconf-git')
 replaces=('psi' 'psi-qt5-git')
 conflicts=('psi' 'psi-qt5-git')
 install=psi-git.install
-source=('git+https://github.com/psi-im/psi.git')
-md5sums=('SKIP')
+source=('git+https://github.com/psi-im/psi.git'
+        'configure.diff')
+md5sums=('SKIP'
+         'a51eabeb51bb81262dfe15eec5c4b117')
 
 pkgver() {
 echo  0.16_dev_$(date +"%Y%m%d")
@@ -25,6 +27,7 @@ build() {
   git submodule update
 
   qconf
+  patch -p0 < "$srcdir"/configure.diff
   ./configure --prefix=/usr \
               --libdir=/usr/lib \
               --qtdir="/usr/lib/qt" \

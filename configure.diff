@@ -1,0 +1,13 @@
+--- configure.orig 2016-05-19 15:42:51.790642988 +0200
++++ configure   2016-05-19 15:42:46.663840473 +0200
+@@ -1082,6 +1082,9 @@
+                }
+                conf->addLib(libs);
+
++        conf->addExtra("CONFIG += psi-minizip");
++        return true;
++
+ #ifdef Q_OS_WIN
+                // HACK: on windows, always use psi's bundled minizip
+                conf->addExtra("CONFIG += psi-minizip");
+
