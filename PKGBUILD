@@ -1,4 +1,4 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <nospam@bpiotrowski.pl>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: rabyte <rabyte.at.gmail.dot.com>
@@ -7,7 +7,7 @@
 
 pkgname=midori
 pkgver=0.5.11
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight web browser (GTK3)'
 arch=('x86_64' 'i686')
 url='http://www.midori-browser.org/'
@@ -16,7 +16,7 @@ install='midori.install'
 conflicts=('midori-gtk2')
 provides=('midori')
 replaces=('midori-gtk3')
-depends=('webkitgtk' 'libxss' 'hicolor-icon-theme' 'desktop-file-utils' 'gcr' 'zeitgeist') # webkit2gtk
+depends=('webkitgtk' 'libxss' 'gcr' 'zeitgeist') # webkit2gtk
 makedepends=('bzr' 'intltool' 'vala' 'cmake' 'ninja')
 optdepends=('gst-plugins-base: HTML5 OGG videos support'
             'gst-plugins-good: HTML5 H264 and WebM videos support'
