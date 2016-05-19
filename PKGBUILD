@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=owncloud-app-tasks
-pkgver=0.8.1
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Enhanced task app for ownCloud"
 arch=('any')
@@ -12,14 +12,23 @@ depends=('owncloud')
 makedepends=()
 options=('!strip')
 source=("tasks-${pkgver}.tar.gz::https://github.com/owncloud/tasks/archive/v${pkgver}.tar.gz")
-sha512sums=("5b0880cd86588142d32f77dbcdd3fe7406541b790012528ba8efdceb62d0638a7d4b11e91b5fd3f0c5b4f5cfb3ae8213b28a41b4e7fa0fa0a8e978163175ec00")
+sha512sums=("7cde8605f93b82e4e4df8d4d7ddefee24e872482037c9723188d70880ac8bd9fa37277dc74e4394995fa182a53675d87440f8c72f1650f7091ecc0df7adab20c")
+
+prepare() {
+  cd "${srcdir}/tasks-${pkgver}"
+  sed -i '3s/tasks/tasks-0.9.0/' Makefile
+  sed -i '15s/ $(project_dir)//' Makefile
+  sed -i "\$a	\$(project_dir)" Makefile
+}
 
 build() {
   cd "${srcdir}/tasks-${pkgver}"
-  rm build.xml CONTRIBUTING.md .gitattributes .gitignore README.md .scrutinizer.yml .travis.yml
+  make appstore
 }
 
 package() {
-  install -d "${pkgdir}/usr/share/webapps/owncloud/apps"
-  cp -r "${srcdir}/tasks-${pkgver}" "${pkgdir}/usr/share/webapps/owncloud/apps/tasks"
+  install -d "${pkgdir}/usr/share/webapps/owncloud/apps/tasks"
+  tar -xvf "${srcdir}/tasks-${pkgver}/build/artifacts/appstore/tasks-0.9.0.tar.gz" \
+      --strip-components=1 \
+      -C "${pkgdir}/usr/share/webapps/owncloud/apps/tasks/"
 }
