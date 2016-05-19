@@ -10,11 +10,9 @@ pkgbase = idos-timetable-data-zsr-europe+sk-latest
 	makedepends = p7zip
 	makedepends = curl
 	provides = idos-timetable-data-zsr-europe+sk=2016_05_17
-	provides = idos-timetable-data-zsr-sk=2016_05_17
-	provides = idos-timetable-data-zsr-europe=2016_05_17
-	provides = idos-timetable-data-sk=2016_05_17
-	provides = idos-timetable-data-europe=2016_05_17
 	provides = idos-timetable-data=2016_05_17
+	provides = idos-timetable-data-trains-sk=2016_05_17
+	provides = idos-timetable-data-trains-europe=2016_05_17
 	conflicts = idos-timetable-data-zsr-europe+sk
 	conflicts = idos-timetable-data-zsr-sk
 	conflicts = idos-timetable-data-zsr-europe

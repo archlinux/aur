@@ -21,11 +21,11 @@ optdepends=()
 
 provides=(
   "${_pkgname}=${pkgver}"
-  "idos-timetable-data-zsr-sk=${pkgver}"
-  "idos-timetable-data-zsr-europe=${pkgver}"
-  "idos-timetable-data-sk=${pkgver}"
-  "idos-timetable-data-europe=${pkgver}"
+  
   "idos-timetable-data=${pkgver}"
+  
+  "idos-timetable-data-trains-sk=${pkgver}"
+  "idos-timetable-data-trains-europe=${pkgver}"
 )
 
 conflicts=(
