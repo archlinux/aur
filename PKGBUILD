@@ -2,15 +2,15 @@
 
 pkgname=redis-desktop-manager
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform open source Redis DB management tool'
 arch=('x86_64')
 url="http://redisdesktop.com/"
 license=('LGPLv2.1')
 depends=('qt5-base' 'qt5-imageformats' 'qt5-tools' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'qt5-svg' 'libssh2')
-makedepends=('git' 'subversion' 'gcc')
+makedepends=('git' 'gcc')
 conflicts=('redis-desktop-manager-bin')
-source=("rdm::git://github.com/uglide/RedisDesktopManager.git#tag=0.8.3"
+source=('rdm::git://github.com/uglide/RedisDesktopManager.git#tag=0.8.3'
         'rdm.sh'
         'rdm.desktop')
 sha256sums=('SKIP'
@@ -20,12 +20,15 @@ sha256sums=('SKIP'
 prepare() {
   cd rdm/
   git submodule update --init --recursive
+  git submodule add https://chromium.googlesource.com/linux-syscall-support 3rdparty/linux-syscall-support
 
   python2 build/utils/set_version.py "$pkgver-120" > src/version.h
   python2 build/utils/set_version.py "$pkgver-120" > 3rdparty/crashreporter/src/version.h
 
+  _lssdir='3rdparty/gbreakpad/src/third_party/lss/'
+  mkdir ${_lssdir}
+  cp 3rdparty/linux-syscall-support/linux_syscall_support.h ${_lssdir}
   cd 3rdparty/gbreakpad
-  svn checkout http://linux-syscall-support.googlecode.com/svn/trunk/lss/ src/third_party/lss
   touch README
 }
 
