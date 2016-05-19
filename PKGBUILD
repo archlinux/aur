@@ -2,7 +2,7 @@
 
 pkgname=multimc5-git
 pkgver=0.4.11.r67.ga750f6e
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="http://multimc.org/"
@@ -16,7 +16,7 @@ source=("$pkgname"::"git://github.com/MultiMC/MultiMC5.git"
   'cmake-patch.diff')
 sha512sums=('SKIP'
             'da09df830845edc052564c9ec06d33cd03b4abaf9469f651df500f8ee444ad054cbb3acf7dcaa13a4855b7cadd4c53f76d284e68787a1b7e87fd346624e08b2c'
-            'a6712d0e84acc719ed1aff740717add44202f88cb42a0b7a3157108b73a1009ac7edd325f75d372e0a63617f40eb614d55fb4e24e5c1fb8957cd280486070675'
+            '55c0daa45f849831e74c2d5a6d4a3dba6d6d8018bf226beadc4726b749320728502068f49741026e487c2bcf9826c1a4f54f110d2a20e9e0a0deb5cf2d616b92'
             'af4e13cedcf275ca1f95643e88162b741256309f0e6af3629762f204093946cc972a9345f838035777a1e9a64ac0f7893266a43631b9c21967c1b237264ec646')
 
 pkgver() {
