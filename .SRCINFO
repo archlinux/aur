@@ -1,0 +1,19 @@
+pkgbase = 3dstool-git
+	pkgdesc = An all-in-one tool for extracting/creating 3ds roms.
+	pkgver = r73.344f109
+	pkgrel = 1
+	url = https://github.com/dnasdw/3dstool
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = cmake
+	provides = 3dstool
+	options = !strip
+	source = 3dstool-git::git+https://github.com/dnasdw/3dstool.git
+	source = 00-3dstool-share-ignore.patch
+	sha256sums = SKIP
+	sha256sums = 3d55e1bb49caa79648cd27aacba3793cfa38882cd740661560bc3d0d68da8d3d
+
+pkgname = 3dstool-git
+
