@@ -11,8 +11,8 @@ build() {
     #    --skipinteg \
     #    --install \
     
-    #$suno makepkg \
-    #  --printsrcinfo > .SRCINFO
+    $suno makepkg \
+      --printsrcinfo > .SRCINFO
       
     #return 0
 
