@@ -1,0 +1,11 @@
+# arg 1:  the new package version
+# arg 2:  the old package version
+
+
+post_install () {
+  echo "post install"
+}
+
+post_upgrade() {
+  echo "post upgrade"
+}
