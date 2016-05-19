@@ -16,7 +16,15 @@ makedepends=(
   "wget"
 )
 
-optdepends=()
+optdepends=(
+            "idos-timetable-tariff: For showing prices."
+            "idos-timetable-maps: For displaying routes on maps."
+            "idos-timetable-additionalinfo-trains: For (links to) additional information about train composition and stations."
+            "idos-timetable-additional-bus: For images of certain bus stations."
+            "idos-timetable-additionalinfo-MHD-IDSJMK: For photographs of public transport stops in the IDSJMK region."
+            "idos-timetable-additionalinfo-MHD-PID: For photographs of public transport stops in the PID region."
+            "idos-timetable-additionalinfo-MHD-ODIS: For links to information about changes, fares, salespoints ... in the ODIS-region."
+           )
 
 provides=(
   "${_pkgname}=${pkgver}"

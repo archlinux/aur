@@ -9,6 +9,13 @@ pkgbase = idos-timetable-data-chaps-all-latest
 	license = custom
 	makedepends = wget
 	depends = idos-timetable-browser
+	optdepends = idos-timetable-tariff: For showing prices.
+	optdepends = idos-timetable-maps: For displaying routes on maps.
+	optdepends = idos-timetable-additionalinfo-trains: For (links to) additional information about train composition and stations.
+	optdepends = idos-timetable-additional-bus: For images of certain bus stations.
+	optdepends = idos-timetable-additionalinfo-MHD-IDSJMK: For photographs of public transport stops in the IDSJMK region.
+	optdepends = idos-timetable-additionalinfo-MHD-PID: For photographs of public transport stops in the PID region.
+	optdepends = idos-timetable-additionalinfo-MHD-ODIS: For links to information about changes, fares, salespoints ... in the ODIS-region.
 	provides = idos-timetable-data-chaps-all=2016_5_19
 	provides = idos-timetable-data=2016_5_19
 	provides = idos-timetable-data-trains-cz=2016_5_19
