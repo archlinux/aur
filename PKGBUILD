@@ -5,7 +5,7 @@
 run_tests=false
 
 pkgname=certmonger
-pkgver=0.78
+pkgver=0.78.6
 pkgrel=1
 pkgdesc="Certificate status monitor and PKI enrollment client"
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ backup=(etc/certmonger/certmonger.conf
         etc/tmpfiles.d/certmonger.conf)
 install=${pkgname}.install
 source=("http://fedorahosted.org/released/certmonger/certmonger-${pkgver}.tar.gz")
-sha512sums=('c1f5f7c0fbb7d9116016602e3c97559c3f658dff77c6e01fbff390d5fa276a652cd5c6ae5833878fd24f18f6414da3b07d1f8407b356742aa224006686d068a6')
+sha512sums=('b0c3887083c4ada70485cee22c8d546a7001dc8f2b6ef87d8ab05b075b9e8a309f7599eb9967f8a51277f3ebb9afba7d98129db95535f96aa0bc3bf4433160ab')
 
 build() {
   cd "${pkgname}-${pkgver}"
