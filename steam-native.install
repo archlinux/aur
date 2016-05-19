@@ -15,6 +15,12 @@ blue="${bold}$(tput setaf 4)"
 RESTART=0
 MIRROR_URL='https://www.dropbox.com/sh/xexyu68u2xnfgn6/AACEvmC_k22iLY9brSA9tgIQa'
 
+_update() {
+	update-desktop-database -q
+	[ $RESTART -eq 1 ] && \
+		note 'Relog or restart your system to access changes'
+}
+
 post_install() {
 	if grep -q 'STEAM_RUNTIME=1' /etc/environment; then
 		msg_blue 'Removing Steam runtime'
@@ -36,9 +42,7 @@ post_install() {
 		echo 'STEAM_FRAME_FORCE_CLOSE=1' >> /etc/environment
 		RESTART=1
 	fi
-	update-desktop-database -q
-	[ $RESTART -eq 1 ] && \
-		note 'Relog or restart your system to access changes'
+	_update
 	[ "$(uname -m)" == 'x86_64' ] && \
 		note "If native isn't working try to overwrite these files to '/usr/lib32':\n\t${MIRROR_URL}"
 }
@@ -69,9 +73,7 @@ post_remove() {
 	else
 		msg_blue 'No close to tray detected'
 	fi
-	update-desktop-database -q
-	[ $RESTART -eq 1 ] && \
-		note 'Relog or restart your system to access changes'
+	_update
 	[ "$(uname -m)" == 'x86_64' ] && \
 		note "Don't forget to remove these if you copied them separately:\n\t${MIRROR_URL}"
 }
