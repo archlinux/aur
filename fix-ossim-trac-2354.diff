@@ -1,0 +1,30 @@
+--- ossim/src/ossim/elevation/ossimElevManager.cpp  2015-12-14 14:17:27.000000000 +0000
++++ ossim/src/ossim/elevation/ossimElevManager.cpp.new  2016-03-29 14:44:34.310407167 +0000
+@@ -635,6 +635,11 @@
+    return spacing;
+ }
+ 
++inline std::ostream& operator<<(std::ostream& out, std::ostream& obj)
++{
++  return obj;
++}
++
+ std::ostream& ossimElevManager::print(ostream& out) const
+ {
+    out << "\nossimElevManager @ "<< (ossim_uint64) this
+diff -ur ossim-1.8.20-3.ossim.orig/src/ossim/elevation/ossimElevSource.cpp ossim-1.8.20-3.ossim.gcc6/src/ossim/elevation/ossimElevSource.cpp
+--- ossim/src/ossim/elevation/ossimElevSource.cpp   2015-01-29 22:33:13.000000000 +0000
++++ ossim/src/ossim/elevation/ossimElevSource.cpp.new   2016-03-29 14:44:34.310407167 +0000
+@@ -262,6 +262,11 @@
+    theComputeStatsFlag = flag;
+ }
+ 
++inline std::ostream& operator<<(std::ostream& out, std::ostream& obj)
++{
++  return obj;
++}
++
+ std::ostream& ossimElevSource::print(std::ostream& out) const
+ {
+    out << "\nossimElevSource @ "<< (ossim_uint64) this
+

@@ -1,5 +1,11 @@
---- src/ossim-1.8.18/ossim_package_support/cmake/CMakeLists.txt 2015-08-13 09:17:39.811546639 +0000
-+++ src/ossim-1.8.18/ossim_package_support/cmake/CMakeLists.txt 2015-08-13 09:09:28.608232907 +0000
-@@ -257,2 +257,2 @@
+--- ossim_package_support/cmake/CMakeLists.txt	2015-09-03 08:13:44.000000000 -0500
++++ ossim_package_support/cmake/CMakeLists.txt.cp	2016-05-18 15:21:17.389231844 -0500
+@@ -267,7 +267,7 @@
+     ${${PROJECT_NAME}_BINARY_DIR}/packaging/pkgconfig/${PKGCONFIG_FILE}.pc
+     @ONLY
+     )
 -  INSTALL(FILES ${${PROJECT_NAME}_BINARY_DIR}/packaging/pkgconfig/${PKGCONFIG_FILE}.pc DESTINATION lib${LIBSUFFIX}/pkgconfig COMPONENT ossim)
 +  INSTALL(FILES ${${PROJECT_NAME}_BINARY_DIR}/packaging/pkgconfig/${PKGCONFIG_FILE}.pc DESTINATION lib/pkgconfig COMPONENT ossim)
+ ENDFOREACH(PKGCONFIG_FILE)
+ 
+ 

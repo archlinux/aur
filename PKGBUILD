@@ -3,25 +3,31 @@
 # Contributor: Christian Wygoda <accounts@wygoda.net>
 
 pkgname=ossim
-pkgver=1.8.18
-pkgrel=2
+pkgver=1.8.20.3
+_pkgver=1.8.20-3
+pkgrel=1
 pkgdesc="OSSIM is a powerful suite of geospatial libraries and applications used to process imagery, maps, terrain, and vector data."
 url="http://www.ossim.org"
 license=('LGPL')
 arch=('i686' 'x86_64')
 depends=('freetype2' 'gdal' 'libgeotiff' 'libjpeg' 'libtiff' 'openscenegraph' 'openjpeg'  'doxygen' 'hdf5-cpp-fortran' 
-        'minizip' 'expat' 'ffmpeg' 'qt4' 'podofo' 'liblas' 'bzip2')
+        'minizip' 'expat' 'ffmpeg' 'qt4' 'podofo' 'liblas' 'bzip2' 'freetype2')
 makedepends=('cmake')
 optdepends=( 'java-environment-common' 'openmpi' 'gpstk-bin' )
-source=(http://download.osgeo.org/ossim/source/latest/${pkgname}-${pkgver}.tar.gz ossim.sh lib64bit_cmake_patch.patch)
+source=(http://download.osgeo.org/ossim/source/latest/${pkgname}-${_pkgver}.tar.gz
+        ossim.sh 
+        lib64bit_cmake_patch.patch
+        fix-ossim-trac-2354.diff)
 install=ossim.install
-md5sums=('7bb918d8e20715d794eef86ad26e1389'
+md5sums=('eb2265db0d4d9201e255b92317121cfd'
          'cb85c216a099b10f057cddeeae4a57fb'
-         '9d676f9787896b096f1015c27e9d0769')
+         '9531d170d973b85bcf8f0889d9415d99'
+         '79e1e01bc9b8de9e0c0f481ccb19a8f7')
 
 prepare() {
-  cd ${srcdir}
-  patch -Np1 -i ../lib64bit_cmake_patch.patch
+  cd ${srcdir}/${pkgname}-${_pkgver}
+  patch -p0 < ../lib64bit_cmake_patch.patch
+  patch -p0 < ../fix-ossim-trac-2354.diff
 }
 
 build() {
@@ -35,76 +41,31 @@ build() {
   mkdir $srcdir/build
   cd $srcdir/build
 
-  OSSIM_DEV_HOME="$srcdir/${pkgname}-${pkgver}";
-  buildir="$srcdir/${pkgname}-${pkgver}";
+  OSSIM_DEV_HOME="$srcdir/${pkgname}-${_pkgver}";
+  buildir="$srcdir/${pkgname}-${_pkgver}";
 
   cmake -G "Unix Makefiles" \
-  -DBUILD_CSMAPI=OFF \
-  -DBUILD_OMS=ON \
-  -DBUILD_OSSIM=ON \
-  -DBUILD_OSSIM_PACKAGES=ON \
-  -DBUILD_OSSIM_PLUGIN=ON  \
-  -DBUILD_OSSIMCONTRIB_PLUGIN=OFF \
-  -DBUILD_OSSIMCSM_PLUGIN=OFF \
-  -DBUILD_OSSIMGEOPDF_PLUGIN=ON \
-  -DBUILD_OSSIMGDAL_PLUGIN=ON \
-  -DBUILD_OSSIMHDF_PLUGIN=OFF \
-  -DBUILD_OSSIMKAKADU_PLUGIN=OFF \
-  -DBUILD_OSSIMKMLSUPEROVERLAY_PLUGIN=ON \
-  -DBUILD_OSSIMLAS_PLUGIN=ON \
-  -DBUILD_OSSIMLIBLAS_PLUGIN=OFF \
-  -DBUILD_OSSIMLIBRAW_PLUGIN=ON \
-  -DBUILD_OSSIMMRSID_PLUGIN=OFF \
-  -DBUILD_OSSIMNDF_PLUGIN=ON \
-  -DBUILD_OSSIMOPENJPEG_PLUGIN=OFF \
-  -DBUILD_OSSIMHDF5_PLUGIN=ON \
-  -DBUILD_OSSIMWORLDWIND_PLUGIN=ON \
-  -DBUILD_OSSIMLIBLAS_PLUGIN=ON \
-  -DBUILD_OSSIMOPENCV_PLUGIN=ON \
-  -DBUILD_OSSIMSQLITE_PLUGIN=ON \
-  -DBUILD_OSSIMWEB_PLUGIN=ON \
-  -DBUILD_OSSIMPNG_PLUGIN=ON \
-  -DBUILD_OSSIMREGISTRATION_PLUGIN=ON \
-  -DBUILD_OSSIMQT4=ON \
-  -DBUILD_OSSIMGUI=ON \
-  -DBUILD_OSSIM_MPI_SUPPORT=OFF \
-  -DBUILD_OSSIMPLANET=ON \
-  -DBUILD_OSSIMPLANETQT=ON \
-  -DBUILD_OSSIMPREDATOR=ON \
-  -DBUILD_OSSIM_TEST_APPS=ON \
-  -DBUILD_RUNTIME_DIR=bin \
-  -DBUILD_SHARED_LIBS=ON \
-  -DBUILD_WMS=ON \
-  -DWMS_INCLUDE_DIR=${buildir}/libwms/include \
-  -OSSIM_BUILD_DOXYGEN=ON \
-  -DCMAKE_BUILD_TYPE=Debug \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DBUILD_OSSIM_MPI_SUPPORT=OFF  \
+  -DBUILD_OSSIM_TEST_APPS=OFF    \
+  -DSubversion_SVN_EXECUTABLE=""  \
+  -DCMAKE_MODULE_PATH=${buildir}/ossim_package_support/cmake/CMakeModules    \
+  -DFREETYPE_INCLUDE_DIR_ft2build=/usr/include/freetype2    \
+  -DBUILD_WMS=OFF  \
   -DCMAKE_INSTALL_PREFIX=/usr \
-  -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-  -DBUILD_LIBRARY_DIR=/usr/lib \
-  -DOSSIM_DEV_HOME=${buildir} \
-  -DCMAKE_MODULE_PATH=${buildir}/ossim_package_support/cmake/CMakeModules \
-  -DOSSIM_BUILD_ADDITIONAL_DIRECTORIES="${buildir}/ossimjni" \
-  -DOSSIM_COMPILE_WITH_FULL_WARNING=ON \
-  -DOSSIM_INSTALL_PLUGINS_WITH_VERSION=OFF \
-  -DOSSIM_LIBRARIES=${buildir}/build/lib/libossim.so \
-  -DOSSIM_PLUGIN_LINK_TYPE=MODULE \
-  -DOSSIMPLANET_ENABLE_EPHEMERIS=ON \
-  -DINSTALL_LIBRARY_DIR=/usr/lib \
-  ${buildir}/ossim_package_support/cmake
+  -DINSTALL_LIBRARY_DIR:PATH=/usr/lib \
+  -DINSTALL_RUNTIME_DIR:PATH=/usr/bin/ossim-apps/ \
+  -DINSTALL_ARCHIVE_DIR:PATH=/usr/lib \
+  ${buildir}/ossim \
 
-  #-DOSSIM_DEPENDENCIES=${buildir}/local \
-  #-DCMAKE_INCLUDE_PATH=${buildir}/local/include \
-  #-DCMAKE_LIBRARY_PATH=${buildir}/local/lib \
-  #-DMRSID_DIR=${buildir}/mrsid \
-
-  make -j5
+  make -j4
 }
 
 
 package() {
 
   cd $srcdir/build
-  buildir="$srcdir/${pkgname}-${pkgver}";
+  buildir="$srcdir/${pkgname}-${_pkgver}";
   make DESTDIR=${pkgdir} install || return 1  
 
   sed -i -e 's|epsg_database_file1: $(OSSIM_DATA)/ossim/share/ossim/projection/ossim_epsg_projections-v7_4.csv|epsg_database_file1: $(OSSIM_DATA)/projection/ossim_epsg_projections-v7_4.csv|g' \
@@ -131,7 +92,7 @@ package() {
 
   # Install the configuration file
   mkdir ${pkgdir}/etc
-  install -D -m644 ${buildir}/ossim/etc/config_files/dbossim.cfg ${pkgdir}/etc/ossim/dbossim.cfg
+  #install -D -m644 ${buildir}/ossim/etc/config_files/dbossim.cfg ${pkgdir}/etc/ossim/dbossim.cfg
 
   # Install profile.d file
   install -D ${srcdir}/ossim.sh \
