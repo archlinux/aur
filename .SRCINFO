@@ -1,0 +1,17 @@
+pkgbase = colortail-git
+	pkgdesc = Colortail works like tail but can optionally read one or more config files where it's specified which patterns results in which colors.
+	pkgver = 20160223.3b76525e
+	pkgrel = 1
+	url = https://github.com/joakim666/colortail
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	provides = colortail
+	conflicts = colortail
+	replaces = colortail
+	source = https://github.com/joakim666/colortail/archive/3b7625ebaf3d80fa6a5951bdac00e16fcccf9dd9.zip
+	md5sums = 3d2af1106435de1fcd47ead4ce76a53d
+
+pkgname = colortail-git
+
