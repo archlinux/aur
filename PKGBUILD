@@ -8,14 +8,11 @@ arch=('i686' 'x86_64')
 url="http://code.google.com/p/dictionnaire-le-littre/"
 license=('GPL3')
 depends=('qt4')
-install=$pkgname.install
 source=(http://dictionnaire-le-littre.googlecode.com/files/Littre-source-${pkgver}.tar.bz2 \
- 	$pkgname.desktop\
-	$pkgname.install)
+ 	$pkgname.desktop)
 	
 md5sums=('c71666ae4cf6353d2bbb7e98dcca9159'
-         '8d5d8a0d397eb446b47b413da331f7b7'
-         'f4752b8bdf78eae8fc74e8e7de3c05d7')
+         '8d5d8a0d397eb446b47b413da331f7b7')
 
 build() {
   cd "$srcdir/Littre-source-$pkgver"

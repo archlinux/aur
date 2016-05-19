@@ -1,7 +1,0 @@
-post_install() {
-ln -s /opt/littre2/Littre /usr/bin/littre
-}
-
-pre_remove() {
-  rm /usr/bin/littre
-}
