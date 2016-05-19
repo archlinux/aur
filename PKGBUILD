@@ -1,4 +1,4 @@
-# Maintainer: Nils B. <aur@theinbox.de>
+# Maintainer: Nils Bars <arch@nbars.de>
 
 pkgname=cutecom
 pkgver=0.22.0
