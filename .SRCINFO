@@ -1,5 +1,5 @@
 pkgbase = sftdlib-git
-	pkgdesc = Simple and Fast Image Loading library for the Nintendo 3DS (using sf2dlib and ctrulib)
+	pkgdesc = Simple and Fast Text Drawing library for the Nintendo 3DS (using sf2dlib and ctrulib)
 	pkgver = r23.14fb053
 	pkgrel = 1
 	url = https://github.com/xerpi/sftdlib
