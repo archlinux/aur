@@ -1,55 +1,43 @@
 # Maintainer: Hendrik R. hendrikr_10 [at] yahoo [dot] de
 
 pkgname=riskofrain-hib
-pkgver=1.2.8
-_hibver=2015-05-07
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='A roguelike action platformer/adventure game with randomized elements. (Humble Bundle Version)'
 url='http://riskofraingame.com'
 arch=('i686' 'x86_64')
 license=('custom:commercial')
-case ${CARCH} in
-  i686 )
-    depends=( 'libxrandr'
+# WARNING: i686 is untested
+depends_i686=('libxrandr'
               'openal'
-              'glu')
-    ;;
-  x86_64 )
-    depends=( 'lib32-libxrandr'
-              'lib32-openal'
-              'lib32-glu')
-    ;;
-esac
+              'glu'
+              'lib-libcurl-compat-nostatic')
+depends_x86_64=('lib32-libxrandr'
+                'lib32-openal'
+                'lib32-glu'
+                'lib32-libcurl-compat-nostatic')
 options=()
+install=${pkgname}.install
 PKGEXT='.pkg.tar'
 DLAGENTS+=('hib::/usr/bin/echo "Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf."; exit 1')
-
-_installer="RoR-Linux-${_hibver}.sh"
+_installer="Risk_of_Rain_v${pkgver}_DRM-Free_Linux_.zip"
 source=("hib://${_installer}"
         "riskofraingame_com-RiskOfRain_1.desktop")
-sha256sums=('75a1d750aeb4b668af0d1e5588ec80f5a9a74c5774c1b0bf5b7d431b3588c8e7'
-            'd84193e489e52c80348b77978b549e4f682b4a08a66d515fa588013b37ed5d74')
+sha256sums=('9ef8004ba52bd34d0a72caa2dc1cf45d8a2ee59a8ad39a1caa8a3bf137a72a11'
+            'c020cf568151ab85737d6cd87d0e80137aa24be08d54fc8ff0e0a53a60670e57')
 
 package() {
-  cd $srcdir
-  _target="/opt/${pkgname}"
-  case $CARCH in i686) _arch=x86;; x86_64) _arch=x86_64;; esac
+  case $CARCH in i686) _lib_dir="/usr/lib";; x86_64) _lib_dir="/usr/lib32";; esac
 
-  # Extract installer
-  mkdir -p "${pkgdir}${_target}"
-  while read line; do echo -n '.'; done < <(  # show progress as dots
-    cd "${pkgdir}${_target}"
-    mv "${srcdir}/data/noarch/assets" .
-    mv "${srcdir}/data/x86/ROR.bin" .
-    mv "${srcdir}/data/x86/ROR.sh" .
-    rm -r "${srcdir}/data/x86/lib"
-    rmdir "${srcdir}/data/noarch"
-    rmdir "${srcdir}/data/x86"
-    rmdir "${srcdir}/data"
-  ); echo
+  _target="/opt/${pkgname}"
+  mkdir -p ${pkgdir}${_target}
+  cd "${pkgdir}${_target}"
+  unzip ${srcdir}/${_installer}
 
   # Fix permissions
-  find "${pkgdir}" -type f -exec chmod 644 "{}" +
+  find "${pkgdir}${_target}" -type f -exec chmod 644 "{}" +
+  find "${pkgdir}${_target}" -type d -exec chmod 755 "{}" +
+  chmod 755 ${pkgdir}${_target}/Risk_of_Rain
   chown root:root -R "${pkgdir}"
 
   # Install desktop entry
@@ -61,12 +49,10 @@ package() {
                  "${pkgdir}/usr/share/pixmaps/RiskOfRain.png"
 
   # Install launcher symlink
-  chmod 755 "${pkgdir}${_target}/ROR.sh"
-  chmod 755 "${pkgdir}${_target}/ROR.bin"
   install -d "${pkgdir}/usr/bin"
   cat <<EOF > "${pkgdir}/usr/bin/riskofrain"
 #!/bin/sh
-/opt/${pkgname}/ROR.sh
+LD_PRELOAD=${_lib_dir}/libcurl.so.3 /opt/${pkgname}/Risk_of_Rain
 EOF
   chmod 755 "${pkgdir}/usr/bin/riskofrain"
 }

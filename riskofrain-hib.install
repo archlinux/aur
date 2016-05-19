@@ -1,0 +1,13 @@
+post_upgrade() {
+	# For pre 1.3.0-1 we need to migrate the save and preference files
+	home_dirs=$(cut -d":" -f6 /etc/passwd |sort)
+	if [[ "$(sort -V <(echo -e "$2\n1.3.0-0") | tail -n1)" == "1.3.0-0" ]]; then
+		for home_dir in ${home_dirs}; do
+			if [[ -f "${home_dir}/.config/Risk_of_Rain/Save.ini" ]]; then
+				echo "Migrating old save file in directory ${home_dir}/.config/Risk_of_Rain/"
+				mv ${home_dir}/.config/Risk_of_Rain/{S,s}ave.ini
+				mv ${home_dir}/.config/Risk_of_Rain/{P,p}refs.ini
+			fi
+		done
+	fi
+}
