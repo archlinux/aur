@@ -136,6 +136,7 @@ pkgbase = idos-timetable-data-chaps-all-latest
 	provides = idos-timetable-data-MHD-Zamberk=2016_5_19
 	provides = idos-timetable-data-MHD-Zatec=2016_5_19
 	provides = idos-timetable-data-MHD-ZdarNS=2016_5_19
+	provides = idos-timetable-data-flights=2016_5_19
 	conflicts = idos-timetable-data-chaps-all
 	source = komplet.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/KOMPLET.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf

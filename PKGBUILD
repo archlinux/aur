@@ -149,12 +149,12 @@ provides=(
   "idos-timetable-data-MHD-Zamberk=${pkgver}"
   "idos-timetable-data-MHD-Zatec=${pkgver}"
   "idos-timetable-data-MHD-ZdarNS=${pkgver}"
+  
+  "idos-timetable-data-flights=${pkgver}"
 )
 
 conflicts=(
   "${_pkgname}"
-  # "idos-timetable-data-zsr-sk"
-  # "idos-timetable-data-zsr-europe"
 )
 
 source=(
