@@ -1,0 +1,15 @@
+pkgbase = antlr27
+	pkgdesc = ANother Tool for Language Recognition
+	pkgver = 2.7.7
+	pkgrel = 1
+	url = http://www.antlr.org/
+	arch = x86_64
+	license = BSD
+	depends = dpkg
+	source = http://ftp.funet.fi/pub/Linux/INSTALL/Ubuntu/archive/pool/main/a/antlr/libantlr-java_2.7.7+dfsg-6_all.deb
+	source = http://ftp.funet.fi/pub/Linux/INSTALL/Ubuntu/archive/pool/main/a/antlr/antlr_2.7.7+dfsg-6_all.deb
+	sha1sums = 50f49bdfc9fa190715d13ca3f06a8ba9d6e34259
+	sha1sums = 82f0033e967079c64351d5fb42e473daebb5889a
+
+pkgname = antlr27
+
