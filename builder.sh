@@ -2,8 +2,19 @@
 
 location=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
-build() {
+updaet() {
+    cd $location
+    
+    git pull
+    
+}
 
+build() {
+    
+    cd $location
+
+    [ which makepkg ] || return 1
+    
     chown -R nobody $location
  
     local suno="sudo -u nobody"
@@ -27,7 +38,7 @@ build() {
 
 commit() {
     
-    cd location
+    cd $location
 
     echo "// commit $(pwd)"
             
@@ -45,7 +56,8 @@ commit() {
     
 }
 
+update
+
 build
 
 commit
-
