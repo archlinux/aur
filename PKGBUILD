@@ -14,6 +14,7 @@ md5sums=('82ad09c1c28e73bc9596aec47237bfba'
 build() {
   cd "${pkgname}-$pkgver"
   patch -p0 < ../cal3d-gcc43.diff
+  sed -i -e "s/return false/return 0/" src/cal3d/loader.cpp
   ./configure --prefix=/usr
   make
 }
