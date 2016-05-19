@@ -12,7 +12,7 @@ groups=('qownnotes')
 depends=('qt5-base' 'qt5-svg' 'qt5-declarative' 'openssl')
 makedepends=('qt5-tools')
 source=("http://downloads.sourceforge.net/project/${pkgname}/src/${pkgname}-${pkgver}.tar.xz")
-sha256sums=('')
+sha256sums=('33edaf1c8d4eb46fcd1d49919617716571217cde1916c825b6a0bfc2250840d8')
 
 prepare() {
 	cd "${pkgname}-${pkgver}"
