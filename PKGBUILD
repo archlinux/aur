@@ -2,7 +2,7 @@
 
 pkgname=riskofrain-hib
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A roguelike action platformer/adventure game with randomized elements. (Humble Bundle Version)'
 url='http://riskofraingame.com'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('custom:commercial')
 depends_i686=('libxrandr'
               'openal'
               'glu'
-              'lib-libcurl-compat-nostatic')
+              'libcurl-compat-nostatic')
 depends_x86_64=('lib32-libxrandr'
                 'lib32-openal'
                 'lib32-glu'
