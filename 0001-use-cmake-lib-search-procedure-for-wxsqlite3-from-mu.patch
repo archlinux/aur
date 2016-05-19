@@ -1,0 +1,48 @@
+From 35a03e6e296b3b97e211b680103cf0d886314456 Mon Sep 17 00:00:00 2001
+From: Sven Fischer <git-dev@linux4tw.de>
+Date: Thu, 19 May 2016 18:06:31 +0200
+Subject: [PATCH] use cmake lib search procedure for wxsqlite3 from musicqueue
+
+---
+ CMakeLists.txt | 25 ++++++++++++++++++++++---
+ 1 file changed, 22 insertions(+), 3 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 66ff9d5..02e8560 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -125,9 +125,28 @@ ENDIF( LIBAPPINDICATOR_LIBRARIES )
+ SET( ADD_WXSQLITE_SUPPORT 0 )
+ PKG_CHECK_MODULES( LIBWXSQLITE3 wxsqlite3-3.0 )
+ IF( NOT LIBWXSQLITE3_LIBRARIES )
+-	ADD_DEFINITIONS(-DADD_WXSQLITE_SUPPORT=1)
+-	SET( ADD_WXSQLITE_SUPPORT 1 )
+-	MESSAGE( "-- * Using internal wxSqlite support" )
++    # manual search is crude - look for installed library
++    MESSAGE( "wxsqlite3 pkg-config not found - manual search" )
++    # wx-version used is substring of wx-confing output.
++    # retrieve this value
++    EXECUTE_PROCESS( COMMAND ${wxWidgets_CONFIG_EXECUTABLE} --release OUTPUT_VARIABLE WXVER )
++    STRING( REPLACE "\n" "" WXVER ${WXVER} )
++    EXECUTE_PROCESS( COMMAND ${wxWidgets_CONFIG_EXECUTABLE} --basename OUTPUT_VARIABLE WXBASE )
++    STRING( REPLACE "\n" "" WXBASE ${WXBASE} )
++    STRING( SUBSTRING ${WXBASE} 3 -1 WXBASE )
++    SET( SEARCHLIB "wxcode_${WXBASE}_wxsqlite3-${WXVER}" )
++
++    FIND_LIBRARY( LIBWXSQLITE3LIBFILE NAMES ${SEARCHLIB} )
++    IF( LIBWXSQLITE3LIBFILE )
++        MESSAGE( "wxsqlite3 manual search successful" )
++        SET( LIBWXSQLITE3_LIBRARIES ${LIBWXSQLITE3LIBFILE} )
++        SET( LIBWXSQLITE3_INCLUDE "" )
++    ELSE( LIBWXSQLITE3LIBFILE )
++        ADD_DEFINITIONS(-DADD_WXSQLITE_SUPPORT=1)
++        SET( ADD_WXSQLITE_SUPPORT 1 )
++        MESSAGE( "-- * Using internal wxSqlite support" )
++        MESSAGE( FATAL_ERROR "wxSQLite3 not found on system!" )
++    ENDIF( LIBWXSQLITE3LIBFILE )
+ ENDIF( NOT LIBWXSQLITE3_LIBRARIES )
+ 
+ # Include wxWidgets macros
+-- 
+2.8.2
+
