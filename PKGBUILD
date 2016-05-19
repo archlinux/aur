@@ -2,7 +2,7 @@
 # Maintainer: hexchain <i at hexchain.org>
 
 pkgname=electronic-wechat
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A better WeChat client"
 arch=('x86_64')
