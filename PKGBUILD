@@ -2,7 +2,7 @@
 
 pkgname=lib32-libcurl-compat
 _pkgname=curl
-pkgver=7.48.0
+pkgver=7.49.0
 pkgrel=1
 pkgdesc="An URL retrieval library (32bit version)"
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=('lib32-curl' 'lib32-libcurl-gnutls')
 options=('strip')
 source=("http://curl.haxx.se/download/${_pkgname}-$pkgver.tar.gz")
 install=curl-compat.install
-md5sums=('b2cac71029d28cb989150bac72aafab5') 
+md5sums=('a50a3b683d7a785e3035e5ce611160e2')
 
 build() {
   config=" ./configure \
@@ -55,9 +55,13 @@ package() {
   cd "../${_pkgname}-$pkgver"
   make DESTDIR="$pkgdir" install
   rm -rf "${pkgdir}"/usr/{share,bin}
+  ln -s libcurl.so.4.4.0  "$pkgdir"/usr/lib32/libcurl.so.4.1.0
   ln -s libcurl.so.4.4.0  "$pkgdir"/usr/lib32/libcurl.so.4.2.0
+  ln -s libcurl.so.4.4.0  "$pkgdir"/usr/lib32/libcurl.so.4.3.0
   ln -s libcurl.so.4.4.0  "$pkgdir"/usr/lib32/libcurl.so.3
+  ln -s libcurl-gnutls.so.4.4.0  "$pkgdir"/usr/lib32/libcurl-gnutls.so.4.1.0
   ln -s libcurl-gnutls.so.4.4.0  "$pkgdir"/usr/lib32/libcurl-gnutls.so.4.2.0
+  ln -s libcurl-gnutls.so.4.4.0  "$pkgdir"/usr/lib32/libcurl-gnutls.so.4.3.0
   ln -s libcurl-gnutls.so.4.4.0  "$pkgdir"/usr/lib32/libcurl-gnutls.so.4
   ln -s libcurl-gnutls.so.4.4.0  "$pkgdir"/usr/lib32/libcurl-gnutls.so.3
 
