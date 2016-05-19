@@ -2,7 +2,7 @@
 # Maintainer: TheNiceGuy <gabrielpolloguilbert@gmail.com>
 
 pkgname=bedup
-pkgver=0.10.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Offline deduplication utility for the BTRFS filesystem"
 arch=('i686' 'x86_64')
