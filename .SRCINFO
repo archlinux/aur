@@ -39,7 +39,7 @@ pkgbase = idos-timetable-data-chaps-all-latest
 	provides = idos-timetable-data-MHD-Dacice=2016_5_19
 	provides = idos-timetable-data-MHD-Decin=2016_5_19
 	provides = idos-timetable-data-MHD-Domazlice=2016_5_19
-	provides = idos-timetable-data-MHD-Duchov=2016_5_19
+	provides = idos-timetable-data-MHD-Duchcov=2016_5_19
 	provides = idos-timetable-data-MHD-DvurKraloveNL=2016_5_19
 	provides = idos-timetable-data-MHD-FrydekMystek=2016_5_19
 	provides = idos-timetable-data-MHD-Havirov=2016_5_19
