@@ -3,7 +3,7 @@
 
 pkgname=liferea-git
 _gitname=liferea
-pkgver=v1.11.7.r19.ga265c6d
+pkgver=v1.11.7.r42.g6065b1b
 pkgrel=1
 pkgdesc="A news aggregator for GTK, git version."
 arch=('i686' 'x86_64')
@@ -14,10 +14,7 @@ makedepends=('autoconf' 'intltool' 'git' 'gobject-introspection' 'gconf')
 optdepends=('python2-gobject')
 provides=('liferea')
 conflicts=('liferea' 'liferea-unstable')
-replaces=()
-backup=()
 options=('!libtool' '!emptydirs')
-install=liferea.install
 source=('git+https://github.com/lwindolf/liferea.git')
 md5sums=('SKIP')
 
