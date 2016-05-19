@@ -1,0 +1,19 @@
+pkgbase = openems
+	pkgdesc = a free and open source EC-FDTD solver
+	pkgver = 0.0.34
+	pkgrel = 1
+	url = http://openems.de
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt4
+	depends = tinyxml
+	depends = hdf5
+	depends = boost
+	depends = vtk
+	depends = unixodbc
+	source = http://openems.de/download/src/openEMS-v0.0.34.tar.bz2
+	sha256sums = 9ce8ecaaffe63cf8e1c839487a8ed2646c6cb98a0c0cbf38e00a52442630eb4a
+
+pkgname = openems
+
