@@ -1,5 +1,5 @@
 pkgname=smtube-svn
-pkgver=15.11.0.r7300
+pkgver=16.3.0.r7902
 pkgrel=1
 pkgdesc="Search, download and play videos from YouTube. SVN build."
 arch=('i686' 'x86_64')
@@ -16,7 +16,6 @@ optdepends=('smplayer: play videos with SMPlayer'
             'youtube-dl: download videos')
 provides=('smtube')
 conflicts=('smtube')
-install="$pkgname.install"
 source=('smtube::svn+https://subversion.assembla.com/svn/smplayer/smtube/trunk/')
 md5sums=('SKIP')
 
