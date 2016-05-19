@@ -1,7 +1,7 @@
 pkgbase = arch-konqueror-search
 	pkgdesc = Arch search engines for konqueror (AUR, Pkgs, BBS, Wiki)
 	pkgver = 0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://archlinux.org
 	arch = any
 	license = GPL
