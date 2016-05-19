@@ -3,7 +3,7 @@
 
 pkgname=tecnoballz
 pkgver=0.93.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 pkgdesc="An exciting brick breaker game"
 url="http://linux.tlk.fr/games/TecnoballZ/"
@@ -13,7 +13,6 @@ backup=('var/games/tecnoballz/tecnoballz.hi')
 source=(http://linux.tlk.fr/games/TecnoballZ/download/${pkgname}-${pkgver}.tgz
 	${pkgname}.xpm
 	${pkgname}.desktop)
-install=tecnoballz.install
 
 md5sums=('7beeacb06fa841382f0ecbe73f64723a'
          '5b8d94612523353b6d2eb32f840b58d8'
