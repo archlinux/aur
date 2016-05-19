@@ -1,0 +1,86 @@
+diff -ruN cmvs/program/base/cmvs/bundle.cc cmvs_patched/program/base/cmvs/bundle.cc
+--- cmvs/program/base/cmvs/bundle.cc	2011-03-27 19:46:01.000000000 -0300
++++ cmvs_patched/program/base/cmvs/bundle.cc	2016-05-18 13:01:04.927852729 -0300
+@@ -1,5 +1,6 @@
+ #include <fstream>
+ #include <iterator>
++#include <numeric>
+ 
+ #ifdef _OPENMP
+ #include <omp.h>
+@@ -1131,7 +1132,7 @@
+   for (int i = 0; i < (int)m_timages.size(); ++i)
+     sort(m_timages[i].begin(), m_timages[i].end());
+   
+-  return accumulate(addnum.begin(), addnum.end(), 0);
++  return std::accumulate(addnum.begin(), addnum.end(), 0);
+ }
+ 
+ int Cbundle::totalNum(void) const{
+diff -ruN cmvs/program/base/numeric/mylapack.cc cmvs_patched/program/base/numeric/mylapack.cc
+--- cmvs/program/base/numeric/mylapack.cc	2010-04-03 19:11:17.000000000 -0300
++++ cmvs_patched/program/base/numeric/mylapack.cc	2016-05-18 01:23:52.859993590 -0300
+@@ -3,9 +3,11 @@
+ #include <iostream>
+ 
+ extern "C" {
+-#include <clapack/f2c.h>
+-#include <clapack/clapack.h>
++//#include <clapack/f2c.h>
++//#include <clapack/clapack.h>
++#include <lapacke.h>
+ };
++#define integer int
+ 
+ using namespace std;
+ 
+diff -ruN cmvs/program/base/numeric/mylapack.h cmvs_patched/program/base/numeric/mylapack.h
+--- cmvs/program/base/numeric/mylapack.h	2010-04-03 19:11:17.000000000 -0300
++++ cmvs_patched/program/base/numeric/mylapack.h	2016-05-18 01:26:18.144433627 -0300
+@@ -28,11 +28,11 @@
+ 
+   static void lls(std::vector<float>& A,
+                   std::vector<float>& b,
+-                  long int width, long int height);
++                  int width, int height);
+   
+   static void lls(std::vector<double>& A,
+                   std::vector<double>& b,
+-                  long int width, long int height);
++                  int width, int height);
+ 
+   // SVD
+   // A = U Sigma V^T
+diff -ruN cmvs/program/base/stann/dpoint.hpp cmvs_patched/program/base/stann/dpoint.hpp
+--- cmvs/program/base/stann/dpoint.hpp	2010-04-03 20:15:25.000000000 -0300
++++ cmvs_patched/program/base/stann/dpoint.hpp	2016-05-18 12:37:39.393331452 -0300
+@@ -489,7 +489,7 @@
+ 		 if(!(is >> p[i])){
+ 			 if(!is.eof()){
+ 			   std::cerr << "Error Reading Point:" 
+-				     << is << std::endl;
++				     << "is" << std::endl;
+ 				exit(1);
+ 			 }
+ 		 }
+diff -ruN cmvs/program/main/Makefile cmvs_patched/program/main/Makefile
+--- cmvs/program/main/Makefile	2010-04-10 00:27:30.000000000 -0300
++++ cmvs_patched/program/main/Makefile	2016-05-19 11:03:09.154747997 -0300
+@@ -7,13 +7,13 @@
+ ######################################################################
+ CXX = g++
+ 
+-Your INCLUDE path (e.g., -I/usr/include)
++#Your INCLUDE path (e.g., -I/usr/include)
+ YOUR_INCLUDE_PATH =
+ 
+-Your metis directory (contains header files under graclus1.2/metisLib/)
+-YOUR_INCLUDE_METIS_PATH =
++#Your metis directory (contains header files under graclus1.2/metisLib/)
++YOUR_INCLUDE_METIS_PATH =-I/usr/include/metis
+ 
+-Your LDLIBRARY path (e.g., -L/usr/lib)
++#Your LDLIBRARY path (e.g., -L/usr/lib)
+ YOUR_LDLIB_PATH =
+ 
+ ######################################################################
