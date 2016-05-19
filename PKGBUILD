@@ -8,7 +8,7 @@
 _lib32=0
 
 pkgname=('nvidia-full-beta' 'nvidia-utils-full-beta' 'nvidia-libgl-full-beta' 'opencl-nvidia-full-beta')
-pkgver=364.19
+pkgver=367.18
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -26,15 +26,13 @@ elif [[ $_lib32 = 1 ]] || pacman -Q lib32-nvidia-utils-full-beta &>/dev/null; th
 fi
 
 # Source
-source=('20-nvidia.conf'
-        'linux-4.6.patch')
+source=('20-nvidia.conf')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/$_pkg.run")
-md5sums=('2640eac092c220073f0668a7aaff61f7'
-         '3064bd437b26adac246f301f54f2814c')
-md5sums_i686=('8a4015213c4a8f1c80e9520d04a32a7b')
-md5sums_x86_64=('ad7a0b1855b3913390fb75b4cc3a26dc')
-[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('a7ca202401b5fd27f04f89c0dedaaf59')
+md5sums=('2640eac092c220073f0668a7aaff61f7')
+md5sums_i686=('9ae023927692dab99f23a006865fa966')
+md5sums_x86_64=('0e01ed625c26ad4e4b44a7b139a3e363')
+[[ $_pkg = NVIDIA-Linux-x86_64-$pkgver ]] && md5sums_x86_64=('3b08d38b21d485c0d680b065415e1e21')
 
 # Auto-detect patches (e.g. linux-4.1.patch)
 for _patch in $(find "$startdir" -maxdepth 1 -name '*.patch' -printf "%f\n"); do
