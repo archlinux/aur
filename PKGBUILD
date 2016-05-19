@@ -161,14 +161,12 @@ source=(
   "komplet.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/KOMPLET.ZIP"
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
-  "info.url"
 )
 
 sha256sums=(
   'SKIP'
   "e904d167ccdcfb2743f4cfd596aaa9dce8b751fb5c8315b972b42b7cbb3189e6"
   "c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4"
-  "55e9e7775b70a49642c22dd025a2aa4edcf67b909702ea7bcf8bbd6bc2cf0dca"
 )
 
 pkgver() {
@@ -185,8 +183,9 @@ package() {
   chmod 755 "${_instdir}"/Data*
   chmod 644 "${_instdir}"/Data*/*
 
-
-  install -D -m644 "${srcdir}/info.url" "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
+  install -d -m755 "${pkgdir}/usr/share/doc/${_pkgname}"
+  echo "${url}" > "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
+  chmod 644 "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
 
   install -D -m644 "${srcdir}/license-dummy.txt" "${pkgdir}/usr/share/licenses/${pkgname}/copying.txt"
   install -D -m644 "${srcdir}/IDOS-Licence.pdf" "${pkgdir}/usr/share/licenses/${pkgname}/IDOS-Licence.pdf"
