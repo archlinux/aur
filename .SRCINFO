@@ -1,0 +1,17 @@
+
+pkgbase = initrd-dropbear
+	pkgdesc = Provider of systemd initramfs dropbear ssh server
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/initrd-dropbear
+	install = install.sh
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = systemd
+	depends = dropbear
+	source = git+https://aur.archlinux.org/initrd-dropbear.git#branch=master
+	md5sums = SKIP
+
+pkgname = initrd-dropbear
+

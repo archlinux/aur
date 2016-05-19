@@ -1,0 +1,11 @@
+
+[Unit]
+Description=Dropbear SSH Server (initrd)
+ConditionPathExists=/etc/initrd-release
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/dropbear -E -s -j -k
+
+[Install]
+WantedBy=sysinit.target
