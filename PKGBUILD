@@ -8,7 +8,7 @@
 pkgname=plymouth-nosystemd
 _pkgname=plymouth
 pkgver=0.9.2
-pkgrel=9
+pkgrel=1
 pkgdesc="A graphical boot splash screen with kernel mode-setting support for non systemd setups"
 url="http://www.freedesktop.org/wiki/Software/Plymouth/"
 
