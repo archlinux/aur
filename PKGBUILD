@@ -20,7 +20,7 @@ license=('MIT')
 depends=('lua51' 'lua51-socket' 'lua51-expat' 'lua51-filesystem' 'libidn'
          'openssl')
 makedepends=('mercurial')
-conflics=('prosody')
+conflicts=('prosody')
 provides=('prosody')
 optdepends=('lua51-sec: TLS encryption support'
 	    'lua51-zlib: compression support')
