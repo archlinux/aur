@@ -1,28 +1,30 @@
 # Maintainer: M0Rf30
 
 pkgname=libshout-idjc-git
-pkgver=878.896a7d2
+pkgver=879.f155fa4
 pkgrel=1
-pkgdesc="Libshout plus some extensions for IDJC."
+pkgdesc="Libshout library plus some extensions for IDJC."
 arch=(i686 x86_64)
 url="http://idjc.sourceforge.net/"
 depends=('libvorbis' 'libtheora' 'speex' 'twolame')
 makedepends=('git')
+provides=('libshout')
+conflicts=('libshout' 'libshout-idjc')
 options=('!libtool' '!emptydirs')
 source=('libshout-idjc::git://idjc.git.sourceforge.net/gitroot/idjc/idjc/')
 license=('LGPL')
 
 build()
 {
-  cd libshout-idjc/libshout-idjc
+  cd $srcdir/libshout-idjc
+  ./bootstrap
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
   make
 }
 
 package() {
-  cd libshout-idjc/libshout-idjc
+  cd $srcdir/libshout-idjc
   make DESTDIR="${pkgdir}" install
-  rm -f ${pkgdir}/usr/share/aclocal/shout.m4
 }
 
 pkgver() {
