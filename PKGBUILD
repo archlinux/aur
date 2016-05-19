@@ -1,5 +1,4 @@
-# Maintainer: Nils B. <arch@theinbox.de>
-# Contributor: David Manouchehri <manouchehri@riseup.net>
+# Maintainer: Nils Bars <arch@nbars.de>
 
 pkgname=keepass-plugin-keechallenge
 pkgver=1.5.0
