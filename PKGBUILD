@@ -1,6 +1,6 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 pkgname=tomate-indicator-plugin
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Tomate plugin that shows the session progress in indicator"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('gtk-update-icon-cache'
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/eliostvs/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('db1d69d4ce1ee8c3ded826c9a297b01e')
+md5sums=('d04eedb7741a65b687507493fd8ebccf')
 install=tomate-indicator-plugin.install
 
 package() {
