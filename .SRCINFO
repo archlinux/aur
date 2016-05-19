@@ -1,4 +1,3 @@
-
 pkgbase = initrd-dropbear
 	pkgdesc = Provider of systemd initramfs dropbear ssh server
 	pkgver = 1.0.0
@@ -14,3 +13,4 @@ pkgbase = initrd-dropbear
 	md5sums = SKIP
 
 pkgname = initrd-dropbear
+
