@@ -1,5 +1,5 @@
 pkgbase = devkitarm-portlibs-git
-	pkgdesc = Deflate compression method library (for Nintendo Gamecube/Wii homebrew development)
+	pkgdesc = devkitarm portlibs libraries (for Nintendo 3DS homebrew development)
 	pkgver = r41.5751bcd
 	pkgrel = 1
 	url = https://github.com/devkitPro/3ds_portlibs
@@ -14,32 +14,41 @@ pkgbase = devkitarm-portlibs-git
 	sha256sums = SKIP
 
 pkgname = devkitarm-portlibs-zlib-git
+	pkgdesc = Deflate compression method library (for Nintendo 3DS homebrew development)
 	provides = devkitarm-portlibs-zlib
 
 pkgname = devkitarm-portlibs-freetype-git
+	pkgdesc = freetype library (for Nintendo 3DS homebrew development)
 	depends = devkitarm-portlibs-zlib
 	provides = devkitarm-portlibs-freetype
 
 pkgname = devkitarm-portlibs-jansson-git
+	pkgdesc = jansson library (for Nintendo 3DS homebrew development)
 	provides = devkitarm-portlibs-jansson
 
 pkgname = devkitarm-portlibs-libexif-git
+	pkgdesc = exif library (for Nintendo 3DS homebrew development)
 	provides = devkitarm-portlibs-libexif
 
 pkgname = devkitarm-portlibs-libjpeg-turbo-git
+	pkgdesc = JPEG library (for Nintendo 3DS homebrew development)
 	provides = devkitarm-portlibs-libjpeg-turbo
 
 pkgname = devkitarm-portlibs-libpng-git
+	pkgdesc = PNG library (for Nintendo 3DS homebrew development)
 	depends = devkitarm-portlibs-zlib
 	provides = devkitarm-portlibs-libpng
 
 pkgname = devkitarm-portlibs-libxmp-lite-git
+	pkgdesc = XMP library (for Nintendo 3DS homebrew development)
 	provides = devkitarm-portlibs-libxmp-lite
 
 pkgname = devkitarm-portlibs-sqlite-git
+	pkgdesc = SQL library (for Nintendo 3DS homebrew development)
 	provides = devkitarm-portlibs-sqlite
 
 pkgname = devkitarm-portlibs-tinyxml2-git
+	pkgdesc = XML library (for Nintendo 3DS homebrew development)
 	provides = devkitarm-portlibs-tinyxml2
 
 pkgname = devkitarm-portlibs-git

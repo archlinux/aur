@@ -31,7 +31,7 @@ pkgname=(
 
 pkgver=r41.5751bcd
 pkgrel=1
-pkgdesc='Deflate compression method library (for Nintendo Gamecube/Wii homebrew development)'
+pkgdesc='devkitarm portlibs libraries (for Nintendo 3DS homebrew development)'
 arch=('any')
 url='https://github.com/devkitPro/3ds_portlibs'
 license=('zlib')
@@ -60,6 +60,7 @@ pkgver() {
 
 package_devkitarm-portlibs-zlib-git() {
     provides=('devkitarm-portlibs-zlib')
+    pkgdesc='Deflate compression method library (for Nintendo 3DS homebrew development)'
     cd "$_pkgbase"
     source /etc/profile.d/devkitarm.sh
 
@@ -72,6 +73,7 @@ package_devkitarm-portlibs-zlib-git() {
 
 package_devkitarm-portlibs-libjpeg-turbo-git() {
     provides=('devkitarm-portlibs-libjpeg-turbo')
+    pkgdesc='JPEG library (for Nintendo 3DS homebrew development)'
 
     _clean_and_install 'libjpeg-turbo'
 }
@@ -79,6 +81,7 @@ package_devkitarm-portlibs-libjpeg-turbo-git() {
 package_devkitarm-portlibs-libpng-git() {
     provides=('devkitarm-portlibs-libpng')
     depends=('devkitarm-portlibs-zlib')
+    pkgdesc='PNG library (for Nintendo 3DS homebrew development)'
 
     _clean_and_install 'libpng'
 }
@@ -86,36 +89,42 @@ package_devkitarm-portlibs-libpng-git() {
 package_devkitarm-portlibs-freetype-git() {
     provides=('devkitarm-portlibs-freetype')
     depends=('devkitarm-portlibs-zlib')
+    pkgdesc='freetype library (for Nintendo 3DS homebrew development)'
 
     _clean_and_install 'freetype'
 }
 
 package_devkitarm-portlibs-jansson-git() {
     provides=('devkitarm-portlibs-jansson')
+    pkgdesc='jansson library (for Nintendo 3DS homebrew development)'
 
     _clean_and_install 'jansson'
 }
 
 package_devkitarm-portlibs-libexif-git() {
     provides=('devkitarm-portlibs-libexif')
+    pkgdesc='exif library (for Nintendo 3DS homebrew development)'
 
     _clean_and_install 'libexif'
 }
 
 package_devkitarm-portlibs-libxmp-lite-git() {
     provides=('devkitarm-portlibs-libxmp-lite')
+    pkgdesc='XMP library (for Nintendo 3DS homebrew development)'
 
     _clean_and_install 'libxmp-lite'
 }
 
 package_devkitarm-portlibs-sqlite-git() {
     provides=('devkitarm-portlibs-sqlite')
+    pkgdesc='SQL library (for Nintendo 3DS homebrew development)'
 
     _clean_and_install 'sqlite'
 }
 
 package_devkitarm-portlibs-tinyxml2-git(){
     provides=('devkitarm-portlibs-tinyxml2')
+    pkgdesc='XML library (for Nintendo 3DS homebrew development)'
 
     _clean_and_install 'tinyxml2'
 }
