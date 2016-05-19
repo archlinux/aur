@@ -11,7 +11,7 @@
 
 pkgname=wine-gaming-nine
 pkgver=1.9.10
-pkgrel=1
+pkgrel=2
 
 _pkgbasever=${pkgver/rc/-rc}
 _winesrcdir="wine-patched-staging-$_pkgbasever"
@@ -40,7 +40,6 @@ url="http://www.wine-staging.com"
 arch=(i686 x86_64)
 options=(staticlibs)
 license=(LGPL)
-install=wine.install
 
 _depends=(
   attr            lib32-attr
