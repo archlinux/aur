@@ -2,44 +2,18 @@
 
 pkgname=lgogdownloader-git
 pkgver=2.28.r5.g730c1ff
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source downloader for GOG.com games, uses the GOG.com API (git version)"
 url="http://www.gog.com/en/forum/general/lgogdownloader_gogdownloader_for_linux"
 arch=(i686 x86_64)
 license=(WTFPL)
-depends=('boost>=1.6.0-5' 'boost-libs=>1.6.0-5' 'jsoncpp' 'liboauth' 'rhash' 'tinyxml2' 'htmlcxx')
+depends=('boost' 'boost-libs' 'jsoncpp' 'liboauth' 'rhash' 'htmlcxx' 'tinyxml2') 
 makedepends=('help2man' 'cmake' 'git')  
 provides=('lgogdownloader')
 conflicts=('lgogdownloader')
 _gitname="lgogdownloader"
 source=('git://github.com/Sude-/lgogdownloader.git')
 sha256sums=('SKIP')
-
-# lgogdownloader has a new experimental aria2 feature available
-# set _aria2 to "yes" to enable it
-# For more details see https://www.gog.com/forum/general/lgogdownloader_gogdownloader_for_linux/post744
-# Your mileage may vary -- It probably doesn't work
-_aria2="no"
-
-if [ "$_aria2" == "no" ]; then
-
-	depends=("$depends" 'curl')
-
-elif [ "$_aria2" == "yes" ]; then
-	depends=("$depends" 'aria2')
-
-	source=(
-		"$source" 
-		'https://sites.google.com/site/gogdownloader/use_aria2.diff'
-	)
-	sha256sums=(
-		'SKIP' 
-		'539748573dfde781d29a1fed6bf7f0815353d8e93f1988a73ef9cd13459720ff'
-	)
-else
-	error "$_aria2: Invalid option for _aria2 switch in PKGBUILD. Expected 'yes' or 'no'."
-	return 1
-fi
 
 pkgver() {
 	cd $srcdir/${_gitname}
