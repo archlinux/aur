@@ -9,6 +9,7 @@ pkgbase = idos-timetable-data-zsr-europe+sk-latest
 	license = custom
 	makedepends = p7zip
 	makedepends = curl
+	depends = idos-timetable-browser
 	provides = idos-timetable-data-zsr-europe+sk=2016_05_17
 	provides = idos-timetable-data=2016_05_17
 	provides = idos-timetable-data-trains-sk=2016_05_17

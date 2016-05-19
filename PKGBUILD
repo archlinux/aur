@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url="http://www.zsr.sk/slovensky/cestovny-poriadok-vlakov-osobnej-dopravy-elis-cp-2015-2016-a-aktualizacia-dat-na-stiahnutie.html?page_id=378"
 license=('custom')
 
-depends=()
+depends=("idos-timetable-browser")
 
 makedepends=(
   "p7zip"
