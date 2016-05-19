@@ -1,7 +1,7 @@
-# Maintainer: Alexander Rødseth <xyproto@archlinux.org>
+# Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=0.89
+pkgver=0.9
 pkgrel=1
 pkgdesc='HTTP/2 web server with support for HTTP/2, Markdown, Pongo2, Amber, GCSS, JSX and Lua'
 arch=('x86_64' 'i686')
