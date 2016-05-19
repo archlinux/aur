@@ -27,7 +27,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/$_gitname"
-	git am "$srcdir/0001-Remove-call-to-g_type_init.patch"
+	patch -p 1 < "$srcdir/0001-Remove-call-to-g_type_init.patch"
 }
 
 build() {
