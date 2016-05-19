@@ -1,0 +1,17 @@
+pkgbase = zsh-navigation-tools
+	pkgdesc = Curses-based tools for Zshell, e.g. multi-word history searcher
+	pkgver = 2.1.16
+	pkgrel = 1
+	url = http://github.com/psprint/zsh-navigation-tools
+	install = zsh-navigation-tools.install
+	arch = any
+	license = GPL
+	license = MIT
+	depends = zsh>=4.3.17
+	provides = zsh-navigation-tools
+	conflicts = zsh-navigation-tools
+	source = zsh-navigation-tools-2.1.16.tar.gz::https://github.com/psprint/zsh-navigation-tools/archive/v2.1.16.tar.gz
+	md5sums = 6fd660543dd3efa49c3d985e98a649db
+
+pkgname = zsh-navigation-tools
+

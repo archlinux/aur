@@ -1,0 +1,4 @@
+post_install() {
+    echo "==> To use Zsh Navigation Tools, include the following line in your .zshrc:
+    source /usr/share/zsh-navigation-tools/zsh-navigation-tools.plugin.zsh"
+}
