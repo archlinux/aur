@@ -11,7 +11,7 @@
 
 pkgname=nodejs5
 pkgver=5.11.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Evented I/O for V8 javascript'
 arch=('i686' 'x86_64')
 url='http://nodejs.org/'
@@ -55,7 +55,7 @@ build() {
     --shared-http-parser
     # --shared-v8
 
-  make
+  make CXXFLAGS="$CXXFLAGS -fno-delete-null-pointer-checks"
 }
 
 check() {
@@ -69,7 +69,7 @@ check() {
 package() {
   cd node-v$pkgver
 
-  make DESTDIR="$pkgdir" install
+  make CXXFLAGS="$CXXFLAGS -fno-delete-null-pointer-checks" DESTDIR="$pkgdir" install
 
   # install docs as per user request
   install -d "$pkgdir"/usr/share/doc/nodejs
