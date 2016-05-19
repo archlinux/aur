@@ -16,7 +16,7 @@ arch=(x86_64)
 license=(GPL2 LGPL2.1)
 url="http://www.gnome.org/projects/NetworkManager/"
 _pppver=2.4.7
-makedepends=(intltool dhclient iptables gobject-introspection gtk-doc #lib32-bluez-libs
+makedepends=(intltool dhclient iptables gobject-introspection gtk-doc lib32-bluez-libs
              "ppp=$_pppver" lib32-dbus-glib iproute2 lib32-nss lib32-polkit wpa_supplicant
              lib32-libsoup lib32-systemd lib32-libgudev lib32-libndp lib32-libmm-glib rp-pppoe
              lib32-libteam vala perl-yaml python-gobject networkmanager modemmanager)
@@ -86,7 +86,7 @@ check() {
 package_lib32-networkmanager() {
   depends=(lib32-libnm-glib lib32-libmm-glib iproute2 lib32-polkit wpa_supplicant
            lib32-libsoup  lib32-libndp lib32-libteam lib32-libgudev networkmanager)
-  #optdepends=('lib32-bluez: Bluetooth support')
+  optdepends=('lib32-bluez: Bluetooth support')
 
   cd $_pkgname-$pkgver
   make DESTDIR="$pkgdir" install
