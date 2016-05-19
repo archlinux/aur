@@ -4,7 +4,7 @@
 pkgname=xbat
 pkgver=1.1.1
 _pkgver=111
-pkgrel=4
+pkgrel=5
 pkgdesc="A vertical scrolling shooter based on the arcade game Xevious"
 arch=('i686' 'x86_64')
 url="http://www.happypenguin.org/show?XBat"
