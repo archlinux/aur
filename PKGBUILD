@@ -26,6 +26,7 @@ provides=(
   "idos-timetable-maps=${pkgver}"
   
   "idos-timetable-tariff-trains-cz=${pkgver}"
+  "idos-timetable-tariff-trains-sk=${pkgver}"
   "idos-timetable-tariff-bus-cz=${pkgver}"
   "idos-timetable-tariff-bus-sk=${pkgver}"
   "idos-timetable-tariff-bus-ODIS=${pkgver}"

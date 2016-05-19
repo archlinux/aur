@@ -11,6 +11,7 @@ pkgbase = idos-timetable-tariff-chaps-all-latest
 	provides = idos-timetable-tariff-chaps-all=2016_5_18
 	provides = idos-timetable-maps=2016_5_18
 	provides = idos-timetable-tariff-trains-cz=2016_5_18
+	provides = idos-timetable-tariff-trains-sk=2016_5_18
 	provides = idos-timetable-tariff-bus-cz=2016_5_18
 	provides = idos-timetable-tariff-bus-sk=2016_5_18
 	provides = idos-timetable-tariff-bus-ODIS=2016_5_18
