@@ -14,7 +14,7 @@ arch=('i686' 'x86_64')
 url='http://aria2.sourceforge.net/'
 license=('GPL')
 conflicts=('aria2')
-provides=('aria2')
+provides=("aria2=${pkgver%.*}")
 depends=('gnutls' 'libxml2' 'sqlite' 'c-ares' 'ca-certificates' 'libssh2')
 makedepends=('git' 'python2-sphinx')
 checkdepends=('cppunit')
