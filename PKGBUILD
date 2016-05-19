@@ -1,8 +1,8 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-www-aur'
-pkgver='0.19'
+pkgver='0.22'
 pkgrel='1'
 pkgdesc="API for the Archlinux User Repository website."
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-http-cookies' 'perl-json' 'perl-lwp-protocol-https>=6' 'perl-uri' 'perl-libwww')
 makedepends=()
 url='https://metacpan.org/release/WWW-AUR'
-source=('http://search.cpan.org/CPAN/authors/id/J/JU/JUSTER/WWW-AUR-0.19.tar.gz')
-md5sums=('0d7b378481e0eb28918d24419aeaa485')
-sha512sums=('50f3fd25413a88ec094f730f489a8f7b879bbc2ea49b3d39d83c52b5aaf2771300ae50eb40123112a2bd9a3fd867a57f304eab1f042391170fe92d281cb80f0c')
-_distdir="WWW-AUR-0.19"
+source=('http://search.cpan.org/CPAN/authors/id/J/JN/JNBEK/WWW-AUR-0.22.tar.gz')
+md5sums=('bdf6345d72b13b3656e6026dda30d77f')
+sha512sums=('ec6db8cfd9bd76d1e38ff73dc7fa7b078468f43e9cddedd0b83909011d3fb52da5013a55899c1e2b05f284a0036ebb1d811c3f33c9bd0ed292a5941d2854706b')
+_distdir="WWW-AUR-0.22"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -32,12 +32,14 @@ build() {
 check() {
   cd "$srcdir/$_distdir"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    make test
   )
 }
 
 package() {
   cd "$srcdir/$_distdir"
   make install
+
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
