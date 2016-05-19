@@ -7,11 +7,11 @@
      
 pkgname=med
 pkgver=3.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="MED stands for Modelisation et Echanges de Donnees, i.e. Data Modelization and Exchanges - MED is code-aster exchange module linked to hdf5"
 url="http://www.code-aster.org/outils/med/"
 license=('LGPL')
-depends=('hdf5' 'openmpi' 'swig')
+depends=('hdf5-1.8' 'openmpi' 'swig')
 makedepends=('gcc-fortran' 'coreutils')
 optdepends=('tk' 'python2')
 provides=()
@@ -54,7 +54,7 @@ build() {
   patch -p0 < ${srcdir}/patch-include_med.h.in
   patch -p0 < ${srcdir}/patch-src_2.3.6_ci_MEDequivInfo.c
  
-  ./configure --with-f90=mpif90 --prefix=/usr --datadir=/usr/share/med --with-swig=yes || return 1
+  ./configure --with-f90=mpif90 --prefix=/usr --datadir=/usr/share/med --with-swig=yes --with-hdf5=/opt/hdf5-1.8 || return 1
   make || return 1
 }
  
