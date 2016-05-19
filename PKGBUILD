@@ -1,9 +1,8 @@
-#Maintainer: M0Rf30
-#Contributor: kurych
+#Maintainer: Unknown
 
 pkgname=i2pd
 _pkgname=i2pd
-pkgver=2.6.0
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Simplified C++ implementation of I2P client"
 arch=('i686' 'x86_64')
@@ -21,7 +20,7 @@ conflicts=('i2pd-git')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
-  CXXFLAGS="-Wall -O2 -fstack-protector-strong" USE_UPNP=1 make
+  USE_UPNP=1 make
 }
 
 package(){
@@ -35,7 +34,7 @@ package(){
   install -Dm0644 $srcdir/i2pd.service $pkgdir/usr/lib/systemd/system/i2pd.service
   install -Dm0644 $srcdir/i2pd.tmpfiles.conf $pkgdir/usr/lib/tmpfiles.d/i2pd.conf
 
-  install -Dm0644 $srcdir/$pkgname-$pkgver/debian/i2pd.conf $pkgdir/${_conf_dest}/i2pd.conf
+  install -Dm0644 $srcdir/$pkgname-$pkgver/docs/i2pd.conf $pkgdir/${_conf_dest}/i2pd.conf
   install -Dm0644 $srcdir/$pkgname-$pkgver/debian/tunnels.conf $pkgdir/${_conf_dest}/tunnels.conf
   install -Dm0644 $srcdir/$pkgname-$pkgver/debian/subscriptions.txt $pkgdir/${_conf_dest}/subscriptions.txt
 
@@ -66,6 +65,7 @@ package(){
   chmod -R o= $pkgdir/${_home_dest}
 }
 
-md5sums=('d0df7a8fbf2690f29d60fb57e1561a1f'
-         '224068c31e48084645763408ebae83af'
+md5sums=('813f5d35b33d325259254ea5d318ecba'
+         '13c910900be4df3e0da11fc893f59a6f'
          'acda29e5b46a0c9fade734a6a467b381')
+

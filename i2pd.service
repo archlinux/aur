@@ -6,12 +6,17 @@ After=network.target
 User=i2p
 Group=i2p
 Type=forking
-PIDFile=/run/i2pd/i2pd.pid
 ExecStart=/usr/bin/i2pd --conf=/var/lib/i2pd/i2pd.conf --pidfile=/run/i2pd/i2pd.pid --service --daemon
 ExecReload=/usr/bin/kill -HUP $MAINPID
+PIDFile=/run/i2pd/i2pd.pid
 ### Uncomment, if auto restart needed
 #Restart=on-failure
+
+### Use SIGINT for gracefull stop daemon.
+# i2pd stops accepting new tunnels and waits ~10 min while old ones do not die.
 KillSignal=SIGINT
+TimeoutStopSec=10m
+
 LimitNOFILE=8192
 PrivateDevices=yes
 
