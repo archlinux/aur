@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: François Guerraz <kubrick@fgv6.net>
 pkgname=payetools-rti
 pkgver=16.0.16076.450
 pkgrel=1
