@@ -3,9 +3,9 @@ Data files are files providing timetable, map or tariff data.
 Data files have the following extensions:
 
   .tt:  Timetable,
-  .ttr: Timetable-related additional information (not sure which),
+  .ttr: Timetable related information (not sure what; maybe meta-information or helper-files).
   .ttm: Map,
-  .ttp: Tariff.
+  .ttp: Tariff,
 
 Data files are automatically found if residing in the same directory or within one subdirectory of from where the programme is run.
 
