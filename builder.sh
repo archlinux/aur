@@ -3,6 +3,9 @@
 location=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 updaet() {
+
+    echo  "update"
+    
     cd $location
     
     git pull
@@ -10,6 +13,8 @@ updaet() {
 }
 
 build() {
+
+    echo "build"
     
     cd $location
 
@@ -37,6 +42,8 @@ build() {
 }
 
 commit() {
+
+    echo "commit"
     
     cd $location
 
