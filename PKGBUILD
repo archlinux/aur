@@ -3,7 +3,7 @@
 # Based on nvidia-beta: https://aur.archlinux.org/packages/nvidia-beta/
 
 pkgname=nvidia-beta-all
-pkgver=364.19
+pkgver=367.18
 pkgrel=1
 pkgdesc="NVIDIA drivers for all kernels on the system (beta)"
 arch=('i686' 'x86_64')
@@ -23,12 +23,10 @@ case "$CARCH" in
 esac
 
 # Source
-source=('linux-4.6.patch')
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/$pkgver/NVIDIA-Linux-x86-$pkgver.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/$pkgver/NVIDIA-Linux-x86_64-$pkgver-no-compat32.run")
-md5sums=('3064bd437b26adac246f301f54f2814c')
-md5sums_i686=('8a4015213c4a8f1c80e9520d04a32a7b')
-md5sums_x86_64=('ad7a0b1855b3913390fb75b4cc3a26dc')
+md5sums_i686=('9ae023927692dab99f23a006865fa966')
+md5sums_x86_64=('0e01ed625c26ad4e4b44a7b139a3e363')
 
 # Auto-detect patches (e.g. linux-4.1.patch)
 for _patch in $(find "$startdir" -maxdepth 1 -name '*.patch' -printf "%f\n"); do
