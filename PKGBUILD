@@ -7,8 +7,8 @@ pkgdesc="Source code indexer and code navigation tool for C/C++ code."
 arch=('x86_64')
 url="https://github.com/rprichard/sourceweb"
 license=('BSD')
-depends=('qt4' 'python' 'clang')
-makedepends=('qt4')
+depends=('qt4' 'python')
+makedepends=('llvm' 'clang')
 
 source=("${pkgname}::git+https://github.com/rprichard/sourceweb")
 sha256sums=('SKIP')
