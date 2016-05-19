@@ -14,7 +14,7 @@ pkgbase = efitools-git
 	makedepends = sbsigntools
 	depends = openssl
 	optdepends = mactel-boot: For bless command in Apple Mac systems
-	provides = efitools=1.7.0
+	provides = efitools=1.7.0.3.g791e463
 	conflicts = efitools
 	options = !strip
 	options = !makeflags
