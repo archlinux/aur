@@ -1,12 +1,13 @@
 # Maintainer: Michael Straube <m.s.online gmx de>
 pkgname=fluxbox-style-debian-dark
 pkgver=1.3.5
+_debpkgrel=2
 pkgrel=1
 pkgdesc="Fluxbox style from debian"
 url="https://packages.debian.org/jessie/fluxbox"
 license=('custom:Expat')
 arch=('any')
-source=("http://http.debian.net/debian/pool/main/f/fluxbox/fluxbox_$pkgver-2.debian.tar.xz")
+source=("http://http.debian.net/debian/pool/main/f/fluxbox/fluxbox_$pkgver-$_debpkgrel.debian.tar.xz")
 sha256sums=('0c3d66e6585d6f46f1f569b514a0e39e551d8598ba52b1b13325690b9aa25fef')
 
 prepare() {
