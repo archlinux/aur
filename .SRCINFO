@@ -1,0 +1,20 @@
+pkgbase = sfillib-git
+	pkgdesc = Simple and Fast Image Loading library for the Nintendo 3DS (using sf2dlib and ctrulib)
+	pkgver = r4.a684168
+	pkgrel = 1
+	url = https://github.com/xerpi/sfillib
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = curl
+	depends = sf2dlib
+	depends = devkitarm-portlibs-libjpeg-turbo
+	depends = devkitarm-portlibs-libpng
+	provides = sfillib
+	options = !strip
+	options = staticlibs
+	source = sfillib-git::git+https://github.com/xerpi/sfillib.git
+	sha256sums = SKIP
+
+pkgname = sfillib-git
+
