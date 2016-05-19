@@ -1,0 +1,49 @@
+pkgbase = stardict-vi
+	pkgdesc = OVDP Vietnamese dict (Stardict format)
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://ovdp.sourceforge.net
+	arch = any
+	groups = stardict-vi
+	license = GPL
+	source = git+https://github.com/dynamotn/stardict-vi.git
+	md5sums = SKIP
+
+pkgname = stardict-vi-en
+
+pkgname = stardict-en-vi
+
+pkgname = stardict-vi-ja
+
+pkgname = stardict-ja-vi
+
+pkgname = stardict-zh-vi
+
+pkgname = stardict-fr-vi
+
+pkgname = stardict-vi-fr
+
+pkgname = stardict-es-vi
+
+pkgname = stardict-vi-es
+
+pkgname = stardict-de-vi
+
+pkgname = stardict-vi-de
+
+pkgname = stardict-ko-vi
+
+pkgname = stardict-vi-ko
+
+pkgname = stardict-ru-vi
+
+pkgname = stardict-vi-ru
+
+pkgname = stardict-cz-vi
+
+pkgname = stardict-it-vi
+
+pkgname = stardict-no-vi
+
+pkgname = stardict-pt-vi
+
