@@ -16,10 +16,8 @@ arch=('any')
 
 package() {
   cd "$srcdir"/gdatafs
-  find . -type f | sed -e 's/\.\///g' | while read file; do
-    if [ $(echo "$file" | grep '.svn' -i -c) = 0 -a $(echo "$file" | grep '.project' -i -c) = 0 -a $(echo "$file" | grep '.classpath' -i -c) = 0 -a $(echo "$file" | grep 'src' -i -c) = 0 ]; then
-      install -D "$file" "$pkgdir"/opt/gdatafs/"$file"
-    fi
+  find . -type f -not \( -path "*/.svn/*" -o -path "*/.project" -o -path "*/.classpath" -o -path "*/src*/*" \) | sed -e 's/\.\///g' | while read file; do
+    install -D "$file" "$pkgdir"/opt/gdatafs/"$file"
   done
   install -Dm755 "$srcdir"/gdatafs.sh "$pkgdir"/usr/bin/gdatafs
 }
