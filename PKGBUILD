@@ -2,6 +2,7 @@
 
 _pkgname=idos-timetable-additionalinfo-chaps-bus
 pkgname="${_pkgname}-latest"
+epoch=0
 pkgver=2016_2_19
 pkgrel=1
 pkgdesc="Floor plans of some Czech bus stations/ stops, to be used with the timetable search engines by CHAPS."
@@ -24,9 +25,9 @@ optdepends=()
 provides=(
   "${_pkgname}=${pkgver}"
   
-  "idos-timetable-additionalinfo-buses=${pkgver}"
+  "idos-timetable-additionalinfo-bus=${pkgver}"
   
-  "idos-timetable-additionalinfo-buses-cz=${pkgver}"
+  "idos-timetable-additionalinfo-bus-cz=${pkgver}"
 )
 
 conflicts=(
@@ -57,7 +58,8 @@ package() {
 
   cp -r "${srcdir}"/Data* "${_instdir}/"
   chmod 755 "${_instdir}"/Data*
-  chmod 644 "${_instdir}"/Data*/*
+  chmod 755 "${_instdir}"/Data*/*
+  chmod 644 "${_instdir}"/Data*/*/*
 
   install -d -m755 "${pkgdir}/usr/share/doc/${_pkgname}"
   echo "${url}" > "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
