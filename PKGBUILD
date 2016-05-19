@@ -3,7 +3,7 @@
 # Contributor: Christoph Zeiler <rabyte*gmail> (the fitzquake PKGBUILD was a base)
 pkgname=quakespasm-svn
 _pkgname=quakespasm
-pkgver=1302
+pkgver=1303
 pkgrel=1
 pkgdesc="A modern Quake 1 engine. Forked from Fitzquake and improved in many ways such as Vorbis/MP3 support for music."
 arch=('i686' 'x86_64')
@@ -11,7 +11,6 @@ url="http://quakespasm.sourceforge.net"
 license=('GPL2')
 depends=('libvorbis' 'libmad' 'sdl2')
 makedepends=('subversion')
-install=$pkgname.install
 md5sums=('SKIP')
 
 source=('svn+https://svn.code.sf.net/p/quakespasm/code/trunk/quakespasm')
