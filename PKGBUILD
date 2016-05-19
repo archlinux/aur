@@ -4,19 +4,19 @@
 pkgname=xbat
 pkgver=1.1.1
 _pkgver=111
-pkgrel=3
+pkgrel=4
 pkgdesc="A vertical scrolling shooter based on the arcade game Xevious"
 arch=('i686' 'x86_64')
 url="http://www.happypenguin.org/show?XBat"
 license=('GPL')
 depends=('libx11')
-install="${pkgname}.install"
 source=("http://archive.debian.org/debian/pool/main/x/xbat/xbat_1.11.orig.tar.gz"
         "${pkgname}-install.patch"
         "${pkgname}-fix-crash.patch"
         "${pkgname}.png"
         "${pkgname}.desktop")
-md5sums=('87a156ca35a75c94b5617005e2b2ca99'
+
+md5sums=('8fa1f215abcae759113027bec14d3d28'
          '779cccc30bc296a2b1be967fe3acaa39'
          'd121acf42ff1392fd971aa273f7de700'
          'e5a716f92300e3f259746cb242f5d54e'
@@ -62,8 +62,4 @@ package() {
   mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
   install -m644 README* "${pkgdir}/usr/share/doc/${pkgname}"
 }
-md5sums=('8fa1f215abcae759113027bec14d3d28'
-         '779cccc30bc296a2b1be967fe3acaa39'
-         'd121acf42ff1392fd971aa273f7de700'
-         'e5a716f92300e3f259746cb242f5d54e'
-         'e787cb023de247912462216afd95b9c2')
+
