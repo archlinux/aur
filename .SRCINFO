@@ -2,6 +2,7 @@ pkgbase = idos-timetable-tariff-chaps-all-latest
 	pkgdesc = Tariff data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport, some air transport. Note that some data need the purchased version of IDOS to run.
 	pkgver = 2016_5_18
 	pkgrel = 1
+	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatar
 	arch = i686
 	arch = x86_64
@@ -115,11 +116,9 @@ pkgbase = idos-timetable-tariff-chaps-all-latest
 	source = komplet_p.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/KOMPLET_P.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf
 	source = license-dummy.txt
-	source = info.url
 	sha256sums = SKIP
 	sha256sums = e904d167ccdcfb2743f4cfd596aaa9dce8b751fb5c8315b972b42b7cbb3189e6
 	sha256sums = c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4
-	sha256sums = 55e9e7775b70a49642c22dd025a2aa4edcf67b909702ea7bcf8bbd6bc2cf0dca
 
 pkgname = idos-timetable-tariff-chaps-all-latest
 
