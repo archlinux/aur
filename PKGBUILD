@@ -1,7 +1,7 @@
 # Maintainer: Rick Kerkhof <rick.2889@gmail.com>
 pkgname=soundnode-app-bin
 pkgver=0.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Soundcloud client for the desktop"
 arch=('x86_64' 'i686')
 url="http://www.soundnodeapp.com/"
@@ -23,7 +23,7 @@ source=("https://raw.githubusercontent.com/Soundnode/soundnode-app/$pkgver/app/s
 "soundnode-app.desktop")
 
 sha256sums=('a16acc740d94ed119f943e810f44cdb2d082153645aafc1c179f15fb5b9a7619'
-            'fe904788e6a5695468e845f2a20baba44ce0968440f007eae1a9ed977ca8f132')
+            'd96b0f8c37bf51f50c1129f01262e35b24ab615976a7cb4b11427af11eeee819')
 sha256sums_x86_64=('2b0dbdb6a59546472f9621b25be1b29aa60c22c3f8e692940dad698de85aa432')
 sha256sums_i686=('d37ba2d4b9945d6c9001e2ecf210dcef72c82089df2e9aa3eb3a2ff57a9d7480')
 
