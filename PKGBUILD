@@ -3,7 +3,7 @@
 
 pkgname=mnemosyne
 pkgver=2.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A flash-card tool with a sophisticated card review algorithm"
 arch=('i686' 'x86_64')
 url='http://www.mnemosyne-proj.org'
@@ -15,7 +15,7 @@ conflicts=('mnemosyne-bzr')
 install='mnemosyne.install'
 
 source=("http://downloads.sourceforge.net/mnemosyne-proj/Mnemosyne-${pkgver}.tar.gz")
-md5sums=('fca826a5b59183ff5e50f44f617382e2')
+md5sums=('2a415cf0849b53431d3215af5499344c')
 
 build() {
   cd "${srcdir}/Mnemosyne-${pkgver}/"
