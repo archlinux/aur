@@ -1,0 +1,56 @@
+pkgbase = devkitarm-portlibs
+	pkgdesc = Deflate compression method library (for Nintendo Gamecube/Wii homebrew development)
+	pkgver = r41.5751bcd
+	pkgrel = 1
+	url = https://github.com/devkitPro/3ds_portlibs
+	arch = any
+	license = zlib
+	makedepends = git
+	makedepends = curl
+	depends = devkitarm
+	options = !strip
+	options = staticlibs
+	source = devkitarm-portlibs::git+https://github.com/devkitPro/3ds_portlibs.git
+	sha256sums = SKIP
+
+pkgname = devkitarm-portlibs-zlib-git
+	provides = devkitarm-portlibs-zlib
+
+pkgname = devkitarm-portlibs-freetype-git
+	depends = devkitarm-portlibs-zlib
+	provides = devkitarm-portlibs-freetype
+
+pkgname = devkitarm-portlibs-jansson-git
+	provides = devkitarm-portlibs-jansson
+
+pkgname = devkitarm-portlibs-libexif-git
+	provides = devkitarm-portlibs-libexif
+
+pkgname = devkitarm-portlibs-libjpeg-turbo-git
+	provides = devkitarm-portlibs-libjpeg-turbo
+
+pkgname = devkitarm-portlibs-libpng-git
+	depends = devkitarm-portlibs-zlib
+	provides = devkitarm-portlibs-libpng
+
+pkgname = devkitarm-portlibs-libxmp-lite-git
+	provides = devkitarm-portlibs-libxmp-lite
+
+pkgname = devkitarm-portlibs-sqlite-git
+	provides = devkitarm-portlibs-sqlite
+
+pkgname = devkitarm-portlibs-tinyxml2-git
+	provides = devkitarm-portlibs-tinyxml2
+
+pkgname = devkitarm-portlibs-git
+	depends = devkitarm-portlibs-zlib-git
+	depends = devkitarm-portlibs-freetype-git
+	depends = devkitarm-portlibs-jansson-git
+	depends = devkitarm-portlibs-libexif-git
+	depends = devkitarm-portlibs-libjpeg-turbo-git
+	depends = devkitarm-portlibs-libpng-git
+	depends = devkitarm-portlibs-libxmp-lite-git
+	depends = devkitarm-portlibs-sqlite-git
+	depends = devkitarm-portlibs-tinyxml2-git
+	provides = devkitarm-portlibs
+
