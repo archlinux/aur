@@ -4,7 +4,7 @@
 
 _gemname=multi_json
 pkgname=ruby-$_gemname
-pkgver=1.12.0
+pkgver=1.12.1
 pkgrel=1
 pkgdesc='A common interface to multiple JSON libraries.'
 arch=(any)
@@ -14,7 +14,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('46156f5a4ff17a23c15d0d2f0fc84cb5627ac70d')
+sha1sums=('b418d7b93e99a6f7d1acb70453470aace4599d1a')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
