@@ -1,19 +1,19 @@
 # Contributor: noonov <noonov@gmail.com>
 
 pkgname=lohit-fonts
-pkgver=2.95.1
+pkgver=2.95.2
 pkgrel=1
 pkgdesc="Indic TrueType fonts from Fedora Project"
 arch=('any')
 url="https://fedorahosted.org/lohit/"
 license=('custom: OFL')
 depends=('fontconfig' 'xorg-font-utils')
-install=ttf.install
+install=lohit.install
 _fhosted="https://fedorahosted.org/releases/l/o/lohit"
 source=(OFL.license
-  ${_fhosted}/lohit-assamese-ttf-2.91.1.tar.gz
-  ${_fhosted}/lohit-bengali-ttf-2.91.1.tar.gz
-  ${_fhosted}/lohit-devanagari-ttf-2.95.1.tar.gz
+  ${_fhosted}/lohit-assamese-ttf-2.91.3.tar.gz
+  ${_fhosted}/lohit-bengali-ttf-2.91.3.tar.gz
+  ${_fhosted}/lohit-devanagari-ttf-2.95.2.tar.gz
   ${_fhosted}/lohit-gujarati-ttf-2.92.2.tar.gz
   ${_fhosted}/lohit-gurmukhi-ttf-2.91.0.tar.gz
   ${_fhosted}/lohit-hindi-ttf-2.4.3.tar.gz
@@ -30,7 +30,7 @@ source=(OFL.license
   ${_fhosted}/lohit-sindhi-ttf-2.4.3.tar.gz
   ${_fhosted}/lohit-tamil-ttf-2.91.0.tar.gz
   ${_fhosted}/lohit-tamil-classical-ttf-2.5.3.tar.gz
-  ${_fhosted}/lohit-telugu-ttf-2.5.3.tar.gz
+  ${_fhosted}/lohit-telugu-ttf-2.5.4.tar.gz
 )
 
 package() {
@@ -50,9 +50,9 @@ package() {
 }
 
 md5sums=('6ed93967ff0dc6dd9c8d31c17f817a06'
-         'ca22ec5e42db06e8c43c74b988d0bf0d'
-         'f8871fa3df4578234c5efb26c3d01311'
-         '899bbafce9fa71cbb19b9687d354dcef'
+         '450392cdcc01373aa31b1493bafa9935'
+         '5231064d0d3ecb16e1e0d7622463b681'
+         '270adeaad6758d8e94cc6217d7db5596'
          'a2a5c30c0b1a68d59ead3cf26ce88d0b'
          '2397138cb546b638adf33e8a32071e54'
          'dbfcfee6fd10045e523decb7657e4a75'
@@ -69,4 +69,4 @@ md5sums=('6ed93967ff0dc6dd9c8d31c17f817a06'
          '8070d3e151e3ae0a9c3c05a25a38bc1f'
          '59febbb742c626096fa990077202f8f0'
          '8042f874e86a87623adaea4780f03b29'
-         '4e0600fd5f26fe114314e8a050b51ba5')
+         '0d9ec6fd82ad4a6951f5e40600c76181')
