@@ -11,8 +11,6 @@ pkgbase = idos-timetable-browser-latest
 	depends = ttf-timetable
 	depends = wine
 	optdepends = idos-timetable-data: For timetable data. (You need at least one to use the software.)
-	optdepends = idos-timetable-tariff: For showing prices.
-	optdepends = idos-timetable-maps: For displaying routes on maps.
 	optdepends = idos-timetable-lang-de: For German translation.
 	optdepends = idos-timetable-lang-en: For English translation.
 	provides = idos-timetable-browser=1.27_lib2.8.0.1

@@ -21,8 +21,6 @@ makedepends=(
 
 optdepends=(
   "idos-timetable-data: For timetable data. (You need at least one to use the software.)"
-  "idos-timetable-tariff: For showing prices."
-  "idos-timetable-maps: For displaying routes on maps."
   # "idos-timetable-lang: For translations in other languages."
   "idos-timetable-lang-de: For German translation."
   "idos-timetable-lang-en: For English translation."
