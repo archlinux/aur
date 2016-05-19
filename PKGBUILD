@@ -34,4 +34,6 @@ build() {
 package() {
    cd "${pkgname}"
    make INSTALL_ROOT=${pkgdir} install
+
+   install -Dm644 "LICENSE.txt" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 }
