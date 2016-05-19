@@ -14,8 +14,14 @@ source=("${pkgname}::git+https://github.com/rprichard/sourceweb")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+   cd "${pkgname}"
+   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+   cd "${pkgname}"
+   # Fix usage of /usr/libexec/
+   sed -i "s#/libexec#/lib/${pkgname}#" config.pri btrace/sw-btrace
 }
 
 build() {
