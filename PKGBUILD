@@ -3,13 +3,12 @@
 
 pkgname=xemeraldia
 pkgver=0.4.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A Tetris-like falling blocks game"
 arch=('i686' 'x86_64')
 url="http://www.reloco.com.ar/xemeraldia/"
 license=('custom')
 depends=('gtk2')
-install="${pkgname}.install"
 source=("http://www.reloco.com.ar/xemeraldia/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.patch"
         "${pkgname}.png"
