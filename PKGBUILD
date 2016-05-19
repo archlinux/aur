@@ -10,10 +10,10 @@ license=('custom' 'GPL2' 'LGPL2.1')
 depends=('dkms')
 install=${pkgname}.install
 changelog="release-note.txt"
-source=(http://downloads.displaylink.com/publicsoftware/DisplayLink_Ubuntu_$pkgver.zip 
+source=(displaylink-driver-$pkgver.zip::http://www.displaylink.com/downloads/file\?id\=607
         99-displaylink.rules displaylink.service 
         displaylink-sleep.sh)
-md5sums=('006cfb269af80e6fc73bcfe04b693131'
+md5sums=('85879b750b26c464bd0f564fb76f398f'
          '37e076a16be49985f1d6800f960d16b4'
          'c141a15e973481c7d961f8e135627ca4'
          '4185b016cd64c6069302239515afadff')
@@ -27,6 +27,7 @@ package() {
   install -D -m755 displaylink-sleep.sh "$pkgdir/usr/lib/systemd/system-sleep/displaylink.sh"
 
   echo "Extracting DisplayLink Driver Package"
+  unzip displaylink-driver-$pkgver.zip
   chmod +x displaylink-driver-$pkgver.run
   ./displaylink-driver-$pkgver.run --target $pkgname-$pkgver --noexec
   cd "$pkgname-$pkgver"
