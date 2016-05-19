@@ -3,7 +3,7 @@
 _pkgname=idos-timetable-data-zsr-europe+sk
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_02_25
+pkgver=2016_05_17
 pkgrel=1
 pkgdesc="Timetable data for the offline railway and other public transport timetable search engines by CHAPS: European and Slovak train data, provided by ŽSR."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=()
 
 makedepends=(
   "p7zip"
-  "wget"
+  "curl"
 )
 
 optdepends=()
@@ -28,11 +28,6 @@ provides=(
   "idos-timetable-data=${pkgver}"
 )
 
-replaces=(
-  "${_pkgname}<=${pkgver}"
-  "idos-timetable-data-zsr-sk<=${pkgver}"
-  "idos-timetable-data-zsr-europe<=${pkgver}"
-)
 conflicts=(
   "${_pkgname}"
   "idos-timetable-data-zsr-sk"
@@ -67,16 +62,16 @@ pkgver() {
 
 
 package() {
-  _instdirbase='/opt/idos-timetable/timetables'
+  _instdirbase='/opt/idos-timetable'
   _instdir="${pkgdir}/${_instdirbase}"
 
   install -d -m755 "${_instdir}"
-  cd "${_instdir}"
 
-  7z x "${srcdir}/vlak16e_sk.exe"
-  mv Data1/* .
-  rmdir Data1
-  chmod 644 *
+  cd "${_instdir}" && {
+    7z x "${srcdir}/vlak16e_sk.exe"
+    chmod 755 Data*
+    chmod 644 Data*/*
+  }
 
   install -D -m644 "${srcdir}/info.url" "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
 
