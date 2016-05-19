@@ -1,7 +1,7 @@
 # Maintainer: fordprefect <fordprefect@dukun.de>
 pkgname=humanresourcemachine
 pkgver=2016.03.23
-pkgrel=1
+pkgrel=2
 pkgdesc="Assembler programming puzzle game by the makers of WorldOfGoo - game sold separately"
 url="http://tomorrowcorporation.com/humanresourcemachine"
 arch=('i686' 'x86_64')
@@ -35,7 +35,7 @@ package() {
     cat >> "${pkgdir}/usr/bin/humanresourcemachine" << \here
 #!/usr/bin/bash
 cd /opt/humanresourcemachine
-HumanResourceMachine.bin
+./HumanResourceMachine.bin
 here
     chmod a+x "${pkgdir}/usr/bin/humanresourcemachine"
 }
