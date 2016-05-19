@@ -3,7 +3,7 @@
 # Contributor: Lukas Werling <lukas.werling@gmail.com>
 pkgname=sourceweb
 pkgver=r401.148955d
-pkgrel=1
+pkgrel=2
 pkgdesc="Source code indexer and code navigation tool for C/C++ code."
 arch=('x86_64')
 url="https://github.com/rprichard/sourceweb"
