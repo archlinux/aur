@@ -1,0 +1,9 @@
+post_install() {
+	echo "Add the following line to your pam greeter file:"
+	echo "session	optional pam_elogind.so"
+	echo "/etc/pam.d/sddm-greeter, /etc/pam.d/lightdm-greeter, etc..."
+}
+
+post_upgrade() {
+	post_install $1
+}
