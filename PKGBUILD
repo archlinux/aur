@@ -3,7 +3,7 @@
 pkgbase=certbot-plugins-git
 pkgname=("certbot-nginx-git" "certbot-apache-git")
 _reponame="certbot"
-pkgver=0.5.0.r153.g41f347d
+pkgver=0.6.0.r64.ge385274
 pkgrel=1
 pkgdesc="Plugins for Certbot"
 arch=('any')
@@ -11,7 +11,7 @@ license=('Apache')
 url="https://github.com/certbot/${_reponame}"
 depends=('')
 # Most AUR helpers unfortunately do not support versioned deps in the AUR ("certbot=$pkgver" "python2-acme=$pkgver")
-makedepends=('git' 'certbot' 'python2-acme' 'python2-pyopenssl'
+makedepends=('git' 'certbot-git' 'python2-acme-git' 'python2-pyopenssl'
 	'python2-pyparsing' 'python2-setuptools' 'python2-mock' 'python2-zope-interface'
 	'python2-zope-component' 'python2-augeas')
 provides=("")
