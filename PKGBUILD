@@ -15,7 +15,6 @@ optdepends=('gstreamer0.10-good-plugins: Support for additional file formats'
 			'gstreamer0.10-bad-plugins: Support for additional file formats'
 			'gstreamer0.10-ugly-plugins: Support for additional file formats'
 			'gvfs: Support for external devices')
-install='guayadeque-git.install'
 source=('git+https://github.com/anonbeat/guayadeque.git')
 sha512sums=('SKIP')
 

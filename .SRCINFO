@@ -3,7 +3,6 @@ pkgbase = guayadeque-git
 	pkgver = 0.4.1.r1905.68a2d26
 	pkgrel = 1
 	url = http://guayadeque.org/
-	install = guayadeque-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
