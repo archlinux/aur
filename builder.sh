@@ -4,7 +4,7 @@ location=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 updaet() {
 
-    echo  "update"
+    echo  "// update"
     
     cd $location
     
@@ -14,7 +14,7 @@ updaet() {
 
 build() {
 
-    echo "build"
+    echo "// build"
     
     cd $location
 
@@ -43,8 +43,6 @@ build() {
 
 commit() {
 
-    echo "commit"
-    
     cd $location
 
     echo "// commit $(pwd)"
