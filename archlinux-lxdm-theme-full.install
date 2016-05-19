@@ -1,0 +1,9 @@
+post_install() {
+  echo "==> In order to activate this theme, you must edit"
+  echo "    /etc/lxdm/lxdm.conf and set:"
+  echo "    theme=Archlinux"
+}
+
+post_upgrade() {
+  post_install
+}
