@@ -1,4 +1,4 @@
-pkgname=dwm-git
+pkgname=dwm-uleenucks-git
 _pkgname=dwm
 pkgdesc="dwm with uleenucks personalisations"
 pkgver=6.1

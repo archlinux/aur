@@ -1,4 +1,4 @@
-pkgbase = dwm-git
+pkgbase = dwm-uleenucks-git
 	pkgdesc = A dynamic window manager for X
 	pkgver = 6.1
 	pkgrel = 1
@@ -22,5 +22,5 @@ pkgbase = dwm-git
 	md5sums = 596c20f45d805c872789037a338a358d
 	md5sums = 5f6f840c692f43f7e349bb87e895ff26
 
-pkgname = dwm-git
+pkgname = dwm-uleenucks-git
 
