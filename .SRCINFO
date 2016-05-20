@@ -16,6 +16,7 @@ pkgbase = idos-timetable-data-inprop-mhd-banskabystrica-latest
 	provides = idos-timetable-data-mhd=2016_5_17
 	provides = idos-timetable-data-mhd-banskabystrica=2016_5_17
 	conflicts = idos-timetable-data-inprop-mhd-banskabystrica
+	conflicts = idos-timetable-data-mhd-sk-all
 	source = http://www.inprop.sk/Data/MDBbSk.exe
 	source = license-dummy.txt
 	sha256sums = SKIP
