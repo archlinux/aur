@@ -1,16 +1,16 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=accounts-qml-module
-pkgver=0.6+16.04.20151106
+pkgver=0.6
 pkgrel=1
 pkgdesc="Expose the Online Accounts API to QML applications"
-url="https://launchpad.net/accounts-qml-module"
+url="https://gitlab.com/accounts-sso/accounts-qml-module"
 arch=(i686 x86_64)
 license=(LGPL)
 depends=(signond libaccounts-qt qt5-declarative)
 makedepends=(qt5-tools)
-source=("http://archive.ubuntu.com/ubuntu/pool/main/a/$pkgname/${pkgname}_$pkgver.orig.tar.gz")
-md5sums=('f1d370ae9bd1b654949b8759d713fe45')
+source=("https://gitlab.com/accounts-sso/$pkgname/repository/archive.tar.gz?ref=VERSION_$pkgver")
+md5sums=('d62f676e837bfa2b8bb5c12507a36ce9')
 
 prepare() {
   mkdir -p build
@@ -18,7 +18,7 @@ prepare() {
 
 build() {
   cd build 
-  qmake-qt5 ../$pkgname-$pkgver/$pkgname.pro PREFIX=/usr
+  qmake-qt5 ../$pkgname-*/$pkgname.pro PREFIX=/usr
   make
 }
 
