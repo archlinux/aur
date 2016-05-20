@@ -1,14 +1,19 @@
-This package, and the containing patch, which patches the ressource file "TTC.dll" of the IDOS-software of the czech company "CHAPS" to make it available in English language, is licenced under the following licence:
+Central content of this package is a patch, which patches the Czech ressource file "TTC.dll" of the IDOS timetable browser-software of the czech company "CHAPS spol. s r.o.", Bráfova 1617/21, CZ-616 00 Brno, http://chaps.cz/, to make the texts available in English language.
 
-  Creative Commons Non-Commercial Share-Alike 1.0 (cc-nc-sa-1.0)
+The "TTC.dll" is property of CHAPS and not distributed with this package; rather, when this package is build it is been downloaded from CHAPS directly.
 
-The text ot the licence is bundled with this package in a seperate file, but you can also read it online at
 
-  http://creativecommons.org/licenses/nc-sa/1.0/
+The above mentioned patch is licensed under the following license:
+
+  Creative Commons NonCommercial 1.0 (cc-nc-1.0)
+
+The text ot the license is bundled with this package in a seperate file, but you can also read it online at
+
+  http://creativecommons.org/licenses/nc/1.0/legalcode
 
 A summary is available at
 
-  http://creativecommons.org/licenses/nc-sa/1.0/
+  http://creativecommons.org/licenses/nc/1.0/
 
 and it boils down that you are free to
 
@@ -18,10 +23,11 @@ and it boils down that you are free to
 as long as you obey the following restrictions:
 
 * You may not use the material for commercial purposes,
-* If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
+
+For details, read the legal license text.
 
 
-For details, read the legal licence text.
+The resulting English ressource file is not anymore covered under the cc-nc-1.0 license, since it contains property of CHAPS which may not be redistributed freely. Only the patch which is used to build the English ressource file from the Czech one is covered under the cc-nc-1.0 license.
 
 
 Enjoy this work!

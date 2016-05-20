@@ -4,9 +4,9 @@ _pkgname=idos-timetable-lang-en
 pkgname="${_pkgname}"
 epoch=0
 pkgver=20160520
-pkgrel=1
+pkgrel=2
 pkgdesc="English language ressource file for railway/ public transport timetable search engines by CHAPS."
-arch=('i686' 'x86_64')
+arch=(any)
 license=('custom')
 
 groups=(
@@ -30,15 +30,19 @@ source=(
   "ttakt.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/TTAKT.ZIP"
   "TTC-TTe.bdelta.xz"
   "copying.info.txt"
-  "licence_cc-nc-sa-1.0.html"
+  "license_cc-nc-1.0.html"
 )
 
 sha256sums=(
   'SKIP'
   'f1d90ca684e053db7d35b85207b202b2c4b73315a7b864d849f599eb7b8fd1ee'
-  '0959ebb3373999b08742d91379a674264286ab9c538c4e3f7605e3ca012a258b'
-  '66abb860546e55d992279b9a170713cea64c963a501ee5e947a2c675d6d1388b'
+  '857ca643a994be4dc06ddf5423d66600a2d2ad26f0771d30819f27e2dfa5c002'
+  '36c0b0466672bc90d9aa2219768f1ea1a72389cc63d89c4bb80bb4999628d8aa'
 )
+
+pkgver() {
+  ls -L -l --time-style=+%Y%m%d "${srcdir}/TTC-TTe.bdelta.xz" | awk '{print $6}'
+}
 
 build() {
   cd "${srcdir}"
@@ -53,5 +57,5 @@ package() {
 
   install -D -m644 "${srcdir}/TTe.dll" "${_instdir}/TTe.dll"
   install -D -m644 "${srcdir}/copying.info.txt" "${pkgdir}/usr/share/licenses/${pkgname}/copying.info.txt"
-  install -D -m644 "${srcdir}/licence_cc-nc-sa-1.0.html" "${pkgdir}/usr/share/licenses/${pkgname}/licence_cc-nc-sa-1.0.html"
+  install -D -m644 "${srcdir}/license_cc-nc-1.0.html" "${pkgdir}/usr/share/licenses/${pkgname}/license_cc-nc-1.0.html"
 }
