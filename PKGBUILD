@@ -12,7 +12,6 @@ depends=()
 makedepends=('git')
 source=("$_pkgname::git+https://github.com/analogdevicesinc/libiio")
 md5sums=('SKIP')
-options=('debug' '!strip')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
