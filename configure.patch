@@ -1,0 +1,12 @@
+--- configure	2016-05-20 13:52:14.854090960 +0200
++++ configure.new	2016-05-20 13:52:08.764190358 +0200
+@@ -226,9 +226,6 @@
+             set success 0
+         } else {
+             puts $opt(tk_h)
+-            if {$opt(tk_h) == "/usr/include"} {
+-                set var(BASH_ENV) CPLUS_INCLUDE_PATH=/usr/include:/usr/local/include
+-            }
+         }
+     }
+ 
