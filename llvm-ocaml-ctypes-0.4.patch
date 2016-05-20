@@ -1,0 +1,75 @@
+From b9fec3eb617427a77d2b73fd962e90bb4b5d734f Mon Sep 17 00:00:00 2001
+From: Peter Zotov <whitequark@whitequark.org>
+Date: Sat, 27 Jun 2015 14:32:30 +0000
+Subject: [PATCH] [OCaml] Bump ctypes dependency to 0.4.
+
+ctypes 0.3 and earlier contains an interface-definig bug:
+its ptr_of_raw_address accepts Int64 and not Nativeint. ctypes 0.4
+was not released during the 3.6 cycle, and because of that, LLVM 3.6
+was released with ctypes 0.3 as a dependency, which now breaks
+the build on modern ctypes.
+
+Unbreak.
+
+git-svn-id: https://llvm.org/svn/llvm-project/llvm/trunk@240882 91177308-0d34-0410-b5e6-96231b3b80d8
+---
+ bindings/ocaml/executionengine/llvm_executionengine.ml | 10 +++++-----
+ cmake/config-ix.cmake                                  |  4 ++--
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/bindings/ocaml/executionengine/llvm_executionengine.ml b/bindings/ocaml/executionengine/llvm_executionengine.ml
+index 34031be..3f37e0c 100644
+--- a/bindings/ocaml/executionengine/llvm_executionengine.ml
++++ b/bindings/ocaml/executionengine/llvm_executionengine.ml
+@@ -43,11 +43,11 @@ external run_static_dtors : llexecutionengine -> unit
+   = "llvm_ee_run_static_dtors"
+ external data_layout : llexecutionengine -> Llvm_target.DataLayout.t
+   = "llvm_ee_get_data_layout"
+-external add_global_mapping_ : Llvm.llvalue -> int64 -> llexecutionengine -> unit
++external add_global_mapping_ : Llvm.llvalue -> nativeint -> llexecutionengine -> unit
+   = "llvm_ee_add_global_mapping"
+-external get_global_value_address_ : string -> llexecutionengine -> int64
++external get_global_value_address_ : string -> llexecutionengine -> nativeint
+   = "llvm_ee_get_global_value_address"
+-external get_function_address_ : string -> llexecutionengine -> int64
++external get_function_address_ : string -> llexecutionengine -> nativeint
+   = "llvm_ee_get_function_address"
+ 
+ let add_global_mapping llval ptr ee =
+@@ -55,14 +55,14 @@ let add_global_mapping llval ptr ee =
+ 
+ let get_global_value_address name typ ee =
+   let vptr = get_global_value_address_ name ee in
+-  if Int64.to_int vptr <> 0 then
++  if Nativeint.to_int vptr <> 0 then
+     let open Ctypes in !@ (coerce (ptr void) (ptr typ) (ptr_of_raw_address vptr))
+   else
+     raise (Error ("Value " ^ name ^ " not found"))
+ 
+ let get_function_address name typ ee =
+   let fptr = get_function_address_ name ee in
+-  if Int64.to_int fptr <> 0 then
++  if Nativeint.to_int fptr <> 0 then
+     let open Ctypes in coerce (ptr void) typ (ptr_of_raw_address fptr)
+   else
+     raise (Error ("Function " ^ name ^ " not found"))
+diff --git a/cmake/config-ix.cmake b/cmake/config-ix.cmake
+index 4e22aab..f0855d6 100755
+--- a/cmake/config-ix.cmake
++++ b/cmake/config-ix.cmake
+@@ -546,13 +546,13 @@ else()
+     if( OCAML_VERSION VERSION_LESS "4.00.0" )
+       message(STATUS "OCaml bindings disabled, need OCaml >=4.00.0.")
+     else()
+-      find_ocamlfind_package(ctypes VERSION 0.3 OPTIONAL)
++      find_ocamlfind_package(ctypes VERSION 0.4 OPTIONAL)
+       if( HAVE_OCAML_CTYPES )
+         message(STATUS "OCaml bindings enabled.")
+         find_ocamlfind_package(oUnit VERSION 2 OPTIONAL)
+         set(LLVM_BINDINGS "${LLVM_BINDINGS} ocaml")
+       else()
+-        message(STATUS "OCaml bindings disabled, need ctypes >=0.3.")
++        message(STATUS "OCaml bindings disabled, need ctypes >=0.4.")
+       endif()
+     endif()
+   endif()

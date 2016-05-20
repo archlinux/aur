@@ -1,0 +1,95 @@
+pkgbase = llvm36-split
+	pkgver = 3.6.2
+	pkgrel = 1
+	url = http://llvm.org/
+	arch = i686
+	arch = x86_64
+	license = custom:University of Illinois/NCSA Open Source License
+	makedepends = cmake
+	makedepends = libffi
+	makedepends = python2
+	makedepends = ocaml=4.02.3
+	makedepends = python-sphinx
+	makedepends = python2-sphinx
+	makedepends = chrpath
+	makedepends = ocaml-ctypes
+	makedepends = ocaml-findlib
+	makedepends = libedit
+	makedepends = swig
+	makedepends = gcc-multilib
+	options = staticlibs
+	source = http://llvm.org/releases/3.6.2/llvm-3.6.2.src.tar.xz
+	source = http://llvm.org/releases/3.6.2/llvm-3.6.2.src.tar.xz.sig
+	source = http://llvm.org/releases/3.6.2/cfe-3.6.2.src.tar.xz
+	source = http://llvm.org/releases/3.6.2/cfe-3.6.2.src.tar.xz.sig
+	source = http://llvm.org/releases/3.6.2/clang-tools-extra-3.6.2.src.tar.xz
+	source = http://llvm.org/releases/3.6.2/clang-tools-extra-3.6.2.src.tar.xz.sig
+	source = http://llvm.org/releases/3.6.2/compiler-rt-3.6.2.src.tar.xz
+	source = http://llvm.org/releases/3.6.2/compiler-rt-3.6.2.src.tar.xz.sig
+	source = http://llvm.org/releases/3.6.2/lldb-3.6.2.src.tar.xz
+	source = http://llvm.org/releases/3.6.2/lldb-3.6.2.src.tar.xz.sig
+	source = llvm-3.6.0-use-ocamlfind-for-ocamldoc.patch
+	source = llvm-ocaml-ctypes-0.4.patch
+	source = llvm-Config-config.h
+	source = llvm-Config-llvm-config.h
+	validpgpkeys = 11E521D646982372EB577A1F8F0871F202119294
+	validpgpkeys = B6C8F98282B944E3B0D5C2530FC3042E345AD05D
+	sha256sums = f60dc158bfda6822de167e87275848969f0558b3134892ff54fced87e4667b94
+	sha256sums = SKIP
+	sha256sums = ae9180466a23acb426d12444d866b266ff2289b266064d362462e44f8d4699f3
+	sha256sums = SKIP
+	sha256sums = 6a0ec627d398f501ddf347060f7a2ccea4802b2494f1d4fd7bda3e0442d04feb
+	sha256sums = SKIP
+	sha256sums = 0f2ff37d80a64575fecd8cf0d5c50f7ac1f837ddf700d1855412bb7547431d87
+	sha256sums = SKIP
+	sha256sums = 940dc96b64919b7dbf32c37e0e1d1fc88cc18e1d4b3acf1e7dfe5a46eb6523a9
+	sha256sums = SKIP
+	sha256sums = 7e62bd5dd1ae5755a63abab692ae366186be392104e232e6b3a10a4ea5807283
+	sha256sums = 0e45ad131908a121f628d1575d32b7ad522b3a7039b517dfef4aac25243f3e7f
+	sha256sums = 312574e655f9a87784ca416949c505c452b819fad3061f2cde8aced6540a19a3
+	sha256sums = 597dc5968c695bbdbb0eac9e8eb5117fcd2773bc91edf5ec103ecffffab8bc48
+
+pkgname = llvm36-split
+	pkgdesc = LLVM (installed in /usr/lib/llvm-3.6/)
+	depends = llvm36-libs-split=3.6.2-1
+	depends = perl
+
+pkgname = llvm36-libs-split
+	pkgdesc = LLVM (runtime libraries, installed in /usr/lib/llvm-3.6/)
+	depends = gcc-libs
+	depends = zlib
+	depends = libffi
+	depends = libedit
+	depends = ncurses
+
+pkgname = llvm36-ocaml-split
+	pkgdesc = OCaml bindings for LLVM (installed in /usr/lib/llvm-3.6/)
+	depends = llvm36-split=3.6.2-1
+	depends = ocaml=4.02.3
+	depends = ocaml-ctypes
+
+pkgname = lldb36-split
+	pkgdesc = Next generation, high-performance debugger (installed in /usr/lib/llvm-3.6/)
+	url = http://lldb.llvm.org/
+	depends = libedit
+	depends = libxml2
+	depends = python2
+
+pkgname = clang36-split
+	pkgdesc = C language family frontend for LLVM (installed in /usr/lib/llvm-3.6/)
+	url = http://clang.llvm.org/
+	depends = llvm36-libs-split=3.6.2-1
+	depends = gcc
+	optdepends = python2: for git-clang-format
+
+pkgname = clang36-analyzer-split
+	pkgdesc = A source code analysis framework (installed in /usr/lib/llvm-3.6/)
+	url = http://clang-analyzer.llvm.org/
+	depends = clang36-split=3.6.2-1
+	depends = python2
+
+pkgname = clang36-tools-extra-split
+	pkgdesc = Extra tools built using Clang's tooling APIs (installed in /usr/lib/llvm-3.6/)
+	url = http://clang.llvm.org/
+	depends = clang36-split=3.6.2-1
+
