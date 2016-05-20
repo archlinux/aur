@@ -4,11 +4,15 @@ _pkgname=idos-timetable-maps-chaps-all
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2016_5_19
-pkgrel=2
+pkgrel=3
 pkgdesc="Map data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport. Note that some timetables need the purchased version of IDOS to run."
-arch=('i686' 'x86_64')
+arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvamap"
 license=('custom')
+
+groups=(
+        "idos-timetable"
+       )
 
 depends=(
          # "idos-timetable-data"
