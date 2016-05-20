@@ -10,6 +10,10 @@ arch=(any)
 url="http://www.zsr.sk/slovensky/cestovny-poriadok-vlakov-osobnej-dopravy-elis-cp-2015-2016-a-aktualizacia-dat-na-stiahnutie.html?page_id=378"
 license=('custom')
 
+groups=(
+        "idos-timetable"
+       )
+
 depends=(
          "idos-timetable-data-trains-common"
         )
