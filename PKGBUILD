@@ -16,7 +16,8 @@ optdepends=('gnome-shell>=3.18: The GNOME Shell'
             'cinnamon>=2.8: The Cinnamon desktop'
             'xfdesktop>=4.12.2: The Xfce desktop'
             'paper-icon-theme-git: A fitting icon theme'
-            'gnome-tweak-tool: A graphical tool to tweak gnome settings')
+            'gnome-tweak-tool: A graphical tool to tweak gnome settings'
+            "unity>=7.4.0: Ubuntu's Unity desktop")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tista500/Adapta/archive/${pkgver}.tar.gz")
 sha256sums=(620a6b25ec211387047e9cb5f0227bac4180e534c230a28e0448ab9178916542)
 
