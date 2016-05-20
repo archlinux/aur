@@ -2,7 +2,7 @@
 
 pkgname=nuvola-app-owncloud-music-git
 pkgver=1.1.r0.geaf6a29
-pkgrel=2
+pkgrel=3
 pkgdesc='OwnCloud Music integration for Nuvola Player.'
 arch=('any')
 url='https://github.com/tiliado/nuvola-app-owncloud-music'
@@ -10,9 +10,9 @@ license=('custom:BSD' 'CCPL')
 depends=('nuvolaplayer-git')
 makedepends=('git' 'lasem')
 source=("$pkgname::git+https://github.com/tiliado/nuvola-app-owncloud-music.git"
-        '0001-icon-fixes.patch')
+        '0001-fix-icons.patch')
 sha256sums=('SKIP'
-            'b5f11c43fb03e476e1adba057b2c5aea91e3a5674fb13adfacd7ae6da338fc46')
+            '969216351ef91d110970bbd24139aebb98bb29062af358f21fab9f1890c4208d')
 
 pkgver() {
 	cd "$pkgname"
@@ -21,7 +21,7 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname}"
-	patch -p1 -i "${srcdir}/0001-icon-fixes.patch"
+	patch -p1 -i "${srcdir}/0001-fix-icons.patch"
 }
 
 package() {
