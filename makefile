@@ -14,6 +14,9 @@ clean:
 mrproper: clean
 	rm todo
 
+mrpropest: mrproper
+	rm .todo.txt
+
 /usr/bin/todo: todo
 	cp ./todo /usr/bin/
 
