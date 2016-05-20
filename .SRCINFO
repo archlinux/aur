@@ -1,7 +1,7 @@
 pkgbase = pepper
 	pkgdesc = The Flexible Game Engine
 	pkgver = 0.0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/taylor001/crown
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = pepper
 	depends = libpulse
 	depends = gtk3
 	depends = glib2
-	source = http://52.27.219.161/~ubuntu/pepper-0.0.16.tar.gz
+	source = https://github.com/taylor001/crown/releases/download/v0.0.16/pepper-0.0.16-x64.tar.gz
 	source = pepper.sh
 	md5sums = 9cbe742d2ea85a79a15cfa686199d38a
 	md5sums = ce9c45eea75415c16cd552d219e0bde4
