@@ -2,7 +2,7 @@
 
 pkgname=nuvola-app-google-play-git
 pkgver=5.13.r0.gb2575e7
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Play Music integration for Nuvola Player.'
 arch=('any')
 url="https://github.com/tiliado/nuvola-app-google-play"
@@ -10,9 +10,9 @@ license=('custom:BSD')
 depends=('nuvolaplayer-git')
 makedepends=('git' 'lasem')
 source=("${pkgname}::git+https://github.com/tiliado/nuvola-app-google-play.git"
-        '0001-icon-fixes.patch')
+        '0001-fix-icons.patch')
 sha256sums=('SKIP'
-            '35ff6b557140aa9f2c7440bcf21ab528488adac134525e79336cbb93b6344bb7')
+            '969216351ef91d110970bbd24139aebb98bb29062af358f21fab9f1890c4208d')
 
 pkgver() {
 	cd "${pkgname}"
@@ -21,7 +21,7 @@ pkgver() {
 
 prepare() {
 	cd "${pkgname}"
-	patch -p1 -i "${srcdir}/0001-icon-fixes.patch"
+	patch -p1 -i "${srcdir}/0001-fix-icons.patch"
 }
 
 package() {
