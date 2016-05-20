@@ -6,6 +6,7 @@ pkgbase = idos-timetable-browser-latest
 	url = http://chaps.cz/eng/download/idos/zip#kotvaprg
 	arch = i686
 	arch = x86_64
+	groups = idos-timetable
 	license = custom
 	makedepends = unzip
 	depends = ttf-timetable

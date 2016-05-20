@@ -10,6 +10,10 @@ arch=('i686' 'x86_64')
 url="http://chaps.cz/eng/download/idos/zip#kotvaprg"
 license=('custom')
 
+groups=(
+        "idos-timetable"
+       )
+
 depends=(
   "ttf-timetable"
   "wine"
