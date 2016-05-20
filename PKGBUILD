@@ -7,8 +7,8 @@ arch=('x86_64')
 url="http://www.r3broot.gsi.de"
 license=('unknown')
 groups=()
-fairsoftver=nov15p3-1
-fairrootver=v-15.11b-1
+fairsoftver=nov15p4-1
+fairrootver=v-15.11c-1
 makedepends=('cmake'
 	'clang'
 	'bison'
