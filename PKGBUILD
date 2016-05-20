@@ -4,7 +4,7 @@
 pkgname=offlineimap-git
 _pkgname=offlineimap
 pkgver=7.0.0.rc1.1.ge34a64a
-pkgrel=2
+pkgrel=3
 pkgdesc="A powerful IMAP/Maildir synchronization tool"
 url="http://offlineimap.org/"
 arch=('any')
@@ -45,10 +45,10 @@ package() {
 
 #systemd files
   install -Dm644 contrib/systemd/mail.target "${pkgdir}"/usr/lib/systemd/user/mail.target
-  install -Dm644 contrib/systemd/$pkgname.service "${pkgdir}"/usr/lib/systemd/user/$pkgname.service
-  install -Dm644 contrib/systemd/$pkgname.timer "${pkgdir}"/usr/lib/systemd/user/$pkgname.timer
-  install -Dm644 contrib/systemd/$pkgname@.service "${pkgdir}"/usr/lib/systemd/user/$pkgname@.service
-  install -Dm644 contrib/systemd/$pkgname@.timer "${pkgdir}"/usr/lib/systemd/user/$pkgname@.timer
+  install -Dm644 contrib/systemd/$_pkgname.service "${pkgdir}"/usr/lib/systemd/user/$_pkgname.service
+  install -Dm644 contrib/systemd/$_pkgname.timer "${pkgdir}"/usr/lib/systemd/user/_$pkgname.timer
+  install -Dm644 contrib/systemd/$_pkgname@.service "${pkgdir}"/usr/lib/systemd/user/$_pkgname@.service
+  install -Dm644 contrib/systemd/$_pkgname@.timer "${pkgdir}"/usr/lib/systemd/user/$_pkgname@.timer
 }
 
 # vim:set ts=2 sw=2 et:
