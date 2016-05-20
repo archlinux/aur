@@ -1,0 +1,25 @@
+pkgbase = idos-timetable-data-inprop-mhd-presov-latest
+	pkgdesc = Prešov public transport data for the IDOS timetable browser, data provided by INPROP.
+	pkgver = 2016_5_17
+	pkgrel = 1
+	epoch = 0
+	url = http://www.inprop.sk/download.aspx
+	arch = any
+	license = custom
+	makedepends = p7zip
+	makedepends = wget
+	depends = idos-timetable-browser
+	optdepends = idos-timetable-tariff-mhd-presov: For showing prices.
+	optdepends = idos-timetable-maps-mhd-presov: For displaying routes.
+	provides = idos-timetable-data-inprop-mhd-presov=2016_5_17
+	provides = idos-timetable-data=2016_5_17
+	provides = idos-timetable-data-mhd=2016_5_17
+	provides = idos-timetable-data-mhd-presov=2016_5_17
+	conflicts = idos-timetable-data-inprop-mhd-presov
+	source = http://www.inprop.sk/Data/MDPoSk.exe
+	source = license-dummy.txt
+	sha256sums = SKIP
+	sha256sums = 14279a732be7d04304ff3860d54e0cf8c1a8ba0a46343eaf9b7ce3a105815946
+
+pkgname = idos-timetable-data-inprop-mhd-presov-latest
+
