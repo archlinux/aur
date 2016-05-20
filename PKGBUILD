@@ -1,6 +1,6 @@
 # Maintainer: dreieck
 
-_pkgname=idos-timetable-tariff-chaps-trains-cz
+_pkgname=idos-timetable-tariff-chaps-trains-cz+sk
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2016_5_18
