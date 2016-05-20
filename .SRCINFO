@@ -16,6 +16,7 @@ pkgbase = idos-timetable-data-inprop-mhd-bratislava-latest
 	provides = idos-timetable-data-mhd=2016_4_29
 	provides = idos-timetable-data-mhd-bratislava=2016_4_29
 	conflicts = idos-timetable-data-inprop-mhd-bratislava
+	conflicts = idos-timetable-data-mhd-sk-all
 	source = http://www.inprop.sk/Data/MDBaSk.exe
 	source = license-dummy.txt
 	sha256sums = SKIP
