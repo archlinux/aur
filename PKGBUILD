@@ -4,7 +4,7 @@ _pkgname=idos-timetable-data-chaps-trains-cz
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2016_5_19
-pkgrel=1
+pkgrel=2
 pkgdesc="Timetable data for the timetable search engines by CHAPS: Czech trains."
 arch=('i686' 'x86_64')
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
@@ -26,6 +26,7 @@ provides=(
   "${_pkgname}=${pkgver}"
   
   "idos-timetable-data=${pkgver}"
+  "idos-timetable-data-trains=${pkgver}"
   
   "idos-timetable-data-trains-cz=${pkgver}"
 )
