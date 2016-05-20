@@ -1,5 +1,7 @@
 # Contributer: Donald Carr<sirspudd@gmail.com>
 
+# Uncomment for a debug build
+#_qmake_args="CONFIG+=debug"
 pkgname=qtcreator-prerelease
 _pkgvermajmin=4.0
 pkgver=${_pkgvermajmin}.0
@@ -21,7 +23,7 @@ sha256sums=('0cc21d720bafc72ce67f45a5553c618e8fffec3f2f23b94a2b2a9ba68ed0e2c8')
 
 build() {
   cd "$srcdir/${_filename}"
-  qmake QTC_PREFIX=/usr qtcreator.pro
+  qmake QTC_PREFIX=/usr qtcreator.pro ${_qmake_args}
   make
 }
 
