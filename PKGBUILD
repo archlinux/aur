@@ -3,11 +3,12 @@
 
 pkgname=scid_vs_pc
 pkgver=4.16
-pkgrel=2
+pkgrel=3
 pkgdesc="Shane's Chess Information Database"
 arch=('i686' 'x86_64')
 url="http://scidvspc.sourceforge.net/"
 license=('GPL2')
+makedepends=('gcc5')
 depends=('snack' 'tdom-git' 'zlib')
 install=$pkgname.install
 conflicts=('scid')
@@ -28,7 +29,7 @@ prepare() {
     # Fix for tcl 8.6
     sed -i 's/8.5/8.6/g' ./configure
     
-    ./configure BINDIR=/usr/bin/ SHAREDIR=/usr/share/scid/ TCL_VERSION="8.6" OPTIMIZE="-O2 -funroll-loops"
+    ./configure CC=gcc-5 CXX=g++-5 CPP=cpp-5 BINDIR=/usr/bin/ SHAREDIR=/usr/share/scid/ TCL_VERSION="8.6" OPTIMIZE="-O2 -funroll-loops"
 }
 
 build() {
