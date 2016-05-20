@@ -1,6 +1,6 @@
 pkgbase = svfs
 	pkgdesc = The Swift Virtual File System for hubiC (ovh)
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/ovh/svfs
 	arch = i686
@@ -10,10 +10,10 @@ pkgbase = svfs
 	depends = ruby
 	provides = svfs
 	conflicts = svfs-git
-	source_i686 = https://github.com/ovh/svfs/releases/download/v0.6.0/svfs_0.6.0_386.deb
-	md5sums_i686 = bf22318beccc243a139de436064eb31d
-	source_x86_64 = https://github.com/ovh/svfs/releases/download/v0.6.0/svfs_0.6.0_amd64.deb
-	md5sums_x86_64 = 9c4747e0c81f9e28025a3bbb5efeab26
+	source_i686 = https://github.com/ovh/svfs/releases/download/v0.6.1/svfs_0.6.1_386.deb
+	md5sums_i686 = f704fd90fb831f36211e1b7a0c766fcf
+	source_x86_64 = https://github.com/ovh/svfs/releases/download/v0.6.1/svfs_0.6.1_amd64.deb
+	md5sums_x86_64 = dc74e47cdde5fb09c84ac25257d5016d
 
 pkgname = svfs
 
