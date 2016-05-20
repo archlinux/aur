@@ -1,0 +1,26 @@
+pkgbase = dwm-git
+	pkgdesc = A dynamic window manager for X
+	pkgver = 6.1
+	pkgrel = 1
+	epoch = 1
+	url = http://dwm.suckless.org
+	install = dwm.install
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = libx11
+	depends = libxinerama
+	depends = libxft
+	provides = dwm
+	conflicts = dwm
+	options = zipman
+	source = dwm::git+http://git.suckless.org/dwm
+	source = config.def.h
+	source = dwm-6.1-center.diff
+	md5sums = SKIP
+	md5sums = 596c20f45d805c872789037a338a358d
+	md5sums = 5f6f840c692f43f7e349bb87e895ff26
+
+pkgname = dwm-git
+
