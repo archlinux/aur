@@ -70,7 +70,7 @@ build() {
       --enable-version-specific-runtime-libs
       #--enable-install-libiberty
 
-  export LD_PRELOAD=/usr/lib/libstdc++.so.6
+  export LD_PRELOAD=/usr/lib/libstdc++.so
   make
 }
 
