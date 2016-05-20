@@ -1,20 +1,21 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-sru'
-pkgver='1.00'
+pkgver='1.01'
 pkgrel='1'
 pkgdesc="Search and Retrieval by URL"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl>=5.008' 'perl-class-accessor' 'perl-cql-parser>=1.12' 'perl-uri' 'perl-xml-libxml' 'perl-xml-simple')
-makedepends=('perl-test-exception')
-url='http://search.cpan.org/dist/SRU'
-source=('http://search.cpan.org/CPAN/authors/id/B/BR/BRICAS/SRU-1.00.tar.gz')
-md5sums=('8f416e85b18a85066692d0bb7880e6fe')
-sha512sums=('7677ca5edbb7406b3729af4a1b3c6975cf6ce6c8a2ee509f7410ac8db3c500c17194b5bc9212d652998703e7fdc631f46164209e49f78f60d1a11cd1c0648176')
-_distdir="SRU-1.00"
+depends=('perl-cql-parser>=1.12' 'perl-class-accessor' 'perl-uri' 'perl-xml-libxml' 'perl-xml-simple' 'perl>=5.10.1')
+makedepends=()
+checkdepends=('perl-test-exception')
+url='https://metacpan.org/release/SRU'
+source=('http://search.cpan.org/CPAN/authors/id/B/BR/BRICAS/SRU-1.01.tar.gz')
+md5sums=('9b6f97497cf08d6b949ad9000f0174e5')
+sha512sums=('07d5263901f732f9c60fa26f836f6f1c9dcd461947ea10697c73ff16499d1270592530bf95b4cd89811420472ab0b9cfd1c0214d26577830193dbe9017ae42cb')
+_distdir="SRU-1.01"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
