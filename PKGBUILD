@@ -4,13 +4,19 @@ _pkgname=idos-timetable-data-chaps-all
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2016_5_19
-pkgrel=4
+pkgrel=5
 pkgdesc="Timetable data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport, some air transport. Note that some timetables need the purchased version of IDOS to run."
-arch=('i686' 'x86_64')
+arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
 license=('custom')
 
-depends=("idos-timetable-browser")
+groups=(
+        "idos-timetable"
+       )
+
+depends=(
+         "idos-timetable-data-trains-common"
+        )
 
 makedepends=(
   "wget"
@@ -191,6 +197,7 @@ package() {
   cp -r "${srcdir}"/Data* "${_instdir}/"
   chmod 755 "${_instdir}"/Data*
   chmod 644 "${_instdir}"/Data*/*
+  rm -f "${_instdir}/Data1"/[vV][lL][aA][kK].[tT][tT][rR] # This one is provided by idos-timetable-data-trains-common.
 
   install -d -m755 "${pkgdir}/usr/share/doc/${_pkgname}"
   echo "${url}" > "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
