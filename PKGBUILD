@@ -28,10 +28,12 @@ install=fairroot.install
 changelog=
 source=("https://github.com/FairRootGroup/FairRoot/archive/v-${pkgver}.tar.gz"
 	'fairroot.install'
+	'fix_return.patch'
 	)
 noextract=()
 md5sums=('775fb31d5c3b99f363a5c9eb9c301698'
-         'd2d2d7b11b308120382fba7e32c5268a')
+         'd2d2d7b11b308120382fba7e32c5268a'
+         '6aa0d1c3b2fc936ce54b9f5acf6c338e')
 
 # Do not compress the package for installation
 # PKGEXT='.pkg.tar'
@@ -41,6 +43,9 @@ PKGEXT='.pkg.tar.gz'
 prepare() {
 	# Path to fairsoft installation
 	export SIMPATH=/opt/fairsoft/${fairsoftver}
+
+	cd ${srcdir}
+	patch -Np0 -i ${startdir}/fix_return.patch
 
 	cd ${srcdir}/FairRoot-v-${pkgver}
 

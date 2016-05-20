@@ -1,0 +1,20 @@
+--- FairRoot-v-15.11c/base/MQ/policies/Serialization/BoostSerializer_orig.h	2016-05-20 12:19:40.286292946 +0200
++++ FairRoot-v-15.11c/base/MQ/policies/Serialization/BoostSerializer.h	2016-05-20 12:18:56.228643568 +0200
+@@ -91,7 +91,7 @@ class BoostSerializer : public BaseSeria
+         fMessage = msg;
+     }
+ 
+-    void GetMessage()
++    auto GetMessage()
+     {
+         return fMessage;
+     }
+@@ -283,7 +283,7 @@ class BoostDeSerializer : public BaseSer
+         fMessage = msg;
+     }
+ 
+-    void GetMessage()
++    auto GetMessage()
+     {
+         return fMessage;
+     }

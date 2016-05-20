@@ -21,8 +21,10 @@ pkgbase = fairroot
 	options = !strip
 	source = https://github.com/FairRootGroup/FairRoot/archive/v-15.11c.tar.gz
 	source = fairroot.install
+	source = fix_return.patch
 	md5sums = 775fb31d5c3b99f363a5c9eb9c301698
 	md5sums = d2d2d7b11b308120382fba7e32c5268a
+	md5sums = 6aa0d1c3b2fc936ce54b9f5acf6c338e
 
 pkgname = fairroot
 
