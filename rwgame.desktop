@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=OpenRW / GTAIII
+GenericName=OpenRW / GTAIII
+Comment=A re-implementation of Rockstar Games' Grand Theft Auto III.
+Exec=env $(cat /etc/openrw.conf | xargs) /usr/bin/rwgame
+Icon=openrw
+Terminal=false
+Type=Application
+Categories=Game;

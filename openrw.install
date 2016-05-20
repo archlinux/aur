@@ -1,0 +1,4 @@
+post_install()
+{
+    echo '==> Configure the path to your GTAIII installation using /etc/openrw.conf'
+}
