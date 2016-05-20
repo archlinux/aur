@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-inprop-mhd-bratislava-latest
-	pkgdesc = Bratislava public transport data for the IDOS timetable browser, data provided by INPROP. Needs the purchased version of IDOS to run.
-	pkgver = 2016_5_17
-	pkgrel = 1
+	pkgdesc = Bratislava public transport data for the IDOS timetable browser, data provided by INPROP.
+	pkgver = 2016_4_29
+	pkgrel = 2
 	epoch = 0
 	url = http://www.inprop.sk/download.aspx
 	arch = any
@@ -11,10 +11,10 @@ pkgbase = idos-timetable-data-inprop-mhd-bratislava-latest
 	depends = idos-timetable-browser
 	optdepends = idos-timetable-tariff-mhd-bratislava: For showing prices.
 	optdepends = idos-timetable-maps-mhd-bratislava: For displaying routes.
-	provides = idos-timetable-data-inprop-mhd-bratislava=2016_5_17
-	provides = idos-timetable-data=2016_5_17
-	provides = idos-timetable-data-mhd=2016_5_17
-	provides = idos-timetable-data-mhd-bratislava=2016_5_17
+	provides = idos-timetable-data-inprop-mhd-bratislava=2016_4_29
+	provides = idos-timetable-data=2016_4_29
+	provides = idos-timetable-data-mhd=2016_4_29
+	provides = idos-timetable-data-mhd-bratislava=2016_4_29
 	conflicts = idos-timetable-data-inprop-mhd-bratislava
 	source = http://www.inprop.sk/Data/MDBaSk.exe
 	source = license-dummy.txt

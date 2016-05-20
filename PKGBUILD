@@ -3,9 +3,9 @@
 _pkgname=idos-timetable-data-inprop-mhd-bratislava
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_5_17
-pkgrel=1
-pkgdesc="Bratislava public transport data for the IDOS timetable browser, data provided by INPROP. Needs the purchased version of IDOS to run."
+pkgver=2016_4_29
+pkgrel=2
+pkgdesc="Bratislava public transport data for the IDOS timetable browser, data provided by INPROP."
 arch=(any)
 url="http://www.inprop.sk/download.aspx"
 license=('custom')
