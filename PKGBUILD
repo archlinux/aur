@@ -3,7 +3,7 @@
 _pkgname=idos-timetable-data-inprop-mhd-povazskabystrica
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_5_17
+pkgver=2016_4_15
 pkgrel=1
 pkgdesc="Považská Bystrica public transport data for the IDOS timetable browser, data provided by INPROP."
 arch=(any)
@@ -35,6 +35,7 @@ provides=(
 
 conflicts=(
   "${_pkgname}"
+  "idos-timetable-data-mhd-sk-all"
 )
 
 _sourcefile="MDPbSk.exe"
