@@ -1,0 +1,24 @@
+# Maintainer: RedTide
+pkgname=nuovext-icon-theme
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="nuoveXT2 icon theme"
+arch=('any')
+url="https://github.com/redtide/nuovext-icon-theme"
+license=('GPL')
+depends=('gtk-update-icon-cache')
+install=nuovext-icon-theme.install
+source=(git://github.com/redtide/nuovext-icon-theme.git)
+md5sums=('SKIP')
+
+build() {
+  cd $pkgname
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd $pkgname
+  make DESTDIR="$pkgdir" install
+}
