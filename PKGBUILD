@@ -23,10 +23,13 @@ validpgkkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')
 build() {
   cd "$srcdir"/$_pkgname-$pkgver
 
-  local confopts=(--prefix=/usr 
-                  --sysconfdir=/etc 
-                  --libexecdir=/usr/lib 
-                  --localstatedir=/var 
+  # Avoid hardening-wrapper
+  export PATH=$(echo "$PATH" | sed 's!/usr/lib/hardening-wrapper/bin!!g')
+
+  local confopts=(--prefix=/usr
+                  --sysconfdir=/etc
+                  --libexecdir=/usr/lib
+                  --localstatedir=/var
                   --without-gconf
                   --with-sound=alsa
                   --with-x-toolkit=gtk3
@@ -38,6 +41,9 @@ build() {
 
 package() {
   cd "$srcdir"/$_pkgname-$pkgver
+
+  # Avoid hardening-wrapper
+  export PATH=$(echo "$PATH" | sed 's!/usr/lib/hardening-wrapper/bin!!g')
 
   make DESTDIR="$pkgdir" install
 
