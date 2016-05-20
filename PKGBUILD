@@ -4,13 +4,15 @@ _pkgname=idos-timetable-data-chaps-trains-europe
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2016_5_19
-pkgrel=2
+pkgrel=3
 pkgdesc="Timetable data for the timetable search engines by CHAPS: European trains."
-arch=('i686' 'x86_64')
+arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
 license=('custom')
 
-depends=("idos-timetable-browser")
+depends=(
+         "idos-timetable-data-trains-common"
+        )
 
 makedepends=(
   "wget"
@@ -55,7 +57,6 @@ pkgver() {
   wget -nv -O- "${url}" | tr -d '\a' | tr '\n' '\a' | sed  's|^.*File VLAK16E.ZIP\(.*\)Zip/VLAK16E.ZIP.*$|\1\n|g' | tr '\a' '\n' | grep 'Update date:' | cut -d, -f1 | sed -r 's|([0-9]+)\.([0-9]+)\.([0-9]+).|\n\3_\2_\1\n|g' | grep -E '^[0-9]+_[0-9]+_[0-9]+'
 }
 
-
 package() {
   _instdirbase='/opt/idos-timetable'
   _instdir="${pkgdir}/${_instdirbase}"
@@ -64,6 +65,7 @@ package() {
   cp -r "${srcdir}"/Data* "${_instdir}/"
   chmod 755 "${_instdir}"/Data*
   chmod 644 "${_instdir}"/Data*/*
+  rm -f "${_instdir}/Data1"/[vV][lL][aA][kK].[tT][tT][rR] # This one is provided by idos-timetable-data-trains-common.
 
   install -d -m755 "${pkgdir}/usr/share/doc/${_pkgname}"
   echo "${url}" > "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
