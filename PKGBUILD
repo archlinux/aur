@@ -1,21 +1,21 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-metacpan-client'
-pkgver='1.013000'
+pkgver='1.014000'
 pkgrel='1'
 pkgdesc="A comprehensive, DWIM-featured client to the MetaCPAN API"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-json-maybexs' 'perl-moo' 'perl-safe-isa' 'perl-search-elasticsearch>=1.10' 'perl-try-tiny' 'perl>=5.008')
+depends=('perl-json-maybexs' 'perl-moo' 'perl-safe-isa' 'perl-search-elasticsearch>=2.02' 'perl-try-tiny' 'perl>=5.008')
 makedepends=()
 checkdepends=('perl-test-fatal' 'perl-test-requires')
 url='https://metacpan.org/release/MetaCPAN-Client'
-source=('http://search.cpan.org/CPAN/authors/id/M/MI/MICKEY/MetaCPAN-Client-1.013000.tar.gz')
-md5sums=('1925e7582467b7b8588ae3fcb26a9390')
-sha512sums=('953291df85616baf60c4ec9f7b5d25aabe25f3b551f36bbb32fd50107b9ecd379b4a68c873e56b0897275aa535d6765c4937c909c36480c13040ceda1e807888')
-_distdir="MetaCPAN-Client-1.013000"
+source=('http://search.cpan.org/CPAN/authors/id/X/XS/XSAWYERX/MetaCPAN-Client-1.014000.tar.gz')
+md5sums=('e9d2103a681ecfb193ee1900d0f09277')
+sha512sums=('89c50bcfd80750d3ff645a84809e2979635552a11423ab783f79ad17617d2dabf35450354689d4d02add4a255b1e18d8d1680f9bf4b8fc2b8731200347b49ca6')
+_distdir="MetaCPAN-Client-1.014000"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
