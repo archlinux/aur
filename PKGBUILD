@@ -16,12 +16,14 @@ url="http://gcc.gnu.org"
 makedepends=('binutils>=2.25' 'libmpc' 'doxygen')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs')
-source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2
-        http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz)
+source=("ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
+        "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
+        "http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz"
+        "gcc-4.9-fix-build-with-gcc-6.patch")
 md5sums=('6f831b4d251872736e8e9cc09746f327'
          'e039bfcfb6c2ab039b8ee69bf883e824'
-         'e34fca0540d840e5d0f6427e98c92252')
+         'e34fca0540d840e5d0f6427e98c92252'
+         '91f27a8002df38cf2ca971ca80feb9d7')
 
 _basedir=gcc-${pkgver}
 _libdir="usr/lib/gcc/$CHOST/$pkgver"
