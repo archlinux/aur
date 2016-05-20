@@ -1,4 +1,4 @@
-# Maintainer: doskoi <doskoi dot panda at free dot fr>
+# Maintainer: Alexandre Bouvier <contact at amb dot tf>
 _pkgname=foobar2000-playcount
 pkgname="$_pkgname-bin"
 pkgver=3.0.2
