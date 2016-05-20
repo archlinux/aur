@@ -3,13 +3,12 @@
 
 pkgname=masterpdfeditor
 pkgver=3.7.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete solution for creation and editing PDF files. (Free for non-commercial use)"
 url="http://code-industry.net/free-pdf-editor.php"
 arch=('i686' 'x86_64')
 license=('custom')
 depends=('qt4')
-install=${pkgname}.install
 
 source=(${pkgname}.desktop)
 source_i686=(http://get.code-industry.net/public/master-pdf-editor-${pkgver}_i386.tar.gz)
