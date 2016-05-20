@@ -2,7 +2,7 @@
 pkgname=adapta-gtk-theme
 _gtk3_version='3.21'
 pkgver="${_gtk3_version}.1.204"
-pkgrel=1
+pkgrel=2
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
 url="https://github.com/tista500/Adapta"
@@ -18,15 +18,24 @@ optdepends=('gnome-shell>=3.18: The GNOME Shell'
             'paper-icon-theme-git: A fitting icon theme'
             'gnome-tweak-tool: A graphical tool to tweak gnome settings'
             "unity>=7.4.0: Ubuntu's Unity desktop")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tista500/Adapta/archive/${pkgver}.tar.gz")
-sha256sums=(620a6b25ec211387047e9cb5f0227bac4180e534c230a28e0448ab9178916542)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tista500/Adapta/archive/${pkgver}.tar.gz"
+        'https://github.com/tista500/Adapta/raw/master/img/tri-fadeno.jpg')
+sha256sums=(620a6b25ec211387047e9cb5f0227bac4180e534c230a28e0448ab9178916542
+            807bd3d99fb492569caf050cfa9b5c75d4e6a072007637fe8e583a3f5c0bea24)
+
+build() {
+    cd "Adapta-${pkgver}"
+    ./autogen.sh --prefix "${pkgdir}/usr" --enable-gtk_next --enable-chrome
+    make
+}
 
 package() {
     cd "Adapta-${pkgver}"
-    prefix="${pkgdir}/usr"
-    install -dm755 "$prefix"
-    ./autogen.sh --prefix "$prefix" --enable-gtk_next --enable-chrome
-    make
     make install
+
+    # The backgrounds
+    bgdir="${pkgdir}/usr/share/backgrounds"
+    install -dm755 "$bgdir"
+    cp -dp --no-preserve=ownership "${srcdir}/tri-fadeno.jpg" "$bgdir"
 }
 
