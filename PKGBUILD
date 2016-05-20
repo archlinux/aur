@@ -1,6 +1,6 @@
 # Contributor: Swift Geek <swiftgeek «at» gmail.com>
 pkgname=perl-math-planepath
-pkgver=122
+pkgver=123
 pkgrel=1
 pkgdesc="Math::PlanePath -- points on a path through the 2-D plane"
 arch=('any')
@@ -15,7 +15,7 @@ backup=()
 options=(!emptydirs)
 install=
 source=("http://search.cpan.org/CPAN/authors/id/K/KR/KRYDE/Math-PlanePath-${pkgver}.tar.gz")
-md5sums=('c0d198e1f8f753ffee63226b33e05056')
+md5sums=('ee3bf9b5909bbcc2a86973c9ca9e0ffe')
 
 prepare() {
   export _src_dir="$srcdir/Math-PlanePath-$pkgver"
