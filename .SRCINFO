@@ -1,5 +1,5 @@
 pkgbase = openrw-git
-	pkgdesc = OpenRW 'Open ReWrite' is an un-official open source recreation of the classic Grand Theft Auto III game executable
+	pkgdesc = A re-implementation of Rockstar Games' Grand Theft Auto III
 	pkgver = r621.2ee4a6e
 	pkgrel = 1
 	url = https://github.com/danhedron/openrw
