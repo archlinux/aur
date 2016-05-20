@@ -8,7 +8,8 @@ pkgdesc='The fastest free Verilog HDL simulator'
 url=http://www.veripool.org/projects/verilator/wiki/Intro
 arch=(any)
 license=('LGPL')
-depends=()
+depends=('gcc-libs')
+makedepends=('gcc')
 
 source=("http://www.veripool.org/ftp/${pkgname}-${pkgver}.tgz")
 md5sums=('cfc86a593aba5ec68dd2905b33edc905')
