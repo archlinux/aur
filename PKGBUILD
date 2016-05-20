@@ -1,6 +1,6 @@
 pkgname=mingw-w64-kconfig
-pkgver=5.21.0
-pkgrel=2
+pkgver=5.22.0
+pkgrel=1
 arch=(any)
 pkgdesc="Configuration system (mingw-w64)"
 license=("LGPL")
@@ -11,7 +11,7 @@ options=(staticlibs !strip !buildflags)
 optdepends=(wine "kconfig: needed for EXE workaround symlink")
 url="https://projects.kde.org/projects/frameworks/kconfig"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kconfig-${pkgver}.tar.xz")
-md5sums=('11782bb4555990deafa273f0288d2673')
+md5sums=('89725e9fae45c516448ff01ede3e2821')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
