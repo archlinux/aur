@@ -7,7 +7,7 @@ pkgver=3.0.0
 pkgrel=1
 pkgdesc="Chinese Lunar calendar widget for Gtk+"
 arch=("i686" "x86_64")
-url="http://code.google.com/p/liblunar/"
+url="https://github.com/yetist/$_pkgname"
 license=('GPL2')
 depends=('gtk3>=3.0.9' 'lunar-date>=2.4.0')
 makedepends=('git' 'gnome-common' 'gobject-introspection')
