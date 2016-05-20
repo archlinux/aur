@@ -3,11 +3,11 @@
 
 pkgname=dbmodel
 pkgver=0.3
-pkgrel=5
+pkgrel=6
 pkgdesc="A qt tool for drawing entity-relationship diagrams."
 arch=('i686' 'x86_64')
 url="http://oxygene.sk/lukas/dbmodel/"
-license="GPL"
+license=('GPL')
 depends=('qt4>=4.0')
 source=(http://launchpad.net/dbmodel/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz
         dbmodel-0.3-qt-4.6.patch)
