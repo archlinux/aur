@@ -1,7 +1,7 @@
 # Maintainer: TingPing tingping@tingping.se
 
 pkgname=transmission-remote-gtk-git
-pkgver=1.2.r37.g8fab1a3
+pkgver=1.2.r48.g3689dda
 pkgrel=1
 pkgdesc='A remote interface to the Transmission BitTorrent client'
 arch=('i686' 'x86_64' 'armv6h')
@@ -26,7 +26,8 @@ pkgver() {
 build() {
   cd "$_gitname"
 
-  POD2MAN=/usr/bin/core_perl/pod2man ./autogen.sh --prefix=/usr --disable-debug --disable-desktop-database-update
+  CFLAGS='-Wno-format-nonliteral' POD2MAN=/usr/bin/core_perl/pod2man \
+    ./autogen.sh --prefix=/usr --disable-debug --disable-desktop-database-update
   make -s
 }
 

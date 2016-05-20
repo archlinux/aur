@@ -1,6 +1,6 @@
 pkgbase = transmission-remote-gtk-git
 	pkgdesc = A remote interface to the Transmission BitTorrent client
-	pkgver = 1.2.r37.g8fab1a3
+	pkgver = 1.2.r48.g3689dda
 	pkgrel = 1
 	url = https://github.com/transmission-remote-gtk/transmission-remote-gtk
 	arch = i686
