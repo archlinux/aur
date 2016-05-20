@@ -1,13 +1,13 @@
 # Maintainer: Martin Hundebøll <martin@hundeboll.net>
 pkgname=tio
-pkgver=1.9
+pkgver=1.13
 pkgrel=1
 pkgdesc="The simple TTY terminal I/O application"
 url="http://tio.github.io/"
 arch=('x86_64' 'i686')
 license=('GPLv2')
 source=("https://github.com/tio/tio/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('3f39a8d12e89cbf906f56d482b7cd14636670ca2d59d5b1219f5c60e0f5331b4')
+sha256sums=('15120eed3bcfa133695911c93e8b1687f429017b1ec1e71ae88671b0559f74a3')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
