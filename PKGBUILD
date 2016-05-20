@@ -4,7 +4,7 @@
 pkgname=mist
 pkgver=0.7.4
 _pkgver=0-7-4
-pkgrel=1
+pkgrel=2
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
 arch=('i686' 'x86_64')
 depends=(
@@ -42,7 +42,7 @@ source=(
   "icon.png"
 )
 sha256sums=(
-  "a7f20936d0c1f15d7d5255f57aaeb9c91a14b1dca7c1df52862b8ba3aabd73da"
+  "4217ff42b4de0eca832f0e95012cbe8e34758e4f4f1135c124ecae365d0ac0df"
   "a7fd8c64aacd53e9f126d261412c543df4d93c247c7c059949d9bcd6588e4765"
   "d044844dd8ef1fef2ced861e5a86bf0d9af1b06ade6965dab1f12dbc612da207"
   "f9dfeddf9730ab693e3dc69d6dd0ad48525de1e40e1c8fb46ed081a3e7bd5f93"
