@@ -5,6 +5,7 @@ pkgbase = idos-timetable-data-inprop-mhd-humenne-latest
 	epoch = 0
 	url = http://www.inprop.sk/download.aspx
 	arch = any
+	groups = idos-timetable
 	license = custom
 	makedepends = p7zip
 	makedepends = wget
