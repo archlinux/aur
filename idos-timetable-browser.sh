@@ -6,6 +6,9 @@
 #   command line argument reformatting so that filenames can be
 #   specified both absolutely and relatively to the directory the user
 #   starts this wrapper from.
+#
+#   Also, it starts with a Czech locale, if available, in order to make
+#   diacritical characters display correctly.
 
 
 
@@ -130,10 +133,24 @@ done
 
 
 
+### Check for locale, and if present, set Czech locale:
+
+if locale -a | grep -qE '^cs_CZ'; then
+  if locale -a | grep -qE '^cs_CZ' | grep -qi utf8; then
+    LC_CTYPE="$(locale -a | grep -E '^cs_CZ' | grep -i utf8 | head -n 1)"
+  else
+    LC_CTYPE="$(locale -a | grep -E '^cs_CZ' | tail -n 1)"
+  fi
+  export LC_CTYPE
+fi
+
+
+
 ### Launch the software with the parsed and maybe reformatted arguments:
 
 cd "${_installdir}"
 
+debug 'DEBUG: $LC_CTYPE is set to: '"'${LC_CTYPE}' (if it does not begin with 'cs_CZ', try to enable Czech locale on your system to display diacritical characters correctly)."
 debug "DEBUG: We are running from the directory: '$(pwd)'."
 debug "DEBUG: Executing the following command: 'wine ${_executable} ${argsnew[@]}'."
 

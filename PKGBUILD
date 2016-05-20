@@ -4,7 +4,7 @@ _pkgname=idos-timetable-browser
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=1.27_lib2.8.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Offline railway and other public transport timetable search engine by CHAPS. (Czech language by default.)"
 arch=('i686' 'x86_64')
 url="http://chaps.cz/eng/download/idos/zip#kotvaprg"
@@ -42,14 +42,16 @@ source=(
   "IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf"
   "license-dummy.txt"
   "README.datafiles.txt"
+  "idos-timetable-browser.install"
 )
 
 sha256sums=(
   "SKIP" # "92a47f8947a15bdd3c0fcaac4e21db7d0ae6d9e70cfb9de94e5238081a91a817"
-  "5d6e710d03d5832fcdb67726b3ce91ee1a4fe993f258e8a15c49bd51f5224bb5"
+  "969d4418181c9fed180e240c4a73fbfa57e126f77c1c4c6e9217d515a1e6913f"
   "e904d167ccdcfb2743f4cfd596aaa9dce8b751fb5c8315b972b42b7cbb3189e6"
   "c6bb216055d3670d3100b7a74e04ce0644030f365f4349a09e630ef60fbcb9a4"
   "45bf7c462d7154360d0007a6d7c00c6aa6b49339b6f178cf24e5b1a40ca702d7"
+  "670e6a40bade4562fb93c7cb29191c1869c286acbb7f616c8b78f09842a82cbd"
 )
 
 
