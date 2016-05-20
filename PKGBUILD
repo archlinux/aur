@@ -27,7 +27,6 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DKDE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
 }
