@@ -1,7 +1,8 @@
-# Maintainer: Jeffrey Tolar <tolar.jeffrey at gmail dot com>
+# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Contributor: Jeffrey Tolar <tolar.jeffrey at gmail dot com>
 
 pkgname=verilator
-pkgver=3.882
+pkgver=3.884
 pkgrel=1
 pkgdesc='The fastest free Verilog HDL simulator'
 url=http://www.veripool.org/projects/verilator/wiki/Intro
@@ -10,7 +11,7 @@ license=('LGPL')
 depends=()
 
 source=("http://www.veripool.org/ftp/${pkgname}-${pkgver}.tgz")
-md5sums=('2a8171b4184c64e4007a5ca5a3e66bf6')
+md5sums=('cfc86a593aba5ec68dd2905b33edc905')
 
 build() {
   cd "verilator-${pkgver}"
@@ -24,4 +25,3 @@ package() {
 
   make install DESTDIR=$pkgdir
 }
-
