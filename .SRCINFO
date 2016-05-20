@@ -1,0 +1,12 @@
+pkgbase = bash-eternal-history
+	pkgdesc = Configure bash to track all the executed commands
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = WTFPL
+	depends = bash
+	source = bash-eternal-history.sh
+	md5sums = fa7c811bd49ce7f5e7f2de1e36dc859f
+
+pkgname = bash-eternal-history
+
