@@ -1,0 +1,28 @@
+pkgbase = lemonbuddy
+	pkgdesc = A fast and easy-to-use tool for Lemonbar.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/jaagr/lemonbuddy
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = pkg-config
+	makedepends = clang
+	makedepends = glibc
+	makedepends = boost-libs
+	makedepends = libx11
+	makedepends = wireless_tools
+	makedepends = alsa-lib
+	makedepends = libsigc++
+	makedepends = i3-wm
+	depends = sh
+	depends = alsa-lib
+	depends = libmpdclient
+	depends = libxrandr
+	optdepends = lemonbar-sm-git
+	source = git+https://github.com/jaagr/lemonbuddy.git#tag=0.1.0
+	md5sums = SKIP
+
+pkgname = lemonbuddy
+
