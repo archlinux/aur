@@ -43,7 +43,6 @@ prepare() {
   sh ${_pkg}.run --extract-only
   cd ${_pkg}/kernel
   # patches here
-  patch -p1 --no-backup-if-mismatch -i ../linux-4.6.patch
 
   # Update dkms.conf
   sed -e "s/__VERSION_STRING/${pkgver}/" \
