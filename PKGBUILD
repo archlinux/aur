@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=maxima-git
-pkgver=5.38.1.69.gc4e24ca
+pkgver=5.38.1.70.gefe8692
 pkgrel=1
 pkgdesc="a sophisticated computer algebra system - git-version"
 arch=('any')
