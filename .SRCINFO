@@ -1,15 +1,20 @@
 pkgbase = idos-timetable-data-zsr-europe+sk-latest
 	pkgdesc = Timetable data for the offline railway and other public transport timetable search engines by CHAPS: European and Slovak train data, provided by ŽSR.
 	pkgver = 2016_05_17
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = http://www.zsr.sk/slovensky/cestovny-poriadok-vlakov-osobnej-dopravy-elis-cp-2015-2016-a-aktualizacia-dat-na-stiahnutie.html?page_id=378
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = custom
 	makedepends = p7zip
-	makedepends = curl
-	depends = idos-timetable-browser
+	makedepends = wget
+	depends = idos-timetable-data-trains-common
+	optdepends = idos-timetable-tariff-trains-europe: For showing prices.
+	optdepends = idos-timetable-tariff-trains-cz: For showing prices (Czech republic only).
+	optdepends = idos-timetable-tariff-trains-sk: For showing prices (Slovakia republic only).
+	optdepends = idos-timetable-maps-trains-europe: For displaying routes.
+	optdepends = idos-timetable-maps-trains-cz: For displaying routes (Czech republic only).
+	optdepends = idos-timetable-maps-trains-sk: For displaying routes (Slovakia only).
 	provides = idos-timetable-data-zsr-europe+sk=2016_05_17
 	provides = idos-timetable-data=2016_05_17
 	provides = idos-timetable-data-trains=2016_05_17

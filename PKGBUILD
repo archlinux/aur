@@ -4,20 +4,29 @@ _pkgname=idos-timetable-data-zsr-europe+sk
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2016_05_17
-pkgrel=2
+pkgrel=3
 pkgdesc="Timetable data for the offline railway and other public transport timetable search engines by CHAPS: European and Slovak train data, provided by ŽSR."
-arch=('i686' 'x86_64')
+arch=(any)
 url="http://www.zsr.sk/slovensky/cestovny-poriadok-vlakov-osobnej-dopravy-elis-cp-2015-2016-a-aktualizacia-dat-na-stiahnutie.html?page_id=378"
 license=('custom')
 
-depends=("idos-timetable-browser")
+depends=(
+         "idos-timetable-data-trains-common"
+        )
 
 makedepends=(
   "p7zip"
-  "curl"
+  "wget"
 )
 
-optdepends=()
+optdepends=(
+            "idos-timetable-tariff-trains-europe: For showing prices."
+            "idos-timetable-tariff-trains-cz: For showing prices (Czech republic only)."
+            "idos-timetable-tariff-trains-sk: For showing prices (Slovakia republic only)."
+            "idos-timetable-maps-trains-europe: For displaying routes."
+            "idos-timetable-maps-trains-cz: For displaying routes (Czech republic only)."
+            "idos-timetable-maps-trains-sk: For displaying routes (Slovakia only)."
+           )
 
 provides=(
   "${_pkgname}=${pkgver}"
@@ -78,6 +87,9 @@ package() {
     chmod 755 Data*
     chmod 644 Data*/*
   }
+  rm -f "${_instdir}/Data1"/[vV][lL][aA][kK].[tT][tT][rR] # This one is provided by idos-timetable-data-trains-common.
+  rm -f "${_instdir}/Data1"/*.[tT][tT][mM] # Don't install map data here; use a seperate package for that.
+  rm -f "${_instdir}/Data1"/*.[tT][tT][pP] # Don't install tariff data here; use a seperate package for that.
 
   install -d -m755 "${pkgdir}/usr/share/doc/${_pkgname}"
   echo "${url}" > "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
