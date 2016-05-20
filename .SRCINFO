@@ -5,6 +5,7 @@ pkgbase = idos-timetable-additionalinfo-chaps-bus-latest
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvainf
 	arch = any
+	groups = idos-timetable
 	license = custom
 	makedepends = wget
 	depends = idos-timetable-data-bus-cz
