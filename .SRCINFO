@@ -1,6 +1,6 @@
 pkgbase = webgrind
 	pkgdesc = Xdebug Profiling Web Frontend in PHP.
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/jokkedk/webgrind
 	install = webgrind.install
@@ -8,8 +8,8 @@ pkgbase = webgrind
 	license = BSD
 	depends = php
 	depends = xdebug
-	source = https://github.com/jokkedk/webgrind/archive/1.1.zip
-	sha512sums = 96f8a31ff078b499fb1f24db9a9428473522baf3bfce716f9e1b8326096b9621600162fd4752f1dd06af9e17b2bfaf7335b7dabb39d111fa2c590dc1b0202d01
+	source = https://github.com/jokkedk/webgrind/archive/1.2.zip
+	sha512sums = 0b70999dc9b3214409088631ac3d439ade799b040dc66ea3f115aa24dd91549efe2ceaa4fdc494abf52a6a315d06ac4226c60a64668986c22fc5d272c1db638f
 
 pkgname = webgrind
 
