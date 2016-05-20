@@ -1,7 +1,7 @@
 # Maintainer: Hsiu-Ming Chang <cges30901 at gmail dot com>
 pkgname=hmtimer
 pkgver=2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="graphical shutdown timer"
 arch=('i686' 'x86_64')
 url="https://sites.google.com/site/hsiumingstimer/"
@@ -22,7 +22,7 @@ noextract=()
 md5sums=('6cd4473d41f23ee21ec1fe49bfeb85e2')
 
 build() {
-  cd "$pkgname-$pkgver-src"
+  cd "$pkgname-$pkgver"
   qmake
   make
 }

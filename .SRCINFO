@@ -1,7 +1,7 @@
 pkgbase = hmtimer
 	pkgdesc = graphical shutdown timer
 	pkgver = 2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sites.google.com/site/hsiumingstimer/
 	install = hmtimer.install
 	arch = i686
