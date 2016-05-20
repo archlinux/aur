@@ -1,6 +1,6 @@
 pkgbase = mergerfs
 	pkgdesc = Another FUSE union filesystem
-	pkgver = 2.13.0
+	pkgver = 2.13.1
 	pkgrel = 1
 	url = https://github.com/trapexit/mergerfs
 	arch = i686
@@ -8,10 +8,10 @@ pkgbase = mergerfs
 	license = MIT
 	depends = fuse
 	options = !emptydirs
-	source = https://github.com/trapexit/mergerfs/releases/download/2.13.0/mergerfs-2.13.0.tar.gz
-	md5sums = 05f9dada748117cd208bba238c774d4b
-	sha256sums = 6150fa2b83ff89386835d6df1d3d94f3b0b075752f10a6bbf84b15c2b43f391c
-	sha512sums = 86eb685350dee1cb4411210db18c7a888f107c973db474dbccdd9a873de8147b03f8df9830574a4ee483bd87640f11941e313d8896dcfefb3113433c016b7eea
+	source = https://github.com/trapexit/mergerfs/releases/download/2.13.1/mergerfs-2.13.1.tar.gz
+	md5sums = 9395ff637a76ebf8258d037cb3a771c0
+	sha256sums = d09054d504fcd277ea5d0b6c372e2fa4ac7dacf59e9c50a209ac647fc7ceab6c
+	sha512sums = b739772eb23252a59b381c9e1b87c043163cf847c704d6f525226fec63db0f7f8afc2770e4d9138fd120b2fadfe3b5ac643d89bcf02593deb253ed25dba79394
 
 pkgname = mergerfs
 
