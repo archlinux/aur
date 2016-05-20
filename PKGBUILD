@@ -4,7 +4,7 @@ _pkgname=idos-timetable-data-zsr-sk
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2016_05_17
-pkgrel=1
+pkgrel=2
 pkgdesc="Timetable data for the offline railway and other public transport timetable search engines by CHAPS: Slovak train data, provided by ŽSR."
 arch=(any)
 url="http://www.zsr.sk/slovensky/cestovny-poriadok-vlakov-osobnej-dopravy-elis-cp-2015-2016-a-aktualizacia-dat-na-stiahnutie.html?page_id=378"
@@ -30,14 +30,7 @@ provides=(
   "idos-timetable-data=${pkgver}"
   "idos-timetable-data-trains=${pkgver}"
 
-  "idos-timetable-maps=${pkgver}"
-  "idos-timetable-maps-trains=${pkgver}"
-  
   "idos-timetable-data-trains-sk=${pkgver}"
-  
-  "idos-timetable-maps-trains-cz=${pkgver}"
-  "idos-timetable-maps-trains-sk=${pkgver}"
-  "idos-timetable-maps-trains-europe=${pkgver}"
 )
 
 replaces=(
