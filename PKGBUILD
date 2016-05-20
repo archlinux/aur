@@ -3,26 +3,41 @@
 _pkgname=idos-timetable-data-zsr-sk
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_02_25
+pkgver=2016_05_17
 pkgrel=1
 pkgdesc="Timetable data for the offline railway and other public transport timetable search engines by CHAPS: Slovak train data, provided by ŽSR."
-arch=('i686' 'x86_64')
+arch=(any)
 url="http://www.zsr.sk/slovensky/cestovny-poriadok-vlakov-osobnej-dopravy-elis-cp-2015-2016-a-aktualizacia-dat-na-stiahnutie.html?page_id=378"
 license=('custom')
 
-depends=()
+depends=(
+         "idos-timetable-data-trains-common"
+        )
 
 makedepends=(
   "p7zip"
   "wget"
 )
 
-optdepends=()
+optdepends=(
+            "idos-timetable-tariff-trains-sk: For showing prices."
+            "idos-timetable-maps-trains-sk: For displaying routes."
+           )
 
 provides=(
   "${_pkgname}=${pkgver}"
-  "idos-timetable-data-sk=${pkgver}"
+
   "idos-timetable-data=${pkgver}"
+  "idos-timetable-data-trains=${pkgver}"
+
+  "idos-timetable-maps=${pkgver}"
+  "idos-timetable-maps-trains=${pkgver}"
+  
+  "idos-timetable-data-trains-sk=${pkgver}"
+  
+  "idos-timetable-maps-trains-cz=${pkgver}"
+  "idos-timetable-maps-trains-sk=${pkgver}"
+  "idos-timetable-maps-trains-europe=${pkgver}"
 )
 
 replaces=(
@@ -42,13 +57,11 @@ _source0="$(_get_download_url)"
 source=(
   "vlak16sk.exe::${_source0}"
   "license-dummy.txt"
-  "info.url"
 )
 
 sha256sums=(
   'SKIP'
   "14279a732be7d04304ff3860d54e0cf8c1a8ba0a46343eaf9b7ce3a105815946"
-  "eba7d7bd3836b5d67f9a5179f8318c3d62e6bb84d133fbcba326b713c4333a15"
 )
 
 pkgver() {
@@ -61,18 +74,23 @@ pkgver() {
 
 
 package() {
-  _instdirbase='/opt/idos-timetable/timetables'
+  _instdirbase='/opt/idos-timetable'
   _instdir="${pkgdir}/${_instdirbase}"
 
   install -d -m755 "${_instdir}"
-  cd "${_instdir}"
 
-  7z x "${srcdir}/vlak16sk.exe"
-  mv Data1/* .
-  rmdir Data1
-  chmod 644 *
-
-  install -D -m644 "${srcdir}/info.url" "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
+  cd "${_instdir}" && {
+    7z x "${srcdir}/vlak16sk.exe"
+    chmod 755 Data*
+    chmod 644 Data*/*
+  }
+  rm -f "${_instdir}/Data1"/[vV][lL][aA][kK].[tT][tT][rR] # This one is provided by idos-timetable-data-trains-common.
+  rm -f "${_instdir}/Data1"/*.[tT][tT][mM] # Don't install map data here; use a seperate package for that.
+  rm -f "${_instdir}/Data1"/*.[tT][tT][pP] # Don't install tariff data here; use a seperate package for that.
+  
+  install -d -m755 "${pkgdir}/usr/share/doc/${_pkgname}"
+  echo "${url}" > "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
+  chmod 644 "${pkgdir}/usr/share/doc/${_pkgname}/info.url"
 
   install -D -m644 "${srcdir}/license-dummy.txt" "${pkgdir}/usr/share/licenses/${pkgname}/copying.txt"
 }
