@@ -4,31 +4,47 @@
 
 pkgbase=python-libnacl
 pkgname=('python-libnacl' 'python2-libnacl')
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc='A simple ctypes based python binding to libsodium'
 arch=('any')
 url='http://libnacl.readthedocs.org'
 license=('Apache')
-makedepends=('python-setuptools' 'python2-setuptools' 'libsodium')
-source=("https://pypi.python.org/packages/source/l/libnacl/libnacl-$pkgver.tar.gz")
-md5sums=('797154ac51b9ca4c6cf4b2e6eff73e25')
+makedepends=('python-setuptools' 'python2-setuptools' 'libsodium' 'git')
+source=("git+https://github.com/saltstack/libnacl.git#tag=v$pkgver")
+md5sums=('SKIP')
 
 prepare() {
-  cp -r libnacl-$pkgver python2-libnacl-$pkgver
+  cp -r libnacl{,-py2}
+}
+
+build() {
+  cd "$srcdir"/libnacl
+  python setup.py build
+
+  cd "$srcdir"/libnacl-py2
+  python2 setup.py build
+}
+
+check() {
+  cd "$srcdir"/libnacl
+  python -m unittest discover --start-directory tests -v
+
+  cd "$srcdir"/libnacl-py2
+  python2 -m unittest discover --start-directory tests -v
 }
 
 package_python-libnacl() {
   depends=('python' 'libsodium')
 
-  cd "$srcdir/libnacl-$pkgver"
+  cd libnacl
   python3 setup.py install --root="$pkgdir" -O1
 }
 
 package_python2-libnacl() {
   depends=('python2' 'libsodium')
 
-  cd "$srcdir/python2-libnacl-$pkgver"
+  cd libnacl-py2
   python2 setup.py install --root="$pkgdir" -O1
 }
 
