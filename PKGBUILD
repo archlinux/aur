@@ -4,12 +4,12 @@
 pkgname=offlineimap-git
 _pkgname=offlineimap
 pkgver=7.0.0.rc1.1.ge34a64a
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful IMAP/Maildir synchronization tool"
 url="http://offlineimap.org/"
 arch=('any')
 license=('GPL')
-depends=('python2')
+depends=('python2' 'python2-six')
 makedepends=('git' 'asciidoc')
 conflicts=('offlineimap')
 provides=('offlineimap')
@@ -42,6 +42,13 @@ package() {
   install -D -m644 docs/offlineimapui.7 "${pkgdir}"/usr/share/man/man7/offlineimapui.7
   install -D -m644 offlineimap.conf ${pkgdir}/usr/share/offlineimap/offlineimap.conf
   install -D -m644 offlineimap.conf.minimal ${pkgdir}/usr/share/offlineimap/offlineimap.conf.minimal
+
+#systemd files
+  install -Dm644 contrib/systemd/mail.target "${pkgdir}"/usr/lib/systemd/user/mail.target
+  install -Dm644 contrib/systemd/$pkgname.service "${pkgdir}"/usr/lib/systemd/user/$pkgname.service
+  install -Dm644 contrib/systemd/$pkgname.timer "${pkgdir}"/usr/lib/systemd/user/$pkgname.timer
+  install -Dm644 contrib/systemd/$pkgname@.service "${pkgdir}"/usr/lib/systemd/user/$pkgname@.service
+  install -Dm644 contrib/systemd/$pkgname@.timer "${pkgdir}"/usr/lib/systemd/user/$pkgname@.timer
 }
 
 # vim:set ts=2 sw=2 et:
