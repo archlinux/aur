@@ -1,6 +1,6 @@
 # Maintainer: FzerorubigD <Fzerorubigd {AT} GMail {DOT} com>
 pkgname=protobuf-go
-pkgver=408.7cc19b7
+pkgver=410.cd85f19
 pkgrel=1
 pkgdesc="Go support for Google's protocol buffers"
 arch=('i686' 'x86_64' 'armv5tel' 'armv6l' 'armv71')
@@ -29,5 +29,5 @@ build() {
 
 package() {
   mkdir -p $pkgdir/usr/bin
-  install -m755 $srcdir/bin/cow $pkgdir/usr/bin/protoc-gen-go
+  install -m755 $srcdir/bin/protoc-gen-go $pkgdir/usr/bin/protoc-gen-go
 }
