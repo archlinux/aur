@@ -3,7 +3,7 @@
 
 pkgname=openttd-jgrpp-git
 _installname=openttd
-pkgver=1.5.2rc1+r27518+p0.12.0+r13.def2403
+pkgver=1.6.0+r27564+p0.13.2+r3.0f11908
 pkgrel=1
 pkgdesc="OpenTTD with JGR's patch pack"
 arch=('i686' 'x86_64')
@@ -19,6 +19,7 @@ _gitname=OpenTTD-patches
 
 # If you want the latest *stable* release of the patch pack, uncomment this line:
 # _fragment="#tag=jgrpp-0.12.0"
+#_fragment=#branch=crashlog_header_compile_fix_tmp
 
 source=("git+https://github.com/JGRennison/$_gitname.git$_fragment"
         "http://finger.openttd.org/tags.txt")
@@ -30,6 +31,7 @@ pkgver() {
     _openttdver="$(cat "$srcdir"/tags.txt |
                    awk '$1<='"$_openttdrev"' {print $3; exit}' |
                    sed -e 's/[^0-9a-z.]//ig' -e 's/./\L&/g')"
+    rm "$srcdir"/tags.txt  # make sure it is re-downloaded nect time the package is built
     _patchtag="$(git describe --abbrev=0 --tags)"
     _patchver="$(echo $_patchtag  | sed -e 's/^[a-z-]*//')"
     _patchcommits="$(git log "$_patchtag".. --pretty=oneline | wc -l)"
@@ -41,7 +43,9 @@ pkgver() {
 
 build() {
     cd $_gitname
-
+    
+#     sed -i'' -E 's|\#include \"safeguards\.h\"|#include <string>\n#include "safeguards.h"|' src/crashlog.cpp
+    
     ./configure \
         --prefix-dir=/usr \
         --binary-name=$_installname \
@@ -50,8 +54,8 @@ build() {
         --install-dir=$pkgdir \
         --doc-dir=share/doc/$_installname \
         --menu-name="OpenTTD" \
-        --personal-dir=.$_installname
-#        --without-libbfd
+        --personal-dir=.$_installname # \
+        # --without-libbfd
 
     make
 }
