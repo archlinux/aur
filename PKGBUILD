@@ -3,8 +3,8 @@
 # Contributor: Maik Broemme <mbroemme@libmpq.org>
 
 pkgname=asterisk
-pkgver=13.9.0
-pkgrel=2
+pkgver=13.9.1
+pkgrel=1
 pkgdesc="A complete PBX solution"
 arch=('i686' 'x86_64')
 backup=('etc/asterisk/acl.conf'
@@ -126,7 +126,7 @@ source=(http://downloads.asterisk.org/pub/telephony/asterisk/releases/asterisk-$
 	${pkgname}.logrotated \
 	${pkgname}.tmpfile)
 install=${pkgname}.install
-sha256sums=('df6d00957c38f6e27bcbaf3feb0d55ee436550d6756dcc7e34b52eece7c9050f'
+sha256sums=('00e51aeaf077b54e610ebb5ebe64097f3d64da2cc2aecab25306dd74de96a236'
             '94acb6e68424195a12fd9d406b3fb586f264a550e75801f6e020a86e800dd42c'
             'caa24cfec5c6b4f8cea385269e39557362acad7e2a552994c3bc24080e3bdd4e'
             '673c0c55bce8068c297f9cdd389402c2d5d5a25e2cf84732cb071198bd6fa78a')
