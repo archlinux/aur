@@ -30,9 +30,9 @@ pkgver() {
 
 pkgname=nginx-nchan
 pkgver=1.10.0.nchan.0.99.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Nginx + Nchan - a flexible pub/sub server"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 
 
 depends=('pcre' 'zlib' 'openssl')
@@ -95,7 +95,11 @@ build() {
     --with-http_flv_module
     --with-http_mp4_module
     --with-http_secure_link_module
-    --with-debug
+    --with-pcre-jit
+    --with-file-aio
+    --with-stream
+    --with-stream_ssl_module
+    --with-ipv6
     --add-module="${srcdir}/nchan")
 
   CFLAGS="$CFLAGS -ggdb" #make sure debug symbols are present
@@ -121,7 +125,7 @@ package() {
   
   install -D -m644 "${srcdir}/nginx.logrotate" "${pkgdir}/etc/logrotate.d/${_pkgname}"
   install -D -m644 "${srcdir}/nginx.conf" "${pkgdir}/etc/conf.d/${_pkgname}"
-  install -D -m644 "${srcdir}/nginx.service" "${pkgdir}/lib/systemd/system/nginx.service"
+  install -D -m644 "${srcdir}/nginx.service" "${pkgdir}/usr/lib/systemd/system/nginx.service"
   install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/nginx/LICENSE"
 
 }
