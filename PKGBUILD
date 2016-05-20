@@ -9,17 +9,15 @@ url="https://github.com/zlsun/yah3c"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://github.com/zlsun/yah3c/archive/v${pkgver}.tar.gz")
+source=("https://github.com/zlsun/yah3c/archive/v$pkgver.tar.gz")
 md5sums=("e5f195a5338b1b269e7e06ccfd8a32f0")
 
-build ()
-{
-    cd "$srcdir/${pkgname}-${pkgver}"
+build() {
+    cd "$srcdir/$pkgname-$pkgver"
     python setup.py build
 }
 
-package ()
-{
-    cd "$srcdir/${pkgname}-${pkgver}"
+package() {
+    cd "$srcdir/$pkgname-$pkgver"
     python setup.py install --root="$pkgdir" --optimize=1
 }
