@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=OpenRW
+Comment=OpenRW "Open ReWrite" is an un-official open source recreation of the classic Grand Theft Auto III game executable
+Exec=rwgame
+Icon=openrw
+Terminal=false
+Categories=Game;
