@@ -16,6 +16,7 @@ pkgbase = idos-timetable-data-inprop-mhd-michalovce-latest
 	provides = idos-timetable-data-mhd=2015_12_4
 	provides = idos-timetable-data-mhd-michalovce=2015_12_4
 	conflicts = idos-timetable-data-inprop-mhd-michalovce
+	conflicts = idos-timetable-data-mhd-sk-all
 	source = http://www.inprop.sk/Data/MDMiSk.exe
 	source = license-dummy.txt
 	sha256sums = SKIP

@@ -35,6 +35,7 @@ provides=(
 
 conflicts=(
   "${_pkgname}"
+  "idos-timetable-data-mhd-sk-all"
 )
 
 _sourcefile="MDMiSk.exe"
