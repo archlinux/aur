@@ -90,7 +90,7 @@ int main(int argc, char *argv[]) {
         else
             action = 0;
     if( action == -1 ) {
-        cout << "Usage : todo [show,add,remove,check,set]" << endl;
+        cout << "Usage : todo [show,add,remove,check,set,clean/clear,checked,unchecked]" << endl;
     } else {
         ifstream file(".todo.txt", ios::in);
 
