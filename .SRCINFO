@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-data-chaps-all-latest
 	pkgdesc = Timetable data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport, some air transport. Note that some timetables need the purchased version of IDOS to run.
 	pkgver = 2016_5_19
-	pkgrel = 2
+	pkgrel = 4
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = i686
@@ -18,6 +18,10 @@ pkgbase = idos-timetable-data-chaps-all-latest
 	optdepends = idos-timetable-additionalinfo-MHD-ODIS: For links to information about changes, fares, salespoints ... in the ODIS-region.
 	provides = idos-timetable-data-chaps-all=2016_5_19
 	provides = idos-timetable-data=2016_5_19
+	provides = idos-timetable-data-trains=2016_5_19
+	provides = idos-timetable-data-bus=2016_5_19
+	provides = idos-timetable-data-MHD=2016_5_19
+	provides = idos-timetable-data-flights=2016_5_19
 	provides = idos-timetable-data-trains-cz=2016_5_19
 	provides = idos-timetable-data-trains-europe=2016_5_19
 	provides = idos-timetable-data-trains-IDOL=2016_5_19
@@ -143,7 +147,6 @@ pkgbase = idos-timetable-data-chaps-all-latest
 	provides = idos-timetable-data-MHD-Zamberk=2016_5_19
 	provides = idos-timetable-data-MHD-Zatec=2016_5_19
 	provides = idos-timetable-data-MHD-ZdarNS=2016_5_19
-	provides = idos-timetable-data-flights=2016_5_19
 	conflicts = idos-timetable-data-chaps-all
 	source = komplet.zip::http://ttakt.chaps.cz/TTAktual/Win/Zip/KOMPLET.ZIP
 	source = IDOS-Licence.pdf::http://chaps.cz/files/idos/IDOS-Licence.pdf

@@ -4,7 +4,7 @@ _pkgname=idos-timetable-data-chaps-all
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2016_5_19
-pkgrel=2
+pkgrel=4
 pkgdesc="Timetable data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport, some air transport. Note that some timetables need the purchased version of IDOS to run."
 arch=('i686' 'x86_64')
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
@@ -30,6 +30,10 @@ provides=(
   "${_pkgname}=${pkgver}"
   
   "idos-timetable-data=${pkgver}"
+  "idos-timetable-data-trains=${pkgver}"
+  "idos-timetable-data-bus=${pkgver}"
+  "idos-timetable-data-MHD=${pkgver}"
+  "idos-timetable-data-flights=${pkgver}"
   
   "idos-timetable-data-trains-cz=${pkgver}"
   "idos-timetable-data-trains-europe=${pkgver}"
@@ -156,8 +160,6 @@ provides=(
   "idos-timetable-data-MHD-Zamberk=${pkgver}"
   "idos-timetable-data-MHD-Zatec=${pkgver}"
   "idos-timetable-data-MHD-ZdarNS=${pkgver}"
-  
-  "idos-timetable-data-flights=${pkgver}"
 )
 
 conflicts=(
