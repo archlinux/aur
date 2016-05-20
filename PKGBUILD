@@ -8,7 +8,7 @@ pkgver(){
 }
 pkgrel=1
 pkgdesc="A dynamic window manager for X"
-url="http://dwm.suckless.org"
+url="https://git.uleenucks.de/builds/"
 arch=('i686' 'x86_64')
 license=('MIT')
 options=(zipman)
