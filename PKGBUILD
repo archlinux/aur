@@ -1,17 +1,17 @@
 # Maintainer: Martin Hundebøll <martin@hundeboll.net>
-_pkgname=gotty
+_pkgname=tio
 pkgname=$_pkgname-git
-pkgver=1.2.r0.g689cedf
+pkgver=1.13.r7.gdc455eb
 pkgrel=1
-pkgdesc="Go TTY - The Really Simple TTY Terminal Application"
-url="http://gotty.io"
+pkgdesc="The simple TTY terminal I/O application"
+url="http://tio.github.io"
 arch=('x86_64' 'i686')
 license=('GPLv2')
-conflicts=('gotty')
-provides=('gotty')
+conflicts=('tio')
+provides=('tio')
 makedepends=('git')
-source=("git+https://github.com/gotty/gotty.git")
-sha256sums=("SKIP")
+source=("git+https://github.com/tio/tio.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
