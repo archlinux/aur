@@ -1,4 +1,5 @@
 # Maintainer : Mark Weiman <mark dot weiman at markzz dot com>
+# Contributor: David Hummel <dhummel at eml dot cc>
 # Contributor: Keshav Amburay <(the ddoott ridikulus ddoott rat) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 # Contributor: Andre Osku Schmidt (oskude) <(andre.osku.schmidt) (aatt) (gemmaeiil) (ddoott) (ccoomm)>
 
@@ -25,7 +26,7 @@ _OPENSSL_VERSION="1.0.2g"
 _pkgname="ovmf"
 pkgname="${_pkgname}-git"
 
-pkgver=18129.877c0a9
+pkgver=18726.edddb94
 pkgrel=1
 pkgdesc="UEFI Firmware (OVMF) with Secure Boot Support - for Virtual Machines (QEMU) - from Tianocore EDK2 - GIT Version"
 url="https://tianocore.github.io/ovmf/"
@@ -42,10 +43,12 @@ provides=('ovmf' 'ovmf-bin' 'ovmf-svn')
 install="${_pkgname}.install"
 
 source=("${_TIANO_DIR_}::git+https://github.com/tianocore/edk2.git#branch=master"
-        "https://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz")
+        "https://www.openssl.org/source/openssl-${_OPENSSL_VERSION}.tar.gz"
+        "gcc-6.0.patch")
 
 sha1sums=('SKIP'
-          '36af23887402a5ea4ebef91df8e61654906f58f2')
+          '36af23887402a5ea4ebef91df8e61654906f58f2'
+          'e90e571e5ee2456bbd4c6a90696d0f440d6a0f69')
 
 noextract=("openssl-${_OPENSSL_VERSION}.tar.gz")
 
@@ -126,6 +129,9 @@ _prepare_openssl_udk_dir() {
 }
 
 prepare() {
+
+  # Fixes build when using gcc-6.0+
+  patch -Np0 -i gcc-6.0.patch
 	
 	_bail_out
 	
