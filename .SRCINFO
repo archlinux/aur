@@ -1,7 +1,7 @@
 pkgbase = kerneloops-git
 	pkgdesc = Client tool for reporting OOPS to http://oops.kernel.org/
 	pkgver = 0.12.r28.g64e6bd9
-	pkgrel = 1
+	pkgrel = 4
 	url = http://oops.kernel.org/
 	arch = i686
 	arch = x86_64
