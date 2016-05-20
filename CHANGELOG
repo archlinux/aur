@@ -1,0 +1,23 @@
+### v2.1.0
+You'll need to reauthenticate with this release.
+
+* Uses go-xREL-API v2.1.0
+* added --listName
+* --showUnreadFavorites now only shows entries with unread releases
+
+
+### v2.0.0
+You will need to reauthenticate with this release.
+
+* Implemented go-xREL-API v2
+* Added --getNFOImage
+* Added --addProof
+* Added --markAsRead
+
+
+### v1.0.3
+* Added better error handling to JSON parser
+
+
+### v1.0.1
+First release.
