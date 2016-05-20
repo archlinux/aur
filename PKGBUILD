@@ -4,7 +4,7 @@
 _npmname=tldr
 _pkgname=nodejs-tldr
 pkgname=nodejs-tldr-git
-pkgver=r1645.f4b7d59
+pkgver=r1695.084986a
 pkgrel=1
 pkgdesc="Simplified and community-driven man pages (git version)"
 arch=('any')
@@ -13,19 +13,16 @@ license=('MIT')
 makedepends=('git')
 depends=('nodejs' 'npm')
 conflicts=('nodejs-tldr')
-install=INSTALL
-source=("${_npmname}::git+${url}.git" 
-        'INSTALL')
-sha256sums=('SKIP' 
-            'af735c4cdc2375b09d4dd3c3e56bc5d921d42cfc64804b88f80cd678cba9dcef')
+install='INSTALL'
+source=("${_npmname}::git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver(){
-    cd ${srcdir}/${_npmname}
+    cd ${_npmname}
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    cd ${srcdir}
     local _npmdir="${pkgdir}/usr/lib/node_modules/"
     mkdir -p ${_npmdir}
     cd ${_npmdir}
