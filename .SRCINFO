@@ -5,6 +5,7 @@ pkgbase = idos-timetable-data-chaps-trains-cz-latest
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatt
 	arch = any
+	groups = idos-timetable
 	license = custom
 	makedepends = wget
 	depends = idos-timetable-data-trains-common
