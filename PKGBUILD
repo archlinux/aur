@@ -22,6 +22,8 @@ makedepends=(
 
 optdepends=()
 
+options=('!strip')
+
 provides=(
   "${_pkgname}=${pkgver}"
   
