@@ -3,7 +3,7 @@
 pkgbase=('http-prompt')
 pkgname=('http-prompt')
 _module='http-prompt'
-pkgver='0.1.1'
+pkgver='0.2.0'
 pkgrel=1
 pkgdesc="An interactive HTTP command-line client"
 url="https://github.com/eliangcs/http-prompt"
@@ -11,8 +11,8 @@ depends=('python' 'python-click' 'httpie' 'python-prompt_toolkit' 'python-pygmen
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/2c/67/8ba4088f8f45cd1d431a11149480f7780207692c82e013a518e388d36590/http-prompt-${pkgver}.tar.gz")
-md5sums=('f84290db4dde3de7f8d47ee4fa9431bf')
+source=("https://pypi.python.org/packages/9f/5f/344abbe7eea45e8116f1c7b975f6e8e7aeb8959f637d41347259703149e0/http-prompt-${pkgver}.tar.gz")
+md5sums=('3d5b1418188be4814fc3488309fbe065')
 
 package() {
     cd "${srcdir}/${_module}-${pkgver}"
