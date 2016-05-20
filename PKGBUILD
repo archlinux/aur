@@ -26,15 +26,15 @@ prepare() {
 }
 
 build() {
-  cd $_pkgname-$pkgver
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make
+    cd "$_pkgname-$pkgver"
+    ./autogen.sh
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-  cd $_pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
-  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$_pkgname/COPYING
+    cd "$_pkgname-$pkgver"
+    make DESTDIR="$pkgdir" install
+    install -Dm644 COPYING "$pkgdir"/usr/share/licenses/$_pkgname/COPYING
 }
 
