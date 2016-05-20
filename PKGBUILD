@@ -1,7 +1,7 @@
 # Maintainer: Hsiu-Ming Chang <cges30901 at gmail dot com>
 pkgname=hmtimer
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="graphical shutdown timer"
 arch=('i686' 'x86_64')
 url="https://sites.google.com/site/hsiumingstimer/"
