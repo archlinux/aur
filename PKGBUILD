@@ -10,6 +10,10 @@ arch=(any)
 url="http://www.inprop.sk/download.aspx"
 license=('custom')
 
+groups=(
+        "idos-timetable"
+       )
+
 depends=(
          "idos-timetable-browser"
         )
