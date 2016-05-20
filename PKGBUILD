@@ -3,7 +3,7 @@
 
 pkgname=nodejs-git
 pkgver=5.11.1.r1.g21552bd
-pkgrel=1
+pkgrel=2
 pkgdesc='Evented I/O for V8 javascript'
 arch=('i686' 'x86_64')
 url='http://nodejs.org/'
@@ -13,17 +13,17 @@ makedepends=('python2' 'procps-ng' 'git')
 optdepends=('npm: nodejs package manager')
 provides=('nodejs')
 conflicts=('nodejs')
-source=($pkgname::git://github.com/nodejs/node#branch=v5.x)
+source=(${pkgname%-git}::git+https://github.com/nodejs/node#branch=v5.x)
 sha256sums=('SKIP')
 options=('!makeflags')
 
 pkgver() {
-  cd $pkgname
+  cd ${pkgname%-git}
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 prepare() {
-  cd $pkgname
+  cd ${pkgname%-git}
 
   msg 'Fixing for python2 name'
   find -type f -exec sed \
@@ -37,7 +37,7 @@ prepare() {
 }
 
 build() {
-  cd $pkgname
+  cd ${pkgname%-git}
 
   export PYTHON=python2
   ./configure \
@@ -54,7 +54,7 @@ build() {
 }
 
 package() {
-  cd $pkgname
+  cd ${pkgname%-git}
   make DESTDIR="$pkgdir" install
 
   # install docs as per user request
