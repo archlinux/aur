@@ -1,7 +1,7 @@
 # Maintainer: Dario Ostuni <another.code.996@gmail.com>
 pkgname=grainbow-git
 pkgver=r2.cff35ea
-pkgrel=1
+pkgrel=2
 pkgdesc="Color the screen with a rainbow (libgamma version)"
 arch=('i686' 'x86_64')
 url="https://github.com/dariost/GRainbow"
@@ -24,5 +24,5 @@ build() {
 package() {
     cd "$srcdir/GRainbow"
     install -Dm755 grainbow "$pkgdir/usr/bin/grainbow"
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/xrainbow/LICENSE"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/grainbow/LICENSE"
 }
