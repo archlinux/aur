@@ -1,19 +1,20 @@
 # Maintainer: wenLiangcan <boxeed at gmail dot com>
 
-pkgname=feeluown-git
 _pkgname=feeluown
+pkgname="${_pkgname}-git"
 pkgver=9.1a.22.gd1090d6
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="个性化音乐服务 For Mac And Linux"
 arch=("any")
 url="https://github.com/cosven/FeelUOwn"
 license=('GPL3')
-depends=('python-pyqt5' 'python-requests' 'python-quamash' 'qt5-multimedia' 'python-crypto' 'xdg-utils' 'sh') # 'python-sqlalchemy' 'python-dbus' 'python-yaml')
-optdepends=('vlc')
+depends=('python-pyqt5' 'python-requests' 'python-quamash' 'qt5-multimedia' 'python-crypto' 'xdg-utils' 'sh')
+optdepends=('vlc'
+            'feeluown-mpris2-plugin-git: MPRIS support')
 makedepends=('git' 'python-setuptools')
-provides=("feeluown")
-conflicts=("feeluown")
+provides=("${_pkgname}==${pkgver}")
+conflicts=("${_pkgname}")
 source=("${_pkgname}"::'git://github.com/cosven/FeelUOwn.git')
 md5sums=('SKIP')
 install="${pkgname}.install"
