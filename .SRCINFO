@@ -1,0 +1,17 @@
+pkgbase = adapta-themes-git
+	pkgdesc = An adaptive Gtk+ theme based on Material Design Guidelines (GTK3, GTK2, Gnome Shell)
+	pkgver = 3.21.1.204.r7.g679fb99
+	pkgrel = 1
+	url = https://github.com/tista500/Adapta
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = gtk-engines
+	depends = gtk-engine-murrine
+	provides = adapta-themes
+	conflicts = adapta-themes
+	source = adapta-themes-git::git+https://github.com/tista500/Adapta.git
+	sha256sums = SKIP
+
+pkgname = adapta-themes-git
+
