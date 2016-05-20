@@ -17,7 +17,8 @@ mrproper: clean
 /usr/bin/todo: todo
 	cp ./todo /usr/bin/
 
-install: /usr/bin/todo
+install: todo
+	[ -e /usr/bin/todo ] && sudo cp todo /usr/bin/todo
 
 uninstall: /usr/bin/todo
 	rm /usr/bin/todo
