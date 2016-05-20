@@ -13,7 +13,7 @@ _minor=17209
 pkgname="komodo-edit"
 _bigname="Komodo-Edit"
 pkgver="${_major}_${_minor}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Free & Open-Source counterpart of ActiveState Komodo IDE - XUL based"
 arch=(i686 x86_64)
 url="http://www.activestate.com/komodo-edit"
@@ -34,8 +34,8 @@ sha256sums_x86_64=('a094592b3187b10ba69cafde747ddc6bc77ce49516b044fd0a0c53eff542
 
 prepare() {
   cd ${srcdir}/${_bigname}-${_major}-${_minor}-linux-${_arch}
-  sed -i "s/__VERSION__/${_major}-${minor}/" ${srcdir}/_install.py.patch
-  sed -i "s/__VERSION__/${_major}-${minor}/" ${srcdir}/activestate.py.patch
+  sed -i "s/__VERSION__/${_major}-${_minor}/" ${srcdir}/_install.py.patch
+  sed -i "s/__VERSION__/${_major}-${_minor}/" ${srcdir}/activestate.py.patch
   if [ $_arch == "x86_64" ] ; then
     sed -i "s/__ARCH__/x86_64/" ${srcdir}/_install.py.patch
     sed -i "s/__ARCH__/x86_64/" ${srcdir}/activestate.py.patch
