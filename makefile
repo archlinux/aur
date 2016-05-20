@@ -19,6 +19,7 @@ mrproper: clean
 
 install: todo
 	[ -e /usr/bin/todo ] && sudo cp todo /usr/bin/todo
+	echo 'Installation success'
 
 uninstall: /usr/bin/todo
 	rm /usr/bin/todo
