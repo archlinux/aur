@@ -84,13 +84,13 @@ int main(int argc, char *argv[]) {
             action = 6;
         }else if ( !strcmp( argv[1], "clean") || !strcmp( argv[1], "clear") ) {
             action = 7;
-        }else if ( !strcmp( argv[1], "unchecked") ) {
+        }else if ( !strcmp( argv[1], "unchecked") || !strcmp( argv[1], "todo") ) {
             action = 8;
         }else {}
         else
             action = 0;
     if( action == -1 ) {
-        cout << "Usage : todo [show,add,remove,check,set,clean/clear,checked,unchecked]" << endl;
+        cout << "Usage : todo [show,add,remove,check,set,clean/clear,checked,unchecked/todo]" << endl;
     } else {
         ifstream file(".todo.txt", ios::in);
 
