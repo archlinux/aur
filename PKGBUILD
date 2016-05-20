@@ -14,17 +14,14 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/yetist/$pkgname/archive/v$p
 md5sums=('94622dfaddbf68722d772a85902e2518')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  ./autogen.sh
-  ./configure --prefix=/usr
-  make || return 1
+    cd "$srcdir/$pkgname-$pkgver"
+    ./autogen.sh
+    ./configure --prefix=/usr
+    make || return 1
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  make DESTDIR="$pkgdir/" install || return 1
+    cd "$srcdir/$pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" install || return 1
 }
-
 
