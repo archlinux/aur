@@ -1,8 +1,8 @@
 # Maintainer: Danilo Bargen <aur at dbrgn dot ch>
 pkgname=openmittsu-git
 _fullname=openMittsu
-pkgver=r8.d61d58c
-pkgrel=2
+pkgver=r41.d6572ac
+pkgrel=1
 pkgdesc="An open source implementation and desktop client of the Threema Messenger App."
 arch=('x86_64' 'i686')
 url="https://github.com/blizzard4591/openMittsu"
