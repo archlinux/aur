@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-yasnippet-git
-pkgver=0.9.1_32_g0d79e69
+pkgver=0.9.1_34_g497867c
 pkgrel=1
 pkgdesc="Yet another template system for Emacs - git version"
 arch=('any')
