@@ -28,7 +28,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver-src"
+  cd "$pkgname-$pkgver"
 
   install -D -m0755 hmtimer/hmtimer $pkgdir/usr/bin/hmtimer
   install -D -m0644 hmtimer/language/hmtimer_zh_TW.qm $pkgdir/usr/share/hmtimer/hmtimer_zh_TW.qm
