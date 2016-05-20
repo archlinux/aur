@@ -1,8 +1,8 @@
 # Maintainer: Sebastian Lau <lauseb644 _at_ gmail _dot_ com>
 
 pkgname="repo-maintainer"
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Tools for maintaining repositories for ArchLinux [BETA]"
 arch=('any')
 url="https://git.0ptr.de/nullptr_t/repo-maintainer"
