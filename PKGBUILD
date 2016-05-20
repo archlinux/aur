@@ -10,6 +10,10 @@ arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatar"
 license=('custom')
 
+groups=(
+        "idos-timetable"
+       )
+
 depends=(
          # "idos-timetable-data"
          "idos-timetable-data-trains"
