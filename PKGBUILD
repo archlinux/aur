@@ -7,7 +7,7 @@ url="https://github.com/mineo/abzer"
 license=('MIT')
 source=('git+https://github.com/mineo/abzer')
 md5sums=('SKIP')
-depends=('python' 'python-aiohttp')
+depends=('essentia-acousticbrainz' 'python' 'python-aiohttp')
 makedepends=('git')
 
 pkgver(){
