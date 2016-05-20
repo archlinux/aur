@@ -3,9 +3,9 @@
 _pkgname=idos-timetable-data-inprop-mhd-michalovce
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2016_5_17
-pkgrel=1
-pkgdesc="Banská Bystrica public transport data for the IDOS timetable browser, data provided by INPROP."
+pkgver=2015_12_4
+pkgrel=2
+pkgdesc="Michalovce public transport data for the IDOS timetable browser, data provided by INPROP."
 arch=(any)
 url="http://www.inprop.sk/download.aspx"
 license=('custom')
