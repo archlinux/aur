@@ -17,9 +17,14 @@
 #### Wget https settings
 WGET_HSTS="--no-hsts"
 
-#### Check for the latest availible version, and get the current changlog version
-VERSION=$(wget $WGET_HSTS -qO - /dev/null "http://www.tenable.com/products/nessus/new-in-nessus"  | grep -o "New in Nessus [0-9.0-9.0-9]*"  | grep -o "[0-9.0-9.0-9]*" | head -1 | sed s/[.]/-/g)
-RELEASE=$(wget $WGET_HSTS -qO - /dev/null  http://www.tenable.com/products/nessus/new-in-nessus/$VERSION | grep -o "Changelog - [0-9.0-9.0-9]*" | head -1 | awk '{print $NF}')
+#### Check for the latest available version, and get the current changelog version
+# TODO: This is currently not working (as of 6.7.0) so I'm hard-coding it.
+#VERSION=$(wget $WGET_HSTS -qO - /dev/null "http://www.tenable.com/products/nessus/new-in-nessus"  | grep -o "New in Nessus [0-9.0-9.0-9]*"  | grep -o "[0-9.0-9.0-9]*" | head -1 | sed s/[.]/-/g)
+#RELEASE=$(wget $WGET_HSTS -qO - /dev/null  http://www.tenable.com/products/nessus/new-in-nessus/$VERSION | grep -o "Changelog - [0-9.0-9.0-9]*" | head -1 | awk '{print $NF}')
+
+RELEASE=6.7.0
+
+echo -e "Downloading Nessus $RELEASE from downloads.nessus.org ... "
 
 for FEDORA in {0..9}
 	do
@@ -33,3 +38,5 @@ else
 	break
 fi
 done
+
+echo -e "... Download script has finished."
