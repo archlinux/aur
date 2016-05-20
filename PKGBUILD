@@ -9,7 +9,7 @@
 
 pkgname=popcorntime
 pkgver=0.3.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="http://popcorntime.sh/"
@@ -19,6 +19,7 @@ makedepends=(
 	'bower'
 	'nodejs-grunt-cli'
 	'gulp'
+	'git'
 )
 depends=(
 	'alsa-lib'
@@ -31,15 +32,15 @@ depends=(
 )
 optdepends=('net-tools: vpn.ht client')
 options=('!strip')
-install="popcorntime.install"
+#install="popcorntime.install"
 # Needed variables for sources downloads
-_commit_hash="39a1eecc324acb375cc440897f58c3cc7ddeae91"
+_commit_hash="18156908dd1580db889f6fcb3d8dfe0fd3214808"
 _pkgname="popcorn-desktop"
 source=(
 	"${_pkgname}_${pkgver}.tar.gz::https://github.com/popcorn-official/popcorn-desktop/archive/${_commit_hash}.tar.gz"
 	"popcorntime.desktop"
 )
-sha256sums=('c6d6970dba10597eceb65c87393a54685220901de7d306f22b209761b8d92681'
+sha256sums=('31b893cbcd730a0bc3be81566fee4de8d40a7071df88fba473fe95f1b8b107fe'
             '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
 
 # Useful variables for builds
