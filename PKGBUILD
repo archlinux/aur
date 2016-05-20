@@ -24,4 +24,4 @@ package() {
 	
 	# The below file is owned by the package linux-firmware and so should not be extracted
 	# install -Dm644 v4l-cx23885-avcore-01.fw "$_systemdbasedir/v4l-cx23885-avcore-01.fw"
-	}
+}
