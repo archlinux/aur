@@ -13,14 +13,12 @@ source=("http://liblunar.googlecode.com/files/$pkgname-$pkgver.tar.gz")
 sha256sums=('8cdbf367250e48774f79a10897126e0e92171b49167959b72554e583999a3294')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  ./configure --prefix=/usr
-  make || return 1
+    cd "$srcdir/$pkgname-$pkgver"
+    ./configure --prefix=/usr
+    make || return 1
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  make DESTDIR="$pkgdir/" install || return 1
+    cd "$srcdir/$pkgname-$pkgver"
+    make DESTDIR="$pkgdir/" install || return 1
 }
