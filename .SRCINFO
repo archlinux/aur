@@ -1,5 +1,5 @@
 pkgbase = jdk-devel-docs
-	pkgver = 9b118
+	pkgver = 9b119
 	pkgrel = 1
 	url = https://jdk9.java.net/
 	arch = any
@@ -7,8 +7,8 @@ pkgbase = jdk-devel-docs
 	optdepends = java-runtime>=9: Run the examples
 	optdepends = java-environment>=9: Compile and run the examples
 	options = !strip
-	source = http://www.java.net/download/java/jdk9/archive/118/binaries/jdk-9_doc-api-spec.tar.gz
-	source = http://www.java.net/download/java/jdk9/archive/118/binaries/javafx-9_doc.zip
+	source = http://www.java.net/download/java/jdk9/archive/119/binaries/jdk-9_doc-api-spec.tar.gz
+	source = http://www.java.net/download/java/jdk9/archive/119/binaries/javafx-9_doc.zip
 	source = LICENSE
 	md5sums = 7a4e543bb2b872abe6975c70f464793c
 	md5sums = 1324c8739686029c5811c1cb18d993d8
