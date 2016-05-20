@@ -84,7 +84,7 @@ int main(int argc, char *argv[]) {
             action = 6;
         }else if ( !strcmp( argv[1], "clean") || !strcmp( argv[1], "clear") ) {
             action = 7;
-        }else if ( !strcmp( argv[1], "clean") ) {
+        }else if ( !strcmp( argv[1], "unchecked") ) {
             action = 8;
         }else {}
         else
