@@ -4,8 +4,8 @@ _pkgname=idos-timetable-tariff-chaps-trains-cz
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2016_5_18
-pkgrel=2
-pkgdesc="Tariff data for the timetable search engines by CHAPS: Czech trains."
+pkgrel=3
+pkgdesc="Tariff data for the timetable search engines by CHAPS: Czech ans Slovak trains."
 arch=('i686' 'x86_64')
 url="http://chaps.cz/eng/download/idos/zip#kotvatar"
 license=('custom')
@@ -27,6 +27,7 @@ provides=(
   "idos-timetable-tariff=${pkgver}"
   
   "idos-timetable-tariff-trains-cz=${pkgver}"
+  "idos-timetable-tariff-trains-sk=${pkgver}"
 )
 
 conflicts=(
