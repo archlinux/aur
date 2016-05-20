@@ -3,7 +3,7 @@
 ## Contributor StormDragon <stormdragon2976@gmail.com>
 pkgname=fluxable-newmenu
 _pkgname=fluxable-newmenu
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="provides categorized apps menus similar to those found in Mate or XFCE"
 arch=('any')
