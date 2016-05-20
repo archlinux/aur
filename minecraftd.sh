@@ -78,16 +78,19 @@ idle_server_daemon() {
 	no_player=0
 
 	while true; do
+		echo -e "no_players: ${no_player}s\tcheck_player_time: ${CHECK_PLAYER_TIME}s\tidle_if_time: ${IDLE_IF_TIME}s"
 		# Retry in ${CHECK_PLAYER_TIME} seconds
 		sleep ${CHECK_PLAYER_TIME}
 
 		screen -S "${SESSION_NAME}" -Q select . > /dev/null
 		if [[ $? -eq 0 ]]; then
 			# Game server is up and running
-			screen -S "${SESSION_NAME}" -X stuff "`printf \"list\r\"`"
+			if [[ "$(screen -S "${SESSION_NAME}" -ls | sed -n 2p | awk '{ print $2 }')" == "(Attached)" ]]; then
+				# An administrator is connected to the console, pause player checking
+				echo "An admin is connected to the console. Pause player checking."
 			# The list command prints a line containing the usernames after the last occurrence of ": "
 			# and since playernames may not contain this string the clean player-list can be easily retrieved.
-			if [[ $? -eq 0 && -z $(sleep 0.6; tail -n 1 "${LOGPATH}/latest.log" | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' | sed 's/.*\: //' | tr -d '\n') ]]; then
+			elif [[ -z $(SUDO_CMD="" game_command list; sleep 0.6; tail -n 1 "${LOGPATH}/latest.log" | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' | sed 's/.*\: //' | tr -d '\n') ]]; then
 				# No player was seen on the server through list
 				no_player=$(( no_player + CHECK_PLAYER_TIME ))
 				# Stop the game server if no player was active for at least ${IDLE_IF_TIME}
@@ -103,7 +106,7 @@ idle_server_daemon() {
 					# Reset timer and give the player 300 seconds to connect after pinging
 					no_player=$(( IDLE_IF_TIME - 300 ))
 					# Game server is down, listen on port ${GAME_PORT} for incoming connections
-					echo "Netcat is listening on port ${GAME_PORT} for incoming connections..."
+					echo -n "Netcat: "
 					${NETCAT_CMD} -v -l -p ${GAME_PORT}
 					[[ $? -eq 0 ]] && echo "Netcat caught an connection. The server is coming up again..."
 					IDLE_SERVER="false" ${myname} start
@@ -116,7 +119,7 @@ idle_server_daemon() {
 			# Reset timer and give the player 300 seconds to connect after pinging
 			no_player=$(( IDLE_IF_TIME - 300 ))
 			# Game server is down, listen on port ${GAME_PORT} for incoming connections
-			echo "Netcat is listening on port ${GAME_PORT} for incoming connections..."
+			echo -n "Netcat: "
 			${NETCAT_CMD} -v -l -p ${GAME_PORT}
 			[[ $? -eq 0 ]] && echo "Netcat caught an connection. The server is coming up again..."
 			IDLE_SERVER="false" ${myname} start
@@ -186,10 +189,10 @@ server_stop() {
 	${SUDO_CMD} screen -S "${SESSION_NAME}" -Q select . > /dev/null
 	if [[ $? -eq 0 ]]; then
 		# Game server is up and running, gracefully stop the server when there are still active players
-		${SUDO_CMD} screen -S "${SESSION_NAME}" -X stuff "`printf \"list\r\"`"
+
 		# The list command prints a line containing the usernames after the last occurrence of ": "
 		# and since playernames may not contain this string the clean player-list can be easily retrieved.
-		if [[ $? -eq 0 && -z $(sleep 0.6; tail -n 1 "${LOGPATH}/latest.log" | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' | sed 's/.*\: //' | tr -d '\n') ]]; then
+		if [[ -z $(game_command list; sleep 0.6; tail -n 1 "${LOGPATH}/latest.log" | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' | sed 's/.*\: //' | tr -d '\n') ]]; then
 			# No player was seen on the server through list
 			echo -en "Server is going down..."
 			game_command stop
