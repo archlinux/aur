@@ -2,8 +2,8 @@
 # Contributor: Swen Simon <swsimon at gmail dot com>
 #
 pkgname=epsxe
-pkgver=1.9.25
-pkgrel=10
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="Enhanced PSX emulator"
 url="http://epsxe.com"
 arch=('i686' 'x86_64')
@@ -12,12 +12,17 @@ depends_x86_64+=(lib32-gtk2 lib32-ncurses lib32-libxt lib32-sdl_ttf lib32-alsa-l
 license=('unknown')
 install=${pkgname}.install
 options=(!strip)
-source=(${pkgname}.desktop ${pkgname}.png ${pkgname}.sh
-       "http://www.epsxe.com/files/epsxe${pkgver//./}lin.zip")
+source=(${pkgname}.desktop ${pkgname}.png ${pkgname}.sh)
 md5sums=('f4bdb7ccbebc31f818d34198a5a32e29'
          'eb0c46b8ae1355c589792f6be1835e47'
-         'ebe97b79a25e2622b3595d09f5b2764d'
-         'dc54e1e3406b0010e0552cffabb16c0f')
+         'ebe97b79a25e2622b3595d09f5b2764d')
+if [[ $CARCH == "x86_64" ]]; then
+    source+=("http://www.epsxe.com/files/ePSXe${pkgver//./}linux_x64.zip")
+    md5sums+=('a6e92844922182c9f03343ab3e54865a')
+else
+    source+=("http://www.epsxe.com/files/ePSXe${pkgver//./}linux.zip")
+    md5sums+=('787826ee6b0f95ea2df511dd7fd29abd')
+fi
 _ncurses="$(pacman -Q ncurses | awk '{sub(/-[0-9]+/, "", $2); print $2}')"
 _lib32_ncurses="$(pacman -Q lib32-ncurses | awk '{sub(/-[0-9]+/, "", $2); print $2}')"
 
