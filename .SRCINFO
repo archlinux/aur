@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-dbh
+	pkgdesc = GNU DBH database library (mingw-w64)
+	pkgver = 5.0.20
+	pkgrel = 2
+	url = http://www.gnu.org/software/libdbh/
+	arch = any
+	license = GPL
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-gettext
+	depends = mingw-w64-crt
+	options = staticlibs
+	options = !buildflags
+	options = !strip
+	source = https://sourceforge.net/projects/dbh/files/dbh/5.0.20/libdbh2-5.0.20.tar.gz/download
+	md5sums = b06b504b694e5182f855d642e7dd31af
+
+pkgname = mingw-w64-dbh
+
