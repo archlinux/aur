@@ -3,7 +3,7 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 
 pkgname=linux-api-headers
-pkgver=4.5.2
+pkgver=4.5.5
 _basever=4.5
 pkgrel=1
 pkgdesc="Kernel headers sanitized for use in userspace"
@@ -16,7 +16,7 @@ source=(http://www.kernel.org/pub/linux/kernel/v4.x/linux-${_basever}.tar.xz
         http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign)
 md5sums=('a60d48eee08ec0536d5efb17ca819aef'
          'SKIP'
-         '19a835c1d16183f629d45779f62d36b6'
+         'fe89010925304f6f07713741f0c8e811'
          'SKIP')
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886'   # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E')  # Greg Kroah-Hartman
