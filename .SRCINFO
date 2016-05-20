@@ -1,7 +1,7 @@
 pkgbase = idos-timetable-tariff-chaps-trains-cz-latest
 	pkgdesc = Tariff data for the timetable search engines by CHAPS: Czech ans Slovak trains.
 	pkgver = 2016_5_18
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 0
 	url = http://chaps.cz/eng/download/idos/zip#kotvatar
 	arch = i686
