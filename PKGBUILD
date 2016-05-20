@@ -9,7 +9,6 @@ url="http://chewing.im"
 license=('GPL')
 depends=('libchewing' 'qt5-base' 'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'qt5-tools' 'help2man')
-install=$pkgname.install
 source=("git://github.com/chewing/chewing-editor.git")
 md5sums=('SKIP')
 

@@ -3,7 +3,6 @@ pkgbase = chewing-editor-git
 	pkgver = 0.1.1.r20.g50c105e
 	pkgrel = 1
 	url = http://chewing.im
-	install = chewing-editor-git.install
 	arch = i686
 	arch = x86_64
 	license = GPL
