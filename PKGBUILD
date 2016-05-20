@@ -2,7 +2,7 @@
 
 pkgname=mattercontrol
 _pkgname=MatterControl
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Software solution for 3D printers"
 arch=("i386" "x86_64")
@@ -26,7 +26,7 @@ sha256sums=('SKIP'
 build() {
 	cd "${srcdir}"/${_pkgname}
 
-	git checkout tags/Releases/${pkgver}
+	git checkout ${pkgver}
 	git submodule update --init --recursive
 	mozroots --import --sync
 	nuget restore MatterControl.sln
@@ -34,6 +34,7 @@ build() {
 	xbuild /p:Configuration=Release MatterControl.sln
 	#mdtool build -c:Release MatterControl.sln
 
+	# Serial Helper
 	cd Submodules/agg-sharp/SerialPortCommunication/SerialHelper
 	./build.sh
 }
