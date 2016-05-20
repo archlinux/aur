@@ -1,6 +1,6 @@
 # Maintainer: Bastian Löher <b.loeher@gsi.de>
 pkgname=fairroot
-pkgver=15.11b
+pkgver=15.11c
 fairsoftver=nov15p3-1
 pkgrel=1
 pkgdesc="Analysis framework based on root provided by GSI/FAIR."
@@ -30,7 +30,7 @@ source=("https://github.com/FairRootGroup/FairRoot/archive/v-${pkgver}.tar.gz"
 	'fairroot.install'
 	)
 noextract=()
-md5sums=('5817de31bde9c850b239574a9eae517f'
+md5sums=('775fb31d5c3b99f363a5c9eb9c301698'
          'd2d2d7b11b308120382fba7e32c5268a')
 
 # Do not compress the package for installation
