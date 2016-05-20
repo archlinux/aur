@@ -1,0 +1,18 @@
+--- rtfreadr.c
++++ rtfreadr.c
+@@ -107,13 +107,13 @@
+                         {
+                             if (ch < 'a' || ch > 'f')
+                                 return ecInvalidHex;
+-                            b += (char) ch - 'a';
++                            b += (char) ch - 'a'+10;
+                         }
+                         else
+                         {
+                             if (ch < 'A' || ch > 'F')
+                                 return ecInvalidHex;
+-                            b += (char) ch - 'A';
++                            b += (char) ch - 'A'+10;
+                         }
+                     }
+                     cNibble--;
