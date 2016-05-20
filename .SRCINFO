@@ -1,0 +1,16 @@
+pkgbase = jojodiff-bin
+	pkgdesc = A tool to create and to apply binary patches.
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = http://jojodiff.sourceforge.net/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = lib32-gcc-libs
+	provides = jojodiff=0.8.1
+	conflicts = jojodiff
+	source = jdiff081.tgz::https://sourceforge.net/projects/jojodiff/files/jojodiff/jojodiff08/jdiff081.tgz/download
+	sha256sums = 8681e503c1d9658a89788d7e4c34c08adce5a0114610cfaaefa32f2bbe613058
+
+pkgname = jojodiff-bin
+
