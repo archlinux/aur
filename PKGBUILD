@@ -12,8 +12,8 @@ source=('http://steventoth.net/linux/hvr1800/HVR-12x0-14x0-17x0_1_25_25271_WHQL.
 	'http://steventoth.net/linux/hvr1800/extract.sh'
 	'http://steventoth.net/linux/hvr1800/readme.txt')
 sha256sums=('ccbe3bc8b8545ecf00cf3fc47af1b33f312a6f2e873a3e29ce1e8b82adef49d9'
-	'8c231e54c08920b144df44017db111835c557fca7c4082c412eb6fa9d413be5a'
-	'b6d27d2e6c6d1101556ede4539d672ba6b780462a171a2f9f445a09107228285')
+	    '8c231e54c08920b144df44017db111835c557fca7c4082c412eb6fa9d413be5a'
+	    'b6d27d2e6c6d1101556ede4539d672ba6b780462a171a2f9f445a09107228285')
 
 package() {
 	_systemdbasedir="$pkgdir/usr/lib/firmware"
