@@ -1,0 +1,6 @@
+post_install() {
+  source /etc/profile.d/android-sdk-platform-tools.sh
+  source /etc/profile.d/android-sdk-platform-tools.csh
+}
+
+# vim: ft=sh
