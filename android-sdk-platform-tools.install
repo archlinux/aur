@@ -1,6 +1,5 @@
 post_install() {
-  source /etc/profile.d/android-sdk-platform-tools.sh
-  source /etc/profile.d/android-sdk-platform-tools.csh
+    echo You need to source /etc/profile or relogin to add the Android SDK tools to your path.
 }
 
 # vim: ft=sh
