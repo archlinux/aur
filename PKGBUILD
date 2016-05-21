@@ -33,6 +33,7 @@ build() {
 
 
 package() {
+	mkdir -p $pkgdir/opt/motioneye
 	mkdir -p $pkgdir/etc/motioneye
 	mkdir -p $pkgdir/var/lib/motioneye
 
