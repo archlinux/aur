@@ -1,0 +1,8 @@
+#!/bin/bash
+post_install() {
+echo '
+to use dofi copy /usr/share/doc/dofi/config.example to $HOME/.config/dofi/config
+and edit it to your needs.
+'
+}
+#post_install
