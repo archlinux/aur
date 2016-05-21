@@ -15,7 +15,7 @@
 # archzfs github page.
 #
 pkgname="zfs-utils-linux-git"
-pkgver=0.6.5_r253_ga9bb2b6_4.5.4_1
+pkgver=0.6.5_r286_g9baaa7d_4.5.4_1
 pkgrel=1
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("spl-linux-git" "linux=4.5.4")
@@ -40,7 +40,7 @@ build() {
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --with-mounthelperdir=/usr/bin \
                 --libdir=/usr/lib --datadir=/usr/share --includedir=/usr/include \
-                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-0.6.5.6 \
+                --with-udevdir=/lib/udev --libexecdir=/usr/lib/zfs-0.6.5.7 \
                 --with-config=user
     make
 }
