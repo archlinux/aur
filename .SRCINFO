@@ -1,6 +1,6 @@
 pkgbase = xf86-video-nouveau-blacklist-git
 	pkgdesc = Disable nouveau driver module
-	pkgver = r2.22e5679
+	pkgver = r3.1cf784c
 	pkgrel = 1
 	url = https://github.com/Arondight/xf86-video-nouveau-blacklist.git
 	arch = any

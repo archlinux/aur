@@ -1,7 +1,7 @@
 # Maintainer: Arondight <shell_way@foxmail.com>
 
 pkgname='xf86-video-nouveau-blacklist-git'
-pkgver='r2.22e5679'
+pkgver='r3.1cf784c'
 pkgrel=1
 pkgdesc='Disable nouveau driver module'
 arch=('any')
