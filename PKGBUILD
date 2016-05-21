@@ -1,6 +1,6 @@
 # Maintainer: Kobus van Schoor <pbscube at gmail dot com>
 pkgname=dotgit
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="An easy to use dotfiles manager that can keep multiple configs in a single repo"
 url="http://github.com/Cube777/dotgit"
