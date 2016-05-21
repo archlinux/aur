@@ -10,13 +10,13 @@ source=(http://downloads.sourceforge.net/$pkgname/$pkgname.v.$pkgver.tar.gz)
 md5sums=('99f504dc99bc74e3ad3613e789c09100')
 
 build() {
-  cd "$pkgname.v.0$pkgver"
+  cd "$pkgname.v.$pkgver"
   ./configure
   make all
 }
 
 package() {
-  cd "$pkgname.v.0$pkgver"
+  cd "$pkgname.v.$pkgver"
 
   # install binary
   install -Dm755 bin/linux/$pkgname "$pkgdir/usr/bin/$pkgname"
