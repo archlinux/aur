@@ -3,8 +3,8 @@
 # Contributor: Matthieu Rakotojaona <rakoo>
 
 pkgname=bup-git
-pkgver=1364.cad3c11
-pkgrel=3
+pkgver=1372.632dece
+pkgrel=1
 pkgdesc='Efficient file backup system based on the git packfile format'
 arch=('i686' 'x86_64')
 url='https://bup.github.io/'
