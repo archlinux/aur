@@ -1,6 +1,6 @@
 diff -aur -bZwB -x .git cadabra2-git.old/client_server/CMakeLists.txt cadabra2-git/client_server/CMakeLists.txt
---- cadabra2-git.old/client_server/CMakeLists.txt	2016-05-21 14:48:27.205019749 -0400
-+++ cadabra2-git/client_server/CMakeLists.txt	2016-05-21 14:49:28.927905642 -0400
+--- cadabra2-git.old/client_server/CMakeLists.txt	2016-05-21 16:07:27.620746479 -0400
++++ cadabra2-git/client_server/CMakeLists.txt	2016-05-21 16:08:03.087295612 -0400
 @@ -33,7 +33,7 @@
     find_package(Boost 1.54.0 COMPONENTS python3
   system regex program_options REQUIRED)
@@ -11,8 +11,8 @@ diff -aur -bZwB -x .git cadabra2-git.old/client_server/CMakeLists.txt cadabra2-g
  set(Boost_USE_STATIC_LIBS OFF)
  set(Boost_USE_MULTITHREADED ON)
 diff -aur -bZwB -x .git cadabra2-git.old/core/CMakeLists.txt cadabra2-git/core/CMakeLists.txt
---- cadabra2-git.old/core/CMakeLists.txt	2016-05-21 14:48:27.218352986 -0400
-+++ cadabra2-git/core/CMakeLists.txt	2016-05-21 14:49:35.234526685 -0400
+--- cadabra2-git.old/core/CMakeLists.txt	2016-05-21 16:07:27.634079768 -0400
++++ cadabra2-git/core/CMakeLists.txt	2016-05-21 16:08:12.737263557 -0400
 @@ -33,7 +33,7 @@
  if(APPLE)
     find_package(Boost 1.54.0 COMPONENTS python3)
@@ -22,15 +22,3 @@ diff -aur -bZwB -x .git cadabra2-git.old/core/CMakeLists.txt cadabra2-git/core/C
  endif()
  
  if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-diff -aur -bZwB -x .git cadabra2-git.old/frontend/gtkmm/Cadabra.hh cadabra2-git/frontend/gtkmm/Cadabra.hh
---- cadabra2-git.old/frontend/gtkmm/Cadabra.hh	2016-05-21 14:48:27.235019531 -0400
-+++ cadabra2-git/frontend/gtkmm/Cadabra.hh	2016-05-21 14:49:55.931043749 -0400
-@@ -20,7 +20,7 @@
- 		void on_open(const Gio::Application::type_vec_files& files, const Glib::ustring& hint) override;
- 
- 	private:
--		std::vector<cadabra::NotebookWindow> windows;
-+		cadabra::NotebookWindow              nw;
- 		cadabra::ComputeThread               compute;
- 		std::thread                          compute_thread;
- };
