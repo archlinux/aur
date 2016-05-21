@@ -1,7 +1,7 @@
 # Maintainer: Oliver (thechauffeur) Weidner <Oliver.Weidner@gmail.com>
 
 pkgname=tinc-ponyhof-git
-pkgver=release.1.1pre11.r308.g1f2e14d
+pkgver=release.1.1pre11.r551.gaf0c289
 pkgrel=1
 pkgdesc="VPN (Virtual Private Network) daemon (tinc ponyhof development version)"
 arch=('i686' 'x86_64')
@@ -13,11 +13,9 @@ optdepends=('wxpython: gui support')
 provides=('tinc')
 conflicts=('tinc' 'tinc-pre')
 source=('git+https://github.com/thorkill/tinc.git#branch=thkr-1.1-ponyhof'
-        'tincd@.service'
-        'tinc-gui.patch')
+        'tincd@.service')
 md5sums=('SKIP'
-         '2b2cbedd14f921a2a7fdbf4315d9dbd7'
-         '2f32295af4f4d471f411a6e41ec70afa')
+         '2b2cbedd14f921a2a7fdbf4315d9dbd7')
 
 pkgver() {
   cd "$srcdir"/tinc
@@ -27,8 +25,6 @@ pkgver() {
 
 build() {
   cd "$srcdir"/tinc
-
-  patch -p0 < "$srcdir"/tinc-gui.patch
 
   autoreconf -fsi
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
