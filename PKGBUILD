@@ -2,18 +2,19 @@
 
 pkgbase=perl-checkupdates-aur
 pkgname=(perl-checkupdates-aur checkupdates-aur)
-_pkgname=CheckUpdates-AUR
-pkgver=0.03
+_lastauthor=T/TH/THREEED
+_pkgname=OS-CheckUpdates-AUR
+pkgver=0.04
 pkgrel=1
 pkgdesc="checkupdates for aur"
 arch=('any')
-url="https://github.com/3ed/CheckUpdates-AUR"
+url="https://metacpan.org/release/${_pkgname}"
 license=('Artistic2.0')
 depends=('perl-www-aur' 'perl-json' 'perl-try-tiny')
 makedepends=('perl-module-build')
 optdepends=('perl-smart-comments: for debug perpose only')
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/3ed/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('7c7b4b67a5203b7a1f5839cb4945fbe5e210ba4ffa6d9f4f73e89bf1366c04b1')
+source=("https://cpan.metacpan.org/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('4e107c9953ff52597098fff5bf0eee4aa6dad223ada3a7e60670c8cf5695eb2a')
 
 build() {
 	export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
