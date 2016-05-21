@@ -24,7 +24,7 @@ package () {
 	cd "$srcdir/$pkgname-$_ver"
 	make DESTDIR="$pkgdir" install
 
-	sed -i 's/GROUP="plugdev"/GROUP="wheel"/' 99-wispy.rules
+	sed -i 's|GROUP="plugdev"|GROUP="wheel"|' 99-wispy.rules
 	install -Dm 644 99-wispy.rules "$pkgdir/usr/lib/udev/rules.d/99-wispy.rules"
 	
 	cd "$srcdir"
