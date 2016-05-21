@@ -1,0 +1,12 @@
+post_install() {
+	cat <<- EOF
+		:: You need the Quake data (.pak) files to play.
+		:: pak0.pak to play the shareware episode and/or
+		:: additionally pak1.pak for the whole game.
+		:: Put them into <YOUR_HOME_DIR>/.quakespasm/id1/
+	EOF
+}
+
+post_upgrade() {
+	post_install $1
+}
