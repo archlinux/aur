@@ -2,7 +2,7 @@
 
 _pkgname=lxqt-l10n
 pkgname=$_pkgname-git
-pkgver=0.10.95.1.ga2ce46c
+pkgver=0.10.95.3.gff2f552
 pkgrel=1
 pkgdesc="Translations of all components maintained by the LXQt project"
 arch=('any')
@@ -20,13 +20,9 @@ pkgver() {
 }
 
 build() {
-  mkdir -p build
+  rm -Rf build && mkdir build
   cd build
-  # translations of lxqt-panel and lxqt-sudo are provided by the respective repository for now
-  cmake "$srcdir/$_pkgname" \
-      -DCMAKE_INSTALL_PREFIX=/usr \
-      -DWITH_LXQT_PANEL=OFF \
-      -DWITH_LXQT_SUDO=OFF
+  cmake "$srcdir/$_pkgname" -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
