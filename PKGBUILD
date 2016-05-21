@@ -1,6 +1,6 @@
 pkgname=sat-shell
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="sat-shell is an interactive tcl-shell for solving satisfiability problems"
 url="https://github.com/TestudoAquatilis/sat-shell"
 arch=('x86_64' 'i686')
