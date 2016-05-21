@@ -4,12 +4,12 @@
 
 pkgname=pjproject
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source SIP stack and media stack"
 arch=('i686' 'x86_64')
 url="http://www.pjsip.org/"
 license=('GPL')
-depends=('openssl' 'portaudio' 'speex' 'alsa-lib' 'libsamplerate' 'util-linux-ng' 'ffmpeg' 'libsrtp')
+depends=('openssl' 'portaudio' 'speex' 'alsa-lib' 'libsamplerate' 'util-linux-ng' 'ffmpeg' 'libsrtp' 'opus')
 makedepends=('e2fsprogs' 'python')
 install=pjproject.install
 source=(http://www.pjsip.org/release/${pkgver}/pjproject-${pkgver}.tar.bz2
@@ -21,8 +21,6 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   export CXXFLAGS="${CXXFLAGS} -fPIC"
   export CFLAGS="${CXXFLAGS}"
-  #patch -p1 < ${srcdir}/ffmpeg.patch
-  #./configure --prefix=/usr --with-external-speex --with-external-pa --disable-oss --enable-shared --disable-opencore-amr
   ./configure --prefix=/usr --with-external-speex --with-external-srtp --with-external-pa --with-external-gsm --disable-oss --enable-shared --disable-opencore-amr --disable-v4l2 --disable-video --disable-sound
   echo "#define PJ_HAS_IPV6 1" >> "${srcdir}/${pkgname}-${pkgver}/pjlib/include/pj/config_site.h"
   make -j1 dep 
