@@ -2,7 +2,7 @@
 
 pkgname=kerneloops-git
 pkgver=0.12.r28.g64e6bd9
-pkgrel=4
+pkgrel=5
 pkgdesc="Client tool for reporting OOPS to http://oops.kernel.org/"
 arch=('i686' 'x86_64')
 url="http://oops.kernel.org/"
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd "${pkgname%-git}"
-  make DESTDIR="$pkgdir" SBINDIR=/usr/bin
+  make
 }
 
 package() {
