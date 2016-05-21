@@ -1,0 +1,10 @@
+post_install() {
+	echo ""
+	echo "Thanks to install this kit"
+	echo "Scripts"
+	echo "jkazip - de/compress files and directories in many formats very easy"
+}
+post_upgrade() {
+	post_install
+}
+
