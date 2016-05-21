@@ -15,15 +15,15 @@
 # archzfs github page.
 #
 pkgname="zfs-linux"
-pkgver=0.6.5.6_4.5.4_1
+pkgver=0.6.5.7_4.5.4_1
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System."
 depends=("kmod" "spl-linux" "zfs-utils-linux" "linux=4.5.4")
 makedepends=("linux-headers=4.5.4")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("http://archive.zfsonlinux.org/downloads/zfsonlinux/zfs/zfs-0.6.5.6.tar.gz")
-sha256sums=("c349d46d86b4f61cd53a0891acad916cfc3f0d6754127db7f60a0bd98185aeff")
+source=("http://archive.zfsonlinux.org/downloads/zfsonlinux/zfs/zfs-0.6.5.7.tar.gz")
+sha256sums=("4a9e271bb9a6af8d564e4d5800e4fff36224f1697b923a7253659bdda80dc590")
 groups=("archzfs-linux")
 license=("CDDL")
 install=zfs.install
@@ -31,17 +31,17 @@ provides=("zfs")
 replaces=("zfs-git")
 
 build() {
-    cd "${srcdir}/zfs-0.6.5.6"
+    cd "${srcdir}/zfs-0.6.5.7"
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-0.6.5.6 --with-config=kernel \
+                --libexecdir=/usr/lib/zfs-0.6.5.7 --with-config=kernel \
                 --with-linux=/usr/lib/modules/4.5.4-1-ARCH/build
     make
 }
 
 package() {
-    cd "${srcdir}/zfs-0.6.5.6"
+    cd "${srcdir}/zfs-0.6.5.7"
     make DESTDIR="${pkgdir}" install
     cp -r "${pkgdir}"/{lib,usr}
     rm -r "${pkgdir}"/lib
