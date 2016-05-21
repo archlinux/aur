@@ -1,0 +1,20 @@
+pkgbase = ccminer-git
+	pkgdesc = Coin miner using CUDA for nVidia GPUs.
+	pkgver = r708.1b12472
+	pkgrel = 1
+	url = http://ccminer.org/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc5
+	depends = cuda
+	depends = curl
+	depends = jansson
+	provides = ccminer
+	conflicts = ccminer
+	options = !emptydirs
+	source = git://github.com/tpruvot/ccminer.git#branch=linux
+	sha256sums = SKIP
+
+pkgname = ccminer-git
+
