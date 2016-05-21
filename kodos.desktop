@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Kodos
+Comment=A Python regular expression debugger
+TryExec=/usr/bin/kodos
+Exec=kodos
+Icon=kodos_icon
+Categories=Qt;Development;
