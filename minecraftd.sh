@@ -78,7 +78,7 @@ idle_server_daemon() {
 	no_player=0
 
 	while true; do
-		echo -e "no_players: ${no_player}s\tcheck_player_time: ${CHECK_PLAYER_TIME}s\tidle_if_time: ${IDLE_IF_TIME}s"
+		echo -e "no_player: ${no_player}s\tcheck_player_time: ${CHECK_PLAYER_TIME}s\tidle_if_time: ${IDLE_IF_TIME}s"
 		# Retry in ${CHECK_PLAYER_TIME} seconds
 		sleep ${CHECK_PLAYER_TIME}
 
@@ -111,7 +111,7 @@ idle_server_daemon() {
 					[[ $? -eq 0 ]] && echo "Netcat caught an connection. The server is coming up again..."
 					IDLE_SERVER="false" ${myname} start
 				fi
-			elif [[ $? -eq 0 ]]; then
+			else
 				# Reset timer since there is an active player on the server
 				no_player=0
 			fi
