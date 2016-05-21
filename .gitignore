@@ -2,3 +2,4 @@
 /src
 *.xz
 *.gz
+makefile
