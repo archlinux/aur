@@ -1,6 +1,6 @@
 pkgbase = bdelta-git
 	pkgdesc = A tool to create diffs of binary files. A sophisticated sequence matching library bundled with a delta creator and patch tool.
-	pkgver = 0.3.1.d20130130.rg53e49e1
+	pkgver = 0.3.1.d20130130.rg53e49e1.fefefilesize
 	pkgrel = 1
 	url = https://github.com/jjwhitney/BDelta
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = bdelta-git
 	license = MPL
 	makedepends = git
 	makedepends = python2
-	provides = bdelta=0.3.1.d20130130.rg53e49e1
+	provides = bdelta=0.3.1.d20130130.rg53e49e1.fefefilesize
 	conflicts = bdelta
 	source = bdelta::git+https://github.com/jjwhitney/BDelta.git
 	source = fefe-filesize-patch.patch::https://ptrace.fefe.de/bdelta.diff

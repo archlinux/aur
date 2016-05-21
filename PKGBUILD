@@ -2,7 +2,7 @@
 
 _pkgname='bdelta'
 pkgname="${_pkgname}-git"
-pkgver=0.3.1.d20130130.rg53e49e1
+pkgver=0.3.1.d20130130.rg53e49e1.fefefilesize
 pkgrel=1
 pkgdesc="A tool to create diffs of binary files. A sophisticated sequence matching library bundled with a delta creator and patch tool."
 url='https://github.com/jjwhitney/BDelta'
@@ -52,6 +52,8 @@ pkgver() {
   _rev="$(git describe --long | cut -d- -f3)"
   _date="$(git log -n 1 --pretty=format:%ci | cut -d' ' -f1 | tr -d '-')"
   
+  _extraver=".fefefilesize"
+  
   if [ -z "${_ver}" ]; then
     echo "$0: Error: Could not determine version." > /dev/stderr
     false
@@ -64,7 +66,7 @@ pkgver() {
     return 1
   fi
   
-  echo "${_ver}.d${_date}.r${_rev}"
+  echo "${_ver}.d${_date}.r${_rev}${_extraver}"
 }
 
 prepare() {
