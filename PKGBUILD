@@ -2,8 +2,8 @@
 # Contributor: Fernando Cladera <fcladera [at] fcladera [dot] com>
 
 pkgname=fontawesome.sty
-pkgver=4.4.0
-pkgrel=2
+pkgver=4.6.3.1
+pkgrel=1
 pkgdesc="FontAwesome bindings for LaTeX"
 url='http://www.ctan.org/pkg/fontawesome'
 arch=('any')
@@ -13,10 +13,10 @@ source=('http://mirrors.ctan.org/fonts/fontawesome/tex/fontawesome.sty'
         'http://mirrors.ctan.org/fonts/fontawesome/tex/fontawesomesymbols-generic.tex'
         'http://mirrors.ctan.org/fonts/fontawesome/tex/fontawesomesymbols-pdftex.tex'
         'http://mirrors.ctan.org/fonts/fontawesome/tex/fontawesomesymbols-xeluatex.tex')
-md5sums=('e6a4b85730ead959e96981926c2c8ea6'
-         'caeb6b3b881647c34b4edc7d58ee59d1'
-         'be79a4683f4459eba32950b0914592d3'
-         '1e3cc737ddbdfc2f5b04f766c2a273e1')
+md5sums=('ee97743276dc242c78f33fd622e260ea'
+         '02595c36bb98d393cb4dba994cdd1e69'
+         'f7ffa71c62c5257edd5542253d4cea15'
+         '7166bfdff927bad3f81e302543d76c90')
 install=fontawesome.install
 
 package() {
