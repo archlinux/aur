@@ -3,7 +3,7 @@
 
 pkgname=arxlibertatis-git
 _installname=arx
-pkgver=1.1.2+r5464.gc87968a
+pkgver=1.1.2+r6979.g96cd0b6
 pkgrel=1
 pkgdesc='Cross-platform port of Arx Fatalis, a first-person fantasy RPG (executables only; latest git revision)'
 url='http://arx-libertatis.org/'
@@ -19,17 +19,19 @@ optdepends=('arxfatalis-data-gog: game data from GOG.com installer'
 makedepends=('git' 'cmake' 'boost')
 provides=('arx')
 replaces=('arx-git')
-conflicts=('arx arx-git arxlibertatis')
+conflicts=('arx' 'arx-git' 'arxlibertatis')
 install=arx.install
 
 _gitname=ArxLibertatis
-source=(git+https://github.com/arx/ArxLibertatis.git)
-md5sums=('SKIP')
+_data_gitname=ArxLibertatisData
+source=("git+https://github.com/arx/$_gitname.git"
+        "git+https://github.com/arx/$_data_gitname.git")
+md5sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd $_gitname
     _version=$(git describe --tags $(git rev-list --tags --max-count=1))
-    _commits=$(git log 1.1.2..master --pretty=oneline | wc -l)
+    _commits=$(git log $_version..master --pretty=oneline | wc -l)
     _rev=$(git log -1 --format="%h")
     echo "$_version+r$_commits.g$_rev"
 }
@@ -37,7 +39,8 @@ pkgver() {
 build() {
     cd $_gitname
     
-    cmake . -DCMAKE_INSTALL_PREFIX=/usr \
+    cmake . -DDATA_FILES=../$_data_gitname \
+            -DCMAKE_INSTALL_PREFIX=/usr \
             -DCMAKE_INSTALL_LIBDIR=lib \
             -DCMAKE_INSTALL_LIBEXECDIR=lib/$_installname \
             -DINSTALL_DATADIR=share/$_installname \
@@ -51,7 +54,7 @@ build() {
     # 
     # CMAKE_BUILD_TYPE=Release
     #   can be changed to CMAKE_BUILD_TYPE=Debug to get a debug build,
-    #   which will run signifincantly slower but enables more runtime
+    #   which will run significantly slower but enables more runtime
     #   checks and generates better crash reports.
     
     make
