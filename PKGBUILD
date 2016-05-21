@@ -3,7 +3,7 @@
 #   Thomas Baechler <thomas@archlinux.org>
 
 pkgname=(linux-lts314-ck linux-lts314-ck-headers)
-pkgver=3.14.66
+pkgver=3.14.70
 pkgrel=1
 arch=(i686 x86_64)
 url="https://www.kernel.org/"
@@ -33,7 +33,7 @@ source=(
 )
 
 sha512sums=(
-    "fb9f857e53b8124bf5bf885e328ab18b1276589746645b77af6464fa85d8f0774ea08a987a1e8564206c0388afadd87fd64efa1603742089fa75952030efb28f"
+    "882c53f3e67666db836c26bed85ce6fa532c2f0f421f9e9b7ae8630f75876b6d923bcbfe8535266599af08f11c554197955340a7a67ba447829d7a61bed4eb28"
 
     "SKIP"
     "d745370376e660245e0a5cc4512f0c584a4c782ddb0747637d6ec60021d95afa09d5728f44756c48843b398ba3072823bea99b1713c0833c941a522da0b6f305"
@@ -111,7 +111,7 @@ build() {
 }
 
 package_linux-lts314-ck() {
-    pkgdesc="Linux 3.14-lts with Brain Fuck Scheduler v0.454"
+    pkgdesc="Linux 3.14 with Brain Fuck Scheduler"
     depends=(coreutils linux-firmware kmod "mkinitcpio>=0.7")
     optdepends=("crda: to set the correct wireless channels for your country")
     backup=(etc/mkinitcpio.d/linux-lts314-ck.preset)
