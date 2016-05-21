@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Zekr
+Comment=Zekr open Quranic platform
+Categories=GNOME;Application;Office;
+Type=Application
+StartupNotify=true
+Exec=/usr/bin/zekr.sh
+Icon=/usr/share/pixmaps/zekr.png
