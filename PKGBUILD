@@ -8,7 +8,7 @@ _install_cron_file=
 _install_logrotate_file="y"
 
 pkgname=clamav-unofficial-sigs
-pkgver=5.3
+pkgver=5.3.1
 pkgrel=1
 pkgdesc='ClamAV Unofficial Signatures Updater maintained by eXtremeSHOK.com'
 arch=('any')
@@ -19,7 +19,7 @@ source=("https://github.com/extremeshok/clamav-unofficial-sigs/archive/$pkgver.t
     "cron"
     "logrotate"
     "clamav-unofficial-sigs.8")
-sha256sums=('ac0d17bb29e6565e288bcc57086b4b0b7e9126ce47a8b1197c3312b6e3cec4ec'
+sha256sums=('f2b613c8fdc5197ab73fa499d5a5a82cc68889bf3c8b45bd90363e6f21154599'
             '82d1db1f7f8400d4b5457343a6c6e1c32cffbee06b0f73104c5b11641b58fa74'
             'ad2dee4d8d21483f33f9e95a808c598c98c03014baffa12141ecaefcd2cc3a79'
             '53fe3143db5d422e6306bc9c7ba400976328faaf79cade5f669b48bb1ce6f7bf')
