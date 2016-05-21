@@ -1,7 +1,7 @@
 # Maintainer: Arondight <shell_way@foxmail.com>
 
 pkgname='xf86-video-nouveau-blacklist-git'
-pkgver='r1.b6fa4d4'
+pkgver='r2.22e5679'
 pkgrel=1
 pkgdesc='Disable nouveau driver module'
 arch=('any')
@@ -43,6 +43,6 @@ check() {
 package() {
   cd "${srcdir}/${pkgname%-git}"
 
-  make install DESTDIR=$pkgdir
+  make install DESTDIR="${pkgdir}/"
 }
 
