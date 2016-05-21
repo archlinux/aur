@@ -61,8 +61,6 @@ prepare () {
 }
 
 package_epoptes-bzr () {
-    makedepends=(python2-pycha-hg
-                 ssvnc)
     depends=(libfaketime
 	     librsvg
 	     notification-daemon
@@ -74,6 +72,8 @@ package_epoptes-bzr () {
              pygtk
              python2-dbus
              python2-notify
+             python2-pycha-hg
+             ssvnc
              hicolor-icon-theme
              python2-netifaces
              python2-pyopenssl
@@ -102,8 +102,6 @@ package_epoptes-bzr () {
 
 package_epoptes-client-bzr () {
     pkgdesc="An opensource computer lab management and monitoring tool - client side"
-    makedepends=(bsdmainutils
-                 ssvnc)
     depends=(iproute2
              procps-ng
 	     python
@@ -113,6 +111,8 @@ package_epoptes-client-bzr () {
              iperf
              pygtk
              socat
+             bsdmainutils
+             ssvnc
              x11vnc
              openssl
              xterm
