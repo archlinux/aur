@@ -9,27 +9,37 @@ _basedir=/usr
 _boost=boost${_ext}
 
 pkgname=${_pkgname}${_ext}
-pkgver=0.11.2
+pkgver=0.12.0
 pkgrel=1
 pkgdesc="A library that provides application layer protocol support using modern C++ techniques"
 arch=('i686' 'x86_64')
 url="http://cpp-netlib.github.com/"
 license=('custom')
-depends=("boost${_ext}>=1.54.0")
+depends=()
 optdepends=('openssl: for https')
 makedepends=("cmake>=2.8.10")
 #options=(staticlibs)
 source=(
          http://downloads.cpp-netlib.org/$pkgver/$_pkgname-$pkgver-final.tar.gz
+         OPENSSL_NO_SSL3.patch
          )
 sha256sums=(
-         '71953379c5a6fab618cbda9ac6639d87b35cab0600a4450a7392bc08c930f2b1'
+         'a0a4a5cbb57742464b04268c25b80cc1fc91de8039f7710884bf8d3c060bd711'
+         'e7b4b7ecdafb51211d9be65fd179e8cd7cea71480aaeb4f30f11d5c8fc251f03'
          )
+
+prepare() {
+        cd "$pkgname-$pkgver-final"
+        patch -Np0 -i "$srcdir/OPENSSL_NO_SSL3.patch"
+}
 
 build() {
   install -d $srcdir/build
   cd $srcdir/build
+  # use asio from system
+#  sed -i -e "s|include_directories(deps/asio/asio/include)||g" $srcdir/$_pkgname-$pkgver-final/CMakeLists.txt
   cmake -DBOOST_ROOT=$_basedir -DCPP-NETLIB_BUILD_TESTS=OFF -DCPP-NETLIB_BUILD_EXAMPLES=OFF -DCPP-NETLIB_BUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}${_basedir} ../"$_pkgname-$pkgver-final"
+#  cmake -DBOOST_ROOT=$_basedir -DCPP-NETLIB_BUILD_TESTS=ON -DCPP-NETLIB_BUILD_EXAMPLES=ON -DCPP-NETLIB_BUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_PREFIX:PATH=${pkgdir}${_basedir} ../"$_pkgname-$pkgver-final"
   make
 #  make test
 }
