@@ -39,8 +39,15 @@ package_virtualbox-ck-host-modules() {
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
 	cd "dkms/vboxhost/${pkgver}_OSE/$_kernver/$CARCH/module"
 	install -m644 * "$pkgdir/usr/lib/modules/$_extramodules"
-	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/host.install"
+	
+	# compress each module individually
+	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
+
+	# systemd module loading
+	install -Dm644 /dev/null "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
+	printf "vboxguest\nvboxsf\nvboxvideo\n" >  \
+		"$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
 }
 
 package_virtualbox-ck-guest-modules() {
@@ -58,8 +65,15 @@ package_virtualbox-ck-guest-modules() {
 	install -dm755 "$pkgdir/usr/lib/modules/$_extramodules"
 	cd "dkms/vboxguest/${pkgver}_OSE/$_kernver/$CARCH/module"
 	install -m644 * "$pkgdir/usr/lib/modules/$_extramodules"
-	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 	sed -i -e "s/EXTRAMODULES='.*'/EXTRAMODULES='$_extramodules'/" "$startdir/guest.install"
+	
+	# compress each module individually
+	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
+
+	# systemd module loading
+  install -Dm644 /dev/null "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
+  printf "vboxguest\nvboxsf\nvboxvideo\n" >  \
+		"$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
 }
 
 
