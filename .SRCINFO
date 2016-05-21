@@ -1,7 +1,7 @@
 pkgbase = pepper
 	pkgdesc = The Flexible Game Engine
 	pkgver = 0.0.16
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/taylor001/crown
 	arch = x86_64
 	license = MIT
