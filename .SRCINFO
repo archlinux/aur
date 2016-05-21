@@ -1,16 +1,16 @@
 pkgbase = ghetto-skype
 	pkgdesc = Web Skype + Tray Icon + Notifications
-	pkgver = 1.0.1
-	pkgrel = 3
+	pkgver = 1.2.2
+	pkgrel = 1
 	url = https://github.com/stanfieldr/ghetto-skype
 	install = ghetto-skype.install
 	arch = x86_64
 	license = GPLv3
+	makedepends = npm
+	depends = libappindicator-gtk2
 	depends = electron
-	provides = skype
-	conflicts = skype
-	source = https://github.com/stanfieldr/ghetto-skype/archive/v1.0.1.tar.gz
-	sha256sums = 191de6e42f16f6b4d90550073247f6745faa7626f3e09dd60821b5c48bec6892
+	source = https://github.com/stanfieldr/ghetto-skype/archive/v1.2.2.tar.gz
+	sha256sums = fcf3e2b572fd5b24b623fff5e533a06573ff0bac02e06e93badfa520ee5fa2dd
 
 pkgname = ghetto-skype
 

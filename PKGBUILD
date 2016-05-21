@@ -8,28 +8,23 @@
 # https://github.com/techwiz24/aur-ghetto-skype
 
 pkgname=ghetto-skype
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.2.2
+pkgrel=1
 pkgdesc='Web Skype + Tray Icon + Notifications'
 arch=('x86_64')
 url='https://github.com/stanfieldr/ghetto-skype'
 license=('GPLv3')
-depends=('libappindicator-gtk2')
-provides=('skype')
-conflicts=('skype')
-depends=('electron')
+depends=('libappindicator-gtk2' 'electron')
+makedepends=('npm')
 install=ghetto-skype.install
 source=("https://github.com/stanfieldr/ghetto-skype/archive/v${pkgver}.tar.gz")
-sha256sums=('191de6e42f16f6b4d90550073247f6745faa7626f3e09dd60821b5c48bec6892')
+sha256sums=('fcf3e2b572fd5b24b623fff5e533a06573ff0bac02e06e93badfa520ee5fa2dd')
 
 prepare() {
   cd "ghetto-skype-$pkgver"
 
-  echo "Patching browser-window dependency for use with electron-prebuilt..."
-  patch --silent main.js < ../../main.js.patch
-
-  echo "Patching the desktop shortcut to use electron-prebuilt..."
-  sed -i 's|^Exec=npm --prefix /opt/ghetto-skype start$|Exec=/usr/bin/ghetto-skype|g' assets/skype.desktop
+  echo "Fetching node dependencies..."
+  npm install --production
 }
 
 package() {
