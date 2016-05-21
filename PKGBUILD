@@ -15,15 +15,15 @@
 # archzfs github page.
 #
 pkgname="spl-linux"
-pkgver=0.6.5.6_4.5.4_1
+pkgver=0.6.5.7_4.5.4_1
 pkgrel=1
 pkgdesc="Solaris Porting Layer kernel modules."
 depends=("spl-utils-linux" "kmod" "linux=4.5.4")
 makedepends=("linux-headers=4.5.4")
 arch=("x86_64")
 url="http://zfsonlinux.org/"
-source=("http://archive.zfsonlinux.org/downloads/zfsonlinux/spl/spl-0.6.5.6.tar.gz")
-sha256sums=("167595fe76eb5497c3a1ffe396b6300155d0cbe46d06824a710099ca1ae1b8bd")
+source=("http://archive.zfsonlinux.org/downloads/zfsonlinux/spl/spl-0.6.5.7.tar.gz")
+sha256sums=("dc8690e407183eeb7a6af0e7692d6e0a1cd323d51dd1aa492522c421b1924ea0")
 groups=("archzfs-linux")
 license=("GPL")
 install=spl.install
@@ -31,7 +31,7 @@ provides=("spl")
 replaces=("spl-git")
 
 build() {
-    cd "${srcdir}/spl-0.6.5.6"
+    cd "${srcdir}/spl-0.6.5.7"
     ./autogen.sh
     ./configure --prefix=/usr --libdir=/usr/lib --sbindir=/usr/bin \
                 --with-linux=/usr/lib/modules/4.5.4-1-ARCH/build \
@@ -40,7 +40,7 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/spl-0.6.5.6"
+    cd "${srcdir}/spl-0.6.5.7"
     make DESTDIR="${pkgdir}" install
     mv "${pkgdir}/lib" "${pkgdir}/usr/"
     # Remove reference to ${srcdir}
