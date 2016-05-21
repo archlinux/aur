@@ -12,10 +12,8 @@ makedepends=('git')
 optdepends=('wxpython: gui support')
 provides=('tinc')
 conflicts=('tinc' 'tinc-pre')
-source=('git+https://github.com/thorkill/tinc.git#branch=thkr-1.1-ponyhof'
-        'tincd@.service')
-md5sums=('SKIP'
-         '2b2cbedd14f921a2a7fdbf4315d9dbd7')
+source=('git+https://github.com/thorkill/tinc.git#branch=thkr-1.1-ponyhof')
+md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir"/tinc
@@ -41,5 +39,6 @@ package() {
   find "$pkgdir"/usr/share/tinc/examples -type f -exec chmod 644 {} +
   find "$pkgdir"/usr/share/tinc/examples -type d -exec chmod 755 {} +
 
-  install -Dm644 "$srcdir/tincd@.service" "$pkgdir/usr/lib/systemd/system/tincd@.service"
+  install -Dm644 "$srcdir/tinc/systemd/tinc.service" -t "$pkgdir/usr/lib/systemd/system/"
+  install -Dm644 "$srcdir/tinc/systemd/tinc@.service" -t "$pkgdir/usr/lib/systemd/system/"
 }

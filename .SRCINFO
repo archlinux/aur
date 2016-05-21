@@ -15,9 +15,7 @@ pkgbase = tinc-ponyhof-git
 	conflicts = tinc
 	conflicts = tinc-pre
 	source = git+https://github.com/thorkill/tinc.git#branch=thkr-1.1-ponyhof
-	source = tincd@.service
 	md5sums = SKIP
-	md5sums = 2b2cbedd14f921a2a7fdbf4315d9dbd7
 
 pkgname = tinc-ponyhof-git
 
