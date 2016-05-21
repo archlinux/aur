@@ -6,7 +6,7 @@
 
 pkgname=pdfshuffler-git
 pkgver=r100.caec35f
-pkgrel=2
+pkgrel=3
 pkgdesc="Merge or split pdf documents and rotate, crop and rearrange their pages"
 arch=('any')
 url="http://sourceforge.net/projects/pdfshuffler/"
@@ -18,16 +18,19 @@ source=('pdfshuffler-git::git+https://github.com/jeromerobert/pdfshuffler')
 md5sums=('SKIP')
 
 pkgver () {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/$pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build () {
-  cd "$srcdir/$pkgname"
-  python setup.py build
+	cd "$srcdir/$pkgname"
+	python setup.py build
 }
 
 package () {
-  cd "$srcdir/$pkgname"
-  python setup.py install --prefix=/usr --root="$pkgdir/"
+	cd "$srcdir/$pkgname"
+	python setup.py install --prefix=/usr --root="$pkgdir/"
+	
+	install -d "$pkgdir/usr/share/icons"
+	cp -r "data/hicolor" "$pkgdir/usr/share/icons/"
 }
