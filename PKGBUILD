@@ -4,7 +4,7 @@
 
 pkgname=android-sdk-platform-tools
 pkgver=r23.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Platform-Tools for Google Android SDK (adb and fastboot)'
 arch=('x86_64')
 url="http://developer.android.com/sdk/index.html"
