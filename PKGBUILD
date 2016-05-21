@@ -48,12 +48,6 @@ prepare() {
       -e '/type="application\/x-adobe-mif"/,/<\/mime-type>/d' \
       -i debian/qgis.xml
 
-  # Fix console.py for new pyqt build system
-  sed -e '/from PyQt4.QtCore/ s/$/, QT_VERSION/' \
-      -e '/import pyqtconfig/d' \
-      -e 's/pyqtconfig.*qt_version/QT_VERSION/' \
-      -i python/console/console.py
-
   [[ -d build ]] || mkdir build
 }
 
