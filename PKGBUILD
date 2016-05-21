@@ -44,5 +44,5 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   install -d "${pkgdir}/usr/share/emacs/site-lisp"
-  ln -s ../../gtags/gtags.el "${pkgdir}/usr/share/emacs/site-lisp/gtags.el"
+  mv "${pkgdir}/usr/share/gtags/gtags.el" "${pkgdir}/usr/share/emacs/site-lisp/gtags.el"
 }
