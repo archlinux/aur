@@ -39,7 +39,7 @@ prepare() {
   sed -i 's@\./fixinc\.sh@-c true@' gcc/Makefile.in
   
   # fix build with GCC 6
-  patch -p1 < gcc-4.9-fix-build-with-gcc-6.patch
+  patch -p1 < "${srcdir}/gcc-4.9-fix-build-with-gcc-6.patch"
 
   # Arch Linux installs x86_64 libraries /lib
   [[ $CARCH == "x86_64" ]] && sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
