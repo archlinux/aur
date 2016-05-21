@@ -1,0 +1,31 @@
+pkgbase = piglit-git
+	pkgdesc = OpenGL implementation testing suite. Provides a simple means to perform regression tests.
+	pkgver = r8676.4d667d4
+	pkgrel = 1
+	url = http://piglit.freedesktop.org/
+	install = piglit.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = GPL3
+	license = LGPL2.1
+	makedepends = git
+	makedepends = cmake
+	makedepends = glproto
+	depends = waffle
+	depends = python-mako
+	depends = python-numpy
+	depends = python-six
+	depends = libxrender
+	depends = glu
+	depends = libcaca
+	optdepends = python-lxml: Accelerated python XML library using libxml2
+	optdepends = python-simplejson: Fast implementation of the python JSON library
+	provides = piglit
+	conflicts = piglit
+	options = !emptydirs
+	source = git://anongit.freedesktop.org/piglit
+	sha256sums = SKIP
+
+pkgname = piglit-git
+
