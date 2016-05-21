@@ -45,4 +45,7 @@ package() {
 
   install -d "${pkgdir}/usr/share/emacs/site-lisp"
   mv "${pkgdir}/usr/share/gtags/gtags.el" "${pkgdir}/usr/share/emacs/site-lisp/gtags.el"
+  # install -d "${pkgdir}/usr/share/vim/vimfiles/plugin"
+  # mv "${pkgdir}/usr/share/gtags/gtags.vim" "${pkgdir}/usr/share/vim/vimfiles/plugin/gtags.vim"
+  # mv "${pkgdir}/usr/share/gtags/gtags-cscope.vim" "${pkgdir}/usr/share/vim/vimfiles/plugin/gtags-cscope.vim"
 }
