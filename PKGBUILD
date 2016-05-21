@@ -2,13 +2,13 @@
 
 pkgname='openrw'
 pkgver='latest'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="A re-implementation of Rockstar Games' Grand Theft Auto III"
 arch=('i686' 'x86_64')
 url='https://github.com/danhedron/openrw'
 license=('GPL3')
 depends=('bullet' 'boost' 'glm' 'sfml')
-make_depends=('cmake')
+makedepends=('cmake')
 install='openrw.install'
 backup=('etc/openrw.conf')
 source=(
