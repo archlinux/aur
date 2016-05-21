@@ -8,15 +8,15 @@
 	makedepends = cmake
 	makedepends = git
 	makedepends = ros-build-tools
-	makedepends = ros-indigo-mavlink
-	makedepends = ros-indigo-catkin
+	makedepends = ros-jade-mavlink
+	makedepends = ros-jade-catkin
 	makedepends = boost
 	makedepends = console-bridge
-	depends = ros-indigo-mavlink
+	depends = ros-jade-mavlink
 	depends = boost
 	depends = console-bridge
-	source = libmavconn::git+https://github.com/mavlink/mavros-release.git#tag=release/indigo/libmavconn/0.17.2-0
+	source = libmavconn::git+https://github.com/mavlink/mavros-release.git#tag=release/jade/libmavconn/0.17.2-0
 	md5sums = SKIP
 
-pkgname = ros-indigo-libmavconn
+pkgname = ros-jade-libmavconn
 
