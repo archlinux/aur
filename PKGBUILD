@@ -4,7 +4,7 @@
 pkgname=glade-3.18
 _pkgname=${pkgname/-*/}
 pkgver=3.18.3
-pkgrel=1
+pkgrel=2
 pkgdesc="User interface builder for GTK+ and GNOME (version 3.18.x, with support for GtkActions)"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
@@ -18,7 +18,7 @@ sha256sums=('ecdbce46e7fbfecd463be840b94fbf54d83723b3ebe075414cfd225ddab66452')
 
 prepare() {
   cd "${_pkgname}-${pkgver}"
-  sed -i "s#Exec=.*#Exec=${pkgname}#" data/glade.desktop.in.in
+  sed -i "s#Exec=.*#Exec=${pkgname} %F#" data/glade.desktop.in.in
   sed -i "s#_Name=.*#_Name=Glade 3.18#" data/glade.desktop.in.in
 }
 
