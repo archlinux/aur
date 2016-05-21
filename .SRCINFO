@@ -1,0 +1,14 @@
+pkgbase = sparkfun-eagle-lib-git
+	pkgdesc = SparkFun Eagle Libraries
+	pkgver = 1148.46eb3c9
+	pkgrel = 1
+	url = https://github.com/sparkfun/SparkFun-Eagle-Libraries
+	arch = any
+	license = CCPL
+	makedepends = git-core
+	depends = eagle
+	source = sparkfun-eagle-lib-git::git://github.com/sparkfun/SparkFun-Eagle-Libraries.git
+	md5sums = SKIP
+
+pkgname = sparkfun-eagle-lib-git
+
