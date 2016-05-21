@@ -3,7 +3,7 @@
 
 pkgname=(epoptes-bzr epoptes-client-bzr)
 pkgbase=epoptes-bzr
-pkgver=0.5.9.510
+pkgver=0.5.10
 pkgrel=1
 pkgdesc='An opensource computer lab management and monitoring tool'
 makedepends=(bzr python2-distutils-extra)
