@@ -39,6 +39,7 @@ package() {
   find "$pkgdir"/usr/share/tinc/examples -type f -exec chmod 644 {} +
   find "$pkgdir"/usr/share/tinc/examples -type d -exec chmod 755 {} +
 
+  install -Dm644 "$srcdir/tinc/bash_completion.d/tinc" -t "$pkgdir/usr/share/bash-completion/completions/"
   install -Dm644 "$srcdir/tinc/systemd/tinc.service" -t "$pkgdir/usr/lib/systemd/system/"
   install -Dm644 "$srcdir/tinc/systemd/tinc@.service" -t "$pkgdir/usr/lib/systemd/system/"
 }
