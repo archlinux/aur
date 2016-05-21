@@ -1,0 +1,125 @@
+# Maintainer: Alexander 'z33ky' Hirsch <1zeeky@gmail.com>
+# The following contributors are from the vim-youcompleteme-git AUR package
+# Contributor: Babken Vardanyan <483ken 4tgma1l
+# Contributor: stykr
+# Contributor: Svenstaro
+# Contributor: KaiSforza
+# Contributor: Simon Gomizelj <simongmzlj@gmail.com>
+# Contributor: Daniel Micay <danielmicay@gmail.com>
+
+# setting to no seems to break things
+_use_python2=y
+_use_system_boost=y
+
+# clang completion is builtin and cannot be provided separately (?)
+_clang_completer=y
+_clang_completer_system_libclang=y
+
+pkgname=vim-youcompleteme-core-git
+pkgver=1819.0de1c0c
+pkgrel=1
+pkgdesc='A code-completion engine for Vim'
+arch=(i686 x86_64)
+url='http://valloric.github.com/YouCompleteMe/'
+license=('GPL3')
+groups=('vim-plugins')
+depends=('vim')
+optdepends=('python2-jedi' 'gocode-git' 'godef-git' 'racerd-git' 'nodejs-tern')
+# missing completers:
+# JediHTTP - see https://github.com/vheon/JediHTTP/issues/17
+# OmniSharp-Roslyn - ???
+makedepends=('git' 'cmake')
+provides=('vim-youcompleteme-git')
+conflicts=('vim-youcompleteme-git')
+source=('git+https://github.com/Valloric/YouCompleteMe.git'
+        'git+https://github.com/Valloric/ycmd')
+sha256sums=('SKIP' 'SKIP')
+install="${pkgname}.install"
+
+pkgver() {
+	cd "${srcdir}/YouCompleteMe"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+if [ "${_use_python2}" == 'y' ]; then
+	depends+=('python2' 'python2-bottle' 'python2-argparse' 'python2-waitress' 'python2-frozendict' 'python2-requests-futures')
+else
+	depends+=('python' 'python-bottle' 'python-argparse' 'python-waitress' 'python-frozendict') # 'python-requests-futures'
+fi
+
+if [ "${_use_system_boost}" == 'y' ]; then
+	depends+=('boost-libs')
+	makedepends+=('boost')
+fi
+
+if [ "${_clang_completer}" == 'y' ]; then
+	if [ "${_clang_completer_system_libclang}" == 'y' ]; then
+		depends+=('clang')
+	else
+		clang_version='3.8.0'
+		if [[ "${CARCH}" == 'x86_64' ]]; then
+			clang_filename="clang+llvm-${clang_version}-x86_64-linux-gnu-ubuntu-14.04.tar.xz"
+			sha256sums+=('3120c3055ea78bbbb6848510a2af70c68538b990cb0545bac8dad01df8ff69d7'
+									 '7cc55f1a1cc3e5478581e66c79ffa5ab4d7495076e6164b52d7b1a63816751a7')
+		else
+			clang_filename="clang+llvm-${clang_version}-i686-fedora23.tar.xz"
+			sha256sums+=('063a5430b1895a1565831ab0b840cdb14f22ee9fad38e82b9bb8be76e49f1a8b'
+									 '2628015b84703215ff0fea3d374fe1cd82cfcc38c304fec22fbab6b9abdc92f2')
+		fi
+		source+=("http://llvm.org/releases/3.8.0/${clang_filename}"{,.sig})
+		noextract+=("${clang_filename}")
+		validpgpkeys=('B6C8F98282B944E3B0D5C2530FC3042E345AD05D')
+		unset clang_version
+	fi
+fi
+
+prepare() {
+	cd "${srcdir}/YouCompleteMe"
+	git config submodule.third_party/ycmd.url "${srcdir}/ycmd"
+	git submodule update --init 'third_party/ycmd'
+	cd 'third_party/ycmd'
+
+	if [ "${_clang_completer}" == 'y' -a "${_clang_completer_system_libclang}" != 'y' ]; then
+		mkdir -p "${srcdir}/YouCompleteMe/third_party/ycmd/clang_archives"
+		cp "${srcdir}/$clang_filename}" "${srcdir}/YouCompleteMe/third_party/ycmd/clang_archives"
+	fi
+}
+
+build() {
+	mkdir -p "${srcdir}/ycmd_build"
+	cd "${srcdir}/ycmd_build"
+
+	cmake_flags="-DUSE_PYTHON2=$([[ "${_use_python2}" == 'y' ]] && echo ON || echo OFF)" \
+	            " -DUSE_SYSTEM_BOOST=$([[ "${_use_system_boost}" == 'y' ]] && echo ON || echo OFF)"
+
+	if [ "${_clang_completer}" == 'y' ]; then
+		cmake_flags+=' -DUSE_CLANG_COMPLETER=ON'
+		if [ "${_clang_completer_system_libclang}" == 'y' ]; then
+			cmake_flags+=" -DEXTERNAL_LIBCLANG_PATH='/usr/lib/libclang.so'"
+		fi
+	fi
+
+	cmake ${cmake_flags} . "$srcdir/YouCompleteMe/third_party/ycmd/cpp"
+	make ycm_core
+}
+
+package() {
+	pkg_ycmd_dir="${pkgdir}/usr/share/vim/vimfiles/third_party/ycmd"
+	src_ycmd_dir="${srcdir}/YouCompleteMe/third_party/ycmd"
+	mkdir -p "${pkg_ycmd_dir}"
+
+	cp -r "${srcdir}/YouCompleteMe/"{autoload,doc,plugin,python} "${pkgdir}/usr/share/vim/vimfiles"
+	cp -r "${srcdir}/YouCompleteMe/third_party/retries" "${pkgdir}/usr/share/vim/vimfiles/third_party"
+	cp -r "${src_ycmd_dir}/"{ycmd,ycm_core.so,CORE_VERSION} "${pkg_ycmd_dir}"
+	if [ "${_clang_completer}" == 'y' ]; then
+		if [ "${_clang_completer_system_libclang}" == 'y' ]; then
+			clang_version="$(clang --version|sed -n 's/clang version \([0-9.]\+\) .*/\1/p')"
+			ln -s "/usr/lib/clang/${clang_version}/include/" "${pkg_ycmd_dir}/clang_includes"
+			unset clang_version
+		else
+			cp -r "${srcdir}/${clang_filename}" "${src_ycmd_dir}/clang_includes" "${pkg_ycmd_dir}"
+		fi
+	fi
+
+	find "${pkgdir}" \( -name .git -or -name 'test*' -or -name 'run_tests.py' -or -name 'CMakeFiles' \) -exec rm -fr {} +
+}
