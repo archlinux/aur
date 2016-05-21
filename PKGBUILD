@@ -15,7 +15,7 @@
 # archzfs github page.
 #
 pkgname="spl-linux-git"
-pkgver=0.6.5_r54_g39cd90e_4.5.4_1
+pkgver=0.6.5_r55_gfdbc1ba_4.5.4_1
 pkgrel=1
 pkgdesc="Solaris Porting Layer kernel modules."
 depends=("spl-utils-linux-git" "kmod" "linux=4.5.4")
