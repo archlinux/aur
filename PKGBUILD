@@ -15,7 +15,7 @@
 # archzfs github page.
 #
 pkgname="zfs-linux-git"
-pkgver=0.6.5_r253_ga9bb2b6_4.5.4_1
+pkgver=0.6.5_r286_g9baaa7d_4.5.4_1
 pkgrel=1
 pkgdesc="Kernel modules for the Zettabyte File System."
 depends=("kmod" "spl-linux-git" "zfs-utils-linux-git" "linux=4.5.4")
@@ -35,7 +35,7 @@ build() {
     ./autogen.sh
     ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --libdir=/usr/lib \
                 --datadir=/usr/share --includedir=/usr/include --with-udevdir=/lib/udev \
-                --libexecdir=/usr/lib/zfs-0.6.5.6 --with-config=kernel \
+                --libexecdir=/usr/lib/zfs-0.6.5.7 --with-config=kernel \
                 --with-linux=/usr/lib/modules/4.5.4-1-ARCH/build
     make
 }
