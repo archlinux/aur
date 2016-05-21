@@ -18,12 +18,6 @@
 #
 #  "makepkg -i" is your friend.
 #
-#  There is a bug with gtk+ 3.20 where the geometry is not 
-#  calculated at all. Emacs opens in a very small frame.
-#  From within emacs, search for the options initial-frame-alist
-#  and default-frame-alist to set up emacs frame geometry to
-#  your personal preference. Switching to GTK+2 fixes it for now.
-#
 #######################################################################
 
 #######################################################################
@@ -35,7 +29,7 @@
 #######################################################################
 # Assign "YES" to the variable you want enabled, empty otherwise
 #######################################################################
-GTK3=            # Leave empty to compile with gtk+ 2 support. BTW, gtk3 is broken.
+GTK3="YES"       # Leave empty to compile with gtk+ 2 support.
 LTO=             # Enable link-time optimization. Broken.
 CAIRO=           # Very broken for me. Use at own risk.
 XWIDGETS=        # Use GTK+ native widgets pulled from webkitgtk.
@@ -44,7 +38,7 @@ DOCS_PDF=        # Generate and install pdf documentation.
 #######################################################################
 
 pkgname=emacs25-git
-pkgver=25.0.93.r124764
+pkgver=25.0.94.r124904
 pkgrel=1
 pkgdesc="GNU Emacs. Version 25 development and maintenance branch."
 arch=('i686' 'x86_64')
@@ -64,9 +58,9 @@ if [[ $DOCS_PDF = "YES" ]]; then makedepends+=('texlive-core'); fi
 #######################################################################
 conflicts=('emacs')
 provides=('emacs')
-source=("$pkgname::git://git.savannah.gnu.org/emacs.git#branch=emacs-25")
+#source=("$pkgname::git://git.savannah.gnu.org/emacs.git#branch=emacs-25")
 md5sums=('SKIP')
-#source=("$pkgname::git+http://git.savannah.gnu.org/r/emacs.git#branch=emacs-25")
+source=("$pkgname::git+http://git.savannah.gnu.org/r/emacs.git#branch=emacs-25")
 
 pkgver() {
   cd "$srcdir/$pkgname"
