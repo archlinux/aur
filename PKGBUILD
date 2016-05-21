@@ -3,7 +3,7 @@
 _pkgname='bdelta'
 pkgname="${_pkgname}-git"
 pkgver=0.3.1.d20130130.rg53e49e1.fefefilesize
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to create diffs of binary files. A sophisticated sequence matching library bundled with a delta creator and patch tool."
 url='https://github.com/jjwhitney/BDelta'
 arch=('i686' 'x86_64' 'arm')
@@ -14,7 +14,6 @@ depends=(
 
 makedepends=(
   "git"
-  "python2"
 )
 
 optdepends=(
@@ -36,7 +35,7 @@ _giturl="https://github.com/jjwhitney/BDelta.git"
 
 source=(
   "${_pkgname}::git+${_giturl}"
-  "fefe-filesize-patch.patch::https://ptrace.fefe.de/bdelta.diff"
+  "fefefilesize.patch::https://ptrace.fefe.de/bdelta.diff"
 )
 
 sha256sums=(
@@ -48,11 +47,15 @@ pkgver() {
   _unpackeddir="${srcdir}/${_pkgname}"
   cd "${_unpackeddir}"
   
-  _ver="$(python2 version.py)"
+  _ver="$(git describe | sed 's|^v||')"
   _rev="$(git describe --long | cut -d- -f3)"
   _date="$(git log -n 1 --pretty=format:%ci | cut -d' ' -f1 | tr -d '-')"
   
-  _extraver=".fefefilesize"
+  _extraver=""
+  for _patch in "${srcdir}"/*.patch; do
+    _extraver="${_extraver}.$(basename "${_patch}" .patch | tr -d '.-')"
+  done
+  
   
   if [ -z "${_ver}" ]; then
     echo "$0: Error: Could not determine version." > /dev/stderr
