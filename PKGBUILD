@@ -4,7 +4,7 @@
 
 pkgname=global
 pkgver=6.5.4
-pkgrel=3
+pkgrel=4
 pkgdesc="A source code tag system"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/global/"
