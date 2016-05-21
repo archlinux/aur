@@ -1,6 +1,6 @@
 # Maintainer: Elio Esteves Duarte <elio.esteves.duarte@gmail.com>
 pkgname=tomate-notify-plugin
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Tomate plugin that shows screen notifications"
 arch=('any')
@@ -15,7 +15,7 @@ depends=( 'gtk-update-icon-cache'
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/eliostvs/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('2ce2f54b751148e4dbb317c304d8ec72')
+md5sums=('da2f36af550ea066928ada2e11e79abb')
 install=tomate-notify-plugin.install
 
 package() {
