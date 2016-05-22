@@ -4,14 +4,14 @@ pkgdesc="ROS - rosbuild contains scripts for managing the CMake-based build syst
 url='http://ros.org/wiki/rosbuild'
 
 pkgname='ros-jade-rosbuild'
-pkgver='1.12.5'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   pkg-config)
 
@@ -20,10 +20,16 @@ ros_depends=(ros-jade-message-runtime
   ros-jade-catkin)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/rosbuild/${pkgver}-${_pkgver_patch}
-_dir=rosbuild
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rosbuild/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros-release-release-jade-rosbuild-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/jade/rosbuild/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('a53468c401b4c9174d895caf8fa8e452999fd911cb4705d4470d0a27f1444020')
 
 build() {
   # Use ROS environment variables
