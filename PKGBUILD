@@ -3,7 +3,7 @@
 
 _gitname='vaccine'
 pkgname=vaccine-git
-pkgver=0.0.1.r401.ga8a42d2
+pkgver=403.0f674c1
 pkgrel=1
 pkgdesc="A GTK+3 4chan client for the linux desktop"
 arch=('i686' 'x86_64')
@@ -20,12 +20,7 @@ md5sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd "$_gitname"
-
-    # No tags yet..
-    _ver=`autoconf -t 'AC_INIT:$2'`
-    _rev=`git rev-list --count HEAD`
-    _hash=`git rev-parse --short HEAD`
-    echo "$_ver.r$_rev.g$_hash"
+    echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
 prepare() {

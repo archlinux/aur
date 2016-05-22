@@ -1,6 +1,6 @@
 pkgbase = vaccine-git
 	pkgdesc = A GTK+3 4chan client for the linux desktop
-	pkgver = 0.0.1.r401.ga8a42d2
+	pkgver = 403.0f674c1
 	pkgrel = 1
 	url = https://github.com/VaccineApp/vaccine
 	install = vaccine.install
