@@ -4,7 +4,7 @@ pkgdesc="ROS - The actionlib stack provides a standardized interface for interfa
 url='http://www.ros.org/wiki/actionlib'
 
 pkgname='ros-jade-actionlib'
-pkgver='1.11.4'
+pkgver='1.11.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -17,7 +17,7 @@ ros_makedepends=(ros-jade-actionlib-msgs
   ros-jade-roscpp
   ros-jade-catkin
   ros-jade-rospy)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost)
 
@@ -30,10 +30,16 @@ ros_depends=(ros-jade-actionlib-msgs
 depends=(${ros_depends[@]}
   boost)
 
-_tag=release/jade/actionlib/${pkgver}-${_pkgver_patch}
-_dir=actionlib
-source=("${_dir}"::"git+https://github.com/ros-gbp/actionlib-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/actionlib/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/actionlib-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="actionlib-release-release-jade-actionlib-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/actionlib-release/archive/release/jade/actionlib/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('db5091eaaa387cfe61bd28bfd3f51aa931f63049192bfd238b787bc3a9004a8b')
 
 build() {
   # Use ROS environment variables
