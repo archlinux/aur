@@ -50,9 +50,9 @@ PKGEXT='.pkg.tar' # Prevent compressing of the final package
 
 prepare() {
   if [ "$(df . -BG --output=avail | awk -F'[^0-9]*' 'FNR==2 {print $2;}')" -le "10" ]; then
-    warning "It seems that you have less than 10GB left. If you are using an AUR-Helper"
-    warning "or building on a small partition (like /tmp), you might want to change the"
-    warning "build-/cache-directory as this package is rather big"
+    warning "It seems that you have less than 10GB left. If you are using
+     an AUR-Helper or building on a small partition (like /tmp), you might
+     want to change the build-/cache-directory as this package is rather big."
   fi
 }
 
