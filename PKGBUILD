@@ -3,14 +3,14 @@
 
 _gitname='vaccine'
 pkgname=vaccine-git
-pkgver=0.0.1.r397.g83ca071
+pkgver=0.0.1.r401.ga8a42d2
 pkgrel=1
 pkgdesc="A GTK+3 4chan client for the linux desktop"
 arch=('i686' 'x86_64')
 url="https://github.com/VaccineApp/vaccine"
 license=('GPL3')
 depends=('gtk3' 'gtksourceview3' 'libsoup' 'json-glib' 'libgee' 'gst-plugins-bad')
-makedepends=('git' 'automake' 'autoconf-archive' 'vala')
+makedepends=('git' 'automake' 'autoconf-archive' 'vala' 'appstream-glib')
 install='vaccine.install'
 provides=('vaccine')
 conflicts=('vaccine')
