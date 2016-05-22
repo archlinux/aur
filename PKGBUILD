@@ -4,7 +4,7 @@ pkgdesc="ROS - This contains CvBridge, which converts between ROS Image messages
 url='http://www.ros.org/wiki/cv_bridge'
 
 pkgname='ros-jade-cv-bridge'
-pkgver='1.11.11'
+pkgver='1.11.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -37,7 +37,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="vision_opencv-release-release-jade-cv_bridge-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/jade/cv_bridge/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b13e0d9e73ef0faaf4010e2cea0aedeceaf28097bf1a0a978b00718cf8524f71')
+sha256sums=('aa46a271883452f2936194dd27679bbf19c52c59f3f591dac3c0691abdb5986f')
 
 build() {
   # Use ROS environment variables
