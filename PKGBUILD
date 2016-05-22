@@ -4,7 +4,7 @@
 
 pkgbase=pypy-setuptools
 pkgname=('pypy3-setuptools' 'pypy-setuptools')
-pkgver=21.1.0
+pkgver=21.2.0
 pkgrel=1
 epoch=1
 pkgdesc="Easily download, build, install, upgrade, and uninstall Python packages"
@@ -13,7 +13,7 @@ license=('PSF')
 makedepends=('pypy' 'pypy3')
 url="http://pypi.python.org/pypi/setuptools"
 source=("https://pypi.io/packages/source/s/setuptools/setuptools-${pkgver}.tar.gz")
-sha512sums=('e4778f6b7474e9676e70199362c57c6c4a9b42e4e5b78e1e8b74822653503bd5fe0f5a709d535d232025ea7064dd09f51df931f64f525329fbc11d83fa613249')
+sha512sums=('729bde65d165898e82019d37e55d662f12cf429328f008d8d9ec0732614850a383fa953d5f6cd4ae8022940ee3f09ad59c2c795df2777bce3dbb2a9b07d4e669')
 
 prepare() {
   cp -a setuptools-${pkgver}{,-pypy}
@@ -49,8 +49,8 @@ package_pypy3-setuptools() {
 
 package_pypy-setuptools() {
   depends=('pypy')
-  provides=('pypy-distribute' 'setuptools')
-  replaces=('pypy-distribute' 'setuptools')
+  provides=('pypy-distribute')
+  replaces=('pypy-distribute')
 
   cd "${srcdir}/setuptools-${pkgver}-pypy"
   pypy setup.py install --prefix=/opt/pypy --root="${pkgdir}" --optimize=1
