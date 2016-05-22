@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/danhedron/openrw"
 license=('GPL3')
 groups=()
-depends=('bullet' 'glm' 'sfml' 'boost')
+depends=('bullet' 'glm' 'sfml' 'boost' 'libmad')
 makedepends=('git' 'cmake' 'make')
 checkdepends=()
 optdepends=()
@@ -51,5 +51,5 @@ package() {
 	install -Dm755 build/rwgame/rwgame "$pkgdir/usr/bin/rwgame"
 
 	# .desktop file and icon
-	install -Dm644 "$srcdir/openrw.desktop" "$pkgdir"/usr/share/applications/openrw.desktop
+	install -Dm644 "$srcdir/openrw.desktop" "$pkgdir"/usr/share/applications/openrw.desktop	
 }

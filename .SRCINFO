@@ -12,6 +12,7 @@ pkgbase = openrw-git
 	depends = glm
 	depends = sfml
 	depends = boost
+	depends = libmad
 	provides = openrw
 	source = openrw-git::git+https://github.com/danhedron/openrw.git
 	source = openrw.desktop
