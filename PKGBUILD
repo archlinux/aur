@@ -4,7 +4,7 @@ pkgdesc="ROS - rosgraph contains the rosgraph command-line tool, which prints in
 url='http://ros.org/wiki/rosgraph'
 
 pkgname='ros-indigo-rosgraph'
-pkgver='1.11.18'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-rosgraph-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosgraph/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('deed84f6b75ff05bfb6118582f2779b0be5abc1d6d08b936606623d8cbbed4f6')
+sha256sums=('6d0c18684013eae4597c5cbbf49432bf27c48007b3f55a8b2f077e310dccecd1')
 
 build() {
   # Use ROS environment variables
