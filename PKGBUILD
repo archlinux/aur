@@ -4,7 +4,7 @@ pkgdesc="ROS - Integration test suite based on roslaunch that is compatible with
 url='http://ros.org/wiki/rostest'
 
 pkgname='ros-jade-rostest'
-pkgver='1.11.16'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,7 +12,7 @@ license=('BSD')
 
 ros_makedepends=(ros-jade-rosunit
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost)
 
@@ -24,10 +24,16 @@ ros_depends=(ros-jade-rosmaster
 depends=(${ros_depends[@]}
   boost)
 
-_tag=release/jade/rostest/${pkgver}-${_pkgver_patch}
-_dir=rostest
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rostest/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-jade-rostest-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/jade/rostest/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('165ed9cde5205ebb14f316172c9e2fab11ca08d087fc9442e3d7b8fa8cda88de')
 
 build() {
   # Use ROS environment variables
