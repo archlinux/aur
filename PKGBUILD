@@ -1,14 +1,14 @@
 # Maintainer: Oliver Rümpelein <oli_r nospamat fg4f nospamdot de>; Siegfried Krug <siegfried nospamat fg4f nospamdot de>
 pkgname=x32edit
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote control and programm Behringer X32 consoles"
 arch=('i686' 'x86_64')
 url="http://www.behringer.com/EN/products/X32.aspx"
 license=('custom:MUSIC Group End User License Agreement')
 install=${pkgname}.install
-depends_i686=('libxext' 'alsa-lib' 'freetype2' 'mesa')
-depends_x86_64=('lib32-libxext' 'lib32-alsa-lib' 'lib32-freetype2' 'lib32-pcre' 'lib32-mesa')
+depends_i686=('libxext' 'alsa-lib' 'freetype2' 'mesa' 'mesa-libgl')
+depends_x86_64=('lib32-libxext' 'lib32-alsa-lib' 'lib32-freetype2' 'lib32-pcre' 'lib32-mesa' 'lib32-mesa-libgl')
 source=("http://downloads.music-group.com/software/behringer/X32/X32-EDIT_LINUX_V.${pkgver}.tar.gz"
 'http://www.music-group.com/eurocom/assets/EULA_2012-09-12.pdf')
 md5sums=('2082812fa5132c3fc0e3fb3df6d2726e'
