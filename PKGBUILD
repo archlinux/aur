@@ -4,14 +4,14 @@ pkgdesc="ROS - ros_tutorials contains packages that demonstrate various features
 url='http://www.ros.org/wiki/ros_tutorials'
 
 pkgname='ros-jade-ros-tutorials'
-pkgver='0.6.1'
+pkgver='0.6.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-turtlesim
@@ -19,10 +19,16 @@ ros_depends=(ros-jade-turtlesim
   ros-jade-rospy-tutorials)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/ros_tutorials/${pkgver}-${_pkgver_patch}
-_dir=ros_tutorials
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_tutorials-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/ros_tutorials/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_tutorials-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_tutorials-release-release-jade-ros_tutorials-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_tutorials-release/archive/release/jade/ros_tutorials/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('8f1909c51fe59cdcdc22b7d84e8b38c8df3f3f4f4a7b6610f5056791ea0a4050')
 
 build() {
   # Use ROS environment variables
