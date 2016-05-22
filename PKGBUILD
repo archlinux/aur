@@ -4,14 +4,14 @@ pkgdesc="ROS - RQT plugin for monitoring ROS processes."
 url='http://ros.org/wiki/rqt_top'
 
 pkgname='ros-jade-rqt-top'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-rqt-gui-py
@@ -20,10 +20,16 @@ ros_depends=(ros-jade-rqt-gui-py
 depends=(${ros_depends[@]}
   python2-psutil)
 
-_tag=release/jade/rqt_top/${pkgver}-${_pkgver_patch}
-_dir=rqt_top
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rqt_top/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-jade-rqt_top-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/jade/rqt_top/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('902d52a14bf0851de370bc1a58c8b5dc887e4fa113f34e2fa11b84782ed49137')
 
 build() {
   # Use ROS environment variables
