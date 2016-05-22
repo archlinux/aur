@@ -1,0 +1,57 @@
+.mso www.tmac
+.TH UPDATE-PACMAN-MIRRORLIST 1
+
+.SH NAME
+update-pacman-mirrorlist \- update the pacman mirrorlist
+
+.SH SYNOPSIS
+.B update-pacman-mirrorlist
+[\fB\-b \fIbackup_file\fR]
+[\fB\-h\fR]
+[\fB\-l \fIlocal_file\fR]
+[\fB\-r \fIremote_URL\fR]
+
+.SH DESCRIPTION
+.B update-pacman-mirrorlist
+downloads a
+.BR pacman (8)
+mirrorlist from a specified ranking server defaulting to the official
+.URL "https://www.archlinux.org/mirrorlist/" "Pacman Mirrorlist Generator".
+The downloaded mirrorlist is checked and modified if necessary for validity before it is installed.
+
+.SH CONFIGURATION
+It can be configured with the
+.I /etc/update-pacman-mirrorlist
+file or the command line options to download from any accessible remote URL to a local mirrorlist file. Settings from the command line arguments are preferred followed by those from the systemwide configuration file.
+
+.SH OPTIONS
+.TP
+.BR \-b ", " \-\-backup=\fIFILE\fR
+Back up old mirrorlist to \fIFILE\fR.
+.TP
+.BR \-h ", " \-\-help
+Print a help message then exit.
+.TP
+.BR \-l ", " \-\-local=\fIFILE\fR
+Download new mirrorlist to \fIFILE\fR.
+.TP
+.BR \-r ", " \-\-remote=\fIURL\fR
+Download new mirrorlist from \fIURL\fR.
+
+.SH EXIT STATUS
+This program uses the
+.BR Bash (1)
+.URL "http://tldp.org/LDP/abs/html/exitcodes.html" "Reserved Exit Codes"
+and the
+.URL "/usr/include/sysexits.h" "Preferable Exit Codes"
+as they are defined. It implements no custom or additional exit codes.
+
+.SH FILES
+.TP
+.I /etc/update-pacman-mirrorlist
+Systemwide configuration.
+
+.SH SEE ALSO
+.BR pacman.conf (5),
+.BR pacman (8),
+.BR bash (1)

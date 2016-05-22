@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-#TODO: Comment and document!
-
 #Use settings from the configuration file first.
 source '/etc/update-pacman-mirrorlist' || true
 
@@ -12,6 +10,7 @@ Updates the pacman mirrorlist.
 
 Options:
 -b | --backup FILE	Back up old mirrorlist to FILE.
+-h | --help		Print this help message then exit.
 -l | --local FILE	Download new mirrorlist to FILE.
 -r | --remote URL	Download new mirrorlist from URL.
 
@@ -24,14 +23,14 @@ set +u
 		options=$(getopt -o 'b:hl:r:' -l 'backup:,help,local:,remote:' -n 'update-pacman-mirrorlist' -- "$@")
 		if [ "$?" != 0 ]; then
 			echo "$help"
-			exit 1
+			exit 64 #EX_USAGE
 		fi
 	set -e
 	eval set -- "$options"
 	while true; do
 		case "$1" in
 		-b | --backup ) backup_mirrorlist="$2"; shift 2 ;;
-		-h | --help ) echo "$help"; exit ;;
+		-h | --help ) echo "$help"; exit 0 ;; #EX_OK
 		-l | --local ) local_mirrorlist="$2"; shift 2 ;;
 		-r | --remote ) remote_mirrorlist="$2"; shift 2 ;;
 		-- ) shift; break ;;
@@ -51,28 +50,27 @@ set +u
 	fi
 set -u
 
-temp_local_mirrorlist="$(mktemp)"
+temp_local_mirrorlist="$(mktemp)" || exit 73 #EX_CANTCREAT
 trap 'rm -f "$temp_local_mirrorlist"' EXIT
 
 echo "Downloading new mirrorlist from $remote_mirrorlist to $local_mirrorlist."
-curl -fLC - --retry 9 "$remote_mirrorlist" -o "$temp_local_mirrorlist"
+curl -fLC - --retry 9 "$remote_mirrorlist" -o "$temp_local_mirrorlist" || exit 69 #EX_UNAVAILABLE
 
 if grep -Eqv '^(#|\s+#|$|Server = )' "$temp_local_mirrorlist"; then
 	echo 'The downloaded mirrorlist file contains an uncommented non-Server directive, so it might be invalid.' >&2
-	exit 1
+	exit 65 #EX_DATAERR
 fi
 
 if ! grep -q '^Server = ' "$temp_local_mirrorlist"; then
 	if ! grep -q '^#Server = ' "$temp_local_mirrorlist"; then
 		echo 'The downloaded mirrorlist file does not appear to contain any mirrors, so it might be invalid.' >&2
-		exit 1
+		exit 65 #EX_DATAERR
 	fi
 	sed '/^#Server = / s|#||' -i "$temp_local_mirrorlist"
 fi
 
-#TODO: These last commands are the only ones that need to run as root; privileges should be dropped until now.
 if [ -e "$local_mirrorlist" ]; then
 	echo "Backing up old mirrorlist from $local_mirrorlist to $backup_mirrorlist."
-	cat "$local_mirrorlist" > "$backup_mirrorlist"
+	cat "$local_mirrorlist" > "$backup_mirrorlist" || exit 73 #EX_CANTCREAT
 fi
-cat "$temp_local_mirrorlist" > "$local_mirrorlist"
+cat "$temp_local_mirrorlist" > "$local_mirrorlist" || exit 73 #EX_CANTCREAT

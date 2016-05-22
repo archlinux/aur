@@ -16,7 +16,7 @@ post_install()
 {
 	_get_timer_status
 	if ! $_enabled || ! $_active; then
-		echo 'You most likely want to enable automatic mirrorlist updates by running the following as a privileged user:'
+		echo 'If you want to enable automatic daily mirrorlist updates, then run the following as a privileged user:'
 		if ! $_enabled && ! $_active; then
 			echo 'systemctl enable update-pacman-mirrorlist.timer --now'
 		else
@@ -27,6 +27,7 @@ post_install()
 				echo 'systemctl start update-pacman-mirrorlist.timer'
 			fi
 		fi
+		echo
 	fi
 }
 
@@ -41,5 +42,6 @@ pre_remove()
 		if $_active; then
 			echo 'systemctl stop update-pacman-mirrorlist.timer'
 		fi
+		echo
 	fi
 }
