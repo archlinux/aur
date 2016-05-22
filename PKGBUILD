@@ -21,7 +21,7 @@ prepare() {
   cd "$pkgname"
 
   msg 'Bootstrapping diffutils ...'
-  ./bootstrap  
+  ./bootstrap
 }
 
 build() {
