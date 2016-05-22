@@ -5,7 +5,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=git-duet
-pkgver=0.3.0
+pkgver=0.3.0+
 pkgrel=1
 pkgdesc="Support for pairing with git"
 arch=('i686' 'x86_64')
@@ -18,14 +18,11 @@ source=('git+https://github.com/git-duet/git-duet.git')
 md5sums=('SKIP')
 
 build() {
-  build() {
-   repodir="$srcdir"/src/github.com/git-duet
-   mkdir -p "$repodir"
-   mv "$srcdir"/$pkgname "$repodir"
-   cd "$repodir"/$pkgname
-   git checkout -q $pkgver
-   GOPATH="$srcdir" go get -v ./...
-  }
+  repodir="$srcdir"/src/github.com/git-duet
+  mkdir -p "$repodir"
+  mv "$srcdir"/$pkgname "$repodir"
+  cd "$repodir"/$pkgname
+  GOPATH="$srcdir" go get -v ./...
 }
 
 check() {
