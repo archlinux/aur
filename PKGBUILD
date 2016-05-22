@@ -5,7 +5,7 @@ pkgname=("zarafa-webapp-${_pkgname}")
 replaces=("zarafa-webapp-pdfbox")
 groups=('zarafa')
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Filepreviewer plugin for Zarafa Webapp'
 arch=('any')
 source=("https://download.zarafa.com/community/final/WebApp/plugins/Filepreviewer%201.0/fedora-22/x86_64/zarafa-webapp-plugins-filepreviewer-1.0-47.1.noarch.rpm"
@@ -15,7 +15,7 @@ license=('AGPL3')
 depends=('zarafa-webapp>=2.1.2-2'
 	 'php<7'
 	 'php-fpm<7')
-md5sums=('7f57d6b541cf05ea6ca4ebf8d26cfbae'
+md5sums=('bfd39abc97b8b850b22532b804d7d565'
          'd737d82dfab24adc516c001238a4119f')
 
 package() {
