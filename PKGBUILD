@@ -4,14 +4,14 @@ pkgdesc="ROS - This rqt plugin succeeds former dynamic_reconfigures GUI (reconfi
 url='http://ros.org/wiki/rqt_reconfigure'
 
 pkgname='ros-jade-rqt-reconfigure'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-dynamic-reconfigure
@@ -22,10 +22,16 @@ ros_depends=(ros-jade-dynamic-reconfigure
   ros-jade-rospy)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/rqt_reconfigure/${pkgver}-${_pkgver_patch}
-_dir=rqt_reconfigure
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rqt_reconfigure/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-jade-rqt_reconfigure-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/jade/rqt_reconfigure/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('7676a703fc54b9aa22cf349881001a29dd62a31a21f3607e7d1f13237fefc591')
 
 build() {
   # Use ROS environment variables
