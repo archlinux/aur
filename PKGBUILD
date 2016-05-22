@@ -4,7 +4,7 @@ pkgdesc="ROS - rosconsole_bridge is a package used in conjunction with console_b
 url='http://www.ros.org/wiki/rosconsole_bridge'
 
 pkgname='ros-jade-rosconsole-bridge'
-pkgver='0.4.2'
+pkgver='0.4.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,7 +12,7 @@ license=('BSD')
 
 ros_makedepends=(ros-jade-rosconsole
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   console-bridge)
 
@@ -20,10 +20,16 @@ ros_depends=(ros-jade-rosconsole)
 depends=(${ros_depends[@]}
   console-bridge)
 
-_tag=release/jade/rosconsole_bridge/${pkgver}-${_pkgver_patch}
-_dir=rosconsole_bridge
-source=("${_dir}"::"git+https://github.com/ros-gbp/rosconsole_bridge-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rosconsole_bridge/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rosconsole_bridge-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rosconsole_bridge-release-release-jade-rosconsole_bridge-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rosconsole_bridge-release/archive/release/jade/rosconsole_bridge/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('9e56a0f2d8041994529ba2131826bcb9a3af0e0ed56ec5632bce2b97ae1634f9')
 
 build() {
   # Use ROS environment variables
