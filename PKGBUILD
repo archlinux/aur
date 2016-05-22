@@ -4,7 +4,7 @@ pkgdesc="ROS - Message and service data structures for interacting with Gazebo f
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-jade-gazebo-msgs'
-pkgver='2.5.2'
+pkgver='2.5.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,7 +13,6 @@ license=('BSD')
 ros_makedepends=(ros-jade-geometry-msgs
   ros-jade-std-msgs
   ros-jade-sensor-msgs
-  ros-jade-message-runtime
   ros-jade-message-generation
   ros-jade-catkin
   ros-jade-trajectory-msgs
@@ -25,7 +24,6 @@ ros_depends=(ros-jade-geometry-msgs
   ros-jade-std-msgs
   ros-jade-sensor-msgs
   ros-jade-message-runtime
-  ros-jade-message-generation
   ros-jade-trajectory-msgs
   ros-jade-std-srvs)
 depends=(${ros_depends[@]})
@@ -39,7 +37,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-jade-gazebo_msgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/jade/gazebo_msgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('b246a19f4a3fe23f97ffdd0bfe6e85816ddf3f83280857feb7635ede8055d1c2')
+sha256sums=('65fa0d683ff7d7e5ffc5f36be9bb0ae4fc741b344860fc7c35170fbf0db99784')
 
 build() {
   # Use ROS environment variables
