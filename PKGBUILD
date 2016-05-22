@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL2')
 depends=('gtk3' 'python2-xdg' 'python2-gobject')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('1a543bc04422b28807779b16c56736a40fe36bed248061b4b216cde0dbcdf1c2')
+sha256sums=('c510014fede60498ff0a02d11137cdb253a1515e99bebc3bcb0d76c590758d91')
 
 build() {
   cd "${pkgname}-${pkgver}"
