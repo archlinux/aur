@@ -4,16 +4,16 @@ pkgdesc="ROS - diagnostic_common_diagnostics."
 url='http://ros.org/wiki/diagnostic_common_diagnostics'
 
 pkgname='ros-jade-diagnostic-common-diagnostics'
-pkgver='1.8.7'
-_pkgver_patch=0
+pkgver='1.8.9'
+_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin
   ros-jade-diagnostic-updater
   ros-jade-rospy)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-tf
@@ -22,10 +22,16 @@ ros_depends=(ros-jade-tf
 depends=(${ros_depends[@]}
   hddtemp)
 
-_tag=release/jade/diagnostic_common_diagnostics/${pkgver}-${_pkgver_patch}
-_dir=diagnostic_common_diagnostics
-source=("${_dir}"::"git+https://github.com/ros-gbp/diagnostics-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/diagnostic_common_diagnostics/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/diagnostics-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="diagnostics-release-release-jade-diagnostic_common_diagnostics-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/jade/diagnostic_common_diagnostics/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('10792223d57db172b1fd950cc4e7cde37a144ccf9dee767bd96ccbc4e9210747')
 
 build() {
   # Use ROS environment variables
