@@ -4,6 +4,8 @@
 [Unit]
 Description=Dropbear SSH Server (initrd)
 ConditionPathExists=/etc/initrd-release
+#DefaultDependencies=no
+Requires=initrd-network.service
 After=network.target
 
 [Service]
