@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_service_caller provides a GUI plugin for calling arbitrary se
 url='http://ros.org/wiki/rqt_service_caller'
 
 pkgname='ros-jade-rqt-service-caller'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-rqt-py-common
@@ -21,10 +21,16 @@ ros_depends=(ros-jade-rqt-py-common
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/jade/rqt_service_caller/${pkgver}-${_pkgver_patch}
-_dir=rqt_service_caller
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rqt_service_caller/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-jade-rqt_service_caller-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/jade/rqt_service_caller/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('e9501dd8caa2c6027bb19afe8c14b25d9d569fc7cc4002035f4337f373c22247')
 
 build() {
   # Use ROS environment variables
