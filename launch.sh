@@ -12,20 +12,22 @@ has_makepkg() {
     which makepkg >/dev/null 2>&1
 }
 
-update() {
 
-    echo  "// update"
+provision() {
+    echo "// provision"
+
+    has_makepkg || return 0    
     
     cd $location
-    
-    git pull
-    
-}
+ 
+    local suno=""
+    if is_root ; then
+        chown -R nobody $location
+        suno="sudo -u nobody"
+    fi
+  
+    $suno makepkg --log --cleanbuild --install --force
 
-build() {
-
-    echo "// build"
-    
 }
 
 pkgver() {
@@ -48,6 +50,8 @@ version_simple() {
     
     local pkgver=$(pkgver)
     local file_list="PKGBUILD .SRCINFO"
+    
+    local file
     for file in $file_list ; do
         sed -i "s:^\([ ]*pkgver[ ]*=[ ]*\).*:\1$pkgver:" "$file"
         #cat $file | grep "pkgver"
@@ -72,13 +76,10 @@ version_proper() {
 }
 
 commit() {
-
+    echo "// commit"
+    
     cd $location
-
-    echo "// commit $(pwd)"
-            
     git add --all  :/
-    #git add PKGBUILD .SRCINFO
     git status 
 
     local message=$(git status --short)
@@ -89,9 +90,7 @@ commit() {
 }
 
 
-#update
-
-#build
+provision
 
 version
 
