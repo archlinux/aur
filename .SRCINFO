@@ -12,6 +12,7 @@ pkgbase = vaccine-git
 	makedepends = autoconf-archive
 	makedepends = vala
 	depends = gtk3
+	depends = gtksourceview3
 	depends = libsoup
 	depends = json-glib
 	depends = libgee
