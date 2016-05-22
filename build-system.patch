@@ -1,0 +1,103 @@
+diff --git a/src/arch/linux/Makefile.main b/src/arch/linux/Makefile.main
+index dc1eb40..4289ee7 100644
+--- a/src/arch/linux/Makefile.main
++++ b/src/arch/linux/Makefile.main
+@@ -4,8 +4,8 @@
+ # install DOSEMU.
+ 
+ SYS = ../commands
+-dosemudir = $(datadir)/dosemu
+-sysdir = $(DESTDIR)$(dosemudir)/$(cmdsuff)
++dosemudir = $(libdir)/dosemu
++sysdir = $(dosemudir)/$(cmdsuff)
+ cmddir = $(sysdir)/dosemu
+ 
+ NET=dosext/net
+@@ -154,8 +154,8 @@ install:
+ 	$(INSTALL) -d $(DESTDIR)$(dosemudir)
+ 	-rm -rf $(DESTDIR)$(dosemudir)/commands $(DESTDIR)$(dosemudir)/freedos/dosemu
+ 	-rm -rf $(DESTDIR)$(dosemudir)/drive_z
+-	-rm -rf $(cmddir)
+-	-rm -rf $(sysdir)
++	-rm -rf $(DESTDIR)$(cmddir)
++	-rm -rf $(DESTDIR)$(sysdir)
+ 	$(INSTALL) -d $(DESTDIR)$(sysconfdir)
+ 	if [ -f $(REALTOPDIR)/$(fdtarball) ]; then \
+ 	  rm -rf $(DESTDIR)$(dosemudir)/freedos; \
+@@ -168,17 +168,17 @@ install:
+ 	else \
+ 	  $(INSTALL) -d $(DESTDIR)$(dosemudir)/drive_z; \
+ 	fi
+-	$(INSTALL) -d $(sysdir)
+-	$(INSTALL) -m 0644 $(SRCPATH)/bindist/config.sys $(sysdir)
+-	$(INSTALL) -m 0644 $(SRCPATH)/bindist/autoexec.bat $(sysdir)
+-	$(INSTALL) -m 0644 $(SRCPATH)/bindist/fdconfig.sys $(sysdir)
+-	$(INSTALL) -m 0644 $(SRCPATH)/bindist/autoemu.bat $(sysdir)
+-	$(INSTALL) -d $(cmddir)
++	$(INSTALL) -d $(DESTDIR)$(sysdir)
++	$(INSTALL) -m 0644 $(SRCPATH)/bindist/config.sys $(DESTDIR)$(sysdir)
++	$(INSTALL) -m 0644 $(SRCPATH)/bindist/autoexec.bat $(DESTDIR)$(sysdir)
++	$(INSTALL) -m 0644 $(SRCPATH)/bindist/fdconfig.sys $(DESTDIR)$(sysdir)
++	$(INSTALL) -m 0644 $(SRCPATH)/bindist/autoemu.bat $(DESTDIR)$(sysdir)
++	$(INSTALL) -d $(DESTDIR)$(cmddir)
+ 	for i in `find $(SYS)/* -type f`; do \
+-	  $(INSTALL) -m 0644 $$i $(cmddir); \
++	  $(INSTALL) -m 0644 $$i $(DESTDIR)$(cmddir); \
+ 	done
+ 	cd $(SYS); for i in `find * -type l`; do \
+-	  ln -sf generic.com $(cmddir)/$$i; \
++	  ln -sf generic.com $(DESTDIR)$(cmddir)/$$i; \
+ 	done
+ 	ln -sf $(cmdsuff) $(DESTDIR)$(dosemudir)/commands
+ 	ln -sf $(cmddir) $(DESTDIR)$(dosemudir)/drive_z/dosemu
+@@ -194,7 +194,6 @@ install:
+ 	$(INSTALL) -d $(DESTDIR)$(bindir)
+ 	$(INSTALL) -m 0755 ../bin/$(DOSBIN) $(DESTDIR)$(bindir)
+ 	$(INSTALL) -m 0755 ../bin/dosemu $(DESTDIR)$(bindir)
+-	$(INSTALL) -m 0755 ../bin/mkfatimage $(DESTDIR)$(bindir)
+ 	$(INSTALL) -m 0755 ../bin/mkfatimage16 $(DESTDIR)$(bindir)
+ 	$(INSTALL) -m 0755 ../bin/dosdebug $(DESTDIR)$(bindir)
+ 	$(INSTALL) -d $(DESTDIR)$(libdir)/dosemu
+@@ -204,7 +203,7 @@ install:
+ 	  fi; \
+ 	done
+ 	$(INSTALL) -d $(DESTDIR)$(docdir)
+-	for i in README.bindist NEWS THANKS COPYING COPYING.DOSEMU BUGS ChangeLog; do \
++	for i in README.bindist NEWS THANKS BUGS ChangeLog; do \
+ 	  $(INSTALL) -m 0644 $(REALTOPDIR)/$$i $(DESTDIR)$(docdir); \
+ 	done
+ 	for i in README EMUfailure NOVELL-HOWTO tweaks; do \
+diff --git a/src/emu.c b/src/emu.c
+index 94ffa6a..87c8481 100644
+--- a/src/emu.c
++++ b/src/emu.c
+@@ -248,8 +248,8 @@ void do_liability_disclaimer_prompt(int dosboot, int prompt)
+   ".\nCopyright (C) 1992-2006 the 'DOSEMU-Development-Team'.\n"
+   "This program is  distributed  in  the  hope that it will be useful,\n"
+   "but  WITHOUT  ANY  WARRANTY;   without even the implied warranty of\n"
+-  "MERCHANTABILITY  or  FITNESS FOR A PARTICULAR PURPOSE. See the files\n"
+-  "COPYING for more details.\n"
++  "MERCHANTABILITY  or  FITNESS FOR A PARTICULAR PURPOSE. See the file\n"
++  "/usr/share/licenses/dosemu/COPYING for more details.\n"
+   "Use  this  program  at  your  own  risk!\n\n";
+ 
+   static char text2[] =
+diff --git a/src/tools/periph/Makefile b/src/tools/periph/Makefile
+index 4abff44..a7058b4 100644
+--- a/src/tools/periph/Makefile
++++ b/src/tools/periph/Makefile
+@@ -11,12 +11,12 @@ include $(top_builddir)/Makefile.conf
+ D=$(REALTOPDIR)/etc
+ IDEST=/var/lib
+ 
+-CFILES=hdinfo.c mkhdimage.c putrom.c mkfatimage.c mkfatimage16.c \
++CFILES=hdinfo.c mkhdimage.c putrom.c mkfatimage16.c \
+     dexeconfig.c scsicheck.c dosctrl.c vbioscheck.c
+ SFILES=bootsect.S
+ SRC=$(CFILES) $(SFILES)
+ OBJ1=hdinfo mkhdimage putrom dexeconfig scsicheck dosctrl vbioscheck 
+-OBJ=$(OBJ1) $(BINPATH)/bin/mkfatimage $(BINPATH)/bin/mkfatimage16
++OBJ=$(OBJ1) $(BINPATH)/bin/mkfatimage16
+ SCRIPT=getrom
+ 
+ ALL_CPPFLAGS += -I.

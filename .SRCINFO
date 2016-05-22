@@ -1,0 +1,33 @@
+pkgbase = dosemu2-git
+	pkgdesc = Virtual machine that allows you to run DOS programs under linux
+	pkgver = 2.0pre4+733+g030b1b0
+	pkgrel = 1
+	epoch = 0
+	url = https://stsp.github.io/dosemu2/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	optdepends = vde2: networking support
+	optdepends = sdl2: graphical display
+	optdepends = slang: console display
+	optdepends = gpm: mouse support in console
+	optdepends = libao: audio output
+	optdepends = fluidsynth: MIDI support
+	provides = dosemu
+	conflicts = dosemu
+	noextract = dosemu-freedos-1.1-bin.tgz
+	backup = etc/dosemu/dosemu.conf
+	source = git+https://github.com/stsp/dosemu2.git
+	source = https://dl.dropboxusercontent.com/u/13513277/dosemu/dosemu-freedos-1.1-bin.tgz
+	source = build-system.patch
+	source = xdosemu.desktop
+	source = compiletime-settings
+	sha256sums = SKIP
+	sha256sums = 0891a8346ee58f8468ab17f93315d6f23fe68348d297be39c1faad5bd6e59613
+	sha256sums = c4364f3837744775faebeac86ad22e5b636db411942c6e21e74e9b3277e066cf
+	sha256sums = ed210a850a1102fbf56bfd8a34b5dddca538caa2eee39210ee612406891c3e5a
+	sha256sums = 7f64ff44f13779fe3e283f23b9eb8765433b87f1222cc147bf524a8e844f736f
+
+pkgname = dosemu2-git
+
