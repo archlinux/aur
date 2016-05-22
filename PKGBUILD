@@ -14,7 +14,7 @@ source=('http://mirrors.ctan.org/fonts/fontawesome/tex/fontawesome.sty'
         'http://mirrors.ctan.org/fonts/fontawesome/tex/fontawesomesymbols-pdftex.tex'
         'http://mirrors.ctan.org/fonts/fontawesome/tex/fontawesomesymbols-xeluatex.tex')
 md5sums=('ee97743276dc242c78f33fd622e260ea'
-         '02595c36bb98d393cb4dba994cdd1e69'
+         '40b369fd6c8364bdcc88401c4c1db5bf'
          'f7ffa71c62c5257edd5542253d4cea15'
          '7166bfdff927bad3f81e302543d76c90')
 install=fontawesome.install

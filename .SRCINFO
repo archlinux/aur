@@ -13,7 +13,7 @@ pkgbase = fontawesome.sty
 	source = http://mirrors.ctan.org/fonts/fontawesome/tex/fontawesomesymbols-pdftex.tex
 	source = http://mirrors.ctan.org/fonts/fontawesome/tex/fontawesomesymbols-xeluatex.tex
 	md5sums = ee97743276dc242c78f33fd622e260ea
-	md5sums = 02595c36bb98d393cb4dba994cdd1e69
+	md5sums = 40b369fd6c8364bdcc88401c4c1db5bf
 	md5sums = f7ffa71c62c5257edd5542253d4cea15
 	md5sums = 7166bfdff927bad3f81e302543d76c90
 
