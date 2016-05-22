@@ -4,14 +4,14 @@ pkgdesc="ROS - Geometry Library."
 url='http://www.ros.org/wiki/geometry'
 
 pkgname='ros-jade-geometry'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-tf
@@ -21,10 +21,16 @@ ros_depends=(ros-jade-tf
   ros-jade-angles)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/geometry/${pkgver}-${_pkgver_patch}
-_dir=geometry
-source=("${_dir}"::"git+https://github.com/ros-gbp/geometry-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/geometry/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="geometry-release-release-jade-geometry-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/jade/geometry/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('edf3efa44244bce7d9c48523553ed53e3f7fa4341e8a17b81af4de8c776d77b8')
 
 build() {
   # Use ROS environment variables
