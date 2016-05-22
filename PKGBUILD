@@ -4,7 +4,7 @@ pkgdesc="ROS - XmlRpc++ is a C++ implementation of the XML-RPC protocol."
 url='http://xmlrpcpp.sourceforge.net'
 
 pkgname='ros-indigo-xmlrpcpp'
-pkgver='1.11.18'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-xmlrpcpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/xmlrpcpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1c8fac742653c5867b0490609b4406b5765830c9fb70ae0347f18f24f72defbc')
+sha256sums=('f5c403a0392aad111ff23a4d5f5873f0e118164afce0c33d7c0072352d1da578')
 
 build() {
   # Use ROS environment variables
