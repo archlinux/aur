@@ -4,7 +4,7 @@ pkgdesc="ROS - rosnode is a command-line tool for displaying debug information a
 url='http://ros.org/wiki/rosnode'
 
 pkgname='ros-jade-rosnode'
-pkgver='1.11.16'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,17 +12,23 @@ license=('BSD')
 
 ros_makedepends=(ros-jade-rostest
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-rostopic
   ros-jade-rosgraph)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/rosnode/${pkgver}-${_pkgver_patch}
-_dir=rosnode
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rosnode/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-jade-rosnode-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/jade/rosnode/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('51988cfa8af359d7e5bd21daa1c1184f6cf0ad5b103d55c46f3f21e557de3b9c')
 
 build() {
   # Use ROS environment variables
