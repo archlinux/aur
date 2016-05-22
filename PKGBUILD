@@ -2,13 +2,13 @@
 
 pkgname=redex-git
 _pkgname=redex
-pkgver=r58.3b12645
+pkgver=r145.b8c9e50
 pkgrel=1
 pkgdesc="A bytecode optimizer for Android apps"
 arch=('i686' 'x86_64')
 url="http://fbredex.com/"
 license=('BSD')
-depends=('python' 'boost-libs' 'double-conversion' 'gflags' 'google-glog' 'libevent' 'lz4' 'xz' 'snappy' 'jemalloc' 'folly-git')
+depends=('python' 'boost-libs' 'double-conversion' 'gflags' 'google-glog' 'libevent' 'lz4' 'xz' 'snappy' 'jemalloc' 'jsoncpp')
 makedepends=('git' 'boost')
 provides=('redex')
 conflicts=('redex')
@@ -21,12 +21,6 @@ pkgver() {
   cd "${_pkgname}"
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "${_pkgname}"
-
-  patch -i "$srcdir/${_pkgname}.patch"
 }
 
 build() {
