@@ -4,10 +4,10 @@ pkgdesc="ROS - Assorted filters designed to operate on 2D planar laser scanners,
 url='http://ros.org/wiki/laser_filters'
 
 pkgname='ros-jade-laser-filters'
-pkgver='1.8.0'
-_pkgver_patch=1
+pkgver='1.8.1'
+_pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-filters
@@ -21,9 +21,8 @@ ros_makedepends=(ros-jade-filters
   ros-jade-pluginlib
   ros-jade-laser-geometry
   ros-jade-angles)
-makedepends=('cmake' 'git' 'ros-build-tools'
-  ${ros_makedepends[@]}
-  eigen3)
+makedepends=('cmake' 'ros-build-tools'
+  ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-filters
   ros-jade-cmake-modules
@@ -34,13 +33,18 @@ ros_depends=(ros-jade-filters
   ros-jade-pluginlib
   ros-jade-laser-geometry
   ros-jade-angles)
-depends=(${ros_depends[@]}
-  eigen3)
+depends=(${ros_depends[@]})
 
-_tag=release/jade/laser_filters/${pkgver}-${_pkgver_patch}
-_dir=laser_filters
-source=("${_dir}"::"git+https://github.com/ros-gbp/laser_filters-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/laser_filters/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/laser_filters-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="laser_filters-release-release-jade-laser_filters-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/laser_filters-release/archive/release/jade/laser_filters/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('e38aa3d60a21882fdd589800efd04c87b8da8c7cba3d534f70e37d5cd254277d')
 
 build() {
   # Use ROS environment variables
