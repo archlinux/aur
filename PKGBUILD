@@ -4,7 +4,7 @@ pkgdesc="ROS - Base dependencies and support libraries for ROS."
 url='http://ros.org/wiki/roslib'
 
 pkgname='ros-jade-roslib'
-pkgver='1.12.5'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,7 +12,7 @@ license=('BSD')
 
 ros_makedepends=(ros-jade-rospack
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost)
 
@@ -21,10 +21,16 @@ ros_depends=(ros-jade-rospack
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/jade/roslib/${pkgver}-${_pkgver_patch}
-_dir=roslib
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/roslib/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros-release-release-jade-roslib-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/jade/roslib/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('65015563a3364f9d56b0324d5977c2f629e08006a83e6a992cd1a5f4da8c690a')
 
 build() {
   # Use ROS environment variables
