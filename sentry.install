@@ -40,7 +40,7 @@ step.
 
 If you wish to run Sentry manually, e.g. to test your configuration:
 
-    sudo -u sentry /opt/sentry/bin/sentry --config=/etc/sentry start
+    sudo -u sentry /opt/sentry/bin/sentry --config=/etc/sentry run web
 
 EXTRAS
 
@@ -83,7 +83,7 @@ UPGRADE STEPS
 1) Stop Sentry and its related services (and reload systemd)
 
     sudo systemctl stop sentry sentry-celery
-    sudo systemctl --system daemon-reload
+    sudo systemctl daemon-reload
 
 2) If you're upgrading from a Sentry version < 8.0, you'll need to update the
 configuration by hand. Sentry's configuration setup has changed dramatically
@@ -116,7 +116,7 @@ and increasingly more options are being moved to Sentry's YAML-based configs:
 
 If you wish to run Sentry manually, e.g. to test your configuration:
 
-    sudo -u sentry /opt/sentry/bin/sentry --config=/etc/sentry start
+    sudo -u sentry /opt/sentry/bin/sentry --config=/etc/sentry run web
 
 EXTRAS
 

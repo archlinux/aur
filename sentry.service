@@ -7,7 +7,7 @@ Requires=sentry-celery.service
 User=sentry
 Restart=always
 Environment=PATH=/opt/sentry/bin
-ExecStart=/opt/sentry/bin/sentry --config=/etc/sentry start
+ExecStart=/opt/sentry/bin/sentry --config=/etc/sentry run web
 KillSignal=SIGINT
 
 [Install]
