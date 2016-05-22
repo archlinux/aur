@@ -4,14 +4,14 @@ pkgdesc="ROS - This package contains a recent version of the Kinematics and Dyna
 url='http://wiki.ros.org/orocos_kdl'
 
 pkgname='ros-jade-orocos-kdl'
-pkgver='1.3.0'
+pkgver='1.3.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('LGPL')
 
 ros_makedepends=()
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen3)
 
@@ -20,10 +20,16 @@ depends=(${ros_depends[@]}
   eigen3
   pkg-config)
 
-_tag=release/jade/orocos_kdl/${pkgver}-${_pkgver_patch}
-_dir=orocos_kdl
-source=("${_dir}"::"git+https://github.com/smits/orocos-kdl-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/orocos_kdl/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/smits/orocos-kdl-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="orocos-kdl-release-release-jade-orocos_kdl-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/smits/orocos-kdl-release/archive/release/jade/orocos_kdl/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('034396eaa41b1df4d9ec15147261dece528f6d0257826e4831e1bd80f468695e')
 
 build() {
   # Use ROS environment variables
