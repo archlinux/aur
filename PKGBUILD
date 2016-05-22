@@ -4,7 +4,7 @@ pkgdesc="ROS - rosmsg contains two command-line tools: rosmsg and rossrv."
 url='http://ros.org/wiki/rosmsg'
 
 pkgname='ros-indigo-rosmsg'
-pkgver='1.11.18'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-rosmsg-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosmsg/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9909e07643455d4603ce2fc7171b629b880f994e2de78555d327f5af000b9a7f')
+sha256sums=('7dbac163ed0aa929664b9972a94be2b23f3b80d9f873814e54350a95c5307026')
 
 build() {
   # Use ROS environment variables
