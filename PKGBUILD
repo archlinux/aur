@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_image_view provides a GUI plugin for displaying images using 
 url='http://ros.org/wiki/rqt_image_view'
 
 pkgname='ros-jade-rqt-image-view'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -16,7 +16,7 @@ ros_makedepends=(ros-jade-cv-bridge
   ros-jade-rqt-gui
   ros-jade-image-transport
   ros-jade-rqt-gui-cpp)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-sensor-msgs
@@ -26,10 +26,16 @@ ros_depends=(ros-jade-sensor-msgs
   ros-jade-image-transport)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/rqt_image_view/${pkgver}-${_pkgver_patch}
-_dir=rqt_image_view
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rqt_image_view/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-jade-rqt_image_view-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/jade/rqt_image_view/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('130cedc3a0763955f8926f6a0cf9966d872790aa2168779e1b5c219b542ddae3')
 
 build() {
   # Use ROS environment variables
