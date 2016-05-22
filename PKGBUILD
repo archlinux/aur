@@ -4,14 +4,14 @@ pkgdesc="ROS - rosmsg contains two command-line tools: rosmsg and rossrv."
 url='http://ros.org/wiki/rosmsg'
 
 pkgname='ros-jade-rosmsg'
-pkgver='1.11.16'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-genmsg
@@ -21,10 +21,16 @@ ros_depends=(ros-jade-genmsg
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/jade/rosmsg/${pkgver}-${_pkgver_patch}
-_dir=rosmsg
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rosmsg/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-jade-rosmsg-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/jade/rosmsg/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('615f4fcfbcac12b2a75122aab1ed6d4bb18738e03cfea03f4d9b346c108867be')
 
 build() {
   # Use ROS environment variables
