@@ -4,24 +4,30 @@ pkgdesc="ROS - qt_dotgraph provides helpers to work with dot graphs."
 url='http://ros.org/wiki/qt_dotgraph'
 
 pkgname='ros-jade-qt-dotgraph'
-pkgver='0.2.29'
+pkgver='0.2.30'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-python-qt-binding)
 depends=(${ros_depends[@]}
   python2-pydot)
 
-_tag=release/jade/qt_dotgraph/${pkgver}-${_pkgver_patch}
-_dir=qt_dotgraph
-source=("${_dir}"::"git+https://github.com/ros-gbp/qt_gui_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/qt_dotgraph/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/qt_gui_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="qt_gui_core-release-release-jade-qt_dotgraph-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/jade/qt_dotgraph/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('d7737f3fd5d50ac4d764f880eb88dc558c7563ab3a7c0fe1c242484144774db3')
 
 build() {
   # Use ROS environment variables
