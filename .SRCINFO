@@ -1,0 +1,16 @@
+pkgbase = vgmplay
+	pkgdesc = The offical and always up-to-date player for all VGM files
+	pkgver = 0.40.7
+	pkgrel = 1
+	url = http://vgmrips.net/forum/viewtopic.php?t=112
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = custom
+	depends = libao
+	depends = zlib
+	source = https://github.com/vgmrips/vgmplay/archive/0.40.7.tar.gz
+	md5sums = 90445783677eef5068a8aca338368dc5
+
+pkgname = vgmplay
+
