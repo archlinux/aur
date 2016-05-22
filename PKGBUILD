@@ -1,18 +1,18 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=alacryd-git
-pkgver=20160513
+pkgver=20160522
 pkgrel=1
 pkgdesc="Expedient Perl6 module installation"
 arch=('any')
 depends=('perl6')
 makedepends=('git')
+checkdepends=('perl')
 groups=('perl6')
 url="https://github.com/atweiden/alacryd"
 license=('UNLICENSE')
-source=(git+https://github.com/atweiden/alacryd
-        git+https://github.com/timo/json_fast)
-sha256sums=('SKIP' 'SKIP')
+source=(git+https://github.com/atweiden/alacryd)
+sha256sums=('SKIP')
 provides=('alacryd')
 conflicts=('alacryd')
 install=alacryd.install
@@ -20,13 +20,6 @@ install=alacryd.install
 pkgver() {
   cd ${pkgname%-git}
   git log -1 --format="%cd" --date=short | sed "s|-||g"
-}
-
-prepare() {
-  cd ${pkgname%-git}
-
-  msg2 'Copying JSON::Fast into lib for bootstrapping...'
-  find "$srcdir/json_fast/lib" -exec cp -dpr --no-preserve=ownership '{}' lib \;
 }
 
 check() {
@@ -59,6 +52,7 @@ package() {
   done
 
   msg2 'Cleaning up pkgdir...'
+  rm -f "$pkgdir/usr/share/perl6/vendor/version"
   find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
   find "$pkgdir" -type f -print0 | xargs -0 sed -i "s,$pkgdir,,g"
   find "$pkgdir" -type f -print0 | xargs -0 sed -i "s,$srcdir,,g"
