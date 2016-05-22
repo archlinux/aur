@@ -3,7 +3,7 @@
 
 _gitname='vaccine'
 pkgname=vaccine-git
-pkgver=0.0.1.r395.gc078405
+pkgver=0.0.1.r397.g83ca071
 pkgrel=1
 pkgdesc="A GTK+3 4chan client for the linux desktop"
 arch=('i686' 'x86_64')
