@@ -11,5 +11,5 @@
 /*.xz
 /*.log
 
-# version increment marker file
+# version update marker file
 .PKGVER
