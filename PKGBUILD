@@ -4,7 +4,7 @@ pkgdesc="ROS - The opencv_apps package, most of code is taken from https://githu
 url='http://www.ros.org/'
 
 pkgname='ros-jade-opencv-apps'
-pkgver='1.11.11'
+pkgver='1.11.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -39,7 +39,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="vision_opencv-release-release-jade-opencv_apps-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/jade/opencv_apps/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('5919241088268163fa2825e815eda2b9d3ae336d65e106ae5d3f62a501d057f8')
+sha256sums=('f4c461ea99e47696f863e663f6867ad62ab4c44ac00442b74704225812dc5375')
 
 build() {
   # Use ROS environment variables
