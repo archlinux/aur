@@ -3,7 +3,7 @@
 pkgname=ckb-git-latest
 pkgver=v0.2.5.r7.g7eaf1ae
 pkgrel=1
-pkgdesc="Corsair Keyboard Input Driver (K65 RGB, K70[RGB], K95[RGB], M65 RGB), the latest version"
+pkgdesc="Corsair Keyboard and Mouse Input Driver, the latest version"
 arch=('i686' 'x86_64')
 url="https://github.com/ccMSC/ckb"
 license=('GPL2')
