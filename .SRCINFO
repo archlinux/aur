@@ -1,0 +1,19 @@
+pkgbase = ckb-git-latest
+	pkgdesc = Corsair Keyboard Input Driver (K65 RGB, K70[RGB], K95[RGB], M65 RGB), the latest version
+	pkgver = v0.2.5.r7.g7eaf1ae
+	pkgrel = 1
+	url = https://github.com/ccMSC/ckb
+	install = ckb-git-latest.install
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = qt5-base
+	depends = hicolor-icon-theme
+	provides = ckb-git
+	conflicts = ckb-git
+	source = ckb-git-latest::git+https://github.com/ccMSC/ckb.git#branch=fw2kb
+	md5sums = SKIP
+
+pkgname = ckb-git-latest
+
