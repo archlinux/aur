@@ -7,6 +7,7 @@ pkgdesc='Utility programs used for creating patch files'
 arch=('i686' 'x86_64')
 url='http://www.gnu.org/software/diffutils'
 license=('GPL3')
+depends=('libsigsegv')
 provides=('diffutils')
 conflicts=('diffutils')
 source=("${pkgname}::git+git://git.savannah.gnu.org/diffutils.git")
