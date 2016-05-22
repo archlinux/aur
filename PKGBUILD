@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_plot provides a GUI plugin visualizing numeric values in a 2D
 url='http://ros.org/wiki/rqt_plot'
 
 pkgname='ros-jade-rqt-plot'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-rqt-gui-py
@@ -22,13 +22,19 @@ ros_depends=(ros-jade-rqt-gui-py
   ros-jade-rqt-py-common)
 depends=(${ros_depends[@]}
   python2-rospkg
-  pyqwt
-  python2-matplotlib)
+  python2-matplotlib
+  python2-pyqwt)
 
-_tag=release/jade/rqt_plot/${pkgver}-${_pkgver_patch}
-_dir=rqt_plot
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rqt_plot/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-jade-rqt_plot-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/jade/rqt_plot/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('bbcb92c6a1f4abe2b71e06973fcb0287668ae081e4169abd283b179cbbf6ee99')
 
 build() {
   # Use ROS environment variables
