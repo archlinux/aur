@@ -4,7 +4,7 @@ pkgdesc="ROS - This rqt plugin ROS package provides easy view of .launch files."
 url='http://ros.org/wiki/rqt_launch'
 
 pkgname='ros-jade-rqt-launch'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,7 +12,7 @@ license=('BSD')
 
 ros_makedepends=(ros-jade-rqt-py-common
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-rqt-gui-py
@@ -23,10 +23,16 @@ ros_depends=(ros-jade-rqt-gui-py
   ros-jade-rospy)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/rqt_launch/${pkgver}-${_pkgver_patch}
-_dir=rqt_launch
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rqt_launch/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-jade-rqt_launch-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/jade/rqt_launch/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('ea203d6ba2e009eb2d6906ed9a5ab53b53a07d3897fd667fa127c97351f57843')
 
 build() {
   # Use ROS environment variables
