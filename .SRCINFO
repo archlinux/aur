@@ -1,0 +1,17 @@
+pkgbase = quantum-moves
+	pkgdesc = Contribute to physics research by finding clever ways of manipulating and moving atoms
+	pkgver = 20160521
+	pkgrel = 1
+	url = https://www.scienceathome.org/games/quantum-moves/
+	arch = i686
+	arch = x86_64
+	license = custom:freeware
+	options = !strip
+	options = !buildflags
+	source = https://builds.scienceathome.org/quantum-moves/QuantumMoves.7z
+	source = quantum_moves.run
+	sha256sums = 6d974c220d870a895df55f0303561481b2f463179f93c43e56ba57d5a4697f46
+	sha256sums = c0ee4ae884c6036cd74161e8c6c33633868d7f3d509fe22390fd9e84ba84c745
+
+pkgname = quantum-moves
+
