@@ -4,7 +4,7 @@ pkgdesc="ROS - Tools for directing, throttling, selecting, and otherwise messing
 url='http://ros.org/wiki/topic_tools'
 
 pkgname='ros-indigo-topic-tools'
-pkgver='1.11.18'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -40,7 +40,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-topic_tools-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/topic_tools/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('9d515bb2cddcf312c3393cd96d121e04710aca6542db317007a5463dac95362e')
+sha256sums=('151182325327f90cf890cd24123a8408964052b8a92590ff4db185f261d5d251')
 
 build() {
   # Use ROS environment variables
