@@ -4,7 +4,7 @@ pkgdesc="ROS - This package attempts to show the features of ROS step-by-step, i
 url='http://www.ros.org/wiki/roscpp_tutorials'
 
 pkgname='ros-jade-roscpp-tutorials'
-pkgver='0.6.1'
+pkgver='0.6.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -17,7 +17,7 @@ ros_makedepends=(ros-jade-std-msgs
   ros-jade-roscpp-serialization
   ros-jade-rosconsole
   ros-jade-rostime)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-std-msgs
@@ -28,10 +28,16 @@ ros_depends=(ros-jade-std-msgs
   ros-jade-rostime)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/roscpp_tutorials/${pkgver}-${_pkgver_patch}
-_dir=roscpp_tutorials
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_tutorials-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/roscpp_tutorials/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_tutorials-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_tutorials-release-release-jade-roscpp_tutorials-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_tutorials-release/archive/release/jade/roscpp_tutorials/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('5e5f08fbeec4ddea881d73e77bf17fd6c71b3fe868bf4667f733535de086cad5')
 
 build() {
   # Use ROS environment variables
