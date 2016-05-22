@@ -4,7 +4,7 @@ pkgdesc="ROS - System-wide logging mechanism for messages sent to the /rosout to
 url='http://ros.org/wiki/rosout'
 
 pkgname='ros-indigo-rosout'
-pkgver='1.11.18'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-rosout-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosout/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1bbaa4934a057a20bb595f264af52f5b95b2057241067a1e2a0b5e36bf9bb90a')
+sha256sums=('70e0bc4b8f826a033089a463c0944d6a1d885cddce8078db0a15a1907e088dff')
 
 build() {
   # Use ROS environment variables
