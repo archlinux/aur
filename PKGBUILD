@@ -4,15 +4,15 @@ pkgdesc="ROS - ROS Package Tool."
 url='http://wiki.ros.org/rospack'
 
 pkgname='ros-jade-rospack'
-pkgver='2.2.5'
+pkgver='2.3.0'
 _pkgver_patch=0
 arch=('any')
-pkgrel=2
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-cmake-modules
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   gtest
   pkg-config
@@ -22,17 +22,23 @@ makedepends=('cmake' 'git' 'ros-build-tools'
 
 ros_depends=()
 depends=(${ros_depends[@]}
+  python2-catkin-pkg
   python2-rosdep
   tinyxml
-  python2-catkin-pkg
   python2
   boost
   pkg-config)
 
-_tag=release/jade/rospack/${pkgver}-${_pkgver_patch}
-_dir=rospack
-source=("${_dir}"::"git+https://github.com/ros-gbp/rospack-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rospack/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rospack-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rospack-release-release-jade-rospack-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rospack-release/archive/release/jade/rospack/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('2e84d479545db9128ed98356c968e2c65bd914701f090c5b684e07fd1668262c')
 
 build() {
   # Use ROS environment variables
