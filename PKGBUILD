@@ -7,7 +7,7 @@ pkgname=('gcc5')
 pkgver=5.3.0
 _pkgver=5
 _islver=0.15
-pkgrel=5
+pkgrel=6
 _snapshot=5-20160503
 pkgdesc="The GNU Compiler Collection"
 arch=('i686' 'x86_64')
@@ -53,6 +53,7 @@ build() {
   CXXFLAGS=${CXXFLAGS/-pipe/}
 
   ${srcdir}/${_basedir}/configure --prefix=/usr \
+      --build=${CHOST} \
       --libdir=/usr/lib --libexecdir=/usr/lib \
       --mandir=/usr/share/man --infodir=/usr/share/info \
       --with-bugurl=https://bugs.archlinux.org/ \
@@ -83,10 +84,8 @@ package() {
   rm -rf ${pkgdir}/usr/share/{info,locale,man}
 
   # Move potentially conflicting stuff to version specific subdirectory
-  $(ls "$pkgdir"/usr/lib/gcc/$CHOST/lib* &> /dev/null) && mv "$pkgdir"/usr/lib/gcc/$CHOST/lib* "$pkgdir/usr/lib/gcc/$CHOST/$pkgver/"
-
-  # Seems to be the same file for GCC 5 and 6
-  rm ${pkgdir}/usr/lib/libcc1*
+  mv ${pkgdir}/usr/lib/lib* ${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/
+  mv ${pkgdir}/usr/lib/gcc/${CHOST}/lib/lib* ${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/
   
   # Install Runtime Library Exception
   install -Dm644 ${srcdir}/${_basedir}/COPYING.RUNTIME \
