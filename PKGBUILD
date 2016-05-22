@@ -4,10 +4,10 @@ pkgdesc="ROS - This unary stack contains the dynamic_reconfigure package which p
 url='http://ros.org/wiki/dynamic_reconfigure'
 
 pkgname='ros-jade-dynamic-reconfigure'
-pkgver='1.5.39'
-_pkgver_patch=2
+pkgver='1.5.43'
+_pkgver_patch=0
 arch=('any')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-rostest
@@ -16,7 +16,7 @@ ros_makedepends=(ros-jade-rostest
   ros-jade-roscpp
   ros-jade-catkin
   ros-jade-roscpp-serialization)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost)
 
@@ -29,10 +29,16 @@ ros_depends=(ros-jade-roslib
 depends=(${ros_depends[@]}
   boost)
 
-_tag=release/jade/dynamic_reconfigure/${pkgver}-${_pkgver_patch}
-_dir=dynamic_reconfigure
-source=("${_dir}"::"git+https://github.com/ros-gbp/dynamic_reconfigure-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/dynamic_reconfigure/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/dynamic_reconfigure-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="dynamic_reconfigure-release-release-jade-dynamic_reconfigure-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/dynamic_reconfigure-release/archive/release/jade/dynamic_reconfigure/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('ceb3883ecef91c36137dd231286546f6829e5c88ad4815c85d8379a9b96445d2')
 
 build() {
   # Use ROS environment variables
