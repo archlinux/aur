@@ -4,7 +4,7 @@ pkgdesc="ROS - Common service definitions."
 url='http://ros.org/wiki/std_srvs'
 
 pkgname='ros-jade-std-srvs'
-pkgver='1.11.1'
+pkgver='1.11.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,16 +12,22 @@ license=('BSD')
 
 ros_makedepends=(ros-jade-message-generation
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-message-runtime)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/std_srvs/${pkgver}-${_pkgver_patch}
-_dir=std_srvs
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm_msgs-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/std_srvs/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm_msgs-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm_msgs-release-release-jade-std_srvs-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm_msgs-release/archive/release/jade/std_srvs/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('b2a9a211571b310b1c1494c9eec80281e585b2ae8af289ae934d40023ff2574c')
 
 build() {
   # Use ROS environment variables
