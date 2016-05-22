@@ -4,14 +4,14 @@ pkgdesc="ROS - Lisp client library for ROS, the Robot Operating System."
 url='http://ros.org/wiki/roslisp'
 
 pkgname='ros-jade-roslisp'
-pkgver='1.9.19'
+pkgver='1.9.20'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-rosgraph-msgs
@@ -21,10 +21,16 @@ ros_depends=(ros-jade-rosgraph-msgs
 depends=(${ros_depends[@]}
   sbcl)
 
-_tag=release/jade/roslisp/${pkgver}-${_pkgver_patch}
-_dir=roslisp
-source=("${_dir}"::"git+https://github.com/ros-gbp/roslisp-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/roslisp/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/roslisp-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="roslisp-release-release-jade-roslisp-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roslisp-release/archive/release/jade/roslisp/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('3356e341a195d253e0c2ff99544a8717088fac5b5c5bbc9c146281d600518c6a')
 
 build() {
   # Use ROS environment variables
