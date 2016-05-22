@@ -1,0 +1,11 @@
+
+# NOTE: to be included in initramfs the file must contain "/etc/initrd-release" string
+
+[Match]
+Name=en*
+
+[Network]
+DHCP=ipv4
+
+[DHCP]
+UseHostname=true

@@ -76,13 +76,16 @@ build_user() {
 build_unit() {
 
     quiet "Provide systemd units"
-    
+
+    local tag="/etc/initrd-release"
+                
+    # services
+
     local dir="/etc/systemd/system"
     add_dir $dir
-                        
-    local unit_list="\
-    initrd-dropbear.service \
-    "
+    
+    local unit_list=$(grep -l "$tag" $dir/*.service)
+    [[ $unit_list ]] || error "Missing any units in $dir with tag $tag"
 
     local unit
     for unit in $unit_list ; do
@@ -91,6 +94,20 @@ build_unit() {
         invoke_command   systemctl --root $BUILDROOT enable $unit
     done
     
+    # networks
+
+    local dir="/etc/systemd/network"
+    add_dir $dir
+
+    local unit_list=$(grep -l "$tag" $dir/*.network)
+    [[ $unit_list ]] || error "Missing any units in $dir with tag $tag"
+    
+    local unit
+    for unit in $unit_list ; do
+        quiet "Add unit: $unit"
+        invoke_command   add_file $unit
+    done
+                                                                
 }
 
 build_libs() {

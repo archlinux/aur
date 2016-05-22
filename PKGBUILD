@@ -1,5 +1,5 @@
 pkgname=initrd-dropbear
-pkgver=r22.9c1cbfa
+pkgver=r24.6561f87
 pkgrel=1
 pkgdesc="Provider of systemd initramfs dropbear ssh server"
 arch=('any')
@@ -7,8 +7,8 @@ license=('Apache')
 depends=('systemd' 'dropbear')
 makedepends=('git')
 install=install.sh
-url="https://aur.archlinux.org/${pkgname}"
-source=("git+https://aur.archlinux.org/${pkgname}.git#branch=master")
+url="https://aur.archlinux.org/cgit/aur.git/tree/?h=${pkgname}"
+source=("${pkgname}::git+https://aur.archlinux.org/${pkgname}.git#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
@@ -30,12 +30,15 @@ check() {
 
 package() {
     
-    local basedir="$srcdir/$pkgname"
+    local source="$srcdir/$pkgname"
 
-    install -D -m644 "$basedir/mkinitcpio-hook.sh"       "$pkgdir/usr/lib/initcpio/hooks/$pkgname"
-    install -D -m644 "$basedir/mkinitcpio-install.sh"    "$pkgdir/usr/lib/initcpio/install/$pkgname"
+    local target="pkgdir/usr/lib/initcpio"
+    install -D -m644 "$source/mkinitcpio-hook.sh"       "$target/hooks/$pkgname"
+    install -D -m644 "$source/mkinitcpio-install.sh"    "$target/install/$pkgname"
   
-    install -D -m644 "$basedir/initrd-dropbear.network"  "$pkgdir/usr/lib/systemd/initrd-dropbear.network"
-    install -D -m644 "$basedir/initrd-dropbear.service"  "$pkgdir/usr/lib/systemd/initrd-dropbear.service"
+    local target="$pkgdir/usr/share/mkinitcpio/$pkgname"
+    install -D -m644 "$source/initrd-dropbear.service"  "$target/initrd-dropbear.service"
+    install -D -m644 "$source/initrd-network.network"   "$target/initrd-network.network"
+    install -D -m644 "$source/initrd-network.service"   "$target/initrd-network.service"
     
 }

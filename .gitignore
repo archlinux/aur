@@ -3,14 +3,10 @@
 # eclipse meta data
 #
 .project
-.classpath
-.settings/
-target/
 
 #
-# build resources
+# generated resources
 #
-/initrd-dropbear
-/src
-/pkg
-*.xz
+/*/
+/*.xz
+/*.log

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# https://www.archlinux.org/pacman/PKGBUILD.5.html#_install_upgrade_remove_scripting
+
 ## arg 1:  the new package version
 pre_install() {
     true
@@ -8,28 +10,31 @@ pre_install() {
 ## arg 1:  the new package version
 post_install() {
 
-    local file="initrd-dropbear.service"
-    local source="/usr/lib/systemd/system/$file"
-    local target="/etc/systemd/system/$file"
-    
-    if [ -e $target ] ; then
-        echo "Keep existing service $target"
-    else
-        echo "Provision default service $target"
-        install -Dm644 $source $target
-    fi
+    local pkgname=initrd-dropbear
 
-    local file="initrd-dropbear.network"
-    local source="/usr/lib/systemd/network/$file"
-    local target="/etc/systemd/network/$file"
-    
-    if [ -e $target ] ; then
-        echo "Keep existing network $target"
-    else
-        echo "Provision default network $target"
-        install -Dm644 $source $target
-    fi
+    local tag="/etc/initrd-release"
 
+    local source="/usr/share/mkinitcpio/$pkgname"
+    local target="/etc/systemd/system/"
+    local unit_list=$(grep -l "$tag" $target/*.service)
+    if [[ $unit_list ]] ; then
+        echo "Keep existing $tag units in $target"
+    else
+        echo "Provision default $tag units for $target"
+        install -Dm644 "$source/initrd-dropbear.service" "$target/initrd-dropbear.service"
+        install -Dm644 "$source/initrd-network.service"  "$target/initrd-network.service"
+    fi
+    
+    local source="/usr/share/mkinitcpio/$pkgname"
+    local target="/etc/systemd/network/"
+    local unit_list=$(grep -l "$tag" $target/*.network)
+    if [[ $unit_list ]] ; then
+        echo "Keep existing $tag units in $target"
+    else
+        echo "Provision default $tag units for $target"
+        install -Dm644 "$source/initrd-network.network"  "$target/initrd-network.network"
+    fi
+    
 }
 
 ## arg 1:  the new package version
