@@ -1,14 +1,14 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-craft-git
-pkgver=921.2fa0212
+pkgver=927.2135ba9
 pkgrel=1
 pkgdesc="A simple Minecraft clone written in C using modern OpenGL (shaders)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/Craft"
 license=('custom:Craft License')
-depends=('zlib' 'glew')
-makedepends=('git' 'cmake' 'glfw')
+depends=('zlib')
+makedepends=('git' 'cmake')
 
 _libname=craft_libretro
 _gitname=Craft
