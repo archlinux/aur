@@ -4,6 +4,8 @@ location=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
 build() {
 
+    [ which makepkg ] || return 1
+    
     chown -R nobody $location
  
     local suno="sudo -u nobody"
