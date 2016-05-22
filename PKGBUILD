@@ -4,33 +4,43 @@ pkgdesc="ROS - diagnostic_aggregator."
 url='http://www.ros.org/wiki/diagnostic_aggregator'
 
 pkgname='ros-jade-diagnostic-aggregator'
-pkgver='1.8.7'
-_pkgver_patch=0
+pkgver='1.8.9'
+_pkgver_patch=1
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(ros-jade-rostest
   ros-jade-roscpp
   ros-jade-catkin
   ros-jade-xmlrpcpp
+  ros-jade-bondcpp
+  ros-jade-bondpy
   ros-jade-diagnostic-msgs
   ros-jade-pluginlib
   ros-jade-rospy)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=(ros-jade-diagnostic-msgs
-  ros-jade-roscpp
-  ros-jade-pluginlib
+ros_depends=(ros-jade-roscpp
   ros-jade-xmlrpcpp
+  ros-jade-bondcpp
+  ros-jade-bondpy
+  ros-jade-diagnostic-msgs
+  ros-jade-pluginlib
   ros-jade-rospy)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/diagnostic_aggregator/${pkgver}-${_pkgver_patch}
-_dir=diagnostic_aggregator
-source=("${_dir}"::"git+https://github.com/ros-gbp/diagnostics-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/diagnostic_aggregator/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/diagnostics-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="diagnostics-release-release-jade-diagnostic_aggregator-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/diagnostics-release/archive/release/jade/diagnostic_aggregator/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('50b96941931a285fc127e3998741a1890fa3dafc006f313a5e21a06cd02e9b81')
 
 build() {
   # Use ROS environment variables
