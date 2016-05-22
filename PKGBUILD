@@ -1,5 +1,5 @@
 pkgname=initrd-dropbear
-pkgver=r32.c190c88
+pkgver=r33.cf560eb
 pkgrel=1
 pkgdesc="Provider of systemd initramfs dropbear ssh server"
 arch=('any')
@@ -32,7 +32,7 @@ package() {
     
     local source="$srcdir/$pkgname"
 
-    local target="pkgdir/usr/lib/initcpio"
+    local target="$pkgdir/usr/lib/initcpio"
     install -D -m644 "$source/mkinitcpio-hook.sh"       "$target/hooks/$pkgname"
     install -D -m644 "$source/mkinitcpio-install.sh"    "$target/install/$pkgname"
   

@@ -1,4 +1,5 @@
 
+# This file is part of https://aur.archlinux.org/packages/initrd-dropbear/
 # NOTE: to be included in initramfs the file must contain "/etc/initrd-release" string
 
 [Unit]

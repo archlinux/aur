@@ -9,14 +9,16 @@ pre_install() {
 
 ## arg 1:  the new package version
 post_install() {
+    
+    echo "Run post_install"
 
     local pkgname=initrd-dropbear
 
     local tag="/etc/initrd-release"
 
     local source="/usr/share/mkinitcpio/$pkgname"
-    local target="/etc/systemd/system/"
-    local unit_list=$(grep -l "$tag" $target/*.service)
+    local target="/etc/systemd/system"
+    local unit_list=$(grep -ql "$tag" $target/*.service)
     if [[ $unit_list ]] ; then
         echo "Keep existing $tag units in $target"
     else
@@ -26,8 +28,8 @@ post_install() {
     fi
     
     local source="/usr/share/mkinitcpio/$pkgname"
-    local target="/etc/systemd/network/"
-    local unit_list=$(grep -l "$tag" $target/*.network)
+    local target="/etc/systemd/network"
+    local unit_list=$(grep -ql "$tag" $target/*.network)
     if [[ $unit_list ]] ; then
         echo "Keep existing $tag units in $target"
     else
