@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kcompletion
-pkgver=5.21.0
+pkgver=5.22.0
 pkgrel=1
 arch=(any)
 pkgdesc="Text completion helpers and widgets (mingw-w64)"
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
 url="https://community.kde.org/Frameworks"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kcompletion-${pkgver}.tar.xz")
-md5sums=('b96f44cb78c6ee6bf553dcbbdfa9e2b2')
+md5sums=('5f49157875b01a780049b472df5d5213')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
