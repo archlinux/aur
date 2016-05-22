@@ -3,12 +3,18 @@
 
 pkgname=pepper
 pkgver=0.0.16
-pkgrel=8
+pkgrel=9
 pkgdesc="The Flexible Game Engine"
 arch=(x86_64)
 url="https://github.com/taylor001/crown"
 license=('MIT' 'GPL')
-depends=('libx11' 'libxrandr' 'libpulse' 'gtk3' 'glib2')
+depends=('glib2'
+         'gtk3'
+         'libgl'
+         'libpulse'
+         'libx11'
+         'libxrandr'
+         )
 source=("https://github.com/taylor001/crown/releases/download/v$pkgver/$pkgname-$pkgver-linux-x64.tar.gz"
         "pepper.sh"
         "pepper.desktop"
