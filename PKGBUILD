@@ -1,5 +1,5 @@
 pkgname=initrd-dropbear
-pkgver=r35.9eb3601
+pkgver=r36.7350f73
 pkgrel=1
 pkgdesc="Provider of systemd initramfs dropbear ssh server"
 arch=('any')
@@ -12,7 +12,7 @@ source=("${pkgname}::git+https://aur.archlinux.org/${pkgname}.git#branch=master"
 md5sums=('SKIP')
 
 pkgver() {
-    # update version only in presense of marker
+    # version update only in presense of marker
     local origin=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
     local marker="$origin/.PKGVER"
     if [ -e "$marker" ] ; then
