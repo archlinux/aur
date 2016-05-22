@@ -4,7 +4,7 @@ pkgdesc="ROS - C++ ROS message and service generators."
 url='http://www.ros.org/'
 
 pkgname='ros-jade-gencpp'
-pkgver='0.5.3'
+pkgver='0.5.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,16 +12,22 @@ license=('BSD')
 
 ros_makedepends=(ros-jade-genmsg
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-genmsg)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/gencpp/${pkgver}-${_pkgver_patch}
-_dir=gencpp
-source=("${_dir}"::"git+https://github.com/ros-gbp/gencpp-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/gencpp/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/gencpp-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="gencpp-release-release-jade-gencpp-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gencpp-release/archive/release/jade/gencpp/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('c098200b3227cd55ae58e84af485e2713faa438adc044ec369d0cacfad39aab7')
 
 build() {
   # Use ROS environment variables
