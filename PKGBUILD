@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_runtime_monitor provides a GUI plugin viewing DiagnosticsArra
 url='http://ros.org/wiki/rqt_runtime_monitor'
 
 pkgname='ros-jade-rqt-runtime-monitor'
-pkgver='0.4.2'
+pkgver='0.4.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-diagnostic-msgs
@@ -22,10 +22,16 @@ ros_depends=(ros-jade-diagnostic-msgs
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/jade/rqt_runtime_monitor/${pkgver}-${_pkgver_patch}
-_dir=rqt_runtime_monitor
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rqt_runtime_monitor/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_robot_plugins-release-release-jade-rqt_runtime_monitor-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_robot_plugins-release/archive/release/jade/rqt_runtime_monitor/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('919bb74336b2a4fa93e2ab1ee38a9cd6d284f9458771c9907d3e5c1b464cc8f6')
 
 build() {
   # Use ROS environment variables
