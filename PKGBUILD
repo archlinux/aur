@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains the ROS bindings for the tf2 library, for b
 url='http://www.ros.org/wiki/tf2_ros'
 
 pkgname='ros-jade-tf2-ros'
-pkgver='0.5.12'
+pkgver='0.5.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -22,7 +22,7 @@ ros_makedepends=(ros-jade-actionlib-msgs
   ros-jade-message-filters
   ros-jade-rosgraph
   ros-jade-rospy)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-actionlib-msgs
@@ -38,10 +38,16 @@ ros_depends=(ros-jade-actionlib-msgs
   ros-jade-rospy)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/tf2_ros/${pkgver}-${_pkgver_patch}
-_dir=tf2_ros
-source=("${_dir}"::"git+https://github.com/ros-gbp/geometry_experimental-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/tf2_ros/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry2-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="geometry2-release-release-jade-tf2_ros-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/jade/tf2_ros/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('a1fab4a8938fcbc9c733ec158b2aa862493aa456f59ca207efb3d245599ae872')
 
 build() {
   # Use ROS environment variables
