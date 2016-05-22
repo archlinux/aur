@@ -2,7 +2,7 @@
 # Contributor: Cory Giles <mail@corygil.es>
 
 pkgname=bedops
-pkgver=2.4.14
+pkgver=2.4.19
 pkgrel=1
 pkgdesc="Highly scalable genomic feature operations."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('GPL')
 depends=('python2')
 
 if [ "$CARCH" == "x86_64" ]; then
-md5sums=('5c1555eec064e43a4d153156671c9795')
+md5sums=('52f519ce18ef0d9737422ee40e18048b')
     _arch="$CARCH"
 else
     _arch="i386"
