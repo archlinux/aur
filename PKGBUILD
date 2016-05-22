@@ -4,7 +4,7 @@ pkgdesc="ROS - This is a set of tools for recording from and playing back to ROS
 url='http://ros.org/wiki/rosbag'
 
 pkgname='ros-indigo-rosbag'
-pkgver='1.11.18'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -45,7 +45,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-rosbag-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosbag/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('07245ac3b85c8f81bb5347ed2f928b3d81cbb3444b5e94f4ace1998a76d9166a')
+sha256sums=('35d7e799f5c14a98ece1cd017dea24b789c938ce9c949dc33ed66d6771410f06')
 
 build() {
   # Use ROS environment variables
