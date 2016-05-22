@@ -4,7 +4,7 @@ pkgdesc="ROS - Tools for directing, throttling, selecting, and otherwise messing
 url='http://ros.org/wiki/topic_tools'
 
 pkgname='ros-jade-topic-tools'
-pkgver='1.11.16'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -20,7 +20,7 @@ ros_makedepends=(ros-jade-rosunit
   ros-jade-rosconsole
   ros-jade-cpp-common
   ros-jade-rostime)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-std-msgs
@@ -31,10 +31,16 @@ ros_depends=(ros-jade-std-msgs
   ros-jade-rostime)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/topic_tools/${pkgver}-${_pkgver_patch}
-_dir=topic_tools
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/topic_tools/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-jade-topic_tools-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/jade/topic_tools/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('87a6c0b9b8988a8770d6f70c8f2f68d9fe5151e3ed4161be3e7b61ffe812d5f1')
 
 build() {
   # Use ROS environment variables
