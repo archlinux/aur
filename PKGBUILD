@@ -1,17 +1,17 @@
 # Maintainer: nexttrex <jan@nexttrex.de>
 
 pkgname='cinnamon-applet-weather-git'
-pkgver=r539.3889698
+pkgver=r538.8fa2b77
 pkgrel=1
 pkgdesc='Cinnamon desktop applet for displaying local weather conditions'
 arch=('any')
-url='https://github.com/ccprog/cinnamon-weather'
+url='https://github.com/mockturtl/cinnamon-weather'
 license=('unknown')
 depends=('cinnamon')
 makedepends=('git')
 
 # Use ccprog's fix for the yahoo api format
-source=("$pkgname::git+https://github.com/ccprog/cinnamon-weather.git#branch=ccprog-yahoo-new-format")
+source=("$pkgname::git+https://github.com/mockturtl/cinnamon-weather.git")
 
 sha256sums=('SKIP')
 _appletname='weather@mockturtl'
