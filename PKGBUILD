@@ -1,6 +1,6 @@
 
 pkgname=sway
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="i3 compatible window manager for Wayland"
 arch=("i686" "x86_64")
@@ -22,7 +22,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/SirCmpwn/$pkgname/archive/$pkgver.tar.gz.sig"
 )
 sha256sums=(
-	"a9159033ca3e976383cc9485bcb10fe89485711c4577d8c7414d8f23c56e54ea"
+	"87db6506a9035b7a94f78ab0ad7dfb667c30c134917d1198d852b826c8fcf1ae"
 	"SKIP"
 )
 
