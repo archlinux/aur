@@ -4,14 +4,14 @@ pkgdesc="ROS - roslaunch is a tool for easily launching multiple ROS nodes local
 url='http://ros.org/wiki/roslaunch'
 
 pkgname='ros-jade-roslaunch'
-pkgver='1.11.16'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-rosgraph-msgs
@@ -26,10 +26,16 @@ depends=(${ros_depends[@]}
   python2-paramiko
   python2-yaml)
 
-_tag=release/jade/roslaunch/${pkgver}-${_pkgver_patch}
-_dir=roslaunch
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/roslaunch/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-jade-roslaunch-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/jade/roslaunch/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('93210b2bc41c48af83f0c5c56885ef06a381391683640dd1e8d93fb684ab7197')
 
 build() {
   # Use ROS environment variables
