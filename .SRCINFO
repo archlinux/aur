@@ -1,6 +1,6 @@
 pkgbase = jka-toolkit
 	pkgdesc = Set of scripts to optimize the daily work in linux shell
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = http://proyecto.jkanetwork.com
 	install = jka-toolkit.install

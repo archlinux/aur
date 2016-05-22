@@ -1,6 +1,6 @@
 # Maintainer: JKA Network (JoseluCross, Kprkpr, Yukialba) <contacto@jkanetwork.com>
 pkgname=jka-toolkit
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Set of scripts to optimize the daily work in linux shell"
 arch=('any')
