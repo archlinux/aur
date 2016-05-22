@@ -13,6 +13,8 @@ license=('Apache')
 # and remove duplicated, like atk required by gtk3
 depends=('libappindicator-gtk3' 'xcb-util' 'xdg-utils')
 options=('!emptydirs' '!strip' '!docs')
+conflicts=('lantern' 'lantern-headless' 'lantern-headless-git')
+provides=('lantern')
 install=lantern.install
 source=('lantern.service')
 source_i686=('lantern-installer-32-bit.deb::https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-32-bit.deb')
