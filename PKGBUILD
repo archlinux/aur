@@ -4,7 +4,7 @@ pkgdesc="ROS - The class_loader package is a ROS-independent package for loading
 url='http://ros.org/wiki/class_loader'
 
 pkgname='ros-jade-class-loader'
-pkgver='0.3.2'
+pkgver='0.3.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,7 +12,7 @@ license=('BSD')
 
 ros_makedepends=(ros-jade-cmake-modules
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   poco
   boost
@@ -24,10 +24,16 @@ depends=(${ros_depends[@]}
   boost
   console-bridge)
 
-_tag=release/jade/class_loader/${pkgver}-${_pkgver_patch}
-_dir=class_loader
-source=("${_dir}"::"git+https://github.com/ros-gbp/class_loader-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/class_loader/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/class_loader-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="class_loader-release-release-jade-class_loader-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/class_loader-release/archive/release/jade/class_loader/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('d08657dcc9dbee2cff569fedc27660ccdbb83ed351084c8adba2d9e2592f350b')
 
 build() {
   # Use ROS environment variables
