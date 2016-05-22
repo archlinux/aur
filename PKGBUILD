@@ -2,7 +2,7 @@
 pkgname=heekscad-git
 pkgver=1441.2254f21
 pkgrel=1
-pkgdesc="Library and python module for pocketing and profiling operations"
+pkgdesc="HeeksCNC is an open source, 3D CAD/CAM software"
 arch=('x86_64')
 url="http://heeks.net"
 license=('custom:BSD3')
