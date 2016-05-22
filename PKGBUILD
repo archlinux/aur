@@ -4,23 +4,29 @@ pkgdesc="ROS - Contains scripts used by the rosboost-cfg tool for determining cf
 url='http://ros.org/wiki/rosboost_cfg'
 
 pkgname='ros-jade-rosboost-cfg'
-pkgver='1.12.5'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=()
 depends=(${ros_depends[@]})
 
-_tag=release/jade/rosboost_cfg/${pkgver}-${_pkgver_patch}
-_dir=rosboost_cfg
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rosboost_cfg/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros-release-release-jade-rosboost_cfg-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/jade/rosboost_cfg/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('bb99278d36f4c179e693b46d7d612bc91d09bbf7a1d66ece6b0ea7fcb9cffa15')
 
 build() {
   # Use ROS environment variables
