@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_action provides a feature to introspect all available ROS act
 url='http://ros.org/wiki/rqt_action'
 
 pkgname='ros-jade-rqt-action'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-rqt-py-common
@@ -19,10 +19,16 @@ ros_depends=(ros-jade-rqt-py-common
   ros-jade-rospy)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/rqt_action/${pkgver}-${_pkgver_patch}
-_dir=rqt_action
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rqt_action/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-jade-rqt_action-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/jade/rqt_action/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('8874e5f93ae9e60a2c87c48e5f4cc6611009a0618351ad7636a6abfb5e7d9343')
 
 build() {
   # Use ROS environment variables
