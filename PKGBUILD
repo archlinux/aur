@@ -4,13 +4,13 @@
 
 pkgname=global
 pkgver=6.5.4
-pkgrel=5
+pkgrel=6
 pkgdesc="A source code tag system"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/global/"
 license=('GPL')
 depends=('libltdl' 'bash' 'perl')
-optdepends=('idutils' 'ctags' 'python-pygments')
+optdepends=('idutils' 'ctags' 'python-pygments' 'emacs' 'vim')
 makedepends=('python')
 options=(!emptydirs !libtool)
 source=(http://tamacom.com/global/${pkgname}-${pkgver}.tar.gz)
