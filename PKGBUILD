@@ -4,7 +4,7 @@ pkgdesc="ROS - Conversion functions between KDL and geometry_msgs types."
 url='http://ros.org/wiki/kdl_conversions'
 
 pkgname='ros-jade-kdl-conversions'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,17 +13,23 @@ license=('BSD')
 ros_makedepends=(ros-jade-orocos-kdl
   ros-jade-geometry-msgs
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-orocos-kdl
   ros-jade-geometry-msgs)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/kdl_conversions/${pkgver}-${_pkgver_patch}
-_dir=kdl_conversions
-source=("${_dir}"::"git+https://github.com/ros-gbp/geometry-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/kdl_conversions/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="geometry-release-release-jade-kdl_conversions-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/jade/kdl_conversions/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('0ff292bce03b1d7eb1da81a5d9e04cdfd61110e6fe054ffc4e50e82965a99df0')
 
 build() {
   # Use ROS environment variables
