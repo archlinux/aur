@@ -4,7 +4,7 @@ pkgdesc="ROS - roswtf is a tool for diagnosing issues with a running ROS system.
 url='http://ros.org/wiki/roswtf'
 
 pkgname='ros-indigo-roswtf'
-pkgver='1.11.18'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-roswtf-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/roswtf/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('d3a995bc5404f5b8f8acd214c76240ae3b0095af814ac77135bfb2c833b3de14')
+sha256sums=('b4b8959d0284347bb55cc187a0821c4d1a6de40f4263de5ead3d46ac8561b56a')
 
 build() {
   # Use ROS environment variables
