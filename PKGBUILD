@@ -4,7 +4,7 @@ pkgdesc="ROS - A Python and C++ implementation of the LZ4 streaming format."
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-roslz4'
-pkgver='1.11.18'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-roslz4-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/roslz4/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1b1d40029237331bc3f81268842fdb8658e53feb095dbbb1f0c08cdbdffe8782')
+sha256sums=('13791d0d418da780f3f51d2908619123200a3226e96603478714b27e2d8408f9')
 
 build() {
   # Use ROS environment variables
