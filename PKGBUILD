@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS console output library."
 url='http://www.ros.org/wiki/rosconsole'
 
 pkgname='ros-jade-rosconsole'
-pkgver='1.11.16'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-jade-rosunit
   ros-jade-rostime
   ros-jade-cpp-common
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   apr
   apr-util
@@ -29,10 +29,16 @@ depends=(${ros_depends[@]}
   apr-util
   log4cxx)
 
-_tag=release/jade/rosconsole/${pkgver}-${_pkgver_patch}
-_dir=rosconsole
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rosconsole/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-jade-rosconsole-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/jade/rosconsole/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('0f7aa17e02235e58592df59dc3738d6a06c06a4f2fb277cbfa654b705d4a4df9')
 
 build() {
   # Use ROS environment variables
