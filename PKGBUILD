@@ -2,7 +2,7 @@
 # Contributor: spider-mario <spidermario@free.fr>
 
 pkgname=rakudo-git
-pkgver=20160513
+pkgver=20160522
 pkgrel=1
 pkgdesc="Perl6 on MoarVM"
 arch=('i686' 'x86_64')
@@ -36,6 +36,7 @@ package() {
 
   msg2 'Installing...'
   RAKUDO_LOG_PRECOMP=1 make DESTDIR="$pkgdir" install
+  install -Dm 755 tools/install-dist.pl "$pkgdir/usr/bin/perl6-install-dist"
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type f -name "*.lock" -exec rm '{}' \;
