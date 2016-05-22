@@ -4,7 +4,7 @@ pkgdesc="ROS - This package allows you to publish the state of a robot to tf."
 url='http://wiki.ros.org/robot_state_publisher'
 
 pkgname='ros-jade-robot-state-publisher'
-pkgver='1.12.1'
+pkgver='1.12.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,8 +35,7 @@ ros_depends=(ros-jade-orocos-kdl
   ros-jade-tf
   ros-jade-sensor-msgs
   ros-jade-rosconsole
-  ros-jade-rostime
-  ros-jade-tf-conversions)
+  ros-jade-rostime)
 depends=(${ros_depends[@]}
   eigen3)
 
@@ -49,7 +48,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="robot_state_publisher-release-release-jade-robot_state_publisher-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_state_publisher-release/archive/release/jade/robot_state_publisher/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a41afeb95820626906c6700e2bd0562cde5b2033ff2006013d0195e733ba6ef4')
+sha256sums=('70a739b817ce738b2dd9673b34827ca976627db15068e8c22b90826fe1eb2393')
 
 build() {
   # Use ROS environment variables
