@@ -4,7 +4,7 @@ pkgdesc="ROS - Conversion functions between: - Eigen and KDL - Eigen and geometr
 url='http://ros.org/wiki/eigen_conversions'
 
 pkgname='ros-jade-eigen-conversions'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -15,7 +15,7 @@ ros_makedepends=(ros-jade-catkin
   ros-jade-orocos-kdl
   ros-jade-geometry-msgs
   ros-jade-std-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen3)
 
@@ -25,10 +25,16 @@ ros_depends=(ros-jade-orocos-kdl
 depends=(${ros_depends[@]}
   eigen3)
 
-_tag=release/jade/eigen_conversions/${pkgver}-${_pkgver_patch}
-_dir=eigen_conversions
-source=("${_dir}"::"git+https://github.com/ros-gbp/geometry-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/eigen_conversions/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="geometry-release-release-jade-eigen_conversions-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/jade/eigen_conversions/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('80bc86d52e9511a96f401c8936018c2934a8d7df7b89990dbf52e26f99f16bf6')
 
 build() {
   # Use ROS environment variables
