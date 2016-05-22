@@ -4,7 +4,7 @@ pkgdesc="ROS - Packages for interfacing ROS with OpenCV, a library of programmin
 url='http://www.ros.org/wiki/vision_opencv'
 
 pkgname='ros-jade-vision-opencv'
-pkgver='1.11.11'
+pkgver='1.11.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="vision_opencv-release-release-jade-vision_opencv-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/jade/vision_opencv/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6c3b38109312234ebfe5436fd20845f92aac3dcc64b9114b7bb1ea8f0144f980')
+sha256sums=('4847a1e8d69a5d6c3ef7b4558e1464f2fdf4487d62a32262707641069351fcf4')
 
 build() {
   # Use ROS environment variables
