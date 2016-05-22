@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatroff-git
-pkgver=0.r426.1eadad7
+pkgver=0.r427.19964e4
 pkgrel=1
 epoch=
 pkgdesc="An implementation of troff typesetting system in C programming language."
@@ -22,12 +22,13 @@ backup=()
 options=()
 changelog=
 install=
-source=($pkgname::git+git://repo.or.cz/neatroff.git
-        #$pkgname::git+git://repo.or.cz/neatroff.git#branch=dir
+source=("$pkgname::git+git://repo.or.cz/neatroff.git"
+        "${pkgname%-*}_dir::git+git://repo.or.cz/neatroff.git#branch=dir"
         "git://repo.or.cz/neatroff_make.git"
         "http://litcave.rudi.ir/neatroff.pdf")
 noextract=()
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP')
 
@@ -45,6 +46,8 @@ pkgver() {
 build() {
   cd "$srcdir/$pkgname"
   make all FDIR=$FDIR MDIR=$MDIR
+  cd "$srcdir/${pkgname%-*}_dir"
+  make all FDIR=$FDIR MDIR=$MDIR
 }
 
 package() {
@@ -57,5 +60,7 @@ package() {
   mkdir -p $pkgdir/usr/share/neatroff/tmac/
   cp -r ../neatroff_make/tmac/* $pkgdir/usr/share/neatroff/tmac/
   rm -f $pkgdir/usr/share/neatroff/tmac/NOTICE
+  cd "$srcdir/${pkgname%-*}_dir"
+  install -Dm755 roff $pkgdir/usr/bin/neatroff_dir
 }
 
