@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a set of conversion functions to convert co
 url='http://www.ros.org/wiki/tf_conversions'
 
 pkgname='ros-jade-tf-conversions'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -16,7 +16,7 @@ ros_makedepends=(ros-jade-cmake-modules
   ros-jade-catkin
   ros-jade-tf
   ros-jade-kdl-conversions)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   eigen3)
 
@@ -28,10 +28,16 @@ ros_depends=(ros-jade-tf
 depends=(${ros_depends[@]}
   eigen3)
 
-_tag=release/jade/tf_conversions/${pkgver}-${_pkgver_patch}
-_dir=tf_conversions
-source=("${_dir}"::"git+https://github.com/ros-gbp/geometry-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/tf_conversions/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="geometry-release-release-jade-tf_conversions-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/jade/tf_conversions/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('537a6370bd59a64b9de1fff1156402e12d9a79683c9fc1f8d5168e8bbb2a3c46')
 
 build() {
   # Use ROS environment variables
