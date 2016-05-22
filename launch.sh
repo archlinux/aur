@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# package build automation
+# build package automation
 
 location=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 
@@ -35,6 +35,7 @@ pkgver() {
 
 
 version() {
+    echo "pkgver $(pkgver)"
     if has_makepkg; then
         version_proper
     else
@@ -45,7 +46,12 @@ version() {
 version_simple() {
     echo "// version_simple"
     
-    echo "pkgver $(pkgver)"
+    local pkgver=$(pkgver)
+    local file_list="PKGBUILD .SRCINFO"
+    for file in $file_list ; do
+        sed -i "s:^\([ ]*pkgver[ ]*=[ ]*\).*:\1$pkgver:" "$file"
+        cat $file | grep "pkgver"
+    done
 }
 
 version_proper() {
@@ -72,15 +78,12 @@ commit() {
     echo "// commit $(pwd)"
             
     git add --all  :/
-
+    #git add PKGBUILD .SRCINFO
     git status 
 
     local message=$(git status --short)
-    
     git commit --message "$message"
                                                 
-    git add PKGBUILD .SRCINFO
-
     git push
     
 }
@@ -90,6 +93,6 @@ commit() {
 
 #build
 
-#commit
-
 version
+
+commit
