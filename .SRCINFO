@@ -1,0 +1,16 @@
+pkgbase = onscripter-en
+	pkgdesc = English version of the open source interpreter for the visual novel game scripting engine NScripter
+	pkgver = 20110930
+	pkgrel = 4
+	url = http://onscripter.unclemion.com/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = sdl_mixer
+	depends = sdl_image
+	depends = sdl_ttf
+	source = https://www.dropbox.com/s/ag21owy9poyr2oy/onscripter-en-20110930-src.tar.bz2
+	md5sums = 6c22a3c919098075d24b03c4e6d4e3cc
+
+pkgname = onscripter-en
+
