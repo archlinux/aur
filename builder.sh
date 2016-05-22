@@ -14,13 +14,14 @@ build() {
     $suno makepkg \
       --printsrcinfo > .SRCINFO
       
-    return 0
+    #return 0
 
     $suno makepkg \
     --cleanbuild \
     --syncdeps \
     --noconfirm \
     --needed \
+    --force \
     
 }
 
