@@ -7,7 +7,7 @@ pkgname='ros-jade-rviz'
 pkgver='1.11.14'
 _pkgver_patch=0
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD, Creative Commons')
 
 ros_makedepends=(ros-jade-roslib
@@ -84,13 +84,19 @@ depends=(${ros_depends[@]}
 
 # Tarball version (faster download)
 _dir="rviz-release-release-jade-rviz-${pkgver}-${_pkgver_patch}"
-source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rviz-release/archive/release/jade/rviz/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('0c0f20944a0ee8fafae3295e5e72ab0e6ba32dd43c10bbda701e850c1114c1a9')
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rviz-release/archive/release/jade/rviz/${pkgver}-${_pkgver_patch}.tar.gz"
+  "gcc.patch")
+sha256sums=('0c0f20944a0ee8fafae3295e5e72ab0e6ba32dd43c10bbda701e850c1114c1a9'
+  'b761541381e14c1d85633b866aebe6dc3f56bdc85db777a99bdfaaaadebee2d9')
 
 build() {
   # Use ROS environment variables
   source /usr/share/ros-build-tools/clear-ros-env.sh
   [ -f /opt/ros/jade/setup.bash ] && source /opt/ros/jade/setup.bash
+
+  # Apply patch
+  cd "${srcdir}/${_dir}"
+  patch -p1 -i "${srcdir}"/gcc.patch
 
   # Create build directory
   [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
