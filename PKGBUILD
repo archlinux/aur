@@ -4,7 +4,7 @@ pkgdesc="ROS - This package allows you to publish the state of a robot to tf."
 url='http://wiki.ros.org/robot_state_publisher'
 
 pkgname='ros-indigo-robot-state-publisher'
-pkgver='1.11.1'
+pkgver='1.11.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -49,7 +49,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="robot_state_publisher-release-release-indigo-robot_state_publisher-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_state_publisher-release/archive/release/indigo/robot_state_publisher/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('e307f31cd00c68a1f261c65cafb3bf69f9edbb23ae611135b7a5bb369b4fa06b')
+sha256sums=('bba720b6656fc1fa7fd16c8cba803da9c41224965c0c642dff0c86513e35f2df')
 
 build() {
   # Use ROS environment variables
