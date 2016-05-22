@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=wxsvg
-pkgver=1.5.6
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="C++ library to create, manipulate and render SVG files"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('custom:wxWindows')
 depends=('wxgtk' 'ffmpeg' 'ffmpeg-compat' 'webkitgtk2')
 options=('!libtool')
 source=("http://downloads.sourceforge.net/project/wxsvg/wxsvg/${pkgver}/wxsvg-${pkgver}.tar.bz2")
-md5sums=('ee206f83d3e4657348f51036f48a7f0b')
+md5sums=('d494f6406d7fd7e45a33747c9077eb21')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
