@@ -4,7 +4,7 @@ pkgdesc="ROS - This package attempts to show the features of ROS python API step
 url='http://www.ros.org/wiki/rospy_tutorials'
 
 pkgname='ros-jade-rospy-tutorials'
-pkgver='0.6.1'
+pkgver='0.6.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-jade-message-generation
   ros-jade-rostest
   ros-jade-catkin
   ros-jade-std-msgs)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-message-runtime
@@ -22,10 +22,16 @@ ros_depends=(ros-jade-message-runtime
   ros-jade-rospy)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/rospy_tutorials/${pkgver}-${_pkgver_patch}
-_dir=rospy_tutorials
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_tutorials-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rospy_tutorials/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_tutorials-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_tutorials-release-release-jade-rospy_tutorials-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_tutorials-release/archive/release/jade/rospy_tutorials/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('e06730cbb38b4f52b1b83aa2f67a9328a3c289df2603c2e83a8536bd9a29a932')
 
 build() {
   # Use ROS environment variables
