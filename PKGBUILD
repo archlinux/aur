@@ -2,7 +2,7 @@
 # Maintainer: David Parrish <BM-2cU1Bk3fXVo9VrGpo2YQFJ1it31gSuAy5j>
 
 pkgname=pybitmessage-git
-pkgver=v0.6.0.r1.gaf0dfdc
+pkgver=0.6.0.r1.gaf0dfdc
 pkgrel=1
 pkgdesc="Decentralized and trustless P2P communications protocol for sending encrypted messages to another person or to many subscribers"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ provides=('pybitmessage')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
