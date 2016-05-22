@@ -2,9 +2,9 @@
 pkgname=heekscnc-git
 pkgver=1139.ece2f41
 pkgrel=1
-pkgdesc="Library and python module for pocketing and profiling operations"
+pkgdesc="CAM add-on for HeeksCAD"
 arch=('x86_64')
-url="https://github.com/Heeks/heekscnc"
+url="http://heeks.net"
 license=('custom:BSD3')
 depends=('heekscad')
 makedepends=('git' 'cmake')
