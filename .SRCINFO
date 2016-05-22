@@ -14,4 +14,3 @@ pkgbase = initrd-dropbear
 	md5sums = SKIP
 
 pkgname = initrd-dropbear
-
