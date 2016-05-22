@@ -1,7 +1,7 @@
 # Maintainer: GordonGR <ntheo1979@gmail.com>
 
 pkgname="gtk-theme-ambiance-ds-blue-sb12"
-pkgver=1.75
+pkgver=1.80
 pkgrel=1
 pkgdesc="A theme based on Ambiance (gtk2, gtk3, gnome-shell, metacity, unity)"
 arch=(any)
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('gtk-engine-unico' 'gtk-engine-murrine')
 conflicts=()
 source=("http://opendesktop.org/CONTENT/content-files/154519-AmbianceDSBlueSB12.tar.gz")
-md5sums=('e4a619d88b374addb30bff3f0c945df8')
+md5sums=('9c48a637b85f104f379963d4a10059f0')
 install=()
 
 package() {
