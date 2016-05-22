@@ -4,14 +4,14 @@ pkgdesc="ROS - Metapackage of rqt plugins that are particularly used with robots
 url='http://ros.org/wiki/rqt_robot_plugins'
 
 pkgname='ros-jade-rqt-robot-plugins'
-pkgver='0.4.2'
+pkgver='0.4.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-rqt-nav-view
@@ -25,10 +25,16 @@ ros_depends=(ros-jade-rqt-nav-view
   ros-jade-rqt-pose-view)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/rqt_robot_plugins/${pkgver}-${_pkgver_patch}
-_dir=rqt_robot_plugins
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rqt_robot_plugins/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_robot_plugins-release-release-jade-rqt_robot_plugins-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_robot_plugins-release/archive/release/jade/rqt_robot_plugins/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('eb866d9353c6ad8c7d6f34c87cd11d2dfd4d16e0403183b77d6c09fc5a1dceb6')
 
 build() {
   # Use ROS environment variables
