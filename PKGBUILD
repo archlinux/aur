@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_robot_steering provides a GUI plugin for steering a robot usi
 url='http://ros.org/wiki/rqt_robot_steering'
 
 pkgname='ros-jade-rqt-robot-steering'
-pkgver='0.4.2'
+pkgver='0.4.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-rqt-gui-py
@@ -21,10 +21,16 @@ ros_depends=(ros-jade-rqt-gui-py
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/jade/rqt_robot_steering/${pkgver}-${_pkgver_patch}
-_dir=rqt_robot_steering
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rqt_robot_steering/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_robot_plugins-release-release-jade-rqt_robot_steering-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_robot_plugins-release/archive/release/jade/rqt_robot_steering/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('bbe65aa7624eeaaa3bd662a0e4e8e09710ba8259cc2f49e058ed94e0eb2c17c9')
 
 build() {
   # Use ROS environment variables
