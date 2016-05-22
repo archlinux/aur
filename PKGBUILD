@@ -60,7 +60,7 @@ build() {
 
 package() {
   pkgdesc='A generic and open source processor emulator. This is a stripped-down version for running on a headless server. It does not install extra arches either.'
-  depends=('pixman' 'gnutls' 'dtc' 'usbredir' 'lzo' 'libepoxy')
+  depends=('pixman' 'gnutls' 'dtc' 'usbredir' 'lzo' 'numactl' 'libepoxy')
   optdepends=('ovmf: Tianocore UEFI firmware for qemu'
               'samba: SMB/CIFS server support'
               'qemu-arch-extra-git: extra architectures support'

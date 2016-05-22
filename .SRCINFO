@@ -43,6 +43,7 @@ pkgname = qemu-minimal-git
 	depends = dtc
 	depends = usbredir
 	depends = lzo
+	depends = numactl
 	depends = libepoxy
 	optdepends = ovmf: Tianocore UEFI firmware for qemu
 	optdepends = samba: SMB/CIFS server support
