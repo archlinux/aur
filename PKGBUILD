@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 url='http://wiki.qemu.org/'
 makedepends=('pixman' 'glib2'
-             'gnutls' 'util-linux' 'curl' 'libsasl'
+             'gnutls' 'util-linux' 'curl' 'libiscsi' 'libsasl'
              'libcap-ng' 'libaio' 'libseccomp'
              'python2' 'usbredir' 'lzo'
              'dtc' 'git' 'texi2html' 'perl')
@@ -51,16 +51,16 @@ build() {
   ./configure --prefix=/usr --sysconfdir=/etc \
               --python=/usr/bin/python2 --smbd=/usr/bin/smbd \
               --disable-docs --libexecdir=/usr/lib/qemu \
-              --disable-gtk --disable-snappy --enable-lzo --enable-linux-aio --enable-seccomp \
+              --disable-gtk --enable-linux-aio --enable-seccomp \
               --localstatedir=/var \
-              --enable-tpm \
+              --enable-tpm --enable-libiscsi --enable-curl \
               --enable-modules --enable-curl --disable-werror
   make V=99
 }
 
 package() {
   pkgdesc='A generic and open source processor emulator. This is a stripped-down version for running on a headless server. It does not install extra arches either.'
-  depends=('pixman' 'gnutls' 'dtc' 'usbredir' 'lzo')
+  depends=('pixman' 'gnutls' 'dtc' 'usbredir' 'lzo' 'libepoxy')
   optdepends=('ovmf: Tianocore UEFI firmware for qemu'
               'samba: SMB/CIFS server support'
               'qemu-arch-extra-git: extra architectures support'
