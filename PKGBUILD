@@ -4,7 +4,7 @@ pkgdesc="ROS - tf2 is the second generation of the transform library, which lets
 url='http://www.ros.org/wiki/tf2'
 
 pkgname='ros-jade-tf2'
-pkgver='0.5.12'
+pkgver='0.5.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -14,7 +14,7 @@ ros_makedepends=(ros-jade-rostime
   ros-jade-geometry-msgs
   ros-jade-tf2-msgs
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   console-bridge)
 
@@ -24,10 +24,16 @@ ros_depends=(ros-jade-rostime
 depends=(${ros_depends[@]}
   console-bridge)
 
-_tag=release/jade/tf2/${pkgver}-${_pkgver_patch}
-_dir=tf2
-source=("${_dir}"::"git+https://github.com/ros-gbp/geometry_experimental-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/tf2/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry2-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="geometry2-release-release-jade-tf2-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/jade/tf2/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('92b9b82e2dccab197863d3d7d8e1bd69a488db2c4fb33d17e61f31c21eb27b8f')
 
 build() {
   # Use ROS environment variables
