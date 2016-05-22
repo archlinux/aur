@@ -1,0 +1,23 @@
+pkgbase = chez-scheme
+	pkgdesc = Chez Scheme is an implementation of the Revised6 Report on Scheme [27] (R6RS) with numerous language and programming environment extensions. (threaded build)
+	pkgver = 9.4
+	pkgrel = 1
+	url = https://github.com/cisco/ChezScheme
+	arch = i686
+	arch = x86_64
+	license = APL
+	makedepends = binutils
+	makedepends = make
+	makedepends = git
+	makedepends = ncurses
+	makedepends = libx11
+	makedepends = xproto
+	conflicts = petite-chez-scheme
+	conflicts = chez-scheme-git
+	replaces = petite-chez-scheme
+	replaces = chez-scheme-git
+	source = https://github.com/cisco/ChezScheme/archive/v9.4.tar.gz
+	sha1sums = SKIP
+
+pkgname = chez-scheme
+
