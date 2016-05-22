@@ -4,7 +4,7 @@ pkgdesc="ROS - roscpp is a C++ implementation of ROS."
 url='http://ros.org/wiki/roscpp'
 
 pkgname='ros-jade-roscpp'
-pkgver='1.11.16'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -21,7 +21,7 @@ ros_makedepends=(ros-jade-rosgraph-msgs
   ros-jade-roscpp-serialization
   ros-jade-rosconsole
   ros-jade-rostime)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   pkg-config)
 
@@ -36,10 +36,16 @@ ros_depends=(ros-jade-rosgraph-msgs
   ros-jade-rostime)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/roscpp/${pkgver}-${_pkgver_patch}
-_dir=roscpp
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/roscpp/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-jade-roscpp-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/jade/roscpp/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('da69c8e389fc834b144f89c531e9bbbc774b2958e8c113fea93dc3d6a53e6ebf')
 
 build() {
   # Use ROS environment variables
