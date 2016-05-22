@@ -4,7 +4,7 @@ pkgdesc="ROS - System-wide logging mechanism for messages sent to the /rosout to
 url='http://ros.org/wiki/rosout'
 
 pkgname='ros-jade-rosout'
-pkgver='1.11.16'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,16 +13,22 @@ license=('BSD')
 ros_makedepends=(ros-jade-rosgraph-msgs
   ros-jade-roscpp
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-roscpp)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/rosout/${pkgver}-${_pkgver_patch}
-_dir=rosout
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rosout/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-jade-rosout-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/jade/rosout/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('bb404c35bedf4da11d1da5966f2e2d2791e542136e12007d8c3e978336638fca')
 
 build() {
   # Use ROS environment variables
