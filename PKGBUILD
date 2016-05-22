@@ -4,7 +4,7 @@ pkgdesc="ROS - roslaunch is a tool for easily launching multiple ROS nodes local
 url='http://ros.org/wiki/roslaunch'
 
 pkgname='ros-indigo-roslaunch'
-pkgver='1.11.18'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -35,7 +35,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-roslaunch-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/roslaunch/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('1f576041fd8958140e2659a09b96dbe07d49dd6eeb3c5677928b5a0cb02eb81f')
+sha256sums=('5772f67dadff192582b254c22fdd0225574446cbaf48a0040245e03c44cce858')
 
 build() {
   # Use ROS environment variables
