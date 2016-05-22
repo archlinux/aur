@@ -4,7 +4,7 @@ pkgdesc="ROS - A set of message filters which take in messages and may output th
 url='http://ros.org/wiki/message_filters'
 
 pkgname='ros-indigo-message-filters'
-pkgver='1.11.18'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-message_filters-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/message_filters/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('805309d5d60d1e501c3358f3d8ab0ade74f37db38a9e57b8acbd8de5f6bc466f')
+sha256sums=('05b4d3aa255ef686110a61938cba2bee9d90a05862d0ace1c1837bad381c853a')
 
 build() {
   # Use ROS environment variables
