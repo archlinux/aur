@@ -4,7 +4,7 @@ pkgdesc="ROS - Time and Duration implementations for C++ libraries, including ro
 url='http://ros.org/wiki/rostime'
 
 pkgname='ros-jade-rostime'
-pkgver='0.5.6'
+pkgver='0.5.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,7 +12,7 @@ license=('BSD')
 
 ros_makedepends=(ros-jade-cpp-common
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost)
 
@@ -20,10 +20,16 @@ ros_depends=(ros-jade-cpp-common)
 depends=(${ros_depends[@]}
   boost)
 
-_tag=release/jade/rostime/${pkgver}-${_pkgver_patch}
-_dir=rostime
-source=("${_dir}"::"git+https://github.com/ros-gbp/roscpp_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rostime/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/roscpp_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="roscpp_core-release-release-jade-rostime-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/jade/rostime/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('33f2c6d59ab2a9864d2e1b3f07ad66f7dd0b9088d2c98701cd3127798542b530')
 
 build() {
   # Use ROS environment variables
