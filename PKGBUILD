@@ -6,9 +6,9 @@ pkgdesc="Cluster engine for nodal communication systems with additional features
 arch=('i686' 'x86_64')
 url="http://www.corosync.org/"
 license=('BSD')
-makedepends=('nss' 'libstatgrab' 'net-snmp' 'libqb')
-depends=('nss' 'libstatgrab' 'net-snmp' 'libqb')
-provides=('corosync=2.1.0')
+makedepends=('nss' 'libstatgrab' 'net-snmp' 'libdbus' 'libqb')
+depends=('nss' 'libstatgrab' 'net-snmp' 'libdbus' 'libqb')
+provides=('corosync=2.3.5')
 conflicts=('corosync1')
 source=("http://build.clusterlabs.org/corosync/releases/corosync-$pkgver.tar.gz"
 	"corosync.service")
@@ -36,5 +36,6 @@ package() {
 
 }
 
+
 md5sums=('8894f00d499e0755467b381e6346f9ff'
-         '9ce64dfbc32cdcf7ad2c33385aab1401')
+         '93d77bf4963852cf842497d5da92dc82')
