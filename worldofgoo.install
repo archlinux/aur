@@ -7,18 +7,6 @@ post_install()
   mkdir ~/.WorldOfGoo && cp /opt/WorldOfGoo/properties/config.txt ~/.WorldOfGoo
 
 	EOI
-
-    gtk-update-icon-cache --quiet /usr/share/icons/hicolor
-}
-
-post_upgrade()
-{
-    gtk-update-icon-cache --quiet /usr/share/icons/hicolor
-}
-
-post_remove()
-{
-    gtk-update-icon-cache --quiet /usr/share/icons/hicolor
 }
 
 # vim:et:sw=4:sts=4

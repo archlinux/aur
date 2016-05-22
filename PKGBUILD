@@ -4,7 +4,7 @@
 
 pkgname=worldofgoo
 pkgver=1.41
-pkgrel=6
+pkgrel=7
 pkgdesc="A physics based puzzle/construction game (requires copy of the full game)."
 arch=(i686 x86_64)
 url="http://2dboy.com/games.php"
@@ -14,11 +14,10 @@ optdepends=("worldofgoo-gootool: for creating and installing fan levels")
 install=$pkgname.install
 source=(hib://WorldOfGooSetup.1.41.tar.gz
         $pkgname.desktop)
-md5sums=(f5afa40893d0fbcc37885191404f6d8c
-         706ff492ea8096e1a2a7ee9a4d171aca)
+md5sums=('f5afa40893d0fbcc37885191404f6d8c'
+         '706ff492ea8096e1a2a7ee9a4d171aca')
 options=(!strip)
-DLAGENTS+=('hib::/usr/bin/echo Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf.; exit 1')
-PKGEXT=.pkg.tar
+DLAGENTS+=("hib::/usr/bin/echo Could not find %u. Manually download it to \"$(pwd)\", or set up a hib:// DLAGENT in /etc/makepkg.conf.")
 
 prepare()
 {
