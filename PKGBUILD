@@ -4,24 +4,30 @@ pkgdesc="ROS - roscpp_traits contains the message traits code as described in Me
 url='http://ros.org/wiki/roscpp_traits'
 
 pkgname='ros-jade-roscpp-traits'
-pkgver='0.5.6'
+pkgver='0.5.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-rostime
   ros-jade-cpp-common)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/roscpp_traits/${pkgver}-${_pkgver_patch}
-_dir=roscpp_traits
-source=("${_dir}"::"git+https://github.com/ros-gbp/roscpp_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/roscpp_traits/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/roscpp_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="roscpp_core-release-release-jade-roscpp_traits-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roscpp_core-release/archive/release/jade/roscpp_traits/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('df517cedea3a57a9d730d5e7263767b008418ac6489f95d387d865f73160c6d6')
 
 build() {
   # Use ROS environment variables
