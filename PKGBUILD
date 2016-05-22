@@ -4,14 +4,14 @@ pkgdesc="ROS - This package contains the python bindings PyKDL for the Kinematic
 url='http://wiki.ros.org/python_orocos_kdl'
 
 pkgname='ros-jade-python-orocos-kdl'
-pkgver='1.3.0'
+pkgver='1.3.1'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('LGPL')
 
 ros_makedepends=(ros-jade-orocos-kdl)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   sip
   python2-sip)
@@ -22,10 +22,16 @@ depends=(${ros_depends[@]}
   sip
   python2-sip)
 
-_tag=release/jade/python_orocos_kdl/${pkgver}-${_pkgver_patch}
-_dir=python_orocos_kdl
-source=("${_dir}"::"git+https://github.com/smits/orocos-kdl-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/python_orocos_kdl/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/smits/orocos-kdl-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="orocos-kdl-release-release-jade-python_orocos_kdl-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/smits/orocos-kdl-release/archive/release/jade/python_orocos_kdl/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('2c6b8b45b70b699e1ac7a4516fae918ec4de8b9c067025ea1440a2c9097eda0a')
 
 build() {
   # Use ROS environment variables
