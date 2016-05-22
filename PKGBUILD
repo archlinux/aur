@@ -4,7 +4,7 @@ pkgdesc="ROS - A set of message filters which take in messages and may output th
 url='http://ros.org/wiki/message_filters'
 
 pkgname='ros-jade-message-filters'
-pkgver='1.11.16'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -16,7 +16,7 @@ ros_makedepends=(ros-jade-rosunit
   ros-jade-catkin
   ros-jade-xmlrpcpp
   ros-jade-rosconsole)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost)
 
@@ -25,10 +25,16 @@ ros_depends=(ros-jade-rosconsole
   ros-jade-roscpp)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/message_filters/${pkgver}-${_pkgver_patch}
-_dir=message_filters
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/message_filters/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-jade-message_filters-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/jade/message_filters/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('044decaf93e45ec0d4afaad94d49ba8e9a89994ea3fcd02a9bf3006eec94d59b')
 
 build() {
   # Use ROS environment variables
