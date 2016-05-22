@@ -1,8 +1,9 @@
 #!/bin/bash
 
-help() { 
-cat << EOF_HELP
-EOF_HELP
+help() {
+    local pkgname="initrd-dropbear"
+    local readme="/usr/share/mkinitcpio/$pkgname/readme.md"
+    [ -f $readme ] && cat $readme 
 }
 
 build() {
