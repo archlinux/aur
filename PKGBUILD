@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_nav_view provides a gui for viewing navigation maps and paths
 url='http://ros.org/wiki/rqt_nav_view'
 
 pkgname='ros-jade-rqt-nav-view'
-pkgver='0.4.2'
+pkgver='0.4.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-geometry-msgs
@@ -25,10 +25,16 @@ ros_depends=(ros-jade-geometry-msgs
   ros-jade-rospy)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/rqt_nav_view/${pkgver}-${_pkgver_patch}
-_dir=rqt_nav_view
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rqt_nav_view/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_robot_plugins-release-release-jade-rqt_nav_view-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_robot_plugins-release/archive/release/jade/rqt_nav_view/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('733aa77f7c91fadc0689b4526733bae51f8e9a494cc5f2ab2f2ec9553706f2f9')
 
 build() {
   # Use ROS environment variables
