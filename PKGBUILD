@@ -4,7 +4,7 @@
 
 pkgname=borg-git
 _pkgname=borg
-pkgver=1.0.2.r91.g4de14fd
+pkgver=1.0.3.r224.g5fa5275
 pkgrel=1
 pkgdesc="Deduplicating backup program with compression and authenticated encryption"
 url="https://borgbackup.github.io/"
