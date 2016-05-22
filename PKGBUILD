@@ -2,8 +2,8 @@
 # Contributor: Otto Allmendinger <otto.allmendinger@gmail.com>
 
 pkgname="murmur-static"
-pkgver=1.2.15
-pkgrel=2
+pkgver=1.2.16
+pkgrel=1
 pkgdesc="The voice chat application server for Mumble (static version)"
 arch=("i686" "x86_64")
 url="http://www.mumble.info/"
@@ -16,7 +16,7 @@ install="murmur.install"
 source=("http://mumble.info/snapshot/murmur-static_x86-$pkgver.tar.bz2" 
         "murmur.service"
         "murmurd.1")
-md5sums=('4ac0580e80a6983815eb62146a299c19'
+md5sums=('954726bd0f62e65c9660111fca8c9e12'
          'd27a9adcd7561859e7b033046729bc0e'
          '1c976acaa7657a0b319e20c1a269e732')
 
