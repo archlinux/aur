@@ -1,7 +1,8 @@
 # Maintainer: Filippo Veneri <filippo[dot]veneri[at]gmail[dot]com>
 
+_sha_=137001f
 pkgname=acpilight
-pkgver=0.1
+pkgver=r3.${_sha_}
 pkgrel=1
 pkgdesc="A backward-compatibile xbacklight replacement based on ACPI"
 arch=('any')
@@ -10,10 +11,11 @@ license=('GPL3')
 depends=('python')
 provides=('xbacklight')
 conflicts=('xorg-xbacklight')
-source=(${pkgname}-${pkgver}.zip::https://github.com/wavexx/acpilight/archive/master.zip)
-md5sums=('1c252d6edf0efb1e1cb5a1ecb70aaf00')
+source=(${pkgname}-${pkgver}.zip::https://github.com/wavexx/acpilight/archive/${_sha_}.zip)
+md5sums=('938333c468100c11d7a05f6e23987191')
 
 package() {
+    local realdir=$(ls -d ${srcdir}/${pkgname}-${_sha_}*)
     install -d "${pkgdir}/usr/bin"
-    install -m755 "${srcdir}/${pkgname}-master/xbacklight" "${pkgdir}/usr/bin/xbacklight"
+    install -m755 "${realdir}/xbacklight" "${pkgdir}/usr/bin/xbacklight"
 }
