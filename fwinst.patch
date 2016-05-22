@@ -6,7 +6,7 @@ diff -aur sixfireusb-0.6.2/fwinst.sh sixfireusb-0.6.2/fwinst.sh
  #
 
 -export FW_PATH=/lib/firmware
-+export FW_PATH=$1/lib/firmware
++export FW_PATH=$1/usr/lib/firmware
  export FW_6FIRE_PATH=$FW_PATH/6fire
  cleanup() {
    rm -Rf /tmp/dmx
