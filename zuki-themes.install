@@ -1,0 +1,21 @@
+post_install() {
+  echo
+  echo "==> To enable/update the Firefox theme, run:"
+  echo "==> "
+  echo "==> $ cp -R /usr/share/themes/Zukitre-firefox-theme/chrome ~/.mozilla/firefox/<profile_id>.default/"
+  echo
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  echo
+  echo "==> Remember to remove the Firefox theme if you have enabled it:"
+  echo "==> "
+  echo "==> $ rm ~/.mozilla/firefox/<profile_id>.default/chrome/userChrome.css"
+  echo
+}
+
+# vim:set ts=2 sw=2 et:
