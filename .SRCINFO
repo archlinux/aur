@@ -1,6 +1,6 @@
 pkgbase = meld-dev
 	pkgdesc = Visual diff and merge tool
-	pkgver = 3.15.3
+	pkgver = 3.16
 	pkgrel = 1
 	url = http://meldmerge.org/
 	install = meld.install
@@ -22,8 +22,8 @@ pkgbase = meld-dev
 	conflicts = meld meld-git
 	replaces = meld meld-git
 	options = !emptydirs
-	source = http://ftp.gnome.org/pub/GNOME/sources/meld/3.15/meld-3.15.3.tar.xz
-	sha1sums = cb1291a5cc18fe0978df0a7a8ccbc860350a3a96
+	source = http://ftp.gnome.org/pub/GNOME/sources/meld/3.16/meld-3.16.0.tar.xz
+	sha1sums = 12cd5074ad23650776334cf3d1f2d803d5f2db97
 
 pkgname = meld-dev
 
