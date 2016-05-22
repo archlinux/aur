@@ -3,6 +3,7 @@
 	mksrcinfo
 
 package: PKGBUILD .SRCINFO
+	updpkgsums
 	makepkg --force --clean
 
 all: package
