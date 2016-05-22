@@ -4,7 +4,7 @@ pkgdesc="ROS - The tf2_py package."
 url='http://ros.org/wiki/tf2_py'
 
 pkgname='ros-jade-tf2-py'
-pkgver='0.5.12'
+pkgver='0.5.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,17 +13,23 @@ license=('BSD')
 ros_makedepends=(ros-jade-tf2
   ros-jade-catkin
   ros-jade-rospy)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-tf2
   ros-jade-rospy)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/tf2_py/${pkgver}-${_pkgver_patch}
-_dir=tf2_py
-source=("${_dir}"::"git+https://github.com/ros-gbp/geometry_experimental-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/tf2_py/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry2-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="geometry2-release-release-jade-tf2_py-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry2-release/archive/release/jade/tf2_py/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('effc7b1488d56c1b797f63db1a83199e03f4db4c7efaf12223fbdfe8c0fbbb19')
 
 build() {
   # Use ROS environment variables
