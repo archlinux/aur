@@ -1,14 +1,14 @@
 # Maintainer: substanceof <vk-cli.dev[at]ya[dot]ru>
 pkgname=vk-cli
-pkgver=0.7.1a
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A console (ncurses) client for vk.com written in D"
-arch=('x86_64')
+arch=('x86_64' 'i686')
 url="https://github.com/HaCk3Dq/vk"
 license=('Apache')
 depends=('curl' 'openssl' 'ncurses>=5.7')
-makedepends=('dub' 'dmd>=2.071.0' 'git')
-optdepends=('mplayer: for music playback')
+makedepends=('dub' 'dmd>=2.071.0' 'git' 'dtools')
+optdepends=('mpv: for music playback')
 provides=("$pkgname")
 conflicts=()
 
