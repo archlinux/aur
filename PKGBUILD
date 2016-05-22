@@ -4,7 +4,7 @@ pkgdesc="ROS - 3D visualization tool for ROS."
 url='http://ros.org/wiki/rviz'
 
 pkgname='ros-jade-rviz'
-pkgver='1.11.10'
+pkgver='1.11.14'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ ros_makedepends=(ros-jade-roslib
   ros-jade-nav-msgs
   ros-jade-catkin
   ros-jade-rosconsole)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   qt4
   ogre
@@ -76,10 +76,16 @@ depends=(${ros_depends[@]}
   mesa
   yaml-cpp)
 
-_tag=release/jade/rviz/${pkgver}-${_pkgver_patch}
-_dir=rviz
-source=("${_dir}"::"git+https://github.com/ros-gbp/rviz-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rviz/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rviz-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rviz-release-release-jade-rviz-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rviz-release/archive/release/jade/rviz/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('0c0f20944a0ee8fafae3295e5e72ab0e6ba32dd43c10bbda701e850c1114c1a9')
 
 build() {
   # Use ROS environment variables
