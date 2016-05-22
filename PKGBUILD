@@ -4,24 +4,30 @@ pkgdesc="ROS - Unit-testing package for ROS."
 url='http://ros.org/wiki/rosunit'
 
 pkgname='ros-jade-rosunit'
-pkgver='1.12.5'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-roslib)
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/jade/rosunit/${pkgver}-${_pkgver_patch}
-_dir=rosunit
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rosunit/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros-release-release-jade-rosunit-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/jade/rosunit/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('7d0e0142079e2e476962f751f42cabb48f08ee0d72cf8d9c4e322ed2d0192be9')
 
 build() {
   # Use ROS environment variables
