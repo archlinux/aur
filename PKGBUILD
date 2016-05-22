@@ -1,7 +1,7 @@
 # Maintainer: David Parrish <daveparrish@gmail.com>
 
 pkgname=bitaddress-git
-pkgver=v2.9.8.r0.g6ad40b3
+pkgver=3.2.0.r0.g8a0c686
 pkgrel=1
 pkgdesc="JavaScript Client-Side Bitcoin Wallet Generator"
 arch=('any')
@@ -18,7 +18,7 @@ sha256sums=("SKIP"
 
 pkgver() {
   cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
