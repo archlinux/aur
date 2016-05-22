@@ -4,7 +4,7 @@ pkgdesc="ROS - rostopic contains the rostopic command-line tool for displaying d
 url='http://ros.org/wiki/rostopic'
 
 pkgname='ros-indigo-rostopic'
-pkgver='1.11.18'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -29,7 +29,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-rostopic-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rostopic/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('97d18198b5dd81b175a513fe8bcd3b869a85b6d7b2deb9ce4ed5fb13d1993caf')
+sha256sums=('814f9f1277f052531754e466d04149ba2738fe635a2a5fa66e1d0799a80d98f2')
 
 build() {
   # Use ROS environment variables
