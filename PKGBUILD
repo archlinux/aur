@@ -3,7 +3,7 @@
 pkgname=chez-scheme
 pkgver=9.4
 pkgrel=1
-pkgdesc="Chez Scheme is an implementation of the Revised6 Report on Scheme [27] (R6RS) with numerous language and programming environment extensions. (threaded build)"
+pkgdesc="Chez Scheme is a compiler and run-time system for the language of the Revised^6 Report on Scheme (R6RS), with numerous extensions."
 arch=(i686 x86_64)
 url="https://github.com/cisco/ChezScheme"
 depends=()
