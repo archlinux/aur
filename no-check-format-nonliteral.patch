@@ -1,0 +1,27 @@
+--- src/glade3-3.8.5/gladeui/glade-editor-property.c	2014-04-23 23:08:02.000000000 +0200
++++ glade-editor-property.c	2016-05-22 14:05:18.871026000 +0200
+@@ -72,7 +72,6 @@
+ #define FLAGS_COLUMN_SETTING             0
+ #define FLAGS_COLUMN_SYMBOL              1
+ 
+-
+ /*******************************************************************************
+                                GladeEditorPropertyClass
+  *******************************************************************************/
+@@ -2716,6 +2715,8 @@
+ 		format = GLADE_IS_PARAM_SPEC_OBJECTS (eprop->klass->pspec) ?
+ 			_("Choose %s type objects in this project") : _("Choose a %s in this project");
+ 
++	#pragma GCC diagnostic push
++	#pragma GCC diagnostic ignored "-Wformat-nonliteral"
+ 	if (GLADE_IS_PARAM_SPEC_OBJECTS (eprop->klass->pspec))
+ 		return g_strdup_printf (format, g_type_name 
+ 					(glade_param_spec_objects_get_type 
+@@ -2730,6 +2731,7 @@
+ 	 */
+ 	return g_strdup_printf (format, g_type_name 
+ 				(eprop->klass->pspec->value_type));
++	#pragma GCC diagnostic pop
+ }
+ 
+ 

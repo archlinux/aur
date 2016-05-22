@@ -7,7 +7,7 @@
 pkgname=glade-gtk2
 _pkgname=glade3
 pkgver=3.8.5
-pkgrel=3
+pkgrel=4
 pkgdesc='User interface builder for GTK+ and GNOME (latest version for GTK2)'
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL')
@@ -16,10 +16,16 @@ makedepends=('intltool' 'python2' 'gobject-introspection' 'python2-gobject2' 'gt
 optdepends=('devhelp: Integrated docs'
             'python2: Python widgets support')
 url='http://glade.gnome.org/'
-install="${pkgname}.install"
-source=("http://ftp.gnome.org/pub/GNOME/sources/${_pkgname}/${pkgver:0:3}/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('58a5f6e4df4028230ddecc74c564808b7ec4471b1925058e29304f778b6b2735')
+source=("http://ftp.gnome.org/pub/GNOME/sources/${_pkgname}/${pkgver:0:3}/${_pkgname}-${pkgver}.tar.xz"
+        "no-check-format-nonliteral.patch")
+sha256sums=('58a5f6e4df4028230ddecc74c564808b7ec4471b1925058e29304f778b6b2735'
+            'e2b383720f5ab53fc581f71f8d6aac5bd0080245400eaef9b29030d7c88fb66b')
 options=('!libtool')
+
+prepare() {
+  cd "${_pkgname}-${pkgver}"
+  patch -p2 -i "${srcdir}/no-check-format-nonliteral.patch"
+}
 
 build() {
   cd "${_pkgname}-${pkgver}"
