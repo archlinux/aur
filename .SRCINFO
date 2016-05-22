@@ -1,31 +1,24 @@
-pkgbase = lantern
+pkgbase = lantern-bin
 	pkgdesc = Lantern is a free desktop application that delivers fast, reliable and secure access to the open Internet. (Stable Channel)
-	pkgver = 2.0.10
+	pkgver = 2.2.4
 	pkgrel = 1
 	url = https://getlantern.org
 	install = lantern.install
 	arch = i686
 	arch = x86_64
 	license = Apache
-	depends = hicolor-icon-theme
-	depends = bzip2
-	depends = dbus
-	depends = glib2
-	depends = gtk3
 	depends = libappindicator-gtk3
-	depends = mesa
 	depends = xcb-util
 	depends = xdg-utils
-	depends = zlib
 	options = !emptydirs
 	options = !strip
 	options = !docs
 	source = lantern.service
 	sha1sums = da705ba2fa3608a17258009b933e8bb58b3172a2
 	source_i686 = lantern-installer-32-bit.deb::https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-32-bit.deb
-	sha1sums_i686 = cace8d813aa4148ab7a5729c377b5c10fd8290b9
+	sha1sums_i686 = 7830bae28eeb6582cdd227c9c4b13416f8871543
 	source_x86_64 = lantern-installer-64-bit.deb::https://raw.githubusercontent.com/getlantern/lantern-binaries/master/lantern-installer-64-bit.deb
-	sha1sums_x86_64 = e7631e744d4e3b27703a3563d670063fe38852f7
+	sha1sums_x86_64 = 90146c3ac91fa5ba7e13b5cd59c489a147d5f963
 
-pkgname = lantern
+pkgname = lantern-bin
 
