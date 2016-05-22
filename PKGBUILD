@@ -4,14 +4,14 @@ pkgdesc="ROS - A Python GUI plugin for introspecting available ROS message types
 url='http://ros.org/wiki/rqt_msg'
 
 pkgname='ros-jade-rqt-msg'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-roslib
@@ -24,10 +24,16 @@ ros_depends=(ros-jade-roslib
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/jade/rqt_msg/${pkgver}-${_pkgver_patch}
-_dir=rqt_msg
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rqt_msg/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-jade-rqt_msg-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/jade/rqt_msg/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('98f1bbd5242004dd1e8412a44202debf66bea4fb7d1808cadc915bf3e76e7a7d')
 
 build() {
   # Use ROS environment variables
