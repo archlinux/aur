@@ -4,7 +4,7 @@ pkgdesc="ROS - Integration test suite based on roslaunch that is compatible with
 url='http://ros.org/wiki/rostest'
 
 pkgname='ros-indigo-rostest'
-pkgver='1.11.18'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-rostest-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rostest/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f2be4628ffe9b47e9ebe8a4011f2cea2cbd60656ff02ac24e473ba1ca361e097')
+sha256sums=('2e390dd30acb1546e4838979560dfbb276e60d3b7e2dba0f1d873e5d7076670f')
 
 build() {
   # Use ROS environment variables
