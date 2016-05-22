@@ -20,6 +20,5 @@ changelog=ChangeLog
 
 package() {
   install -dm755 "${pkgdir}/usr/share/zsh/plugins/vaulty"
-  pwd
-  cp "southdesign-${pkgname}-75dbd0c/vaulty" "${pkgdir}/usr/share/zsh/plugins/${pkgname}/vaulty"
+  cp "funkhousr-${pkgname}-75dbd0c/vaulty" "${pkgdir}/usr/share/zsh/plugins/${pkgname}/vaulty"
 }
