@@ -4,7 +4,7 @@
 pkgname=uml_utilities
 pkgver=20070815
 pkgrel=1
-pkgdesc="User Mode Linux Utilities"
+pkgdesc="User Mode Linux Utilities (Debian package uml-utilities)"
 arch=(i686 x86_64)
 depends=('fuse' 'readline')
 provides=('')
