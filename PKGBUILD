@@ -3,7 +3,7 @@
 
 pkgname=pepper
 pkgver=0.0.16
-pkgrel=9
+pkgrel=10
 pkgdesc="The Flexible Game Engine"
 arch=(x86_64)
 url="https://github.com/taylor001/crown"
@@ -19,8 +19,8 @@ source=("https://github.com/taylor001/crown/releases/download/v$pkgver/$pkgname-
         "pepper.sh"
         "pepper.desktop"
         )
-md5sums=('ec0257c9af0b6bdee5eac8142b32f855'
-         'ce9c45eea75415c16cd552d219e0bde4'
+md5sums=('578141077084894f716a38e04388bf31'
+         '8fca300dce4e3858e34e7a2d550a3728'
          '7424db2a97c159d516cfa813be148966')
 
 package() {
