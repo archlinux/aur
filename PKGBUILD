@@ -3,8 +3,8 @@
 
 pkgbase=python-mock
 pkgname=(python2-mock python-mock)
-pkgver=1.3.0
-pkgrel=3
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Mocking and Patching Library for Testing'
 url='http://www.voidspace.org.uk/python/mock/'
 makedepends=('python2' 'python' 'python-setuptools' 'python2-setuptools')
@@ -12,7 +12,7 @@ checkdepends=('python-nose' 'python2-nose' 'python-pbr' 'python2-pbr' 'python-si
 license=('BSD')
 arch=('any')
 source=("http://pypi.python.org/packages/source/m/mock/mock-$pkgver.tar.gz")
-md5sums=('73ee8a4afb3ff4da1b4afa287f39fdeb')
+md5sums=('0febfafd14330c9dcaa40de2d82d40ad')
 
 build() {
   cd "$srcdir"
@@ -47,6 +47,6 @@ check() {
   python -m unittest discover
   
   # Does not run because of self.assertRaisesRegex() usage in unitests, which is self.assertRaisesRegexp() in Python 2.7
-  #echo 'python2 tests'
+  echo 'python2 tests'
   #python2 -m unittest discover
 }
