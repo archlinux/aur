@@ -4,7 +4,7 @@ pkgdesc="ROS - roscpp is a C++ implementation of ROS."
 url='http://ros.org/wiki/roscpp'
 
 pkgname='ros-indigo-roscpp'
-pkgver='1.11.18'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -45,7 +45,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-roscpp-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/roscpp/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('14644388129abf4ea41ce98a3ae57664d7c0f77bff56b72f2f69f820d2be004b')
+sha256sums=('b234e626e2013307ac8a456cbfa41a55e5d8e0e2c812431755828b29fee81255')
 
 build() {
   # Use ROS environment variables
