@@ -4,7 +4,7 @@ pkgdesc="ROS - Interface for using ROS with the Gazebo simulator."
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-jade-gazebo-ros-pkgs'
-pkgver='2.5.2'
+pkgver='2.5.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-jade-gazebo_ros_pkgs-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/jade/gazebo_ros_pkgs/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('f89f011217061a707cb6786947637ebcba7b964a7bb8e377afe46c907978255b')
+sha256sums=('55d8c0dc15324955e4372ab3d033664439129149a46084020dbedd1383815c82')
 
 build() {
   # Use ROS environment variables
