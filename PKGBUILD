@@ -16,7 +16,7 @@ makedepends=('pixman' 'glib2'
              'gnutls' 'util-linux' 'curl' 'libiscsi' 'libsasl'
              'libcap-ng' 'libaio' 'libseccomp'
              'python2' 'usbredir' 'lzo'
-             'dtc' 'git' 'texi2html' 'perl')
+             'dtc' 'git' 'texi2html' 'perl' 'numactl')
 source=(git://git.qemu.org/qemu.git
         qemu.sysusers
         qemu-ga.service

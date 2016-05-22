@@ -23,6 +23,7 @@ pkgbase = qemu-minimal-git
 	makedepends = git
 	makedepends = texi2html
 	makedepends = perl
+	makedepends = numactl
 	source = git://git.qemu.org/qemu.git
 	source = qemu.sysusers
 	source = qemu-ga.service
