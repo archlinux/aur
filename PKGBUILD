@@ -4,7 +4,7 @@ pkgdesc="ROS - turtlesim is a tool made for teaching ROS and ROS packages."
 url='http://www.ros.org/wiki/turtlesim'
 
 pkgname='ros-jade-turtlesim'
-pkgver='0.6.1'
+pkgver='0.6.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -20,7 +20,7 @@ ros_makedepends=(ros-jade-roslib
   ros-jade-roscpp-serialization
   ros-jade-rosconsole
   ros-jade-rostime)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   qt4)
 
@@ -36,10 +36,16 @@ ros_depends=(ros-jade-roslib
 depends=(${ros_depends[@]}
   qt4)
 
-_tag=release/jade/turtlesim/${pkgver}-${_pkgver_patch}
-_dir=turtlesim
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_tutorials-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/turtlesim/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_tutorials-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_tutorials-release-release-jade-turtlesim-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_tutorials-release/archive/release/jade/turtlesim/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('93357d1a0e2ebd2457b6543ca35dd1f051958f7fca0b35c58949a3d0a90f2e46')
 
 build() {
   # Use ROS environment variables
