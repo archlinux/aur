@@ -4,23 +4,29 @@ pkgdesc="ROS - A collection of .mk include files for building ROS architectural 
 url='http://www.ros.org/wiki/ROS'
 
 pkgname='ros-jade-mk'
-pkgver='1.12.5'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-rosbuild)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/mk/${pkgver}-${_pkgver_patch}
-_dir=mk
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/mk/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros-release-release-jade-mk-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/jade/mk/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('6deeaa36c4e53eadc92091d7f322b6eb0b0ac8f14e6fb5651440ecd72c341731')
 
 build() {
   # Use ROS environment variables
