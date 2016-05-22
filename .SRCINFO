@@ -1,0 +1,16 @@
+pkgbase = heekscnc-git
+	pkgdesc = Library and python module for pocketing and profiling operations
+	pkgver = 1139.ece2f41
+	pkgrel = 1
+	url = https://github.com/Heeks/heekscnc
+	arch = x86_64
+	license = custom:BSD3
+	makedepends = git
+	makedepends = cmake
+	depends = heekscad
+	provides = heekscnc
+	source = heekscnc-git::git://github.com/Heeks/heekscnc.git
+	md5sums = SKIP
+
+pkgname = heekscnc-git
+
