@@ -4,7 +4,7 @@ pkgdesc="ROS - Python ROS message and service generators."
 url='http://www.ros.org/'
 
 pkgname='ros-indigo-genpy'
-pkgver='0.5.8'
+pkgver='0.5.9'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="genpy-release-release-indigo-genpy-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/genpy-release/archive/release/indigo/genpy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('42c23847d9dd3241e451ebea373f8b928da0e43566724113f8bbf5ea55de6e39')
+sha256sums=('058b9520d316ea3170b7d6b9cb079a2530242bdb0c64945029404fab52100206')
 
 build() {
   # Use ROS environment variables
