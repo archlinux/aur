@@ -4,7 +4,7 @@ pkgdesc="ROS - Provides ROS plugins that offer message and service publishers fo
 url='http://gazebosim.org/tutorials?cat=connect_ros'
 
 pkgname='ros-jade-gazebo-ros'
-pkgver='2.5.2'
+pkgver='2.5.5'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -50,7 +50,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="gazebo_ros_pkgs-release-release-jade-gazebo_ros-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/gazebo_ros_pkgs-release/archive/release/jade/gazebo_ros/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('63cf6b96363036f9647aba08a7f4adfe0948ee23fd2e2a26ca6511302818f760')
+sha256sums=('b337a6649eeb467802fc21ed66c6241859d22d8a1d57589eeff18005af70ae62')
 
 build() {
   # Use ROS environment variables
