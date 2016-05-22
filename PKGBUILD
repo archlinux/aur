@@ -4,7 +4,7 @@ pkgdesc="ROS - image_geometry contains C++ and Python libraries for interpreting
 url='http://www.ros.org/wiki/image_geometry'
 
 pkgname='ros-jade-image-geometry'
-pkgver='1.11.11'
+pkgver='1.11.12'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="vision_opencv-release-release-jade-image_geometry-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/vision_opencv-release/archive/release/jade/image_geometry/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('efdb16c07008533b5699cfc8f3f1ba1f5b002be81b928c1b31a1c4c60e7eaea8')
+sha256sums=('53747cc84a6c8226df6e0916e440125d020a4171fe270f118227807197c5e7d7')
 
 build() {
   # Use ROS environment variables
