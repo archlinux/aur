@@ -1,6 +1,6 @@
 # Maintainer: JKA Network (JoseluCross, Kprkpr, Yukialba) <contacto@jkanetwork.com>
 pkgname=jka-toolkit
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Set of scripts to optimize the daily work in linux shell"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('p7zip' 'unrar' 'unzip')
 options=(!emptydirs)
 install=$pkgname.install
 source=(https://gitlab.com/JKANetwork/jka-toolkit/raw/master/jka-toolkit.tar.gz)
-md5sums=('52bd478e4f1d86f6e69646a53db13224')
+md5sums=('c71687f426a4562ae794bc6218b2575a')
 
 package() {
   cd "$srcdir/$pkgname"
