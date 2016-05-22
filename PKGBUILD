@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains generic definitions of geometric shapes and
 url='http://ros.org/wiki/geometric_shapes'
 
 pkgname='ros-jade-geometric-shapes'
-pkgver='0.4.3'
+pkgver='0.4.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,7 +18,7 @@ ros_makedepends=(ros-jade-eigen-stl-containers
   ros-jade-resource-retriever
   ros-jade-visualization-msgs
   ros-jade-random-numbers)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   qhull
   assimp
@@ -40,10 +40,16 @@ depends=(${ros_depends[@]}
   console-bridge
   qhull)
 
-_tag=release/jade/geometric_shapes/${pkgver}-${_pkgver_patch}
-_dir=geometric_shapes
-source=("${_dir}"::"git+https://github.com/ros-gbp/geometric_shapes-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/geometric_shapes/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometric_shapes-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="geometric_shapes-release-release-jade-geometric_shapes-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometric_shapes-release/archive/release/jade/geometric_shapes/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('8d005eaed10fa17bb6fa061b907e7c22d274e552b1fe9925039adc139e6f63fd')
 
 build() {
   # Use ROS environment variables
