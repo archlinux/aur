@@ -18,7 +18,7 @@ post_install() {
 
     local source="/usr/share/mkinitcpio/$pkgname"
     local target="/etc/systemd/system"
-    local unit_list=$(grep -ql "$tag" $target/*.service)
+    local unit_list=$(grep -l "$tag" $target/*.service)
     if [[ $unit_list ]] ; then
         echo "Keep existing $tag units in $target"
     else
@@ -29,7 +29,7 @@ post_install() {
     
     local source="/usr/share/mkinitcpio/$pkgname"
     local target="/etc/systemd/network"
-    local unit_list=$(grep -ql "$tag" $target/*.network)
+    local unit_list=$(grep -l "$tag" $target/*.network)
     if [[ $unit_list ]] ; then
         echo "Keep existing $tag units in $target"
     else

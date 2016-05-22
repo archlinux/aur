@@ -85,7 +85,7 @@ build_unit() {
     local dir="/etc/systemd/system"
     add_dir $dir
     
-    local unit_list=$(grep -ql "$tag" $dir/*.service)
+    local unit_list=$(grep -l "$tag" $dir/*.service)
     [[ $unit_list ]] || error "Missing any units in $dir with tag $tag"
 
     local unit
@@ -100,7 +100,7 @@ build_unit() {
     local dir="/etc/systemd/network"
     add_dir $dir
 
-    local unit_list=$(grep -ql "$tag" $dir/*.network)
+    local unit_list=$(grep -l "$tag" $dir/*.network)
     [[ $unit_list ]] || error "Missing any units in $dir with tag $tag"
     
     local unit
