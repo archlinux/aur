@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_py_console is a Python GUI plugin providing an interactive Py
 url='http://ros.org/wiki/rqt_py_console'
 
 pkgname='ros-jade-rqt-py-console'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-qt-gui-py-common
@@ -22,10 +22,16 @@ ros_depends=(ros-jade-qt-gui-py-common
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/jade/rqt_py_console/${pkgver}-${_pkgver_patch}
-_dir=rqt_py_console
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rqt_py_console/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-jade-rqt_py_console-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/jade/rqt_py_console/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('0b7ba0e99a93f4a419bb4623837f1673ebe8dd987ef6bb0fb2c38a1c6abc5f9a')
 
 build() {
   # Use ROS environment variables
