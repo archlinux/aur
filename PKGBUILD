@@ -4,18 +4,18 @@ pkgdesc="ROS - The pluginlib package provides tools for writing and dynamically 
 url='http://www.ros.org/wiki/pluginlib'
 
 pkgname='ros-jade-pluginlib'
-pkgver='1.10.1'
+pkgver='1.10.2'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
-license=('BSD, Boost Software License')
+license=('BSD')
 
 ros_makedepends=(ros-jade-rosconsole
   ros-jade-class-loader
   ros-jade-roslib
   ros-jade-cmake-modules
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost
   tinyxml)
@@ -27,10 +27,16 @@ depends=(${ros_depends[@]}
   boost
   tinyxml)
 
-_tag=release/jade/pluginlib/${pkgver}-${_pkgver_patch}
-_dir=pluginlib
-source=("${_dir}"::"git+https://github.com/ros-gbp/pluginlib-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/pluginlib/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/pluginlib-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="pluginlib-release-release-jade-pluginlib-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/pluginlib-release/archive/release/jade/pluginlib/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('555fd9e5e4d19c20168f579a71e7b7d66ba541ffbd41f9a0759071e4eba011ba')
 
 build() {
   # Use ROS environment variables
