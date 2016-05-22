@@ -4,7 +4,7 @@ pkgdesc="ROS - qt_gui_cpp provides the foundation for C++-bindings for qt_gui an
 url='http://ros.org/wiki/qt_gui_cpp'
 
 pkgname='ros-jade-qt-gui-cpp'
-pkgver='0.2.29'
+pkgver='0.2.30'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -13,7 +13,7 @@ license=('BSD')
 ros_makedepends=(ros-jade-python-qt-binding
   ros-jade-pluginlib
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   qt4
   tinyxml
@@ -23,10 +23,16 @@ ros_depends=(ros-jade-pluginlib
   ros-jade-qt-gui)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/qt_gui_cpp/${pkgver}-${_pkgver_patch}
-_dir=qt_gui_cpp
-source=("${_dir}"::"git+https://github.com/ros-gbp/qt_gui_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/qt_gui_cpp/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/qt_gui_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="qt_gui_core-release-release-jade-qt_gui_cpp-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/jade/qt_gui_cpp/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('d69c742f2956317e1a10ac7352b6951337312010f7579aa4e3ee1c5eab9f3b09')
 
 build() {
   # Use ROS environment variables
