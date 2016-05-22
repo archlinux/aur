@@ -4,14 +4,14 @@ pkgdesc="ROS - An rqt-based tool that assists monitoring tasks for MoveIt! motio
 url='http://ros.org/wiki/rqt_moveit'
 
 pkgname='ros-jade-rqt-moveit'
-pkgver='0.4.2'
+pkgver='0.4.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-rqt-topic
@@ -24,10 +24,16 @@ ros_depends=(ros-jade-rqt-topic
   ros-jade-rospy)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/rqt_moveit/${pkgver}-${_pkgver_patch}
-_dir=rqt_moveit
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rqt_moveit/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_robot_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_robot_plugins-release-release-jade-rqt_moveit-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_robot_plugins-release/archive/release/jade/rqt_moveit/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('c271aadcfe4b04f692ac09ec71a9587be1c65a16642045c946242fc75d3d889b')
 
 build() {
   # Use ROS environment variables
