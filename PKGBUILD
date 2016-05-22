@@ -4,7 +4,7 @@ pkgdesc="ROS - rosconsole_bridge is a package used in conjunction with console_b
 url='http://www.ros.org/wiki/rosconsole_bridge'
 
 pkgname='ros-indigo-rosconsole-bridge'
-pkgver='0.4.2'
+pkgver='0.4.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,7 +12,7 @@ license=('BSD')
 
 ros_makedepends=(ros-indigo-rosconsole
   ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   console-bridge)
 
@@ -20,10 +20,16 @@ ros_depends=(ros-indigo-rosconsole)
 depends=(${ros_depends[@]}
   console-bridge)
 
-_tag=release/indigo/rosconsole_bridge/${pkgver}-${_pkgver_patch}
-_dir=rosconsole_bridge
-source=("${_dir}"::"git+https://github.com/ros-gbp/rosconsole_bridge-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/rosconsole_bridge/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rosconsole_bridge-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rosconsole_bridge-release-release-indigo-rosconsole_bridge-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rosconsole_bridge-release/archive/release/indigo/rosconsole_bridge/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('3016f9d0ef29a89c8d1e227ea6b8187321c2d119266fc57aaad03c5b2ecf4718')
 
 build() {
   # Use ROS environment variables
@@ -45,6 +51,7 @@ build() {
         -DPYTHON_EXECUTABLE=/usr/bin/python2 \
         -DPYTHON_INCLUDE_DIR=/usr/include/python2.7 \
         -DPYTHON_LIBRARY=/usr/lib/libpython2.7.so \
+        -DPYTHON_BASENAME=-python2.7 \
         -DSETUPTOOLS_DEB_LAYOUT=OFF
   make
 }
