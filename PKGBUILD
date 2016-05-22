@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains common nodelet tools such as a mux, demux a
 url='http://ros.org/wiki/nodelet_topic_tools'
 
 pkgname='ros-jade-nodelet-topic-tools'
-pkgver='1.9.3'
+pkgver='1.9.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,7 +12,7 @@ license=('BSD')
 
 ros_makedepends=(ros-jade-dynamic-reconfigure
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   boost)
 
@@ -24,10 +24,16 @@ ros_depends=(ros-jade-pluginlib
 depends=(${ros_depends[@]}
   boost)
 
-_tag=release/jade/nodelet_topic_tools/${pkgver}-${_pkgver_patch}
-_dir=nodelet_topic_tools
-source=("${_dir}"::"git+https://github.com/ros-gbp/nodelet_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/nodelet_topic_tools/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/nodelet_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="nodelet_core-release-release-jade-nodelet_topic_tools-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/nodelet_core-release/archive/release/jade/nodelet_topic_tools/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('1d92e291b90f2065942ee5c87bd544869240dbd45e225ab3f7525efc93d7f5c5')
 
 build() {
   # Use ROS environment variables
