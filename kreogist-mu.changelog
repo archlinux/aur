@@ -1,3 +1,32 @@
+0.9.9.2
+
+This is a minor update version from 0.9.9.1. Due to the exams and useless papers from someone's university, like COMP2410 and COMP3120 :(, this update should come much earlier.
+
+In this version, we add a few new features for user friendly, and update the cloud API. There's also a few bugs affect under Windows and OS X. The update log is below.
+
+    New scroll bar for album view, all tree view and list view.
+    Mini Player is now support for multiple display maganet border.
+    Mini Player is now support for multiple display position recovery.
+    Message box is now support for multiple display.
+    Labels in detail info dialog is now support selection.
+    Add download lyrics option for current playing song.
+    Add remove button for playlists.
+    Main Player and Mini Player now support drag and drop.
+    Support close button for Mini player under OS X.
+    Forget password is now working.
+    Update the Kreogist Account API to the latest version.
+    Tweak the menu style for OS X 10.10 and later.
+    Fixed the mini player movable problem on OS X 10.10 and later.
+    Fixed the memory leaking under Windows and OS X.
+    Fixed the potential password attack for simply input the Hash result.
+
+A news about 1.0, we are now facing some problem with online music playing. We have to do some research in this area. If any of you are expert of this area, knows how to build a online music player cross-platform using C++, please contact us via kreogistdevteam@126.com.
+
+Hope you can enjoy the new version μ!
+
+〜μ'sic Forever♪♪♪♪♪♪♪♪♪〜
+
+
 0.9.9.1
 
 This is a bug fixed version of 0.9.9, it fixed several critical bugs.
