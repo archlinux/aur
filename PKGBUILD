@@ -4,14 +4,14 @@ pkgdesc="ROS - camera_calibration allows easy calibration of monocular or stereo
 url='http://www.ros.org/wiki/camera_calibration'
 
 pkgname='ros-jade-camera-calibration'
-pkgver='1.12.15'
+pkgver='1.12.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-cv-bridge
@@ -20,13 +20,18 @@ ros_depends=(ros-jade-cv-bridge
   ros-jade-std-srvs
   ros-jade-image-geometry
   ros-jade-rospy)
-depends=(${ros_depends[@]}
-  opencv)
+depends=(${ros_depends[@]})
 
-_tag=release/jade/camera_calibration/${pkgver}-${_pkgver_patch}
-_dir=camera_calibration
-source=("${_dir}"::"git+https://github.com/ros-gbp/image_pipeline-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/camera_calibration/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/image_pipeline-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="image_pipeline-release-release-jade-camera_calibration-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/jade/camera_calibration/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('687f5de4e136b1c99e1c0963bef4ff66f77d6cfe0e9c8ee7f83e737bedff66a5')
 
 build() {
   # Use ROS environment variables
