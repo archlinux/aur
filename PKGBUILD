@@ -3,7 +3,7 @@
 
 pkgname=slimjet
 pkgver=10.0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('i686' 'x86_64')
 url="http://www.slimjet.com"
@@ -17,10 +17,8 @@ options=('!emptydirs' '!strip')
 _channel=release
 source_i686=("${pkgname}-${pkgver}_i386.deb::http://www.slimjet.com/${_channel}/${pkgname}_i386.deb")
 source_x86_64=("${pkgname}-${pkgver}_amd64.deb::http://www.slimjet.com/{$_channel}/${pkgname}_amd64.deb")
-#sha512sums_i686=('0e9f0b6d9d96beae5eec620e7fe60ef4beb13526e1cbe1826cfff9634cdabf7db7edb4fc53b6e5575c90829f5d586bc921a53174bf927a758bc6abd9de55d753')
-#sha512sums_x86_64=('8d349099d71690aa8c93aebdfb6f8300bb0cfd85949ccf40658e2de09c3f21a8a9b99023f3e95be1febc728c01cf7ddcf9d176d516da933a003b827dbfe0332a')
-sha512sums_i686=('9160bd23ed6db48a2d5783bc45b09ece1310f4f98fb3350a39ee22b07f22aab249aab3935fb1e2e7156cee7bbd44dce67a2dfa5dac0142c7bdaa6d1847a7f59c')
-sha512sums_x86_64=('41a17e2136ba22c2db1f6840fafeaab13155c033ebc58130ac890e9d02c34ba4551d19b92ba4952e1ba45e360f89d1fb8cc522551abc0d8048b1fc6a7b793027')
+md5sums_i686=('78c6de0044e248e7567f2574e19b9b3f')
+md5sums_x86_64=('97fe4d96ecdfab218bad3006c97567d8')
 
 package() {
     msg2 "Extracting the data.tar.lzma..."
