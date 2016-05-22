@@ -2,7 +2,7 @@
 # Contributor: Bruno Pagani (a.k.a. ArchangeGabriel) <bruno.n.pagani at gmail dot com>
 
 pkgname=krita-git
-pkgver=3.0.90.r40500.e457160
+pkgver=3.0.91.r40724.852acfa
 pkgrel=1
 pkgdesc="A free digital painting application. Digital Painting, Creative Freedom!. (GIT Version)"
 arch=('i686' 'x86_64')
@@ -35,7 +35,6 @@ provides=('krita')
 conflicts=('krita' 'calligra-krita')
 source=('git://anongit.kde.org/krita.git')
 sha1sums=('SKIP')
-install=krita-git.install
 
 pkgver() {
   cd krita
