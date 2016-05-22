@@ -4,14 +4,14 @@ pkgdesc="ROS - qt_gui provides the infrastructure for an integrated graphical us
 url='http://ros.org/wiki/qt_gui'
 
 pkgname='ros-jade-qt-gui'
-pkgver='0.2.29'
+pkgver='0.2.30'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   python2-pyqt4
   qt4)
@@ -21,10 +21,16 @@ depends=(${ros_depends[@]}
   python2-rospkg
   tango-icon-theme)
 
-_tag=release/jade/qt_gui/${pkgver}-${_pkgver_patch}
-_dir=qt_gui
-source=("${_dir}"::"git+https://github.com/ros-gbp/qt_gui_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/qt_gui/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/qt_gui_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="qt_gui_core-release-release-jade-qt_gui-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/jade/qt_gui/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('8b9b7f60f331253210fcbe57c93cabf8a1e51c0677e00ab88c1178d85eef9c73')
 
 build() {
   # Use ROS environment variables
