@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_console provides a GUI plugin for displaying and filtering RO
 url='http://ros.org/wiki/rqt_console'
 
 pkgname='ros-jade-rqt-console'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-rqt-logger-level
@@ -22,10 +22,16 @@ ros_depends=(ros-jade-rqt-logger-level
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/jade/rqt_console/${pkgver}-${_pkgver_patch}
-_dir=rqt_console
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rqt_console/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-jade-rqt_console-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/jade/rqt_console/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('25729defb9d970538420161f99048eb1439a727797b996748b3b5018ebc84212')
 
 build() {
   # Use ROS environment variables
