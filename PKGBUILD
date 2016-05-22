@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS communications-related packages, including core client librar
 url='http://www.ros.org/wiki/ros_comm'
 
 pkgname='ros-indigo-ros-comm'
-pkgver='1.11.18'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -51,7 +51,7 @@ fi
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-ros_comm-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/ros_comm/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('a833a7c36ba87985e84165f0ffac45fd69fa8fd7f154bd3e0a9bc45ae347b84d')
+sha256sums=('8267827d87950ffc14da7324603b75ab01c047a05fcc0e0e498229418df71a2f')
 
 build() {
   # Use ROS environment variables
