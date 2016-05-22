@@ -4,7 +4,7 @@ pkgdesc="ROS - rosnode is a command-line tool for displaying debug information a
 url='http://ros.org/wiki/rosnode'
 
 pkgname='ros-indigo-rosnode'
-pkgver='1.11.18'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -28,7 +28,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-rosnode-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosnode/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('86bfb0645bf7ceb212f0be3e7e44a9b0d8f9064a695df9eee09ea72e73792581')
+sha256sums=('f8cf6d5663dece01e3e556df38369fd3eba4a14973edfe69221c3ac50ca4c700')
 
 build() {
   # Use ROS environment variables
