@@ -1,0 +1,30 @@
+From b216efc06fcf41ceff6c7ad0b63552964f892245 Mon Sep 17 00:00:00 2001
+From: Kartik Mohta <kartikmohta@gmail.com>
+Date: Tue, 17 May 2016 03:58:19 -0400
+Subject: [PATCH] Fix compile error due to the user-defined string literals
+ feature
+
+---
+ src/rviz/default_plugin/effort_display.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/rviz/default_plugin/effort_display.h b/src/rviz/default_plugin/effort_display.h
+index bc89bd6..c408421 100644
+--- a/src/rviz/default_plugin/effort_display.h
++++ b/src/rviz/default_plugin/effort_display.h
+@@ -36,13 +36,13 @@ namespace tf
+ # undef TF_MESSAGEFILTER_DEBUG
+ #endif
+ #define TF_MESSAGEFILTER_DEBUG(fmt, ...) \
+-  ROS_DEBUG_NAMED("message_filter", "MessageFilter [target=%s]: "fmt, getTargetFramesString().c_str(), __VA_ARGS__)
++  ROS_DEBUG_NAMED("message_filter", "MessageFilter [target=%s]: " fmt, getTargetFramesString().c_str(), __VA_ARGS__)
+ 
+ #ifdef TF_MESSAGEFILTER_WARN
+ # undef TF_MESSAGEFILTER_WARN
+ #endif
+ #define TF_MESSAGEFILTER_WARN(fmt, ...) \
+-  ROS_WARN_NAMED("message_filter", "MessageFilter [target=%s]: "fmt, getTargetFramesString().c_str(), __VA_ARGS__)
++  ROS_WARN_NAMED("message_filter", "MessageFilter [target=%s]: " fmt, getTargetFramesString().c_str(), __VA_ARGS__)
+ 
+     class MessageFilterJointState : public MessageFilter<sensor_msgs::JointState>
+     {
