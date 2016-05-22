@@ -4,15 +4,15 @@ pkgdesc="ROS - This stack provides Python bindings for Qt."
 url='http://ros.org/wiki/python_qt_binding'
 
 pkgname='ros-jade-python-qt-binding'
-pkgver='0.2.17'
+pkgver='0.2.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
-license=('BSD, LGPL, GPL')
+license=('BSD')
 
 ros_makedepends=(ros-jade-rosbuild
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   python2-pyqt4
   qt4)
@@ -21,10 +21,16 @@ ros_depends=()
 depends=(${ros_depends[@]}
   python2-pyqt4)
 
-_tag=release/jade/python_qt_binding/${pkgver}-${_pkgver_patch}
-_dir=python_qt_binding
-source=("${_dir}"::"git+https://github.com/ros-gbp/python_qt_binding-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/python_qt_binding/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/python_qt_binding-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="python_qt_binding-release-release-jade-python_qt_binding-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/python_qt_binding-release/archive/release/jade/python_qt_binding/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('276b9cf393a83cbbb7b098fd5f1b76a2affe2e7f50c59325fa00000c7d524765')
 
 build() {
   # Use ROS environment variables
