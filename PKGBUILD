@@ -2,7 +2,7 @@
 
 pkgbase=thunder-network-git
 pkgname=('thunder-wallet-git' 'thunder-node-git')
-pkgver=v0.1.2.alpha.r25.g8641da6
+pkgver=0.1.2.alpha.r25.g8641da6
 pkgrel=1
 pkgdesc="Wallet / Node implementation of the lightning.network P2P protocol"
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgbase"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
