@@ -4,23 +4,29 @@ pkgdesc="ROS - Assorted shell commands for using ros with bash."
 url='http://www.ros.org/wiki/rosbash'
 
 pkgname='ros-jade-rosbash'
-pkgver='1.12.5'
+pkgver='1.12.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-catkin)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/rosbash/${pkgver}-${_pkgver_patch}
-_dir=rosbash
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rosbash/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros-release-release-jade-rosbash-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros-release/archive/release/jade/rosbash/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('fc5c09089a4724dad6829e783abe76321ebc441e852aa7d7ccc83a2c5e09af3e')
 
 build() {
   # Use ROS environment variables
