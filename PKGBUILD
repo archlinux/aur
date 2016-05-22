@@ -4,7 +4,7 @@ pkgdesc="ROS - roswtf is a tool for diagnosing issues with a running ROS system.
 url='http://ros.org/wiki/roswtf'
 
 pkgname='ros-jade-roswtf'
-pkgver='1.11.16'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -12,7 +12,7 @@ license=('BSD')
 
 ros_makedepends=(ros-jade-rostest
   ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-roslib
@@ -25,10 +25,16 @@ depends=(${ros_depends[@]}
   python2-rospkg
   python2-paramiko)
 
-_tag=release/jade/roswtf/${pkgver}-${_pkgver_patch}
-_dir=roswtf
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/roswtf/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-jade-roswtf-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/jade/roswtf/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('92866240f891901f0a8652b2cc485d0860ff54327960b0ebd1a53c73a8886bc0')
 
 build() {
   # Use ROS environment variables
