@@ -4,7 +4,7 @@ pkgdesc="ROS - This is a set of tools for recording from and playing back to ROS
 url='http://ros.org/wiki/rosbag'
 
 pkgname='ros-jade-rosbag'
-pkgver='1.11.16'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -18,7 +18,7 @@ ros_makedepends=(ros-jade-rosbag-storage
   ros-jade-roscpp-serialization
   ros-jade-topic-tools
   ros-jade-rosconsole)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   python2-pillow
   boost)
@@ -36,10 +36,16 @@ depends=(${ros_depends[@]}
   python2-rospkg
   boost)
 
-_tag=release/jade/rosbag/${pkgver}-${_pkgver_patch}
-_dir=rosbag
-source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rosbag/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/ros_comm-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="ros_comm-release-release-jade-rosbag-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/jade/rosbag/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('1f64a08d021b8b843565d6c0d5e86ef9587a28f6d89d5fd8986493c9d3ac72c8')
 
 build() {
   # Use ROS environment variables
