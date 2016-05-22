@@ -4,7 +4,7 @@ pkgdesc="ROS - A simple viewer for ROS image topics."
 url='http://www.ros.org/wiki/image_view'
 
 pkgname='ros-jade-image-view'
-pkgver='1.12.15'
+pkgver='1.12.16'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -23,7 +23,7 @@ ros_makedepends=(ros-jade-nodelet
   ros-jade-rosconsole
   ros-jade-camera-calibration-parsers
   ros-jade-dynamic-reconfigure)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]}
   gtk2)
 
@@ -41,10 +41,16 @@ depends=(${ros_depends[@]}
   python2-numpy
   gtk2)
 
-_tag=release/jade/image_view/${pkgver}-${_pkgver_patch}
-_dir=image_view
-source=("${_dir}"::"git+https://github.com/ros-gbp/image_pipeline-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/image_view/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/image_pipeline-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="image_pipeline-release-release-jade-image_view-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/image_pipeline-release/archive/release/jade/image_view/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('328af7b592b57139bd8b097ed1f5b74aeb8807637ae871e5d2775d59e317afa8')
 
 build() {
   # Use ROS environment variables
