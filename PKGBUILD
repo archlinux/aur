@@ -4,24 +4,30 @@ pkgdesc="ROS - Nodelet Core Metapackage."
 url='http://www.ros.org/wiki/nodelet_core'
 
 pkgname='ros-jade-nodelet-core'
-pkgver='1.9.3'
+pkgver='1.9.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-nodelet
   ros-jade-nodelet-topic-tools)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/nodelet_core/${pkgver}-${_pkgver_patch}
-_dir=nodelet_core
-source=("${_dir}"::"git+https://github.com/ros-gbp/nodelet_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/nodelet_core/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/nodelet_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="nodelet_core-release-release-jade-nodelet_core-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/nodelet_core-release/archive/release/jade/nodelet_core/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('df4d4656f90903586a2b0488b1c83193186582587099e1bfafd7676fe575de7a')
 
 build() {
   # Use ROS environment variables
