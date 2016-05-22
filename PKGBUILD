@@ -4,7 +4,7 @@ pkgdesc="ROS - rosservice contains the rosservice command-line tool for listing 
 url='http://ros.org/wiki/rosservice'
 
 pkgname='ros-indigo-rosservice'
-pkgver='1.11.18'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -30,7 +30,7 @@ depends=(${ros_depends[@]})
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-rosservice-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosservice/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('6c47436fef0ab8b8ca4c1122276f1e28ea12b0314ea12d3ebe43c997ab702fe9')
+sha256sums=('f43c53cff3cd95b80a822dc321ead5d9bad815220200b39857de0167960c6805')
 
 build() {
   # Use ROS environment variables
