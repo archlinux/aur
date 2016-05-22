@@ -4,7 +4,7 @@ pkgdesc="ROS - rospy is a pure Python client library for ROS."
 url='http://ros.org/wiki/rospy'
 
 pkgname='ros-indigo-rospy'
-pkgver='1.11.18'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -34,7 +34,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-rospy-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rospy/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3d7b219fb843cb1071c04a719fea7d73a710a07d9b1677bf96c88b84e292f473')
+sha256sums=('70d3380a2875574c3b0761fbff5370e901183e55b28d2e2eb7efe436c0a7275b')
 
 build() {
   # Use ROS environment variables
