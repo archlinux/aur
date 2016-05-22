@@ -3,7 +3,7 @@
 
 pkgname=guayadeque-git
 _pkgname=guayadeque
-pkgver=0.4.1.r1913.eb446b3
+pkgver=0.4.1.r1938.35561f6
 pkgrel=1
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ optdepends=('gstreamer0.10-good-plugins: Support for additional file formats'
 source=('git+https://github.com/anonbeat/guayadeque.git'
         '0001-use-cmake-lib-search-procedure-for-wxsqlite3-from-mu.patch')
 sha512sums=('SKIP'
-'059499cf1e9a3d4dc825733aaea1920a8150b46c88c33966b29924865f7fd01ec58651a506620ff937175c77e29bfdade07ea9effe08e93d11c7cc3990f515bc')
+'1985aad8d5121f65cdc3b79a20abfe345475898a06f39a459812fa2257e3f11affaf12d2983d7227298a7f03f9b6b396a03f1fc21806c6fed3648ee44764b096')
 
 prepare() {
   cd "${srcdir}/${_pkgname}"
@@ -35,6 +35,7 @@ build() {
   cd "${srcdir}/${_pkgname}"
   ./buildt
   cmake . \
+    -DCMAKE_CXX_STANDARD='11' \
     -DCMAKE_BUILD_TYPE='Release' \
     -DCMAKE_INSTALL_PREFIX=${pkgdir} \
     -DwxWidgets_wxrc_EXECUTABLE='/usr/bin/wxrc' \

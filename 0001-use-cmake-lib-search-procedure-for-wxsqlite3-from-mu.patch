@@ -1,23 +1,24 @@
-From 35a03e6e296b3b97e211b680103cf0d886314456 Mon Sep 17 00:00:00 2001
+From 98cb986204cd97aeba4b82c570a00025c0fbd984 Mon Sep 17 00:00:00 2001
 From: Sven Fischer <git-dev@linux4tw.de>
-Date: Thu, 19 May 2016 18:06:31 +0200
+Date: Sun, 22 May 2016 18:53:03 +0200
 Subject: [PATCH] use cmake lib search procedure for wxsqlite3 from musicqueue
 
 ---
- CMakeLists.txt | 25 ++++++++++++++++++++++---
- 1 file changed, 22 insertions(+), 3 deletions(-)
+ CMakeLists.txt | 26 ++++++++++++++++++++++----
+ 1 file changed, 22 insertions(+), 4 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 66ff9d5..02e8560 100644
+index bd4601a..33229d6 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -125,9 +125,28 @@ ENDIF( LIBAPPINDICATOR_LIBRARIES )
- SET( ADD_WXSQLITE_SUPPORT 0 )
- PKG_CHECK_MODULES( LIBWXSQLITE3 wxsqlite3-3.0 )
+@@ -127,10 +127,28 @@ ENDIF( LIBAPPINDICATOR_LIBRARIES )
+ 
+ PKG_CHECK_MODULES( LIBWXSQLITE3 wxsqlite3 )
  IF( NOT LIBWXSQLITE3_LIBRARIES )
--	ADD_DEFINITIONS(-DADD_WXSQLITE_SUPPORT=1)
--	SET( ADD_WXSQLITE_SUPPORT 1 )
--	MESSAGE( "-- * Using internal wxSqlite support" )
+-        PKG_CHECK_MODULES( LIBWXSQLITE330 wxsqlite3-3.0 )
+-        IF( NOT LIBWXSQLITE330_LIBRARIES )
+-                MESSAGE( FATAL_ERROR "wxSqlite3 not found" )
+-        ENDIF( NOT LIBWXSQLITE330_LIBRARIES )
 +    # manual search is crude - look for installed library
 +    MESSAGE( "wxsqlite3 pkg-config not found - manual search" )
 +    # wx-version used is substring of wx-confing output.
