@@ -1,21 +1,20 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 # Contributor: speps <speps at aur dot archlinux dot org>
 pkgname=glogg
-pkgver=1.0.3
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A Qt GUI application to browse and search through long or complex log files."
 arch=('i686' 'x86_64')
 url="http://glogg.bonnefon.org/"
 license=('GPL3')
-depends=('qt4' 'boost-libs')
+depends=('qt5-base' 'boost-libs' 'hicolor-icon-theme')
 makedepends=('boost')
-install="$pkgname.install"
 source=("http://glogg.bonnefon.org/files/$pkgname-$pkgver.tar.gz")
-md5sums=('b32d9b714cf5bb80a2a46729c2e7bfc0')
+md5sums=('bbadb80747006a42de92d15e6665ce26')
 
 build() {
   cd $pkgname-$pkgver
-  qmake-qt4
+  qmake-qt5
   make
 }
 
