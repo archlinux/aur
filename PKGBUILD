@@ -4,7 +4,7 @@ pkgdesc="ROS - ROS console output library."
 url='http://www.ros.org/wiki/rosconsole'
 
 pkgname='ros-indigo-rosconsole'
-pkgver='1.11.18'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -38,7 +38,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-rosconsole-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosconsole/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('3cd7db07504c23f3ce1ef36e3797f23dd8a973b3461f7325b6662db77666d207')
+sha256sums=('6309256609db99f64f9e5db554e9dd42fa1eeab01a65de412f9dc31a1d8092a8')
 
 build() {
   # Use ROS environment variables
