@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_common_plugins metapackage provides ROS backend graphical too
 url='http://ros.org/wiki/rqt_common_plugins'
 
 pkgname='ros-jade-rqt-common-plugins'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-rqt-topic
@@ -37,10 +37,16 @@ ros_depends=(ros-jade-rqt-topic
   ros-jade-rqt-top)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/rqt_common_plugins/${pkgver}-${_pkgver_patch}
-_dir=rqt_common_plugins
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rqt_common_plugins/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-jade-rqt_common_plugins-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/jade/rqt_common_plugins/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('ff260bb8f50c05d8dabb01a5e837873ae7d86862797ae6e2e685c98803d6888e')
 
 build() {
   # Use ROS environment variables
