@@ -1,0 +1,129 @@
+diff --git a/src/diff.c b/src/diff.c
+index 9bc1d96..4420623 100644
+--- a/src/diff.c
++++ b/src/diff.c
+@@ -122,6 +122,7 @@ enum
+   NO_IGNORE_FILE_NAME_CASE_OPTION,
+   NORMAL_OPTION,
+   SDIFF_MERGE_ASSIST_OPTION,
++  EXCLUDE_DIRECTORY_OPTION,
+   STRIP_TRAILING_CR_OPTION,
+   SUPPRESS_BLANK_EMPTY_OPTION,
+   SUPPRESS_COMMON_LINES_OPTION,
+@@ -208,6 +209,7 @@ static struct option const longopts[] =
+   {"show-function-line", 1, 0, 'F'},
+   {"side-by-side", 0, 0, 'y'},
+   {"speed-large-files", 0, 0, 'H'},
++  {"exclude-directory", 0, 0, EXCLUDE_DIRECTORY_OPTION},
+   {"starting-file", 1, 0, 'S'},
+   {"strip-trailing-cr", 0, 0, STRIP_TRAILING_CR_OPTION},
+   {"suppress-blank-empty", 0, 0, SUPPRESS_BLANK_EMPTY_OPTION},
+@@ -592,6 +594,10 @@ main (int argc, char **argv)
+ 	  sdiff_merge_assist = true;
+ 	  break;
+ 
++	case EXCLUDE_DIRECTORY_OPTION:
++	  exclude_directory = true;
++	  break;
++
+ 	case STRIP_TRAILING_CR_OPTION:
+ 	  strip_trailing_cr = true;
+ 	  break;
+@@ -911,6 +917,7 @@ static char const * const option_help_msgid[] = {
+   N_("    --no-ignore-file-name-case  consider case when comparing file names"),
+   N_("-x, --exclude=PAT               exclude files that match PAT"),
+   N_("-X, --exclude-from=FILE         exclude files that match any pattern in FILE"),
++  N_("    --exclude-directory         exclude directories matching exclude pattern"),
+   N_("-S, --starting-file=FILE        start with FILE when comparing directories"),
+   N_("    --from-file=FILE1           compare FILE1 to all operands;\n"
+      "                                  FILE1 can be a directory"),
+diff --git a/src/diff.h b/src/diff.h
+index 0983e7c..413790a 100644
+--- a/src/diff.h
++++ b/src/diff.h
+@@ -224,6 +224,9 @@ XTERN bool speed_large_files;
+ /* Patterns that match file names to be excluded.  */
+ XTERN struct exclude *excluded;
+ 
++/* Include directory as part of exclude matching. */
++XTERN bool exclude_directory;
++
+ /* Don't discard lines.  This makes things slower (sometimes much
+    slower) but will find a guaranteed minimal set of changes.  */
+ XTERN bool minimal;
+diff --git a/src/dir.c b/src/dir.c
+index c8aa6a5..e9c70d6 100644
+--- a/src/dir.c
++++ b/src/dir.c
+@@ -96,8 +96,15 @@ dir_read (struct file_data const *dir, struct dirdata *dirdata)
+ 	      && (d_name[1] == 0 || (d_name[1] == '.' && d_name[2] == 0)))
+ 	    continue;
+ 
+-	  if (excluded_file_name (excluded, d_name))
+-	    continue;
++	  /* Exclude filename matches from diff */
++	  if (exclude_directory) {
++	    if (excluded_file_name (excluded,
++	      file_name_concat(dir->name, d_name, NULL)))
++	      continue;
++	  } else {
++	    if (excluded_file_name (excluded, d_name))
++	      continue;
++	  }
+ 
+ 	  while (data_alloc < data_used + d_size)
+ 	    {
+diff --git a/tests/exclude-directory b/tests/exclude-directory
+new file mode 100755
+index 0000000..825154a
+--- /dev/null
++++ b/tests/exclude-directory
+@@ -0,0 +1,48 @@
++#!/bin/sh
++# exclude directory tests
++
++. "${srcdir=.}/init.sh"; path_prepend_ ../src
++
++TZ=UTC0
++export TZ
++
++fail=0
++
++# Generate directory structure
++mkdir a
++mkdir b
++echo ac > a/c
++echo bc > b/c
++
++epoch='1970-01-01 00:00:00'
++touch --date="$epoch" a b a/c b/c
++
++gen_exp_default()
++{
++    printf '%s' \
++"diff -r '--exclude=b/*' a/c b/c
++1c1
++< ac
++---
++> bc
++"
++}
++
++gen_exp_excluded()
++{
++    printf '%s' \
++"Only in a: c
++"
++}
++
++diff -r --exclude="b/*" a b > out
++test $? = 1 || fail=1
++gen_exp_default > exp || framework_failure_
++compare exp out || fail=1
++
++diff -r --exclude-directory --exclude="b/*" a b > out
++test $? = 1 || fail=1
++gen_exp_excluded > exp || framework_failure_
++compare exp out || fail=1
++
++Exit $fail
