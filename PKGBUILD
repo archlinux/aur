@@ -4,7 +4,7 @@ pkgdesc="ROS - rosparam contains the rosparam command-line tool for getting and 
 url='http://ros.org/wiki/rosparam'
 
 pkgname='ros-indigo-rosparam'
-pkgver='1.11.18'
+pkgver='1.11.19'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -27,7 +27,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="ros_comm-release-release-indigo-rosparam-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/ros_comm-release/archive/release/indigo/rosparam/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('c3ae879e06d2e5bc5b1722e1aff6f6ae25603c83e8276e3c601feb91f1c35e68')
+sha256sums=('6bd1f42b2c1d1cdd2458d8348fed8ab9e55652f0655c8a643b9cfd18e5183fe4')
 
 build() {
   # Use ROS environment variables
