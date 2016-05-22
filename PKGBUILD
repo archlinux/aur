@@ -3,7 +3,7 @@
 
 _gitname='vaccine'
 pkgname=vaccine-git
-pkgver=403.0f674c1
+pkgver=v0.0.1.r0.g0f674c1
 pkgrel=1
 pkgdesc="A GTK+3 4chan client for the linux desktop"
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ md5sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd "$_gitname"
-    echo $(git rev-list --count master).$(git rev-parse --short master)
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
