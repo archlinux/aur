@@ -4,14 +4,14 @@ pkgdesc="ROS - Lisp client library for ROS, the Robot Operating System."
 url='http://ros.org/wiki/roslisp'
 
 pkgname='ros-indigo-roslisp'
-pkgver='1.9.19'
+pkgver='1.9.20'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-indigo-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-indigo-roslang
@@ -21,10 +21,16 @@ ros_depends=(ros-indigo-roslang
 depends=(${ros_depends[@]}
   sbcl)
 
-_tag=release/indigo/roslisp/${pkgver}-${_pkgver_patch}
-_dir=roslisp
-source=("${_dir}"::"git+https://github.com/ros-gbp/roslisp-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/indigo/roslisp/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/roslisp-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="roslisp-release-release-indigo-roslisp-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/roslisp-release/archive/release/indigo/roslisp/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('96fc2d9e0876cb272f365ce5621b582195b7ac7b0df44f0f2c81c88c2eea2f4f')
 
 build() {
   # Use ROS environment variables
