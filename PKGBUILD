@@ -4,23 +4,29 @@ pkgdesc="ROS - Standalone Python library for generating ROS message and service 
 url='http://www.ros.org/wiki/genmsg'
 
 pkgname='ros-jade-genmsg'
-pkgver='0.5.6'
+pkgver='0.5.7'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
-ros_depends=()
+ros_depends=(ros-jade-catkin)
 depends=(${ros_depends[@]})
 
-_tag=release/jade/genmsg/${pkgver}-${_pkgver_patch}
-_dir=genmsg
-source=("${_dir}"::"git+https://github.com/ros-gbp/genmsg-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/genmsg/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/genmsg-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="genmsg-release-release-jade-genmsg-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/genmsg-release/archive/release/jade/genmsg/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('a0f7b8c1aa0d591f5d2abe5673100ca9e065b4b303f9cc5f154ed0525bd5c14e')
 
 build() {
   # Use ROS environment variables
