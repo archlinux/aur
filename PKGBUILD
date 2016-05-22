@@ -4,7 +4,7 @@
 pkgname=uml_utilities
 pkgver=20070815
 pkgrel=1
-pkgdesc="User Mode Linux Utilities (Debian package uml-utilities)"
+pkgdesc="User Mode Linux Utilities (Debian package uml-utilities). It contains uml_net, uml_mconsole, uml_switch, tunctl, … and the lib port-helper."
 arch=(i686 x86_64)
 depends=('fuse' 'readline')
 provides=('')
