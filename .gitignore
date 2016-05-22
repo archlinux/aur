@@ -10,3 +10,6 @@
 /*/
 /*.xz
 /*.log
+
+# version increment marker file
+.PKGVER

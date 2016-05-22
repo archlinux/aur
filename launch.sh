@@ -3,6 +3,7 @@
 # build package automation
 
 location=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+source $location/PKGBUILD 
 cd $location
 
 is_root() {
@@ -28,11 +29,6 @@ provision() {
     $suno makepkg --log --cleanbuild --install --force
 
 }
-
-pkgver() {
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 
 version() {
     echo "pkgver $(pkgver)"

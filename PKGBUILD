@@ -1,5 +1,5 @@
 pkgname=initrd-dropbear
-pkgver=r33.cf560eb
+pkgver=r34.8643f7b
 pkgrel=1
 pkgdesc="Provider of systemd initramfs dropbear ssh server"
 arch=('any')
@@ -12,8 +12,16 @@ source=("${pkgname}::git+https://aur.archlinux.org/${pkgname}.git#branch=master"
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir/$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    # update version only in presense of marker
+    local origin=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+    local marker="$origin/.PKGVER"
+    if [ -e "$marker" ] ; then
+        local count=$(git -C $origin rev-list --count HEAD)
+        local short=$(git -C $origin rev-parse --short HEAD)
+        printf "r%s.%s" "$count" "$short"
+    else
+        printf "%s" "$pkgver"
+    fi 
 }
 
 prepare() {
