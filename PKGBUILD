@@ -4,7 +4,7 @@ pkgdesc="ROS - tf is a package that lets the user keep track of multiple coordin
 url='http://www.ros.org/wiki/tf'
 
 pkgname='ros-jade-tf'
-pkgver='1.11.7'
+pkgver='1.11.8'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -22,7 +22,7 @@ ros_makedepends=(ros-jade-rostest
   ros-jade-message-filters
   ros-jade-rosconsole
   ros-jade-angles)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-geometry-msgs
@@ -38,10 +38,16 @@ ros_depends=(ros-jade-geometry-msgs
 depends=(${ros_depends[@]}
   graphviz)
 
-_tag=release/jade/tf/${pkgver}-${_pkgver_patch}
-_dir=tf
-source=("${_dir}"::"git+https://github.com/ros-gbp/geometry-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/tf/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/geometry-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="geometry-release-release-jade-tf-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/geometry-release/archive/release/jade/tf/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('44c3a815387c7bdc89c2d5eb4c0b10f03ef7a3280803abec199a39f9a4b51e34')
 
 build() {
   # Use ROS environment variables
