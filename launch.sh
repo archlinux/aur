@@ -50,7 +50,7 @@ version_simple() {
     local file_list="PKGBUILD .SRCINFO"
     for file in $file_list ; do
         sed -i "s:^\([ ]*pkgver[ ]*=[ ]*\).*:\1$pkgver:" "$file"
-        cat $file | grep "pkgver"
+        #cat $file | grep "pkgver"
     done
 }
 
