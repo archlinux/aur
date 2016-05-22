@@ -4,14 +4,14 @@ pkgdesc="ROS - rqt_publisher provides a GUI plugin for publishing arbitrary mess
 url='http://ros.org/wiki/rqt_publisher'
 
 pkgname='ros-jade-rqt-publisher'
-pkgver='0.3.12'
+pkgver='0.3.13'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-roslib
@@ -23,10 +23,16 @@ ros_depends=(ros-jade-roslib
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/jade/rqt_publisher/${pkgver}-${_pkgver_patch}
-_dir=rqt_publisher
-source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/rqt_publisher/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/rqt_common_plugins-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="rqt_common_plugins-release-release-jade-rqt_publisher-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/rqt_common_plugins-release/archive/release/jade/rqt_publisher/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('07124ab0d98f9f3a7d9d194ea052f1a9c6a28a3c314af350e2f6cc2eae6eaacb')
 
 build() {
   # Use ROS environment variables
