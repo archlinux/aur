@@ -3,8 +3,8 @@
 # Contributor: sausageandeggs <sausageandeggs@archlinux.us>
 
 pkgname=playitslowly
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 pkgdesc="Software to play back audio files at a different speed or pitch. It does also allow you to loop over a certain part of a file."
 arch=('i686' 'x86_64')
 url=http://29a.ch/$pkgname
@@ -12,7 +12,7 @@ license=(GPL3)
 depends=(python-gobject gtk3 gstreamer gst-python gst-libav gst-plugins-good gst-plugins-bad gst-plugins-ugly hicolor-icon-theme)
 install=$pkgname.install
 source=($url/$pkgname-$pkgver.tar.gz)
-sha256sums=('8891e7aa6068af75af303925930c484290e4d740c5a186e9cb42e479e50307e8')
+sha256sums=('7dfe3da5417971183a13002d1e4ba4f30770baaf1ae3f9ef0ac66a6727f476aa')
 
 prepare() {
     cd $pkgname-$pkgver/
