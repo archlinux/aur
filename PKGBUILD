@@ -4,24 +4,30 @@ pkgdesc="ROS - qt_gui_py_common provides common functionality for GUI plugins wr
 url='http://ros.org/wiki/qt_gui_py_common'
 
 pkgname='ros-jade-qt-gui-py-common'
-pkgver='0.2.29'
+pkgver='0.2.30'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
 license=('BSD')
 
 ros_makedepends=(ros-jade-catkin)
-makedepends=('cmake' 'git' 'ros-build-tools'
+makedepends=('cmake' 'ros-build-tools'
   ${ros_makedepends[@]})
 
 ros_depends=(ros-jade-python-qt-binding)
 depends=(${ros_depends[@]}
   python2-rospkg)
 
-_tag=release/jade/qt_gui_py_common/${pkgver}-${_pkgver_patch}
-_dir=qt_gui_py_common
-source=("${_dir}"::"git+https://github.com/ros-gbp/qt_gui_core-release.git"#tag=${_tag})
-md5sums=('SKIP')
+# Git version (e.g. for debugging)
+# _tag=release/jade/qt_gui_py_common/${pkgver}-${_pkgver_patch}
+# _dir=${pkgname}
+# source=("${_dir}"::"git+https://github.com/ros-gbp/qt_gui_core-release.git"#tag=${_tag})
+# sha256sums=('SKIP')
+
+# Tarball version (faster download)
+_dir="qt_gui_core-release-release-jade-qt_gui_py_common-${pkgver}-${_pkgver_patch}"
+source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/qt_gui_core-release/archive/release/jade/qt_gui_py_common/${pkgver}-${_pkgver_patch}.tar.gz")
+sha256sums=('ce4633bfa6db2e91e78067b146d854b74f009af485b01ae186889682d6a8d912')
 
 build() {
   # Use ROS environment variables
