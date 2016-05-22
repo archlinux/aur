@@ -13,18 +13,14 @@ import gnome
 import gnome.ui
 import gtk
 
-class Namespace: pass
-ns = Namespace()
-ns.dialog = None
-
-def main():
-    prog = gnome.init("chrome_clean_shutdown", "1.0", gnome.libgnome_module_info_get(), sys.argv, [])
-    client = gnome.ui.master_client()
-    client.connect("save-yourself", chrome_clean_shutdown)
-
 def chrome_clean_shutdown(*args):
     subprocess.call("/usr/bin/pkill -15 -P 1 chrome", shell=True)
     return True
+
+def main():
+    prog = gnome.init("chrome_clean_shutdown", "1.1")
+    client = gnome.ui.master_client()
+    client.connect("save-yourself", chrome_clean_shutdown)
 
 main()
 gtk.main()
