@@ -1,5 +1,5 @@
 pkgname=bugzilla-l10n-ja
-pkgver=4.4.5
+pkgver=5.0.2
 pkgrel=1
 pkgdesc="japanese localization for bugzilla"
 arch=(any)
@@ -7,7 +7,7 @@ url="http://www.bug-ja.org/"
 license=('GPL')
 depends=('bugzilla')
 options=()
-source=("bugzilla-$pkgver.ja::svn+http://svn.bug-ja.org/bugzilla/bugzilla-l10n-ja-4.4/tags/$pkgver/")
+source=("bugzilla-$pkgver.ja::svn+http://svn.bug-ja.org/bugzilla/bugzilla-l10n-ja-5.0/tags/$pkgver/")
 md5sums=('SKIP')
 
 package() {
