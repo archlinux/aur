@@ -1,7 +1,7 @@
 # Maintainer: Oliver (thechauffeur) Weidner <Oliver.Weidner@gmail.com>
 
 pkgname=tinc-ponyhof-git
-pkgver=release.1.1pre11.r551.gaf0c289
+pkgver=release.1.1pre11.r557.ga429889
 pkgrel=1
 pkgdesc="VPN (Virtual Private Network) daemon (tinc ponyhof development version)"
 arch=('i686' 'x86_64')
@@ -25,7 +25,12 @@ build() {
   cd "$srcdir"/tinc
 
   autoreconf -fsi
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --sbindir=/usr/bin \
+    --with-systemd=/usr/lib/systemd/system
   make
 }
 
@@ -40,6 +45,4 @@ package() {
   find "$pkgdir"/usr/share/tinc/examples -type d -exec chmod 755 {} +
 
   install -Dm644 "$srcdir/tinc/bash_completion.d/tinc" -t "$pkgdir/usr/share/bash-completion/completions/"
-  install -Dm644 "$srcdir/tinc/systemd/tinc.service" -t "$pkgdir/usr/lib/systemd/system/"
-  install -Dm644 "$srcdir/tinc/systemd/tinc@.service" -t "$pkgdir/usr/lib/systemd/system/"
 }

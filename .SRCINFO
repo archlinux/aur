@@ -1,6 +1,6 @@
 pkgbase = tinc-ponyhof-git
 	pkgdesc = VPN (Virtual Private Network) daemon (tinc ponyhof development version)
-	pkgver = release.1.1pre11.r551.gaf0c289
+	pkgver = release.1.1pre11.r557.ga429889
 	pkgrel = 1
 	url = https://github.com/thorkill/tinc
 	arch = i686
