@@ -1,7 +1,7 @@
 # Maintainer: Philipp Wolfer <ph.wolfer@gmail.com>
 pkgname=roger-router
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Roger Router"
 arch=('i686' 'x86_64')
 url="https://www.tabos.org/"
@@ -45,7 +45,9 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
 
-	mv "$pkgdir/usr/lib64/" "$pkgdir/usr/lib/"
+	if [ "$CARCH" == "x86_64" ] ; then
+		mv "$pkgdir/usr/lib64/" "$pkgdir/usr/lib/"
+	fi
 
 	mkdir -p "$pkgdir/var/spool/roger"
 	chmod 2770 "$pkgdir/var/spool/roger"
