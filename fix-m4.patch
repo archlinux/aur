@@ -343,6 +343,22 @@ index 5eab086..cf74379 100644
 +  AC_SUBST(CONFIG_BDL)
 +])
 \ No newline at end of file
+diff --git a/misc/m4/guile.m4 b/misc/m4/guile.m4
+index c131416..53c8215 100644
+--- a/misc/m4/guile.m4
++++ b/misc/m4/guile.m4
+@@ -69,9 +69,11 @@ AC_DEFUN([LC_WITH_GUILE],[
+   unset LC_WITH_GUILE_tmp1 LC_WITH_GUILE_tmp2
+ 
+   GUILE_BIN="$GUILE_LIB"
++  GUILE_BIN_NODOT=${GILE_BIN//./}
+   GUILE_CONFIG="$guile_config"
+   GUILE_CFLAGS="$GUILE_CPPFLAGS"
+   AC_SUBST(GUILE_BIN)
++  AC_SUBST(GUILE_BIN_NODOT)
+   AC_SUBST(GUILE_CFLAGS)
+ 
+   GUILE_EFFECTIVE_VERSION=`$GUILE_BIN -c '(display (version))'`
 diff --git a/misc/m4/iconv.m4 b/misc/m4/iconv.m4
 index 9062d20..2a4c78f 100644
 --- a/misc/m4/iconv.m4
@@ -464,6 +480,20 @@ index 9062d20..2a4c78f 100644
 +  AC_SUBST(ICONV_LDFLAGS)
 +])
 \ No newline at end of file
+diff --git a/plugins/r/src/tm_r.c b/plugins/r/src/tm_r.c
+index 37ce819..b10cbee 100644
+--- a/plugins/r/src/tm_r.c
++++ b/plugins/r/src/tm_r.c
+@@ -14,7 +14,8 @@
+ #include <sys/select.h>
+ #if HAVE_PTY_H
+ #include <pty.h>
+-#else
++#endif
++#if HAVE_UTIL_H
+ #include <util.h>
+ #endif
+ 
 diff --git a/src/System/config.h.cmake b/src/System/config.h.cmake
 index 44b9a4a..2b34c1d 100644
 --- a/src/System/config.h.cmake
@@ -533,8 +563,21 @@ index c501466..f20d0cc 100644
  /* Use axel library */
  #undef USE_AXEL
  
+diff --git a/src/System/tm_configure.in b/src/System/tm_configure.in
+index 03c4ce7..cc90a73 100644
+--- a/src/System/tm_configure.in
++++ b/src/System/tm_configure.in
+@@ -19,7 +19,7 @@
+ #define TEXMACS_SOURCES "@tmorig@"
+ #define OS_@CONFIG_OS@
+ #define GUILE_@CONFIG_GUILE_SERIAL@
+-#define GUILE_BIN_@GUILE_BIN@
++#define GUILE_BIN_@GUILE_BIN_NODOT@
+ #define WORD_LENGTH @CONFIG_WORD_LENGTH@
+ #define WORD_LENGTH_INC @CONFIG_WORD_LENGTH_INC@
+ #define WORD_MASK @CONFIG_WORD_MASK@
 diff --git a/src/makefile.in b/src/makefile.in
-index 8a2a476..bb23a01 100644
+index 510b956..2e45d0d 100644
 --- a/src/makefile.in
 +++ b/src/makefile.in
 @@ -41,7 +41,7 @@ CXXCAIRO = @CAIRO_CXX@
