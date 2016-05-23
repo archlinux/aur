@@ -2,22 +2,30 @@
 
 _pkgname=mint-y-theme
 pkgname=${_pkgname}-git
-pkgver=14.ea98044
-pkgrel=2
+pkgver=50.1c1442b
+pkgrel=1
 pkgdesc="New theme from LinuxMint 18"
 arch=('any')
 url="https://github.com/linuxmint/mint-y-theme"
 license=('GPL3')
 depends=()
-makedepends=('python')
+makedepends=('python' 'gnome-code-assistance' 'ruby-dbus')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("${_pkgname}"::git+https://github.com/linuxmint/mint-y-theme.git)
-sha256sums=('SKIP')
+source=("${_pkgname}"::git+https://github.com/linuxmint/mint-y-theme.git
+        sass_fix.patch)
+sha256sums=('SKIP'
+            '658ebe0a03fcf31c8f280d01f68892b817f25233db0832d9c27480e5fe91f29f')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
   echo $(git rev-list --count master).$(git rev-parse --short master)
+}
+
+prepare() {
+  cd ${srcdir}
+
+  patch -Np1 -i ./sass_fix.patch
 }
 
 package() {
