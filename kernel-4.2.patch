@@ -1,0 +1,39 @@
+diff -uprNx '.*' vtuner.linux-driver.orig/vtunerc_proxyfe.c vtuner.linux-driver/vtunerc_proxyfe.c
+--- vtuner.linux-driver.orig/vtunerc_proxyfe.c	2016-01-10 03:06:52.000000000 +0100
++++ vtuner.linux-driver/vtunerc_proxyfe.c	2016-01-10 12:55:53.141702168 +0100
+@@ -36,7 +36,7 @@ struct dvb_proxyfe_state {
+ };
+ 
+ 
+-static int dvb_proxyfe_read_status(struct dvb_frontend *fe, fe_status_t *status)
++static int dvb_proxyfe_read_status(struct dvb_frontend *fe, enum fe_status *status)
+ {
+ 	struct dvb_proxyfe_state *state = fe->demodulator_priv;
+ 	struct vtunerc_ctx *ctx = state->ctx;
+@@ -254,7 +254,7 @@ static int dvb_proxyfe_init(struct dvb_f
+ 	return 0;
+ }
+ 
+-static int dvb_proxyfe_set_tone(struct dvb_frontend *fe, fe_sec_tone_mode_t tone)
++static int dvb_proxyfe_set_tone(struct dvb_frontend *fe, enum fe_sec_tone_mode tone)
+ {
+ 	struct dvb_proxyfe_state *state = fe->demodulator_priv;
+ 	struct vtunerc_ctx *ctx = state->ctx;
+@@ -267,7 +267,7 @@ static int dvb_proxyfe_set_tone(struct d
+ 	return 0;
+ }
+ 
+-static int dvb_proxyfe_set_voltage(struct dvb_frontend *fe, fe_sec_voltage_t voltage)
++static int dvb_proxyfe_set_voltage(struct dvb_frontend *fe, enum fe_sec_voltage voltage)
+ {
+ 	struct dvb_proxyfe_state *state = fe->demodulator_priv;
+ 	struct vtunerc_ctx *ctx = state->ctx;
+@@ -293,7 +293,7 @@ static int dvb_proxyfe_send_diseqc_msg(s
+ 	return 0;
+ }
+ 
+-static int dvb_proxyfe_send_diseqc_burst(struct dvb_frontend *fe, fe_sec_mini_cmd_t burst)
++static int dvb_proxyfe_send_diseqc_burst(struct dvb_frontend *fe, enum fe_sec_mini_cmd burst)
+ {
+ 	struct dvb_proxyfe_state *state = fe->demodulator_priv;
+ 	struct vtunerc_ctx *ctx = state->ctx;
