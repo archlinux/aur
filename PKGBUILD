@@ -5,7 +5,7 @@
 pkgbase=reduce-svn
 _pkgbase=reduce
 pkgname=(reduce-csl-svn reduce-psl-svn reduce-common-svn reduce-addons-svn)
-pkgver=20160508.3660
+pkgver=20160523.3696
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://reduce-algebra.sourceforge.net/"
@@ -14,7 +14,7 @@ groups=('science')
 makedepends=('subversion' 'texlive-htmlxml' 'imagemagick') # for documentation
 depends=('ncurses' 'libxext' 'libxrandr' 'libxft' 'freetype2' 'expat' 'libx11' 'libxcursor')
 options=('!ccache')
-source=("${_pkgbase}::svn+http://svn.code.sf.net/p/reduce-algebra/code/trunk"
+source=("${_pkgbase}::svn://svn.code.sf.net/p/reduce-algebra/code/trunk"
         'csl' 'redcsl' 'redpsl'
         'redcsl.desktop' 'qreduce.desktop'
         'qreduce-file-location.patch')
@@ -44,10 +44,10 @@ build() {
   cd "${srcdir}/${_pkgbase}-build"
   ./configure --with-csl
   ./configure --with-psl
-  make -j1
-  # (cd generic/redfront && make -j1)
+  make
+  # (cd generic/redfront && make)
   (cd generic/casefold && cc casefold.c -o casefold)
-  (cd generic/libreduce && make PYTHON=/usr/bin/python2 -j1)
+  (cd generic/libreduce && make PYTHON=/usr/bin/python2)
   (cd generic/emacs && makeinfo reduce-ide.texinfo)
 }
 
