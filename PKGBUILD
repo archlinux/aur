@@ -3,14 +3,14 @@
 
 pkgname=conkywx
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="To display weather from multiple sources using conky"
 arch=('i686' 'x86_64')
 url='https://bitbucket.org/plikhari/conkywx_pub/downloads'
 license=('GPL3')
 depends=( wget perl )
 source=("${url}/${pkgname}_${pkgver}.tar.xz")
-md5sums=('77b56e7c2f70585ca9ca636f33a2cde4')
+md5sums=('fe82e74da7e3d12985b087d9c2333b1b')
 _conkyvar="usr/share/conkywx"
 
 

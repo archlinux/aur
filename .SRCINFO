@@ -1,7 +1,7 @@
 pkgbase = conkywx
 	pkgdesc = To display weather from multiple sources using conky
 	pkgver = 5.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/plikhari/conkywx_pub/downloads
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = conkywx
 	depends = wget
 	depends = perl
 	source = https://bitbucket.org/plikhari/conkywx_pub/downloads/conkywx_5.0.0.tar.xz
-	md5sums = 77b56e7c2f70585ca9ca636f33a2cde4
+	md5sums = fe82e74da7e3d12985b087d9c2333b1b
 
 pkgname = conkywx
 
