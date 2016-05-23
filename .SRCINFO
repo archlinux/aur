@@ -1,0 +1,32 @@
+pkgbase = dexy
+	pkgdesc = Open source automation software with features especially designed for documentation and reporting.
+	pkgver = 1.0.15
+	pkgrel = 1
+	url = http://www.dexy.it/
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-beautifulsoup4
+	depends = python2-chardet
+	depends = python2-docutils
+	depends = python2-jinja
+	depends = python2-markdown
+	depends = python2-pexpect
+	depends = python2-ply
+	depends = python2-pygments
+	depends = python2-requests>=0.10.6
+	depends = python2-yaml
+	depends = python2-cashew>=0.2.7
+	depends = python2-dexy-viewer
+	depends = python2-inflection>=0.2.0
+	depends = python2-modargs>=1.7
+	provides = dexy
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/d/dexy/dexy-1.0.15.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/dexy/dexy/develop/LICENSE
+	md5sums = 99eb783fdf829b74f4d1f3a801693b86
+	md5sums = 7ae0144577340e245b148893690d7f37
+
+pkgname = dexy
+
