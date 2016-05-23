@@ -141,3 +141,27 @@
  
    /* Welcome message. */
    if (interactive)
+--- src/gdbmopen.c.orig	2016-05-20 11:25:15.782413771 -0500
++++ src/gdbmopen.c	2016-05-20 11:25:32.365583402 -0500
+@@ -128,7 +128,7 @@
+     }
+   else
+     dbf->cloexec = FALSE;
+-  
++  fbits |= O_BINARY;
+   /* Open the file. */
+   need_trunc = FALSE;
+   switch (flags & GDBM_OPENMASK)
+--- src/systems.h-orig	2016-05-20 12:13:13.000000000 -0500
++++ src/systems.h	2016-05-20 12:15:22.406067106 -0500
+@@ -63,7 +63,8 @@
+ #if HAVE_FTRUNCATE
+ # define TRUNCATE(dbf) ftruncate (dbf->desc, 0)
+ #else
+-# define TRUNCATE(dbf) close( open (dbf->name, O_RDWR|O_TRUNC, mode));
++# define TRUNCATE(dbf) close( open (dbf->name, O_RDWR|O_TRUNC|O_BINARY, mode));
++
+ #endif
+ 
+ #ifndef STDERR_FILENO
+

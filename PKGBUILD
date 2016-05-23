@@ -16,7 +16,7 @@ source=("http://ftp.gnu.org/gnu/gdbm/gdbm-${pkgver}.tar.gz"
 options=('staticlibs' '!buildflags' '!strip')
 md5sums=('88770493c2559dc80b561293e39d3570'
          'ac255b10452005237836cd2d3a470733'
-         '231f5c2a491af140e916ec1bd4825480')
+         '47b9d81616ba58b0257248c6a5777412')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
