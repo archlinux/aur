@@ -26,12 +26,12 @@ post_upgrade() {
 
 ## arg 1:  the old package version
 pre_remove() {
-    true
+    resource_delete
 }
 
 ## arg 1:  the old package version
 post_remove() {
-    resource_delete
+    true
 }
 
 ########################
@@ -52,6 +52,7 @@ target_list_sys=$(grep -l "$tag" $target_sys/*.service 2> /dev/null)
 resource_create() {
     
     echo "Run resource_create"
+    local file
 
     if [[ $target_list_net ]] ; then
         echo "Keep existing $tag units in $target_net"
@@ -77,6 +78,7 @@ resource_create() {
 resource_delete() {
     
     echo "Run resource_delete"
+    local file
 
     echo "Remove default $tag units from $target_net"
     for file in $source_list_net ; do
@@ -89,8 +91,5 @@ resource_delete() {
         file=$(basename $file)
         rm -v -f "$target_sys/$file"
     done
-    
-    echo "Remove $source"
-    rm -v -r -f $source
     
 }
