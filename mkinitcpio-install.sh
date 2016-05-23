@@ -144,8 +144,8 @@ invoke_command() {
     local command="$@"
     local result; result=$($command 2>&1); status=$?
     case $status in
-         0) quiet "Command success: $command"; return 0 ;;
-         *) error "Command failure ($status): $command" ; echo "$result" ; return 1 ;;  
+         0) quiet "Command success: $command\n$result"; return 0 ;;
+         *) error "Command failure ($status): $command \n$result" ; return 1 ;;  
     esac
 }
 
