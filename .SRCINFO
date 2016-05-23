@@ -1,6 +1,6 @@
 pkgbase = fortune-mod-farscape
 	pkgdesc = Fortune cookies: Farscape (TV series), scraped from https://en.wikiquote.org/wiki/Farscape
-	pkgver = r1813446
+	pkgver = r2128592
 	pkgrel = 1
 	url = http://github.com/dwoffinden/fortune-mod-farscape
 	arch = any
