@@ -1,6 +1,6 @@
 pkgbase = orfeo-toolbox
 	pkgdesc = ORFEO Toolbox (OTB) is an open source library of image processing algorithms
-	pkgver = 5.2
+	pkgver = 5.4
 	pkgrel = 1
 	url = http://www.orfeo-toolbox.org/otb/
 	arch = x86_64
@@ -25,9 +25,9 @@ pkgbase = orfeo-toolbox
 	depends = ossim
 	depends = libsvm
 	depends = mapnik
-	source = https://www.orfeo-toolbox.org/packages/OTB-5.2.0.tar.gz
+	source = https://www.orfeo-toolbox.org/packages/OTB-5.4.0.tgz
 	source = git://github.com/jmichel-otb/GKSVM.git
-	md5sums = 08ac6145e6e159acfd7de209de26e999
+	md5sums = 7abceaebd6c8e0116b0170535e4e4236
 	md5sums = SKIP
 
 pkgname = orfeo-toolbox
