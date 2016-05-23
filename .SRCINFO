@@ -16,7 +16,7 @@ pkgbase = libqtshadowsocks
 	provides = libqtshadowsocks
 	conflicts = libqtshadowsocks
 	conflicts = libqtshadowsocks-git
-	source = https://github.com/librehat/libQtShadowsocks/archive/v1.8.4.tar.gz
+	source = https://github.com/librehat/libQtShadowsocks/archive/v1.9.0.tar.gz
 	sha256sums = 5e013730054543dab77b3b1d94bdf2bbde4a7de91a3e4f6baf09ad8f884c40ef
 
 pkgname = libqtshadowsocks
