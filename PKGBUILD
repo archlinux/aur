@@ -1,34 +1,47 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=alock-git
-pkgver=r91.09d2ad2
-pkgrel=5
+pkgver=2.3.r5.gdcf95e0
+pkgrel=1
 pkgdesc="Simple transparent screen-lock"
 arch=('i686' 'x86_64')
 url="https://code.google.com/p/alock/"
 license=('MIT')
-depends=('imlib2' 'pam' 'libxxf86misc' 'libxrender')
+depends=('imlib2' 'pam' 'libxxf86misc' 'libxrender' 'libgcrypt')
 makedepends=('git' 'xmlto')
 optdepends=('libxcursor' 'pam')
 conflicts=('alock-svn')
-source=('git+https://code.google.com/p/alock/')
+#source=('git+https://code.google.com/p/alock/')
+source=("$pkgname::git+https://github.com/Arkq/alock")
 noextract=()
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/alock"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd $pkgname
+  git describe --tags | sed -e 's,^[^0-9]*,,;s,\([^-]*-g\),r\1,;s,[-_],.,g'
+}
+
+prepare() {
+  cd $pkgname
+  autoreconf -fiv
 }
 
 build() {
-  cd "$srcdir/alock"
+  cd $pkgname
   # upstream bug: Configure ignores --prefix option
-  sed -i 's/\/usr\/local/\/usr/g' configure
-  ./configure --with-pam --with-imlib2
-  make
+  ./configure \
+	--prefix=/usr \
+	--sysconfdir=/etc \
+	--enable-pam \
+	--enable-hash \
+	--enable-xrender \
+	--enable-imlib2 \
+	--with-dunst \
+	--with-xbacklight
+  make V=0
 }
 
 package() {
-  cd "$srcdir/alock"
+  cd $pkgname
   make DESTDIR="$pkgdir/" install
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
