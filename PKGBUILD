@@ -1,15 +1,19 @@
 # Maintainer: rafaelff <rafaelff@gnome.org>
 
 pkgname=teeworlds-ddnet-skins
-pkgver=20160505              # change to current date when updating the pkg
+pkgver=20160523
 pkgrel=1
 pkgdesc="Skins from DDraceNetwork for Teeworlds clients"
 arch=(any)
 url="https://ddnet.tw"
 license=('GPL')
-makedepends=('git' 'unzip')
+makedepends=('unzip')
 source=("$pkgname-$pkgver.zip::https://ddnet.tw/skins/zip/database.zip")
-md5sums=('c6ddebf5fc913a4cb670cef2a3407e5c')
+md5sums=('SKIP')
+
+pkgver() {
+  date +%Y%m%d
+}
 
 prepare() {
   rm -rf $pkgname-$pkgver
