@@ -4,7 +4,7 @@
 
 pkgname=fgallery
 pkgver=1.8.1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 pkgdesc='a modern, minimalist javascript photo gallery'
 url='https://www.thregr.org/~wavexx/software/fgallery/'
@@ -14,9 +14,9 @@ optdepends=('pngcrush' 'p7zip')
 source=("https://github.com/wavexx/fgallery/archive/fgallery-${pkgver}.tar.gz")
 sha256sums=('7cdabf21aa76e33f37902ace0d12e2a338a3a96edb37cd88b28ce7af34ef57e1')
 
-destdir="/opt/fgallery"
-bindir="/usr/local/bin"
-mandir="/usr/local/man"
+destdir="/usr/share/fgallery"
+bindir="/usr/bin"
+mandir="/usr/share/man"
 
 package() {
   # make desired dirs
