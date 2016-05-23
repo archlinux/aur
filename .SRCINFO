@@ -1,0 +1,16 @@
+pkgbase = paho-mqtt-c-git
+	pkgdesc = a fully fledged MQTT client written in ANSI standard C
+	pkgver = 1.0.3.r5.g07cd71b
+	pkgrel = 1
+	url = https://www.eclipse.org/paho/clients/c/
+	arch = any
+	license = EPL
+	makedepends = git
+	provides = paho-mqtt-c
+	conflicts = paho-mqtt-c
+	options = !emptydirs
+	source = git+https://github.com/eclipse/paho.mqtt.c.git
+	md5sums = SKIP
+
+pkgname = paho-mqtt-c-git
+
