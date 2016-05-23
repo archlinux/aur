@@ -33,7 +33,7 @@ source=("https://github.com/FairRootGroup/FairRoot/archive/v-${pkgver}.tar.gz"
 noextract=()
 md5sums=('775fb31d5c3b99f363a5c9eb9c301698'
          'd2d2d7b11b308120382fba7e32c5268a'
-         '6aa0d1c3b2fc936ce54b9f5acf6c338e')
+         'c4e73bae7eb47e4d030e213ba421638b')
 
 # Do not compress the package for installation
 # PKGEXT='.pkg.tar'
