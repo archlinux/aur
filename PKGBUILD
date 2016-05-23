@@ -4,17 +4,15 @@ pkgname=kobo-desktop
 pkgver=3.0.4
 pkgrel=1
 pkgdesc="KOBO Desktop for Linux"
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url="http://www.kobo.com"
 license=('custom')
-if [[ "$CARCH" == 'i686' ]] ; then
-	depends=('libzip1' 'libpng12' 'libjpeg6' 'openssl098' 'libusb-compat' 'icu44'
-	         'fontconfig' 'libxrender' 'libxext' 'libxml2' 'libsm')
-elif [[ "$CARCH" == 'x86_64' ]] ; then
-	depends=('lib32-libzip1' 'lib32-libpng12' 'lib32-libjpeg6' 'lib32-openssl098' 
-	         'lib32-fontconfig' 'lib32-libxrender' 'lib32-libxext' 'lib32-libusb-compat' 
-	         'lib32-libxml2' 'lib32-libsm' 'lib32-icu44')
-fi
+depends_i686=('libzip1' 'libpng12' 'libjpeg6-turbo' 'openssl098' 'libusb-compat' 'icu44'
+              'fontconfig' 'libxrender' 'libxext' 'libxml2' 'libsm')
+depends_x86_64=('lib32-libzip1' 'lib32-libpng12' 'lib32-libjpeg6-turbo' 'lib32-openssl098'
+                'lib32-fontconfig' 'lib32-libxrender' 'lib32-libxext' 'lib32-libusb-compat'
+                'lib32-libxml2' 'lib32-libsm' 'lib32-icu44')
+#fi
 #source=(http://dl.dropbox.com/u/2183775/kobo-desktop.deb)
 source=(https://dl.dropboxusercontent.com/u/17480832/kobo-desktop.deb)
 
