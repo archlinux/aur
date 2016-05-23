@@ -1,0 +1,21 @@
+rmstate() {
+  /bin/true
+}
+
+post_install() {
+  /bin/true
+}
+
+post_upgrade() {
+  rm -f /run/sstpc/*
+}
+
+pre_remove() {
+  rm -f /run/sstpc/*
+}
+
+op=$1
+shift
+
+$op "$@"
+
