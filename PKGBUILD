@@ -12,7 +12,7 @@ pkgver='20160203'
 # https://anonscm.debian.org/cgit/collab-maint/devscripts.git/tree/scripts/checkbashisms.pl
 # Click [search]
 # To see the diff, click on the commit
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Debian script that checks for bashisms'
 arch=('any')
 url='http://packages.qa.debian.org/d/devscripts.html'
@@ -20,9 +20,10 @@ license=('GPL')
 depends=('perl')
 conflicts=('devscripts')
 _srcfile="checkbashisms.pl.${pkgver}"
+_srcbash='checkbashisms.bash_completion.20160513'
 source=("${_srcfile}::https://anonscm.debian.org/cgit/collab-maint/devscripts.git/plain/scripts/checkbashisms.pl"
         'https://anonscm.debian.org/cgit/collab-maint/devscripts.git/plain/scripts/checkbashisms.1'
-        'https://anonscm.debian.org/cgit/collab-maint/devscripts.git/plain/scripts/checkbashisms.bash_completion'
+        "${_srcbash}::https://anonscm.debian.org/cgit/collab-maint/devscripts.git/plain/scripts/checkbashisms.bash_completion" # https://anonscm.debian.org/cgit/collab-maint/devscripts.git/log/scripts/checkbashisms.bash_completion?qt=grep&q=
 )
 sha256sums=('6943f31aae8552fdec53f5d4c386f08ec029630bf0df46576c2d7c43a2f25081'
             'c74d1ed33fee4cf2ccca0d7690d404d551a4edcbde0ddc602104d9198359cefb'
@@ -55,7 +56,7 @@ package() {
   install -Dpm755 "${srcdir}/${_srcfile}" 'usr/bin/checkbashisms'
   sed -i -e "s,###VERSION###,${pkgver},g" 'usr/bin/checkbashisms'
   install -Dpm644 "${srcdir}/checkbashisms.1" 'usr/share/man/man1/checkbashisms.1'
-  install -Dpm644 "${srcdir}/checkbashisms.bash_completion" 'usr/share/bash-completion/completions/checkbashisms'
+  install -Dpm644 "${srcdir}/${_srcbash}" 'usr/share/bash-completion/completions/checkbashisms'
   set +u
 }
 set +u
