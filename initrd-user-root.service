@@ -15,4 +15,3 @@ ExecStart=/bin/sed -i -r -e "s|root.*|root:x:0:0:root:/root:/bin/sh|" /etc/passw
 
 [Install]
 RequiredBy=initrd-dropbear.service
-RequiredBy=sysinit.target
