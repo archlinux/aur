@@ -1,28 +1,22 @@
-# $Id$
-# Maintainer: Ido Rosen <ido@kernel.org>
+# Author: Ido Rosen <ido@kernel.org>
 # Contributor: Florian Knodt <arch@adlerweb.info>
-#
-# NOTE: To request changes to this package, please submit a pull request
-#       to the GitHub repository at https://github.com/ido/packages-archlinux
-#       Otherwise, open a GitHub issue.  Thank you! -Ido
-#
 
 pkgname='tn40xx'
 pkgdesc="Tehuti Networks tn40xx network driver."
 pkgver='0.3.6.12.2'
-pkgrel=1
-_extramodules=extramodules-4.1-lts
+pkgrel=2
+_extramodules=extramodules-4.4-lts
 arch=('x86_64')
 url='http://www.tehutinetworks.net/'
 license=('custom')
-depends=('linux-lts>=4.1' 'linux-lts<4.2')
-makedepends=('linux-lts-headers>=4.1' 'linux-lts-headers<4.2')
+depends=('linux-lts>=4.4' 'linux-lts<4.5')
+makedepends=('linux-lts-headers>=4.4' 'linux-lts-headers<4.5')
 options=('!libtool' '!strip' '!makeflags' '!buildflags' 'staticlibs')
 source=("http://www.tehutinetworks.net/images/UL240756/${pkgname}-${pkgver}.tgz"
         "tn40xx.install")
-sha512sums=('a9e1eb3bb0b4a2f538dc79add45e764750d30f6b271865eeda2552a7623eead84dd48cb56179bbb9982922d696fec4e00f85787cdde4c47ad863dd0f3f34fe17'
-            'f68feb8edea01bd10e263bd3ed04d7a6ace7e52ad2acd2ce0dd2635cdaa0ea35637601c42a3bd2f42e0df2cfaf353aa2839af6ace5dafe80dba2445909c969ea')
 install=tn40xx.install
+sha512sums=('a9e1eb3bb0b4a2f538dc79add45e764750d30f6b271865eeda2552a7623eead84dd48cb56179bbb9982922d696fec4e00f85787cdde4c47ad863dd0f3f34fe17'
+            'a847a67fbf39cbb1fc5094e4f032c15be2521970527991b0f8e32574859df274308e90ef89fd0c79a80547e24af77d0b3088393b9802791c3bab84c63177fad5')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}/"
