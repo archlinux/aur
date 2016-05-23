@@ -1,11 +1,11 @@
 # Maintainer: PureTryOut
 pkgname=openrw-git
-pkgver=r621.2ee4a6e
+pkgver=r647.c869313
 pkgrel=1
 epoch=
 pkgdesc="A re-implementation of Rockstar Games' Grand Theft Auto III"
 arch=('x86_64')
-url="https://github.com/danhedron/openrw"
+url="https://github.com/rwengine/openrw"
 license=('GPL3')
 groups=()
 depends=('bullet' 'glm' 'sfml' 'boost' 'libmad')
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=('openrw-git::git+https://github.com/danhedron/openrw.git'
+source=('openrw-git::git+https://github.com/rwengine/openrw.git'
 	'openrw.desktop')
 noextract=()
 sha256sums=('SKIP'
