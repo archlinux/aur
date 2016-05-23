@@ -3,7 +3,7 @@
 
 pkgname=networkmanager-sstp
 pkgver=0.9.10
-pkgrel=2
+pkgrel=3
 pkgdesc="SSTP support for NetworkManager"
 arch=('i686' 'x86_64')
 url="http://sstp-client.sourceforge.net/#Network_Manager_Plugin"
