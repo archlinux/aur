@@ -2,7 +2,7 @@
 # Contributor: Michael Carlberg <c@rlberg.se>
 pkgname=lemonbuddy
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast and easy-to-use tool for Lemonbar."
 arch=('i686' 'x86_64')
 url="https://github.com/jaagr/lemonbuddy"
@@ -12,7 +12,7 @@ depends=('sh' 'alsa-lib' 'libmpdclient' 'libxrandr' 'libsigc++')
 optdepends=('lemonbar-sm-git' 'i3-wm' 'i3ipc-glib-git')
 makedepends=('libsigc++' 'libmpdclient' 'libxrandr'
 'cmake' 'pkg-config' 'clang' 'glibc'
-'boost-libs' 'libx11' 'wireless_tools')
+'boost' 'libx11' 'wireless_tools')
 
 source=("git+https://github.com/jaagr/lemonbuddy.git#tag=0.1.0")
 md5sums=('SKIP')
@@ -29,6 +29,6 @@ build() {
 package() {
   cd "$srcdir/$pkgname/build" || exit
   make DESTDIR="$pkgdir/" install
-  cd ..
+  cd .. || exit
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
