@@ -212,6 +212,7 @@ package_papirus-plasma-theme-git() {
 
 package_papirus-qtcurve-theme-git() {
     pkgdesc="Papirus decorations for QtCurve (git version)"
+    arch=('i686' 'x86_64')
     options=('!strip')
     makedepends=('git')
     depends=('qtcurve-gtk2' 'qtcurve-qt4' 'qtcurve-qt5' 'qtcurve-utils')
