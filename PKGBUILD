@@ -2,7 +2,7 @@
 
 pkgname=kreogist-mu
 pkgver='0.9.9.2'
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Fantastic cross-platform music manager.based on Qt5"
 arch=('x86_64')
@@ -37,7 +37,7 @@ source=(
   "https://codeload.github.com/Kreogist/Mu/tar.gz/$pkgver"
 )
 
-sha224sums=('53e9b221cca7f106b900404233b166fdba8cfc3a66526f67586e96d5' 'bd3bb80f83dcfb8d988ade32787ee698a9b62cbfdf0cd8a29ff6ab2f')
+sha224sums=('2877b0096d3359733e070ab41ebeaad63d1cc10c67f0e4ba1c18b717' 'f69b65d11c06de016b2f058292f8d196b2cf93e01d5d1b12060d2ed0')
 
 build() {
   mkdir -p $srcdir/Mu-build
