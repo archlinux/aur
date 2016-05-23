@@ -4,7 +4,7 @@
 _number_of_bits=8
 pkgname=microchip-mplabxc${_number_of_bits}-bin
 pkgver=1.35
-pkgrel=1
+pkgrel=2
 pkgdesc="Microchip's MPLAB XC${_number_of_bits} C compiler toolchain for their PIC10/12/16/18 microcontroller families and their PIC14000 device"
 arch=(i686 x86_64)
 url=http://www.microchip.com/xc${_number_of_bits}
@@ -16,8 +16,7 @@ makedepends_x86_64=(lib32-tclkit)
 makedepends_i686=(tclkit)
 
 options=(!strip docs libtool emptydirs !zipman staticlibs !upx)
-source=("installerBlobFromMicrochip::http://ww1.microchip.com/downloads/en/DeviceDoc/xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run"
-        "bitrock-unpacker.tcl")
+source=("http://ww1.microchip.com/downloads/en/DeviceDoc/xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run" "bitrock-unpacker.tcl")
 
 md5sums=('d7bb54b0ece78d98459a3e8f4886e28e'
          '70dedba4c417f8c0bb07c32d19e9d197')
@@ -25,15 +24,21 @@ install=$pkgname.install
 
 instdir="/opt/microchip/xc${_number_of_bits}/v${pkgver}"
 
+PKGEXT='.pkg.tar'
+
 build() {
   msg2 "Unpacking files from installer"
-  ./bitrock-unpacker.tcl ./installerBlobFromMicrochip ./unpacked.vfs
+  ./bitrock-unpacker.tcl ./xc${_number_of_bits}-v$pkgver-full-install-linux-installer.run ./unpacked.vfs
 }
 
 package() {
   mkdir -p "${pkgdir}${instdir}"
   mv unpacked.vfs/compiler/programfiles*/* "${pkgdir}${instdir}"
-  mv unpacked.vfs/licensecomponent "${pkgdir}${instdir}"
+  mv unpacked.vfs/licensecomponent/LinuxLMBin/bin/{roam.lic,xclm} "${pkgdir}${instdir}/bin"
+  sed -i "s/<xclm>/<xclm>\n\t<xclm:LicenseDirectory xclm:path=\"\/opt\/microchip\/xclm\/license\/\" \/>/" \
+  unpacked.vfs/licensecomponent/LinuxLMBin/etc/xclm.conf
+  mv unpacked.vfs/licensecomponent/LinuxLMBin/etc/xclm.conf "${pkgdir}${instdir}/etc"
+  mv unpacked.vfs/licensecomponent/LinuxLMBin/docs/* "${pkgdir}${instdir}/docs"
   mv "${pkgdir}${instdir}"/*License.txt "${pkgdir}${instdir}/docs" 2>/dev/null || true
 
   mkdir -p "$pkgdir/etc/profile.d"
