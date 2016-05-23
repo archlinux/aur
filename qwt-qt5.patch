@@ -1,0 +1,13 @@
+diff -Nru qspeakers-svn.orig/qspeakers.pro qspeakers-svn/qspeakers.pro
+--- qspeakers-svn.orig/qspeakers.pro	2016-05-23 13:27:28.657397688 +0200
++++ qspeakers-svn/qspeakers.pro	2016-05-23 13:31:08.097931449 +0200
+@@ -57,8 +57,7 @@
+     listdialog.ui \
+     searchdialog.ui
+ 
+-equals(QT_MAJOR_VERSION, 4): LIBS = -lqwt
+-equals(QT_MAJOR_VERSION, 5): LIBS = -lqwt-qt5
++unix|win32: LIBS += -lqwt
+ 
+ TRANSLATIONS += \
+     qspeakers_en.ts \

@@ -1,6 +1,6 @@
 pkgbase = qspeakers-svn
 	pkgdesc = DIY speaker design software
-	pkgver = r90
+	pkgver = r115
 	pkgrel = 1
 	url = http://brouits.free.fr/qspeakers/
 	install = qspeakers-svn.install
@@ -8,11 +8,13 @@ pkgbase = qspeakers-svn
 	arch = x86_64
 	license = GPL3
 	makedepends = subversion
-	depends = qwt
+	depends = qwt-qt5
 	depends = shared-mime-info
 	conflicts = qspeakers
 	source = qspeakers-svn::svn+https://svn.gtmp.org/svn/qspeakers/
+	source = qwt-qt5.patch
 	sha256sums = SKIP
+	sha256sums = de92668169f5677c441007c0d59688dded4ae1f33c0a598eec2f70e08144b83d
 
 pkgname = qspeakers-svn
 
