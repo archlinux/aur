@@ -30,7 +30,6 @@ noextract=()
 md5sums=('0f65c161f299b2f8922f7f68b28f5882')
  #generate with 'makepkg -g'
 
-
 build() {
 
   cd $srcdir
