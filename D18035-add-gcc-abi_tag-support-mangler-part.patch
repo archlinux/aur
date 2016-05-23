@@ -1040,7 +1040,7 @@ Index: lib/Sema/SemaDeclAttr.cpp
 ===================================================================
 --- lib/Sema/SemaDeclAttr.cpp
 +++ lib/Sema/SemaDeclAttr.cpp
-@@ -4700,10 +4700,6 @@
+@@ -4701,10 +4701,6 @@
    D->addAttr(::new (S.Context)
               AbiTagAttr(Attr.getRange(), S.Context, Tags.data(), Tags.size(),
                          Attr.getAttributeSpellingListIndex()));
@@ -1202,6 +1202,19 @@ Index: test/CodeGenCXX/mangle-abi-tag.cpp
 +}
 +// f13()::L::foo[abi:C][abi:D]()
 +// CHECK: define linkonce_odr %struct.E* @_ZZ3f13vEN1L3fooB1CB1DEv(
+Index: test/PCH/attrs.c
+===================================================================
+--- test/PCH/attrs.c
++++ test/PCH/attrs.c
+@@ -9,7 +9,7 @@
+ #define HEADER
+ 
+ int f(int) __attribute__((visibility("default"), overloadable));
+-int g(int) __attribute__((abi_tag("foo", "bar", "baz"), no_sanitize("address", "memory"))); // expected-warning {{ignored}}
++int g(int) __attribute__((abi_tag("foo", "bar", "baz"), no_sanitize("address", "memory")));
+ 
+ #else
+ 
 Index: test/SemaCXX/attr-abi-tag-syntax.cpp
 ===================================================================
 --- test/SemaCXX/attr-abi-tag-syntax.cpp
