@@ -4,10 +4,10 @@
 _pkgbase=libusb-compat
 pkgname=lib32-${_pkgbase}
 pkgver=0.1.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Library to enable user space application programs to communicate with USB devices (32 bit)"
 arch=('x86_64')
-depends=('lib32-libusb' "${_pkgbase}")
+depends=('lib32-libusb')
 makedepends=('gcc-multilib')
 url="http://libusb.sourceforge.net/"
 license=('LGPL')
