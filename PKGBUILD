@@ -1,8 +1,8 @@
-Maintainer: rafaelff <rafaelff@gnome.org>
+# Maintainer: rafaelff <rafaelff@gnome.org>
 
 pkgname=twp
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Teeworlds Web Panel for management of local Teeworlds servers"
 arch=(any)
 url="https://www.teeworlds.com/forum/viewtopic.php?id=11626"
@@ -11,14 +11,14 @@ license=('AGPL')
 depends=(sqlite3 python2-flask-babel python2-flask-apscheduler python2-pillow
          python2-sqlalchemy python2-mergedict python2-singledispatch
          python2-flask-sqlalchemy python2-dateutil python2-flask-wtf
-         python2-webassets)
+         python2-webassets python2-flask-assets)
 makedepends=(unzip)
 install=twp.install
 backup=(srv/twp/twp.conf)
 source=("$pkgname-$pkgver.zip::https://github.com/CytraL/$pkgname/archive/$pkgver.zip"
         "twp.service")
 md5sums=('SKIP'
-         '5e360b65185bd12682f2947d421d3b7d')
+         '35f1a63755f15e41b31d9988f4f56a11')
 
 package() {
 	   # install systemd service file
@@ -30,9 +30,6 @@ package() {
     cp -a "$srcdir/$pkgname-$pkgver"/* .
     
        # fix python2 calling
-    sed -i 's:env python:&2:' twp.py
-	sed -i 's:#!/usr/bin/python:&2:' twpl/teeworlds.py twpl/netstat.py
-	
-	   # make it executable
-	chmod a+x twp.py
+    sed -i 's:env python:&2:' run.py
+    sed -i 's:#!/usr/bin/python:&2:' tools/netstat.py
 }
