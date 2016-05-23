@@ -7,20 +7,20 @@
 
 pkgbase=scribus
 pkgname=scribus-devel
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.5.2
+pkgrel=1
 pkgdesc='Desktop publishing software'
 url='http://www.scribus.net/'
 license=('GPL')
 arch=('i686' 'x86_64')
-makedepends=('cmake' 'boost' 'mesa')
-optdepends=('tk: scripts based on tkinter')
 depends=('hunspell' 'libcdr' 'libcups' 'libmspub' 'libpagemaker'
          'libvisio' 'podofo' 'poppler' 'python2' 'qt5-declarative'
          'desktop-file-utils' 'hicolor-icon-theme' 'shared-mime-info')
+makedepends=('cmake' 'boost' 'mesa' 'qt5-tools')
+optdepends=('tk: scripts based on tkinter')
 validpgpkeys=('5086B8D68E70FDDF4C40045AEF7B95E7F60166DA')
 source=("http://downloads.sourceforge.net/${pkgbase}/${pkgbase}-${pkgver}.tar.xz"{,.asc})
-sha256sums=('1882e68713d91c2ab9d6ec7a251dbbe31a4438ee68e63e62d36770541e6f4a38' 'SKIP')
+sha256sums=('ec5eec23aeda655d3a761cffb85853dcd2ede3973b9e62a1b3c28bd1093c74f5' 'SKIP')
 conflicts=("${pkgbase}")
 provides=("${pkgbase}")
 
@@ -45,7 +45,7 @@ build() {
     make
 }
 
-package() {
+package_scribus-devel() {
     cd "${srcdir}/${pkgbase}-${pkgver}/build"
 
     make DESTDIR="${pkgdir}" install
