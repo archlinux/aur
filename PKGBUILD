@@ -2,8 +2,8 @@
 # Maintainer: Echizen Ryoma <echizenryoma.zhang@gmail.com>
 
 pkgname=networkmanager-sstp
-pkgver=0.9.10
-pkgrel=3
+pkgver=1.2
+pkgrel=1
 pkgdesc="SSTP support for NetworkManager"
 arch=('i686' 'x86_64')
 url="http://sstp-client.sourceforge.net/#Network_Manager_Plugin"
