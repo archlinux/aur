@@ -1,6 +1,6 @@
 pkgbase = z3-git
 	pkgdesc = Z3 is a high-performance theorem prover being developed at Microsoft Research
-	pkgver = 4.4.0.r0.g7f6ef0b
+	pkgver = 4.4.1.r1416.g8370bb8
 	pkgrel = 1
 	url = https://github.com/Z3Prover/z3
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = z3-git
 	depends = gcc-libs
 	optdepends = python2: bindings for python2
 	provides = z3
+	conflicts = z3
 	conflicts = z3-bin
 	conflicts = z3-codeplex
 	source = z3-git::git+https://github.com/Z3Prover/z3

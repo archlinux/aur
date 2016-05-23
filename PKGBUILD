@@ -1,6 +1,6 @@
 # Maintainer: d.woffinden
 pkgname=z3-git
-pkgver=4.4.0.r0.g7f6ef0b
+pkgver=4.4.1.r1416.g8370bb8
 pkgrel=1
 pkgdesc="Z3 is a high-performance theorem prover being developed at Microsoft Research"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'python2')
 optdepends=('python2: bindings for python2')
-conflicts=('z3-bin' 'z3-codeplex')
+conflicts=('z3' 'z3-bin' 'z3-codeplex')
 provides=('z3')
 # The git repo is detected by the 'git:' or 'git+' beginning. The branch
 # '$pkgname' is then checked out upon cloning, expediating versioning:
