@@ -5,12 +5,11 @@
 _pkgname=icu
 pkgname=lib32-${_pkgname}44
 pkgver=4.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc="International Components for Unicode library"
 arch=(x86_64)
 url="http://www.icu-project.org/"
 license=('custom:"icu"')
-depends=('gcc-libs-multilib>=4.7.1-5' 'sh' "${_pkgname}44")
 makedepends=('gcc-multilib')
 source=(http://download.icu-project.org/files/${_pkgname}4c/${pkgver}/${_pkgname}4c-${pkgver//./_}-src.tgz
         icuinfo.makefile)
