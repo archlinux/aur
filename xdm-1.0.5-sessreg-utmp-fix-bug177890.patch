@@ -1,8 +1,0 @@
---- config/GiveConsole.sessreg-utmp-fix-bug177890	2006-07-24 04:20:10.000000000 -0400
-+++ config/GiveConsole	2006-07-24 04:21:16.000000000 -0400
-@@ -8,3 +8,5 @@
- # causing serious grief.
- #
- chown $USER /dev/console
-+exec /usr/bin/sessreg  -a -w "/var/log/wtmp" -u "/run/utmp" \
-+        -x "/etc/X11/xdm/Xservers" -l $DISPLAY -h "" $USER
