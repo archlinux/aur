@@ -1,0 +1,20 @@
+pkgbase = python2-cashew
+	pkgdesc = The plugin system used by dexy.
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = http://dexy.github.io/cashew/
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	depends = python2
+	depends = python2-yaml
+	depends = python2-inflection>=0.2.0
+	provides = cashew
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/c/cashew/cashew-0.2.7.tar.gz
+	source = LICENSE::https://raw.githubusercontent.com/dexy/cashew/master/LICENSE
+	md5sums = e7a3801bf2ac92817d33292ea25efe5e
+	md5sums = 7ae0144577340e245b148893690d7f37
+
+pkgname = python2-cashew
+
