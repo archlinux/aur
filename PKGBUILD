@@ -16,8 +16,13 @@ md5sums=('57b493709b177f475eec19d80d6b47cc')
 build() {
   cd "${_extname}-${pkgver}"
 
-  phpize
-  ./configure --prefix=/usr --with-oci8=instantclient,/usr/lib
+  phpize56
+  ./configure --config-cache \
+    --sysconfdir=/etc/php56 \
+    --with-php-config=/usr/bin/php-config56 \
+    --localstatedir=/var \
+    --prefix=/usr \
+    --with-oci8=instantclient,/usr/lib
   make
 }
 
