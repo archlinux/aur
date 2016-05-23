@@ -69,7 +69,7 @@ build() {
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
               --libexecdir=/usr/lib
-  make
+  make -j8
 }
 
 package() {
