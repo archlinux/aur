@@ -7,7 +7,7 @@
 
 pkgname=atom-editor
 pkgver=1.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Chrome-based text editor from Github'
 arch=('x86_64' 'i686')
 url='https://github.com/atom/atom'
@@ -20,7 +20,7 @@ conflicts=('atom-editor-bin' 'atom-editor-git')
 source=("https://github.com/atom/atom/archive/v${pkgver}.tar.gz"
         'package.patch')
 sha256sums=('6ef3bb4c2fea85a7d1c7665fef8aac4e353c8f8da5e2878fea3aecf5437383d4'
-            'ab27ab817f67043e98298d525efb6a417dea07f4012b6dfb7cf6a538f9b50bab')
+            'fbd8e29cdde10d430d809ffb2bdd52c5a0af3af96ad882c4754c553fefa7b2db')
 
 prepare() {
   cd "atom-$pkgver"
