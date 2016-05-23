@@ -2,7 +2,7 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python-pypdf2
-pkgver=1.25.1
+pkgver=1.26.0
 pkgrel=1
 pkgdesc="PDF toolkit"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://mstamy2.github.com/PyPDF2"
 license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
-source=(https://pypi.python.org/packages/source/P/PyPDF2/PyPDF2-$pkgver.tar.gz)
+source=(https://pypi.python.org/packages/b4/01/68fcc0d43daf4c6bdbc6b33cc3f77bda531c86b174cac56ef0ffdb96faab/PyPDF2-$pkgver.tar.gz)
 
 build() {
   cd "$srcdir/PyPDF2-$pkgver"
@@ -24,4 +24,4 @@ package(){
 }
 
 # vim:ts=2:sw=2:et:
-md5sums=('ee5e5b01d00b120805e5049e56c6fd7c')
+md5sums=('2301acc0ecbab0633d4c9b883d50ee5e')
