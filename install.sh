@@ -26,6 +26,7 @@ post_install() {
     else
         echo "Provision default $tag units for $target"
         for file in $source_list ; do
+            file=$(basename $file)
             install -b -D -m644 "$source/$file" "$target/$file"
         done
     fi
@@ -38,6 +39,7 @@ post_install() {
     else
         echo "Provision default $tag units for $target"
         for file in $source_list ; do
+            file=$(basename $file)
             install -b -D -m644 "$source/$file" "$target/$file"
         done
     fi
