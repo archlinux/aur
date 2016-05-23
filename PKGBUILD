@@ -1,5 +1,5 @@
 pkgname=initrd-dropbear
-pkgver=r39.6545002
+pkgver=r40.bdb81c6
 pkgrel=1
 pkgdesc="Provider of systemd initramfs dropbear ssh server"
 arch=('any')
@@ -8,11 +8,11 @@ depends=('systemd' 'dropbear')
 makedepends=('git')
 install=install.sh
 url="https://aur.archlinux.org/cgit/aur.git/tree/?h=${pkgname}"
-source=("${pkgname}::git+https://aur.archlinux.org/${pkgname}.git#branch=master")
+source=("${pkgname}::git+https://aur.archlinux.org/${pkgname}.git")
 md5sums=('SKIP')
 
 pkgver() {
-    # version update only in presense of marker
+    # version update only in presense of user provided marker
     local origin=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
     local marker="$origin/.PKGVER"
     if [ -e "$marker" ] ; then
@@ -45,9 +45,16 @@ package() {
     install -D -m644 "$source/mkinitcpio-install.sh"    "$target/install/$pkgname"
   
     local target="$pkgdir/usr/share/mkinitcpio/$pkgname"
-    install -D -m644 "$source/readme.md"                "$target/readme.md"
-    install -D -m644 "$source/initrd-dropbear.service"  "$target/initrd-dropbear.service"
-    install -D -m644 "$source/initrd-network.network"   "$target/initrd-network.network"
-    install -D -m644 "$source/initrd-network.service"   "$target/initrd-network.service"
+    local file_list="\
+    readme.md \
+    initrd-debug-shell.service \
+    initrd-dropbear.service \
+    initrd-network.network \
+    initrd-network.service \
+    "
+    local file
+    for file in $file_list ; do
+        install -D -m644 "$source/$file"                "$target/$file"
+    done
     
 }

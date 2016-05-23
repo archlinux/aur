@@ -14,7 +14,7 @@ build() {
         
     build_unit
     
-    build_libs    
+    #build_libs
     
 }
 
@@ -32,7 +32,7 @@ build_host() {
         source=$(keypath_openssh $keytype)
         target=$(keypath_dropbear $(keytype_dropbear $keytype))
         if [ -f $target ]; then
-            quiet "Provision existing dropbear host key: $target"
+            plain "Provision existing dropbear host key: $target"
         else
             if [ -f $source ] ; then
                 plain "Convert openssh to dropbear host key: $target"
@@ -52,20 +52,17 @@ build_user() {
 
     quiet "Provide user login ssh keys"
 
+    local target="/root/.ssh/authorized_keys"
+
     local source_list="\
     /etc/dropbear/root_key \
     /root/.ssh/authorized_keys \
     "
-
-    local source=""
-    local target_dir="/root/.ssh"
-    local target_file="$target_dir/authorized_keys"
-    
+    local source
     for source in $source_list ; do 
         if [ -f $source ] ; then
-            add_dir $target_dir
-            plain "Add public key: $source initramfs: $target_file"
-            invoke_command   cat $source >> $BUILDROOT/$target_file
+            plain "Add public key: $source initramfs: $target"
+            invoke_command   add_file $source $target
             return 0
         fi
     done
@@ -78,6 +75,7 @@ build_unit() {
 
     quiet "Provide systemd units"
 
+    # NOTE: initramfs inclusion marker
     local tag="/etc/initrd-release"
                 
     # services
@@ -152,7 +150,7 @@ invoke_command() {
 }
 
 
-# bug fix for https://bugs.archlinux.org/task/49441
+# bug fix for https://bugs.archlinux.org/task/42396
 
 add_systemd_unit() {
     # Add a systemd unit file to the initcpio image. Hard dependencies on binaries

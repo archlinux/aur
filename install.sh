@@ -15,26 +15,31 @@ post_install() {
     local pkgname=initrd-dropbear
 
     local tag="/etc/initrd-release"
-
+    local file
     local source="/usr/share/mkinitcpio/$pkgname"
+    
     local target="/etc/systemd/system"
-    local unit_list=$(grep -l "$tag" $target/*.service)
-    if [[ $unit_list ]] ; then
+    local source_list=$(grep -l "$tag" $source/*.service)
+    local target_list=$(grep -l "$tag" $target/*.service)
+    if [[ $target_list ]] ; then
         echo "Keep existing $tag units in $target"
     else
         echo "Provision default $tag units for $target"
-        install -Dm644 "$source/initrd-dropbear.service" "$target/initrd-dropbear.service"
-        install -Dm644 "$source/initrd-network.service"  "$target/initrd-network.service"
+        for file in $source_list ; do
+            install -b -D -m644 "$source/$file" "$target/$file"
+        done
     fi
     
-    local source="/usr/share/mkinitcpio/$pkgname"
     local target="/etc/systemd/network"
-    local unit_list=$(grep -l "$tag" $target/*.network)
-    if [[ $unit_list ]] ; then
+    local source_list=$(grep -l "$tag" $source/*.network)
+    local target_list=$(grep -l "$tag" $target/*.network)
+    if [[ $target_list ]] ; then
         echo "Keep existing $tag units in $target"
     else
         echo "Provision default $tag units for $target"
-        install -Dm644 "$source/initrd-network.network"  "$target/initrd-network.network"
+        for file in $source_list ; do
+            install -b -D -m644 "$source/$file" "$target/$file"
+        done
     fi
     
 }

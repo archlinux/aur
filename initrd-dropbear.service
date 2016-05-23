@@ -1,17 +1,29 @@
-
 # This file is part of https://aur.archlinux.org/packages/initrd-dropbear/
-# NOTE: to be included in initramfs the file must contain "/etc/initrd-release" string
+# NOTE: to be activated in initramfs the file must contain marker string
 
 [Unit]
 Description=Dropbear SSH Server (initrd)
+# NOTE: initramfs inclusion marker
 ConditionPathExists=/etc/initrd-release
-#DefaultDependencies=no
+DefaultDependencies=no
 Requires=initrd-network.service
-After=network.target
-Before=cryptsetup.target
+#After=network.target
+#Before=cryptsetup-pre.target
+#Wants=cryptsetup.target
 
 [Service]
-ExecStart=/usr/bin/dropbear -E -s -j -k
+# dropbear options:
+# -F     Don't fork into background.
+# -s     Disable password logins.
+# -j     Disable local port forwarding.
+# -k     Disable remote port forwarding.
+# -d dsskey DSS host key (default:  /etc/dropbear/dropbear_dss_host_key)
+# -r rsakey RSA host key (default:  /etc/dropbear/dropbear_rsa_host_key)
+# user key:  ~/.ssh/authorized_keys
+ExecStart=/usr/bin/dropbear -F -s -j -k
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=1s
 
 [Install]
-WantedBy=sysinit.target
+RequiredBy=sysinit.target
