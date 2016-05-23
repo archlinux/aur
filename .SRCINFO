@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-mavros-msgs
 	pkgdesc = ROS - mavros_msgs defines messages for MAVROS.
-	pkgver = 0.17.2
+	pkgver = 0.17.3
 	pkgrel = 1
 	url = http://wiki.ros.org/mavros_msgs
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = ros-indigo-mavros-msgs
 	depends = ros-indigo-std-msgs
 	depends = ros-indigo-message-runtime
 	depends = ros-indigo-geometry-msgs
-	source = mavros_msgs::git+https://github.com/mavlink/mavros-release.git#tag=release/indigo/mavros_msgs/0.17.2-0
+	source = mavros_msgs::git+https://github.com/mavlink/mavros-release.git#tag=release/indigo/mavros_msgs/0.17.3-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-mavros-msgs
