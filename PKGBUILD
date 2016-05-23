@@ -1,4 +1,4 @@
-# Maintainer: Ramana Kumar <at gmail dot com>
+# Maintainer: Ramana Kumar <firstname|@|member.fsf.org>
 pkgname=opentheory
 pkgver=1.3r20160428
 pkgrel=1
