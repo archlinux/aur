@@ -6,7 +6,7 @@
 pkgname=vtk-qt4
 pkgver=7.0.0
 _majorver=7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A software system for 3D computer graphics, image processing, and visualization. Linked against QT4'
 arch=('i686' 'x86_64')
 url='http://www.vtk.org/'
@@ -42,7 +42,7 @@ sha1sums=('7719fac36b36965eaf5076542166ba49bbe7afbb'
           '1bbaa642a3e3676a58a08c956df73645326c2859'
           '8d16a1fba15e4eb95c03fe97937488ddcdd7fbd0'
           'c60610e7c8cf0ad93d7c02cbf8a20fc415f59b3e'
-          '3ffab6d117dee93bfa1d84305aa8bb8781c2284d'
+          'a78177f8dd6dedd9ad189fa12730ec53c7d02508'
           '0c6684c51240c9c52b809694ce41c1308e947bae')
 
 prepare() {
