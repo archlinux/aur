@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=meshlab
 pkgver=1.3.3
-pkgrel=4
+pkgrel=5
 pkgdesc="System for processing and editing triangular meshes"
 arch=('i686' 'x86_64')
 url="http://meshlab.sourceforge.net/"
@@ -12,6 +12,7 @@ source=("http://downloads.sourceforge.net/project/meshlab/meshlab/MeshLab%20v${p
         "gcc-4.7.patch"
         "lapack.patch"
         "mpir.patch"
+        "nullptr.patch"
         "rpath.patch"
         "qt-4.8.patch"
         "meshlab.1"
@@ -22,6 +23,7 @@ md5sums=('cbdd83d4f3ed69e7a9837c34ebae307a'
          '65d7ff92ad2d6e74119af9c0e377bb37'
          '4139d3217f1540c67306545213126391'
          '308f1b90f7de56f9df1485808713ed53'
+         'c8689554179380947a118a493a564715'
          '2cc1246fc1b01029ae762c82a7dbf364'
          '1df4ee299f4ad996a05e80d9cf5e5389'
          '32a52b0a8dab1b4816b028b463e7fd9c'
@@ -46,6 +48,8 @@ prepare() {
   patch -Np2 -i "${srcdir}/lapack.patch"
   # use system mpir
   patch -Np2 -i "${srcdir}/mpir.patch"
+  # fix use of bool to return null pointer
+  patch -Np2 -i "${srcdir}/nullptr.patch"
   # fix rpath
   patch -Np2 -i "${srcdir}/rpath.patch"
 }
