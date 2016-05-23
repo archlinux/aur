@@ -1,21 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.28
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-devel-cover'
-pkgver='1.15'
+pkgver='1.23'
 pkgrel='1'
 pkgdesc="Code coverage metrics for Perl"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl')
+depends=('perl-html-parser')
 makedepends=()
-checkdepends=('perl-test-warn')
-url='http://search.mcpan.org/dist/Devel-Cover'
-source=('http://search.mcpan.org/CPAN/authors/id/P/PJ/PJCJ/Devel-Cover-1.15.tar.gz')
-md5sums=('1bfab447ec62d49a095fc8878c5ed54b')
-sha512sums=('8c12bc81eaa183a14d29b3e9eb0cdea31cff80d45e9447962c185a9ed364a5ffe6f755e472974c0d2b754a17dad724688b769546687bab0dc4893e44d7c19eb9')
-_distdir="Devel-Cover-1.15"
+url='https://metacpan.org/release/Devel-Cover'
+source=('http://search.cpan.org/CPAN/authors/id/P/PJ/PJCJ/Devel-Cover-1.23.tar.gz')
+md5sums=('cddff9d89521078d241cd57d6790a8cb')
+sha512sums=('075a89950f2b02aaae085d99b9fd6c8e52b173aa0ed46dc57980ca8fea9d6f6ec63fe776789d9436bfdd719c7701bad5b741e75e898582f1ceb3d0098e4574a3')
+_distdir="Devel-Cover-1.23"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
