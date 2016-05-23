@@ -2,7 +2,7 @@
 
 pkgname=qrk
 _pkgname=QRK
-pkgver=0.16.0517
+pkgver=0.16.0523
 pkgrel=1
 pkgdesc="A graphical cash register for small companies"
 arch=('i686' 'x86_64')
@@ -15,9 +15,9 @@ depends=('qrencode'
 source=("http://downloads.sourceforge.net/project/qrk-registrier-kasse/source/${_pkgname}_${pkgver}.source.tar.gz"
         "${pkgname}.desktop")
 
-md5sums=('e1aa9333602bec698fe288b05aece395'
+md5sums=('81783e5ed2bd7eac2feb083b924201ec'
          '52c990903894fdecd440e2e2914c2f09')
-sha256sums=('a0db15f9e0c65667df4447d5fe6fd64dea5faff98ae111a8cc4992f57b2323bc'
+sha256sums=('60382dd5351690aa3af29d4a5d30b146d40fcc25c86bf3014703a48c9e968b6b'
             'f71882aea62bd7c07e4806f0223d1699170ac89d59036f5fd5add1004eb93cd0')
 
 build() {
