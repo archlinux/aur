@@ -5,12 +5,12 @@
 _pkgname=libzip
 pkgname=lib32-${_pkgname}1
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A C library for reading, creating, and modifying zip archives"
 url="http://www.nih.at/libzip/index.html"
 license=('BSD')
 arch=('x86_64')
-depends=('libzip1' 'lib32-zlib' 'lib32-glibc')
+depends=('lib32-zlib' 'lib32-glibc')
 makedepends=('gcc-multilib')
 options=('!libtool')
 source=("http://www.nih.at/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
