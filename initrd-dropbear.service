@@ -8,6 +8,7 @@ ConditionPathExists=/etc/initrd-release
 #DefaultDependencies=no
 Requires=initrd-network.service
 After=network.target
+Before=cryptsetup.target
 
 [Service]
 ExecStart=/usr/bin/dropbear -E -s -j -k

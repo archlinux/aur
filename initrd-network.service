@@ -9,6 +9,7 @@ ConditionPathExists=/etc/initrd-release
 Requires=systemd-networkd.service
 Requires=systemd-resolved.service
 After=network.target
+Before=cryptsetup.target
 
 [Service]
 Type=oneshot
