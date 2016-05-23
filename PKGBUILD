@@ -1,6 +1,6 @@
 # Maintainer: Andy Kluger <AndyKluger@gmail.com>
 pkgname=acbuild
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Command line utility to build and modify App Container Images (ACIs), the container image format defined in the App Container (appc) spec implemented by rkt."
 arch=('i686' 'x86_64')
