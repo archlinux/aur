@@ -13,7 +13,8 @@ arch=('x86_64' 'i686')
 url='https://github.com/atom/atom'
 license=('MIT')
 depends=('alsa-lib' 'desktop-file-utils' 'gconf' 'gtk2' 'libgnome-keyring' 'libnotify' 'libxtst' 'nodejs' 'nss' 'python2')
-optdepends=('gvfs: file deletion support')
+optdepends=('gvfs: file deletion support'
+            'ctags: symbol indexing support')
 makedepends=('git' 'npm')
 conflicts=('atom-editor-bin' 'atom-editor-git')
 source=("https://github.com/atom/atom/archive/v${pkgver}.tar.gz"
@@ -23,7 +24,7 @@ sha256sums=('5074b59ddaca5525eb48098dee6fe63013799cbc77749add314b9e1bc894b8f4'
 
 prepare() {
   cd "atom-$pkgver"
-  
+
   patch -Np0 -i "$srcdir/package.patch"
 
   sed -i -e "/exception-reporting/d" \
