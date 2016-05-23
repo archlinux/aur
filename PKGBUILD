@@ -4,15 +4,18 @@
 pkgname=diorite-git
 pkgver=0.2.0.r20.g885d3e6
 pkgrel=2
-pkgdesc='Utility and widget library based on Glib and GTK3.'
+
 arch=('i686' 'x86_64')
-url='https://tiliado.eu/diorite/'
 license=('GPL')
-makedepends=('git' 'python' 'vala')
-depends=('gtk3')
-optdepends=('python: For generating tests.')
+pkgdesc='Utility and widget library based on Glib and GTK3.'
+url='https://tiliado.eu/diorite/'
+
 source=("$pkgname::git+https://github.com/tiliado/diorite")
 sha256sums=('SKIP')
+
+depends=('gtk3')
+makedepends=('git' 'python' 'vala')
+optdepends=('python: For generating tests')
 
 pkgver() {
 	cd "${pkgname}"
@@ -23,7 +26,7 @@ build() {
 	cd "${pkgname}"
 	./waf configure --prefix=/usr
 	./waf build
-} 
+}
 
 package() {
 	cd "${pkgname}"
