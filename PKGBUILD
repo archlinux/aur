@@ -1,7 +1,7 @@
 # Maintainer: JKA Network (JoseluCross, Kprkpr, Yukialba) <contacto@jkanetwork.com>
 pkgname=jka-toolkit
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Set of scripts to optimize the daily work in linux shell (jkazip and apw)"
 arch=('any')
 url="http://proyecto.jkanetwork.com"
