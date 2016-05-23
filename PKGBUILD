@@ -1,7 +1,7 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz@gmail.com>
 
 pkgname=python-pandas-docs
-pkgver=0.18.0
+pkgver=0.18.1
 pkgrel=1
 pkgdesc="Documentation for Python Pandas module"
 makedepends=('unzip')
@@ -10,7 +10,7 @@ url='http://pandas.pydata.org'
 license=('BSD')
 source=("$pkgname-$pkgver.zip::http://pandas.pydata.org/pandas-docs/stable/pandas.zip")
 noextract=("$pkgname-$pkgver.zip")
-md5sums=('ca6b5a379d13dc8392d61ec35f529c80')
+md5sums=('60290b819c1a247b56eed31a2974dcfd')
 
 package()
 {
