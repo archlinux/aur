@@ -118,7 +118,7 @@ build_libs() {
     # provided by add_systemd_unit
     #add_binary "dropbear"
 
-    add_file "/etc/dropbear/initrd.sh"
+    add_file "/etc/dropbear/initrd.sh" 755
 
     add_dir "/var/run"
     add_dir "/var/log"
