@@ -11,8 +11,9 @@ DefaultDependencies=no
 [Service]
 Type=oneshot
 RemainAfterExit=true
+# busybox provides only /bin/sh
 #ExecStart=/bin/chsh -s /bin/sh root
-ExecStart=/bin/chsh -s /etc/dropbear/initrd.sh root
+ExecStart=/bin/chsh -s /etc/dropbear/shell.sh root
 
 [Install]
 RequiredBy=initrd-dropbear.service

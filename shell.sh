@@ -2,6 +2,8 @@
 
 # user root login shell
 
+# location: /etc/dropbear/shell.sh
+
 command_askpass="/usr/bin/systemd-tty-ask-password-agent"
 
 command_prompt() {

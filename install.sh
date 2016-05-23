@@ -49,8 +49,9 @@ target_sys="$target/system"
 target_list_net=$(grep -l "$tag" $target_net/*.network 2> /dev/null)
 target_list_sys=$(grep -l "$tag" $target_sys/*.service 2> /dev/null)
 
-source_shell="$source/initrd.sh"
-target_shell="/etc/dropbear/initrd.sh"
+shell="shell.sh"
+source_shell="$source/$shell"
+target_shell="/etc/dropbear/$shell"
 
 resource_create() {
     
