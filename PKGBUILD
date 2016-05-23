@@ -1,6 +1,6 @@
 # Maintainer: DoTheEvolution <DoTheEvo@gmail.com>
 pkgname="angrysearch"
-pkgver=0.9.7
+pkgver=0.9.8
 pkgrel=1
 pkgdesc="Instant file search"
 arch=("any")
@@ -10,7 +10,7 @@ depends=("python-pyqt5" "libxkbcommon-x11" "xdg-utils")
 optdepends=("python-gobject: desktop notifications support"
             "xdotool: Thunar & PCmanFM to select file on path open")
 source=("https://github.com/DoTheEvo/ANGRYsearch/archive/v$pkgver.tar.gz")
-sha256sums=("b4099fbb86816b819531f9a83efd309971f814e0c2c62beb01274b5e4f05f27e")
+sha256sums=("72022b9bebfb3190cc743aebb1e3377f28686f776da56e8140f75d749d622bb3")
 
 package() {
  cd "ANGRYsearch-$pkgver"
