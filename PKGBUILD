@@ -19,7 +19,6 @@ md5sums_x86_64=('39ddb1c10535f56bc3f1fad95344db3a')
  
 package() {
   tar xzvf "$srcdir/data.tar.xz" -C "$pkgdir/"
-  #bsdtar -O -xf *.deb data.tar.xz | bsdtar -C "$pkgdir" -xJf -
 
   libzip_link=/usr/lib/libzip.so.2
   if [ ! -f "$libzip_link" ]; then
