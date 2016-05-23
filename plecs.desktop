@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=3.7.5                    
+Name=plecs                            
+Comment=circuit simulator for power circuits   
+Path=/usr/share/plecs                       
+Exec=plecs %U
+Terminal=false                            
+Categories=Education;Office;NumericalAnalysis      
+

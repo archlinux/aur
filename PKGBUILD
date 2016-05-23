@@ -14,6 +14,9 @@ provides=('plecs-standalone')
 depends=('qt4')
 makedepends=('findutils')
 
+source=("plecs.desktop")
+md5sums=('6a70b9891052f0a18e56565f81182a2d')
+
 source_x86_64=("$pkgname-$pkgver-x86_64.tar.gz::https://www.plexim.com/sites/default/files/packages/plecs-standalone-3-7-5_linux64.tar.gz")
 md5sums_x86_64=('3b4c9e61c7284e5431810c832fba1dd8')
 sha1sums_x86_64=('0aa7448b450f38a1ab2f0471f4efe4652feabd7b')
@@ -23,6 +26,10 @@ md5sums_i686=('e8e13583c1b047b0eddad40f95a36aea')
 sha1sums_i686=('289b407fa089f1d89c8b178b60fa6e5d6d6d799a')
 
 package() {
+	# desktop file
+	mkdir -p "$pkgdir/usr/share/applications/"
+	install -m 664 plecs.desktop "$pkgdir/usr/share/applications/"
+
 	cd "$_pkgname"
 	mkdir -p "$pkgdir/usr/bin"
 	mkdir -p "$pkgdir/usr/share/plecs/"
@@ -38,7 +45,10 @@ package() {
 	# private dir
 	install -m 775 "private/plecs.oct" 	"$pkgdir/usr/share/plecs/private/"
 	install -m 664 private/*.m 		"$pkgdir/usr/share/plecs/private/"
-		
+
+	# include dir	
+	cp include "$pkgdir/usr/share/plecs/include" -r
+
 	cp plugins "$pkgdir/usr/share/plecs/" -r
 	find "$pkgdir/usr/share/plecs/plugins" -type f -exec chmod 775 {} +
 
