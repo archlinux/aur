@@ -2,11 +2,11 @@
 
 pkgname=dockbarx-git
 _pkgname=dockbarx
-pkgver=580.5157ffe
+pkgver=593.07655ac
 pkgrel=1
 pkgdesc="TaskBar with groupping and group manipulation"
 arch=('i686' 'x86_64')
-url="https://code.launchpad.net/~dockbar-main/dockbar/experimental"
+url="https://github.com/M7S/dockbarx"
 license=('GPL3')
 depends=('python2-wnck' 'pygtk' 'python2-xdg' 'python2-dbus' 'python2-numpy' 
          'python2-pillow' 'python2-keybinder2' 'hicolor-icon-theme' 'python2-xlib'
@@ -20,7 +20,7 @@ optdepends=('avant-window-navigator: AWN DockBarX Plugin'
 makedepends=('bzr')
 conflicts=('dockbarx' 'dockbarx-awn-applet-bzr')
 replaces=('dockbarx-awn-applet-bzr' 'dockbarx-bzr')
-provides=('dockbarx=0.91.4')
+provides=('dockbarx=0.92')
 source=("${_pkgname}"::git+https://github.com/M7S/dockbarx.git)
 
 pkgver() { 
