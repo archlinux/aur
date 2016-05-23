@@ -1,17 +1,19 @@
 # Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
-# Contributor: Keerthan Jaic <jckeerthan at gmail dot com
+# Contributor: Keerthan Jaic <jckeerthan at gmail dot com>
 
 pkgname=nuvolaplayer-git
 pkgver=3.0.0.r38.g4d5feb9
-pkgrel=1
+pkgrel=2
 
 arch=('i686' 'x86_64')
 license=('GPL')
 pkgdesc='Cloud music integration for your Linux desktop.'
 url='https://tiliado.eu/nuvolaplayer/'
 
-source=("$pkgname::git://github.com/tiliado/nuvolaplayer")
-sha256sums=('SKIP')
+source=("$pkgname::git://github.com/tiliado/nuvolaplayer"
+        'nuvola-app-git-1.0.0.template')
+sha256sums=('SKIP'
+            '8e61d52d4c5bae4ad6e62c0e579dcb0e4053ae5dd4315085b37339deaff01cea')
 
 depends=('diorite-git' 'webkit2gtk' 'libarchive')
 makedepends=('git' 'python' 'vala')
@@ -49,4 +51,8 @@ build() {
 package() {
 	cd "$pkgname"
 	python ./waf install --no-system-hooks --destdir="${pkgdir}"
+
+	# Installl makepkg template for nuvola-app-*-git integrations.
+	install -Dm644 "${srcdir}/nuvola-app-git-1.0.0.template" "${pkgdir}/usr/share/makepkg-template/nuvola-app-git-1.0.0.template"
+	ln -s nuvola-app-git-1.0.0.template "${pkgdir}/usr/share/makepkg-template/nuvola-app-git.template"
 }
