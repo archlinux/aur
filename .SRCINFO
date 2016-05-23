@@ -24,7 +24,7 @@ pkgbase = fairroot
 	source = fix_return.patch
 	md5sums = 775fb31d5c3b99f363a5c9eb9c301698
 	md5sums = d2d2d7b11b308120382fba7e32c5268a
-	md5sums = c4e73bae7eb47e4d030e213ba421638b
+	md5sums = 7eecd47253b1f005d4da59ddcfa28eed
 
 pkgname = fairroot
 
