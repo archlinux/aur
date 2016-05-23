@@ -8,7 +8,7 @@ pkgbase = conkywx
 	license = GPL3
 	depends = wget
 	depends = perl
-	source = https://bitbucket.org/plikhari/conkywx_pub/downloads/conkywx_5.0.0.tar.xz
+	source = https://bitbucket.org/plikhari/conkywx_pub/downloads/conkywx_5.0.0.a.tar.xz
 	md5sums = fe82e74da7e3d12985b087d9c2333b1b
 
 pkgname = conkywx

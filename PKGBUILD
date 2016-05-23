@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url='https://bitbucket.org/plikhari/conkywx_pub/downloads'
 license=('GPL3')
 depends=( wget perl )
-source=("${url}/${pkgname}_${pkgver}.tar.xz")
+source=("${url}/${pkgname}_${pkgver}.a.tar.xz")
 md5sums=('fe82e74da7e3d12985b087d9c2333b1b')
 _conkyvar="usr/share/conkywx"
 
@@ -55,12 +55,12 @@ package()
   mkdir -p ${pkgdir}/usr/share/fonts/TTF/conkywx
   mkdir -p ${pkgdir}/${_conkyvar}/examples
   mkdir -p ${pkgdir}/usr/share/applications
- 
+
   install -D -m755 conkywx.sh ${pkgdir}/${_conkyvar}/
   install -D -m755 conky-restart.sh ${pkgdir}/${_conkyvar}/
   install -D -m755 run-conkywx.sh ${pkgdir}/${_conkyvar}/
   install -D -m644 stations.txt ${pkgdir}/${_conkyvar}
- 
+
   install -D -m644 images/windrose-2/* ${pkgdir}/${_conkyvar}/images/windrose-2/
   install -D -m644 images/lua_windvane/* ${pkgdir}/${_conkyvar}/images/lua_windvane/
   install -D -m644 images/bgrounds/* ${pkgdir}/${_conkyvar}/images/bgrounds/
@@ -83,8 +83,8 @@ package()
   install -D -m644 fonts/* ${pkgdir}/usr/share/fonts/TTF/conkywx/
   install -D -m644 examples/* ${pkgdir}/${_conkyvar}/examples/
   install -D -m644 examples/wxmp.desktop ${pkgdir}/usr/share/applications
- 
- 
+
+
 
   # install man page
   gzip -c -9 conkywx.1 > conkywx.1.gz
