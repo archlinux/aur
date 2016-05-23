@@ -1,0 +1,17 @@
+pkgbase = ocamlbricks-trunk
+	pkgdesc = Miscellaneous utility functions in OCaml for Marionnet
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.marionnet.org/
+	arch = any
+	license = GPL
+	makedepends = bzr
+	makedepends = camlp4
+	makedepends = ocaml-findlib
+	makedepends = lablgtk2
+	conflicts = ocamlbricks
+	source = bzr+https://launchpad.net/ocamlbricks/trunk
+	sha256sums = SKIP
+
+pkgname = ocamlbricks-trunk
+
