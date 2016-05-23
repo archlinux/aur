@@ -1,5 +1,5 @@
 pkgname=initrd-dropbear
-pkgver=r47.c3a4d90
+pkgver=r48.48bcbd3
 pkgrel=1
 pkgdesc="Provider of systemd initramfs dropbear ssh server"
 arch=('any')
@@ -47,7 +47,7 @@ package() {
     local target="$pkgdir/usr/share/mkinitcpio/$pkgname"
     local file_list="readme.md *.service *.network"
     local file
-    for file in $file_list ; do
+    for file in $(cd $source && ls $file_list) ; do
         install -D -m644 "$source/$file"                "$target/$file"
     done
     
