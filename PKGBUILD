@@ -7,14 +7,11 @@ arch=('i686' 'x86_64')
 url="https://github.com/Z3Prover/z3"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('git' 'python2')
-optdepends=('python2: bindings for python2')
+makedepends=('git' 'python')
+optdepends=('python: bindings for python')
 conflicts=('z3' 'z3-bin' 'z3-codeplex')
 provides=('z3')
-# The git repo is detected by the 'git:' or 'git+' beginning. The branch
-# '$pkgname' is then checked out upon cloning, expediating versioning:
 source=("$pkgname"::"git+$url")
-# Because the sources are not static, skip Git checksum:
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,30 +20,23 @@ pkgver() {
 }
 
 build() {
+  # /usr/lib/python3.5/site-packages
+  pypath=$(python -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")
+
+  # TODO: optionally generate Java/.NET/OCaml bindings?
+
   cd "$srcdir/$pkgname"
-  python2 scripts/mk_make.py
+  python scripts/mk_make.py --python --prefix="$pkgdir/usr" --pypkgdir="$pkgdir$pypath"
 
   cd "$srcdir/$pkgname/build"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  # If we specify --prefix in build(), it tries to create
-  # "$pkgdir/usr/lib/python2.7/dist-packages" immediately, which we can't have.
-  python2 scripts/mk_make.py --prefix="$pkgdir/usr"
-
   cd "$srcdir/$pkgname/build"
   make install
 
   cd "$srcdir/$pkgname"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  # Arch uses site-packages over dist-packages
-  mv "$pkgdir/usr/lib/python2.7/dist-packages" "$pkgdir/usr/lib/python2.7/site-packages"
-
-  # These are identical, so make a symlink and save 18M
-  rm "$pkgdir/usr/lib/python2.7/site-packages/libz3.so"
-  ln -s ../../libz3.so "$pkgdir/usr/lib/python2.7/site-packages/libz3.so"
 }
 
