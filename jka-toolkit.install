@@ -1,5 +1,5 @@
 post_install() {
-	echo "Thanks to install this kit"
+	echo "Thanks for installing this kit"
 	echo "Scripts"
 	echo "jkazip - de/compress files and directories in many formats very easy"
 	echo "apw - A Package Wrapper"
@@ -7,4 +7,3 @@ post_install() {
 post_upgrade() {
 	post_install
 }
-
