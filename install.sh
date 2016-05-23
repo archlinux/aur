@@ -9,53 +9,19 @@ pre_install() {
 
 ## arg 1:  the new package version
 post_install() {
-    
-    echo "Run post_install"
-
-    local pkgname=initrd-dropbear
-
-    local tag="/etc/initrd-release"
-    local file
-    local source="/usr/share/mkinitcpio/$pkgname"
-    
-    local target="/etc/systemd/system"
-    local source_list=$(grep -l "$tag" $source/*.service)
-    local target_list=$(grep -l "$tag" $target/*.service)
-    if [[ $target_list ]] ; then
-        echo "Keep existing $tag units in $target"
-    else
-        echo "Provision default $tag units for $target"
-        for file in $source_list ; do
-            file=$(basename $file)
-            install -b -D -m644 "$source/$file" "$target/$file"
-        done
-    fi
-    
-    local target="/etc/systemd/network"
-    local source_list=$(grep -l "$tag" $source/*.network)
-    local target_list=$(grep -l "$tag" $target/*.network)
-    if [[ $target_list ]] ; then
-        echo "Keep existing $tag units in $target"
-    else
-        echo "Provision default $tag units for $target"
-        for file in $source_list ; do
-            file=$(basename $file)
-            install -b -D -m644 "$source/$file" "$target/$file"
-        done
-    fi
-    
+    resource_create
 }
 
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 pre_upgrade() {
-    post_install
+    true
 }
 
 ## arg 1:  the new package version
 ## arg 2:  the old package version
 post_upgrade() {
-    true
+    resource_create
 }
 
 ## arg 1:  the old package version
@@ -65,5 +31,66 @@ pre_remove() {
 
 ## arg 1:  the old package version
 post_remove() {
-    true
+    resource_delete
+}
+
+########################
+
+tag="/etc/initrd-release"
+pkgname=initrd-dropbear
+
+source="/usr/share/mkinitcpio/$pkgname"
+source_list_net=$(grep -l "$tag" $source/*.network 2> /dev/null)
+source_list_sys=$(grep -l "$tag" $source/*.service 2> /dev/null)
+
+target="/etc/systemd/"
+target_net="$target/network"
+target_sys="$target/system"
+target_list_net=$(grep -l "$tag" $target_net/*.network 2> /dev/null)
+target_list_sys=$(grep -l "$tag" $target_sys/*.service 2> /dev/null)
+
+resource_create() {
+    
+    echo "Run resource_create"
+
+    if [[ $target_list_net ]] ; then
+        echo "Keep existing $tag units in $target_net"
+    else
+        echo "Provision default $tag units for $target_net"
+        for file in $source_list_net ; do
+            file=$(basename $file)
+            install -b -D -m644 "$source/$file" "$target_net/$file"
+        done
+    fi
+    
+    if [[ $target_list_sys ]] ; then
+        echo "Keep existing $tag units in $target_sys"
+    else
+        echo "Provision default $tag units for $target_sys"
+        for file in $source_list_sys ; do
+            file=$(basename $file)
+            install -b -D -m644 "$source/$file" "$target_sys/$file"
+        done
+    fi
+}
+
+resource_delete() {
+    
+    echo "Run resource_delete"
+
+    echo "Remove default $tag units from $target_net"
+    for file in $source_list_net ; do
+        file=$(basename $file)
+        rm -v -f "$target_net/$file"
+    done
+
+    echo "Remove default $tag units from $target_sys"
+    for file in $source_list_sys ; do
+        file=$(basename $file)
+        rm -v -f "$target_sys/$file"
+    done
+    
+    echo "Remove $source"
+    rm -v -r -f $source
+    
 }
