@@ -4,7 +4,7 @@
 pkgbase=(virtualbox-ck-modules)
 pkgname=(virtualbox-ck-host-modules virtualbox-ck-guest-modules)
 pkgver=5.0.20
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
@@ -45,9 +45,9 @@ package_virtualbox-ck-host-modules() {
 	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 
 	# systemd module loading
-	install -Dm644 /dev/null "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
-	printf "vboxguest\nvboxsf\nvboxvideo\n" >  \
-		"$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
+	install -Dm644 /dev/null "$pkgdir/usr/lib/modules-load.d/virtualbox-host-modules-ck.conf"
+	printf "vboxdrv\nvboxpci\nvboxnetadp\nvboxnetflt\n" >  \
+		"$pkgdir/usr/lib/modules-load.d/virtualbox-host-modules-ck.conf"
 }
 
 package_virtualbox-ck-guest-modules() {
@@ -71,9 +71,7 @@ package_virtualbox-ck-guest-modules() {
 	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
 
 	# systemd module loading
-  install -Dm644 /dev/null "$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
+  install -Dm644 /dev/null "$pkgdir/usr/lib/modules-load.d/virtualbox-guest-modules-ck.conf"
   printf "vboxguest\nvboxsf\nvboxvideo\n" >  \
-		"$pkgdir/usr/lib/modules-load.d/$pkgname.conf"
+		"$pkgdir/usr/lib/modules-load.d/virtualbox-guest-modules-ck.conf"
 }
-
-
