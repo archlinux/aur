@@ -3,13 +3,12 @@
 
 pkgname=blueberry
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bluetooth configuration tool"
 arch=('any')
 url="https://github.com/linuxmint/blueberry"
 license=('GPL')
 depends=('gnome-bluetooth' 'python2-gobject' 'rfkill')
-install=$pkgname.install
 source=($pkgname-$pkgver.tar.gz::https://github.com/linuxmint/blueberry/archive/$pkgver.tar.gz)
 sha256sums=('e9316763dc2350d11f74e56a329f398fe58f31ee2b6240bc34b1fc8a1e9d2f80')
 
