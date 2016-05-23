@@ -144,9 +144,61 @@ keytype_dropbear() {
 
 invoke_command() {
     local command="$@"
-    local result=$($command 2>&1)
-    case $? in
+    local result; result=$($command 2>&1); status=$?
+    case $status in
          0) quiet "Command success: $command"; return 0 ;;
-         *) error "Command failure ($?): $command" ; echo "$result" ; return 1 ;;  
+         *) error "Command failure ($status): $command" ; echo "$result" ; return 1 ;;  
     esac
+}
+
+
+# bug fix for https://bugs.archlinux.org/task/49441
+
+add_systemd_unit() {
+    # Add a systemd unit file to the initcpio image. Hard dependencies on binaries
+    # and other unit files will be discovered and added.
+    #   $1: path to rules file (or name of rules file)
+
+    local unit= rule= entry= key= value= binary= dep=
+
+    unit=$(basename $1)
+    unit=$(PATH=/etc/systemd/system:/usr/lib/systemd/system:/lib/systemd/system type -P "$unit")
+    if [[ -z $unit ]]; then
+        # complain about not found unit file
+        return 1
+    fi
+
+    add_file "$unit"
+
+    while IFS='=' read -r key values; do
+        read -ra values <<< "$values"
+
+        case $key in
+            Requires|OnFailure)
+                # only add hard dependencies (not Wants)
+                map add_systemd_unit "${values[@]}"
+                ;;
+            Exec*)
+                # don't add binaries unless they are required
+                if [[ ${values[0]:0:1} != '-' ]]; then
+                    add_binary "${values[0]}"
+                fi
+                ;;
+        esac
+
+    done <"$unit"
+
+    # preserve reverse soft dependency
+    for dep in {/usr,}/lib/systemd/system/*.wants/${unit##*/}; do
+        if [[ -L $dep ]]; then
+            add_symlink "$dep"
+        fi
+    done
+
+    # add hard dependencies
+    if [[ -d $unit.requires ]]; then
+        for dep in "$unit".requires/*; do
+            add_systemd_unit ${dep##*/}
+        done
+    fi
 }
