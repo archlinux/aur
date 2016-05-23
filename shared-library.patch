@@ -1,0 +1,23 @@
+--- src/Makefile	2012-03-25 17:07:56.000000000 +0200
++++ src/Makefile	2016-05-23 15:33:20.393137713 +0200
+@@ -5,9 +5,9 @@
+ SRC = $(wildcard *.cc)
+ OBJ = $(SRC:%.cc=%.o)
+ DEP = $(SRC:%.cc=.%.d)  
+-LIB = ../lib/libCRY.a
++LIB = ../lib/libCRY.so
+ 
+-CPPFLAGS += -Wall
++CPPFLAGS += -Wall -fPIC
+ 
+ default: depend $(LIB)
+ 
+@@ -20,7 +20,7 @@
+ 
+ $(LIB): $(OBJ)
+ 	@if (test -f $(LIB) ) then (rm $(LIB)) fi
+-	@ar -crs $(LIB) $(OBJ)
++	@$(CXX) -shared -o $(LIB) $(OBJ)
+ 	@echo "Done making $(LIB)"
+ 
+ clean:
