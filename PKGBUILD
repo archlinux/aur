@@ -9,7 +9,7 @@
 pkgname=monteverdi2
 pkgver=0.8
 minorver=1
-pkgrel=4
+pkgrel=5
 pkgdesc="A remote sensing application based on Orfeo Toolbox"
 arch=(x86_64)
 url="http://www.orfeo-toolbox.org/otb/monteverdi.html"
