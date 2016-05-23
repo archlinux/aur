@@ -14,7 +14,7 @@ build() {
         
     build_unit
     
-    #build_libs
+    build_libs
     
 }
 
@@ -115,12 +115,12 @@ build_libs() {
     
     add_checked_modules "/drivers/net/"
     
-    add_binary "dropbear"
+    # provided by add_systemd_unit
     
-    add_dir "/var/run"
-    add_dir "/var/log"
-    
-    invoke_command   touch "${BUILDROOT}"/var/log/lastlog
+    #add_binary "dropbear"
+    #add_dir "/var/run"
+    #add_dir "/var/log"
+    #invoke_command   touch "${BUILDROOT}"/var/log/lastlog
     
 }
 

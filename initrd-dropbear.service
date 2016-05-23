@@ -3,6 +3,7 @@
 
 [Unit]
 Description=Dropbear SSH Server (initrd)
+Documentation=https://matt.ucc.asn.au/dropbear/dropbear.html
 # NOTE: initramfs inclusion marker
 ConditionPathExists=/etc/initrd-release
 DefaultDependencies=no
