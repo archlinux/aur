@@ -7,8 +7,9 @@
 # Contributor: Samuel Mesa <samuelmesa@linuxmail.org>
 
 pkgname=monteverdi2
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.8
+minorver=1
+pkgrel=4
 pkgdesc="A remote sensing application based on Orfeo Toolbox"
 arch=(x86_64)
 url="http://www.orfeo-toolbox.org/otb/monteverdi.html"
@@ -24,7 +25,7 @@ backup=()
 options=()
 install=
 changelog=
-source=(http://heanet.dl.sourceforge.net/project/orfeo-toolbox/Monteverdi2-$pkgver.tgz)
+source=(http://heanet.dl.sourceforge.net/project/orfeo-toolbox/Monteverdi2/Monteverdi2-$pkgver.$minorver/Monteverdi2-$pkgver.$minorver.tgz)
 noextract=()
 md5sums=('0f65c161f299b2f8922f7f68b28f5882')
  #generate with 'makepkg -g'
@@ -41,13 +42,13 @@ build() {
   cd build
 
   #export CMAKE_PREFIX_PATH="/usr/lib/lib/otb/"
-  cmake  ../Monteverdi2-$pkgver -DCMAKE_INSTALL_PREFIX=/usr \
-            -DITK_DIR=/usr/lib64/cmake/ITK-4.7 \
-            -DOTB_DIR=/usr/lib64/cmake/OTB-5.0 \
+  cmake  ../Monteverdi2-$pkgver.$minorver -DCMAKE_INSTALL_PREFIX=/usr \
+            -DITK_DIR=/usr/lib64/cmake/ITK-4.9 \
+            -DOTB_DIR=/usr/lib64/cmake/OTB-5.4 \
             -DOTB_DATA_USE_LARGEINPUT=ON \
 	  -DQWT_INCLUDE_DIR=/usr/include/qwt5 \
 	  -DQWT_LIBRARY=/usr/lib64/libqwt5.so \
-	  -DICE_INCLUDE_DIR=/usr/include/otb
+	  -DICE_INCLUDE_DIR=/usr/include
 	  
 		
   make
