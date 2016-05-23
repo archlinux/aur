@@ -2,8 +2,9 @@
 # Contributor: Samuel Mesa <samuelmesa@linuxmail.org>
  
 pkgname=otb-ice
-pkgver=0.3.0
-pkgrel=2
+_pkgname=otb-ice
+pkgver=0.4
+pkgrel=1
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org/otb/"
@@ -19,9 +20,9 @@ backup=()
 options=()
 install=
 changelog=
-source=(http://freefr.dl.sourceforge.net/project/orfeo-toolbox/Ice-$pkgver.tgz)
+source=(https://www.orfeo-toolbox.org/packages/archives/Ice/Ice-$pkgver.$pkgrel.tar.gz)
 noextract=()
-md5sums=('6432f1cce1e8f7dfc5566964d229d76a')
+md5sums=('e7341dd0eed6bcf706af15ba99f26362')
  
 build() {
   
@@ -29,16 +30,18 @@ build() {
   msg "Extracting archive..." 
   msg "starting make..."
   #rm -rf OTB/Examples
+  
   if [ -d "$srcdir/build/" ]; then
     rm -rf $srcdir/build/
   fi
+  
   mkdir $srcdir/build/
   cd $srcdir/build
  
-  cmake ../Ice-$pkgver \
+  cmake ../$pkgname \
 	-DCMAKE_INSTALL_PREFIX=/usr \
-  -DITK_DIR=/usr/lib64/cmake/ITK-4.7 \
-  -DOTB_DIR=/usr/lib64/cmake/OTB-5.0 \
+  -DITK_DIR=/usr/lib64/cmake/ITK-4.8 \
+  -DOTB_DIR=/usr/lib64/cmake/OTB-5.2 \
 	  -Wno-dev
   
   make 
@@ -49,3 +52,5 @@ package() {
   cd "$srcdir/"build
   make DESTDIR="$pkgdir" install
 }
+
+
