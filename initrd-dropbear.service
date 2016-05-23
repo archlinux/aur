@@ -35,4 +35,4 @@ Restart=always
 RestartSec=1s
 
 [Install]
-RequiredBy=sysinit.target
+WantedBy=sysinit.target

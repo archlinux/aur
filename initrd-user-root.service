@@ -11,7 +11,8 @@ DefaultDependencies=no
 [Service]
 Type=oneshot
 RemainAfterExit=true
-ExecStart=/bin/sed -i -r -e "s|root.*|root:x:0:0:root:/root:/bin/sh|" /etc/passwd
+#ExecStart=/bin/chsh -s /bin/sh root
+ExecStart=/bin/chsh -s /etc/dropbear/initrd.sh root
 
 [Install]
 RequiredBy=initrd-dropbear.service

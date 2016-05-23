@@ -5,6 +5,11 @@
 
 Provider of systemd initramfs dropbear ssh server
 
+### Example
+
+/etc/mkinitcpio.conf
+HOOKS="base systemd initrd-dropbear sd-encrypt"
+
 ### Details
 
 pacman install actions:

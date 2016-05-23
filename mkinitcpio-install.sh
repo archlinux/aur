@@ -118,6 +118,8 @@ build_libs() {
     # provided by add_systemd_unit
     #add_binary "dropbear"
 
+    add_file "/etc/dropbear/initrd.sh"
+
     add_dir "/var/run"
     add_dir "/var/log"
     invoke_command   touch "${BUILDROOT}"/var/log/lastlog

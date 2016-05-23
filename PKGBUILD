@@ -1,5 +1,5 @@
 pkgname=initrd-dropbear
-pkgver=r52.cba8222
+pkgver=r53.2249cf3
 pkgrel=1
 pkgdesc="Provider of systemd initramfs dropbear ssh server"
 arch=('any')
@@ -10,6 +10,7 @@ install=install.sh
 url="https://aur.archlinux.org/cgit/aur.git/tree/?h=${pkgname}"
 source=("${pkgname}::git+https://aur.archlinux.org/${pkgname}.git")
 md5sums=('SKIP')
+backup=()
 
 pkgver() {
     # version update only in presense of user provided marker
@@ -45,7 +46,7 @@ package() {
     install -D -m644 "$source/mkinitcpio-install.sh"    "$target/install/$pkgname"
   
     local target="$pkgdir/usr/share/mkinitcpio/$pkgname"
-    local file_list="readme.md *.service *.network"
+    local file_list="readme.md initrd.sh *.service *.network"
     local file
     for file in $(cd $source && ls $file_list) ; do
         install -D -m644 "$source/$file"                "$target/$file"

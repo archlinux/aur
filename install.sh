@@ -49,6 +49,9 @@ target_sys="$target/system"
 target_list_net=$(grep -l "$tag" $target_net/*.network 2> /dev/null)
 target_list_sys=$(grep -l "$tag" $target_sys/*.service 2> /dev/null)
 
+source_shell="$source/initrd.sh"
+target_shell="/etc/dropbear/initrd.sh"
+
 resource_create() {
     
     echo "Run resource_create"
@@ -67,6 +70,10 @@ resource_create() {
         target_file="$target_sys/$file"
         resource_install_file
     done
+    
+    source_file="$source_shell"
+    target_file="$target_shell"
+    resource_install_file
 
 }
 
