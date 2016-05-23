@@ -2,7 +2,7 @@
 
 _pkgname=libiio
 pkgname="$_pkgname-git"
-pkgver=v0.6.r205.gb325202
+pkgver=v0.6.r206.gf7de353
 pkgrel=1
 pkgdesc="TODO"
 arch=('i686' 'x86_64' 'armv7h')
@@ -26,8 +26,8 @@ build() {
   cd "$srcdir/$_pkgname/build"
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
-    -DCMAKE_INSTALL_SBINDIR=/usr/bin
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCMAKE_INSTALL_SBINDIR=bin
   make
 }
 
