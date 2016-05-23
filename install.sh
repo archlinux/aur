@@ -43,7 +43,7 @@ source="/usr/share/mkinitcpio/$pkgname"
 source_list_net=$(grep -l "$tag" $source/*.network 2> /dev/null)
 source_list_sys=$(grep -l "$tag" $source/*.service 2> /dev/null)
 
-target="/etc/systemd/"
+target="/etc/systemd"
 target_net="$target/network"
 target_sys="$target/system"
 target_list_net=$(grep -l "$tag" $target_net/*.network 2> /dev/null)
