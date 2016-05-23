@@ -28,7 +28,7 @@ source=("https://ftp.mozilla.org/pub/thunderbird/releases/$pkgver/source/thunder
         "$pkgname.desktop"
         "$pkgname-safe.desktop"
         'vendor.js')
-sha512sums=(''
+sha512sums=('11c8e06814a1ad37734b344f4b76604506c6652a112a47a53a31b73e121b93a65207b44ccc0af7288969e8f3f145f2367cbf42e8c5981490f3abf485fc9c7eb2  '
             '8f73124b10eeb0d98d68dece7fd152b771a9aac2f84268dcf82e5473183c75bea9b7ba9db153566ddad0cbf0f006b022d39762576a4303ce4330a8211edabb53'
             '62895299de6b1b55f332bc3c58c7c113640a0bc2e97d3a3800e47c20acd3af54174c1c7a7ab83778944f4e90ff5f15ca17f611d06f74ab9d9dccd3ec365f8f81'
             'fc83c23f67cc5d399bc655d2486936db3ab500bafe399a905a17a0b0f63ad9befb782fc9c07d467a65a80a00e3ce984700ec3cf60e4cb3e1b29b20954c6fa775'
