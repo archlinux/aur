@@ -61,14 +61,13 @@ _jsoncpp_rev=11086dd6a7eba04289944367ca82cea71299ed70
 _japanese_usage_dictionary_rev=e5b3425575734c323e1d947009dd74709437b684
 _mozc_rev=3306d3314499a54a4064b8b80bbc1bce3f6cfac4
 _fonttools_rev=5ba7d98a4153fad57258fca23b0bcb238717aec3
-_jsr305_ver=2.0.2
 
 _pkgbase=mozc
 pkgname=fcitx-mozc-ut
 pkgdesc="Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)"
 pkgver=${_mozcver}.${_utdicver}
 _fcitx_patchver=2.17.2313.102.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
 license=('custom')
@@ -87,7 +86,6 @@ source=(mozc-${_mozcver}::git+https://github.com/google/mozc.git#commit=${_mozc_
         mozcdic-ut-${_utdicver}.tar.bz2::https://osdn.jp/frs/chamber_redir.php?f=%2Fusers%2F10%2F10777%2Fmozcdic-ut-${_utdicver}.tar.bz2
         EDICT_license.html
         mod-generate-mozc-ut.sh
-        http://findbugs.googlecode.com/svn/repos/release-repository/com/google/code/findbugs/jsr305/$_jsr305_ver/jsr305-$_jsr305_ver.jar
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitx_patchver}.patch
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-icon.tar.gz)
 
@@ -125,8 +123,6 @@ prepare() {
   do
     cp -a $dep mozc-ut-${pkgver}/third_party/
   done
-
-  install -D jsr305-$_jsr305_ver.jar mozc/src/third_party/jsr305/jsr305-$_jsr305_ver.jar
 }
 
 build() {
