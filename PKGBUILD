@@ -4,7 +4,7 @@
 #
 pkgname=lib32-libtinfo
 pkgver=6
-pkgrel=7
+pkgrel=8
 pkgdesc="lib32 symlink to ncurses for use in packages"
 arch=('any')
 url="http://www.gnu.org/software/ncurses/"
