@@ -2,8 +2,8 @@
 # Contributor: Samuel Mesa <samuelmesa@linuxmail.org>
 
 pkgname=orfeo-toolbox
-pkgver=5.2
-minorver=1
+pkgver=5.4
+minorver=0
 pkgrel=1
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
@@ -22,12 +22,13 @@ options=()
 install=
 changelog=
 
-source=(https://www.orfeo-toolbox.org/packages/OTB-$pkgver.$minorver.tar.gz
+source=(https://www.orfeo-toolbox.org/packages/OTB-$pkgver.$minorver.tgz
 		git://github.com/jmichel-otb/GKSVM.git)
 noextract=()
 
-md5sums=('c9f8d269d0861214d31743233a30042f'
+md5sums=('7abceaebd6c8e0116b0170535e4e4236'
          'SKIP')
+
 
 _gitname="GKSVM"
 
@@ -42,37 +43,38 @@ build() {
   msg "Extracting archive..." 
   msg "starting make..."
   
-  if  [ -d "$srcdir/build/" ]; then
-    rm -rf $srcdir/build/
-   fi
-  mkdir $srcdir/build/
+#  if  [ -d "$srcdir/build/" ]; then
+#    rm -rf $srcdir/build/
+#  fi
+#  mkdir $srcdir/build/
 
 cd $srcdir/build
 
-  cmake ../OTB-$pkgver.$minorver \
-  -DCMAKE_BUILD_TYPE=Release \
-      -DCMAKE_CXX_FLAGS="$CXXFLAGS -fPIC" \
-      -DCMAKE_C_FLAGS="$CFLAGS -fPIC" \
-	  -DCMAKE_INSTALL_PREFIX=/usr \
-	  -DOTB_USE_CURL=ON \
-	  -DBUILD_EXAMPLES=OFF \
-	  -DBUILD_TESTING=OFF \
-	  -DOTB_WRAP_PYTHON=ON \
-	  -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-	  -DPYTHON_LIBRARIES=/usr/lib/libpython2.7.so \
-	  -DPYTHON_INCLUDE_PATH=/usr/include/python2.7/ \
-	  -DOTB_INSTALL_PYTHON_DIR=/usr/lib/python2.7/site-packages/ \
-	  -DITK_DIR=/usr/lib64/cmake/ITK-4.8 \
-	  -DBUILD_SHARED_LIBS=ON \
-	  -DOTB_USE_QT4=ON \
-	  -DOTB_USE_MAPNIK=OFF \
-	  -DOTB_USE_OPENCV=ON \
-	  -DOTB_USE_MUPARSER=ON \
-	  -DOTB_USE_LIBKML=ON \
-	  -DOTB_USE_LIBSVM=ON \
-	  -DOTB_DATA_USE_LARGEINPUT=ON 
-	  
-  make 
+cmake ../OTB-$pkgver.$minorver \
+-DCMAKE_BUILD_TYPE=Release \
+-DCMAKE_CXX_FLAGS="$CXXFLAGS -fPIC" \
+-DCMAKE_C_FLAGS="$CFLAGS -fPIC" \
+-DCMAKE_INSTALL_PREFIX=/usr \
+-DOTB_USE_CURL=ON \
+-DBUILD_EXAMPLES=OFF \
+-DBUILD_TESTING=OFF \
+-DOTB_WRAP_PYTHON=ON \
+-DPYTHON_EXECUTABLE=/usr/bin/python2 \
+-DPYTHON_LIBRARIES=/usr/lib/libpython2.7.so \
+-DPYTHON_INCLUDE_PATH=/usr/include/python2.7/ \
+-DOTB_INSTALL_PYTHON_DIR=/usr/lib/python2.7/site-packages/ \
+-DITK_DIR=/usr/lib64/cmake/ITK-4.9 \
+-DBUILD_SHARED_LIBS=ON \
+-DOTB_USE_QT4=ON \
+-DOTB_USE_MAPNIK=OFF \
+-DOTB_USE_OPENCV=OFF \
+-DOTB_USE_MUPARSER=ON \
+-DOTB_USE_LIBKML=ON \
+-DOTB_USE_LIBSVM=ON \
+-DOTB_DATA_USE_LARGEINPUT=ON 
+
+make 
+
   
 }
 
