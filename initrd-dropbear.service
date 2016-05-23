@@ -6,7 +6,9 @@ Description=Dropbear SSH Server (initrd)
 # NOTE: initramfs inclusion marker
 ConditionPathExists=/etc/initrd-release
 DefaultDependencies=no
-Requires=initrd-network.service
+Requires=systemd-networkd.service
+#Requires=systemd-resolved.service
+#Requires=initrd-network.service
 #After=network.target
 #Before=cryptsetup-pre.target
 #Wants=cryptsetup.target

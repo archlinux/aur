@@ -4,10 +4,10 @@
 [Unit]
 Description=Network Service (initrd)
 # NOTE: initramfs inclusion marker
-ConditionPathExists=/etc/initrd-release
+ConditionPathExists=/etc/xxx/initrd-release
 DefaultDependencies=no
 Requires=systemd-networkd.service
-#Requires=systemd-resolved.service
+Requires=systemd-resolved.service
 #After=network.target
 #Before=cryptsetup-pre.target
 #Wants=cryptsetup-pre.target
