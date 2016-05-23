@@ -116,11 +116,11 @@ build_libs() {
     add_checked_modules "/drivers/net/"
     
     # provided by add_systemd_unit
-    
     #add_binary "dropbear"
-    #add_dir "/var/run"
-    #add_dir "/var/log"
-    #invoke_command   touch "${BUILDROOT}"/var/log/lastlog
+
+    add_dir "/var/run"
+    add_dir "/var/log"
+    invoke_command   touch "${BUILDROOT}"/var/log/lastlog
     
 }
 
