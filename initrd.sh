@@ -48,10 +48,10 @@ command_prompt() {
 }
 
 command_cryptsetup() {
-    
+    true
 }
 
-if [[ ps | grep -q "$command_askpass" ]] ; then
+if ps | grep -q "$command_askpass" ; then
     $command_askpass
 else 
     command_prompt
