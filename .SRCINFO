@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-gdbm
 	pkgdesc = GNU database library (mingw-w64)
 	pkgver = 1.10
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnu.org/software/gdbm/gdbm.html
 	arch = any
 	license = GPL
@@ -16,7 +16,7 @@ pkgbase = mingw-w64-gdbm
 	source = gdbm-win32-support.patch
 	md5sums = 88770493c2559dc80b561293e39d3570
 	md5sums = ac255b10452005237836cd2d3a470733
-	md5sums = 231f5c2a491af140e916ec1bd4825480
+	md5sums = 47b9d81616ba58b0257248c6a5777412
 
 pkgname = mingw-w64-gdbm
 
