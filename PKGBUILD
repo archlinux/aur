@@ -1,7 +1,7 @@
 # Maintainer: Maxwell Pray a.k.a. Synthead <synthead@gmail.com>
 
 pkgname="front-panel-designer"
-pkgver="4.4.2"
+pkgver="4.5.1"
 pkgrel="1"
 pkgdesc="Free CAD software that lets you design and order custom front panels and enclosures exactly to your specification."
 arch=("i686" "x86_64")
@@ -15,12 +15,12 @@ md5sums=("73c1659746c9ded0a4619d15d810b6be" "c6e6f3eba58cf32708247caeba614b72")
 case $CARCH in
   x86_64)
     source+=("http://www.frontpanelexpress.com/fileadmin/downloads/FrontDesign-US-$pkgver-amd64.tgz")
-    md5sums+=("6be16ef6e40ee1107526c0806a79d5c2")
+    md5sums+=("9aa42375f4664e71ea61324e7b052729")
     ;;
 
   i686)
     source+=("http://www.frontpanelexpress.com/fileadmin/downloads/FrontDesign-US-$pkgver-i386.tgz")
-    md5sums+=("e1001be19e7160348a6fd689f68e1571")
+    md5sums+=("3be648dd6b05cd626641df65e0e83ef4")
     ;;
 esac
 
