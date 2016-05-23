@@ -1,12 +1,12 @@
-# $Id: PKGBUILD 173344 2016-05-02 12:35:46Z ronald $
+# $Id: PKGBUILD 176107 2016-05-22 19:21:41Z jlichtblau $
 # Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 # Contributor: William Rea <sillywilly@gmail.com>
 
 pkgname=gdal-hdf4
 _pkgname=gdal
-pkgver=2.0.2
-pkgrel=5
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)"
 arch=('i686' 'x86_64')
 url="http://www.gdal.org/"
@@ -19,17 +19,13 @@ optdepends=('postgresql: postgresql database support'
             'perl:  perl binding support')
 options=('!emptydirs')
 changelog=$_pkgname.changelog
-source=(http://download.osgeo.org/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.gz
-        gdal-python-install.patch)
-sha256sums=('db7722caf8d9dd798ec18012b9cacf40a518918466126a88b9fd277bd7d40cc4'
-            '823199fdedf5953d9b6bffb0e58a810490e958054f5a9da9d5cd1818f89cd51a')
+source=(http://download.osgeo.org/${_pkgname}/${pkgver}/${_pkgname}-${pkgver}.tar.xz)
+sha256sums=('568b43441955b306364fcf97fb47d4c1512ac6f2f5f76b2ec39a890d2418ee03')
 provides=('gdal')
 conflicts=('gdal')
 
-
 prepare() {
   cd "${srcdir}"/$_pkgname-$pkgver
-  patch -Np0 -i "${srcdir}"/gdal-python-install.patch
 
 # python2 fixes
   sed -i 's_python python1.5_python2 python python1.5_' configure
@@ -71,6 +67,7 @@ package () {
 #FS15477 clean up junks
   rm -f "${pkgdir}"/usr/bin/*.dox
   rm -f "${pkgdir}"/usr/share/man/man1/_build_gdal_src_gdal-${pkgver}_apps_.1
+  rm -f "${pkgdir}"/usr/share/man/man1/_home_rouault_dist_wrk_gdal_apps_.1
 #FS#46581 no better way found yet
   mv "${pkgdir}"/usr/man/man3 "${pkgdir}"/usr/share/man
   rm -rf "${pkgdir}"/usr/man
