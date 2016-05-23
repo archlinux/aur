@@ -11,8 +11,8 @@ url="https://pypi.python.org/pypi/tifffile"
 license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=(https://pypi.python.org/packages/source/t/${_name}/${_name}-${pkgver}.tar.gz)
-sha256sums=('15ab0fa95967fd4470b9f755c43be801fb60bff089db189845077e1bb1da5566')
+source=(https://github.com/blink1073/tifffile/archive/v${pkgver}.zip)
+sha256sums=('caaec90acc18a8395df922543b25ec8f5ded03e6d5896342f2f23c4824ca17fb')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
