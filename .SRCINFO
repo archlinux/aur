@@ -1,6 +1,6 @@
 pkgbase = ros-indigo-mavros-extras
 	pkgdesc = ROS - Extra nodes and plugins for MAVROS.
-	pkgver = 0.17.2
+	pkgver = 0.17.4
 	pkgrel = 1
 	url = http://wiki.ros.org/mavros_extras
 	arch = any
@@ -30,7 +30,7 @@ pkgbase = ros-indigo-mavros-extras
 	depends = ros-indigo-sensor-msgs
 	depends = ros-indigo-urdf
 	depends = ros-indigo-visualization-msgs
-	source = mavros_extras::git+https://github.com/mavlink/mavros-release.git#tag=release/indigo/mavros_extras/0.17.2-0
+	source = mavros_extras::git+https://github.com/mavlink/mavros-release.git#tag=release/indigo/mavros_extras/0.17.4-0
 	md5sums = SKIP
 
 pkgname = ros-indigo-mavros-extras

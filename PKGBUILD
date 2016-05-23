@@ -4,7 +4,7 @@ pkgdesc="ROS - Extra nodes and plugins for MAVROS."
 url='http://wiki.ros.org/mavros_extras'
 
 pkgname='ros-indigo-mavros-extras'
-pkgver='0.17.2'
+pkgver='0.17.4'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
