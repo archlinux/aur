@@ -1,7 +1,7 @@
 # Maintainer: Sapphira Armageddos <shadowkyogre.public@gmail.com>
 pkgname=gpw
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Generate pronouncable passwords"
 arch=('i686' 'x86_64')
 url="http://www.multicians.org/thvv/tvvtools.html#gpw"
@@ -26,6 +26,7 @@ build() {
 package() {
 	cd "$srcdir"
 	install -Dm755 gpw "$pkgdir/usr/bin/gpw"
+	install -Dm755 LICENSE.gpw "$pkgdir/usr/share/licenses/gpw/LICENSE"
 }
 
 sha256sums=('ef7a588f9d2845d3ef5a2e183dbc53aa3dc0ce42d37c7f75c6cf4b4154e6b32b'
