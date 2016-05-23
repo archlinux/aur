@@ -4,24 +4,19 @@
 
 pkgname=phpdocumentor2
 _pkgreal=phpDocumentor
-pkgver=2.8.5
-pkgrel=2
+pkgver=2.9.0
+pkgrel=1
 pkgdesc="Documentation Generator for PHP"
 arch=('any')
 url="http://www.phpdoc.org/"
 license=('custom')
-depends=('php56' 'graphviz' 'php56-xsl')
+depends=('php' 'graphviz' 'php-xsl')
 conflicts=('phpdocumentor')
 install=$pkgname.install
-source=("http://pear.phpdoc.org/get/${_pkgreal}-${pkgver}.tgz"
+source=("https://github.com/${_pkgreal}/${_pkgreal}2/releases/download/v${pkgver}/${_pkgreal}-${pkgver}.tgz"
         "${pkgname}.install")
-sha256sums=('17b20d7648392e72064590347f6092f80d67f8c418d759ed54982716dfafebf2'
+sha256sums=('72f2c2810c365341a320fb5dc883c8d41b941cb4da003f7e67a4a7a13bb5a56c'
             'b6066d62de3b131ac4d71a13eea8c6419f62282c7e229dc55b06acf0c8b5b60a')
-
-prepare() {
-	cd ${srcdir}/${_pkgreal}-${pkgver}
-	sed -i -e '1s|/usr/bin/env php$|/usr/bin/env php56|' bin/phpdoc
-}
 
 package() {
 	# Install main application
