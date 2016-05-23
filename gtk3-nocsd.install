@@ -1,0 +1,5 @@
+post_install() {
+  echo "Note: To get gtk3-nocsd runnig you need to add this to your ~/.bashrc"
+  echo "export GTK_CSD=0"
+  echo 'export LD_PRELOAD="/usr/lib/libgtk3-nocsd.so.0:${LD_PRELOAD}"'
+}

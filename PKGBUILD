@@ -2,7 +2,7 @@
 
 pkgname=gtk3-nocsd-git
 pkgver=r46.bc762fc
-pkgrel=2
+pkgrel=3
 pkgdesc='A hack to disable gtk+ 3 client side decoration'
 arch=('i686' 'x86_64')
 url='https://github.com/PCMan/gtk3-nocsd'
@@ -37,4 +37,6 @@ package() {
 
   # cd "$srcdir"
   # install -D -m 0644 profile_gtk3-nocsd.sh "${pkgdir}"/etc/profile.d/gtk3-nocsd.sh
+
+  install=gtk3-nocsd.install
 }
