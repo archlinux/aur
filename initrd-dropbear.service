@@ -15,6 +15,7 @@ Requires=systemd-resolved.service
 #Wants=cryptsetup.target
 
 [Service]
+
 # dropbear options:
 # -F     Don't fork into background.
 # -s     Disable password logins.
@@ -24,7 +25,12 @@ Requires=systemd-resolved.service
 # -r rsakey RSA host key (default:  /etc/dropbear/dropbear_rsa_host_key)
 # user key:  ~/.ssh/authorized_keys
 ExecStart=/usr/bin/dropbear -F -s -j -k
-ExecReload=/bin/kill -HUP $MAINPID
+#ExecReload=/bin/kill -HUP $MAINPID
+
+# release network devices to allow rename after switch-root
+ExecStop=/usr/bin/ip addr flush up
+ExecStop=/usr/bin/ip link set group default down
+
 Restart=always
 RestartSec=1s
 
