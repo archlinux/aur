@@ -11,7 +11,7 @@ depends=('kdebase-runtime' 'dmidecode' 'festival' 'poppler' 'ffmpeg' 'transcode'
 source=("http://downloads.sourceforge.net/project/kde-services/Source-Code/$pkgname-$pkgver.tar.bz2" 
 	"System-Tools_addtoservicemenu.desktop")
 install=${pkgname}.install
-sha512sums=('68a2bd7889da69d0af4000be09736b3e2421042a73595eb9be1cc443af8b486321d395e67ffa21c3e66243724d86dfada077c2e3ef6d0099444c0ed382a0ff46'
+sha512sums=('ce00e77f0a4491da639423f95242c2e671663dcc45528b0bb5af32736b08b82aae3a56484bd55cefb293f2a519bf2c502e30f95ee0aba42c3d7af0f396fa6292'
             '170b89e91dad38340424911f3a1daad69b4a3bc7aa6813ffd74e53c4b34c2555f68c05334b0d2a7fa17d1f0f778369e7cfe3e0590e18e8e0bf006ec1685a59f2')
 
 package() {
