@@ -2,7 +2,7 @@
 
 pkgname=combust-git
 _gitname=combust
-pkgver=0.58.3281b1e
+pkgver=0.59.3c6db46
 pkgrel=1
 pkgdesc='nftables firewall script with profiles'
 arch=('any')
@@ -21,9 +21,10 @@ pkgver () {
 package() {
   cd "${srcdir}/${_gitname}"
 
-  install -d $pkgdir/etc/combust/
+  install -d $pkgdir/etc/
+  install -d $pkgdir/usr/bin/
   install -d $pkgdir/usr/lib/systemd/system/
-  install -m755 combust.sh "${pkgdir}"/etc/combust/
-  install -m600 combust.conf "${pkgdir}"/etc/combust/
+  install -m600 combust.conf "${pkgdir}"/etc/
+  install -m755 combust.sh "${pkgdir}"/usr/bin/combust
   install -m644 combust.service "${pkgdir}"/usr/lib/systemd/system/
 }
