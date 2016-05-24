@@ -8,6 +8,7 @@ arch=(any)
 license=('unknown')
 url="http://www.microsoft.com/en-us/download/details.aspx?id=40727"
 depends=('mono' 'git')
+replaces=('mono-pcl')
 source=(xamarin-referenceassemblies-pcl::git+https://github.com/directhex/xamarin-referenceassemblies-pcl)
 md5sums=('SKIP')
 
