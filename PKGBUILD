@@ -2,8 +2,8 @@
 # Contributor: carstene1ns <url/mail: arch carsten-teibes de>
 
 pkgname=trackma-git
-pkgver=0.4.r143.g5531f91
-pkgrel=1
+pkgver=0.4.r152.g7ca2678
+pkgrel=2
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 arch=('any')
 url="http://z411.github.io/trackma/"
@@ -22,7 +22,6 @@ optdepends=('pygtk: gtk frontend'
             'python2-urwid: ncurses frontend'
 			'python2-inotifyx: instant media recognition')
 
-install=trackma-git.install
 source=(${pkgname}::"git+https://github.com/z411/${pkgname%-git}.git"
        	"${pkgname%-git}-curses.desktop"
         "${pkgname%-git}-gtk.desktop"
