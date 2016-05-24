@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=eye
-pkgver=0.8
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="Process monitoring tool inspired by Bluepill and God"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('ruby'
          'ruby-timers')
 source=(https://rubygems.org/downloads/${pkgname#*-}-${pkgver}.gem
         eye.service)
-sha256sums=('9071e75d0423028c0ee1c4bac6c0ff1f69bee93640b3f6c85b60a81edf27838e'
+sha256sums=('772e430230f01e952e28570a5f7c93c7155d18f86c25d42f9535c6abca895ca1'
             'db91c9344e409635f66a981bd2735e8c34484f0246f06c1cdc5ad516ddcbdf5b')
 noextract=("${pkgname#*-}-${pkgver}.gem")
 provides=('eye' 'ruby-eye')
