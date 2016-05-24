@@ -1,24 +1,30 @@
-# Maintainer: Ivan Cai <caizixian@users.noreply.github.com>
+# Maintainer: Matthew Ellison <matt+aur@arroyonetworks>
+# Contributor: Ivan Cai <caizixian@users.noreply.github.com>
+
 pkgname=python-iptables 
-pkgver=0.7.0
+pkgver=0.11.0
 pkgrel=1
-pkgdesc="Python bindings for iptables"
+pkgdesc='Python bindings for iptables'
 arch=('x86_64' 'i686')
-url="https://github.com/ldx/python-iptables"
+url='https://github.com/ldx/python-iptables'
 license=('Apache')
 groups=()
-depends=('python')
+depends=('python' 'iptables')
 makedepends=('python-setuptools')
 provides=()
 conflicts=()
 replaces=()
 backup=()
 options=(!emptydirs)
-source=("https://pypi.python.org/packages/source/p/python-iptables/python-iptables-0.7.0.tar.gz")
-md5sums=('e1ee97f15f1c7e2a8545ff7e0213c714')
+source=("https://files.pythonhosted.org/packages/source/${pkgname:0:1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('55bdd0d8e3d0b4c27e4d61bf6f21ada1e19146c0adf65e5093e254a126abcce9')
 
-package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py check
 }
 
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1
+}
