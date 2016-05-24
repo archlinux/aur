@@ -1,16 +1,17 @@
+# Contributor: Raffaele Zamorano
 # Maintainer: Jose Riha <jose1711 gmail com>
 pkgname=gpxsee-git
 pkgrel=1
-pkgver=r28.8a4b749
+pkgver=r196.82cbbbb
 pkgdesc='GPX viewer and analyzer'
 arch=('any')
 url="http://tumic.wz.cz/gpxsee"
 license=('gpl3')
-depends=('qt5-base')
+depends=('qt5-tools')
 makedepends=('git')
 md5sums=('SKIP')
 
-source=("${pkgname}"::'git://github.com/tumic0/GPXSee.git')
+source=("${pkgname}"::git+http://github.com/tumic0/GPXSee)
 
 pkgver() {
   cd "$srcdir/${pkgname}"
