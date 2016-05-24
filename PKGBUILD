@@ -7,7 +7,7 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=pd-l2ork
-pkgver=1644.ec3b96b
+pkgver=1656.da84fdf
 pkgrel=1
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData"
 url="http://l2ork.music.vt.edu/main/?page_id=56"
@@ -24,8 +24,13 @@ conflicts=('pd-l2ork')
 install=pd-l2ork.install
 options=('!makeflags')
 source=("$pkgname::git+https://github.com/pd-l2ork/pd.git"
-	"menu_openfile.patch")
-md5sums=('SKIP' '6eb362b0165fc9fc4409e3db5d2278c2')
+	"menu_openfile.patch"
+	"Gem-pix_colorclassify.patch"
+	"RTcmix-pd-LCPLAY-stabilize.patch")
+md5sums=('SKIP'
+         '6eb362b0165fc9fc4409e3db5d2278c2'
+         '33dc1880e38ac8dbc7aa5075bfe49abd'
+         '39c53063dc18681f29b12c08d9c453aa')
 
 pkgver() {
   cd $srcdir/$pkgname
@@ -34,7 +39,14 @@ pkgver() {
 
 prepare() {
   cd $srcdir/$pkgname
-  patch -p1 < ../menu_openfile.patch
+  # patch to make menu_openfile work again
+  patch -p1 < $srcdir/menu_openfile.patch
+  # check out the latest source of all submodules
+  git submodule update --init
+  git submodule foreach git pull origin master
+  # make the sources compile with gcc 6.1+
+  cd $srcdir/$pkgname/Gem && patch -p1 < $srcdir/Gem-pix_colorclassify.patch
+  cd $srcdir/$pkgname/l2ork_addons/rtcmix-in-pd && patch -p1 < $srcdir/RTcmix-pd-LCPLAY-stabilize.patch
 }
 
 build() {
