@@ -2,7 +2,7 @@
 
 _pkgname=bspwm
 pkgname=${_pkgname}-git
-pkgver=1093
+pkgver=1208
 pkgrel=1
 pkgdesc='A tiling window manager based on binary space partitioning'
 arch=('i686' 'x86_64')
