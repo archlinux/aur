@@ -1,0 +1,35 @@
+# This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
+# NOTE: to be activated in initramfs the file must contain marker string
+
+# Configure custom debug shell for initramfs
+
+[Unit]
+Description=Debug Shell on /dev/tty8 (initrd)
+Documentation=man:sushell(8)
+# NOTE: initramfs inclusion marker
+ConditionPathExists=/etc/initrd-release
+DefaultDependencies=no
+IgnoreOnIsolate=yes
+ConditionPathExists=/dev/tty8
+
+[Service]
+Environment=TERM=linux
+# enforce login shell
+ExecStart=/bin/sh
+Restart=always
+RestartSec=0
+StandardInput=tty
+TTYPath=/dev/tty8
+TTYReset=yes
+TTYVHangup=yes
+KillMode=process
+IgnoreSIGPIPE=no
+# bash ignores SIGTERM
+#KillSignal=SIGHUP
+
+# Unset locale for the console getty since the console has problems
+# displaying some internationalized messages.
+Environment=LANG= LANGUAGE= LC_CTYPE= LC_NUMERIC= LC_TIME= LC_COLLATE= LC_MONETARY= LC_MESSAGES= LC_PAPER= LC_NAME= LC_ADDRESS= LC_TELEPHONE= LC_MEASUREMENT= LC_IDENTIFICATION=
+
+[Install]
+WantedBy=sysinit.target

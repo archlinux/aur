@@ -1,0 +1,13 @@
+# This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
+
+# Network activated in initramfs 
+
+[Match]
+# using kernel names
+Name=eth*
+
+[Network]
+DHCP=ipv4
+
+[DHCP]
+UseHostname=true

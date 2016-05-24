@@ -1,0 +1,15 @@
+
+#
+# eclipse meta data
+#
+.project
+
+#
+# generated resources
+#
+/*/
+/*.xz
+/*.log
+
+# version update marker file
+.PKGVER

@@ -1,0 +1,47 @@
+# This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
+# NOTE: to be activated in initramfs the file must contain marker string
+
+# Provide ssh server in initramfs
+
+[Unit]
+Description=Dropbear SSH Server (initrd)
+Documentation=https://matt.ucc.asn.au/dropbear/dropbear.html
+# NOTE: initramfs inclusion marker
+ConditionPathExists=/etc/initrd-release
+DefaultDependencies=no
+Requires=systemd-networkd.service
+Requires=systemd-resolved.service
+#Requires=initrd-network.service
+#After=network.target
+#Before=cryptsetup-pre.target
+#Wants=cryptsetup.target
+
+[Service]
+
+# https://github.com/systemd/systemd/issues/3340
+ProvisionInitrdPath=/etc/systemd/network/initrd-network.network
+
+# dropbear options:
+# -F     Don't fork into background.
+# -s     Disable password logins.
+# -j     Disable local port forwarding.
+# -k     Disable remote port forwarding.
+# -d dsskey DSS host key (default:  /etc/dropbear/dropbear_dss_host_key)
+# -r rsakey RSA host key (default:  /etc/dropbear/dropbear_rsa_host_key)
+# user key:  ~/.ssh/authorized_keys
+ExecStart=/bin/dropbear -F -s -j -k
+#ExecReload=/bin/kill -HUP $MAINPID
+
+# release network devices to allow rename after switch-root
+# works, needs extra binary: "ip"
+#ExecStop=/bin/ip addr flush up
+#ExecStop=/bin/ip link set group default down
+# works with busybox: "ipaddr" "iplink"
+ExecStop=/bin/sh -c "ipaddr flush up"
+ExecStop=/bin/sh -c "ls /sys/class/net | xargs -I % iplink set % down"
+
+Restart=always
+RestartSec=1s
+
+[Install]
+WantedBy=sysinit.target
