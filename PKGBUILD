@@ -3,7 +3,7 @@
 
 pkgname=slimjet
 pkgver=10.0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Fast, smart and powerful browser based on Blink"
 arch=('i686' 'x86_64')
 url="http://www.slimjet.com"
@@ -22,7 +22,7 @@ md5sums_x86_64=('97fe4d96ecdfab218bad3006c97567d8')
 
 package() {
     msg2 "Extracting the data.tar.lzma..."
-    bsdtar -xf data.tar.lzma -C "$pkgdir/"
+    bsdtar -xf data.tar.xz -C "$pkgdir/"
     
     msg2 "Correcting permissions..."
     chmod -R 0755 "$pkgdir/"
