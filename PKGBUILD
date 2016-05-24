@@ -1,26 +1,25 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=gimp-lensfun
-pkgver=0.2.3
-pkgrel=4
+pkgver=0.2.4
+pkgrel=1
 pkgdesc="A Gimp plugin to correct lens distortion using the lensfun library and database."
 arch=('i686' 'x86_64')
 url="http://seebk.github.io/GIMP-Lensfun/"
 license=('GPL')
 depends=('gimp' 'lensfun' 'exiv2')
 source=("https://github.com/seebk/GIMP-Lensfun/releases/download/${pkgver}/gimplensfun-${pkgver}.tar.gz")
-sha256sums=('509cc8b7e3ed44232c7132409281acdbbfddf3e1cd76bbf0b1893751818a43d9')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/seebk/GIMP-Lensfun/archive/${pkgver}.tar.gz")
+sha256sums=('7a4e6dade910952cdb9afc62f34e286d230dd73c3a1630415c106b5260eb94de')
 
 build() {
-	cd ${srcdir}/gimplensfun-${pkgver}
-
-	sed -i '/CCI/s|^|//|' src/gimplensfun.cpp
+	cd ${srcdir}/GIMP-Lensfun-${pkgver}
 
 	make
 }
 
 package() {
-	cd ${srcdir}/gimplensfun-${pkgver}
+	cd ${srcdir}/GIMP-Lensfun-${pkgver}
 
 	install -D -m0755 gimp-lensfun ${pkgdir}/usr/lib/gimp/2.0/plug-ins/gimp-lensfun
 
