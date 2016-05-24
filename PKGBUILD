@@ -1,15 +1,15 @@
 # Maintainer: Erik Sonnleitner <es@delta-xi.net>>
 pkgname='sherlock'
 pkgver='1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="Plagiarism (similarity) checker for text files (essays, source-code, etc.)"
 arch=('i686' 'x86_64')
 url="http://sydney.edu.au/engineering/it/~scilect/sherlock/"
 license=('unknown')
 depends=()
 makedepends=()
-source=("http://sydney.edu.au/engineering/it/~scilect/sherlock/sherlock.c"
- "http://sydney.edu.au/engineering/it/~scilect/sherlock/makefile")
+source=("http://www.cs.usyd.edu.au/~scilect/sherlock/sherlock.c"
+ "http://www.cs.usyd.edu.au/~scilect/sherlock/makefile")
 md5sums=('8a934f9ee832a9c8e771c9094eb22a61'
          '7f8cb054713da2307f9c7a7a3346a575')
 
