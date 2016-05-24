@@ -13,10 +13,10 @@ Type=oneshot
 RemainAfterExit=true
 
 # use /bin/sh provided by busybox
-#ExecStart=/bin/chsh -s /bin/sh root
+ExecStart=/bin/chsh -s /bin/sh root
 
 # use login shell script provided by the package
-ExecStart=/bin/busybox sh -c /etc/dropbear/shell.sh entry=setup
+#ExecStart=/bin/busybox sh -c /etc/dropbear/shell.sh entry=setup
 
 [Install]
 RequiredBy=initrd-dropbear.service
