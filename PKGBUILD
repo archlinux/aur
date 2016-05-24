@@ -1,20 +1,18 @@
-# Maintainer: grimsock <lord.grimsock at gmail dot com>
-# Contributor: Andy Weidenbaum <archbaum@gmail.com>
-
 pkgname=go-ethereum
-pkgver=1.3.5
+pkgver=1.4.5
 pkgrel=1
-pkgdesc="Ethereum Go Client (CLI)"
+pkgdesc="Ethereum Go Client (CLI) - compiled from source"
 arch=('i686' 'x86_64')
 depends=('gmp' 'leveldb' 'readline')
 makedepends=('gcc' 'git' 'go' 'make' 'mercurial')
 optdepends=('mist: Ether Browser')
+conflicts=('geth')
 groups=('ethereum')
 url="https://github.com/ethereum/go-ethereum"
 license=('GPL')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/ethereum/$pkgname/tar.gz/v$pkgver
         git+https://github.com/ethereum/go-ethereum.wiki)
-sha256sums=('555b4e9e36d037551027e41034f63182ee08ae182a54091f9c82e589ff665391'
+sha256sums=('a50b1facda1cb71b0bcd1658a5ce2af2e16a427d56b5057da2582c225cf5a9e2'
             'SKIP')
 options=('!strip' '!emptydirs')
 
@@ -41,14 +39,8 @@ package() {
     "$pkgdir/usr/share/doc/go-ethereum/wiki"
 
   msg2 'Installing...'
-  for _bin in bootnode \
-              disasm \
-              ethtest \
-              evm \
-              generators \
-              geth \
-              rlpdump; do
-    install -Dm 755 "build/bin/$_bin" "$pkgdir/usr/bin/$_bin"
+  for _bin in build/bin/*; do
+    install -Dm 755 "$_bin" "$pkgdir/usr/bin/"`basename $_bin`
   done
 
   msg2 'Cleaning up pkgdir...'
