@@ -25,5 +25,5 @@ pkgname=("${pkgbase}-common"
 source=("https://github.com/bareos/bareos/archive/Release/${pkgver}.tar.gz"
         "PKGBUILD.common")
 
-sha256sums=('f314e7d3e99e92b4261af97888ddcdaaedf513b638745b07270db3e6930e9008'
-            '828ca13226118420bc3774d85a750efdb38b0107b7d8a8763dea2e1b7bd802f2')
+sha256sums=('37821804727f06c58badc2b738ea2be5237111726c89f1306c1926cba261fc55'
+            'c88808f38880d4b0eaffe5f4f3d71f6336e9cf20c63de9ea216b7ef542410c91')
