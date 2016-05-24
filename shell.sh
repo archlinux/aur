@@ -33,7 +33,7 @@ do_crypt() {
         echo "missing $command"
         return 1
     fi
-    local pid=$($command --list | head 1 | parse_crypt_pid)
+    local pid=$($command --list | head -n 1 | parse_crypt_pid)
     echo "pid $pid"
     local ask=$($command --query)
     local count=1
