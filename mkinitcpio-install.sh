@@ -156,7 +156,7 @@ keytype_dropbear() {
 
 invoke() {
     local command="$@"
-    local result; result=$($command); status=$?
+    local result; result=$($command 2>&1); status=$?
     case $status in
          0) quiet "Invoke success: $command\n$result\n"; return 0 ;;
          *) error "Invoke failure ($status): $command \n$result\n" ; return 1 ;;  
