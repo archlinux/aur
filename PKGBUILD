@@ -1,6 +1,6 @@
 # Maintainer: phiresky <phireskyde+git@gmail.com>
 pkgname=qdirstat
-pkgver=0.98.Beta3
+pkgver=1.0.r3.3b4aa8e
 pkgrel=1
 pkgdesc="Qt-based directory statistics (KDirStat/K4DirStat without any KDE - from the original KDirStat author)"
 arch=(i686 x86_64)
