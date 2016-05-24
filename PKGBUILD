@@ -1,9 +1,18 @@
-# Maintainer: Patrick Burroughs (Celti) <celticmadman@gmail.com>
-# Contributor: Keerthan Jaic <jckeerthan at gmail dot com>
+# Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
+
+# Unofficial repository available:
+# Build scripts at: https://repo.celti.name/nuvolaplayer/
+#
+# # Both the packages and the database are signed:
+# # `pacman-key --recv-keys 123C3F8B058A707F86643316FA682BD8910CF4EA`
+# # `pacman-key --lsign-key 123C3F8B058A707F86643316FA682BD8910CF4EA`
+# [celti-nuvolaplayer]
+# SigLevel = Required TrustedOnly
+# Server = https://repo.celti.name/archlinux/$repo/$arch
 
 pkgname=diorite-git
-pkgver=0.2.0.r20.g885d3e6
-pkgrel=2
+pkgver=0.3.0.r19.g885d3e6
+pkgrel=1
 
 arch=('i686' 'x86_64')
 license=('GPL')
