@@ -1,14 +1,14 @@
 # Maintainer: Michael Spradling <mike@mspradling.com>
 # Contributor: Daniel Albers <daniel@lbe.rs>
 
-pkgver=15.2.2
-pkgrel=3
+pkgver=15.2.3
+pkgrel=1
 arch=(i686 x86_64)
 groups=('bareos')
 pkgdesc="Bareos - Backup Archiving REcovery Open Sourced"
 url="http://www.bareos.org"
 license=('AGPL3')
-makedepends=('sqlite' 'libmariadbclient' 'postgresql-libs' 'lzo' 'acl' 'libcap')
+makedepends=('sqlite' 'libmariadbclient' 'postgresql-libs' 'lzo' 'acl' 'libcap' 'python2')
 optdepends=('openssl: network encryption between daemons')
 
 _instdir="${startdir}/install"
@@ -53,8 +53,8 @@ _configure_args="--prefix=/usr \
   --with-dir-group=bareos \
   --with-sd-user=bareos \
   --with-sd-group=bareos \
-  --with-fd-user=bareos \
-  --with-fd-group=bareos"
+  --with-fd-user=root \
+  --with-fd-group=root"
 
 prepare() {
   # bareos must use python2
@@ -204,7 +204,7 @@ package_bareos-director() {
 
 package_bareos-director-python-plugin() {
   pkgdesc="${pkgdesc} - Python plugin for director daemon"
-  depends=("bareos-director=$pkgver" "python" "python2")
+  depends=("bareos-director=$pkgver")
   backup=(`_etc_files ${pkgname}.install`)
   _install_files ${pkgname}
 }
@@ -224,7 +224,7 @@ package_bareos-filedaemon() {
 
 package_bareos-filedaemon-python-plugin() {
   pkgdesc="${pkgdesc} - Python plugin for file daemon"
-  depends=("bareos-filedaemon=$pkgver" "python" "python2")
+  depends=("bareos-filedaemon=$pkgver")
   backup=(`_etc_files ${pkgname}.install`)
   _install_files ${pkgname}
 }
@@ -252,7 +252,7 @@ package_bareos-storage-fifo() {
 
 package_bareos-storage-python-plugin() {
   pkgdesc="${pkgdesc} - Python plugin for storage daemon"
-  depends=("bareos-storage=$pkgver" "python" "python2")
+  depends=("bareos-storage=$pkgver")
   backup=(`_etc_files ${pkgname}.install`)
   _install_files ${pkgname}
 }
