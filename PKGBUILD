@@ -3,7 +3,7 @@
 #
 pkgname=libtinfo
 pkgver=6
-pkgrel=12
+pkgrel=13
 pkgdesc="symlink to ncurses for use in cuda and other packages"
 arch=('any')
 url="http://www.gnu.org/software/ncurses/"
@@ -16,7 +16,7 @@ package() {
   install -d "$pkgdir"/usr/lib
   ln -s /usr/lib/libncursesw.so."$_ncurses" "$pkgdir"/usr/lib/libtinfo.so."$pkgver"
   ln -s /usr/lib/libtinfo.so."$pkgver" "$pkgdir"/usr/lib/libtinfo.so
-  ln -s /usr/lib/libtinfo.so."$pkgver" "$pkgdir"/usr/lib/libtinfo.so.5
+#  ln -s /usr/lib/libtinfo.so."$pkgver" "$pkgdir"/usr/lib/libtinfo.so.5
 }
 
 #package_lib32_libtinfo() {
