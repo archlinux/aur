@@ -12,13 +12,13 @@
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'mesa-vulkan-intel-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-libgl-git' 'mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=11.3.0_devel.80761.1a8c2cc
+pkgver=11.3.0_devel.81775.e79aa19
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm'  'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm-svn'
              'libomxil-bellagio' 'libcl' 'libclc' 'clang-svn' 'git' 'nettle' 'libtxc_dxtn' 'ocl-icd'
-             'libxvmc' 'vulkan-icd-loader' 'libgcrypt')
+             'libxvmc' 'vulkan-icd-loader' 'libgcrypt' 'libpthread-stubs')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa#branch=master'
