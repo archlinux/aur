@@ -4,23 +4,23 @@
 
 help() {
     local pkgname="initrd-dropbear"
-    local readme="/usr/share/mkinitcpio/$pkgname/readme.md"
+    local readme="/usr/share/$pkgname/readme.md"
     [ -f $readme ] && cat $readme 
 }
 
 build() {
     
-    build_host
+    build_ssh_host_keys
     
-    build_user
+    build_ssh_user_keys
         
-    build_unit
+    build_systemd_units
     
-    build_libs
+    build_resources
     
 }
 
-build_host() {
+build_ssh_host_keys() {
 
     quiet "Provide host server ssh keys"
 
@@ -38,19 +38,19 @@ build_host() {
         else
             if [ -f $source ] ; then
                 plain "Convert openssh to dropbear host key: $target"
-                invoke_command   dropbearconvert openssh dropbear $source $target
+                invoke   dropbearconvert openssh dropbear $source $target
             else
                 plain "Generate brand new dropbear host key: $target"
-                invoke_command   dropbearkey -t $(keytype_dropbear $keytype) -f $target
+                invoke   dropbearkey -t $(keytype_dropbear $keytype) -f $target
             fi
         fi
     done
 
-    add_full_dir $etc_dropbear
+    invoke   add_full_dir $etc_dropbear
     
 }
 
-build_user() {
+build_ssh_user_keys() {
 
     quiet "Provide user login ssh keys"
 
@@ -64,7 +64,7 @@ build_user() {
     for source in $source_list ; do 
         if [ -f $source ] ; then
             plain "Add public key: $source initramfs: $target"
-            invoke_command   add_file $source $target
+            invoke   add_file $source $target
             return 0
         fi
     done
@@ -73,7 +73,7 @@ build_user() {
 
 }
 
-build_unit() {
+build_systemd_units() {
 
     quiet "Provide systemd units"
 
@@ -83,7 +83,7 @@ build_unit() {
     # services
 
     local dir="/etc/systemd/system"
-    add_dir $dir
+    invoke   add_dir $dir
     
     local unit_list=$(grep -l "$tag" $dir/*.service)
     [[ $unit_list ]] || error "Missing any units in $dir with tag $tag"
@@ -91,14 +91,14 @@ build_unit() {
     local unit
     for unit in $unit_list ; do
         quiet "Add unit: $unit"
-        invoke_command   add_systemd_unit $unit
-        invoke_command   systemctl --root $BUILDROOT enable $unit
+        invoke   add_systemd_unit $unit
+        invoke   systemctl --root $BUILDROOT enable $unit
     done
     
     # networks
 
     local dir="/etc/systemd/network"
-    add_dir $dir
+    invoke   add_dir $dir
 
     local unit_list=$(grep -l "$tag" $dir/*.network)
     [[ $unit_list ]] || error "Missing any units in $dir with tag $tag"
@@ -106,25 +106,35 @@ build_unit() {
     local unit
     for unit in $unit_list ; do
         quiet "Add unit: $unit"
-        invoke_command   add_file $unit
+        invoke   add_file $unit
+    done
+    
+    # programs
+    
+    local dir="/etc/dropbear"
+    invoke   add_dir $dir
+    local prog_list=$(grep -l "$tag" $dir/*.sh)
+    for prog in $prog_list ; do
+        quiet "Add $prog"
+        invoke   add_file "$prog" "$prog" 755
     done
                                                                 
 }
 
-build_libs() {
+build_resources() {
     
-    quiet "Provide library resources"
+    quiet "Provide dependency resources"
     
-    add_checked_modules "/drivers/net/"
-    
+    invoke   add_checked_modules "/drivers/net/"
+
     # provided by add_systemd_unit
-    #add_binary "dropbear"
+    #invoke   add_binary "dropbear"
 
-    add_file "/etc/dropbear/shell.sh" "/etc/profile" 755
-
-    add_dir "/var/run"
-    add_dir "/var/log"
-    invoke_command   touch "${BUILDROOT}"/var/log/lastlog
+    # expected by dropbear
+    local temp=$(mktemp)
+    invoke   add_dir "/var/run"
+    invoke   add_dir "/var/log"
+    invoke   add_file $temp "/var/log/lastlog"
     
 }
 
@@ -144,12 +154,12 @@ keytype_dropbear() {
     echo "${type}"
 }
 
-invoke_command() {
+invoke() {
     local command="$@"
     local result; result=$($command 2>&1); status=$?
     case $status in
-         0) quiet "Command success: $command\n$result"; return 0 ;;
-         *) error "Command failure ($status): $command \n$result" ; return 1 ;;  
+         0) quiet "Invoke success: $command\n$result\n"; return 0 ;;
+         *) error "Invoke failure ($status): $command \n$result\n" ; return 1 ;;  
     esac
 }
 

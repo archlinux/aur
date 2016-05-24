@@ -2,7 +2,8 @@
 
 # This file is part of https://aur.archlinux.org/packages/initrd-dropbear/
 
-# location: /etc/dropbear/shell.sh
+# NOTE: initramfs inclusion marker
+# /etc/initrd-release
 
 # user root login shell program
 
@@ -10,8 +11,8 @@ do_prompt() {
     local choice=""
     while [ "$choice" != "q" ] ; do
         echo
-        echo "Select:"
-        echo "c) crypt setup"
+        echo "select:"
+        echo "c) crypt agent"
         echo "s) user shell"
         echo "r) reboot"
         echo "q) quit"
@@ -26,39 +27,46 @@ do_prompt() {
     done
 }
 
-do_quit() {
-    echo "do_quit"
-    exit 0
-}
-
-do_reboot() {
-    echo "do_reboot"
-    /bin/systemctl reboot
-}
-
 do_crypt() {
-    echo "do_crypt"
-    if [[ -f /bin/$agent ]] ; then
-        $agent
+    # provide password answer
+    local command result status
+    command=/bin/$agent
+    if [[ -f $command ]] ; then
+        result=$($command 2>&1); status=$?
+        case $status in
+            0) echo "success" ; return 0 ;;
+            *) echo "failure:\n$result\n"; return 1 ;;
+        esac       
     else
-        echo "missing $agent"
+        echo "missing $command"
     fi
 }
 
 do_shell() {
-    echo "do_shell"
+    # replace process
     exec /bin/sh
 }
 
-do_setup() {
-    echo "do_setup"
-    true
+do_reboot() {
+    /bin/systemctl reboot
+}
+
+do_quit() {
+    exit 0
+}
+
+is_pending() {
+    # was password requested
+    ps | grep -q "$agent"
 }
 
 do_default() {
-    echo "do_default"
-    if ps | grep -q "$agent" ; then
-        $agent
+    
+    # designed for ssh session only
+    [[ $SSH_CONNECTION ]] || exit 0
+
+    if is_pending ; then
+        do_crypt
     else 
         do_prompt
     fi
@@ -69,10 +77,11 @@ program() {
     [[ $agent ]] || agent="systemd-tty-ask-password-agent"
     case $entry in
         crypt)  do_crypt ;;
-        setup)  do_setup ;;
+        shell)  do_shell ;;
+        reboot) do_reboot ;;
         prompt) do_prompt ;;
             *)  do_default ;;
-    esac    
+    esac       
 }
 
 program
