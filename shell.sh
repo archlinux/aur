@@ -8,7 +8,7 @@
 # user root login shell program for dropbear
 
 do_prompt() {
-    local choice=""
+    local choice
     while [ "$choice" != "q" ] ; do
         echo
         echo "select:"
@@ -17,7 +17,7 @@ do_prompt() {
         echo "r) reboot"
         echo "q) quit"
         read -p ">" choice
-        case $choice in
+        case "$choice" in
         c) do_crypt ;;
         s) do_shell ;;
         r) do_reboot ;;
@@ -30,7 +30,7 @@ do_prompt() {
 do_crypt() {
     # provide password answer
     local command result status
-    command=/bin/$agent
+    command="/bin/$agent"
     if [[ -f $command ]] ; then
         result=$($command 2>&1); status=$?
         case $status in
@@ -55,13 +55,17 @@ do_quit() {
     exit 0
 }
 
-is_pending() {
+is_ask_pending() {
     ps | grep -q "$agent"
 }
 
+is_ssh_connect() {
+    [ -n "$SSH_CONNECTION" ]
+}
+
 do_default() {
-    [[ $SSH_CONNECTION ]] || exit 0
-    if is_pending ; then
+    is_ssh_connect || exit 0
+    if is_ask_pending ; then
         do_crypt
     else 
         do_prompt
@@ -69,11 +73,9 @@ do_default() {
 }
 
 program() {
-    echo "args/$@/"
-
     local "$@"
-    [[ $agent ]] || local agent="systemd-tty-ask-password-agent"
-    case $entry in
+    [ -n "$agent" ] || local agent="systemd-tty-ask-password-agent"
+    case "$entry" in
         crypt)  do_crypt ;;
         shell)  do_shell ;;
         reboot) do_reboot ;;
