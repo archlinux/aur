@@ -1,7 +1,7 @@
 # Maintainer: Martin Schmölzer <mschmoelzer@gmail.com>
 
 pkgname=libopencm3-git
-pkgver=r1789.20e1ee1
+pkgver=r1834.d3fff11
 pkgrel=1
 pkgdesc='Open Source firmware library for various ARM Cortex microcontrollers'
 arch=(any)
