@@ -2,6 +2,41 @@
 # Contributor: Ray Rashif <schiv@archlinux.org>
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
+
+############################################
+# Here you have the option to use some CPU
+# extensions to speed up opencv
+# Only change this if you know what you
+# are doing!
+############################################
+
+# Use `cat /proc/cpuinfo` to see the extensions your CPU supports
+
+_FORCE_SSE=OFF      # always ON on x64
+_FORCE_SSE2=OFF     # always ON on x64
+
+# Set to ON on CPUs newer than approx. 2005
+_FORCE_SSE3=OFF
+
+# Set to ON on CPUs since Intel Core 2 or newer/AMD Bulldozer/AMD Fusion
+_FORCE_SSSE3=OFF    # also known as SSE4
+
+# Set to ON on CPUs since Intel Core 2 Penryn (older than Nehalem or Sandybridge)
+# or on AMDs since K10 (approx. 2009)
+_FORCE_SSE41=OFF
+
+# Set to ON on nearly all Intel Core i or AMD since Bulldozer
+_FORCE_SSE42=OFF
+
+# Set to ON on Sandybridger or newer/Bulldozer or newer
+_FORCE_AVX=OFF
+
+# Set to ON on Haswell or newer
+_FORCE_AVX2=OFF
+
+############################################
+
+
 _pkgbase=opencv
 pkgbase=opencv2
 pkgname=('opencv2' 'opencv2-samples')
@@ -41,12 +76,18 @@ _cmakeopts=('-D WITH_CUDA=OFF' # Disable CUDA for now because GCC 6.1.1 and nvcc
 
 # SSE only available from Pentium 3 onwards (i686 is way older)
 [[ "$CARCH" = 'i686' ]] && \
-  _cmakeopts+=('-D ENABLE_SSE=OFF'
-               '-D ENABLE_SSE2=OFF'
-               '-D ENABLE_SSE3=OFF')
+  _cmakeopts+=("-D ENABLE_SSE=$_FORCE_SSE"
+               "-D ENABLE_SSE2=$_FORCE_SSE2"
+               "-D ENABLE_SSE3=$_FORCE_SSE3")
 
 # all x64 CPUs support SSE2 but not SSE3
-[[ "$CARCH" = 'x86_64' ]] && _cmakeopts+=('-D ENABLE_SSE3=OFF')
+[[ "$CARCH" = 'x86_64' ]] && \
+  _cmakeopts+=("-D ENABLE_SSE3=$_FORCE_SSE3"
+               "-D ENABLE_SSSE4=$_FORCE_SSSE3" #(sic!)
+               "-D ENABLE_SSE41=$_FORCE_SSE41"
+               "-D ENABLE_SSE42=$_FORCE_SSE42"
+               "-D ENABLE_AVX=$_FORCE_AVX"
+               "-D ENABLE_AVX2=$_FORCE_AVX2")
 
 prepare() {
   cd $_pkgbase-$pkgver
