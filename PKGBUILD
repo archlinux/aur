@@ -35,10 +35,10 @@ build() {
 
   cd $srcdir
   msg "starting make..."
-#  if [ -d build ]; then
-#   rm -rf build
-#  fi
-#  mkdir build
+  if [ -d build ]; then
+   rm -rf build
+  fi
+  mkdir build
   cd build
 
 
