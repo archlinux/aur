@@ -2,7 +2,7 @@
 # Maintainer: Sebastian Wolf <swolf at melonkru dot de>
 basename=wavefile
 pkgname=python2-${basename}
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 arch=('any')
 license=('GPL3')
@@ -12,7 +12,7 @@ makedepends=('python2-setuptools')
 depends=('python2-numpy')
 optdepends=('python2-pyaudio')
 source=("https://pypi.python.org/packages/source/w/${basename}/${basename}-${pkgver}.tar.gz")
-md5sums=('4427a9a24536bf759e9e791d4424c6b4')
+md5sums=('b5d71713b4fded3c9350cbf61a51a9a1')
 
 build() {
     cd "${srcdir}/${basename}-${pkgver}"
