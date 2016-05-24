@@ -8,7 +8,7 @@ pkgdesc="Intel's Vulkan mesa driver"
 arch=(x86_64)
 url="http://www.mesa3d.org"
 license=('custom')
-depends=('vulkan-icd-loader' 'libgcrypt' 'wayland' 'libxcb')
+depends=('vulkan-icd-loader' 'libgcrypt' 'wayland' 'libxcb' 'libpthread-stubs')
 provides=(vulkan-intel)
 conflicts=(vulkan-intel vulkan-i965 vulkan-i965-git)
 makedepends=('libdrm' 'dri2proto' 'glproto' 'libxxf86vm' 'libxdamage' 'expat>=2.0.1' 'libxmu'

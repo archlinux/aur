@@ -24,6 +24,7 @@ pkgbase = vulkan-intel-git
 	depends = libgcrypt
 	depends = wayland
 	depends = libxcb
+	depends = libpthread-stubs
 	provides = vulkan-intel
 	conflicts = vulkan-intel
 	conflicts = vulkan-i965
