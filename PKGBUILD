@@ -1,6 +1,6 @@
 #Maintainer: Xyne <ac xunilhcra enyx, backwards>
 pkgname=python3-memoizedb
-pkgver=2016.4.24.1
+pkgver=2016.5
 pkgrel=1
 pkgdesc='Generic data retrieval memoizer that uses an sqlite database to cache data.'
 arch=(any)
@@ -8,16 +8,16 @@ license=(GPL)
 url="http://xyne.archlinux.ca/projects/python3-memoizedb"
 depends=(python3)
 source=(
-  http://xyne.archlinux.ca/projects/python3-memoizedb/src/python3-memoizedb-2016.4.24.1.tar.xz
-  http://xyne.archlinux.ca/projects/python3-memoizedb/src/python3-memoizedb-2016.4.24.1.tar.xz.sig
+  http://xyne.archlinux.ca/projects/python3-memoizedb/src/python3-memoizedb-2016.5.tar.xz
+  http://xyne.archlinux.ca/projects/python3-memoizedb/src/python3-memoizedb-2016.5.tar.xz.sig
 )
 sha512sums=(
-  9f145cfbbf020ab7a2ee3aad525d4d8c294a0face0a2e698e52341487d26bfd3af1cd7ca49c35071c2fdbfc5972ece146827c4d2a8da5daa8826c7cf0f2a6ff6
-  f13038fce2bfdbe68aa1baa385ab1433cf594dd9f883b3d32ba3c2805978ae659ee54efe5f67bb2c15c855798bbc62f91c822a91352ac0f583c303776f4b8186
+  70ccffa3cd1e8ba860d5bba454e0cdc14fef37e70acdd5206bfb779451511d538c212ac2673c406506e1b96e13b9b1e5399b9035944915ffa8adb57b588a32a6
+  0224e5d07c63e9b5d792cf9cf8a98a1fb4279d6a9ea9264995d3d243d3267d9f6b48da15225d36e8a962f7aec8f4a9fe2b1fd40f8fda5c6f070ed9a1b6987e5b
 )
 md5sums=(
-  5d604e8f170df940ef4381c83a8b9868
-  51d7be95192289b086ab9b7fad36e381
+  0b75602e730773588686b6ec749b069d
+  36c0984f24839b5276883c511907dc49
 )
 validpgpkeys=('EC3CBE7F607D11E663149E811D1F0DC78F173680')
 
