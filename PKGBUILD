@@ -104,6 +104,7 @@ depends=(
 	'gptfdisk'
 	'dosfstools'
 	'xsettingsd-git'
+	'polkit-gnome'
 
 	'ntp'
 	'networkmanager-dispatcher-ntpd'
