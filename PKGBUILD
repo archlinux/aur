@@ -1,7 +1,7 @@
 # Contributor: Yosef Or Boczko <yoseforb@gmail.com>
 
 pkgname=geoip-git
-pkgver=1.6.0.r14.gb7f1bb3
+pkgver=1.6.9.r8.g6e18deb
 pkgrel=1
 pkgdesc="Non-DNS IP-to-country resolver C library & utils"
 epoch=1
