@@ -1,20 +1,26 @@
 # Maintainer: Oscar Garcia Amor <ogarcia@connectical.com>
 
+_commit='4585f1c81cb46b6f6cc4fdad808ff527d4f57e75'
 pkgbase=python-itunes
 pkgname=('python-itunes' 'python2-itunes')
-pkgver=1.0
+pkgver=2015.07.29
 pkgrel=1
 pkgdesc='A simple python wrapper to access iTunes Store API'
 arch=('any')
 url='https://github.com/ocelma/python-itunes'
 license=('GPL')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://pypi.python.org/packages/source/p/python-itunes/python-itunes.tar.gz")
-sha256sums=('a79f1cc287554acb11afc0f2c0a93f6952c43835b53b2e34627a9144dd777277')
+source=("https://github.com/ocelma/python-itunes/archive/${_commit}.tar.gz"
+        "python-itunes.patch")
+sha256sums=('9ece82d09049109523fbefcdbe2b5399a0fff341241af735ea081078a81034c8'
+            '0385dd216d5152dc944a2a54ecc9e83765e303cacf1c2169862506974a5448d6')
 
 prepare() {
-  cp -r python-itunes python-itunes-${pkgver}
-  cp -r python-itunes python2-itunes-${pkgver}
+  cp -r python-itunes-${_commit} python-itunes-${pkgver}
+  cp -r python-itunes-${_commit} python2-itunes-${pkgver}
+
+  # Fix python3 issue https://github.com/ocelma/python-itunes/issues/19
+  patch -p0 <python-itunes.patch
 }
 
 package_python-itunes() {
