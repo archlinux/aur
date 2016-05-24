@@ -6,7 +6,7 @@
 
 pkgname=lib32-librtmp0
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Library to download rtmp streams (32-bit, legacy version)'
 arch=('x86_64')
 url='http://rtmpdump.mplayerhq.hu/'
@@ -35,7 +35,7 @@ package() {
     DESTDIR="${pkgdir}" \
     install
 
-  rm -rf "${pkgdir}/usr/"{include,share,lib32/pkgconfig}
+  rm -rf "${pkgdir}/usr/"{include,share,lib32/{pkgconfig,*.so,*.a}}
 }
 
 # vim: ts=2 sw=2 et:
