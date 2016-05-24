@@ -1,60 +1,80 @@
 #!/bin/sh
 
-# user root login shell
+# This file is part of https://aur.archlinux.org/packages/initrd-dropbear/
 
 # location: /etc/dropbear/shell.sh
 
-command_askpass="/usr/bin/systemd-tty-ask-password-agent"
+# user root login shell program
 
-command_prompt() {
-    
+do_prompt() {
     local choice=""
-    
     while [ "$choice" != "q" ] ; do
         echo
         echo "Select:"
         echo "c) crypt setup"
         echo "s) user shell"
-        echo "r) restart"
+        echo "r) reboot"
         echo "q) quit"
-        
         read -p ">" choice
-        
         case $choice in
-        1)
-            echo "crypt setup"
-            if [[ -f $command_askpass ]] ; then
-                $command_askpass
-            else
-                echo "missing $command_askpass"
-            fi
-            ;;
-        2) 
-            echo "user shell"
-            exec /bin/sh
-            ;;
-        3) 
-            echo "restart"
-            systemctl reboot
-            ;;
-        q) 
-            echo "quit"
-            exit 0
-            ;;
-        *)   
-            echo "$choice ?"
-        ;;
+        c) do_crypt ;;
+        s) do_shell ;;
+        r) do_reboot ;;
+        q) do_quit ;;
+        *) echo "$choice ?" ;;
         esac
     done
-            
 }
 
-command_cryptsetup() {
-    true
+do_quit() {
+    echo "do_quit"
+    exit 0
 }
 
-if ps | grep -q "$command_askpass" ; then
-    $command_askpass
-else 
-    command_prompt
-fi
+do_reboot() {
+    echo "do_reboot"
+    /bin/systemctl reboot
+}
+
+do_crypt() {
+    echo "do_crypt"
+    if [[ -f /bin/$agent ]] ; then
+        $agent
+    else
+        echo "missing $agent"
+    fi
+}
+
+do_shell() {
+    echo "do_shell"
+    exec /bin/sh
+}
+
+do_setup() {
+    echo "do_setup"
+    local shell="/etc/dropbear/shell.sh"
+    local target="/etc/passwd"
+    sed -i -r -e "s|root.*|root:x:0:0:root:/root:$shell|" $target    
+}
+
+do_default() {
+    echo "do_default"
+    if ps | grep -q "$agent" ; then
+        $agent
+    else 
+        do_prompt
+    fi
+}
+
+program() {
+    local "$@"
+    [[ $agent ]] || agent="systemd-tty-ask-password-agent"
+    case entry in
+        crypt)  do_crypt ;;
+        setup)  do_setup ;;
+        prompt) do_prompt ;;
+            *)  do_default ;;
+    esac    
+}
+
+program

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This file is part of https://aur.archlinux.org/packages/initrd-dropbear/
+
 help() {
     local pkgname="initrd-dropbear"
     local readme="/usr/share/mkinitcpio/$pkgname/readme.md"

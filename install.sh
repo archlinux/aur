@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This file is part of https://aur.archlinux.org/packages/initrd-dropbear/
+
 # https://www.archlinux.org/pacman/PKGBUILD.5.html#_install_upgrade_remove_scripting
 
 ## arg 1:  the new package version
