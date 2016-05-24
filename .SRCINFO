@@ -1,14 +1,14 @@
 pkgbase = python2-dfwinreg
 	pkgdesc = Library and tools to access the Windows NT Registry File (REGF) format
-	pkgver = 20160116
+	pkgver = 20160428
 	pkgrel = 1
 	url = https://github.com/log2timeline/dfwinreg/
 	arch = any
 	license = Apache
 	makedepends = libtool
 	makedepends = python2
-	source = https://pypi.python.org/packages/source/d/dfwinreg/dfwinreg-20160116.tar.gz#md5=1049c0e7aff03425d434f730610990e7
-	md5sums = 1049c0e7aff03425d434f730610990e7
+	source = https://github.com/log2timeline/dfwinreg/archive/20160428.zip
+	md5sums = 5028a371659451335b7bad48a2f7b246
 
 pkgname = python2-dfwinreg
 
