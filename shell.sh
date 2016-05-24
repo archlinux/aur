@@ -69,7 +69,7 @@ do_default() {
 program() {
     local "$@"
     [[ $agent ]] || agent="systemd-tty-ask-password-agent"
-    case entry in
+    case $entry in
         crypt)  do_crypt ;;
         setup)  do_setup ;;
         prompt) do_prompt ;;
