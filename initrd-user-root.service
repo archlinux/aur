@@ -1,9 +1,10 @@
 # This file is part of https://aur.archlinux.org/packages/initrd-dropbear/
 # NOTE: to be activated in initramfs the file must contain marker string
 
+# Configure root user settings
+
 [Unit]
 Description=User Root (initrd)
-Documentation=here:Configure root user settings
 # NOTE: initramfs inclusion marker
 ConditionPathExists=/etc/initrd-release
 DefaultDependencies=no

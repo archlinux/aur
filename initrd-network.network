@@ -1,6 +1,11 @@
 # This file is part of https://aur.archlinux.org/packages/initrd-dropbear/
 # NOTE: to be activated in initramfs the file must contain marker string
 
+# Network activated in initramfs 
+
+# NOTE: initramfs inclusion marker
+# /etc/initrd-release
+
 [Match]
 # using kernel names
 Name=eth*
@@ -10,6 +15,3 @@ DHCP=ipv4
 
 [DHCP]
 UseHostname=true
-
-# NOTE: initramfs inclusion marker
-# /etc/initrd-release

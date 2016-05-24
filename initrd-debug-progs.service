@@ -1,9 +1,10 @@
 # This file is part of https://aur.archlinux.org/packages/initrd-dropbear/
 # NOTE: to be activated in initramfs the file must contain marker string
 
+# Provision additional dependencies for debug shell
+
 [Unit]
 Description=Debug Progs (initrd)
-Documentation=here:Provision additional dependencies for debug shell
 # NOTE: initramfs inclusion marker
 ConditionPathExists=/etc/initrd-release
 DefaultDependencies=no
