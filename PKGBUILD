@@ -1,7 +1,7 @@
 # Maintainer: Mathias Bragagia <youremail@domain.com>
 pkgname=kana-p
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.5
+pkgrel=1
 pkgdesc="Lite desktop manager - use lightdm, awesome and compton - BETA"
 arch=('any')
 url="https://github.com/bragagia/kana-p"
@@ -148,7 +148,6 @@ depends=(
 	'rofi'
 	'network-manager-applet'
 	'gnome-keyring'
-	'unclutter'
 
 	'archlinux-xdg-menu'
 	'xdg-utils'
