@@ -2,7 +2,7 @@
 # Contributor: swiftscythe <swiftscythe@gmail.com>
 
 pkgname=gigolo-git
-pkgver=0.4.2.r34.g803dd15
+pkgver=0.4.2.r77.g1a32294
 pkgrel=1
 epoch=1
 pkgdesc="Frontend to manage connections to remote filesystems using GIO/GVFS"
