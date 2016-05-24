@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
 url="https://github.com/tista500/Adapta"
-license=('GPL2')
+license=('GPL2' 'CCPL')
 depends=('gtk2>=2.24.29'
          'gtk3>=3.18'
          "gtk3<=${_gtk3_version}.99")
