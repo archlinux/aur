@@ -120,8 +120,7 @@ build_libs() {
     # provided by add_systemd_unit
     #add_binary "dropbear"
 
-    local shell="/etc/dropbear/shell.sh"
-    add_file $shell $shell 755
+    add_file "/etc/dropbear/shell.sh" "/etc/profile" 755
 
     add_dir "/var/run"
     add_dir "/var/log"
