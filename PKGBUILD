@@ -1,12 +1,12 @@
 # Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
 
-# Unofficial repository available:
+# Unofficial repository (x86_64 and i686) available:
 # Build scripts at: https://repo.celti.name/nuvolaplayer/
 #
 # # Both the packages and the database are signed:
 # # `pacman-key --recv-keys 123C3F8B058A707F86643316FA682BD8910CF4EA`
 # # `pacman-key --lsign-key 123C3F8B058A707F86643316FA682BD8910CF4EA`
-# [celti-nuvolaplayer]
+# [nuvolaplayer]
 # SigLevel = Required TrustedOnly
 # Server = https://repo.celti.name/archlinux/$repo/$arch
 
