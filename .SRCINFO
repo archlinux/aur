@@ -1,7 +1,7 @@
 pkgbase = jka-toolkit
 	pkgdesc = Set of scripts to optimize the daily work in linux shell (jkazip and apw)
-	pkgver = 0.2.4
-	pkgrel = 1
+	pkgver = 0.2.5
+	pkgrel = 2
 	url = http://proyecto.jkanetwork.com
 	install = jka-toolkit.install
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = jka-toolkit
 	provides = apw
 	options = !emptydirs
 	source = https://gitlab.com/JKANetwork/jka-toolkit/raw/master/jka-toolkit.tar.gz
-	md5sums = 530beded245bba22227860edd52bd6b7
+	md5sums = 2f2d776a4201f0628cae8c0ea0e12d22
 
 pkgname = jka-toolkit
 
