@@ -1,0 +1,14 @@
+pkgbase = xamarin-referenceassemblies-pcl
+	pkgdesc = Microsoft Portable Reference Libraries
+	pkgver = 2014.04.14
+	pkgrel = 1
+	url = http://www.microsoft.com/en-us/download/details.aspx?id=40727
+	arch = any
+	license = unknown
+	depends = mono
+	depends = git
+	source = xamarin-referenceassemblies-pcl::git+https://github.com/directhex/xamarin-referenceassemblies-pcl
+	md5sums = SKIP
+
+pkgname = xamarin-referenceassemblies-pcl
+
