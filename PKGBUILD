@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/redtide/lxdm-theme-archlinux/"
 install=archlinux-lxdm-theme-full.install
 license=('CCPL:by-sa')
-depends=('lxdm-gtk3')
+#optdepends=('lxdm' 'lxdm-gtk3')
 source=("git://github.com/redtide/lxdm-theme-archlinux.git")
 md5sums=('SKIP')
 
