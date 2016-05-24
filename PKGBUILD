@@ -4,37 +4,16 @@ pkgbase='selfhtml'
 pkgname=('selfhtml-de' 'selfhtml-fr')
 pkgver='8.1.2'
 pkgdesc='An excellent HTML reference which also covers other web topics'
-pkgrel=4
+pkgrel=5
 arch=('any')
 url='http://selfhtml.org'
 license=('custom')
-source=('http://files.ax86.net/mirror/selfhtml/selfhtml812.zip'
-        'http://files.ax86.net/mirror/selfhtml/selfhtml80fr.zip'
-        'http://files.ax86.net/mirror/selfhtml/selfhtml812-update.zip')
-noextract=('selfhtml812.zip'
-           'selfhtml80fr.zip'
-           'selfhtml812-update.zip')
-
-prepare() {
-    cd "$srcdir"
-
-    # German files
-    mkdir selfhtml_de
-    unzip -od selfhtml_de selfhtml812.zip
-
-    # French files
-    unzip -o selfhtml80fr.zip
-    unzip -o selfhtml812-update.zip
-}
+source=('http://files.ax86.net/mirror/selfhtml/selfhtml812.tar.xz'
+        'http://files.ax86.net/mirror/selfhtml/selfhtml80fr.tar.xz'
+        'http://files.ax86.net/mirror/selfhtml/selfhtml80fr_update812.tar.xz')
 
 # $1: Language code
 _do_package() {
-    cd "$srcdir/selfhtml_$1"
-    
-    # Fix permissions
-    find . -type f '!' -perm 0644 -execdir chmod 0644 {} ';'
-    find . -type d '!' -perm 0755 -execdir chmod 0755 {} ';'
-
     mkdir -p "$pkgdir/usr/share/doc/selfhtml/$1"
     mkdir -p "$pkgdir/usr/share/licenses/selfhtml/$1"
 
@@ -47,6 +26,7 @@ package_selfhtml-de() {
     pkgdesc="An excellent HTML reference which also covers other web topics (German version)"
     url="http://de.selfhtml.org"
 
+    cd "$srcdir/selfhtml812"
     _do_package de
 }
 
@@ -55,12 +35,13 @@ package_selfhtml-fr() {
     pkgdesc="An excellent HTML reference which also covers other web topics (French version)"
     url="http://fr.selfhtml.org"
 
+    cd "$srcdir/selfhtml80fr"
     _do_package fr
 }
 
-md5sums=('81806920c148ace4f24e8a8239f075ac'
-         'bd92e3bf5da0f1d1c1c9fea04794657d'
-         'e32206dc42c01baeb7294b1cc3de7d65')
-sha384sums=('8d3e2db171642aaf31d7883c9429251214d5ede5123f51650d61596e786e48d74c048d9b0758a7fcbe1f7b2880cebf03'
-            '107dc1d1df50d6ee6f887faa9fad8b43905aad99801228e3d7b39897c74c43b27a8d4cd8492c1eac9ba1795d45263a50'
-            'e2a80badab761e93ffa068053ab1540d1ca5eeb931bef7c6f2f6be9d1f1858d7eac2985d7a5e344c916bfc7d0a866ca7')
+md5sums=('498cef61ba58aca47e5601d8b41181e1'
+         'a92011c71a6a211c727a7dc87910aa4e'
+         'f4c45c2fe4a28eb8b27a29cb59d5b474')
+sha384sums=('26b02844e55de2974257fdfbc6fea88caadc516735097167d3522a247d077911b77d4d059c9bd08d0e0d37ebc2704193'
+            'b9bc42c0d2ec0846e1040618eb0d965129b4bcabcc96109c35b059ac212d97d8d6f0e3ec0b4f2fbcafed2982e612cdf9'
+            'fa1e53b7511d77bf00ce7744fff1dedd975273ed894148870f398a683f762f530d4df6f7cc578b95d0fad85f448c91f0')
