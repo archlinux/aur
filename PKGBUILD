@@ -5,7 +5,7 @@
 
 pkgname=asciidoctor
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='An implementation of the AsciiDoc text processor and publishing toolchain in Ruby'
 arch=(any)
 url='http://asciidoctor.org'
@@ -19,8 +19,10 @@ noextract=($pkgname-$pkgver.gem)
 sha1sums=('316ea896c2a52f5bc18b118a93967bb15252758d')
 
 package() {
-  local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $pkgname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$pkgname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$pkgname-$pkgver/LICENSE.adoc" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.adoc"
+    local _gemdir="$(ruby -e 'puts Gem.default_dir')"
+    gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" "$pkgname-$pkgver.gem"
+    install -D -m644 "$pkgdir/$_gemdir/gems/$pkgname-$pkgver/LICENSE.adoc" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.adoc"
+    install -D -m644 "$pkgdir/$_gemdir/gems/$pkgname-$pkgver/man/asciidoctor.1" "$pkgdir/usr/share/man/man1/asciidoctor.1"
+    rm "$pkgdir/$_gemdir/cache/$pkgname-$pkgver.gem"
+    rm -rf "$pkgdir/$_gemdir/gems/$pkgname-$pkgver/man"
 }
