@@ -2,8 +2,8 @@
 
 pkgname=combust-git
 _gitname=combust
-pkgver=0.60.2e20f28
-pkgrel=2
+pkgver=0.61.e4c95ce
+pkgrel=1
 pkgdesc='nftables firewall script with profiles'
 arch=('any')
 license=('MIT')
