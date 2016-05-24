@@ -5,8 +5,8 @@
 _pkgbase=opencv
 pkgbase=opencv2
 pkgname=('opencv2' 'opencv2-samples')
-pkgver=2.4.12.3
-pkgrel=2
+pkgver=2.4.13
+pkgrel=1
 pkgdesc="Open Source Computer Vision Library (Legacy Version)"
 arch=('i686' 'x86_64')
 license=('BSD')
@@ -17,14 +17,11 @@ optdepends=('opencv-samples'
             'eigen2'
             'libcl: For coding with OpenCL'
             'python2-numpy: Python 2.x interface')
+
 source=("$_pkgbase-$pkgver.zip::https://github.com/Itseez/opencv/archive/$pkgver.zip"
-        "opencv-ffmpeg3.patch"
-        "gcc6.patch"
-        "opencv_eebd4cad665f4f1270ca58bb13e9708e130f9b30.patch")
-md5sums=('eaede6500e9c2d56683196b0576db1f7'
-         'c752f3e83ebb021171fdd04aa7fb2e5a'
-         'b07ddc26e72d3ece0348870b076dbbc0'
-         '538acb39a89085f2944a7e0149fb7a0c')
+        "opencv_a0fdc91a14f07de25d858037940fcd3ba859b4e2.patch")
+md5sums=('886b0c511209b2f3129649928135967c'
+         'aebe7878a572a2dc26a434bf08b8d851')
 
 _cmakeopts=('-D WITH_CUDA=OFF' # Disable CUDA for now because GCC 6.1.1 and nvcc don't play along yet
             '-D WITH_OPENCL=ON'
@@ -53,12 +50,9 @@ _cmakeopts=('-D WITH_CUDA=OFF' # Disable CUDA for now because GCC 6.1.1 and nvcc
 
 prepare() {
   cd $_pkgbase-$pkgver
-# Fix build with ffmpeg 3.0 (Debian)
-  patch -p1 -i ../opencv-ffmpeg3.patch
-# Hack/Workaround for gcc 6.1
-  patch -p1 -i ../gcc6.patch
-# Patch for gcc 6.1/cmake
-  patch -p1 -i ../opencv_eebd4cad665f4f1270ca58bb13e9708e130f9b30.patch
+# Patch for gcc 6
+# See https://github.com/Itseez/opencv/issues/6517
+  patch -p1 -i ../opencv_a0fdc91a14f07de25d858037940fcd3ba859b4e2.patch
 }
 
 build() {
