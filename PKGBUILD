@@ -8,7 +8,7 @@ pkgrel=9
 pkgdesc="lib32 symlink to ncurses for use in packages"
 arch=('any')
 url="http://www.gnu.org/software/ncurses/"
-license=('unknown')
+license=('MIT')
 #conflicts=('lib32-libtinfo-5')
 depends=('lib32-ncurses>=6.0')
 _ncurses="$(pacman -Q lib32-ncurses | awk '{sub(/-[0-9]+/, "", $2); print $2}')"
