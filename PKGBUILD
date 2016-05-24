@@ -4,7 +4,7 @@
 
 srcname=knot
 pkgname=${srcname}
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='high-performance authoritative-only DNS server'
 url='https://www.knot-dns.cz/'
@@ -15,7 +15,7 @@ depends=('liburcu>=0.5.4' 'gnutls>=3.0' 'zlib' 'lmdb' 'jansson')
 source=("https://secure.nic.cz/files/knot-dns/${srcname}-${pkgver}.tar.xz"
         'knot.service'
         'knot.tmpfiles')
-sha256sums=('3f36e9671174136755b57ca7f4f52c03756721abe0a44fd3ca98c037eb799044'
+sha256sums=('4b587bd8299445a29990ba89087b156ab9b6bf85cbd68846766c078e5b3481d3'
             'caa870a9c93c57c6311f9e8fb5685a9179bb9839a27a30cc1712c91df0d15090'
             '592ffb904b697b8c09ab95b3874ad00637333f1805ab2ab0ee50b4f484108ee2')
 
