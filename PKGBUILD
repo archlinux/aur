@@ -2,7 +2,7 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python2-lmfit
-pkgver=0.8.3
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Least-Squares Minimization with Constraints for Python"
 arch=('any')
@@ -25,8 +25,8 @@ check() {
 
 package(){
   cd "$srcdir/lmfit-py-$pkgver"
-  python2 setup.py install --root="${pkgdir}"
+  python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
 # vim:ts=2:sw=2:et:
-md5sums=('f5a06cf18611f3dc323e3a1bab8d45fa')
+md5sums=('440d681d1c4dbc0b8c40ef66cc0300f8')
