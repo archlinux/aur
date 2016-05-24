@@ -1,30 +1,37 @@
 # Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=nuvola-app-deezer-git
-pkgdesc='Deezer integration for Nuvola Player 3.1'
+pkgdesc='Deezer integration for Nuvola Player'
 pkgver=2.4.r0.gdd9c16d
 pkgrel=1
 
-# template start; name=nuvola-app-git; version=1.0.0;
+license=('BSD')
+
+# template start; name=nuvola-app-git; version=1.0.1;
 # Template-Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
 _gitname="${pkgname%-git}"
 
 arch=('any')
 depends=('nuvolaplayer-git')
 makedepends=('git' 'lasem' 'scour')
-license=('custom:BSD')
 sha256sums=('SKIP')
 source=("git+https://github.com/tiliado/${_gitname}.git")
 url="https://github.com/tiliado/${_gitname}"
 
 pkgver() {
 	cd "${_gitname}"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	( set -o pipefail
+		git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 package() {
 	cd "${_gitname}"
+	# Optimize SVG icons (scour), generate PNG icons (lasem), build and install.
 	make install DEST="${pkgdir}/usr/share/nuvolaplayer3/web_apps"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	# Install all available licenses.
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE*
 }
 # template end;
