@@ -24,16 +24,16 @@ Requires=systemd-resolved.service
 # -d dsskey DSS host key (default:  /etc/dropbear/dropbear_dss_host_key)
 # -r rsakey RSA host key (default:  /etc/dropbear/dropbear_rsa_host_key)
 # user key:  ~/.ssh/authorized_keys
-ExecStart=/usr/bin/dropbear -F -s -j -k
+ExecStart=/bin/dropbear -F -s -j -k
 #ExecReload=/bin/kill -HUP $MAINPID
 
 # release network devices to allow rename after switch-root
-ExecStop=/bin/ip addr flush up
-ExecStop=/bin/ip link set group default down
-
-# FIXME
-#ExecStop=/bin/busybox ip addr flush up
-#ExecStop=/bin/busybox ip link set group default down
+# works, needs extra binary: "ip"
+#ExecStop=/bin/ip addr flush up
+#ExecStop=/bin/ip link set group default down
+# works with busybox: "ipaddr" "iplink"
+ExecStop=/bin/busybox ipaddr flush up
+ExecStop=/bin/busybox sh -c "ls /sys/class/net | xargs -I % iplink set % down"
 
 Restart=always
 RestartSec=1s

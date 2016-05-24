@@ -52,9 +52,7 @@ do_shell() {
 
 do_setup() {
     echo "do_setup"
-    local shell="/etc/dropbear/shell.sh"
-    local target="/etc/passwd"
-    sed -i -r -e "s|root.*|root:x:0:0:root:/root:$shell|" $target    
+    true
 }
 
 do_default() {

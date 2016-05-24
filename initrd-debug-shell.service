@@ -19,7 +19,8 @@ ConditionPathExists=/dev/tty8
 
 [Service]
 Environment=TERM=linux
-ExecStart=/bin/sh
+# enforce login shell
+ExecStart=/bin/busybox sh
 Restart=always
 RestartSec=0
 StandardInput=tty

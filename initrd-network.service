@@ -18,4 +18,4 @@ RemainAfterExit=true
 ExecStart=/bin/true
 
 [Install]
-RequiredBy=sysinit.target
+WantedBy=sysinit.target
