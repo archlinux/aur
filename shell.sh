@@ -5,7 +5,7 @@
 # NOTE: initramfs inclusion marker
 # /etc/initrd-release
 
-# user root login shell program
+# user root login shell program for dropbear
 
 do_prompt() {
     local choice=""
@@ -74,7 +74,7 @@ do_default() {
 
 program() {
     local "$@"
-    [[ $agent ]] || agent="systemd-tty-ask-password-agent"
+    [[ $agent ]] || local agent="systemd-tty-ask-password-agent"
     case $entry in
         crypt)  do_crypt ;;
         shell)  do_shell ;;
