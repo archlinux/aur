@@ -9,14 +9,13 @@ pkgbase = jka-toolkit
 	depends = p7zip
 	depends = unrar
 	depends = unzip
-	depends = tar
 	depends = zip
 	depends = facter
 	provides = jkazip
 	provides = apw
 	options = !emptydirs
 	source = https://gitlab.com/JKANetwork/jka-toolkit/raw/master/jka-toolkit.tar.gz
-	md5sums = af4b1cd2ae39dd4c7bf5aa918b0c96b3
+	md5sums = 530beded245bba22227860edd52bd6b7
 
 pkgname = jka-toolkit
 
