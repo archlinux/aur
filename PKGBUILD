@@ -1,23 +1,23 @@
 pkgname=jackett-public
-pkgver=0.6.45
+pkgver=0.6.45.2
 pkgrel=1
-pkgdesc='User any tracker with Sonarr (Public Tracker Version)'
+pkgdesc='Use any tracker with Sonarr (Public Tracker Version)'
 arch=('any')
 license=('GPL')
 url='https://github.com/Jackett/Jackett'
 conflicts=('jackett')
 depends=('mono' 'curl')
-source=('https://github.com/Jackett/Jackett/releases/download/v0.6.45/Jackett.Binaries.Mono.tar.gz' 
+source=('https://github.com/dreamcat4/Jackett-public/releases/download/v0.6.45.2/Jackett-public.Binaries.Mono.tar.gz'
 'jackett.service')
-md5sums=('fa0fbff84b4ccea189d5fe0ce83f73a4'
-         '5983ba69e0289be2c27ce9423df408ab')
+md5sums=('8699545e98891d50ffef692b669d9f7e'
+         'da51e3269b530a99da65e323eebd7f06')
 install=$pkgname.install
 
 package() {
     cd "$srcdir"
 
     install -d -m755 "${pkgdir}/opt/"
-    cp -dpr --no-preserve=ownership "${srcdir}/Jackett"* "${pkgdir}/opt/"
+    cp -dpr --no-preserve=ownership "${srcdir}/Jackett-public"* "${pkgdir}/opt/"
     install -D -m644 "${srcdir}/jackett.service" "${pkgdir}/usr/lib/systemd/system/jackett.service"
     install -d -m755 "${pkgdir}/usr/share/Jackett"
 }

@@ -8,7 +8,7 @@ Group=jackett
 Restart=always
 RestartSec=5
 Type=simple
-ExecStart=/usr/bin/mono --debug /opt/Jackett/JackettConsole.exe
+ExecStart=/usr/bin/mono --debug /opt/Jackett-public/JackettConsole.exe
 TimeoutStopSec=20
 
 [Install]
