@@ -2,8 +2,8 @@
 # Maintainer: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python-lmfit
-pkgver=0.8.3
-pkgrel=2
+pkgver=0.9.3
+pkgrel=1
 pkgdesc="Least-Squares Minimization with Constraints for Python"
 arch=('any')
 url="http://lmfit.github.io/lmfit-py/"
@@ -29,4 +29,4 @@ package(){
 }
 
 # vim:ts=2:sw=2:et:
-md5sums=('f5a06cf18611f3dc323e3a1bab8d45fa')
+md5sums=('440d681d1c4dbc0b8c40ef66cc0300f8')
