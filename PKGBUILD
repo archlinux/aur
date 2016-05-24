@@ -1,5 +1,5 @@
 pkgname=initrd-dropbear
-pkgver=r69.243c636
+pkgver=r70.d7695d3
 pkgrel=1
 pkgdesc="Provider of systemd initramfs dropbear ssh server"
 arch=('any')

@@ -195,10 +195,9 @@ add_systemd_unit() {
                 if [[ ${values[0]:0:1} != '-' ]]; then
                     local exec="${values[0]}"
                     if [[ -f $BUILDROOT$exec ]] ; then
-                         plain "use existing $exec"
-                        add_binary "$exec"
+                         quiet "use existing $exec"
                     else
-                         plain "use resolved $exec"
+                         quiet "use resolved $exec"
                          add_binary "$exec"
                     fi
                 fi
