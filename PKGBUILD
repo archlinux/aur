@@ -3,7 +3,7 @@
 
 pkgname=trackma-git
 pkgver=0.4.r152.g7ca2678
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight and simple program for updating and using lists on several media tracking websites."
 arch=('any')
 url="http://z411.github.io/trackma/"

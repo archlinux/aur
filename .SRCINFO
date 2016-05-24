@@ -1,7 +1,7 @@
 pkgbase = trackma-git
 	pkgdesc = A lightweight and simple program for updating and using lists on several media tracking websites.
 	pkgver = 0.4.r152.g7ca2678
-	pkgrel = 1
+	pkgrel = 2
 	url = http://z411.github.io/trackma/
 	arch = any
 	license = GPL3
