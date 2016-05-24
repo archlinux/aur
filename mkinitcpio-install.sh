@@ -211,8 +211,8 @@ add_systemd_unit() {
                     plain "use existing path $path"
                 else
                     plain "use resolved path $path"
-                    if [[ -e $path]] ; then
-                        if [[ -d $path]] ; then
+                    if [[ -e $path ]] ; then
+                        if [[ -d $path ]] ; then
                             add_full_dir "$path"
                         else
                             add_file "$path"    
