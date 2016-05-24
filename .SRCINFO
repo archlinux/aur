@@ -1,4 +1,4 @@
-pkgbase = mono-pcl
+pkgbase = xamarin-referenceassemblies-pcl
 	pkgdesc = Microsoft Portable Reference Libraries
 	pkgver = 2014.04.14
 	pkgrel = 1
@@ -6,8 +6,9 @@ pkgbase = mono-pcl
 	arch = any
 	license = unknown
 	depends = mono
-	source = http://storage.bos.xamarin.com/bot-provisioning/PortableReferenceAssemblies-2014-04-14.zip
-	md5sums = cc7fa05da3e813c24708c4523482e1af
+	depends = git
+	source = xamarin-referenceassemblies-pcl::git+https://github.com/directhex/xamarin-referenceassemblies-pcl
+	md5sums = SKIP
 
 pkgname = mono-pcl
 
