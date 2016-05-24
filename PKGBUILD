@@ -1,7 +1,7 @@
 # Maintainer:  TDY <tdy@archlinux.info>
 
 pkgname=echinus-git
-pkgver=0.4.9.r31.g2acd233
+pkgver=0.4.9.r34.g56d77b4
 pkgrel=1
 pkgdesc="A window manager for X in the spirit of dwm"
 arch=('i686' 'x86_64')
