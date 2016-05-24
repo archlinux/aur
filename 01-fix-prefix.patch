@@ -1,0 +1,12 @@
+diff --git a/makefile b/makefile
+index 6ae7b6a..ab05a89 100644
+--- a/makefile
++++ b/makefile
+@@ -1,6 +1,6 @@
+ CC=gcc
+ CFLAGS=-rdynamic -fPIC -D_GNU_SOURCE -shared -Wall
+-prefix=/usr/local
++prefix=/usr
+ bindir=$(prefix)/bin
+ libdir=$(prefix)/lib
+ LIB32_PATH=$(libdir)/libstrangle/lib32

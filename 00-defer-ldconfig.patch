@@ -1,0 +1,12 @@
+diff --git a/makefile b/makefile
+index 4472bc7..ef41f6b 100644
+--- a/makefile
++++ b/makefile
+@@ -23,7 +23,6 @@ install: all
+ 	install -m 0755 -D -T libstrangle64.so $(DESTDIR)$(LIB32_PATH)/libstrangle.so
+ 	install -m 0755 -D -T libstrangle32.so $(DESTDIR)$(LIB64_PATH)/libstrangle.so
+ 	install -m 0755 -D -T strangle.sh $(DESTDIR)$(bindir)/strangle
+-	ldconfig
+ 
+ clean:
+ 	rm -f libstrangle64.so
