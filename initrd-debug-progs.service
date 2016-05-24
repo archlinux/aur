@@ -15,6 +15,7 @@ RemainAfterExit=true
 
 # use one shot invocations
 ExecStart=/bin/mc -V
+ExecStart=/bin/mcedit -V
 
 [Install]
 WantedBy=initrd-debug-shell.service

@@ -13,14 +13,14 @@ DefaultDependencies=no
 Type=oneshot
 RemainAfterExit=true
 
-# enforce login shell: use /bin/sh
+# enforce specific login shell
 Environment=SHELL_CMD=/bin/sh
-ExecStart=/bin/busybox sed -i -r -e "s|^root.*|root:x:0:0:root:/root:${SHELL_CMD}|" /etc/passwd
+ExecStart=/bin/sed -i -r -e "s|^root.*|root:x:0:0:root:/root:${SHELL_CMD}|" /etc/passwd
 
 # activate default interactive login shell
 Environment=SHELL_FILE=/etc/dropbear/shell.sh
 Environment=SHELL_LINK=/root/.profile
-ExecStart=/bin/busybox ln -s $SHELL_FILE $SHELL_LINK
+ExecStart=/bin/ln -s $SHELL_FILE $SHELL_LINK
 
 [Install]
 RequiredBy=initrd-dropbear.service

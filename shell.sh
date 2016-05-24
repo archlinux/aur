@@ -56,15 +56,11 @@ do_quit() {
 }
 
 is_pending() {
-    # was password requested
     ps | grep -q "$agent"
 }
 
 do_default() {
-    
-    # designed for ssh session only
     [[ $SSH_CONNECTION ]] || exit 0
-
     if is_pending ; then
         do_crypt
     else 
@@ -73,6 +69,8 @@ do_default() {
 }
 
 program() {
+    echo "args/$@/"
+
     local "$@"
     [[ $agent ]] || local agent="systemd-tty-ask-password-agent"
     case $entry in
