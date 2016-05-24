@@ -1,0 +1,11 @@
+--- a/Plugins/SciberQuestToolKit/eigen-3.0.3/eigen-eigen-3.0.3/Eigen/src/Core/util/Macros.h	2016-03-28 10:07:03.000000000 -0500
++++ b/Plugins/SciberQuestToolKit/eigen-3.0.3/eigen-eigen-3.0.3/Eigen/src/Core/util/Macros.h	2016-05-23 13:46:17.448010324 -0500
+@@ -249,7 +249,7 @@
+ #define EIGEN_UNUSED_VARIABLE(var) (void)var;
+ 
+ #if (defined __GNUC__)
+-#define EIGEN_ASM_COMMENT(X)  asm("#"X)
++#define EIGEN_ASM_COMMENT(X)  asm("#" X)
+ #else
+ #define EIGEN_ASM_COMMENT(X)
+ #endif
