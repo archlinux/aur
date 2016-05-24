@@ -1,0 +1,14 @@
+pkgbase = python2-dfdatetime
+	pkgdesc = Digital Forensics date and time
+	pkgver = 20160323
+	pkgrel = 1
+	url = https://github.com/log2timeline/dfdatetime
+	arch = i686
+	arch = x86_64
+	license = Apache
+	depends = python2
+	source = https://github.com/log2timeline/dfdatetime/archive/20160323.zip
+	md5sums = 6baa6610bba5906e42925315a4b00932
+
+pkgname = python2-dfdatetime
+
