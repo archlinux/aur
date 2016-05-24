@@ -1,6 +1,6 @@
 pkgbase = mdm-display-manager
 	pkgdesc = The MDM Display Manager
-	pkgver = 2.0.4
+	pkgver = 2.0.9
 	pkgrel = 1
 	url = http://www.linuxmint.com
 	install = mdm-display-manager.install
