@@ -2,25 +2,24 @@
 # Contributor: Robert Orzanna <orschiro@gmail.com>
 
 pkgname=ptask-git
-pkgver=0.0.9.r9.g2b8b4aa
-pkgrel=3
+pkgver=1.0.0.r1.g9554c87
+pkgrel=1
 pkgdesc='A GTK+ graphical user interface for managing tasks in taskwarrior'
 arch=('i686'
       'x86_64')
 url='http://wpitchoune.net/ptask'
 license=('GPL2')
-depends=('task'
+depends=('task<=2.5.1'
          'json-c'
 		 'gtk3'
 		 'xdg-utils')
 makedepends=('git'
              'help2man'
 			 'asciidoc')
-install=$pkgname.install
 source=("$pkgname::git+http://git.wpitchoune.net/${pkgname%-git}.git"
-        'task-2.5-compat.patch')
+        'task-2.5.1-compat.patch')
 sha512sums=('SKIP'
-            'ffe243097a6580105820fa2ba84b52667ba8d97c34b9e377b54ce297896dbb695fab47d66c634dff724d4c676bf60a83690e5d574b7b34c0b757558f305a6a23')
+            '52f57df194d69b8b1541a9b28af18976bc346ce26c607d28ffcd23fc99df6e463336cb2f176e61199b6b301c477613e0f9a98c1fba9f80aa140ab1b73a2c8aa7')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
@@ -31,13 +30,11 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-  patch -p1 -i ${srcdir}/task-2.5-compat.patch
+  patch -p1 -i "${srcdir}/task-$(task --version)-compat.patch"
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  aclocal
-  automake
   ./configure \
     --prefix=/usr \
     --sysconfdir=/usr/share

@@ -1,0 +1,14 @@
+diff --git a/src/tw.c b/src/tw.c
+index 602f7b3..cf10bee 100644
+--- a/src/tw.c
++++ b/src/tw.c
+@@ -116,7 +116,8 @@ static int task_check_version()
+ 	    || !strcmp(ver, "2.3.0")
+ 	    || !strcmp(ver, "2.4.0")
+ 	    || !strcmp(ver, "2.4.1")
+-	    || !strcmp(ver, "2.5.0"))
++	    || !strcmp(ver, "2.5.0")
++       || !strcmp(ver, "2.5.1"))
+ 		return 1;
+ 	else
+ 		return 0;
