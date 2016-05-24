@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Butter
+Comment=Stream movies and TV shows from torrents
+Icon=butter-desktop
+TryExec=butter-desktop
+Exec=butter-desktop %U
+MimeType=application/x-bittorrent;x-scheme-handler/magnet;
+Categories=AudioVideo;Video;Player;Network;FileTransfer;P2P;
+
