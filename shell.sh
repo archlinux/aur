@@ -84,4 +84,4 @@ program() {
     esac       
 }
 
-program
+program "$@"
