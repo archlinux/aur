@@ -15,7 +15,7 @@ RemainAfterExit=true
 
 # enforce login shell: use /bin/sh
 Environment=SHELL_CMD=/bin/sh
-ExecStart=/bin/busybox sed -i -r -e "s|^root.*|root:x:0:0:root:/root:$SHELL_CMD|" /etc/passwd
+ExecStart=/bin/busybox sed -i -r -e "s|^root.*|root:x:0:0:root:/root:${SHELL_CMD}|" /etc/passwd
 
 # activate default interactive login shell
 Environment=SHELL_FILE=/etc/dropbear/shell.sh

@@ -46,7 +46,7 @@ build_ssh_host_keys() {
         fi
     done
 
-    invoke   add_full_dir $etc_dropbear
+    add_full_dir $etc_dropbear
     
 }
 
@@ -64,7 +64,7 @@ build_ssh_user_keys() {
     for source in $source_list ; do 
         if [ -f $source ] ; then
             plain "Add public key: $source initramfs: $target"
-            invoke   add_file $source $target
+            add_file $source $target
             return 0
         fi
     done
@@ -83,7 +83,7 @@ build_systemd_units() {
     # services
 
     local dir="/etc/systemd/system"
-    invoke   add_dir $dir
+    add_dir $dir
     
     local unit_list=$(grep -l "$tag" $dir/*.service)
     [[ $unit_list ]] || error "Missing any units in $dir with tag $tag"
@@ -91,14 +91,14 @@ build_systemd_units() {
     local unit
     for unit in $unit_list ; do
         quiet "Add unit: $unit"
-        invoke   add_systemd_unit $unit
+        add_systemd_unit $unit
         invoke   systemctl --root $BUILDROOT enable $unit
     done
     
     # networks
 
     local dir="/etc/systemd/network"
-    invoke   add_dir $dir
+    add_dir $dir
 
     local unit_list=$(grep -l "$tag" $dir/*.network)
     [[ $unit_list ]] || error "Missing any units in $dir with tag $tag"
@@ -106,17 +106,17 @@ build_systemd_units() {
     local unit
     for unit in $unit_list ; do
         quiet "Add unit: $unit"
-        invoke   add_file $unit
+        add_file $unit
     done
     
     # programs
     
     local dir="/etc/dropbear"
-    invoke   add_dir $dir
+    add_dir $dir
     local prog_list=$(grep -l "$tag" $dir/*.sh)
     for prog in $prog_list ; do
         quiet "Add $prog"
-        invoke   add_file "$prog" "$prog" 755
+        add_file "$prog" "$prog" 755
     done
                                                                 
 }
@@ -125,16 +125,16 @@ build_resources() {
     
     quiet "Provide dependency resources"
     
-    invoke   add_checked_modules "/drivers/net/"
+    add_checked_modules "/drivers/net/"
 
     # provided by add_systemd_unit
-    #invoke   add_binary "dropbear"
+    #add_binary "dropbear"
 
     # expected by dropbear
     local temp=$(mktemp)
-    invoke   add_dir "/var/run"
-    invoke   add_dir "/var/log"
-    invoke   add_file $temp "/var/log/lastlog"
+    add_dir "/var/run"
+    add_dir "/var/log"
+    add_file $temp "/var/log/lastlog"
     
 }
 
@@ -156,7 +156,7 @@ keytype_dropbear() {
 
 invoke() {
     local command="$@"
-    local result; result=$($command 2>&1); status=$?
+    local result; result=$($command); status=$?
     case $status in
          0) quiet "Invoke success: $command\n$result\n"; return 0 ;;
          *) error "Invoke failure ($status): $command \n$result\n" ; return 1 ;;  
@@ -193,7 +193,14 @@ add_systemd_unit() {
             Exec*)
                 # don't add binaries unless they are required
                 if [[ ${values[0]:0:1} != '-' ]]; then
-                    add_binary "${values[0]}"
+                    local exec="${values[0]}"
+                    if [[ -f $BUILDROOT$exec ]] ; then
+                         plain "use existing $exec"
+                        add_binary "$exec"
+                    else
+                         plain "use resolved $exec"
+                         add_binary "$exec"
+                    fi
                 fi
                 ;;
         esac
