@@ -1,28 +1,37 @@
 # Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgname=nuvola-app-owncloud-music-git
+pkgdesc='OwnCloud Music integration for Nuvola Player'
 pkgver=1.1.r0.geaf6a29
-pkgrel=3
+pkgrel=1
+
+license=('BSD' 'CCPL:by')
+
+# template start; name=nuvola-app-git; version=1.0.1;
+# Template-Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
+_gitname="${pkgname%-git}"
 
 arch=('any')
-license=('custom:BSD' 'CCPL')
-pkgdesc='OwnCloud Music integration for Nuvola Player.'
-url='https://github.com/tiliado/nuvola-app-owncloud-music'
-
-source=("$pkgname::git+https://github.com/tiliado/nuvola-app-owncloud-music.git")
-sha256sums=('SKIP')
-
 depends=('nuvolaplayer-git')
 makedepends=('git' 'lasem' 'scour')
-
+sha256sums=('SKIP')
+source=("git+https://github.com/tiliado/${_gitname}.git")
+url="https://github.com/tiliado/${_gitname}"
 
 pkgver() {
-	cd "$pkgname"
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "${_gitname}"
+	( set -o pipefail
+		git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	)
 }
 
 package() {
-	cd "${pkgname}"
-	install -Dm644 LICENSE-BSD.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "${_gitname}"
+	# Optimize SVG icons (scour), generate PNG icons (lasem), build and install.
 	make install DEST="${pkgdir}/usr/share/nuvolaplayer3/web_apps"
+
+	# Install all available licenses.
+	install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE*
 }
+# template end;
