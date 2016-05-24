@@ -1,0 +1,48 @@
+diff --git a/cyclone/hammer/capture.c b/cyclone/hammer/capture.c
+index 69e44f0..7598a59 100644
+--- a/cyclone/hammer/capture.c
++++ b/cyclone/hammer/capture.c
+@@ -137,7 +137,7 @@ static void capture_dowrite(t_capture *x, t_symbol *fn)
+     int count = x->x_count;
+     char buf[MAXPDSTRING];
+     canvas_makefilename(x->x_canvas, fn->s_name, buf, MAXPDSTRING);
+-    if (fp = sys_fopen(buf, "w"))  /* LATER ask if overwriting, CHECKED */
++    if (fp = fopen(buf, "w"))  /* LATER ask if overwriting, CHECKED */
+     {
+ 	int col = 0;
+ 	if (count < x->x_bufsize)
+diff --git a/cyclone/hammer/mtr.c b/cyclone/hammer/mtr.c
+index 0d04efa..18da19d 100644
+--- a/cyclone/hammer/mtr.c
++++ b/cyclone/hammer/mtr.c
+@@ -488,7 +488,7 @@ static void mtr_doread(t_mtr *x, t_mtrack *target, t_symbol *fname)
+     	path[MAXPDSTRING-1] = 0;
+     }
+     /* CHECKED no global message */
+-    if (fp = sys_fopen(path, "r"))
++    if (fp = fopen(path, "r"))
+     {
+ 	t_mtrack *tp = 0;
+ 	char linebuf[MTR_FILEBUFSIZE];
+@@ -636,7 +636,7 @@ static void mtr_dowrite(t_mtr *x, t_mtrack *source, t_symbol *fname)
+     	path[MAXPDSTRING-1] = 0;
+     }
+     /* CHECKED no global message */
+-    if (fp = sys_fopen(path, "w"))
++    if (fp = fopen(path, "w"))
+     {
+ 	/* CHECKED single-track writing does not seem to work (a bug?) */
+ 	if (source) failed = mtr_writetrack(x, source, fp);
+diff --git a/cyclone/hammer/seq.c b/cyclone/hammer/seq.c
+index fd5688d..3004fc2 100644
+--- a/cyclone/hammer/seq.c
++++ b/cyclone/hammer/seq.c
+@@ -1017,7 +1017,7 @@ static void seq_doread(t_seq *x, t_symbol *fn, int creation)
+ 	/* loading during object creation -- CHECKED no warning if a file
+ 	   specified with an arg does not exist, LATER rethink */
+ 	FILE *fp;
+-	if (!(fp = sys_fopen(buf, "r")))
++	if (!(fp = fopen(buf, "r")))
+ 	    return;
+ 	fclose(fp);
+     }
