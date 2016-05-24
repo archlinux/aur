@@ -1,6 +1,6 @@
 # Contributor: Pierpaolo Valerio <gondsman@techgeek.co.in>
 pkgname=dpic
-pkgver=20151028
+pkgver=20160112
 pkgrel=1
 pkgdesc="A pic language interpreter"
 arch=('x86_64' 'i686')
@@ -8,9 +8,10 @@ url="http://www.ece.uwaterloo.ca/~aplevich/dpic/"
 license=('BSD')
 makedepends=('gcc')
 source=('https://ece.uwaterloo.ca/~aplevich/dpic/dpic.tar.gz')
-md5sums=('7c6293b4fd0d8f93f3bdb7789ebebf43')
+md5sums=('abf984ffdd14bc58acb0dd6633e8d211')
 
 build() {
+  mv "$srcdir/$pkgname-2016.01.12" "$srcdir/$pkgname"
   cd "$srcdir/$pkgname"
   make
 }
