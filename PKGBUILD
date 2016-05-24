@@ -1,7 +1,7 @@
 # Maintainer: Mathias Bragagia <youremail@domain.com>
 pkgname=kana-p-dev
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Lite desktop manager - use lightdm, awesome and compton - dev channel"
 arch=('any')
 url="https://github.com/bragagia/kana-p"
@@ -182,7 +182,7 @@ noextract=()
 md5sums=('SKIP')
 
 package() {
-	mv -T $srcdir/$pkgname-$pkgver $pkgdir
+	mv -T $srcdir/kana-p-$pkgver $pkgdir
 	rm -f $pkgdir/.gitignore
 	rm -f $pkgdir/LICENSE
 	rm -f $pkgdir/README.md
