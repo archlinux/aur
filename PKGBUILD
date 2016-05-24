@@ -51,7 +51,7 @@ package() {
   cp -a "${_bpath}/"{locales,node_modules,src} "${pkgdir}/usr/share/${_pkgname}/"
 
   # Link to program
-  ln -s "/usr/share/${_pkgname}/butter-desktop" "${pkgdir}/usr/bin/${_pkgname}"
+  ln -s "/usr/share/${_pkgname}/Butter" "${pkgdir}/usr/bin/${_pkgname}"
 
   # Desktop file
   install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
