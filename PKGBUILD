@@ -1,7 +1,7 @@
 # Maintainer: Joost Bremmer < toost dot b at gmail dot com>
 pkgname=iographica
 pkgver=1.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="an application that turns mouse movements into modern art"
 arch=(any)
 url="http://iographica.com/"
@@ -14,7 +14,6 @@ source=("${pkgname}"
 "${pkgname}.jar"::http://iographica.com/download/linux/IOGraph_v1_0_1.jar)
 noextract=(${pkgname}.jar)
 conflicts=("iograph")
-install="${pkgname}.install"
 sha256sums=('d248d89663710e486ede5eafad02352ef739649132499ef338c80c9472b72dd7'
             '9625acb9e461c43c9c8c41451bf34ec7d674f2a172305d26c193cb30a2154245'
             '72ef426162886d3ee3f298a967c399f94aec560dba1cb76b476295e6c1dc64bf'
