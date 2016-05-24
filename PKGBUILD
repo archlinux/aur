@@ -3,9 +3,9 @@
 pkgname=libstrangle-git
 _gitname=libstrangle
 pkgdesc="Simple FPS Limiter"
-pkgver=r18.ce1bfe7
+pkgver=r23.cd90e07
 pkgrel=1
-arch=('any')
+arch=('x86_64')
 makedepends=('gcc-multilib')
 
 depends=()
@@ -15,7 +15,7 @@ conflicts=('libstrangle')
 license=('GPL3')
 url="https://github.com/torkel104/libstrangle.git"
 install=libstrangle.install
-source=("${_gitname}::git+https://github.com/pyamsoft/libstrangle.git#branch=arch-build-unsupported-upstream"
+source=("${_gitname}::git+${url}"
         'libstrangle.install'
         '00-defer-ldconfig.patch'
         '01-fix-prefix.patch')
