@@ -2,12 +2,12 @@
 
 pkgname=purescript-bin
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A small strongly typed programming language with expressive types that compiles to Javascript, written in and inspired by Haskell."
 arch=('x86_64')
 url="http://www.purescript.org/"
 license=('MIT')
-depends=('gmp' 'libtinfo-5' 'zlib')
+depends=('gmp' 'libtinfo5' 'zlib')
 makedepends=('chrpath')
 provides=('purescript')
 source=("purescript-${pkgver}.tar.gz::https://github.com/purescript/purescript/releases/download/v${pkgver}/linux64.tar.gz")
