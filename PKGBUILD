@@ -1,8 +1,8 @@
 # Maintainer: Grey Christoforo <first name [at] last name [dot] net>
 
 pkgname=uranium
-pkgver=15.06.03
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="A Python framework for building Desktop applications."
 url="https://github.com/Ultimaker/Uranium"
 arch=('i686' 'x86_64')
@@ -10,16 +10,16 @@ license=('GPLv3')
 depends=('python' 'qt5-quickcontrols' 'pyqt5-common' 'python-pyqt5' 'python-numpy' 'arcus')
 makedepends=('cmake')
 source=("https://github.com/Ultimaker/${pkgname}/archive/${pkgver}.tar.gz" qt5.patch scripts.patch Backend.py.patch)
-md5sums=('60c583b462494c2de015a678ba134eb3'
+md5sums=('6e0a674a38b4a25c7a6dec859852aa33'
          'e4975dddd0524845b9574b4142274f5a'
          'd1832c5533c1ab6ceffd0a70768ccbd6'
          '3d48bccc0d20475927c1badd81a95e35')
 
 prepare(){
   cd Uranium-${pkgver}
-  patch -Np1 -i ../qt5.patch
-  patch -Np1 -i ../scripts.patch
-  patch -Np1 -i ../Backend.py.patch
+  #patch -Np1 -i ../qt5.patch
+  #patch -Np1 -i ../scripts.patch
+  #patch -Np1 -i ../Backend.py.patch
 }
 
 build() {
