@@ -166,6 +166,7 @@ invoke() {
 
 # bug fix for https://bugs.archlinux.org/task/42396
 # bug fix for https://bugs.archlinux.org/task/49458
+# bug fix for https://bugs.archlinux.org/task/49460
 
 add_systemd_unit() {
     # Add a systemd unit file to the initcpio image. Hard dependencies on binaries
@@ -196,10 +197,28 @@ add_systemd_unit() {
                 if [[ ${values[0]:0:1} != '-' ]]; then
                     local exec="${values[0]}"
                     if [[ -f $BUILDROOT$exec ]] ; then
-                         quiet "use existing $exec"
+                         plain "use existing exec $exec"
                     else
-                         quiet "use resolved $exec"
+                         plain "use resolved exec $exec"
                          add_binary "$exec"
+                    fi
+                fi
+                ;;
+            ConditionPathExists)
+                # auto provision resources
+                local path="${values[0]}"
+                if [[ -e $BUILDROOT$path ]] ; then
+                    plain "use existing path $path"
+                else
+                    plain "use resolved path $path"
+                    if [[ -e $path]] ; then
+                        if [[ -d $path]] ; then
+                            add_full_dir "$path"
+                        else
+                            add_file "$path"    
+                        fi
+                    else
+                        error "missing path $path"
                     fi
                 fi
                 ;;

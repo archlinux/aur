@@ -5,9 +5,13 @@
 
 [Unit]
 Description=Debug Progs (initrd)
+DefaultDependencies=no
+
 # NOTE: initramfs inclusion marker
 ConditionPathExists=/etc/initrd-release
-DefaultDependencies=no
+
+# auto provision resources
+ConditionPathExists=/etc/mc
 
 [Service]
 Type=oneshot
