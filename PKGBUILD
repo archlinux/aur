@@ -20,9 +20,9 @@ pkgdesc='Cloud music integration for your Linux desktop.'
 url='https://tiliado.eu/nuvolaplayer/'
 
 source=("$pkgname::git+https://github.com/tiliado/nuvolaplayer"
-        'nuvola-app-git-1.0.0.template')
+        'nuvola-app-git-1.0.1.template')
 sha256sums=('SKIP'
-            '8e61d52d4c5bae4ad6e62c0e579dcb0e4053ae5dd4315085b37339deaff01cea')
+            '22fe31b839cd7f0e17047ebc3c2ff8ab53e032b42173fa81f83031815e30a33c')
 
 depends=('diorite-git' 'webkit2gtk' 'libarchive')
 makedepends=('git' 'python' 'vala')
@@ -62,6 +62,6 @@ package() {
 	python ./waf install --no-system-hooks --destdir="${pkgdir}"
 
 	# Installl makepkg template for nuvola-app-*-git integrations.
-	install -Dm644 "${srcdir}/nuvola-app-git-1.0.0.template" "${pkgdir}/usr/share/makepkg-template/nuvola-app-git-1.0.0.template"
-	ln -s nuvola-app-git-1.0.0.template "${pkgdir}/usr/share/makepkg-template/nuvola-app-git.template"
+	install -Dm644 "${srcdir}/nuvola-app-git-1.0.1.template" "${pkgdir}/usr/share/makepkg-template/nuvola-app-git-1.0.1.template"
+	ln -s nuvola-app-git-1.0.1.template "${pkgdir}/usr/share/makepkg-template/nuvola-app-git.template"
 }
