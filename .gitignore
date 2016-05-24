@@ -2,4 +2,5 @@
 *.tar.xz
 src/
 pkg/
-installerBlobFromMicrochip
+*.pkg.tar
+*installer.run
