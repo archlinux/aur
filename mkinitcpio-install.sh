@@ -165,6 +165,7 @@ invoke() {
 
 
 # bug fix for https://bugs.archlinux.org/task/42396
+# bug fix for https://bugs.archlinux.org/task/49458
 
 add_systemd_unit() {
     # Add a systemd unit file to the initcpio image. Hard dependencies on binaries
