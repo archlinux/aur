@@ -1,6 +1,6 @@
 pkgbase = openrw-git
 	pkgdesc = A re-implementation of Rockstar Games' Grand Theft Auto III
-	pkgver = r647.c869313
+	pkgver = r660.f2ca6ed
 	pkgrel = 1
 	url = https://github.com/rwengine/openrw
 	arch = x86_64
@@ -11,7 +11,6 @@ pkgbase = openrw-git
 	depends = bullet
 	depends = glm
 	depends = sfml
-	depends = boost
 	depends = libmad
 	provides = openrw
 	source = openrw-git::git+https://github.com/rwengine/openrw.git

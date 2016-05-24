@@ -1,6 +1,6 @@
 # Maintainer: PureTryOut
 pkgname=openrw-git
-pkgver=r647.c869313
+pkgver=r660.f2ca6ed
 pkgrel=1
 epoch=
 pkgdesc="A re-implementation of Rockstar Games' Grand Theft Auto III"
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/rwengine/openrw"
 license=('GPL3')
 groups=()
-depends=('bullet' 'glm' 'sfml' 'boost' 'libmad')
+depends=('bullet' 'glm' 'sfml' 'libmad')
 makedepends=('git' 'cmake' 'make')
 checkdepends=()
 optdepends=()
