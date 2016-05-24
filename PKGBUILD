@@ -15,7 +15,7 @@ optdepends=('gnome-shell>=3.18: The GNOME Shell'
             'budgie-desktop>=10.2.4: The Budgie desktop'
             'cinnamon>=2.8: The Cinnamon desktop'
             'xfdesktop>=4.12.2: The Xfce desktop'
-            'paper-icon-theme-git: A fitting icon theme'
+            'paper-icon-theme: A fitting icon theme'
             'gnome-tweak-tool: A graphical tool to tweak gnome settings'
             "unity>=7.4.0: Ubuntu's Unity desktop")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tista500/Adapta/archive/${pkgver}.tar.gz"
