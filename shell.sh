@@ -28,22 +28,28 @@ do_prompt() {
 }
 
 do_crypt() {
-    # provide password answer
-    local command result status
-    command="/bin/$agent"
-    if [[ -f $command ]] ; then
-        result=$($command 2>&1); status=$?
-        case $status in
-            0) echo "success" ; return 0 ;;
-            *) echo "failure:\n$result\n"; return 1 ;;
-        esac       
-    else
+    local command="/bin/$agent"
+    if [ ! -f "$command" ] ; then
         echo "missing $command"
+        return 1
     fi
+    local pid=$($command --list | head 1 | parse_crypt_pid)
+    echo "pid $pid"
+    local ask=$($command --query)
+    local count=1
+    while is_pid_present "$pid" ; do
+        sleep 0.5
+        let count+=1
+        if [ "$count" -gt "10" ] ; then
+            echo "failure"
+            return 1
+        fi
+    done
+    echo "success"
+    do_close
 }
 
 do_shell() {
-    # replace process
     exec /bin/sh
 }
 
@@ -55,12 +61,20 @@ do_quit() {
     exit 0
 }
 
+do_close() {
+    exec /bin/sh -c exit
+}
+
 is_ask_pending() {
-    ps | grep -q "$agent"
+    ps | grep -q -e "$agent"
 }
 
 is_ssh_connect() {
     [ -n "$SSH_CONNECTION" ]
+}
+
+is_pid_present() {
+    ps | grep -E -e "[ ]+${1}[ ]+.*"
 }
 
 do_default() {
@@ -70,6 +84,11 @@ do_default() {
     else 
         do_prompt
     fi
+}
+
+# pattern: "'Please enter passphrase for disk VBOX_HARDDISK (root)!' (PID 167)" 
+parse_crypt_pid () {
+    echo "$1" | sed -r "s%.*PID[ ]+([0-9]+).*%\1%"
 }
 
 program() {
