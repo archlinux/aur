@@ -1,4 +1,0 @@
-43c43
-< if ($ARGV[0] eq "--help" || $ARGV[0] eq "-h") {
----
-> if ($#ARGV < 0 || $ARGV[0] eq "--help" || $ARGV[0] eq "-h") {
