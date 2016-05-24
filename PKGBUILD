@@ -2,20 +2,20 @@
 
 pkgname=clanlib-gl1
 pkgver=2.3.7
-pkgrel=8
+pkgrel=9
 pkgdesc="Clanlib GL1 library .so from Fedora"
 arch=('i686' 'x86_64')
 url="http://clanlib.org/"
 license=('zlib')
 depends=('clanlib>=2.3.0')
 makedepends=('rpmextract')
-_rpmrel=8
-_fc=fc23
+_rpmrel=9
+_fc=fc24
 _arch=$(uname -m)
-source_i686=(ftp://ftp.is.co.za/mirror/fedora.redhat.com/linux/development/rawhide/i386/os/Packages/c/ClanLib-$pkgver-$_rpmrel.$_fc.i686.rpm)
-md5sums_i686=('ef9aa3874c36852dd550c0ba19f3c73f')
-md5sums_x86_64=('3b500f6dfeb673eadcd27fe925af7eac')
-source_x86_64=(ftp://ftp.is.co.za/mirror/fedora.redhat.com/linux/development/rawhide/x86_64/os/Packages/c/ClanLib-$pkgver-$_rpmrel.$_fc.x86_64.rpm)
+source_i686=("http://mirrors.tummy.com/pub/fedora.redhat.com/fedora/linux/development/rawhide/Everything/i386/os/Packages/c/ClanLib-$pkgver-$_rpmrel.$_fc.i686.rpm")
+md5sums_i686=('73cedd234055ca5c2eb0fbb6c44ad18f')
+md5sums_x86_64=('a1963384e2a4ac8ac114dc4369e7d42e')
+source_x86_64=("http://mirrors.tummy.com/pub/fedora.redhat.com/fedora/linux/development/rawhide/Everything/x86_64/os/Packages/c/ClanLib-$pkgver-$_rpmrel.$_fc.x86_64.rpm")
 
 package () {
   cd $srcdir
