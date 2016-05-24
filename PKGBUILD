@@ -3,7 +3,7 @@
 pkgname=combust-git
 _gitname=combust
 pkgver=0.60.2e20f28
-pkgrel=1
+pkgrel=2
 pkgdesc='nftables firewall script with profiles'
 arch=('any')
 license=('MIT')
@@ -11,7 +11,7 @@ url='https://github.com/gavinhungry/combust'
 depends=('nftables')
 source=("${_gitname}::git+https://github.com/gavinhungry/${_gitname}.git#branch=master")
 md5sums=('SKIP')
-backup=('etc/combust/combust.conf')
+backup=('etc/combust.conf')
 
 pkgver () {
   cd "${srcdir}/${_gitname}"
