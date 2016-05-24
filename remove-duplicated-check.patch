@@ -1,0 +1,13 @@
+diff --git a/lib/ftdiuart.c b/lib/ftdiuart.c
+index 7d1054c..0620dd1 100644
+--- a/lib/ftdiuart.c
++++ b/lib/ftdiuart.c
+@@ -359,7 +359,7 @@ static int fuart_wr_rd_locked(struct fuart_context *fuartc) {
+       rd_buf += bytes;
+       bytes_remaining -= bytes;
+     }
+-    if ((bytes == -1) && ((errno == EAGAIN) || (errno == EWOULDBLOCK)) &&
++    if ((bytes == -1) && (errno == EAGAIN) &&
+         (retries < 10)) {
+       retries++;
+       goto retry_write;

@@ -1,16 +1,18 @@
 # Maintainer: Anatol Pomozov <anatol dot pomozov at gmail>
 
 pkgname=hdctools-git
-pkgver=r599.a364971
+pkgver=r610.3601f99
 pkgrel=1
 pkgdesc='Chrome OS Hardware Debug & Control Tools'
 url='http://sites.google.com/a/google.com/chromeos-partner/hardware-control-and-debug'
 arch=(i686 x86_64)
-depends=(python2 python2-pyusb python2-pyserial python2-pexpect libftdi python2-numpy)
+depends=(python2 python2-pyusb python2-pyserial python2-pexpect libftdi python2-numpy ec-devutil-git)
 makedepends=(tidyhtml python2-setuptools)
 license=(BSD)
-source=(git+https://chromium.googlesource.com/chromiumos/third_party/hdctools)
-sha1sums=('SKIP')
+source=(git+https://chromium.googlesource.com/chromiumos/third_party/hdctools
+        remove-duplicated-check.patch)
+sha1sums=('SKIP'
+          'd28db1b931b8d5b5755d9c58405af8ecd6cf1610')
 
 #TODO:
 # - figure out compile problem with CPPFLAG
@@ -19,6 +21,11 @@ sha1sums=('SKIP')
 pkgver() {
   cd hdctools
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd hdctools
+  patch -p1 < ../remove-duplicated-check.patch
 }
 
 build() {
