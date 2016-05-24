@@ -1,0 +1,17 @@
+post_install() {
+	if grep -q "^jackett" /etc/group &> /dev/null ; then
+		groupmod -n jackett jackett &> /dev/null                                                 
+	else
+		groupadd -r jackett &> /dev/null
+	fi
+	if grep -q "^jackett:" /etc/passwd 2> /dev/null ; then
+		usermod -s /bin/false -c "jackett daemon" -d /usr/share/Jackett -g jackett jackett &> /dev/null
+	else
+		useradd -s /bin/false -c "jackett daemon user" -d /usr/share/Jackett -g jackett -r jackett &> /dev/null
+	fi
+    chown -R jackett: /usr/share/Jackett /opt/Jackett
+}
+
+post_upgrade() {
+	post_install $1
+}
