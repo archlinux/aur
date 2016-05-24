@@ -1,7 +1,7 @@
 pkgbase = pdfshuffler-git
 	pkgdesc = Merge or split pdf documents and rotate, crop and rearrange their pages
 	pkgver = r100.caec35f
-	pkgrel = 3
+	pkgrel = 4
 	url = http://sourceforge.net/projects/pdfshuffler/
 	arch = any
 	license = GPL
