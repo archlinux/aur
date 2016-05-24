@@ -10,9 +10,6 @@ DefaultDependencies=no
 # NOTE: initramfs inclusion marker
 ConditionPathExists=/etc/initrd-release
 
-# auto provision resources
-ConditionPathExists=/etc/mc
-
 [Service]
 Type=oneshot
 RemainAfterExit=true
@@ -20,6 +17,9 @@ RemainAfterExit=true
 # use one shot invocations
 ExecStart=/bin/mc -V
 ExecStart=/bin/mcedit -V
+
+# https://github.com/systemd/systemd/issues/3340
+ProvisionInitrdPath=/etc/mc
 
 [Install]
 WantedBy=initrd-debug-shell.service

@@ -204,7 +204,7 @@ add_systemd_unit() {
                     fi
                 fi
                 ;;
-            ConditionPathExists)
+            ProvisionInitrdPath)
                 # auto provision resources
                 local path="${values[0]}"
                 if [[ -e $BUILDROOT$path ]] ; then
@@ -212,11 +212,8 @@ add_systemd_unit() {
                 else
                     plain "use resolved path $path"
                     if [[ -e $path ]] ; then
-                        if [[ -d $path ]] ; then
-                            add_full_dir "$path"
-                        else
-                            add_file "$path"    
-                        fi
+                        if [[ -d $path ]] ; then add_full_dir "$path" ; fi
+                        if [[ -f $path ]] ; then add_file "$path" ; fi
                     else
                         error "missing path $path"
                     fi
