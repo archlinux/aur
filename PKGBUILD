@@ -13,7 +13,7 @@ optdepends=()
 provides=('gpstk')
 conflicts=('gpstk')
 arch=('x86_64')
-source=(http://softlayer-dal.dl.sourceforge.net/project/gpstk/gpstk/${pkgver}/gpstk-${pkgver}.linux.x86_64.tar.gz)
+source=(http://ufpr.dl.sourceforge.net/project/gpstk/gpstk/${pkgver}/gpstk-${pkgver}.linux.x86_64.tar.gz)
 md5sums=('083706d792aaaf3d84ba85ff841f7f54')
 
 package() {
