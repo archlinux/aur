@@ -1,13 +1,14 @@
 pkgbase = python2-leveldb
 	pkgdesc = Python bindings for leveldb database library
 	pkgver = 0.193
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/leveldb
 	arch = any
 	license = BSD
 	depends = snappy
 	depends = leveldb
 	depends = gperftools
+	depends = python2
 	source = https://pypi.python.org/packages/source/l/leveldb/leveldb-0.193.tar.gz
 	md5sums = 2952434f2a0ce10c44f58542cc561589
 

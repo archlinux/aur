@@ -1,12 +1,12 @@
 pkgname=python2-leveldb
 _pkgname=leveldb
 pkgver=0.193
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for leveldb database library"
 url="https://pypi.python.org/pypi/leveldb"
 arch=('any')
 license=('BSD')
-depends=('snappy' 'leveldb' 'gperftools')
+depends=('snappy' 'leveldb' 'gperftools' 'python2')
 source=("https://pypi.python.org/packages/source/l/$_pkgname/$_pkgname-$pkgver.tar.gz")
 md5sums=('2952434f2a0ce10c44f58542cc561589')
 
