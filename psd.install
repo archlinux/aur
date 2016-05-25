@@ -92,6 +92,10 @@ pre_upgrade() {
 		echo '-> Recommend that you diff /usr/share/psd/psd.conf against ~/.config/psd/psd.conf'
 	fi
 
+	# version 6.22 has minor changes to config file
+	if [ $(vercmp $2 6.22) -lt 0 ]; then
+		echo '-> Recommend that you diff /usr/share/psd/psd.conf against ~/.config/psd/psd.conf'
+	fi
 }
 
 post_upgrade() {
