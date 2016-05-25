@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 url='https://www.kde.org/applications/internet/kget/'
 license=(GPL)
 depends=(kdelibs4support kcmutils knotifyconfig qca-qt5 gpgmepp)
-makedepends=(extra-cmake-modules git kdoctools python boost)
+makedepends=(extra-cmake-modules git kdoctools python boost kdesignerplugin)
 conflicts=(kdenetwork-kget kget)
 provides=(kget)
 source=("git://anongit.kde.org/kget.git#branch=kf5_port")
