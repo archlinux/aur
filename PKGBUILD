@@ -1,5 +1,5 @@
 pkgname=mkinitcpio-systemd-tool
-pkgver=r7.80bd48a
+pkgver=r8.394d083
 pkgrel=1
 pkgdesc='Utilities for systemd in initramfs (systemd-tool)'
 arch=('any')

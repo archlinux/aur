@@ -100,4 +100,4 @@ program() {
     esac       
 }
 
-program "$@"
+#program "$@"
