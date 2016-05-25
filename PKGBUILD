@@ -1,7 +1,6 @@
 # Maintainer: Justin Wong <justin.w.xd at gmail dot com>
 pkgname=netease-cloud-music
-pkgver=0.9.0
-_pkgver=${pkgver}-2
+pkgver=0.9.0_2
 pkgrel=1
 pkgdesc="Netease Cloud Music, converted from .deb package"
 arch=("x86_64")
@@ -14,7 +13,7 @@ depends=("alsa-lib" "atk" "glibc" "cairo" "libcups" "libdbus" "expat" "fontconfi
 	"gstreamer0.10-ugly-plugins"
 )
 source=(
-	"http://s1.music.126.net/download/pc/${pkgname}_${_pkgver}_amd64.deb"
+	"http://s1.music.126.net/download/pc/${pkgname}_${pkgver/_/-}_amd64.deb"
 	"http://security.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.0.0_1.0.2g-1ubuntu4.1_amd64.deb"
 	"http://archive.ubuntu.com/ubuntu/pool/universe/libc/libcue/libcue1_1.4.0-1_amd64.deb"
 	"netease-cloud-music"
