@@ -6,7 +6,8 @@
 [Unit]
 Description=User Root (initrd)
 ConditionPathExists=/etc/initrd-release
-DefaultDependencies=yes
+DefaultDependencies=no
+Before=initrd-dropbear.service
 
 [Service]
 Type=oneshot

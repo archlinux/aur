@@ -5,8 +5,9 @@
 
 [Unit]
 Description=Debug Progs (initrd)
-DefaultDependencies=yes
+DefaultDependencies=no
 ConditionPathExists=/etc/initrd-release
+Before=initrd-debug-shell.service
 
 [Service]
 Type=oneshot
