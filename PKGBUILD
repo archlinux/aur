@@ -6,16 +6,14 @@
 
 _modpkver=2.9.1
 pkgname=nginx-mainline-modsecurity
-provides=('nginx')
-conflicts=('nginx')
-pkgver=1.9.15
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release with ModSecurity module'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url='http://nginx.org'
 license=('custom')
 depends=('pcre' 'apr-util' 'curl' 'lua51' 'libxml2' 'yajl' 'geoip')
-makedepends=('apache')
+makedepends=('apache' 'hardening-wrapper')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
@@ -28,11 +26,13 @@ backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/modsecurity.conf'
         'etc/logrotate.d/nginx')
 install=nginx.install
+provides=('nginx')
+conflicts=('nginx')
 source=($url/download/nginx-$pkgver.tar.gz
         service
         logrotate
         https://www.modsecurity.org/tarball/$_modpkver/modsecurity-$_modpkver.tar.gz)
-md5sums=('13cd38e9da3789035750dd45882c4a26'
+md5sums=('a9dd047f277710b34e59407117e13bc6'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7'
          '0fa92b852abc857a20b9e24f83f814cf')
@@ -55,15 +55,15 @@ _common_flags=(
   --with-http_ssl_module
   --with-http_stub_status_module
   --with-http_sub_module
-)
-
-_mainline_flags=(
   --with-http_v2_module
   --with-mail
   --with-mail_ssl_module
   --with-stream
   --with-stream_ssl_module
   --with-threads
+)
+
+_mainline_flags=(
 )
 
 prepare() {
