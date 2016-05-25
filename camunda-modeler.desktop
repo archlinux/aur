@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Camunda Modeler
+Icon=camunda-modeler
+GenericName=An integrated modeling solution for BPMN and DMN based on bpmn.io.
+Comment=An integrated modeling solution for BPMN and DMN based on bpmn.io.
+Exec=/usr/bin/camunda-modeler &
+Type=Application
+Categories=Development;
