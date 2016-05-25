@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/persmule/amule-dlp"
 license=('GPL')
 depends=('wxgtk' 'wxgtk2.8' 'gd' 'geoip' 'libupnp' 'crypto++' 'libsm')
-conflicts=('amule' 'amule-dlp' 'amule-dlp-hg')
+conflicts=('amule' 'amule-dlp' 'amule-dlp-hg' 'amule-dlp-git')
 makedepends=(git)
 optdepends=('antileech')
 install=amule.install
@@ -56,7 +56,7 @@ build() {
 	  --enable-ccache \
 	  --with-wxversion=2.8
 
-  make -j4
+  make -j`cat /proc/cpuinfo |grep "processor"|wc -l`
 }
 
 package() {
