@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-tabbar-git
-pkgver=374
+pkgver=376
 pkgrel=1
 pkgdesc="Emacs minor mode that displays a tab bar at the top"
 arch=('any')
