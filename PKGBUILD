@@ -4,7 +4,7 @@
 
 pkgname=utox
 _pkgname=uTox
-pkgver=0.9.3
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='Lightweight Tox client'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -23,7 +23,7 @@ depends=('desktop-file-utils'
 optdepends=('gtk3: GTK file picker')
 makedepends=('toxcore')
 source=("https://github.com/GrayHatter/$_pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('805ae4122fb4088dacc82c432e754fc0950b6c7089f0ae878dbe8a8d6b513bfc')
+sha256sums=('e8d1443daca87bb4ac14486327495a9d76591056f57fe737569f163ab2fc70e9')
 
 build() {
   cd "$_pkgname-$pkgver"
