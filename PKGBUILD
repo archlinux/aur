@@ -1,7 +1,7 @@
 # Maintainer: Mathias Bragagia <youremail@domain.com>
 pkgname=kana-p-dev
 pkgver=0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="Lite desktop manager - use lightdm, awesome and compton - dev channel"
 arch=('any')
 url="https://github.com/bragagia/kana-p"
@@ -147,8 +147,11 @@ depends=(
 	'openbox'
 	'lain-git'
 	'eminent-git'
+	'openbox-arc-git'
 	'rofi'
+	'tint2'
 	'network-manager-applet'
+	'volumeicon'
 	'gnome-keyring'
 
 	'archlinux-xdg-menu'
@@ -166,8 +169,8 @@ depends=(
 	'numix-bevel-icon-theme-git'
 	'gtk-theme-arc-git'
 
-	'rxvt-unicode'
-	'rxvt-unicode-terminfo'
+	'rxvt-unicode-pixbuf'
+	'rnxvt-unicode-terminfo'
 )
 makedepends=()
 optdepends=()
