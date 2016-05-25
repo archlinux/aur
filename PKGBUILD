@@ -2,8 +2,10 @@
 # Maintainer: Eschwartz <eschwartz93@gmail.com>
 # Contributors: Ner0, Sevenseven
 
+# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
+
 pkgname=qbittorrent-git
-pkgver=3.3.4.r529.g673b86c
+pkgver=3.3.4.r553.gc2abbed
 pkgrel=1
 pkgdesc="A bittorrent client powered by C++, Qt5 and the good libtorrent library (development version)"
 arch=('i686' 'x86_64')
@@ -30,7 +32,6 @@ build() {
   cd ${pkgname%-*}
 
   ./configure --prefix=/usr
-  qmake-qt5 src/src.pro QMAKE_CFLAGS_ISYSTEM=
   make
 }
 
