@@ -12,13 +12,13 @@ _remove_bundled_jre=
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=162.74.16
+_buildver=162.426.1
 _veryear=2016
 _verrelease=2
 _verextra=
 _nojdkrelease=true
 pkgver=${_veryear}.${_verrelease}.${_buildver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Early access version of the upcoming version of Intellij Idea IDE (community version)"
 arch=('any')
 options=(!strip)
