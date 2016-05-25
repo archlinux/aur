@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=ipxe-git
-pkgver=1.0.0.r2295.g858f56e
+pkgver=1.0.0.r2301.gf42b258
 pkgrel=1
 pkgdesc='iPXE open source boot firmware - git checkout'
 arch=('any')
@@ -49,10 +49,10 @@ prepare() {
 	patch -Np2 < "${srcdir}/0002-banner.patch"
 
 	# ISO image with EFI support
-	git cherry-pick -n ff8c8dc5
+	git cherry-pick -n 189652b0
 
 	# build fix - no PIE
-	git cherry-pick -n 6eb2017e
+	git cherry-pick -n 58557055
 
 	# read and set keymap
 	[ -s /etc/vconsole.conf ] && source /etc/vconsole.conf
