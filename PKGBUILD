@@ -1,15 +1,15 @@
 # Maintainer : Johnathan Jenkins <twodopeshaggy@gmail.com>
 # Contributor: Drew Liszewski <drew dot liszewski at gmail dot com>
 # Contributor: Daniel Varga <varga dot daniel at gmx dot de>
+
 pkgname=emulationstation-git
 _gitname=EmulationStation
 pkgrel=1
-pkgver=767.646bede
+pkgver=819.76c1538
 pkgdesc="A graphical front-end for emulators with controller navigation. Developed for the Raspbery Pi, but runs on most Linux systems."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/Aloshi/EmulationStation"
 license=('MIT')
-groups=()
 makedepends=('git' 'boost' 'freetype2' 'eigen' 'cmake' 'mesa' 'libsm')
 depends=('alsa-lib' 'sdl2' 'boost-libs' 'freeimage' 'ttf-dejavu' 'glu')
 if [ "$CARCH" = "armv6h" ]; then
@@ -17,7 +17,7 @@ depends+=('raspberrypi-firmware')
 else
 depends+=('libgl')
 fi
-source=('git://github.com/Aloshi/EmulationStation.git')
+source=('git://github.com/Herdinger/EmulationStation.git')
 md5sums=('SKIP')
 provides=('emulationstation')
 
