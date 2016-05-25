@@ -1,4 +1,5 @@
 # Maintainer: Samuel Mansour (s83) <samipnt+aur@gmail.com>
+# Contributor: Patrick Burroughs (Celti) <celti@celti.name>
 # Upstream URL: https://github.com/tiliado/nuvola-app-mixcloud
 
 # Please do mind that pkgbuild will automagically update
@@ -6,27 +7,37 @@
 # there's no need to manually change pkgver.
 # Please don't flag out-of-date!
 pkgname=nuvola-app-mixcloud-git
+pkgdesc='Mixcloud integration for Nuvola Player 3 from Github'
 pkgver=3.0.r0.g1c5126b
 pkgrel=1
 
-pkgdesc="Mixcloud integration for Nuvola Player from Github"
-url="https://github.com/tiliado/nuvola-app-mixcloud"
-license=('custom:BSD')
+license=('BSD')
+
+_gitname="${pkgname%-git}"
+
 arch=('any')
-
 depends=('nuvolaplayer-git')
-makedepends=('git')
+makedepends=('git' 'lasem' 'scour')
+sha256sums=('SKIP')
 
-source=("${pkgname}::git+https://github.com/tiliado/nuvola-app-mixcloud.git")
-md5sums=('SKIP')
+source=("git+https://github.com/tiliado/${_gitname}.git")
+url="https://github.com/tiliado/${_gitname}"
 
 pkgver() {
-	cd "${pkgname}"
-	git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${_gitname}"
+  ( set -o pipefail
+  git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 package() {
-	cd "${pkgname}"
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	make install DEST="${pkgdir}/usr/share/nuvolaplayer3/web_apps"
+  package() {
+    cd "${_gitname}"
+    # Optimize SVG icons (scour), generate PNG icons (lasem), build and install.
+    make install DEST="${pkgdir}/usr/share/nuvolaplayer3/web_apps"
+
+    # Install all available licenses.
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE*
+  }
 }
