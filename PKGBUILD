@@ -10,8 +10,8 @@ url='http://www.ovirt.org/develop/release-management/features/infra/python-sdk'
 depends=('python2' 'python2-lxml' 'python2-pycurl')
 makedepends=('python2' 'python2-setuptools')
 license=('ASL 2.0')
-source=("http://resources.ovirt.org/pub/ovirt-3.6-snapshot/src/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('8f76544cca345cfffb3212ba5d65594f5cf1a4d20f602cd50b9f9111898f602f')
+source=("http://resources.ovirt.org/pub/ovirt-4.0-snapshot/src/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('dc3f5f0fb9e123a52ba6c9cf78bb84d9c8da5d0fae951648fc58b8c692bd4232')
 
 prepare() {
   pushd "${srcdir}/${pkgname}"
