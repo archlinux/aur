@@ -23,3 +23,5 @@ WantedBy=initrd-debug-shell.service
 # https://github.com/systemd/systemd/issues/3340
 [X-SystemdTool]
 ProvisionInitrdPath=/etc/mc
+ProvisionInitrdPath=/usr/lib/mc
+ProvisionInitrdPath=/usr/share/mc
