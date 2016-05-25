@@ -60,7 +60,7 @@ build_systemd_units() {
     add_dir $dir
     
     local unit_list=$(grep -l "$tag" $dir/*.service)
-    [ -z "$unit_list" ] || error "Missing any units in $dir with tag $tag"
+    [ -n "$unit_list" ] || error "Missing any units in $dir with entry $tag"
 
     local unit
     for unit in $unit_list ; do
@@ -158,9 +158,10 @@ add_systemd_unit_X() {
                 # format:
                 # ProvisionInitrdPath=/etc/folder [glob=*.sh]
                 # ProvisionInitrdPath=/etc/file [source=/lib/file] [mode=755]
-                local source= mode= glob=
-                local target="${values[0]}"
-                local args="${values:1}" ; local "$args"
+                local source= target= mode= glob= args=
+                target="${values[0]}"
+                args="${values[@]:1:7}" 
+                [ -n "$args" ] && local "$args"
                 [ -n "$source" ] || source="$target"
                 if [ -e "$BUILDROOT$target" ] ; then
                     quiet "reuse present path $target"
