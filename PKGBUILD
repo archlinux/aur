@@ -1,7 +1,7 @@
 # Maintainer: ibrahim Tunali<ibrahimtunali@gmail.com>
 pkgname=git-secret
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=1
 pkgdesc="A bash-tool to store your private data inside a git repository"
 arch=('any')
 url="https://github.com/sobolevn/git-secret"
