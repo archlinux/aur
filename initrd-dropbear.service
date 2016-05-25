@@ -1,17 +1,19 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
-# NOTE: to be activated in initramfs the file must contain marker string
 
 # Provide ssh server in initramfs
 
+
 [Unit]
 Description=Dropbear SSH Server (initrd)
-Documentation=https://matt.ucc.asn.au/dropbear/dropbear.html
+Documentation=https://aur.archlinux.org/cgit/aur.git/tree/readme.md?h=mkinitcpio-systemd-tool
 ConditionPathExists=/etc/initrd-release
 DefaultDependencies=no
 Conflicts=shutdown.target
 Requires=initrd-network.service
 After=initrd-network.service
-Before=cryptsetup-pre.target shutdown.target
+Before=shutdown.target
+Before=cryptsetup-pre.target
+
 
 [Service]
 
@@ -26,9 +28,12 @@ ExecStart=/bin/dropbear -F -s -j -k
 Restart=always
 RestartSec=1s
 
+
 [Install]
 WantedBy=sysinit.target
 
+
 # https://github.com/systemd/systemd/issues/3340
 [X-SystemdTool]
+ProvisionInitrdPath=/root/.ssh/authorized_keys
 ProvisionInitrdPath=/etc/systemd/network/initrd-network.network

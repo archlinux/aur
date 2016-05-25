@@ -1,34 +1,35 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
-# NOTE: to be activated in initramfs the file must contain marker string
 
 # Configure custom debug shell for initramfs
 
+
 [Unit]
 Description=Debug Shell on /dev/tty8 (initrd)
-Documentation=man:sushell(8)
+Documentation=https://aur.archlinux.org/cgit/aur.git/tree/readme.md?h=mkinitcpio-systemd-tool
 ConditionPathExists=/etc/initrd-release
 ConditionPathExists=/dev/tty8
 DefaultDependencies=no
-IgnoreOnIsolate=yes
 Conflicts=shutdown.target
 Before=shutdown.target
+IgnoreOnIsolate=no
 
 
 [Service]
 Environment=TERM=linux
-ExecStart=/bin/sh
+ExecStart=/bin/busybox sh
 Restart=always
-RestartSec=1
+RestartSec=1s
 StandardInput=tty
 TTYPath=/dev/tty8
 TTYReset=yes
 TTYVHangup=yes
 KillMode=process
+KillSignal=SIGTERM
 IgnoreSIGPIPE=no
 
-# Unset locale for the console getty since the console has problems
-# displaying some internationalized messages.
-Environment=LANG= LANGUAGE= LC_CTYPE= LC_NUMERIC= LC_TIME= LC_COLLATE= LC_MONETARY= LC_MESSAGES= LC_PAPER= LC_NAME= LC_ADDRESS= LC_TELEPHONE= LC_MEASUREMENT= LC_IDENTIFICATION=
+# Unset locale for the console getty since the console has problems displaying some internationalized messages.
+#Environment=LANG= LANGUAGE= LC_CTYPE= LC_NUMERIC= LC_TIME= LC_COLLATE= LC_MONETARY= LC_MESSAGES= LC_PAPER= LC_NAME= LC_ADDRESS= LC_TELEPHONE= LC_MEASUREMENT= LC_IDENTIFICATION=
+
 
 [Install]
 WantedBy=sysinit.target

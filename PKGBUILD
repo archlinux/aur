@@ -1,12 +1,12 @@
 pkgname=mkinitcpio-systemd-tool
-pkgver=r17.7259475
+pkgver=r18.6364ad9
 pkgrel=1
 pkgdesc='Utilities for systemd in initramfs (systemd-tool)'
 arch=('any')
 license=('Apache')
 depends=('systemd' 'dropbear')
 makedepends=('git')
-install=install.sh
+install='INSTALL.sh'
 url="https://aur.archlinux.org/cgit/aur.git/tree/?h=${pkgname}"
 source=("${pkgname}::git+https://aur.archlinux.org/${pkgname}.git")
 md5sums=('SKIP')
@@ -57,7 +57,7 @@ package() {
     
     local target="$pkgdir/usr/share/$pkgname"
     install -D -m644 "$source/LICENSE"                  "${target}/LICENSE"
-    install -D -m644 "$source/readme.md"                "${target}/readme.md"
+    install -D -m644 "$source/README.md"                "${target}/README.md"
 
     local target="$pkgdir/usr/lib/initcpio"
     install -D -m644 "$source/mkinitcpio-hook.sh"       "$target/hooks/$hook"
