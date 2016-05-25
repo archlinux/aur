@@ -7,8 +7,8 @@ PKGEXT='.pkg.tar'
 
 pkgname=unity-editor-bin
 _version=5.4.0
-_build=b16
-_buildtag=20160503
+_build=b18
+_buildtag=20160524
 pkgver="${_version}${_build}+${_buildtag}"
 pkgrel=1
 pkgdesc="The world's most popular development platform for creating 2D and 3D multiplatform games and interactive experiences."
@@ -27,7 +27,7 @@ provides=("unity-editor=${pkgver}")
 conflicts=('unity-editor')
 options=(!strip)
 source=("http://download.unity3d.com/download_unity/linux/unity-editor-${pkgver}_amd64.deb")
-md5sums=('4071f30da18abc59aee9927e91aa7a18')
+md5sums=('3cb6350943dee95346832d6915e53f35')
 
 prepare() {
 	if [[ "$(df . -BG --output=avail | awk -F'[^0-9]*' 'FNR==2 {print $2;}')" -le "10" ]]; then
