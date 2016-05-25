@@ -15,7 +15,7 @@ depends=("alsa-lib" "atk" "glibc" "cairo" "libcups" "libdbus" "expat" "fontconfi
 source=(
 	"http://s1.music.126.net/download/pc/${pkgname}_${pkgver}-${pkgrel}_amd64.deb"
 	"http://security.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.0.0_1.0.2g-1ubuntu4.1_amd64.deb"
-	"http://nl.archive.ubuntu.com/ubuntu/pool/universe/libc/libcue/libcue1_1.4.0-1_amd64.deb"
+	"http://archive.ubuntu.com/ubuntu/pool/universe/libc/libcue/libcue1_1.4.0-1_amd64.deb"
 	"netease-cloud-music"
 )
 noextract=(
@@ -40,5 +40,4 @@ package() {
   install -m755 libssl/lib/x86_64-linux-gnu/libcrypto.so.1.0.0 ${pkgdir}/usr/lib/netease-cloud-music/libcrypto.so.1.0.0
   install -m755 libssl/lib/x86_64-linux-gnu/libssl.so.1.0.0 ${pkgdir}/usr/lib/netease-cloud-music/libssl.so.1.0.0
   install -m755 netease-cloud-music ${pkgdir}/usr/bin/netease-cloud-music
-  # cp -aR usr ${pkgdir}
 }
