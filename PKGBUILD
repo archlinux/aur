@@ -1,5 +1,5 @@
-pkgname=initrd-dropbear
-pkgver=r3.b84b075
+pkgname=mkinitcpio-systemd-tool
+pkgver=r4.c0adafd
 pkgrel=1
 pkgdesc='Utilities for systemd in initramfs (systemd-tool)'
 arch=('any')
