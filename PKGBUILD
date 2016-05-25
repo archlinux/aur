@@ -10,9 +10,6 @@ depends=('zenity')
 package() {
     mkdir -p $pkgdir/home/owner/.config/Thunar/
     cp uca.xml $pkgdir/home/owner/.config/Thunar/
-}
-
-pre_install() {
     mv /home/owner/.config/Thunar/uca.xml /home/owner/.config/Thunar/uca.xml.old
 }
 
