@@ -1,7 +1,7 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
 pkgname=mkinitcpio-systemd-tool
-pkgver=r27.3c66c4b
+pkgver=r28.c5dc64c
 pkgrel=1
 pkgdesc='Utilities for systemd in initramfs (systemd-tool)'
 arch=('any')
