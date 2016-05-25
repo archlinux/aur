@@ -1,6 +1,6 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 pkgname=rmilter
-pkgver=1.8.4
+pkgver=1.8.5
 pkgrel=1
 epoch=
 pkgdesc="Another sendmail milter for different mail checks."
@@ -14,33 +14,30 @@ backup=('etc/rmilter/rmilter-grey.conf')
 
 install=rmilter.install
 
-source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/vstakhov/${pkgname}/tar.gz/${pkgver}"
-        "${pkgname}.service"
-)
+source=("${pkgname}-${pkgver}.tar.gz::https://codeload.github.com/vstakhov/${pkgname}/tar.gz/${pkgver}")
 
-sha256sums=('af7ad32d3fa8f41ec135a43468b98cc1c46128b30fe58700e9434fcdc3ce3f6a'
-            'c53ae6a6c323440e0f1f1d22a985878f3022300402bbee0b99109fe8dfc39c14')
+sha256sums=('e9e1b3c724aa7d9e43f899ad0dbb367d37945e48b742b89188e1a1c256be318f')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-  cmake \
-    -DENABLE_DEBUG="OFF" \
-    -DCMAKE_BUILD_TYPE="Release" \
-    -DRMILTER_USER="_rmilter" \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DSBINDIR=/usr/bin \
-    .
+	cmake \
+		-DENABLE_DEBUG=OFF \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DRMILTER_USER=_rmilter \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DSBINDIR=/usr/bin \
+		-DENABLE_MEMCACHED=OFF \
+		-DWANT_SYSTEMD_UNITS=ON \
+		.
 
-  make -j$(nproc)
+	make -j$(nproc)
 }
 
 package() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	make DESTDIR="${pkgdir}/" install
 
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}/" install
-  install -Dm0644 "${pkgname}.conf.sample" "${pkgdir}/etc/${pkgname}/${pkgname}.conf.sample"
-  install -Dm0644 "${pkgname}-grey.conf" "${pkgdir}/etc/${pkgname}/${pkgname}-grey.conf"
-  install -Dm0644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-
+	install -Dm0644 "${pkgname}.conf.sample" "${pkgdir}/etc/${pkgname}/${pkgname}.conf.sample"
+	install -Dm0644 "${pkgname}-grey.conf" "${pkgdir}/etc/${pkgname}/${pkgname}-grey.conf"
 }
