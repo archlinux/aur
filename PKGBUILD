@@ -2,7 +2,7 @@
 # Contributor: Nabobalis <nabil dot freij at gmail dot com>
 pkgname=python2-sunpy-git
 _gitname=sunpy
-pkgver=20160513
+pkgver=r6.8abf252
 pkgrel=1
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
@@ -25,8 +25,10 @@ source=(git+https://github.com/sunpy/sunpy)
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$_gitname"
-  git log -1 --format="%cd" --date=short | sed 's|-||g'
+  cd "${srcdir}/${_pkgname}"
+
+  # Get the version number.
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package(){
