@@ -44,7 +44,7 @@ build() {
 	fi
 	mkdir build && cd build
 
-	cmake ..
+	cmake -DCMAKE_BUILD_TYPE=Release ..
 	make $MAKEFLAGS
 }
 
