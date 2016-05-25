@@ -9,12 +9,12 @@ _micro=.3
 
 pkgname=ccsm
 pkgver="${_pkgver}${_micro}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Compizconfig Settings Manager in Python2"
 arch=('any')
 url="https://github.com/compiz-reloaded/${_upstream}/"
 license=('GPL')
-depends=('compizconfig-python' 'gtk2' 'python2-gobject')
+depends=('compizconfig-python' 'gtk2' 'python2-gobject' 'python2-cairo')
 makedepends=('intltool')
 optdepends=('compiz-gtk-standalone: option 1' 'compiz-core: option 2')
 groups=('compiz-fusion')
