@@ -15,9 +15,13 @@ Type=oneshot
 RemainAfterExit=true
 
 # provision via use of one shot invocations
+
 ExecStart=/bin/mc -V
 ExecStart=/bin/mcedit -V
 ExecStart=/bin/mcview -V
+
+ExecStart=/bin/infocmp -V
+
 
 [Install]
 WantedBy=initrd-debug-shell.service
