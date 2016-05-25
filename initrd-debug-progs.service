@@ -20,7 +20,9 @@ ExecStart=/bin/mc -V
 ExecStart=/bin/mcedit -V
 ExecStart=/bin/mcview -V
 
-ExecStart=/bin/infocmp -V
+#ExecStart=/bin/infocmp -V
+
+ExecStart=/bin/journalctl --version
 
 
 [Install]
