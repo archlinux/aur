@@ -3,18 +3,18 @@
 
 pkgname=magics++
 Pkgname=Magics
-pkgver=2.28.0
+pkgver=2.29.0
 _attnum=3473464
 pkgrel=1
 pkgdesc="Magics is the latest generation of the ECMWF's Meteorological plotting software MAGICS."
 arch=('i686' 'x86_64')
 url="https://software.ecmwf.int/wiki/display/MAGP"
 license=('Apache')
-depends=()
-optdepends=()
-makedepends=('gcc-fortran' 'python2' 'python2-numpy' 'cmake')
+depends=('qt5-base' 'proj' 'fftw' 'pango' 'netcdf-cxx-legacy' 'grib_api' 'python')
+optdepends=('odb_api' 'libaec')
+makedepends=('perl-xml-parser' 'gcc-fortran' 'swig' 'python2-numpy' 'cmake' 'boost' 'emos')
 source=(http://software.ecmwf.int/wiki/download/attachments/${_attnum}/${Pkgname}-${pkgver}-Source.tar.gz patch)
-md5sums=('786231cd965e398b68bb2fbe04ca6a96'
+md5sums=('db20a4d3c51a2da5657c31ae3de59709'
          'da04828807d7fda1d767197c6d69ec0b')
 
 build() {
@@ -29,8 +29,7 @@ build() {
     -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CC_COMPILER=gcc \
     -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=production \
     -DCMAKE_INSTALL_DATADIR=/usr/share -DENABLE_ODB=0 \
-    -DENABLE_METVIEW=1 -DENABLE_GEOTIFF=1 -DENABLE_QT5=1 \
-    -DPYTHON_EXECUTABLE=/usr/bin/python2 ..
+    -DENABLE_METVIEW=1 -DENABLE_QT5=1 -DPYTHON_EXECUTABLE=/usr/bin/python2 ..
   make || return 1
 }
 
