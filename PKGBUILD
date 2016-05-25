@@ -6,7 +6,7 @@
 
 _gitname=lgi
 pkgname=luajit-lgi-git
-pkgver=0.9.0.r30.g2c5e63d
+pkgver=0.9.0.r37.g9b717c3
 pkgrel=1
 pkgdesc='Lua binadings for gobject using gobject-introspection library'
 arch=('i686' 'x86_64')
@@ -61,10 +61,11 @@ package() {
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-#check() {
-#  cd $_gitname
-#
-#  make LUA=luajit check
-#}
+check() {
+  cd $_gitname
+
+  make LUA=luajit LUA_INCDIR=/usr/include/luajit-2.0/ \
+    LUA_CFLAGS="$(pkg-config --cflags luajit) -O2" check
+}
 
 # vim:set ts=2 sw=2 et:
