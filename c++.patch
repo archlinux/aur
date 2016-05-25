@@ -1,0 +1,31 @@
+--- src/libMarsClient/rpcmars.x.orig	2016-05-25 11:53:59.408000659 +0200
++++ src/libMarsClient/rpcmars.x	2016-05-25 11:54:31.136928249 +0200
+@@ -2,7 +2,7 @@
+ %#include <rpc/xdr.h>
+ #ifdef RPC_HDR
+ %typedef char *cache_t;
+-%typedef void *void_t;
++%typedef void *myvoid_t;
+ #endif
+ 
+ struct value {
+@@ -31,7 +31,7 @@
+ 	cache_t         kind;
+ 
+ #ifdef RPC_HDR
+-	void_t           data; /* user data */
++	myvoid_t         data; /* user data */
+ 	long             order;
+ #endif
+ 
+--- src/libUtil/MvFlextra.cc.orig	2016-05-25 11:56:40.842544314 +0200
++++ src/libUtil/MvFlextra.cc	2016-05-25 11:57:01.998495926 +0200
+@@ -682,7 +682,7 @@
+ 		string comment=blocks_[i]->comment();	
+ 		bool cstep=blocks_[i]->constantStep();
+ 		
+-		pair<string,bool> p=make_pair<string,bool>(comment,cstep);
++		pair<string,bool> p=make_pair(comment,cstep);
+ 		
+ 		bool newRef=true;
+ 		for(unsigned int j=0; j < ref.size(); j++)

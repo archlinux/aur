@@ -1,6 +1,6 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@poste.it>
 pkgname=metview
-pkgver=4.4.10
+pkgver=4.6.6
 pkgrel=1
 pkgdesc="ECMWF interactive meteorological application"
 arch=(i686 x86_64)
@@ -15,31 +15,26 @@ replaces=()
 backup=()
 options=()
 install=
-source=(https://software.ecmwf.int/wiki/download/attachments/3964985/Metview-${pkgver}.tar.gz imagemagick_xpm_fix.patch)
+source=(https://software.ecmwf.int/wiki/download/attachments/3964985/Metview-${pkgver}-Source.tar.gz c++.patch)
 noextract=()
-md5sums=('13327f8ed5a344b42948f83fb2c44eb9'
-         '4ab00461ee0fe6d76081eaa89ffe9963')
+md5sums=('897c2ec36a0d36a6a9827817a1fafbe2'
+         'ab0719eee5c21164747f715a953ec01a')
 
 build() {
-  cd Metview-${pkgver}
-  chmod 644 share/metview/icons/fix_last_line
-  patch -p0 -i $srcdir/imagemagick_xpm_fix.patch
-  chmod 755 share/metview/icons/fix_last_line
-  autoreconf -f -i
-  QMAKE=/usr/bin/qmake-qt4 MOC=/usr/bin/moc-qt4 \
-  UIC=/usr/bin/uic-qt4 RCC=/usr/bin/rcc-qt4 \
-  FC=gfortran F77=gfortran F9X=gfortran PYTHON=python2 \
-  ./configure --with-python-command=/usr/bin/python2 --with-proj4=/usr \
-  --with-grib-api=/usr --with-emos-libraries=/usr --with-netcdf=/usr \
-  --with-magics-home=/usr --prefix=/usr
-  sed -i src/Desktop/Makefile -e 's/-ljasper/-ljasper -lQtXmlPatterns/'
+  cd Metview-${pkgver}-Source
+  patch -p0 -i ${srcdir}/c++.patch
+  mkdir -p build && cd build
+  cmake -DCMAKE_CXX_COMPILER=g++ -DCMAKE_CC_COMPILER=gcc \
+    -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=production \
+    -DCMAKE_INSTALL_DATADIR=/usr/share -DENABLE_QT5=ON \
+    -DPYTHON_EXECUTABLE=/usr/bin/python2 ..
   make || return 1
 }
 
 package()
 {
-  cd Metview-${pkgver}
-  make DESTDIR="$pkgdir" install
+  cd Metview-${pkgver}-Source/build
+  make DESTDIR="$pkgdir" install || return 1
 }
 
 # vim:set ts=2 sw=2 et:
