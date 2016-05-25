@@ -8,7 +8,7 @@ depends=('python2' 'openjpeg')
 makedepends=('python2')
 license=('MIT')
 arch=('any')
-source=(https://pypi.python.org/packages/5c/8f/5633be85458c3b519262a36b10b3b9ea274acfc6d21945d005bef455093e/Glymur-$pkgver.tar.gz)
+source=(https://pypi.io/packages/source/g/glymur/Glymur-$pkgver.tar.gz)
 md5sums=('8185ffeb8d11d1f9c14f179b581e7d96')
 
 build() {
