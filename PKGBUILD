@@ -1,7 +1,8 @@
-# Maintainer:  jyantis <yantis@yantis.net>
+# Maintainer:  olliemath <oliver.margetts@gmail.com>
+# Contributer:  jyantis <yantis@yantis.net>
 
 pkgname=python-geopy
-pkgver=1.9.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Geocoding Toolbox for Python 3. Includes geocoder classes for the OpenStreetMap,ESRI ArcGIS,Google,Baidu,Bing,Yahoo,Yandex,IGN France,GeoNames,NaviData,OpenMapQuest,What3Words,OpenCage,SmartyStreets,geocoder.us, and GeocodeFarm geocoder services.'
 arch=('any')
@@ -11,7 +12,7 @@ depends=('python'
          'python-requests-oauthlib'
          'python-pytz')
 source=("https://pypi.python.org/packages/source/g/geopy/geopy-${pkgver}.tar.gz")
-md5sums=('ec2a0943cfcbac67a410d70b22fe3288')
+sha256sums=('4250e5a9e9f7abb990eddf01d1491fc112755e14f76060011c607ba759a74112')
 makedepends=('python-setuptools')
 provides=('python-geopy-git')
 conflicts=('python-geopy-git')
