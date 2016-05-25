@@ -1,0 +1,22 @@
+pkgbase = netease-music
+	pkgdesc = Netease Cloud Music
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = http://music.163.com/
+	install = netease-music.install
+	arch = x86_64
+	license = unknown
+	makedepends = tar
+	depends = qt5-multimedia
+	depends = nss
+	depends = libxss
+	depends = taglib
+	depends = qt5-x11extras
+	depends = gcc-libs-multilib
+	depends = gtk2
+	noextract = WineQQ7.8-0.9.0-Longene.deb
+	source = http://s1.music.126.net/download/pc/netease-cloud-music_0.9.0-1_amd64.deb
+	md5sums = SKIP
+
+pkgname = netease-music
+

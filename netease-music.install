@@ -1,0 +1,4 @@
+post_install() {
+    ln -s /usr/lib/netease-cloud-music/netease-cloud-music /usr/bin/netease-cloud-music
+    chmod +x /usr/bin/netease-cloud-music
+}
