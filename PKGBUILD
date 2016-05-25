@@ -1,7 +1,7 @@
 # Maintainer:  Drew Noel <drewmnoel@gmail.com>
 
 pkgname=caffe-git
-pkgver=rc3.r152.g9c46289
+pkgver=rc3.r166.ge79bc8f
 pkgrel=1
 pkgdesc='A fast framework for deep learning built in C++ for speed with a Python 2 interface'
 arch=(x86_64)
@@ -26,7 +26,7 @@ depends=('cuda'
          'python2-scikit-learn'
          'python2-matplotlib'
          'python2-h5py'
-         'python2-leveldb-svn'
+         'python2-leveldb'
          'python2-networkx'
          'python2-nose'
          'python2-pandas'

@@ -1,6 +1,6 @@
 pkgbase = caffe-git
 	pkgdesc = A fast framework for deep learning built in C++ for speed with a Python 2 interface
-	pkgver = rc3.r152.g9c46289
+	pkgver = rc3.r166.ge79bc8f
 	pkgrel = 1
 	url = https://github.com/BVLC/caffe
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = caffe-git
 	depends = python2-scikit-learn
 	depends = python2-matplotlib
 	depends = python2-h5py
-	depends = python2-leveldb-svn
+	depends = python2-leveldb
 	depends = python2-networkx
 	depends = python2-nose
 	depends = python2-pandas
