@@ -1,6 +1,6 @@
 pkgbase = mount-gtk2-git
 	pkgdesc = A graphical front end for udisks and mount
-	pkgver = 1.4.3.r2.g386125b
+	pkgver = 1.4.3.r3.g0e8745e
 	pkgrel = 1
 	epoch = 1
 	url = http://mount-gtk.sourceforge.net/
@@ -11,7 +11,7 @@ pkgbase = mount-gtk2-git
 	depends = c++-gtk-utils-gtk2
 	depends = udisks2
 	depends = libnotify
-	provides = mount-gtk=1.4.3.r2.g386125b
+	provides = mount-gtk=1.4.3.r3.g0e8745e
 	conflicts = mount-gtk
 	options = !buildflags
 	options = !emptydirs

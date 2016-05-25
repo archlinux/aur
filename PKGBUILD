@@ -7,7 +7,7 @@
 pkgname=mount-gtk2-git
 _pkgname=mount-gtk
 epoch=1
-pkgver=1.4.3.r2.g386125b
+pkgver=1.4.3.r3.g0e8745e
 pkgrel=1
 pkgdesc="A graphical front end for udisks and mount"
 arch=('i686' 'x86_64')
