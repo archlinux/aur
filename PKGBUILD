@@ -1,7 +1,7 @@
 pkgname=swconfig-git
 _pkgname=swconfig
 pkgver=20150806.4.g43e2854
-pkgrel=2
+pkgrel=3
 pkgdesc="project to package the swconfig utility from OpenWRT for archlinuxarm on BPi-R1"
 url="https://github.com/rains31/swconfig"
 license=('GPL2')
@@ -19,8 +19,9 @@ pkgver() {
   git describe --tags | sed 's/^v//;s/-/./g'
 }
 
-
 package() {
   cd "$srcdir/${_pkgname}"
+  CFLAGS=$CFLAGS" -I /usr/include/libnl3/ -I /lib/modules/`uname -r`/build -I ."
+  make
   make install DESTDIR=$pkgdir
 } 
