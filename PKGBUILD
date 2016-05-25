@@ -1,6 +1,6 @@
 pkgname=swconfig
 pkgver=20150806
-pkgrel=3
+pkgrel=4
 pkgdesc="project to package the swconfig utility from OpenWRT for archlinuxarm on BPi-R1"
 url="https://github.com/rains31/swconfig"
 license=('GPL2')
@@ -17,6 +17,7 @@ sha1sums=(
 
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
+  CFLAGS=$CFLAGS" -I /usr/include/libnl3/ -I /lib/modules/`uname -r`/build -I ."
   make
   make install DESTDIR=$pkgdir
 } 
