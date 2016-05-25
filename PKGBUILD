@@ -7,8 +7,8 @@
 #       for installation is around 14GB but packaging may require up to 54GB of space.
 #
 pkgname=quartus-free
-pkgver=15.1.0.185
-pkgrel=2
+pkgver=16.0.0.211
+pkgrel=1
 pkgdesc="Quartus Prime Lite Edition design software for Altera FPGA's"
 arch=('i686' 'x86_64')
 url="https://dl.altera.com/?edition=lite"
@@ -47,10 +47,10 @@ fi
 makedepends=('bash')
 
 # A more permanent source for lib32-freetype2-2.5.0.1-1-x86-64 should be found
-source=("http://download.altera.com/akdlm/software/acdsinst/${pkgver%.*.*}/${_build_nr}/ib_tar/Quartus-lite-${pkgver}-linux.tar"
-        "http://gaming.jhu.edu/mirror/archlinux/multilib/os/x86_64/lib32-freetype2-2.5.0.1-1-x86_64.pkg.tar.xz"   # Used for a freetype bugfix HACK
+source=("https://download.altera.com/akdlm/software/acdsinst/${pkgver%.*.*}/${_build_nr}/ib_tar/Quartus-lite-${pkgver}-linux.tar"
+        "https://gaming.jhu.edu/mirror/archlinux/multilib/os/x86_64/lib32-freetype2-2.5.0.1-1-x86_64.pkg.tar.xz"   # Used for a freetype bugfix HACK
 	"quartus.sh" "quartus.desktop" "51-usbblaster.rules" "quartus.install" "modelsim-ase.desktop" "modelsim-ae.desktop")
-md5sums=('EF0D9EB90E24338AD31864D3069151B0'
+md5sums=('A3AD9370D0773F4E6AC41D1EAC4C85EE'
          'd3b3b7cdf874b6dd0b60c40d84dd9128'
          '067c444cae7fe31d3608245712b43ce8'
          '32b17cb8b992fc2dccd33d87f0dcd8ce'
