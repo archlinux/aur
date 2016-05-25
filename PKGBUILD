@@ -1,32 +1,36 @@
 # Maintainer: Philipp Joram <mail AT phijor DOT me>
 
 _gitname=ctroller
-pkgname=${_gitname}-git
-pkgver=r23.a8c5e89
+pkgname=${_gitname}-bin
+pkgver=0.2.0
 pkgrel=1
-pkgdesc="Use your 3DS as a gamepad on your Linux PC"
+pkgdesc="Use your 3DS as a gamepad on your Linux PC -- precompiled 3DS binaries"
 arch=('x86_64')
 url="https://github.com/phijor/ctroller"
 license=('GPL3')
+provides=('ctroller-git')
+conflicts=('ctroller-git')
 depends=('glibc')
 makedepends=(
   'git'
   'make'
-  'devkitarm'
-  'ctrulib-git'
-  'projectctr-makerom-git'
-  'bannertool-git'
 )
-source=("${pkgname}::git+https://github.com/phijor/${_gitname}.git")
-md5sums=('SKIP')
+source=(
+  "${pkgname}::git+https://github.com/phijor/${_gitname}.git#tag=${pkgver}"
+  "https://github.com/phijor/${_gitname}/releases/download/${pkgver}/${_gitname}-${pkgver}.tar.gz"
+)
+md5sums=(
+  'SKIP'
+  '83dde668a360bbe115084a6bedac0f83'
+)
 
 pkgver() {
   cd "${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --abbrev=0
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}/linux"
   make
 }
 
@@ -34,7 +38,7 @@ package() {
   cd "${srcdir}/${pkgname}/linux"
   make install DESTDIR="${pkgdir}"
 
-  cd "${srcdir}/${pkgname}/3DS"
+  cd "${srcdir}"
   install -dm755 ${pkgdir}/usr/share/${_gitname}
   install -Dm644 ctroller.{3dsx,smdh,cia} ${pkgdir}/usr/share/${_gitname}/
 }
