@@ -16,9 +16,6 @@ RemainAfterExit=true
 Environment=SHELL_CMD=/bin/sh
 ExecStart=/bin/sed -i -r -e "s|^root.*|root:x:0:0:root:/root:${SHELL_CMD}|" /etc/passwd
 
-# https://github.com/systemd/systemd/issues/3340
-ProvisionInitrdPath=/etc/mkinitcpio.d
-
 # activate default interactive login shell
 Environment=SHELL_FILE=/etc/mkinitcpio.d/shell.sh
 Environment=SHELL_LINK=/root/.profile
@@ -26,3 +23,7 @@ ExecStart=/bin/ln -s ${SHELL_FILE} ${SHELL_LINK}
 
 [Install]
 RequiredBy=initrd-dropbear.service
+
+# https://github.com/systemd/systemd/issues/3340
+[X-SystemdTool]
+ProvisionInitrdPath=/etc/mkinitcpio.d

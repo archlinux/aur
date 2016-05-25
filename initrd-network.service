@@ -15,9 +15,6 @@ Before=cryptsetup-pre.target
 Type=oneshot
 RemainAfterExit=true
 
-# https://github.com/systemd/systemd/issues/3340
-ProvisionInitrdPath=/etc/systemd/network/initrd-network.network
-
 # 
 ExecStart=/bin/true
 
@@ -31,3 +28,7 @@ ExecStop=/bin/sh -c "ls /sys/class/net | xargs -I % iplink set % down"
 
 [Install]
 WantedBy=sysinit.target
+
+# https://github.com/systemd/systemd/issues/3340
+[X-SystemdTool]
+ProvisionInitrdPath=/etc/systemd/network/initrd-network.network

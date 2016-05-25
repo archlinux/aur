@@ -16,8 +16,9 @@ RemainAfterExit=true
 ExecStart=/bin/mc -V
 ExecStart=/bin/mcedit -V
 
-# https://github.com/systemd/systemd/issues/3340
-ProvisionInitrdPath=/etc/mc
-
 [Install]
 WantedBy=initrd-debug-shell.service
+
+# https://github.com/systemd/systemd/issues/3340
+[X-SystemdTool]
+ProvisionInitrdPath=/etc/mc

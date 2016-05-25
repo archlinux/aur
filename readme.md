@@ -9,6 +9,7 @@ Utilities for systemd in initramfs (systemd-tool)
 * early network setup
 * remote ssh access in initrd
 * cryptsetup password answer over ssh
+* automatic provisioning of binary and config resources
 
 Hook name: systemd-tool
 

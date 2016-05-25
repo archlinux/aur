@@ -1,5 +1,5 @@
 pkgname=initrd-dropbear
-pkgver=r2.a59f346
+pkgver=r3.b84b075
 pkgrel=1
 pkgdesc='Utilities for systemd in initramfs (systemd-tool)'
 arch=('any')

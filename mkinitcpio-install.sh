@@ -190,7 +190,7 @@ add_systemd_unit() {
                         if [[ -d $path ]] ; then add_full_dir "$path" ; fi
                         if [[ -f $path ]] ; then add_file "$path" ; fi
                     else
-                        error "missing path $path"
+                        error "missing host path $path"
                     fi
                 fi
                 ;;

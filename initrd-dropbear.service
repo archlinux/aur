@@ -14,9 +14,6 @@ Before=cryptsetup-pre.target
 
 [Service]
 
-# https://github.com/systemd/systemd/issues/3340
-ProvisionInitrdPath=/etc/systemd/network/initrd-network.network
-
 # dropbear options:
 # -F     Don't fork into background.
 # -s     Disable password logins.
@@ -30,3 +27,7 @@ RestartSec=1s
 
 [Install]
 WantedBy=sysinit.target
+
+# https://github.com/systemd/systemd/issues/3340
+[X-SystemdTool]
+ProvisionInitrdPath=/etc/systemd/network/initrd-network.network

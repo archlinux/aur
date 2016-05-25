@@ -13,18 +13,15 @@ ConditionPathExists=/dev/tty8
 
 [Service]
 Environment=TERM=linux
-# enforce login shell
 ExecStart=/bin/sh
 Restart=always
-RestartSec=0
+RestartSec=1
 StandardInput=tty
 TTYPath=/dev/tty8
 TTYReset=yes
 TTYVHangup=yes
 KillMode=process
 IgnoreSIGPIPE=no
-# bash ignores SIGTERM
-#KillSignal=SIGHUP
 
 # Unset locale for the console getty since the console has problems
 # displaying some internationalized messages.
