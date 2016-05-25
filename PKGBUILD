@@ -2,10 +2,10 @@
 pkgname=netcdf-cxx-legacy
 spkgname=netcdf-cxx
 pkgver=4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Backward compatible netCDF C++ library"
 arch=(i686 x86_64)
-url="http://nccmp.sourceforge.net/"
+url="https://www.unidata.ucar.edu/downloads/netcdf/netcdf-cxx"
 license=('GPL')
 groups=(science)
 depends=(netcdf)
