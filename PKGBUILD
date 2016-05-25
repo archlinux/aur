@@ -18,7 +18,7 @@ depends=('python2'
 optdepends=('python2-sqlalchemy: for the database package'
             'python2-pytest: for running tests')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/75/50/032940aa62a106a5bb0edacc49cfdb9b52ae0e79f6d7b37ca86087dd4580/sunpy-$pkgver.tar.gz)
+source=(https://pypi.io/packages/source/s/sunpy/sunpy/sunpy-$pkgver.tar.gz)
 md5sums=('522b43ad225758e67cb9ba160b54cc2f')
 
 package(){
