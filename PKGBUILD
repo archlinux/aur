@@ -2,7 +2,7 @@
 #Contributor: Yan Burdonsky <psyrccio@gmail.com>
 pkgname=jwildfire
 pkgver=2.60.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Fractal flame image and animation processor written in Java"
 arch=('any')
 url="http://www.andreas-maschke.com"
@@ -13,7 +13,7 @@ provides=('jwildfire')
 conflicts=('jwildfire')
 
 source=("http://www.andreas-maschke.de/java/j-wildfire-2.60r2.zip" "https://raw.githubusercontent.com/thargor6/JWildfire/master/Delphi/jwildfire_icon.png")
-sha256sums=('3bcd6aa5b8fb60ae9db4fe3e97e178f39b17198e54e96099809addeedf40a794' 'SKIP')
+sha256sums=('3bcd6aa5b8fb60ae9db4fe3e97e178f39b17198e54e96099809addeedf40a794' 'c4b30c591d3f00ca163f8b48da7980e0a6f327552aa7e03828d2c5b3f01c66e8')
 
 build() {
   cd "$srcdir"
