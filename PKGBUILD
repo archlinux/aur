@@ -18,7 +18,7 @@ conflicts=('xxxterm' 'xombrero' 'xombrero3' 'xombrero-git')
 source=('git+https://github.com/conformal/xombrero.git'
         'LICENSE')
 md5sums=('SKIP'
-         'f3eeb6e8b70a3dcccb8ee57daf584c9e')
+         'f05366cfaed5bbc58bff53dff5734598')
 
 
 pkgver() {
