@@ -28,9 +28,13 @@ WantedBy=initrd-debug-shell.service
 
 # https://github.com/systemd/systemd/issues/3340
 [X-SystemdTool]
+
+# midnight commander
 ProvisionInitrdPath=/etc/mc
 ProvisionInitrdPath=/usr/lib/mc
 ProvisionInitrdPath=/usr/share/mc
+
+# terminal emulator used by ssh client
 #ProvisionInitrdPath=/usr/share/terminfo
 ProvisionInitrdPath=/usr/share/terminfo/l/linux
 ProvisionInitrdPath=/usr/share/terminfo/x/xterm

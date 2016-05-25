@@ -91,7 +91,7 @@ build_systemd_units() {
     local unit
     for unit in $unit_list ; do
         quiet "Add unit: $unit"
-        add_systemd_unit $unit
+        add_systemd_unit_X $unit
         invoke   systemctl --root $BUILDROOT enable $unit
     done
     
@@ -138,12 +138,12 @@ invoke() {
     esac
 }
 
+# add_systemd_unit with bug fixes for:
+# https://bugs.archlinux.org/task/42396
+# https://bugs.archlinux.org/task/49458
+# https://bugs.archlinux.org/task/49460
 
-# bug fix for https://bugs.archlinux.org/task/42396
-# bug fix for https://bugs.archlinux.org/task/49458
-# bug fix for https://bugs.archlinux.org/task/49460
-
-add_systemd_unit() {
+add_systemd_unit_X() {
     # Add a systemd unit file to the initcpio image. Hard dependencies on binaries
     # and other unit files will be discovered and added.
     #   $1: path to rules file (or name of rules file)
@@ -165,14 +165,14 @@ add_systemd_unit() {
         case $key in
             Requires|OnFailure)
                 # only add hard dependencies (not Wants)
-                map add_systemd_unit "${values[@]}"
+                map add_systemd_unit_X "${values[@]}"
                 ;;
             Exec*)
                 # don't add binaries unless they are required
                 if [[ ${values[0]:0:1} != '-' ]]; then
                     local exec="${values[0]}"
                     if [[ -f $BUILDROOT$exec ]] ; then
-                         plain "reuse present exec $exec"
+                         quiet "reuse present exec $exec"
                     else
                          plain "provision new exec $exec"
                          add_binary "$exec"
@@ -183,7 +183,7 @@ add_systemd_unit() {
                 # auto provision resources
                 local path="${values[0]}"
                 if [[ -e $BUILDROOT$path ]] ; then
-                    plain "reuse present path $path"
+                    quiet "reuse present path $path"
                 else
                     plain "provision new path $path"
                     if [[ -e $path ]] ; then
@@ -208,7 +208,7 @@ add_systemd_unit() {
     # add hard dependencies
     if [[ -d $unit.requires ]]; then
         for dep in "$unit".requires/*; do
-            add_systemd_unit ${dep##*/}
+            add_systemd_unit_X ${dep##*/}
         done
     fi
 }
