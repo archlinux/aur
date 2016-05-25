@@ -1,12 +1,13 @@
 pkgbase = phpdoc-phar
 	pkgdesc = “Dependency-less” Phar version of phpDocumentor2 (works with PHP 7)
 	pkgver = 2.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.phpdoc.org/
 	arch = any
 	license = LGPL
 	depends = php
 	optdepends = php-xsl: Needed for some of the rendering templates
+	conflicts = phpdocumentor2
 	source = https://github.com/phpDocumentor/phpDocumentor2/releases/download/v2.9.0/phpDocumentor.phar
 	sha256sums = c7dadb6af3feefd4b000c19f96488d3c46c74187701d6577c1d89953cb479181
 
