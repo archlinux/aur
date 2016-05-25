@@ -1,7 +1,7 @@
 # Maintainer: Tatsunori Aoki <ginjiro.135 at gmail dot com>
 # Contributor: eagletmt <eagletmt@gmail.com>
 pkgname=ttf-ricty
-pkgver=4.0.0
+pkgver=4.0.1
 pkgrel=1
 pkgdesc='Japanese TrueType font for developers by mixing Inconsolata and Migu 1M.'
 arch=('any')
@@ -25,4 +25,4 @@ package() {
   install -m644 README.md "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
-sha1sums=('8e821ad575cd17fc0d3104cc4941c53c5523e7ba')
+sha1sums=('b851f5fea12706dc868951fe6ed32d047a9ebe85')
