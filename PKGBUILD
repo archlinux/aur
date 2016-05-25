@@ -2,7 +2,7 @@
 
 pkgname=mdbtools-unixodbc-git
 _gitname=mdbtools
-pkgver=0.7.1.r57.g584119e
+pkgver=0.7.1.r60.gbd88fb7
 pkgrel=1
 pkgdesc="A software driver based on unixodbc to access JET / MS Access database (MDB) files through ODBC."
 arch=('i686' 'x86_64')
