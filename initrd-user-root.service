@@ -33,4 +33,4 @@ RequiredBy=initrd-dropbear.service
 
 # https://github.com/systemd/systemd/issues/3340
 [X-SystemdTool]
-ProvisionInitrdPath=/etc/mkinitcpio.d
+ProvisionInitrdPath=/etc/mkinitcpio.d glob=*.sh
