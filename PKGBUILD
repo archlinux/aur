@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky AT gmail.com>
 pkgname=photivo-hg
-pkgver=1113.66a8c1082d88
+pkgver=1117.5d7d1cc4ef4d
 pkgrel=1
 pkgdesc="Free and open source photo processor"
 arch=('i686' 'x86_64')
@@ -11,8 +11,7 @@ optdepends=('gimp: Gimp plugins' 'python2: Gimp to Photivo plugin')
 makedepends=('mercurial' 'gimp')
 provides=('photivo')
 conflicts=('photivo')
-install=photivo.install
-source=('hg+https://code.google.com/p/photivo/')
+source=('hg+https://bitbucket.org/Photivo/photivo')
 md5sums=('SKIP')
 
 pkgver() {
@@ -23,20 +22,23 @@ pkgver() {
 prepare() {
   cd "$srcdir/photivo"
 
-  # fix the "Gimp to Photivo" plugin
-  sed -i -e 's|\x0D$||' -e 's|#!.*|#!/usr/bin/python2|' "mm extern photivo.py"
+  # pull build fixes
+  hg pull -u https://stativ@bitbucket.org/stativ/photivo
 }
 
 build() {
   cd "$srcdir/photivo"
 
   export INCLUDEPATHS="/usr/include/lensfun"
-  qmake-qt4 PREFIX=/usr CONFIG+=WithGimp
+  qmake-qt4 PREFIX=/usr CONFIG-=debug CONFIG+=WithGimp
   make
 }
 
 package() {
   cd "$srcdir/photivo"
+
+  # do not install local the shortcut to the home
+  sed '/^install:/ s|install_shortcut2 ||' -i Makefile
 
   make INSTALL_ROOT="$pkgdir" install
   rm -rf "$pkgdir"/home
