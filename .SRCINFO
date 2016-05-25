@@ -1,0 +1,13 @@
+pkgbase = cudautils
+	pkgdesc = Light-weight library to communicate with the CUDA display driver.
+	pkgver = 1511
+	pkgrel = 1
+	url = http://developer.nvidia.com/
+	arch = x86_64
+	license = MIT
+	depends = cuda
+	source = http://developer.download.nvidia.com/compute/redist/ffmpeg/1511-patch/cudautils.zip
+	sha256sums = 63fc6db4868ea51596f032727fff8cdd43cded54922b45df17a3ed239fc5948e
+
+pkgname = cudautils
+
