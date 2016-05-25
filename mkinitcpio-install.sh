@@ -158,7 +158,7 @@ add_systemd_unit_X() {
                 # format:
                 # ProvisionInitrdPath=/etc/folder [glob=*.sh]
                 # ProvisionInitrdPath=/etc/file [source=/lib/file] [mode=755]
-                local source= target= mode= glob= args=
+                local source= target= mode= glob= args= optional=
                 target="${values[0]}" ; args="${values[@]:1:7}" 
                 [ -n "$args" ] && local $(echo "$args")
                 [ -n "$source" ] || source="$target"
@@ -170,6 +170,8 @@ add_systemd_unit_X() {
                 elif [ -f "$source" ] ; then
                     plain "provision new file $source -> $target $mode"
                     add_file "$source" "$target" "$mode"
+                elif [ "$optional" = "yes" ] ; then
+                    plain "skip optional path $source"
                 else
                     error "invalid source path $source"
                 fi

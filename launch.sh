@@ -1,5 +1,7 @@
 #! /bin/bash
 
+# This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
+
 # build package automation
 
 location=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )

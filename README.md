@@ -67,3 +67,7 @@ how can I relocate file and/or change file mode during provisioning?
 
 how can I filter directory content during provisioning?
 * use `ProvisionInitrdPath=/target-folder glob=*.example` 
+
+how can I provision optional file?
+* use `ProvisionInitrdPath=/target-file source=/source-file optional=yes`
+
