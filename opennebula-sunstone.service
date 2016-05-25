@@ -1,10 +1,18 @@
 [Unit]
 Description=OpenNebula Web Interface
+After=network.target
+After=local-fs.target
+After=remote-fs.target
 
 [Service]
 User=oneadmin
 Group=cloud
 Type=forking
+PermissionsStartOnly=true
+ExecStartPre=/usr/bin/mkdir -p /var/run/one
+ExecStartPre=/usr/bin/mkdir -p /var/lock/one
+ExecStartPre=/usr/bin/chown -R oneadmin:cloud /var/run/one
+ExecStartPre=/usr/bin/chown -R oneadmin:cloud /var/lock/one
 ExecStart=/usr/bin/sunstone-server start
 ExecStop=/usr/bin/sunstone-server stop
 
