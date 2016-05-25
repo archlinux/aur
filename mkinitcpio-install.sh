@@ -164,10 +164,10 @@ add_systemd_unit_X() {
                 [ -n "$source" ] || source="$target"
                 if [ -e "$BUILDROOT$target" ] ; then
                     quiet "reuse present path $target"
-                else if [ -d "$source" ] ; then 
+                elif [ -d "$source" ] ; then 
                     plain "provision new path $source $glob"
                     add_full_dir "$source" "$glob"
-                else if [ -f "$source" ] ; then
+                elif [ -f "$source" ] ; then
                     plain "provision new path $source -> $target $mode"
                     add_file "$source" "$target" "$mode"
                 else
