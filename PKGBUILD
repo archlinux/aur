@@ -5,7 +5,7 @@
 
 _target="lm32-elf"
 pkgname=${_target}-gcc
-pkgver=5.3.0
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection for the ${_target} target."
 arch=('i686' 'x86_64')
@@ -15,9 +15,9 @@ depends=("${_target}-binutils" 'libmpc' 'elfutils')
 options=('staticlibs' '!buildflags' '!libtool' '!emptydirs' 'zipman' 'docs' '!strip')
 source=("https://ftp.gnu.org/pub/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
         "https://ftp.gnu.org/pub/gnu/gcc/gcc-${pkgver}/gcc-${pkgver}.tar.bz2.sig")
-sha256sums=('b84f5592e9218b73dbae612b5253035a7b34a9a1f7688d2e1bfaaf7267d5c4db'
-            '60db902304e72f4c69579e70184aa65ad260aaa3610ca391d818c14989f883bb')
-validpgpkeys=('13975A70E63C361C73AE69EF6EEB81F8981C74C7') # Richard Guenther
+sha256sums=('09c4c85cabebb971b1de732a0219609f93fc0af5f86f6e437fd8d7f832f1a351'
+            'ff685a09b503ec4062f7559c8d9bd401084301d99a0065e69cf70feed1a4ce00')
+validpgpkeys=('33C235A34C46AA3FFB293709A328C3A2C3C45C06') # Jakub Jelinek
 
 prepare() {
   cd "${srcdir}/gcc-${pkgver}"
