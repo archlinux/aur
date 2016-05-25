@@ -5,14 +5,14 @@ _pkgname='bigloo'
 pkgname="${_pkgname}-devel"
 epoch=15
 _pkgver='4.3a'
-_pkgsuffix='alpha11May16'
+_pkgsuffix='alpha23May16'
 pkgver="${_pkgver}"."${_pkgsuffix}"
 pkgrel=1
 pkgdesc="Fast scheme compiler"
 arch=('i686' 'x86_64')
 url="http://www-sop.inria.fr/mimosa/fp/Bigloo/"
 license=('GPL' 'LGPL')
-depends=('openssl' 'sqlite3' 'avahi' 'libunistring' 'gmp' 'libpulse' 'libuv' 'gstreamer0.10-base' 'mpg123' 'flac')
+depends=('openssl' 'sqlite3' 'avahi' 'libunistring' 'gmp' 'libpulse' 'libuv' 'gstreamer0.10-base' 'mpg123' 'flac' 'libuv')
 makedepends=('zip' 'emacs')
 optdepends=('emacs: for bee'
 	    'java-environment: for compiling into jvm')
@@ -21,7 +21,7 @@ conflicts=('bigloo')
 options=('!makeflags' 'libtool' 'staticlibs' '!strip')
 install=bigloo.install
 source=("ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${_pkgname}${_pkgver}-${_pkgsuffix}.tar.gz" "satisfy-ldconfig.sh")
-md5sums=('22fb05873997882f5a574997f716d224'
+md5sums=('bc75f47bf8f510d4f51d6a9d9a90a8dc'
          'c253eb5651c81204f6c16b89c3c2cb6a')
 
 prepare() {
@@ -37,7 +37,7 @@ build() {
     --enable-sqlite \
     --enable-alsa \
     --enable-gstreamer \
-    --enable-libuv --customlibuv=yes \
+    --enable-libuv \
     --mandir=/usr/share/man \
     --infodir=/usr/share/info \
     --docdir=/usr/share/doc/bigloo \
