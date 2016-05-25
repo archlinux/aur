@@ -3,12 +3,12 @@
 
 pkgname=cloog
 pkgver=0.18.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Library that generates loops for scanning polyhedra"
 arch=('i686' 'x86_64')
 url="http://www.bastoul.net/cloog/"
 license=('GPL')
-depends=('isl>=0.14')
+depends=('isl15')
 source=(http://www.bastoul.net/cloog/pages/download/$pkgname-$pkgver.tar.gz)
 md5sums=('e531f725244856c92c9bba009ff44faf')
 
