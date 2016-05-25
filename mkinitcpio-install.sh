@@ -171,7 +171,7 @@ add_systemd_unit_X() {
                     plain "provision new file $source -> $target $mode"
                     add_file "$source" "$target" "$mode"
                 elif [ "$optional" = "yes" ] ; then
-                    plain "skip optional path $source"
+                    plain "skip optional path $source -> $target"
                 else
                     error "invalid source path $source"
                 fi
