@@ -1,6 +1,6 @@
 # Maintainer: PureTryOut
 pkgname=openrw-git
-pkgver=r660.f2ca6ed
+pkgver=r668.a3cc04f
 pkgrel=1
 epoch=
 pkgdesc="A re-implementation of Rockstar Games' Grand Theft Auto III"
@@ -29,6 +29,11 @@ validpgpkeys=()
 pkgver() {
 	cd "$pkgname"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "$pkgname"
+	git submodule update --init --recursive
 }
 
 build() {
