@@ -1,3 +1,13 @@
+Version 2.3.3 - 23 May 2016
+- Fix for adapter_ashwindersycophanthexcom login.
+- Add merged tags to anthology epubs. (plugin only)
+- Fix for ProceedQuestion got an unexpected keyword argument
+  'log_viewer_unique_name' (plugin only)
+- Remove defaults.ini sections for removed sites.
+- Make 'Go back to fix errors?' dialog scroll error list for smaller dialog
+  size. (plugin only)
+- Update Translations. (plugin only)
+
 Version 2.3.2 - 17 May 2016
 - Remove some more print output (hopefully the last) in the hopes it will help
   with Mac.
@@ -19,16 +29,3 @@ Version 2.3.2 - 17 May 2016
 - Remove dead site: www.nickngreg.nl
 - Remove dead site: tokra.fandomnet.com
 - Remove dead site: buffynfaith.net
-
-Version 2.3.1 - 19 Apr 2016
-- Add additional strings for translations.
-- Add 'Save All Errors' checkbox for plugin save-errors column.
-- Update translations
-- Add exception for bad HTML breaking img finding.
-- Fix for Overwrite if Newer not working with BG Metadata.
-- Comment out some debug output.
-- Updates to adapter_literotica from davidfor
-- Clean up a stray print.
-- Catch more img tag exceptions.
-- Fix series/universe processing in adapter_storiesonlinenet.
-- Fix for literotica.com using str() instead of unicode().
