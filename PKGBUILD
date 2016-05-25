@@ -1,6 +1,6 @@
 # Maintainer: Nabil Freij <nabil.freij@gmail.com>
 pkgname=python2-glymur
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="Tools for accessing JPEG2000 files"
 url="https://github.com/quintusdias/glymur"
@@ -8,8 +8,8 @@ depends=('python2' 'openjpeg')
 makedepends=('python2')
 license=('MIT')
 arch=('any')
-source=(https://pypi.python.org/packages/source/G/Glymur/Glymur-$pkgver.tar.gz)
-md5sums=('2ff4c70a63a1e01f84b18e0ec4eb9b88')
+source=(https://pypi.python.org/packages/5c/8f/5633be85458c3b519262a36b10b3b9ea274acfc6d21945d005bef455093e/Glymur-$pkgver.tar.gz)
+md5sums=('8185ffeb8d11d1f9c14f179b581e7d96')
 
 build() {
     cd $srcdir/Glymur-$pkgver
