@@ -13,12 +13,15 @@ sha256sums=('63fc6db4868ea51596f032727fff8cdd43cded54922b45df17a3ed239fc5948e')
 
 build() {
   cd $pkgname
-  
-  make
+
+  gcc -c -fPIC -o cudautils.o cudautils.c
+  gcc -shared -o libcudautils.so cudautils.o
+  ar rcs libcudautils.a cudautils.o
 }
 
 package() {
   cd $pkgname
   install -Dm 755 libcudautils.a "$pkgdir/usr/lib/libcudautils.a"
+  install -Dm 755 libcudautils.so "$pkgdir/usr/lib/libcudautils.so"
   install -Dm 644 cudautils.h "$pkgdir/usr/include/cudautils.h"
 }
