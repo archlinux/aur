@@ -52,9 +52,9 @@
 ## Mozc compile option
 _bldtype=Release
 
-_zipcode_rel=201603
+_zipcode_rel=201607
 _mozcver=2.17.2315.102
-_utdicver=20160524
+_utdicver=20160815
 _protobuf_rev=172019c40bf548908ab09bfd276074c929d48415
 _gyp_rev=e2e928bacd07fead99a18cb08d64cb24e131d3e5
 _jsoncpp_rev=11086dd6a7eba04289944367ca82cea71299ed70
@@ -80,10 +80,10 @@ source=(mozc-${_mozcver}::git+https://github.com/google/mozc.git#commit=${_mozc_
         git+https://chromium.googlesource.com/external/gyp#commit=${_gyp_rev}
         git+https://github.com/google/protobuf.git#commit=${_protobuf_rev}
         fontTools::git+https://github.com/googlei18n/fonttools.git#commit=${_fonttools_rev}
-        "x-ken-all-${_zipcode_rel}.zip::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1563797&FileTime=131055899132200000&Build=21031"
-        "edict-${_utdicver}.gz::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1563799&FileTime=131055899135630000&Build=21031"
-        "jigyosyo-${_zipcode_rel}.zip::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1563798&FileTime=131055899133630000&Build=21031"
-        mozcdic-ut-${_utdicver}.tar.bz2::https://osdn.jp/frs/chamber_redir.php?f=%2Fusers%2F10%2F10874%2Fmozcdic-ut-${_utdicver}.tar.bz2
+        "x-ken-all-${_zipcode_rel}.zip::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1601101&FileTime=131158247218230000&Build=21031"
+        "edict-${_utdicver}.gz::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1601100&FileTime=131158247215130000&Build=21031"
+        "jigyosyo-${_zipcode_rel}.zip::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1601102&FileTime=131158247220130000&Build=21031"
+        mozcdic-ut-${_utdicver}.tar.bz2::https://osdn.jp/frs/chamber_redir.php?f=%2Fusers%2F11%2F11036%2Fmozcdic-ut-${_utdicver}.tar.bz2
         EDICT_license.html
         mod-generate-mozc-ut.sh
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitx_patchver}.patch
@@ -186,10 +186,10 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'faa70a8454cc59aae23f137b7789975e3733f06811056b9132d281ade67c98f93229785fca55aa3ffa1484d4109241c708a084e01173c8ba67cce310e551daa1'
-            '1eda172040227f56c4f4702457d49d14be85dc1b3d0208da04a3ff9b7936a995119d33929159a6f1d06ca09d7a2d7ca08cc485dee8620217199fa350388299fb'
-            '744559bb7ca5159f57cc51f435b6661a4eb3bdaf5c268e4fc05c017e30820091fbb797b894d6072f6d095c03f75fd573e9232d12e3b397800d30901c90f28cd8'
-            '4c5a3ac42722d513db49c09344f95aca513891d0b8ea5c9127db0f923e7a67632ade9f1ba3b9897a2c8401617de01dbe4ebe17881112018442757cfa2e6e5436'
+            '93fd7bc960f46c8601d86f69e42444130c432b4604bc77e5c27caacd3c2c36e33ec42b04edff6ff41cf9020b93e520b907ad286b21e37e8946f85bab958963bb'
+            '6f6b740d7148a4f47f8bc0841bc70e5bba47f590d84b27a4ad45eacbc5e3c24e29532c3c871a4d554d1a13e69cfdd1eed1d5b8b6c4670efdd0d5177dda701596'
+            'fbec76ea50d806991c22cc272dabd465fef660b0fca3b31818e57091d79f13a99512029134bc2f48d3adefe80787745977c11d7e16ef4146cc838dfaa19d410c'
+            'a40d7aa86ed477d7d90832f6fe75f19348e3d6e5db302a16a24d6c757378c6d92207772921b4a12a5a0048d8c085c075050511283b6e6c355e337accbd3b5fe2'
             '4899c7ee01e387c7c5c628356a0b32e7ba28643580701b779138361ca657864ec17ae0f38d298d60e44093e52a3dfe37d922f780b791e3bd17fc4f056f22dbbb'
             '3b8d49eb8f6fff7443de48f10d6af122c08cef89c9ddf33857ba13b294fbad3e727a26067196cd249fe61ab4dd0d9ca8d7f8c64226a7f59580e5bd21e7b208eb'
             'a9a3ca5dba636c84d216a0a3574e5132d0e6ca69e913ccd5f1a1716af238ea34d5100a4b5d42bbd0c12649780b6009f4533e848e86050e51c22dc8859badd615'
