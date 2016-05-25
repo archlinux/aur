@@ -5,31 +5,32 @@
 pkgname=openpht
 pkgver=1.5.2.514
 _pkghash=310d4f7e
-pkgrel=3
+pkgrel=4
 pkgdesc='OpenPHT is a community driven fork of Plex Home Theater '
 arch=('i686' 'x86_64')
 url='https://github.com/RasPlex/OpenPHT/'
 license=('GPL2')
 conflicts=("plex-home-theater")
 depends=('alsa-lib' 'avahi' 'boost-libs' 'curl' 'expat' 'freetype2' 'fribidi'
-         'gcc-libs' 'glew' 'glibc' 'glu' 'libcdio' 'libgl' 'libjpeg' 'libmad'
-         'libmicrohttpd' 'libmpeg2' 'libpng' 'libpulse' 'libsamplerate'
+         'gcc-libs<=5.3.0' 'glew' 'glibc<=2.23-1' 'glu' 'libcdio' 'libgl' 'libjpeg' 'libmad'
+         'libmicrohttpd' 'libmpeg2' 'libpng' 'libpulse' 'libsamplerate' 'llvm-libs<=3.7.1'
          'libssh' 'libtiff' 'libusb-compat' 'libva' 'libvdpau' 'libx11'
          'libxext' 'libxrandr' 'lzo' 'pcre' 'python2' 'sdl' 'sdl_image'
          'sdl_mixer' 'sqlite' 'smbclient' 'taglib' 'tinyxml' 'yajl' 'zlib')
 makedepends=('boost' 'cmake' 'doxygen' 'ffmpeg-compat' 'git' 'java-environment'
-             'libcec' 'libplist' 'nasm' 'swig' 'unzip' 'zip' 'shairplay')
+             'libcec' 'libplist' 'nasm' 'swig' 'unzip' 'zip')
 optdepends=('libplist: AirPlay support'
-            'shairplay: AirPlay support'
             'libcec: Pulse-Eight USB-CEC adapter support'
             'pulseaudio: PulseAudio support')
 source=("https://github.com/RasPlex/OpenPHT/archive/v${pkgver}-${_pkghash}.tar.gz"
-        'plexhometheater.sh')
+        'plexhometheater.sh'
+	'fribidi.patch')
 sha256sums=('137da57bf9a0ad9f2b464cae327c85f2842a04d00f2adfa12616c3f22cbcf19f'
-            'dc6bd394c07a2ececbb2f8c53cb54afd5d78f7c00a0b34acab3e71217da085fb')
-
+            'dc6bd394c07a2ececbb2f8c53cb54afd5d78f7c00a0b34acab3e71217da085fb'
+	    '966edfa84fa09cf9c54281dff2adfd6fad41309b17893511e7cf01dc85def1ea')
 prepare() {
   cd OpenPHT-${pkgver}-${_pkghash}
+  patch -Np1 <../fribidi.patch
 }
 
 build() {
