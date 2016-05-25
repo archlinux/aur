@@ -6,11 +6,10 @@ pkgdesc="Netease Cloud Music, converted from .deb package"
 arch=("x86_64")
 url="http://music.163.com/"
 license=('EULA')
-depends=("alsa-lib" "atk" "glibc" "cairo" "libcups" "libdbus" "expat" "fontconfig"
-	"freetype2" "gcc-libs" "gdk-pixbuf2" "glib2" "nspr" "nss" "pango"
-	"qt5-base" "qt5-multimedia" "qt5-x11extras" "sqlite" "taglib" "libx11" "libxcursor"
-	"libxext" "libxfixes" "libxi" "libxrandr" "libxrender" "libxss" "libxtst" "zlib"
-	"gstreamer0.10-ugly-plugins"
+depends=("alsa-lib" "glibc" "libdbus"
+	"gcc-libs" "gdk-pixbuf2" "glib2" "gtk2" "nss" 
+	"qt5-base" "qt5-multimedia" "qt5-x11extras" "sqlite" "taglib"
+	"libxss" "zlib" "gstreamer0.10-ugly-plugins"
 )
 source=(
 	"http://s1.music.126.net/download/pc/${pkgname}_${pkgver/_/-}_amd64.deb"
