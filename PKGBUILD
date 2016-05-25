@@ -14,7 +14,6 @@ makedepends=('dssi' 'libv4l' 'tcllib' 'swig' 'automake' 'ladspa')
 conflicts=('pdp' 'pd-zexy' 'pd' 'pd-vanilla' 'puredata-utils')
 provides=('pd' 'pd-gem' 'pdp' 'zexy')
 options=('!makeflags' '!libtool')
-install='pd-extended.install'
 source=("${pkgname}.tar.bz2::http://downloads.sourceforge.net/project/pure-data/pd-extended/${pkgver}/Pd-extended_${pkgver}-source.tar.bz2"
         'change_gem_configure_file.patch'
         's_inter.c.patch'
