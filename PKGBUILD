@@ -1,7 +1,7 @@
 # Maintainer: Justin Wong <justin.w.xd at gmail dot com>
 pkgname=netease-cloud-music
 pkgver=0.9.0_2
-pkgrel=1
+pkgrel=2
 pkgdesc="Netease Cloud Music, converted from .deb package"
 arch=("x86_64")
 url="http://music.163.com/"
@@ -10,6 +10,7 @@ depends=("alsa-lib" "glibc" "libdbus"
 	"gcc-libs" "gdk-pixbuf2" "glib2" "gtk2" "nss" 
 	"qt5-base" "qt5-multimedia" "qt5-x11extras" "sqlite" "taglib"
 	"libxss" "zlib" "gstreamer0.10-ugly-plugins"
+	"gst-plugins-ugly" "gst-plugins-good"
 )
 source=(
 	"http://s1.music.126.net/download/pc/${pkgname}_${pkgver/_/-}_amd64.deb"
