@@ -9,7 +9,7 @@ pkgdesc="wget for IPFS: retrieve files over IPFS and save them locally."
 arch=('i686' 'x86_64' 'arm')
 license=('MIT')
 optdepends=('go-ipfs: to use full potential of IPFS network')
-url="https://ipfs.io/ipns/dist.ipfs.io/#ipget"
+url="https://github.com/ipfs/ipget"
 
 source_i686=("https://ipfs.io/ipns/dist.ipfs.io/ipget/v${pkgver}/ipget_v${pkgver}_linux-386.tar.gz")
 sha256sums_i686=("c17b48e910e82b3c33ec580b07bbf7c4cb3a90ea8d303a09db364ca0becd73a8")
