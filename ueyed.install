@@ -1,3 +1,16 @@
+_config_message() {
+	echo "The ethernet daemon must be configured using /etc/ueye/ueyeethd.conf"
+	echo "You also need to make sure /usr/bin/ueyeethdnotify or /usr/bin/ueyenotify is called when an interface comes up or down."
+}
+
 post_install() {
 	useradd --system -M --shell /bin/false ueyed
+	_config_message
+}
+
+post_upgrade() {
+	old_version=$2
+	diff="$(vercmp $old_version '4.72-2')"
+	(( diff < 0 )) && _config_message
+	true
 }

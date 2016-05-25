@@ -3,7 +3,7 @@
 pkgname=ueyed
 pkgdesc="IDS uEye camera daemon (USB and ethernet)"
 pkgver=4.72
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 license=(custom)
 url='https://en.ids-imaging.com'
@@ -36,6 +36,8 @@ prepare() {
 
 	"./ueyesdk-setup-$pkgver-eth-amd64.gz.run" --noexec --target "$srcdir/ueyeethd"
 	"./ueyesdk-setup-$pkgver-usb-amd64.gz.run" --noexec --target "$srcdir/ueyeusbd"
+
+	sed -ie 's#/usr\/local/share/ueye/bin/#/usr/bin/#g' "$srcdir/ueyeethd/ueyeethdnotify"
 }
 
 __install_dir() {
