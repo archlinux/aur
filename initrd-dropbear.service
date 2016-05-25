@@ -5,7 +5,7 @@
 
 [Unit]
 Description=Dropbear SSH Server (initrd)
-Documentation=https://aur.archlinux.org/cgit/aur.git/tree/readme.md?h=mkinitcpio-systemd-tool
+Documentation=https://aur.archlinux.org/cgit/aur.git/tree/README.md?h=mkinitcpio-systemd-tool
 ConditionPathExists=/etc/initrd-release
 DefaultDependencies=no
 Conflicts=shutdown.target
