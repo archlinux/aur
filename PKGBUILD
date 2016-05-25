@@ -4,7 +4,7 @@
 
 pkgname=ags
 pkgver=3.3.5.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A development tool that is primarily used to create graphical adventure games"
 arch=('i686' 'x86_64')
 url="https://github.com/adventuregamestudio/ags"
@@ -14,16 +14,17 @@ makedepends=('wxgtk')
 optdepends=('wine: for installing and configuring the game')
 conflicts=('ags-git')
 install=ags.install
-source=("https://github.com/adventuregamestudio/ags/archive/v.${pkgver}.tar.gz")
-sha256sums=('f2b31a3d5152fd50d6a9fae1e019dcf3d0823f5968d5fbe344478c524afa7d9f')
+source=("https://github.com/adventuregamestudio/ags/archive/v.${pkgver}.tar.gz"
+         "fix-namespaces.patch")
+sha256sums=('f2b31a3d5152fd50d6a9fae1e019dcf3d0823f5968d5fbe344478c524afa7d9f'
+            '9d715eb5a269b66465361d6723f9b58bd6c0607cb25af0d19286e4021bc8957a')
 
 prepare() {
   cd "$srcdir/ags-v.${pkgver}"
   sed -i 's/-Wfatal-errors\ //' Engine/Makefile-defs.linux
 
-  # Can be removed onnext release
-  # (see https://github.com/adventuregamestudio/ags/issues/327)
-  sed -i 's/-ldumb/-ldumb -lm/' Engine/Makefile-defs.linux
+  # https://github.com/adventuregamestudio/ags/issues/328
+  patch -p1 < ../fix-namespaces.patch
 }
 
 build() {
