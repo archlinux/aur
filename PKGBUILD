@@ -2,12 +2,12 @@
 #Contributor: Yan Burdonsky <psyrccio@gmail.com>
 pkgname=jwildfire
 pkgver=2.60.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Fractal flame image and animation processor written in Java"
-arch=('i686' 'x86_64')
+arch=('any')
 url="http://www.andreas-maschke.com"
-license=('GPL2.1')
-depends=('java-runtime')
+license=('GPL2')
+depends=('java-environment' 'bash')
 #makedepends=('git' 'qt5-base')
 provides=('jwildfire')
 conflicts=('jwildfire')
