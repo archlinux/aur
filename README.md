@@ -61,3 +61,9 @@ which ssh user keys are used by initramfs sshd server?
 
 how can provide custom interactive user shell for ssh client
 * change sample shell file located in `/etc/mkinitcpio.d/shell.sh`  
+
+how can I relocate file and/or change file mode during provisioning?
+* use `ProvisionInitrdPath=/target-file source=/source-file mode=NNN` 
+
+how can I filter directory content during provisioning?
+* use `ProvisionInitrdPath=/target-folder glob=*.example` 

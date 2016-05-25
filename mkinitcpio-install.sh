@@ -20,7 +20,7 @@ build() {
 
 build_ssh_host_keys() {
 
-    quiet "Provide host server ssh keys"
+    quiet "provide host server ssh keys"
 
     local etc_dropbear="/etc/dropbear"
 
@@ -32,13 +32,13 @@ build_ssh_host_keys() {
         source=$(keypath_openssh $keytype)
         target=$(keypath_dropbear $(keytype_dropbear $keytype))
         if [ -f "$target" ]; then
-            plain "Provision existing dropbear host key: $target"
+            plain "provision existing dropbear host key: $target"
         else
             if [ -f "$source" ] ; then
-                plain "Convert openssh to dropbear host key: $target"
+                plain "convert openssh to dropbear host key: $target"
                 invoke   dropbearconvert openssh dropbear $source $target
             else
-                plain "Generate brand new dropbear host key: $target"
+                plain "generate brand new dropbear host key: $target"
                 invoke   dropbearkey -t $(keytype_dropbear $keytype) -f $target
             fi
         fi
@@ -50,7 +50,7 @@ build_ssh_host_keys() {
 
 build_systemd_units() {
 
-    quiet "Provide systemd units"
+    quiet "provide systemd units"
 
     # initramfs inclusion marker
     local tag="ConditionPathExists=/etc/initrd-release"
@@ -64,7 +64,7 @@ build_systemd_units() {
 
     local unit
     for unit in $unit_list ; do
-        quiet "Add unit: $unit"
+        quiet "add unit: $unit"
         add_systemd_unit_X "$unit"
         invoke   systemctl --root "$BUILDROOT" enable "$unit"
     done
@@ -73,7 +73,7 @@ build_systemd_units() {
 
 build_resources() {
     
-    quiet "Provide dependency resources"
+    quiet "provide dependency resources"
     
     add_checked_modules "/drivers/net/"
 
