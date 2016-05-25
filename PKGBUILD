@@ -54,7 +54,7 @@ _bldtype=Release
 
 _zipcode_rel=201603
 _mozcver=2.17.2315.102
-_utdicver=20160419
+_utdicver=20160524
 _protobuf_rev=172019c40bf548908ab09bfd276074c929d48415
 _gyp_rev=e2e928bacd07fead99a18cb08d64cb24e131d3e5
 _jsoncpp_rev=11086dd6a7eba04289944367ca82cea71299ed70
@@ -67,7 +67,7 @@ pkgname=fcitx-mozc-ut
 pkgdesc="Fcitx Module of A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input) with Mozc UT Dictionary (additional dictionary)"
 pkgver=${_mozcver}.${_utdicver}
 _fcitx_patchver=2.17.2313.102.1
-pkgrel=2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.geocities.jp/ep3797/mozc_01.html"
 license=('custom')
@@ -83,7 +83,7 @@ source=(mozc-${_mozcver}::git+https://github.com/google/mozc.git#commit=${_mozc_
         "x-ken-all-${_zipcode_rel}.zip::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1563797&FileTime=131055899132200000&Build=21031"
         "edict-${_utdicver}.gz::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1563799&FileTime=131055899135630000&Build=21031"
         "jigyosyo-${_zipcode_rel}.zip::https://www.codeplex.com/Download/Release?ProjectName=naoina&DownloadId=1563798&FileTime=131055899133630000&Build=21031"
-        mozcdic-ut-${_utdicver}.tar.bz2::https://osdn.jp/frs/chamber_redir.php?f=%2Fusers%2F10%2F10777%2Fmozcdic-ut-${_utdicver}.tar.bz2
+        mozcdic-ut-${_utdicver}.tar.bz2::https://osdn.jp/frs/chamber_redir.php?f=%2Fusers%2F10%2F10874%2Fmozcdic-ut-${_utdicver}.tar.bz2
         EDICT_license.html
         mod-generate-mozc-ut.sh
         http://download.fcitx-im.org/fcitx-mozc/fcitx-mozc-${_fcitx_patchver}.patch
@@ -189,9 +189,8 @@ sha512sums=('SKIP'
             'faa70a8454cc59aae23f137b7789975e3733f06811056b9132d281ade67c98f93229785fca55aa3ffa1484d4109241c708a084e01173c8ba67cce310e551daa1'
             '1eda172040227f56c4f4702457d49d14be85dc1b3d0208da04a3ff9b7936a995119d33929159a6f1d06ca09d7a2d7ca08cc485dee8620217199fa350388299fb'
             '744559bb7ca5159f57cc51f435b6661a4eb3bdaf5c268e4fc05c017e30820091fbb797b894d6072f6d095c03f75fd573e9232d12e3b397800d30901c90f28cd8'
-            '29e36fd857ed34ab27257cc40fd8bd6a666a267b57b5b3037c4ce6f10092999c78000489950758a84cf9a0265c5e4fda9ac388ada651d81e75d5df74d3307195'
+            '4c5a3ac42722d513db49c09344f95aca513891d0b8ea5c9127db0f923e7a67632ade9f1ba3b9897a2c8401617de01dbe4ebe17881112018442757cfa2e6e5436'
             '4899c7ee01e387c7c5c628356a0b32e7ba28643580701b779138361ca657864ec17ae0f38d298d60e44093e52a3dfe37d922f780b791e3bd17fc4f056f22dbbb'
             '3b8d49eb8f6fff7443de48f10d6af122c08cef89c9ddf33857ba13b294fbad3e727a26067196cd249fe61ab4dd0d9ca8d7f8c64226a7f59580e5bd21e7b208eb'
-            'b3b832489ef9249b22d8a0b9d6eee1895c9d93ef53d5968724a65184cb3f04e17cc74938128b98916da7829c6566be0bc6d60fa8801248cc24620730a060eac6'
             'a9a3ca5dba636c84d216a0a3574e5132d0e6ca69e913ccd5f1a1716af238ea34d5100a4b5d42bbd0c12649780b6009f4533e848e86050e51c22dc8859badd615'
             '5507c637e5a65c44ccf6e32118b6d16647ece865171b9a77dd3c78e6790fbd97e6b219e68d2e27750e22074eb536bccf8d553c295d939066b72994b86b2f251a')
