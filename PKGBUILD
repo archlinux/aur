@@ -1,20 +1,42 @@
 # Maintainer: spider-mario <spidermario@free.fr>
-pkgname=cinnxp
-pkgver=1.0.2
-pkgrel=2
+pkgname=('cinnxp' 'cinnxp-royale')
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="XP-like theme for Cinnamon"
 arch=('any')
 url="http://cinnamon-spices.linuxmint.com/themes/view/498"
 license=('unknown')
+makedepends=('git' 'ruby-bundler' 'ruby-sass' 'xorg-xcursorgen')
 optdepends=('gtk2' 'gtk3' 'cinnamon' 'metacity')
 options=('!strip')
-source=("cinnxp-$pkgver.zip"::https://cinnamon-spices.linuxmint.com/uploads/themes/3FQH-80ZG-KNKW.zip)
-sha512sums=('e98117649ece3a97560c0a9883f02483a949fa8381406c510ea52068fb3598b3f10da4b7720426b4f9b354c4f4552d6aa23aeb6d5130198492d1bba773fc1d6c')
+source=('cinnxp::git+https://github.com/petrucci4prez/CinnXP.git#commit=a1b1a3182fa21f2b4d376b4f071c9c839a8d5a9d')
+sha512sums=('SKIP')
 
-package() {
+build() {
+	cd cinnxp
+
+	rm -fr pkg{,-royale}
+	./compile-theme
+	./compile-theme -r -n pkg-royale
+
+	find pkg{,-royale} -type d -exec chmod 755 '{}' +
+	find pkg{,-royale} -type f -exec chmod 644 '{}' +
+
+	cd pkg-royale/usr/share
+	for subdir in *; do
+		mv "$subdir"/CinnXP{,-Royale}
+	done
+	perl -pe 's/(?<=CinnXP)/-Royale/' -i icons/CinnXP-Royale/cursor.theme
+}
+
+package_cinnxp() {
 	cd "$pkgdir"
-	cp -R "$srcdir"/pkg/usr .
-	cd usr
-	find -type d -exec chmod 755 '{}' +
-	find -type f -exec chmod 644 '{}' +
+	cp -aR "$srcdir"/cinnxp/pkg/usr .
+}
+
+package_cinnxp-royale() {
+	pkgdesc="XP-like theme for Cinnamon (Royale variant)"
+
+	cd "$pkgdir"
+	cp -aR "$srcdir"/cinnxp/pkg-royale/usr .
 }
