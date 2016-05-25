@@ -5,9 +5,8 @@
 
 [Unit]
 Description=User Root (initrd)
-# NOTE: initramfs inclusion marker
 ConditionPathExists=/etc/initrd-release
-DefaultDependencies=no
+DefaultDependencies=yes
 
 [Service]
 Type=oneshot
@@ -18,12 +17,12 @@ Environment=SHELL_CMD=/bin/sh
 ExecStart=/bin/sed -i -r -e "s|^root.*|root:x:0:0:root:/root:${SHELL_CMD}|" /etc/passwd
 
 # https://github.com/systemd/systemd/issues/3340
-ProvisionInitrdPath=/etc/dropbear/shell.sh
+ProvisionInitrdPath=/etc/mkinitcpio.d
 
 # activate default interactive login shell
-Environment=SHELL_FILE=/etc/dropbear/shell.sh
+Environment=SHELL_FILE=/etc/mkinitcpio.d/shell.sh
 Environment=SHELL_LINK=/root/.profile
-ExecStart=/bin/ln -s $SHELL_FILE $SHELL_LINK
+ExecStart=/bin/ln -s ${SHELL_FILE} ${SHELL_LINK}
 
 [Install]
 RequiredBy=initrd-dropbear.service

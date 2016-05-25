@@ -1,5 +1,5 @@
 pkgname=initrd-dropbear
-pkgver=r1.1d5a91d
+pkgver=r2.a59f346
 pkgrel=1
 pkgdesc='Utilities for systemd in initramfs (systemd-tool)'
 arch=('any')
@@ -11,12 +11,17 @@ url="https://aur.archlinux.org/cgit/aur.git/tree/?h=${pkgname}"
 source=("${pkgname}::git+https://aur.archlinux.org/${pkgname}.git")
 md5sums=('SKIP')
 backup=(
-    'etc/dropbear/shell.sh'
+    'etc/mkinitcpio.d/shell.sh'
     'etc/systemd/network/initrd-network.network'
     'etc/systemd/system/initrd-debug-progs.service'
     'etc/systemd/system/initrd-debug-shell.service'
     'etc/systemd/system/initrd-dropbear.service'
+    'etc/systemd/system/initrd-network.service'
     'etc/systemd/system/initrd-user-root.service'
+)
+conflicts=(
+    'mkinitcpio-dropbear'
+    'mkinitcpio-tinyssh'
 )
 
 pkgver() {
@@ -58,7 +63,7 @@ package() {
     install -D -m644 "$source/mkinitcpio-hook.sh"       "$target/hooks/$hook"
     install -D -m644 "$source/mkinitcpio-install.sh"    "$target/install/$hook"
   
-    local target="$pkgdir/etc/dropbear/"
+    local target="$pkgdir/etc/mkinitcpio.d/"
     install -D -m644 "$source/shell.sh"                 "$target/shell.sh"
     
     local target="$pkgdir/etc/systemd/network"
@@ -67,6 +72,7 @@ package() {
     local target="$pkgdir/etc/systemd/system"
     install -D -m644 "$source/initrd-debug-progs.service"   "$target/initrd-debug-progs.service"
     install -D -m644 "$source/initrd-debug-shell.service"   "$target/initrd-debug-shell.service"
+    install -D -m644 "$source/initrd-network.service"       "$target/initrd-network.service"
     install -D -m644 "$source/initrd-dropbear.service"      "$target/initrd-dropbear.service"
     install -D -m644 "$source/initrd-user-root.service"     "$target/initrd-user-root.service"
                 

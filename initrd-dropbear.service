@@ -6,15 +6,11 @@
 [Unit]
 Description=Dropbear SSH Server (initrd)
 Documentation=https://matt.ucc.asn.au/dropbear/dropbear.html
-# NOTE: initramfs inclusion marker
 ConditionPathExists=/etc/initrd-release
 DefaultDependencies=no
-Requires=systemd-networkd.service
-Requires=systemd-resolved.service
-#Requires=initrd-network.service
-#After=network.target
-#Before=cryptsetup-pre.target
-#Wants=cryptsetup.target
+Requires=initrd-network.service
+After=initrd-network.service
+Before=cryptsetup-pre.target
 
 [Service]
 
@@ -26,19 +22,8 @@ ProvisionInitrdPath=/etc/systemd/network/initrd-network.network
 # -s     Disable password logins.
 # -j     Disable local port forwarding.
 # -k     Disable remote port forwarding.
-# -d dsskey DSS host key (default:  /etc/dropbear/dropbear_dss_host_key)
-# -r rsakey RSA host key (default:  /etc/dropbear/dropbear_rsa_host_key)
-# user key:  ~/.ssh/authorized_keys
 ExecStart=/bin/dropbear -F -s -j -k
 #ExecReload=/bin/kill -HUP $MAINPID
-
-# release network devices to allow rename after switch-root
-# works, needs extra binary: "ip"
-#ExecStop=/bin/ip addr flush up
-#ExecStop=/bin/ip link set group default down
-# works with busybox: "ipaddr" "iplink"
-ExecStop=/bin/sh -c "ipaddr flush up"
-ExecStop=/bin/sh -c "ls /sys/class/net | xargs -I % iplink set % down"
 
 Restart=always
 RestartSec=1s

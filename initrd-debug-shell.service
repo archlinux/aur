@@ -6,7 +6,6 @@
 [Unit]
 Description=Debug Shell on /dev/tty8 (initrd)
 Documentation=man:sushell(8)
-# NOTE: initramfs inclusion marker
 ConditionPathExists=/etc/initrd-release
 DefaultDependencies=no
 IgnoreOnIsolate=yes

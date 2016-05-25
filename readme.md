@@ -5,6 +5,10 @@
 ### Summary 
 
 Utilities for systemd in initramfs (systemd-tool)
+* initrd debugging
+* early network setup
+* remote ssh access in initrd
+* cryptsetup password answer over ssh
 
 Hook name: systemd-tool
 
@@ -15,17 +19,25 @@ change /etc/mkinitcpio.conf
 HOOKS="base systemd systemd-tool sd-encrypt"
 ```
 
+review and enable/disable provided default service unit files
+```
+shell.sh
+initrd-*.network
+initrd-*.service
+```
+
 ### Details
 
 pacman install actions:
 * provision default files included in this package into the /etc
-* specific folders are /etc/dropbear /etc/systemd/{system,network}
+* specific folders are /etc/mkinitcpio.d /etc/systemd/{system,network}
 
 mkinitcpio install hook actions:
-* look in the /etc/dropbear /etc/systemd/{system,network}
-* include in initrd files containing marker "/etc/initrd-release"
-* activate in initrd transitively any discovered systemd service units 
+* look in the /etc/systemd/system
+* include in initrd units containing marker "/etc/initrd-release"
+* activate transitively in initrd any discovered systemd service units
+* auto provision into initramfs resources declared in the initrd service units  
 
-to disable specific file inclusion / unit activation:
-* mangle or remove the tag marker string "/etc/initrd-release"
-* for example replace "/etc/initrd-release" with "/etc/xxx/initrd-release"
+to disable specific service unit inclusion / unit activation in the initramfs:
+* alter the tag marker string ```ConditionPathExists=/etc/initrd-release```
+* for example replace path "/etc/initrd-release" with "/etc/xxx/initrd-release"

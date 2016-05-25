@@ -1,0 +1,33 @@
+# This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
+# NOTE: to be activated in initramfs the file must contain marker string
+
+# Configure networks in the initramfs
+
+[Unit]
+Description=Network Service (initrd)
+ConditionPathExists=/etc/initrd-release
+DefaultDependencies=no
+Requires=systemd-networkd.service
+Requires=systemd-resolved.service
+Before=cryptsetup-pre.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+
+# https://github.com/systemd/systemd/issues/3340
+ProvisionInitrdPath=/etc/systemd/network/initrd-network.network
+
+# 
+ExecStart=/bin/true
+
+# release network devices to allow rename after switch-root
+# works, needs extra binary: "ip"
+#ExecStop=/bin/ip addr flush up
+#ExecStop=/bin/ip link set group default down
+# works with busybox: "ipaddr" "iplink"
+ExecStop=/bin/sh -c "ipaddr flush up"
+ExecStop=/bin/sh -c "ls /sys/class/net | xargs -I % iplink set % down"
+
+[Install]
+WantedBy=sysinit.target

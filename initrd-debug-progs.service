@@ -5,9 +5,7 @@
 
 [Unit]
 Description=Debug Progs (initrd)
-DefaultDependencies=no
-
-# NOTE: initramfs inclusion marker
+DefaultDependencies=yes
 ConditionPathExists=/etc/initrd-release
 
 [Service]
