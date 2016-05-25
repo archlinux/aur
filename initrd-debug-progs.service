@@ -23,6 +23,7 @@ ExecStart=/bin/mcview -V
 #ExecStart=/bin/infocmp -V
 
 ExecStart=/bin/journalctl --version
+ExecStart=/bin/systemd-analyze --version 
 
 
 [Install]
