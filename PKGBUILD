@@ -13,7 +13,6 @@ optdepends=('youtube-dl: Video integration to YouTube and other video sites.')
 conflicts=('gnome-mpv-git')
 source=("https://github.com/gnome-mpv/gnome-mpv/releases/download/v${pkgver}/gnome-mpv-${pkgver}.tar.xz")
 sha256sums=('c0363c2ea997562388a928bf8d1cd6a5bc3bfc3bd4576ad1ee6fcee10cedef1a')
-install='gnome-mpv.install'
 
 build() {
     cd "${pkgname}-${pkgver}"
