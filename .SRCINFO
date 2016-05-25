@@ -1,4 +1,4 @@
-pkgbase = cflint-git
+pkgbase = cflint
 	pkgdesc = A static code analysis tool for ColdFusion - git branch
 	pkgver = 20160522.562
 	pkgrel = 1
@@ -16,5 +16,5 @@ pkgbase = cflint-git
 	source = git+https://github.com/CFLint/CFLint.git
 	md5sums = SKIP
 
-pkgname = cflint-git
+pkgname = cflint
 
