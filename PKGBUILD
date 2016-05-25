@@ -2,31 +2,28 @@
 # Contributor: 
 
 pkgname=tbe
-pkgver=0.9.2.1
-pkgrel=3
+pkgver=0.9.3.1
+pkgrel=1
 pkgdesc="The Butterfly Effect is a physics-based puzzle game"
 arch=('i686' 'x86_64')
 url='http://the-butterfly-effect.org/'
 license=('GPL2')
-depends=('qt4')
-makedepends=('cmake')
+depends=('hicolor-icon-theme' 'qt5-svg')
+makedepends=('cmake' 'qt5-tools')
 source=("tbe-${pkgver}.tar.gz::https://github.com/kaa-ching/tbe/archive/v${pkgver}.tar.gz")
-sha256sums=('afffea8df53c5e805a79963e0358fd1d6e8fdc735bbb4d4315cd4d1571c244b3')
+sha256sums=('7e59ddb1d28c589e3e4aff756dbf76eab0e85f1dc9288c151cd4eff6dcb913a3')
 
 prepare() {
   cd tbe-${pkgver}
   sed -i 's|games)|bin)|' CMakeLists.txt
   sed -i 's|games/tbe|tbe|' CMakeLists.txt
-  sed -i 's|BINARY_DIRECTORY+"/../share/games|"/usr/share|' src/tbe_paths.h
 }
 
 build() {
-  cd tbe-${pkgver}/i18n
-  ./tbe_levels_i18n.sh && cd ..
-  cmake \
+  cd tbe-${pkgver}
+  cmake . \
     -DWITH_DOCS=ON \
     -DBUILD_SHARED_LIBS=OFF \
-    -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release
   make

@@ -1,15 +1,17 @@
 pkgbase = tbe
 	pkgdesc = The Butterfly Effect is a physics-based puzzle game
-	pkgver = 0.9.2.1
-	pkgrel = 3
+	pkgver = 0.9.3.1
+	pkgrel = 1
 	url = http://the-butterfly-effect.org/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = cmake
-	depends = qt4
-	source = tbe-0.9.2.1.tar.gz::https://github.com/kaa-ching/tbe/archive/v0.9.2.1.tar.gz
-	sha256sums = afffea8df53c5e805a79963e0358fd1d6e8fdc735bbb4d4315cd4d1571c244b3
+	makedepends = qt5-tools
+	depends = hicolor-icon-theme
+	depends = qt5-svg
+	source = tbe-0.9.3.1.tar.gz::https://github.com/kaa-ching/tbe/archive/v0.9.3.1.tar.gz
+	sha256sums = 7e59ddb1d28c589e3e4aff756dbf76eab0e85f1dc9288c151cd4eff6dcb913a3
 
 pkgname = tbe
 
