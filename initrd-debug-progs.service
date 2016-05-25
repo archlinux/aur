@@ -16,6 +16,7 @@ RemainAfterExit=true
 # provision via use of one shot invocations
 ExecStart=/bin/mc -V
 ExecStart=/bin/mcedit -V
+ExecStart=/bin/mcview -V
 
 [Install]
 WantedBy=initrd-debug-shell.service
@@ -25,3 +26,4 @@ WantedBy=initrd-debug-shell.service
 ProvisionInitrdPath=/etc/mc
 ProvisionInitrdPath=/usr/lib/mc
 ProvisionInitrdPath=/usr/share/mc
+ProvisionInitrdPath=/usr/share/terminfo
