@@ -1,15 +1,14 @@
 pkgbase = cpplint
 	pkgdesc = Automated checker to make sure a C++ file follows Google's C++ style guide.
-	pkgver = 11
-	pkgrel = 0
+	pkgver = 456
+	pkgrel = 1
 	url = https://google.github.io/styleguide/cppguide.html
-	arch = i686
-	arch = x86_64
-	license = unknown
+	arch = any
+	license = custom:BSD3
 	depends = python2
-	source = https://raw.githubusercontent.com/google/styleguide/gh-pages/cpplint/cpplint.py
-	source = https://raw.githubusercontent.com/google/styleguide/gh-pages/cpplint/README
-	sha256sums = 21898350f6c9b293758e3a55c63ef5531dde1c0b468ff1ca4cc401f68004e9d0
+	source = cpplint-01e47236c846571b82a0136f79288a0b07916097.py::https://raw.githubusercontent.com/google/styleguide/01e47236c846571b82a0136f79288a0b07916097/cpplint/cpplint.py
+	source = README-01e47236c846571b82a0136f79288a0b07916097::https://raw.githubusercontent.com/google/styleguide/01e47236c846571b82a0136f79288a0b07916097/cpplint/README
+	sha256sums = 0653d091d88e69d2e9cebde61aecec50665077faf61fd862bc4f12494efec2f0
 	sha256sums = a2a49a15fc0db21a0c130e57fb5894954d81bc95962fc90be2e70d2daaa27d89
 
 pkgname = cpplint

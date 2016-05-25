@@ -1,0 +1,5 @@
+/cpplint-*.py
+/cpplint-*.pkg.tar.xz
+/README-*
+/pkg/
+/src/
