@@ -51,6 +51,7 @@ build() {
 	  --enable-alc \
 	  --enable-alcc \
 	  --enable-geoip \
+	  --enable-upnp \
 	  --enable-optimize \
 	  --enable-mmap \
 	  --enable-ccache \
