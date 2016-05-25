@@ -4,7 +4,7 @@
 _name="cflint"
 _gitname="CFLint"
 pkgname="$_name-git"
-pkgver=20151119.
+pkgver=20160522.
 pkgrel=1
 pkgdesc="A static code analysis tool for ColdFusion - dev branch"
 arch=('any')
