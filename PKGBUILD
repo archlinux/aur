@@ -1,7 +1,7 @@
 # Maintainer: Olivier Bilodeau <obilodeau@gosecure.ca>
 # Contributor: JokerYu <dayushinn@gmail.com>
 pkgname=forticlientsslvpn
-pkgver=4.4.2323
+pkgver=4.4.2327
 pkgrel=1
 epoch=1
 pkgdesc="Fortinet SSL VPN Client for linux"
@@ -11,8 +11,7 @@ license=("custom")
 depends=("ppp" "net-tools" "libsm" "gtk2")
 optdepends=("gtk-engines: for gtk theme support")
 
-_versionFix=4.4.2323
-_sourceName=${pkgname}_linux_${_versionFix}.tar.gz
+_sourceName=${pkgname}_linux_${pkgver}.tar.gz
 
 if [ "$CARCH" = "i686" ]; then
   _arch=32bit
@@ -20,16 +19,14 @@ elif [ "$CARCH" = "x86_64" ]; then
   _arch=64bit
 fi
 
-md5sums=('1b14d68d8026b00652fdcbb4c77ba832'
-         'ba87cd86fec77062c0d20da95c9e21f6'
-         '6f5ebe493c5abaf60bfcd2b8bc9d73fc'
-         '03f0d0ade9b76776a39d9162d5708f97'
-         '43f95eae96db16248d7294c1e8bfc561')
+sha256sums=('20e607ac226fd4251f7da8d162fc8bda12ad300b7e6304560ae1dbe6d78ea89a'
+            '5742a8ae7dde1a1fde698ce2108ade9b51d497579c1e4375ff928325112a8780'
+            '18061ae130992bfdd1b2fc18b2a6cd64e9ee6da63dae28cee1c28f2a40b60b15'
+            '4f63f4503dca7633a4d7a1cf874ede1f33f877a701813349c5cd63889151f4a2'
+            '15d46db76a39f32736ee3a469fc1b821e6290453c701af823875a493d06901df')
 
-_tarballsrc="http://michele.cereda.info/downloads/work/buongiorno/${_sourceName}"
-# _tarballsrc="ftp://pftpintl:sgn89IOngs@support.fortinet.com/FortiGate/v5.00/5.2/5.2.2/VPN/SSLVPNTools/${_sourceName}"
-# _tarballsrc="http://www.zen.co.uk/userfiles/knowledgebase/FortigateSSLVPNCLient/${_sourceName}"
-# _tarballsrc="http://support.safe-t.com/forticlients/${_sourceName}"
+_tarballsrc="https://github.com/obilodeau/aur-package-forticlientsslvpn/raw/binaries/${_sourceName}"
+# from Fortinet's firmware download site: /FortiGate/v5.00/5.2/5.2.7/VPN/SSLVPNTools/${_sourceName}
 
 source=(
   "${_tarballsrc}"
