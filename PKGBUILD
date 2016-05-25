@@ -18,14 +18,12 @@ makedepends=('mesa')
 conflicts=('nexuiz-data')
 source=("http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver//./}.zip" \
         "nexuiz-glx.desktop" "nexuiz-sdl.desktop" \
-        "libpng14.patch" "nex-icons.tar.gz" "nexuiz.install")
+        "libpng14.patch" "nex-icons.tar.gz")
 sha256sums=('a5e27ebcc9775c4a490d0d3536c32e4a8f8f96b038c0b6a78d1823c37a962000'
             '277ace303189dc25403a1a7c03b66d033e6aed52c98adb4ecfb5f627b101fff3'
             '50ad2bf51a291635d7d3195745f9536b7182c0ed548259c0a8627ea951e3da7f'
             '327c45a56faa1963fa08a590694fd0c23bed448282f9473c2d483447df9a6e1f'
-            '25e478b783bb7f8cff04b7c3e538a82e8ab852d72930277e83d00777d2a7186e'
-            '8ca411bb490f60296868ed7831f34aae7b57738d13f3e3c4e843488912ea3869')
-install=nexuiz.install
+            '25e478b783bb7f8cff04b7c3e538a82e8ab852d72930277e83d00777d2a7186e')
 # Prevent compressing final package
 PKGEXT='.pkg.tar'
 
