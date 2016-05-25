@@ -3,7 +3,7 @@
 
 _name="cflint"
 _gitname="CFLint"
-pkgname="$_name-git"
+pkgname="$_name"
 pkgver=20160522.562
 pkgrel=1
 pkgdesc="A static code analysis tool for ColdFusion - git branch"
