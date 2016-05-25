@@ -1,6 +1,6 @@
 pkgname='holo-ssh-keys'
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc='Holo plugin for provisioning SSH public keys to $HOME/.ssh/authorized_keys'
 arch=('i686' 'x86_64' 'armv7h')
 url='http://holocm.org'
@@ -10,9 +10,8 @@ depends=(
     'HOLO_API_VERSION=3'
 )
 makedepends=('go' 'perl')
-install='holo-ssh-keys.install'
 source=("https://github.com/holocm/${pkgname}/archive/v${pkgver}.tar.gz")
-md5sums=('739f3d3704dbba86373732142e0ced62')
+sha256sums=('a1b5f313e10ae3ef8ab4cc02ea5223ac5158604a25fe2c85b5a10d8cee62c07d')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
@@ -27,5 +26,4 @@ check() {
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
     make install DESTDIR="${pkgdir}"
-    install -d -m0755 "${pkgdir}/usr/share/holo/ssh-keys"
 }
