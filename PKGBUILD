@@ -1,7 +1,7 @@
 # Maintainer: Graziano Giuliani <graziano.giuliani@gmail.com>
 pkgname=ncregrid
 pkgver=1.4b
-pkgrel=3
+pkgrel=4
 pkgdesc="Tool (written in FORTRAN-90) for data transfer of gridded 2- and 3-dimensional (spatial) geophysical/geochemical scalar fields between grids of different resolutions."
 arch=(i686 x86_64)
 url="http://www.pa.op.dlr.de/~PatrickJoeckel/ncregrid/index.html"
@@ -13,6 +13,7 @@ md5sums=('175569cc11c5646f36893d3dfccea83a')
 
 build() {
   cd ${srcdir}/${pkgname}
+  sed -i configure -e 's/libnetcdf.a/libnetcdff.so/'
   F90=gfortran F90FLAGS="$FCFLAGS" \
     NC_INC=/usr/include NC_LIB=/usr/lib ./configure --prefix=/usr
   for file in src/*.f90
