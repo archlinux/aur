@@ -4,11 +4,12 @@
 
 pkgname=libxml2
 pkgver=2.9.4+0+gbdec218
-pkgrel=1
+pkgrel=2
 pkgdesc="XML parsing library, version 2"
 arch=(i686 x86_64)
 license=('MIT')
 depends=('zlib' 'readline' 'ncurses' 'xz')
+options=(!makeflags)
 makedepends=('python2' 'python' 'git')
 url="http://www.xmlsoft.org/"
 source=('git://git.gnome.org/libxml2#commit=bdec2183f34b37ee89ae1d330c6ad2bb4d76605f'
@@ -24,7 +25,7 @@ pkgver() {
 prepare() {
   mkdir build-py3
   mkdir build-py2
-  mv xmlconf build-py3/
+  mv xmlconf build-py2/
   cd $pkgname
   NOCONFIGURE=1 ./autogen.sh
 }
@@ -38,21 +39,21 @@ build() {
   cd ../build-py3
   ../$pkgname/configure --prefix=/usr --with-threads --with-history --with-python=/usr/bin/python
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0 /g' libtool
-  make
+  PYTHONHASHSEED=0 make
 }
 
 check() {
-  cd build-py3
+  cd build-py2
   make check
 }
 
 package() {
-  cd build-py3
+  cd build-py2
   find doc -type f -exec chmod 0644 {} \;
 
   make DESTDIR="${pkgdir}" install
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
-  cd ../build-py2/python
-  make DESTDIR="${pkgdir}" install
+  cd ../build-py3/python
+  PYTHONHASHSEED=0 make DESTDIR="${pkgdir}" install
 }
