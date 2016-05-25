@@ -1,7 +1,8 @@
-diff -ur libxml2-2.9.1.orig/Makefile.am libxml2-2.9.1/Makefile.am
---- libxml2-2.9.1.orig/Makefile.am	2013-11-30 16:46:20.273724298 +0100
-+++ libxml2-2.9.1/Makefile.am	2013-11-30 16:49:40.131795741 +0100
-@@ -10,11 +10,6 @@
+diff --git a/Makefile.am b/Makefile.am
+index 9f988b0..5bbdf08 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -10,11 +10,6 @@ AM_CPPFLAGS = -I$(top_builddir)/include -I$(srcdir)/include
  
  AM_CFLAGS = $(THREAD_CFLAGS) $(Z_CFLAGS) $(LZMA_CFLAGS)
  
@@ -13,7 +14,7 @@ diff -ur libxml2-2.9.1.orig/Makefile.am libxml2-2.9.1/Makefile.am
  bin_PROGRAMS = xmllint xmlcatalog
  
  bin_SCRIPTS=xml2-config
-@@ -66,1097 +61,16 @@
+@@ -66,1101 +61,16 @@ man_MANS = xml2-config.1 libxml.3
  m4datadir = $(datadir)/aclocal
  m4data_DATA = libxml.m4
  
@@ -166,6 +167,10 @@ diff -ur libxml2-2.9.1.orig/Makefile.am libxml2-2.9.1/Makefile.am
 -	@echo '## Running the regression tests under Valgrind'
 -	@echo '## Go get a cup of coffee it is gonna take a while ...'
 -	$(MAKE) CHECKER='valgrind -q' runtests
+-
+-asan:
+-	@echo '## rebuilding for ASAN'
+-	./configure CFLAGS="-fsanitize=address,undefined -Wformat -Werror=format-security -Werror=array-bounds -g" CXXFLAGS="-fsanitize=address,undefined -Wformat -Werror=format-security -Werror=array-bounds -g" LDFLAGS="-fsanitize=address,undefined" CC="clang" CXX="clang++" --disable-shared ; OptimOff  ; $(MAKE) clean ; $(MAKE)
 -
 -testall : tests SVGtests SAXtests
 -

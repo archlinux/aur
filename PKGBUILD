@@ -1,7 +1,7 @@
 # Contributor: Filip Brcic <brcha@gna.org>
 
 pkgname=mingw-w64-libxml2
-pkgver=2.9.3
+pkgver=2.9.4
 pkgrel=1
 arch=('any')
 pkgdesc="XML parsing library, version 2 (mingw-w64)"
@@ -13,36 +13,38 @@ url="http://www.xmlsoft.org/"
 source=("http://xmlsoft.org/sources/libxml2-${pkgver}.tar.gz"
         "mingw32-libxml2-static-build-compile-fix.patch"
         "libxml2-no-test.patch")
-md5sums=('daece17e045f1c107610e137ab50c179'
+md5sums=('ae249165c173b1ff386ee8ad676815f5'
          '0df377025082cd93cccbca547f048011'
-         'ddd73e88dda6ae318267507409445b7d')
+         'db4d3c38434b1a1b5d2a29cd30e7228e')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "${srcdir}/libxml2-${pkgver}"
+
+  # fedora patch, purpose ?
   patch -Np0 -i "${srcdir}"/mingw32-libxml2-static-build-compile-fix.patch
+
+  # disable tests
   patch -Np1 -i "${srcdir}"/libxml2-no-test.patch
+
+  # disable doc & examples
   sed -i "s| doc example | |g" Makefile.am
-  sed -i "s|LIBXML_STATIC|_WIN32|g" include/libxml/xmlexports.h
   autoreconf -vfi
 }
 
 build()
 {
   cd "${srcdir}/libxml2-${pkgver}"
-
-  # Static build
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-configure \
-      --without-python \
-      --enable-ipv6 \
-      --with-modules LIBS="-lz"
+      --without-python
     make
 
-    # deps symbols are not included:
+    # deps symbols are not included in static lib:
     ${_arch}-ar x /usr/${_arch}/lib/libiconv.a
+    ${_arch}-ar x /usr/${_arch}/lib/liblzma.a
     ${_arch}-ar x /usr/${_arch}/lib/libz.a
     ${_arch}-ar x /usr/${_arch}/lib/libws2_32.a
     ${_arch}-ar cru .libs/libxml2.a *.o 
