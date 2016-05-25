@@ -165,10 +165,10 @@ add_systemd_unit_X() {
                 if [ -e "$BUILDROOT$target" ] ; then
                     quiet "reuse present path $target"
                 elif [ -d "$source" ] ; then 
-                    plain "provision new path $source $glob"
+                    plain "provision new dir $source $glob"
                     add_full_dir "$source" "$glob"
                 elif [ -f "$source" ] ; then
-                    plain "provision new path $source -> $target $mode"
+                    plain "provision new file $source -> $target $mode"
                     add_file "$source" "$target" "$mode"
                 else
                     error "invalid source path $source"
