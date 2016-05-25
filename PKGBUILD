@@ -1,5 +1,5 @@
 pkgname=mkinitcpio-systemd-tool
-pkgver=r13.e948414
+pkgver=r14.2997494
 pkgrel=1
 pkgdesc='Utilities for systemd in initramfs (systemd-tool)'
 arch=('any')
@@ -64,7 +64,7 @@ package() {
     install -D -m644 "$source/mkinitcpio-install.sh"    "$target/install/$hook"
   
     local target="$pkgdir/etc/mkinitcpio.d/"
-    install -D -m644 "$source/shell.sh"                 "$target/shell.sh"
+    install -D -m755 "$source/shell.sh"                 "$target/shell.sh"
     
     local target="$pkgdir/etc/systemd/network"
     install -D -m644 "$source/initrd-network.network"    "$target/initrd-network.network"
