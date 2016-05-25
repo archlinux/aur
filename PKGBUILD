@@ -11,7 +11,7 @@ url='http://www.plexim.com/de/products/plecs_standalone'
 arch=('x86_64' 'i686')
 license=('custom')
 provides=('plecs-standalone')
-depends=('qt4')
+depends=('qt4' 'ncurses5-compat-libs')
 makedepends=('findutils')
 
 source=("plecs.desktop")
