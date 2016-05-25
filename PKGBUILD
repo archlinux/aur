@@ -1,8 +1,8 @@
 # Maintainer: Oleksandr Natalenko <oleksandr@natalenko.name>
 # Former maintainer: Andrew Lewis <nerf@judo.za.org>
 pkgname=rspamd
-pkgver=1.2.6
-pkgrel=1
+pkgver=1.2.7
+pkgrel=2
 epoch=
 pkgdesc="Fast, free and open-source spam filtering system."
 arch=('x86_64' 'i686' 'mips64el')
@@ -51,37 +51,31 @@ backup=('etc/rspamd/2tld.inc'
 
 install=rspamd.install
 
-source=("https://www.rspamd.com/downloads/${pkgname}-${pkgver}.tar.xz"
-        "rspamd.service")
+source=("https://www.rspamd.com/downloads/${pkgname}-${pkgver}.tar.xz")
 
-sha256sums=('a1cbc5ccd53a5c9abe2d9f121f5936fcbd9d68f17fa354e8bddf4fcb3fc768c5'
-            '3ccbc157c2e73367e7cbab2b19d0847ef58cecb47194c3bdc5f1b118405d3d26')
+sha256sums=('7a19b2f49cb39d5839785d261a2d6d0d9cca24e760d5adb2b597b1eeb0831c3a')
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
-  cmake \
-    -DNO_SHARED=ON \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCONFDIR=/etc/rspamd \
-	-DRUNDIR=/run/rspamd \
-	-DLOGDIR=/var/log/rspamd \
-    -DRSPAMD_USER='_rspamd' \
-    -DDBDIR=/var/lib/rspamd \
-    -DENABLE_LUAJIT=ON \
-    -DENABLE_HIREDIS=OFF \
-    .
+	cmake \
+		-DNO_SHARED=ON \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCONFDIR=/etc/rspamd \
+		-DRUNDIR=/run/rspamd \
+		-DLOGDIR=/var/log/rspamd \
+		-DRSPAMD_USER='_rspamd' \
+		-DDBDIR=/var/lib/rspamd \
+		-DWANT_SYSTEMD_UNITS=ON \
+		.
 
-  make -j$(nproc)
+	make -j$(nproc)
 }
 
 package() {
+	cd "${srcdir}/${pkgname}-${pkgver}"
+	make DESTDIR="${pkgdir}/" install
 
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  make DESTDIR="${pkgdir}/" install
-
-  install -Dm0644 'LICENSE' "${pkgdir}/usr/share/${pkgname}/LICENSE"
-  install -Dm0644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
-
+	install -Dm0644 'LICENSE' "${pkgdir}/usr/share/${pkgname}/LICENSE"
 }
 
