@@ -159,8 +159,7 @@ add_systemd_unit_X() {
                 # ProvisionInitrdPath=/etc/folder [glob=*.sh]
                 # ProvisionInitrdPath=/etc/file [source=/lib/file] [mode=755]
                 local source= target= mode= glob= args=
-                target="${values[0]}"
-                args="${values[@]:1:7}" 
+                target="${values[0]}" ; args="${values[@]:1:7}" 
                 [ -n "$args" ] && local "$args"
                 [ -n "$source" ] || source="$target"
                 if [ -e "$BUILDROOT$target" ] ; then
