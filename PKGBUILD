@@ -1,5 +1,5 @@
-# Author: JokerYu <dayushinn@gmail.com>
 # Maintainer: Olivier Bilodeau <obilodeau@gosecure.ca>
+# Contributor: JokerYu <dayushinn@gmail.com>
 pkgname=forticlientsslvpn
 pkgver=4.4.2323
 pkgrel=1
