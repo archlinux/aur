@@ -7,9 +7,10 @@
 Description=Network Service (initrd)
 ConditionPathExists=/etc/initrd-release
 DefaultDependencies=no
+Conflicts=shutdown.target
 Requires=systemd-networkd.service
 Requires=systemd-resolved.service
-Before=cryptsetup-pre.target
+Before=cryptsetup-pre.target shutdown.target
 
 [Service]
 Type=oneshot

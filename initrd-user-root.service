@@ -7,7 +7,8 @@
 Description=User Root (initrd)
 ConditionPathExists=/etc/initrd-release
 DefaultDependencies=no
-Before=initrd-dropbear.service
+Conflicts=shutdown.target
+Before=initrd-dropbear.service shutdown.target
 
 [Service]
 Type=oneshot

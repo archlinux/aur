@@ -8,9 +8,10 @@ Description=Dropbear SSH Server (initrd)
 Documentation=https://matt.ucc.asn.au/dropbear/dropbear.html
 ConditionPathExists=/etc/initrd-release
 DefaultDependencies=no
+Conflicts=shutdown.target
 Requires=initrd-network.service
 After=initrd-network.service
-Before=cryptsetup-pre.target
+Before=cryptsetup-pre.target shutdown.target
 
 [Service]
 

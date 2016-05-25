@@ -7,9 +7,12 @@
 Description=Debug Shell on /dev/tty8 (initrd)
 Documentation=man:sushell(8)
 ConditionPathExists=/etc/initrd-release
+ConditionPathExists=/dev/tty8
 DefaultDependencies=no
 IgnoreOnIsolate=yes
-ConditionPathExists=/dev/tty8
+Conflicts=shutdown.target
+Before=shutdown.target
+
 
 [Service]
 Environment=TERM=linux
