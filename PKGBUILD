@@ -2,19 +2,24 @@
 
 _pyname=corner
 pkgname=python-$_pyname
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Make some beautiful corner plots of samples'
 url="https://pypi.python.org/pypi/$_pyname/"
 depends=('python-matplotlib')
 license=('BSD')
 arch=('any')
-source=("https://pypi.python.org/packages/source/${_pyname:0:1}/$_pyname/$_pyname-$pkgver.tar.gz")
-md5sums=('e2f4f62fe836dd4866c3bb65480832e6')
+source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/$_pyname/$_pyname-$pkgver.tar.gz")
+md5sums=('f222b758973467bcf77b9acda0aa9485')
 
 build() {
   cd $srcdir/$_pyname-$pkgver
   python setup.py build
+}
+
+check() {
+  cd $srcdir/$_pyname-$pkgver
+  python setup.py test
 }
 
 package() {
