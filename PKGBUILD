@@ -28,7 +28,7 @@ _FORCE_SSE41=OFF
 # Set to ON on nearly all Intel Core i or AMD since Bulldozer
 _FORCE_SSE42=OFF
 
-# Set to ON on Sandybridger or newer/Bulldozer or newer
+# Set to ON on Sandybridge or newer/Bulldozer or newer
 _FORCE_AVX=OFF
 
 # Set to ON on Haswell or newer
