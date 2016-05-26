@@ -1,0 +1,35 @@
+pkgbase = marionnet-trunk
+	pkgdesc = Educational software. It is a virtual network laboratory: it allows users to define, configure and run complex computer networks without any need for physical setup. Very old version.
+	pkgver = 1
+	pkgrel = 1
+	url = https://launchpad.net/marionnet
+	install = marionnet.install
+	arch = i686
+	arch = x86_64
+	license = LGPL
+	makedepends = wget
+	makedepends = optipng
+	depends = xorg-server
+	depends = xorg-xinit
+	depends = xorg-server-utils
+	depends = gtksourceview2
+	depends = libglademm
+	depends = graphviz
+	depends = xterm
+	depends = vde2
+	depends = uml_utilities
+	depends = net-tools
+	depends = bridge-utils
+	depends = lib32-glibc
+	conflicts = marionnet
+	source = http://caml.inria.fr/pub/distrib/ocaml-3.12/ocaml-3.12.1.tar.gz
+	source = http://wwwfun.kurims.kyoto-u.ac.jp/soft/lsl/dist/lablgtk-2.14.2.tar.gz
+	source = https://www.marionnet.org/download/marionnet_from_scratch/mirror/ocamlbricks-trunk.tar.gz
+	source = https://www.marionnet.org/download/marionnet_from_scratch/mirror/marionnet-trunk.tar.gz
+	sha256sums = 4f81ab86258be0eea1507dd5338c8670490f8616249821e731f8ac1c64caa4a7
+	sha256sums = 4981abedabdc462303f345104042c88af227ccd50fd30a9bf48fd353ab02d0ba
+	sha256sums = 646b6de59a555b2e41960708cf4edfed571d88369d850a50e23bf4a4b17ed329
+	sha256sums = 610c806e595be4d56ff6cded02e8d8a3091fe211487073c02ddb5132c3b4ffb6
+
+pkgname = marionnet-trunk
+
