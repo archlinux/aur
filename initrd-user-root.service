@@ -33,5 +33,5 @@ RequiredBy=initrd-dropbear.service
 
 # https://github.com/systemd/systemd/issues/3340
 [X-SystemdTool]
-ProvisionInitrdPath=/etc/mkinitcpio.d glob=*.sh
-ProvisionInitrdPath=/etc/crypttab source=/etc/mkinitcpio.d/crypttab optional=yes
+
+InitrdPath=/etc/mkinitcpio.d glob=*.sh

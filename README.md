@@ -51,10 +51,11 @@ how can I disable my custom.service unit in initrd?
 * alter / remove the tag marker string, i.e.: `ConditionPathExists=/etc/xxx/initrd-release`
 
 how can I auto-provision custom.service unit binaries into initramfs?
-* all Exec* `[Service]` entries such as `ExecStart=/bin/program` will be provisioned
+* use `InitrdExec=/target-exec` to provision service binary
+* any of `Exec*` entries such as `ExecStart=/bin/program` will also be provisioned
 
 how can I auto-provision custom.service unit resources into initramfs?
-* add several `[X-SystemdTool]` entries `ProvisionInitrdPath=/path/to/host/dir-or-file`
+* add several `[X-SystemdTool]` entries `InitrdPath=/path/to/host/dir-or-file`
 
 which ssh user keys are used by initramfs sshd server?  
 * they come from host `/root/.ssh/authorized_keys`
@@ -63,13 +64,13 @@ how can provide custom interactive user shell for ssh client
 * change sample shell file located in `/etc/mkinitcpio.d/shell.sh`  
 
 how can I relocate file and/or change file mode during provisioning?
-* use `ProvisionInitrdPath=/target-file source=/source-file mode=NNN` 
+* use `InitrdPath=/target-file source=/source-file mode=NNN` 
 
 how can I filter directory content during provisioning?
-* use `ProvisionInitrdPath=/target-folder glob=*.example` 
+* use `InitrdPath=/target-folder glob=*.example` 
 
 how can I provision optional folder or file?
-* use `ProvisionInitrdPath=/target-file source=/source-file optional=yes`
+* use `InitrdPath=/target-file source=/source-file optional=yes`
 
 how can I relocate folder during provisioning?
 * not implemented

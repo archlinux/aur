@@ -39,4 +39,5 @@ WantedBy=sysinit.target
 
 # https://github.com/systemd/systemd/issues/3340
 [X-SystemdTool]
-ProvisionInitrdPath=/etc/systemd/network/initrd-network.network
+
+InitrdPath=/etc/systemd/network/initrd-network.network

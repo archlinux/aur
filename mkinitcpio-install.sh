@@ -2,12 +2,14 @@
 
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
+# mkinitcpio entry point
 help() {
     local pkgname="mkinitcpio-systemd-tool"
     local readme="/usr/share/$pkgname/README.md"
     [ -f "$readme" ] && cat "$readme" 
 }
 
+# mkinitcpio entry point
 build() {
     
     build_ssh_host_keys
@@ -142,6 +144,7 @@ add_systemd_unit_X() {
                 map add_systemd_unit_X "${values[@]}"
                 ;;
             Exec*)
+            InitrdExec)
                 # don't add binaries unless they are required
                 if [[ ${values[0]:0:1} != '-' ]]; then
                     local exec="${values[0]}"
@@ -153,11 +156,11 @@ add_systemd_unit_X() {
                     fi
                 fi
                 ;;
-            ProvisionInitrdPath)
+            InitrdPath)
                 # auto provision resources
                 # format:
-                # ProvisionInitrdPath=/etc/folder [glob=*.sh]
-                # ProvisionInitrdPath=/etc/file [source=/lib/file] [mode=755]
+                # InitrdPath=/etc/folder [glob=*.sh]
+                # InitrdPath=/etc/file [source=/lib/file] [mode=755]
                 local source= target= mode= glob= args= optional=
                 target="${values[0]}" ; args="${values[@]:1:7}" 
                 [ -n "$args" ] && local $(echo "$args")

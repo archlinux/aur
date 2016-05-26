@@ -1,7 +1,7 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
 pkgname=mkinitcpio-systemd-tool
-pkgver=r33.1a4c9c2
+pkgver=r34.21a1a96
 pkgrel=1
 pkgdesc='Utilities for systemd in initramfs (systemd-tool)'
 arch=('any')
@@ -13,8 +13,10 @@ url="https://aur.archlinux.org/cgit/aur.git/tree/?h=${pkgname}"
 source=("${pkgname}::git+https://aur.archlinux.org/${pkgname}.git")
 md5sums=('SKIP')
 backup=(
+    'etc/mkinitcpio.d/crypttab'
     'etc/mkinitcpio.d/shell.sh'
     'etc/systemd/network/initrd-network.network'
+    'etc/systemd/system/initrd-cryptsetup.service'
     'etc/systemd/system/initrd-debug-progs.service'
     'etc/systemd/system/initrd-debug-shell.service'
     'etc/systemd/system/initrd-dropbear.service'
@@ -66,12 +68,14 @@ package() {
     install -D -m644 "$source/mkinitcpio-install.sh"    "$target/install/$hook"
   
     local target="$pkgdir/etc/mkinitcpio.d/"
+    install -D -m644 "$source/crypttab"                 "$target/crypttab"
     install -D -m755 "$source/shell.sh"                 "$target/shell.sh"
-    
+        
     local target="$pkgdir/etc/systemd/network"
     install -D -m644 "$source/initrd-network.network"    "$target/initrd-network.network"
 
     local target="$pkgdir/etc/systemd/system"
+    install -D -m644 "$source/initrd-cryptsetup.service"    "$target/initrd-cryptsetup.service"
     install -D -m644 "$source/initrd-debug-progs.service"   "$target/initrd-debug-progs.service"
     install -D -m644 "$source/initrd-debug-shell.service"   "$target/initrd-debug-shell.service"
     install -D -m644 "$source/initrd-network.service"       "$target/initrd-network.service"

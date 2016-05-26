@@ -17,16 +17,8 @@ Before=initrd-debug-shell.service
 Type=oneshot
 RemainAfterExit=true
 
-# provision via use of one shot invocations
-
-ExecStart=/bin/mc -V
-ExecStart=/bin/mcedit -V
-ExecStart=/bin/mcview -V
-
-#ExecStart=/bin/infocmp -V
-
-ExecStart=/bin/journalctl --version
-ExecStart=/bin/systemd-analyze --version 
+# empty service
+ExecStart=/bin/true
 
 
 [Install]
@@ -36,13 +28,26 @@ WantedBy=initrd-debug-shell.service
 # https://github.com/systemd/systemd/issues/3340
 [X-SystemdTool]
 
+# systemd tools
+
+InitrdExec=/bin/journalctl
+InitrdExec=/bin/systemd-analyze 
+
 # midnight commander
-ProvisionInitrdPath=/etc/mc
-ProvisionInitrdPath=/usr/lib/mc
-ProvisionInitrdPath=/usr/share/mc
+
+InitrdExec=/bin/mc
+InitrdExec=/bin/mcedit
+InitrdExec=/bin/mcview
+
+InitrdPath=/etc/mc
+InitrdPath=/usr/lib/mc
+InitrdPath=/usr/share/mc
 
 # terminal emulator used by ssh client
-#ProvisionInitrdPath=/usr/share/terminfo
-ProvisionInitrdPath=/usr/share/terminfo/l/linux
-ProvisionInitrdPath=/usr/share/terminfo/v/vt100
-ProvisionInitrdPath=/usr/share/terminfo/x/xterm
+
+#InitrdExec=/bin/infocmp
+#InitrdPath=/usr/share/terminfo
+
+InitrdPath=/usr/share/terminfo/l/linux
+InitrdPath=/usr/share/terminfo/v/vt100
+InitrdPath=/usr/share/terminfo/x/xterm

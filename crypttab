@@ -1,0 +1,7 @@
+# This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
+
+# crypttab: mappings for encrypted partitions
+# https://www.freedesktop.org/software/systemd/man/systemd-cryptsetup-generator.html
+# <name>     <device>           <password>       <options>
+  root       ${UUID_ROOT}          none            luks
+  swap       ${UUID_SWAP}          none            luks
