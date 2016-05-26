@@ -1,12 +1,5 @@
- vmblock/linux/{ => }/control.c       | 52 +++++++++++++++++++++++++++++++++---
- vmblock/linux/{ => }/dentry.c        | 16 ++++++++++-
- vmblock/linux/{ => }/file.c          | 30 ++++++++++++++++++++-
- vmblock/linux/{ => }/inode.c         | 51 ++++++++++++++++++++++++++++-------
- vmblock/shared/{ => }/compat_namei.h | 16 +++++++++++
- 5 files changed, 151 insertions(+), 14 deletions(-)
-
 diff --git a/vmblock/linux/control.c b/vmblock/linux/control.c
-index 79716bd..2135973 100644
+index 79716bd..5b6acb2 100644
 --- a/vmblock/linux/control.c
 +++ b/vmblock/linux/control.c
 @@ -208,9 +208,17 @@ SetupProcDevice(void)
@@ -31,13 +24,13 @@ index 79716bd..2135973 100644
        return -EINVAL;
     }
  
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,14,0) //Maybe 3.10? 3.13?
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0) //Maybe 3.14? 3.13?
     controlProcEntry->proc_fops = &ControlFileOps;
 +#endif
     return 0;
  }
  
-@@ -272,17 +282,47 @@ CleanupProcDevice(void)
+@@ -272,17 +282,50 @@ CleanupProcDevice(void)
   *----------------------------------------------------------------------------
   */
  
@@ -78,7 +71,10 @@ index 79716bd..2135973 100644
     int retval;
  
 -   name = getname(buf);
-+   // Not sure what changed in 3.13 to neccessitate this ~MK
++   // Not sure what changed in 3.13 to neccessitate this.
++   // Gentoo uses __getname(), though.
++   // https://github.com/gentoo/vmware/blob/master/app-emulation/vmware-modules/files/308-3.10-02-control.patch#L36
++   // ~MK
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 13, 0)
 +   name = (char *)getname(buf);
 +#else
@@ -87,7 +83,7 @@ index 79716bd..2135973 100644
     if (IS_ERR(name)) {
        return PTR_ERR(name);
     }
-@@ -293,7 +333,13 @@ ExecuteBlockOp(const char __user *buf,                // IN: buffer with name
+@@ -293,7 +336,13 @@ ExecuteBlockOp(const char __user *buf,                // IN: buffer with name
  
     retval = i < 0 ? -EINVAL : blockOp(name, blocker);
  
@@ -103,7 +99,7 @@ index 79716bd..2135973 100644
     return retval;
  }
 diff --git a/vmblock/linux/dentry.c b/vmblock/linux/dentry.c
-index 05ea95a..94a1bc3 100644
+index 05ea95a..1245358 100644
 --- a/vmblock/linux/dentry.c
 +++ b/vmblock/linux/dentry.c
 @@ -32,7 +32,13 @@
@@ -113,7 +109,7 @@ index 05ea95a..94a1bc3 100644
 -static int DentryOpRevalidate(struct dentry *dentry, struct nameidata *nd);
 +// From what I can tell, this should've always been an unsigned int?
 +static int DentryOpRevalidate(struct dentry *dentry,
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 13, 0) // Maybe 3.14?
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 10, 0) // Maybe 3.14 or 3.13?
 +                              struct nameidata *nd);
 +#else
 +                              unsigned int flags);
@@ -125,7 +121,7 @@ index 05ea95a..94a1bc3 100644
  
  static int
  DentryOpRevalidate(struct dentry *dentry,  // IN: dentry revalidating
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 13, 0)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 10, 0)
                     struct nameidata *nd)   // IN: lookup flags & intent
 +#else
 +                   unsigned int flags)     // IN: lookup flags & intent
@@ -137,7 +133,7 @@ index 05ea95a..94a1bc3 100644
     if (actualDentry &&
         actualDentry->d_op &&
         actualDentry->d_op->d_revalidate) {
-+#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 14, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 10, 0)
 +      return actualDentry->d_op->d_revalidate(actualDentry, flags);
 +#else
        return actualDentry->d_op->d_revalidate(actualDentry, nd);
@@ -146,20 +142,17 @@ index 05ea95a..94a1bc3 100644
  
     if (compat_path_lookup(iinfo->name, 0, &actualNd)) {
 diff --git a/vmblock/linux/file.c b/vmblock/linux/file.c
-index d7ac1f6..579305f 100644
+index d7ac1f6..c5e6604 100644
 --- a/vmblock/linux/file.c
 +++ b/vmblock/linux/file.c
-@@ -39,8 +39,9 @@ typedef ino_t inode_num_t;
+@@ -39,6 +39,7 @@ typedef ino_t inode_num_t;
  #endif
  
  /* Specifically for our filldir_t callback */
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(3,11,0)
  typedef struct FilldirInfo {
--   filldir_t filldir;
-+   filldir_t filldir;io8jk
+    filldir_t filldir;
     void *dirent;
- } FilldirInfo;
- 
 @@ -76,6 +77,7 @@ Filldir(void *buf,              // IN: Dirent buffer passed from FileOpReaddir
     /* Specify DT_LNK regardless */
     return info->filldir(info->dirent, name, namelen, offset, ino, DT_LNK);
@@ -202,7 +195,7 @@ index d7ac1f6..579305f 100644
     struct file *actualFile;
  
     if (!file) {
-@@ -184,12 +198,19 @@ FileOpReaddir(struct file *file,  // IN
+@@ -184,12 +198,20 @@ FileOpReaddir(struct file *file,  // IN
        return -EINVAL;
     }
  
@@ -218,11 +211,12 @@ index d7ac1f6..579305f 100644
 +    * Manipulation of pos is now handled internally by iterate_dir().
 +    */
 +   ret = iterate_dir(actualFile, ctx);
++   file->f_pos = actualFile->f_pos;
 +#endif
  
     return ret;
  }
-@@ -236,8 +257,15 @@ FileOpRelease(struct inode *inode, // IN
+@@ -236,8 +258,15 @@ FileOpRelease(struct inode *inode, // IN
  }
  
  
@@ -239,10 +233,10 @@ index d7ac1f6..579305f 100644
     .release = FileOpRelease,
  };
 diff --git a/vmblock/linux/inode.c b/vmblock/linux/inode.c
-index 098c94c..0358436 100644
+index 098c94c..a179d72 100644
 --- a/vmblock/linux/inode.c
 +++ b/vmblock/linux/inode.c
-@@ -35,13 +35,21 @@
+@@ -35,13 +35,24 @@
  
  
  /* Inode operations */
@@ -253,7 +247,7 @@ index 098c94c..0358436 100644
 -#if LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 13)
 -static void *InodeOpFollowlink(struct dentry *dentry, struct nameidata *nd);
 +                                    struct dentry *dentry,
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0) // Maybe 3.12?
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0) // Maybe 3.12 or 3.13?
 +                                    struct nameidata *nd);
  #else
 +                                    unsigned int flags);
@@ -261,6 +255,9 @@ index 098c94c..0358436 100644
 +static int InodeOpReadlink(struct dentry *dentry, char __user *buffer, int buflen);
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 13)
  static int InodeOpFollowlink(struct dentry *dentry, struct nameidata *nd);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
++static const char *InodeOpGetLink(struct dentry *dentry, struct inode *inode,
++                                  struct delayed_call *done);
 +#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
 +static const char *InodeOpFollowlink(struct dentry *dentry, void **cookie);
 +#else
@@ -268,20 +265,27 @@ index 098c94c..0358436 100644
  #endif
  
  
-@@ -49,7 +57,7 @@ struct inode_operations RootInodeOps = {
+@@ -49,9 +60,13 @@ struct inode_operations RootInodeOps = {
     .lookup = InodeOpLookup,
  };
  
 -static struct inode_operations LinkInodeOps = {
+-   .readlink    = InodeOpReadlink,
 +struct inode_operations LinkInodeOps = {
-    .readlink    = InodeOpReadlink,
++   .readlink    = InodeOpReadlink,  
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
++   .get_link = InodeOpGetLink,
++#else
     .follow_link = InodeOpFollowlink,
++#endif
  };
-@@ -75,7 +83,11 @@ static struct inode_operations LinkInodeOps = {
+ 
+ 
+@@ -75,7 +90,11 @@ static struct inode_operations LinkInodeOps = {
  static struct dentry *
  InodeOpLookup(struct inode *dir,      // IN: parent directory's inode
                struct dentry *dentry,  // IN: dentry to lookup
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,13,0)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
                struct nameidata *nd)   // IN: lookup intent and information
 +#else
 +              unsigned int flags)     // IN: lookup intent and information
@@ -289,11 +293,11 @@ index 098c94c..0358436 100644
  {
     char *filename;
     struct inode *inode;
-@@ -135,7 +147,12 @@ InodeOpLookup(struct inode *dir,      // IN: parent directory's inode
+@@ -135,7 +154,12 @@ InodeOpLookup(struct inode *dir,      // IN: parent directory's inode
     inode->i_size = INODE_TO_IINFO(inode)->nameLen;
     inode->i_version = 1;
     inode->i_atime = inode->i_mtime = inode->i_ctime = CURRENT_TIME;
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 13, 0)
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 10, 0)
     inode->i_uid = inode->i_gid = 0;
 +#else
 +   inode->i_gid = make_kgid(current_user_ns(), 0);
@@ -302,7 +306,7 @@ index 098c94c..0358436 100644
     inode->i_op = &LinkInodeOps;
  
     d_add(dentry, inode);
-@@ -176,8 +193,11 @@ InodeOpReadlink(struct dentry *dentry,  // IN : dentry of symlink
+@@ -176,8 +200,11 @@ InodeOpReadlink(struct dentry *dentry,  // IN : dentry of symlink
     if (!iinfo) {
        return -EINVAL;
     }
@@ -315,7 +319,7 @@ index 098c94c..0358436 100644
  }
  
  
-@@ -198,13 +218,20 @@ InodeOpReadlink(struct dentry *dentry,  // IN : dentry of symlink
+@@ -198,30 +225,58 @@ InodeOpReadlink(struct dentry *dentry,  // IN : dentry of symlink
   *----------------------------------------------------------------------------
   */
  
@@ -330,21 +334,45 @@ index 098c94c..0358436 100644
 -static int
 +void *
  #endif
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
++InodeOpGetLink(struct dentry *dentry, struct inode *inode,
++               struct delayed_call *done)
++#else
  InodeOpFollowlink(struct dentry *dentry,  // IN : dentry of symlink
 +#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
 +                  void **cookie)
 +#else
                    struct nameidata *nd)   // OUT: stores result
 +#endif
++#endif
  {
     int ret;
     VMBlockInodeInfo *iinfo;
-@@ -221,7 +248,13 @@ InodeOpFollowlink(struct dentry *dentry,  // IN : dentry of symlink
+ 
+    if (!dentry) {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
++      ret = -ECHILD;
++#else
+       Warning("InodeOpReadlink: invalid args from kernel\n");
+       ret = -EINVAL;
++#endif
+       goto out;
+    }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
++   iinfo = INODE_TO_IINFO(inode);
++#else
+    iinfo = INODE_TO_IINFO(dentry->d_inode);
++#endif
+    if (!iinfo) {
+       ret = -EINVAL;
        goto out;
     }
  
 +#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 12, 0)
     ret = vfs_follow_link(nd, iinfo->name);
++#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
++   return (char *)(iinfo->name);
 +#elif LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
 +   return *cookie = (char *)(iinfo->name);
 +#else
