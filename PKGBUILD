@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python-rstr
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="Generate random strings in Python"
 arch=('any')
@@ -10,9 +10,9 @@ makedepends=('python-setuptools')
 url="https://bitbucket.org/leapfrogdevelopment/rstr"
 license=('BSD')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/source/r/${pkgname#python-}/${pkgname#python-}-$pkgver.tar.gz)
-md5sums=('dc43a09953ced7d40fa994da658b373c')
-sha256sums=('10a58eb08a7e3735eddc8f32f3db419797dadb6335b02b94dcd8d741363d79e9')
+source=(https://pypi.python.org/packages/34/73/bf268029482255aa125f015baab1522a22ad201ea5e324038fb542bc3706/rstr-2.2.4.tar.gz)
+md5sums=('26ac863c4df7e5b75d8a9315992d9dc8')
+sha256sums=('64a086a7449a576de7f40327f8cd0a7752efbbb298e65dc68363ee7db0a1c8cf')
 
 build() {
   cd "$srcdir/${pkgname#python-}-$pkgver"
