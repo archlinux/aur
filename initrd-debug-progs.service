@@ -30,14 +30,14 @@ WantedBy=initrd-debug-shell.service
 
 # systemd tools
 
-InitrdExec=/bin/journalctl
-InitrdExec=/bin/systemd-analyze 
+InitrdBinary=/bin/journalctl
+InitrdBinary=/bin/systemd-analyze 
 
 # midnight commander
 
-InitrdExec=/bin/mc
-InitrdExec=/bin/mcedit
-InitrdExec=/bin/mcview
+InitrdBinary=/bin/mc
+InitrdBinary=/bin/mcedit
+InitrdBinary=/bin/mcview
 
 InitrdPath=/etc/mc
 InitrdPath=/usr/lib/mc
@@ -45,7 +45,7 @@ InitrdPath=/usr/share/mc
 
 # terminal emulator used by ssh client
 
-#InitrdExec=/bin/infocmp
+#InitrdBinary=/bin/infocmp
 
 #InitrdPath=/usr/share/terminfo
 InitrdPath=/usr/share/terminfo/l/linux

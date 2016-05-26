@@ -36,4 +36,16 @@ WantedBy=sysinit.target
 # https://github.com/systemd/systemd/issues/3340
 [X-SystemdTool]
 
+# build dropbear keys
+InitrdInvoke=/etc/systemd/system/initrd-dropbear.service.sh command=build_ssh_host_keys
+
+# dropbear configuration
+InitrdPath=/etc/dropbear
+
+# expected dropbear layout
+InitrdPath=/var/run/ create=yes source=/invalid
+InitrdPath=/var/log/ create=yes source=/invalid
+InitrdPath=/var/log/lastlog create=yes source=/invalid
+
+# include user root ssh credentials
 InitrdPath=/root/.ssh/authorized_keys source=/root/.ssh/authorized_keys mode=600

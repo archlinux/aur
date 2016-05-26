@@ -40,4 +40,8 @@ WantedBy=sysinit.target
 # https://github.com/systemd/systemd/issues/3340
 [X-SystemdTool]
 
+# network activated in initramfs 
 InitrdPath=/etc/systemd/network/initrd-network.network
+
+# discovered network kernel modules 
+InitrdCall=add_checked_modules /drivers/net/

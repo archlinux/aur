@@ -1,5 +1,7 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
+# Configure crypto disks in initramfs
+
 # Provides replacement/enhancement for mkinitcpio hook "sd-encrypt" included in cryptsetup
 # https://git.archlinux.org/svntogit/packages.git/tree/trunk/sd-encrypt?h=packages/cryptsetup
 
@@ -35,9 +37,9 @@ WantedBy=sysinit.target
 
 InitrdPath=/etc/crypttab source=/etc/mkinitcpio.d/crypttab optional=yes
 
-InitrdExec=/bin/dmsetup version
-InitrdExec=/usr/lib/systemd/systemd-cryptsetup
-InitrdExec=/usr/lib/systemd/system-generators/systemd-cryptsetup-generator
+InitrdBinary=/bin/dmsetup version
+InitrdBinary=/usr/lib/systemd/systemd-cryptsetup
+InitrdBinary=/usr/lib/systemd/system-generators/systemd-cryptsetup-generator
 
 InitrdPath=/usr/lib/udev/rules.d/10-dm.rules
 InitrdPath=/usr/lib/udev/rules.d/11-dm-initramfs.rules source=/usr/lib/initcpio/udev/11-dm-initramfs.rules

@@ -60,10 +60,10 @@ how can I disable my custom service unit in initrd?
 
 what is the purpose of `[X-SystemdTool]` section in service unit files?
 * it provides configuration interface for `mkinitcpio` provisioning actions
-* custom entries in `[X-SystemdTool]` include: `InitrdExec=`, `InitrdPath=`
+* entries include: `InitrdBinary=`, `InitrdPath=`, `InitrdInvoke=`, `InitrdCall=` 
 
 how can I auto-provision my custom service unit binaries into initramfs?
-* use `InitrdExec=/path/target-exec` to provision service binary
+* use `InitrdBinary=/path/target-exec` to provision service binary
 * also will be provisioned all `Exec*` entries such as `ExecStart=/bin/program`
 
 how can I auto-provision my custom service unit resources into initramfs?
@@ -80,6 +80,16 @@ how can I filter directory content during provisioning?
 
 how can I provision optional folder or file?
 * use `InitrdPath=/target-file source=/source-file optional=yes`
+
+is there a way to create empty folder or file?
+* for empty dir, use `InitrdPath=/path/target-folder/ create=yes` note trailing SLASH
+* for empty file, use `InitrdPath=/path/target-file create=yes` note NO trailing slash
+
+can I invoke a provisioning script related to my service during mkinitcpio build time?
+* use `InitrdInvoke=/path-to/script.sh command=function_name` 
+
+can I call a little provisioning script snippet during mkinitcpio build time?
+* use `InitrdCall=inline-bash-code-here` 
 
 how can provide custom interactive user shell for ssh client
 * change sample shell file located in `/etc/mkinitcpio.d/shell.sh`  
