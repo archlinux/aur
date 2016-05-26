@@ -1,44 +1,31 @@
 # Maintainer: Nomorsad <nomorsad.poubelle@gmail.com>
 pkgname=ltwheelconf-git
-pkgver="0.2.7"
-pkgrel=1
+pkgver=0.2.7
+pkgrel=2
 pkgdesc="Setup your Logitech wheel under Linux"
 arch=('x86_64' 'i686')
 url="https://github.com/thk/LTWheelConf"
 license=('GPL')
 depends=('libusb')
 makedepends=('git' 'make')
+sha1sums=('SKIP')
 
-_gitroot='https://github.com/thk/LTWheelConf.git'
-_gitname='LTWheelConf'
+source=("git+https://github.com/thk/LTWheelConf.git")
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd LTWheelConf
+  perl -ne 'print $1 if /^#define VERSION "(.*)"$/' main.c
 }
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  cd "$srcdir/$_gitname/"
+  cd LTWheelConf
 
   make
 
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd LTWheelConf
   install -D -m755 "ltwheelconf" "$pkgdir/usr/bin/ltwheelconf"
 }
 
