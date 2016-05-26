@@ -1,6 +1,6 @@
 # Maintainer: Mewp <aur.archlinux.org@mewp.pl>
 pkgname=emptyepsilon
-pkgver=2016.05.07
+pkgver=2016.05.22
 pkgrel=1
 epoch=
 pkgdesc="Open source spaceship bridge simulator"
@@ -10,8 +10,8 @@ license=('GPL2')
 groups=()
 depends=('sfml')
 makedepends=('cmake' 'git' 'mesa')
-source=("git+https://github.com/daid/EmptyEpsilon.git#tag=EE-2016.05.07"
-        "git+https://github.com/daid/SeriousProton.git#tag=EE-2016.05.07")
+source=("git+https://github.com/daid/EmptyEpsilon.git#tag=EE-2016.05.22"
+        "git+https://github.com/daid/SeriousProton.git#tag=EE-2016.05.22")
 sha256sums=('SKIP' 'SKIP')
 
 build() {
@@ -24,7 +24,6 @@ build() {
 }
 
 prepare() {
-    patch -Np1 < ../fixes-for-gcc-6.1.1.patch
     patch -Np1 < ../fixed-version.patch
 }
 
