@@ -93,7 +93,7 @@ add_systemd_unit_X() {
                 # format:
                 # InitrdPath=/etc/folder [glob=*.sh]
                 # InitrdPath=/etc/file [source=/lib/file] [mode=755]
-                local source= target= mode= glob= args= optional=
+                local source= target= mode= glob= args= optional= create=
                 target="${values[0]}" ; args="${values[@]:1:9}" 
                 [ -n "$args" ] && local $(echo "$args")
                 [ -n "$source" ] || source="$target"
