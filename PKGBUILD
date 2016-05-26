@@ -4,12 +4,12 @@ _version=DEVELOPMENT-SNAPSHOT-2016-05-09-a
 
 pkgname=swift-development-bin
 pkgver=${_version//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="The Swift programming language, the development snapshot binary drops from the official website"
 arch=('x86_64')
 url="https://swift.org"
 license=('apache')
-depends=('icu55' 'ncurses5-compat-libs' 'libedit' 'python2' 'libutil-linux' 'libbsd' 'clang' 'libtinfo-5' 'python2-six' 'libxml2')
+depends=('icu55' 'ncurses5-compat-libs' 'libedit' 'python2' 'libutil-linux' 'libbsd' 'clang' 'libtinfo5' 'python2-six' 'libxml2')
 conflicts=('lldb' 'swift-language-git' 'swift-bin')
 options=('!strip')
 validpgpkeys=('7463A81A4B2EEA1B551FFBCFD441C977412B37AD')
