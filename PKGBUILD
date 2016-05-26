@@ -2,7 +2,7 @@
 # Contributor: Fabian Schoelzel <myfirstname.mylastname@googlemail.com>
 
 pkgname=pyfa
-pkgver=1.21.2
+pkgver=1.21.3
 pkgrel=1
 everelname="citadel"
 everelver=1.11
@@ -29,6 +29,6 @@ package() {
   install "${srcdir}"/pyfa-start.sh "${pkgdir}"/usr/bin/pyfa || return 1
 }
 
-md5sums=('19a04ed141fe1c8e953ecda26ae18e4a'
-         'e2d1ba0b625cb86c54a3b68f23264fcd'
+md5sums=('1cb0cc93f4448e998172a877a2ea6bdc'
+         '8afa835e791f1bb9d8256c0ba9ddbd0f'
          '9937192cfce7f5e16e9cf26086f1899c')
