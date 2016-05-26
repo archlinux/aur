@@ -1,8 +1,8 @@
 pkgbase = xf86-input-synaptics-xswipe-git
 	pkgdesc = Synaptics driver for notebook touchpads - Forked branch with -m flag forward ported and 4/5 finger detectable
 	pkgver = r1464.8cc57ce
-	pkgrel = 1
-	url = https://github.com/dieghen89/xserver-xorg-input-synaptics
+	pkgrel = 2
+	url = https://github.com/diegoferigo/xserver-xorg-input-synaptics
 	arch = i686
 	arch = x86_64
 	groups = xorg-drivers

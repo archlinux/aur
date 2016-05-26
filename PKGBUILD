@@ -10,7 +10,7 @@ pkgrel=2
 pkgdesc="Synaptics driver for notebook touchpads - Forked branch with -m flag forward ported and 4/5 finger detectable"
 arch=('i686' 'x86_64')
 license=('custom')
-url="https://github.com/dieghen89/xserver-xorg-input-synaptics"
+url="https://github.com/diegoferigo/xserver-xorg-input-synaptics"
 depends=('libxtst' 'mtdev' 'libevdev')
 makedepends=('xorg-server-devel' 'X-ABI-XINPUT_VERSION=22.1' 'libxi' 'libx11' 'resourceproto' 'scrnsaverproto' 'git')
 conflicts=('xorg-server<1.15.0' 'X-ABI-XINPUT_VERSION<22.1' 'X-ABI-XINPUT_VERSION>=23')
