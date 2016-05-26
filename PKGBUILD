@@ -1,5 +1,8 @@
+# Maintainer: Oliver Rümpelein <arch@pheerai.de>
+# Contributor: Doug Newgard <scimmia at archlinux dot info>
+
 pkgname=vivaldi-widevine
-pkgdesc='A browser plugin designed for the viewing of premium video content'
+pkgdesc='A browser plugin for the viewing of premium video content, standalone for vivaldi'
 pkgver=1.4.8.885
 pkgrel=1
 epoch=1
