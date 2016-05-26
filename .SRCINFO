@@ -1,7 +1,7 @@
 pkgbase = kdevplatform-git
 	pkgdesc = A C/C++ development platform for KDE. (GIT Version)
-	pkgver = 4.90.90.r12962.d0596e4
-	pkgrel = 2 
+	pkgver = 4.90.90.r13350.cede3bb
+	pkgrel = 1 
 	url = http://www.kdevelop.org
 	install = kdevplatform-git.install
 	arch = i686
@@ -13,7 +13,6 @@ pkgbase = kdevplatform-git
 	makedepends = extra-cmake-modules
 	makedepends = kdoctools
 	makedepends = subversion
-	depends = qt5-quick1
 	depends = ktexteditor
 	depends = threadweaver
 	depends = kcmutils
