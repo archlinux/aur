@@ -1,18 +1,13 @@
- vmmon/linux/{ => }/driver.c   | 2 +-
- vmmon/linux/{ => }/hostif.c   | 1 +
- vmmon/linux/{ => }/vmmonInt.h | 2 +-
- 3 files changed, 3 insertions(+), 2 deletions(-)
-
 diff --git a/vmmon/linux/driver.c b/vmmon/linux/driver.c
-index 31de1dc..ed459fd 100644
+index 0a72335..63cea5d 100644
 --- a/vmmon/linux/driver.c
 +++ b/vmmon/linux/driver.c
-@@ -1281,7 +1281,7 @@ LinuxDriverReadTSC(void *data,   // OUT: TSC values
+@@ -1279,7 +1279,7 @@ LinuxDriverReadTSC(void *data,   // OUT: TSC values
   *-----------------------------------------------------------------------------
   */
  
 -__attribute__((always_inline)) static Bool
-+inline static Bool
++inline __attribute__((always_inline)) static Bool
  LinuxDriverSyncReadTSCs(uint64 *delta) // OUT: TSC max - TSC min
  {
     TSCDelta tscDelta;
