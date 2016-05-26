@@ -25,8 +25,8 @@ pkgbase = netease-cloud-music
 	md5sums = 24c44fe5e71e69cd7ac252c2ce611270
 	md5sums = 0542b3182cef57f91f0c1dd3e03e6995
 	md5sums = 51920df6edb60d9ef5e4e9f3ae3be0d6
-	md5sums = SKIP
-	md5sums = 849fa0561f7713aa062c1fc4cbc269e3
+	md5sums = 2f06d90c7b3362a01c287ec7b6a40f27
+	md5sums = 31a25ac517facc48762a6a9378a66f58
 
 pkgname = netease-cloud-music
 

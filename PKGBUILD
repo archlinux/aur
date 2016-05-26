@@ -26,8 +26,8 @@ noextract=(
 md5sums=('24c44fe5e71e69cd7ac252c2ce611270'
          '0542b3182cef57f91f0c1dd3e03e6995'
          '51920df6edb60d9ef5e4e9f3ae3be0d6'
-		 'SKIP'
-         '849fa0561f7713aa062c1fc4cbc269e3')
+         '2f06d90c7b3362a01c287ec7b6a40f27'
+         '31a25ac517facc48762a6a9378a66f58')
 
 prepare() {
 	tar xf data.tar.xz
