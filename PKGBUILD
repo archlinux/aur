@@ -10,10 +10,10 @@ license=('Apache2')
 
 arch=('i686' 'x86_64')
 
-provides=('tensorflow')
-conflicts=('tensorflow' 'tensorflow-git','python-tensorflow-git')
+provides=('python-tensorflow')
+conflicts=('python-tensorflow-git' 'python-tensorflow-cuda')
 depends=('python-numpy' 'swig' 'python-wheel' 'python-protobuf3')
-makedepends=('git' 'python-pip' 'bazel')
+makedepends=('git' 'python-pip' 'bazel' 'rsync')
 optdepends=('cuda: GPU support' 'cudnn: GPU support')
 
 source=("https://github.com/tensorflow/tensorflow/archive/v${pkgver}.tar.gz")
@@ -22,12 +22,13 @@ md5sums=("ec50601dc253a41eae1317b8690b8954")
 
 protobuf_commit='fb714b3606bd663b823f6960a73d052f97283b74'
 _build_opts=''
+# limit the cores and ram for compiling
+#_build_opts='--local_resources 1536.0,1.0,1.0 '
 
 prepare() {
    cd ${srcdir}
    ln -s tensorflow-${pkgver} tensorflow
-   cd tensorflow
-   cd google
+   cd tensorflow/google
    git clone https://github.com/google/protobuf/
    cd protobuf
    git reset --hard ${protobuf_commit}
