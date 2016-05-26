@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/busybox sh
 
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
@@ -44,23 +44,29 @@ do_prompt() {
     done
 }
 
-do_shell() {
-    exec /bin/sh
+# exit to shell
+do_shell() { 
+    exec /bin/sh 
 }
 
-do_reboot() {
-    /bin/systemctl reboot
+# change systemd state
+do_reboot() { 
+    /bin/systemctl reboot 
 }
 
-do_exit() {
-    exit 0
+# safe exit
+do_exit() { 
+    exit 0 
 }
 
 # replace process
-do_close() {
-    exec /bin/sh -c exit 0
+do_close() { 
+    exec /bin/sh -c exit 0 
 }
 
+
+# verify if shell started form systemd unit
+is_entry_service() { [ "$entry" ="service" ] ; }
 
 # verify if this is remote session
 is_ssh_connect() {
@@ -101,7 +107,7 @@ list_ask_socket() {
 
 # query password from the console
 run_query() {
-    $command_query "secret>"
+    $command_query "$user_prompt"
 }
 
 # reply password to the requester
@@ -134,16 +140,16 @@ has_any_file() {
 wait_confirm() {
     local socket_list="$1"
     while  has_any_file "$socket_list" ; do
-        sleep 0.5
+        sleep "$sleep_delay"
         let count+=1
-        if [ "$count" -gt "10" ] ; then
+        if [ "$count" -gt "$sleep_count" ] ; then
             return 1
         fi
     done
     return 0
 }
 
-# read a portion of current console output
+# read a portion of latest console output
 read_console() {
     tail -c 1024 "/dev/vcs"
 }
@@ -153,13 +159,13 @@ wait_console() {
     local count=1 text1= text2=
     while true ; do
         text1=$(read_console)
-        sleep 0.5
+        sleep "$sleep_delay"
         text2=$(read_console)
         if [ "$text1" = "$text2" ] ; then
             return 0
         fi
         let count+=1
-        if [ "$count" -gt "10" ] ; then
+        if [ "$count" -gt "$sleep_count" ] ; then
             return 1
         fi
     done
@@ -169,9 +175,9 @@ wait_console() {
 wait_request() {
     local count=1
     while ! is_ask_pending ; do
-        sleep 0.5
+        sleep "$sleep_delay"
         let count+=1
-        if [ "$count" -gt "10" ] ; then
+        if [ "$count" -gt "$sleep_count" ] ; then
             return 1
         fi
     done
@@ -208,7 +214,7 @@ do_crypt() {
     socket_list=$(list_ask_socket "$config_list")
 
     if has_any_file "$socket_list" ; then
-        echo "error: do_crypt failed to respond"
+        echo "error: do_crypt failure to respond"
         return 1
     fi
     
@@ -240,23 +246,58 @@ do_service() {
     fi
 }
 
-# shell entry point
-program() {
-    
-    # inject arguments
-    local "$@"
+# respond to interrupt
+do_trap() {
+    if is_ssh_connect ; then
+        do_prompt
+    else
+        do_prompt
+    fi
+}
 
+# handle "CTRL-C"
+trap_SIGINT () { 
+    do_trap 
+}
+
+# handle "CTRL-D"
+trap_SIGQUIT() { 
+    do_trap
+}
+
+# handle termination
+trap_SIGTERM() { 
+    exit 0
+}
+
+# systemd service unit can provide these shell arguments
+setup_defaults() {
+    # password request
+    [ -z "$user_prompt" ] && readonly user_prompt="abrakadabra>"
+            
+    # wait timeout settings
+    [ -z "$sleep_delay" ] && readonly sleep_delay=0.7
+    [ -z "$sleep_count" ] && readonly sleep_count=10
+        
     # ensure inotify watch folder
-    local folder_ask="/run/systemd/ask-password"
+    [ -z "$folder_ask"] && readonly folder_ask="/run/systemd/ask-password"
     mkdir -p "$folder_ask"
     
-    # required binaries
-    local command_syctl="/usr/bin/systemctl"
-    local command_query="/usr/bin/systemd-ask-password"
-    local command_reply="/usr/lib/systemd/systemd-reply-password"
-    local command_agent="/usr/bin/systemd-tty-ask-password-agent"
-    
-    # determine script invocation type
+    # required systemd binaries
+    [ -z "$command_syctl"] && readonly command_syctl="/usr/bin/systemctl"
+    [ -z "$command_query"] && readonly command_query="/usr/bin/systemd-ask-password"
+    [ -z "$command_reply"] && readonly command_reply="/usr/lib/systemd/systemd-reply-password"
+    [ -z "$command_agent"] && readonly command_agent="/usr/bin/systemd-tty-ask-password-agent"
+}
+
+setup_interrupts() {
+    trap trap_SIGINT SIGINT
+    trap trap_SIGQUIT SIGQUIT
+    #trap trap_SIGTERM SIGTERM
+}
+
+# respond depending on script invocation type
+process_invocation() {
     case "$entry" in
         # development invocations
         exit)     do_exit ;;
@@ -268,6 +309,19 @@ program() {
         service)  do_service ;;
               *)  do_console ;;
     esac       
+}
+
+# shell entry point
+program() {
+    
+    readonly "$@" # inject arguments
+    
+    setup_defaults
+    
+    setup_interrupts
+    
+    process_invocation
+                        
 }
 
 program "$@"
