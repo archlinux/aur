@@ -9,10 +9,11 @@ Documentation=https://aur.archlinux.org/cgit/aur.git/tree/README.md?h=mkinitcpio
 ConditionPathExists=/etc/initrd-release
 DefaultDependencies=no
 Conflicts=shutdown.target
-Requires=initrd-network.service
 After=initrd-network.service
 Before=shutdown.target
 Before=cryptsetup-pre.target
+#
+Requires=initrd-network.service
 
 
 [Service]
@@ -39,13 +40,13 @@ WantedBy=sysinit.target
 # build dropbear keys
 InitrdInvoke=/etc/systemd/system/initrd-dropbear.service.sh command=build_ssh_host_keys
 
-# dropbear configuration
+# include dropbear configuration
 InitrdPath=/etc/dropbear
 
-# expected dropbear layout
-InitrdPath=/var/run/ create=yes source=/invalid
-InitrdPath=/var/log/ create=yes source=/invalid
-InitrdPath=/var/log/lastlog create=yes source=/invalid
+# provide expected dropbear layout
+InitrdPath=/var/run/        create=yes source=/invalid-source
+InitrdPath=/var/log/        create=yes source=/invalid-source
+InitrdPath=/var/log/lastlog create=yes source=/invalid-source
 
 # include user root ssh credentials
 InitrdPath=/root/.ssh/authorized_keys source=/root/.ssh/authorized_keys mode=600

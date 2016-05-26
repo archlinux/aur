@@ -1,6 +1,6 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
-# mkinitcpio build time script
+# mkinitcpio build time script for InitrdInvoke
 
 build_ssh_host_keys() {
 
@@ -11,17 +11,17 @@ build_ssh_host_keys() {
     local keytype_list="rsa dsa ecdsa"
     local keytype source target
     for keytype in  $keytype_list; do
-        source=$(keypath_openssh $keytype)
-        target=$(keypath_dropbear $(keytype_dropbear $keytype))
+        source=$(keypath_openssh "$keytype")
+        target=$(keypath_dropbear $(keytype_dropbear "$keytype"))
         if [ -f "$target" ]; then
             plain "provision existing dropbear host key: $target"
         else
             if [ -f "$source" ] ; then
                 plain "convert openssh to dropbear host key: $target"
-                invoke   dropbearconvert openssh dropbear $source $target
+                invoke   dropbearconvert openssh dropbear "$source" "$target"
             else
                 plain "generate brand new dropbear host key: $target"
-                invoke   dropbearkey -t $(keytype_dropbear $keytype) -f $target
+                invoke   dropbearkey -t $(keytype_dropbear "$keytype") -f "$target"
             fi
         fi
     done

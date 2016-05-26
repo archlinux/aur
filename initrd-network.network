@@ -2,8 +2,11 @@
 
 # Network activated in initramfs 
 
+# this is a network definition used by systemd-networkd.service
+# https://www.freedesktop.org/software/systemd/man/systemd.network.html
+
 [Match]
-# using kernel names
+# using initramfs device names
 Name=eth*
 
 [Network]

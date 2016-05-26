@@ -50,7 +50,8 @@ HOOKS="base systemd systemd-tool"
 
 what is the mkinitcpio hook entry provided by this package?
 * hook name: `systemd-tool`
-* minimum required hooks are: `systemd systemd-tool`
+* minimum required hooks are: `base systemd systemd-tool`
+* recommended hooks are: `base systemd autodetect modconf block filesystems keyboard systemd-tool`
 
 how can I enable my custom service unit in initrd?
 * add `[Unit]` entry `ConditionPathExists=/etc/initrd-release`
@@ -70,7 +71,7 @@ how can I auto-provision my custom service unit resources into initramfs?
 * use `InitrdPath=/path/to/host/folder-or-file`
 
 how can I relocate folder during provisioning?
-* not implemented, source and target folder must use same location
+* not implemented, source and target folder must use the same location
 
 how can I relocate file and/or change file mode during provisioning?
 * use `InitrdPath=/target-file source=/source-file mode=NNN` 

@@ -1,7 +1,16 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
 # crypttab: mappings for encrypted partitions
+
+# crypttab format:
+# https://wiki.archlinux.org/index.php/Dm-crypt/System_configuration#crypttab
+
+# how crypttab is used by systemd
 # https://www.freedesktop.org/software/systemd/man/systemd-cryptsetup-generator.html
+
+# to setup crypto disks in initramfs over ssh
+# manually provide here partition UUID with help of `lsblk`
+# then active initrd-cryptsetup.service as well as "ask password prompt" in shell.sh 
 # <name>     <device>                 <password>       <options>
   swap       UUID=${UUID_SWAP}          none            luks
   root       UUID=${UUID_ROOT}          none            luks

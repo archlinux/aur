@@ -9,10 +9,11 @@ Documentation=https://aur.archlinux.org/cgit/aur.git/tree/README.md?h=mkinitcpio
 ConditionPathExists=/etc/initrd-release
 DefaultDependencies=no
 Conflicts=shutdown.target
-Requires=systemd-networkd.service
-Requires=systemd-resolved.service
 Before=shutdown.target
 Before=cryptsetup-pre.target
+#
+Requires=systemd-networkd.service
+Requires=systemd-resolved.service
 
 
 [Service]
@@ -28,7 +29,7 @@ ExecStart=/bin/true
 #ExecStop=/bin/ip addr flush up
 #ExecStop=/bin/ip link set group default down
 
-# works with busybox: "ipaddr" "iplink"
+# works with busybox applets: "ipaddr" "iplink"
 ExecStop=/bin/sh -c "ipaddr flush up"
 ExecStop=/bin/sh -c "ls /sys/class/net | xargs -I % iplink set % down"
 
@@ -40,8 +41,8 @@ WantedBy=sysinit.target
 # https://github.com/systemd/systemd/issues/3340
 [X-SystemdTool]
 
-# network activated in initramfs 
+# include network activated in initramfs 
 InitrdPath=/etc/systemd/network/initrd-network.network
 
-# discovered network kernel modules 
-InitrdCall=add_checked_modules /drivers/net/
+# provision discovered network kernel modules 
+InitrdCall=add_checked_modules '/drivers/net/'
