@@ -4,13 +4,13 @@ _pkgbase=jucipp
 pkgbase=$_pkgbase-git
 pkgname=("$_pkgbase-git")
 pkgdesc='A lightweight platform-independent C++ IDE'
-pkgver=r1136.472e45a
+pkgver=r1567.bb711f7
 pkgrel=1
 
 arch=('i686' 'x86_64')
 url="https://github.com/cppit/jucipp"
 license=('MIT')
-depends=('gtksourceviewmm' 'clang' 'aspell')
+depends=('gtksourceviewmm' 'clang' 'aspell' 'lldb')
 makedepends=('git' 'cmake' 'pkg-config' 'boost')
 
 source=("$_pkgbase::git+https://github.com/cppit/jucipp.git"
