@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky AT gmail.com>
 pkgname=photivo-hg
-pkgver=1117.5d7d1cc4ef4d
+pkgver=1117+.5d7d1cc4ef4d+
 pkgrel=1
 pkgdesc="Free and open source photo processor"
 arch=('i686' 'x86_64')
@@ -22,8 +22,8 @@ pkgver() {
 prepare() {
   cd "$srcdir/photivo"
 
-  # pull build fixes
-  hg pull -u https://stativ@bitbucket.org/stativ/photivo
+  # avoid installing shortcuts to the home
+  sed '/INSTALLS\s*+=\s*shortcut2/ d' -i photivo.pro
 }
 
 build() {
@@ -36,9 +36,6 @@ build() {
 
 package() {
   cd "$srcdir/photivo"
-
-  # do not install local the shortcut to the home
-  sed '/^install:/ s|install_shortcut2 ||' -i Makefile
 
   make INSTALL_ROOT="$pkgdir" install
   rm -rf "$pkgdir"/home
