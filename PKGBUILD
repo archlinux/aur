@@ -38,13 +38,13 @@
 
 pkgname=openssh-hpn-git
 pkgver=7.2.P2.r40.g6c21335
-pkgrel=1
+pkgrel=2
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='http://www.psc.edu/networking/projects/hpn-ssh/'
 license=('custom:BSD')
 arch=('i686' 'x86_64')
 depends=('krb5' 'ldns' 'libedit' 'openssl' 'pam')
-makedepends=('git' 'linux-headers')
+makedepends=('git')
 optdepends=('xorg-xauth: X11 forwarding'
             'x11-ssh-askpass: input passphrase in X')
 provides=('openssh'
