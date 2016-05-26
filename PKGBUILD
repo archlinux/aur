@@ -1,7 +1,7 @@
 # Maintainer: bluemeda <affif[dot]bluemeda[at]gmail[dot]com>
 _name=spotify-ripper
 pkgname=spotify-ripper
-pkgver=2.8.9
+pkgver=2.9.0
 pkgrel=1
 pkgdesc='a small ripper for Spotify that rips Spotify URIs to audio files'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python2' 'python2-pyspotify=2.0.5' 'python2-colorama-0.3.3' 'python2-m
 optdepends=('flac: Rip songs to lossless FLAC encoding' 'opus-tools: Rip songs to Opus encoding' 'vorbis-tools: Rip songs to Ogg Vorbis encoding' 'faac: Rip songs to AAC format with FreeAAC' 'libav-git-no-libs: Rip songs to Apple Lossless format' 'fdkaac: Rip songs to MP4/M4A format with Fraunhofer FDK AAC codec')
 makedepends=('python2-setuptools')
 source=("https://github.com/jrnewell/spotify-ripper/archive/"$pkgver".zip")
-md5sums=('acc4fad98416232d716414327e185449')
+md5sums=('bd030bdaf70301d3cb8a1110f7dbbd27')
 
 package() {
 	cd "$srcdir/$_name-$pkgver"
