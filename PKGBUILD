@@ -1,7 +1,7 @@
 # Maintainer: Justin Wong <justin.w.xd at gmail dot com>
 pkgname=netease-cloud-music
 pkgver=0.9.0_2
-pkgrel=3
+pkgrel=4
 pkgdesc="Netease Cloud Music, converted from .deb package"
 arch=("x86_64")
 url="http://music.163.com/"
