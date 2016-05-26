@@ -3,8 +3,8 @@
 
 _srcname=fancontrol-gui
 pkgname=fancontrol-kcm
-pkgver=v0.4
-pkgrel=2
+pkgver=v0.4.1
+pkgrel=1
 pkgdesc="KDE control module for the fancontrol script and systemd service"
 arch=('i686' 'x86_64')
 url="https://github.com/Maldela/Fancontrol-GUI"
