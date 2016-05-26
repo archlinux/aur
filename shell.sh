@@ -85,9 +85,18 @@ is_ask_pending() {
     [ -n "$list" ]
 }
 
-# list current crypto requests
-list_ask_socket() {
+# list current crypto questions
+list_ask_config() {
     grep -l 'cryptsetup' $folder_ask/ask.* 2>/dev/null
+}
+
+# list current crypto channels
+list_ask_socket() {
+    local config_list="$1"
+    local config
+    for config in $config_list ; do
+        echo $(cat "$config" | grep -i 'socket=' | sed -e 's/socket=//I')
+    done
 }
 
 # query password from the console
@@ -105,18 +114,26 @@ run_reply() {
 # ask user for password once and answer to multiple requests at once
 run_answer() {
     local socket="" 
+    local socket_list="$1"
     local secret=$(run_query)
-    local socket_list=$(list_ask_socket)
     for socket in $socket_list ; do
         run_reply "$secret" "$socket"
     done
 }
 
-# await for requesters to remove their questions during a timeout
-wait_answer() {
-    local value="$1"
-    local count=1
-    while is_ask_pending  ; do
+# verify if any files on the list are still present
+has_any_file() {
+    local file_list="$1" file=
+    for file in $file_list ; do
+        [ -e "$file" ] && return 0
+    done
+    return 1
+}
+
+# await for requesters to remove their questions
+wait_confirm() {
+    local socket_list="$1"
+    while  has_any_file "$socket_list" ; do
         sleep 0.5
         let count+=1
         if [ "$count" -gt "10" ] ; then
@@ -132,26 +149,61 @@ wait_settle() {
     true
 }
 
+# read a portion of current console output
+read_console() {
+    tail -c 1024 "/dev/vcs"
+}
+
+# ensure console is no longer producing changing output
+wait_console() {
+    local count=1 text1= text2=
+    while true ; do
+        text1=$(read_console)
+        sleep 0.5
+        text2=$(read_console)
+        if [ "$text1" = "$text2" ] ; then
+            return 0
+        fi
+        let count+=1
+        if [ "$count" -gt "10" ] ; then
+            return 1
+        fi
+    done
+}
+
+
 # crypto secret default logic
 do_crypt() {
+
+    wait_console
+
+    local config_list= socket_list=
+
+    # verify some crypt requests are pending
+
+    config_list=$(list_ask_config)
+    socket_list=$(list_ask_socket "$config_list")
+        
+    if [ "" = "$socket_list" ] ; then
+        echo "error: do_crypt with no requests"
+        return 1
+    fi
+        
+    run_answer "$socket_list"
     
-    if wait_settle ; then
-        echo "present jobs/asks"
-        true
-    else
-        echo "missing jobs/asks"
+    wait_confirm "$socket_list"
+
+    # verify none crypt requests are pending
+
+    config_list=$(list_ask_config)
+    socket_list=$(list_ask_socket "$config_list")
+
+    if has_any_file "$socket_list" ; then
+        echo "error: do_crypt failed to respond"
         return 1
     fi
     
-    run_answer
-    
-    if wait_answer ; then
-        echo "success"
-        return 0
-    else
-        echo "failure"
-        return 1
-    fi
+    return 0
 
 }
 
