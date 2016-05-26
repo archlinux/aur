@@ -1,0 +1,14 @@
+pkgbase = openbox-theme-adwaita
+	pkgdesc = Openbox theme to integrate with the default Adwaita GTK+ theme.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://box-look.org/content/show.php/Adwaita-openbox?content=155042
+	arch = any
+	license = LGPL
+	depends = openbox
+	provides = openbox-theme-adwaita
+	source = Adwaita-openbox.obt
+	md5sums = 7aa2b760196c339cf135a82a2afbedbe
+
+pkgname = openbox-theme-adwaita
+
