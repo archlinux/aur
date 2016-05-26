@@ -15,10 +15,6 @@ source=("$url/archive/v${pkgver}.tar.gz")
 sha1sums=('SKIP')
 _archivename=ChezScheme-$pkgver
 
-pkgver() {
-    git ls-remote -t https://github.com/cisco/ChezScheme | tail -1 | sed 's|.*refs/tags/v||'
-}
-
 build() {
     cd "$srcdir/${_archivename}" || exit
     git init
