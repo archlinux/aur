@@ -11,12 +11,9 @@ depends=('ags')
 makedepends=('icoutils' 'innoextract')
 optdepends=('xdg-utils: xdg .desktop file support')
 source=("gog://setup_the_cat_lady_${pkgver}.exe" \
-        "gog-the-cat-lady.desktop"
-        "gog-the-cat-lady.install")
-install=gog-the-cat-lady.install
+        "gog-the-cat-lady.desktop")
 sha256sums=('0d8cb4aee4b416b5d27c7510bb7caaba11a6dbee105eb979ef87da098b41dd44'
-            '8cf30399929bab298d8f9fdbf64280362205f8580fa7e0f7e4c53176d5ac73cb'
-            'c970ac6c398a48455dbc06ff0cb6d118aa6cb074a9c0eb780a27a50765676c30')
+            '8cf30399929bab298d8f9fdbf64280362205f8580fa7e0f7e4c53176d5ac73cb')
 # You need to download the gog.com installer file manually or with lgogdownloader.
 # Or you can configure DLAGENTS in makepkg.conf to auto-search through a directory
 # containing gog.com downloads:
