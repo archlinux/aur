@@ -7,6 +7,7 @@ depends=('gmp' 'leveldb' 'readline')
 makedepends=('gcc' 'git' 'go' 'make' 'mercurial')
 optdepends=('mist: Ether Browser')
 conflicts=('geth')
+provides=('geth')
 groups=('ethereum')
 url="https://github.com/ethereum/go-ethereum"
 license=('GPL')
