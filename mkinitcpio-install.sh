@@ -106,12 +106,12 @@ add_systemd_unit_X() {
                     plain "provision new file $source -> $target $mode"
                     add_file "$source" "$target" "$mode"
                 elif [ "$create" = "yes" ] ; then
-                    if [ "${source: -1}" = "/" ] ; then
-                        plain "create empty folder $source"
-                        add_dir "$source"
+                    if [ "${target: -1}" = "/" ] ; then
+                        plain "create empty dir $target"
+                        add_dir "$target"
                     else
-                        plain "create empty file $source $mode"
-                        add_file "$(mktemp)" "$source" "$mode"
+                        plain "create empty file $target $mode"
+                        add_file "$(mktemp)" "$target" "$mode"
                     fi
                 elif [ "$optional" = "yes" ] ; then
                     plain "skip optional path $source -> $target"
