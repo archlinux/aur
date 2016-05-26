@@ -125,7 +125,7 @@ add_systemd_unit_X() {
                 script="${values[0]}" ; args="${values[@]:1:9}" 
                 [ -n "$args" ] && local $(echo "$args")
                 if [ -z "$script" ] ; then
-                    error "missing script in InitrdInvoke in unit $unit"
+                    error "missing InitrdInvoke script in unit $unit"
                 elif [ -z "$command" ] ; then
                     error "missing command for script $script in unit $unit"
                 else
@@ -141,7 +141,7 @@ add_systemd_unit_X() {
                     error "missing InitrdCall code in unit $unit"
                 else
                     plain "call in-line [$code] in unit $unit"
-                    ($code)
+                    $code # FIXME
                 fi
                 ;;
             esac
