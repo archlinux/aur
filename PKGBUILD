@@ -4,14 +4,14 @@
 
 pkgname=python26
 pkgver=2.6.9
-pkgrel=7
+pkgrel=8
 _pybasever=2.6
 pkgdesc="Legacy version Python 2.6 of the high-level scripting language"
 arch=('i686' 'x86_64' 'arm')
 license=('PSF')
 url="http://www.python.org/"
 depends=('db>=4.8' 'bzip2' 'gdbm' 'openssl' 'zlib' 'expat' 'sqlite3' 'libffi')
-makedepends=('tk>=8.5.0')
+makedepends=('gcc5' 'tk>=8.5.0')
 optdepends=('tk: for IDLE, pynche and modulator')
 provides=(python2=${pkgver})
 changelog=ChangeLog
@@ -87,6 +87,11 @@ build() {
 
   export OPT="${CFLAGS}"
   export CPPFLAGS="-DOPENSSL_NO_SSL3"
+  # A lot of tests fail under GCC >= 6.x
+  export CPP="cpp-5"
+  export CC="gcc-5"
+  export CXX="g++-5"
+
   ./configure --prefix=/usr \
     --enable-shared \
     --enable-ipv6 \
@@ -94,6 +99,7 @@ build() {
     --with-system-ffi \
     --with-threads
 
+  make clean
   make MACHDEP=linux2
 }
 
@@ -108,9 +114,13 @@ check() {
     return 1
   fi
 
-  # test_float fails on arm
-  # issue with no fix: http://bugs.python.org/issue8265
+  export CPP="cpp-5"
+  export CC="gcc-5"
+  export CXX="g++-5"
+
   if [ "x$CARCH" = "xarm" ]; then
+    # test_float fails on arm
+    # issue with no fix: http://bugs.python.org/issue8265
     LD_LIBRARY_PATH="$(pwd)" ./python Lib/test/regrtest.py -x test_float
   else
     make test
@@ -119,6 +129,10 @@ check() {
 
 package() {
   cd "${srcdir}/Python-${pkgver}"
+
+  export CPP="cpp-5"
+  export CC="gcc-5"
+  export CXX="g++-5"
 
   make DESTDIR="${pkgdir}" altinstall maninstall
 

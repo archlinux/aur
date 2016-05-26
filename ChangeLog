@@ -1,3 +1,9 @@
+2016-05-26 Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+	* 2.6.9-8 :
+	Added 'gcc5' as a make dependency to keep compiling this package with
+	GCC 5.3 instaed of the now default GCC 6.1, which breaks many things.
+
 2016-03-06 Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 	* 2.6.9-7 :
