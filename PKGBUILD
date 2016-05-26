@@ -2,7 +2,7 @@
 
 _plugin_name=bookmarks_checker_check_for_bad_links
 pkgname=firefox-extension-bookmarks-checker
-pkgver=3.1.1
+pkgver=5.8.1
 pkgrel=1
 pkgdesc="Check favorites for broken or bad links"
 url="https://addons.mozilla.org/firefox/addon/bookmarks-checker/"
@@ -11,7 +11,7 @@ makedepends=('unzip')
 license=('MPL2')
 arch=('any')
 source=("${_plugin_name}-${pkgver}.xpi::https://addons.cdn.mozilla.net/user-media/addons/431790/${_plugin_name}-${pkgver}-fx.xpi")
-sha256sums=('8493680aabe7001b8f94fa1810fbc15f0910b73f33d698408923711e87e8f53d')
+sha256sums=('90162246d5fa49a58bed8390a7d5cb7d4507a3389a4edc0bbd275c6637d2d749')
 noextract=("${_plugin_name}-${pkgver}.xpi")
 
 prepare(){
