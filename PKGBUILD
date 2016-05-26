@@ -23,9 +23,9 @@ build() {
     cd "$srcdir/${_archivename}" || exit
     git init
     rm -rf nanopass/ stex/ zlib/
-    git submodule add git@github.com:nanopass/nanopass-framework-scheme.git nanopass
-    git submodule add git@github.com:dybvig/stex.git stex
-    git submodule add git@github.com:madler/zlib.git zlib
+    git submodule add https://github.com/nanopass/nanopass-framework-scheme.git nanopass
+    git submodule add https://github.com/dybvig/stex.git stex
+    git submodule add https://github.com/madler/zlib.git zlib
     ./configure --installprefix=/usr --temproot=$pkgdir
     make
 }
