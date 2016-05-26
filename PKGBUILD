@@ -3,7 +3,7 @@
 pkgname=pycharm-professional
 pkgver=2016.1.4
 pkgrel=1
-pkgdesc="Powerful Python and Django IDE. Professional version."
+pkgdesc="Powerful Python and Django IDE. Professional edition"
 arch=('any')
 options=('!strip')
 url="http://www.jetbrains.com/pycharm/"
