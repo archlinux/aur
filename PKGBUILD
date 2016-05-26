@@ -1,15 +1,16 @@
-# Contributor: Arun Narayanankutty <n.arun.lifescience@gmail.com>
+# Maintainer: Arun Narayanankutty <n.arun.lifescience@gmail.com>
 
 pkgname=alphaplot
 pkgver=0.01_alpha_prerelease_git
 pkgrel=1
 pkgdesc="Application for Scientific Data Analysis and Visualization, fork of SciDavis / QtiPlot"
+url='http://alphaplot.sourceforge.net/'
 arch=('i686' 'x86_64')
-license=('GPL-2')
+license=('GPL2')
 
 # make dependancies
 makedepends=('boost' 'cmake')
-depends=('gsl' 'glu' 'mesa' 'muparser' 'shared-mime-info'
+depends=('gsl' 'glu' 'mesa' 'muparser' 'shared-mime-info' 'qt4'
          'qwt5' 'qwtplot3d')
 
 # source download from git repo & prepare
