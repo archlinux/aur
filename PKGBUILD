@@ -7,8 +7,8 @@ LOCALBASE='/usr/local'
 ##################################################
 
 pkgname='open-usp-tukubai-git'
-pkgver=20151015.rev321
-pkgrel=1
+pkgver='dev'
+pkgrel='2'
 pkgdesc='An open source version of shell commands usp Tukubai.'
 url='https://github.com/usp-engineers-community/Open-usp-Tukubai'
 arch=('any')
