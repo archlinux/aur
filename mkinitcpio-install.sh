@@ -33,6 +33,15 @@ build() {
     
 }
 
+invoke() {
+    local command="$@"
+    local result; result=$($command 2>&1); status=$?
+    case "$status" in
+         0) quiet "Invoke success: $command\n$result\n"; return 0 ;;
+         *) error "Invoke failure ($status): $command \n$result\n" ; return 1 ;;  
+    esac
+}
+
 # function add_systemd_unit with extra bug fixes for:
 # https://bugs.archlinux.org/task/42396
 # https://bugs.archlinux.org/task/49458
