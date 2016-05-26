@@ -1,8 +1,8 @@
 pkgbase = marionnet-trunk
-	pkgdesc = Educational software. It is a virtual network laboratory: it allows users to define, configure and run complex computer networks without any need for physical setup. Very old version.
+	pkgdesc = Educational software. It is a virtual network laboratory: it allows users to define, configure and run complex computer networks without any need for physical setup. Trunk version (with UML kernel Debian Wheezy)
 	pkgver = 1
 	pkgrel = 1
-	url = https://launchpad.net/marionnet
+	url = https://www.marionnet.org/
 	install = marionnet.install
 	arch = i686
 	arch = x86_64
