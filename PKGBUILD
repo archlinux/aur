@@ -5,14 +5,13 @@
 # Contributor: mosra <mosra@centrum.cz>
 
 pkgname=kdevplatform-git
-pkgver=4.90.90.r12962.d0596e4
-pkgrel=2
+pkgver=4.90.92.r13350.cede3bb
+pkgrel=1
 pkgdesc="A C/C++ development platform for KDE. (GIT Version)"
 arch=('i686' 'x86_64')
 url='http://www.kdevelop.org'
 license=('GPL')
-depends=('qt5-quick1'
-         'ktexteditor'
+depends=('ktexteditor'
          'threadweaver'
          'kcmutils'
          'kitemmodels'
