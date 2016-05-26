@@ -1,0 +1,12 @@
+post_install() {
+    echo
+    echo '####################################################'
+    echo '#  マニュアルやライセンス等の各種ドキュメントは、  #'
+    echo '#    $LOCALBASE/share/open-usp-tukubai/devel       #'
+    echo '#  以下にあります。                                #'
+    echo '####################################################'
+}
+
+post_upgrade() {
+    post_install
+}
