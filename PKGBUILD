@@ -6,7 +6,7 @@
 # Contributor: Balló György <ballogyor+arch at gmail dot com>
 
 pkgbase=libappindicator
-pkgname=('libappindicator-gtk2' 'libappindicator-gtk3' 'libappindicator-sharp')
+pkgname=("${pkgbase}-gtk"{2,3} "${pkgbase}-sharp")
 pkgver=12.10.0
 pkgrel=8
 pkgdesc='Allow applications to export a menu into the Unity Menu bar'
