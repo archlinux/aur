@@ -1,7 +1,7 @@
 pkgbase = calibre-git
 	pkgdesc = Ebook management application, from git
-	pkgver = 2.56.0.r42.ga238a71
-	pkgrel = 1
+	pkgver = 2.57.1.r17.g9d46a5a
+	pkgrel = 2
 	url = http://calibre-ebook.com/
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,6 @@ pkgbase = calibre-git
 	depends = podofo
 	depends = poppler
 	depends = libwmf
-	depends = imagemagick
 	depends = chmlib
 	depends = python2-lxml
 	depends = libusbx
