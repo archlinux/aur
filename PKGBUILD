@@ -1,17 +1,19 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 
-# In case of upgrade errors:
+# If upgrade fails with:
 #     error: failed to commit transaction (conflicting files)
 #     sickrage-git: /opt/sickrage/... exists in filesystem
-# Remove the conflicting files manually. The following will remove all or most of the conflicting files:
-#     # rm -rf /opt/sickrage/{contrib/,contributing.md,COPYING.txt,gui/,lib/,runscripts/,sickbeard/,SickBeard.py,sickrage/,tests/}
-# Use at your own risk!
+#
+# Then remove the conflicting files manually. The following removes all of the conflicting files:
+#     # rm $(ls -1d /opt/sickrage/* | grep -Ev "/backup.*|/cache.*|/config.ini.*|/Log.*|/.*\.db.*")
+#
+# Use at your own risk! Stop the service and backup /opt/sickrage first.
 
 
 _pkgname=sickrage2
 pkgname=$_pkgname-git
-pkgver=4.2.1.05.r2.gb5b45cb
+pkgver=2016.05.20.1.r6.ga70d27a
 pkgrel=1
 pkgdesc="Automatic torrent/nzb video library manager for TV shows"
 arch=('any')
@@ -25,7 +27,10 @@ depends=('python2-mako' 'python2-cheetah')
 #            'rtorrent: supported torrent client'
 #            'sabnzbd: supported NZB downloader'
 #            'transmission-cli: supported torrent client'
-optdepends=('python2-notify: desktop notifications'
+optdepends=('python2-lockfile: use file cache'
+            'python2-ndg-httpsclient: enable ssl'
+            'python2-notify: desktop notifications'
+            'python2-pyasn1: enable ssl'
             'python2-pyopenssl: enable SSL'
             'unrar: RAR archives')
 provides=($_pkgname 'sickrage')
@@ -55,7 +60,7 @@ pkgver() {
 #}
 
 package() {
-  # The sickrage "SOURCE" install type does not have the .git folder (git repository files)
+  # The install type is "source": don't include the .git folder
   install -dm755 "$pkgdir/opt/sickrage"
   cp -rp $pkgname/* "$pkgdir/opt/sickrage"
  

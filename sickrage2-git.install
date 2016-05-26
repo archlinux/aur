@@ -2,11 +2,13 @@ post_install() {
   SR_DATA=/opt/sickrage
 
   # Create or repair SickRage user/group.
+  #if getent group syncthing-relaysrv >/dev/null 2>&1 ; then
   if grep -q "^sickrage" /etc/group &> /dev/null ; then
     groupmod -n sickrage sickrage &> /dev/null
   else
     groupadd -r sickrage &> /dev/null
   fi
+  #if getent passwd syncthing-relaysrv >/dev/null 2>&1 ; then
   if grep -q "^sickrage:" /etc/passwd 2> /dev/null ; then
     usermod -s /bin/false -c "SickRage daemon user" -d $SR_DATA -g sickrage sickrage &> /dev/null
   else
