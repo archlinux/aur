@@ -52,4 +52,4 @@ InitrdPath=/usr/lib/udev/rules.d/95-dm-notify.rules
 
 # include crypt kernel modules
 InitrdCall=add_module dm-crypt
-InitrdCall=add_all_modules '/crypto/'
+InitrdCall=add_all_modules /crypto/

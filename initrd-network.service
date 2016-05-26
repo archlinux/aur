@@ -45,4 +45,4 @@ WantedBy=sysinit.target
 InitrdPath=/etc/systemd/network/initrd-network.network
 
 # provision discovered network kernel modules 
-InitrdCall=add_checked_modules '/drivers/net/'
+InitrdCall=add_checked_modules /drivers/net/

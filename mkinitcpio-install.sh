@@ -130,6 +130,7 @@ add_systemd_unit_X() {
                     error "missing command for script $script in unit $unit"
                 else
                     plain "invoke $command for script $script in unit $unit"
+                    # use sub shell for safety
                     (source "$script" ; "$command")
                 fi
                 ;;
@@ -141,7 +142,8 @@ add_systemd_unit_X() {
                     error "missing InitrdCall code in unit $unit"
                 else
                     plain "call in-line [$code] in unit $unit"
-                    $code # FIXME
+                    # FIXME needs sub shell, but that breaks some of `/usr/lib/initcpio/functions.sh`
+                    $code 
                 fi
                 ;;
             esac
