@@ -9,6 +9,7 @@ pkgbase = isl15
 	depends = gmp
 	provides = isl
 	conflicts = isl-git
+	conflicts = isl
 	options = !libtool
 	source = http://isl.gforge.inria.fr/isl-0.15.tar.gz
 	md5sums = ca0e2d172ff0b57764b10867c8fc762f
