@@ -5,7 +5,7 @@ pkgname=gogs-git-dev
 _pkgname=gogs
 _branch=develop
 pkgver=3879.3c0c7a9
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language. This is the current git version from branch ${_branch}."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -79,9 +79,9 @@ prepare() {
 #  msg2 "Download missing dependencies"
 #  go_get github.com/macaron-contrib/oauth2 "$GOPATH/src/github.com/macaron-contrib/oauth2"
 
-#  msg2 "Workaround dependencies"
-#  cd "$GOPATH/src/github.com/gogits/go-gogs-client/"
-#  git checkout -q master
+  msg2 "Workaround dependencies"
+  cd "$GOPATH/src/github.com/gogits/go-gogs-client/"
+  git checkout -q master
 
   # Execute patch
   msg2 "Execute patches"
