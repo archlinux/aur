@@ -69,14 +69,5 @@ package() {
     rm -f $pkgdir/opt/$pkgname/bin/libyjpagent-linux64.so
     rm -f $pkgdir/opt/$pkgname/bin/fsnotifier64
   fi
-
-  # enable anti-aliasing text in pycharm options
-  if [[ $CARCH = 'i686' ]]; then
-    #echo '-Dawt.useSystemAAFontSettings=on' >> $pkgdir/opt/$pkgname/bin/pycharm.vmoptions
-    echo '-Dswing.aatext=true' >> $pkgdir/opt/$pkgname/bin/pycharm.vmoptions
-  else
-    #echo '-Dawt.useSystemAAFontSettings=on' >> $pkgdir/opt/$pkgname/bin/pycharm64.vmoptions
-    echo '-Dswing.aatext=true' >> $pkgdir/opt/$pkgname/bin/pycharm64.vmoptions
-  fi
   
 }
