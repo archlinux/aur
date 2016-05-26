@@ -67,8 +67,7 @@ add_systemd_unit_X() {
                 # only add hard dependencies (not Wants)
                 map add_systemd_unit_X "${values[@]}"
                 ;;
-            Exec*)
-            InitrdBinary)
+            Exec*|InitrdBinary)
                 # don't add binaries unless they are required
                 if [[ ${values[0]:0:1} != '-' ]]; then
                     local exec="${values[0]}"
