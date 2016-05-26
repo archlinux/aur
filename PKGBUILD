@@ -4,7 +4,7 @@
 pkgname=gogs-git-dev
 _pkgname=gogs
 _branch=develop
-pkgver=3166.9950f5a
+pkgver=3879.3c0c7a9
 pkgrel=1
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language. This is the current git version from branch ${_branch}."
@@ -32,15 +32,15 @@ source=('gogs.service.patch'
         'helper.sh'
         "$_pkgname::git+https://${_gourl}.git#branch=${_branch}")
 
-sha512sums=(834e95fe9bcfa291a573ad1fa43f41bbed844658a918ff4fcf53ab8a44a296206ee4003eab1d9a2785c9126be077022f4907846d2eb6c5d64050b5e81ce47f44
-            d4f6518c644b76e4d1688cd5756c9eea7a89d0abad68a14638ccc6f0d1006c164c1ae3b3f89efd903def7398a3dabce7299100303808ad7a1937407a9eb13a39
+sha512sums=(db36fd44c29de387b066e52a71a61214aa876a27574eb054ec9517a175b5a47db9a7de01be2dd635023a11d5e1224772a66accc4b63b6936f7c58e6314555a66
+            43c8971b0b4e8ea8d5aa0ed15610e9737605dc46a626d3d578bb1c97c9f90912966f59b452e9f4ea7974e4e3beaa5dd40bc597b03319afed3358432ab6e59c7d
             e45775adafeecad5deaf24a98cd85b25a8383cb0e89905b2927c13fe7f0ec9918a42071ce43eabc429d8a826db93bb75ffb1927dce9c431ed88b0b5c619fd60d
             'SKIP')
 
 _goroot="/usr/lib/go"
 
 pkgver(){
-  cd "$srcdir/$_pkgname"
+  cd "$srcdir/../$_pkgname"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
@@ -76,12 +76,12 @@ prepare() {
   msg2 "Check and download dependencies from .gopmfile"
   get_gopm "$GOPATH/src/${_gourl}/.gopmfile" "$GOPATH/src"
 
-  msg2 "Download missing dependencies"
+#  msg2 "Download missing dependencies"
 #  go_get github.com/macaron-contrib/oauth2 "$GOPATH/src/github.com/macaron-contrib/oauth2"
 
-  msg2 "Workaround dependencies"
-  cd "$GOPATH/src/github.com/gogits/go-gogs-client/"
-  git checkout -q master
+#  msg2 "Workaround dependencies"
+#  cd "$GOPATH/src/github.com/gogits/go-gogs-client/"
+#  git checkout -q master
 
   # Execute patch
   msg2 "Execute patches"
@@ -94,7 +94,7 @@ build() {
 
   msg2 "Build program"
   go fix
-  go build -x -tags='sqlite'
+  go build -x -tags='sqlite pam cert'
 }
 
 package() {
