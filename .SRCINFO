@@ -1,6 +1,6 @@
 pkgbase = fontawesome.sty
 	pkgdesc = FontAwesome bindings for LaTeX
-	pkgver = 4.6.3.1
+	pkgver = 4.6.3.2
 	pkgrel = 1
 	url = http://www.ctan.org/pkg/fontawesome
 	install = fontawesome.install

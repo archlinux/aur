@@ -2,7 +2,7 @@
 # Contributor: Fernando Cladera <fcladera [at] fcladera [dot] com>
 
 pkgname=fontawesome.sty
-pkgver=4.6.3.1
+pkgver=4.6.3.2
 pkgrel=1
 pkgdesc="FontAwesome bindings for LaTeX"
 url='http://www.ctan.org/pkg/fontawesome'
