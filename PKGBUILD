@@ -32,4 +32,6 @@ build() {
 package() {
     cd "$srcdir/$_gitname/CMakeBuild"
     make DESTDIR="$pkgdir/" install
+    cd "../CLRadeonExtender/CLRX-mirror-master"
+    make DESTDIR="$pkgdir/" install
 }
