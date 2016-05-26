@@ -1,12 +1,12 @@
 pkgbase = anoise-media
 	pkgdesc = Ambient Noise Library. Sounds and icons for Anoise Player
-	pkgver = 0.0.16
-	pkgrel = 2
+	pkgver = 0.0.17
+	pkgrel = 1
 	url = https://launchpad.net/~costales/+archive/ubuntu/anoise
 	arch = any
 	license = GPL3
 	depends = python-distutils-extra
-	source = https://launchpad.net/~costales/+archive/ubuntu/anoise/+files/anoise-media_0.0.16_all.deb
+	source = https://launchpad.net/~costales/+archive/ubuntu/anoise/+files/anoise-media_0.0.17_all.deb
 	sha256sums = 8a458f503a85fa4ac02cefe125713db6d913c5a63e00e4516b3f5cfd5b4a962b
 
 pkgname = anoise-media
