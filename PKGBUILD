@@ -5,13 +5,14 @@ pkgname=gogs-git-dev
 _pkgname=gogs
 _branch=develop
 pkgver=3879.3c0c7a9
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language. This is the current git version from branch ${_branch}."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://gogs.io/"
 license=('MIT')
-depends=('git>=1.7.1')
+depends=('git>=1.7.1'
+         'glide')
 optdepends=('sqlite: SQLite support'
             'mariadb: MariaDB support'
             'postgresql: PostgreSQL support'
@@ -29,12 +30,10 @@ install=gogs.install
 _gourl=github.com/gogits/$_pkgname
 source=('gogs.service.patch'
         'app.ini.patch'
-        'helper.sh'
         "$_pkgname::git+https://${_gourl}.git#branch=${_branch}")
 
 sha512sums=(db36fd44c29de387b066e52a71a61214aa876a27574eb054ec9517a175b5a47db9a7de01be2dd635023a11d5e1224772a66accc4b63b6936f7c58e6314555a66
             43c8971b0b4e8ea8d5aa0ed15610e9737605dc46a626d3d578bb1c97c9f90912966f59b452e9f4ea7974e4e3beaa5dd40bc597b03319afed3358432ab6e59c7d
-            e45775adafeecad5deaf24a98cd85b25a8383cb0e89905b2927c13fe7f0ec9918a42071ce43eabc429d8a826db93bb75ffb1927dce9c431ed88b0b5c619fd60d
             'SKIP')
 
 _goroot="/usr/lib/go"
@@ -45,8 +44,6 @@ pkgver(){
 }
 
 prepare() {
-  source $srcdir/helper.sh
-
   export GOROOT=/usr/lib/go
   
   msg2 "Prepare GO build enviroment"
@@ -73,15 +70,10 @@ prepare() {
 
   mv "$srcdir/$_pkgname" $GOPATH/src/${_gourl}
 
-  msg2 "Check and download dependencies from .gopmfile"
-  get_gopm "$GOPATH/src/${_gourl}/.gopmfile" "$GOPATH/src"
-
-#  msg2 "Download missing dependencies"
-#  go_get github.com/macaron-contrib/oauth2 "$GOPATH/src/github.com/macaron-contrib/oauth2"
-
-  msg2 "Workaround dependencies"
-  cd "$GOPATH/src/github.com/gogits/go-gogs-client/"
-  git checkout -q master
+  # Glide
+  msg2 "Download dependencies via Glide"
+  cd $GOPATH/src/${_gourl}
+  glide install
 
   # Execute patch
   msg2 "Execute patches"
