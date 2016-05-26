@@ -7,7 +7,7 @@ set -u
 _gitauth='fragglet'
 _pkgname='lhasa'
 pkgname="${_pkgname}-git"
-pkgver=0.3.0
+pkgver=0.3.1.r395.gc6d6ca6
 pkgrel=1
 pkgdesc='Free Software LHA implementation'
 arch=('i686' 'x86_64')
@@ -16,12 +16,13 @@ license=('custom:ISC')
 conflicts=('lha')
 options=('!libtool')
 _giturl="https://github.com/${_gitauth}/${_pkgname}"
-_verwatch=("${_giturl}/releases" "${_giturl#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
+#_verwatch=("${_giturl}/releases" "${_giturl#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
 _srcdir="${_pkgname}-${pkgver}"
 source=("https://github.com/${_gitauth}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('b5c3666032330eb03ace733407500b02c31623166570da1ecff7c912c89941c3')
+sha256sums=('SKIP')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
+  unset _giturl
   _srcdir="${_pkgname}"
   makedepends+=('git')
   url="https://github.com/${_gitauth}/${_pkgname}"
