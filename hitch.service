@@ -1,0 +1,18 @@
+[Unit]
+Description=hitch
+After=syslog.target network.target
+
+
+[Service]
+Type=forking
+LimitNOFILE=131072
+Environment="HITCH_OPTIONS=--config /etc/hitch/hitch.conf"
+EnvironmentFile=-/etc/hitch/hitch.params
+EnvironmentFile=-/etc/default/hitch
+EnvironmentFile=-/etc/sysconfig/hitch
+ExecStartPre=/usr/bin/hitch -t $HITCH_OPTIONS
+ExecStart=/usr/bin/hitch --daemon $HITCH_OPTIONS
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target
