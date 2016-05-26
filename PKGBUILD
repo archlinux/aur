@@ -1,9 +1,8 @@
-# $Id$
 # Maintainer: Marcus Behrendt <marcus dot behrendt dot eightysix(in numbers) at bigbrothergoogle dot com
 
 _basename=rust-arm
 pkgname=rust-arm-bin
-pkgver=1.7.0
+pkgver=1.8.0
 epoch=1
 pkgrel=1
 _binname=$_basename-$pkgver-bin.tar.gz
@@ -15,16 +14,15 @@ license=('MIT' 'Apache')
 provides=("rust=$pkgver")
 conflicts=("rust")
 
-source_armv6h=($_binname::https://www.dropbox.com/s/l8c3r58q2cwrcd1/rust-1.7.0-stable-2016-02-29-a5d1e7a-arm-unknown-linux-gnueabihf-537ce7aae4574a69c077fe2e358c7b50c3e085ba.tar.gz)
+source_armv6h=($_binname::https://www.dropbox.com/s/atfb97zynjp0uhe/rust-1.8.0-stable-2016-04-12-db29394-arm-unknown-linux-gnueabihf-ca7b144611875016d10127bf145fe11e34c40551.tar.gz)
 
-source_armv7h=($_binname::https://www.dropbox.com/s/9cs3kizf6fbbfcl/rust-1.7.0-stable-2016-02-29-a5d1e7a-arm-unknown-linux-gnueabihf-4385f17e0ba0a941032cd2389643e846346fa9db.tar.gz)
+source_armv7h=($_binname::https://www.dropbox.com/s/hx534b40k61g2gm/rust-1.8.0-stable-2016-04-12-db29394-arm-unknown-linux-gnueabihf-c4717eeb439d7c951bb32e5dea03d5a2d5b3cf4d.tar.gz)
 
-md5sums_armv6h=('a010d0228c9d2c6429ee6c5f1875d19d')
-md5sums_armv7h=('7e8252d4c3d42698e9ca466f277855a2')
+md5sums_armv6h=('05236ff85ed07fc8395d8d831002da59')
+md5sums_armv7h=('114b489e2b52f6e6655a2232ff1ae595')
 
 noextract=("$_binname")
 
-install="$pkgname.install"
 options=('staticlibs' '!strip')
 
 
