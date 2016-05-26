@@ -1,25 +1,23 @@
 # Maintainer: Masaki Waga <masakiwaga@gmail.com>
+# Contributor: Tatsunori Aoki <ginjiro.135@gmail.com>
+
+DLAGENTS='https::/usr/bin/curl --insecure -fLC - --retry 3 --retry-delay 3 -o %o %u'
+
 pkgname=open-usp-tukubai
 pkgver=2014061402
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source version of shell commands usp Tukubai."
 arch=('any')
 url="https://uec.usp-lab.com/TUKUBAI/CGI/TUKUBAI.CGI"
-license=('custom:"MIT"')
+license=('MIT' 'custom')
 depends=('python2')
-makedepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+conflicts=('open-usp-tukubai-git')
 
-source=("https://uec.usp-lab.com/TUKUBAI/DOWNLOAD/open-usp-tukubai-2014061402.tar.bz2" "https://gist.githubusercontent.com/MasWag/76a89b3c3056753d1d31/raw/e1d8f62e81618733b1138dd23f1dde0f7e13a32b/Makefile.patch")
+source=(
+"https://uec.usp-lab.com/TUKUBAI/DOWNLOAD/open-usp-tukubai-2014061402.tar.bz2"
+"https://gist.githubusercontent.com/MasWag/76a89b3c3056753d1d31/raw/e1d8f62e81618733b1138dd23f1dde0f7e13a32b/Makefile.patch"
+)
 
-noextract=()
 md5sums=('be4f69734afd2bdc74d07fc705380c6e'
          '14e3dee8ccf6bd0c3cc8e2c2299be33d')
 
