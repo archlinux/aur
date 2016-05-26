@@ -1,7 +1,7 @@
 # Maintainer: Daniel Martí <mvdan@mvdan.cc>
 
 pkgname=gb
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="The project based build tool for Go"
 url="https://github.com/constabulary/${pkgname}"
