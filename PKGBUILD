@@ -2,8 +2,8 @@
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 pkgname=xorg-xdm-xlogin-git
-pkgver=1.1.11.87.g3cd5374
-pkgrel=1
+pkgver=1.1.11.88.g8281bca
+pkgrel=2
 pkgdesc="X Display Manager"
 arch=(i686 x86_64)
 #url="http://xorg.freedesktop.org/"
@@ -15,8 +15,10 @@ provides=('xorg-xdm' 'xorg-xdm-xlogin')
 conflicts=('xorg-xdm' 'xorg-xdm-xlogin' 'xorg-xdm-git')
 makedepends=('git' 'pkgconfig' 'xorg-util-macros' 'xtrans')
 backup=(etc/X11/xdm/Xaccess etc/X11/xdm/Xresources etc/X11/xdm/Xservers etc/X11/xdm/xdm-config etc/pam.d/xdm etc/pam.d/greeter etc/X11/xdm/Xsetup_0 etc/X11/xdm/Xsession)
-source=("$pkgname::git+https://github.com/bbidulock/xdm.git")
-sha256sums=('SKIP')
+source=("$pkgname::git+https://github.com/bbidulock/xdm.git"
+	xdm.pam)
+sha256sums=('SKIP'
+            'e8c4c5fd3b801a390d201166fd1fb9730e78a5c62928768103b870b6bd980ea0')
 
 pkgver() {
   cd $pkgname
@@ -39,6 +41,8 @@ package() {
   cd $pkgname
   make DESTDIR="${pkgdir}" install
   install -m755 -d "${pkgdir}/var/lib/xdm"
+  install -m755 -d "${pkgdir}/etc/pam.d"
+  install -m644 "${srcdir}/xdm.pam" "${pkgdir}/etc/pam.d/xdm"
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 
