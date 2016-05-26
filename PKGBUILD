@@ -2,8 +2,8 @@
 
 pkgbase=microsoft-r-open
 pkgname=('microsoft-r-open' 'microsoft-r-open-blas')
-pkgver=3.2.4
-_mrandate=2016-04-01
+pkgver=3.2.5
+_mrandate=2016-05-01
 pkgrel=1
 pkgdesc="Language and environment for statistical computing and graphics, modified version by Microsoft"
 arch=('x86_64')
@@ -14,11 +14,11 @@ options=('!makeflags' '!emptydirs')
 source=("https://github.com/RevolutionAnalytics/RRO/archive/MRO-${pkgver}.tar.gz"
 	"Rprofile_site.patch"
 	"mro.desktop")
-md5sums=('002dc0b5e8ec09ed971419256e38ffd7'
-         '5ac5ecfe3c0ad6445f2ee76791704f8d'
+md5sums=('0572a3384f9bc724118cb9b7c363f885'
+         '3e35bccbf4b9df66059400c4c42d21ef'
          '70e8f9d0b1eebeb1f0b45f4568bc0701')
-sha512sums=('ce15113bb7ea9c7bdf42eae3d8fc0ec8a412869d89aca58461092e8e0434cf428ee4de54393e2fcf5c969e324802ec1c11dab7303f28052b4db62d8a35f072f0'
-            '4a95d9273c471c36f9a2d1124b6832ca032e4e462cb04ebb169c7a973a91226c93c0ba62c62c968416b8abc9b659b4a6a1e996532e7c06c617688fa61acf9b8f'
+sha512sums=('b309dba4820210728cc61520be1e48739b82350e5ae3897578e95a21742ed26ea83c4afd1c727c39417e419ef037a7d52ef554587723201b5ce349ec848d4f89'
+            'f6d0dc696a1c8fd6f7714c77bf286663ca34d5b1ab0226fb26d9574ed3bf6a38a59743fb2165a9235f91d31cba3f97a7faaca6e5201e60dd9d554fddb0700168'
             '2b0221bd1e0fdd399284333e6f2020bb9ad11395ad39dd2fca688b7ebc68fbbc60de59a757e1898be8bcd9e2926afccc121043f38445e7693f177c3076f92b61')
 
 prepare() {

@@ -1,9 +1,9 @@
---- Rprofile.site.orig	2016-04-18 22:30:13.000000000 +0200
-+++ Rprofile.site	2016-04-28 23:31:57.199326961 +0200
-@@ -1,35 +1,14 @@
--Revo.version <- structure(list(major = "3", minor = "2.4", "BuildID" = :::BUILDID:::), class = "simple.list")
-+Revo.version <- structure(list(major = "3", minor = "2.4", "BuildID" = 'Arch Linux'), class = "simple.list")
- repos.date <- "2016-04-01"
+--- Rprofile.site	2016-05-10 23:05:06.000000000 +0200
++++ Rprofile.site.new	2016-05-26 11:47:54.542644822 +0200
+@@ -1,25 +1,15 @@
+-Revo.version <- structure(list(major = "3", minor = "2.5", "BuildID" = :::BUILDID:::), class = "simple.list")
++Revo.version <- structure(list(major = "3", minor = "2.5", "BuildID" = 'Arch Linux'), class = "simple.list")
+ repos.date <- "2016-05-01"
  
 -if  (identical(.Platform$OS.type, "windows")) {
 -	options(download.file.method = "wininet")
@@ -13,27 +13,16 @@
 -    if (capabilities("libcurl")) {
 -       options(download.file.method = "libcurl")
 -    } else {
--       options(download.file.method = "curl")
+-		dmethAvail <- Sys.which(c("curl", "wget"))
+-		if (any(dmethAvail != "")) {
+-			options(download.file.method = names(dmethAvail[which(dmethAvail != "")[1]]))
+-		}
 -    }
 +   options(download.file.method = "curl")
  }
  
--if (.Platform$OS.type == "unix" && file.exists("/etc/issue") && (grepl("CentOS release 5", readLines("/etc/issue")[1]))) {
--    warning("Warning: Packages will be downloaded using HTTP. See mran.microsoft.com/faq/#https for information on enabling secure package downloads.\n")
--    options(download.file.method = "wget")
--    options(repos = c(CRAN = paste("http://mran.microsoft.com/snapshot/",repos.date,sep=""))) 
--} else if (.Platform$OS.type == "unix" && file.exists("/etc/issue") && (grepl("Welcome to SUSE Linux Enterprise Server 10", readLines("/etc/issue")[1]))) {
--    warning("Warning: Packages will be downloaded using HTTP. See mran.microsoft.com/faq/#https for information on enabling secure package downloads.\n")
--    options(download.file.method = "wget")
--    options(repos = c(CRAN = paste("http://mran.microsoft.com/snapshot/",repos.date,sep="")))
--} else if (.Platform$OS.type == "unix" && file.exists("/etc/issue") && (grepl("Welcome to SUSE Linux Enterprise Server 10", readLines("/etc/issue")[2]))) {
--    warning("Warning: Packages will be downloaded using HTTP. See mran.microsoft.com/faq/#https for information on enabling secure package downloads.\n")
--    options(download.file.method = "wget")
--    options(repos = c(CRAN = paste("http://mran.microsoft.com/snapshot/",repos.date,sep="")))
--} else {
--    options(repos = c(CRAN = paste("https://mran.microsoft.com/snapshot/",repos.date,sep="")))
--}
-+options(repos = c(CRAN = paste("https://mran.microsoft.com/snapshot/",repos.date,sep="")))
+ options(repos = c(CRAN = paste("https://mran.microsoft.com/snapshot/",repos.date,sep="")))
+ 
  
 -if (.Platform$OS.type == "windows" ) {
 - options(help_type="html")
@@ -41,8 +30,11 @@
  quiet <- any(match(c("-q", "--silent", "--quiet", "--slave"), commandArgs()), na.rm=TRUE)
  	if (!quiet){
                  cat( paste("Microsoft R Open ",Revo.version$major,".",Revo.version$minor,"\n",sep=""))
-@@ -40,8 +19,6 @@
- 
+@@ -27,11 +17,8 @@
+                 cat("The enhanced R distribution from Microsoft\n",sep="")
+                 cat("Visit https://mran.microsoft.com/ for information\n",sep="")
+                 cat("about additional features.\n\n",sep="")
+-
  	}
  	
 -
@@ -50,7 +42,7 @@
  load_if_installed <- function(package) {
    if (!identical(system.file(package="RevoUtilsMath"), "")) {
      do.call('library', list(package))
-@@ -51,20 +28,6 @@
+@@ -41,20 +28,6 @@
    } 
  }
  
@@ -71,12 +63,12 @@
  if(load_if_installed("RevoUtilsMath")){
    local({
      ncores <- RevoUtilsMath::getMKLthreads()
-@@ -76,10 +39,9 @@
+@@ -66,10 +39,9 @@
    })
  } else {
      MROversion <- paste(Revo.version$major, Revo.version$minor, sep=".")
 -	msg <- "No performance acceleration libraries were detected. To take advantage of \nthe available processing power, also install MKL for R Open %s. Visit \nhttp://go.microsoft.com/fwlink/?LinkID=698301 for more details."
-+       msg <- "No performance acceleration libraries were detected. To take advantage of \nthe available processing power, also install MKL for MRO %s. Visit \nhttps://aur.archlinux.org/packages/revomath/ and/or\nhttp://go.microsoft.com/fwlink/?LinkID=698301 for more details."
++	msg <- "No performance acceleration libraries were detected. To take advantage of \nthe available processing power, also install MKL for R Open %s. Visit \nhttp://go.microsoft.com/fwlink/?LinkID=698301 and/or https://aur.archlinux.org/packages/revomath/ for more details."
  	if (!quiet){
          message(sprintf(msg, MROversion))
  	}
