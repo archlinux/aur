@@ -2,7 +2,7 @@
 pkgname=xorg-xdm-xlogin
 _pkgname=xorg-xdm
 pkgver=1.1.11
-pkgrel=7
+pkgrel=8
 pkgdesc="X Display Manager"
 arch=(i686 x86_64)
 #url="http://xorg.freedesktop.org/"
@@ -14,8 +14,10 @@ provides=("${_pkgname}=${pkgver}")
 conflicts=(${_pkgname})
 makedepends=('pkgconfig' 'xorg-util-macros' 'xtrans')
 backup=(etc/X11/xdm/Xaccess etc/X11/xdm/Xresources etc/X11/xdm/Xservers etc/X11/xdm/xdm-config etc/pam.d/xdm etc/pam.d/greeter etc/X11/xdm/Xsetup_0 etc/X11/xdm/Xsession)
-source=("xdm.zip::https://github.com/bbidulock/xdm/archive/3cd5374a60716a4c4648e8da258da32d5226e68c.zip")
-md5sums=('8b003c0b91c9ea822b4b9640550b3227')
+source=("xdm.zip::https://github.com/bbidulock/xdm/archive/8281bca39125a5362ff3ac8f0056ed04564819b3.zip"
+	xdm.pam)
+sha256sums=('2ccc7c45da6bdbe7da5bf1e80b229c19ae48e20a58c3bea687da7f7bab949d44'
+            'e8c4c5fd3b801a390d201166fd1fb9730e78a5c62928768103b870b6bd980ea0')
 
 build() {
   cd xdm-*
@@ -33,6 +35,8 @@ package() {
   cd xdm-*
   make DESTDIR="${pkgdir}" install
   install -m755 -d "${pkgdir}/var/lib/xdm"
+  install -m755 -d "${pkgdir}/etc/pam.d"
+  install -m644 "${srcdir}/xdm.pam" "${pkgdir}/etc/pam.d/xdm"
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/"
 
