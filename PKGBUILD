@@ -7,6 +7,7 @@ pkgdesc="Beautiful desktop client for Facebook Messenger. Sytten's fork"
 arch=('i686' 'x86_64')
 url="http://messengerfordesktop.com/"
 license=('MIT')
+conflicts=("messengerfordesktop")
 options=(!strip)
 depends=('gcc-libs' 'cairo' 'libxtst' 'alsa-lib' 'gtk2' 'gconf' 'libnotify' 'fontconfig' 'nss' 'xorg-xprop' 'xorg-xwininfo')
 makedepends=('git' 'gulp' 'npm')
