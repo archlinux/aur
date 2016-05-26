@@ -1,19 +1,27 @@
- vmnet/{ => }/vm_device_version.h | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
-
 diff --git a/vmnet/vm_device_version.h b/vmnet/vm_device_version.h
-index e2cb477..bca4547 100644
+index e2cb477..3dd7097 100644
 --- a/vmnet/vm_device_version.h
 +++ b/vmnet/vm_device_version.h
-@@ -53,7 +53,10 @@
+@@ -53,7 +53,9 @@
   *    VMware HD Audio codec
   *    VMware HD Audio controller
   */
--#define PCI_VENDOR_ID_VMWARE                    0x15AD
-+#ifdef   PCI_VENDOR_ID_VMWARE
-+# undef  PCI_VENDOR_ID_VMWARE
-+# define PCI_VENDOR_ID_VMWARE                   0x15AD
++#ifndef PCI_VENDOR_ID_VMWARE
+ #define PCI_VENDOR_ID_VMWARE                    0x15AD
 +#endif
  #define PCI_DEVICE_ID_VMWARE_SVGA2              0x0405
  #define PCI_DEVICE_ID_VMWARE_SVGA               0x0710
  #define PCI_DEVICE_ID_VMWARE_VGA                0x0711
+diff --git a/vmnet/vmnetInt.h b/vmnet/vmnetInt.h
+index 0ee52ec..96060a3 100644
+--- a/vmnet/vmnetInt.h
++++ b/vmnet/vmnetInt.h
+@@ -79,7 +79,7 @@
+ extern struct proto vmnet_proto;
+ #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
+ #   define compat_sk_alloc(_bri, _pri) sk_alloc(&init_net, \
+-                                                PF_NETLINK, _pri, &vmnet_proto, 1)
++                                                PF_NETLINK, _pri, &vmnet_proto, 0)
+ #elif defined(VMW_NETDEV_HAS_NET)
+ #   define compat_sk_alloc(_bri, _pri) sk_alloc(&init_net, \
+                                                 PF_NETLINK, _pri, &vmnet_proto)
