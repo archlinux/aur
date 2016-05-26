@@ -1,8 +1,8 @@
-# Author: Madotsuki <madotsuki@national.shitposting.agency>
-
+#Maintainer: Yan Burdonsky <psyrccio@gmail.com>
+#Contributor: Yan Burdonsky <psyrccio@gmail.com>
 pkgname=mandelbulber2-git
 _pkgname=mandelbulber2
-pkgver=20150804
+pkgver=20160526
 pkgrel=1
 pkgdesc="3D application designed to render 3D fractals such as the Mandelbulb, Mandelbox, BulbBox, JuliaBulb, Menger Sponge, and Iterated Function Systems. Git version."
 arch=('any')
@@ -22,7 +22,7 @@ pkgver()
 }
 
 build()
-{ 
+{
 	cd $_pkgname/$_pkgname/Release
 	qmake-qt5 mandelbulber.pro
 	make PREFIX=/usr
@@ -48,4 +48,3 @@ package()
 	cp -ra "${srcdir}/${_pkgname}/${_pkgname}/deploy/share/mandelbulber2/toolbar" "$pkgdir/usr/share/${_pkgname}/toolbar"
 	install -m755 "${srcdir}/${_pkgname}/${_pkgname}/Release/mandelbulber2" "${pkgdir}/usr/bin/"
 }
-
