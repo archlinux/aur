@@ -2,7 +2,7 @@
 
 pkgname=git-gitlab
 pkgver=r80.f951d0528838aad99f768d504b36b03194daa72e
-pkgrel=1
+pkgrel=2
 pkgdesc="gitlab command line interface"
 arch=('x86_64' 'i686')
 url="http://github.com/numa08/git-gitlab"
