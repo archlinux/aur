@@ -1,16 +1,17 @@
-# Maintainer: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
+# Maintainer:  Javier Torres <javitonino [at] gmail [dot] com>
+# Contributor: Xiao-Long Chen <chenxiaolong@cxl.epac.to>
 
 pkgname=svrcore
-pkgver=4.0.4
-pkgrel=4
+pkgver=4.1.2
+pkgrel=1
 pkgdesc="Secure PIN handling using NSS crypto"
 arch=(i686 x86_64)
 license=(MPL)
-url="https://wiki.mozilla.org/LDAP_C_SDK" # TODO there is a mention of it, but does anyone really know?
+url="https://pagure.io/svrcore/"
 depends=(nspr nss)
 options=(!libtool)
-source=("ftp://ftp.mozilla.org/pub/mozilla.org/directory/${pkgname}/releases/${pkgver}/src/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('4a63e2618ef8f508e71adf212eefae56e3c9d9898b924f405399bb99793de57bd178a3417f9e837c474e7960b6eb8a3cbe775b420c8fecbd974e89b4196b78fc')
+source=("http://directory.fedoraproject.org/binaries/${pkgname}-${pkgver}.tar.bz2")
+sha512sums=('9d148ec9c568f1183e44006fec83b4e43b0cef56d5a04fce122fab1e9a0c0bfe39919de81c5a4d7adb2258fb7f16b4d327da20cdb4d948810e968c422d62ad40')
 
 build() {
   cd "${pkgname}-${pkgver}"
