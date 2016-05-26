@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=rep-gtk-git
-pkgver=0.90.8.2.11.gdc01f3f
+pkgver=0.90.8.3
 pkgrel=1
 pkgdesc="Binding of the GTK and GDK libraries for the librep Lisp environment - git version"
 arch=('i686' 'x86_64')
