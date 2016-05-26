@@ -1,7 +1,7 @@
 pkgbase = python-natsort
 	pkgdesc = Sort lists naturally.
-	pkgver = 4.0.4
-	pkgrel = 2
+	pkgver = 5.0.0
+	pkgrel = 1
 	url = https://github.com/SethMMorton/natsort
 	arch = any
 	license = MIT
@@ -10,8 +10,8 @@ pkgbase = python-natsort
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
 	options = !emptydirs
-	source = https://pypi.io/packages/source/n/natsort/natsort-4.0.4.tar.gz
-	md5sums = 03c9562e852672172bfe4b1a00e02d11
+	source = https://pypi.io/packages/source/n/natsort/natsort-5.0.0.tar.gz
+	md5sums = 6662a32abb9fd79c899189ab3b29cf04
 
 pkgname = python-natsort
 	depends = python
