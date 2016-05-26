@@ -1,0 +1,11 @@
+#!/bin/bash
+
+pkgver() {
+    git ls-remote -t https://github.com/cisco/ChezScheme | tail -1 | sed 's|.*refs/tags/v||'
+}
+
+ver="$(pkgver)"
+rm -f ./*.part >/dev/null 2>&1
+sed -i "s/^\(pkgver=\).*/\1$ver/" PKGBUILD
+makepkg --printsrcinfo > .SRCINFO
+makepkg -rsicC --noconfirm --needed
