@@ -3,8 +3,8 @@
 
 pkgname=fancontrol-common
 _srcname=fancontrol-gui
-pkgver=v0.4
-pkgrel=2
+pkgver=v0.4.1
+pkgrel=1
 pkgdesc="Common resources used by fancontrol-gui and fancontrol-kcm"
 arch=('i686' 'x86_64')
 url="https://github.com/Maldela/Fancontrol-GUI"
