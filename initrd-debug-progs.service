@@ -22,6 +22,7 @@ ExecStart=/bin/true
 
 
 [Install]
+WantedBy=sysinit.target
 WantedBy=initrd-debug-shell.service
 
 
@@ -34,6 +35,8 @@ InitrdBinary=/bin/journalctl
 InitrdBinary=/bin/systemd-analyze 
 
 # midnight commander
+
+InitrdBinary=/bin/hostname
 
 InitrdBinary=/bin/mc
 InitrdBinary=/bin/mcedit
