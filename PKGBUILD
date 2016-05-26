@@ -4,7 +4,7 @@
 pkgname=gogs-git
 _pkgname=gogs
 _branch=master
-pkgver=3834.d6b09c3
+pkgver=3879.3c0c7a9
 pkgrel=1
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language. This is the current git version from branch ${_branch}."
@@ -32,8 +32,8 @@ source=('gogs.service.patch'
         'helper.sh'
         "$_pkgname::git+https://${_gourl}.git#branch=${_branch}")
 
-sha512sums=(834e95fe9bcfa291a573ad1fa43f41bbed844658a918ff4fcf53ab8a44a296206ee4003eab1d9a2785c9126be077022f4907846d2eb6c5d64050b5e81ce47f44
-            bd378fac1c9a37e9d96d84529fce5b95351e631e0ac0f461c4d9ca3e2d9903400d03f83fcfbf701a93d5531e0d9fa0061d877a226cceb36387db76061533bdf6
+sha512sums=(db36fd44c29de387b066e52a71a61214aa876a27574eb054ec9517a175b5a47db9a7de01be2dd635023a11d5e1224772a66accc4b63b6936f7c58e6314555a66
+            43c8971b0b4e8ea8d5aa0ed15610e9737605dc46a626d3d578bb1c97c9f90912966f59b452e9f4ea7974e4e3beaa5dd40bc597b03319afed3358432ab6e59c7d
             e45775adafeecad5deaf24a98cd85b25a8383cb0e89905b2927c13fe7f0ec9918a42071ce43eabc429d8a826db93bb75ffb1927dce9c431ed88b0b5c619fd60d
             'SKIP')
 
@@ -94,7 +94,7 @@ build() {
 
   msg2 "Build program"
   go fix
-  go build -x -tags='sqlite'
+  go build -x -tags='sqlite pam cert'
 }
 
 package() {
