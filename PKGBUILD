@@ -1,7 +1,7 @@
 # Maintainer: jdarch <jda -dot- cloud -plus- archlinux -at- gmail -dot- com>
 
 pkgname=microsoft-r-open-blas-systemblas
-pkgver=3.2.4
+pkgver=3.2.5
 pkgrel=1
 pkgdesc="Alternative math library symlinks (to the system blas e.g. OpenBLAS) for Microsoft R Open"
 arch=('x86_64')
