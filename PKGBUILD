@@ -13,7 +13,6 @@ makedepends=('unzip')
 source=(http://knucklecracker.com/creeperworld2/patches/cw2PATCH-${pkgver}.air
         "$pkgname".desktop
         "$pkgname".sh)
-install="$pkgname".install
 noextract=(cw2PATCH-${pkgver}.air)
 
 sha256sums=('6cb54ab81fbaf559fdc75fb391db71011a984aead6ed609eb3f22949aeb59c51'
