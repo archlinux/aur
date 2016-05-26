@@ -13,6 +13,7 @@ Features:
 * cryptsetup password answer over ssh
 * unified systemd + mkinitcpio configuration
 * automatic provisioning of binary and config resources
+* on-demand invocation of mkinitcpio scripts and in-line functions 
 
 mkinitcpio hook name: `systemd-tool`
 
@@ -90,7 +91,8 @@ can I invoke a provisioning script related to my service during mkinitcpio build
 * use `InitrdInvoke=/path-to/script.sh command=function_name` 
 
 can I call a little provisioning script snippet during mkinitcpio build time?
-* use `InitrdCall=inline-bash-code-here` 
+* check for available `mkinitcpio` functions in `/usr/lib/initcpio/functions.sh`
+* use `InitrdCall=inline-bash-code-here` to call these functions 
 
 how can I provide custom interactive user shell for ssh client
 * change sample shell file located in `/etc/mkinitcpio.d/shell.sh`  
