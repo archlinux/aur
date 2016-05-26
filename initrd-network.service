@@ -24,7 +24,7 @@ ExecStart=/bin/true
 
 # release network devices to allow rename after switch-root
 
-# works with extra deps: "ip"
+# works with extra dependency: "/bin/ip"
 #ExecStop=/bin/ip addr flush up
 #ExecStop=/bin/ip link set group default down
 

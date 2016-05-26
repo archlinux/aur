@@ -46,8 +46,8 @@ InitrdPath=/usr/share/mc
 # terminal emulator used by ssh client
 
 #InitrdExec=/bin/infocmp
-#InitrdPath=/usr/share/terminfo
 
+#InitrdPath=/usr/share/terminfo
 InitrdPath=/usr/share/terminfo/l/linux
 InitrdPath=/usr/share/terminfo/v/vt100
 InitrdPath=/usr/share/terminfo/x/xterm

@@ -1,6 +1,6 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
-# Replace/enhanace hook "sd-encrypt" provided by cryptsetup
+# Provides replacement/enhancement for mkinitcpio hook "sd-encrypt" included in cryptsetup
 # https://git.archlinux.org/svntogit/packages.git/tree/trunk/sd-encrypt?h=packages/cryptsetup
 
 
