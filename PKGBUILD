@@ -11,10 +11,10 @@
 
 _lang=it
 _language=Italian
-_url=https://ftp.mozilla.org/pub/mozilla.org/firefox/releases
+_url=https://ftp.mozilla.org/pub/firefox/releases
 
 pkgname=iceweasel-i18n-it
-pkgver=46.0
+pkgver=46.0.1
 pkgrel=1
 pkgdesc="$_language language pack for Iceweasel"
 arch=('any')
@@ -27,9 +27,9 @@ source=("$_url/$pkgver/linux-$CARCH/xpi/$_lang.xpi"
 		'brand.properties')
 
 if [ "$CARCH" = "x86_64" ]; then
-    sha512sums=('aecd8cb3ec41eab788dba072d66da706fff252932856d3f0b767c07aa402cb63419b51d7b4f73a62226c883dd3b764d8059c6ffbfe3210c032f9c782a8590eb8')
+    sha512sums=('d547f53e6693e48c3ecba27e0fe4a56f552a69e12df37868e6e16d8f6b9e99dca936651ea828192bb3370685a00479eb8047300eb8b33b368e702eeb5b4400df')
 else
-    sha512sums=('128bfeb764dd79ff1ab4870264ed59cc89e7fb8b96c1b91d0672d7b27fa72f404292c0d2cad17fa7aad752f0b725556370e2e0b4c859df24b06617db7e18f1c5')
+    sha512sums=('c1b29cdecebccda54a013d0d36c710836cf90616770bfadbb74640cae4c5c8e9c20260cfc15d1bb0d9d17257bbd85aa1ee5e4614e6d2a1b613087f3656f5a773')
 fi
 
 sha512sums+=('ce454355d904384381e35c390dbad634d617d17387debeb00b4e737a7b4fa665b94d40762a415236519b7a44f8b2066aeab9a50a34f1155c4b272e263ce19027'
