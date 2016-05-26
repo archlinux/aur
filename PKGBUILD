@@ -14,7 +14,6 @@ source=(http://knucklecracker.com/creeperworld/dd_webb/CreeperWorld-${pkgver}.ex
 	    creeper-world.desktop
         creeper-world.sh)
 noextract=(CreeperWorld-${pkgver}.exe)
-install="$pkgname".install
 sha256sums=('6ddfcaa307e36d8761049177de1dbd6c95acc7536c4ff9b2412687e3367e6afc'
             'ec5f8b5de88ad3ad1291c8cbea7d2e91e3d3daca0209fc4f5e8fd283fab0a74d'
             '809a86452f621dfcb73f1b3b6ef0c2b482315d6f822e14c20ffd720199fc495e')
