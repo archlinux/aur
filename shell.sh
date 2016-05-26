@@ -140,17 +140,17 @@ do_crypt() {
         true
     else
         echo "missing jobs/asks"
-        return 1            
-    if
+        return 1
+    fi
     
     run_answer
     
     if wait_answer ; then
         echo "success"
-        return 0            
+        return 0
     else
         echo "failure"
-        return 1            
+        return 1
     fi
 
 }
@@ -173,7 +173,7 @@ do_console() {
 # process invocation from systemd service unit
 do_service() {
     if has_crypt_jobs ; then
-        do_crypt || do_agent 
+        do_crypt || do_agent
     else
         do_exit 
     fi
