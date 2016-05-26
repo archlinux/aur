@@ -13,16 +13,13 @@ license=('Apache')
 # libzip is needed for many modpacks.
 depends=('java-runtime' 'hicolor-icon-theme' 'xorg-xrandr' 'ttf-dejavu' 'libzip')
 makedepends=('libicns')
-install="${pkgname}.install"
 source=("$pkgname"
         "${pkgname}.jar"::"http://ftb.cursecdn.com/FTB2/maven/net/ftb/FTB_Launcher/${pkgver/_/-}/FTB_Launcher-${pkgver/_/-}.jar"
-        "${pkgname}.desktop"
-        "${pkgname}.install")
+        "${pkgname}.desktop")
 noextract=("${pkgname}.jar")
 sha256sums=('35ebb0e4fc8a581c2aa6e939527f238800f4059bb5253c67eb3d478c463010b0'
             'ac5c0ef1f7c8c4e3d319e99e6fbd8125c926cc0ac876aab3ea8618ed2ee617f3'
-            '4dc05fcbad49c8d6d8d3143969c8f9c7e26d22ad72979f73c2d3c2b3a23a426d'
-            'dfb83978fea9eddd28c2d90ab9eefa9554d5ae03dfc540554a829ac8ee8db83a')
+            '4dc05fcbad49c8d6d8d3143969c8f9c7e26d22ad72979f73c2d3c2b3a23a426d')
 
 package() {
     install -Dm755 "$pkgname" "${pkgdir}/usr/bin/${pkgname}"
