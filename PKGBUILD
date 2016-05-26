@@ -1,20 +1,19 @@
 # Maintainer: Alexander Schnaidt <alex.schnaidt@gmail.com>
 # Contributor: Brandon Moller <mollerbw@gmail.com>
 pkgname=passwordsafe-git
-pkgver=3.36.r79.g7401662
+pkgver=0.98.1BETA.r88.g9b1a281
 pkgrel=1
 pkgdesc="Simple & Secure Password Management"
 arch=('i686' 'x86_64')
-url="http://sourceforge.net/projects/passwordsafe/"
+url="https://pwsafe.org/"
 license=('Artistic2.0')
 #to build without yubikey support, remove yubikey-personalization and uncomment NO_YUBI in build()
 depends=('libxtst' 'wxgtk' 'webkitgtk2' 'yubikey-personalization' 'xerces-c')
 makedepends=('git' 'zip' 'libxt')
 optdepends=('xvkbd: virtual-keyboard support')
 conflicts=('passwordsafe-debian' 'passwordsafe' 'pwsafe')
-source=("${pkgname}::git://git.code.sf.net/p/passwordsafe/git-code")
+source=("$pkgname::git+https://github.com/pwsafe/pwsafe.git")
 md5sums=('SKIP')
-install=passwordsafe-git.install
 
 pkgver() {
 	cd "$pkgname"
