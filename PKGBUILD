@@ -16,14 +16,11 @@ provides=('csound-blue')
 conflicts=('csound-blue')
 source=("https://downloads.sourceforge.net/project/bluemusic/blue/2.5.x/blue_${pkgver}.zip"
         "blue.desktop"
-        "icons.tar.gz"
-        "blue.install")
+        "icons.tar.gz")
 sha256sums=('f5af74275e4d6f7cc14230feb010d836691ef6576aee0c7f519c50121fcd04f0'
             '06dcc0dbade0b9c2eb904815aefa86d32e8e21de47fd7cd8873f139c1fb24fe6'
-            '60240d02dd3f25b9df684efaf93a5fd05e520b5f46e94f24b58de60604dbae36'
-            '14b104d7cd229923186ab0ec8b11d481d758e7a7ed756be0ae5defae179d271e')
+            '60240d02dd3f25b9df684efaf93a5fd05e520b5f46e94f24b58de60604dbae36')
 options=(!strip)
-install=blue.install
 
 package() {
   mkdir -p "$pkgdir"/opt/blue
