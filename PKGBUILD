@@ -1,5 +1,4 @@
 # Maintainer: Peter Reschenhofer < peterreschenhofer at gmail dot com >
-# Contributor: Familia < carlosfamilia at gmail dot com >
 pkgname=gams
 pkgver=24.7.1
 pkgrel=1
