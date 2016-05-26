@@ -1,34 +1,39 @@
 # Maintainer: Chris Simpson <csimpson.aur at gmail dot com>
 
 pkgname=libretro-fba-git
-pkgver=63.03305b9
+pkgver=142.13f8a05
 pkgrel=1
 pkgdesc="libretro implementation of Final Burn Alpha (Arcade)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/libretro/libretro-fba"
-license=('GPL')
-depends=(gcc-libs)
-makedepends=()
+license=('custom:Non-commercial')
+makedepends=('git')
 
-source=("git+https://github.com/libretro/libretro-fba.git"
-        "https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/fba_libretro.info")
-md5sums=('SKIP'
-         'bb12e5156b605d846ce74ec4bbdc4907')
-
-_gitname=libretro-fba;
+_libname=fba_libretro
+_gitname=libretro-fba
+source=("git+https://github.com/libretro/${_gitname}.git"
+	"https://raw.github.com/libretro/libretro-super/master/dist/info/${_libname}.info")
+sha256sums=('SKIP'
+	'SKIP')
 
 pkgver() {
-  cd $_gitname
+  cd "${_gitname}"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "$_gitname"
-  make -f makefile.libretro
+  RPI=`grep -m1 'Revision' /proc/cpuinfo | awk '{print $3}'`
+  case "${RPI}" in
+    a[0-2]1041)	PLATFORM="platform=rpi2" ;;
+    a[0-2]2082)	PLATFORM="platform=rpi3" ;;
+  esac
+  cd "${_gitname}"
+  make -f makefile.libretro ${PLATFORM}
 }
 
 package()
 {
-  install -Dm644 "$srcdir/$_gitname/fba_libretro.so" "$pkgdir/usr/lib/libretro/fba_libretro.so"
-  install -Dm644 "fba_libretro.info" "${pkgdir}/usr/lib/libretro/fba_libretro.info"
+  install -Dm644 "${_gitname}/${_libname}.so" "${pkgdir}/usr/lib/libretro/${_libname}.so"
+  install -Dm644 "${_libname}.info" "${pkgdir}/usr/lib/libretro/${_libname}.info"
+  install -Dm644 "${_gitname}/src/license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
 }
