@@ -1,40 +1,40 @@
 # Maintainer: Benjamin A. Shelton <zancarius@gmail.com>
 # Source: https://github.com/zancarius/archlinux-pkgbuilds
 
-pkgname=sentry
+pkgbase=sentry
+pkgname=('sentry' 'sentry-dsym')
 pkgver=8.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python-based realtime logging and aggregation server."
 arch=(any)
 url="http://pypi.python.org/pypi/sentry"
 license=(BSD)
-depends=(
-    jansson
-    libxml2
-    libxslt
-    python2
-    postgresql
-    redis
-)
-makedepends=(python2-pip python2-setuptools python2-virtualenv)
+makedepends=(clang python2-pip python2-setuptools python2-virtualenv)
 options=(!strip)
-install="sentry.install"
 source=(
     "sentry.install"
     "sentry.service"
     "sentry-celery.service"
 )
 sha256sums=(
-    a8e29037fe9876230e74bc9205c950222a1b8d2319a45e472616b88d637cf076  # sentry.install
-    5b6506920c365466d9b8e29935ebbeedbc30b388f29eca370568728d4e529976  # sentry.service
-    6188e3fca3e9b4a6fd32fd3a9f39a3e4b489632b79cc6db307d767066fbbe518  # sentry-celery.service
+    a8e29037fe9876230e74bc9205c950222a1b8d2319a45e472616b88d637cf076 # sentry.install
+    ba4fbcb41429235e818cf6e3c67bea8434d691f4abc9a1e62405cd657fef8b4b # sentry.service
+    b7321469b6800e08ed14a7a716a2574a08eaf06a759b558abf92405c7bb37dd9 # sentry-celery.service
 )
 
-package () {
+package_sentry () {
+    install="sentry.install"
+    depends=(
+        'jansson'
+        'libxml2'
+        'libxslt'
+        'python2'
+        'postgresql'
+        'redis'
+    )
 
     mkdir -p "${pkgdir}/opt/sentry"
     virtualenv2 --python=python2.7 "${pkgdir}/opt/sentry"
-
     source "${pkgdir}/opt/sentry/bin/activate"
 
     # Begin Sentry installation for our specific version via PyPI. This
@@ -61,5 +61,25 @@ package () {
 
     install -Dm0644 "${srcdir}/sentry.service" "${pkgdir}/usr/lib/systemd/system/sentry.service"
     install -Dm0644 "${srcdir}/sentry-celery.service" "${pkgdir}/usr/lib/systemd/system/sentry-celery.service"
+
+}
+
+package_sentry-dsym() {
+    depends=(
+        'llvm'
+        'sentry'
+    )
+
+    mkdir -p "${pkgdir}/opt/sentry"
+    virtualenv2 --python=python2.7 "${srcdir}/dsym-env"
+    source "${srcdir}/dsym-env/bin/activate"
+
+    "${srcdir}/dsym-env/bin/pip" install "symsynd>=0.6.1,<1.0.0"
+
+    mkdir -p "${pkgdir}/opt/sentry/lib/python2.7/site-packages"
+    cp -a "${srcdir}/dsym-env/lib/python2.7/site-packages/altgraph"* "${pkgdir}/opt/sentry/lib/python2.7/site-packages/"
+    cp -a "${srcdir}/dsym-env/lib/python2.7/site-packages/macholib"* "${pkgdir}/opt/sentry/lib/python2.7/site-packages/"
+    cp -a "${srcdir}/dsym-env/lib/python2.7/site-packages/symsynd"* "${pkgdir}/opt/sentry/lib/python2.7/site-packages/"
+    cp -a "${srcdir}/dsym-env/lib/python2.7/site-packages/_symsynd_demangler.so" "${pkgdir}/opt/sentry/lib/python2.7/site-packages/"
 
 }
