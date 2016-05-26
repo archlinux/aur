@@ -1,12 +1,13 @@
 pkgbase = anoise-gui
 	pkgdesc = GUI for Ambient Noise Player
 	pkgver = 0.0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://code.launchpad.net/anoise
 	arch = any
 	license = GPL3
 	depends = anoise
 	depends = python-distutils-extra
+	depends = python-dbus
 	source = https://launchpad.net/~costales/+archive/ubuntu/anoise/+files/anoise-gui_0.0.4_all.deb
 	sha256sums = 8781f0e070675bf831300a7605b274ece8a0ebcefc423d37543bf650d04e8d56
 
