@@ -1,7 +1,7 @@
 pkgbase = nas
 	pkgdesc = Network Audio System is a network transparent, client/server audio transport system
 	pkgver = 1.9.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://radscan.com/nas.html
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,8 @@ pkgbase = nas
 	makedepends = bison
 	makedepends = flex
 	depends = libxaw
+	provides = libaudio2
+	conflicts = libaudio2
 	source = http://downloads.sourceforge.net/sourceforge/nas/nas-1.9.4.src.tar.gz
 	source = license
 	source = nasd.service
