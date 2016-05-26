@@ -27,7 +27,7 @@ _pgo=false
 _debname=firefox
 _brandingver=45.0
 _brandingrel=2
-_debver=46.0
+_debver=46.0.1
 _debrel=1
 _debrepo=http://ftp.debian.org/debian/pool/main/f
 _parabolarepo=https://repo.parabola.nu/other/iceweasel
@@ -38,7 +38,7 @@ pkgrel=1
 pkgdesc="Debian Browser based on Mozilla Firefox, with Parabola GNU/Linux-libre branding"
 arch=('i686' 'x86_64')
 license=('GPL' 'MPL' 'LGPL')
-depends=(alsa-lib dbus-glib desktop-file-utils ffmpeg gtk2 gtk3 hunspell icu libevent libvpx libxt mime-types mozilla-common nss sqlite startup-notification ttf-font)
+depends=(alsa-lib dbus-glib ffmpeg gtk2 gtk3 hunspell icu=57.1 libevent libvpx=1.5.0 libxt mime-types mozilla-common nss sqlite startup-notification ttf-font)
 makedepends=(autoconf2.13 diffutils gconf imake inetutils libidl2 libpulse librsvg-stable libxslt mesa pkg-config python2 quilt unzip yasm zip nss imagemagick)
 options=(!emptydirs !makeflags debug)
 if $_pgo; then
@@ -61,8 +61,8 @@ source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.xz"
 		no-libnotify.patch
 		iceweasel-gtk3-20.patch
 		enable-object-directory-paths.patch)
-md5sums=('978831bfb5a8ae0e08c033f51bb3c09c'
-         '96aca0023736939749e30c33b8e7c9aa'
+md5sums=('599fda5ead3f04e0cf50f582257d8f35'
+         '97ca2d7d0cd3bac0f13cbbea14b4abe2'
          '18ddaa5f1b70cbf12110471d50746339'
          'c12060755cf7580e987144d5a4fea0df'
          '7b9e5996dd9fe0b186a43a297db1c6b5'
@@ -164,5 +164,5 @@ package() {
   
     
   # Add Debian searchplugin
-  #install -Dm644 "$srcdir/$_debname-$_debver/debian/debsearch.xml" "${pkgdir}/usr/lib/firefox/distribution/searchplugins/common/"
+  install -Dm644 "$srcdir/$_debname-$_debver/debian/debsearch.xml" "${pkgdir}/usr/lib/$pkgname/distribution/searchplugins/common/"
 }
