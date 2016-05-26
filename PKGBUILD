@@ -29,6 +29,7 @@ package() {
 	install -Dm 0644 LICENSE.TXT "$pkgdir/usr/share/licenses/flasm/LICENSE.TXT"
 
 	install -Dm 0644 logo.gif    "$pkgdir/usr/share/doc/flasm/logo.gif"
+	install -Dm 0644 classic.css "$pkgdir/usr/share/doc/flasm/classic.css"
 	install -Dm 0644 flasm.html  "$pkgdir/usr/share/doc/flasm/flasm.html"
 	install -Dm 0644 CHANGES.TXT "$pkgdir/usr/share/doc/flasm/CHANGES.TXT"
 }
