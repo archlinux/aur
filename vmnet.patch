@@ -1,3 +1,19 @@
+diff --git a/vmnet/userif.c b/vmnet/userif.c
+index 4e457ba..b7b186a 100644
+--- a/vmnet/userif.c
++++ b/vmnet/userif.c
+@@ -113,7 +113,11 @@ UserifLockPage(VA addr) // IN
+    int retval;
+ 
+    down_read(&current->mm->mmap_sem);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
++   retval = get_user_pages(addr,
++#else
+    retval = get_user_pages(current, current->mm, addr,
++#endif
+ 			   1, 1, 0, &page, NULL);
+    up_read(&current->mm->mmap_sem);
+ 
 diff --git a/vmnet/vm_device_version.h b/vmnet/vm_device_version.h
 index e2cb477..3dd7097 100644
 --- a/vmnet/vm_device_version.h

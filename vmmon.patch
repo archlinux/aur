@@ -12,7 +12,7 @@ index 0a72335..63cea5d 100644
  {
     TSCDelta tscDelta;
 diff --git a/vmmon/linux/hostif.c b/vmmon/linux/hostif.c
-index d1bc8ba..918e8ce 100644
+index d1bc8ba..4d5018b 100644
 --- a/vmmon/linux/hostif.c
 +++ b/vmmon/linux/hostif.c
 @@ -74,6 +74,7 @@
@@ -23,6 +23,18 @@ index d1bc8ba..918e8ce 100644
  
  #include "vmware.h"
  #include "x86apic.h"
+@@ -1162,7 +1163,11 @@ HostIFGetUserPages(void *uvAddr,          // IN
+    int retval;
+ 
+    down_read(&current->mm->mmap_sem);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
++   retval = get_user_pages((unsigned long)uvAddr,
++#else
+    retval = get_user_pages(current, current->mm, (unsigned long)uvAddr,
++#endif
+                            numPages, 0, 0, ppages, NULL);
+    up_read(&current->mm->mmap_sem);
+ 
 diff --git a/vmmon/linux/vmmonInt.h b/vmmon/linux/vmmonInt.h
 index 4dc04e9..993212d 100644
 --- a/vmmon/linux/vmmonInt.h

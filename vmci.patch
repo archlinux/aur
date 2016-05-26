@@ -1,5 +1,5 @@
 diff --git a/vmci/linux/driver.c b/vmci/linux/driver.c
-index 64a3cca..08ec0c5 100644
+index 64a3cca..526f9a9 100644
 --- a/vmci/linux/driver.c
 +++ b/vmci/linux/driver.c
 @@ -26,6 +26,7 @@
@@ -31,7 +31,19 @@ index 64a3cca..08ec0c5 100644
        retval = VMCIContext_InitContext(initBlock.cid, initBlock.flags,
                                         0 /* Unused */, vmciLinux->userVersion,
                                         &user, &vmciLinux->context);
-@@ -1683,7 +1688,11 @@ vmci_guest_init(void)
+@@ -1467,7 +1472,11 @@ VMCIUserVALockPage(VA addr) // IN:
+    int retval;
+ 
+    down_read(&current->mm->mmap_sem);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
++   retval = get_user_pages(addr,
++#else
+    retval = get_user_pages(current, current->mm, addr,
++#endif
+                            1, 1, 0, &page, NULL);
+    up_read(&current->mm->mmap_sem);
+ 
+@@ -1683,7 +1692,11 @@ vmci_guest_init(void)
     /* This should be last to make sure we are done initializing. */
     retval = pci_register_driver(&vmci_driver);
     if (retval < 0) {
@@ -43,7 +55,7 @@ index 64a3cca..08ec0c5 100644
        data_buffer = NULL;
        return retval;
     }
-@@ -2470,7 +2479,11 @@ vmci_exit(void)
+@@ -2470,7 +2483,11 @@ vmci_exit(void)
  
     if (guestDeviceInit) {
        pci_unregister_driver(&vmci_driver);
@@ -55,7 +67,7 @@ index 64a3cca..08ec0c5 100644
        guestDeviceInit = FALSE;
     }
  
-@@ -2479,12 +2492,16 @@ vmci_exit(void)
+@@ -2479,12 +2496,16 @@ vmci_exit(void)
  
        VMCI_HostCleanup();
  
@@ -73,7 +85,7 @@ index 64a3cca..08ec0c5 100644
        hostDeviceInit = FALSE;
     }
 diff --git a/vmci/linux/vmciKernelIf.c b/vmci/linux/vmciKernelIf.c
-index 8b1788f..15766bf 100644
+index 8b1788f..12cce68 100644
 --- a/vmci/linux/vmciKernelIf.c
 +++ b/vmci/linux/vmciKernelIf.c
 @@ -40,6 +40,7 @@
@@ -124,6 +136,44 @@ index 8b1788f..15766bf 100644
           if (err != 0) {
              if (kernelIf->host) {
                 kunmap(kernelIf->u.h.page[pageIndex]);
+@@ -1834,7 +1851,11 @@ VMCIReleasePages(struct page **pages,  // IN
+       if (dirty) {
+          set_page_dirty(pages[i]);
+       }
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
++      put_page(pages[i]);
++#else
+       page_cache_release(pages[i]);
++#endif
+       pages[i] = NULL;
+    }
+ }
+@@ -2048,8 +2069,12 @@ VMCIHost_GetUserMemory(VA64 produceUVA,       // IN
+    int err = VMCI_SUCCESS;
+ 
+    down_write(&current->mm->mmap_sem);
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
++   retval = get_user_pages(
++#else
+    retval = get_user_pages(current,
+                            current->mm,
++#endif
+                            (VA)produceUVA,
+                            produceQ->kernelIf->numPages,
+                            1, 0,
+@@ -2062,8 +2087,12 @@ VMCIHost_GetUserMemory(VA64 produceUVA,       // IN
+       goto out;
+    }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 6, 0)
++   retval = get_user_pages(
++#else
+    retval = get_user_pages(current,
+                            current->mm,
++#endif
+                            (VA)consumeUVA,
+                            consumeQ->kernelIf->numPages,
+                            1, 0,
 diff --git a/vmci/shared/vm_device_version.h b/vmci/shared/vm_device_version.h
 index e2cb477..3dd7097 100644
 --- a/vmci/shared/vm_device_version.h
