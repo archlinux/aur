@@ -1,7 +1,7 @@
 # Maintainer: Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=libretro-prosystem-git
-pkgver=93.fe7530c
+pkgver=95.26ee7d5
 pkgrel=1
 pkgdesc="libretro implementation of ProSystem. (Atari 7800)"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
