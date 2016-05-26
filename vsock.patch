@@ -1,5 +1,5 @@
 diff --git a/vsock/linux/af_vsock.c b/vsock/linux/af_vsock.c
-index bde1497..46d505f 100644
+index bde1497..40b7927 100644
 --- a/vsock/linux/af_vsock.c
 +++ b/vsock/linux/af_vsock.c
 @@ -232,13 +232,27 @@ static int VSockVmciStreamSetsockopt(struct socket *sock, int level, int optname
@@ -34,18 +34,28 @@ index bde1497..46d505f 100644
                                   struct msghdr *msg, size_t len, int flags);
  
  static int VSockVmciCreate(
-@@ -2826,7 +2840,9 @@ __VSockVmciCreate(struct net *net,       // IN: Network namespace
+@@ -2822,11 +2836,18 @@ __VSockVmciCreate(struct net *net,       // IN: Network namespace
+     * From 2.6.9 to until 2.6.12 sk_alloc() used a cache in
+     * the protocol structure, but you still had to specify the size and cache
+     * yourself.
+-    * Most recently (in 2.6.24), sk_alloc() was changed to expect the
++    * In 2.6.24, sk_alloc() was changed to expect the
      * network namespace, and the option to zero the sock was dropped.
      *
++    * In 4.2, another parameter was added to sk_alloc() allowing you to specify
++    * whether or not the socket is to be a kernel socket. Previously, we passed
++    * 1 to this new parameter, but following Gentoo's lead
++    * ( https://github.com/gentoo/vmware/blob/master/app-emulation/vmware-modules/files/308-4.02-01-sk_alloc.patch#L19 )
++    * we have switched to passing 0.
      */
 -#if LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
 +#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 2, 0)
-+   sk = sk_alloc(net, vsockVmciFamilyOps.family, priority, &vsockVmciProto, 1);
++   sk = sk_alloc(net, vsockVmciFamilyOps.family, priority, &vsockVmciProto, 0);
 +#elif LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 12)
     sk = sk_alloc(vsockVmciFamilyOps.family, priority,
                   vsockVmciProto.slab_obj_size, vsockVmciProto.slab);
  #elif LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 24)
-@@ -4210,7 +4226,10 @@ VSockVmciShutdown(struct socket *sock,  // IN
+@@ -4210,7 +4231,10 @@ VSockVmciShutdown(struct socket *sock,  // IN
   */
  
  static int
@@ -57,16 +67,19 @@ index bde1497..46d505f 100644
                        struct socket *sock,          // IN: socket to send on
                        struct msghdr *msg,           // IN: message to send
                        size_t len)                   // IN: length of message
-@@ -4302,7 +4321,7 @@ VSockVmciDgramSendmsg(struct kiocb *kiocb,          // UNUSED
+@@ -4302,7 +4326,11 @@ VSockVmciDgramSendmsg(struct kiocb *kiocb,          // UNUSED
        goto out;
     }
  
--   memcpy_fromiovec(VMCI_DG_PAYLOAD(dg), msg->msg_iov, len);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+    memcpy_fromiovec(VMCI_DG_PAYLOAD(dg), msg->msg_iov, len);
++#else
 +   memcpy_from_msg(VMCI_DG_PAYLOAD(dg), msg, len);
++#endif
  
     dg->dst = VMCI_MAKE_HANDLE(remoteAddr->svm_cid, remoteAddr->svm_port);
     dg->src = VMCI_MAKE_HANDLE(vsk->localAddr.svm_cid, vsk->localAddr.svm_port);
-@@ -4540,7 +4559,10 @@ VSockVmciStreamGetsockopt(struct socket *sock,          // IN
+@@ -4540,7 +4568,10 @@ VSockVmciStreamGetsockopt(struct socket *sock,          // IN
   */
  
  static int
@@ -78,7 +91,7 @@ index bde1497..46d505f 100644
                         struct socket *sock,          // IN: socket to send on
                         struct msghdr *msg,           // IN: message to send
                         size_t len)                   // IN: length of message
-@@ -4662,7 +4684,11 @@ VSockVmciStreamSendmsg(struct kiocb *kiocb,          // UNUSED
+@@ -4662,7 +4693,11 @@ VSockVmciStreamSendmsg(struct kiocb *kiocb,          // UNUSED
         * able to send.
         */
  
@@ -90,7 +103,7 @@ index bde1497..46d505f 100644
                                    len - totalWritten, 0);
        if (written < 0) {
           err = -ENOMEM;
-@@ -4709,7 +4735,10 @@ out:
+@@ -4709,7 +4744,10 @@ out:
   */
  
  static int
@@ -102,26 +115,19 @@ index bde1497..46d505f 100644
                        struct socket *sock,          // IN: socket to receive from
                        struct msghdr *msg,           // IN/OUT: message to receive into
                        size_t len,                   // IN: length of receive buffer
-@@ -4721,6 +4750,7 @@ VSockVmciDgramRecvmsg(struct kiocb *kiocb,          // UNUSED
-    VMCIDatagram *dg;
-    size_t payloadLen;
-    struct sk_buff *skb;
-+   struct iov_iter to;
- 
-    sk = sock->sk;
-    noblock = flags & MSG_DONTWAIT;
-@@ -4759,7 +4789,9 @@ VSockVmciDgramRecvmsg(struct kiocb *kiocb,          // UNUSED
+@@ -4759,7 +4797,11 @@ VSockVmciDgramRecvmsg(struct kiocb *kiocb,          // UNUSED
     }
  
     /* Place the datagram payload in the user's iovec. */
--   err = skb_copy_datagram_iovec(skb, sizeof *dg, msg->msg_iov, payloadLen);
-+   // err = skb_copy_datagram_iovec(skb, sizeof *dg, msg->msg_iov, payloadLen);
-+   iov_iter_init(&to, READ, (struct iovec *)&msg->msg_iter.iov, 1, payloadLen);
-+   err = skb_copy_datagram_iter(skb, 0, &to, payloadLen);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 19, 0)
+    err = skb_copy_datagram_iovec(skb, sizeof *dg, msg->msg_iov, payloadLen);
++#else
++   err = skb_copy_datagram_iter(skb, sizeof *dg, &msg->msg_iter, payloadLen);
++#endif
     if (err) {
        goto out;
     }
-@@ -4800,7 +4832,10 @@ out:
+@@ -4800,7 +4842,10 @@ out:
   */
  
  static int
@@ -133,7 +139,7 @@ index bde1497..46d505f 100644
                         struct socket *sock,          // IN: socket to receive from
                         struct msghdr *msg,           // IN/OUT: message to receive into
                         size_t len,                   // IN: length of receive buffer
-@@ -4905,9 +4940,17 @@ VSockVmciStreamRecvmsg(struct kiocb *kiocb,          // UNUSED
+@@ -4905,9 +4950,17 @@ VSockVmciStreamRecvmsg(struct kiocb *kiocb,          // UNUSED
           }
  
           if (flags & MSG_PEEK) {
