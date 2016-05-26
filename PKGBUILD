@@ -12,7 +12,7 @@ conflicts=()
 depends=('python-distutils-extra')
 optdepends=()
 source=("https://launchpad.net/~costales/+archive/ubuntu/anoise/+files/${pkgname}_${pkgver}_all.deb")
-sha256sums=('8a458f503a85fa4ac02cefe125713db6d913c5a63e00e4516b3f5cfd5b4a962b')
+sha256sums=('50580824b15384f1d639312c54e779735ca7600ab2ebd6f651d7656baa78b207')
 
 build() {
   cd "${srcdir}"
