@@ -4,7 +4,7 @@
 pkgname=crystal-git
 pkgver=0.17.4.r59.gcb8cf95
 _last_release="0.17.4-1"
-pkgrel=1
+pkgrel=2
 pkgdesc="The Crystal Programming Language"
 arch=('i686' 'x86_64')
 url="http://crystal-lang.org"
@@ -38,7 +38,7 @@ build() {
        CRYSTAL_PATH="$srcdir/${pkgname/-git/}/src" \
        CRYSTAL_CONFIG_PATH="libs:/usr/lib/crystal" \
        CRYSTAL_CACHE_DIR="/tmp/crystal"
-  make doc
+  make doc CRYSTAL_CACHE_DIR="/tmp/crystal"
 }
 
 check() {
