@@ -32,7 +32,7 @@ package() {
     local _gemdir="$(ruby -e'puts Gem.default_dir')"
 
     bundle install \
-        --path="$pkgdir/$_gemdir" \
+        --path="$pkgdir/usr/lib/" \
         --standalone \
         --gemfile "$srcdir/$pkgname/Gemfile" \
         --no-prune \
