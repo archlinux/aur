@@ -3,8 +3,8 @@
 
 _pkgname=mailcatcher
 pkgname=ruby-$_pkgname
-pkgver=0.6.1
-pkgrel=11
+pkgver=0.6.3
+pkgrel=1
 pkgdesc='Catches mail and serves it through a dream.'
 arch=('any')
 url="http://$_pkgname.me"
@@ -23,7 +23,7 @@ source=(
   "$_pkgname-smtp@.socket"
   "$_pkgname-smtp.service"
 )
-md5sums=('bdeb5656e0931d1b211b52aa0f9e31f5'
+md5sums=('80bd456e6245ae801881bd7f458a81ae'
          'c6e70c3b5b061fb3e13ad56fea757b01'
          '5058d837ddef08507197a1cb17dcab34'
          'a3be575ff001fedc044ba43e6fdd31f7'
@@ -40,7 +40,7 @@ package() {
   gem install --no-document --no-user-install --ignore-dependencies --install-dir "$_gemdir" --bindir "$pkgdir/usr/bin" "$_pkgname-$pkgver.gem"
   rm "$_gemdir/cache/$_pkgname-$pkgver.gem"
 
-  # Loosen version-specific dependencies
+  # Loosen version-specific dependencies (doesn't appear to affect the software)
   sed -i '/dependency(%q<eventmachine>/{s/".*"/"~> 1"/}' $_gemspec
   sed -i '/dependency(%q<thin>/{s/".*"/"~> 1"/}' $_gemspec
 
