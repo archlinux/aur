@@ -1,0 +1,182 @@
+
+# Adapted from :
+# http://bazaar.launchpad.net/~marionnet-drivers/marionnet/trunk/view/head:/useful-scripts/marionnet_from_scratch
+# (LGPL)
+
+pre_install() {
+    # =============================================================
+    #             Install marionnet_kernels and filesystems
+    # =============================================================
+    echo ">>> Warning! Download marionnet kernels and filesystems (Linux
+    distributions Debian Lenny, Mandriva, Pinocchio, etc.)"
+    echo -e ">>> Warning! this operation can take many and many hours! \n\n\n"
+    wget http://www.marionnet.org/downloads/marionnet_from_scratch/marionnet_from_scratch
+    echo -e "\n\n\n>>>\`./marionnet_from_scratch --download-only\`"
+    chmod +x ./marionnet_from_scratch
+    ./marionnet_from_scratch -O
+
+}
+
+post_install () {
+
+
+# Here $SUDO_OR_NOTHING is null
+tmpfile=$(mktemp /tmp/marionnetInstallTmpXXXXXXX)
+
+# =============================================================
+#                     Adjust X -nolisten tcp
+# =============================================================
+
+function remove_nolisten_assignment_from {
+# global SUDO_OR_NOTHING
+local i=$1
+$SUDO_OR_NOTHING sed -i -e 's/\(^[a-ZA-Z0-9]*[=].*[-]nolisten tcp.*\)$/#\1\n\1/g' $i
+$SUDO_OR_NOTHING sed -i -e 's/\(^[a-ZA-Z0-9]*[=].*\)[-]nolisten tcp\(.*\)$/\1 \2/g' $i
+}
+
+function remove_nolisten_X_or_startx_actuals_from {
+# global SUDO_OR_NOTHING
+local i=$1
+$SUDO_OR_NOTHING sed -i -e 's/\(^[a-ZA-Z0-9/: ]*X.*\)[-]nolisten tcp\(.*\)$/\1\2/g' $i
+$SUDO_OR_NOTHING sed -i -e 's/\(^[a-ZA-Z0-9/: ]*startx.*\)[-]nolisten tcp\(.*\)$/\1\2/g' $i
+}
+
+function remove_DisallowTCP_from {
+# global SUDO_OR_NOTHING
+local i=$1
+$SUDO_OR_NOTHING sed -i -e 's/\(^DisallowTCP=true.*\)$/#\1\nDisallowTCP=false/g' $i
+}
+
+# Sections in file have the form "[security]"
+function ensure_section_and_binding {
+[[ $# -ge 3 ]] || return 1
+local SECTION=$1   # ex: security
+local VARIABLE=$2  # ex: Enable
+local VALUE=$3     # ex: true
+local AWK_PROGRAM
+shift 3
+AWK_PROGRAM="
+BEGIN {x=0}
+/\[$SECTION\]/ {x=1;print;next}
+(x==1) && /$VARIABLE=.*/ {print \"$VARIABLE=$VALUE\"; x=2; next}
+(x==1) && /\[.*\]/       {print \"$VARIABLE=$VALUE\n\"; print; x=2; next}
+/\[.*\]/ {print;next}
+{print}
+   END {if (x==0) print \"[$SECTION]\"; if (x==0 || x==1) print \"$VARIABLE=$VALUE\n\";}"
+   case $# in
+       0) awk "$AWK_PROGRAM" ;;
+       *)
+           local i
+           local TMPFILE=$(tmpfile)
+           for i in "$@"; do
+               awk 0<"$i" 1>$TMPFILE "$AWK_PROGRAM"
+               cat $TMPFILE 1>"$i"
+           done
+           rm $TMPFILE
+           ;;
+   esac
+}
+
+# This is needed, for instance, for ubuntu 10.10
+function ensure_DisallowTCP_false_to_gdm_custom_dot_conf {
+# global SUDO_OR_NOTHING CHANGED_FILES
+local custom=${1:-/etc/gdm/custom.conf}
+local TMPFILE=$(tmpfile)
+cp $custom $TMPFILE
+ensure_section_and_binding "security" "DisallowTCP" "false" $TMPFILE
+ensure_section_and_binding "xdmcp" "Enable" "true" $TMPFILE
+if ! diff -q $custom $TMPFILE >/dev/null; then
+    CHANGED_FILES+="$custom "
+    $SUDO_OR_NOTHING bash -c "cat $TMPFILE >$custom"
+fi
+}
+
+# This is needed, for instance, for ubuntu 12.04
+function ensure_xserver_allow_tcp_in_lightdm_dot_conf {
+# global SUDO_OR_NOTHING CHANGED_FILES
+local custom=${1:-/etc/lightdm/lightdm.conf}
+local TMPFILE=$(tmpfile)
+cp $custom $TMPFILE
+ensure_section_and_binding "SeatDefaults" "xserver-allow-tcp" "true" $TMPFILE
+if ! diff -q $custom $TMPFILE >/dev/null; then
+    CHANGED_FILES+="$custom "
+    $SUDO_OR_NOTHING bash -c "cat $TMPFILE >$custom"
+fi
+}
+
+
+function apply_all_filters {
+# global CHANGED_FILES
+local i=$1
+cat $i > $BACKUP
+{ remove_nolisten_assignment_from $i;
+    remove_DisallowTCP_from $i;
+    remove_nolisten_X_or_startx_actuals_from $i;
+} || true
+diff -q $BACKUP $i >/dev/null || {
+CHANGED_FILES+="$i "
+  }
+}
+
+function adjust_X_display_manager {
+# global SUDO_OR_NOTHING CHANGED_FILES
+local BACKUP=$(tmpfile)
+DIRS=$($SUDO_OR_NOTHING find /etc/ -type d -name "?dm")
+if [[ -d /etc/X11/xinit ]]; then DIRS+=" /etc/X11/xinit/"; fi
+FILES=$([[ -n $DIRS ]] && $SUDO_OR_NOTHING find $DIRS -name "*rc" -o -name "*.conf")
+FILES=$(for i in $FILES; do grep -l "^[a-zA-Z0-9/_\-= ]*[-]nolisten tcp" $i; done)
+for i in $FILES; do apply_all_filters $i; done
+rm -f $BACKUP
+# A special case: gdm/gdm3 :
+if [[ -d /etc/gdm ]]; then
+    $SUDO_OR_NOTHING touch /etc/gdm/custom.conf
+    ensure_DisallowTCP_false_to_gdm_custom_dot_conf
+elif [[ -d /etc/gdm? ]]; then
+    $SUDO_OR_NOTHING touch /etc/gdm?/custom.conf /etc/gdm?/daemon.conf
+    ensure_DisallowTCP_false_to_gdm_custom_dot_conf /etc/gdm?/custom.conf
+    ensure_DisallowTCP_false_to_gdm_custom_dot_conf /etc/gdm?/daemon.conf
+fi
+# Another special case: lightdm
+if [[ -d /etc/lightdm ]]; then
+    $SUDO_OR_NOTHING touch /etc/lightdm/lightdm.conf
+    ensure_xserver_allow_tcp_in_lightdm_dot_conf
+fi
+[[ -n $CHANGED_FILES ]]
+}
+
+if ps -A -o cmd | grep -q '^[a-zA-Z0-9/]*X.*[-]nolisten tcp'; then
+    echo '---'
+    echo "* Warning: your X server has been launched with the option '-nolisten tcp'"
+    echo "  => This option should be removed from your X display manager configuration."
+    echo -n "     Shall I try to fix it ([y]/n)? "
+    read z
+    if [[ $z != n && $z != N ]]; then
+        if adjust_X_display_manager; then
+            echo " >>> READ THIS LINES READ THIS LINES READ THIS LINES \
+            READ THIS LINES READ THIS LINES READ THIS LINES READ THIS LINES \
+            WARNIN READ THIS LINES READ THIS LINES WARNIN READ THIS LINES \
+            READ THIS LINES WARNIN READ THIS LINES \
+            READ THIS LINES WARNIN READ THIS LINES READ THIS LINES WARNIN \
+            READ THIS LINES READ THIS LINES WARNIN READ THIS LINES \
+            READ THIS LINES WARNIN READ THIS LINES \
+            READ THIS LINES WARNIN READ THIS LINES READ THIS LINES"
+            echo "     Ok. File(s) changed: $CHANGED_FILES"
+            echo "     You must restart your X display manager for the changes to take effect."
+        else
+            echo " >>> READ THIS LINES READ THIS LINES READ THIS LINES \
+            READ THIS LINES READ THIS LINES READ THIS LINES READ THIS LINES \
+            WARNIN READ THIS LINES READ THIS LINES WARNIN READ THIS LINES \
+            READ THIS LINES WARNIN READ THIS LINES \
+            READ THIS LINES WARNIN READ THIS LINES READ THIS LINES WARNIN \
+            READ THIS LINES READ THIS LINES WARNIN READ THIS LINES \
+            READ THIS LINES WARNIN READ THIS LINES \
+            READ THIS LINES WARNIN READ THIS LINES READ THIS LINES"
+            echo "     Sorry, no change performed: you must edit your configuration manually."
+        fi
+    fi
+fi
+
+}
+
+
+# vim: ft=sh
