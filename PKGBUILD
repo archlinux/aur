@@ -1,0 +1,35 @@
+# Maintainer: meriken <meriken.ygch.net@gmail.com>
+
+pkgname=merikens-tripcode-engine-v3-git
+_gitname=merikens-tripcode-engine-v3
+pkgver=110.g2d9cd3b
+pkgrel=1
+pkgdesc='"Meriken''s Tripcode Engine" is a cross-platform custom tripcode generator.'
+arch=('i686' 'x86_64')
+url='https://github.com/meriken/merikens-tripcode-engine-v3'
+license=('GPLv3')
+optdepends=(
+    'cuda: Support for NVIDIA GPUs'
+    'amdapp-sdk: Support for AMD GPUs'
+)
+makedepends=('p7zip' 'cmake')
+source=("git+$url")
+md5sums=('SKIP')
+
+
+pkgver() {
+    cd "$srcdir/$_gitname"
+    echo "$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
+
+build() {
+    cd "$srcdir/$_gitname"
+    ./BuildAll.sh
+}
+
+
+package() {
+    cd "$srcdir/$_gitname/CMakeBuild"
+    make DESTDIR="$pkgdir/" install
+}

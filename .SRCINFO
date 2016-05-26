@@ -1,0 +1,13 @@
+pkgbase = merikens-tripcode-engine-v3-git
+	pkgver = 110.g2d9cd3b
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	makedepends = cmake
+	makedepends = p7zip
+	optdepends = cuda
+	optdepends = amdapp-sdk
+	source = git+https://github.com/meriken/merikens-tripcode-engine-v3
+	sha256sums = SKIP
+
+pkgname = merikens-tripcode-engine-v3-git
