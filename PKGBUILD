@@ -1,9 +1,9 @@
 # Maintainer : Florent H. CARRÉ <colundrum@gmail.com>
 
 _npmname=ionic
-_npmver=1.7.14
+_npmver=1.7.15
 pkgname=nodejs-ionic
-pkgver=1.7.14
+pkgver=1.7.15
 pkgrel=1
 pkgdesc="A tool for creating and building Ionic Framework mobile apps."
 arch=(any)
@@ -13,7 +13,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=('2ec4ac70c432f00710d6427c1259e0979a3d3490db42573af013a4c57d7fa9a7')
+sha256sums=('451900094f9012cca801f1cd6a4a4e250d89c5435c493a40977863c9d564d2d4')
 
 package() {
   cd "$srcdir"
