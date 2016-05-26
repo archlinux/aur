@@ -91,7 +91,7 @@ can I invoke a provisioning script related to my service during mkinitcpio build
 can I call a little provisioning script snippet during mkinitcpio build time?
 * use `InitrdCall=inline-bash-code-here` 
 
-how can provide custom interactive user shell for ssh client
+how can I provide custom interactive user shell for ssh client
 * change sample shell file located in `/etc/mkinitcpio.d/shell.sh`  
 
 which ssh user keys are used by initramfs sshd server? 
