@@ -4,36 +4,43 @@
 
 ### Summary 
 
-Utilities for systemd in initramfs (systemd-tool)
+Provisioning tool for systemd in initramfs (systemd-tool)
+
+Features:
 * initrd debugging
 * early network setup
 * remote ssh access in initrd
 * cryptsetup password answer over ssh
+* unified systemd + mkinitcpio configuration
 * automatic provisioning of binary and config resources
 
-hook name: `systemd-tool`
+mkinitcpio hook name: `systemd-tool`
 
 ### Example
 
-change `/etc/mkinitcpio.conf`
+Basic usage steps:
+
+1) activate required hooks in `/etc/mkinitcpio.conf`:
 `
-HOOKS="base systemd systemd-tool sd-encrypt"
+HOOKS="base systemd systemd-tool"
 `
 
-review and enable/disable provided default service unit files
+2) review, change and enable/disable provided default files:
 `
-shell.sh
-initrd-*.network
-initrd-*.service
+/etc/mkinitcpio.d/shell.sh
+/etc/systemd/network/initrd-*.network
+/etc/systemd/system/initrd-*.service
 `
+
+3) build initrd and reboot
 
 ### Details
 
-pacman install actions:
+`makepkg/pacman` install actions:
 * provision default files included in this package into the `/etc`
 * specific folders are `/etc/mkinitcpio.d` and  `/etc/systemd/{system,network}`
 
-mkinitcpio install hook actions:
+`mkinitcpio` install hook actions:
 * look in the `/etc/systemd/system`
 * include in initrd units containing marker `/etc/initrd-release`
 * activate transitively in initrd any discovered systemd service units
@@ -41,27 +48,29 @@ mkinitcpio install hook actions:
 
 ### Frequently Asked Questions
 
-what is the mkinitcpio hook entry for this?
+what is the mkinitcpio hook entry provided by this package?
 * hook name: `systemd-tool`
+* minimum required hooks are: `systemd systemd-tool`
 
-how can I enable my custom.service unit in initrd?
+how can I enable my custom service unit in initrd?
 * add `[Unit]` entry `ConditionPathExists=/etc/initrd-release`
 
-how can I disable my custom.service unit in initrd?
-* alter / remove the tag marker string, i.e.: `ConditionPathExists=/etc/xxx/initrd-release`
+how can I disable my custom service unit in initrd?
+* alter the tag marker string, i.e.: `ConditionPathExists=/etc/xxx/initrd-release`
 
-how can I auto-provision custom.service unit binaries into initramfs?
-* use `InitrdExec=/target-exec` to provision service binary
-* any of `Exec*` entries such as `ExecStart=/bin/program` will also be provisioned
+what is the purpose of `[X-SystemdTool]` section in service unit files?
+* it provides configuration interface for `mkinitcpio` provisioning actions
+* custom entries in `[X-SystemdTool]` include: `InitrdExec=`, `InitrdPath=`
 
-how can I auto-provision custom.service unit resources into initramfs?
-* add several `[X-SystemdTool]` entries `InitrdPath=/path/to/host/dir-or-file`
+how can I auto-provision my custom service unit binaries into initramfs?
+* use `InitrdExec=/path/target-exec` to provision service binary
+* also will be provisioned all `Exec*` entries such as `ExecStart=/bin/program`
 
-which ssh user keys are used by initramfs sshd server?  
-* they come from host `/root/.ssh/authorized_keys`
+how can I auto-provision my custom service unit resources into initramfs?
+* use `InitrdPath=/path/to/host/folder-or-file`
 
-how can provide custom interactive user shell for ssh client
-* change sample shell file located in `/etc/mkinitcpio.d/shell.sh`  
+how can I relocate folder during provisioning?
+* not implemented, source and target folder must use same location
 
 how can I relocate file and/or change file mode during provisioning?
 * use `InitrdPath=/target-file source=/source-file mode=NNN` 
@@ -72,6 +81,8 @@ how can I filter directory content during provisioning?
 how can I provision optional folder or file?
 * use `InitrdPath=/target-file source=/source-file optional=yes`
 
-how can I relocate folder during provisioning?
-* not implemented
+how can provide custom interactive user shell for ssh client
+* change sample shell file located in `/etc/mkinitcpio.d/shell.sh`  
 
+which ssh user keys are used by initramfs sshd server? 
+* they come from host `/root/.ssh/authorized_keys`

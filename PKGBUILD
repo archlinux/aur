@@ -1,9 +1,9 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
 pkgname=mkinitcpio-systemd-tool
-pkgver=r34.21a1a96
+pkgver=r35.f05b6b7
 pkgrel=1
-pkgdesc='Utilities for systemd in initramfs (systemd-tool)'
+pkgdesc='Provisioning tool for systemd in initramfs (systemd-tool)'
 arch=('any')
 license=('Apache')
 depends=('systemd' 'dropbear')

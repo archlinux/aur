@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-systemd-tool
-    pkgdesc = Utilities for systemd in initramfs (systemd-tool)
-    pkgver = r34.21a1a96
+    pkgdesc = Provisioning tool for systemd in initramfs (systemd-tool)
+    pkgver = r35.f05b6b7
     pkgrel = 1
     url = https://aur.archlinux.org/cgit/aur.git/tree/?h=mkinitcpio-systemd-tool
     install = INSTALL.sh
