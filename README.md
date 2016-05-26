@@ -86,6 +86,7 @@ how can I provision optional folder or file?
 is there a way to create empty folder or file?
 * for empty dir, use `InitrdPath=/path/target-folder/ create=yes` note trailing SLASH
 * for empty file, use `InitrdPath=/path/target-file create=yes` note NO trailing slash
+* if you want ignore existing host source, add `source=/some-invalid-path` argument
 
 can I invoke a provisioning script related to my service during mkinitcpio build time?
 * use `InitrdInvoke=/path-to/script.sh command=function_name` 
