@@ -1,15 +1,20 @@
 pkgbase = python-periodictable
 	pkgdesc = Extensible periodic table of the elements
 	pkgver = 1.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.reflectometry.org/danse/elements.html
 	arch = any
 	license = public domain
 	makedepends = python-setuptools
-	depends = python-numpy
-	depends = python-pyparsing
+	makedepends = python2-setuptools
 	source = https://github.com/pkienzle/periodictable/archive/v1.4.1.tar.gz
 	md5sums = c18a230824f135f82c75114d62d98b3a
 
 pkgname = python-periodictable
+	depends = python-numpy
+	depends = python-pyparsing
+
+pkgname = python2-periodictable
+	depends = python2-numpy
+	depends = python2-pyparsing
 
