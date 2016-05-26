@@ -14,19 +14,22 @@ ConditionPathExists=/etc/initrd-release
 DefaultDependencies=no
 Conflicts=shutdown.target
 Before=shutdown.target
-Before=cryptsetup-pre.target
-#
-Requires=cryptsetup.target
-Requires=systemd-ask-password-console.path
-Requires=systemd-ask-password-console.service
+After=cryptsetup-pre.target
+Before=cryptsetup.target
+
+#Requires=systemd-ask-password-console.path
+#Requires=systemd-ask-password-console.service
 
 
 [Service]
-Type=oneshot
-RemainAfterExit=true
-
-# empty service
-ExecStart=/bin/true
+# see shell.sh
+ExecStart=/bin/sh /root/.profile entry=service
+Restart=on-failure
+RestartSec=1s
+StandardInput=tty
+StandardError=tty
+StandardOutput=tty
+TTYPath=/dev/console
 
     
 [Install]
@@ -39,8 +42,15 @@ WantedBy=sysinit.target
 # provision crypttab in initramfs
 InitrdPath=/etc/crypttab source=/etc/mkinitcpio.d/crypttab optional=yes
 
+# include crypt systemd targets
+InitrdPath=/usr/lib/systemd/system/cryptsetup-pre.target
+InitrdPath=/usr/lib/systemd/system/cryptsetup.target
+
 # include crypt setup binaries
 InitrdBinary=/bin/dmsetup version
+InitrdBinary=/usr/bin/systemd-ask-password
+InitrdBinary=/usr/bin/systemd-tty-ask-password-agent
+InitrdBinary=/usr/lib/systemd/systemd-reply-password
 InitrdBinary=/usr/lib/systemd/systemd-cryptsetup
 InitrdBinary=/usr/lib/systemd/system-generators/systemd-cryptsetup-generator
 

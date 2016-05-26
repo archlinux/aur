@@ -1,6 +1,6 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
-# Configure root user for remote access
+# Configure root user settings
 
 
 [Unit]
@@ -10,6 +10,7 @@ ConditionPathExists=/etc/initrd-release
 DefaultDependencies=no
 Conflicts=shutdown.target
 Before=shutdown.target
+Before=initrd-cryptsetup.service
 Before=initrd-dropbear.service
 
 
@@ -29,6 +30,7 @@ ExecStart=/bin/ln -f -s ${SHELL_FILE} ${SHELL_LINK}
 
 
 [Install]
+RequiredBy=initrd-cryptsetup.service
 RequiredBy=initrd-dropbear.service
 
 
