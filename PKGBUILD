@@ -11,13 +11,10 @@ license=('custom')
 depends=('glu' 'gtk2')
 source=("http://knucklecracker.com/creeperworld3/patches/CreeperWorld3PATCH-${pkgver}-linux.tgz"
 	    "${pkgname}.desktop"
-        "${pkgname}.sh"
-        "${pkgname}.install")
+        "${pkgname}.sh")
 sha256sums=('78f1b45b4771114309abd23fbcbfd0ff6bf4ecdcbfbaf0da3213af48ce71672d'
             'b94de60d7001a17fd852937e33cf43a1e8c46cda21ac36ae9ac39808e8293aa7'
-            'c4171f171229ebe6e09421ce2a778b9ebfb8d55e1aaaf9b3ca5775e47c6672a1'
-            'e6c9213ef87cd3b1e8b65e2cd24d2338e2b808e5bfe58154fa4364e597196ca8')
-install="${pkgname}.install"
+            'c4171f171229ebe6e09421ce2a778b9ebfb8d55e1aaaf9b3ca5775e47c6672a1')
 [ "$CARCH" == "x86_64" ] && _arch="x86_64" || _arch="x86"
 # Prevent compressing final package
 PKGEXT='.pkg.tar'
