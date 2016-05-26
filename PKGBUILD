@@ -1,14 +1,17 @@
 # Maintainer: Tun Win Naing <twnaing(at)outlook(dot)com>
+# Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=softethervpn
-pkgver=v4.18_9570
+pkgver=v4.20_9608
 pkgrel=1
 pkgdesc="Multi-protocol VPN Program from University of Tsukuba"
 arch=('i686' 'x86_64')
-source=('http://www.softether-download.com/files/softether/v4.18-9570-rtm-2015.07.26-tree/Source_Code/softether-src-v4.18-9570-rtm.tar.gz' 
-		'softethervpn-bridge.service' 
-		'softethervpn-client.service' 
-		'softethervpn-server.service')
-sha1sums=('1ab52bd794a3ae9cf6b9b8c0ad978ef0d222349b'
+source=('http://www.softether-download.com/files/softether/v4.20-9608-rtm-2016.04.17-tree/Source_Code/softether-src-v4.20-9608-rtm.tar.gz'
+        'disable_sslv3.patch'
+        'softethervpn-bridge.service'
+        'softethervpn-client.service'
+        'softethervpn-server.service')
+sha1sums=('8fb5693818d8bde2dfff37582a4cdc1d0703e200'
+          'ed10141565efe05dbe7ff9aae713dc4bef84e1c5'
           'e3d0c38be26123bb533e80f0a595e9867e9cf6ad'
           'efd246e8176683237609b7dae2e12300169b297f'
           'cdfb0c943128286bb318b5c044e5ca53c1dcffff')
@@ -24,6 +27,7 @@ build(){
   elif [ "${CARCH}" == "x86_64" ]; then 
     cp src/makefiles/linux_64bit.mak Makefile
   fi
+  patch -Np1 --binary -i "${srcdir}/disable_sslv3.patch"
   make
 }
 

@@ -1,0 +1,24 @@
+--- a/src/Mayaqua/Network.c	2016-03-20 13:37:38.829534634 -0400
++++ b/src/Mayaqua/Network.c	2016-03-20 13:37:28.079218703 -0400
+@@ -12981,14 +12981,14 @@
+ 		}
+ 		else
+ 		{
+-			if (client_tls == false)
+-			{
+-				SSL_CTX_set_ssl_version(ssl_ctx, SSLv3_method());
+-			}
+-			else
+-			{
++			//if (client_tls == false)
++			//{
++			//	SSL_CTX_set_ssl_version(ssl_ctx, SSLv3_method());
++			//}
++			//else
++			//{
+ 				SSL_CTX_set_ssl_version(ssl_ctx, TLSv1_client_method());
+-			}
++			//}
+ 		}
+ 		sock->ssl = SSL_new(ssl_ctx);
+ 		SSL_set_fd(sock->ssl, (int)sock->socket);
