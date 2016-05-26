@@ -1,7 +1,7 @@
 # Maintainer: Justin Wong <justin.w.xd at gmail dot com>
 pkgname=netease-cloud-music
 pkgver=0.9.0_2
-pkgrel=6
+pkgrel=7
 pkgdesc="Netease Cloud Music, converted from .deb package"
 arch=("x86_64")
 url="http://music.163.com/"
@@ -27,13 +27,12 @@ md5sums=('24c44fe5e71e69cd7ac252c2ce611270'
          '31a25ac517facc48762a6a9378a66f58')
 
 prepare() {
-	tar xf data.tar.xz
 	(mkdir -p libcue && cd libcue && ar xf ../libcue1_1.4.0-1_amd64.deb && tar xf data.tar.gz)
 }
 
 package() {
   cd ${srcdir}
-  cp -a usr ${pkgdir}
+  tar -xvf data.tar.xz -C ${pkgdir}
   chmod +x ${pkgdir}/usr/lib/netease-cloud-music/libcef.so
   install -D -m644 service.html ${pkgdir}/usr/share/licenses/$pkgname/license.html
   install -m755 libcue/usr/lib/libcue.so.1.0.4 ${pkgdir}/usr/lib/netease-cloud-music/libcue.so.1
