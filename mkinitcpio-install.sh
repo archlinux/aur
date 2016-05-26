@@ -121,6 +121,7 @@ add_systemd_unit_X() {
                 ;;
             InitrdInvoke)
                 # invoke build time function form script file
+                # format: InitrdInvoke=/path/script command=function-name 
                 local script= command= args= 
                 script="${values[0]}" ; args="${values[@]:1:9}" 
                 [ -n "$args" ] && local $(echo "$args")
@@ -136,6 +137,7 @@ add_systemd_unit_X() {
                 ;;
             InitrdCall)
                 # invoke build time code in-line
+                # format: InitrdCall=bash-code-in-line 
                 local code= 
                 code=$(echo "${values[@]}")
                 if [ -z "$code" ] ; then
