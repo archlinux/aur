@@ -3,21 +3,20 @@
 # http://bazaar.launchpad.net/~marionnet-drivers/marionnet/trunk/view/head:/useful-scripts/marionnet_from_scratch
 # (LGPL)
 
-pre_install() {
-    # =============================================================
-    #             Install marionnet_kernels and filesystems
-    # =============================================================
-    echo ">>> Warning! Download marionnet kernels and filesystems (Linux
-    distributions Debian Lenny, Mandriva, Pinocchio, etc.)"
-    echo -e ">>> Warning! this operation can take many and many hours! \n\n\n"
-    wget http://www.marionnet.org/downloads/marionnet_from_scratch/marionnet_from_scratch
-    echo -e "\n\n\n>>>\`./marionnet_from_scratch --download-only\`"
-    chmod +x ./marionnet_from_scratch
-    ./marionnet_from_scratch -O
-
-}
 
 post_install () {
+echo "* Marionnet installation completed\n\n\n"
+
+echo -e "Post installation hook\n"
+echo -e "——————————————————————\n"
+echo "* Downloading script marionnet_from_scratch : "
+wget http://www.marionnet.org/downloads/marionnet_from_scratch/marionnet_from_scratch
+echo "* Downlading and installing Marionnet kernels and filesystems (Linux \
+distributions Debian Lenny, Mandriva, Pinocchio, etc.)"
+echo -e "Warning! this process may take several hours! \n\n"
+echo -e "* Command : \`./marionnet_from_scratch --download-only\`"
+chmod +x ./marionnet_from_scratch
+./marionnet_from_scratch --download-only
 
 
 # Here $SUDO_OR_NOTHING is null
@@ -174,8 +173,14 @@ if ps -A -o cmd | grep -q '^[a-zA-Z0-9/]*X.*[-]nolisten tcp'; then
             echo "     Sorry, no change performed: you must edit your configuration manually."
         fi
     fi
+else
+    echo -e "\n\n\n* Your X server hasn't been launched with the option \
+    '-nolisten tcp' : good."
 fi
 
+#### Daemon information
+echo -e "\n\n* Before start Marionnet, you must start the daemon : \n"
+echo "sudo systemctl start marionnetdaemon.service"
 }
 
 
