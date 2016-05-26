@@ -8,7 +8,7 @@ pkgdesc="Educational software. It is a virtual network laboratory: it allows
 users to define, configure and run complex computer networks without any need
 for physical setup. Very old version."
 arch=('i686' 'x86_64')
-url="https://launchpad.net/marionnet"
+url="https://www.marionnet.org/"
 makedepends=('wget' 'optipng')
 license=('LGPL')
 depends=('xorg-server' 'xorg-xinit' 'xorg-server-utils' 'gtksourceview2' 'libglademm' 'graphviz' 'xterm' 'vde2' 'uml_utilities' 'net-tools' 'bridge-utils')
