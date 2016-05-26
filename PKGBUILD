@@ -18,7 +18,7 @@ _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=52.0.2729.3
+pkgver=52.0.2743.6
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -238,6 +238,7 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/leveldatabase'
            'third_party/libaddressinput'
            'third_party/libjingle'
+           'third_party/libjpeg_turbo'
            'third_party/libphonenumber'
            'third_party/libpng'
            'third_party/libsecret'
@@ -266,6 +267,8 @@ _necesary=('base/third_party/dmg_fp'
            'third_party/pdfium/third_party/lcms2-2.6'
            'third_party/pdfium/third_party/libjpeg'
            'third_party/pdfium/third_party/libopenjpeg20'
+           'third_party/pdfium/third_party/libpng16'
+           'third_party/pdfium/third_party/libtiff'
            'third_party/pdfium/third_party/zlib_v128'
            'third_party/polymer'
            'third_party/protobuf'
@@ -390,7 +393,7 @@ _use_system=('-Duse_system_expat=1'
              '-Duse_system_jsoncpp=1'
              '-Duse_system_libevent=0'
              '-Duse_system_libexif=1'
-             '-Duse_system_libjpeg=1'
+             '-Duse_system_libjpeg=0'
              '-Duse_system_libpng=0'
              '-Duse_system_libsrtp=0'
              '-Duse_system_libusb=0'
