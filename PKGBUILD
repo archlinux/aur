@@ -3,7 +3,7 @@
 
 pkgname=cadabra
 pkgver=1.33
-pkgrel=5
+pkgrel=6
 pkgdesc="A computer algebra system designed specifically for the solution of problems encountered in field theory."
 arch=('i686' 'x86_64')
 url="http://cadabra.phi-sci.com/"
