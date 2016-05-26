@@ -3,7 +3,7 @@
 # Contributor: leonaard <leone at inventati.org>
         
 pkgname=python-libtorrent-rasterbar
-pkgver=1.0.8
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Python 3 bindings for the libtorrent library"
 url="http://www.libtorrent.org/python_binding.html"
@@ -12,9 +12,9 @@ license=('BSD')
 depends=('boost-libs' 'geoip' 'python3' 'libtorrent-rasterbar')
 makedepends=('boost')
 options=('!emptydirs')
-source=(https://github.com/arvidn/libtorrent/releases/download/libtorrent-${pkgver//./_}/libtorrent-rasterbar-$pkgver.tar.gz)
-sha1sums=('e1c92b7ffe6c78b697df333bd7177184da304de1')
-sha256sums=('477ee10cd4a91b0a13e2ee419096555d0c75584ef1b84abc44b3b643f9a08d3e')
+source=(https://github.com/arvidn/libtorrent/releases/download/libtorrent-1_1/libtorrent-rasterbar-$pkgver.tar.gz)
+sha1sums=('bef0a36bfd61b77329f21f44cfce50859ab2c2fd')
+sha256sums=('2713df7da4aec5263ac11b6626ea966f368a5a8081103fd8f2f2ed97b5cd731d')
 
 build() {
   cd libtorrent-rasterbar-$pkgver
