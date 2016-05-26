@@ -11,7 +11,7 @@ provides=('')
 conflicts=('')
 url="http://user-mode-linux.sourceforge.net/"
 source=( "http://user-mode-linux.sourceforge.net/${pkgname}_${pkgver}.tar.bz2")
-license=('(L)GPL2')
+license=('GPL2')
 md5sums=('b0468ac8b79cef53f36f5f9517907462')
 
 prepare() {
