@@ -4,7 +4,7 @@
 
 _pkgname=liblscp
 pkgname="${_pkgname}-svn"
-pkgver=0.5.7.2860
+pkgver=0.5.7.1.2923
 pkgrel=1
 pkgdesc="LinuxSampler Control Protocol (LSCP) wrapper library"
 arch=('i686' 'x86_64')
@@ -12,10 +12,10 @@ url="http://www.linuxsampler.org/"
 license=('LGPL')
 depends=('glibc')
 makedepends=('subversion' 'doxygen' 'libtool')
-conflicts=('${_pkgname}')
-provides=('${_pkgname}')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
 options=('!libtool')
-source=("${_pkgname}::svn+https://svn.linuxsampler.org/svn/liblscp/trunk")
+source=("${_pkgname}::svn+https://svn.linuxsampler.org/svn/${_pkgname}/trunk")
 md5sums=('SKIP')
 
 pkgver() {
