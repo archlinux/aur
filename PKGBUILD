@@ -2,8 +2,8 @@
 # Contributor: Mikkel Kroman <mk@maero.dk>
 
 pkgname=crystal-git
-pkgver=0.17.3.r37.g995032f
-_last_release="0.17.3-1"
+pkgver=0.17.4.r59.gcb8cf95
+_last_release="0.17.4-1"
 pkgrel=1
 pkgdesc="The Crystal Programming Language"
 arch=('i686' 'x86_64')
@@ -44,9 +44,11 @@ build() {
 check() {
   cd "$srcdir/${pkgname/-git/}"
 
-  make spec CRYSTAL_PATH="$srcdir/${pkgname/-git/}/src" \
-            CRYSTAL_CONFIG_VERSION="$pkgver" \
-            CRYSTAL_CACHE_DIR="/tmp/crystal"
+  make -j1 compiler_spec \
+           std_spec  \
+           CRYSTAL_PATH="$srcdir/${pkgname/-git/}/src" \
+           CRYSTAL_CONFIG_VERSION="$pkgver" \
+           CRYSTAL_CACHE_DIR="/tmp/crystal"
 }
 
 package() {
@@ -73,5 +75,5 @@ package() {
 }
 
 sha256sums=('SKIP')
-sha256sums_i686=('f03def26ff809c391196740ab1956bda61c9a101f97989634e33d57a6f5527a9')
-sha256sums_x86_64=('61cd10567dc816198bd43ae3c8c5804555b2175f84416fe5c6f1a7663333e225')
+sha256sums_i686=('39351f15bfbdab78b7353af04e3f5cd9a456e7fcf2a3fe03bae4a2b2d6df861b')
+sha256sums_x86_64=('e1fccb9690ffde0d3b8f2b0aac672a4391c0928c664ae54934a0b32fd3ed2a9c')
