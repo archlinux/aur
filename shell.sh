@@ -81,7 +81,7 @@ has_crypt_jobs() {
 
 # verify if there are any crypto requests
 is_ask_pending() {
-    local list="$(list_ask_socket)"
+    local list="$(list_ask_config)"
     [ -n "$list" ]
 }
 
@@ -143,12 +143,6 @@ wait_confirm() {
     return 0
 }
 
-# ensure pending crypto jobs match asked crypto requests 
-wait_settle() {
-    # TODO
-    true
-}
-
 # read a portion of current console output
 read_console() {
     tail -c 1024 "/dev/vcs"
@@ -171,9 +165,24 @@ wait_console() {
     done
 }
 
+# ensure pending crypto jobs asked their requests 
+wait_request() {
+    local count=1
+    while ! is_ask_pending ; do
+        sleep 0.5
+        let count+=1
+        if [ "$count" -gt "10" ] ; then
+            return 1
+        fi
+    done
+    return 0
+}
+
 
 # crypto secret default logic
 do_crypt() {
+
+    wait_request
 
     wait_console
 
@@ -215,7 +224,7 @@ do_agent() {
 
 # process invocation from tty console or ssh connection
 do_console() {
-    if has_crypt_jobs && is_ask_pending ; then
+    if has_crypt_jobs ; then
         do_crypt || do_agent 
     else 
         do_prompt
