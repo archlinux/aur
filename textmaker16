@@ -1,4 +1,4 @@
 #!/bin/sh
 # A script to run TextMaker.
 export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/opt/smoffice2016/dpf
-/opt/smoffice2016/textmaker "$@"
+[ -z "$SMOFFICE_GUI" ] && /opt/smoffice2016/textmaker "$@" || /opt/smoffice2016/textmaker "$SMOFFICE_GUI" "$@"
