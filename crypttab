@@ -11,6 +11,7 @@
 # to setup crypto disks in initramfs over ssh
 # manually provide here partition UUID with help of `lsblk`
 # then active initrd-cryptsetup.service as well as "ask password prompt" in shell.sh 
+
 # <name>     <device>                 <password>       <options>
   swap       UUID=${UUID_SWAP}          none            luks
   root       UUID=${UUID_ROOT}          none            luks
