@@ -1,33 +1,33 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 pkgname=private-internet-access-vpn
-pkgver=2.5
-pkgrel=7
+pkgver=2.6
+pkgrel=1
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
 license=('GPL')
-depends=('python' 'python-setuptools')
+depends=('python' 'python-setuptools' 'python-docopt')
 makedepends=('git')
 optdepends=('networkmanager: Enables PIA for Network Manager'
             'connman: Enables PIA for Connman'
             'openvpn: Allows running configurations from command-line')
 sha256sums=('0ab48c38d1083362d4aaf3d7fb04ce7e1589f5a297675da6effe4f004e2e0b33'
-            '6d3bdc9531f16cc1ad199913a71554a0b50aea87e140b28d079c4ab4c0b8c51b'
             '4322a2a4bc3e206c6ab7e1df87a8805032b76c177c1ed9dd3501260ed32ccb30'
             '797dbdb6e3aadc86f97262e26d61cf4847caf85dda4b7a97cac59088cb912b27'
             '246fc4dc3218f56b4c70014df6801b10fc2a573d6545962b7fce05f16908c54e'
             '7f4a5ee1fb8ea4d0e69ed2a8217c575cf335f21e90082f6e423c769eca4a7a46'
             'f74e0a601d74409c39d36f4d5c6a2f11c9832d05782f804243b3f6ae7e695aab'
+            'SKIP'
             'SKIP')
 
 source=("https://www.privateinternetaccess.com/openvpn/openvpn.zip"
-        "https://raw.githubusercontent.com/masterkorp/openvpn-update-resolv-conf/master/update-resolv-conf.sh"
 	"login-example.conf"
 	"pia-example.conf"
 	"restart.conf"
 	"vpn.sh"
 	"pia.8.gz"
-	"git+https://github.com/flamusdiu/python-pia.git#tag=v${pkgver}")
+	"git://github.com/flamusdiu/python-pia.git#branch=dev"
+        "git://github.com/masterkorp/openvpn-update-resolv-conf")
 		
 noextract=("openvpn.zip"
            "pia.8.gz")
@@ -75,7 +75,6 @@ package() {
   install -dm755 "${pkgdir}"/{etc/{openvpn,private-internet-access},usr/{lib/system/{systemd/system-sleep,openvpn@.service.d},{bin,share/man/man8}}}
 
   install -Dm600 vpn-configs/*.* "${pkgdir}/etc/openvpn/"
-  install -m755 update-resolv-conf.sh "${pkgdir}/etc/openvpn"
   install -m644 restart.conf "${pkgdir}/usr/lib/system/openvpn@.service.d"
   install -m755 vpn.sh "${pkgdir}/usr/lib/system/systemd/system-sleep"
   install -m644 pia.8.gz "${pkgdir}/usr/share/man/man8"
