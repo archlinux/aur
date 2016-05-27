@@ -1,6 +1,6 @@
 pkgbase = sc-controller
 	pkgdesc = User-mode driver and GTK3 based GUI for Steam Controller
-	pkgver = 0.2.4.1
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/kozec/sc-controller
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = sc-controller
 	depends = python2-gobject
 	depends = python2-cairo
 	conflicts = sc-controller-git
-	source = https://github.com/kozec/sc-controller/archive/v0.2.4.1.tar.gz
-	sha256sums = f968cfdaff51c4beb18fefb00e03cf55e8d9720854c3f6e5360912d6983c8483
+	source = https://github.com/kozec/sc-controller/archive/v0.2.5.tar.gz
+	sha256sums = c9f24df1ee8b3a47df5b117e9f4822cfcfeeea31b4ca1c7547ec5eb4a0b1cb53
 
 pkgname = sc-controller
 
