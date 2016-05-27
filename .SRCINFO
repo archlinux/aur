@@ -1,0 +1,16 @@
+pkgbase = diesel_cli
+	pkgdesc = CLI for the Diesel crate
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = http://diesel.rs/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	depends = rust
+	source = https://github.com/diesel-rs/diesel/archive/v0.6.1.tar.gz
+	sha256sums = 62ba5250908a937d3eac68ed6a275376064161e6438666afd9ea06d28ac699c9
+
+pkgname = diesel_cli
+
