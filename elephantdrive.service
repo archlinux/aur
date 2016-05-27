@@ -1,0 +1,14 @@
+[Unit]
+Description=ElephantDrive
+After=network.target
+
+[Service]
+Type=forking
+User=root
+Group=root
+KillMode=control-group
+ExecStart=/usr/bin/elephantdrive -D -c /etc
+ExecStop=/usr/bin/elephantdrive -K
+
+[Install]
+WantedBy=multi-user.target
