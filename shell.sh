@@ -74,15 +74,15 @@ log_log() {
 }
 
 log_info() {
-    local code="$?" text="$1" ; log_log "info"     "info : $text [code=$code]" 
+    local code="$?" text="$1" ; log_log "info"     "info : $text [$code]" 
 }
 
 log_warn() {
-    local code="$?" text="$1" ; log_log "warning"  "warn : $text [code=$code]" 
+    local code="$?" text="$1" ; log_log "warning"  "warn : $text [$code]" 
 }
 
 log_error() {
-    local code="$?" text="$1" ; log_log "err"      "error: $text [code=$code]" 
+    local code="$?" text="$1" ; log_log "err"      "error: $text [$code]" 
 }
 
 # list current crypto question files
@@ -96,6 +96,72 @@ list_ask_socket() {
     for config in $config_list ; do
         echo $(cat "$config" | grep -i 'socket=' | sed -e 's/socket=//I')
     done
+}
+
+# read a portion of latest console output
+read_console() {
+    tail -c 1024 "/dev/vcs"
+}
+
+# remove any pending content from the console input 
+flush_stdin() { 
+    read -r -s -n 10000000 -t 1
+}
+
+# ensure console is no longer changing
+await_console() {
+    local count=1 text1= text2=
+    while true ; do
+        text1=$(read_console)
+        sleep "$sleep_delay"
+        text2=$(read_console)
+        if [ "$text1" = "$text2" ] ; then
+            return 0
+        fi
+        let count+=1
+        if [ "$count" -gt "$sleep_count" ] ; then
+            return 1
+        fi
+    done
+}
+
+# ensure pending crypto jobs posted questions (ask files are present) 
+await_request() {
+    local count=1
+    while ! is_ask_pending ; do
+        sleep "$sleep_delay"
+        let count+=1
+        if [ "$count" -gt "$sleep_count" ] ; then
+            return 1
+        fi
+    done
+    return 0
+}
+
+# ensure crypto jobs removed questions (after message receipt) 
+await_received() {
+    local socket_list="$1"
+    while  has_any_file "$socket_list" ; do
+        sleep "$sleep_delay"
+        let count+=1
+        if [ "$count" -gt "$sleep_count" ] ; then
+            return 1
+        fi
+    done
+    return 0
+}
+
+# ensure crypt jobs are gone (secret was correct)
+await_validated() {
+    local count=1
+    while has_crypt_jobs ; do
+        sleep "$sleep_delay"
+        let count+=1
+        if [ "$count" -gt "$sleep_count" ] ; then
+            return 1
+        fi
+    done
+    return 0
 }
 
 # query password from the console
@@ -118,87 +184,35 @@ run_answer() {
     done
 }
 
-# await for requesters to remove their questions
-wait_confirm() {
-    local socket_list="$1"
-    while  has_any_file "$socket_list" ; do
-        sleep "$sleep_delay"
-        let count+=1
-        if [ "$count" -gt "$sleep_count" ] ; then
-            return 1
-        fi
-    done
-    return 0
-}
-
-# read a portion of latest console output
-read_console() {
-    tail -c 1024 "/dev/vcs"
-}
-
-# remove any pending content from the console input 
-flush_stdin() { 
-    read -r -s -n 10000000 -t 1
-}
-
-# ensure console is no longer changing
-wait_console() {
-    local count=1 text1= text2=
-    while true ; do
-        text1=$(read_console)
-        sleep "$sleep_delay"
-        text2=$(read_console)
-        if [ "$text1" = "$text2" ] ; then
-            return 0
-        fi
-        let count+=1
-        if [ "$count" -gt "$sleep_count" ] ; then
-            return 1
-        fi
-    done
-}
-
-# ensure pending crypto jobs asked their requests 
-wait_request() {
-    local count=1
-    while ! is_ask_pending ; do
-        sleep "$sleep_delay"
-        let count+=1
-        if [ "$count" -gt "$sleep_count" ] ; then
-            return 1
-        fi
-    done
-    return 0
-}
-
-# ensure crypt jobs are gone
-wait_complete() {
-    local count=1
-    while has_crypt_jobs ; do
-        sleep "$sleep_delay"
-        let count+=1
-        if [ "$count" -gt "$sleep_count" ] ; then
-            return 1
-        fi
-    done
-    return 0
+print_eol() {
+   printf "\n"
 }
 
 # crypto secret default logic: implement custom password agent
 do_crypt() {
-    local config_list= socket_list=
-    wait_request                 || { log_error "missing requests" ; return 1; }
-    wait_console                 || { log_warn  "volatile console" ; return 1; }
-    config_list=$(list_ask_config)
-    socket_list=$(list_ask_socket $config_list)
-    flush_stdin
-    run_answer "$socket_list"    || { log_error "query/reply failure" ; return 1; }
-    wait_confirm "$socket_list"  || { log_error "old requests still present" ; return 1; }
-    wait_complete                || { log_warn  "new requests are generated" ; return 1; }
+    local config_list= socket_list= secret= socket= count=1
+    while true ; do
+        log_info "custom agent try #$count" ; let count+=1
+        await_request || { log_warn "missing request" ; return 0 ; }
+        await_console || { log_warn "volatile console" ; }
+        flush_stdin
+        config_list=$(list_ask_config)
+        socket_list=$(list_ask_socket $config_list)
+        secret=$(run_query) || { log_error "query failure" ; return 1 ; }
+        print_eol
+        for socket in $socket_list ; do
+            [ -f "$socket" ] || { log_warn "socket removed" ; continue ; }
+            run_reply "$secret" "$socket" || { log_error "reply failure" ; return 1 ; }
+        done
+        await_received "$socket_list" || { log_error "receipt failure" ; return 1 ; }
+        await_validated || { log_warn "invalid secret" ; continue ; }
+        return 0
+    done
 }
 
-# crypto secret fall back logic: utilize standard systemd password agent
+# crypto secret fall back logic: utilize standard password agent
 do_agent() {
+    log_info "system agent hand over"
     $systemd_agent
 }
 
@@ -206,6 +220,7 @@ do_agent() {
 do_exit() {
     local code="$1" ; [ "$code" = "" ] && code=0  
     log_info "exit code=$code"
+    sleep 1 # FIXME journal flush
     exit "$code"
 }
 
