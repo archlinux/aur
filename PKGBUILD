@@ -11,12 +11,12 @@ pkgdesc='Utilities for managing magnetic tape storage devices'
 arch=('i686' 'x86_64')
 url="https://github.com/Distrotech/${_pkgname}"
 license=('GPLv2')
-makedepends=('git')
 depends=('tar')
-source=("${_pkgname}::${url//https/git}.git")
-sha256sums=('SKIP')
+makedepends=('git')
 provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
+source=("${_pkgname}::${url//https/git}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   set -u
@@ -47,7 +47,9 @@ package() {
   ! grep -lr "/sbin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /sbin"; false; }
   ! grep -lr "/usr/tmp" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/tmp"; false; }
   ! grep -lr "/usr/local" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /usr/local"; false; }
-  ! pcre2grep -Ilr "(?<!/usr)/bin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
+  if command -v 'pcre2grep' >/dev/null 2>&1; then
+    ! pcre2grep -Ilr "(?<!/usr)/bin" "${pkgdir}" || { echo "Line ${LINENO} Forbidden: /bin"; false; }
+  fi
 }
 set +u
 
