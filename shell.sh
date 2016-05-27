@@ -176,10 +176,15 @@ do_agent() {
     $systemd_agent
 }
 
-# exit shell script
+# exit this script
 do_exit() {
     local code="$1" ; [ "$code" = "" ] && code=0  
     exit "$code"
+}
+
+do_shell() {
+    local PS1='>'
+    /bin/sh
 }
 
 # change systemd state
@@ -205,7 +210,7 @@ do_service() {
     fi
 }
 
-# interactive shell menu
+# interactive user menu
 do_prompt() {
     local choice=
     while true ; do
@@ -217,7 +222,7 @@ do_prompt() {
         read -p ">>>" choice
         case "$choice" in
         c) do_crypt ;;
-        s) do_exit 0 ;;
+        s) do_shell ;;
         r) do_reboot ;;
         *) echo "$choice ?" ;;
         esac
@@ -229,8 +234,10 @@ do_trap() {
     if is_ssh_connect ; then
         do_prompt
     elif is_entry_service ; then
+        echo ""
         do_exit 1
     else
+        echo ""
         do_exit 0
     fi
 }
@@ -258,7 +265,7 @@ setup_defaults() {
             
     # active operation timeout settings
     [ -z "$sleep_delay" ] && readonly sleep_delay=0.7
-    [ -z "$sleep_count" ] && readonly sleep_count=10
+        [ -z "$sleep_count" ] && readonly sleep_count=10
         
     # password inotify watch folder
     [ -z "$watch_folder"] && readonly watch_folder="/run/systemd/ask-password"
@@ -283,6 +290,7 @@ process_invocation() {
         # development invocations
         exit)     do_exit ;;
         crypt)    do_crypt ;;
+        shell)    do_shell ;;
         reboot)   do_reboot ;;
         prompt)   do_prompt ;;
         # production invocations
