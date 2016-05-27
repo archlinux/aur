@@ -7,6 +7,7 @@ arch=('any')
 url="https://github.com/redtide/nuovext-icon-theme"
 license=('GPL')
 depends=('gtk-update-icon-cache')
+makedepends=('git')
 install=nuovext-icon-theme.install
 source=(git://github.com/redtide/nuovext-icon-theme.git)
 md5sums=('SKIP')

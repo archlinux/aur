@@ -6,6 +6,7 @@ pkgbase = nuovext-icon-theme
 	install = nuovext-icon-theme.install
 	arch = any
 	license = GPL
+	makedepends = git
 	depends = gtk-update-icon-cache
 	source = git://github.com/redtide/nuovext-icon-theme.git
 	md5sums = SKIP
