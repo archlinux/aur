@@ -1,0 +1,18 @@
+post_upgrade() {
+    update-desktop-database -q
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+post_install() {
+    echo "If the game doesn't run, try using the Cg renderer ~/.openra/settings.yaml like so:"
+    echo "Graphics:"
+    echo "        Renderer: Cg"
+    echo "Be careful to only use one indenting tab with 8 shift width."
+    post_upgrade
+}
+
+post_remove() {
+    echo "openra downloaded data files to ~/.openra/Content and you might want"
+    echo "to delete those."
+    post_upgrade
+}
