@@ -54,4 +54,4 @@ InitrdPath=/usr/share/mc
 InitrdPath=/usr/share/terminfo/l/linux
 InitrdPath=/usr/share/terminfo/v/vt100
 InitrdPath=/usr/share/terminfo/x/xterm
-InitrdPath=/usr/share/terminfo/x/xterm-color
+#InitrdPath=/usr/share/terminfo/x/xterm-color

@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-systemd-tool
     pkgdesc = Provisioning tool for systemd in initramfs (systemd-tool)
-    pkgver = r60.439de87
+    pkgver = r61.818a01d
     pkgrel = 1
     url = https://aur.archlinux.org/cgit/aur.git/tree/?h=mkinitcpio-systemd-tool
     install = INSTALL.sh
@@ -12,11 +12,11 @@ pkgbase = mkinitcpio-systemd-tool
     backup = etc/mkinitcpio.d/crypttab
     backup = etc/mkinitcpio.d/shell.sh
     backup = etc/systemd/network/initrd-network.network
+    backup = etc/systemd/system/initrd-build.sh
     backup = etc/systemd/system/initrd-cryptsetup.service
     backup = etc/systemd/system/initrd-debug-progs.service
     backup = etc/systemd/system/initrd-debug-shell.service
     backup = etc/systemd/system/initrd-dropbear.service
-    backup = etc/systemd/system/initrd-dropbear.service.sh
     backup = etc/systemd/system/initrd-network.service
     backup = etc/systemd/system/initrd-user-root.service
     source = mkinitcpio-systemd-tool::git+https://aur.archlinux.org/mkinitcpio-systemd-tool.git

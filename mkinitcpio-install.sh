@@ -28,12 +28,13 @@ build() {
     for unit in $unit_list ; do
         quiet "add unit: $unit"
         add_systemd_unit_X "$unit"
-        invoke   systemctl --root "$BUILDROOT" enable "$unit"
+        run_command   systemctl --root "$BUILDROOT" enable "$unit"
     done
     
 }
 
-invoke() {
+# safety wrapper for external commands
+run_command() {
     local command="$@"
     local result; result=$($command 2>&1); status=$?
     case "$status" in

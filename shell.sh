@@ -19,29 +19,6 @@
 #Icon=drive-harddisk
 #Id=cryptsetup:/dev/block/8:2
 
-# pattern: "'Please enter passphrase for disk VBOX_HARDDISK (root)!' (PID 167)" 
-parse_crypt_pid () {
-    echo "$1" | sed -r "s%.*PID[ ]+([0-9]+).*%\1%"
-}
-
-do_prompt() {
-    local choice
-    while [ "$choice" != "q" ] ; do
-        echo
-        echo "select:"
-        echo "c) crypto secret"
-        echo "s) sys shell"
-        echo "r) reboot"
-        read -p ">>>" choice
-        case "$choice" in
-        c) do_crypt ;;
-        s) do_exit ;;
-        r) do_reboot ;;
-        *) echo "$choice ?" ;;
-        esac
-    done
-}
-
 # verify if shell started form systemd unit
 is_entry_service() { 
     [ "$entry" ="service" ]
@@ -62,14 +39,14 @@ is_ask_pending() {
     [ -n "$(list_ask_config)" ]
 }
 
-# verify if any crypttab jobs are active
+# verify if any crypttab jobs are in the queue
 has_crypt_jobs() {
-    $systemd_syctl list-jobs | grep -q 'cryptsetup'
+    $systemd_syctl list-jobs | grep -i -q 'cryptsetup'
 }
 
 # list current crypto question files
 list_ask_config() {
-    grep -l 'cryptsetup' $watch_folder/ask.* 2>/dev/null
+    grep -i -l 'cryptsetup' $watch_folder/ask.* 2>/dev/null
 }
 
 # list current crypto socket files
@@ -157,7 +134,6 @@ wait_request() {
     return 0
 }
 
-
 # crypto secret default logic
 do_crypt() {
 
@@ -167,7 +143,7 @@ do_crypt() {
 
     local config_list= socket_list=
 
-    # verify some crypt requests are pending
+    # verify crypt requests are pending
 
     config_list=$(list_ask_config)
     socket_list=$(list_ask_socket "$config_list")
@@ -181,7 +157,7 @@ do_crypt() {
     
     wait_confirm "$socket_list"
 
-    # verify none crypt requests are pending
+    # verify no new crypt requests are pending
 
     config_list=$(list_ask_config)
     socket_list=$(list_ask_socket "$config_list")
@@ -202,7 +178,7 @@ do_agent() {
 
 # exit shell script
 do_exit() { 
-    exit 0 
+    exit "$1"
 }
 
 # change systemd state
@@ -224,16 +200,37 @@ do_service() {
     if has_crypt_jobs ; then
         do_crypt || do_agent
     else
-        do_exit 
+        do_exit
     fi
+}
+
+# interactive shell menu
+do_prompt() {
+    local choice=
+    while true ; do
+        echo
+        echo "select:"
+        echo "c) crypto secret"
+        echo "s) sys shell"
+        echo "r) reboot"
+        read -p ">>>" choice
+        case "$choice" in
+        c) do_crypt ;;
+        s) do_exit ;;
+        r) do_reboot ;;
+        *) echo "$choice ?" ;;
+        esac
+    done
 }
 
 # respond to interrupt
 do_trap() {
     if is_ssh_connect ; then
         do_prompt
+    elif is_entry_service ; then
+        do_exit 1
     else
-        do_prompt
+        do_exit 0
     fi
 }
 

@@ -17,11 +17,7 @@ Before=initrd-dropbear.service
 [Service]
 Type=oneshot
 RemainAfterExit=true
-
-# enforce specific login shell
-Environment=SHELL=/bin/sh
-Environment=MATCH=(root):([^:]*):([^:]*):([^:]*):([^:]*):([^:]*):([^:]*)
-ExecStart=/bin/sed -i -r -e "s|${MATCH}|\1:\2:\3:\4:\5:\6:${SHELL}|" /etc/passwd
+ExecStart=/bin/true
 
 
 [Install]
@@ -34,3 +30,10 @@ RequiredBy=initrd-dropbear.service
 
 # provide interactive login script
 InitrdPath=/root/.profile source=/etc/mkinitcpio.d/shell.sh mode=700
+
+# enforce specific login shell in /etc/passwd
+InitrdPath=/etc/passwd
+InitrdInvoke=/etc/systemd/system/initrd-build.sh command=build_root_shell
+
+# required by systemd emergency service
+InitrdBinary=/usr/bin/sulogin

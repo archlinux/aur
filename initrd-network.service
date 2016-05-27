@@ -19,19 +19,17 @@ Requires=systemd-resolved.service
 [Service]
 Type=oneshot
 RemainAfterExit=true
-
-# empty service
 ExecStart=/bin/true
 
-# release network devices to allow rename after switch-root
+# release network devices to allow interface rename after switch-root
 
-# works with extra dependency: "/bin/ip"
+# works with extra dependency: "/bin/ip" from package iproute2
 #ExecStop=/bin/ip addr flush up
 #ExecStop=/bin/ip link set group default down
 
-# works with busybox applets: "ipaddr" "iplink"
-ExecStop=/bin/sh -c "ipaddr flush up"
-ExecStop=/bin/sh -c "ls /sys/class/net | xargs -I % iplink set % down"
+# works with normally included busybox applets: "ipaddr" "iplink"
+ExecStop=/bin/sh -c "for dev in $(ls /sys/class/net) ; do ipaddr flush "$dev" to down ; done"
+ExecStop=/bin/sh -c "for dev in $(ls /sys/class/net) ; do iplink set   "$dev"    down ; done"
 
 
 [Install]
