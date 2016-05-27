@@ -9,6 +9,7 @@ pkgbase = alacarte-maps
 	arch = i686
 	license = AGPL3
 	makedepends = cmake
+	makedepends = asciidoc
 	depends = cairo>=1.12.0
 	depends = boost>=1.55
 	depends = libpng

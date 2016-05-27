@@ -7,7 +7,7 @@ url="https://alacarte-maps.github.io"
 arch=('x86_64' 'i686')
 license=('AGPL3')
 depends=('cairo>=1.12.0' 'boost>=1.55' 'libpng')
-makedepends=('cmake')
+makedepends=('cmake' 'asciidoc')
 
 source=("https://github.com/alacarte-maps/alacarte/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')
@@ -18,6 +18,7 @@ build() {
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr .. -DCMAKE_BUILD_TYPE=Release
   make
+  make man
 }
 
 package() {
