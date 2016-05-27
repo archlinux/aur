@@ -1,0 +1,14 @@
+pkgbase = mononoki-git
+	pkgdesc = mononoki fonts
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://github.com/madmalik/mononoki
+	install = ttf.install
+	arch = any
+	license = OFL
+	makedepends = git
+	source = git+https://github.com/madmalik/mononoki.git
+	md5sums = SKIP
+
+pkgname = mononoki-git
+
