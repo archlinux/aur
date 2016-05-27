@@ -1,6 +1,6 @@
 # Maintainer: xduugu
 pkgname=qsyncthingtray
-pkgver=0.4.7
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="tray app for syncthing"
 arch=('i686' 'x86_64')
@@ -10,9 +10,9 @@ depends=('qt5-location' 'qt5-webengine')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sieren/QSyncthingTray/archive/$pkgver.tar.gz"
         "$pkgname.desktop")
-md5sums=('53f4e634cb10795e28674833724dc4f1'
+md5sums=('f242d11aef46a7a267599af91cbfee9e'
          '730d2ae862656d39f7b1980f20d8d8bf')
-sha512sums=('ba807f8d2537db2318f4522e11fd01905e914bfd0efacc7ef564584a2b977c30e40fa96dd4ba39f886dc7cb702c0303befc7143de42f84119649adcc829a7ea9'
+sha512sums=('467a5866ca199671461345806cda604098301e0fad015e43dcd4b545f460981ca1ce2f11dac46fd74528f5f76798e09f46856d87af718c8dec11ea312f1acf3e'
             'e0dae1d01af7f0d842da6baac6a705b83979a9a31e8e03181ea9e00a4d389bb2dff93080badadb26e5055ea80b616494687e5f69a4258a6c670a2bb5e0c96c16')
 
 _pkgname=QSyncthingTray
