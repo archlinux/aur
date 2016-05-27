@@ -1,6 +1,6 @@
 # Maintainer: Alexey D. <lq07829icatm@rambler.ru>
 pkgname=psi-plus-plugins-git
-pkgver=0.15.448
+pkgver=0.15.476
 pkgrel=1
 pkgdesc="Additional plugins for Psi+"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ build() {
 	cd psi-plus-plugins
 
 	for plugin in generic/* unix/*; do
-		cd "$srcdir/psi-plus-plugins/$plugin"
+		[[ -d "$srcdir/psi-plus-plugins/$plugin" ]] && cd "$srcdir/psi-plus-plugins/$plugin"
 		
 		qmake-qt4 PREFIX="/usr" QMAKE_STRIP=
 		make
@@ -40,7 +40,7 @@ package() {
 	cd psi-plus-plugins
 
 	for plugin in generic/* unix/*; do
-		cd "$srcdir/psi-plus-plugins/$plugin"
+		[[ -d "$srcdir/psi-plus-plugins/$plugin" ]] && cd "$srcdir/psi-plus-plugins/$plugin"
 
 		make INSTALL_ROOT="$pkgdir" install
 	done
