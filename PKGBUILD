@@ -4,14 +4,14 @@ _target="arm-linux-gnueabihf"
 _pkgname=ncurses
 pkgname=${_target}-${_pkgname}
 pkgver=6.0
-pkgrel=0
+pkgrel=1
 _gccver=6.1.1
 pkgdesc="System V Release 4.0 curses emulation library (${_target})"
 arch=('i686' 'x86_64')
 url='http://invisible-island.net/ncurses/ncurses.html'
 license=('MIT')
-depends=('glibc' 'gcc-libs')
-makedepends=("${_target}-gcc")
+depends=('arm-linux-gnueabihf-glibc')
+makedepends=("${_target}-gcc" 'glibc' 'gcc-libs')
 provides=('libncurses++w.so' 'libformw.so' 'libmenuw.so' 'libpanelw.so'
           'libncursesw.so')
 source=(ftp://invisible-island.net/ncurses/ncurses-${pkgver/_/-}.tar.gz{,.asc})
