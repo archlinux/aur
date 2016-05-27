@@ -1,0 +1,25 @@
+pkgbase = arm-linux-gnueabihf-ncurses
+	pkgdesc = System V Release 4.0 curses emulation library (arm-linux-gnueabihf)
+	pkgver = 6.0
+	pkgrel = 0
+	url = http://invisible-island.net/ncurses/ncurses.html
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = arm-linux-gnueabihf-gcc
+	depends = glibc
+	depends = gcc-libs
+	provides = libncurses++w.so
+	provides = libformw.so
+	provides = libmenuw.so
+	provides = libpanelw.so
+	provides = libncursesw.so
+	options = !strip
+	source = ftp://invisible-island.net/ncurses/ncurses-6.0.tar.gz
+	source = ftp://invisible-island.net/ncurses/ncurses-6.0.tar.gz.asc
+	validpgpkeys = C52048C0C0748FEE227D47A2702353E0F7E48EDB
+	md5sums = ee13d052e1ead260d7c28071f46eefb1
+	md5sums = SKIP
+
+pkgname = arm-linux-gnueabihf-ncurses
+
