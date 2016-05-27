@@ -3,7 +3,7 @@ PKGBUILD files for different versions of Gogs (Go Git Service).
 
 ## Open points
 * ~~Systemd service support~~
-* better file structure
+* ~~better file structure~~
 * ~~Publishing on https://aur.archlinux.org~~
 * Test MariaDB and PostgreSQL installation
 * ~~Test on armv6h (Raspberry Pi), armv7h (Cubieboard 2) and on x86_64~~
