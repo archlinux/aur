@@ -1,9 +1,9 @@
 --- Makefile.orig	2016-02-01 16:43:56.200859048 -0800
 +++ Makefile	2016-02-02 10:13:53.415950671 -0800
-@@ -116,7 +116,7 @@
- 	rm -f hack/utils/get_build_id.gen.c
+@@ -130,7 +130,7 @@
+ 	rm -f flow.odocl
  
- build-flow: build-flow-native-deps $(FLOWLIB)
+ build-flow: $(BUILT_OBJECT_FILES) $(FLOWLIB)
 -	ocamlbuild  -no-links  $(INCLUDE_OPTS) $(LIB_OPTS) -lflags "$(LINKER_FLAGS)" src/flow.native
 +	ocamlbuild  -no-links  $(INCLUDE_OPTS) $(LIB_OPTS) -lflags "$(LINKER_FLAGS)" -ocamlopt "$(shell which ocamlopt.opt) -runtime-variant _pic" src/flow.native
  
