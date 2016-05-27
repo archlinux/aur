@@ -18,8 +18,8 @@ options=('!strip')
 source=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/jdk-${_pkgver}_doc-api-spec.tar.gz"
         "http://www.java.net/download/java/jdk${_major}/archive/${_build}/binaries/javafx-${_pkgver}_doc.zip"
         'LICENSE')
-md5sums=('7a4e543bb2b872abe6975c70f464793c'
-         '1324c8739686029c5811c1cb18d993d8'
+md5sums=('4b5bfef183c09e40e39fed9ee8a01095'
+         'aefee6521cbc834c1f5556909230e1c5'
          'f09947a67691a2d78d20a3885889981c')
 
 package_jdk-devel-docs() {
