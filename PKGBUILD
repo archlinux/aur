@@ -1,4 +1,5 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Daniel Nagy <danielnagy at gmx de>
 # Contributor: Marti Raudsepp <marti@juffo.org>
 # Contributor: JKAbrams <JKAbrams@AUR>
 # Contributor: kevku <kevku@msn.com>
@@ -7,46 +8,50 @@
 
 pkgname=openct
 pkgver=0.6.20
-pkgrel=8
-pkgdesc="Implements drivers for several smart card readers"
+pkgrel=9
+pkgdesc='Implements drivers for several smart card readers'
 arch=('i686' 'x86_64')
-url="https://github.com/OpenSC/openct/"
-options=('!libtool')
-license="LGPL"
+url='https://github.com/OpenSC/openct/'
+license=('LGPL2.1')
 backup=('etc/openct.conf')
 depends=('pcsclite' 'libusb-compat' 'libtool')
 makedepends=('doxygen')
 source=("https://github.com/OpenSC/openct/archive/$pkgname-$pkgver.tar.gz"
-        'openct.rc'
-        'udev-sleep.patch')
+        'udev-sleep.patch' 'openct.service')
 md5sums=('30e416c6c414466f685a5e2db8591c71'
-         '000bab3e5a98e49159e8190e2b318c74'
-         '1c8484195d3b8445ebdb9fdc2ee87736')
+         '1c8484195d3b8445ebdb9fdc2ee87736'
+         '0ac8962644f365bce540b24af9b00eda')
+
+prepare() {
+    cd $pkgname-$pkgname-$pkgver
+    patch -p1 -i "${srcdir}/udev-sleep.patch"
+
+    ./bootstrap
+}
 
 build() {
-        cd "$srcdir/$pkgname-$pkgname-$pkgver"
-        patch -p1 < "$srcdir"/udev-sleep.patch
-        ./bootstrap
-        ./configure --prefix=/usr \
-	--sbindir=/usr/bin \
-	--sysconfdir=/etc \
-	--localstatedir=/var \
-	--with-udev=/usr/lib/udev \
-	--enable-usb \
-	--enable-pcsc \
-	--disable-static
+    cd $pkgname-$pkgname-$pkgver
+    ./configure --prefix=/usr \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --with-udev=/usr/lib/udev \
+    --enable-usb \
+    --enable-pcsc \
+    --disable-static
 
-        make
+    make
 }
 
 package() {
-        cd "$srcdir/$pkgname-$pkgname-$pkgver"
-        # Work around broken makefile
-        mkdir "$pkgdir"/etc
-        make DESTDIR="$pkgdir" install
+    cd $pkgname-$pkgname-$pkgver
 
-        install -D etc/openct.udev "$pkgdir"/usr/lib/udev/rules.d/95-openct.rules
-        install -D -m755 "$srcdir"/openct.rc $pkgdir/etc/rc.d/openct
+    # Work around broken makefile
+    install -d "$pkgdir"/etc
+    make DESTDIR="$pkgdir" install
 
-        mkdir -p "$pkgdir"/run/openct
+    install -D etc/openct.udev "$pkgdir"/usr/lib/udev/rules.d/95-openct.rules
+
+    install -d "${pkgdir}"/usr/lib/systemd/system
+    install "${srcdir}"/openct.service "${pkgdir}"/usr/lib/systemd/system
 }
