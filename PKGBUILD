@@ -1,7 +1,7 @@
-# Maintainer: Philippe Proulx <eeppeliteloop@gmail.com>
+# Maintainer: Philippe Proulx <pproulx@efficios.com>
 
 pkgname=liblttng-ust-python-agent
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc='LTTng-UST Python agent tracepoint provider'
 arch=('i686' 'x86_64')
@@ -9,9 +9,9 @@ url='http://lttng.org/'
 license=('LGPL2.1' 'GPL2' 'MIT')
 source=("http://lttng.org/files/lttng-ust/lttng-ust-$pkgver.tar.bz2")
 makedepends=('liburcu>=0.7.2' 'util-linux' 'python')
-depends=('lttng-ust>=2.7.0')
+depends=('lttng-ust>=2.8.0')
 options=('!libtool')
-sha1sums=('597ebecb885debb58c263de57f30b1096d4eefc6')
+sha1sums=('648e710683743969087e72faa5aa82697280729d')
 
 build()
 {
