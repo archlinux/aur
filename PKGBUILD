@@ -2,7 +2,7 @@
 # Contributor: Joker-jar <joker-jar@yandex.ru>
 
 pkgname="psi-plus-git"
-pkgver=0.16.475
+pkgver=0.16.559
 pkgrel=1
 pkgdesc="Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users"
 url="http://psi-plus.com"
@@ -60,7 +60,6 @@ build() {
   qconf
   ./configure --prefix=/usr \
               --libdir=/usr/lib \
-              --enable-plugins \
               --disable-enchant \
               --qtdir="/usr/lib/qt4"
   make
