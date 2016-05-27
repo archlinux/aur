@@ -2,13 +2,13 @@
 pkgname=pdfstudio8
 pkgver=8.4.0
 _pkgver=v8_4_0
-pkgrel=8
+pkgrel=9
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('x86_64' 'i686')
 url="http://www.qoppa.com/pdfstudio/"
 license=('custom')
-conflicts=('pdfstudio')
-provides=('pdfstudio8')
+conflicts=('pdfstudio' 'pdfstudio9' 'pdfstudio10')
+provides=('pdfstudio')
 makedepends=('pacman>=4.2.0')
 depends=('java-runtime' 'desktop-file-utils')
 depends_x86_64=('gcc-libs-multilib')
@@ -26,21 +26,23 @@ source=(${pkgname}.desktop
 		${pkgname}.install
 		${pkgname}.png)
 
+prepare() {
+	bsdtar xf data.tar.gz
+	bsdtar xf "opt/pdfstudio8/lib/pdfstudio.jar" resources/license.html
+
+	rm -rf "opt/pdfstudio8/jre"
+}
+
 package() {
     cd "$srcdir"
+            
+    install -dm 755 "${pkgdir}/opt"
+    install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 ${pkgname}.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 resources/license.html "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
     
-    bsdtar -xf data.tar.gz
-    bsdtar -xf "${srcdir}/opt/pdfstudio8/lib/pdfstudio.jar" resources/license.html
-    
-    rm -r "${srcdir}/opt/pdfstudio8/jre"
-        
-	install -dm 755 "${pkgdir}/opt"
-	install -Dm644 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-	install -Dm644 ${pkgname}.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
-	install -Dm644 resources/license.html "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.html"
-    
-	cp -r opt/ "${pkgdir}"
-	mkdir -p "${pkgdir}/usr/bin"
+    cp -r opt/ "${pkgdir}"
+    mkdir -p "${pkgdir}/usr/bin"
     ln -s /opt/pdfstudio8/pdfstudio8 "${pkgdir}/usr/bin/pdfstudio"
  }
  
