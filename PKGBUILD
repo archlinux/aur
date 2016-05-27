@@ -20,7 +20,7 @@ options=()
 install=netease-music.install
 changelog=
 source=("http://s1.music.126.net/download/pc/netease-cloud-music_${pkgver}-1_amd64.deb")
-noextract=("WineQQ7.8-${pkgver}-Longene.deb")
+noextract=("netease-cloud-music_${pkgver}-1_amd64.deb")
 md5sums=('SKIP')
 
 prepare() {
