@@ -24,7 +24,7 @@ sha256sums=('SKIP'
             '5e518f8dda08c8b8d564f2a52452227924ebb15ec8182e7af83cc1f82cfa4cf1'
             '61911b0af9bbdfd4aca5f462823e46951328ef2e8a0f21428ac52d164d2ebf38')
 
-arch=('i686' 'x86_64' 'armv6h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 backup=('etc/conf.d/taskd')
 depends=('libutil-linux' 'gnutls')
 makedepends=('git' 'cmake')
