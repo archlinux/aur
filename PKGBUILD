@@ -59,7 +59,7 @@ sha256sums=('8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1'
             'adcf6507abb2d4edbc50bd92f498ba297927eed0460d71633df94f79637aa786'
             '225228970d779e1403ba4314e3cd8d0d7d16f8c6d48d7a22f8384db040eb0bdf'
             '6ca0e7bf540cdae387ce9470568c2c3a826bc7e7f12def1ae7d20b66f4065a99'
-            '21edbfac7785f9a33f775e1b692838d9cea5de299fffb1018bf011f6eedd6fa1'
+            '97e82ef789210d419912d168d5d11844baa984e6cd91008b4a2c5999f2626ff7'
             '09a2e88f95d8cd12bd9c23cd87554ab700fb1625a848c0502951849fb1d564fc'
             '9cd68c8e092efb1a419e1087bb9ca23aab1ff8650c400c0aa815d461d79385de'
             'ed4ddbcf0c434f4a1e97b61251a63ace759792764bd5cb79ff20efe348db8db3'
@@ -75,6 +75,7 @@ build() {
     cd openssl && patch -p1 < ../openssl__chacha20_poly1305_draft_and_rfc_ossl102g.patch
 
 	cd $_src_dir
+  sed -i 's#nginx/#nginx-mod4679-#' src/core/nginx.h
 
 	./configure \
 		--prefix="/${_conf_path}" \
