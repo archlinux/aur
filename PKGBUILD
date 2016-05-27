@@ -4,13 +4,13 @@
 pkgname=lean-bin
 pkgver=0.2.0.20160412023438
 _gitcommit=4eee26eaee55b8e2cb6731c0499d520daf91d38c
-pkgrel=2
+pkgrel=3
 pkgdesc="Lean Theorem Prover"
 arch=('x86_64' 'i386')
 url="http://leanprover.github.io/"
 license=('Apache')
 depends=('lua>=5.2')
-optdepends=('emacs: emacs mode' 'ninja')
+optdepends=('emacs: emacs mode')
 conflicts=('lean-git')
 source_x86_64=("https://launchpad.net/~leanprover/+archive/ubuntu/lean/+files/lean_${pkgver}.git${_gitcommit}~15.10_amd64.deb")
 source_i386=("https://launchpad.net/~leanprover/+archive/ubuntu/lean/+files/lean_${pkgver}.git${_gitcommit}~15.10_i386.deb")
