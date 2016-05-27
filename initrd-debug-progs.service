@@ -36,7 +36,7 @@ InitrdBinary=/usr/bin/systemd-analyze
 
 # midnight commander
 
-#InitrdBinary=/usr/bin/hostname
+InitrdBinary=/usr/bin/hostname
 
 InitrdBinary=/usr/bin/mc
 InitrdBinary=/usr/bin/mcedit
@@ -48,7 +48,7 @@ InitrdPath=/usr/share/mc
 
 # terminal emulator used by ssh client
 
-#InitrdBinary=/bin/infocmp
+InitrdBinary=/bin/infocmp
 
 #InitrdPath=/usr/share/terminfo
 InitrdPath=/usr/share/terminfo/l/linux

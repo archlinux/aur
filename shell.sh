@@ -24,6 +24,21 @@ is_entry_service() {
     [ "$entry" = "service" ]
 }
 
+# verify if shell started form console debug shell
+is_debug_shell() {
+    ! is_entry_service && ! is_ssh_connect
+}
+
+# verify if shell started form some debug tool
+is_tool_shell() {
+    [ -n "$MC_SID" ]
+}
+
+# verify if shell is in interactive mode
+is_interactive_shell() {
+    [[ $- == *i* ]]
+}
+
 # verify if this is a remote session
 is_ssh_connect() {
     [ -n "$SSH_CONNECTION" ]
@@ -182,6 +197,7 @@ do_exit() {
     exit "$code"
 }
 
+# invoke sub shell
 do_shell() {
     local PS1='>'
     /bin/sh
@@ -194,14 +210,18 @@ do_reboot() {
 
 # process invocation from tty console or ssh connection
 do_console() {
-    if has_crypt_jobs ; then
+    if is_debug_shell ; then
+        do_exit 0
+    elif is_tool_shell ; then
+        do_exit 0
+    elif has_crypt_jobs ; then
         do_crypt || do_agent 
     else 
         do_prompt
     fi
 }
 
-# process invocation from systemd service unit
+# process invocation from systemd unit initrd-cryptsetup.service
 do_service() {
     if has_crypt_jobs ; then
         do_crypt || do_agent
@@ -219,11 +239,13 @@ do_prompt() {
         echo "c) crypto secret"
         echo "s) sys shell"
         echo "r) reboot"
+        echo "q) quit"
         read -p ">>>" choice
         case "$choice" in
         c) do_crypt ;;
         s) do_shell ;;
         r) do_reboot ;;
+        q) do_exit 0 ;;
         *) echo "$choice ?" ;;
         esac
     done
@@ -231,20 +253,21 @@ do_prompt() {
 
 # respond to interrupt
 do_trap() {
-    if is_ssh_connect ; then
-        do_prompt
-    elif is_entry_service ; then
+    if is_entry_service ; then
         echo ""
-        do_exit 1
+        do_exit 1 # restart service
+    elif is_ssh_connect ; then
+        echo ""
+        do_prompt # drop to menu
     else
         echo ""
-        do_exit 0
+        do_exit 0 # testing
     fi
 }
 
 # handle "CTRL-C"
 trap_SIGINT () { 
-    do_trap 
+    do_trap
 }
 
 # handle "CTRL-D"
@@ -257,10 +280,10 @@ trap_SIGTERM() {
     exit 0
 }
 
-# systemd service unit can provide these shell arguments
+# systemd service unit can override these shell arguments
 setup_defaults() {
     # user request settings
-    [ -z "$user_prompt" ]  && readonly user_prompt="  secret>"
+    [ -z "$user_prompt" ]  && readonly user_prompt=" secret>"
     [ -z "$user_timeout" ] && readonly user_timeout=0 # A timeout of 0 waits indefinitely.
             
     # active operation timeout settings
@@ -280,7 +303,7 @@ setup_defaults() {
 
 setup_interrupts() {
     trap trap_SIGINT SIGINT
-    trap trap_SIGQUIT SIGQUIT
+    #trap trap_SIGQUIT SIGQUIT
     #trap trap_SIGTERM SIGTERM
 }
 
@@ -302,7 +325,8 @@ process_invocation() {
 # shell entry point
 program() {
     
-    readonly "$@" # inject arguments
+    # inject arguments
+    readonly "$@"
     
     setup_defaults
     

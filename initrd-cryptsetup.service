@@ -19,13 +19,16 @@ Before=cryptsetup.target
 
 
 [Service]
-# prompt user for crypto secret - see shell.sh 
+# login console interaction
 ExecStart=/bin/sh /root/.profile entry=service
+Type=idle
 Restart=on-failure
 RestartSec=1s
+#RestartForceExitStatus=
+#RestartPreventExitStatus=
 StandardInput=tty
-StandardError=tty
-StandardOutput=tty
+StandardOutput=inherit
+StandardError=inherit
 TTYPath=/dev/console
 
     

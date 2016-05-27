@@ -28,12 +28,15 @@ RequiredBy=initrd-dropbear.service
 # https://github.com/systemd/systemd/issues/3340
 [X-SystemdTool]
 
-# provide interactive login script
+# provision login script
 InitrdPath=/root/.profile source=/etc/mkinitcpio.d/shell.sh mode=700
 
 # enforce specific login shell in /etc/passwd
 InitrdPath=/etc/passwd
 InitrdBuild=/etc/systemd/system/initrd-build.sh command=do_root_shell
+
+# include user root ssh credentials
+InitrdPath=/root/.ssh/authorized_keys source=/root/.ssh/authorized_keys mode=600
 
 # dependency required by systemd emergency service
 InitrdBinary=/usr/bin/sulogin
