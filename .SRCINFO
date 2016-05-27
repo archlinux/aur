@@ -1,0 +1,34 @@
+pkgbase = kwin-presentwindows-close
+	pkgdesc = KDE Window manager, reverting the removal of the close action in present windows
+	pkgver = 5.6.4
+	pkgrel = 1
+	url = https://www.kde.org/workspaces/plasmadesktop/
+	arch = i686
+	arch = x86_64
+	groups = plasma
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = kdoctools
+	makedepends = libinput
+	makedepends = python
+	depends = qt5-multimedia
+	depends = kscreenlocker
+	depends = knewstuff
+	depends = xcb-util-cursor
+	depends = hicolor-icon-theme
+	depends = kdecoration
+	depends = kinit
+	depends = plasma-framework
+	depends = kcmutils
+	optdepends = libinput: for kwin-wayland
+	provides = kwin
+	conflicts = kdebase-workspace
+	conflicts = kwin
+	source = http://download.kde.org/stable/plasma/5.6.4/kwin-5.6.4.tar.xz
+	source = presentwindows-close.patch
+	md5sums = 6afbe6f1659cac2e186dcce9f92f51de
+	md5sums = 84538b8d5331a3f3f59cc31e393025d2
+
+pkgname = kwin-presentwindows-close
+

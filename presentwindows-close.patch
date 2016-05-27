@@ -1,0 +1,83 @@
+diff --git a/effects/presentwindows/presentwindows.h b/effects/presentwindows/presentwindows.h
+index 7e09b02..eecf70a 100644
+--- a/effects/presentwindows/presentwindows.h
++++ b/effects/presentwindows/presentwindows.h
+@@ -137,8 +137,7 @@ public:
+         WindowExitAction = 2, // Deactivates the effect without activating new window
+         WindowToCurrentDesktopAction = 3, // Brings window to current desktop
+         WindowToAllDesktopsAction = 4, // Brings window to all desktops
+-        WindowMinimizeAction = 5, // Minimize the window
+-        WindowCloseAction = 6 // Closes the window
++        WindowMinimizeAction = 5 // Minimize the window
+     };
+     enum DesktopMouseAction {
+         DesktopNoAction = 0, // nothing
+commit 76c70a3c4b8ecaf44c2eb46f19a0c64048acc833
+Author: Martin Gräßlin <mgraesslin@kde.org>
+Date:   Fri Feb 8 11:37:58 2013 +0100
+
+    Remove close window mouse action from Present Windows effect
+
+    This feature has been superseded by the close window button and as it
+    is a rather destructive action it makes sense to remove it.
+
+    Sorry to everyone who used it.
+
+    CCBUG: 314393
+
+diff --git a/effects/presentwindows/presentwindows.cpp b/effects/presentwindows/presentwindows.cpp
+index 9cfd599..ace76bc 100755
+--- a/effects/presentwindows/presentwindows.cpp
++++ b/effects/presentwindows/presentwindows.cpp
+@@ -670,11 +670,6 @@ void PresentWindowsEffect::mouseActionWindow(WindowMouseAction& action)
+                 m_highlightedWindow->minimize();
+         }
+         break;
+-    case WindowCloseAction:
+-        if (m_highlightedWindow) {
+-            m_highlightedWindow->closeWindow();
+-        }
+-        break;
+     default:
+         break;
+     }
+diff --git a/effects/presentwindows/presentwindows_config.ui b/effects/presentwindows/presentwindows_config.ui
+index 336efec..cb1ebba 100644
+--- a/effects/presentwindows/presentwindows_config.ui
++++ b/effects/presentwindows/presentwindows_config.ui
+@@ -161,11 +161,6 @@
+           <string>(Un-)Minimize window</string>
+          </property>
+         </item>
+-        <item>
+-         <property name="text">
+-          <string>Close window</string>
+-         </property>
+-        </item>
+        </widget>
+       </item>
+       <item row="1" column="0">
+@@ -210,11 +205,6 @@
+           <string>(Un-)Minimize window</string>
+          </property>
+         </item>
+-        <item>
+-         <property name="text">
+-          <string>Close window</string>
+-         </property>
+-        </item>
+        </widget>
+       </item>
+       <item row="2" column="0">
+@@ -259,11 +249,6 @@
+           <string>(Un-)Minimize window</string>
+          </property>
+         </item>
+-        <item>
+-         <property name="text">
+-          <string>Close window</string>
+-         </property>
+-        </item>
+        </widget>
+       </item>
+      </layout>
