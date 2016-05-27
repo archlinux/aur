@@ -2,7 +2,7 @@
 # Contributor: Joker-jar <joker-jar@yandex.ru>
 
 pkgname="psi-plus-webkit-git"
-pkgver=0.16.559
+pkgver=0.16.559.574
 pkgrel=1
 pkgdesc="Psi+ is a powerful Jabber client (Qt, C++) designed for the Jabber power users (with webkit support)"
 url="http://psi-plus.com"
@@ -27,7 +27,11 @@ md5sums=('SKIP'
 pkgver() {
   cd "$srcdir"/psi-plus
 
-  git describe --tags | cut -d - -f 1-2 --output-delimiter=.
+  PSI_PLUS_REVISION="$(git describe --tags | cut -d - -f 2)"
+  PSI_PLUS_TAG="$(git describe --tags | cut -d - -f 1)"
+  PSI_REVISION="$(cd "$srcdir"/psi && git describe --tags | cut -d - -f 2)"
+
+  echo "${PSI_PLUS_TAG}.${PSI_PLUS_REVISION}.${PSI_REVISION}"
 }
 
 prepare() {
