@@ -2,7 +2,7 @@
 
 pkgname=wd719x-firmware
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Driver for Western Digital WD7193, WD7197 and WD7296 SCSI cards"
 url="http://support.wdc.com/product/download.asp?groupid=801&sid=27&lang=en"
 license=('unknown')
@@ -12,7 +12,7 @@ conflicts=()
 replaces=()
 backup=()
 md5sums=('c5f7dc52c96e606e403751a4c482d785')
-source=('http://support.wdc.com/download/archive/pciscsi.exe')
+source=('https://dl.dropboxusercontent.com/u/48372564/wd719-firmware/pciscsi.exe')
 noextract=('pciscsi.exe')
 
 build() {
