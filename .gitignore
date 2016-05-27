@@ -1,5 +1,13 @@
+# backup files
 *~
 *.bak
 *.swp
-Makefile.old
+
+# makepkg output
+/src/
+/pkg/
+*.pkg.tar.xz
+
+# git repo
+/xf86-video-nouveau-blacklist/
 
