@@ -1,0 +1,18 @@
+pkgbase = jflap2tikz
+	pkgdesc = Convert JFlap file into a LATEX file depicting the automaton using TikZ
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://www.ctan.org/pkg/jflap2tikz?lang=en
+	arch = any
+	license = custom
+	makedepends = java-runtime
+	depends = java-runtime
+	source = http://mirrors.ctan.org/graphics/jflap2tikz.zip
+	source = LICENSE
+	source = jflap2tikz.sh
+	sha256sums = 625264995030491208857f370715e328b03b388f16d60e4c381c1df3519da141
+	sha256sums = 362a0f90a53c27370b7685c940082ba7941f487a7aeb87aab8882a1094db7e3a
+	sha256sums = b6a7c35d8a4b776759c76f57e763699455e07ebfb29aeea1fc6f70e21624fe3c
+
+pkgname = jflap2tikz
+
