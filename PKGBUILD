@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: BangL <contact through AUR please>
 pkgname=openra-kang
-pkgver=BLEED.b49f143
+pkgver=git
 pkgrel=1
 pkgdesc="An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL"
 arch=('any')
@@ -15,7 +15,7 @@ provides=('openra')
 conflicts=('openra')
 options=(!strip)
 
-source=('OpenRA::git://github.com/BangL/OpenRA.git#branch=bleed')
+source=('OpenRA::https://github.com/BangL/OpenRA/tree/bleed')
 md5sums=('SKIP')
 
 
