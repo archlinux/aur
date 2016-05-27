@@ -25,7 +25,7 @@ md5sums=('SKIP'
          'SKIP')
 
 pkgver() {
-  cd psi-plus
+  cd "$srcdir"/psi-plus
 
   git describe --tags | cut -d - -f 1-2 --output-delimiter=.
 }
@@ -51,7 +51,7 @@ prepare() {
 
   # make build date in --version output a bit more readable
   #sed "s/yyyyMMdd/yyyy-MM-dd/" -i qcm/conf.qcm
-  echo "$pkgver-webkit ($(date +"%Y-%m-%d"))" >version
+  echo "$(pkgver)-webkit ($(date +"%Y-%m-%d"))" >version
 }
 
 build() {
