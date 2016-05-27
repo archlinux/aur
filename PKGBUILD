@@ -6,7 +6,7 @@ _pkgname=jdk
 pkgname=bin32-jdk-devel
 _major=9
 #_minor=1
-_build=119
+_build=120
 _pkgver=$_major
 pkgver=${_major}b${_build}
 #_pkgver=${_major}u${_minor}
@@ -52,7 +52,7 @@ source=("http://www.java.net/download/java/jdk${_major}/archive/${_build}/binari
         "jvisualvm32-$_jname.desktop"
         "policytool32-$_jname.desktop"
         'OTN-Early-Adopter-License-Terms.txt')
-md5sums=('f892c3d967faa734a36b827fd1c53c45'
+md5sums=('d7aa5698a058471867fb6ba9889e0fcd'
          'cae82f6fd99d9b5e60dca0e48f71cc3f'
          '766d4781f1610fbd2e5797709c373d2f'
          'bf32df4a5c6a82dceb0249cb815efe18'
