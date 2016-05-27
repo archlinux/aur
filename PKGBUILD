@@ -2,15 +2,14 @@ pkgbase=swift-development
 pkgname=(swift-development swift-lldb-development)
 _swiftver=DEVELOPMENT-SNAPSHOT-2016-05-09-a
 pkgver=${_swiftver//-/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="The Swift programming language and debugger - latest development snapshot"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
 license=('apache')
 depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
          'sqlite' 'ncurses')
-makedepends=('git' 'cmake' 'ninja' 'swig' 'clang-svn' 'python2-six' 'perl'
-             'binutils>=2.26')
+makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.8' 'python2-six' 'perl')
 source=(
     "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
     "swift-llvm-${_swiftver}.tar.gz::https://github.com/apple/swift-llvm/archive/swift-${_swiftver}.tar.gz"
@@ -23,7 +22,7 @@ source=(
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "swift-no-docs.patch"
-    "binutils226-swift.patch" "binutils226-swift-driver.patch"
+    "require-gold-on-linux.patch"
 )
 sha256sums=('76584f8b0ba85cfbd5264228d975f565b584e424bed11fc9ab3115130125ffec'
             '9230cb83a975dc0d904d517fb9640f902f5a25dfa9779438b3bd123cfd77e572'
@@ -36,8 +35,7 @@ sha256sums=('76584f8b0ba85cfbd5264228d975f565b584e424bed11fc9ab3115130125ffec'
             'f42133f61c2920e1a5dfa7839562d86b632948d38cca548729f85b67bf833ddc'
             'f8a60c6d16bea5881705947bb4350d2306c090d7c08c55b63bddc4baf6d2995d'
             '1a8663c48a1a203d1825ae62a7e4191e4980a2dad461d4d88152221ad9e2171d'
-            '2d8afb6a3d6f7aca1636eae961e4d1e7f486df420e1a726c69d027e4b65c73c5'
-            '0aa6868dac834ab13a9f61a0e406c6dc25f39afdf086cb93d90d85c39083e589')
+            '1eccfbef3cc62567219857c23de87d67da1ff059ebd835caab7cabaf5c80487b')
 
 prepare() {
     # Use python2 where appropriate
@@ -70,10 +68,9 @@ prepare() {
     # syntax highlighting language (like "swift").
     ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/swift-no-docs.patch" )
 
-    # Patches for compiling against binutils 2.26
+    # Backport: Use gold linker to avoid binutils issues
     # (See https://bugs.swift.org/projects/SR/issues/SR-1023)
-    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/binutils226-swift.patch" )
-    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/binutils226-swift-driver.patch" )
+    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/require-gold-on-linux.patch" )
 }
 
 build() {
@@ -95,7 +92,7 @@ check() {
 
 package_swift-development() {
     pkgdesc='The Swift programming language compiler and tools - development snapshot'
-    provides=('swift-language')
+    provides=('swift-language' 'swift')
     conflicts=('swift-language-git' 'swift-git' 'swift-bin' 'swift')
     optdepends=('swift-lldb: Swift REPL and debugger')
 

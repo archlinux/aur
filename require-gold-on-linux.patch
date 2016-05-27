@@ -1,0 +1,52 @@
+From 3b7b0d80919997ead4c9bb6d681c5739e22d34cc Mon Sep 17 00:00:00 2001
+From: Saleem Abdulrasool <compnerd@compnerd.org>
+Date: Thu, 19 May 2016 17:59:03 -0700
+Subject: [PATCH] utils: require gold on Linux targets
+
+Given the discussion on swift-dev, and no opposition, swift the linux targets to
+using gold by default.
+---
+ lib/Driver/ToolChains.cpp | 5 +++++
+ utils/build-script-impl   | 3 +++
+ 2 files changed, 8 insertions(+)
+
+diff --git a/lib/Driver/ToolChains.cpp b/lib/Driver/ToolChains.cpp
+index 42e1e2c..c9147ec 100644
+--- a/lib/Driver/ToolChains.cpp
++++ b/lib/Driver/ToolChains.cpp
+@@ -1218,6 +1218,11 @@ std::string toolchains::GenericUnix::getDefaultLinker() const {
+     // final executables, as such, unless specified, we default to gold
+     // linker.
+     return "gold";
++  case llvm::Triple::x86_64:
++  case llvm::Triple::ppc64:
++  case llvm::Triple::ppc64le:
++    // BFD linker has issues wrt relocations against protected symbols.
++    return "gold";
+   default:
+     // Otherwise, use the default BFD linker.
+     return "";
+diff --git a/utils/build-script-impl b/utils/build-script-impl
+index 87c68a5..0c3a38b 100755
+--- a/utils/build-script-impl
++++ b/utils/build-script-impl
+@@ -325,6 +325,7 @@ function set_deployment_target_based_options() {
+ 
+     case ${deployment_target} in
+         linux-x86_64)
++            USE_GOLD_LINKER=1
+             SWIFT_HOST_VARIANT_ARCH="x86_64"
+             ;;
+         linux-armv6)
+@@ -346,9 +347,11 @@ function set_deployment_target_based_options() {
+             SWIFT_HOST_VARIANT_ARCH="x86_64"
+             ;;
+         linux-powerpc64)
++            USE_GOLD_LINKER=1
+             SWIFT_HOST_VARIANT_ARCH="powerpc64"
+             ;;
+         linux-powerpc64le)
++            USE_GOLD_LINKER=1
+             SWIFT_HOST_VARIANT_ARCH="powerpc64le"
+             ;;
+         cygwin-x86_64)
