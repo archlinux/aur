@@ -10,5 +10,4 @@ post_install () {
 post_upgrade() {
     # Fix permissions on necessary directories
   chown -R twp:twp /srv/twp
-  chmod g+s /srv/twp
 }

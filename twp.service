@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=twp
 Type=simple
-ExecStart=/usr/bin/python2 /srv/twp/run.py
+ExecStart=/srv/twp/run.py
 WorkingDirectory=/srv/twp
 
 [Install]
