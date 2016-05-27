@@ -83,10 +83,10 @@ run_reply() {
 
 # ask user for password once and answer to all requests
 run_answer() {
-    local socket_list="$1" socket= 
-    local secret=$(run_query)
+    local socket_list="$1" socket= secret= 
+    secret=$(run_query) || return 1
     for socket in $socket_list ; do
-        run_reply "$secret" "$socket"
+        run_reply "$secret" "$socket" || return 2
     done
 }
 
@@ -138,41 +138,35 @@ wait_request() {
     return 0
 }
 
+# ensure crypt jobs are gone
+wait_complete() {
+    local count=1
+    while has_crypt_jobs ; do
+        sleep "$sleep_delay"
+        let count+=1
+        if [ "$count" -gt "$sleep_count" ] ; then
+            return 1
+        fi
+    done
+    return 0
+}
+
+do_error() {
+    local code="$?"
+    local text="$1"
+    echo "   error: $text code=$code"
+}
+
 # crypto secret default logic: all at once
 do_crypt() {
-
-    wait_request
-
-    wait_console
-
     local config_list= socket_list=
-
-    # verify crypt requests are pending
-
+    wait_request                 || { do_error "missing requests" ; return 1; }
+    wait_console                 || { do_error "console is active" ; return 1; }
     config_list=$(list_ask_config)
-    socket_list=$(list_ask_socket "$config_list")
-        
-    if [ "" = "$socket_list" ] ; then
-        echo "error: do_crypt with no requests"
-        return 1
-    fi
-        
-    run_answer "$socket_list"
-    
-    wait_confirm "$socket_list"
-
-    # verify no new crypt requests are pending
-
-    config_list=$(list_ask_config)
-    socket_list=$(list_ask_socket "$config_list")
-
-    if has_any_file "$socket_list" ; then
-        echo "error: do_crypt failure to respond"
-        return 1
-    fi
-    
-    return 0
-
+    socket_list=$(list_ask_socket $config_list)
+    run_answer "$socket_list"    || { do_error "query/reply failure" ; return 1; }
+    wait_confirm "$socket_list"  || { do_error "requests still present" ; return 1; }
+    wait_complete                || { do_error "new requests are posted" ; return 1; }
 }
 
 # crypto secret fall back logic: one at a time
