@@ -30,76 +30,51 @@ do_prompt() {
         echo
         echo "select:"
         echo "c) crypto secret"
-        echo "s) user shell"
+        echo "s) sys shell"
         echo "r) reboot"
-        echo "q) quit"
-        read -p ">" choice
+        read -p ">>>" choice
         case "$choice" in
         c) do_crypt ;;
-        s) do_shell ;;
+        s) do_exit ;;
         r) do_reboot ;;
-        q) do_exit ;;
         *) echo "$choice ?" ;;
         esac
     done
 }
 
-# exit to shell
-do_shell() { 
-    exec /bin/sh 
-}
-
-# change systemd state
-do_reboot() { 
-    /bin/systemctl reboot 
-}
-
-# safe exit
-do_exit() { 
-    exit 0 
-}
-
-# replace process
-do_close() { 
-    exec /bin/sh -c exit 0 
-}
-
-
 # verify if shell started form systemd unit
-is_entry_service() { [ "$entry" ="service" ] ; }
+is_entry_service() { 
+    [ "$entry" ="service" ]
+}
 
-# verify if this is remote session
+# verify if this is a remote session
 is_ssh_connect() {
-    local flag="$SSH_CONNECTION"
-    [ -n "$flag" ]
+    [ -n "$SSH_CONNECTION" ]
 }
 
 # verify if given process is alive
 is_pid_present() {
-    local pid=$1
-    ps | grep -E -e "[ ]+${pid}[ ]+.*"
-}
-
-# verify if crypttab 
-has_crypt_jobs() {
-    $command_syctl list-jobs | grep -q 'cryptsetup'
+    ps | grep -E -e "[ ]+${1}[ ]+.*"
 }
 
 # verify if there are any crypto requests
 is_ask_pending() {
-    local list="$(list_ask_config)"
-    [ -n "$list" ]
+    [ -n "$(list_ask_config)" ]
 }
 
-# list current crypto questions
+# verify if any crypttab jobs are active
+has_crypt_jobs() {
+    $systemd_syctl list-jobs | grep -q 'cryptsetup'
+}
+
+# list current crypto question files
 list_ask_config() {
-    grep -l 'cryptsetup' $folder_ask/ask.* 2>/dev/null
+    grep -l 'cryptsetup' $watch_folder/ask.* 2>/dev/null
 }
 
-# list current crypto channels
+# list current crypto socket files
 list_ask_socket() {
-    local config_list="$1"
-    local config
+    local config_list="$1" config=
     for config in $config_list ; do
         echo $(cat "$config" | grep -i 'socket=' | sed -e 's/socket=//I')
     done
@@ -107,20 +82,18 @@ list_ask_socket() {
 
 # query password from the console
 run_query() {
-    $command_query "$user_prompt"
+    $systemd_query --timeout=$user_timeout "$user_prompt"
 }
 
 # reply password to the requester
 run_reply() {
-    local secret="$1"
-    local socket="$2"
-    echo "$secret" | $command_reply "1" "$socket"
+    local secret="$1" socket="$2"
+    echo "$secret" | $systemd_reply "1" "$socket"
 }
 
-# ask user for password once and answer to multiple requests at once
+# ask user for password once and answer to all requests
 run_answer() {
-    local socket="" 
-    local socket_list="$1"
+    local socket_list="$1" socket= 
     local secret=$(run_query)
     for socket in $socket_list ; do
         run_reply "$secret" "$socket"
@@ -154,7 +127,7 @@ read_console() {
     tail -c 1024 "/dev/vcs"
 }
 
-# ensure console is no longer producing changing output
+# ensure console is no longer changing
 wait_console() {
     local count=1 text1= text2=
     while true ; do
@@ -224,9 +197,18 @@ do_crypt() {
 
 # crypto secret fall back logic
 do_agent() {
-    $command_agent
+    $systemd_agent
 }
 
+# exit shell script
+do_exit() { 
+    exit 0 
+}
+
+# change systemd state
+do_reboot() { 
+    $systemd_syctl reboot 
+}
 
 # process invocation from tty console or ssh connection
 do_console() {
@@ -272,22 +254,23 @@ trap_SIGTERM() {
 
 # systemd service unit can provide these shell arguments
 setup_defaults() {
-    # password request
-    [ -z "$user_prompt" ] && readonly user_prompt="abrakadabra>"
+    # user request settings
+    [ -z "$user_prompt" ]  && readonly user_prompt="secret>"
+    [ -z "$user_timeout" ] && readonly user_timeout=0 # A timeout of 0 waits indefinitely.
             
-    # wait timeout settings
+    # active operation timeout settings
     [ -z "$sleep_delay" ] && readonly sleep_delay=0.7
     [ -z "$sleep_count" ] && readonly sleep_count=10
         
-    # ensure inotify watch folder
-    [ -z "$folder_ask"] && readonly folder_ask="/run/systemd/ask-password"
-    mkdir -p "$folder_ask"
+    # password inotify watch folder
+    [ -z "$watch_folder"] && readonly watch_folder="/run/systemd/ask-password"
+    mkdir -p "$watch_folder"
     
     # required systemd binaries
-    [ -z "$command_syctl"] && readonly command_syctl="/usr/bin/systemctl"
-    [ -z "$command_query"] && readonly command_query="/usr/bin/systemd-ask-password"
-    [ -z "$command_reply"] && readonly command_reply="/usr/lib/systemd/systemd-reply-password"
-    [ -z "$command_agent"] && readonly command_agent="/usr/bin/systemd-tty-ask-password-agent"
+    [ -z "$systemd_syctl"] && readonly systemd_syctl="/usr/bin/systemctl"
+    [ -z "$systemd_query"] && readonly systemd_query="/usr/bin/systemd-ask-password"
+    [ -z "$systemd_reply"] && readonly systemd_reply="/usr/lib/systemd/systemd-reply-password"
+    [ -z "$systemd_agent"] && readonly systemd_agent="/usr/bin/systemd-tty-ask-password-agent"
 }
 
 setup_interrupts() {
@@ -302,7 +285,6 @@ process_invocation() {
         # development invocations
         exit)     do_exit ;;
         crypt)    do_crypt ;;
-        shell)    do_shell ;;
         reboot)   do_reboot ;;
         prompt)   do_prompt ;;
         # production invocations

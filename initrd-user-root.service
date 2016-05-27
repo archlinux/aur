@@ -19,14 +19,9 @@ Type=oneshot
 RemainAfterExit=true
 
 # enforce specific login shell
-Environment=SHELL_CMD=/bin/sh
-ExecStart=/bin/sed -i -r -e "s|^root.*|root:x:0:0:root:/root:${SHELL_CMD}|" /etc/passwd
-
-# activate default interactive login script
-Environment=SHELL_FILE=/etc/mkinitcpio.d/shell.sh
-Environment=SHELL_LINK=/root/.profile
-ExecStart=/bin/chmod o+rwx ${SHELL_FILE}
-ExecStart=/bin/ln -f -s ${SHELL_FILE} ${SHELL_LINK}
+Environment=SHELL=/bin/sh
+Environment=MATCH=(root):([^:]*):([^:]*):([^:]*):([^:]*):([^:]*):([^:]*)
+ExecStart=/bin/sed -i -r -e "s|${MATCH}|\1:\2:\3:\4:\5:\6:${SHELL}|" /etc/passwd
 
 
 [Install]
@@ -37,5 +32,5 @@ RequiredBy=initrd-dropbear.service
 # https://github.com/systemd/systemd/issues/3340
 [X-SystemdTool]
 
-# location of shell script files
-InitrdPath=/etc/mkinitcpio.d glob=*.sh
+# provide interactive login script
+InitrdPath=/root/.profile source=/etc/mkinitcpio.d/shell.sh mode=700

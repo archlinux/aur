@@ -17,12 +17,9 @@ Before=shutdown.target
 After=cryptsetup-pre.target
 Before=cryptsetup.target
 
-#Requires=systemd-ask-password-console.path
-#Requires=systemd-ask-password-console.service
-
 
 [Service]
-# see shell.sh
+# prompt user for crypto secret - see shell.sh 
 ExecStart=/bin/sh /root/.profile entry=service
 Restart=on-failure
 RestartSec=1s
