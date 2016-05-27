@@ -6,25 +6,27 @@
 
 _pkgbase=lgi
 pkgname=luajit-lgi
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc='Lua binadings for gnome/gobject using gobject-introspection library'
-arch=(i686 x86_64)
+arch=('i686' 'x86_64')
 url='https://github.com/pavouk/lgi'
 license=('custom:MIT')
-depends=('glibc' 'glib2' 'libffi' 'luajit' 'gobject-introspection')
+depends=('libffi' 'luajit' 'gobject-introspection-runtime')
+makedepends=('gobject-introspection')
 source=("$_pkgbase-$pkgver.tar.gz::https://github.com/pavouk/$_pkgbase/archive/$pkgver.tar.gz")
-md5sums=('cc433a597f23cfabdfc905c6c2cd3d7c')
-conflicts=('lgi')
+sha256sums=('0c70fb2b1ca17d333b7e2c18d5fc943944b5872e063de60df3035ee20b6dafba')
 
 build() {
   cd $_pkgbase-$pkgver
+
   make LUA_INCDIR=/usr/include/luajit-2.0/ \
-    LUA_CFLAGS=$(pkg-config --cflags luajit)
+    LUA_CFLAGS="$(pkg-config --cflags luajit) -O2"
 }
 
 package() {
   cd $_pkgbase-$pkgver
+
   make \
     LUA_LIBDIR=/usr/lib/lua/5.1 \
     LUA_SHAREDIR=/usr/share/lua/5.1 \
@@ -49,6 +51,13 @@ package() {
   # license
   install -Dm644 LICENSE \
     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+check() {
+  cd $_pkgbase-$pkgver
+
+  make LUA=luajit LUA_INCDIR=/usr/include/luajit-2.0/ \
+    LUA_CFLAGS="$(pkg-config --cflags luajit) -O2" check
 }
 
 # vim:set ts=2 sw=2 et:
