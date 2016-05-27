@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=SoftEther VPN Server Manager
+Exec=vpnsmgr
+Icon=vpnsmgr
+Terminal=false
+Categories=Network;
