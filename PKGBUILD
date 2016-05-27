@@ -15,7 +15,7 @@ provides=('openra')
 conflicts=('openra')
 options=(!strip)
 
-source=('OpenRA::https://github.com/BangL/OpenRA/tree/bleed')
+source=('OpenRA::git://github.com/BangL/OpenRA.git#branch=bleed')
 md5sums=('SKIP')
 
 
