@@ -1,0 +1,2 @@
+# Needed to get CUPS working with the usblp module.
+ATTRS{idVendor}=="04f9", ATTRS{idProduct}=="0322", MODE:="0660", GROUP:="lp" 
