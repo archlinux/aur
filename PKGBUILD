@@ -3,48 +3,48 @@
 
 pkgbase=python-amqp
 pkgname=('python-amqp' 'python2-amqp')
-pkgver=1.4.9
+pkgver=2.0.0
+_commit=a0c96ff8584ec59659656eed3e0e42d29f52dade
 pkgrel=1
 pkgdesc="Low-level AMQP client for Python (fork of amqplib)"
 arch=('any')
 url="http://github.com/celery/py-amqp"
 license=('LGPL')
-makedepends=('python-setuptools' 'python2-setuptools' 'git')
-checkdepends=('python-nose' 'python2-nose' 'python-mock' 'python2-mock')
-source=("https://pypi.python.org/packages/source/a/amqp/amqp-$pkgver.tar.gz")
-md5sums=('df57dde763ba2dea25b3fa92dfe43c19')
+makedepends=('python-vine' 'python2-vine' 'git')
+source=("git+https://github.com/celery/py-amqp.git#commit=$_commit")
+md5sums=('SKIP')
 
 prepare() {
-  cp -a amqp-$pkgver{,-py2}
+  cp -a py-amqp{,-py2}
 }
 
 build() {
-  cd "$srcdir/amqp-$pkgver"
+  cd "$srcdir"/py-amqp
   python setup.py build
 
-  cd "$srcdir/amqp-$pkgver-py2"
+  cd "$srcdir"/py-amqp-py2
   python2 setup.py build
 }
 
 check() {
-  cd "$srcdir/amqp-$pkgver"
+  cd "$srcdir"/py-amqp
   nosetests3
 
-  cd "$srcdir/amqp-$pkgver-py2"
+  cd "$srcdir"/py-amqp-py2
   nosetests2
 }
 
 package_python-amqp() {
-  depends=('python')
+  depends=('python-vine')
 
-  cd amqp-$pkgver
+  cd py-amqp
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
 package_python2-amqp() {
-  depends=('python2')
+  depends=('python2-vine')
 
-  cd amqp-$pkgver-py2
+  cd py-amqp-py2
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
