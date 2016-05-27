@@ -7,7 +7,7 @@
 pkgname=clion-eap
 _pkgname=clion
 _archname=CLion
-pkgver=162.232.8
+pkgver=162.426.5
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc="C/C++ IDE. 30-day evaluation."
@@ -28,7 +28,7 @@ optdepends=(
   'python2: Python 2 programming language support (Also requires the plugin)'
 )
 source=("https://download.jetbrains.com/cpp/${_archname}-${_pkgver}.tar.gz")
-sha512sums=('b0d7e07f3e71e965328cb4d5e8e705799f1edc26de2a96bdef0f10ef4cf9703547755e5e5ad7b47d0c762a805236db705abab92a98adeded7367b340f76f5955')
+sha512sums=('214b1146f8f26561c4b3ebbc9aad8a65427af23d701bc0ed4992f067eaef7e95d4a9c549e61617d50c9b8c143de345483784143ae58db819fc49bf20db2d1196')
 noextract=("${_archname}-${_pkgver}.tar.gz")
 
 package() {
