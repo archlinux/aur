@@ -1,6 +1,6 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 pkgname=binaryen-git
-pkgver=20160119
+pkgver=20160527
 pkgrel=1
 pkgdesc="Compiler infrastructure and toolchain library for WebAssembly, in C++"
 arch=(i686 x86_64)
@@ -12,12 +12,6 @@ provides=(binaryen)
 conflicts=(binaryen)
 source=('git://github.com/WebAssembly/binaryen.git')
 md5sums=(SKIP)
-
-check() {
-  cd binaryen
-
-  python2 update.py
-}
 
 build() {
   cd binaryen
@@ -33,6 +27,8 @@ package() {
   cd binaryen/build
 
   make DESTDIR=${pkgdir} install
+
+  install -Dm644 ../LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
