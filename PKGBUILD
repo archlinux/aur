@@ -9,14 +9,13 @@
 
 pkgname=coreutils-selinux
 pkgver=8.25
-pkgrel=1
+pkgrel=2
 pkgdesc='The basic file, shell and text manipulation utilities of the GNU operating system with SELinux support'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url='http://www.gnu.org/software/coreutils'
 groups=('selinux')
 depends=('glibc' 'acl' 'attr' 'gmp' 'libcap' 'openssl' 'libselinux')
-install=${pkgname/-selinux}.install
 conflicts=("${pkgname/-selinux}" "selinux-${pkgname/-selinux}")
 provides=("${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
@@ -28,12 +27,16 @@ md5sums=('070e43ba7f618d747414ef56ab248a48'
          'ab90c6ba801e06bcc11cf79a3f6168f6')
 
 prepare() {
-  local _p
-  for _p in *.patch; do
-   [[ -e $_p ]] || continue
-   msg2 "Applying $_p"
-   patch -p1 -d ${pkgname/-selinux}-$pkgver < "$_p"
+  cd ${pkgname/-selinux}-$pkgver
+  # apply patch from the source array (should be a pacman feature)
+  local filename
+  for filename in "${source[@]}"; do
+    if [[ "$filename" =~ \.patch$ ]]; then
+      msg2 "Applying patch $filename"
+      patch -p1 -N -i "$srcdir/$filename"
+    fi
   done
+  :
 }
 
 build() {
