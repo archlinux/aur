@@ -2,22 +2,11 @@
 
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
-# user root login shell program
-
-# implements password query/reply
-# https://www.freedesktop.org/wiki/Software/systemd/PasswordAgents/
-# https://www.freedesktop.org/software/systemd/man/systemd-ask-password.html
-
-# ask file format in /run/systemd/ask-password/ask.xxxxxx:
-#[Ask]
-#PID=179
-#Socket=/run/systemd/ask-password/sck.41815b63f6e61f4c
-#AcceptCached=1
-#Echo=0
-#NotAfter=0
-#Message=Please enter passphrase for disk VBOX_HARDDISK (swap)!
-#Icon=drive-harddisk
-#Id=cryptsetup:/dev/block/8:2
+# user root login shell program:
+# * expects invocation as default shell ~/.profile
+# * implements password query/reply:
+#   https://www.freedesktop.org/wiki/Software/systemd/PasswordAgents/
+#   https://www.freedesktop.org/software/systemd/man/systemd-ask-password.html
 
 # verify if shell started form systemd unit
 is_entry_service() { 
@@ -39,7 +28,7 @@ is_interactive_shell() {
     [[ $- == *i* ]]
 }
 
-# verify if this is a remote session
+# verify if this is a remote session shell
 is_ssh_connect() {
     [ -n "$SSH_CONNECTION" ]
 }
@@ -57,6 +46,15 @@ is_ask_pending() {
 # verify if any crypttab jobs are in the queue
 has_crypt_jobs() {
     $systemd_syctl list-jobs | grep -i -q 'cryptsetup'
+}
+
+# verify if any files on the list are still present
+has_any_file() {
+    local file_list="$1" file=
+    for file in $file_list ; do
+        [ -e "$file" ] && return 0
+    done
+    return 1
 }
 
 # list current crypto question files
@@ -90,15 +88,6 @@ run_answer() {
     for socket in $socket_list ; do
         run_reply "$secret" "$socket"
     done
-}
-
-# verify if any files on the list are still present
-has_any_file() {
-    local file_list="$1" file=
-    for file in $file_list ; do
-        [ -e "$file" ] && return 0
-    done
-    return 1
 }
 
 # await for requesters to remove their questions
@@ -149,7 +138,7 @@ wait_request() {
     return 0
 }
 
-# crypto secret default logic
+# crypto secret default logic: all at once
 do_crypt() {
 
     wait_request
@@ -186,7 +175,7 @@ do_crypt() {
 
 }
 
-# crypto secret fall back logic
+# crypto secret fall back logic: one at a time
 do_agent() {
     $systemd_agent
 }
@@ -199,8 +188,7 @@ do_exit() {
 
 # invoke sub shell
 do_shell() {
-    local PS1='>'
-    /bin/sh
+    PS1='-> ' /bin/sh
 }
 
 # change systemd state
@@ -209,11 +197,11 @@ do_reboot() {
 }
 
 # process invocation from tty console or ssh connection
-do_console() {
+entry_console() {
     if is_debug_shell ; then
-        do_exit 0
+        return 0
     elif is_tool_shell ; then
-        do_exit 0
+        return 0
     elif has_crypt_jobs ; then
         do_crypt || do_agent 
     else 
@@ -222,9 +210,13 @@ do_console() {
 }
 
 # process invocation from systemd unit initrd-cryptsetup.service
-do_service() {
+entry_service() {
     if has_crypt_jobs ; then
-        do_crypt || do_agent
+        if do_crypt || do_agent ; then
+            do_exit 0
+        else
+            do_exit 1 # restart service
+        fi
     else
         do_exit 0
     fi
@@ -280,7 +272,7 @@ trap_SIGTERM() {
     exit 0
 }
 
-# systemd service unit can override these shell arguments
+# systemd service unit can override these arguments via [name=value]
 setup_defaults() {
     # user request settings
     [ -z "$user_prompt" ]  && readonly user_prompt=" secret>"
@@ -307,7 +299,7 @@ setup_interrupts() {
     #trap trap_SIGTERM SIGTERM
 }
 
-# respond depending on script invocation type
+# respond depending on script invocation type [entry=xxx]
 process_invocation() {
     case "$entry" in
         # development invocations
@@ -317,15 +309,15 @@ process_invocation() {
         reboot)   do_reboot ;;
         prompt)   do_prompt ;;
         # production invocations
-        service)  do_service ;;
-              *)  do_console ;;
+        service)  entry_service ;;
+              *)  entry_console ;;
     esac       
 }
 
 # shell entry point
 program() {
     
-    # inject arguments
+    # arguments
     readonly "$@"
     
     setup_defaults
