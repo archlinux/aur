@@ -5,29 +5,17 @@
 
 post_install () {
 
-# =============================================================
-#             Install marionnet_kernels and filesystems
-# =============================================================
-echo "* Marionnet installation completed\n\n\n"
+echo -e "* Marionnet installation completed\n\n"
 
-echo -e "Post installation hook\n"
+echo -e "Post installation hook"
 echo -e "——————————————————————\n"
-echo "* Downloading script marionnet_from_scratch : "
-wget http://www.marionnet.org/downloads/marionnet_from_scratch/marionnet_from_scratch
-echo "* Downlading and installing Marionnet kernels and filesystems (Linux \
-distributions Debian Lenny, Mandriva, Pinocchio, etc.)"
-echo -e "Warning! this process may take several hours! \n\n"
-echo -e "* Command : \`./marionnet_from_scratch --download-only -m trunk\`"
-chmod +x ./marionnet_from_scratch
-./marionnet_from_scratch --download-only -m trunk
-
-
-# Here $SUDO_OR_NOTHING is null
-tmpfile=$(mktemp /tmp/marionnetInstallTmpXXXXXXX)
 
 # =============================================================
 #                     Adjust X -nolisten tcp
 # =============================================================
+
+# Here $SUDO_OR_NOTHING is null
+tmpfile=$(mktemp /tmp/marionnetInstallTmpXXXXXXX)
 
 function remove_nolisten_assignment_from {
 # global SUDO_OR_NOTHING
@@ -148,44 +136,75 @@ fi
 
 if ps -A -o cmd | grep -q '^[a-zA-Z0-9/]*X.*[-]nolisten tcp'; then
     echo -e "\n---"
+    echo "============================================================="
+    echo "                      Warning readme"
+    echo "                      Warning readme"
+    echo "============================================================="
     echo "* Warning: your X server has been launched with the option '-nolisten tcp'"
     echo "  => This option should be removed from your X display manager configuration."
     echo -n "     Shall I try to fix it ([y]/n)? "
     read z
     if [[ $z != n && $z != N ]]; then
         if adjust_X_display_manager; then
-            echo " >>> READ THIS LINES READ THIS LINES READ THIS LINES \
-            READ THIS LINES READ THIS LINES READ THIS LINES READ THIS LINES \
-            WARNIN READ THIS LINES READ THIS LINES WARNIN READ THIS LINES \
-            READ THIS LINES WARNIN READ THIS LINES \
-            READ THIS LINES WARNIN READ THIS LINES READ THIS LINES WARNIN \
-            READ THIS LINES READ THIS LINES WARNIN READ THIS LINES \
-            READ THIS LINES WARNIN READ THIS LINES \
-            READ THIS LINES WARNIN READ THIS LINES READ THIS LINES"
             echo "     Ok. File(s) changed: $CHANGED_FILES"
             echo "     You must restart your X display manager for the changes to take effect."
         else
-            echo " >>> READ THIS LINES READ THIS LINES READ THIS LINES \
-            READ THIS LINES READ THIS LINES READ THIS LINES READ THIS LINES \
-            WARNIN READ THIS LINES READ THIS LINES WARNIN READ THIS LINES \
-            READ THIS LINES WARNIN READ THIS LINES \
-            READ THIS LINES WARNIN READ THIS LINES READ THIS LINES WARNIN \
-            READ THIS LINES READ THIS LINES WARNIN READ THIS LINES \
-            READ THIS LINES WARNIN READ THIS LINES \
-            READ THIS LINES WARNIN READ THIS LINES READ THIS LINES"
             echo "     Sorry, no change performed: you must edit your configuration manually."
         fi
     fi
 else
-    echo -e "\n\n\n* Your X server hasn't been launched with the option \
+    echo -e "\n* Your X server hasn't been launched with the option \
     '-nolisten tcp' : good."
 fi
 
-#### Daemon information
-echo -e "\n\n* Before start Marionnet, you must start the daemon : \n"
+# =============================================================
+#                       Daemon information
+# =============================================================
+
+echo "============================================================="
+echo "                      Daemon information                     "
+echo "============================================================="
+
+echo -e "* Before start Marionnet, you must start the daemon :"
 echo "sudo systemctl start marionnetdaemon.service"
 
+# =============================================================
+#             Install marionnet_kernels and filesystems
+# =============================================================
+
+echo "============================================================="
+echo "                      Downlading                     "
+echo "============================================================="
+
+echo "* Downloading script marionnet_from_scratch : "
+wget http://www.marionnet.org/downloads/marionnet_from_scratch/marionnet_from_scratch
+echo "* Downlading and installing Marionnet kernels and filesystems (Linux \
+distributions Debian Lenny, Mandriva, Pinocchio, etc.)"
+echo -e "Warning! this process may take several hours!"
+echo -e "* Command : \`./marionnet_from_scratch --download-only -m trunk \
+--prefix /opt/marionnet\`"
+chmod +x ./marionnet_from_scratch
+./marionnet_from_scratch --download-only -m trunk --prefix /opt/marionnet
+
+
+
+
+echo "* Post installation completed———\n\n\n"
+
 }
+
+post_remove() {
+echo -e "* Uninstallation process completed\n\n"
+
+echo -e "Post remove hook"
+echo -e "——————————————————————\n"
+echo "============================================================="
+echo "                    Remove Marionnet kernels"
+echo "============================================================="
+    rm -Rf /usr/share/marionnet
+}
+
+
 
 
 # vim: ft=sh

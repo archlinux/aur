@@ -1,7 +1,7 @@
 pkgbase = marionnet-trunk
 	pkgdesc = Educational software. It is a virtual network laboratory: it allows users to define, configure and run complex computer networks without any need for physical setup. Trunk version (with UML kernel Debian Wheezy).
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.marionnet.org/
 	install = marionnet.install
 	arch = i686
@@ -26,10 +26,12 @@ pkgbase = marionnet-trunk
 	source = http://wwwfun.kurims.kyoto-u.ac.jp/soft/lsl/dist/lablgtk-2.14.2.tar.gz
 	source = https://www.marionnet.org/download/marionnet_from_scratch/mirror/ocamlbricks-trunk.tar.gz
 	source = https://www.marionnet.org/download/marionnet_from_scratch/mirror/marionnet-trunk.tar.gz
+	source = https://raw.githubusercontent.com/JulioJu/Marionnet-trunk_ArchLinux-installer/master/Makefile.patch
 	sha256sums = 4f81ab86258be0eea1507dd5338c8670490f8616249821e731f8ac1c64caa4a7
 	sha256sums = 4981abedabdc462303f345104042c88af227ccd50fd30a9bf48fd353ab02d0ba
 	sha256sums = 646b6de59a555b2e41960708cf4edfed571d88369d850a50e23bf4a4b17ed329
 	sha256sums = 610c806e595be4d56ff6cded02e8d8a3091fe211487073c02ddb5132c3b4ffb6
+	sha256sums = efb09389cc67a88b16509dec3ca3fb32f1da1f4c5808b8f2e7e2f050376bf691
 
 pkgname = marionnet-trunk
 
