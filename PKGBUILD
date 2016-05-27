@@ -7,7 +7,7 @@
 set -u
 _pkgname='relax-and-recover'
 pkgname="${_pkgname}-git"
-pkgver=1.18.r1928.g9cfd922
+pkgver=1.18.r44.g4a82c29
 pkgrel=1
 pkgdesc='bootable Linux disaster recovery, formerly rear'
 arch=('any')
@@ -57,6 +57,7 @@ package() {
   cd "${_srcdir}"
   #make DESTDIR="${pkgdir}" sbindir="/usr/bin" rearbin='usr/bin/rear' install
   make DESTDIR="${pkgdir}" install
+  sed -i -e 's:^ISO_ISOLINUX_BIN=.*$:ISO_ISOLINUX_BIN="/usr/lib/syslinux/bios/isolinux.bin":g' "${pkgdir}/usr/share/rear/conf/default.conf"
   set +u
 }
 set +u
