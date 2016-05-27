@@ -2,8 +2,8 @@
 
 pkgname=lean-git
 _pkgver=0.2.0
-pkgver=${_pkgver}.r8512.226f8ba
-pkgrel=4
+pkgver=${_pkgver}.r8554.9fa30e3
+pkgrel=1
 pkgdesc='Lean Theorem Prover'
 arch=('x86_64' 'i386')
 url="http://leanprover.github.io/"
@@ -23,7 +23,8 @@ pkgver() {
 build() {
   cd "$pkgname"
   cmake -G 'Unix Makefiles' -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr src/
+    -DCMAKE_INSTALL_PREFIX=/usr src/ \
+    -DTCMALLOC=OFF # temporary workaround for a tcmalloc bug
   make
 }
 
