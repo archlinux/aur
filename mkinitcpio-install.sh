@@ -79,26 +79,37 @@ add_systemd_unit_X() {
                 # only add hard dependencies (not Wants)
                 map add_systemd_unit_X "${values[@]}"
                 ;;
-            Exec*|InitrdBinary)
-                # auto provision binaries
-                # format:
-                # InitrdBinary=/path/exec [replace=yes]
+            Exec*)
+                # don't add binaries when they are present
                 # don't add binaries unless they are required
                 if [[ ${values[0]:0:1} != '-' ]]; then
-                    local target= args= replace=
-                    target="${values[0]}" ; args="${values[@]:1:9}" 
-                    [ -n "$args" ] && local $(echo "$args")
+                    local target=
+                    target="${values[0]}" 
                     if [ -f "$BUILDROOT$target" ] ; then
-                        if [ "$replace" = "yes" ] ; then 
-                             plain "replace present binary $target"
-                             add_binary "$target"
-                        else 
-                             plain "reuse present binary $target"
-                        fi
+                         plain "reuse present binary $target"
                     else
                          plain "provision new binary $target"
                          add_binary "$target"
                     fi
+                fi
+                ;;
+            InitrdBinary)
+                # auto provision binaries
+                # format:
+                # InitrdBinary=/path/exec [replace=yes]
+                local target= args= replace=
+                target="${values[0]}" ; args="${values[@]:1:9}" 
+                [ -n "$args" ] && local $(echo "$args")
+                if [ -f "$BUILDROOT$target" ] ; then
+                    if [ "$replace" = "yes" ] ; then 
+                         plain "replace present binary $target"
+                         add_binary "$target"
+                    else 
+                         plain "reuse present binary $target"
+                    fi
+                else
+                     plain "provision new binary $target"
+                     add_binary "$target"
                 fi
                 ;;
             InitrdPath)
