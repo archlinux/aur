@@ -2,7 +2,7 @@
 
 pkgname=xfce-polkit
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple PolicyKit authentication agent for XFCE'
 arch=('x86_64' 'i686')
 url="https://github.com/ncopa/xfce-polkit"
@@ -14,14 +14,13 @@ source=(https://github.com/ncopa/xfce-polkit/releases/download/v${pkgver}/${pkgn
         xfce-polkit.desktop)
 sha256sums=('8947a2582dacad78cfab89b3ee390e1a7810b2457343e6db558d6ee9a872be3a'
             '03b0974e70b6f02d708a90565f8289433995ae77d69be27f8675d6e7d7c12c89')
-install=xfce-polkit.install
 
 build() { 
   cd "$srcdir/$pkgname-$pkgver"
   aclocal
   autoconf
   automake --add-missing
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib/xfce-polkit
   make
 }
 

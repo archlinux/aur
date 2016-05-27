@@ -1,7 +1,0 @@
-post_upgrade() {
-	killall xfce-polkit
-	post_install
-}
-post_install() {
-	/usr/lib/xfce-polkit/xfce-polkit > /dev/null 2>&1 &
-}
