@@ -58,9 +58,11 @@ add_systemd_unit_X() {
 
     local unit= rule= entry= key= value= binary= dep=
 
+    # use simple unit name
     unit=$(basename $1)
     plain "systemd unit $unit"
     
+    # search in all standard locations
     unit=$(PATH=/etc/systemd/system:/usr/lib/systemd/system:/lib/systemd/system type -P "$unit")
     if [[ -z $unit ]]; then
         # complain about not found unit file
@@ -78,28 +80,38 @@ add_systemd_unit_X() {
                 map add_systemd_unit_X "${values[@]}"
                 ;;
             Exec*|InitrdBinary)
+                # auto provision binaries
+                # format:
+                # InitrdBinary=/path/exec [replace=yes]
                 # don't add binaries unless they are required
                 if [[ ${values[0]:0:1} != '-' ]]; then
-                    local exec="${values[0]}"
-                    if [[ -f $BUILDROOT$exec ]] ; then
-                         quiet "reuse present binary $exec"
+                    local target= args= replace=
+                    target="${values[0]}" ; args="${values[@]:1:9}" 
+                    [ -n "$args" ] && local $(echo "$args")
+                    if [ -f "$BUILDROOT$target" ] ; then
+                        if [ "$replace" = "yes" ] ; then 
+                             plain "replace present binary $target"
+                             add_binary "$target"
+                        else 
+                             plain "reuse present binary $target"
+                        fi
                     else
-                         plain "provision new binary $exec"
-                         add_binary "$exec"
+                         plain "provision new binary $target"
+                         add_binary "$target"
                     fi
                 fi
                 ;;
             InitrdPath)
                 # auto provision resources
                 # format:
-                # InitrdPath=/etc/folder [glob=*.sh]
-                # InitrdPath=/etc/file [source=/lib/file] [mode=755]
+                # InitrdPath=/path/folder [glob=*.sh]
+                # InitrdPath=/path/file [source=/lib/file] [mode=755]
                 local source= target= mode= glob= args= optional= create=
                 target="${values[0]}" ; args="${values[@]:1:9}" 
                 [ -n "$args" ] && local $(echo "$args")
                 [ -n "$source" ] || source="$target"
                 if [ -e "$BUILDROOT$target" ] ; then
-                    quiet "reuse present path $target"
+                    plain "reuse present path $target"
                 elif [ -d "$source" ] ; then 
                     plain "provision new dir $source $glob"
                     add_full_dir "$source" "$glob"
