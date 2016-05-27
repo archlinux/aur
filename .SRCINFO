@@ -6,6 +6,7 @@ pkgbase = archlinux-lxdm-theme-full
 	install = archlinux-lxdm-theme-full.install
 	arch = any
 	license = CCPL:by-sa
+	makedepends = git
 	source = git://github.com/redtide/lxdm-theme-archlinux.git
 	md5sums = SKIP
 
