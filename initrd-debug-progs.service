@@ -36,7 +36,7 @@ InitrdBinary=/usr/bin/systemd-analyze
 
 # midnight commander
 
-InitrdBinary=/usr/bin/hostname
+#InitrdBinary=/usr/bin/hostname
 
 InitrdBinary=/usr/bin/mc
 InitrdBinary=/usr/bin/mcedit
