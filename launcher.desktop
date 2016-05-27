@@ -1,6 +1,10 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
+Name=ZDoom
+GenericName=Advanced Doom source port
+Icon=zdoom
+Exec=zdoom %F
 Terminal=false
 MimeType=application/x-doom-wad;
 Categories=Game;ActionGame;
