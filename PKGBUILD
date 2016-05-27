@@ -8,6 +8,7 @@
 pkgname=taskd-git
 pkgver=1.2.0
 pkgrel=1
+_branch=1.2.0
 pkgdesc="A lightweight secure server providing multi-user, multi-client
  access to task data"
 url='http://tasktools.org/projects/taskd.html'
@@ -15,7 +16,7 @@ license=('MIT')
 
 install=taskd.install
 
-source=("${pkgname}::git+https://git.tasktools.org/scm/tm/taskd.git#branch=1.2.0"
+source=("${pkgname}::git+https://git.tasktools.org/scm/tm/taskd.git#branch=${_branch}"
         'taskd.conf'
         'taskd.notes')
 
@@ -31,7 +32,7 @@ provides=('taskd')
 
 pkgver() {
     cd "${pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long origin/$_branch | sed 's/^s//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
