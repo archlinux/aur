@@ -1,7 +1,7 @@
 # Maintainer:  VirtualTam <virtualtam@flibidi.net>
 # Contributor: Eugene Yudin aka Infy <Eugene dot Yudin at gmail dot com>
 pkgname=goldendict-git
-pkgver=1.5.0.RC.489.gb4bb1e9
+pkgver=1.5.0.RC2.6.g039de0e
 pkgrel=1
 pkgdesc="Feature-rich dictionary lookup program."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ sha256sums=(SKIP)
 
 pkgver() {
   cd ${_gitname}
-  git describe --always | sed 's|-|.|g'
+  git describe --always --tags | sed 's|-|.|g'
 }
 
 prepare() {
