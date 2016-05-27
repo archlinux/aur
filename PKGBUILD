@@ -2,15 +2,19 @@
 
 set -u
 pkgname='doit'
-pkgver='20141116'
+pkgver='20160307'
 pkgrel='1'
 pkgdesc='yet another remote-execution daemon for Windows'
 arch=('i686' 'x86_64')
 url='http://www.chiark.greenend.org.uk/~sgtatham/doit/'
 license=('MIT')
 #depends=('perl')
-source=('http://www.chiark.greenend.org.uk/~sgtatham/doit/doit.tar.gz')
-sha256sums=('994e78fc732d385ef9cf39e960452161d366aa7b15f934d9f656eae825a34797')
+source=("doit-${pkgver}.tar.gz::${url}doit.tar.gz")
+sha256sums=('b547f0ccedd23bd1035ea83ee1820b8dd59b1e6aae3348f3e85533e592fbff7c')
+
+_vercheck() {
+  curl -s -l 'http://tartarus.org/~simon-git/gitweb/?p=doit.git' | sed -n -e 's:^<td title="[^"]\+"><i>\([0-9]\+\)-\([0-9]\+\)-\([0-9]\+\)</i></td>.*$:\1\2\3:p' | LC_ALL=C sort -n
+}
 
 prepare() {
   set -u
