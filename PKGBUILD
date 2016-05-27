@@ -1,7 +1,6 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 # Contributor: Grigorii Horos <horosgrisa@gmail.com>
 
-_pkgname=papirus-suite
 pkgbase=papirus-git
 pkgname=(
          'bomi-skin-papirus-git'
@@ -22,30 +21,22 @@ pkgname=(
          'papirus-vlc-theme-git'
          'papirus-yakuake-theme-git' 
          )
-pkgver=r637.1eff352
+pkgver=r639.78516d1
 pkgrel=1
 pkgdesc="Papirus Suite for KDE (git version)"
 arch=('any')
-url="https://github.com/varlesh/${_pkgname}"
+url="https://github.com/varlesh/papirus-suite"
 license=('CCPL:by-sa')
 options=('!strip')
 makedepends=('git' 'make' 'xdg-utils')
 depends=('gtk-update-icon-cache')
 conflicts=('papirus')
-source=("${_pkgname}::git+${url}.git"
-        '0001-makefile.patch::https://patch-diff.githubusercontent.com/raw/varlesh/papirus-suite/pull/116.patch')
-sha256sums=('SKIP'
-            'f077c81df7df950f555b9b2d9731ad8c0422da3f3a791ebfdc0ed76435b63e73')
+source=("${pkgbase}::git+${url}.git")
+sha256sums=('SKIP')
 
 pkgver(){
-    cd ${_pkgname}
+    cd ${pkgbase}
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-    cd ${_pkgname}
-    msg2 "papirus-suite: fix makefile in icons directories"
-    patch -Np1 -i "${srcdir}/0001-makefile.patch"
 }
 
 package_bomi-skin-papirus-git() {
@@ -55,7 +46,7 @@ package_bomi-skin-papirus-git() {
     depends=('bomi-fresh')
     optdepends=()
     conflicts=('bomi-skin-papirus')
-    cd ${srcdir}/${_pkgname}/players-skins/bomi-skin/
+    cd ${srcdir}/${pkgbase}/players-skins/bomi-skin/
     make install DESTDIR="$pkgdir"
 }
 
@@ -66,7 +57,7 @@ package_libreoffice-papirus-theme-git() {
     depends=()
     optdepends=('libreoffice' 'libreoffice-fresh-rpm')
     conflicts=('libreoffice-style-papirus' 'libreoffice-papirus-theme' 'libreoffice-fresh-rpm-papirus-theme')
-    cd  ${srcdir}/${_pkgname}/libreoffice-icons/
+    cd  ${srcdir}/${pkgbase}/libreoffice-icons/
     make install DESTDIR="$pkgdir"
 }
 
@@ -101,7 +92,7 @@ package_papirus-aurorae-theme-git() {
     depends=('kwin')
     optdepends=()
     conflicts=('papirus-aurorae-theme')
-    cd  ${srcdir}/${_pkgname}/kde-pack/aurorae-themes/
+    cd  ${srcdir}/${pkgbase}/kde-pack/aurorae-themes/
     make install DESTDIR="$pkgdir"
 }
 
@@ -112,7 +103,7 @@ package_papirus-color-scheme-git() {
     depends=('plasma-desktop')
     optdepends=()
     conflicts=('papirus-color-scheme')
-    cd  ${srcdir}/${_pkgname}/kde-pack/color-schemes/
+    cd  ${srcdir}/${pkgbase}/kde-pack/color-schemes/
     make install DESTDIR="$pkgdir"
 }
 
@@ -123,7 +114,7 @@ package_papirus-gtk-theme-git() {
     depends=('gtk-engine-murrine' 'gtk2' 'gtk3')
     optdepends=()
     conflicts=('papirus-gtk-theme')
-    cd  ${srcdir}/${_pkgname}/kde-pack/gtk-themes/
+    cd  ${srcdir}/${pkgbase}/kde-pack/gtk-themes/
     make install DESTDIR="$pkgdir"
 }
 
@@ -134,7 +125,7 @@ package_papirus-icon-theme-gtk-git() {
     depends=('gtk-update-icon-cache')
     optdepends=()
     conflicts=('papirus-gtk-icon-theme' 'papirus-gtk-icon-theme-git' 'papirus-icon-theme-gtk')
-    cd  ${srcdir}/${_pkgname}/gtk-icons/
+    cd  ${srcdir}/${pkgbase}/gtk-icons/
     make install DESTDIR="$pkgdir"
 }
 
@@ -145,7 +136,7 @@ package_papirus-icon-theme-kde-git() {
     depends=('gtk-update-icon-cache')
     optdepends=()
     conflicts=('papirus-icon-theme' 'papirus-icon-theme-kde' 'papirus-icon-theme-git')
-    cd  ${srcdir}/${_pkgname}/kde-pack/icons/
+    cd  ${srcdir}/${pkgbase}/kde-pack/icons/
     make install DESTDIR="$pkgdir"
 }
 
@@ -155,7 +146,7 @@ package_papirus-k3b-theme-git() {
     makedepends=('git' 'make')
     depends=('k3b')
     optdepends=()
-    cd  ${srcdir}/${_pkgname}/kde-pack/k3b-themes/
+    cd  ${srcdir}/${pkgbase}/kde-pack/k3b-themes/
     make install DESTDIR="$pkgdir"
 }
 
@@ -166,7 +157,7 @@ package_papirus-kmail-theme-git() {
     depends=('kmail')
     optdepends=()
     conflicts=('papirus-kmail-theme')
-    cd  ${srcdir}/${_pkgname}/kde-pack/kmail-theme/
+    cd  ${srcdir}/${pkgbase}/kde-pack/kmail-theme/
     make install DESTDIR="$pkgdir"
 }
 
@@ -177,7 +168,7 @@ package_papirus-konsole-colorscheme-git() {
     depends=('konsole')
     optdepends=()
     conflicts=('papirus-konsole-colorscheme')
-    cd ${srcdir}/${_pkgname}/kde-pack/konsole-colorschemes/
+    cd ${srcdir}/${pkgbase}/kde-pack/konsole-colorschemes/
     make install DESTDIR="$pkgdir"
 }
 
@@ -189,9 +180,9 @@ package_papirus-plasma-theme-git() {
     optdepends=()
     conflicts=('papirus-look-and-feel' 'plasma-theme-papirus')
     install='plasma-refresh.install'
-    cd  ${srcdir}/${_pkgname}/kde-pack/look-and-feel/
+    cd  ${srcdir}/${pkgbase}/kde-pack/look-and-feel/
     make install DESTDIR="$pkgdir"
-    cd  ${srcdir}/${_pkgname}/kde-pack/plasma-themes/
+    cd  ${srcdir}/${pkgbase}/kde-pack/plasma-themes/
     make install DESTDIR="$pkgdir"
 }
 
@@ -203,7 +194,7 @@ package_papirus-qtcurve-theme-git() {
     depends=('qtcurve-gtk2' 'qtcurve-qt4' 'qtcurve-qt5' 'qtcurve-utils')
     optdepends_x86_64=('lib32-qtcurve-gtk2' 'lib32-qtcurve-qt4' 'lib32-qtcurve-utils')
     conflicts=('papirus-qtcurve-theme')
-    cd  ${srcdir}/${_pkgname}/kde-pack/QtCurve/
+    cd  ${srcdir}/${pkgbase}/kde-pack/QtCurve/
     make install DESTDIR="$pkgdir"
 }
 
@@ -214,7 +205,7 @@ package_papirus-sddm-theme-git() {
     depends=('sddm' 'sddm-kcm')
     optdepends=()
     conflicts=('papirus-sddm-theme')
-    cd ${srcdir}/${_pkgname}/kde-pack/sddm-themes/
+    cd ${srcdir}/${pkgbase}/kde-pack/sddm-themes/
     make install DESTDIR="$pkgdir"
 }
 
@@ -225,7 +216,7 @@ package_papirus-smplayer-theme-git() {
     depends=('smplayer')
     optdepends=()
     conflicts=('papirus-smplayer-theme')
-    cd ${srcdir}/${_pkgname}/players-skins/smplayer-themes/
+    cd ${srcdir}/${pkgbase}/players-skins/smplayer-themes/
     make install DESTDIR="$pkgdir"
 }
 
@@ -236,7 +227,7 @@ package_papirus-vlc-theme-git() {
     depends=('vlc')
     optdepends=()
     conflicts=('papirus-vlc-theme')
-    cd ${srcdir}/${_pkgname}/players-skins/vlc-skins/
+    cd ${srcdir}/${pkgbase}/players-skins/vlc-skins/
     make install DESTDIR="$pkgdir"
 }
 
@@ -247,6 +238,6 @@ package_papirus-yakuake-theme-git() {
     depends=('yakuake')
     optdepends=()
     conflicts=('papirus-yakuake-theme' 'yakuake-skin-papirus' 'yakuake-skin-papirus-dark' 'yakuake-skin-papirus-dark-frameworks' 'yakuake-skin-papirus-frameworks')
-    cd ${srcdir}/${_pkgname}/kde-pack/yakuake-skins/
+    cd ${srcdir}/${pkgbase}/kde-pack/yakuake-skins/
     make install DESTDIR="$pkgdir"
 }
