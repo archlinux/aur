@@ -2,22 +2,23 @@
 
 pkgname=visual-studio-code-oss
 pkgdesc='Visual Studio Code for Linux, Open Source version'
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
+_commit=2833eb9d664db9c5a77bdf5fb19d7d7fefd4653c
 arch=('i686' 'x86_64')
 url='https://code.visualstudio.com/'
 license=('MIT')
 makedepends=('npm' 'gulp' 'python2')
-depends=('gtk2' 'gconf')
+depends=('gtk2' 'gconf' 'libnotify')
 conflicts=('vscode-oss')
 provides=('vscode-oss')
 
 source=("https://github.com/Microsoft/vscode/archive/${pkgver}.tar.gz"
         "${pkgname}.desktop"
         'product_json.patch')
-sha1sums=('71547fefd1eaf174ca7484c668f2186d906cfb67'
+sha1sums=('913665f425c8ed513e40afae43556e42fb60e87f'
           '9c4176c4d99103736df6746ca174b5026bd57e6b'
-          'a944f430c33b425f52752f6a0feae0b0f4abfb29')
+          'ca6ce0e58a8373c0b355f954142dc62dba6c685d')
 
 case "$CARCH" in
     i686)
@@ -36,6 +37,9 @@ prepare() {
     cd "${srcdir}/vscode-${pkgver}"
 
     patch -p1 -i "${srcdir}/product_json.patch"
+    _datestamp=$(date -u -Is | sed 's/\+00:00/Z/')
+    sed -e "s/@COMMIT@/$_commit/" -e "s/@DATE@/$_datestamp/" \
+        -i product.json
 }
 
 build() {
@@ -43,8 +47,9 @@ build() {
 
     ./scripts/npm.sh install
 
-    # The default memory limit is too low on some systems (i686?). This will
-    # set it to 2GB -- change it if this number doesn't work for your system
+    # The default memory limit is too low for current versions of node to
+    # successfully build vscode.  This will set it to 2GB -- change it if
+    # this number still doesn't work for your system.
     node --max_old_space_size=2048 /usr/bin/gulp vscode-linux-${_vscode_arch}
 }
 

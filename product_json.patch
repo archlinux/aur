@@ -1,7 +1,7 @@
 diff -rupN a/product.json b/product.json
 --- a/product.json	2016-03-07 19:00:33.090653030 -0800
 +++ b/product.json	2016-03-07 19:06:18.877223136 -0800
-@@ -1,10 +1,23 @@
+@@ -1,10 +1,24 @@
  {
  	"nameShort": "Code - OSS",
 -	"nameLong": "Code - OSS",
@@ -27,5 +27,6 @@ diff -rupN a/product.json b/product.json
 +	"requestFeatureUrl": "https://go.microsoft.com/fwlink/?LinkID=533482",
 +	"reportIssueUrl": "https://go.microsoft.com/fwlink/?LinkId=534872",
 +	"privacyStatementUrl": "https://go.microsoft.com/fwlink/?LinkID=528096&clcid=0x409",
-+	"commit": "def9e32467ad6e4f48787d38caf190acbfee5880"
++	"commit": "@COMMIT@",
++	"date": "@DATE@"
 +}
