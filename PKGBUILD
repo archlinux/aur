@@ -1,9 +1,10 @@
-# Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
-
+# Maintainer: Yan Burdonsky <psyrccio@gmail.com>
+# Contributor: Yan Burdonsky <psyrccio@gmail.com>
+# Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 pkgname=pidgin-gpg
 _pkgname=Pidgin-GPG
 pkgver=latest
-pkgrel=1
+pkgrel=2
 pkgdesc="Transparently encrypts your instant messages with RSA encryption. Easy-to-use, but very secure."
 arch=(i686 x86_64)
 url="https://github.com/segler-alex/pidgin-gpg"
