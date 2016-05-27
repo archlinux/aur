@@ -3,7 +3,7 @@
 
 _pkgname=xfce-polkit
 pkgname=${_pkgname}-git
-pkgver=17.6ad1ee8
+pkgver=19.fabc2f7
 pkgrel=1
 pkgdesc='A simple PolicyKit authentication agent for XFCE'
 arch=('x86_64' 'i686')
@@ -15,9 +15,8 @@ provides=("${_pkgname}" "polkit-gnome")
 conflicts=("${_pkgname}" "polkit-gnome")
 source=(git+$url
         xfce-polkit.desktop)
-md5sums=('SKIP'
-         '7f0d7f7583351851be1bf4c1665fdf91')
-install=xfce-polkit.install
+sha256sums=('SKIP'
+            'c7a18aa56a9e0b7b35f0817fa420a506b4b78d18baf62cece4e7488b3e93d968')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -34,10 +33,6 @@ build() {
 }
 
 package() {
-  install -Dm755 "$srcdir/$_pkgname/src/xfce-polkit" \
-    "$pkgdir/usr/lib/$_pkgname/xfce-polkit"
-  install -Dm644 "$srcdir/xfce-polkit.desktop" \
-    "$pkgdir/etc/xdg/autostart/xfce-polkit.desktop"
+  install -Dm755 "$srcdir/$_pkgname/src/xfce-polkit" "$pkgdir/usr/lib/$_pkgname/xfce-polkit"
+  install -Dm644 "$srcdir/xfce-polkit.desktop" "$pkgdir/etc/xdg/autostart/xfce-polkit.desktop"
 }
-
-# vim:set ts=2 sw=2 et:
