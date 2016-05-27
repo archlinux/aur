@@ -136,7 +136,7 @@ add_systemd_unit_X() {
                     else
                         plain "create empty file $target $mode"
                         add_file "$(mktemp)" "$target" "$mode"
-                    fi
+                    fi  
                 elif [ "$optional" = "yes" ] ; then
                     plain "skip optional path $source -> $target"
                 else
