@@ -1,0 +1,35 @@
+--- MUMPS_5.0.1/PORD/lib/Makefile	2015-07-23 19:08:29.000000000 +0200
++++ src/MUMPS_5.0.1/PORD/lib/Makefile	2017-01-26 11:32:54.742239842 +0100
+@@ -9,11 +9,11 @@
+ 
+ INCLUDES = -I../include
+ 
+-COPTIONS = $(INCLUDES) $(CFLAGS) $(OPTFLAGS)
++COPTIONS = $(INCLUDES) $(CFLAGS) $(OPTFLAGS) -fPIC
+ 
+ OBJS = graph.o gbipart.o gbisect.o ddcreate.o ddbisect.o nestdiss.o \
+        multisector.o gelim.o bucket.o tree.o \
+-       symbfac.o interface.o sort.o minpriority.o 
++       symbfac.o interface.o sort.o minpriority.o
+ 
+ # Note: numfac.c read.c mapping.c triangular.c matrix.c kernel.c
+ # were not direcly used by MUMPS and have been removed from the
+@@ -24,12 +24,15 @@
+ .c.o:
+ 	$(CC) $(COPTIONS) -c $*.c $(OUTC)$*.o
+ 
+-libpord$(LIBEXT):$(OBJS)
+-	$(AR)$@ $(OBJS)
++libpord$(PLAT).a:$(OBJS)
++	$(AR) $@ $(OBJS)
+ 	$(RANLIB) $@
+ 
++libpord$(PLAT).so:$(OBJS)
++	$(CC) -shared $(OBJS) -Wl,-soname,$@ -o $@ -Wl,-z,defs
++
+ clean:
+ 	rm -f *.o
+ 
+ realclean:
+-	rm -f *.o libpord.a
++	rm -f *.o libpord.a libpord.so

@@ -93,7 +93,7 @@ IORDERINGSC = $(IMETIS) $(IPORD) $(ISCOTCH)
 PLAT    =
 # Library extension, + C and Fortran "-o" option
 # may be different under Windows
-LIBEXT  = .a
+LIBEXT  = .so
 OUTC    = -o 
 OUTF    = -o 
 # RM : remove files

@@ -15,31 +15,33 @@ provides=('mumps')
 conflicts=('mumps')
 arch=('i686' 'x86_64')
 source=("http://mumps.enseeiht.fr/${_PKGNAME}_${pkgver}.tar.gz"
-        "Makefile.seq.inc")
+        "Makefile.seq.inc"
+        "shared-libseq.patch"
+        "shared-pord.patch"
+        "shared-mumps.patch"
+        "shared-mumps-makefile.patch")
 sha256sums=('77292b204942640256097a3da482c2abcd1e0d5a74ecd1d4bab0f5ef6e60fe45'
-            'e73105ab186f78c14c71f8032deec0af77f9f32f6fe51381a56f0a545fd6ea3c')
+            '45e54b8280f3f59576a3cc692a299483abd20a3f35f041ec09eda11d42b5fc4d'
+            '64761306fb864ecc039bb3342e52c5147f40d05c9c9cb1caf946192a1875b398'
+            '8bc83f91d34b90a18c5104e01463c956902969b692a79d1f1a1a5410e43cf615'
+            '433f8ad140190dca546672f1b4bcfb632c441324da9177c1dbb8db797c5c5020'
+            '9a7efa79a97247d4bbbf9de7df1054359c16e17568afc4ca6663be7f9b933ee8')
 
 prepare(){
   cd "${srcdir}/${_PKGNAME}_${pkgver}"
 
   ln -sf "${srcdir}/Makefile.seq.inc" Makefile.inc
+
+  patch "${srcdir}/${_PKGNAME}_${pkgver}/libseq/Makefile" "../shared-libseq.patch"
+  patch "${srcdir}/${_PKGNAME}_${pkgver}/PORD/lib/Makefile" "../shared-pord.patch"
+  patch "${srcdir}/${_PKGNAME}_${pkgver}/src/Makefile" "../shared-mumps.patch"
+  patch "${srcdir}/${_PKGNAME}_${pkgver}/Makefile" "../shared-mumps-makefile.patch"
 }
 
 build() {
   cd "${srcdir}/${_PKGNAME}_${pkgver}"
 
   make -j1 all
-
-  # Convert static libs to shared libs
-  # for mumps libs
-  cd "${srcdir}/${_PKGNAME}_${pkgver}/lib"
-  _libs=$(find . -maxdepth 1 -regex ".*\.a" | xargs | sed "s|\.a||g")
-  for _FILE in ${_libs}; do
-    ld -Bshareable -o ${_FILE}_seq.so.${pkgver} -x -soname ${_FILE}_seq.so --whole-archive ${_FILE}.a
-  done
-  # for mpiseq libs
-  cd "${srcdir}/${_PKGNAME}_${pkgver}/libseq"
-  ld -Bshareable -o libmpiseq.so.${pkgver} -x -soname libmpiseq.so --whole-archive libmpiseq.a
 }
 
 package(){
@@ -51,19 +53,14 @@ package(){
   # Install all libraries
   cd "${srcdir}/${_PKGNAME}_${pkgver}/lib"
   install -m 755 -d "${pkgdir}/usr/lib"
-  _libs=$(find . -maxdepth 1 -regex ".*\.a" | xargs | sed "s|\.a||g")
-  for _FILE in ${_libs}; do
-    install -m 755 ${_FILE}_seq.so.${pkgver} "${pkgdir}/usr/lib"
-    ln -sf ${_FILE}_seq.so.${pkgver} "${pkgdir}/usr/lib/${_FILE}_seq.so.${pkgver:0:1}"
-  done
+  install -D -m644 -- *.so "${pkgdir}/usr/lib"
 
   # Install mpiseq headers
   cd "${srcdir}/${_PKGNAME}_${pkgver}/libseq"
   install -m 755 -d "${pkgdir}/usr/include/mpiseq"
   install -D -m644 -- *.h "${pkgdir}/usr/include/mpiseq"
   # Install mpiseq libraries
-  install -m 755 libmpiseq.so.${pkgver} "${pkgdir}/usr/lib"
-  ln -sf libmpiseq.so.${pkgver} "${pkgdir}/usr/lib/libmpiseq.so.${pkgver:0:1}"
+  install -m 755 libmpiseq.so "${pkgdir}/usr/lib"
 
   # Install license
   install -D -m644 "${srcdir}/${_PKGNAME}_${pkgver}/LICENSE"\

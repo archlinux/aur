@@ -1,0 +1,26 @@
+--- MUMPS_5.0.1/libseq/Makefile	2015-07-23 19:08:32.000000000 +0200
++++ src/MUMPS_5.0.1/libseq/Makefile	2017-01-25 18:05:18.482880555 +0100
+@@ -8,15 +8,17 @@
+ 
+ include ../Makefile.inc
+ 
+-libmpiseq: libmpiseq$(PLAT)$(LIBEXT)
++libmpiseq: libmpiseq$(PLAT).a libmpiseq$(PLAT).so
+ 
+-libmpiseq$(PLAT)$(LIBEXT): mpi.o mpic.o elapse.o
+-	$(AR)$@ mpi.o mpic.o elapse.o
++libmpiseq$(PLAT).a: mpi.o mpic.o elapse.o
++	$(AR) $@ mpi.o mpic.o elapse.o
+ 	$(RANLIB) $@
++libmpiseq$(PLAT).so: mpi.o mpic.o elapse.o
++	$(FC) -shared $^ -Wl,-soname,$@ -o $@ -Wl,-z,defs
+ .f.o:
+-	$(FC) $(OPTF)              -c $*.f $(OUTF)$*.o
++	$(FC) $(OPTF)              -fPIC -c $*.f $(OUTF)$*.o
+ .c.o:
+-	$(CC) $(OPTC) $(CDEFS) -I. -c $*.c $(OUTC)$*.o
++	$(CC) $(OPTC) $(CDEFS) -I. -fPIC -c $*.c $(OUTC)$*.o
+ 
+ clean:
+-	$(RM) *.o *$(LIBEXT)
++	$(RM) *.o *.a *.so

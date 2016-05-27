@@ -1,0 +1,46 @@
+--- MUMPS_5.0.1/Makefile	2015-07-23 19:08:29.000000000 +0200
++++ src/MUMPS_5.0.1/Makefile	2017-01-26 14:08:03.714879979 +0100
+@@ -51,29 +51,38 @@
+ dexamples:	d
+ 	(cd examples ; $(MAKE) d)
+ 
+-requiredobj: Makefile.inc $(LIBSEQNEEDED) $(libdir)/libpord$(PLAT)$(LIBEXT)
++requiredobj: Makefile.inc $(LIBSEQNEEDED) $(libdir)/libpord$(PLAT).a $(libdir)/libpord$(PLAT).so
+ 
+ # dummy MPI library (sequential version)
+ 
+ libseqneeded:
+ 	(cd libseq; $(MAKE))
++	cp libseq/lib* $(libdir)
+ 
+ # Build the libpord.a library and copy it into $(topdir)/lib
+-$(libdir)/libpord$(PLAT)$(LIBEXT):
++$(libdir)/libpord$(PLAT).a:
+ 	if [ "$(LPORDDIR)" != "" ] ; then \
+ 	  cd $(LPORDDIR); \
+ 	  $(MAKE) CC="$(CC)" CFLAGS="$(OPTC)" AR="$(AR)" RANLIB="$(RANLIB)" OUTC="$(OUTC)" LIBEXT=$(LIBEXT); \
+ 	fi;
+ 	if [ "$(LPORDDIR)" != "" ] ; then \
+-	  cp $(LPORDDIR)/libpord$(LIBEXT) $@; \
++	  cp $(LPORDDIR)/libpord$(PLAT).a $@; \
++	fi;
++
++$(libdir)/libpord$(PLAT).so:
++	if [ "$(LPORDDIR)" != "" ] ; then \
++	  cd $(LPORDDIR); \
++	  make CC="$(CC)" CFLAGS="$(OPTC)" AR="$(AR)" ARFUNCT= RANLIB="$(RANLIB)" libpord$(PLAT).so; \
++	fi;
++	if [ "$(LPORDDIR)" != "" ] ; then \
++	  cp $(LPORDDIR)/libpord$(PLAT).so $@; \
+ 	fi;
+ 
+ clean:
+ 	(cd src; $(MAKE) clean)
+ 	(cd examples; $(MAKE) clean)
+-	(cd $(libdir); $(RM) *$(PLAT)$(LIBEXT))
++	(cd $(libdir); $(RM) *$(PLAT).a *$(PLAT).so)
+ 	(cd libseq; $(MAKE) clean)
+ 	if [ "$(LPORDDIR)" != "" ] ; then \
+ 	  cd $(LPORDDIR); $(MAKE) realclean; \
+         fi;
+-
