@@ -68,7 +68,7 @@ log_log() {
     [[ "$script_verbose" == *"info"* ]] && [[ "$mode" == *"info"* ]] && echo "$text"
     [[ "$script_verbose" == *"warn"* ]] && [[ "$mode" == *"warn"* ]] && echo "$text"
     [[ "$script_verbose" == *"err"*  ]] && [[ "$mode" == *"err"*  ]] && echo "$text"
-    if is_ssh_connect ; then session="ssh" ; else session="loc" fi
+    if is_ssh_connect ; then session="ssh" ; else session="loc" ; fi
     text="$script_entry/$session $text"
     echo "$text" | $systemd_cat --priority="$mode" --identifier="shell"
 }
