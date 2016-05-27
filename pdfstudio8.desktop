@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=PDF Studio 8
 Comment=Views and Edits Adobe PDF (acrobat) files
-Exec=pdfstudio8 %f
+Exec=pdfstudio %f
 Terminal=false
 Type=Application
 Icon=pdfstudio8

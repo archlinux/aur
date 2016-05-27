@@ -2,7 +2,7 @@
 pkgname=pdfstudio8
 pkgver=8.4.0
 _pkgver=v8_4_0
-pkgrel=9
+pkgrel=10
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('x86_64' 'i686')
 url="http://www.qoppa.com/pdfstudio/"
