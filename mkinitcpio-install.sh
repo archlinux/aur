@@ -94,7 +94,7 @@ add_systemd_unit_X() {
                 fi
                 ;;
             InitrdBinary)
-                # auto provision binaries
+                # provision binaries
                 # format:
                 # InitrdBinary=/path/exec [replace=yes]
                 local target= args= replace=
@@ -113,7 +113,7 @@ add_systemd_unit_X() {
                 fi
                 ;;
             InitrdPath)
-                # auto provision resources
+                # provision resources
                 # format:
                 # InitrdPath=/path/folder [glob=*.sh]
                 # InitrdPath=/path/file [source=/lib/file] [mode=755]
