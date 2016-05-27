@@ -1,7 +1,7 @@
 # $Id$
 # Maintainer: BangL <contact through AUR please>
 pkgname=openra-kang
-pkgver=git-962e199
+pkgver=kang-81a17cf
 pkgrel=1
 pkgdesc="An open-source implementation of the Red Alert engine using .NET/Mono and OpenGL"
 arch=('any')
@@ -29,6 +29,7 @@ pkgver() {
 build() {
   cd OpenRA
 
+  make version
   make dependencies
   make core
   make tools
