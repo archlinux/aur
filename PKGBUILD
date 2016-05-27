@@ -2,10 +2,10 @@
 
 pkgname=vcsn
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Finite state machine manipulation platform, consisting of a library and tools implemented on top of it."
 arch=('i686' 'x86_64')
-url="http://vaucanson.lrde.epita.fr/"
+url="http://vcsn.lrde.epita.fr/"
 license=('GPL3')
 depends=('boost' 'gcc' 'ccache' 'libltdl' 'jupyter' 'mathjax' 'graphviz')
 makedepends=('texlive-core' 'doxygen' 'python2-docutils')
@@ -15,7 +15,7 @@ source=("https://www.lrde.epita.fr/dload/vcsn/$pkgver/$pkgname-$pkgver.tar.xz")
 md5sums=('48e479d34a047df4507d1e7b322bfb16')
 
 check() {
-  cd "$srcdir/${_realname}"
+  cd "$srcdir/$pkgname-$pkgver"
   ./tests/bin/vcsn python -c 'import vcsn; vcsn.B.expression("a").automaton()'
 }
 
