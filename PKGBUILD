@@ -5,21 +5,21 @@
 pkgname=epsxe
 _pkgname=ePSXe
 pkgver=2.0.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Enhanced PSX emulator"
 url="http://epsxe.com"
 arch=('i686' 'x86_64')
 #depends=(gtk2 sdl_ttf ncurses5-compat-libs libtinfo-5 libcurl-compat)
 #depends_i686+=(gtk3 sdl_ttf libtinfo)
 #depends_x86_64+=(lib32-gtk3 lib32-ncurses lib32-libxt lib32-sdl_ttf lib32-alsa-lib lib32-libtinfo)
-depends=(gtk3 sdl_ttf libtinfo libtinfo5 libcurl-compat)
+depends=(gtk3 sdl_ttf libtinfo libcurl-compat)
 license=('unknown')
 install=${pkgname}.install
 options=(!strip)
 source=(${pkgname}.desktop ${pkgname}.png ${pkgname}.sh)
 md5sums=('f4bdb7ccbebc31f818d34198a5a32e29'
          'eb0c46b8ae1355c589792f6be1835e47'
-         'ebe97b79a25e2622b3595d09f5b2764d')
+         '46c247cdf67ceb4f64813ee28290badc')
 if [[ $CARCH == "x86_64" ]]; then
     source+=("http://www.epsxe.com/files/ePSXe${pkgver//./}linux_x64.zip")
     md5sums+=('a6e92844922182c9f03343ab3e54865a')
@@ -53,4 +53,8 @@ package () {
   install -Dm 644 "${srcdir}/epsxe.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   ln -sf "$HOME/.${pkgname}rc" -T "${pkgdir}/opt/${pkgname}/.${pkgname}rc"
+
+  # libtinfo and ncurses crap
+  ln -s /usr/lib/libtinfo.so.6 "$pkgdir"/opt/"$pkgname"/libncurses.so.5
+  ln -s /usr/lib/libncursesw.so.6 "$pkgdir"/opt/"$pkgname"/libtinfo.so.5
 }
