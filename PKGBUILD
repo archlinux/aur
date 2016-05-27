@@ -9,13 +9,13 @@
 
 pkgname=smath
 pkgver=0_98_5935
-pkgrel=1
+pkgrel=2
 pkgdesc="A mathematical program with many features and paper-like interface, similar to Mathcad"
 arch=('i686' 'x86_64')
 url="http://smath.info"
 license=('CCPL')
 groups=('math')
-depends=('mono' 'giflib<5.1.2')
+depends=('mono')
 install=smath.install
 backup=(opt/$pkgname/settings.inf)
 source=("https://dl.dropboxusercontent.com/u/24193509/SMathStudioDesktop.0_98_5935.Mono.tar.gz" 
