@@ -14,7 +14,6 @@ optdepends=('qca-gnupg: encrypted client-to-client connection')
 provides=("psi-plus=$pkgver")
 replaces=('psi-plus' 'psi-plus-webkit-git')
 conflicts=('psi-plus' 'psi-plus-webkit-git')
-install=psi-plus-git.install
 source=('git://github.com/psi-im/psi.git'
 	'psi-plus::git://github.com/psi-plus/main.git'
 	'git://github.com/psi-im/iris.git'
