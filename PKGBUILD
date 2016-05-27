@@ -22,8 +22,8 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/OpenRA"
 
-  PV=$(git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null || echo git-`git rev-parse --short HEAD`)
-  echo $PV | sed 's/git-/BLEED./'
+  PV=$(git name-rev --name-only --tags --no-undefined HEAD 2>/dev/null || echo kang.`git rev-parse --short HEAD`)
+  echo $PV
 }
 
 build() {
