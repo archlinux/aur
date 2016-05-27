@@ -2,13 +2,13 @@
 # Maintainer: Samuel Walladge <swalladge at gmail dot com>
 
 pkgname=sncli-git
-pkgver=0.148.2b9a20d
+pkgver=0.156.7c31503
 pkgrel=1
 pkgdesc="Simplenote Command Line Interface"
 arch=('any')
 url="https://github.com/insanum/sncli"
 license=('MIT')
-depends=(python2-urwid)
+depends=('python-urwid' 'python-requests')
 makedepends=('git')
 source=('git://github.com/insanum/sncli.git')
 md5sums=('SKIP')
@@ -20,12 +20,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/sncli"
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd "$srcdir/sncli"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 # vim:set ts=2 sw=2 et:
