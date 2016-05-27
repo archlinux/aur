@@ -1,7 +1,7 @@
 # Maintainer: marazmista <marazmista@gmail.com>
 
 pkgname=radeon-profile-git
-pkgver=20160515
+pkgver=20160527
 pkgrel=2
 pkgdesc="App for display info about radeon card"
 url="http://github.com/marazmista/radeon-profile"
