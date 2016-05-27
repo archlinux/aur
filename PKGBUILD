@@ -22,8 +22,8 @@ pkgname=(
          'papirus-vlc-theme-git'
          'papirus-yakuake-theme-git' 
          )
-pkgver=r635.4351e17
-pkgrel=2
+pkgver=r637.1eff352
+pkgrel=1
 pkgdesc="Papirus Suite for KDE (git version)"
 arch=('any')
 url="https://github.com/varlesh/${_pkgname}"
@@ -33,9 +33,9 @@ makedepends=('git' 'make' 'xdg-utils')
 depends=('gtk-update-icon-cache')
 conflicts=('papirus')
 source=("${_pkgname}::git+${url}.git"
-        '0001-makefile.patch::https://patch-diff.githubusercontent.com/raw/varlesh/papirus-suite/pull/115.patch')
+        '0001-makefile.patch::https://patch-diff.githubusercontent.com/raw/varlesh/papirus-suite/pull/116.patch')
 sha256sums=('SKIP'
-            '74eb8e96f062b80ebd9f91d90f90ffbf13c775a5dbf417eb94678dee5f01038f')
+            'f077c81df7df950f555b9b2d9731ad8c0422da3f3a791ebfdc0ed76435b63e73')
 
 pkgver(){
     cd ${_pkgname}
@@ -44,6 +44,7 @@ pkgver(){
 
 prepare() {
     cd ${_pkgname}
+    msg2 "papirus-suite: fix makefile in icons directories"
     patch -Np1 -i "${srcdir}/0001-makefile.patch"
 }
 
