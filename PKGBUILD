@@ -11,7 +11,7 @@
 
 pkgname=chromium-minimum
 _pkgname=chromium
-pkgver=50.0.2661.102
+pkgver=51.0.2704.63
 pkgrel=1
 _launcher_ver=3
 pkgdesc="The open-source project behind Google Chrome, with a minimum number of dependencies."
@@ -34,11 +34,13 @@ install=chromium.install
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/$_pkgname-$pkgver.tar.xz
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         chromium.desktop
-        chromium-widevine.patch)
-sha256sums=('12135ef890c2bd13b653a06e2a44e8f251a65fe9e91404c792d27e346c5d57c6'
+        chromium-widevine.patch
+        PNGImageDecoder.patch)
+sha256sums=('b243e46e0ebaf8f60d1c37a0d99f1fdd80e1597667be4776a1862bb004e4eee9'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
-            '4660344789c45c9b9e52cb6d86f7cb6edb297b39320d04f6947e5216d6e5f64c')
+            '4660344789c45c9b9e52cb6d86f7cb6edb297b39320d04f6947e5216d6e5f64c'
+            'd9fd982ba6d50edb7743db6122b975ad1d3da5a9ad907c8ab7cf574395b186cd')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -63,22 +65,22 @@ prepare() {
   # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/9JX1N2nf4PU/discussion
   touch chrome/test/data/webui/i18n_process_css_test.html
 
-  # https://code.google.com/p/chromium/issues/detail?id=541273
-  sed -i "/'target_name': 'libvpx'/s/libvpx/&_new/" build/linux/unbundle/libvpx.gyp
-
   # Enable support for the Widevine CDM plugin
   # libwidevinecdm.so is not included, but can be copied over from Chrome
   # (Version string doesn't seem to matter so let's go with "Pinkie Pie")
   sed "s/@WIDEVINE_VERSION@/Pinkie Pie/" ../chromium-widevine.patch |
   patch -Np1
+
+  # Chromium 51 won't build without this patch. Not reported upstream yet AFAIK.
+  patch -p1 -i "$srcdir"/PNGImageDecoder.patch
+
   # Commentception – use bundled ICU due to build failures (50.0.2661.75)
   # See https://crbug.com/584920 and https://crbug.com/592268
   # ---
   ## Remove bundled ICU; its header files appear to get picked up instead of
   ## the system ones, leading to errors during the final link stage.
   ## https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/BNGvJc08B6Q
-    
-    #find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
+  #find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
   # There are still a lot of relative calls which need a workaround
@@ -104,7 +106,7 @@ build() {
 
   # CFLAGS are passed through release_extra_cflags below
   export -n CFLAGS CXXFLAGS
-  
+
   # Work around bug in v8 in which GCC 6 optimizes away null pointer checks
   # https://bugs.chromium.org/p/v8/issues/detail?id=3782
   # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=69234
@@ -119,6 +121,7 @@ build() {
     -Dpython_ver=2.7
     -Dlinux_link_gsettings=1
     -Dlinux_link_libpci=1
+    -Dlinux_link_libspeechd=0
     -Dlinux_link_pulseaudio=1
     -Dlinux_strip_binary=1
     -Dlinux_use_bundled_binutils=0
