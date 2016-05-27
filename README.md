@@ -62,7 +62,7 @@ how can I disable my custom service unit in initrd?
 
 what is the purpose of `[X-SystemdTool]` section in service unit files?
 * it provides configuration interface for `mkinitcpio` provisioning actions
-* entries include: `InitrdBinary=`, `InitrdPath=`, `InitrdInvoke=`, `InitrdCall=` 
+* entries include: `InitrdBinary=`, `InitrdPath=`, `InitrdBuild=`, `InitrdCall=` 
 
 how can I auto-provision my custom service unit binaries into initramfs?
 * use `InitrdBinary=/path/target-exec` to provision service binary
@@ -89,7 +89,7 @@ is there a way to create empty folder or file?
 * in order to ignore existing host source, add `source=/some-invalid-path` argument
 
 can I invoke a provisioning script related to my service during mkinitcpio build time?
-* use `InitrdInvoke=/path-to/script.sh command=function_name` 
+* use `InitrdBuild=/path-to/script.sh command=function_name` 
 
 can I call a little provisioning script snippet during mkinitcpio build time?
 * check for available `mkinitcpio` functions in `/usr/lib/initcpio/functions.sh`

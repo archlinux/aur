@@ -1,6 +1,6 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
-# mkinitcpio build time functions for X-SystemdTool/InitrdInvoke
+# mkinitcpio build time functions for X-SystemdTool/InitrdBuild
 
 # can use mkinitcpio /usr/lib/initcpio/functions.sh
 # $BUILDROOT - mkinitcpio image build destination dir
@@ -8,7 +8,7 @@
 # plain() - output to console always
 
 # enforce specific login shell in /etc/passwd
-build_root_shell() {
+do_root_shell() {
     local shell="/bin/sh"
     local search="(root):([^:]*):([^:]*):([^:]*):([^:]*):([^:]*):([^:]*)"
     local replace="\1:\2:\3:\4:\5:\6:${shell}"
@@ -17,7 +17,7 @@ build_root_shell() {
 }
 
 # ensure dropbear server host keys
-build_ssh_host_keys() {
+do_ssh_host_keys() {
 
     quiet "provide host server ssh keys"
 

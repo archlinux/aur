@@ -33,7 +33,7 @@ InitrdPath=/root/.profile source=/etc/mkinitcpio.d/shell.sh mode=700
 
 # enforce specific login shell in /etc/passwd
 InitrdPath=/etc/passwd
-InitrdInvoke=/etc/systemd/system/initrd-build.sh command=build_root_shell
+InitrdBuild=/etc/systemd/system/initrd-build.sh command=do_root_shell
 
-# required by systemd emergency service
+# dependency required by systemd emergency service
 InitrdBinary=/usr/bin/sulogin

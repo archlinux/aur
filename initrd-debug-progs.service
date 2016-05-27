@@ -31,16 +31,16 @@ WantedBy=initrd-debug-shell.service
 
 # systemd tools
 
-InitrdBinary=/bin/journalctl
-InitrdBinary=/bin/systemd-analyze 
+InitrdBinary=/usr/bin/journalctl
+InitrdBinary=/usr/bin/systemd-analyze 
 
 # midnight commander
 
-InitrdBinary=/bin/hostname
+InitrdBinary=/usr/bin/hostname
 
-InitrdBinary=/bin/mc
-InitrdBinary=/bin/mcedit
-InitrdBinary=/bin/mcview
+InitrdBinary=/usr/bin/mc
+InitrdBinary=/usr/bin/mcedit
+InitrdBinary=/usr/bin/mcview
 
 InitrdPath=/etc/mc
 InitrdPath=/usr/lib/mc

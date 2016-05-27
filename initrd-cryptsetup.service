@@ -44,7 +44,7 @@ InitrdPath=/usr/lib/systemd/system/cryptsetup-pre.target
 InitrdPath=/usr/lib/systemd/system/cryptsetup.target
 
 # include crypt setup binaries
-InitrdBinary=/bin/dmsetup version
+InitrdBinary=/usr/bin/dmsetup
 InitrdBinary=/usr/bin/systemd-ask-password
 InitrdBinary=/usr/bin/systemd-tty-ask-password-agent
 InitrdBinary=/usr/lib/systemd/systemd-reply-password

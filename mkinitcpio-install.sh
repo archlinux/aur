@@ -80,7 +80,6 @@ add_systemd_unit_X() {
                 map add_systemd_unit_X "${values[@]}"
                 ;;
             Exec*)
-                # don't add binaries when they are present
                 # don't add binaries unless they are required
                 if [[ ${values[0]:0:1} != '-' ]]; then
                     local target=
@@ -143,14 +142,15 @@ add_systemd_unit_X() {
                     error "invalid source path $source"
                 fi
                 ;;
-            InitrdInvoke)
+            InitrdBuild)
                 # invoke build time function form script file
-                # format: InitrdInvoke=/path/script command=function-name 
+                # format: 
+                # InitrdBuild=/path/script.sh command=function-name 
                 local script= command= args= 
                 script="${values[0]}" ; args="${values[@]:1:9}" 
                 [ -n "$args" ] && local $(echo "$args")
                 if [ -z "$script" ] ; then
-                    error "missing InitrdInvoke script in unit $unit"
+                    error "missing InitrdBuild script in unit $unit"
                 elif [ -z "$command" ] ; then
                     error "missing command for script $script in unit $unit"
                 else
@@ -161,7 +161,8 @@ add_systemd_unit_X() {
                 ;;
             InitrdCall)
                 # invoke build time code in-line
-                # format: InitrdCall=bash-code-in-line 
+                # format: 
+                # InitrdCall=bash-code-in-line 
                 local code= 
                 code=$(echo "${values[@]}")
                 if [ -z "$code" ] ; then

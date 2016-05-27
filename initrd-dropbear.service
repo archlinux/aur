@@ -41,7 +41,7 @@ WantedBy=sysinit.target
 InitrdPath=/root/.ssh/authorized_keys source=/root/.ssh/authorized_keys mode=600
 
 # ensure dropbear server host keys
-InitrdInvoke=/etc/systemd/system/initrd-build.sh command=build_ssh_host_keys
+InitrdBuild=/etc/systemd/system/initrd-build.sh command=do_ssh_host_keys
 
 # include generated dropbear configuration
 InitrdPath=/etc/dropbear
