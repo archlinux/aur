@@ -154,7 +154,7 @@ add_systemd_unit_X() {
                 elif [ -z "$command" ] ; then
                     error "missing command for script $script in unit $unit"
                 else
-                    plain "invoke $command for script $script in unit $unit"
+                    plain "invoke command [$command] for script $script in unit $unit"
                     # use sub shell for safety
                     (source "$script" ; "$command")
                 fi
