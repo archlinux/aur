@@ -1,14 +1,14 @@
 # Maintainer: Javier Torres <javitonino [at] gmail [dot] com>
 
 pkgname=softhsm
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Software PKCS11 store"
 arch=('i686' 'x86_64')
 url="http://www.opendnssec.org/softhsm/"
 license=('BSD')
 groups=()
-depends=('botan>=1.10' 'sqlite3>=3.4.2' 'openssl>=1.0.0')
+depends=('botan>=1.10' 'sqlite3>=3.4.3' 'openssl>=1.0.0')
 makedepends=()
 optdepends=()
 provides=()
@@ -21,7 +21,7 @@ changelog=
 source=("http://www.opendnssec.org/files/source/${pkgname}-${pkgver}.tar.gz")
 noextract=()
 
-sha256sums=('eae8065f6c472af24f4c056d6728edda0fd34306f41a818697f765a6a662338d')
+sha256sums=('0399b06f196fbfaebe73b4aeff2e2d65d0dc1901161513d0d6a94f031dcd827e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
