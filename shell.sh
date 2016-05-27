@@ -10,7 +10,12 @@
 
 # verify if shell started form systemd unit
 is_entry_service() { 
-    [ "$entry" = "service" ]
+    [ "$script_entry" = "service" ]
+}
+
+# verify if shell started form tty or ssh
+is_entry_console() { 
+    [ "$script_entry" = "console" ]
 }
 
 # verify if shell started form console debug shell
@@ -45,7 +50,7 @@ is_ask_pending() {
 
 # verify if any crypttab jobs are in the queue
 has_crypt_jobs() {
-    $systemd_syctl list-jobs | grep -i -q 'cryptsetup'
+    $systemd_ctl list-jobs | grep -i -q 'cryptsetup'
 }
 
 # verify if any files on the list are still present
@@ -55,6 +60,29 @@ has_any_file() {
         [ -e "$file" ] && return 0
     done
     return 1
+}
+
+# log output to console and journal
+log_log() {
+    local mode="$1" text="$2"
+    [[ "$script_verbose" == *"info"* ]] && [[ "$mode" == *"info"* ]] && echo "$text"
+    [[ "$script_verbose" == *"warn"* ]] && [[ "$mode" == *"warn"* ]] && echo "$text"
+    [[ "$script_verbose" == *"err"*  ]] && [[ "$mode" == *"err"*  ]] && echo "$text"
+    if is_ssh_connect ; then text="/ssh $text" ; else text="     $text" 
+    text="$script_entry $text"
+    echo "$text" | $systemd_cat --priority="$mode" --identifier="shell"
+}
+
+log_info() {
+    local code="$?" text="$1" ; log_log "info"     "info : $text [code=$code]" 
+}
+
+log_warn() {
+    local code="$?" text="$1" ; log_log "warning"  "warn : $text [code=$code]" 
+}
+
+log_error() {
+    local code="$?" text="$1" ; log_log "err"      "error: $text [code=$code]" 
 }
 
 # list current crypto question files
@@ -72,7 +100,7 @@ list_ask_socket() {
 
 # query password from the console
 run_query() {
-    $systemd_query --timeout=$user_timeout "$user_prompt"
+    $systemd_query --timeout=$query_timeout "$query_prompt"
 }
 
 # reply password to the requester
@@ -106,6 +134,11 @@ wait_confirm() {
 # read a portion of latest console output
 read_console() {
     tail -c 1024 "/dev/vcs"
+}
+
+# remove any pending content from the console input 
+flush_stdin() { 
+    read -r -s -n 10000000 -t 1
 }
 
 # ensure console is no longer changing
@@ -151,25 +184,20 @@ wait_complete() {
     return 0
 }
 
-do_error() {
-    local code="$?"
-    local text="$1"
-    echo "   error: $text code=$code"
-}
-
-# crypto secret default logic: all at once
+# crypto secret default logic: implement custom password agent
 do_crypt() {
     local config_list= socket_list=
-    wait_request                 || { do_error "missing requests" ; return 1; }
-    wait_console                 || { do_error "console is active" ; return 1; }
+    wait_request                 || { log_error "missing requests" ; return 1; }
+    wait_console                 || { log_warn  "volatile console" ; return 1; }
     config_list=$(list_ask_config)
     socket_list=$(list_ask_socket $config_list)
-    run_answer "$socket_list"    || { do_error "query/reply failure" ; return 1; }
-    wait_confirm "$socket_list"  || { do_error "requests still present" ; return 1; }
-    wait_complete                || { do_error "new requests are posted" ; return 1; }
+    flush_stdin
+    run_answer "$socket_list"    || { log_error "query/reply failure" ; return 1; }
+    wait_confirm "$socket_list"  || { log_error "old requests still present" ; return 1; }
+    wait_complete                || { log_warn  "new requests are generated" ; return 1; }
 }
 
-# crypto secret fall back logic: one at a time
+# crypto secret fall back logic: utilize standard systemd password agent
 do_agent() {
     $systemd_agent
 }
@@ -177,28 +205,35 @@ do_agent() {
 # exit this script
 do_exit() {
     local code="$1" ; [ "$code" = "" ] && code=0  
+    log_info "exit code=$code"
     exit "$code"
 }
 
 # invoke sub shell
 do_shell() {
-    PS1='-> ' /bin/sh
+    log_info "run sub shell"
+    PS1="$script_prompt" /bin/sh
 }
 
 # change systemd state
 do_reboot() { 
-    $systemd_syctl reboot 
+    log_info "do reboot"
+    $systemd_ctl reboot 
 }
 
 # process invocation from tty console or ssh connection
 entry_console() {
     if is_debug_shell ; then
+        log_info "debug shell"
         return 0
     elif is_tool_shell ; then
+        log_info "tool shell"
         return 0
     elif has_crypt_jobs ; then
-        do_crypt || do_agent 
+        log_info "crypt jobs"
+        do_crypt || do_agent
     else 
+        log_info "prompt user"
         do_prompt
     fi
 }
@@ -206,12 +241,16 @@ entry_console() {
 # process invocation from systemd unit initrd-cryptsetup.service
 entry_service() {
     if has_crypt_jobs ; then
+        log_info "crypt jobs" 
         if do_crypt || do_agent ; then
+            log_info "crypt success" 
             do_exit 0
         else
-            do_exit 1 # restart service
+            log_warn "crypt failure" 
+            do_exit 1
         fi
     else
+        log_info "nothing to do" 
         do_exit 0
     fi
 }
@@ -240,14 +279,14 @@ do_prompt() {
 # respond to interrupt
 do_trap() {
     if is_entry_service ; then
-        echo ""
-        do_exit 1 # restart service
+        log_info "interrupt service"
+        do_exit 1
     elif is_ssh_connect ; then
-        echo ""
-        do_prompt # drop to menu
+        log_info "interrupt console"
+        do_prompt
     else
-        echo ""
-        do_exit 0 # testing
+        log_info "interrupt"
+        do_exit 0 
     fi
 }
 
@@ -263,25 +302,32 @@ trap_SIGQUIT() {
 
 # handle termination
 trap_SIGTERM() { 
-    exit 0
+    do_exit 0
 }
 
 # systemd service unit can override these arguments via [name=value]
 setup_defaults() {
-    # user request settings
-    [ -z "$user_prompt" ]  && readonly user_prompt=" secret>"
-    [ -z "$user_timeout" ] && readonly user_timeout=0 # A timeout of 0 waits indefinitely.
+    # script behaviour
+    [ -z "$script_entry" ]  && readonly script_entry="console"
+    [ -z "$script_prompt" ]  && readonly script_prompt="=> "
+    [ -z "$script_verbose" ]  && readonly script_verbose="error" # { info,warn,error }
+        
+    # password query settings
+    [ -z "$query_prompt" ]  && readonly query_prompt=" secret>"
+    [ -z "$query_timeout" ] && readonly query_timeout=0 # A timeout of 0 waits indefinitely.
             
-    # active operation timeout settings
+    # active operation timeout
     [ -z "$sleep_delay" ] && readonly sleep_delay=0.7
-        [ -z "$sleep_count" ] && readonly sleep_count=10
+    [ -z "$sleep_count" ] && readonly sleep_count=7
         
     # password inotify watch folder
     [ -z "$watch_folder"] && readonly watch_folder="/run/systemd/ask-password"
-    mkdir -p "$watch_folder"
     
     # required systemd binaries
-    [ -z "$systemd_syctl"] && readonly systemd_syctl="/usr/bin/systemctl"
+    [ -z "$systemd_cat"] && readonly systemd_cat="/usr/bin/systemd-cat"
+    [ -z "$systemd_ctl"] && readonly systemd_ctl="/usr/bin/systemctl"
+        
+    # optional systemd binaries for cryptsetup
     [ -z "$systemd_query"] && readonly systemd_query="/usr/bin/systemd-ask-password"
     [ -z "$systemd_reply"] && readonly systemd_reply="/usr/lib/systemd/systemd-reply-password"
     [ -z "$systemd_agent"] && readonly systemd_agent="/usr/bin/systemd-tty-ask-password-agent"
@@ -295,31 +341,28 @@ setup_interrupts() {
 
 # respond depending on script invocation type [entry=xxx]
 process_invocation() {
-    case "$entry" in
-        # development invocations
+    log_info "init"
+    mkdir -p "$watch_folder" || log_error "can not make $watch_folder"
+    case "$script_entry" in
+        # development
         exit)     do_exit ;;
         crypt)    do_crypt ;;
         shell)    do_shell ;;
         reboot)   do_reboot ;;
         prompt)   do_prompt ;;
-        # production invocations
+        # production
         service)  entry_service ;;
-              *)  entry_console ;;
-    esac       
+        console)  entry_console ;;
+              *)  log_error "program error" ;;
+        esac       
 }
 
 # shell entry point
 program() {
-    
-    # arguments
     readonly "$@"
-    
     setup_defaults
-    
     setup_interrupts
-    
     process_invocation
-                        
 }
 
 program "$@"

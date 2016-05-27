@@ -100,3 +100,6 @@ how can I provide custom interactive user shell for ssh client
 
 which ssh user keys are used by initramfs sshd server? 
 * they come from host `/root/.ssh/authorized_keys`
+
+how can I review shell actions during boot?
+* use `journalctl -b -t shell`

@@ -20,7 +20,7 @@ Before=cryptsetup.target
 
 [Service]
 # login console interaction
-ExecStart=/bin/sh /root/.profile entry=service
+ExecStart=/bin/sh /root/.profile script_entry=service
 #Type=idle
 Restart=on-failure
 RestartSec=1s

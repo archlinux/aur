@@ -40,3 +40,6 @@ InitrdPath=/root/.ssh/authorized_keys source=/root/.ssh/authorized_keys mode=600
 
 # dependency required by systemd emergency service
 InitrdBinary=/usr/bin/sulogin
+
+# used by shell.sh
+InitrdBinary=/usr/bin/systemd-cat
