@@ -1,16 +1,16 @@
 # Maintainer: ninian <mcfadzean.org.uk ta linux>
 
 pkgname=runa
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Fast and light desktop application launcher"
 arch=('any')
 url="http://appstogo.mcfadzean.org.uk/linux.html#runa"
 license=('custom:MPL2')
 depends=('bash' 'dmenu' 'libnotify')
-optdepends=('gxmessage: to view .desktop files')
+optdepends=('gxmessage: to view .desktop files' 'perl-file-mimeinfo: to better determine mimetypes')
 source=("http://appstogo.mcfadzean.org.uk/dl/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('5d490ad83173698cf3cbc5e7f377c3ef')
+md5sums=('f56418ac12285b38f9aecfa836b1d44e')
 
 package() {
   cd "$srcdir/${pkgname}-$pkgver"
@@ -18,6 +18,8 @@ package() {
   install -Dm755 ${pkgname}                  "$pkgdir/usr/bin/${pkgname}"
   install -Dm644 ${pkgname}.png              "$pkgdir/usr/share/pixmaps/${pkgname}.png"
   install -Dm644 ${pkgname}.desktop          "$pkgdir/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 ${pkgname}-assoc.desktop    "$pkgdir/usr/share/applications/${pkgname}-assoc.desktop"
+  install -Dm644 ${pkgname}-desktop.desktop  "$pkgdir/usr/share/applications/${pkgname}-desktop.desktop"
   install -Dm644 ${pkgname}.conf             "$pkgdir/usr/share/doc/${pkgname}/${pkgname}.conf"
   install -Dm644 ${pkgname}.fav              "$pkgdir/usr/share/doc/${pkgname}/${pkgname}.fav"
   install -Dm644 ${pkgname}.1.gz             "$pkgdir/usr/share/man/man1/${pkgname}.1.gz"
