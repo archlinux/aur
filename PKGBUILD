@@ -1,7 +1,7 @@
 # Maintainer : Antonio Orefice <xt7player@gmail.com>
 
 pkgname=higgins-git
-pkgver=20160505
+pkgver=20160527
 pkgrel=1
 pkgdesc="Gambas apps launcher"
 arch=('any')
@@ -23,6 +23,7 @@ depends=(
 		'gambas3-gb-net'
 		'gambas3-gb-dbus'
 		'gambas3-gb-image'
+		'gambas3-gb-args'
 		'xbindkeys')
 
 _gitroot="https://github.com/kokoko3k/higgins.git"
