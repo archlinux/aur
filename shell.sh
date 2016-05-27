@@ -64,12 +64,12 @@ has_any_file() {
 
 # log output to console and journal
 log_log() {
-    local mode="$1" text="$2"
+    local mode="$1" text="$2" session=
     [[ "$script_verbose" == *"info"* ]] && [[ "$mode" == *"info"* ]] && echo "$text"
     [[ "$script_verbose" == *"warn"* ]] && [[ "$mode" == *"warn"* ]] && echo "$text"
     [[ "$script_verbose" == *"err"*  ]] && [[ "$mode" == *"err"*  ]] && echo "$text"
-    if is_ssh_connect ; then text="/ssh $text" ; else text="     $text" 
-    text="$script_entry $text"
+    if is_ssh_connect ; then session="ssh" ; else session="loc" fi
+    text="$script_entry/$session $text"
     echo "$text" | $systemd_cat --priority="$mode" --identifier="shell"
 }
 
