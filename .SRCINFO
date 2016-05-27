@@ -1,7 +1,7 @@
 pkgbase = marionnet
 	pkgdesc = Educational software. It is a virtual network laboratory: it allows users to define, configure and run complex computer networks without any need for physical setup. Very old version.
 	pkgver = 0.90.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.marionnet.org/
 	install = marionnet.install
 	arch = i686
@@ -26,10 +26,12 @@ pkgbase = marionnet
 	source = http://wwwfun.kurims.kyoto-u.ac.jp/soft/lsl/dist/lablgtk-2.14.2.tar.gz
 	source = https://www.marionnet.org/download/marionnet_from_scratch/mirror/ocamlbricks-0.90.3.tar.gz
 	source = https://www.marionnet.org/download/marionnet_from_scratch/mirror/marionnet-0.90.6.tar.gz
+	source = https://raw.githubusercontent.com/JulioJu/Marionnet-old_ArchLinux-installer/master/Makefile.patch
 	sha256sums = 83008744c0ba1e3460651b86d0900916edae38813eb9a0300e8eaa861c3e921e
 	sha256sums = 4981abedabdc462303f345104042c88af227ccd50fd30a9bf48fd353ab02d0ba
 	sha256sums = 39cc4cc100124b8363c9760494d7e285803ca22ff8409f79038f3fb4a146a96c
 	sha256sums = 3a571a2cb4724b50eb52e33191d42a6b8396889e728bc974bc396395c9ce03ac
+	sha256sums = 1a58b6b67bc7e6f36277a0dd9f772f411ff6dfc4e0c6dcfccbe9618ab7068d73
 
 pkgname = marionnet
 

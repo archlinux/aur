@@ -3,7 +3,7 @@
 
 pkgname=('marionnet')
 pkgver=0.90.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Educational software. It is a virtual network laboratory: it allows
 users to define, configure and run complex computer networks without any need
 for physical setup. Very old version."
@@ -21,11 +21,13 @@ source=("http://caml.inria.fr/distrib/ocaml-3.11/ocaml-3.11.2.tar.gz"
         'http://wwwfun.kurims.kyoto-u.ac.jp/soft/lsl/dist/lablgtk-2.14.2.tar.gz'
         "https://www.marionnet.org/download/marionnet_from_scratch/mirror/ocamlbricks-0.90.3.tar.gz"
         "https://www.marionnet.org/download/marionnet_from_scratch/mirror/marionnet-0.90.6.tar.gz"
+        "https://raw.githubusercontent.com/JulioJu/Marionnet-old_ArchLinux-installer/master/Makefile.patch"
 )
 sha256sums=('83008744c0ba1e3460651b86d0900916edae38813eb9a0300e8eaa861c3e921e'
             '4981abedabdc462303f345104042c88af227ccd50fd30a9bf48fd353ab02d0ba'
             '39cc4cc100124b8363c9760494d7e285803ca22ff8409f79038f3fb4a146a96c'
-            '3a571a2cb4724b50eb52e33191d42a6b8396889e728bc974bc396395c9ce03ac')
+            '3a571a2cb4724b50eb52e33191d42a6b8396889e728bc974bc396395c9ce03ac'
+            '1a58b6b67bc7e6f36277a0dd9f772f411ff6dfc4e0c6dcfccbe9618ab7068d73')
 install=marionnet.install
 
 # ################
@@ -60,13 +62,8 @@ build () {
     LABLGTK2_DIR="${srcdir}/lablgtk-2.14.2"
     MARIONNET_DIR="${srcdir}/marionnet-0.90.6"
     OCAMLBRICK_DIR="${srcdir}/ocamlbricks-0.90.3"
-
-    # Inspirated from :
-    # http://bazaar.launchpad.net/~marionnet-drivers/marionnet/trunk/view/head:/useful-scripts/marionnet_from_scratch
-    # Under
-    # Copyright (C) 2010 2011 2012 2013  Jean-Vincent Loddo Copyright (C) 2010
-    # 2011 2012 2013  Université Paris 13 
-    # (LGPL)
+    export PATH="${PREFIX}/bin:${PATH}"
+    LIB_OCAML="${PREFIX}/lib/ocaml/"
 
     ### OCAML ###
 
@@ -105,11 +102,6 @@ build () {
         ${PREFIX}/bin/ocamlobjinfo
     fi
 
-    ### PREPARE ####
-
-    export PATH="${PREFIX}/bin:${PATH}"
-    LIB_OCAML="${PREFIX}/lib/ocaml/"
-
     # #### Liblgtk2 ###
     cd "${LABLGTK2_DIR}"
     ./configure --prefix="${PREFIX}" \
@@ -137,22 +129,28 @@ EOF
     make clean &&
     make &&
     make install
+
     ############# MARIONNET ###########
 
+
     cd "${MARIONNET_DIR}"
+
+    # Makefile patch 
+
+    patch Makefile < ../Makefile.patch
+
+    # Configure CONFIGME
 cat > CONFIGME <<EOF
 ocaml_libraryprefix="${LIB_OCAML}"
 libraryprefix="${LIB_OCAML}"
-prefix="${pkgdir}/usr/local"
-configurationprefix="\${prefix}/etc"
-documentationprefix="\${prefix}/share/doc"
-localeprefix="\${prefix}/share/locale"
+prefix="/usr"
+prefixInstall="${pkgdir}/usr"
+configurationprefix="${pkgdir}/etc"
+documentationprefix="\${prefixInstall}/share/doc"
+localeprefix="\${prefixInstall}/share/locale"
 ocaml_sources="${LIB_OCAML}/caml"
-ocaml_version=${ocaml_version}
+ocaml_version=`ocamlc -version`
 EOF
-# For not have step « Ajust local » below, we can put 
-# « localeprefix="\${prefix}/locale" » instead of 
-# « localeprefix="\${prefix}/share/locale" »
 
     make clean native
 }
@@ -164,23 +162,23 @@ package() {
     PREFIX="${srcdir}/usr/local"
     MARIONNET_DIR="${srcdir}/marionnet-0.90.6"
     export PATH="${PREFIX}/bin:${PATH}"
-    LIB_OCAML="${PREFIX}/lib/ocaml"
 
     cd ${MARIONNET_DIR}
-    echo $PWD
     make install
+
+    # Sanitize files
+
+    mv "${pkgdir}/usr/sbin/"* "${pkgdir}/usr/bin"
+    rmdir "${pkgdir}/usr/sbin/"
+
+    rm -f "${pkgdir}/usr/bin/marionnet.byte"
+    rm -f "${pkgdir}/usr/bin/marionnet-daemon.byte"
+    mv "${pkgdir}/usr/bin/marionnet.native" "${pkgdir}/usr/bin/marionnet"
 
     # Build ${pkgdir}/etc/marionnet/marionnet.conf
     echo "* Generating ${pkgdir}/etc/marionnet/marionnet.conf"
 
-    if [[ -f ${pkgdir}/usr/local/share/marionnet/marionnet.conf ]]; then
-        MARIONNET_DOT_CONF=${pkgdir}/usr/local/share/marionnet/marionnet.conf
-    elif [[ -f ${pkgdir}/usr/local/etc/marionnet/marionnet.conf ]]; then
-        MARIONNET_DOT_CONF=${pkgdir}/usr/local/etc/marionnet/marionnet.conf
-    else
-        echo "File \`marionnet.conf' not found. Exiting.";
-        exit 3
-    fi
+    MARIONNET_DOT_CONF=${pkgdir}/etc/marionnet/marionnet.conf
 
     function first_installed_binary_of_list {
     local i
@@ -207,16 +205,6 @@ package() {
         sed -i -e "s/$i=\(.*\)/$i=$v/" $MARIONNET_DOT_CONF
     done
 
-    if [[ ! -f ${pkgdir}/etc/marionnet/marionnet.conf ]]; then
-        echo "* Installing ${pkgdir}/etc/marionnet/marionnet.conf ..."
-        mkdir -p ${pkgdir}/etc/marionnet/
-        cp $MARIONNET_DOT_CONF ${pkgdir}/etc/marionnet/
-    fi
-
-    ### Make alias
-
-    ln -sf marionnet.native marionnet
-
     #### Generate Daemon ####
 
     mkdir -p "${pkgdir}/usr/lib/systemd/system/"
@@ -230,7 +218,7 @@ Description="Marionnet daemon for graphics on virtual machines and host sockets"
 
 [Service]
 Type=simple
-ExecStart=/usr/local/sbin/marionnet-daemon.native
+ExecStart=/usr/bin/marionnet-daemon.native
 KillMode=process
 Restart=on-failure
 
@@ -238,41 +226,26 @@ Restart=on-failure
 WantedBy=graphical.target
 EOF
 
-    # Fix bug https://bugs.launchpad.net/marionnet/+bug/1580349
+    ### Fix bug https://bugs.launchpad.net/marionnet/+bug/1580349 ###
 
-    optipng -quiet -fix ${pkgdir}/usr/local/share/marionnet/images/launcher-icons/marionnet-launcher.png
-    optipng -quiet -fix ${pkgdir}/usr/local/share/marionnet/images/ico.cable-serial.small.png
-    optipng -quiet -fix ${pkgdir}/usr/local/share/marionnet/images/ico.script-analyse-3.med.png
-    optipng -quiet -fix ${pkgdir}/usr/local/share/marionnet/images/marionnet-launcher.png
-    optipng -quiet -fix ${pkgdir}/usr/local/share/marionnet/images/ico.cable-serial-left-right.small.png
-    optipng -quiet -fix ${pkgdir}/usr/local/share/marionnet/images/ico.uml-gray.small.png
-    optipng -quiet -fix ${pkgdir}/usr/local/share/marionnet/images/ico.dado.24.png
-    optipng -quiet -fix ${pkgdir}/usr/local/share/marionnet/images/ico.resource-2.med.png
-    optipng -quiet -fix ${pkgdir}/usr/local/share/marionnet/images/ico.dado-no.24.png
-    optipng -quiet -fix ${pkgdir}/usr/local/share/marionnet/images/ico.xml-16.inv.png
-    optipng -quiet -fix ${pkgdir}/usr/local/share/marionnet/images/ico.script-finish.med.png
-    optipng -quiet -fix ${pkgdir}/usr/local/share/marionnet/images/ico.software-gray.small.png
-    optipng -quiet -fix ${pkgdir}/usr/local/share/marionnet/images/ico.script-start-2.med.png
-    optipng -quiet -fix ${pkgdir}/usr/local/share/marionnet/images/ico.cable-serial.xxl.png
-    optipng -quiet -fix ${pkgdir}/usr/local/share/marionnet/images/ico.diffuser.orig.png
-    optipng -quiet -fix ${pkgdir}/usr/local/share/marionnet/images/ico.hardware-gray.small.png
-    optipng -quiet -fix ${pkgdir}/usr/local/share/marionnet/images/ico.cable-serial-left-right.large.png
+    optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/launcher-icons/marionnet-launcher.png
+    optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/ico.cable-serial.small.png
+    optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/ico.script-analyse-3.med.png
+    optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/marionnet-launcher.png
+    optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/ico.cable-serial-left-right.small.png
+    optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/ico.uml-gray.small.png
+    optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/ico.dado.24.png
+    optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/ico.resource-2.med.png
+    optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/ico.dado-no.24.png
+    optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/ico.xml-16.inv.png
+    optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/ico.script-finish.med.png
+    optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/ico.software-gray.small.png
+    optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/ico.script-start-2.med.png
+    optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/ico.cable-serial.xxl.png
+    optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/ico.diffuser.orig.png
+    optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/ico.hardware-gray.small.png
+    optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/ico.cable-serial-left-right.large.png
 
-
-    #                       Adjust LOCALES
-    #     `/usr/share/locale'  vs  `/usr/local/share/locale'
-    # Under Arch, locales are under /usr/share/local and not
-    # /usr/local/share/locale
-
-    SOURCE="${pkgdir}/usr/local/share/locale"
-    DEST="${pkgdir}/usr/share/locale/"
-    mkdir -p ${DEST}
-    # Move `marionnet.mo' files from $SOURCE to $DEST:
-    echo "* Moving installed locales into ${DEST}"
-    pushd >/dev/null ${SOURCE}
-    find . -name "marionnet.mo" | xargs tar -cf - | tar -C ${DEST} -xf -
-    popd >/dev/null
-    rm -Rf ${SOURCE}
 
 }
 
