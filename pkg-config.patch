@@ -1,0 +1,15 @@
+--- a/m4/systemd4.md	2016-05-22 12:10:23.149034397 +0200
++++ b/m4/systemd.m4	2016-05-22 12:10:51.958881947 +0200
+@@ -50,9 +50,9 @@
+         fi
+     else
+ 
+-        if test -n "$PKG_CONFIG" && $PKG_CONFIG --exists systemd libsystemd-daemon ; then
+-            systemd_inc=`$PKG_CONFIG --cflags-only-I systemd libsystemd-daemon`
+-            systemd_lib=`$PKG_CONFIG --libs-only-l systemd libsystemd-daemon`
++        if test -n "$PKG_CONFIG" && $PKG_CONFIG --exists systemd libsystemd ; then
++            systemd_inc=`$PKG_CONFIG --cflags-only-I systemd libsystemd`
++            systemd_lib=`$PKG_CONFIG --libs-only-l systemd libsystemd`
+             systemd_defs="-DWITH_SYSTEMD"
+         else
+             AC_MSG_ERROR([no Systemd pkg-config files])
