@@ -100,7 +100,7 @@ list_ask_socket() {
 
 # read a portion of latest console output
 read_console() {
-    tail -c 1024 "/dev/vcs"
+    tail -c 256 "/dev/vcs"
 }
 
 # remove any pending content from the console input 
@@ -199,9 +199,8 @@ do_crypt() {
         config_list=$(list_ask_config)
         socket_list=$(list_ask_socket $config_list)
         secret=$(run_query) || { log_error "query failure" ; return 1 ; }
-        print_eol
         for socket in $socket_list ; do
-            [ -f "$socket" ] || { log_warn "socket removed" ; continue ; }
+            [ ! -f "$socket" ] || { log_warn "socket removed" ; continue ; }
             run_reply "$secret" "$socket" || { log_error "reply failure" ; return 1 ; }
         done
         await_received "$socket_list" || { log_error "receipt failure" ; return 1 ; }
@@ -293,6 +292,7 @@ do_prompt() {
 
 # respond to interrupt
 do_trap() {
+    print_eol
     if is_entry_service ; then
         log_info "interrupt service"
         do_exit 1
@@ -332,8 +332,8 @@ setup_defaults() {
     [ -z "$query_timeout" ] && readonly query_timeout=0 # A timeout of 0 waits indefinitely.
             
     # active operation timeout
-    [ -z "$sleep_delay" ] && readonly sleep_delay=0.7
-    [ -z "$sleep_count" ] && readonly sleep_count=7
+    [ -z "$sleep_delay" ] && readonly sleep_delay=0.5
+    [ -z "$sleep_count" ] && readonly sleep_count=10
         
     # password inotify watch folder
     [ -z "$watch_folder"] && readonly watch_folder="/run/systemd/ask-password"
