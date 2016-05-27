@@ -4,6 +4,7 @@
 # Contributor: Anish Tondwalkar <anish@tjhsst.edu>
 # Contributor: Ghost91 <m_graeb11@cs.uni-kl.de>
 # Contributor: teratomata <teratomat@gmail.com>
+# Contributor: Joshua Ellis <josh@jpellis.me>
 
 pkgname=mathematica
 pkgver=10.4.1
@@ -46,10 +47,14 @@ package() {
     ln -s /opt/Mathematica/Executables/Mathematica
     ln -s /opt/Mathematica/Executables/mcc
     ln -s /opt/Mathematica/Executables/MathKernel
+    ln -s /opt/Mathematica/Executables/wolfram
+    ln -s /opt/Mathematica/Executables/WolframKernel
     if [ "${CARCH}" = "x86_64" ]; then
         ln -s /opt/Mathematica/SystemFiles/Kernel/Binaries/Linux-x86-64/MathematicaScript
+        ln -s /opt/Mathematica/SystemFiles/Kernel/Binaries/Linux-x86-64/WolframScript
     else
         ln -s /opt/Mathematica/SystemFiles/Kernel/Binaries/Linux/MathematicaScript
+        ln -s /opt/Mathematica/SystemFiles/Kernel/Binaries/Linux/WolframScript
     fi
 
     echo "Copying menu and mimetype information..."
