@@ -128,7 +128,7 @@ package_papirus-gtk-theme-git() {
 
 package_papirus-icon-theme-gtk-git() {
     pkgdesc="Papirus icon theme for GTK (git version)"
-    options=()
+    options=('!strip')
     makedepends=('git' 'xdg-utils')
     depends=('gtk-update-icon-cache')
     optdepends=()
