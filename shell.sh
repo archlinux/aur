@@ -177,8 +177,9 @@ do_agent() {
 }
 
 # exit shell script
-do_exit() { 
-    exit "$1"
+do_exit() {
+    local code="$1" ; [ "$code" = "" ] && code=0  
+    exit "$code"
 }
 
 # change systemd state
@@ -200,7 +201,7 @@ do_service() {
     if has_crypt_jobs ; then
         do_crypt || do_agent
     else
-        do_exit
+        do_exit 0
     fi
 }
 
@@ -216,7 +217,7 @@ do_prompt() {
         read -p ">>>" choice
         case "$choice" in
         c) do_crypt ;;
-        s) do_exit ;;
+        s) do_exit 0 ;;
         r) do_reboot ;;
         *) echo "$choice ?" ;;
         esac
