@@ -1,0 +1,10 @@
+--- configure.ac	2016-03-15 07:44:00.008970040 -0700
++++ configure.ac.new	2016-03-15 07:45:03.330096690 -0700
+@@ -674,6 +674,7 @@
+      use_joystick=no
+      use_gles=yes
+      use_gl=no
++     USE_STATIC_FFMPEG=1
+      ;;
+   arm*-*linux-android*)
+      target_platform=target_android
