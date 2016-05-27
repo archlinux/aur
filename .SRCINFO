@@ -1,0 +1,31 @@
+pkgbase = openjo-git
+	pkgdesc = Open Source Jedi Knight II - Jedi Outcast Engine
+	pkgver = 3296.ff3fc25
+	pkgrel = 1
+	url = https://github.com/JACoders/OpenJK
+	install = openjo.install
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = yasm
+	depends = libgl
+	depends = openal
+	depends = zlib
+	depends = sdl2
+	depends = libjpeg
+	depends = glu
+	optdepends = libpng
+	source = openjo::git://github.com/JACoders/OpenJK.git
+	source = openjo.install
+	source = openjosp.desktop
+	source = openjosp.png
+	source = openjosp.sh
+	sha256sums = SKIP
+	sha256sums = 8873237a7c6f12a0347b3e44cb237110ba526603e2b64aa4914bf4845be477c2
+	sha256sums = 9dfa0309a27707c8cf3d4888c8eb917a3d111ae2efa394a6afd9af4cb95278ce
+	sha256sums = afb2c1a757720c70798e7f7218f823297a43bc61e0cb192e9443df67c2963903
+	sha256sums = 385fb7543625fd651f2bc1e7ede77625969f83da10b7d031c0f461d0e4a19096
+
+pkgname = openjo-git
+

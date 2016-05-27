@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=OpenJO Single Player
+Comment="Open Source Jedi Knight II - Jedi Outcast Engine - Single Player"
+Path=/opt/openjo-git/JediOutcast/
+Exec=openjo_sp
+Icon=openjosp
+Terminal=false
+StartupNotify=false
+Categories=Game
