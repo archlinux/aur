@@ -1,0 +1,13 @@
+pkgbase = xu4fanctl-git
+	pkgdesc = fan control daemon for odroid xu4
+	pkgver = r6.e32d18a
+	pkgrel = 1
+	url = https://github.com/L33thium/xu4fanctl
+	arch = armv7h
+	license = GPLv3
+	makedepends = git
+	source = git+https://github.com/L33thium/xu4fanctl.git
+	sha256sums = SKIP
+
+pkgname = xu4fanctl-git
+
