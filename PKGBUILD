@@ -4,7 +4,7 @@
 
 pkgname=ffmpeg-full
 pkgver=3.0.2
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video (with all options)'
 arch=('i686' 'x86_64')
@@ -17,10 +17,10 @@ depends=('alsa-lib' 'bzip2' 'fontconfig' 'fribidi' 'gnutls' 'gsm' 'lame'
          'v4l-utils' 'xvidcore' 'zlib'
          'libdcadec.so' 'libvidstab.so' 'libvorbis.so' 'libvorbisenc.so'
          'libvpx.so' 'libx264.so' 'libx265.so'
-         'celt' 'chromaprint' 'faac' 'frei0r-plugins' 'jack' 'kvazaar' 'ladspa'
-         'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
-         'libfdk-aac' 'libgme'  'libmfx-git' 'libutvideo-git'
-         'libxv' 'mesa' 'openal' 'opencl-headers' 'openh264' 'rubberband'
+         'celt' 'chromaprint-fftw' 'faac' 'frei0r-plugins' 'jack' 'kvazaar'
+         'ladspa' 'libbs2b' 'libcaca' 'libcdio-paranoia' 'libcl' 'libdc1394'
+         'libfdk-aac' 'libgme' 'libilbc' 'libmfx-git' 'libutvideo-git' 'libxv'
+         'mesa' 'nut-multimedia-git' 'openal' 'opencl-headers' 'openh264' 'rubberband'
          'rtmpdump' 'shine' 'smbclient' 'snappy' 'tesseract' 'twolame' 'vid.stab'
          'vo-aacenc' 'vo-amrwbenc' 'wavpack' 'xavs' 'zeromq' 'zimg' 'zvbi')
 makedepends=('hardening-wrapper' 'libvdpau' 'nvidia-sdk' 'yasm')
@@ -76,10 +76,12 @@ build() {
     --enable-libgme \
     --enable-libgsm \
     --enable-libiec61883 \
+    --enable-libilbc \
     --enable-libkvazaar \
     --enable-libmfx \
     --enable-libmodplug \
     --enable-libmp3lame \
+    --enable-libnut \
     --enable-libopencore-amrnb \
     --enable-libopencore-amrwb \
     --enable-libopencv \
