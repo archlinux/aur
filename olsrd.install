@@ -1,0 +1,12 @@
+
+post_install(){
+	echo "Updating linker cache so olsrd2 finds it's libs instantly."
+	ldconfig
+	echo "Attention: When configuring plugins, you likely need to specify the full path."
+	echo "Attention: The libraries are installed in /usr/lib/olsrd/"
+}
+
+post_upgrade(){
+	echo "Updating linker cache so olsrd2 finds it's libs instantly."
+	ldconfig
+}

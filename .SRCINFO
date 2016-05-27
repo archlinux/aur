@@ -1,0 +1,21 @@
+pkgbase = olsrd
+	pkgdesc = The olsr.org implementation of the Optimized Link State Routing Protocol.
+	pkgver = 0.9.0.3
+	pkgrel = 1
+	url = http://www.olsr.org/mediawiki/index.php/Olsrd
+	install = olsrd.install
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	license = custom
+	makedepends = bison
+	makedepends = flex
+	source = https://github.com/OLSR/olsrd/archive/v0.9.0.3.tar.gz
+	source = olsrd.install
+	source = olsrd.service
+	sha256sums = 1b1a64e73109d8bfbc8cc10432baaca6f6da9adddade196b7f8caa5f01f86e09
+	sha256sums = 16b93b2e9d6e80e554b5b49b4a12fe17bd831d54015b4e3de7f452bb14e6c33e
+	sha256sums = 321f2e0d30af597a38442eb8f039757767efc5da88205b85cf96819384c94ac7
+
+pkgname = olsrd
+
