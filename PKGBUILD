@@ -1,19 +1,22 @@
-# Maintainer: Christian Babeux <christian.babeux@0x80.ca>
+# Maintainer: Philippe Proulx <pproulx@efficios.com>
 # Contributor: Manuel Mendez <mmendez534 at gmail dot com>
 
 pkgname=lttng-ust
-pkgver=2.7.3
+pkgver=2.8.0
 pkgrel=1
-pkgdesc="Userspace tracing library for LTTng"
+pkgdesc="LTTng user space tracing libraries and agents for LTTng"
 arch=('i686' 'x86_64')
 url="http://lttng.org/"
 license=('LGPL2.1' 'GPL2' 'MIT')
 depends=('liburcu>=0.7.2' 'util-linux' 'python')
-optdepends=('babeltrace')
+optdepends=(
+    'lttng-tools: LTTng tracing control tools'
+    'babeltrace: trace viewer'
+)
 options=('!libtool')
 source=(http://lttng.org/files/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
 install='lttng-ust.install'
-sha1sums=('1e124b787f13c7451d49f3d04df2411f40cd8134')
+sha1sums=('648e710683743969087e72faa5aa82697280729d')
 
 build()
 {
