@@ -21,7 +21,7 @@
 
 # verify if shell started form systemd unit
 is_entry_service() { 
-    [ "$entry" ="service" ]
+    [ "$entry" = "service" ]
 }
 
 # verify if this is a remote session
@@ -252,7 +252,7 @@ trap_SIGTERM() {
 # systemd service unit can provide these shell arguments
 setup_defaults() {
     # user request settings
-    [ -z "$user_prompt" ]  && readonly user_prompt="secret>"
+    [ -z "$user_prompt" ]  && readonly user_prompt="  secret>"
     [ -z "$user_timeout" ] && readonly user_timeout=0 # A timeout of 0 waits indefinitely.
             
     # active operation timeout settings
