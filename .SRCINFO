@@ -17,7 +17,9 @@ pkgbase = libkface-git
 	provides = libkface
 	conflicts = libkface
 	source = libkface::git+git://anongit.kde.org/libkface
+	source = opencv-3.1-support.patch
 	md5sums = SKIP
+	md5sums = 7bf2ad08a02167a149201ec39f25e7b8
 
 pkgname = libkface-git
 

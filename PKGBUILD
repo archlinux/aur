@@ -15,8 +15,10 @@ makedepends=('git' 'extra-cmake-modules-git' 'kdoctools')
 conflicts=('libkface')
 provides=('libkface')
 groups=('digikamsc-git')
-source=('libkface::git+git://anongit.kde.org/libkface')
-md5sums=('SKIP')
+source=('libkface::git+git://anongit.kde.org/libkface'
+	'opencv-3.1-support.patch')
+md5sums=('SKIP'
+	 '7bf2ad08a02167a149201ec39f25e7b8')
 
 pkgver() {
   cd "${srcdir}/libkface"
@@ -28,16 +30,17 @@ if [[ -d "${srcdir}/build" ]]; then
       msg "Cleaning the previous build directory..."
       rm -rf "${srcdir}/build"
   fi
-  mkdir "${srcdir}/build"
+  cp -r  "${srcdir}/libkface" "${srcdir}/build"
 }
 
 build() {
   cd "${srcdir}/build"
-  cmake "${srcdir}/libkface" -DCMAKE_BUILD_TYPE=Release \
+  patch -p1 -i "$srcdir/opencv-3.1-support.patch"
+  cmake . -DCMAKE_BUILD_TYPE=Release \
                 -DCMAKE_INSTALL_PREFIX=/usr \
                 -DLIB_INSTALL_DIR=lib \
                 -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-                -DBUILD_TESTING=OFF
+                -DBUILD_TESTING=OFF -DENABLE_OPENCV3=ON
   make
 }
 
