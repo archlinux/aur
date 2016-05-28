@@ -1,0 +1,14 @@
+post_install() {
+	echo "Updating dynamic linker bindings."
+	ldconfig
+}
+
+post_upgrade() {
+	echo "Updating dynamic linker bindings."
+	ldconfig
+}
+
+post_remove() {
+	echo "Updating dynamic linker bindings."
+	ldconfig
+}

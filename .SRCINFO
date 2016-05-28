@@ -1,0 +1,24 @@
+pkgbase = autovala
+	pkgver = 0.99.38
+	pkgrel = 1
+	install = autovala.install
+	arch = any
+	groups = vala
+	license = GPL3
+	makedepends = vala>=0.20.0
+	makedepends = cmake>=3.5.0
+	makedepends = libgee>=0.16.0
+	makedepends = gtk3>=3.18.0
+	makedepends = pandoc>=1.17.0.0
+	makedepends = bash-completion>=2.3
+	depends = vala>=0.20.0
+	depends = cmake>=3.5.0
+	depends = libgee>=0.16.0
+	depends = gtk3>=3.18.0
+	depends = bash-completion>=2.3
+	provides = autovala
+	source = http://github.com/rastersoft/autovala/archive/0.99.38.tar.gz
+	md5sums = 03e366e34d8455a43942c20ff410f127
+
+pkgname = autovala
+
