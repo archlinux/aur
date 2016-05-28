@@ -1,0 +1,21 @@
+pkgbase = wxtoimg-beta
+	pkgdesc = Software to decode APT and WEFAX signals from weather satellites
+	pkgver = 2.11.2
+	pkgrel = 1
+	url = http://www.wxtoimg.com/
+	arch = x86_64
+	arch = i686
+	arch = armv6h
+	arch = armv7h
+	license = custom
+	depends = alsa-lib
+	depends = libxft
+	provides = wxtoimg
+	provides = xwxtoimg
+	conflicts = wxtoimg
+	conflicts = xwxtoimg
+	source = http://wxtoimg.com/beta/wxtoimg-linux-amd64-2.11.2-beta.tar.gz
+	md5sums = 1edac1717864a69b23b8c599532ddd96
+
+pkgname = wxtoimg-beta
+
