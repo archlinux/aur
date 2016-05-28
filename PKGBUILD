@@ -9,7 +9,7 @@ pkgdesc="Minecraft server unit files, script, and jar"
 arch=('any')
 url="http://minecraft.net/"
 license=('custom')
-depends=('java-runtime-headless' 'screen' 'sudo' 'bash' 'awk')
+depends=('java-runtime-headless' 'screen' 'sudo' 'bash' 'awk' 'sed')
 optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
 conflicts=('minecraft-server-systemd' 'minecraft-canary')

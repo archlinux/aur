@@ -11,6 +11,7 @@ pkgbase = minecraft-server
 	depends = sudo
 	depends = bash
 	depends = awk
+	depends = sed
 	optdepends = tar: needed in order to create world backups
 	optdepends = netcat: required in order to suspend an idle server
 	conflicts = minecraft-server-systemd
