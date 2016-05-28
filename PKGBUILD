@@ -1,17 +1,14 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-protocol-git
-pkgver=20160505
+pkgver=20160528
 pkgrel=1
-pkgdesc="Bitcoin Blockchain Query Privacy Protocol"
+pkgdesc="Bitcoin Blockchain Query Protocol"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
-         'czmq'
-         'czmqpp'
          'libbitcoin'
          'libsecp256k1'
-         'libsodium'
          'protobuf'
          'zeromq')
 makedepends=('autoconf'
@@ -47,8 +44,9 @@ build() {
     --sysconfdir=/etc \
     --sharedstatedir=/usr/share/libbitcoin-protocol \
     --localstatedir=/var/lib/libbitcoin-protocol \
-    --with-gnu-ld \
-    --without-tests
+    --without-examples \
+    --without-tests \
+    --with-gnu-ld
   make
 }
 
