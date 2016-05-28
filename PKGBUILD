@@ -2,7 +2,7 @@
 # Contributor: Zhengyu Xu <xzy3186@gmail.com>
 
 pkgname=insync-nemo
-pkgver=1.2.8.35136
+pkgver=1.3.8.36087
 pkgrel=1
 pkgdesc="Nemo integration for insync"
 url="https://www.insynchq.com/downloads"
