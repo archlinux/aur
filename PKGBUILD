@@ -15,15 +15,15 @@
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.79701.gb286ff6
-pkgrel=1
+pkgver=N.79791.g03fceb7
+pkgrel=2
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
 license=('GPL3' 'custom:UNREDISTRIBUTABLE')
 depends=(
     'alsa-lib' 'zlib' 'bzip2' 'libpng' 'sdl' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugins'
-    'libgcrypt' 'gmp' 'gnutls' 'ladspa' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt'
+    'libgcrypt' 'gmp' 'gnutls' 'glibc' 'ladspa' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt'
     'libcdio-paranoia' 'libdc1394' 'faac' 'libfdk-aac' 'flite-fpic' 'freetype2'
     'fribidi' 'libgme' 'gsm' 'libiec61883' 'libilbc' 'kvazaar' 'libmodplug' 'lame' 'netcdf'
     'nut-multimedia-git' 'opencore-amr' 'opencv' 'openh264' 'openjpeg' 'opus' 'pulseaudio'
@@ -32,7 +32,7 @@ depends=(
     'vid.stab' 'vo-amrwbenc' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265'
     'libxcb' 'xvidcore' 'zimg' 'zeromq' 'zvbi' 'openal' 'libva' 'libdrm' 'libva-intel-driver'
     'libmfx-git' 'opencl-headers' 'ocl-icd' 'libvdpau' 'mesa' 'openssl' 'xavs' 'nvidia-sdk'
-    'blackmagic-decklink-sdk' 'java-environment'
+    'blackmagic-decklink-sdk' 'java-environment' 'sdl'
 )
 depends_x86_64=('cuda')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (experimental)')
@@ -105,6 +105,7 @@ build() {
 	        --enable-videotoolbox \
 	        \
 	        --enable-avisynth \
+	        --enable-bzlib \
 	        $_cuda \
 	        --enable-chromaprint \
 	        --enable-fontconfig \
@@ -112,6 +113,7 @@ build() {
 	        --enable-gcrypt \
 	        --enable-gmp \
 	        --enable-gnutls \
+	        --enable-iconv \
 	        --enable-jni \
 	        --enable-ladspa \
 	        --enable-libass \
@@ -182,7 +184,10 @@ build() {
 	        --enable-opencl \
 	        --enable-opengl \
 	        --enable-openssl \
-	        --enable-x11grab
+	        --enable-sdl \
+	        --enable-x11grab \
+	        --enable-xlib \
+	        --enable-zlib
 	
 	make
 	
