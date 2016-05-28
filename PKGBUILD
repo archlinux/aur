@@ -3,13 +3,12 @@
 
 pkgname=dianara
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt pump.io client"
 arch=(i686 x86_64)
 url="http://dianara.nongnu.org/"
 license=('GPL')
 depends=('file' 'qjson' 'qoauth' 'qca-ossl')
-install="$pkgname.install"
 source=("http://download-mirror.savannah.gnu.org/releases/$pkgname/$pkgname-v$pkgver.tar.gz")
 sha256sums=('275f6873c5893e90ecd78285186adfc0444e176bb247f1bc69443dbb01f198a0')
 
