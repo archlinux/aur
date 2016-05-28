@@ -1,0 +1,15 @@
+library project ADACURSES is
+
+   for Languages use ("Ada");
+
+   for Source_Dirs use ("../../include/adacurses");
+   for Library_Dir use "../../lib/adacurses";
+   for Library_Name use "AdaCurses";
+   for Library_Kind use "static";
+   for Externally_Built use "True";
+
+   package Linker is
+      for Linker_Options use ("-L@PREFIX@/lib", "-Wl,-R,@PREFIX@/lib");
+   end Linker;
+
+end ADACURSES;
