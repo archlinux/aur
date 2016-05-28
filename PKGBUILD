@@ -1,6 +1,6 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=sword-svn
-pkgver=3419
+pkgver=3420
 pkgrel=1
 pkgdesc="Libraries for Bible programs - svn -version"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "$srcdir/$_svnmod"  
   ./autogen.sh
-  ./configure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc 
+  CC=clang CXX=clang++ ./configure --prefix=/usr --libdir=/usr/lib --sysconfdir=/etc 
   make
 }
 
