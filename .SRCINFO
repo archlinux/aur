@@ -1,0 +1,14 @@
+pkgbase = erlang-serial-git
+	pkgdesc = Erlang driver for serial communication.
+	pkgver = r28.3f53d2a
+	pkgrel = 1
+	url = https://github.com/tonyg/erlang-serial
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = erlang-nox
+	source = erlang-serial::git://github.com/tonyg/erlang-serial.git
+	sha256sums = SKIP
+
+pkgname = erlang-serial-git
+
