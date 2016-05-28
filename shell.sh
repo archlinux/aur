@@ -239,14 +239,12 @@ run_crypt_jobs() {
 entry_console() {
     if is_debug_shell ; then
         log_info "debug shell"
-        do_exit 0
     elif is_tool_shell ; then
         log_info "tool shell"
-        do_exit 0
     elif has_crypt_jobs ; then
         run_crypt_jobs
     else 
-        log_info "prompt user"
+        log_info "user menu"
         do_prompt
     fi
 }
