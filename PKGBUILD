@@ -14,7 +14,7 @@ _pgo=true
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=46.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -139,13 +139,18 @@ build() {
   cd $_pkgname-$pkgver
 
   export PATH="$srcdir/path:$PATH"
-  export LDFLAGS="$LDFLAGS -Wl,-rpath,/usr/lib/firefox"
   export PYTHON="/usr/bin/python2"
-  export CPPFLAGS="$CPPFLAGS -mno-avx -fno-lifetime-dse -fno-delete-null-pointer-checks -Wnull-dereference -O3"
-  export CFLAGS="$CFLAGS -mno-avx -fno-lifetime-dse -fno-delete-null-pointer-checks -Wnull-dereference -O3"
   
+  # _FORTIFY_SOURCE causes configure failures
+  CPPFLAGS+=" -O2"
+
+  # GCC 6
+  CFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
+  CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
+
+
   if [[ -n $_lowmem || $CARCH == i686 ]]; then
-    LDFLAGS+=" -Wl,--no-keep-memory"
+    LDFLAGS+="--no-keep-memory"
   fi
 
   if [[ -n $_pgo ]]; then
