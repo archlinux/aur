@@ -1,21 +1,20 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-explorer-git
-pkgver=20160503
+pkgver=20160527
 pkgrel=1
 pkgdesc="Bitcoin Command Line Tool"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
          'czmq'
-         'czmqpp'
          'icu'
          'libbitcoin'
          'libbitcoin-client'
          'libbitcoin-network'
+         'libbitcoin-protocol'
          'libpng'
          'libsecp256k1'
-         'libsodium'
          'qrencode'
          'zeromq')
 makedepends=('autoconf'
