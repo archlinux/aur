@@ -200,7 +200,7 @@ print_eol() {
 do_crypt() {
     local request_list= request= text= secret= id= socket= message= size= comment= count=1
     while true ; do
-        log_info "custom agent try #$count" ; let count+=1
+        log_info "custom agent try #$count" ; let count+=1 ;
         await_request || { log_warn "missing request 1" ; return 0 ; }
         await_console || { log_warn "volatile console" ; }
         flush_stdin
@@ -216,7 +216,7 @@ do_crypt() {
             socket=$(extract_ask_field "$text" "Socket") || { log_error "socket extract failure" ; return 1 ; }
             message=$(extract_ask_field "$text" "Message") || { log_error "message extract  failure" ; return 1 ; }
             comment="id=$id socket=$socket message=$message"
-            [ -e "$socket" ] || { log_warn "socket removed $comment ; continue ; }
+            [ -e "$socket" ] || { log_warn "socket removed $comment" ; continue ; }
             log_info "reply $comment"
             run_reply "$secret" "$socket" || { log_error "reply failure $comment" ; return 1 ; }
             await_received "$socket" || { log_error "receipt failure $comment" ; return 1 ; }
