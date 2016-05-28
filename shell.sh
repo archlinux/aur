@@ -173,7 +173,7 @@ do_crypt() {
         log_info "custom agent try #$count" ; let count+=1 ;
         await_request_present || { log_warn "missing request #1" ; return 0 ; }
         await_console_stable || { log_warn "volatile console" ; }
-        clear_console_input ;
+        #clear_console_input ;
         log_info "query start" ;
         secret=$(run_secret_query 2>$error) || { log_error "query failure [$(cat $error)]" ; return 1 ; }
         log_info "query finish" ;
@@ -281,10 +281,15 @@ do_prompt() {
     done
 }
 
+run_kill_jobs() {
+    log_info "kill jobs [$(jobs)]"
+    local list=$(jobs -p) ; [ -n "$list"] && kill $list 
+}
+
 # respond to interrupt
 do_trap() {
-    kill $(jobs -p) 
     print_eol
+    run_kill_jobs
     if is_entry_service ; then
         log_info "interrupt service"
         do_exit 1
