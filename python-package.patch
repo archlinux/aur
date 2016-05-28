@@ -1,0 +1,14 @@
+--- a/Wrapping/PythonVirtualEnvInstall.cmake.in	2015-09-29 00:00:08.000000000 +0800
++++ b/Wrapping/PythonVirtualEnvInstall.cmake.in	2016-05-28 15:32:57.008424775 +0800
+@@ -5,10 +5,8 @@
+ 
+ execute_process(
+   COMMAND "@PYTHON_EXECUTABLE@"
+-    "@SimpleITK_SOURCE_DIR@/Utilities/virtualenv/virtualenv.py"
++    "/usr/bin/virtualenv"
+     "--python=@PYTHON_EXECUTABLE@"
+-    --no-pip
+-    --no-setuptools
+     --clear
+     "@PythonVirtualenvHome@"
+   RESULT_VARIABLE failed
