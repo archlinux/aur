@@ -10,6 +10,9 @@ pkgbase = cuberite
 	depends = bash
 	depends = lua
 	optdepends = tar: needed in order to create backups
+	provides = minecraft-server=1.9.4
+	provides = spigot=1.9.4
+	provides = craftbukkit=1.9.4
 	source = cuberite-backup.service
 	source = cuberite-backup.timer
 	source = cuberite.service
