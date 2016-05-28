@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-consensus-git
-pkgver=20160423
+pkgver=20160523
 pkgrel=1
 pkgdesc="Bitcoin Consensus Library"
 arch=('i686' 'x86_64')
