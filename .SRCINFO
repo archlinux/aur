@@ -1,0 +1,13 @@
+pkgbase = cryptcat
+	pkgdesc = Cryptcat is the standard netcat enhanced with twofish encryption
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://cryptcat.sourceforge.net
+	arch = i686
+	arch = x86_64
+	license = GPLv2
+	source = http://downloads.sourceforge.net/project/cryptcat/cryptcat-unix-1.2/cryptcat-unix-1.2.1/cryptcat-unix-1.2.1.tar?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fcryptcat%2Ffiles%2Fcryptcat-unix-1.2%2Fcryptcat-unix-1.2.1%2F&ts=1464475005&use_mirror=iweb
+	md5sums = fc4afff350f3dd5e4fe51b0dd01a8e21
+
+pkgname = cryptcat
+
