@@ -1,25 +1,23 @@
 # Maintainer: Jack Allnutt <jack@allnutt.eu>
 pkgname=kiwiirc
-pkgver=0.9.2
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="A hand-crafted web-based IRC client that you can enjoy"
 arch=('any')
 url="https://kiwiirc.com/"
 license=('AGPL3')
-depends=('nodejs>=0.10.0', 'npm')
+depends=('nodejs>=4.0.0', 'npm')
 makedepends=('git')
 options=('emptydirs' '!strip')
-install=('kiwiirc.install')
+install='kiwiirc.install'
 backup=('etc/kiwiirc/config.js')
 source=(https://github.com/prawnsalad/KiwiIRC/archive/v$pkgver.tar.gz
     'kiwi.patch'
-    'kiwi.patch.2'
     'kiwiirc.service'
     'kiwiirc.conf.sysusers'
     'kiwiirc.conf.tmpfiles')
-md5sums=('d0c34961067b41da944fa0dae2db283d'
-         '88e6837254d192eb300a3974eeb5d588'
-         '7da1e40fdaa46d73f9deaecfeef26068'
+md5sums=('1a06e33088ca6ed89f857f7687470761'
+         '14a75cab7c10f2dd17856ab5a99d3bfc'
          'bcb28ddb7f0bcc3be830b8045969eb2c'
          '593da856bcf9036bc51380b74d9df394'
          '803080337de27be8921edd76f15c763c')
@@ -29,8 +27,7 @@ build() {
     cp kiwiirc.conf.sysusers "$srcdir/KiwiIRC-$pkgver/"
     cp kiwiirc.conf.tmpfiles "$srcdir/KiwiIRC-$pkgver/"
     cd "$srcdir/KiwiIRC-$pkgver"
-    patch -p1 -l < ../kiwi.patch
-    patch -p1 -l < ../kiwi.patch.2
+    git apply --whitespace=fix ../kiwi.patch
     npm -q install
     npm -q dedupe
 }
