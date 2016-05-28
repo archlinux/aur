@@ -2,7 +2,7 @@
 # Contributor: Eric Bélanger <eric@archlinux.org> ([extra] package)
 
 pkgname=putty-git
-pkgver=0.63.r301.g35fde00
+pkgver=0.63.r847.g5da8ec5
 pkgrel=1
 pkgdesc="A terminal integrated SSH/Telnet client - git checkout"
 arch=('i686' 'x86_64')
@@ -19,9 +19,14 @@ pkgver() {
 	cd putty/
 
 	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
+		printf '%s.r%s.g%s' \
+			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
+			"$(git rev-list --count ${GITTAG}..)" \
+			"$(git log -1 --format='%h')"
 	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+		printf '0.r%s.g%s' \
+			"$(git rev-list --count master)" \
+			"$(git log -1 --format='%h')"
 	fi
 }
 
