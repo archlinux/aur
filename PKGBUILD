@@ -10,7 +10,7 @@ depends=('systemd' 'dropbear')
 makedepends=('git')
 install='INSTALL.sh'
 url="https://github.com/random-archer/${pkgname}"
-source=("https://github.com/random-archer/${pkgname}.git")
+source=("git+https://github.com/random-archer/${pkgname}.git")
 md5sums=('SKIP')
 backup=(
     'etc/mkinitcpio.d/crypttab'
