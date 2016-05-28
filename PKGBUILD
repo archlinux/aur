@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=wine-staging-git
-pkgver=1.9.7.r29.g141fc08+wine.1.9.7.r195.g944190b
+pkgver=1.9.10.r5.g5d32e6f+wine.1.9.10.r163.ge36a7e5
 pkgrel=1
 pkgdesc="A compatibility layer for running Windows programs (staging branch, Git version)"
 arch=('i686' 'x86_64')
@@ -75,7 +75,6 @@ optdepends=(
   'dosbox'                'oss'
 )
 options=('staticlibs')
-install="$pkgname".install
 source=(wine-git::'git://source.winehq.org/git/wine.git'
         "$pkgname"::'git+https://github.com/wine-compholio/wine-staging.git'
         '30-win32-aliases.conf')
