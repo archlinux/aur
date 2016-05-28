@@ -1,0 +1,13 @@
+pkgbase = osx-arc-white
+	pkgdesc = OSX-Arc-White Theme for GTK 3.x
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://gnome-look.org/content/show.php/OSX-Arc-White?content=175666
+	arch = any
+	makedepends = unzip
+	depends = gtk3
+	source = http://gnome-look.org/CONTENT/content-files/175666-OSX-Arc-White.zip
+	md5sums = 4b83bbd8d1b7302af80feedbcd9f28a4
+
+pkgname = osx-arc-white
+
