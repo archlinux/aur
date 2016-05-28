@@ -7,7 +7,7 @@ pkgdesc='simpler and faster vim motions'
 arch=('any')
 url="http://www.vim.org/scripts/script.php?script_id=3526"
 license=('unknown')
-depends=('vim-runtime' 'vim-vital-git')
+depends=('vim-runtime')
 groups=('vim-plugins')
 install=vimdoc.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/easymotion/${pkgname}/archive/v${pkgver}.tar.gz")
