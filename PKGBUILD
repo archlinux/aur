@@ -4,11 +4,11 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 
 pkgname=zeromq-git
-pkgver=20160505
+pkgver=20160528
 pkgrel=1
 pkgdesc="ZeroMQ core engine in C++"
 arch=('i686' 'x86_64')
-depends=('gcc-libs' 'libpgm' 'libsodium')
+depends=('gcc-libs' 'libpgm')
 makedepends=('autoconf' 'automake' 'gcc' 'git' 'libtool' 'make' 'pkg-config')
 url="https://github.com/zeromq/libzmq"
 license=('LGPL3')
@@ -37,9 +37,11 @@ build() {
     --sysconfdir=/etc \
     --sharedstatedir=/usr/share/zeromq \
     --localstatedir=/var/lib/zeromq \
+    --disable-perf \
+    --enable-static \
     --with-gnu-ld \
     --with-pgm \
-    --with-libsodium
+    --without-docs
   make
 }
 
@@ -47,7 +49,7 @@ package() {
   cd ${pkgname%-git}
 
   msg2 'Installing license...'
-  install -Dm 644 "COPYING"{,.LESSER} -t "$pkgdir/usr/share/licenses/zeromq"
+  install -Dm 644 COPYING* -t "$pkgdir/usr/share/licenses/zeromq"
 
   msg2 'Installing...'
   make DESTDIR="$pkgdir" install
