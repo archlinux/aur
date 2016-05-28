@@ -2,8 +2,8 @@
 # Contributor: Sven Schneider <archlinux.sandmann@googlemail.com>
  
 pkgname=leocad
-pkgver=0.82.2
-_piecesver=9088
+pkgver=0.83
+_piecesver=9306
 pkgrel=1
 pkgdesc="LeoCAD is a CAD program for creating virtual LEGO models. It 
 has an easy to use interface and currently includes over 6000 different 
@@ -11,13 +11,13 @@ pieces created by the LDraw community."
 arch=('i686' 'x86_64')
 url="http://leocad.org"
 license=('GPL')
-makedepends=('qtchooser')
+makedepends=('qtchooser' 'subversion')
 depends=('zlib' 'libjpeg' 'libpng' 'gtk2' 'mesa')
-source=(https://github.com/tozian/leocad-arch/raw/master/source/LeoCAD-Source-${pkgver}.tgz
+source=(${pkgname}::svn+http://svn.leocad.org/tags/leocad-$pkgver
 http://github.com/tozian/leocad-arch/raw/master/source/Library-Linux-${_piecesver}.zip
 leocad.sh)
-md5sums=('dbc6ff61fb687e67cc38d26d453d5fdb'
-'e9e2456992ab5f98fa276206172ca31d'
+md5sums=('SKIP'
+'e3268cf8fbe50b6abd2c4bf31247ab83'
 'cbe0189f828a7cf6a42754352a72eeac')
  
 build() {
