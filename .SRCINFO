@@ -1,0 +1,18 @@
+pkgbase = labpowerqt
+	pkgdesc = LabPowerQt is a GUI application written in C++/Qt to control lab power supplies
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/crapp/labpowerqt
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake>=3.1
+	depends = gcc
+	depends = qt5-base
+	depends = qt5-serialport
+	depends = ealogger>=0.8.1
+	source = https://github.com/crapp/labpowerqt/archive/v0.1.1.tar.gz
+	md5sums = ee23d7fa84de15d57556938ac4a08cec
+
+pkgname = labpowerqt
+
