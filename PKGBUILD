@@ -14,8 +14,10 @@ depends=('glibc' 'ncurses')
 makedepends=('git')
 conflicts=('readline')
 provides=("readline=$pkgver")
-source=(inputrc)
-md5sums=('58d54966c1191db45973cb3191ac621a')
+source=(inputrc
+        abi-compat.patch)
+md5sums=('58d54966c1191db45973cb3191ac621a'
+         '2188f237b08663ca579a4cbe68bb09ba')
 
 build() {
     branch="readline-7.0-testing"
