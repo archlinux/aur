@@ -1,7 +1,7 @@
 # Maintainer: Ainola
 
 pkgname=gog-terraria
-pkgver=2.0.0.3
+pkgver=2.1.0.4
 pkgrel=1
 pkgdesc="The very world is at your fingertips as you fight for survival, fortune, and glory."
 url="http://terraria.org/"
@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 depends=('sdl2')
 source=("gog://${pkgname//-/_}_${pkgver}.sh"
         "${pkgname}.desktop")
-sha256sums=('b2e895c6b60242f98455fefc243683d4e61b758e27469409210df3ecabe7c8e7'
+sha256sums=('76a9eae8ff56eb513ba6b0c66254a7dd5b81866e363c34e2240e5e56911f9fd6'
             '815bf359c2828cdefee1e33a978a84a2ebb538450197a5792b62e382ae3e3093')
 
 # You need to download the gog.com installer file manually or with lgogdownloader.
@@ -26,18 +26,11 @@ prepare(){
     unzip -d "${srcdir}/terraria" "${pkgname//-/_}_${pkgver}.sh" || :
     cd "${srcdir}/terraria/data/noarch"
 
-    # We must `cd` to the install dir before launching since the /usr/bin/
-    # launcher is merely a link. It expects a certain folder structure.
-#    sed -r -i \
-#        's/(declare -r CURRENT_DIR="\$\( cd "\$\( dirname )'`
-#          `'"\$\{BASH_SOURCE\[0\]\}"(.*$)'`
-#          `'/\1$( readlink -nf "${BASH_SOURCE[0]}" )\2/' \
-#        "start.sh"
     sed -r -i \
-        's/(CURRENT_DIR="\$\( cd "\$\( dirname )'`
-          `'"\$\{BASH_SOURCE\[0\]\}"(.*$)'`
-          `'/\1$( readlink -nf "${BASH_SOURCE[0]}" )\2/' \
-        "start.sh"
+    's/(CURRENT_DIR="\$\( cd "\$\( dirname )'`
+      `'"\$\{BASH_SOURCE\[0\]\}"(.*$)'`
+      `'/\1$( readlink -nf "${BASH_SOURCE[0]}" )\2/' \
+    "start.sh"
 }
 
 package(){
