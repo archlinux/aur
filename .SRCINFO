@@ -1,0 +1,22 @@
+pkgbase = python2-backports.unittest_mock
+	pkgdesc = The mock module on Python 3.2 and earlier.
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/backports.unittest_mock
+	arch = any
+	license = MIT
+	makedepends = python2-setuptools
+	makedepends = python2-setuptools-scm
+	makedepends = python2-pytest
+	makedepends = python2-pytest-runner
+	makedepends = python2-wheel
+	makedepends = python2-sphinx
+	depends = python2
+	depends = python2-backports
+	depends = python2-mock
+	options = !emptydirs
+	source = https://pypi.python.org/packages/source/b/backports.unittest_mock/backports.unittest_mock-1.1.1.tar.gz
+	md5sums = 6ee907f7d8e35df16a06268e65d28e5f
+
+pkgname = python2-backports.unittest_mock
+
