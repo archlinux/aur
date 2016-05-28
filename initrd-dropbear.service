@@ -17,7 +17,7 @@ Requires=initrd-network.service
 
 
 [Service]
-Type=forking
+#Type=forking
 Environment=IDLE_TIME=300
 # dropbear options:
 # -s     Disable password logins.
@@ -26,9 +26,9 @@ Environment=IDLE_TIME=300
 # -m     Don't display the message of the day.
 # -F     Don't fork into background.
 # -I     Disconnect after idle timeout (seconds).
-ExecStart=/bin/dropbear -s -j -k -m -I ${IDLE_TIME}
-#ExecReload=/bin/kill -HUP ${MAINPID}
-
+ExecStart=/bin/dropbear -s -j -k -m -F -I ${IDLE_TIME}
+# dropbear reports 1 when exiting on SIGTERM
+SuccessExitStatus= 0 1
 Restart=always
 RestartSec=1s
 
