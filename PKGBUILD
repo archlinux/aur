@@ -7,7 +7,7 @@
 
 pkgname=nginx-pam
 _pkgname=nginx
-pkgver=1.8.1
+pkgver=1.10.0
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server with added pam directives'
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ source=(https://github.com/stogh/ngx_http_auth_pam_module/archive/v1.4.tar.gz
         service
         logrotate)
 md5sums=('a5c0fb3af7158297c1457739947b9b0c'
-         '2e91695074dbdfbf1bcec0ada9fda462'
+         'c184c873d2798c5ba92be95ed1209c02'
          'SKIP'
          '80cc5f267dfc737484f653d8b48ac6cd'
          '4ddf076f128cd1738e0c0bba493903bb')
@@ -57,8 +57,6 @@ build() {
     --http-fastcgi-temp-path=/var/lib/nginx/fastcgi \
     --http-scgi-temp-path=/var/lib/nginx/scgi \
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
-    --with-imap \
-    --with-imap_ssl_module \
     --with-ipv6 \
     --with-pcre-jit \
     --with-file-aio \
@@ -73,10 +71,15 @@ build() {
     --with-http_mp4_module \
     --with-http_realip_module \
     --with-http_secure_link_module \
-    --with-http_spdy_module \
     --with-http_ssl_module \
     --with-http_stub_status_module \
     --with-http_sub_module \
+    --with-http_v2_module \
+    --with-mail \
+    --with-mail_ssl_module \
+    --with-stream \
+    --with-stream_ssl_module \
+    --with-threads \
     --add-module=${srcdir}/ngx_http_auth_pam_module-1.4 \
 
   make
