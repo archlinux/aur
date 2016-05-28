@@ -1,4 +1,5 @@
 # Maintainer: Mohamar Rios <mohamar.rios@gmail.com>
+
 _pkgname=cashew
 pkgname=python2-${_pkgname}
 pkgver=0.2.7
