@@ -23,6 +23,10 @@ pkgver() {
   printf "%s.r%s" "$(echo $_mainver)" "$(git rev-list --count HEAD)"
 }
 
+prepare() {
+  sed -i 's+SYSTEM_PURESIZE_EXTRA 0+SYSTEM_PURESIZE_EXTRA 512000+' emacs/src/puresize.h
+}
+
 build() {
   cd "$srcdir/emacs"
   ./autogen.sh                                                            
