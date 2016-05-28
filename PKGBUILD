@@ -2,8 +2,8 @@
 # vim:set ts=2 sw=2 et:
 pkgname=fry-git
 _gitname=fry
-pkgver=20140701
-pkgrel=2
+pkgver=20160527
+pkgrel=1
 pkgdesc="A simple ruby version manager for fish"
 url="https://github.com/terlar/fry"
 arch=('any')
@@ -12,7 +12,6 @@ depends=('fish')
 makedepends=('git')
 provides=('fry')
 conflicts=('fry')
-install=${pkgname}.install
 source=("git+https://github.com/terlar/${_gitname}.git")
 md5sums=('SKIP')
 
@@ -23,7 +22,9 @@ pkgver() {
 
 package() {
   cd $_gitname
-  mv share/fry share/fish
+  mkdir -p "${pkgdir}/usr/share/fish/vendor_conf.d" \
+           "${pkgdir}/usr/share/fish/vendor_completions.d" \
+           "${pkgdir}/usr/share/fish/vendor_functions.d"
   make PREFIX="$pkgdir/usr" install
   install -D LICENSE.txt $pkgdir/usr/share/licenses/$_gitname/LICENSE
 }
