@@ -1,4 +1,5 @@
 # Maintainer: Mohamar Rios <mohamar.rios@gmail.com>
+
 _pkgname=dexy-viewer
 _pypiname=dexy_viewer
 pkgname=python2-${_pkgname}
