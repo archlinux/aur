@@ -3,16 +3,15 @@
 # Contributor: Matthew Bentley <matthew@mtbentley.us>
 
 pkgname=godot
-pkgver=2.0.2
-pkgrel=1
+pkgver=2.0.3
+pkgrel=3
 pkgdesc="An advanced, feature packed, multi-platform 2D and 3D game engine"
 url="http://www.godotengine.org"
 license=('MIT')
 arch=('i686' 'x86_64')
-makedepends=('scons' 'pulseaudio')
-depends=('glu' 'libxcursor' 'libxinerama' 'alsa-lib' 'freetype2' 'mesa')
-optdepends=()
-conflicts=("godot-git")
+makedepends=('scons' 'clang')
+depends=('libxcursor' 'glu' 'libxinerama' 'freetype2' 'alsa-lib')
+conflicts=("godot-git" "godot-pulse")
 _arch=''
 if test "$CARCH" == x86_64; then
     _arch=('64')
@@ -25,7 +24,7 @@ source=(
   godot.desktop
   icon.png
 )
-md5sums=('7a7ef730a1083518a04bb9ac746c0a19'
+md5sums=('7206db8cfb320f379b1e1bcd41eadb31'
          'dca7c5c5682bdc8cc83386034e0d7d07'
          'f756e85756a9cbc06a328414abf74585')
 
@@ -34,7 +33,16 @@ build() {
 
   sed -n '/\/* Copyright/,/IN THE SOFTWARE./p' main/main.cpp | sed 's/\/\*//' | sed 's/\*\///' > LICENSE
 
-  scons platform=x11 tools=yes target=release_debug bits=${_arch}
+  scons platform=x11 \
+        tools=yes \
+        target=release_debug \
+        use_llvm=yes \
+        use_sanitizer=yes \
+        use_leak_sanitizer=yes \
+        builtin_zlib=yes \
+        openssl=yes \
+        colored=yes \
+        pulseaudio=no bits=${_arch}
 }
 
 package() {
@@ -46,6 +54,6 @@ package() {
     
   cd "${srcdir}"/${pkgname}-${pkgver}-stable
 
-  install -D -m755 bin/godot.x11.opt.tools.${_arch} "${pkgdir}"/usr/bin/godot
+  install -D -m755 bin/godot.x11.opt.tools.${_arch}.llvmss "${pkgdir}"/usr/bin/godot
   install -D -m644 LICENSE "${pkgdir}"/usr/share/licenses/godot/LICENSE
 }
