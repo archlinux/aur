@@ -3,7 +3,7 @@
 # Contributor: David Gippner davidgippner at googlemail dot com
 pkgbase=gregorio
 pkgname=$pkgbase
-pkgver=4.1.1
+pkgver=4.1.3
 pkgrel=1
 pkgdesc="Command-line tool to typeset Gregorian chant"
 url=http://gregorio-project.github.io
@@ -14,7 +14,7 @@ conflicts=("gregorio-svn" "gregorio-git" "gregoriotex")
 provides=("gregorio")
 install=gregorio.install
 source=("https://github.com/gregorio-project/gregorio/releases/download/v$pkgver/gregorio-$pkgver.tar.bz2")
-sha256sums=("2bc6eadd8faa72622488d3d81c30856b84cd6dbc5382ca6c98611fc732e330b7")
+sha256sums=("f5165b2262e5525bf1ca12dc438117553b153ebe5a6baa1cc00026aa3dee11ed")
 
 
 prepare() {
