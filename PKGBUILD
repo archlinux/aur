@@ -2,7 +2,7 @@
 
 _gemname=fpm
 pkgname=$_gemname
-pkgver=1.4.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc='Effing package management! Build packages for multiple platforms (deb, rpm, etc) with great ease and sanity.'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-cabin ruby-backports ruby-arr-pm ruby-clamp
          ruby-childprocess)
 options=(!emptydirs)
 source=("https://github.com/jordansissel/fpm/archive/v${pkgver}.tar.gz")
-sha256sums=('e17ff7dabcc381945d4c697435cd2a3ea24d456b027f6b3321f09f2b3e94575b')
+sha256sums=('6dccbb81859566ee32d6898ed9116f09408d1e63867828ad59d2171f067564dc')
 
 build() {
   cd $srcdir/$_gemname-$pkgver
