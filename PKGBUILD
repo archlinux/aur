@@ -4,7 +4,7 @@
 pkgname=gogs
 _pkgname=${pkgname}
 pkgver=0.9.13
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Gogs(Go Git Service) is a Self Hosted Git Service in the Go Programming Language."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -33,11 +33,11 @@ install=gogs.install
 _gourl=github.com/gogits/$_pkgname
 source=('gogs.service.patch'
         'app.ini.patch'
-        "$_pkgname::git+https://${_gourl}.git#tag=v${pkgver}")
+        "$_pkgname::https://${_gourl}/archive/v${pkgver}.tar.gz")
 
 sha512sums=(834e95fe9bcfa291a573ad1fa43f41bbed844658a918ff4fcf53ab8a44a296206ee4003eab1d9a2785c9126be077022f4907846d2eb6c5d64050b5e81ce47f44
             77589148ac4afe09bb1b3f70491fa3b1838299f02216b2a24598f0f468356b2cfbaae397cc693e93f406e1c537d5ae24bc51530d9826879d201b72b19bee376c
-            'SKIP')
+            9639a7777323acd41bc647c55fd478abb48890e2770177dc2f70d94b0129267f6d7738f4fd8aa7deed3d9723a3fd464ef2afd8b85cfc4cf4a6f493aa9e70b431)
 
 _goroot="/usr/lib/go"
 
@@ -66,7 +66,7 @@ prepare() {
   
   mkdir -p "$GOPATH/src/github.com/gogits"
 
-  mv "$srcdir/$_pkgname" $GOPATH/src/${_gourl}
+  mv "$srcdir/$_pkgname-${pkgver}" $GOPATH/src/${_gourl}
 
   # Glide
   msg2 "Download dependencies via Glide"
