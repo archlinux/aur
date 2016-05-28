@@ -180,7 +180,7 @@ echo "\n* Downloading script marionnet_from_scratch : "
 wget http://www.marionnet.org/downloads/marionnet_from_scratch/marionnet_from_scratch
 echo "* Downlading and installing Marionnet kernels and filesystems (Linux \
 distributions Debian Lenny, Mandriva, Pinocchio, etc.)"
-echo -e "Warning! this process may take several hours!"
+echo -e "* Warning! this process may take several hours!"
 echo -e "* Command : \`./marionnet_from_scratch --download-only \
 --prefix /opt/marionnet\`"
 chmod +x ./marionnet_from_scratch
@@ -198,7 +198,7 @@ echo -e "* Uninstallation process completed\n\n"
 
 echo -e "Post remove hook"
 echo -e "——————————————————————\n"
-echo "* Remove Marionnet kernels..."
+echo "* Erasing Marionnet kernels files..."
     rm -Rf /usr/share/marionnet
 echo "Success."
 }
