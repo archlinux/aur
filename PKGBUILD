@@ -2,14 +2,13 @@
 # Contributor: Atterratio <atterratio@gmail.com>
 
 pkgname=q4wine-git
-pkgver=v1.2.r1.3.g730d5c3
+pkgver=v1.3.9.g2b5cfeb
 pkgrel=1
 pkgdesc="A Qt GUI for Wine. (GIT Version)"
 arch=('i686' 'x86_64')
 url='http://sourceforge.net/projects/q4wine'
 license=('GPL3')
-depends=('qt5-base'
-         'qt-solutions-git'
+depends=('qt-solutions-git'
          'icoutils'
          'wine'
          'which'
@@ -28,7 +27,6 @@ conflicts=('q4wine')
 provides=('q4wine')
 source=('git://github.com/brezerk/q4wine.git')
 sha1sums=('SKIP')
-install=q4wine-git.install
 
 pkgver() {
   cd q4wine
@@ -44,7 +42,7 @@ build() {
   cmake ../q4wine \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
-    -DLIBS_ENTRY_PATH=/usr/lib/q4wine\
+    -DLIBS_ENTRY_PATH=/usr/lib \
     -DQT5=ON \
     -DWITH_SYSTEM_SINGLEAPP=ON
   make
