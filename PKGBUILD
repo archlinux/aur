@@ -1,8 +1,9 @@
-# Maintainer: josephgbr <rafael.f.f1@gmail.com>
+# Maintainer: rafaelff <rafaelff@gnome.org>
+
 _pkgbase=lzo
 pkgname=lib32-$_pkgbase
 pkgver=2.09
-pkgrel=1
+pkgrel=2
 pkgdesc="Portable lossless data compression library (32 bit)"
 arch=('x86_64')
 url="http://www.oberhumer.com/opensource/lzo"
@@ -22,8 +23,8 @@ build() {
   make
 
   # build minilzo
-  gcc $CFLAGS -fpic -Iinclude/lzo -o minilzo/minilzo.o -c minilzo/minilzo.c
-  gcc $LDFLAGS -g -shared -o libminilzo.so.0 -Wl,-soname,libminilzo.so.0 minilzo/minilzo.o
+  $CC $CFLAGS -fpic -Iinclude/lzo -o minilzo/minilzo.o -c minilzo/minilzo.c
+  $CC $LDFLAGS -g -shared -o libminilzo.so.0 -Wl,-soname,libminilzo.so.0 minilzo/minilzo.o
 }
 
 check() {
