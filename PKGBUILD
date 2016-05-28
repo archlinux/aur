@@ -8,9 +8,10 @@ arch=('i686' 'x86_64')
 url='https://github.com/OpenRCT2/OpenRCT2'
 license=('GPL3')
 depends_i686=('sdl2' 'sdl2_ttf' 'curl' 'jansson' 'speexdsp' 'fontconfig'
-              'libpng')
+              'libpng' 'openssl')
 depends_x86_64=('lib32-sdl2' 'lib32-sdl2_ttf' 'lib32-curl' 'lib32-jansson'
-                'lib32-speexdsp' 'lib32-fontconfig' 'lib32-libpng')
+                'lib32-speexdsp' 'lib32-fontconfig' 'lib32-libpng'
+                'lib32-openssl')
 makedepends=('git' 'cmake')
 makedepends_x86_64=('gcc-multilib')
 conflicts=('openrct2')
