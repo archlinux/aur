@@ -8,7 +8,7 @@
 
 pkgname=lib32-freeimage
 pkgver=3.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Library project for developers who would like to support popular graphics image formats"
 arch=('x86_64')
 license=('GPL' 'custom:FIPL')
@@ -29,7 +29,7 @@ prepare()
 build()
 {
   export CC="gcc -march=i686 -m32"
-  export CXX="g++ -march=i686 -m32"
+  export CXX="g++ -march=i686 -m32 -std=c++98"
   export CFLAGS="${CFLAGS/-march=x86-64} -O3 -fPIC -fvisibility=hidden -DNO_LCMS"
   export CXXFLAGS="${CXXFLAGS/-march=x86-64} -O3 -fPIC -fvisibility=hidden"
 
