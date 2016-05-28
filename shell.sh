@@ -96,7 +96,7 @@ list_size() {
 
 convert_ask_file() {
     local file="$1" text=
-    text=$(cat $file | grep -v -F '[Ask]' | sed -r -e 's%([^=]+)=([^=]+)%\1="\2"%' -e 's% %-%g')
+    text=$(cat $file | grep -v -F '[Ask]' | sed -r -e 's%([^=]+)=([^=]+)%\1=\2%' -e 's%[ ()!]%-%g')
     echo "$text" # flatten
 }
 
