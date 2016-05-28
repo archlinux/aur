@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-node-git
-pkgver=20160501
+pkgver=20160528
 pkgrel=1
 pkgdesc="Bitcoin Full Node Library"
 arch=('i686' 'x86_64')
