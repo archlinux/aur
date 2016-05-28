@@ -2,11 +2,11 @@
 # Contributor: Brian Knox <taotetek at gmail.com>
 
 pkgname=czmq-git
-pkgver=20160505
+pkgver=20160524
 pkgrel=1
 pkgdesc="High-level C binding for ZeroMQ"
 arch=('i686' 'x86_64')
-depends=('gcc-libs' 'libsodium' 'zeromq')
+depends=('gcc-libs' 'zeromq')
 makedepends=('autoconf' 'automake' 'gcc' 'git' 'libtool' 'make' 'pkg-config')
 url="https://github.com/zeromq/czmq"
 license=('MPL')
@@ -32,6 +32,8 @@ build() {
     --sysconfdir=/etc \
     --sharedstatedir=/usr/share/czmq \
     --localstatedir=/var/lib/czmq \
+    --disable-czmq_selftest \
+    --disable-zmakecert \
     --with-gnu-ld
   make
 }
