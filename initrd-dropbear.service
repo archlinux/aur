@@ -8,7 +8,7 @@ Description=Dropbear SSH Server (initrd)
 Documentation=https://aur.archlinux.org/cgit/aur.git/tree/README.md?h=mkinitcpio-systemd-tool
 ConditionPathExists=/etc/initrd-release
 DefaultDependencies=no
-Conflicts=shutdown.target
+#Conflicts=shutdown.target
 After=initrd-network.service
 Before=shutdown.target
 Before=cryptsetup-pre.target

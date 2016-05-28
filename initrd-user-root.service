@@ -8,7 +8,7 @@ Description=User Root (initrd)
 Documentation=https://aur.archlinux.org/cgit/aur.git/tree/README.md?h=mkinitcpio-systemd-tool
 ConditionPathExists=/etc/initrd-release
 DefaultDependencies=no
-Conflicts=shutdown.target
+#Conflicts=shutdown.target
 Before=shutdown.target
 Before=initrd-cryptsetup.service
 Before=initrd-dropbear.service
