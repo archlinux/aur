@@ -4,6 +4,7 @@
 
 # user root login shell program:
 # * expects invocation as default shell ~/.profile
+# * must use only capabilities of busybox 
 # * implements password query/reply:
 #   https://www.freedesktop.org/wiki/Software/systemd/PasswordAgents/
 #   https://www.freedesktop.org/software/systemd/man/systemd-ask-password.html
@@ -20,7 +21,7 @@ is_entry_console() {
 
 # verify if shell started form console debug shell
 is_debug_shell() {
-    ! is_entry_service && ! is_ssh_connect
+    ! is_entry_service && ! is_ssh_session
 }
 
 # verify if shell started form some debug tool
@@ -34,7 +35,7 @@ is_interactive_shell() {
 }
 
 # verify if this is a remote session shell
-is_ssh_connect() {
+is_ssh_session() {
     [ -n "$SSH_CONNECTION" ]
 }
 
@@ -44,7 +45,7 @@ is_pid_present() {
 }
 
 # verify if there are any crypto requests
-is_ask_pending() {
+has_ask_files() {
     [ -n "$(list_ask_files)" ]
 }
 
@@ -53,15 +54,7 @@ has_crypt_jobs() {
     $systemd_ctl list-jobs | grep -i -q 'cryptsetup'
 }
 
-# verify if any files on the list are still present
-has_any_file() {
-    local file_list="$1" file=
-    for file in $file_list ; do
-        [ -e "$file" ] && return 0
-    done
-    return 1
-}
-
+# print empty line
 print_eol() {
    printf "\n"
 }
@@ -72,21 +65,24 @@ log_log() {
     [[ "$script_verbose" == *"info"* ]] && [[ "$mode" == *"info"* ]] && echo "$text"
     [[ "$script_verbose" == *"warn"* ]] && [[ "$mode" == *"warn"* ]] && echo "$text"
     [[ "$script_verbose" == *"err"*  ]] && [[ "$mode" == *"err"*  ]] && echo "$text"
-    if is_ssh_connect ; then session="ssh" ; else session="loc" ; fi
+    if is_ssh_session ; then session="ssh" ; else session="loc" ; fi
     text="$script_entry/$session $text"
     echo "$text" | $systemd_cat --priority="$mode" --identifier="shell"
 }
 
+# log at detail level "information"
 log_info() {
-    local code="$?" text="$1" ; log_log "info"     "info : $text" ;
+    local text="$1" ; log_log "info"     "info : $text" ;
 }
 
+# log at detail level "warning"
 log_warn() {
-    local code="$?" text="$1" ; log_log "warning"  "warn : $text" ;
+    local text="$1" ; log_log "warning"  "warn : $text" ;
 }
 
+# log at detail level "error"
 log_error() {
-    local code="$?" text="$1" ; log_log "err"      "error: $text" ;
+    local text="$1" ; log_log "err"      "error: $text" ;
 }
 
 # list current crypto question files
@@ -94,124 +90,97 @@ list_ask_files() {
     grep -i -l 'cryptsetup' $watch_folder/ask.* 2>/dev/null
 }
 
+# size of space separated list
 list_size() {
     local list="$1" ; echo "$list" | wc -w
 }
 
+# parse and clean ask password request file
 convert_ask_file() {
     local file="$1" text=
     text=$(cat $file | grep -v -F '[Ask]' | sed -r -e 's%([^=]+)=([^=]+)%\1=\2%' -e 's%[ ()!]%-%g')
     echo "$text" # flatten
 }
 
+# read named field from ask password request text
 extract_ask_field() {
     local text="$1" name="$2" 
     local $text # inject
     eval echo \${$name} # extract
 }
 
-# read a portion of latest console output
-read_console() {
-    tail -c 256 "/dev/vcs"
-}
-
 # remove any pending content from the console input 
-flush_stdin() { 
+clear_console_input() { 
     read -r -s -n 10000000 -t 1
 }
 
-# ensure console is no longer changing
-await_console() {
-    local count=1 text1= text2=
+# invoke operation within a timeout
+await_command() {
+    local command="$@" count=1
     while true ; do
-        text1=$(read_console)
-        sleep "$sleep_delay"
-        text2=$(read_console)
-        if [ "$text1" = "$text2" ] ; then
-            return 0
-        fi
-        let count+=1
-        if [ "$count" -gt "$sleep_count" ] ; then
-            return 1
-        fi
+        $command && return 0
+        sleep $sleep_delay ; let count+=1
+        [ "$count" -gt "$sleep_count" ] && return 1
     done
 }
 
-# ensure pending crypto jobs posted questions (ask files are present) 
-await_request() {
-    local count=1
-    while ! is_ask_pending ; do
-        sleep "$sleep_delay"
-        let count+=1
-        if [ "$count" -gt "$sleep_count" ] ; then
-            return 1
-        fi
-    done
-    return 0
+# get a portion of current console output
+read_console_tail() {
+    tail -c 256 "/dev/vcs"
 }
 
-# ensure crypto jobs removed questions (after message receipt) 
-await_received() {
-    local socket="$1"
-    while  [ -e "$socket" ] ; do
-        sleep "$sleep_delay"
-        let count+=1
-        if [ "$count" -gt "$sleep_count" ] ; then
-            return 1
-        fi
-    done
-    return 0
+# verify if console is changing
+is_console_stable() {
+    local text1= text2=
+    text1=$(read_console_tail)
+    sleep "$sleep_delay"
+    text2=$(read_console_tail)
+    [ "$text1" = "$text2" ]
 }
 
-# ensure crypt jobs are gone (secret was correct)
-await_validated() {
-    local count=1
-    while has_crypt_jobs ; do
-        sleep "$sleep_delay"
-        let count+=1
-        if [ "$count" -gt "$sleep_count" ] ; then
-            return 1
-        fi
-    done
-    return 0
+# ensure console is no longer changing
+await_console_stable() {
+    await_command is_console_stable
+}
+
+# ensure crypto jobs posted questions (ask files are present) 
+await_request_present() {
+    await_command has_ask_files
+}
+
+# ensure secret was correct (crypto jobs are gone)
+await_secret_validated() {
+    await_command [ ! has_crypt_jobs ]
 }
 
 # query password from the console
-run_query() {
+run_secret_query() {
     $systemd_query --timeout=$query_timeout "$query_prompt"
 }
 
 # reply password to the requester
-run_reply() {
+run_secret_reply() {
     local secret="$1" socket="$2"
     echo "$secret" | $systemd_reply "1" "$socket"
 }
 
-# ask user for password once and answer to all requests
-run_answer() {
-    local socket_list="$1" socket= secret= 
-    secret=$(run_query) || return 1
-    for socket in $socket_list ; do
-        run_reply "$secret" "$socket" || return 2
-    done
-}
-
 # crypto secret default logic: implement custom password agent
 do_crypt() {
-    local request_list= request= size= result= 
-    local text= secret= pid= id= socket= message= signature=
-    local count=1
+    local secret= request_list= request_size= request=  
+    local text= pid= id= socket= message= signature= result=
+    local count=1 error=$(mktemp)
     while true ; do
         log_info "custom agent try #$count" ; let count+=1 ;
-        await_request || { log_warn "missing request 1" ; return 0 ; }
-        await_console || { log_warn "volatile console" ; }
-        flush_stdin
-        log_info "query start"
-        secret=$(run_query) || { log_error "query failure" ; return 1 ; }
-        log_info "query finish"
-        await_request || { log_warn "missing request 2" ; return 0 ; }
-        request_list=$(list_ask_files) || { log_warn "missing request 3" ; return 0 ; }
-        size=$(list_size "$request_list") ; log_info "request list size $size" ;
+        await_request_present || { log_warn "missing request #1" ; return 0 ; }
+        await_console_stable || { log_warn "volatile console" ; }
+        clear_console_input ;
+        log_info "query start" ;
+        secret=$(run_secret_query 2>$error) || { log_error "query failure [$(cat $error)]" ; return 1 ; }
+        log_info "query finish" ;
+        [ -n "$secret" ] || { log_warn "ignore empty secret" ; continue ; }
+        await_request_present || { log_warn "missing request #2" ; return 0 ; }
+        request_list=$(list_ask_files) ; request_size=$(list_size "$request_list") ; 
+        log_info "request list size $request_size" ;
         for request in $request_list ; do
             [ -e "$request" ] || { log_warn "request removed [$request]" ; continue ; }
             text=$(convert_ask_file "$request") || { log_error "convert failure [$(cat $request)]" ; return 1 ; }
@@ -221,10 +190,10 @@ do_crypt() {
             message=$(extract_ask_field "$text" "Message") || { log_error "extract failure [message]" ; return 1 ; }
             signature="pid=$pid id=$id message=$message"
             [ -e "$socket" ] || { log_warn "socket removed [$signature]" ; continue ; }
-            log_info "reply $signature"
-            result=$(run_reply "$secret" "$socket" 2>&1) || { log_error "reply failure [$signature] [$result]" ; return 1 ; }
+            log_info "reply $signature" ;
+            result=$(run_secret_reply "$secret" "$socket" 2>&1) || { log_error "reply failure [$signature] [$result]" ; return 1 ; }
         done
-        await_validated || { log_warn "invalid secret" ; continue ; }
+        await_secret_validated || { log_warn "invalid secret" ; continue ; }
         return 0
     done
 }
@@ -251,21 +220,31 @@ do_shell() {
 
 # change systemd state
 do_reboot() { 
-    log_info "do reboot"
-    $systemd_ctl reboot 
+    log_info "invoke reboot"
+    $systemd_ctl --no-ask-password reboot 
 }
+
+run_crypt_jobs() {
+    log_info "crypt jobs" 
+    if do_crypt || do_agent ; then
+        log_info "crypt success" 
+        do_exit 0
+    else
+        log_warn "crypt failure" 
+        do_exit 1
+    fi
+} 
 
 # process invocation from tty console or ssh connection
 entry_console() {
     if is_debug_shell ; then
         log_info "debug shell"
-        return 0
+        do_exit 0
     elif is_tool_shell ; then
         log_info "tool shell"
-        return 0
+        do_exit 0
     elif has_crypt_jobs ; then
-        log_info "crypt jobs"
-        do_crypt || do_agent
+        run_crypt_jobs
     else 
         log_info "prompt user"
         do_prompt
@@ -275,14 +254,7 @@ entry_console() {
 # process invocation from systemd unit initrd-cryptsetup.service
 entry_service() {
     if has_crypt_jobs ; then
-        log_info "crypt jobs" 
-        if do_crypt || do_agent ; then
-            log_info "crypt success" 
-            do_exit 0
-        else
-            log_warn "crypt failure" 
-            do_exit 1
-        fi
+        run_crypt_jobs
     else
         log_info "nothing to do" 
         do_exit 0
@@ -293,13 +265,12 @@ entry_service() {
 do_prompt() {
     local choice=
     while true ; do
-        echo
         echo "select:"
         echo "c) crypto secret"
         echo "s) sys shell"
         echo "r) reboot"
         echo "q) quit"
-        read -p ">> " choice
+        read -p "-> " choice
         case "$choice" in
         c) do_crypt ;;
         s) do_shell ;;
@@ -312,11 +283,12 @@ do_prompt() {
 
 # respond to interrupt
 do_trap() {
+    kill $(jobs -p) 
     print_eol
     if is_entry_service ; then
         log_info "interrupt service"
         do_exit 1
-    elif is_ssh_connect ; then
+    elif is_ssh_session ; then
         log_info "interrupt console"
         do_prompt
     else
@@ -352,8 +324,8 @@ setup_defaults() {
     [ -z "$query_timeout" ] && readonly query_timeout=0 # A timeout of 0 waits indefinitely.
             
     # active operation timeout
-    [ -z "$sleep_delay" ] && readonly sleep_delay=0.3
-    [ -z "$sleep_count" ] && readonly sleep_count=20
+    [ -z "$sleep_count" ] && readonly sleep_count=20 # number of delay increments
+    [ -z "$sleep_delay" ] && readonly sleep_delay=0.3 # seconds, incremental timeout
         
     # password inotify watch folder
     [ -z "$watch_folder"] && readonly watch_folder="/run/systemd/ask-password"
@@ -374,13 +346,14 @@ setup_interrupts() {
     #trap trap_SIGTERM SIGTERM
 }
 
-# respond depending on script invocation type [entry=xxx]
+# respond depending on script invocation type [script_entry=xxx]
 process_invocation() {
     log_info "init"
     mkdir -p "$watch_folder" || log_error "can not make $watch_folder"
     case "$script_entry" in
         # development
         exit)     do_exit ;;
+        agent)    do_agent ;;
         crypt)    do_crypt ;;
         shell)    do_shell ;;
         reboot)   do_reboot ;;

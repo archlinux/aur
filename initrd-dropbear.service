@@ -17,14 +17,16 @@ Requires=initrd-network.service
 
 
 [Service]
-
+Environment=IDLE_TIME=300
 # dropbear options:
-# -F     Don't fork into background.
 # -s     Disable password logins.
 # -j     Disable local port forwarding.
 # -k     Disable remote port forwarding.
-ExecStart=/bin/dropbear -F -s -j -k
-#ExecReload=/bin/kill -HUP $MAINPID
+# -m     Don't display the message of the day.
+# -F     Don't fork into background.
+# -I     Disconnect after idle timeout (seconds).
+ExecStart=/bin/dropbear -s -j -k -m -F -I ${IDLE_TIME}
+#ExecReload=/bin/kill -HUP ${MAINPID}
 
 Restart=always
 RestartSec=1s
