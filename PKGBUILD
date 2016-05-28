@@ -1,7 +1,7 @@
 # Contributor: Harold Leboulanger <harold.leboulanger AT gmail DOT com>
 # Maintainer: McNoggins <gagnon88 AT gmail DOT com>
 pkgname=ttwatch-git
-pkgver=20160107
+pkgver=20160527
 pkgrel=1
 pkgdesc="TomTom GPS Watch Utilities"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/ryanbinns/ttwatch"
 license=('MIT')
 groups=()
 depends=('libusb' 'curl')
-makedepends=('git' 'curl' 'libusb' 'openssl')
+makedepends=('git' 'curl' 'libusb' 'openssl' 'cmake')
 source=('ttwatch-git::git+https://github.com/ryanbinns/ttwatch.git'
 	'ttwatch-git.install')
 sha256sums=('SKIP'
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd "$pkgname"
-  ./configure --prefix="$pkgdir/usr"
+  cmake -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr . 
   make
 }
 
