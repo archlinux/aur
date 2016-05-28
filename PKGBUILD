@@ -16,7 +16,7 @@
 
 pkgname=ffmpeg-full-git
 pkgver=N.79791.g03fceb7
-pkgrel=2
+pkgrel=3
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
@@ -102,11 +102,13 @@ build() {
 	        --disable-static \
 	        --enable-shared \
 	        --enable-avresample \
-	        --enable-videotoolbox \
+	        \
+	        $_cuda \
+	        --enable-libmfx \
+	        --enable-nvenc \
 	        \
 	        --enable-avisynth \
 	        --enable-bzlib \
-	        $_cuda \
 	        --enable-chromaprint \
 	        --enable-fontconfig \
 	        --enable-frei0r \
@@ -133,7 +135,6 @@ build() {
 	        --enable-libiec61883 \
 	        --enable-libilbc \
 	        --enable-libkvazaar \
-	        --enable-libmfx \
 	        --enable-libmodplug \
 	        --enable-libmp3lame \
 	        --enable-libnut \
@@ -179,11 +180,11 @@ build() {
 	        --enable-decklink \
 	        --enable-mediacodec \
 	        --enable-netcdf \
-	        --enable-nvenc \
 	        --enable-openal \
 	        --enable-opencl \
 	        --enable-opengl \
 	        --enable-openssl \
+	        --enable-videotoolbox \
 	        --enable-sdl \
 	        --enable-x11grab \
 	        --enable-xlib \
