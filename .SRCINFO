@@ -1,6 +1,6 @@
 pkgbase = fry
 	pkgdesc = A simple ruby version manager for fish
-	pkgver = 0.1.5
+	pkgver = 0.1.6
 	pkgrel = 1
 	url = https://github.com/terlar/fry
 	install = fry.install
@@ -9,8 +9,8 @@ pkgbase = fry
 	depends = fish
 	provides = fry
 	conflicts = fry-git
-	source = https://github.com/terlar/fry/archive/0.1.5.tar.gz
-	sha256sums = 5700e01ff4fe41fcfa307af42e8ec843b4be39adc7c8b227ebc73d372aa05c43
+	source = https://github.com/terlar/fry/archive/v0.1.6.tar.gz
+	sha256sums = 7cca4df6963efbbadbd1711183630404375f7e7b9fc98313632810b61ab1e93f
 
 pkgname = fry
 
