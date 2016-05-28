@@ -1,0 +1,15 @@
+pkgbase = mod_markdown
+	pkgdesc = Markdown filter module for Apache HTTPD Server
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/hamano/apache-mod-markdown
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	depends = apache
+	depends = discount
+	source = https://github.com/hamano/apache-mod-markdown/archive/1.0.3.tar.gz
+	sha256sums = 62111266af0a1ee5ea7e595caf94ea33d1459d633ae0e063edc173fae243810f
+
+pkgname = mod_markdown
+
