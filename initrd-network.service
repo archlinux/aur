@@ -22,7 +22,7 @@ RemainAfterExit=true
 ExecStart=/bin/true
 
 # release network devices to allow interface rename after switch-root
-ExecStop=/bin/sh -c "echo 'release network devices'"
+ExecStop=/bin/sh -c "echo 'initrd-network.service: release network devices'"
 
 # works with extra dependency: "/bin/ip" from package iproute2
 #ExecStop=/bin/ip addr flush up
