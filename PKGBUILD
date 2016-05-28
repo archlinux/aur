@@ -1,5 +1,5 @@
 pkgname=starcheat
-pkgver=0.27
+pkgver=0.27.1
 pkgrel=1
 pkgdesc="Starbound player save editor and Python library"
 arch=(any)
@@ -11,7 +11,7 @@ source=("https://github.com/wizzomafizzo/starcheat/archive/$pkgver.tar.gz"
 "py-starbound.zip::https://github.com/blixt/py-starbound/archive/3adf5c8e35aa93603cf72dfe115808bc8372ca6a.zip"
 "starcheat.desktop"
 "starcheat.sh")
-md5sums=('d587f564c820abd5afdf5eba4562950a'
+md5sums=('00ca6182e9cc8929b135a1887b6ed9f7'
          '45951b751eede3762d40ab2c64142a31'
          'ef05183a35e289f6e036068db0d8c30b'
          'b1bdefdf82633ee135ea8980304f5513')
