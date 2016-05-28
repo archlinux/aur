@@ -7,7 +7,7 @@ pkgdesc="A tool to reassemble installed packages from its deliverd files. It com
 arch=('any')
 license=('GPL2')
 url="https://github.com/Edenhofer/fakepkg"
-depends=('bash>=4.2' 'pacman' 'tar' 'xz' 'gzip')
+depends=('bash>=4.2' 'pacman' 'tar' 'xz' 'gzip' 'sed' 'awk')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/Edenhofer/fakepkg/archive/v${pkgver}.tar.gz")
 md5sums=('f3b6ec80226d5ce3b041a0461ed009ac')
 

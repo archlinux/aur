@@ -10,6 +10,8 @@ pkgbase = fakepkg
 	depends = tar
 	depends = xz
 	depends = gzip
+	depends = sed
+	depends = awk
 	source = fakepkg-1.40.2.tar.gz::https://github.com/Edenhofer/fakepkg/archive/v1.40.2.tar.gz
 	md5sums = f3b6ec80226d5ce3b041a0461ed009ac
 
