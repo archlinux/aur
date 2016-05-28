@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=gnome-appfolders-manager
-pkgver=0.2.4
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Manage GNOME Shell applications folders."
 url="http://www.muflone.com/gnome-appfolders-manager"
@@ -9,7 +9,7 @@ arch=('any')
 license=('GPL2')
 depends=('gtk3' 'python2-xdg' 'python2-gobject')
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/muflone/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('0103059007df5366a5752c6b6c68fd80dd3055e1a36cecc5f6bf4a75a0f23472')
+sha256sums=('5c939a6eebce1548cf30f80ac55e9c877d3773c3d2e05f4e7b33e8ac02103245')
 
 build() {
   cd "${pkgname}-${pkgver}"
