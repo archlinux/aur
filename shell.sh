@@ -45,7 +45,7 @@ is_pid_present() {
 
 # verify if there are any crypto requests
 is_ask_pending() {
-    [ -n "$(list_ask_config)" ]
+    [ -n "$(list_ask_files)" ]
 }
 
 # verify if any crypttab jobs are in the queue
@@ -74,28 +74,36 @@ log_log() {
 }
 
 log_info() {
-    local code="$?" text="$1" ; log_log "info"     "info : $text [$code]" 
+    local code="$?" text="$1" ; log_log "info"     "info : $text" ;
 }
 
 log_warn() {
-    local code="$?" text="$1" ; log_log "warning"  "warn : $text [$code]" 
+    local code="$?" text="$1" ; log_log "warning"  "warn : $text" ;
 }
 
 log_error() {
-    local code="$?" text="$1" ; log_log "err"      "error: $text [$code]" 
+    local code="$?" text="$1" ; log_log "err"      "error: $text" ;
 }
 
 # list current crypto question files
-list_ask_config() {
+list_ask_files() {
     grep -i -l 'cryptsetup' $watch_folder/ask.* 2>/dev/null
 }
 
-# list current crypto socket files
-list_ask_socket() {
-    local config_list="$1" config=
-    for config in $config_list ; do
-        echo $(cat "$config" | grep -i 'socket=' | sed -e 's/socket=//I')
-    done
+list_size() {
+    local list="$1" ; echo "$list" | wc -w
+}
+
+convert_ask_file() {
+    local file="$1" text=
+    text=$(cat $file | grep -v -F '[Ask]' | sed -r -e 's%([^=]+)=([^=]+)%\1="\2"%' -e 's% %-%g')
+    echo "$text" # flatten
+}
+
+extract_ask_field() {
+    local text="$1" name="$2" 
+    local $text # inject
+    eval "echo \${$name}" # extract
 }
 
 # read a portion of latest console output
@@ -140,8 +148,8 @@ await_request() {
 
 # ensure crypto jobs removed questions (after message receipt) 
 await_received() {
-    local socket_list="$1"
-    while  has_any_file "$socket_list" ; do
+    local socket="$1"
+    while  [ -e "$socket" ] ; do
         sleep "$sleep_delay"
         let count+=1
         if [ "$count" -gt "$sleep_count" ] ; then
@@ -190,20 +198,29 @@ print_eol() {
 
 # crypto secret default logic: implement custom password agent
 do_crypt() {
-    local config_list= socket_list= secret= socket= count=1
+    local request_list= request= text= secret= id= socket= message= size= comment= count=1
     while true ; do
         log_info "custom agent try #$count" ; let count+=1
-        await_request || { log_warn "missing request" ; return 0 ; }
+        await_request || { log_warn "missing request 1" ; return 0 ; }
         await_console || { log_warn "volatile console" ; }
         flush_stdin
-        config_list=$(list_ask_config)
-        socket_list=$(list_ask_socket $config_list)
         secret=$(run_query) || { log_error "query failure" ; return 1 ; }
-        for socket in $socket_list ; do
-            [ ! -f "$socket" ] || { log_warn "socket removed" ; continue ; }
-            run_reply "$secret" "$socket" || { log_error "reply failure" ; return 1 ; }
+        log_info "query ready"
+        await_request || { log_warn "missing request 2" ; return 0 ; }
+        request_list=$(list_ask_files) || { log_warn "missing request 3" ; return 0 ; }
+        size=$(list_size "$request_list") ; log_info "request list size: $size" ;
+        for request in $request_list ; do
+            [ -e "$request" ] || { log_warn "request removed $request" ; continue ; }
+            text=$(convert_ask_file "$request") || { log_error "text convert failure $text" ; return 1 ; }
+            id=$(extract_ask_field "$text" "Id") || { log_error "id extract failure" ; return 1 ; }
+            socket=$(extract_ask_field "$text" "Socket") || { log_error "socket extract failure" ; return 1 ; }
+            message=$(extract_ask_field "$text" "Message") || { log_error "message extract  failure" ; return 1 ; }
+            comment="id=$id socket=$socket message=$message"
+            [ -e "$socket" ] || { log_warn "socket removed $comment ; continue ; }
+            log_info "reply $comment"
+            run_reply "$secret" "$socket" || { log_error "reply failure $comment" ; return 1 ; }
+            await_received "$socket" || { log_error "receipt failure $comment" ; return 1 ; }
         done
-        await_received "$socket_list" || { log_error "receipt failure" ; return 1 ; }
         await_validated || { log_warn "invalid secret" ; continue ; }
         return 0
     done
@@ -279,7 +296,7 @@ do_prompt() {
         echo "s) sys shell"
         echo "r) reboot"
         echo "q) quit"
-        read -p ">>>" choice
+        read -p ">> " choice
         case "$choice" in
         c) do_crypt ;;
         s) do_shell ;;
@@ -332,8 +349,8 @@ setup_defaults() {
     [ -z "$query_timeout" ] && readonly query_timeout=0 # A timeout of 0 waits indefinitely.
             
     # active operation timeout
-    [ -z "$sleep_delay" ] && readonly sleep_delay=0.5
-    [ -z "$sleep_count" ] && readonly sleep_count=10
+    [ -z "$sleep_delay" ] && readonly sleep_delay=0.3
+    [ -z "$sleep_count" ] && readonly sleep_count=20
         
     # password inotify watch folder
     [ -z "$watch_folder"] && readonly watch_folder="/run/systemd/ask-password"
