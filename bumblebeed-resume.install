@@ -1,30 +1,9 @@
-bumblebeed_enable() {
-    systemctl is-enabled bumblebeed-resume.service &> /dev/null
-    if [ $? -eq 0 ]; then
-        echo 'Service bumblebeed-resume is enabled already.'
-        
-    else
-        echo 'Enabling bumblebeed-resume service...'
-        systemctl enable bumblebeed-resume.service &> /dev/null
-    fi
-}
-
 post_install() {
-    bumblebeed_enable
-    echo 'WARNING: bumblebeed-resume service REQUIRED installed bbswitch module for proper working.'
+    printf "NOTE: You need manually enable the systemd service after install via command:\n"
+    printf "sudo systemctl enable bumblebeed-resume\n"
 }
 
-post_upgrade() {
-    bumblebeed_enable
-    echo 'Reloading systemd...'
-    systemctl daemon-reload
-    echo 'WARNING: bumblebeed-resume service REQUIRED installed bbswitch module for proper working.'
-}
-
-pre_remove() {
-    systemctl is-enabled bumblebeed-resume.service &> /dev/null
-    if [ $? -eq 0 ]; then
-        systemctl disable bumblebeed-resume.service &> /dev/null
-        echo 'Disabling bumblebeed-resume service...'
-    fi
+post_remove() {
+    printf "NOTE: You need manually disable the systemd service after remove via command:\n"
+    printf "sudo systemctl disable bumblebeed-resume\n"
 }

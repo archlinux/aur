@@ -1,25 +1,25 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
-_pkgname=bumblebeed-resume
 pkgname=bumblebeed-resume-git
-pkgver=20160430
+pkgver=20160528
 pkgrel=1
 pkgdesc="Simple systemd service for prevent TURN ON NVIDIA GPU after resume"
 arch=('any')
-url="https://github.com/FadeMind/${_pkgname}"
+url="https://github.com/FadeMind/${pkgname%-git}"
 license=('GPL2')
 depends=('bash' 'bumblebee' 'coreutils' 'systemd')
-makedepends=('git')
-source=("${_pkgname}::git+${url}.git")
+makedepends=('git' 'make')
+optdepends=("bbswitch: Kernel module allowing to switch dedicated graphics card on Optimus laptops")
+source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
-install="${_pkgname}.install"
+install="${pkgname%-git}.install"
 
 pkgver() {
-    cd ${srcdir}/${_pkgname}
+    cd ${pkgname%-git}
     git log -1 --format="%cd" --date=short | tr -d '-'
 }
 
 package() {
-    install -Dm644 "${srcdir}/${_pkgname}/${_pkgname}.service"  "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
-    install -Dm755 "${srcdir}/${_pkgname}/${_pkgname}"          "${pkgdir}/usr/bin/${_pkgname}"
+    cd ${pkgname%-git}
+    make install DESTDIR="$pkgdir"
 }
