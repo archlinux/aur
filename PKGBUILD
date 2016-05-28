@@ -1,14 +1,13 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-server-git
-pkgver=20160503
+pkgver=20160528
 pkgrel=1
 pkgdesc="Bitcoin Full Node and Query Server"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
          'czmq'
-         'czmqpp'
          'icu'
          'libbitcoin'
          'libbitcoin-blockchain'
@@ -16,8 +15,8 @@ depends=('boost'
          'libbitcoin-database'
          'libbitcoin-network'
          'libbitcoin-node'
+         'libbitcoin-protocol'
          'libsecp256k1'
-         'libsodium'
          'zeromq')
 makedepends=('autoconf'
              'automake'
@@ -78,7 +77,8 @@ build() {
     --sharedstatedir=/usr/share/libbitcoin-server \
     --localstatedir=/var/lib/libbitcoin-server \
     --with-bash-completiondir=/usr/share/bash-completion/completions \
-    --with-gnu-ld
+    --with-gnu-ld \
+    --without-tests
   make
 }
 
