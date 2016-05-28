@@ -1,0 +1,15 @@
+pkgbase = graphlab-create-license
+	pkgdesc = License installer for Graphlab Create
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://dato.com/products/create/
+	arch = x86_64
+	license = custom
+	makedepends = python2-setuptools
+	depends = python2
+	depends = graphlab-create=1.9
+	provides = graphlab-create-license
+	options = !emptydirs
+
+pkgname = graphlab-create-license
+
