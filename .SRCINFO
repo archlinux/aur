@@ -1,7 +1,7 @@
 pkgbase = corsix-th
 	pkgdesc = Reimplementation of the game engine of Theme Hospital
 	pkgver = 0.50
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/CorsixTH/CorsixTH
 	install = corsix-th.install
 	arch = i686
