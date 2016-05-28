@@ -3,7 +3,7 @@
 
 pkgbase=linux-lts41
 _srcname=linux-4.1
-pkgver=4.1.24
+pkgver=4.1.25
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -20,13 +20,12 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('caf51f085aac1e1cea4d00dbbf3093ead07b551fc07b31b2a989c05f8ea72d9f'
             'SKIP'
-            '8a0274f1eb508d64131d86e5d457ee7310ae8b0ee722fd2a3e4dada91f380fcd'
+            '18a27122adc79efa24be2129b858ccf5f742f7dddb456b5119b66b9ab36c7a49'
             'SKIP'
             '6e85b744d2a4c586118514161bb4283ecf4a2a4e4e8433ada8be942e2648a565'
             '38e62f58a56e3de45d1809c68f0cff7d619e926ec9e441b0ce7931978e658fe2'
             '2b41c8335bfb06eeca77d528f966cf46a056b5af46363dacd53acca719f2c4e8'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
-
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman (Linux kernel stable release signing key) <greg@kroah.com>
              )
