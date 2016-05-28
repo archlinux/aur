@@ -103,7 +103,7 @@ convert_ask_file() {
 extract_ask_field() {
     local text="$1" name="$2" 
     local $text # inject
-    eval "echo \${$name}" # extract
+    eval echo \${$name} # extract
 }
 
 # read a portion of latest console output
@@ -215,7 +215,7 @@ do_crypt() {
             id=$(extract_ask_field "$text" "Id") || { log_error "id extract failure" ; return 1 ; }
             socket=$(extract_ask_field "$text" "Socket") || { log_error "socket extract failure" ; return 1 ; }
             message=$(extract_ask_field "$text" "Message") || { log_error "message extract  failure" ; return 1 ; }
-            comment="id=$id socket=$socket message=$message"
+            comment="id=$id message=$message"
             [ -e "$socket" ] || { log_warn "socket removed $comment" ; continue ; }
             log_info "reply $comment"
             run_reply "$secret" "$socket" || { log_error "reply failure $comment" ; return 1 ; }
