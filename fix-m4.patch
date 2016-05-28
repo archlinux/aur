@@ -577,11 +577,11 @@ index 03c4ce7..cc90a73 100644
  #define WORD_LENGTH_INC @CONFIG_WORD_LENGTH_INC@
  #define WORD_MASK @CONFIG_WORD_MASK@
 diff --git a/src/makefile.in b/src/makefile.in
-index 510b956..2e45d0d 100644
+index e53b6b1..e465a4e 100644
 --- a/src/makefile.in
 +++ b/src/makefile.in
 @@ -41,7 +41,7 @@ CXXCAIRO = @CAIRO_CXX@
- CXXIMLIB2 = @IMLIB2_CFLAGS@
+ CXXIMLIB2 = @IMLIB2_CXX@
  CXXSQLITE3 = @SQLITE3_CXX@
  CXXFREETYPE = @FREETYPE_CFLAGS@
 -CXXICONV = @ICONV_CXX@
@@ -589,7 +589,7 @@ index 510b956..2e45d0d 100644
  CXXGUILE = @GUILE_CFLAGS@
  CXXSPARKLE = @SPARKLE_CXX@
  CXXPDF = @PDF_CFLAGS@
-@@ -53,12 +53,14 @@ LDRT = @CONFIG_LDRT@
+@@ -53,11 +53,13 @@ LDRT = @CONFIG_LDRT@
  LDSTATIC = @CONFIG_BSTATIC@
  LDSHARED = @CONFIG_BSHARED@
  LDPATH = @CONFIG_BPATH@
@@ -598,18 +598,8 @@ index 510b956..2e45d0d 100644
  LDCOCOA = @COCOA_LDFLAGS@
  LDQT = @QT_LIBS@
  LDGUI = $(LD@CONFIG_GUI@)
- LDIMLIB2 = @IMLIB2_LDFLAGS@
  LDFREETYPE = @FREETYPE_LDFLAGS@
 +LDICONV = @ICONV_LDFLAGS@
  #LDGUILE = @GUILE_LDFLAGS@
  
  AR = ar
-@@ -421,7 +423,7 @@ TEXMACS_objects := $(strip $(call uses,system kernel data graphics\
- 
- link_options:=-L$(tmsrc)/lib $(LDRT) -lm $(LDPATH) $(LDGUI) $(LDICONV) \
-    $(LDAXEL) $(LDCAIRO) $(LDIMLIB2) $(LDSQLITE3) $(LDFREETYPE) \
--   $(LDSPARKLE)
-+   $(LDDL) $(LDSPARKLE)
- 
- $(tmsrc)/bin/texmacs.bin: Objects/texmacs-$(link).bin
- 	$(CP) $^ $@

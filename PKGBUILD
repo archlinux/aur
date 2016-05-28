@@ -4,7 +4,7 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20160523.10393
+pkgver=20160528.10427
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ makedepends=('ghostscript')
 source=("${_pkgname}::svn://svn.savannah.gnu.org/texmacs/trunk/src"
         "fix-m4.patch")
 sha1sums=('SKIP'
-          '03469130f6f9237130d1b76d64087f181857652b')
+          '4c081390ad66b7834a083100881a05463d8b32ad')
 options=('!emptydirs' '!ccache')
 provides=('texmacs')
 conflicts=('texmacs')
@@ -68,7 +68,10 @@ build() {
 
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
-              --libexecdir=/usr/lib
+              --libexecdir=/usr/lib \
+              --with-cario \
+              --with-imlib2 \
+              --with-sqlite3
   make -j8
 }
 
