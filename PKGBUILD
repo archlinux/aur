@@ -7,7 +7,7 @@
 pkgname=alephone
 _pkgdate=20150620
 pkgver=1.2.1_$_pkgdate
-pkgrel=1
+pkgrel=2
 pkgdesc='A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software'
 arch=('i686' 'x86_64')
 url="http://marathon.sourceforge.net/"
@@ -25,13 +25,16 @@ optdepends=('alephone-emr: community-made scenario'
             'alephone-rubiconx: community-made scenario'
             'alephone-tempus_irae: community-made scenario')
 makedepends=('boost' 'mesa' 'icoutils')
-source=("http://downloads.sourceforge.net/marathon/AlephOne-$_pkgdate.tar.bz2"
-        "http://downloads.sourceforge.net/marathon/README.md")
+source=("https://github.com/Aleph-One-Marathon/alephone/releases/download/release-$_pkgdate/AlephOne-$_pkgdate.tar.bz2"
+        "$pkgname-update-old-ffmpeg-enums.patch")
 sha256sums=('c0f360dfb74a6264f95d375103a74000930cf0439ffb0464f915f5379443e133'
-            '2eb7fedcd6d4f85b3dc62b3c26f08d8f620fe670f504dafb411787e09ff3b9d9')
+            '2c83da1a751e677d8a980e27e3df684943f7b6b883aca5b047a11783232d4324')
 
 prepare() {
   cd AlephOne-$_pkgdate
+
+  # backported patch to make it compile correctly
+  patch -Np1 < ../$pkgname-update-old-ffmpeg-enums.patch
 
   # lowercase for (folder) name
   sed "s|PACKAGE='AlephOne'|PACKAGE='alephone'|g" -i configure
@@ -61,6 +64,6 @@ package() {
   install -m644 Resources/*.png "$pkgdir"/usr/share/icons
 
   # docs
-  install -Dm644 ../README.md "$pkgdir"/usr/share/doc/$pkgname/README-${pkgver%_*}.md
-  install -m644 README docs/*.html "$pkgdir"/usr/share/doc/$pkgname
+  install -Dm644 README "$pkgdir"/usr/share/doc/$pkgname/README
+  install -m644 docs/*.html "$pkgdir"/usr/share/doc/$pkgname
 }

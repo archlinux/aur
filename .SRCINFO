@@ -1,7 +1,7 @@
 pkgbase = alephone
 	pkgdesc = A free, enhanced port of the classic FPS "Marathon 2" by Bungie Software
 	pkgver = 1.2.1_20150620
-	pkgrel = 1
+	pkgrel = 2
 	url = http://marathon.sourceforge.net/
 	arch = i686
 	arch = x86_64
@@ -28,10 +28,10 @@ pkgbase = alephone
 	optdepends = alephone-red: community-made scenario
 	optdepends = alephone-rubiconx: community-made scenario
 	optdepends = alephone-tempus_irae: community-made scenario
-	source = http://downloads.sourceforge.net/marathon/AlephOne-20150620.tar.bz2
-	source = http://downloads.sourceforge.net/marathon/README.md
+	source = https://github.com/Aleph-One-Marathon/alephone/releases/download/release-20150620/AlephOne-20150620.tar.bz2
+	source = alephone-update-old-ffmpeg-enums.patch
 	sha256sums = c0f360dfb74a6264f95d375103a74000930cf0439ffb0464f915f5379443e133
-	sha256sums = 2eb7fedcd6d4f85b3dc62b3c26f08d8f620fe670f504dafb411787e09ff3b9d9
+	sha256sums = 2c83da1a751e677d8a980e27e3df684943f7b6b883aca5b047a11783232d4324
 
 pkgname = alephone
 
