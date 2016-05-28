@@ -1,0 +1,93 @@
+diff -Naur mate-calc.orig/data/org.mate.calc.gschema.xml.in mate-calc/data/org.mate.calc.gschema.xml.in
+--- mate-calc.orig/data/org.mate.calc.gschema.xml.in	2016-05-28 12:02:39.653582000 +0200
++++ mate-calc/data/org.mate.calc.gschema.xml.in	2016-05-28 12:03:49.076918330 +0200
+@@ -22,65 +22,65 @@
+     <key type="i" name="accuracy">
+       <default>9</default>
+       <range min="0" max="9"/>
+-      <_summary>Accuracy value</_summary>
+-      <_description>The number of digits displayed after the numeric point</_description>
++      <summary>Accuracy value</summary>
++      <description>The number of digits displayed after the numeric point</description>
+     </key>
+     <key type="i" name="word-size">
+       <default>64</default>
+       <range min="8" max="64"/>
+-      <_summary>Word size</_summary>
+-      <_description>The size of the words used in bitwise operations</_description>
++      <summary>Word size</summary>
++      <description>The size of the words used in bitwise operations</description>
+     </key>
+     <key type="i" name="base">
+       <default>10</default>
+       <range min="2" max="16"/>
+-      <_summary>Numeric Base</_summary>
+-      <_description>The numeric base</_description>
++      <summary>Numeric Base</summary>
++      <description>The numeric base</description>
+     </key>
+     <key type="b" name="show-thousands">
+       <default>false</default>
+-      <_summary>Show Thousands Separators</_summary>
+-      <_description>Indicates whether thousands separators are shown in large numbers.</_description>
++      <summary>Show Thousands Separators</summary>
++      <description>Indicates whether thousands separators are shown in large numbers.</description>
+     </key>
+     <key type="b" name="show-zeroes">
+       <default>false</default>
+-      <_summary>Show Trailing Zeroes</_summary>
+-      <_description>Indicates whether any trailing zeroes after the  numeric point should be shown in the display value.</_description>
++      <summary>Show Trailing Zeroes</summary>
++      <description>Indicates whether any trailing zeroes after the  numeric point should be shown in the display value.</description>
+     </key>
+     <key name="number-format" enum="org.mate.calc.NumberFormat">
+       <default>'automatic'</default>
+-      <_summary>Number format</_summary>
+-      <_description>The format to display numbers in</_description>
++      <summary>Number format</summary>
++      <description>The format to display numbers in</description>
+     </key>
+     <key name="angle-units" enum="org.mate.calc.AngleUnit">
+       <default>'degrees'</default>
+-      <_summary>Angle units</_summary>
+-      <_description>The angle units to use</_description>
++      <summary>Angle units</summary>
++      <description>The angle units to use</description>
+     </key>
+     <key name="button-mode" enum="org.mate.calc.ButtonMode">
+       <default>'basic'</default>
+-      <_summary>Button mode</_summary>
+-      <_description>The button mode</_description>
++      <summary>Button mode</summary>
++      <description>The button mode</description>
+     </key>
+     <key type="s" name="source-currency">
+       <default>''</default>
+-      <_summary>Source currency</_summary>
+-      <_description>Currency of the current calculation</_description>
++      <summary>Source currency</summary>
++      <description>Currency of the current calculation</description>
+     </key>
+     <key type="s" name="target-currency">
+       <default>''</default>
+-      <_summary>Target currency</_summary>
+-      <_description>Currency to convert the current calculation into</_description>
++      <summary>Target currency</summary>
++      <description>Currency to convert the current calculation into</description>
+     </key>
+     <key type="s" name="source-units">
+       <default>'degree'</default>
+-      <_summary>Source units</_summary>
+-      <_description>Units of the current calculation</_description>
++      <summary>Source units</summary>
++      <description>Units of the current calculation</description>
+     </key>
+     <key type="s" name="target-units">
+       <default>'radian'</default>
+-      <_summary>Target units</_summary>
+-      <_description>Units to convert the current calculation into</_description>
++      <summary>Target units</summary>
++      <description>Units to convert the current calculation into</description>
+     </key>
+   </schema>
+ </schemalist>
