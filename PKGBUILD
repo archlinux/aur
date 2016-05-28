@@ -2,7 +2,7 @@
 
 pkgname=couchbase-server-community
 pkgver=4.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A document database featuring a powerful query language and unrivaled performance at scale."
 arch=('x86_64')
 url="http://www.couchbase.com/"
@@ -11,7 +11,7 @@ source=(
   "couchbase-server.service"
 )
 install=couchbase-server.install
-depends=(glibc gcc-libs sqlite openssl libtinfo-5 zlib)
+depends=(glibc gcc-libs sqlite openssl libtinfo5 zlib)
 
 package() {
   msg2 "Extracting the data.tar.gz"
