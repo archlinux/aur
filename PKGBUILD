@@ -18,7 +18,7 @@ _srcname="ImageMagick"
 _srcver="7.0.1-3"
 pkgname=imagemagick-full
 pkgver="$(echo ${_srcver} | tr '-' '.')"
-pkgrel=1
+pkgrel=2
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
@@ -120,7 +120,7 @@ package() {
 	
 	# Security fix
 	# https://www.imagemagick.org/discourse-server/viewtopic.php?f=4&t=29588
-	# https://www.imagetragick.com/
+	# https://imagetragick.com/
 	sed -i '65i\  \<policy domain="coder" rights="none" pattern="EPHEMERAL" />' "${pkgdir}/etc/ImageMagick-${pkgver%%.*}/policy.xml"
 	sed -i '66i\  \<policy domain="coder" rights="none" pattern="URL" />'       "${pkgdir}/etc/ImageMagick-${pkgver%%.*}/policy.xml"
 	sed -i '67i\  \<policy domain="coder" rights="none" pattern="HTTPS" />'     "${pkgdir}/etc/ImageMagick-${pkgver%%.*}/policy.xml"
