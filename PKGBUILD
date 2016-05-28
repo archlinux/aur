@@ -28,5 +28,5 @@ package() {
   install -D -m 644 "icons/qcost.svg" "${pkgdir}/usr/share/pixmaps/qcost.svg"
   desktop-file-install --dir="${pkgdir}/usr/share/applications" "${srcdir}/qcost.desktop"
 }
-md5sums=('c82e72b452d280f9f16bc35ebc49e547'
+md5sums=('656b92431532d78efa88d2de71cbf2b8'
          '49d45054eed165ac72e3287d68bcee2b')
