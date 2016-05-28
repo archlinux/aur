@@ -1,14 +1,17 @@
 pkgbase = 2048-cli-git
 	pkgdesc = The game 2048 for your Linux terminal
-	pkgver = 20160528
+	pkgver = 20160529
 	pkgrel = 1
 	url = https://github.com/tiehuis/2048-cli
 	arch = x86_64
 	arch = i686
 	license = MIT
+	makedepends = git
 	depends = ncurses
 	depends = sdl
 	provides = 2048-cli
+	conflicts = 2048.c
+	conflicts = 2048.c.git
 	source = git+https://github.com/tiehuis/2048-cli.git
 	md5sums = SKIP
 

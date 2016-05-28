@@ -3,25 +3,24 @@
 pkgname=2048-cli-git
 _pkgname=2048-cli
 _pkgname2=2048
-pkgver=20160528
+pkgver=20160529
 pkgrel=1
 pkgdesc="The game 2048 for your Linux terminal"
 arch=('x86_64' 'i686')
 url="https://github.com/tiehuis/2048-cli"
 license=('MIT')
 depends=('ncurses' 'sdl')
-makedepends('git')
+makedepends=('git')
 provides=('2048-cli')
 conflicts=('2048.c' '2048.c.git')
 options=()
-source=("git+https://github.com/tiehuis/2048-cli.git")
+source=(git+https://github.com/tiehuis/2048-cli.git)
 md5sums=('SKIP')
-
 build() {
-	cd "$srcdir"/"$_pkgname"
+	cd "$srcdir"/""
 	make
 	cd man
-	gzip "$_pkgname2".1
+	gzip "".1
 }
 package() {
 	cd "$srcdir"/"$_pkgname"
