@@ -56,7 +56,7 @@ package() {
     local source="$srcdir/$pkgname"
     
     local target="$pkgdir/usr/share/$pkgname"
-    install -D -m644 "$source/LICENSE"                  "${target}/LICENSE"
+    install -D -m644 "$source/LICENSE.md"               "${target}/LICENSE.md"
     install -D -m644 "$source/README.md"                "${target}/README.md"
 
     local target="$pkgdir/usr/lib/initcpio"
