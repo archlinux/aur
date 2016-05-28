@@ -1,7 +1,7 @@
 # Maintainer: Nate Simon <aurpkg (at natesimon.net)>
 
 pkgname=xreader
-pkgver=1.0.3
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="Document viewer for files like PDF and Postscript. X-Apps Project."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ url='https://github.com/linuxmint/xreader'
 install=xreader.install
 
 source=("https://github.com/linuxmint/${pkgname}/archive/${pkgver}.tar.gz")
-md5sums=('8db7c6810a78e4999c3589e022924977')
+md5sums=('96bdee136adb1139adc678ec44658ae5')
 
 build() {
     cd ${srcdir}/${pkgname}-${pkgver}
