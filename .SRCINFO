@@ -19,7 +19,7 @@ pkgbase = mkinitcpio-systemd-tool
     backup = etc/systemd/system/initrd-dropbear.service
     backup = etc/systemd/system/initrd-network.service
     backup = etc/systemd/system/initrd-user-root.service
-    source = mkinitcpio-systemd-tool::https://github.com/random-archer/mkinitcpio-systemd-tool.git
+    source = mkinitcpio-systemd-tool::git+https://github.com/random-archer/mkinitcpio-systemd-tool.git
     md5sums = SKIP
 
 pkgname = mkinitcpio-systemd-tool
