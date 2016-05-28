@@ -1,6 +1,6 @@
 # Maintainer: Christian <0x2a@posteo.org>
 pkgname=ealogger
-pkgver=0.7.1
+pkgver=0.8.1
 pkgrel=1
 epoch=
 pkgdesc="ealogger is an easy to use asynchronous logger library for C++"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/crapp/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-md5sums=('c3989cb05b9ebf11decb54b370a026e3')
+md5sums=('3ba03bf9fc303199a56bad6b1d843d2a')
 validpgpkeys=()
 
 prepare() {
