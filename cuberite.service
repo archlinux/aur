@@ -1,0 +1,12 @@
+[Unit]
+Description=Cuberite Server
+After=local-fs.target network.target
+
+[Service]
+Type=forking
+ExecStart=/srv/cuberite/Cuberite -d
+User=cuberite
+Group=cuberite
+
+[Install]
+WantedBy=multi-user.target

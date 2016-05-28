@@ -1,0 +1,13 @@
+[Unit]
+Description=Cuberite Server World, Plugins and Configuration-File Backup
+After=local-fs.target
+
+[Service]
+Type=forking
+WorkingDirectory=/srv/cuberite/
+ExecStart=/usr/bin/bash -c "tar -czf /srv/cuberite/backup/$(date +%Y_%m_%d_%H.%M.%S).tar.gz --totals world* plugins *.ini"
+User=cuberite
+Group=cuberite
+
+[Install]
+WantedBy=multi-user.target
