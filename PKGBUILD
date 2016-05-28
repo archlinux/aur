@@ -7,9 +7,9 @@ pkgdesc="GNU Emacs. Official git master."
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
 license=('GPL')
-depends=('alsa-lib' 'gpm' 'desktop-file-utils' 'hicolor-icon-theme' 'giflib'
-	 'libxfixes' 'm17n-lib' 'libxrandr' 'libxinerama'  'libdbus'
-	 'imagemagick'  'librsvg' 'gnutls')
+depends=('alsa-lib' 'gpm' 'hicolor-icon-theme' 'giflib'
+	 'm17n-lib' 'libxrandr' 'libxinerama' 'imagemagick'
+	 'librsvg' 'gnutls')
 makedepends=('git')
 conflicts=('emacs')
 provides=('emacs')
