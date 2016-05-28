@@ -1,15 +1,16 @@
-# Maintainer: Shalygin Konstantin <k0ste@cn.ru>
-# Contributor: Shalygin Konstantin <k0ste@cn.ru>
+# Maintainer: Shalygin Konstantin <k0ste@k0ste.ru>
+# Contributor: Shalygin Konstantin <k0ste@k0ste.ru>
 
 pkgname='ipt_ndpi'
 pkgver=1.2_1.7.0.netfilter.212.56eacee
-pkgrel=1
+pkgrel=2
 pkgdesc='nDPI as netfilter extension'
 arch=('any')
 url='https://github.com/vel21ripn/nDPI/tree/netfilter'
 license=('GPL')
 depends=('linux' 'iptables' 'xtables-addons' 'conntrack-tools')
 makedepends=('git' 'libtool' 'gcc' 'gzip' 'gawk' 'sed')
+optdepends=('ipt_netflow: Netflow as netfilter extension')
 source=("${pkgname}::git+https://github.com/vel21ripn/nDPI")
 sha256sums=('SKIP')
 install="${pkgname}.install"
@@ -27,17 +28,19 @@ pkgver() {
 }
 
 prepare() {
-  pushd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}"
   git checkout netfilter
   ./autogen.sh
-  popd
 }
 
 build() {
-  pushd "${srcdir}/${pkgname}/ndpi-netfilter"
+  cd "${srcdir}/${pkgname}/ndpi-netfilter"
   make KERNEL_DIR="${_kernver}/build"
+}
+
+check() {
+  cd "${srcdir}/${pkgname}/ndpi-netfilter"
   gzip --best -c "src/xt_ndpi.ko" > "src/xt_ndpi.ko.gz"
-  popd
 }
 
 package() {
