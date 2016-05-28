@@ -1,0 +1,13 @@
+pkgbase = ndstrim
+	pkgdesc = Cross Platform NDS File Trimmer
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://code.google.com/p/ndstrim/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = http://ndstrim.googlecode.com/files/ndstrim-1.0.tar.bz2
+	sha1sums = 3561fcecb09595341edc60e07033720c33e121a7
+
+pkgname = ndstrim
+
