@@ -281,19 +281,13 @@ do_prompt() {
     done
 }
 
-run_kill_jobs() {
-    log_info "kill jobs [$(jobs)]"
-    local list=$(jobs -p) ; [ -n "$list" ] && kill $list 
-}
-
 # respond to interrupt
 do_trap() {
     print_eol
-    run_kill_jobs
     if is_entry_service ; then
         log_info "interrupt service"
         do_exit 1
-    elif is_ssh_session ; then
+    elif is_entry_console ; then
         log_info "interrupt console"
         do_prompt
     else
@@ -302,18 +296,30 @@ do_trap() {
     fi
 }
 
+# handle ssh close
+trap_HUP() {
+    log_info "session disconnect"
+    do_exit 0
+}
+
 # handle "CTRL-C"
-trap_SIGINT () { 
+trap_INT () { 
     do_trap
 }
 
 # handle "CTRL-D"
-trap_SIGQUIT() { 
+trap_QUIT() { 
+    do_trap
+}
+
+# handle "CTRL-Z"
+trap_TSTP() { 
     do_trap
 }
 
 # handle termination
-trap_SIGTERM() { 
+trap_TERM() { 
+    log_info "program termination"
     do_exit 0
 }
 
@@ -346,9 +352,11 @@ setup_defaults() {
 }
 
 setup_interrupts() {
-    trap trap_SIGINT SIGINT
-    #trap trap_SIGQUIT SIGQUIT
-    #trap trap_SIGTERM SIGTERM
+    trap trap_HUP HUP
+    trap trap_INT INT
+    #trap trap_QUIT QUIT
+    #trap trap_TSTP TSTP
+    trap trap_TERM TERM
 }
 
 # respond depending on script invocation type [script_entry=xxx]
