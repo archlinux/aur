@@ -103,3 +103,7 @@ which ssh user keys are used by initramfs sshd server?
 
 how can I review shell actions during boot?
 * use `journalctl -b -t shell`
+
+### List of stable releases
+
+r89
