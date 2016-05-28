@@ -1,0 +1,15 @@
+pkgbase = champagne-limousines
+	pkgdesc = Champagne & Limousines Font
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.1001freefonts.com/champagne___limousines.font
+	install = champagne-limousines-fonts.install
+	arch = any
+	makedepends = unzip
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.1001freefonts.com/d/6694/champagne___limousines.zip
+	md5sums = 4b24c2581d6621899437b027e26611ed
+
+pkgname = champagne-limousines
+
