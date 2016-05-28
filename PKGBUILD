@@ -2,15 +2,15 @@
 
 pkgbase=python-tempdir
 pkgname=('python-tempdir' 'python2-tempdir')
-pkgver=0.6
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Python wrappers for manipulating temp directories"
 arch=('any')
 license=('MIT')
 url="https://pypi.python.org/pypi/tempdir/${pkgver}"
 makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
-source=("https://pypi.python.org/packages/source/t/tempdir/tempdir-0.6.tar.gz")
-md5sums=('93890c11a7101ae55eebf77b86c75a05')
+source=("https://pypi.python.org/packages/source/t/tempdir/tempdir-${pkgver}.tar.gz")
+md5sums=('4076f2d7fa9306c77f7b16a5f2e4c154')
 
 prepare() {
   cp -a "$srcdir/tempdir-$pkgver" "$srcdir/tempdir-$pkgver-python2"
