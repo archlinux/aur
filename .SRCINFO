@@ -1,0 +1,26 @@
+pkgbase = graphlab-create
+	pkgdesc = Graphlab Create is an extensible machine learning framework.
+	pkgver = 1.9
+	pkgrel = 1
+	url = https://dato.com/products/create/
+	arch = x86_64
+	license = custom
+	makedepends = python2-setuptools
+	depends = python2
+	depends = ipython2-notebook
+	depends = python2-boto
+	depends = python2-decorator
+	depends = python2-tornado
+	depends = python2-prettytable
+	depends = python2-requests
+	depends = python2-aws-cli
+	depends = python2-sseclient
+	depends = python2-multipledispatch
+	depends = python2-certifi
+	depends = python2-jsonschema
+	depends = python2-genson
+	provides = graphlab-create
+	options = !emptydirs
+
+pkgname = graphlab-create
+
