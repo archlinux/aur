@@ -2,9 +2,10 @@
 
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
-# user root login shell program:
+# provides user root login shell program:
 # * expects invocation as default shell ~/.profile
-# * must use only capabilities of busybox 
+# * expects invocation from systemd service unit
+# * uses only capabilities of busybox and systemd 
 # * implements password query/reply:
 #   https://www.freedesktop.org/wiki/Software/systemd/PasswordAgents/
 #   https://www.freedesktop.org/software/systemd/man/systemd-ask-password.html
@@ -224,6 +225,7 @@ do_reboot() {
     $systemd_ctl --no-ask-password reboot 
 }
 
+# try custom password agent, fall back to standard agent
 run_crypt_jobs() {
     log_info "crypt jobs" 
     if do_crypt || do_agent ; then
@@ -349,6 +351,7 @@ setup_defaults() {
     [ -z "$systemd_agent"] && readonly systemd_agent="/usr/bin/systemd-tty-ask-password-agent"
 }
 
+# map signal handlers
 setup_interrupts() {
     trap trap_HUP HUP
     trap trap_INT INT
