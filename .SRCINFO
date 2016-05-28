@@ -1,0 +1,15 @@
+pkgbase = caviar-dreams
+	pkgdesc = Caviar Dreams Font
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.1001freefonts.com/caviar_dreams.font
+	install = caviar-dreams-fonts.install
+	arch = any
+	makedepends = unzip
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.1001freefonts.com/d/6693/caviar_dreams.zip
+	md5sums = 0fc6ddd765d88d7e788dc9c2ad2be2ab
+
+pkgname = caviar-dreams
+
