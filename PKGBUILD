@@ -25,7 +25,7 @@ build() {
 package() {
   cd "${srcdir}/alacarte-${pkgver}/build"
   make DESTDIR=${pkgdir} install
-  install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "${srcdir}/alacarte-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
