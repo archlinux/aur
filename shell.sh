@@ -62,6 +62,10 @@ has_any_file() {
     return 1
 }
 
+print_eol() {
+   printf "\n"
+}
+
 # log output to console and journal
 log_log() {
     local mode="$1" text="$2" session=
@@ -192,14 +196,10 @@ run_answer() {
     done
 }
 
-print_eol() {
-   printf "\n"
-}
-
 # crypto secret default logic: implement custom password agent
 do_crypt() {
     local request_list= request= size= result= 
-    local text= secret= id= socket= message= comment=
+    local text= secret= id= socket= message= signature=
     local count=1
     while true ; do
         log_info "custom agent try #$count" ; let count+=1 ;
@@ -213,15 +213,15 @@ do_crypt() {
         request_list=$(list_ask_files) || { log_warn "missing request 3" ; return 0 ; }
         size=$(list_size "$request_list") ; log_info "request list size $size" ;
         for request in $request_list ; do
-            [ -e "$request" ] || { log_warn "request removed $request" ; continue ; }
-            text=$(convert_ask_file "$request") || { log_error "convert failure [$text]" ; return 1 ; }
+            [ -e "$request" ] || { log_warn "request removed [$request]" ; continue ; }
+            text=$(convert_ask_file "$request") || { log_error "convert failure [$(cat $request)]" ; return 1 ; }
             id=$(extract_ask_field "$text" "Id") || { log_error "extract failure [id]" ; return 1 ; }
             socket=$(extract_ask_field "$text" "Socket") || { log_error "extract failure [socket]" ; return 1 ; }
             message=$(extract_ask_field "$text" "Message") || { log_error "extract failure [message]" ; return 1 ; }
-            comment="id=$id message=$message"
-            [ -e "$socket" ] || { log_warn "socket removed [$comment]" ; continue ; }
-            log_info "reply $comment"
-            result=$(run_reply "$secret" "$socket" 2>&1) || { log_error "reply failure [$comment] [$result]" ; return 1 ; }
+            signature="id=$id message=$message"
+            [ -e "$socket" ] || { log_warn "socket removed [$signature]" ; continue ; }
+            log_info "reply $signature"
+            result=$(run_reply "$secret" "$socket" 2>&1) || { log_error "reply failure [$signature] [$result]" ; return 1 ; }
         done
         await_validated || { log_warn "invalid secret" ; continue ; }
         return 0
