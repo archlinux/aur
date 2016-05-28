@@ -3,7 +3,7 @@
 
 _gemname=cabin
 pkgname=ruby-$_gemname
-pkgver=0.7.1
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Experiments in structured and contextual logging'
 arch=(any)
@@ -13,7 +13,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('6d99e7bdcaaa30f350e997e663d7f2a992326ed36b29ae7afb125bb135207c538ed2b886191669c34f771da97f95712542105c952ca107e8dae3b9410e654259')
+sha512sums=('c047b3e20614fab2a007362ebc811434a83552471133e696a0c3d4b1c9449dca3e562e1951c7364d2c4f563315466c57c6969398731da752f78ed60c156a4bd3')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
