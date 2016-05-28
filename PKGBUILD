@@ -4,7 +4,7 @@
 # Contributor 3: Anuj More <anujmorex@gmail.com>
 
 pkgname=google-appengine-java
-pkgver=1.9.36
+pkgver=1.9.38
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Google App Engine SDK for Java'
@@ -14,7 +14,7 @@ depends=('java-environment')
 options=('!strip')
 source=("https://commondatastorage.googleapis.com/appengine-sdks/featured/appengine-java-sdk-${pkgver}.zip"
         'profile.appengine-java-sdk')
-sha1sums=('2aca5d41f3c6f6bb0af074f2e39c9e06b94ad61e'
+sha1sums=('3f72e795676f1768a78586fb6dfde228f3cece4f'
           '2b3afe55cfb6847b957ec10eec981363797ce09e')
 
 package() {
