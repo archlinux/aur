@@ -1,14 +1,14 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libsecp256k1-git
-pkgver=20160216
+pkgver=20160525
 pkgrel=1
 pkgdesc="Optimized C library for EC operations on curve secp256k1"
 arch=('i686' 'x86_64')
-url="https://github.com/bitcoin/secp256k1"
+url="https://github.com/bitcoin-core/secp256k1"
 makedepends=('autoconf' 'automake' 'git' 'm4' 'make' 'pkg-config')
 license=('MIT')
-source=(${pkgname%-git}::git+https://github.com/bitcoin/secp256k1)
+source=(${pkgname%-git}::git+https://github.com/bitcoin-core/secp256k1)
 sha256sums=('SKIP')
 provides=('libsecp256k1' 'secp256k1')
 conflicts=('libsecp256k1' 'secp256k1')
