@@ -1,7 +1,7 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
 pkgname=mkinitcpio-systemd-tool
-pkgver=r100.902bd4a
+pkgver=r2.505d480
 pkgrel=1
 pkgdesc='Provisioning tool for systemd in initramfs (systemd-tool)'
 arch=('any')
@@ -9,8 +9,8 @@ license=('Apache')
 depends=('systemd' 'dropbear')
 makedepends=('git')
 install='INSTALL.sh'
-url="https://aur.archlinux.org/cgit/aur.git/tree/?h=${pkgname}"
-source=("${pkgname}::git+https://aur.archlinux.org/${pkgname}.git")
+url="https://github.com/random-archer/${pkgname}"
+source=("https://github.com/random-archer/${pkgname}.git")
 md5sums=('SKIP')
 backup=(
     'etc/mkinitcpio.d/crypttab'
@@ -30,16 +30,11 @@ conflicts=(
 )
 
 pkgver() {
-    # version update only in presense of user provided marker
-    local origin=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-    local marker="$origin/.PKGVER"
-    if [ -e "$marker" ] ; then
-        local count=$(git -C $origin rev-list --count HEAD)
-        local short=$(git -C $origin rev-parse --short HEAD)
-        printf "r%s.%s" "$count" "$short"
-    else
-        printf "%s" "$pkgver"
-    fi 
+    local base=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+    local repo="$base/$pkgname"
+    local count=$(git -C $repo rev-list --count HEAD)
+    local short=$(git -C $repo rev-parse --short HEAD)
+    printf "r%s.%s" "$count" "$short"
 }
 
 prepare() {

@@ -18,18 +18,31 @@ has_makepkg() {
 
 
 provision() {
-    echo "// provision"
+    if has_makepkg ; then
+        provision_proper
+    else
+        provision_simple
+    fi
+}
 
-    has_makepkg || return 0    
-    
+provision_proper() {
+    echo "// provision_proper"
     local suno=""
     if is_root ; then
         chown -R nobody $location
         suno="sudo -u nobody"
     fi
-  
     $suno makepkg --log --cleanbuild --install --force
+}
 
+provision_simple() {
+    echo "// provision_simple"
+    if [ -e "$pkgname" ] ; then
+        cd "$pkgname" && git pull
+    else
+        git clone "$source"
+    fi
+    cd $location
 }
 
 version() {
