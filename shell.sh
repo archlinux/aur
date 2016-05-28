@@ -283,7 +283,7 @@ do_prompt() {
 
 run_kill_jobs() {
     log_info "kill jobs [$(jobs)]"
-    local list=$(jobs -p) ; [ -n "$list"] && kill $list 
+    local list=$(jobs -p) ; [ -n "$list" ] && kill $list 
 }
 
 # respond to interrupt
