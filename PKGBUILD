@@ -2,7 +2,7 @@
 
 pkgname=emacs-xwidget-git
 pkgver=25.1.50.r126217
-pkgrel=1
+pkgrel=2
 pkgdesc="The famous editor from xwidget_mvp branch"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emacs/"
@@ -23,6 +23,10 @@ pkgver() {
   cd "$srcdir/$_gitname"
   _mainver=$(grep AC_INIT configure.ac | sed -e 's/^.\+\ \([0-9]\+\.[0-9]\+\.[0-9]\+\).\+$/\1/')
   printf "%s.r%s" "$(echo $_mainver)" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  sed -i 's+SYSTEM_PURESIZE_EXTRA 0+SYSTEM_PURESIZE_EXTRA 512000+' emacs/src/puresize.h
 }
 
 build() {
