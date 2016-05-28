@@ -1,0 +1,13 @@
+[Unit]
+Description=Capture Traffic Netflow Data
+After=network.target
+
+[Service]
+User=flow-tools
+Group=flow-tools
+Type=simple
+EnvironmentFile=-/etc/flow-tools/flow-capture.conf
+ExecStart=/usr/bin/flow-capture -D $OPTIONS
+
+[Install]
+WantedBy=multi-user.target

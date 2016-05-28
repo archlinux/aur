@@ -1,0 +1,13 @@
+post_install() {
+  /usr/bin/systemd-sysusers flow-tools.conf
+  /usr/bin/systemctl daemon-reload
+}
+
+post_upgrade() {
+  /usr/bin/systemctl daemon-reload
+}
+
+post_remove() {
+  /usr/bin/systemctl daemon-reload
+  /usr/bin/userdel flow-tools > /dev/null
+}
