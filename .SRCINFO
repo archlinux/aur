@@ -1,26 +1,24 @@
 pkgbase = kiwiirc
 	pkgdesc = A hand-crafted web-based IRC client that you can enjoy
-	pkgver = 0.9.2
+	pkgver = 0.9.4
 	pkgrel = 1
 	url = https://kiwiirc.com/
 	install = kiwiirc.install
 	arch = any
 	license = AGPL3
 	makedepends = git
-	depends = nodejs>=0.10.0,
+	depends = nodejs>=4.0.0,
 	depends = npm
 	options = emptydirs
 	options = !strip
 	backup = etc/kiwiirc/config.js
-	source = https://github.com/prawnsalad/KiwiIRC/archive/v0.9.2.tar.gz
+	source = https://github.com/prawnsalad/KiwiIRC/archive/v0.9.4.tar.gz
 	source = kiwi.patch
-	source = kiwi.patch.2
 	source = kiwiirc.service
 	source = kiwiirc.conf.sysusers
 	source = kiwiirc.conf.tmpfiles
-	md5sums = d0c34961067b41da944fa0dae2db283d
-	md5sums = 88e6837254d192eb300a3974eeb5d588
-	md5sums = 7da1e40fdaa46d73f9deaecfeef26068
+	md5sums = 1a06e33088ca6ed89f857f7687470761
+	md5sums = 14a75cab7c10f2dd17856ab5a99d3bfc
 	md5sums = bcb28ddb7f0bcc3be830b8045969eb2c
 	md5sums = 593da856bcf9036bc51380b74d9df394
 	md5sums = 803080337de27be8921edd76f15c763c
