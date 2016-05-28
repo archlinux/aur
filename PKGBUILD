@@ -1,18 +1,17 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libbitcoin-client-git
-pkgver=20160426
+pkgver=20160527
 pkgrel=1
 pkgdesc="Bitcoin Client Protocol Library"
 arch=('i686' 'x86_64')
 depends=('boost'
          'boost-libs'
          'czmq'
-         'czmqpp'
          'icu'
          'libbitcoin'
+         'libbitcoin-protocol'
          'libsecp256k1'
-         'libsodium'
          'zeromq')
 makedepends=('autoconf'
              'automake'
@@ -48,6 +47,7 @@ build() {
     --sharedstatedir=/usr/share/libbitcoin-client \
     --localstatedir=/var/lib/libbitcoin-client \
     --with-gnu-ld \
+    --without-examples \
     --without-tests
   make
 }
