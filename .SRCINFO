@@ -1,0 +1,15 @@
+pkgbase = geo-sans-light
+	pkgdesc = Geo Sans Light Font
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.1001freefonts.com/geo_sans_light.font
+	install = geo-sans-light-fonts.install
+	arch = any
+	makedepends = unzip
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://www.1001freefonts.com/d/9711/geo_sans_light.zip
+	md5sums = d6278466cc127edf93c6dfb13ccc6644
+
+pkgname = geo-sans-light
+
