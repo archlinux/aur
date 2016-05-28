@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://www.texmacs.org/"
 license=('GPL')
 depends=('perl' 'guile1.8' 'texlive-core' 'python2' 'libxext' 'freetype2' 'shared-mime-info'
-         'desktop-file-utils' 'qt4')
+         'desktop-file-utils' 'qt4' 'libiconv')
 # do not remove texlive-core dependency, as it is needed!
 optdepends=('transfig: convert images using fig2ps'
             'gawk: conversion of some files'
@@ -20,9 +20,12 @@ optdepends=('transfig: convert images using fig2ps'
             'aspell: spell checking')
 makedepends=('ghostscript')
 source=("${_pkgname}::svn://svn.savannah.gnu.org/texmacs/trunk/src"
-        "fix-m4.patch")
+        "0001-R-plugin-fix-preprocessor.patch"
+        "0002-Fix-macro-name-for-guile.patch"
+        )
 sha1sums=('SKIP'
-          '4c081390ad66b7834a083100881a05463d8b32ad')
+          '6fdcd7f01fc6ab3725b43ae96f673e87e4559600'
+          '2c548e064a7ffd767a81feeb05bbfb87c1948db1')
 options=('!emptydirs' '!ccache')
 provides=('texmacs')
 conflicts=('texmacs')
@@ -38,7 +41,8 @@ prepare() {
 
   cd "${srcdir}/${_pkgname}-build"
 
-  patch -Np1 -i ../fix-m4.patch
+  patch -Np1 -i ../0001-R-plugin-fix-preprocessor.patch
+  patch -Np1 -i ../0002-Fix-macro-name-for-guile.patch
 
   sed -i 's/env python/env python2/' \
     plugins/{mathematica/bin/realpath.py,python/bin/tm_python,sage/bin/tm_sage} \
@@ -46,7 +50,6 @@ prepare() {
   sed -i 's/"python"/"python2"/' plugins/python/progs/init-python.scm
   sed -i '/^LDPATH/d' src/makefile.in
 
-  # sed -i 's/guile18-config/guile-config1.8/g' configure
   sed -e 's/GUILE_BIN="$GUILE_LIB"/GUILE_BIN="$GUILE_LIB$GUILE_VERSION"/g' \
       -e 's/guile18-config/guile-config1.8/g' \
       -i misc/m4/guile.m4
@@ -64,14 +67,14 @@ build() {
   export QMAKE=qmake-qt4
   export MOC=moc-qt4
   export UIC=uic-qt4
-  # export LDFLAGS="$LDFLAGS -lz"
 
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
               --libexecdir=/usr/lib \
               --with-cario \
               --with-imlib2 \
-              --with-sqlite3
+              --with-sqlite3 \
+              LIBS="-ldl"
   make -j8
 }
 
