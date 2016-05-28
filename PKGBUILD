@@ -9,7 +9,7 @@ pkgdesc="Python 3 bindings for the libtorrent library"
 url="http://www.libtorrent.org/python_binding.html"
 arch=('i686' 'x86_64')
 license=('BSD')
-depends=('boost-libs' 'python3' 'libtorrent-rasterbar')
+depends=('boost-libs' 'python3' 'libtorrent-rasterbar=1.1.0')
 makedepends=('boost')
 options=('!emptydirs')
 source=(https://github.com/arvidn/libtorrent/releases/download/libtorrent-1_1/libtorrent-rasterbar-$pkgver.tar.gz)
