@@ -7,7 +7,7 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=pd-l2ork
-pkgver=1660.4f92725
+pkgver=1661.6f43879
 pkgrel=1
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData"
 url="http://l2ork.music.vt.edu/main/?page_id=56"
@@ -24,13 +24,9 @@ conflicts=('pd-l2ork')
 install=pd-l2ork.install
 options=('!makeflags')
 source=("$pkgname::git+https://github.com/pd-l2ork/pd.git"
-	"menu_openfile.patch"
-	"cyclone.patch"
 	"Gem-pix_colorclassify.patch"
 	"RTcmix-pd-LCPLAY-stabilize.patch")
 md5sums=('SKIP'
-         '6eb362b0165fc9fc4409e3db5d2278c2'
-         'da51dc864a7f4bbad2c671362089bbd7'
          '33dc1880e38ac8dbc7aa5075bfe49abd'
          '39c53063dc18681f29b12c08d9c453aa')
 
@@ -41,15 +37,11 @@ pkgver() {
 
 prepare() {
   cd $srcdir/$pkgname
-  # patch to make menu_openfile work again
-  patch -Np1 < $srcdir/menu_openfile.patch
   # check out the latest source of all submodules
   git submodule update --init
   # make the sources compile with gcc 6.1+
   cd $srcdir/$pkgname/Gem && patch -Np1 < $srcdir/Gem-pix_colorclassify.patch
   cd $srcdir/$pkgname/l2ork_addons/rtcmix-in-pd && patch -Np1 < $srcdir/RTcmix-pd-LCPLAY-stabilize.patch
-  # some of the cyclone externals use sys_fopen which pd-l2ork doesn't have
-  cd $srcdir/$pkgname/externals/miXed && patch -Np1 < $srcdir/cyclone.patch
 }
 
 build() {
