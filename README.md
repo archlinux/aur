@@ -106,4 +106,4 @@ how can I review shell actions during boot?
 
 ### List of stable releases
 
-r89
+r89.afd4548-1
