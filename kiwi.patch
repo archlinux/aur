@@ -1,5 +1,18 @@
+ config.example.js                     | 6 +++---
+ kiwi                                  | 7 +------
+ server/helpers/launcher.js            | 9 ++++++++-
+ server_modules/client_file_watcher.js | 4 ++--
+ server_modules/control.js             | 4 ++--
+ server_modules/dnsbl.js               | 2 +-
+ server_modules/example.js             | 2 +-
+ server_modules/force_https.js         | 2 +-
+ server_modules/proxychecker.js        | 2 +-
+ server_modules/stats.js               | 2 +-
+ server_modules/web_agent_debugger.js  | 2 +-
+ 11 files changed, 21 insertions(+), 19 deletions(-)
+
 diff --git a/config.example.js b/config.example.js
-index f432409..1049700 100644
+index 452b13c..57ad499 100644
 --- a/config.example.js
 +++ b/config.example.js
 @@ -6,7 +6,7 @@ conf.group = "";
@@ -46,11 +59,36 @@ index ddcdfdf..dca2dcc 100755
  ret=$?
  
  exit $ret
+diff --git a/server/helpers/launcher.js b/server/helpers/launcher.js
+index d25a3a3..bff8623 100644
+--- a/server/helpers/launcher.js
++++ b/server/helpers/launcher.js
+@@ -1,5 +1,5 @@
+ var kiwi_app = '../kiwi.js';
+-var pidfile = '../../kiwiirc.pid';
++var pidfile = '/run/kiwiirc/kiwiirc.pid';
+ var pidfile_arg;
+ 
+ // Check if a pidfile has been set as an argument
+@@ -16,6 +16,13 @@ if (process.argv.indexOf('-p') > -1) {
+     }
+ }
+ 
++try {
++    process.setgid('kiwiirc');
++    process.setuid('kiwiirc');
++} catch (e) {
++    console.error('Cannot switch to user kiwiirc. Try running as root.')
++    process.exit();
++}
+ 
+ var daemon = require('daemonize2').setup({
+     main: kiwi_app,
 diff --git a/server_modules/client_file_watcher.js b/server_modules/client_file_watcher.js
-index 2c3a017..47ad093 100644
+index 2c3a017..d0601ae 100644
 --- a/server_modules/client_file_watcher.js
 +++ b/server_modules/client_file_watcher.js
-@@ -6,12 +6,12 @@
+@@ -6,7 +6,7 @@
  
  var fs = require('fs');
  var path = require('path');
