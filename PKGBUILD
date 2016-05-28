@@ -2,7 +2,7 @@
 # Contributor: rasmus <rasmus . pank at gmail . com>
 
 pkgname=mailnag
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="An extensible mail notification daemon"
 arch=('any')
@@ -16,8 +16,8 @@ optdepends=('networkmanager: connectivity detection',
         'mailnag-goa-plugin: GNOME Online Accounts integration',
         'mailnag-gnome-shell: tighter GNOME 3 integration')
 makedepends=('gettext')
-source=('https://github.com/pulb/mailnag/archive/v1.2.0.tar.gz')
-md5sums=('afde260255bd8e2ceb72ebe562a1f4ae')
+source=('https://github.com/pulb/mailnag/archive/v1.2.1.tar.gz')
+md5sums=('07e5cd93105f7e22ddc0a313b6518174')
 install='mailnag.install'
 
 package() {
