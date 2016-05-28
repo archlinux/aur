@@ -4,7 +4,7 @@
         
 pkgname=python-libtorrent-rasterbar
 pkgver=1.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python 3 bindings for the libtorrent library"
 url="http://www.libtorrent.org/python_binding.html"
 arch=('i686' 'x86_64')
