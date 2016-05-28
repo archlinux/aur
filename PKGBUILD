@@ -1,15 +1,14 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=makehuman
-pkgver=1.0.2
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Parametrical modeling program for creating human bodies"
 arch=('any')
 url="http://www.makehuman.org/"
 depends=('python2-numpy' 'python2-pyqt4' 'python2-opengl')
 makedepends=('mercurial')
 license=('AGPL3')
-#source=("hg+https://bitbucket.org/MakeHuman/makehuman#tag=$pkgver" \
-source=("hg+https://bitbucket.org/MakeHuman/makehuman#revision=66c8039" \
+source=("hg+https://bitbucket.org/MakeHuman/makehuman#tag=$pkgver" \
         "makehuman.desktop" "makehuman.sh")
 md5sums=('SKIP'
          'f54fdfbc6c783effc4624808d2547563'
