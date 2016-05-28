@@ -65,6 +65,26 @@ game_command() {
 	${SUDO_CMD} screen -S "${SESSION_NAME}" -X stuff "`printf \"$*\r\"`"
 }
 
+# Check whether there are player on the server through list
+is_player_online() {
+	game_command list
+	sleep 0.6
+	# The list command prints a line containing the usernames after the last occurrence of ": "
+	# and since playernames may not contain this string the clean player-list can be easily retrieved.
+	# Otherwiese check the first digit after the last occurrence of "There are". If it is 0 then there
+	# are no players on the server. Should this test fail as well. Assume that a player is online.
+	if [[ -z $(tail -n 1 "${LOGPATH}/latest.log" | sed -r -e 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' -e 's/.*\: //' | tr -d '\n') ]]; then
+		# No player is online
+		return 0;
+	elif [[ $(tail -n 10 "${LOGPATH}/latest.log" | grep "There are" | sed -r -e '$!d' -e 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' -e 's/.*\: //' -e 's/^([^.]+).*$/\1/; s/^[^0-9]*([0-9]+).*$/\1/' | tr -d '\n') -gt 0 ]]; then
+		# No player is online
+		return 0;
+	else
+		# A player is online (or it could not be determined)
+		return 1;
+	fi
+}
+
 # Check whether the server is visited by a player otherwise shut it down
 idle_server_daemon() {
 	# This function is run within a screen session of the GAME_USER therefore SUDO_CMD can be omitted
@@ -88,9 +108,8 @@ idle_server_daemon() {
 			if [[ "$(screen -S "${SESSION_NAME}" -ls | sed -n 2p | awk '{ print $2 }')" == "(Attached)" ]]; then
 				# An administrator is connected to the console, pause player checking
 				echo "An admin is connected to the console. Pause player checking."
-			# The list command prints a line containing the usernames after the last occurrence of ": "
-			# and since playernames may not contain this string the clean player-list can be easily retrieved.
-			elif [[ -z $(SUDO_CMD="" game_command list; sleep 0.6; tail -n 1 "${LOGPATH}/latest.log" | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' | sed 's/.*\: //' | tr -d '\n') ]]; then
+			# Check for active player
+			elif SUDO_CMD="" is_player_online; then
 				# No player was seen on the server through list
 				no_player=$(( no_player + CHECK_PLAYER_TIME ))
 				# Stop the game server if no player was active for at least ${IDLE_IF_TIME}
@@ -190,9 +209,8 @@ server_stop() {
 	if [[ $? -eq 0 ]]; then
 		# Game server is up and running, gracefully stop the server when there are still active players
 
-		# The list command prints a line containing the usernames after the last occurrence of ": "
-		# and since playernames may not contain this string the clean player-list can be easily retrieved.
-		if [[ -z $(game_command list; sleep 0.6; tail -n 1 "${LOGPATH}/latest.log" | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' | sed 's/.*\: //' | tr -d '\n') ]]; then
+		# Check for active player
+		if is_player_online; then
 			# No player was seen on the server through list
 			echo -en "Server is going down..."
 			game_command stop

@@ -1,7 +1,7 @@
 pkgbase = minecraft-server
 	pkgdesc = Minecraft server unit files, script, and jar
 	pkgver = 1.9.4
-	pkgrel = 3
+	pkgrel = 4
 	url = http://minecraft.net/
 	install = minecraft-server.install
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = minecraft-server
 	depends = screen
 	depends = sudo
 	depends = bash
+	depends = awk
 	optdepends = tar: needed in order to create world backups
 	optdepends = netcat: required in order to suspend an idle server
 	conflicts = minecraft-server-systemd
@@ -27,6 +28,6 @@ pkgbase = minecraft-server
 	md5sums = fef6fadd0739ae03ff71ba61025be207
 	md5sums = afb84ad0316af0aca421b36eaa2bbd90
 	md5sums = 00045683c06924d765ac14887218ffcc
-	md5sums = 74e5b9dc250b66bff194bed3ebf1c61e
+	md5sums = 7605d5f67e889f6c3743f63ac840ab54
 
 pkgname = minecraft-server

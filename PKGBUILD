@@ -4,12 +4,12 @@
 
 pkgname=minecraft-server
 pkgver=1.9.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Minecraft server unit files, script, and jar"
 arch=('any')
 url="http://minecraft.net/"
 license=('custom')
-depends=('java-runtime-headless' 'screen' 'sudo' 'bash')
+depends=('java-runtime-headless' 'screen' 'sudo' 'bash' 'awk')
 optdepends=("tar: needed in order to create world backups"
 	"netcat: required in order to suspend an idle server")
 conflicts=('minecraft-server-systemd' 'minecraft-canary')
@@ -27,7 +27,7 @@ md5sums=('292feb3085809e714da2ca75514b9d5b'
          'fef6fadd0739ae03ff71ba61025be207'
          'afb84ad0316af0aca421b36eaa2bbd90'
          '00045683c06924d765ac14887218ffcc'
-         '74e5b9dc250b66bff194bed3ebf1c61e')
+         '7605d5f67e889f6c3743f63ac840ab54')
 
 _game="minecraft"
 _server_root="/srv/minecraft"
