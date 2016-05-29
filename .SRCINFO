@@ -1,7 +1,7 @@
 pkgbase = cuda_memtest
 	pkgdesc = A GPU memory test utility for NVIDIA and AMD GPUs. OpenCL version.
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cudagpumemtest.sourceforge.net/
 	arch = i686
 	arch = x86_64

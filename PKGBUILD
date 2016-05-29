@@ -2,7 +2,7 @@
 
 pkgname=cuda_memtest
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A GPU memory test utility for NVIDIA and AMD GPUs. OpenCL version."
 arch=('i686' 'x86_64')
 url="http://cudagpumemtest.sourceforge.net/"
@@ -26,6 +26,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+  CPPFLAGS="-std=gnu++98 $CPPFLAGS"
   make ocl_memtest
 }
 
