@@ -1,4 +1,4 @@
-# Maintainer: JP-Ellis <coujellis@gmail.com>
+# Maintainer: JP-Ellis <josh@jpellis.me>
 
 pkgname=madgraph-pythia-pgs
 pkgver=2.4.4
