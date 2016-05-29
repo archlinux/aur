@@ -13,3 +13,4 @@ pkgbase = nuvola-app-mixcloud-git
 	sha256sums = SKIP
 
 pkgname = nuvola-app-mixcloud-git
+

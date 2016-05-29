@@ -19,7 +19,6 @@ arch=('any')
 depends=('nuvolaplayer-git')
 makedepends=('git' 'lasem' 'scour')
 sha256sums=('SKIP')
-
 source=("${_gitname}::git+https://github.com/tiliado/${_gitname}.git")
 url="https://github.com/tiliado/${_gitname}"
 
@@ -32,12 +31,10 @@ pkgver() {
 }
 
 package() {
-  package() {
-    cd "${_gitname}"
-    # Optimize SVG icons (scour), generate PNG icons (lasem), build and install.
-    make install DEST="${pkgdir}/usr/share/nuvolaplayer3/web_apps"
+  cd "${_gitname}"
+  # Optimize SVG icons (scour), generate PNG icons (lasem), build and install.
+  make install DEST="${pkgdir}/usr/share/nuvolaplayer3/web_apps"
 
-    # Install all available licenses.
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE*
-  }
+  # Install all available licenses.
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE*
 }
