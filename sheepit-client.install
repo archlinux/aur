@@ -1,0 +1,4 @@
+post_install() {
+    systemd-sysusers sheepit-client.conf
+    [[ -d /var/lib/sheepit-client ]] || install -dm 700 -o sheepit-client -g sheepit-client /var/lib/sheepit-client
+}
