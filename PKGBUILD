@@ -2,7 +2,7 @@
 # Before maintainer: Todor Imreorov for github <blurymind@gmail.com>
 pkgname=gdevelop-git
 pkgver=20160529
-pkgrel=1
+pkgrel=2
 pkgdesc="A full featured, open source game development software, allowing to create HTML5 and native games without knowing a programming language. All the game logic is made thanks to an intuitive and powerful event based system."
 arch=('x86_64')
 url=http://www.compilgames.net
