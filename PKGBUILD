@@ -3,7 +3,7 @@
 
 pkgname=openttd-jgrpp-git
 _installname=openttd
-pkgver=1.6.0+r27564+p0.13.2+r3.0f11908
+pkgver=1.6.0+r27582+p0.13.2+r22.09291a3
 pkgrel=1
 pkgdesc="OpenTTD with JGR's patch pack"
 arch=('i686' 'x86_64')
@@ -31,7 +31,7 @@ pkgver() {
     _openttdver="$(cat "$srcdir"/tags.txt |
                    awk '$1<='"$_openttdrev"' {print $3; exit}' |
                    sed -e 's/[^0-9a-z.]//ig' -e 's/./\L&/g')"
-    rm "$srcdir"/tags.txt  # make sure it is re-downloaded nect time the package is built
+    rm -f {"$srcdir","$startdir"}/tags.txt  # make sure it is re-downloaded next time the package is built
     _patchtag="$(git describe --abbrev=0 --tags)"
     _patchver="$(echo $_patchtag  | sed -e 's/^[a-z-]*//')"
     _patchcommits="$(git log "$_patchtag".. --pretty=oneline | wc -l)"
@@ -43,8 +43,6 @@ pkgver() {
 
 build() {
     cd $_gitname
-    
-#     sed -i'' -E 's|\#include \"safeguards\.h\"|#include <string>\n#include "safeguards.h"|' src/crashlog.cpp
     
     ./configure \
         --prefix-dir=/usr \
