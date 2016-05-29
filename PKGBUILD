@@ -9,28 +9,25 @@
 
 pkgname=tp_smapi-lts
 _pkgname=tp_smapi
+__pkgname=tp-smapi
+pkgver=0.42
 _extramodules=/usr/lib/modules/extramodules-4.4-lts
-pkgver=0.41
-pkgrel=51
-pkgdesc="linux-lts modules for ThinkPad's SMAPI functionality"
+pkgrel=1
+pkgdesc="Modules for ThinkPad's SMAPI functionality"
 arch=('i686' 'x86_64')
 url='https://github.com/evgeni/tp_smapi'
 license=('GPL')
 depends=('linux-lts>=4.4.9' 'linux-lts<4.5')
 makedepends=('linux-lts-headers>=4.4.9' 'linux-lts-headers<4.5')
 install="${pkgname}.install"
-source=("https://github.com/downloads/evgeni/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('63c683415c764568f6bf17c7eabe4752')
+source=("https://github.com/evgeni/$_pkgname/archive/$__pkgname/$pkgver.tar.gz")
+md5sums=('6a51d3aa459ad7a6ebfbb8c29527b3ee')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "$srcdir/$_pkgname-$__pkgname-$pkgver"
 
   _kernver=$(< "${_extramodules}/version")
-
-  sed -ri -e "s/^(KVER\s*:=).*$/\1 ${_kernver}/" \
-	  -e "s#^(KBASE\s*:=).*\$#\1 ${_extramodules%/*}/${_kernver}#" Makefile
-
-  make HDAPS=1
+  make HDAPS=1 KVER="$_kernver" KBASE="/usr/lib/modules/$_kernver"
 }
 
 package() {
@@ -38,7 +35,7 @@ package() {
 
   make -C "${_extramodules%/*}/${_kernver}/build" \
     INSTALL_MOD_PATH="${pkgdir}/${_extramodules%%/lib/*}" \
-    M="${srcdir}/${_pkgname}-${pkgver}" modules_install
+    M="$srcdir/$_pkgname-$__pkgname-$pkgver" modules_install
 
   cd "${pkgdir}/${_extramodules%/*}"
   mv "${_kernver}/extra" "${_extramodules##*/}"
@@ -50,7 +47,4 @@ package() {
   # load module on startup
   echo tp_smapi > "${srcdir}/${pkgname}.conf"
   install -Dm644 "${srcdir}/${pkgname}.conf" "${pkgdir}/usr/lib/modules-load.d/${pkgname}.conf"
-
-  # update kernel version in install file
-  sed -ri "s#^(extramodules=).*\$#\1${_extramodules}#" "${startdir}/${pkgname}.install"
 }
