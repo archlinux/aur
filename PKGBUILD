@@ -1,7 +1,7 @@
 pkgname=turbo-spork
 pkgdesc="A simple RTS game"
 pkgrel=1
-pkgver=0.2
+pkgver=0.3
 arch=('any')
 url="https://github.com/fictional-pancake/$pkgname"
 depends=("java-runtime")
@@ -10,7 +10,7 @@ source=(
 	"$url/archive/v$pkgver.zip"
 )
 md5sums=(
-	"7afc54eed37e71bea7acca98c6ec9a26"
+	"ae565e32304978281ea841142469db75"
 )
 package () {
 	mkdir -p $pkgdir/usr/share/java/turbo-spork
