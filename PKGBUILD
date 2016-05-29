@@ -13,8 +13,8 @@ depends=()
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=('gtk' 'webkitgtk2' 'jdk8-openjdk')
-conflicts=()
+provides=('vega' 'gtk' 'webkitgtk2' 'jdk8-openjdk')
+conflicts=('vega')
 replaces=()
 backup=()
 options=()
@@ -36,3 +36,4 @@ build() {
 package() {
 	sudo ln -sv /usr/share/vega/Vega /usr/bin/vega
 }
+
