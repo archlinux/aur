@@ -8,7 +8,7 @@ pkgbase = python2-mutagen-1.30
 	makedepends = python2-setuptools
 	depends = python2
 	provides = python2-mutagen=1.30
-	conflicts = python2-mutagen
+	conflicts = python2-mutagen,mutagen
 	source = https://pypi.python.org/packages/source/m/mutagen/mutagen-1.30.tar.gz
 	md5sums = 2c2069bd6a8245f99845f160da37f2ac
 

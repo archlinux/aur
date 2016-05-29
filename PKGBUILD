@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('python2')
 makedepends=('python2-setuptools')
 provides=("python2-mutagen=$pkgver")
-conflicts=('python2-mutagen')
+conflicts=('python2-mutagen','mutagen')
 source=("https://pypi.python.org/packages/source/m/$_name/$_name-$pkgver.tar.gz")
 md5sums=('2c2069bd6a8245f99845f160da37f2ac')
 
