@@ -1,0 +1,13 @@
+pkgbase = unix-privesc-check
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://pentestmonkey.net/tools/audit/unix-privesc-check
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	provides = unix-privesc-check
+	source = http://pentestmonkey.net/tools/unix-privesc-check/unix-privesc-check-1.4.tar.gz
+	md5sums = SKIP
+
+pkgname = unix-privesc-check
+
