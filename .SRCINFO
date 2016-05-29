@@ -1,9 +1,8 @@
 pkgbase = gxmessage-gtk2
 	pkgdesc = A GTK2 based xmessage clone for GTK2.
 	pkgver = 2.20.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://homepages.ihug.co.nz/~trmusson/programs.html#gxmessage
-	install = gxmessage.install
 	arch = i686
 	arch = x86_64
 	license = GPL

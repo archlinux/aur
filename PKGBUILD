@@ -6,7 +6,7 @@
 pkgname=gxmessage-gtk2
 _pkgname=gxmessage
 pkgver=2.20.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK2 based xmessage clone for GTK2."
 arch=('i686' 'x86_64')
 url="http://homepages.ihug.co.nz/~trmusson/programs.html#gxmessage"
@@ -15,7 +15,6 @@ depends=('gtk2' 'desktop-file-utils')
 makedepends=('pkgconfig' 'intltool')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-install=$_pkgname.install
 source=(http://homepages.ihug.co.nz/~trmusson/stuff/$_pkgname-$pkgver.tar.gz
         $_pkgname.desktop)
 md5sums=('dbef00c5e9dd1fb3463b08044be7ae8e'
