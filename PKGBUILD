@@ -4,19 +4,20 @@
 
 pkgbase=gtk3-ubuntu-multilib
 pkgname=({lib32-,}gtk3-ubuntu-multilib)
-pkgver=3.18.8
-_debrel=1ubuntu2
-pkgrel=4
+ubuntuver=3.18.9
+pkgver=3.20.3
+_debrel=1ubuntu3
+pkgrel=5
 pkgdesc="GObject-based multi-platform toolkit with Canonical patchset (multarch)"
 depends=(adwaita-icon-theme gtk-update-icon-cache shared-mime-info)
 arch=(i686 x86_64)
 url="https://launchpad.net/ubuntu/+source/gtk+3.0/"
 license=(LGPL)
 source=(http://ftp.gnome.org/pub/gnome/sources/gtk+/${pkgver:0:4}/gtk+-$pkgver.tar.xz
-        https://launchpad.net/ubuntu/+archive/primary/+files/gtk+3.0_$pkgver-$_debrel.debian.tar.xz
+        https://launchpad.net/ubuntu/+archive/primary/+files/gtk+3.0_$ubuntuver-$_debrel.debian.tar.xz
         settings.ini)
-sha256sums=('1c53ef1bb55364698f7183ecd185b547f92f4a3a7abfafd531400232e2e052f8'
-            'cb878e3816b5dd8cbee7133efeb4de60430e4e46855191a6badfd5b61100fb01'
+sha256sums=('3834f3bf23b260b3e5ebfea41102e2026a8af29e36c3620edf4a5cf05e82f694'
+            '42ed3bb7e66394612a0eeb25e75004f80ad7bcb580b999f65025341406b00733'
             '14369dfd1d325c393e17c105d5d5cc5501663277bd4047ea04a50abb3cfbd119')
 
 prepare() {
@@ -24,6 +25,12 @@ prepare() {
 
   # Apply Patches
   for i in $(grep -v '#' "$srcdir/debian/patches/series" | sort); do
+    [[ "${i}" =~ ^# || -z "${i}" || "${i}" == *git* ]] && continue # Skip comments, newlines, and git patches
+    [[ "${i}" == message-dialog-restore-traditional-look-on-unity.patch ]] && continue
+    [[ "${i}" == uimanager-guard-against-nested-node-updates.patch ]] && continue
+    [[ "${i}" == unity-border-radius.patch ]] && continue
+    [[ "${i}" == unity-headerbar-maximized-mode.patch ]] && continue
+    [[ "${i}" == x-canonical-accel.patch ]] && continue
     msg2 "Applying $i ..."
     patch -p1 -i "$srcdir/debian/patches/$i"
   done
