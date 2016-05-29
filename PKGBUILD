@@ -1,7 +1,7 @@
 # Maintainer: whike <sebastian.tauch@aborium.com>
  
 pkgname=flashplayer-standalone
-pkgver=11.2.202.616
+pkgver=11.2.202.621
 pkgrel=1
 pkgdesc="Macromedia standalone flash player (nonfree)"
 arch=(i686 x86_64)
@@ -16,7 +16,7 @@ install=$pkgname.install
 source=(http://fpdownload.macromedia.com/pub/flashplayer/updaters/11/flashplayer_11_sa.i386.tar.gz
     license.pdf::http://www.adobe.com/products/eulas/pdfs/PlatformClients_PC_WWEULA-MULTI-20110809_1357.pdf
     flashplayer.desktop)
-sha512sums=('518b3dd494af2b10404b6039385ad304e6273f6bad3e57e5f77710c810f3e29c8220920ea221c1e9012a2e795fd0da4db7d419946ce8db1db19ccaa744e9ca46'
+sha512sums=('6fecc93be157ca74398b43dfb1377f7a403c0a5390f3b5637321bed355b7ad3dbb8b4786ac1fc6fb2a9f60ecdbbab1c12ac2479c58bcb9d9805bdffad047c20c'
     'a70fd7127f0f9d64f2c872d1e4634d93e24fdea165abfbe20724e68c1b7297df46362cb449b5a78d0eb4a68e43426965359ca93fd4ba4848d2542e5505bcd2fe'
     'e4139b265896ebd276b4c7931d5718db7ac8b25e5e86decb2161c94d2b6b410dc7160667cda3a330ece40e64e7809d7afc5ddcc94e09352e84359fa4c7fe3e2d')
  
