@@ -1,0 +1,4 @@
+monkeysphere
+*.pkg.tar.xz
+pkg
+src

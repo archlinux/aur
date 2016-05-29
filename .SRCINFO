@@ -1,0 +1,20 @@
+pkgbase = monkeysphere-git
+	pkgdesc = Leverage the OpenPGP web of trust for OpenSSH and Web authentication
+	pkgver = 20150505
+	pkgrel = 1
+	url = http://web.monkeysphere.info/
+	install = monkeysphere.install
+	arch = any
+	license = GPL3
+	depends = gnupg
+	depends = lockfile-progs
+	depends = perl-crypt-openssl-rsa
+	depends = perl-digest-sha1
+	depends = netcat
+	provides = monkeysphere
+	conflicts = monkeysphere
+	source = git://git.monkeysphere.info/monkeysphere
+	sha256sums = SKIP
+
+pkgname = monkeysphere-git
+
