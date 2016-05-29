@@ -16,7 +16,7 @@ sha256sums=('bdf26c4605927007b08f41eae12f218e2053297cfda518eb0e865af289e54ffc')
 build () {
     cd "${srcdir}/MadAnalysis"
     make
-    find . -type f -name "*.o" | xargs rm -f
+    make clean
 }
 
 package() {
