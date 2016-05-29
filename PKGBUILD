@@ -1,22 +1,26 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 # Contributor: Tianjiao Yin <ytj000+aur@gmail.com>
 
-_plugin_name=unmht
-pkgname=firefox-extension-${_plugin_name}
+_dver=8051
+pkgname=firefox-extension-unmht
 pkgver=8.1.0
-pkgrel=3
+pkgrel=1
 pkgdesc="view MHT (MHTML) web archive format files, and save complete web pages, including text and graphics, into a single MHT file"
-license=('MPL')
-arch=('any')
-url="https://addons.mozilla.org/firefox/addon/${_plugin_name}"
+url='https://addons.mozilla.org/firefox/addon/unmht/'
 depends=("firefox")
 makedepends=('unzip')
-source=("https://addons.cdn.mozilla.net/user-media/addons/8051/${_plugin_name}-${pkgver}-sm+tb+fx+an.xpi")
+license=('MPL2')
+arch=('any')
+source=("https://addons.mozilla.org/firefox/downloads/latest/${_dver}/addon-${_dver}-latest.xpi")
 sha256sums=('f47f77e04e9938560c50e4684557ebe4c9355b6cacea430ce91d8d16f88e85b3')
-noextract=("${_plugin_name}-${pkgver}-sm+tb+fx+an.xpi")
+noextract=(addon-${_dver}-latest.xpi)
+
+pkgver() {
+    sed -n '/.*<em:version>\(.*\)<\/em:version>.*/{s//\1/p;q}' install.rdf | cut -f 1 -d-
+}
 
 prepare(){
-    unzip -qqo ${_plugin_name}-${pkgver}-sm+tb+fx+an.xpi
+    unzip -qqo addon-${_dver}-latest.xpi
 }
 
 package() {
