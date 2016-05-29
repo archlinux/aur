@@ -1,6 +1,6 @@
 pkgbase = lightsd
 	pkgdesc = Daemon to control your LIFX smart bulbs via a JSON-RPC API
-	pkgver = 1.1.2
+	pkgver = 1.2.0-rc.1
 	pkgrel = 1
 	epoch = 1
 	url = https://www.github.com/lopter/lightsd/
@@ -12,8 +12,8 @@ pkgbase = lightsd
 	depends = libevent>=2.0.19
 	optdepends = python: to run the interactive lightsc.py example client
 	optdepends = ipython: makes lightsc.py more user-friendly
-	source = https://github.com/lopter/lightsd/archive/1.1.2.tar.gz
-	sha256sums = ca8ce8fb87b896fcc9dad6b0512c061a150c1138e8a8554b60c43f4d11fce634
+	source = https://downloads.lightsd.io/releases/lightsd-1.2.0-rc.1.tar.gz
+	sha256sums = 1902996841122f353360b1cdc4e632a45fc164d47c6d56ff8e3ae855c460c6e6
 
 pkgname = lightsd
 
