@@ -1,0 +1,14 @@
+# Patch Minetest to recognize /usr/share/minetest for mods.
+# NOTE: will not run if the transaction is interrupted for any reason
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = minetest
+Target = minetest-git
+
+[Action]
+Depends = minetest
+When = PostTransaction
+Exec = /bin/sh -c 'cd / && patch -p1 -i /usr/share/libalpm/scripts/minetest-usrdir_patch.patch'

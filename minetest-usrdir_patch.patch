@@ -1,0 +1,11 @@
+--- a/usr/share/minetest/builtin/mainmenu/modmgr.lua	2016-01-29 23:03:40.107417674 +0100
++++ b/usr/share/minetest/builtin/mainmenu/modmgr.lua	2016-01-29 23:03:15.260751080 +0100
+@@ -410,6 +410,8 @@
+ 		get_mods(modpath,global_mods)
+ 	end
+ 
++	get_mods("/usr/share/minetest/mods",global_mods)
++
+ 	for i=1,#global_mods,1 do
+ 		global_mods[i].typ = "global_mod"
+ 		table.insert(retval,global_mods[i])
