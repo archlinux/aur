@@ -12,7 +12,7 @@ source=('git+https://github.com/mwilck/proxyenv.git')
 sha256sums=('SKIP')
 makedepends=('git' 'python-setuptools')
 provides=('python-proxyenv')
-conflicts=('python-proxyenv')
+conflicts=('python-proxyenv' 'python2-proxyenv-git')
 
 pkgver() {
   cd proxyenv
