@@ -3,7 +3,7 @@
 pkgname=python-htpasswd-git
 pkgver=.r31.ef677a5
 pkgrel=1
-pkgdesc='Library for working with htpasswd user (only basic authorization) and group files'
+pkgdesc='Python 3 Library for working with htpasswd user (only basic authorization) and group files'
 arch=('any')
 url='https://github.com/thesharp/htpasswd'
 license=('custom')
