@@ -2,16 +2,15 @@
 # Contributor: Andrew LeCain dread@csh.rit.edu
 
 pkgname=screen-message
-pkgver=0.23
+pkgver=0.24
 pkgrel=1
 pkgdesc="Displays a short text fullscreen as large and as quickly as possible."
 arch=('i686' 'x86_64')
 url="http://www.joachim-breitner.de/projects"
 license=('GPL')
 depends=('gtk3')
-install="$pkgname.install"
 source=("http://www.joachim-breitner.de/archive/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('6e9793e40ab4f266840fea7064e93891')
+md5sums=('359f4d1d684a99026246095ed703d220')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
