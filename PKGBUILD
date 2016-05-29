@@ -4,7 +4,7 @@
 pkgname=chicken-numbers
 _pkgname=numbers
 pkgver=4.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Full numeric tower support'
 arch=('i686' 'x86_64')
 url='http://wiki.call-cc.org/eggref/4/numbers'
@@ -23,8 +23,7 @@ package() {
     chicken-install -p "$pkgdir/usr"
 
     # Modify setup-info file to use the typical install path.
-    local pfx=$(echo "$pkgdir/usr$pkgdir" | sed -e 's/[]\/$*.^|[]/\\&/g')
-    find "$pkgdir/usr" -name "${_pkgname}.setup-info" -exec sed -e "s/$pfx//g" -i {} \;
+    find "$pkgdir/usr" -name "$_pkgname.setup-info" -exec sed -e "s|$pkgdir||g" -i {} \;
 
     # Extract the license from the source and install it.
     sed -n '3,27p' numbers.scm | sed 's/..\?//' > LICENSE
