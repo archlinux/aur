@@ -2,11 +2,12 @@
 # Contributor: Christoph Siegenthaler <csi@gmx.ch>
 pkgname=pcal
 pkgver=4.11.0
-pkgrel=3
-pkgdesc="Pcal is a calendar-generation program which produces nice-looking PostScript output"
+pkgrel=4
+pkgdesc="A calendar-generation program which produces nice-looking PostScript output"
 url="http://pcal.sourceforge.net/"
 license=('unknown')
 arch=('i686' 'x86_64')
+depends=('glibc')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tgz")
 md5sums=('0ed7e9bec81fe3bdd62f8af283bef704')
  
