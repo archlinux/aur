@@ -1,7 +1,7 @@
 pkgbase = duma
 	pkgdesc = Multi-platform memory debugging library (Detect Unintended Memory Access)
 	pkgver = 2.5.15
-	pkgrel = 2
+	pkgrel = 3
 	url = http://duma.sourceforge.net/
 	arch = i686
 	arch = x86_64
