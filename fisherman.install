@@ -7,10 +7,6 @@ Remove the following line from your fish config (usually ~/.config/fish/config.f
 
 source /usr/share/fish/config-fisherman.fish
 
-And run:
-
-fisher-me-up
-
 You will have to install all your plugins manually again.
 "
 }
@@ -22,6 +18,6 @@ function post_upgrade {
 function post_remove {
   echo "
 Remember that your plugins and Fisherman config still reside in your home directory,
-usually ~/.config/fish/ and ~/.config/fisherman.
+usually ~/.config/fish/.
 "
 }
