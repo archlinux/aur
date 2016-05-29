@@ -1,0 +1,13 @@
+pkgbase = cinnamon-theme-numix-darkred
+        pkgdesc = A Cinnamon Theme
+        pkgver = 0.2
+        pkgrel = 1
+        url = https://cinnamon-spices.linuxmint.com/themes/view/496
+        arch = any
+        license = unknown
+        makedepends = unzip
+        depends = cinnamon
+        source = https://cinnamon-spices.linuxmint.com/uploads/themes/054P-KVVX-JJN7.zip
+        md5sums = SKIP
+
+pkgname = cinnamon-theme-numix-darkred
