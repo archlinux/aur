@@ -4,7 +4,7 @@ Documentation=https://www.sheepit-renderfarm.com/
 After=network.target
 
 [Service]
-User=sheepit
+User=sheepit-client
 ExecStart=/usr/bin/sheepit-client -config /etc/conf.d/sheepit-client
 RestartSec=10
 Restart=on-failure

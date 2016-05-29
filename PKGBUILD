@@ -2,7 +2,7 @@
 
 pkgname=sheepit-client-git
 pkgver=3.3.2r200.358ec13
-pkgrel=1
+pkgrel=2
 pkgdesc="Client for the free and distributed render farm"
 arch=('i686' 'x86_64')
 url="https://www.sheepit-renderfarm.com/"
@@ -22,7 +22,7 @@ md5sums=('SKIP'
          'a30b3ba1c40b2063ccab54b65a7b8e09'
          'ade86db2b906f3468e014b28ebdd36d6'
          '7ffbac5dffd3ffcf04ffba3c0c1f5bd2'
-         'de9bc913315eee47c88b119e49279771')
+         '9ee9b4ddbac31567f63520beb4d5628f')
 
 pkgver() {
         cd "$srcdir/${pkgname%-git}"
