@@ -38,7 +38,7 @@ check() {
 
 package() {
   set -u
-  depends=("${_pyver}") # "${_pydepends[@]}")
+  #depends=("${_pyver}") # "${_pydepends[@]}")
   cd "${_srcdir}"
   ${_pyver} setup.py install --root="${pkgdir}" --optimize=1
   #install -Dpm644 'LICENSE' "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
