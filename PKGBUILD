@@ -1,6 +1,6 @@
 # Maintainer: Hythlodaeus <matteodelseppiaomm@gmail.com>
 
-pkgname=Vega
+pkgname=vega
 pkgver=1.0
 pkgrel=1
 epoch=
