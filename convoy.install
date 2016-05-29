@@ -1,0 +1,8 @@
+post_install(){
+  [[ -d /etc/docker/plugins ]] || mkdir -p /etc/docker/plugins
+  echo "unix:///var/run/convoy/convoy.sock" > /etc/docker/plugins/convoy.spec
+}
+
+post_remove(){
+  rm /etc/docker/plugins/convoy.spec
+}
