@@ -8,8 +8,8 @@
 # Please don't flag out-of-date!
 pkgname=nuvola-app-mixcloud-git
 pkgdesc='Mixcloud integration for Nuvola Player 3 from Github'
-pkgver=3.0.r0.g1c5126b
-pkgrel=1
+pkgver=latest
+pkgrel=2
 
 license=('BSD')
 
@@ -20,7 +20,7 @@ depends=('nuvolaplayer-git')
 makedepends=('git' 'lasem' 'scour')
 sha256sums=('SKIP')
 
-source=("git+https://github.com/tiliado/${_gitname}.git")
+source=("${_gitname}::git+https://github.com/tiliado/${_gitname}.git")
 url="https://github.com/tiliado/${_gitname}"
 
 pkgver() {

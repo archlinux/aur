@@ -1,7 +1,7 @@
 pkgbase = nuvola-app-mixcloud-git
 	pkgdesc = Mixcloud integration for Nuvola Player 3 from Github
-	pkgver = 3.0.r0.g1c5126b
-	pkgrel = 1
+	pkgver = latest
+	pkgrel = 2
 	url = https://github.com/tiliado/nuvola-app-mixcloud
 	arch = any
 	license = BSD
@@ -9,8 +9,7 @@ pkgbase = nuvola-app-mixcloud-git
 	makedepends = lasem
 	makedepends = scour
 	depends = nuvolaplayer-git
-	source = git+https://github.com/tiliado/nuvola-app-mixcloud.git
+	source = nuvola-app-mixcloud::git+https://github.com/tiliado/nuvola-app-mixcloud.git
 	sha256sums = SKIP
 
 pkgname = nuvola-app-mixcloud-git
-
