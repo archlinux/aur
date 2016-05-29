@@ -1,0 +1,14 @@
+pkgbase = numix-cinnamon-blue-2
+        pkgdesc = A Cinnamon Theme
+        pkgver = 1.0
+        pkgrel = 1
+        url = https://cinnamon-spices.linuxmint.com/themes/view/472
+        arch = any
+        license = unknown
+        depends = cinnamon
+        depends = unzip
+        source = https://cinnamon-spices.linuxmint.com/uploads/themes/7OYU-MDLA-SZLD.zip
+        md5sums = SKIP
+
+pkgname = numix-cinnamon-blue-2
+
