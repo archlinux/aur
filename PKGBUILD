@@ -15,7 +15,7 @@ depends=('gcc' 'wxgtk' 'openal' 'p7zip' 'glew' 'libsndfile' 'systemd' 'libjpeg-t
 source=('git+https://github.com/4ian/GD.git')
 md5sums=(SKIP)
 build() {
-  cd ""/GD
+  cd "$srcdir"/GD
   cd Binaries
   rm -rf build
   mkdir build
@@ -29,5 +29,5 @@ package() {
   cd Binaries/build
   make install DESTDIR=
   #Remove sfml installed libs
-  rm -rf ""/usr/local
+  rm -rf "$pkgdir"/usr/local
 }
