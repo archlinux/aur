@@ -1,5 +1,5 @@
 pkgname=champagne-limousines
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Champagne & Limousines Font"
 arch=(any)
@@ -12,8 +12,5 @@ md5sums=('4b24c2581d6621899437b027e26611ed')
 
 package(){
 	cd "$srcdir"
-	install -m 644 -D "Champagne & Limousines.ttf" "$pkgdir/usr/share/fonts/champagne-limousines/champagne-limousines.ttf"
-	install -m 644 -D "Champagne & Limousines Bold.ttf" "$pkgdir/usr/share/fonts/champagne-limousines/champagne-limousines-bold.ttf"
-	install -m 644 -D "Champagne & Limousines Italic.ttf" "$pkgdir/usr/share/fonts/champagne-limousines/champagne-limousines-italic.ttf"
-	install -m 644 -D "Champagne & Limousines Bold Italic.ttf" "$pkgdir/usr/share/fonts/champagne-limousines/champagne-limousines-bold-italic.ttf"
+	find ./ -type f --name "*.ttf" -exec install -m 644 -D "{}" "$pkgdir/usr/share/fonts/{}" \;
 }

@@ -1,7 +1,5 @@
 post_install() {
-    fc-cache -f >/dev/null
-    mkfontscale usr/share/fonts/champagne-limousines
-    mkfontdir usr/share/fonts/champagne-limousines
+    fc-cache -f
 }
 
 post_upgrade() {
