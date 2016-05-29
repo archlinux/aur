@@ -1,7 +1,7 @@
 # Maintainer: Michael Straube <m.s.online gmx de>
 
 pkgname=actiona
-pkgver=3.9.1
+pkgver=3.9.2
 pkgrel=1
 pkgdesc="A task automation tool that allows you to create and execute action lists"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt5-script' 'qt5-xmlpatterns' 'qt5-x11extras' 'qt5-multimedia' 'opencv' 'libnotify')
 makedepends=('qt5-tools' 'boost')
 source=("https://github.com/Jmgr/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('46ddc28a6cc4bb951a1ea4bd65832e7cb2f10d4397e18475bb872c83b5c60188')
+sha1sums=('ba01c13e32624d1d61d6e13e036efbf711102c77')
 
 build() {
   cd $pkgname-$pkgver
