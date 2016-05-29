@@ -2,7 +2,7 @@
 # vim: ft=sh
 
 pkgname=baikal
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc="Lightweight CalDAV+CardDAV server"
 url="http://sabre.io/baikal/"
@@ -12,7 +12,7 @@ depends=('php')
 optdepends=('sqlite: Database' 'mariadb: Alternate database' 'php-sqlite: To use the sqlite backend')
 source=("https://github.com/fruux/Baikal/releases/download/$pkgver/baikal-$pkgver.zip"
         'baikal.install')
-sha1sums=('db9ede48e84aed67b890ad3c5c94f04df7d5efd9'
+sha1sums=('441d90239ed42b07968ead56c35def769fa2c6da'
           'af1ac68cd5194d24525a2eafee2122aaf3fcbb43')
 options=('!strip')
 install=baikal.install
