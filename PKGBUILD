@@ -7,7 +7,7 @@ pkgbase="libcups-ipp14"
 ### Commenting the "split packages sections - unsupported by AUR apparently ###
 #pkgname=('libcups-ipp14' 'cups-ipp14')
 pkgname=(${pkgbase})
-pkgver=2.0.2
+pkgver=2.1.3
 pkgrel=1
 arch=('i686' 'x86_64')
 provides=('libcups')
@@ -29,7 +29,7 @@ source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.bz2{,.s
         # bugfixes
         # IPP 1.4
         add-ipp-backend-of-cups-1.4.patch)
-md5sums=('6e0ea72dbafcf5baaa1cf4178e71096d'
+md5sums=('62b8fafd590e75f72316915790b0850a'
          'SKIP'
          'fc8286f185e2cc5f7e1f6843bf193e2b'
          '96f82c38f3f540b53f3e5144900acf17'
