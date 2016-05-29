@@ -75,8 +75,8 @@ build () {
     if type uname 1>&2 && [[ $(uname -m) = "${CARCH}" ]]; then
         local BUGFIX_FILE="bugfix-5237.diff"
         echo "Downloading the ocaml 3.11 patch ($BUGFIX_FILE) for ${CARCH}"
-        curl -o $BUGFIX_FILE "$OUR_MIRROR/$BUGFIX_FILE" || \
-            curl -o $BUGFIX_FILE 'http://caml.inria.fr/mantis/file_download.php?file_id=415&type=bug' || \
+        curl -L -o $BUGFIX_FILE "$OUR_MIRROR/$BUGFIX_FILE" || \
+            curl -L -o $BUGFIX_FILE 'http://caml.inria.fr/mantis/file_download.php?file_id=415&type=bug' || \
             return 1
         echo "Applying the ocaml 3.11 patch ($BUGFIX_FILE) for ${CARCH}"
         patch -p1 < $BUGFIX_FILE
@@ -85,8 +85,8 @@ build () {
     elif type ld 1>&2 && ld -v | \grep -q '[ ]2[.]2[1-9]'; then
         local BUGFIX_FILE="bugfix-5237-i386.diff"
         echo "Downloading the ocaml 3.11 patch ($BUGFIX_FILE) for i386"
-        curl -o $BUGFIX_FILE "$OUR_MIRROR/$BUGFIX_FILE" || \
-            curl -o $BUGFIX_FILE 'http://caml.inria.fr/mantis/file_download.php?file_id=418&type=bug' || \
+        curl -L -o $BUGFIX_FILE "$OUR_MIRROR/$BUGFIX_FILE" || \
+            curl -L -o $BUGFIX_FILE 'http://caml.inria.fr/mantis/file_download.php?file_id=418&type=bug' || \
             return 1
         echo "Applying the ocaml 3.11 patch ($BUGFIX_FILE) for i386"
         patch -p1 < $BUGFIX_FILE
