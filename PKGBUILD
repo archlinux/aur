@@ -1,7 +1,7 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
 pkgname=mkinitcpio-systemd-tool
-pkgver=r5.80f4edc
+pkgver=r6.b5d53fa
 pkgrel=1
 pkgdesc='Provisioning tool for systemd in initramfs (systemd-tool)'
 arch=('any')
@@ -14,7 +14,6 @@ source=("git+https://github.com/random-archer/${pkgname}.git")
 md5sums=('SKIP')
 backup=(
     'etc/mkinitcpio.d/crypttab'
-    'etc/mkinitcpio.d/shell.sh'
     'etc/systemd/network/initrd-network.network'
     'etc/systemd/system/initrd-build.sh'
     'etc/systemd/system/initrd-cryptsetup.service'
@@ -22,7 +21,8 @@ backup=(
     'etc/systemd/system/initrd-debug-shell.service'
     'etc/systemd/system/initrd-dropbear.service'
     'etc/systemd/system/initrd-network.service'
-    'etc/systemd/system/initrd-user-root.service'
+    'etc/systemd/system/initrd-shell.service'
+    'etc/systemd/system/initrd-shell.sh'
 )
 conflicts=(
     'mkinitcpio-dropbear'
@@ -65,7 +65,6 @@ package() {
   
     local target="$pkgdir/etc/mkinitcpio.d/"
     install -D -m644 "$source/crypttab"                 "$target/crypttab"
-    install -D -m755 "$source/shell.sh"                 "$target/shell.sh"
         
     local target="$pkgdir/etc/systemd/network"
     install -D -m644 "$source/initrd-network.network"    "$target/initrd-network.network"
@@ -77,6 +76,7 @@ package() {
     install -D -m644 "$source/initrd-debug-shell.service"   "$target/initrd-debug-shell.service"
     install -D -m644 "$source/initrd-network.service"       "$target/initrd-network.service"
     install -D -m644 "$source/initrd-dropbear.service"      "$target/initrd-dropbear.service"
-    install -D -m644 "$source/initrd-user-root.service"     "$target/initrd-user-root.service"
-                
+    install -D -m644 "$source/initrd-shell.service"         "$target/initrd-shell.service"
+    install -D -m755 "$source/initrd-shell.sh"              "$target/initrd-shell.sh"
+                                                                                                                                
 }

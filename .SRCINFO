@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-systemd-tool
     pkgdesc = Provisioning tool for systemd in initramfs (systemd-tool)
-    pkgver = r5.80f4edc
+    pkgver = r6.b5d53fa
     pkgrel = 1
     url = https://github.com/random-archer/mkinitcpio-systemd-tool
     install = INSTALL.sh
@@ -10,7 +10,6 @@ pkgbase = mkinitcpio-systemd-tool
     depends = systemd
     depends = dropbear
     backup = etc/mkinitcpio.d/crypttab
-    backup = etc/mkinitcpio.d/shell.sh
     backup = etc/systemd/network/initrd-network.network
     backup = etc/systemd/system/initrd-build.sh
     backup = etc/systemd/system/initrd-cryptsetup.service
@@ -18,7 +17,8 @@ pkgbase = mkinitcpio-systemd-tool
     backup = etc/systemd/system/initrd-debug-shell.service
     backup = etc/systemd/system/initrd-dropbear.service
     backup = etc/systemd/system/initrd-network.service
-    backup = etc/systemd/system/initrd-user-root.service
+    backup = etc/systemd/system/initrd-shell.service
+    backup = etc/systemd/system/initrd-shell.sh
     source = mkinitcpio-systemd-tool::git+https://github.com/random-archer/mkinitcpio-systemd-tool.git
     md5sums = SKIP
 
