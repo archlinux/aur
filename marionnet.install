@@ -181,10 +181,8 @@ wget http://www.marionnet.org/downloads/marionnet_from_scratch/marionnet_from_sc
 echo "* Downlading and installing Marionnet kernels and filesystems (Linux \
 distributions Debian Lenny, Mandriva, Pinocchio, etc.)"
 echo -e "* Warning! this process may take several hours!"
-echo -e "* Command : \`./marionnet_from_scratch --download-only -m trunk \
---prefix /usr\`"
-chmod +x ./marionnet_from_scratch
-./marionnet_from_scratch --download-only -m trunk --prefix /usr
+chmod u+x ./numberOfStepsPassedForDownloadMarionnetFilesystems.tmp
+./numberOfStepsPassedForDownloadMarionnetFilesystems.tmp -m trunk --prefix /usr/share/marionnet
 
 
 

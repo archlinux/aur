@@ -1,0 +1,498 @@
+#!/bin/bash
+
+# Adapted by JulioJu from :
+# http://bazaar.launchpad.net/~marionnet-drivers/marionnet/trunk/view/head:/useful-scripts/marionnet_from_scratch
+# by Jean-Vincent Loddo Université Paris 13
+# (may 2016)
+# (LGPL)
+
+# This file is part of marionnet
+# Copyright (C) 2010 2011 2012 2013 2014 2015 2016  Jean-Vincent Loddo
+# Copyright (C) 2010 2011 2012 2013 2014 2015 2016  Université Paris 13
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 2 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+# Script JulioJu custom version
+# 2016.05.28
+
+set -e
+shopt -s nullglob
+shopt -s expand_aliases
+
+# function exiting_because_error {
+#  # global KEEP_DEBRIS TWDIR
+#  echo -e "\n\n\n\nExiting because of an unexpected error in line $BASH_LINENO"
+#  exit 3
+# }
+# #
+# trap exiting_because_error ERR
+
+function trap_custom {
+local SIGINT=2
+local SIGQUIT=3
+local SIGABRT=6
+local SIGKILL=9
+local SIGTERM=15 # CTRL-C
+local TRAPPED_EVENTS="$SIGINT $SIGQUIT $SIGABRT $SIGKILL $SIGTERM"
+trap "exiting_because_signal" $TRAPPED_EVENTS
+}
+
+trap_custom
+
+
+# @todo
+# FOR UPDATE THIS SCRIPT, PLEASE MAINTAINS TUNNING SECTION
+# FOR UPDATE THIS SCRIPT, PLEASE MAINTAINS TUNNING SECTION
+# FOR UPDATE THIS SCRIPT, PLEASE MAINTAINS TUNNING SECTION
+
+# =============================================================
+#                  PARSING COMMAND LINE {{{1
+# =============================================================
+
+# Getopt's format used to parse the command line:
+OPTSTRING="hp:m:b:o:gG:t:kl:d:v:NVDKPFTAOc:"
+
+function parse_cmdline {
+local i j flag
+# Transform long format options into the short one:
+for i in "$@"; do
+  if [[ double_dash_found = 1 ]]; then
+    ARGS+=("$i")
+  else case "$i" in
+    --help)
+      ARGS+=("-h");
+      ;;
+    --marionnet-version|--marionnet)
+     ARGS+=("-m");
+     ;;
+    --prefix)
+     ARGS+=("-p");
+     ;;
+    --)
+      ARGS+=("--");
+      double_dash_found=1;
+      ;;
+    --[a-zA-Z0-9]*)
+      echo "*** Illegal long option $i.";
+      exit 1;
+      ;;
+    -[a-zA-Z0-9]*)
+      j="${i:1}";
+      while [[ $j != "" ]]; do ARGS+=("-${j:0:1}"); j="${j:1}"; done;
+      ;;
+    *)
+      ARGS+=("$i")
+      ;;
+  esac
+  fi
+done
+set - "${ARGS[@]}"
+unset ARGS
+
+# Interpret short format options:
+while [[ $# -gt 0 ]]; do
+  OPTIND=1
+  while getopts ":$OPTSTRING" flag; do
+    if [[ $flag = '?' ]]; then
+      echo "ERROR: illegal option -$OPTARG.";
+      exit 1;
+    fi
+    eval "option_${flag}=$OPTIND"
+    eval "option_${flag}_arg='$OPTARG'"
+  done
+  for ((j=1; j<OPTIND; j++)) do
+    if [[ $1 = "--" ]]; then
+      shift;
+      for i in "$@"; do ARGS+=("$i"); shift; done
+      break 2;
+    else
+      shift;
+    fi
+  done
+  # Get just the first argument and reloop:
+  for i in "$@"; do ARGS+=("$i"); shift; break; done
+done
+} # end of parse_cmdline()
+
+declare -a ARGS
+parse_cmdline "$@" # read OPTSTRING and set ARGS
+# Warning: the following two branches could not be grouped
+# into the single command (`else' branch):
+# set - "${ARGS[@]}";
+# The behaviour is not the same when the array is empty!
+if [[ ${#ARGS[@]} -eq 0 ]]; then
+  set - "";
+else
+  set - "${ARGS[@]}";
+fi
+unset ARGS
+
+function print_usage_and_exit {
+ echo -e "\n\nUsage: ${0##*/} [OPTIONS]
+Download, and decompress step by step Marionnet's principal dependencies from  mirror\
+(http://www.marionnet.org/download/).
+
+ $(print_description_script)
+Options:
+  -p, --prefix PATH			Set the installation prefix
+  -h						Print this message and exit
+  -m, --marionnet VERSION	Set marionnet's version (for instance 'trunk')
+Defaults:
+  - the installation prefix is ${PREFIX}
+  - marionnet's version is ${MARIONNET_VERSION:-latest}"
+ exit $1
+}
+
+
+# Option -h
+if [[ -n ${option_h}  ]]; then
+ print_usage_and_exit 0
+fi
+
+# Option -p, --prefix
+if [[ -n ${option_p} ]]; then
+	PREFIX=$(realpath "${option_p_arg}")
+else
+	PREFIX=$(realpath /usr/share)
+fi
+
+# test version
+MARIONNET_VERSION=
+if [[ -n ${option_m} ]]; then 
+ 	MARIONNET_VERSION="${option_m_arg}"
+elif [[ -e "./numberOfStepsPassedForDownloadMarionnetFilesystems.tmp" ]]
+then
+	vr=$(cat "./numberOfStepsPassedForDownloadMarionnetFilesystems.tmp" | tail -n 1)
+ 	MARIONNET_VERSION="$vr"
+	unset vr
+fi
+if [[ $MARIONNET_VERSION != "trunk" && $MARIONNET_VERSION != "0.90" ]] ;
+	then
+	z=
+	echo "Is it Marionnet trunk version [y/n] ?"
+	read z
+	while [[ $z != "y" && $z != "Y" && $z != "n" && $z != "N" ]] ; do
+		# Infinite loop under Archlinux Build System
+		echo "Is it Marionnet trunk version [y/n] ?"
+		read z
+	done
+	if [[ $z == "y" || $z == "Y" ]] ; then
+ 		MARIONNET_VERSION="trunk"
+	else
+		MARIONNET_VERSION="0.90"
+	fi
+	unset z
+fi
+
+# =============================================================
+#                         TUNING {{{1
+# =============================================================
+
+if [[ $MARIONNET_VERSION == "trunk" ]] ; then
+	REQUIRED_MB=7000
+	number_of_steps=8
+else
+	REQUIRED_MB=5000
+	number_of_steps=5
+fi
+
+# kernels weight (Mo)
+kernels_weight=3
+pinocchio_weight=49
+big_filesystems_Debian_weight=432
+big_filesystems_Mandriva_weight=347
+big_filesystems_weight=0
+if [[ $MARIONNET_VERSION == "trunk" ]]; then
+	kernelsv1_weight=3
+	tiny_filesystemsv1_weight=16
+	big_filesystemsv1_weight=560
+else
+	kernelsv1_weight=0
+	tiny_filesystemsv1_weight=0
+	big_filesystemsv1_weight=0
+fi
+total_weight=$((\
+$kernels_weight+$pinocchio_weight+\
+$big_filesystems_Debian_weight+$big_filesystems_Mandriva_weight+$big_filesystems_weight+\
+$kernelsv1_weight+$tiny_filesystemsv1_weight+$big_filesystemsv1_weight\
+))
+
+# This array is used if download resume, to calculate new total_weight of
+# current download
+rest=$total_weight
+array_weight_total_downloaded=( "$(($rest-$kernels_weight))"
+"$(($rest-$pinocchio_weight))"
+"$(($rest-$big_filesystems_Debian_weight))"
+"$(($rest-$big_filesystems_Mandriva_weight))"
+"$(($rest-$big_filesystems_weight))"
+"$(($rest-$kernelsv1_weight))"
+"$(($rest-$tiny_filesystemsv1_weight))"
+"$(($rest-$big_filesystemsv1_weight))")
+rest=$total_weight
+
+# Array used in Main to perfom all download.
+if [[ $MARIONNET_VERSION == "trunk" ]]; then
+	# Work without eval in bash 4.3
+	array_perform_action=("download_our_kernels $kernels_weight"
+	"download_our_pinocchio_filesystems $pinocchio_weight"
+	"download_our_big_filesystems $big_filesystems_weight"
+	"download_debian_lenny $big_filesystems_Debian_weight"
+	"download_mandriva $big_filesystems_Mandriva_weight"
+	"download_our_v1_kernels $kernelsv1_weight"
+	"download_our_v1_tiny_filesystems $tiny_filesystemsv1_weight"
+	"download_our_v1_big_filesystems $big_filesystemsv1_weight")
+else
+	array_perform_action=("download_our_kernels $kernels_weight"
+	"download_our_pinocchio_filesystems $pinocchio_weight"
+	"download_our_big_filesystems $big_filesystems_weight")
+fi
+
+
+OUR_BASE_URL="https://www.marionnet.org/downloads/marionnet_from_scratch"
+OUR_MIRROR="$OUR_BASE_URL/mirror/"
+OUR_TRUNK_SPECIFIC_URL="$OUR_BASE_URL/trunk"
+
+
+
+# =============================================================
+#                     Tests function {{{1
+# =============================================================
+
+function print_description_script {
+echo -e " If the download is interrupted, it can be resumed by execute ${0##*/} who \
+is stored in $(realpath ./). This programm test if the hard disk have \
+enough free space, if there isn't enough, it don't start download.
+
+Under ArchLinux, if Marionnet have been installed with Aur repository,
+files are extract in the good foler (i.e. /usr/share/marionnet). \
+For other distributions, or if you have installed with the script « \
+marionnet_from_scratch » customise the « --prefix » option.  "
+}
+
+
+function exiting_because_signal {
+echo -e "\n\n\n\nExiting because of signal."
+
+print_description_script
+
+echo -e "\n\n"
+
+
+if [[ $MARIONNET_VERSION = "trunk" ]]; then
+	echo -e "If it's trunk version, run « ./marionnet_from_scratch-Download -m trunk" »
+	echo -e "If $PREFIX/numberOfStepsPassedForDownloadMarionnetFilesystems.tmp exists,\ you can omit « -m trunk »."
+fi
+echo -e "
+---
+---
+Exiting."
+exit 2
+}
+
+# Temporary Working Directory TWDIR (global variable)
+# Automatically cleaned when some events occur
+function freespace {
+local FREE_MB=$(df -B 1M -P $PREFIX | awk '{print $4}' | tail -n 1)
+if [[ $FREE_MB -lt $REQUIRED_MB ]]; then
+	echo "Insufficient free disk space (${FREE_MB} Mb) in the directory $PREFIX."
+	echo "It's beautifule to have $REQUIRED_MB Mb to install and keep a little bit more space in your disk."
+	echo "Exiting."
+	exit 1
+fi 1>&2
+}
+
+# =============================================================
+#	FUNCTIONS FOR DOWNLOADING OUR KERNELS AND FILESYSTEMS {{{1
+# =============================================================
+
+function download_our_kernels {
+# global $OUR_BASE_URL
+# parameters : file-weight $1
+local KERNELS
+KERNELS=$(curl -L --silent --show-error "$OUR_BASE_URL" \
+	| grep -o 'href="kernels_[^"]*"' \
+	| grep -o "kernels_[^\"]*[.]tar[.]gz"\
+	)
+echo -e "\n\nStage « $FUNCNAME »"
+for i in $KERNELS; do
+	launch_and_log "$OUR_BASE_URL/$i" $i $1
+done
+}
+
+function download_debian_lenny {
+echo -e "\n\nStage « $FUNCNAME »"
+i="filesystems_machine-debian-lenny-sid-2008.tar.gz"
+launch_and_log "$OUR_BASE_URL/$i" $i $1
+}
+
+function download_mandriva {
+echo -e "\n\nStage « $FUNCNAME »"
+i="filesystems_machine-mandriva20100215.tar.gz"
+launch_and_log "$OUR_BASE_URL/$i" $i $1
+}
+
+function download_our_big_filesystems {
+# global $OUR_BASE_URL
+# parameters : file-weight $1
+local FILESYSTEMS
+FILESYSTEMS=$(curl -L --silent --show-error "$OUR_BASE_URL" \
+	| grep -o 'href="filesystems_[^"]*"' \
+	| grep -o "filesystems_[^\"]*[.]tar[.]gz"\
+	| grep -v "filesystems_pinocchio.*[.]tar[.]gz"\
+	)
+echo -e "\n\nStage « $FUNCNAME »"
+for i in $FILESYSTEMS; do
+	if [[ $i == "filesystems_machine-debian-lenny-sid-2008.tar.gz" ]] ; then
+		continue
+	elif [[ $i == "filesystems_machine-mandriva20100215.tar.gz" ]] ; then
+		continue
+	fi
+	launch_and_log "$OUR_BASE_URL/$i" $i $1
+done
+}
+
+function download_our_pinocchio_filesystems {
+# global $OUR_BASE_URL
+# parameters : file-weight $1
+local KERNELS
+KERNELS=$(curl -L --silent --show-error "$OUR_BASE_URL" \
+	| grep -o 'href="kernels_[^"]*"' \
+	| grep -o "kernels_[^\"]*[.]tar[.]gz"\
+	)
+echo -e "\n\nStage « $FUNCNAME »"
+for i in $KERNELS; do
+	launch_and_log "$OUR_BASE_URL/$i" $i $1
+done
+}
+
+function download_our_v1_kernels {
+# global $OUR_TRUNK_SPECIFIC_URL
+# parameters : file-weight $1
+local KERNELS
+KERNELS=$(curl -L --silent --show-error "$OUR_TRUNK_SPECIFIC_URL" \
+	| grep -o 'href="kernels_[^"]*"' \
+	| grep -o "kernels_[^\"]*[.]tar[.]gz"\
+	)
+echo -e "\n\nStage « $FUNCNAME »"
+for i in $KERNELS; do
+	launch_and_log "$OUR_TRUNK_SPECIFIC_URL/$i" $i $1
+done
+}
+
+function download_our_v1_tiny_filesystems {
+# global $OUR_TRUNK_SPECIFIC_URL
+# parameters : file-weight $1
+local FILESYSTEMS
+FILESYSTEMS=$(curl -L --silent --show-error "$OUR_TRUNK_SPECIFIC_URL" \
+	| grep -o 'href="filesystems_guignol[^"]*"' \
+	| grep -o "filesystems_[^\"]*[.]tar[.]gz"\
+	)
+echo -e "\n\nStage « $FUNCNAME »"
+for i in $FILESYSTEMS; do
+	launch_and_log "$OUR_TRUNK_SPECIFIC_URL/$i" $i $1
+done
+}
+
+function download_our_v1_big_filesystems {
+# global $OUR_TRUNK_SPECIFIC_URL
+# parameters : file-weight $1
+local FILESYSTEMS
+FILESYSTEMS=$(curl -L --silent --show-error "$OUR_TRUNK_SPECIFIC_URL" \
+	| grep -o 'href="filesystems_[^"]*"' \
+	| grep -o "filesystems_[^\"]*[.]tar[.]gz"\
+	| grep -v "filesystems_guignol.*[.]tar[.]gz"\
+	)
+echo -e "\n\nStage « $FUNCNAME »"
+for i in $FILESYSTEMS; do
+	launch_and_log "$OUR_TRUNK_SPECIFIC_URL/$i" $i $1
+done
+}
+
+function launch_and_log {
+# Parameter : $1 URL, $2 filename, $3 file-weight, 
+local currentPercentDownloading=$(echo "scale=2;$3/$total_weight*100" | bc)
+rest=$(echo "$rest-$3" | bc)
+local restPerCent=$(echo "scale=2;$rest/$total_weight*100"|bc)
+echo -e "We are going to download $3 Mo ($currentPercentDownloading% of the $total_weight Mo). \
+After this stage this is still $rest Mo to download (or \
+$restPerCent%) "
+curl -L -O -C - $1 # -C - => resume download if any ; -L => follow redirections 
+# @todo sha256sums
+echo "Decompressing : "
+# tar -xvf ${2}
+rm -f ${2}
+echo -e "Success…\n\n\n———"
+}
+
+
+# =============================================================
+#                           Main {{{1
+# =============================================================
+
+echo -e "\n\n\nMarionnet filesystems downloader"
+echo "————————————————————————————————"
+
+echo "Download, and decompress step by step Marionnet's principal dependencies from  mirror\
+(http://www.marionnet.org/download/)."
+print_description_script
+
+mkdir -p $PREFIX
+cd $PREFIX
+if [[ -e numberOfStepsPassedForDownloadMarionnetFilesystems.tmp ]]
+then
+	stepPerformed=$(cat ./numberOfStepsPassedForDownloadMarionnetFilesystems.tmp | head -n 1)
+	echo "Restart the download process from Step $stepPerformed"
+else
+	stepPerformed=0
+fi
+if [[ ! $stepPerformed =~ ^[0-9]$ ]] ; then
+	echo "Invalid step readen. Restart downloading"
+	stepPerformed=0
+fi
+
+if [[ $stepPerformed -gt 0 && $stepPerformed -le ${#array_weight_total_downloaded[@]} && $stepPerformed \
+	-lt $number_of_steps ]]; then
+	REQUIRED_MB=$(echo "$REQUIRED_MB-($total_weight-${array_weight_total_downloaded[$(($stepPerformed-1))]})" | bc )
+	total_weight=${array_weight_total_downloaded[$(($stepPerformed-1))]}
+fi
+
+# freespace  > /dev/null # just verify free space
+
+while [[ $stepPerformed -lt  $number_of_steps ]]; do
+	$(echo ${array_perform_action[$stepPerformed]})
+	stepPerformed=$(($stepPerformed+1))
+	echo -e "$stepPerformed\n$MARIONNET_VERSION" > \
+		"$PREFIX/numberOfStepsPassedForDownloadMarionnetFilesystems.tmp"
+done
+
+
+# }}}
+
+# =============================================================
+#                          Notes 
+# =============================================================
+
+echo ""
+echo '---'
+echo "* Notes:"
+echo "  - Customize your installation by editing /etc/marionnet/marionnet.conf"
+echo "  - Under Arch Linux if you have installed Marionnet with the community \
+- driven for Arch Users (Aur), you must enable or start Aur \
+marionnetdaemon.service."
+
+echo '---'
+echo "Success."
+exit 0
+
+# vim: set noet:
