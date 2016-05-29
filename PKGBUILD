@@ -2,8 +2,8 @@
 
 _pkgname=raccoon
 pkgname=$_pkgname-git
-pkgver=20150611.r180.5f08b40
-pkgrel=3
+pkgver=20160528.r183.577f79c
+pkgrel=1
 arch=('any')
 pkgdesc='Google Play desktop client'
 url='http://www.onyxbits.de/raccoon'
