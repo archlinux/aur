@@ -2,7 +2,7 @@
 
 pkgname=certbot-git
 _reponame="certbot"
-pkgver=0.6.0.r64.ge385274
+pkgver=0.7.0.r37.g28c24e6
 pkgrel=1
 pkgdesc="A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free."
 arch=('any')
