@@ -1,11 +1,11 @@
 # Maintainer: Petar Petrov <petar.petrov.georgiev at gmail d0t com>
 pkgname=psiral
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Psiral is a turn based strategy board game with wizards."
 arch=('i686' 'x86_64')
 url="https://github.com/petarov/game-off-2013"
-license=('MIT')
+license=('custom')
 groups=()
 depends=()
 makedepends=('nodejs' 'npm' 'nodejs-grunt-cli')
@@ -73,4 +73,5 @@ package() {
   install -Dm755 psiral.in "$pkgdir"/usr/local/bin/psiral
   install -Dm644 icon_48.png "$pkgdir"/usr/share/pixmaps/psiral48.png
   install -Dm644 psiral.desktop "$pkgdir"/usr/share/applications/$pkgname.desktop
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
