@@ -1,7 +1,7 @@
 pkgbase = messengerfordesktop-git
 	pkgdesc = Beautiful desktop client for Facebook Messenger. Sytten's fork
 	pkgver = v1.4.7
-	pkgrel = 3
+	pkgrel = 4
 	url = http://messengerfordesktop.com/
 	install = messengerfordesktop-git.install
 	arch = i686
@@ -21,6 +21,7 @@ pkgbase = messengerfordesktop-git
 	depends = nss
 	depends = xorg-xprop
 	depends = xorg-xwininfo
+	conflicts = messengerfordesktop
 	options = !strip
 	source = messengerfordesktop-git::git+https://github.com/Sytten/Facebook-Messenger-Desktop.git
 	source = start.sh
