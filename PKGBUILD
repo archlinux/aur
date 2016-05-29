@@ -8,31 +8,31 @@
 # ----------------
 # libilbc kvazaar chromaprint-fftw libbs2b openh264 shine vo-amrwbenc
 # nut-multimedia-git xavs libutvideo-asm-git flite-fpic libmfx-git
-# blackmagic-decklink-sdk nvidia-sdk
+# blackmagic-decklink-sdk nvidia-sdk libebur128
 
 # AUR optional dependency
 # -----------------------
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.79791.g03fceb7
-pkgrel=3
+pkgver=N.80115.g1a82d2c
+pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
 license=('GPL3' 'custom:UNREDISTRIBUTABLE')
 depends=(
+    'libmfx-git' 'nvidia-sdk' 'libomxil-bellagio' 'blackmagic-decklink-sdk'
     'alsa-lib' 'zlib' 'bzip2' 'libpng' 'sdl' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugins'
     'libgcrypt' 'gmp' 'gnutls' 'glibc' 'ladspa' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt'
-    'libcdio-paranoia' 'libdc1394' 'faac' 'libfdk-aac' 'flite-fpic' 'freetype2'
+    'libcdio-paranoia' 'libdc1394' 'libebur128' 'faac' 'libfdk-aac' 'flite-fpic' 'freetype2'
     'fribidi' 'libgme' 'gsm' 'libiec61883' 'libilbc' 'kvazaar' 'libmodplug' 'lame' 'netcdf'
     'nut-multimedia-git' 'opencore-amr' 'opencv' 'openh264' 'openjpeg' 'opus' 'pulseaudio'
     'rubberband' 'rtmpdump' 'schroedinger' 'shine' 'smbclient' 'libavc1394' 'snappy' 'libsoxr'
     'speex' 'libssh' 'tesseract' 'libtheora' 'twolame' 'libutvideo-asm-git' 'v4l-utils'
     'vid.stab' 'vo-amrwbenc' 'libvorbis' 'libvpx' 'wavpack' 'libwebp' 'libx264.so' 'x265'
     'libxcb' 'xvidcore' 'zimg' 'zeromq' 'zvbi' 'openal' 'libva' 'libdrm' 'libva-intel-driver'
-    'libmfx-git' 'opencl-headers' 'ocl-icd' 'libvdpau' 'mesa' 'openssl' 'xavs' 'nvidia-sdk'
-    'blackmagic-decklink-sdk' 'java-environment' 'sdl'
+    'opencl-headers' 'ocl-icd' 'libvdpau' 'mesa' 'openssl' 'xavs' 'sdl' 'java-environment'
 )
 depends_x86_64=('cuda')
 optdepends_x86_64=('intel-media-sdk: for Intel QSV support (experimental)')
@@ -106,7 +106,10 @@ build() {
 	        $_cuda \
 	        --enable-libmfx \
 	        --enable-nvenc \
+	        --enable-omx \
+	        --enable-omx-rpi \
 	        \
+	        --enable-audiotoolbox \
 	        --enable-avisynth \
 	        --enable-bzlib \
 	        --enable-chromaprint \
@@ -125,6 +128,7 @@ build() {
 	        --enable-libcelt \
 	        --enable-libcdio \
 	        --enable-libdc1394 \
+	        --enable-libebur128 \
 	        --enable-libfaac \
 	        --enable-libfdk-aac \
 	        --enable-libflite \
