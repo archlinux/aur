@@ -2,12 +2,12 @@ pkgbase = slim-theme-arch-triforce
 	pkgdesc = Zelda based SLiM theme
 	pkgver = 1.0
 	pkgrel = 1
-	url = https://github.com/bsofdth/slim-theme-arch-triforce
+	url = https://github.com/ajswis/slim-theme-arch-triforce
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = slim
-	source = git://github.com/bsofdth/slim-theme-arch-triforce.git
+	source = git://github.com/ajswis/slim-theme-arch-triforce.git
 	md5sums = SKIP
 
 pkgname = slim-theme-arch-triforce
