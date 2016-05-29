@@ -1,8 +1,8 @@
 # Maintainer:  jyantis <yantis@yantis.net>
 
 pkgname=python2-html2text-git
-pkgver=r400.80a0b93
-pkgrel=2
+pkgver=r527.3950277
+pkgrel=1
 pkgdesc='Python 2 package that converts a page of HTML into clean, easy-to-read plain ASCII text. Better yet, that ASCII also happens to be valid Markdown (a text-to-HTML format)'
 arch=('any')
 url='http://alir3z4.github.io/html2text'
