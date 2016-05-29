@@ -1,7 +1,7 @@
 # Maintainer: Wilhelm Schuster <wilhelm [aT] wilhelm [.] re>
 pkgname=opensmtpd-extras
 pkgver=5.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Additional filters, tables, queues, etc. for OpenSMTPd"
 arch=('i686' 'x86_64')
 url="https://opensmtpd.org"
