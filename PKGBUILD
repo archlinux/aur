@@ -1,11 +1,12 @@
+# Maintainer: JKA Network <contacto@jkanetwork.com>
 pkgname=assimp-net
 pkgdesc="A .NET wrapper for the Open Asset Import Library (Assimp)."
 pkgver=3.3.1
-pkgrel=2
+pkgrel=3
 arch=(any)
 license=("MIT")
-url="https://code.google.com/p/assimp-net"
-source=("$pkgname::svn+http://assimp-net.googlecode.com/svn/tags/$pkgver"
+url="https://www.nuget.org/packages/AssimpNet/"
+source=("git+https://github.com/assimp/assimp-net"
 "assimp-net.pc.in"
 "AssimpNet.dll.config")
 depends=(assimp opentk)
