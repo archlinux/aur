@@ -25,6 +25,7 @@ build() {
 
 package() {
   mkdir -p $pkgdir/usr/bin
+  mkdir -p $pkgdir/usr/lib
   mkdir -p $pkgdir/usr/share/maxwell2d/examples
   mkdir -p $pkgdir/usr/share/maxwell2d/default
   install -m 755 maxwell2d_create_gif.sh $pkgdir/usr/bin
@@ -33,5 +34,7 @@ package() {
   install -m 755 examples/default/*.cfg $pkgdir/usr/share/maxwell2d/default
   install -m 755 src/maxwell2d_nc $pkgdir/usr/bin
   install -m 755 src/maxwell2d_gif $pkgdir/usr/bin
+  install -m 755 giflib-4.1.6/lib/.libs/libgif.so.4.1.6 $pkgdir/usr/lib
+  ln -s libgif.so.4.1.6 $pkgdir/usr/lib/libgif.so.4
 
 }
