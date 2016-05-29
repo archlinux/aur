@@ -12,5 +12,5 @@ md5sums=('4b24c2581d6621899437b027e26611ed')
 
 package(){
 	cd "$srcdir"
-	find ./ -type f -name "*.ttf" -exec install -m 644 -D "{}" "$pkgdir/usr/share/fonts/{}" \;
+	find ./ -type f -name "*.ttf" -exec install -m 644 -D "{}" "$pkgdir/usr/share/fonts/champagne-limousines/{}" \;
 }
