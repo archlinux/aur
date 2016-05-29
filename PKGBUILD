@@ -2,7 +2,7 @@
 _name=mutagen
 pkgname=python2-mutagen-1.30
 pkgver=1.30
-pkgrel=1
+pkgrel=2
 pkgdesc='read and write audio tags for many formats'
 arch=('any')
 url="https://bitbucket.org/lazka/$_name"

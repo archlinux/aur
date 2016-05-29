@@ -1,7 +1,7 @@
 pkgbase = python2-mutagen-1.30
 	pkgdesc = read and write audio tags for many formats
 	pkgver = 1.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/lazka/mutagen
 	arch = any
 	license = GPL2
