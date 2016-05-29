@@ -3,11 +3,11 @@
 pkgname=python-htpasswd-git
 pkgver=.r31.ef677a5
 pkgrel=1
-pkgdesc='Python 3 Library for working with htpasswd user (only basic authorization) and group files'
+pkgdesc='Python Library for working with htpasswd user (only basic authorization) and group files'
 arch=('any')
 url='https://github.com/thesharp/htpasswd'
 license=('custom')
-depends=('python' 'python-future')
+depends=('python' 'python-future' 'python-orderedmultidict-git')
 source=('git+https://github.com/thesharp/htpasswd.git')
 sha256sums=('SKIP')
 makedepends=('git' 'python-setuptools')
