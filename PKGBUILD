@@ -1,57 +1,43 @@
 # Maintainer: superlex
-# Contributor: Jorge Barroso <jorge.barroso.11@gmail.com>
-
-# We're getting this from Debian Sid
+# Contributor: Jorge Barroso <jorge.barroso.11@gmail.com
 
 _debname=iceweasel
-_debver=44.0.2
+_debver=46.0.1
 _debrel=1
-_debrepo=http://ftp.de.debian.org/debian/pool/main/i/
+_parrel=2
+_parepoch=1
+_parrepo=https://repo.parabola.nu/libre/os
  
 pkgname=iceweasel-bin
-pkgver=${_debver}.deb${_debrel}
+pkgver=${_debver}.deb${_debrel}.par${_parrel}
 pkgrel=1
-pkgdesc="Debian Browser based on Mozilla Firefox (bin version)"
+pkgdesc="A libre version of Debian Iceweasel (Parabola GNU/Linux-libre bin version)"
 arch=('i686' 'x86_64')
-url="https://packages.debian.org/sid/iceweasel"
-license=('MPL' 'GPL' 'LGPL')
+url="https://wiki.parabola.nu/iceweasel"
+license=(MPL GPL LGPL)
 conflicts=("$_debname")
 provides=("$_debname"="$_debver")
 
-depends=('gtk2' 'icu' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib' 'alsa-lib' 'libnotify' 'desktop-file-utils' 'hicolor-icon-theme' 'libvpx' 'libevent' 'nss' 'hunspell' 'sqlite')
+depends=(alsa-lib dbus-glib ffmpeg gtk2 gtk3 hunspell icu=57.1 libevent libvpx=1.5.0 libxt mime-types mozilla-common nss sqlite startup-notification ttf-font)
 
-optdepends=('iceweasel-sync: Speed up Iceweasel using tmpfs'
-	    'mozplugger: A Mozilla & Firefox multimedia plugin.'
-	    'mozilla-searchplugins: extra search plugins'
-	    'iceweasel-extension-archsearch: Iceweasel Arch search engines (AUR, Pkgs, BBS, Wiki, etc.)'
-      'iceweasel-extension-archforumsearch-it: Iceweasel search engines for Arch Linux Italian forum'
-	    'gst-libav: h.264 video'
-	    'gst-plugins-good: h.264 video'
-	    'networkmanager: Location detection via available WiFi networks')
+optdepends=('networkmanager: Location detection via available WiFi networks'
+			      'upower: Battery API'
+			      'ffmpeg: H264/AAC/MP3 decoding'
+            'iceweasel-extension-archsearch: Iceweasel Arch search engines')
 
 install=iceweasel.install
  
  if [ "$CARCH" = "x86_64" ]; then
-    _debarch=amd64
-    sha1sums=('662b8ec51a26b0f12c8acf0aba8365c3d9d8ae39')
-else
-    _debarch=i386
-    sha1sums=('9b3540ec0991f7e00a824935cda849b0f8062104')
+    sha1sums=('c94184289c3611b7921da9cf9e8a27b28a4c422e')
+ else
+    sha1sums=('490505b39c474315b17d4c86ba1a5117e64f3552')
  fi
  
-source=("${_debrepo}/${_debname}/${_debname}_${_debver}-${_debrel}_${_debarch}.deb")
+source=("${_parrepo}/${CARCH}/${_debname}-${_parepoch}:${_debver}.deb${_debrel}-${_parrel}-${CARCH}.pkg.tar.xz")
 
 package(){
       msg2 "Installing Iceweasel..."
-      tar Jxvf "${srcdir}"/data.tar.xz -C "$pkgdir"/
-
-      msg2 "Cleaning up unwanted files..."
-      rm -rv "${pkgdir}"/usr/lib/{mozilla,mime}
-      rm -rv "${pkgdir}"/usr/share/{bug,mozilla,doc}
-      rm -v "${pkgdir}"/usr/bin/firefox
-
-      #msg "Workaround for libvpx.so.2"
-      #ln -s /usr/lib/libvpx.so "${pkgdir}"/usr/lib/libvpx.so.2
+      cp -r "${srcdir}"/usr "$pkgdir"/
 }
  
 # vim:set ts=2 sw=2 et:
