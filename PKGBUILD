@@ -33,6 +33,8 @@ prepare() {
 build() {
   cd "$srcdir/HandBrake-$pkgver"
 
+  export CXXFLAGS="${CXXFLAGS} -std=gnu++98"
+  export CPPFLAGS="${CPPFLAGS} -std=gnu++98"
   ./configure \
     --prefix=/usr \
     --force \
