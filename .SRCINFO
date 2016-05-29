@@ -1,4 +1,5 @@
 pkgbase = unix-privesc-check
+	pkgdesc = A script to find misconfigurations that could allow user privilege escalation in UNIX systems
 	pkgver = 1.4
 	pkgrel = 1
 	url = http://pentestmonkey.net/tools/audit/unix-privesc-check

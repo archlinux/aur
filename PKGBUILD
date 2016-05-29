@@ -3,7 +3,8 @@ pkgname=unix-privesc-check
 pkgver=1.4
 pkgrel=1
 epoch=
-pkgdesc=""
+pkgdesc="A script to find misconfigurations that could allow user 
+privilege escalation in UNIX systems"
 arch=(x86_64 i686)
 url="http://pentestmonkey.net/tools/audit/unix-privesc-check"
 license=('GPLv2')
