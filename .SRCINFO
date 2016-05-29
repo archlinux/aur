@@ -3,7 +3,7 @@ pkgbase = marionnet
 	pkgver = 0.90.6
 	pkgrel = 2
 	url = https://www.marionnet.org/
-	install = marionnet.install
+	install = marionnet-legacy.install
 	arch = i686
 	arch = x86_64
 	license = LGPL
@@ -26,12 +26,14 @@ pkgbase = marionnet
 	source = http://wwwfun.kurims.kyoto-u.ac.jp/soft/lsl/dist/lablgtk-2.14.2.tar.gz
 	source = https://www.marionnet.org/download/marionnet_from_scratch/mirror/ocamlbricks-0.90.3.tar.gz
 	source = https://www.marionnet.org/download/marionnet_from_scratch/mirror/marionnet-0.90.6.tar.gz
-	source = https://raw.githubusercontent.com/JulioJu/Marionnet-old_ArchLinux-installer/master/Makefile.patch
+	source = https://raw.githubusercontent.com/JulioJu/Marionnet_ArchLinux_Installer/master/Makefile-legacy.patch
+	source = https://raw.githubusercontent.com/JulioJu/Marionnet_ArchLinux_Installer/master/marionnet_from_scratch-Downloader
 	sha256sums = 83008744c0ba1e3460651b86d0900916edae38813eb9a0300e8eaa861c3e921e
 	sha256sums = 4981abedabdc462303f345104042c88af227ccd50fd30a9bf48fd353ab02d0ba
 	sha256sums = 39cc4cc100124b8363c9760494d7e285803ca22ff8409f79038f3fb4a146a96c
 	sha256sums = 3a571a2cb4724b50eb52e33191d42a6b8396889e728bc974bc396395c9ce03ac
 	sha256sums = 1fd697ff5f7055bcd6da2b6b5233d58bf79a2d4fc59b36eb79fb3c0d63265d3c
+	sha256sums = 5d8ddf6e5c5b726e892bae2b55eb5eb01f43bd47fa2855ec38797d0598a6ea24
 
 pkgname = marionnet
 

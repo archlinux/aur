@@ -1,0 +1,164 @@
+--- Makefile	2011-01-28 17:38:56.000000000 +0100
++++ MakefileArchLinux	2016-05-28 05:04:51.416500935 +0200
+@@ -271,11 +271,11 @@
+ # Just a handy alias:
+ install-doc: install-documentation
+ 
+-# Install the data from this package into $prefix/share/$name:
++# Install the data from this package into $prefixInstall/share/$name:
+ install-data: main install-data-local
+-	@($(call READ_CONFIG, prefix); \
++	@($(call READ_CONFIG, prefixInstall); \
+ 	$(call READ_META, name); \
+-	directory=$$prefix/share/$$name; \
++	directory=$$prefixInstall/share/$$name; \
+ 	shopt -s nullglob; \
+ 	if [ -e share ]; then \
+ 	  dataifany=`ls -d share/*`; \
+@@ -343,12 +343,12 @@
+ 	  echo "We don't have any configuration files to remove."; \
+ 	fi)
+ 
+-# Remove the data of this package from $prefix/share/$name:
++# Remove the data of this package from $prefixInstall/share/$name:
+ uninstall-data: uninstall-data-local
+-	@( ($(call READ_CONFIG, prefix); \
++	@( ($(call READ_CONFIG, prefixInstall); \
+ 	$(call READ_META, name); \
+-	directory=$$prefix/share/$$name; \
+-	echo "Removing $$name data from $$prefix/share/..."; \
++	directory=$$prefixInstall/share/$$name; \
++	echo "Removing $$name data from $$prefixInstall/share/..."; \
+ 	shopt -s nullglob; \
+ 	if rm -rf $$directory; then \
+ 	  echo "The entire directory $$directory was removed."; \
+@@ -386,40 +386,40 @@
+ install-programs: programs install-programs-local
+ 	@($(call READ_CONFIG, prefix); 		     \
+ 	$(call READ_META, name);   		     \
+-	echo "Creating $$prefix/bin/..."; \
+-	(mkdir -p $$prefix/bin &> /dev/null || true); \
+-	echo "Creating $$prefix/sbin/..."; \
+-	(mkdir -p $$prefix/sbin &> /dev/null || true); \
+-	echo "Installing programs from $$name into $$prefix/bin/..."; \
++	echo "Creating $$prefixInstall/bin/..."; \
++	(mkdir -p $$prefixInstall/bin &> /dev/null || true); \
++	echo "Creating $$prefixInstall/sbin/..."; \
++	(mkdir -p $$prefixInstall/sbin &> /dev/null || true); \
++	echo "Installing programs from $$name into $$prefixInstall/bin/..."; \
+ 	shopt -s nullglob; \
+ 	for file in $(OTHER_PROGRAMS_TO_INSTALL) _build/*.byte _build/*.native; do \
+ 	  basename=`basename $$file`; \
+ 	  if echo " $(ROOT_NATIVE_PROGRAMS) $(ROOT_BYTE_PROGRAMS) " | grep -q " $$basename "; then \
+-	    echo "Installing "`basename $$file`" as a \"root program\" into $$prefix/sbin..."; \
+-	    cp -a $$file $$prefix/sbin/; \
+-	    chmod +x $$prefix/sbin/$$basename; \
++	    echo "Installing "`basename $$file`" as a \"root program\" into $$prefixInstall/sbin..."; \
++	    cp -a $$file $$prefixInstall/sbin/; \
++	    chmod +x $$prefixInstall/sbin/$$basename; \
+ 	  else \
+-	    echo "Installing "`basename $$file`" into $$prefix/bin..."; \
+-	    cp -a $$file $$prefix/bin/; \
+-	    chmod +x $$prefix/bin/$$basename; \
++	    echo "Installing "`basename $$file`" into $$prefixInstall/bin..."; \
++	    cp -a $$file $$prefixInstall/bin/; \
++	    chmod +x $$prefixInstall/bin/$$basename; \
+ 	  fi; \
+ 	done) && \
+ 	echo 'Program installation was successful.'
+ 
+-# Remove the programs from this package from $prefix/bin:
++# Remove the programs from this package from $prefixInstall/bin:
+ uninstall-programs: main uninstall-programs-local
+-	@($(call READ_CONFIG, prefix); 		     \
++	@($(call READ_CONFIG, prefixInstall); 		     \
+ 	$(call READ_META, name);   		     \
+ 	echo "Removing $$name programs..."; \
+ 	shopt -s nullglob; \
+ 	for file in $(OTHER_PROGRAMS_TO_INSTALL) _build/*.byte _build/*.native; do \
+ 	  basename=`basename $$file`; \
+ 	  if echo " $(ROOT_NATIVE_PROGRAMS) $(ROOT_BYTE_PROGRAMS) " | grep -q " $$basename "; then \
+-	    echo -e "Removing the \"root program\" $$basename from $$prefix/sbin..."; \
+-	    export pathname=$$prefix/sbin/`basename $$file`; \
++	    echo -e "Removing the \"root program\" $$basename from $$prefixInstall/sbin..."; \
++	    export pathname=$$prefixInstall/sbin/`basename $$file`; \
+ 	  else \
+-	    echo -e "Removing $$basename from $$prefix/bin..."; \
+-	    export pathname=$$prefix/bin/`basename $$file`; \
++	    echo -e "Removing $$basename from $$prefixInstall/bin..."; \
++	    export pathname=$$prefixInstall/bin/`basename $$file`; \
+ 	  fi; \
+ 	  rm -f $$pathname; \
+ 	done) && \
+@@ -679,14 +679,14 @@
+ # $(2),..,$(9) in a file $(1).
+ #
+ # Example:
+-#	$(call SOURCE_AND_TEST,CONFIGME,prefix);
+-#	$(call SOURCE_AND_TEST,CONFIGME,prefix,libraryprefix);
++#	$(call SOURCE_AND_TEST,CONFIGME,prefixInstall);
++#	$(call SOURCE_AND_TEST,CONFIGME,prefixInstall,libraryprefix);
+ SOURCE_AND_TEST = \
+ 	if ! source $(1) &> /dev/null; then        		\
+ 		echo 'Evaluating $(1) failed.';    		\
+ 		exit 1;                           		\
+ 	fi;                                        		\
+-	for i in $(2) $(3) $(4) $(5) $(6) $(7) $(8) $(9); do 	\
++	for i in $(2) $(3) $(4) $(5) $(6) $(7) $(8) $(9) $(10); do 	\
+ 		CMD="VAL=$$`echo $$i`"; eval $$CMD;		\
+ 	 	if test -z "$$VAL"; then                  	\
+ 			echo "FATAL: $${i} is undefined in $(1)."; 	\
+@@ -703,7 +703,7 @@
+ #	$(call GREP_AND_TEST,META,name);
+ #	$(call GREP_AND_TEST,META,name,version);
+ GREP_AND_TEST = \
+-	for i in $(2) $(3) $(4) $(5) $(6) $(7) $(8) $(9); do 	\
++	for i in $(2) $(3) $(4) $(5) $(6) $(7) $(8) $(9) $(10); do 	\
+ 		if ! CMD=`grep "^$$i=" $(1)`; then                 	\
+ 			echo "FATAL: $$i is undefined in $(1).";	\
+ 			exit 1;                            		\
+@@ -716,10 +716,10 @@
+ # if the given names are defined
+ #
+ # Example:
+-# 	$(call READ_CONFIG,prefix,libraryprefix);
++# 	$(call READ_CONFIG,prefixInstall,libraryprefix);
+ #
+ READ_CONFIG = \
+-	$(call SOURCE_AND_TEST,CONFIGME,$(1),$(2),$(3),$(4),$(5),$(6),$(7),$(8),$(9))
++	$(call SOURCE_AND_TEST,CONFIGME,$(1),$(2),$(3),$(4),$(5),$(6),$(7),$(8),$(9), $(10))
+ 
+ # Instance of GREP_AND_TEST: read the file "META" searching for a names
+ # for all given names
+@@ -728,7 +728,7 @@
+ #	$(call READ_META,name,version);
+ #
+ READ_META = \
+-	$(call GREP_AND_TEST,META,$(1),$(2),$(3),$(4),$(5),$(6),$(7),$(8),$(9))
++	$(call GREP_AND_TEST,META,$(1),$(2),$(3),$(4),$(5),$(6),$(7),$(8),$(9), $(10))
+ 
+ # If the value of the 'version' variable contains the substring 'snapshot' then
+ # append to its value the current date, in hacker format. 'version' must be already
+@@ -758,7 +758,7 @@
+ 	echo $$sourcedirectories
+ 	
+ # Set the shell variable $(1) as the string obtained by prefixing each token
+-# in $(2) with the prefix $(3): for example if the shell variable
++# in $(2) with the prefixInstall $(3): for example if the shell variable
+ # 'sourcedirectories' is set to './A ./B' then
+ #     $(call ADD_PREFIX_TO_EACH_WORD, includes, $$sourcedirectories, -I)
+ # sets the shell variable 'includes' to '-I ./A -I ./B '.
+@@ -906,11 +906,12 @@
+ meta.ml: META
+ 	@(echo "Building $@..." && \
+ 	$(call READ_META, name, version); \
+-	$(call READ_CONFIG, prefix, libraryprefix, configurationprefix, documentationprefix localeprefix); \
++	$(call READ_CONFIG, prefix, prefixInstall, libraryprefix, configurationprefix, documentationprefix localeprefix); \
+ 	echo -e "(* This file is automatically generated; please don't edit it. *)\n" > $@ && \
+ 	echo -e "let name = \"$$name\";;" >> $@ && \
+ 	echo -e "let version = \"$$version\";;" >> $@ && \
+ 	echo -e "let prefix = \"$$prefix\";;" >> $@ && \
++	echo -e "let prefixInstall = \"$$prefixInstall\";;" >> $@ && \
+ 	echo -e "let libraryprefix = \"$$libraryprefix\";;" >> $@ && \
+ 	echo -e "let configurationprefix = \"$$configurationprefix\";;" >> $@ && \
+ 	echo -e "let localeprefix = \"$$localeprefix\";;" >> $@ && \

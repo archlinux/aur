@@ -21,14 +21,16 @@ source=("http://caml.inria.fr/distrib/ocaml-3.11/ocaml-3.11.2.tar.gz"
         'http://wwwfun.kurims.kyoto-u.ac.jp/soft/lsl/dist/lablgtk-2.14.2.tar.gz'
         "https://www.marionnet.org/download/marionnet_from_scratch/mirror/ocamlbricks-0.90.3.tar.gz"
         "https://www.marionnet.org/download/marionnet_from_scratch/mirror/marionnet-0.90.6.tar.gz"
-        "https://raw.githubusercontent.com/JulioJu/Marionnet-old_ArchLinux-installer/master/Makefile.patch"
+        "https://raw.githubusercontent.com/JulioJu/Marionnet_ArchLinux_Installer/master/Makefile-legacy.patch"
+        "https://raw.githubusercontent.com/JulioJu/Marionnet_ArchLinux_Installer/master/marionnet_from_scratch-Downloader"
 )
 sha256sums=('83008744c0ba1e3460651b86d0900916edae38813eb9a0300e8eaa861c3e921e'
             '4981abedabdc462303f345104042c88af227ccd50fd30a9bf48fd353ab02d0ba'
             '39cc4cc100124b8363c9760494d7e285803ca22ff8409f79038f3fb4a146a96c'
             '3a571a2cb4724b50eb52e33191d42a6b8396889e728bc974bc396395c9ce03ac'
-            '1fd697ff5f7055bcd6da2b6b5233d58bf79a2d4fc59b36eb79fb3c0d63265d3c')
-install=marionnet.install
+            '1fd697ff5f7055bcd6da2b6b5233d58bf79a2d4fc59b36eb79fb3c0d63265d3c'
+            '5d8ddf6e5c5b726e892bae2b55eb5eb01f43bd47fa2855ec38797d0598a6ea24')
+install=marionnet-legacy.install
 
 # ################
 # MAKEDEPENDS : CREATED DURING COMPILATION but not keep
@@ -246,6 +248,9 @@ EOF
     optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/ico.hardware-gray.small.png
     optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/ico.cable-serial-left-right.large.png
 
+    chmod u+x "${srcdir}/marionnet_from_scratch-Downloader"
+    mv "${srcdir}/marionnet_from_scratch-Downloader" "${pkgdir}/usr/share/marionnet"
+    echo -e "0\n0.90" > "${pkgdir}/usr/share/marionnet/numberOfStepsPassedForDownloadMarionnetFilesystems.tmp"
 
 }
 
