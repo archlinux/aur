@@ -2,7 +2,7 @@
 
 pkgname=arm-none-eabi-gcc49-linaro
 _relver=4.9
-_relshortdate=14.09
+_relshortdate=15.06
 _reldate=20${_relshortdate}
 _relverdate=${_relver}-${_reldate}
 # This is how I want to define the pkgver, but the AUR doesn't understand it, because multiple _ characters are not allowed
@@ -85,7 +85,7 @@ package() {
 
 # vim: set ts=2 sw=2 ft=sh et:
 
-sha256sums=('c708c486f62f0d283f8615d7bc05d9830d50e15c52cfe213ec3992f6c190c222'
+sha256sums=('9a149d46b933d66b85141c0a8341321551f6b56f264adbf59c312eb52c0f52ad'
             'd29fe53d70f545c2fb080b9686e05d0f8af5088fec9b7dc78bc788a98765ef99'
             'b328e9cdca4e2869490d932191b78ef1a61c60382cea3a23d1ef86e7c1fb86a7'
             '104b9aa652804a56338470983e6975af1d1e5440eb8bddae3a01a966d2b332cf'
