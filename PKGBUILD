@@ -2,7 +2,7 @@
 # Contributor: Alec Ari <neotheuser@ymail.com>
 
 pkgname=linuxcnc-sim
-pkgver=20160419
+pkgver=20160527
 pkgrel=1
 pkgdesc="It can interpret G-code and simulate a CNC machine (formerly EMC2)."
 arch=('i686' 'x86_64')
@@ -39,7 +39,7 @@ build () {
 #  patch -Np1 < $srcdir/jepler-modsilent.patch
 #  cd $srcdir/$pkgname-$pkgver/src
   ./autogen.sh
-  ./configure --enable-simulator --without-libmodbus --prefix=/usr --with-python=/usr/bin/python2.7 || return 1
+  ./configure --enable-simulator --without-libmodbus --prefix=/usr --with-python=/usr/bin/python2.7 --enable-non-distributable=yes || return 1
   make || return 1
 }
 
