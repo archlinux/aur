@@ -1,7 +1,7 @@
 pkgbase = foxtrotgps
 	pkgdesc = a lightweight and fast mapping application (fork of tangoGPS)
-	pkgver = 1.1.1
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = http://www.foxtrotgps.org/
 	install = foxtrotgps.install
 	arch = i686
@@ -20,8 +20,8 @@ pkgbase = foxtrotgps
 	optdepends = gpscorrelate: photo-geotagging
 	optdepends = jhead: photo-geotagging
 	optdepends = bluez: Zephyr HxM heartrate-monitor support
-	source = http://www.foxtrotgps.org/releases/foxtrotgps-1.1.1.tar.gz
-	md5sums = 6777d448ee9d3ba195f9d26ea90e3163
+	source = http://www.foxtrotgps.org/releases/foxtrotgps-1.2.0.tar.gz
+	md5sums = 61b86fb9abb16be062145df10eded6c6
 
 pkgname = foxtrotgps
 

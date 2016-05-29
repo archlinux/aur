@@ -1,5 +1,5 @@
-# Maintainer: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
-# http://github.com/fukawi2/aur-packages
+# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Contributor: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
 # Contributor: victorique <r+aur@wwad.de> (curlnew patch)
 
 ### I AM ONLY THE PACKAGER, NOT THE DEVELOPER
@@ -13,8 +13,8 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=foxtrotgps
-pkgver=1.1.1
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 license=('GPL')
 pkgdesc="a lightweight and fast mapping application (fork of tangoGPS)"
 arch=(i686 x86_64)
@@ -27,7 +27,7 @@ optdepends=('python2: import GeoRSS points'
 source=(http://www.foxtrotgps.org/releases/$pkgname-$pkgver.tar.gz)
 install=foxtrotgps.install
 url="http://www.foxtrotgps.org/"
-md5sums=('6777d448ee9d3ba195f9d26ea90e3163')
+md5sums=('61b86fb9abb16be062145df10eded6c6')
 
 build() {
   cd "$srcdir"/$pkgname-$pkgver
