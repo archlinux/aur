@@ -1,0 +1,13 @@
+pkgbase = numix-cinnamon-green-2
+        pkgdesc = A Cinnamon Theme
+        pkgver = 1.0
+        pkgrel = 1
+        url = https://cinnamon-spices.linuxmint.com/themes/view/473
+        arch = any
+        license = unknown
+        depends = cinnamon
+        depends = unzip
+        source = https://cinnamon-spices.linuxmint.com/uploads/themes/A6CP-36R7-INJ8.zip
+        md5sums = SKIP
+
+pkgname = numix-cinnamon-green-2
