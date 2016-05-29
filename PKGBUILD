@@ -1,4 +1,4 @@
-pkgname="numix-cinnamon-blue-2"
+pkgname="numix-cinnamon-blue"
 pkgver=1.0
 pkgrel=1
 pkgdesc="A Cinnamon Theme"

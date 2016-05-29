@@ -1,4 +1,4 @@
-pkgbase = numix-cinnamon-blue-2
+pkgbase = numix-cinnamon-blue
         pkgdesc = A Cinnamon Theme
         pkgver = 1.0
         pkgrel = 1
@@ -10,5 +10,4 @@ pkgbase = numix-cinnamon-blue-2
         source = https://cinnamon-spices.linuxmint.com/uploads/themes/7OYU-MDLA-SZLD.zip
         md5sums = SKIP
 
-pkgname = numix-cinnamon-blue-2
-
+pkgname = numix-cinnamon-blue
