@@ -6,14 +6,12 @@ pkgdesc="Cross-Platform Console Software-defined radio (SDR) receiver/decoder fo
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="http://xdeco.org/"
 license=('MIT')
-depends=('curl')
+depends=('rtl-sdr')
 provides=('aisdeco2')
 
 prepare() {
 	case "$CARCH" in
-		armv6h)	_source_bin=("aisdeco_rpi_20140704.tgz")
-				;;
-		armv7h)	_source_bin=("aisdeco_rpi_20140704.tgz")
+		armv6h|armv7h)	_source_bin=("aisdeco_rpi_20140704.tgz")
 				;;
 		i686) _source_bin=("aisdeco2_"$CARCH"_20150415.tgz")
 				;;
@@ -25,5 +23,6 @@ prepare() {
 
 package() {
 	install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "$srcdir/LICENSE.MIT" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.MIT"
 }
 
