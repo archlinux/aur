@@ -9,7 +9,7 @@
 # though, so you shouldn't discount Python-markdown from your consideration."
 
 pkgname=python-markdown2-git
-pkgver=2.3.0.r13.g596d48b
+pkgver=2.3.1.r12.g9b97e84
 pkgrel=1
 pkgdesc='A fast and complete implementation of Markdown in Python 3'
 arch=('any')
