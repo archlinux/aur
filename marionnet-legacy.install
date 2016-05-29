@@ -179,8 +179,8 @@ echo "============================================================="
 echo "* Downlading and installing Marionnet kernels and filesystems (Linux \
 distributions Debian Lenny, Mandriva, Pinocchio, etc.)"
 echo -e "* Warning! this process may take several hours!"
-chmod u+x ./numberOfStepsPassedForDownloadMarionnetFilesystems.tmp
-./numberOfStepsPassedForDownloadMarionnetFilesystems.tmp -m 0.90 --prefix /usr/share/marionnet
+chmod u+x ./marionnet_from_scratch-Downloader
+./marionnet_from_scratch-Downloader -m 0.90 --prefix /usr/share/marionnet
 
 
 
