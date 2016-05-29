@@ -96,9 +96,16 @@ commit() {
     
 }
 
+clean() {
+    rm -rf "$location/$pkgname"
+}
+
+###
 
 provision
 
 version
 
 commit
+
+clean
