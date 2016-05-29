@@ -1,7 +1,7 @@
 # Maintainer: Hythlodaeus <matteodelseppiaomm@gmail.com>
 
 pkgname=Vega
-pkgver=1
+pkgver=1.0
 pkgrel=1
 epoch=
 pkgdesc="Vega is a platform for testing the security of web applications"
@@ -13,7 +13,7 @@ depends=()
 makedepends=()
 checkdepends=()
 optdepends=()
-provides=('gtk' 'webkitgtk' 'jdk8-openjdk')
+provides=('gtk' 'webkitgtk2' 'jdk8-openjdk')
 conflicts=()
 replaces=()
 backup=()
@@ -27,8 +27,8 @@ validpgpkeys=()
 
 
 build() {
-	echo Installing required webkitgtk and openjdk
-        sudo pacman -S webkitgtk unzip jdk8-openjdk
+	echo Installing required webkitgtk2 and openjdk
+        sudo pacman -S webkitgtk2 unzip jdk8-openjdk
         sudo unzip VegaBuild-linux.gtk.x86_64.zip
         sudo mv vega /usr/share
 }
