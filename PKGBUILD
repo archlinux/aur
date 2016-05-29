@@ -1,29 +1,35 @@
 # Maintainer: FadeMind <fademind@gmail.com>
-# Contributor: Bjoern Bidar <theodorstormgrade@gmail.com>
+# Contributor: Alois Nespor <info@aloisnespor.info>
+# Contributor: Tianjiao Yin <ytj000+aur@gmail.com>
 
-_plugin_name=kde_wallet_password_integration
+_dver=49357
 pkgname=firefox-extension-kwallet
 pkgver=2.4.1
 pkgrel=2
 pkgdesc="An extension to allows Firefox to use KDE's Kwallet to store passwords"
-arch=('i686' 'x86_64')
-url="https://addons.mozilla.org/firefox/addon/kde-wallet-password-integratio/"
-license=('MPL 1.1' 'GPL 2.0' 'LGPL 2.1')
-depends=('qt4' 'firefox' 'kwalletmanager')
+url="https://addons.mozilla.org/firefox/addon/kwallet/"
+depends=("firefox")
 makedepends=('unzip')
-source=("${_plugin_name}-2.4-fx+tb-linux.xpi::https://addons.cdn.mozilla.net/user-media/addons/49357/${_plugin_name}-2.4-fx+tb-linux.xpi")
-sha256sums=('b424fa047c608763773dbc9ee77e960df35c8200ac3b7dfa335b476dc5d13fd3')
-noextract=("${_plugin_name}-2.4-fx+tb-linux.xpi")
+license=('MPL2')
+arch=('any')
+source=("https://addons.mozilla.org/firefox/downloads/latest/${_dver}/platform:2/addon-${_dver}-latest.xpi")
+sha256sums=('57ab91bdd4ae1dc231551ce3e164f6a8315bb3e36d3704423e7d64625ad1fbc4')
+noextract=(addon-${_dver}-latest.xpi)
+
+pkgver() {
+    sed -n '/.*<em:version>\(.*\)<\/em:version>.*/{s//\1/p;q}' install.rdf | cut -f 1 -d-
+}
 
 prepare(){
-    unzip -qqo ${_plugin_name}-2.4-fx+tb-linux.xpi
+    unzip -qqo addon-${_dver}-latest.xpi
 }
 
 package() {
-    emid=$(grep -Pom1 'id>\K[^<]*' install.rdf)
-    dstdir=$pkgdir/usr/lib/firefox/browser/extensions/$emid
-    sed -i "s|<em:maxVersion>.*</em:maxVersion>|<em:maxVersion>99.*</em:maxVersion>|" install.rdf
-    install -dm755 "$dstdir"
+    cd "$srcdir"
+    emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf)
+    local dstdir="$pkgdir/usr/lib/firefox/browser/extensions/${emid}"
+    install -d "$dstdir"
     rm *.xpi
-    cp -r * "$dstdir/"
+    cp -dpr --no-preserve=ownership * "$dstdir"
+    chmod -R 755 "$dstdir"
 }
