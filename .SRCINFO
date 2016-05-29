@@ -1,0 +1,20 @@
+pkgbase = valadate-git
+	pkgdesc = Test framework for the Vala programming language
+	pkgver = 1.0.r292.183ced8
+	pkgrel = 1
+	url = http://github.com/chebizzaro/valadate
+	arch = x86_64
+	arch = i686
+	license = LGPL3
+	makedepends = git
+	makedepends = libtool
+	makedepends = gobject-introspection
+	depends = libxslt
+	depends = json-glib
+	provides = valadate
+	conflicts = valadate
+	source = valadate::git+https://github.com/chebizarro/valadate.git
+	md5sums = SKIP
+
+pkgname = valadate-git
+
