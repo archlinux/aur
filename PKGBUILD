@@ -1,7 +1,7 @@
 # Maintainer: Christian Krause ("wookietreiber") <kizkizzbangbang@googlemail.com>
 
 pkgname=phyml-mpi-git
-pkgver=r121.ab59039
+pkgver=r751.3b3d7a5
 pkgrel=1
 pkgdesc="Phylogenetic estimation using (Maximum) Likelihood"
 arch=('i686' 'x86_64')
