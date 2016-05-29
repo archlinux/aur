@@ -8,8 +8,7 @@ license=('unknown')
 source=("https://cinnamon-spices.linuxmint.com/uploads/themes/054P-KVVX-JJN7.zip")
 md5sums=('SKIP')
 
-depends=('cinnamon')
-makedepends=('unzip')
+depends=('cinnamon' 'unzip')
 
 package() {
 
