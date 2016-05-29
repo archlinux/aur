@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 pkgname='gnome-keyring-import-export-hg'
-pkgver=r4.a4ea7a5c5709
+pkgver=r8.fb3d72bfedb0
 pkgrel=1
 pkgdesc='Simple script for exporting gnome2 (seahorse) keyrings, and re-importing on another machine.'
 arch=('any')
@@ -21,12 +21,7 @@ md5sums=(
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	printf "r`hg identify -n | rev | sed 's/+//' | rev`.`hg identify -i | rev | sed 's/+//' | rev`"
-}
-
-prepare() {
-	cd "$srcdir/$pkgname"
-	sed -i 's/item_type == gnomekeyring.ITEM_NETWORK_PASSWORD/item_type = gnomekeyring.ITEM_NETWORK_PASSWORD/g' 'gnome_keyring_import_export.py'
+	printf "r`hg identify -n`.`hg identify -i`"
 }
 
 package() {
