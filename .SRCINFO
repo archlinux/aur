@@ -1,0 +1,22 @@
+pkgbase = python-pyql-git
+	pkgdesc = QuantLib Cython Wrappers
+	pkgver = 20160412
+	pkgrel = 1
+	url = https://github.com/enthought/pyql
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = cython>=0.23
+	makedepends = git
+	depends = quantlib>=1.5
+	depends = python
+	depends = python-pandas>=0.16.2
+	depends = python-tabulate
+	depends = python-numpy>1.7.0
+	depends = python-pytz>2011.11
+	depends = python-dateutil>2.0
+	depends = python-six
+	options = !libtool
+
+pkgname = python-pyql-git
+
