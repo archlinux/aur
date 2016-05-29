@@ -1,7 +1,7 @@
 # Maintainer:  jyantis <yantis@yantis.net>
 
 pkgname=geeknote-improved-git
-pkgver=0.2a.r536.0e87ccd
+pkgver=0.2a.r682.b541ef6
 pkgrel=1
 pkgdesc='Work with Evernote & Yinxiang from the command line. This fork has everything geeknote does and more for example the ability to upload documents. It also has much more active development.'
 arch=('any')
@@ -14,7 +14,8 @@ depends=('python2'
          'python2-markdown2-git'
          'python2-thrift'
          'python2-beautifulsoup4'
-         'python2-oauth2')
+         'python2-oauth2'
+         'python2-proxyenv-git')
 source=('git+https://github.com/jeffkowalski/geeknote.git')
 sha256sums=('SKIP')
 makedepends=('git' 'python2-setuptools')
