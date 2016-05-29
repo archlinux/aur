@@ -1,27 +1,31 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 # Contributor: Daniel Nagy <danielnagy at gmx de>
 
-_plugin_name=feedly-notifier
-pkgname=firefox-extension-${_plugin_name}
-pkgver=2.11.1
+_dver=456474
+pkgname=firefox-extension-feedly-notifier
+pkgver=2.11.2
 pkgrel=1
-pkgdesc="Firefox extension for reading news from rss aggregator Feedly."
-license=('MPL 2.0')
-arch=('any') 
-url="https://addons.mozilla.org/firefox/addon/${_plugin_name}/"
+pkgdesc="Firefox extension for reading news from rss aggregator Feedly"
+url="https://addons.mozilla.org/firefox/addon/feedly-notifier/"
 depends=("firefox")
 makedepends=('unzip')
-source=(https://addons.cdn.mozilla.net/user-media/addons/456474/${_plugin_name/-/_}-${pkgver}-fx.xpi)
-sha256sums=('23e3d5846c6f7210a87e70407a2f0fa23db6da47b81cdde714ba0e7e1ec2fa84')
-noextract=("${_plugin_name/-/_}-${pkgver}-fx.xpi")
+license=('MPL2')
+arch=('any')
+source=("https://addons.mozilla.org/firefox/downloads/latest/${_dver}/addon-${_dver}-latest.xpi")
+sha256sums=('db85459a0d9c25240f1a8b05c55e6a92aff64acb7c5ce68d9ae68c9f8c5af5f9')
+noextract=(addon-${_dver}-latest.xpi)
+
+pkgver() {
+    sed -n '/.*<em:version>\(.*\)<\/em:version>.*/{s//\1/p;q}' install.rdf | cut -f 1 -d-
+}
 
 prepare(){
-    unzip -qqo ${_plugin_name/-/_}-${pkgver}-fx.xpi
+    unzip -qqo addon-${_dver}-latest.xpi
 }
 
 package() {
     cd "$srcdir"
-    emid=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf)
+    emid=$(grep -Pom1 'id>\K[^<]*' install.rdf)
     local dstdir="$pkgdir/usr/lib/firefox/browser/extensions/${emid}"
     install -d "$dstdir"
     rm *.xpi
