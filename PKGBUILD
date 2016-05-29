@@ -1,14 +1,14 @@
-# Maintainer: David Parrish <daveparrish@gmail.com>
+# Maintainer: David Parrish <daveparrish@tutanota.com>
 
 pkgname=bitsquare-bin
-pkgver=0.4.6
+pkgver=0.4.8
 pkgrel=1
 pkgdesc="Bitsquare is a cross-platform desktop application that allows users to trade national currency (dollars, euros, etc) for bitcoin without relying on centralized exchanges"
 arch=('x86_64')
 url="https://bitsquare.io/"
 license=('AGPL3')
 source_x86_64=("https://github.com/bitsquare/bitsquare/releases/download/v${pkgver}/Bitsquare-64bit-${pkgver}.deb")
-md5sums_x86_64=('97eb61d90fdd145677985c97c97365e8')
+md5sums_x86_64=('ba071ac016562d457f733b71c2f04466')
 _binname=Bitsquare
 
 prepare() {
