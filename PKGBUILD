@@ -9,7 +9,7 @@ users to define, configure and run complex computer networks without any need
 for physical setup. Very old version."
 arch=('i686' 'x86_64')
 url="https://www.marionnet.org/"
-makedepends=('wget' 'optipng')
+makedepends=('optipng')
 license=('LGPL')
 depends=('xorg-server' 'xorg-xinit' 'xorg-server-utils' 'gtksourceview2' 'libglademm' 'graphviz' 'xterm' 'vde2' 'uml_utilities' 'net-tools' 'bridge-utils')
 if test "$CARCH" == x86_64; then
@@ -75,8 +75,8 @@ build () {
     if type uname 1>&2 && [[ $(uname -m) = "${CARCH}" ]]; then
         local BUGFIX_FILE="bugfix-5237.diff"
         echo "Downloading the ocaml 3.11 patch ($BUGFIX_FILE) for ${CARCH}"
-        wget -O $BUGFIX_FILE "$OUR_MIRROR/$BUGFIX_FILE" || \
-            wget -O $BUGFIX_FILE 'http://caml.inria.fr/mantis/file_download.php?file_id=415&type=bug' || \
+        curl -o $BUGFIX_FILE "$OUR_MIRROR/$BUGFIX_FILE" || \
+            curl -o $BUGFIX_FILE 'http://caml.inria.fr/mantis/file_download.php?file_id=415&type=bug' || \
             return 1
         echo "Applying the ocaml 3.11 patch ($BUGFIX_FILE) for ${CARCH}"
         patch -p1 < $BUGFIX_FILE
@@ -85,8 +85,8 @@ build () {
     elif type ld 1>&2 && ld -v | \grep -q '[ ]2[.]2[1-9]'; then
         local BUGFIX_FILE="bugfix-5237-i386.diff"
         echo "Downloading the ocaml 3.11 patch ($BUGFIX_FILE) for i386"
-        wget -O $BUGFIX_FILE "$OUR_MIRROR/$BUGFIX_FILE" || \
-            wget -O $BUGFIX_FILE 'http://caml.inria.fr/mantis/file_download.php?file_id=418&type=bug' || \
+        curl -o $BUGFIX_FILE "$OUR_MIRROR/$BUGFIX_FILE" || \
+            curl -o $BUGFIX_FILE 'http://caml.inria.fr/mantis/file_download.php?file_id=418&type=bug' || \
             return 1
         echo "Applying the ocaml 3.11 patch ($BUGFIX_FILE) for i386"
         patch -p1 < $BUGFIX_FILE
@@ -139,7 +139,7 @@ EOF
 
     # Makefile patch 
 
-    patch Makefile < ../Makefile.patch
+    patch Makefile < ../Makefile-legacy.patch
 
     # Configure CONFIGME
 cat > CONFIGME <<EOF
