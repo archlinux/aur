@@ -1,0 +1,775 @@
+diff --git a/npostscr.f b/npostscr.f
+index 8e6e539..260d1fe 100644
+--- a/npostscr.f
++++ b/npostscr.f
+@@ -55,23 +55,23 @@ C
+ C
+       integer itmpl,jtmpl,ixl,iyl,ixh,iyh
+       save itmpl,jtmpl,ixl,iyl,ixh,iyh
+-      DATA          INST/17,2,4,  1, 0,'XMIN',
+-     X                      2,4,  2, 0,'XMAX',
+-     X                      2,4,  3, 0,'YMIN',
+-     X                      2,4,  4, 0,'YMAX',
+-     X                      3,5,  5, 0,'RUCM','X   ',
+-     X                      3,5,  6, 0,'RUCM','Y   ',
+-     X                      1,7,  7, 1,'ROTA','XIS ',
+-     X                      1,7,  8, 1,'SLDF','ILL ',
+-     X                      1,5,  9, 1,'GENI','L   ',
+-     X                      1,5, 10, 1,'ASCI','I   ',
+-     X                      4,6, 11,64,'DDNA','ME  ',
+-     X                      4,6, 27,64,'BEGF','IL  ',
+-     X                      4,6, 43,64,'ENDF','IL  ',
+-     X                      4,6, 59,64,'BEGP','IC  ',
+-     X                      4,6, 75,64,'ENDP','IC  ',
+-     X                      4,6, 91,64,'BEGR','EC  ',
+-     X                      4,6,107,64,'ENDR','EC  '/
++      DATA          INST/17,2,4,  1, 0,4HXMIN,
++     X                      2,4,  2, 0,4HXMAX,
++     X                      2,4,  3, 0,4HYMIN,
++     X                      2,4,  4, 0,4HYMAX,
++     X                      3,5,  5, 0,4HRUCM,4HX   ,
++     X                      3,5,  6, 0,4HRUCM,4HY   ,
++     X                      1,7,  7, 1,4HROTA,4HXIS ,
++     X                      1,7,  8, 1,4HSLDF,4HILL ,
++     X                      1,5,  9, 1,4HGENI,4HL   ,
++     X                      1,5, 10, 1,4HASCI,4HI   ,
++     X                      4,6, 11,64,4HDDNA,4HME  ,
++     X                      4,6, 27,64,4HBEGF,4HIL  ,
++     X                      4,6, 43,64,4HENDF,4HIL  ,
++     X                      4,6, 59,64,4HBEGP,4HIC  ,
++     X                      4,6, 75,64,4HENDP,4HIC  ,
++     X                      4,6, 91,64,4HBEGR,4HEC  ,
++     X                      4,6,107,64,4HENDR,4HEC  /
+ C
+ C  CHECK OPERATION FLAG AND BRANCH TO THE CORRECT SECTION.
+       INT1=DDIN(1)
+diff --git a/ntek4010.f b/ntek4010.f
+index 7dd36e8..4209a43 100644
+--- a/ntek4010.f
++++ b/ntek4010.f
+@@ -46,7 +46,7 @@ C
+ C
+       INTEGER       INT1
+ C
+-      DATA          INST/1,4,7,1,64,'CHAN','NEL '/
++      DATA          INST/1,4,7,1,64,4HCHAN,4HNEL /
+ c      DATA          CLRX/Z1D,Z1B,Z0C/
+ c      DATA          CRSX/Z1B,Z1A/
+ c      DATA          BELL/Z07/
+diff --git a/nucleus.f b/nucleus.f
+index 14f42c5..3a77e36 100644
+--- a/nucleus.f
++++ b/nucleus.f
+@@ -55,54 +55,54 @@ C
+       DATA          POTCC/PODCC/
+       DATA          POTST(1)/36/
+       DATA          POT001
+-     X  /    1,    4,    1,    1, 'VDIM',
+-     X       1,    3,    1,    2, 'DIM ',
+-     X       1,    6,    1,    3, 'MEDI', 'UM  ',
+-     X       1,    6,    1,    4, 'BRIG', 'HT  ',
+-     X       1,    7,    1,    5, 'VBRI', 'GHT '/
++     X  /    1,    4,    1,    1, 4HVDIM,
++     X       1,    3,    1,    2, 4HDIM ,
++     X       1,    6,    1,    3, 4HMEDI, 4HUM  ,
++     X       1,    6,    1,    4, 4HBRIG, 4HHT  ,
++     X       1,    7,    1,    5, 4HVBRI, 4HGHT /
+       DATA          POT002
+-     X  /    1,    5,    2,    1, 'WHIT', 'E   ',
+-     X       1,    3,    2,    2, 'RED ',
+-     X       1,    5,    2,    3, 'GREE', 'N   ',
+-     X       1,    4,    2,    4, 'BLUE',
+-     X       1,    6,    2,    5, 'YELL', 'OW  ',
+-     X       1,    7,    2,    6, 'MAGE', 'NTA ',
+-     X       1,    4,    2,    7, 'CYAN',
+-     X       1,    5,    2,    8, 'BLAC', 'K   '/
++     X  /    1,    5,    2,    1, 4HWHIT, 4HE   ,
++     X       1,    3,    2,    2, 4HRED ,
++     X       1,    5,    2,    3, 4HGREE, 4HN   ,
++     X       1,    4,    2,    4, 4HBLUE,
++     X       1,    6,    2,    5, 4HYELL, 4HOW  ,
++     X       1,    7,    2,    6, 4HMAGE, 4HNTA ,
++     X       1,    4,    2,    7, 4HCYAN,
++     X       1,    5,    2,    8, 4HBLAC, 4HK   /
+       DATA          POT003
+-     X  /    1,    6,    3,    1, 'STEA', 'DY  ',
+-     X       1,    5,    3,    2, 'BLIN', 'K   '/
++     X  /    1,    6,    3,    1, 4HSTEA, 4HDY  ,
++     X       1,    5,    3,    2, 4HBLIN, 4HK   /
+       DATA          POT004
+-     X  /    2,    6,    4,    0, 'PICK', 'ID  '/
++     X  /    2,    6,    4,    0, 4HPICK, 4HID  /
+       DATA          POT005
+-     X  /    2,    4,    5,    0, 'MARK'/
++     X  /    2,    4,    5,    0, 4HMARK/
+       DATA          POT006
+-     X  /    1,    5,    6,    1, 'SOLI', 'D   ',
+-     X       1,    6,    6,    2, 'DASH', 'ED  ',
+-     X       1,    6,    6,    3, 'DOTT', 'ED  ',
+-     X       1,    7,    6,    4, 'DOTD', 'ASH '/
++     X  /    1,    5,    6,    1, 4HSOLI, 4HD   ,
++     X       1,    6,    6,    2, 4HDASH, 4HED  ,
++     X       1,    6,    6,    3, 4HDOTT, 4HED  ,
++     X       1,    7,    6,    4, 4HDOTD, 4HASH /
+       DATA          POT007
+-     X  /    3,    4,    7,    0, 'SIZE'/
++     X  /    3,    4,    7,    0, 4HSIZE/
+       DATA          POT008
+-     X  /    3,    5,    8,    0, 'DSIZ', 'E   '/
++     X  /    3,    5,    8,    0, 4HDSIZ, 4HE   /
+       DATA          POT009
+-     X  /    3,    5,    9,    0, 'ANGL', 'E   '/
++     X  /    3,    5,    9,    0, 4HANGL, 4HE   /
+       DATA          POT010
+-     X  /    1,    4,   10,    1, 'LEFT',
+-     X       1,    5,   10,    2, 'RIGH', 'T   ',
+-     X       1,    6,   10,    3, 'CENT', 'ER  '/
++     X  /    1,    4,   10,    1, 4HLEFT,
++     X       1,    5,   10,    2, 4HRIGH, 4HT   ,
++     X       1,    6,   10,    3, 4HCENT, 4HER  /
+       DATA          POT011
+-     X  /    1,    6,   11,    1, 'NORM', 'GN  ',
+-     X       1,    6,   11,    2, 'HARD', 'GN  ',
+-     X       1,    6,   11,    3, 'SOFT', 'GN  '/
++     X  /    1,    6,   11,    1, 4HNORM, 4HGN  ,
++     X       1,    6,   11,    2, 4HHARD, 4HGN  ,
++     X       1,    6,   11,    3, 4HSOFT, 4HGN  /
+       DATA          POT012
+-     X  /    1,    7,   12,    1, 'NOFX', 'SIZ ',
+-     X       1,    7,   12,    2, 'FIXS', 'IZE '/
++     X  /    1,    7,   12,    1, 4HNOFX, 4HSIZ ,
++     X       1,    7,   12,    2, 4HFIXS, 4HIZE /
+       DATA          POT013
+-     X  /    1,    7,   13,    0, 'NOCO', 'NST ',
+-     X       1,    6,   13,    1, 'XCON', 'ST  ',
+-     X       1,    6,   13,    2, 'YCON', 'ST  ',
+-     X       1,    6,   13,    3, 'ZCON', 'ST  '/
++     X  /    1,    7,   13,    0, 4HNOCO, 4HNST ,
++     X       1,    6,   13,    1, 4HXCON, 4HST  ,
++     X       1,    6,   13,    2, 4HYCON, 4HST  ,
++     X       1,    6,   13,    3, 4HZCON, 4HST  /
+ C
+       END
+       BLOCK DATA B000003
+diff --git a/seq4010.f b/seq4010.f
+index 7f2c819..2432489 100644
+--- a/seq4010.f
++++ b/seq4010.f
+@@ -41,10 +41,10 @@ C
+ C
+       INTEGER       INT1
+ C
+-      DATA          INST/4,4,6,1, 4,'PICT','ID  ',
+-     X                     2,6,2, 0,'PICT','SQ  ',
+-     X                     2,8,3, 0,'BAUD','RATE',
+-     X                     4,6,4,64,'DDNA','ME  '/
++      DATA          INST/4,4,6,1, 4,4HPICT,4HID  ,
++     X                     2,6,2, 0,4HPICT,4HSQ  ,
++     X                     2,8,3, 0,4HBAUD,4HRATE,
++     X                     4,6,4,64,4HDDNA,4HME  /
+ C
+ C  CHECK OPERATION FLAG AND BRANCH TO THE CORRECT SECTION.
+       INT1=DDIN(1)
+diff --git a/ug2dhg.f b/ug2dhg.f
+index a5177d3..a574eb8 100644
+--- a/ug2dhg.f
++++ b/ug2dhg.f
+@@ -63,7 +63,7 @@ C
+       LOGICAL       LGL1
+       INTEGER       INT1,INT2
+ C
+-      DATA          INST/1,3,5,1,0,'TOLE','R   '/
++      DATA          INST/1,3,5,1,0,4HTOLE,4HR   /
+ C
+ C  SCAN THE OPTIONS LIST, INITIALIZE, AND CHECK THE INPUT..
+       EXTL=0.00005
+diff --git a/ug3trn.f b/ug3trn.f
+index a964ec8..e8fc6a3 100644
+--- a/ug3trn.f
++++ b/ug3trn.f
+@@ -39,9 +39,9 @@ C
+ C
+       INTEGER       INT1
+ C
+-      DATA          INST/3,1,3,1,1,'GET ',
+-     X                     1,3,1,2,'PUT ',
+-     X                     1,6,2,1,'REMO','TE  '/
++      DATA          INST/3,1,3,1,1,4HGET ,
++     X                     1,3,1,2,4HPUT ,
++     X                     1,6,2,1,4HREMO,4HTE  /
+ C
+ C  IS THERE AN ACTIVE DEVICE?
+       IF (DDAAI.EQ.0) GO TO 307
+diff --git a/ug3wrd.f b/ug3wrd.f
+index 9317957..90b8057 100644
+--- a/ug3wrd.f
++++ b/ug3wrd.f
+@@ -36,8 +36,8 @@ C
+ C
+       INTEGER       INT1
+ C
+-      DATA          INST/2,1,3,1,1,'GET ',
+-     X                     1,3,1,2,'PUT '/
++      DATA          INST/2,1,3,1,1,4HGET ,
++     X                     1,3,1,2,4HPUT /
+ C
+ C  IS THERE AN ACTIVE DEVICE?
+       IF (DDAAI.EQ.0) GO TO 305
+diff --git a/ugclos.f b/ugclos.f
+index bac376e..7f4646d 100644
+--- a/ugclos.f
++++ b/ugclos.f
+@@ -40,8 +40,8 @@ C
+ C
+       INTEGER       INT1
+ C
+-      DATA          INST/2,1,3,1,1,'ALL ',
+-     X                     1,7,2,1,'NOCL','EAR '/
++      DATA          INST/2,1,3,1,1,4HALL ,
++     X                     1,7,2,1,4HNOCL,4HEAR /
+       DATA          TARY/1,3/
+ C
+ C  INITIALIZE AND SCAN THE OPTIONS LIST.
+diff --git a/ugcntr.f b/ugcntr.f
+index 2493eb6..058d76a 100644
+--- a/ugcntr.f
++++ b/ugcntr.f
+@@ -55,8 +55,8 @@ C
+ C
+       INTEGER       INT1
+ C
+-      DATA          INST/2,2,4,1,0,'NSCL',
+-     X                     3,5,2,0,'TOLE','R   '/
++      DATA          INST/2,2,4,1,0,4HNSCL,
++     X                     3,5,2,0,4HTOLE,4HR   /
+ C
+ C  SCAN THE OPTIONS LIST.
+       EXSC=0
+diff --git a/ugctol.f b/ugctol.f
+index 547e259..1ab1909 100644
+--- a/ugctol.f
++++ b/ugctol.f
+@@ -64,13 +64,13 @@ C
+       REAL          FLT1,FLT2,FLT3
+       INTEGER       INT1,INT2
+ C
+-      DATA          INST/7,3,4,1,0,'SIZE',
+-     X                     3,5,2,0,'ANGL','E   ',
+-     X                     1,5,3,1,'RIGH','T   ',
+-     X                     1,6,3,2,'CENT','ER  ',
+-     X                     1,7,4,0,'FIXS','IZE ',
+-     X                     1,4,5,1,'LAST',
+-     X                     1,4,5,2,'NEXT'/
++      DATA          INST/7,3,4,1,0,4HSIZE,
++     X                     3,5,2,0,4HANGL,4HE   ,
++     X                     1,5,3,1,4HRIGH,4HT   ,
++     X                     1,6,3,2,4HCENT,4HER  ,
++     X                     1,7,4,0,4HFIXS,4HIZE ,
++     X                     1,4,5,1,4HLAST,
++     X                     1,4,5,2,4HNEXT/
+ c      DATA          BITS/Z80000000,Z40000000,Z20000000,Z10000000,
+ c     X                   Z08000000,Z04000000,Z02000000,Z01000000,
+ c     X                   Z00800000,Z00400000,Z00200000,Z00100000,
+diff --git a/ugdefl.f b/ugdefl.f
+index bd023a5..e96c9d4 100644
+--- a/ugdefl.f
++++ b/ugdefl.f
+@@ -35,10 +35,10 @@ C
+       INTEGER*4     EXSX(1),EXRS
+       EQUIVALENCE   (EXRS,EXSX(1))
+ C
+-      DATA          INST/4,1,3,1,1,'GET ',
+-     X                     1,3,1,2,'PUT ',
+-     X                     1,5,1,3,'RESE','T   ',
+-     X                     1,3,1,2,'SET '/
++      DATA          INST/4,1,3,1,1,4HGET ,
++     X                     1,3,1,2,4HPUT ,
++     X                     1,5,1,3,4HRESE,4HT   ,
++     X                     1,3,1,2,4HSET /
+ C
+ C  SCAN THE OPTIONS LIST.
+       EXRS=0
+diff --git a/ugdsab.f b/ugdsab.f
+index f181464..fd1dd85 100644
+--- a/ugdsab.f
++++ b/ugdsab.f
+@@ -33,12 +33,12 @@ C
+ C
+       INTEGER       INT1
+ C
+-      DATA          INST/6,1,8,1,1,'KEYB','OARD',
+-     X                     1,4,2,1,'PICK',
+-     X                     1,6,3,1,'BUTT','ON  ',
+-     X                     1,6,4,1,'STRO','KE  ',
+-     X                     1,7,5,1,'LOCA','TOR ',
+-     X                     1,8,6,1,'VALU','ATOR'/
++      DATA          INST/6,1,8,1,1,4HKEYB,4HOARD,
++     X                     1,4,2,1,4HPICK,
++     X                     1,6,3,1,4HBUTT,4HON  ,
++     X                     1,6,4,1,4HSTRO,4HKE  ,
++     X                     1,7,5,1,4HLOCA,4HTOR ,
++     X                     1,8,6,1,4HVALU,4HATOR/
+ C
+ C  IS THERE AN INTERACTIVE ACTIVE DEVICE?
+       EFLG=0
+diff --git a/ugdspc.f b/ugdspc.f
+index b6acd17..6edbc8e 100644
+--- a/ugdspc.f
++++ b/ugdspc.f
+@@ -41,8 +41,8 @@ C
+       REAL          FLT1,FLT2
+       INTEGER       INT1,INT2
+ C
+-      DATA          INST/2,1,3,1,1,'GET ',
+-     X                     1,3,1,2,'PUT '/
++      DATA          INST/2,1,3,1,1,4HGET ,
++     X                     1,3,1,2,4HPUT /
+ C
+ C  IS THERE AN ACTIVE DEVICE?
+       IF (DDAAI.EQ.0) GO TO 304
+diff --git a/ugectl.f b/ugectl.f
+index a8d9cf2..ea57049 100644
+--- a/ugectl.f
++++ b/ugectl.f
+@@ -46,12 +46,12 @@ C
+ C
+       INTEGER       INT1
+ C
+-      DATA          INST/6,1,8,1, 1,'KEYB','OARD',
+-     X                     1,6,2, 1,'LOCA','SE  ',
+-     X                     1,6,3, 1,'STRO','KE  ',
+-     X                     1,7,4, 1,'LOCA','TOR ',
+-     X                     2,8,5, 0,'VALU','ATOR',
+-     X                     5,6,6,12,'BUTT','ON  '/
++      DATA          INST/6,1,8,1, 1,4HKEYB,4HOARD,
++     X                     1,6,2, 1,4HLOCA,4HSE  ,
++     X                     1,6,3, 1,4HSTRO,4HKE  ,
++     X                     1,7,4, 1,4HLOCA,4HTOR ,
++     X                     2,8,5, 0,4HVALU,4HATOR,
++     X                     5,6,6,12,4HBUTT,4HON  /
+ C
+ C  IS THERE AN INTERACTIVE ACTIVE DEVICE?
+       EFLG=0
+diff --git a/ugenab.f b/ugenab.f
+index c11593f..edeafb6 100644
+--- a/ugenab.f
++++ b/ugenab.f
+@@ -33,12 +33,12 @@ C
+ C
+       INTEGER       INT1
+ C
+-      DATA          INST/6,1,8,1,1,'KEYB','OARD',
+-     X                     1,4,2,1,'PICK',
+-     X                     1,6,3,1,'BUTT','ON  ',
+-     X                     1,6,4,1,'STRO','KE ',
+-     X                     1,7,5,1,'LOCA','TOR ',
+-     X                     1,8,6,1,'VALU','ATOR'/
++      DATA          INST/6,1,8,1,1,4HKEYB,4HOARD,
++     X                     1,4,2,1,4HPICK,
++     X                     1,6,3,1,4HBUTT,4HON  ,
++     X                     1,6,4,1,4HSTRO,4HKE  ,
++     X                     1,7,5,1,4HLOCA,4HTOR ,
++     X                     1,8,6,1,4HVALU,4HATOR/
+ C
+ C  IS THERE AN INTERACTIVE ACTIVE DEVICE?
+       EFLG=0
+diff --git a/ugfont.f b/ugfont.f
+index af40e2f..045a841 100644
+--- a/ugfont.f
++++ b/ugfont.f
+@@ -30,8 +30,8 @@ C
+ C
+       CHARACTER*8   NAMS(2)
+ C
+-      DATA          INST/2,1,7,1,1,'SIMP','LEX ',
+-     X                     1,6,1,2,'DUPL','EX  '/
++      DATA          INST/2,1,7,1,1,4HSIMP,4HLEX ,
++     X                     1,6,1,2,4HDUPL,4HEX  /
+       DATA          NAMS/'UGA013  ',
+      X                   'UGA014  '/
+ C
+diff --git a/uginfo.f b/uginfo.f
+index c76367c..e344eb1 100644
+--- a/uginfo.f
++++ b/uginfo.f
+@@ -48,17 +48,17 @@ C
+ C
+       INTEGER       INT1
+ C
+-      DATA          INST/11,1, 7, 1,1,'OPEN','DEV ',
+-     X                      1, 6, 2,1,'ACTD','EV  ',
+-     X                      1, 7, 3,1,'DEVT','YPE ',
+-     X                      1, 6, 4,1,'ILEV','EL  ',
+-     X                      1, 7, 5,1,'DMED','IUM ',
+-     X                      1, 9, 6,1,'DIME','NSIO','N   ',
+-     X                      1, 8, 7,1,'CONT','ROLS',
+-     X                      1, 9, 8,1,'ECON','TROL','S   ',
+-     X                      1,10, 9,1,'EXTE','NSIO','NS  ',
+-     X                      1, 8,10,1,'DSPC','SIZE',
+-     X                      1, 8,11,1,'WDOW','SIZE'/
++      DATA          INST/11,1, 7, 1,1,4HOPEN,4HDEV ,
++     X                      1, 6, 2,1,4HACTD,4HEV  ,
++     X                      1, 7, 3,1,4HDEVT,4HYPE ,
++     X                      1, 6, 4,1,4HILEV,4HEL  ,
++     X                      1, 7, 5,1,4HDMED,4HIUM ,
++     X                      1, 9, 6,1,4HDIME,4HNSIO,4HN   ,
++     X                      1, 8, 7,1,4HCONT,4HROLS,
++     X                      1, 9, 8,1,4HECON,4HTROL,4HS   ,
++     X                      1,10, 9,1,4HEXTE,4HNSIO,4HNS  ,
++     X                      1, 8,10,1,4HDSPC,4HSIZE,
++     X                      1, 8,11,1,4HWDOW,4HSIZE/
+ C
+ C  SCAN THE OPTIONS LIST.
+       EXOD=0
+diff --git a/uginit.f b/uginit.f
+index 2935add..ef62d5f 100644
+--- a/uginit.f
++++ b/uginit.f
+@@ -40,9 +40,9 @@ C
+ C
+       INTEGER       INT1,INT2
+ C
+-      DATA          INST/3,1,5,1,1,'CLEA','R   ',
+-     X                     1,5,1,2,'RESE','T   ',
+-     X                     1,8,1,3,'CONT','INUE'/
++      DATA          INST/3,1,5,1,1,4HCLEA,4HR   ,
++     X                     1,5,1,2,4HRESE,4HT   ,
++     X                     1,8,1,3,4HCONT,4HINUE/
+ c      DATA          MASK/ZFFFEFFFF/
+       DATA MASK/      -65537/
+ 
+diff --git a/uglgax.f b/uglgax.f
+index 505ce3c..e4c390f 100644
+--- a/uglgax.f
++++ b/uglgax.f
+@@ -55,9 +55,9 @@ C
+       REAL          FLT1
+       INTEGER       INT1,INT2
+ C
+-      DATA          INST/3,2,4,1,0,'NSTM',
+-     X                     3,4,2,0,'LSTM',
+-     X                     3,4,3,0,'RSTM'/
++      DATA          INST/3,2,4,1,0,4HNSTM,
++     X                     3,4,2,0,4HLSTM,
++     X                     3,4,3,0,4HRSTM/
+ C
+ C  SCAN THE OPTIONS LIST.
+       EXNT=0
+diff --git a/uglnax.f b/uglnax.f
+index e4903e9..2417d5b 100644
+--- a/uglnax.f
++++ b/uglnax.f
+@@ -55,9 +55,9 @@ C
+       REAL          FLT1
+       INTEGER       INT1,INT2
+ C
+-      DATA          INST/3,2,4,1,0,'NSTM',
+-     X                     3,4,2,0,'LSTM',
+-     X                     3,4,3,0,'RSTM'/
++      DATA          INST/3,2,4,1,0,4HNSTM,
++     X                     3,4,2,0,4HLSTM,
++     X                     3,4,3,0,4HRSTM/
+ C
+ C  SCAN THE OPTIONS LIST.
+       EXNT=0
+diff --git a/ugmctl.f b/ugmctl.f
+index 9b5cb6f..825372e 100644
+--- a/ugmctl.f
++++ b/ugmctl.f
+@@ -44,9 +44,9 @@ C
+ C
+       INTEGER       DDIN(2),DDEX(1)
+ C
+-      DATA          INST/3,2,7,1,0,'ERRU','NIT ',
+-     X                     2,6,2,0,'ERRM','AX  ',
+-     X                     1,4,3,1,'BEEP'/
++      DATA          INST/3,2,7,1,0,4HERRU,4HNIT ,
++     X                     2,6,2,0,4HERRM,4HAX  ,
++     X                     1,4,3,1,4HBEEP/
+ C
+ C  SCAN THE OPTIONS LIST.
+       EXEU=EMMEU
+diff --git a/ugmesh.f b/ugmesh.f
+index afc03d0..b0764b2 100644
+--- a/ugmesh.f
++++ b/ugmesh.f
+@@ -56,9 +56,9 @@ C
+       REAL          FLT1,FLT2,FLT3,FLT4,FLT5
+       INTEGER       INT1,INT2
+ C
+-      DATA          INST/3,1,5,1,1,'LOWE','R   ',
+-     X                     1,6,2,1,'NOCO','MN  ',
+-     X                     3,5,3,0,'TOLE','R   '/
++      DATA          INST/3,1,5,1,1,4HLOWE,4HR   ,
++     X                     1,6,2,1,4HNOCO,4HMN  ,
++     X                     3,5,3,0,4HTOLE,4HR   /
+ C
+ C
+ C  SCAN THE OPTIONS LIST.
+diff --git a/ugopen.f b/ugopen.f
+index 20c3406..1e00c79 100644
+--- a/ugopen.f
++++ b/ugopen.f
+@@ -49,49 +49,49 @@ C
+       REAL          FLT1,FLT2
+       INTEGER       INT1,INT2
+ C
+-      DATA          INST/NSGD,1,7,1, 1,'SDDX','COW ',
+-     X                        1,7,1, 2,'SEQG','IGI ',
+-     X                        1,7,1, 3,'SDDG','IGI ',
+-     X                        1,7,1, 4,'DECG','IGI ',
+-     X                        1,7,1, 5,'SDDV','ST2 ',
+-     X                        1,7,1, 6,'DECV','ST2 ',
+-     X                        1,7,1, 7,'SDDG','RIN ',
+-     X                        1,7,1, 8,'IMGN','300 ',
+-     X                        1,7,1, 9,'IMGN','IBM ',
+-     X                        1,7,1,10,'SDDM','ETH ',
+-     X                        1,7,1,11,'POST','SCR ',
+-     X                        1,7,1,12,'PRNT','RNX ',
+-     X                        1,7,1,13,'SEQS','EKO ',
+-     X                        1,7,1,14,'SDDS','KRS ',
+-     X                        1,7,1,15,'SEIK','ORS ',
+-     X                        1,7,1,16,'SDDS','KRF ',
+-     X                        1,7,1,17,'SEIK','ORF ',
+-     X                        1,7,1,18,'SDDS','XSS ',
+-     X                        1,7,1,19,'TALA','RIS ',
+-     X                        1,7,1,20,'SEQ4','010 ',
+-     X                        1,7,1,21,'SDD4','010 ',
+-     X                        1,7,1,22,'TEK4','010 ',
+-     X                        1,7,1,23,'SEQT','KEM ',
+-     X                        1,7,1,24,'SDDT','KEM ',
+-     X                        1,7,1,25,'TEKE','MUL ',
+-     X                        1,7,1,26,'SEQ4','027 ',
+-     X                        1,7,1,27,'SDD4','027 ',
+-     X                        1,7,1,28,'TEK4','027 ',
+-     X                        1,7,1,29,'SEQ4','105 ',
+-     X                        1,7,1,30,'SDD4','105 ',
+-     X                        1,7,1,31,'TEK4','105 ',
+-     X                        1,7,1,32,'SDD4','207 ',
+-     X                        1,7,1,33,'TEK4','207 ',
+-     X                        1,7,1,34,'TEK4','510 ',
+-     X                        1,7,1,35,'VEP1','2FF ',
+-     X                        1,7,1,36,'SDDX','WDO ',
+-     X                        1,7,1,37,'XWIN','DOW ',
+-     X                        1,7,1,38,'PDEV','UGS ',
+-     X                        1,7,1,39,'PDEV','LIN ',
+-     X                        1,7,1,40,'PDEV','SVR ',
+-     X                        1,7,1,41,'PDEV','MVR ',
+-     X                        1,7,1,42,'GENW','KST ',
+-     X                        1,7,1,43,'TEST','DEV '/
++      DATA          INST/NSGD,1,7,1, 1,4HSDDX,4HCOW ,
++     X                        1,7,1, 2,4HSEQG,4HIGI ,
++     X                        1,7,1, 3,4HSDDG,4HIGI ,
++     X                        1,7,1, 4,4HDECG,4HIGI ,
++     X                        1,7,1, 5,4HSDDV,4HST2 ,
++     X                        1,7,1, 6,4HDECV,4HST2 ,
++     X                        1,7,1, 7,4HSDDG,4HRIN ,
++     X                        1,7,1, 8,4HIMGN,4H300 ,
++     X                        1,7,1, 9,4HIMGN,4HIBM ,
++     X                        1,7,1,10,4HSDDM,4HETH ,
++     X                        1,7,1,11,4HPOST,4HSCR ,
++     X                        1,7,1,12,4HPRNT,4HRNX ,
++     X                        1,7,1,13,4HSEQS,4HEKO ,
++     X                        1,7,1,14,4HSDDS,4HKRS ,
++     X                        1,7,1,15,4HSEIK,4HORS ,
++     X                        1,7,1,16,4HSDDS,4HKRF ,
++     X                        1,7,1,17,4HSEIK,4HORF ,
++     X                        1,7,1,18,4HSDDS,4HXSS ,
++     X                        1,7,1,19,4HTALA,4HRIS ,
++     X                        1,7,1,20,4HSEQ4,4H010 ,
++     X                        1,7,1,21,4HSDD4,4H010 ,
++     X                        1,7,1,22,4HTEK4,4H010 ,
++     X                        1,7,1,23,4HSEQT,4HKEM ,
++     X                        1,7,1,24,4HSDDT,4HKEM ,
++     X                        1,7,1,25,4HTEKE,4HMUL ,
++     X                        1,7,1,26,4HSEQ4,4H027 ,
++     X                        1,7,1,27,4HSDD4,4H027 ,
++     X                        1,7,1,28,4HTEK4,4H027 ,
++     X                        1,7,1,29,4HSEQ4,4H105 ,
++     X                        1,7,1,30,4HSDD4,4H105 ,
++     X                        1,7,1,31,4HTEK4,4H105 ,
++     X                        1,7,1,32,4HSDD4,4H207 ,
++     X                        1,7,1,33,4HTEK4,4H207 ,
++     X                        1,7,1,34,4HTEK4,4H510 ,
++     X                        1,7,1,35,4HVEP1,4H2FF ,
++     X                        1,7,1,36,4HSDDX,4HWDO ,
++     X                        1,7,1,37,4HXWIN,4HDOW ,
++     X                        1,7,1,38,4HPDEV,4HUGS ,
++     X                        1,7,1,39,4HPDEV,4HLIN ,
++     X                        1,7,1,40,4HPDEV,4HSVR ,
++     X                        1,7,1,41,4HPDEV,4HMVR ,
++     X                        1,7,1,42,4HGENW,4HKST ,
++     X                        1,7,1,43,4HTEST,4HDEV /
+       DATA          NAMS/'UGCW01  ',
+      X                   'UGGS01  ',
+      X                   'UGGD01  ',
+diff --git a/ugpict.f b/ugpict.f
+index ada8c53..b4384e3 100644
+--- a/ugpict.f
++++ b/ugpict.f
+@@ -40,15 +40,15 @@ C
+ C
+       INTEGER       INT1,INT2
+ C
+-      DATA          INST/9,1,5,1,1,'CLEA','R   ',
+-     X                     1,6,2,1,'WIND','OW  ',
+-     X                     1,6,3,1,'NOPI','CK  ',
+-     X                     1,4,3,2,'PICK',
+-     X                     1,7,4,1,'INCL','UDE ',
+-     X                     1,4,4,2,'OMIT',
+-     X                     1,2,5,1,'ON  ',
+-     X                     1,3,5,2,'OFF ',
+-     X                     4,5,6,8,'ALIA','S   '/
++      DATA          INST/9,1,5,1,1,4HCLEA,4HR   ,
++     X                     1,6,2,1,4HWIND,4HOW  ,
++     X                     1,6,3,1,4HNOPI,4HCK  ,
++     X                     1,4,3,2,4HPICK,
++     X                     1,7,4,1,4HINCL,4HUDE ,
++     X                     1,4,4,2,4HOMIT,
++     X                     1,2,5,1,4HON  ,
++     X                     1,3,5,2,4HOFF ,
++     X                     4,5,6,8,4HALIA,4HS   /
+ C
+ C  IS THERE AN ACTIVE DEVICE?
+       IF (DDAAI.EQ.0) GO TO 401
+diff --git a/ugqctr.f b/ugqctr.f
+index fbcab5f..39538c3 100644
+--- a/ugqctr.f
++++ b/ugqctr.f
+@@ -52,7 +52,7 @@ C
+ C
+       INTEGER       INT1
+ C
+-      DATA          INST/1,2,4,1,0,'NSCL'/
++      DATA          INST/1,2,4,1,0,4HNSCL/
+ C
+ C  SCAN THE OPTIONS LIST.
+       EXSC=0
+diff --git a/ugscin.f b/ugscin.f
+index f6d9662..fe98cf5 100644
+--- a/ugscin.f
++++ b/ugscin.f
+@@ -75,13 +75,13 @@ C
+       INTEGER       BBIT
+       REAL          XCRD,YCRD,DELX,DELY
+ C
+-      DATA          INST/7,1,7,1,1,'UNIF','ORM ',
+-     X                     1,6,2,1,'GENT','AN  ',
+-     X                     3,5,3,0,'XFAC','T   ',
+-     X                     3,5,4,0,'YFAC','T   ',
+-     X                     2,5,5,0,'NPAR','M   ',
+-     X                     3,5,6,0,'DPAR','M   ',
+-     X                     3,5,7,0,'TOLE','R   '/
++      DATA          INST/7,1,7,1,1,4HUNIF,4HORM ,
++     X                     1,6,2,1,4HGENT,4HAN  ,
++     X                     3,5,3,0,4HXFAC,4HT   ,
++     X                     3,5,4,0,4HYFAC,4HT   ,
++     X                     2,5,5,0,4HNPAR,4HM   ,
++     X                     3,5,6,0,4HDPAR,4HM   ,
++     X                     3,5,7,0,4HTOLE,4HR   /
+ C
+ C  CHECK THE INPUT DATA, SCAN THE OPTIONS LIST, AND INITIALIZE.
+       IF (NPTS.LT.2) GO TO 501
+diff --git a/ugshld.f b/ugshld.f
+index 93adea1..f94b588 100644
+--- a/ugshld.f
++++ b/ugshld.f
+@@ -35,10 +35,10 @@ C
+ C
+       INTEGER       INT1
+ C
+-      DATA          INST/4,1,3,1,1,'GET ',
+-     X                     1,3,1,2,'PUT ',
+-     X                     1,6,1,3,'DELE','TE  ',
+-     X                     2,6,2,0,'SHIE','LD  '/
++      DATA          INST/4,1,3,1,1,4HGET ,
++     X                     1,3,1,2,4HPUT ,
++     X                     1,6,1,3,4HDELE,4HTE  ,
++     X                     2,6,2,0,4HSHIE,4HLD  /
+ C
+ C  IS THERE AN ACTIVE DEVICE?
+       IF (DDAAI.EQ.0) GO TO 303
+diff --git a/ugtran.f b/ugtran.f
+index 694d94f..433dc19 100644
+--- a/ugtran.f
++++ b/ugtran.f
+@@ -49,13 +49,13 @@ C
+       REAL          FLT1,FLT2,FLT3,FLT4,FLT5,FLT6
+       INTEGER       INT1,INT2
+ C
+-      DATA          INST/7,1,8,1,1,'PARA','LLEL',
+-     X                     3,4,2,0,'EYED',
+-     X                     3,3,3,0,'XLO ',
+-     X                     3,3,4,0,'XHI ',
+-     X                     3,3,5,0,'YLO ',
+-     X                     3,3,6,0,'YHI ',
+-     X                     3,5,7,0,'TOLE','R   '/
++      DATA          INST/7,1,8,1,1,4HPARA,4HLLEL,
++     X                     3,4,2,0,4HEYED,
++     X                     3,3,3,0,4HXLO ,
++     X                     3,3,4,0,4HXHI ,
++     X                     3,3,5,0,4HYLO ,
++     X                     3,3,6,0,4HYHI ,
++     X                     3,5,7,0,4HTOLE,4HR   /
+ C
+ C  SCAN THE OPTIONS LIST.
+       EXPL=0
+diff --git a/ugwdow.f b/ugwdow.f
+index 8079fb4..738479a 100644
+--- a/ugwdow.f
++++ b/ugwdow.f
+@@ -37,9 +37,9 @@ C
+ C
+       INTEGER       INT1,INT2
+ C
+-      DATA          INST/3,1,3,1,1,'GET ',
+-     X                     1,3,1,2,'PUT ',
+-     X                     1,6,2,1,'WIND','OW  '/
++      DATA          INST/3,1,3,1,1,4HGET ,
++     X                     1,3,1,2,4HPUT ,
++     X                     1,6,2,1,4HWIND,4HOW  /
+ C
+ C  IS THERE AN ACTIVE DEVICE?
+       IF (DDAAI.EQ.0) GO TO 304
+diff --git a/ugwrit.f b/ugwrit.f
+index e7fc0a8..32c4577 100644
+--- a/ugwrit.f
++++ b/ugwrit.f
+@@ -77,9 +77,9 @@ C
+       REAL          FLT1,FLT2,FLT3
+       CHARACTER*1   CHR1
+ C
+-      DATA          INST/3,1,4,1,1,'PICK',
+-     X                     1,4,2,1,'OMIT',
+-     X                     1,5,3,1,'ERAS','E   '/
++      DATA          INST/3,1,4,1,1,4HPICK,
++     X                     1,4,2,1,4HOMIT,
++     X                     1,5,3,1,4HERAS,4HE   /
+       DATA          DIGT/'0','1','2','3','4','5','6','7','8','9'/
+ c      DATA          MSK1/Z00010000/
+ c      DATA          MSK2/ZFFFEFFFF/
+diff --git a/ugxhch.f b/ugxhch.f
+index ebeac92..9ed63c8 100644
+--- a/ugxhch.f
++++ b/ugxhch.f
+@@ -50,13 +50,13 @@ C
+ C
+       INTEGER       INT1,INT2,INT3
+ C
+-      DATA          INST/7,3,7,1,0,'SPAC','ING ',
+-     X                     3,5,2,0,'ANGL','E   ',
+-     X                     3,1,3,0,'X   ',
+-     X                     3,1,4,0,'Y   ',
+-     X                     3,5,5,0,'XFAC','T   ',
+-     X                     3,5,6,0,'YFAC','T   ',
+-     X                     3,5,7,0,'TOLE','R   '/
++      DATA          INST/7,3,7,1,0,4HSPAC,4HING ,
++     X                     3,5,2,0,4HANGL,4HE   ,
++     X                     3,1,3,0,4HX   ,
++     X                     3,1,4,0,4HY   ,
++     X                     3,5,5,0,4HXFAC,4HT   ,
++     X                     3,5,6,0,4HYFAC,4HT   ,
++     X                     3,5,7,0,4HTOLE,4HR   /
+ C
+ C  SCAN THE OPTIONS LIST.
+       EXSP=0.02
