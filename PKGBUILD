@@ -1,6 +1,6 @@
 # Maintainer: Stefano Campanella <stefanocampanella1729@gmail.com>
 pkgname=pythia
-pkgver=8.2.15
+pkgver=8.2.19
 _pkgid=$pkgname`echo $pkgver | tr -d '.'`
 pkgrel=1
 pkgdesc="Generation of high-energy physics events."
@@ -11,13 +11,18 @@ makedepends=('rsync')
 provides=('$pkgname')
 source=("http://home.thep.lu.se/~torbjorn/pythia8/$_pkgid.tgz"
 'pythia.sh')
-md5sums=('b4653133e6ab1782a5a4aa66eda6a54b'
-         '0320534e1be7155cfb8ee19c7f8480cc')
+md5sums=('3459b52b5da1deae52cbddefa6196feb'
+         '667320ba29e8238f1b6b903ab23e19e7')
 _srcpath=$srcdir/$_pkgid
 
 build(){
 	cd $srcdir/$_pkgid
-	./configure --prefix=/usr --cxx-common='-O3 -march=native' 
+  ./configure --prefix=/usr \
+    --enable-shared \
+    --with-python-bin=/usr/bin/ \
+    --with-python-include=/usr/include/python3.5m/ \
+    --with-python-lib=/usr/lib/ \
+    --cxx-common='-D_GLIBCXX_USE_CXX11_ABI=0 -fPIC -O3 -march=native' 
 	make ${MAKEFLAGS}
 }
 
