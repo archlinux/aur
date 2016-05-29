@@ -1,6 +1,6 @@
 # Maintainer: JKA Network (JoseluCross, Kprkpr, Yukialba) <contacto@jkanetwork.com>
 pkgname=jka-toolkit
-pkgver=0.2.6
+pkgver=0.2.7
 pkgrel=1
 pkgdesc="Set of scripts to optimize the daily work in linux shell (jkazip and apw)"
 arch=('any')
@@ -11,7 +11,7 @@ provides=('jkazip' 'apw')
 options=(!emptydirs)
 install=$pkgname.install
 source=(https://gitlab.com/JKANetwork/jka-toolkit/raw/master/jka-toolkit.tar.gz)
-md5sums=('e03abc17bdceffedd0176258613a46b8')
+md5sums=('b3588bc1cdceca9356a88aeb17ae8159')
 
 package() {
   cd "$srcdir/$pkgname"
