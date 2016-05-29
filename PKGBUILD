@@ -1,21 +1,25 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
-_plugin_name=mozilla_archive_format_with_mht_and_faithful_save
+_dver=212
 pkgname=firefox-extension-mozilla-archive-format
 pkgver=4.0.0
 pkgrel=1
 pkgdesc="Opens and saves all the Web sites in a single file. It supports MHTML (MHT) and archives MAF based on ZIP archive system."
 url='https://addons.mozilla.org/firefox/addon/mozilla-archive-format/'
-arch=('any')
-license=('MPL')
-depends=('firefox')
+depends=("firefox")
 makedepends=('unzip')
-source=(https://addons.cdn.mozilla.net/user-media/addons/212/${_plugin_name}-${pkgver}-sm+fx.xpi)
+license=('MPL2')
+arch=('any')
+source=("https://addons.mozilla.org/firefox/downloads/latest/${_dver}/addon-${_dver}-latest.xpi")
 sha256sums=('a4d4cbb5f092849cf6fbc8e8187a6bc1ad6b7b6c4923199c916ddd4948ba7e66')
-noextract=("${_plugin_name}-${pkgver}.xpi")
+noextract=(addon-${_dver}-latest.xpi)
+
+pkgver() {
+    sed -n '/.*<em:version>\(.*\)<\/em:version>.*/{s//\1/p;q}' install.rdf | cut -f 1 -d-
+}
 
 prepare(){
-    unzip -qqo ${_plugin_name}-${pkgver}-sm+fx.xpi
+    unzip -qqo addon-${_dver}-latest.xpi
 }
 
 package() {
