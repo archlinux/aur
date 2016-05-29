@@ -35,6 +35,7 @@ pkgbase = linux-lts-selinux
 pkgname = linux-lts-selinux
 	pkgdesc = The Linux-lts-selinux kernel and modules
 	install = linux-lts-selinux.install
+	groups = selinux
 	depends = coreutils
 	depends = linux-firmware
 	depends = kmod
