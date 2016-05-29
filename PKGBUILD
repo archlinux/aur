@@ -2,24 +2,24 @@
 # Contributor: Markus Heuser <markus.heuser@web.de>
 
 pkgname=samtools
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="tools for manipulating next-generation sequencing data"
 arch=('i686' 'x86_64')
 url="http://www.htslib.org/"
 license=('custom')
-depends=('htslib' 'perl')
+depends=('htslib')
 optdepends=('luajit: needed for r2plot.lua vcfutils.lua'
             'python2: needed for varfilter.py')
 options=('staticlibs')
 source=(https://github.com/samtools/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.bz2)
-md5sums=('7ab98b5c988e254d9bb5d796bf9337c9')
+md5sums=('a7471aa5a1eb7fc9cc4c6491d73c2d88')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
 
   # prevent shipped htslib to be used
-  rm -rf htslib-1.3
+  rm -rf htslib-1.3.1
 
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|' \
       -i misc/varfilter.py
