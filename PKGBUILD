@@ -1,7 +1,7 @@
 # Maintainer: Simon Doppler (dopsi) <dop.simon_at_gmail.com>
 pkgname=maxwell2d
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Electromagnetic waves animations"
 arch=('i686' 'x86_64')
 url="http://www.met.rdg.ac.uk/clouds/maxwell/"
@@ -16,6 +16,7 @@ build() {
   make
   cd ${srcdir}/${pkgname}-${pkgver}/src
   sed -i -e 's_-I/usr/include/netcdf-3__g' Makefile
+  sed -i -e 's/--static //g' Makefile
   make all
   cd ${srcdir}/${pkgname}-${pkgver}/examples
   sed -i -e 's|../src/maxwell_nc|maxwell2d_nc|g' create_examples.sh
