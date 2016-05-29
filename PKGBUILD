@@ -15,7 +15,7 @@ users to define, configure and run complex computer networks without any need
 for physical setup. Trunk version (with UML kernel Debian Wheezy)."
 arch=('i686' 'x86_64')
 url="https://www.marionnet.org/"
-makedepends=('optipng')
+makedepends=('bc' 'optipng')
 license=('LGPL')
 depends=('xorg-server' 'xorg-xinit' 'xorg-server-utils' 'gtksourceview2' 'libglademm' 'graphviz' 'xterm' 'vde2' 'uml_utilities' 'net-tools' 'bridge-utils')
 if test "$CARCH" == x86_64; then

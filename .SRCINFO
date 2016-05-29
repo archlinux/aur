@@ -7,6 +7,7 @@ pkgbase = marionnet-trunk
 	arch = i686
 	arch = x86_64
 	license = LGPL
+	makedepends = bc
 	makedepends = optipng
 	depends = xorg-server
 	depends = xorg-xinit

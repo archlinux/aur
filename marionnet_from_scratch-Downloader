@@ -164,7 +164,7 @@ fi
 if [[ -n ${option_p} ]]; then
 	PREFIX=$(realpath "${option_p_arg}")
 else
-	PREFIX=$(realpath /usr/share)
+	PREFIX=$(realpath /usr/share/marionnet)
 fi
 
 # test version
@@ -271,11 +271,11 @@ OUR_TRUNK_SPECIFIC_URL="$OUR_BASE_URL/trunk"
 
 function print_description_script {
 echo -e " If the download is interrupted, it can be resumed by execute ${0##*/} who \
-is stored in $(realpath ./). This programm test if the hard disk have \
+is stored in $( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd ). This programm test if the hard disk have \
 enough free space, if there isn't enough, it don't start download.
 
-Under ArchLinux, if Marionnet have been installed with Aur repository,
-files are extract in the good foler (i.e. /usr/share/marionnet). \
+Under ArchLinux, if Marionnet was installed with Aur repository,
+files are extracted in the good folder (i.e. /usr/share/marionnet). \
 For other distributions, or if you have installed with the script « \
 marionnet_from_scratch » customise the « --prefix » option.  "
 }
@@ -306,14 +306,14 @@ function freespace {
 local FREE_MB=$(df -B 1M -P $PREFIX | awk '{print $4}' | tail -n 1)
 if [[ $FREE_MB -lt $REQUIRED_MB ]]; then
 	echo "Insufficient free disk space (${FREE_MB} Mb) in the directory $PREFIX."
-	echo "It's beautifule to have $REQUIRED_MB Mb to install and keep a little bit more space in your disk."
+	echo "It's beautifull to have $REQUIRED_MB Mb to install and keep a little bit more space in your disk."
 	echo "Exiting."
 	exit 1
 fi 1>&2
 }
 
 # =============================================================
-#	FUNCTIONS FOR DOWNLOADING OUR KERNELS AND FILESYSTEMS {{{1
+#	FUNCTIONS FOR DOWNLOAD OUR KERNELS AND FILESYSTEMS {{{1
 # =============================================================
 
 function download_our_kernels {
@@ -457,7 +457,7 @@ else
 	stepPerformed=0
 fi
 if [[ ! $stepPerformed =~ ^[0-9]$ ]] ; then
-	echo "Invalid step readen. Restart downloading"
+	echo "Invalid step readen. Restart the download"
 	stepPerformed=0
 fi
 
