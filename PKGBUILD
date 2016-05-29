@@ -36,7 +36,7 @@ sha256sums=('4f81ab86258be0eea1507dd5338c8670490f8616249821e731f8ac1c64caa4a7'
             '610c806e595be4d56ff6cded02e8d8a3091fe211487073c02ddb5132c3b4ffb6'
             'fc5359a9559c6194ab96f947f6d3c097cb0458d3a8e4bb634f131eb8f88c1e0f'
             '5d8ddf6e5c5b726e892bae2b55eb5eb01f43bd47fa2855ec38797d0598a6ea24')
-install=marionnet.install
+install=marionnet-trunk.install
 
 # ################
 # MAKEDEPENDS : CREATED DURING COMPILATION but not keep
