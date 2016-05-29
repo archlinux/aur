@@ -3,10 +3,10 @@
 _pkgname=objpool
 pkgname=python2-$_pkgname
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An object pooling library"
 arch=('any')
-url=('https://github.com/grnet/objpool')
+url='https://github.com/grnet/objpool'
 license=("BSD")
 depends=('python2')
 makedepends=(python2-distribute)
