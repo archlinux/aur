@@ -8,6 +8,7 @@ pkgbase = python-pyql-git
 	license = BSD
 	makedepends = cython>=0.23
 	makedepends = git
+	makedepends = boost
 	depends = quantlib>=1.5
 	depends = python
 	depends = python-pandas>=0.16.2

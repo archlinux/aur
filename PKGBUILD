@@ -9,7 +9,7 @@ url="https://github.com/enthought/pyql"
 license=("BSD")
 options=(!libtool)
 depends=("quantlib>=1.5" "python" "python-pandas>=0.16.2" "python-tabulate" "python-numpy>1.7.0" "python-pytz>2011.11" "python-dateutil>2.0" "python-six" )
-makedepends=("cython>=0.23" "git")
+makedepends=("cython>=0.23" "git" "boost")
 #source=("git+https://github.com/enthought/pyql.git")
 #md5sums=('SKIP')
 
