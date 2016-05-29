@@ -1,6 +1,6 @@
 pkgbase = gnucash-latest
 	pkgdesc = A personal and small-business financial-accounting application
-	pkgver = 2.6.11
+	pkgver = 2.6.12
 	pkgrel = 1
 	url = http://www.gnucash.org
 	install = gnucash.install
@@ -24,7 +24,7 @@ pkgbase = gnucash-latest
 	options = !libtool
 	options = !makeflags
 	options = !emptydirs
-	source = http://downloads.sourceforge.net/sourceforge/gnucash/gnucash-2.6.11.tar.bz2
-	md5sums = dcad81fb22c682804b5e4ebba3b39ea0
+	source = http://downloads.sourceforge.net/sourceforge/gnucash/gnucash-2.6.12.tar.bz2
+	md5sums = c8f3b464bdd38bb6af3023f395cc88e3
 
 pkgname = gnucash-latest
