@@ -1,0 +1,16 @@
+pkgbase = monetdb
+	pkgdesc = MonetDB version 11.21.19
+	pkgver = 11.21.19
+	pkgrel = 1
+	url = http://www.monetdb.org/Home
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = python
+	makedepends = apache-ant
+	makedepends = r-lang
+	source = http://dev.monetdb.org/downloads/sources/Latest/MonetDB-11.21.19.tar.xz
+	sha256sums = 866a2976e0943227f07ab1a298199c422e92b582af1aaba92369203eb182e321
+
+pkgname = monetdb
+
