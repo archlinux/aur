@@ -2,12 +2,12 @@
 
 pkgname=arm-none-eabi-gcc49-linaro
 _relver=4.9
-_relshortdate=15.06
+_relshortdate=16.02
 _reldate=20${_relshortdate}
 _relverdate=${_relver}-${_reldate}
 # This is how I want to define the pkgver, but the AUR doesn't understand it, because multiple _ characters are not allowed
 #pkgver=${_relver}_${_reldate//-/_}
-pkgver=4.9_2015.06
+pkgver=4.9_2016.02
 pkgrel=1
 _newlibver=linaro-2.2.0-2015.01
 _newlibvershort=15.01
@@ -22,7 +22,7 @@ makedepends=('flex' 'bison')
 provides=('arm-none-eabi-gcc')
 conflicts=('arm-none-eabi-gcc' 'cross-arm-none-eabi-gcc')
 options=(staticlibs !libtool !emptydirs !strip zipman docs)
-source=(http://releases.linaro.org/${_relshortdate}/components/toolchain/gcc-linaro/${_relver}/gcc-linaro-${_relverdate}.tar.xz
+source=(http://releases.linaro.org/components/toolchain/gcc-linaro/${_relverdate}/gcc-linaro-${_relverdate}.tar.xz
         http://releases.linaro.org/${_newlibvershort}/components/toolchain/newlib-linaro/newlib-${_newlibver}.tar.xz
         gcc-4.9-fix-build-with-gcc-6.patch
         gcc-${_relver}-multilib2.patch
@@ -85,7 +85,7 @@ package() {
 
 # vim: set ts=2 sw=2 ft=sh et:
 
-sha256sums=('9a149d46b933d66b85141c0a8341321551f6b56f264adbf59c312eb52c0f52ad'
+sha256sums=('63bd38c028fec87a85eff1f3728b9e8f9a7070346ab337a57963c413da4859a2'
             'd29fe53d70f545c2fb080b9686e05d0f8af5088fec9b7dc78bc788a98765ef99'
             'b328e9cdca4e2869490d932191b78ef1a61c60382cea3a23d1ef86e7c1fb86a7'
             '104b9aa652804a56338470983e6975af1d1e5440eb8bddae3a01a966d2b332cf'
