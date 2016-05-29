@@ -1,0 +1,15 @@
+pkgbase = vega
+	pkgdesc = Vega is a platform for testing the security of web applications
+	pkgver = 1
+	pkgrel = 1
+	url = https://subgraph.com/vega/
+	arch = x86_64
+	license = Eclipse Public License 1.0
+	provides = gtk
+	provides = webkitgtk
+	provides = jdk8-openjdk
+	source = https://dist.subgraph.com/downloads/VegaBuild-linux.gtk.x86_64.zip
+	md5sums = SKIP
+
+pkgname = vega
+
