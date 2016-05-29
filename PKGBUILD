@@ -233,7 +233,7 @@ EOF
     optipng -quiet -fix ${pkgdir}/usr/share/marionnet/images/ico.cable-serial-left-right.large.png
 
     chmod u+x "${srcdir}/marionnet_from_scratch-Downloader"
-    mv "${srcdir}/marionnet_from_scratch-Downloader" "${pkgdir}/usr/share/marionnet"
+    cp -L "${srcdir}/marionnet_from_scratch-Downloader" "${pkgdir}/usr/share/marionnet"
     echo -e "0\ntrunk" > "${pkgdir}/usr/share/marionnet/numberOfStepsPassedForDownloadMarionnetFilesystems.tmp"
 
 }
