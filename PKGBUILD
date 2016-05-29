@@ -17,10 +17,10 @@ options=()
 source=(git+https://github.com/tiehuis/2048-cli.git)
 md5sums=('SKIP')
 build() {
-	cd "$srcdir"/""
+	cd "$srcdir"/"$_pkgname"
 	make
 	cd man
-	gzip "".1
+	gzip "$_pkgname2".1
 }
 package() {
 	cd "$srcdir"/"$_pkgname"
