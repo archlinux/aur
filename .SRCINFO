@@ -1,6 +1,6 @@
 pkgbase = spotify-ripper
 	pkgdesc = a small ripper for Spotify that rips Spotify URIs to audio files
-	pkgver = 2.9.0
+	pkgver = 2.9.1
 	pkgrel = 1
 	url = https://github.com/jrnewell/spotify-ripper
 	arch = any
@@ -19,8 +19,8 @@ pkgbase = spotify-ripper
 	optdepends = faac: Rip songs to AAC format with FreeAAC
 	optdepends = libav-git-no-libs: Rip songs to Apple Lossless format
 	optdepends = fdkaac: Rip songs to MP4/M4A format with Fraunhofer FDK AAC codec
-	source = https://github.com/jrnewell/spotify-ripper/archive/2.9.0.zip
-	md5sums = bd030bdaf70301d3cb8a1110f7dbbd27
+	source = https://github.com/jrnewell/spotify-ripper/archive/2.9.1.zip
+	md5sums = b88f7a7336c67da7428672d94ee24827
 
 pkgname = spotify-ripper
 
