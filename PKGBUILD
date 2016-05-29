@@ -1,8 +1,9 @@
-# Maintainer: bjo@nord-west.org
+# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Contributor: bjo@nord-west.org
 
 pkgname=mopidy-podcast
 _pypiname=Mopidy-Podcast
-pkgver=1.1.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Mopidy extension for searching and browsing podcasts."
 arch=('any')
@@ -16,10 +17,10 @@ depends=(
 	'python2-uritools'
 )
 makedepends=('python2' 'git')
-source=("https://pypi.python.org/packages/source/M/${_pypiname}/${_pypiname}-${pkgver}.tar.gz")
-md5sums=('699bcd8e4fc295295534998cfeb290dc')
+source=("https://github.com/tkem/mopidy-podcast/archive/v${pkgver}.tar.gz")
+md5sums=('a172d038e8240f2ca0155624fd4a11be')
 
 package() {
-  cd "$srcdir/$_pypiname-$pkgver"
+  cd "$srcdir/${pkgname}-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
