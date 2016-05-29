@@ -161,9 +161,9 @@ fi
 #                       Daemon information
 # =============================================================
 
-echo "\n============================================================="
+echo -e "\n============================================================="
 echo "                      Daemon information                     "
-echo "=============================================================\n"
+echo -e "=============================================================\n"
 
 echo -e "* Before start Marionnet, you must start the daemon :"
 echo "sudo systemctl start marionnetdaemon.service"
@@ -172,12 +172,10 @@ echo "sudo systemctl start marionnetdaemon.service"
 #             Install marionnet_kernels and filesystems
 # =============================================================
 
-echo "\n============================================================="
+echo -e "\n============================================================="
 echo "                      Downlading                     "
 echo "============================================================="
 
-echo "\n* Downloading script marionnet_from_scratch : "
-wget http://www.marionnet.org/downloads/marionnet_from_scratch/marionnet_from_scratch
 echo "* Downlading and installing Marionnet kernels and filesystems (Linux \
 distributions Debian Lenny, Mandriva, Pinocchio, etc.)"
 echo -e "* Warning! this process may take several hours!"
@@ -187,7 +185,7 @@ chmod u+x ./numberOfStepsPassedForDownloadMarionnetFilesystems.tmp
 
 
 
-echo "* Post installation completed———\n\n\n"
+echo -e "* Post installation completed———\n\n\n"
 
 }
 
