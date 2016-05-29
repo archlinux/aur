@@ -37,6 +37,7 @@ provision_proper() {
 
 provision_simple() {
     echo "// provision_simple"
+    local source="https://github.com/random-archer/mkinitcpio-systemd-tool.git"
     if [ -e "$pkgname" ] ; then
         cd "$pkgname" && git pull
     else
