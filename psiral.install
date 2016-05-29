@@ -1,0 +1,16 @@
+
+post_install() {
+  cd /opt/psiral
+  tar zxf psiral-bin.tar.gz
+  rm -f psiral-bin.tar.gz
+}
+
+pre_remove() {
+  cd /opt/psiral
+  rm -f Psiral
+  rm -f *.dat
+  rm -f *.pak
+  rm -f *.so
+  rm -f locales/*
+  rmdir locales
+}
