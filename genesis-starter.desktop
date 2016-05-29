@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Comment=
+Terminal=false
+Name=Genesis
+Exec=genesis-starter
+Type=Application
+Icon=user-properties
+Categories=Game;Utility;
