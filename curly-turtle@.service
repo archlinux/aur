@@ -1,0 +1,11 @@
+[Unit]
+Description=Curly Turtle
+After=network.target
+
+[Service]
+User=curly_turtle
+ExecStart=/usr/bin/curly-turtle -c /etc/curly-turtle/%i.yml
+
+[Install]
+WantedBy=multi-user.target
+
