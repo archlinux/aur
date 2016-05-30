@@ -4,7 +4,7 @@
 
 pkgname=konstruktor-git
 pkgver=0.9.0.beta1.r95.gcb9d35f
-pkgrel=1
+pkgrel=2
 pkgdesc="A LDraw-based virtual LEGO(r) CAD for KDE 5."
 arch=('i686' 'x86_64')
 url="http://opendesktop.org/content/show.php?content=138138"
@@ -13,7 +13,6 @@ makedepends=('cmake' 'automoc4' 'git' 'qt5-tools')
 license=('GPL')
 provides=('konstruktor')
 conflicts=('konstruktor')
-install="$pkgname.install"
 source=("$pkgname::git+https://github.com/segfault87/Konstruktor.git")
 md5sums=('SKIP')
 
