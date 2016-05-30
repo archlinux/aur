@@ -3,7 +3,7 @@
 
 pkgname=iridium
 pkgver=51.1
-pkgrel=1
+pkgrel=2
 _launcher_ver=3
 pkgdesc="a free, open, and libre browser modification of the Chromium code base"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja')
 optdepends=('kdebase-kdialog: needed for file dialogs in KDE'
             'gnome-keyring: for storing passwords in GNOME keyring'
             'kwallet: for storing passwords in KWallet')
-provides=('chromium')
+# provides=('chromium')
 conflicts=('chromium')
 replaces=('chromium')
 options=('!strip')
