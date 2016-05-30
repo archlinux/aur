@@ -1,7 +1,7 @@
 # Contributor: Riadh Habbachi <habbachi.riadh at gmail dot com> 
 # Maintainer: Riadh Habbachi <habbachi.riadh at gmail dot com> 
 pkgname=butterfly-git
-pkgver=VERSION
+pkgver=r282.ec25edb
 pkgrel=1
 pkgdesc="Butterfly is a xterm compatible terminal that runs in your browser."
 url="https://github.com/paradoxxxzero/butterfly"
