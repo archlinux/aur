@@ -12,7 +12,7 @@ arch=('any')
 depends=("insync" "nemo-python")
 makedepends=('gtk-doc')
 source=("${pkgname}-${pkgver}.deb::http://s.insynchq.com/builds/${pkgname}_${pkgver}-precise_all.deb")
-sha256sums=("6d3223f6428190dfac1fe4966dbeae5af2fb7632bf0a1023d54be8d445df24d8")
+sha256sums=("03faf80c07a9e536dbcb8ee3e2dacacaa3069306db54c9c202b9267ecadfac30")
 noextract=("${pkgname}-${pkgver}.deb")
 
 package() {
