@@ -38,7 +38,8 @@ source=("http://download.qt-project.org/official_releases/qt/4.8/${pkgver}/${_pk
         'qt-fix-javascript-jit-on-mingw-x86_64.patch'
         'qt-4.8.1-fix-activeqt-compilation.patch'
         'qt-dont-set-qt-dll-define-for-static-builds.patch'
-        'qt4-fix-linking-against-static-dbus.patch')
+        'qt4-fix-linking-against-static-dbus.patch'
+        'qt-everywhere-opensource-src-4.8.7-gcc6.patch')
 md5sums=('d990ee66bf7ab0c785589776f35ba6ad'
          '3759f73b9c872ce692b7067daef134a9'
          'db6257762e051f2b7b18745dca2df43d'
@@ -51,7 +52,8 @@ md5sums=('d990ee66bf7ab0c785589776f35ba6ad'
          '3fe6e419c1f21c59062db1f562c1f9bf'
          '22fc6f20aa6af060c640fc3b9af888a9'
          'b6d9bcdd1df5115e7063d08bf75c2fd1'
-         '84a802e6619be4f43b2a9be0ec1a11ef')
+         '84a802e6619be4f43b2a9be0ec1a11ef'
+         '8ba77cd8f325c38daca8eadc982395a4')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -112,6 +114,9 @@ prepare() {
 
   # When building static binaries, make sure the gcc argument -DQT_DLL isn't used
   patch -Np1 -i "${srcdir}"/qt-dont-set-qt-dll-define-for-static-builds.patch
+
+  # GCC 6
+  patch -Np1 -i "${srcdir}"/qt-everywhere-opensource-src-4.8.7-gcc6.patch
 
   # Cross-compilation qmake target.
   mkdir -p mkspecs/win32-g++-cross
