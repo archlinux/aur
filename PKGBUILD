@@ -2,7 +2,7 @@
 
 _gitname=ctroller
 pkgname=${_gitname}-bin
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="Use your 3DS as a gamepad on your Linux PC -- precompiled 3DS binaries"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=(
 )
 md5sums=(
   'SKIP'
-  '83dde668a360bbe115084a6bedac0f83'
+  '9ff482cd312713c287208426f6cd2f30'
 )
 
 pkgver() {
