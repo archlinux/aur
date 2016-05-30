@@ -1,9 +1,8 @@
 pkgbase = dhcpcd-ui
 	pkgdesc = dhcpcd Monitor in GTK+
 	pkgver = 0.7.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://roy.marples.name/projects/dhcpcd-ui
-	install = dhcpcd-ui.install
 	arch = i686
 	arch = x86_64
 	license = BSD
