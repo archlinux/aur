@@ -3,7 +3,7 @@
 pkgname=neomutt
 pkgver=20160502
 pkgrel=1
-pkgdesc='Small but powerful text-based mail client'
+pkgdesc='The New Mutt: powerful text-based mail client with all the best feature patches'
 url='http://www.neomutt.org/'
 license=('GPL')
 source=("https://github.com/neomutt/neomutt/archive/neomutt-$pkgver.tar.gz")
