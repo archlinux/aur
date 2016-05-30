@@ -65,7 +65,7 @@ build() {
     --with-gconf-schema-file-dir=/usr/share/gconf/schemas \
     --without-keyring \
     --with-gconf
-  make
+  make WARN_CFLAGS="" V=0
 }
 
 package() {
