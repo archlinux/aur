@@ -1,0 +1,15 @@
+[Trigger]
+Operation = Upgrade
+Operation = Remove
+Type = File
+Target = var/lib/connman-vpn/*
+Target = etc/Networkmanager/system-connections/*
+Target = etc/openvpn/*
+
+[Action]
+Description = Removing VPN configuations...
+Depends = private-internet-access-vpn
+When = PreTransaction
+Exec = /usr/bin/pia -r
+NeedsTargets
+

@@ -1,6 +1,6 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 pkgname=private-internet-access-vpn
-pkgver=2.6.1
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
@@ -17,6 +17,8 @@ sha256sums=('0ab48c38d1083362d4aaf3d7fb04ce7e1589f5a297675da6effe4f004e2e0b33'
             '246fc4dc3218f56b4c70014df6801b10fc2a573d6545962b7fce05f16908c54e'
             '7f4a5ee1fb8ea4d0e69ed2a8217c575cf335f21e90082f6e423c769eca4a7a46'
             'f74e0a601d74409c39d36f4d5c6a2f11c9832d05782f804243b3f6ae7e695aab'
+            '7f71b0bf5b2765cfc3c285c60036d4efdca0ba86756b58f228a53ed299600c28'
+            'edf29947a752df34eec006adc1cddbf1b73f9757e3752400dffea25d651b80b9'
             'SKIP'
             'SKIP')
 
@@ -26,12 +28,13 @@ source=("https://www.privateinternetaccess.com/openvpn/openvpn.zip"
 	"restart.conf"
 	"vpn.sh"
 	"pia.8.gz"
+	"hook.install"
+	"hook.remove"
 	"git://github.com/flamusdiu/python-pia.git#tag=v${pkgver}"
         "git://github.com/masterkorp/openvpn-update-resolv-conf")
 		
 noextract=("openvpn.zip"
            "pia.8.gz")
-
 
 prepare() {
   cd "${srcdir}"
@@ -71,14 +74,17 @@ prepare() {
 
 package() {
   cd "${srcdir}"
-  
-  install -dm755 "${pkgdir}"/{etc/{openvpn,private-internet-access},usr/{lib/system/{systemd/system-sleep,openvpn@.service.d},{bin,share/man/man8}}}
 
-  install -Dm600 vpn-configs/*.* "${pkgdir}/etc/openvpn/"
-  install -m644 restart.conf "${pkgdir}/usr/lib/system/openvpn@.service.d"
-  install -m755 vpn.sh "${pkgdir}/usr/lib/system/systemd/system-sleep"
-  install -m644 pia.8.gz "${pkgdir}/usr/share/man/man8"
-  install -m644 {pia-example.conf,login-example.conf} "${pkgdir}/etc/private-internet-access"
+  install -D -m 644 hook.install "${pkgdir}/usr/share/libalpm/hooks/pia-install.hook"
+  install -D -m 644 hook.remove "${pkgdir}/usr/share/libalpm/hooks/pia-remove.hook"
+  install -D -m 644 restart.conf "${pkgdir}/usr/lib/system/openvpn@.service.d/restart.conf"
+  install -D -m 755 vpn.sh "${pkgdir}/usr/lib/system/systemd/system-sleep/vpn.sh"
+  install -D -m 644 pia.8.gz "${pkgdir}/usr/share/man/man8/pia.8.gz"
+
+  
+  install -dm755 "${pkgdir}"/etc/{openvpn,private-internet-access}
+  install -D -m 600 vpn-configs/*.* "${pkgdir}/etc/openvpn"
+  install -D -m 644 {pia-example.conf,login-example.conf} "${pkgdir}/etc/private-internet-access/"
 
   cd "python-pia"
   python setup.py install --root="${pkgdir}/" --optimize=1

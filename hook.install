@@ -1,0 +1,15 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = File
+Target = var/lib/connman-vpn/*
+Target = etc/Networkmanager/system-connections/*
+Target = etc/openvpn/*
+
+[Action]
+Description = Updating VPN configuations...
+Depends = private-internet-access-vpn
+When = PostTransaction
+Exec = /usr/bin/pia -a
+NeedsTargets
+
