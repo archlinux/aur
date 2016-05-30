@@ -44,7 +44,7 @@ build() {
     git submodule update
 
     # only touch file if necessary
-    if grep -q 'ldc[.]conf' driver/configfile.cpp ; then
+    if grep -q 'ldc2[.]conf' driver/configfile.cpp ; then
         # patch the config file to be /etc/ldc2-git.conf
         sed 's/ldc2[.]conf/ldc2-git.conf/' -i driver/configfile.cpp
     fi
@@ -52,6 +52,13 @@ build() {
     # compilation with ldc links phobos and runtime as shared libraries
     # dmd does static linking to the rescue!
     sed 's/"ldmd2" "dmd"/"dmd"/' -i cmake/Modules/FindDCompiler.cmake
+
+    # patch ldc to properly link to ldc-git (needed for ldmd)
+    sed 's/LDC_EXE ldc2/LDC_EXE ldc-git/' -i CMakeLists.txt
+    sed 's/LDMD_EXE ldmd2/LDMD_EXE ldmd-git/' -i CMakeLists.txt
+    # it's faster just to rename the config files
+    mv ldc2_phobos.conf.in ldc-git_phobos.conf.in
+    mv ldc2_install.conf.in ldc-git_install.conf.in
 
     mkdir -p build && cd build
 
@@ -77,8 +84,8 @@ package_ldc-git() {
     cd $srcdir/tmp_install_dir
 
     # binaries
-    install -D -m755 ./usr/bin/ldmd2 $pkgdir/usr/bin/ldmd-git
-    install -D -m755 ./usr/bin/ldc2 $pkgdir/usr/bin/ldc-git
+    install -D -m755 ./usr/bin/ldmd-git $pkgdir/usr/bin/ldmd-git
+    install -D -m755 ./usr/bin/ldc-git $pkgdir/usr/bin/ldc-git
 
     # supplementaries
     install -D -m644 $srcdir/ldc/bash_completion.d/ldc2 $pkgdir/usr/share/bash-completion/completions/ldc-git
