@@ -1,7 +1,7 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 pkgname=private-internet-access-vpn
 pkgver=2.6.2
-pkgrel=1
+pkgrel=3
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -20,7 +20,8 @@ sha256sums=('0ab48c38d1083362d4aaf3d7fb04ce7e1589f5a297675da6effe4f004e2e0b33'
             '7f71b0bf5b2765cfc3c285c60036d4efdca0ba86756b58f228a53ed299600c28'
             'edf29947a752df34eec006adc1cddbf1b73f9757e3752400dffea25d651b80b9'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            'b346249c40d4eab7cf5a2b682b10f574d5f8ad6cf2b62604f15261a246b5f5a1')
 
 source=("https://www.privateinternetaccess.com/openvpn/openvpn.zip"
 	"login-example.conf"
@@ -31,7 +32,8 @@ source=("https://www.privateinternetaccess.com/openvpn/openvpn.zip"
 	"hook.install"
 	"hook.remove"
 	"git://github.com/flamusdiu/python-pia.git#tag=v${pkgver}"
-        "git://github.com/masterkorp/openvpn-update-resolv-conf")
+	"git://github.com/masterkorp/openvpn-update-resolv-conf.git"
+	"update-resolv-conf.patch")
 		
 noextract=("openvpn.zip"
            "pia.8.gz")
@@ -70,6 +72,8 @@ prepare() {
   done
   msg2 "Done."
 
+  msg2 "Patching update-resolv-conf ..."
+  patch -Np1 "${srcdir}/openvpn-update-resolv-conf/update-resolv-conf.sh" "${srcdir}/update-resolv-conf.patch"
 }
 
 package() {
@@ -86,6 +90,9 @@ package() {
   install -D -m 600 vpn-configs/*.* "${pkgdir}/etc/openvpn"
   install -D -m 644 {pia-example.conf,login-example.conf} "${pkgdir}/etc/private-internet-access/"
 
+  install -D -m 755 openvpn-update-resolv-conf/update-resolv-conf.sh "${pkgdir}/etc/openvpn/update-resolv-conf.sh"
+
   cd "python-pia"
   python setup.py install --root="${pkgdir}/" --optimize=1
+
 }

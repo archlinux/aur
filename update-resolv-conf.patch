@@ -1,0 +1,11 @@
+--- /etc/openvpn/update-resolv-conf	2016-05-29 22:27:25.955162159 -0400
++++ update-resolv-conf	2016-05-29 22:27:57.145164268 -0400
+@@ -18,7 +18,7 @@
+ # foreign_option_4='dhcp-option DOMAIN-SEARCH bnc.local'
+ 
+ ## You might need to set the path manually here, i.e.
+-RESOLVCONF=$(which resolvconf)
++RESOLVCONF=$(type -p resolvconf)
+ 
+ case $script_type in
+ 
