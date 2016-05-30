@@ -4,7 +4,7 @@ _pkgname=neomutt
 pkgname=neomutt-git
 pkgver=neomutt.20160502.r0.gfcf870a
 pkgrel=1
-pkgdesc='Small but powerful text-based mail client'
+pkgdesc='The New Mutt: powerful text-based mail client with all the best feature patches'
 url='http://www.neomutt.org/'
 license=('GPL')
 source=('git+https://github.com/neomutt/neomutt.git#branch=neomutt')
