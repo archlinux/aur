@@ -1,0 +1,21 @@
+[Unit]
+Description=ElasticSearch
+Documentation=http://www.elasticsearch.org
+After=network.target
+
+[Service]
+Type=forking
+User=elasticsearch
+Group=elasticsearch
+ExecStart=/usr/bin/elasticsearch -d -p /run/elasticsearch/%I.pid -Des.config=/etc/elasticsearch/%I.yml
+Environment=JAVA_HOME=/usr/lib/jvm/default-runtime
+EnvironmentFile=-/etc/default/elasticsearch
+RuntimeDirectory=elasticsearch
+PIDFile=/run/elasticsearch/%I.pid
+LimitNOFILE=65535
+LimitMEMLOCK=infinity
+TimeoutStopSec=20
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
