@@ -7,14 +7,14 @@
 pkgbase=linux-mptcp
 _srcname=mptcp
 _mptcpv=0.91
-pkgver=0.91.525002.856ebd0
-pkgrel=3
+pkgver=0.91.525412.ce81b6c
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.multipath-tcp.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git')
 options=('!strip')
-source=("git://github.com/multipath-tcp/mptcp#branch=mptcp_v${_mptcpv}"
+source=("git://github.com/multipath-tcp/mptcp#commit=ce81b6c3b65617ccb1243d019f40793375081fb3"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
@@ -88,7 +88,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The Linux kernel and modules with Multipath TCP support (based on linux 4.1.20)"
+  pkgdesc="The Linux kernel and modules with Multipath TCP support (based on linux 4.1.25)"
   [ "${pkgbase}" = "linux" ] && groups=('base')
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country'
