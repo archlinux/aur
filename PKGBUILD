@@ -1,6 +1,6 @@
 # Maintainer: Daniel Peukert <dan.peukert@gmail.com>
 pkgname='gnome-keyring-import-export-hg'
-pkgver=r8.fb3d72bfedb0
+pkgver=r15.db0c7ce80e60
 pkgrel=1
 pkgdesc='Simple script for exporting gnome2 (seahorse) keyrings, and re-importing on another machine.'
 arch=('any')
@@ -33,5 +33,4 @@ package() {
 
 	cd "$srcdir/$pkgname"
 	install -m0644 'gnome_keyring_import_export.py' "$pkgdir/usr/lib/gnome-keyring-import-export"
-
 }
