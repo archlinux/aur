@@ -1,16 +1,16 @@
 # Maintainer: Mikael Tillenius <mti at tillenius dot com>
 # Thanks to aAXEe <axel at brasshack dot de> for earlier work.
 pkgname=libpicoipp
-pkgver=1.1.2_4r52
+pkgver=1.1.2_4r56
 pkgrel=1
 pkgdesc="library for picotech oscilloscope software"
 arch=('i686' 'x86_64')
 if [ "$CARCH" == "i686" ]; then
   _arch="i386"
-  _md5sum='c27b545b7565eee56b9fc293b60f6459'
+  _md5sum='f5085f03d138b489517c09ec20191c35'
 else
   _arch="amd64"
-  _md5sum='50dd5e2438e139ed3fd63554b663e281'
+  _md5sum='1819c165c82e626628b60c07d335bfe7'
 fi
 url="http://www.picotech.com/linux.html"
 license=('custom')
