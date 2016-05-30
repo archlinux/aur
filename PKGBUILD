@@ -2,7 +2,7 @@
 # Contributor: truecrypt-hook <jim945 [at] mail . r [u]>
 pkgname=veracrypt-hook
 pkgver=5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensive hook for operations on a veracrypt encrypted root (or e.g. home) device"
 arch=(any)
 url="https://veracrypt.codeplex.com/"

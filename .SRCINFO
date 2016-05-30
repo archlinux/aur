@@ -1,7 +1,7 @@
 pkgbase = veracrypt-hook
 	pkgdesc = Extensive hook for operations on a veracrypt encrypted root (or e.g. home) device
 	pkgver = 5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://veracrypt.codeplex.com/
 	install = veracrypt-hook.install
 	arch = any
