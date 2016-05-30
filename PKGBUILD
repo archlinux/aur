@@ -5,7 +5,7 @@
 
 # Maintainer: Thorsten Lanfer <tlanfer@gmail.com>
 pkgname=openhab-addons
-pkgver=1.8.1
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="openHAB automation addons"
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=()
 backup=()
 source=("https://bintray.com/artifact/download/openhab/bin/distribution-$pkgver-addons.zip")
 noextract=("distribution-$pkgver-addons.zip")
-md5sums=('e0c7e81feccc6d1f56c63d7ff9beb211')
+md5sums=('c5803a3517f520e756647e20746c83a5')
 
 prepare() {
 	mkdir "$srcdir/$pkgname"
