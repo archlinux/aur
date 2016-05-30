@@ -12,7 +12,7 @@ arch=('any')
 
 depends=("insync" "nautilus" "python2-nautilus")
 source=("${pkgname}-${pkgver}.deb::http://s.insynchq.com/builds/${pkgname}_${pkgver}-precise_all.deb")
-sha256sums=("8ffdd946ec9e743848b2b42b6054f6f90b86b82d7b5764c1fd1ec7a3d7604e72")
+sha256sums=("e192138bbfcc09d6aba530ba3c02be6c6d3d2bdbf9be738d852a2a504bf815cc")
 noextract=("${pkgname}-${pkgver}.deb")
 
 package() {
