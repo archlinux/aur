@@ -17,16 +17,16 @@ pre_install() {
 }
 
 _update() {
-    if ! getent passwd curly_turtle &>/dev/null; then
-        msg_blue "Adding user 'curly_turtle'"
-        useradd -m -r -U -d /usr/lib/node_modules/curly-turtle -s /bin/false curly_turtle &>/dev/null
+    if ! getent passwd curly-turtle &>/dev/null; then
+        msg_blue "Adding user 'curly-turtle'"
+        useradd -m -r -U -d /usr/lib/node_modules/curly-turtle -s /bin/false curly-turtle &>/dev/null
     fi
-    chown -R curly_turtle:curly_turtle /usr/lib/node_modules/curly-turtle
+    chown -R curly-turtle:curly-turtle /usr/lib/node_modules/curly-turtle
 }
 
 post_install() {
     _update
-    note "Before run curly_turtle, follow https://github.com/FiveYellowMice/curly-turtle to create a config file ."
+    note "Before run curly-turtle, follow https://github.com/FiveYellowMice/curly-turtle to create a config file ."
     note "And follow https://github.com/FiveYellowMice/curly-turtle/wiki/Daemon to start it ."
     
 }
@@ -36,9 +36,9 @@ post_upgrade() {
 }
 
 post_remove() {
-    if getent passwd curly_turtle &>/dev/null; then
-        msg_blue "Removing user 'curly_turtle'"
-        userdel -rf curly_turtle &>/dev/null
+    if getent passwd curly-turtle &>/dev/null; then
+        msg_blue "Removing user 'curly-turtle'"
+        userdel -rf curly-turtle &>/dev/null
     fi
 }
 
