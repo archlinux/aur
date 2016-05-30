@@ -3,7 +3,7 @@
 
 pkgname=iridium
 pkgver=51.1
-pkgrel=2
+pkgrel=3
 _launcher_ver=3
 pkgdesc="a free, open, and libre browser modification of the Chromium code base"
 arch=('i686' 'x86_64')
@@ -100,6 +100,11 @@ build() {
 
   # CFLAGS are passed through release_extra_cflags below
   export -n CFLAGS CXXFLAGS
+
+  # Work around bug in v8 in which GCC 6 optimizes away null pointer checks
+  # https://bugs.chromium.org/p/v8/issues/detail?id=3782
+  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=69234
+  CFLAGS+=' -fno-delete-null-pointer-checks'
 
   local _chromium_conf=(
     -Dgoogle_api_key=$_google_api_key
