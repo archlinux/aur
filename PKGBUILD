@@ -4,9 +4,9 @@
 pkgname=peru
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="a tool for including other people's code in your projects"
+pkgdesc="A tool for including other people's code in your projects"
 arch=('any')
-depends=('git' 'python' 'python-yaml' 'python-docopt')
+depends=('git' 'python' 'python-docopt' 'python-yaml')
 makedepends=('python-setuptools')
 optdepends=('mercurial: fetching from hg repos'
             'subversion: fetching from svn repos')
