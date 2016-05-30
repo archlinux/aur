@@ -3,16 +3,15 @@
 pkgname=gnome2-icon-theme
 _pkgname=gnome-icon-theme
 pkgver=2.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GNOME2 icon theme"
 arch=('any')
 depends=('hicolor-icon-theme' 'gtk-update-icon-cache' 'gnome2-icon-theme-symbolic')
 makedepends=('intltool' 'icon-naming-utils')
 url="http://www.gnome.org"
 license=('GPL')
-provides=($_pkgname)
+provides=("$_pkgname=$pkgver")
 conflicts=($_pkgname)
-install=$_pkgname.install
 options=('!emptydirs')
 source=("http://ftp.gnome.org/pub/gnome/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.bz2")
 sha256sums=('ea7e05b77ead159379392b3b275ca0c9cbacd7d936014e447cc7c5e27a767982')

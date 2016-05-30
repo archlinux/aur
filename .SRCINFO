@@ -1,9 +1,8 @@
 pkgbase = gnome2-icon-theme
 	pkgdesc = GNOME2 icon theme
 	pkgver = 2.31.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.gnome.org
-	install = gnome-icon-theme.install
 	arch = any
 	license = GPL
 	makedepends = intltool
@@ -11,7 +10,7 @@ pkgbase = gnome2-icon-theme
 	depends = hicolor-icon-theme
 	depends = gtk-update-icon-cache
 	depends = gnome2-icon-theme-symbolic
-	provides = gnome-icon-theme
+	provides = gnome-icon-theme=2.31.0
 	conflicts = gnome-icon-theme
 	options = !emptydirs
 	source = http://ftp.gnome.org/pub/gnome/sources/gnome-icon-theme/2.31/gnome-icon-theme-2.31.0.tar.bz2
