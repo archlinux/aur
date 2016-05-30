@@ -7,9 +7,9 @@ arch=('any')
 url="http://beefproject.com/"
 license=('GPL')
 conflicts=('beef-xss-git')
-provides=('beef-xss-git' 'sqlite')
+provides=('beef-xss-git')
 prepare() {
-           echo Installing needed ruby and rake 
+           echo Installing needed ruby, rake and sqlite 
            sudo pacman -S ruby rake sqlite
 }
 

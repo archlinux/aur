@@ -6,7 +6,6 @@ pkgbase = beef-xss-git
 	arch = any
 	license = GPL
 	provides = beef-xss-git
-	provides = sqlite
 	conflicts = beef-xss-git
 
 pkgname = beef-xss-git
