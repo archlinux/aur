@@ -9,7 +9,7 @@ pkgver() {
 }
 pkgrel=1
 arch=('i686' 'x86_64')
-depends=(fuse)
+depends=(fuse gconf)
 makedepends=(go npm git rsync)
 # keybase-release is a deprecated AUR package
 conflicts=(keybase keybase-release)
