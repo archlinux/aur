@@ -1,0 +1,39 @@
+From 562c738b68591aab8d399a772dea5bc7e8ae7611 Mon Sep 17 00:00:00 2001
+From: Brian Bidulock <bidulock@openss7.org>
+Date: Sun, 29 May 2016 21:36:49 -0600
+Subject: [PATCH 3/3] handle missing method in gtk2
+
+---
+ src/preferences-dialog.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/src/preferences-dialog.c b/src/preferences-dialog.c
+index 084941a..9b198b2 100644
+--- a/src/preferences-dialog.c
++++ b/src/preferences-dialog.c
+@@ -151,9 +151,22 @@ up_keyboard (GtkWidget *button, PreferencesDialog *dialog)
+ 
+     selection = gtk_tree_view_get_selection (GTK_TREE_VIEW(dialog->selected_keyboards_treeview));
+     if (gtk_tree_selection_get_selected (selection, &model, &iter)) {
++#if 1
++        GtkTreePath *path;
++        if ((path = gtk_tree_model_get_path(model, &iter))) {
++            if (gtk_tree_path_prev(path)) {
++                GtkTreeIter prev;
++                if (gtk_tree_model_get_iter(model, &prev, path)) {
++                    gtk_list_store_swap (GTK_LIST_STORE(model), &iter, &prev);
++                }
++            }
++            gtk_tree_path_free(path);
++        }
++#else
+         GtkTreeIter prev = iter;
+         if (gtk_tree_model_iter_previous (model, &prev))
+             gtk_list_store_swap (GTK_LIST_STORE(model), &iter, &prev);
++#endif
+     }
+ }
+ 
+-- 
+2.8.3
+
