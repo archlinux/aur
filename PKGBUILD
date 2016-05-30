@@ -1,4 +1,5 @@
-# Maintainer : speps <speps at aur dot archlinux dot org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: speps <speps at aur dot archlinux dot org>
 # Contributor: Alexander Fehr <pizzapunk gmail com>
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 # Contributor: Gaetan Bisson <bisson@archlinux.org>
@@ -6,7 +7,7 @@
 _name=audacious
 pkgname=${_name}2
 pkgver=3.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Lightweight, GTK-based advanced audio player focused on audio quality. Gtk2 version.'
 arch=('i686' 'x86_64')
 url='http://audacious-media-player.org/'
@@ -15,7 +16,6 @@ depends=('gtk2' 'libmcs' 'dbus-glib' 'libguess' 'libsm'
          'desktop-file-utils' 'hicolor-icon-theme')
 optdepends=("$pkgname-plugins: required for all"
             'unzip: zipped skins support')
-install="$pkgname.install"
 source=("http://distfiles.audacious-media-player.org/$_name-$pkgver.tar.gz")
 md5sums=('2d8e262ea6ffee704d4d0d72b49b13bc')
 
