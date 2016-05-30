@@ -1,12 +1,12 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 pkgname=spigot
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance Minecraft server implementation"
 arch=(any)
 url="https://www.spigotmc.org/"
 license=("LGPL")
-depends=(java-runtime-headless screen sudo fontconfig bash)
+depends=(java-runtime-headless screen sudo fontconfig bash sed)
 optdepends=("tar: needed in order to create world backups"
 "netcat: required in order to suspend an idle server")
 makedepends=(java-environment git)
@@ -21,12 +21,12 @@ source=("https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/art
 "${pkgname}.conf"
 "${pkgname}.sh")
 noextract=("BuildTools.jar")
-md5sums=('98ba43d2f5eafb0d883c0dafc00e19e8'
+md5sums=('SKIP'
          '7bb2dc610c5f55e133bd41ab608ec7a1'
          '872d2e03799f1f8f0c75acdebce91894'
          '1eb2d5f485cf9eff7a99c826ad56fcf4'
          'f04e0bcf8d771b0d1dc0206dc173d77a'
-         '6ee73f849e2caf6d8c89c73a80cc0c33')
+         '65ca43c8ed21347e6c98a7d0aac480f0')
 
 _game="spigot"
 _server_root="/srv/craftbukkit"

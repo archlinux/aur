@@ -65,6 +65,26 @@ game_command() {
 	${SUDO_CMD} screen -S "${SESSION_NAME}" -X stuff "`printf \"$*\r\"`"
 }
 
+# Check whether there are player on the server through list
+is_player_online() {
+	game_command list
+	sleep 0.6
+	# The list command prints a line containing the usernames after the last occurrence of ": "
+	# and since playernames may not contain this string the clean player-list can be easily retrieved.
+	# Otherwiese check the first digit after the last occurrence of "There are". If it is 0 then there
+	# are no players on the server. Should this test fail as well. Assume that a player is online.
+	if [[ -z $(tail -n 1 "${LOGPATH}/latest.log" | sed -r -e 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' -e 's/.*\: //' | tr -d '\n') ]]; then
+		# No player is online
+		return 0;
+	elif [[ $(tail -n 10 "${LOGPATH}/latest.log" | grep "There are" | sed -r -e '$!d' -e 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' -e 's/.*\: //' -e 's/^([^.]+).*$/\1/; s/^[^0-9]*([0-9]+).*$/\1/' | tr -d '\n') -gt 0 ]]; then
+		# No player is online
+		return 0;
+	else
+		# A player is online (or it could not be determined)
+		return 1;
+	fi
+}
+
 # Check whether the server is visited by a player otherwise shut it down
 idle_server_daemon() {
 	# This function is run within a screen session of the GAME_USER therefore SUDO_CMD can be omitted
@@ -78,18 +98,20 @@ idle_server_daemon() {
 	no_player=0
 
 	while true; do
+		echo -e "no_player: ${no_player}s\tcheck_player_time: ${CHECK_PLAYER_TIME}s\tidle_if_time: ${IDLE_IF_TIME}s"
 		# Retry in ${CHECK_PLAYER_TIME} seconds
 		sleep ${CHECK_PLAYER_TIME}
 
 		screen -S "${SESSION_NAME}" -Q select . > /dev/null
 		if [[ $? -eq 0 ]]; then
 			# Game server is up and running
-			screen -S "${SESSION_NAME}" -X stuff "`printf \"list\r\"`"
-			# The list command prints a line containing the usernames after the last occurrence of ": "
-			# and since playernames may not contain this string the clean player-list can be easily retrieved.
-			if [[ $? -eq 0 && -z $(sleep 0.6; tail -n 1 "${LOGPATH}/latest.log" | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' | sed 's/.*\: //' | tr -d '\n') ]]; then
+			if [[ "$(screen -S "${SESSION_NAME}" -ls | sed -n 2p | awk '{ print $2 }')" == "(Attached)" ]]; then
+				# An administrator is connected to the console, pause player checking
+				echo "An admin is connected to the console. Pause player checking."
+			# Check for active player
+			elif SUDO_CMD="" is_player_online; then
 				# No player was seen on the server through list
-				no_player=$((no_player + CHECK_PLAYER_TIME))
+				no_player=$(( no_player + CHECK_PLAYER_TIME ))
 				# Stop the game server if no player was active for at least ${IDLE_IF_TIME}
 				if [[ "${no_player}" -ge "${IDLE_IF_TIME}" ]]; then
 					IDLE_SERVER="false" ${myname} stop
@@ -100,22 +122,23 @@ idle_server_daemon() {
 						[[ $i -eq 100 ]] && echo -e "An \e[39;1merror\e[0m occurred while trying to reset the idle_server!"
 						sleep 0.1
 					done
-					# Reset timer
-					no_player=0
+					# Reset timer and give the player 300 seconds to connect after pinging
+					no_player=$(( IDLE_IF_TIME - 300 ))
 					# Game server is down, listen on port ${GAME_PORT} for incoming connections
-					echo "Netcat is listening on port ${GAME_PORT} for incoming connections..."
+					echo -n "Netcat: "
 					${NETCAT_CMD} -v -l -p ${GAME_PORT}
 					[[ $? -eq 0 ]] && echo "Netcat caught an connection. The server is coming up again..."
 					IDLE_SERVER="false" ${myname} start
 				fi
-			elif [[ $? -eq 0 ]]; then
+			else
+				# Reset timer since there is an active player on the server
 				no_player=0
 			fi
 		else
-			# Reset timer
-			no_player=0
+			# Reset timer and give the player 300 seconds to connect after pinging
+			no_player=$(( IDLE_IF_TIME - 300 ))
 			# Game server is down, listen on port ${GAME_PORT} for incoming connections
-			echo "Netcat is listening on port ${GAME_PORT} for incoming connections..."
+			echo -n "Netcat: "
 			${NETCAT_CMD} -v -l -p ${GAME_PORT}
 			[[ $? -eq 0 ]] && echo "Netcat caught an connection. The server is coming up again..."
 			IDLE_SERVER="false" ${myname} start
@@ -185,10 +208,9 @@ server_stop() {
 	${SUDO_CMD} screen -S "${SESSION_NAME}" -Q select . > /dev/null
 	if [[ $? -eq 0 ]]; then
 		# Game server is up and running, gracefully stop the server when there are still active players
-		${SUDO_CMD} screen -S "${SESSION_NAME}" -X stuff "`printf \"list\r\"`"
-		# The list command prints a line containing the usernames after the last occurrence of ": "
-		# and since playernames may not contain this string the clean player-list can be easily retrieved.
-		if [[ $? -eq 0 && -z $(sleep 0.6; tail -n 1 "${LOGPATH}/latest.log" | sed -r 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' | sed 's/.*\: //' | tr -d '\n') ]]; then
+
+		# Check for active player
+		if is_player_online; then
 			# No player was seen on the server through list
 			echo -en "Server is going down..."
 			game_command stop
@@ -317,7 +339,7 @@ backup_restore() {
 		i=1
 		for f in "${BACKUP_DEST}"/[0-9_.]*; do
 			echo -e "    \e[39;1m$i)\e[0m\t$f"
-			i=$((i+1))
+			i=$(( i + 1 ))
 		done
 		echo -en "Restore backup number: "
 
@@ -329,7 +351,7 @@ backup_restore() {
 			n=1
 			for f in "${BACKUP_DEST}"/[0-9_.]*; do
 				[[ ${n} -eq $user_choice ]] && FILE="$f"
-				n=$((n+1))
+				n=$(( n + 1 ))
 			done
 			if [[ -z $FILE ]]; then
 				>&2 echo -e "\e[39;1mFailed\e[0m to interpret your input. Please enter the digit of the presented options."
