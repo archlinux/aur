@@ -1,10 +1,11 @@
-# Maintainer : SpepS <dreamspepser at yahoo dot it>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor : SpepS <dreamspepser at yahoo dot it>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 _p=evince
 pkgname=evince2
 pkgver=2.32.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Simply a document viewer. Gtk2 version."
 url="http://projects.gnome.org/evince/"
 arch=('i686' 'x86_64')
@@ -13,7 +14,6 @@ depends=('gtk2' 'libspectre>=0.2.6' 'gsfonts' 'poppler-glib>=0.16.2' 'libdjvu>=3
          'gnome-icon-theme>=2.31.0' 't1lib' 'desktop-file-utils' 'dconf' 'gconf')
 makedepends=('pkgconfig' 'intltool' 'gobject-introspection' 'gtk-doc' 'gnome-common')
 provides=("$_p=$pkgver")
-install="$pkgname.install"
 options=('!libtool')
 source=("http://ftp.gnome.org/pub/gnome/sources/$_p/2.32/$_p-$pkgver.tar.bz2"
         "update_to_poppler_api.patch"

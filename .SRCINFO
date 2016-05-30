@@ -1,9 +1,8 @@
 pkgbase = evince2
 	pkgdesc = Simply a document viewer. Gtk2 version.
 	pkgver = 2.32.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://projects.gnome.org/evince/
-	install = evince2.install
 	arch = i686
 	arch = x86_64
 	license = GPL
