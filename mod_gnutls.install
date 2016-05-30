@@ -1,0 +1,19 @@
+post_install() {
+  echo " >>> To enable mod_gnutls:"
+  echo " >>>   add the following line in"
+  echo " >>>   /etc/httpd/conf/httpd.conf"
+  echo " >>>"
+  echo " >>>   LoadModule	gnutls_module modules/mod_gnutls.so"
+  echo " >>>"
+  echo " >>>  Ensure all directives to 'load mod_ssl' are removed"
+  echo " >>> and restart/reload Apache."
+  echo " >>>"
+  echo " >>> Additional configuration will be required.  See:"
+  echo " >>> https://wiki.archlinux.org/index.php/Mod_gnutls and"
+}
+
+post_upgrade() {
+  post_install
+}
+
+# vim:set ts=2 sw=2 et:
