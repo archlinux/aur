@@ -15,7 +15,7 @@ users to define, configure and run complex computer networks without any need
 for physical setup. Trunk version (with UML kernel Debian Wheezy)."
 arch=('i686' 'x86_64')
 url="https://www.marionnet.org/"
-makedepends=('bc' 'optipng')
+makedepends=('wget' 'bc' 'optipng')
 license=('LGPL')
 depends=('xorg-server' 'xorg-xinit' 'xorg-server-utils' 'gtksourceview2' 'libglademm' 'graphviz' 'xterm' 'vde2' 'uml_utilities' 'net-tools' 'bridge-utils')
 if test "$CARCH" == x86_64; then
@@ -35,7 +35,7 @@ sha256sums=('4f81ab86258be0eea1507dd5338c8670490f8616249821e731f8ac1c64caa4a7'
             '646b6de59a555b2e41960708cf4edfed571d88369d850a50e23bf4a4b17ed329'
             '610c806e595be4d56ff6cded02e8d8a3091fe211487073c02ddb5132c3b4ffb6'
             'efb09389cc67a88b16509dec3ca3fb32f1da1f4c5808b8f2e7e2f050376bf691'
-            '5d8ddf6e5c5b726e892bae2b55eb5eb01f43bd47fa2855ec38797d0598a6ea24')
+            'f0f93f30424da231357c3d7698229ba1fbdaa41737c954b71ede44d5e57cd50a')
 install=marionnet-trunk.install
 
 # ################
