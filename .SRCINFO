@@ -7,6 +7,8 @@ pkgbase = marionnet
 	arch = i686
 	arch = x86_64
 	license = LGPL
+	makedepends = wget
+	makedepends = bc
 	makedepends = optipng
 	depends = xorg-server
 	depends = xorg-xinit
@@ -32,7 +34,7 @@ pkgbase = marionnet
 	sha256sums = 39cc4cc100124b8363c9760494d7e285803ca22ff8409f79038f3fb4a146a96c
 	sha256sums = 3a571a2cb4724b50eb52e33191d42a6b8396889e728bc974bc396395c9ce03ac
 	sha256sums = 1fd697ff5f7055bcd6da2b6b5233d58bf79a2d4fc59b36eb79fb3c0d63265d3c
-	sha256sums = 5d8ddf6e5c5b726e892bae2b55eb5eb01f43bd47fa2855ec38797d0598a6ea24
+	sha256sums = f0f93f30424da231357c3d7698229ba1fbdaa41737c954b71ede44d5e57cd50a
 
 pkgname = marionnet
 

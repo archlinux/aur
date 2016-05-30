@@ -9,7 +9,7 @@ users to define, configure and run complex computer networks without any need
 for physical setup. Very old version."
 arch=('i686' 'x86_64')
 url="https://www.marionnet.org/"
-makedepends=('bc' 'optipng')
+makedepends=('wget' 'bc' 'optipng')
 license=('LGPL')
 depends=('xorg-server' 'xorg-xinit' 'xorg-server-utils' 'gtksourceview2' 'libglademm' 'graphviz' 'xterm' 'vde2' 'uml_utilities' 'net-tools' 'bridge-utils')
 if test "$CARCH" == x86_64; then
@@ -29,7 +29,7 @@ sha256sums=('83008744c0ba1e3460651b86d0900916edae38813eb9a0300e8eaa861c3e921e'
             '39cc4cc100124b8363c9760494d7e285803ca22ff8409f79038f3fb4a146a96c'
             '3a571a2cb4724b50eb52e33191d42a6b8396889e728bc974bc396395c9ce03ac'
             '1fd697ff5f7055bcd6da2b6b5233d58bf79a2d4fc59b36eb79fb3c0d63265d3c'
-            '5d8ddf6e5c5b726e892bae2b55eb5eb01f43bd47fa2855ec38797d0598a6ea24')
+            'f0f93f30424da231357c3d7698229ba1fbdaa41737c954b71ede44d5e57cd50a')
 install=marionnet-legacy.install
 
 # ################
@@ -75,8 +75,8 @@ build () {
     if type uname 1>&2 && [[ $(uname -m) = "${CARCH}" ]]; then
         local BUGFIX_FILE="bugfix-5237.diff"
         echo "Downloading the ocaml 3.11 patch ($BUGFIX_FILE) for ${CARCH}"
-        curl -L -o $BUGFIX_FILE "$OUR_MIRROR/$BUGFIX_FILE" || \
-            curl -L -o $BUGFIX_FILE 'http://caml.inria.fr/mantis/file_download.php?file_id=415&type=bug' || \
+        wget --no-check-certificate -O $BUGFIX_FILE "$OUR_MIRROR/$BUGFIX_FILE" || \
+            wget --no-check-certificate -O $BUGFIX_FILE 'http://caml.inria.fr/mantis/file_download.php?file_id=415&type=bug' || \
             return 1
         echo "Applying the ocaml 3.11 patch ($BUGFIX_FILE) for ${CARCH}"
         patch -p1 < $BUGFIX_FILE
@@ -85,8 +85,8 @@ build () {
     elif type ld 1>&2 && ld -v | \grep -q '[ ]2[.]2[1-9]'; then
         local BUGFIX_FILE="bugfix-5237-i386.diff"
         echo "Downloading the ocaml 3.11 patch ($BUGFIX_FILE) for i386"
-        curl -L -o $BUGFIX_FILE "$OUR_MIRROR/$BUGFIX_FILE" || \
-            curl -L -o $BUGFIX_FILE 'http://caml.inria.fr/mantis/file_download.php?file_id=418&type=bug' || \
+        wget --no-check-certificate -O $BUGFIX_FILE "$OUR_MIRROR/$BUGFIX_FILE" || \
+            wget -O $BUGFIX_FILE 'http://caml.inria.fr/mantis/file_download.php?file_id=418&type=bug' || \
             return 1
         echo "Applying the ocaml 3.11 patch ($BUGFIX_FILE) for i386"
         patch -p1 < $BUGFIX_FILE
