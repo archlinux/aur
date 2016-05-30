@@ -2,7 +2,7 @@
 
 _pkgname="armake"
 pkgname="${_pkgname}-git"
-pkgver=0.2.1.r0.g11b6889
+pkgver=0.3.r1.g30895ac
 pkgrel=1
 pkgdesc="An open-source implementation of the Arma modding tools."
 arch=('i686' 'x86_64')
