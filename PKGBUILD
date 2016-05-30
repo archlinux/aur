@@ -1,7 +1,7 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
 pkgname=mkinitcpio-systemd-tool
-pkgver=r3.fe080ac
+pkgver=r4.a121143
 pkgrel=1
 pkgdesc='Provisioning tool for systemd in initramfs (systemd-tool)'
 arch=('any')
@@ -20,6 +20,7 @@ backup=(
     'etc/systemd/system/initrd-debug-progs.service'
     'etc/systemd/system/initrd-debug-shell.service'
     'etc/systemd/system/initrd-dropbear.service'
+    'etc/systemd/system/initrd-emergency.service'
     'etc/systemd/system/initrd-network.service'
     'etc/systemd/system/initrd-shell.service'
     'etc/systemd/system/initrd-shell.sh'
@@ -76,6 +77,7 @@ package() {
     install -D -m644 "$source/initrd-debug-shell.service"   "$target/initrd-debug-shell.service"
     install -D -m644 "$source/initrd-network.service"       "$target/initrd-network.service"
     install -D -m644 "$source/initrd-dropbear.service"      "$target/initrd-dropbear.service"
+    install -D -m644 "$source/initrd-emergency.service"     "$target/initrd-emergency.service"
     install -D -m644 "$source/initrd-shell.service"         "$target/initrd-shell.service"
     install -D -m755 "$source/initrd-shell.sh"              "$target/initrd-shell.sh"
                                                                                                                                 
