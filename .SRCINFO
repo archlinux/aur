@@ -1,15 +1,13 @@
 pkgbase = ttf-mgenplus
 	pkgdesc = Mgen+ Japanese outline fonts (M+ + Noto CJK)
 	pkgver = 20150602
-	pkgrel = 1
+	pkgrel = 2
 	url = http://jikasei.me/font/mgenplus/
 	install = ttf.install
 	arch = any
 	license = custom:SIL
-	makedepends = p7zip
 	depends = fontconfig
 	depends = xorg-font-utils
-	noextract = mgenplus-20150602.7z
 	source = http://jaist.dl.osdn.jp/users/8/8597/mgenplus-20150602.7z
 	md5sums = 0a898d1766cf9c099dd3b8f27abe9799
 
