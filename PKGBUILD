@@ -12,7 +12,7 @@ arch=('any')
 
 depends=("insync" "python2-caja")
 source=("${pkgname}-${pkgver}.deb::http://s.insynchq.com/builds/${pkgname}_${pkgver}-precise_all.deb")
-sha256sums=("8532963b96df017a4779cfeaafc956b97618506ccff1a77e6751a6c5ed2ad9d1")
+sha256sums=("5e516bac324c8b5b4635532051ec15e8a25fbd96baafb5cb52aa655a214c1277")
 noextract=("${pkgname}-${pkgver}.deb")
 
 package() {
