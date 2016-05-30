@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-systemd-tool
     pkgdesc = Provisioning tool for systemd in initramfs (systemd-tool)
-    pkgver = r11.5e4ddce
+    pkgver = r12.ab211e6
     pkgrel = 1
     url = https://github.com/random-archer/mkinitcpio-systemd-tool
     install = INSTALL.sh
