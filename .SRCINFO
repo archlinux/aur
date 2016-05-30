@@ -1,15 +1,14 @@
 pkgbase = sophia
 	pkgdesc = Modern embeddable transactional key-value storage
-	pkgver = 1.2.3
+	pkgver = 2.1
 	pkgrel = 1
 	url = https://github.com/pmwkaa/sophia
 	arch = any
 	license = BSD2
-	makedepends = git
 	conflicts = sophia-git
 	options = staticlibs
-	source = git+https://github.com/pmwkaa/sophia#tag=version_1.2.3
-	md5sums = SKIP
+	source = https://github.com/pmwkaa/sophia/archive/version_2.1.tar.gz
+	md5sums = b09f69b022c1e95caf7b1775de051df3
 
 pkgname = sophia
 
