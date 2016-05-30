@@ -1,8 +1,9 @@
 # Maintainer: Pedro Gabriel Drumond Pereira (pedrogabriel)
+# Special thanks: Fademind
 
 pkgname=wd719x-firmware
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Driver for Western Digital WD7193, WD7197 and WD7296 SCSI cards"
 url="http://support.wdc.com/product/download.asp?groupid=801&sid=27&lang=en"
 license=('unknown')
@@ -12,7 +13,7 @@ conflicts=()
 replaces=()
 backup=()
 md5sums=('c5f7dc52c96e606e403751a4c482d785')
-source=('https://dl.dropboxusercontent.com/u/48372564/wd719-firmware/pciscsi.exe')
+source=('https://raw.githubusercontent.com/FadeMind/archpkgbuilds/master/AUR/customized/wd719x-firmware/pciscsi.exe')
 noextract=('pciscsi.exe')
 
 build() {
