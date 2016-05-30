@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1
 
 pkgname=chewing-editor-git
-pkgver=0.1.1.r20.g50c105e
+pkgver=0.1.1.r26.g30b9c30
 pkgrel=1
 pkgdesc="Cross platform chewing user phrase editor"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://chewing.im"
 license=('GPL')
 depends=('libchewing' 'qt5-base' 'hicolor-icon-theme')
 makedepends=('git' 'cmake' 'qt5-tools' 'help2man')
-source=("git://github.com/chewing/chewing-editor.git")
+source=("git+https://github.com/chewing/chewing-editor.git")
 md5sums=('SKIP')
 
 pkgver() {
