@@ -1,11 +1,12 @@
 # Maintainer: Phillip Schichtel <phillip.public@schich.tel>
 pkgname=adapta-gtk-theme
 _gtk3_version='3.21'
-pkgver="${_gtk3_version}.2.6"
+_theme_name=Adapta
+pkgver="${_gtk3_version}.2.12"
 pkgrel=1
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
-url="https://github.com/tista500/Adapta"
+url="https://github.com/tista500/${_theme_name}"
 license=('GPL2' 'CCPL')
 depends=('gtk2>=2.24.29'
          'gtk3>=3.18'
@@ -18,24 +19,25 @@ optdepends=('gnome-shell>=3.18: The GNOME Shell'
             'paper-icon-theme: A fitting icon theme'
             'gnome-tweak-tool: A graphical tool to tweak gnome settings'
             "unity>=7.4.0: Ubuntu's Unity desktop")
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/tista500/Adapta/archive/${pkgver}.tar.gz"
-        'https://github.com/tista500/Adapta/raw/master/img/tri-fadeno.jpg')
-sha256sums=('0d348643642e4f6fb6b82199efd3d90fe130ff4a4deb88ec245ed9e968251fac'
+_tri_fadeno="tri-fadeno.jpg"
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
+        "${pkgver}-${_tri_fadeno}::${url}/raw/master/img/tri-fadeno.jpg")
+sha256sums=('6186fdbab32e9a860b1795621ab5ad91edfa766a125f4be50c3a10f47e016a9e'
             '807bd3d99fb492569caf050cfa9b5c75d4e6a072007637fe8e583a3f5c0bea24')
 
 build() {
-    cd "Adapta-${pkgver}"
+    cd "${_theme_name}-${pkgver}"
     ./autogen.sh --prefix "${pkgdir}/usr" --enable-gtk_next --enable-chrome
     make
 }
 
 package() {
-    cd "Adapta-${pkgver}"
+    cd "${_theme_name}-${pkgver}"
     make install
 
     # The backgrounds
-    bgdir="${pkgdir}/usr/share/backgrounds"
+    bgdir="${pkgdir}/usr/share/backgrounds/${_theme_name}"
     install -dm755 "$bgdir"
-    cp -dp --no-preserve=ownership "${srcdir}/tri-fadeno.jpg" "$bgdir"
+    cp -dp --no-preserve=ownership "$(readlink "${srcdir}/${pkgver}-${_tri_fadeno}")" "${bgdir}/${_tri_fadeno}"
 }
 
