@@ -2,7 +2,7 @@
 pkgdesc="XDG application menu with full support for FVWM"
 pkgname=fvwm-xdg-menu
 pkgver=r51
-pkgrel=1
+pkgrel=2
 arch=(any)
 license=(GPL2)
 url="http://github.com/domichel/$pkgname"
@@ -11,7 +11,6 @@ depends=('gtk-update-icon-cache')
 source=("$pkgname::git://github.com/domichel/$pkgname.git#commit=4b49473")
 md5sums=('SKIP')
 makedepends=('git')
-install=$pkgname.install
 
 build() {
   cd $pkgname
