@@ -2,8 +2,8 @@
 # Maintainer: Iru Cai <mytbk920423@gmail.com>
 
 pkgname=iridium
-pkgver=51.0
-pkgrel=2
+pkgver=51.1
+pkgrel=1
 _launcher_ver=3
 pkgdesc="a free, open, and libre browser modification of the Chromium code base"
 arch=('i686' 'x86_64')
@@ -28,7 +28,7 @@ source=(https://downloads.iridiumbrowser.de/source/iridium-browser-${pkgver}.tar
         chromium.desktop
         chromium-widevine.patch
         fix_PNGImageDecoder.patch)
-sha256sums=('439de1a7819eb5c4ba2a2f82a8e226f27270f23b9c7a5cd452d994836b07b9b6'
+sha256sums=('614a7cd4fe0a5ba57495fc7afbd407c0e5e59e8897d98c78f96f859e4c9bf80a'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             '028a748a5c275de9b8f776f97909f999a8583a4b77fd1cd600b4fc5c0c3e91e9'
             '4660344789c45c9b9e52cb6d86f7cb6edb297b39320d04f6947e5216d6e5f64c'
