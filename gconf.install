@@ -9,10 +9,7 @@ post_upgrade() {
   chmod 755 etc/gconf/gconf.xml.system
   usr/bin/gio-querymodules usr/lib/gio/modules
 
-  PID=`pidof gconfd-2`
-  if [ ! -z "${PID}" ]; then
-    kill ${PID}
-  fi
+  pkill /usr/lib/GConf/gconfd-2 || return 0
 }
 
 post_remove() {
