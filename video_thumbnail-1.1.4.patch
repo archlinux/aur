@@ -1,0 +1,372 @@
+commit 5cc9da9a6b79fb03d357aeb43c8392f693a4da90
+Author: Eduardo Rocha <folhabranca@gmail.com>
+Date:   Wed Sep 3 19:53:04 2014 -0300
+
+    Adding thumbnail generation support of a video file.
+
+diff --git a/Makefile.am b/Makefile.am
+index 9273aa5..a19afbb 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -47,7 +47,7 @@ minidlnad_LDADD = \
+ 	@LIBEXIF_LIBS@ \
+ 	@LIBINTL@ \
+ 	@LIBICONV@ \
+-	-lFLAC  $(flacoggflag) $(vorbisflag)
++	-lFLAC  $(flacoggflag) $(vorbisflag) @LIBFFMPEGTHUMBNAILER_LIBS@
+ 
+ minidlnad_LDFLAGS = @STATIC_LDFLAGS@
+ 
+diff --git a/albumart.c b/albumart.c
+index 20ed14e..994b893 100644
+--- a/albumart.c
++++ b/albumart.c
+@@ -32,6 +32,10 @@
+ 
+ #include <jpeglib.h>
+ 
++#ifdef THUMBNAIL_CREATION
++#include <libffmpegthumbnailer/videothumbnailerc.h>
++#endif
++
+ #include "upnpglobalvars.h"
+ #include "albumart.h"
+ #include "sql.h"
+@@ -345,14 +349,68 @@ found_file:
+ 	return NULL;
+ }
+ 
++#ifdef THUMBNAIL_CREATION
++char *
++generate_thumbnail(const char * path)
++{
++	char *tfile = NULL;
++	video_thumbnailer *vt = NULL;
++	char cache_dir[MAXPATHLEN];
++
++	if( art_cache_exists(path, &tfile) )
++		return tfile;
++
++	if ( is_video(path) )
++	{
++
++		vt = video_thumbnailer_create();
++		if ( !vt )
++		{
++			free(tfile);
++			return 0;
++		}
++		vt->thumbnail_image_type = Jpeg;
++		vt->thumbnail_image_quality = runtime_vars.thumb_quality;
++		vt->thumbnail_size = runtime_vars.thumb_width;
++		vt->seek_percentage = 20;
++		vt->overlay_film_strip = (GETFLAG(THUMB_FILMSTRIP))?1:0;
++
++		DPRINTF(E_DEBUG, L_METADATA, "generating thumbnail: %s\n", path);
++
++		strncpyt(cache_dir, tfile, sizeof(cache_dir));
++		if ( !make_dir(dirname(cache_dir), S_IRWXU|S_IRGRP|S_IXGRP|S_IROTH|S_IXOTH) &&
++			!video_thumbnailer_generate_thumbnail_to_file(vt, path, tfile) )
++		{
++			video_thumbnailer_destroy(vt);
++			return tfile;
++		}
++
++		video_thumbnailer_destroy(vt);
++	}
++	free(tfile);
++
++	return 0;
++}
++#endif
++
+ int64_t
+ find_album_art(const char *path, uint8_t *image_data, int image_size)
+ {
+ 	char *album_art = NULL;
+ 	int64_t ret = 0;
+ 
+-	if( (image_size && (album_art = check_embedded_art(path, image_data, image_size))) ||
+-	    (album_art = check_for_album_file(path)) )
++	if(image_size)
++		album_art = check_embedded_art(path, image_data, image_size);
++
++	if(!album_art)
++		album_art = check_for_album_file(path);
++
++#ifdef THUMBNAIL_CREATION
++	if(!album_art && GETFLAG(THUMB_MASK))
++		album_art = generate_thumbnail(path);
++#endif
++
++	if(album_art)
+ 	{
+ 		ret = sql_get_int_field(db, "SELECT ID from ALBUM_ART where PATH = '%q'", album_art);
+ 		if( !ret )
+diff --git a/configure.ac b/configure.ac
+index 3a8a54c..8d448ac 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -607,6 +607,21 @@ AC_ARG_ENABLE(static,
+         ]
+ )
+ 
++AC_ARG_ENABLE(thumbnail,
++	[  --enable-thumbnail       enable video thumbnail generation using libffmpegthumbnailer],[
++	if test "$enableval" = "yes"; then
++		AC_DEFINE([THUMBNAIL_CREATION],[1],[Define to 1 if you want to enable video thumbnail generation])
++		PKG_CHECK_MODULES([LIBFFMPEGTHUMBNAILER], libffmpegthumbnailer, ,
++			AC_MSG_ERROR([Unable to find libffmpegthumbnailer]))
++		AC_SUBST([LIBFFMPEGTHUMBNAILER_CFLAGS])
++		AC_SUBST([LIBFFMPEGTHUMBNAILER_LIBS])
++        else
++                AC_MSG_RESULT([no])
++        fi
++        ],[
++                AC_MSG_RESULT([no])
++        ]
++)
+ 
+ case "$target_os" in
+ 	darwin*)
+diff --git a/inotify.c b/inotify.c
+index 03aff5e..f9de7fb 100644
+--- a/inotify.c
++++ b/inotify.c
+@@ -600,6 +600,16 @@ inotify_remove_file(const char * path)
+ 		sql_exec(db, "DELETE from OBJECTS where DETAIL_ID = %lld", detailID);
+ 	}
+ 	snprintf(art_cache, sizeof(art_cache), "%s/art_cache%s", db_path, path);
++
++#ifdef THUMBNAIL_CREATION
++	/* Remove video thumbnails */
++	if ( is_video(path) )
++	{
++		char *vthumb = art_cache;
++		strcpy(strchr(vthumb, '\0')-4, ".jpg");
++	}
++#endif
++
+ 	remove(art_cache);
+ 
+ 	return 0;
+@@ -649,7 +659,11 @@ start_inotify()
+ 	int length, i = 0;
+ 	char * esc_name = NULL;
+ 	struct stat st;
+-        
++#ifdef THUMBNAIL_CREATION
++	char renpath_buf[PATH_MAX];
++	int cookie = 0;
++#endif
++
+ 	pollfds[0].fd = inotify_init();
+ 	pollfds[0].events = POLLIN;
+ 
+@@ -710,6 +724,16 @@ start_inotify()
+ 				{
+ 					DPRINTF(E_DEBUG, L_INOTIFY,  "The directory %s was %s.\n",
+ 						path_buf, (event->mask & IN_MOVED_TO ? "moved here" : "created"));
++#ifdef THUMBNAIL_CREATION
++					/* We do not want to regenerate the thumbnails if e rename a directory.
++					   We should keep at least four cookies/olddir since IN_MOVED_FROM/IN_MOVED_TO may
++					   not arrive in sequence, but one should cover most cases */
++					if (event->cookie == cookie && event->mask & IN_MOVED_TO)
++					{
++						DPRINTF(E_DEBUG, L_INOTIFY, "Directory rename: %s -> %s \n", renpath_buf, path_buf);
++						rename_artcache_dir(renpath_buf, path_buf);
++					}
++#endif
+ 					inotify_insert_directory(pollfds[0].fd, esc_name, path_buf);
+ 				}
+ 				else if ( (event->mask & (IN_CLOSE_WRITE|IN_MOVED_TO|IN_CREATE)) &&
+@@ -741,7 +765,18 @@ start_inotify()
+ 						(event->mask & IN_ISDIR ? "directory" : "file"),
+ 						path_buf, (event->mask & IN_MOVED_FROM ? "moved away" : "deleted"));
+ 					if ( event->mask & IN_ISDIR )
++#ifdef THUMBNAIL_CREATION
++					{
++						if ( event->mask & IN_MOVED_FROM )
++						{
++							strncpy(renpath_buf, path_buf, sizeof(renpath_buf));
++							cookie = event->cookie;
++						}
++#endif
+ 						inotify_remove_directory(pollfds[0].fd, path_buf);
++#ifdef THUMBNAIL_CREATION
++					}
++#endif
+ 					else
+ 						inotify_remove_file(path_buf);
+ 				}
+diff --git a/minidlna.c b/minidlna.c
+index be34fe3..87a1140 100644
+--- a/minidlna.c
++++ b/minidlna.c
+@@ -532,6 +532,11 @@ init(int argc, char **argv)
+ 	runtime_vars.root_container = NULL;
+ 	runtime_vars.ifaces[0] = NULL;
+ 
++#ifdef THUMBNAIL_CREATION
++	runtime_vars.thumb_width = 160;
++	runtime_vars.thumb_quality = 8;
++#endif
++
+ 	/* read options file first since
+ 	 * command line arguments have final say */
+ 	if (readoptionsfile(optionsfile) < 0)
+@@ -734,6 +739,30 @@ init(int argc, char **argv)
+ 			if (strtobool(ary_options[i].value))
+ 				SETFLAG(MERGE_MEDIA_DIRS_MASK);
+ 			break;
++#ifdef THUMBNAIL_CREATION
++		case ENABLE_THUMB:
++			if( (strcmp(ary_options[i].value, "yes") == 0) || atoi(ary_options[i].value) )
++				SETFLAG(THUMB_MASK);
++		break;
++		case THUMB_WIDTH:
++			runtime_vars.thumb_width = atoi(ary_options[i].value);
++			if (runtime_vars.thumb_width < 120)
++				runtime_vars.thumb_width = 120;
++			if (runtime_vars.thumb_width > 480)
++				runtime_vars.thumb_width = 480;
++			break;
++		case THUMB_QUALITY:
++			runtime_vars.thumb_quality = atoi(ary_options[i].value);
++			if (runtime_vars.thumb_quality < 5)
++				runtime_vars.thumb_quality = 5;
++			if (runtime_vars.thumb_quality > 30)
++				runtime_vars.thumb_quality = 30;
++		break;
++		case ENABLE_THUMB_FILMSTRIP:
++			if( (strcmp(ary_options[i].value, "yes") == 0) || atoi(ary_options[i].value) )
++				SETFLAG(THUMB_FILMSTRIP);
++		break;
++#endif
+ 		default:
+ 			DPRINTF(E_ERROR, L_GENERAL, "Unknown option in file %s\n",
+ 				optionsfile);
+diff --git a/minidlna.conf b/minidlna.conf
+index 7e00e89..e541a63 100644
+--- a/minidlna.conf
++++ b/minidlna.conf
+@@ -81,3 +81,15 @@ model_number=1
+ # maximum number of simultaneous connections
+ # note: many clients open several simultaneous connections while streaming
+ #max_connections=50
++
++# Suport to Movie Thumbnail generation. To use this option, thumbnail generation must be enable at compile time.
++#enable_thumbnail=no
++
++# The width of the thumbnail image. Large images takes more time to generate.  To use this option, thumbnail generation must be enable at compile time.
++#thumbnail_width=160
++
++# Thumbnail Image quality. To use this option, thumbnail generation must be enable at compile time.
++#thumbnail_quality=8
++
++# Should the thumbnail have a film strip? To use this option, thumbnail generation must be enable at compile time.
++#enable_thumbnail_filmstrip=no
+diff --git a/minidlnatypes.h b/minidlnatypes.h
+index 6879b70..11befd9 100644
+--- a/minidlnatypes.h
++++ b/minidlnatypes.h
+@@ -51,6 +51,10 @@ struct runtime_vars_s {
+ 	int max_connections;	/* max number of simultaneous conenctions */
+ 	const char *root_container;	/* root ObjectID (instead of "0") */
+ 	const char *ifaces[MAX_LAN_ADDR];	/* list of configured network interfaces */
++#ifdef THUMBNAIL_CREATION
++	int thumb_width;
++	int thumb_quality;
++#endif
+ };
+ 
+ struct string_s {
+diff --git a/options.c b/options.c
+index 2fa8c06..21d1e78 100644
+--- a/options.c
++++ b/options.c
+@@ -64,7 +64,15 @@ static const struct {
+ 	{ USER_ACCOUNT, "user" },
+ 	{ FORCE_SORT_CRITERIA, "force_sort_criteria" },
+ 	{ MAX_CONNECTIONS, "max_connections" },
++#ifndef THUMBNAIL_CREATION
+ 	{ MERGE_MEDIA_DIRS, "merge_media_dirs" }
++#else
++	{ MERGE_MEDIA_DIRS, "merge_media_dirs" },
++	{ ENABLE_THUMB, "enable_thumbnail" },
++	{ THUMB_WIDTH, "thumbnail_width" },
++	{ THUMB_QUALITY, "thumbnail_quality" },
++	{ ENABLE_THUMB_FILMSTRIP, "enable_thumbnail_filmstrip" }
++#endif
+ };
+ 
+ int
+diff --git a/options.h b/options.h
+index 159255f..103c302 100644
+--- a/options.h
++++ b/options.h
+@@ -57,7 +57,15 @@ enum upnpconfigoptions {
+ 	USER_ACCOUNT,			/* user account to run as */
+ 	FORCE_SORT_CRITERIA,		/* force sorting by a given sort criteria */
+ 	MAX_CONNECTIONS,		/* maximum number of simultaneous connections */
++#ifndef THUMBNAIL_CREATION
+ 	MERGE_MEDIA_DIRS		/* don't add an extra directory level when there are multiple media dirs */
++#else
++	MERGE_MEDIA_DIRS,		/* don't add an extra directory level when there are multiple media dirs */
++	ENABLE_THUMB,                   /* enable thumbnail generation */
++	THUMB_WIDTH,                    /* thunbnail image with */
++	THUMB_QUALITY,                  /* thumnail image quality */
++	ENABLE_THUMB_FILMSTRIP          /* film strip overlay */
++#endif
+ };
+ 
+ /* readoptionsfile()
+diff --git a/upnpglobalvars.h b/upnpglobalvars.h
+index 224c374..457025d 100644
+--- a/upnpglobalvars.h
++++ b/upnpglobalvars.h
+@@ -191,6 +191,10 @@ extern uint32_t runtime_flags;
+ #define NO_PLAYLIST_MASK      0x0008
+ #define SYSTEMD_MASK          0x0010
+ #define MERGE_MEDIA_DIRS_MASK 0x0020
++#ifdef THUMBNAIL_CREATION
++#define THUMB_MASK            0x0040
++#define THUMB_FILMSTRIP       0x0080
++#endif
+ 
+ #define SETFLAG(mask)	runtime_flags |= mask
+ #define GETFLAG(mask)	(runtime_flags & mask)
+diff --git a/utils.c b/utils.c
+index d728136..fbf042a 100644
+--- a/utils.c
++++ b/utils.c
+@@ -501,3 +501,16 @@ resolve_unknown_type(const char * path, media_types dir_type)
+ 	return type;
+ }
+ 
++#ifdef THUMBNAIL_CREATION
++int
++rename_artcache_dir(const char * oldpath, const char * newpath)
++{
++	char old_artcache[PATH_MAX];
++	char new_artcache[PATH_MAX];
++
++	snprintf(old_artcache, sizeof(old_artcache), "%s/art_cache%s", db_path, oldpath);
++	snprintf(new_artcache, sizeof(old_artcache), "%s/art_cache%s", db_path, newpath);
++
++	return rename(old_artcache, new_artcache);
++}
++#endif
+diff --git a/utils.h b/utils.h
+index 433179e..809a5ce 100644
+--- a/utils.h
++++ b/utils.h
+@@ -95,5 +95,8 @@ const char *mime_to_ext(const char * mime);
+ /* Others */
+ int make_dir(char * path, mode_t mode);
+ unsigned int DJBHash(uint8_t *data, int len);
++#ifdef THUMBNAIL_CREATION
++int rename_artcache_dir(const char * oldpath, const char * newpath);
++#endif
+ 
+ #endif
