@@ -67,7 +67,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_EXE_LINKER_FLAGS='-static-libstdc++ -Wl,-rpath,\$ORIGIN' \
-    -DINCLUDE_INSTALL_DIR=/usr/include/dlang/ldc \
+    -DINCLUDE_INSTALL_DIR=/usr/include/dlang/ldc-git \
     -DBUILD_SHARED_LIBS=ON \
     ..
 
@@ -116,5 +116,5 @@ package_liblphobos-git() {
 
     # imports
     mkdir -p $pkgdir/usr/include/dlang
-    cp -r ./usr/include/dlang/ldc $pkgdir/usr/include/dlang/ldc-git
+    cp -r ./usr/include/dlang/ldc-git $pkgdir/usr/include/dlang/ldc-git
 }
