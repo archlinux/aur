@@ -1,0 +1,121 @@
+From 091b4ee4db545538117e7d469516384d7f0af4ef Mon Sep 17 00:00:00 2001
+From: Sebastien Pahl <sebastien.pahl@gmail.com>
+Date: Mon, 30 May 2016 01:48:44 -0700
+Subject: [PATCH 3/3] Added STATIC_IP option to configure non DHCP networks
+
+---
+ utils/qmi-network.in | 63 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 63 insertions(+)
+
+diff --git a/utils/qmi-network.in b/utils/qmi-network.in
+index 480dcf0..077c556 100755
+--- a/utils/qmi-network.in
++++ b/utils/qmi-network.in
+@@ -181,6 +181,12 @@ load_profile ()
+         else
+             echo "    fcc auth: unset"
+         fi
++
++        if [ -n "$STATIC_IP" ]; then
++            echo "    static ip: $STATIC_IP"
++        else
++            echo "    static ip: unset"
++        fi
+     else
+         echo "Profile at '$PROFILE_FILE' not found..."
+     fi
+@@ -328,6 +334,47 @@ Downlink data aggregation max datagrams: '0'
+     fi
+ }
+ 
++# source: https://forums.gentoo.org/viewtopic-t-888736-start-0.html
++mask2cdr ()
++{
++   # Assumes there's no "255." after a non-255 byte in the mask
++   local x=${1##*255.}
++   set -- 0^^^128^192^224^240^248^252^254^ $(( (${#1} - ${#x})*2 )) ${x%%.*}
++   x=${1%%$3*}
++   echo $(( $2 + (${#x}/4) ))
++}
++
++ip_config ()
++{
++    eval $(qmicli -d $DEVICE --wds-get-current-settings $PROXY_OPT $MBIM_OPT \
++        | grep "IP Family: IPv4" -A6 \
++        | tr '[:lower:]' '[:upper:]' \
++        | sed -e 's/: /=/' -e 's/^[ \t]*//;s/[ \t]*$//' -e 's/ /_/g')
++    IPV4_CIDR=$IPV4_ADDRESS/$(mask2cdr $IPV4_SUBNET_MASK)
++    IFACE=$(qmicli -d $DEVICE -w)
++    echo IP_FAMILY=$IP_FAMILY
++    echo IPV4_ADDRESS=$IPV4_ADDRESS
++    echo IPV4_CIDR=$IPV4_CIDR
++    echo IPV4_SUBNET_MASK=$IPV4_SUBNET_MASK
++    echo IPV4_GATEWAY_ADDRESS=$IPV4_GATEWAY_ADDRESS
++    echo IPV4_PRIMARY_DNS=$IPV4_PRIMARY_DNS
++    echo IPV4_SECONDARY_DNS=$IPV4_SECONDARY_DNS
++    echo MTU=$MTU
++    echo IFACE=$IFACE
++}
++
++static_ip_up ()
++{
++    ip_config
++    save_state "IFACE" $IFACE
++    ip link set $IFACE up
++    ip addr add $IPV4_CIDR broadcast + dev $IFACE
++    ip route add default via $IPV4_GATEWAY_ADDRESS
++    mv /etc/resolv.conf /etc/resolv.conf.qmisave
++    echo nameserver $IPV4_PRIMARY_DNS > /etc/resolv.conf
++    echo nameserver $IPV4_SECONDARY_DNS >> /etc/resolv.conf
++}
++
+ # qmicli -d /dev/cdc-wdm0 --wds-start-network --client-no-release-cid
+ # [/dev/cdc-wdm0] Network started
+ #   Packet data handle: 3634026241
+@@ -373,6 +420,9 @@ start_network ()
+         CID: '80'"
+     else
+         START_NETWORK_OUT=`$START_NETWORK_CMD`
++        if [ "$STATIC_IP" = "yes" ]; then
++            static_ip_up
++        fi
+     fi
+ 
+     # Save the new CID if we didn't use any before
+@@ -400,6 +450,13 @@ start_network ()
+     echo "Network started successfully"
+ }
+ 
++static_ip_down ()
++{
++    mv /etc/resolv.conf.qmisave /etc/resolv.conf
++    ip addr flush dev $IFACE
++    ip link set $IFACE down
++}
++
+ # qmicli -d /dev/cdc-wdm0 --wds-stop-network
+ stop_network ()
+ {
+@@ -418,6 +475,9 @@ stop_network ()
+ [/dev/cdc-wdm0] Network stopped
+ "
+         else
++            if [ "$STATIC_IP" = "yes" ]; then
++                static_ip_down
++            fi
+             STOP_NETWORK_OUT=`$STOP_NETWORK_CMD`
+         fi
+ 
+@@ -476,6 +536,9 @@ case $COMMAND in
+     "status")
+         packet_service_status
+         ;;
++    "ip_config")
++        ip_config
++        ;;
+     *)
+         echo "error: unexpected command '$COMMAND'" 1>&2
+         print_usage
+-- 
+2.8.3
+

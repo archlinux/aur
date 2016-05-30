@@ -1,0 +1,40 @@
+From 21af3ba8cda96659203a47fa16145493c5e65284 Mon Sep 17 00:00:00 2001
+From: Sebastien Pahl <sebastien.pahl@gmail.com>
+Date: Mon, 30 May 2016 01:48:40 -0700
+Subject: [PATCH 2/3] Added FCC_AUTH option
+
+---
+ utils/qmi-network.in | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/utils/qmi-network.in b/utils/qmi-network.in
+index 519389a..480dcf0 100755
+--- a/utils/qmi-network.in
++++ b/utils/qmi-network.in
+@@ -175,6 +175,12 @@ load_profile ()
+         else
+             echo "    qmi-over-mbim: no"
+         fi
++
++        if [ -n "$FCC_AUTH" ]; then
++            echo "    fcc auth: $FCC_AUTH"
++        else
++            echo "    fcc auth: unset"
++        fi
+     else
+         echo "Profile at '$PROFILE_FILE' not found..."
+     fi
+@@ -339,6 +345,10 @@ start_network ()
+         exit 3
+     fi
+ 
++    if [ "$FCC_AUTH" = "yes" ]; then
++        qmicli -d $DEVICE --dms-set-fcc-authentication $PROXY_OPT $MBIM_OPT
++    fi
++
+     if [ "$QMI_OVER_MBIM" != "yes" ]; then
+         setup_data_format
+     fi
+-- 
+2.8.3
+

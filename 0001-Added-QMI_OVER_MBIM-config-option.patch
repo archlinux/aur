@@ -1,0 +1,80 @@
+From 8e2ae3d491b4a27403d9c4f7457d8095d813d5fd Mon Sep 17 00:00:00 2001
+From: Sebastien Pahl <sebastien.pahl@gmail.com>
+Date: Mon, 30 May 2016 01:48:35 -0700
+Subject: [PATCH 1/3] Added QMI_OVER_MBIM config option
+
+---
+ utils/qmi-network.in | 21 +++++++++++++++------
+ 1 file changed, 15 insertions(+), 6 deletions(-)
+
+diff --git a/utils/qmi-network.in b/utils/qmi-network.in
+index 8411846..519389a 100755
+--- a/utils/qmi-network.in
++++ b/utils/qmi-network.in
+@@ -168,6 +168,13 @@ load_profile ()
+         else
+             echo "    qmi-proxy: no"
+         fi
++
++        if [ "$QMI_OVER_MBIM" = "yes" ]; then
++            echo "    qmi-over-mbim: $QMI_OVER_MBIM"
++            MBIM_OPT='--device-open-mbim'
++        else
++            echo "    qmi-over-mbim: no"
++        fi
+     else
+         echo "Profile at '$PROFILE_FILE' not found..."
+     fi
+@@ -332,7 +339,9 @@ start_network ()
+         exit 3
+     fi
+ 
+-    setup_data_format
++    if [ "$QMI_OVER_MBIM" != "yes" ]; then
++        setup_data_format
++    fi
+ 
+     START_NETWORK_ARGS="apn='$APN'"
+     if [ -n "$APN_USER" ]; then
+@@ -342,7 +351,7 @@ start_network ()
+         fi
+     fi
+ 
+-    START_NETWORK_CMD="qmicli -d $DEVICE --wds-start-network=$START_NETWORK_ARGS $USE_PREVIOUS_CID --client-no-release-cid $PROXY_OPT"
++    START_NETWORK_CMD="qmicli -d $DEVICE --wds-start-network=$START_NETWORK_ARGS $USE_PREVIOUS_CID --client-no-release-cid $PROXY_OPT $MBIM_OPT"
+     echo "Starting network with '$START_NETWORK_CMD'..."
+ 
+     if [ -n "$QMIDEBUG" ]; then
+@@ -371,7 +380,7 @@ start_network ()
+     if [ -z "$PDH" ]; then
+         echo "error: network start failed, no packet data handle" 1>&2
+         # Cleanup the client
+-        qmicli -d "$DEVICE" --wds-noop --client-cid="$CID" $PROXY_OPT
++        qmicli -d "$DEVICE" --wds-noop --client-cid="$CID" $PROXY_OPT $MBIM_OPT
+         clear_state
+         exit 2
+     else
+@@ -389,9 +398,9 @@ stop_network ()
+     elif [ -z "$PDH" ]; then
+         echo "Network already stopped; need to cleanup CID $CID"
+         # Cleanup the client
+-        qmicli -d "$DEVICE" --wds-noop --client-cid="$CID" $PROXY_OPT
++        qmicli -d "$DEVICE" --wds-noop --client-cid="$CID" $PROXY_OPT $MBIM_OPT
+     else
+-        STOP_NETWORK_CMD="qmicli -d $DEVICE --wds-stop-network=$PDH --client-cid=$CID $PROXY_OPT"
++        STOP_NETWORK_CMD="qmicli -d $DEVICE --wds-stop-network=$PDH --client-cid=$CID $PROXY_OPT $MBIM_OPT"
+         echo "Stopping network with '$STOP_NETWORK_CMD'..."
+ 
+         if [ -n "$QMIDEBUG" ]; then
+@@ -415,7 +424,7 @@ packet_service_status ()
+         USE_PREVIOUS_CID="--client-cid=$CID --client-no-release-cid"
+     fi
+ 
+-    STATUS_CMD="qmicli -d $DEVICE --wds-get-packet-service-status $USE_PREVIOUS_CID $PROXY_OPT"
++    STATUS_CMD="qmicli -d $DEVICE --wds-get-packet-service-status $USE_PREVIOUS_CID $PROXY_OPT $MBIM_OPT"
+     echo "Getting status with '$STATUS_CMD'..."
+ 
+     if [ -n "$QMIDEBUG" ]; then
+-- 
+2.8.3
+

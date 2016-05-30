@@ -1,0 +1,24 @@
+# QMI connection support for netctl
+
+. "$SUBR_DIR/ip"
+. "$SUBR_DIR/rfkill"
+
+
+qmi_up() {
+    if [[ $RFKill ]]; then
+        rf_enable "$Interface" "$RFKill" || return 1
+    fi
+
+    qmi-network $Device start || return 1
+    chmod 644 /etc/resolv.conf
+}
+
+qmi_down() {
+    qmi-network $Device stop
+    if [[ $RFKill ]]; then
+        rf_disable "$Interface" "$RFKill"
+    fi
+}
+
+
+# vim: ft=sh ts=4 et sw=4:
