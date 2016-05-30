@@ -1,7 +1,7 @@
 # Maintainer: Jesse Spangenberger <azulephoenix@gmail.com>
 pkgname=private-internet-access-vpn
 pkgver=2.7
-pkgrel=3
+pkgrel=4
 pkgdesc="Installs VPN profiles for Private Internet Access Service"
 arch=('any')
 url="https://www.privateinternetaccess.com/"
@@ -16,7 +16,7 @@ sha256sums=('0ab48c38d1083362d4aaf3d7fb04ce7e1589f5a297675da6effe4f004e2e0b33'
             '797dbdb6e3aadc86f97262e26d61cf4847caf85dda4b7a97cac59088cb912b27'
             '246fc4dc3218f56b4c70014df6801b10fc2a573d6545962b7fce05f16908c54e'
             '7f4a5ee1fb8ea4d0e69ed2a8217c575cf335f21e90082f6e423c769eca4a7a46'
-            'f74e0a601d74409c39d36f4d5c6a2f11c9832d05782f804243b3f6ae7e695aab'
+            'dd15ff9d020d6779c51bff560c8571b462cc7ca3f4d2a92b8103056be4b2e0fd'
             '7f71b0bf5b2765cfc3c285c60036d4efdca0ba86756b58f228a53ed299600c28'
             'edf29947a752df34eec006adc1cddbf1b73f9757e3752400dffea25d651b80b9'
             'SKIP'
