@@ -3,13 +3,12 @@
 
 pkgname=flphoto
 pkgver=1.3.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Basic image management and display program based on the FLTK toolkit"
 arch=('i686' 'x86_64')
 url="http://www.easysw.com/~mike/flphoto/"
 license=('GPL')
 depends=('fltk' 'libgphoto2' 'libcups')
-install="flphoto.install"
 source=("http://downloads.sourceforge.net/sourceforge/fltk/$pkgname-$pkgver-source.tar.gz" 
         "fixes.patch"
 	"flphoto.desktop")
