@@ -6,9 +6,9 @@
 
 pkgname=network-ups-tools
 pkgver=2.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="NUT is a collection of programs for monitoring and administering UPS hardware"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.networkupstools.org/"
 license=('GPL2')
 depends=('openssl' 'libusb-compat' 'libltdl' 'neon' 'net-snmp')
@@ -42,7 +42,7 @@ build() {
     --with-systemdsystemunitdir=/usr/lib/systemd/system \
     --datadir=/usr/share/ups \
     --sbindir=/usr/bin \
-    --with-drvpath=/usr/bin \
+    --with-drvpath=/usr/lib/network-ups-tools \
     --sysconfdir=/etc/ups \
     --with-openssl
   make
