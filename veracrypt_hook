@@ -1,0 +1,29 @@
+#!/usr/bin/ash
+
+run_hook () {
+    modprobe -a -q dm-crypt >/dev/null 2>&1
+    [ "${quiet}" = "y" ] && CSQUIET=">/dev/null"
+
+    modprobe -a -q fuse >/dev/null 2>&1
+    
+    # get the veracrypt volume and slot
+    if [ -n "${vcdevice}" ]; then
+        # get total number of ':' in vcdevice (for devices in /dev/disk/by-id/
+        count="$(echo "${vcdevice}" | grep -o ':' | wc -l )"
+        cryptdev="$(echo "${vcdevice}" | cut -d: -f1-$count)"
+        cryptslot="$(echo "${vcdevice}" | cut -d: -f$(( $count + 1 )) )"
+        cryptname="veracrypt${cryptslot}"
+    else
+        err "No veracrypt device defined on the command line..."
+        exit 1
+    fi
+   
+    veracrypt -t --slot="${cryptslot}" --filesystem=none --mount-options=system --keyfiles="" --protect-hidden=no "${cryptdev}"
+    
+    if [ ! -e "/dev/mapper/${cryptname}" ]; then
+        err "No such device ${cryptname}"        
+    fi
+
+}
+
+# vim: set ft=sh ts=4 sw=4 et:

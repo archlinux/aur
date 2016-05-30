@@ -1,0 +1,28 @@
+post_install() 
+{
+  echo "To use this hook for veracrypt add hook veracrypt "
+  echo "to the mkinitcpio hooks in /etc/mkinitcpio.conf then"
+  echo "add tcdevice=<device>:<slotnum> to your kernel boot command line args"
+  echo "if you use grub check /boot/grub/menu.lst of /boot/grub/grub.cfg"
+  echo "The root device of a veracrypt encrypted device will be /dev/mapper/veracrypt<slotnum>"
+  echo "where as you may have guessed <slotnum> is the number given in tcdevice=<device>:<slotnum>"
+  echo "this works similar to how cryptluks works"
+}
+
+post_upgrade() 
+{
+  echo "To use this hook for veracrypt add hook veracrypt "
+  echo "to the mkinitcpio hooks in /etc/mkinitcpio.conf then"
+  echo "add tcdevice=<device>:<slotnum> to your kernel boot command line args"
+  echo "if you use grub check /boot/grub/menu.lst of /boot/grub/grub.cfg"
+  echo "The root device of a veracrypt encrypted device will be /dev/mapper/veracrypt<slotnum>"
+  echo "where as you may have guessed <slotnum> is the number given in tcdevice=<device>:<slotnum>"
+  echo "this works similar to how cryptluks works"
+}
+
+post_remove() 
+{
+  echo "remember to remove veracrypt from your mkinitcpio hooks array if you added it"
+}
+
+# vim:set ts=2 sw=2 et:
