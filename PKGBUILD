@@ -27,7 +27,7 @@
 
 pkgname=catalyst-test
 pkgver=15.12
-pkgrel=6
+pkgrel=7
 # _betano=1.0
 _amdver=15.302
 pkgdesc="AMD/ATI Catalyst drivers for linux AKA Crimson. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. PRE-GCN Radeons ARE NOT SUPPORTED"
@@ -117,7 +117,7 @@ md5sums=('39808c8a9bcc9041f1305e3531b60622'
 	 'd9bea135ae3e1b3ca87c5bbe6dcf8e72'
 	 '8941e91fc58cb44ce21ab9bda135754e'
 	 '11b7c2e0dc4794801005d66b0e7608a3'
-	 '200df93ba02abf46e324db3e717a9805'
+	 '23d569abfdd7de433d76e003e4b3ccf9'
 	 '10829e3b992b3e80a6e78c8e27748703')
 
 
@@ -309,24 +309,24 @@ package() {
       patch -Np1 -i ../makesh-dont-check-gcc-version.patch
 
     # Prepare modules source files
-      install -dm755 ${pkgdir}/usr/src/fglrx-${pkgver}-${pkgrel}/2.6.x
+      install -dm755 ${pkgdir}/usr/src/fglrx-${pkgver}/2.6.x
       _archdir=x86_64
       test "${CARCH}" = "i686" && _archdir=x86
-      install -m755 -d ${pkgdir}/usr/src/fglrx-${pkgver}-${pkgrel}
+      install -m755 -d ${pkgdir}/usr/src/fglrx-${pkgver}
       install -m644 common/lib/modules/fglrx/build_mod/*.c \
-                ${pkgdir}/usr/src/fglrx-${pkgver}-${pkgrel}
+                ${pkgdir}/usr/src/fglrx-${pkgver}
       install -m644 common/lib/modules/fglrx/build_mod/*.h \
-                ${pkgdir}/usr/src/fglrx-${pkgver}-${pkgrel}
+                ${pkgdir}/usr/src/fglrx-${pkgver}
       install -m644 common/lib/modules/fglrx/build_mod/2.6.x/Makefile \
-                ${pkgdir}/usr/src/fglrx-${pkgver}-${pkgrel}/2.6.x
+                ${pkgdir}/usr/src/fglrx-${pkgver}/2.6.x
       install -m644 common/lib/modules/fglrx/build_mod/make.sh \
-                ${pkgdir}/usr/src/fglrx-${pkgver}-${pkgrel}
+                ${pkgdir}/usr/src/fglrx-${pkgver}
       install -m644 arch/${_archdir}/lib/modules/fglrx/build_mod/libfglrx_ip.a \
-                ${pkgdir}/usr/src/fglrx-${pkgver}-${pkgrel}
+                ${pkgdir}/usr/src/fglrx-${pkgver}
 
     # copy dkms.conf and set version
-    cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/fglrx-${pkgver}-${pkgrel}/
-    sed -i -e "s/@VERSION@/${pkgver}-${pkgrel}/" "${pkgdir}/usr/src/fglrx-${pkgver}-${pkgrel}/dkms.conf"
+    cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/fglrx-${pkgver}/
+    sed -i -e "s/@VERSION@/${pkgver}/" "${pkgdir}/usr/src/fglrx-${pkgver}/dkms.conf"
 
 ##lib32-catalyst-utils section
       if [ "${CARCH}" = "x86_64" ] && [[ `cat /etc/pacman.conf | grep -c "#\[multilib]"` = 0 ]]; then
