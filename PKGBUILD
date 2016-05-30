@@ -2,7 +2,7 @@
 # Contributor: rafael ff1 (aka josephgbr)
 _pkgbasename=libsigc++
 pkgname=lib32-$_pkgbasename
-pkgver=2.4.1
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Libsigc++ implements a full callback system for use in widget libraries - V2 (32 bit)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=("$_pkgbasename")
 makedepends=('gcc-multilib')
 options=(!libtool !emptydirs)
 source=(http://ftp.gnome.org/pub/GNOME/sources/${_pkgbasename}/${pkgver:0:3}/${_pkgbasename}-${pkgver}.tar.xz)
-sha256sums=('540443492a68e77e30db8d425f3c0b1299c825bf974d9bfc31ae7efafedc19ec')
+sha256sums=('774980d027c52947cb9ee4fac6ffe2ca60cc2f753068a89dfd281c83dbff9651')
 
 build() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
