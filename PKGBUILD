@@ -1,6 +1,6 @@
 # Maintainer: sumt <sumt at sci dot fi>
 pkgname=palemoon-i18n-default
-pkgver=26.0
+pkgver=26.2
 pkgrel=1
 pkgdesc="Pale Moon language pack for system active language."
 arch=('any')
@@ -47,26 +47,26 @@ _languages=(
 )
 
 _md5sums=('1fbb4ba7066cadc3d885dc4aae57b5b3'
-         '90e01d417211e4b61d24499e8c5ad757'
-         '2538d0c759e35190a69d743beed3f62c'
-         '2c122ca959cc5895719e9afe5d959478'
+         'effd6890ac77e291a67bd9104138a283'
+         'e6d5d36c10f423f9a6e59800d635de6f'
+         '330185ce98a4224dfaaec743e832b817'
          '2a6f2831c614215e0872f23cc801f671'
          '48e0eac054f572dd558f55c898ca6f8c'
-         'd1c2c4225d8b77ddbfa7d40506853b36'
+         '2800b50b331eae797e691fedb2b2ae7e'
          '877c9c04b270323dd3cb69824cccd657'
-         '68a629b6f108ad17f5a2ac85fb4f507a'
+         '7ceedaededafbc135254820668d8990d'
          'ce18eb1b83bd52eb57800c0f08182315'
          '36d4f791705e85ac5c770cb9ae38b7bd'
          '834521f468cb5ec7beb0d0a061248dc6'
          'e55fafb18e68abcfc6eb2d6c58f3d581'
          '3601183e53d76ee5588aa029e48cd756'
          '7557b99ec186011406bb44dca1703e95'
-         'f09ff0a54c100979854f043fb6340de2'
+         '555def21bfd3634cbec9af61c1486651'
          '174fead0e1e7cc01190f4f6f6c57d7c0'
          'fd087bd06805f24db53b3af2c4e47098'
          'f074fcf5f474a4113b2ce53e5dae093a'
-         '49840db61b3f2852e2c3553be8ceea23'
-         '96e9ea2cb9bf2e7250329e7aedac3eb9'
+         '46e00ff83fd0c8570bf451bf0729a6a0'
+         '3bf0b5cdf8b1c72862e9c39a91c1f007'
          '4a1095c560aefb9befac62fd871c339e'
          '6ee00da3c03dcdbab20aeb0a2360f967'
          'f0872329531c6124c8d800fa9428e881'
