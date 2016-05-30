@@ -1,9 +1,8 @@
 pkgbase = consonance
 	pkgdesc = Lightweight GTK+ music manager that aims to be fast, bloat-free and light on memory consumption
 	pkgver = 0.5.1
-	pkgrel = 12
+	pkgrel = 13
 	url = http://sites.google.com/site/consonancemanager
-	install = consonance.install
 	arch = i686
 	arch = x86_64
 	license = GPL

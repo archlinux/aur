@@ -6,7 +6,7 @@
 
 pkgname=consonance
 pkgver=0.5.1
-pkgrel=12
+pkgrel=13
 pkgdesc='Lightweight GTK+ music manager that aims to be fast, bloat-free and light on memory consumption'
 arch=('i686' 'x86_64')
 url='http://sites.google.com/site/consonancemanager'
@@ -14,7 +14,6 @@ license=('GPL')
 depends=('curl' 'dbus-glib' 'desktop-file-utils' 'gtk2' 'libao' 'libmad'
          'libcdio-paranoia' 'libmodplug' 'libnotify' 'libsndfile' 'sqlite3'
          'taglib')
-install=$pkgname.install
 source=($url/releases-1/$pkgname-$pkgver.tar.gz
         libnotify.patch
         cdio-includes.patch)
