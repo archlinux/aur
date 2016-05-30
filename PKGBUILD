@@ -1,12 +1,13 @@
-# Maintainer: Allan McRae <allan@archlinux.org>
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Allan McRae <allan@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: William Rea <sillywilly@gmail.com>
 # Contributor: Spyros Stathopoulos <foudault.online@gmail.com>
 
 pkgname=brasero2
 _pkgname=brasero
 pkgver=2.32.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A disc burning application for Gnome"
 arch=('i686' 'x86_64')
 url="http://www.gnome.org/projects/brasero"
@@ -22,7 +23,6 @@ optdepends=('libburn: alternative back-end'
 replaces=('nautilus-cd-burner')
 provides=('brasero')
 conflicts=('brasero')
-install=brasero.install
 source=(http://ftp.gnome.org/pub/gnome/sources/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2)
 sha256sums=('7b1056b6f19398912d51e3e583bc1b4d2a75ce2a8e15a96e1514fe6edb79df3b')
 

@@ -1,9 +1,8 @@
 pkgbase = brasero2
 	pkgdesc = A disc burning application for Gnome
 	pkgver = 2.32.1
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.gnome.org/projects/brasero
-	install = brasero.install
 	arch = i686
 	arch = x86_64
 	license = GPL
