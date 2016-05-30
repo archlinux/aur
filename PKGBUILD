@@ -2,7 +2,7 @@
 
 pkgname=lldpd-git
 _pkgname=lldpd
-pkgver=0.9.2.53
+pkgver=0.9.2.59
 pkgrel=1
 pkgdesc='802.1ab implementation (LLDP) to help you locate neighbors'
 arch=('i686' 'x86_64')
