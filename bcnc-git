@@ -1,0 +1,9 @@
+#!/usr/bin/env sh
+
+DIR=/opt/bcnc-git
+PYTHONPATH=${DIR}:${DIR}/lib:${DIR}/plugins
+export DIR PYTHONPATH
+if [ .$PYTHON = . ]; then
+	PYTHON=python2
+fi
+${PYTHON} ${DIR}/bCNC.py $*
