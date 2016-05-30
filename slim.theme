@@ -1,21 +1,21 @@
 background_style  stretch
 background_color  #000000
 
-input_font        Sans:size=18:bold:dpi=96
+input_font        Sans:size=16:bold:dpi=96
 input_color       #FFFFFF
 input_panel_x     50%
 input_panel_y     50%
-input_name_x      140
-input_name_y      319
+input_name_x      85
+input_name_y      202
 input_pass_x      -1
 input_pass_y      -1
 
-username_font     Sans:size=14:bold:dpi=96
+username_font     Sans:size=10:bold:dpi=96
 username_color    #282828
 username_x        50%
-username_y        260
+username_y        160
 password_x        50%
-password_y        260
+password_y        160
 username_msg      Username:
 password_msg      Password:
 
