@@ -1,40 +1,51 @@
-# Maintainer: alexiobash < me (at) alexiobash (dot) com >
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: alexiobash < me (at) alexiobash (dot) com >
 
 pkgname=wpscan
-pkgver=184
-pkgrel=2
-pkgdesc='A vulnerability scanner which checks the security of WordPress installations using a black box approach'
-optdepends=('typhoeus' 'rspec' 'ruby-progressbar' 'webmock' 'terminal-table'
-            'simplecov')
+pkgver=2.9.1
+pkgrel=1
+epoch=1
+pkgdesc='Black box WordPress vulnerability scanner'
+url='http://wpscan.org'
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/wpscan/"
-license=('GPL3')
-depends=('ruby')
-makedepends=('git')
-source=("git+https://github.com/wpscanteam/wpscan")
-md5sums=('SKIP')
+license=('custom:WPScan')
+depends=('ruby-bundler' 'libxslt' 'libyaml' 'curl')
+makedepends=('unzip')
 options=('!strip')
-conflicts=('wpscan-git')
-install="${pkgname}.install"
+install=wpscan.install
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/wpscanteam/wpscan/archive/${pkgver}.tar.gz)
+sha512sums=('46fee5851b8fb7e0b8f9e010dfbb426855b85cbc9cb117df03630f16886d08c47d08009fa576378177ba608f4281f284f9644bdc09dfa0ac09ff9c66c08fdbaf')
+
+prepare() {
+  cd ${pkgname}-${pkgver}
+  unzip -o data.zip
+  rm data.zip
+  cd lib/common
+  # replace cache location with local user share
+  sed "s|ROOT_DIR, 'cache'|ENV['HOME'] + '/.local/share/${pkgname}/cache'|" -i common_helper.rb
+  sed "s|ROOT_DIR, 'log.txt'|ENV['HOME'] + '/.local/share/${pkgname}/log.txt'|" -i common_helper.rb
+}
+
+build() {
+  cd ${pkgname}-${pkgver}
+  bundle install -j"$(nproc)" --path vendor/bundle --without development test
+}
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd ${pkgname}-${pkgver}
 
-  # Base directories.
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/wpscan"
+  install -d "${pkgdir}/opt/${pkgname}"
+  cp -ra --no-preserve=owner . "${pkgdir}/opt/${pkgname}"
 
-  cp --no-preserve=ownership -r * "$pkgdir/usr/share/wpscan"
-
-  # Joint script.
-  cat > "$pkgdir/usr/bin/wpscan" <<\EOF
+  install -d "${pkgdir}/usr/bin"
+  cat > "${pkgdir}/usr/bin/${pkgname}" << EOF
 #!/bin/sh
-localdir=$HOME/.wpscan
-mkdir -p "$localdir"
-cp -Rf /usr/share/wpscan/* "$localdir"
-cd "$localdir"
-ruby ./wpscan.rb "$@"
+BUNDLE_GEMFILE=/opt/${pkgname}/Gemfile bundle exec ruby /opt/${pkgname}/${pkgname}.rb "\$@"
 EOF
+  chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 
-  chmod +x "$pkgdir/usr/bin/wpscan"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 CHANGELOG.md DISCLAIMER.txt README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
+
+# vim: ts=2 sw=2 et:
