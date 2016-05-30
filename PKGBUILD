@@ -21,7 +21,7 @@ pkgname=(
          'papirus-vlc-theme-git'
          'papirus-yakuake-theme-git' 
          )
-pkgver=r643.5cc2174
+pkgver=r647.e8f2c9c
 pkgrel=1
 pkgdesc="Papirus Suite for KDE (git version)"
 arch=('any')
@@ -82,6 +82,7 @@ package_papirus-git() {
                 "papirus-vlc-theme-git: Papirus theme for VLC Media Player (git version)" 
                 "papirus-yakuake-theme-git: Papirus theme for Yakuake (git version)"
                 "papirus-wallpapers-git: Papirus wallpapers suite (git version)"
+                "arc-dark-suite-git: Arc-Dark cusomization for Plasma 5 (git version)"
                 )
 } 
 
