@@ -20,7 +20,9 @@ package() {
            ~/.gem/ruby/2.3.0/bin/bundle install
            cd ..
            sudo mv -v beef /usr/share/beef
-           echo Creating executable for beef-xss...
+           echo Creating executables for beef-xss...
            sudo mv -v ../beef-xss /usr/bin/beef-xss 
-           
+           sudo mv -v ../beef-xss-update /usr/bin/beef-xss-update
+           echo Launch "beef-xss" for beef and "beef-xss-update" \
+                               to update beef
 }
