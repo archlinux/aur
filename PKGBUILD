@@ -2,7 +2,7 @@
 
 pkgbase=pantheon-default-settings-bzr
 pkgname=('elementary-dpms-helper-bzr' 'pantheon-default-settings-bzr')
-pkgver=r187
+pkgver=r189
 pkgrel=1
 arch=('any')
 url='https://code.launchpad.net/~elementary-os/elementaryos/default-settings-loki'
@@ -56,7 +56,6 @@ package_pantheon-default-settings-bzr() {
   install -m 644 policykit.desktop "${pkgdir}"/usr/share/applications/
   install -dm 755 "${pkgdir}"/etc/{gtk-3.0,skel/.config,xdg/xdg-elementary}
   install -m 644 settings.ini "${pkgdir}"/etc/gtk-3.0/
-  install -m 644 light-locker.desktop "${pkgdir}"/etc/xdg/xdg-elementary/
   cp -dr --no-preserve='ownership' plank "${pkgdir}"/etc/skel/.config/
   cp -dr --no-preserve='ownership' midori "${pkgdir}"/etc/xdg/
   cp -dr --no-preserve='ownership' profile.d "${pkgdir}"/etc/
