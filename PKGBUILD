@@ -1,8 +1,8 @@
 # Maintainer: Urs Wolfer <uwolfer @ fwo.ch>
 
 pkgname=intellij-idea-ultimate-edition
-pkgver=2016.1.2
-_buildver=145.971.21
+pkgver=2016.1.2b
+_buildver=145.972.3
 pkgrel=1
 pkgdesc="An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity."
 arch=('any')
@@ -11,11 +11,11 @@ backup=("usr/share/${pkgname}/bin/idea.vmoptions" "usr/share/${pkgname}/bin/idea
 license=('Commercial')
 depends=('java-environment' 'giflib' 'libxtst')
 options=(!strip)
-source=(https://download.jetbrains.com/idea/ideaIU-$pkgver.tar.gz \
+source=(https://download.jetbrains.com/idea/ideaIU-$pkgver-no-jdk.tar.gz \
         intellijidea.sh \
         jetbrains-idea.desktop
 )
-sha256sums=('fe51f5e0cd9dde166ff5ff7194221c760e3e5a12e0e3423b7ebb10d42de9b737'
+sha256sums=('dbe0241b8c0ef5b0cd3c4fff0c6a6857b51b489d15d330df516cc8b5966b333e'
             'ed7883b33b6fa9f2e303e5549bd238ceb552ec11ca116730271a58aca685229a'
             '83af2ba8f9f14275a6684e79d6d4bd9b48cd852c047dacfc81324588fa2ff92b'
 )
@@ -41,9 +41,6 @@ package() {
 
   # workaround FS#40934
   sed -i 's|lcd|on|'  "$pkgdir"/usr/share/"$pkgname"/bin/*.vmoptions
-
-  # remove the bundled jre
-  rm -rf "$pkgdir"/usr/share/"$pkgname"/jre
 }
 
 # vim:set ts=2 sw=2 et:
