@@ -40,7 +40,7 @@ build() {
     git submodule init
     git config submodule.druntime.url $srcdir/druntime
     git config submodule.phobos.url $srcdir/phobos
-    git config "submodule.tests/d2/dmd-testsuite.url" $srcdir/tests/d2/dmd-testsuite
+    git config "submodule.tests/d2/dmd-testsuite.url" $srcdir/dmd-testsuite
     git submodule update
 
     # only touch file if necessary
