@@ -3,14 +3,15 @@
 # Contributor: Mick Elliot <micke at sfu dot ca>
 
 pkgname=phyml-mpi
-pkgver=20141029
+pkgver=3.2.0
 pkgrel=1
+epoch=1
 pkgdesc='Builds phylogenies from DNA or protein sequences using a maximum likelihood approach, using multiple proccessors'
 arch=('i686' 'x86_64')
 url='https://github.com/stephaneguindon/phyml'
 license=('GPLv2')
-source=("https://github.com/stephaneguindon/phyml-downloads/releases/download/development/phyml-$pkgver.tar.gz")
-sha256sums=('cb1d71107111de8509c4063d2bc1b290f5f2bcb23da136d829bc0450114f5576')
+source=("https://github.com/stephaneguindon/phyml/archive/v${pkgver}.tar.gz")
+sha256sums=('9fec8fc26e69cad8d58bf2c9433b531754e4f026dc3464d07958b6c824783fde')
 depends=('openmpi')
 
 build() {
