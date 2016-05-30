@@ -3,12 +3,11 @@
 #
 pkgname=libsmi
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="C library allowing NM apps and MIB and PIB authoring tools to access SMI MIB info." 
 arch=('i686' 'x86_64')
 url="http://www.ibr.cs.tu-bs.de/projects/libsmi/"
 license=('Custom')
-install="libsmi.install"
 depends=('bash')
 source=("https://www.ibr.cs.tu-bs.de/projects/${pkgname}/download/${pkgname}-${pkgver}.tar.gz"
 				'LICENSE')
