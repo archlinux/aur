@@ -3,8 +3,8 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.17.99.47007.gfa344ea
-pkgrel=2
+pkgver=1.17.99.47591.gab23a53
+pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
@@ -49,6 +49,7 @@ build() {
     --disable-egl \
     --enable-wayland \
     --enable-drm \
+    --enable-elput \
     --enable-fb \
     --disable-tslib \
     --enable-image-loader-webp \
