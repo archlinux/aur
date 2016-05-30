@@ -5,7 +5,6 @@ _pkgname=wpscan
 pkgname=wpscan-git
 pkgver=2.9.1.2040.5118c68
 pkgrel=1
-epoch=1
 pkgdesc='Black box WordPress vulnerability scanner'
 url='http://wpscan.org'
 arch=('i686' 'x86_64')
