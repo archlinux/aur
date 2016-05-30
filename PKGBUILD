@@ -5,7 +5,7 @@ pkgname=gsdjvu
 pkgver=1.9
 _gsver=9.18
 _fontsver=8.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Very efficient way of converting PostScript and PDF documents into DjVu"
 arch=(i686 x86_64)
 # This program mixes GPL and CPL licensed codes, so the binaries are not redistributable.
@@ -13,8 +13,8 @@ license=('custom:unredistributable')
 depends=('libcups>=1.3.9-3' 'cairo' 'libpng12>=1.2.6' 'zlib>=1.2.1')
 optdepends=('djvulibre') # for the djvudigital converter
 url="http://djvu.sourceforge.net/gsdjvu.html"
-source=("http://downloads.sourceforge.net/sourceforge/djvu/gsdjvu-$pkgver.tar.gz" 
-	"http://downloads.ghostscript.com/public/ghostscript-${_gsver}.tar.bz2" 
+source=("http://downloads.sourceforge.net/sourceforge/djvu/gsdjvu-${pkgver}.tar.gz" 
+	"http://downloads.ghostscript.com/public/old-gs-releases/ghostscript-${_gsver}.tar.bz2"
 	"http://downloads.sourceforge.net/ghostscript/ghostscript-fonts-std-${_fontsver}.tar.gz" )
 noextract=("ghostscript-${_gsver}.tar.bz2"
 	"ghostscript-fonts-std-${_fontsver}.tar.gz")
