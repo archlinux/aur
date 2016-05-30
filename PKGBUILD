@@ -23,5 +23,6 @@ package() {
            echo -e "\e[1;34mCreating executables required to run beef-xss...\e[0m"
            sudo mv -v ../beef-xss /usr/bin/beef-xss 
            sudo mv -v ../beef-xss-update /usr/bin/beef-xss-update
+           sudo mv -v ../remove-beef /usr/share/beef/remove-beef
            echo -e "\e[1;34mLaunch "beef-xss" for beef and "beef-xss-update" to update beef\e[0m"
 }
