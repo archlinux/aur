@@ -1,14 +1,14 @@
 # Maintainer: Tarn Burton <twburton at gmail dot com>
 pkgname='cadabra2-git'
 pkgver=r741.5f9eb01
-pkgrel=1
+pkgrel=2
 pkgdesc="A computer algebra system (pre-release version) designed specifically for the solution of problems encountered in field theory."
 arch=('i686' 'x86_64')
 url="http://cadabra.phi-sci.com/"
 license=('GPL')
 provides=('cadabra2')
 conflicts=('cadabra2')
-depends=('python-matplotlib' 'gtkmm3' 'jsoncpp' 'mathjax' 'boost-libs' 'python-sympy')
+depends=('python-matplotlib' 'gtkmm3' 'jsoncpp' 'mathjax' 'boost-libs' 'python-sympy' 'texlive-core')
 makedepends=('cmake' 'boost')
 source=("$pkgname::git+https://github.com/kpeeters/cadabra2")
 md5sums=('SKIP')
