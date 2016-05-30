@@ -19,11 +19,8 @@ optdepends=('ffmpeg: for video post-processing'
 	    'atomicparsley: for embedding thumbnails into m4a files')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-source=(http://youtube-dl.org/downloads/${pkgver}/${_pkgname}-${pkgver}.tar.gz
-        http://youtube-dl.org/downloads/${pkgver}/${_pkgname}-${pkgver}.tar.gz.sig)
-sha1sums=("$(curl -s 'http://youtube-dl.org/latest/SHA1SUMS' | sed -n 's/\([0-9a-f]\{40\}\) .*\.tar\.gz/\1/p')"
-          'SKIP')
-validpgpkeys=('7D33D762FD6C35130481347FDB4B54CBA4826A18')
+source=(http://youtube-dl.org/downloads/${pkgver}/${_pkgname}-${pkgver}.tar.gz)
+sha1sums=("$(curl -s 'http://youtube-dl.org/latest/SHA1SUMS' | sed -n 's/\([0-9a-f]\{40\}\) .*\.tar\.gz/\1/p')")
 
 prepare() {
   cd ${_pkgname}
