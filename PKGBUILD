@@ -2,8 +2,8 @@
 
 _srcname=leap.bitmask
 pkgname=bitmask_client
-pkgver=0.9.1
-pkgrel=6
+pkgver=0.9.2
+pkgrel=1
 pkgdesc='Encrypted communication for mere mortals.'
 arch=('any')
 url='https://bitmask.net/'
@@ -51,14 +51,11 @@ source=(
   "https://github.com/leapcode/$pkgname/archive/debian/experimental.zip"
 )
 validpgpkeys=('BE23FB4A0E9DB36ECB9AB8BE23638BF72C593BC1')
-sha256sums=('7e907adeef60c61378c505d29f69d1cf777495215b356ce7ea3b0dc2b5c70dab'
+sha512sums=('e93504729125cd50992b9b8c7a6cf3589baf0fb81ba10d80a5293f5cfd1bfb8fd27dc1d0ece3b70f9b10c16f210a523a0c46c7d6f657dd9d5e58135b78752288'
             'SKIP')
 
 prepare() {
-  # Workaround version acquire fail
-  mv "$srcdir/$pkgname-$pkgver" "$srcdir/$_srcname-$pkgver"
-
-  cd "$srcdir/$_srcname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   # Install to /usr/bin instead of /usr/sbin
   sed -i 's/sbin/bin/' setup.py
 
@@ -68,7 +65,7 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/$_srcname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   # Qt
   make
   # Python
@@ -80,12 +77,12 @@ build() {
 }
 
 #check() {
-  #cd "$srcdir/$_srcname-$pkgver"
+  #cd "$srcdir/$pkgname-$pkgver"
   #sh run_tests.sh -N
 #}
 
 package() {
-  cd "$srcdir/$_srcname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   python2 setup.py install --skip-build --root="$pkgdir" --optimize=1
 
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
