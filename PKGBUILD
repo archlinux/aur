@@ -20,9 +20,7 @@ package() {
            ~/.gem/ruby/2.3.0/bin/bundle install
            cd ..
            sudo mv -v beef /usr/share/beef
-           sudo ln -sv -t /usr/bin/ /usr/share/beef/*
-           sudo unlink /usr/bin/beef
-           echo Creating essential symlinks... 
-           sudo ln -s /usr/share/beef/beef /usr/bin/beef-xss
-           echo Enter "beef" in your terminal to start using it
+           echo Creating executable for beef-xss...
+           sudo mv -v ../beef-xss /usr/bin/beef-xss 
+           
 }
