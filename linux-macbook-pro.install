@@ -10,6 +10,12 @@ post_install () {
   depmod ${KERNEL_VERSION}
   echo ">>> Generating initial ramdisk, using mkinitcpio. Please wait..."
   mkinitcpio -p linux${KERNEL_NAME}
+
+  echo
+  echo "To get suspend working properly you must do the following:"
+  echo "Add disable_mode=1 to your kernel boot options -- in my case I use grub so I appended this to GRUB_CMDLINE_LINUX in /etc/default/grub and then ran the following command as root: grub-mkconfig -o /boot/grub/grub.cfg"
+  echo "Create /etc/tmpfiles.d/wakeup.conf with the contents: w /proc/acpi/wakeup - - - - LID0"
+  echo
 }
 
 post_upgrade() {
