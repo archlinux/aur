@@ -1,14 +1,14 @@
-# Maintainer: SpepS <dreamspepser at yahoo dot it>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: SpepS <dreamspepser at yahoo dot it>
 
 pkgname=g3dviewer
 pkgver=0.2.99.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A 3D file viewer for GTK+ supporting a variety of file types"
 arch=(i686 x86_64)
 url="http://automagically.de/g3dviewer/"
 license=('GPL')
 depends=('gtkglext' 'libg3d' 'libglade')
-install="$pkgname.install"
 source=("http://automagically.de/files/$pkgname-$pkgver.tar.gz"
         "$pkgname.desktop")
 md5sums=('b7da4a68dd18309805ea2ca081542cfd'
