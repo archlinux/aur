@@ -1,7 +1,7 @@
 # Contributor: Riadh Habbachi <habbachi.riadh at gmail dot com> 
 # Maintainer: Riadh Habbachi <habbachi.riadh at gmail dot com> 
-pkgname=butterfly
-pkgver='r282.ec25edb'
+pkgname=butterfly-git
+pkgver=VERSION
 pkgrel=1
 pkgdesc="Butterfly is a xterm compatible terminal that runs in your browser."
 url="https://github.com/paradoxxxzero/butterfly"
@@ -20,15 +20,15 @@ source=("${pkgname%-*}"::"git://github.com/paradoxxxzero/butterfly.git#branch=ma
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgbase}
+  cd "$srcdir/${pkgname%-git}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/${pkgname%-git}"
   python setup.py install --root="$pkgdir/" --optimize=1
-  install -Dm 0644 "${srcdir}/$pkgname/${pkgname}.service" \
-    "$pkgdir/etc/systemd/system/${pkgname}.service"
+  install -Dm 0644 "${srcdir}/${pkgname%-git}/${pkgname%-git}.service" \
+    "$pkgdir/etc/systemd/system/${pkgname%-git}.service"
 }
 
 # vim:set ts=2 sw=2 et:
