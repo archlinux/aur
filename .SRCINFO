@@ -7,14 +7,9 @@ pkgbase = sqlninja
 	arch = x86_64
 	license = GPLv3
 	optdepends = metasploit-git
-	provides = perl-dbi
-	provides = perl-net-rawip
-	provides = perl-net-dns
-	provides = perl-net-pcap
-	provides = perl-netpacket
-	provides = perl-io-socket-ssl
+	provides = sqlninja
+	conflicts = sqlninja
 	source = http://downloads.sourceforge.net/project/sqlninja/sqlninja/sqlninja-0.2.6-r1.tgz?r=&ts=1464479613&use_mirror=nbtelecom
-	md5sums = SKIP
 
 pkgname = sqlninja
 

@@ -2,28 +2,15 @@
 pkgname=sqlninja
 pkgver=0.2.6
 pkgrel=1
-epoch=
 pkgdesc="SQL Server injection & takeover tool"
 arch=(i686 x86_64)
 url="http://sqlninja.sourceforge.net/"
 license=('GPLv3')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
 optdepends=('metasploit-git')
-provides=('perl-dbi' 'perl-net-rawip' 'perl-net-dns' 'perl-net-pcap' 
-'perl-netpacket' 'perl-io-socket-ssl')
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
+provides=('sqlninja')
+conflicts=('sqlninja')
 source=("http://downloads.sourceforge.net/project/sqlninja/sqlninja/sqlninja-0.2.6-r1.tgz?r=&ts=1464479613&use_mirror=nbtelecom")
-noextract=()
-md5sums=('SKIP')
-validpgpkeys=()
+
 build() {
          echo Installing required dependencies
          sudo pacman -S perl-io-socket-ssl perl-dbi
