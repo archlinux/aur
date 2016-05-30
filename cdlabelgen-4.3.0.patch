@@ -1,0 +1,32 @@
+diff -aur cdlabelgen-4.3.0/Makefile cdlabelgen-4.3.0.new/Makefile
+--- cdlabelgen-4.3.0/Makefile	2013-03-31 21:37:51.000000000 +0200
++++ cdlabelgen-4.3.0.new/Makefile	2016-05-30 18:32:39.700123408 +0200
+@@ -37,7 +37,7 @@
+ RPM_TOPDIR	:= $(HOME)/rpmbuild
+ # ---------------
+ 
+-all: cdlabelgen.html cdlabelgen.1
++all: cdlabelgen.html cdlabelgen.1 cdlabelgen.1.gz
+ 
+ cdlabelgen.html: cdlabelgen.pod
+ 	pod2html --outfile=$@ --infile=$?
+@@ -46,13 +46,18 @@
+ cdlabelgen.1: cdlabelgen.pod
+ 	pod2man $? $@
+ 
++cdlabelgen.1.gz: cdlabelgen.1
++	gzip -f -k -- $?
++
+ ###
+ install: all
+ 	@echo "Installing cdlabelgen in $(BIN_DIR) and $(LIB_DIR)"
+ 	@echo ""
+ 	$(INSTALL_DIR) $(BIN_DIR)
+ 	$(INSTALL) cdlabelgen $(BIN_DIR)
+-	$(INSTALL_FILE) cdlabelgen.1 $(MAN_DIR)/man1
++	$(INSTALL_DIR) $(MAN_DIR)
++	$(INSTALL_DIR) $(MAN_DIR)/man1
++	$(INSTALL_FILE) cdlabelgen.1.gz $(MAN_DIR)/man1
+ 	$(INSTALL_DIR) $(LIB_DIR)
+ 	set -e; \
+ 	for file in $(POSTSCRIPT); do \
