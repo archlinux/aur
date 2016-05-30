@@ -2,7 +2,7 @@
 
 pkgname=namecoin-core
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="namecoin Core headless P2P node"
 arch=('i686' 'x86_64')
 url="https://namecoin.org"
@@ -55,14 +55,6 @@ package() {
   msg2 'Installing license...'
   install -Dm 644 COPYING -t "$pkgdir/usr/share/licenses/${pkgname%-core}"
 
-  msg2 'Installing man pages...'
-  install -Dm 644 contrib/debian/manpages/namecoind.1 \
-    -t "$pkgdir/usr/share/man/man1"
-  install -Dm 644 contrib/debian/manpages/namecoin-cli.1 \
-    -t "$pkgdir/usr/share/man/man1"
-  install -Dm 644 contrib/debian/manpages/namecoin.conf.5 \
-    -t "$pkgdir/usr/share/man/man5"
-
   msg2 'Installing documentation...'
   install -dm 755 "$pkgdir/usr/share/doc/namecoin"
   for _doc in \
@@ -85,10 +77,6 @@ package() {
 
   msg2 'Installing namecoin.logrotate...'
   install -Dm 644 "$srcdir/namecoin.logrotate" "$pkgdir/etc/logrotate.d/namecoin"
-
-  msg2 'Installing bash completion...'
-  install -Dm 644 contrib/namecoind.bash-completion \
-    "$pkgdir/usr/share/bash-completion/completions/namecoind"
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type f -name .gitignore -exec rm -r '{}' +
