@@ -8,7 +8,7 @@
 pkgname=conky-lua-nv
 _pkgname=conky
 pkgver=1.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced system monitor for X based on torsmo with lua and nvidia enabled"
 arch=('i686' 'x86_64')
 url="https://github.com/brndnmtthws/conky"
@@ -16,7 +16,7 @@ license=('GPL3' 'BSD')
 replaces=('torsmo' 'conky')
 conflicts=('conky')
 provides=('conky' 'conky-lua')
-depends=('alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools'
+depends=('alsa-lib' 'libxml2' 'curl' 'cairo' 'wireless_tools' 'libxinerama'
          'libxft' 'glib2' 'libxdamage' 'imlib2' 'lua51' 'librsvg' 'tolua++')
 makedepends=('docbook2x' 'libxnvctrl' 'perl-xml-libxml'
              'docbook-xml' 'docbook-xsl' 'cmake')
