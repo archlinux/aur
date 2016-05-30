@@ -10,7 +10,7 @@
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-lts318       # Build kernel with a different name
 _srcname=linux-3.18
-pkgver=3.18.33
+pkgver=3.18.34
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -29,7 +29,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v3.x/${_srcname}.tar.xz"
         )
 sha256sums=('becc413cc9e6d7f5cc52a3ce66d65c3725bc1d1cc1001f4ce6c32b69eb188cbd'
             'SKIP'
-            '1380ee1cfa7ededaf0b206c0a8e4d364fa16285e0b4b2d653f22f01a29694faf'
+            '2145ded0f1f03cb92b43c56c41bf2d1353bd023f56eb8ce580b4f24958f5721d'
             'SKIP'
             'c9821d2a786b569233833c3074c7bb4e9c0d50ab903a9b9aeb8784d95c87a52d'
             '781d5cb410935f3f904a539ecdb0b49f2d87c95a0f05c665b19b97a9d14dd40e'
