@@ -2,7 +2,7 @@
 
 pkgname=chef-dk
 pkgver=0.14.25
-pkgrel=1
+pkgrel=2
 _ubuntuver=raring
 _ubunturel=4
 pkgdesc="The Chef Development Kit contains everything you need to start using Chef along with the tools essential to managing the code that runs your business."
@@ -22,7 +22,7 @@ package() {
   find $pkgdir -type d -name ".git" | xargs  rm -rf
 
   # link executables
-  binaries="chef chef-solo chef-apply chef-shell knife shef ohai berks chef-zero fauxhai foodcritic kitchen rubocop strain strainer chef-client"
+  binaries="berks chef chef-apply chef-shell chef-solo chef-zero delivery fauxhai foodcritic kitchen knife ohai push-apply pushy-client pushy-service-manager rubocop cookstyle chef-client"
 
   mkdir -p $pkgdir/usr/bin
 
