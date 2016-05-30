@@ -1,6 +1,6 @@
 pkgname=file-roller2-nn
 pkgver=2.32.2
-pkgrel=5
+pkgrel=6
 provides=('file-roller')
 conflicts=('file-roller' 'nautilus')
 pkgdesc="Archive manipulator for GNOME without nautilus dependency. (no nautilus)"
@@ -16,7 +16,6 @@ optdepends=('unrar: the RAR uncompression program'
             'arj: ARJ archiver'
             'unace: extraction tool for the proprietary ace archive format')
 options=('!libtool' '!emptydirs')
-install=file-roller.install
 url="http://www.gnome.org"
 source=(http://ftp.gnome.org/pub/gnome/sources/file-roller/${pkgver%.*}/file-roller-${pkgver}.tar.bz2
         org.gnome.nautilus.gschema.xml.in)

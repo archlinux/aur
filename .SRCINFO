@@ -1,9 +1,8 @@
 pkgbase = file-roller2-nn
 	pkgdesc = Archive manipulator for GNOME without nautilus dependency. (no nautilus)
 	pkgver = 2.32.2
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.gnome.org
-	install = file-roller.install
 	arch = i686
 	arch = x86_64
 	license = GPL
