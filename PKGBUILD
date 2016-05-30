@@ -2,13 +2,12 @@
 
 pkgname=scour
 pkgver=0.33
-pkgrel=2
+pkgrel=3
 pkgdesc='An SVG scrubber'
 arch=('any')
 url='https://github.com/codedread/scour'
 license=('APACHE')
-depends=('python')
-makedepends=('python-setuptools')
+depends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/codedread/scour/archive/v${pkgver}.tar.gz")
 sha256sums=('e9b4fb4beb653afbdbc43c4cc0836902d6f287d882b6b7cdf714c456ff0841a8')
 
