@@ -9,7 +9,7 @@
 pkgname=minidlna-video-thumb
 pkgver=1.1.5
 pkgrel=4
-pkgdesc="A DLNA/UPnP-AV Media server (aka ReadyDLNA) with path to create video thumbnails"
+pkgdesc="A DLNA/UPnP-AV Media server (aka ReadyDLNA) with patch to create video thumbnails"
 # The patch can be found here: https://sourceforge.net/p/minidlna/patches/92/
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/minidlna/"
