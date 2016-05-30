@@ -6,12 +6,8 @@ pkgbase = vega
 	arch = x86_64
 	license = Eclipse Public License 1.0
 	provides = vega
-	provides = gtk
-	provides = webkitgtk2
-	provides = jdk8-openjdk
 	conflicts = vega
 	source = https://dist.subgraph.com/downloads/VegaBuild-linux.gtk.x86_64.zip
-	md5sums = SKIP
 
 pkgname = vega
 
