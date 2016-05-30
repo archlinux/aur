@@ -4,7 +4,7 @@
 
 pkgbase=python-ioflo
 pkgname=('python-ioflo' 'python2-ioflo')
-pkgver=1.5.4
+pkgver=1.5.5
 pkgrel=1
 pkgdesc='Flo based programming interface in python'
 arch=('any')
