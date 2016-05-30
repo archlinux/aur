@@ -1,6 +1,6 @@
 pkgbase = linux-lts-userns
 	pkgver = 4.4.11
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kernel.org/
 	arch = i686
 	arch = x86_64
@@ -20,6 +20,7 @@ pkgbase = linux-lts-userns
 	source = linux-lts-userns.preset
 	source = change-default-console-loglevel.patch
 	source = ubuntu-unprivileged-overlayfs.patch
+	source = unshare-netns-after-userns-mapping.patch
 	source = 0001-sdhci-revert.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
@@ -32,6 +33,7 @@ pkgbase = linux-lts-userns
 	sha256sums = 9c75f46f3b52fdc5a5d4ababf18331e61201e1a8ef0d4a188289d6b15e6b138d
 	sha256sums = 1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99
 	sha256sums = 01a6d59a55df1040127ced0412f44313b65356e3c680980210593ee43f2495aa
+	sha256sums = 83758b525519c49593ac711f7fbf19d415bbee5fc6f484522abc50a6658333e5
 	sha256sums = 5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375
 
 pkgname = linux-lts-userns

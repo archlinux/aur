@@ -5,7 +5,7 @@
 pkgbase=linux-lts-userns
 _srcname=linux-4.4
 pkgver=4.4.11
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -19,6 +19,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
         "$pkgbase.preset"
         change-default-console-loglevel.patch
         ubuntu-unprivileged-overlayfs.patch
+        unshare-netns-after-userns-mapping.patch
         0001-sdhci-revert.patch)
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
@@ -30,6 +31,7 @@ sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             '9c75f46f3b52fdc5a5d4ababf18331e61201e1a8ef0d4a188289d6b15e6b138d'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '01a6d59a55df1040127ced0412f44313b65356e3c680980210593ee43f2495aa'
+            '83758b525519c49593ac711f7fbf19d415bbee5fc6f484522abc50a6658333e5'
             '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@linux-foundation.org>
@@ -58,6 +60,9 @@ prepare() {
 
   # enable unprivileged overlayfs
   patch -p1 -i "${srcdir}/ubuntu-unprivileged-overlayfs.patch"
+
+  # set /proc/net entries owner to root in namespace
+  patch -p1 -i "${srcdir}/unshare-netns-after-userns-mapping.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
