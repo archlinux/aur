@@ -1,19 +1,19 @@
 pkgbase = tclx
 	pkgdesc = Provides OS primitives, file scanning, data records etc. for Tcl
-	pkgver = 8.4
+	pkgver = 8.4.1
 	pkgrel = 4
 	url = http://tclx.sourceforge.net
 	arch = i686
 	arch = x86_64
 	arch = armv6h
 	license = BSD
-	depends = tcl=8.6.4
+	depends = tcl=8.6.5
 	depends = tk
-	source = http://downloads.sourceforge.net/sourceforge/tclx/tclx8.4.tar.bz2
-	source = http://downloads.sourceforge.net/sourceforge/tcl/tcl8.6.4-src.tar.gz
+	source = http://downloads.sourceforge.net/sourceforge/tclx/tclx8.4.1.tar.bz2
+	source = http://downloads.sourceforge.net/sourceforge/tcl/tcl8.6.5-src.tar.gz
 	source = interperrorline.patch
-	md5sums = 395c2fbe35e1723570b005161b9fc8f8
-	md5sums = d7cbb91f1ded1919370a30edd1534304
+	md5sums = ac983708f23cf645c07058148f48440c
+	md5sums = 0e6426a4ca9401825fbc6ecf3d89a326
 	md5sums = 3254188674bfa4cdf58605d0d69586d0
 
 pkgname = tclx
