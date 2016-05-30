@@ -1,0 +1,15 @@
+pkgbase = apw
+	pkgdesc = A Package Wrapper - package wrapper for pacman (and more)
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = http://proyecto.jkanetwork.com
+	arch = any
+	groups = jka-toolkit
+	license = GPL3
+	provides = apw
+	options = !emptydirs
+	source = https://gitlab.com/JKANetwork/jka-toolkit/raw/master/jka-toolkit/apw
+	md5sums = SKIP
+
+pkgname = apw
+
