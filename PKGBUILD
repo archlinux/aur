@@ -1,5 +1,5 @@
-# Maintainer: blue_lizard lizard@blue.dyn-o-saur.com 
-# Contributor: Cedric Girard <girard.cedric@gmail.com>
+# Maintainer: Cedric Girard <girard.cedric@gmail.com>
+# Contributor: blue_lizard lizard@blue.dyn-o-saur.com
 
 pkgname=mmv
 pkgver=1.01b.orig
@@ -9,15 +9,19 @@ source=(http://ftp.de.debian.org/debian/pool/main/m/mmv/mmv_1.01b.orig.tar.gz ht
 md5sums=('1b2135ab2f17bdfa9e08debbb3c46ad8' '991e5c7ef7b78a05aba1b81c36c6288c')
 
 url="http://linux.maruhn.com/sec/mmv.html"
-license="GPL"
+license=('GPL')
 install=$pkgname.install
 arch=('i686' 'x86_64')
 
-build() {
+prepare() {
   cd "${srcdir}/$pkgname-$pkgver"
   patch -p1 < ../mmv_1.01b-15.diff
   sed -i -e "s/LDFLAGS.\s=-s -N/LDFLAGS	=-s/g" Makefile
   sed -i 's!/usr/man!/usr/share/man!' Makefile
+}
+
+build() {
+  cd "${srcdir}/$pkgname-$pkgver"
   make
 }
 
@@ -34,5 +38,5 @@ package(){
   cd "${pkgdir}/usr/share/man/man1/"
   ln -s mmv.1 mcp.1
   ln -s mmv.1 mad.1
-  ln -s mmv.1 mln.1 
+  ln -s mmv.1 mln.1
 }
