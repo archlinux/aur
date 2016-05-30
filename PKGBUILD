@@ -2,7 +2,7 @@
 
 pkgname=pg_top
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc='top-like app for monitoring PostgreSQL backends (previously known as ptop)'
 arch=('i686' 'x86_64' 'armv5h' 'armv6h' 'armv7h')
 license=('BSD')  # original BSD license
@@ -12,7 +12,7 @@ source=("http://pgfoundry.org/frs/download.php/3504/$pkgname-$pkgver.tar.bz2")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
+  LDFLAGS="-lncurses $LDFLAGS"
   ./configure --prefix=/usr
   make
 }
