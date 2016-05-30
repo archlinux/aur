@@ -4,13 +4,12 @@
 pkgname=konstruktor
 pkgver=0.9.beta1
 _pkgver=0.9-beta1
-pkgrel=2
+pkgrel=3
 pkgdesc="A LDraw-based virtual LEGO(r) CAD for KDE 4."
 arch=('i686' 'x86_64')
 url="http://opendesktop.org/content/show.php?content=138138"
 depends=('kdebase-runtime' 'glu' 'povray' 'ldraw-parts-library')
 makedepends=('cmake' 'automoc4')
-install="$pkgname.install"
 #source=("http://konstruktor.influx.kr/$pkgname-$_pkgver.tar.bz2")
 source=("https://github.com/bbidulock/Konstruktor/releases/download/0.9.0-beta1/$pkgname-$_pkgver.tar.bz2"
 	"duplicate.patch")
