@@ -1,7 +1,7 @@
 # Maintainer: Joakim Hernberg <jhernberg at alchemy dot lu>
 
 pkgname=rt-tests
-pkgver=0.97
+pkgver=1.0
 pkgrel=1
 
 pkgdesc="A collection of latency testing tools for the linux(-rt) kernel"
@@ -11,7 +11,7 @@ license=('GPL2')
 
 depends=('python2' 'numactl')
 source=("https://www.kernel.org/pub/linux/utils/rt-tests/$pkgname-$pkgver.tar.gz")
-sha256sums=('6318b9ad41939e509f2502c752f7fa36e824d5b3ec10763a974c96f10f22c205')
+sha256sums=('bb6c34423dbbe2a003f219c30c0700fe0d5793bcb939c95f10066fce0bf5fe7f')
 
 prepare() {
   cd "$pkgname-$pkgver"
