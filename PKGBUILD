@@ -1,14 +1,14 @@
-# Maintainer: toni <antoniogmc@gmail.com> 
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: toni <antoniogmc@gmail.com> 
 
 pkgname=gqview
 pkgver=2.0.4
-pkgrel=5
+pkgrel=6
 pkgdesc="An image browser and viewer"
 arch=('i686' 'x86_64')
 url="http://gqview.sourceforge.net/"
 license=('GPL')
 depends=('gtk2' 'desktop-file-utils')
-install=gqview.install
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}-${pkgver}.tar.gz)
 md5sums=('7196deab04db94cec2167637cddc02f9')
 

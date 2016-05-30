@@ -1,9 +1,8 @@
 pkgbase = gqview
 	pkgdesc = An image browser and viewer
 	pkgver = 2.0.4
-	pkgrel = 5
+	pkgrel = 6
 	url = http://gqview.sourceforge.net/
-	install = gqview.install
 	arch = i686
 	arch = x86_64
 	license = GPL
