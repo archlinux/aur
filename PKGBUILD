@@ -1,5 +1,4 @@
 # Maintainer: taskie <t at skie dot jp>
-# this package is based on ttf-mplus, ttf-rounded-mplus
 pkgname=ttf-mgenplus
 pkgver=20150602
 pkgrel=2
