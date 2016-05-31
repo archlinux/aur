@@ -9,7 +9,7 @@
 # Contributor: eworm
 
 pkgname=opera
-pkgver=37.0.2178.43
+pkgver=37.0.2178.54
 pkgrel=1
 pkgdesc="A fast and secure web browser"
 url="http://www.opera.com/"
@@ -18,7 +18,6 @@ license=('custom:opera')
 backup=("etc/$pkgname/default")
 arch=('i686' 'x86_64')
 depends=('gtk2' 'desktop-file-utils' 'shared-mime-info' 'libxtst' 'gconf' 'libxss' 'alsa-lib' 'nss' 'ttf-font' 'libnotify' 'hicolor-icon-theme')
-makedepends=('patchelf')
 optdepends=(
     'curl: opera crash reporter and autoupdate checker'
     'opera-ffmpeg-codecs: playback of proprietary video/audio'
@@ -31,8 +30,8 @@ source_i686=("http://get.geo.opera.com/pub/${pkgname}/desktop/${pkgver}/linux/${
 source_x86_64=("http://get.geo.opera.com/pub/${pkgname}/desktop/${pkgver}/linux/${pkgname}-stable_${pkgver}_amd64.deb")
 sha256sums=('508512464e24126fddfb2c41a1e2e86624bdb0c0748084b6a922573b6cf6b9c5'
             '4913d97dec0ddc99d1e089b029b9123c2c86b7c88d631c4d1111b119b09da027')
-sha256sums_i686=('e45778efa01ad0155fd9a0ed815a9536d17a0be703f19f7b933f581c5f9f8552')
-sha256sums_x86_64=('d51ba265a814adfe8659105800278629f26b279564626783ce8a5c902dae00c4')
+sha256sums_i686=('67b5637261a1973d2fa302b03a5c21c3751bc86bb3e84d2a49f1096efdf3fc2c')
+sha256sums_x86_64=('25a3e7a2ebc2468e251cc840a54fd4d16e3ff7d49fa1bb71511b34458179a4fc')
 
 prepare() {
     sed -e "s/%pkgname%/$pkgname/g" -i "$srcdir/opera"
@@ -49,15 +48,6 @@ package() {
         mv "$pkgname" ../
     )
     rm -rf "$pkgdir/usr/lib/"*-linux-gnu
-
-    # patch rpath in opera-developer binary
-    if [[ "$CARCH" == "i686" ]]; then
-        patchelf --set-rpath \$ORIGIN/lib_extra:\$ORIGIN/lib:\$ORIGIN/. \
-            "$pkgdir/usr/lib/$pkgname/$pkgname"
-    else
-        patchelf --set-rpath \$ORIGIN/lib_extra:\$ORIGIN/. \
-            "$pkgdir/usr/lib/$pkgname/$pkgname"
-    fi
 
     # suid opera_sandbox
     chmod 4755 "$pkgdir/usr/lib/$pkgname/opera_sandbox"
