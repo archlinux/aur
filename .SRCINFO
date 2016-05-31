@@ -8,7 +8,7 @@ pkgbase = nodejs-barcelona
 	depends = npm
 	noextract = barcelona-0.0.26.tgz
 	source = http://registry.npmjs.org/barcelona/-/barcelona-0.0.26.tgz
-	sha1sums = SKIP
+	md5sums = a5412cb257cb456deb453d142f3d9989
 
 pkgname = nodejs-barcelona
 
