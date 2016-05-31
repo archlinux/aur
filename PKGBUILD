@@ -2,34 +2,30 @@
 # Co-Maintainer: Afri 5chdn <aur@cach.co>
 
 pkgname=geth-git
-pkgver=v0.9.39.r1001.g16a23ff
+pkgver=1.4.5.r0.ga269a71
 pkgrel=1
 pkgdesc="Ethereum Go Client"
 arch=('i686' 'x86_64')
 url="https://github.com/ethereum/go-ethereum"
 license=('LGPL3' 'GPL3')
+depends=('glibc')
 makedepends=('go' 'gmp')
-optdepends=('mist: Graphical Ethereum wallet and DApps browser.')
 conflicts=(
   'geth-git'
   'go-ethereum'
   'go-ethereum-git'
 )
 provides=('geth')
-source=("${pkgname}::git+https://github.com/ethereum/go-ethereum.git#branch=develop")
+source=("${pkgname}::git+https://github.com/ethereum/go-ethereum.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$pkgbase"
-  git checkout -q develop
-  git pull -q
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   cd "${srcdir}/${pkgbase}"
-  git checkout develop
-  git pull
   make
 }
 
