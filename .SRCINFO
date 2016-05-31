@@ -1,11 +1,11 @@
-pkgbase = odfpy-git
+pkgbase = python-odfpy-git
 	pkgver = 1.3.3
 	pkgrel = 2
-	url = https://github.com/eea/odfpy
+	url = https://github.com/eea/odfpy.git
 	arch = any
 	license = GPL
 	makedepends = git
-	source = git+https://github.com/eea/odfpy
+	source = git+https://github.com/eea/odfpy.git
 	sha256sums = SKIP
 
 pkgname = python-odfpy-git

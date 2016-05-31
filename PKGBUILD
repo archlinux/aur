@@ -1,18 +1,18 @@
 # Maintainer: Sascha Shaw <sascha.shaw@t-online.de>
 
 pkgname=('python-odfpy-git' 'python2-odfpy-git' 'odfpy-git')
-pkgbase='odfpy-git'
+pkgbase='python-odfpy-git'
 pkgver=1.3.3
 pkgrel=2
 arch=('any')
-url="https://github.com/eea/${pkgbase%-git}"
+url="https://github.com/eea/odfpy.git"
 license=('GPL')
 makedepends=('git')
 source=("git+${url}")
 sha256sums=('SKIP')
 
 build() {
-  cd "${srcdir}/${pkgbase%-git}"
+  cd "${srcdir}/odfpy"
   python2 setup.py build
   python setup.py build
 }
@@ -22,7 +22,7 @@ package_python-odfpy-git() {
   depends=('python')
   conflicts=('python-odfpy' 'python2-odfpy' 'odfpy')
 
-  cd "${srcdir}/${pkgbase%-git}"
+  cd "${srcdir}/odfpy"
   python setup.py install --root="${pkgdir}/" --skip-build
   rm -rf ../tools-{bin,share}
   mv "${pkgdir}"/usr/bin ../tools-bin
@@ -34,7 +34,7 @@ package_python2-odfpy-git() {
   depends=('python2')
   conflicts=('python2-odfpy' 'odfpy')
 
-  cd "${srcdir}/${pkgbase%-git}"
+  cd "${srcdir}/odfpy"
   python2 setup.py install --root="${pkgdir}/" --skip-build
   rm -rf "${pkgdir}"/usr/bin
   rm -rf "${pkgdir}"/usr/share
