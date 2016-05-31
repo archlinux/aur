@@ -2,7 +2,7 @@
 # Current Maintainer: Leopold Bloom <blinxwang@gmail.com>
 pkgname=beignet
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A GPGPU System for Intel Ivybridge GPUs'
 arch=('x86_64')
 url='http://cgit.freedesktop.org/beignet/'
@@ -12,13 +12,17 @@ makedepends=('clang' 'cmake' 'python2')
 provides=('opencl-intel')
 conflicts=('opencl-intel')
 source=("https://01.org/sites/default/files/beignet-$pkgver-source.tar.gz"
-	"isnan.patch")
+	"isnan.patch"
+	"gcc6.patch")
 sha256sums=('6a8d875afbb5e3c4fc57da1ea80f79abadd9136bfd87ab1f83c02784659f1d96'
+	    'SKIP'
 	    'SKIP')
 prepare() {
 	cp isnan.patch "$srcdir/Beignet-$pkgver-Source"
+	cp gcc6.patch "$srcdir/Beignet-$pkgver-Source"
 	cd "$srcdir/Beignet-$pkgver-Source"
 	patch -Np1 -i isnan.patch
+	patch -Np1 -i gcc.patch
 	cd "include/CL"
 	rm {opencl.h,cl_platform.h,cl_gl_ext.h,cl.h,cl.hpp,cl_egl.h,cl_ext.h,cl_gl.h}
 	touch dummy.hpp

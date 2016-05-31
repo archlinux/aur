@@ -1,0 +1,51 @@
+From 356c856479207e2514d44d28456a70766691fccc Mon Sep 17 00:00:00 2001
+From: Pan Xiuli <xiuli.pan@intel.com>
+Date: Tue, 3 May 2016 10:58:10 +0800
+Subject: Add support for gcc 6
+
+Signed-off-by: Pan Xiuli <xiuli.pan@intel.com>
+Reviewed-by: Yang Rong <rong.r.yang@intel.com>
+
+diff --git a/backend/src/ir/immediate.hpp b/backend/src/ir/immediate.hpp
+index 3141643..6bc60d5 100644
+--- a/backend/src/ir/immediate.hpp
++++ b/backend/src/ir/immediate.hpp
+@@ -343,7 +343,7 @@ namespace ir {
+       float *f32;
+       double *f64;
+       half *f16;
+-      const Immediate *immVec[];
++      const Immediate **immVec;
+       void *p;
+     } data;     //!< Value to store
+     Immediate operator+ (const Immediate &) const;
+diff --git a/utests/builtin_exp.cpp b/utests/builtin_exp.cpp
+index 406d223..1eaa187 100644
+--- a/utests/builtin_exp.cpp
++++ b/utests/builtin_exp.cpp
+@@ -5,7 +5,7 @@
+ #define udebug 0
+ 
+ #define FLT_MAX 0x1.fffffep127f
+-#define FLT_MIN 0x1.0p-126f
++#define FLT_MIN ldexp(1.0,-126)
+ #define FLT_ULP  (1.0e-6f)
+ 
+ #define printf_c(...) \
+diff --git a/utests/utest_generator.py b/utests/utest_generator.py
+index 84029da..38d9ea0 100644
+--- a/utests/utest_generator.py
++++ b/utests/utest_generator.py
+@@ -4,8 +4,8 @@ import os,sys,re
+ 
+ FLT_MAX_POSI='0x1.fffffep127f'
+ FLT_MIN_NEGA='-0x1.fffffep127f'
+-FLT_MIN_POSI='0x1.0p-126f'
+-FLT_MAX_NEGA='-0x1.0p-126f'
++FLT_MIN_POSI='ldexp(1.0, -126)'
++FLT_MAX_NEGA='ldexp(-1.0, -126)'
+ 
+ paraTypeList={'float':'%e','int':'%d','double':'%lf','uint':'%d','string':'%s'}
+ 
+-- 
+cgit v0.10.2
