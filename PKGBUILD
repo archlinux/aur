@@ -1,8 +1,8 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=realmd-git
 _pkgname=realmd
-pkgver=0.15.1.r2.g40f9583
-pkgrel=3
+pkgver=0.16.2.r14.g8b8b7bf
+pkgrel=1
 pkgdesc="DBus service for joining hosts to Active Directory and FreeIPA realms"
 arch=(i686 x86_64)
 url="http://freedesktop.org/software/realmd/"
