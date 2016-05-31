@@ -1,7 +1,7 @@
 # Maintainer Evgeniy Alekseev <arcanis at archlinux dot org>
 
 pkgname='zsh-autosuggestions'
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='Fish-like autosuggestions for zsh'
 url='https://github.com/zsh-users/zsh-autosuggestions'
@@ -12,7 +12,7 @@ provides=('zsh-autosuggestions-git')
 conflicts=('zsh-autosuggestions-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/zsh-users/${pkgname}/tarball/v${pkgver}")
 install="${pkgname}.install"
-md5sums=('a6dbc0249c0f692cf6e11b9231e33d99')
+md5sums=('465044a2de962f588fbc6d8e64bce79e')
 
 package() {
     install -Dm644 "${srcdir}/zsh-users-${pkgname}"-*"/zsh-autosuggestions.zsh" \
