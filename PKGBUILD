@@ -7,15 +7,15 @@
 
 pkgname=lxqt-admin
 pkgver=0.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="LXQt system administration"
 arch=("i686" "x86_64" "armv6h")
-url="http://lxqt.org"
+url='https://github.com/lxde/lxqt-admin'
 license=("LGPL")
 depends=("liblxqt" "liboobs")
 makedepends=("cmake" "qt5-tools")
-source=("https://downloads.lxqt.org/lxqt/$pkgver/$pkgname-$pkgver.tar.xz"
-        "https://downloads.lxqt.org/lxqt/$pkgver/$pkgname-$pkgver.tar.xz.asc")
+source=("https://github.com/lxde/lxqt-admin/releases/download/0.10.0/lxqt-admin-0.10.0.tar.xz"
+        "https://github.com/lxde/lxqt-admin/releases/download/0.10.0/lxqt-admin-0.10.0.tar.xz.asc")
 sha256sums=("46a5dd35e4bb560643647dfc9439f4a6ba1cdb3fd73af639cb3aca364cd3a895"
             "SKIP")
 validpgpkeys=("169704C6FB490C6892C7F23C37E0AF1FDA48F373") # J. Leclanche
