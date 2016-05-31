@@ -1,7 +1,7 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
 pkgname=mkinitcpio-systemd-tool
-pkgver=1.5.g8cc64e0
+pkgver=1
 pkgrel=1
 pkgdesc='Provisioning tool for systemd in initramfs (systemd-tool)'
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=(
 makedepends=('git')
 install='INSTALL.sh'
 url="https://github.com/random-archer/${pkgname}"
-source=("git+https://github.com/random-archer/${pkgname}.git")
+source=("git+https://github.com/random-archer/${pkgname}.git$(source_fragment)")
 md5sums=('SKIP')
 backup=(
     'etc/mkinitcpio.d/crypttab'
@@ -35,6 +35,16 @@ conflicts=(
     'mkinitcpio-tinyssh'
 )
 
+source_fragment() {
+    local base=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+    local marker="$base/.PKGDEV" # use develop version
+    if [[ -f $marker ]] ; then
+        printf "" # master branch
+    else
+        printf "#tag=v$(pkgver)" # release tag
+    fi
+}
+
 # select version depending on marker file presence
 pkgver() {
     local base=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
@@ -42,10 +52,10 @@ pkgver() {
     local marker="$base/.PKGDEV" # use develop version
     local head_count=$(git -C $repo rev-list --count HEAD)
     local short_hash=$(git -C $repo rev-parse --short HEAD)
-    local release_tag=$(git -C $repo describe --long --tags --match "v[0-9]*")
-    local release_number=$(echo "$release_tag" | sed -r 's/^v([0-9]+)-.*/\1/')
-    local release_version=$(echo "$release_tag" | sed -r 's/^v//;s/-/./g')
+    local release_info=$(git -C $repo describe --long --tags --match "v[0-9]*")
+    local release_number=$(echo "$release_info" | sed -r 's/^v([0-9]+)-.*/\1/')
     local develop_number=$(($release_number + 1)) # expected future version nubmer
+    local release_version=$release_number
     local develop_version="${develop_number}.${head_count}.g${short_hash}"
     if [[ -f $marker ]] ; then
         printf "$develop_version"
