@@ -1,4 +1,4 @@
-# Maintainer: Ian Brunelli (brunelli) <ian@brunelli.me>
+# Maintainer: ELmoussaoui Bilal <bil.elmoussaoui@gmail.com>
 
 pkgname=gnome-twofactorauth-git
 _gitname=TwoFactorAuth
@@ -8,7 +8,7 @@ pkgdesc='Two-Factor Authentication code generator for Gnome'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/bil-elmoussaoui/${_gitname}"
-depends=('desktop-file-utils' 'gobject-introspection' 'gtk3' 'python-dbus' 'python-gobject' 'python-cairo')
+depends=('desktop-file-utils' 'gobject-introspection' 'gtk3' 'python-dbus' 'python-gobject' 'python-cairo', 'python-pyotp')
 makedepends=('git' 'gnome-common' 'intltool' 'itstool' 'python' 'yelp-tools')
 
 options=('!emptydirs')
