@@ -1,11 +1,9 @@
-
-
 #Contributor:Andrea Tarocchi <valdar@email.it>
 #Maintainer: Andrea Tarocchi <valdar@email.it>
 
 pkgname=wesnoth-devel
 pkgver=1.13.4
-pkgrel=1
+pkgrel=2
 pkgdesc="development version of a turn-based strategy game on a fantasy world"
 arch=('i686' 'x86_64')
 url="http://www.wesnoth.org/"
@@ -20,8 +18,7 @@ source=("http://downloads.sourceforge.net/sourceforge/wesnoth/wesnoth-$pkgver.ta
     "wesnoth-devel_editor-icon.xpm"
     "wesnothd-devel.tmpfiles.conf"
     "wesnothd-devel.service"
-    "boost1_60.patch"
-    "boost1_600tests.patch")
+    "patch_gcc6.patch")
  
 md5sums=('70e949917df1b6e3d222469a58d09849'
 'a906eae5d541a51de77038469b1f794b'
@@ -30,8 +27,7 @@ md5sums=('70e949917df1b6e3d222469a58d09849'
 '931e7443fe37b2862ca59f65ded74a0b'
 'ffc4b6c06dcd187855710ed96a55fc8f'
 '959aea3af36e7b2a1be6bf4537ec54b7'
-'1049f1455e829f723e65069c3260277c'
-'b22e2b85f90a4c85226f6e92db1fce78')
+'5182ce65c28a8bd62043c3a7fc09e642')
 
 prepare() {
   cd "${srcdir}/wesnoth-$pkgver"
@@ -48,13 +44,17 @@ prepare() {
 build() {
   cd "${srcdir}/wesnoth-$pkgver"
  
+  #gcc 6 patching
+  patch -p1 < ../../patch_gcc6.patch
+
   scons prefix=/usr program_suffix=-devel datadirname=wesnoth-devel prefsdir=.wesnoth-devel fifodir=/run/wesnothd-devel \
+  boostdir=/usr/include boostlibdir=/usr/include \
   localedir=/usr/share/locale docdir=/usr/share/doc/wesnoth-devel mandir=/usr/share/man/wesnoth-devel python_site_packages_dir=/lib/python/site-packages/wesnoth all
 }
 
 package(){
  cd "${srcdir}/wesnoth-$pkgver"
- scons destdir=${pkgdir} install
+ scons destdir=${pkgdir} boostdir=/usr/include boostlibdir=/usr/include install
  
  #INSTALLING of menu entry and icons:
  install -D -m644 ../../wesnoth-devel.desktop ${pkgdir}/usr/share/applications/wesnoth-devel.desktop
