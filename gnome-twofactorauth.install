@@ -9,6 +9,5 @@ post_upgrade() {
 }
 
 post_remove() {
-  pip uninstall pyotp
   post_install
 }

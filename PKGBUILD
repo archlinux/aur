@@ -25,7 +25,6 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${_gitname}"
-	pip install --upgrade pyotp
 	./autogen.sh --prefix=/usr --disable-schemas-compile
 	make
 }
