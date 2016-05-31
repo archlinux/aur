@@ -1,7 +1,7 @@
 # Maintainer: JKA Network (JoseluCross, Kprkpr, Yukialba) <contacto@jkanetwork.com>
 pkgname=apw
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Package Wrapper - package wrapper for pacman (and more)"
 arch=('any')
 url="http://proyecto.jkanetwork.com"
@@ -14,5 +14,6 @@ md5sums=('SKIP')
 PKGEXT=".pkg.tar.xz"
 package() {
   mkdir -p $pkgdir/usr/bin
+  echo "pacman" > "$pkgdir/etc/apw.conf"
   install -Dm755 $srcdir/apw "$pkgdir/usr/bin/" 
 }
