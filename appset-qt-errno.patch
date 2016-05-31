@@ -1,0 +1,68 @@
+diff -ruN appset-qt-0.7.2-sources.orig/Qt/AppSet-Qt/mainwindow.cpp appset-qt-0.7.2-sources/Qt/AppSet-Qt/mainwindow.cpp
+--- appset-qt-0.7.2-sources.orig/Qt/AppSet-Qt/mainwindow.cpp	2016-05-31 17:29:22.470617773 +0300
++++ appset-qt-0.7.2-sources/Qt/AppSet-Qt/mainwindow.cpp	2016-05-31 17:30:12.202129800 +0300
+@@ -84,22 +84,22 @@
+ #ifdef unix
+     as = new AS::QTNIXEngine(new InputProvider());
+ 
+-    int errno=0;
++    int errorNumber=0;
+     pp=privilegedExecuter(qApp->argc(),qApp->argv());
+     bool privileged=pp>0 && pp!=9 && pp!=11;
+     if(privileged){
+         this->setWindowTitle("AppSet-Qt (SUPERUSER)");        
+     }else{
+         system("appsettray-qt &");
+ 
+         ui->cancelOpsWidget->hide();
+     }
+     argsParsed=pp!=4 && pp!=0;
+     if((errno=((AS::QTNIXEngine*)as)->configure("/etc/appset.conf",privileged?"/tmp/as.tmp":"/tmp/asuser.tmp",!privileged))){
+         if(privileged){
+             QMessageBox errMsg;
+             errMsg.setText(tr("Errors while initializing the system!"));
+-            errMsg.setInformativeText(((AS::QTNIXEngine*)as)->getConfErrStr(errno));
++            errMsg.setInformativeText(((AS::QTNIXEngine*)as)->getConfErrStr(errorNumber));
+             errMsg.setIcon(QMessageBox::Critical);
+             errMsg.exec();
+         }
+diff -ruN appset-qt-0.7.2-sources.orig/Qt/AppSetTray-Qt/trayicon.cpp appset-qt-0.7.2-sources/Qt/AppSetTray-Qt/trayicon.cpp
+--- appset-qt-0.7.2-sources.orig/Qt/AppSetTray-Qt/trayicon.cpp	2016-05-31 17:29:22.467284562 +0300
++++ appset-qt-0.7.2-sources/Qt/AppSetTray-Qt/trayicon.cpp	2016-05-31 17:29:34.096858684 +0300
+@@ -42,8 +42,8 @@
+ 
+ #ifdef unix
+     as = new AS::QTNIXEngine(new InputProvider());
+-    int errno=0;
+-    if((errno=((AS::QTNIXEngine*)as)->configure("/etc/appset.conf","/tmp/astray.tmp",true))){
++    int errorNumber=0;
++    if((errorNumber=((AS::QTNIXEngine*)as)->configure("/etc/appset.conf","/tmp/astray.tmp",true))){
+         exit(1);
+     }
+ #endif
+diff -ruN appset-qt-0.7.2-sources.orig/Qt/libappset-qt/asqtnixengine.cpp appset-qt-0.7.2-sources/Qt/libappset-qt/asqtnixengine.cpp
+--- appset-qt-0.7.2-sources.orig/Qt/libappset-qt/asqtnixengine.cpp	2016-05-31 17:29:22.470617773 +0300
++++ appset-qt-0.7.2-sources/Qt/libappset-qt/asqtnixengine.cpp	2016-05-31 17:29:37.086749191 +0300
+@@ -210,8 +210,8 @@
+     return status;
+ }
+ 
+-QString AS::QTNIXEngine::getConfErrStr(int errno){
+-    switch(errno){
++QString AS::QTNIXEngine::getConfErrStr(int errorNumber){
++    switch(errorNumber){
+     case 1:
+         return QObject::tr("Cannot open appset.conf file, check your AppSet configuration");
+     case 2:
+diff -ruN appset-qt-0.7.2-sources.orig/Qt/libappset-qt/asqtnixengine.h appset-qt-0.7.2-sources/Qt/libappset-qt/asqtnixengine.h
+--- appset-qt-0.7.2-sources.orig/Qt/libappset-qt/asqtnixengine.h	2016-05-31 17:29:22.470617773 +0300
++++ appset-qt-0.7.2-sources/Qt/libappset-qt/asqtnixengine.h	2016-05-31 17:29:40.893276456 +0300
+@@ -48,7 +48,7 @@
+     public:
+         QTNIXEngine(InputProvider *ip){inputProvider=ip;stopRequested=false;buildBatch=false;batching = false;}
+ 
+-        QString getConfErrStr(int errno);        
++        QString getConfErrStr(int errorNumber);        
+ 
+         int compareVersions(const QString &s1, const QString &s2);
+ 
