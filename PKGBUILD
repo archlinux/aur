@@ -15,7 +15,8 @@ optdepends=(
 makedepends=('git')
 install='INSTALL.sh'
 url="https://github.com/random-archer/${pkgname}"
-source=("git+https://github.com/random-archer/${pkgname}.git$(source_fragment)")
+_fragment=$([[ -f .PKGDEV ]] && printf "" || printf "#tag=v$pkgver")
+source=("git+https://github.com/random-archer/${pkgname}.git${_fragment}")
 md5sums=('SKIP')
 backup=(
     'etc/mkinitcpio.d/crypttab'
@@ -34,16 +35,6 @@ conflicts=(
     'mkinitcpio-dropbear'
     'mkinitcpio-tinyssh'
 )
-
-source_fragment() {
-    local base=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-    local marker="$base/.PKGDEV" # use develop version
-    if [[ -f $marker ]] ; then
-        printf "" # master branch
-    else
-        printf "#tag=v$(pkgver)" # release tag
-    fi
-}
 
 # select version depending on marker file presence
 pkgver() {
