@@ -2,19 +2,18 @@
 # Maintainer: Andreas Born <futur[DOT]andy[AT]goooglemail[DOT]com>
 # Contributor: Andreas Born <futur[DOT]andy[AT]goooglemail[DOT]com>
 pkgname=lrz-syncshare
-pkgver=10.4.321
+pkgver=10.5.391
 pkgrel=1
 pkgdesc="Sync client for the LRZ Sync+Share service"
 url='https://syncandshare.lrz.de/'
 arch=('any')
 license=('custom')
 depends=('desktop-file-utils' 'hicolor-icon-theme' 'java-runtime-jre=8' 'xdg-utils')
-install=lrz-syncshare.install
 source=("https://syncandshare.lrz.de/client_deployment/LRZ_Sync_Share_Latest_Linux.tar.gz")
-md5sums=('b2082917476ab62ac7030f9e8116dbf5')
+md5sums=('1e4b437193141b0c6a91b71cf8599ef9')
 
 pkgver() {
-  pkgver="$(cat "${srcdir}/LRZ_Sync_Share/VERSION")"
+  cat "${srcdir}/LRZ_Sync_Share/VERSION"
 }
 
 prepare() {
