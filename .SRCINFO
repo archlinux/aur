@@ -1,0 +1,13 @@
+pkgbase = minetest-mod-mesecons
+	pkgdesc = Mod for minetest that adds digital circuitry
+	pkgver = 20160515
+	pkgrel = 1
+	url = https://github.com/Jeija/minetest-mod-mesecons
+	arch = any
+	license = LGPLv3
+	depends = minetest-common
+	source = https://github.com/Jeija/minetest-mod-mesecons/archive/2016.05.15.tar.gz
+	sha512sums = cf250e6b2c130b32eab89d6257814a21f70da15b7688c5728886a861495fcebf5e0d7eb5e793278a88dcc5abb51bb21dceddf49155eec6f0eaa2c64729401b8e
+
+pkgname = minetest-mod-mesecons
+
