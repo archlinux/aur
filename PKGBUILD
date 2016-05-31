@@ -7,7 +7,7 @@
 
 _basename=wine
 pkgname=wine-ivb
-pkgver=1.9.7
+pkgver=1.9.11
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -16,10 +16,10 @@ source=(https://dl.winehq.org/wine/source/1.9/$_basename-$_pkgbasever.tar.bz2{,.
         30-win32-aliases.conf
         patch-$pkgver-ivb.patch
         patch_temp_constants.patch)
-sha512sums=('9946d3c69941f26e56ab78cde3c91d91debb7fc5d63f8758aa5a4e0bcdfb78c86d43f3b736b81b761bb5924479491ed00727a739e0117d3e9d5e3b8c3a90004a'
+sha512sums=('3c2037558b0e3dc833b68e18bee91642f22d19b201c604cd95c09a33ebe72ee1252139e2eb138efea666cf24bb727232b12d4c456459068ab228bfe951c793b2'
             'SKIP'
             '6e54ece7ec7022b3c9d94ad64bdf1017338da16c618966e8baf398e6f18f80f7b0576edf1d1da47ed77b96d577e4cbb2bb0156b0b11c183a0accf22654b0a2bb'
-            '7b6d0076846c8f0b1c45971fecf43d57bb9ec381e403641f22a7c1b10bf4329f0a4a88d2362a8bbec7d0a601a667eb1002d5192b64c204e4a7e333878ef92c8d'
+            'dfc3491d015ca5fbd074290869fad296f168383aba57a2b26392b05570e37d84a939cae141107fed02a06589472da9505366cb97a894c9582c9492bec4b35a93'
             '83583553d8db60e671679adcddedb87a2f8a740d36e5cdffef4a0cf2b995e48be216e53a7d1ee3bbeafd5bf9d0938b4c32b42265620c8e7c5bba967da893be11')
 validpgpkeys=(5AC1A08B03BD7A313E0A955AF5E6E9EEB9461DD7
               DA23579A74D4AD9AF9D3F945CEFAC8EAAF17519D)
