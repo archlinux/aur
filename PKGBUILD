@@ -1,17 +1,17 @@
 # Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
 _pkgbasename=libxslt
 pkgname=lib32-libxslt
-pkgver=1.1.28
-pkgrel=2
+pkgver=1.1.29
+pkgrel=1
 pkgdesc="XML stylesheet transformation library (32-bit)"
 arch=('x86_64')
 url="http://xmlsoft.org/XSLT/"
 license=('custom')
-depends=('lib32-libxml2' 'lib32-libgcrypt' 'libxslt')
+depends=('lib32-libxml2' 'lib32-libgcrypt' 'libxslt' 'lib32-xz')
 makedepends=(gcc-multilib)
 options=(!libtool)
 source=(ftp://xmlsoft.org/libxslt/${_pkgbasename}-${pkgver}.tar.gz)
-md5sums=('9667bf6f9310b957254fdcf6596600b7')
+md5sums=('a129d3c44c022de3b9dcf6d6f288d72e')
 
 build() {
   export CC="gcc -m32"
