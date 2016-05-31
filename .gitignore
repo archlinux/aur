@@ -8,8 +8,8 @@
 /*.xz
 /*.log
 
-# version update marker file
-.PKGVER
-
-# development version selection marker file
+# marker file: select latest development version
 .PKGDEV
+
+# marker file: select latest release version 
+.PKGREL

@@ -2,7 +2,7 @@
 
 pkgdesc='Provisioning tool for systemd in initramfs (systemd-tool)'
 pkgname=mkinitcpio-systemd-tool
-pkgver=2
+pkgver=
 pkgrel=1
 depends=(
     'mkinitcpio' 
@@ -39,23 +39,26 @@ license=('Apache')
 
 url="https://github.com/random-archer/${pkgname}"
 
-# select develop vs release version depending on marker file presence
+# select version type depending on marker file presense
+# absense of any marker files selects the curernt PKGBUILD value of pkgver
+_marker_develop='.PKGDEV' # create this file to use latest development version (master branch)
+_marker_release='.PKGREL' # create this file to use latest release version (named tag vNNN)
 
-_marker='.PKGDEV' # create this file to install a development version
-_fragment=$([[ -f ${_marker} ]] && printf "" || printf "#tag=v$pkgver")
+_fragment=$([[ -f ${_marker_develop} ]] && printf "" || printf "#tag=v$pkgver")
 source=("git+${url}.git${_fragment}")
 
 pkgver() {
     local base=$(cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd)
     local repo="$base/$pkgname" # bare repo location
-    local marker="$base/${_marker}"
     local head_count=$(git -C $repo rev-list --count HEAD)
     local short_hash=$(git -C $repo rev-parse --short HEAD)
     local release_info=$(git -C $repo describe --long --tags --match "v[0-9]*")
     local release_number=$(echo "$release_info" | sed -r 's/^v([0-9]+)-.*/\1/')
     local release_version="${release_number}" # example: 3
-    local develop_version="${release_number}.${head_count}.${short_hash}" #example: 3.25.d069dad 
-    [[ -f $marker ]] && printf "$develop_version" || printf "$release_version"
+    local develop_version="${release_number}.${head_count}.${short_hash}" # example: 3.25.d069dad
+    if [[ -f "$base/${_marker_develop}" ]] ; then printf "$develop_version" ;
+    elif [[ -f "$base/${_marker_release}" ]] ; then printf "$release_version" ;
+    else printf "$pkgver"
 }
 
 ####
