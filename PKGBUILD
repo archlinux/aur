@@ -6,6 +6,7 @@ pkgdesc="Development version of dotgit"
 url="http://github.com/Cube777/dotgit"
 arch=('any')
 depends=('git' 'sed' 'grep' 'bash' )
+conflicts=('dotgit')
 source=('git+https://github.com/Cube777/dotgit.git')
 md5sums=('SKIP')
 
