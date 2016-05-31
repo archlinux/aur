@@ -1,7 +1,7 @@
 # Maintainer: Cedric Meury <cedric@meury.com>
 pkgname=uchiwa
 pkgver=0.14.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple dashboard for the Sensu monitoring framework, built with Go and AngularJS."
 arch=('x86_64' 'i686')
 url="https://www.uchiwa.io/"

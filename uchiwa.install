@@ -5,7 +5,7 @@ post_install() {
 
 post_upgrade() {
   # create user/group that the daemon will run as by default, do not delete this on uninstall, as it will own files
-  getent group uchiwa >/dev/null || groupadd uchiwa
-  getent passwd uchiwa >/dev/null || useradd -c 'sensu dashboard service user' -g uchiwa -M -s /bin/false uchiwa
+  getent group uchiwa >/dev/null || groupadd -r uchiwa
+  getent passwd uchiwa >/dev/null || useradd -r -c 'sensu dashboard service user' -g uchiwa -M -s /bin/false uchiwa
 }
 
