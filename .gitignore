@@ -1,13 +1,9 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
-#
 # eclipse meta data
-#
 .project
 
-#
 # generated resources
-#
 /*/
 /*.xz
 /*.log
