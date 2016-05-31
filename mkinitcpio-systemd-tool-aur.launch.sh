@@ -4,9 +4,8 @@
 
 # build package automation
 
-location=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+readonly location=$(cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd)
 source $location/PKGBUILD 
-cd $location
 
 is_root() {
     [[ $(id -u) == 0 ]]
@@ -17,59 +16,59 @@ has_makepkg() {
 }
 
 
-provision() {
+do_provision() {
     if has_makepkg ; then
-        provision_proper
+        do_provision_proper
     else
-        provision_simple
+        do_provision_simple
     fi
 }
 
-provision_proper() {
-    echo "// provision_proper"
+do_provision_proper() {
+    echo "// do_provision_proper"
     local suno=""
     if is_root ; then
         chown -R nobody $location
         suno="sudo -u nobody"
     fi
     $suno makepkg --log --cleanbuild --install --force
+    $suno makepkg --printsrcinfo > .SRCINFO
 }
 
-provision_simple() {
-    echo "// provision_simple"
-    local source="https://github.com/random-archer/mkinitcpio-systemd-tool.git"
-    if [ -e "$pkgname" ] ; then
-        cd "$pkgname" && git pull
+do_provision_simple() {
+    echo "// do_provision_simple"
+    local source="$url.git"
+    if [[ -e $pkgname ]] ; then
+        git -C $pkgname pull
     else
-        git clone "$source"
+        git clone $source
     fi
-    cd $location
 }
 
-version() {
-    echo "pkgver $(pkgver)"
+do_version() {
+    echo "version $pkgver -> $(pkgver)"
     if has_makepkg; then
-        version_proper
+        do_version_proper
     else
-        version_simple
+        do_version_simple
     fi
 }
 
-version_simple() {
-    echo "// version_simple"
+do_version_simple() {
+    echo "// do_version_simple"
     
     local pkgver=$(pkgver)
     local file_list="PKGBUILD .SRCINFO"
     
     local file
     for file in $file_list ; do
-        sed -i "s:^\([ ]*pkgver[ ]*=[ ]*\).*:\1$pkgver:" "$file"
-        #cat $file | grep "pkgver"
+        sed -r -i "s%^([ ]*pkgver[ ]*=[ ]*).*%\1$pkgver%" "$file"
+        sed -r -i "s%#tag=v[0-9]+%#tag=v$pkgver%"  "$file"
     done
 }
 
-version_proper() {
-    echo "// version_proper"
+do_version_proper() {
+    echo "// do_version_proper"
     
     local suno=""
     if is_root ; then
@@ -83,8 +82,8 @@ version_proper() {
                         
 }
 
-commit() {
-    echo "// commit"
+do_commit() {
+    echo "// do_commit"
     
     git add --all  :/
     git status 
@@ -96,16 +95,19 @@ commit() {
     
 }
 
-clean() {
+do_clean() {
+    echo "// clean"
     rm -rf "$location/$pkgname"
 }
 
 ###
 
-provision
+set -e
 
-version
+do_provision
 
-commit
+do_version
 
-clean
+do_commit
+
+do_clean
