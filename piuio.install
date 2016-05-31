@@ -1,4 +1,4 @@
-KERNEL_VERSION=4.0-ARCH
+KERNEL_VERSION=4.5-ARCH
 
 post_install() {
 	echo ">>> Updating module dependencies. Please wait..."

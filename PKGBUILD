@@ -2,8 +2,8 @@
 # To build for alternate kernels, change pkgname to match
 pkgname=piuio
 #pkgname=piuio-lts
-pkgver=0.4
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 _kernelname=${pkgname#piuio}
 _srcname=piuio
 pkgdesc="Kernel driver for the PIUIO arcade input device"
@@ -13,7 +13,7 @@ license=('GPL2')
 makedepends=('kmod' "linux$_kernelname-headers")
 install=$_srcname.install
 source=("https://github.com/djpohly/$_srcname/archive/v$pkgver.tar.gz")
-sha256sums=('17580ca9862d2b39f5c9d8d033423842c0d71ce9ce0a99b27ef4e9c1e50a33bb')
+sha256sums=('47b5b6a08b488d3cb4701054be3f419030a677c2ab2f594eb2efb630818c2d11')
 
 build() {
   # Build against currently installed headers for the given kernel
