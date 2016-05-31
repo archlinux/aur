@@ -1,7 +1,7 @@
 pkgbase = apw
 	pkgdesc = A Package Wrapper - package wrapper for pacman (and more)
 	pkgver = 1.5
-	pkgrel = 2
+	pkgrel = 3
 	url = http://proyecto.jkanetwork.com
 	arch = any
 	groups = jka-toolkit
