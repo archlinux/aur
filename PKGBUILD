@@ -13,8 +13,10 @@ provides=('opencl-intel')
 conflicts=('opencl-intel')
 source=("https://01.org/sites/default/files/beignet-$pkgver-source.tar.gz"
 	"isnan.patch"
-	"gcc6.patch")
+	"gcc6.patch"
+	"clangfix.patch")
 sha256sums=('6a8d875afbb5e3c4fc57da1ea80f79abadd9136bfd87ab1f83c02784659f1d96'
+	    'SKIP'
 	    'SKIP'
 	    'SKIP')
 prepare() {
