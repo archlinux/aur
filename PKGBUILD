@@ -1,7 +1,7 @@
 # Maintainer: gls <ghostlovescorebg at gmail dot com>
 
 pkgname='perl-dancer'
-pkgver='1.3142'
+pkgver='1.3202'
 pkgrel='1'
 pkgdesc="A minimal-effort oriented web application framework"
 arch=('any')
@@ -12,8 +12,8 @@ makedepends=()
 optdepends=('perl-yaml: YAML configuration files'
   	    'perl-template-toolkit: Template Toolkit rendering')
 url='http://search.cpan.org/dist/Dancer'
-source="http://search.cpan.org/CPAN/authors/id/Y/YA/YANICK/Dancer-${pkgver}.tar.gz"
-md5sums=('3072888c96c377a25ac56334e011b953')
+source=("http://search.cpan.org/CPAN/authors/id/B/BI/BIGPRESH/Dancer-${pkgver}.tar.gz")
+md5sums=('63767e3afc4ee268d78da01345cf79c1')
 _dist='Dancer'
 
 build() {
