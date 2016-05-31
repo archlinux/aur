@@ -1,0 +1,13 @@
+pkgbase = leave
+	pkgdesc = Reminds you when you have to leave
+	pkgver = 1.12
+	pkgrel = 1
+	url = https://launchpad.net/ubuntu/+source/leave/1.12-2.1
+	arch = i686
+	arch = x86_64
+	license = BSD
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/leave_1.12.orig.tar.gz
+	sha1sums = 499943d84f0425c4c774563b0d1ae911f565ad1e
+
+pkgname = leave
+
