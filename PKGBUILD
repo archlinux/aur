@@ -29,7 +29,7 @@ provides=('shotcut')
 conflicts=('shotcut')
 
 source=(
-    "${srcname}::git+https://github.com/mltframework/shotcut.git"
+    "${srcname}::git+${url}.git"
     'shotcut.desktop'
     'melt.patch'
 )
