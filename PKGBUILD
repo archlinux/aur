@@ -3,7 +3,8 @@
 # Maintainer: ava1ar <mail(at)ava1ar(dot)me>
 
 pkgname=kwalletmanager4
-pkgver=15.04.3
+epoch=1
+pkgver=4.14.3
 pkgrel=1
 pkgdesc='KDE Wallet Management Tool (KDE4 version)'
 url='http://kde.org/applications/system/kwalletmanager/'
@@ -12,8 +13,8 @@ license=('GPL' 'LGPL' 'FDL')
 depends=('kdebase-runtime' 'kdepimlibs')
 makedepends=('cmake' 'automoc4')
 install=${pkgname}.install
-source=("http://download.kde.org/stable/applications/${pkgver}/src/kwalletmanager-${pkgver}.tar.xz")
-sha1sums=('47e892766dee14163e73bbad696a1ab8482082bc')
+source=("http://download.kde.org/stable/${pkgver}/src/kwalletmanager-${pkgver}.tar.xz")
+sha1sums=('99981321f1891a77008bb2de4985f09739e75ef3')
 
 prepare() {
   rm -rf build && mkdir build
