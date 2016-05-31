@@ -25,14 +25,16 @@ pkgbase = arm-none-eabi-gcc53-linaro
 	options = docs
 	source = http://releases.linaro.org/components/toolchain/gcc-linaro/5.3-2016.02/gcc-linaro-5.3-2016.02.tar.xz
 	source = http://releases.linaro.org/15.01/components/toolchain/newlib-linaro/newlib-linaro-2.2.0-2015.01.tar.xz
-	source = gcc-5.3-fix-build-with-gcc-6.patch
-	source = gcc-5.3-multilib2.patch
-	source = gcc-5.3-no-exceptions.patch
+	source = 0100-gcc-fix-build-with-gcc-6.patch
+	source = 0200-gcc-no-exceptions.patch
+	source = 0300-gcc-multilib2.patch
+	source = 1039-libcc1-fix-libcc1-s-install-path-and-rpath.patch
 	sha256sums = 549c1416c0e2025c8e4c07c7c970863437ac707429b268b36a9a426c45298090
 	sha256sums = d29fe53d70f545c2fb080b9686e05d0f8af5088fec9b7dc78bc788a98765ef99
-	sha256sums = b328e9cdca4e2869490d932191b78ef1a61c60382cea3a23d1ef86e7c1fb86a7
-	sha256sums = 104b9aa652804a56338470983e6975af1d1e5440eb8bddae3a01a966d2b332cf
-	sha256sums = 3a1d6a17aba8a578ade3552a6d1beb66a129fb4f3268539596d39cbbef88ac6c
+	sha256sums = 318919dd575819622ddaec1cf593506411fa4435bc9af662155572c30a7baa88
+	sha256sums = 76eab14830216c774291d2ac35d4b4690f3273aa8c630a2c1546f02538847d8a
+	sha256sums = c9b6bc1dd53f9b4b80f5fdacdef94c9fce0e516c16fb78063107b66ba2e9fdd1
+	sha256sums = fa08269d6a748631b07b55a5fe00fa518b2f6e04356a3d6634c60f3c3ece3b07
 
 pkgname = arm-none-eabi-gcc53-linaro
 

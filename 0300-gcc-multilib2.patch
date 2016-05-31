@@ -1,5 +1,5 @@
---- gcc/config/arm/t-arm-elf.orig	2013-01-10 21:38:27.000000000 +0100
-+++ gcc/config/arm/t-arm-elf	2013-06-02 00:02:10.473472897 +0200
+--- a/gcc/config/arm/t-arm-elf	2013-01-10 21:38:27.000000000 +0100
++++ b/gcc/config/arm/t-arm-elf	2013-06-02 00:02:10.473472897 +0200
 @@ -18,73 +18,29 @@
  
  MULTILIB_OPTIONS     = marm/mthumb

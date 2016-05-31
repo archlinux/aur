@@ -1,5 +1,5 @@
---- gcc/cp/Make-lang.in
-++++ gcc/cp/Make-lang.in
+--- a/gcc/cp/Make-lang.in
+++++ b/gcc/cp/Make-lang.in
 @@ -111,7 +111,7 @@ else
  # deleting the $(srcdir)/cp/cfns.h file.
  $(srcdir)/cp/cfns.h:
@@ -11,8 +11,8 @@
  #
 diff --git gcc/cp/cfns.gperf gcc/cp/cfns.gperf
 index 05ca753..d9b16b8 100644
---- gcc/cp/cfns.gperf
-+++ gcc/cp/cfns.gperf
+--- a/gcc/cp/cfns.gperf
++++ b/gcc/cp/cfns.gperf
 @@ -1,3 +1,5 @@
 +%language=C++
 +%define class-name libc_name
@@ -36,8 +36,8 @@ index 05ca753..d9b16b8 100644
  # The standard C library functions, for feeding to gperf; the result is used
 diff --git gcc/cp/cfns.h gcc/cp/cfns.h
 index c845ddf..65801d1 100644
---- gcc/cp/cfns.h
-+++ gcc/cp/cfns.h
+--- a/gcc/cp/cfns.h
++++ b/gcc/cp/cfns.h
 @@ -1,5 +1,5 @@
 -/* ANSI-C code produced by gperf version 3.0.3 */
 -/* Command-line: gperf -o -C -E -k '1-6,$' -j1 -D -N libc_name_p -L ANSI-C cfns.gperf  */
@@ -109,8 +109,8 @@ index c845ddf..65801d1 100644
      {
 diff --git gcc/cp/except.c gcc/cp/except.c
 index 221971a..32340f5 100644
---- gcc/cp/except.c
-+++ gcc/cp/except.c
+--- a/gcc/cp/except.c
++++ b/gcc/cp/except.c
 @@ -1030,7 +1030,8 @@ nothrow_libfn_p (const_tree fn)
       unless the system headers are playing rename tricks, and if
       they are, we don't want to be confused by them.  */

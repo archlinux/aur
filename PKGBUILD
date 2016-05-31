@@ -1,5 +1,7 @@
 # Maintainer: Johnny Halfmoon <jhalfmoon@milksnot.com>
 # Latest sources are at http://releases.linaro.org/components/toolchain/gcc-linaro/
+# NOTE: I get my patches from the following location. There might be a better source. If so, let me know.
+# https://github.com/01org/luv-yocto/tree/master/meta/recipes-devtools/gcc/gcc-5.3
 
 pkgname=arm-none-eabi-gcc53-linaro
 _relver=5.3
@@ -25,9 +27,10 @@ conflicts=('arm-none-eabi-gcc' 'cross-arm-none-eabi-gcc')
 options=(staticlibs !libtool !emptydirs !strip zipman docs)
 source=(http://releases.linaro.org/components/toolchain/gcc-linaro/${_relverdate}/gcc-linaro-${_relverdate}.tar.xz
         http://releases.linaro.org/${_newlibvershort}/components/toolchain/newlib-linaro/newlib-${_newlibver}.tar.xz
-        gcc-${_relver}-fix-build-with-gcc-6.patch
-        gcc-${_relver}-multilib2.patch
-        gcc-${_relver}-no-exceptions.patch)
+        0100-gcc-fix-build-with-gcc-6.patch
+        0200-gcc-no-exceptions.patch
+        0300-gcc-multilib2.patch
+        1039-libcc1-fix-libcc1-s-install-path-and-rpath.patch)
 _basedir=gcc-linaro-${_relverdate}
 
 build() {
@@ -39,10 +42,9 @@ hortdate=14.09
 _reldate=20${_relshortdate}
 
 cd ${srcdir}/${_basedir}
-  patch -Np0 -i "${srcdir}/gcc-${_relver}-multilib2.patch"
-  patch -Np0 -i "${srcdir}/gcc-${_relver}-no-exceptions.patch"
-  patch -Np0 -i "${srcdir}/gcc-${_relver}-fix-build-with-gcc-6.patch"
-
+  find ${srcdir}/*.patch | while read PATCH ; do
+    patch -Np1 -i $PATCH
+  done
   mkdir build
   cd build
 
@@ -87,6 +89,7 @@ package() {
 
 sha256sums=('549c1416c0e2025c8e4c07c7c970863437ac707429b268b36a9a426c45298090'
             'd29fe53d70f545c2fb080b9686e05d0f8af5088fec9b7dc78bc788a98765ef99'
-            'b328e9cdca4e2869490d932191b78ef1a61c60382cea3a23d1ef86e7c1fb86a7'
-            '104b9aa652804a56338470983e6975af1d1e5440eb8bddae3a01a966d2b332cf'
-            '3a1d6a17aba8a578ade3552a6d1beb66a129fb4f3268539596d39cbbef88ac6c')
+            '318919dd575819622ddaec1cf593506411fa4435bc9af662155572c30a7baa88'
+            '76eab14830216c774291d2ac35d4b4690f3273aa8c630a2c1546f02538847d8a'
+            'c9b6bc1dd53f9b4b80f5fdacdef94c9fce0e516c16fb78063107b66ba2e9fdd1'
+            'fa08269d6a748631b07b55a5fe00fa518b2f6e04356a3d6634c60f3c3ece3b07')
