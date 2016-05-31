@@ -13,7 +13,7 @@ makedepends=('nodejs' 'electron' 'npm' 'git' 'gcc' 'libx11')
 optdepends=('gnome-keyring' 'lsb-release' 'libxtst' 'desktop-file-utils: Needed to update desktop icon database')
 provides=('gpmdp')
 replaces=('google-play-music-desktop-player-git')
-conflicts=('google-play-music-player-desktop-git' 'gpmdp')
+conflicts=('google-play-music-desktop-player-git' 'gpmdp')
 install=gpmdp-git.install
 source=("git+https://github.com/MarshallOfSound/Google-Play-Music-Desktop-Player-UNOFFICIAL-.git"
         "gpmdp.desktop"
