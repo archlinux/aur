@@ -1,7 +1,7 @@
 pkgname=mutt-sidebar
 _pkgname=mutt
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Small but very powerful text-based mail client with sidebar and trash patches from NeoMutt'
 url='http://www.mutt.org/'
 license=('GPL')
@@ -15,14 +15,14 @@ source=("http://ftp.mutt.org/pub/mutt/${_pkgname}-${pkgver}.tar.gz"{,.asc}
         "trash.patch")
 sha1sums=('ff1c76209a5c299018fc72b9e2e1ab98bf5138dd'
           'SKIP'
-          '4303a9aa21265e5fc52da8624b165c80849d15a5'
-          '44e6bf580c9e4495c2f81fc23878ad139c4c73a2')
+          '7ac8afb3e65fc06ffcc8d49ba8f6fc73de668606'
+          '4ade2b9e92181e7084d4b636095e92d681692798')
 validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  patch -Np1 -i "${srcdir}/sidebar.patch"
   patch -Np1 -i "${srcdir}/trash.patch"
+  patch -Np1 -i "${srcdir}/sidebar.patch"
 }
 
 build() {
