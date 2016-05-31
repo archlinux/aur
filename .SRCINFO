@@ -1,0 +1,18 @@
+pkgbase = kernel-updated-git
+	pkgdesc = Check if you need to reboot due to an updated kernel
+	pkgver = 12
+	pkgrel = 1
+	url = https://github.com/rnestler/kernel-updated
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	provides = kernel-updated
+	conflicts = kernel-updated
+	source = git://github.com/rnestler/kernel-updated.git
+	md5sums = SKIP
+
+pkgname = kernel-updated-git
+

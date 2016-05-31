@@ -1,0 +1,31 @@
+# Maintainer: rnestler
+
+_pkgname=kernel-updated
+pkgname=${_pkgname}-git
+pkgver=12
+pkgrel=1
+pkgdesc='Check if you need to reboot due to an updated kernel'
+arch=('i686' 'x86_64')
+url="https://github.com/rnestler/${_pkgname}"
+license=('MIT')
+makedepends=('git' 'rust' 'cargo')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("git://github.com/rnestler/${_pkgname}.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  git rev-list --count HEAD
+}
+
+build() {
+  cd "$srcdir/$_pkgname"
+  cargo build --release
+}
+
+package() {
+  cd "$srcdir/$_pkgname"
+  mkdir -p "${pkgdir}/usr/bin"
+  cp -p target/release/kernel-updated "${pkgdir}/usr/bin"
+}
