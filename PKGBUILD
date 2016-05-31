@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${_gitname}"
-	./autogen.sh --prefix=/usr
+	./autogen.sh --prefix=/usr --disable-schemas-compile
 	make
 }
 
