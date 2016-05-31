@@ -1,6 +1,6 @@
 # Maintainer: ELmoussaoui Bilal <bil.elmoussaoui@gmail.com>
 
-pkgname=gnome-twofactorauth-git
+pkgname=gnome-twofactorauth
 _gitname=TwoFactorAuth
 pkgver=0.1beta2
 pkgrel=1
@@ -15,7 +15,7 @@ options=('!emptydirs')
 install=gnome-twofactorauth.install
 source=("https://github.com/bil-elmoussaoui/TwoFactorAuth/archive/v${pkgver}.zip")
 md5sums=('SKIP')
-conflicts=('gnome-twofactorauth')
+conflicts=('gnome-twofactorauth-git')
 provides=("gnome-twofactorauth=$pkgver")
 
 build() {
