@@ -1,0 +1,11 @@
+diff -aur package.pristine/swac-record.pro package.new/swac-record.pro
+--- package.pristine/swac-record.pro	2016-05-31 19:57:23.701366152 +0200
++++ package.new/swac-record.pro	2016-05-31 19:57:48.644520470 +0200
+@@ -46,6 +46,6 @@
+ CONFIG += link_pkgconfig
+ PKGCONFIG = portaudio-2.0 flac++ flac
+ 
+-target.path=/usr/local/bin/$$TARGET
++target.path=/usr/bin/$$TARGET
+ INSTALLS += target
+ 

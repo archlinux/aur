@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=swac-record
+GenericName=Systematic Audio Recorder
+Comment=Systematically record words or expressions
+Icon=default
+Exec=/usr/bin/swac-record
+Categories=AudioVideo;Audio;Recorder;
