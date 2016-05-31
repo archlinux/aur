@@ -1,5 +1,5 @@
 pkgname=aqemu
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="QEMU GUI written in Qt5"
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ license=('GPL2')
 depends=('qemu' 'qt5-base' 'libvncserver')
 makedepends=('cmake' 'qt5-base')
 source=("aqemu-$pkgver.tar.gz::https://github.com/tobimensch/aqemu/archive/v${pkgver}.tar.gz")
-md5sums=('d2540b513674d7242f112e222ba0fa2a')
+md5sums=('cd7f6077a5a49a25450dc007532b0f95')
 
 build() {
 

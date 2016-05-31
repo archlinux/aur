@@ -1,6 +1,6 @@
 pkgbase = aqemu
 	pkgdesc = QEMU GUI written in Qt5
-	pkgver = 0.9.1
+	pkgver = 0.9.2
 	pkgrel = 1
 	url = https://github.com/tobimensch/aqemu
 	arch = i686
@@ -11,8 +11,8 @@ pkgbase = aqemu
 	depends = qemu
 	depends = qt5-base
 	depends = libvncserver
-	source = aqemu-0.9.1.tar.gz::https://github.com/tobimensch/aqemu/archive/v0.9.1.tar.gz
-	md5sums = d2540b513674d7242f112e222ba0fa2a
+	source = aqemu-0.9.2.tar.gz::https://github.com/tobimensch/aqemu/archive/v0.9.2.tar.gz
+	md5sums = cd7f6077a5a49a25450dc007532b0f95
 
 pkgname = aqemu
 
