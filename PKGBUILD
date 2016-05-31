@@ -101,6 +101,6 @@ package() {
     install -D -m644 "$source/initrd-dropbear.service"      "$target/initrd-dropbear.service"
     install -D -m644 "$source/initrd-emergency.service"     "$target/initrd-emergency.service"
     install -D -m644 "$source/initrd-shell.service"         "$target/initrd-shell.service"
-    install -D -m755 "$source/initrd-shell.sh"              "$target/initrd-shell.sh"
+    install -D -m644 "$source/initrd-shell.sh"              "$target/initrd-shell.sh"
                                                                                                                                 
 }
