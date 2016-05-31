@@ -1,0 +1,18 @@
+pkgbase = freeling
+	pkgdesc = Natural language analysis libraries
+	pkgver = 4.0
+	pkgrel = 1
+	url = http://nlp.lsi.upc.edu/freeling
+	arch = any
+	license = AGPL
+	makedepends = make
+	makedepends = gcc
+	makedepends = automake
+	makedepends = autoconf
+	depends = boost-libs
+	depends = icu
+	source = freeling::git+https://github.com/TALP-UPC/freeling
+	md5sums = SKIP
+
+pkgname = freeling
+
