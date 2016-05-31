@@ -1,0 +1,15 @@
+--- npm-shrinkwrap.json	2016-05-18 21:37:00.000000000 +0800
++++ npm-shrinkwrap.json.new	2016-05-31 09:09:06.975480000 +0800
+@@ -2454,9 +2454,9 @@
+       "resolved": "https://registry.npmjs.org/showdown-ghost/-/showdown-ghost-0.3.6.tgz"
+     },
+     "sqlite3": {
+-      "version": "3.1.3",
+-      "from": "sqlite3@3.1.3",
+-      "resolved": "https://registry.npmjs.org/sqlite3/-/sqlite3-3.1.3.tgz",
++      "version": "3.1.4",
++      "from": "sqlite3@3.1.4",
++      "resolved": "https://registry.npmjs.org/sqlite3/-/sqlite3-3.1.4.tgz",
+       "dependencies": {
+         "nan": {
+           "version": "2.2.1",
