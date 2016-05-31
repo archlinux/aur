@@ -1,0 +1,63 @@
+From c7d3c107303f5b511087aa37d20811bbd3bb4565 Mon Sep 17 00:00:00 2001
+From: Pan Xiuli <xiuli.pan@intel.com>
+Date: Fri, 29 Apr 2016 14:32:04 +0800
+Subject: Backend: Fix bug build with clang
+
+When using clang template name can not be the same with class variable.
+This bug will cause the gen ir load/store switch and casue self test
+error.
+
+Signed-off-by: Pan Xiuli <xiuli.pan@intel.com>
+Reviewed-by: Yang Rong <rong.r.yang@intel.com>
+
+diff --git a/backend/src/llvm/llvm_gen_backend.cpp b/backend/src/llvm/llvm_gen_backend.cpp
+index 51a1dab..66293fc 100644
+--- a/backend/src/llvm/llvm_gen_backend.cpp
++++ b/backend/src/llvm/llvm_gen_backend.cpp
+@@ -443,7 +443,7 @@ namespace gbe
+       void         emitBatchLoadOrStore(const ir::Type type, const uint32_t elemNum, Value *llvmValues, Type * elemType);
+       ir::Register getOffsetAddress(ir::Register basePtr, unsigned offset);
+       void         shootMessage(ir::Type type, ir::Register offset, ir::Tuple value, unsigned elemNum);
+-      template <bool isLoad, typename T>
++      template <bool IsLoad, typename T>
+       void         emitLoadOrStore(T &I);
+     private:
+       ir::Context             &ctx;
+@@ -642,7 +642,7 @@ namespace gbe
+      */
+     INLINE void simplifyTerminator(BasicBlock *bb);
+     /*! Helper function to emit loads and stores */
+-    template <bool isLoad, typename T> void emitLoadOrStore(T &I);
++    template <bool IsLoad, typename T> void emitLoadOrStore(T &I);
+     /*! Will try to remove MOVs due to PHI resolution */
+     void removeMOVs(const ir::Liveness &liveness, ir::Function &fn);
+     /*! Optimize phi move based on liveness information */
+@@ -712,7 +712,7 @@ namespace gbe
+     void visitUnreachableInst(UnreachableInst &I) {NOT_SUPPORTED;}
+     void visitGetElementPtrInst(GetElementPtrInst &I) {NOT_SUPPORTED;}
+     void visitInsertValueInst(InsertValueInst &I) {NOT_SUPPORTED;}
+-    template <bool isLoad, typename T> void visitLoadOrStore(T &I);
++    template <bool IsLoad, typename T> void visitLoadOrStore(T &I);
+ 
+     INLINE void gatherBTI(Value *pointer, ir::BTI &bti);
+     // batch vec4/8/16 load/store
+@@ -4863,7 +4863,7 @@ namespace gbe
+     }
+   }
+ 
+-  template <bool isLoad, typename T>
++  template <bool IsLoad, typename T>
+   void MemoryInstHelper::emitLoadOrStore(T &I) {
+     Value *llvmPtr = I.getPointerOperand();
+     Value *llvmValues = getLoadOrStoreValue(I);
+@@ -4873,7 +4873,7 @@ namespace gbe
+     const ir::Register pointer = writer->getRegister(llvmPtr);
+     const ir::RegisterFamily pointerFamily = ctx.getPointerFamily();
+ 
+-    this->isLoad = isLoad;
++    this->isLoad = IsLoad;
+     Type *scalarType = llvmType;
+     if (!isScalarType(llvmType)) {
+       VectorType *vectorType = cast<VectorType>(llvmType);
+-- 
+cgit v0.10.2
