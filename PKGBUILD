@@ -4,19 +4,22 @@
 # Contributor: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=libbpg
-pkgver=0.9.6
-pkgrel=2
+pkgver=0.9.7
+pkgrel=1
 pkgdesc='BPG Image Encoder and Decoder'
 arch=('x86_64' 'i686')
 url='http://bellard.org/bpg/'
 license=('BSD' 'LGPL')
 depends=('libpng' 'libjpeg-turbo' 'sdl_image' 'yasm')
-source=("$url$pkgname-$pkgver.tar.gz")
+source=("$url$pkgname-$pkgver.tar.gz" "ratecontrol.cpp.patch" "param.cpp.patch")
 options=('staticlibs')
 
 prepare() {
   sed -i 's/$(CMAKE_OPTS)/$(CMAKE_OPTS) -DENABLE_LIBNUMA=OFF/' "$pkgname-$pkgver/Makefile"
   sed -i 's/^CFLAGS+=-I.$/CFLAGS+=-I. -fPIC/' "$pkgname-$pkgver/Makefile"
+
+  patch -p1 ratecontrol.cpp.patch
+  patch -p1 param.cpp.patch
 }
 
 build() {
@@ -35,4 +38,6 @@ package() {
 
 # vim:set ts=2 sw=2 et:
 
-md5sums=('5f2aefff34342df327196019314d785b')
+md5sums=('c3498fecc0f51b650202f3daf466f738'
+         '4e56b96db90b94db98071ff8eeaaf811'
+         'e491bcfd0a6290a83021cda0f97ada4f')
