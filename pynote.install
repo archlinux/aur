@@ -1,11 +1,6 @@
-post_install() {
-  echo "Do not forget to check the release notes!"
-  echo "https://pynote.readthedocs.org/en/latest/changelog.html"
-}
-
 post_upgrade() {
-  echo "Do not forget to check the release notes!"
-  echo "https://pynote.readthedocs.org/en/latest/changelog.html"
-  echo "You find upgrade instructions here:"
-  echo "https://pynote.readthedocs.org/en/latest/faq.html#upgrading-from-0-2-to-1-0"
+    echo "Pynote 2.0.0 is a complete rewrite!"
+    echo "Some file locations and config values have changed."
+    echo "Please copy ~/.noterc to ~/.config/note/noterc!"
+    echo "Additional information can be found in the manpage noterc(5)."
 }
