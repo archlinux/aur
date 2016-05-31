@@ -1,11 +1,11 @@
 diff --git a/src/utils/Makefile.am b/src/utils/Makefile.am
-index cea0662..bccbe99 100644
+index d308442..75a2572 100644
 --- a/src/utils/Makefile.am
 +++ b/src/utils/Makefile.am
 @@ -1,7 +1,7 @@
  lib_LTLIBRARIES = libbd_utils.la
  libbd_utils_la_CFLAGS = $(GLIB_CFLAGS) -Wall -Wextra -Werror
- libbd_utils_la_LDFLAGS = -version-info 0:1:0
+ libbd_utils_la_LDFLAGS = -version-info 1:1:1
 -libbd_utils_la_LIBADD = $(GLIB_LIBS)
 +libbd_utils_la_LIBADD = $(GLIB_LIBS) -lm
  libbd_utils_la_SOURCES = utils.h exec.c exec.h sizes.c sizes.h

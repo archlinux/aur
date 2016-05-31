@@ -1,8 +1,8 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=libblockdev
-pkgver=1.1
-_realver='1.1-1'
+pkgver=1.5
+_realver="${pkgver}-1"
 pkgrel=1
 pkgdesc='A library for manipulating block devices'
 arch=('x86_64' 'i686')
@@ -14,8 +14,8 @@ source=("${pkgname}-${_realver}.tar.gz::https://github.com/rhinstaller/${pkgname
 	'0001-libm.patch'
 	'0002-python.patch'
 	'0003-dmraid.patch')
-sha256sums=('90bc077996d6fc5265a4b7990d9f1300139fd33f7fe07462ff836927c7414f23'
-	'3db9298374f3050616ac69c7cb1eb52c8f579452eca9562b2803f28ab4627b7e'
+sha256sums=('55968245038d6229b614d15c0db169f6e12ba2ad33f2168cead7e6846b320969'
+	'97f36bb74eaf2a79a64f5c6c497145a8278878b13c0c464db587d18d62898f88'
 	'99d8b9fb3c6db9904d24bdf99bca178abc2de65c031342cc5632f27f1a528af3'
 	'639626d048adb526dc5266bbd530fc0a26f9ad1dd212ce73e344c2909d3b43f9')
 
