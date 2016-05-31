@@ -1,0 +1,3 @@
+post_install() {
+  echo "Run \"phpcs --config-set installed_paths /usr/share/pear/PHP/CodeSniffer/Standards\" to inform phpcs of the new standards."
+}

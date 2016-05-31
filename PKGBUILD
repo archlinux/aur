@@ -6,13 +6,14 @@ _pkgname=php-codesniffer-drupal
 pkgname=${_pkgname}
 pkgver=8.x_2.7
 _pkgver=${pkgver//[_]/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Drupal coding standard for PHP_CodeSniffer"
 arch=("any")
 url="http://drupal.org/project/coder"
 license=("GPL")
 depends=("php-codesniffer")
 makedepends=("git")
+install=${_pkgname}.install
 source=("${_pkgname}"::"git+https://git.drupal.org/project/coder.git")
 sha512sums=('SKIP')
 
