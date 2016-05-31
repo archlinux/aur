@@ -45,9 +45,8 @@ pkgver() {
     local short_hash=$(git -C $repo rev-parse --short HEAD)
     local release_info=$(git -C $repo describe --long --tags --match "v[0-9]*")
     local release_number=$(echo "$release_info" | sed -r 's/^v([0-9]+)-.*/\1/')
-    local develop_number=$(($release_number + 1)) # expected future version nubmer
-    local release_version=$release_number
-    local develop_version="${develop_number}.${head_count}.g${short_hash}"
+    local release_version=${release_number}
+    local develop_version="${release_number}.${head_count}.${short_hash}"
     if [[ -f $marker ]] ; then
         printf "$develop_version"
     else
