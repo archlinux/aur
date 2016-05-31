@@ -1,7 +1,7 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
 pkgname=mkinitcpio-systemd-tool
-pkgver=can not make production version [v1-4-g04bda1f] []
+pkgver=1.r4.g04bda1f
 pkgrel=1
 pkgdesc='Provisioning tool for systemd in initramfs (systemd-tool)'
 arch=('any')
@@ -59,7 +59,7 @@ pkgver_develop() {
 # user released version
 pkgver_release() {
     local release_tag=$(git -C $repo describe --long --tags --match "v[0-9]*")
-    local pkg_version=$(echo "$release_tag" | sed 's/^v.*//;s/\([^-]*-g\)/r\1/;s/-/./g')
+    local pkg_version=$(echo "$release_tag" | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
     [[ $release_tag && $pkg_version ]] || \
         { echo "can not make production version [$release_tag] [$pkg_version]" ; exit 1; }
     printf "%s" "$pkg_version"
