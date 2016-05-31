@@ -13,7 +13,7 @@ depends=('ghc>=6.8.2' 'tcl' 'tk' 'spass' 'eprover' 'darwin' 'hets-lib' 'ncurses'
 optdepends=('isabelle')
 provides=('hets-server')
 conflicts=('hets-server')
-sha1sums=('523c33d4c56ac0cb2ba1f33d343447c01535786d')
+sha1sums=('9bbfda621844a93933625f76c975c6f1b286418d')
 
 source=("http://www.informatik.uni-bremen.de/~eugenk/archlinux-aur/$pkgname/${pkgname}-${pkgver}.tar.gz")
 package() {
