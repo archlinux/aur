@@ -1,7 +1,7 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
 pkgname=mkinitcpio-systemd-tool
-pkgver=r5.23502f3
+pkgver=can not make production version [v1-4-g04bda1f] []
 pkgrel=1
 pkgdesc='Provisioning tool for systemd in initramfs (systemd-tool)'
 arch=('any')
@@ -35,12 +35,34 @@ conflicts=(
     'mkinitcpio-tinyssh'
 )
 
+# select version depending on marker file presence
 pkgver() {
     local base=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
     local repo="$base/$pkgname"
+    local marker="$base/.PKGDEV"
+    if [[ -f $marker ]] ; then
+        pkgver_develop
+    else
+        pkgver_release
+    fi
+}
+
+# use development version
+pkgver_develop() {
     local count=$(git -C $repo rev-list --count HEAD)
     local short=$(git -C $repo rev-parse --short HEAD)
+    [[ $count && $short ]] || \
+        { echo "can not make development version [$count] [$short]" ; exit 1; }
     printf "r%s.%s" "$count" "$short"
+}
+
+# user released version
+pkgver_release() {
+    local release_tag=$(git -C $repo describe --long --tags --match "v[0-9]*")
+    local pkg_version=$(echo "$release_tag" | sed 's/^v.*//;s/\([^-]*-g\)/r\1/;s/-/./g')
+    [[ $release_tag && $pkg_version ]] || \
+        { echo "can not make production version [$release_tag] [$pkg_version]" ; exit 1; }
+    printf "%s" "$pkg_version"
 }
 
 prepare() {

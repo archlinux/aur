@@ -14,3 +14,6 @@
 
 # version update marker file
 .PKGVER
+
+# development version selection marker file
+.PKGDEV
