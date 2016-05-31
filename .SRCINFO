@@ -15,6 +15,6 @@ pkgbase = piuio
 	sha256sums = 47b5b6a08b488d3cb4701054be3f419030a677c2ab2f594eb2efb630818c2d11
 
 pkgname = piuio
-	depends = linux>=
-	depends = linux<
+	depends = linux>=4.5
+	depends = linux<4.6
 
