@@ -23,7 +23,7 @@ ISCOTCH    = -I$(SCOTCHDIR)/include/scotch
 # variable below); for both parallel and sequential analysis choose the second
 # line (remember to add -Dptscotch in the ORDERINGSF variable below)
 
-LSCOTCH    = -L$(SCOTCHDIR)/lib -lesmumps -lbz2 -lscotch -lscotcherr
+LSCOTCH    = -L$(SCOTCHDIR)/lib -lesmumps -lbz2 -lz -lscotch -lscotcherr
 #LSCOTCH    = -L$(SCOTCHDIR)/lib -lptesmumps -lptscotch -lptscotcherr -lscotchmetis
 #LSCOTCH    = -L$(SCOTCHDIR)/lib -lptesmumps -lptscotch -lptscotcherr -lscotchmetis -lscotch
 
