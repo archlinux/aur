@@ -1,0 +1,15 @@
+[Unit]
+Description=Dashboard for the Sensu monitoring framework.
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/uchiwa
+ExecStart=/opt/uchiwa/bin/uchiwa -c /etc/sensu/uchiwa.json -d /etc/sensu/dashboard.d -p /opt/uchiwa/src/public
+User=uchiwa
+Group=uchiwa
+Restart=on-failure
+LimitNOFILE=10000
+
+[Install]
+WantedBy=multi-user.target
