@@ -1,12 +1,12 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=opendht
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A C++11 implementation of the Kademlia DHT (Distributed Hash Table)"
 arch=('i686' 'x86_64')
 depends=('gnutls' 'nettle' 'readline')
-makedepends=('git' 'msgpack-c')
+makedepends=('git' 'msgpack-c' 'cmake')
 url="https://github.com/savoirfairelinux/opendht"
 license=('GPL3')
 source=("git://github.com/savoirfairelinux/opendht#tag=$pkgver")
@@ -16,19 +16,11 @@ build() {
   cd "${pkgname}"
 
   msg2 'Building...'
-  ./autogen.sh
-  # Python bindings are disabled as of 2015-08-24 because they don't
-  # build.  See https://github.com/savoirfairelinux/opendht/issues/15
-  ./configure \
-    --prefix=/usr \
-    --sbindir=/usr/bin \
-    --libexecdir=/usr/bin \
-    --sysconfdir=/etc \
-    --sharedstatedir=/usr/share/opendht \
-    --localstatedir=/var/lib/opendht \
-    --with-gnu-ld \
-    --disable-python \
-    --disable-doc
+  mkdir -p build
+  cd build
+  cmake .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
@@ -36,7 +28,9 @@ package() {
   cd "${pkgname}"
 
   msg2 'Installing...'
+  cd build
   make DESTDIR="$pkgdir" install
+  cd ..
 
   msg2 'Installing documentation...'
   install -D -m655 README.md "${pkgdir}/usr/share/doc/opendht/README.md"
