@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=systemd-manager
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="A program written with Rust that allows the user to manage their systemd services via a GTK3 GUI."
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('gtk3')
 makedepends=('cargo')
 conflicts=('systemd-manager-git')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('7358fce5be146d43f2908b582c96ae2da9a20f17cd5e760f486bbda4e4af77f4')
+sha256sums=('1de9fe1bb13521df3580499851a32003e8909887587fe037946ded30374c67e5')
 
 build() {
   cd "$pkgname-$pkgver"
