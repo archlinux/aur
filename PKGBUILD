@@ -1,7 +1,7 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
 pkgname=mkinitcpio-systemd-tool
-pkgver=
+pkgver=1.5.g8cc64e0
 pkgrel=1
 pkgdesc='Provisioning tool for systemd in initramfs (systemd-tool)'
 arch=('any')
@@ -44,7 +44,7 @@ pkgver() {
     local short_hash=$(git -C $repo rev-parse --short HEAD)
     local release_tag=$(git -C $repo describe --long --tags --match "v[0-9]*")
     local release_number=$(echo "$release_tag" | sed -r 's/^v([0-9]+)-.*/\1/')
-    local release_version=$(echo "$release_tag" | sed -r 's/^v//;s/-/./g'')
+    local release_version=$(echo "$release_tag" | sed -r 's/^v//;s/-/./g')
     local develop_number=$(($release_number + 1)) # expected future version nubmer
     local develop_version="${develop_number}.${head_count}.g${short_hash}"
     if [[ -f $marker ]] ; then
