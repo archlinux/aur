@@ -1,63 +1,722 @@
-From c7d3c107303f5b511087aa37d20811bbd3bb4565 Mon Sep 17 00:00:00 2001
+From e529586d062450007acf942fc7c73269db5a0fbe Mon Sep 17 00:00:00 2001
 From: Pan Xiuli <xiuli.pan@intel.com>
-Date: Fri, 29 Apr 2016 14:32:04 +0800
-Subject: Backend: Fix bug build with clang
+Date: Wed, 27 Jan 2016 14:14:59 +0800
+Subject: Backend: Add support for LLVM release 3.8
 
-When using clang template name can not be the same with class variable.
-This bug will cause the gen ir load/store switch and casue self test
-error.
+This is support for llvm releae 3.8
+
+V2:add specific comment about bitcode library link about change in
+LLVM3.8 of materialized check.
 
 Signed-off-by: Pan Xiuli <xiuli.pan@intel.com>
-Reviewed-by: Yang Rong <rong.r.yang@intel.com>
+Reviewed-by: Ruiling Song <ruiling.song@intel.com>
 
-diff --git a/backend/src/llvm/llvm_gen_backend.cpp b/backend/src/llvm/llvm_gen_backend.cpp
-index 51a1dab..66293fc 100644
---- a/backend/src/llvm/llvm_gen_backend.cpp
-+++ b/backend/src/llvm/llvm_gen_backend.cpp
-@@ -443,7 +443,7 @@ namespace gbe
-       void         emitBatchLoadOrStore(const ir::Type type, const uint32_t elemNum, Value *llvmValues, Type * elemType);
-       ir::Register getOffsetAddress(ir::Register basePtr, unsigned offset);
-       void         shootMessage(ir::Type type, ir::Register offset, ir::Tuple value, unsigned elemNum);
--      template <bool isLoad, typename T>
-+      template <bool IsLoad, typename T>
-       void         emitLoadOrStore(T &I);
-     private:
-       ir::Context             &ctx;
-@@ -642,7 +642,7 @@ namespace gbe
-      */
-     INLINE void simplifyTerminator(BasicBlock *bb);
-     /*! Helper function to emit loads and stores */
--    template <bool isLoad, typename T> void emitLoadOrStore(T &I);
-+    template <bool IsLoad, typename T> void emitLoadOrStore(T &I);
-     /*! Will try to remove MOVs due to PHI resolution */
-     void removeMOVs(const ir::Liveness &liveness, ir::Function &fn);
-     /*! Optimize phi move based on liveness information */
-@@ -712,7 +712,7 @@ namespace gbe
-     void visitUnreachableInst(UnreachableInst &I) {NOT_SUPPORTED;}
-     void visitGetElementPtrInst(GetElementPtrInst &I) {NOT_SUPPORTED;}
-     void visitInsertValueInst(InsertValueInst &I) {NOT_SUPPORTED;}
--    template <bool isLoad, typename T> void visitLoadOrStore(T &I);
-+    template <bool IsLoad, typename T> void visitLoadOrStore(T &I);
+diff --git a/backend/src/backend/gen_program.cpp b/backend/src/backend/gen_program.cpp
+index e3c2895..099116c 100644
+--- a/backend/src/backend/gen_program.cpp
++++ b/backend/src/backend/gen_program.cpp
+@@ -450,7 +450,11 @@ namespace gbe {
+     using namespace gbe;
+     char* errMsg;
+     if(((GenProgram*)dst_program)->module == NULL){
++#if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 8
++      ((GenProgram*)dst_program)->module = llvm::CloneModule((llvm::Module*)((GenProgram*)src_program)->module).release();
++#else
+       ((GenProgram*)dst_program)->module = llvm::CloneModule((llvm::Module*)((GenProgram*)src_program)->module);
++#endif
+       errSize = 0;
+     }else{
+       llvm::Module* src = (llvm::Module*)((GenProgram*)src_program)->module;
+diff --git a/backend/src/backend/program.cpp b/backend/src/backend/program.cpp
+index 7d12f73..2b44025 100644
+--- a/backend/src/backend/program.cpp
++++ b/backend/src/backend/program.cpp
+@@ -124,7 +124,11 @@ namespace gbe {
+     llvm::Module * cloned_module = NULL;
+     bool ret = true;
+     if(module){
++#if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 8
++      cloned_module = llvm::CloneModule((llvm::Module*)module).release();
++#else
+       cloned_module = llvm::CloneModule((llvm::Module*)module);
++#endif
+     }
+     bool strictMath = true;
+     if (fast_relaxed_math || !OCL_STRICT_CONFORMANCE)
+diff --git a/backend/src/llvm/ExpandConstantExpr.cpp b/backend/src/llvm/ExpandConstantExpr.cpp
+index c6f57b8..e9ec3ab 100644
+--- a/backend/src/llvm/ExpandConstantExpr.cpp
++++ b/backend/src/llvm/ExpandConstantExpr.cpp
+@@ -115,7 +115,7 @@ static Value *expandConstantVector(Instruction *InsertPt, ConstantVector *CV) {
+   Type *IntTy = IntegerType::get(CV->getContext(), 32);
  
-     INLINE void gatherBTI(Value *pointer, ir::BTI &bti);
-     // batch vec4/8/16 load/store
-@@ -4863,7 +4863,7 @@ namespace gbe
+   BasicBlock::iterator InsertPos(InsertPt);
+-  IRBuilder<> IRB(InsertPos);
++  IRBuilder<> IRB(&*InsertPos);
+   Value *vec = UndefValue::get(CV->getType());
+   for (int i = 0; i < elemNum; i++) {
+     Value *idx = ConstantInt::get(IntTy, i);
+@@ -177,7 +177,7 @@ bool ExpandConstantExpr::runOnFunction(Function &Func) {
+     for (BasicBlock::InstListType::iterator Inst = BB->begin(), E = BB->end();
+          Inst != E;
+          ++Inst) {
+-      Modified |= expandInstruction(Inst);
++      Modified |= expandInstruction(&*Inst);
      }
    }
+   return Modified;
+diff --git a/backend/src/llvm/ExpandLargeIntegers.cpp b/backend/src/llvm/ExpandLargeIntegers.cpp
+index 20fdda9..00987cb 100644
+--- a/backend/src/llvm/ExpandLargeIntegers.cpp
++++ b/backend/src/llvm/ExpandLargeIntegers.cpp
+@@ -388,7 +388,7 @@ static void convertInstruction(Instruction *Inst, ConversionState &State,
+   // Set the insert point *after* Inst, so that any instructions inserted here
+   // will be visited again. That allows iterative expansion of types > i128.
+   BasicBlock::iterator InsertPos(Inst);
+-  IRBuilder<> IRB(++InsertPos);
++  IRBuilder<> IRB(&*++InsertPos);
+   StringRef Name = Inst->getName();
  
--  template <bool isLoad, typename T>
-+  template <bool IsLoad, typename T>
-   void MemoryInstHelper::emitLoadOrStore(T &I) {
-     Value *llvmPtr = I.getPointerOperand();
-     Value *llvmValues = getLoadOrStoreValue(I);
-@@ -4873,7 +4873,7 @@ namespace gbe
-     const ir::Register pointer = writer->getRegister(llvmPtr);
-     const ir::RegisterFamily pointerFamily = ctx.getPointerFamily();
+   if (PHINode *Phi = dyn_cast<PHINode>(Inst)) {
+diff --git a/backend/src/llvm/ExpandUtils.cpp b/backend/src/llvm/ExpandUtils.cpp
+index 801f969..a09d990 100644
+--- a/backend/src/llvm/ExpandUtils.cpp
++++ b/backend/src/llvm/ExpandUtils.cpp
+@@ -101,7 +101,7 @@ namespace llvm {
+   Function *RecreateFunction(Function *Func, FunctionType *NewType) {
+     Function *NewFunc = Function::Create(NewType, Func->getLinkage());
+     NewFunc->copyAttributesFrom(Func);
+-    Func->getParent()->getFunctionList().insert(Func, NewFunc);
++    Func->getParent()->getFunctionList().insert(ilist_iterator<Function>(Func), NewFunc);
+     NewFunc->takeName(Func);
+     NewFunc->getBasicBlockList().splice(NewFunc->begin(),
+                                         Func->getBasicBlockList());
+diff --git a/backend/src/llvm/PromoteIntegers.cpp b/backend/src/llvm/PromoteIntegers.cpp
+index b65440f..8759287 100644
+--- a/backend/src/llvm/PromoteIntegers.cpp
++++ b/backend/src/llvm/PromoteIntegers.cpp
+@@ -615,7 +615,7 @@ bool PromoteIntegers::runOnFunction(Function &F) {
+   // Don't support changing the function arguments. This should not be
+   // generated by clang.
+   for (Function::arg_iterator I = F.arg_begin(), E = F.arg_end(); I != E; ++I) {
+-    Value *Arg = I;
++    Value *Arg = &*I;
+     if (shouldConvert(Arg)) {
+       errs() << "Function " << F.getName() << ": " << *Arg << "\n";
+       llvm_unreachable("Function has illegal integer/pointer argument");
+@@ -626,7 +626,7 @@ bool PromoteIntegers::runOnFunction(Function &F) {
+   bool Modified = false;
+   for (Function::iterator FI = F.begin(), FE = F.end(); FI != FE; ++FI) {
+     for (BasicBlock::iterator BBI = FI->begin(), BBE = FI->end(); BBI != BBE;) {
+-      Instruction *Inst = BBI++;
++      Instruction *Inst = &*BBI++;
+       // Only attempt to convert an instruction if its result or any of its
+       // operands are illegal.
+       bool ShouldConvert = shouldConvert(Inst);
+diff --git a/backend/src/llvm/StripAttributes.cpp b/backend/src/llvm/StripAttributes.cpp
+index e6df312..3bf3853 100644
+--- a/backend/src/llvm/StripAttributes.cpp
++++ b/backend/src/llvm/StripAttributes.cpp
+@@ -98,7 +98,7 @@ bool StripAttributes::runOnFunction(Function &Func) {
+        BB != E; ++BB) {
+     for (BasicBlock::iterator Inst = BB->begin(), E = BB->end();
+          Inst != E; ++Inst) {
+-      CallSite Call(Inst);
++      CallSite Call(&*Inst);
+       if (Call)
+         Call.setCallingConv(CallingConv::C);
+     }
+diff --git a/backend/src/llvm/llvm_bitcode_link.cpp b/backend/src/llvm/llvm_bitcode_link.cpp
+index 56205bb..10fccf6 100644
+--- a/backend/src/llvm/llvm_bitcode_link.cpp
++++ b/backend/src/llvm/llvm_bitcode_link.cpp
+@@ -68,8 +68,9 @@ namespace gbe
+     return oclLib;
+   }
  
--    this->isLoad = isLoad;
-+    this->isLoad = IsLoad;
-     Type *scalarType = llvmType;
-     if (!isScalarType(llvmType)) {
-       VectorType *vectorType = cast<VectorType>(llvmType);
+-  static bool materializedFuncCall(Module& src, Module& lib, llvm::Function &KF, std::set<std::string>& MFS)
+-  {
++  static bool materializedFuncCall(Module& src, Module& lib, llvm::Function& KF,
++                                   std::set<std::string>& MFS,
++                                   std::vector<GlobalValue *>&Gvs) {
+     bool fromSrc = false;
+     for (llvm::Function::iterator B = KF.begin(), BE = KF.end(); B != BE; B++) {
+       for (BasicBlock::iterator instI = B->begin(),
+@@ -112,9 +113,10 @@ namespace gbe
+             printf("Can not materialize the function: %s, because %s\n", fnName.c_str(), EC.message().c_str());
+             return false;
+           }
++          Gvs.push_back((GlobalValue *)newMF);
+ #endif
+         }
+-        if (!materializedFuncCall(src, lib, *newMF, MFS))
++        if (!materializedFuncCall(src, lib, *newMF, MFS, Gvs))
+           return false;
+ 
+       }
+@@ -128,6 +130,7 @@ namespace gbe
+   {
+     LLVMContext& ctx = mod->getContext();
+     std::set<std::string> materializedFuncs;
++    std::vector<GlobalValue *> Gvs;
+     Module* clonedLib = createOclBitCodeModule(ctx, strictMath);
+     assert(clonedLib && "Can not create the beignet bitcode\n");
+ 
+@@ -173,10 +176,11 @@ namespace gbe
+       if (!isKernelFunction(*SF)) continue;
+       kernels.push_back(SF->getName().data());
+ 
+-      if (!materializedFuncCall(*mod, *clonedLib, *SF, materializedFuncs)) {
++      if (!materializedFuncCall(*mod, *clonedLib, *SF, materializedFuncs, Gvs)) {
+         delete clonedLib;
+         return NULL;
+       }
++      Gvs.push_back((GlobalValue *)&*SF);
+     }
+ 
+     if (kernels.empty()) {
+@@ -215,14 +219,43 @@ namespace gbe
+       }
+ #endif
+ 
+-      if (!materializedFuncCall(*mod, *clonedLib, *newMF, materializedFuncs)) {
++      if (!materializedFuncCall(*mod, *clonedLib, *newMF, materializedFuncs, Gvs)) {
+         delete clonedLib;
+         return NULL;
+       }
+ 
++      Gvs.push_back((GlobalValue *)newMF);
+       kernels.push_back(f);
+     }
+ 
++  /* The llvm 3.8 now has a strict materialized check for all value by checking
++   * module is materialized. If we want to use library as old style that just
++   * materialize what we need, we need to remove what we did not need before
++   * materialize all of the module. To do this, we need all of the builtin
++   * funcitons and what are needed from the kernel functions, these functions
++   * are materalized and are recorded in Gvs, the GlobalValue like PI are also
++   * needed and are added. Now we could not use use_empty to check if the GVs
++   * are needed before the module is marked as all materialized, so we just
++   * materialize all of them as there are only 7 GVs. Then we use GVExtraction
++   * pass to extract the functions and values in Gvs from the library module.
++   * After extract what we need and remove what we do not need, we use 
++   * materializeAll to mark the module as materialized. */
++#if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >=8
++    /* Get all GlobalValue from module. */
++    Module::GlobalListType &GVlist = clonedLib->getGlobalList();
++    for(Module::global_iterator GVitr = GVlist.begin();GVitr != GVlist.end();++GVitr) {
++      GlobalValue * GV = &*GVitr;
++      clonedLib->materialize(GV);
++      Gvs.push_back(GV);
++    }
++    llvm::legacy::PassManager Extract;
++    /* Extract all values we need using GVExtractionPass. */
++    Extract.add(createGVExtractionPass(Gvs, false));
++    Extract.run(*clonedLib);
++    /* Mark the library module as materialized for later use. */
++    clonedLib->materializeAll();
++#endif
++
+     /* the SPIR binary datalayout maybe different with beignet's bitcode */
+     if(clonedLib->getDataLayout() != mod->getDataLayout())
+       mod->setDataLayout(clonedLib->getDataLayout());
+diff --git a/backend/src/llvm/llvm_gen_backend.cpp b/backend/src/llvm/llvm_gen_backend.cpp
+index 886b6f3..1a2bbcd 100644
+--- a/backend/src/llvm/llvm_gen_backend.cpp
++++ b/backend/src/llvm/llvm_gen_backend.cpp
+@@ -1226,7 +1226,7 @@ namespace gbe
+       }
+       bool isImage = llvmInfo.isImageType();
+       if (I->getType()->isPointerTy() || isImage) {
+-        BtiMap.insert(std::make_pair(I, getNewBti(I, isImage)));
++        BtiMap.insert(std::make_pair(&*I, getNewBti(&*I, isImage)));
+       }
+     }
+ 
+@@ -1340,7 +1340,7 @@ namespace gbe
+     // function argument
+     for (Function::arg_iterator I = F.arg_begin(), E = F.arg_end(); I != E; ++I) {
+       if (I->getType()->isPointerTy()) {
+-        findPointerEscape(I, mixedPtr, true, revisit);
++        findPointerEscape(&*I, mixedPtr, true, revisit);
+       }
+     }
+     // alloca
+@@ -1389,7 +1389,7 @@ namespace gbe
+       while (isa<AllocaInst>(bbIter)) ++bbIter;
+ 
+       IRBuilder<> Builder(&entry);
+-      Builder.SetInsertPoint(bbIter);
++      Builder.SetInsertPoint(&*bbIter);
+ 
+       PointerType * AITy = cast<AllocaInst>(base)->getType();
+       Value * btiArray = Builder.CreateAlloca(AITy->getElementType(), ArraySize, base->getName() + ".bti");
+@@ -1814,7 +1814,7 @@ namespace gbe
+   }
+ 
+   void GenWriter::simplifyTerminator(BasicBlock *bb) {
+-    Value *value = --bb->end();
++    Value *value = bb->getTerminator();
+     BranchInst *I = NULL;
+     if ((I = dyn_cast<BranchInst>(value)) != NULL) {
+       if (I->isConditional() == false)
+@@ -2097,12 +2097,12 @@ namespace gbe
+         }
+ 
+         // function arguments are uniform values.
+-        this->newRegister(I, NULL, true);
++        this->newRegister(&*I, NULL, true);
+ 
+         // add support for vector argument.
+         if(type->isVectorTy()) {
+           VectorType *vectorType = cast<VectorType>(type);
+-          ir::Register reg = getRegister(I, 0);
++          ir::Register reg = getRegister(&*I, 0);
+           Type *elemType = vectorType->getElementType();
+           const uint32_t elemSize = getTypeByteSize(unit, elemType);
+           const uint32_t elemNum = vectorType->getNumElements();
+@@ -2112,7 +2112,7 @@ namespace gbe
+           ir::Function& fn = ctx.getFunction();
+           for(uint32_t i=1; i < elemNum; i++) {
+             ir::PushLocation argLocation(fn, argID, elemSize*i);
+-            reg = getRegister(I, i);
++            reg = getRegister(&*I, i);
+             ctx.appendPushedConstant(reg, argLocation);  //add to push map for reg alloc
+           }
+           continue;
+@@ -2120,10 +2120,10 @@ namespace gbe
+ 
+         GBE_ASSERTM(isScalarType(type) == true,
+                     "vector type in the function argument is not supported yet");
+-        const ir::Register reg = getRegister(I);
++        const ir::Register reg = getRegister(&*I);
+         if (llvmInfo.isImageType()) {
+           ctx.input(argName, ir::FunctionArgument::IMAGE, reg, llvmInfo, 4, 4, 0);
+-          ctx.getFunction().getImageSet()->append(reg, &ctx, BtiMap.find(I)->second);
++          ctx.getFunction().getImageSet()->append(reg, &ctx, BtiMap.find(&*I)->second);
+           collectImageArgs(llvmInfo.accessQual, imageArgsInfo);
+           continue;
+         }
+@@ -2156,7 +2156,7 @@ namespace gbe
+             const uint32_t align = getAlignmentByte(unit, pointed);
+               switch (addrSpace) {
+               case ir::MEM_GLOBAL:
+-                ctx.input(argName, ir::FunctionArgument::GLOBAL_POINTER, reg, llvmInfo, ptrSize, align, BtiMap.find(I)->second);
++                ctx.input(argName, ir::FunctionArgument::GLOBAL_POINTER, reg, llvmInfo, ptrSize, align, BtiMap.find(&*I)->second);
+               break;
+               case ir::MEM_LOCAL:
+                 ctx.input(argName, ir::FunctionArgument::LOCAL_POINTER, reg,  llvmInfo, ptrSize, align, BTI_LOCAL);
+@@ -2934,12 +2934,12 @@ namespace gbe
+ 
+     // First create all the labels (one per block) ...
+     for (Function::iterator BB = F.begin(), E = F.end(); BB != E; ++BB)
+-      this->newLabelIndex(BB);
++      this->newLabelIndex(&*BB);
+ 
+     // Then, for all branch instructions that have conditions, see if we can
+     // simplify the code by inverting condition code
+     for (Function::iterator BB = F.begin(), E = F.end(); BB != E; ++BB)
+-      this->simplifyTerminator(BB);
++      this->simplifyTerminator(&*BB);
+ 
+     // gather loop info, which is useful for liveness analysis
+     gatherLoopInfo(fn);
+@@ -2947,7 +2947,7 @@ namespace gbe
+     // ... then, emit the instructions for all basic blocks
+     pass = PASS_EMIT_INSTRUCTIONS;
+     for (Function::iterator BB = F.begin(), E = F.end(); BB != E; ++BB)
+-      emitBasicBlock(BB);
++      emitBasicBlock(&*BB);
+     ctx.endFunction();
+ 
+     // Liveness can be shared when we optimized the immediates and the MOVs
+@@ -3477,7 +3477,7 @@ namespace gbe
+     Value *Callee = I.getCalledValue();
+     GBE_ASSERT(ctx.getFunction().getProfile() == ir::PROFILE_OCL);
+     GBE_ASSERT(isa<InlineAsm>(I.getCalledValue()) == false);
+-    GBE_ASSERT(I.hasStructRetAttr() == false);
++    if(I.getNumArgOperands()) GBE_ASSERT(I.hasStructRetAttr() == false);
+ 
+     // We only support a small number of intrinsics right now
+     if (Function *F = I.getCalledFunction()) {
+diff --git a/backend/src/llvm/llvm_includes.hpp b/backend/src/llvm/llvm_includes.hpp
+index fed3a18..d2deb90 100644
+--- a/backend/src/llvm/llvm_includes.hpp
++++ b/backend/src/llvm/llvm_includes.hpp
+@@ -122,4 +122,9 @@
+ 
+ #include <clang/CodeGen/CodeGenAction.h>
+ 
++#if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >=8
++#include "llvm/Analysis/BasicAliasAnalysis.h"
++#include "llvm/Analysis/TypeBasedAliasAnalysis.h"
++#endif
++
+ #endif /* __GBE_IR_LLVM_INCLUDES_HPP__ */
+diff --git a/backend/src/llvm/llvm_intrinsic_lowering.cpp b/backend/src/llvm/llvm_intrinsic_lowering.cpp
+index b35d1e6..c26e96a 100644
+--- a/backend/src/llvm/llvm_intrinsic_lowering.cpp
++++ b/backend/src/llvm/llvm_intrinsic_lowering.cpp
+@@ -73,7 +73,7 @@ namespace gbe {
+         Constant* FCache = M->getOrInsertFunction(NewFn,
+                                         FunctionType::get(RetTy, ParamTys, false));
+ 
+-        IRBuilder<> Builder(CI->getParent(), CI);
++        IRBuilder<> Builder(CI->getParent(), BasicBlock::iterator(CI));
+         SmallVector<Value *, 8> Args(ArgBegin, ArgEnd);
+         CallInst *NewCI = Builder.CreateCall(FCache, Args);
+         NewCI->setName(CI->getName());
+@@ -90,12 +90,12 @@ namespace gbe {
+         DataLayout TD(M);
+         LLVMContext &Context = BB.getContext();
+         for (BasicBlock::iterator DI = BB.begin(); DI != BB.end(); ) {
+-          Instruction *Inst = DI++;
++          Instruction *Inst = &*DI++;
+           CallInst* CI = dyn_cast<CallInst>(Inst);
+           if(CI == NULL)
+             continue;
+ 
+-          IRBuilder<> Builder(&BB, CI);
++          IRBuilder<> Builder(&BB, BasicBlock::iterator(CI));
+           // only support memcpy and memset
+           if (Function *F = CI->getCalledFunction()) {
+             const Intrinsic::ID intrinsicID = (Intrinsic::ID) F->getIntrinsicID();
+diff --git a/backend/src/llvm/llvm_loadstore_optimization.cpp b/backend/src/llvm/llvm_loadstore_optimization.cpp
+index 698fdc2..121f53d 100644
+--- a/backend/src/llvm/llvm_loadstore_optimization.cpp
++++ b/backend/src/llvm/llvm_loadstore_optimization.cpp
+@@ -35,13 +35,22 @@ namespace gbe {
+     GenLoadStoreOptimization() : BasicBlockPass(ID) {}
+ 
+     void getAnalysisUsage(AnalysisUsage &AU) const {
++#if LLVM_VERSION_MAJOR == 3 &&  LLVM_VERSION_MINOR >= 8
++      AU.addRequired<ScalarEvolutionWrapperPass>();
++      AU.addPreserved<ScalarEvolutionWrapperPass>();
++#else
+       AU.addRequired<ScalarEvolution>();
+       AU.addPreserved<ScalarEvolution>();
++#endif
+       AU.setPreservesCFG();
+     }
+ 
+     virtual bool runOnBasicBlock(BasicBlock &BB) {
++#if LLVM_VERSION_MAJOR == 3 &&  LLVM_VERSION_MINOR >= 8
++      SE = &getAnalysis<ScalarEvolutionWrapperPass>().getSE();
++#else
+       SE = &getAnalysis<ScalarEvolution>();
++#endif
+       #if LLVM_VERSION_MINOR >= 7
+         TD = &BB.getModule()->getDataLayout();
+       #elif LLVM_VERSION_MINOR >= 5
+@@ -159,9 +168,9 @@ namespace gbe {
+                             bool isLoad) {
+ 
+     BasicBlock::iterator stepForward = start;
+-    if(!isSimpleLoadStore(start)) return stepForward;
++    if(!isSimpleLoadStore(&*start)) return stepForward;
+ 
+-    merged.push_back(start);
++    merged.push_back(&*start);
+ 
+     BasicBlock::iterator E = BB.end();
+     BasicBlock::iterator J = ++start;
+@@ -170,8 +179,8 @@ namespace gbe {
+ 
+     for(unsigned ss = 0; J != E && ss <= maxLimit; ++ss, ++J) {
+       if((isLoad && isa<LoadInst>(*J)) || (!isLoad && isa<StoreInst>(*J))) {
+-        if(isLoadStoreCompatible(merged[merged.size()-1], J)) {
+-          merged.push_back(J);
++        if(isLoadStoreCompatible(merged[merged.size()-1], &*J)) {
++          merged.push_back(&*J);
+           stepForward = ++J;
+         }
+       } else if((isLoad && isa<StoreInst>(*J)) || (!isLoad && isa<LoadInst>(*J))) {
+@@ -217,7 +226,7 @@ namespace gbe {
+     for (BasicBlock::iterator BBI = BB.begin(), E = BB.end(); BBI != E;++BBI) {
+       if(isa<LoadInst>(*BBI) || isa<StoreInst>(*BBI)) {
+         bool isLoad = isa<LoadInst>(*BBI) ? true: false;
+-        Type *ty = getValueType(BBI);
++        Type *ty = getValueType(&*BBI);
+         if(ty->isVectorTy()) continue;
+         // TODO Support DWORD/WORD/BYTE LOAD for store support DWORD only now.
+         if (!(ty->isFloatTy() || ty->isIntegerTy(32) ||
+diff --git a/backend/src/llvm/llvm_printf_parser.cpp b/backend/src/llvm/llvm_printf_parser.cpp
+index 422f16b..2bf3d04 100644
+--- a/backend/src/llvm/llvm_printf_parser.cpp
++++ b/backend/src/llvm/llvm_printf_parser.cpp
+@@ -618,7 +618,7 @@ error:
+       Value* op0 = NULL;
+       Value* val = NULL;
+ 
+-      builder->SetInsertPoint(F.begin()->begin());// Insert the common var in the begin.
++      builder->SetInsertPoint(&*(F.begin()->begin()));// Insert the common var in the begin.
+ 
+       /* FIXME: Because the OpenCL language do not support va macro, and we do not want
+          to introduce the va_list, va_start and va_end into our code, we just simulate
+diff --git a/backend/src/llvm/llvm_profiling.cpp b/backend/src/llvm/llvm_profiling.cpp
+index 211aa43..96c95ee 100644
+--- a/backend/src/llvm/llvm_profiling.cpp
++++ b/backend/src/llvm/llvm_profiling.cpp
+@@ -135,7 +135,7 @@ namespace gbe
+     builder = new IRBuilder<>(module->getContext());
+ 
+     /* alloc a new buffer ptr to collect the timestamps. */
+-    builder->SetInsertPoint(F.begin()->begin());
++    builder->SetInsertPoint(&*F.begin()->begin());
+     llvm::Constant *profilingBuf = module->getGlobalVariable("__gen_ocl_profiling_buf");
+     if (!profilingBuf) {
+       profilingBuf = new GlobalVariable(*module, intTy, false,
+@@ -174,7 +174,7 @@ namespace gbe
+         continue;
+ 
+       // Insert the first one at beginning of not PHI.
+-      builder->SetInsertPoint(instI);
++      builder->SetInsertPoint(&*instI);
+       /* Add the timestamp store function call. */
+       // __gen_ocl_store_timestamp(int nth, int type);
+       Value *Args[2] = {ConstantInt::get(intTy, pointNum++), ConstantInt::get(intTy, profilingType)};
+@@ -190,7 +190,7 @@ namespace gbe
+     BE--;
+     BasicBlock::iterator retInst = BE->end();
+     retInst--;
+-    builder->SetInsertPoint(retInst);
++    builder->SetInsertPoint(&*retInst);
+     Value *Args2[2] = {profilingBuf, ConstantInt::get(intTy, profilingType)};
+ 
+     builder->CreateCall(cast<llvm::Function>(module->getOrInsertFunction(
+diff --git a/backend/src/llvm/llvm_scalarize.cpp b/backend/src/llvm/llvm_scalarize.cpp
+index 899a696..9efb897 100644
+--- a/backend/src/llvm/llvm_scalarize.cpp
++++ b/backend/src/llvm/llvm_scalarize.cpp
+@@ -197,7 +197,7 @@ namespace gbe {
+     /* set to insert new instructions after the specified instruction.*/
+     void setAppendPoint(Instruction *insn)  {
+       BasicBlock::iterator next(insn);
+-      builder->SetInsertPoint(++next);
++      builder->SetInsertPoint(&*++next);
+     }
+ 
+     DenseMap<Value*, VectorValues> vectorVals;
+@@ -740,7 +740,7 @@ namespace gbe {
+           while (isa<AllocaInst>(bbIter)) ++bbIter;
+ 
+           IRBuilder<> allocBuilder(&entry);
+-          allocBuilder.SetInsertPoint(bbIter);
++          allocBuilder.SetInsertPoint(&*bbIter);
+ 
+           Alloc = allocBuilder.CreateAlloca(fooTy, nullptr, "");
+           for (int i = 0; i < GetComponentCount(foo); ++i)
+@@ -801,7 +801,7 @@ namespace gbe {
+       return;
+     ReversePostOrderTraversal<Function*> rpot(&F);
+     BasicBlock::iterator instI = (*rpot.begin())->begin();
+-    builder->SetInsertPoint(instI);
++    builder->SetInsertPoint(&*instI);
+ 
+     Function::arg_iterator I = F.arg_begin(), E = F.arg_end();
+ 
+@@ -809,7 +809,7 @@ namespace gbe {
+       Type *type = I->getType();
+ 
+       if(type->isVectorTy())
+-        extractFromVector(I);
++        extractFromVector(&*I);
+     }
+     return;
+   }
+@@ -846,11 +846,11 @@ namespace gbe {
+     RPOTType rpot(&F);
+     for (RPOTType::rpo_iterator bbI = rpot.begin(), bbE = rpot.end(); bbI != bbE; ++bbI) {
+       for (BasicBlock::iterator instI = (*bbI)->begin(), instE = (*bbI)->end(); instI != instE; ++instI) {
+-        bool scalarized = scalarize(instI);
++        bool scalarized = scalarize(&*instI);
+         if (scalarized) {
+           changed = true;
+           // TODO: uncomment when done
+-          deadList.push_back(instI);
++          deadList.push_back(&*instI);
+         }
+       }
+     }
+diff --git a/backend/src/llvm/llvm_to_gen.cpp b/backend/src/llvm/llvm_to_gen.cpp
+index b8ab1dd..653fc09 100644
+--- a/backend/src/llvm/llvm_to_gen.cpp
++++ b/backend/src/llvm/llvm_to_gen.cpp
+@@ -45,7 +45,6 @@ namespace gbe
+   using namespace llvm;
+ 
+ #if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 7
+-  using namespace llvm::legacy;
+   #define TARGETLIBRARY  TargetLibraryInfoImpl
+ #else
+   #define TARGETLIBRARY  TargetLibraryInfo
+@@ -53,7 +52,11 @@ namespace gbe
+ 
+   void runFuntionPass(Module &mod, TARGETLIBRARY *libraryInfo, const DataLayout &DL)
+   {
++#if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 7
++    legacy::FunctionPassManager FPM(&mod);
++#else
+     FunctionPassManager FPM(&mod);
++#endif
+ 
+ #if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 7
+ #elif LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 6
+@@ -74,8 +77,13 @@ namespace gbe
+ #else
+     FPM.add(new TargetLibraryInfo(*libraryInfo));
+ #endif
++#if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 8
++    FPM.add(createTypeBasedAAWrapperPass());
++    FPM.add(createBasicAAWrapperPass());
++#else
+     FPM.add(createTypeBasedAliasAnalysisPass());
+     FPM.add(createBasicAliasAnalysisPass());
++#endif
+     FPM.add(createCFGSimplificationPass());
+     FPM.add(createSROAPass());
+     FPM.add(createEarlyCSEPass());
+@@ -91,7 +99,11 @@ namespace gbe
+ 
+   void runModulePass(Module &mod, TARGETLIBRARY *libraryInfo, const DataLayout &DL, int optLevel, bool strictMath)
+   {
++#if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 7
++    legacy::PassManager MPM;
++#else
+     PassManager MPM;
++#endif
+ 
+ #if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 7
+ #elif LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 6
+@@ -107,8 +119,13 @@ namespace gbe
+ #else
+     MPM.add(new TargetLibraryInfo(*libraryInfo));
+ #endif
++#if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 8
++    MPM.add(createTypeBasedAAWrapperPass());
++    MPM.add(createBasicAAWrapperPass());
++#else
+     MPM.add(createTypeBasedAliasAnalysisPass());
+     MPM.add(createBasicAliasAnalysisPass());
++#endif
+     MPM.add(createIntrinsicLoweringPass());
+     MPM.add(createStripAttributesPass());     // Strip unsupported attributes and calling conventions.
+     MPM.add(createSamplerFixPass());
+@@ -123,11 +140,19 @@ namespace gbe
+     MPM.add(createBarrierNodupPass(false));   // remove noduplicate fnAttr before inlining.
+     MPM.add(createFunctionInliningPass(20000));
+     MPM.add(createBarrierNodupPass(true));    // restore noduplicate fnAttr after inlining.
++#if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 8
++    MPM.add(createPostOrderFunctionAttrsPass());       // Set readonly/readnone attrs
++#else
+     MPM.add(createFunctionAttrsPass());       // Set readonly/readnone attrs
++#endif
+ 
+     //MPM.add(createScalarReplAggregatesPass(64, true, -1, -1, 64))
+     if(optLevel > 0)
++#if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 8
++      MPM.add(createSROAPass());
++#else
+       MPM.add(createSROAPass(/*RequiresDomTree*/ false));
++#endif
+     MPM.add(createEarlyCSEPass());              // Catch trivial redundancies
+     MPM.add(createJumpThreadingPass());         // Thread jumps.
+     MPM.add(createCorrelatedValuePropagationPass()); // Propagate conditionals
+@@ -146,7 +171,11 @@ namespace gbe
+     MPM.add(createLoopDeletionPass());          // Delete dead loops
+     MPM.add(createLoopUnrollPass(640)); //1024, 32, 1024, 512)); //Unroll loops
+     if(optLevel > 0) {
++#if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 8
++      MPM.add(createSROAPass());
++#else
+       MPM.add(createSROAPass(/*RequiresDomTree*/ false));
++#endif
+       MPM.add(createGVNPass());                 // Remove redundancies
+     }
+ #if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 5
+@@ -157,7 +186,11 @@ namespace gbe
+       MPM.add(createCustomLoopUnrollPass()); //1024, 32, 1024, 512)); //Unroll loops
+       MPM.add(createLoopUnrollPass()); //1024, 32, 1024, 512)); //Unroll loops
+       if(optLevel > 0) {
++#if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 8
++        MPM.add(createSROAPass());
++#else
+         MPM.add(createSROAPass(/*RequiresDomTree*/ false));
++#endif
+         MPM.add(createGVNPass());                 // Remove redundancies
+       }
+     }
+@@ -184,7 +217,15 @@ namespace gbe
+   }
+ 
+ 
+-#if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 5
++#if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 7
++#define OUTPUT_BITCODE(STAGE, MOD)  do {         \
++  legacy::PassManager passes__;           \
++   if (OCL_OUTPUT_LLVM_##STAGE) {                \
++     passes__.add(createPrintModulePass(*o));    \
++     passes__.run(MOD);                          \
++   }                                             \
++ }while(0)
++#elif LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 5
+ #define OUTPUT_BITCODE(STAGE, MOD)  do {         \
+    PassManager passes__;           \
+    if (OCL_OUTPUT_LLVM_##STAGE) {                \
+@@ -256,7 +297,11 @@ namespace gbe
+ 
+     runFuntionPass(mod, libraryInfo, DL);
+     runModulePass(mod, libraryInfo, DL, optLevel, strictMath);
++#if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 7
++    legacy::PassManager passes;
++#else
+     PassManager passes;
++#endif
+ #if LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 7
+ #elif LLVM_VERSION_MAJOR == 3 && LLVM_VERSION_MINOR >= 6
+     passes.add(new DataLayoutPass());
+diff --git a/backend/src/llvm/llvm_unroll.cpp b/backend/src/llvm/llvm_unroll.cpp
+index 6990e39..0f62bdc 100644
+--- a/backend/src/llvm/llvm_unroll.cpp
++++ b/backend/src/llvm/llvm_unroll.cpp
+@@ -47,8 +47,13 @@ namespace gbe {
+         AU.addPreservedID(LoopSimplifyID);
+         AU.addRequiredID(LCSSAID);
+         AU.addPreservedID(LCSSAID);
++#if LLVM_VERSION_MAJOR == 3 &&  LLVM_VERSION_MINOR >= 8
++        AU.addRequired<ScalarEvolutionWrapperPass>();
++        AU.addPreserved<ScalarEvolutionWrapperPass>();
++#else
+         AU.addRequired<ScalarEvolution>();
+         AU.addPreserved<ScalarEvolution>();
++#endif
+       // FIXME: Loop unroll requires LCSSA. And LCSSA requires dom info.
+       // If loop unroll does not preserve dom info then LCSSA pass on next
+       // loop will receive invalid dom info.
+@@ -156,7 +161,12 @@ namespace gbe {
+       // be unrolled.
+       bool handleParentLoops(Loop *L, LPPassManager &LPM) {
+         Loop *currL = L;
++#if LLVM_VERSION_MAJOR == 3 &&  LLVM_VERSION_MINOR >= 8
++        ScalarEvolution *SE = &getAnalysis<ScalarEvolutionWrapperPass>().getSE();
++        LoopInfo &loopInfo = getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
++#else
+         ScalarEvolution *SE = &getAnalysis<ScalarEvolution>();
++#endif
+         BasicBlock *ExitBlock = currL->getLoopLatch();
+         if (!ExitBlock || !L->isLoopExiting(ExitBlock))
+           ExitBlock = currL->getExitingBlock();
+@@ -183,7 +193,11 @@ namespace gbe {
+               shouldUnroll = false;
+             setUnrollID(currL, false);
+             if (currL != L)
++#if LLVM_VERSION_MAJOR == 3 &&  LLVM_VERSION_MINOR >= 8
++              loopInfo.markAsRemoved(currL);
++#else
+               LPM.deleteLoopFromQueue(currL);
++#endif
+           }
+           currL = parentL;
+           currTripCount = parentTripCount;
 -- 
 cgit v0.10.2
