@@ -2,7 +2,7 @@
 # Current Maintainer: Leopold Bloom <blinxwang@gmail.com>
 pkgname=beignet
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A GPGPU System for Intel Ivybridge GPUs'
 arch=('x86_64')
 url='http://cgit.freedesktop.org/beignet/'
@@ -22,7 +22,7 @@ prepare() {
 	cp gcc6.patch "$srcdir/Beignet-$pkgver-Source"
 	cd "$srcdir/Beignet-$pkgver-Source"
 	patch -Np1 -i isnan.patch
-	patch -Np1 -i gcc.patch
+	patch -Np1 -i gcc6.patch
 	cd "include/CL"
 	rm {opencl.h,cl_platform.h,cl_gl_ext.h,cl.h,cl.hpp,cl_egl.h,cl_ext.h,cl_gl.h}
 	touch dummy.hpp
