@@ -1,7 +1,7 @@
 # Maintainer: Marco Kundt <mrckndt@gmail.com>
 
 pkgname=gtk3-nocsd-git
-pkgver=r47.73831a4
+pkgver=r52.59265f9
 pkgrel=1
 pkgdesc='A hack to disable gtk+ 3 client side decoration'
 arch=('i686' 'x86_64')
