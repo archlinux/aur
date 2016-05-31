@@ -2,7 +2,7 @@
 # Contributor: Mike WB2FKO <mph at sportscliche dot com>
 pkgname=quisk
 pkgver=4.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Software defined radio (SDR)"
 arch=('i686' 'x86_64')
 url="http://james.ahlstrom.name/quisk/"
