@@ -1,7 +1,7 @@
 pkgbase = xping-git
 	pkgdesc = A simple ping program continiously probing multiple hosts using icmp-echo
 	pkgver = 20150222
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/martintopholm/xping
 	install = xping.install
 	arch = any
