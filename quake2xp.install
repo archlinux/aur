@@ -1,0 +1,3 @@
+post_install() {
+	echo 'Put the Quake 2 paks in ~/.quake/baseq2 to play.'
+}
