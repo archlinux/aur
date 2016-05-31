@@ -9,6 +9,7 @@ arch=('i686' 'x86_64')
 url="http://gitlab.com/JKANetwork/cryptoJKA"
 license=('GPL3')
 options=(!emptydirs)
+groups=('jka-toolkit')
 source=(https://gitlab.com/JKANetwork/cryptoJKA/raw/master/last-version/$pkgname-$pkgver.tbz2)
 md5sums=('0318e3912c7525a8c96952804e21fde4')
 install=$pkgname.install

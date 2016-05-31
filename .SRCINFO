@@ -6,6 +6,7 @@ pkgbase = cryptojka
 	install = cryptojka.install
 	arch = i686
 	arch = x86_64
+	groups = jka-toolkit
 	license = GPL3
 	options = !emptydirs
 	source = https://gitlab.com/JKANetwork/cryptoJKA/raw/master/last-version/cryptojka-0.5.0.tbz2
