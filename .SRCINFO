@@ -3,7 +3,6 @@ pkgbase = mkinitcpio-systemd-tool
     pkgver = 2
     pkgrel = 1
     url = https://github.com/random-archer/mkinitcpio-systemd-tool
-    install = INSTALL.sh
     arch = any
     license = Apache
     makedepends = git
