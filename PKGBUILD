@@ -5,7 +5,7 @@ pkgname=nginx-mainline-rtmp
 provides=('nginx')
 conflicts=('nginx')
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline-rtmp release'
 arch=('i686' 'x86_64')
 url='http://nginx.org'
@@ -28,7 +28,7 @@ source=($url/download/nginx-$pkgver.tar.gz
         logrotate
         crossdomain.xml
         nginx.conf
-        git+https://github.com/arut/nginx-rtmp-module.git)
+        git+https://github.com/sergey-dryabzhinsky/nginx-rtmp-module.git)
 md5sums=('c184c873d2798c5ba92be95ed1209c02'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7'
