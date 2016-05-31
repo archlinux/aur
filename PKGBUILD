@@ -16,6 +16,7 @@ md5sums=('efc2c8e6945673ff0048a3b0fa579231'
          '6a1c80a26ecc96fa2bfbc81a613c5482')
 
 package_hyper-bin() {
+	requires=("hyperstart-bin")
 	cd "$pkgdir"
 	rpmextract.sh "$srcdir/hyper-$pkgver.rpm"
 	mv "$pkgdir/lib/" "$pkgdir/usr/lib/"
