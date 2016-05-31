@@ -1,0 +1,14 @@
+pkgbase = nodejs-barcelona
+	pkgdesc = Opinionated deployment pipeline tool
+	pkgver = 0.0.26
+	pkgrel = 1
+	url = https://github.com/degica/bcnd
+	arch = any
+	depends = nodejs
+	depends = npm
+	noextract = barcelona-0.0.26.tgz
+	source = http://registry.npmjs.org/barcelona/-/barcelona-0.0.26.tgz
+	sha1sums = SKIP
+
+pkgname = nodejs-barcelona
+
