@@ -91,7 +91,7 @@ cd "$DIRECTORY"
 # create version file if missing
 [[ ! -f $VERSION_FILE ]] && echo 0 > $VERSION_FILE
 
-#get installed version
+# get installed version
 while read line
 do
 	INSTALLED_VERSION=$line
