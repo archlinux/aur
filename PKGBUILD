@@ -1,18 +1,39 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 pkgname=rustup-git
-pkgver=0.1.9.r4.ga4ad83f
+pkgver=0.1.11.r35.gba855de
 pkgrel=1
+
+# we (currently) need to build using nightly
+# this can hopefully go away eventually
+# also doesn't build with current nightly:
+# https://github.com/rust-lang-nursery/rustup.rs/commit/76849ce0b78a67ba157eb18fe55e6ff49a380942
+rustv="nightly-2016-05-10"
+chn=$(echo "$rustv" | tr '-' ' ' | cut -d' ' -f1)
+date=$(echo "$rustv" | tr '-' ' ' | cut -d' ' -f2- | tr ' ' '-')
+if test -n "$date"; then
+	date="-$date"
+fi
+target="rust-$chn-$CARCH-unknown-linux-gnu"
+
 pkgdesc="The Rust toolchain installer"
 arch=('any')
 url="https://github.com/rust-lang-nursery/rustup.rs"
 license=('MIT' 'Apache')
-makedepends=('cargo-nightly' 'git')
+makedepends=('git')
 provides=('rust' 'cargo' 'rust-nightly' 'cargo-nightly' 'rustup')
 conflicts=('rust' 'cargo' 'rust-nightly' 'rust-nightly-bin' 'multirust' 'multirust-git' 'rustup')
 replaces=('multirust' 'multirust-git')
 install='post.install'
-source=("${pkgname}::git+https://github.com/rust-lang-nursery/rustup.rs.git")
-md5sums=('SKIP')
+source=(
+	"${pkgname}::git+https://github.com/rust-lang-nursery/rustup.rs.git"
+	"$target$date.tar.gz::https://static.rust-lang.org/dist/${date#-}/${target}.tar.gz"
+	"$target$date.tar.gz.asc::https://static.rust-lang.org/dist/${date#-}/${target}.tar.gz.asc"
+)
+# The Rust GPG Key: https://keybase.io/rust
+validpgpkeys=("108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE")
+md5sums=('SKIP'
+         '009ccdef55366033a1db0f74762a7fa3'
+         'SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname}"
@@ -20,26 +41,19 @@ pkgver() {
 }
 
 build() {
-	cd "$pkgname"
-	# we (currently) need to build using beta or nightly
-	# this can hopefully go away eventually
-	if rustc --version | grep -E 'beta|nightly'; then
-		msg2 "Building rustup-init using cargo"
-		cargo build --release --bin rustup-init
-	elif command -v rustup >/dev/null 2>&1; then
-		msg2 "Building rustup-init using old rustup"
-		rustup run nightly cargo build --release --bin rustup-init
-	elif command -v multirust >/dev/null 2>&1; then
-		msg2 "Building rustup-init using multirust"
-		multirust run nightly cargo build --release --bin rustup-init
-	else
-		echo "Could not find beta/nightly cargo to use for compilation"
-		exit 1
-	fi
+	# set up nightly cargo
+	cd "$srcdir/$target"
+	msg2 "Setting up cargo $chn ${date#-}"
+	./install.sh --prefix="$srcdir/cargo"
+	export PATH="$srcdir/cargo/bin:$PATH"
+
+	msg2 "Building rustup"
+	cd "$srcdir/$pkgname"
+	cargo build --release --bin rustup-init
 
 	msg2 "Running rustup-init"
 	mkdir -p "$srcdir/tmp/.cargo"
-	env "HOME=$srcdir/tmp" target/release/rustup-init -y --no-modify-path
+	env -u CARGO_HOME "HOME=$srcdir/tmp" target/release/rustup-init -y --no-modify-path
 }
 
 package() {
