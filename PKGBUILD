@@ -3,12 +3,14 @@
 
 pkgname=gpmdp
 pkgver=3.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A beautiful cross platform Desktop Player for Google Play Music. Stable release."
 arch=('i686' 'x86_64')
 url="http://www.googleplaymusicdesktopplayer.com"
 depends=('libnotify' 'alsa-lib' 'gconf' 'gtk2' 'nss')
 optdepends=('gnome-keyring' 'lsb-release' 'libxtst')
+provides=('gpmdp')
+conflicts=('google-play-music-player-git' 'gpmdp-git')
 license=('MIT')
 
 case $CARCH in
