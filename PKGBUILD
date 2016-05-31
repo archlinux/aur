@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=watsup
-pkgver=3.5
+pkgver=3.6
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('xdg-utils')
@@ -10,7 +10,7 @@ license=('GPL3')
 pkgdesc="Showing some system status informations"
 url="http://www.kornelix.com/watsup"
 source=("http://www.kornelix.net/downloads/tarballs/$pkgname-$pkgver.tar.gz")
-md5sums=('c7a8308085fee3e063bdee3316331cc4')
+md5sums=('a9776507ea07079ad40c04a3a2b542ee')
 
 build() {
   cd ${srcdir}/$pkgname-$pkgver
