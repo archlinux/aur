@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/patjak/bcwc_pcie"
 license=('unknown')
 depends=('kmod' 'bcwc-pcie-firmware')
-makedepends=('linux' 'linux-headers' 'git')
+makedepends=('linux-headers' 'git')
 install="$pkgname.install"
 
 source=("$pkgname::git+https://github.com/patjak/bcwc_pcie.git"

@@ -8,7 +8,6 @@ pkgbase = bcwc-pcie-git
 	install = bcwc-pcie-git.install
 	arch = x86_64
 	license = unknown
-	makedepends = linux
 	makedepends = linux-headers
 	makedepends = git
 	depends = kmod
