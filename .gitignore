@@ -1,4 +1,5 @@
 *.pkg.tar.xz
+*.tgz
 pkg
 src
 fb-adb
