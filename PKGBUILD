@@ -10,6 +10,6 @@ source=('git+https://github.com/Cube777/dotgit.git')
 md5sums=('SKIP')
 
 package() {
-	install -Dm755 "$srcdir/$pkgname/dotgit" "$pkgdir/usr/bin/dotgit"
-	install -Dm644 "$srcdir/$pkgname/bash_completion" "$pkgdir/usr/share/bash-completion/completions/dotgit"
+	install -Dm755 "$srcdir/dotgit/dotgit" "$pkgdir/usr/bin/dotgit"
+	install -Dm644 "$srcdir/dotgit/bash_completion" "$pkgdir/usr/share/bash-completion/completions/dotgit"
 }
