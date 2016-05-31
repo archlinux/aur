@@ -11,15 +11,20 @@ license=('GPL2')
 depends=('qt4>=4.7' 'qtwebkit')
 optdepends=('packer: for AUR support')
 source=(http://sourceforge.net/projects/appset/files/appset-qt/0.7/${pkgver}/${pkgname}-${pkgver}-sources.tar.gz
+        appset-qt-errno.patch
         appset-helper.service)
 install=${pkgname}.install
 changelog=${pkgname}.changelog
 md5sums=('8658b6452e1f941af8501a6a772b6cd9'
+         'c26afcf570cdc6b954150fe39d116b85'
          '7791c134cc275b387c1290f771e43a3d')
 
-build()
-{
-  cd "${srcdir}/${pkgname}-${pkgver}-sources"
+prepare() {
+  patch -p0 -i "appset-qt-errno.patch"
+}
+
+build() {
+  cd "${pkgname}-${pkgver}-sources"
 
   qmake-qt4 PREFIX=/usr -Wnone
 
@@ -31,9 +36,8 @@ build()
   make
 }
 
-package()
-{
-  cd "${srcdir}/${pkgname}-${pkgver}-sources"
+package() {
+  cd "${pkgname}-${pkgver}-sources"
 
   make INSTALL_ROOT="${pkgdir}" install
   # appset-helper daemon
