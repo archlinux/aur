@@ -10,10 +10,10 @@ pkgdesc="The go-ethereum commandline client (geth cli)."
 arch=('i686' 'x86_64')
 depends=(
   'gmp'
+  'glibc'
   'leveldb'
   'readline'
 )
-optdepends=('mist: Graphical Ethereum wallet and DApps browser.')
 conflicts=(
   'geth-git'
   'go-ethereum'
