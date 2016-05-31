@@ -1,6 +1,6 @@
 #!/bin/zsh
-_nchan_ver=0.99.14
-_nginx_ver=1.10.0
+_nchan_ver=0.99.15
+_nginx_ver=1.10.1
 
 _nchan_tag="v${_nchan_ver}"
 
@@ -29,8 +29,8 @@ pkgver() {
 
 
 pkgname=nginx-nchan
-pkgver=1.10.0.nchan.0.99.14
-pkgrel=2
+pkgver=1.10.1.nchan.0.99.15
+pkgrel=1
 pkgdesc="Nginx + Nchan - a flexible pub/sub server"
 arch=('i686' 'x86_64' 'armv7h')
 
@@ -60,7 +60,7 @@ source=("http://nginx.org/download/nginx-${_nginx_ver}.tar.gz"
   "git+https://github.com/slact/nchan.git#tag=${_nchan_tag}"
        )
 
-md5sums=('c184c873d2798c5ba92be95ed1209c02'
+md5sums=('088292d9caf6059ef328aa7dda332e44'
 	 '845cab784b50f1666bbf89d7435ac7af'
 	 '79031b58828462dec53a9faed9ddb36a'
 	 '6696dc228a567506bca3096b5197c9db'
