@@ -1,7 +1,7 @@
 pkgbase = etherwall
 	pkgdesc = Ethereum GUI Wallet (QT5)
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://etherwall.com
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = etherwall
 	depends = qt5-quickcontrols
 	depends = geth
 	source = https://github.com/almindor/etherwall/archive/release/1.1.0.tar.gz
-	md5sums = b74c0e22de4231ac468f49b936aa1375
+	md5sums = 373be6fd06945f08a39b5713f4aa2a28
 
 pkgname = etherwall
 
