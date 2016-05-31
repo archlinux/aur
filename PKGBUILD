@@ -18,8 +18,8 @@ prepare() {
   sed -i 's/$(CMAKE_OPTS)/$(CMAKE_OPTS) -DENABLE_LIBNUMA=OFF/' "$pkgname-$pkgver/Makefile"
   sed -i 's/^CFLAGS+=-I.$/CFLAGS+=-I. -fPIC/' "$pkgname-$pkgver/Makefile"
 
-  patch -p1 ratecontrol.cpp.patch
-  patch -p1 param.cpp.patch
+  patch -R -Np1 < ratecontrol.cpp.patch
+  patch -R -Np1 < param.cpp.patch
 }
 
 build() {
