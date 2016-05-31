@@ -1,7 +1,7 @@
 # Maintainer: Eugen Kuksa <eugenk@cs.uni-bremen.de>
 
 pkgname=hets
-pkgver=0.99_1458196355
+pkgver=0.99_1464691151
 pkgrel=1
 
 pkgdesc="A parsing, static analysis and proof management tool incorporating various provers and different specification languages."
@@ -13,7 +13,7 @@ depends=('ghc>=6.8.2' 'udrawgraph>=3.1.1' 'tcl' 'tk' 'spass' 'eprover' 'darwin' 
 optdepends=('isabelle')
 provides=('hets')
 conflicts=('hets')
-sha1sums=('cd8405098c75995a7cb4a00be15c00a3f2b17914')
+sha1sums=('8e2ecab20cf3cabd06f0ff0c0c911a1106e3efc4')
 
 source=("http://www.informatik.uni-bremen.de/~eugenk/archlinux-aur/hets/hets-${pkgver}.tar.gz")
 package() {
