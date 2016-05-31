@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=0.9.3
+Type=Application
+Name=Java Modelling Tools (JMT)
+Comment=Java Modelling Tools (JMT) is a suite of applications developed by Politecnico di Milano and Imperial College London and released under GPL license. The project aims at offering a comprehensive framework for performance evaluation, system modeling with analytical and simulation techniques, capacity planning and workload characterization studies.
+TryExec=jmt
+Exec=jmt %F
+#Icon=
