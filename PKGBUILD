@@ -53,7 +53,7 @@ pkgver() {
     local short_hash=$(git -C $repo rev-parse --short HEAD)
     local release_info=$(git -C $repo describe --long --tags --match "v[0-9]*")
     local release_number=$(echo "$release_info" | sed -r 's/^v([0-9]+)-.*/\1/')
-    local release_version=${release_number} # example: 3
+    local release_version="${release_number}" # example: 3
     local develop_version="${release_number}.${head_count}.${short_hash}" #example: 3.25.d069dad 
     [[ -f $marker ]] && printf "$develop_version" || printf "$release_version"
 }
