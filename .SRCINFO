@@ -1,0 +1,24 @@
+pkgbase = openvpn-mbedtls-git
+	pkgdesc = An easy-to-use, robust, and highly configurable VPN (Virtual Private Network) - git checkout
+	pkgver = 2.3.beta1.r556.gfdc24f1
+	pkgrel = 1
+	url = http://openvpn.net/index.php/open-source.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = mbedtls
+	depends = lzo
+	depends = snappy
+	depends = lz4
+	depends = iproute2
+	optdepends = easy-rsa: for easy key management
+	provides = openvpn=2.3.0
+	provides = openvpn-dev
+	conflicts = openvpn
+	conflicts = openvpn-dev
+	conflicts = openvpn-git
+	source = git://git.code.sf.net/p/openvpn/openvpn
+	sha256sums = SKIP
+
+pkgname = openvpn-mbedtls-git
+
