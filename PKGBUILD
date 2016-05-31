@@ -1,12 +1,17 @@
 # This file is part of https://aur.archlinux.org/packages/mkinitcpio-systemd-tool/
 
 pkgname=mkinitcpio-systemd-tool
-pkgver=r3.c17f208
+pkgver=r5.23502f3
 pkgrel=1
 pkgdesc='Provisioning tool for systemd in initramfs (systemd-tool)'
 arch=('any')
 license=('Apache')
-depends=('systemd' 'dropbear')
+depends=('mkinitcpio' 'systemd')
+optdepends=(
+    'cryptsetup: required by initrd-cryptsetup.service' 
+    'dropbear: required by initrd-dropbear.service' 
+    'mc: required by initrd-debug-progs.service' 
+)
 makedepends=('git')
 install='INSTALL.sh'
 url="https://github.com/random-archer/${pkgname}"
