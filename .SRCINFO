@@ -6,7 +6,7 @@ pkgbase = atvrec
 	arch = x86_64
 	license = Freeware
 	options = !strip
-	source = atvrec-1.2.1.tar.gz::https://www.dropbox.com/s/1qbc839siehuqnk/atvrec-1.2.1.tar.gz?dl=1
+	source = atvrec-1.2.1.tar.gz::https://www.dropbox.com/s/0c9jsian6bhtspq/atvrec-1.2.1.tar.gz?dl=1
 	md5sums = 114d6156663fc31f5f93d63b1e9369f3
 
 pkgname = atvrec
