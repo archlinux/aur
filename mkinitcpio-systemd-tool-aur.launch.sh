@@ -102,7 +102,7 @@ do_clean() {
 
 ###
 
-set -e
+#set -e
 
 do_provision
 
