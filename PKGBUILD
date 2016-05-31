@@ -1,7 +1,7 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=qmapshack
 pkgver=1.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Plan your next outdoor trip'
 arch=('x86_64')
 url='https://bitbucket.org/maproom/qmapshack/'
@@ -22,13 +22,4 @@ package() {
     cd "$pkgname-$pkgver"
 
     make DESTDIR="${pkgdir}" install
-}
-
-post_install() {
-    update-desktop-database -q
-}
-
-
-post_remove() {
-    update-desktop-database -q
 }
