@@ -2,7 +2,7 @@
 
 pkgname=python-sphinxcontrib-httpdomain
 _libname=sphinxcontrib-httpdomain
-pkgver=1.3.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="HTTP domain extension for sphinx"
 arch=(any)
@@ -23,4 +23,4 @@ package() {
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('ba8fbe82eddc96cfa9d7b975b0422801a14ace9d7e051b8b2c725b92ea6137b5')
+sha256sums=('eab097505caee272ca6a313edb2cbc3d2103bb6bcc09923ef43054e238452f6b')
