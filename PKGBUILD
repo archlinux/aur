@@ -1,7 +1,7 @@
 # Maintainer: Jeremie Nevin <contact@neurovertex.eu>
 
 pkgname=texiteasy
-pkgver=0.21.5
+pkgver=0.21.6
 pkgrel=1
 _pkgrev="fdc8c2bca42e7b61a11792ec76dc7d08afdb65bb"
 pkgdesc="Simple and Powerful Latex Editor"
@@ -15,18 +15,18 @@ source=($pkgname::git+https://github.com/Bramas/texiteasy)
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$pkgname"
+	cd "$srcdir/$pkgname"
 	git tag --sort=version:refname | tail -n 1 | sed -r 's/^v([0-9.]+)/\1/;s/-/./'
 }
 
 build() {
-	cd "$pkgname/source"
+	cd "$srcdir/$pkgname/source"
 	qmake-qt4 $pkgname.pro
 	make
 }
 
 package() {
-	cd "$pkgname/source"
+	cd "$srcdir/$pkgname/source"
 	make INSTALL_ROOT=$pkgdir install
 	cd ..
 	install -Dm644 -t $pkgdir/usr/share/texiteasy/dictionaries/ bundler_files/deb/share/texiteasy/dictionaries/*
