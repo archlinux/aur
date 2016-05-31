@@ -1,7 +1,7 @@
 # Maintainer: Artem Bezsmertnyi <artem.bezsmertny@gmail.com>
 _author=tony
 pkgname=tmuxp
-pkgver=0.11.0
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Manage tmux workspaces from JSON and YAML, pythonic API, shell completion."
 arch=(any)
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python' 'python-argcomplete' 'python-kaptan' 'python-colorama')
 options=(!emptydirs)
 source=("https://github.com/tony/tmuxp/archive/v${pkgver}.tar.gz")
-md5sums=('97207377c960ef87404f6d19f64a8f38')
+md5sums=('ccc0835bf3f2f3b01cb148e0f11c4d8a')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
