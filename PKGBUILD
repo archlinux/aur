@@ -6,7 +6,7 @@
 
 pkgname=mingw-w64-mariadb-connector-c
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="MariaDB Connector/C is used to connect applications developed in C/C++ to MariaDB and MySQL databases (mingw-w64)"
 arch=('any')
 url="https://mariadb.com/kb/en/mariadb/about-mariadb-connector-c"
@@ -22,7 +22,7 @@ source=("https://downloads.mariadb.org/interstitial/connector-c-${pkgver}/mariad
         'use_fopen_for_xp_compatibility.patch'
         'fix-size-t-defined.patch')
 sha1sums=('89031eeb4cf56affea30a3d66ff2c6c29462da3d'
-          'b0e496dc054e2a328dab17cf4de7bd169789f9d7'
+          'd80d94dfe46bf02cb3934ff493070f7b8cb455d9'
           'dcf3d766ae6faf99aa93d1444e3b200c4f80c4f1'
           '4d1b01a0f800b15ad6e44e387f2f8d8c147cdea3')
 
@@ -33,7 +33,6 @@ prepare() {
   patch -p0 -i "$srcdir/fix-libnames-mingw.patch"
   patch -p0 -i "$srcdir/use_fopen_for_xp_compatibility.patch"
   patch -p0 -i "$srcdir/fix-size-t-defined.patch"
-  #patch -p0 -i "$srcdir/fix-qt5-uint-error.patch"
 }
 
 build() {
