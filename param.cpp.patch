@@ -1,0 +1,11 @@
+--- src/libbpg-0.9.7/x265/source/common/param.cpp	2016-05-31 06:40:47.567106682 +0200
++++ old/libbpg-0.9.7/x265/source/common/param.cpp	2016-05-15 11:06:19.000000000 +0200
+@@ -1396,7 +1396,7 @@
+         return NULL;
+ 
+ #define BOOL(param, cliopt) \
+-    s += sprintf(s, " %s", (param) ? cliopt : "no-" cliopt);
++    s += sprintf(s, " %s", (param) ? cliopt : "no-"cliopt);
+ 
+     s += sprintf(s, "%dx%d", p->sourceWidth,p->sourceHeight);
+     s += sprintf(s, " fps=%u/%u", p->fpsNum, p->fpsDenom);
