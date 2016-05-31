@@ -1,7 +1,11 @@
+# Maintainer: Felix Potthast <felix_potthast AT web DOT de>
+# Contributor: Philipp Joram <mail AT phijor DOT me>
+
 pkgname=picasso-3ds-git
 _gitname=picasso
 pkgrel=1
-pkgver=cefa910
+pkgver=r59.bc051ca
+epoch=1
 pkgdesc="Picasso shader assembler for 3DS homebrew"
 arch=('any')
 url="https://github.com/fincs/picasso/"
@@ -14,7 +18,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_gitname}"
-  git describe --always | sed 's|-|.|g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
