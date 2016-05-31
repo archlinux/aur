@@ -39,7 +39,7 @@ license=('Apache')
 
 url="https://github.com/random-archer/${pkgname}"
 
-# select version type depending on marker file presense
+# select version type depending on marker file presence
 # absense of any marker files selects the curernt PKGBUILD value of pkgver
 _marker_develop='.PKGDEV' # create this file to use latest development version (master branch)
 _marker_release='.PKGREL' # create this file to use latest release version (named tag vNNN)

@@ -22,7 +22,7 @@ pkgbase = mkinitcpio-systemd-tool
     backup = etc/systemd/system/initrd-network.service
     backup = etc/systemd/system/initrd-shell.service
     backup = etc/systemd/system/initrd-shell.sh
-    source = mkinitcpio-systemd-tool::git+https://github.com/random-archer/mkinitcpio-systemd-tool.git#tag=v
+    source = mkinitcpio-systemd-tool::git+https://github.com/random-archer/mkinitcpio-systemd-tool.git#tag=v2
     md5sums = SKIP
 
 pkgname = mkinitcpio-systemd-tool
