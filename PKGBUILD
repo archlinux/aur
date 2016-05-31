@@ -3,12 +3,14 @@
 
 pkgname=openvpn-pkcs11
 pkgver=2.3.11
-pkgrel=0
+pkgrel=1
 pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Network) with smartcard support"
 arch=(i686 x86_64)
 url="http://openvpn.net/index.php/open-source.html"
 depends=('openssl' 'lzo' 'iproute2' 'pkcs11-helper')
 license=('custom')
+conflicts=("${pkgname/-pkcs11}")
+provides=("${pkgname/-pkcs11}=${pkgver}-${pkgrel}")
 install=openvpn.install
 source=(http://swupdate.openvpn.net/community/releases/openvpn-${pkgver}.tar.gz)
 sha256sums=('9117a4434fd35e61cf94f9ee7ef84b7aecbc6fa556f779ff599560f219756163')
