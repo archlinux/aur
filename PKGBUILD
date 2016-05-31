@@ -2,7 +2,7 @@
 
 pkgdesc='Provisioning tool for systemd in initramfs (systemd-tool)'
 pkgname=mkinitcpio-systemd-tool
-pkgver=
+pkgver=2
 pkgrel=1
 depends=(
     'mkinitcpio' 
@@ -58,7 +58,7 @@ pkgver() {
     local develop_version="${release_number}.${head_count}.${short_hash}" # example: 3.25.d069dad
     if [[ -f "$base/${_marker_develop}" ]] ; then printf "$develop_version" ;
     elif [[ -f "$base/${_marker_release}" ]] ; then printf "$release_version" ;
-    else printf "$pkgver"
+    else printf "$pkgver" ; fi
 }
 
 ####
