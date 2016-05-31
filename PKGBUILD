@@ -1,6 +1,6 @@
 # Maintainer: Kevin Hanselman <kevin-hanselman@gmail.com>
 pkgname=fwup-git
-pkgver=v0.6.1.r3.4da4733
+pkgver=v0.7.0.r2.da539d1
 pkgrel=1
 pkgdesc="Configurable embedded Linux firmware update creator and runner"
 arch=('any')
