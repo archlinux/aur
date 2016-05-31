@@ -33,9 +33,8 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
 
-  KERNEL_VERSION=$(uname -r | cut -d '.' -f 1,2)
-  install -Dm 644 facetimehd.ko.gz \
-    "$pkgdir/usr/lib/modules/extramodules-${KERNEL_VERSION}-ARCH/facetimehd.ko.gz"
+  EXTRA_MODULES=$(readlink -f /usr/lib/modules/$(uname -r)/extramodules)
+  install -Dm 644 facetimehd.ko.gz "$pkgdir/${EXTRA_MODULES}/facetimehd.ko.gz"
   install -Dm 644 "$srcdir/bcwc-pcie.modprobe.conf" \
     "$pkgdir/etc/modprobe.d/bcwc-pcie.conf"
   install -Dm 644 "$srcdir/bcwc-pcie.modules-load.conf" \
