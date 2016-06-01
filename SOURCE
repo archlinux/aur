@@ -1,0 +1,5 @@
+#!/bin/sh
+
+SOURCETYPE="AUR4"
+SOURCEPATH="https://aur.archlinux.org/webvirtcloud-git.git"
+

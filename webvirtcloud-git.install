@@ -1,0 +1,25 @@
+post_install() {
+  login='webvirtcloud'
+
+  getent group "${login}" > /dev/null || groupadd -r "${login}" > /dev/null
+  getent passwd "${login}" > /dev/null || useradd -r -g "${login}" -d "/var/lib/${login}" "${login}" -m > /dev/null
+
+  PYTHONPATH=/usr/lib/webvirtcloud/lib /usr/bin/python2 /usr/lib/webvirtcloud/manage.py migrate
+  PYTHONPATH=/usr/lib/webvirtcloud/lib /usr/bin/python2 /usr/lib/webvirtcloud/manage.py syncdb
+  chown webvirtcloud:webvirtcloud /usr/lib/webvirtcloud/db.sqlite3 /usr/lib/webvirtcloud
+  PYTHONPATH=/usr/lib/webvirtcloud/lib /usr/bin/python2 /usr/lib/webvirtcloud/manage.py collectstatic --noinput
+  cat <<- EOF
+    To finalize the installation you need to add required user to the kvm group:
+	# sudo usermod -G kvm -a ${login}
+
+	Sample nginx conf file stored in /etc/nginx/conf.d/webvirtcloud.nginx.conf.sample
+
+	Restart nginx and the supervisord services:
+	# sudo systemctl restart nginx
+	# sudo systemctl restart supervisord
+EOF
+}
+
+post_upgrade() {
+  echo
+}
