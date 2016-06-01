@@ -3,29 +3,25 @@
 
 pkgbase=grails
 pkgname=('grails' 'grails-docs')
-pkgver=3.1.7
+pkgver=3.1.8
 pkgrel=1
 pkgdesc='Groovy on rails, web framework'
 url='http://grails.org/'
 arch=('any')
 license=('Apache')
 makedepends=('apache-ant' 'unzip' 'setconf' 'junit' 'java-environment')
-optdepends=(
-  'groovy: the groovy programming language'
-  'grails-docs: documentation for grails'
-)
+optdepends=('groovy: the groovy programming language'
+            'grails-docs: documentation for grails')
 options=('!emptydirs')
 noextract=("${pkgname[1]}-${pkgver}.zip")
 source=(${pkgname[0]}-${pkgver}.zip::https://github.com/grails/grails-core/releases/download/v${pkgver}/grails-${pkgver}.zip
         ${pkgname[1]}-${pkgver}.zip::https://github.com/grails/grails-doc/releases/download/v${pkgver}/grails-docs-${pkgver}.zip)
-sha512sums=('782f61d63e6e7750401784debd54e1db59209af207037f96c653558e49e6bb845801eacf6b0be6fb29ad31bc4cb8211990d622bb649e6405bf636fe20a161f90'
-            'df74a2025abee26a620cf6660468ab2b3804bdd0f3041c9e9db8c2253aec59fd6e871c9dd7e8629535bc6c8d8c9f399fde17b5084a052a58f7cd0864f6c9c6dd')
+sha512sums=('7b6ef6184449cb0b6cf3ea4265d272b7d81290b7cfd94a8e71757d0905e220d375328052206a621f3acea0e5f2c4aee48d74670b88bc805a6bca431abbbec709'
+            'd9447ac365025e793d118d7a6ad6032debe5152de811da8be55ce5dc10e524149bf87a582b1ea8abb56be8b2fcc4f16493533e299dc853707da20deddafaa38f')
 
 prepare() {
   cd ${pkgbase}-${pkgver}
-  # profile.d script
   echo 'export GRAILS_HOME=/usr/share/grails' > "${srcdir}/${pkgbase}.profile"
-  # set APP_HOME
   setconf bin/grails APP_HOME /usr/share/grails
 }
 
@@ -33,7 +29,6 @@ package_grails() {
   depends=('java-environment' 'junit' 'bash')
 
   cd ${pkgname}-${pkgver}
-
   install -d "${pkgdir}/usr/share/pixmaps"
   cp -r . "${pkgdir}/usr/share/${pkgname}"
   install -Dm 755 bin/grails "${pkgdir}/usr/bin/grails"
@@ -48,7 +43,6 @@ package_grails() {
 
 package_grails-docs() {
   pkgdesc='Documentation for Grails'
-
   install -d "${pkgdir}/usr/share/doc" "${pkgdir}/usr/share/grails"
   unzip "grails-docs-${pkgver}.zip" -d "${pkgdir}/usr/share/doc/grails-${pkgver}"
   ln -s "/usr/share/doc/grails-${pkgver}" "${pkgdir}/usr/share/grails/doc"
