@@ -1,25 +1,32 @@
-# Maintainer: Marco Pompili < marcs (dot) pompili (at) gmail (dot) com >
+# Maintainer: Marco Pompili <aur AT emarcs DOT org>
 # Contributor: Giorgio Gilestro crocowhile@gmail.com
+# Contributor: Martchus <martchus@gmx.net>
+# Contributor: Mladen Milinkovic <maxrd2@smoothware.net>
 
 pkgname=sphinxbase
 pkgver=5prealpha
-pkgrel=4
+pkgrel=5
 pkgdesc='Common library for sphinx speech recognition.'
 url='http://cmusphinx.sourceforge.net/'
 arch=('i686' 'x86_64')
 license=('BSD')
 makedepends=('bison' 'swig')
-depends=('lapack' 'libpulse' 'libsamplerate') #not sure if libsamplerate is needed
+depends=('python2' 'python' 'lapack' 'libpulse') # not sure if libsamplerate is needed 'libsamplerate'
 source=("http://downloads.sourceforge.net/project/cmusphinx/${pkgname}/${pkgver}/$pkgname-$pkgver.tar.gz"
-        "https://raw.githubusercontent.com/cmusphinx/sphinxbase/master/LICENSE")
-md5sums=('ea27ea80bc14b96ad0a55fd5c94025d5'
-         '469fd92fa8cd1d4ca7ee0fe7435af689')
+        "https://raw.githubusercontent.com/cmusphinx/sphinxbase/master/LICENSE"
+        "timing-fix.patch")
+sha256sums=('06971dbe272d2f73bde0ef7b3538c0c8f8ea885cb171fd6b17a5975bced66e64'
+            '5b76875102967d5f9aed1c453489d828173968086933c4bad656780830f7454f'
+            '5e8b2bac5d9f84a1c7b7fd774ef2b3f8f6cfc9dcb415b10a66ef439f91f3d4c5')
 options=('!libtool')
 
 prepare() {
   cd "$pkgname-$pkgver"
 
-  msg2 "Reconfiguring project for Automake v1.15"
+  msg2 "Applying timing fix patch"
+  patch -p1 < "$srcdir/timing-fix.patch"
+
+  msg2 "Reconfiguring project for current version of Automake"
   autoreconf -ivf > /dev/null
 
   cd ..
