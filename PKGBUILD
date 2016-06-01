@@ -1,6 +1,6 @@
 # Maintainer: Christoph Steinacker <archologist.linuxATgooglemailDOTcom>
 pkgname=jes
-pkgver=1.01.24
+pkgver=1.01.25
 pkgrel=1
 pkgdesc="A java-based tool for german cash method of accounting (Einnahme-Überschuss-Rechnung)"
 arch=('any')
@@ -8,7 +8,7 @@ url="http://www.jes-eur.de"
 license=('custom')
 #install="${pkgname}.install"
 depends=('java-runtime' 'x-server' 'xdg-utils')
-source=(http://www.jes-eur.de/userfiles/downloads/jes/jes_10124.zip
+source=(http://www.jes-eur.de/userfiles/downloads/jes/jes_10125.zip
     ${pkgname}.desktop
 	${pkgname}.sh.new
 	LICENSE
