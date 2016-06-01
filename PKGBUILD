@@ -2,7 +2,7 @@
 
 _target=aarch64-linux-gnu
 pkgname=$_target-gdb
-pkgver=7.11
+pkgver=7.11.1
 pkgrel=1
 pkgdesc='The GNU Debugger for the ARM64 target'
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=(xz ncurses expat python guile)
 makedepends=(texinfo)
 options=(!emptydirs)
 source=(ftp://ftp.gnu.org/gnu/gdb/gdb-$pkgver.tar.xz)
-sha256sums=('7a434116cb630d77bb40776e8f5d3937bed11dea56bafebb4d2bc5dd389fe5c1')
+sha256sums=('e9216da4e3755e9f414c1aa0026b626251dfc57ffe572a266e98da4f6988fc70')
 
 build() {
   cd gdb-$pkgver
