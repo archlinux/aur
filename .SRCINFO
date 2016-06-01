@@ -1,0 +1,21 @@
+pkgbase = grgen
+	pkgdesc = transformation of structures made easy
+	pkgver = 4.4.5
+	pkgrel = 1
+	url = http://www.info.uni-karlsruhe.de/software/grgen/
+	arch = x86
+	arch = x86_64
+	license = GPL
+	depends = mono
+	depends = java-environment
+	source = http://www.info.uni-karlsruhe.de/software/grgen/GrGenNET-V4.4.5-2016-02-14.tar.bz2
+	source = GrGen
+	source = GrShell
+	source = yComp
+	md5sums = 69e9c78c8c8b9573657ff52ff12273c5
+	md5sums = 695171fa276683633b7dfaab8ac26004
+	md5sums = 6d4ff6d37659028c4f370b9446b391d8
+	md5sums = 941a530ada35ef0f7bce7ae3bfff61f5
+
+pkgname = grgen
+

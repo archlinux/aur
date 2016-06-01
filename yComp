@@ -1,0 +1,2 @@
+#!/usr/bin/sh
+/usr/bin/java -jar /usr/lib/grgen/yComp.jar $*

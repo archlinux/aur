@@ -1,0 +1,2 @@
+#!/usr/bin/sh
+/usr/bin/mono "/usr/lib/grgen/GrShell.exe" $*
