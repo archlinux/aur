@@ -1,7 +1,7 @@
 # Maintainer: Tom van der Lee <t0m.vd.l33@gmail.com>
 pkgname=liquidprompt
-pkgver=1.9
-pkgrel=2
+pkgver=1.10
+pkgrel=1
 pkgdesc="A useful adaptive prompt for Bash & Zsh"
 arch=("any")
 url="https://github.com/nojhan/liquidprompt"
@@ -17,7 +17,7 @@ depends=("ncurses"
 optdepends=("acpi: Battery and temperature status"
 	    "lm_sensors: Temperature status")
 source=(https://github.com/nojhan/liquidprompt/archive/v_$pkgver.tar.gz)
-sha256sums=('4751665b6dbf37517ba8e7b6af067369937006b60ca23fc320fd5416b1a065fd')
+md5sums=('e1abe8bcd0b67ddd67b72ee094af742d')
 
 package() {
 	cd "$pkgname-v_$pkgver"
