@@ -3,8 +3,8 @@
 # Contributor: Vladimir Ermakov <vooon341@gmail.com>
 
 pkgname=gazebo
-pkgver=7.0.0
-pkgrel=2
+pkgver=7.1.0
+pkgrel=1
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -26,16 +26,11 @@ optdepends=('bullet>=2.82: Bullet support'
             'urdfdom: Load URDF files')
 makedepends=('cmake' 'doxygen' 'pkg-config>=0.26')
 install="${pkgname}.install"
-source=("http://osrf-distributions.s3.amazonaws.com/gazebo/releases/${pkgname}-${pkgver}.tar.bz2"
-        "ffmpeg.patch")
-sha256sums=('74413e18d812abb3398af3124dc24e009af27e1f81c26d9698aaee39d213f888'
-            '28511deeb68f20ef4616e1ad6ae9876e318b3958b7e9c4c9042dc0fad0183d4f')
+source=("http://osrf-distributions.s3.amazonaws.com/gazebo/releases/${pkgname}-${pkgver}.tar.bz2")
+sha256sums=('93f75ec601bdafd2d4715d7200d81f52123979b00d547635ae38738e6405d863')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  # See: https://bitbucket.org/osrf/gazebo/commits/df5f96a6695f8dbe8d05bb885aed2913a09170b9
-  patch -p1 -i ${srcdir}/ffmpeg.patch
 
   mkdir -p build && cd build
 
