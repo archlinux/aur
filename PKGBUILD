@@ -16,7 +16,7 @@ source=("http://downloads.sourceforge.net/project/cmusphinx/${pkgname}/${pkgver}
         "https://raw.githubusercontent.com/cmusphinx/sphinxbase/master/LICENSE"
         "timing-fix.patch")
 sha256sums=('06971dbe272d2f73bde0ef7b3538c0c8f8ea885cb171fd6b17a5975bced66e64'
-            '5b76875102967d5f9aed1c453489d828173968086933c4bad656780830f7454f'
+            '8b4bc30d2a57839cba678bb84472a9b0b4c84725ed04b37508e5ed3476f03c19'
             '5e8b2bac5d9f84a1c7b7fd774ef2b3f8f6cfc9dcb415b10a66ef439f91f3d4c5')
 options=('!libtool')
 
