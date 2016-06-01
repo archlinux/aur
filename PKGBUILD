@@ -14,7 +14,7 @@ depends=('sphinxbase=5prealpha' 'gstreamer0.10-base' 'gst-plugins-base-libs')
 source=("http://downloads.sourceforge.net/cmusphinx/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/cmusphinx/pocketsphinx/master/LICENSE")
 sha256sums=('ad9f5f5c5ce79ff87b63d527f8f4d3e2f54c0c1da53793895991a8849ca47701'
-            'fcf5c4e41ae81f704ed70f1511146272ef0f0ca7b97088d11d72896b56a189f5')
+            '49181202f2b991d25f6cac8cd1705994494b9600d4311794ecbb9fcf8b188aef')
 options=('!libtool')
 
 prepare() {
