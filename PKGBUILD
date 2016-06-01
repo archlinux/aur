@@ -2,7 +2,7 @@
 # Contributor: speps <speps dot aur dot archlinux dot org>
 
 pkgname=rssguard
-pkgver=3.2.3
+pkgver=3.2.4
 pkgrel=1
 pkgdesc="A simple (yet powerful) Qt5 feed reader."
 arch=('i686' 'x86_64')
@@ -32,4 +32,4 @@ package() {
   cd skunkos*/b
   make DESTDIR="$pkgdir/" install
 }
-sha256sums=('e0a0f7325f1a464ac15d5a17f80937819932bdf95578ed6481663790cc67aabf')
+sha256sums=('e05e25a1032dcd0340e0b9e599e336a1bd8d28ef2b0ce4bd5c4797f0c33ffc31')
