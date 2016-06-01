@@ -37,7 +37,7 @@ arch=('any')
 md5sums=('SKIP')
 license=('Apache')
 
-url="https://github.com/random-archer/${pkgname}"
+url="https://github.com/random-archer/$pkgname"
 
 # switch between a release tag and a development branch
 _fragment=$([[ $pkgver =~ ^[0-9]+$ ]] && printf "#tag=v$pkgver" || printf "#branch=master")
