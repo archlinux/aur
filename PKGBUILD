@@ -1,15 +1,15 @@
 # Maintainer: Mikael Tillenius <mti at tillenius dot com>
 pkgname=libps6000
-pkgver=1.4.5_6r37
+pkgver=1.4.6_6r13
 pkgrel=1
 pkgdesc="library for picotech oscilloscope 6000 series"
 arch=('i686' 'x86_64')
 if [ "$CARCH" == "i686" ]; then
   _arch="i386"
-  _md5sum='e352392388108223f38b69eb50fd8f04t'
+  _md5sum='13d77c343dda41fac0f9d52e639b9f8b'
 else
   _arch="amd64"
-  _md5sum='9ebd702b70815b0a4e2ddc2ab2168197'
+  _md5sum='40bd18211d54c9b18c2e4c0a2b47536a'
 fi
 url="http://www.picotech.com/linux.html"
 license=('custom')
@@ -37,4 +37,3 @@ package() {
   chmod -R go-w $pkgdir
   chown -R root:root $pkgdir
 }
-
