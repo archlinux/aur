@@ -39,25 +39,32 @@ license=('Apache')
 
 url="https://github.com/random-archer/${pkgname}"
 
-# select version type depending on marker file presence
-# absense of any marker files selects the curernt PKGBUILD value of pkgver
-_marker_develop='.PKGDEV' # create this file to use latest development version (master branch)
-_marker_release='.PKGREL' # create this file to use latest release version (named tag vNNN)
-
-_fragment=$([[ -f ${_marker_develop} ]] && printf "" || printf "#tag=v$pkgver")
+# switch between a release tag and a development branch
+_fragment=$([[ $pkgver =~ ^[0-9]+$ ]] && printf "#tag=v$pkgver" || printf "#branch=master")
 source=("git+${url}.git${_fragment}")
 
+# select version depending on marker file presence:
+# * create .PKGDEV to use latest development version (from master branch)
+# * create .PKGREL to use latest release version (named with tag vNNN)
+# * remove all markes and set pkgver=NNN above to use existing NNN version (the default)
 pkgver() {
-    local repo=$pkgname # bare repo location
+    local base=$(cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd)
+    local repo=$base/${pkgname} # bare repo location
+    local marker_develop="$base/.PKGDEV"
+    local marker_release="$base/.PKGREL"
     local head_count=$(git -C $repo rev-list --count HEAD)
     local short_hash=$(git -C $repo rev-parse --short HEAD)
     local release_info=$(git -C $repo describe --long --tags --match "v[0-9]*")
     local release_number=$(echo "$release_info" | sed -r 's/^v([0-9]+)-.*/\1/')
     local release_version="${release_number}" # example: 3
     local develop_version="${release_number}.${head_count}.${short_hash}" # example: 3.25.d069dad
-    if [[ -f ${_marker_develop} ]] ; then printf "$develop_version" ;
-    elif [[ -f ${_marker_release} ]] ; then printf "$release_version" ;
-    else printf "$pkgver" ; fi
+    if [[ -f $marker_develop ]] ; then 
+        printf "$develop_version" ;
+    elif [[ -f $marker_release ]] ; then 
+        printf "$release_version" ;
+    else 
+        printf "$pkgver"
+    fi
 }
 
 ####
