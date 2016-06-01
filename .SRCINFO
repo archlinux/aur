@@ -1,6 +1,6 @@
 pkgbase = gmpc-git
 	pkgdesc = MPD client (Gtk2)
-	pkgver = release.11.8.16.r424.gab71845
+	pkgver = 11.8.16.r424.gab71845
 	pkgrel = 1
 	url = http://gmpclient.org/home
 	install = gmpc.install
@@ -19,7 +19,7 @@ pkgbase = gmpc-git
 	depends = libnotify
 	depends = glyr
 	conflicts = gmpc
-	source = gmpc-git::git://git.musicpd.org/master/gmpc.git
+	source = gmpc-git::git://github.com/DaveDavenport/gmpc.git
 	md5sums = SKIP
 
 pkgname = gmpc-git

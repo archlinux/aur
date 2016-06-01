@@ -1,5 +1,6 @@
+# Maintainer: Moritz Bruder <muesli4 at gmail dot com>
 pkgname=gmpc-git
-pkgver=release.11.8.16.r424.gab71845
+pkgver=11.8.16.r424.gab71845
 pkgrel=1
 pkgdesc='MPD client (Gtk2)'
 arch=('x86_64' 'i686')
@@ -8,13 +9,12 @@ depends=('libunique' 'libmpd-git' 'libsoup' 'sqlite' 'hicolor-icon-theme' 'xdg-u
 makedepends=('gob2' 'intltool' 'vala' 'git')
 conflicts=('gmpc')
 install='gmpc.install'
-source=($pkgname::git://git.musicpd.org/master/gmpc.git)
-
+source=($pkgname::git://github.com/DaveDavenport/gmpc.git)
 md5sums=(SKIP)
 
 pkgver() {
     cd "$pkgname"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed -r 's/release\.(.*)/\1/'
 }
 
 build() {
