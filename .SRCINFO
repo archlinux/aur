@@ -1,0 +1,16 @@
+pkgbase = libps5000a
+	pkgdesc = library for picotech oscilloscope 5000a series (5242A/B, 5243A/B, 5244A/B, 5442A/B, 5443A/B, 5444A/B)
+	pkgver = 1.1.6_5r10
+	pkgrel = 1
+	url = http://www.picotech.com/linux.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = dpkg
+	depends = libusb
+	options = !strip
+	source = http://labs.picotech.com/debian/pool/main/libp/libps5000a/libps5000a_1.1.6-5r10_amd64.deb
+	md5sums = 7f9ce821d36f0bec3b2ca2c79b84a4aa
+
+pkgname = libps5000a
+
