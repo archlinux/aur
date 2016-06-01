@@ -1,6 +1,6 @@
 pkgname=python-pyautogui
 pkgver=0.9.33
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform GUI automation Python module for human beings"
 arch=('any')
 url="https://github.com/asweigart/pyautogui"
