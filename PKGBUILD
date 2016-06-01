@@ -2,7 +2,7 @@
 # Contributor: Aaron Lindsay <aaron@aclindsay.com>
 
 pkgname=('seafile-server' 'seafile-client-cli' 'seafile-shared')
-pkgver=5.1.2
+pkgver=5.1.3
 pkgrel=1
 pkgdesc="Seafile is an online file storage and collaboration tool"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -17,15 +17,13 @@ source=("seafile-server-${pkgver}.tar.gz::https://github.com/haiwen/seafile/arch
         "seahub-preupgrade"
         "create-default-conf-dir.patch"
         "0001-Revert-server-put-pids-folder-out-of-seafile-data.patch"
-        "seaf-cli.patch"
         "libseafile.in.patch")
-sha256sums=('b813be0710ea5a8580b277e03280c69959aae7fc85bf6d5dcb35ad928c53464e'
+sha256sums=('c43da552fc6b3e094757e776b55612eba8a0561f9f118e9b2dd42461fa40636d'
             '52fb29858f6424052cf01630ad72b5687a4fb259f23f9efc97f08be04a883218'
             'ae1ed38f94304d27e4ef1ca66e15d544f99681c1e743c510c54d4a112f050421'
             '2a1e079cbea3543f356e6e9571f3d7d2a4b0ab75131ee417115d738ea191c4fb'
             '6bd632f8741b039bad961af3d6850b651e25b7e7a3018d6e2789f350ff93bb78'
             'b1748e826d8e7cccdd825b99864b74dfb5795312f8878d63e9a87105f4382e29'
-            'a8293e977f762c1385867c1c68055f8acfdf3626b04aaf5b7ab62fe41e378bde'
             'a2d7f7cf0c59aba97650af62b3cefd0ceb71a1007c34d9369a88e5769c7f6076')
 
 prepare () {
@@ -35,7 +33,6 @@ prepare () {
   patch -p1 -i "${srcdir}/0001-Revert-server-put-pids-folder-out-of-seafile-data.patch"
   patch -p1 -i "${srcdir}/create-default-conf-dir.patch"
   patch -p1 -i "${srcdir}/libseafile.in.patch"
-  patch -p1 -i "${srcdir}/seaf-cli.patch"
 
   # Fix all script's python 2 requirement
   grep -s -l -r '#!/usr/bin/env python' "${srcdir}/seafile-${pkgver}-server" \
