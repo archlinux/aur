@@ -20,14 +20,12 @@ optdepends=('android-udev: udev rules for Android devices'
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="${pkgname}.install"
-source=("${_pkgname}.svg::https://upload.wikimedia.org/wikipedia/commons/d/db/Android_robot_2014.svg"
-        "${_pkgname}.desktop::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.desktop?h=${_pkgname}"
+source=("${_pkgname}.desktop::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.desktop?h=${_pkgname}"
         "${_pkgname}.sh::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.sh?h=${_pkgname}"
         "${_pkgname}.csh::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.csh?h=${_pkgname}"
         "${_pkgname}.conf::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.conf?h=${_pkgname}"
         "license.html::https://aur.archlinux.org/cgit/aur.git/plain/license.html?h=${_pkgname}")
-sha1sums=('65c8123c64b8041b21153b4ed7c985e6e0b6abd7'
-          '8f886de363ad91a7f93a0c6ded993e99bef3e1a7'
+sha1sums=('8f886de363ad91a7f93a0c6ded993e99bef3e1a7'
           '78f8574e651c9bf8b7515ecb30c7ef93edbc4a96'
           '08c85aab7523e22b298891c7047bc0e7adbf3437'
           '145bdf3eb41a56574b289c1577a24bc47097ec83'
@@ -37,7 +35,7 @@ package() {
   install -Dm755 "${_pkgname}.sh" "${pkgdir}/etc/profile.d/${_pkgname}.sh"
   install -Dm755 "${_pkgname}.csh" "${pkgdir}/etc/profile.d/${_pkgname}.csh"
   install -Dm644 "${_pkgname}.conf" "${pkgdir}/etc/ld.so.conf.d/${_pkgname}.conf"
-  install -Dm644 "${_pkgname}.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
+  install -Dm644 "${_pkgname}.png" "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
   install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm644 license.html "${pkgdir}/usr/share/licenses/${_pkgname}/license.html"
 }
