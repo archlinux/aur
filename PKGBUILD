@@ -1,7 +1,7 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=libretro-bsnes-git
-pkgver=r462.11f869f
+pkgver=r464.6039847
 pkgrel=1
 pkgdesc='Super Nintendo Entertainment System cores'
 arch=('i686' 'x86_64')
@@ -10,6 +10,8 @@ license=('GPL3')
 groups=('libretro')
 depends=('gcc-libs' 'glibc')
 makedepends=('git')
+provides=('libretro-bsnes')
+conflicts=('libretro-bsnes')
 source=('libretro-bsnes::git+https://github.com/libretro/bsnes-libretro'
         'https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/bsnes_accuracy_libretro.info'
         'https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/bsnes_balanced_libretro.info'
