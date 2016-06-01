@@ -20,12 +20,14 @@ optdepends=('android-udev: udev rules for Android devices'
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="${pkgname}.install"
-source=("${_pkgname}.desktop::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.desktop?h=${_pkgname}"
+source=("${_pkgname}.png"
+        "${_pkgname}.desktop::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.desktop?h=${_pkgname}"
         "${_pkgname}.sh::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.sh?h=${_pkgname}"
         "${_pkgname}.csh::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.csh?h=${_pkgname}"
         "${_pkgname}.conf::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.conf?h=${_pkgname}"
         "license.html::https://aur.archlinux.org/cgit/aur.git/plain/license.html?h=${_pkgname}")
-sha1sums=('8f886de363ad91a7f93a0c6ded993e99bef3e1a7'
+sha1sums=('429cfcb7c161e5fd60c9f155a6436ba5c78f7af7'
+          '8f886de363ad91a7f93a0c6ded993e99bef3e1a7'
           '78f8574e651c9bf8b7515ecb30c7ef93edbc4a96'
           '08c85aab7523e22b298891c7047bc0e7adbf3437'
           '145bdf3eb41a56574b289c1577a24bc47097ec83'
