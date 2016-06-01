@@ -9,7 +9,7 @@ pkgbase = igb
 	license = GPL
 	makedepends = linux-headers>=2.6.30
 	depends = linux>=2.6.30
-	source = igb-5.3.5.3-src.tar.gz::https://sourceforge.net/projects/e1000/files/igb%20stable/5.3.5.3/igb-5.3.5.3.tar.gz/download
+	source = igb-5.3.5.3-src.tar.gz::https://downloads.sourceforge.net/project/e1000/igb%20stable/5.3.5.3/igb-5.3.5.3.tar.gz
 	sha256sums = 4bee5e16cba82a390dc7ae6d930b0af0f6ac82939e7f17f1494ff8b59bbd62ba
 
 pkgname = igb

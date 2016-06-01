@@ -10,7 +10,7 @@ license=('GPL')
 depends=('linux>=2.6.30')
 makedepends=('linux-headers>=2.6.30')
 install=$pkgname.install
-source=("$pkgname-$pkgver-src.tar.gz::https://sourceforge.net/projects/e1000/files/igb%20stable/$pkgver/$pkgname-$pkgver.tar.gz/download")
+source=("$pkgname-$pkgver-src.tar.gz::https://downloads.sourceforge.net/project/e1000/igb%20stable/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('4bee5e16cba82a390dc7ae6d930b0af0f6ac82939e7f17f1494ff8b59bbd62ba')
 
 
