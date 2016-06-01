@@ -26,7 +26,7 @@ source=("${_pkgname}.svg::https://upload.wikimedia.org/wikipedia/commons/d/db/An
         "${_pkgname}.csh::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.csh?h=${_pkgname}"
         "${_pkgname}.conf::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.conf?h=${_pkgname}"
         "license.html::https://aur.archlinux.org/cgit/aur.git/plain/license.html?h=${_pkgname}")
-sha1sums=('b8726c63294a23e5fea066a36061164e583b5732'
+sha1sums=('65c8123c64b8041b21153b4ed7c985e6e0b6abd7'
           '8f886de363ad91a7f93a0c6ded993e99bef3e1a7'
           '78f8574e651c9bf8b7515ecb30c7ef93edbc4a96'
           '08c85aab7523e22b298891c7047bc0e7adbf3437'
