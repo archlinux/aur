@@ -1,0 +1,11 @@
+[Unit]
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=forking
+PIDFile=/var/lib/devpi/.xproc/devpi-server/xprocess.PID
+Restart=always
+ExecStart=/usr/bin/devpi-server --start --serverdir /var/lib/devpi
+ExecStop=/usr/bin/devpi-server --stop
+User=devpi
