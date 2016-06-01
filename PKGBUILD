@@ -13,18 +13,11 @@ makedepends=('cmake' 'libvncserver' 'qt5-base' 'ffmpeg' 'mesa')
 optdepends=('libvncserver' 'gdal' 'openexr' 'poppler-glib' 'qt5-base' 'ffmpeg')
 provides=('openscenegraph-git' 'openscenegraph' 'openthreads')
 conflicts=('openscenegraph' 'openscenegraph-svn' 'openthreads')
-source=(git://github.com/openscenegraph/OpenSceneGraph.git openscenegraph-ffmpeg3.patch)
-md5sums=('SKIP'
-         'f8151db111ad492ea3bf93971f9a32a9')
+source=(git://github.com/openscenegraph/OpenSceneGraph.git)
+md5sums=('SKIP')
 
 pkgver() {
   echo "$(date +"%Y%m%d")"
-}
-
-prepare() {
-  cd OpenSceneGraph
-# Fix build with ffmpeg 3.0 (Debian)
-  patch -p2 -i ../openscenegraph-ffmpeg3.patch
 }
 
 build() {
