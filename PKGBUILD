@@ -2,13 +2,13 @@
 _orgname=openorienteering
 _pkgname=mapper
 pkgname=${_orgname}-${_pkgname}-git
-pkgver=0.6.1.r2577.073d94f
+pkgver=0.6.2.r2646.bdc2004
 pkgrel=1
 pkgdesc="Orienteering mapmaking program"
 arch=('i686' 'x86_64')
 url="http://openorienteering.github.io/apps/mapper/"
 license=('GPL3')
-depends=('qt5-base>=5.5.1' 'polyclipping>=6.1.3a' 'proj>=4.8.0')
+depends=('qt5-base>=5.5.1' 'polyclipping>=6.1.3a' 'proj>=4.9.2')
 makedepends=('cmake>=2.8.12' 'qt5-tools>=5.5.1')
 provides=("${pkgname//-git}=${pkgver}")
 conflicts=(${pkgname//-git})
