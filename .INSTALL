@@ -1,0 +1,69 @@
+pre_install() {
+    if [ "$1" = "upgrade" ] ; then
+    	if [ -f /usr/rmmagent/hacker_patterns ] ; then
+    		mv /usr/rmmagent/hacker_patterns /usr/rmmagent/hacker_patterns.old || echo "Tried to preserve hacker_patterns"
+    	fi
+    fi
+}
+
+post_install() {
+    if [ "$1" = "configure" ] ; then
+    	ldconfig
+    	if [ ! -f /usr/bin/service -a ! -f /usr/bin/service -a ! -f /usr/bin/service -a ! -f /usr/bin/service ]
+    	then
+    		cp /usr/rmmagent/service /usr/sbin || echo "Tried to copy service to /usr/sbin"
+    		chmod 755 /usr/bin/service || echo "Tried to change rights for /usr/bin/service"
+    	fi
+    	rm -f /usr/rmmagent/service || echo "Tried to remove service script"
+    
+    	if ! [ -f /usr/rmmagent/hacker_patterns_custom ] ; then
+    		touch /usr/rmmagent/hacker_patterns_custom || echo "Tried to create hacker_patterns_custom"
+    	fi
+    fi
+    echo "[Unit]" >> /etc/systemd/system/rmmagentd.service
+    echo "Description=Languard Remote Management Agent" >> /etc/systemd/system/rmmagentd.service
+    echo "" >> /etc/systemd/system/rmmagentd.service
+    echo "[Service]" >> /etc/systemd/system/rmmagentd.service
+    echo "Type=forking" >> /etc/systemd/system/rmmagentd.service
+    echo "TimeoutStartSec=0" >> /etc/systemd/system/rmmagentd.service
+    echo "ExecStart=/usr/rmmagent/rmmagentd --start" >> /etc/systemd/system/rmmagentd.service
+    echo "ExecStop=/usr/rmmagent/rmmagentd --terminate" >> /etc/systemd/system/rmmagentd.service
+    echo "" >> /etc/systemd/system/rmmagentd.service
+    echo "[Install]" >> /etc/systemd/system/rmmagentd.service
+    echo "WantedBy=multi-user.target" >> /etc/systemd/system/rmmagentd.service
+    echo ""
+    echo "To register this server in the dashboard please run '# /usr/rmmagent/rmmagentd -i'"
+    echo ""
+    echo "When asked if you want to start the agent during setup, choose 'No' then"
+    echo "enable and start the rmmagentd service to begin monitoring and data submission."
+}
+
+pre_upgrade() {
+    pre_install
+}
+
+post_upgrade() {
+    post_install
+}
+
+pre_remove() {
+    if [ "$1" = "remove" ] ; then
+    	/usr/rmmagent/rmmagentd -u || echo "not installed"
+    fi
+    systemctl disable rmmagentd
+    systemctl stop rmmagentd
+}
+
+post_remove() {
+    if [ "$1" = "remove" ] ; then
+    	rm -rf /usr/rmmagent || echo "removed."
+    fi
+    if [ "$1" = "upgrade" ] ; then
+    	if pgrep rmmagentd > /dev/null
+    	then
+    		/usr/rmmagent/rmmagentd -r || echo "Tried to restart agent daemon"
+    	fi
+    fi
+    rm -f /etc/systemd/system/rmmagentd.service
+    rm -rf /usr/rmmagent
+}
