@@ -1,6 +1,6 @@
 pkgname=nbopen
 pkgver=0.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Opens an IPython notebook in the best available server'
 url="https://github.com/takluyver/$pkgname"
 arch=('any')
@@ -8,7 +8,6 @@ license=('BSD')
 depends=('python' 'jupyter')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 md5sums=('755586703000f635ebf842f6e37dc60c')
-install=$pkgname.install
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"

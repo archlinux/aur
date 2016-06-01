@@ -1,9 +1,8 @@
 pkgbase = nbopen
 	pkgdesc = Opens an IPython notebook in the best available server
 	pkgver = 0.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/takluyver/nbopen
-	install = nbopen.install
 	arch = any
 	license = BSD
 	depends = python
