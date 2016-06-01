@@ -1,0 +1,14 @@
+pkgbase = python2-eventlib
+	pkgdesc = Coroutine-based networking library
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = http://www.icanblink.com
+	arch = any
+	license = custom:MIT
+	depends = python2-greenlet
+	depends = python2-pyopenssl
+	source = http://download.ag-projects.com/SipClient/python-eventlib-0.2.2.tar.gz
+	md5sums = 53781163807002d1193aff16041c540f
+
+pkgname = python2-eventlib
+
