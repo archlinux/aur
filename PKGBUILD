@@ -1,7 +1,7 @@
 # Maintainer: Petar Petrov <petar.petrov.georgiev at gmail d0t com>
 pkgname=psiral
-pkgver=1.0.4
-pkgrel=2
+pkgver=1.0.5
+pkgrel=1
 pkgdesc="Psiral is a turn based strategy board game with wizards."
 arch=('i686' 'x86_64')
 url="https://github.com/petarov/game-off-2013"
@@ -18,7 +18,7 @@ options=()
 install=psiral.install
 changelog=
 source=(https://github.com/petarov/game-off-2013/archive/$pkgver.tar.gz)
-sha1sums=('b3e99a9e01a8b32aa93eda309cc0e092160acd91')
+sha1sums=('a2f43d215148b9af351bf614a4bc6277c018232b')
 
 dirname="game-off-2013"
 if [ "${CARCH}" = 'x86_64' ] ; then
