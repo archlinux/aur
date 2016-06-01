@@ -1,7 +1,7 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=neatpost-git
-pkgver=0.r49.7d942f0
-pkgrel=5
+pkgver=0.r56.957e74b
+pkgrel=1
 epoch=
 pkgdesc="Postscript postprocessor for neatroff."
 arch=('i686' 'x86_64')
