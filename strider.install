@@ -1,0 +1,16 @@
+
+post_install() {
+  cd /opt/strider
+  tar zxf strider-bin.tar.gz
+  rm -f strider-bin.tar.gz
+}
+
+pre_remove() {
+  cd /opt/strider
+  rm -f Strider
+  rm -f *.dat
+  rm -f *.pak
+  rm -f *.so
+  rm -f locales/*
+  rmdir locales
+}
