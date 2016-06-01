@@ -2,8 +2,8 @@
 
 _pkgname=canto-next
 pkgname=canto-next-git
-pkgver=0.9.5.r14.g3be0ad8
-pkgrel=2
+pkgver=0.9.6
+pkgrel=1
 pkgdesc="News aggregator for Atom/RSS/RDF. Git version"
 url="http://codezen.org/canto-ng/"
 license=('GPL')
