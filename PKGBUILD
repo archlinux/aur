@@ -11,7 +11,7 @@ depends=('python'
 	'python-gobject')
 makedepends=('intltool')
 install=${pkgname}.install
-source=("https://launchpad.net/{$pkgname}/${pkgver%.*}/${pkgver}/+download/${pkgname}-${pkgver}.tar.bz2")
+source=("https://launchpad.net/${pkgname}/${pkgver%.*}/${pkgver}/+download/${pkgname}-${pkgver}.tar.bz2")
 md5sums=('007eeb979dccaf80769d1a756fac562c')
 
 build() {
