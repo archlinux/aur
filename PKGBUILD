@@ -16,8 +16,8 @@ source=("https://pypi.io/packages/source/d/${pkgname}/${pkgname}-${pkgver}.tar.g
         'devpi-server.install')
 install='devpi-server.install'
 sha256sums=('f7dba7e6af4b5dc44a9b2c212fd2a443f9dba3d32a4937366d1ef57c79b3825e'
-            'SKIP'
-            'SKIP')
+            '4704ef6688a25cd91b70e257a7de66a92372173410da5faf104b4b811144aa8c'
+            'a5de2ecd9abd17c2601a14f69e4b66240f2c515ff09a95a1e2e9e4ad4d1f7ada')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
