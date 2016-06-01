@@ -4,11 +4,11 @@
 
 pkgbase=linux-rc       # Build kernel with a different name
 _srcname=linux-4.5
-_stable=4.5.4
+_stable=4.5.5
 _patchver=4.5.6
 pkgver=${_patchver}rc1
 _rcpatch=patch-${_patchver}-rc1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -29,7 +29,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 
 sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
             'SKIP'
-            '6a9cfe691ac77346c48b7f83375a1880ebb379594de1000acad45da45d711e42'
+            'f25ce19ee44d93eb8b228c0f3df3082b94ea84d9b28a9fb8ba170ecce5acd78c'
             'SKIP'
             'b26f0b14969ee80412ce712d217b5daf023acb336f431b30175bae5626e231d8'
             'SKIP'
