@@ -1,6 +1,6 @@
 # Maintainer: Ashley Towns <mail(at)ashleytowns(dot)id(dot)au>
 
-_version=DEVELOPMENT-SNAPSHOT-2016-05-09-a
+_version=DEVELOPMENT-SNAPSHOT-2016-05-31-a
 
 pkgname=swift-development-bin
 pkgver=${_version//-/.}
@@ -21,7 +21,7 @@ source=(
   "https://swift.org/builds/development/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz.sig"
   "swift.conf"
 )
-sha256sums=('f52dce76abde8bfe7e8abbc7c9e582861d69cc9153573050cb4b1e26c09a9ae8'
+sha256sums=('254d32a74419b043b9b1a63bc1403c22ec16771ea594095a098c19433e06874a'
             'SKIP'
             'c93a77b3a9b2647266a5ccdbe77f47d51cb7051d23ee7cca6258564daf713f35')
 
