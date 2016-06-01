@@ -10,7 +10,8 @@ arch=('i686' 'x86_64')
 url="https://github.com/libretro/beetle-psx-libretro"
 license=('GPLv2')
 makedepends=('git')
-conflicts=('libretro-super-git')
+conflicts=('libretro-mednafen-psx')
+provides=('libretro-mednafen-psx')
 source=("${_gitname}::git://github.com/libretro/${_gitname}.git"
         "${_gitname}.info::https://raw.githubusercontent.com/libretro/libretro-super/master/dist/info/beetle_psx_libretro.info")
 md5sums=('SKIP'
