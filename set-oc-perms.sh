@@ -32,13 +32,20 @@ runtime() {
   printf "chmod/chown .htaccess\n"
   if [ -f ${ocpath}/.htaccess ]
    then
-    chmod 0644 ${ocpath}/.htaccess
+    chmod 0664 ${ocpath}/.htaccess
     chown ${rootuser}:${htgroup} ${ocpath}/.htaccess
   fi
   if [ -f ${ocpath}/data/.htaccess ]
    then
-    chmod 0644 ${ocpath}/data/.htaccess
+    chmod 0664 ${ocpath}/data/.htaccess
     chown ${rootuser}:${htgroup} ${ocpath}/data/.htaccess
+  fi
+
+  printf "chmod/chown .user.ini\n"
+  if [ -f ${ocpath}/.user.ini ]
+   then
+    chmod 0664 ${ocpath}/.user.ini
+    chown ${rootuser}:${htgroup} ${ocpath}/.htaccess
   fi
 }
 

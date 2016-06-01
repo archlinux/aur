@@ -2,7 +2,7 @@
 
 pkgname=owncloud-archive
 pkgver=9.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="ownCloud server release, installed from the official .tar.bz2 archive"
 url="https://owncloud.org"
 arch=('any')
@@ -32,7 +32,7 @@ source=("https://download.owncloud.org/community/owncloud-${pkgver}.tar.bz2"{,.a
 md5sums=('a0131f5cae2b1503b8de6796487c1bdc'
          'SKIP'
          'bf523e475fd8cf1e2048018952da5c34'
-         '30333bf6beb39b5048fcb85c74e690c0')
+         '1ca5504c1b32fbbbe7b1710db6779744')
 
 options=(!strip emptydirs)
 
