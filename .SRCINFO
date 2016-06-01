@@ -1,19 +1,18 @@
 pkgbase = sidef
 	pkgdesc = A modern object-oriented programming language.
-	pkgver = 2.25
+	pkgver = 2.26
 	pkgrel = 1
 	url = https://github.com/trizen/sidef
 	arch = any
 	license = GPLv3
-	makedepends = perl-module-build
 	depends = perl>=5.22.0
 	depends = perl-data-dump
 	depends = perl-math-gmpq
 	depends = perl-math-gmpz
 	depends = perl-math-mpfr>=3.29
 	depends = perl-math-mpc
-	source = https://github.com/trizen/sidef/archive/2.25.tar.gz
-	sha256sums = a13e7d2b54038985ab5ac84e3014f80bcf5c9728e02c5d89174a24e5073d3abb
+	source = https://github.com/trizen/sidef/archive/2.26.tar.gz
+	sha256sums = 3e35bba50c7c527240a8e451e7ab61d2783a6ab3a0398ec96d52a629b0b6e9f3
 
 pkgname = sidef
 
