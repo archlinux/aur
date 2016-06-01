@@ -1,0 +1,15 @@
+pkgbase = python-pyscreeze
+	pkgdesc = A simple, cross-platform screenshot module for Python 2 and 3.
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/asweigart/pyscreeze
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python-xlib
+	depends = python-pillow
+	source = https://pypi.python.org/packages/source/P/PyScreeze/PyScreeze-0.1.8.zip
+	md5sums = f5a7cf7b813af6a21abb31fd02d37ca4
+
+pkgname = python-pyscreeze
+
