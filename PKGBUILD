@@ -12,7 +12,7 @@ pkgname=('qemu-git'
          'qemu-block-rbd-git'
          'qemu-block-gluster-git'
          'qemu-guest-agent-git')
-pkgver=2.6.0.r45576.a257c74
+pkgver=2.6.0.r45576.500acc9
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
@@ -20,7 +20,7 @@ url='http://wiki.qemu.org/'
 makedepends=('pixman' 'libjpeg' 'libpng' 'sdl' 'alsa-lib' 'nss' 'glib2'
              'gnutls' 'bluez-libs' 'vde2' 'util-linux' 'curl' 'libsasl'
              'libgl' 'libpulse' 'libcap-ng' 'libaio' 'libseccomp'
-             'libiscsi' 'python2'
+             'libiscsi' 'python2' 'virglrenderer'
              'usbredir' 'ceph' 'glusterfs' 'libssh2' 'lzo' 'snappy'
              'dtc' 'libepoxy' 'git' 'texi2html' 'perl' 'numactl')
 source=(git://git.qemu.org/qemu.git
