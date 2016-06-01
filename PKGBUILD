@@ -11,7 +11,7 @@
 
 pkgname=hal
 pkgver=0.5.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Hardware Abstraction Layer"
 arch=(i686 x86_64)
 license=('GPL' 'custom')
@@ -22,9 +22,16 @@ makedepends=('gperf')
 options=('!libtool' '!makeflags')
 install="${pkgname}.install"
 source=("https://github.com/bbidulock/${pkgname}/releases/download/${pkgname^^[a-z]}_${pkgver//\./_}/${pkgname}-${pkgver}.tar.gz"
-        "${pkgname}.service")
+        "${pkgname}.service"
+	"header.patch")
 md5sums=('a8a7d380f3791c818a08a5f74befe3aa'
-         'ca4a7932fe7e8acbfa17245b62cc3b9b')
+         'ca4a7932fe7e8acbfa17245b62cc3b9b'
+         '5448c3074a62337faafc586203a07649')
+
+prepare() {
+  cd ${pkgname}-${pkgver}
+  patch -Np2 -b -z .orig <../header.patch
+}
 
 build() {
   cd ${pkgname}-${pkgver}

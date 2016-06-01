@@ -1,0 +1,12 @@
+diff -up src/hal-0.5.15/tools/Makefile.in.orig src/hal-0.5.15/tools/Makefile.in
+--- src/hal-0.5.15/tools/Makefile.in.orig	2015-08-13 18:09:13.000000000 -0600
++++ src/hal-0.5.15/tools/Makefile.in	2016-05-31 18:30:15.000000000 -0600
+@@ -1345,7 +1345,7 @@ uninstall-am: uninstall-binPROGRAMS unin
+ 
+ 
+ @BUILD_KEYMAPS_TRUE@@HAVE_GPERF_TRUE@hal-setup-keymap-keys.txt: @LINUX_INPUT_H@
+-@BUILD_KEYMAPS_TRUE@@HAVE_GPERF_TRUE@	awk '/^#define.*KEY_/ { if ($$2 != "KEY_MAX") { print substr($$2, 5) } }' < $< > $@
++@BUILD_KEYMAPS_TRUE@@HAVE_GPERF_TRUE@	cpp -fdirectives-only $< | awk '/^#define.*KEY_/ { if ($$2 != "KEY_MAX" && $$2 != "__KEY_T_TYPE") { print substr($$2, 5) } }' > $@
+ 
+ @BUILD_KEYMAPS_TRUE@@HAVE_GPERF_TRUE@hal-setup-keymap-hash-name.gperf: hal-setup-keymap-keys.txt
+ @BUILD_KEYMAPS_TRUE@@HAVE_GPERF_TRUE@	awk 'BEGIN{ print "struct key { const char* name; unsigned short id; };"; print "%null-strings"; print "%%";} { print $$1 ", KEY_" $$1 }' < $< > $@
