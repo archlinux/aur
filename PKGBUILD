@@ -3,7 +3,7 @@
 
 pkgname=unified-remote-server
 pkgver=3.3.5.738
-pkgrel=1
+pkgrel=2
 pkgdesc="Unified Remote Server"
 arch=('x86_64')
 url="http://www.unifiedremote.com/"
@@ -35,6 +35,6 @@ package() {
 	chmod 755 "${pkgdir}/opt/urserver/urserver-stop"
 	
 	# add systemd service
-        install -Dm644 "urserver.service" "$pkgdir/usr/lib/systemd/system/urserver.service"
+        install -Dm644 "urserver.service" "$pkgdir/usr/lib/systemd/user/urserver.service"
 }
 

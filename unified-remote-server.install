@@ -6,6 +6,15 @@ echo "
 
   add the above line to a startup script etc.
 
+  There is also a user systemd serice available.
+  You can start it with
+  systemctl --user start urserver
+  You can enable at boot with
+  systemctl --user enable urserver
+  (Note: A one time call (as user) to
+  /opt/urserver/urserver-start
+  could be necessary before using it)
+
   For more options:
   /opt/urserver/urserver --help
 
