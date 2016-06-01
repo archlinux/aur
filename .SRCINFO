@@ -1,0 +1,16 @@
+pkgbase = libps4000a
+	pkgdesc = library for picotech oscilloscope 4000a series (4824)
+	pkgver = 1.0.6_2r16
+	pkgrel = 1
+	url = http://www.picotech.com/linux.html
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = dpkg
+	depends = libusb
+	options = !strip
+	source = http://labs.picotech.com/debian/pool/main/libp/libps4000a/libps4000a_1.0.6-2r16_amd64.deb
+	md5sums = 973eef601711774e1cc67b261032bf2c
+
+pkgname = libps4000a
+
