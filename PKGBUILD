@@ -49,7 +49,7 @@ source=("git+${url}.git${_fragment}")
 # * remove all markes and set pkgver=NNN above to use an existing vNNN release tag (the default)
 pkgver() {
     local base=$(cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd)
-    local repo=$base/${pkgname} # bare repo location
+    local repo=$base/$pkgname # bare repo location
     local marker_develop="$base/.PKGDEV"
     local marker_release="$base/.PKGREL"
     local head_count=$(git -C $repo rev-list --count HEAD)
