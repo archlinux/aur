@@ -3,10 +3,10 @@
 pkgname=coccigrep
 provides=('coccigrep')
 pkgver=1.16
-pkgrel=1
+pkgrel=2
 pkgdesc='coccigrep is a semantic grep for the C language based on coccinelle'
-arch=('i686' 'x86_64' 'armv7h' 'armv6h')
-url='http://nginx.org'
+arch=('any')
+url='http://http://home.regit.org/software/coccigrep/'
 license=('GPL3')
 depends=('python-setuptools')
 makedepends=('python-setuptools')
