@@ -1,0 +1,15 @@
+pkgbase = scriptina
+	pkgdesc = Scriptina Font
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.1001fonts.com/scriptina-font.html
+	install = scriptina-fonts.install
+	arch = any
+	makedepends = unzip
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = http://dl.1001fonts.com/scriptina.zip
+	md5sums = 9e68ef659cdcfd92d24e62cfd312ca77
+
+pkgname = scriptina
+
