@@ -5,7 +5,7 @@
 pkgname=android-sdk-dummy
 _pkgname=android-sdk
 pkgver=25.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Android SDK, dummy package'
 arch=('i686' 'x86_64')
 url='http://developer.android.com/sdk/'
@@ -20,7 +20,7 @@ optdepends=('android-udev: udev rules for Android devices'
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 install="${pkgname}.install"
-source=('https://developer.android.com/assets/images/android_logo.png'
+source=("${_pkgname}.svg::https://upload.wikimedia.org/wikipedia/commons/d/db/Android_robot_2014.svg"
         "${_pkgname}.desktop::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.desktop?h=${_pkgname}"
         "${_pkgname}.sh::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.sh?h=${_pkgname}"
         "${_pkgname}.csh::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.csh?h=${_pkgname}"
@@ -37,7 +37,7 @@ package() {
   install -Dm755 "${_pkgname}.sh" "${pkgdir}/etc/profile.d/${_pkgname}.sh"
   install -Dm755 "${_pkgname}.csh" "${pkgdir}/etc/profile.d/${_pkgname}.csh"
   install -Dm644 "${_pkgname}.conf" "${pkgdir}/etc/ld.so.conf.d/${_pkgname}.conf"
-  install -Dm644 android_logo.png "${pkgdir}/usr/share/pixmaps/${_pkgname}.png"
+  install -Dm644 "${_pkgname}.svg" "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
   install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm644 license.html "${pkgdir}/usr/share/licenses/${_pkgname}/license.html"
 }
