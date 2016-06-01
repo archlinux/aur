@@ -3,7 +3,7 @@
 
 pkgname=mt7610u_wifi_sta
 pkgver=4606187
-pkgrel=1
+pkgrel=2
 # To get an overview of witch WiFi dongle has this chipset refer to https://wikidevi.com/wiki/MediaTek_MT7610U
 pkgdesc="Kernel module for MediaTek MT7610U chipset featured in TP-Link Archer T2U and T2UH, TP-Link TL-WDN5200, ASUS USB-AC50, ASUS USB-AC51, Comcast Xfinity KXW02AAA, D-Link DWA-171 rev B1 and more"
 arch=('any')
@@ -21,7 +21,8 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}"
-
-	install -D -m 644 RT2870STA.dat "${pkgdir}/etc/Wireless/RT2870STA/RT2870STA.dat"
-	install -D -m 644 os/linux/mt7650u_sta.ko "${pkgdir}/usr/lib/modules/$(uname -r)/kernel/drivers/net/wireless/os/linux/mt7650u_sta.ko"
+  mkdir -p "${pkgdir}/etc/Wireless/RT2870STA"
+  mkdir -p "${pkgdir}/usr/lib/modules/$(uname -r)/kernel/drivers/net/wireless/os/linux"
+	install -m 644 -t "${pkgdir}/etc/Wireless/RT2870STA" RT2870STA.dat
+	install -m 644 -t "${pkgdir}/usr/lib/modules/$(uname -r)/kernel/drivers/net/wireless/os/linux" os/linux/*.ko
 }
