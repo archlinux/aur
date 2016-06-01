@@ -3,7 +3,7 @@
 
 pkgname=amarok-git
 pkgver=v2.8.90.16.ga5df287
-pkgrel=1
+pkgrel=2
 pkgdesc="The powerful music player for KDE - GIT version"
 arch=("i686" "x86_64")
 url="http://amarok.kde.org"
