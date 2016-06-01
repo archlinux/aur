@@ -2,19 +2,19 @@
 
 pkgname='snap'
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A btrfs snapshot manager"
 arch=('any')
 url="https://github.com/rumpelsepp/snap"
 license=('MIT')
 depends=('btrfs-progs')
-makedepends=('git' 'ruby-asciidoctor>=1.5.3')
+makedepends=('git' 'asciidoctor>=1.5.3')
 source=("$pkgname::git+https://github.com/rumpelsepp/snap.git#commit=b95c21c4b18654ee6f6e4fc10a383d057c207e70")
 sha256sums=('SKIP')
 
 build() {
     cd "${srcdir}/${pkgname}/docs"
-    make 
+    make man
 }
 
 package() {
