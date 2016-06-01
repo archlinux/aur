@@ -6,8 +6,8 @@ _upstream="compiz"
 
 pkgbase=compiz-core-git
 pkgname=(compiz-core-git compiz-gtk-git)
-pkgver=0.8.12.3.r0.g59328f2
-pkgrel=2
+pkgver=0.8.12.3.r24.g292d9a2
+pkgrel=1
 pkgdesc="This is the latest git release of Compiz without DE deps"
 url="https://github.com/compiz-reloaded/${_upstream}"
 license=('GPL' 'LGPL' 'MIT')
@@ -98,7 +98,7 @@ package_compiz-gtk-git()
   provides=("compiz-gtk=$pkgver")
   conflicts=('compiz-gtk')
 
-  cd "${srcdir}/${_upstream}/gtk"
+  cd "${srcdir}/${_upstream}/gtk-window-decorator"
   make DESTDIR="${pkgdir}" install
 
   cd "${srcdir}/${_upstream}/images"
@@ -107,7 +107,6 @@ package_compiz-gtk-git()
   local REMOVE_THESE=(
     "${pkgdir}/usr/share/icons/hicolor/"*"/apps/compiz."*
     "${pkgdir}/usr/share/compiz/"*.png
-    "${pkgdir}/usr/share/applications/compiz.desktop"
   )
   # Believe it or not, you CAN fill an array using wildcards in bash
 
