@@ -2,8 +2,8 @@
 
 pkgname="groupman-git"
 _pkgname="groupman"
-pkgver="0.0.1"
-pkgrel="1"
+pkgver=r61.ea0acea
+pkgrel=1
 pkgdesc="Gather your Arch Linux packages in groups to simplify their management."
 url="https://github.com/StreakyCobra/groupman"
 license=('MIT')
@@ -17,8 +17,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/${_pkgname}/"
-
-    git describe --long --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
