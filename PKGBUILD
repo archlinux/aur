@@ -1,7 +1,7 @@
 # Contributor: Dave Reisner <d@falconindy.com>
 
 pkgname=systemd-bootchart-git
-pkgver=r1.e6c5e46
+pkgver=r6.dcb246b
 pkgrel=1
 pkgdesc="Boot performance graphing tool"
 arch=('i686' 'x86_64')
@@ -24,9 +24,6 @@ pkgver() {
 prepare() {
   cd "systemd-bootchart"
 
-  # https://github.com/systemd/systemd-bootchart/issues/4
-  sed -i '/LIBSYSTEMD_JOURNAL/ s/libsystemd-journal/libsystemd/' configure.ac
-
   ./autogen.sh
 }
 
@@ -46,7 +43,4 @@ package() {
   cd "systemd-bootchart"
 
   make DESTDIR="$pkgdir" install
-
-  # https://github.com/systemd/systemd-bootchart/issues/5
-  mv "$pkgdir/lib" "$pkgdir/usr/lib"
 }
