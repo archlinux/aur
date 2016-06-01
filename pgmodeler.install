@@ -13,12 +13,6 @@ BLUE="${BOLD}$(tput setaf 4)"
 YELLOW="${BOLD}$(tput setaf 3)"
 
 
-post_install() {
-  [ -x usr/bin/update-desktop-database ] && update-desktop-database -q || true
-  note "Please re-login to include PGMODELER in your PATH."
-  note "You can load by hand with: $  source  /etc/profile.d/pgmodeler.sh ;)."
-}
-
 post_upgrade() {
   [ -x usr/bin/update-desktop-database ] && update-desktop-database -q || true
 }
