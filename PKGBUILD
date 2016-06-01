@@ -1,22 +1,30 @@
-# Maintainer: Marco Pompili <marcs DOT pompili AT gmail DOT com>
+# Maintainer: Marco Pompili <aur AT emarcs DOT org>
 # Contributor: Ben Duffield <bavardage AT archlinux.us>
+# Contributor: Martchus <martchus@gmx.net>
 
 pkgname=pocketsphinx
 pkgver=5prealpha
-pkgrel=4
+pkgrel=5
 pkgdesc='Lightweight speech recognition engine, specifically tuned for handheld and mobile devices, though it works equally well on the desktop.'
 arch=('i686' 'x86_64')
 url='http://cmusphinx.sourceforge.net'
 license=('BSD')
-makedepends=('swig')
-depends=('sphinxbase=5prealpha' 'python2' 'python' 'gstreamer0.10-base' 'gst-plugins-base-libs')
+makedepends=('swig' 'python2' 'python')
+depends=('sphinxbase=5prealpha' 'gstreamer0.10-base' 'gst-plugins-base-libs')
 source=("http://downloads.sourceforge.net/cmusphinx/$pkgname-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/cmusphinx/pocketsphinx/master/LICENSE")
-md5sums=('2c4fb3a1318bb2470997ab7eb98ef69a'
-         '93bfe6b712fe592d844ef581e1e53d47')
+sha256sums=('ad9f5f5c5ce79ff87b63d527f8f4d3e2f54c0c1da53793895991a8849ca47701'
+            'fcf5c4e41ae81f704ed70f1511146272ef0f0ca7b97088d11d72896b56a189f5')
 options=('!libtool')
 
 prepare() {
+  cd "$pkgname-$pkgver"
+
+  msg2 "Reconfiguring project for current version of Automake"
+  autoreconf -ivf > /dev/null
+
+  cd ..
+
   cp -R "$pkgname-$pkgver" "$pkgname-$pkgver-py2"
   cp -R "$pkgname-$pkgver" "$pkgname-$pkgver-py3"
 }
@@ -24,6 +32,7 @@ prepare() {
 build() {
 
   msg2 "Building python3 environment"
+  export PYTHON=/usr/bin/python
   cd "$pkgname-$pkgver-py3"
   ./configure --prefix=/usr
   make
