@@ -1,0 +1,218 @@
+diff --git a/canto_curses/taglist.py b/canto_curses/taglist.py
+index 88ba7b3..0fc60df 100644
+--- a/canto_curses/taglist.py
++++ b/canto_curses/taglist.py
+@@ -409,7 +409,19 @@ class TagList(GuiBase):
+         # Force changes to all objects between
+         # start and next sel.
+ 
++        ctr = 0
++
+         while o and o != ns:
++
++            # HACK HACK HACK
++            if ctr > 5:
++                log.debug("WARN: it_forwards taking too long: %s" % ctr)
++                log.debug("o: %s" % o)
++                log.debug("ns: %s" % ns)
++            if ctr > 100:
++                log.debug("WARN: breaking it_forwards loop")
++            ctr += 1
++
+             lines += o.lines(self.width) + o.extra_lines
+             o = o.next_obj
+ 
+@@ -429,7 +441,19 @@ class TagList(GuiBase):
+         # Force changes to all objects between
+         # start and prev sel.
+ 
++        ctr = 0
++
+         while o and o != ps:
++
++            # HACK HACK HACK
++            if ctr > 5:
++                log.debug("WARN: it_backwards taking too long: %s" % ctr)
++                log.debug("o: %s" % o)
++                log.debug("ps: %s" % ps)
++            if ctr > 100:
++                log.debug("WARN: breaking it_backwards loop")
++            ctr += 1
++
+             o = o.prev_obj
+             lines += o.lines(self.width) + o.extra_lines
+ 
+@@ -444,7 +468,20 @@ class TagList(GuiBase):
+             if target_idx < 0:
+                 target_idx = 0
+ 
++            ctr = abs(relidx)
++
+             while sel.sel_offset != target_idx:
++
++                # HACK HACK HACK
++                if ctr <= 0:
++                    log.debug("WARN: rel_set_cursor taking too long: %s" % ctr)
++                    log.debug("s.s_offset %s" % sel.sel_offset)
++                    log.debug("tidx %s" % target_idx)
++                if ctr <= -5:
++                    log.debug("WARN: breaking rel_set_cursor loop")
++                    break
++                ctr -= 1
++
+                 if target_idx < sel.sel_offset and sel.prev_sel:
+                     sel, lines = self._iterate_backward(sel)
+                     curpos -= lines
+@@ -601,13 +638,22 @@ class TagList(GuiBase):
+ 
+         tag = self.tag_by_obj(sel)
+ 
++        ctr = 0
++
+         while sel.next_sel:
++
++            if ctr > 10000:
++                log.debug("WARN: Breaking next_tag loop")
++                break
++
+             sel = sel.next_sel
+ 
+             # This will be true for stories as well as selectable tags
+             if sel not in tag:
+                 break
+ 
++            ctr += 1
++
+         self._set_cursor(sel, target_offset)
+ 
+     def cmd_prev_tag(self):
+@@ -620,7 +666,14 @@ class TagList(GuiBase):
+ 
+         tag = self.tag_by_obj(sel)
+ 
++        ctr = 0
++
+         while sel.prev_sel:
++
++            if ctr > 10000:
++                log.debug("WARN: Breaking prev_tag loop")
++                break
++
+             sel = sel.prev_sel
+ 
+             if not sel.is_tag:
+@@ -636,6 +689,7 @@ class TagList(GuiBase):
+             else:
+                 if sel != tag:
+                     break
++            ctr += 1
+ 
+         self._set_cursor(sel, target_offset)
+ 
+@@ -974,6 +1028,23 @@ class TagList(GuiBase):
+     # Effectively, we build a doubly linked list out of all
+     # of the objects by setting obj.prev_obj and obj.next_obj.
+ 
++    def _clear_links(self, obj):
++        obj.prev_obj = None
++        obj.next_obj = None
++
++        obj.prev_story = None
++        obj.next_story = None
++
++        obj.prev_sel = None
++        obj.next_sel = None
++
++    def _set_link(self, prev, link, obj):
++        if prev:
++            x = getattr(prev, link)
++            if x != None:
++                log.warn("WARN: set_link %s %s %s - %s" % (prev, link, obj, x))
++            setattr(prev, link, obj)
++
+     def refresh(self):
+ 
+         log.debug("Taglist REFRESH!\n")
+@@ -983,6 +1054,11 @@ class TagList(GuiBase):
+ 
+         self.first_story = None
+ 
++        for tag in self.callbacks["get_var"]("taglist_visible_tags"):
++            self._clear_links(tag)
++            for story in tag:
++                self._clear_links(story)
++
+         prev_obj = None
+         prev_story = None
+         prev_sel = None
+@@ -990,24 +1066,16 @@ class TagList(GuiBase):
+         for tag in self.callbacks["get_var"]("taglist_visible_tags"):
+             tag.curpos = self.height
+ 
+-            tag.prev_obj = prev_obj
+-            tag.next_obj = None
+-
+-            tag.prev_story = prev_story
+-            tag.next_story = None
+-
+-            tag.prev_sel = prev_sel
+-            tag.next_sel = None
+-
+-            if prev_obj != None:
+-                prev_obj.next_obj = tag
+-
++            self._set_link(tag, "prev_obj", prev_obj)
++            self._set_link(prev_obj, "next_obj", tag)
+             prev_obj = tag
+ 
++            self._set_link(tag, "prev_story", prev_story)
++            self._set_link(tag, "prev_sel", prev_sel)
++
+             # Collapsed tags (with items) skip stories.
+             if self.callbacks["get_tag_opt"](tag.tag, "collapsed"):
+-                if prev_sel:
+-                    prev_sel.next_sel = tag
++                self._set_link(prev_sel, "next_sel", tag)
+                 prev_sel = tag
+                 continue
+ 
+@@ -1017,15 +1085,14 @@ class TagList(GuiBase):
+                 if not self.first_story:
+                     self.first_story = story
+ 
+-                story.prev_obj = prev_obj
+-                story.next_obj = None
+-                prev_obj.next_obj = story
++                self._set_link(story, "prev_obj", prev_obj)
++                self._set_link(prev_obj, "next_obj", story)
++
+                 prev_obj = story
+ 
+-                if prev_story != None:
+-                    prev_story.next_story = story
+-                story.prev_story = prev_story
+-                story.next_story = None
++                self._set_link(story, "prev_story", prev_story)
++                self._set_link(prev_story, "next_story", story)
++
+                 prev_story = story
+ 
+                 # We want next_story to be accessible from all objects, so head
+@@ -1034,13 +1101,12 @@ class TagList(GuiBase):
+ 
+                 cur = story.prev_obj
+                 while cur and cur.next_story == None:
+-                    cur.next_story = story
++                    self._set_link(cur, "next_story", story)
+                     cur = cur.prev_obj
+ 
+-                if prev_sel != None:
+-                    prev_sel.next_sel = story
+-                story.prev_sel = prev_sel
+-                story.next_sel = None
++                self._set_link(story, "prev_sel", prev_sel)
++                self._set_link(prev_sel, "next_sel", story)
++
+                 prev_sel = story
+ 
+                 # Keep track of last story.

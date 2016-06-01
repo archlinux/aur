@@ -2,8 +2,8 @@
 
 _pkgname=canto-curses
 pkgname=canto-curses-git
-pkgver=0.9.6
-pkgrel=3
+pkgver=0.9.7
+pkgrel=1
 pkgdesc="ncurses user interface for canto-daemon/canto-next. Git version"
 url="http://codezen.org/canto-ng/"
 license=('GPL')
