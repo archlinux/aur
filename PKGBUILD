@@ -1,19 +1,19 @@
 # Maintainer: Stefan Tatschner <rumpelsepp@sevenbyte.org>
 
 pkgname='snap'
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="A btrfs snapshot manager"
 arch=('any')
 url="https://github.com/rumpelsepp/snap"
 license=('MIT')
 depends=('btrfs-progs')
 makedepends=('git' 'asciidoctor>=1.5.3')
-source=("$pkgname::git+https://github.com/rumpelsepp/snap.git#commit=b95c21c4b18654ee6f6e4fc10a383d057c207e70")
+source=("$pkgname::git+https://github.com/rumpelsepp/snap.git#commit=32ebb02e84f48c71e64b57475f3fcab1a5a055ad")
 sha256sums=('SKIP')
 
 build() {
-    cd "${srcdir}/${pkgname}/docs"
+    cd "${srcdir}/${pkgname}/man"
     make man
 }
 
@@ -27,6 +27,6 @@ package() {
     install -m 755 snap-create "${pkgdir}/usr/bin/snap-create"
     install -m 755 snap-prune "${pkgdir}/usr/bin/snap-prune"
     install -m 755 snap-list "${pkgdir}/usr/bin/snap-list"
-    install -m 644 docs/*.1 "${pkgdir}/usr/share/man/man1"
+    install -m 644 man/*.1 "${pkgdir}/usr/share/man/man1"
     install -m 644 etc/* "${pkgdir}/usr/share/snap"
 }
