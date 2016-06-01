@@ -2,7 +2,7 @@
 
 pkgname=sickrage
 pkgver=4.2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A PVR application that downloads and manages your TV shows. Echel0n fork of sickbeard, with tvrage, torrents and anime support."
 arch=('any')
 url="https://github.com/SiCKRAGETV/SickRage"
@@ -34,7 +34,7 @@ md5sums=('3c13a8468d3dfe3e7ffe2412cfe29692'
 package() {
 	mkdir -p "${pkgdir}/opt/sickrage"
 	chmod 775 "${pkgdir}/opt/sickrage"
-	cp -r "${srcdir}/SiCKRAGE-${pkgver}/* ${pkgdir}/opt/sickrage"
+	cp -r ${srcdir}/SiCKRAGE-${pkgver}/* ${pkgdir}/opt/sickrage
 
 	install -D -m644 sickrage-system.service "${pkgdir}/usr/lib/systemd/system/sickrage.service"
 	install -D -m644 sickrage-user.service "${pkgdir}/usr/lib/systemd/user/sickrage.service"
