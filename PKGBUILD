@@ -45,8 +45,8 @@ source=("git+${url}.git${_fragment}")
 
 # select version depending on marker file presence:
 # * create .PKGDEV to use latest development version (from master branch)
-# * create .PKGREL to use latest release version (named with tag vNNN)
-# * remove all markes and set pkgver=NNN above to use existing NNN version (the default)
+# * create .PKGREL to use latest release version (named with release tag vNNN)
+# * remove all markes and set pkgver=NNN above to use an existing vNNN release tag (the default)
 pkgver() {
     local base=$(cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd)
     local repo=$base/${pkgname} # bare repo location
