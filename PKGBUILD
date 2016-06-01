@@ -1,6 +1,6 @@
 # Maintainer: Christian <0x2a@posteo.org>
 pkgname=labpowerqt
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 epoch=
 pkgdesc="LabPowerQt is a GUI application written in C++/Qt to control lab power supplies"
@@ -21,7 +21,7 @@ install=
 changelog=
 source=("https://github.com/crapp/$pkgname/archive/v$pkgver.tar.gz")
 noextract=()
-md5sums=('ee23d7fa84de15d57556938ac4a08cec')
+md5sums=('06856d5aa0b196967289148106d86516')
 validpgpkeys=()
 
 prepare() {
