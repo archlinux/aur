@@ -2,7 +2,7 @@
 # Maintainer: Maël Kerbiriou <mael.kerbiriou-at-free-dot-fr>
 
 pkgname=amarok-git
-pkgver=v2.8.90.14.g048ca3d
+pkgver=v2.8.90.16.ga5df287
 pkgrel=1
 pkgdesc="The powerful music player for KDE - GIT version"
 arch=("i686" "x86_64")
@@ -22,12 +22,19 @@ conflicts=('amarok' 'amarok2')
 provides=('amarok')
 replaces=('amarok-svn' 'amarok2-svn')
 install="${pkgname}.install"
-source=(${pkgname}::git://anongit.kde.org/amarok.git)
+#source=(${pkgname}::git://anongit.kde.org/amarok.git)
+source=(git://anongit.kde.org/amarok.git)
 sha1sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
+    cd amarok
     git describe --always | sed 's|-|.|g'
+}
+
+prepare(){
+#cd amarok
+pwd;
+patch -Np1 <../amarok-git.patch
 }
 
 build() {
@@ -35,7 +42,7 @@ build() {
     mkdir -p build
     cd build
     export PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig"
-    cmake "../${pkgname}" -Wno-dev \
+    cmake "../amarok" -Wno-dev \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DKDE4_BUILD_TESTS=OFF \
