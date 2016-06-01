@@ -9,7 +9,8 @@ url="http://swift.org/"
 license=('apache')
 depends=('python2' 'libutil-linux' 'icu' 'libbsd' 'libedit' 'libxml2'
          'sqlite' 'ncurses')
-makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.8' 'python2-six' 'perl')
+makedepends=('git' 'cmake' 'ninja' 'swig' 'clang>=3.8' 'python2-six' 'perl'
+             'python2-sphinx')
 source=(
     "swift-${_swiftver}.tar.gz::https://github.com/apple/swift/archive/swift-${_swiftver}.tar.gz"
     "swift-llvm-${_swiftver}.tar.gz::https://github.com/apple/swift-llvm/archive/swift-${_swiftver}.tar.gz"
@@ -21,7 +22,7 @@ source=(
     "swift-corelibs-xctest-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-xctest/archive/swift-${_swiftver}.tar.gz"
     "swift-corelibs-foundation-${_swiftver}.tar.gz::https://github.com/apple/swift-corelibs-foundation/archive/swift-${_swiftver}.tar.gz"
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
-    "swift-no-docs.patch"
+    "swift-sphinx2.patch"
 )
 sha256sums=('80729b4288ebb36610024ecd52df1b00427b358309a0607432decfea2f1905f0'
             '22a9640ec711c75586017aaaa6d95f99c9a37105f4ac79a786fcfd634d71ef4b'
@@ -33,7 +34,7 @@ sha256sums=('80729b4288ebb36610024ecd52df1b00427b358309a0607432decfea2f1905f0'
             'af64e2dbe1228bb9bdbe7d0c1fa37e0d4eee50008a759fd87f18aad292f8e5fa'
             'bcd8c1ee304b5142d1c0c0f249ad92be4d6bb5ac38aca8bbc01a1dfe26bcafde'
             '3b211bd3708af55e9909b210d7f426c9c9307798020809beab72e657cd36a00d'
-            '1a8663c48a1a203d1825ae62a7e4191e4980a2dad461d4d88152221ad9e2171d')
+            '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f')
 
 prepare() {
     # Use python2 where appropriate
@@ -48,10 +49,6 @@ prepare() {
     sed -i 's/\<python\>/&2/' \
          "$srcdir/swift-swift-${_swiftver}/utils/build-script-impl"
 
-    # Fix bad include paths
-    find "$srcdir" -type f -print0 | \
-         xargs -0 sed -i 's|/usr/include/x86_64-linux-gnu|/usr/include|g'
-
     # Use directory names which build-script expects
     for sdir in llvm clang lldb cmark llbuild; do
         ln -sf swift-${sdir}-swift-${_swiftver} ${sdir}
@@ -64,7 +61,7 @@ prepare() {
 
     # Sphinx 1.3.5 raises a warning (promoted to error) when using an unknown
     # syntax highlighting language (like "swift").
-    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/swift-no-docs.patch" )
+    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/swift-sphinx2.patch" )
 }
 
 build() {
