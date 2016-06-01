@@ -2,9 +2,6 @@
 # Maintainer: Quentin Retornaz <quentin dot retornaz at yahoo dot fr>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
-# Type this to get the pgp key:
-#	$ gpg --keyserver pgp.mit.edu --recv-keys DB4B54CBA4826A18
-
 pkgname=youtube-dl-latest
 _pkgname=youtube-dl
 pkgver="$(curl 'http://youtube-dl.org/latest/version')"
