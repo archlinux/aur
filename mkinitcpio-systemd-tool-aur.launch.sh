@@ -4,8 +4,10 @@
 
 # build package automation
 
+# create .PKGREL file to auto-bump PKGBUILD pkgver to latest release version 
+
 readonly location=$(cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd)
-source $location/PKGBUILD 
+source $location/PKGBUILD
 
 is_root() {
     [[ $(id -u) == 0 ]]
