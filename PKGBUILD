@@ -2,52 +2,36 @@
 # Contributer: Justin Dray <justin@dray.be>
 
 pkgname='chronograf'
-pkgver='0.12.0'
-pkgrel='2'
-epoch=
-pkgdesc='A new data visualization tool for InfluxDB'
+pkgver='0.13.0'
+pkgrel='1'
+pkgdesc='Time-series data visualization tool for InfluxDB'
 arch=('x86_64')
-url='http://influxdb.org/chronograf'
-license=('MIT')
-groups=()
-depends=()
-makedepends=()
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
+url='https://influxdata.com/time-series-platform/chronograf/'
+license=('unknown')
 backup=('etc/chronograf.toml')
-options=()
-install="$pkgname.install"
+install="${pkgname}.install"
 pkgtar="v${pkgver}.tar.gz"
-source=("https://s3.amazonaws.com/get.influxdb.org/chronograf/chronograf_${pkgver}_amd64.deb"
-        "$pkgname.install"
-        "$pkgname.service"
-		  "LICENSE")
-md5sums=('3392f10416e43ae818d1fda2f83e3514'
-         '5eeadbb9b80534dcf87ce3a9131ab75e'
-         '396feb4648ea8447c3d69bc97a80b9be'
-         '51c3bce403f0005b9ef91ab20cc00964')
-changelog=
-noextract=()
+source=("https://dl.influxdata.com/chronograf/releases/chronograf_${pkgver}_amd64.deb"
+        "${pkgname}.install"
+        "${pkgname}.service"
+        "LICENSE")
+sha1sums=('ee114b1ff5b3c8eca12963dd2988232ba9e146f3'
+          '9b12bdd944bc6b62f74bc911a0b0fecf52b2aced'
+          'ef155872a161cf8c5cb07a38e10bd58069e6daab'
+          '58d4131a7c2b90d9187eabf469f96e438bbeeaa7')
 
 prepare() {
 	bsdtar xf data.tar.gz
-
-	sed -i 's|/opt/|/var/lib/|g' "$srcdir/opt/chronograf/config.toml"
+	sed -i 's|/opt/|/var/lib/|g' "${srcdir}/opt/chronograf/config.toml"
 }
 
 package() {
 	# systemctl service file
-	install -D -m644  "$srcdir/chronograf.service" "$pkgdir/usr/lib/systemd/system/chronograf.service"
+	install -D -m644  "${srcdir}/chronograf.service" "${pkgdir}/usr/lib/systemd/system/chronograf.service"
 
 	# binary
-	install -D -m755 "$srcdir/opt/chronograf/chronograf" "$pkgdir/usr/bin/chronograf"
+	install -D -m755 "${srcdir}/opt/chronograf/chronograf" "${pkgdir}/usr/bin/chronograf"
 
 	# configuration file
-	install -D -m644 "$srcdir/opt/chronograf/config.toml" "$pkgdir/etc/chronograf.toml"
-
-	# license file
-	install -D -m644 "$srcdir/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "${srcdir}/opt/chronograf/config.toml" "${pkgdir}/etc/chronograf.toml"
 }
