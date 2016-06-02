@@ -1,0 +1,21 @@
+pkgbase = senseictl-git
+	pkgdesc = SteelSeries Sensei Raw configuration tool
+	pkgver = r38.9206592
+	pkgrel = 1
+	url = https://github.com/dneto/senseictl
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-ioctl-opt-git
+	depends = python-pyudev
+	depends = python-webcolors
+	depends = python-hidraw-git
+	depends = python-yaml
+	provides = senseictl
+	conflicts = senseictl
+	source = senseictl-git::git://github.com/dneto/senseictl.git
+	sha256sums = SKIP
+
+pkgname = senseictl-git
+
