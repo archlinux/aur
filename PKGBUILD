@@ -1,7 +1,7 @@
 # Maintainer: Yen Chi Hsuan <yan12125 at gmail.com>
 _pkgname=nwjs
 pkgname=$_pkgname-bin
-pkgver=0.15.0
+pkgver=0.15.1
 pkgrel=1
 pkgdesc="node-webkit is an app runtime based on Chromium and node.js."
 arch=("i686" "x86_64")
@@ -25,8 +25,8 @@ fi
 source_common="http://dl.nwjs.io/v$pkgver/$_pkgname-v$pkgver-linux"
 source_i686=("$source_common-ia32.tar.gz")
 source_x86_64=("$source_common-x64.tar.gz")
-md5sums_i686=('6cd6996e6e5a343fd1698754f2e30b97')
-md5sums_x86_64=('8cceca384d1a0b0b673f7204969658f3')
+md5sums_i686=('e059a9c790aa19a06290a4b20d53b613')
+md5sums_x86_64=('18a6e9852a868abbbebb8b34e102b9c1')
 
 package() {
   cd "$srcdir/$_pkgname-v$pkgver-linux-$_arch"
