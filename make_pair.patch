@@ -1,0 +1,24 @@
+diff -uBw -aur tophat-2.1.1/src/juncs_db.cpp tophat-2.1.1-patched/src/juncs_db.cpp
+--- tophat-2.1.1/src/juncs_db.cpp	2016-02-14 19:21:17.354079000 +0100
++++ tophat-2.1.1-patched/src/juncs_db.cpp	2016-06-02 11:26:34.097425159 +0200
+@@ -338,7 +338,7 @@
+ 			uint32_t left_coord = atoi(scan_left_coord);
+ 			uint32_t right_coord = atoi(scan_right_coord);
+ 			bool antisense = *orientation == '-';
+-			junctions.insert(make_pair<Junction, JunctionStats>(Junction(ref_id, left_coord, right_coord, antisense), JunctionStats()));
++			junctions.insert(make_pair(Junction(ref_id, left_coord, right_coord, antisense), JunctionStats()));
+ 		}
+ 	}
+ 
+diff -uBw -aur tophat-2.1.1/src/tophat_reports.cpp tophat-2.1.1-patched/src/tophat_reports.cpp
+--- tophat-2.1.1/src/tophat_reports.cpp	2016-02-23 22:20:44.320710000 +0100
++++ tophat-2.1.1-patched/src/tophat_reports.cpp	2016-06-02 11:26:22.057239478 +0200
+@@ -2705,7 +2705,7 @@
+ 				junction_stat.gtf_match = true;
+ 				junction_stat.accepted = true;
+ 
+-				gtf_junctions.insert(make_pair<Junction, JunctionStats>(Junction(ref_id, left_coord, right_coord, antisense), junction_stat));
++				gtf_junctions.insert(make_pair(Junction(ref_id, left_coord, right_coord, antisense), junction_stat));
+ 			}
+ 		}
+ 		fprintf(stderr, "Loaded %d GFF junctions from %s.\n", (int)(gtf_junctions.size()), gtf_juncs.c_str());

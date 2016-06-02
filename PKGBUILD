@@ -2,15 +2,17 @@
 
 pkgname=tophat
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="fast splice junction mapper for RNA-Seq reads"
 arch=('x86_64' 'i686')
 url="http://ccb.jhu.edu/software/tophat/index.shtml"
 license=('custom')
 depends=('boost-libs' 'bowtie2' 'python2')
 makedepends=('boost')
-source=("http://ccb.jhu.edu/software/tophat/downloads/tophat-$pkgver.tar.gz")
-md5sums=('4b2391de46457ba6b2b7268a9da593e4')
+source=("http://ccb.jhu.edu/software/tophat/downloads/tophat-$pkgver.tar.gz"
+        'make_pair.patch')
+md5sums=('4b2391de46457ba6b2b7268a9da593e4'
+         '53378885f3620a1d02fb345077609d05')
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
@@ -24,6 +26,8 @@ prepare() {
          src/sra_to_solid \
          src/tophat-fusion-post \
          src/tophat.py
+
+  patch -Np1 -i $srcdir/make_pair.patch
 }
 
 build() {
