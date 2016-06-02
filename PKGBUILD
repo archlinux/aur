@@ -20,7 +20,7 @@ pkgver() {
 build() {
     cd "$pkgname"
 
-    ./autogen.sh
+    NOCONFIGURE=1 ./autogen.sh
     ./configure --prefix=/usr --enable-libnotify
     make
 }
