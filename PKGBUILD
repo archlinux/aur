@@ -1,13 +1,13 @@
 # Maintainer: Christian Boxdörfer <christian.boxdoerfer@posteo.de>
 pkgname=fsearch-git
 _gitname=fsearch
-pkgver=2016.05.31
+pkgver=2016.06.02
 pkgrel=1
 pkgdesc="A fast file search utility. Git Version."
 arch=('i686' 'x86_64')
 url="https://cboxdoerfer.github.io/fsearch"
 license=('GPL2')
-depends=('gtk3' 'hicolor-icon-theme')
+depends=('gtk3' 'hicolor-icon-theme' 'pcre')
 makedepends=('git' 'intltool' 'gnome-common')
 conflicts=('fsearch')
 source=('git://github.com/cboxdoerfer/fsearch.git')
