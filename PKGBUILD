@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=libxxhash
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Extremely fast non-cryptographic hash algorithm (library)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ makedepends=('cmake' 'make')
 url="https://cyan4973.github.io/xxHash/"
 license=('BSD')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/Cyan4973/xxHash/tar.gz/v$pkgver)
-sha256sums=('0171af39eefa06be1e616bc43b250d13bba417e4741135ec85c1fe8dc391997d')
+sha256sums=('2adee77416e1bd53d1bf689d78947ff4e9a603aa319c84c9111ccf53f1a646e8')
 
 build() {
   cd "$srcdir/xxHash-$pkgver"
