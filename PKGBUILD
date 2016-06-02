@@ -10,6 +10,7 @@ optdepends=('metasploit-git')
 provides=('sqlninja')
 conflicts=('sqlninja')
 source=("http://downloads.sourceforge.net/project/sqlninja/sqlninja/sqlninja-0.2.6-r1.tgz?r=&ts=1464479613&use_mirror=nbtelecom")
+md5sums=('ee0ceea3141a95967ce73417969decd8')
 
 build() {
          echo Installing required dependencies
