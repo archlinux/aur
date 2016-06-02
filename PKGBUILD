@@ -18,7 +18,7 @@ _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=52.0.2743.10
+pkgver=52.0.2743.19
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -62,7 +62,7 @@ makedepends=('libexif'
              'git'
              'imagemagick'
              )
-makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
+# makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
 optdepends=('chromium-pepper-flash-dev: PPAPI Flash Player (Dev Channel) (64bits only)'
             'chromium-widevine-dev: Widevine plugin (eg: Netflix) (Dev Channel) (64bits only)'
             #
