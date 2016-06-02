@@ -1,8 +1,8 @@
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 
-pkgname=letsencrypt
-pkgver=0.5.0
+pkgname=certbot
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="A tool to automatically receive and install X.509 certificates to enable TLS on servers. The client will interoperate with the Let’s Encrypt CA which will be issuing browser-trusted certificates for free."
 arch=('any')
@@ -13,14 +13,15 @@ depends=('ca-certificates' "python2-acme=$pkgver" 'python2-configargparse' 'pyth
          'python2-psutil' 'python2-pyrfc3339' 'python2-pythondialog' 'python2-pytz'
          'python2-requests' 'python2-setuptools' 'python2-six' 'python2-zope-component'
          'python2-zope-interface')
-optdepends=("letsencrypt-apache: Apache plugin for Let’s Encrypt client"
-            "letsencrypt-nginx: Nginx plugin for Let’s Encrypt client")
+optdepends=("certbot-apache: Apache plugin for Let’s Encrypt client"
+            "certbot-nginx: Nginx plugin for Let’s Encrypt client")
 checkdepends=('python2-nose')
-source=("https://pypi.python.org/packages/source/l/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc})
+replaces=("letsencrypt")
+source=("https://pypi.io/packages/source/c/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc})
 validpgpkeys=('148C30F6F7E429337A72D992B00B9CC82D7ADF2C'
               '1B41B758F9A78C7F444C20FA3E5B4152E3ADB1FD'
               'A2CFB51FA275A7286234E7B24D17C995CD9775F2')
-md5sums=('2ea39dca4c2fc601c7ce07705a069d25'
+md5sums=('39a52c74352649341c97c0406d5fb97f'
          'SKIP')
 
 build() {
@@ -37,6 +38,6 @@ package() {
   cd "$srcdir"/$pkgname-$pkgver
   python2 setup.py install --root="$pkgdir"
 
-  mkdir -p "$pkgdir"/{etc,var/lib,var/log}/letsencrypt
-  chmod 700 "$pkgdir"/var/log/letsencrypt
+  mkdir -p "$pkgdir"/{etc,var/lib,var/log}/certbot
+  chmod 700 "$pkgdir"/var/log/certbot
 }
