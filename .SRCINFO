@@ -1,0 +1,18 @@
+pkgbase = php7-ioncube_loader
+	pkgdesc = Loader for PHP files encoded with ionCube PHP Encoder
+	pkgver = beta4
+	pkgrel = 1
+	url = http://www.ioncube.com/
+	arch = i686
+	arch = x86_64
+	license = CUSTOM
+	depends = php
+	conflicts = php-ioncube_loader
+	backup = etc/php/conf.d/00-ioncube_loader.ini
+	source_i686 = php7-linux-x86-beta4.tgz::https://www.ioncube.com/php7-linux-x86-beta4.tgz
+	sha256sums_i686 = 83421468fc9300debd9092e3c9b0f20eee8143d5dd0cfd4fc956ae1a977a7e47
+	source_x86_64 = php7-linux-x86-64-beta4.tgz::https://www.ioncube.com/php7-linux-x86-64-beta4.tgz
+	sha256sums_x86_64 = d4806f817fd4b3455364feee4b35ea34eb53ebcc4f5f425500a1813f9e457f64
+
+pkgname = php7-ioncube_loader
+
