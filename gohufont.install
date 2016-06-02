@@ -1,6 +1,5 @@
 post_install() {
   echo "Updating font cache... " 
-  fc-cache -fs >/dev/null 2>&1
   mkfontscale /usr/share/fonts/misc
   mkfontdir /usr/share/fonts/misc
   xset fp rehash >/dev/null 2>&1
@@ -14,7 +13,6 @@ post_upgrade() {
 }
 
 post_remove() {
-  fc-cache -fs >/dev/null 2>&1
   mkfontscale /usr/share/fonts/misc
   mkfontdir /usr/share/fonts/misc
   xset fp rehash >/dev/null 2>&1

@@ -1,7 +1,7 @@
 # Maintainer: Hugo Chargois <hugo dot chargois at free dot fr>
 pkgname=gohufont
-pkgver=2.0
-pkgrel=3
+pkgver=2.1
+pkgrel=1
 pkgdesc='A bitmap font for programming and terminal use, in two sizes'
 arch=(any)
 url=http://font.gohu.eu/
@@ -9,7 +9,7 @@ license=(custom:WTFPL)
 depends=(xorg-fonts-encodings xorg-fonts-alias xorg-font-utils fontconfig)
 install=$pkgname.install
 source=(http://font.gohu.eu/$pkgname-$pkgver.tar.gz)
-md5sums=('f57ed4493447f9c74f53bb8aa27eae7c')
+md5sums=('154921c092ac5a4e1806e04d84d6707d')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
