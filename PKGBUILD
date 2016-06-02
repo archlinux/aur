@@ -2,7 +2,7 @@
 # Contributor: Martin Sandsmark <martin.sandsmark@kde.org>
 pkgname=movit-git
 pkgver=r765.dd74f9c
-pkgrel=1
+pkgrel=2
 pkgdesc="The modern video toolkit"
 arch=(x86_64)
 url="http://movit.sesse.net/"
@@ -14,6 +14,7 @@ makedepends=('gtest' 'eigen' 'libpng' 'sdl2_image')
 optdepends=('libpng12: demo application', 'sdl_image: demo application')
 source=('git+http://git.sesse.net/movit')
 sha1sums=('SKIP')
+#options=(debug !strip)
 
 pkgver() {
   cd movit
