@@ -1,0 +1,17 @@
+pkgbase = dup.py
+	pkgdesc = Duplicate File manager with multimedia geolocation metadata extensions
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/ewwaller/dup.py
+	arch = any
+	license = GPL3
+	depends = python
+	depends = sqlite
+	optdepends = argparser
+	optdepends = python-gobject
+	optdepends = libgexiv2
+	source = git+https://github.com/ewwaller/dup.py.git
+	md5sums = SKIP
+
+pkgname = dup.py
+
