@@ -16,7 +16,7 @@ package() {
         sudo mkdir /usr/share/sqlninja
         install -dm755 "/usr/share/sqlninja"
         sudo cp -r sqlninja-0.2.6-rc1/* "/usr/share/sqlninja"
-        Creating executable for sqlninja...
+        echo Creating executable for sqlninja...
         sudo mv -v sqlninja /usr/bin/sqlninja
 }
 
