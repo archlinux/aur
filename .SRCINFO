@@ -1,6 +1,6 @@
 pkgbase = kencfs
 	pkgdesc = GUI frontend for encfs. Create, mount, umount and delete your encrypted fs.
-	pkgver = 1.6.2
+	pkgver = 1.6.3
 	pkgrel = 2
 	url = http://kde-apps.org/content/show.php/KEncFS?content=134003
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = kencfs
 	depends = encfs>=1.7.4-8
 	depends = fuse>=2.9.2-1
 	depends = kdelibs
-	source = kencfs-1.6.2.tar.gz
-	md5sums = 973df943e58ba9fd3fc86705b29ea3af
+	source = kencfs-1.6.3.tar.gz
+	md5sums = 79b582d69bcf0fd60fb84f8c88b48040
 
 pkgname = kencfs
 
