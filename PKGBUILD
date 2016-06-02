@@ -2,7 +2,7 @@
 
 pkgname=mint-y-icons
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="New icons from LinuxMint 18 inspired by the Moka icon set. Stable releases"
 arch=('any')
 url='http://packages.linuxmint.com'
