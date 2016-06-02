@@ -9,7 +9,7 @@ license=('GPLv3')
 optdepends=('metasploit-git')
 provides=('sqlninja')
 conflicts=('sqlninja')
-source=("http://downloads.sourceforge.net/project/sqlninja/sqlninja/sqlninja-0.2.6-r1.tgz?r=&ts=1464479613&use_mirror=nbtelecom")
+source=("http://downloads.sourceforge.net/project/sqlninja/sqlninja/0.2.6-rc1/sqlninja-0.2.6-rc1.tgz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fsqlninja%2Ffiles%2Fsqlninja%2F0.2.6-rc1%2F&ts=1464896447&use_mirror=iweb")
 md5sums=('ee0ceea3141a95967ce73417969decd8')
 
 build() {
