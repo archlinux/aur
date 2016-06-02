@@ -1,6 +1,6 @@
 pkgbase = mattermost-desktop
 	pkgdesc = Mattermost Desktop (Beta) for Linux
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/mattermost/desktop
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = mattermost-desktop
 	makedepends = npm
 	makedepends = gendesk
 	depends = gconf
-	source = https://github.com/mattermost/desktop/archive/v1.2.0.tar.gz
-	sha256sums = f8b22582d585781f7323db2c17a084f78eed4488b6c4053dd9b9237577744cc9
+	source = https://github.com/mattermost/desktop/archive/v1.2.1.tar.gz
+	sha256sums = 89a6fa9edb08a8bd2b59fb3c269e0931b8f858dd4123b3ddd2ccf652995a5968
 
 pkgname = mattermost-desktop
 
