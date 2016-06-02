@@ -1,10 +1,13 @@
 post_install() {
-    printf "NOTE: You need manually enable the systemd service after install via command:\n"
+    printf "NOTE: You need manually enable the systemd services after install via commands:\n"
     printf "sudo systemctl enable asus-nb-wmi-reload\n"
 }
 
+post_upgrade() {
+    post_install %1
+}
 
 post_remove() {
-    printf "NOTE: You need manually disable the systemd service after remove via command:\n"
+    printf "NOTE: You need manually disable the systemd services after remove via commands:\n"
     printf "sudo systemctl disable asus-nb-wmi-reload\n"
 }
