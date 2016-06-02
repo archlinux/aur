@@ -1,16 +1,17 @@
-# Maintainer: Liganic <liganic-aur@gmx.net>
+# Maintainer: Light2Yellow <alexvilchansky@yahoo.com>
+
 pkgname=ckb-git
-pkgver=v0.2.r2.g909776d
+pkgver=v0.2.5.r7.g7eaf1ae
 pkgrel=1
-pkgdesc="Corsair Keyboard Input Driver (K65 RGB, K70[RGB], K95[RGB], M65 RGB)"
+pkgdesc="Corsair Keyboard and Mouse Input Driver"
 arch=('i686' 'x86_64')
 url="https://github.com/ccMSC/ckb"
 license=('GPL2')
-depends=('qt5-base')
+depends=('qt5-base' 'hicolor-icon-theme')
 makedepends=('git')
-replaces=('ckb-git-latest')
+conflicts=('ckb-git-latest')
 install=ckb-git.install
-source=('ckb-git::git://github.com/ccMSC/ckb.git')
+source=('ckb-git::git+https://github.com/ccMSC/ckb.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -21,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-VCS}"
-  qmake
+  ./qmake-auto
   make
 }
 
