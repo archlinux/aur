@@ -3,13 +3,17 @@ pkgbase = sqlninja
 	pkgver = 0.2.6
 	pkgrel = 1
 	url = http://sqlninja.sourceforge.net/
-	arch = i686
-	arch = x86_64
-	license = GPLv3
+	arch = any
+	license = GPL3
+	depends = perl-dbi
+	depends = perl-io-socket-ssl
+	depends = perl-netpacket
+	depends = perl-net-pcap
+	depends = perl-net-rawip
 	optdepends = metasploit-git
 	provides = sqlninja
-	conflicts = sqlninja
-	source = http://downloads.sourceforge.net/project/sqlninja/sqlninja/sqlninja-0.2.6-r1.tgz?r=&ts=1464479613&use_mirror=nbtelecom
+	source = http://downloads.sourceforge.net/project/sqlninja/sqlninja/0.2.6-rc1/sqlninja-0.2.6-rc1.tgz
+	md5sums = ee0ceea3141a95967ce73417969decd8
 
 pkgname = sqlninja
 
