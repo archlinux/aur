@@ -6,9 +6,11 @@
 
 pkgname=clion
 _pkgname=CLion
-pkgver=2016.1.2
-_pkgver=2016.1.2b
-pkgrel=3
+# Make sure to use vercmp to check version is seen as newer. Bump epoch if not.
+pkgver=2016.1.2b
+pkgrel=1
+# Bump when JetBrains uses silly letters in stable releases
+epoch=1
 pkgdesc="C/C++ IDE. Free 30-day trial."
 arch=('x86_64')
 options=(!strip)
@@ -26,13 +28,13 @@ optdepends=(
   'python: Python programming language support (Also requires the plugin)'
   'python2: Python 2 programming language support (Also requires the plugin)'
 )
-source=("https://download.jetbrains.com/cpp/${_pkgname}-${_pkgver}.tar.gz")
+source=("https://download.jetbrains.com/cpp/${_pkgname}-${pkgver}.tar.gz")
 sha256sums=('7ca06c23805632849855679434742f575e0475f726b8f9b345d71bc4e50d486d')
-noextract=("${_pkgname}-${_pkgver}.tar.gz")
+noextract=("${_pkgname}-${pkgver}.tar.gz")
 
 package() {
   mkdir -p "${pkgdir}/opt/${pkgname}"
-  bsdtar --strip-components 1 -xf "${_pkgname}-${_pkgver}.tar.gz" -C "${pkgdir}/opt/${pkgname}"
+  bsdtar --strip-components 1 -xf "${_pkgname}-${pkgver}.tar.gz" -C "${pkgdir}/opt/${pkgname}"
 
   # Uncomment to use system JRE, CMake and/or GDB instead of the bundled one(s)
   #rm -r "${pkgdir}/opt/${pkgname}/jre"
