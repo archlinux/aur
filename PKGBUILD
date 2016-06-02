@@ -1,6 +1,6 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=mlterm-hg
-pkgver=r2576.13f324611e64
+pkgver=r2599.95386d6b6bbe
 pkgrel=1
 epoch=
 pkgdesc="Multi Lingual TERMinal emulator on X"
@@ -10,7 +10,7 @@ url="http://mlterm.sourceforge.net/"
 license=('custom:BSD')
 groups=()
 depends=('gtk2' 'gtk3' 'm17n-lib' 'libutempter')
-makedepends=('git' 'intltool' 'librsvg' 'ncurses')
+makedepends=('mercurial' 'intltool' 'librsvg' 'ncurses')
 optdepends=()
 checkdepends=()
 provides=('mlterm')
