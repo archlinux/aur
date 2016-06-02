@@ -8,6 +8,7 @@ arch=('any')
 url="http://torsion.org/atticmatic/"
 license=('GPL3')
 depends=('attic')
+makedepends=('python2-setuptools')
 optdepends=('borgbackup')
 source=("https://torsion.org/hg/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('46e6f7e450a705fb13de628a1ce5d52548cf4da25b681bd2843f6a4345d82181')
