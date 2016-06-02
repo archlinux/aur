@@ -21,8 +21,8 @@ prepare() {
 
 
 build() {
-    mkdir "${srcdir}/${pkgname}-build"
-    cd "${srcdir}/${pkgname}-build"
+    mkdir "${srcdir}/build"
+    cd "${srcdir}/build"
     cmake -Wno-dev "${srcdir}/${pkgname}-${pkgver}" "-DCMAKE_INSTALL_PREFIX=${_pkgprefix}" \
         -DBRLCAD_ENABLE_COMPILER_WARNINGS=OFF -DBRLCAD_ENABLE_STRICT=OFF \
         -DCMAKE_BUILD_TYPE=Release -DBRLCAD_FLAGS_DEBUG=OFF -DBRLCAD_ENABLE_OPENGL=ON \
@@ -33,7 +33,7 @@ build() {
 
 
 package() {
-    cd "${srcdir}/${pkgname}-build"
+    cd "${srcdir}/build"
     make "DESTDIR=${pkgdir}" install
     install -D --mode=u=rw,go=r share/doc/legal/bsd.txt "${pkgdir}/usr/share/licenses/${pkgname}/bsd.txt"
     install -D --mode=u=rw,go=r share/doc/legal/bdl.txt "${pkgdir}/usr/share/licenses/${pkgname}/bdl.txt"
