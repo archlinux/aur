@@ -1,7 +1,7 @@
 pkgbase = python2-sipsimple
 	pkgdesc = Python SDK for development of SIP end-points
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://download.ag-projects.com/SipClient
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = python2-sipsimple
 	depends = python2-eventlib
 	depends = python2-msrplib
 	depends = python2-xcaplib
-	depends = python-otr
+	depends = python2-otr-git
 	depends = python2-application
 	options = !makeflags
 	source = http://download.ag-projects.com/SipClient/python-sipsimple-3.0.0.tar.gz

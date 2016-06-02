@@ -5,13 +5,13 @@
 
 pkgname=python2-sipsimple
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python SDK for development of SIP end-points"
 license=('custom:MIT' 'LGPL')
 arch=('i686' 'x86_64')
 url="http://download.ag-projects.com/SipClient"
 depends=('alsa-lib' 'util-linux' 'python2-dateutil'
-         'python2-dnspython' 'python2-eventlib' 'python2-msrplib' 'python2-xcaplib' 'python-otr' 'python2-application')
+         'python2-dnspython' 'python2-eventlib' 'python2-msrplib' 'python2-xcaplib' 'python2-otr-git' 'python2-application')
 makedepends=('cython2' 'subversion')
 options=('!makeflags')
 source=("http://download.ag-projects.com/SipClient/python-sipsimple-$pkgver.tar.gz")
