@@ -11,7 +11,7 @@ pkgbase = tgt
 	optdepends = sg3_utils
 	backup = etc/tgt/targets.conf
 	source = https://github.com/ksovi/tgt/archive/v1.0.64.tar.gz
-	md5sums = ff21bcc879189bedab1f4279e35fe885
+	md5sums = a231fd0ddb836eaf2fbff670d8bf1555
 
 pkgname = tgt
 
