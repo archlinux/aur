@@ -1,7 +1,7 @@
 # Maintainer: Quentin Glidic <sardemff7@eventd.org>
 
 pkgname=eventd-git
-pkgver=0.18.2.r0.g799de5f
+pkgver=0.18.2.r19.g5b9dfe9
 _gitname=eventd
 _pkgdir=${_gitname}
 pkgrel=1
@@ -17,7 +17,6 @@ license=(
     MIT
 )
 depends=(
-    avahi
     'cairo>=1.14.0'
     gdk-pixbuf2
     'glib2>=2.40.0'
@@ -34,7 +33,10 @@ makedepends=(
     docbook-xsl
 )
 optdepends=(
+    'avahi: DNS-SD support'
+    'gssdp: SSDP support'
     'librsvg: SVG images support'
+    'libsoup: WebSocket support'
 )
 provides=(
     eventd
@@ -68,7 +70,6 @@ build() {
         --prefix=/usr
         --enable-systemd
         --disable-introspection
-        --disable-ssdp
         --disable-nd-wayland
         --disable-im
         --disable-sound
