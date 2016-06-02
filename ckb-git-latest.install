@@ -1,5 +1,7 @@
 post_install() {
-  echo -e '\nStart ckb-daemon manually or enable the service:\n'
-  echo 'systemctl start ckb-daemon'
-  echo -e 'systemctl enable ckb-daemon\n'
+  echo -e '\n=================================================='
+  echo -e 'Start ckb-daemon manually or enable the service:'
+  echo -e 'systemctl start ckb-daemon'
+  echo -e 'systemctl enable ckb-daemon'
+  echo -e '====================================================\n'
 }
