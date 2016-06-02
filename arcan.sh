@@ -1,9 +1,9 @@
 
 ARCAN_RESOURCEPATH=/usr/share/arcan/resources
-ARCAN_FONTPATH=/usr/share/arcan/resources/fonts
-ARCAN_BINPATH=/usr/bin
-ARCAN_STATEPATH=~/.config/arcan
-ARCAN_APPLSTOREPAT=~/.config/arcan/appl
+#ARCAN_FONTPATH=/usr/share/arcan/resources/fonts
+#ARCAN_BINPATH=/usr/bin
+ARCAN_STATEPATH=~/.arcan
+ARCAN_APPLSTOREPATH=~/.config/arcan/appl
 ARCAN_LIBPATH=/usr/lib
 ARCAN_LOGPATH=~/tmp
 # ARCAN_VIDEO_DEVICE=

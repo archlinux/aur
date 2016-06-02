@@ -9,11 +9,12 @@ url="http://arcan-fe.com"
 license=('GPL' 'BSD')
 
 depends=('sdl' 'openal' 'mesa' 'freetype2' 'sqlite' 'luajit')
+optdepends=('ffmpeg' 'vlc' 'apr' 'xz')
 makedepends=('cmake' 'git')
 
 source=('git://github.com/letoram/arcan.git' 'arcan.sh')
 
-sha256sums=('SKIP' '927886057ed536e10af07deb21e7b36889cbb8b95ccd8f522577fde31e17a5fc')
+sha256sums=('SKIP' 'a62a2e44f96699e956f84fa47256aea3e2b60574d452a20c7f7565298779d6c0')
 
 options=('!libtool' '!strip' '!makeflags' '!buildflags' 'staticlibs')
 
