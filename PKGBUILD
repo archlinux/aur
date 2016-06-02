@@ -1,7 +1,7 @@
 pkgname=oculus-rift-sdk-jherico-git
 pkgver=185.cbf6f96
 realver=0.5.0.1
-pkgrel=2
+pkgrel=1
 _branch=master
 pkgdesc="Oculus SDK community version. SHIM + shared release/debug (libOVRRT64_0.so.${realver}, libOVRdRT64_0.so.${realver}), OculusConfigUtil, /etc/xdg/autostart/ovrd.desktop. Use /usr/include/ovr-${realver}/ as path to the SDK."
 arch=('x86_64')
@@ -19,7 +19,7 @@ options=('!strip' 'staticlibs')
 install=
 
 # Config Util is directly binaries from oculus rift sdk upstream. Look it up, if you like
-source=("git+https://github.com/jherico/OculusSDK.git#branch=$_branch"
+source=("git+https://github.com/jherico/OculusSDK.git#commit=cbf6f96b8083597de500d4110de0ed92f62c2a83"
 "git+https://github.com/jherico/jocular.git"
 "git+https://github.com/jherico/python-ovrsdk.git"
 "git+https://github.com/jherico/cmake.git"
