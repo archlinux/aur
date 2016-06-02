@@ -1,7 +1,7 @@
 pkgbase = psiral
 	pkgdesc = Psiral is a turn based strategy board game with wizards.
 	pkgver = 1.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/petarov/game-off-2013
 	install = psiral.install
 	arch = i686

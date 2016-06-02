@@ -1,7 +1,7 @@
 # Maintainer: Petar Petrov <petar.petrov.georgiev at gmail d0t com>
 pkgname=psiral
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Psiral is a turn based strategy board game with wizards."
 arch=('i686' 'x86_64')
 url="https://github.com/petarov/game-off-2013"
