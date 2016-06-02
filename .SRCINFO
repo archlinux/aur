@@ -1,6 +1,6 @@
 pkgbase = atticmatic
 	pkgdesc = A simple Python wrapper script for the attic (and borg) backup software.
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = http://torsion.org/atticmatic/
 	arch = any
@@ -10,8 +10,8 @@ pkgbase = atticmatic
 	optdepends = borgbackup
 	provides = borgmatic
 	conflicts = borgmatic
-	source = https://torsion.org/hg/atticmatic/archive/0.1.7.tar.gz
-	sha256sums = 46e6f7e450a705fb13de628a1ce5d52548cf4da25b681bd2843f6a4345d82181
+	source = https://torsion.org/hg/atticmatic/archive/0.1.8.tar.gz
+	sha256sums = db563b154638c426a8a055dca015d90c19ee08ce69c6a6a0783ddc038646e12e
 
 pkgname = atticmatic
 
