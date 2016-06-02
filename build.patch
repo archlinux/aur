@@ -40,3 +40,36 @@
    )
  
  BRLCAD_ADDLIB(libpc "${LIBPC_SOURCES}" "libbu;${OPENNURBS_LIBRARY};${STDCXX_LIBRARIES}" NO_STRICT_CXX)
+--- src/other/boost/boost/smart_ptr/shared_ptr.hpp
++++ src/other/boost/boost/smart_ptr/shared_ptr.hpp
+@@ -179,6 +179,8 @@ public:
+     {
+     }
+ 
++    shared_ptr(const shared_ptr &) = default;
++
+     template<class Y>
+     explicit shared_ptr( Y * p ): px( p ), pn( p ) // Y must be complete
+     {
+--- src/other/stepcode/src/cleditor/STEPfile.inline.cc
++++ src/other/stepcode/src/cleditor/STEPfile.inline.cc
+@@ -214,7 +214,7 @@ istream * STEPfile::OpenInputFile( const std::string filename ) {
+ 
+ /******************************************************/
+ void STEPfile::CloseInputFile( istream * in ) {
+-    if( in && *in != std::cin ) {
++    if( in && in != &std::cin ) {
+         delete in;
+     }
+ 
+--- src/other/stepcode/src/cllazyfile/sectionReader.cc
++++ src/other/stepcode/src/cllazyfile/sectionReader.cc
+@@ -83,7 +83,7 @@ std::streampos sectionReader::findNormalString( const std::string & str, bool se
+ const char * sectionReader::getDelimitedKeyword( const char * delimiters ) {
+     static std::string str;
+     char c;
+-    str.assign( 0, 0 ); //clear() frees the memory
++    str.assign( (size_t)0, 0 ); //clear() frees the memory
+     str.reserve( 100 );
+     skipWS();
+     while( c = _file.get(), _file.good() ) {
