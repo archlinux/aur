@@ -10,7 +10,6 @@ url='https://influxdata.com/time-series-platform/chronograf/'
 license=('unknown')
 backup=('etc/chronograf.toml')
 install="${pkgname}.install"
-pkgtar="v${pkgver}.tar.gz"
 source=("https://dl.influxdata.com/chronograf/releases/chronograf_${pkgver}_amd64.deb"
         "${pkgname}.install"
         "${pkgname}.service"
