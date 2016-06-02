@@ -1,11 +1,15 @@
 pkgbase = jkazip
 	pkgdesc = A Package Wrapper - package wrapper for pacman (and more)
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://proyecto.jkanetwork.com
 	arch = any
 	groups = jka-toolkit
 	license = GPL3
+	depends = p7zip
+	depends = unrar
+	depends = unzip
+	depends = zip
 	provides = jkazip
 	options = !emptydirs
 	source = https://gitlab.com/JKANetwork/jka-toolkit/raw/master/jka-toolkit/jkazip

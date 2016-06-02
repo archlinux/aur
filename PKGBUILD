@@ -1,11 +1,12 @@
 # Maintainer: JKA Network (JoseluCross, Kprkpr, Yukialba) <contacto@jkanetwork.com>
 pkgname=jkazip
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Package Wrapper - package wrapper for pacman (and more)"
 arch=('any')
 url="http://proyecto.jkanetwork.com"
 license=('GPL3')
+depends=('p7zip' 'unrar' 'unzip' 'zip')
 provides=('jkazip')
 groups=('jka-toolkit')
 options=(!emptydirs)
