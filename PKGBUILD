@@ -1,18 +1,17 @@
 # Maintainer: Bernard Baeyens (berbae) <berbae52 at sfr dot fr>
 pkgname=freetuxtv
-pkgver=0.6.6
-pkgrel=3
-pkgdesc="WebTV player to watch ADSL TV on the PC."
+pkgver=0.6.8
+pkgrel=1
+pkgdesc="WebTV vlc player to watch tv/radio playlists on the internet"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/freetuxtv/"
+url="https://github.com/freetuxtv/freetuxtv"
 license=('GPL3')
-install=freetuxtv.install
 depends=('vlc' 'gtk3' 'sqlite' 'curl' 'libnotify')
 makedepends=('intltool')
 conflicts=('freetuxtv-svn')
 
-source=("http://freetuxtv.googlecode.com/files/$pkgname-$pkgver.tar.gz")
-sha1sums=('6c42778d65bf20b7aeb70614c696d6736d0fa5cf')
+source=("https://github.com/freetuxtv/freetuxtv/releases/download/freetuxtv-0.6.8/freetuxtv-0.6.8.tar.gz")
+sha1sums=('9160ae0061bb97834c736b61af8936bf9eb900fc')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
