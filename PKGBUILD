@@ -3,7 +3,7 @@
 
 pkgname='blink-darcs'
 pkgver=20160602
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A state of the art, easy to use SIP client'
 arch=(
 	'i686'
@@ -12,11 +12,9 @@ arch=(
 url='http://www.icanblink.com'
 license=('GPL')
 depends=(
-	'python2-cjson'
 	'python2-pyqt'
 	'python2-sipsimple'
 	'libvncserver'
-	'cython2'
 	'python2-gmpy2'
 )
 makedepends=('darcs')

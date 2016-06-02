@@ -1,17 +1,15 @@
 pkgbase = blink-darcs
 	pkgdesc = A state of the art, easy to use SIP client
 	pkgver = 20160602
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.icanblink.com
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = darcs
-	depends = python2-cjson
 	depends = python2-pyqt
 	depends = python2-sipsimple
 	depends = libvncserver
-	depends = cython2
 	depends = python2-gmpy2
 
 pkgname = blink-darcs
