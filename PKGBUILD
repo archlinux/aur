@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov
 
 pkgname=omim-git
-pkgver=r12677.ef80aa6
+pkgver=r18788.2cf9376
 pkgrel=1
 pkgdesc='Offline OpenStreetMap maps'
 arch=(i686 x86_64)
