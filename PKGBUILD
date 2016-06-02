@@ -1,57 +1,72 @@
-# Maintainer:  TEL.RED LLC <ask_at_tel_dt_red>
+# Maintainer:  TEL.RED LLC <ask_at_tel_d0t_red>
 # Contributor: Jameson Pugh <imntreal@gmail.com>
 # Contributor: stef312 <stef312_at_gmail_dot_com>
 # Contributor: Gaspar de Elías <caspercba_at_hotmail_dot_com>
 # Contributor: Artem Sheremet <dot_doom_at_gmail_dot_com>
 
 pkgname=sky
-pkgver=2.0.495
-pkgrel=2
-pkgdesc="Lync & Skype for business on Linux"
+pkgver=2.1.0.8
+pkgrel=1
+pkgdesc="Lync & Skype for Business on Linux"
+_skyrel=2
 
 arch=(
     'x86_64'
-#   'i686' 
 )
 if [[ $CARCH == 'x86_64' ]]; then
     _arch=64
-elif [[ $CARCH == 'i686' ]]; then
-    _arch=32
 fi
 
 url="http://tel.red"
 
-license=('custom: Copyright © 2015 TEL.RED LLC')
+license=('custom: Copyright © 2015-2016 TEL.RED LLC')
 options=('!strip')
 install="${pkgname}.install"
 
-depends=('openssl' 'nss' 'gstreamer0.10-base' 'libpulse' 'alsa-lib' 'v4l-utils' 
-    'libxinerama' 'libxss' 'libxcb' 'gtk2' 'libxmu')
-makedepends=('binutils' 'chrpath')
+depends=(
+    'ffmpeg2.8'
+    'libcurl-compat>=7.38'
+    'libjpeg6-turbo'
+    'libxss'
+    'libxrandr'
+    'qt5-base>=5.6'
+)
+makedepends=(
+    'binutils'
+    'tar'
+    'xz'
+)
 
-source_x86_64=("http://tel.red/linux/sky_ubuntu64_v${pkgver}.deb")
-#source_i686=("http://tel.red/linux/sky_ubuntu32_v${pkgver}.deb")
-
-sha256sums_x86_64=('394808ccaee94c0f9dcbcd18968eafdbf01cd818f772f40aa6bacaa40813097f')
+source_x86_64=("https://tel.red/repos/debian/pool/non-free/sky_${pkgver}-${_skyrel}deb8+jessie_amd64.deb")
+sha256sums_x86_64=('2d4fbff0435512beee3f085b75eb087d7fdaadf6aea800cd5985e78ee9ac7791')
 
 package() {
-    cd "${srcdir}"
-    ar x "sky_ubuntu${_arch}_v${pkgver}.deb" >/dev/null
-    tar -zxf data.tar.gz
-
-		# delete broken and excessive RPATH/RUNPATH
-    find "${srcdir}/opt/sky_linux" -type f -name '*.so*' -exec chrpath -d {} \;
-    chrpath -d "${srcdir}/opt/sky_linux/sky"
+    local _sky_libdir="/usr/lib/sky/lib"
+    local _sky_bindir="/usr/lib/sky"
+    local _sky_datadir=( "${_sky_bindir}/sounds" )
     
-    cp -rf "${srcdir}/etc" "${pkgdir}/"
-    install -Dm 644 "${srcdir}/usr/share/applications/sky.desktop" "${pkgdir}/usr/share/applications/sky.desktop"
-    install -Dm 644 "${srcdir}/usr/share/pixmaps/sky.png" "${pkgdir}/usr/share/pixmaps/sky.png"
-    mv "${srcdir}/opt" "${pkgdir}/"
-    find "${pkgdir}/" -type d -exec chmod 0755 {} \;
-    find "${pkgdir}/" -type f -exec chmod go-w {} \;
+    cd "${srcdir}"
+    ar x "sky_${pkgver}-${_skyrel}deb8+jessie_amd64.deb" >/dev/null
+    tar -Jxf data.tar.xz
 
-    mkdir -m 755 "${pkgdir}/usr/bin"
-    ln -sr "${pkgdir}/opt/sky_linux/sky.sh" "${pkgdir}/usr/bin/sky"
+    install -dm 0755 "${srcdir}${_sky_libdir}" "${pkgdir}${_sky_libdir}"
+    find "${srcdir}${_sky_libdir}" -maxdepth 1 \( -type f -o -type l \) -a \( ! -name 'libQt5*' \) -exec install -m 0755 {} "${pkgdir}${_sky_libdir}/" \;
+    ln -s "/usr/lib64/libcurl.so.3" "${pkgdir}${_sky_libdir}/libcurl.so.4"
+
+    install -dm 0755 "${srcdir}${_sky_bindir}" "${pkgdir}${_sky_libdir}"
+    find "${srcdir}${_sky_bindir}" -maxdepth 1 -type f -perm /0111 -exec install -m 0755 {} "${pkgdir}${_sky_bindir}/" \;
+    sed -i s/QT_PLUGIN_PATH=\"[^\"]*\"\\W*//g "${pkgdir}${_sky_bindir}/sky.sh"
+    install -dm 0755 "${pkgdir}/usr/bin"
+    ln -s "../..${_sky_bindir}/sky.sh" "${pkgdir}/usr/bin/sky"
+
+    for dd in ${_sky_datadir[@]} ; do
+        install -dm 0755 "${srcdir}${dd}" "${pkgdir}${dd}"
+        cp -arT "${srcdir}${dd}" "${pkgdir}${dd}"
+    done
+    
+    install -Dm 0644 ${srcdir}/usr/share/doc/sky/copyright ${pkgdir}/usr/share/licenses/sky/LICENSE
+    install -Dm 0644 ${srcdir}/usr/share/applications/sky.desktop ${pkgdir}/usr/share/applications/sky.desktop
+    install -Dm 0644 ${srcdir}/usr/share/pixmaps/sky/sky.png ${pkgdir}/usr/share/pixmaps/sky/sky.png
 }
 
 # vim: set ts=2 sw=2 ft=sh noet:
