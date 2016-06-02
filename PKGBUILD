@@ -1,6 +1,6 @@
 #Maintainer: Ovi Chis ovi@ovios.org
 pkgname=tgt
-pkgver=1.0.62
+pkgver=1.0.64
 pkgrel=1
 pkgdesc="iSCSI Target STGT for Arch Linux"
 arch=('x86_64' 'i686')
@@ -24,3 +24,4 @@ package() {
 # vim:set ts=2 sw=2 et:
 
 
+md5sums=('a1f003c867e39d0e8c00adafcab529db')
