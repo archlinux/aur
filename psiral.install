@@ -1,7 +1,7 @@
 
 post_install() {
   cd /opt/psiral
-  tar zxf psiral-bin.tar.gz
+  tar zxf psiral-bin.tar.gz --overwrite
   rm -f psiral-bin.tar.gz
 }
 

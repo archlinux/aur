@@ -1,7 +1,7 @@
 # Maintainer: Petar Petrov <petar.petrov.georgiev at gmail d0t com>
 pkgname=psiral
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Psiral is a turn based strategy board game with wizards."
 arch=('i686' 'x86_64')
 url="https://github.com/petarov/game-off-2013"
@@ -67,7 +67,6 @@ package() {
 	tar czf psiral-bin.tar.gz *
 	mkdir -p "$pkgdir"/opt/psiral
 	cp psiral-bin.tar.gz "$pkgdir"/opt/psiral
-	#tar zxvf psiral-bin.tar.gz -C "$pkgdir"/opt/psiral
 
 	cd "$srcdir/$dirname-$pkgver"
 	install -Dm755 psiral.in "$pkgdir"/usr/local/bin/psiral
