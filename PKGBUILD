@@ -14,8 +14,8 @@ backup=(etc/php/conf.d/00-ioncube_loader.ini)
 source_i686=(php7-linux-x86-$pkgver.tgz::https://www.ioncube.com/php7-linux-x86-beta4.tgz)
 source_x86_64=(php7-linux-x86-64-$pkgver.tgz::https://www.ioncube.com/php7-linux-x86-64-beta4.tgz)
 
-sha256sums_i686=('83421468fc9300debd9092e3c9b0f20eee8143d5dd0cfd4fc956ae1a977a7e47')
-sha256sums_x86_64=('d4806f817fd4b3455364feee4b35ea34eb53ebcc4f5f425500a1813f9e457f64')
+md5sums_i686=('28b2207833a96d47304f2ec0341ccf86')
+md5sums_x86_64=('d8f5106db833943e0b544f34cab72713')
 
 package() {
 	cd "$srcdir"/ioncube
