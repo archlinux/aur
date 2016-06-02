@@ -1,12 +1,12 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=sc-git
-pkgver=7.16_1.0.1.r51.gcf2144f
+pkgver=7.16_1.1.0.r78.cbe06b9
 pkgrel=1
 epoch=
 pkgdesc="A free curses-based spreadsheet program."
 arch=('i686' 'x86_64')
 url="https://github.com/n-t-roff/sc"
-license=('Public Domain')
+license=('unknown')
 groups=()
 depends=('ncurses')
 makedepends=('git')
@@ -25,7 +25,8 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  printf "%s.r%s.%s" "$(git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g')" \
+                     "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -38,6 +39,5 @@ package() {
   cd "$srcdir/$pkgname"
   mkdir -p $pkgdir/usr/share/{man/man1,licenses/${pkgname%-*}}
   make prefix="$pkgdir/usr" MANDIR="$pkgdir/usr/share/man/man1" install
-  echo "This program is in the public domain." > "$pkgdir"/usr/share/licenses/${pkgname%-*}/LICENSE
 }
 
