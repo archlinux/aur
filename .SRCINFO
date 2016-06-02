@@ -1,0 +1,16 @@
+pkgbase = python2-bxpython
+	pkgdesc = Tools for manipulating biological data, particularly multiple sequence alignments
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/bx-python
+	arch = any
+	license = GPL3
+	makedepends = python2-nose
+	depends = python2
+	depends = python2-numpy
+	source = https://pypi.python.org/packages/source/b/bx-python/bx-python-0.7.3.tar.gz
+	sha256sums = 518895e2dca313d7634c5cf48190b4020a463d6aa6adb42a261630bbd7e0e297
+
+pkgname = python2-bxpython
+	depends = 
+
