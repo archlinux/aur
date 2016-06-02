@@ -37,6 +37,6 @@ build() {
 }
 
 package() {
-	cd sqlninja-0.2.6-rc1
-        sudo cp -v sqlninja /usr/bin/sqlninja
+	sudo cp -rf sqlninja-0.2.6-rc1 /usr/share/sqlninja
+        sudo ln -sv /usr/share/sqlninja/sqlninja /usr/bin/sqlninja
 }
