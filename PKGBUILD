@@ -2,7 +2,7 @@
 
 pkgname=glide
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Simplified Go project management, dependency management, and vendoring."
 arch=('any')
@@ -56,11 +56,6 @@ build() {
 }
 
 package() {
-#    mkdir -p $srcdir/src/github.com/Masterminds/
-#    ln -s $srcdir/$pkgname $srcdir/src/github.com/Masterminds/glide
-#    cd $srcdir/src/github.com/Masterminds/glide
-#    make DESTDIR="$pkgdir/" install
-
-    install -Dm0755 "$srcdir/build/src/${_gourl}/$pkgname/$pkgname" "$pkgdir/usr/share/$pkgname/$pkgname"    
+    install -Dm0755 "$srcdir/build/src/${_gourl}/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"    
     install -Dm0644 "$srcdir/build/src/${_gourl}/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
