@@ -1,0 +1,26 @@
+commit 475b26048f9875c62a8a950bd287a7ae6af3d803
+Author: Simon Désaulniers <sim.desaulniers@gmail.com>
+Date:   Wed Jun 1 20:29:55 2016 -0400
+
+    cmake: pass $DESTDIR environnement var to setup.py
+
+diff --git a/python/CMakeLists.txt b/python/CMakeLists.txt
+index cd17547..6727fff 100644
+--- a/python/CMakeLists.txt
++++ b/python/CMakeLists.txt
+@@ -8,4 +8,4 @@ add_custom_target(python ALL
+     COMMAND python3 setup.py build
+     DEPENDS opendht opendht_cpp.pxd opendht.pyx)
+ 
+-install(CODE "execute_process(COMMAND python3 setup.py install WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})")
++install(CODE "execute_process(COMMAND python3 setup.py install --root=\$ENV{DESTDIR}/ WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})")
+diff --git a/python/setup.py.in b/python/setup.py.in
+index c4654d3..b2d94c2 100644
+--- a/python/setup.py.in
++++ b/python/setup.py.in
+@@ -1,4 +1,4 @@
+-# Copyright (C) 2015-2016 Savoir-faire Linux Inc. 
++# Copyright (C) 2015-2016 Savoir-faire Linux Inc.
+ # Author: Guillaume Roguez <guillaume.roguez@savoirfairelinux.com>
+ # Author: Adrien Béraud <adrien.beraud@savoirfairelinux.com>
+ #

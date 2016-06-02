@@ -1,16 +1,25 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=opendht
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="A C++11 implementation of the Kademlia DHT (Distributed Hash Table)"
 arch=('i686' 'x86_64')
 depends=('gnutls' 'nettle' 'readline')
-makedepends=('git' 'msgpack-c' 'cmake')
+makedepends=('git' 'msgpack-c' 'cmake' 'cython')
+optdepends=('python: to use the Python bindings')
 url="https://github.com/savoirfairelinux/opendht"
 license=('GPL3')
-source=("git://github.com/savoirfairelinux/opendht#tag=$pkgver")
-sha256sums=('SKIP')
+source=("git://github.com/savoirfairelinux/opendht#tag=$pkgver"
+        "python-packaging.patch")
+md5sums=('SKIP'
+         'a0c2472b27465571f6ec865bce172614')
+
+prepare() {
+  cd "${pkgname}"
+  # This patch can be removed with the next release
+  patch -p1 < ../python-packaging.patch
+}
 
 build() {
   cd "${pkgname}"
@@ -20,6 +29,7 @@ build() {
   cd build
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
+    -DOPENDHT_PYTHON=ON \
     -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
