@@ -8,5 +8,5 @@ post_upgrade() {
   getent passwd chronograf >/dev/null || useradd -c 'chronograf' -g chronograf -d '/var/lib/chronograf' -r -m -s /bin/false chronograf
 
   mkdir -p /var/lib/chronograf
-  chown chronograf.chronograf /var/lib/chronograf
+  chown chronograf:chronograf /var/lib/chronograf
 }
