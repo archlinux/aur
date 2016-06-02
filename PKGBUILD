@@ -6,8 +6,8 @@
 
 pkgbase=python-sphinx
 pkgname=('python-sphinx' 'python2-sphinx')
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.4.2
+pkgrel=1
 
 arch=('any')
 url='http://sphinx.pocoo.org/'
@@ -38,10 +38,9 @@ checkdepends=(
   'python2-mock'
 )
 
-source=("http://pypi.python.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz"{,.asc})
+source=("https://files.pythonhosted.org/packages/source/S/Sphinx/Sphinx-$pkgver.tar.gz")
 
-validpgpkeys=('E9BEABB07E7B9CC3F56E62C91425F8CE5EBA0E07')
-md5sums=('4c4988e0306a04cef8dccc384281e585' 'SKIP')
+md5sums=('6fbb224bda2fa5f16220e719764836b6')
 
 prepare() {
   # souce duplication is required because makefile modify source code
