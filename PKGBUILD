@@ -2,7 +2,7 @@
 pkgname=gmpc-git
 pkgver=11.8.16.r424.gab71845
 pkgrel=1
-pkgdesc='MPD client (Gtk2)'
+pkgdesc='A graphical MPD client written in Gtk3 including libnotify support'
 arch=('x86_64' 'i686')
 url='http://gmpclient.org/home'
 depends=('libunique' 'libmpd-git' 'libsoup' 'sqlite' 'hicolor-icon-theme' 'xdg-utils' 'libnotify' 'glyr')
