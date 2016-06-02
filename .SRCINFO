@@ -1,6 +1,6 @@
 pkgbase = arm-frc-linux-gnueabi-gdb
 	pkgdesc = The GNU Debugger (arm-frc-linux-gnueabi)
-	pkgver = 7.11
+	pkgver = 7.11.1
 	pkgrel = 1
 	url = http://www.gnu.org/software/gdb/
 	arch = i686
@@ -16,8 +16,8 @@ pkgbase = arm-frc-linux-gnueabi-gdb
 	optdepends = openocd: for debugging JTAG targets
 	optdepends = stlink: for debugging over STLINK
 	options = !emptydirs
-	source = ftp://ftp.gnu.org/gnu/gdb/gdb-7.11.tar.xz
-	sha256sums = 7a434116cb630d77bb40776e8f5d3937bed11dea56bafebb4d2bc5dd389fe5c1
+	source = ftp://ftp.gnu.org/gnu/gdb/gdb-7.11.1.tar.xz
+	sha256sums = e9216da4e3755e9f414c1aa0026b626251dfc57ffe572a266e98da4f6988fc70
 
 pkgname = arm-frc-linux-gnueabi-gdb
 
