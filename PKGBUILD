@@ -8,7 +8,7 @@
 
 pkgname=kdenlive-git
 pkgver=16.07.70.r7453.88ec932
-pkgrel=1
+pkgrel=2
 pkgdesc="A non-linear video editor for Linux using the MLT video framework. KF5 Frameworks (GIT Version)"
 arch=('i686' 'x86_64')
 url="http://www.kdenlive.org/"
@@ -41,11 +41,12 @@ prepare(){
   mkdir -p build
 }
 
+#To get debug info, change -DCMAKE_BUILD_TYPE=Release to either "Debug" or "RelWithDebInfo"
+
 build() {
   cd build
   cmake ../kdenlive \
     -DCMAKE_BUILD_TYPE=Release \
-#   -DCMAKE_BUILD_TYPE=Debug \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DLIB_INSTALL_DIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
