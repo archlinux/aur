@@ -1,3 +1,4 @@
+# Maintainer: Maxqia <public [at the] maxqia [dot] com>
 # Contributor: Johannes Dewender  arch at JonnyJD dot net
 # Contributor: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
 # Contributor: Stefan Hackl <stef.hackl [at the] gmail [dot] com>
