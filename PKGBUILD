@@ -2,7 +2,7 @@
 # Maintainer: Max Pray a.k.a. Synthead <synthead@gmail.com>
 
 pkgname='blink-darcs'
-pkgver=20160601
+pkgver=20160602
 pkgrel='1'
 pkgdesc='A state of the art, easy to use SIP client'
 arch=(
@@ -12,15 +12,9 @@ arch=(
 url='http://www.icanblink.com'
 license=('GPL')
 depends=(
-	'python2'
-	'python2-application'
 	'python2-cjson'
-	'python2-eventlib'
-	'python2-gnutls'
 	'python2-pyqt'
 	'python2-sipsimple'
-	'python-otr'
-	'twisted'
 	'libvncserver'
 	'cython2'
 	'python2-gmpy2'
