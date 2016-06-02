@@ -1,0 +1,15 @@
+[Unit]
+Description=Mattermost IRC bridge
+After=mattermost.service
+
+[Service]
+Type=simple
+User=mattermost
+Group=mattermost
+ExecStart=/usr/bin/matterbridge-plus -conf /etc/matterbridge.conf
+StandardOutput=syslog
+StandardError=syslog
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
