@@ -1,22 +1,22 @@
 # Maintainer: Bernard Baeyens (berbae) <berbae52 at sfr dot fr>
 pkgname=freetuxtv-svn
-pkgver=746
+pkgver=0.6.8.r0.g66dda27
 pkgrel=1
-pkgdesc="WebTV player to watch ADSL TV on the PC"
+pkgdesc="WebTV vlc player to watch tv/radio playlists on the internet"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/freetuxtv/"
+url="https://github.com/freetuxtv/freetuxtv"
 license=('GPL3')
-install=freetuxtv-svn.install
 depends=('vlc' 'gtk3' 'sqlite' 'curl' 'libnotify')
-makedepends=('subversion' 'intltool')
+makedepends=('git' 'intltool')
 conflicts=('freetuxtv')
 
-source=('freetuxtv::svn+http://freetuxtv.googlecode.com/svn/trunk/')
+source=('freetuxtv::git+https://github.com/freetuxtv/freetuxtv.git')
 md5sums=('SKIP')
 
 pkgver() {
   cd $srcdir/freetuxtv
-  echo $(LANG=C svn info -r HEAD|grep Revision|cut -d' ' -f2)
+  _version=$(git describe --long master)
+  echo ${_version#freetuxtv-}|sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
