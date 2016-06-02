@@ -18,10 +18,9 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
-  install -Dm644  "$srcdir/$pkgname-$pkgver/tgtd.service" "$pkgdir/usr/lib/systemd/system/tgtd.service"
+  install -Dm644  "$srcdir/$pkgname-$pkgver/scripts/tgtd.service" "$pkgdir/usr/lib/systemd/system/tgtd.service"
 }
 
 # vim:set ts=2 sw=2 et:
 
-md5sums=('87ecdca47df674c5849423eaba6d5789')
 
