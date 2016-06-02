@@ -17,14 +17,11 @@ post_install(){
 }
 
 pre_upgrade(){
-	systemctl stop gogs.service
-	
 	pre_install $1
 }
 
 post_upgrade() {
 	post_install $1
-	systemctl start gogs.service
 }
 
 pre_remove() {
