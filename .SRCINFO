@@ -1,0 +1,14 @@
+pkgbase = python2-otr-git
+	pkgdesc = Off-The-Record Messaging protocol implementation for Python
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/AGProjects/python-otr
+	arch = any
+	license = LGPL
+	makedepends = git
+	depends = python2
+	source = https://github.com/AGProjects/python-otr/archive/master.zip
+	md5sums = 0d9d7f148f5ed4d0cad8c94f44a4b172
+
+pkgname = python2-otr-git
+
