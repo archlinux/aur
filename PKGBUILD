@@ -3,7 +3,8 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=kmplayer
-pkgver=0.11.4
+pkgver=0.11.5.a
+_tag=0.11.5a
 pkgrel=1
 pkgdesc="Video player plugin for Konqueror and basic MPlayer/Xine/ffmpeg/ffserver/VDR frontend for KDE"
 arch=(i686 x86_64)
@@ -13,8 +14,8 @@ depends=(kdebase-runtime cairo)
 makedepends=(cmake automoc4 gtk2)
 optdepends=('gtk2: for the Netscape plugin player')
 #source=("http://kmplayer.kde.org/pkgs/$pkgname-$pkgver.tar.bz2")
-source=("http://quickgit.kde.org/?p=kmplayer.git&a=snapshot&h=73c171d9674a82b6ab5f19654070bfa816444367&fmt=tbz2")
-md5sums=('9b61af757b661ed602dfffa237fa8fa2')
+source=("http://quickgit.kde.org/?p=kmplayer.git&a=snapshot&tag=$_tag&fmt=tbz2")
+md5sums=('9cb8d6e82e82a1133db6505de7da3a5a')
 
 prepare() {
   mkdir -p build
