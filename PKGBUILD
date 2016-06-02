@@ -11,15 +11,15 @@
 pkgbase=amdapp-sdk
 pkgname=('amdapp-sdk' 'amdapp-sdk-opencv' 'amdapp-sdk-nocatalyst' 'amdapp-sdk-docs')
 pkgver=3.0
-pkgrel=20
+pkgrel=21
 arch=('i686' 'x86_64')
 url="http://developer.amd.com/tools-and-sdks/opencl-zone/amd-accelerated-parallel-processing-app-sdk/"
 license=("custom")
 options=('staticlibs' 'libtool' '!strip' '!upx')
 groups=('amdapp')
 makedepends=('perl' 'llvm'  'apache-ant' 'wget')
-_dirname='AMD-APP-SDKInstaller-v3.0.130.135-GA-linux'
-_scriptname='AMD-APP-SDK-v3.0.130.135-GA-linux'
+_dirname='AMD-APP-SDKInstaller-v3.0.130.136-GA-linux'
+_scriptname='AMD-APP-SDK-v3.0.130.136-GA-linux'
 
 #Architecture resolution
     if [ "$CARCH" = 'i686' ]; then
@@ -33,19 +33,21 @@ _scriptname='AMD-APP-SDK-v3.0.130.135-GA-linux'
 # 	     _tarbits=64
      fi
 
-[ "$CARCH" = 'i686' ] && _hash='8e1ad82b4cd2fcf58649daf4e43574d9d5c654cd2e07fcbb4bae7cc6d2f3daf6' \
-                        || _hash='27a6145a73910d2320fd017159cf72f16601c375c2b304644c31566f45cc26a6'
+[ "$CARCH" = 'i686' ] && _hash='181fb9815e735c90ca5713acc27a6f9ed7f85135d2f2a085bed7b4c7ed157b94' \
+                        || _hash='0aa436acd334b686820bd3caab9f09014608741b92e3996d3642d0b148ede0f7'
 
 #Sources
 source=(
 # 	"http://developer.amd.com/wordpress/media/files/AMD-APP-SDK-linux-v2.9-1.599.381-GA-${_tarbits}.tar.bz2"
 # 	"http://developer.amd.com/wordpress/media/files/${_dirname}${_bits}.tar.bz2"
 	'amd.icd'
+	'amd_i686.icd'
 	'amdapp-sdk.sh'
 	'amdapp-sdk.conf')
 
 #sha256sums
 sha256sums=(
+'0b7465f250f667a240ea4a46ae07e9f193f7ede4975c611fd77b06cb98478169'
 '77cb18c5a588e02c73c2406e1057461b6c030b97534154aa3163cbfb9b7e97b7'
 'dffe3d16ae07fafe6571c37f97f73e694891a7ea7888fc7f0a5d0e42b997e50f'
 'c871a5044dd19e710b9ff058faa4e40f9b825b27d3928d535bc452116dba3b95')
@@ -69,7 +71,7 @@ prepare() {
     warning ""
     warning "will sleep 5 sec to make sure you red it :P"
     sleep 5
-    warning "Download will take not much time and echo some random letters, prepare yourself"
+    warning "Download will take not much time and echo some random letters"
 
     if [ ! -e ${_tarball} ]; then
         fbase=$(echo -n $_tarball | base64)
@@ -185,7 +187,11 @@ conflicts=('catalyst-utils')
 
   #Register ICD
   install -m755 -d ${pkgdir}/etc/OpenCL/vendors
-  install -m755 ${srcdir}/amd.icd ${pkgdir}/etc/OpenCL/vendors
+  if [ "$CARCH" = 'i686' ]; then
+    install -m755 ${srcdir}/amd_i686.icd ${pkgdir}/etc/OpenCL/vendors/amd.icd
+  else
+    install -m755 ${srcdir}/amd.icd ${pkgdir}/etc/OpenCL/vendors
+  fi
   sed -i -e "s|PATH|${_ipath}|" ${pkgdir}/etc/OpenCL/vendors/amd.icd
   sed -i -e "s|BITS|${_bits}|" ${pkgdir}/etc/OpenCL/vendors/amd.icd
   # The OpenCL ICD specifications: http://www.khronos.org/registry/cl/extensions/khr/cl_khr_icd.txt
