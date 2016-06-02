@@ -1,7 +1,7 @@
 # Maintainer: Petar Petrov <petar.petrov.georgiev at gmail d0t com>
 pkgname=strider
 pkgver=1.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Strider is a 2D sci-fi platformer game."
 arch=('i686' 'x86_64')
 url="https://github.com/petarov/game-off-2015"

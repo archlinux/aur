@@ -1,7 +1,7 @@
 pkgbase = strider
 	pkgdesc = Strider is a 2D sci-fi platformer game.
 	pkgver = 1.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/petarov/game-off-2015
 	install = strider.install
 	arch = i686
