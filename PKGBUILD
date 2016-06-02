@@ -2,8 +2,8 @@
 # Maintainer: Maël Kerbiriou <mael.kerbiriou-at-free-dot-fr>
 
 pkgname=amarok-git
-pkgver=v2.8.90.16.ga5df287
-pkgrel=2
+pkgver=v2.8.90.17.g9308403
+pkgrel=1
 pkgdesc="The powerful music player for KDE - GIT version"
 arch=("i686" "x86_64")
 url="http://amarok.kde.org"
@@ -31,11 +31,11 @@ pkgver() {
     git describe --always | sed 's|-|.|g'
 }
 
-prepare(){
+#prepare(){
 #cd amarok
-pwd;
-patch -Np1 <../amarok-git.patch
-}
+#pwd;
+#patch -Np1 <../amarok-git.patch
+#}
 
 build() {
     rm -rf build
