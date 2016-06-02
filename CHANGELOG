@@ -1,3 +1,41 @@
+3.3.1
+-----
+
+New submodule :py:mod:`pyteomics.featurexml` with a parser for OpenMS **featureXML** files.
+
+3.3
+---
+   
+ - mzML and mzIdentML parsers can now create an index of element offsets.
+   This allows quick random access to elements by unique ID.
+   
+ - mzML parsers now come in two flavors: :py:class:`pyteomics.mzml.MzML` and
+   :py:class:`pyteomics.mzml.PreIndexedMzML`. The latter uses the byte offsets
+   listed at the end of the file.
+
+ - New parameters `convert_arrays` and `read_charges` in :py:func:`mgf.read`
+   allow using it without :py:mod:`numpy` and possibly improve performance.
+   The default behavior is retained.
+
+ - Performance optimizations in :py:func:`mgf.read` and :py:func:`parser.cleave`.
+
+ - New decoy generation mode called "fused decoy", described in the paper accepted to JASMS.
+
+API changes
+...........
+
+ - :py:func:`pyteomics.parser.cleave` no longer accepts the `labels` argument.
+   It is emphasized that the input sequences are expected to be in plain one-letter
+   notation, but no checks are performed.
+
+ - :py:func:`DataFrame` functions in :py:mod:`pepxml` and :py:mod:`tandem` now
+   extract more protein-related information. The list-like protein-related values
+   can be reported as lists or packed into strings, depending on the optional
+   paramter `sep`. Some column names have changed as a result.
+
+ - Call signatures of :py:func:`pyteomics.fasta.decoy_sequence` and the functions using it
+   are slightly changed. Standard modes are now also exposed as individual functions.
+
 3.2
 ---
 
