@@ -29,7 +29,7 @@ conflicts=('kdenlive')
 source=(git://anongit.kde.org/kdenlive) 
 sha1sums=('SKIP')
 install=$pkgname.install
-options=(debug !strip)
+#options=(debug !strip)
 
 pkgver() {
   cd kdenlive

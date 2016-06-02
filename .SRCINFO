@@ -28,8 +28,6 @@ pkgbase = kdenlive-git
 	optdepends = oxygen-icons: optional for xfce
 	provides = kdenlive
 	conflicts = kdenlive
-	options = debug
-	options = !strip
 	source = git://anongit.kde.org/kdenlive
 	sha1sums = SKIP
 
