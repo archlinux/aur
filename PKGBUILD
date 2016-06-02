@@ -4,6 +4,7 @@ pkgname=intellij-idea-ultimate-edition
 pkgver=2016.1.2b
 _buildver=145.972.3
 pkgrel=1
+epoch=2
 pkgdesc="An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity."
 arch=('any')
 url="https://www.jetbrains.com/idea/"
