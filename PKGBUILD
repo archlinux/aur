@@ -2,18 +2,19 @@
 
 pkgname=borgmatic
 _pkgname=atticmatic
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="A simple Python wrapper script for the borg (and attic) backup software."
 arch=('any')
 url="http://torsion.org/atticmatic/"
 license=('GPL3')
 depends=('borg')
+makedepends=('python2-setuptools')
 optdepends=('attic')
 source=("https://torsion.org/hg/$_pkgname/archive/$pkgver.tar.gz")
 provides=('atticmatic')
 conflicts=('atticmatic')
-sha256sums=('46e6f7e450a705fb13de628a1ce5d52548cf4da25b681bd2843f6a4345d82181')
+sha256sums=('db563b154638c426a8a055dca015d90c19ee08ce69c6a6a0783ddc038646e12e')
 
 
 package() {
