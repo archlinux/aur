@@ -1,7 +1,7 @@
 pkgbase = rmmagent
 	pkgdesc = Remote Monitoring Agent for GFI Languard Dashboard
-	pkgver = 1.0.2.1
-	pkgrel = 1
+	pkgver = 1.0.2
+	pkgrel = 2
 	url = http://languard.gfi.com/
 	install = .INSTALL
 	arch = i686
