@@ -1,6 +1,6 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=rts-git
-pkgver=0.1.r0.gb26e6cc
+pkgver=0.2.0.r0.g326a178
 _basename=rts
 pkgrel=1
 pkgdesc="Collection of scripts and systemd services to be used exclusively on linux-rt.\ Enables setting CPU scheduling policies and priorities (amongst others) (during boot) using tuna."
@@ -16,13 +16,9 @@ replaces=()
 backup=('etc/rts/rts')
 options=()
 install=
-source=('bare/rts::git://sleepmap.de/rts.git')
+source=("${_basename}::git://sleepmap.de/software/rts.git")
 noextract=()
 md5sums=('SKIP')
-
-build() {
-  cd "$srcdir"
-}
 
 pkgver() {
   cd "$srcdir/$_basename"

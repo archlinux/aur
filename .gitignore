@@ -1,0 +1,4 @@
+rts/
+src/
+pkg/
+*.tar.xz
