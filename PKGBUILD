@@ -1,23 +1,25 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-wallpapers-git
-pkgver=20160527
+pkgver=20160601
 pkgrel=1
-pkgdesc="Papirus Wallpapers Suite"
+pkgdesc="Papirus Wallpapers Suite (git version)"
+url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
 arch=('any')
-url="https://github.com/FadeMind/${pkgname%-git}"
-license=('GPL2')
+license=('GPL')
+depends=('plasma-desktop')
 makedepends=('git' 'make')
-optdepends=('papirus-git')
-source=("${pkgname%-git}::git+${url}.git")
+conflicts=('papirus-wallpapers')
+options=('!strip')
+source=("${pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
-    cd ${pkgname%-git}
+    cd ${pkgname}
     git log -1 --format="%cd" --date=short | tr -d '-'
 }
 
 package() {
-    cd ${pkgname%-git}
+    cd ${pkgname}
     make install DESTDIR="$pkgdir"
-} 
+}
