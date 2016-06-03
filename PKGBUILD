@@ -8,10 +8,11 @@ arch=('any')
 url="http://pentestmonkey.net/tools/audit/unix-privesc-check"
 license=('GPLv2')
 provides=('unix-privesc-check')
+install=.install
 source=("http://pentestmonkey.net/tools/unix-privesc-check/unix-privesc-check-1.4.tar.gz")
 md5sums=(SKIP)
 
 package() {
 	cd "$pkgname-$pkgver"
-	sudo mv -v unix-privesc-check /usr/bin 
+	sudo mv -v $pkgname /usr/bin/$pkgname 
 }
