@@ -1,6 +1,6 @@
 pkgbase = peerio-client
 	pkgdesc = Peerio Client
-	pkgver = 1.4.1
+	pkgver = 1.4.2
 	pkgrel = 1
 	url = https://peerio.com
 	arch = i686
@@ -10,10 +10,7 @@ pkgbase = peerio-client
 	makedepends = fakeroot
 	makedepends = git
 	makedepends = make
-	makedepends = npm
 	makedepends = patch
-	makedepends = python-pip
-	makedepends = sudo
 	depends = alsa-lib
 	depends = glibc
 	depends = cairo
@@ -36,8 +33,8 @@ pkgbase = peerio-client
 	depends = nss
 	depends = pango
 	options = !strip
-	source = http://linux.peerio.com/sources/peerio-client-1.4.1.tar.gz
-	md5sums = 3205534eabb7139302352a3584d303f0
+	source = http://linux.peerio.com/sources/peerio-client-1.4.2.tar.gz
+	md5sums = 0312b22442a456c1e13ce7e4e37ab482
 
 pkgname = peerio-client
 
