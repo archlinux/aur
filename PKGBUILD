@@ -3,7 +3,7 @@
 # Contributor: Bruno Vieira <mail@bmpvieira.com>
 pkgname=ugene
 pkgver=1.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A free cross-platform genome analysis suite."
 arch=('i686' 'x86_64')
 url="http://ugene.net/"
@@ -18,16 +18,17 @@ install=$pkgname.install
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
   patch -p1 -i "$srcdir"/hmmer3.patch
+    
 }
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   if [[ $CARCH == "i686" ]]
   then
-    qmake-qt5 PREFIX=/usr -r
+    qmake-qt5 QMAKE_CFLAGS_ISYSTEM= PREFIX=/usr -r
   elif [[ $CARCH == "x86_64" ]]
   then
-    qmake-qt5 CONFIG+=x64 PREFIX=/usr -r
+    qmake-qt5 CONFIG+=x64 QMAKE_CFLAGS_ISYSTEM= PREFIX=/usr -r
   fi
   make
 }
