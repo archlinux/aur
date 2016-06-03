@@ -1,0 +1,10 @@
+[Unit]
+Description=Mailhog - Web and API based SMTP testing
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/local/bin/mailhog
+ExecReload=/bin/kill -USR2 $MAINPID
+
+[Install]
+WantedBy=multi-user.target

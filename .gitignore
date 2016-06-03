@@ -1,0 +1,5 @@
+/pkg
+/src
+/mailhog-bin*
+/MailHog_linux_amd64
+
