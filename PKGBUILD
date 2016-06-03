@@ -21,7 +21,7 @@ changelog=
 url="http://tiptop.gforge.inria.fr/releases/"
 source=($url$pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('f1fba1e90465b0e5a3865b19133fa19d') #generate with 'makepkg -g'
+md5sums=('f1fba1e90465b0e5a3865b19133fa19d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
