@@ -14,7 +14,7 @@ source=("http://download.videolan.org/libdvbpsi/${pkgver}/libdvbpsi-${pkgver}.ta
 md5sums=('SKIP')
 
 build() {
-  export CFLAGS="$CFLAGS -Wno-error=bool-compare"
+  export CFLAGS="$CFLAGS -Wno-error=bool-compare -Wno-error=misleading-indentation"
   cd "${srcdir}/libdvbpsi-${pkgver}"
 
   ./configure --prefix=/usr
