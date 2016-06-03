@@ -9,15 +9,15 @@ url="http://beefproject.com/"
 license=('GPL')
 conflicts=('beef-xss-git')
 provides=('beef-xss-git')
-source=("https://github.com/beefproject/beef/archive/master.zip")
-md5sums=(SKIP)
 package() {
-           mv -v ../../src/beef-master/* $pkgdir/          
-           install -dm777 /usr/share/beef-xss
-           cd $pkgdir/usr/share/beef-xss
+           git clone https://github.com/beefproject/beef.git
+           cd beef
            gem install bundler
            ~/.gem/ruby/2.3.0/bin/bundle install
-           cd $pkgdir
+           mkdir $pkgdir/usr
+           mkdir $pkgdir/usr/share
+           mkdir $pkgdir/usr/share/beef-xss
+           cp -rf * $pkgdir/usr/share/beef-xss/
            mkdir $pkgdir/usr/bin
            echo -e "\e[1;34mCreating executables required to run beef-xss...\e[0m"
            cd $pkgdir
