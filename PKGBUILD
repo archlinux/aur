@@ -2,14 +2,15 @@
 
 pkgname=deal-ii
 _realname=dealii
-pkgver=8.4.0
+pkgver=8.4.1
 pkgrel=1
 pkgdesc="An Open Source Finite Element Differential Equations Analysis Library"
 arch=("i686" "x86_64")
 url="http://www.dealii.org/"
 license=('LGPL')
-depends=('boost')
+depends=('')
 optdepends=(
+      'boost': peer-reviewed portable C++ source libraries
       'lapack: Linear Algebra PACKage' 
       'openmpi: High performance message passing library (MPI)'
       'petsc: Portable, extensible toolkit for scientific computation'
@@ -23,7 +24,7 @@ makedepends=('cmake')
 install=deal-ii.install
 source=(https://github.com/dealii/dealii/releases/download/v$pkgver/${_realname}-$pkgver.tar.gz)
 # source=(https://dealii.googlecode.com/files/${_realname}-$pkgver.tar.gz)
-sha1sums=('559ef06969da4a35600adee38195f1b8be929721')
+sha1sums=('94c489a5ede6b93497951790fe504fbbe1970819')
 
 build() {
   # cd "${srcdir}/${_realname}-$pkgver"
