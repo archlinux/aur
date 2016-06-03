@@ -1,14 +1,14 @@
 pkgbase = python-nptdms
 	pkgdesc = Cross-platform, NumPy based module for reading TDMS files produced by LabView.
-	pkgver = 0.7.2
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/npTDMS
 	arch = any
 	license = LGPL
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = https://pypi.python.org/packages/source/n/npTDMS/npTDMS-0.7.2.tar.gz
-	md5sums = c46398cabc2d8c4f045e2c274d042427
+	source = https://pypi.python.org/packages/9a/7f/f938fe134adc27681386e16e6be73ae93a0d65b9bdf2c6351361d7b153bc/npTDMS-0.8.0.tar.gz
+	md5sums = 9611226890a6e1abdacf2aabd136c65a
 
 pkgname = python-nptdms
 	depends = python-numpy
