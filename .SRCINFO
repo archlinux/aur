@@ -1,7 +1,7 @@
 pkgbase = asdcplib2
 	pkgdesc = open source implementation of SMPTE and the MXF Interop “Sound & Picture Track File” format with IMF support
 	pkgver = 2.5.14
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.cinecert.com/asdcplib/
 	arch = i686
 	arch = x86_64
