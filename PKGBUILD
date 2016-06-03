@@ -2,7 +2,7 @@
 
 pkgname=tftpgui
 pkgver=3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A TFTP server intended to run as a user initiated program, rather than a service daemon."
 arch=('any')
 url="https://code.google.com/p/tftpgui/"
