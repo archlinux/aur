@@ -2,7 +2,7 @@
 
 pkgname=salome-gui
 pkgver=7.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - GUI Module"
 url="http://www.salome-platform.org"
 depends=('salome-kernel>=7.6.0' 'salome-kernel<7.7.0' 'qt4' 'python2-pyqt4' 'opencascade>=6.9.0' 'qwt' 'paraview-salome=4.2.0' 'sip')
@@ -11,10 +11,12 @@ arch=('i686' 'x86_64')
 conflicts=()
 provides=()
 license=('LGPL')
-source=("${pkgname}.profile" "salome.desktop" "salome")
+source=("${pkgname}.profile" "salome.desktop")
 
 _source=gui
-_installdir=/opt/salome/gui
+_basedir=/opt/salome
+_installdir=${_basedir}
+_profiledir=${_basedir}/env.d
 _paraviewrootdir=/usr
 _paraviewver=4.2
 
@@ -59,12 +61,16 @@ prepare(){
 }
 
 build() {
-  source /etc/salome/profile.d/salome-kernel.sh
+  source "${_profiledir}/salome-kernel.sh"
 
   cd "$srcdir/$_source"
 
+  #   -DCMAKE_BUILD_TYPE=Debug \
+
   cmake . \
      -DCMAKE_INSTALL_PREFIX=${_installdir} \
+     -DCMAKE_CXX_STANDARD=98 \
+     -DHDF5_ROOT_DIR=/opt/hdf5-1.8 \
      -DPYTHON_EXECUTABLE=/usr/bin/python2 \
      -DOPENGL_ROOT_DIR=/usr \
      -DQWT_ROOT_DIR=/usr \
@@ -84,8 +90,15 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
+  for _FILE in `find -L ${pkgdir}${_installdir} -iname *.py`
+  do
+    sed -i -e "s|${srcdir}||" ${_FILE}
+    sed -i -e "s|${pkgdir}||" ${_FILE}
+  done
+
   # install profile
-  install -D -m755 "${srcdir}/${pkgname}.profile" "${pkgdir}/etc/salome/profile.d/${pkgname}.sh"
+  install -D -m755 "${srcdir}/${pkgname}.profile" \
+                   "${pkgdir}${_profiledir}/${pkgname}.sh"
 
   # install menu entry
   install -D -m 644 "${srcdir}/${_source}/src/LightApp/resources/icon_applogo.png" "${pkgdir}/usr/share/pixmaps/salome.png"
@@ -96,11 +109,11 @@ package() {
     optipng -quiet -force -fix ${pkgdir}${_installdir}${_FILE}
   done
 
-  install -D -m755 "${srcdir}/salome" \
-                   "${pkgdir}/usr/bin/salome"
-
   sed -e "s|GEOM,SMESH,HEXABLOCK,MED,YACS,PARAVIS|GEOM,SMESH,HEXABLOCK,MED,YACS,PARAVIS,EFICAS,ASTER|" -i ${pkgdir}${_installdir}/share/salome/resources/gui/SalomeApp.xml
+
+  rm -f "${pkgdir}${_installdir}/bin/salome/VERSION"
+  ln -s ${_installdir}/share/salome/resources/gui/SalomeApp.xml ${pkgdir}${_installdir}
+  ln -s ${_installdir}/share/salome/resources/gui/LightApp.xml ${pkgdir}${_installdir}
 }
-md5sums=('26d2dead4610fe2653f9f9cdf72d33d0'
-         'a102063b779e332914ef0b73843e928a'
-         'c47b2bb9e51120089bd3169c2298abf3')
+md5sums=('0e0fe54828a8a191a8424355ac138946'
+         'a102063b779e332914ef0b73843e928a')
