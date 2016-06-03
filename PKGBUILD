@@ -1,7 +1,7 @@
 # Maintainer: Oliver (thechauffeur) Weidner <Oliver.Weidner@gmail.com>
 
 pkgname=tinc-ponyhof-git
-pkgver=release.1.1pre11.r557.ga429889
+pkgver=release.1.1pre11.r583.g9a550ff
 pkgrel=1
 pkgdesc="VPN (Virtual Private Network) daemon (tinc ponyhof development version)"
 arch=('i686' 'x86_64')
@@ -12,6 +12,7 @@ makedepends=('git')
 optdepends=('wxpython: gui support')
 provides=('tinc')
 conflicts=('tinc' 'tinc-pre')
+install="${pkgname}.install"
 source=('git+https://github.com/thorkill/tinc.git#branch=thkr-1.1-ponyhof')
 md5sums=('SKIP')
 

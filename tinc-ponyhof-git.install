@@ -1,0 +1,12 @@
+pkgname=tinc-ponyhof-git
+
+post_upgrade() {
+    echo
+    echo "                           =====================                           "
+    echo "                               Announcements                               "
+    echo "                           =====================                           "
+    echo
+    echo " * Since $pkgname is using the upstream systemd.service file, the          "
+    echo "   systemd service is renamed from tincd@.service to tinc@.service!        "
+    echo
+}
