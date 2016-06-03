@@ -13,7 +13,7 @@ source=("http://downloads.sourceforge.net/project/sqlninja/sqlninja/0.2.6-rc1/sq
 md5sums=('ee0ceea3141a95967ce73417969decd8')
 
 package() {
-        install -dm755 "$pkgdir/usr/share/sqlninja"
+        install -dm777 "$pkgdir/usr/share/sqlninja"
         sudo cp -r sqlninja-0.2.6-rc1/* "$pkgdir/usr/share/sqlninja"
         echo Creating executable for sqlninja...
         mkdir $pkgdir/usr/bin/
