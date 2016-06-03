@@ -12,8 +12,8 @@ provides=('beef-xss-git')
 source=("https://github.com/beefproject/beef/archive/master.zip")
 md5sums=(SKIP)
 package() {
-           mkdir $pkgdir/usr/share/
-           mv -v beef-master "$pkgdir/usr/share/beef-xss"          
+           mv -v ../../src/beef-master/* $pkgdir/          
+           install -dm777 /usr/share/beef-xss
            cd $pkgdir/usr/share/beef-xss
            gem install bundler
            ~/.gem/ruby/2.3.0/bin/bundle install
