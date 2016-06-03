@@ -15,7 +15,6 @@ license=('unknown')
 depends=('fontconfig' 'libgl' 'libltdl' 'libxslt' 'hicolor-icon-theme'
          'libxcomposite' 'libxcursor' 'libxkbcommon' 'libxrandr' 'libxslt' 'libxss'
          'libpulse' 'xcb-util-keysyms' 'nss')
-install='hipchat.install'
 source=("https://atlassian.artifactoryonline.com/atlassian/hipchat-apt-client/pool/HipChat4-${pkgver}-Linux.deb")
 sha1sums=('394461ada21bf581f31f663898d011d4ec943709')
 
