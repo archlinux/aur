@@ -17,7 +17,7 @@
 #   https://github.com/GreenRaccoon23/archdroid-icon-theme/raw/master/bak
 
 pkgname=archdroid-icon-theme
-pkgver=r103.f1bf500
+pkgver=r105.d08b8b8
 pkgrel=1
 pkgdesc="Port of Android 5.0 Lollipop's material design icons to Arch."
 arch=('any')
