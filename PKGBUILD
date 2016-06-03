@@ -14,10 +14,9 @@ options=('!makeflags')
 source=("libsearpc-v${pkgver}.tar.gz::https://github.com/haiwen/libsearpc/archive/v${pkgver}.tar.gz"
         "libsearpc.pc.patch")
 
-
 prepare () {
     cd "$srcdir/$pkgname-$pkgver"
-    patch -p1 -i $srcdir/libsearpc.pc.patch 
+    patch -p1 -i "$srcdir"/libsearpc.pc.patch
 }
 
 build () {
