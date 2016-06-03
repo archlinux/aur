@@ -18,6 +18,6 @@ package() {
            install -dm777 "$pkgdir/usr/share/beef-xss"
            mkdir $pkgdir/usr/bin
            echo -e "\e[1;34mCreating executables required to run beef-xss...\e[0m"
-           sudo mv -v beef-xss $pkgdir/usr/bin/beef-xss
+           sudo mv -v ../beef-xss $pkgdir/usr/bin/beef-xss
            echo -e "\e[1;34mLaunch "beef-xss" for beef and "beef-xss-update" to update beef\e[0m"
 }
