@@ -19,6 +19,6 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
+  cd "${srcdir}/${_gitname}"
   python setup.py install --root=${pkgdir} --optimize=1
 }
