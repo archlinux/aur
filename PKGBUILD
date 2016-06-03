@@ -15,7 +15,8 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "${_gitname}"
-	git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	commit=$(git rev-parse HEAD)
+	echo "${_pkgver}${_commit}"
 }
 
 build() {
