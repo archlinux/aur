@@ -17,7 +17,8 @@ build() {
 
 
 package() {
+        mkdir $pkgdir/usr
+        mkdir $pkgdir/usr/bin
 	cd unix
-        mkdir $pkgdir/usr && $pkgdir/usr/bin
 	cp -v cryptcat $pkgdir/usr/bin/cryptcat
 }
