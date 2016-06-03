@@ -25,5 +25,7 @@ package () {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     make DESTDIR="${pkgdir}" install
     rm -fv ${pkgdir}/usr/include/onigposix.h
+
+    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
 sha256sums=('fc8572823ae7ed77cd0db8fd0e25983ebc770b271d36905fb1379db371aab28a')
