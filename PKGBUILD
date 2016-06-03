@@ -13,6 +13,7 @@ source=("https://github.com/beefproject/beef/archive/master.zip")
 md5sums=(SKIP)
 package() {
            install -dm777 "$pkgdir/usr/share/beef-xss"          
+           cd $pkgdir/usr/share/beef-xss
            gem install bundler
            ~/.gem/ruby/2.3.0/bin/bundle install
            cd $pkgdir
