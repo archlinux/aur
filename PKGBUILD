@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-look-and-feel-git
-pkgver=20160601
+pkgver=20160603
 pkgrel=1
 pkgdesc="Look-and-feel package for modified and adaptive Papirus theme for KDE (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
