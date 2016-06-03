@@ -1,16 +1,16 @@
 # Maintainer: Ruikai Liu <lrk700@gmail.com>
 pkgname=python2-pymupdf
 _pkgname=PyMuPDF
-pkgver=1.8
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Python bindings for MuPDF"
 arch=('any')
-url="https://pypi.python.org/pypi/PyMuPDF/1.8.0"
+url="https://github.com/rk700/PyMuPDF"
 license=('GPL3')
-depends=('python2' 'mupdf')
+depends=('python2' 'libmupdf')
 makedepends=('swig')
-source=("https://github.com/rk700/PyMuPDF/archive/v1.8.zip")
-md5sums=("8d096d6deb17c0552345d0d7f4da5d62")
+source=("https://github.com/rk700/PyMuPDF/archive/v1.9.1.zip")
+md5sums=("27b8e869b9ca995ca505ebeba5b4557b")
 
 package() {
     cd "$srcdir/$_pkgname-$pkgver"
