@@ -8,18 +8,13 @@ arch=(x86_64)
 url="https://subgraph.com/vega/"
 license=('Eclipse Public License 1.0')
 provides=('vega')
-depends=('jd8-openjdk' 'webkitgtk2')
+depends=('jdk8-openjdk' 'webkitgtk2')
 conflicts=('vega')
 source=("https://dist.subgraph.com/downloads/VegaBuild-linux.gtk.x86_64.zip")
-
-build() {
-	echo Installing required unzip
-        sudo pacman -S unzip
-        sudo unzip VegaBuild-linux.gtk.x86_64.zip
-        sudo mv vega /usr/share
-}
-
-package() {
-	sudo ln -sv /usr/share/vega/Vega /usr/bin/vega
+package() {   
+        mkdir $pkgdir/usr && mkdir $pkgdir/usr/share
+        cp -rf vega $pkgdir/usr/share
+        mkdir $pkgdir/usr/bin
+	ln -sv $pkgdir/usr/share/vega/Vega $pkgdir/usr/bin/vega
 }
 
