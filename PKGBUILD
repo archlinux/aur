@@ -2,7 +2,7 @@
 
 pkgname=salome-hexablock
 pkgver=7.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - HEXABLOCK Module"
 url="http://www.salome-platform.org"
 depends=('salome-geom>=7.6.0' 'salome-geom<7.7.0')
@@ -12,7 +12,9 @@ license=('LGPL')
 source=(${pkgname}.profile)
 
 _source=hexablock
-_installdir=/opt/salome/hexablock
+_basedir=/opt/salome
+_installdir=${_basedir}
+_profiledir=${_basedir}/env.d
 
 prepare() {
   msg "Connecting to git server..."
@@ -35,9 +37,9 @@ prepare() {
 }
 
 build() {
-  source /etc/salome/profile.d/salome-kernel.sh
-  source /etc/salome/profile.d/salome-gui.sh
-  source /etc/salome/profile.d/salome-geom.sh
+  source "${_profiledir}/salome-kernel.sh"
+  source "${_profiledir}/salome-gui.sh"
+  source "${_profiledir}/salome-geom.sh"
 
   rm -rf "$srcdir/$_source/build"
   mkdir -p "$srcdir/$_source/build"
@@ -45,6 +47,7 @@ build() {
 
   cmake .. \
      -DCMAKE_INSTALL_PREFIX=$_installdir \
+     -DCMAKE_CXX_STANDARD=98 \
      -DPYTHON_EXECUTABLE=/usr/bin/python2 \
      -DSWIG_EXECUTABLE=/usr/bin/swig-2 \
      -DLIBXML2_ROOT_DIR=/usr \
@@ -60,8 +63,17 @@ package() {
   cd "$srcdir/$_source/build"
 
   make DESTDIR="$pkgdir/" install
+  
+  for _FILE in `find -L ${pkgdir}${_installdir} -iname *.py`
+  do
+    sed -i -e "s|${srcdir}||" ${_FILE}
+    sed -i -e "s|${pkgdir}||" ${_FILE}
+  done
+  
+  rm -f "${pkgdir}${_installdir}/bin/salome/VERSION"
 
   install -D -m755 "$srcdir/$pkgname.profile" \
-                   "$pkgdir/etc/salome/profile.d/$pkgname.sh"
+                  "${pkgdir}${_profiledir}/${pkgname}.sh"
+		   
 }
-md5sums=('decac3c084d3d9eba96ea046276bad6e')
+md5sums=('566edb75962f9d51c991648e48c198fa')
