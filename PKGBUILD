@@ -18,5 +18,6 @@ build() {
 
 package() {
 	cd unix
-	sudo cp -v cryptcat /usr/bin/cryptcat
+        mkdir $pkgdir/usr && $pkgdir/usr/bin
+	cp -v cryptcat $pkgdir/usr/bin/cryptcat
 }
