@@ -17,7 +17,7 @@ source=("${pkgname}-v${pkgver}-server.tar.gz::https://github.com/haiwen/${pkgnam
 
 prepare () {
     cd "$srcdir/$pkgname-$pkgver-server"
-    patch -p1 -i $srcdir/libccnet.pc.patch
+    patch -p1 -i "$srcdir"/libccnet.pc.patch
 }
 
 build () {
