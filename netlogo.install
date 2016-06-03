@@ -1,4 +1,4 @@
-post_install(){
-	printf "This version of NetLogo comes with a bundled copy of the Java Runtime Environment. \
-			You should be able to run the program without any runtime errors. \n"
+post_install() {
+	printf "This version of NetLogo comes with a bundled copy of the Java Runtime Environment. \n
+	You should be able to run the program without any runtime errors. \n"
 }

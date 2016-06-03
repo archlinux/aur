@@ -3,7 +3,7 @@
 
 pkgname=netlogo
 pkgver=5.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-agent programmable modeling environment."
 arch=('i686' 'x86_64')
 [ "$CARCH" = "i686"   ] && _NARCH=32
@@ -21,7 +21,7 @@ package() {
   cd $srcdir/$pkgname-$pkgver-$_NARCH
   cp -r * $pkgdir/opt/$pkgname
   for file in {NetLogo,NetLogo3D,NetLogoLogging,HubNetClient}; do
-  	chmod +x $file
+	chmod +x $pkgdir/opt/$pkgname/$file
   	ln -s /opt/$pkgname/$file $pkgdir/usr/bin/
   done
 }
