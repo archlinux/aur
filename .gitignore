@@ -1,2 +1,4 @@
+src/
+pkg/
 uenv/
 *.tar.xz
