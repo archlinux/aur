@@ -18,6 +18,6 @@ package() {
         echo Creating executable for sqlninja...
         mkdir $pkgdir/usr/bin/
         mv -v ../sqlninja.sh $pkgdir/usr/share/sqlninja.sh
-        sudo ln -sv /usr/bin/sqlninja /usr/share/sqlninja/sqlninja.sh
+        ln -sv $pkgdir/usr/bin/sqlninja $pkgdir/usr/share/sqlninja/sqlninja.sh
 }
 
