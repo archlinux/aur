@@ -1,15 +1,32 @@
-export SMESH_ROOT_DIR=/opt/salome/smesh
+# module var
+export SMESH_ROOT_DIR=/opt/salome
 
-_paraview_pythonpath="/usr/lib/paraview-4.2/site-packages/:/usr/lib/paraview-4.2/site-packages/vtk"
+# local vars
+_pythonver=2.7
+_paraviewver=4.2
+_smesh_path=$SMESH_ROOT_DIR/bin/salome
+_smesh_librarypath=$SMESH_ROOT_DIR/lib/salome
+_smesh_pythonpath=$SMESH_ROOT_DIR/lib/python${_pythonver}/site-packages/salome
+_paraview_pythonpath="/usr/lib/paraview-${_paraviewver}/site-packages/:/usr/lib/paraview-${_paraviewver}/site-packages/vtk"
+_paraview_librarypath="/usr/lib/paraview-${_paraviewver}"
+
+# PYTHONPATH
+if [[ $PYTHONPATH != *${_smesh_pythonpath}* ]]; then
+  export PYTHONPATH=${_smesh_pythonpath}:$PYTHONPATH
+fi
 if [[ $PYTHONPATH != *${_paraview_pythonpath}* ]]; then
   export PYTHONPATH=${_paraview_pythonpath}:$PYTHONPATH
 fi
-export PYTHONPATH=$PYTHONPATH:$SMESH_ROOT_DIR/lib/python2.7/site-packages
 
-_paraview_librarypath="/usr/lib/paraview-4.2"
+# LD_LIBRARY_PATH
+if [[ $LD_LIBRARY_PATH != *${_smesh_librarypath}* ]]; then
+  export LD_LIBRARY_PATH=${_smesh_librarypath}:$LD_LIBRARY_PATH
+fi
 if [[ $LD_LIBRARY_PATH != *${_paraview_librarypath}* ]]; then
   export LD_LIBRARY_PATH=${_paraview_librarypath}:$LD_LIBRARY_PATH
 fi
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$SMESH_ROOT_DIR/lib/salome
 
-export PATH=$SMESH_ROOT_DIR/bin/salome:$PATH
+# PATH
+if [[ $PATH != *${_smesh_path}* ]]; then
+  export PATH=${_smesh_path}:$PATH
+fi

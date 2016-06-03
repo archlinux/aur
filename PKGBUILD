@@ -2,7 +2,7 @@
 
 pkgname=salome-smesh
 pkgver=7.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - SMESH Module"
 url="http://www.salome-platform.org"
 depends=('salome-geom>=7.6.0' 'salome-geom<7.7.0' 'salome-med>=7.6.0' 'salome-med<7.7.0')
@@ -14,7 +14,7 @@ license=('LGPL')
 source=("salome-smesh.profile")
 
 _source=smesh
-_installdir=/opt/salome/smesh
+_installdir=/opt/salome
 _paraviewrootdir=/usr
 _paraviewver=4.2
 
@@ -39,10 +39,10 @@ prepare() {
 }
 
 build() {
-  source /etc/salome/profile.d/salome-kernel.sh
-  source /etc/salome/profile.d/salome-gui.sh
-  source /etc/salome/profile.d/salome-geom.sh
-  source /etc/salome/profile.d/salome-med.sh
+  source /opt/salome/env.d/salome-kernel.sh
+  source /opt/salome/env.d/salome-gui.sh
+  source /opt/salome/env.d/salome-geom.sh
+  source /opt/salome/env.d/salome-med.sh
 
   rm -rf "${srcdir}/${_source}/build"
   mkdir -p "${srcdir}/${_source}/build"
@@ -50,6 +50,8 @@ build() {
 
   cmake .. \
      -DCMAKE_INSTALL_PREFIX=$_installdir \
+     -DCMAKE_CXX_STANDARD=98 \
+     -DHDF5_ROOT_DIR=/opt/hdf5-1.8 \
      -DPYTHON_EXECUTABLE=/usr/bin/python2 \
      -DVTK_DIR="${_paraviewrootdir}/lib/cmake/paraview-${_paraviewver}" \
      -DSPHINX_EXECUTABLE=/usr/bin/sphinx-build2 \
@@ -64,13 +66,21 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 
+  for _FILE in `find -L ${pkgdir}${_installdir} -iname *.py`
+  do
+    sed -i -e "s|${srcdir}||" ${_FILE}
+    sed -i -e "s|${pkgdir}||" ${_FILE}
+  done
+
   for _FILE in share/doc/salome/gui/SMESH/a-deflection1d.png share/doc/salome/gui/SMESH/automaticlength.png share/doc/salome/gui/SMESH/a-maxelarea.png share/doc/salome/gui/SMESH/failed_computation.png share/doc/salome/gui/SMESH/mesh_for_extr_along_path.png share/doc/salome/gui/SMESH/straight_before.png share/doc/salome/gui/SMESH/straight_after.png share/doc/salome/gui/SMESH/curvi_simple_before.png share/doc/salome/gui/SMESH/curvi_simple_after.png share/doc/salome/gui/SMESH/curvi_angles_after.png share/doc/salome/gui/SMESH/circle_simple_before.png share/doc/salome/gui/SMESH/circle_simple_after.png share/doc/salome/gui/SMESH/circle_angles_after.png share/doc/salome/gui/SMESH/length-crit.png share/doc/salome/gui/SMESH/a-maxelvolume.png share/doc/salome/gui/SMESH/meshtrianglemergeelem1.png share/doc/salome/gui/SMESH/mesh_cylinder_hexa.png
   do
     optipng -quiet -force -fix ${pkgdir}${_installdir}/${_FILE}
   done
 
   install -D -m755 "${srcdir}/${pkgname}.profile" \
-                   "${pkgdir}/etc/salome/profile.d/${pkgname}.sh"
-}
+                   "${pkgdir}${_installdir}/env.d/${pkgname}.sh"
 
-md5sums=('90ba130aca1a935a64f953fdadd23bc5')
+  rm -f "${pkgdir}${_installdir}/bin/salome/VERSION"
+  rm -f "${pkgdir}${_installdir}/bin/salome/test/CTestTestfile.cmake"
+}
+md5sums=('d339c1021bc8797c7877581b75e5ef23')
