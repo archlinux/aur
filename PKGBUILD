@@ -15,7 +15,7 @@ package() {
            cd beef          
            gem install bundler
            ~/.gem/ruby/2.3.0/bin/bundle install
-           cd ../../
+           cd $pkgdir
            install -dm777 "$pkgdir/usr/share/beef-xss"
            mkdir $pkgdir/usr/bin
            echo -e "\e[1;34mCreating executables required to run beef-xss...\e[0m"
