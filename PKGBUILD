@@ -2,14 +2,15 @@
 
 pkgname='cpy'
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A replacement for [c]at with automatic syntax highlighting"
 arch=('any')
 url="https://github.com/rumpelsepp/c.py"
 license=('MIT')
 depends=('python' 'python-pygments')
+# TODO: Replace with asciidoctor in the next release!
 makedepends=('git' 'asciidoc')
-source=("$pkgname::git+https://github.com/rumpelsepp/c.py.git#commit=e059149f49cdd48b05f865e949d4021d229addb8")
+source=("$pkgname::git+https://github.com/rumpelsepp/c.py.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
