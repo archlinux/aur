@@ -23,7 +23,7 @@ build () {
     cd "$srcdir/$pkgname-$pkgver"
     ./autogen.sh
     ./configure --prefix=/usr PYTHON=/usr/bin/python2
-    make -j1
+    make
 }
 
 check () {
