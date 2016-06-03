@@ -1,6 +1,6 @@
 # Maintainer: Atte Virtanen <aten.email@gmail.com>
 pkgname=vrk-mpollux-digisign-client
-pkgver=4.0.1_5230
+pkgver=4.0.4_5355
 pkgrel=1
 pkgdesc="Client program for Finnish chip ID cards"
 arch=('i686' 'x86_64')
