@@ -2,7 +2,7 @@
 
 pkgname=salome-yacs
 pkgver=7.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - YACS Module"
 url="http://www.salome-platform.org"
 depends=('salome-gui>=7.6.0' 'salome-gui<7.7.0' 'graphviz' 'qscintilla')
@@ -12,7 +12,9 @@ license=('LGPL')
 source=("${pkgname}.profile")
 
 _source=yacs
-_installdir=/opt/salome/yacs
+_basedir=/opt/salome
+_installdir=${_basedir}
+_profiledir=${_basedir}/env.d
 _paraviewrootdir=/usr
 _paraviewver=4.2
 
@@ -45,24 +47,16 @@ prepare() {
 }
 
 build() {
-  source /etc/salome/profile.d/salome-kernel.sh
-  source /etc/salome/profile.d/salome-gui.sh
+  source ${_profiledir}/salome-kernel.sh
+  source ${_profiledir}/salome-gui.sh
 
   rm -rf "$srcdir/$_source/build"
   mkdir -p "$srcdir/$_source/build"
   cd "$srcdir/$_source/build"
 
-  # necessary to compile with graphviz-2.38
-#  local graphviz_flags="-DGRAPHVIZ_ROOT_DIR=/usr \
-#     -DGRAPHVIZ_INCLUDE_DIR=/usr/include/graphviz \
-#     -DGRAPHVIZ_cdt_LIBRARY=/usr/lib/libcdt.so \
-#     -DGRAPHVIZ_graph_LIBRARY=/usr/lib/libcgraph.so \
-#     -DGRAPHVIZ_gvc_LIBRARY=/usr/lib/libgvc.so \
-#     -DGRAPHVIZ_pathplan_LIBRARY=/usr/lib/libpathplan.so"
-#     ${graphviz_flags} \
-     
   cmake .. \
-     -DCMAKE_INSTALL_PREFIX=$_installdir \
+     -DCMAKE_INSTALL_PREFIX=${_installdir} \
+     -DCMAKE_CXX_STANDARD=98 \
      -DPYTHON_EXECUTABLE=/usr/bin/python2 \
      -DVTK_DIR="${_paraviewrootdir}/lib/cmake/paraview-${_paraviewver}" \
      -DSWIG_EXECUTABLE=/usr/bin/swig-2 \
@@ -76,11 +70,17 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_source/build"
+  cd "${srcdir}/${_source}/build"
 
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="${pkgdir}" install
 
-  install -D -m755 "$srcdir/$pkgname.profile" \
-                   "$pkgdir/etc/salome/profile.d/$pkgname.sh"
+  for _FILE in `find -L ${pkgdir}${_installdir} -iname *.py`
+  do
+    sed -i -e "s|${srcdir}||" ${_FILE}
+    sed -i -e "s|${pkgdir}||" ${_FILE}
+  done
+
+  install -D -m755 "${srcdir}/${pkgname}.profile" \
+                   "${pkgdir}${_profiledir}/${pkgname}.sh"
 }
-md5sums=('ef129d9c54d2159510eb9c06430a3439')
+md5sums=('14aad749fd8d2b694d0edec9a63a90d2')
