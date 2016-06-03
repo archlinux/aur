@@ -3,6 +3,7 @@ pkgname=(
 )
 pkgver=v0.2.0
 pkgrel=1
+pkgdesc="Web and API based SMTP testing"
 arch=('x86_64')
 license=('MIT')
 url='https://github.com/mailhog/MailHog'
@@ -11,14 +12,6 @@ source=(
     "https://github.com/mailhog/MailHog/releases/download/${pkgver}/MailHog_linux_amd64"
     "mailhog.service"
 )
-
-prepare() {
-    cd /tmp
-}
-
-build() {
-    echo 'build'
-}
 
 package_mailhog-bin() {
     cd ${srcdir}
