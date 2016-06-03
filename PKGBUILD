@@ -1,14 +1,14 @@
 # Maintainer: Herbert Knapp <herbert.knapp at edu.uni-graz.at>
 pkgname=atvrec
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
-pkgdesc="Command line TV recorder for Austrian TV stations ORF, ATV, Puls4, ServusTV Mediathek and ORF, ServusTV livestreams"
+pkgdesc='Command line TV recorder for Austrian TV stations ORF, ATV, Puls4, ServusTV Mediathek and ORF, ServusTV livestreams'
 arch=('x86_64')
-url="https://twitter.com/hmknapp"
+url='https://twitter.com/hmknapp'
 license=('Freeware')
 options=(!strip)
-source=("$pkgname-$pkgver.tar.gz::https://www.dropbox.com/s/0c9jsian6bhtspq/$pkgname-$pkgver.tar.gz?dl=1")
-md5sums=("114d6156663fc31f5f93d63b1e9369f3")
+source=("$pkgname-$pkgver.tar.gz::https://www.dropbox.com/s/y9gvj9bukfetdlq/$pkgname-$pkgver.tar.gz?dl=1")
+md5sums=('a904f482330a04744084ebd37c838722')
 
 package() {
   mkdir -p "$pkgdir/usr/bin/"
