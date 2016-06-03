@@ -1,0 +1,20 @@
+--- /SeExpr/src/build/build-info	2016-06-03 12:54:07.200156578 -0400
++++ /SeExpr/src/build/build-info	2016-06-03 14:32:59.060643373 -0400
+@@ -11,7 +11,6 @@
+ from distutils import sysconfig as sc
+ 
+ import sipconfig
+-from PyQt4 import pyqtconfig
+ 
+ def main():
+     parser = argparse.ArgumentParser()
+@@ -55,8 +54,7 @@
+ 
+ 
+ def pyqt4_sip(args):
+-    pkg_cfg = pyqtconfig._pkg_config
+-    return pkg_cfg['pyqt_sip_dir']
++    return os.path.join(sipconfig.Configuration().default_sip_dir, 'PyQt4')
+ 
+ 
+ def sip_inc(args):

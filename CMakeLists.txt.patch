@@ -1,0 +1,9 @@
+--- /SeExpr/CMakeLists.txt	2016-06-03 17:23:09.148872767 -0400
++++ /SeExpr/CMakeLists.txt	2016-06-03 17:24:26.255300396 -0400
+@@ -97,6 +97,3 @@
+ ## Traverse subdirectories
+ ADD_SUBDIRECTORY (src/SeExpr)
+ ADD_SUBDIRECTORY (src/SeExprEditor)
+-ADD_SUBDIRECTORY (src/doc)
+-ADD_SUBDIRECTORY (src/demos)
+-ADD_SUBDIRECTORY (src/tests)

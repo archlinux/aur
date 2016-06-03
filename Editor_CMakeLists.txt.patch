@@ -1,0 +1,18 @@
+--- /SeExpr/src/SeExprEditor/CMakeLists.txt	2016-06-03 17:31:57.167238683 -0400
++++ /SeExpr/src/SeExprEditor/CMakeLists.txt	2016-06-03 17:47:57.927613878 -0400
+@@ -13,8 +13,10 @@
+ # You may obtain a copy of the License at
+ # http://www.apache.org/licenses/LICENSE-2.0
+ 
++set(Python_ADDITIONAL_VERSIONS 2.7 2.6 2.5 2.4)
+ find_package(PythonInterp)
+ find_package(PythonLibs)
++if(PYTHONLIBS_FOUND)
+ 
+ macro(get_build_info NAME STORAGE)
+     execute_process(
+@@ -118,3 +120,4 @@
+             DESTINATION ${CMAKE_INSTALL_PYTHON})
+ 
+ endif(QT4_FOUND)
++endif(PYTHONLIBS_FOUND)
