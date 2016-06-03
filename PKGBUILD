@@ -2,12 +2,12 @@
 
 pkgname=check_mk-agent
 pkgver=1.2.8p3
-pkgrel=1
+pkgrel=2
 pkgdesc="Agent to retrieve Information from Client in a Check_MK environment"
 arch=(any)
 url="https://mathias-kettner.de"
 license=('GPLv2')
-install=check_mk-agent.install
+install=${pkgname}.install
 depends=('xinetd')
 source=("https://mathias-kettner.de/download/check_mk-$pkgver.tar.gz")
 md5sums=('SKIP')

@@ -1,7 +1,7 @@
 pkgbase = check_mk-agent
 	pkgdesc = Agent to retrieve Information from Client in a Check_MK environment
 	pkgver = 1.2.8p3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://mathias-kettner.de
 	install = check_mk-agent.install
 	arch = any
