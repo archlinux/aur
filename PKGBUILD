@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-kmail-theme-git
-pkgver=20160601
+pkgver=20160603
 pkgrel=1
 pkgdesc="Papirus theme for KMail (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
