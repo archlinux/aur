@@ -2,20 +2,23 @@
 
 pkgname=toybox
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A BSD-licensed alternative to busybox"
 arch=("i686" "x86_64")
 license=("BSD")
 url="http://landley.net/toybox/"
-makedepends=('')
+#makedepends=('')
+depends=('attr')
 source=("${pkgname}-${pkgver}.tar.gz::http://landley.net/${pkgname}/downloads/${pkgname}-${pkgver}.tar.gz")
+
+# Todo, prepare that chage the system minimal UID and user UIDs to the ones used in arch
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   msg "Runing script/make.sh to allow YOU to select the options as upstream want"
   make menuconfig
-  sh scripts/make.sh
+  bash scripts/make.sh
 }
 
 package() {
