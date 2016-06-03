@@ -5,7 +5,7 @@
 
 pkgname=hyperlightdrifter
 _gamename=HyperLightDrifter
-_pkgver=2016-05-09
+_pkgver=2016-05-20
 pkgver=${_pkgver//-/.}
 pkgrel=1
 _filename="HyperLightDrifter-DRMFree-Linux-${_pkgver}.sh"
@@ -19,11 +19,13 @@ makedepends=('unzip')
 source=("local://${_filename}"
         "hyperlightdrifter.desktop")
 noextract=("${_filename}")
-md5sums=('2fda541fb3f089a27dd34867f17eb830'
+md5sums=('a096b029dad3d57c17288a992a1793ae'
          '060673538dadaf471bef5e83475ddf4e')
 
 prepare() {
-  rm -r "${srcdir}/${pkgname}"
+  if [ -d "${srcdir}/${pkgname}" ]; then
+    rm -r "${srcdir}/${pkgname}"
+  fi
   # unzip will issue a warning about extra bytes at beginning of file, ignore it
   unzip $_filename -d "${srcdir}/${pkgname}" || true
 }
