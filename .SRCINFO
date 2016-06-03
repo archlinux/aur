@@ -1,7 +1,7 @@
 pkgbase = 389-admin
 	pkgdesc = 389 Administration Server HTTP agent
 	pkgver = 1.1.42
-	pkgrel = 3
+	pkgrel = 4
 	url = http://directory.fedoraproject.org/
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = 389-admin
 	depends = 389-adminutil
 	depends = mod_nss
 	depends = perl-mozldap
-	depends = icu55
+	depends = icu56
 	source = http://directory.fedoraproject.org/sources/389-admin-1.1.42.tar.bz2
 	source = dirsrv-admin.service
 	sha256sums = 4caf0671ca5f456a9778ba547c8d3e3b370005fa7bdc37b229c546d0f57850c1

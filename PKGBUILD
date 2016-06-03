@@ -4,12 +4,12 @@
 
 pkgname=389-admin
 pkgver=1.1.42
-pkgrel=3
+pkgrel=4
 pkgdesc="389 Administration Server HTTP agent"
 arch=('i686' 'x86_64')
 url="http://directory.fedoraproject.org/"
 license=('GPL')
-depends=('389-ds-base' '389-adminutil' 'mod_nss' 'perl-mozldap' 'icu55')
+depends=('389-ds-base' '389-adminutil' 'mod_nss' 'perl-mozldap' 'icu56')
 source=("http://directory.fedoraproject.org/sources/$pkgname-$pkgver.tar.bz2"
         'dirsrv-admin.service')
 sha256sums=('4caf0671ca5f456a9778ba547c8d3e3b370005fa7bdc37b229c546d0f57850c1'
