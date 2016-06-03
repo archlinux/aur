@@ -1,7 +1,7 @@
 # Maintainer: Stefan Tatschner <rumpelsepp@sevenbyte.org>
 
 pkgname='snap'
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A btrfs snapshot manager"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/rumpelsepp/snap"
 license=('MIT')
 depends=('btrfs-progs')
 makedepends=('git' 'asciidoctor>=1.5.3')
-source=("$pkgname::git+https://github.com/rumpelsepp/snap.git#commit=32ebb02e84f48c71e64b57475f3fcab1a5a055ad")
+source=("$pkgname::git+https://github.com/rumpelsepp/snap.git#tag=v$pkgver")
 sha256sums=('SKIP')
 
 build() {
