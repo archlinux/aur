@@ -13,6 +13,7 @@ source=("http://pentestmonkey.net/tools/unix-privesc-check/unix-privesc-check-1.
 md5sums=(SKIP)
 
 package() {
-	cd "$pkgname-$pkgver"
-	sudo mv -v $pkgname /usr/bin/$pkgname 
+	mkdir $pkgdir/usr && mkdir $pkgdir/usr/bin
+        cd "$pkgname-$pkgver"
+	sudo mv -v $pkgname $pkgdir/usr/bin/$pkgname 
 }
