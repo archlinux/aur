@@ -7,7 +7,7 @@ epoch=16
 _pkgver='4.3a'
 _pkgsuffix='alpha01Jun16'
 pkgver="${_pkgver}"."${_pkgsuffix}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast scheme compiler"
 arch=('i686' 'x86_64')
 url="http://www-sop.inria.fr/mimosa/fp/Bigloo/"
@@ -58,5 +58,14 @@ package() {
   chmod 644 "${pkgdir}/usr/lib/${_pkgname}/${_pkgver}"/*.a
   # Slake ldconfig's thirst for symlinks.
   find "${pkgdir}/usr/lib/${_pkgname}/${_pkgver}" -type f -name '*_es-*.so' \
-    -exec "${srcdir}/satisfy-ldconfig.sh" '{}' \;
+       -exec "${srcdir}/satisfy-ldconfig.sh" '{}' \;
+  
+  sed -e "s|^BOOTDIR=.*|BOOTDIR=/usr|g" \
+      -e "s|^BOOTBINDIR=.*|BOOTBINDIR=/usr/bin|g" \
+      -e "s|^BOOTLIBDIR=.*|BOOTLIBDIR=/usr/lib/bigloo/${pkgver}|g" \
+      -e "s|^BGLBUILDBINDIR=.*|BGLBUILDBINDIR=/usr/bin|g" \
+      -e "s|^BGLBUILDLIBDIR=.*|BGLBUILDLIBDIR=/usr/lib/bigloo/${pkgver}|g" \
+      -e "s|^\(BIGLOO=.*\)\.sh|\1|" \
+      -e "s|^\(BGL.*=.*\)\.sh|\1|" \
+      -i  ${pkgdir}/usr/lib/bigloo/${_pkgver}/Makefile.config
 }
