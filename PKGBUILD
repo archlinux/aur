@@ -13,12 +13,6 @@ makedepends=(python-setuptools unzip)
 source=("git://github.com/r0wb0t/markdown-urlize.git")
 md5sums=('SKIP')
 
-pkgver() {
-	cd "${_gitname}"
-	commit=$(git rev-parse HEAD)
-	echo "${_pkgver}${_commit}"
-}
-
 build() {
 	cd "$srcdir/${_gitname}"
   	python setup.py build
