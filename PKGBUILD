@@ -142,6 +142,9 @@ build() {
   export CPLUS_INCLUDE_PATH="/usr/i686-w64-mingw32/include/mysql"
   unset LDFLAGS PKG_CONFIG_PATH
 
+  # workaround for class std::auto_ptr' is deprecated with gcc-6
+  export CXXFLAGS="$CXXFLAGS -std=gnu++98 -Wno-deprecated"
+
   for _arch in ${_architectures}; do
 
     if [ ${_arch} = 'i686-w64-mingw32' ]; then
