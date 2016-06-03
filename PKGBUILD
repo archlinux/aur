@@ -8,12 +8,13 @@ arch=(x86_64)
 url="https://subgraph.com/vega/"
 license=('Eclipse Public License 1.0')
 provides=('vega')
+depends=('jd8-openjdk' 'webkitgtk2')
 conflicts=('vega')
 source=("https://dist.subgraph.com/downloads/VegaBuild-linux.gtk.x86_64.zip")
 
 build() {
-	echo Installing required webkitgtk2 and openjdk
-        sudo pacman -S webkitgtk2 unzip jdk8-openjdk
+	echo Installing required unzip
+        sudo pacman -S unzip
         sudo unzip VegaBuild-linux.gtk.x86_64.zip
         sudo mv vega /usr/share
 }
