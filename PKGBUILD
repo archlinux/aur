@@ -2,15 +2,15 @@
 
 pkgbase=python-peakutils
 pkgname=('python-peakutils' 'python2-peakutils')
-pkgver=1.0.1
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="Peak detection utilities for 1D data"
 arch=('any')
 url="https://pypi.python.org/pypi/PeakUtils"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://pypi.python.org/packages/source/P/PeakUtils/PeakUtils-${pkgver}.tar.gz")
-md5sums=('32d8728b174801baa8ee466a97ecf838')
+source=("https://pypi.python.org/packages/02/74/f636983c44d4b9687cf273be7a64492718abaabac26a8b6a41b30e47d820/PeakUtils-${pkgver}.tar.gz")
+md5sums=('c41a1426e10553181a24db1d63678332')
 
 prepare() {
   cd "${srcdir}"
