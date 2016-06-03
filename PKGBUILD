@@ -2,7 +2,7 @@
 
 pkgname=something-for-reddit-git
 _gitname=something-for-reddit
-pkgver=v0.1
+pkgver=0.1
 pkgrel=1
 pkgdesc='A Reddit Client For GNOME (with Gtk+ and Python)'
 arch=('i686' 'x86_64')
