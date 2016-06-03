@@ -10,7 +10,7 @@ url="http://www.dealii.org/"
 license=('LGPL')
 depends=('')
 optdepends=(
-      'boost': peer-reviewed portable C++ source libraries
+      'boost: peer-reviewed portable C++ source libraries'
       'lapack: Linear Algebra PACKage' 
       'openmpi: High performance message passing library (MPI)'
       'petsc: Portable, extensible toolkit for scientific computation'
