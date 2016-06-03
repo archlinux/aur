@@ -1,0 +1,15 @@
+[Unit]
+Description=Web archives building for Sympa
+After=syslog.target
+BindTo=sympa.service
+ 
+[Service]
+User=sympa
+Group=sympa
+Type=forking
+PIDFile=/run/sympa/archived.pid
+ExecStart=/usr/bin/archived.pl
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

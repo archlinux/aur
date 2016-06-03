@@ -1,0 +1,31 @@
+#!/bin/sh
+
+post_install() {
+	# ensure system users are present
+	systemd-sysusers sympa.conf
+	systemd-tmpfiles --create sympa.conf
+	cat <<EOF
+Sympa requires a database for using the web interface. You have to create it
+yourself. You also need to install the proper DBI driver package.
+
+You can generate configuration files for sympa by executing:
+    /usr/bin/sympa_wizard.pl
+
+After you are done, run:
+    /usr/bin/sympa.pl --health_check
+and the database will be automatically populated. (this can take a while)
+
+You have to enable the following services for sympa to start automatically:
+    sympa-archived, sympa-bounced, sympa-bulk, sympa-task_manager, sympa
+
+If you are using WWSympa with Apache, don't forget to add the configuration.
+You will also need to install and enable the fcgid module.
+
+If you are using Postfix, add:
+    alias_maps = hash:/etc/sympa/aliases
+    alias_database = hash:/etc/sympa/aliases
+to /etc/postfix/main.cf
+EOF
+}
+
+# vim:set ts=2 sw=2 ft=sh et:

@@ -1,0 +1,15 @@
+[Unit]
+Description=Non-delivery reports analysis and storage for Sympa
+After=syslog.target
+BindTo=sympa.service
+ 
+[Service]
+User=sympa
+Group=sympa
+Type=forking
+PIDFile=/run/sympa/bounced.pid
+ExecStart=/usr/bin/bounced.pl
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

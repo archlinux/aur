@@ -1,0 +1,15 @@
+[Unit]
+Description=Mail sending for Sympa
+After=syslog.target
+BindTo=sympa.service
+ 
+[Service]
+User=sympa
+Group=sympa
+Type=forking
+PIDFile=/run/sympa/bulk.pid
+ExecStart=/usr/bin/bulk.pl
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
