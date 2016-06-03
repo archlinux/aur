@@ -2,16 +2,21 @@ pkgname=(
     'mailhog-bin'
 )
 pkgver=v0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Web and API based SMTP testing"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 license=('MIT')
 url='https://github.com/mailhog/MailHog'
 makedepends=('systemd')
-source=(
-    "https://github.com/mailhog/MailHog/releases/download/${pkgver}/MailHog_linux_amd64"
-    "mailhog.service"
-)
+
+source_i686=("https://github.com/mailhog/MailHog/releases/download/${pkgver}/MailHog_linux_386")
+md5sums_i686=('e1b738e87318f3fd72bd58994090e308')
+
+source_x86_64=("https://github.com/mailhog/MailHog/releases/download/${pkgver}/MailHog_linux_amd64")
+md5sums_x86_64=('3e6f167e5c398d0220dd001f0aad7a85')
+
+source=("mailhog.service")
+md5sums=('fbe281034608abdbf8ce5c9527bbf6a8')
 
 package_mailhog-bin() {
     cd ${srcdir}
@@ -19,7 +24,4 @@ package_mailhog-bin() {
     install -D -m644 ${srcdir}/mailhog.service ${pkgdir}/usr/lib/systemd/system/mailhog.service
 }
 
-md5sums=(
-    '3e6f167e5c398d0220dd001f0aad7a85' # mailhog
-    'fbe281034608abdbf8ce5c9527bbf6a8' # mailhog.service
-)
+
