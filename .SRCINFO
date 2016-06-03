@@ -1,4 +1,4 @@
-pkgbase = markdown-urlize
+pkgbase = markdown-urlize-git
 	pkgdesc = A more liberal autolink extension for python Markdown
 	pkgver = 0.2.0
 	pkgrel = 1
@@ -10,5 +10,5 @@ pkgbase = markdown-urlize
 	source = git://github.com/r0wb0t/markdown-urlize.git
 	md5sums = SKIP
 
-pkgname = markdown-urlize
+pkgname = markdown-urlize-git
 

@@ -1,6 +1,6 @@
 # Maintainer: ELmoussaoui Bilal <bil.elmoussaoui@gmail.com>
 
-pkgname=markdown-urlize
+pkgname=markdown-urlize-git
 _pkgname=markdown-urlize
 pkgver=0.2.0
 pkgrel=1
@@ -13,9 +13,14 @@ makedepends=(python-setuptools unzip)
 source=(git://github.com/r0wb0t/markdown-urlize.git)
 md5sums=('SKIP')
 
+pkgver() {
+	cd "${_gitname}"
+	git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
-  cd ${srcdir}/${_pkgname}-${pkgver}
-  python setup.py build
+	cd "$srcdir/${_gitname}"
+  	python setup.py build
 }
 
 package() {
