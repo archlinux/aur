@@ -1,34 +1,30 @@
 # Maintainer: Dylan Ferris <dylan@psilly.com>
 
 # You must register at unrealengine.com and link your github account to access this private repo.
-# For more info, see: https://wiki.archlinux.org/index.php/Unreal_Engine_4
+# @see https://wiki.archlinux.org/index.php/Unreal_Engine_4
 
 # The source is about 3.8 GiB, with an extra 3.2 GiB of dependencies downloaded in build(), and may take several hours to compile.
 
 pkgname='unreal-engine'
-pkgver=4.11.2
-pkgrel=3
+pkgver=4.12.0
+pkgrel=1
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
 url='https://www.unrealengine.com/'
-makedepends=('clang35' 'mono' 'dos2unix' 'cmake')
-depends=('icu53' 'xdg-user-dirs')
+makedepends=('clang' 'mono' 'dos2unix' 'cmake')
+depends=('icu' 'xdg-user-dirs' 'sdl2' 'qt4' 'python')
 license=('custom:UnrealEngine')
 source=(
   "git+ssh://github.com/EpicGames/UnrealEngine.git#tag=$pkgver-release"
   'UE4Editor.desktop'
-  'setup-depend-clang35.patch'
 )
 md5sums=(
   'SKIP'
   '7a2db62e8d0e8e6f26424768c412d356'
-  '0aef7bb2dbb1aeb5c65d3f90ca89009d'
 )
 options=(!strip staticlibs)
 
 build() {
-  patch "$srcdir/UnrealEngine/Engine/Build/BatchFiles/Linux/Setup.sh" setup-depend-clang35.patch
-
   cd $srcdir/UnrealEngine
   ./Setup.sh
   ./GenerateProjectFiles.sh
