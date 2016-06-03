@@ -1,4 +1,15 @@
 2016-05-12 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+	* 2.0.5.1:
+   	Fixed harmless error when account was not using SteamApiKey, introduced in 2.0.5.0.
+  * 2.0.5.0:
+    [!] Greatly improved primary accounts support and removed AccountPlayingDelay global config property.
+    ASF will now ignore initial OnFarmingFinished() event when ShutdownOnFarmingFinished is set, and you've just !started this bot instance, allowing you to issue commands without much hassle. Every next event (including the one fired after IdleFarmingPeriod) will be honored.
+    !update command will now ignore (override) AutoUpdates setting, allowing you to force ASF update while still being able to skip automatic ones (on program startup and every 24 hours).
+    Fixed valid trades potentially being ignored in SteamTradeMatcher when user was overpaying with cards from the same game.
+    Fixed wrong dupes calculation when Steam is talking crap and responding with NULL instanceID of items (thanks GabeN).
+    Fixed ASF accidentally dismissing notifications related to profile comments.
+    Massive portion of code improvements, optimizations and bugfixes.
+2016-05-12 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 	* 2.0.4.4:
     ASF now allows only one trade to be sent in SendOnFarmingFinished when account did not farm anything - this cuts spam related to sending trade every IdleFarmingPeriod, while still sending initial trade after connect.
     ASF now allows overpaying when SteamTradeMatcher is enabled.
