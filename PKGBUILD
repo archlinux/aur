@@ -2,7 +2,7 @@
 
 pkgname=sympa
 pkgver=6.2.15
-pkgrel=1
+pkgrel=2
 pkgdesc='Electronic mailing list manager'
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,7 +13,7 @@ depends=('ca-certificates' 'smtp-server' 'perl' 'openssl' 'mhonarc' 'perl-archiv
 	'perl-html-stripscripts-parser' 'perl-html-tree' 'perl-io-stringy' 'perl-libintl-perl'
 	'perl-libwww' 'perl-mailtools' 'perl-mime-charset' 'perl-mime-encwords' 'perl-mime-tools'
 	'perl-net-cidr' 'perl-template-toolkit' 'perl-term-progressbar' 'perl-unicode-linebreak'
-	'perl-uri' 'perl-xml-libxml')
+	'perl-uri' 'perl-xml-libxml' 'perl-mime-lite-html')
 optdepends=('perl-cgi-fast'
 	'perl-crypt-ciphersaber'
 	'perl-dbd-mysql: mysql support'

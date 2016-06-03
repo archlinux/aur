@@ -1,7 +1,7 @@
 pkgbase = sympa
 	pkgdesc = Electronic mailing list manager
 	pkgver = 6.2.15
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.sympa.org/
 	install = sympa.install
 	arch = i686
@@ -36,6 +36,7 @@ pkgbase = sympa
 	depends = perl-unicode-linebreak
 	depends = perl-uri
 	depends = perl-xml-libxml
+	depends = perl-mime-lite-html
 	optdepends = perl-cgi-fast
 	optdepends = perl-crypt-ciphersaber
 	optdepends = perl-dbd-mysql: mysql support
