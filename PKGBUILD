@@ -14,7 +14,7 @@ license=('LGPL')
 source=(salome-paravis.profile)
 
 _source=paravis
-_installdir=/opt/salome/paravis
+_installdir=/opt/salome
 _paraviewrootdir=/usr
 _paraviewver=4.2
 
@@ -39,11 +39,11 @@ prepare() {
 }
 
 build() {
-  source /etc/salome/profile.d/salome-kernel.sh
-  source /etc/salome/profile.d/salome-gui.sh
-  source /etc/salome/profile.d/salome-med.sh
-  source /etc/salome/profile.d/salome-geom.sh
-  source /etc/salome/profile.d/salome-smesh.sh  
+  source /opt/salome/env.d/salome-kernel.sh
+  source /opt/salome/env.d/salome-gui.sh
+  source /opt/salome/env.d/salome-med.sh
+  source /opt/salome/env.d/salome-geom.sh
+  source /opt/salome/env.d/salome-smesh.sh  
 
   cd "${srcdir}/${_source}"
 
@@ -56,6 +56,8 @@ build() {
 
   cmake .. \
      -DCMAKE_INSTALL_PREFIX="${_installdir}" \
+     -DCMAKE_CXX_STANDARD=98 \
+     -DHDF5_ROOT_DIR=/opt/hdf5-1.8 \
      -DMEDFILE_ROOT_DIR=/usr \
      -DPARAVIEW_ROOT_DIR="${_paraviewrootdir}" \
      -DPYTHON_EXECUTABLE=/usr/bin/python2 \
@@ -73,7 +75,17 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 
+  rm "${pkgdir}${_installdir}/bin/salome/test/CTestTestfile.cmake"
+  
+  for _FILE in `find -L ${pkgdir}${_installdir} -iname *.py`
+  do
+    sed -i -e "s|${srcdir}||" ${_FILE}
+    sed -i -e "s|${pkgdir}||" ${_FILE}
+  done
+  
   install -D -m755 "${srcdir}/${pkgname}.profile" \
-                   "${pkgdir}/etc/salome/profile.d/${pkgname}.sh"
+                   "${pkgdir}${_installdir}/env.d/${pkgname}.sh"
+
+  rm -f "${pkgdir}${_installdir}/bin/salome/VERSION"
 }
-md5sums=('c135f9d48f56ccd950de4c0c09221595')
+md5sums=('a99b6ba811522906fe4276efdae5839d')
