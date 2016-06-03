@@ -4,25 +4,22 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 
 pkgname=('gcc5')
-pkgver=5.3.0
+pkgver=5.4.0
 _pkgver=5
 _islver=0.15
-pkgrel=6
-_snapshot=5-20160503
+pkgrel=1
 pkgdesc="The GNU Compiler Collection"
 arch=('i686' 'x86_64')
 license=('GPL' 'LGPL' 'FDL' 'custom')
 url="http://gcc.gnu.org"
 makedepends=('binutils>=2.26' 'libmpc')
 options=('!emptydirs')
-source=(#ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
-        ftp://gcc.gnu.org/pub/gcc/snapshots/${_snapshot}/gcc-${_snapshot}.tar.bz2
+source=(ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2
         http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2)
-md5sums=('907f3b860ebbaf33b3ccd3c15dddc9b1'
+md5sums=('4c626ac2a83ef30dfb9260e6f59c2b30'
          '8428efbbc6f6e2810ce5c1ba73ecf98c')
 
-#_basedir=gcc-${pkgver}
-_basedir=gcc-${_snapshot}
+_basedir=gcc-${pkgver}
 
 prepare() {
   cd ${srcdir}/${_basedir}
