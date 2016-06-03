@@ -1,0 +1,8 @@
+post_install() {
+    echo "NOTICE: If you using Arc-Dark GTK theme, you can fix colors for menubar via running bash script:"
+    echo "sudo bash /usr/share/plasma/desktoptheme/Arc-Dark/fix-menubar.sh"
+}
+
+post_upgrade() {
+    post_install $1
+}
