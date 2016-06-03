@@ -1,0 +1,14 @@
+diff -Naur geom.orig/src/GEOMImpl/GEOMImpl_IMeasureOperations.cxx geom/src/GEOMImpl/GEOMImpl_IMeasureOperations.cxx
+--- geom.orig/src/GEOMImpl/GEOMImpl_IMeasureOperations.cxx	2016-05-13 23:43:29.571777441 +0200
++++ geom/src/GEOMImpl/GEOMImpl_IMeasureOperations.cxx	2016-05-13 23:44:06.691776728 +0200
+@@ -75,6 +75,10 @@
+ #include <TopTools_ListOfShape.hxx>
+ #include <Standard_ErrorHandler.hxx> // CAREFUL ! position of this file is critic : see Lucien PIGNOLONI / OCC
+ 
++#if OCC_VERSION_HEX >= 0x060901
++typedef BRepExtrema_MapOfIntegerPackedMapOfInteger BRepExtrema_OverlappedSubShapes;
++#endif
++
+ //=============================================================================
+ /*!
+  *  Constructor
