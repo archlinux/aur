@@ -2,7 +2,7 @@
 
 _pkgname=qotd
 pkgname=$_pkgname-git
-pkgver=0.4.0_10_gbbc6a7d.bbc6a7d
+pkgver=0.4.0_16_gaf2136b.af2136b
 pkgrel=1
 pkgdesc="A simple QOTD (quote of the day) daemon."
 arch=('any')
@@ -27,7 +27,7 @@ pkgver() {
 
 build() {
     cd "$srcdir/$_pkgname"
-	make
+	make release
 }
 
 package() {
