@@ -10,6 +10,7 @@ license=('GPL')
 conflicts=('beef-xss-git')
 provides=('beef-xss-git')
 source=("https://github.com/beefproject/beef/archive/master.zip")
+md5sums=(SKIP)
 package() {
            unzip beef-master.zip
            rm -rf beef-master.zip

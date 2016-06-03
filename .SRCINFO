@@ -12,6 +12,7 @@ pkgbase = beef-xss-git
 	provides = beef-xss-git
 	conflicts = beef-xss-git
 	source = https://github.com/beefproject/beef/archive/master.zip
+	md5sums = SKIP
 
 pkgname = beef-xss-git
 
