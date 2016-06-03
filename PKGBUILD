@@ -3,7 +3,7 @@
 pkgname=papirus-gtk-theme-git
 pkgver=20160603
 pkgrel=1
-pkgdesc="Papirus color scheme for KDE (git version)"
+pkgdesc="Papirus GTK theme for KDE (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
 arch=('i686' 'x86_64')
 license=('GPL')
