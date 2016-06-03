@@ -3,9 +3,10 @@
 
 pkgname=peda-git
 _gitname=peda
-pkgver=71.1e62125
+pkgver=1.1.82.b7c7d7a
 pkgrel=1
-pkgdesc="PEDA - Python Exploit Development Assistance for GDB"
+epoch=1
+pkgdesc='Python Exploit Development Assistance for GDB'
 url='https://github.com/longld/peda'
 arch=('any')
 license=('custom:Creative Commons')
@@ -13,24 +14,27 @@ depends=( 'gdb' 'binutils' 'nasm' 'python-six')
 makedepends=('git')
 provides=('peda')
 conflicts=('peda')
-install='peda.install'
-source=(${pkgname}::git+https://github.com/longld/${_gitname})
+source=(${pkgname}::git+https://github.com/longld/peda)
 sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.%s.%s" "$(git describe --tags --abbrev=0|sed -r 's|v?(.+)|\1|')" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd ${pkgname}
   rm lib/six.py
+  sed '/git clone/d' -i README.md
+  sed 's|~/peda/peda.py|/usr/share/peda/peda.py|g' -i README.md
 }
 
 build() {
   cd ${pkgname}
-  python -m compileall .
-  python -O -m compileall .
+  msg2 'Compiling python objects...'
+  python -m compileall . >/dev/null
+  python -O -m compileall . >/dev/null
 }
 
 package() {
