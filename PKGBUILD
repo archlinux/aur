@@ -4,7 +4,7 @@ pkgver=0.4.7.0
 pkgrel=1
 pkgdesc="The Browser Exploitation Framework"
 arch=('any')
-depends=('unzip' 'ruby' 'rake' 'sqlite')
+depends=('ruby' 'rake' 'sqlite')
 url="http://beefproject.com/"
 license=('GPL')
 conflicts=('beef-xss-git')
@@ -12,8 +12,6 @@ provides=('beef-xss-git')
 source=("https://github.com/beefproject/beef/archive/master.zip")
 md5sums=(SKIP)
 package() {
-           unzip beef-master.zip
-           rm -rf beef-master.zip
            install -dm777 "$pkgdir/usr/share/beef-xss"          
            gem install bundler
            ~/.gem/ruby/2.3.0/bin/bundle install
