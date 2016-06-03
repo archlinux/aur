@@ -2,7 +2,7 @@
 
 pkgname=salome-med
 pkgver=7.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - MED Module"
 url="http://www.salome-platform.org"
 depends=('scotch>=6.0.3' 'metis4' 'salome-gui>=7.6.0' 'salome-gui<7.7.0')
@@ -17,7 +17,7 @@ license=('LGPL')
 source=(scotch-bz2.diff salome-med.profile)
 
 _source=med
-_installdir=/opt/salome/med
+_installdir=/opt/salome
 _paraviewrootdir=/usr
 _paraviewver=4.2
 
@@ -45,26 +45,30 @@ prepare() {
 }
 
 build() {
-  source /etc/salome/profile.d/salome-kernel.sh
-  source /etc/salome/profile.d/salome-gui.sh
+  source /opt/salome/env.d/salome-kernel.sh
+  source /opt/salome/env.d/salome-gui.sh
 
   rm -rf "${srcdir}/${_source}/build"
   mkdir "${srcdir}/${_source}/build"
   cd "${srcdir}/${_source}/build"
 
+  #   -DSALOME_CMAKE_DEBUG=ON
+  #   -DSCOTCH_INCLUDE_DIRS=/usr/include/scotch \
+  #   -DSCOTCH_LIBRARIES=/usr/lib/libscotch.so \
+  #   -DSCOTCH_ERR_LIBRARIES=/usr/lib/libscotcherr.so \
+  #   -DBZ2_LIBRARIES=/usr/lib/libbz2.so \
+
   cmake .. \
      -DCMAKE_INSTALL_PREFIX=$_installdir \
+     -DCMAKE_CXX_STANDARD=98 \
      -DPYTHON_EXECUTABLE=/usr/bin/python2 \
-     -DSALOME_MED_PARTITIONER_METIS=BOOL:ON \
+     -DSALOME_MED_PARTITIONER_METIS=On \
      -DMETIS_INCLUDE_DIRS=/usr/include/metis-4 \
      -DMETIS_LIBRARIES=/usr/lib/libmetis-4.so \
-     -DSALOME_MED_PARTITIONER_SCOTCH=BOOL:ON \
+     -DSALOME_MED_PARTITIONER_PARMETIS=Off \
+     -DSALOME_MED_PARTITIONER_SCOTCH=On \
      -DSPHINX_APIDOC_EXECUTABLE=/usr/bin/sphinx-apidoc2 \
      -DSPHINX_EXECUTABLE=/usr/bin/sphinx-build2 \
-     -DSCOTCH_INCLUDE_DIRS=/usr/include/scotch \
-     -DSCOTCH_LIBRARIES=/usr/lib/libscotch.so \
-     -DSCOTCH_ERR_LIBRARIES=/usr/lib/libscotcherr.so \
-     -DBZ2_LIBRARIES=/usr/lib/libbz2.so \
      -DVTK_DIR="${_paraviewrootdir}/lib/cmake/paraview-${_paraviewver}" \
      -DLIBXML2_ROOT_DIR=/usr \
      -DLibXml2_DIR=/usr/lib/cmake/libxml2 \
@@ -78,10 +82,19 @@ package() {
   cd "${srcdir}/${_source}/build"
 
   make DESTDIR="$pkgdir/" install
-
+  
+  for _FILE in `find -L ${pkgdir}${_installdir} -iname *.py`
+  do
+    sed -i -e "s|${srcdir}||" ${_FILE}
+    sed -i -e "s|${pkgdir}||" ${_FILE}
+  done
+  
   install -D -m755 "${srcdir}/${pkgname}.profile" \
-                   "${pkgdir}/etc/salome/profile.d/${pkgname}.sh"
+                   "${pkgdir}${_installdir}/env.d/${pkgname}.sh"
 
+  rm -f "${pkgdir}${_installdir}/bin/salome/VERSION"
+  rm -f "${pkgdir}${_installdir}/bin/salome/test/CTestTestfile.cmake"
+  rm -f "${pkgdir}${_installdir}/adm_local/unix/config_files/check_GUI.m4"
 }
 md5sums=('b7887dda20d38ae64a33547b3d5a1d16'
-         '653ad82b33fada22a22a6c96474d5e02')
+         'a261aca89bcad856b3e341d0b58d1398')
