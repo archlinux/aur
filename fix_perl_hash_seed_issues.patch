@@ -1,0 +1,18 @@
+Description: Ensure to not be impacted by hash randomization with perl >= 5.18
+Author: Emmanuel Bouthenot <kolter@debian.org>
+Bug: http://rt.cpan.org/Public/Bug/Display.html?id=86020
+Bug-Debian: http://bugs.debian.org/711604
+Last-Update: 2014-02-11
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/t/50generic.t
++++ b/t/50generic.t
+@@ -10,6 +10,8 @@
+   URI::URL->strict(1);
+ }
+ 
++# Ensure to not be impacted by hash randomization with perl >= 5.18
++MIME::Lite->field_order('from', 'to', 'subject');
+ 
+ # For create ref file, use perl -Iblib/lib t/50generic.t 1
+ 

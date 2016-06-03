@@ -1,0 +1,19 @@
+pkgbase = perl-mime-lite-html
+	pkgdesc = Perl module that provides routine to transform a HTML page in a MIME-Lite mail
+	pkgver = 1.24
+	pkgrel = 1
+	url = http://search.cpan.org/dist/MIME-Lite-HTML/
+	arch = any
+	license = GPL
+	depends = perl
+	depends = perl-mime-lite
+	depends = perl-libwww
+	depends = perl-html-parser
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/A/AL/ALIAN/MIME-Lite-HTML-1.24.tar.gz
+	source = fix_perl_hash_seed_issues.patch
+	md5sums = 6ca475aaa73328f8c51b7002d828fe7e
+	md5sums = be20c7145fd5421c4e533ff80ebf6169
+
+pkgname = perl-mime-lite-html
+
