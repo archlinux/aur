@@ -24,7 +24,7 @@ build () {
     cd "$srcdir/$pkgname-$pkgver-server"
     ./autogen.sh
     ./configure --enable-server --enable-ldap --prefix=/usr --disable-compile-demo PYTHON=/usr/bin/python2
-    make -j1
+    make
 }
 
 package () {
