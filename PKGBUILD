@@ -5,14 +5,14 @@
 pkgname=openchange
 _codename=VULCAN
 pkgver=2.3
-pkgrel=6
+pkgrel=7
 pkgdesc="A portable, open source implementation of Microsoft Exchange server \
 and Exchange protocols."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.openchange.org"
 license=('GPL3')
 depends=('samba>=4.2.2' 'libical' 'sqlite3' 'file' 'boost' 'python2'
-         'libmariadbclient' 'nanomsg>=0.5' 'libmemcached>=1.0.18')
+         'libmariadbclient' 'nanomsg>=0.9' 'libmemcached>=1.0.18')
 makedepends=('ccache' 'docbook-xsl' 'libxslt' 'python2-setuptools'
              'python2-pylons')
 optdepends=('python2-pylons: Needed for OCSManager'
@@ -26,7 +26,8 @@ source=("https://github.com/openchange/openchange/archive/${pkgname}-${pkgver}-$
         "openchange-issue-249.patch"
         "openchange-add_SizedXid-1.patch"
         "yyunput_flex2.6.patch"
-        "remove-private-headers.patch")
+        "remove-private-headers.patch"
+        "nanomsg-0.9.patch")
 
 sha256sums=('46ffdc779bb7bf6a823f6d1a78c5ca3f5548b981ad90164214a68279b403a05e'
             '45bd19e2a5725a94692ae606086be6d57423375c9b1c0eb5322c6e09ef2b5fb3'
@@ -34,7 +35,8 @@ sha256sums=('46ffdc779bb7bf6a823f6d1a78c5ca3f5548b981ad90164214a68279b403a05e'
             'e3cfd2455a52d4b68153b3d546c70edbde5cf024ebcec1088a923aedaa938834'
             'f8012d91b1c1c382e6d480dd015230e59f07d9958ac63d57f65801b1dfc6b54a'
             '569385a8666ef95a7aa024b52ea47ee308be5eee73a3d973207df43439c2c1e7'
-            'fd7c2cfae6c8b52a30fc80f8e3f4118d93172b535c0032b6cde839a57bf6da9f')
+            'fd7c2cfae6c8b52a30fc80f8e3f4118d93172b535c0032b6cde839a57bf6da9f'
+            '13dbdb95e8b6efa4427059b5729cda82e09a28985d73ea8e4a225df2adb77e31')
 
 # Used to be pkgname-pkgver-codename, but now we have two openchanges. WAT
 _srcsubdir="${pkgname}-${pkgname}-${pkgver}-${_codename}"
@@ -47,6 +49,7 @@ prepare() {
     patch -p1 < "${srcdir}/openchange-add_SizedXid-1.patch"
     patch -p1 < "${srcdir}/yyunput_flex2.6.patch"
     patch -p1 < "${srcdir}/remove-private-headers.patch"
+    patch -p1 < "${srcdir}/nanomsg-0.9.patch"
 
     PYTHON_CALLERS="$(find ${srcdir}/${_srcsubdir} -name '*.py')
                     $(find ${srcdir}/${_srcsubdir} -name 'configure.ac')

@@ -1,0 +1,12 @@
+diff -rupN a/configure.ac b/configure.ac
+--- a/configure.ac	2016-06-03 09:15:39.472924010 -0700
++++ b/configure.ac	2016-06-03 09:16:00.126576747 -0700
+@@ -292,7 +292,7 @@ OC_RULE_ADD(testsuite, TESTSUITE)
+ dnl ---------------------------------------------------------------------------
+ dnl Check for nanomsg library (server notification)
+ dnl ---------------------------------------------------------------------------
+-PKG_CHECK_MODULES(NANOMSG, libnanomsg, [], [AC_MSG_ERROR(Install nanomsg library >= 0.5)])
++PKG_CHECK_MODULES(NANOMSG, nanomsg, [], [AC_MSG_ERROR(Install nanomsg library >= 0.9)])
+ AC_SUBST(NANOMSG_CFLAGS)
+ AC_SUBST(NANO_LIBS)
+ 
