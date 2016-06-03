@@ -29,7 +29,7 @@ depends=(
              "papirus-vlc-theme-git: Papirus theme for VLC Media Player (git version)" 
              "papirus-yakuake-theme-git: Papirus theme for Yakuake (git version)"
              "papirus-wallpapers-git: Papirus wallpapers suite (git version)"
-             "arc-dark-suite-git: Arc-Dark cusomization for Plasma 5 (git version)"
+             "arc-dark-suite-git: Arc-Dark customization for Plasma 5 (git version)"
              )
 conflicts=('papirus')
 source=()
