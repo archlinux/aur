@@ -1,6 +1,1 @@
-This fix works for replays played from the replay browser,
-and for normal play with framestepping.
-
-It does not work for loading the user savestate: Effects will
-probably be drawn at least once. I'd have to save the entire effect
-list with the user savestate, which would be overkill right now.
+advance on click or assign during pause

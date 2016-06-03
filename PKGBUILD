@@ -2,7 +2,7 @@
 # Contributor: Carl Reinke <mindless2112 gmail com>
 
 pkgname=lix
-pkgver=2016.01.09.r0.gdead180
+pkgver=2016.06.02.r0.g64c9b94
 pkgrel=1
 pkgdesc="An action-puzzle game in the IRS (Interactive Rodent Simulation) genre inspired by Lemmings"
 arch=('i686' 'x86_64')
@@ -12,9 +12,9 @@ changelog=.CHANGELOG
 install=${pkgname}.install
 depends=('allegro4' 'enet' 'libpng')
 makedepends=('gendesk')
-provides=('lix')
+provides=('lix-git')
 conflicts=('lix-git')
-source=(${pkgname}::git://github.com/SimonN/Lix.git#tag=v2016-01-09
+source=(${pkgname}::git://github.com/SimonN/Lix.git#tag=v2016-06-02
 	${pkgname}-logo.png::http://asdfasdf.ethz.ch/~simon/bitmap/lix_with_lem.png
 	${pkgname}.sh
 	${pkgname}-server.sh)
