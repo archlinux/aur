@@ -2,7 +2,7 @@
 # If you would like to contribute, place a comment or send an email.
 # These profiles may not work for all setups, they're only tested on my desktop.
 pkgname=firejail-profiles
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Extra profiles for firejail"
 arch=('any')
@@ -10,8 +10,8 @@ url="https://aur.archlinux.org/packages/firejail-profiles/"
 license=('GPL2')
 source=("firefox-restricted.profile"
         "teamspeak3.profile")
-sha256sums=('036fbeef1a4309e2ee3a07286039f951b0543d531ec6c98f9f20466c3b80fb6c'
-            '32c1f93cd84a4e2f7af62a4be4239e89f7cb0b027ddb6cbfbff57fe5f41a6fda')
+sha256sums=('bb2f00f2c2cbad1ff5862017dd9bd9627fa0d5cd0069b19b808e8ea2c8714816'
+            '4ac55e7034f289a21710a8771da56771850e6baed728cb2bc03b881dcee757dc')
 
 package() {
 	cd "${srcdir}"
