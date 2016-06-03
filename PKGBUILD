@@ -2,7 +2,7 @@
 
 pkgname='pynote'
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage notes on the commandline"
 arch=('any')
 url="https://github.com/rumpelsepp/pynote"
@@ -11,7 +11,7 @@ provides=('pynote')
 depends=('python' 'python-tabulate' 'python-arrow')
 makedepends=('asciidoctor')
 conflicts=('pynote-docs' 'pynote-git' 'pynote-docs-git')
-source=("git+https://github.com/rumpelsepp/pynote#commit=abbbaacedc4a6825abc70ed7ec18305e105ffc63")
+source=("git+https://github.com/rumpelsepp/pynote#tag=v$pkgver")
 sha256sums=('SKIP')
 install=pynote.install
 
