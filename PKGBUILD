@@ -2,20 +2,23 @@
 
 pkgname=salome-kernel
 pkgver=7.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - KERNEL Module"
 url="http://www.salome-platform.org"
-depends=('python2' 'python2-numpy' 'boost-libs' 'omniorb416' 'omniorbpy36' 'omninotify-omniorb416' 'hdf5' 'graphviz' 'libxml2' 'cppunit' 'lapack')
+depends=('python2' 'python2-numpy' 'boost-libs' 'omniorb416' 'omniorbpy36' 'omninotify-omniorb416' 'hdf5-1.8' 'graphviz' 'libxml2' 'cppunit' 'lapack' 'net-tools' 'openmpi')
 makedepends=('doxygen' 'python2-sphinx' 'git' 'swig2')
 arch=('i686' 'x86_64')
 license=('LGPL')
-source=(salome-kernel.profile)
+source=("salome-kernel.profile")
+# options=(debug !strip)
 
 # "http://files.salome-platform.org/Salome/Salome${pkgver}/src${pkgver}.tar.gz"
 #_source=KERNEL_SRC_${pkgver}
 
 _source=kernel
-_installdir=/opt/salome/kernel
+_basedir=/opt/salome
+_installdir=${_basedir}
+_profiledir=${_basedir}/env.d
 
 prepare() {
   msg "Connecting to git server..."
@@ -65,8 +68,17 @@ build() {
   mkdir -p "$srcdir/$_source/build"
   cd "$srcdir/$_source/build"
 
+  # -DCMAKE_BUILD_TYPE=Debug \
+  # -DCMAKE_VERBOSE_MAKEFILE=On \
+  # -DSALOME_CMAKE_DEBUG=On
+
   cmake .. \
      -DCMAKE_INSTALL_PREFIX=${_installdir} \
+     -DCMAKE_CXX_STANDARD=98 \
+     -DSALOME_USE_MPI=On \
+     -DSALOME_USE_LIBBATCH=On \
+     -DMPI_ROOT_DIR=/usr \
+     -DHDF5_ROOT_DIR=/opt/hdf5-1.8 \
      -DPYTHON_EXECUTABLE=/usr/bin/python2 \
      -DPTHREAD_ROOT_DIR=/usr \
      -DBOOST_ROOT_DIR=/usr \
@@ -88,9 +100,41 @@ build() {
 package() {
   cd "${srcdir}/${_source}/build"
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
 
-  install -D -m755 "$srcdir/$pkgname.profile" \
-                   "$pkgdir/etc/salome/profile.d/$pkgname.sh"
+  for _FILE in `find -L ${pkgdir}${_installdir} -iname *.py`
+  do
+    sed -i -e "s|${srcdir}||" ${_FILE}
+    sed -i -e "s|${pkgdir}||" ${_FILE}
+  done
+  for _FILE in `find -L ${pkgdir}${_installdir}/bin/salome/test/ -iname "*.cmake"`
+  do
+    msg ${_FILE}
+    sed -i -e "s| python | python2 |" ${_FILE}
+  done
+
+  rm -f "${pkgdir}${_installdir}/bin/salome/VERSION"
+
+  for _FILE in {"salome","envd","runConsole","runRemote.sh","runSalomeScript","runSession"}
+  do
+    ln -s "${_installdir}/bin/salome/appliskel/${_FILE}" "${pkgdir}${_installdir}"
+  done
+
+  for _FILE in {"getApplyPath","update_catalogs","kill_remote_containers"}
+  do
+    ln -s ${_installdir}/bin/salome/appliskel/${_FILE}.py "${pkgdir}${_installdir}"
+    ln -s ${_installdir}/bin/salome/appliskel/${_FILE}.pyc "${pkgdir}${_installdir}"
+    ln -s ${_installdir}/bin/salome/appliskel/${_FILE}.pyo "${pkgdir}${_installdir}"
+  done
+
+  ln -s /tmp "${pkgdir}${_installdir}/USERS"
+
+  # install profile
+  install -D -m755 "${srcdir}/${pkgname}.profile" \
+                   "${pkgdir}${_profiledir}/${pkgname}.sh"
+
+  # install link to launcher in /usr/bin
+  install -d -m755 "${pkgdir}/usr/bin"
+  ln -s "${_installdir}/salome" "${pkgdir}/usr/bin/salome"
 }
-md5sums=('0190508dd75e07f6b8f6230660477c11')
+md5sums=('caa0cf581852ab625fff04a9f0100f5b')
