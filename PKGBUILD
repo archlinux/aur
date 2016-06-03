@@ -3,7 +3,7 @@
 pkgname=check_mk-agent
 pkgver=1.2.8p3
 pkgrel=2
-pkgdesc="Agent to retrieve Information from Client in a Check_MK environment"
+pkgdesc="Agent to send information to a Check_MK server"
 arch=(any)
 url="https://mathias-kettner.de"
 license=('GPLv2')
