@@ -11,22 +11,26 @@
 #   This one is merely an alternative in case the other fails to install.
 # The non-git variant downloads and installs MUCH faster than this one:
 #   'archdroid-icon-theme' == 1MB download (xz archive),
-#   'archdroid-icon-theme-git' == 40MB download (full git clone/gz archive).
+#   'archdroid-icon-theme-git' == 50MB download (full git clone/gz archive).
 # In other words, download 'archdroid-icon-theme' instead of this package,
 #   unless you have a specific reason otherwise
 #   (e.g., 'archdroid-icon-theme' doesn't download correctly).
+#   
+# Since this theme is comprised of svg images, it uses local fonts.
+#   The few icons which display text require the Roboto font.
+# If you do not have Roboto installed but want to install this theme anyway,
+#   comment out the `prepare()` function or insert a `return` at the top of it.
 #
 # If you find any problems or have any suggestions, ideas, or requests,
-#   by all means, PLEASE let me know.
-#   You can do that here:
+#   by all means, please let me know:
 #     'https://github.com/GreenRaccoon23/archdroid-icon-theme/issues'
-#   I'd really appreciate your feedback,
-#     and I will most likely implement any additions you request.
+# I'd appreciate your feedback and most likely
+#   will implement any additions you request.
 
 pkgname=archdroid-icon-theme-git
 pkgver=r105.d08b8b8
 pkgrel=1
-pkgdesc="Port of Android 5.0 Lollipop's material design icons to Arch."
+pkgdesc="Port of Android 5/6 (Lollipop/Marshmallow)'s material design icons to Arch."
 arch=('any')
 url="https://github.com/GreenRaccoon23/${pkgname%-*}"
 license=('GPL3')
