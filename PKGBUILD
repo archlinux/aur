@@ -16,6 +16,6 @@ package() {
         mkdir $pkgdir/usr && mkdir $pkgdir/usr/share
         cp -rf vega $pkgdir/usr/share
         mkdir $pkgdir/usr/bin
-	ln -sv $pkgdir/usr/share/vega/Vega $pkgdir/usr/bin/vega
+	sudo ln -sv /usr/share/vega/Vega /usr/bin/vega
 }
 
