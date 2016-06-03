@@ -1,0 +1,3 @@
+#!ipxe
+ifconf
+chain https://www.archlinux.org/releng/netboot/archlinux.ipxe || shell
