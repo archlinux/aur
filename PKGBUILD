@@ -1,4 +1,3 @@
-
 # Maintainer: Michael Straube <m.s.online gmx.de>
 
 pkgname=sdlpop
