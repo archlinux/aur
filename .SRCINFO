@@ -1,0 +1,28 @@
+pkgbase = dhcpcd-trunk
+	pkgdesc = RFC2131 compliant DHCP client daemon
+	pkgver = 6.11.0
+	pkgrel = 2
+	url = http://roy.marples.name/projects/dhcpcd/
+	arch = i686
+	arch = x86_64
+	groups = base
+	license = BSD
+	makedepends = fossil
+	depends = glibc
+	depends = sh
+	depends = udev
+	depends = libsystemd
+	optdepends = openresolv: resolvconf support
+	provides = dhcp-client
+	conflicts = dhcpcd
+	options = emptydirs
+	backup = etc/dhcpcd.conf
+	source = fix_truncated.patch::http://roy.marples.name/projects/dhcpcd/vpatch?from=ac4e95dcbdeba0ea&to=3fd740f3ed17e902
+	source = dhcpcd_.service
+	source = dhcpcd.service
+	sha1sums = a10f1420174250e8c4ec6b25fce2222a2911f3c5
+	sha1sums = 6f1633edde14d29b5cdc09c4f029a450ef2ebc96
+	sha1sums = 52c1bad9ab43e9a253c1eb175e7eefb13497b8f9
+
+pkgname = dhcpcd-trunk
+
