@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx100@gmail.com>
 
 pkgname=matrix-synapse-git
-pkgver=0.14.0.r322.g56aae0e
+pkgver=0.16.0.rc1.r13.g5f88549
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
 license=('Apache')
@@ -37,8 +37,8 @@ pkgver() {
 
 prepare() {
 	cd synapse
-	git apply "$srcdir/deps-relax-pynacl-check.patch"
-	git apply "$srcdir/deps-relax-pysaml2-check.patch"
+	git apply -3 "$srcdir/deps-relax-pynacl-check.patch"
+	git apply -3 "$srcdir/deps-relax-pysaml2-check.patch"
 }
 
 build() {
