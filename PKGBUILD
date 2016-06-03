@@ -8,7 +8,8 @@ pkgdesc="A free to use program that lets you create and perform real-time audio 
 arch=('i686' 'x86_64')
 url="http://www.vsxu.com/"
 license=('GPL' 'custom')
-depends=('desktop-file-utils' 'glew' 'glfw' 'libpng12' 'opencv' 'xdg-utils')
+depends=('desktop-file-utils' 'glew' 'glfw' 'libpng12' 'opencv' 
+'xdg-utils')
 makedepends=('alsa-lib' 'cmake' 'git' 'pulseaudio' 'jack')
 optdepends=(
   'alsa-lib: ALSA support.'
@@ -40,6 +41,9 @@ prepare() {
   git submodule init
   git config submodule.plugins/src/mesh.importers/cal3d.url "${srcdir}/cal3d"
   git submodule update plugins/src/mesh.importers/cal3d
+  # Patch CAL3D to build against GCC 6.1.1
+  sed -i -e "s/return false/return 0/" "${srcdir}/vsxu-git/plugins/src/mesh.importers/cal3d/cal3d/src/cal3d/loader.cpp"
+  sed -i -e "s/return false/return 0/" "${srcdir}/vsxu-git/plugins/src/mesh.importers/cal3d/cal3d/src/cal3d/xmlformat.cpp"
 }
 
 build() {
