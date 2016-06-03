@@ -5,8 +5,13 @@ pkgbase = beef-xss-git
 	url = http://beefproject.com/
 	arch = any
 	license = GPL
+	depends = unzip
+	depends = ruby
+	depends = rake
+	depends = sqlite
 	provides = beef-xss-git
 	conflicts = beef-xss-git
+	source = https://github.com/beefproject/beef/archive/master.zip
 
 pkgname = beef-xss-git
 
