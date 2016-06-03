@@ -3,8 +3,11 @@ post_install() {
   mkdir -p /var/log/sogo
   chown -R sogo:sogo /etc/sogo /var/log/sogo
   /usr/sbin/systemctl daemon-reload
-  echo "NOTE: If upgrading from a 2.1.x version of sogo, you must run the SQL update"
-  echo "script for your installed SQL server, located in /usr/lib/sogo/scripts."
+  echo "NOTE: If migrating from a version of SOGo prior to 2.3.0, you must run the SQL"
+  echo "update script(s) for your SQL server, located in /usr/lib/sogo/scripts."
+  echo "WARNING: Do not run the 3.0.0-to-combined scripts unless you intend to move"
+  echo "to the new table format. Please consult the documentation before doing so."
+
 }
 
 pre_remove() {
@@ -14,8 +17,8 @@ pre_remove() {
 
 post_upgrade() {
   /usr/sbin/systemctl daemon-reload
-  echo "NOTE: If upgrading from a 2.1.x version of sogo, you must run the SQL update"
-  echo "script for your installed SQL server, located in /usr/lib/sogo/scripts."
-  echo "It is not necessary to run the 3.0.0-3.1.0 script unless you want to move"
-  echo "to the new table format. Please consult the documentaion before doing so."
+  echo "NOTE: If upgrading from a version of SOGo prior to 2.3.0, you must run the SQL"
+  echo "update script(s) for your SQL server, located in /usr/lib/sogo/scripts."
+  echo "WARNING: Do not run the 3.0.0-to-combined script unless you intend to move"
+  echo "to the new table format. Please consult the documentation before doing so."
 }
