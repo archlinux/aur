@@ -1,9 +1,72 @@
-_color() {
-  tput bold && tput setaf "${1}";
-  if ! [ "${2}" ]; then
-    return;
-  fi;
-  printf "%s" "${2}";
+post_install() {
+  _gtkUpdate;
+  _credits;
+}
+
+post_upgrade() {
+  _gtkUpdate;
+  _credits;
+}
+
+post_remove() {
+  gtk-update-icon-cache;
+}
+
+_gtkUpdate() {
+  _msg "Updating icon cache"...;
+
+  local -ar Themes=( 
+    Amber
+    ArchBlue
+    Blue
+    BlueGrey
+    BlueGreyDark
+    Brown
+    BrownDark
+    Cyan
+    DeepOrange
+    DeepOrangeDark
+    DeepPurple
+    Green
+    Grey
+    Indigo
+    KellyGreen
+    LightBlue
+    LightGreen
+    Lime
+    Orange
+    Pink
+    Purple
+    Red
+    Shamrock
+    Teal
+    Yellow
+  );
+
+  local theme;
+  for theme in "${Themes[@]}"; do
+    local dir="Archdroid-${theme}";
+    local path="usr/share/icons/${dir}";
+
+    _msg2 "${dir}";
+    gtk-update-icon-cache -ftq "${path}";
+  done;
+}
+
+_credits() {
+  _msg "Credits to Google, Ubuntu Mono, Mint-X, and Numix for this theme";
+}
+
+_msg() {
+  _green "==> ";
+  _white "$@";
+  tput sgr 0;
+}
+
+_msg2() {
+  _blue "  -> ";
+  _white "$@";
+  tput sgr 0;
 }
 
 _green() {
@@ -21,56 +84,15 @@ _white() {
   done ;
 }
 
-_msg() {
-  _green "==> ";
-  _white "$@";
-  tput sgr 0;
-}
+_color() {
+  tput bold;
+  tput setaf "${1}";
 
-_msg2() {
-  _blue "  -> ";
-  _white "$@";
-  tput sgr 0;
-}
+  if ! [ "${2}" ]; then
+    return;
+  fi;
 
-_gtkUpdate() {
-  _msg "Updating icon cache"...;
-
-  a="Archdroid";
-  Colors=( 
-    Amber ArchBlue Blue BlueGrey 
-    Brown Cyan DeepOrange DeepPurple 
-    Green Grey Indigo KellyGreen 
-    LightBlue LightGreen Lime Orange 
-    Pink Purple Red Shamrock 
-    Teal Yellow 
-  );
-
-  for c in "${Colors[@]}"; do
-    t="${a}-${c}";
-    d="usr/share/icons/${t}";
-
-    _msg2 "${t}";
-    gtk-update-icon-cache -ftq "${d}";
-  done;
-}
-
-_credits() {
-  _msg "Credits to Google, Ubuntu Mono, Mint-X, and Numix for this theme";
-}
-
-post_install() {
-  _gtkUpdate;
-  _credits;
-}
-
-post_upgrade() {
-  _gtkUpdate;
-  _credits;
-}
-
-post_remove() {
-  gtk-update-icon-cache;
+  printf "%s" "${2}";
 }
 
 # vim: ts=2 sw=2 et:
