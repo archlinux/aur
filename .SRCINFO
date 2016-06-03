@@ -1,0 +1,15 @@
+pkgbase = envman
+	pkgdesc = Manage your Environment Variable collections.
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/bitrise-io/envman
+	arch = x86_64
+	license = MIT
+	provides = envman
+	source = https://github.com/bitrise-io/envman/releases/download/1.1.0/envman-Linux-x86_64
+	source = https://raw.githubusercontent.com/bitrise-io/envman/master/LICENSE
+	md5sums = ea369a4bb1acc001e891a2929377a04f
+	md5sums = 10c39cc7466456c17298b32d04bfa8d9
+
+pkgname = envman
+
