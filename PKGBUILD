@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-color-scheme
-_commit=3048aea # 7 digits
+_commit=4994807 # 7 digits
 pkgver=20160601
 pkgrel=1
 pkgdesc="Papirus color scheme for KDE"
