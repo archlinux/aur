@@ -29,5 +29,5 @@ prepare() {
 package() {
   cp -R "${srcdir}/${pkgname}-${pkgver}"/{opt,usr} "${pkgdir}"
   mkdir -p "${pkgdir}/usr/bin"
-  ln -nsf "/opt/HipChat4/bin/HipChat4" "${pkgdir}/usr/bin/HipChat4"
+  ln -nsf "/opt/HipChat4/bin/HipChat4" "${pkgdir}/usr/bin/hipchat4"
 }
