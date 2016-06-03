@@ -8,7 +8,7 @@ url='https://twitter.com/hmknapp'
 license=('Freeware')
 options=(!strip)
 source=("$pkgname-$pkgver.tar.gz::https://www.dropbox.com/s/y9gvj9bukfetdlq/$pkgname-$pkgver.tar.gz?dl=1")
-md5sums=('a904f482330a04744084ebd37c838722')
+md5sums=("fff332361eab8fe6f5b210d7cf030273")
 
 package() {
   mkdir -p "$pkgdir/usr/bin/"
