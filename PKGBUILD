@@ -4,8 +4,8 @@
 # Contributor: Roberto Alsina <ralsina@kde.org>
 
 pkgname=mpop-gnome
-pkgver=1.2.4
-pkgrel=2
+pkgver=1.2.5
+pkgrel=1
 pkgdesc="A small, fast POP3 client suitable as a fetchmail replacement with GNOME keyring support"
 arch=('i686' 'x86_64')
 url="http://mpop.sourceforge.net/"
@@ -16,7 +16,7 @@ conflicts=('mpop')
 replaces=('mpop')
 install=$pkgname.install
 source=("http://downloads.sourceforge.net/mpop/mpop-$pkgver.tar.xz"{,.sig})
-md5sums=('7ceca49cb4a453c52374afcf9ae90c21'
+md5sums=('698654c7dd76047933c3f1f4caa0cdfb'
          'SKIP')
 validpgpkeys=('2F788CDEF4181652720EF132F4926138953E5294')
 

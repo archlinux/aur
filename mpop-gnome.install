@@ -1,16 +1,8 @@
-infodir=/usr/share/info
-
 post_install() {
-  install-info "$infodir/mpop.info" "$infodir/dir" 2>/dev/null
-
   echo "==> Sample config: /usr/share/mpop/mpoprc.example"
   echo "==> Copy it to your home folder as ~/.mpoprc."
 }
 
 post_upgrade() {
   post_install $1
-}
-
-pre_remove() {
-  install-info --delete "$infodir/mpop.info" "$infodir/dir" 2>/dev/null
 }
