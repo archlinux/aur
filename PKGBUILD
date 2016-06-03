@@ -4,12 +4,11 @@ pkgrel=1
 pkgdesc="An easy-to-use, robust, and highly configurable VPN (Virtual Private Network) - git checkout"
 arch=(i686 x86_64)
 url="http://openvpn.net/index.php/open-source.html"
-depends=('mbedtls' 'lzo' 'snappy' 'lz4' 'iproute2')
+depends=('openssl' 'mbedtls' 'lzo' 'snappy' 'lz4' 'iproute2')
 optdepends=('easy-rsa: for easy key management')
 conflicts=('openvpn' 'openvpn-dev' 'openvpn-git')
 provides=('openvpn=2.3.0' 'openvpn-dev')
 license=('custom')
-# for 2.3.x release branch use: git://git.code.sf.net/p/openvpn/openvpn#branch=release/2.3
 source=('git://git.code.sf.net/p/openvpn/openvpn')
 sha256sums=('SKIP')
 
@@ -27,7 +26,7 @@ build() {
 	cd openvpn/
 
 	# Build openvpn
-	autoreconf -vi
+	autoreconf -iv
 	CFLAGS="${CFLAGS} -DPLUGIN_LIBDIR=\\\"/usr/lib/openvpn\\\"" ./configure \
 		--prefix=/usr \
 		--enable-iproute2 \

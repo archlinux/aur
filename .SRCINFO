@@ -6,6 +6,7 @@ pkgbase = openvpn-mbedtls-git
 	arch = i686
 	arch = x86_64
 	license = custom
+	depends = openssl
 	depends = mbedtls
 	depends = lzo
 	depends = snappy
