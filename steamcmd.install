@@ -1,7 +1,5 @@
 post_install() {
-	echo "UPDATING STEAMCMD FOR FIRST USE!"
-	exec /usr/share/steamcmd/steamcmd.sh +quit
-	chgrp -R users /usr/share/steamcmd
+	echo "Run steamcmd with no arguments before first use."
 }
 
 post_upgrade() {
