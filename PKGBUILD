@@ -2,11 +2,12 @@
 
 pkgname=thor-codec
 _pkg=thor
-pkgver=r130.50d6802
+pkgver=r134.8d9e0c8
 pkgrel=1
 url=https://tools.ietf.org/html/draft-fuldseth-netvc-thor
 pkgdesc="The Thor video codec is a block-based hybrid video codec similar in structure to widespread standards."
 license=("custom:BSD")
+depends=("glibc")
 arch=("i686" "x86_64")
 
 source=("${_pkg}::git+https://github.com/cisco/thor.git")
@@ -30,11 +31,19 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_pkg}"
+  # Binaries on src/thor/build directory
+#  cd "${srcdir}/${_pkg}"
+#
+#  make DESTDIR=${pkgdir} prefix=/usr \
+#	localstatedir=/var sysconfdir=/etc \
+#	sbindir=/usr/bin bindir=/usr/bin \
+#	libdir=/usr/lib libexecdir=/usr/lib \
+#	install
 
-  make DESTDIR=${pkgdir} prefix=/usr \
-	localstatedir=/var sysconfdir=/etc \
-	sbindir=/usr/bin bindir=/usr/bin \
-	libdir=/usr/lib libexecdir=/usr/lib \
-	install
+mkdir -p "${pkgdir}/usr/bin"
+mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+
+cp "${srcdir}/${_pkg}/build/Thordec" "${pkgdir}/usr/bin/"
+cp "${srcdir}/${_pkg}/build/Thorenc" "${pkgdir}/usr/bin/"
+cp "${srcdir}/${_pkg}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
