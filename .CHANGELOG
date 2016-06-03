@@ -1,0 +1,76 @@
+* commit 64c9b940d2b0ba354226fc023ffca6ca77a7b630
+| Author: SimonN <eiderdaus@gmail.com>
+| Date:   Fri Sep 4 19:43:31 2015 +0200
+| 
+|     advance on click or assign during pause
+|  
+* commit a61fcfd6f66af9e1910e6163006fb1f30b6aa230
+| Author: SimonN <eiderdaus@gmail.com>
+| Date:   Sun Jan 31 14:11:49 2016 +0100
+| 
+|     replay verifier can convert and overwrite
+|     
+|     Run lix --help for instructions
+|  
+* commit e5c3d13b43daecfa9d3840d504f41942773e9d3c
+| Author: SimonN <eiderdaus@gmail.com>
+| Date:   Sun Jan 31 09:13:59 2016 +0100
+| 
+|     level export, text won't overflow
+|  
+* commit da33317129efa59e83cfebeafea8e01d69791eae
+| Author: SimonN <eiderdaus@gmail.com>
+| Date:   Sat Jan 30 22:29:41 2016 +0100
+| 
+|     removed circle on visited/failed levels
+|     
+|     The failing result isn't even saved to the user file.
+|  
+* commit 47dfd2317509ed5cb39b7b230b2de138dc613a6d
+| Author: SimonN <eiderdaus@gmail.com>
+| Date:   Sat Jan 9 05:40:45 2016 +0100
+| 
+|     lemforum levels updated to 2015-06
+|  
+* commit dead180bf5961f804dd1920958061e39f30a7484
+| Author: SimonN <eiderdaus@gmail.com>
+| Date:   Sat Jan 9 04:52:13 2016 +0100
+| 
+|     bugfix: too many effects generated on framestep
+|     
+|     This fix works for replays played from the replay browser,
+|     and for normal play with framestepping.
+|     
+|     It does not work for loading the user savestate: Effects will
+|     probably be drawn at least once. I'd have to save the entire effect
+|     list with the user savestate, which would be overkill right now.
+|  
+* commit 0595af31d07289c6cb246e3e1ddb07c4f42c3dfd
+| Author: SimonN <eiderdaus@gmail.com>
+| Date:   Thu Oct 8 18:44:44 2015 +0200
+| 
+|     don't savestate during verify mode
+|     
+|     This cuts the time per verified level to about a fifth.
+|  
+* commit 9dbef36198b49aa6dea5d94bb0785abc0903e7b6
+| Author: SimonN <eiderdaus@gmail.com>
+| Date:   Thu Sep 10 04:13:49 2015 +0200
+| 
+|     bugfix: panel displays 'Shrugger', not 'Shrugger2'
+|  
+* commit 1766ca0f8046ba07b4a3d403278a165f1e84d177
+| Author: geoo89 <geoo89@gmail.com>
+| Date:   Tue Sep 8 19:55:19 2015 +0200
+| 
+|     L1 levels: read 2 bytes, ignore big byte
+|     
+|     Some values in the L1 format were treated as 2 byte values while
+|     one of the two bytes should be ignored. Fixed.
+|     This especially affects Lemmix levels exported with NeoLemmix.
+|  
+* commit 6d737facec033e7e53f449431e681a6588f6d862
+| Author: SimonN <eiderdaus@gmail.com>
+| Date:   Fri Sep 4 12:29:05 2015 +0200
+| 
+|     umlauts in _german.X and jumpers tutorial
