@@ -1,23 +1,27 @@
-# Maintainer: Grigorii Horos <horosgrisa@gmail.com>
+# Maintainer: FadeMind <fademind@gmail.com>
 
-_git=3f97691234d1688ad54b94d9b81f9ef181b0d8e9
-_repo=papirus-pack-kde
 pkgname=papirus-gtk-theme
-pkgver=20151004
+_commit=dad8ab3 # 7 digits
+pkgver=20160603
 pkgrel=1
-pkgdesc="Modified and adaptive Paper gtk theme"
-arch=('any')
-url="https://github.com/varlesh/${_repo}"
-license=('CCPL:by-sa')
+pkgdesc="Papirus color scheme for KDE "
+url="https://github.com/PapirusDevelopmentTeam/${pkgname}"
+arch=('i686' 'x86_64')
+license=('GPL')
+depends=('plasma-desktop' 'gtk2' 'gtk3' 'gtk-engine-murrine')
+optdepends_x86_64=('lib32-gtk2' 'lib32-gtk3' 'lib32-gtk-engine-murrine')
+makedepends=('git' 'make')
+conflicts=('papirus-gtk-theme-git')
 options=('!strip')
-depends=('gtk-engine-murrine')
-source=("${_repo}-${pkgver}.tar.gz::${url}/archive/${_git}.tar.gz")
-sha256sums=('87e2b1cbb0e08588a231d5c2638926de7ba566c5c0df81f4a897f95b54957f63')
+source=("${pkgname}::git+${url}.git#commit=${_commit}")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd ${pkgname}
+    git log -1 --format="%cd" --date=short | tr -d '-'
+}
 
 package() {
-    install -d ${pkgdir}/usr/share/themes
-    cp -r ${srcdir}/${_repo}-${_git}/gtk-themes/papirus* ${pkgdir}/usr/share/themes/
-    install -D -m644  ${srcdir}/${_repo}-${_git}/gtk-themes/papirus/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-    find ${pkgdir}/usr -type f -exec chmod 644 {} \;
-    find ${pkgdir}/usr -type d -exec chmod 755 {} \;
-} 
+    cd ${pkgname}
+    make install DESTDIR="$pkgdir"
+}
