@@ -3,7 +3,7 @@
 pkgname=salome-netgenplugin
 pkgver=7.6.0
 _netgenver=4.9.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic platform for Pre and Post-Processing for numerical simulation - NETGEN plugin"
 url="http://www.salome-platform.org"
 depends=('salome-smesh>=7.6.0' 'salome-smesh<7.7.0')
@@ -13,7 +13,9 @@ source=("http://downloads.sourceforge.net/netgen-mesher/netgen-${_netgenver}.tar
 options=()
 
 _source=netgenplugin
-_installdir=/opt/salome/netgenplugin
+_basedir=/opt/salome
+_installdir=${_basedir}
+_profiledir=${_basedir}/env.d
 _paraviewrootdir=/usr
 _paraviewver=4.2
 
@@ -66,12 +68,13 @@ build() {
   rm -rf "${srcdir}/${_source}/build"
   mkdir -p "${srcdir}/${_source}/build"
   cd "${srcdir}/${_source}/build"
-  source /etc/salome/profile.d/salome-kernel.sh
-  source /etc/salome/profile.d/salome-gui.sh
-  source /etc/salome/profile.d/salome-geom.sh
-  source /etc/salome/profile.d/salome-smesh.sh
+  source ${_profiledir}/salome-kernel.sh
+  source ${_profiledir}/salome-gui.sh
+  source ${_profiledir}/salome-geom.sh
+  source ${_profiledir}/salome-smesh.sh
   cmake .. \
      -DCMAKE_INSTALL_PREFIX=${_installdir} \
+     -DCMAKE_CXX_STANDARD=98 \
      -DPYTHON_EXECUTABLE=/usr/bin/python2 \
      -DSWIG_EXECUTABLE=/usr/bin/swig-2 \
      -DVTK_DIR="${_paraviewrootdir}/lib/cmake/paraview-${_paraviewver}" \
@@ -85,7 +88,7 @@ package() {
   cd "${srcdir}/netgen-${_netgenver}"
   
   make DESTDIR="${pkgdir}" install
-  
+
   install -D -m644 "${srcdir}/netgen-${_netgenver}/doc/ng4.pdf" \
                    "${pkgdir}/${_installdir}/doc/netgen/ng4.pdf"
 
@@ -93,10 +96,21 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  install -D -m755 "$srcdir/$pkgname.profile" \
-                   "$pkgdir/etc/salome/profile.d/$pkgname.sh"
+  for _FILE in `find -L ${pkgdir}${_installdir} -iname *.py`
+  do
+    sed -i -e "s|${srcdir}||" ${_FILE}
+    sed -i -e "s|${pkgdir}||" ${_FILE}
+  done
+
+  for _FILE in /share/salome/resources/netgenplugin/mesh_tree_algo_netgen_2d.png /share/salome/resources/netgenplugin/mesh_tree_hypo_netgen.png /share/salome/resources/netgenplugin/mesh_tree_hypo_netgen_2d.png /share/salome/resources/netgenplugin/mesh_tree_algo_netgen_2d3d.png
+  do
+    optipng -quiet -force -fix ${pkgdir}${_installdir}${_FILE}
+  done
+
+  install -D -m755 "${srcdir}/${pkgname}.profile" \
+                   "${pkgdir}${_profiledir}/$pkgname.sh"
 }
 md5sums=('2d56642ca673106837bcd08ff9913d57'
          'b19f13b42651b992359eaf0ad4ae346b'
          '4ae279ab4558b1719fe1d8d65a1ed1a1'
-         'd143fa3d279a64e0676eb0b43709ffee')
+         'f938a65ecc17a9586afee6f214743f23')
