@@ -1,5 +1,5 @@
 pkgname=crate
-pkgver=0.54.8
+pkgver=0.54.9
 pkgrel=1
 pkgdesc="shared nothing, fully searchable, document oriented cluster datastore."
 arch=('any')
@@ -23,11 +23,11 @@ package() {
     install -dm755 "$pkgdir/var/log/$pkgname/"
 
     if [ $CARCH = 'x86_64' ]; then
-        install -Dm644 lib/sigar/libsigar-amd64-linux.so "$pkgdir/usr/share/crate/lib/sigar/libsigar-amd64-linux.so"
+        install -Dm644 plugins/sigar/lib/libsigar-amd64-linux.so "$pkgdir/usr/share/crate/plugins/sigar/lib/libsigar-amd64-linux.so"
     else
-        install -Dm644 lib/sigar/libsigar-x86-linux.so "$pkgdir/usr/share/crate/lib/sigar/libsigar-x86-linux.so"
+        install -Dm644 plugins/sigar/lib/libsigar-x86-linux.so "$pkgdir/usr/share/crate/plugins/sigar/lib/libsigar-x86-linux.so"
     fi
-    cp lib/sigar/sigar*.jar "$pkgdir/usr/share/crate/lib/sigar/"
+    cp plugins/sigar/lib/sigar*.jar "$pkgdir/usr/share/crate/lib/sigar/"
     cp lib/*.jar "$pkgdir/usr/share/crate/lib/"
 
     cp config/* $pkgdir/etc/$pkgname
@@ -45,5 +45,3 @@ package() {
         cp -r docs/ $pkgdir/usr/share/doc/$pkgname/
     fi
 }
-md5sums=('ac6e1b48d94aa9d263f5e643e47fa944'
-         '09100d94ae07a9a0be7df56bf9b5ab4d')
