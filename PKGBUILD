@@ -2,7 +2,7 @@
 
 pkgname=rmmagent
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Remote Monitoring Agent for GFI Languard Dashboard'
 arch=('i686' 'x86_64')
 url='http://languard.gfi.com/'
@@ -37,6 +37,8 @@ prepare() {
 	tar -xf control.tar.gz
 	mv usr/local/lib/ usr/lib
 	mv usr/local/rmmagent usr/rmmagent
+	mkdir -p "$pkgdir"/etc/systemd/system	
+	mv "$srcdir"/rmmagentd.service "$pkgdir"/usr/lib/systemd/rmmagentd.service
 }
 
 package() {

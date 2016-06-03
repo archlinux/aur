@@ -1,0 +1,11 @@
+[Unit]
+Description=Languard Remote Management Agent
+
+[Service]
+Type=forking
+TimeoutStartSec=0
+ExecStart=/usr/rmmagent/rmmagentd --start
+ExecStop=/usr/rmmagent/rmmagentd --terminate
+
+[Install]
+WantedBy=multi-user.target
