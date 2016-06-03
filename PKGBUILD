@@ -1,6 +1,6 @@
 # Maintainer: David Runge <dave@sleepmap.de>
 pkgname=uenv-git
-pkgver=0.4.2.r0.gc44c182
+pkgver=0.5.r0.ga731675
 _basename=uenv
 pkgrel=1
 pkgdesc="Useful scripts, systemd timer/service units and their configuration"
@@ -38,13 +38,9 @@ backup=(
 )
 options=()
 install=
-source=('bare/uenv::git://sleepmap.de/software/uenv.git')
+source=("${_basename}::git://sleepmap.de/software/uenv.git")
 noextract=()
 md5sums=('SKIP')
-
-build() {
-  cd "$srcdir"
-}
 
 pkgver() {
   cd "$srcdir/$_basename"
