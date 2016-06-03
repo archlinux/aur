@@ -1,16 +1,16 @@
 # Maintainer: Braeden Mollot <3mollot at gmail dot com>
 pkgname=min-browser-bin
-pkgver=1.2.2
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="A faster, smarter web browser."
 arch=('x86_64')
 url="https://palmeral.github.io/min/"
 license=('Apache')
-depends=('libxtst' 'nodejs' 'gconf' 'desktop-file-utils' 'nss' 'libnotify' 'gnuplot')
+depends=('libxtst' 'libxss' 'nodejs' 'gconf' 'desktop-file-utils' 'nss' 'gnuplot')
 install=$pkgname.install
 source=("https://github.com/minbrowser/min/releases/download/v${pkgver}/Min_${pkgver}_amd64.deb")
 noextract=("Min_${pkgver}_amd64.deb")
-md5sums=('be1a4a8e7974703dc4ebc9b88aa7737c')
+md5sums=('1fd6e4cfa67e156bd274a278686f7ac7')
 
 prepare() {
 	ar vx "Min_${pkgver}_amd64.deb"
