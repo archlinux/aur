@@ -2,4 +2,4 @@
 
 cd /usr/share/sqlninja
 
-.sqlninja
+./sqlninja
