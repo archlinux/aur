@@ -19,7 +19,7 @@ case "${_check}" in
     fi
     export GTK_CSD
     if [ x"$GTK_CSD"x = x"0"x ] ; then
-      export LD_PRELOAD="libgtk3-nocsd.so.0${LD_PRELOAD:+:$LD_PRELOAD}"
+      export LD_PRELOAD="/usr/lib/libgtk3-nocsd.so.0${LD_PRELOAD:+:$LD_PRELOAD}"
     fi
     ;;
 esac
