@@ -1,15 +1,6 @@
+*
+!PKGBUILD
+!.SRCINFO
+!.gitignore
+!papirus-plasma-theme.install
 
-### ArchLinuxPackages
-*.tar
-*.tar.*
-*.jar
-*.exe
-*.msi
-*.zip
-*.tgz
-*.log
-*.log.*
-*.sig
-
-pkg/
-src/
