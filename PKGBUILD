@@ -32,7 +32,7 @@ sha256sums=('ea739c22517cdbe2b5f7c0a5fd05fe8a10ac0629003e71c0c7862f4bb60142cd'
 prepare() {
   cd "${_pkgbase}-${pkgver}"
 
-  msg2 "Fix glamor failing to initialize with mesa
+  msg2 "Fix glamor failing to initialize with mesa"
   patch -Np1 -i ../call-eglBindAPI-after-eglInitialize.patch
 }
 
