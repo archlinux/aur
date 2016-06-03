@@ -31,7 +31,7 @@ depends=(
              "papirus-wallpapers: Papirus wallpapers suite"
              "arc-dark-suite: Arc-Dark cusomization for Plasma 5"
              )
-conflicts=('papirus')
+conflicts=('papirus-git')
 source=()
 sha256sums=()
 
