@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=pimd
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A stand-alone implementation of the DVMRP multicast routing protocol."
 arch=('i686' 'x86_64')
 url="http://freshmeat.net/projects/pimd"
@@ -14,6 +14,10 @@ source=("https://github.com/troglobit/pimd/releases/download/$pkgver/$pkgname-$p
 md5sums=('a3c03e40540980b2c06e265a17988e60'
          '9e221e6c80905fb48d87282b32352e7c')
 
+prepare() {
+  cd ${pkgname}-${pkgver}
+  sed -e 's,sbin,bin,' -i Makefile
+}
 build() {
   cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr --sysconfdir=/etc
