@@ -1,0 +1,28 @@
+pkgbase = gradio-git
+	pkgdesc = A Reddit Client For GNOME (with Gtk+ and Python)
+	pkgver = 2.3
+	pkgrel = 1
+	url = https://github.com/haecker-felix/gradio
+	install = gradio.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gnome-common
+	makedepends = intltool
+	makedepends = itstool
+	makedepends = vala
+	makedepends = yelp-tools
+	makedepends = cmake
+	depends = desktop-file-utils
+	depends = gstreamer
+	depends = json-glib
+	depends = libgee
+	depends = libsoup
+	provides = gradio=2.3
+	options = !emptydirs
+	source = git://github.com/haecker-felix/gradio.git
+	md5sums = SKIP
+
+pkgname = gradio-git
+
