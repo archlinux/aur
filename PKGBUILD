@@ -1,6 +1,6 @@
 # Maintainer: Graham Edgecombe <graham@grahamedgecombe.com>
-pkgname=openrct2-git
-pkgver=r7241.be2d112
+pkgname=openrct2-nightly
+pkgver=r7781.4f6929e
 pkgrel=1
 pkgdesc='Open source re-implementation of Roller Coaster Tycoon 2 (requires full
          copy of the game)'
@@ -18,8 +18,18 @@ conflicts=('openrct2')
 provides=('openrct2')
 options=('!buildflags')
 install=openrct2.install
-source=("$pkgname"::'git+https://github.com/OpenRCT2/OpenRCT2.git#branch=develop')
-sha256sums=('SKIP')
+source=("$pkgname"::'git+https://github.com/OpenRCT2/OpenRCT2.git#branch=develop' "nightly.html"::'https://openrct2.org/downloads/develop/latest')
+sha256sums=('SKIP' 'SKIP')
+
+prepare(){
+  commitHash=`cat nightly.html | egrep -o "https://github.com/OpenRCT2/OpenRCT2/commit/[^\"]+"|cut -d/ -f7`
+  if [ "$commitHash" = "" ]; then 
+    echo "Something is wrong, can't find commit link";
+    exit 1;
+  fi;
+  cd $pkgname
+  git checkout $commitHash
+}
 
 pkgver() {
   cd "$srcdir/$pkgname"
