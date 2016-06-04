@@ -1,0 +1,66 @@
+From 5a20bfa307598828a89dd12ec66d4963230cb8aa Mon Sep 17 00:00:00 2001
+From: Donald Carr <sirspudd@gmail.com>
+Date: Thu, 24 Mar 2016 18:37:57 -0700
+Subject: [PATCH 1/2] Make CFLAGS/CXXFLAGS behave consistently in config.tests
+
+The journald test was failing as sysroot was not being passed to the
+compiler in the compile test. This is due to the fact we were explicitly
+defining sysroot in the CXXFLAGS and not in CFLAGS.
+
+Change-Id: I4b4bda71f9aabc8e420e0e89ff3cc8fa3bbca201
+---
+ config.tests/unix/compile.test | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/config.tests/unix/compile.test b/config.tests/unix/compile.test
+index c8929a3..a80e81a 100755
+--- a/config.tests/unix/compile.test
++++ b/config.tests/unix/compile.test
+@@ -15,6 +15,7 @@ QTCONF=$9
+ shift 9
+ LFLAGS="$SYSROOT_FLAG"
+ INCLUDEPATH=""
++CFLAGS="$SYSROOT_FLAG"
+ CXXFLAGS="$SYSROOT_FLAG"
+ MAC_ARCH_CXXFLAGS=""
+ MAC_ARCH_LFLAGS=""
+@@ -31,12 +32,14 @@ while [ "$#" -gt 0 ]; do
+         shift
+         ;;
+     -arch)
++        MAC_ARCH_CFLAGS="$MAC_ARCH_CFLAGS -arch $2"
+         MAC_ARCH_CXXFLAGS="$MAC_ARCH_CXXFLAGS -arch $2"
+         MAC_ARCH_LFLAGS="$MAC_ARCH_LFLAGS -arch $2"
+         shift
+         ;;
+     -F*|-m*|-x*)
+         LFLAGS="$LFLAGS \"$PARAM\""
++        CFLAGS="$CFLAGS \"$PARAM\""
+         CXXFLAGS="$CXXFLAGS \"$PARAM\""
+         ;;
+     -L*|-l*|-pthread)
+@@ -47,10 +50,12 @@ while [ "$#" -gt 0 ]; do
+         INCLUDEPATH="$INCLUDEPATH \"$INC\""
+         ;;
+     -f*|-D*)
++        CFLAGS="$CFLAGS \"$PARAM\""
+         CXXFLAGS="$CXXFLAGS \"$PARAM\""
+         ;;
+     -Qoption)
+ 	# Two-argument form for the Sun Compiler
++    CFLAGS="$CFLAGS $PARAM \"$2\""
+ 	CXXFLAGS="$CXXFLAGS $PARAM \"$2\""
+ 	shift
+ 	;;
+@@ -72,7 +77,7 @@ test -r Makefile && $MAKE distclean >/dev/null 2>&1
+ # Make sure output from possible previous tests is gone
+ rm -f "$EXE" "${EXE}.exe"
+ 
+-set -- "$QMAKE" -qtconf "$QTCONF" -nocache -spec "$QMKSPEC" "CONFIG+=$QMAKE_CONFIG" "CONFIG+=android_app" "CONFIG-=debug_and_release app_bundle lib_bundle" "LIBS+=$LFLAGS" "LIBS+=$MAC_ARCH_LFLAGS" "INCLUDEPATH*=$INCLUDEPATH" "QMAKE_CXXFLAGS*=$CXXFLAGS" "QMAKE_CXXFLAGS+=$MAC_ARCH_CXXFLAGS" $QMAKE_ARGS "$SRCDIR/$TEST/$EXE.pro" -o "$OUTDIR/$TEST/Makefile"
++set -- "$QMAKE" -qtconf "$QTCONF" -nocache -spec "$QMKSPEC" "CONFIG+=$QMAKE_CONFIG" "CONFIG+=android_app" "CONFIG-=debug_and_release app_bundle lib_bundle" "LIBS+=$LFLAGS" "LIBS+=$MAC_ARCH_LFLAGS" "INCLUDEPATH*=$INCLUDEPATH" "QMAKE_CXXFLAGS*=$CXXFLAGS" "QMAKE_CXXFLAGS+=$MAC_ARCH_CXXFLAGS" "QMAKE_CFLAGS*=$CFLAGS" "QMAKE_CFLAGS+=$MAC_ARCH_CFLAGS" $QMAKE_ARGS "$SRCDIR/$TEST/$EXE.pro" -o "$OUTDIR/$TEST/Makefile"
+ if [ "$VERBOSE" = "yes" ]; then
+     OUTDIR=$OUTDIR "$@" && $MAKE && SUCCESS=yes
+ else
+-- 
+2.7.4
+

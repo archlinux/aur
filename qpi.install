@@ -1,6 +1,6 @@
-_piver="libspiver"
-_qmakepath="libsqmakepath"
-_sysroot="libssysroot"
+_piver="1"
+_qmakepath="/opt/qt-sdk-raspberry-pi1/bin/qmake"
+_sysroot="/mnt/pi"
 
 _sdktool="/usr/libexec/qtcreator/sdktool"
 _devicefamily="raspberrypi"

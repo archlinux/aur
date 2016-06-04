@@ -1,0 +1,25 @@
+From 0311a69dcec83d90fc29c37527e4d59e9b3d57a8 Mon Sep 17 00:00:00 2001
+From: Donald Carr <sirspudd@gmail.com>
+Date: Tue, 15 Mar 2016 19:20:28 -0700
+Subject: [PATCH] Always define arm_thumb
+
+Change-Id: Ia453970c597e4c634df91fd1279c67e76e08f34e
+---
+ src/core/gyp_run.pro | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/core/gyp_run.pro b/src/core/gyp_run.pro
+index 8aa4ad2..57745ab 100644
+--- a/src/core/gyp_run.pro
++++ b/src/core/gyp_run.pro
+@@ -81,6 +81,7 @@ contains(QT_ARCH, "arm") {
+     }
+ 
+     contains(QMAKE_CFLAGS, "-mthumb"): GYP_CONFIG += arm_thumb=1
++    else: GYP_CONFIG += arm_thumb=0
+ }
+ 
+ contains(QT_ARCH, "x86_64"): GYP_CONFIG += target_arch=x64
+-- 
+2.7.3
+

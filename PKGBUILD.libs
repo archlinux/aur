@@ -1,12 +1,12 @@
 # Maintainer: Donald Carr <sirspudd@gmail.com>
 
 pkgname=libspkgname
-provides=("${pkgname}")
-conflicts=("${pkgname}")
-replaces=("${pkgname}")
+_provides_pkgname="qt-sdk-raspberry-pi-target-libs"
+provides=("${_provides_pkgname}")
+conflicts=("${_provides_pkgname}")
 pkgver=libspkgver
 pkgrel=libspkgrel
-pkgdesc="Qt ${pkgver} libs cross compiled for the Raspberry Pi libspiversion"
+pkgdesc="Qt ${pkgver} libs cross compiled for the Raspberry Pi libspiver"
 # I don't know how to set this correct for cross architecture builds
 arch=("any")
 url="http://www.qt.io"

@@ -1,0 +1,26 @@
+From 133d09c9c65cea0addec7963abd32992b2144a0d Mon Sep 17 00:00:00 2001
+From: Donald Carr <sirspudd@gmail.com>
+Date: Tue, 15 Mar 2016 18:48:24 -0700
+Subject: [PATCH] Include neon support for any -fpu=.*neon.*
+
+Change-Id: I9c571c823b6fa2411e003799f7ff8627ef6e1d5e
+---
+ src/core/gyp_run.pro | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/core/gyp_run.pro b/src/core/gyp_run.pro
+index dea1a22..8aa4ad2 100644
+--- a/src/core/gyp_run.pro
++++ b/src/core/gyp_run.pro
+@@ -75,7 +75,7 @@ contains(QT_ARCH, "arm") {
+         # If the toolchain does not explicitly specify to use NEON instructions
+         # we use arm_neon_optional for ARMv7 and newer and let chromium decide
+         # about the mfpu option.
+-        contains(MFPU, "neon")|contains(MFPU, "neon-vfpv4"): GYP_CONFIG += arm_fpu=\"$$MFPU\" arm_neon=1
++        contains(MFPU, ".*neon.*"): GYP_CONFIG += arm_fpu=\"$$MFPU\" arm_neon=1
+         else:!lessThan(MARMV, 7): GYP_CONFIG += arm_neon=0 arm_neon_optional=1
+         else: GYP_CONFIG += arm_fpu=\"$$MFPU\" arm_neon=0 arm_neon_optional=0
+     }
+-- 
+2.7.3
+
