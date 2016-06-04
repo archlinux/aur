@@ -1,7 +1,7 @@
 # Maintainer:  Eric Biggers <ebiggers3 at gmail dot com>
 
 pkgname=jellyfish
-pkgver=2.2.5
+pkgver=2.2.6
 pkgrel=1
 pkgdesc="A tool for fast, memory-efficient counting of k-mers in DNA"
 
@@ -24,4 +24,4 @@ package() {
     make DESTDIR=${pkgdir} install
 }
 
-sha256sums=('e5383f15fa6d5fde87f9913c5267b5b35afa41be341c471768eee8ea44e7d31e')
+sha256sums=('4532fb003a0494f6473bb97d52467904f631b94f7f9afb0d45b398f6c413692e')
