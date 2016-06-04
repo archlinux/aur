@@ -1,16 +1,27 @@
 # Maintainer: Patrick Burroughs (Celti) <celti@celti.name>
 
 pkgbase='strongswan-devel'
+pkgname=('strongswan-devel'
+         'perl-vici-devel'
+         'python-vici-devel'
+         'python2-vici-devel'
+         'ruby-vici-devel')
+pkgver=5.4.1dr4
+pkgrel=1
+
+arch=('i686' 'x86_64')
+license=('GPL' 'MIT')
 pkgdesc='Open source IKEv1/IKEv2 IPSec implementation'
 url='http://www.strongswan.org'
 
-pkgname=('strongswan-devel' 'perl-vici-devel' 'python-vici-devel' 'python2-vici-devel' 'ruby-vici-devel')
-pkgver=5.4.1dr1
-pkgrel=1
-arch=('i686' 'x86_64')
-makedepends=('doxygen' 'gperf' 'systemd' 'unbound' 'pcsclite' 'libmariadbclient' 'libnm-glib' 'python-setuptools' 'python2-setuptools' 'ruby')
-source=("https://download.strongswan.org/strongswan-$pkgver.tar.bz2" "https://download.strongswan.org/strongswan-$pkgver.tar.bz2.sig" 'strongswan.tmpfiles')
-sha256sums=('8d35dda33b6186b49ae6be4983c3a2aadaf11ad3ec2dc2a1cb5a8ef5bd47b8c5' 'SKIP' '59b410cf04e7ff599a097c8f2f291f4cc836e5cb28ecce98df45a41f61a516d6')
+makedepends=('doxygen' 'gperf' 'systemd' 'unbound' 'pcsclite' 'libmariadbclient'
+             'libnm-glib' 'python-setuptools' 'python2-setuptools' 'ruby')
+sha256sums=('c5a1c9e89b1324277df6bfd8123a91aafe25d755bd878d65da60f62f753e3d4e'
+            'SKIP'
+            '59b410cf04e7ff599a097c8f2f291f4cc836e5cb28ecce98df45a41f61a516d6')
+source=("https://download.strongswan.org/strongswan-$pkgver.tar.bz2"
+        "https://download.strongswan.org/strongswan-$pkgver.tar.bz2.sig"
+        'strongswan.tmpfiles')
 validpgpkeys=('948F158A4E76A27BF3D07532DF42C170B34DBA77')
 
 _configure_args=(
@@ -197,16 +208,21 @@ _configure_args=(
 )
 
 build() {
-	cd strongswan-$pkgver
+	cd "strongswan-${pkgver}"
 	./configure -C "${_configure_args[@]}"
 	make
 }
 
 package_strongswan-devel() {
+	arch=('i686' 'x86_64')
+	license=('GPL')
 	pkgdesc='Open source IKEv1/IKEv2 IPSec implementation'
 	url='http://www.strongswan.org'
-	license=('GPL')
-	arch=('i686' 'x86_64')
+
+	backup=(etc/strongswan{.conf,.d/{pki,pool,swanctl{,/swanctl}}.conf})
+	conflicts=('openswan' 'libreswan' 'strongswan' 'ipsec-tools')
+	provides=('strongswan')
+
 	depends=('systemd' 'iproute2')
 	optdepends=('networkmanager-strongswan: for NetworkManager integration'
 	            'unbound: unbound plugin (DNSSEC-enabled resolver)'
@@ -214,29 +230,28 @@ package_strongswan-devel() {
 	            'libmariadbclient: mysql plugin (MySQL database support)'
 	            'curl: curl plugin (for fetching CRLs via libcurl)'
 	            'sqlite: sqlite plugin (SQLite3 database support)')
-	conflicts=('openswan' 'libreswan' 'strongswan' 'ipsec-tools')
-	provides=('strongswan')
-	backup=(etc/strongswan{.conf,.d/{pki,pool,swanctl{,/swanctl}}.conf})
 
-	cd strongswan-${pkgver}
+	cd "strongswan-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 
 	install -Dm644 "${srcdir}/strongswan.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/strongswan.conf"
 }
 
 package_perl-vici-devel() {
+	arch=('any')
+	license=('MIT')
 	pkgdesc='Perl bindings for the strongSwan Versatile IKE Configuration Interface'
 	url='https://wiki.strongswan.org/projects/strongswan/wiki/VICI'
-	license=('MIT')
-	arch=('any')
-	depends=('perl')
-	provides=('perl-vici' 'perl-vici-session')
+
 	conflicts=('perl-vici' 'perl-vici-session')
+	provides=('perl-vici' 'perl-vici-session')
+
+	depends=('perl')
 
 	unset PERL5LIB PERL_MM_OPT PERL_LOCAL_LIB_ROOT
 	export PERL_MM_USE_DEFAULT='1' PERL_AUTOINSTALL='--skipdeps'
 
-	cd strongswan-${pkgver}
+	cd "strongswan-${pkgver}"
 	./configure -C "${_configure_args[@]}" --enable-perl-cpan --enable-perl-cpan-install
 
 	cd src/libcharon/plugins/vici/perl
@@ -247,18 +262,20 @@ package_perl-vici-devel() {
 }
 
 package_python-vici-devel() {
+	arch=('any')
+	license=('MIT')
 	pkgdesc='Python bindings for the strongSwan Versatile IKE Configuration Interface'
 	url='https://wiki.strongswan.org/projects/strongswan/wiki/VICI'
-	license=('MIT')
-	arch=('any')
-	depends=('python')
-	provides=('python-vici')
+
 	conflicts=('python-vici')
+	provides=('python-vici')
+
+	depends=('python')
 
 	PYTHON="/usr/bin/python3"
 
-	cd strongswan-${pkgver}
-	./configure -C "${_configure_args[@]}" --enable-python-eggs
+	cd "strongswan-${pkgver}"
+	./configure -C "${_configure_args[@]}" --enable-python-eggs --enable-python-eggs-install
 
 	cd src/libcharon/plugins/vici/python
 	make && $PYTHON setup.py install --root="${pkgdir}" --optimize=1
@@ -267,18 +284,20 @@ package_python-vici-devel() {
 }
 
 package_python2-vici-devel() {
+	arch=('any')
+	license=('MIT')
 	pkgdesc='Python 2 bindings for the strongSwan Versatile IKE Configuration Interface'
 	url='https://wiki.strongswan.org/projects/strongswan/wiki/VICI'
-	license=('MIT')
-	arch=('any')
-	depends=('python2')
-	provides=('python2-vici')
+
 	conflicts=('python2-vici')
+	provides=('python2-vici')
+
+	depends=('python2')
 
 	PYTHON="/usr/bin/python2"
 
-	cd strongswan-${pkgver}
-	./configure -C "${_configure_args[@]}" --enable-python-eggs
+	cd "strongswan-${pkgver}"
+	./configure -C "${_configure_args[@]}" --enable-python-eggs --enable-python-eggs-install
 
 	cd src/libcharon/plugins/vici/python
 	make && $PYTHON setup.py install --root="${pkgdir}" --optimize=1
@@ -287,15 +306,17 @@ package_python2-vici-devel() {
 }
 
 package_ruby-vici-devel() {
+	arch=('any')
+	license=('MIT')
 	pkgdesc='Ruby bindings for the strongSwan Versatile IKE Configuration Interface'
 	url='https://wiki.strongswan.org/projects/strongswan/wiki/VICI'
-	license=('MIT')
-	arch=('any')
-	depends=('ruby')
-	provides=('ruby-vici')
-	conflicts=('ruby-vici')
 
-	cd strongswan-${pkgver}
+	conflicts=('ruby-vici')
+	provides=('ruby-vici')
+
+	depends=('ruby')
+
+	cd "strongswan-${pkgver}"
 	./configure -C "${_configure_args[@]}" --enable-ruby-gems --enable-ruby-gems-install
 
 	cd src/libcharon/plugins/vici/ruby
