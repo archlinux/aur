@@ -9,11 +9,9 @@ _about_url="https://github.com/fusion809/about"
 _about_arch_ver=1.5.16
 _language_gfm2_ver=0.90.3
 _language_liquid_ver=0.5.1
-_language_unix_shell_ver=0.26.0
 
 pkgname=${_pkgname}-editor-${_version}
-_gitcommit=82b75b5
-pkgver=1.9.0.dev.${_gitcommit}
+pkgver=1.9.0.dev.9019e39
 pkgrel=1
 pkgdesc='Chrome-based text editor from GitHub - Git'
 arch=('x86_64' 'i686')
@@ -32,9 +30,9 @@ sha256sums=('SKIP'
             '8e7723a0618661f5dabc5729deaf0b453ef7945ec904690a95d446eb517ec522'
             '0b3e189202c82c98bc3d3f9a9c88d2aab88537cdd2e0fc2f4d537f55a068acb5')
 
-_gitcommit() {
+pkgver() {
   cd $srcdir/$_pkgname
-  git describe --long | sed 's/v1.6.0-beta0//g' | sed 's/-[0-9]*-//g' | sed 's/g//g'
+  git describe --long | sed 's/v1.6.0-beta0/1.9.0.dev./g' | sed 's/-[0-9]*-//g' | sed 's/g//g'
 }
 
 prepare() {
@@ -43,7 +41,6 @@ prepare() {
   sed -i -e "/exception-reporting/d" \
 	       -e "/metrics/d" \
          -e "s/\"language-gfm\": \".*\",/\"language-gfm2\": \"${_language_gfm2_ver}\",\n    \"language-liquid\": \"${_language_liquid_ver}\",/g" \
-         -e "s/\"language-shellscript\": \".*\",/\"language-unix-shell\": \"${_language_unix_shell_ver}\",/g" \
          -e "s/\"about\": \".*\"/\"about-arch\": \"${_about_arch_ver}\"/g" \
          package.json
 
