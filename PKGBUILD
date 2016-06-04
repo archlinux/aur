@@ -3,7 +3,7 @@
 
 pkgname=qtodotxt
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform UI client for todo.txt files (see todotxt.com)."
 arch=('any')
 url="https://github.com/mNantern/QTodoTxt"
@@ -19,7 +19,7 @@ package() {
   cd "$srcdir/QTodoTxt-$pkgver"
   install -Dm755 bin/qtodotxt $pkgdir/usr/share/qtodotxt/bin/qtodotxt
   cp -pr qtodotxt "$pkgdir/usr/share/qtodotxt/"
-  install -Dm644 artwork/icon/qTodo-512.png "${pkgdir}/usr/share/qtodotxt/artwork/icon/icon512.png"
+  install -Dm644 artwork/icon/qTodo-512.png "${pkgdir}/usr/share/qtodotxt/artwork/icon/qTodo-512.png"
   install -Dm644 packaging/Debian/qtodotxt.desktop "${pkgdir}/usr/share/applications/qtodotxt.desktop"
   mkdir -p $pkgdir/usr/bin/
   ln -s /usr/share/qtodotxt/bin/qtodotxt $pkgdir/usr/bin/qtodotxt
