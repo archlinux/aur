@@ -2,7 +2,7 @@
 # Contributor: Giacomo <giacomogiorgianni at gmail dot com>
 
 pkgname=vokoscreen
-_pkgver=2.4.27-beta
+_pkgver=2.4.28-beta
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='An easy to use screencast creator. Qt5 UI.'
@@ -24,7 +24,7 @@ source=(
 	'fix_lrelease.patch'
 )
 sha512sums=(
-	'c61daf57af615c3b842b7428109700b69b915054b5d59b2cbf70b7bde16996ba319c4e2363ec73fff874ef92815481358338ef680ff269957023d3d46779874c'
+	'79f4284d7e0aa7f3f70dc23ef7d42c2dce17e32d14ce0d0d6777e491f67d30bc3d8885465c3668a1b62434a9316e2e6c8b16d9ef586e0b91026696543592d775'
 	'3ddc567f831b9f6e2672997a77a099cf8fdd5a6a1d79157738c1670c9106fd6c4e09d74287a770c19bac23dcb73a19ce69cc1ac893d4988f75c7ac35668f7a90'
 	'4c7e61e06a90de2815dd7564a9df050a939d5a3a1bb5514ee5808fd5277b5e6a12af80384f630e2c8429ca2decb318684b8f300a64846ae393c9482bc81425a4'
 )
@@ -43,20 +43,14 @@ prepare() {
 }
 
 build() {
-	# Number of jobs
-	declare -i njobs=$(nproc)
-
-	if [[ ${njobs} -ge 8 ]]; then
-		njobs=$(( $njobs - 2 ))
-	fi
-
 	# Building package
 	cd "${srcdir}"/build
 	qmake-qt5 ../${pkgname}-${_pkgver} \
+		QMAKE_CFLAGS="${CFLAGS}" \
+		QMAKE_CXXFLAGS="${CXXFLAGS}" \
 		CONFIG+=release \
 		CONFIG+=c++14
-
-	make -j${njobs}
+	make
 }
 
 package() {
