@@ -1,7 +1,7 @@
 # Maintainer: Daniel Maslowski <info@orangecms.org>
 
 pkgname=fisherman
-pkgver=2.8.0
+pkgver=2.10.0
 pkgrel=2
 pkgdesc="A blazing fast, modern plugin manager for fish"
 arch=('any')
@@ -15,7 +15,7 @@ install=fisherman.install
 source=(
 "https://github.com/$pkgname/$pkgname/archive/$pkgver.tar.gz"
 )
-sha512sums=('c15ccafc5a24abc3201a07d9bb3d5d08bcb585981dc59956ae31e037c990488a6b419c303da73ea61c9bbc498ff6375214ea7ebb31ec3d97c30af4ae932d47d4')
+sha512sums=('d0834378060f48ef39725ff4ff02e3ecf6ab8116ed40268986be7e7c45d1f989eb1970e2dcb546d6d2a2968deff29aab19d01dc3bd55aceb63b3d126592090cc')
 
 package() {
   sharepath="${pkgdir}/usr/share"
