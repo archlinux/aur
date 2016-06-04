@@ -5,7 +5,7 @@
 pkgname=emerald0.9
 _realname=emerald
 pkgver=0.9.5
-pkgrel=20
+pkgrel=21
 pkgdesc="Emerald window decorator (0.9 version)"
 arch=('i686' 'x86_64')
 url="http://www.compiz.org/"
@@ -20,7 +20,6 @@ optdepends=(
 options=(!libtool)
 conflicts=(${_realname})
 provides=(${_realname}=${pkgver})
-install=${_realname}.install
 source=(https://launchpad.net/~nilarimogard/+archive/ubuntu/webupd8/+files/${_realname}_${pkgver}.orig.tar.gz
         fix-desktop-file.patch
         theme-manager-manpage.patch)
