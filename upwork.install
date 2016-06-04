@@ -2,6 +2,7 @@ post_install() {
     xdg-icon-resource forceupdate
     mkdir -p /var/lib/Upwork/upwork
     chmod 777 /var/lib/Upwork/upwork
+    chmod 4755 /usr/share/upwork/chrome-sandbox
 }
 
 post_upgrade() {
