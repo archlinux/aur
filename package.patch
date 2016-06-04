@@ -1,11 +1,13 @@
 diff -aur -bZwB -x .git cadabra2-git.old/frontend/CMakeLists.txt cadabra2-git/frontend/CMakeLists.txt
---- cadabra2-git.old/frontend/CMakeLists.txt	2016-05-30 11:00:31.934410709 -0400
-+++ cadabra2-git/frontend/CMakeLists.txt	2016-05-30 11:01:00.657633955 -0400
-@@ -20,6 +20,8 @@
- # endif(APPLE)
+--- cadabra2-git.old/frontend/CMakeLists.txt	2016-06-04 10:24:47.557487173 -0400
++++ cadabra2-git/frontend/CMakeLists.txt	2016-06-04 10:25:19.020696432 -0400
+@@ -21,8 +21,8 @@
  
  execute_process(COMMAND kpsewhich -var-value=TEXMFLOCAL OUTPUT_VARIABLE INSTALL_LATEX_DIR OUTPUT_STRIP_TRAILING_WHITESPACE)
-+string(REPLACE ":" ";" INSTALL_LATEX_DIR ${INSTALL_LATEX_DIR})
+ # Get the last path in the LaTeX install dir, if there is more than one separated by a ':'.
+-#string(REPLACE ":" ";" INSTALL_LATEX_DIR "${INSTALL_LATEX_DIR}")
+-#list(GET INSTALL_LATEX_DIR -1 INSTALL_LATEX_DIR)
++string(REPLACE ":" ";" INSTALL_LATEX_DIR "${INSTALL_LATEX_DIR}")
 +list(GET INSTALL_LATEX_DIR -1 INSTALL_LATEX_DIR)
  set(INSTALL_LATEX_DIR "${INSTALL_LATEX_DIR}/tex/latex/cadabra2")
  message("-- Installing LaTeX style files in ${INSTALL_LATEX_DIR}")
