@@ -6,3 +6,7 @@ After=network-online.target
 [Service]
 Type=oneshot
 ExecStart=/usr/bin/update-trid-defs
+
+[Install]
+WantedBy=multi-user.target
+           
