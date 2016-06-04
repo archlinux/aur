@@ -4,13 +4,13 @@ _pkgname="home-assistant"
 pkgname="python-home-assistant"
 pkgdesc='Home Assistant is an open-source home automation platform running on Python 3'
 pkgver=0.20.2
-pkgrel=2
+pkgrel=3
 url="https://home-assistant.io/"
 license=('MIT')
 arch=('any')
 makedepends=('python-setuptools')
 # NB: this package will install additional python packages in /var/lib/hass/lib depending on components present in the configuration files.
-depends=('python>=3.4' 'python-pip' 'python-requests' 'python-yaml' 'python-pytz' 'python-vincenty' 'python-jinja>=2' 'python-voluptuous>=0.8.9' 'python-netifaces')
+depends=('python>=3.4' 'python-pip' 'python-requests' 'python-yaml' 'python-pytz' 'python-vincenty' 'python-jinja>=2' 'python-voluptuous>=0.8.9' 'python-netifaces', 'python-webcolors')
 optdepends=('git: install component requirements from github'
             'net-tools: necessary for nmap discovery')
 conflicts=('python-home-assistant' 'python-home-assistant-git')
