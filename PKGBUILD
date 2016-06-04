@@ -45,7 +45,7 @@ _packaginguser=$(whoami)
 _libspkgname="${pkgname}-target-libs"
 _mkspec="linux-rpi${_piver}-g++"
 
-_pkgver=${pkgver}-beta
+_pkgver=${pkgver}-rc
 
 _baseprefix=/opt
 _installprefix=${_baseprefix}/${pkgname}
@@ -60,7 +60,7 @@ depends=("qpi-toolchain" "qtcreator")
 makedepends=("git" "pkgconfig" "gcc")
 source=("git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/development_releases/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.7z")
 
-sha256sums=("SKIP" "d3df816772492d3d4e9bd542d5dfb45071821ab973ab8c426ae96fda4a47a8b9")
+sha256sums=("SKIP" "d258b7cc0db37f9b5c61467862d4f4a5171bce7b8bbb718be95e02b9b7cdc44c")
 
 options=('!strip')
 install=qpi.install
@@ -148,17 +148,6 @@ fi
 
   # Work around our embarresing propensity to stomp on your own tailored build configuration
   sed -i "s/O[23]/Os/"  ${_basedir}/mkspecs/common/gcc-base.conf || exit 1
-
-  # incorporate journald fix
-  local _patch_dir=${startdir}
-  cd ${_basedir}
-  patch -p1 < ${_patch_dir}/0001-Make-CFLAGS-CXXFLAGS-behave-consistently-in-config.t.patch
-  patch -p1 < ${_patch_dir}/0002-Adjust-egl-config.test-to-pass-sysrooted-libs.patch
-  cd ${_webenginedir}
-  patch -p1 < ${_patch_dir}/0001-Include-neon-support-for-any-fpu-.-neon.patch
-  patch -p1 < ${_patch_dir}/0001-Always-define-arm_thumb.patch
-
-  # end patch
 
   mkdir -p ${_bindir}
   cd ${_bindir}
