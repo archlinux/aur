@@ -15,7 +15,7 @@ source=()
 sha256sums=()
 options=('!strip')
 # qtwebengine flac snappy libsrtp jsoncpp libvpx speex opus libxml2 libwebp icu
-depends=("ttf-croscore" "ttf-dejavu" "fontconfig" "wayland" "libxkbcommon" "gstreamer" "flac" "snappy" "libsrtp" "jsoncpp" "libvpx" "speex" "opus" "libxml2" "libwebp" "icu")
+depends=("ttf-croscore" "ttf-dejavu" "fontconfig" "wayland" "libxkbcommon" "gstreamer" "flac" "snappy" "libsrtp" "jsoncpp" "libvpx" "speex" "opus" "libxml2" "libwebp" "icu" "pulseaudio" "mtdev" "libinput")
 
 package() {
     mv ${startdir}/topkg/* ${pkgdir}
