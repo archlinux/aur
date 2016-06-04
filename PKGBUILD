@@ -1,6 +1,6 @@
 # Maintainer: David Thurstenson thurstylark@gmail.com
 pkgname=chirp-hg
-pkgver=r2714.333a280ca0c4
+pkgver=r2714+.333a280ca0c4+
 pkgrel=1
 pkgdesc="GUI tool for programming ham radios, built from hg repo"
 arch=('any')
@@ -17,6 +17,10 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir/$pkgname"
 	printf "r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+}
+
+prepare() {
+	sed -i 's|/usr/sbin|/usr/bin|' $srcdir/$pkgname/setup.py
 }
 
 package() {
