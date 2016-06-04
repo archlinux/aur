@@ -8,7 +8,7 @@ fi
 echo "Please ensure that the seafile server is stopped, then press [ENTER] to proceed"
 read
 
-SEAFILE_VERSION="$(pacman -Qi seafile-server | grep Version | sed 's|[^\n]*: \(.*\)-.*|\1|g')"
+SEAFILE_VERSION="$(LANG=C pacman -Qi seafile-server | grep Version | sed 's|[^\n]*: \(.*\)-.*|\1|g')"
 
 echo "Preparing local seahub for upgrade..."
 
