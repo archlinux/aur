@@ -1,0 +1,32 @@
+pkgbase = libhybris-ext-git
+	pkgver = 775.4cd30c8
+	pkgrel = 1
+	url = https://github.com/mickybart/libhybris_ext
+	arch = armv7h
+	license = Apache
+	makedepends = wayland
+	source = libhybris::git+https://github.com/mickybart/libhybris_ext
+	md5sums = SKIP
+
+pkgname = libhybris-ext-git
+	pkgdesc = hybris allows to use bionic-based HW adaptations in glibc systems (ext version)
+	depends = hybris-device
+	provides = libhybris
+	conflicts = libhybris
+
+pkgname = libhybris-ext-libgl-git
+	pkgdesc = hybris 3-D graphics library
+	depends = libhybris
+	depends = libhybris-ext-wayland-egl-git
+	depends = mesa-hybris
+	provides = libgl
+	conflicts = libgl
+	replaces = libgl
+
+pkgname = libhybris-ext-wayland-egl-git
+	pkgdesc = hybris 3-D wayland library
+	depends = libhybris
+	provides = libwayland-egl
+	conflicts = libwayland-egl
+	replaces = libwayland-egl
+
