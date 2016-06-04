@@ -4,7 +4,7 @@ pkgname=dukto-bin
 pkgver=6.0
 pkgrel=1
 arch=('i686' 'x86_64')
-pkgdesc="Easy multi-platform file and text transfer tool. Dukto is an easy file transfer tool designed for LAN use."
+pkgdesc="Dukto is an easy file transfer tool designed for LAN use. This aur uses the Ubuntu binaries for dukto."
 url='http://msec.it/blog/?page_id=11'
 license=('GPL')
 depends=('gcc-libs' 'glibc' 'hicolor-icon-theme' 'qt4')
