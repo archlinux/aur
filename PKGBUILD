@@ -2,13 +2,12 @@
 
 pkgname=miceamaze
 pkgver=4.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A free video game that features a maze with mice and snakes"
 arch=('i686' 'x86_64')
 url="http://www.miceamaze.org/"
 license=('BSD')
-depends=('hicolor-icon-theme' 'mesa' 'quesoglc' 'sdl' 'sdl_mixer' 'soil' 'ttf-dejavu')
-install=miceamaze.install
+depends=('hicolor-icon-theme' 'quesoglc' 'sdl_mixer' 'soil')
 source=("http://www.miceamaze.org/source-packages/miceamaze-${pkgver}.tar.gz")
 
 build() {
