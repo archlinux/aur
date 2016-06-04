@@ -1,5 +1,5 @@
 pkgbase = gradio-git
-	pkgdesc = A Reddit Client For GNOME (with Gtk+ and Python)
+	pkgdesc = A GTK3 app for finding and listening to internet radio stations
 	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/haecker-felix/gradio
