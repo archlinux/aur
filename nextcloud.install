@@ -1,0 +1,10 @@
+# arg 1:  the new package version
+# arg 2:  the old package version
+
+post_install () {
+  set-nc-perms runtime
+}
+
+post_upgrade() {
+  set-nc-perms runtime
+}
