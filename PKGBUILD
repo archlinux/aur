@@ -9,13 +9,13 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=xapian-core-git
 pkgver=v1.3.5.30.g3e31415
-pkgrel=4
+pkgrel=5
 pkgdesc="Open source search engine library"
 arch=('i686' 'x86_64')
 url="https://github.com/xapian/xapian"
 license=('GPL')
-depends=('zlib')
-makedepends=('git' 'automake' 'autoconf' 'libtool' 'help2man' 'graphviz' 'doxygen' 'python-docutils')
+depends=('zlib' 'util-linux')
+makedepends=('git' 'automake' 'autoconf' 'libtool' 'help2man' 'graphviz' 'doxygen' 'python-docutils' 'tcl')
 provides=('xapian-core')
 conflicts=('xapian-core')
 source=("git://github.com/xapian/xapian")
