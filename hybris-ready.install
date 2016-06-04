@@ -1,0 +1,11 @@
+
+post_install(){
+	printf '===> Android Hw\n'
+	printf '    To start Android services, bootanim, ... Please execute: \n\n'
+	printf '    systemctl enable hybris-ready.service\n\n'
+}
+
+post_upgrade(){
+	post_install
+}
+

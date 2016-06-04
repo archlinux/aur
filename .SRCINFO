@@ -1,0 +1,42 @@
+pkgbase = hybris-ready
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/mickybart/
+	arch = armv7h
+	source = hybris-ready.install
+	source = gls-common::git+https://github.com/mickybart/gnulinux_support-common
+	source = bootanim::git+https://github.com/mickybart/hybris-ready-bootanim
+	md5sums = 9c7d863fd54b8651fb016b40a11173fb
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = hybris-ready
+	pkgdesc = hybris ready permit to fully support GNU/Linux and Android Hardware
+	install = hybris-ready.install
+	depends = hybris-device
+	depends = hybris-usb
+	depends = libhybris
+	depends = libgl
+	depends = libwayland-egl
+	depends = inotify-tools
+	optdepends = hybris-ready-bootanim: required to display a pretty boot animation
+
+pkgname = hybris-ready-bootanim
+	pkgdesc = Boot animation for hybris system
+	depends = hybris-ready
+	depends = hybris-ready-qt5-qpa-meta
+	depends = qt5-declarative
+	depends = qt5-svg
+
+pkgname = hybris-ready-qt5-qpa-meta
+	pkgdesc = Qt QPA Platform for hybris
+	depends = hybris-ready
+	depends = qt5-qpa-hwcomposer-plugin
+	depends = qt5-qpa-surfaceflinger-plugin
+
+pkgname = hybris-ready-plasma-support-meta
+	pkgdesc = plasma support for hybris system
+	depends = hybris-ready
+	depends = qt5-wayland-compositor
+	depends = kwin-hybris
+
