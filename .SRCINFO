@@ -1,0 +1,21 @@
+pkgbase = hybris-usb
+	pkgdesc = USB control for Android with hybris
+	pkgver = 0.1
+	pkgrel = 2
+	arch = armv7h
+	license = custom
+	depends = systemd
+	depends = dhcp
+	source = usb-tethering
+	source = usb-tethering.service
+	source = dhcpd.conf
+	source = dhcpd4.service-customexec.conf
+	source = tmpfiles.d.hybris-usb.conf
+	md5sums = 2d270508c91e94997236e5dacd7bbc8d
+	md5sums = 7976b6c3d662802cc54e3458ec3b891e
+	md5sums = 8d25b1c3f1146635800db77f300b908c
+	md5sums = 0aff78dea49297c615946ee310c49a6b
+	md5sums = 91422a3f2a69c9800d25cd65358fe5df
+
+pkgname = hybris-usb
+
