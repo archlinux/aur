@@ -12,7 +12,6 @@ pkgbase = chirp-hg
 	depends = pygtk
 	depends = curl
 	provides = chirp
-	provides = chirp-daily
 	conflicts = chirp
 	conflicts = chirp-daily
 	source = chirp-hg::http://d-rats.com/hg/chirp.hg
