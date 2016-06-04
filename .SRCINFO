@@ -1,0 +1,21 @@
+pkgbase = qt5-qpa-hwcomposer-plugin
+	pkgdesc = Qt QPA plugin for Android hwcomposer
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = https://github.com/mer-hybris/qt5-qpa-hwcomposer-plugin
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	license = GPL3
+	license = LGPL
+	license = custom
+	depends = qt5-base
+	depends = qt5-wayland-compositor
+	depends = hybris-device
+	depends = libhybris
+	conflicts = qt
+	source = qt5-qpa-hwcomposer-plugin::git+http://github.com/mickybart/qt5-qpa-hwcomposer-plugin.git#tag=v5.6.0
+	md5sums = SKIP
+
+pkgname = qt5-qpa-hwcomposer-plugin
+
