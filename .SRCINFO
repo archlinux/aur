@@ -1,6 +1,6 @@
 pkgbase = chirp-hg
 	pkgdesc = GUI tool for programming ham radios, built from hg repo
-	pkgver = r2714+.333a280ca0c4+
+	pkgver = 1.0
 	pkgrel = 1
 	url = http://chirp.danplanet.com/
 	arch = any

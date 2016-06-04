@@ -1,6 +1,6 @@
 # Maintainer: David Thurstenson thurstylark@gmail.com
 pkgname=chirp-hg
-pkgver=r2714+.333a280ca0c4+
+pkgver=1.0
 pkgrel=1
 pkgdesc="GUI tool for programming ham radios, built from hg repo"
 arch=('any')
