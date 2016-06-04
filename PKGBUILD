@@ -2,26 +2,27 @@
 # Contributor: Janne Haapsaari	<iki.fi: haaja>
 
 pkgname=hfstospell
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc='Helsinki Finite-State Transducer Technology (HFST) tools'
 arch=('i686' 'x86_64')
 url='http://www.ling.helsinki.fi/kieliteknologia/tutkimus/hfst/'
 license=('APACHE')
-depends=('libxml++' 'libarchive' 'libsigc++')
+depends=('libxml++' 'libarchive' 'icu')
 options=(!libtool)
-source=(http://downloads.sourceforge.net/project/hfst/hfst/source/hfstospell-${pkgver}.tar.gz)
-md5sums=('e28ed98558db5caf4ef8a9cc017443ab')
+source=(https://github.com/hfst/hfst-ospell/archive/v${pkgver}.tar.gz)
+md5sums=('0cd7ab3498a6fb39c402a99eebe04e55')
 
 build() {
-  cd "${srcdir}/hfstospell-${pkgver}"
+  cd "${srcdir}/hfst-ospell-${pkgver}"
 
+  ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 package () {
-  cd "${srcdir}/hfstospell-${pkgver}"
+  cd "${srcdir}/hfst-ospell-${pkgver}"
 
    make DESTDIR="${pkgdir}" install
 }
