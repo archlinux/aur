@@ -1,0 +1,5 @@
+atom
+src
+pkg
+*.gz
+*.xz

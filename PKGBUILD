@@ -6,12 +6,12 @@ _version=git
 
 # Module Versions
 _about_url="https://github.com/fusion809/about"
-_about_arch_ver=1.5.16
+_about_arch_ver=1.5.17
 _language_gfm2_ver=0.90.3
 _language_liquid_ver=0.5.1
 
 pkgname=${_pkgname}-editor-${_version}
-pkgver=1.9.0.dev.9019e39
+pkgver=1.9.0.dev.3f85c1d
 pkgrel=1
 pkgdesc='Chrome-based text editor from GitHub - Git'
 arch=('x86_64' 'i686')
@@ -23,10 +23,12 @@ makedepends=('git' 'npm')
 install=${_pkgname}-${_version}.install
 source=("git+${url}.git"
 "about-arch-${_about_arch_ver}.tar.gz::$_about_url/archive/v${_about_arch_ver}.tar.gz"
+"about-git.patch"
 "${_pkgname}-${_version}.desktop"
 "${_pkgname}-${_version}")
 sha256sums=('SKIP'
-            '1f9d3d560ab6374b38644e9c55a7c8fa0f8f581758fb2ee0b18c3f8c53aee44f'
+            '54a5d6b1971af36f1beccf9067ffab1c4adb72bec6fe2b41aebf6b380cd4370c'
+            '8fd5c1f23ec4110ab339d2c8c4305c6d0e9f11f7f6ddc80f3c45ca990691ac43'
             '8e7723a0618661f5dabc5729deaf0b453ef7945ec904690a95d446eb517ec522'
             '0b3e189202c82c98bc3d3f9a9c88d2aab88537cdd2e0fc2f4d537f55a068acb5')
 
@@ -38,6 +40,8 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${_pkgname}"
 
+  # Remove exception-reporting/metrics (priv concerns)
+  # Replace language-gfm with language-gfm2 and language-liquid (provides syntax-highlighting for Liquid/HTML in GFM docs)
   sed -i -e "/exception-reporting/d" \
 	       -e "/metrics/d" \
          -e "s/\"language-gfm\": \".*\",/\"language-gfm2\": \"${_language_gfm2_ver}\",\n    \"language-liquid\": \"${_language_liquid_ver}\",/g" \
@@ -57,7 +61,8 @@ prepare() {
 
   mv $srcdir/about-${_about_arch_ver} $srcdir/about-arch
   mv $srcdir/about-arch node_modules
-  sed -i -e "s/atom-editor/atom-editor-${_version}/g" node_modules/about-arch/lib/about-view.coffee
+  cd node_modules/about-arch
+  patch -Np1 < $srcdir/about-git.patch
 
   sed -i -e "s/<%=Desc=%>/$pkgdesc/g" ${srcdir}/${_pkgname}-${_version}.desktop
 }
