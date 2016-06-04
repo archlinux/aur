@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="http://giowck.github.io/symphytum/"
 license=('BSD')
 depends=('qt5-base' 'qt5-svg' 'sqlite' 'python2' 'python2-setuptools')
-source=("http://giowck.github.io/symphytum/files/$pkgname-$pkgver-src.tar.gz")
+source=("https://github.com/giowck/symphytum/releases/download/v$pkgver/$pkgname-$pkgver-src.tar.gz")
 md5sums=('400484e8b06d77491012989f69105c11')
 
 build() {

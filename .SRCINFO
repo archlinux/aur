@@ -11,7 +11,7 @@ pkgbase = symphytum
 	depends = sqlite
 	depends = python2
 	depends = python2-setuptools
-	source = http://giowck.github.io/symphytum/files/symphytum-2.0-src.tar.gz
+	source = https://github.com/giowck/symphytum/releases/download/v2.0/symphytum-2.0-src.tar.gz
 	md5sums = 400484e8b06d77491012989f69105c11
 
 pkgname = symphytum
