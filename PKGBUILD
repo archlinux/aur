@@ -18,7 +18,7 @@ depends=('python'
          'libdvd-audio-git'
          )
 makedepends=('git'
-             'python-distribute'
+             'python-setuptools'
              )
 optdepends=('faad2: Decoding AAC'
             'faac: Encoding AAC'
