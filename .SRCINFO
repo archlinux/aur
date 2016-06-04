@@ -1,0 +1,15 @@
+pkgbase = stepman
+	pkgdesc = Manage decentralized StepLib Step (script) Collections.
+	pkgver = 0.9.19
+	pkgrel = 1
+	url = https://github.com/bitrise-io/stepman
+	arch = x86_64
+	license = MIT
+	provides = stepman
+	source = https://github.com/bitrise-io/stepman/releases/download/0.9.19/stepman-Linux-x86_64
+	source = https://raw.githubusercontent.com/bitrise-io/stepman/master/LICENSE
+	md5sums = 97482b1f85b0c7216dd6c0486d8d045d
+	md5sums = 10c39cc7466456c17298b32d04bfa8d9
+
+pkgname = stepman
+
