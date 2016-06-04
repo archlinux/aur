@@ -1,12 +1,14 @@
 pkgbase = qtodotxt
 	pkgdesc = A cross-platform UI client for todo.txt files (see todotxt.com).
 	pkgver = 1.6.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mNantern/QTodoTxt
 	install = qtodotxt.install
 	arch = any
 	license = GPL3
 	depends = python-pyside
+	depends = python-pyqt5
+	depends = python-dateutil
 	provides = qtodotxt
 	conflicts = qtodotxt-hg
 	conflicts = qtodotxt-git
