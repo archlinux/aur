@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=bumblebeed-resume-git
-pkgver=20160528
+pkgver=20160604
 pkgrel=1
 pkgdesc="Simple systemd service for prevent TURN ON NVIDIA GPU after resume"
 arch=('any')
