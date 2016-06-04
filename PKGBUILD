@@ -1,0 +1,170 @@
+# Maintainer: Michael Serpieri <mickybart@pygoscelis.org>
+
+# based on mesa package from archlinuxarm (without libva-mesa-driver):
+
+# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+
+# ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
+#  - Removed DRI and Gallium3D drivers/packages for chipsets that don't exist in our ARM devices (intel, radeon, VMware svga).
+#  - Removed libgles, libegl and khrplatform-devel from conflicts for marvell-libgfx compatibility.
+#  - Moved .pc files to mesa-libgl that reference libraries in mesa-libgl
+#  - Build vc4 gallium driver for v6/v7
+#  - Keep prepare function for older llvm (remove when llvm is fixed)
+
+# ALARM: Michael Serpieri <mickybart@pygoscelis.org>
+#  - Move libwayland-egl library to a new package mesa-wayland-egl
+#    to support different providers for libwayland-egl (eg: libhybris) in the same way than libgl
+
+pkgbase=mesa-hybris
+_pkgbase=mesa
+pkgname=('mesa-hybris' 'mesa-hybris-libgl' 'mesa-hybris-wayland-egl')
+pkgver=11.2.2
+pkgrel=1.1
+arch=('i686' 'x86_64' 'armv7h')
+makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm' 'dri2proto' 'dri3proto' 'presentproto'
+             'libxshmfence' 'libxxf86vm' 'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm'
+             'systemd' 'libomxil-bellagio' 'libgcrypt' 'clang')
+url="http://mesa3d.sourceforge.net"
+license=('custom')
+options=('!libtool')
+source=(ftp://ftp.freedesktop.org/pub/mesa/${pkgver}/mesa-${pkgver}.tar.xz{,.sig}
+        LICENSE)
+sha256sums=('40e148812388ec7c6d7b6657d5a16e2e8dabba8b97ddfceea5197947647bdfb4'
+            'SKIP'
+            '7fdc119cf53c8ca65396ea73f6d10af641ba41ea1dd2bd44a824726e01c8b3f2')
+validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D') # Emil Velikov <emil.l.velikov@gmail.com>
+
+prepare() {
+  cd ${srcdir}/?esa-*
+
+  # Fix detection of libLLVM when built with CMake
+  sed -i 's/LLVM_SO_NAME=.*/LLVM_SO_NAME=LLVM/' configure
+}
+
+build() {
+  cd ${srcdir}/?esa-*
+
+  [[ $CARCH == "armv7h" || $CARCH == "armv6h" ]] && VC4=',vc4'
+
+  ./configure --prefix=/usr \
+    --sysconfdir=/etc \
+    --with-dri-driverdir=/usr/lib/xorg/modules/dri \
+    --with-gallium-drivers=freedreno,nouveau,swrast,virgl${VC4} \
+    --with-dri-drivers=nouveau,swrast \
+    --with-egl-platforms=x11,drm,wayland \
+    --with-sha1=libgcrypt \
+    --enable-llvm-shared-libs \
+    --enable-egl \
+    --enable-gbm \
+    --enable-gallium-llvm \
+    --enable-shared-glapi \
+    --enable-glx \
+    --enable-glx-tls \
+    --enable-dri \
+    --enable-osmesa \
+    --enable-gles1 \
+    --enable-gles2 \
+    --enable-texture-float \
+    --enable-omx \
+    --enable-nine \
+    --with-clang-libdir=/usr/lib
+
+  make
+
+  # fake installation
+  mkdir $srcdir/fakeinstall
+  make DESTDIR=${srcdir}/fakeinstall install
+}
+
+package_mesa-hybris() {
+  pkgdesc="an open-source implementation of the OpenGL specification"
+  depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'systemd' 'elfutils' 
+           'libomxil-bellagio' 'expat' 'libgcrypt' 'libtxc_dxtn' 'llvm-libs')
+  optdepends=('opengl-man-pages: for the OpenGL API man pages'
+              'mesa-vdpau: for accelerated video playback'
+              'libva-mesa-driver: for accelerated video playback')
+  provides=('libglapi' 'osmesa' 'libgbm' 'libgles' 'libegl' 'khrplatform-devel'
+            'ati-dri' 'intel-dri' 'nouveau-dri' 'svga-dri' 'mesa-dri' 'mesa')
+  conflicts=('libglapi' 'osmesa' 'libgbm' 'libgles' 'libegl' 'khrplatform-devel'
+             'ati-dri' 'intel-dri' 'nouveau-dri' 'svga-dri' 'mesa-dri' 'mesa')
+  replaces=('libglapi' 'osmesa' 'libgbm' 'libgles' 'libegl' 'khrplatform-devel'
+            'ati-dri' 'intel-dri' 'nouveau-dri' 'svga-dri' 'mesa-dri' 'mesa')
+
+  install -m755 -d ${pkgdir}/etc
+  cp -rv ${srcdir}/fakeinstall/etc/drirc ${pkgdir}/etc
+  
+  install -m755 -d ${pkgdir}/usr/lib/xorg/modules/dri
+  # ati-dri, nouveau-dri, intel-dri, svga-dri, swrast
+  cp -av ${srcdir}/fakeinstall/usr/lib/xorg/modules/dri/* ${pkgdir}/usr/lib/xorg/modules/dri
+
+  cp -rv ${srcdir}/fakeinstall/usr/lib/bellagio  ${pkgdir}/usr/lib
+  cp -rv ${srcdir}/fakeinstall/usr/lib/d3d  ${pkgdir}/usr/lib
+  cp -rv ${srcdir}/fakeinstall/usr/lib/lib{gbm,glapi}.so* ${pkgdir}/usr/lib/
+  cp -rv ${srcdir}/fakeinstall/usr/lib/libOSMesa.so* ${pkgdir}/usr/lib/
+
+  cp -rv ${srcdir}/fakeinstall/usr/include ${pkgdir}/usr
+  cp -rv ${srcdir}/fakeinstall/usr/lib/pkgconfig ${pkgdir}/usr/lib/
+  rm ${pkgdir}/usr/lib/pkgconfig/{egl,gl,glesv1_cm,glesv2,wayland-egl}.pc
+
+  install -m755 -d ${pkgdir}/usr/lib/mesa
+  # move libgl/EGL/glesv*.so to not conflict with blobs - may break .pc files ?
+  cp -rv ${srcdir}/fakeinstall/usr/lib/libGL.so* 	${pkgdir}/usr/lib/mesa/
+  cp -rv ${srcdir}/fakeinstall/usr/lib/libEGL.so* 	${pkgdir}/usr/lib/mesa/
+  cp -rv ${srcdir}/fakeinstall/usr/lib/libGLES*.so*	${pkgdir}/usr/lib/mesa/
+  # move libwayland*.so* to not conflict with other providers like libhybris - may break .pc files ?
+  cp -rv ${srcdir}/fakeinstall/usr/lib/libwayland*.so* ${pkgdir}/usr/lib/mesa/
+
+  install -m755 -d "${pkgdir}/usr/share/licenses/mesa"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa/"
+}
+
+package_mesa-hybris-libgl() {
+  pkgdesc="Mesa 3-D graphics library"
+  depends=('mesa-hybris' 'mesa-hybris-wayland-egl')
+  provides=('libgl')
+  replaces=('libgl')
+  conflicts=('libgl')
+
+  install -m755 -d ${pkgdir}/usr/lib/pkgconfig
+  cp ${srcdir}/fakeinstall/usr/lib/pkgconfig/{egl,gl,glesv1_cm,glesv2}.pc ${pkgdir}/usr/lib/pkgconfig
+ 
+  # See FS#26284
+  install -m755 -d "${pkgdir}/usr/lib/xorg/modules/extensions"
+  ln -s libglx.xorg "${pkgdir}/usr/lib/xorg/modules/extensions/libglx.so"
+
+  ln -s /usr/lib/mesa/libGL.so.1.2.0 ${pkgdir}/usr/lib/libGL.so.1.2.0
+  ln -s libGL.so.1.2.0	             ${pkgdir}/usr/lib/libGL.so.1
+  ln -s libGL.so.1.2.0               ${pkgdir}/usr/lib/libGL.so
+
+  ln -s /usr/lib/mesa/libEGL.so.1.0.0 ${pkgdir}/usr/lib/libEGL.so.1.0.0
+  ln -s libEGL.so.1.0.0	              ${pkgdir}/usr/lib/libEGL.so.1
+  ln -s libEGL.so.1.0.0               ${pkgdir}/usr/lib/libEGL.so
+
+  ln -s /usr/lib/mesa/libGLESv1_CM.so.1.1.0 ${pkgdir}/usr/lib/libGLESv1_CM.so.1.1.0
+  ln -s libGLESv1_CM.so.1.1.0	            ${pkgdir}/usr/lib/libGLESv1_CM.so.1
+  ln -s libGLESv1_CM.so.1.1.0               ${pkgdir}/usr/lib/libGLESv1_CM.so
+
+  ln -s /usr/lib/mesa/libGLESv2.so.2.0.0 ${pkgdir}/usr/lib/libGLESv2.so.2.0.0
+  ln -s libGLESv2.so.2.0.0               ${pkgdir}/usr/lib/libGLESv2.so.2
+  ln -s libGLESv2.so.2.0.0               ${pkgdir}/usr/lib/libGLESv2.so
+
+  install -m755 -d "${pkgdir}/usr/share/licenses/mesa-libgl"
+  install -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/mesa-libgl/"
+}
+
+package_mesa-hybris-wayland-egl() {
+  pkgdesc="Mesa 3-D wayland library"
+  depends=('mesa-hybris')
+  provides=('libwayland-egl')
+  replaces=('libwayland-egl')
+  conflicts=('libwayland-egl')
+
+  install -m755 -d ${pkgdir}/usr/lib/pkgconfig
+  cp ${srcdir}/fakeinstall/usr/lib/pkgconfig/wayland-egl.pc ${pkgdir}/usr/lib/pkgconfig
+
+  ln -s /usr/lib/mesa/libwayland-egl.so.1.0.0 ${pkgdir}/usr/lib/libwayland-egl.so.1.0.0
+  ln -s libwayland-egl.so.1.0.0 ${pkgdir}/usr/lib/libwayland-egl.so.1
+  ln -s libwayland-egl.so.1.0.0 ${pkgdir}/usr/lib/libwayland-egl.so
+}
+
