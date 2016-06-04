@@ -1,0 +1,6 @@
+/etc/group
+/etc/hosts
+/etc/passwd
+/etc/resolv.conf
+/etc/localtime
+/etc/locale.gen

@@ -1,0 +1,11 @@
+# Default settings for chroot setup and exec scripts.
+# See schroot-script-config(5) for further details.
+
+# Filesystems to mount inside the chroot.
+FSTAB="/etc/schroot/arch32/mount"
+
+# Files to copy from the host system into the chroot.
+COPYFILES="/etc/schroot/arch32/copyfiles"
+
+# System databases to copy into the chroot
+NSSDATABASES="/etc/schroot/arch32/nssdatabases"

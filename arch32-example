@@ -1,0 +1,10 @@
+[arch32]
+description=Arch32
+type=directory
+directory=/opt/arch32
+#users=username
+groups=users
+root-groups=root
+profile=arch32
+personality=linux32
+#aliases=32,i686

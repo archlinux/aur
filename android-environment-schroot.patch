@@ -1,0 +1,493 @@
+diff --git a/bin/dchroot/dchroot-options.cc b/bin/dchroot/dchroot-options.cc
+index 4b95814..e9713fa 100644
+--- a/bin/dchroot/dchroot-options.cc
++++ b/bin/dchroot/dchroot-options.cc
+@@ -59,7 +59,9 @@ options::add_options ()
+     ("directory", opt::value<std::string>(&this->directory),
+      _("Directory to use"))
+     ("preserve-environment,d",
+-     _("Preserve user environment"));
++     _("Preserve user environment"))
++    ("android-environment,g",
++     _("Set Android environment"));
+ }
+ 
+ void
+@@ -84,6 +86,8 @@ options::check_options ()
+ 
+   if (vm.count("preserve-environment"))
+     this->preserve = true;
++  if (vm.count("android-environment"))
++    this->android = true;
+ 
+   if (this->quiet && this->verbose)
+     {
+diff --git a/bin/dchroot/dchroot-session.cc b/bin/dchroot/dchroot-session.cc
+index 5c13fe6..a150bda 100644
+--- a/bin/dchroot/dchroot-session.cc
++++ b/bin/dchroot/dchroot-session.cc
+@@ -56,6 +56,12 @@ session::get_login_directories (sbuild::chroot::ptr&       session_chroot,
+                                 sbuild::environment const& env) const
+ {
+   sbuild::string_list ret;
++  
++  if (get_android_environment() || session_chroot->get_android_environment()) {
++      //Always use / for android because it is not compliant with FHS
++      ret.push_back("/");
++      return ret;
++  }
+ 
+   std::string const& wd(get_auth()->get_wd());
+   if (!wd.empty())
+diff --git a/bin/schroot/schroot-main-base.cc b/bin/schroot/schroot-main-base.cc
+index b09a83e..f838a7d 100644
+--- a/bin/schroot/schroot-main-base.cc
++++ b/bin/schroot/schroot-main-base.cc
+@@ -369,6 +369,7 @@ main_base::run_impl ()
+       if (!this->options->shell.empty())
+         this->session->set_shell_override(this->options->shell);
+       this->session->set_preserve_environment(this->options->preserve);
++      this->session->set_android_environment(this->options->android);
+       this->session->set_session_id(this->options->session_name);
+       this->session->set_force(this->options->session_force);
+       if (this->options->quiet)
+diff --git a/bin/schroot/schroot-options-base.cc b/bin/schroot/schroot-options-base.cc
+index 39199ea..3d6c11a 100644
+--- a/bin/schroot/schroot-options-base.cc
++++ b/bin/schroot/schroot-options-base.cc
+@@ -53,6 +53,7 @@ options_base::options_base ():
+   shell(),
+   user(),
+   preserve(false),
++  android(false),
+   all(false),
+   all_chroots(false),
+   all_sessions(false),
+diff --git a/bin/schroot/schroot-options-base.h b/bin/schroot/schroot-options-base.h
+index da5ac3d..79cccb4 100644
+--- a/bin/schroot/schroot-options-base.h
++++ b/bin/schroot/schroot-options-base.h
+@@ -92,6 +92,8 @@ namespace schroot
+     std::string          user;
+     /// Preserve environment.
+     bool                 preserve;
++    /// Android environment.
++    bool                 android;
+     /// Use all chroots and sessions.
+     bool                 all;
+     /// Use all chroots.
+diff --git a/bin/schroot/schroot-options.cc b/bin/schroot/schroot-options.cc
+index de99c5e..c56a48c 100644
+--- a/bin/schroot/schroot-options.cc
++++ b/bin/schroot/schroot-options.cc
+@@ -72,6 +72,8 @@ options::add_options ()
+      _("Username (default current user)"))
+     ("preserve-environment,p",
+      _("Preserve user environment"))
++    ("android-environment,g",
++     _("Set Android environment"))
+     ("option,o", opt::value<sbuild::string_list>(&this->useroptions),
+      _("Set option"));
+ 
+@@ -117,6 +119,8 @@ options::check_options ()
+ 
+   if (vm.count("preserve-environment"))
+     this->preserve = true;
++  if (vm.count("android-environment"))
++    this->android = true;
+ 
+   if (vm.count("automatic-session"))
+     this->action = ACTION_SESSION_AUTO;
+diff --git a/etc/setup.d/50chrootname b/etc/setup.d/50chrootname
+index 4b51b5f..52576f1 100755
+--- a/etc/setup.d/50chrootname
++++ b/etc/setup.d/50chrootname
+@@ -23,6 +23,11 @@ set -e
+ . "$SETUP_DATA_DIR/common-functions"
+ . "$SETUP_DATA_DIR/common-config"
+ 
++if [ "$SYSTEMTARGET" == "android" ]; then
++    #Doesn't apply to Android so simply exit
++    exit 0
++fi
++
+ if [ $STAGE = "setup-start" ] || [ $STAGE = "setup-recover" ]; then
+ 
+     info "Setting chroot name to ${CHROOT_NAME}"
+diff --git a/man/dchroot.1.man b/man/dchroot.1.man
+index 7798d29..d52cdfd 100644
+--- a/man/dchroot.1.man
++++ b/man/dchroot.1.man
+@@ -27,6 +27,7 @@ dchroot \- enter a chroot environment
+ .RB " \[or] " \-\-config " \[or] " \-\-location ]
+ .RB [ "\-\-directory=\fIdirectory\fP" ]
+ .RB [ \-d \[or] \-\-preserve\-environment ]
++.RB [ \-g \[or] \-\-android\-environment ]
+ .RB [ \-q \[or] \-\-quiet " \[or] " \-v \[or] \-\-verbose ]
+ .RB [ "\-c \fIchroot\fP" \[or] "\-\-chroot=\fIchroot\fP"
+ .RB " \[or] " \-\-all ]
+@@ -104,6 +105,12 @@ Preserve the user's environment inside the chroot environment.  The default is
+ to use a clean environment; this option copies the entire user environment and
+ sets it in the session.
+ .TP
++.BR \-g ", " \-\-android\-environment
++Set Android environment (eg: init.environ.rc) inside the chroot environment.
++This option will set ANDROID_ROOT, LD_LIBRARY_PATH, PATH, LD_PRELOAD and PS1.
++Override same defined variables if \fI\-\-preserve\-environment\fP is used.
++HOME of the user will be override to root as Android doesn't follow LHS.
++.TP
+ .BR \-q ", " \-\-quiet
+ Print only essential messages.
+ .TP
+diff --git a/man/schroot.1.man b/man/schroot.1.man
+index db86aed..5928a3c 100644
+--- a/man/schroot.1.man
++++ b/man/schroot.1.man
+@@ -33,6 +33,7 @@ schroot \- securely enter a chroot environment
+ .RB [ "\-d \fIdirectory\fP" \[or] "\-\-directory=\fIdirectory\fP" ]
+ .RB [ "\-u \fIuser\fP" \[or] "\-\-user=\fIuser\fP" ]
+ .RB [ \-p \[or] \-\-preserve\-environment ]
++.RB [ \-g \[or] \-\-android\-environment ]
+ .RB [ "\-s \fIshell\fP" \[or] "\-\-shell=\fIshell\fP" ]
+ .RB [ \-q \[or] \-\-quiet " \[or] " \-v \[or] \-\-verbose ]
+ .RB [ "\-c \fIchroot\fP" \[or] "\-\-chroot=\fIchroot\fP"
+@@ -203,6 +204,12 @@ to use a clean environment; this option copies the entire user environment and
+ sets it in the session.  The environment variables allowed are subject to
+ certain restrictions; see the section \[lq]\fIEnvironment\fP\[rq], below.
+ .TP
++.BR \-g ", " \-\-android\-environment
++Set Android environment (eg: init.environ.rc) inside the chroot environment.
++This option will set ANDROID_ROOT, LD_LIBRARY_PATH, PATH, LD_PRELOAD and PS1.
++Override same defined variables if \fI\-\-preserve\-environment\fP is used.
++HOME of the user will be override to root as Android doesn't follow LHS.
++.TP
+ .BR \-s ", " \-\-shell=\fIshell\fP
+ Use \fIshell\fP as the login shell.  When running a login shell a number of
+ potential shells will be considered, in this order: the command in the SHELL
+diff --git a/man/schroot.conf.5.man b/man/schroot.conf.5.man
+index a5bf0ed..388711d 100644
+--- a/man/schroot.conf.5.man
++++ b/man/schroot.conf.5.man
+@@ -219,6 +219,14 @@ environment.  This is useful for example when running X applications inside the
+ chroot, which need the environment to function correctly.  The environment may
+ also be preserved using the \fI\-\-preserve\-environment\fP option.
+ .TP
++\f[CBI]android\-environment=\fP\f[CI]true\fP|\f[CI]false\fP
++Set to \f[CI]true\fP to export Android environment inside the chroot. That will
++permit to define ANDROID_ROOT, LD_LIBRARY_PATH, PATH, LD_PRELOAD and PS1 for 
++Android in a similar way that is done on Android init by init.environ.rc file.
++The home of the user will always be set to root as Android doesn't follow LHS.
++Those variables are hard defined so you can safely use in same time
++\fI\-\-environment\-filter\fP and \fI\-\-preserve\-environment\fP if needed.
++.TP
+ \f[CBI]shell=\fP\f[CI]shell\fP
+ When running a login shell a number of potential shells will be considered, in
+ this order: the command in the SHELL environment variable (if
+diff --git a/sbuild/sbuild-chroot.cc b/sbuild/sbuild-chroot.cc
+index 8f31e9f..d502734 100644
+--- a/sbuild/sbuild-chroot.cc
++++ b/sbuild/sbuild-chroot.cc
+@@ -114,6 +114,7 @@ sbuild::chroot::chroot ():
+   root_groups(),
+   aliases(),
+   preserve_environment(false),
++  android_environment(false),
+   default_shell(),
+   environment_filter(SBUILD_DEFAULT_ENVIRONMENT_FILTER),
+   mount_location(),
+@@ -142,6 +143,7 @@ sbuild::chroot::chroot (const chroot& rhs):
+   root_groups(rhs.root_groups),
+   aliases(rhs.aliases),
+   preserve_environment(rhs.preserve_environment),
++  android_environment(rhs.android_environment),
+   default_shell(rhs.default_shell),
+   environment_filter(rhs.environment_filter),
+   mount_location(rhs.mount_location),
+@@ -356,6 +358,18 @@ sbuild::chroot::set_preserve_environment (bool preserve_environment)
+   this->preserve_environment = preserve_environment;
+ }
+ 
++bool
++sbuild::chroot::get_android_environment () const
++{
++  return this->android_environment;
++}
++
++void
++sbuild::chroot::set_android_environment (bool android_environment)
++{
++  this->android_environment = android_environment;
++}
++
+ std::string const&
+ sbuild::chroot::get_default_shell () const
+ {
+@@ -678,6 +692,7 @@ sbuild::chroot::get_details (chroot const&  chroot,
+     .add(_("Root Groups"), chroot.get_root_groups())
+     .add(_("Aliases"), chroot.get_aliases())
+     .add(_("Preserve Environment"), chroot.get_preserve_environment())
++    .add(_("Android Environment"), chroot.get_android_environment())
+     .add(_("Default Shell"), chroot.get_default_shell())
+     .add(_("Environment Filter"), chroot.get_environment_filter())
+     .add(_("Run Setup Scripts"), chroot.get_run_setup_scripts())
+@@ -800,6 +815,10 @@ sbuild::chroot::get_keyfile (chroot const& chroot,
+   keyfile::set_object_value(chroot, &chroot::get_preserve_environment,
+                             keyfile, chroot.get_name(),
+                             "preserve-environment");
++  
++  keyfile::set_object_value(chroot, &chroot::get_android_environment,
++                            keyfile, chroot.get_name(),
++                            "android-environment");
+ 
+   keyfile::set_object_value(chroot, &chroot::get_default_shell,
+                             keyfile, chroot.get_name(),
+@@ -1032,6 +1051,12 @@ sbuild::chroot::set_keyfile (chroot&        chroot,
+                             "preserve-environment",
+                             keyfile::PRIORITY_OPTIONAL);
+   used_keys.push_back("preserve-environment");
++  
++  keyfile::get_object_value(chroot, &chroot::set_android_environment,
++                            keyfile, chroot.get_name(),
++                            "android-environment",
++                            keyfile::PRIORITY_OPTIONAL);
++  used_keys.push_back("android-environment");
+ 
+   keyfile::get_object_value(chroot, &chroot::set_default_shell,
+                             keyfile, chroot.get_name(),
+diff --git a/sbuild/sbuild-chroot.h b/sbuild/sbuild-chroot.h
+index ba7271c..b4e5dde 100644
+--- a/sbuild/sbuild-chroot.h
++++ b/sbuild/sbuild-chroot.h
+@@ -323,6 +323,22 @@ namespace sbuild
+      */
+     void
+     set_preserve_environment (bool preserve_environment);
++    
++    /**
++     * Check if the Android environment should be set in the chroot.
++     *
++     * @returns true to set or false if not.
++     */
++    bool
++    get_android_environment () const;
++
++    /**
++     * Set if the Android environment should be set in the chroot.
++     *
++     * @param android_environment true to set or false if not.
++     */
++    void
++    set_android_environment (bool android_environment);
+ 
+     /**
+      * Get default shell.
+@@ -809,6 +825,8 @@ namespace sbuild
+     string_list   aliases;
+     /// Preserve environment?
+     bool          preserve_environment;
++    /// Android environment?
++    bool          android_environment;
+     /// Default shell
+     std::string   default_shell;
+     /// Environment filter regex.
+diff --git a/sbuild/sbuild-environment.cc b/sbuild/sbuild-environment.cc
+index e1e95b6..f4c0c19 100644
+--- a/sbuild/sbuild-environment.cc
++++ b/sbuild/sbuild-environment.cc
+@@ -27,12 +27,14 @@ using namespace sbuild;
+ 
+ environment::environment ():
+   std::map<std::string,std::string>(),
+-  filter()
++  filter(),
++  filter_off(false)
+ {
+ }
+ 
+ environment::environment (char **environment):
+-  std::map<std::string,std::string>()
++  std::map<std::string,std::string>(),
++  filter_off(false)
+ {
+   add(environment);
+ }
+@@ -54,6 +56,12 @@ environment::get_filter () const
+ }
+ 
+ void
++environment::use_filter (bool on)
++{
++  filter_off = !on;
++}
++
++void
+ environment::add (char **environment)
+ {
+   if (environment)
+@@ -96,7 +104,8 @@ environment::add (value_type const& value)
+   remove(value);
+   if (!value.first.empty() && !value.second.empty())
+     {
+-      if (this->filter.str().empty() ||
++      if (this->filter_off || 
++          this->filter.str().empty() ||
+           !regex_search(value.first, this->filter))
+         {
+           insert(value);
+diff --git a/sbuild/sbuild-environment.h b/sbuild/sbuild-environment.h
+index bd61e7b..a358fb3 100644
+--- a/sbuild/sbuild-environment.h
++++ b/sbuild/sbuild-environment.h
+@@ -73,6 +73,14 @@ namespace sbuild
+      */
+     regex const&
+     get_filter () const;
++    
++    /**
++     * Enable/disable filter
++     * 
++     * @param on enable if true, disable if false
++     */
++    void
++    use_filter (bool on);
+ 
+     /**
+      * Add environment variables.  Any existing variables sharing the
+@@ -313,6 +321,8 @@ namespace sbuild
+   private:
+     /// Filter regex.
+     regex filter;
++    /// Enable/Disable filter
++    bool filter_off;
+   };
+ 
+ }
+diff --git a/sbuild/sbuild-session.cc b/sbuild/sbuild-session.cc
+index f12257d..a0a30c2 100644
+--- a/sbuild/sbuild-session.cc
++++ b/sbuild/sbuild-session.cc
+@@ -213,6 +213,7 @@ session::session (std::string const&  service,
+   termios_ok(false),
+   verbosity(),
+   preserve_environment(false),
++  android_environment(false),
+   shell(),
+   user_options(),
+   cwd(sbuild::getcwd())
+@@ -295,6 +296,35 @@ session::set_preserve_environment (bool preserve_environment)
+   this->preserve_environment = preserve_environment;
+ }
+ 
++bool
++session::get_android_environment () const
++{
++  return this->android_environment;
++}
++
++void
++session::set_android_environment (bool android_environment)
++{
++  this->android_environment = android_environment;
++}
++
++void
++session::setup_android_env (environment &env)
++{
++    /* We need to disable env filter to be sure that
++     * LD_.* will not be filtered (LD_.* is part of the default filter)
++     */ 
++    env.use_filter(false);
++    
++    env.add("ANDROID_ROOT", "/system");
++    env.add("LD_PRELOAD", "/system/lib/libc.so"); //for glibc-bionic compatibility
++    env.add("LD_LIBRARY_PATH", "/system/lib:/vendor/lib");
++    env.add("PATH", "/sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin");
++    env.add("PS1", "(android)[\\u@\\h \\W]\\$ ");
++    
++    env.use_filter(true);
++}
++
+ std::string const&
+ session::get_shell_override () const
+ {
+@@ -789,6 +819,12 @@ session::get_login_directories (sbuild::chroot::ptr& session_chroot,
+                                 environment const&   env) const
+ {
+   string_list ret;
++  
++  if (get_android_environment() || session_chroot->get_android_environment()) {
++      //Always use / for android because it is not compliant with FHS
++      ret.push_back("/");
++      return ret;
++  }
+ 
+   std::string const& wd(this->authstat->get_wd());
+   if (!wd.empty())
+@@ -824,6 +860,12 @@ session::get_command_directories (sbuild::chroot::ptr& session_chroot,
+                                   environment const&   env) const
+ {
+   string_list ret;
++  
++  if (get_android_environment() || session_chroot->get_android_environment()) {
++      //Always use / for android because it is not compliant with FHS
++      ret.push_back("/");
++      return ret;
++  }
+ 
+   std::string const& wd(this->authstat->get_wd());
+   if (!wd.empty())
+@@ -1257,6 +1299,10 @@ session::run_child (sbuild::chroot::ptr& session_chroot)
+     env += this->authstat->get_complete_environment();
+   else
+     env += this->authstat->get_auth_environment();
++  
++  /* Environment for Android ? */
++  if (get_android_environment() || session_chroot->get_android_environment())
++    setup_android_env(env);
+ 
+   // Store before chroot call.
+   this->cwd = sbuild::getcwd();
+diff --git a/sbuild/sbuild-session.h b/sbuild/sbuild-session.h
+index d1298db..e4c26d9 100644
+--- a/sbuild/sbuild-session.h
++++ b/sbuild/sbuild-session.h
+@@ -219,6 +219,30 @@ namespace sbuild
+      */
+     void
+     set_preserve_environment (bool preserve_environment);
++    
++    /**
++     * Check if the Android environment should be set in the chroot.
++     *
++     * @returns true to set or false if not.
++     */
++    bool
++    get_android_environment () const;
++
++    /**
++     * Set if the Android environment should be set in the chroot.
++     *
++     * @param android_environment true to set or false if not.
++     */
++    void
++    set_android_environment (bool android_environment);
++
++    /**
++     * Setup Android environment that should be set in the chroot.
++     *
++     * @param env environment
++     */
++    void
++    setup_android_env (environment &env);
+ 
+     /**
+      * Get user-specified login shell.
+@@ -580,6 +604,8 @@ namespace sbuild
+     std::string verbosity;
+     /// Preserve environment?
+     bool        preserve_environment;
++    /// Android environment?
++    bool        android_environment;
+     /// Login shell.
+     std::string shell;
+     /// User-defined options.
