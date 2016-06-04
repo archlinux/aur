@@ -3,8 +3,8 @@
 # Contributor: Petrenko Alexey <alexey-p at uralweb dot ru>
 
 pkgname=perl-devel-nytprof
-pkgver=5.07
-pkgrel=3
+pkgver=6.03
+pkgrel=1
 _author='T/TI/TIMB'
 _perlmod='Devel-NYTProf'
 pkgdesc='Devel::NYTProf - Powerful fast feature-rich perl source code profiler'
@@ -15,6 +15,7 @@ perl-getopt-long
 perl-test-simple
 perl-xsloader
 perl-test-differences
+zlib
 )
 checkdepends=(
 # perl-moose
@@ -26,7 +27,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/$_author/$_perlmod-$pkgver.tar.gz")
-sha1sums=('a6608e7ba2814960efeb8f364bd0f6894fd1b6b9')
+sha1sums=('85533c100cd89eb6cca640330db7ff0cb99e7b2b')
 build(){
   cd "$srcdir"/$_perlmod-$pkgver
 
@@ -36,37 +37,16 @@ build(){
     PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
     MODULEBUILDRC=/dev/null
 
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
-    /usr/bin/perl Makefile.PL
-    make
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    /usr/bin/perl Build.PL
-    perl Build
-  fi
+  /usr/bin/perl Makefile.PL
+  make
 }
 check(){
   cd "$srcdir"/$_perlmod-$pkgver
-
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
-    HARNESS_OPTIONS=j10 make test
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    perl Build test
-  fi
+  HARNESS_OPTIONS=j10 make test
 }
 package(){
   cd "$srcdir"/$_perlmod-$pkgver
-
-  # If using Makefile.PL
-  if [ -r Makefile.PL ]; then
-    make install
-  # If using Build.PL
-  elif [ -r Build.PL ]; then
-    perl Build install
-  fi
+  make install
 
   # remove perllocal.pod and .packlist
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
