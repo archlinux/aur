@@ -8,7 +8,7 @@ post_upgrade() {
         echo "      - *.conf files have been moved to /etc/nginx"
         echo "      - /etc/conf.d/nginx has been removed"
         echo "        Main configuration file is set to /etc/nginx/nginx.conf"
-        echo "      - access.log and error.log can be found in /var/log/nginx by default" 
+        echo "      - access.log and error.log can be found in /var/log/nginx by default"
         echo "      - bundled *.html files have been moved to /usr/share/nginx/html"
         echo "      - /etc/nginx/{html,logs} symbolic links and *.default files have been removed"
     fi
