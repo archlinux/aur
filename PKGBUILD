@@ -1,10 +1,10 @@
 # Maintainer: Ricardo Vieira <ricardo.vieira@tecnico.ulisboa.pt>
 
 pkgname=liquid-dsp-git
-pkgver=v1.2.0.r1252.gd1031be
+pkgver=v1.2.0.r1288.g1191179
 pkgrel=1
 pkgdesc="Digital signal processing library for software-defined radios"
-arch=('x86_64')
+arch=('i686' 'x86_64' 'armv7h')
 url="http://liquidsdr.org"
 license=('GPL')
 groups=()
