@@ -1,0 +1,38 @@
+pkgbase = kwin-hybris
+	pkgdesc = KDE Window manager
+	pkgver = 5.6.3
+	pkgrel = 1
+	url = https://projects.kde.org/projects/kde/workspace/kwin
+	install = kwin.install
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	groups = plasma
+	license = LGPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
+	makedepends = kdoctools
+	makedepends = libinput
+	makedepends = python
+	makedepends = xorg-server-xwayland
+	makedepends = libhybris
+	depends = qt5-multimedia
+	depends = kscreenlocker
+	depends = knewstuff
+	depends = xcb-util-cursor
+	depends = hicolor-icon-theme
+	depends = kdecoration
+	depends = kinit
+	depends = plasma-framework
+	depends = kcmutils
+	optdepends = libinput: for kwin_wayland
+	optdepends = xorg-server-xwayland: for kwin_wayland
+	optdepends = libhybris: hwcomposer and surfaceflinger backend for kwin_wayland
+	provides = kwin
+	conflicts = kdebase-workspace
+	conflicts = kwin
+	source = kwin::git+https://github.com/mickybart/kwin#branch=sf-v5.6.3
+	md5sums = SKIP
+
+pkgname = kwin-hybris
+
