@@ -6,15 +6,15 @@
 
 pkgbase=lib32-bluez
 pkgname=(${pkgbase}{,-libs,-cups,-plugins})
-pkgver=5.39
-pkgrel=3
+pkgver=5.40
+pkgrel=1
 url="http://www.bluez.org/"
 arch=('x86_64')
 license=('GPL2')
 makedepends=('gcc-multilib' 'gcc-libs-multilib' 'lib32-dbus' 'lib32-glib2' 'lib32-libical' 'lib32-readline' 'lib32-systemd')
 source=("http://www.kernel.org/pub/linux/bluetooth/${pkgbase#lib32-}-${pkgver}.tar."{xz,sign})
 # see https://www.kernel.org/pub/linux/bluetooth/sha256sums.asc
-sha256sums=('21d1bc9150d3576296595217efb98a746b592389d25d5637e8bee5da7272593b'
+sha256sums=('dada8b812055afcad4546d9966f9a763e4723169e89706e2b240c7b7e998dc27'
             'SKIP')
 validpgpkeys=('E932D120BC2AEC444E558F0106CA9F5D1DCF2659') # Marcel Holtmann <marcel@holtmann.org>
 
