@@ -1,7 +1,7 @@
 # Maintainer:  Martin C. Doege <mdoege at compuserve dot com>
 
 pkgname=javacpc
-pkgver=2.9m
+pkgver=2.9.4
 pkgrel=1
 pkgdesc="An Amstrad CPC emulator in Java, based on JEMU"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ source=("http://downloads.sourceforge.net/project/javacpc/JavaCPC%20Desktop/Java
         "javacpc"
         "javacpc.desktop"
         "javacpc_icon.png")
-md5sums=('9a859a27d635f57f560d86f1c5dbe7bf'
+md5sums=('477f1cceb978e2050fc33244729d8cc9'
          '1730471294aa32472586a13331547ad0'
          'ad11d7aba73f349177d8cc2014b9b874'
          '9a3484df10f16187980721111a264655')
