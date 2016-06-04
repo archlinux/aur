@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=STM32CubeMX
+GenericName=configuration tool for STM32 microcontrollers
+Comment=graphical software configuration tool for STM32 microcontrollers that allows generating C initialization code
+Icon=stm32cubemx.png
+Exec=stm32cubemx
+Terminal=false
+Categories=Development;IDE;
+StartupNotify=false
