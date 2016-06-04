@@ -1,6 +1,6 @@
 pkgbase = symphytum
 	pkgdesc = Personal database software
-	pkgver = 1.2
+	pkgver = 2.0
 	pkgrel = 1
 	url = http://giowck.github.io/symphytum/
 	arch = i686
@@ -10,10 +10,8 @@ pkgbase = symphytum
 	depends = sqlite
 	depends = python2
 	depends = python2-setuptools
-	source = http://giowck.github.io/symphytum/files/symphytum-1.2-src.tar.gz
-	source = http://giowck.github.io/symphytum/files/symphytum-1.2-src.tar.gz.asc
-	md5sums = e35e8c1eee7f3343ed8007974272efda
-	md5sums = SKIP
+	source = http://giowck.github.io/symphytum/files/symphytum-2.0-src.tar.gz
+	md5sums = 400484e8b06d77491012989f69105c11
 
 pkgname = symphytum
 

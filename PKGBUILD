@@ -8,7 +8,7 @@ url="http://giowck.github.io/symphytum/"
 license=('BSD')
 depends=('qt5-base' 'qt5-svg' 'sqlite' 'python2' 'python2-setuptools')
 source=("http://giowck.github.io/symphytum/files/$pkgname-$pkgver-src.tar.gz")
-md5sums=('5dc01191d4434bc956c8866a36eff277')
+md5sums=('400484e8b06d77491012989f69105c11')
 
 build() {
   qmake-qt5 -config release
