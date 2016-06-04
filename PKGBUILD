@@ -18,7 +18,7 @@ _srcname="ImageMagick"
 _srcver="7.0.1-6"
 pkgname=imagemagick-full
 pkgver="$(echo ${_srcver} | tr '-' '.')"
-pkgrel=1
+pkgrel=2
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
@@ -31,7 +31,7 @@ provides=("imagemagick"
           "libMagickCore-${pkgver%%.*}.Q32HDRI.so"
           "libMagickWand-${pkgver%%.*}.Q32HDRI.so"
             "libMagick++-${pkgver%%.*}.Q32HDRI.so")
-conflicts=('imagemagick' 'imagemagick-git' 'imagemagick-fftw' 'imagemagick-no-hdri')
+conflicts=('imagemagick' 'imagemagick-git' 'imagemagick-full-git' 'imagemagick-fftw' 'imagemagick-no-hdri')
 backup=("etc/ImageMagick-${pkgver%%.*}/coder.xml"
         "etc/ImageMagick-${pkgver%%.*}/colors.xml"
         "etc/ImageMagick-${pkgver%%.*}/delegates.xml"
