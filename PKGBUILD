@@ -2,7 +2,7 @@
 
 pkgname=tmux-bash-completion
 pkgdesc="Bash completion for tmux"
-pkgver=r6.10eb94a
+pkgver=r7.e0f7021
 pkgrel=1
 arch=("any")
 url="https://github.com/imomaliev/tmux-bash-completion"
@@ -19,7 +19,7 @@ pkgver() {
 
 package() {
 	cd "$pkgname/completions"
-	for file in tmux tmux1.8; do
+	for file in $(ls); do
 		install -Dm644 $file "$pkgdir/usr/share/bash-completion/completions/$file"
 	done
 }
