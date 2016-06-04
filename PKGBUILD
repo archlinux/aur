@@ -1,8 +1,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=gambit
-pkgver=14.1.0
-pkgrel=2
+pkgver=14.1.1
+pkgrel=1
 pkgdesc="Tools for doing computation in game theory - git version"
 arch=('i686' 'x86_64')
 url="http://www.gambit-project.org"
@@ -12,14 +12,9 @@ makedepends=('git')
 provides=('gambit')
 conflicts=('gambit')
 source=(https://github.com/gambitproject/gambit/archive/v$pkgver.tar.gz ludecomp.diff)
-md5sums=('06a8f4b4e5d990f443de900b2b95aef0'
+md5sums=('da5e1b4690b028a3d6cb8a8c27bc7725'
          '4086c9c74892440e00c9be7f8ace4bce')
 options=('!makeflags')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  patch -p1 < "$srcdir"/ludecomp.diff
-}
 
 build() {
   cd "$pkgname-$pkgver"
@@ -27,7 +22,7 @@ build() {
   libtoolize
   automake --add-missing
   autoconf
-  CXXFLAGS+=" -std=c++03" ./configure --prefix=/usr --disable-enumpoly
+  ./configure --prefix=/usr --disable-enumpoly
   make 
 }
 
