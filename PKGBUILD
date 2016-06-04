@@ -4,12 +4,12 @@ pkgname=upwork-alpha
 pkgver=4.1.314.0
 _rawver=${pkgver//./_}
 _hashver="0bo6g5kfbj07y2x4"
-pkgrel=1
+pkgrel=3
 pkgdesc="Team App (ex. oDesk)"
 arch=('i686' 'x86_64')
 url="https://www.upwork.com/downloads/new-team-application"
 license=('unknown')
-conflicts=('upwork' 'upwork-beta')
+conflicts=('upwork-beta' 'upwork')
 depends=('gtk2' 'nss' 'gconf' 'alsa-lib' 'glu' 'libxtst' 'gtkglext' 'libgcrypt15' 'libxss')
 install=upwork.install
 
@@ -27,8 +27,4 @@ prepare() {
 package() {
     cd "${srcdir}"
     cp -rp usr "${pkgdir}/usr"
-
-    ln -s /usr/lib/libssl.so "${pkgdir}/usr/share/upwork/libssl.so.6"
-    ln -s /usr/lib/libcrypto.so "${pkgdir}/usr/share/upwork/libcrypto.so.6"
-    ln -s /usr/lib/libudev.so "${pkgdir}/usr/share/upwork/libudev.so.0"
 }
