@@ -10,7 +10,7 @@ pkgname=('eiskaltdcpp-core-git'
          'eiskaltdcpp-web-git'
          'eiskaltdcpp-data-git'
          )
-pkgver=2.3.0.4956.8bcd86c
+pkgver=2.3.0.4958.52af555
 pkgrel=1
 pkgdesc="EiskaltDC++: DC and ADC client based on dcpp core. (GIT Version)"
 license=('GPL3')
@@ -118,8 +118,8 @@ package_eiskaltdcpp-qt-git() {
   provides=('eiskaltdcpp-qt')
   conflicts=('eiskaltdcpp-qt'
              'eiskaltdcpp-qt4'
-             'eiskaltdcpp-qt5')
-  install=eiskaltdcpp-git.install
+             'eiskaltdcpp-qt5'
+             )
 
   make --no-print-directory -C build/eiskaltdcpp-qt DESTDIR="${pkgdir}" install
 }
@@ -135,8 +135,8 @@ package_eiskaltdcpp-gtk-git() {
   provides=('eiskaltdcpp-gtk')
   conflicts=('eiskaltdcpp-gtk'
              'eiskaltdcpp-gtk2'
-             'eiskaltdcpp-gtk3')
-  install=eiskaltdcpp-git.install
+             'eiskaltdcpp-gtk3'
+             )
 
   make --no-print-directory -C build/eiskaltdcpp-gtk DESTDIR="${pkgdir}" install
 }
@@ -189,7 +189,6 @@ package_eiskaltdcpp-data-git() {
               'python: test http server')
   provides=('eiskaltdcpp-data')
   conflicts=('eiskaltdcpp-data')
-  install=eiskaltdcpp-git.install
 
   make --no-print-directory -C build/data DESTDIR="${pkgdir}" install
 }
