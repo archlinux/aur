@@ -25,7 +25,6 @@ conflicts=('kwooty')
 provides=('kwooty')
 source=('git://anongit.kde.org/kwooty#branch=frameworks')
 sha1sums=('SKIP')
-install=kwooty-frameworks-git.install
 
 pkgver() {
   cd kwooty
@@ -42,9 +41,9 @@ build() {
   cmake ../kwooty \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-    -DBUILD_TESTS=OFF
+    -DBUILD_TESTING=OFF
   make
 }
 
