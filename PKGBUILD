@@ -4,17 +4,14 @@
 
 _pkgname=vokoscreen
 pkgname=${_pkgname}-git
-pkgver=2.4.21.beta.3.gd2d38f3
-pkgrel=3
+pkgver=2.4.28.beta.0.g0760ab2
+pkgrel=1
 pkgdesc='An easy to use screencast creator. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
 url='http://linuxecke.volkoh.de/vokoscreen/vokoscreen.html'
 license=('GPL2')
 
-depends=(
-	'qt5-x11extras' 'ffmpeg' 'lame'
-	'desktop-file-utils' 'xdg-utils' 'lsof'
-)
+depends=('qt5-x11extras' 'ffmpeg' 'lame' 'desktop-file-utils' 'xdg-utils' 'lsof')
 optdepends=(
 	'pulseaudio-alsa: for PulseAudio support'
 )
@@ -53,20 +50,14 @@ prepare() {
 }
 
 build() {
-	# Number of jobs
-	declare -i njobs=$(nproc)
-
-	if [[ ${njobs} -ge 8 ]]; then
-		njobs=$(( $njobs - 2 ))
-	fi
-
 	# Building package
 	cd "${srcdir}"/build
 	qmake-qt5 ../${_pkgname} \
+		QMAKE_CFLAGS="${CFLAGS}" \
+		QMAKE_CXXFLAGS="${CXXFLAGS}" \
 		CONFIG+=release \
 		CONFIG+=c++14
-
-	make -j${njobs}
+	make
 }
 
 package() {
