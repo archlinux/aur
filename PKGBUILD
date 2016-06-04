@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
 pkgname=imagemagick-full-doc-git
-pkgver=7.0.1.2.r10838.ga58ba05
+pkgver=7.0.1.10.r10954.g83bceaa
 pkgrel=1
 pkgdesc="The ImageMagick documentation (utilities manuals and libraries API)"
 arch=('i686' 'x86_64')
@@ -17,8 +17,8 @@ pkgver() {
 	
 	# Git, no tags available
 	
-	local _version="$(grep "PACKAGE_VERSION=" version.sh | grep -o '[0-9.]*')"
-	local _release="$(grep "PACKAGE_RELEASE=" version.sh | grep -o '[0-9]')"
+	local _version="$(grep "PACKAGE_VERSION=" ./version.sh | sed 's/[^0-9\.]*//g')"
+	local _release="$(grep "PACKAGE_RELEASE=" ./version.sh | sed 's/[^0-9]*//g')"
 	local _revision="$(printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")"
 	
 	printf "%s.%s.%s" "$_version" "$_release" "$_revision"
