@@ -14,8 +14,8 @@
 
 pkgname=pan-git
 _gitname=pan2
-pkgver=140.4.gfefda68
-pkgrel=2
+pkgver=140.10.g188fd4b
+pkgrel=1
 pkgdesc="Pan is a Usenet newsreader that's good at both text and binaries. Development version."
 url="http://pan.rebelbase.com/"
 arch=('i686' 'x86_64')
