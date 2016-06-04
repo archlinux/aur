@@ -8,7 +8,7 @@ pkgdesc='A Reddit Client For GNOME (with Gtk+ and Python)'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/samdroid-apps/something-for-reddit"
-depends=('desktop-file-utils' 'gobject-introspection' 'gtk3' 'python-gobject' 'python-arrow' 'python-markdown' 'ruby-sass' 'markdown-urlize-git')
+depends=('desktop-file-utils' 'gobject-introspection' 'gtk3' 'python-gobject' 'python-arrow' 'python-markdown' 'ruby-sass' 'markdown-urlize-git' 'libsoup' 'webkitgtk2')
 makedepends=('git' 'gnome-common' 'intltool' 'itstool' 'python' 'yelp-tools')
 
 options=('!emptydirs')

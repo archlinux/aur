@@ -1,6 +1,6 @@
 pkgbase = something-for-reddit-git
 	pkgdesc = A Reddit Client For GNOME (with Gtk+ and Python)
-	pkgver = v0.1
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/samdroid-apps/something-for-reddit
 	install = something-for-reddit.install
@@ -19,7 +19,11 @@ pkgbase = something-for-reddit-git
 	depends = python-gobject
 	depends = python-arrow
 	depends = python-markdown
-	provides = something-for-reddit=v0.1
+	depends = ruby-sass
+	depends = markdown-urlize-git
+	depends = libsoup
+	depends = webkitgtk2
+	provides = something-for-reddit=0.1
 	options = !emptydirs
 	source = git://github.com/samdroid-apps/something-for-reddit.git
 	md5sums = SKIP
