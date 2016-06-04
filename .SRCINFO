@@ -1,6 +1,6 @@
 pkgbase = ssh-ident-git
 	pkgdesc = Start ssh-agent and load identities on-demand.
-	pkgver = r42.9682500
+	pkgver = r58.ebf8282
 	pkgrel = 1
 	url = https://github.com/ccontavalli/ssh-ident
 	install = ssh-ident.install

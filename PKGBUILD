@@ -2,7 +2,7 @@
 # Contributor: Brendan MacDonell <macdonellba@gmail.com>
 _gitname=ssh-ident
 pkgname=ssh-ident-git
-pkgver=r42.9682500
+pkgver=r58.ebf8282
 pkgrel=1
 pkgdesc="Start ssh-agent and load identities on-demand."
 arch=('any')
@@ -22,6 +22,7 @@ pkgver() {
 
 package() {
   cd "${srcdir}/${_gitname}"
+  git revert --no-edit --no-commit ebf8282728211dc4448d50f7e16e546ed03c22d2
   install -D ssh-ident "${pkgdir}/usr/bin/ssh-ident"
   install -m 644 -D LICENSE "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
   install -m 644 -D README "${pkgdir}/usr/share/doc/${_gitname}/README"
