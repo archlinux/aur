@@ -1,0 +1,26 @@
+diff --git a/config.tests/libhybris_egl_server/libhybris_egl_server.pro b/config.tests/libhybris_egl_server/libhybris_egl_server.pro
+index bc358d5..1c40b66 100644
+--- a/config.tests/libhybris_egl_server/libhybris_egl_server.pro
++++ b/config.tests/libhybris_egl_server/libhybris_egl_server.pro
+@@ -5,7 +5,7 @@ QT = core
+ 
+ !contains(QT_CONFIG, no-pkg-config) {
+     CONFIG += link_pkgconfig
+-    PKGCONFIG += egl
++    PKGCONFIG += egl hybris-egl-platform
+ } else {
+     LIBS += -legl
+ }
+diff --git a/src/hardwareintegration/compositor/libhybris-egl-server/libhybris-egl-server.pri b/src/hardwareintegration/compositor/libhybris-egl-server/libhybris-egl-server.pri
+index 5cbcb6b..c116ec3 100644
+--- a/src/hardwareintegration/compositor/libhybris-egl-server/libhybris-egl-server.pri
++++ b/src/hardwareintegration/compositor/libhybris-egl-server/libhybris-egl-server.pri
+@@ -4,7 +4,7 @@ contains(QT_CONFIG, no-pkg-config) {
+     LIBS += -lwayland-server
+ } else {
+     CONFIG += link_pkgconfig
+-    PKGCONFIG += wayland-server
++    PKGCONFIG += wayland-server hybris-egl-platform
+ }
+ 
+ CONFIG += egl

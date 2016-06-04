@@ -1,0 +1,27 @@
+pkgbase = qt5-wayland-compositor
+	pkgdesc = Provides APIs for Wayland
+	pkgver = 5.6.0
+	pkgrel = 1
+	url = http://qt-project.org/
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	groups = qt
+	groups = qt5
+	license = GPL3
+	license = LGPL
+	license = FDL
+	license = custom
+	depends = qt5-base
+	depends = libxcomposite
+	depends = libxkbcommon
+	provides = qt5-wayland
+	conflicts = qt5-wayland
+	conflicts = qt
+	source = qt5-wayland::git://code.qt.io/qt/qtwayland.git#tag=v5.6.0
+	source = pkgconfig_hybris-egl-platform.patch
+	md5sums = SKIP
+	md5sums = 9b29fe70bae05930a99ee50336843188
+
+pkgname = qt5-wayland-compositor
+
