@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=k3b-frameworks-git
-pkgver=2.9.90.r5955.e8961fe
+pkgver=2.9.90.r5959.2699da9
 pkgrel=1
 pkgdesc="Feature-rich and easy to handle CD burning application. KF5 Frameworks branch. (Git version)"
 arch=('i686' 'x86_64')
@@ -15,7 +15,18 @@ depends=('qt5-webkit'
          'libsamplerate'
          'hicolor-icon-theme'
          )
-makedepends=('git' 'cmake' 'extra-cmake-modules' 'kdoctools' 'flac' 'libmpcdec' 'ffmpeg' 'libmad' 'libdvdread' 'musicbrainz' 'libvorbis')
+makedepends=('git'
+             'cmake'
+             'extra-cmake-modules'
+             'kdoctools'
+             'flac'
+             'libmpcdec'
+             'ffmpeg'
+             'libmad'
+             'libdvdread'
+             'musicbrainz'
+             'libvorbis'
+             )
 optdepends=('cdrdao: for CD DAO mode burning support'
             'cdrkit: for CD burning support'
             'cdrtools: for CD burning support'
@@ -34,12 +45,15 @@ optdepends=('cdrdao: for CD DAO mode burning support'
             'libdvdread: Reading DVD video disks'
             'lame: Needed for the lame mpf encoder encoder plugin'
             'libvorbis: Needed for the K3b Ogg Vorbis decoder and encoder plugins'
-            'musicbrainz: Provide information about the CD, about the artist or about related information')
+            'musicbrainz: Provide information about the CD, about the artist or about related information'
+            )
 provides=('k3b')
 conflicts=('k3b')
-source=('git://anongit.kde.org/k3b.git#branch=kf5')
-sha1sums=('SKIP')
-install=k3b-frameworks-git.install
+source=('git://anongit.kde.org/k3b.git#branch=kf5'
+        '0001-Fixed-compilation-with-newer-ffmpeg-libav.patch::https://git.reviewboard.kde.org/r/122569/diff/raw/')
+sha1sums=('SKIP'
+          '8ee47b04e92499d484c49e33dd33dabdf53025c9'
+          )
 
 pkgver() {
   cd k3b
@@ -49,6 +63,9 @@ pkgver() {
 
 prepare() {
   mkdir -p build
+
+  cd k3b
+  patch -p1 -i "${srcdir}/0001-Fixed-compilation-with-newer-ffmpeg-libav.patch"
 }
 
 build() {
@@ -56,7 +73,7 @@ build() {
   cmake ../k3b \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
