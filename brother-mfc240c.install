@@ -8,10 +8,10 @@ post_install() {
           __port="usb:/dev/usb/lp0"
   fi
 
-  lpadmin -p MFC240C -E -v $__port -P /usr/share/cups/model/MFC240C.ppd
+  lpadmin -p MFC240C -E -v $__port -P /usr/share/cups/model/brmfc240c.ppd
   echo "If CUPS is not running now, start it after installation"
   echo "and type command:" 
-  echo "  lpadmin -p MFC240C -E -v URL -P /usr/share/cups/model/MFC240C.ppd"
+  echo "  lpadmin -p MFC240C -E -v URL -P /usr/share/cups/model/brmfc240c.ppd"
   echo "where URL can be found using command:"
   echo "  lpinfo -v | grep -i 'Brother'"
   echo "You can also register new printer using web interface at:"

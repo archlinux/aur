@@ -1,5 +1,5 @@
---- old_usr/local/Brother/Printer/mfc240c/cupswrapper/cupswrappermfc240c	2016-02-24 21:02:31.352003704 -0600
-+++ usr/local/Brother/Printer/mfc240c/cupswrapper/cupswrappermfc240c	2016-02-24 21:23:16.875313191 -0600
+--- old_usr/local/Brother/Printer/mfc240c/cupswrapper/cupswrappermfc240c	2016-05-30 10:51:02.171260973 -0500
++++ usr/local/Brother/Printer/mfc240c/cupswrapper/cupswrappermfc240c	2016-05-30 10:40:47.737965976 -0500
 @@ -23,6 +23,7 @@
  device_name=`echo $printer_name | eval sed -e 's/MFC/MFC-/' -e 's/DCP/DCP-/' -e 's/FAX/FAX-/'`
  pcfilename=`echo $printer_name | tr -d '[A-Z]'`
@@ -47,11 +47,11 @@
  *UIConstraints:	*BRColorMediaType Transparencies	*Resolution	Photo
  *UIConstraints:	*BRColorMediaType Transparencies	*Resolution	Highest
  
--
--
--ENDOFPPDFILE_END
 +ENDOFPPDFILE1
  
+-
+-ENDOFPPDFILE_END
+-
 +if /bin/false; then
  chmod 644 $ppd_file_name
  
@@ -68,6 +68,42 @@
  #! /bin/sh
  #
  # Copyright (C) 2005 Brother. Industries, Ltd.
+@@ -756,25 +741,25 @@
+ INPUT_TEMP_PS=\`mktemp /tmp/br_input_ps.XXXXXX\`
+ 
+ nup="cat"
+-if [ "`echo \$5 | grep 'Nup='`" != '' ] && [ \$NUPENABLE != 0 ]; then
++if [ "\`echo \$5 | grep 'Nup='\`" != '' ] && [ \$NUPENABLE != 0 ]; then
+ 
+-	if   [ "`echo \$5 | grep 'Nup=64'`" != '' ]; then
++	if   [ "\`echo \$5 | grep 'Nup=64'\`" != '' ]; then
+ 		nup="psnup -64"
+-	elif [ "`echo \$5 | grep 'Nup=32'`" != '' ]; then
++	elif [ "\`echo \$5 | grep 'Nup=32'\`" != '' ]; then
+ 		nup="psnup -32"
+-	elif [ "`echo \$5 | grep 'Nup=25'`" != '' ]; then
++	elif [ "\`echo \$5 | grep 'Nup=25'\`" != '' ]; then
+ 		nup="psnup -25"
+-	elif [ "`echo \$5 | grep 'Nup=16'`" != '' ]; then
++	elif [ "\`echo \$5 | grep 'Nup=16'\`" != '' ]; then
+ 		nup="psnup -16"
+-	elif [ "`echo \$5 | grep 'Nup=8'`" != '' ]; then
++	elif [ "\`echo \$5 | grep 'Nup=8'\`" != '' ]; then
+ 		nup="psnup -8"
+-	elif [ "`echo \$5 | grep 'Nup=6'`" != '' ]; then
++	elif [ "\`echo \$5 | grep 'Nup=6'\`" != '' ]; then
+ 		nup="psnup -6"
+-	elif [ "`echo \$5 | grep 'Nup=4'`" != '' ]; then
++	elif [ "\`echo \$5 | grep 'Nup=4'\`" != '' ]; then
+ 		nup="psnup -4"
+-	elif [ "`echo \$5 | grep 'Nup=2'`" != '' ]; then
++	elif [ "\`echo \$5 | grep 'Nup=2'\`" != '' ]; then
+ 		nup="psnup -2"
+-	elif [ "`echo \$5 | grep 'Nup=1'`" != '' ]; then
++	elif [ "\`echo \$5 | grep 'Nup=1'\`" != '' ]; then
+ 		nup="cat"
+ 	fi
+ 	echo   "NUP=\$nup"                                      >>\$LOGFILE
 @@ -798,25 +783,25 @@
        cat    > \$INPUT_TEMP_PS
     fi

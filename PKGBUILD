@@ -8,7 +8,7 @@ license=('GPL')
 install="brother-mfc240c.install"
 arch=('i686' 'x86_64')
 depends_x86_64=('lib32-glibc') 
-md5sums=('2856ad6fbe41b6ce01b1c0af3c7f94ef'
+md5sums=('55cba82f12929af901e8c489ffa7ca91'
          '207cf1eb6bbab8d2ecafd8a2b5bc8f4b'
          'e2564327cb7fc6501ca9657080855322')
 
@@ -34,7 +34,7 @@ package() {
   rm "$pkgdir/usr/share/brother/Printer/mfc240c/cupswrapper/cupswrappermfc240c"
   rm "$pkgdir/usr/share/brother/Printer/mfc240c/inf/setupPrintcapij"
 
-  install -m 644 -D ppd_file "$pkgdir/usr/share/cups/model/MFC240C.ppd"
+  install -m 644 -D ppd_file "$pkgdir/usr/share/cups/model/brmfc240c.ppd"
   install -m 755 -D wrapper "$pkgdir/usr/lib/cups/filter/brlpdwrappermfc240c"
 }
 
