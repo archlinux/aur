@@ -27,6 +27,6 @@ build() {
 }
 
 package() {
-	cd "$srcdir/${_gitname}"
+	cd "$srcdir/${_gitname}/build"
 	make DESTDIR="${pkgdir}" install
 }
