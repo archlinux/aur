@@ -4,13 +4,13 @@
 # Contributor: Bernardo Barros
 pkgname=muse
 pkgver=3.0.pre1
-pkgrel=2
+pkgrel=3
 pkgdesc="A MIDI/Audio sequencer with recording and editing capabilities"
 arch=('i686' 'x86_64')
 url="http://muse-sequencer.org/"
 license=('GPL2')
 depends=('qt5-base' 'fluidsynth' 'liblo' 'gtkmm' 'lib32-gtk2' 'gcc-libs-multilib' 'jack')
-makedepends=('cmake' 'gcc' 'ladspa' 'lv2' 'dssi' 'dssi-vst' 'ladish' 'liblo') # want to be deleted in next version: 'doxygen' 'graphviz'
+makedepends=('cmake' 'gcc' 'ladspa' 'lv2' 'dssi' 'dssi-vst' 'ladish' 'liblo' 'qt5-tools')
 optdepends=(
     'python2: Python scripting'
     'python2-pyqt5: Python scripting'
