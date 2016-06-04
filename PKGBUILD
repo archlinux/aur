@@ -1,6 +1,6 @@
 # Maintainer: David Thurstenson thurstylark@gmail.com
 pkgname=chirp-hg
-pkgver=1.0
+pkgver=r2714.333a280ca0c4
 pkgrel=1
 pkgdesc="GUI tool for programming ham radios, built from hg repo"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python2-lxml' 'python2-pyserial' 'desktop-file-utils' 'pygtk' 'curl')
 makedepends=('mercurial')
 provides=('chirp')
 conflicts=('chirp' 'chirp-daily')
-source=('chirp-hg::http://d-rats.com/hg/chirp.hg')
+source=('chirp-hg::hg+http://d-rats.com/hg/chirp.hg')
 noextract=()
 md5sums=('SKIP')
 
@@ -21,5 +21,5 @@ pkgver() {
 
 package() {
 	cd "$srcdir/$pkgname"
-	python2 setup.py install --root="$pkgdir/" --optipize=1
+	python2 setup.py install --root="$pkgdir/" --optimize=1
 }
