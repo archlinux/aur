@@ -1,19 +1,17 @@
 # Maintainer: Giorgio Wicklein <giowckln@gmail.com>
 pkgname=symphytum
-pkgver=1.2
+pkgver=2.0
 pkgrel=1
 pkgdesc="Personal database software"
 arch=('i686' 'x86_64')
 url="http://giowck.github.io/symphytum/"
 license=('BSD')
-depends=('qt4' 'sqlite' 'python2' 'python2-setuptools')
-source=("http://giowck.github.io/symphytum/files/$pkgname-$pkgver-src.tar.gz"
-        "http://giowck.github.io/symphytum/files/$pkgname-$pkgver-src.tar.gz.asc")
-md5sums=('e35e8c1eee7f3343ed8007974272efda'
-         'SKIP')
+depends=('qt5-base' 'qt5-svg' 'sqlite' 'python2' 'python2-setuptools')
+source=("http://giowck.github.io/symphytum/files/$pkgname-$pkgver-src.tar.gz")
+md5sums=('5dc01191d4434bc956c8866a36eff277')
 
 build() {
-  qmake-qt4 -config release
+  qmake-qt5 -config release
   make
 }
 
@@ -35,3 +33,4 @@ package() {
   # Copy license
   install -Dm644 "$srcdir/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
