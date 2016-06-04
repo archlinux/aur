@@ -18,7 +18,7 @@ _use_gtk3=1            # If set 1, then build with GTK3 support, if set 0, then 
 ## -- Package and components information -- ##
 ##############################################
 pkgname=chromium-dev
-pkgver=52.0.2743.19
+pkgver=53.0.2756.0
 _launcher_ver=3
 pkgrel=1
 pkgdesc="The open-source project behind Google Chrome (Dev Channel)"
@@ -79,10 +79,11 @@ source=("https://commondatastorage.googleapis.com/chromium-browser-official/chro
         'chromium-dev.svg'
         # Patch form Gentoo
         'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-ffmpeg-r2.patch'
-        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-snapshot-toolchain-r1.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-jinja-r10.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-system-zlib-r0.patch'
+        'https://raw.githubusercontent.com/gentoo/gentoo/master/www-client/chromium/files/chromium-linker-warnings-r0.patch'
         # Misc Patches
-        'enable_vaapi_on_linux-r11.diff'
-        'chromium-system-jinja-r9.patch'
+        'enable_vaapi_on_linux-r12.diff'
         'minizip.patch::http://pastebin.com/raw/QCqSDam5'
         # Patch from crbug (chromium bugtracker)
         'chromium-widevine-r1.patch' # https://crbug.com/473866
@@ -93,10 +94,11 @@ sha1sums=( #"$(curl -sL https://gsdview.appspot.com/chromium-browser-official/?m
           '336976cb66bf8df71fc7f2e92aa723891b6efb53'
           # Patch form Gentoo
           '450cd81653499eb50f0f7df1b0d4d1c1620365a5'
-          '7b9c1a7e0e581413dbebb0e894f68ce2f2ba0e6a'
+          '81d072e4d88ce3dfd0a4f3ce3b642a74c82143e0'
+          '3a1c57ae49a31e8eff64b32c4196433ea240e4ea'
+          '39caf5a74fe2dd1832c803b9e6fab5d21e3cbe36'
           # Misc Patches
-          'a94c39fb32f0ca5b68f16dde4e117537c652dcc8'
-          '1063521b4e3bf1bb25b666ef7423968886fe055c'
+          '709000b63bb1614de605c6fda4611516d49ca45f'
           'bc90b327b05dbecaa88da43211ae0a4ed0c6c57f'
           # Patch from crbug (chromium bugtracker)
           '3032c9aeb68d80d8ef3cb8029be0d06ee402fa7f'
@@ -299,19 +301,16 @@ _necesary=('base/third_party/dmg_fp'
 # -Dlogging_like_official_build=1            | Save space by removing DLOG and DCHECK messages (about 6% reduction).
 # -Dlinux_use_gold_flags=0                   | Never use bundled gold binary. Disable gold linker flags for now.
 # -Dusb_ids_path=/usr/share/hwdata/usb.ids   | Use the file at run time instead of effectively compiling it in.
-# -Denable_hotwording=0                      | http://crbug.com/491435
 # -Dicu_use_data_file_flag=1                 | set to 0 when fix https://crbug.com/592268
 
 _flags=("-Dclang=${_use_clang}"
         '-Ddisable_glibc=1'
         '-Ddisable_fatal_linker_warnings=1'
         '-Denable_sql_database=0'
-        '-Denable_hidpi=1'
         '-Denable_touch_ui=1'
         '-Denable_webrtc=1'
         '-Denable_widevine=1'
         '-Denable_pepper_cdms=1'
-        '-Denable_hotwording=0'
         '-Denable_hangout_services_extension=1'
         '-Dffmpeg_branding=ChromeOS'
         "-Dgoogle_api_key=${_google_api_key}"
@@ -379,6 +378,7 @@ fi
 # -Duse_system_protobuf=1    | https://bugs.gentoo.org/show_bug.cgi?id=525560
 # -Duse_system_icu=1         | https://crbug.com/584920 and https://crbug.com/592268
 # -Duse_system_libpng=1      | https://crbug.com/595429
+# -Duse_system_libjpeg=1     | https://bugs.gentoo.org/show_bug.cgi?id=584518
 # NOTE
 # -Duse_system_openssl=0     | Set to 1 if use BoringSSL instead of SSL
 # -Duse_system_libevent=0    | Need older version (<2.x.x)
@@ -440,11 +440,11 @@ prepare() {
   msg2 "Patching the sources"
   # Patch sources from Gentoo
   patch -p1 -i "${srcdir}/chromium-system-ffmpeg-r2.patch"
-  patch -p0 -i "${srcdir}/chromium-snapshot-toolchain-r1.patch"
+  patch -p0 -i "${srcdir}/chromium-system-jinja-r10.patch"
+  patch -p0 -i "${srcdir}/chromium-linker-warnings-r0.patch"
 
   # Misc Patches:
-  patch -p1 -i "${srcdir}/enable_vaapi_on_linux-r11.diff"
-  patch -p0 -i "${srcdir}/chromium-system-jinja-r9.patch"
+  patch -p1 -i "${srcdir}/enable_vaapi_on_linux-r12.diff"
   patch -p1 -i "${srcdir}/minizip.patch"
 
   # Patch from crbug (chromium bugtracker)
@@ -585,7 +585,7 @@ package() {
   install -Dm644 snapshot_blob.bin "${pkgdir}/usr/lib/chromium-dev/snapshot_blob.bin"
 
   # Install Resources
-  for i in content_resources keyboard_resources resources chrome_100_percent chrome_200_percent chrome_material_100_percent chrome_material_200_percent; do
+  for i in content_resources keyboard_resources resources chrome_100_percent chrome_200_percent; do
     install -Dm644 "${i}.pak" "${pkgdir}/usr/lib/chromium-dev/${i}.pak"
   done
 
