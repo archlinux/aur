@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url='https://hfst.github.io/'
 license=('APACHE')
 depends=('libxml++' 'libarchive' 'icu')
-makedepends=('git' 'sed')
+makedepends=('git')
 provides=(${pkgname%-*}=$pkgver)
 conflicts=(${pkgname%-*})
 options=(!libtool)
