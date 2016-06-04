@@ -9,11 +9,12 @@ _about_url="https://github.com/fusion809/about"
 _about_arch_ver=1.5.16
 _language_gfm2_ver=0.90.3
 _language_liquid_ver=0.5.1
+_language_unix_shell_ver=0.26.0
 
 pkgname=${_pkgname}-editor-${_version}
 _gitcommit=82b75b5
 pkgver=1.9.0.dev.${_gitcommit}
-pkgrel=3
+pkgrel=1
 pkgdesc='Chrome-based text editor from GitHub - Git'
 arch=('x86_64' 'i686')
 url="https://github.com/${_pkgname}/${_pkgname}"
@@ -27,9 +28,9 @@ source=("git+${url}.git"
 "${_pkgname}-${_version}.desktop"
 "${_pkgname}-${_version}")
 sha256sums=('SKIP'
-            'de170455e00c684c452acdda5dbfa1182370cd2025990f944bfa48e0df685c6d'
+            '1f9d3d560ab6374b38644e9c55a7c8fa0f8f581758fb2ee0b18c3f8c53aee44f'
             '8e7723a0618661f5dabc5729deaf0b453ef7945ec904690a95d446eb517ec522'
-            '012ef71ce4e048f61c018676a0a5112428855f515fb55bf8fa2072a1b364d999')
+            '0b3e189202c82c98bc3d3f9a9c88d2aab88537cdd2e0fc2f4d537f55a068acb5')
 
 _gitcommit() {
   cd $srcdir/$_pkgname
@@ -42,6 +43,7 @@ prepare() {
   sed -i -e "/exception-reporting/d" \
 	       -e "/metrics/d" \
          -e "s/\"language-gfm\": \".*\",/\"language-gfm2\": \"${_language_gfm2_ver}\",\n    \"language-liquid\": \"${_language_liquid_ver}\",/g" \
+         -e "s/\"language-shellscript\": \".*\",/\"language-unix-shell\": \"${_language_unix_shell_ver}\",/g" \
          -e "s/\"about\": \".*\"/\"about-arch\": \"${_about_arch_ver}\"/g" \
          package.json
 
