@@ -8,7 +8,7 @@ license=('GPL')
 install="brother-mfc240c.install"
 arch=('i686' 'x86_64')
 depends_x86_64=('lib32-glibc') 
-md5sums=('55cba82f12929af901e8c489ffa7ca91'
+md5sums=('806c9c5672793de84cae9c255a4d402b'
          '207cf1eb6bbab8d2ecafd8a2b5bc8f4b'
          'e2564327cb7fc6501ca9657080855322')
 

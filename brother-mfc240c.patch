@@ -1,5 +1,5 @@
---- old_usr/local/Brother/Printer/mfc240c/cupswrapper/cupswrappermfc240c	2016-05-30 10:51:02.171260973 -0500
-+++ usr/local/Brother/Printer/mfc240c/cupswrapper/cupswrappermfc240c	2016-05-30 10:40:47.737965976 -0500
+--- old_usr/local/Brother/Printer/mfc240c/cupswrapper/cupswrappermfc240c	2016-06-04 18:27:01.893882000 -0500
++++ usr/local/Brother/Printer/mfc240c/cupswrapper/cupswrappermfc240c	2016-06-04 18:31:52.815619223 -0500
 @@ -23,6 +23,7 @@
  device_name=`echo $printer_name | eval sed -e 's/MFC/MFC-/' -e 's/DCP/DCP-/' -e 's/FAX/FAX-/'`
  pcfilename=`echo $printer_name | tr -d '[A-Z]'`
@@ -56,19 +56,18 @@
  chmod 644 $ppd_file_name
  
  if [ -d /usr/share/ppd ]
-@@ -690,8 +673,10 @@
+@@ -690,8 +673,9 @@
  rm -f  $brotherlpdwrapper
  #echo 'rm -f /usr/lib/cups/filter/brlpdwrapper${printer_model}'
  
 +fi
-+
-+cat <<!ENDOFWFILTER! > wrapper
  
 -cat <<!ENDOFWFILTER! >$brotherlpdwrapper
++cat <<!ENDOFWFILTER! > wrapper
  #! /bin/sh
  #
  # Copyright (C) 2005 Brother. Industries, Ltd.
-@@ -756,25 +741,25 @@
+@@ -756,25 +740,25 @@
  INPUT_TEMP_PS=\`mktemp /tmp/br_input_ps.XXXXXX\`
  
  nup="cat"
@@ -104,7 +103,7 @@
  		nup="cat"
  	fi
  	echo   "NUP=\$nup"                                      >>\$LOGFILE
-@@ -798,25 +783,25 @@
+@@ -798,25 +782,25 @@
        cat    > \$INPUT_TEMP_PS
     fi
  fi
@@ -136,7 +135,7 @@
  
      if [ \$LOGLEVEL -gt 2 ];  then
  	   if [ \$LOGFILE != "/dev/null" ]; then
-@@ -832,6 +817,7 @@
+@@ -832,6 +816,7 @@
  
  !ENDOFWFILTER!
  
@@ -144,7 +143,7 @@
  chmod 755 $brotherlpdwrapper
  #if [ -e /usr/lib64/cups/backend ]; then
  #   cp $brotherlpdwrapper  $brotherlpdwrapper64
-@@ -872,4 +858,4 @@
+@@ -872,4 +857,4 @@
  lpadmin -p ${printer_name} -E -v $port -m br${printer_model}.ppd
  
  exit 0
