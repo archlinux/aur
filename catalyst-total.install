@@ -5,8 +5,11 @@ signa(){
 
 whisperer(){
     echo "----------------------------------------------------------------"
+    echo "Note: hook was replaced by dkms"
+    echo "----------------------------------------------------------------"
     echo "Add nomodeset to your kernel line in /boot/grub/menu.lst , ie.:"
     echo "kernel /boot/vmlinuz-linux root=/dev/sda1 ro nomodeset"
+    echo "Note: don't do this if you have pxp/hybrid"
     echo "----------------------------------------------------------------"
     echo "You can use the tool 'aticonfig' to generate an xorg.conf file."
     echo "--------------------- ^^^^^^^^^ --------------------------------"
@@ -18,23 +21,9 @@ whisperer(){
     echo "----------------------------------------------------------------"
     echo "For more info and troubleshooting visit:"
     echo "http://wiki.archlinux.org/index.php/ATI_Catalyst"
-    echo -e '\E[37;44m'"\033[1m----------------------------------------------------------------\033[0m"
-    echo "To enable 'automatic re-compilation while system shutdown/reboot' "
-    echo "feature run these commands as root:"
-    echo "systemctl enable catalyst-hook"
-    echo "systemctl start catalyst-hook"
-    echo ""
-    echo "More info here:"
-    echo "https://bbs.archlinux.org/viewtopic.php?pid=1255575#p1255575"
-    echo -e '\E[37;44m'"\033[1m----------------------------------------------------------------\033[0m"
     echo -e "\e[0;32m--------------------------- PXP --------------------------------\e[0m"
     echo -e "\e[0;32m@pxp_user:\e[0m I switched GL/glx links to catalyst again..."
     echo -e "\e[0;32m----------------------------------------------------------------\e[0m"
-    echo -e "\e[1;31m-------------------------- TTY BUG -----------------------------\e[0m"
-    echo "There's a bug in switching to VT/TTY"
-    echo "Using uvesafb is a workaround:"
-    echo "https://wiki.archlinux.org/index.php/uvesafb"
-    echo -e "\e[1;31m----------------------------------------------------------------\e[0m"
 }
 
 bug_whisper(){
@@ -61,17 +50,19 @@ pre_upgrade(){
     if [[ -e usr/lib/fglrx/switchlibglx ]] && [[ `usr/lib/fglrx/switchlibglx query | grep -c "intel"` == "1" ]]; then 
       touch tmp/switch_glx_intel
     fi
+    # remove hook fglrx
+    sed '/^HOOKS/s/ *fglrx//' -i etc/mkinitcpio.conf
+    systemctl stop catalyst-hook.service
+    systemctl disable catalyst-hook.service
+    # remove existing  fglrx modules
+    usr/bin/catalyst_build_module ra
 }
 
 post_install(){
-    usr/bin/catalyst_build_module ra
-    usr/bin/catalyst_build_module all
     whisperer
 }
 
 post_upgrade(){
-    usr/bin/catalyst_build_module ra
-    usr/bin/catalyst_build_module all
     whisperer
 
     ## switch to intel if it was intel before upgrade    
@@ -85,14 +76,7 @@ post_upgrade(){
     fi
 }
 
-pre_remove(){
-    usr/bin/catalyst_build_module ra
-}
-
 post_remove(){
-    # remove hook fglrx
-    sed '/^HOOKS/s/ *fglrx//' -i etc/mkinitcpio.conf
-
     # remove log
     rm -f var/log/catalyst-install.log
 

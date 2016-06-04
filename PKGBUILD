@@ -20,22 +20,22 @@
 # Contributor: solar (authatieventsd' patch s/-1/255)
 # Contributor: kolasa (part of 4.3 kernel patches)
 # Contributor: gentoo (part of 4.3 kernel patches)
-# Contributor: 	Philip Muller @ Manjaro (4.4 kernel patch)
-
+# Contributor: 	Philip Müller @ Manjaro (4.4 kernel patch)
+# Contributor: 	aslmaswd (acpi main script)
 
 # PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
 
 pkgname=catalyst-total
 pkgver=15.9
-pkgrel=11
+pkgrel=12
 # _betano=1.0
 _amdver=15.201.1151
-pkgdesc="AMD/ATI Catalyst drivers for linux. catalyst-hook + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
+pkgdesc="AMD/ATI Catalyst drivers for linux. catalyst-dkms + catalyst-utils + lib32-catalyst-utils + experimental powerXpress suppport. Radeons HD 2 3 4 xxx ARE NOT SUPPORTED"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('linux>=3.0' 'linux<4.6' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
+depends=('dkms' 'linux>=3.0' 'linux<4.7' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.18.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
@@ -59,7 +59,7 @@ fi
 
 install=${pkgname}.install
 
-url_ref="http://support.amd.com/en-us/kb-articles/Pages/latest-linux-beta-driver.aspx"
+url_ref="http://support.amd.com/en-us/download/desktop?os=Linux+x86"
 DLAGENTS="http::/usr/bin/curl --referer ${url_ref} -o %o %u"
 
 source=(
@@ -69,20 +69,14 @@ source=(
 #     http://www2.ati.com/drivers/linux/amd-catalyst-omega-14.12-linux-run-installers.zip
 #     http://www2.ati.com/drivers/linux/amd-driver-installer-${_amdver}-x86.x86_64.zip
     http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver}-linux-installer-${_amdver}-x86.x86_64.zip
-    catalyst_build_module
     lib32-catalyst.sh
     catalyst.sh
     atieventsd.sh
     atieventsd.service
     ati-powermode.sh
-    a-ac-aticonfig
-    a-lid-aticonfig
     catalyst.conf
     arch-fglrx-authatieventsd_new.patch
-    hook-fglrx
-    ati_make.sh
     makefile_compat.patch
-    catalyst-hook.service
     switchlibGL
     switchlibglx
     pxp_switch_catalyst
@@ -91,29 +85,26 @@ source=(
     lano1106_fglrx_intel_iommu.patch
     lano1106_kcl_agp_13_4.patch
     fglrx_gpl_symbol.patch
+    4.2-amd-from_crimson_15.11.patch
     4.3-kolasa-seq_printf.patch
     4.3-gentoo-mtrr.patch
-    4.2-amd-from_crimson_15.11.patch
     crimson_i686_xg.patch
     4.4-manjaro-xstate.patch
-    grsec_arch.patch)
+    grsec_arch.patch
+    4.6-arch-get_user_pages-page_cache_release.patch
+    dkms.conf
+    makesh-dont-check-gcc-version.patch)
 
 md5sums=('d2de2df6946b452c266a3c892e6e46ff'
-	 '601d9c756571dd79d26944e54827631e'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
          'bdafe749e046bfddee2d1c5e90eabd83'
          '9d9ea496eadf7e883d56723d65e96edf'
 	 'b79e144932616221f6d01c4b05dc9306'
-	 '514899437eb209a1d4670df991cdfc10'
-	 '80fdfbff93d96a1dfca2c7f684be8cc1'
-	 '9054786e08cf3ea2a549fe22d7f2cd92'
+	 '9e2a7ded987b7d2b2cfffc7281ebd8a5'
 	 '3e19c2285c76f4cb92108435a1e9c302'
 	 'b3ceefeb97c609037845f65d0956c4f0'
-         '9126e1ef0c724f8b57d3ac0fe77efe2f'
-	 '62239156a9656c6f41e89a879578925c'
 	 '3e1b82bd69774ea808da69c983d6a43b'
-	 'a64e2eae5addc6d670911ccf94b8cda4'
-         '394bc493fdf493a5093f9e2095096d02'
+	 '394bc493fdf493a5093f9e2095096d02'
          '3226230592fa3c91ff22389114fc5dc7'
          '9e706c272feb167be55ba7201dfa8d51'
 	 '0e6d963436dd23dbb45ae0f4fc9b661c'
@@ -121,12 +112,15 @@ md5sums=('d2de2df6946b452c266a3c892e6e46ff'
 	 '5184b94a2a40216a67996999481dd9ee'
 	 'c5156eddf81c8a1719b160d05a2e8d67'
 	 'ef97fc080ce7e5a275fe0c372bc2a418'
+	 'fd2851026228ca72124972d1ea0335ea'
 	 '0e0666e95d1d590a7a83192805679485'
 	 '98828e3eeaec2b3795e584883cc1b746'
-	 'fd2851026228ca72124972d1ea0335ea'
 	 '6cdbaf5f71d867d225721a0369413616'
 	 'd9bea135ae3e1b3ca87c5bbe6dcf8e72'
-	 '8941e91fc58cb44ce21ab9bda135754e')
+	 '8941e91fc58cb44ce21ab9bda135754e'
+	 '11b7c2e0dc4794801005d66b0e7608a3'
+	 '23d569abfdd7de433d76e003e4b3ccf9'
+	 '10829e3b992b3e80a6e78c8e27748703')
 
 
 build() {
@@ -260,11 +254,10 @@ package() {
     # ACPI example files
 #       install -m755 usr/share/doc/fglrx/examples/etc/acpi/*.sh ${pkgdir}/etc/acpi
 #       sed -i -e "s/usr\/X11R6/usr/g" ${pkgdir}/etc/acpi/ati-powermode.sh
-#       install -m644 usr/share/doc/fglrx/examples/etc/acpi/events/* ${pkgdir}/etc/acpi/events
-    # lets check our own files - V
+      install -m644 usr/share/doc/fglrx/examples/etc/acpi/events/* ${pkgdir}/etc/acpi/events
+    # put version modified by aslmaswd - V
       install -m755 ${srcdir}/ati-powermode.sh ${pkgdir}/etc/acpi
-      install -m644 ${srcdir}/a-ac-aticonfig ${pkgdir}/etc/acpi/events
-      install -m644 ${srcdir}/a-lid-aticonfig ${pkgdir}/etc/acpi/events
+
 
     # Add ATI Events Daemon launcher
       install -m755 ${srcdir}/atieventsd.sh ${pkgdir}/etc/rc.d/atieventsd
@@ -303,7 +296,7 @@ package() {
       # switching script: switch xorg.conf + aticonfig --px-Xgpu + switchlibGL + add/remove fglrx into MODULES
       install -m755 ${srcdir}/pxp_switch_catalyst ${pkgdir}/usr/bin
 
-##catalyst-hook section
+##catalyst-dkms section
       cd ${srcdir}/archive_files
       patch -Np1 -i ../makefile_compat.patch
       patch -Np1 -i ../lano1106_fglrx_intel_iommu.patch
@@ -315,33 +308,28 @@ package() {
       test "${CARCH}" = "i686" && patch -Np1 -i ../crimson_i686_xg.patch
       patch -Np1 -i ../4.4-manjaro-xstate.patch
       patch -Np1 -i ../grsec_arch.patch
+      patch -Np1 -i ../4.6-arch-get_user_pages-page_cache_release.patch
+      patch -Np1 -i ../makesh-dont-check-gcc-version.patch
 
     # Prepare modules source files
+      install -dm755 ${pkgdir}/usr/src/fglrx-${pkgver}/2.6.x
       _archdir=x86_64
       test "${CARCH}" = "i686" && _archdir=x86
-      install -m755 -d ${pkgdir}/usr/share/ati/build_mod
+      install -m755 -d ${pkgdir}/usr/src/fglrx-${pkgver}
       install -m644 common/lib/modules/fglrx/build_mod/*.c \
-                ${pkgdir}/usr/share/ati/build_mod
+                ${pkgdir}/usr/src/fglrx-${pkgver}
       install -m644 common/lib/modules/fglrx/build_mod/*.h \
-                ${pkgdir}/usr/share/ati/build_mod
+                ${pkgdir}/usr/src/fglrx-${pkgver}
       install -m644 common/lib/modules/fglrx/build_mod/2.6.x/Makefile \
-                ${pkgdir}/usr/share/ati/build_mod
+                ${pkgdir}/usr/src/fglrx-${pkgver}/2.6.x
+      install -m644 common/lib/modules/fglrx/build_mod/make.sh \
+                ${pkgdir}/usr/src/fglrx-${pkgver}
       install -m644 arch/${_archdir}/lib/modules/fglrx/build_mod/libfglrx_ip.a \
-                ${pkgdir}/usr/share/ati/build_mod
-      install -m755 -d ${pkgdir}/usr/bin
-      install -m755 ${srcdir}/catalyst_build_module ${pkgdir}/usr/bin
+                ${pkgdir}/usr/src/fglrx-${pkgver}
 
-    # modified ati's make.sh script
-      install -m755 ${srcdir}/ati_make.sh ${pkgdir}/usr/share/ati/build_mod
-
-    # hook fglrx
-      install -m755 -d ${pkgdir}/usr/lib/initcpio/install
-      install -m644 ${srcdir}/hook-fglrx ${pkgdir}/usr/lib/initcpio/install/fglrx
-
-    # systemd service to perform fglrx module build at shutdown
-      install -m755 -d ${pkgdir}/usr/lib/systemd/system
-      install -m644 ${srcdir}/catalyst-hook.service ${pkgdir}/usr/lib/systemd/system
-
+    # copy dkms.conf and set version
+    cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/fglrx-${pkgver}/
+    sed -i -e "s/@VERSION@/${pkgver}/" "${pkgdir}/usr/src/fglrx-${pkgver}/dkms.conf"
 
 ##lib32-catalyst-utils section
       if [ "${CARCH}" = "x86_64" ] && [[ `cat /etc/pacman.conf | grep -c "#\[multilib]"` = 0 ]]; then
