@@ -1,7 +1,7 @@
 # Maintainer: Eldon Mathias <eldon@emathias.com>
 pkgname="brother-mfc240c"
-pkgver="1.0.1"
-pkgrel="1"
+pkgver="1.0.2"
+pkgrel="2"
 pkgdesc="Brother MFC-240C CUPS driver"
 url="http://www.brother.com"
 license=('GPL')
