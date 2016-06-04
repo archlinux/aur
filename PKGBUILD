@@ -5,16 +5,16 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=inox
-pkgver=49.0.2623.110
+pkgver=51.0.2704.63
 pkgrel=1
 _launcher_ver=3
 pkgdesc="Chromium Spin-off to enhance privacy by disabling data transmission to Google"
 arch=('i686' 'x86_64')
 url="http://www.chromium.org/"
 license=('BSD')
-depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss' 'icu'
+depends=('gtk2' 'nss' 'alsa-lib' 'xdg-utils' 'bzip2' 'libevent' 'libxss'
          'libexif' 'libgcrypt' 'ttf-font' 'systemd' 'dbus' 'flac' 'snappy'
-         'pciutils' 'libpulse' 'harfbuzz' 'libsecret' 'libvpx' 
+         'pciutils' 'libpulse' 'harfbuzz' 'libsecret' 'libvpx'
          'perl' 'perl-file-basedir' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('python2' 'gperf' 'yasm' 'mesa' 'ninja' 'libvpx')
 makedepends_x86_64=('lib32-gcc-libs' 'lib32-zlib')
@@ -27,6 +27,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         chromium-launcher-$_launcher_ver.tar.gz::https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver.tar.gz
         inox.desktop
         chromium-widevine.patch
+        PNGImageDecoder.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-autofill-download-manager.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-google-url-tracker.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-default-extensions.patch
@@ -45,24 +46,25 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-new-avatar-menu.patch
         https://raw.githubusercontent.com/gcarq/inox-patchset/$pkgver/disable-first-run-behaviour.patch)
 
-sha256sums=('41840925d3769555ce4ebd780ee0dc6789ffae27b1684006c9b543bcaa35bbd2'
+sha256sums=('b243e46e0ebaf8f60d1c37a0d99f1fdd80e1597667be4776a1862bb004e4eee9'
             '8b01fb4efe58146279858a754d90b49e5a38c9a0b36a1f84cbb7d12f92b84c28'
             'ff3f939a8757f482c1c5ba35c2c0f01ee80e2a2273c16238370081564350b148'
             '4660344789c45c9b9e52cb6d86f7cb6edb297b39320d04f6947e5216d6e5f64c'
-            '1b2274b25d2b02c0c54b2c830ff889ddf7eceb6b8c7cf5a6dd9321c3c468a715'
+            'd9fd982ba6d50edb7743db6122b975ad1d3da5a9ad907c8ab7cf574395b186cd'
+            '2d4b600d8085f1d5b3b4f30f8cfc6741558b1c8721dc19dd6b4de2b8dbedd80d'
             'a7329d7f3099f6b8dfe4b7addeb7abbca1cf079139a86c6483a51fed0190478e'
             '241ffb6a5dfd4f331e11c87b70aa26a48475d52e14f5b9e86f6b69db7137ee84'
-            'e247f7c91d79eb119feffb67eb8e19e9a667911a42e8dd43c92861c922ee5cbd'
+            '3a331e004ac84a493dced9a990f71119d3ef31ebbfd67b13a7ec194e835dea11'
             'c2bab92d8d237d341b79d868e814807c3f862d3b3c22a87bbf5e905853e516ae'
-            '2aec3f9a8a3f9f64caf1fdaae797a617199739c8b0ead1e176aba1bcfffcc389'
+            'ed4471fa8a984ccea7fd1900a76865e65a8f5afb6a6390faa22a4758d77bbc07'
             '562eea848542f76537a9f3993bac397b523d0ce419416daf0bb4dd17f5203c7c'
             'b081462f645ffab7aaf2c310761c269329d3d22a36cf463dd0ba5ebb3da2141e'
             '508ae6417ad5dc23581ca593ac19fa36cfdc019d16ac5e159b8cf1e5e1acb551'
-            'd2861c60acfdb710cf8b114ef1c3484011102cfef813c480d460002305ebcc0f'
+            '35b40aca3a043e309191447aa2607558eaeba72adf335fa93beebf57ec3e8dff'
             '8412971b2814c1135375d5e5fc52f0f005ac15ed9e7625db59f7f5297f92727e'
             '55b75daf5aad2a8929c80837f986d4474993f781c0ffa4169e38483b0af6e385'
             '0362593751abc09bbf2244109c93068fc9a40a51ba4dbd17bb2b107ff50d7dce'
-            'e94dd87a3c28cdee7fde1c05d0ad2b76dd72a60819dde0401ef66828ac492bf2'
+            '9e1ce0c47dd51595f13a6f611de39573022c7ff59fc003ab775a5319ebfedad8'
             'cd0d2b665f9d39f7c25929f8e1b85b9a391b4a5a8a70d005cd815bbf2bb4e548'
             '9e37751dca4a2b60681ba14119bc3839685ae420686664de7dfc4245f9eeff3c'
             'c47efe038f502d4fe2b66e59347b01c58ee8739a8d8f050c6c1cc60752d24f13')
@@ -81,9 +83,6 @@ prepare() {
 
   # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/9JX1N2nf4PU/discussion
   touch chrome/test/data/webui/i18n_process_css_test.html
-
-  # https://code.google.com/p/chromium/issues/detail?id=541273
-  sed -i "/'target_name': 'libvpx'/s/libvpx/&_new/" build/linux/unbundle/libvpx.gyp
 
   # Enable support for the Widevine CDM plugin
   # libwidevinecdm.so is not included, but can be copied over from Chrome
@@ -109,10 +108,16 @@ prepare() {
   patch -Np1 -i ../disable-new-avatar-menu.patch
   patch -Np1 -i ../disable-first-run-behaviour.patch
 
-  # Remove bundled ICU; its header files appear to get picked up instead of
-  # the system ones, leading to errors during the final link stage
-  # https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/BNGvJc08B6Q
-  find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
+  # Chromium 51 won't build without this patch. Not reported upstream yet AFAIK.
+  patch -p1 -i "$srcdir"/PNGImageDecoder.patch
+
+  # Commentception – use bundled ICU due to build failures (50.0.2661.75)
+  # See https://crbug.com/584920 and https://crbug.com/592268
+  # ---
+  ## Remove bundled ICU; its header files appear to get picked up instead of
+  ## the system ones, leading to errors during the final link stage.
+  ## https://groups.google.com/a/chromium.org/d/topic/chromium-packagers/BNGvJc08B6Q
+  #find third_party/icu -type f \! -regex '.*\.\(gyp\|gypi\|isolate\)' -delete
 
   # Use Python 2
   find . -name '*.py' -exec sed -i -r 's|/usr/bin/python$|&2|g' {} +
@@ -142,6 +147,11 @@ build() {
   # CFLAGS are passed through release_extra_cflags below
   export -n CFLAGS CXXFLAGS
 
+  # Work around bug in v8 in which GCC 6 optimizes away null pointer checks
+  # https://bugs.chromium.org/p/v8/issues/detail?id=3782
+  # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=69234
+  CFLAGS+=' -fno-delete-null-pointer-checks'
+
   local _chromium_conf=(
     -Dwerror=
     -Dclang=0
@@ -153,7 +163,7 @@ build() {
     -Dlinux_use_bundled_binutils=0
     -Dlinux_use_bundled_gold=0
     -Dlinux_use_gold_flags=0
-    -Dicu_use_data_file_flag=0
+    -Dicu_use_data_file_flag=1
     -Dlogging_like_official_build=1
     -Drelease_extra_cflags="$CFLAGS"
     -Dffmpeg_branding=Chrome
@@ -163,7 +173,7 @@ build() {
     -Duse_system_flac=1
     -Duse_system_ffmpeg=0
     -Duse_system_harfbuzz=1
-    -Duse_system_icu=1
+    -Duse_system_icu=0
     -Duse_system_libevent=1
     -Duse_system_libjpeg=1
     -Duse_system_libpng=1
@@ -261,6 +271,8 @@ package() {
   ln -s /usr/lib/$pkgname/inoxdriver "$pkgdir/usr/bin/inoxdriver"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  install -Dm644 out/Release/icudtl.dat "${pkgdir}/usr/lib/$pkgname/icudtl.dat"
 }
 
 # vim:set ts=2 sw=2 et:
