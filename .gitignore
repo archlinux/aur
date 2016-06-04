@@ -2,4 +2,3 @@
 !.gitignore
 !.SRCINFO
 !PKGBUILD
-!psensor-libmicrohttpd.patch

@@ -3,8 +3,8 @@
 # Contributor: Diogo Leal <estranho@diogoleal.com>
 
 pkgname=psensor
-pkgver=1.1.3
-pkgrel=4
+pkgver=1.1.4
+pkgrel=1
 pkgdesc="A graphical hardware temperature monitor for Linux"
 arch=('i686' 'x86_64')
 url="http://wpitchoune.net/psensor"
@@ -19,21 +19,13 @@ optdepends=('asciidoc: required to produce the HTML version of the FAQ'
 	'curl: required for remote monitoring'
 	'libgtop: required for CPU usage')
 conflicts=('libappindicator-gtk2' 'libappindicator-activate-gtk2' 'libappindicator-gtk2-ubuntu' 'lib32-libappindicator-gtk2')
-source=("http://wpitchoune.net/$pkgname/files/$pkgname-$pkgver.tar.gz"{,.asc}
-	"psensor-libmicrohttpd.patch")
-md5sums=('c3a3c1dea4dbfe12bbfb8088b86c3d4f'
-         'SKIP'
-         '6d0414028c191c9c88f42dc765f3ecfd')
+source=("http://wpitchoune.net/$pkgname/files/$pkgname-$pkgver.tar.gz"{,.asc})
+md5sums=('05253aa36d3e2c82d5f83dac01d23fb9'
+         'SKIP')
 validpgpkeys=('BB5213F337DAF58190686F07733A866882A3F5F6') # Jean-Philippe Orsini
-
-prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
-	patch -Np1 -i "$srcdir/psensor-libmicrohttpd.patch"
-}
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	autoreconf --install
 	./configure --prefix=/usr
 	make
 }
