@@ -2,7 +2,7 @@
 pkgname=adapta-gtk-theme
 _gtk3_version='3.21'
 _theme_name=Adapta
-pkgver="${_gtk3_version}.2.51"
+pkgver="${_gtk3_version}.2.57"
 pkgrel=1
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
@@ -21,8 +21,8 @@ optdepends=('gnome-shell>=3.18: The GNOME Shell'
             "unity>=7.4.0: Ubuntu's Unity desktop")
 _tri_fadeno="tri-fadeno.jpg"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
-        "${pkgver}-${_tri_fadeno}::${url}/raw/master/img/tri-fadeno.jpg")
-sha256sums=('c5edfe45c56f29d170b69e775eb373d502a59421734f91d7a3bd04f1a7c501ca'
+        "${pkgver}-${_tri_fadeno}::${url}/raw/master/.github/img/tri-fadeno.jpg")
+sha256sums=('249d8490c9d38f1c97e4d906b066b119b7258f8af85374abce5f661bf1a86a2e'
             '807bd3d99fb492569caf050cfa9b5c75d4e6a072007637fe8e583a3f5c0bea24')
 
 build() {
