@@ -2,7 +2,7 @@
 # Contributor: Pierre-Marie de Rodat <pmderodat@kawie.fr>
 
 pkgname=gnat_util
-pkgver=2015
+pkgver=2016
 pkgrel=1
 pkgdesc="Provides internal GNAT compiler components in a library which is used by (at least) ASIS and GNATColl."
 
@@ -16,8 +16,8 @@ depends=('gcc-ada')
 makedepends=('gcc-ada')
 
 
-source=('gnat_util-gpl-2015-src.tar.gz::http://mirrors.cdn.adacore.com/art/564b3e2ec8e196b040fbd13b')
-sha256sums=('f07bf08cd9aad318ff7d761a167a2d134c9106e58bdc7d400d624b8962de7b16')
+source=('gnat_util-gpl-2016-src.tar.gz::http://mirrors.cdn.adacore.com/art/57399637c7a447658e0affa6')
+sha256sums=('8e76d7eb1cbae1d3040b9e4196ab07d6e0dd5d4eeb3f5e0fbeb267b1a3470af5')
 
 
 _pkg_src_dir="$pkgname-gpl-$pkgver-src"
