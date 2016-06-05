@@ -1,0 +1,21 @@
+*** configure.in	2016-05-13 00:58:11.000000000 +1000
+--- configure.in-new	2016-06-05 07:20:05.134742985 +1000
+***************
+*** 74,81 ****
+  AC_CHECK_PROGS(TEXI2DVI, texi2dvi)
+  
+  ######### checking for gtk
+! AM_PATH_GTK
+! AM_PATH_GTKADA(2016,,AC_MSG_ERROR(Test for GtkAda failed. See the file 'INSTALL' for help.))
+  
+  ######### detect libclang
+  AM_PATH_LIBCLANG
+--- 74,81 ----
+  AC_CHECK_PROGS(TEXI2DVI, texi2dvi)
+  
+  ######### checking for gtk
+! #AM_PATH_GTK
+! #AM_PATH_GTKADA(2016,,AC_MSG_ERROR(Test for GtkAda failed. See the file 'INSTALL' for help.))
+  
+  ######### detect libclang
+  AM_PATH_LIBCLANG

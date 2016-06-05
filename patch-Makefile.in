@@ -1,33 +1,23 @@
-*** Makefile.in-orig	2014-11-14 05:15:57.000000000 +1100
---- Makefile.in	2015-08-01 19:49:00.901816718 +1000
+*** Makefile.in	2016-04-26 22:43:30.000000000 +1000
+--- Makefile.in-new	2016-06-05 10:33:38.808552897 +1000
 ***************
-*** 5,18 ****
-  STRIP           = strip
-  AWK             = @AWK@
-  PERL            = perl
-! PYTHON          = python
-  INSTALL         = @INSTALL@
-  INSTALL_PROGRAM = @INSTALL_PROGRAM@
+*** 11,19 ****
   INSTALL_DATA    = @INSTALL_DATA@
+  GNATCOLL_INSTALL  = @GNATCOLL_INSTALL@
   prefix          = @prefix@
 ! bindir          = $(prefix)/bin
 ! sharedir        = $(prefix)/share
 ! examplesdir     = $(prefix)/share/examples/gps
   
-  all default:
-  	$(MAKE) -C gps default
---- 5,18 ----
-  STRIP           = strip
-  AWK             = @AWK@
-  PERL            = perl
-! PYTHON          = python
-  INSTALL         = @INSTALL@
-  INSTALL_PROGRAM = @INSTALL_PROGRAM@
+  SYS := $(shell gcc -dumpmachine)
+  
+--- 11,19 ----
   INSTALL_DATA    = @INSTALL_DATA@
+  GNATCOLL_INSTALL  = @GNATCOLL_INSTALL@
   prefix          = @prefix@
 ! bindir          = $(DESTDIR)$(prefix)/bin
 ! sharedir        = $(DESTDIR)$(prefix)/share
 ! examplesdir     = $(DESTDIR)$(prefix)/share/examples/gps
   
-  all default:
-  	$(MAKE) -C gps default
+  SYS := $(shell gcc -dumpmachine)
+  
