@@ -11,7 +11,7 @@ license=('custom')
 conflicts=('pdfstudio8' 'pdfstudio9' 'pdfstudio')
 provides=('pdfstudio')
 makedepends=('pacman>=4.2.0')
-depends=('java-runtime' 'desktop-file-utils')
+depends=('java-runtime>=6' 'desktop-file-utils')
 depends_x86_64=('gcc-libs-multilib')
 
 install=${pkgname}.install     
