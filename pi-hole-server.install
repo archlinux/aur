@@ -1,8 +1,8 @@
 post_install() {
   cat <<- EOF
     ==> please read configuration instructions at /usr/share/doc/pihole/configuration
-    ==> ver. 2.5.3-3: dnsmasq and lighttpd conf files are changed, please repeat the installation steps
     ==> ver. 2.6.3-1: lighttpd conf file is changed, please repeat the installation steps
+    ==> ver. 2.6.3-4: lighttpd conf file is changed, please repeat the installation steps
     ==> first install/update run...
 EOF
   chown -R http.http /srv/http/pihole
@@ -14,6 +14,7 @@ EOF
 }
 
 post_upgrade() {
+  [ -a /etc/pihole/hosts ] && rm /etc/pihole/hosts
   post_install $1
 }
 

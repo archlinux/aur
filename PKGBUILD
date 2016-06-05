@@ -3,7 +3,7 @@
 pkgname=pi-hole-server
 _pkgname=pi-hole
 pkgver=2.6.3
-pkgrel=3
+pkgrel=4
 _wwwpkgname=AdminLTE
 _wwwpkgver=1.2
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
@@ -34,7 +34,7 @@ md5sums=('abbae7fa93007970b32747dbf0f0318d'
          '791c86996377ceca23d1459ea0fd5cd6'
          'cba1675593bb43c94a35aabe8a210efa'
          'fc7852b5deb952335c0ebbf4ee61cb8c'
-         'f95269fda812977969706f2c433d19dd'
+         'f5282a9dd44cc0090e4cf58190972139'
          '008d6cb6a8ea389d22cbb969c62b0c80'
          '09a4bb7aef7bbe1a1f4c6c85c1fd48b4'
          'd42a864f88299998f8233c0bc0dd093d'
@@ -117,14 +117,6 @@ prepare() {
   # change log location in admin php interface
   sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/data.php
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log location in admin php interface" && return 1 ; fi
-
-
-  # change /etc/hosts location in a open_basedir path
-  sed -i "s|/etc/hosts|/etc/pihole/hosts|gw $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/data.php
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change /etc/hosts location in a open_basedir path 1" && return 1 ; fi
-  sed -n "/^gravity_reload/w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
-  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change /etc/hosts location in a open_basedir path 2" && return 1 ; fi
-  sed -i '/^gravity_reload/a \$SUDO cp /etc/hosts /etc/pihole/hosts' "$srcdir"/$_pkgname-$pkgver/gravity.sh
 
 
   # since we don't directly install from git...
