@@ -2,7 +2,7 @@
 
 _pkgname=aws
 pkgname=ada-web-server
-pkgver=3.3.0.0
+pkgver=2016
 pkgrel=1
 pkgdesc="A complete embeddable Web application framework for Ada."
 
@@ -17,23 +17,22 @@ makedepends=(gprbuild)
 provides=($_pkgname ada-web-server)
 conflicts=($_pkgname ada-web-server)
 
-source=(http://mirrors.cdn.adacore.com/art/564b3e7cc8e196b040fbde39)
-
-sha256sums=('9efcc9f6f07c26d29b112a01aff8c2309d9f8342431d94a7135c6759d63f6500')
+source=(http://mirrors.cdn.adacore.com/art/57399112c7a447658d00e1cd)
+sha1sums=('e4f35b2f47fee69fa179a180dbe85372919558f9')
 
 
 
 build() 
 {
-    cd $srcdir/$_pkgname-gpl-2015-src
-
-    make setup build
+    cd $srcdir/$_pkgname-gpl-2016-src
+    make setup 
+    make build
 }
 
 
 package() 
 {
-    cd $srcdir/$_pkgname-gpl-2015-src
+    cd $srcdir/$_pkgname-gpl-2016-src
 
     make DESTDIR="$pkgdir" install
 
@@ -41,7 +40,4 @@ package()
     mv  $pkgdir/usr/share/gpr/aws.gpr         $pkgdir/usr/lib/gnat
     mv  $pkgdir/usr/share/gpr/manifests/aws   $pkgdir/usr/lib/gnat/manifests
     rm -fr $pkgdir/usr/share/gpr
-
-    rm $pkgdir/usr/include/aws.relocatable/makefile
-    rm $pkgdir/usr/include/aws/makefile
 }
