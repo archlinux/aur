@@ -9,6 +9,7 @@ pkgbase = arc-icon-theme
 	makedepends = intltool
 	makedepends = itstool
 	makedepends = unzip
+	conflicts = arc-icon-theme-git
 	source = https://github.com/horst3180/arc-icon-theme/archive/20160605.zip
 	md5sums = SKIP
 

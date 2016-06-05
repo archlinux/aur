@@ -12,6 +12,7 @@ depends=()
 makedepends=('gnome-common' 'intltool' 'itstool' 'unzip')
 source=(https://github.com/horst3180/${_pkgname}/archive/${pkgver}.zip)
 md5sums=('SKIP')
+conflicts=('arc-icon-theme-git')
 
 
 build() {
