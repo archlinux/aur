@@ -5,7 +5,7 @@
 pkgname=jed
 pkgver=0.99.19
 _pkgver=0.99-19
-pkgrel=4
+pkgrel=5
 pkgdesc="A freely available text editor for Unix and others OS"
 arch=('i686' 'x86_64')
 url="http://www.jedsoft.org/jed"
@@ -26,8 +26,8 @@ build() {
   ./configure --prefix=/usr JED_ROOT=/usr/share/jed
 
   sed \
-	-e "s_\(^all.*\)_\1 xjed rgrep_" \
-	-e "s_..DEST.*doc_${pkgdir}/usr/share/doc/${pkgname}_g" \
+    -e "s|\(^all.*\)|\1 xjed rgrep|" \
+    -e "s|..DEST.*doc|${pkgdir}/usr/share/doc/${pkgname}|g" \
 	-i src/Makefile
 
   make
