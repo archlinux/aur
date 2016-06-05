@@ -18,15 +18,6 @@ sha256sums=('d51659454bc0aaf1a9a9f1d05aab469a1f3d900065a4542123d3a59ab067275d')
 
 
 
-prepare()
-{
-  WRKSRC=$srcdir/$pkgname-gpl-$pkgver-src
-
-  cp $srcdir/Makefile.archy ${WRKSRC}
-}
-
-
-
 build() 
 {
   cd $pkgname-gpl-$pkgver-src
