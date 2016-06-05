@@ -2,7 +2,7 @@
 # Contributor: Rod Kay              <charlie5 on #ada at freenode.net>
 
 pkgname=florist
-pkgver=2015
+pkgver=2016
 pkgrel=1
 pkgdesc="An open-source implementation of IEEE Standard 1003.5b-1996, the POSIX Ada binding."
 
@@ -27,13 +27,9 @@ noextract=()
 install=
 changelog=
 
-source=(http://downloads.dragonlace.net/src/$pkgname-gpl-$pkgver-src.tar.gz
-        'fixlibdir.patch'
-        'fixfloristdir.patch')
+source=('http://mirrors.cdn.adacore.com/art/57399229c7a447658e0aff79')
 
-md5sums=('f46a866308b32c7efcee47230b238d4e'
-         '1934106ceeb63ef23c50a5ed38b9b8a2'
-         '0c9ef7e75ef15784a6ed8a7b9ee46251')
+md5sums=('c739f1c1e724b177a7bbc682435d2df3')
 
 
 
@@ -42,14 +38,7 @@ build()
   cd "$srcdir/$pkgname-gpl-$pkgver-src"
 
   ./configure --prefix=$pkgdir/usr
-
-  # florist uses weird standard for their directories, lets make it more arch-like
-  #patch -p0 -i $srcdir/fixlibdir.patch
-
   make -j7
-
-  # Because we changed the directory earlier and it's hardcoded in the lib, fix that
-  #patch -p0 -R -i $srcdir/fixfloristdir.patch
 }
 
 
