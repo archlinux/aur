@@ -1,13 +1,14 @@
 pkgbase = firefox-mega
 	pkgdesc = MEGA add-on for Firefox, allow better suport for MEGA downloads
-	pkgver = 2.0.219
+	pkgver = 2.0.228
 	pkgrel = 1
 	url = http://mega.co.nz
 	arch = any
 	groups = firefox-addons
 	license = BSD
 	source = https://mega.co.nz/mega.xpi
-	md5sums = d58239a08bfe759e32132a1ae78a2308
+	md5sums = 249ade557ad77da9bc1c97284ed359dc
 
 pkgname = firefox-mega
+	depends = firefox
 
