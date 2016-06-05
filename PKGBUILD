@@ -1,11 +1,12 @@
-# Maintainer: Yurii Kolesnykov <yurikoles@gmail.com>
-# Contributor: Dave Reisner <dreisner@archlinux.org>
-# Contributor: Tom Gundersen <teg@jklm.no>
+# Maintainer: Dave Reisner <dreisner@archlinux.org>
+# Maintainer: Tom Gundersen <teg@jklm.no>
 
 pkgbase=systemd-git
+_realpkgname=systemd
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-sysvcompat-git')
-pkgver=228.r54.g0c203f1
-pkgrel=2
+pkgver=230.r121.g592705f
+pkgrel=1
+_branch='master'
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
 makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
@@ -13,51 +14,61 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'libmicrohttpd' 'libxslt' 'util-linux' 'linux-api-headers'
              'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git')
 options=('strip' 'debug')
-source=("systemd-git::git://github.com/systemd/systemd.git#branch=master"
+source=("git://github.com/systemd/systemd.git#branch=${_branch}"
         'initcpio-hook-udev'
         'initcpio-install-systemd'
         'initcpio-install-udev'
         'arch.conf'
-        'loader.conf')
-        #'splash-arch.bmp'
-        
+        'loader.conf'
+        'splash-arch.bmp'
+        'udev-hwdb.hook')
 md5sums=('SKIP'
          '90ea67a7bb237502094914622a39e281'
-         '976c5511b6493715e381f43f16cdb151'
+         'cfb3f8ea657ab24535cc061bb38ec4c1'
          '1b3aa3a0551b08af9305d33f85b5c2fc'
          '20ead378f5d6df4b2a3e670301510a7d'
-         'ddaef54f68f6c86c6c07835fc668f62a')
-         #'1e2f9a8b0fa32022bf0a8f39123e5f4e'
-
+         'ddaef54f68f6c86c6c07835fc668f62a'
+         '1e2f9a8b0fa32022bf0a8f39123e5f4e'
+         'a475a5ed8f03fb0f6b58b4684998d05c')
 pkgver() {
-  cd "${srcdir}/$pkgbase"
+  cd "${srcdir}/$_realpkgname"
   # cutting off 'foo-' prefix that presents in the git tag
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$pkgbase"
+  cd "$_realpkgname"
+
+  if (( ${#_backports[*]} > 0 )); then
+    git cherry-pick -n "${_backports[@]}"
+  fi
 
   ./autogen.sh
 }
 
 build() {
-  cd "$pkgbase"
+  cd "$_realpkgname"
 
   local timeservers=({0..3}.arch.pool.ntp.org)
 
-  ./configure \
-      --libexecdir=/usr/lib \
-      --localstatedir=/var \
-      --sysconfdir=/etc \
-      --enable-lz4 \
-      --enable-compat-libs \
-      --enable-gnuefi \
-      --disable-audit \
-      --disable-ima \
-      --with-sysvinit-path= \
-      --with-sysvrcnd-path= \
-      --with-ntp-servers="${timeservers[*]}"
+  local configure_options=(
+    --libexecdir=/usr/lib
+    --localstatedir=/var
+    --sysconfdir=/etc
+
+    --enable-lz4
+    --enable-gnuefi
+    --disable-audit
+    --disable-ima
+
+    --with-sysvinit-path=
+    --with-sysvrcnd-path=
+    --with-ntp-servers="${timeservers[*]}"
+    --with-default-dnssec=no
+    --without-kill-user-processes
+  )
+
+  ./configure "${configure_options[@]}"
 
   make
 }
@@ -68,9 +79,9 @@ package_systemd-git() {
   depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' 'libsystemd' 'libidn' 'lz4' 'pam' 'libelf' 'libseccomp'
            'util-linux' 'xz')
-  provides=("systemd=$pkgver" 'nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" )
-  replaces=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
-  conflicts=('systemd' 'nss-myhostname' 'systemd-tools' 'udev')
+  provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
+  replaces=('nss-myhostname' 'systemd-tools' 'udev')
+  conflicts=('nss-myhostname' 'systemd-tools' 'udev')
   optdepends=('cryptsetup: required for encrypted block devices'
               'libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
@@ -85,7 +96,6 @@ package_systemd-git() {
           etc/dbus-1/system.d/org.freedesktop.import1.conf
           etc/dbus-1/system.d/org.freedesktop.network1.conf
           etc/pam.d/systemd-user
-          etc/systemd/bootchart.conf
           etc/systemd/coredump.conf
           etc/systemd/journald.conf
           etc/systemd/journal-remote.conf
@@ -98,7 +108,7 @@ package_systemd-git() {
           etc/udev/udev.conf)
   install="systemd-git.install"
 
-  make -C "$pkgbase" DESTDIR="$pkgdir" install
+  make -C "$_realpkgname" DESTDIR="$pkgdir" install
 
   # don't write units to /etc by default. some of these will be re-enabled on
   # post_install.
@@ -145,24 +155,16 @@ package_systemd-git() {
   # add example bootctl configuration
   install -Dm644 "$srcdir/arch.conf" "$pkgdir"/usr/share/systemd/bootctl/arch.conf
   install -Dm644 "$srcdir/loader.conf" "$pkgdir"/usr/share/systemd/bootctl/loader.conf
-  #install -Dm644 "$srcdir/splash-arch.bmp" "$pkgdir"/usr/share/systemd/bootctl/splash-arch.bmp
+  install -Dm644 "$srcdir/splash-arch.bmp" "$pkgdir"/usr/share/systemd/bootctl/splash-arch.bmp
+
+  install -Dm644 "$srcdir/udev-hwdb.hook" "$pkgdir/usr/share/libalpm/hooks/udev-hwdb.hook"
 }
 
 package_libsystemd-git() {
   pkgdesc="systemd client libraries"
-  depends=('glibc' 'libgcrypt' 'lz4' 'xz')
+  depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz')
   license=('GPL2')
-  provides=('libsystemd' 
-            'libsystemd-git'
-            'libsystemd.so'
-            'libudev.so'
-            'libsystemd-id128.so'
-            'libsystemd-journal.so'
-            'libsystemd-login.so'
-            'libsystemd-daemon.so')
-  replaces=('libsystemd')
-  conflicts=('libsystemd')
-
+  provides=('libsystemd.so' 'libudev.so')
 
   make -C "$pkgbase" DESTDIR="$pkgdir" install-libLTLIBRARIES
 }
@@ -171,11 +173,8 @@ package_systemd-sysvcompat-git() {
   pkgdesc="sysvinit compat for systemd"
   license=('GPL2')
   groups=('base')
-  conflicts=('sysvinit' 'systemd-sysvcompat')
-  depends=('systemd-git')
-  replaces=('systemd-sysvcompat')
-  conflicts=('systemd-sysvcompat')
-
+  conflicts=('sysvinit')
+  depends=('systemd')
 
   install -dm755 "$pkgdir"/usr/share/man/man8
   cp -d --no-preserve=ownership,timestamp \

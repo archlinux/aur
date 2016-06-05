@@ -37,7 +37,6 @@ _dir_empty() {
 
 post_common() {
   systemd-sysusers
-  udevadm hwdb --update
   journalctl --update-catalog
 }
 
@@ -158,6 +157,10 @@ _219_4_changes() {
   fi
 }
 
+_230_1_changes() {
+  echo ':: systemd-bootchart is no longer included with systemd'
+}
+
 post_install() {
   systemd-machine-id-setup
 
@@ -193,7 +196,8 @@ post_upgrade() {
                     215-2
                     216-2
                     219-2
-                    219-4)
+                    219-4
+                    230-1)
 
   for v in "${upgrades[@]}"; do
     if [[ $(vercmp "$v" "$2") -eq 1 ]]; then
