@@ -2,7 +2,7 @@
 pkgname=pdfstudio8
 pkgver=8.4.0
 _pkgver=v8_4_0
-pkgrel=11
+pkgrel=12
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('x86_64' 'i686')
 url="http://www.qoppa.com/pdfstudio/"
@@ -10,7 +10,7 @@ license=('custom')
 conflicts=('pdfstudio' 'pdfstudio9' 'pdfstudio10')
 provides=('pdfstudio')
 makedepends=('pacman>=4.2.0')
-depends=('java-runtime>=6.u27' 'desktop-file-utils')
+depends=('java-runtime>=6' 'desktop-file-utils')
 depends_x86_64=('gcc-libs-multilib')
 install="$pkgname.install"
      
