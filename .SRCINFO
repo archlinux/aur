@@ -1,7 +1,7 @@
 pkgbase = firefox-beta-zh-cn
 pkgdesc = Chinese Simplified For Firefox Beta
 pkgver = 47.0
-pkgrel = 2
+pkgrel = 3
 url = https://www.mozilla.org/zh-CN/firefox/channel/#beta
 install = firefox-beta-zh-cn.install
 arch = i686
