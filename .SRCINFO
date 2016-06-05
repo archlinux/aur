@@ -1,7 +1,7 @@
 pkgbase = perl-net-dbus-git
 	pkgdesc = Binding for DBus messaging protocol
 	pkgver = 1.0.0.r19.g407b780
-	pkgrel = 2
+	pkgrel = 3
 	url = http://search.cpan.org/dist/Net-DBus
 	arch = i686
 	arch = x86_64
