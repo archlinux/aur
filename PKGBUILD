@@ -2,12 +2,11 @@
 
 pkgname=drumpulous
 pkgver=1
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url="https://drumpulous.itch.io/drumpulous"
 license=('Unknown')
 pkgdesc="Shoot dildos at Donald Trump's head"
-install=drumpulous.install
 depends=('bash')
 source=("https://drumpulous.itch.io/drumpulous/drumpulous_linux.zip" # Right now, you must download manually from above website.
 				"drumpulous.desktop"
