@@ -3,7 +3,8 @@
 
 # TODO: The editor is stuck in the first database and won't let me into any others.
 
-[ ! -s 'PKGBUILD.local' ] && cat > 'PKGBUILD.local' << EOF
+if [ ! -s 'PKGBUILD.local' ]; then
+  cat > 'PKGBUILD.local' << EOF
 # adminer-editor or another name for your link
 _opt_WWWName='adminer-editor' # default: adminer-editor
 #_opt_WWWName=''
@@ -17,14 +18,17 @@ _opt_HexCode='' # default: blank
 
 # A change to either of these and you must restart httpd
 EOF
+fi
 . 'PKGBUILD.local'
 
 set -u
-test ! -z "${_opt_HexCode}" && _opt_HexCode="-${_opt_HexCode}"
+if [ ! -z "${_opt_HexCode}" ]; then
+  _opt_HexCode="-${_opt_HexCode}"
+fi
 
 _pkgname='adminer-editor'
 pkgname="${_pkgname}"
-pkgver=4.2.4
+pkgver=4.2.5
 pkgrel=1
 pkgdesc='Database data editing tool written in PHP'
 arch=('any')
@@ -36,7 +40,7 @@ _verwatch=("${url}" '/static/download/[0-9\.]\+/editor-\([0-9\.]\+\).php' 'l')
 install="${_pkgname}.install"
 #source=("http://downloads.sourceforge.net/adminer/editor-${pkgver}.php")
 source=("https://www.adminer.org/static/download/${pkgver}/editor-${pkgver}.php")
-sha256sums=('815db1d5f6fc5ab21a22dff618339b544b99834b7d8b2048a7dbc1699a004736')
+sha256sums=('00a29ceda73e1feafc79d41d94ca98c497dabb257a89a013fbb15ffa09c46e14')
 
 package() {
   set -u
