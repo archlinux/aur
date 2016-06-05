@@ -1,0 +1,14 @@
+pkgbase = b2sum-git
+	pkgdesc = Computes the BLAKE2 (BLAKE2b or -s, -bp, -sp) cryptographic hash of a given file.
+	pkgver = 49.6740fea
+	pkgrel = 1
+	url = https://blake2.net/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = git
+	source = BLAKE2::git+https://github.com/BLAKE2/BLAKE2.git
+	sha512sums = SKIP
+
+pkgname = b2sum-git
+
