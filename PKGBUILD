@@ -1,5 +1,6 @@
-# Maintainer: Dave Reisner <dreisner@archlinux.org>
-# Maintainer: Tom Gundersen <teg@jklm.no>
+# Mainteiner: Yurii Kolesnykov
+# Credit: Dave Reisner <dreisner@archlinux.org>
+# Credit: Tom Gundersen <teg@jklm.no>
 
 pkgbase=systemd-git
 _realpkgname=systemd
