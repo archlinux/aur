@@ -1,5 +1,13 @@
 pkgname=afraiddns-git
-pkgver=0
+pkgver=r1.3f5e706
+pkgver() {
+	cd "${pkgname%-*}"
+	( set -o pipefail
+	  git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+	  printf "r%s.%s" "$(git rev-list --count HEAD)" \
+	    "$(git rev-parse --short HEAD)"
+	)
+}
 pkgrel=1
 pkgdesc="Service to update a subdomain reserved through afraid.org."
 url="https://github.com/mar77i/afraiddns"
