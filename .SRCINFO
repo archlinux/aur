@@ -1,6 +1,6 @@
 pkgbase = imagemagick-fftw
 	pkgver = 6.9.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.imagemagick.org/
 	arch = i686
 	arch = x86_64
