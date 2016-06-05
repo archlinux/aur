@@ -11,9 +11,9 @@ license=('BSD-3')
 groups=()
 depends=('python')
 makedepends=('git')
-provides=('${_pkgname}')
-conflicts=('${_pkgname}')
-source=(${_pkgname}::git+${url}.git)
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+${url}.git")
 md5sums=('SKIP')
 
 pkgver() {
