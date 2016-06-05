@@ -38,11 +38,20 @@ post_install() {
 
 		install -dm700 -o synapse -g synapse "$DATA_DIR"
 		cd "$DATA_DIR"
+
+		# we pass --report-stats just to make it generate the config
 		python2.7 \
 			-m synapse.app.homeserver \
 			--config-path /etc/synapse/homeserver.yaml \
 			--generate-config \
 			--server-name localhost \
-			--bind-port 8448
+			--bind-port 8448 \
+			--report-stats=no
+
+		# let user make the choice
+		sed -re 's|^(report_stats:.*)$|#&|' \
+			-i /etc/synapse/homeserver.yaml
+		echo
+		ask_report_stats
 	fi
 }
