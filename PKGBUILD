@@ -9,7 +9,7 @@
 
 _pack=interval
 pkgname=octave-$_pack
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="The interval package for real-valued interval arithmetic allows one to evaluate functions over subsets of their domain.  All results are verified, because interval computations automatically keep track of any errors.  These concepts can be used to h [...]"
 arch=(any)
@@ -25,7 +25,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("http://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-md5sums=('4290615343d5cf8a01af8399c2e3f5a3')
+md5sums=('17efd9c95146790249ae6cf2e63db8de')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
