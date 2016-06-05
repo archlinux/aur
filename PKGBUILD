@@ -3,7 +3,7 @@
 pkgname=perl-linux-smaps
 _pkgname=Linux-Smaps
 pkgver=0.13
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux::Smaps - a Perl interface to /proc/PID/smaps'
 arch=('i686' 'x86_64')
 license=('GPL' 'PerlArtistic')

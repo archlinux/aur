@@ -1,7 +1,7 @@
 pkgbase = perl-linux-smaps
 	pkgdesc = Linux::Smaps - a Perl interface to /proc/PID/smaps
 	pkgver = 0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/dist/Linux-Smaps/
 	changelog = ChangeLog
 	arch = i686
