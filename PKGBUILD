@@ -4,7 +4,7 @@
 
 pkgname=fogger-bzr
 pkgver=225
-pkgrel=1
+pkgrel=2
 pkgdesc="bzr version of fogger web app to desktop app"
 arch=('i686' 'x86_64')
 url="http://launchpad.net/fogger"
@@ -13,7 +13,6 @@ depends=('python2-requests' 'desktop-file-utils' 'python2-xlib' 'python2-beautif
 makedepends=('bzr' 'python2-distutils-extra')
 conflicts=('fogger')
 replaces=('fogger')
-install=fogger-bzr.install
 source=('fogger::bzr+http://bazaar.launchpad.net/~loneowais/fogger/trunk/'
   'rmlibunity.patch')
 sha256sums=('SKIP'

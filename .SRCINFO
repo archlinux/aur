@@ -1,9 +1,8 @@
 pkgbase = fogger-bzr
 	pkgdesc = bzr version of fogger web app to desktop app
 	pkgver = 225
-	pkgrel = 1
+	pkgrel = 2
 	url = http://launchpad.net/fogger
-	install = fogger-bzr.install
 	arch = i686
 	arch = x86_64
 	license = GPL
