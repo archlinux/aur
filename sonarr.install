@@ -1,14 +1,5 @@
 post_install() {
-	if grep -q "^sonarr" /etc/group &> /dev/null ; then
-		groupmod -n sonarr sonarr &> /dev/null                                                 
-	else
-		groupadd -r sonarr &> /dev/null
-	fi
-	if grep -q "^sonarr:" /etc/passwd 2> /dev/null ; then
-		usermod -s /bin/false -c "Sonarr daemon" -d /var/lib/sonarr -g sonarr sonarr &> /dev/null
-	else
-		useradd -s /bin/false -c "Sonarr daemon user" -d /var/lib/sonarr -g sonarr -r sonarr &> /dev/null
-	fi
+	systemd-sysusers sonarr.conf
 
 	chown -R sonarr: /var/lib/sonarr
 	if [[ ! -f /var/lib/sonarr/config.xml ]]
