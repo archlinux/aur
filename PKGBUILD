@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Interactive memory viewer"
 arch=('i686' 'x86_64')
 url="https://bitbucket.org/PascalRD/memwatch"
-license=('WTFPL')
+license=('custom:WTFPL')
 depends=('ncurses')
 makedepends=('git' 'cmake')
 source=("git+https://bitbucket.org/PascalRD/memwatch")
@@ -32,4 +32,5 @@ package() {
     cd "$srcdir/$_gitname"
     cd build
     make DESTDIR="$pkgdir" install
+    install -D -m644 ../LICENSE "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
 }
