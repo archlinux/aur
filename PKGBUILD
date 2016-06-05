@@ -5,7 +5,7 @@ pkgbase=systemd-git
 _realpkgname=systemd
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-sysvcompat-git')
 pkgver=230.r121.g592705f
-pkgrel=1
+pkgrel=2
 _branch='master'
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -20,7 +20,7 @@ source=("git://github.com/systemd/systemd.git#branch=${_branch}"
         'initcpio-install-udev'
         'arch.conf'
         'loader.conf'
-        'splash-arch.bmp'
+#       'splash-arch.bmp'
         'udev-hwdb.hook')
 md5sums=('SKIP'
          '90ea67a7bb237502094914622a39e281'
@@ -28,7 +28,6 @@ md5sums=('SKIP'
          '1b3aa3a0551b08af9305d33f85b5c2fc'
          '20ead378f5d6df4b2a3e670301510a7d'
          'ddaef54f68f6c86c6c07835fc668f62a'
-         '1e2f9a8b0fa32022bf0a8f39123e5f4e'
          'a475a5ed8f03fb0f6b58b4684998d05c')
 pkgver() {
   cd "${srcdir}/$_realpkgname"
