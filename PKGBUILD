@@ -2,7 +2,7 @@
 # Contributor: Rene Schoebel (wesley) <schoebel.r at gmail dot com>
 
 pkgname=openjk-git
-pkgver=3191.d56be4f
+pkgver=3296.ff3fc25
 pkgrel=1
 pkgdesc="Open Source Jedi Knight II + III Engine"
 arch=('i686' 'x86_64')
@@ -14,18 +14,15 @@ makedepends=('cmake' 'yasm')
 provides=(openjk)
 conflicts=(openjk)
 source=("openjk::git+https://github.com/JACoders/OpenJK.git"
-				'openjk.install'
 				'openjkmp.png'
 				'openjksp.png'
 				'openjkmp.desktop'
 				'openjksp.desktop')
-install=openjk.install
 sha256sums=('SKIP'
-            '8873237a7c6f12a0347b3e44cb237110ba526603e2b64aa4914bf4845be477c2'
             '0e82e720777eeb2043c2c25cdbce702c6d4ca077543aedfe51e5c4e96cf03969'
-            'afb2c1a757720c70798e7f7218f823297a43bc61e0cb192e9443df67c2963903'
-            '404693bbffb680430f71552822e1c6d40cbf7f62634e0e4e2ba48a4867039627'
-            '6983fc2d29dc2159963d621d55698809882fed8d20c2ef279e34344ad86f2ee7')
+						'afb2c1a757720c70798e7f7218f823297a43bc61e0cb192e9443df67c2963903'
+						'404693bbffb680430f71552822e1c6d40cbf7f62634e0e4e2ba48a4867039627'
+						'6983fc2d29dc2159963d621d55698809882fed8d20c2ef279e34344ad86f2ee7')
 _jkarch=i386
 [ "$CARCH" == "x86_64" ] && {
         _jkarch=x86_64
