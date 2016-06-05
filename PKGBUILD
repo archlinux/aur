@@ -3,7 +3,7 @@
 pkgname=pdfstudio9
 pkgver=9.2.2
 _pkgver=v9_2_2
-pkgrel=1
+pkgrel=2
 pkgdesc="Review, annotate, and edit PDF Documents"
 arch=('i686' 'x86_64')
 url="http://www.qoppa.com/pdfstudio/"
