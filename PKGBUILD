@@ -11,10 +11,8 @@ depends=('qt5-base' 'qt5-declarative' 'qt5-quickcontrols')
 makedepends=('git')
 provides=('quaternion')
 conflicts=('quaternion')
-source=('git+https://github.com/fxrh/quaternion.git'
-        'git+https://github.com/Fxrh/libqmatrixclient')
-md5sums=('SKIP'
-         'SKIP')
+source=('git+https://github.com/fxrh/quaternion.git')
+md5sums=('SKIP')
 _gitname=quaternion
  
 pkgver () {
