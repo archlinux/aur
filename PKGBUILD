@@ -4,7 +4,7 @@
 
 pkgname=opensmile
 pkgver=2.2rc1
-pkgrel=1
+pkgrel=2
 pkgdesc="A fast, real-time (audio) feature extraction utility for automatic speech, music and paralinguistic recognition research"
 arch=('i686' 'x86_64')
 url="http://www.audeering.com/research/opensmile"
