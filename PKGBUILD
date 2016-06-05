@@ -4,7 +4,8 @@
 
 # TODO: Tighten up open_basedir to adminer folder only
 
-[ ! -s 'PKGBUILD.local' ] && cat > 'PKGBUILD.local' << EOF
+if [ ! -s 'PKGBUILD.local' ]; then
+  cat > 'PKGBUILD.local' << EOF
 # adminer or another name for your link
 _opt_WWWName='adminer' # default: adminer
 #_opt_WWWName=''
@@ -18,14 +19,17 @@ _opt_HexCode='' # default: blank
 
 # A change to either of these and you must restart httpd
 EOF
+fi
 . 'PKGBUILD.local'
 
 set -u
-test ! -z "${_opt_HexCode}" && _opt_HexCode="-${_opt_HexCode}"
+if [ ! -z "${_opt_HexCode}" ]; then
+  _opt_HexCode="-${_opt_HexCode}"
+fi
 
 _pkgname='adminer'
 pkgname="${_pkgname}-git"
-pkgver=4.2.4.r0.g49e2ac4
+pkgver=4.2.5.r0.g53dfafd
 pkgrel=1
 pkgdesc='a web based SQL management tool supporting MySQL, PostgreSQL, SQLite, MS SQL, Oracle, Firebird, SimpleDB, Elasticsearch and MongoDB. Formerly phpMinAdmin.'
 arch=('any')
