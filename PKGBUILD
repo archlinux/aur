@@ -20,7 +20,7 @@ optdepends=('ffmpeg: for video post-processing'
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(http://youtube-dl.org/downloads/${pkgver}/${_pkgname}-${pkgver}.tar.gz
-        http://youtube-dl.org/downloads/${pkgver}/${pkgname}-${pkgver}.tar.gz.sig)
+        http://youtube-dl.org/downloads/${pkgver}/${_pkgname}-${pkgver}.tar.gz.sig)
 validpgpkeys=('7D33D762FD6C35130481347FDB4B54CBA4826A18'
         '428DF5D63EF07494BB455AC0EBF01804BCF05F6B'
         'ED7F5BF46B3BBED81C87368E2C393E0F18A9236D')
