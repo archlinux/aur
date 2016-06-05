@@ -39,7 +39,7 @@ fi
 SCRIPT=$(readlink -f "$0")
 USR_DIRECTORY=$(readlink -f $(dirname $SCRIPT)/..)
 
-ATOM_PATH="$USR_DIRECTORY/share/atom/atom"
+ATOM_PATH="$USR_DIRECTORY/share/atom-git/atom"
 
 ATOM_HOME="${ATOM_HOME:-$HOME/.atom}"
 mkdir -p "$ATOM_HOME"
