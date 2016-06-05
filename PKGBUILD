@@ -2,13 +2,14 @@
 
 pkgname=minbar
 pkgver=0.2.1
-pkgrel=8
+pkgrel=9
 pkgdesc="Islamic prayer times and athan for GNOME"
 url="http://djihed.com/minbar"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=(libitl libgnomecanvas gstreamer0.10 libnotify gconf hicolor-icon-theme
 rarian)
+makedepends=(gnome-common)
 optdepends=('xfce4-xfapplet-plugin: adds Xfce4 panel support')
 install=$pkgname.install
 source=(http://files.djihed.com/minbar/$pkgname-$pkgver.tar.bz2

@@ -1,12 +1,13 @@
 pkgbase = minbar
 	pkgdesc = Islamic prayer times and athan for GNOME
 	pkgver = 0.2.1
-	pkgrel = 8
+	pkgrel = 9
 	url = http://djihed.com/minbar
 	install = minbar.install
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = gnome-common
 	depends = libitl
 	depends = libgnomecanvas
 	depends = gstreamer0.10
