@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=breeze-gtk-git
-pkgver=5.6.90.r82.1a547a8
+pkgver=5.6.90.r85.4fcde88
 pkgrel=1
 pkgdesc="Breeze widget theme for GTK 2 and 3. (GIT version)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,8 @@ url='https://quickgit.kde.org/?p=breeze-gtk.git'
 license=('LGPL')
 depends=('qt5-base')
 optdepends=('gtk2: GTK+2 theme'
-            'gtk3: GTK+3 theme')
+            'gtk3: GTK+3 theme'
+            )
 makedepends=('git'
              'extra-cmake-modules'
              'gtk2'
@@ -34,7 +35,8 @@ build(){
   cmake ../breeze-gtk \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DKDE_INSTALL_LIBDIR=lib
+    -DKDE_INSTALL_LIBDIR=lib \
+    -DWITH_GTK3_VERSION=3.20
 
   make
 }
