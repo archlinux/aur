@@ -12,7 +12,7 @@ _language_archlinux_ver=0.1.7
 _language_gfm2_ver=0.90.3
 _language_ini_desktop_ver=1.18.0
 _language_liquid_ver=0.5.1
-_language_unix_shell_ver=0.27.7
+_language_unix_shell_ver=0.27.8
 
 pkgname=${_pkgname}-editor-${_version}
 pkgver=1.7.4
