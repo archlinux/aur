@@ -1,7 +1,7 @@
 # Maintainer: Evgeniy Alekseev <arcanis at archlinux dot org>
 
 pkgname=quimup
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A simple Qt5 frontend to MPD"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=()
 depends=('mpd' 'qt5-base' 'taglib')
 source=("http://coonsden.com/dl0ads/${pkgname}_${pkgver}_source.tar.gz")
-md5sums=('22e76778672fd496b7d8c50bd67dfec9')
+md5sums=('1dfa7d9679ff18201e102cf42ce35638')
 
 prepare() {
   rm -rf "${srcdir}/build"
