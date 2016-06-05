@@ -6,7 +6,7 @@
 _pkgname=r8168
 pkgname=r8168-pf
 pkgver=8.042
-pkgrel=1
+pkgrel=2
 pkgdesc="A kernel module for Realtek 8168 network cards(pf kernel)"
 url="http://www.realtek.com.tw"
 license=("GPL")
