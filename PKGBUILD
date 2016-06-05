@@ -2,8 +2,8 @@
 
 _pkgname=webtorrent-desktop
 pkgname=${_pkgname}-git
-pkgver="v0.3.3.r3.g28e17ef"
-pkgrel=1
+pkgver=v0.7.2.r4.gbf37202
+pkgrel=2
 pkgdesc="Streaming torrent client."
 arch=('x86_64')
 url="https://webtorrent.io/desktop"
@@ -21,6 +21,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
+
+  npm install
 
   npm run package -- linux zip
 }
