@@ -1,9 +1,9 @@
 # Maintainer: Alexander F Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=0.92
+pkgver=1.0
 pkgrel=1
-pkgdesc='HTTP/2 web server with support for HTTP/2, Markdown, Pongo2, Amber, GCSS, JSX and Lua'
+pkgdesc='HTTP/2 web server with built-in support for Markdown, Lua, Pongo2, JSX and Redis'
 arch=('x86_64' 'i686')
 url='http://algernon.roboticoverlords.org/'
 license=('MIT')
@@ -34,6 +34,7 @@ package() {
   install -Dm644 system/logrotate "$pkgdir/etc/logrotate.d/algernon"
   install -Dm644 system/serverconf.lua "$pkgdir/etc/algernon/server.lua"
   install -Dm644 desktop/algernon.desktop "$pkgdir/usr/share/desktop/algernon.desktop"
+  install -Dm755 desktop/mdview "$pkgdir/usr/bin/mdview"
   install -Dm644 desktop/markdown.png "$pkgdir/usr/share/pixmaps/markdown.png"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
