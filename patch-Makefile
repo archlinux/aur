@@ -1,0 +1,53 @@
+*** Makefile	2016-06-04 13:24:14.729351920 +1000
+--- Makefile-new	2016-06-04 13:27:00.459358720 +1000
+***************
+*** 27,50 ****
+  # ==================================================== install
+  
+  install-clean:
+! ifneq (,$(wildcard $(DESTDIR)$$(prefix)/lib/gnat/manifests/asislib))
+  	-$(GPRINSTALL) --uninstall --prefix=$(DESTDIR)$$(prefix) \
+  		--project-subdir=lib/gnat asislib
+  endif
+  
+  install: install-clean
+! 	$(GPRINSTALL) -p -f --prefix=$(DESTDIR)$$(prefix) --sources-subdir=include/asis \
+  		--lib-subdir=lib/asis --project-subdir=lib/gnat -XBLD=$(BLD) \
+  		-XASISOPSYS=$(ASISOPSYS) -XASIS_COMPONENTS=lib build_asis.gpr
+  
+  install-tools-clean:
+! ifneq (,$(wildcard $(DESTDIR)$$(prefix)/lib/gnat/manifests/asistools))
+! 	-$(GPRINSTALL) --uninstall --prefix=$(DESTDIR)$$(prefix) \
+  		--project-subdir=lib/gnat asistools
+  endif
+  
+  install-tools: install-tools-clean
+! 	$(GPRINSTALL) -p -f --prefix=$(DESTDIR)$$(prefix) --sources-subdir=include/asis \
+  		--lib-subdir=lib/asis --project-subdir=lib/gnat -XBLD=$(BLD) \
+  		-XASISOPSYS=$(ASISOPSYS) -XASIS_COMPONENTS=tools build_asis.gpr
+  
+--- 27,50 ----
+  # ==================================================== install
+  
+  install-clean:
+! ifneq (,$(wildcard $(DESTDIR)$(prefix)/lib/gnat/manifests/asislib))
+  	-$(GPRINSTALL) --uninstall --prefix=$(DESTDIR)$$(prefix) \
+  		--project-subdir=lib/gnat asislib
+  endif
+  
+  install: install-clean
+! 	$(GPRINSTALL) -p -f --prefix=$(DESTDIR)$(prefix) --sources-subdir=include/asis \
+  		--lib-subdir=lib/asis --project-subdir=lib/gnat -XBLD=$(BLD) \
+  		-XASISOPSYS=$(ASISOPSYS) -XASIS_COMPONENTS=lib build_asis.gpr
+  
+  install-tools-clean:
+! ifneq (,$(wildcard $(DESTDIR)$(prefix)/lib/gnat/manifests/asistools))
+! 	-$(GPRINSTALL) --uninstall --prefix=$(DESTDIR)$(prefix) \
+  		--project-subdir=lib/gnat asistools
+  endif
+  
+  install-tools: install-tools-clean
+! 	$(GPRINSTALL) -p -f --prefix=$(DESTDIR)$(prefix) --sources-subdir=include/asis \
+  		--lib-subdir=lib/asis --project-subdir=lib/gnat -XBLD=$(BLD) \
+  		-XASISOPSYS=$(ASISOPSYS) -XASIS_COMPONENTS=tools build_asis.gpr
+  
