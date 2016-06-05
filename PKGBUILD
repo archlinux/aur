@@ -1,7 +1,7 @@
 # Maintainer: Muflone http://www.muflone.com/contacts/english/
 
 pkgname=4kvideodownloader
-pkgver=4.0.0.2016
+pkgver=4.1.0.2050
 pkgrel=1
 pkgdesc="Quickly download videos from YouTube in high-quality."
 arch=('i686' 'x86_64')
@@ -14,8 +14,8 @@ source_i686=("http://downloads.4kdownload.com/app/${pkgname}_${pkgver%.*.*}_i386
 source_x86_64=("http://downloads.4kdownload.com/app/${pkgname}_${pkgver%.*.*}_amd64.tar.bz2")
 sha256sums=('6ab39088bde330267b43f87878f6bd47a215c732e17d417a99fc23ac4c568952'
             '56b851ef96aade0612f236b8763ccaf2def8acdd49f37bbefdd79e1d5f6e68be')
-sha256sums_i686=('0738b0c36b0efcbf3045f4c846659977f34f4a6dd58baaef309493568284b815')
-sha256sums_x86_64=('bbd1eed66816efa7fa2e14dff730e99c7248950d15ff7250336d3342a270c269')
+sha256sums_i686=('10c99edabb50fabeb64afe846097e15b3e3d91f8be1fda4ac2f1f7a7afb2dba3')
+sha256sums_x86_64=('58e3e18b5cbf0d27a560c668ac345ffcfa79beebe9af9565d0f8279a61c5a2ec')
 
 package() {
   # Install desktop file
