@@ -1,14 +1,15 @@
-# Maintainer: Patryk Kowalczyk < patryk at kowalczyk dot ws>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Patryk Kowalczyk < patryk at kowalczyk dot ws>
 
 pkgname=hivex
 pkgver=1.3.11
-pkgrel=3
+pkgrel=4
 pkgdesc="System for extracting the contents of Windows Registry."
 arch=("i686" "x86_64")
 url="http://libguestfs.org"
 license=("LGPL2")
-depends=("python2" "ruby" "libxml2" "perl")
-makedepends=("perl-io-stringy" "perl-test-simple" "ocaml-findlib" "ocaml")
+depends=("libxml2" "perl")
+makedepends=("python2" "ruby" "perl-io-stringy" "perl-test-simple" "ocaml-findlib" "ocaml")
 options=("!emptydirs" "!libtool")
 source=("http://libguestfs.org/download/$pkgname/$pkgname-$pkgver.tar.gz"
 	static.patch)
@@ -36,5 +37,5 @@ build() {
 
 package() {
     cd $srcdir/$pkgname-$pkgver
-    make DESTDIR=$pkgdir install
+    make DESTDIR="$pkgdir" install
 }
