@@ -15,7 +15,7 @@ depends=(gcc-ada gnat_util gnatcoll)
 provides=($pkgname)
 conflicts=($pkgname)
 
-source=(http://downloads.dragonlace.net/src/$pkgname-gpl-$pkgver-src.tar.gz
+source=(http://mirrors.cdn.adacore.com/art/57399029c7a447658e0aff71
         asis.gpr
         patch-Makefile
         patch-Makefile.stub
@@ -23,13 +23,13 @@ source=(http://downloads.dragonlace.net/src/$pkgname-gpl-$pkgver-src.tar.gz
         patch-a4g-a_opt.ads
         patch-a4g-a_opt.adb)
 
-md5sums=('2c5a1f382bbf644bcdd2e6417f6d1e60'
-         '223d59aadef66852e7f0493bf6b01fee'
-         '223d59aadef66852e7f0493bf6b01fee'
-         '91e1338160c413a06031a547b4f84338'
-         '4608269e4e5bdd57cf8eabb2dc5c0041'
-         '4608269e4e5bdd57cf8eabb2dc5c0041'
-         '210cbc83474488ebcfd9b72d1ccc3e43')
+sha1sums=('25195ea826bb1c790c8f3acfd1971b5fa7772109'
+          '16101754d8a8887625d15d2ee97ad2ef9b4cd9c7'
+          '46de83b7fa14aa884eb0f066970f3250a629d28f'
+          'b359b5945dafda8d30f0a6e7265a975e250e5af3'
+          '6e29d9f5f24d378ae91db783b97776c0069c0d17'
+          '3c3918f9ef569f783da0cbf55884629051b84b61'
+          '390c688eb0cca14339a6178213bc6a47ffcec02b')
 
 
 prepare()
