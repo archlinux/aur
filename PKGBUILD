@@ -22,7 +22,7 @@ build()
   cd $srcdir/$pkgname-gpl-$pkgver-src
 
   ./configure --prefix=/usr
-  make all
+  make static relocatable
 }
 
 
@@ -30,5 +30,5 @@ package()
 {
   cd $srcdir/$pkgname-gpl-$pkgver-src
 
-  make -j1 prefix=$pkgdir/usr install 
+  make -j1 prefix=$pkgdir/usr install-clean install-static install-relocatable
 }
