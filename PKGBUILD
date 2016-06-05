@@ -4,15 +4,15 @@
 
 pkgbase=gunicorn
 pkgname=(gunicorn gunicorn-python2)
-pkgver=19.5.0
-pkgrel=2
+pkgver=19.6.0
+pkgrel=1
 pkgdesc='WSGI HTTP Server for UNIX'
 arch=(any)
 url='http://gunicorn.org/'
 license=(MIT)
 makedepends=(python-distribute python2-distribute)
 source=("https://github.com/benoitc/${pkgbase}/archive/${pkgver}.tar.gz")
-sha256sums=('fc27bada8f304cabd1d23179334e442394afd1fc1c1c24981ac036f04e6b9cfd')
+sha256sums=('1e0de4957bea60bfcff5215664bdfc3cf02c78e2aae9586766a9b4b437aebbb0')
 
 package_gunicorn() {
   depends=(python)
