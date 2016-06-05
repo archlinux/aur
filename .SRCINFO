@@ -1,7 +1,7 @@
 pkgbase = couchpotato
 	pkgdesc = Automatic Movie Downloading via NZBs & Torrent
 	pkgver = 3.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://couchpota.to/
 	install = couchpotato.install
 	arch = any
