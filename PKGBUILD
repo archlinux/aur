@@ -28,6 +28,7 @@ prepare() {
   # enable flags for non-embedded systems
   sed -i 's|//\(#define MBEDTLS_THREADING_C\)|\1|' include/mbedtls/config.h
   sed -i 's|//\(#define MBEDTLS_THREADING_PTHREAD\)|\1|' include/mbedtls/config.h
+  sed -i 's|\(#define MBEDTLS_PLATFORM_C\)|//\1|' include/mbedtls/config.h
 }
 
 build() {
