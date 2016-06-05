@@ -14,7 +14,7 @@ conflicts=('dukto' 'dukto-qt5-git')
 options=('!emptydirs' '!strip')
 install=$pkgname.install
 source_i686=("http://download.opensuse.org/repositories/home:/colomboem/xUbuntu_16.04/amd64/dukto_${pkgver}-${pkgrel}_i386.deb")
-source_x86_64=("http://download.opensuse.org/repositories/home:/colomboem/xUbuntu_16.04/amd64/dukto_${pkgver}-${pkgrel}_amd64.deb")
+source_x86_64=("http://download.opensuse.org/repositories/home:/colomboem/xUbuntu_16.04/i386/dukto_${pkgver}-${pkgrel}_amd64.deb")
 sha256sums_i686=('b8aa8d5de72844040f77e76fde6a892feba13f84a92d721bb7a7213682316033')
 sha256sums_x86_64=('8a442a2f04089c447a0727c5e06a08896f9d64512be24fd40f98f9f2ce87218b')
 
