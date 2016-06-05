@@ -24,7 +24,7 @@ _build_from_head=false
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 
 pkgrel=1
-_piver=1
+_piver=""
 
 _pkgvermajmin="5.7"
 pkgver="${_pkgvermajmin}.0"
@@ -106,6 +106,11 @@ if $_build_from_head; then
 fi
 
 build() {
+  if [[ -z "$_piver" ]]; then
+    echo "Set a pi version to build the associated sdk"
+    exit -1
+  fi
+
   local _srcdir="${srcdir}/${_source_package_name}"
   local _basedir="${_srcdir}/qtbase"
   local _waylanddir="${_srcdir}/qtwayland"
