@@ -4,7 +4,7 @@
 # Contributor: Rod Kay           <charlie5 on #ada at freenode.net>
 
 pkgname=gtkada
-pkgver=2015
+pkgver=2016
 pkgrel=1
 
 pkgdesc="GtkAda is a Gtk3 binding for Ada using the OOP and other features of this programming language"
@@ -15,13 +15,13 @@ license=('GPL')
 depends=("gtk3" "gprbuild" "prepare_gnat_util")
 makedepends=("gcc-ada")
 
-source=(http://mirrors.cdn.adacore.com/art/564b3f85c8e196b040fbfaff
-        patch-Makefile.in
-        patch-projects-Makefile.in)
+source=(http://mirrors.cdn.adacore.com/art/5739985fc7a447658e0affae
+        patch-shared.gpr.in
+        patch-Makefile.in)
 
-md5sums=('c152b45c9f768aef92cf325bfb2ca138'
-         '88657345aace9e2020f74854daa64ef2'
-         '7143323e2c631df019fafc109b432703')
+sha1sums=('024aeb4e6a3d48059b5a80b90d606f760cc05e97'
+          '5d165fac792018dceae026083f5c335738879c8d'
+          'a21e5671e0a9eb6e31cb14170676ee4382e32a45')
 
 
 
@@ -29,8 +29,8 @@ prepare()
 {
   cd "$srcdir/$pkgname-gpl-$pkgver-src"
 
+  patch -Np0 -i "$srcdir/patch-shared.gpr.in"
   patch -Np0 -i "$srcdir/patch-Makefile.in"
-  patch -Np0 -i "$srcdir/patch-projects-Makefile.in"
 }
 
 

@@ -1,0 +1,29 @@
+*** shared.gpr.in	2016-06-02 17:14:52.592420447 +1000
+--- shared.gpr.in-new	2016-06-02 17:15:12.539087932 +1000
+***************
+*** 63,74 ****
+               for Switches ("Ada") use
+                  ("-gnat05", "-gnatQ", "-gnatwae", "-gnatay", "-g", "-O0",
+                   "-Werror=format-security");
+!              for Switches ("C") use ("-g", "-O0");
+           when "Production" =>
+               for Switches ("Ada") use
+                  ("-gnat05", "-gnatQ", "-O2", "-gnatn", "-gnatws",
+                   "-Werror=format-security");
+!              for Switches ("C") use ("-O2");
+        end case;
+  
+        for Switches ("C") use Compiler'Switches ("C") & Gtk_Include;
+--- 63,74 ----
+               for Switches ("Ada") use
+                  ("-gnat05", "-gnatQ", "-gnatwae", "-gnatay", "-g", "-O0",
+                   "-Werror=format-security");
+!              for Switches ("C") use ("-g", "-O0", "-fPIC");
+           when "Production" =>
+               for Switches ("Ada") use
+                  ("-gnat05", "-gnatQ", "-O2", "-gnatn", "-gnatws",
+                   "-Werror=format-security");
+!              for Switches ("C") use ("-O2", "-fPIC");
+        end case;
+  
+        for Switches ("C") use Compiler'Switches ("C") & Gtk_Include;
