@@ -1,3 +1,6 @@
+# Maintainer: Jean Lucas <jean at 4ray dot co>
+# Contributor: sekret, mail=$(echo c2VrcmV0QHBvc3Rlby5zZQo= | base64 -d)
+
 pkgname=tor-browser-dev-en
 pkgver=6.0a5
 _language='en-US'
