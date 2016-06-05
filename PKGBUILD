@@ -1,11 +1,11 @@
-# Contributor: Javier Tia <javier dot tia at gmail dot com>
+# Maintainer: Javier Tiá <javier dot tia at gmail dot com>
 
 pkgname=fsniper
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Daemon to run scripts based on changes in files monitored by inotify'
 url='http://projects.l3ib.org/fsniper/'
-license='GPL3'
+license=('GPL3')
 depends=('pcre' 'file')
 makedepends=('autoconf' 'automake' 'libtool' 'gcc')
 source=("http://projects.l3ib.org/fsniper/files/${pkgname}-${pkgver}.tar.gz")
