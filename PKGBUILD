@@ -2,9 +2,9 @@
 
 pkgname=robomongo
 pkgver=0.9.0_rc9
-_ref='8cedcc5d555d49994419db14e499a00f19bcb7f6'
+_ref='0bb566869e2a7025fa8f2b0483567ba764650926'
 _pkgname=$pkgname-${_ref}
-pkgrel=1
+pkgrel=2
 pkgdesc='Shell-centric cross-platform open source MongoDB management tool'
 arch=('i686' 'x86_64')
 url="https://robomongo.org/"
@@ -16,7 +16,7 @@ source=('git+https://github.com/paralect/robomongo-shell.git#branch=roboshell-v3
         "https://github.com/paralect/robomongo/archive/${_ref}.tar.gz"
         'robomongo.desktop')
 sha256sums=('SKIP'
-            'a098c3e1e7a368335e4e5a37c067f12714794472a32b2c47774ad624e8972834'
+            'c05f60bc32f112ae3f6e7b9de856b9d3ce71359f7afc2eeebab05cd83f048928'
             'bdd63f5d4bd35dd865a0164f285d19555e4ecafb2d11d01f67bdb86bd730a13d')
 
 build() {
