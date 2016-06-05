@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Stremio
+GenericName=Media Center
+Comment=Watch instantly all the video content you enjoy in one place
+Icon=stremio
+TryExec=stremio
+Exec=stremio
+Categories=AudioVideo;Video;Player;
