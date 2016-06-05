@@ -1,16 +1,25 @@
 pkgbase = cernbox
 	pkgdesc = Synchronization client for CERN's CERNBox cloud service (based on ownCloud)
 	pkgver = 1.7.2_3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://cernbox.web.cern.ch/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = neon
 	depends = qtwebkit
-	depends = qtkeychain
 	provides = ocsync
 	provides = cernboxsync
+	source = http://cernbox-resources.web.cern.ch/cernbox-resources/Linux/repo/openSUSE_13.2/x86_64/cernbox-client-1.7.2-3.1.x86_64.rpm
+	source = http://cernbox-resources.web.cern.ch/cernbox-resources/Linux/repo/openSUSE_13.2/x86_64/libcernboxsync0-1.7.2-3.1.x86_64.rpm
+	source = http://cernbox-resources.web.cern.ch/cernbox-resources/Linux/repo/openSUSE_13.2/x86_64/libqtkeychain0-0.4-8.1.x86_64.rpm
+	source = cernbox
+	source = cernboxcmd
+	md5sums = 68110fa2ae3ad0e973e46337784c00ff
+	md5sums = e5c4c22cbed3962950ae5af93d328afa
+	md5sums = 292f7710439c7a272acf16091be69ae4
+	md5sums = 12373b9b9d36a23c1ef3bad7cf30ad78
+	md5sums = d21071edeeceb0a1d6f2ef8d7f4ca4fa
 
 pkgname = cernbox
 
