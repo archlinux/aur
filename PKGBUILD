@@ -61,7 +61,7 @@ _installprefix=${_baseprefix}/${pkgname}
 _qt_package_name_prefix="qt-everywhere-opensource-src"
 _source_package_name=${_qt_package_name_prefix}-${_pkgver}
 
-pkgdesc="Qt SDK for the Raspberry Pi${_piver}"
+pkgdesc="Qt SDK for the Raspberry Pi 1/2"
 arch=("x86_64")
 url="http://www.qt.io"
 license=("LGPL3" "GPL3")
