@@ -3,12 +3,11 @@
 pkgbase=octopi
 pkgname=('octopi' 'octopi-notifier' 'octopi-repoeditor' 'octopi-cachecleaner')
 pkgver=0.8.1
-pkgrel=3
+pkgrel=4
 pkgdesc="a powerful Pacman frontend using Qt libs"
 arch=('i686' 'x86_64')
 url="http://octopiproject.wordpress.com"
 license=('GPL2')
-install=$pkgname.install
 makedepends=('qt5-declarative')
 source=("https://github.com/aarnt/${pkgname}/archive/v${pkgver}.tar.gz"
 	'octopi-repoeditor.desktop'
@@ -23,7 +22,7 @@ prepare() {
   
 	patch -p0 < ../enable-kstatus.patch
 }            
-            
+           
 build() {
 	cd "${srcdir}/${pkgbase}-${pkgver}"
 
@@ -53,7 +52,6 @@ build() {
 
 package_octopi() {
 	pkgdesc="A powerful Pacman frontend using Qt5 libs"
-	install=octopi.install
 	depends=('qt5-declarative')
 	optdepends=('xterm: for AUR support'
 				'kdesu: for KDE'
@@ -66,7 +64,6 @@ package_octopi() {
 		    'octopi-repoeditor: for editing functions'
 		    'octopi-cachecleaner: for cleaning functions'
 		    'octopi-notifier: for notifications'
-		    'octopi-notifier-kde4: for notifications on kde'
 		    'pacmanlogviewer: to view pacman log files')
 	conflicts=('octopi-git')
 
@@ -95,8 +92,7 @@ package_octopi-notifier() {
 	pkgdesc="Notifier for Octopi"
 	depends=('octopi' 'libnotify' 'knotifications')
 	optdepends=('xfce4-notifyd: for notifications in XFCE')
-	install=octopi.install
-	conflicts=('octopi-notifier-qt4' 'octopi-notifier-kde' 'octopi-notifier-kde4')
+	conflicts=('octopi-notifier-qt4' 'octopi-notifier-kde')
 
 	#Octopi-notifier files
 	install -D -m755 "${srcdir}/${pkgbase}-${pkgver}/notifier/bin/octopi-notifier" "${pkgdir}/usr/bin/octopi-notifier"
@@ -106,7 +102,6 @@ package_octopi-notifier() {
 
 package_octopi-repoeditor() {
 	pkgdesc="Pacman repo editor for Octopi"
-	install=octopi.install
 	depends=('qt5-base')
 
 	#Octopi-repoeditor files
