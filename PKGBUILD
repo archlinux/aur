@@ -2,12 +2,12 @@
 
 pkgname=4kstogram
 pkgver=2.0.0.1015
-pkgrel=1
+pkgrel=2
 pkgdesc="Download and backup Instagram photos shared by any user."
 arch=('i686' 'x86_64')
 url="http://www.4kdownload.com/products/product-stogram"
 license=('custom:eula')
-depends=('qt5-script' 'qt5-quickcontrols' 'libexif' 'libjpeg9')
+depends=('qt5-script' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'libexif' 'libjpeg9')
 source=("${pkgname}.desktop"
         "${pkgname}.png")
 source_i686=("http://downloads.4kdownload.com/app/${pkgname}_${pkgver%.*.*}_i386.tar.bz2")
