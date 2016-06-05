@@ -2,14 +2,13 @@
 
 pkgname=3dfsb
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="3D file browser"
 arch=('i686' 'x86_64')
 url="https://github.com/tomvanbraeckel/3dfsb/"
 license=("GPL")
 makedepends=('imagemagick')
 depends=('freeglut' 'file' 'sdl_image' 'glu' 'gstreamer' 'xdotool-git')
-install=$pkgname.install
 source=("https://github.com/tomvanbraeckel/3dfsb/archive/v${pkgver}.tar.gz"
         '3dfsb.desktop')
 sha256sums=('e04497251a4ffb4c003ed0c22316501cf2e95c201d233ddbb9c79c2f9d696c2e'
