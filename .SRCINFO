@@ -1,5 +1,5 @@
 pkgbase = compton-garnetius-git
-	pkgdesc = X Compositor (a fork of xcompmgr-dana) (git-version)
+	pkgdesc = garnetius' patched fork of compton with fixes for glx errors and Nvidia drivers
 	pkgver = 0.1_beta2.88.ge5074a5
 	pkgrel = 1
 	url = https://github.com/garnetius/compton
