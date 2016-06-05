@@ -15,12 +15,12 @@ md5sums=('SKIP')
 
 
 build() {
-	cd "$srcdir/${_pkgname}/${pkgver}"
+	cd "$srcdir/${_pkgname}/${_pkgname}-${pkgver}"
 	./autogen.sh --prefix=/usr
 	make
 }
 
 package() {
-  	cd "${srcdir}/${_pkgname}/${pkgver}"
+  	cd "${srcdir}/${_pkgname}/${_pkgname}-${pkgver}"
 	sudo make install
 }
