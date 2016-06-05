@@ -2,7 +2,7 @@
 
 pkgname=snorenotify
 pkgver=0.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Multi-platform Qt5 notification framework'
 arch=('i686' 'x86_64')
 url='https://github.com/Snorenotify/Snorenotify'
@@ -23,7 +23,4 @@ package() {
   cd "${srcdir}"/$pkgname-$pkgver
 
   make DESTDIR="${pkgdir}" install
-  
-  install -d "${pkgdir}"/usr/lib/qt
-  mv "${pkgdir}"/usr/mkspecs "${pkgdir}"/usr/lib/qt
 }
