@@ -8,7 +8,7 @@
 #
 pkgname=quartus-free
 pkgver=16.0.0.211
-pkgrel=1
+pkgrel=2
 pkgdesc="Quartus Prime Lite Edition design software for Altera FPGA's"
 arch=('i686' 'x86_64')
 url="https://dl.altera.com/?edition=lite"
@@ -25,8 +25,9 @@ if [[ $CARCH = i686 ]]
 then
    depends=('desktop-file-utils' 'expat' 'fontconfig' 'freetype2' 
    'glibc' 'gtk2' 'libcanberra' 'libpng' 'libpng12' 'libice' 'libsm' 
-   'util-linux' 'ncurses' 'tcl' 'tcllib' 'zlib' 'libx11' 'libxau' 
-   'libxdmcp' 'libxext' 'libxft' 'libxrender' 'libxt' 'libxtst')
+   'util-linux' 'ncurses' 'ncurses5-compat-libs' 'tcl' 'tcllib'
+   'zlib' 'libx11' 'libxau' 'libxdmcp' 'libxext' 'libxft'
+   'libxrender' 'libxt' 'libxtst')
 fi
 
 if [[ $CARCH = x86_64 ]]
@@ -39,9 +40,9 @@ then
    'lib32-expat' 'lib32-fontconfig' 'lib32-freetype2' 'lib32-glibc' 
    'lib32-gtk2' 'lib32-libcanberra' 'lib32-libpng' 'lib32-libpng12' 
    'lib32-libice' 'lib32-libsm' 'lib32-util-linux' 'lib32-ncurses' 
-   'lib32-zlib' 'lib32-libx11' 'lib32-libxau' 'lib32-libxdmcp' 
-   'lib32-libxext' 'lib32-libxft' 'lib32-libxrender' 'lib32-libxt' 
-   'lib32-libxtst')
+   'lib32-ncurses5-compat-libs' 'lib32-zlib' 'lib32-libx11' 
+   'lib32-libxau' 'lib32-libxdmcp' 'lib32-libxext' 'lib32-libxft'
+   'lib32-libxrender' 'lib32-libxt' 'lib32-libxtst')
 fi
 
 makedepends=('bash')
