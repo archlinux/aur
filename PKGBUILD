@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 depends=('gtk2')
 makedepends=('libtool')
 options=('!libtool')
-source=("http://gnome-look.org/CONTENT/content-files/121881-equinox-$pkgver.tar.gz")
+source=("121881-equinox-$pkgver.tar.gz::https://www.ppload.com/api/files/download?id=1463004028")
 sha256sums=('0cf8b8cc841e0da7d4a08ab5a70d3bb330fd76bdcb03165a47aaddcd47e02227')
 
 build() {
