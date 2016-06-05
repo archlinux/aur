@@ -1,0 +1,8 @@
+post_install() {
+	if [[ ! -e "/etc/afraiddns/apikey" ]]; then
+		mkdir -p "/etc/afraiddns"
+		touch "/etc/afraiddns/apikey"
+	fi
+	echo "Please provide the API secret key you receive from afraid.org"
+	echo "in /etc/afraiddns/apikey "
+}
