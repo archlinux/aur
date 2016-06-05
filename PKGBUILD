@@ -8,8 +8,8 @@ pkgdesc='Arc icon theme. Official releases only.'
 arch=(any)
 url=https://github.com/horst3180/arc-icon-theme
 license=('GPL3')
-depends=()
-makedepends=('gnome-common' 'intltool' 'itstool' 'unzip')
+depends=('gtk-update-icon-cache')
+makedepends=('automake' 'unzip')
 source=(https://github.com/horst3180/${_pkgname}/archive/${pkgver}.zip)
 md5sums=('SKIP')
 conflicts=('arc-icon-theme-git')
@@ -23,5 +23,5 @@ build() {
 
 package() {
   	cd "${srcdir}/${_pkgname}-${pkgver}"
-	sudo make install
+	make install
 }
