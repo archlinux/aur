@@ -1,0 +1,23 @@
+[Unit]
+Description=Gofish WWW Daemon
+
+[Service]
+# Allow modifying settings
+Environment=MAXCONNS=25
+Environment=CONFIG=/etc/gofish/gofish-www.conf
+EnvironmentFile=-/etc/conf.d/gofish-www
+
+Type=forking
+ExecStart=/usr/bin/gofish -d -c $CONFIG -m $MAXCONNS
+PIDFile=/run/gofish/gofish-www.pid
+# Lock process down
+ReadOnlyDirectories=/srv/gopher
+PrivateTmp=true
+PrivateDevices=true
+ProtectHome=true
+ProtectSystem=full
+RuntimeDirectory=gofish
+RuntimeDirectoryMode=700
+
+[Install]
+WantedBy=multi-user.target

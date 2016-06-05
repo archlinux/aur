@@ -1,27 +1,17 @@
 post_install() {
-  echo -n "Adding gopher system group... "
-  groupadd -g 41 gopher && echo "done."
-
-  echo -n "Adding gopher system user... "
-  useradd -g 41 -u 41 -d /var/gopher \
-    -s /bin/false gopher && echo "done."
-  passwd -l gopher &> /dev/null
-
-  post_upgrade $1
+	post_upgrade
+	chgrp -R gopher /srv/gopher /srv/gopherweb
+	chmod -R g-w /srv/gopher /srv/gopherweb
+	chown -R gopher /var/log/gofish
 }
 
 post_upgrade() {
-  echo -n "Refreshing directory caches... "
-  mkcache -r &> /dev/null && echo "done."
+	getent group gopher >/dev/null || groupadd -r gopher
+	getent passwd gopher >/dev/null || useradd -r -g gopher -d /srv/gopher -s /sbin/nologin -c "Gopher server user" gopher
+	mkcache -r &> /dev/null
 }
 
 post_remove() {
-  echo -n  "Removing gopher system user... "
-  userdel gopher  &> /dev/null && echo "done."
-  echo -n "Removing gopher system group... "
-  groupdel gopher &> /dev/null && echo "done."
+	userdel gopher &>/dev/null || true
+	groupdel gopher &>/dev/null || true
 }
-
-op=$1
-shift
-$op $*
