@@ -1,8 +1,8 @@
 # Maintainer: David Pedersen <limero@me.com>
 pkgname=phoenix-git
 _gitname=Phoenix
-pkgver=r1129.0a822e3
-pkgrel=2
+pkgver=r1136.67586b5
+pkgrel=3
 pkgdesc="A super-slick libretro frontend powered by Qt 5"
 arch=('i686' 'x86_64')
 url="https://github.com/team-phoenix/Phoenix"
@@ -16,15 +16,19 @@ source=("git+https://github.com/team-phoenix/$_gitname.git")
 md5sums=('SKIP')
 
 pkgver() {
-	cd "$_gitname"
+  cd "$_gitname"
 
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+	cd "$_gitname"
+
+	git submodule update --init --recursive
+}
+
 build() {
   cd "$_gitname"
-
-  git submodule update --init --recursive
 
   qmake ../Phoenix PREFIX="$pkgdir"/usr
   make
