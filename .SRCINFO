@@ -1,0 +1,12 @@
+pkgbase = fortune-mod-br
+	pkgdesc = A collection of several fortune cookies for Portuguese speakers, gathered from various sources, ranging from proverbs to quotations from literature classics.
+	pkgver = 20080530
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = fortune-mod
+	source = http://ftp.us.debian.org/debian/pool/main/f/fortunes-br/fortunes-br_20080530_all.deb
+	md5sums = 0eff031af2ceaa18e8cde437535db4a0
+
+pkgname = fortune-mod-br
+
