@@ -1,5 +1,16 @@
 pkgname=afraiddns-git
 pkgver=r1.3f5e706
+pkgrel=1
+pkgdesc="Service to update a subdomain reserved through afraid.org."
+url="https://github.com/mar77i/afraiddns"
+arch=(any)
+license=(custom)
+backup=(etc/afraiddns/apikey)
+depends=('curl')
+install="${pkgname}.install"
+source=("git+https://github.com/mar77i/afraiddns")
+sha1sums=(SKIP)
+
 pkgver() {
 	cd "${pkgname%-*}"
 	( set -o pipefail
@@ -7,19 +18,6 @@ pkgver() {
 	  printf "r%s.%s" "$(git rev-list --count HEAD)" \
 	    "$(git rev-parse --short HEAD)"
 	)
-}
-pkgrel=1
-pkgdesc="Service to update a subdomain reserved through afraid.org."
-url="https://github.com/mar77i/afraiddns"
-arch=(any)
-license=('ISC')
-depends=('curl')
-install="${pkgname}.install"
-source=("git+https://github.com/mar77i/afraiddns")
-sha1sums=(SKIP)
-
-build() {
-	:
 }
 
 package() {
@@ -30,4 +28,6 @@ package() {
 	install -m644 -D "afraiddns.timer" \
 		"${pkgdir}/usr/lib/systemd/system/afraiddns.timer"
 	install -m755 -D "afraiddns" "${pkgdir}/usr/bin/afraiddns"
+	mkdir -p "${pkgdir}/etc/afraiddns/"
+	touch "${pkgdir}/etc/afraiddns/apikey"
 }
