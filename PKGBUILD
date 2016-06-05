@@ -4,14 +4,14 @@
 _pkgname=libcpuid
 pkgname=$_pkgname-git
 epoch=2
-pkgver=0.2.2.r0.g535ec64
+pkgver=0.2.2.r77.gdbf9991
 pkgrel=1
 pkgdesc="Provides CPU identification for x86 (and x86_64)"
 arch=('i686' 'x86_64')
 url="https://github.com/anrieff/libcpuid"
-license=('BSD-2-Clause')
+license=('BSD')
 depends=('glibc')
-makedepends=('git' 'libtool' 'autoconf')
+makedepends=('git' 'libtool' 'autoconf' 'doxygen')
 conflicts=('libcpuid')
 provides=('libcpuid')
 source=("git+https://github.com/anrieff/$_pkgname.git")
