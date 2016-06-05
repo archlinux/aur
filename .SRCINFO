@@ -12,8 +12,6 @@ pkgbase = quaternion-git
 	provides = quaternion
 	conflicts = quaternion
 	source = git+https://github.com/fxrh/quaternion.git
-	source = git+https://github.com/Fxrh/libqmatrixclient
-	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = quaternion-git
