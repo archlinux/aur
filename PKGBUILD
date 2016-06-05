@@ -696,8 +696,8 @@ pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS in
 
 # makepkg -g >>PKGBUILD
 sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
-            '057d1406c4a8e779c356178b8db814966d43364d1dc6635640042cd75e28a335'
-            'f6fc50a401e84214c7709ae304dc960cb8d9c7bcbfb8419aaa6d8e79a60c727a'
+            '40955214cfe00b6dc217e9c517e0af07d90bfdb9e937238a4a569724a42c7e03'
+            '74f9b5717214b458aadd3cc7474d90a4bf0eb68f85813b3d8138b9285ea01b3b'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'd90f4d13bcbca5903b9a70ab653ac4446938961cc7b83b053824ed6afb557898'
