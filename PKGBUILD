@@ -7,7 +7,7 @@
 # Contributor: Christoph Stahl <christoph.stahl@uni-dortmund.de>
 
 pkgname=prosody-hg-stable
-pkgrel=1
+pkgrel=2
 pkgver=0.10.r6882+.6943b1dd4e3d+
 pkgver() {
   cd "$srcdir/prosody-hg"
@@ -22,7 +22,11 @@ depends=('lua51' 'lua51-socket' 'lua51-expat' 'lua51-filesystem' 'libidn'
 makedepends=('mercurial')
 conflicts=('prosody')
 provides=('prosody')
-optdepends=('lua51-sec: TLS encryption support')
+optdepends=(
+'lua51-sec: TLS encryption support' 
+'lua51-bitop: websocket support'
+'lua51-event: libevent support'
+)
 install=prosody.install
 backup=('etc/prosody/prosody.cfg.lua')
 source=("prosody-hg::hg+https://hg.prosody.im/0.10"
