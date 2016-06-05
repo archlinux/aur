@@ -1,7 +1,7 @@
 # Maintainer: Weitian Leung <weitianleung[at]gmail[dot]com>
 
 pkgname=cu-notify-git
-pkgver=r5
+pkgver=r7
 pkgrel=1
 pkgdesc="Auto check ArchLinux package updates, popup notification if new updates available"
 arch=(any)
