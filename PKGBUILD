@@ -22,8 +22,7 @@ depends=('lua51' 'lua51-socket' 'lua51-expat' 'lua51-filesystem' 'libidn'
 makedepends=('mercurial')
 conflicts=('prosody')
 provides=('prosody')
-optdepends=('lua51-sec: TLS encryption support'
-	    'lua51-zlib: compression support')
+optdepends=('lua51-sec: TLS encryption support')
 install=prosody.install
 backup=('etc/prosody/prosody.cfg.lua')
 source=("prosody-hg::hg+https://hg.prosody.im/trunk"
