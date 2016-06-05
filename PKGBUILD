@@ -1,6 +1,6 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
 pkgname=qdriverstation-git
-pkgver=r564.23f6710
+pkgver=r778.1601ab1
 pkgrel=1
 pkgdesc="Drive your FRC robot with your phone or tablet!"
 arch=('i686' 'x86_64')
