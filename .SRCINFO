@@ -1,7 +1,7 @@
 pkgbase = perl-b-hooks-op-check
 	pkgdesc = Wrap OP check callbacks
 	pkgver = 0.19
-	pkgrel = 1
+	pkgrel = 2
 	url = http://search.cpan.org/~flora/B-Hooks-OP-Check/
 	arch = i686
 	arch = x86_64
