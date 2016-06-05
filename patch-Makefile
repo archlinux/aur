@@ -1,0 +1,19 @@
+*** Makefile	2016-06-04 10:59:52.438996452 +1000
+--- Makefile-new	2016-06-04 11:00:02.238996854 +1000
+***************
+*** 68,74 ****
+  ifeq (${WITH_GTK},yes)
+  	${GPRINSTALL} ${GPRINST_OPTS} -Psrc/gnatcoll_gtk
+  endif
+! 	${GPRINSTALL} --mode=usage ${GPRINST_OPTS} -Psrc/gnatcoll_tools
+  
+  install_gps_plugin: force
+  	mkdir -p $(prefix)/share/gps/plug-ins
+--- 68,74 ----
+  ifeq (${WITH_GTK},yes)
+  	${GPRINSTALL} ${GPRINST_OPTS} -Psrc/gnatcoll_gtk
+  endif
+! #	${GPRINSTALL} --mode=usage ${GPRINST_OPTS} -Psrc/gnatcoll_tools
+  
+  install_gps_plugin: force
+  	mkdir -p $(prefix)/share/gps/plug-ins

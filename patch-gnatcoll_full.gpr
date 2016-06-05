@@ -1,0 +1,31 @@
+*** gnatcoll_full.gpr	2016-06-04 09:32:41.495448462 +1000
+--- gnatcoll_full.gpr-new	2016-06-04 09:32:58.362115820 +1000
+***************
+*** 61,73 ****
+     package Builder renames GNATCOLL_Shared.Builder;
+  
+     package Install is
+!       for Artifacts ("share/examples/gnatcoll") use ("examples/*");
+!       for Artifacts ("share/doc/gnatcoll/html") use ("docs/_build/html");
+!       for Artifacts ("share/doc/gnatcoll")
+!         use ("docs/_build/latex/GNATColl.pdf");
+!       for Artifacts ("share/gps/support/core/gnatcoll")
+!         use ("distrib/gnatcoll/*py");
+!       for Artifacts ("share/gnatcoll") use ("src/dborm.py");
+     end Install;
+  
+  end Gnatcoll_Full;
+--- 61,73 ----
+     package Builder renames GNATCOLL_Shared.Builder;
+  
+     package Install is
+! --      for Artifacts ("share/examples/gnatcoll") use ("examples/*");
+! --      for Artifacts ("share/doc/gnatcoll/html") use ("docs/_build/html");
+! --      for Artifacts ("share/doc/gnatcoll")
+! --        use ("docs/_build/latex/GNATColl.pdf");
+! --      for Artifacts ("share/gps/support/core/gnatcoll")
+! --        use ("distrib/gnatcoll/*py");
+! --      for Artifacts ("share/gnatcoll") use ("src/dborm.py");
+     end Install;
+  
+  end Gnatcoll_Full;
