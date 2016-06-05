@@ -5,7 +5,7 @@ pkgbase = librealsense
 	url = https://github.com/IntelRealSense/librealsense
 	arch = any
 	license = Apache
-	depends = glfw>=3
+	depends = glfw-x11>=3
 	depends = libusb
 	optdepends = qtcreator
 	source = https://github.com/IntelRealSense/librealsense/archive/v0.9.1.tar.gz
