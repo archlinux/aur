@@ -18,12 +18,14 @@
 _sysroot=/mnt/pi
 
 # Options
+_release=true
 _skip_web_engine=false
 _static_build=false
 _build_from_head=false
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 
 pkgrel=1
+# 1 or 2 at present
 _piver=""
 
 _pkgvermajmin="5.7"
@@ -37,6 +39,13 @@ fi
 
 if $_build_from_head; then
   pkgver=6.6.6
+fi
+
+if $_release; then
+  _build_type="-release"
+else
+  _build_type="-debug"
+  pkgname="${pkgname}-debug"
 fi
 
 provides=("${pkgname}")
@@ -164,7 +173,7 @@ fi
     -no-icu \
     -v \
     -qreal float \
-    -release \
+    $_release \
     -silent \
     -confirm-license \
     -opensource \
