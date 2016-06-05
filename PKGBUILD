@@ -21,7 +21,7 @@ pkgver() {
 }
 
 package() {
-	cd "$srcdir/afraiddns"
+	cd "${pkgname%-*}"
 	install -m644 -D "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -m644 -D "afraiddns.service" \
 		"${pkgdir}/usr/lib/systemd/system/afraiddns.service"
