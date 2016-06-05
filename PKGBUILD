@@ -1,7 +1,7 @@
 # Contributor: Rod Kay <charlie5 on #ada at freenode.net>
 
 pkgname=sdlada
-pkgver=2.1.0
+pkgver=2.1.7
 pkgrel=1
 pkgdesc="An Ada binding to SDL"
 
@@ -11,15 +11,27 @@ license=('zlib')
 
 depends=("gcc-ada" "sdl2")
 
-source=(https://github.com/Lucretia/sdlada/archive/v2.1.0.tar.gz)
-md5sums=('24d5f721af23dc085cb43938e04e3607')
+source=(https://github.com/Lucretia/sdlada/archive/v2.1.7.tar.gz
+        patch-makefile)
+md5sums=('255a57dc59d250af12dbe3cb7be76e58'
+         '43906f6de67f33578375fe83468073e1')
 
 
-build() 
+prepare()
 {
   cd $srcdir/$pkgname-$pkgver
 
-  make SDL_PLATFORM=linux SDL_BUILD=static SDL_MODE=release
+  patch -p0 -i ../patch-makefile
+}
+
+
+
+build()
+{
+  cd $srcdir/$pkgname-$pkgver
+  cd build/gnat
+
+  make -j1 SDL_PLATFORM=linux SDL_BUILD=static SDL_MODE=release 
 }
 
 
@@ -27,17 +39,7 @@ build()
 package() 
 {
   cd $srcdir/$pkgname-$pkgver
+  cd build/gnat
 
-  SDL_PLATFORM=linux 
-  SDL_BUILD=static 
-  SDL_MODE=release
-
-
-  gprinstall --prefix=$pkgdir/usr                  \
-             --project-subdir=$pkgdir/usr/lib/gnat \
-             --build-name=$SDL_MODE.$SDL_BUILD -p \
-             -XSDL_BUILD=$SDL_BUILD -XSDL_MODE=$SDL_MODE -XSDL_PLATFORM=$SDL_PLATFORM \
-             -Psdlada.gpr
-
-  install --mode=0644 sdl_version.gpr $pkgdir/usr/lib/gnat
+  make  SDL_PLATFORM=linux  SDL_BUILD=static  SDL_MODE=release  DESTDIR=$pkgdir  install
 }

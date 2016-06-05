@@ -1,0 +1,19 @@
+*** build/gnat/makefile	2016-05-30 05:04:36.000000000 +1000
+--- build/gnat/makefile-new	2016-06-05 13:35:37.235667615 +1000
+***************
+*** 121,127 ****
+  .PHONY: install
+  
+  install: all
+! 	$(GPRINSTALL) --prefix=$(DESTDIR)/sdlada --build-name=$(SDL_MODE).$(SDL_BUILD) -p -f \
+  		-XSDL_BUILD=$(SDL_BUILD) -XSDL_MODE=$(SDL_MODE) -XSDL_PLATFORM=$(SDL_PLATFORM) \
+  		-Psdlada.gpr
+  
+--- 121,127 ----
+  .PHONY: install
+  
+  install: all
+! 	$(GPRINSTALL) --prefix=$(DESTDIR)/usr --build-name=$(SDL_MODE).$(SDL_BUILD) -p -f \
+  		-XSDL_BUILD=$(SDL_BUILD) -XSDL_MODE=$(SDL_MODE) -XSDL_PLATFORM=$(SDL_PLATFORM) \
+  		-Psdlada.gpr
+  
