@@ -1,8 +1,8 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=mpv-plugin-xrandr
-pkgver=r312074b
-pkgrel=7
+pkgver=r19.984406a
+pkgrel=1
 pkgdesc="Makes mpv automatically invoke the "xrandr" tool to set the best suitable parameters for the display output"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,7 +13,7 @@ md5sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package () {
