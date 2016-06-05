@@ -2,7 +2,7 @@
 
 pkgname=softhsm
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Software PKCS11 store"
 arch=('i686' 'x86_64')
 url="http://www.opendnssec.org/softhsm/"
@@ -14,7 +14,7 @@ optdepends=()
 provides=()
 conflicts=()
 replaces=()
-backup=("etc/softhsm.conf")
+backup=("etc/softhsm2.conf")
 options=(!libtool)
 install=
 changelog=
