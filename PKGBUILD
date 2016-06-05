@@ -14,11 +14,6 @@ source=(https://github.com/horst3180/${_pkgname}/archive/${pkgver}.zip)
 md5sums=('SKIP')
 
 
-pkgver() {
-	cd "${_gitname}"
-	git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
 	cd "$srcdir/${_pkgname}/${pkgver}"
 	./autogen.sh --prefix=/usr
@@ -27,5 +22,5 @@ build() {
 
 package() {
   	cd "${srcdir}/${_pkgname}/${pkgver}"
-	make install
+	sudo make install
 }
