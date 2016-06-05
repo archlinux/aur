@@ -31,6 +31,7 @@ pkgver=9.0.32150
 #pkgver=11.0.50678
 #pkgver=11.0.52520
 #pkgver=11.0.53191
+#pkgver=11.0.57095
 pkgrel=1
 _pkgver_major="${pkgver%%.*}"
 
@@ -92,7 +93,8 @@ url='http://www.teamviewer.com'
 license=('custom')
 depends=('bash')
 depends_i686=('alsa-lib' 'fontconfig' 'freetype2' 'gcc-libs' 'glib2' 'libice' 'libsm' 'libxdamage' 'libxrandr' 'libxtst' 'pcre' 'zlib' 'libxinerama' 'libpng12' 'qt4')
-# From Debian: 'libjpeg6-turbo' 'expat' 'libxau' 'libxdmcp' 'libxcb' 'libx11' 'libxfixes' 'libxext' 'libxrender' 'libxi' 'libxtst' 'util-linux'
+# From Debian: 'libjpeg6-turbo' 'expat' 'libxau' 'libxdmcp' 'libxcb'      'libx11' 'libxfixes' 'libxext' 'libxrender' 'libxi' 'libxtst' 'util-linux'
+depends_i686+=('libjpeg6-turbo' 'expat' 'libxau' 'libxdmcp' 'libxcb<1.12' 'libx11' 'libxfixes' 'libxext' 'libxrender' 'libxi' 'libxtst')
 depends_x86_64=("${depends_i686[@]/#/lib32-}")
 provides=("teamviewer=${_pkgver_major}")
 conflicts=('teamviewer')
