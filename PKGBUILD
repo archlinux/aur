@@ -2,19 +2,19 @@
 
 _pkgname=megasync
 pkgname="${_pkgname}-qt5"
-pkgver=2.9.1
-pkgrel=2
+pkgver=2.9.5
+pkgrel=1
 pkgdesc="Sync your files to your Mega account (qt5 version)"
 arch=('i686' 'x86_64')
 url="https://mega.nz/#sync"
 license=('custom')
 depends=('qt5-base' 'hicolor-icon-theme' 'c-ares' 'crypto++' 'curl' 'libuv')
-makedepends=('qt5-tools' 'qtchooser')
+makedepends=('qt5-tools' 'qtchooser' 'lsb-release')
 optdepends=("nautilus-megasync: for integration with nautilus")
 provides=("megasync=${pkgver}")
 conflicts=('megatools' 'megasync')
 source=("https://mega.nz/linux/MEGAsync/Debian_8.0/${_pkgname}_${pkgver}.orig.tar.gz")
-md5sums=('11edacc3212ec6fe379cfbc87cccbed2')
+md5sums=('0035e50ac1a0fe1af2db2fdf686c8273')
 
 build() {
     export QT_SELECT=5
@@ -48,10 +48,8 @@ build() {
 package() {
     cd "${_pkgname}-${pkgver}"
     make INSTALL_ROOT="${pkgdir}" install
+    install -Dm 644 debian.copyright $pkgdir/usr/share/licenses/megasync-qt5/license
 
     cd "MEGASync"
     install -Dm 755 megasync $pkgdir/usr/bin/megasync
-
-    cd "mega"
-    install -Dm 644 LICENSE $pkgdir/usr/share/licenses/megasync-qt5/LICENSE
 }
