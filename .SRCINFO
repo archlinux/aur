@@ -1,9 +1,8 @@
 pkgbase = winegame
 	pkgdesc = An interface to install windows programs in Wine
 	pkgver = 0.2.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://code.google.com/p/winegame/
-	install = winegame.install
 	arch = i686
 	arch = x86_64
 	license = GPL3

@@ -4,10 +4,9 @@
 
 pkgname=winegame
 pkgver=0.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="An interface to install windows programs in Wine"
 arch=('i686' 'x86_64')
-install=winegame.install
 url="http://code.google.com/p/winegame/"
 license=('GPL3')
 depends=('winestuff')
