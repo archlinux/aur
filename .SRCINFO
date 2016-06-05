@@ -1,14 +1,14 @@
 pkgbase = arc-icon-theme-git
-	pkgdesc = Arc icon theme
+	pkgdesc = Arc icon theme. Latest commit from the master branch on Github.
 	pkgver = 20160605
 	pkgrel = 1
 	url = https://github.com/horst3180/arc-icon-theme
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = gnome-common
-	makedepends = intltool
-	makedepends = itstool
+	makedepends = automake
+	depends = gtk-update-icon-cache
+	conflicts = arc-icon-theme
 	source = git://github.com/horst3180/arc-icon-theme.git
 	md5sums = SKIP
 

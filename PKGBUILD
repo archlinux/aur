@@ -4,14 +4,15 @@ pkgname=arc-icon-theme-git
 _gitname=arc-icon-theme
 pkgver=20160605
 pkgrel=1
-pkgdesc='Arc icon theme'
+pkgdesc='Arc icon theme. Latest commit from the master branch on Github.'
 arch=(any)
 url=https://github.com/horst3180/arc-icon-theme
 license=('GPL3')
-depends=()
-makedepends=('git' 'gnome-common' 'intltool' 'itstool')
+depends=('gtk-update-icon-cache')
+makedepends=('git' 'automake')
 source=("git://github.com/horst3180/${_gitname}.git")
 md5sums=('SKIP')
+conflicts=('arc-icon-theme')
 
 pkgver() {
 	cd "${_gitname}"
@@ -26,5 +27,5 @@ build() {
 
 package() {
   	cd "${srcdir}/${_gitname}"
-	make install
+	make DESTDIR="$pkgdir" install
 }
