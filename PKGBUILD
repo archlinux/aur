@@ -17,12 +17,14 @@ source=("https://github.com/RuudBurger/CouchPotatoServer/archive/build/${pkgver}
 	"${pkgname}-confd.conf"
 	"${pkgname}.sh"
 	"${pkgname}-tmpfiles.conf"
+	"${pkgname}-sysusers.conf"
 	'journal-logging.patch')
 md5sums=('6168004bc99a604b09e0752f9bd2e419'
          '8fc7c9021900d0fa1fed20465232e322'
          '42ec6846a96efdf6524d7905b3f03393'
          '48126ad1674d4679c2a645dfb9d5a2c2'
          '95ebd431433b87d88c7a48cf0a32be7d'
+         '9601ee082f7fc0fc543e51e3b7b297fa'
          '4cf459a79a8148cb1a3aeb0802c02d87')
 
 build() {
@@ -44,4 +46,5 @@ package() {
   install -Dm640 "${srcdir}/${pkgname}-confd.conf" "${pkgdir}/etc/conf.d/${pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
   install -Dm644 "${srcdir}/${pkgname}-tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+  install -Dm644 "${srcdir}/${pkgname}-sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
 }

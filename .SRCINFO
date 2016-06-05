@@ -13,12 +13,14 @@ pkgbase = couchpotato
 	source = couchpotato-confd.conf
 	source = couchpotato.sh
 	source = couchpotato-tmpfiles.conf
+	source = couchpotato-sysusers.conf
 	source = journal-logging.patch
 	md5sums = 6168004bc99a604b09e0752f9bd2e419
 	md5sums = 8fc7c9021900d0fa1fed20465232e322
 	md5sums = 42ec6846a96efdf6524d7905b3f03393
 	md5sums = 48126ad1674d4679c2a645dfb9d5a2c2
 	md5sums = 95ebd431433b87d88c7a48cf0a32be7d
+	md5sums = 9601ee082f7fc0fc543e51e3b7b297fa
 	md5sums = 4cf459a79a8148cb1a3aeb0802c02d87
 
 pkgname = couchpotato
