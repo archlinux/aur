@@ -1,14 +1,14 @@
 pkgbase = cross-mips-elf-binutils
 	pkgdesc = A set of programs to assemble and manipulate binary and object files for the MIPS architecture
-	pkgver = 2.25
+	pkgver = 2.26
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = zlib
-	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.25.tar.bz2
-	md5sums = d9f3303f802a5b6b0bb73a335ab89d66
+	source = ftp://ftp.gnu.org/gnu/binutils/binutils-2.26.tar.bz2
+	md5sums = 64146a0faa3b411ba774f47d41de239f
 
 pkgname = cross-mips-elf-binutils
 
