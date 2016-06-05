@@ -1,7 +1,7 @@
 pkgbase = mitmproxy
 	pkgdesc = SSL-capable man-in-the-middle HTTP proxy
 	pkgver = 0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = http://mitmproxy.org/
 	arch = any
 	license = GPL

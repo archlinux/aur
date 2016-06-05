@@ -5,7 +5,7 @@
 
 pkgname=mitmproxy
 pkgver=0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="SSL-capable man-in-the-middle HTTP proxy"
 arch=('any')
 url="http://mitmproxy.org/"
@@ -34,7 +34,7 @@ prepare() {
   # Let's remove all the upper bounds, use system certificate store and ssl.match_hostname
   sed -e '/certifi/d' \
       -e '/backports.ssl_match_hostname/d' \
-      -e 's/, <[0-9=.]*//' \
+      -e 's/, *<[0-9=.]*//' \
       -i setup.py
   sed -e '/import certifi/d' \
       -e 's|certifi.where()|"/etc/ssl/certs/ca-certificates.crt"|' \
