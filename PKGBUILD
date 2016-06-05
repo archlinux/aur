@@ -2,7 +2,7 @@
 # https://github.com/ValHue/AUR-PKGBUILDs
 
 pkgname="nautilus-megasync"
-pkgver="2.9.1"
+pkgver="2.9.2"
 pkgrel="1"
 pkgdesc="Upload your files to your Mega account from nautilus."
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('libnautilus-extension' 'megasync')
 provides=("${pkgname}")
 
 source=("https://mega.nz/linux/MEGAsync/Debian_8.0/${pkgname}_${pkgver}.orig.tar.gz")
-sha256sums=('2403a80049c997c764d2abcee7cc3bfca633e7f4ab6fd16ff412f5e60c73443c')
+sha256sums=('e90a200cdae91554f5829a36a104062806552af4d7cb78fa20d0cb8f76828d0d')
 
 install="${pkgname}.install"
 
