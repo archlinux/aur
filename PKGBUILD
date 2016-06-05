@@ -84,7 +84,7 @@ package_systemd-git() {
   optdepends=('cryptsetup: required for encrypted block devices'
               'libmicrohttpd: remote journald capabilities'
               'quota-tools: kernel-level quota management'
-              'systemd-sysvcompat: symlink package to provide sysvinit binaries'
+              'systemd-sysvcompat-git: symlink package to provide sysvinit binaries'
               'polkit: allow administration as unprivileged user')
   backup=(etc/dbus-1/system.d/org.freedesktop.systemd1.conf
           etc/dbus-1/system.d/org.freedesktop.hostname1.conf
@@ -117,7 +117,7 @@ package_systemd-git() {
   rm -r "$pkgdir/usr/lib/rpm"
 
   # add back tmpfiles.d/legacy.conf
-  install -m644 "$pkgbase/tmpfiles.d/legacy.conf" "$pkgdir/usr/lib/tmpfiles.d"
+  install -m644 "$_realpkgname/tmpfiles.d/legacy.conf" "$pkgdir/usr/lib/tmpfiles.d"
 
   # Replace dialout/tape/cdrom group in rules with uucp/storage/optical group
   sed -i 's#GROUP="dialout"#GROUP="uucp"#g;
@@ -154,7 +154,7 @@ package_systemd-git() {
   # add example bootctl configuration
   install -Dm644 "$srcdir/arch.conf" "$pkgdir"/usr/share/systemd/bootctl/arch.conf
   install -Dm644 "$srcdir/loader.conf" "$pkgdir"/usr/share/systemd/bootctl/loader.conf
-  install -Dm644 "$srcdir/splash-arch.bmp" "$pkgdir"/usr/share/systemd/bootctl/splash-arch.bmp
+  #install -Dm644 "$srcdir/splash-arch.bmp" "$pkgdir"/usr/share/systemd/bootctl/splash-arch.bmp
 
   install -Dm644 "$srcdir/udev-hwdb.hook" "$pkgdir/usr/share/libalpm/hooks/udev-hwdb.hook"
 }
@@ -165,7 +165,7 @@ package_libsystemd-git() {
   license=('GPL2')
   provides=('libsystemd.so' 'libudev.so')
 
-  make -C "$pkgbase" DESTDIR="$pkgdir" install-libLTLIBRARIES
+  make -C "$_realpkgname" DESTDIR="$pkgdir" install-libLTLIBRARIES
 }
 
 package_systemd-sysvcompat-git() {
@@ -173,11 +173,11 @@ package_systemd-sysvcompat-git() {
   license=('GPL2')
   groups=('base')
   conflicts=('sysvinit')
-  depends=('systemd')
+  depends=('systemd-git')
 
   install -dm755 "$pkgdir"/usr/share/man/man8
   cp -d --no-preserve=ownership,timestamp \
-    "$pkgbase"/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8 \
+    "$_realpkgname"/man/{telinit,halt,reboot,poweroff,runlevel,shutdown}.8 \
     "$pkgdir"/usr/share/man/man8
 
   install -dm755 "$pkgdir/usr/bin"
