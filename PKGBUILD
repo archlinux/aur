@@ -1,11 +1,11 @@
 # Maintainer: BrLi <brli@chakraos.org>
 
 pkgname=ttf-twcns-fonts
-pkgdesc=('Chinese TrueType fonts by Taiwan government, support CNS11643 standard, including Kai and Sung fontface')
+pkgdesc='Chinese TrueType fonts by Taiwan government, support CNS11643 standard, including Kai and Sung fontface'
 pkgver=98.1
-pkgrel=1
-arch=any
-url=http://www.cns11643.gov.tw/AIDB/
+pkgrel=2
+arch=('any')
+url='http://www.cns11643.gov.tw/AIDB/'
 depends=(freetype2 fontconfig)
 makedepends=(libarchive)
 source=('AIDB_soft-100-1.linux.sh::http://www.cns11643.gov.tw/AIDB/file.do?path=download/個人電腦造字處理工具`1q`Unicode平台`1q`全字庫軟體包(Linux版)/name/AIDB_soft-100-1.linux.sh'
