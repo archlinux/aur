@@ -1,17 +1,19 @@
+# Maintainer;  Marcin (CTRL) Wieczorek <marcin@marcin.co>
 # Contributor: Eole Dev < Eole Dev at-symbol outlook . fr>
+
 pkgname=cross-mips-elf-gcc
 _pkgname=gcc
 _target="mips-elf"
-pkgver=5.2.0
+pkgver=5.4.0
 pkgrel=1
 pkgdesc="The GNU Compiler Collection for the MIPS-elf architecture"
 url="http://www.gnu.org/software/gcc/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends=('mpfr' 'gmp' 'libmpc' 'sh' "cross-${_target}-binutils")
+depends=('libmpc' "cross-${_target}-binutils")
 options=('!ccache' '!distcc' '!emptydirs' '!libtool' '!strip')
 source=("ftp://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.bz2")
-md5sums=('a51bcfeb3da7dd4c623e27207ed43467')
+md5sums=('4c626ac2a83ef30dfb9260e6f59c2b30')
 _sysroot="/usr/lib/cross-${_target}"
 
 prepare() {
