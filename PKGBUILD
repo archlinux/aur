@@ -1,13 +1,13 @@
 # Maintainer: Felix Wiegand <koffeinflummi@gmail.com>
 
 pkgname="armake"
-pkgver=0.2.1
+pkgver=0.4
 pkgrel=1
 pkgdesc="An open-source implementation of the Arma modding tools."
 arch=('i686' 'x86_64')
 url="https://github.com/KoffeinFlummi/armake"
 license=('GPL2')
-depends=()
+depends=('openssl')
 optdepends=()
 source=("https://github.com/KoffeinFlummi/armake/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP')

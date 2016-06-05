@@ -1,12 +1,13 @@
 pkgbase = armake
 	pkgdesc = An open-source implementation of the Arma modding tools.
-	pkgver = 0.2.1
+	pkgver = 0.4
 	pkgrel = 1
 	url = https://github.com/KoffeinFlummi/armake
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	source = https://github.com/KoffeinFlummi/armake/archive/v0.2.1.tar.gz
+	depends = openssl
+	source = https://github.com/KoffeinFlummi/armake/archive/v0.4.tar.gz
 	sha256sums = SKIP
 
 pkgname = armake
