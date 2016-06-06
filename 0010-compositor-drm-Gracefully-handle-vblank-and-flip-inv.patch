@@ -1,8 +1,8 @@
-From 851f5b55210835e6e7c5699d87e18e09cbbe69e3 Mon Sep 17 00:00:00 2001
+From 8e93cad203be5983ea01fdd4a1b044465c3b8ac0 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
-Date: Mon, 21 Mar 2016 17:37:35 +0100
-Subject: [PATCH 5/7] compositor-drm: Gracefully handle vblank and flip invalid
- timestamps
+Date: Tue, 1 Mar 2016 22:19:14 +0100
+Subject: [PATCH 10/11] compositor-drm: Gracefully handle vblank and flip
+ invalid timestamps
 X-NVConfidentiality: public
 
 Instant query for vblank timestamp may always fail, resulting in
@@ -18,11 +18,11 @@ situations above.
 Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
 Reviewed-by: Andy Ritger <aritger@nvidia.com>
 ---
- src/compositor-drm.c | 24 +++++++++++++++++++++---
- 1 file changed, 21 insertions(+), 3 deletions(-)
+ src/compositor-drm.c | 26 +++++++++++++++++++++++---
+ 1 file changed, 23 insertions(+), 3 deletions(-)
 
 diff --git a/src/compositor-drm.c b/src/compositor-drm.c
-index ded15f83c3e6..a6d4573a922f 100644
+index dd545de1ccc0..51d90e1d6437 100644
 --- a/src/compositor-drm.c
 +++ b/src/compositor-drm.c
 @@ -1,6 +1,7 @@
@@ -33,7 +33,7 @@ index ded15f83c3e6..a6d4573a922f 100644
   *
   * Permission is hereby granted, free of charge, to any person obtaining
   * a copy of this software and associated documentation files (the
-@@ -761,8 +762,16 @@ drm_output_start_repaint_loop(struct weston_output *output_base)
+@@ -753,8 +754,16 @@ drm_output_start_repaint_loop(struct weston_output *output_base)
  	vbl.request.type |= drm_waitvblank_pipe(output);
  	ret = drmWaitVBlank(backend->drm.fd, &vbl);
  
@@ -52,7 +52,7 @@ index ded15f83c3e6..a6d4573a922f 100644
  		ts.tv_sec = vbl.reply.tval_sec;
  		ts.tv_nsec = vbl.reply.tval_usec * 1000;
  
-@@ -783,7 +792,7 @@ drm_output_start_repaint_loop(struct weston_output *output_base)
+@@ -775,7 +784,7 @@ drm_output_start_repaint_loop(struct weston_output *output_base)
  		}
  	}
  
@@ -61,22 +61,24 @@ index ded15f83c3e6..a6d4573a922f 100644
  	 * Use pageflip fallback.
  	 */
  	fb_id = output->current->fb_id;
-@@ -869,6 +878,15 @@ page_flip_handler(int fd, unsigned int frame,
+@@ -861,6 +870,17 @@ page_flip_handler(int fd, unsigned int frame,
  	else if (!output->vblank_pending) {
  		ts.tv_sec = sec;
  		ts.tv_nsec = usec * 1000;
 +
 +		/* Zero timestamp means failure to get valid timestamp, so immediately
-+		 * finish frame */
++		 * finish frame
++		 *
++		 * FIXME: Driver should never return an invalid page flip timestamp */
 +		if (ts.tv_sec == 0 && ts.tv_nsec == 0) {
 +			weston_compositor_read_presentation_clock(output->base.compositor,
 +			                                          &ts);
-+			flags = PRESENTATION_FEEDBACK_INVALID;
++			flags = WP_PRESENTATION_FEEDBACK_INVALID;
 +		}
 +
  		weston_output_finish_frame(&output->base, &ts, flags);
  
  		/* We can't call this from frame_notify, because the output's
 -- 
-2.7.4
+2.8.3
 

@@ -1,0 +1,32 @@
+From d55b51e9bdd451c0ff635d8937e1e818a6de1216 Mon Sep 17 00:00:00 2001
+From: "Miguel A. Vico" <mvicomoya@nvidia.com>
+Date: Wed, 30 Mar 2016 15:29:37 +0200
+Subject: [PATCH 05/11] gl-renderer: Accept non-NULL empty <visual_id> arrays
+X-NVConfidentiality: public
+
+This change modifies egl_choose_config() to accept a non-NULL but empty
+<visual_id> array (i.e. n_ids == 0)
+
+Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
+Reviewed-by: Andy Ritger <aritger@nvidia.com>
+Reviewed-by: James Jones <jajones@nvidia.com>
+---
+ src/gl-renderer.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gl-renderer.c b/src/gl-renderer.c
+index 7f522055fac8..1d76488c2165 100644
+--- a/src/gl-renderer.c
++++ b/src/gl-renderer.c
+@@ -2493,7 +2493,7 @@ egl_choose_config(struct gl_renderer *gr, const EGLint *attribs,
+ 		goto out;
+ 	}
+ 
+-	if (!visual_id)
++	if (!visual_id || n_ids == 0)
+ 		config_index = 0;
+ 
+ 	for (i = 0; config_index == -1 && i < n_ids; i++)
+-- 
+2.8.3
+

@@ -1,0 +1,111 @@
+From 0e4bc3d227912df81c275ccddc48cae5b058d65c Mon Sep 17 00:00:00 2001
+From: "Miguel A. Vico" <mvicomoya@nvidia.com>
+Date: Wed, 30 Mar 2016 15:17:01 +0200
+Subject: [PATCH 04/11] gl-renderer: Add <platform_attribs> param to
+ gl_renderer_display_create
+X-NVConfidentiality: public
+
+In preparation for follow-on changes to support frame presentation
+through EGLDevice+EGLOutput, this change adds <platform_attribs>
+parameter to gl_renderer_display_create().
+
+Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
+Reviewed-by: Andy Ritger <aritger@nvidia.com>
+Reviewed-by: James Jones <jajones@nvidia.com>
+---
+ src/compositor-drm.c     | 1 +
+ src/compositor-fbdev.c   | 1 +
+ src/compositor-wayland.c | 1 +
+ src/compositor-x11.c     | 2 +-
+ src/gl-renderer.c        | 6 +++---
+ src/gl-renderer.h        | 1 +
+ 6 files changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/src/compositor-drm.c b/src/compositor-drm.c
+index 20e6474511ef..dd545de1ccc0 100644
+--- a/src/compositor-drm.c
++++ b/src/compositor-drm.c
+@@ -1580,6 +1580,7 @@ drm_backend_create_gl_renderer(struct drm_backend *b)
+ 	if (gl_renderer->display_create(b->compositor,
+ 				EGL_PLATFORM_GBM_KHR,
+ 				(void *)b->gbm,
++				NULL,
+ 				gl_renderer->opaque_attribs,
+ 				format,
+ 				n_formats) < 0) {
+diff --git a/src/compositor-fbdev.c b/src/compositor-fbdev.c
+index 21a24fd4c4e3..7a7c32915c8c 100644
+--- a/src/compositor-fbdev.c
++++ b/src/compositor-fbdev.c
+@@ -787,6 +787,7 @@ fbdev_backend_create(struct weston_compositor *compositor, int *argc, char *argv
+ 
+ 		if (gl_renderer->display_create(compositor, NO_EGL_PLATFORM,
+ 					EGL_DEFAULT_DISPLAY,
++					NULL,
+ 					gl_renderer->opaque_attribs,
+ 					NULL, 0) < 0) {
+ 			weston_log("gl_renderer_create failed.\n");
+diff --git a/src/compositor-wayland.c b/src/compositor-wayland.c
+index 85e755a52d84..88992dbeec23 100644
+--- a/src/compositor-wayland.c
++++ b/src/compositor-wayland.c
+@@ -2211,6 +2211,7 @@ wayland_backend_create(struct weston_compositor *compositor,
+ 		if (gl_renderer->display_create(compositor,
+ 					EGL_PLATFORM_WAYLAND_KHR,
+ 					b->parent.wl_display,
++					NULL,
+ 					gl_renderer->alpha_attribs,
+ 					NULL,
+ 					0) < 0) {
+diff --git a/src/compositor-x11.c b/src/compositor-x11.c
+index 6b61cee6bbed..52b7a7e16cd7 100644
+--- a/src/compositor-x11.c
++++ b/src/compositor-x11.c
+@@ -1558,7 +1558,7 @@ init_gl_renderer(struct x11_backend *b)
+ 		return -1;
+ 
+ 	ret = gl_renderer->display_create(b->compositor, EGL_PLATFORM_X11_KHR,
+-	                                  (void *) b->dpy,
++	                                  (void *) b->dpy, NULL,
+ 	                                  gl_renderer->opaque_attribs, NULL, 0);
+ 
+ 	return ret;
+diff --git a/src/gl-renderer.c b/src/gl-renderer.c
+index b0bee7f6a94f..7f522055fac8 100644
+--- a/src/gl-renderer.c
++++ b/src/gl-renderer.c
+@@ -2874,8 +2874,8 @@ platform_to_extension(EGLenum platform)
+ 
+ static int
+ gl_renderer_display_create(struct weston_compositor *ec, EGLenum platform,
+-	void *native_window, const EGLint *config_attribs,
+-	const EGLint *visual_id, int n_ids)
++	void *native_window, const EGLint *platform_attribs,
++	const EGLint *config_attribs, const EGLint *visual_id, int n_ids)
+ {
+ 	struct gl_renderer *gr;
+ 	EGLint major, minor;
+@@ -2917,7 +2917,7 @@ gl_renderer_display_create(struct weston_compositor *ec, EGLenum platform,
+ 		if (get_platform_display && platform) {
+ 			gr->egl_display = get_platform_display(platform,
+ 							       native_window,
+-							       NULL);
++							       platform_attribs);
+ 		}
+ 	}
+ 
+diff --git a/src/gl-renderer.h b/src/gl-renderer.h
+index d43131940f43..f778cd9b6f69 100644
+--- a/src/gl-renderer.h
++++ b/src/gl-renderer.h
+@@ -78,6 +78,7 @@ struct gl_renderer_interface {
+ 	int (*display_create)(struct weston_compositor *ec,
+ 		      EGLenum platform,
+ 		      void *native_window,
++		      const EGLint *platform_attribs,
+ 		      const EGLint *config_attribs,
+ 		      const EGLint *visual_id,
+ 		      const int n_ids);
+-- 
+2.8.3
+

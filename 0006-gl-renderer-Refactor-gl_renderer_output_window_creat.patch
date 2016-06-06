@@ -1,7 +1,8 @@
-From 1a6f5e3586cf62029a8bed8072bd41e845746bad Mon Sep 17 00:00:00 2001
+From 2309d0381a9353651f7d080190c43702c76d2075 Mon Sep 17 00:00:00 2001
 From: "Miguel A. Vico" <mvicomoya@nvidia.com>
-Date: Mon, 21 Mar 2016 17:37:32 +0100
-Subject: [PATCH 2/7] gl-renderer: Refactor gl_renderer_output_window_create()
+Date: Fri, 26 Feb 2016 15:44:59 +0100
+Subject: [PATCH 06/11] gl-renderer: Refactor
+ gl_renderer_output_window_create()
 X-NVConfidentiality: public
 
 In preparation for follow-on changes to support frame presentation
@@ -13,12 +14,13 @@ Bonus: Fix EGLSurface leakage upon gl_renderer_setup() failure.
 
 Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
 Reviewed-by: Andy Ritger <aritger@nvidia.com>
+Reviewed-by: James Jones <jajones@nvidia.com>
 ---
- src/gl-renderer.c | 91 +++++++++++++++++++++++++++++++++++++------------------
- 1 file changed, 62 insertions(+), 29 deletions(-)
+ src/gl-renderer.c | 96 ++++++++++++++++++++++++++++++++++++-------------------
+ 1 file changed, 64 insertions(+), 32 deletions(-)
 
 diff --git a/src/gl-renderer.c b/src/gl-renderer.c
-index 0c55e0b9ebd2..1d6d98c9b86b 100644
+index 1d76488c2165..c208f36a5165 100644
 --- a/src/gl-renderer.c
 +++ b/src/gl-renderer.c
 @@ -1,6 +1,7 @@
@@ -58,7 +60,7 @@ index 0c55e0b9ebd2..1d6d98c9b86b 100644
  	}
  
  	if (egl_config != gr->egl_config &&
-@@ -2571,48 +2569,83 @@ gl_renderer_output_window_create(struct weston_output *output,
+@@ -2571,48 +2569,82 @@ gl_renderer_output_window_create(struct weston_output *output,
  		weston_log("attempted to use a different EGL config for an "
  			   "output but EGL_MESA_configless_context is not "
  			   "supported\n");
@@ -92,7 +94,12 @@ index 0c55e0b9ebd2..1d6d98c9b86b 100644
 +		egl_surface = eglCreateWindowSurface(gr->egl_display,
 +		                                     egl_config,
 +		                                     window_for_legacy, NULL);
-+
+ 
+-	if (go->egl_surface == EGL_NO_SURFACE) {
+-		weston_log("failed to create egl surface\n");
+-		free(go);
+-		return -1;
+-	}
 +	return egl_surface;
 +}
 +
@@ -104,13 +111,6 @@ index 0c55e0b9ebd2..1d6d98c9b86b 100644
 +	struct gl_renderer *gr = get_renderer(ec);
 +	struct gl_output_state *go;
 +	int i;
- 
--	if (go->egl_surface == EGL_NO_SURFACE) {
-+	if (surface == EGL_NO_SURFACE) {
- 		weston_log("failed to create egl surface\n");
--		free(go);
- 		return -1;
- 	}
  
  	if (gr->egl_context == NULL)
 -		if (gl_renderer_setup(ec, go->egl_surface) < 0) {
@@ -153,9 +153,13 @@ index 0c55e0b9ebd2..1d6d98c9b86b 100644
 +	                                                window_for_platform,
 +	                                                config_attribs,
 +	                                                visual_id, n_ids);
++	if (egl_surface == EGL_NO_SURFACE) {
++		weston_log("failed to create egl surface\n");
++		return -1;
++	}
 +
 +	ret = gl_renderer_output_create(output, egl_surface);
-+	if (ret < 0 && egl_surface != EGL_NO_SURFACE)
++	if (ret < 0)
 +		eglDestroySurface(gr->egl_display, egl_surface);
 +
 +	return ret;
@@ -165,5 +169,5 @@ index 0c55e0b9ebd2..1d6d98c9b86b 100644
  gl_renderer_output_destroy(struct weston_output *output)
  {
 -- 
-2.7.4
+2.8.3
 

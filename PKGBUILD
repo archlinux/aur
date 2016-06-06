@@ -3,7 +3,7 @@
 # Contributor: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=weston-eglstream
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Reference implementation of a Wayland compositor with EGLStream support'
 arch=('i686' 'x86_64')
@@ -14,32 +14,44 @@ makedepends=('wayland-protocols')
 provides=('weston')
 conflicts=('weston')
 source=("http://wayland.freedesktop.org/releases/weston-$pkgver.tar.xz"
-          '0001-gl-renderer-Renaming-of-things-and-minor-improvement.patch'
-          '0002-gl-renderer-Refactor-gl_renderer_output_window_creat.patch'
-          '0003-gl-renderer-Implement-use-check_extension.patch'
-          '0004-gl-renderer-Add-support-for-EGLDevice-EGLOutput.patch'
-          '0005-compositor-drm-Gracefully-handle-vblank-and-flip-inv.patch'
-          '0006-compositor-drm-Renaming-of-gbm-fields.patch'
-          '0007-compositor-drm-Add-support-for-EGLDevice-EGLOutput.patch')
-sha1sums=('c9c2c8e2e798b25e7bf6b31bf0c4ef08724a7ebb'
-          'c623cdf628a20a4bde5a98cc40867c32a8300e79'
-          '3441d0a7da0ae64835a5b29545caab4bc7977417'
-          'f6742fadb973ec6c2b55e5500127309e70579312'
-          '31e3a447a1209712d604d739d0ac7e5b1925e940'
-          'b483f21b3f880d3978cc678bf5f97802f7ddddaf'
-          '13d217d76a0811f5eb8d7180d31ec7a69fbbaabd'
-          '6bab10ac02a7e69b1bb1bf1982b5804e87870e0e')
+          '0001-gl-renderer-Rename-gl_renderer_create-to-gl_renderer.patch'
+          '0002-gl-renderer-Rename-gl_renderer-output_create-to-outp.patch'
+          '0003-gl-renderer-Rename-attribs-param-of-gl_renderer-to-c.patch'
+          '0004-gl-renderer-Add-platform_attribs-param-to-gl_rendere.patch'
+          '0005-gl-renderer-Accept-non-NULL-empty-visual_id-arrays.patch'
+          '0006-gl-renderer-Refactor-gl_renderer_output_window_creat.patch'
+          '0007-gl-renderer-Add-EGLDevice-enumeration-support.patch'
+          '0008-gl-renderer-Add-support-for-EGLDevice-composited-fra.patch'
+          '0009-gl-renderer-Add-EGL-client-support-for-EGLStream-fra.patch'
+          '0010-compositor-drm-Gracefully-handle-vblank-and-flip-inv.patch'
+          '0011-compositor-drm-Add-support-for-EGLDevice-EGLOutput.patch')
+sha1sums=('8b051ee16b785b6db16657161aeed6cd6724f028'
+          '67741bea89d102740e1d8726d20cf6d278d6d51e'
+          '63b21515874749572d515266d49c202dbc560a43'
+          '551571daaabab0ded8c1dc58cd45035fad3a6387'
+          '96b73103c25811a7721a40487ad7ec5d9436fa11'
+          'd1aab8b491b50dbcfceb96aa154df0bac04ec4f4'
+          'c74abfd3e5ee691a889be8d03a841c96da6602c0'
+          '5148c5ec24a98af3d33f65eabbba065f4556b212'
+          '25634c91c587af648cb2428e2124c23e22e6025b'
+          'a51dfacd54988910e909789e31bea43b9c2156fe'
+          '350c82bee9bd06c0b678fabf08fcef405e832083'
+          'c1db4cb0ac1d685a0c6e9d020238f8ea0c163318')
 
 prepare() {
 	cd weston-$pkgver
 
-	patch -Np1 -i "${srcdir}/0001-gl-renderer-Renaming-of-things-and-minor-improvement.patch"
-	patch -Np1 -i "${srcdir}/0002-gl-renderer-Refactor-gl_renderer_output_window_creat.patch"
-	patch -Np1 -i "${srcdir}/0003-gl-renderer-Implement-use-check_extension.patch"
-	patch -Np1 -i "${srcdir}/0004-gl-renderer-Add-support-for-EGLDevice-EGLOutput.patch"
-	patch -Np1 -i "${srcdir}/0005-compositor-drm-Gracefully-handle-vblank-and-flip-inv.patch"
-	patch -Np1 -i "${srcdir}/0006-compositor-drm-Renaming-of-gbm-fields.patch"
-	patch -Np1 -i "${srcdir}/0007-compositor-drm-Add-support-for-EGLDevice-EGLOutput.patch"
+	patch -Np1 -i "${srcdir}/0001-gl-renderer-Rename-gl_renderer_create-to-gl_renderer.patch"
+	patch -Np1 -i "${srcdir}/0002-gl-renderer-Rename-gl_renderer-output_create-to-outp.patch"
+	patch -Np1 -i "${srcdir}/0003-gl-renderer-Rename-attribs-param-of-gl_renderer-to-c.patch"
+	patch -Np1 -i "${srcdir}/0004-gl-renderer-Add-platform_attribs-param-to-gl_rendere.patch"
+	patch -Np1 -i "${srcdir}/0005-gl-renderer-Accept-non-NULL-empty-visual_id-arrays.patch"
+	patch -Np1 -i "${srcdir}/0006-gl-renderer-Refactor-gl_renderer_output_window_creat.patch"
+	patch -Np1 -i "${srcdir}/0007-gl-renderer-Add-EGLDevice-enumeration-support.patch"
+	patch -Np1 -i "${srcdir}/0008-gl-renderer-Add-support-for-EGLDevice-composited-fra.patch"
+	patch -Np1 -i "${srcdir}/0009-gl-renderer-Add-EGL-client-support-for-EGLStream-fra.patch"
+	patch -Np1 -i "${srcdir}/0010-compositor-drm-Gracefully-handle-vblank-and-flip-inv.patch"
+	patch -Np1 -i "${srcdir}/0011-compositor-drm-Add-support-for-EGLDevice-EGLOutput.patch"
 }
 
 build() {

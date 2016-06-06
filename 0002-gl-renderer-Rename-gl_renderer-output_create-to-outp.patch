@@ -1,0 +1,113 @@
+From 32a49cc3fce7d2a48b4d07ef542c21cac26e7177 Mon Sep 17 00:00:00 2001
+From: "Miguel A. Vico" <mvicomoya@nvidia.com>
+Date: Wed, 30 Mar 2016 15:09:14 +0200
+Subject: [PATCH 02/11] gl-renderer: Rename gl_renderer::output_create to
+ output_window_create
+X-NVConfidentiality: public
+
+No functional change. This patch renames gl_renderer_output_create() to
+gl_renderer_output_window_create(), which is something more descriptive
+of what the function does.
+
+Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
+Reviewed-by: Andy Ritger <aritger@nvidia.com>
+Reviewed-by: James Jones <jajones@nvidia.com>
+---
+ src/compositor-drm.c     | 2 +-
+ src/compositor-fbdev.c   | 2 +-
+ src/compositor-wayland.c | 2 +-
+ src/compositor-x11.c     | 2 +-
+ src/gl-renderer.c        | 4 ++--
+ src/gl-renderer.h        | 2 +-
+ 6 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/compositor-drm.c b/src/compositor-drm.c
+index 0e217e075713..20e6474511ef 100644
+--- a/src/compositor-drm.c
++++ b/src/compositor-drm.c
+@@ -1844,7 +1844,7 @@ drm_output_init_egl(struct drm_output *output, struct drm_backend *b)
+ 
+ 	if (format[1])
+ 		n_formats = 2;
+-	if (gl_renderer->output_create(&output->base,
++	if (gl_renderer->output_window_create(&output->base,
+ 				       (EGLNativeWindowType)output->gbm_surface,
+ 				       output->gbm_surface,
+ 				       gl_renderer->opaque_attribs,
+diff --git a/src/compositor-fbdev.c b/src/compositor-fbdev.c
+index c6ffcd7e8696..21a24fd4c4e3 100644
+--- a/src/compositor-fbdev.c
++++ b/src/compositor-fbdev.c
+@@ -510,7 +510,7 @@ fbdev_output_create(struct fbdev_backend *backend,
+ 			goto out_hw_surface;
+ 	} else {
+ 		setenv("HYBRIS_EGLPLATFORM", "wayland", 1);
+-		if (gl_renderer->output_create(&output->base,
++		if (gl_renderer->output_window_create(&output->base,
+ 					       (EGLNativeWindowType)NULL, NULL,
+ 					       gl_renderer->opaque_attribs,
+ 					       NULL, 0) < 0) {
+diff --git a/src/compositor-wayland.c b/src/compositor-wayland.c
+index ba99b2af7f9c..85e755a52d84 100644
+--- a/src/compositor-wayland.c
++++ b/src/compositor-wayland.c
+@@ -658,7 +658,7 @@ wayland_output_init_gl_renderer(struct wayland_output *output)
+ 		return -1;
+ 	}
+ 
+-	if (gl_renderer->output_create(&output->base,
++	if (gl_renderer->output_window_create(&output->base,
+ 				       output->gl.egl_window,
+ 				       output->gl.egl_window,
+ 				       gl_renderer->alpha_attribs,
+diff --git a/src/compositor-x11.c b/src/compositor-x11.c
+index 78b9c62f873b..6b61cee6bbed 100644
+--- a/src/compositor-x11.c
++++ b/src/compositor-x11.c
+@@ -928,7 +928,7 @@ x11_backend_create_output(struct x11_backend *b, int x, int y,
+ 		 * but eglCreateWindowSurface takes a Window. */
+ 		Window xid = (Window) output->window;
+ 
+-		ret = gl_renderer->output_create(&output->base,
++		ret = gl_renderer->output_window_create(&output->base,
+ 						 (EGLNativeWindowType) output->window,
+ 						 &xid,
+ 						 gl_renderer->opaque_attribs,
+diff --git a/src/gl-renderer.c b/src/gl-renderer.c
+index 197e5c2a3123..784cacbc2619 100644
+--- a/src/gl-renderer.c
++++ b/src/gl-renderer.c
+@@ -2547,7 +2547,7 @@ static int
+ gl_renderer_setup(struct weston_compositor *ec, EGLSurface egl_surface);
+ 
+ static int
+-gl_renderer_output_create(struct weston_output *output,
++gl_renderer_output_window_create(struct weston_output *output,
+ 			  EGLNativeWindowType window_for_legacy,
+ 			  void *window_for_platform,
+ 			  const EGLint *attribs,
+@@ -3149,7 +3149,7 @@ WL_EXPORT struct gl_renderer_interface gl_renderer_interface = {
+ 
+ 	.display_create = gl_renderer_display_create,
+ 	.display = gl_renderer_display,
+-	.output_create = gl_renderer_output_create,
++	.output_window_create = gl_renderer_output_window_create,
+ 	.output_destroy = gl_renderer_output_destroy,
+ 	.output_surface = gl_renderer_output_surface,
+ 	.output_set_border = gl_renderer_output_set_border,
+diff --git a/src/gl-renderer.h b/src/gl-renderer.h
+index cd67a890aae9..ae9bf0f0aee2 100644
+--- a/src/gl-renderer.h
++++ b/src/gl-renderer.h
+@@ -84,7 +84,7 @@ struct gl_renderer_interface {
+ 
+ 	EGLDisplay (*display)(struct weston_compositor *ec);
+ 
+-	int (*output_create)(struct weston_output *output,
++	int (*output_window_create)(struct weston_output *output,
+ 			     EGLNativeWindowType window_for_legacy,
+ 			     void *window_for_platform,
+ 			     const EGLint *attribs,
+-- 
+2.8.3
+

@@ -1,0 +1,115 @@
+From 986ecf2624930070e2d89dfe68459cd893179ca2 Mon Sep 17 00:00:00 2001
+From: "Miguel A. Vico" <mvicomoya@nvidia.com>
+Date: Wed, 30 Mar 2016 15:44:09 +0200
+Subject: [PATCH 01/11] gl-renderer: Rename gl_renderer_create to
+ gl_renderer_display_create
+X-NVConfidentiality: public
+
+No functional change. This patch only renames gl_renderer_create() to
+gl_renderer_display_create(), which is something more descriptive of
+what the function does.
+
+Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
+Reviewed-by: James Jones <jajones@nvidia.com>
+---
+ src/compositor-drm.c     | 2 +-
+ src/compositor-fbdev.c   | 2 +-
+ src/compositor-wayland.c | 2 +-
+ src/compositor-x11.c     | 5 +++--
+ src/gl-renderer.c        | 4 ++--
+ src/gl-renderer.h        | 2 +-
+ 6 files changed, 9 insertions(+), 8 deletions(-)
+
+diff --git a/src/compositor-drm.c b/src/compositor-drm.c
+index 893877d946ff..0e217e075713 100644
+--- a/src/compositor-drm.c
++++ b/src/compositor-drm.c
+@@ -1577,7 +1577,7 @@ drm_backend_create_gl_renderer(struct drm_backend *b)
+ 
+ 	if (format[1])
+ 		n_formats = 3;
+-	if (gl_renderer->create(b->compositor,
++	if (gl_renderer->display_create(b->compositor,
+ 				EGL_PLATFORM_GBM_KHR,
+ 				(void *)b->gbm,
+ 				gl_renderer->opaque_attribs,
+diff --git a/src/compositor-fbdev.c b/src/compositor-fbdev.c
+index ee762e312c59..c6ffcd7e8696 100644
+--- a/src/compositor-fbdev.c
++++ b/src/compositor-fbdev.c
+@@ -785,7 +785,7 @@ fbdev_backend_create(struct weston_compositor *compositor, int *argc, char *argv
+ 			goto out_launcher;
+ 		}
+ 
+-		if (gl_renderer->create(compositor, NO_EGL_PLATFORM,
++		if (gl_renderer->display_create(compositor, NO_EGL_PLATFORM,
+ 					EGL_DEFAULT_DISPLAY,
+ 					gl_renderer->opaque_attribs,
+ 					NULL, 0) < 0) {
+diff --git a/src/compositor-wayland.c b/src/compositor-wayland.c
+index fe8b082b43fd..ba99b2af7f9c 100644
+--- a/src/compositor-wayland.c
++++ b/src/compositor-wayland.c
+@@ -2208,7 +2208,7 @@ wayland_backend_create(struct weston_compositor *compositor,
+ 	}
+ 
+ 	if (!b->use_pixman) {
+-		if (gl_renderer->create(compositor,
++		if (gl_renderer->display_create(compositor,
+ 					EGL_PLATFORM_WAYLAND_KHR,
+ 					b->parent.wl_display,
+ 					gl_renderer->alpha_attribs,
+diff --git a/src/compositor-x11.c b/src/compositor-x11.c
+index 629b5f39a217..78b9c62f873b 100644
+--- a/src/compositor-x11.c
++++ b/src/compositor-x11.c
+@@ -1557,8 +1557,9 @@ init_gl_renderer(struct x11_backend *b)
+ 	if (!gl_renderer)
+ 		return -1;
+ 
+-	ret = gl_renderer->create(b->compositor, EGL_PLATFORM_X11_KHR, (void *) b->dpy,
+-				  gl_renderer->opaque_attribs, NULL, 0);
++	ret = gl_renderer->display_create(b->compositor, EGL_PLATFORM_X11_KHR,
++	                                  (void *) b->dpy,
++	                                  gl_renderer->opaque_attribs, NULL, 0);
+ 
+ 	return ret;
+ }
+diff --git a/src/gl-renderer.c b/src/gl-renderer.c
+index 23c0cd722df8..197e5c2a3123 100644
+--- a/src/gl-renderer.c
++++ b/src/gl-renderer.c
+@@ -2873,7 +2873,7 @@ platform_to_extension(EGLenum platform)
+ }
+ 
+ static int
+-gl_renderer_create(struct weston_compositor *ec, EGLenum platform,
++gl_renderer_display_create(struct weston_compositor *ec, EGLenum platform,
+ 	void *native_window, const EGLint *attribs,
+ 	const EGLint *visual_id, int n_ids)
+ {
+@@ -3147,7 +3147,7 @@ WL_EXPORT struct gl_renderer_interface gl_renderer_interface = {
+ 	.opaque_attribs = gl_renderer_opaque_attribs,
+ 	.alpha_attribs = gl_renderer_alpha_attribs,
+ 
+-	.create = gl_renderer_create,
++	.display_create = gl_renderer_display_create,
+ 	.display = gl_renderer_display,
+ 	.output_create = gl_renderer_output_create,
+ 	.output_destroy = gl_renderer_output_destroy,
+diff --git a/src/gl-renderer.h b/src/gl-renderer.h
+index 71f6b46e49e1..cd67a890aae9 100644
+--- a/src/gl-renderer.h
++++ b/src/gl-renderer.h
+@@ -75,7 +75,7 @@ struct gl_renderer_interface {
+ 	const EGLint *opaque_attribs;
+ 	const EGLint *alpha_attribs;
+ 
+-	int (*create)(struct weston_compositor *ec,
++	int (*display_create)(struct weston_compositor *ec,
+ 		      EGLenum platform,
+ 		      void *native_window,
+ 		      const EGLint *attribs,
+-- 
+2.8.3
+

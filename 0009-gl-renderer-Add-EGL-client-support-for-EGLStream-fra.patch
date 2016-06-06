@@ -1,0 +1,302 @@
+From 1b660d12f9586b8d7b58fc0d18a22728febaf727 Mon Sep 17 00:00:00 2001
+From: "Miguel A. Vico" <mvicomoya@nvidia.com>
+Date: Mon, 2 May 2016 18:22:47 +0200
+Subject: [PATCH 09/11] gl-renderer: Add EGL client support for EGLStream frame
+ presentation
+X-NVConfidentiality: public
+
+By attaching a GLTexture consumer to a stream, a producer (wayland EGL
+client) could feed frames to a texture, which in turn can be used by a
+compositor to prepare the final frame to be presented.
+
+This change adds required logic to support presentation approach
+described above.
+
+Note that some unpublished EGL extensions were needed:
+
+ - EGL_NV_stream_attrib:
+   https://github.com/aritger/eglstreams-kms-example/blob/master/proposed-extensions/EGL_NV_stream_attrib.txt
+
+ - EGL_EXT_stream_acquire_mode:
+   https://github.com/aritger/eglstreams-kms-example/blob/master/proposed-extensions/EGL_EXT_stream_acquire_mode.txt
+
+Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
+Reviewed-by: Adam Cheney <acheney@nvidia.com>
+Reviewed-by: James Jones <jajones@nvidia.com>
+---
+ src/gl-renderer.c | 175 +++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 174 insertions(+), 1 deletion(-)
+
+diff --git a/src/gl-renderer.c b/src/gl-renderer.c
+index 764bd880d743..608f4bf4cb92 100644
+--- a/src/gl-renderer.c
++++ b/src/gl-renderer.c
+@@ -30,6 +30,7 @@
+ #include <GLES2/gl2.h>
+ #include <GLES2/gl2ext.h>
+ 
++#include <unistd.h>
+ #include <stdbool.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -161,6 +162,9 @@ struct gl_surface_state {
+ 	int height; /* in pixels */
+ 	int y_inverted;
+ 
++	EGLStreamKHR egl_stream;
++	bool new_stream;
++
+ 	struct weston_surface *surface;
+ 
+ 	struct wl_listener surface_destroy_listener;
+@@ -212,6 +216,7 @@ struct gl_renderer {
+ 
+ 	PFNEGLCREATESTREAMKHRPROC create_stream;
+ 	PFNEGLDESTROYSTREAMKHRPROC destroy_stream;
++	PFNEGLQUERYSTREAMKHRPROC query_stream;
+ 	int has_egl_stream;
+ 
+ 	PFNEGLCREATESTREAMPRODUCERSURFACEKHRPROC create_stream_producer_surface;
+@@ -225,6 +230,13 @@ struct gl_renderer {
+ #endif
+ 	int has_egl_stream_acquire_mode;
+ 
++	PFNEGLSTREAMCONSUMERACQUIREKHRPROC stream_consumer_acquire;
++	PFNEGLSTREAMCONSUMERGLTEXTUREEXTERNALKHRPROC stream_consumer_gltexture;
++	int has_egl_stream_consumer_gltexture;
++
++	PFNEGLCREATESTREAMFROMFILEDESCRIPTORKHRPROC create_stream_from_fd;
++	int has_egl_stream_cross_process_fd;
++
+ 	int has_dmabuf_import;
+ 	struct wl_list dmabuf_images;
+ 
+@@ -1937,6 +1949,132 @@ gl_renderer_attach_dmabuf(struct weston_surface *surface,
+ 	gs->y_inverted = buffer->y_inverted;
+ }
+ 
++/*
++ * gl_renderer_attach_stream_texture
++ *
++ * Try to bind given <buffer> to an EGLStream. If the given buffer was already
++ * bound, it will acquire next frame on the stream.
++ *
++ * Return true if the given <buffer> corresponds to an EGLStream; otherwise,
++ * return false (if might be another kind of buffer).
++ */
++static bool
++gl_renderer_attach_stream_texture(struct weston_surface *es,
++                                  struct weston_buffer *buffer)
++{
++	struct weston_compositor *ec = es->compositor;
++	struct gl_renderer *gr = get_renderer(ec);
++	struct gl_surface_state *gs = get_surface_state(es);
++	EGLNativeFileDescriptorKHR fd = EGL_NO_FILE_DESCRIPTOR_KHR;
++	EGLint stream_state = EGL_STREAM_STATE_EMPTY_KHR;
++
++	/* Check for required extensions. If they arent supported, there's no way
++	 * the given buffer corresponds to an EGLStream */
++	if (!gr->has_egl_stream_consumer_gltexture ||
++	    !gr->has_egl_stream_cross_process_fd)
++		return false;
++
++	/* Try to get the stream file descriptor. If the query fails, the given
++	 * buffer does not corresponds to an EGLStream
++	 *
++	 * FIXME: Use EGL_WL_wayland_eglstream instead */
++	if (!gr->query_buffer(gr->egl_display, buffer->resource,
++		                  EGL_WAYLAND_BUFFER_WL, &fd))
++		return false;
++
++	/* If invalid file descriptor returned, buffer->resource corresponds to a
++	 * previously created stream so we must have a valid stream handle already
++	 * we can use to acquire next frame; otherwise, try to create the stream */
++	if (fd != EGL_NO_FILE_DESCRIPTOR_KHR) {
++		EGLStreamKHR stream = EGL_NO_STREAM_KHR;
++
++		stream = gr->create_stream_from_fd(gr->egl_display, fd);
++		close(fd);
++
++		if (stream == EGL_NO_STREAM_KHR) {
++			gl_renderer_print_egl_error_state();
++			return true; /* buffer->resource is EGLStream */
++		} else {
++			/* Clean up current stream resources if needed */
++			if (gs->egl_stream != EGL_NO_STREAM_KHR)
++				gr->destroy_stream(gr->egl_display, gs->egl_stream);
++
++			gs->egl_stream = stream;
++			gs->shader = &gr->texture_shader_egl_external;
++			gs->target = GL_TEXTURE_EXTERNAL_OES;
++
++			glActiveTexture(GL_TEXTURE0);
++			ensure_textures(gs, 2);
++			glBindTexture(gs->target, gs->textures[1]);
++
++			gs->new_stream = (EGL_TRUE == gr->stream_consumer_gltexture(
++			                                  gr->egl_display,
++			                                  gs->egl_stream));
++
++			if (!gs->new_stream) {
++				weston_log("failed to set stream consumer\n");
++				gl_renderer_print_egl_error_state();
++				gr->destroy_stream(gr->egl_display, gs->egl_stream);
++				gs->egl_stream = EGL_NO_STREAM_KHR;
++				return true; /* buffer->resource is EGLStream */
++			}
++		}
++	}
++
++	/* At this point we should have a valid stream handle */
++	assert(gs->egl_stream != EGL_NO_STREAM_KHR);
++
++	/* Check whether there are new frames available */
++	if (gr->query_stream(gr->egl_display,
++	                     gs->egl_stream,
++	                     EGL_STREAM_STATE_KHR,
++	                     &stream_state) != EGL_TRUE) {
++		weston_log("failed to query stream state\n");
++		gl_renderer_print_egl_error_state();
++		return true; /* buffer->resource is EGLStream */
++	}
++
++	/* If no new frame available, re-use last one */
++	if (stream_state != EGL_STREAM_STATE_NEW_FRAME_AVAILABLE_KHR) {
++		/* Fake size of last frame */
++		buffer->width = gs->pitch;
++		buffer->height = gs->height;
++		return true; /* buffer->resource is EGLStream */
++	}
++
++	if (gr->stream_consumer_acquire(gr->egl_display,
++	                                gs->egl_stream) != EGL_TRUE) {
++		weston_log("failed to acquire buffer\n");
++		gl_renderer_print_egl_error_state();
++		return true; /* buffer->resource is EGLStream */
++	}
++
++	/* Swap textures if new stream was created */
++	if (gs->new_stream) {
++		GLuint tmp = gs->textures[0];
++
++		gs->textures[0] = gs->textures[1];
++		gs->textures[1] = tmp;
++		gs->new_stream = false;
++	}
++
++	/* Update buffer and surface data */
++	buffer->legacy_buffer = (void *)buffer->resource;
++	gr->query_buffer(gr->egl_display, buffer->legacy_buffer,
++	                 EGL_WIDTH, &buffer->width);
++	gr->query_buffer(gr->egl_display, buffer->legacy_buffer,
++	                 EGL_HEIGHT, &buffer->height);
++	gr->query_buffer(gr->egl_display, buffer->legacy_buffer,
++	                 EGL_WAYLAND_Y_INVERTED_WL, &buffer->y_inverted);
++
++	gs->pitch = buffer->width;
++	gs->height = buffer->height;
++	gs->buffer_type = BUFFER_TYPE_EGL;
++	gs->y_inverted = buffer->y_inverted;
++
++	return true; /* buffer->resource is EGLStream */
++}
++
+ static void
+ gl_renderer_attach(struct weston_surface *es, struct weston_buffer *buffer)
+ {
+@@ -1960,6 +2098,12 @@ gl_renderer_attach(struct weston_surface *es, struct weston_buffer *buffer)
+ 		gs->num_textures = 0;
+ 		gs->buffer_type = BUFFER_TYPE_NULL;
+ 		gs->y_inverted = 1;
++
++		if (gs->egl_stream != EGL_NO_STREAM_KHR) {
++			gr->destroy_stream(gr->egl_display, gs->egl_stream);
++			gs->egl_stream = EGL_NO_STREAM_KHR;
++		}
++
+ 		return;
+ 	}
+ 
+@@ -1972,7 +2116,7 @@ gl_renderer_attach(struct weston_surface *es, struct weston_buffer *buffer)
+ 		gl_renderer_attach_egl(es, buffer, format);
+ 	else if ((dmabuf = linux_dmabuf_buffer_get(buffer->resource)))
+ 		gl_renderer_attach_dmabuf(es, buffer, dmabuf);
+-	else {
++	else if (!gl_renderer_attach_stream_texture(es, buffer)) {
+ 		weston_log("unhandled buffer type!\n");
+ 		weston_buffer_reference(&gs->buffer_ref, NULL);
+ 		gs->buffer_type = BUFFER_TYPE_NULL;
+@@ -2160,6 +2304,10 @@ surface_state_destroy(struct gl_surface_state *gs, struct gl_renderer *gr)
+ 
+ 	weston_buffer_reference(&gs->buffer_ref, NULL);
+ 	pixman_region32_fini(&gs->texture_damage);
++
++	if (gs->egl_stream != EGL_NO_STREAM_KHR)
++		gr->destroy_stream(gr->egl_display, gs->egl_stream);
++
+ 	free(gs);
+ }
+ 
+@@ -2210,6 +2358,8 @@ gl_renderer_create_surface(struct weston_surface *surface)
+ 
+ 	gs->surface = surface;
+ 
++	gs->egl_stream = EGL_NO_STREAM_KHR;
++
+ 	pixman_region32_init(&gs->texture_damage);
+ 	surface->renderer_state = gs;
+ 
+@@ -2935,6 +3085,7 @@ gl_renderer_setup_egl_extensions(struct weston_compositor *ec)
+ 		(void *) eglGetProcAddress("eglQueryOutputLayerAttribEXT");
+ 	gr->create_stream = (void *) eglGetProcAddress("eglCreateStreamKHR");
+ 	gr->destroy_stream = (void *) eglGetProcAddress("eglDestroyStreamKHR");
++	gr->query_stream = (void *) eglGetProcAddress("eglQueryStreamKHR");
+ 	gr->create_stream_producer_surface =
+ 		(void *) eglGetProcAddress("eglCreateStreamProducerSurfaceKHR");
+ 	gr->stream_consumer_output =
+@@ -2943,6 +3094,12 @@ gl_renderer_setup_egl_extensions(struct weston_compositor *ec)
+ 	gr->stream_consumer_acquire_attrib =
+ 		(void *) eglGetProcAddress("eglStreamConsumerAcquireAttribEXT");
+ #endif
++	gr->stream_consumer_acquire =
++		(void *) eglGetProcAddress("eglStreamConsumerAcquireKHR");
++	gr->stream_consumer_gltexture =
++		(void *) eglGetProcAddress("eglStreamConsumerGLTextureExternalKHR");
++	gr->create_stream_from_fd =
++		(void *) eglGetProcAddress("eglCreateStreamFromFileDescriptorKHR");
+ 
+ 	extensions =
+ 		(const char *) eglQueryString(gr->egl_display, EGL_EXTENSIONS);
+@@ -3005,6 +3162,12 @@ gl_renderer_setup_egl_extensions(struct weston_compositor *ec)
+ 	if (check_extension(extensions, "EGL_EXT_stream_acquire_mode"))
+ 		gr->has_egl_stream_acquire_mode = 1;
+ 
++	if (check_extension(extensions, "EGL_KHR_stream_consumer_gltexture"))
++		gr->has_egl_stream_consumer_gltexture = 1;
++
++	if (check_extension(extensions, "EGL_KHR_stream_cross_process_fd"))
++		gr->has_egl_stream_cross_process_fd = 1;
++
+ 	renderer_setup_egl_client_extensions(gr);
+ 
+ 	return 0;
+@@ -3220,6 +3383,16 @@ gl_renderer_display_create(struct weston_compositor *ec, EGLenum platform,
+ 			goto fail_terminate;
+ 		}
+ 
++		if (!gr->has_egl_stream_consumer_gltexture ||
++		    !gr->has_egl_stream_cross_process_fd)
++			weston_log("warning: following required extensions for EGL client "
++			    "frame presentation through EGLDevice not supported:\n"
++			    "%s%s",
++			    (gr->has_egl_stream_consumer_gltexture ?
++			         "    EGL_KHR_stream_consumer_gltexture\n" : ""),
++			    (gr->has_egl_stream_cross_process_fd ?
++			         "    EGL_KHR_stream_cross_process_fd\n"   : ""));
++
+ 		if (!gr->has_egl_output_drm_flip_event)
+ 			weston_log("warning: EGL page flip event notification not"
+ 			           " supported\n");
+-- 
+2.8.3
+

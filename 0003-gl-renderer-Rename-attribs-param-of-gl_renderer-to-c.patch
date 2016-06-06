@@ -1,0 +1,85 @@
+From f0598cde32ca1af3fecd71d8592f34e56f6bdae0 Mon Sep 17 00:00:00 2001
+From: "Miguel A. Vico" <mvicomoya@nvidia.com>
+Date: Wed, 30 Mar 2016 15:23:49 +0200
+Subject: [PATCH 03/11] gl-renderer: Rename <attribs> param of gl_renderer to
+ <config_attribs>
+X-NVConfidentiality: public
+
+In preparation for follow-on changes to support frame presentation
+through EGLDevice+EGLOutput, this change renames <attribs> parameter
+of gl_renderer_display_create() and gl_renderer_output_window_create()
+to <config_attribs>
+
+Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
+Reviewed-by: Andy Ritger <aritger@nvidia.com>
+Reviewed-by: James Jones <jajones@nvidia.com>
+---
+ src/gl-renderer.c | 8 ++++----
+ src/gl-renderer.h | 4 ++--
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/gl-renderer.c b/src/gl-renderer.c
+index 784cacbc2619..b0bee7f6a94f 100644
+--- a/src/gl-renderer.c
++++ b/src/gl-renderer.c
+@@ -2550,7 +2550,7 @@ static int
+ gl_renderer_output_window_create(struct weston_output *output,
+ 			  EGLNativeWindowType window_for_legacy,
+ 			  void *window_for_platform,
+-			  const EGLint *attribs,
++			  const EGLint *config_attribs,
+ 			  const EGLint *visual_id,
+ 			  int n_ids)
+ {
+@@ -2560,7 +2560,7 @@ gl_renderer_output_window_create(struct weston_output *output,
+ 	EGLConfig egl_config;
+ 	int i;
+ 
+-	if (egl_choose_config(gr, attribs, visual_id,
++	if (egl_choose_config(gr, config_attribs, visual_id,
+ 			      n_ids, &egl_config) == -1) {
+ 		weston_log("failed to choose EGL config for output\n");
+ 		return -1;
+@@ -2874,7 +2874,7 @@ platform_to_extension(EGLenum platform)
+ 
+ static int
+ gl_renderer_display_create(struct weston_compositor *ec, EGLenum platform,
+-	void *native_window, const EGLint *attribs,
++	void *native_window, const EGLint *config_attribs,
+ 	const EGLint *visual_id, int n_ids)
+ {
+ 	struct gl_renderer *gr;
+@@ -2938,7 +2938,7 @@ gl_renderer_display_create(struct weston_compositor *ec, EGLenum platform,
+ 		goto fail_with_error;
+ 	}
+ 
+-	if (egl_choose_config(gr, attribs, visual_id,
++	if (egl_choose_config(gr, config_attribs, visual_id,
+ 			      n_ids, &gr->egl_config) < 0) {
+ 		weston_log("failed to choose EGL config\n");
+ 		goto fail_terminate;
+diff --git a/src/gl-renderer.h b/src/gl-renderer.h
+index ae9bf0f0aee2..d43131940f43 100644
+--- a/src/gl-renderer.h
++++ b/src/gl-renderer.h
+@@ -78,7 +78,7 @@ struct gl_renderer_interface {
+ 	int (*display_create)(struct weston_compositor *ec,
+ 		      EGLenum platform,
+ 		      void *native_window,
+-		      const EGLint *attribs,
++		      const EGLint *config_attribs,
+ 		      const EGLint *visual_id,
+ 		      const int n_ids);
+ 
+@@ -87,7 +87,7 @@ struct gl_renderer_interface {
+ 	int (*output_window_create)(struct weston_output *output,
+ 			     EGLNativeWindowType window_for_legacy,
+ 			     void *window_for_platform,
+-			     const EGLint *attribs,
++			     const EGLint *config_attribs,
+ 			     const EGLint *visual_id,
+ 			     const int n_ids);
+ 
+-- 
+2.8.3
+

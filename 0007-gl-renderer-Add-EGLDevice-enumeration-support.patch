@@ -1,0 +1,146 @@
+From 1ba420dd543f35b3f5b9988efb5368c26f34c270 Mon Sep 17 00:00:00 2001
+From: "Miguel A. Vico" <mvicomoya@nvidia.com>
+Date: Mon, 2 May 2016 15:56:37 +0200
+Subject: [PATCH 07/11] gl-renderer: Add EGLDevice enumeration support
+X-NVConfidentiality: public
+
+EGLDevice provides means to enumerate native devices.
+
+In preparation for follow-on changes to support frame presentation
+through EGLDevice+EGLOutput, this change adds both
+gl_renderer_get_devices() and gl_renderer_get_drm_device_file()
+functions which will help to enumerate EGLDevices and match them to DRM
+devices.
+
+Signed-off-by: Miguel A Vico Moya <mvicomoya@nvidia.com>
+Reviewed-by: Andy Ritger <aritger@nvidia.com>
+Reviewed-by: Adam Cheney <acheney@nvidia.com>
+Reviewed-by: James Jones <jajones@nvidia.com>
+---
+ src/gl-renderer.c | 87 ++++++++++++++++++++++++++++++++++++++++++++++++++++++-
+ src/gl-renderer.h |  7 +++++
+ 2 files changed, 93 insertions(+), 1 deletion(-)
+
+diff --git a/src/gl-renderer.c b/src/gl-renderer.c
+index c208f36a5165..098440ce30a2 100644
+--- a/src/gl-renderer.c
++++ b/src/gl-renderer.c
+@@ -3175,6 +3175,88 @@ gl_renderer_setup(struct weston_compositor *ec, EGLSurface egl_surface)
+ 	return 0;
+ }
+ 
++static int
++gl_renderer_get_devices(EGLint max_devices, EGLDeviceEXT *devices,
++                        EGLint *num_devices)
++{
++	const char *extensions;
++	PFNEGLQUERYDEVICESEXTPROC query_devices;
++
++	extensions = (const char *)eglQueryString(EGL_NO_DISPLAY, EGL_EXTENSIONS);
++	if (!extensions) {
++		weston_log("Retrieving EGL extension string failed.\n");
++		return -1;
++	}
++
++	if (!check_extension(extensions, "EGL_EXT_device_base") &&
++	    (!check_extension(extensions, "EGL_EXT_device_query") ||
++	     !check_extension(extensions, "EGL_EXT_device_enumeration"))) {
++		weston_log("EGL_EXT_device_base not supported\n");
++		return -1;
++	}
++
++	query_devices = (void *) eglGetProcAddress("eglQueryDevicesEXT");
++	if (!query_devices) {
++		weston_log("Failed to get eglQueryDevicesEXT function\n");
++		return -1;
++	}
++
++	if (query_devices(max_devices, devices, num_devices) != EGL_TRUE) {
++		weston_log("Failed to query EGL Devices\n");
++		gl_renderer_print_egl_error_state();
++		return -1;
++	}
++
++	return 0;
++}
++
++static int
++gl_renderer_get_drm_device_file(EGLDeviceEXT device,
++                                const char **drm_device_file)
++{
++	const char *extensions;
++	PFNEGLQUERYDEVICESTRINGEXTPROC query_device_string;
++
++	extensions = (const char *)eglQueryString(EGL_NO_DISPLAY, EGL_EXTENSIONS);
++	if (!extensions) {
++		weston_log("Retrieving EGL extension string failed.\n");
++		return -1;
++	}
++
++	if (!check_extension(extensions, "EGL_EXT_device_base") &&
++	    (!check_extension(extensions, "EGL_EXT_device_query") ||
++	     !check_extension(extensions, "EGL_EXT_device_enumeration"))) {
++		weston_log("EGL_EXT_device_base not supported.\n");
++		return -1;
++	}
++
++	query_device_string = (void *) eglGetProcAddress("eglQueryDeviceStringEXT");
++	if (!query_device_string) {
++		weston_log("Failed to get eglQueryDeviceStringEXT function\n");
++		return -1;
++	}
++
++	extensions = query_device_string(device, EGL_EXTENSIONS);
++	if (!extensions) {
++		weston_log("Retrieving EGL extension string failed.\n");
++		return -1;
++	}
++
++	if (!check_extension(extensions, "EGL_EXT_device_drm")) {
++		weston_log("EGL_EXT_device_drm not supported.\n");
++		return -1;
++	}
++
++	(*drm_device_file) = query_device_string(device, EGL_DRM_DEVICE_FILE_EXT);
++	if (*drm_device_file == NULL) {
++		weston_log("Failed to query DRM device name.\n");
++		gl_renderer_print_egl_error_state();
++		return -1;
++	}
++
++	return 0;
++}
++
+ WL_EXPORT struct gl_renderer_interface gl_renderer_interface = {
+ 	.opaque_attribs = gl_renderer_opaque_attribs,
+ 	.alpha_attribs = gl_renderer_alpha_attribs,
+@@ -3185,5 +3267,8 @@ WL_EXPORT struct gl_renderer_interface gl_renderer_interface = {
+ 	.output_destroy = gl_renderer_output_destroy,
+ 	.output_surface = gl_renderer_output_surface,
+ 	.output_set_border = gl_renderer_output_set_border,
+-	.print_egl_error_state = gl_renderer_print_egl_error_state
++	.print_egl_error_state = gl_renderer_print_egl_error_state,
++
++	.get_devices = gl_renderer_get_devices,
++	.get_drm_device_file = gl_renderer_get_drm_device_file
+ };
+diff --git a/src/gl-renderer.h b/src/gl-renderer.h
+index f778cd9b6f69..f376edd80106 100644
+--- a/src/gl-renderer.h
++++ b/src/gl-renderer.h
+@@ -129,5 +129,12 @@ struct gl_renderer_interface {
+ 				  int32_t tex_width, unsigned char *data);
+ 
+ 	void (*print_egl_error_state)(void);
++
++	int (*get_devices)(EGLint max_devices,
++	                   EGLDeviceEXT *devices,
++	                   EGLint *num_devices);
++
++	int (*get_drm_device_file)(EGLDeviceEXT device,
++	                           const char **drm_device_file);
+ };
+ 
+-- 
+2.8.3
+
