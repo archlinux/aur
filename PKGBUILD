@@ -37,8 +37,8 @@ package() {
 	yes | ./bin/$_arch/batchxsetup -batch install.txt
 
 	# Trim the pkgdir path from the installation directory
-	for file in ${pkgdir}/opt/Xilinx/14.7/ISE_DS/settings*; do
-		sed -i "s!${pkgdir}!!g" $file
+	for _file in ${pkgdir}/opt/Xilinx/14.7/ISE_DS/settings*; do
+		sed -i "s!${pkgdir}!!g" $_file
 	done
 
 	# Fix for the license configuration manager
