@@ -6,7 +6,7 @@ _gitname=evopop-gtk-theme
 
 pkgname=evopop-gtk-theme
 pkgbase=${pkgname}
-pkgver=0.29
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='GTK theme from Solus OS and Budgie Desktop'
 arch=('any')
@@ -15,15 +15,13 @@ license=('GPL')
 conflicts=('evopop-gtk-theme-git')
 depends=('gtk3' 'gtk-engine-murrine')
 provides=('evopop-gtk-theme' 'evopop-light-gtk-theme')
-source=("https://github.com/$_gituser/$_gitname/releases/download/$pkgver/$_gitname-$pkgver.tar.xz")
-md5sums=('7336450f3b2d7fe20c5088ed14b989d5')
+source=("https://github.com/$_gituser/$_gitname/archive/$pkgver.tar.gz")
+md5sums=('6e6e761f77b59e53e3ba7abc26ebcf7f')
+
 
 package() {
   cd "$srcdir/$_gitname-$pkgver"
   DESTDIR="$pkgdir/usr/share/themes"
-  mkdir -p $DESTDIR
-  DIR=$(cat evopop-gtk-theme/index.theme | grep -Po "(?<=Name=).*")
-  DIR_LIGHT=$(cat evopop-light-gtk-theme/index.theme | grep -Po "(?<=Name=).*")
-	cp -r evopop-gtk-theme $DESTDIR/$DIR
-	cp -r evopop-light-gtk-theme $DESTDIR/$DIR_LIGHT
+  mkdir -p "$DESTDIR"
+	cp -r EvoPop "$DESTDIR/"
 }
