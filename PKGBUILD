@@ -10,6 +10,7 @@ license=('MIT')
 depends=('gmp' 'libtinfo5' 'zlib')
 makedepends=('chrpath')
 provides=('purescript')
+conflicts=('purescript-stack')
 source=("purescript-${pkgver}.tar.gz::https://github.com/purescript/purescript/releases/download/v${pkgver}/linux64.tar.gz")
 sha1sums=('9e8ff98e1e5d0dbf34df5124dc42d3b73e9dc257')
 
