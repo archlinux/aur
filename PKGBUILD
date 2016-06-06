@@ -19,15 +19,15 @@ source=(
   "${_pkgname}s_at.socket"
   "${_pkgname}s_at.service"
   'missing-include-fix.patch'
+  'c++11-noexcept-destructor-fix.patch'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-sha512sums=(
-  '8af7a920cb38f0bf057f005d612317fc81f937f74bff49aaf85e95559548d8a85de968e5f55690382ac2e133e0e6c3ae61c94156fc97a8f075956a7803db0825'
-  'f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62'
-  'e85cc3452bb8ba8fcccb1857386c77eb1e4cabb149a1c492c56b38e1b121ac0e7d96c6fcbd3c9b522d3a4ae9d7a9974f4a89fc32b02a56f665be92af219e371c'
-  '679cc88794d2ef65325ef93f1034f465824efeb2f01521eda7050556c1200df31abf9b5d055b9438d24f040c234d37b74c489e4db6acbf15a2e7fec8e1da226d'
-)
+sha512sums=('8af7a920cb38f0bf057f005d612317fc81f937f74bff49aaf85e95559548d8a85de968e5f55690382ac2e133e0e6c3ae61c94156fc97a8f075956a7803db0825'
+            'f9c124533dfd0bbbb1b5036b7f4b06f7f86f69165e88b9146ff17798377119eb9f1a4666f3b2ee9840bc436558d715cdbfe2fdfd7624348fae64871f785a1a62'
+            'e85cc3452bb8ba8fcccb1857386c77eb1e4cabb149a1c492c56b38e1b121ac0e7d96c6fcbd3c9b522d3a4ae9d7a9974f4a89fc32b02a56f665be92af219e371c'
+            '679cc88794d2ef65325ef93f1034f465824efeb2f01521eda7050556c1200df31abf9b5d055b9438d24f040c234d37b74c489e4db6acbf15a2e7fec8e1da226d'
+            'e9bb015240421ba49478f124a627f82f6d4623bfbb77a498d8682ab3ee02a0e96c1f332fae0ea5e212c37528a404e9d6aa05e03e0d0277fa87dbbfa742036991')
 
 prepare() {
   cd $_pkgname-1.6.3-final
@@ -38,6 +38,8 @@ prepare() {
   unzip -o gmock-1.6.0.zip -d gmock-1.6.0
   unzip -o gtest-1.6.0.zip -d gtest-1.6.0
   unzip -o cryptopp562.zip -d cryptopp562
+
+  patch -p2 < ../../c++11-noexcept-destructor-fix.patch
 }
 
 build() {

@@ -1,0 +1,11 @@
+--- a/ext/cryptopp562/algparam.h	2014-03-18 11:04:06.000000000 +0100
++++ b/ext/cryptopp562/algparam.h	2016-06-07 00:44:18.084813864 +0200
+@@ -265,7 +265,7 @@
+ 	AlgorithmParametersBase(const char *name, bool throwIfNotUsed)
+ 		: m_name(name), m_throwIfNotUsed(throwIfNotUsed), m_used(false) {}
+ 
+-	virtual ~AlgorithmParametersBase()
++	virtual ~AlgorithmParametersBase() noexcept(false)
+ 	{
+ #ifdef CRYPTOPP_UNCAUGHT_EXCEPTION_AVAILABLE
+ 		if (!std::uncaught_exception())
