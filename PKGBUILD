@@ -11,7 +11,7 @@
 pkgbase=linux-libre         # Build stock kernel
 #pkgbase=linux-libre-custom # Build kernel with a different name
 _pkgbasever=4.6-gnu
-_pkgver=${_pkgbasever}
+_pkgver=4.6.1-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -20,20 +20,18 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}
-pkgrel=1
-rcnrel=armv7-x2
+pkgrel=2
+rcnrel=armv7-x4
 arch=('i686' 'x86_64' 'armv7h')
 url="http://linux-libre.fsfla.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
-if [ "${CARCH}" = "armv7h" ]; then
-  makedepends+=('git')
-fi
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
+makedepends_armv7h=('git')
 options=('!strip')
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
-        #"http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
-        #"http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
+        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz"
+        "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/patch-${_pkgbasever}-${_pkgver}.xz.sign"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_clut224.ppm.sig"
         "https://repo.parabola.nu/other/linux-libre/logos/logo_linux_mono.pbm"
@@ -45,6 +43,7 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
+        '0001-linux-4.6-drm-i915-psr.patch'
         '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
         '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
@@ -60,6 +59,8 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0008-USB-armory-support.patch')
 sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
             'SKIP'
+            '663f30c19792e5de130d3adbb41d0ce76c03717b38e596c23e4c62ec29ff10f0'
+            'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
             '13bd7a8d9ed6b6bc971e4cd162262c5a20448a83796af39ce394d827b0e5de74'
@@ -68,12 +69,13 @@ sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
             'SKIP'
             '61e60b3a914744d85b030aa1c5f923308fcb9c05ac244d01b8b25820de9cdac0'
             '7959e923a90555432db595b9da677668839bd37ef4f2c920d22eb7ab9013e63e'
-            '7fe3eabb27fbfab161df63dba1d638f60074b8ad8c39f9c78c83d4265027500c'
+            '7a286c6d42c2b7cbf778428e215a61fd13958d6a89349a7f508a76b738d4bace'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'b719c3bd58d71a9e0d76b3674e854419ebec4a3fa9f8a4823f23639720527e83'
             '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
             '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
-            'd05febd9fdec0ea8c7e21e01beabb6b2b0f7f021d41538077b5c6ec27bacf9fe'
+            'f74b28e9e3b6434c1bb7803f9751a068299206953519a9e61162538f5dd8be7e'
             'SKIP'
             '9fc2533ed95497583752c6eca931f24c159be956fcc49d39cac64da7298a9c88'
             '909c046f6123ec81764fde5d9a78431a9dc3b206ce01119ae4d91be54d9471dd'
@@ -137,6 +139,10 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
+  # fix flickering on 4.6
+  # reported from brain0 and heftig on IRC
+  patch -p1 -i "${srcdir}/0001-linux-4.6-drm-i915-psr.patch"
+
   # maintain the TTY over USB disconnects
   # http://www.coreboot.org/EHCI_Gadget_Debug
   patch -p1 -i "${srcdir}/0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch"
@@ -187,10 +193,10 @@ _package() {
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
-    depends+=('mkinitcpio>=0.7')
-    backup=("etc/mkinitcpio.d/${pkgbase}.preset")
-  fi
+  depends_i686=('mkinitcpio>=0.7')
+  depends_x86_64=('mkinitcpio>=0.7')
+  backup_i686=("etc/mkinitcpio.d/${pkgbase}.preset")
+  backup_x86_64=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
   cd "${srcdir}/${_srcname}"
