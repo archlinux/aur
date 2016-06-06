@@ -1,0 +1,15 @@
+pkgbase = wttr
+	pkgdesc = a simple script that helps you check weather condition using site : http://wttr.in
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://Github.com/AmirrezaFiroozi/wttr
+	install = wttr.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = curl
+	source = https://github.com/AmirrezaFiroozi/wttr/archive/v1.2.1.tar.gz
+	md5sums = SKIP
+
+pkgname = wttr
+
