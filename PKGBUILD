@@ -12,7 +12,7 @@ license=('MIT')
 depends=('java-runtime>=1.7' 'webkitgtk')
 provides=('archi')
 source=(http://www.archimatetool.com/downloads/latest/Archi-lnx32_64-$pkgver.tar.gz $pkgname.desktop)
-sha256sums=('087edd58ddb0f059f34f900e479c04afa5c492b091905527cc2ed1e2db2e78b5'
+sha256sums=('2013204c8afe98bca809d823ea070aa391f518da0c0e5b217505ea468a90b494'
             'fa911232f47b9116044b6129965376c8c8acc9fc8bb212c5a2b4b834f03adb7c')
 
 package() {
