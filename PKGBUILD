@@ -7,7 +7,6 @@ pkgdesc="Commonly needed Python modules, used by Python software developed at OS
 arch=(any)
 url="https://github.com/osrf/osrf_pycommon"
 license=('Apache')
-makedepends=('git')
 depends=('python2' 'python2-trollius')
 source=("https://github.com/osrf/${_pkgname}/archive/${pkgver}.tar.gz")
 md5sums=('562020a22797338d834a549c4c291ece')
