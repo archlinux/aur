@@ -44,4 +44,7 @@ if [[ -n "$_piver" ]]; then
 else
   INSTALL_ROOT="$pkgdir" make install
 fi
+
+  mkdir -p ${pkgdir}/opt
+  mv examples ${pkgdir}/opt/qml-box2d-examples
 }
