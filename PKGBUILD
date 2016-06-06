@@ -25,7 +25,7 @@ _static_build=false
 _build_from_head=false
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 
-pkgrel=1
+pkgrel=10
 # 1 or 2 at present
 _piver=""
 
