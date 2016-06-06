@@ -3,7 +3,7 @@
 
 pkgname=wpscan
 pkgver=2.9.1
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Black box WordPress vulnerability scanner'
 url='http://wpscan.org'
@@ -20,10 +20,10 @@ prepare() {
   cd ${pkgname}-${pkgver}
   unzip -o data.zip
   rm data.zip
-  cd lib/common
   # replace cache location with local user share
-  sed "s|ROOT_DIR, 'cache'|ENV['HOME'] + '/.local/share/${pkgname}/cache'|" -i common_helper.rb
-  sed "s|ROOT_DIR, 'log.txt'|ENV['HOME'] + '/.local/share/${pkgname}/log.txt'|" -i common_helper.rb
+  sed "s|ROOT_DIR, 'cache'|ENV['HOME'] + '/.local/share/${pkgname}/cache'|" -i lib/common/common_helper.rb
+  sed "s|ROOT_DIR, 'log.txt'|ENV['HOME'] + '/.local/share/${pkgname}/log.txt'|" -i lib/common/common_helper.rb
+  bundle config build.nokogiri --use-system-libraries
 }
 
 build() {
