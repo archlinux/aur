@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gtk-update-icon-cache')
 makedepends=('automake' 'unzip')
 source=(https://github.com/horst3180/${_pkgname}/archive/${pkgver}.zip)
-md5sums=('SKIP')
+md5sums=('6b7739e97253e1a02f917d883f57d131')
 conflicts=('arc-icon-theme-git')
 
 

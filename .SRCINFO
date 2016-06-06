@@ -10,7 +10,7 @@ pkgbase = arc-icon-theme
 	depends = gtk-update-icon-cache
 	conflicts = arc-icon-theme-git
 	source = https://github.com/horst3180/arc-icon-theme/archive/20160605.zip
-	md5sums = SKIP
+	md5sums = 6b7739e97253e1a02f917d883f57d131
 
 pkgname = arc-icon-theme
 
