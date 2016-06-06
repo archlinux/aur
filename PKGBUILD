@@ -1,7 +1,7 @@
 # Maintainer: Amirreza Firoozi <firoozi128.af@gmail.com>
 pkgname=wttr
-pkgver=1.2.1
-pkgrel=1
+pkgver=1.2.2
+pkgrel=2
 epoch=
 pkgdesc="a simple script that helps you check weather condition using site : http://wttr.in "
 arch=('i686' 'x86_64')
