@@ -3,7 +3,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-intensityfix
 pkgver=9.22
-pkgrel=4
+pkgrel=5
 pkgdesc='A unicode enabled rxvt-clone terminal emulator (urxvt), patched to avoid intense colors on 256 color escape codes and to fix font spacing'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -20,6 +20,7 @@ source=(
   'intensity.patch'
   'font-width-fix.patch'
   'line-spacing-fix.patch'
+  '256color.patch'
 )
 md5sums=('93782dec27494eb079467dacf6e48185'
          'fec94dc986fa37ec380079d81de3e0b2'
@@ -27,7 +28,8 @@ md5sums=('93782dec27494eb079467dacf6e48185'
          '8a5599197568c63720e282b9722a7990'
          '9e2ccfa07aafa6aeaf1dbdd005437af7'
          'fef588d6bfe52304bf80e8f1771577b6'
-         '9f3248bc397ee76b008375f2ab0f201a')
+         '9f3248bc397ee76b008375f2ab0f201a'
+         'fb78c2ecf87626962734320cc2bb7ab1')
 
 prepare() {
   cd $_pkgname-$pkgver
@@ -37,6 +39,9 @@ prepare() {
   # From https://aur.archlinux.org/packages/rxvt-unicode-patched/
   patch -p0 -i ../font-width-fix.patch
   patch -p0 -i ../line-spacing-fix.patch
+
+  # From https://aur.archlinux.org/packages/rxvt-unicode-256xresources/
+  patch -p0 -i ../256color.patch
 }
 
 build() {
