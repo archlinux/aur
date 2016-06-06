@@ -11,18 +11,6 @@ provides=(xadrian)
 source=(http://nexus.ailis.de/content/repositories/releases/de/ailis/$pkgname/$pkgname//$pkgver/$pkgname-$pkgver-unix.tar.bz2)
 md5sums=('6885ca2822f51ca3af133d79798a69a8')
 
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-}
-
-build() {
-  cd "$srcdir/$pkgname-$pkgver"
-}
-
-check() {
-  cd "$srcdir/$pkgname-$pkgver"
-}
-
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   mkdir -p "$pkgdir/usr/share/java/xadrian"
