@@ -41,6 +41,14 @@ package() {
 		sed -i "s!${pkgdir}!!g" $_file
 	done
 
+	# Replace ISE's outdated libstdc++.so with symlinks to the system version
+	for _dir in ${pkgdir}/opt/Xilinx/14.7/ISE_DS/{ISE,common}/lib/${_arch}; do
+		rm ${_dir}/libstdc++.so{,.6,.6.0.8}
+		ln -s /usr/lib/libstdc++.so ${_dir}/libstdc++.so
+		ln -s libstdc++.so ${_dir}/libstdc++.so.6
+		ln -s libstdc++.so ${_dir}/libstdc++.so.6.0.8
+	done
+
 	# Fix for the license configuration manager
 	# https://forums.xilinx.com/t5/Installation-and-Licensing/ISE-14-7-on-CentOS-6-4-missing-libQt-Network-so-workaround/td-p/379325
 	ln -s ${pkgdir}/usr/lib64/libQtNetwork.so ${pkgdir}/usr/lib64/libQt_Network.so
