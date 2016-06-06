@@ -3,13 +3,12 @@
 
 pkgname=texlive-subfiles
 pkgver=1.1
-pkgrel=1
-pkgdesc="Individual typesetting of subfiles of a "main" document."
+pkgrel=2
+pkgdesc="Individual typesetting of subfiles of a main document."
 arch=('any')
 url="http://ctan.org/tex-archive/macros/latex/contrib/subfiles"
 license=('GPL')
 depends=('texlive-core')
-install='texlive-subfiles.install'
 source=('http://mirrors.ctan.org/macros/latex/contrib/subfiles/subfiles.dtx'
 'http://mirror.ctan.org/macros/latex/contrib/subfiles/subfiles.ins')
 md5sums=('a5cae23439a4633da4aed36ca1ad69ba'
