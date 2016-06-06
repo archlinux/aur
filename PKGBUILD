@@ -2,7 +2,7 @@
 
 pkgname=maxima-git
 pkgver=5.38.1.87.g0fc7634
-pkgrel=1
+pkgrel=2
 pkgdesc="a sophisticated computer algebra system - git-version"
 arch=('i686' 'x86_64')
 url="http://maxima.sourceforge.net"
@@ -36,8 +36,10 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname"
-  make DESTDIR="$pkgdir/" install  
+  _pkgver=$(git describe --always | sed 's+-+_+g')
+  make DESTDIR="$pkgdir/" \
+       emacsdir=/usr/share/emacs/site-lisp/maxima install  
   # install some freedesktop.org compatibility
   install -Dm644 ${srcdir}/maxima.desktop \
-  	${pkgdir}/usr/share/applications/${pkgname}.desktop
+  	  ${pkgdir}/usr/share/applications/${pkgname}.desktop
 }
