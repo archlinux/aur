@@ -2,13 +2,20 @@
 
 pkgname=nfs2se-git
 pkgver=1.0.1
-pkgrel=3
-pkgdesc='Need For Speed II SE - Linux port with 3D acceleration and TCP protocol!'
+pkgrel=4
+pkgdesc='Need For Speed™ II SE - Cross-platform port with 3D acceleration and TCP protocol!'
 arch=('i686' 'x86_64')
 url='https://github.com/zaps166/NFSIISE'
 license=('GPL')
-depends=('sdl2' 'libgl')
-makedepends=('gcc' 'yasm')
+
+if [ $(uname -m) == "x86_64" ]; then
+	depends=('lib32-sdl2' 'lib32-libgl')
+	makedepends=('gcc-multilib' 'yasm')
+else
+	depends=('sdl2' 'libgl')
+	makedepends=('gcc' 'yasm')
+fi
+
 source=('git+https://github.com/zaps166/NFSIISE'
         'nfs2se')
 md5sums=('SKIP'
