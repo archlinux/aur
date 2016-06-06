@@ -4,7 +4,7 @@
 
 pkgname=gmusicbrowser
 pkgver=1.1.15
-pkgrel=4
+pkgrel=5
 pkgdesc="A customizable open-source jukebox for large collections"
 arch=('any')
 url="http://gmusicbrowser.org"
@@ -38,8 +38,10 @@ optdepends=('alsa-utils: enables the ALSA backend'
 conflicts=('gmusicbrowser-git' 'gmusicbrowser-shimmer' 'gmusicbrowser-shimmer-git')
 options=('!libtool')
 install=$pkgname.install
-source=($url/download/$pkgname-$pkgver.tar.gz)
-md5sums=('4a16dcbe369d4b3cb78fb1a6967a60b3')
+source=("$url/download/$pkgname-$pkgver.tar.gz"
+	"perl524.patch")
+md5sums=('4a16dcbe369d4b3cb78fb1a6967a60b3'
+	'2073c1f657d9226326807cabda6a894c')
 
 package() {
   cd "$srcdir"
