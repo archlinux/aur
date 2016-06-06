@@ -7,18 +7,16 @@
 # Contributor: al.janitor <al.janitor [at] sdf [dot] org>
 
 pkgname=metasploit-git
-pkgver=4.11.25.38215.891a788
+pkgver=4.12.5.38540.d3a13f4
 pkgrel=1
 epoch=1
-pkgdesc="An advanced open-source platform for developing, testing, and using exploit code"
+pkgdesc='An advanced open-source platform for developing, testing, and using exploit code'
 url='http://www.metasploit.com/'
 arch=('i686' 'x86_64')
 license=('BSD')
-depends=('ruby' 'libpcap' 'postgresql-libs' 'ruby-bundler' 'sqlite' 'git')
-optdepends=(
-  'java-runtime: msfgui support'
-  'ruby-pg: database support'
-)
+depends=('ruby' 'libpcap' 'postgresql-libs' 'ruby-bundler' 'sqlite' 'libxslt' 'git')
+optdepends=('java-runtime: msfgui support'
+            'ruby-pg: database support')
 provides=('metasploit')
 conflicts=('metasploit')
 options=('!strip')
@@ -28,9 +26,14 @@ sha512sums=('SKIP')
 pkgver() {
   cd ${pkgname}
   printf "%s.%s.%s" \
-    "$(git tag -l|grep -E '.+\..+\..+'|cut -d- -f1|sort -V -r|head -n1)" \
+    "$(git tag -l|grep -P '.+\..+\.\d+'|sed -r 's|v?([0-9\.]+)(-.+)?|\1|g'|sort -V -r|head -n1)" \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd ${pkgname}
+  bundle config build.nokogiri --use-system-libraries
 }
 
 build() {
@@ -42,7 +45,7 @@ build() {
 package() {
   cd ${pkgname}
 
-  mkdir -p "${pkgdir}/opt/${pkgname}" "${pkgdir}/usr/bin"
+  install -d "${pkgdir}/opt/${pkgname}" "${pkgdir}/usr/bin"
   find . -maxdepth 1 -mindepth 1 -not -path './.git*' -exec cp -r '{}' "${pkgdir}/opt/${pkgname}" \;
 
   for f in "${pkgdir}"/opt/${pkgname}/msf*; do
