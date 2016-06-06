@@ -1,0 +1,14 @@
+pkgbase = froggix
+	pkgdesc = A clone of the classic arcade game Frogger
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/froggix
+	arch = any
+	license = GPL3
+	license = custom
+	depends = python2-pygame
+	source = http://downloads.sourceforge.net/project/froggix/froggix/froggix%200.1/Froggix.tar.gz
+	sha1sums = 1e8bd04bd35c294f6108b302601243059a4fa59a
+
+pkgname = froggix
+
