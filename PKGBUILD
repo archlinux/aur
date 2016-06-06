@@ -4,12 +4,18 @@
 pkgbase=sentry
 pkgname=('sentry' 'sentry-dsym')
 pkgver=8.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python-based realtime logging and aggregation server."
 arch=(any)
 url="http://pypi.python.org/pypi/sentry"
 license=(BSD)
-makedepends=(clang python2-pip python2-setuptools python2-virtualenv)
+makedepends=(
+    'clang'
+    'libjpeg-turbo'
+    'python2-pip'
+    'python2-setuptools'
+    'python2-virtualenv'
+)
 options=(!strip)
 source=(
     "sentry.install"
@@ -32,6 +38,7 @@ package_sentry () {
     install="sentry.install"
     depends=(
         'jansson'
+        'libjpeg-turbo'
         'libxml2'
         'libxslt'
         'python2'
