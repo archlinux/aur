@@ -2,7 +2,7 @@
 
 pkgname=xindy.sty  
 pkgver=1.1beta
-pkgrel=2
+pkgrel=3
 pkgdesc="A small LaTeX package to use the xindy insdexing system"
 url="http://xindy.sourceforge.net/html-mail-archive/msg00025.html"
 arch=('any')
@@ -12,9 +12,8 @@ source=(xindy.ins xindy.dtx license)
 md5sums=('f64d5cb43c1a1012ff11987a30f7ff16'
          '9d91d1fbe616f562b3da2e500daeef8a'
          '3af4ea17568fc731da6ffeecf646c236')
-install=xindy.install
 
-build() {
+package() {
   for _suffix in sty drv toc aux pdf glo log
   do
     [[ -f ${_suffix} ]] && rm xindy.${_suffix}
