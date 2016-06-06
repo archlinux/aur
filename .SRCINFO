@@ -1,0 +1,17 @@
+pkgbase = weborf
+	pkgdesc = A lightweight web server designed for rapidly sharing files over HTTP
+	pkgver = 0.13.3
+	pkgrel = 1
+	url = https://ltworf.github.io/weborf/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = file
+	source = https://github.com/ltworf/weborf/releases/download/0.13.3/weborf_0.13.3.orig.tar.gz
+	source = https://github.com/ltworf/weborf/releases/download/0.13.3/weborf_0.13.3.orig.tar.gz.asc
+	validpgpkeys = 42748B9E76D899799E1FBE14B3A7CF0C801886CF
+	sha512sums = 969e49819a9d7a2a1af7c08679067b02c567b32c260bc288d714020f6a1db50cd207f6ea48be806d2d739f50746574aaf4365334282837d61cb7c3845159d656
+	sha512sums = SKIP
+
+pkgname = weborf
+
