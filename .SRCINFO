@@ -1,7 +1,7 @@
 pkgbase = cernbox
 	pkgdesc = Synchronization client for CERN's CERNBox cloud service (based on ownCloud)
 	pkgver = 1.7.2_3.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://cernbox.web.cern.ch/
 	arch = i686
 	arch = x86_64
@@ -18,8 +18,8 @@ pkgbase = cernbox
 	md5sums = 68110fa2ae3ad0e973e46337784c00ff
 	md5sums = e5c4c22cbed3962950ae5af93d328afa
 	md5sums = 292f7710439c7a272acf16091be69ae4
-	md5sums = 12373b9b9d36a23c1ef3bad7cf30ad78
-	md5sums = d21071edeeceb0a1d6f2ef8d7f4ca4fa
+	md5sums = 911d014c0670d3bf7cbc622f00206339
+	md5sums = 83a60fef4c5f69b2ed91605db490a955
 
 pkgname = cernbox
 
