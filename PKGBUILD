@@ -2,7 +2,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=softethervpn
 pkgver=v4.20_9608
-pkgrel=2
+pkgrel=3
 pkgdesc="Multi-protocol VPN Program from University of Tsukuba"
 arch=('i686' 'x86_64')
 source=('http://www.softether-download.com/files/softether/v4.20-9608-rtm-2016.04.17-tree/Source_Code/softether-src-v4.20-9608-rtm.tar.gz'
@@ -17,7 +17,7 @@ sha1sums=('8fb5693818d8bde2dfff37582a4cdc1d0703e200'
           '06cd320553daf0dffdf6a81a22d630fbe211fc33')
 license=('GPL')
 makedepends=()
-depends=('bash' 'openssl')
+depends=('bash' 'openssl' 'zlib')
 url="http://www.softether.org/"
 
 build(){
