@@ -1,0 +1,30 @@
+post_install() {
+  mkdir -p /var/lib/forked-daapd
+  getent group daapd &>/dev/null || groupadd -r daapd >/dev/null
+  getent passwd daapd &>/dev/null || useradd -r -g daapd -d /var/lib/forked-daapd -s /bin/false -c forked-daapd daapd >/dev/null
+  mkdir -p $pkgdir/var/cache/forked-daapd
+  chown daapd:daapd $pkgdir/var/cache/forked-daapd
+
+  cat <<EOF
+==> forked-daapd can be started via systemctl:
+==> systemctl start forked-daapd
+
+==> forked-daapd can be autostart via systemctl:
+==> systemctl enable forked-daapd
+
+==> forked-daapd.service has been added to your /etc/avahi/services
+
+==> Please edit /etc/forked-daapd.conf to suit your needs
+==> (point it to your music library)
+EOF
+}
+
+pre_remove() {
+  systemctl stop forked-daapd || true
+  systemctl disable forked-daapd || true
+}
+
+post_remove() {
+  getent passwd forked-daapd &>/dev/null && userdel forked-daapd >/dev/null
+  getent group forked-daapd &>/dev/null && groupdel forked-daapd >/dev/null
+}
