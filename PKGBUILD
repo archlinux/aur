@@ -4,7 +4,7 @@
 pkgname=mist
 pkgver=0.7.4
 _pkgver=0-7-4
-pkgrel=3
+pkgrel=4
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
 arch=('i686' 'x86_64')
 depends=(
@@ -16,6 +16,7 @@ depends=(
   'qt5-webengine'
   'readline'
   'gconf'
+  'libnotify'
 )
 provides=(
   'geth'
@@ -37,16 +38,24 @@ optdepends=(
 url="https://github.com/ethereum/mist"
 license=('GPL')
 source=(
-  "${pkgname}-${_pkgver}-32.zip::https://github.com/ethereum/$pkgname/releases/download/${pkgver}/Ethereum-Wallet-linux32-$_pkgver.zip"
-  "${pkgname}-${_pkgver}-64.zip::https://github.com/ethereum/$pkgname/releases/download/${pkgver}/Ethereum-Wallet-linux64-$_pkgver.zip"
   "mist.desktop"
   "icon.png"
 )
 sha256sums=(
-  "4217ff42b4de0eca832f0e95012cbe8e34758e4f4f1135c124ecae365d0ac0df"
-  "a7fd8c64aacd53e9f126d261412c543df4d93c247c7c059949d9bcd6588e4765"
   "d044844dd8ef1fef2ced861e5a86bf0d9af1b06ade6965dab1f12dbc612da207"
   "f9dfeddf9730ab693e3dc69d6dd0ad48525de1e40e1c8fb46ed081a3e7bd5f93"
+)
+source_i686=(
+  "${pkgname}-${_pkgver}-32.zip::https://github.com/ethereum/$pkgname/releases/download/${pkgver}/Ethereum-Wallet-linux32-$_pkgver.zip"
+)
+sha256sums_i686=(
+  "4217ff42b4de0eca832f0e95012cbe8e34758e4f4f1135c124ecae365d0ac0df"
+)
+source_x86_64=(
+  "${pkgname}-${_pkgver}-64.zip::https://github.com/ethereum/$pkgname/releases/download/${pkgver}/Ethereum-Wallet-linux64-$_pkgver.zip"
+)
+sha256sums_x86_64=(
+  "a7fd8c64aacd53e9f126d261412c543df4d93c247c7c059949d9bcd6588e4765"
 )
 
 package() {
