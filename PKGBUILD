@@ -3,7 +3,7 @@
 pkgname=perl-xs-object-magic
 _cpanname=XS-Object-Magic
 pkgver=0.04
-pkgrel=6
+pkgrel=7
 pkgdesc="Opaque, extensible XS pointer backed objects using sv_magic"
 arch=('i686' 'x86_64')
 url="http://metacpan.org/release/$_cpanname"
