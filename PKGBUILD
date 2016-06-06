@@ -179,7 +179,7 @@ fi
     -no-icu \
     -v \
     -qreal float \
-    $_release \
+    $_build_type \
     -silent \
     -confirm-license \
     -opensource \
