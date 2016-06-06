@@ -1,7 +1,7 @@
 _libressl_ver='2.3.5'
 pkgname='letskencrypt'
 pkgdesc="Secure Let's Encrypt client"
-pkgver='0.1.5'
+pkgver='0.1.6'
 pkgrel='1'
 license=('BSD')
 url='https://kristaps.bsd.lv/letskencrypt/'
@@ -9,7 +9,7 @@ arch=('x86_64' 'i686')
 depends=('libbsd')
 source=("https://github.com/kristapsdz/letskencrypt-portable/archive/VERSION_${pkgver//\./_}.tar.gz"
 		"http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${_libressl_ver}.tar.gz")
-sha512sums=('82fa4e8b79a4f0c697340ac05125b7f037d713f90d824539409dac6c40c9206ad6fc918bdf935f7e60e1ba10a832a0e8b596ab3a926699f5994170356859d20d'
+sha512sums=('e01381fad3b77c6c5b52901339f72fcf141de74c3f237b7619996d8400c79c35ec521b4efea94c661029c4ef877a28df5783111b0b656efe92625338df687798'
             'b73271ee05ba1bdffbfde02f17a33acf38738a4dfbe69be1bdd8f13a1f03a5fdab4c62a5f62f94c4128ad0d7ad1e6796e554c772d9f0563c61b7da75a8bb1e23')
 
 build () {
@@ -33,4 +33,7 @@ package () {
 		mkdir -p "${pkgdir}/usr/share"
 		mv "${pkgdir}/usr/man" "${pkgdir}/usr/share"
 	fi
+
+	# Ensure that the default directory for certificates exists
+	mkdir -p "${pkgdir}/etc/ssl/letsencrypt/private"
 }
