@@ -14,10 +14,12 @@
 _dejavu_font_dir="/usr/share/fonts/TTF"
 _gs_font_dir="/usr/share/fonts/Type1"
 _windows_font_dir="/usr/share/fonts/WindowsFonts"
+_digest="http://www.imagemagick.org/download/digest.rdf"
 _srcname="ImageMagick"
+_srcver=$(curl -s "$_digest" | grep "$_srcname"-7[0-9\.-]*.tar.xz | sed 's/[^0-9\.-]*//g' | sed -r 's/.//;s/.{2}$//')
 pkgname=imagemagick-full
-pkgver=7.0.1.9
-pkgrel=1
+pkgver="$(echo ${_srcver} | tr '-' '.')"
+pkgrel=2
 pkgdesc="An image viewing/manipulation program (Q32 HDRI with all libs and features)"
 arch=('i686' 'x86_64')
 url="http://www.imagemagick.org/"
@@ -45,16 +47,10 @@ backup=("etc/ImageMagick-${pkgver%%.*}/coder.xml"
         "etc/ImageMagick-${pkgver%%.*}/type-ghostscript.xml"
         "etc/ImageMagick-${pkgver%%.*}/type-windows.xml")
 options=('!docs' 'libtool' '!emptydirs')
-source=("http://www.imagemagick.org/download/ImageMagick.tar.xz")
-sha256sums=("$(curl -s http://www.imagemagick.org/download/digest.rdf | grep -A 5 ImageMagick.tar.xz | grep sha256 | grep -oE '>[[:alnum:]]*?<' | sed 's/[><]//g')")
-
-pkgver() {
-	_srcver=$(tar -tf ImageMagick.tar.xz | head -1 | cut -f1 -d"/" | sed 's/[^0-9\.-]*//g' | cut -c 2-)
-	printf "%s" "$(echo ${_srcver} | tr '-' '.')"
-}
+source=("http://www.imagemagick.org/download/${_srcname}-${_srcver}.tar.xz")
+sha256sums=("$(curl -s ${_digest} | grep -A 5 ${_srcname}-${_srcver}.tar.xz | grep sha256 | grep -oE '>[[:alnum:]]*?<' | sed 's/[><]//g')")
 
 build() {
-	_srcver=$(tar -tf ImageMagick.tar.xz | head -1 | cut -f1 -d"/" | sed 's/[^0-9\.-]*//g' | cut -c 2-)
 	cd "$_srcname"-"$_srcver"
 	
 	CPPFLAGS="-I/usr/include/FLIF" \
@@ -116,7 +112,6 @@ build() {
 }
 
 package() {
-	_srcver=$(tar -tf ImageMagick.tar.xz | head -1 | cut -f1 -d"/" | sed 's/[^0-9\.-]*//g' | cut -c 2-)
 	cd "$_srcname"-"$_srcver"
 	
 	make -j1 DESTDIR="$pkgdir/" install
