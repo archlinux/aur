@@ -1,7 +1,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
 pkgname=stremio-bin
-pkgver=3.5.12
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Watch instantly all the video content you enjoy in one place."
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("https://strem.io/Stremio${pkgver}.linux.tar.gz"
         "https://strem.io/favicon-32x32.png"
         "https://strem.io/favicon-96x96.png"
         "stremio.desktop")
-md5sums=('f2e1db87be2df60b26f546687aa9626c'
+md5sums=('06a2e2ae666fcfa111d2dc2d7aed63d5'
          '17a3ae27d06908138317c3a9b8d03898'
          'e3b38592637449733618d73b45293b09'
          '218fad56add848a58785d68dbfae02ae')
