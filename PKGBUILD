@@ -36,4 +36,8 @@ package() {
 	for file in ${pkgdir}/opt/Xilinx/14.7/ISE_DS/settings*; do
 		sed -i "s!${pkgdir}!!g" $file
 	done
+
+	# Fix for the license configuration manager
+	# https://forums.xilinx.com/t5/Installation-and-Licensing/ISE-14-7-on-CentOS-6-4-missing-libQt-Network-so-workaround/td-p/379325
+	ln -s ${pkgdir}/usr/lib64/libQtNetwork.so ${pkgdir}/usr/lib64/libQt_Network.so
 }
