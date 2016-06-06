@@ -1,12 +1,13 @@
-pkgname=sxemacs-git
-pkgver=22.1.16.13.g9eb1502
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
-pkgrel=1
+
+pkgname=sxemacs-git
+pkgver=22.1.16.14.gfd681d4
+pkgrel=2
 pkgdesc="A derivation of xemacs - git checkout"
 arch=('i686' 'x86_64')
 url="http://www.sxemacs.org/"
 license=('GPL')
-depends=('libao' 'gpm' 'libtiff' 'jack' 'libmad' 'desktop-file-utils' 'compface' 'libpulse' 'libxaw' 'postgresql-libs' 'sox' 'openmotif' 'openssl' 'ffmpeg')
+depends=('libao' 'gpm' 'libtiff' 'jack' 'libmad' 'desktop-file-utils' 'compface' 'libpulse' 'libxaw' 'postgresql-libs' 'sox' 'openmotif' 'openssl' 'ffmpeg' 'xaw3d')
 makedepends=('git' 'texinfo' 'xbitmaps')
 provides=('sxemacs')
 conflicts=('sxemacs' 'xemacs')
