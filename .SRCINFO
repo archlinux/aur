@@ -1,6 +1,6 @@
 pkgbase = perl-x11-xcb
 	pkgdesc = Perl bindings for libxcb
-	pkgver = 0.14
+	pkgver = 0.16
 	pkgrel = 1
 	url = http://metacpan.org/release/X11-XCB
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = perl-x11-xcb
 	depends = perl-xml-simple
 	depends = perl-xml-descent
 	options = !emptydirs
-	source = http://cpan.metacpan.org/authors/id/M/MS/MSTPLBG/X11-XCB-0.14.tar.gz
-	md5sums = 0dca275913fef5d044e413c8048fe7a3
+	source = http://cpan.metacpan.org/authors/id/M/MS/MSTPLBG/X11-XCB-0.16.tar.gz
+	md5sums = 15c56ac74a7412378c26e5d343e19246
 
 pkgname = perl-x11-xcb
 
