@@ -1,24 +1,30 @@
-# Maintainer: Anthony C <kurodroid.1@gmail.com>
+# Maintainer:  Marcin Wieczorek <marcin@marcin.co>
+# Contributor: Anthony C <kurodroid.1@gmail.com>
+
 pkgname=psad
-pkgver=2.4.1
-pkgrel=0
+pkgver=2.4.3
+pkgrel=1
 pkgdesc="A collection of three lightweight system daemons (two main daemons and one helper daemon) that run on Linux machines and analyze iptables log messages to detect port scans and other suspicious traffic"
 arch=(i686 x86_64)
 url="http://cipherdyne.org/psad/"
 license=('GPL')
 depends=('perl-bit-vector' 'perl-date-calc' 'perl-iptables-chainmgr' 'perl-iptables-parse' 'perl-net-ipv4addr' 'perl-storable' 'perl-unix-syslog' 'net-tools')
-source=("http://cipherdyne.org/psad/download/$pkgname-$pkgver.tar.gz" "responses" "psad-systemdinit.archlinux" "psad.patch1")
-md5sums=('c73d01e472f08775b6fc80c90378f7ce'
+source=("http://cipherdyne.org/psad/download/${pkgname}-${pkgver}.tar.gz"
+        "responses"
+        "psad-systemdinit.archlinux"
+        "psad.patch")
+md5sums=('5aa0d22f0bea3ba32e3b9730f78157cf'
          '2425986f9eaa44d983128ebea6c8baf4'
          '29324f5fb0ccf69b443710c7d4c075fd'
-         '3ebc69df83f083abcd52965fa26c3cf4')
+         '686dee1b3ebff03acde910fa443cbfc6')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   if [ ! -e responses ]; then
     ln $srcdir/responses responses -s;
   fi
-  patch -p1 -i $srcdir/psad.patch1
+
+  patch -p1 -i "${srcdir}/psad.patch"
 
   #Set the config dirs
   sed -e "s|'/usr/sbin'|'$pkgdir/usr/sbin'|" \
@@ -39,6 +45,7 @@ build() {
 
 
 }
+
 package () {
   cd "$srcdir/$pkgname-$pkgver"
   #hope that things work
@@ -52,19 +59,19 @@ package () {
            $pkgdir/var/run/psad \
            $pkgdir/usr/lib/psad \
            $pkgdir/usr/lib/systemd/system
- ./install.pl --init-dir "$pkgdir/etc/rc.d/" < responses
+  ./install.pl --init-dir "$pkgdir/etc/rc.d/" < responses
 
- #Set correct permissions
- chmod -R o+r $pkgdir/etc/psad
- chmod -R o+r $pkgdir/usr/sbin/*
- chmod 0700 $pkgdir/var/lib/psad
+  #Set correct permissions
+  chmod -R o+r $pkgdir/etc/psad
+  chmod -R o+r $pkgdir/usr/sbin/*
+  chmod 0700 $pkgdir/var/lib/psad
 
- #add the systemd service file
- cp $srcdir/psad-systemdinit.archlinux $pkgdir/usr/lib/systemd/system/psad.service
+  #add the systemd service file
+  cp $srcdir/psad-systemdinit.archlinux $pkgdir/usr/lib/systemd/system/psad.service
 
- # Fix the config
- sed -e "s|$pkgdir||" $pkgdir/etc/psad/psad.conf -i
- sed -e "s|$pkgdir||" $pkgdir/var/log/psad/install.log -i
+  # Fix the config
+  sed -e "s|$pkgdir||" $pkgdir/etc/psad/psad.conf -i
+  sed -e "s|$pkgdir||" $pkgdir/var/log/psad/install.log -i
 }
 
 # vim:set ts=2 sw=2 et:

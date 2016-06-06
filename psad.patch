@@ -1,5 +1,5 @@
-*** install.pl	2015-05-12 12:25:18.000000000 +0800
---- install.pl.new	2015-11-03 09:33:36.851279706 +0800
+*** a/install.pl	2015-05-12 12:25:18.000000000 +0800
+--- b/install.pl	2015-11-03 09:33:36.851279706 +0800
 ***************
 *** 754,759 ****
 --- 754,761 ----
@@ -47,7 +47,7 @@
 
   sub get_distro() {
       return 'gentoo' if -e '/etc/gentoo-release';
-+     return 'archlinux' if -e '/etc/archlinux-release';
++     return 'archlinux' if -e '/etc/arch-release';
       if (-e '/etc/issue') {
           ### Red Hat Linux release 6.2 (Zoot)
           open ISSUE, '< /etc/issue' or
