@@ -1,0 +1,15 @@
+pkgbase = geomandel
+	pkgdesc = Fast mandelbrot fractal generator written in C++
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/crapp/geomandel
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cmake>=3.2
+	depends = gcc
+	source = https://github.com/crapp/geomandel/archive/v0.3.1.tar.gz
+	md5sums = d1cfd63b5ab9de8b3f5124ab23d61c6f
+
+pkgname = geomandel
+
