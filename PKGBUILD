@@ -3,7 +3,7 @@
 
 pkgname=librep-git
 pkgver=0.92.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A lisp system for sawfish - git version.'
 arch=('i686' 'x86_64')
 url='http://sawfish.wikia.com'
@@ -13,7 +13,6 @@ makedepends=('git')
 provides=("librep=$pkgver")
 conflicts=('librep')
 options=('!libtool' '!makeflags')
-install=librep.install
 source=('git://github.com/SawfishWM/librep.git')
 sha256sums=('SKIP')
 _gitname='librep'
