@@ -1,4 +1,10 @@
-2016-05-12 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+2016-06-06 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+	* 2.0.5.2:
+	  Added IsBotAccount bot config property.
+    Added !version command.
+    Fixed ASF not always resetting games played when farming got interrupted (e.g. with !pause command).
+    Misc code improvements, optimizations and bugfixes.
+2016-06-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 	* 2.0.5.1:
    	Fixed harmless error when account was not using SteamApiKey, introduced in 2.0.5.0.
   * 2.0.5.0:
