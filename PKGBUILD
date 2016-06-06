@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=alacryd
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Expedient Perl6 module installation"
 arch=('any')
@@ -11,7 +11,7 @@ groups=('perl6')
 url="https://github.com/atweiden/alacryd"
 license=('UNLICENSE')
 source=($pkgname-$pkgver.tar.gz::https://codeload.github.com/atweiden/$pkgname/tar.gz/$pkgver)
-sha256sums=('9ba580a8aae113ad86f9cb62db53580dec783b498151dbeb54608af5f94d428a')
+sha256sums=('56d181b328ec0d025b982dc4fb7f116bba6006b32b429ba4e03d09688dc8105a')
 install=alacryd.install
 
 check() {
