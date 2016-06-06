@@ -1,7 +1,7 @@
 pkgbase = turtl
 	pkgdesc = Turtl lets you take notes, bookmark websites, and store documents for sensitive projects.
 	pkgver = 0.6.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://turtl.it
 	arch = i686
 	arch = x86_64
