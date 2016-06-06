@@ -453,37 +453,6 @@ index 422f16b..2bf3d04 100644
  
        /* FIXME: Because the OpenCL language do not support va macro, and we do not want
           to introduce the va_list, va_start and va_end into our code, we just simulate
-diff --git a/backend/src/llvm/llvm_profiling.cpp b/backend/src/llvm/llvm_profiling.cpp
-index 211aa43..96c95ee 100644
---- a/backend/src/llvm/llvm_profiling.cpp
-+++ b/backend/src/llvm/llvm_profiling.cpp
-@@ -135,7 +135,7 @@ namespace gbe
-     builder = new IRBuilder<>(module->getContext());
- 
-     /* alloc a new buffer ptr to collect the timestamps. */
--    builder->SetInsertPoint(F.begin()->begin());
-+    builder->SetInsertPoint(&*F.begin()->begin());
-     llvm::Constant *profilingBuf = module->getGlobalVariable("__gen_ocl_profiling_buf");
-     if (!profilingBuf) {
-       profilingBuf = new GlobalVariable(*module, intTy, false,
-@@ -174,7 +174,7 @@ namespace gbe
-         continue;
- 
-       // Insert the first one at beginning of not PHI.
--      builder->SetInsertPoint(instI);
-+      builder->SetInsertPoint(&*instI);
-       /* Add the timestamp store function call. */
-       // __gen_ocl_store_timestamp(int nth, int type);
-       Value *Args[2] = {ConstantInt::get(intTy, pointNum++), ConstantInt::get(intTy, profilingType)};
-@@ -190,7 +190,7 @@ namespace gbe
-     BE--;
-     BasicBlock::iterator retInst = BE->end();
-     retInst--;
--    builder->SetInsertPoint(retInst);
-+    builder->SetInsertPoint(&*retInst);
-     Value *Args2[2] = {profilingBuf, ConstantInt::get(intTy, profilingType)};
- 
-     builder->CreateCall(cast<llvm::Function>(module->getOrInsertFunction(
 diff --git a/backend/src/llvm/llvm_scalarize.cpp b/backend/src/llvm/llvm_scalarize.cpp
 index 899a696..9efb897 100644
 --- a/backend/src/llvm/llvm_scalarize.cpp
@@ -497,15 +466,6 @@ index 899a696..9efb897 100644
      }
  
      DenseMap<Value*, VectorValues> vectorVals;
-@@ -740,7 +740,7 @@ namespace gbe {
-           while (isa<AllocaInst>(bbIter)) ++bbIter;
- 
-           IRBuilder<> allocBuilder(&entry);
--          allocBuilder.SetInsertPoint(bbIter);
-+          allocBuilder.SetInsertPoint(&*bbIter);
- 
-           Alloc = allocBuilder.CreateAlloca(fooTy, nullptr, "");
-           for (int i = 0; i < GetComponentCount(foo); ++i)
 @@ -801,7 +801,7 @@ namespace gbe {
        return;
      ReversePostOrderTraversal<Function*> rpot(&F);
