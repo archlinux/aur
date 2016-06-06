@@ -1,13 +1,8 @@
 [Unit]
-Description=Sentry
-After=network.target
-Requires=sentry-celery.service
+Description=Sentry logging and aggregation server.
+Requires=sentry-web.service sentry-celery.service sentry-cron.service
 
 [Service]
-User=sentry
-Restart=always
-ExecStart=/opt/sentry/bin/sentry --config=/etc/sentry run web
-KillSignal=SIGINT
-
-[Install]
-WantedBy=multi-user.target
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/true
