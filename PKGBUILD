@@ -20,7 +20,7 @@ _binaries="psc psci psc-bundle psc-docs psc-ide-client psc-ide-server psc-publis
 package() {
   cd purescript
 
-  chrpath -d $_binaries
   install -t "${pkgdir}/usr/bin" -D -m755 $_binaries
+  chrpath -d "${pkgdir}/usr/bin"/*
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
