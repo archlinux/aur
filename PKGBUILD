@@ -1,7 +1,7 @@
 # Maintainer: JKA Network (JoseluCross, Kprkpr, Yukialba) <contacto@jkanetwork.com>
 pkgname=apw
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Package Wrapper - package wrapper for pacman (and more)"
 arch=('any')
 url="http://proyecto.jkanetwork.com"
@@ -19,6 +19,6 @@ package() {
   mkdir -p $pkgdir/etc/
   echo "pacman" > "$srcdir/apw.conf"
   install -Dm644 $srcdir/apw.conf "$pkgdir/etc/"
-  install -Dm644 $srcdir/es.mo "pkgdir/usr/share/locale/es/LC_MESSAGES/es"
+  install -Dm644 $srcdir/es.mo "pkgdir/usr/share/locale/es/LC_MESSAGES/apw.mo"
   install -Dm755 $srcdir/apw "$pkgdir/usr/bin/" 
 }
