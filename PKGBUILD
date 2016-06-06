@@ -4,7 +4,7 @@
 
 pkgname=archi
 pkgver=3.3.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Free, open source, cross-platform tool and editor to create ArchiMate models."
 arch=('i686' 'x86_64')
 url="http://www.archimatetool.com/"
