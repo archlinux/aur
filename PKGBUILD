@@ -18,6 +18,7 @@
 _sysroot=/mnt/pi
 
 # Options
+_shadow_build=false
 _release=true
 _skip_web_engine=false
 _static_build=false
@@ -115,26 +116,30 @@ if $_build_from_head; then
 fi
 
 build() {
+  # Qt tries to do the right thing and stores these, breaking cross compilation
+  unset LDFLAGS
+  unset CFLAGS
+  unset CXXFLAGS
+
   if [[ -z "$_piver" ]]; then
     echo "Set a pi version to build the associated sdk"
     exit -1
   fi
 
   local _srcdir="${srcdir}/${_source_package_name}"
+  local _bindir="${_srcdir}"
   local _basedir="${_srcdir}/qtbase"
   local _waylanddir="${_srcdir}/qtwayland"
   local _webenginedir="${_srcdir}/qtwebengine"
   local _locationdir="${_srcdir}/qtlocation"
-  local _bindir="${_srcdir}"
   local _mkspec_dir="${_basedir}/mkspecs/devices/${_mkspec}"
-
-  # Qt tries to do the right thing and stores these, breaking cross compilation
-  unset LDFLAGS
-  unset CFLAGS
-  unset CXXFLAGS
 
 if $_build_from_head; then
   _srcdir="${_local_qt5_repo}"
+fi
+
+if $_shadow_build; then
+  _bindir="${_srcdir}-build"
 fi
 
   cd ${_srcdir}
@@ -163,11 +168,12 @@ fi
   # Work around our embarresing propensity to stomp on your own tailored build configuration
   sed -i "s/O[23]/Os/"  ${_basedir}/mkspecs/common/gcc-base.conf || exit 1
 
+  if $_shadow_build; then
+    rm -Rf ${_bindir}
+  fi
+
   mkdir -p ${_bindir}
   cd ${_bindir}
-
-  # Breaks in qtwayland
-  # -qtnamespace Pi \
 
   ${_srcdir}/configure \
     -no-icu \
@@ -177,6 +183,7 @@ fi
     -silent \
     -confirm-license \
     -opensource \
+    -qtnamespace "Pi${_piver}" \
     -qtlibinfix "Pi${_piver}" \
     -reduce-exports \
     -reduce-relocations \
@@ -214,6 +221,10 @@ create_install_script()
 package() {
   local _srcdir="${srcdir}/${_source_package_name}"
   local _bindir="${_srcdir}"
+
+if $_shadow_build; then
+  _bindir="${_srcdir}-build"
+fi
 
   create_install_script
 
