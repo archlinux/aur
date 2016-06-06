@@ -3,8 +3,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=geth
-pkgver=1.4.5
-_commit="stable-a269a71"
+pkgver=1.4.6
+_commit="stable-0f036f6"
 pkgrel=1
 pkgdesc="The go-ethereum commandline client (geth cli)."
 arch=('i686' 'x86_64')
@@ -22,15 +22,23 @@ conflicts=(
 provides=('geth')
 url="https://bintray.com/karalabe/ethereum/geth/"
 license=('GPL')
-source=( # Geth cross builds by Péter Szilágyi (Ethereum Core Developer)
-  "${pkgname}-${pkgver}-32.tar.bz2::https://bintray.com/artifact/download/karalabe/ethereum/geth-$pkgver-$_commit-linux-386.tar.bz2"
-  "${pkgname}-${pkgver}-64.tar.bz2::https://bintray.com/artifact/download/karalabe/ethereum/geth-$pkgver-$_commit-linux-amd64.tar.bz2"
+source=(
   "LICENSE.txt::https://raw.githubusercontent.com/ethereum/go-ethereum/master/COPYING"
 )
 sha256sums=(
-  '7c377fc95e8a9fb7bc28d0a0b15dac31690f7423102d4674c8b134e1232f1597'
-  '437b838e37840a2e4ac1fe3ef16085f3e8df2a3610bb98e96ad21ecaa930ac5d'
   '48e234e35cf83b4f2543b0fbafcf7d33843378cc1a829654d5fc23f4e1b1e581'
+)
+source_i686=( # Geth cross builds by Péter Szilágyi (Ethereum Core Developer)
+  "${pkgname}-${pkgver}-32.tar.bz2::https://bintray.com/artifact/download/karalabe/ethereum/geth-$pkgver-$_commit-linux-386.tar.bz2"
+)
+sha256sums_i686=(
+  'c0532a446e61f9cf5c529b129c09256237e172f6705019672bc6c8f9adfe413e'
+)
+source_x86_64=( # Geth cross builds by Péter Szilágyi (Ethereum Core Developer)
+  "${pkgname}-${pkgver}-64.tar.bz2::https://bintray.com/artifact/download/karalabe/ethereum/geth-$pkgver-$_commit-linux-amd64.tar.bz2"
+)
+sha256sums_x86_64=(
+  '3b87c1597c779eb36d520d04fc58b73688395f172836b6b53fc604efbd234a1e'
 )
 
 package() {
