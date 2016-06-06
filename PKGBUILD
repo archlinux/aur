@@ -1,32 +1,27 @@
 # Maintainer: Daniel Bermond < yahoo-com: danielbermond >
 
+_digest="http://www.imagemagick.org/download/digest.rdf"
 _srcname="ImageMagick"
+_srcver=$(curl -s "$_digest" | grep "$_srcname"-7[0-9\.-]*.tar.xz | sed 's/[^0-9\.-]*//g' | sed -r 's/.//;s/.{2}$//')
 pkgname=imagemagick-full-doc
-pkgver=7.0.1.9
-pkgrel=1
+pkgver="$(echo ${_srcver} | tr '-' '.')"
+pkgrel=2
 pkgdesc="The ImageMagick documentation (utilities manuals and libraries API)"
 arch=('any')
 url="http://www.imagemagick.org/"
 license=('custom')
 provides=('imagemagick-doc')
 conflicts=('imagemagick-doc' 'imagemagick-git-doc' 'imagemagick-full-doc-git')
-source=("http://www.imagemagick.org/download/ImageMagick.tar.xz")
-sha256sums=("$(curl -s http://www.imagemagick.org/download/digest.rdf | grep -A 5 ImageMagick.tar.xz | grep sha256 | grep -oE '>[[:alnum:]]*?<' | sed 's/[><]//g')")
-
-pkgver() {
-	_srcver=$(tar -tf ImageMagick.tar.xz | head -1 | cut -f1 -d"/" | sed 's/[^0-9\.-]*//g' | cut -c 2-)
-	printf "%s" "$(echo ${_srcver} | tr '-' '.')"
-}
+source=("http://www.imagemagick.org/download/${_srcname}-${_srcver}.tar.xz")
+sha256sums=("$(curl -s ${_digest} | grep -A 5 ${_srcname}-${_srcver}.tar.xz | grep sha256 | grep -oE '>[[:alnum:]]*?<' | sed 's/[><]//g')")
 
 build() {
-	_srcver=$(tar -tf ImageMagick.tar.xz | head -1 | cut -f1 -d"/" | sed 's/[^0-9\.-]*//g' | cut -c 2-)
 	cd "$_srcname"-"$_srcver"
 	
 	./configure --prefix=/usr
 }
 
 package() {
-	_srcver=$(tar -tf ImageMagick.tar.xz | head -1 | cut -f1 -d"/" | sed 's/[^0-9\.-]*//g' | cut -c 2-)
 	cd "$_srcname"-"$_srcver"
 	
 	make DESTDIR="$pkgdir/" install-data-html
