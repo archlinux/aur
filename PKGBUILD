@@ -4,7 +4,7 @@
 
 pkgname=gmusicbrowser
 pkgver=1.1.15
-pkgrel=3
+pkgrel=4
 pkgdesc="A customizable open-source jukebox for large collections"
 arch=('any')
 url="http://gmusicbrowser.org"
@@ -42,7 +42,9 @@ source=($url/download/$pkgname-$pkgver.tar.gz)
 md5sums=('4a16dcbe369d4b3cb78fb1a6967a60b3')
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$srcdir"
+  patch -p0 < perl524.patch
+  cd $pkgname-$pkgver
 
   make DESTDIR="$pkgdir/" install
 }
