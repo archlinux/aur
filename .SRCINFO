@@ -1,15 +1,15 @@
 pkgbase = annyong
 	pkgdesc = Starts a public webserver for files in the current directory
-	pkgver = 0.3
-	pkgrel = 3
+	pkgver = 0.4.1
+	pkgrel = 0
 	url = https://github.com/remiprev/annyong
 	arch = any
 	license = Custom
 	makedepends = rubygems
 	depends = ruby
 	depends = ruby-rack
-	source = http://gems.rubyforge.org/gems/annyong-0.3.gem
-	sha256sums = c29d39fa86a1920c6e8fff481785ce667d1b0dec18730d34994742ad3c934622
+	source = http://gems.rubyforge.org/gems/annyong-0.4.1.gem
+	sha256sums = 307b00a61f2d76d03a44f6958a8d4a9b35e11c39999d7fe057015af156329658
 
 pkgname = annyong
 

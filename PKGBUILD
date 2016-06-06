@@ -1,8 +1,8 @@
 # former Maintainer: M. L. Thaler <xxxxx at gmail.com>
 _gemname=annyong
 pkgname=annyong
-pkgver=0.3
-pkgrel=3
+pkgver=0.4.1
+pkgrel=0
 pkgdesc="Starts a public webserver for files in the current directory"
 arch=(any)
 url="https://github.com/remiprev/annyong"
@@ -10,7 +10,7 @@ license=('Custom')
 depends=('ruby' 'ruby-rack')
 makedepends=('rubygems')
 source=(http://gems.rubyforge.org/gems/$_gemname-$pkgver.gem)
-sha256sums=('c29d39fa86a1920c6e8fff481785ce667d1b0dec18730d34994742ad3c934622')
+sha256sums=('307b00a61f2d76d03a44f6958a8d4a9b35e11c39999d7fe057015af156329658')
 
 package() {
   cd "$srcdir"
