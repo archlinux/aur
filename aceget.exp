@@ -41,7 +41,7 @@ spawn telnet $address $port
 set timeout 10
 expect {
 	"Unable to connect to remote host" {puts stderr "Telnet connection failed, wrong address/port?"; exit 1}
-	timeout {put stderr "Telnet connection timed out, network error?"; exit 2}
+	timeout {puts stderr "Telnet connection timed out, network error?"; exit 2}
 	"Connected to"
 }
 
@@ -75,7 +75,10 @@ expect {
 # Push incoming .TS data into stdout, but only if redirected off the console
 #
 if {[dict exists [fconfigure stdout] -mode]} {
-	puts stderr "Success - please redirect stdout to receive video data"
+	expect_user *
+	puts stderr $videolink
+	puts stderr "Hit return when finished..."
+	expect_user -timeout -1 \n
 } else {
 	catch {exec >@stdout 2>@stderr curl -s $videolink}
 }
