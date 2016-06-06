@@ -2,12 +2,13 @@
 
 pkgname=anydesk
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="'AnyDesk Free' is an All-In-One Software for Remote Support"
 arch=('i686' 'x86_64')
 url="http://anydesk.de/"
 license=('custom:Freeware')
 depends=('gtkglext')
+optdepends=('libpulse')
 
 source_i686=(http://download.anydesk.com/linux/${pkgname}_${pkgver}-1_i386.deb)
 source_x86_64=(http://download.anydesk.com/linux/${pkgname}_${pkgver}-1_amd64.deb)
