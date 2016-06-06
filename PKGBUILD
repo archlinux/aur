@@ -3,7 +3,7 @@
 pkgname=perl-xml-tokeparser
 _realname=XML-TokeParser
 pkgver=0.05
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl/CPAN Module XML::TokeParser"
 arch=('i686' 'x86_64')
 license=('unknown')
