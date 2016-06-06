@@ -4,7 +4,7 @@
 # Based on linux-manpages package
 
 pkgname=linux-libre-manpages
-_pkgver=4.5-gnu
+_pkgver=4.6-gnu
 
 _srcname=linux-${_pkgver%-*}
 _archpkgver=${_pkgver%-*}
@@ -20,7 +20,7 @@ conflicts=('linux-manpages')
 provides=("linux-manpages=${_archpkgver}")
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/linux-libre-${_pkgver}.tar.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgver}/linux-libre-${_pkgver}.tar.xz.sign")
-sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
+sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
             'SKIP')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
