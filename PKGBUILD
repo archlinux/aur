@@ -23,7 +23,6 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  mkdir -p "$pkgdir/usr/share/applications"
-  install -D -m644 "../$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "../$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   make DESTDIR="$pkgdir" install
 }
