@@ -3,7 +3,7 @@
 pkgname=qemu-spice
 _pkgname=qemu
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Latest stable QEMU with KVM spice usbredir virtfs smartcard seccomp iscsi tpm glusterfs fdt and RDMA live migration"
 arch=(i686 x86_64 armv7h)
 license=('GPL2' 'LGPL2.1')
@@ -107,5 +107,5 @@ fi
 	rm "${pkgdir}/usr/share/qemu/vgabios-vmware.bin"
 	rmdir "${pkgdir}/var/run"
 }
-md5sums=('f469f2330bbe76e3e39db10e9ac4f8db'
+md5sums=('ca3f70b43f093e33e9e014f144067f13'
          'b316a066d2f1bb57d8f5b7ea1d0d1caf')
