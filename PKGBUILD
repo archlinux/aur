@@ -4,7 +4,7 @@
 
 pkgname=gnudatalanguage
 pkgver=0.9.6
-pkgrel=3
+pkgrel=4
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=('i686' 'x86_64')
 url="http://gnudatalanguage.sourceforge.net/"
@@ -30,14 +30,11 @@ build() {
       -DMAGICK=NO -DFFTW=YES -DHDF5=YES -DHDF=NO -DGRIB=YES -DUDUNITS=YES \
       -DCMAKE_C_FLAGS="-I/usr/include/ImageMagick \
             -I/usr/include/python2.7 \
-            -I/usr/lib/python2.7/site-packages/numpy/core/include" ..\
-      -DHDF5=NO
+            -I/usr/lib/python2.7/site-packages/numpy/core/include" ..
   make
 }
 package() {
-  cd $srcdir/gdl-${pkgver}/
-  patch -p1 < ../../gdl-template.patch
-  cd build
+  cd $srcdir/gdl-${pkgver}/build
   make DESTDIR=$pkgdir install
 
   install -D -m755 ../../gdl.profile $pkgdir/etc/profile.d/gdl.sh
