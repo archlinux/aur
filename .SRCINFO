@@ -1,7 +1,7 @@
 pkgbase = minidlnagui
 	pkgdesc = Graphical frontend to minidlna for standalone run
 	pkgver = 0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bitbucket.org/obayhan/minidlnagui
 	arch = any
 	license = BSD
@@ -9,7 +9,7 @@ pkgbase = minidlnagui
 	depends = minidlna
 	depends = wxpython
 	source = https://bitbucket.org/obayhan/minidlnagui/downloads/minidlnaGUI-0.9.tar.gz
-	sha256sums = 7b346174fb932cd5488ae0e19d582c40c5d31251ebb8bc1188f4f15f24a8dca4
+	sha256sums = 43fe41374adbbcbff33afe94cf06d7fd5ab3942a3b7d0b803eab41601f49c6d6
 
 pkgname = minidlnagui
 
