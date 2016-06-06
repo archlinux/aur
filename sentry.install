@@ -36,7 +36,7 @@ step.
 
 4) Start Sentry:
 
-    sudo systemctl start sentry sentry-celery
+    sudo systemctl start sentry
 
 If you wish to run Sentry manually, e.g. to test your configuration:
 
@@ -82,7 +82,7 @@ UPGRADE STEPS
 
 1) Stop Sentry and its related services (and reload systemd)
 
-    sudo systemctl stop sentry sentry-celery
+    sudo systemctl stop sentry
     sudo systemctl daemon-reload
 
 2) If you're upgrading from a Sentry version < 8.0, you'll need to update the
@@ -174,6 +174,31 @@ project page:
 
 https://aur.archlinux.org/packages/sentry/
 https://github.com/zancarius/archlinux-pkgbuilds
+
+SENTRY 8.5.0 UPGRADE
+
+Sentry's run command has introduced new controls and finished the deprecation of
+the old celery worker, replacing it with "sentry run worker" and
+"sentry run cron". Although this has lead to the further proliferation of
+systemd units, control has been coalesced into a single unit file. As of this
+upgrade, you should simply need to run:
+
+    sudo systemctl daemon-reload
+    sudo systemctl start sentry
+
+or to start Sentry at boot:
+
+    sudo systemctl enable sentry
+
+If you're upgrading from Sentry versions earlier than 8.5.0, you'll need to
+run:
+
+    sudo systemctl stop sentry sentry-celery
+
+first and continue with the upgrade process as instructed (starting with step
+#2). Do not issue "systemctl daemon-reload" until after Sentry's services have
+stopped. If you have a habit of stopping Sentry before upgrading, there is
+nothing more you need to do.
 
 EOF
 
