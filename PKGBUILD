@@ -3,8 +3,8 @@
 # Contributor: Diogo Leal <estranho@diogoleal.com>
 
 pkgname=psensor
-pkgver=1.1.4
-pkgrel=2
+pkgver=1.1.5
+pkgrel=1
 pkgdesc="A graphical hardware temperature monitor for Linux"
 arch=('i686' 'x86_64')
 url="http://wpitchoune.net/psensor"
@@ -20,7 +20,7 @@ optdepends=('asciidoc: required to produce the HTML version of the FAQ'
 	'libgtop: required for CPU usage')
 conflicts=('libappindicator-gtk2' 'libappindicator-activate-gtk2' 'libappindicator-gtk2-ubuntu' 'lib32-libappindicator-gtk2')
 source=("http://wpitchoune.net/$pkgname/files/$pkgname-$pkgver.tar.gz")
-md5sums=('05253aa36d3e2c82d5f83dac01d23fb9')
+md5sums=('db6fa7496576b63979c1c6e5e707142e')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
