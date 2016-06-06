@@ -258,6 +258,9 @@ fi
     sed -i "s,localpiprefix,${_installprefix}," ${_pkgprofiled}/qpi.sh || exit 1
   fi
 
+  cp ${_bindir}/qtbase/config.status ${_libspkgdir}/${_installprefix}
+  cp ${_bindir}/qtbase/config.summary ${_libspkgdir}/${_installprefix}
+
   cd ${_libsdir}
   runuser -l ${_packaginguser} -c 'makepkg -d -f' || exit 1
 
