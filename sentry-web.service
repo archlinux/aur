@@ -1,0 +1,15 @@
+[Unit]
+Description=Sentry web service.
+After=network.target
+After=sentry-celery.service sentry-cron.service
+Requires=sentry-celery.service sentry-cron.service
+PartOf=sentry.service
+
+[Service]
+User=sentry
+Restart=always
+ExecStart=/opt/sentry/bin/sentry --config=/etc/sentry run web
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target

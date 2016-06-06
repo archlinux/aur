@@ -1,12 +1,12 @@
 [Unit]
-Description=Sentry background worker.
+Description=Sentry scheduled tasks runner.
 After=network.target
 PartOf=sentry.service
 
 [Service]
 User=sentry
 Restart=always
-ExecStart=/opt/sentry/bin/sentry --config=/etc/sentry run worker --loglevel=ERROR
+ExecStart=/opt/sentry/bin/sentry --config=/etc/sentry run cron --loglevel=ERROR
 
 [Install]
 WantedBy=multi-user.target
