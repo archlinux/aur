@@ -1,0 +1,6 @@
+#!/bin/sh
+
+DESKTOPINTEGRATION=no
+export DESKTOPINTEGRATION
+
+exec /usr/share/etcher/Etcher-linux-x64.AppImage

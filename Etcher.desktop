@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Etcher
+Exec=/usr/bin/etcher
+Comment=Burn images to SD cards & USB drives, safe & easy
+Icon=/usr/share/etcher/etcher.png
+Type=Application
