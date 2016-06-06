@@ -3,8 +3,8 @@
 
 pkgbase=sentry
 pkgname=('sentry' 'sentry-dsym')
-pkgver=8.4.1
-pkgrel=2
+pkgver=8.5.0
+pkgrel=1
 pkgdesc="Python-based realtime logging and aggregation server."
 arch=(any)
 url="http://pypi.python.org/pypi/sentry"
@@ -13,13 +13,19 @@ makedepends=(clang python2-pip python2-setuptools python2-virtualenv)
 options=(!strip)
 source=(
     "sentry.install"
-    "sentry.service"
     "sentry-celery.service"
+    "sentry-cron.service"
+    "sentry.service"
+    "sentry-web.service"
+    "sentry.target"
 )
 sha256sums=(
-    a8e29037fe9876230e74bc9205c950222a1b8d2319a45e472616b88d637cf076 # sentry.install
-    ba4fbcb41429235e818cf6e3c67bea8434d691f4abc9a1e62405cd657fef8b4b # sentry.service
-    b7321469b6800e08ed14a7a716a2574a08eaf06a759b558abf92405c7bb37dd9 # sentry-celery.service
+    526b2105e973712025b543a4ae1e89642a5bbb0b9d5b5b08c1a9c88005a92cb1 # sentry.install
+    d60b097721ec4acbc5b1232a0f29ef9d21d60228d17db655848a8e2a5c9a5281 # sentry-celery.service
+    d22b9bde7c39d9d0f031ba1b01c955c9dbe4ffe3f3f083875fe557f75f0050f7 # sentry-cron.service
+    224b55515630e2714d481793f9ab0644976a47d5326063a4d6f069b30012f463 # sentry.service
+    0fe0062a77f78b01ab3729f0217a9d6b448cbfb7521c4a04c79d6e3062b4c635 # sentry-web.service
+    94121159756f7ac863e2b1149b530ea633efa2f3eeef57cc332e1f4cba724e2d # sentry.target
 )
 
 package_sentry () {
@@ -59,8 +65,11 @@ package_sentry () {
     # them. :) More information: http://en.wikipedia.org/wiki/.DS_Store
     find "${pkgdir}" -name '.DS_Store' -delete
 
-    install -Dm0644 "${srcdir}/sentry.service" "${pkgdir}/usr/lib/systemd/system/sentry.service"
     install -Dm0644 "${srcdir}/sentry-celery.service" "${pkgdir}/usr/lib/systemd/system/sentry-celery.service"
+    install -Dm0644 "${srcdir}/sentry-cron.service" "${pkgdir}/usr/lib/systemd/system/sentry-cron.service"
+    install -Dm0644 "${srcdir}/sentry-web.service" "${pkgdir}/usr/lib/systemd/system/sentry-web.service"
+    install -Dm0644 "${srcdir}/sentry.service" "${pkgdir}/usr/lib/systemd/system/sentry.service"
+    install -Dm0644 "${srcdir}/sentry.target" "${pkgdir}/usr/lib/systemd/system/sentry.target"
 
 }
 
