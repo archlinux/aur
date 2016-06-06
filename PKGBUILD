@@ -2,13 +2,13 @@
 
 pkgname=xcursor-numix
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An X-cursor-theme for use along with the numixproject products."
 arch=('any')
-url="http://gnome-look.org/content/show.php/Numix-Cursor?content=169299"
+url="https://www.gnome-look.org/p/999876/"
 license=('GPL')
 depends=('libxcursor')
-source=("${pkgname}-${pkgver}.tar.gz::http://gnome-look.org/CONTENT/content-files/169299-numix-cursor.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://www.ppload.com/api/files/download?id=1460735152")
 md5sums=('b15c1880992292b557890669bcfdb19b')
 
 
