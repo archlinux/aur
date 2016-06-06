@@ -2,7 +2,7 @@
 
 pkgname=mist-git
 _pkgname=mist
-pkgver=0.7.3.r99.g4c24421
+pkgver=0.7.3.r121.g5a95a0a
 pkgrel=1
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
 arch=('i686' 'x86_64')
@@ -14,6 +14,8 @@ depends=(
   'qt5-quickcontrols'
   'qt5-webengine'
   'readline'
+  'gconf'
+  'libnotify'
 )
 makedepends=(
   'nodejs'
