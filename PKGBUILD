@@ -2,7 +2,7 @@
 _pkgname=wine-wizard
 pkgname=${_pkgname}-git
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 
 source=(git+https://github.com/LLIAKAJL/WineWizard.git)
 md5sums=('SKIP')
@@ -14,7 +14,7 @@ license=('GPLv3')
 conflicts=("$_pkgname")
 replaces=("$_pkgname")
 provides=("$_pkgname=$pkgver")
-depends=("qt5-base" "p7zip" "gnupg" "wine")
+depends=("qt5-base")
 
 makedepends=("git")
 
