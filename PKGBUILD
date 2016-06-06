@@ -5,7 +5,7 @@
 
 pkgname='pypy3-setuptools'
 pkgver=22.0.5
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Easily download, build, install, upgrade, and uninstall Python packages"
 arch=('any')
@@ -33,5 +33,5 @@ _check() {
 
 package() {
   cd "${srcdir}/setuptools-${pkgver}"
-  pypy3 setup.py install --prefix=/opt/pypy --root="${pkgdir}" --optimize=1
+  pypy3 setup.py install --prefix=/opt/pypy3 --root="${pkgdir}" --optimize=1
 }
