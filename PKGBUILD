@@ -3,7 +3,7 @@
 # Your system will break if you install this. For breaking purposes only
 
 pkgname=libressl
-pkgver=2.3.2
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='FREE version of the SSL/TLS protocol forked from OpenSSL - EXPRIMENTAL ONLY'
 url='http://www.libressl.org/'
@@ -16,7 +16,7 @@ provides=('openssl')
 conflicts=('openssl')
 source=(http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/${pkgname}-${pkgver}.tar.gz{,.asc}
         libressl-dummy-rand-egd.patch)
-sha512sums=('619acf3e9c670cc5f32aa9e0064e8b72297bfc05c68743c5cb9f7b7332207d05fc43f44ea9652db9b651b301e8ce5dd90777a20a4a25e8145d1f7fa977d782c1'
+sha512sums=('147f6bc3cb17d7769e6cc7d947d66bcfa6904a1669eba791f3805c00db3349732adcc1f9e7921d9a8112b0a395b07a426ae1ed0c95580ebea4d94c723a8f133f'
             'SKIP'
             '73ca8a924a23f874287503453d939ecffa40f05760cd539b4773f3f28687ee1f2fa463ca3f2cad4ac5f57a49f3b6a918c015c8829112c61cb3ea7b798c0d110b')
 validpgpkeys=('A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5') # Brent Cook <bcook@openbsd.org>
@@ -45,6 +45,10 @@ package() {
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
   install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  rm "${pkgdir}/etc/ssl/cert.pem"
+  ln -s /usr/lib/libssl.so "${pkgdir}/usr/lib/libssl.so.1.0.0"
+  ln -s /usr/lib/libcrypto.so "${pkgdir}/usr/lib/libcrypto.so.1.0.0"
+  ln -s /usr/lib/libtls.so "${pkgdir}/usr/lib/libtls.so.1.0.0"
 }
 
 # vim: ts=2 sw=2 et:
