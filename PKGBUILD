@@ -3,7 +3,7 @@
 pkgname=perl-xml-dom-xpath
 pkgname_=XML-DOM-XPath
 pkgver=0.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Implements Level 1 of W3's DOM: XPath"
 arch=('i686' 'x86_64')
 url="http://search.cpan.org/~mirod/XML-DOM-XPath-0.14/"
