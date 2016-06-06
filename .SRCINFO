@@ -1,0 +1,16 @@
+pkgbase = weborf-git
+	pkgdesc = A lightweight web server designed for rapidly sharing files over HTTP
+	pkgver = 0.13+59+g04376cb
+	pkgrel = 1
+	url = https://ltworf.github.io/weborf/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = file
+	provides = weborf
+	conflicts = weborf
+	source = git+https://github.com/ltworf/weborf.git
+	sha512sums = SKIP
+
+pkgname = weborf-git
+
