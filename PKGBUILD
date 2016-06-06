@@ -1,7 +1,7 @@
 # Maintainer: Johannes Lange (<firstname>DOT<lastname>ATcern.ch>)
 pkgname=cernbox
 pkgver=1.7.2_3.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Synchronization client for CERN's CERNBox cloud service (based on ownCloud)"
 arch=('i686' 'x86_64')
 url="http://cernbox.web.cern.ch/"
@@ -57,4 +57,6 @@ package() {
    # wrapper scripts
    cp -p "${srcdir}/cernbox" "${pkgdir}/usr/bin"
    cp -p "${srcdir}/cernboxcmd" "${pkgdir}/usr/bin"
+   chmod 755 "${pkgdir}/usr/bin/cernbox"
+   chmod 755 "${pkgdir}/usr/bin/cernboxcmd"
 }
