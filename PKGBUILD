@@ -2,9 +2,9 @@
 # Maintainer: Ruben Kelevra <ruben@freifunk-nrw.de>
 
 pkgname=etherpad-lite
-pkgver=1.5.7
-pkgrel=3
-epoch=1
+pkgver=1.6.0
+pkgrel=0
+#epoch=1
 pkgdesc="Lightweight fork of etherpad based on javascript"
 arch=(any)
 url="http://etherpad.org"
@@ -19,22 +19,22 @@ backup=('usr/share/webapps/etherpad-lite/settings.json'
         'etc/webapps/etherpad-lite/settings.json')
 install='etherpad-lite.install'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ether/${pkgname}/archive/${pkgver}.tar.gz"
-        "etherpad-lite.service"
-	"fix-nodejs-version-check.patch")
-sha512sums=('688205194347f0e4e6f78deb0b189ceaa4f2255efcbaa503d0b6459de8505dd475aa9151399dd818b6cac232bc0b71e5a0fbd6d43f56cb5ce1f9eafcccb3925b'
-            '7b775171da97a3e7ad44a2b1b319970fd307a88e90a171c49bf70d2382767175e98bb21c7054e38ee6c066bd2dfadf94d28a9ff31d4f21145ec4441caa13c4d7'
-	    '85a6f3a7b28ecc6b72bfc4c05db67759ec3bba73040c45339921234683845248e82cb56407da0a804b11f9989d45f59d0dd1f1ab4ee03b81c01c69a000977342')
+        "etherpad-lite.service")
+sha512sums=('7f850d4a2a0d57ed7f60545779261bdd6be5e47c9a616edd61a99b5f15046d68710458a5eb1f76bb7e08e7a34b752bbcb6fb6e419924d971137805e78fdaf512'
+            '7b775171da97a3e7ad44a2b1b319970fd307a88e90a171c49bf70d2382767175e98bb21c7054e38ee6c066bd2dfadf94d28a9ff31d4f21145ec4441caa13c4d7')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  for s in "${source[@]}"; do
-    case "$s" in (*.patch)
-      cp "../${s}" .
-      patch -p0 < "${s}"
-      rm -f "${s}"
-    esac
-  done
+#No patches included
+
+#  for s in "${source[@]}"; do
+#    case "$s" in (*.patch)
+#      cp "../${s}" .
+#      patch -p0 < "${s}"
+#      rm -f "${s}"
+#    esac
+#  done
 }
 
 build() {
