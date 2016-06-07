@@ -6,7 +6,7 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=2.2.0.r775.gf034d8b
+pkgver=2.3.0.r233.g7ef40f4
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
