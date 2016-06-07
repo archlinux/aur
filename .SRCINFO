@@ -1,6 +1,6 @@
 pkgbase = smplayer-skins-svn
 	pkgdesc = Skins for SMPlayer
-	pkgver = 15.2.0.r7318
+	pkgver = 15.2.0.r7958
 	pkgrel = 1
 	url = http://smplayer.sourceforge.net/
 	arch = any

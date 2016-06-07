@@ -1,7 +1,7 @@
 # Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
 
 pkgname=smplayer-skins-svn
-pkgver=15.2.0.r7318
+pkgver=15.2.0.r7958
 pkgrel=1
 pkgdesc="Skins for SMPlayer"
 arch=('any')
