@@ -1,7 +1,7 @@
 # Maintainer: JKA Network (JoseluCross, Kprkpr, Yukialba) <contacto@jkanetwork.com>
 pkgname=jkazip
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Package Wrapper - package wrapper for pacman (and more)"
 arch=('any')
 url="http://proyecto.jkanetwork.com"
@@ -16,8 +16,6 @@ md5sums=('d03e1b8e1af423eb72e23aaa7a5373c7'
          '5a677c201df0958da43d991f4a246a9e')
 PKGEXT=".pkg.tar.xz"
 package() {
-  mkdir -p $pkgdir/usr/bin
-  mkdir -p $pkgdir/usr/share/locale/es/LC_MESSAGES/es
-  install -Dm755 $srcdir/jkazip "$pkgdir/usr/bin/" 
+  install -Dm755 $srcdir/jkazip "$pkgdir/usr/bin/jkazip" 
   install -Dm644 $srcdir/es.mo "pkgdir/usr/share/locale/es/LC_MESSAGES/jkazip.mo"
 }
