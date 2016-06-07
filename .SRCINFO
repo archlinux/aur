@@ -1,5 +1,5 @@
 pkgbase = f1spirit
-	pkgdesc = Unofficial remake of Konami's F-1 Spirit for the MSX1
+	pkgdesc = Unofficial remake of Konami's F-1 Spirit for the MSX
 	pkgver = 0.rc9.1615
 	pkgrel = 1
 	url = http://www.braingames.getput.com/f1spirit

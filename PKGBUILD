@@ -3,7 +3,7 @@
 pkgname=f1spirit
 pkgver=0.rc9.1615
 pkgrel=1
-pkgdesc="Unofficial remake of Konami's F-1 Spirit for the MSX1"
+pkgdesc="Unofficial remake of Konami's F-1 Spirit for the MSX"
 arch=('i686' 'x86_64')
 license=('unknown')
 url="http://www.braingames.getput.com/f1spirit"
