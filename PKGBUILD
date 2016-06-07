@@ -5,7 +5,7 @@ _version=arch
 
 # Module Versions
 _about_arch_url="fusion809/about"
-_about_arch_ver=1.5.17
+_about_arch_ver=1.5.18
 _dark_bint_syntax_ver=0.8.6
 _fusion_ui_ver=0.10.5
 _language_archlinux_ver=0.2.1
@@ -19,7 +19,7 @@ _language_unix_shell_ver=0.29.1
 pkgname=${_pkgname}-editor-${_version}
 _atomver=1.8.0
 pkgver=${_atomver}.arch${_language_archlinux_ver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed.'
 arch=('x86_64' 'i686')
 url='https://github.com/atom/atom'
