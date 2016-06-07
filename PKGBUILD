@@ -1,9 +1,10 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Rob Lynn <rob22uk at gmail dot com>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: sebikul <sebikul@gmail.com>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=geary-devel
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc='A lightweight email client for the GNOME desktop'
 arch=('i686' 'x86_64')
@@ -17,7 +18,7 @@ provides=('geary')
 conflicts=('geary')
 install='geary.install'
 source=("https://download.gnome.org/sources/geary/${pkgver%.?}/geary-${pkgver}.tar.xz")
-sha256sums=('46197a5a1b8b040adcee99082dbfd9fff9ca804e3bf0055a2e90b13214bdbca5')
+sha256sums=('c947bb1e70bd3d3f4799e59ddd05b27b08a8132674f64c68c919974595bdcd9f')
 
 build() {
   cd geary-${pkgver}
