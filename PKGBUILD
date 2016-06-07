@@ -2,10 +2,10 @@
 
 _digest="http://www.imagemagick.org/download/digest.rdf"
 _srcname="ImageMagick"
-_srcver=$(curl -s "$_digest" | grep "$_srcname"-7[0-9\.-]*.tar.xz | sed 's/[^0-9\.-]*//g' | sed -r 's/.//;s/.{2}$//')
+_srcver=$(curl -s "$_digest" | grep "${_srcname}\-7[0-9\.\-]*\.tar\.xz" | sed 's/[^0-9\.\-]*//g' | sed -r 's/.//;s/.{2}$//')
 pkgname=imagemagick-full-doc
 pkgver="$(echo ${_srcver} | tr '-' '.')"
-pkgrel=2
+pkgrel=3
 pkgdesc="The ImageMagick documentation (utilities manuals and libraries API)"
 arch=('any')
 url="http://www.imagemagick.org/"
