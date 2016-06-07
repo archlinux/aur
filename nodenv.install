@@ -1,10 +1,10 @@
 post_install() {
-    echo 'Your shell must be initialized before nodenv will function correctly.'
-    echo 'Run the following, and consider adding it to your shell rc:'
-    echo '    eval "$(nodenv init -)"'
+	echo 'Your shell must be initialized before nodenv will function correctly.'
+	echo 'Run the following, and consider adding it to your shell rc:'
+	echo '    eval "$(nodenv init -)"'
 }
 
 post_remove() {
-    echo 'Remove the following from your shell rc, if present:'
-    echo '    eval "$(nodenv init -)"'
+	echo 'Remove the following from your shell rc, if present:'
+	echo '    eval "$(nodenv init -)"'
 }
