@@ -1,0 +1,12 @@
+pkgbase = gimp-plugin-satequalizer
+	pkgdesc = Saturation equalizer. 6-bands equalizer, brightness adjustment, auto white calibration and more.
+	pkgver = 0.9.2
+	pkgrel = 1
+	url = http://code.google.com/p/satequalizer/
+	arch = i686
+	arch = x86_64
+	license = GPL-3
+	depends = gimp
+
+pkgname = gimp-plugin-satequalizer
+
