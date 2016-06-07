@@ -9,14 +9,14 @@
 
 pkgname=depot-tools-git
 pkgver=r3323.3bff56b
-pkgrel=4
+pkgrel=5
 pkgdesc='Build tools for working with Chromium development, include gclient'
 arch=('any')
 url='http://dev.chromium.org/developers/how-tos/install-depot-tools'
 source=("${pkgname}::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
 	'depot_tools.sh' 'repo_fix.sh' 'fixshebangs.py')
 license=('Custom')
-depends=('python2' 'python2-colorama' 'python2-pylint')
+depends=('python2' 'python2-colorama' 'python2-pylint' 'ninja')
 makedepends=('git')
 provides=('depot_tools' 'gclient')
 conflicts=('gclient-svn' 'depot_tools-svn')
@@ -99,6 +99,17 @@ package()
 
 	# Remove stray files
 	rm -r "${pkgdir}/opt/depot_tools/man"
+
+	# We depend on the "ninja" package, so the wrapper script which chooses a
+	# prebuilt version of it or makes a local build is not needed at all, so
+	# those are removed and a wrapper script which runs the system-installed
+	# /usr/bin/ninja is created instead.
+	rm "${pkgdir}/opt/depot_tools"/ninja*
+	cat > "${pkgdir}/opt/depot_tools/ninja" <<-EOF
+	#! /bin/sh
+	exec /usr/bin/ninja
+	EOF
+	chmod 755 "${pkgdir}/opt/depot_tools/ninja"
 
 	rm -rf "${pkgdir}/opt/depot_tools/.git"
 }
