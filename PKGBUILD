@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=hpssacli
-pkgver=2.20_11.0
+pkgver=2.30_6.0
 pkgrel=1
 pkgdesc="HP Command Line Smart Storage Administrator"
 arch=(i686 x86_64)
@@ -14,8 +14,8 @@ license=("CUSTOM")
 source_i686=("http://downloads.linux.hpe.com/SDR/repo/mcp/centos/6/i686/current/$pkgname-${pkgver//_/-}.i386.rpm")
 source_x86_64=("http://downloads.linux.hpe.com/SDR/repo/mcp/centos/7/x86_64/current/$pkgname-${pkgver//_/-}.x86_64.rpm")
 
-sha256sums_i686=('690a66c34b222469ce5dd7d61495b5ba6c736f6cd5a29c55badc188b83ce47c3')
-sha256sums_x86_64=('49c49493d18c450e35a8a09ea0a969b9f90c946a5da922e33fbc57bc5590c903')
+sha256sums_i686=('2b25b8bf0ad69ac0b400a261dc256eced26a23a1bf838b4b65d3ce1530e9c3e0')
+sha256sums_x86_64=('b2ab04ec5a605d32ef89da8891baacd89e6831e1afe7cf23434de81d9f6cb959')
 
 package() {
 	mv usr/{sbin,bin}
