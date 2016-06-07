@@ -1,5 +1,5 @@
 pkgbase = goonies
-	pkgdesc = Remake of Konami's The Goonies for the MSX
+	pkgdesc = Unofficial remake of Konami's The Goonies for the MSX
 	pkgver = 1.4.1528
 	pkgrel = 1
 	url = http://www.braingames.getput.com/goonies

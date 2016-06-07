@@ -3,7 +3,7 @@
 pkgname=goonies
 pkgver=1.4.1528
 pkgrel=1
-pkgdesc="Remake of Konami's The Goonies for the MSX"
+pkgdesc="Unofficial remake of Konami's The Goonies for the MSX"
 arch=('i686' 'x86_64')
 license=('unknown')
 url="http://www.braingames.getput.com/goonies"
