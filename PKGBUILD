@@ -1,4 +1,5 @@
-# Maintainer: Michal Lisowski <lisu87@gmail.com>
+# Maintainer: Rob Lynn <rob22uk at gmail dot com>
+# Contributor: Michal Lisowski <lisu87@gmail.com>
 # Contributor: Angelo "Encelo" Theodorou <encelo@users.sourceforge.net>
 # Contributor: Alessio 'alexwizard' Sergi <sergi.alessio {at} gmail.com>
 # Contributor: Eran Yahav <eran910@gmail.com>
@@ -12,7 +13,7 @@ url="http://notifier.geekysuavo.org/"
 license=('GPL2')
 depends=('gconf' 'gstreamer0.10' 'gtk2' 'libgnome-keyring' 'libnotify' 'libsoup')
 makedepends=('intltool')
-source=(http://files.geekysuavo.org/notifier/${pkgname}-${pkgver}.tar.bz2 libnotify.patch)
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}-${pkgver}.tar.bz2 libnotify.patch)
 md5sums=('697dea845b968af0f3526bad36f5855a' '808d1fd8ff9ff5d63c661a3351922ff0')
 
 prepare() {
