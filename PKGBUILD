@@ -6,7 +6,7 @@
 # The source is about 3.8 GiB, with an extra 3.2 GiB of dependencies downloaded in build(), and may take several hours to compile.
 
 pkgname='unreal-engine'
-pkgver=4.12.0
+pkgver=4.12.1
 pkgrel=1
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
@@ -26,9 +26,9 @@ options=(!strip staticlibs)
 
 build() {
   cd $srcdir/UnrealEngine
-  ./Setup.sh
-  ./GenerateProjectFiles.sh
-  make
+  #./Setup.sh
+  #./GenerateProjectFiles.sh
+  #make
 }
 
 package() {
@@ -39,13 +39,14 @@ package() {
   install -Dm644 LICENSE.pdf "$pkgdir/usr/share/licenses/UnrealEngine/LICENSE.pdf"
 
   install -d "$pkgdir/opt/$pkgname"
+  
+  install -d - "$pkgdir/opt/$pkgname"
 
   # copy the entire build dir, ~22 GiB
   # @todo only copy what is needed
   cp -r * "$pkgdir/opt/$pkgname/"
 
-  # make the whole thing world writable, otherwise there is a segmentation fault when starting the editor
-  # @todo find out what specifically needs to writable
+  # these folders needs to be writable, otherwise there is a segmentation fault when starting the editor
   chmod -R a+w "$pkgdir/opt/$pkgname/"
 
   install -Dm644 Engine/Source/Programs/UnrealVS/Resources/Preview.png "$pkgdir/usr/share/pixmaps/UE4Editor.png"
