@@ -3,7 +3,7 @@
 pkgname=spectools
 pkgver=2016.01.R1
 _ver=2016-01-R1
-pkgrel=2
+pkgrel=3
 pkgdesc="A set of utilities for spectrum analyzer hardware including Wi-Spy devices."
 arch=('i686' 'x86_64')
 url="https://www.kismetwireless.net/spectools/"
@@ -18,13 +18,14 @@ build () {
 	cd "$srcdir/$pkgname-$_ver"
 	CFLAGS="-std=gnu89" ./configure --prefix=/usr
 	make
+	
+	sed -i 's|GROUP="plugdev"|GROUP="wheel"|' 99-wispy.rules
 }
 
 package () {
 	cd "$srcdir/$pkgname-$_ver"
 	make DESTDIR="$pkgdir" install
 
-	sed -i 's|GROUP="plugdev"|GROUP="wheel"|' 99-wispy.rules
 	install -Dm 644 99-wispy.rules "$pkgdir/usr/lib/udev/rules.d/99-wispy.rules"
 	
 	cd "$srcdir"
