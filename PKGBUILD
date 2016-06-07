@@ -8,13 +8,17 @@ url="http://www.cmbi.ru.nl/molden/"
 license=('custom')
 groups=()
 depends=('mesa' 'glu')
-makedepends=('gcc-fortran'
-             'xproto'
-             'libx11'
-             'mesa'
-             'glu'
+makedepends=(
+    'gcc-fortran'
+    'xproto'
+    'libx11'
+    'mesa'
+    'glu'
 )
-optdepends=('openbabel: to create 2D images of the molecules in a .sdf file')
+optdepends=(
+   'openbabel: to create 2D images of the molecules in a .sdf file'
+   'wget: to fetch PDB from rcsb.org'
+)
 provides=('molden')
 conflicts=()
 replaces=()
@@ -28,9 +32,8 @@ md5sums=('9267c6fc6eef897668d7d7c2785e5f53')
 
 build() {
   cd "$pkgname$pkgver"
-
-  # Patch Makefile for surf utility to reflect the replacement of 
-  # missing makedepend 
+  # Patch Makefile for surf utility to reflect the 
+  # replacement of missing makedepend 
   sed -i 's/@.*makedepend.*$/@ \$(CC) \$(INCLUDE) -M \$(SRCS) \> makedep/' surf/Makefile
   make
 }
