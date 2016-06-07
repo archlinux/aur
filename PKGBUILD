@@ -1,11 +1,11 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=qtesseract5
-pkgver=1.1
-pkgrel=1
+pkgver=1.2
+pkgrel=2
 pkgdesc="Convert the SUB/IDX subtiltes to SRT file"
 arch=('any')
-url='http://forum.ubuntu-fr.org/viewtopic.php?id=1508741'
+url='https://forum.ubuntu-fr.org/viewtopic.php?pid=21507283'
 license=('GPL3')
 depends=('python-pyqt5'
          'hicolor-icon-theme'
@@ -16,7 +16,7 @@ makedepends=('qt5-tools'
              'imagemagick'
              )
 source=("https://launchpad.net/~hizo/+archive/ubuntu/mkv-extractor-gui/+files/qtesseract5_${pkgver}.orig.tar.gz")
-sha1sums=('2b40aa4ac56b7dc8d853c0617ed203d0d2395743')
+sha1sums=('49d352c12ab9b1739dfa627999f8339bca327f5e')
 
 prepare() {
   cd qtesseract5
@@ -44,9 +44,8 @@ package() {
 
   install -Dm755 Qtesseract5.py "${pkgdir}/usr/share/qtesseract5/Qtesseract5.py"
   install -Dm644 Qtesseract5Ressources_rc.py "${pkgdir}/usr/share/qtesseract5/Qtesseract5Ressources_rc.py"
-  install -Dm644 ui_Qtesseract5.py "${pkgdir}/usr/share/qtesseract5/ui_Qtesseract5.py"
   install -Dm644 Qtesseract5_fr_FR.qm "${pkgdir}/usr/share/qtesseract5/Qtesseract5_fr_FR.qm"
   install -Dm644 man/qtesseract5.1 "${pkgdir}/usr/share/man/man1/qtesseract5.1"
 
-  (cd icons; for i in $(find . -name *.png -type f); do install -Dm644 "${i}" "${pkgdir}/usr/share/icons/hicolor/${i}"; done)
+  install -Dm644 icons/scalable/apps/qtesseract5.svgz "${pkgdir}/usr/share/icons/hicolor/scalable/apps/qtesseract5.svgz"
 }
