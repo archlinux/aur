@@ -1,14 +1,15 @@
-# Maintainer: Bastien Dejean <nihilhill@gmail.com>
+# Maintainer: Brian Bidulock <bidulock@openss7.org>
+# Contributor: Bastien Dejean <nihilhill@gmail.com>
 
 _pkgname=bspwm
 pkgname=${_pkgname}-git
-pkgver=1208
+pkgver=1212
 pkgrel=1
 pkgdesc='A tiling window manager based on binary space partitioning'
 arch=('i686' 'x86_64')
 url="https://github.com/baskerville/${_pkgname}"
 license=('custom:BSD')
-depends=('libxcb' 'xcb-util' 'xcb-util-wm')
+depends=('bash' 'xcb-util' 'xcb-util-wm' 'xcb-util-keysyms')
 makedepends=('git')
 optdepends=('sxhkd-git: to define keyboard and pointer bindings' 'bar-aint-recursive: for the example panel' 'xtitle-git: for the example panel' 'sutils-git: for the example panel' 'terminus-font: for the example panel')
 provides=("${_pkgname}")
