@@ -2,7 +2,7 @@
 
 pkgname=gdb-dashboard-git
 _gitname=gdb-dashboard
-pkgver=0.0.101.700c9b9
+pkgver=0.0.1.149.7612d7f
 pkgrel=1
 pkgdesc="Modular visual interface for GDB in Python"
 url='https://github.com/cyrus-and/gdb-dashboard'
@@ -12,13 +12,13 @@ depends=( 'gdb' 'binutils')
 makedepends=('git')
 provides=('gdb-dashboard')
 conflicts=('gdb-dashboard')
-install='gdb-dashboard.install'
-source=(${pkgname}::git+https://github.com/cyrus-and/${_gitname})
+source=(${pkgname}::git+https://github.com/cyrus-and/gdb-dashboard)
 sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
-  printf "%s.%s.%s" "0.0" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.%s.%s" "$(git describe --tags --abbrev=0|sed -r 's|v?(.+)|\1|')" \
+    "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
