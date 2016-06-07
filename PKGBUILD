@@ -3,16 +3,16 @@
 
 pkgname=perftest
 pkgver=3.0
-_pkgver_subver=0.16
-_pkgver_commit=gb2f2e82
-pkgrel=3
+_pkgver_subver=0.18
+_pkgver_commit=gb464d59
+pkgrel=4
 pkgdesc='OpenFabrics Alliance Infiniband verbs performance testing and benchmarking tools'
 arch=('x86_64' 'i686')
-url=('https://www.openfabrics.org/index.php/overview.html')
+url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('librdmacm' 'libibumad' 'bash')
 source=("https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}-${_pkgver_subver}.${_pkgver_commit}.tar.gz")
-md5sums=('b30c78e6a483d610de473907baf8f684')
+md5sums=('ba6e07afca1fe95d5cdeed6c31ebb31e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
