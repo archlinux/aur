@@ -1,7 +1,7 @@
 pkgbase = cx23885-firmware
 	pkgdesc = Hauppauge hvr1800 tv-tuner card firmware.
 	pkgver = 2016.04.16
-	pkgrel = 1
+	pkgrel = 2
 	url = http://permalink.gmane.org/gmane.linux.drivers.video-input-infrastructure/46978
 	arch = any
 	license = custom
