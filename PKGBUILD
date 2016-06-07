@@ -9,7 +9,7 @@
 
 pkgname=popcorntime
 pkgver=0.3.9
-pkgrel=3
+pkgrel=4
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="http://popcorntime.sh/"
@@ -34,37 +34,37 @@ optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 #install="popcorntime.install"
 # Needed variables for sources downloads
-_commit_hash="18156908dd1580db889f6fcb3d8dfe0fd3214808"
+_commit_hash="4ba2060d19357ed85f16b862b70a0625b4286838"
 _pkgname="popcorn-desktop"
 source=(
-	"${_pkgname}_${pkgver}.tar.gz::https://github.com/popcorn-official/popcorn-desktop/archive/${_commit_hash}.tar.gz"
+	"${_pkgname}_${pkgver}::git+https://github.com/popcorn-official/popcorn-desktop/#commit=${_commit_hash}"
 	"popcorntime.desktop"
 )
-sha256sums=('31b893cbcd730a0bc3be81566fee4de8d40a7071df88fba473fe95f1b8b107fe'
+sha256sums=('SKIP'
             '4422f21e16176fda697ed0c8a6d1fb6f9dd7c4bc3f3694f9bcc19cbe66630334')
 
 # Useful variables for builds
 [ "$CARCH" = "i686" ]   && _platform=linux32
 [ "$CARCH" = "x86_64" ] && _platform=linux64
-_srcdir="${_pkgname}-${_commit_hash}"
+_srcdir="${_pkgname}_${pkgver}"
 _bpath="${_srcdir}/build/Popcorn-Time/${_platform}"
 
 # Building the package
 prepare() {
-	cd "${_srcdir}"
+	cd "${srcdir}/${_srcdir}"
 
-	#export PYTHON=/usr/bin/python2
-
-	# Hacky way to only build
-	sed 's/gulp start/gulp build/g' -i package.json
-
+	msg2 "Fix missing gulp..."
+	npm install gulp
+	msg2 "Installing npm dependencies..."
 	npm install
+	msg2 "Installing bower dependencies..."
+	bower install
 }
 
 build() {
-	cd "${_srcdir}"
+	cd "${srcdir}/${_srcdir}"
 
-	npm start
+	gulp build
 }
 
 package() {
