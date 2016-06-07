@@ -28,9 +28,7 @@ build() {
   cd $srcdir/UnrealEngine
   ./Setup.sh
   ./GenerateProjectFiles.sh
-
-  make UE4Editor UE4Game UnrealPak CrashReportClient ShaderCompileWorker UnrealLightmass
-  make -j1 ShaderCompileWorker
+  make
 }
 
 package() {
@@ -50,7 +48,7 @@ package() {
   # @todo find out what specifically needs to writable
   chmod -R a+w "$pkgdir/opt/$pkgname/"
 
-  install -Dm644 Engine/Content/Editor/Slate/About/UE4Icon.png "$pkgdir/usr/share/pixmaps/UE4Editor.png"
+  install -Dm644 Engine/Source/Programs/UnrealVS/Resources/Preview.png "$pkgdir/usr/share/pixmaps/UE4Editor.png"
 }
 
 # vim:set ts=2 sw=2 et:
