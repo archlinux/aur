@@ -1,0 +1,10 @@
+# PKGBUILD files and folders
+src
+pkg
+
+# Source packages
+*.tar.gz
+*.tar.xz
+
+# Project specific packages
+gdub
