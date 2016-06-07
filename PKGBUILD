@@ -7,7 +7,7 @@
 _npmname=yo
 
 pkgname=nodejs-yeoman
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="Command line interface for creating, building, maintaining, and shipping Yeoman projects."
 arch=(any)
@@ -17,7 +17,7 @@ depends=('npm' 'curl' 'git' 'ruby-compass' 'libjpeg-turbo' 'optipng' 'bower' 'no
 optdepends=('phantomjs: browser-run test suite' )
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('232d3a35c7d803021d40ee5d83bed47d894e459f95be4d00624c0408291b94f7')
+sha256sums=('4f096859019b36d4a4c5e078816da29962c5123e6147b4747b65581a974d08a5')
 
 package() {
 	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
