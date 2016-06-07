@@ -3,13 +3,13 @@
 
 pkgname=interceptty
 pkgver=0.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Serial port sniffer, network serial server/client and serial port emulator"
 arch=('i686' 'x86_64')
 url="http://www.suspectclass.com/sgifford/interceptty/"
 license=('GPL')
 depends=('perl')
-source=("http://j5lx.fmail.co.uk/pub/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+source=("https://repo.j5lx.eu/archive/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('915244f09601e3c71209e444f2d3194f')
 
 build() {
