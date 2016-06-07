@@ -1,0 +1,17 @@
+pkgbase = x-tools-armv8-bin
+	pkgdesc = crosstool-ng toolchain - x-tools package for armv8 compiling
+	pkgver = 20160601
+	pkgrel = 1
+	url = https://archlinuxarm.org/wiki/Distcc_Cross-Compiling
+	install = x-tools-armv8-bin.install
+	arch = x86_64
+	license = GPL3
+	depends = xz
+	provides = apw
+	noextract = x-tools8.tar.xz
+	options = !emptydirs
+	source = https://archlinuxarm.org/builder/xtools/x-tools8.tar.xz
+	md5sums = SKIP
+
+pkgname = x-tools-armv8-bin
+
