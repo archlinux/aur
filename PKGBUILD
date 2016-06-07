@@ -1,7 +1,8 @@
 # Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
 
+_pkgname=polyglot
 pkgname=polyglot-winboard-git
-pkgver=d86ce4e
+pkgver=r44.5904a29
 pkgrel=1
 epoch=1
 pkgdesc="UCI/USI/UCCI to XBoard adapter (WinBoard fork)"
@@ -9,32 +10,28 @@ arch=('i686' 'x86_64')
 url="http://hgm.nubati.net/cgi-bin/gitweb.cgi?p=polyglot.git;a=summary"
 license=('GPL2')
 depends=('glibc')
-provides=('polyglot')
-conflicts=('polyglot')
-replaces=('polyglot')
-# If anyone knows the URL of the actual repository, please tell me!
-source=("polyglot.tar.gz::http://hgm.nubati.net/cgi-bin/gitweb.cgi?p=polyglot.git;a=snapshot;h=refs/heads/learn;sf=tgz")
+makedepends=('git')
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
+replaces=("${_pkgname}")
+source=("git+http://hgm.nubati.net/git/${_pkgname}.git")
 md5sums=('SKIP')
 
-_enter_polyglot_directory() {
-  cd $(ls -lt --color=never $srcdir | grep '^d' | grep -Eo 'polyglot-learn-[a-f0-9]+$' | head -n1)
-}
-
 pkgver() {
-  _enter_polyglot_directory
+  cd "${srcdir}/${_pkgname}"
 
-  pwd | grep -Po '[a-f0-9]+$'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  _enter_polyglot_directory
+  cd "${srcdir}/${_pkgname}"
 
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  _enter_polyglot_directory
+  cd "${srcdir}/${_pkgname}"
 
   make DESTDIR="${pkgdir}" install
 }
