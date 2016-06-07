@@ -28,8 +28,8 @@ build() {
 }
 
 package() {
-	install -Dm 755 "$srcdir"/usr/sbin/raid-check "$pkgdir"/usr/bin/raid-check
-	install -Dm 644 "$srcdir"/etc/sysconfig/raid-check "$pkgdir"/etc/conf.d/raid-check
+	install -Dm 755 "$srcdir"/usr/sbin/raid-check "$pkgdir/usr/bin/raid-check"
+	install -Dm 644 "$srcdir"/etc/sysconfig/raid-check "$pkgdir/etc/conf.d/raid-check"
 	
 	install -Dm 644 raid-check.service "$pkgdir/usr/lib/systemd/system/raid-check.service"
 	install -Dm 644 raid-check.timer "$pkgdir/usr/lib/systemd/system/raid-check.timer"
