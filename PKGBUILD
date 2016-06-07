@@ -28,7 +28,7 @@ source=(https://downloads.sourceforge.net/project/$_pkgname/$_pkgname/$pkgver/${
 sha256sums=('699db4da3621904113e040703220abb1148dfef477b55305e2f14a4f1f8f25d4'
             '632cae14095e065cb550b0f16faf39d8f822d0a8bb5b605e903f3bc7657a4ee5'
             '368870f92c658e8add261695923470855a969c0d7ecafd880ec7144ac245adbf'
-            '23e73fa308603febf9cf032c86775b0b6d8baeb41d78fd904e5bf45e3f83f7a8')
+            'd557e210ab392c317dc635efa2ac26739f06463b6d816348f3e8e78d3a815c38')
 
 prepare() {
 	cd "$srcdir/${_pkgname}_$pkgver"
