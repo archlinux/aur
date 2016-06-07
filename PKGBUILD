@@ -1,8 +1,8 @@
 # Maintainer: Yardena Cohen <yardenack at gmail dot com>
 
 pkgname=amavisd-new
-pkgver=2.10.1
-pkgrel=2
+pkgver=2.11.0
+pkgrel=1
 pkgdesc="High-performance interface between mailer (MTA) and content checkers"
 arch=('any')
 url="http://www.ijs.si/software/amavisd/"
@@ -39,7 +39,7 @@ backup=('etc/amavisd/amavisd.conf' 'etc/amavisd/amavisd-custom.conf')
 source=("http://www.ijs.si/software/amavisd/amavisd-new-${pkgver}.tar.xz"
         "service"
         "tmpfiles")
-sha256sums=('1d3d3f372d0888018b950ee19704c298b5d02e2c287ca2d5f1a785a078b6038f'
+sha256sums=('b41de4f0796cb344120c9792c82fc25177cbf9f51aaa5f91536cdf34aea89906'
             'cdfc26a15049ea8526b552ab1bef9ccf9bc8608ee65897801d9ea87de84a7435'
             '84bccf5f2b2740b25ea7d15237607f894b7ce7558e1ecba67f2d005497b8bf25')
 install=install
