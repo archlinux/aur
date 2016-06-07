@@ -1,0 +1,19 @@
+pkgbase = python-cursed
+	pkgdesc = Simplified curses interface with concurrency, for quick and sane curses apps
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/johannestaas/cursed
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	depends = python
+	depends = python-six
+	depends = python-gevent
+	provides = cursed
+	conflicts = python-cursed-git
+	source = https://github.com/johannestaas/cursed/archive/0.2.0.tar.gz
+	sha256sums = a19ec0d0f42c065f9207f206c07dd474f8413ad332efb11d381e8b91d2c6dfb8
+
+pkgname = python-cursed
+
