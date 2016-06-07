@@ -1,0 +1,28 @@
+diff -r 58a29d4ff2ab lib-python/3/ssl.py
+--- a/lib-python/3/ssl.py	Mon May 30 15:34:48 2016 -0700
++++ b/lib-python/3/ssl.py	Tue Jun 07 04:46:22 2016 +0800
+@@ -91,14 +91,13 @@
+     SSL_ERROR_INVALID_ERROR_CODE,
+     )
+ from _ssl import HAS_SNI, HAS_ECDH, HAS_NPN
+-from _ssl import (PROTOCOL_SSLv3, PROTOCOL_SSLv23,
++from _ssl import (PROTOCOL_SSLv23,
+                   PROTOCOL_TLSv1)
+ from _ssl import _OPENSSL_API_VERSION
+ 
+ _PROTOCOL_NAMES = {
+     PROTOCOL_TLSv1: "TLSv1",
+     PROTOCOL_SSLv23: "SSLv23",
+-    PROTOCOL_SSLv3: "SSLv3",
+ }
+ try:
+     from _ssl import PROTOCOL_SSLv2
+@@ -664,7 +663,7 @@
+     d = pem_cert_string.strip()[len(PEM_HEADER):-len(PEM_FOOTER)]
+     return base64.decodebytes(d.encode('ASCII', 'strict'))
+ 
+-def get_server_certificate(addr, ssl_version=PROTOCOL_SSLv3, ca_certs=None):
++def get_server_certificate(addr, ssl_version=PROTOCOL_SSLv23, ca_certs=None):
+     """Retrieve the certificate from the server at the specified address,
+     and return it as a PEM-encoded string.
+     If 'ca_certs' is specified, validate the server cert against it.
