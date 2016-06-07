@@ -6,7 +6,7 @@ pkgbase = foobar2000-texttools-bin
 	arch = any
 	license = unknown
 	depends = foobar2000
-	source = foobar2000-texttools-1.0.5.zip::https://www.dropbox.com/s/6rzhmgw8y8sibv5/foo_texttools.zip
+	source = foobar2000-texttools-bin-1.0.5.zip::https://www.dropbox.com/s/6rzhmgw8y8sibv5/foo_texttools.zip
 	md5sums = 29f4b0ded57db27b806b0943ebb239bb
 
 pkgname = foobar2000-texttools-bin

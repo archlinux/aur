@@ -10,7 +10,7 @@ arch=('any')
 url="https://www.foobar2000.org/components/view/foo_texttools"
 license=('unknown')
 depends=('foobar2000')
-source=("$_pkgname-$pkgver.zip::https://www.dropbox.com/s/6rzhmgw8y8sibv5/foo_texttools.zip")
+source=("$pkgname-$pkgver.zip::https://www.dropbox.com/s/6rzhmgw8y8sibv5/foo_texttools.zip")
 md5sums=('29f4b0ded57db27b806b0943ebb239bb')
 
 package() {
