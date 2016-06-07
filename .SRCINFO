@@ -1,0 +1,12 @@
+pkgbase = fluxbox-style-greybird
+	pkgdesc = Greybird style for Fluxbox
+	pkgver = 20160607
+	pkgrel = 1
+	url = https://github.com/corebob/fluxbox-style-greybird
+	arch = any
+	license = CCPL
+	source = https://github.com/corebob/fluxbox-style-greybird/archive/v0.1.zip
+	md5sums = b7265ff33ff5d7b426d5c018fd4479c7
+
+pkgname = fluxbox-style-greybird
+
