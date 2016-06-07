@@ -1,7 +1,7 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 pkgname=feedreader-git
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="FeedReader is a modern desktop application designed to complement existing web-based RSS accounts."
 arch=('i686' 'x86_64')
 url="https://github.com/jangernert/FeedReader"
@@ -16,7 +16,7 @@ source=('git+https://github.com/jangernert/FeedReader.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "$srcdir/FeedReader"
   # cutting off 'foo-' prefix that presents in the git tag
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
