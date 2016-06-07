@@ -5,9 +5,10 @@
 # Contributor: Andreas Schrafl <aschrafl@gmail.com>
 # Contributor: piojo <aur@zwell.net>
 # Contributor: hack.augusto <hack.augusto@gmail.com>
+# Contributor: Yen Chi Hsuan <yan12125@gmail.com>
 
 pkgname=depot-tools-git
-pkgver=r2780.af0b79e
+pkgver=r3323.3bff56b
 pkgrel=1
 pkgdesc='Build tools for working with Chromium development, include gclient'
 arch=('any')
@@ -30,6 +31,7 @@ scripts_to_fix_exec=(
 	apply_issue
 	cit
 	clang-format
+	commit_queue
 	depot-tools-auth
 	download_from_google_storage
 	drover
@@ -38,7 +40,6 @@ scripts_to_fix_exec=(
 	gclient
 	git-runhooks
 	gn
-	hammer
 	roll-dep-svn
 	roll-dep
 )
