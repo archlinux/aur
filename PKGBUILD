@@ -1,7 +1,7 @@
 # Maintainer: Bastian Löher <b.loeher@gsi.de>
 pkgname=fairroot
-pkgver=15.11c
-fairsoftver=nov15p4-1
+pkgver=15.11d
+fairsoftver=nov15p6-1
 pkgrel=1
 pkgdesc="Analysis framework based on root provided by GSI/FAIR."
 arch=('x86_64')
@@ -31,7 +31,7 @@ source=("https://github.com/FairRootGroup/FairRoot/archive/v-${pkgver}.tar.gz"
 	'fix_return.patch'
 	)
 noextract=()
-md5sums=('775fb31d5c3b99f363a5c9eb9c301698'
+md5sums=('a5e2cc964e653ef086e9614b7b014e82'
          'd2d2d7b11b308120382fba7e32c5268a'
          '7eecd47253b1f005d4da59ddcfa28eed')
 
