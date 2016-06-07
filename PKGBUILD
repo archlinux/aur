@@ -2,7 +2,7 @@
 
 pkgname=xournal-git
 _gitname=xournal
-pkgver=0.4.8.8.g59f5980
+pkgver=0.4.8.26.g50184f0
 pkgrel=1
 pkgdesc="Notetaking and sketching application"
 arch=('i686' 'x86_64')
@@ -14,7 +14,6 @@ makedepends=('git' 'gettext')
 optdepends=('ghostscript: import PS/PDF files as bitmap backgrounds')
 provides=('xournal')
 conflicts=('xournal' 'xournal-image-patched' 'xournalpp-svn')
-install=xournal.install
 source=('xournal::git+http://git.code.sf.net/p/xournal/code')
 sha1sums=('SKIP')
 
