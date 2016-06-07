@@ -3,10 +3,10 @@
 _digest="http://www.imagemagick.org/download/digest.rdf"
 _srcname="ImageMagick"
 _srcver=$(curl -s "$_digest" | grep "${_srcname}\-7[0-9\.\-]*\.tar\.xz" | sed 's/[^0-9\.\-]*//g' | sed -r 's/.//;s/.{2}$//')
-_srcverregex=$(echo ${_srcver} | sed 's/\./\\\./g' | sed 's/\-/\\\-/g') # translate source version to a regular expression
+_srcverregex=$(echo "$_srcver" | sed 's/\./\\\./g' | sed 's/\-/\\\-/g') # translate source version to a regular expression
 pkgname=imagemagick-full-doc
 pkgver=$(echo ${_srcver} | tr '-' '.')
-pkgrel=3
+pkgrel=4
 pkgdesc="The ImageMagick documentation (utilities manuals and libraries API)"
 arch=('any')
 url="http://www.imagemagick.org/"
