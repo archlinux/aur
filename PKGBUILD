@@ -15,7 +15,7 @@ _language_liquid_ver=0.5.1
 _language_unix_shell_ver=0.27.8
 
 pkgname=${_pkgname}-editor-${_version}
-pkgver=1.7.4
+pkgver=1.8.0
 pkgrel=1
 pkgdesc='Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux development pre-installed.'
 arch=('x86_64' 'i686')
@@ -32,7 +32,7 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/atom/atom/archive/v${p
 "atom.desktop"
 "theme.patch"
 "about-arch.patch")
-md5sums=('0e0393c45d500636c99f5d3f078b3d4c'
+md5sums=('158c18d35d071403db18bdd85fa2e738'
          '3e14baadf7d6c97f56704c0922026f3b'
          '74cc026d4104072dadb2733745f1b268'
          '367f71ad1cfc2e03e97a48d2e32995fb'
