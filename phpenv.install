@@ -1,0 +1,10 @@
+post_install() {
+	echo 'Your shell must be initialized before phpenv will function correctly.'
+	echo 'Run the following, and consider adding it to your shell rc:'
+	echo '    eval "$(phpenv init -)"'
+}
+
+post_remove() {
+	echo 'Remove the following from your shell rc, if present:'
+	echo '    eval "$(phpenv init -)"'
+}
