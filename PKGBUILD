@@ -8,8 +8,8 @@
 # Contributor: Yen Chi Hsuan <yan12125@gmail.com>
 
 pkgname=depot-tools-git
-pkgver=r3323.3bff56b
-pkgrel=6
+pkgver=r3326.0b67044
+pkgrel=1
 pkgdesc='Build tools for working with Chromium development, include gclient'
 arch=('any')
 url='http://dev.chromium.org/developers/how-tos/install-depot-tools'
@@ -18,6 +18,9 @@ source=("${pkgname}::git+https://chromium.googlesource.com/chromium/tools/depot_
 license=('Custom')
 depends=('python2' 'ninja')
 makedepends=('git')
+optdepends=(
+	'google-cloud-sdk: for gsutil and download_from_google_storage'
+)
 provides=('depot_tools' 'gclient')
 conflicts=('gclient-svn' 'depot_tools-svn')
 options=('!strip')
@@ -110,6 +113,13 @@ package()
 	exec /usr/bin/ninja
 	EOF
 	chmod 755 "${pkgdir}/opt/depot_tools/ninja"
+
+	# gsutil v4.19 is included in google-cloud-sdk, and I guess 4.19 is compatible with 4.13 and 4.15
+	# download_from_google_storage.py expects version 4.15 and gsutil.py expects 4.13
+	GSUTIL_PATH="${pkgdir}/opt/depot_tools/external_bin/gsutil"
+	install -d "${GSUTIL_PATH}/gsutil_4.13"
+	ln -s /opt/google-cloud-sdk/platform/gsutil "${GSUTIL_PATH}/gsutil_4.13/gsutil"
+	ln -s "gsutil_4.13" "${GSUTIL_PATH}/gsutil_4.15"
 
 	rm -rf "${pkgdir}/opt/depot_tools/.git"
 }
