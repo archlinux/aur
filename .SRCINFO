@@ -1,14 +1,12 @@
 pkgbase = depot-tools-git
 	pkgdesc = Build tools for working with Chromium development, include gclient
 	pkgver = r3323.3bff56b
-	pkgrel = 3
+	pkgrel = 4
 	url = http://dev.chromium.org/developers/how-tos/install-depot-tools
 	install = depot_tools.install
 	arch = any
 	license = Custom
 	makedepends = git
-	makedepends = scons
-	makedepends = setconf
 	depends = python2
 	depends = python2-colorama
 	depends = python2-pylint
