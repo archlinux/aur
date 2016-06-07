@@ -2,7 +2,7 @@
 # Contributors: Det, goetzc, Ner0, Lari Tikkanen, oke3, Flamelab, WAntilles
 
 pkgname=smplayer-svn
-pkgver=16.1.0.r7318
+pkgver=16.4.0.7864.r7958
 pkgrel=1
 pkgdesc="Advanced front-end for MPlayer/MPV"
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  echo $(grep -m1 'version' smplayer.spec | cut -d " " -f3).r$(svnversion)
+  echo $(grep -m1 'Version' smplayer.spec | cut -d " " -f9).r$(svnversion)
 }
 
 build() {
