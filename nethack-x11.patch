@@ -1,161 +1,213 @@
-diff --git a/Makefile b/Makefile
-index 2f11c35..2233f03 100644
---- a/Makefile
-+++ b/Makefile
-@@ -17,8 +17,8 @@
- PREFIX	 = /usr
- GAME     = nethack
- # GAME     = nethack.prg
--GAMEUID  = games
--GAMEGRP  = bin
-+GAMEUID  = root
-+GAMEGRP  = root
- 
- # Permissions - some places use setgid instead of setuid, for instance
- # See also the option "SECURE" in include/config.h
-@@ -35,13 +35,13 @@ DIRPERM  = 0755
- # therefore there should not be anything in GAMEDIR that you want to keep
- # (if there is, you'll have to do the installation by hand or modify the
- # instructions)
--GAMEDIR  = $(PREFIX)/games/lib/$(GAME)dir
-+GAMEDIR  = $(PREFIX)/share/$(GAME)
- VARDIR  = $(GAMEDIR)
--SHELLDIR = $(PREFIX)/games
-+SHELLDIR = $(PREFIX)/bin
- 
- # per discussion in Install.X11 and Install.Qt
--VARDATND = 
--# VARDATND = x11tiles NetHack.ad pet_mark.xbm
-+# VARDATND = 
-+VARDATND = x11tiles NetHack.ad pet_mark.xbm
- # VARDATND = x11tiles NetHack.ad pet_mark.xbm rip.xpm
- # for Atari/Gem
- # VARDATND = nh16.img title.img GEM_RSC.RSC rip.img
-diff --git a/include/config.h b/include/config.h
-index 3efbfa2..db98440 100644
---- a/include/config.h
-+++ b/include/config.h
+diff -ru nethack-3.6.0.orig/include/config.h nethack-3.6.0/include/config.h
+--- nethack-3.6.0.orig/include/config.h	2015-11-17 06:58:34.000000000 +0100
++++ nethack-3.6.0/include/config.h	2016-05-08 21:15:56.953494936 +0200
 @@ -43,7 +43,7 @@
-  * Some combinations make no sense.  See the installation document.
-  */
- #define TTY_GRAPHICS	/* good old tty based graphics */
--/* #define X11_GRAPHICS */	/* X11 interface */
-+#define X11_GRAPHICS	/* X11 interface */
- /* #define QT_GRAPHICS */	/* Qt interface */
- /* #define GNOME_GRAPHICS */	/* Gnome interface */
- /* #define MSWIN_GRAPHICS */	/* Windows NT, CE, Graphics */
-@@ -169,8 +169,8 @@
+ #if !defined(NOTTYGRAPHICS)
+ #define TTY_GRAPHICS /* good old tty based graphics */
+ #endif
+-/* #define X11_GRAPHICS */   /* X11 interface */
++#define X11_GRAPHICS    /* X11 interface */
+ /* #define QT_GRAPHICS */    /* Qt interface */
+ /* #define GNOME_GRAPHICS */ /* Gnome interface */
+ /* #define MSWIN_GRAPHICS */ /* Windows NT, CE, Graphics */
+@@ -113,7 +113,7 @@
+ #endif
  
- #ifdef UNIX
- /* path and file name extension for compression program */
--#define COMPRESS "/usr/bin/compress"	/* Lempel-Ziv compression */
--#define COMPRESS_EXTENSION ".Z"		/* compress's extension */
-+#define COMPRESS "/bin/gzip"	/* Lempel-Ziv compression */
-+#define COMPRESS_EXTENSION ".gz"		/* compress's extension */
- /* An example of one alternative you might want to use: */
- /* #define COMPRESS "/usr/local/bin/gzip" */	/* FSF gzip compression */
- /* #define COMPRESS_EXTENSION ".gz" */		/* normal gzip extension */
-@@ -185,7 +185,7 @@
-  *	a tar-like file, thus making a neater installation.  See *conf.h
-  *	for detailed configuration.
+ #ifndef DEFAULT_WINDOW_SYS
+-#define DEFAULT_WINDOW_SYS "tty"
++#define DEFAULT_WINDOW_SYS "X11"
+ #endif
+ 
+ #ifdef X11_GRAPHICS
+@@ -125,7 +125,7 @@
+  * would allow:
+  *  xpmtoppm <x11tiles.xpm | pnmscale 1.25 | ppmquant 90 >x11tiles_big.xpm
   */
--/* #define DLB */	/* not supported on all platforms */
-+#define DLB	/* not supported on all platforms */
+-/* # define USE_XPM */ /* Disable if you do not have the XPM library */
++#define USE_XPM /* Disable if you do not have the XPM library */
+ #ifdef USE_XPM
+ #define GRAPHIC_TOMBSTONE /* Use graphical tombstone (rip.xpm) */
+ #endif
+@@ -250,11 +250,11 @@
+ 
+ #if defined(UNIX) && !defined(ZLIB_COMP) && !defined(COMPRESS)
+ /* path and file name extension for compression program */
+-#define COMPRESS "/usr/bin/compress" /* Lempel-Ziv compression */
+-#define COMPRESS_EXTENSION ".Z"      /* compress's extension */
++/* #define COMPRESS "/usr/bin/compress" */ /* Lempel-Ziv compression */
++/* #define COMPRESS_EXTENSION ".Z" */      /* compress's extension */
+ /* An example of one alternative you might want to use: */
+-/* #define COMPRESS "/usr/local/bin/gzip" */ /* FSF gzip compression */
+-/* #define COMPRESS_EXTENSION ".gz" */       /* normal gzip extension */
++#define COMPRESS "/usr/bin/gzip" /* FSF gzip compression */
++#define COMPRESS_EXTENSION ".gz"       /* normal gzip extension */
+ #endif
+ 
+ #ifndef COMPRESS
+@@ -298,7 +298,7 @@
+  *      a tar-like file, thus making a neater installation.  See *conf.h
+  *      for detailed configuration.
+  */
+-/* #define DLB */ /* not supported on all platforms */
++#define DLB /* not supported on all platforms */
  
  /*
-  *	Defining INSURANCE slows down level changes, but allows games that
-@@ -204,7 +204,7 @@
+  *      Defining INSURANCE slows down level changes, but allows games that
+@@ -317,7 +317,7 @@
   * otherwise it will be the current directory.
   */
- # ifndef HACKDIR
--#  define HACKDIR "/usr/games/lib/nethackdir"
-+#  define HACKDIR "/usr/share/nethack"
- # endif
- 
- /*
-diff --git a/include/unixconf.h b/include/unixconf.h
-index fe1b006..4d0cf48 100644
---- a/include/unixconf.h
-+++ b/include/unixconf.h
-@@ -37,7 +37,7 @@
- #define NETWORK		/* if running on a networked system */
- 			/* e.g. Suns sharing a playground through NFS */
- /* #define SUNOS4 */	/* SunOS 4.x */
--/* #define LINUX */	/* Another Unix clone */
-+#define LINUX	/* Another Unix clone */
- /* #define CYGWIN32 */	/* Unix on Win32 -- use with case sensitive defines */
- /* #define GENIX */	/* Yet Another Unix Clone */
- /* #define HISX */	/* Bull Unix for XPS Machines */
-@@ -132,7 +132,7 @@
-  * "extra output" method is used, but not all systems provide access to
-  * a fine-grained timer.
-  */
--/* #define TIMED_DELAY */	/* usleep() */
-+#define TIMED_DELAY	/* usleep() */
+ #ifndef HACKDIR
+-#define HACKDIR "/usr/games/lib/nethackdir"
++#define HACKDIR "/usr/games/nethack"
  #endif
  
  /*
-diff --git a/src/Makefile b/src/Makefile
-index 29ad99a..0be4a96 100644
---- a/src/Makefile
-+++ b/src/Makefile
-@@ -214,8 +214,8 @@ WINBEOBJ =
+@@ -327,7 +327,7 @@
+  * since the user might create files in a directory of his choice.
+  * Of course SECURE is meaningful only if HACKDIR is defined.
+  */
+-/* #define SECURE */ /* do setuid(getuid()) after chdir() */
++#define SECURE /* do setuid(getuid()) after chdir() */
+ 
+ /*
+  * If it is desirable to limit the number of people that can play Hack
+diff -ru nethack-3.6.0.orig/include/unixconf.h nethack-3.6.0/include/unixconf.h
+--- nethack-3.6.0.orig/include/unixconf.h	2015-11-17 11:54:25.000000000 +0100
++++ nethack-3.6.0/include/unixconf.h	2016-05-08 21:19:25.780412473 +0200
+@@ -36,7 +36,7 @@
+ #define NETWORK        /* if running on a networked system */
+                        /* e.g. Suns sharing a playground through NFS */
+ /* #define SUNOS4 */   /* SunOS 4.x */
+-/* #define LINUX */    /* Another Unix clone */
++#define LINUX    /* Another Unix clone */
+ /* #define CYGWIN32 */ /* Unix on Win32 -- use with case sensitive defines */
+ /* #define GENIX */    /* Yet Another Unix Clone */
+ /* #define HISX */     /* Bull Unix for XPS Machines */
+@@ -101,7 +101,7 @@
+  * If you want the static parts of your playground on a read-only file
+  * system, define VAR_PLAYGROUND to be where the variable parts are kept.
+  */
+-/* #define VAR_PLAYGROUND "/var/lib/games/nethack" */
++#define VAR_PLAYGROUND "/var/games/nethack"
+ 
+ /*
+  * Define DEF_PAGER as your default pager, e.g. "/bin/cat" or "/usr/ucb/more"
+@@ -128,7 +128,7 @@
+  * "extra output" method is used, but not all systems provide access to
+  * a fine-grained timer.
+  */
+-/* #define TIMED_DELAY */ /* usleep() */
++#define TIMED_DELAY /* usleep() */
+ #endif
+ 
+ /*
+diff -ru nethack-3.6.0.orig/src/invent.c nethack-3.6.0/src/invent.c
+--- nethack-3.6.0.orig/src/invent.c	2015-11-16 06:05:29.000000000 +0100
++++ nethack-3.6.0/src/invent.c	2016-05-12 23:03:28.134734406 +0200
+@@ -2813,6 +2813,7 @@
+                 picked_some ? "Other things" : "Things",
+                 Blind ? "you feel" : "are");
+         putstr(tmpwin, 0, buf);
++        putstr(tmpwin, 0, ""); /* add a separator */
+         for (; otmp; otmp = otmp->nexthere) {
+             if (otmp->otyp == CORPSE && will_feel_cockatrice(otmp, FALSE)) {
+                 felt_cockatrice = TRUE;
+diff -ru nethack-3.6.0.orig/sys/unix/Makefile.src nethack-3.6.0/sys/unix/Makefile.src
+--- nethack-3.6.0.orig/sys/unix/Makefile.src	2015-11-12 08:51:56.000000000 +0100
++++ nethack-3.6.0/sys/unix/Makefile.src	2016-05-08 21:22:05.518161366 +0200
+@@ -222,8 +222,8 @@
  
  #
  #
--WINSRC = $(WINTTYSRC)
--WINOBJ = $(WINTTYOBJ)
-+WINSRC = $(WINTTYSRC) $(WINX11SRC)
-+WINOBJ = $(WINTTYOBJ) $(WINX11OBJ)
+-#WINSRC = $(WINTTYSRC)
+-#WINOBJ = $(WINTTYOBJ)
++WINSRC = $(WINTTYSRC) $(WINX11SRC) 
++WINOBJ = $(WINTTYOBJ) $(WINX11OBJ) 
  
  # on some systems the termcap library is in -ltermcap or -lcurses
  # on 386 Xenix, the -ltermlib tputs() seems not to work; use -lcurses instead
-@@ -230,8 +230,8 @@ WINOBJ = $(WINTTYOBJ)
+@@ -238,14 +238,14 @@
  # WINTTYLIB = -ltermcap
  # WINTTYLIB = -lcurses
  # WINTTYLIB = -lcurses16
 -# WINTTYLIB = -lncurses
--WINTTYLIB = -ltermlib
 +WINTTYLIB = -lncurses
-+# WINTTYLIB = -ltermlib
+ #WINTTYLIB = -ltermlib
  #
  # libraries for X11
  # If USE_XPM is defined in config.h, you will also need -lXpm here.
-@@ -255,7 +255,7 @@ WINGEMLIB = -le_gem -lgem
+-WINX11LIB = -lXaw -lXmu -lXext -lXt -lX11
++# WINX11LIB = -lXaw -lXmu -lXext -lXt -lX11
+ # WINX11LIB = -lXaw -lXmu -lXt -lX11
+-# WINX11LIB = -lXaw -lXmu -lXext -lXt -lXpm -lX11 -lm
++WINX11LIB = -lXaw -lXmu -lXext -lXt -lXpm -lX11 -lm
+ # WINX11LIB = -lXaw -lXmu -lXpm -lXext -lXt -lX11 -lSM -lICE -lm # BSD/OS 2.0
+ #
+ # libraries for Qt
+@@ -263,7 +263,7 @@
  # libraries for BeOS 
  WINBELIB = -lbe
  
--WINLIB = $(WINTTYLIB)
+-#WINLIB = $(WINTTYLIB)
 +WINLIB = $(WINTTYLIB) $(WINX11LIB)
  
  # any other strange libraries your system needs (for Sysunix only -- the more
  # specialized targets should already be right)
-diff --git a/win/X11/NetHack.ad b/win/X11/NetHack.ad
-index d7e9ed3..3682ed5 100644
---- a/win/X11/NetHack.ad
-+++ b/win/X11/NetHack.ad
-@@ -3,13 +3,13 @@
- ! The rip window applies if the GRAPHIC_TOMBSTONE option is turned on, and
- ! requires a 12 pixel font for correct appearance.
- !
--NetHack*font:				variable
-+NetHack*font:				fixed
- NetHack*display_file*font:		fixed
- NetHack*tombstone*font:			fixed
- NetHack*text*rip*font:			-*-times-medium-r-*-*-12-*-*-*-*-*-*-*
- NetHack*menu*font:			fixed
- NetHack*text*font:			fixed
--NetHack*map*font:			nh10
-+NetHack*map*font:			fixed
+diff -ru nethack-3.6.0.orig/sys/unix/Makefile.top nethack-3.6.0/sys/unix/Makefile.top
+--- nethack-3.6.0.orig/sys/unix/Makefile.top	2015-11-18 21:54:59.000000000 +0100
++++ nethack-3.6.0/sys/unix/Makefile.top	2016-05-08 21:44:50.649427698 +0200
+@@ -20,17 +20,17 @@
+ #PREFIX	 = /usr
+ GAME     = nethack
+ # GAME     = nethack.prg
+-#GAMEUID  = games
+-#GAMEGRP  = bin
++GAMEUID  = root
++GAMEGRP  = games
  
- ! To use full-color tiles for the map, uncomment the tile file name.
- ! If you use a 100dpi (or greater) monitor you may wish to double the
-@@ -19,7 +19,7 @@ NetHack*map*font:			nh10
- ! the custom format - to enlarge an XPM file, use processing tools
- ! such as XV or preferably PBMplus.
- !
--!NetHack.tile_file: x11tiles
-+NetHack.tile_file: x11tiles
- !NetHack.double_tile_size: True
- !
- ! The annotation of pets.
+ # Permissions - some places use setgid instead of setuid, for instance
+ # See also the option "SECURE" in include/config.h
+-#GAMEPERM = 04755
++GAMEPERM = 04755
+ FILEPERM = 0644
+-# VARFILEPERM = 0644
++VARFILEPERM = 0644
+ EXEPERM  = 0755
+ DIRPERM  = 0755
+-# VARDIRPERM = 0755
++VARDIRPERM = 0755
+ 
+ # VARDIR may also appear in unixconf.h as "VAR_PLAYGROUND" else HACKDIR
+ #
+@@ -39,15 +39,16 @@
+ # therefore there should not be anything in HACKDIR that you want to keep
+ # (if there is, you'll have to do the installation by hand or modify the
+ # instructions)
+-#HACKDIR  = $(PREFIX)/games/lib/$(GAME)dir
+-#VARDIR  = $(HACKDIR)
++HACKDIR  = $(PREFIX)/games/$(GAME)
++VARDIR  = "/var/games/nethack"
+ # Where nethack.sh in installed.  If this is not defined, the wrapper is not used.
+-#SHELLDIR = $(PREFIX)/games
++SHELLDIR = $(PREFIX)/bin
++INSTDIR = $(HACKDIR)
+ 
+ # per discussion in Install.X11 and Install.Qt
+ #VARDATND = 
+ # VARDATND = x11tiles NetHack.ad pet_mark.xbm pilemark.xpm
+-# VARDATND = x11tiles NetHack.ad pet_mark.xbm pilemark.xpm rip.xpm
++VARDATND = x11tiles NetHack.ad pet_mark.xbm pilemark.xbm rip.xpm
+ # for Atari/Gem
+ # VARDATND = nh16.img title.img GEM_RSC.RSC rip.img
+ # for BeOS
+@@ -69,8 +70,8 @@
+ # other permission-related reasons.  If that happens, you may want to set the
+ # command to "true", which is a no-op. Note that disabling chown or chgrp
+ # will only work if setuid (or setgid) behavior is not desired or required.
+-#CHOWN = chown
+-#CHGRP = chgrp
++CHOWN = chown
++CHGRP = chgrp
+ 
+ #
+ # end of configuration
