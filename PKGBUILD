@@ -12,7 +12,7 @@ arch=(i686 x86_64)
 provides=($_pkgname)
 conflicts=($_pkgname)
 options=(!libtool)
-source="$pkgname::git+https://github.com/mytch444/catwm.git"
+source=("$pkgname::git+https://github.com/mytch444/catwm.git")
 md5sums=('SKIP')
  
 pkgver() {
