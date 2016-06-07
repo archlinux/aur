@@ -1,0 +1,9 @@
+post_install() {
+    # Link to the binary
+    ln -sf '/opt/cozy-desktop-gui/cozy-desktop-gui' '/usr/bin/cozy-desktop-gui'
+}
+
+post_remove() {
+    # Delete the link to the binary
+    rm -f '/usr/bin/cozy-desktop-gui'
+}
