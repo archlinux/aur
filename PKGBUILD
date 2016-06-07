@@ -1,5 +1,5 @@
 pkgname=mbedtls-git
-pkgver=2.3.0.r144.g9fa2e86
+pkgver=2.3.0.r156.g184eea6
 pkgrel=1
 pkgdesc="Portable cryptographic and SSL/TLS library, aka polarssl - git checkout"
 arch=('i686' 'x86_64')
@@ -29,9 +29,8 @@ prepare() {
   sed -i 's|//\(#define MBEDTLS_THREADING_C\)|\1|' include/mbedtls/config.h
   sed -i 's|//\(#define MBEDTLS_THREADING_PTHREAD\)|\1|' include/mbedtls/config.h
   # fix OpenVPN compilation
-  sed -i 's|\(#define MBEDTLS_PLATFORM_C\)|//\1|' include/mbedtls/config.h
-  for f in $( find include/mbedtls -xtype f ); do
-	sed -i 's/mbedtls_time_t/time_t/g' $f
+  for f in $( find include/mbedtls -type f ); do
+	sed -i '1s|^|#define\ mbedtls_time_t\ time_t\n|' $f
   done
 }
 
