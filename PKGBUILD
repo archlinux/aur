@@ -1,6 +1,6 @@
 #Maintainer: hexchain <i at hexchain.org>
 pkgname=hmcl
-pkgver=2.4.1.61
+pkgver=2.4.1.62
 pkgrel=1
 pkgdesc="Hello Minecraft! Launcher, a powerful Minecraft launcher."
 arch=(any)
@@ -38,4 +38,4 @@ package() {
 }
 sha256sums=('0300218f29af82e9b302a94b37a4c9a92aea26b960bfd1b2e16c0130ac61cfcf'
             '902a51543e6fc45f8f050233dcee493a5125052df14a7e10548edfc48cf4d528'
-            '20c7c445eddbd62dfc2b2c9c59db9fe6563b621fcc29664ef73abb22fe6e1e12')
+            '6eb12893d4493a34de238bf0df8ae366093dd08e89eca6a12ca725ec507cd7c2')
