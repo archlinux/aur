@@ -9,8 +9,8 @@ _full_name=${_name}-${_channel}
 pkgname=${_full_name}-${_lang}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://nightly.mozilla.org/"
-_version='49.0a1'
-pkgver=49.0a1.20160517
+_version='50.0a1'
+pkgver=50.0a1.20160607
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -50,11 +50,11 @@ pkgver() {
 }
 
 package() {
-  OPT_PATH="/opt/${_name}-${_version}"
+  OPT_PATH="/opt/${_full_name}"
 
-  # Remove Loop (Firefox Hello) and GetPocket (Pocket proprietary service).
-  # Comment this line if you want to keep them.
-  rm -rf ${_name}/browser/features/{loop@mozilla.org.xpi,firefox@getpocket.com.xpi}
+  # Loop (Firefox Hello) and GetPocket (Pocket proprietary service) extensions.
+  # Uncomment this line if you want to remove them.
+  #rm -rf ${_name}/browser/features/{loop@mozilla.org.xpi,firefox@getpocket.com.xpi}
 
   # Install the package files
   install -d "${pkgdir}"/{usr/{bin,share/applications},opt}
