@@ -1,0 +1,11 @@
+# By default this timer will run the first Monday of each month at 08:00 AM.
+
+[Unit]
+Description=Run periodic raid volume scrub
+
+[Timer]
+OnCalendar=Mon *-*-1,2,3,4,5,6,7 08:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

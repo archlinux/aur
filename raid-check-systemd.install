@@ -1,0 +1,10 @@
+post_install() {
+	echo ""
+	echo ""
+	echo "To use this package, enable raid-check.timer with systemd."
+	echo "Default options run at (first Monday of each month at 08:00)"
+	echo ""	
+	echo "To override defaults copy timer file and modify:"
+	ehco "/usr/lib/systemd/system/raid-check.timer --> /etc/systemd/system/raid-check.timer"
+	echo "Modifications made to the timer in /usr/lib/systemd will be overwritten."
+  }

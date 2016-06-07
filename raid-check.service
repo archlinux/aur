@@ -1,0 +1,6 @@
+[Unit]
+Description=raid-check
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/raid-check

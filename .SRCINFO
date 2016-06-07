@@ -1,0 +1,21 @@
+pkgbase = raid-check-systemd
+	pkgdesc = Raid data scrubbing script with systemd timer to be used with mdadm.
+	pkgver = 3.3.2
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/RAID#Scrubbing
+	install = raid-check-systemd.install
+	arch = any
+	license = GPL
+	makedepends = rpmextract
+	depends = mdadm
+	depends = systemd
+	conflicts = raid-check
+	source = http://mirror.centos.org/centos/7/os/x86_64/Packages/mdadm-3.3.2-7.el7.x86_64.rpm
+	source = raid-check.service
+	source = raid-check.timer
+	sha256sums = b319904cfb0d5dd20e8cf9e7bd781d77b0aaca9f932ebf0c950bf9ad4dcd400c
+	sha256sums = 90db8f53984df9d7ab32fde09a853632e9d76cbd91224c0efd760406118af84b
+	sha256sums = d023663e888500f1e75466935a47e16f705442e004a526115b054c932535f462
+
+pkgname = raid-check-systemd
+
