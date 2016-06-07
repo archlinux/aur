@@ -2,7 +2,7 @@
 
 pkgname=php-build-git
 pkgver=0.10.0.r412.gf36ea7b
-pkgrel=3
+pkgrel=4
 pkgdesc="Install PHP versions"
 arch=("any")
 url="https://github.com/php-build/php-build"
@@ -26,5 +26,5 @@ package() {
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 
 	PREFIX="$pkgdir/usr" ./install.sh
-	rm "${pkgdir}/usr/bin/phpenv-install"
+	rm "${pkgdir}/usr/bin/rbenv-install"
 }
