@@ -1,8 +1,8 @@
 # Maintainer: Tiago Brait <tiagobrait AT gmail DOT com>
 
 pkgname=ca-certificates-icp_br
-pkgver=20160406
-pkgrel=2
+pkgver=20160607
+pkgrel=1
 pkgdesc="Brazilian government Certification Authorities"
 arch=('any')
 url="http://www.iti.gov.br/icp-brasil/certificados/188-atualizacao/4530-ac-raiz"
@@ -14,9 +14,7 @@ source=(
     "icpbr_certs-${pkgver}.zip::http://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip"
     )
 
-sha512sums=(
-    '8b3a70888cc64802dce82998303ee78803c8e276de5f2056bbdd0ef2855654e342fd11efcea5d65dbc2ed671afd834ead58ef2ad8aadd9a73fa6fe46b4ed3581'
-    )
+sha512sums=('42cfe68a97da13dca5bc4839916af7e8a82c841f6445e315b214c5fde255c80cce0816714dc2704ab1816046bdccc5df675bf0fdba39fc8ed5585da44d5fd76c')
 
 package() {
   local cert_tag='icp_br'
