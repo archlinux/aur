@@ -9,7 +9,7 @@
 
 pkgname=depot-tools-git
 pkgver=r3323.3bff56b
-pkgrel=2
+pkgrel=3
 pkgdesc='Build tools for working with Chromium development, include gclient'
 arch=('any')
 url='http://dev.chromium.org/developers/how-tos/install-depot-tools'
@@ -87,6 +87,18 @@ package()
 
 	# Install License
 	install -Dm644 "${pkgdir}/opt/depot_tools/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+	# Move manual pages to /usr/share/man
+	install -dm755 "${pkgdir}/usr/share/man"
+	mv "${pkgdir}/opt/depot_tools/man"/man[0-8] "${pkgdir}/usr/share/man/"
+
+	# Ditto for HTML pages and README files, to /usr/share/doc
+	install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
+	mv "${pkgdir}/opt/depot_tools/man/html" "${pkgdir}/usr/share/doc/${pkgname}"
+	mv "${pkgdir}/opt/depot_tools"/README*  "${pkgdir}/usr/share/doc/${pkgname}"
+
+	# Remove stray files
+	rm -r "${pkgdir}/opt/depot_tools/man"
 
 	rm -rf "${pkgdir}/opt/depot_tools/.git"
 }
