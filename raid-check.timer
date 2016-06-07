@@ -1,5 +1,3 @@
-# By default this timer will run the first Monday of each month at 08:00 AM.
-
 [Unit]
 Description=Run periodic raid volume scrub
 
