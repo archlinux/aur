@@ -2,11 +2,12 @@
 
 pkgname=php-build-git
 pkgver=0.10.0.r412.gf36ea7b
-pkgrel=6
+pkgrel=7
 pkgdesc="Install PHP versions"
 arch=("any")
 url="https://github.com/php-build/php-build"
 license=("MIT")
+depends=("libmcrypt gmp tidyhtml")
 makedepends=("git")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
