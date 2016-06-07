@@ -14,5 +14,5 @@ source=("$_pkgname-$pkgver.zip::https://www.dropbox.com/s/xhhydw02dbbg7i1/foo_pl
 md5sums=('1699e277414cedf2def7df6c3f3f2e54')
 
 package() {
-	install -Dm644 -t "$pkgdir/usr/share/foobar2000/components" foo_playcount.dll
+	install -Dm644 -t "${pkgdir:?}/usr/share/foobar2000/components" foo_playcount.dll
 }
