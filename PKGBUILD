@@ -3,9 +3,9 @@
 
 pkgname=medusa-git
 pkgver=2.2.17.5a7b76e
-pkgrel=1
-pkgdesc="Speedy, massively parallel and modular login brute-forcer for network "
-url="http://www.foofus.net/jmk/medusa/medusa.html"
+pkgrel=2
+pkgdesc='Speedy, massively parallel and modular login brute-forcer for network'
+url='http://www.foofus.net/jmk/medusa/medusa.html'
 arch=('i686' 'x86_64')
 license=('GPL2')
 depends=('openssl')
@@ -17,7 +17,7 @@ optdepends=(
   'subversion: Subversion support'
   'freerdp: RDP support'
 )
-makedepends=('git' 'libssh2' 'libpqxx' 'afpfs-ng' 'subversion' 'freerdp')
+makedepends=('git' 'pkg-config' 'libssh2' 'libpqxx' 'afpfs-ng' 'subversion' 'freerdp')
 source=(${pkgname}::git+https://github.com/jmk-foofus/medusa)
 sha512sums=('SKIP')
 
@@ -34,7 +34,8 @@ prepare() {
 
 build() {
   cd ${pkgname}
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr \
+    CFLAGS="${CFLAGS} $(pkg-config --cflags freerdp2)"
   make
 }
 
