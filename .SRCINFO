@@ -1,0 +1,13 @@
+pkgbase = php-build
+	pkgdesc = Install PHP versions
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/php-build/php-build
+	arch = any
+	license = MIT
+	conflicts = php-build-git
+	source = https://github.com/php-build/php-build/archive/v0.10.0.tar.gz
+	md5sums = fe93bff7b564d0ba05a672b663568e09
+
+pkgname = php-build
+
