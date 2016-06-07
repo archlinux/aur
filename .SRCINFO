@@ -10,6 +10,7 @@ pkgbase = raid-check-systemd
 	depends = mdadm
 	depends = systemd
 	conflicts = raid-check
+	backup = etc/conf.d/raid-check
 	source = http://mirror.centos.org/centos/7/os/x86_64/Packages/mdadm-3.3.2-7.el7.x86_64.rpm
 	source = raid-check.service
 	source = raid-check.timer

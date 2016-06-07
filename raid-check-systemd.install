@@ -7,4 +7,6 @@ post_install() {
 	echo "To override defaults copy timer file and modify:"
 	ehco "/usr/lib/systemd/system/raid-check.timer --> /etc/systemd/system/raid-check.timer"
 	echo "Modifications made to the timer in /usr/lib/systemd will be overwritten."
+	echo ""
+	echo "System configuration in file: /etc/conf.d/raid-check"
   }
