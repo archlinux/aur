@@ -1,7 +1,7 @@
 # Maintainer: Grigorii Horos <horosgrisa@gmail.com>
 pkgname=feedreader-git
-pkgver=1.5
-pkgrel=6
+pkgver=1.6
+pkgrel=1
 pkgdesc="FeedReader is a modern desktop application designed to complement existing web-based RSS accounts."
 arch=('i686' 'x86_64')
 url="https://github.com/jangernert/FeedReader"
@@ -15,11 +15,17 @@ install="${pkgname%-*}.install"
 source=('git+https://github.com/jangernert/FeedReader.git')
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$pkgname"
+  # cutting off 'foo-' prefix that presents in the git tag
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 
 build() {
   mkdir -p "$srcdir/FeedReader/build"
   cd "$srcdir/FeedReader/build"
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DUSE_WEBKIT_4=ON -DWITH_LIBUNITY=OFF ..
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DUSE_WEBKIT_4=ON -DGSETTINGS_COMPILE=OFF -DWITH_LIBUNITY=OFF ..
   make
 }
 
