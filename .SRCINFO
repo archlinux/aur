@@ -1,0 +1,16 @@
+pkgbase = x-tools-armv7-bin
+	pkgdesc = crosstool-ng toolchain - x-tools package for armv7h compiling
+	pkgver = 20160601
+	pkgrel = 1
+	url = https://archlinuxarm.org/wiki/Distcc_Cross-Compiling
+	arch = x86_64
+	license = GPL3
+	depends = xz
+	provides = apw
+	noextract = x-tools7h.tar.xz
+	options = !emptydirs
+	source = https://archlinuxarm.org/builder/xtools/x-tools7h.tar.xz
+	md5sums = SKIP
+
+pkgname = x-tools-armv7-bin
+
