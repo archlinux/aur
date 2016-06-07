@@ -1,0 +1,27 @@
+#!/bin/bash 
+
+#Author : Amirreza Firoozi
+#License : GPL3
+
+#This is a simple script that find distro name and echo (return) it.
+#Its useful if you want to know what distro is your own script running on.
+distros=( "Arch" "Ubuntu" "Debian" "Suse" )
+dId=0
+while [ "1" == "1" ];do
+    grep -i "${distros[dId]}" /etc/issue  1>/dev/null 2>&1
+    exstatus=$?
+     if [ "$exstatus" == "0" ];then
+        distro=${distros[dId]}
+            if [ "$1" == "-o" ];then 
+                 echo "$distro" > $2
+            else
+                 echo "$distro" 
+            fi
+break 
+     fi 
+     if [ "$dId" -gt  "${#distros[@]}" ];then
+        break
+     fi 
+     ((dId++))
+done
+

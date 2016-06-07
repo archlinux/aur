@@ -1,0 +1,13 @@
+pkgbase = dist_detect
+	pkgdesc = a simple script that helps you detect your distro name easily
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://Github.com/AmirrezaFiroozi/dist_detect
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	source = https://github.com/AmirrezaFiroozi/dist_detect/archive/v1.0.tar.gz
+	md5sums = SKIP
+
+pkgname = dist_detect
+
