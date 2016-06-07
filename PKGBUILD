@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='OpenFabrics Alliance InfiniBand userspace communication manager'
 #        Handles connection establishment and service ID resolution
 arch=('x86_64' 'i686')
-url=('https://www.openfabrics.org/index.php/overview.html')
+url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libibverbs')
 source=("https://www.openfabrics.org/downloads/rdmacm/${pkgname}-${pkgver}.tar.gz")
