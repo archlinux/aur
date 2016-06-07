@@ -2,13 +2,14 @@
 # * OpenFabrics Alliance InfiniBand subnet manager (SM) and subnet administrator (SA)
 #    * One subnet manager is required to run each InfiniBand subnet, before initializing InfiniBand hardware
 # * No Namcap warnings or errors
+# Up to date with fedora's opensm-3.3.17-5.fc23.src.rpm
 
 pkgname=opensm
 pkgver=3.3.19
-pkgrel=3
+pkgrel=4
 pkgdesc='OpenFabrics Alliance InfiniBand Subnet Manager and Administrator'
 arch=('x86_64' 'i686')
-url=('https://www.openfabrics.org/index.php/overview.html')
+url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libibumad' 'rdma')
 source=("https://www.openfabrics.org/downloads/management/${pkgname}-${pkgver}.tar.gz"
