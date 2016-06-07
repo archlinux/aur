@@ -5,7 +5,7 @@
 
 _pkgname=lmms
 pkgname=lmms-qt5-git
-pkgver=1.1.90.r228.g85d1b20
+pkgver=1.1.90.r232.gdaedb92
 pkgrel=1
 pkgdesc='The Linux MultiMedia Studio (Qt5 Version).'
 url='http://lmms.io'
@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 license=('GPL')
 depends=('qt5-base' 'libsamplerate' 'fluidsynth' 'zynaddsubfx' 'libxft' 
 'libxinerama' 'shared-mime-info' 'alsa-lib')
-optdepends=('wine: VST support (experimental, currently nearly unusable on Arch Linux)'
+optdepends=('wine: Windows VST support (experimental)'
             'fftw: SpectrumAnalyzer plugin'
             'jack: Optional JACK audio backend'
             'portaudio: Optional Portaudio audio backend'
@@ -27,7 +27,6 @@ provides=('lmms')
 conflicts=('lmms' 'lmms-git')
 source=('git+https://github.com/LMMS/lmms.git')
 sha512sums=('SKIP')
-install="$pkgname".install
 
 pkgver() {
   cd -- "$srcdir/$_pkgname"
