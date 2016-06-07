@@ -4,30 +4,33 @@ _pkgname=atom
 _version=arch
 
 # Module Versions
-_about_arch_url="https://github.com/fusion809/about"
+_about_arch_url="fusion809/about"
 _about_arch_ver=1.5.17
 _dark_bint_syntax_ver=0.8.6
 _fusion_ui_ver=0.10.5
-_language_archlinux_ver=0.1.7
+_language_archlinux_ver=0.2.1
 _language_gfm2_ver=0.90.3
 _language_ini_desktop_ver=1.18.0
 _language_liquid_ver=0.5.1
-_language_unix_shell_ver=0.27.8
+_language_patch2_url="fusion809/language-patch2"
+_language_patch2_ver=0.1.3
+_language_unix_shell_ver=0.28.1
 
 pkgname=${_pkgname}-editor-${_version}
-pkgver=1.8.0
+_atomver=1.8.0
+pkgver=${_atomver}.arch${_language_archlinux_ver}
 pkgrel=1
-pkgdesc='Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux development pre-installed.'
+pkgdesc='Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed.'
 arch=('x86_64' 'i686')
 url='https://github.com/atom/atom'
 license=('MIT')
-depends=('alsa-lib' 'desktop-file-utils' 'gconf' 'gtk2' 'libgnome-keyring' 'libnotify' 'libxtst' 'nodejs' 'nss' 'python2')
+depends=('namcap' 'pkgbuild-introspection' 'alsa-lib' 'desktop-file-utils' 'gconf' 'gtk2' 'libgnome-keyring' 'libnotify' 'libxtst' 'nodejs' 'nss' 'python2')
 optdepends=('gvfs: file deletion support')
 makedepends=('git' 'npm')
 conflicts=('atom-editor-bin' 'atom-editor')
 install=${_pkgname}-${_version}.install
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/atom/atom/archive/v${pkgver}.tar.gz"
-"about-arch-${_about_arch_ver}.tar.gz::$_about_arch_url/archive/v${_about_arch_ver}.tar.gz"
+source=("${_pkgname}-${_atomver}.tar.gz::https://github.com/atom/atom/archive/v${_atomver}.tar.gz"
+"about-arch-${_about_arch_ver}.tar.gz::https://github.com/$_about_arch_url/archive/v${_about_arch_ver}.tar.gz"
 "atom"
 "atom.desktop"
 "theme.patch"
@@ -40,7 +43,7 @@ md5sums=('158c18d35d071403db18bdd85fa2e738'
          'ae16bb627ec10bde20c7093d4be18131')
 
 prepare() {
-  cd "$srcdir/${_pkgname}-$pkgver"
+  cd "$srcdir/${_pkgname}-${_atomver}"
 
   sed -i -e "/exception-reporting/d" \
          -e "/metrics/d" \
@@ -48,11 +51,14 @@ prepare() {
          -e "/-syntax/d" \
          -e "/-theme/d" \
          -e 's/0.36.8/0.36.12/g' \
-         -e "s/\"language-gfm\": \".*\",/\"language-gfm2\": \"${_language_gfm2_ver}\",\n    \"language-ini-desktop\": \"${_language_ini_desktop_ver}\",\n    \"language-liquid\": \"${_language_liquid_ver}\",/g" \
+         -e "s/\"language-gfm\": \".*\",/\"language-gfm2\": \"${_language_gfm2_ver}\",\n    \"language-ini-desktop\": \"${_language_ini_desktop_ver}\",\n    \"language-liquid\": \"${_language_liquid_ver}\",\n    \"language-patch2\": \"${_language_patch2_ver}\",/g" \
          -e "s/\"language-shellscript\": \".*\",/\"language-unix-shell\": \"${_language_unix_shell_ver}\",\n    \"language-archlinux\": \"${_language_archlinux_ver}\",/g" \
          -e "s/\"about\": \".*\"/\"about-arch\": \"${_about_arch_ver}\"/g" \
+         -e "/\"dependencies\": {/a \
+              \"language-patch2\": \"${_language_patch2_url}\"," \
          -e "/\"packageDependencies\": {/a \
-              \"dark-bint-syntax\": \"${_dark_bint_syntax_ver}\",\n    \"fusion-ui\": \"${_fusion_ui_ver}\"," package.json
+              \"dark-bint-syntax\": \"${_dark_bint_syntax_ver}\",\n    \"fusion-ui\": \"${_fusion_ui_ver}\"," \
+         -e "s|^\"|    \"|g"  package.json # fixing spacing issues
 
   chmod 755 -R package.json
 
@@ -78,13 +84,13 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/${_pkgname}-$pkgver"
+  cd "$srcdir/${_pkgname}-${_atomver}"
   export PYTHON=/usr/bin/python2
   until ./script/build --build-dir "$srcdir/atom-build"; do :; done
 }
 
 package() {
-  cd "$srcdir/${_pkgname}-$pkgver"
+  cd "$srcdir/${_pkgname}-${_atomver}"
 
   script/grunt install --build-dir "$srcdir/atom-build" --install-dir "$pkgdir/usr"
 
