@@ -2,15 +2,15 @@
 # * No namcap warnings or errors
 
 pkgname=librdmacm
-pkgver=1.0.21
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='OpenFabrics Alliance datagram transfers over RDMA for InfiniBand and iWARP'
 arch=('x86_64' 'i686')
-url=('https://www.openfabrics.org/index.php/overview.html')
+url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libibverbs')
 source=("https://www.openfabrics.org/downloads/rdmacm/${pkgname}-${pkgver}.tar.gz")
-md5sums=('6e9bda2f115549cde20eed29221ea0c2')
+md5sums=('9459e523002978ef6e7b852e01d8b29e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
