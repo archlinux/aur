@@ -17,9 +17,8 @@ noextract=()
 package() {
 mkdir -p $pkgname/usr/bin/
 mkdir -p $pkgname/usr/share/man/man1/
-mv -r "$srcdir"/${pkgname}-${pkgver}/* $srcdir/
-    cd $srcdir
-    install -Dm0755 "dist_detect" $pkgdir/usr/bin/dist_detect
+cd "$srcdir"/${pkgname}-${pkgver}/
+    install -Dm0755 "dist_detect_main" $pkgdir/usr/bin/dist_detect
     install -Dm0755 "dist_detect.1.gz" $pkgdir/usr/share/man/man1/dist_detect.1.gz
 }
 
