@@ -5,8 +5,8 @@
 
 pkgbase=python-pyface
 pkgname=('python2-pyface' 'python-pyface')
-pkgver=5.0.0
-pkgrel=3
+pkgver=5.1.0
+pkgrel=1
 pkgdesc="Traits-capable windowing framework"
 arch=('any')
 url="https://github.com/enthought/pyface"
@@ -14,14 +14,12 @@ license=('BSD')
 makedepends=('python-setuptools' 'python-traits' 'python2-setuptools' 'python2-traits')
 options=(!emptydirs)
 
-source=("pyface-${pkgver}.tar.gz::https://github.com/enthought/pyface/archive/${pkgver}.tar.gz"
-        "ipython_widget.patch")
-md5sums=('74e0c8f8099d69bf6f18651b626648d8'
-         'e2723b5e4191457de7584f0cddce7a4d')
+source=("pyface-${pkgver}.tar.gz::https://github.com/enthought/pyface/archive/${pkgver}.tar.gz")
+md5sums=('2d7703b71df4478ae02b7481dc673754')
 
 prepare() {
   cd "$srcdir"
-  patch -p0 < ipython_widget.patch
+  #patch -p0 < ipython_widget.patch
   cp -a pyface-${pkgver} pyface-py2-${pkgver}
 }
 
