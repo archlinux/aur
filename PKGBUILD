@@ -14,7 +14,7 @@ _language_ini_desktop_ver=1.18.0
 _language_liquid_ver=0.5.1
 _language_patch2_url="fusion809/language-patch2"
 _language_patch2_ver=0.1.3
-_language_unix_shell_ver=0.28.1
+_language_unix_shell_ver=0.29.1
 
 pkgname=${_pkgname}-editor-${_version}
 _atomver=1.8.0
