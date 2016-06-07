@@ -4,7 +4,7 @@ _proj=rarfile
 _python=python2 _pyver=2
 #_python=python3 _pyver=""
 pkgname="$_python-$_proj"
-pkgver=2.7
+pkgver=2.8
 pkgrel=1
 pkgdesc="Rar archive reader for Python"
 arch=(any)
@@ -23,9 +23,9 @@ optdepends=(
 )
 provides=("python-$_proj")
 source=(
-  "https://pypi.python.org/packages/source/r/$_proj/$_proj-$pkgver.tar.gz"
+  "https://pypi.io/packages/source/r/$_proj/$_proj-$pkgver.tar.gz"
 )
-md5sums=(d143205f22078830451e0066c123580d)
+md5sums=('98942f9c51468ca044738fe2e96fdd2d')
 
 build() {
   cd "$srcdir/$_proj-$pkgver"
