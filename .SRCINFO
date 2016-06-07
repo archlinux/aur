@@ -1,0 +1,19 @@
+pkgbase = roadfighter
+	pkgdesc = Unofficial remake of Konami's Road Fighter for the MSX1
+	pkgver = 1.0.1269
+	pkgrel = 1
+	url = http://www2.braingames.getput.com/roadf
+	arch = i686
+	arch = x86_64
+	license = unknown
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_sound
+	depends = sdl_ttf
+	source = http://braingames.jorito.net/roadfighter/downloads/roadfighter.src_1.0.1269.tgz
+	source = roadfighter.patch
+	sha1sums = e6cacf74065fcd27838c66b4c57998f9fdbc2874
+	sha1sums = 3b242bf8677a23378aee8e2ea06f77810db0d4c6
+
+pkgname = roadfighter
+

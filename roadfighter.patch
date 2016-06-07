@@ -1,0 +1,32 @@
+--- build/linux/Makefile 2008-03-19 21:58:51.000000000 +0100
++++ build/linux/Makefile 2016-06-07 16:28:15.246592633 +0200
+@@ -3,7 +3,7 @@
+ PREFIX = /usr
+ EXTRADIR = ./build/linux
+ 
+-GAMEDIR = $(PREFIX)/games
++GAMEDIR = $(PREFIX)/bin
+ STARTUP = $(GAMEDIR)/$(EXE)
+ BINDIR = $(PREFIX)/share/games/$(EXE)
+ ICNDIR = $(PREFIX)/share/pixmaps
+@@ -67,7 +67,8 @@
+ 	@$(CP) "$(EXE)" $(DATA) "$(BINDIR)"
+ 	@$(ECHO) " o Creating startup script $(STARTUP)"
+ 	@$(MD) "$(GAMEDIR)"
+-	@$(ECHO) "cd \"$(BINDIR)\"; ./$(EXE); cd -" >"$(STARTUP)"
++	@$(ECHO) "cd \"/usr/share/games/roadfighter/\"; ./$(EXE); cd -" >"$(STARTUP)"
++#	@$(ECHO) "cd \"$(BINDIR)\"; ./$(EXE); cd -" >"$(STARTUP)"
+ 	@$(CHMOD) 755 "$(STARTUP)"
+ 	@$(ECHO) " o Creating application menu entry"
+ 	@$(MD) "$(ICNDIR)"
+
+--- src/auxiliar.cpp 2016-06-07 16:18:19.672015830 +0200
++++ src/auxiliar.cpp 2016-06-07 16:18:41.678235683 +0200
+@@ -84,7 +84,7 @@
+ 	mask=IMG_Load(name);
+ 
+     if (tmp==0 ||
+-		mask==0) return false;
++		mask==0) return 0;
+ 
+ 	res=SDL_DisplayFormatAlpha(tmp);
