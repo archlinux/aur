@@ -1,0 +1,22 @@
+pkgbase = molden
+	pkgdesc = A visualization program of molecular and electronic structure
+	pkgver = 5.6
+	pkgrel = 1
+	url = http://www.cmbi.ru.nl/molden/
+	arch = i686
+	arch = x86_64
+	license = custom
+	makedepends = gcc-fortran
+	makedepends = xproto
+	makedepends = libx11
+	makedepends = mesa
+	makedepends = glu
+	depends = mesa
+	depends = glu
+	optdepends = openbabel: to create 2D images of the molecules in a .sdf file
+	provides = molden
+	source = ftp://ftp.cmbi.ru.nl/pub/molgraph/molden/molden5.6.tar.gz
+	md5sums = 9267c6fc6eef897668d7d7c2785e5f53
+
+pkgname = molden
+
