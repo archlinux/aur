@@ -19,10 +19,10 @@ options=()
 install=
 changelog=
 
-source=("bricscadv13.2.17.tar.gz::https://drive.google.com/open?id=0B_T6TjcdUPW2UDhXb1J6VWRqbGs"
-	"bricscad_simple_logo.png::https://drive.google.com/open?id=0B_T6TjcdUPW2azd0elpMcndIUmc"
-	"bricscad.desktop::https://drive.google.com/open?id=0B_T6TjcdUPW2TGxiQ1ZCN2dqMVk"
-	"bricscad13::https://drive.google.com/open?id=0B_T6TjcdUPW2NkVMZUNuZk9FN0k")
+source=("bricscadv13.2.17.tar.gz::https://drive.google.com/uc?export=download&id=0B_T6TjcdUPW2UDhXb1J6VWRqbGs"
+	"bricscad_simple_logo.png::https://drive.google.com/uc?export=download&id=0B_T6TjcdUPW2azd0elpMcndIUmc"
+	"bricscad.desktop::https://drive.google.com/uc?export=download&id=0B_T6TjcdUPW2TGxiQ1ZCN2dqMVk"
+	"bricscad13::https://drive.google.com/uc?export=download&id=0B_T6TjcdUPW2NkVMZUNuZk9FN0k")
 
 md5sums=('2ca6f4b512b9e9ac51e54d53c9edfb25'
 	'c24313275d36fa6db16d92d530862739'
