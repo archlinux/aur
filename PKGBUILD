@@ -2,7 +2,7 @@
 
 pkgname=libsbml
 _pkgname=libSBML
-pkgver=5.12.0
+pkgver=5.13.0
 pkgrel=1
 pkgdesc="XML-based description language for computational models in systems biology"
 url="http://sbml.org/Software/libSBML"
@@ -13,7 +13,7 @@ optdepends=('bzip2' 'python2' 'perl' 'ruby' 'java-runtime' 'octave' 'mono')
 makedepends=('swig' 'python2' 'perl' 'java-environment')
 options=('!libtool')
 source=("http://sourceforge.net/projects/sbml/files/libsbml/$pkgver/stable/$_pkgname-$pkgver-core-plus-packages-src.tar.gz")
-md5sums=('76da5911d2c394c105f7d52766ad9ab5')
+md5sums=('bd9d7284a7133f91f06d07547a6ce179')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver-Source"
