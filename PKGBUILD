@@ -2,7 +2,7 @@
 
 pkgname=php-build-git
 pkgver=0.10.0.r412.gf36ea7b
-pkgrel=2
+pkgrel=3
 pkgdesc="Install PHP versions"
 arch=("any")
 url="https://github.com/php-build/php-build"
@@ -27,5 +27,4 @@ package() {
 
 	PREFIX="$pkgdir/usr" ./install.sh
 	rm "${pkgdir}/usr/bin/phpenv-install"
-	rm "${pkgdir}/usr/bin/rbenv-install"
 }
