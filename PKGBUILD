@@ -1,4 +1,4 @@
-# Maintainer: Pieter Goetschalckx <3.14.e.ter at gmail dot com>
+# Maintainer: Rob Lynn <rob22uk at gmail dot com>
 
 pkgname=stremio-bin
 pkgver=3.6.0
