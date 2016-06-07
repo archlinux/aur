@@ -3,7 +3,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-256xresources
 pkgver=9.22
-pkgrel=1
+pkgrel=2
 pkgdesc="urxvt with patches to support 256 Xresource colors and fixes for line/font spacing"
 arch=('i686' 'x86_64')
 url="http://software.schmorp.de/pkg/rxvt-unicode.html"
