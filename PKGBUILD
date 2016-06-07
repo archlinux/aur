@@ -1,49 +1,53 @@
 # Maintainer: Marcin Wieczorek <marcin@marcin.co>
 
 pkgname=messengerfordesktop-git
-pkgver=v1.4.7
-pkgrel=4
+pkgver=1.4.7.r67.g024028f
+pkgrel=1
 pkgdesc="Beautiful desktop client for Facebook Messenger. Sytten's fork"
 arch=('i686' 'x86_64')
 url="http://messengerfordesktop.com/"
 license=('MIT')
-conflicts=("messengerfordesktop")
+conflicts=('messengerfordesktop' 'messengerfordesktop-bin')
 options=(!strip)
-depends=('gcc-libs' 'cairo' 'libxtst' 'alsa-lib' 'gtk2' 'gconf' 'libnotify' 'fontconfig' 'nss' 'xorg-xprop' 'xorg-xwininfo')
+depends=('libxtst' 'alsa-lib' 'gtk2' 'gconf' 'libnotify' 'nss' 'xorg-xprop' 'xorg-xwininfo')
 makedepends=('git' 'gulp' 'npm')
 install="$pkgname.install"
-source=("$pkgname::git+https://github.com/Sytten/Facebook-Messenger-Desktop.git"
+source=("$pkgname::git+https://github.com/Aluxian/Facebook-Messenger-Desktop.git#branch=develop"
 		"start.sh")
 
 md5sums=('SKIP'
-         'ce686652299792c01f4605cf995c4d87')
+         '31abbecf99328b1b77ee1bdb1e2d981f')
 
-if [ $(uname -m) == "i686" ]
- then
-  _arch="linux32"
+if [ $CARCH == x86_64 ]; then
+  _arch="64"
 else
-  _arch="linux64"
+  _arch="32"
 fi
 
-build() {
-  cd $pkgname
-  npm install
+pkgver() {
+  cd ${pkgname}
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
-  gulp build:${_arch}
+build() {
+  cd "${srcdir}/${pkgname}"
+  npm install
+  gulp build:linux${_arch}
 }
 
 package() {
-  cd "${srcdir}/messengerfordesktop-git/build/Messenger/${_arch}"
+  mkdir -p "${pkgdir}/usr/share/messengerfordesktop/"
 
-  mkdir -p "${pkgdir}/opt/MessengerForDesktop/"
-  install -D -m755 "${srcdir}/start.sh"	  "${pkgdir}/opt/MessengerForDesktop/start.sh"
-  install -D -m755 "Messenger"    "${pkgdir}/opt/MessengerForDesktop/Messenger"
-  install -D -m644 "nw.pak"       "${pkgdir}/opt/MessengerForDesktop/nw.pak"
-  install -D -m644 "icudtl.dat"   "${pkgdir}/opt/MessengerForDesktop/icudtl.dat"
-  install -D -m644 "libffmpegsumo.so"   "${pkgdir}/opt/MessengerForDesktop/libffmpegsumo.so"
+  cd "${srcdir}/messengerfordesktop-git/build/Messenger/linux${_arch}"
+  for file in `find . -type f`; do
+	install -D -m644 "${file}"   "${pkgdir}/usr/share/messengerfordesktop/${file}"
+  done;
 
-  cd "${srcdir}/messengerfordesktop-git/assets-linux"
-  sed -i '6s/.*/Exec=sh \/opt\/MessengerForDesktop\/start.sh/' messengerfordesktop.desktop
-  install -D -m644 "${srcdir}/messengerfordesktop-git/assets-linux/messengerfordesktop.desktop" "${pkgdir}/usr/share/applications/messengerfordesktop.desktop"
-  install -D -m644 "icons/256/messengerfordesktop.png"     "${pkgdir}/usr/share/pixmaps/messengerfordesktop.png"
+  install -D -m755 "${srcdir}/start.sh"	  															  "${pkgdir}/usr/bin/messengerfordesktop"
+  install -D -m755 "${srcdir}/messengerfordesktop-git/build/Messenger/linux${_arch}/Messenger"		  "${pkgdir}/usr/share/messengerfordesktop/Messenger"
+  install -D -m644 "${srcdir}/messengerfordesktop-git/assets-linux/messengerfordesktop.desktop" 	  "${pkgdir}/usr/share/applications/messengerfordesktop.desktop"
+  install -D -m644 "${srcdir}/messengerfordesktop-git/assets-linux/icons/256/messengerfordesktop.png" "${pkgdir}/usr/share/pixmaps/messengerfordesktop.png"
+  install -D -m644 "${srcdir}/messengerfordesktop-git/LICENSE" 										  "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  sed -i '6s/.*/Exec=sh \/usr\/bin\/messengerfordesktop/' "${pkgdir}/usr/share/applications/messengerfordesktop.desktop"
 }
