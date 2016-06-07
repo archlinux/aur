@@ -9,7 +9,7 @@ pkgdesc="ZX Spectrum emulator."
 arch=('i686' 'x86_64')
 url="http://fuse-emulator.sourceforge.net/fuse.php"
 license=("GPL")
-depends=('gtk2' 'libspectrum>=1.2.0' 'libxml2' 'libpng' 'alsa-lib' 'sdl' 'gtk-update-icon-cache')
+depends=('gtk3' 'libspectrum>=1.2.0' 'sdl')
 # install="$pkgname.install"
 source=("http://downloads.sourceforge.net/sourceforge/fuse-emulator/fuse-$pkgver.tar.gz"
         "fuse-emulator.desktop")
