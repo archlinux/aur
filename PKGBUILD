@@ -1,8 +1,9 @@
 # Maintainer: Alexey D. <lq07829icatm@rambler.ru>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 
 pkgname=udisks2-nosystemd
-pkgver=2.1.6
+pkgver=2.1.7
 pkgrel=1
 pkgdesc="Disk Management Service, version 2"
 arch=('i686' 'x86_64')
@@ -20,7 +21,7 @@ conflicts=('udisks2' 'udisks2-eudev')
 replaces=('udisks2' 'udisks2-eudev')
 options=(!libtool)
 source=(http://udisks.freedesktop.org/releases/udisks-${pkgver}.tar.bz2)
-sha256sums=('dec5f5c85fa0f74f39336acbfba1770f9988c096be23873714543c304b09f46a')
+sha256sums=('abae2bb3bdc691ca13c1e4c244630b8c881c4f3b35c207299f1b39b7bec83785')
 
 build() {
   cd "udisks-$pkgver"
