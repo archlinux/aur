@@ -11,13 +11,13 @@ license=('GPL')
 depends=('mdadm' 'systemd')
 makedepends=('rpmextract')
 conflicts=('raid-check')
-install=$pkgname.install
 source=("http://mirror.centos.org/centos/7/os/x86_64/Packages/mdadm-$pkgver-$_cent_rel.el7.x86_64.rpm"
 	'raid-check.service'
 	'raid-check.timer')
 sha256sums=('b319904cfb0d5dd20e8cf9e7bd781d77b0aaca9f932ebf0c950bf9ad4dcd400c'
             '90db8f53984df9d7ab32fde09a853632e9d76cbd91224c0efd760406118af84b'
             'd023663e888500f1e75466935a47e16f705442e004a526115b054c932535f462')
+install=$pkgname.install
         
 # --- Source package is also available from the Fedora project mirrors ---
 # https://mirrors.kernel.org/fedora/releases/23/Everything/x86_64/os/Packages/m/mdadm-3.3.2-2.fc23.x86_64.rpm
@@ -28,9 +28,9 @@ build() {
 }
 
 package() {
-	install -Dm 755 "$srcdir"/usr/sbin/raid-check "$pkgdir/usr/bin/raid-check"
-	install -Dm 644 "$srcdir"/etc/sysconfig/raid-check "$pkgdir/etc/conf.d/raid-check"
+	install -Dm 755 "$srcdir/usr/sbin/raid-check" "$pkgdir/usr/bin/raid-check"
+	install -Dm 644 "$srcdir/etc/sysconfig/raid-check" "$pkgdir/etc/conf.d/raid-check"
 	
-	install -Dm 644 raid-check.service "$pkgdir/usr/lib/systemd/system/raid-check.service"
-	install -Dm 644 raid-check.timer "$pkgdir/usr/lib/systemd/system/raid-check.timer"
+	install -Dm 644 "raid-check.service" "$pkgdir/usr/lib/systemd/system/raid-check.service"
+	install -Dm 644 "raid-check.timer" "$pkgdir/usr/lib/systemd/system/raid-check.timer"
 }
