@@ -1,6 +1,6 @@
 # Maintainer: Jni <jni.viens at protonmail dot com>
 pkgname=bitrise
-pkgver=1.3.4
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Run your bitrise.io automations offline"
 arch=(x86_64)
