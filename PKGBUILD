@@ -3,7 +3,7 @@
 # Contributor: Heeru Kiyura <M8R-p9i5nh@mailinator.com>
 
 pkgname=conkeror-git
-pkgver=1.0.0.r3.gf336aa6
+pkgver=1.0.3.r0.g11121be
 pkgrel=1
 pkgdesc='A highly programmable web browser based on Mozilla XULRunner'
 arch=('i686' 'x86_64')

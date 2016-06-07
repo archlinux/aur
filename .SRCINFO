@@ -1,6 +1,6 @@
 pkgbase = conkeror-git
 	pkgdesc = A highly programmable web browser based on Mozilla XULRunner
-	pkgver = 1.0.0.r3.gf336aa6
+	pkgver = 1.0.3.r0.g11121be
 	pkgrel = 1
 	url = http://conkeror.mozdev.org/
 	changelog = Changelog
