@@ -1,7 +1,7 @@
 pkgbase = nodenv-node-build
 	pkgdesc = Install NodeJS versions
 	pkgver = 2.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nodenv/node-build
 	arch = any
 	license = MIT
