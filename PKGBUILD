@@ -1,6 +1,6 @@
 # Maintainer: Dan Elkouby <streetwalrus@codewalr.us>
 pkgname=python-shogun
-pkgver=0.1.3
+pkgver=0.2
 pkgrel=1
 pkgdesc="A dead simple build system based on Ninja"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('python>=3.5' 'python-jinja>=2.0' 'ninja')
 makedepends=('python-setuptools')
 options=(!emptydirs)
 source=("https://github.com/Streetwalrus/shogun/archive/v$pkgver.tar.gz")
-md5sums=('5bc6b3363b62ca441fd3c111b90d9452')
+md5sums=('9bca14af5832c9854688a8df0dda4bb9')
 
 package() {
   cd "$srcdir/shogun-$pkgver"
