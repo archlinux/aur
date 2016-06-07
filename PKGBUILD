@@ -3,11 +3,12 @@
 
 pkgname=etherwake
 pkgver=1.09
-pkgrel=6
+pkgrel=7
 arch=(i686 x86_64)
 pkgdesc="Utility for waking up computers via wake-on-lan (wol)"
-license="GPL"
+license=("GPL")
 url="http://www.scyld.com/wakeonlan.html"
+depends=("glibc")
 source=(https://launchpad.net/ubuntu/+archive/primary/+files/etherwake_1.09.orig.tar.gz)
 
 build() {
