@@ -7,9 +7,9 @@
 
 pkgbase=linux-yoga900               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_srcname=linux-4.4.11
+_srcname=linux-4.4.12
 #_patchname=patch-4.4-rc8
-pkgver=4.4.11
+pkgver=4.4.12
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -26,7 +26,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch'
         'yoga900-touchpad_4.4rc7.patch')
-sha256sums=('3a5376f3cf56bb3e282bb3d0833a37a32550047c98415f4d97c84182c5c414b0'
+sha256sums=('3883dd1a89c6683be50f9d8ad02fa50bf9d33f015617f88b2bc11052b79726e5'
             '78fe47335606087ba2b98da64ca42f011fa3c5aec56a0880a4435a95c2f9a800'
             '333c14024cc8948f0f205f4eceac30060494d1ef0a785127500f5f568d36d38a'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
