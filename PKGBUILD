@@ -2,8 +2,8 @@
 
 pkgbase=python-traitsui
 pkgname=('python2-traitsui' 'python-traitsui')
-pkgver=5.0.0
-pkgrel=2
+pkgver=5.1.0
+pkgrel=1
 pkgdesc="Traits-capable user interfaces"
 arch=('any')
 url="https://github.com/enthought/traitsui"
@@ -11,7 +11,7 @@ license=('BSD')
 makedepends=('python-setuptools' 'python-pyface' 'python2-setuptools' 'python2-pyface')
 
 source=("traitsui-${pkgver}.tar.gz::https://github.com/enthought/traitsui/archive/${pkgver}.tar.gz")
-md5sums=('bffc6bc760232eae0ab192628e52e719')
+md5sums=('4250a1986e883e3542ca6d00dbf07ce2')
 
 prepare() {
   cd "$srcdir"
