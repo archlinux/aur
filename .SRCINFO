@@ -1,6 +1,6 @@
 pkgbase = fairsoft
 	pkgdesc = Software collection provided by GSI/FAIR for analysis.
-	pkgver = nov15p4
+	pkgver = nov15p6
 	pkgrel = 1
 	url = http://fairroot.gsi.de
 	install = fairsoft.install
@@ -34,10 +34,10 @@ pkgbase = fairsoft
 	options = !strip
 	options = staticlibs
 	options = libtool
-	source = https://github.com/FairRootGroup/FairSoft/archive/nov15p4.tar.gz
+	source = https://github.com/FairRootGroup/FairSoft/archive/nov15p6.tar.gz
 	source = arch.conf
 	source = fairsoft.install
-	md5sums = 78436458227f014f544bcf9a72bd1e32
+	md5sums = 406bda48a77b1e619a331c269f9df0d8
 	md5sums = 932f0e4d2d03c062de12651b278c947b
 	md5sums = 748ceeb13cf954c4f732f93023ae879e
 
