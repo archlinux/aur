@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/FeedReader"
   # cutting off 'foo-' prefix that presents in the git tag
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  printf $(git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
 }
 
 
