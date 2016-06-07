@@ -8,6 +8,7 @@ pkgbase = arc-icon-theme-git
 	makedepends = git
 	makedepends = automake
 	depends = gtk-update-icon-cache
+	optdepends = moka-icon-theme-git: Arc icon theme was built to be used on top of Moka icon theme
 	conflicts = arc-icon-theme
 	source = git://github.com/horst3180/arc-icon-theme.git
 	md5sums = SKIP
