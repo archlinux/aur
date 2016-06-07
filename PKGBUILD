@@ -2,7 +2,7 @@
 # Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=vapoursynth-editor
-pkgver=R5
+pkgver=R8
 pkgrel=1
 pkgdesc='VapourSynth script editor'
 arch=('i686' 'x86_64')
