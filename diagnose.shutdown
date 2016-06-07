@@ -1,5 +1,5 @@
 #!/bin/sh
 mount -o remount,rw /
-cat /sys/kernel/debug/tracing/trace >/shutdown.log
+cat /sys/kernel/debug/tracing/trace >/var/log/shutdown.log
 mount -o remount,ro /
 
