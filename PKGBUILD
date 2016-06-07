@@ -36,7 +36,7 @@ prepare() {
   patch -Np0 -i "${srcdir}/gcc-hash-style-both.patch"
 
   case "${CARCH}" in
-  'x86_64') patch -Np1 -i "${srcdir}/gcc_pure64.patch"; false;;
+  'x86_64') patch -Np1 -i "${srcdir}/gcc_pure64.patch";;
   esac
 
   echo "${pkgver}" > 'gcc/BASE-VER'
@@ -48,6 +48,7 @@ prepare() {
   cd 'build'
 
   ../configure \
+      --build="${CHOST}" \
       --prefix='/usr' \
       --mandir='/usr/share/man' \
       --infodir='/usr/share/info' \
@@ -73,7 +74,7 @@ prepare() {
 
 build() {
   set -u
-  cd "gcc-${pkgver}"
+  cd "gcc-${pkgver}/build"
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
   make -j "${_nproc}"
   set +u
