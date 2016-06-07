@@ -3,7 +3,7 @@
 # Maintainer (French Version) : Anthony Caccia <acaccia@ulb.ac.be>
 
 pkgname='tor-browser-fr'
-pkgver='6.0'
+pkgver='6.0.1'
 _language='fr'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
@@ -37,11 +37,11 @@ source=("https://www.torproject.org/dist/torbrowser/${pkgver}/tor-browser-linux$
         "${pkgname}.sh")
 
 if [[ "$CARCH" == 'i686' ]]; then
-sha256sums=('2968feca4e796b4efaa5e71a3bdcf5e1b059f30cb115d35a39a7f7fdbe481e8d'
-            '3e739bbf5a28ecf259f13a8d00fde494ddc6eb0e36ac2fe865cc7592f6b8487a')
+sha256sums=('ccf58203dea585318923ed9c49abf588b8db8f25586dc638fdc495a1a7420a8a'
+            '0f6d308799214b795f5680057d29648cf241d882c064af62d53ee9c53ca5e078')
 else
-sha256sums=('72ee57da23afe62398ec8a263e8e768da5ba06f3a81a079f954f56fc1279a5d7'
-            'cfed601b74b57bf90623fc7705a53bfe295c6ac3394d0306005601e04147ce15')
+sha256sums=('e5f7c8197f59f35bbbcdc34261787f87f36a30a856bc58c9a0eaf037aab36eef'
+            '1ff8d68eb933f27778bf1bb479145789ee734d955fae4a10bd0e8a421e2862ec')
 fi
 sha256sums+=('2217f011197329019ae3d282d95623e0230f8f7a3a604290744280530cf1698a'
 			       '17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
