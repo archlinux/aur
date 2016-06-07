@@ -1,0 +1,42 @@
+--- build/linux/Makefile 2016-06-07 15:16:05.308003998 +0200
++++ build/linux/Makefile 2016-06-07 15:16:40.267337641 +0200
+@@ -3,7 +3,7 @@
+ PREFIX = /usr
+ EXTRADIR = ./build/linux
+ 
+-GAMEDIR = $(PREFIX)/games
++GAMEDIR = $(PREFIX)/bin
+ STARTUP = $(GAMEDIR)/$(EXE)
+ BINDIR = $(PREFIX)/share/games/$(EXE)
+ ICNDIR = $(PREFIX)/share/pixmaps
+@@ -38,7 +38,7 @@
+ 	$(SRC)/Vector.o					$(SRC)/weather.o				\
+ 	$(SRC)/filehandling.o			$(SRC)/CarEngineSound.o
+ 
+-CC = gcc
++CC = g++
+ #CFLAGS = -g3 -O3 -Wall `sdl-config --cflags` `curl-config --cflags` -I/usr/X11R6/include
+ CFLAGS = -g3 -O3 -Wno-write-strings `sdl-config --cflags` `curl-config --cflags` -I/usr/X11R6/include
+ LDFLAGS = `sdl-config --libs` `curl-config --libs` -L/usr/X11R6/lib/ -lSDL_image -lSDL_mixer -lSDL_net -lGL -lGLU
+
+--- sources/auxiliar.cpp  2016-06-07 15:06:20.295822247 +0200
++++ sources/auxiliar.cpp  2016-06-07 15:07:16.164757181 +0200
+@@ -93,7 +93,7 @@
+ 
+ 	if (tmp == 0 ||
+ 	        mask == 0)
+-		return false;
++		return 0;
+ 
+ 	res = SDL_DisplayFormatAlpha(tmp);
+ 
+--- sources/F1Shttp.cpp	2016-06-07 15:14:21.753311197 +0200
++++ sources/F1Shttp.cpp	2016-06-07 15:13:54.483830989 +0200
+@@ -3,7 +3,6 @@
+ #include "string.h"
+ 
+ #include <curl/curl.h>
+-#include <curl/types.h>
+ #include <curl/easy.h>
+ 
+ #include "F1Shttp.h"
