@@ -9,7 +9,7 @@
 
 pkgname=depot-tools-git
 pkgver=r3323.3bff56b
-pkgrel=1
+pkgrel=2
 pkgdesc='Build tools for working with Chromium development, include gclient'
 arch=('any')
 url='http://dev.chromium.org/developers/how-tos/install-depot-tools'
@@ -23,7 +23,7 @@ conflicts=('gclient-svn' 'depot_tools-svn')
 options=('!strip')
 install="depot_tools.install"
 sha512sums=('SKIP'
-            '8bccc9b116cffabfb605431ff229e149865b00d8de20beb310a3ce5f6edb643dc4ab592a901e89d33bdc75b79104e5940ee8b876bf0bb033ee9f85dad770f3db'
+            'dbd6e66dce2b142830c7f22df79f6956f7f2aa762e80c1121f1a12599a8d98230d67404319c86549f52da7e736c56231d857a0f6a2dd5139b94bf70f5d7526fa'
             'bde33ffcad42a4d554d5490b6562981ef4b9f3abebadbed909749ee05ba391da4b5acb31b901e785b6f019b4ed3f9c740ab92623dd6a87e67b4b599a0010374b'
             '1fb1cbca2540dfe98ad52fce493e6545e1c7803aaa6e83ce5cde1ffcb3ced9ad39d2ff1a7a6918e1f0c33e8260ea46c03692d276d1beea2bc96383f7061e8043')
 
@@ -77,16 +77,16 @@ package()
 	# Creating directories
 	install -d "${pkgdir}/opt"
 
-	cp -r "${srcdir}/${pkgname}" "${pkgdir}/opt/"
+	cp -r "${srcdir}/${pkgname}" "${pkgdir}/opt/depot_tools"
 
 	# Export PATH
 	install -Dm755 "${srcdir}/depot_tools.sh" "${pkgdir}/etc/profile.d/depot_tools.sh"
 
 	# Install repo_fix.sh script
-	install -Dm 755 "${srcdir}/repo_fix.sh" "${pkgdir}/opt/${pkgname}"
+	install -Dm 755 "${srcdir}/repo_fix.sh" "${pkgdir}/opt/depot_tools"
 
 	# Install License
-	install -Dm644 "${pkgdir}/opt/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${pkgdir}/opt/depot_tools/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-	rm -rf "${pkgdir}/opt/${pkgname}/.git"
+	rm -rf "${pkgdir}/opt/depot_tools/.git"
 }

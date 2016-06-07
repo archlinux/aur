@@ -1,1 +1,1 @@
-export PATH="${PATH}:/opt/depot-tools-git"
+export PATH="${PATH}:/opt/depot_tools"
