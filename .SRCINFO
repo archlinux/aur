@@ -1,22 +1,22 @@
 pkgbase = linuxstopmotion-git
 	pkgdesc = software for capturing and creating stop-motion animations - development version
-	pkgver = 0.8.1beta3.r0.gf34923c
+	pkgver = 0.8.1beta10.r0.g875c7d1
 	pkgrel = 1
 	epoch = 1
 	url = http://www.linuxstopmotion.org
-	install = linuxstopmotion.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
-	makedepends = libtar
 	depends = qt4
-	depends = sdl_image
 	depends = libvorbis
 	depends = libxml2
+	depends = libtar
 	conflicts = stopmotion
-	source = linuxstopmotion::git+http://git.code.sf.net/p/linuxstopmotion/code#branch=ioctl-autodetect
+	source = linuxstopmotion::git+http://git.code.sf.net/p/linuxstopmotion/code#branch=no-sdl
+	source = narrowing.patch
 	md5sums = SKIP
+	md5sums = 13caed85ded8db631ae520620cab408e
 
 pkgname = linuxstopmotion-git
 

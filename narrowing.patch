@@ -1,0 +1,14 @@
+diff -up ./src/technical/audio/ossdriver.cpp.orig ./src/technical/audio/ossdriver.cpp
+--- ./src/technical/audio/ossdriver.cpp.orig	2016-05-25 00:19:17.000000000 -0600
++++ ./src/technical/audio/ossdriver.cpp	2016-05-25 00:17:19.000000000 -0600
+@@ -118,8 +118,8 @@ bool OSSDriver::initialize()
+ 	// Storing the request and its argument
+ 	int initValues[2][4] = 
+ 	{ 
+-		{SNDCTL_DSP_RESET, SNDCTL_DSP_SETFMT, SOUND_PCM_WRITE_CHANNELS, SOUND_PCM_WRITE_RATE},
+-		{1, AFMT_S16_LE, 2, 44100} 
++		{(int) SNDCTL_DSP_RESET, (int) SNDCTL_DSP_SETFMT, (int) SOUND_PCM_WRITE_CHANNELS, (int) SOUND_PCM_WRITE_RATE},
++		{1, (int) AFMT_S16_LE, 2, 44100} 
+ 	};
+ 	
+ 	for (int i = 0; i < 4; ++i) {
