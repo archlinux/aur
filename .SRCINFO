@@ -1,5 +1,5 @@
 pkgbase = python-sphinx
-	pkgver = 1.4.2
+	pkgver = 1.4.3
 	pkgrel = 1
 	url = http://sphinx.pocoo.org/
 	arch = any
@@ -28,8 +28,8 @@ pkgbase = python-sphinx
 	makedepends = python2-pygments
 	makedepends = python2-six
 	makedepends = python2-imagesize
-	source = https://files.pythonhosted.org/packages/source/S/Sphinx/Sphinx-1.4.2.tar.gz
-	md5sums = 6fbb224bda2fa5f16220e719764836b6
+	source = https://files.pythonhosted.org/packages/source/S/Sphinx/Sphinx-1.4.3.tar.gz
+	md5sums = bafb9fdda51d5759d17588ca92ff2fa3
 
 pkgname = python-sphinx
 	pkgdesc = Python3 documentation generator
