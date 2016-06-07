@@ -1,7 +1,7 @@
 pkgbase = download-sweeper
 	pkgdesc = A stale file archive and removal tool
 	pkgver = 1.0
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/brandonio21/download-sweeper
 	arch = any
 	license = GPL
@@ -10,7 +10,7 @@ pkgbase = download-sweeper
 	depends = systemd
 	depends = python-virtualenv
 	source = https://github.com/brandonio21/download-sweeper/archive/v1.0.tar.gz
-	md5sums = 945c87019d98ac6bd2a04f089bf7189e
+	md5sums = e54f13dc3d220295b1cd6ff17834dcfc
 
 pkgname = download-sweeper
 
