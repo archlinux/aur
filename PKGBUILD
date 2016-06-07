@@ -3,7 +3,7 @@
 pkgname=roadfighter
 pkgver=1.0.1269
 pkgrel=1
-pkgdesc="Unofficial remake of Konami's Road Fighter for the MSX1"
+pkgdesc="Unofficial remake of Konami's Road Fighter for the MSX"
 arch=('i686' 'x86_64')
 license=('unknown')
 url="http://www2.braingames.getput.com/roadf"
