@@ -5,7 +5,7 @@ post_install() {
 	echo "Default options run at (first Monday of each month at 08:00)"
 	echo ""	
 	echo "To override defaults copy timer file and modify:"
-	ehco "/usr/lib/systemd/system/raid-check.timer --> /etc/systemd/system/raid-check.timer"
+	echo "/usr/lib/systemd/system/raid-check.timer --> /etc/systemd/system/raid-check.timer"
 	echo "Modifications made to the timer in /usr/lib/systemd will be overwritten."
 	echo ""
 	echo "System configuration in file: /etc/conf.d/raid-check"
