@@ -12,7 +12,7 @@ options=(!emptydirs)
 source=('https://archlinuxarm.org/builder/xtools/x-tools6h.tar.xz')
 md5sums=('SKIP')
 install=$pkgname.install
-noextract=('x-tools7h.tar.xz')
+noextract=('x-tools6h.tar.xz')
 package() {
 	mkdir -p "$pkgdir/usr/x-tools"
 	tar -Jxf "$srcdir/x-tools7h.tar.xz" -C "$pkgdir/usr/x-tools" 
