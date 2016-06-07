@@ -8,7 +8,7 @@ pkgdesc='OpenFabrics Alliance InfiniBand Mellanox Connect-IB InfiniBand HCA driv
 #        Plug-in module for libibverbs.
 #        Allows programs to use Mellanox hardware directly from userspace.
 arch=('x86_64' 'i686')
-url=('https://www.openfabrics.org/index.php/overview.html')
+url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libibverbs')
 source=("https://www.openfabrics.org/downloads/mlx5/${pkgname}-${pkgver}.tar.gz")
