@@ -2,23 +2,23 @@
 
 pkgbase=naemon
 pkgname=('naemon-core' 'naemon-livestatus' 'naemon-thruk')
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://naemon.org"
 license=('GPL2')
-makedepends=('gperf' 'rsync' 'gd' 'mariadb-clients')
+makedepends=('gperf' 'rsync' 'gd' 'mariadb-clients' 'help2man')
 source=(http://labs.consol.de/naemon/release/v$pkgver/src/$pkgbase-$pkgver.tar.gz
         $pkgbase.service)
-md5sums=('0d6873669bd44375978c97174529e258'
+md5sums=('f0d5b8ce43debf78e82994c7ad995d57'
          'd6a77534e612e8f65ff3360336faec77')
 
 prepare() {
   cd $pkgbase-$pkgver
 
   # Break up the install process so we can package the separate components
-  sed -i '60iinstall-livestatus:' Makefile
-  sed -i '62iinstall-thruk:' Makefile
+  sed -i '51iinstall-livestatus:' Makefile
+  sed -i '53iinstall-thruk:' Makefile
 }
 
 build() {
