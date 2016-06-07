@@ -9,7 +9,7 @@
 # 4. cp -va "VST3 SDK/." ~/SDKs/vstsdk2.4
 
 pkgname=radium
-pkgver=3.9.1
+pkgver=3.9.2
 pkgrel=1
 pkgdesc="A graphical music editor. A next generation tracker."
 arch=('i686' 'x86_64')
@@ -38,10 +38,14 @@ makedepends=(
 options=(!strip)
 source=("https://github.com/kmatheussen/${pkgname}/archive/${pkgver}.tar.gz"
         "reenable-libbfd-workaround.patch"
-        "use-gcc5-for-pluginhost.patch")
-md5sums=('f14e8266682a35c1b8f22f226bd490ea'
+        "use-gcc5-for-pluginhost.patch"
+        "https://github.com/kmatheussen/radium/commit/62dbff512d430c9e93c04e85fd24221a26553c3c.patch"
+        "https://github.com/kmatheussen/radium/commit/ec15def19888a2200e0dca2f9d7dd39282b6a23a.patch")
+md5sums=('5446a04c647665ce3968d7f5fb74ec34'
          '74ea7a54f0e358035a7f0cc7baf54b6e'
-         '9c19006defeef7e317ec23ed8eae1b72')
+         '9c19006defeef7e317ec23ed8eae1b72'
+         '840ef9b1f4f06627d69550f1e76c7f4a'
+         '17a8de84ad89a635a6f5737b45549116')
 
 prepare() {
     cd "${pkgname}-${pkgver}"
@@ -52,6 +56,9 @@ prepare() {
     # specific to GCC5, so they don't compile with Arch's regular GCC6 and we
     # have to switch back manually
     patch -Np1 < "${srcdir}/use-gcc5-for-pluginhost.patch"
+    # See https://groups.google.com/d/msg/radium-music-editor/rXIcVpKgXXs/od7802ojBQAJ
+    patch -Np1 < "${srcdir}/62dbff512d430c9e93c04e85fd24221a26553c3c.patch"
+    patch -Np1 < "${srcdir}/ec15def19888a2200e0dca2f9d7dd39282b6a23a.patch"
 }
 
 build() {
