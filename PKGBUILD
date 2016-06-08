@@ -2,7 +2,7 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=the_platinum_searcher
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc="A code search tool similar to ack and the_silver_searcher(ag)"
 arch=('i686' 'x86_64')
