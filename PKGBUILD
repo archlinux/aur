@@ -23,11 +23,11 @@ package() {
     install -dm755 "$pkgdir/var/log/$pkgname/"
 
     if [ $CARCH = 'x86_64' ]; then
-        install -Dm644 plugins/sigar/lib/libsigar-amd64-linux.so "$pkgdir/usr/share/crate/plugins/sigar/lib/libsigar-amd64-linux.so"
+        install -Dm644 lib/sigar/libsigar-amd64-linux.so "$pkgdir/usr/share/crate/lib/sigar/libsigar-amd64-linux.so"
     else
-        install -Dm644 plugins/sigar/lib/libsigar-x86-linux.so "$pkgdir/usr/share/crate/plugins/sigar/lib/libsigar-x86-linux.so"
+        install -Dm644 lib/sigar/libsigar-x86-linux.so "$pkgdir/usr/share/crate/lib/sigar/libsigar-x86-linux.so"
     fi
-    cp plugins/sigar/lib/sigar*.jar "$pkgdir/usr/share/crate/lib/sigar/"
+    cp lib/sigar/sigar*.jar "$pkgdir/usr/share/crate/lib/sigar/"
     cp lib/*.jar "$pkgdir/usr/share/crate/lib/"
 
     cp config/* $pkgdir/etc/$pkgname
