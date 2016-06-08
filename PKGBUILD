@@ -1,9 +1,9 @@
 # Maintainer: Dario Ostuni <another.code.996@gmail.com>
 pkgname=cotton-git
-pkgver=r64.bdeacae
+pkgver=r66.6a5861a
 pkgrel=1
 pkgdesc="A process sandbox written in C++ "
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm' 'aarch64')
 url="https://github.com/algorithm-ninja/cotton.git"
 license=('APACHE2')
 depends=('boost-libs')
