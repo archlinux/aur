@@ -2,7 +2,7 @@
 
 pkgname=hp2xx
 pkgver=3.4.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Convert vector-oriented graphics data from HP-GL plotter language into a variety of popular graphics formats."
 arch=('i686' 'x86_64')
 depends=('libpng' 'libtiff' 'libjpeg' 'libx11')
@@ -11,7 +11,6 @@ license=('GPL')
 source=("http://ftpmirror.gnu.org/$pkgname/$pkgname-$pkgver.tar.gz" libpng.patch)
 md5sums=('18808580d24b7caf2c4c7045c093329f'
          '22d577c7f10ada9370e06cf095af9ae9')
-install=$pkgname.install
 
 prepare() {
   cd $srcdir/$pkgname-$pkgver
