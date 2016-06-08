@@ -2,14 +2,15 @@
 _pyname=pydeep
 pkgname=('python2-pydeep')
 makedepends=('python2')
-pkgver=0.4
+depends=('ssdeep')
+pkgver=0.2
 pkgrel=1
 pkgdesc="bindings for ssdeep"
 arch=('any')
 url="https://github.com/kbandla/pydeep/"
 license=('BSD')
 source=("https://github.com/kbandla/$_pyname/archive/$pkgver.tar.gz")
-sha512sums=('1560ee50d79b666fa6d40e156a44afcf323728191597ae719f8613abba416cd14d3b5b39796d935697cf8fd738ef59ef69c735329217050a06a427a15a78c5ad')
+sha512sums=('debdf24fd62143c1a3a780fcfd36824e3e18e95f110ba3ca298cb3a0f6a761d71c4c6394283d5da7ddf0fa5943ffe4d7b23c7097f46e806d9eb7724b2ad2406f')
 
 package() {
   cd "$srcdir/$_pyname-$pkgver"
