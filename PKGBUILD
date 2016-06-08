@@ -2,13 +2,13 @@
 
 pkgname=ttf-lekton
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Lekton font"
 arch=('any')
 depends=('fontconfig' 'xorg-font-utils')
 url='http://www.fontsquirrel.com/fonts/lekton'
 source=("http://www.fontsquirrel.com/fonts/download/lekton")
-md5sums=('815898ca5ce291f6c101ad3a1d7a92bb')
+md5sums=('b0e29919e2ba838fe790413d7ea9fc95')
 install=$pkgname.install
 license=('custom')
 
