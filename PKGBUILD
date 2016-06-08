@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=soundconverter-git
 pkgver=2.1.6.46.gfbc1713
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple sound converter application for GNOME from git repo"
 arch=('any')
 url="http://soundconverter.org/"
@@ -11,7 +11,6 @@ depends=('python2-gconf' 'python2-libgnome' 'pygtk' 'gstreamer0.10-python'
 makedepends=('git' 'perl-xml-libxml' 'intltool')
 provides=('soundconverter')
 conflicts=('soundconverter')
-install=soundconverter.install
 source=("git+https://github.com/kassoulet/soundconverter.git")
 md5sums=('SKIP')
 _gitname="soundconverter"
