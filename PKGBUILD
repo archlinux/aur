@@ -11,7 +11,7 @@ makedepends=(git make autoconf)
 conflicts=('basiliskii')
 
 pkgver() {
-  cd "$srcdir/$_gitname-build"
+  cd "$srcdir/macemu"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
