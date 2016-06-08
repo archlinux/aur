@@ -6,7 +6,7 @@
 
 pkgname=draftsight
 pkgver=2016SP1
-pkgrel=2
+pkgrel=3
 pkgdesc="Freeware CAD software for your DWG/DXF files."
 arch=('x86_64')
 url="http://www.3ds.com/products/draftsight/"
@@ -33,14 +33,16 @@ install='draftsight.install'
 source=("http://www.draftsight.com/download-linux-fedora"
         "draftsight.desktop")
 md5sums=('1bc8b2d4c69314f0d612a6c8e09d5acb'
-         'cfda3b8675a93ccfb768873c1a873199')
+         '19b26d423cae7ec0e1e6c6d78c94915d')
 
 _pkgprefix='opt/dassault-systemes/DraftSight'
 
 package()
 {
   mkdir -p $pkgdir/usr/bin
-  echo "env vblank_mode=0 /${_pkgprefix}/Linux/DraftSight" > \
+  echo "#!/bin/sh" > \
+       $pkgdir/usr/bin/draftsight
+  echo "env vblank_mode=0 /${_pkgprefix}/Linux/DraftSight" >> \
        $pkgdir/usr/bin/draftsight
   chmod 755 $pkgdir/usr/bin/draftsight
 

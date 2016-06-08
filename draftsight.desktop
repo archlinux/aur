@@ -2,7 +2,7 @@
 Type=Application
 Name=DraftSight
 Comment=Freeware CAD software for your DWG/DXF files.
-Exec=env vblank_mode=0 /opt/dassault-systemes/DraftSight/Linux/DraftSight
-Icon=/usr/share/icons/hicolor/128x128/apps/draftsight.png
+Exec=env vblank_mode=0 /opt/dassault-systemes/DraftSight/Linux/DraftSight %U
+Icon=draftsight
 Terminal=false
 Categories=Graphics;2DGraphics;
