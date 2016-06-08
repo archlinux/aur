@@ -25,9 +25,17 @@ _static_build=false
 _build_from_head=false
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 
-pkgrel=10
+pkgrel=12
 # 1 or 2 at present
 _piver=""
+
+if [[ -z $_piver ]] && [[ -n $LOCAL_PI_VER ]]; then
+  _piver=$LOCAL_PI_VER
+fi
+
+if [[ -f testing ]]; then
+    _skip_web_engine=true
+fi
 
 _pkgvermajmin="5.7"
 pkgver="${_pkgvermajmin}.0"
@@ -80,16 +88,9 @@ _device_configure_flags=""
 
 #Sanity check
 __pkgconfigpath="${_sysroot}/usr/lib/pkgconfig"
-__eglpkgconfigpath="${__pkgconfigpath}/egl.pc"
-__glespkgconfigpath="${__pkgconfigpath}/glesv2.pc"
 
 if [[ ! -d ${__pkgconfigpath} ]]; then
   echo "You have to set a valid sysroot to proceed with the build"
-  exit 1
-fi
-
-if [[ -f ${__eglpkgconfigpath} ]] || [[ -f ${__glespkgconfigpath} ]] ; then
-  echo "Mesa is about to eat our communal poodle; delete egl.pc and glesv2.pc in your sysroot"
   exit 1
 fi
 
@@ -177,6 +178,9 @@ fi
   mkdir -p ${_bindir}
   cd ${_bindir}
 
+  # Just because you can enable something doesnt mean you should
+  # Prepare for breakage in all your Qt derived projects
+  #-qtnamespace "Pi${_piver}" \
   ${_srcdir}/configure \
     -no-icu \
     -v \
@@ -185,7 +189,6 @@ fi
     -silent \
     -confirm-license \
     -opensource \
-    -qtnamespace "Pi${_piver}" \
     -qtlibinfix "Pi${_piver}" \
     -reduce-exports \
     -reduce-relocations \
