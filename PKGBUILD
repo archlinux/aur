@@ -2,7 +2,7 @@
 
 pkgname=sxemacs-git
 pkgver=22.1.16.14.gfd681d4
-pkgrel=2
+pkgrel=3
 pkgdesc="A derivation of xemacs - git checkout"
 arch=('i686' 'x86_64')
 url="http://www.sxemacs.org/"
@@ -13,7 +13,6 @@ provides=('sxemacs')
 conflicts=('sxemacs' 'xemacs')
 source=('git+http://git.sxemacs.org/sxemacs')
 md5sums=('SKIP')
-install=sxemacs.install
 _gitname="sxemacs"
 options=('!libtool' '!makeflags')
 
