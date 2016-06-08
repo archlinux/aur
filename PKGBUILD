@@ -1,6 +1,6 @@
 # Maintainer: Marius O<marius@habarnam.ro>
 pkgname=coedit-bin
-pkgver=2_gold
+pkgver=2_update_6
 pkgrel=1
 pkgdesc="Coedit is an IDE for the DMD D2 compiler."
 url="https://github.com/BBasile/Coedit"
@@ -15,7 +15,7 @@ else
   _arch="32"
 fi
 source=("https://github.com/BBasile/Coedit/releases/download/${pkgver}/${pkgname%-bin}.${pkgver//_}.linux${_arch}.zip")
-md5sums=('733c4dc64e7106674d5ab712892b9866')
+md5sums=('f495e0aa0041fb3a0f07d6a57ba6743e')
 
 package() {
     mkdir -p "${pkgdir}/usr/bin"
