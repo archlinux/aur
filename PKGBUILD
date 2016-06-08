@@ -1,16 +1,16 @@
-#! /bin/sh
+# Maintainer: Rob Lynn <rob22uk at gmail dot com>
 # Contributor: DerFlob <derflob at derflob dot de>
-# Maintainer: Jorge Barroso <jorge.barroso.11 at gmail dot com>
+# Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 
 pkgname=tilda-git
 _gitname=tilda
-pkgver=5a6496c
+pkgver=284651c
 pkgrel=1
 pkgdesc="Linux terminal based on classic terminals from first person shooter games"
 arch=('i686' 'x86_64')
 url="https://github.com/lanoxx/tilda"
 license=('GPL')
-depends=('gtk3' 'vte290' 'glib2' 'confuse' 'libglade')
+depends=('gtk3' 'vte3' 'glib2' 'confuse' 'libglade')
 makedepends=('git')
 provides=('tilda')
 conflicts=('tilda')
