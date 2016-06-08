@@ -6,17 +6,17 @@
 
 pkgname=firefox-gtk2
 _pkgname=firefox
-pkgver=46.0.1
+pkgver=47.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.mozilla.org/firefox/"
 depends=('gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'ffmpeg' 'desktop-file-utils'
-         'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
+         'dbus-glib' 'alsa-lib' 'ffmpeg' 'libvpx' 'libevent' 'nss' 'hunspell'
+         'sqlite' 'ttf-font' 'icu')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
-             'xorg-server-xvfb' 'libpulse' 'inetutils')
+             'libpulse' 'inetutils' 'xorg-server-xvfb' 'autoconf2.13')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'upower: Battery API')
 options=('!emptydirs' '!makeflags')
@@ -28,13 +28,17 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/
         firefox-install-dir.patch
         vendor.js
         firefox-symbolic.svg
+        mozilla-1245076.patch
+        mozilla-1245076-1.patch
         no-libnotify.patch)
-sha256sums=('98b8292a31b7e3e426f3204de1fed2a6ab38dcf64dd27bdfae556b407a198bf9'
-            'ccd81f8a93ef06c55625709ce812ca6b5630f385ba26436665ca6c15158bc11f'
+sha256sums=('51936fcf86c5f84e7fdd377d07658a02a1c99d2ebdc3c8aae01d70f947331d12'
+            '859c9d9793e9d21f2b97b2bece201c777542be6dacb6dfb113f6c230b30e8d51'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
             'a2474b32b9b2d7e0fb53a4c89715507ad1c194bef77713d798fa39d507def9e9'
+            '05574c7d0f259da161bcd0e2e8bc9a19401e620ff29439da935d349eebb60efa'
+            '6e7cba25c52b246da183b8309e7b56208bd991d1a7adb40063c5702a6f3722ea'
             'e4ebdd14096d177d264a7993dbd5df46463605ff45f783732c26d30b9caa53a7')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
@@ -59,6 +63,10 @@ prepare() {
   cp ../mozconfig .mozconfig
   patch -Np1 -i ../firefox-install-dir.patch
 
+  # GCC 6
+  patch -Np1 -i ../mozilla-1245076.patch
+  patch -Np1 -i ../mozilla-1245076-1.patch
+
   # Notifications with libnotify are broken
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1236150
   patch -Np1 -i ../no-libnotify.patch
@@ -82,11 +90,19 @@ build() {
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
 
+  # Hardening
+  LDFLAGS+=" -Wl,-z,now"
+
+  # GCC 6
+  CFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
+  CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
+
   export PATH="$srcdir/path:$PATH"
 
   # Do PGO
-  xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24" \
-    make -f client.mk build MOZ_PGO=1
+  #xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24" \
+  #  make -f client.mk build MOZ_PGO=1
+  make -f client.mk build
 }
 
 package() {
