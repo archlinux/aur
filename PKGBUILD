@@ -31,11 +31,11 @@ _use_32bit_pae="no"	# "yes": Use the PAE config for 32-bit
 ###########################################################################################################
 
 pkgdesc='A desktop oriented kernel and modules with Liquorix patches'
-__basekernel=4.5
-_minor=6
+__basekernel=4.6
+_minor=1
 pkgver=${__basekernel}.${_minor}
-pkgrel=2
-lqxrel=2
+pkgrel=1
+lqxrel=1
 _kernelname=-lqx
 pkgbase=linux-lqx
 pkgname=('linux-lqx' 'linux-lqx-headers' 'linux-lqx-docs')
@@ -45,9 +45,9 @@ license=('GPL2')
 url="http://liquorix.net/"
 
 if [ "$_custom" = "x" ]; then
-   makedepends=('qt5-base' 'kmod' 'inetutils' 'bc')
+   makedepends=('qt5-base' 'kmod' 'inetutils' 'bc' 'libelf')
 else
-   makedepends=('kmod' 'inetutils' 'bc')
+   makedepends=('kmod' 'inetutils' 'bc' 'libelf')
 fi
 
 options=(!strip)
@@ -60,12 +60,12 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/linux-${__basekernel}.tar.x
         "http://liquorix.net/sources/${__basekernel}/config.amd64"
         "linux-lqx.preset")
 
-sha512sums=('cb0d5f30baff37dfea40fbc1119a1482182f95858c883e019ee3f81055c8efbdb9dba7dfc02ebcc4216db38f03ece58688e69efc0fce1dade359af30bd5426de'
+sha512sums=('df5ee40b0ebd89914a900f63c32a481cb4f405d8f792b2d03ea167ce9c5bdf75154c7bd8ecd7ebac77a8dbf2b077c972cbfe6b95163e27c38c1fefc6ddbdfa0b'
             'SKIP'
-            '2f89e5ad6c1efdd50f66810c22c2c5cf938b421a6fbcfaf846dda5e722f114a5f15776780f71f14f3a070642aae5f447188bcabfd170502ac30c7f093c52cec8'
-            'b9556bbf9b1a3fb49af71ff5874a02126a5529f420b31224ddbc224418267d8c8c96c587e967680bf2a5ebbb4c8b31c4816f232b0e2ccbe35256d3c4aebf9f16'
-            'f1cd14e4f8a637c44a8bf8302af4f476c668759089f5e99267f66f64936508dde93ff6e70fa60b4910dee808688f6c47acb869da4a89b88f5606ff6859e36154'
-            '4bd7c702665f4cce8351edcda777881c8f063f8e4c5f5b550a56e1501c22400ff406fd2413393d5c87a37c18be7944d8fb236a5595516684ae1eef5aebec2bc2'
+            '69d7928a024b4f343c18b4ce74bf9cbb396bfa5918223f9cf24d18035d08bf74beabbd57f33b71b6aa8d3462b2a08041b3eddc584697ab3c8ac52c20e1fe6a3f'
+            '29169b8ced14899d686419bf32b7b0241d64fa499c650ca8544e271342af2fbabfdd664334a83c7a58142a2f2baeff1dde200efeb7d331283121420d13070e7c'
+            'e3d4af99d0d47b9cd4c5fdd1069ad581452ea220242c25b168c5ad6828267c873adc421d7a44ab1080ba5fddd1d2af69f8ad4906fa81ac826a06b1bc629a7ab1'
+            '9b6b1efd0b7c02b88c8dcef31de5811add48c88fa0dd83d07be112b61b12da8d6596b02278b6060b62464277f565566e282b0db6656e41998616f4d3e52b88e4'
             'fe4dcd7b5ec06ec3ec4aa631531469f58f6a7111e2d33affa98a1b8a8d230c5fa7e25ffdf770fe5ce61f249b0ec0ecd69df2858c4029acee0efaadff957858fe')
             
 validpgpkeys=(
@@ -263,7 +263,7 @@ install -D -m644 .config \
 mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
 for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-	media net pcmcia scsi sound trace uapi video xen; do
+	media net pcmcia scsi soc sound trace uapi video xen; do
 	cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
 done
 
@@ -349,6 +349,14 @@ done
 		mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
 		cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
 	done
+	
+	  # add objtool for external module building and enabled VALIDATION_STACK option
+
+      if [ -f tools/objtool/objtool ];  then
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+      fi
+
 
 	chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
 	find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
