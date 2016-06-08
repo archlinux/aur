@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=mailcrypt
 pkgver=3.5.9
-pkgrel=5
+pkgrel=6
 pkgdesc="Emacs interface to PGP and GnuPG"
 arch=('any')
 url="http://mailcrypt.sourceforge.net/"
@@ -10,7 +10,6 @@ depends=('emacs')
 makedepends=('texlive-plainextra')
 source=(http://downloads.sourceforge.net/sourceforge/mailcrypt/mailcrypt-$pkgver.tar.gz)
 md5sums=('18c0dea5dde0fc73168f4815df0d9db0')
-install=$pkgname.install
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
