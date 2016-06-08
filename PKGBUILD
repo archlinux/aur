@@ -3,15 +3,15 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=howl
-pkgver=0.3
-pkgrel=2
+pkgver=0.4
+pkgrel=1
 pkgdesc='General purpose, light-weight customizable editor'
 arch=('x86_64' 'i686')
 url='http://howl.io/'
 license=('MIT')
 depends=('gtk3' 'desktop-file-utils')
 source=("https://github.com/howl-editor/howl/releases/download/$pkgver/howl-$pkgver.tgz")
-sha256sums=('a0c8f24f0ea90aad5ce008c0091578998a07dd00897a3c02e138b175e81f3297')
+sha256sums=('25075b12ba0138afa1cb694c52dd756b35a5350fe3b30132fbcacd137db3adb3')
 
 build() {
   make -C "howl-$pkgver/src"
