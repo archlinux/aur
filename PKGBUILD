@@ -2,7 +2,7 @@
 
 pkgname=icingaweb2-git
 _pkgname=icingaweb2
-pkgver=r7176.9b14fff
+pkgver=r10335.d4b9b6d
 pkgrel=1
 pkgdesc="Icinga Web 2 Interface"
 license=('GPL')
@@ -11,7 +11,6 @@ depends=('php')
 makedepends=('git')
 optdepends=('php-gd: export data to PDF'
             'php-intl: support for internationalization'
-            'php-ldap: for LDAP authentication'
             'php-pgsql: for PostgreSQL backend')
 provides=('icingaweb2')
 conflicts=('icingaweb2')
