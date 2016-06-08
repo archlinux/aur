@@ -2,15 +2,15 @@
 
 pkgname=python2-pywinrm
 _realname=pywinrm
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Python library for Windows Remote Management"
 arch=(any)
 url="https://pypi.python.org/pypi/pywinrm"
 license=('MIT')
 depends=('python2' 'python2-isodate' 'python2-xmltodict')
-source=("https://pypi.python.org/packages/source/p/pywinrm/pywinrm-${pkgver}.tar.gz")
-md5sums=('131ae8209c9d053e397770d67f5c9734')
+source=("https://github.com/diyan/pywinrm/archive/v${pkgver}.tar.gz")
+sha256sums=('e8a9afd6f68a152bf9b6ccc07574d35cb4bebe24af779d701c325f0e96226ccc')
 
 package() {
     cd ${srcdir}/${_realname}-${pkgver}
