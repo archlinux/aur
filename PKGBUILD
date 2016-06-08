@@ -4,7 +4,7 @@
 
 pkgname=gnudatalanguage
 pkgver=0.9.6
-pkgrel=5
+pkgrel=6
 pkgdesc="An IDL (Interactive Data Language) compatible incremental compiler (ie. runs IDL programs)"
 arch=('i686' 'x86_64')
 url="http://gnudatalanguage.sourceforge.net/"
@@ -39,7 +39,7 @@ build() {
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON=YES -DPYTHONVERSION=2.7 \
       -DPYTHON_EXECUTABLE=/usr/bin/python2.7 \
-      -DMAGICK=NO -DFFTW=YES -DHDF5=YES -DHDF=NO -DGRIB=YES -DUDUNITS=YES \
+      -DMAGICK=NO -DFFTW=YES -DHDF5=NO -DHDF=NO -DGRIB=YES -DUDUNITS=YES \
       -DCMAKE_C_FLAGS="-I/usr/include/ImageMagick \
             -I/usr/include/python2.7 \
             -I/usr/lib/python2.7/site-packages/numpy/core/include" ..
