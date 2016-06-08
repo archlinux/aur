@@ -1,7 +1,7 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 pkgname=rustup
-pkgver=0.1.11
-pkgrel=3
+pkgver=0.1.12
+pkgrel=1
 
 # we (currently) need to build using nightly
 # this can hopefully go away eventually
@@ -31,7 +31,7 @@ source=(
 )
 # The Rust GPG Key: https://keybase.io/rust
 validpgpkeys=("108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE")
-md5sums=('4d1b35192eeea327e72b5aa254581cca'
+md5sums=('22751775435b3a37f3893b130e5e5d49'
          '009ccdef55366033a1db0f74762a7fa3'
          'SKIP')
 
