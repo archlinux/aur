@@ -1,12 +1,12 @@
 pkgbase = hibiscus
-	pkgdesc = Nice HBCI banking program in form of a plugin for jameica.
+	pkgdesc = HBCI banking plugin for jameica.
 	pkgver = 2.6.17
 	pkgrel = 1
 	url = https://www.willuhn.de/projects/hibiscus/
 	install = hibiscus.install
-	arch = i686
 	arch = x86_64
-	license = GPL
+	arch = i686
+	license = GPL2
 	makedepends = unzip
 	depends = java-runtime>=1.5
 	depends = jameica>=2.2
