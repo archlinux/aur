@@ -5,7 +5,8 @@
 pkgname=rar-beta
 pkgver=5.4.b2
 pkgrel=1
-pkgdesc="A command-line port of the rar compression utility Beta Version"
+pkgdesc="A command-line port of the rar compression utility (beta 
+version)"
 url="http://www.rarlab.com/rarnew.htm"
 arch=('i686' 'x86_64')
 license=('custom')
