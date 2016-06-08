@@ -1,4 +1,8 @@
 whisperer(){
+    echo "----------------------------------------------------------------"
+    echo "If you are using DKMS you may be interested"
+    echo "in switching to catalyst-dkms package"
+    echo "----------------------------------------------------------------"
     echo -e "\e[0;36m------------------------- ANGELA -------------------------------\e[0m"
     echo "To enable 'automatic re-compilation while system shutdown/reboot' "
     echo "feature run these commands as root:"
