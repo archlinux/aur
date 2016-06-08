@@ -22,7 +22,7 @@ QEMU_LINK=$MAIN_REPO/qemu/$NORM_ARCH
 
 pkgname=junest-git
 pkgver=5.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc="The Arch Linux based distro that runs upon any Linux distros without root access"
 arch=('any')
 url="http://fsquillace.github.io/junest-site/"
@@ -61,11 +61,11 @@ then
     qemu_md5sums["x86"]='a7c2b6ca53fa166f0c06ec76cc5edd7d'
 fi
 
+source+=("$PROOT_LINK/proot-$NORM_ARCH")
+md5sums+=("${proot_md5sums[$NORM_ARCH]}")
+
 for archh in ${ARCH_LIST[@]}
 do
-    source+=("$PROOT_LINK/proot-$archh")
-    md5sums+=("${proot_md5sums[$archh]}")
-
     if [ "$archh" != "$NORM_ARCH" ]
     then
         source+=("${QEMU_LINK}/qemu-${NORM_ARCH}-static-$archh")
@@ -107,10 +107,7 @@ package() {
     echo "Installing proot static binaries"
     cd "$srcdir"
     install -d -m 755 "${pkgdir}/opt/proot"
-    for arch in ${ARCH_LIST[@]}
-    do
-        install -m 755 proot-$arch ${pkgdir}/opt/proot/proot-$arch
-    done
+    install -m 755 proot-$NORM_ARCH ${pkgdir}/opt/proot/proot-$NORM_ARCH
 
     echo "Installing qemu static binaries"
     install -d -m 755 "${pkgdir}/opt/qemu"
@@ -128,7 +125,7 @@ package() {
     sed -i -e 's/"--asroot"//' ${pkgdir}/opt/yaourt/bin/yaourt
     install -m 755 /usr/bin/makepkg ${pkgdir}/opt/yaourt/bin/
     sed -i -e 's/EUID\s==\s0/false/' ${pkgdir}/opt/yaourt/bin/makepkg
-    ln -s ../../opt/yaourt/bin/yaourt ${pkgdir}/usr/bin/yaourt2
+    ln -s ../../opt/yaourt/bin/yaourt ${pkgdir}/usr/bin/yogurt
 }
 
 # vim:set ts=2 sw=2 et:
