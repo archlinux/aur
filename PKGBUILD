@@ -3,12 +3,12 @@
 
 pkgname=icinga2
 pkgver=2.4.10
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source host, service and network monitoring program"
 license=('GPL')
 arch=('i686' 'x86_64')
 url="http://www.icinga.org"
-depends=('boost-libs' 'yajl')
+depends=('boost-libs' 'libedit' 'openssl' 'yajl')
 makedepends=('boost' 'cmake' 'libmariadbclient' 'postgresql-libs')
 optdepends=('monitoring-plugins: plugins needed for icinga checks'
             'libmariadbclient: for MySQL support'
