@@ -2,7 +2,7 @@
 
 pkgname=qtikz-git
 pkgver=r196.ab7bd73
-pkgrel=2
+pkgrel=3
 pkgdesc="Small application helping you to create TikZ diagrams"
 arch=('i686' 'x86_64')
 url="https://github.com/fhackenberger/ktikz"
@@ -11,7 +11,6 @@ depends=('poppler-qt5' 'shared-mime-info' 'desktop-file-utils')
 makedepends=('git' 'texlive-core' 'qt5-tools')
 provides=('qtikz')
 conflicts=('qtikz')
-install=qtikz.install
 source=("qtikz::git+https://github.com/fhackenberger/ktikz" config.diff makefile.diff)
 md5sums=('SKIP'
          'ff93a529fe32d095a6390a629c51bece'
