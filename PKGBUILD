@@ -6,7 +6,7 @@
 
 _srcname=wine-mono
 pkgname=wine-mono-latest
-pkgver=4.6.2
+pkgver=4.6.3
 pkgrel=1
 pkgdesc="Wine's built-in replacement for Microsoft's .NET Framework (latest version, intended mainly for wine-git and wine-staging-git)"
 arch=('any')
@@ -16,7 +16,7 @@ depends=('wine')
 provides=('wine-mono')
 conflicts=('wine-mono')
 source=("http://dl.winehq.org/wine/${_srcname}/${pkgver}/${_srcname}-${pkgver}.msi")
-sha256sums=('a46c5b32b6ed66e2e8d7ac9b15ff9ffe143a3aa6f12f2ea07a6ca9a4d2023e41')
+sha256sums=('f883e88ae78c7ea3d887c24023aa1ed03bb71a83f717c6595abf18b31fef28b9')
 
 package() {
 	_monodir="${pkgdir}/usr/share/wine/mono"
