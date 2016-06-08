@@ -3,20 +3,19 @@
 
 _pkgname=mumble
 pkgname=${_pkgname}-jack
-pkgver=1.2.15
+pkgver=1.2.16
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Mumble with support for JACK"
 license=('BSD')
-depends=('qt4' 'speex' 'lsb-release' 'libxi' 'avahi' 'libsndfile' 'protobuf' 'libpulse' 'jack' 'opus' 'xdg-utils' 'speech-dispatcher' 'gtk-update-icon-cache')
+depends=('qt4' 'speex' 'lsb-release' 'libxi' 'avahi' 'libsndfile' 'protobuf' 'libpulse' 'jack' 'opus' 'xdg-utils' 'speech-dispatcher')
 makedepends=('boost' 'mesa')
-provides=('mumble')
-conflicts=('mumble')
-install=mumble.install
+provides=("${_pkgname}=${pkgver}")
+conflicts=("${_pkgname}")
 url="http://mumble.info/"
 source=("https://github.com/mumble-voip/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         "http://sourceforge.net/p/mumble/patches/_discuss/thread/1bfdbda2/a90e/attachment/mumble-jack-support.patch")
-md5sums=('3052ed64d1f4d4e5bf60095df53c7758'
+md5sums=('58e7574af80e36e0b943df0e6a44d6ce'
          '03d89f5f4265de696505211984b969a0')
 
 prepare() {
@@ -27,7 +26,7 @@ prepare() {
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  # Building mumble
+
   qmake-qt4 main.pro \
     CONFIG+="bundled-celt no-bundled-opus no-bundled-speex no-g15 no-xevie no-server \
     no-embed-qt-translations no-update packaged" \
@@ -39,24 +38,20 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
 
-  # bin stuff
-  install -m755 -D "./release/mumble" "${pkgdir}/usr/bin/mumble"
-  install -m755 -D "./scripts/mumble-overlay" "${pkgdir}/usr/bin/mumble-overlay"
+  install -Dm755 "./release/mumble" "${pkgdir}/usr/bin/mumble"
+  install -Dm755 "./scripts/mumble-overlay" "${pkgdir}/usr/bin/mumble-overlay"
 
-  # lib stuff
-  install -m755 -D "./release/libmumble.so.${pkgver}" "${pkgdir}/usr/lib/mumble/libmumble.so.${pkgver}"
+  install -Dm755 "./release/libmumble.so.${pkgver}" "${pkgdir}/usr/lib/mumble/libmumble.so.${pkgver}"
   ln -s "libmumble.so.${pkgver}" "${pkgdir}/usr/lib/mumble/libmumble.so"
   ln -s "libmumble.so.${pkgver}" "${pkgdir}/usr/lib/mumble/libmumble.so.1"
   ln -s "libmumble.so.${pkgver}" "${pkgdir}/usr/lib/mumble/libmumble.so.1.2"
-  install -m755 -D "./release/plugins/liblink.so" "${pkgdir}/usr/lib/mumble/liblink.so"
-  install -m755 -D "./release/plugins/libmanual.so" "${pkgdir}/usr/lib/mumble/libmanual.so"
-  install -m755 -D "./release/libcelt"* "${pkgdir}/usr/lib/mumble/"
+  install -Dm755 "./release/plugins/liblink.so" "${pkgdir}/usr/lib/mumble/liblink.so"
+  install -Dm755 "./release/plugins/libmanual.so" "${pkgdir}/usr/lib/mumble/libmanual.so"
+  install -Dm755 "./release/libcelt"* "${pkgdir}/usr/lib/mumble/"
 
-  # other stuff
-  install -m644 -D "./scripts/mumble.desktop" "${pkgdir}/usr/share/applications/mumble.desktop"
-  install -m755 -d "${pkgdir}/usr/share/man/man1"
-  install -m644 -D "./man/mum"* "${pkgdir}/usr/share/man/man1/"
-  install -m644 -D "./icons/mumble.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/mumble.svg"
-  install -m644 -D "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "./scripts/mumble.desktop" "${pkgdir}/usr/share/applications/mumble.desktop"
+  install -dm755 "${pkgdir}/usr/share/man/man1"
+  install -Dm644 "./man/mum"* "${pkgdir}/usr/share/man/man1/"
+  install -Dm644 "./icons/mumble.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/mumble.svg"
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
