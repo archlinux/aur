@@ -25,6 +25,7 @@ sha512sums=('ba8c6edcef126c6a260a9251b0948747074061c8f16fb20f03b250c6698645172c9
             '166985b311e1e004afed53af1fdd58b0f29f3fd09af367abca270f94564f5f821027e60220f9e588a8895939eae360e99947f45b863fbbc0b541c99389d82bad')
  
 prepare() {
+    export PKG_CONFIG_PATH=/usr/lib/ffmpeg2.8/pkgconfig
     cd ${srcdir}/${pkgname}-${pkgver}
     patch -p1 < ../tvheadend-4.0.9-1.patch
     ./configure --prefix=/usr --python=python2
