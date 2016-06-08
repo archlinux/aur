@@ -1,14 +1,14 @@
 # Maintainer: Alexej Magura <alexej@Aya.localdomain>
 pkgname=lib32-libtinfo5
 pkgver=5
-pkgrel=9
+pkgrel=10
 pkgdesc="lib32 symlink to ncurses for use in packages (legacy)"
 arch=(any)
 url="http://www.gnu.org/software/ncurses/"
 license=('MIT')
 depends=('lib32-ncurses5-compat-libs')
-#conflicts=('lib32-libtinfo')
-replaces=('lib32-libtinfo-5')
+conflicts=('libtinfo-5' 'libtinfo<=6-12')
+replaces=('libtinfo-5' 'libtinfo<=6-12')
 _ncurses="$(pacman -Q lib32-ncurses | awk '{sub(/-[0-9]+/, "", $2); print $2}')"
 
 package() {
