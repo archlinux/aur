@@ -3,13 +3,15 @@
 
 pkgname=ozone
 pkgver=2.16
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Segger Ozone JLink debugger for Linux"
 arch=('i686' 'x86_64')
 license=('custom')
 groups=('jlink')
 replaces=('jlink-debugger')
+conflicts=('jlink-debugger')
+provides=('jlink-debugger')
 depends=('qt4' 'jlink-software-and-documentation>=5.10n')
 source_x86_64=("Ozone_Linux_V${pkgver/./}_x86_64.tgz::https://download.segger.com/J-Link/J-LinkDebugger/Ozone_Linux_V${pkgver/./}_x86_64.tgz")
 source_i686=("Ozone_Linux_V${pkgver/./}_i686.tgz::https://download.segger.com/J-Link/J-LinkDebugger/Ozone_Linux_V${pkgver/./}_i386.tgz")
@@ -43,7 +45,6 @@ package(){
     # Create links where needed
     ln -s /opt/SEGGER/Ozone/Doc/License.txt "${pkgdir}/usr/share/licenses/${pkgname}/"
     ln -s /opt/SEGGER/Ozone/Ozone "${pkgdir}/usr/bin"
-    ln -s /opt/SEGGER/Ozone/JLinkDebugger "${pkgdir}/usr/bin"
 
     for f in Doc/*; do
         ln -s /opt/SEGGER/Ozone/"$f" "${pkgdir}/usr/share/doc/${pkgname}"
