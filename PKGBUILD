@@ -9,7 +9,6 @@ arch=('any')
 depends=('php')
 optdepends=('php-gd: export data to PDF'
             'php-intl: support for internationalization'
-            'php-ldap: for LDAP authentication'
             'php-pgsql: for PostgreSQL backend')
 url="http://www.icinga.org"
 source=("https://github.com/Icinga/${pkgname}/archive/v${pkgver}.tar.gz")
