@@ -1,0 +1,25 @@
+From 28c0eb959efe4874baca446c8de577c10c1fff92 Mon Sep 17 00:00:00 2001
+From: wangjiezhe <wangjiezhe@gmail.com>
+Date: Wed, 8 Jun 2016 09:17:10 +0800
+Subject: [PATCH 3/3] Fix: `mktemp: too few X's in template 'texmacs'`
+
+---
+ misc/m4/iconv.m4 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/misc/m4/iconv.m4 b/misc/m4/iconv.m4
+index 2a93b42..7542206 100644
+--- a/misc/m4/iconv.m4
++++ b/misc/m4/iconv.m4
+@@ -9,7 +9,7 @@ AS_HELP_STRING([--with-iconv@<:@=DIR@:>@], [where to find iconv []]),
+ 
+ if [[[ "$withval" != no ]]]
+ then
+-  [$0]_TEMP=$(mktemp -t texmacs)
++  [$0]_TEMP=$(mktemp -t texmacsXXXXXX)
+ 
+   [$0]_PATH=$(echo ${LDFLAGS//\/lib/\/include})
+   AX_SAVE_FLAGS
+-- 
+2.8.3
+

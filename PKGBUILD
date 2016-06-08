@@ -4,7 +4,7 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20160528.10427
+pkgver=20160607.10447
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('i686' 'x86_64')
@@ -22,10 +22,12 @@ makedepends=('ghostscript')
 source=("${_pkgname}::svn://svn.savannah.gnu.org/texmacs/trunk/src"
         "0001-R-plugin-fix-preprocessor.patch"
         "0002-Fix-macro-name-for-guile.patch"
+        "0003-Fix-mktemp-too-few-X-s-in-template-texmacs.patch"
         )
 sha1sums=('SKIP'
           '6fdcd7f01fc6ab3725b43ae96f673e87e4559600'
-          '2c548e064a7ffd767a81feeb05bbfb87c1948db1')
+          '2c548e064a7ffd767a81feeb05bbfb87c1948db1'
+          '32d2890347d498f02c2ab7ee74021ab62b099436')
 options=('!emptydirs' '!ccache')
 provides=('texmacs')
 conflicts=('texmacs')
@@ -43,6 +45,7 @@ prepare() {
 
   patch -Np1 -i ../0001-R-plugin-fix-preprocessor.patch
   patch -Np1 -i ../0002-Fix-macro-name-for-guile.patch
+  patch -Np1 -i ../0003-Fix-mktemp-too-few-X-s-in-template-texmacs.patch
 
   sed -i 's/env python/env python2/' \
     plugins/{mathematica/bin/realpath.py,python/bin/tm_python,sage/bin/tm_sage} \
@@ -71,9 +74,6 @@ build() {
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
               --libexecdir=/usr/lib \
-              --with-cario \
-              --with-imlib2 \
-              --with-sqlite3 \
               LIBS="-ldl"
   make -j8
 }
