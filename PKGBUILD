@@ -1,14 +1,13 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=autolatex  
 pkgver=39.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Automate generation of large scale LaTeX projects."
 url="http://www.arakhne.org/autolatex/"
 arch=('any')
 license=('GPL')
 depends=('glib-perl' 'gtk2-perl' 'python' 'dconf' 'perl-archive-zip' 'perl-locale-gettext' 'perl-config-simple')
 backup=("etc/$pkgname/config" )
-install=$pkgname.install
 source=("http://download.tuxfamily.org/arakhne/pool/universe/a/${pkgname}/${pkgname}_$pkgver-0arakhne0.tar.gz")
 md5sums=('a4d282833beeef237549915127ffee9a')
 options=('!emptydirs')
