@@ -1,6 +1,6 @@
 pkgbase = openspin-git
 	pkgdesc = Open Source SPIN interpreter for the ParallaxⓇ Propeller. Git Version
-	pkgver = VERSION
+	pkgver = r42.fe4797b
 	pkgrel = 1
 	url = https://github.com/parallaxinc/OpenSpin
 	arch = x86_64
