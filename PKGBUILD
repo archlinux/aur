@@ -5,7 +5,7 @@
 pkgname=popcorntime-git
 _pkgname=popcorntime
 _gitname=popcorn-desktop
-pkgver=r5909.49c524e
+pkgver=r5929.1815690
 pkgrel=1
 pkgdesc="Stream movies and TV shows from torrents"
 arch=('i686' 'x86_64')
@@ -18,9 +18,9 @@ provides=('popcorntime')
 options=('!strip')
 install=popcorntime.install
 source=("git+https://github.com/popcorn-official/${_gitname}.git#branch=master"
-        "https://popcorntime.sh/package.json"
-        "https://popcorntime.sh/torrent_collection.js"
-        "https://popcorntime.sh/ysubs.js"
+        "package.json"
+        "torrent_collection.js"
+        "ysubs.js"
         "${_pkgname}.desktop")
 sha256sums=('SKIP'
             'cb1eea1c8e40b8d65014ffe126039221da813aa5bdfc838b998513bdce47cb0c'
@@ -74,4 +74,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-
