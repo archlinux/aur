@@ -1,0 +1,15 @@
+pkgbase = gnome-shell-extension-torstatus-git
+	pkgdesc = GNOME shell aggregate system menu Tor indicator
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://github.com/subgraph/gnome-shell-extension-torstatus
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gnome-common
+	optdepends = onioncircuits: display Tor circuits and streams
+	source = git://github.com/subgraph/gnome-shell-extension-torstatus.git
+	sha1sums = SKIP
+
+pkgname = gnome-shell-extension-torstatus-git
+
