@@ -3,15 +3,15 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-intensityfix
 pkgver=9.22
-pkgrel=5
+pkgrel=6
 pkgdesc='A unicode enabled rxvt-clone terminal emulator (urxvt), patched to avoid intense colors on 256 color escape codes and to fix font spacing'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
 license=('GPL')
-depends=('rxvt-unicode-terminfo' 'libxft' 'perl' 'startup-notification')
+depends=('libxft' 'perl' 'startup-notification')
 optdepends=('gtk2-perl: to use the urxvt-tabbed')
-provides=('rxvt-unicode')
-conflicts=('rxvt-unicode')
+provides=('rxvt-unicode' 'rxvt-unicode-terminfo')
+conflicts=('rxvt-unicode' 'rxvt-unicode-terminfo')
 source=(
   "http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2"
   'urxvt.desktop'
@@ -84,10 +84,10 @@ package() {
   for _f in urxvt urxvtc urxvt-tabbed; do
     install -Dm644 $_f.desktop "$pkgdir/usr/share/applications/$_f.desktop"
   done
+  # install terminfo
   cd $_pkgname-$pkgver
-  # workaround terminfo installation
-  export TERMINFO="$srcdir/terminfo"
-  install -d "$TERMINFO"
+  export TERMINFO="$pkgdir/usr/share/terminfo"
+  install -dm 755 "$TERMINFO"
   make DESTDIR="$pkgdir" install
   # install the tabbing wrapper ( requires gtk2-perl! )
   sed -i 's/\"rxvt\"/"urxvt"/' doc/rxvt-tabbed
