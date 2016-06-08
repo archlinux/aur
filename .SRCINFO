@@ -1,0 +1,15 @@
+pkgbase = python-pywinrm
+	pkgdesc = Python library for Windows Remote Management
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/pywinrm
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-isodate
+	depends = python-xmltodict
+	source = https://github.com/diyan/pywinrm/archive/v0.2.0.zip
+	md5sums = 58c439f96aeb79ee4b5b23b8a0f22e79
+
+pkgname = python-pywinrm
+
