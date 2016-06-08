@@ -6,7 +6,7 @@
 pkgname=fim
 _pkgname='rc2'
 pkgver=0.5
-pkgrel=9
+pkgrel=1
 pkgdesc="Highly customizable and scriptable framebuffer image viewer based on fbi."
 arch=('i686' 'x86_64')
 conflicts=('fim-svn')
