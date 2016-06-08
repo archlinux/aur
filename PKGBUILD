@@ -3,7 +3,7 @@
 pkgname=guile4emacs-git
 _gitname="guile"
 pkgver=r17564.15ca784
-pkgrel=1
+pkgrel=2
 pkgdesc="patched version of guile for guile-emacs"
 arch=('i686' 'x86_64')
 url="http://www.emacswiki.org/emacs/GuileEmacs"
@@ -13,7 +13,6 @@ makedepends=('git')
 conflicts=('guile-git')
 provides=('guile-git')
 options=('!strip' '!makeflags')
-install=guile.install
 source=("git://git.sv.gnu.org/$_gitname.git#branch=wip-elisp")
 md5sums=('SKIP')
 
