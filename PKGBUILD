@@ -1,6 +1,6 @@
 # Maintainer: JKA Network (JoseluCross, Kprkpr, Yukialba) <contacto@jkanetwork.com>
 pkgname=jkazip
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A Package Wrapper - package wrapper for pacman (and more)"
 arch=('any')
@@ -12,8 +12,8 @@ groups=('jka-toolkit')
 options=(!emptydirs)
 source=("https://gitlab.com/JKANetwork/jka-toolkit/raw/master/jka-toolkit/jkazip"
 	"https://gitlab.com/JKANetwork/jka-toolkit/raw/master/jka-toolkit/i18n/jkazip/es.mo")
-md5sums=('34b70734677ac97559f99ffa41c05df5'
-         'dc0bf2357a940f998da20f454a6e4143')
+md5sums=('80c7390d98ce180aa246164ea6251a2b'
+         '4a66ec3ca747048b0dac61365330a385')
 PKGEXT=".pkg.tar.xz"
 package() {
   install -Dm755 $srcdir/jkazip "$pkgdir/usr/bin/jkazip" 
