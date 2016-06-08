@@ -42,7 +42,7 @@ post_upgrade() {
 		echo "cp -a /var/lib/xbmc/.xbmc/* /var/lib/kodi/.kodi"
 		echo "chown -R kodi:kodi /var/lib/kodi"
 	fi
-	
+
 	if [ "$(vercmp $2 1.8-1)" -lt 1 ]; then
 		if [[ -f /etc/X11/Xwrapper.config ]]; then
 			echo '-> It is no longer necessary to keep /etc/X11/Xwrapper.config for kodi to start properly.'
@@ -66,6 +66,8 @@ pre_install() {
 		else
 			/bin/true
 		fi
+	else
+		/bin/true
 	fi
 
 	if [ -f /usr/lib/systemd/system/kodi.service]; then
@@ -76,5 +78,7 @@ pre_install() {
 		else
 			/bin/true
 		fi
+	else
+		/bin/true
 	fi
 }
