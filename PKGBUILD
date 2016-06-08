@@ -7,7 +7,7 @@
 
 pkgname='unreal-engine'
 pkgver=4.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
 url='https://www.unrealengine.com/'
