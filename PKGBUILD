@@ -8,19 +8,19 @@ pkgdesc="Multiplatform transparent client-side encryption of your files in the c
 arch=("any")
 url="https://cryptomator.org/"
 license=('MIT/X Consortium License')
-depends=('jre8-openjdk' 'java-openjfx')
-makedepends=('apache-ant')
+depends=('java-runtime=8' 'java-openjfx')
+makedepends=('jdk8-openjdk' 'apache-ant')
 source=("antkit-${pkgver}.tar.gz::https://github.com/cryptomator/cryptomator/releases/download/${pkgver}/antkit.tar.gz"
         'cryptomator.sh'
         'cryptomator.desktop'
         'cryptomator-vault.xml')
 sha256sums=('SKIP'
-            '0bc12ee603ef87536389aeb85bf0afaf8995bae2c9ed826290b2bb0d838a9766'
+            '031fbf7f62fe27d496c42f71818e19aa9d4a9920df3228ac032bb795e81c30b7'
             '1193f85b545298f6d474c7f17865433f25c73995b00894e0d7d7bc873c696464'
             '78537ead26dcc1488d7fff02f47fce559f70f9bb2d7fa7fa1741ad3cd151bfad')
 
 build() {
-  export JAVA_HOME=/usr/lib/jvm/default-runtime/
+  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/jre/
   ant create-jar
 }
 package() {
