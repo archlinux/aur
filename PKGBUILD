@@ -3,7 +3,7 @@
 pkgname=fluxbox-style-jet-gray
 pkgver=20160608
 pkgrel=1
-pkgdesc="Jet-Gray style for Fluxbox"
+pkgdesc="Fluxbox style for Jet-Gray and Zukitwo Dark"
 url="https://github.com/corebob/fluxbox-style-jet-gray"
 license=('CCPL')
 arch=('any')
