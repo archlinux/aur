@@ -2,19 +2,19 @@
 # Contributor: Mohammad Alsaleh <msal@tormail.org>
 # Maintainer: Steven Allen <steven@stebalien.com>
 
-_date=
+_date=2016-06-08
 pkgname=rust-nightly-bin
-pkgver=1.11.0_2016.06.05
+pkgver=1.11.0_2016.06.07
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='Fast, concurrent, safe. The Rust programming language and its package manager, Cargo.'
-url='http://www.rust-lang.org/'
+url='https://www.rust-lang.org/'
 license=('MIT' 'Apache' 'custom')
 provides=('rust' 'rust-nightly' 'cargo' 'cargo-nightly')
 conflicts=('rust' 'rust-git' 'rust-nightly' 'cargo-nightly-bin' 'cargo' 'cargo-git' 'cargo-nightly' 'cargo-nightly-bin')
 depends=('gcc-libs' 'zlib' 'sh')
-source=("rust-nightly-${_date}-${CARCH}-unknown-linux-gnu.tar.gz.asc::http://static.rust-lang.org/dist/${_date}/rust-nightly-${CARCH}-unknown-linux-gnu.tar.gz.asc"
-        "rust-nightly-${_date}-${CARCH}-unknown-linux-gnu.tar.gz::http://static.rust-lang.org/dist/${_date}/rust-nightly-${CARCH}-unknown-linux-gnu.tar.gz"
+source=("rust-nightly-${_date}-${CARCH}-unknown-linux-gnu.tar.gz.asc::https://static.rust-lang.org/dist/${_date}/rust-nightly-${CARCH}-unknown-linux-gnu.tar.gz.asc"
+        "rust-nightly-${_date}-${CARCH}-unknown-linux-gnu.tar.gz::https://static.rust-lang.org/dist/${_date}/rust-nightly-${CARCH}-unknown-linux-gnu.tar.gz"
 )
         
 sha256sums=('SKIP' 'SKIP')
