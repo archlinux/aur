@@ -1,14 +1,14 @@
 # Maintainer: Malte Rabenseifner <mail@malte-rabenseifner.de>
 pkgname=icinga2-git
 _pkgname=icinga2
-pkgver=r5499.8fa39c3
+pkgver=r7325.899592c
 pkgrel=1
-pkgdesc="An open source host, service and network monitoring program."
+pkgdesc="An open source host, service and network monitoring program"
 arch=('i686' 'x86_64')
 url="http://www.icinga.org"
 license=('GPL')
 depends=('boost-libs' 'yajl')
-makedepends=('boost' 'cmake' 'git' 'libmariadbclient' 'postgresql-libs' 'yajl')
+makedepends=('boost' 'cmake' 'git' 'libmariadbclient' 'postgresql-libs')
 optdepends=('monitoring-plugins: plugins needed for icinga checks'
             'libmariadbclient: for MySQL support'
             'postgresql-libs: for PostgreSQL support')
@@ -16,7 +16,7 @@ provides=('icinga2')
 conflicts=('icinga2')
 backup=(etc/default/icinga2
         etc/icinga2/features-available/{api,checker,command,compatlog}.conf
-        etc/icinga2/features-available/{debuglog,gelf,graphite,icingastatus}.conf
+        etc/icinga2/features-available/{debuglog,gelf,graphite}.conf
         etc/icinga2/features-available/{ido-mysql,ido-pgsql,livestatus,mainlog}.conf
         etc/icinga2/features-available/{notification,perfdata,statusdata,syslog}.conf
         etc/icinga2/{constants,icinga2,init,zones}.conf
