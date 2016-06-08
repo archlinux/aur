@@ -15,7 +15,7 @@ _kernver=`uname -r`
 
 pkgname=catalyst-dkms
 pkgver=15.9
-pkgrel=1
+pkgrel=2
 _amdver=15.201.1151
 pkgdesc="AMD Catalyst (proprietary GPU driver) kernel driver (DKMS version) [NOTE: Radeon HD 5xxx+ ONLY]"
 arch=('i686' 'x86_64')
@@ -24,8 +24,8 @@ license=('custom')
 options=('staticlibs' 'libtool' '!upx' '!strip')
 depends=('dkms')
 makedepends=('gcc-libs' 'gcc>4.0.0')
-optdepends=('linux-headers<4.6: build the module against Arch kernel (requires at least one set of kernel headers)'
-            'linux-lts-headers<4.6: build the module against LTS Arch kernel (requires at least one set of kernel headers)')
+optdepends=('linux-headers<4.7: build the module against Arch kernel (requires at least one set of kernel headers)'
+            'linux-lts-headers<4.7: build the module against LTS Arch kernel (requires at least one set of kernel headers)')
 
 # try to ensure that this package cannot be installed concurrently with any of
 # the other 'catalyst'-series packages
@@ -49,7 +49,8 @@ source=(
     4.2-amd-from_crimson_15.11.patch
     crimson_i686_xg.patch
     4.4-manjaro-xstate.patch
-    grsec_arch.patch)
+    grsec_arch.patch
+    4.6-arch-get_user_pages-page_cache_release.patch)
 
 sha384sums=('a5de57abfe23dd4210e220ee1f7b2b5dc2862272632b8fccfbcbf1f30285de580546910015a4918e8d80866ad8757bd4'
             'f1ff04347eb04b56a4e0bd6a33200c5d4d72135557867634c20447d07a8aeb1da417340e7d086809fdda644ae7cd4da7'
@@ -62,7 +63,8 @@ sha384sums=('a5de57abfe23dd4210e220ee1f7b2b5dc2862272632b8fccfbcbf1f30285de58054
             'f8b6c8fb36611755dcbe8cd8aa5b628eb536bc6900a34f88d06fbb988370a1bec48e63e95f94a7c7ed9fdd54fcd7c711'
             '6d344cf6aefacb5737376f50dbdfc438a299089532052f8acee6878282261f329ffab72d897d11e9e6eefc5d3fd03067'
             'f33b4c27a45de8e5bf3c0c6cd88b8a1daafe75639e969c0137039bf4a017104b9259692e1436374ddf3524a344c228b8'
-            '7f747586a8a87388f6a969846363956c159eaa583a054b59cfa55b8ff73c33c7751c1b6e30aeff3a056ce150d0593ea2')
+            '7f747586a8a87388f6a969846363956c159eaa583a054b59cfa55b8ff73c33c7751c1b6e30aeff3a056ce150d0593ea2'
+            'b78d8192012778fe8afe6af65c19c1cf8ee2eae161bd4302b04589fb2c532edf151461eff228abea99d6ff59676509ed')
 
 install=catalyst.install
 
@@ -97,6 +99,7 @@ package() {
   test "${CARCH}" = "i686" && patch -Np1 -i ../crimson_i686_xg.patch
   patch -Np1 -i ../4.4-manjaro-xstate.patch
   patch -Np1 -i ../grsec_arch.patch
+  patch -Np1 -i ../4.6-arch-get_user_pages-page_cache_release.patch
 
   cd ${srcdir}/archive_files/common/lib/modules/fglrx/build_mod
   cp ${srcdir}/archive_files/arch/${_archdir}/lib/modules/fglrx/build_mod/libfglrx_ip.a .
