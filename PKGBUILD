@@ -1,7 +1,7 @@
 # Maintainer: Will Marshall <wcm64@case.edu> 
 # Past Maintainer: Matthias Riegler <riegler.matthias2@gmail.com>
 pkgname=openspin-git
-pkgver=VERSION
+pkgver=r42.fe4797b
 pkgrel=1
 pkgdesc="Open Source SPIN interpreter for the ParallaxⓇ Propeller. Git Version"
 arch=('x86_64' 'i686')
