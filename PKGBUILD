@@ -13,19 +13,21 @@ arch=('any')
 license=('GPL')
 url="http://www.adacore.com/gnatpro/toolsuite/gprbuild/"
 
-source=("http://mirrors.cdn.adacore.com/art/57399662c7a447658e0affa8")
-sha256sums=('d51659454bc0aaf1a9a9f1d05aab469a1f3d900065a4542123d3a59ab067275d')
+source=("gprbuild-gpl-2016-src.tar.gz::http://mirrors.cdn.adacore.com/art/57399662c7a447658e0affa8"
+        "gprbuild-gpl-2016-x86_64-linux-bin::http://mirrors.cdn.adacore.com/art/5739cbf1c7a447658d00e326")
 
+sha1sums=('c85b877596dbc53bfc39ec5b23f674e8463677ce'
+          '270aa41c2ed6381460502ac00ecef7dfefd07000')
 
 
 build() 
 {
   cd $pkgname-gpl-$pkgver-src
 
+  export PATH=$srcdir/gprbuild-gpl-2016-x86_64-linux-bin/bin:$PATH
   ./configure --prefix="/usr"
   make
 }
-
 
 
 package() 
