@@ -2,7 +2,7 @@
 # Mon Mar  2 12:02:33 UTC 2015
 pkgbase = python-numpy-mkl
 	pkgdesc = Scientific tools for Python compiled with intel mkl
-	pkgver = 1.10.4
+	pkgver = 1.11.0
 	pkgrel = 1
 	url = http://numpy.scipy.org/
 	arch = i686
@@ -18,14 +18,14 @@ pkgbase = python-numpy-mkl
 	depends = python
 	depends = python2
 	options = staticlibs
-	source = http://downloads.sourceforge.net/numpy/numpy-1.10.4.tar.gz
+	source = http://downloads.sourceforge.net/numpy/numpy-1.9.2.tar.gz
 	source = site64.cfg
 	source = site32.cfg
 	source = intel.py
 	source = intelccompiler.py
 	source = __init__2.py.patch
 	source = __init__3.py.patch
-	md5sums = 90bb9034652cefbada19cf7d141a6a61
+	md5sums = bc56fb9fc2895aa4961802ffbdb31d0b
 	md5sums = e100a52fd644eb4a84217b3b7cce441a
 	md5sums = 86934d30d5ba2fa6b938f58b284690f0
 	md5sums = 5c116163f3309d774d183504ea662c67
