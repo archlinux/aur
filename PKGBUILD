@@ -6,7 +6,7 @@
 pkgbase=linux-pf-lts
 _major=3
 _minor=14
-_patchlevel=65
+_patchlevel=72
 _pfpatchlevel=33
 #_subversion=1
 _basekernel=${_major}.${_minor}
@@ -800,4 +800,11 @@ sha256sums=('61558aa490855f42b6340d1a1596be47454909629327c49a5e4e10268065dffa'
             '3788b4149635aeadaee1a78a2706ac0477004729527fbe9cb0ad53fdd8a58f5a'
             'aaa6ecbbacd0d292c98a29be20a355f5764f69ae4a63c32e00439ff01a7b3fd7'
             'da7ee7a2866e089b05aefc831326083e752937c650ee4186bff5574f48f27f40'
+            '8298092c14cf02a02ff2265d591acd05ce8c70fd789eacf38e4e1ee08fa6a01f'
+            'd824e47de882f676ca61c569c0e58982d007c79ec2a16ad5131680b3623c2a05'
+            '645be0aa141614c5042b9315f90cb4bcde382dacce7265da19e0cf604c0ac58a'
+            '428fac5b3a62d718991b72e0850f7dbbc21c43262a28a2c2630ca224a62edefa'
+            'e8def22d8032bc0b438c0ba05651cf528e800c9b9ef54a059cae35050667c622'
+            '1cd1e1d7ac2aae18501966ae38d57cf2c8cb5cedc6666f3a14801390a197ae5b'
+            'ab73cbc933f782361f088975a41c4fead9d42cf3fcde6e30dd8685d5b2178454'
             'a2789e82f980cb886ccea88d2d94e622ecde47b4eb006b94ceb6b944ed4c7833')
