@@ -1,0 +1,21 @@
+diff -aur package.pristine/src/htsmsg.c package.new/src/htsmsg.c
+--- package.pristine/src/htsmsg.c	2016-06-08 13:49:21.423171678 +0200
++++ package.new/src/htsmsg.c	2016-06-08 13:50:20.489342743 +0200
+@@ -760,13 +760,15 @@
+     case HMF_MAP:
+       printf("MAP) = {\n");
+       htsmsg_print0(&f->hmf_msg, indent + 1);
+-      for(i = 0; i < indent; i++) printf("\t"); printf("}\n");
++      for(i = 0; i < indent; i++) printf("\t");
++      printf("}\n");
+       break;
+ 
+     case HMF_LIST:
+       printf("LIST) = {\n");
+       htsmsg_print0(&f->hmf_msg, indent + 1);
+-      for(i = 0; i < indent; i++) printf("\t"); printf("}\n");
++      for(i = 0; i < indent; i++) printf("\t");
++      printf("}\n");
+       break;
+       
+     case HMF_STR:
