@@ -5,7 +5,7 @@
 
 pkgname=tikzit-git
 pkgver=1.1.280
-pkgrel=1
+pkgrel=2
 pkgdesc="Creation and modification of TeX diagrams written using the pgf/TikZ macro library"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/tikzit/"
@@ -14,7 +14,6 @@ depends=('gtk2>=2.18.0' 'poppler-glib' 'hicolor-icon-theme' 'gnustep-base' 'desk
 makedepends=('git' 'gcc-objc')
 provides=('tikzit')
 conflicts=('tikzit')
-install=tikzit.install
 source=('git+https://github.com/tikzit/tikzit.git')
 md5sums=('SKIP')
 _gitname="tikzit"
