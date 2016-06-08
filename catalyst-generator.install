@@ -1,8 +1,8 @@
 post_install(){
     echo "----------------------------------------------------------------"
-    echo "Add nomodeset to your kernel line in /boot/grub/menu.lst , ie.:"
-    echo "kernel /boot/vmlinuz-linux root=/dev/sda1 ro nomodeset"
-    echo "-------------------------------------------- ^^^^^^^^^ ---------"
+    echo "If you are using DKMS you may be interested"
+    echo "in switching to catalyst-dkms package"
+    echo "----------------------------------------------------------------"
     echo "If experiencing problems with building module or using more than"
     echo "one kernel use catalyst_build_module command as root, more info:"
     echo "# catalyst_build_module help"
@@ -22,9 +22,10 @@ post_install(){
 }
 
 post_upgrade(){
-    echo ""
+    echo "If you are using DKMS you may be interested"
+    echo "in switching to catalyst-dkms package"
+    echo "----------------------------------------------------------------"
     echo "Don't forget to manually rebuild packages"
-    echo "BTW: catalyst_build_module now has got autocompletion on bash and zsh"
 }
 
 post_remove(){
