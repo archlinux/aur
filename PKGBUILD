@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=vm-bzr
 pkgver=8.2.0b1.r1506
-pkgrel=1
+pkgrel=2
 pkgdesc="View Mail for Emacs"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/vm"
@@ -13,7 +13,6 @@ optdepends=('mailcrypt: for encrypted mails'
 provides=('vm')
 conflicts=('vm')
 options=('!makeflags')
-install=vm.install
 source=("vm::bzr+https://code.launchpad.net/~vm/vm/trunk/")
 md5sums=('SKIP')
 _bzrmod="vm"
