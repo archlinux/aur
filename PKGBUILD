@@ -8,9 +8,10 @@ pkgname=('xorg-server-nosystemd' 'xorg-server-xephyr-nosystemd' 'xorg-server-xdm
 		 'xorg-server-xnest-nosystemd' 'xorg-server-xwayland-nosystemd' 'xorg-server-common-nosystemd' 'xorg-server-devel-nosystemd')
 _pkgbase=xorg-server
 pkgver=1.18.3
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 license=('custom')
+groups=('xorg')
 url="http://xorg.freedesktop.org"
 makedepends=('pixman' 'libx11' 'mesa-nosystemd' 'mesa-libgl-nosystemd' 'xf86driproto' 'xcmiscproto' 'xtrans' 'bigreqsproto' 'randrproto' 
              'inputproto' 'fontsproto' 'videoproto' 'presentproto' 'compositeproto' 'recordproto' 'scrnsaverproto'
@@ -21,14 +22,22 @@ makedepends=('pixman' 'libx11' 'mesa-nosystemd' 'mesa-libgl-nosystemd' 'xf86drip
              'libxshmfence' 'libunwind')
 source=(${url}/releases/individual/xserver/${_pkgbase}-${pkgver}.tar.bz2{,.sig}
         xvfb-run
-        xvfb-run.1)
+        xvfb-run.1
+        call-eglBindAPI-after-eglInitialize.patch)
 validpgpkeys=('7B27A3F1A6E18CD9588B4AE8310180050905E40C'
               'C383B778255613DFDB409D91DB221A6900000011'
               'DD38563A8A8224537D1F90E45B8A2D50A0ECD0D3')
 sha256sums=('ea739c22517cdbe2b5f7c0a5fd05fe8a10ac0629003e71c0c7862f4bb60142cd'
             'SKIP'
             'ff0156309470fc1d378fd2e104338020a884295e285972cc88e250e031cc35b9'
-            '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776')
+            '2460adccd3362fefd4cdc5f1c70f332d7b578091fb9167bf88b5f91265bbd776'
+            '45fdc2a1241d458756c41a93c01846e04cc75f3c75f81f48b61533d08280918d')
+
+prepare() {
+  cd "${_pkgbase}-${pkgver}"
+
+  patch -Np1 -i ../call-eglBindAPI-after-eglInitialize.patch
+}
 
 build() {
   cd "${_pkgbase}-${pkgver}"
