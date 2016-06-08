@@ -6,12 +6,13 @@
 # Contributor: zoqaeski (authatieventsd' patch for lightdm)
 # Contributor: zoopp
 # Contributor: solar (authatieventsd' patch s/-1/255)
+# Contributor: 	aslmaswd (acpi main script)
 
 pkgbase=catalyst-utils
 pkgname=('catalyst-utils' 'catalyst-libgl' 'opencl-catalyst')
 
 pkgver=15.9
-pkgrel=2
+pkgrel=3
 _amdver=15.201.1151
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
@@ -27,8 +28,6 @@ source=(
     atieventsd.sh
     atieventsd.service
     ati-powermode.sh
-    a-ac-aticonfig
-    a-lid-aticonfig
     catalyst.conf
     arch-fglrx-authatieventsd_new.patch
     switchlibGL
@@ -41,9 +40,7 @@ md5sums=('d2de2df6946b452c266a3c892e6e46ff'
          'bdafe749e046bfddee2d1c5e90eabd83'
          '9d9ea496eadf7e883d56723d65e96edf'
 	 'b79e144932616221f6d01c4b05dc9306'
-	 '514899437eb209a1d4670df991cdfc10'
-	 '80fdfbff93d96a1dfca2c7f684be8cc1'
-	 '9054786e08cf3ea2a549fe22d7f2cd92'
+	 '9e2a7ded987b7d2b2cfffc7281ebd8a5'
 	 '3e19c2285c76f4cb92108435a1e9c302'
 	 'b3ceefeb97c609037845f65d0956c4f0'
          '394bc493fdf493a5093f9e2095096d02'
@@ -247,11 +244,9 @@ package_catalyst-utils() {
     # ACPI example files
 #       install -m755 usr/share/doc/fglrx/examples/etc/acpi/*.sh ${pkgdir}/etc/acpi
 #       sed -i -e "s/usr\/X11R6/usr/g" ${pkgdir}/etc/acpi/ati-powermode.sh
-#       install -m644 usr/share/doc/fglrx/examples/etc/acpi/events/* ${pkgdir}/etc/acpi/events
-    # lets check our own files - V
+      install -m644 usr/share/doc/fglrx/examples/etc/acpi/events/* ${pkgdir}/etc/acpi/events
+    # put version modified by aslmaswd - V
       install -m755 ${srcdir}/ati-powermode.sh ${pkgdir}/etc/acpi
-      install -m644 ${srcdir}/a-ac-aticonfig ${pkgdir}/etc/acpi/events
-      install -m644 ${srcdir}/a-lid-aticonfig ${pkgdir}/etc/acpi/events
 
     # Add ATI Events Daemon launcher
       install -m755 ${srcdir}/atieventsd.sh ${pkgdir}/etc/rc.d/atieventsd
