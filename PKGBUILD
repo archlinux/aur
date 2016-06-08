@@ -13,7 +13,7 @@
 pkgbase=virt-manager-git
 _pkgbase=virt-manager
 pkgname=(virt-install-git virt-manager-git)
-pkgver=1.3.0.r4772.7ef1713
+pkgver=1.3.2.r4899.09cc6f3
 pkgrel=1
 pkgdesc="Console user interface for managing virtual machines"
 arch=('any')
@@ -23,7 +23,7 @@ depends=('python2' 'libvirt-python' 'libxml2' 'libvirt'
 	 'libosinfo' 'python2-ipaddr' 'python2-gobject' 'python2-requests')
 makedepends=('intltool>=0.35.0'
 	     'dbus-python' 'gtk-vnc' 'rarian'
-	     'gconf' 'yajl' 'librsvg' 'python2-gconf' 'libuser'
+	     'gconf' 'yajl' 'librsvg' 'python2-gconf' 'libuser' 'python2-cairo'
 	     'python2-ipy' 'newt-syrup' 'openbsd-netcat' 'x11-ssh-askpass'
 	     'graphite' 'spice-gtk3'
 	     'libvirt-glib' 'vte3' 'git')
@@ -43,19 +43,24 @@ build() {
 package_virt-install-git() {
   conflicts=('virt-install')
   provides=('virt-install')
+
   cd "$srcdir/$_pkgbase"
-  python2 setup.py install --root "$pkgdir"
+  python2 setup.py --no-update-icon-cache --no-compile-schemas install --root "$pkgdir"
+  python2 -m compileall "${pkgdir}/usr/share/virt-manager"
+  python2 -O -m compileall "${pkgdir}/usr/share/virt-manager"
+  rm "${pkgdir}/usr/bin/virt-manager"
 }
 
 package_virt-manager-git() {
   conflicts=('virt-manager')
   provides=('virt-manager')
-  install=virt-manager.install
   depends=('virt-install-git'
 	    'python2' 'libvirt-python' 'libxml2' 'libvirt' 'python2-requests'
 	    'dbus-python' 'gtk-vnc' 'rarian'
-	    'gconf' 'yajl' 'librsvg' 'python2-gconf' 'libuser'
+	    'yajl' 'librsvg' 'libuser' 'python2-cairo'
 	    'python2-ipy' 'newt-syrup' 'openbsd-netcat' 'x11-ssh-askpass'
 	    'graphite' 'spice-gtk3'
 	    'libvirt-glib' 'vte3')
+  cd "$srcdir/$_pkgbase"
+  install -Dm 755 build/virt-manager -t "${pkgdir}/usr/bin"
 }
