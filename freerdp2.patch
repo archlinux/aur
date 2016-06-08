@@ -1,0 +1,20 @@
+--- vinagre-3.20.2/configure.ac.orig	2016-06-08 08:10:09.599068652 +0000
++++ vinagre-3.20.2/configure.ac	2016-06-08 08:10:37.428938533 +0000
+@@ -58,7 +58,7 @@
+ AM_CONDITIONAL([VINAGRE_ENABLE_SSH], [test "x$have_ssh" = "xyes"])
+ 
+ # Whether to enable support for RDP.
+-RDP_DEPS="freerdp x11"
++RDP_DEPS="freerdp2 x11"
+ AC_ARG_ENABLE([rdp],
+   [AS_HELP_STRING([--disable-rdp],
+     [Disable Remote Desktop Protocol (RDP) support])])
+@@ -66,7 +66,7 @@
+ AS_IF([test "x$enable_rdp" != "xno"],
+   [PKG_CHECK_EXISTS([$RDP_DEPS],
+     [have_rdp=yes
+-     PKG_CHECK_EXISTS(freerdp >= 1.1,
++     PKG_CHECK_EXISTS(freerdp2 >= 1.1,
+        [AC_DEFINE([HAVE_FREERDP_1_1], [1], [FreeRDP is of version 1.1 or newer])], [])],
+     [have_rdp=no])],
+   [have_rdp=no])
