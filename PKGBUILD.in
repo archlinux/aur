@@ -4,17 +4,16 @@
 pkgbase='quassel'
 pkgname=("${pkgbase}-git"
          "${pkgbase}-light-git"
-	 "${pkgbase}-client-git"
-	 "${pkgbase}-client-light-git"
-	 "${pkgbase}-core-git"
-	)
+         "${pkgbase}-client-git"
+         "${pkgbase}-client-light-git"
+         "${pkgbase}-core-git"
+        )
 
-pkgver=
+pkgver=0
 pkgrel=1
 url='http://quassel-irc.org'
 license=('GPL')
 arch=('i686' 'x86_64' 'arm')
-depends=('qt4')
 makedepends=('git' 'cmake' 'automoc4')
 source=(
   'git+https://github.com/quassel/quassel.git'
@@ -52,7 +51,7 @@ _build() {
 }
 
 package_quassel-client-git() {
-  depends='kdelibs'
+  depends=('kdebase-lib')
   pkgdesc='KDE-based distributed IRC client (client only)'
   provides=('quassel-client')
   conflicts=('quassel-client')
@@ -65,11 +64,12 @@ package_quassel-client-git() {
   cmake -DWANT_MONO=OFF             \
         -DWANT_CORE=OFF             \
         -DWANT_QTCLIENT=ON          \
-        -DWITH_OPENSSL=ON           \
+        -DHAVE_SSL=ON               \
         -DWITH_KDE=ON               \
+        -DUSE_QT5=ON                \
         -DWITH_WEBKIT=ON            \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-	"$_srcdir"
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        "$_srcdir"
 
   popd >/dev/null
   _build
@@ -77,6 +77,7 @@ package_quassel-client-git() {
 
 package_quassel-client-light-git() {
   pkgdesc='Qt-based distributed IRC client (client only)'
+  depends=('qt5-base')
   provides=('quassel-client')
   conflicts=('quassel-client')
 
@@ -88,11 +89,12 @@ package_quassel-client-light-git() {
   cmake -DWANT_MONO=OFF             \
         -DWANT_CORE=OFF             \
         -DWANT_QTCLIENT=ON          \
-        -DWITH_OPENSSL=ON           \
+        -DHAVE_SSL=ON               \
         -DWITH_KDE=OFF              \
+        -DUSE_QT5=ON                \
         -DWITH_WEBKIT=OFF           \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-	"$_srcdir"
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        "$_srcdir"
 
   popd >/dev/null
   _build
@@ -100,6 +102,7 @@ package_quassel-client-light-git() {
 
 package_quassel-core-git() {
   pkgdesc='KDE/Qt-based distributed IRC client (core only)'
+  depends=('qt5-base' 'qt5-script' 'qca-qt5')
   provides=('quassel-core')
   conflicts=('quassel-core')
 
@@ -111,9 +114,10 @@ package_quassel-core-git() {
   cmake -DWANT_MONO=OFF             \
         -DWANT_CORE=ON              \
         -DWANT_QTCLIENT=OFF         \
-        -DWITH_OPENSSL=ON           \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-	"$_srcdir"
+        -DHAVE_SSL=ON               \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DUSE_QT5=ON                \
+        "$_srcdir"
 
   popd >/dev/null
   _build
@@ -121,7 +125,7 @@ package_quassel-core-git() {
 
 package_quassel-git() {
   pkgdesc='KDE-based IRC client (monolithic version)'
-  depends='kdelibs'
+  depends=('kdebase-lib')
 
   _prepare_build
 
@@ -131,11 +135,12 @@ package_quassel-git() {
   cmake -DWANT_MONO=ON              \
         -DWANT_CORE=OFF             \
         -DWANT_QTCLIENT=OFF         \
-        -DWITH_OPENSSL=ON           \
+        -DHAVE_SSL=ON               \
         -DWITH_KDE=ON               \
+        -DUSE_QT5=ON                \
         -DWITH_WEBKIT=ON            \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-	"$_srcdir"
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        "$_srcdir"
 
   popd >/dev/null
   _build
@@ -143,6 +148,7 @@ package_quassel-git() {
 
 package_quassel-light-git() {
   pkgdesc='Qt-based IRC client (monolithic version)'
+  depends=('qt5-base' 'qt5-script' 'qca-qt5')
   _prepare_build
 
   pushd "$_builddir" >/dev/null
@@ -151,11 +157,12 @@ package_quassel-light-git() {
   cmake -DWANT_MONO=ON              \
         -DWANT_CORE=OFF             \
         -DWANT_QTCLIENT=OFF         \
-        -DWITH_OPENSSL=ON           \
+        -DHAVE_SSL=ON               \
         -DWITH_KDE=OFF              \
+        -DUSE_QT5=ON                \
         -DWITH_WEBKIT=OFF           \
-	-DCMAKE_INSTALL_PREFIX=/usr \
-	"$_srcdir"
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        "$_srcdir"
 
   popd >/dev/null
   _build
