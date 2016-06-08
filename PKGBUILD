@@ -5,17 +5,17 @@
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=45.1.1
+pkgver=45.2.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 url="https://www.mozilla.org/en-US/firefox/organizations/"
 depends=('gtk3' 'gtk2' 'mozilla-common' 'libxt' 'startup-notification' 'mime-types'
-         'dbus-glib' 'alsa-lib' 'ffmpeg' 'desktop-file-utils'
-         'libvpx' 'icu' 'libevent' 'nss' 'hunspell' 'sqlite' 'ttf-font')
+         'dbus-glib' 'alsa-lib' 'ffmpeg' 'libvpx' 'libevent' 'nss' 'hunspell'
+         'sqlite' 'ttf-font' 'icu')
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake' 'gconf'
-             'xorg-server-xvfb' 'libpulse' 'inetutils')
+             'libpulse' 'inetutils' 'xorg-server-xvfb' 'autoconf2.13')
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'upower: Battery API')
 provides=(firefox)
@@ -23,13 +23,17 @@ conflicts=(firefox)
 options=('!emptydirs' '!makeflags')
 source=(https://ftp.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz
         mozconfig firefox.desktop firefox-install-dir.patch vendor.js
-        no-libnotify.patch)
-sha256sums=('a27e36aa1ccebddfe5a113f7f15b09a61e35644be58029b00b0d996a00d04562'
-            '083de691a0e88b8829a110cc783de3cc8d6523be62ae4ea9180c44856d8e24f5'
+        mozilla-1245076-1.patch
+        no-libnotify.patch
+        harfbuzz-1.1.3.patch.gz)
+sha256sums=('1a729774034231c919dc5a556e17d3342792d5347c755d8d0a4f67a07374804b'
+            'ee8f508442147ad5afcd9c9e60d50d22659ad8c246d35ce8c97aa4463be3a9bc'
             'c202e5e18da1eeddd2e1d81cb3436813f11e44585ca7357c4c5f1bddd4bec826'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '4b50e9aec03432e21b44d18c4c97b2630bace606b033f7d556c9d3e3eb0f4fa4'
-            'e4ebdd14096d177d264a7993dbd5df46463605ff45f783732c26d30b9caa53a7')
+            '6e7cba25c52b246da183b8309e7b56208bd991d1a7adb40063c5702a6f3722ea'
+            'e4ebdd14096d177d264a7993dbd5df46463605ff45f783732c26d30b9caa53a7'
+            '3a61b517aedd54b25d2cfc96455cac0ec92033697f735885ecacbbf4b75f38a8')
 validpgpkeys=('2B90598A745E992F315E22C58AB132963A06537A')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -44,9 +48,15 @@ prepare() {
   cp ../mozconfig .mozconfig
   patch -Np1 -i ../firefox-install-dir.patch
 
+  # GCC 6
+  patch -Np1 -i ../mozilla-1245076-1.patch
+
   # Notifications with libnotify are broken
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1236150
   patch -Np1 -i ../no-libnotify.patch
+
+  # Harfbuzz patch to v1.1.3
+  patch -Np1 -i ../harfbuzz-1.1.3.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo "ac_add_options --with-google-api-keyfile=\"$PWD/google-api-key\"" >>.mozconfig
@@ -64,9 +74,17 @@ build() {
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
 
+  # Hardening
+  LDFLAGS+=" -Wl,-z,now"
+
+  # GCC 6
+  CFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
+  CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
+
   # Do PGO
-  xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24" \
-    make -f client.mk build MOZ_PGO=1
+#  xvfb-run -a -s "-extension GLX -screen 0 1280x1024x24" \
+#    make -f client.mk build MOZ_PGO=1
+  make -f client.mk build
 }
 
 package() {
