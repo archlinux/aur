@@ -20,7 +20,7 @@ install=
 changelog=
 
 source=("bricscadv13.2.17.tar.gz::https://www.dropbox.com/sh/i53jscuk8afoa7c/AABwmW6SG-1SgEa-MIRCRxYga/bricscadv13.2.17.tar.gz"
-	"bricscad_simple_logo.png::://www.dropbox.com/s/d95xwmwulj0z1gt/bricscad_simple_logo.png"
+	"bricscad_simple_logo.png::https://www.dropbox.com/s/d95xwmwulj0z1gt/bricscad_simple_logo.png"
 	"bricscad.desktop::https://www.dropbox.com/sh/i53jscuk8afoa7c/AAAgNdCv3INDKrQv75MkzlB4a/bricscad.desktop"
 	"bricscad13::https://www.dropbox.com/sh/i53jscuk8afoa7c/AADJHDgVA1rE2U3_tazhStExa/bricscad13")
 
