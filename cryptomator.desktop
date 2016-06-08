@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Cryptomator
+Comment=Cloud Storage Encryption Utility
+Exec=/usr/bin/cryptomator
+Icon=/usr/share/java/cryptomator/Cryptomator.png
+Terminal=false
+Type=Application
+Categories=Utility
+MimeType=application/x-vnd.cryptomator-vault-metadata
