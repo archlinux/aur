@@ -3,7 +3,7 @@
 pkgname=guile-git
 _gitname=guile
 pkgver=2.1.2.181.g9454068
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -16,7 +16,6 @@ options=('!strip' '!makeflags' 'libtool')
 source=("git://git.sv.gnu.org/$_gitname.git")
 url="http://www.gnu.org/software/guile/"
 md5sums=('SKIP')
-install=$pkgname.install
 
 pkgver() {
   cd $_gitname
