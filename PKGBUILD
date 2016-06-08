@@ -26,9 +26,9 @@ options=(!strip staticlibs)
 
 build() {
   cd $srcdir/UnrealEngine
-#  ./Setup.sh
-#  ./GenerateProjectFiles.sh
-#  make
+  ./Setup.sh
+  ./GenerateProjectFiles.sh
+  make
 }
 
 package() {
