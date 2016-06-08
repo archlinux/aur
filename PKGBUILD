@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=rawstudio-git
 pkgver=20160225.6643b14
-pkgrel=1
+pkgrel=2
 pkgdesc="Raw-image converter written in GTK2"
 arch=('i686' 'x86_64')
 url="http://rawstudio.org/"
@@ -10,7 +10,6 @@ depends=('osm-gps-map' 'desktop-file-utils' 'libgphoto2' 'fftw' 'gconf' 'lcms2' 
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install="${pkgname%-git}".install
 source=("git://github.com/rawstudio/rawstudio.git")
 md5sums=('SKIP')
 _gitname="${pkgname%-git}"
