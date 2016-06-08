@@ -1,0 +1,16 @@
+pkgbase = python-rawpy
+	pkgdesc = Python wrapper for the LibRaw library
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://pypi.python.org/pypi/rawpy
+	arch = any
+	license = MIT License
+	depends = python
+	depends = libraw
+	source = https://pypi.python.org/packages/05/eb/c6965bd3bc9a622c24939c4df8543e4ffa3b214777c765ff4fb8d8bf7a81/rawpy-0.7.0.tar.gz
+	md5sums = f7e1d221e9768afcad115f3e6dd68a59
+
+pkgname = python-rawpy
+
+pkgname = python2-rawpy
+
