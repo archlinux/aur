@@ -1,13 +1,12 @@
-# Wallchange
-# Maintainer: ying <Jinoto Systems>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 # Contributor: ying <Jinoto Systems>
+
 pkgname=wallchange
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A small and simple command tool which is changing the wallpaper on a switch to the next virtual desktop."
 url="https://sourceforge.net/projects/wallchange-slim/files/"
 arch=('i686' 'x86_64')
-install=wallchange.install
 license=('GPL2')
 depends=('habak') # or 'eterm' (for esetroot) or feh or ... can be changed in any command tool to draw the wallpaper.
 optdepends=('eterm' 'habak' 'feh' 'hsetroot')
