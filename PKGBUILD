@@ -2,7 +2,7 @@
 
 pkgname=qtwebkit-plugins-git
 pkgver=15.4e2e040
-pkgrel=1
+pkgrel=2
 pkgdesc='Spell checking plugin using Hunspell and HTML5 Notifications plugin for QtWebKit.'
 url='https://github.com/QupZilla/qtwebkit-plugins'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/qtwebkit-plugins"
-  qmake
+  qmake-qt5
   make
 }
 
