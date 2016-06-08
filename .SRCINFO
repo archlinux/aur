@@ -1,11 +1,11 @@
 pkgbase = rubix
 	pkgdesc = Rubik's cube program
 	pkgver = 1.0.6
-	pkgrel = 2
+	pkgrel = 3
 	url = http://sed.free.fr/rubix/
 	arch = i686
 	arch = x86_64
-	license = unknown
+	license = custom:Public Domain
 	depends = libx11
 	source = http://sed.free.fr/rubix/rubix-1.0.6.tar.bz2
 	md5sums = 76346b49b67dd7ade0f69b4ae77e3f3a
