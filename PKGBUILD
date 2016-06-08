@@ -1,7 +1,8 @@
-# Maintainer: Pablo Lezaeta <prflr88 (arro'a) gmail (puntocom)>
+# Maintainer: Rob Lynn <rob22uk at gmail dot com>
+# Contributor: Pablo Lezaeta <prflr88 (arro'a) gmail (puntocom)>
 
 pkgname=firefox-mega
-pkgver=2.0.228
+pkgver=3.4.29
 pkgrel=1
 groups=("firefox-addons")
 pkgdesc="MEGA add-on for Firefox, allow better suport for MEGA downloads"
@@ -9,7 +10,7 @@ arch=("any")
 url="http://mega.co.nz"
 license=("BSD")
 groups=("firefox-addons")
-source=("https://mega.co.nz/mega.xpi")
+source=("https://mega.nz/meganz.xpi")
 
 package(){
 	depends=("firefox")
@@ -23,4 +24,4 @@ package(){
 	find "${pkgdir}" -type d -exec chmod 0755 {} \;
 	find "${pkgdir}" -type f -exec chmod 0644 {} \;
 }
-md5sums=('249ade557ad77da9bc1c97284ed359dc')
+md5sums=('a786f1634d797ae8d3bddbf1541f32e7')
