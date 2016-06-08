@@ -1,4 +1,5 @@
-# Mantainer: Alcasa <alcasa@live.de>
+# Maintainer: Rob Lynn <rob22uk at gmail dot com>
+# Contributor: Alcasa <alcasa@live.de>
 
 _themename=Numix-Ocean
 pkgname=gtk-theme-numix-ocean
