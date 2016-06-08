@@ -74,7 +74,8 @@ sha256sums=("SKIP" "d258b7cc0db37f9b5c61467862d4f4a5171bce7b8bbb718be95e02b9b7cd
 
 options=('!strip')
 install=qpi.install
-_fully_qualified_install_script="${startdir}/${install}"
+rm $install
+touch $install
 _device_configure_flags=""
 
 #Sanity check
@@ -98,7 +99,8 @@ fi
 finish() {
     if [[ -n ${startdir} ]]; then
       cd ${startdir}
-      git checkout qpi.install
+      rm $install
+      touch $install
     fi
 }
 trap finish EXIT
@@ -213,9 +215,11 @@ create_install_script()
 {
   local _install_script_location="${startdir}/${install}"
 
-  sed -i "s/libspiver/${_piver}/" ${_install_script_location} || exit 1
-  sed -i "s,libsqmakepath,${_installprefix}/bin/qmake," ${_install_script_location} || exit 1
-  sed -i "s,libssysroot,${_sysroot}," ${_install_script_location} || exit 1
+  echo _piver="${_piver}" > ${_install_script_location}
+  echo _qmakepath="${_installprefix}/bin/qmake" >> ${_install_script_location}
+  echo _sysroot="${_sysroot}" >> ${_install_script_location}
+
+  cat "${startdir}/_${install}" >> "${startdir}/${install}"
 }
 
 package() {
