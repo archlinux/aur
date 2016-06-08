@@ -38,7 +38,7 @@ strip BasiliskII
 
 package() {
   echo "Making Package"
-  cd "$srcdir/$_gitname-build/BasiliskII/src/Unix"
+  cd "$srcdir/macemu/BasiliskII/src/Unix"
   make DESTDIR="$pkgdir/" install
 }
 
