@@ -3,14 +3,13 @@
 
 pkgname=textroom
 pkgver=0.8.2
-pkgrel=8
+pkgrel=9
 pkgdesc="Full Screen text editor heavily inspired by Q10 and JDarkRoom"
 arch=('i686' 'x86_64')
 url=http://code.google.com/p/textroom/
 license=('GPL3')
 depends=('curl' 'libxml++' 'hunspell' 'qt4' 'sdl_mixer')
 makedepends=('mesa')
-install='textroom.install'
 source=("http://textroom.googlecode.com/files/$pkgname-${pkgver}.tar.gz" spell-check_patch soundpath.patch getusername.patch libstd.patch)
 md5sums=('e20bd19784644968bbffdb90d8ef0659'
          '3cd7541b37a0589e95d59581dfea2bdd'
