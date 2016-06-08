@@ -7,7 +7,7 @@
 pkgname=clion
 _pkgname=CLion
 # Make sure to use vercmp to check version is seen as newer. Bump epoch if not.
-pkgver=2016.1.2b
+pkgver=2016.1.3
 pkgrel=1
 # Bump when JetBrains uses silly letters in stable releases
 epoch=1
@@ -29,7 +29,7 @@ optdepends=(
   'python2: Python 2 programming language support (Also requires the plugin)'
 )
 source=("https://download.jetbrains.com/cpp/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('7ca06c23805632849855679434742f575e0475f726b8f9b345d71bc4e50d486d')
+sha256sums=('470063f1bb65ba03c6e1aba354cb81e2c04bd280d9b8da98622be1ba6b0a9c88')
 noextract=("${_pkgname}-${pkgver}.tar.gz")
 
 package() {
