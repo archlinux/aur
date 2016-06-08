@@ -1,21 +1,5 @@
-infodir=/usr/share/info
-filelist=(dvc.info dvc-intro.info)
-
 post_install() {
-  for file in ${filelist[@]}; do
-    install-info $infodir/$file $infodir/dir 2> /dev/null
-  done
   echo "Add"
   echo "(add-to-list 'load-path \"/usr/share/emacs/site-lisp/dvc\")"
   echo "to your .emacs"
-}
-
-post_upgrade() {
-  post_install $1
-}
-
-pre_remove() {
-  for file in ${filelist[@]}; do
-    install-info --delete $infodir/$file $infodir/dir 2> /dev/null
-  done
 }
