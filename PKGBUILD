@@ -4,8 +4,8 @@
 # Contributor: daniel <quite a hack org>
 
 pkgname=fim
-_pkgname='rc1'
-pkgver=0.4
+_pkgname='rc2'
+pkgver=0.5
 pkgrel=9
 pkgdesc="Highly customizable and scriptable framebuffer image viewer based on fbi."
 arch=('i686' 'x86_64')
@@ -22,13 +22,8 @@ depends=('giflib' 'libjpeg-turbo')
 options=(!makeflags)
 install=install
 source=("http://download.savannah.gnu.org/releases/fbi-improved/$pkgname-$pkgver-${_pkgname}.tar.bz2")
-md5sums=('4aea815884ba98a3d2efe7263351b848')
+md5sums=('01333ce38f1eacd60ad668a2ca38ac7e')
 
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver-$_pkgname"
-  sed -i -e 's#\(DGifCloseFile(h->gif\));#\1, \&h->ErrorCode);#' \
-         -e 's#char .Err#const &#' src/FbiStuffGif.cpp
-}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver-$_pkgname"
