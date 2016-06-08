@@ -4,7 +4,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=arora-git
-pkgrel=2
+pkgrel=3
 pkgver=0.11.0.21.g7c7514d
 pkgdesc="A lightweight, cross-platform Qt4 WebKit browser"
 arch=('i686' 'x86_64')
@@ -14,7 +14,6 @@ depends=('qt4' 'qtwebkit' 'hicolor-icon-theme' 'desktop-file-utils')
 makedepends=('git')
 provides=('arora')
 conflicts=('arora')
-install=arora.install
 source=("git://github.com/Arora/arora.git")
 sha256sums=('SKIP')
 _gitname="arora"
