@@ -4,13 +4,12 @@
 
 pkgname=sawfish
 pkgver=1.11.90
-pkgrel=2
+pkgrel=3
 pkgdesc="An extensible window manager using a Lisp-based scripting language"
 arch=('i686' 'x86_64')
 url="http://sawfish.wikia.com/wiki/Main_Page"
 license=('GPL')
 depends=('libsm' 'rep-gtk' 'hicolor-icon-theme')
-install=${pkgname}.install
 source=(http://download.tuxfamily.org/${pkgname}/${pkgname}_${pkgver}.tar.xz arch_poweroff_defaults.patch)
 sha1sums=('092c088f0af8efe6fd603bd6e9b10f005615a65f'
           '73dbf5f93c0124c11f0254267d662f86be1f2767')
