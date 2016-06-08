@@ -7,7 +7,7 @@
 
 pkgname=minidlnagui
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc='Graphical frontend to minidlna for standalone run'
 arch=('any')
 url='https://bitbucket.org/obayhan/minidlnagui'
@@ -17,7 +17,7 @@ optdepends=()
 makedepends=()
 conflicts=()
 source=("https://bitbucket.org/obayhan/minidlnagui/downloads/minidlnaGUI-${pkgver}.tar.gz")
-sha256sums=('43fe41374adbbcbff33afe94cf06d7fd5ab3942a3b7d0b803eab41601f49c6d6')
+sha256sums=('cf6a77ee1f285f7961b287c176a0abb3e8524f731bb458193f8ef63b492e1f7a')
 
 package() {
   mkdir ${pkgdir}/usr/
