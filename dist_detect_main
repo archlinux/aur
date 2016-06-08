@@ -1,0 +1,77 @@
+#!/bin/bash 
+
+#Author : Amirreza Firoozi
+#License : GPL3
+#version : 1.8
+
+#This is a simple script that find distro name and echo (return) it.
+#Its useful if you want to know what distro is your own script running on.
+previous_way(){
+#This is the way we used in previous_way version(s)
+distros=( "Arch" "Ubuntu" "Debian" "Suse" )
+dId=0
+while [ "1" == "1" ];do
+    grep -i "${distros[dId]}" /etc/issue  1>/dev/null 2>&1
+    exstatus=$?
+     if [ "$exstatus" == "0" ];then #if grep found dist_name successfuly , we save dist_name in distro
+              distro=${distros[dId]}
+        
+        break 
+     fi
+
+     if [ "$dId" -gt  "${#distros[@]}" ];then #if the number of loop is greater than number of distros we will break the loop
+
+        break
+     fi 
+     ((dId++))
+done
+}
+#This is the current_way .
+#As you can see its more powerful and reliable and need less time :D 
+current_way(){
+
+     distro=$(egrep "^NAME" /etc/os-release | sed s/"NAME="// | sed s/\"//g)
+
+}
+#In previous version we used if to make argument support
+#in this version we use the correct way of it (getopts)
+current_way 
+
+if [ "$#" == "0" ];then 
+    echo "$distro"
+ exit 0
+fi 
+
+
+while getopts ":o:p" OPTIONS; do
+    case $OPTIONS in
+        
+     o) #redirects output to a file
+        while [ "$#" -gt "1" ];do
+            FILE=$2
+           echo "$distro" > $FILE
+
+          shift #Move on to next input file
+        done
+
+        ;;
+
+     p) #use previous_way 
+        previous_way
+
+        if [ "$#" == "1" ];then 
+                echo "$distro"
+                     exit 0
+        fi 
+        
+        ;;
+
+     *) #unrecognized option 
+        
+        echo -e " Invalid Option \n see man dist_detect if you need help "
+    exit 1
+
+        ;;
+    esac
+done
+shift $((OPTIND-1)) #This tells getopts to move on to the next argument

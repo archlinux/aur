@@ -1,6 +1,6 @@
 # Maintainer: Amirreza Firoozi <firoozi128.af@gmail.com>
 pkgname=dist_detect
-pkgver=1.0
+pkgver=1.8
 pkgrel=1
 epoch=
 pkgdesc="a simple script that helps you detect your distro name easily  "
@@ -11,7 +11,7 @@ depends=('')
 install=
 md5sums=('SKIP')
 changelog=
-source=("https://github.com/AmirrezaFiroozi/dist_detect/archive/v1.0.tar.gz")
+source=("https://github.com/AmirrezaFiroozi/dist_detect/archive/v${pkgver}.tar.gz")
 noextract=()
 
 package() {
