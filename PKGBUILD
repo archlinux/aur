@@ -3,7 +3,7 @@
 
 pkgname=sawfish-git
 pkgver=1.11.90.6.gba51040
-pkgrel=3
+pkgrel=4
 pkgdesc='A window manager extensible using a Lisp-based scripting language.'
 arch=('i686' 'x86_64')
 url='http://sawfish.wikia.com'
@@ -13,7 +13,6 @@ makedepends=('git' 'gettext' 'emacs')
 optdepends=('emacs: for using sawfish.el')
 provides=('sawfish=1.11')
 conflicts=('sawfish')
-install=sawfish.install
 source=('git://github.com/SawfishWM/sawfish.git' arch_poweroff_defaults.patch)
 options=('!libtool')
 sha1sums=('SKIP' '73dbf5f93c0124c11f0254267d662f86be1f2767')
