@@ -1,6 +1,6 @@
 pkgname=mstpd
-pkgver=0.04.r8.gb593ac6
-pkgrel=2
+pkgver=0.04.r38.g01b7f47
+pkgrel=1
 pkgdesc="User-space RSTP and MSTP daemon"
 arch=(i686 x86_64)
 license=(GPL2)
@@ -17,26 +17,18 @@ pkgver() {
 
 prepare() {
   cd "$pkgname"
-  sed -i 's/ -Werror / /' Makefile
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
   cd "$pkgname"
+  ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin
   make
 }
 
 package() {
   cd "$pkgname"
-  # installer is halfassed
-  #make DESTDIR="$pkgdir" install
-
-  install -Dm 755 bridge-stp "$pkgdir/usr/bin/bridge-stp"
-  install -Dm 755 mstpctl "$pkgdir/usr/bin/mstpctl"
-  install -Dm 755 mstpd "$pkgdir/usr/bin/mstpd"
-  install -Dm 644 lib/bash_completion "$pkgdir/usr/share/bash-completion/completions/mstpctl"
-  install -Dm 644 lib/mstpctl.8 "$pkgdir/usr/share/man/man8/mstpctl.8"
-
-  # additional
+  make DESTDIR="$pkgdir" install
 
   cd "$srcdir"
   install -Dm 644 mstpd.service "$pkgdir/usr/lib/systemd/system/mstpd.service"
