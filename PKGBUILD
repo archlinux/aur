@@ -28,7 +28,8 @@ source=(http://mirrors.cdn.adacore.com/art/573996dec7a447658e0affaa
         patch-toolchains-parsers.adb
         patch-diff_utils2.adb
         patch-vdiff2_module.adb
-        patch-bookmark_views.adb)
+        patch-bookmark_views.adb
+        patch-docs-Makefile.in)
 
 md5sums=('4c3d9fd938605ac3b05b88b1fdad098d'
          '3d552208e8d668696b66aff9f097ca63'
@@ -44,7 +45,8 @@ md5sums=('4c3d9fd938605ac3b05b88b1fdad098d'
          '725673980f344b66708c4b1fa95dca51'
          '59c2861ed0c269f58a454285336f4753'
          'eee87a819ab590813efe971ae81b6eac'
-         'ea318985a7a2ba1b87c17acd16852558')
+         'ea318985a7a2ba1b87c17acd16852558'
+         'b47f71e78c77885bd05f031a36932bbd')
 
 
 prepare()
@@ -64,6 +66,7 @@ prepare()
   patch -p0 -i ../patch-diff_utils2.adb
   patch -p0 -i ../patch-vdiff2_module.adb
   patch -p0 -i ../patch-bookmark_views.adb
+  patch -p0 -i ../patch-docs-Makefile.in
 }
 
 
