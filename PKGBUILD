@@ -2,7 +2,7 @@
 
 pkgname=vicare-scheme-git
 pkgver=20160509.a4c3802
-pkgrel=1
+pkgrel=2
 pkgdesc="R6RS scheme implementation, from github's master branch"
 arch=('i686' 'x86_64')
 url="http://marcomaggi.github.io/vicare.html"
