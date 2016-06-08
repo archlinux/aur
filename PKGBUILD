@@ -9,7 +9,7 @@
 
 pkgname=kodi-standalone-service
 pkgver=1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Systemd service and user to run kodi in stand-alone mode"
 # Arch ARM users do NOT attempt to use this package on Arch ARM!
 # This is only for x86_64 and i686. You have been warned.

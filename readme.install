@@ -8,6 +8,15 @@ post_install() {
 			mkdir /var/lib/kodi/.kodi &&
 			chown -R kodi:kodi /var/lib/kodi/.kodi
 	fi
+
+	if [[ -f /usr/lib/xorg/modules/drivers/ati_drv.so ]]; then
+		echo "It has been reported that users of the open source ATI driver"
+		echo "MAY need to create /etc/X11/Xwrapper.config for this package"
+		echo "to work properly."
+		echo .
+		echo "This file should contain the following line:"
+		echo "needs_root_rights = yes"
+	fi
 }
 
 post_upgrade() {
@@ -49,11 +58,23 @@ post_remove() {
 }
 
 pre_install() {
-	/usr/bin/systemctl status xbmc.service &>/dev/null
-	if [[ $? -eq 0 ]]; then
-		# xbmc is running via this service
-		/usr/bin/systemctl stop xbmc.service &>/dev/null
-	else
-		/bin/true
+	if [ -f /usr/lib/systemd/system/xbmc.service]; then
+		/usr/bin/systemctl status xbmc.service &>/dev/null
+		if [[ $? -eq 0 ]]; then
+			# xbmc is running via this service
+			/usr/bin/systemctl stop xbmc.service &>/dev/null
+		else
+			/bin/true
+		fi
+	fi
+
+	if [ -f /usr/lib/systemd/system/kodi.service]; then
+		/usr/bin/systemctl status kodi.service &>/dev/null
+		if [[ $? -eq 0 ]]; then
+			# kodi is running via this service
+			/usr/bin/systemctl stop kodi.service &>/dev/null
+		else
+			/bin/true
+		fi
 	fi
 }
