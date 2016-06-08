@@ -1,7 +1,7 @@
 # firefox-esr-privacy
 pkgname=firefox-esr-privacy
 _basever=45
-pkgver=45.1.1
+pkgver=45.2.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=('i686' 'x86_64')
@@ -26,10 +26,10 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/${pkgver}esr/so
         firefox.desktop
         firefox-fixed-loading-icon.png
         mozconfig)
-sha256sums=('a27e36aa1ccebddfe5a113f7f15b09a61e35644be58029b00b0d996a00d04562'
+sha256sums=('1a729774034231c919dc5a556e17d3342792d5347c755d8d0a4f67a07374804b'
             'd86e41d87363656ee62e12543e2f5181aadcff448e406ef3218e91865ae775cd'
             '8d9afa1f940a9dac689ead40a57990d1491f34a1787b2222f8f5b5e485d54103'
-            '4ffefee2f47e2de114df0d8a0c9a7b964d6e6959ce691e274e259ad8fd85682e'
+            '9fa5b6a7ea021802a4126e8614d1c776dd26d573c023cc8fd810c8075e823211'
             '1926a3d3b8996cdbdd8b970a12d9880e3272181fd4b07c2c9277ca7290b159c3'
             '46a5fbd75febff5a901eed2ac711876bcb9e91e68e1812a3069cbb48de0e58b8'
             '5f97739f5962c98c94c0cf7a7361d9dac01be1366773cb2b45d2bd5938569fde'

@@ -208,18 +208,6 @@ diff -Naur firefox-45.0esr.bak/browser/base/content/browser-menubar.inc firefox-
        <menuitem id="menu_bookmarkThisPage"
                  command="Browser:AddBookmarkAs"
                  observes="bookmarkThisPageBroadcaster"
-@@ -500,11 +493,6 @@
-                         key="key_openAddons"
-                         command="Tools:Addons"/>
- 
--              <menuitem id="menu_openLoop"
--                        label="&loopMenuItem.label;"
--                        accesskey = "&loopMenuItem.accesskey;"
--                        oncommand="LoopUI.togglePanel();"/>
--
-               <!-- only one of sync-setup, sync-syncnowitem or sync-reauthitem will be showing at once -->
-               <menuitem id="sync-setup"
-                         label="&syncSignIn.label;"
 diff -Naur firefox-45.0esr.bak/browser/base/content/browser-places.js firefox-45.0esr/browser/base/content/browser-places.js
 --- firefox-45.0esr.bak/browser/base/content/browser-places.js	2016-03-13
 +++ firefox-45.0esr/browser/base/content/browser-places.js	2016-03-13
