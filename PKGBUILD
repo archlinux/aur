@@ -9,6 +9,9 @@ license=('GPL')
 depends=(sdl gtk2)
 makedepends=(git make autoconf)
 conflicts=('basiliskii')
+sha1sums=('SKIP')
+source=(git+https://github.com/cebix/macemu.git)
+
 
 pkgver() {
   cd "$srcdir/macemu"
@@ -16,29 +19,12 @@ pkgver() {
 }
 
 
-_gitroot='https://github.com/cebix/macemu.git'
-_gitname='macemu'
 
 
 
 build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
+  cd "$srcdir/macemu"
   msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
   #
   # BUILD HERE
   #
