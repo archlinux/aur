@@ -1,15 +1,15 @@
 --- utility.cpp	2016-04-21 12:02:53.487397154 +0200
 +++ utility2.cpp	2016-04-21 12:15:00.352270643 +0200
-@@ -168,27 +168,27 @@
+@@ -174,27 +174,27 @@
  
  QString Utility::dataPath()
  {
 -    QFileInfo dirInfo(appPath() + "/Arena Tracker");
 -    if(dirInfo.exists())   return dirInfo.absoluteFilePath();
 -    else                    return QDir::homePath() + "/Arena Tracker";
-+    QFileInfo dirInfo(appPath() + "/arena-tracker");
++    QFileInfo dirInfo(appPath() + "/.arena-tracker");
 +    if(dirInfo.exists())   return dirInfo.absoluteFilePath();
-+    else                    return QDir::homePath() + "/arena-tracker";
++    else                    return QDir::homePath() + "/.arena-tracker";
  }
  
  

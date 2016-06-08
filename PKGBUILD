@@ -1,7 +1,7 @@
 # Maintainer: Sebba <sebba at cock dot li>
 pkgname=arena-tracker-git
 _pkgname=arena-tracker
-pkgver=r499.6e8ec4d
+pkgver=r550.9f23cec
 pkgrel=1
 pkgdesc="Hearthstone tool to track cards in Arena."
 arch=(x86_64)
@@ -15,7 +15,7 @@ source=("$pkgname::git+https://github.com/supertriodo/Arena-Tracker.git"
     "unixpaths.patch")
 md5sums=('SKIP'
          '5a5e0e1296da4fe10c3cc78d1123060c'
-         '4203fe51670066ced70979bc3aac1478')
+         '590026eee3c4990a9ce283aa0432c1c0')
 
 pkgver() {
   cd "$pkgname"
