@@ -3,7 +3,7 @@
 # Contributor: Jon Gjengset <jon@tsp.io>
 
 pkgname=gnuplot-cvs
-pkgver=5.1r20160605
+pkgver=5.1r20160607
 pkgrel=1
 pkgdesc="Plotting package which outputs to X11, PostScript, PNG, GIF, and others -- cvs version"
 arch=('i686' 'x86_64') 
@@ -12,7 +12,6 @@ license=('custom')
 depends=('gd' 'lua' 'qt5-svg' 'glib2' 'pango' 'cairo') 
 makedepends=('cvs' 'emacs' 'texlive-core' 'texlive-latexextra' 'qtchooser' 'qt5-tools')
 options=('!makeflags')
-install=gnuplot.install
 conflicts=('gnuplot')
 provides=('gnuplot=5.1')
 _cvsmod="gnuplot"
