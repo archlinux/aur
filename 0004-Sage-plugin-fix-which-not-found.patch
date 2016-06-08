@@ -1,0 +1,34 @@
+From f447e4add3b0a2473b227c5a32b689d1834fe08d Mon Sep 17 00:00:00 2001
+From: wangjiezhe <wangjiezhe@gmail.com>
+Date: Wed, 8 Jun 2016 11:20:42 +0800
+Subject: [PATCH 4/4] Sage plugin: fix `which` not found
+
+---
+ plugins/sage/progs/init-sage.scm | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/plugins/sage/progs/init-sage.scm b/plugins/sage/progs/init-sage.scm
+index f3fb922..b18bf07 100644
+--- a/plugins/sage/progs/init-sage.scm
++++ b/plugins/sage/progs/init-sage.scm
+@@ -12,10 +12,16 @@
+ ;;
+ ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+ 
++(define (sage-launcher)
++  (with path "$TEXMACS_BIN_PATH/bin/tm_sage"
++    (string-append
++      "sage -python "
++      (url-concretize (unix->url path)))))
++
+ (plugin-configure sage
+   (:macpath "Sage*" "Contents/Resources/sage")
+   (:require (url-exists-in-path? "sage"))
+-  (:launch "sage -python `which tm_sage`")
++  (:launch ,(sage-launcher))
+   (:tab-completion #t)
+   (:session "Sage")
+   (:scripts "Sage"))
+-- 
+2.8.3
+

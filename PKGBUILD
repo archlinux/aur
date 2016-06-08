@@ -23,11 +23,13 @@ source=("${_pkgname}::svn://svn.savannah.gnu.org/texmacs/trunk/src"
         "0001-R-plugin-fix-preprocessor.patch"
         "0002-Fix-macro-name-for-guile.patch"
         "0003-Fix-mktemp-too-few-X-s-in-template-texmacs.patch"
+        "0004-Sage-plugin-fix-which-not-found.patch"
         )
 sha1sums=('SKIP'
           '6fdcd7f01fc6ab3725b43ae96f673e87e4559600'
           '2c548e064a7ffd767a81feeb05bbfb87c1948db1'
-          '32d2890347d498f02c2ab7ee74021ab62b099436')
+          '32d2890347d498f02c2ab7ee74021ab62b099436'
+          'f1f0e5d53091cdfe74142f7dfb7180e20f3eb10d')
 options=('!emptydirs' '!ccache')
 provides=('texmacs')
 conflicts=('texmacs')
@@ -46,6 +48,7 @@ prepare() {
   patch -Np1 -i ../0001-R-plugin-fix-preprocessor.patch
   patch -Np1 -i ../0002-Fix-macro-name-for-guile.patch
   patch -Np1 -i ../0003-Fix-mktemp-too-few-X-s-in-template-texmacs.patch
+  patch -Np1 -i ../0004-Sage-plugin-fix-which-not-found.patch
 
   sed -i 's/env python/env python2/' \
     plugins/{mathematica/bin/realpath.py,python/bin/tm_python,sage/bin/tm_sage} \
@@ -86,9 +89,6 @@ package() {
   sed -i 's|${prefix}|/usr|' "${pkgdir}/usr/bin/fig2ps"
   # fix FS#37518
   sed -i '/^Path=/d' "${pkgdir}/usr/share/applications/texmacs.desktop"
-
-  # fix sage plugin
-  sed -i 's|`which tm_sage`|/usr/lib/TeXmacs/bin/tm_sage|' "${pkgdir}/usr/share/TeXmacs/plugins/sage/progs/init-sage.scm"
 }
 
 # vim:set ts=2 sw=2 et:
