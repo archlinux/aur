@@ -1,7 +1,7 @@
 pkgbase = tvheadend
 	pkgdesc = TV streaming server for Linux
 	pkgver = 4.0.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tvheadend.org/projects/tvheadend
 	install = tvheadend.install
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = tvheadend
 	arch = armv7h
 	license = GPL3
 	makedepends = git
+	makedepends = wget
 	depends = avahi
 	depends = linuxtv-dvb-apps
 	depends = openssl
