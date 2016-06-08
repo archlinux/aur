@@ -4,7 +4,7 @@
 
 pkgname=gri
 pkgver=2.12.23
-pkgrel=6
+pkgrel=7
 pkgdesc="A script-based language for scientific graphics programming"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -13,7 +13,6 @@ depends=('perl-perl4-corelibs')
 makedepends=('ghostscript' 'imagemagick' 'texlive-core')
 source=(http://downloads.sourceforge.net/gri/$pkgname-$pkgver.tar.gz)
 md5sums=('eabd37f80ac51f7aef83a89234fb6522')
-install=gri.install
 options=('!makeflags')
 
 prepare() {
