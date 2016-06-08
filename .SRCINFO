@@ -1,0 +1,12 @@
+pkgbase = fluxbox-style-jet-gray
+	pkgdesc = Jet-Gray style for Fluxbox
+	pkgver = 20160608
+	pkgrel = 1
+	url = https://github.com/corebob/fluxbox-style-jet-gray
+	arch = any
+	license = CCPL
+	source = https://github.com/corebob/fluxbox-style-jet-gray/archive/v1.0.zip
+	md5sums = 7da58c6f884e2fac781a6563dbbaee15
+
+pkgname = fluxbox-style-jet-gray
+
