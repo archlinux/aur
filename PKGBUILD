@@ -2,7 +2,7 @@
 
 pkgname=8192cu-dkms
 pkgver=v4.0.2_9000
-pkgrel=10
+pkgrel=11
 pkgdesc="Driver for Realtek RTL8188CUS (8188C, 8192C) chipset wireless cards"
 arch=('any')
 url="http://www.realtek.com.tw/"
@@ -21,7 +21,8 @@ source=("https://dl.dropboxusercontent.com/u/54784933/$_pkgname-$pkgver.tar.gz"
 	"ISY.patch"
 	"D-link.patch"
 	"HWNUM-300V2.patch"
-	"RTL8192CU-kernel-4.0.patch")
+	"RTL8192CU-kernel-4.0.patch"
+	"RTL8192CU-kernel-4.6.patch")
                
 sha256sums=('f4b83e4a363985fdd313531b2e5688d739d2b6df45c8f50d4d3568489db95a5e'
             '22853908c2ae147399ce3847c175a25134db668d36c3141814eafcc8fddacc98'
@@ -32,7 +33,8 @@ sha256sums=('f4b83e4a363985fdd313531b2e5688d739d2b6df45c8f50d4d3568489db95a5e'
 	    'a8098039d910a6e16dbc6fe770551edb108fe784f65e9fd8edd930851e993388'
 	    '0170cab166bc3a4775099402ceea245a84500741afb23bd9572f40958c6e7b40'
 	    '0c87129f7a0bfb718de0962b1515eda5cf91cfc8b0a9c0e2c25df111552f4a99'
-	    '63c4188d620ad613562a00b635167e4762d5dc3ca909ebc3709cca433d34ffd8')
+	    '63c4188d620ad613562a00b635167e4762d5dc3ca909ebc3709cca433d34ffd8'
+	    'f88b3669a938514cb084493a2635ac250087fb08be7cc2690d60b47e5d213bcb')
 
 package() {
        
@@ -52,6 +54,7 @@ package() {
 	patch -p1 -i "$srcdir/D-link.patch"
 	patch -p1 -i "$srcdir/HWNUM-300V2.patch"
 	patch -p1 -i "$srcdir/RTL8192CU-kernel-4.0.patch"
+	patch -p1 -i "$srcdir/RTL8192CU-kernel-4.6.patch"
 
 	# Disable power saving
 	sed -i 's/^CONFIG_POWER_SAVING \= y/CONFIG_POWER_SAVING = n/' Makefile
