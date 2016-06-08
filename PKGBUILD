@@ -8,7 +8,7 @@ pkgname=hdf5-fortran-openmpi
 _pkgname=hdf5
 _patch=patch1
 pkgver=1.10.0
-pkgrel=3
+pkgrel=4
 arch=('i686' 'x86_64')
 pkgdesc="General purpose library and file format for storing scientific data"
 url="http://www.hdfgroup.org/HDF5/"
@@ -21,7 +21,7 @@ source=(ftp://ftp.hdfgroup.org/HDF5/releases/${_pkgname}-1.10/${_pkgname}-${pkgv
 sha1sums=('2f34251186fa9e59887d8f094bc0bc90187d0aa4')
 
 build() {
-  cd "$srcdir/${_pkgname}-${pkgver/_/-}"
+  cd "$srcdir/${_pkgname}-${pkgver/_/-}-${_patch}"
   ./configure \
     CC="mpicc" \
     FC="mpif90" \
@@ -44,7 +44,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/${_pkgname}-${pkgver/_/-}-{_patch}"
+  cd "$srcdir/${_pkgname}-${pkgver/_/-}-${_patch}"
 
   make -j1 DESTDIR="${pkgdir}" install
 
