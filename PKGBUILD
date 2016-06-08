@@ -7,7 +7,7 @@
 pkgname=asymptote-git
 epoch=1
 pkgver=2.39r18.gff41f20
-pkgrel=1
+pkgrel=2
 pkgdesc="A vector graphics language (like metapost)"
 arch=('i686' 'x86_64')
 url="http://asymptote.sourceforge.net/"
@@ -18,8 +18,7 @@ optdepends=('python2:           for the xasy GUI'
             'python-imaging:    for the xasy GUI'
             'tix:               for the xasy GUI')
 conflicts=('asymptote')
-provides=('asymptote=2.37git')
-install=texlive.install
+provides=('asymptote')
 source=('git+https://github.com/vectorgraphics/asymptote.git')
 md5sums=('SKIP')
 _gitname=asymptote
