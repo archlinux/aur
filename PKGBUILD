@@ -3,7 +3,7 @@
 
 pkgname=emacs-mew-git
 pkgver=6.7.15.gff9c41b
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686')
 pkgdesc="Messaging in the  Emacs World"
 url="http://www.mew.org/"
@@ -12,8 +12,6 @@ depends=('emacs')
 optdepends=('ruby')
 conflicts=('emacs-mew')
 provides=('emacs-mew')
-install=emacs-mew-git.install
-
 source=('mew-git::git://github.com/kazu-yamamoto/Mew.git')
 md5sums=('SKIP')
 _gitname="mew-git"
