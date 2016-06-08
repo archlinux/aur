@@ -2,7 +2,7 @@
 
 pkgname=geiser-git
 pkgver=0.8.1r1145.d8cb366
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs environment to hack in Scheme, version from git"
 arch=('any')
 url=http://www.nongnu.org/geiser/
@@ -11,7 +11,6 @@ depends=('bash' 'emacs')
 makedepends=('git')
 provides=('geiser')
 conflicts=('geiser')
-install=geiser.install
 source=("git+https://github.com/jaor/geiser.git")
 _gitname="geiser"
 md5sums=('SKIP')
