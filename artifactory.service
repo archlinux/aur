@@ -1,0 +1,17 @@
+[Unit]
+Description=Artifactory server
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/opt/artifactory/bin/artifactory.sh start
+ExecStop=/opt/artifactory/bin/artifactory.sh stop
+PIDFile=/run/artifactory/artifactory.pid
+Restart=no
+#TimeoutSec=30
+RemainAfterExit=yes
+User=artifactory
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,21 @@
+pkgbase = artifactory-oss
+	pkgdesc = Artifactory is an advanced Binary Repository Manager for use by build tools, dependency management tools and build servers
+	pkgver = 4.8.0
+	pkgrel = 1
+	url = http://artifactory.jfrog.org/artifactory-distribution-parent/jfrog-artifactory-oss/
+	install = artifactory-oss.install
+	arch = any
+	license = GPLv3
+	depends = java-runtime-headless
+	depends = net-tools
+	depends = bash
+	options = !strip
+	source = jfrog-artifactory-oss-4.8.0.zip::https://bintray.com/jfrog/artifactory/download_file?file_path=jfrog-artifactory-oss-4.8.0.zip
+	source = artifactory.service
+	source = artifactory.default
+	sha256sums = 2de13962ad1e6f4f1537e1fd86b6e70da6afae67a2449bf0cb369d3a84267647
+	sha256sums = a085978124b04a3576f6c670e3dee65b836298cb8bcb756dac6dd03f97954483
+	sha256sums = fa0bb817062ab6aac4c2a5f1e9f93887823a21e3c41e24bc77e9a521355eefc5
+
+pkgname = artifactory-oss
+
