@@ -1,15 +1,17 @@
 pkgbase = jameica
-	pkgdesc = Jameica is a JAVA GUI framework basing on SWT
+	pkgdesc = free runtime environment for java applications
 	pkgver = 2.6.4
 	pkgrel = 1
-	url = https://www.willuhn.de/projects/jameica/
+	url = https://www.willuhn.de/products/jameica/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = GPL2
 	makedepends = unzip
 	depends = java-runtime>=1.5
 	depends = java-environment
 	depends = swt
+	source = jameica-2.6.4::https://www.willuhn.de/projects/jameica/releases/2.6/jameica/jameica-linux64.zip
+	sha1sums = 7d3d6104b75d41b0baebdf7cbbdf3fca64012e13
 
 pkgname = jameica
 
