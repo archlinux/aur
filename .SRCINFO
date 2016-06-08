@@ -1,5 +1,5 @@
 pkgbase = firefox-mega
-	pkgdesc = MEGA add-on for Firefox, allow better suport for MEGA downloads
+	pkgdesc = MEGA extension for Firefox; enables better support for mega.co.nz downloads
 	pkgver = 3.4.29
 	pkgrel = 1
 	url = http://mega.co.nz

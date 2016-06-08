@@ -5,7 +5,9 @@ pkgname=firefox-mega
 pkgver=3.4.29
 pkgrel=1
 groups=("firefox-addons")
-pkgdesc="MEGA add-on for Firefox, allow better suport for MEGA downloads"
+pkgdesc="MEGA extension for Firefox; enables better support for 
+mega.co.nz 
+downloads"
 arch=("any")
 url="http://mega.co.nz"
 license=("BSD")
