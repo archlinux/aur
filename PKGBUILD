@@ -1,10 +1,10 @@
 # This is the PKGBUILD for mosquitto, an MQTT broker and example clients
 
-# Maintainer: Tomáš Mládek <tmladek{at}inventati{dt}org> 
+# Maintainer: Radek Podgorny <radek@podgorny.cz>
 # Contributor: Dan Anderson <dan-anderson at cox dptnet>
 
 pkgname=mosquitto
-pkgver=1.4.8
+pkgver=1.4.9
 pkgrel=1
 pkgdesc="An Open Source MQTT v3.1 Broker"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
@@ -16,18 +16,16 @@ provides=('mosquitto')
 license=('BSD')
 source=(http://mosquitto.org/files/source/$pkgname-$pkgver.tar.gz{,.asc} "$pkgname.service" "$pkgname.install" "usr_move.patch")
 install=$pkgname.install
-sha256sums=('d96eb5610e57cc3e273f4527d3f54358ab7711459941a9e64bc4d0a85c2acfda'
-         'SKIP'
-         'b09c9852b5b438bad8dd54b3ac665bb0d05d1a9e4daf8c920956457c83622b64'
-         '09b8a17fc59f36f40ead4644fffc95458a9255c32d4848f39ceca05925dcc95b'
-         'c436bcc5a61d923ab36d5b3f24e5f628bf18ef14c2f351633d58ca983b5f655c')
+sha256sums=('1df3ae07de40b80a74cd37a7b026895c544cdd3b42c9e0719ae91623aa98c58b'
+            'SKIP'
+            '5e41d486359879a2e139be0c7023909212b7abb2c560720a0b1f233ecdb5a8b6'
+            '09b8a17fc59f36f40ead4644fffc95458a9255c32d4848f39ceca05925dcc95b'
+            'c436bcc5a61d923ab36d5b3f24e5f628bf18ef14c2f351633d58ca983b5f655c')
 validpgpkeys=('A0D6EEA1DCAE49A635A3B2F0779B22DFB3E717B7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  
   patch -p1 < ../usr_move.patch
-
   make
 }
 
