@@ -9,7 +9,7 @@ pkgbase = python-pyotp
 	makedepends = unzip
 	depends = python-future
 	source = https://github.com/pyotp/pyotp/archive/v2.1.1.zip
-	md5sums = SKIP
+	md5sums = f576468857fbf1b6ac29407f7c653e7c
 
 pkgname = python-pyotp
 

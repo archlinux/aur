@@ -11,7 +11,7 @@ license=('MIT')
 depends=(python-future)
 makedepends=(python-setuptools unzip)
 source=(https://github.com/pyotp/${_pkgname}/archive/v${pkgver}.zip)
-md5sums=('SKIP')
+md5sums=('f576468857fbf1b6ac29407f7c653e7c')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
