@@ -2,7 +2,7 @@
 pkgname=jameica
 pkgver=2.6.4
 _pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="free runtime environment for java applications"
 arch=('i686' 'x86_64')
 url="https://www.willuhn.de/products/jameica/"
@@ -30,12 +30,12 @@ prepare() {
 
 package() {
     cd "$srcdir/jameica"
-    mkdir -p "$pkgdir/{usr/bin,opt}"
-    install -m755 jameica.sh "$pkgdir/usr/bin/jameica"
-    install -m755 jameicaserver.sh "$pkgdir/usr/bin/jameicaserver"
+    mkdir -p "$pkgdir/opt"
+    install -Dm755 jameica.sh "$pkgdir"/usr/bin/jameica
+    install -Dm755 jameicaserver.sh "$pkgdir"/usr/bin/jameicaserver
     cd ..
     cp -r jameica "$pkgdir/opt/"
-    rm "$pkgdir/opt/jameica/jameica{,server}.sh"
+    rm "$pkgdir"/opt/jameica/jameica{,server}.sh
     rm "$pkgdir/opt/jameica/rcjameica"
     if [ "$CARCH" =  "x86_64" ]; then
         rm -rf "$pkgdir/opt/jameica/lib/swt/linux64"
