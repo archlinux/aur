@@ -16,7 +16,7 @@ conflicts=('evopop-gtk-theme-git')
 depends=('gtk3' 'gtk-engine-murrine')
 provides=('evopop-gtk-theme' 'evopop-light-gtk-theme')
 source=("https://github.com/$_gituser/$_gitname/archive/$pkgver.tar.gz")
-md5sums=('507a6f7e6cc4f3ff2bba7e412e73a0b9')
+md5sums=('6e6e761f77b59e53e3ba7abc26ebcf7f')
 
 
 package() {
