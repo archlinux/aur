@@ -1,5 +1,5 @@
 pkgbase = go3status
-	pkgver = 0.0.42
+	pkgver = 0.23.0
 	pkgrel = 1
 	url = https://github.com/andir/go3status
 	arch = x86_64
