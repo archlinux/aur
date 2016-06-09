@@ -1,4 +1,4 @@
-pkgname=libc++
+pkgname=libc++-svn
 pkgver=3.8.0
 pkgrel=1
 pkgdesc="LLVM libc++"
