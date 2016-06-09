@@ -1,7 +1,7 @@
 # Contributor: Alexander Mamzikov <av.mamzikov@gmail.com>
 
 pkgname=stereophotoview
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="A cross platform stereoscopic photo viewer and editor"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ options=()
 install=.install
 source=(https://bitbucket.org/av-mamzikov/stereophotoview/get/${pkgver}.zip)
 noextract=()
-md5sums=('58f6dac67d6cc9bd0827c687e867adf0') #generate with 'makepkg -g'
+md5sums=('1d226530731e0fad21c135c1f222ff1c') #generate with 'makepkg -g'
 
 build() {
   cd "$srcdir"
@@ -34,5 +34,4 @@ package()
   cd "$srcdir/build"
   make install
   sed -i -e 's:Icon=stereophotoview/appicon.svg:Icon=/usr/share/pixmaps/stereophotoview/appicon.svg:' "${pkgdir}/usr/share/applications/stereophotoview.desktop"
-  sed -i -e 's:"stereophotoview/image-mpo.svg":"/usr/share/pixmaps/stereophotoview/image-mpo.svg":' "${pkgdir}/usr/share/mime/packages/stereophotoview.xml"
 }
