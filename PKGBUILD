@@ -26,13 +26,6 @@ sha1sums=('a6a696d465929f373d6c0d469463aa28b0f4c11f'
 prepare() {
     patch jameica/jameica.sh jameica-start-script.patch
     patch jameica/jameicaserver.sh jameicaserver-start-script.patch
-    #cd "$srcdir/jameica"
-    #sed -i '6c cd /opt/jameica' jameica.sh jameicaserver.sh
-    #sed -i '10 s/lib\/swt\/linux/\/usr\/lib/' jameica.sh jameicaserver.sh
-    #sed -i '10 s/$@/& \&> \/dev\/null \&/' jameica.sh jameicaserver.sh
-    #sed -i '/^dir/d' jameica.sh jameicaserver.sh
-    #sed -i '/^link/d' jameica.sh jameicaserver.sh
-    #sed -i '/^cd "$dir"/d' jameica.sh jameicaserver.sh
 }
 
 package() {
