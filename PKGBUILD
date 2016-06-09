@@ -12,15 +12,19 @@ source=(http://pecl.php.net/get/oauth-$pkgver.tgz)
 md5sums=('48d0cd5fcba4c6cf7d8ef346c50498c1')
 
 build() {
-  cd "oauth-$pkgver"
+  cd "${srcdir}/oauth-${pkgver}"
+
   phpize
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "oauth-$pkgver"
-  make INSTALL_ROOT="$pkgdir" install
+  cd "${srcdir}/oauth-${pkgver}"
+  
+  make INSTALL_ROOT="${pkgdir}" install
   echo ';extension=oauth.so' > oauth.ini
-  install -Dm644 oauth.ini "$pkgdir/etc/php/conf.d/oauth.ini"
+
+  install -Dm644 "oauth.ini" "${pkgdir}/etc/php/conf.d/oauth.ini"
+  install -Dm644 "LICENSE"   "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
