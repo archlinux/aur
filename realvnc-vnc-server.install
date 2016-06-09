@@ -1,5 +1,7 @@
 post_install() {
     vncinitconfig --install-defaults
+    echo 'To use RealVNC, visit https://www.realvnc.com/products/vnc/#licensing for a'
+    echo 'free or paid license.'
 }
 
 post_remove() {
