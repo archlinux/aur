@@ -1,0 +1,16 @@
+pkgbase = godef-git
+	pkgdesc = Find symbol information in Go source
+	pkgver = 330.20160527
+	pkgrel = 1
+	url = https://github.com/rogpeppe/godef
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	source = git+https://github.com/rogpeppe/godef
+	md5sums = SKIP
+
+pkgname = godef-git
+
