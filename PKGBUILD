@@ -2,7 +2,7 @@
 
 pkgname=mancy-git
 _pkgname=mancy
-pkgver=3.0.0.6.g6380184
+pkgver=3.0.0.26.g03d7972
 pkgrel=1
 pkgdesc=">_ Electron based NodeJS REPL."
 arch=('any')
