@@ -13,6 +13,8 @@ pkgbase = geobases-git
 	depends = python-levenshtein
 	depends = python-geohash
 	depends = python-argparse
+	provides = geobases
+	conflicts = geobases
 	options = !emptydirs
 	source = geobases::git+https://github.com/opentraveldata/geobases.git#branch=3000
 	md5sums = SKIP
