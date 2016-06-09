@@ -8,7 +8,7 @@ pkgdesc='OpenFabrics Alliance userspace Chelsio T3 iWARP RNIC driver'
 #        Plug-in module for libibverbs.
 #        Allows programs to use Chelsio hardware directly from userspace.
 arch=('x86_64' 'i686')
-url=('https://www.openfabrics.org/downloads/cxgb3/README.html')
+url='https://www.openfabrics.org/downloads/cxgb3/README.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libibverbs')
 source=("https://www.openfabrics.org/downloads/cxgb3/${pkgname}-${pkgver}.tar.gz")
