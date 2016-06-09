@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=('rust-nightly' 'rust-nightly-doc')
-pkgver=1.11.0_2016.06.08
+pkgver=1.11.0_2016.06.09
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A safe, concurrent, practical language'
