@@ -18,6 +18,7 @@ pkgbase = neomutt-git
 	depends = libidn
 	depends = krb5
 	depends = notmuch-runtime
+	optdepends = urlview: for url menu
 	provides = mutt
 	conflicts = mutt
 	source = git+https://github.com/neomutt/neomutt.git#branch=neomutt
