@@ -7,7 +7,7 @@
 
 pkgname='unreal-engine'
 pkgver=4.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
 url='https://www.unrealengine.com/'
@@ -50,12 +50,12 @@ package() {
   install -d "$pkgdir/opt/$pkgname/Engine/DerivedDataCache" # created when UE4Editor is run
   cp -r Engine/Documentation "$pkgdir/opt/$pkgname/Engine/Documentation"
   cp -r Engine/Extras "$pkgdir/opt/$pkgname/Engine/Extras"
-  cp -r Engine/Extras "$pkgdir/opt/$pkgname/Engine/Intermediate"
+  cp -r Engine/Intermediate "$pkgdir/opt/$pkgname/Engine/Intermediate"
   cp -r Engine/Plugins "$pkgdir/opt/$pkgname/Engine/Plugins"
   cp -r Engine/Programs "$pkgdir/opt/$pkgname/Engine/Programs"
   cp -r Engine/Saved "$pkgdir/opt/$pkgname/Engine/Saved"
   cp -r Engine/Shaders "$pkgdir/opt/$pkgname/Engine/Shaders"
-  cp -r Engine/Shaders "$pkgdir/opt/$pkgname/Engine/Source"
+  cp -r Engine/Source "$pkgdir/opt/$pkgname/Engine/Source"
   chmod -R a+rwX "$pkgdir/opt/$pkgname/Engine"
 
   # content
