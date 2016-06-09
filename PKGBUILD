@@ -1,7 +1,7 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 pkgname=spigot
-pkgver=1.9.4
-pkgrel=2
+pkgver=1.10
+pkgrel=1
 pkgdesc="High performance Minecraft server implementation"
 arch=(any)
 url="https://www.spigotmc.org/"
@@ -32,7 +32,7 @@ _game="spigot"
 _server_root="/srv/craftbukkit"
 
 build() {
-	export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=1g"
+	export MAVEN_OPTS="-Xmx2g"
 	java -jar BuildTools.jar --rev ${pkgver}
 }
 
