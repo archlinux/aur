@@ -1,7 +1,7 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de>
 pkgname=spigot
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="High performance Minecraft server implementation"
 arch=(any)
 url="https://www.spigotmc.org/"
@@ -51,4 +51,8 @@ package() {
 
 	# Give the group write permissions and set user or group ID on execution
 	chmod g+ws "${pkgdir}${_server_root}"
+	
+	# make plugins folder drag n drop easy
+	mkdir -p "${pkgdir}/${_server_root}/plugins"
+	chmod -R 777 "${pkgdir}/${_server_root}/plugins"
 }
