@@ -1,0 +1,10 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 37668da..5bdd38b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -82,4 +82,5 @@ target_link_libraries(${NAME} ${GLEW_LIBRARIES})
+ target_link_libraries(${NAME} ${OPENGL_LIBRARIES})
+ target_link_libraries(${NAME} ${Boost_LIBRARIES})
+ target_link_libraries(${NAME} glfw ${GLFW_LIBRARY})
++target_link_libraries(${NAME} -lX11)
+

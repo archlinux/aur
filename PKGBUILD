@@ -1,18 +1,18 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=glcapsviewer-git
-pkgver=r109.b635159
-pkgrel=2
+pkgver=r112.6dfe549
+pkgrel=1
 pkgdesc='OpenGL Hardware Capability Viewer'
 url='http://www.saschawillems.de/?page_id=771/'
 arch=('i686' 'x86_64')
 license=('GPL3')
 source=('git+https://github.com/SaschaWillems/glCapsViewer'
-        'https://github.com/proudzhu/glCapsViewer/commit/45044a7a0c754d95f6ae9c63ff25b6b107878651.patch'
+        'add_x11_library.patch'
         'glcapsviewer.desktop'
         'glcapsviewer')
 sha256sums=('SKIP'
-            'fe350e9391cf76ad18ddea4e04e4f9be86dd3375440a64216cf17fa092854248'
+            '0d622a96a3bf458726e94cb7a3125dd97db9edd7665a1c4277904f350d3335e4'
             '3ff750cda95917ff93388dd373437b12129427bc33e52343247bf69bf1d24c02'
             '139ceb073a34bea5450ca2b6d7f50523f8986d9f5a6b069d36cf05d03609f352')
 makedepends=('git' 'cmake' 'boost')
@@ -26,7 +26,7 @@ pkgver() {
 prepare() {
   cd "$srcdir"/glCapsViewer
 
-  patch -p1 -i "$srcdir"/45044a7a0c754d95f6ae9c63ff25b6b107878651.patch
+  patch -p1 -i "$srcdir"/add_x11_library.patch
 }
 
 package() {
