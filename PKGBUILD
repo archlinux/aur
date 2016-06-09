@@ -1,7 +1,7 @@
 # Maintainer: Bruno Nova <brunomb.nova@gmail.com>
 pkgname=nautilus-admin
-pkgver=0.1.6
-pkgrel=2
+pkgver=0.1.7
+pkgrel=1
 pkgdesc="Extension for Nautilus to do administrative operations"
 arch=('any')
 url="https://github.com/brunonova/$pkgname"
@@ -11,7 +11,7 @@ makedepends=('cmake>=2.6' 'gettext')
 optdepends=('gedit: to use the "Edit as Administrator" action')
 install="$pkgname.install"
 source=("https://github.com/brunonova/$pkgname/releases/download/v$pkgver/${pkgname}_$pkgver.tar.xz")
-md5sums=('0cf5f8d941856424a5762b6611b56c14')
+md5sums=('aae518253f6a659c5a06f5bc3e07d43b')
 
 build() {
 	cd "$srcdir"
