@@ -2,30 +2,34 @@
 # * No namcap warnings or errors
 
 pkgname=ibpd
-pkgver=1.0.0
-_pkgver_subver=2
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='OpenFabrics Alliance InfiniBand proxy daemon'
 arch=('x86_64' 'i686')
-url=('https://www.openfabrics.org/index.php/overview.html')
+url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2')
 depends=('glibc')
-source=("https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}-${_pkgver_subver}.tar.gz")
-md5sums=('875113f31fb93e9488dede2b21c7c508')
+source=("https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('688c17adf3b4f591ca3999043f9f29a2')
 
-prepare() {
-  # v1.0.0-2 Makefile is hard coded to use sbin
-  sed -i "s|(prefix)/sbin/ibpd|(prefix)/bin/ipbd|" "${srcdir}/${pkgname}-${pkgver}-${_pkgver_subver}/Makefile"
-}
+#prepare() {
+  ## v1.0.1 Makefile is hard coded to use sbin
+  #sed -i "s|(prefix)/sbin/ibpd|(prefix)/bin/ipbd|" "${srcdir}/${pkgname}-${pkgver}/Makefile"
+#}
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}-${_pkgver_subver}"
-  # ibpd doesn't use configure, just make
-  # and its Makefile doesn't have just "make" do anything
-  make ibpd
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr \
+              --sbindir=/usr/bin \
+              --libexecdir=/usr/lib \
+              --sysconfdir=/etc \
+              --localstatedir=/var \
+              --mandir=/usr/share/man
+  make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}-${_pkgver_subver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
