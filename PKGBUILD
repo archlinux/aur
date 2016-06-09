@@ -4,13 +4,13 @@
 
 _pkgname=fdroidserver
 pkgname=${_pkgname}-git
-pkgver=r3497.bd29fce
+pkgver=r3725.3eca9dd
 pkgrel=1
 pkgdesc="F-Droid repository management tools"
 url="https://gitlab.com/fdroid/$_pkgname"
 license=('GPL3')
-depends=('python2' 'python2-pyasn1' 'python2-pyasn1-modules' 'python2-magic' 'python2-requests' 'python2-yaml')
-makedepends=('git' 'python2-setuptools' 'python2-pillow' 'python2-paramiko' 'java-environment')
+depends=('python' 'python-pyasn1' 'python-pyasn1-modules' 'python-magic' 'python-requests' 'python-yaml')
+makedepends=('git' 'python-setuptools' 'python-pillow' 'python-paramiko' 'java-environment')
 optdepends=(
      'android-sdk: Build apps from source'
      'android-sdk-build-tools: Work with apks in the repository'
@@ -24,8 +24,8 @@ optdepends=(
      'git: Download app sources that use git or svn (via git svn)'
      'mercurial: Download app sources that use hg'
      'bzr: Download app sources that use bzr'
-     'python2-pillow: Resize and manage app icons'
-     'python2-paramiko: SSH2 support'
+     'python-pillow: Resize and manage app icons'
+     'python-paramiko: SSH2 support'
      'rsync: Transfer repo files to the web server'
      'vagrant: Buildserver virtual machine support'
      'virtualbox: Buildserver virtual machine support'
@@ -46,7 +46,7 @@ pkgver() {
 package() {
     cd "$srcdir/${_pkgname}"
 
-    python2 setup.py install --root="$pkgdir/" --optimize=1 --install-data="/tmp" || true
+    python setup.py install --root="$pkgdir/" --optimize=1 --install-data="/tmp" || true
     rm -rf "$pkgdir/tmp"
 
     mkdir -p "$pkgdir/usr/bin"
