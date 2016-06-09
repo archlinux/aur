@@ -1,6 +1,6 @@
 pkgbase = junest-git
 	pkgdesc = The Arch Linux based distro that runs upon any Linux distros without root access
-	pkgver = 5.6.8
+	pkgver = 5.6.9
 	pkgrel = 2
 	url = http://fsquillace.github.io/junest-site/
 	install = junest.install

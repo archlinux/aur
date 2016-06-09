@@ -21,7 +21,7 @@ MAIN_REPO=https://dl.dropboxusercontent.com/u/42449030
 QEMU_LINK=$MAIN_REPO/qemu/$NORM_ARCH
 
 pkgname=junest-git
-pkgver=5.6.8
+pkgver=5.6.9
 pkgrel=2
 pkgdesc="The Arch Linux based distro that runs upon any Linux distros without root access"
 arch=('any')
@@ -126,6 +126,7 @@ package() {
     install -d -m 755 "${pkgdir}/opt/yaourt/bin/"
     install -m 755 /usr/bin/yaourt ${pkgdir}/opt/yaourt/bin/
     sed -i -e 's/"--asroot"//' ${pkgdir}/opt/yaourt/bin/yaourt
+    sed -i -e 's@#!/bin/bash@#!/bin/bash\nPATH=/opt/yaourt/bin:$PATH@' ${pkgdir}/opt/yaourt/bin/yaourt
     install -m 755 /usr/bin/makepkg ${pkgdir}/opt/yaourt/bin/
     sed -i -e 's/EUID\s==\s0/false/' ${pkgdir}/opt/yaourt/bin/makepkg
     ln -s ../../opt/yaourt/bin/yaourt ${pkgdir}/usr/bin/yogurt
