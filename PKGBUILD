@@ -1,7 +1,7 @@
 # Maintainer Andreas Rammhold <andreas@rammhold.de>
 
 pkgname=go3status
-pkgver=0.0.42
+pkgver=0.23.0
 pkgrel=1
 pgdesc="Awesome i3bar tool"
 arch=('x86_64' 'i686')
