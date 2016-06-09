@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=skribilo
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="The Ultimate Document Programming Framework"
 url="http://www.nongnu.org/skribilo/"
 arch=('any')
@@ -15,7 +15,6 @@ optdepends=('texlive-core: for postscript or pdf output'
 source=("http://download.savannah.gnu.org/releases/$pkgname/$pkgname-$pkgver.tar.gz")
 md5sums=('e7623d5a7adbaf302bb7e63b7ab5101a')
 options=('!makeflags')
-install=skribilo.install
 
 build() {
   cd $srcdir/$pkgname-$pkgver
