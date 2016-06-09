@@ -1,0 +1,22 @@
+pkgbase = geobases
+	pkgdesc = Tool and Python module to play with geographical and travel data, and some non-geographical data too.
+	pkgver = 5.0.16
+	pkgrel = 2
+	url = http://opentraveldata.github.com/geobases/
+	arch = any
+	license = CCPL:by-sa-3.0.txt
+	depends = python2
+	depends = python2-colorama
+	depends = python2-termcolor
+	depends = python2-yaml
+	depends = python2-levenshtein
+	depends = python2-geohash
+	depends = python2-argparse
+	provides = geobases
+	conflicts = geobases-git
+	options = !emptydirs
+	source = https://pypi.python.org/packages/26/4a/099b2e360e9419b14121b5b549a678ac7a56690ac29e195810bc8bbb0ef5/GeoBases-5.0.16.tar.gz#md5=0bf92b694280d6d4575ea042947327ed
+	md5sums = 0bf92b694280d6d4575ea042947327ed
+
+pkgname = geobases
+
