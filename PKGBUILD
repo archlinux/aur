@@ -19,5 +19,5 @@ sha512sums=('cae5930a333a75a5264fd702e33615cf562bccddede16e1c0599e9da2bd4f769f0e
 package() {
   mkdir -p "$pkgdir/opt/jameica/plugins"
   cp -r "$pkgname" "$pkgdir/opt/jameica/plugins"
-  install -Dm 644 "$srcdir/hibiscus.desktop" "$pkgdir/usr/share/applications"
+  install -Dm 644 "$srcdir/hibiscus.desktop" "$pkgdir/usr/share/applications/hibiscus.desktop"
 }
