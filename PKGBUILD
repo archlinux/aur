@@ -8,7 +8,7 @@ pkgname=openfoam
 _distpkgname=OpenFOAM
 
 pkgver=3.0.x
-pkgrel=4
+pkgrel=5
 pkgdesc="The open source CFD toolbox"
 arch=("any")
 url="http://www.openfoam.org"
