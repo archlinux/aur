@@ -2,7 +2,7 @@
 
 pkgname=matrix-synapse
 _pkgver=0.16.0
-pkgver="${_pkgver//-/.}"
+pkgver="${_pkgver/-rc/rc}"
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
 license=('Apache')
