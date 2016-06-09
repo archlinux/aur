@@ -21,6 +21,7 @@ pkgver() {
 build(){
 	cd "$srcdir/$pkgname"
 	# master is the normal one. msgfilter is the current
+	git checkout $pkgver
 	qmake
 	make
 }
