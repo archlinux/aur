@@ -1,7 +1,7 @@
-pkgname=libc++abi-3.8.0
+pkgname=libc++abi-svn
 pkgver=3.8.0
 pkgrel=1
-pkgdesc="LLVM libc++abi-3.8.0"
+pkgdesc="LLVM libc++abi"
 arch=('i686' 'x86_64')
 url="https://libcxxabi.llvm.org/"
 license=('MIT' 'NCSA')
