@@ -1,6 +1,6 @@
 pkgname=lib32-orbit2
 pkgver=2.14.19
-pkgrel=5
+pkgrel=6
 pkgdesc="Thin/fast CORBA ORB (32 bit)"
 arch=('x86_64')
 url="http://www.gnome.org"
@@ -30,7 +30,7 @@ build() {
   automake
 
   ./configure --prefix=/usr --libdir=/usr/lib32 --libexecdir=/usr/lib32 \
-    	--disable-static --enable-shared CC='gcc -m32' \
+    	--disable-static --enable-shared CC='gcc' CFLAGS='-m32' PKG_CONFIG_PATH='/usr/lib32/pkgconfig/'\
     	--with-idl-compiler=/usr/bin/orbit-idl-2
   make
 }
