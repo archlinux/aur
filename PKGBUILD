@@ -3,7 +3,7 @@
 
 pkgname=tgif
 pkgver=4.2.5
-pkgrel=6
+pkgrel=7
 pkgdesc="Vector-based drawing tool (for technical, not artistic, stuff)"
 arch=('i686' 'x86_64')
 url="http://bourbon.usc.edu/tgif/"
