@@ -2,15 +2,17 @@
 
 pkgbase=python-sphinx-quark-theme
 pkgname=($pkgbase 'python2-sphinx-quark-theme')
-pkgver=0.2.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc='A Sphinx theme for QTextBrowser'
 arch=('any')
 url='https://bitbucket.org/fk/quark-sphinx-theme'
 license=('BSD')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://pypi.python.org/packages/source/q/quark-sphinx-theme/quark-sphinx-theme-0.2.1.tar.bz2")
-sha256sums=(92763c8b4e019fef530887b4722895e7869d7697da22cc4e7c869d10a7061793)
+source=("https://pypi.python.org/packages/25/fe/0c39b0bf7356275dace198a3b00ef4589dd09f084b2b05c41bdc5848d1c9/quark-sphinx-theme-$pkgver.tar.bz2"
+        'license.txt')
+sha256sums=('5478ffe3ae5741da0ea5276de4cb5be49d67fcb62a2cc1940adb5849664dfc19'
+            '37957261473d2d7134df224c3b77d4313aca41600a5af75e6f0a8a02c96aef16')
 
 prepare() {
     cp -r quark-sphinx-theme-$pkgver quark-sphinx-theme-$pkgver-python2
@@ -31,7 +33,7 @@ package_python-sphinx-quark-theme() {
     cd quark-sphinx-theme-$pkgver
     python setup.py install --root $pkgdir --optimize=1
 
-    install -Dm644 -t $pkgdir/usr/share/licenses/$pkgname LICENSE
+    install -Dm644 $srcdir/license.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
 }
 
@@ -40,6 +42,6 @@ package_python2-sphinx-quark-theme() {
     cd quark-sphinx-theme-$pkgver-python2
     python2 setup.py install --root $pkgdir
 
-    install -Dm644 -t $pkgdir/usr/share/licenses/$pkgname LICENSE
+    install -Dm644 $srcdir/license.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
 }
