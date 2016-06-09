@@ -1,7 +1,7 @@
 # Maintainer: Mattias Andrée <`base64 -d`(bWFhbmRyZWUK)@member.fsf.org>
 
 pkgname=metar
-pkgver=1.2
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="Trivial, yet fully fledged, weather report"
 arch=(any)
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=(sh sed curl coreutils python3)
 makedepends=()
 source=($url/archive/$pkgver.tar.gz)
-sha256sums=(f93c8aa134b815064c017f4ad0c4cd4396a97d2964dac65c8506d5f3cec22403)
+sha256sums=(2f6ad15707474f776ceebec8c2a60e9e38aeed4f570ceaa5ad98479bc81365cc)
 
 
 build() {
