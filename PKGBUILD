@@ -13,11 +13,6 @@ url="https://github.com/HubertD/cangaroo"
 source=("$pkgname::git+https://github.com/HubertD/cangaroo.git#tag=$pkgver")
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build(){
 	cd "$srcdir/$pkgname"
 	# master is the normal one. msgfilter is the current
