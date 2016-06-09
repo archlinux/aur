@@ -33,7 +33,7 @@ do_provision_proper() {
         chown -R nobody $location
         suno="sudo -u nobody"
     fi
-    $suno makepkg --log --cleanbuild --force
+    $suno makepkg --cleanbuild --force
 }
 
 do_provision_simple() {
