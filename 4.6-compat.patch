@@ -1,0 +1,767 @@
+--- a/linux/drivers/media/pci/ivtv/ivtv-udma.c
++++ b/linux/drivers/media/pci/ivtv/ivtv-udma.c
+@@ -124,10 +124,8 @@ int ivtv_udma_setup(struct ivtv *itv, un
+ 	}
+ 
+ 	/* Get user pages for DMA Xfer */
+-	down_read(&current->mm->mmap_sem);
+-	err = get_user_pages(current, current->mm,
+-			user_dma.uaddr, user_dma.page_count, 0, 1, dma->map, NULL);
+-	up_read(&current->mm->mmap_sem);
++	err = get_user_pages_unlocked(user_dma.uaddr, user_dma.page_count, 0,
++			1, dma->map);
+ 
+ 	if (user_dma.page_count != err) {
+ 		IVTV_DEBUG_WARN("failed to map user pages, returned %d instead of %d\n",
+--- a/linux/drivers/media/pci/ivtv/ivtv-yuv.c
++++ b/linux/drivers/media/pci/ivtv/ivtv-yuv.c
+@@ -75,15 +75,13 @@ static int ivtv_yuv_prep_user_dma(struct
+ 	ivtv_udma_get_page_info (&uv_dma, (unsigned long)args->uv_source, 360 * uv_decode_height);
+ 
+ 	/* Get user pages for DMA Xfer */
+-	down_read(&current->mm->mmap_sem);
+-	y_pages = get_user_pages(current, current->mm, y_dma.uaddr, y_dma.page_count, 0, 1, &dma->map[0], NULL);
++	y_pages = get_user_pages_unlocked(y_dma.uaddr,
++			y_dma.page_count, 0, 1, &dma->map[0]);
+ 	uv_pages = 0; /* silence gcc. value is set and consumed only if: */
+ 	if (y_pages == y_dma.page_count) {
+-		uv_pages = get_user_pages(current, current->mm,
+-					  uv_dma.uaddr, uv_dma.page_count, 0, 1,
+-					  &dma->map[y_pages], NULL);
++		uv_pages = get_user_pages_unlocked(uv_dma.uaddr,
++				uv_dma.page_count, 0, 1, &dma->map[y_pages]);
+ 	}
+-	up_read(&current->mm->mmap_sem);
+ 
+ 	if (y_pages != y_dma.page_count || uv_pages != uv_dma.page_count) {
+ 		int rc = -EFAULT;
+--- a/linux/drivers/media/v4l2-core/Kconfig
++++ b/linux/drivers/media/v4l2-core/Kconfig
+@@ -73,6 +73,7 @@ config VIDEOBUF2_CORE
+ 
+ config VIDEOBUF2_MEMOPS
+ 	tristate
++	select FRAME_VECTOR
+ 
+ config VIDEOBUF2_DMA_CONTIG
+ 	tristate
+--- a/linux/drivers/media/v4l2-core/videobuf2-dma-contig.c
++++ b/linux/drivers/media/v4l2-core/videobuf2-dma-contig.c
+@@ -32,15 +32,13 @@ struct vb2_dc_buf {
+ 	dma_addr_t			dma_addr;
+ 	enum dma_data_direction		dma_dir;
+ 	struct sg_table			*dma_sgt;
++	struct frame_vector		*vec;
+ 
+ 	/* MMAP related */
+ 	struct vb2_vmarea_handler	handler;
+ 	atomic_t			refcount;
+ 	struct sg_table			*sgt_base;
+ 
+-	/* USERPTR related */
+-	struct vm_area_struct		*vma;
+-
+ 	/* DMABUF related */
+ 	struct dma_buf_attachment	*db_attach;
+ };
+@@ -49,24 +47,6 @@ struct vb2_dc_buf {
+ /*        scatterlist table functions        */
+ /*********************************************/
+ 
+-
+-static void vb2_dc_sgt_foreach_page(struct sg_table *sgt,
+-	void (*cb)(struct page *pg))
+-{
+-	struct scatterlist *s;
+-	unsigned int i;
+-
+-	for_each_sg(sgt->sgl, s, sgt->orig_nents, i) {
+-		struct page *page = sg_page(s);
+-		unsigned int n_pages = PAGE_ALIGN(s->offset + s->length)
+-			>> PAGE_SHIFT;
+-		unsigned int j;
+-
+-		for (j = 0; j < n_pages; ++j, ++page)
+-			cb(page);
+-	}
+-}
+-
+ static unsigned long vb2_dc_get_contiguous_size(struct sg_table *sgt)
+ {
+ 	struct scatterlist *s;
+@@ -433,92 +413,12 @@ static struct dma_buf *vb2_dc_get_dmabuf
+ /*       callbacks for USERPTR buffers       */
+ /*********************************************/
+ 
+-static inline int vma_is_io(struct vm_area_struct *vma)
+-{
+-	return !!(vma->vm_flags & (VM_IO | VM_PFNMAP));
+-}
+-
+-static int vb2_dc_get_user_pfn(unsigned long start, int n_pages,
+-	struct vm_area_struct *vma, unsigned long *res)
+-{
+-	unsigned long pfn, start_pfn, prev_pfn;
+-	unsigned int i;
+-	int ret;
+-
+-	if (!vma_is_io(vma))
+-		return -EFAULT;
+-
+-	ret = follow_pfn(vma, start, &pfn);
+-	if (ret)
+-		return ret;
+-
+-	start_pfn = pfn;
+-	start += PAGE_SIZE;
+-
+-	for (i = 1; i < n_pages; ++i, start += PAGE_SIZE) {
+-		prev_pfn = pfn;
+-		ret = follow_pfn(vma, start, &pfn);
+-
+-		if (ret) {
+-			pr_err("no page for address %lu\n", start);
+-			return ret;
+-		}
+-		if (pfn != prev_pfn + 1)
+-			return -EINVAL;
+-	}
+-
+-	*res = start_pfn;
+-	return 0;
+-}
+-
+-static int vb2_dc_get_user_pages(unsigned long start, struct page **pages,
+-	int n_pages, struct vm_area_struct *vma,
+-	enum dma_data_direction dma_dir)
+-{
+-	if (vma_is_io(vma)) {
+-		unsigned int i;
+-
+-		for (i = 0; i < n_pages; ++i, start += PAGE_SIZE) {
+-			unsigned long pfn;
+-			int ret = follow_pfn(vma, start, &pfn);
+-
+-			if (!pfn_valid(pfn))
+-				return -EINVAL;
+-
+-			if (ret) {
+-				pr_err("no page for address %lu\n", start);
+-				return ret;
+-			}
+-			pages[i] = pfn_to_page(pfn);
+-		}
+-	} else {
+-		int n;
+-
+-		n = get_user_pages(current, current->mm, start & PAGE_MASK,
+-			n_pages, dma_dir == DMA_FROM_DEVICE, 1, pages, NULL);
+-		/* negative error means that no page was pinned */
+-		n = max(n, 0);
+-		if (n != n_pages) {
+-			pr_err("got only %d of %d user pages\n", n, n_pages);
+-			while (n)
+-				put_page(pages[--n]);
+-			return -EFAULT;
+-		}
+-	}
+-
+-	return 0;
+-}
+-
+-static void vb2_dc_put_dirty_page(struct page *page)
+-{
+-	set_page_dirty_lock(page);
+-	put_page(page);
+-}
+-
+ static void vb2_dc_put_userptr(void *buf_priv)
+ {
+ 	struct vb2_dc_buf *buf = buf_priv;
+ 	struct sg_table *sgt = buf->dma_sgt;
++	int i;
++	struct page **pages;
+ 
+ 	if (sgt) {
+ 		DEFINE_DMA_ATTRS(attrs);
+@@ -530,13 +430,15 @@ static void vb2_dc_put_userptr(void *buf
+ 		 */
+ 		dma_unmap_sg_attrs(buf->dev, sgt->sgl, sgt->orig_nents,
+ 				   buf->dma_dir, &attrs);
+-		if (!vma_is_io(buf->vma))
+-			vb2_dc_sgt_foreach_page(sgt, vb2_dc_put_dirty_page);
+-
++		pages = frame_vector_pages(buf->vec);
++		/* sgt should exist only if vector contains pages... */
++		BUG_ON(IS_ERR(pages));
++		for (i = 0; i < frame_vector_count(buf->vec); i++)
++			set_page_dirty_lock(pages[i]);
+ 		sg_free_table(sgt);
+ 		kfree(sgt);
+ 	}
+-	vb2_put_vma(buf->vma);
++	vb2_destroy_framevec(buf->vec);
+ 	kfree(buf);
+ }
+ 
+@@ -576,13 +478,10 @@ static void *vb2_dc_get_userptr(void *al
+ {
+ 	struct vb2_dc_conf *conf = alloc_ctx;
+ 	struct vb2_dc_buf *buf;
+-	unsigned long start;
+-	unsigned long end;
++	struct frame_vector *vec;
+ 	unsigned long offset;
+-	struct page **pages;
+-	int n_pages;
++	int n_pages, i;
+ 	int ret = 0;
+-	struct vm_area_struct *vma;
+ 	struct sg_table *sgt;
+ 	unsigned long contig_size;
+ 	unsigned long dma_align = dma_get_cache_alignment();
+@@ -608,73 +507,43 @@ static void *vb2_dc_get_userptr(void *al
+ 	buf->dev = conf->dev;
+ 	buf->dma_dir = dma_dir;
+ 
+-	start = vaddr & PAGE_MASK;
+ 	offset = vaddr & ~PAGE_MASK;
+-	end = PAGE_ALIGN(vaddr + size);
+-	n_pages = (end - start) >> PAGE_SHIFT;
+-
+-	pages = kmalloc(n_pages * sizeof(pages[0]), GFP_KERNEL);
+-	if (!pages) {
+-		ret = -ENOMEM;
+-		pr_err("failed to allocate pages table\n");
++	vec = vb2_create_framevec(vaddr, size, dma_dir == DMA_FROM_DEVICE);
++	if (IS_ERR(vec)) {
++		ret = PTR_ERR(vec);
+ 		goto fail_buf;
+ 	}
++	buf->vec = vec;
++	n_pages = frame_vector_count(vec);
++	ret = frame_vector_to_pages(vec);
++	if (ret < 0) {
++		unsigned long *nums = frame_vector_pfns(vec);
+ 
+-	/* current->mm->mmap_sem is taken by videobuf2 core */
+-	vma = find_vma(current->mm, vaddr);
+-	if (!vma) {
+-		pr_err("no vma for address %lu\n", vaddr);
+-		ret = -EFAULT;
+-		goto fail_pages;
+-	}
+-
+-	if (vma->vm_end < vaddr + size) {
+-		pr_err("vma at %lu is too small for %lu bytes\n", vaddr, size);
+-		ret = -EFAULT;
+-		goto fail_pages;
+-	}
+-
+-	buf->vma = vb2_get_vma(vma);
+-	if (!buf->vma) {
+-		pr_err("failed to copy vma\n");
+-		ret = -ENOMEM;
+-		goto fail_pages;
+-	}
+-
+-	/* extract page list from userspace mapping */
+-	ret = vb2_dc_get_user_pages(start, pages, n_pages, vma,
+-				    dma_dir == DMA_FROM_DEVICE);
+-	if (ret) {
+-		unsigned long pfn;
+-		if (vb2_dc_get_user_pfn(start, n_pages, vma, &pfn) == 0) {
+-			buf->dma_addr = vb2_dc_pfn_to_dma(buf->dev, pfn);
+-			buf->size = size;
+-			kfree(pages);
+-			return buf;
+-		}
+-
+-		pr_err("failed to get user pages\n");
+-		goto fail_vma;
++		/*
++		 * Failed to convert to pages... Check the memory is physically
++		 * contiguous and use direct mapping
++		 */
++		for (i = 1; i < n_pages; i++)
++			if (nums[i-1] + 1 != nums[i])
++				goto fail_pfnvec;
++		buf->dma_addr = vb2_dc_pfn_to_dma(buf->dev, nums[0]);
++		goto out;
+ 	}
+ 
+ 	sgt = kzalloc(sizeof(*sgt), GFP_KERNEL);
+ 	if (!sgt) {
+ 		pr_err("failed to allocate sg table\n");
+ 		ret = -ENOMEM;
+-		goto fail_get_user_pages;
++		goto fail_pfnvec;
+ 	}
+ 
+-	ret = sg_alloc_table_from_pages(sgt, pages, n_pages,
++	ret = sg_alloc_table_from_pages(sgt, frame_vector_pages(vec), n_pages,
+ 		offset, size, GFP_KERNEL);
+ 	if (ret) {
+ 		pr_err("failed to initialize sg table\n");
+ 		goto fail_sgt;
+ 	}
+ 
+-	/* pages are no longer needed */
+-	kfree(pages);
+-	pages = NULL;
+-
+ 	/*
+ 	 * No need to sync to the device, this will happen later when the
+ 	 * prepare() memop is called.
+@@ -696,8 +565,9 @@ static void *vb2_dc_get_userptr(void *al
+ 	}
+ 
+ 	buf->dma_addr = sg_dma_address(sgt->sgl);
+-	buf->size = size;
+ 	buf->dma_sgt = sgt;
++out:
++	buf->size = size;
+ 
+ 	return buf;
+ 
+@@ -706,23 +576,13 @@ fail_map_sg:
+ 			   buf->dma_dir, &attrs);
+ 
+ fail_sgt_init:
+-	if (!vma_is_io(buf->vma))
+-		vb2_dc_sgt_foreach_page(sgt, put_page);
+ 	sg_free_table(sgt);
+ 
+ fail_sgt:
+ 	kfree(sgt);
+ 
+-fail_get_user_pages:
+-	if (pages && !vma_is_io(buf->vma))
+-		while (n_pages)
+-			put_page(pages[--n_pages]);
+-
+-fail_vma:
+-	vb2_put_vma(buf->vma);
+-
+-fail_pages:
+-	kfree(pages); /* kfree is NULL-proof */
++fail_pfnvec:
++	vb2_destroy_framevec(vec);
+ 
+ fail_buf:
+ 	kfree(buf);
+--- a/linux/drivers/media/v4l2-core/videobuf2-dma-sg.c
++++ b/linux/drivers/media/v4l2-core/videobuf2-dma-sg.c
+@@ -38,6 +38,7 @@ struct vb2_dma_sg_buf {
+ 	struct device			*dev;
+ 	void				*vaddr;
+ 	struct page			**pages;
++	struct frame_vector		*vec;
+ 	int				offset;
+ 	enum dma_data_direction		dma_dir;
+ 	struct sg_table			sg_table;
+@@ -51,7 +52,6 @@ struct vb2_dma_sg_buf {
+ 	unsigned int			num_pages;
+ 	atomic_t			refcount;
+ 	struct vb2_vmarea_handler	handler;
+-	struct vm_area_struct		*vma;
+ 
+ 	struct dma_buf_attachment	*db_attach;
+ };
+@@ -224,25 +224,17 @@ static void vb2_dma_sg_finish(void *buf_
+ 	dma_sync_sg_for_cpu(buf->dev, sgt->sgl, sgt->nents, buf->dma_dir);
+ }
+ 
+-static inline int vma_is_io(struct vm_area_struct *vma)
+-{
+-	return !!(vma->vm_flags & (VM_IO | VM_PFNMAP));
+-}
+-
+ static void *vb2_dma_sg_get_userptr(void *alloc_ctx, unsigned long vaddr,
+ 				    unsigned long size,
+ 				    enum dma_data_direction dma_dir)
+ {
+ 	struct vb2_dma_sg_conf *conf = alloc_ctx;
+ 	struct vb2_dma_sg_buf *buf;
+-	unsigned long first, last;
+-	int num_pages_from_user;
+-	struct vm_area_struct *vma;
+ 	struct sg_table *sgt;
+ 	DEFINE_DMA_ATTRS(attrs);
++	struct frame_vector *vec;
+ 
+ 	dma_set_attr(DMA_ATTR_SKIP_CPU_SYNC, &attrs);
+-
+ 	buf = kzalloc(sizeof *buf, GFP_KERNEL);
+ 	if (!buf)
+ 		return NULL;
+@@ -253,61 +245,19 @@ static void *vb2_dma_sg_get_userptr(void
+ 	buf->offset = vaddr & ~PAGE_MASK;
+ 	buf->size = size;
+ 	buf->dma_sgt = &buf->sg_table;
+-
+-	first = (vaddr           & PAGE_MASK) >> PAGE_SHIFT;
+-	last  = ((vaddr + size - 1) & PAGE_MASK) >> PAGE_SHIFT;
+-	buf->num_pages = last - first + 1;
+-
+-	buf->pages = kzalloc(buf->num_pages * sizeof(struct page *),
+-			     GFP_KERNEL);
+-	if (!buf->pages)
+-		goto userptr_fail_alloc_pages;
+-
+-	vma = find_vma(current->mm, vaddr);
+-	if (!vma) {
+-		dprintk(1, "no vma for address %lu\n", vaddr);
+-		goto userptr_fail_find_vma;
+-	}
+-
+-	if (vma->vm_end < vaddr + size) {
+-		dprintk(1, "vma at %lu is too small for %lu bytes\n",
+-			vaddr, size);
+-		goto userptr_fail_find_vma;
+-	}
+-
+-	buf->vma = vb2_get_vma(vma);
+-	if (!buf->vma) {
+-		dprintk(1, "failed to copy vma\n");
+-		goto userptr_fail_find_vma;
+-	}
+-
+-	if (vma_is_io(buf->vma)) {
+-		for (num_pages_from_user = 0;
+-		     num_pages_from_user < buf->num_pages;
+-		     ++num_pages_from_user, vaddr += PAGE_SIZE) {
+-			unsigned long pfn;
+-
+-			if (follow_pfn(vma, vaddr, &pfn)) {
+-				dprintk(1, "no page for address %lu\n", vaddr);
+-				break;
+-			}
+-			buf->pages[num_pages_from_user] = pfn_to_page(pfn);
+-		}
+-	} else
+-		num_pages_from_user = get_user_pages(current, current->mm,
+-					     vaddr & PAGE_MASK,
+-					     buf->num_pages,
+-					     buf->dma_dir == DMA_FROM_DEVICE,
+-					     1, /* force */
+-					     buf->pages,
+-					     NULL);
+-
+-	if (num_pages_from_user != buf->num_pages)
+-		goto userptr_fail_get_user_pages;
++	vec = vb2_create_framevec(vaddr, size, buf->dma_dir == DMA_FROM_DEVICE);
++	if (IS_ERR(vec))
++		goto userptr_fail_pfnvec;
++	buf->vec = vec;
++
++	buf->pages = frame_vector_pages(vec);
++	if (IS_ERR(buf->pages))
++		goto userptr_fail_sgtable;
++	buf->num_pages = frame_vector_count(vec);
+ 
+ 	if (sg_alloc_table_from_pages(buf->dma_sgt, buf->pages,
+ 			buf->num_pages, buf->offset, size, 0))
+-		goto userptr_fail_alloc_table_from_pages;
++		goto userptr_fail_sgtable;
+ 
+ 	sgt = &buf->sg_table;
+ 	/*
+@@ -321,17 +271,10 @@ static void *vb2_dma_sg_get_userptr(void
+ 
+ userptr_fail_map:
+ 	sg_free_table(&buf->sg_table);
+-userptr_fail_alloc_table_from_pages:
+-userptr_fail_get_user_pages:
+-	dprintk(1, "get_user_pages requested/got: %d/%d]\n",
+-		buf->num_pages, num_pages_from_user);
+-	if (!vma_is_io(buf->vma))
+-		while (--num_pages_from_user >= 0)
+-			put_page(buf->pages[num_pages_from_user]);
+-	vb2_put_vma(buf->vma);
+-userptr_fail_find_vma:
+-	kfree(buf->pages);
+-userptr_fail_alloc_pages:
++userptr_fail_sgtable:
++	vb2_destroy_framevec(vec);
++userptr_fail_pfnvec:
++
+ 	kfree(buf);
+ 	return NULL;
+ }
+@@ -358,11 +301,8 @@ static void vb2_dma_sg_put_userptr(void
+ 	while (--i >= 0) {
+ 		if (buf->dma_dir == DMA_FROM_DEVICE)
+ 			set_page_dirty_lock(buf->pages[i]);
+-		if (!vma_is_io(buf->vma))
+-			put_page(buf->pages[i]);
+ 	}
+-	kfree(buf->pages);
+-	vb2_put_vma(buf->vma);
++	vb2_destroy_framevec(buf->vec);
+ 	kfree(buf);
+ }
+ 
+--- a/linux/drivers/media/v4l2-core/videobuf2-memops.c
++++ b/linux/drivers/media/v4l2-core/videobuf2-memops.c
+@@ -137,6 +137,64 @@ int vb2_get_contig_userptr(unsigned long
+ EXPORT_SYMBOL_GPL(vb2_get_contig_userptr);
+ 
+ /**
++ * vb2_create_framevec() - map virtual addresses to pfns
++ * @start:	Virtual user address where we start mapping
++ * @length:	Length of a range to map
++ * @write:	Should we map for writing into the area
++ *
++ * This function allocates and fills in a vector with pfns corresponding to
++ * virtual address range passed in arguments. If pfns have corresponding pages,
++ * page references are also grabbed to pin pages in memory. The function
++ * returns pointer to the vector on success and error pointer in case of
++ * failure. Returned vector needs to be freed via vb2_destroy_pfnvec().
++ */
++struct frame_vector *vb2_create_framevec(unsigned long start,
++					 unsigned long length,
++					 bool write)
++{
++	int ret;
++	unsigned long first, last;
++	unsigned long nr;
++	struct frame_vector *vec;
++
++	first = start >> PAGE_SHIFT;
++	last = (start + length - 1) >> PAGE_SHIFT;
++	nr = last - first + 1;
++	vec = frame_vector_create(nr);
++	if (!vec)
++		return ERR_PTR(-ENOMEM);
++	ret = get_vaddr_frames(start, nr, write, 1, vec);
++	if (ret < 0)
++		goto out_destroy;
++	/* We accept only complete set of PFNs */
++	if (ret != nr) {
++		ret = -EFAULT;
++		goto out_release;
++	}
++	return vec;
++out_release:
++	put_vaddr_frames(vec);
++out_destroy:
++	frame_vector_destroy(vec);
++	return ERR_PTR(ret);
++}
++EXPORT_SYMBOL(vb2_create_framevec);
++
++/**
++ * vb2_destroy_framevec() - release vector of mapped pfns
++ * @vec:	vector of pfns / pages to release
++ *
++ * This releases references to all pages in the vector @vec (if corresponding
++ * pfns are backed by pages) and frees the passed vector.
++ */
++void vb2_destroy_framevec(struct frame_vector *vec)
++{
++	put_vaddr_frames(vec);
++	frame_vector_destroy(vec);
++}
++EXPORT_SYMBOL(vb2_destroy_framevec);
++
++/**
+  * vb2_common_vm_open() - increase refcount of the vma
+  * @vma:	virtual memory region for the mapping
+  *
+--- a/linux/drivers/media/v4l2-core/videobuf2-vmalloc.c
++++ b/linux/drivers/media/v4l2-core/videobuf2-vmalloc.c
+@@ -23,11 +23,9 @@
+ 
+ struct vb2_vmalloc_buf {
+ 	void				*vaddr;
+-	struct page			**pages;
+-	struct vm_area_struct		*vma;
++	struct frame_vector		*vec;
+ 	enum dma_data_direction		dma_dir;
+ 	unsigned long			size;
+-	unsigned int			n_pages;
+ 	atomic_t			refcount;
+ 	struct vb2_vmarea_handler	handler;
+ 	struct dma_buf			*dbuf;
+@@ -76,10 +74,8 @@ static void *vb2_vmalloc_get_userptr(voi
+ 				     enum dma_data_direction dma_dir)
+ {
+ 	struct vb2_vmalloc_buf *buf;
+-	unsigned long first, last;
+-	int n_pages, offset;
+-	struct vm_area_struct *vma;
+-	dma_addr_t physp;
++	struct frame_vector *vec;
++	int n_pages, offset, i;
+ 
+ 	buf = kzalloc(sizeof(*buf), GFP_KERNEL);
+ 	if (!buf)
+@@ -89,50 +85,36 @@ static void *vb2_vmalloc_get_userptr(voi
+ 	offset = vaddr & ~PAGE_MASK;
+ 	buf->size = size;
+ 
+-
+-	vma = find_vma(current->mm, vaddr);
+-	if (vma && (vma->vm_flags & VM_PFNMAP) && (vma->vm_pgoff)) {
+-		if (vb2_get_contig_userptr(vaddr, size, &vma, &physp))
+-			goto fail_pages_array_alloc;
+-		buf->vma = vma;
+-		buf->vaddr = ioremap_nocache(physp, size);
+-		if (!buf->vaddr)
+-			goto fail_pages_array_alloc;
++	vec = vb2_create_framevec(vaddr, size, dma_dir == DMA_FROM_DEVICE);
++	if (IS_ERR(vec))
++		goto fail_pfnvec_create;
++	buf->vec = vec;
++	n_pages = frame_vector_count(vec);
++	if (frame_vector_to_pages(vec) < 0) {
++		unsigned long *nums = frame_vector_pfns(vec);
++
++		/*
++		 * We cannot get page pointers for these pfns. Check memory is
++		 * physically contiguous and use direct mapping.
++		 */
++		for (i = 1; i < n_pages; i++)
++			if (nums[i-1] + 1 != nums[i])
++				goto fail_map;
++		buf->vaddr = (__force void *)
++				ioremap_nocache(nums[0] << PAGE_SHIFT, size);
+ 	} else {
+-		first = vaddr >> PAGE_SHIFT;
+-		last  = (vaddr + size - 1) >> PAGE_SHIFT;
+-		buf->n_pages = last - first + 1;
+-		buf->pages = kzalloc(buf->n_pages * sizeof(struct page *),
+-				     GFP_KERNEL);
+-		if (!buf->pages)
+-			goto fail_pages_array_alloc;
+-
+-		/* current->mm->mmap_sem is taken by videobuf2 core */
+-		n_pages = get_user_pages(current, current->mm,
+-					 vaddr & PAGE_MASK, buf->n_pages,
+-					 dma_dir == DMA_FROM_DEVICE,
+-					 1, /* force */
+-					 buf->pages, NULL);
+-		if (n_pages != buf->n_pages)
+-			goto fail_get_user_pages;
+-
+-		buf->vaddr = vm_map_ram(buf->pages, buf->n_pages, -1,
++		buf->vaddr = vm_map_ram(frame_vector_pages(vec), n_pages, -1,
+ 					PAGE_KERNEL);
+-		if (!buf->vaddr)
+-			goto fail_get_user_pages;
+ 	}
+ 
++	if (!buf->vaddr)
++		goto fail_map;
+ 	buf->vaddr += offset;
+ 	return buf;
+ 
+-fail_get_user_pages:
+-	pr_debug("get_user_pages requested/got: %d/%d]\n", n_pages,
+-		 buf->n_pages);
+-	while (--n_pages >= 0)
+-		put_page(buf->pages[n_pages]);
+-	kfree(buf->pages);
+-
+-fail_pages_array_alloc:
++fail_map:
++	vb2_destroy_framevec(vec);
++fail_pfnvec_create:
+ 	kfree(buf);
+ 
+ 	return NULL;
+@@ -143,20 +125,21 @@ static void vb2_vmalloc_put_userptr(void
+ 	struct vb2_vmalloc_buf *buf = buf_priv;
+ 	unsigned long vaddr = (unsigned long)buf->vaddr & PAGE_MASK;
+ 	unsigned int i;
++	struct page **pages;
++	unsigned int n_pages;
+ 
+-	if (buf->pages) {
++	if (!buf->vec->is_pfns) {
++		n_pages = frame_vector_count(buf->vec);
++		pages = frame_vector_pages(buf->vec);
+ 		if (vaddr)
+-			vm_unmap_ram((void *)vaddr, buf->n_pages);
+-		for (i = 0; i < buf->n_pages; ++i) {
+-			if (buf->dma_dir == DMA_FROM_DEVICE)
+-				set_page_dirty_lock(buf->pages[i]);
+-			put_page(buf->pages[i]);
+-		}
+-		kfree(buf->pages);
++			vm_unmap_ram((void *)vaddr, n_pages);
++		if (buf->dma_dir == DMA_FROM_DEVICE)
++			for (i = 0; i < n_pages; i++)
++				set_page_dirty_lock(pages[i]);
+ 	} else {
+-		vb2_put_vma(buf->vma);
+ 		iounmap(buf->vaddr);
+ 	}
++	vb2_destroy_framevec(buf->vec);
+ 	kfree(buf);
+ }
+ 
+--- a/linux/drivers/media/v4l2-core/videobuf-dma-sg.c
++++ b/linux/drivers/media/v4l2-core/videobuf-dma-sg.c
+@@ -182,8 +182,7 @@ static int videobuf_dma_init_user_locked
+ 	dprintk(1, "init user [0x%lx+0x%lx => %d pages]\n",
+ 		data, size, dma->nr_pages);
+ 
+-	err = get_user_pages(current, current->mm,
+-			     data & PAGE_MASK, dma->nr_pages,
++	err = get_user_pages(data & PAGE_MASK, dma->nr_pages,
+ 			     rw == READ, 1, /* force */
+ 			     dma->pages, NULL);
+ 
+@@ -355,7 +354,7 @@ int videobuf_dma_free(struct videobuf_dm
+ 
+ 	if (dma->pages) {
+ 		for (i = 0; i < dma->nr_pages; i++)
+-			page_cache_release(dma->pages[i]);
++			put_page(dma->pages[i]);
+ 		kfree(dma->pages);
+ 		dma->pages = NULL;
+ 	}
+--- a/linux/include/media/videobuf2-memops.h
++++ b/linux/include/media/videobuf2-memops.h
+@@ -15,6 +15,7 @@
+ #define _MEDIA_VIDEOBUF2_MEMOPS_H
+ 
+ #include <media/videobuf2-core.h>
++#include <linux/mm.h>
+ 
+ /**
+  * vb2_vmarea_handler - common vma refcount tracking handler
+@@ -36,5 +37,9 @@ int vb2_get_contig_userptr(unsigned long
+ struct vm_area_struct *vb2_get_vma(struct vm_area_struct *vma);
+ void vb2_put_vma(struct vm_area_struct *vma);
+ 
++struct frame_vector *vb2_create_framevec(unsigned long start,
++					 unsigned long length,
++					 bool write);
++void vb2_destroy_framevec(struct frame_vector *vec);
+ 
+ #endif
+--- a/v4l/compat.h
++++ b/v4l/compat.h
+@@ -1445,19 +1445,6 @@ static inline void *devm_kmalloc_array(s
+ }
+ #endif
+ 
+-#ifdef NEED_PCI_ZALLOC_CONSISTENT
+-#include <linux/pci.h>
+-#include <linux/dma-mapping.h>
+-
+-static inline void *
+-pci_zalloc_consistent(struct pci_dev *hwdev, size_t size,
+-		dma_addr_t *dma_handle)
+-{
+-	return dma_alloc_coherent(hwdev == NULL ? NULL : &hwdev->dev,
+-			size, dma_handle, GFP_ATOMIC | __GFP_ZERO);
+-}
+-#endif
+-
+ #ifdef NEED_KREF_GET_UNLESS_ZERO
+ #include <linux/kref.h>
+ static inline int __must_check kref_get_unless_zero(struct kref *kref)
