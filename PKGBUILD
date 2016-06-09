@@ -1,9 +1,10 @@
 # Maintainer: carstene1ns <url/mail: arch carsten-teibes de>
 # Contributor: josephgbr <rafael.f.f1 at gmail.com>
+# Contributor: thr <r at sledinmay dot com>
 
 pkgname=lib32-libidl2
 pkgver=0.8.14
-pkgrel=3
+pkgrel=4
 pkgdesc="A front-end for CORBA 2.2 IDL and Netscape's XPIDL (32 bit)"
 arch=('x86_64')
 url="http://www.gnome.org/"
@@ -17,7 +18,7 @@ options=('!libtool' '!emptydirs')
 build() {
   cd libIDL-$pkgver
 
-  ./configure --prefix=/usr --libdir=/usr/lib32 CC='gcc -m32'
+./configure --prefix=/usr --libdir=/usr/lib32 CC='gcc' CFLAGS='-m32' PKG_CONFIG_PATH='/usr/lib32/pkgconfig/'
   make
 }
 
