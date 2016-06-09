@@ -2,7 +2,7 @@
 
 pkgname=go3status
 pkgver=0.23.0
-pkgrel=1
+pkgrel=2
 pgdesc="Awesome i3bar tool"
 arch=('x86_64' 'i686')
 url='https://github.com/andir/go3status'
@@ -20,5 +20,7 @@ package() {
 	cd "${srcdir}"
 	mkdir -p "${pkgdir}/usr/bin/"
 	install -m 655 "bin/go3status" "${pkgdir}/usr/bin/go3status"
+	mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
+	install -m 644 "src/github.com/andir/${pkgname}/config.json" "${pkgdir}/usr/share/doc/${pkgname}/config.json"
 }
 
