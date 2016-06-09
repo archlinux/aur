@@ -8,7 +8,7 @@ pkgdesc='OpenFabrics Alliance InfiniBand simulator utilities'
 #        Simulates InfiniBand fabric, which can be used by any libibumad based application
 #        Works locally via unix sockets or remotely via inet sockets
 arch=('x86_64' 'i686')
-url=('https://www.openfabrics.org/index.php/overview.html')
+url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libibmad' 'bash')
 source=("https://www.openfabrics.org/downloads/management/${pkgname}-${pkgver}.tar.gz")
