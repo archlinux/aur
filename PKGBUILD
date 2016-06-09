@@ -12,7 +12,6 @@ depends=('alsa-lib' 'guile1.8')
 optdepends=('alsa-oss:  for OSS compatibility')
 source=(http://launchpad.net/$pkgname/trunk/$pkgver/+download/$pkgname-$pkgver.tar.bz2)
 md5sums=('b4b531829e6901c958dad805cf1ab8ae')
-install=rumor.install
 
 build() {
   cd $srcdir/$pkgname-$pkgver
