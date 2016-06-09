@@ -1,12 +1,12 @@
 pkgname=libc++abi-svn
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LLVM libc++abi"
 arch=('i686' 'x86_64')
 url="https://libcxxabi.llvm.org/"
 license=('MIT' 'NCSA')
-depends=('clang')
-makedepends=('subversion')
+depends=()
+makedepends=('subversion' 'cmake' 'clang')
 checkdepends=()
 provides=('libc++abi')
 conflicts=('libc++abi')
