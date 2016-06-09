@@ -1,14 +1,14 @@
 # Maintainer:  Israel Herraiz <isra@herraiz.org>
 pkgname=geobases-git
 pkgver=r3004.690ce9b
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Tool and Python module to play with geographical and travel data, and some non-geographical data too."
 arch=('i686' 'x86_64')
 url="http://opentraveldata.github.com/geobases/"
 license=('CCPL:by-sa-3.0.txt')
 groups=()
-depends=('python')
+depends=('python' 'python-colorama')
 makedepends=('git')
 checkdepends=()
 optdepends=()
