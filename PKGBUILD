@@ -32,7 +32,7 @@ conflicts=('matrix-synapse')
 
 pkgver() {
 	cd synapse
-	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long | sed 's/^v//;s/-rc/rc/;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
