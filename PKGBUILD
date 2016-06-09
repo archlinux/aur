@@ -1,5 +1,5 @@
 pkgname=cangaroo
-pkgver=1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="An Open-Source CAN Monitor"
 arch=('any')
@@ -10,7 +10,7 @@ depends=(
 )
 url="https://github.com/HubertD/cangaroo"
 
-source=("$pkgname::git+https://github.com/HubertD/cangaroo.git")
+source=("$pkgname::git+https://github.com/HubertD/cangaroo.git#tag=$pkgver")
 md5sums=('SKIP')
 
 pkgver() {

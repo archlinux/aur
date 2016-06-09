@@ -1,13 +1,13 @@
 pkgbase = cangaroo
 	pkgdesc = An Open-Source CAN Monitor
-	pkgver = 1
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/HubertD/cangaroo
 	arch = any
 	license = GPL
 	depends = git
 	depends = qt5-base
-	source = cangaroo::git+https://github.com/HubertD/cangaroo.git
+	source = cangaroo::git+https://github.com/HubertD/cangaroo.git#tag=0.2.0
 	md5sums = SKIP
 
 pkgname = cangaroo
