@@ -1,7 +1,7 @@
 # Maintainer:  Israel Herraiz <isra@herraiz.org>
 pkgname=geobases-git
 pkgver=r3004.690ce9b
-pkgrel=5
+pkgrel=6
 epoch=
 pkgdesc="Tool and Python module to play with geographical and travel data, and some non-geographical data too."
 arch=('any')
