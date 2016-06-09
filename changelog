@@ -1,3 +1,10 @@
+2016-06-09 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.0.5.4:
+    [!] Added Steam Summer Sale 2016 with appID of 480730 to Blacklist and built-in GlobalBlacklist.
+    [!] Implemented brand new event-based cards farming module.
+    Changed default value of FarmingDelay from 5 to 15.
+    Improved logic of restarting cards farming module on newly added games.
+    Misc code improvements, optimizations and bugfixes.
 2016-06-06 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 	* 2.0.5.2:
 	  Added IsBotAccount bot config property.
