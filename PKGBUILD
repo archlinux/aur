@@ -1,5 +1,5 @@
 pkgname=nodejs-doctoc # All lowercase
-pkgver=1.0.0
+pkgver=1.1.1
 pkgrel=1
 _npmname=doctoc
 pkgdesc="Generates TOC for markdown files of local git repo."
@@ -10,7 +10,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz)
 noextract=(${_npmname}-${pkgver}.tgz)
-sha256sums=(f630cbb4aeeab2b08abf4c232dd5480af22298ea03e5a0c7c13a2c6765c0a632)
+sha256sums=(1184c51c5f6ae937eb28e5918c91dbad8cb670a372d5fa38b10cc4d57be98ca5)
 
 package() {
   cd $srcdir
