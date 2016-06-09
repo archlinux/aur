@@ -76,7 +76,7 @@ is_player_online() {
 	if [[ -z $(tail -n 1 "${LOGPATH}/latest.log" | sed -r -e 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' -e 's/.*\: //' | tr -d '\n') ]]; then
 		# No player is online
 		return 0;
-	elif [[ $(tail -n 10 "${LOGPATH}/latest.log" | grep "There are" | sed -r -e '$!d' -e 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' -e 's/.*\: //' -e 's/^([^.]+).*$/\1/; s/^[^0-9]*([0-9]+).*$/\1/' | tr -d '\n') -gt 0 ]]; then
+	elif [[ $(tail -n 10 "${LOGPATH}/latest.log" | grep "There are" | sed -r -e '$!d' -e 's/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g' -e 's/.*\: //' -e 's/^([^.]+).*$/\1/; s/^[^0-9]*([0-9]+).*$/\1/' | tr -d '\n') -eq 0 ]]; then
 		# No player is online
 		return 0;
 	else

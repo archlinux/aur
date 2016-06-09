@@ -4,7 +4,7 @@
 
 pkgname=minecraft-server
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft server unit files, script, and jar"
 arch=('any')
 url="http://minecraft.net/"
@@ -27,7 +27,7 @@ md5sums=('deb46093d99440d249b6065887403ec8'
          'fef6fadd0739ae03ff71ba61025be207'
          'afb84ad0316af0aca421b36eaa2bbd90'
          '00045683c06924d765ac14887218ffcc'
-         '7605d5f67e889f6c3743f63ac840ab54')
+         'c6d0d66c643aecf25fa5a694c1462cf2')
 
 _game="minecraft"
 _server_root="/srv/minecraft"
