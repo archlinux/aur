@@ -1,5 +1,5 @@
 pkgname=cangaroo
-pkgver=0.2.0
+pkgver=0.2.0.r0.g1e47cbe
 pkgrel=1
 pkgdesc="An Open-Source CAN Monitor"
 arch=('any')
@@ -21,7 +21,6 @@ pkgver() {
 build(){
 	cd "$srcdir/$pkgname"
 	# master is the normal one. msgfilter is the current
-	git checkout msgfilter
 	qmake
 	make
 }
