@@ -1,0 +1,13 @@
+pkgbase = libit
+	pkgdesc = Easy to use yet efficient tools for C for signal processing, coding, or scientific code in general
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = http://libit.sf.net/
+	arch = i686
+	arch = x86_64
+	license = LGPLv2
+	source = http://downloads.sourceforge.net/libit/libit-0.2.3.tar.gz
+	md5sums = 34c332ec0dd7ef4af830a7c7f326228d
+
+pkgname = libit
+
