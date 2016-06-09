@@ -1,6 +1,6 @@
 pkgname=libc++-svn
 pkgver=3.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="LLVM libc++"
 arch=('i686' 'x86_64')
 url="https://libcxx.llvm.org/"
