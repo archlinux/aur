@@ -1,0 +1,9 @@
+post_install() {
+    echo "pqR has been installed to /opt/pqr"
+    echo "to use with RStudio set your environment variables like: export RSTUDIO_WHICH_R='/opt/pqr/bin/R'"
+}
+
+post_upgrade() {
+    post_install
+}
+
