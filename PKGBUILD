@@ -1,7 +1,7 @@
-pkgname=libc++-3.8.0
+pkgname=libc++
 pkgver=3.8.0
 pkgrel=1
-pkgdesc="LLVM libc++-3.8.0"
+pkgdesc="LLVM libc++"
 arch=('i686' 'x86_64')
 url="https://libcxx.llvm.org/"
 license=('MIT' 'NCSA')
