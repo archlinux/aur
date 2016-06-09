@@ -100,6 +100,7 @@ do_commit() {
 do_clean() {
     echo "// clean"
     rm -rf "$location/$pkgname"
+    rm -rf "$location/src"
 }
 
 ###
