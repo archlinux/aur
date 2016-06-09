@@ -2,15 +2,15 @@
 # * No namcap warnings or errors
 
 pkgname=libocrdma
-pkgver=1.0.6
+pkgver=1.0.8
 pkgrel=1
 pkgdesc='OpenFabrics Alliance userspace Emulex OneConnect RDMA adapter libibverbs plug-in'
 arch=('x86_64' 'i686')
-url=('https://www.openfabrics.org/downloads/libocrdma/README.html')
+url='https://www.openfabrics.org/downloads/libocrdma/README.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('libibverbs')
 source=("https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('b31e6336317528c7abf68b23351835d0')
+md5sums=('841a0a0f44a356931fcb379c5dab7f71')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
