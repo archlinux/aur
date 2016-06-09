@@ -1,9 +1,0 @@
---- src/OpenFOAM-3.0.1/applications/utilities/parallelProcessing/decomposePar/Make/options
-+++ src/OpenFOAM-3.0.1/applications/utilities/parallelProcessing/decomposePar/Make/options
-@@ -13,4 +13,5 @@ EXE_LIBS = \
-     -ldecompositionMethods -L$(FOAM_LIBBIN)/dummy -lmetisDecomp -lscotchDecomp \
-     -llagrangian \
-     -lmeshTools \
--    -lregionModels
-+    -lregionModels \
-+    -lbz2
