@@ -1,9 +1,9 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=python-geohash
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast, accurate python geohashing library"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://github.com/hkwi/python-geohash"
 license=('APACHE')
 groups=()

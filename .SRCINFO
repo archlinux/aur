@@ -1,10 +1,9 @@
 pkgbase = python-geohash
 	pkgdesc = Fast, accurate python geohashing library
 	pkgver = 0.8.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hkwi/python-geohash
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = APACHE
 	depends = python
 	options = !emptydirs
