@@ -2,7 +2,7 @@
 pkgname=adapta-gtk-theme
 _gtk3_version='3.21'
 _theme_name=Adapta
-pkgver="${_gtk3_version}.2.69"
+pkgver="${_gtk3_version}.2.116"
 pkgrel=1
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
@@ -22,12 +22,12 @@ optdepends=('gnome-shell>=3.18: The GNOME Shell'
 _tri_fadeno="tri-fadeno.jpg"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${pkgver}-${_tri_fadeno}::${url}/raw/master/.github/img/tri-fadeno.jpg")
-sha256sums=('239930fe7a5834f72bdc177ed520c69278bddc2321d5bd3926784bd8b87159de'
+sha256sums=('2d5d803cb857c07a594d2d302df8421fa2ee5e89083e921e4eb255df24e2c9c0'
             '807bd3d99fb492569caf050cfa9b5c75d4e6a072007637fe8e583a3f5c0bea24')
 
 build() {
     cd "${_theme_name}-${pkgver}"
-    ./autogen.sh --prefix "${pkgdir}/usr" --enable-gtk_next --enable-chrome
+    ./autogen.sh --prefix "${pkgdir}/usr" --enable-gtk_next --enable-chrome --enable-plank
     make
 }
 
