@@ -1,17 +1,16 @@
- # Maintainer: MAZ_1 <loveayawaka 'at' gmail 'dot' com>
+# Maintainer: MAZ_1 <loveayawaka 'at' gmail 'dot' com>
+# Contributor: thr <r at sledinmay dot com>
  
 pkgname=lib32-glitz
 pkgver=0.5.6
-pkgrel=1
-pkgrel32=1
+pkgrel=2
 pkgdesc="OpenGL image compositing library"
 arch=('x86_64')
 url="http://cairographics.org/"
 depends=('lib32-libgl' 'lib32-glibc' 'glitz')
 license=('BSD')
-groups=lib32
 source=(https://www.archlinux.org/packages/community/i686/glitz/download/#glitz-i686.pkg.tar.xz)
-md5sums=('SKIP')
+md5sums=('225f53b8ba19aed8e039a97f9aa6f0a5')
 pkgver() {
         cat $srcdir/.PKGINFO | grep -oP '(?<=pkgver = )\d+\.\d+\.\d+'
 }
