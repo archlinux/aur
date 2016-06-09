@@ -1,0 +1,15 @@
+pkgbase = hgsreceiver-bin
+	pkgdesc = HP remote RGS receiver
+	pkgver = 7.2.3
+	pkgrel = 1
+	url = https://h30670.www3.hp.com/portal/swdepot/displayProductInfo.do?productNumber=RGS-LR
+	arch = x86_64
+	license = custom:"HP"
+	depends = libudev.so.0
+	depends = lib32-glu
+	options = emptydirs
+	source = file://RGS_Linux_64_Receiver_v7.2.3_Z7550-01890.tar.gz
+	md5sums = f6b335e7ff929af51bfc7d840b56dd8d
+
+pkgname = hgsreceiver-bin
+
