@@ -16,6 +16,16 @@ depends=('lib32-alsa-lib' 'lib32-atk' 'lib32-cairo' 'lib32-curl'
          'lib32-libxcomposite' 'lib32-libxcursor' 'lib32-libxi'
          'lib32-libxinerama' 'lib32-libxrandr' 'lib32-libxrender'
          'lib32-libxtst' 'lib32-nspr' 'lib32-nss' 'lib32-openal' 'lib32-pango')
+source=('steam-native'
+        'steam-native.desktop')
+md5sums=('fd1c31ec08338cecd657bc6749f2c5b6'
+         '389e2b73c412250c6e9f19dcadad1bc3')
+
+package() {
+  install -dm 755 "${pkgdir}"/usr/{bin,share/applications}
+  install -m 755 steam-native "${pkgdir}"/usr/bin/
+  install -m 644 steam-native.desktop "${pkgdir}"/usr/share/applications
+}
 
 # vim: ts=2 sw=2 et:
 
