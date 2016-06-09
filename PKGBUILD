@@ -4,7 +4,7 @@
 
 pkgname=slime-git
 pkgver=2.18.1.g330877a
-pkgrel=1
+pkgrel=2
 pkgdesc="The Superior Lisp Interaction Mode for Emacs - from git"
 arch=('any')
 url="http://common-lisp.net/project/slime"
