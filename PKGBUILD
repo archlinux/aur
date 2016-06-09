@@ -2,14 +2,14 @@
 
 _pkgname=biboumi
 pkgname="$_pkgname-git"
-pkgver=r522.37fd6ff
+pkgver=r583.199f010
 pkgrel=1
 pkgdesc="XMPP gateway to IRC"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://biboumi.louiz.org/"
 license=('ZLIB')
 depends=('expat' 'libidn' 'c-ares' 'botan' 'litesql')
-makedepends=('git' 'cmake' 'ruby-ronn')
+makedepends=('git' 'cmake' 'pandoc')
 provides=("$_pkgname=1.99")
 conflicts=("$_pkgname")
 backup=("etc/$_pkgname/$_pkgname.cfg")
@@ -38,5 +38,5 @@ package() {
 
   cd ..
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
-  install -Dm644 doc/biboumi.1.md "$pkgdir/usr/share/doc/$_pkgname/$_pkgname.md"
+  install -Dm644 doc/biboumi.1.rst "$pkgdir/usr/share/doc/$_pkgname/$_pkgname.rst"
 }
