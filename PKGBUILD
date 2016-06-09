@@ -4,9 +4,9 @@
 # Contributor: Michael Hansen <zrax0111 gmail com>
 
 pkgname=qt5-doc
-_qtver=5.6.0
+_qtver=5.6.1
 pkgver=${_qtver/-/}
-pkgrel=3
+pkgrel=1
 arch=('any')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
@@ -17,7 +17,7 @@ conflicts=('qt')
 groups=('qt' 'qt5')
 _pkgfqn="qt-everywhere-opensource-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/single/${_pkgfqn}.tar.xz")
-md5sums=('47763c168f58b1196271b231f03c8bae')
+md5sums=('d647574345c45b5ab8b41b2d46efffb9')
 
 prepare() {
   cd ${_pkgfqn}
