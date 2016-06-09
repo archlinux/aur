@@ -3,7 +3,7 @@
 
 pkgname=emacs-psvn
 pkgver=2015.07.20_21.42.00
-pkgrel=2
+pkgrel=3
 pkgdesc="Subversion interface for emacs"
 url="http://www.emacswiki.org/cgi-bin/wiki/SubVersion"
 license=('GPL2')
