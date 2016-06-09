@@ -5,7 +5,7 @@
 pkgname=gnumeric-minimal
 _pkgname=gnumeric
 pkgver=1.12.29
-pkgrel=1
+pkgrel=2
 pkgdesc="A GNOME-less spreadsheet program"
 arch=('i686' 'x86_64')
 url="http://www.gnome.org/projects/gnumeric/"
