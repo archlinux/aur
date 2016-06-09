@@ -1,5 +1,5 @@
 pkgname=cangaroo
-pkgver=0.2.0.r0.g1e47cbe
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="An Open-Source CAN Monitor"
 arch=('any')
