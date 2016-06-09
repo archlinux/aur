@@ -1,0 +1,14 @@
+pkgbase = geobases-git
+	pkgver = r3004.690ce9b
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = CCPL:by-sa-3.0.txt
+	makedepends = git
+	depends = python
+	options = !emptydirs
+	source = geobases::git+https://github.com/opentraveldata/geobases.git#branch=3000
+	md5sums = SKIP
+
+pkgname = geobases-git
+
