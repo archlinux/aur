@@ -10,7 +10,7 @@ pkgver=0.3.4.r342.g38f435b
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
-depends=('sdl2' 'boost' 'sdl2_ttf' 'sdl2_image' 'libvorbis' 'libogg' 'openal' 'swig2' 'python2' 'zlib' 'libgl' 'libpng' 'tinyxml' 'fifechan-git')
+depends=('sdl2' 'boost' 'sdl2_ttf' 'sdl2_image' 'libvorbis' 'libogg' 'openal' 'swig' 'python2' 'zlib' 'libgl' 'libpng' 'tinyxml' 'fifechan-git')
 makedepends=('scons' 'git')
 source=(git+https://github.com/fifengine/fifengine.git)
 md5sums=('SKIP')
@@ -22,10 +22,10 @@ pkgver() {
 
 build() {
   cd "$srcdir/fifengine"
-  SWIG="swig-2" scons
+  scons
 }
 
 package() {
   cd "$srcdir/fifengine"
-  SWIG="swig-2" scons install-python --prefix="$pkgdir/usr" --python-prefix="$pkgdir/usr/lib/python2.7/site-packages/"
+  scons install-python --prefix="$pkgdir/usr" --python-prefix="$pkgdir/usr/lib/python2.7/site-packages/"
 }
