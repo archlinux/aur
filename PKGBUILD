@@ -2,7 +2,7 @@
 
 pkgdesc='Provisioning tool for systemd in initramfs (systemd-tool)'
 pkgname=mkinitcpio-systemd-tool
-pkgver=4
+pkgver=3
 pkgrel=1
 depends=(
     'mkinitcpio' 

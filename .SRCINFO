@@ -1,6 +1,6 @@
 pkgbase = mkinitcpio-systemd-tool
 	pkgdesc = Provisioning tool for systemd in initramfs (systemd-tool)
-	pkgver = 4
+	pkgver = 3
 	pkgrel = 1
 	url = https://github.com/random-archer/mkinitcpio-systemd-tool
 	arch = any
@@ -24,7 +24,7 @@ pkgbase = mkinitcpio-systemd-tool
 	backup = etc/systemd/system/initrd-network.service
 	backup = etc/systemd/system/initrd-shell.service
 	backup = etc/systemd/system/initrd-shell.sh
-	source = git+https://github.com/random-archer/mkinitcpio-systemd-tool.git#tag=v4
+	source = git+https://github.com/random-archer/mkinitcpio-systemd-tool.git#tag=v3
 	md5sums = SKIP
 
 pkgname = mkinitcpio-systemd-tool
