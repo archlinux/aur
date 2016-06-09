@@ -5,7 +5,7 @@
 
 pkgname=fontmatrix-git
 pkgver=1177.33cc6af
-pkgrel=1
+pkgrel=2
 pkgdesc='Font manager for Linux'
 arch=('i686' 'x86_64')
 url='http://oep-h.com/fontmatrix/'
@@ -14,7 +14,6 @@ depends=('qtwebkit')
 conflicts=('fontmatrix')
 provides=('fontmatrix')
 makedepends=('cmake' 'git' 'mesa')
-install="${pkgname%-*}.install"
 source=('git+https://github.com/popolon/fontmatrix.git')
 sha256sums=('SKIP')
 
