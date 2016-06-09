@@ -1,15 +1,14 @@
 # Maintainer: Frantic1048 <archer@frantic1048.com>
 
 pkgname=kreogist-mu
-pkgver='0.9.9.2'
-pkgrel=2
+pkgver='0.9.9.3'
+pkgrel=1
 epoch=1
 pkgdesc="Fantastic cross-platform music manager.based on Qt5"
 arch=('x86_64')
 url="https://kreogist.github.io/Mu/"
 license=('GPL')
 changelog="$pkgname.changelog"
-install="$pkgname.install"
 depends=(
   'pulseaudio'
   'ffmpeg'
@@ -37,7 +36,7 @@ source=(
   "https://codeload.github.com/Kreogist/Mu/tar.gz/$pkgver"
 )
 
-sha224sums=('2877b0096d3359733e070ab41ebeaad63d1cc10c67f0e4ba1c18b717' 'f69b65d11c06de016b2f058292f8d196b2cf93e01d5d1b12060d2ed0')
+sha224sums=('481526da5c0e5d53f7a95f2d7630a3b4c698fd44853f86dc2347bfc0' '8767ac3acf1cd85fcab2bdac78208b1ad20bf1173b6705bca0d58391')
 
 build() {
   mkdir -p $srcdir/Mu-build
