@@ -40,8 +40,9 @@ license=('Apache')
 url="https://github.com/random-archer/$pkgname"
 
 # switch between a release tag and a development branch
-_fragment=$([[ $pkgver =~ ^[0-9]+$ ]] && printf "#tag=v$pkgver" || printf "#branch=master")
-source=("git+${url}.git${_fragment}")
+#_fragment=$([[ $pkgver =~ ^[0-9]+$ ]] && printf "#tag=v$pkgver" || printf "#branch=master")
+#source=("git+${url}.git${_fragment}")
+source=("git+${url}.git")
 
 # select version depending on marker file presence:
 # * create .PKGDEV to use latest development version (from master branch)
@@ -70,7 +71,7 @@ pkgver() {
 ####
 
 prepare() {
-    true
+    echo "srcdir $srcdir"
 }
 
 build() {
