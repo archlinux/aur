@@ -1,6 +1,5 @@
-# This is the PKGBUILD for TMSU
-
-# Maintainer: Tomáš Mládek <tmladek{at}inventati{dt}org> 
+# Maintainer:  Marcin Wieczorek <marcin@marcin.co>
+# Contributor: Tomáš Mládek <tmladek{at}inventati{dt}org>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=tmsu
@@ -11,11 +10,11 @@ arch=('i686' 'x86_64')
 url="http://tmsu.org/"
 depends=('go' 'fuse' 'sqlite>=3')
 provides=('tmsu')
-license=('GNU GPL v3')
+license=('GPL3')
 source=("https://github.com/oniony/TMSU/archive/v$pkgver.tar.gz")
 sha256sums=('00483d9ca12cb868e9587207556a8293bd43ee5a2993a6fe9f0c93edef918a7f')
 
-build(){
+build() {
   export GOPATH=/tmp
 
   echo "Now getting go-sqlite3..."
@@ -28,7 +27,7 @@ build(){
   make
 }
 
-package(){
+package() {
   mkdir -p "$pkgdir/usr/bin" \
            "$pkgdir/usr/bin" \
            "$pkgdir/usr/share/man/man1" \
