@@ -1,7 +1,7 @@
 # Maintainer: ELmoussaoui Bilal <bil.elmoussaoui@gmail.com>
 
 pkgname=gnome-twofactorauth-git
-_gitname=TwoFactorAuth
+_gitname=Gnome-TwoFactorAuth
 pkgver=v0.1beta2.r1.g6be480f
 pkgrel=1
 pkgdesc='Two-Factor Authentication code generator for Gnome'
