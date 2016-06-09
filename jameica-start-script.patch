@@ -1,0 +1,17 @@
+6c6
+< #_JCONSOLE="-Dcom.sun.management.jmxremote"
+---
+> cd /opt/jameica
+11,13d10
+< link=$(readlink -f "$0")
+< dir=$(dirname "$link")
+< cd "$dir" 
+21c18,23
+< LIBOVERLAY_SCROLLBAR=0 GDK_NATIVE_WINDOWS=1 SWT_GTK3=0 exec java -Djava.net.preferIPv4Stack=true -Xmx512m $_JCONSOLE -jar jameica-linux${archsuffix}.jar $@
+---
+> # enable to use the default version of java provided by java-runtime-common
+> #_java=/usr/bin/java
+> # use java 8 for mashup plugin
+> _java=/usr/lib/jvm/java-8-openjdk/jre/bin/java
+> 
+> LIBOVERLAY_SCROLLBAR=0 GDK_NATIVE_WINDOWS=1 SWT_GTK3=0 exec $_java -Djava.net.preferIPv4Stack=true -Xmx512m $_JCONSOLE -jar jameica-linux${archsuffix}.jar $@

@@ -1,17 +1,27 @@
 pkgbase = jameica
 	pkgdesc = free runtime environment for java applications
 	pkgver = 2.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.willuhn.de/products/jameica/
+	install = jameica.install
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = unzip
-	depends = java-runtime>=1.5
+	depends = java-runtime>=8
 	depends = java-environment
 	depends = swt
-	source = jameica-2.6.4::https://www.willuhn.de/projects/jameica/releases/2.6/jameica/jameica-linux64.zip
-	sha1sums = 7d3d6104b75d41b0baebdf7cbbdf3fca64012e13
+	optdepends = java-jce_ustrength: Required for mashup plugin used as new scripting platform for non-HBCI accounts (credit cards etc)
+	source = jameica-start-script.patch
+	source = jameicaserver-start-script.patch
+	source = jameica.install
+	sha1sums = a6a696d465929f373d6c0d469463aa28b0f4c11f
+	sha1sums = 05ca5cf474523db10789eea9cb483cdf12d8549b
+	sha1sums = 2076491611ac0bc99863fa3e5b0909ff961b7999
+	source_i686 = jameica-2.6.4.zip::https://www.willuhn.de/projects/jameica/releases/2.6/jameica/jameica-linux.zip
+	sha1sums_i686 = f659abd95ac062846f14c067fea5061bd5c4cd54
+	source_x86_64 = jameica-2.6.4.zip::https://www.willuhn.de/projects/jameica/releases/2.6/jameica/jameica-linux64.zip
+	sha1sums_x86_64 = 7d3d6104b75d41b0baebdf7cbbdf3fca64012e13
 
 pkgname = jameica
 

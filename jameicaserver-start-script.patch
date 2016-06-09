@@ -1,0 +1,15 @@
+6,8c6
+< link=$(readlink -f "$0")
+< dir=$(dirname "$link")
+< cd "$dir" 
+---
+> cd /opt/jameica
+14c12,17
+< java -Djava.net.preferIPv4Stack=true -Xmx256m $_JCONSOLE -jar jameica-linux.jar -d $@
+---
+> # enable to use the default version of java provided by java-runtime-common
+> #_java=/usr/bin/java
+> # use java 8 for mashup plugin
+> _java=/usr/lib/jvm/java-8-openjdk/jre/bin/java
+> 
+> $_java -Djava.net.preferIPv4Stack=true -Xmx256m $_JCONSOLE -jar jameica-linux.jar -d $@
