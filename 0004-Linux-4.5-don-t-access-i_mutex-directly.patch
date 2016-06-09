@@ -1,7 +1,7 @@
-From 68494a4bfe01cc70c7c3efb0640e46ce62fcf8f9 Mon Sep 17 00:00:00 2001
+From 60b36c98188a786f1ba71f0e2b0a1b8f7ff0ba2c Mon Sep 17 00:00:00 2001
 From: Benjamin Kaduk <kaduk@mit.edu>
 Date: Sun, 1 May 2016 19:48:40 -0400
-Subject: [PATCH 5/5] Linux 4.5: don't access i_mutex directly
+Subject: [PATCH 4/5] Linux 4.5: don't access i_mutex directly
 
 Linux commit 5955102c, in preparation for future work, introduced
 wrapper functions to lock/unlock inode mutexes.  This is to
@@ -64,7 +64,7 @@ index 4d484c1..5268e7e 100644
  #else
      up(&ip->i_sem);
 diff --git a/src/afs/LINUX/osi_vnodeops.c b/src/afs/LINUX/osi_vnodeops.c
-index 532c9e9..dca4413 100644
+index 00b41ef..2696b48 100644
 --- a/src/afs/LINUX/osi_vnodeops.c
 +++ b/src/afs/LINUX/osi_vnodeops.c
 @@ -571,13 +571,13 @@ afs_linux_fsync(struct file *fp, int datasync)
@@ -84,5 +84,5 @@ index 532c9e9..dca4413 100644
      crfree(credp);
      return afs_convert_code(code);
 -- 
-2.8.2
+2.8.3
 

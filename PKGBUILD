@@ -6,7 +6,7 @@
 pkgname=openafs-modules
 _srcname=openafs
 pkgver=1.6.18
-pkgrel=2
+pkgrel=3
 pkgdesc="Kernel module for OpenAFS"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://www.openafs.org"
@@ -19,13 +19,15 @@ source=(http://openafs.org/dl/${pkgver}/${_srcname}-${pkgver}-src.tar.bz2
         0001-Linux-3.13-Check-return-value-from-bdi_init.patch
         0002-Linux-4.5-no-highmem-in-symlink-ops.patch
         0003-Linux-4.5-get_link-instead-of-follow_link-put_link.patch
-        0005-Linux-4.5-don-t-access-i_mutex-directly.patch)
+        0004-Linux-4.5-don-t-access-i_mutex-directly.patch
+        0005-Linux-4.6-rm-PAGE_CACHE_-and-page_cache_-get-release.patch)
 install=openafs-modules.install
 sha256sums=('b3c35e7be6b6c86b91e7c699fd015f53c87bc19d1ae8ec3ec9cda6b97327d3b6'
-            'bec998ce038349025fe030c692f7f0fe46bbe8922433cf6be6298aac536f34cf'
-            'd18b1278c097825801fa1c721cae861f985d9da5460475b74cefe1eb789a1f92'
-            '6336dde35c68c74ae9427b312f170481616d8d347ec4ddfa2966a683797361b0'
-            'e3f369f000df13a4d207c1533d63ffa0b139c3d374294f6d1fbc77f5e5b9b4df')
+            'abac60b5ae85a8d9311a13f35d723c63de2049033058736db7b3ef39439c2811'
+            '0ae7f199e5e4031beef55c93087c34505701ef8f41fce4c255239bb8b48e9888'
+            'c7403d943f4bd5bb61e47b79c8d5c1258ced77800b2c20a603a4676ae9ee6f8c'
+            '88d7ab67b730eeeaef991cb0db8dabf12d1773a922fbba5c6ac99731a6e87fea'
+            '76d83389674da6fcb3ce0635308cd47a949f13361cd29ae2c513847fa5dced1f')
 
 # Heuristic to determine version of installed kernel
 # You can modify this if the heuristic fails
@@ -39,7 +41,10 @@ prepare() {
   patch -p1 < ${srcdir}/0001-Linux-3.13-Check-return-value-from-bdi_init.patch
   patch -p1 < ${srcdir}/0002-Linux-4.5-no-highmem-in-symlink-ops.patch
   patch -p1 < ${srcdir}/0003-Linux-4.5-get_link-instead-of-follow_link-put_link.patch
-  patch -p1 < ${srcdir}/0005-Linux-4.5-don-t-access-i_mutex-directly.patch
+  patch -p1 < ${srcdir}/0004-Linux-4.5-don-t-access-i_mutex-directly.patch
+
+  # Patch required to build against Linux 4.6
+  patch -p1 < ${srcdir}/0005-Linux-4.6-rm-PAGE_CACHE_-and-page_cache_-get-release.patch
 
   # Only needed when changes to configure were made
   ./regen.sh -q

@@ -41,5 +41,5 @@ index 1b99c94..2f753dd 100644
  	ip->i_data.a_ops = &afs_symlink_aops;
  	ip->i_mapping = &ip->i_data;
 -- 
-2.8.2
+2.8.3
 
