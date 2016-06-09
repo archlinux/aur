@@ -9,8 +9,6 @@ arch=('x86_64' 'i686')
 url='https://www.realvnc.com/'
 license=('custom')
 depends=('glibc' 'gcc-libs' 'libice' 'libsm' 'libx11' 'libxext')
-depends_server=('libxtst' 'gconf')
-optdepends_server=('cups: Printer support')
 conflicts=('tightvnc' 'tigervnc')
 source_x86_64=("VNC-${pkgver}-Linux-x64-DEB.tar.gz::https://www.realvnc.com/download/binary/1844/")
 source_i686=("VNC-${pkgver}-Linux-x86-DEB.tar.gz::https://www.realvnc.com/download/binary/1843/")
@@ -37,6 +35,8 @@ package_realvnc-vnc-viewer() {
 }
 
 package_realvnc-vnc-server() {
+    depends=("${depends[@]}" 'libxtst' 'gconf')
+    optdepends=('cups: Printer support')
     install='realvnc-vnc-server.install'
 
     bsdtar -xv -C "$pkgdir" -f "$srcdir/server/data.tar.gz"
