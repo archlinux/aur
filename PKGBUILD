@@ -3,7 +3,7 @@
 
 pkgname=emacs-jabber-git
 pkgver=0.8.92.115.g98dc8e4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Jabber client written in emacs lisp"
 arch=('any')
 url="http://emacs-jabber.sourceforge.net/"
@@ -12,18 +12,17 @@ depends=('emacs')
 makedepends=('git')
 provides=('emacs-jabber')
 conflicts=('emacs-jabber')
-install=$pkgname.install
 source=('git://emacs-jabber.git.sourceforge.net/gitroot/emacs-jabber/emacs-jabber')
 md5sums=('SKIP')
 _gitname=emacs-jabber
 
 pkgver() {
-  cd $_gitname
+  cd "$_gitname"
   git describe --tags | sed 's|-|.|g'
 }
   
 build() {
-  cd $srcdir/$_gitname
+  cd "$_gitname"
   autoreconf  -i
   ./configure --prefix=/usr --with-gconf-schema-file-dir=/etc/gconf/schemas \
       --libexecdir=/usr/lib/emacs-jabber
@@ -31,6 +30,6 @@ build() {
 }
 
 package() {
-  cd $srcdir/$_gitname
+  cd "$_gitname"
   make DESTDIR="$pkgdir/" install
 } 
