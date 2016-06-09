@@ -1,0 +1,12 @@
+pkgbase = go3status
+	pkgver = 0.0.42
+	pkgrel = 1
+	url = https://github.com/andir/go3status
+	arch = x86_64
+	arch = i686
+	license = GPLv3
+	makedepends = go
+	options = !strip
+
+pkgname = go3status
+
