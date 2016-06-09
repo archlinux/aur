@@ -1,13 +1,15 @@
 pkgbase = python-pywinrm
 	pkgdesc = Python library for Windows Remote Management
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.python.org/pypi/pywinrm
 	arch = any
 	license = MIT
 	depends = python
-	depends = python-isodate
+	depends = python-requests
 	depends = python-xmltodict
+	optdepends = python-requests-ntlm: for HTTP NTLM authentication
+	optdepends = python-requests-kerberos: for kerberos authentication
 	source = https://github.com/diyan/pywinrm/archive/v0.2.0.zip
 	md5sums = 58c439f96aeb79ee4b5b23b8a0f22e79
 
