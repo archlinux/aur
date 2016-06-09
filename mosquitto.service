@@ -3,7 +3,7 @@ Description=Mosquitto MQTT Broker daemon
 Requires=network.target
 
 [Service]
-ExecStart=/usr/bin/mosquitto
+ExecStart=/usr/bin/mosquitto -c /etc/mosquitto/mosquitto.conf
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure
 
