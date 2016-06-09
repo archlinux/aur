@@ -78,7 +78,7 @@ do_version_proper() {
         suno="sudo -u $user"
     fi
   
-    $suno makepkg --cleanbuild --noarchive --force
+    $suno makepkg --cleanbuild --force
 
     $suno makepkg --printsrcinfo > .SRCINFO
                         
