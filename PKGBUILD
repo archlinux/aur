@@ -1,7 +1,7 @@
 # Maintainer: ELmoussaoui Bilal <bil.elmoussaoui@gmail.com>
 
 pkgname=gnome-twofactorauth
-_gitname=TwoFactorAuth
+_gitname=Gnome-TwoFactorAuth
 pkgver=0.1beta2
 pkgrel=1
 pkgdesc='Two-Factor Authentication code generator for Gnome'
@@ -13,8 +13,8 @@ makedepends=('git' 'gnome-common' 'intltool' 'itstool' 'python' 'yelp-tools')
 
 options=('!emptydirs')
 install=gnome-twofactorauth.install
-source=("https://github.com/bil-elmoussaoui/TwoFactorAuth/archive/v${pkgver}.zip")
-md5sums=('SKIP')
+source=("https://github.com/bil-elmoussaoui/${_gitname}/archive/v${pkgver}.zip")
+md5sums=('1f4e913d78807302a8784631c69cbbbd')
 conflicts=('gnome-twofactorauth-git')
 provides=("gnome-twofactorauth=$pkgver")
 
