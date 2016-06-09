@@ -3,7 +3,7 @@
 _pkgname=athame
 _readline=readline-6.3
 pkgname=${_pkgname}-git
-pkgver=r141.4468e7c
+pkgver=r174.e9663ed
 pkgrel=1
 pkgdesc="Full Vim support for readline"
 url="https://github.com/ardagnir/$_pkgname"
@@ -15,7 +15,7 @@ conflicts=("readline")
 arch=('i686' 'x86_64')
 options=(!emptydirs)
 source=("git+$url.git" https://ftp.gnu.org/gnu/readline/$_readline.tar.gz https://ftp.gnu.org/gnu/readline/readline-6.3-patches/readline63-{001..008})
-install=($pkgname.install)
+install="$pkgname.install"
 sha256sums=('SKIP'
             '56ba6071b9462f980c5a72ab0023893b65ba6debb4eeb475d7a563dc65cafd43'
             '1a79bbb6eaee750e0d6f7f3d059b30a45fc54e8e388a8e05e9c3ae598590146f'
