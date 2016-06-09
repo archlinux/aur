@@ -3,11 +3,11 @@
 # You must register at unrealengine.com and link your github account to access this private repo.
 # @see https://wiki.archlinux.org/index.php/Unreal_Engine_4
 
-# The source is about 3.78 GiB, with an extra 3.24 GiB of dependencies downloaded in build(), and may take several hours to compile. (sizes as of 4.12.1)
+# The source is about 3.78 GiB, with an extra 3.24 GiB of dependencies downloaded in build(), and may take several hours to compile. (sizes as of 4.12)
 
 pkgname='unreal-engine'
-pkgver=4.12.1
-pkgrel=2
+pkgver=4.12.2
+pkgrel=1
 pkgdesc='A 3D game engine by Epic Games which can be used non-commercially for free.'
 arch=('x86_64')
 url='https://www.unrealengine.com/'
@@ -50,12 +50,12 @@ package() {
   install -d "$pkgdir/opt/$pkgname/Engine/DerivedDataCache" # created when UE4Editor is run
   cp -r Engine/Documentation "$pkgdir/opt/$pkgname/Engine/Documentation"
   cp -r Engine/Extras "$pkgdir/opt/$pkgname/Engine/Extras"
-  install -d "$pkgdir/opt/$pkgname/Engine/Intermediate" # create without contents
+  cp -r Engine/Extras "$pkgdir/opt/$pkgname/Engine/Intermediate"
   cp -r Engine/Plugins "$pkgdir/opt/$pkgname/Engine/Plugins"
   cp -r Engine/Programs "$pkgdir/opt/$pkgname/Engine/Programs"
   cp -r Engine/Saved "$pkgdir/opt/$pkgname/Engine/Saved"
   cp -r Engine/Shaders "$pkgdir/opt/$pkgname/Engine/Shaders"
-  install -d "$pkgdir/opt/$pkgname/Engine/Source" # create without contents
+  cp -r Engine/Shaders "$pkgdir/opt/$pkgname/Engine/Source"
   chmod -R a+rwX "$pkgdir/opt/$pkgname/Engine"
 
   # content
