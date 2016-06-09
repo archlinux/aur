@@ -5,6 +5,10 @@
 _qmake="qmake"
 _piver=""
 
+if [[ -z $_piver ]] && [[ -n $LOCAL_PI_VER ]]; then
+  _piver=$LOCAL_PI_VER
+fi
+
 if [[ -n "$_piver" ]]; then
 _qmake="/opt/qt-sdk-raspberry-pi${_piver}/bin/qmake"
 fi
