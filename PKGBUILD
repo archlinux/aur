@@ -1,13 +1,12 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=emacs-jabber
 pkgver=0.8.92
-pkgrel=1
+pkgrel=2
 pkgdesc="Jabber.el: a minimal jabber client for emacs"
 url=http://emacs-jabber.sourceforge.net
 arch=('any')
 license=('GPL')
 depends=('emacs' 'gnutls' 'gconf')
-install=jabber.el.install
 source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.xz)
 md5sums=('91064079677fbabb7c7540b452b5edcd')
 
