@@ -1,28 +1,31 @@
 pkgbase = mkinitcpio-systemd-tool
-    pkgdesc = Provisioning tool for systemd in initramfs (systemd-tool)
-    pkgver = 3
-    pkgrel = 1
-    url = https://github.com/random-archer/mkinitcpio-systemd-tool
-    arch = any
-    license = Apache
-    makedepends = git
-    depends = mkinitcpio
-    depends = systemd
-    optdepends = cryptsetup
-    optdepends = dropbear
-    optdepends = mc
-    backup = etc/mkinitcpio.d/crypttab
-    backup = etc/systemd/network/initrd-network.network
-    backup = etc/systemd/system/initrd-build.sh
-    backup = etc/systemd/system/initrd-cryptsetup.service
-    backup = etc/systemd/system/initrd-debug-progs.service
-    backup = etc/systemd/system/initrd-debug-shell.service
-    backup = etc/systemd/system/initrd-dropbear.service
-    backup = etc/systemd/system/initrd-emergency.service
-    backup = etc/systemd/system/initrd-network.service
-    backup = etc/systemd/system/initrd-shell.service
-    backup = etc/systemd/system/initrd-shell.sh
-    source = mkinitcpio-systemd-tool::git+https://github.com/random-archer/mkinitcpio-systemd-tool.git#tag=v3
-    md5sums = SKIP
+	pkgdesc = Provisioning tool for systemd in initramfs (systemd-tool)
+	pkgver = 4
+	pkgrel = 1
+	url = https://github.com/random-archer/mkinitcpio-systemd-tool
+	arch = any
+	license = Apache
+	makedepends = git
+	depends = mkinitcpio
+	depends = systemd
+	optdepends = cryptsetup: required by initrd-cryptsetup.service
+	optdepends = dropbear: required by initrd-dropbear.service
+	optdepends = mc: required by initrd-debug-progs.service
+	conflicts = mkinitcpio-dropbear
+	conflicts = mkinitcpio-tinyssh
+	backup = etc/mkinitcpio.d/crypttab
+	backup = etc/systemd/network/initrd-network.network
+	backup = etc/systemd/system/initrd-build.sh
+	backup = etc/systemd/system/initrd-cryptsetup.service
+	backup = etc/systemd/system/initrd-debug-progs.service
+	backup = etc/systemd/system/initrd-debug-shell.service
+	backup = etc/systemd/system/initrd-dropbear.service
+	backup = etc/systemd/system/initrd-emergency.service
+	backup = etc/systemd/system/initrd-network.service
+	backup = etc/systemd/system/initrd-shell.service
+	backup = etc/systemd/system/initrd-shell.sh
+	source = git+https://github.com/random-archer/mkinitcpio-systemd-tool.git#tag=v4
+	md5sums = SKIP
 
 pkgname = mkinitcpio-systemd-tool
+

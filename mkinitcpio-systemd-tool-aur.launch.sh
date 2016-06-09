@@ -73,14 +73,15 @@ do_version_proper() {
     echo "// do_version_proper"
     
     local suno=""
+    local user="nobody"
     if is_root ; then
-        chown -R nobody $location
-        suno="sudo -u nobody"
+        chown -R $user $location
+        suno="sudo -u $user"
     fi
   
-    $suno makepkg --log --cleanbuild --noarchive --force
+    $suno makepkg --cleanbuild --noarchive --force   --noconfirm
 
-    $suno makepkg --log --printsrcinfo > .SRCINFO
+    $suno makepkg --printsrcinfo > .SRCINFO
                         
 }
 
