@@ -6,14 +6,14 @@
 pkgbase=virtualbox-modules-mainline
 pkgname=('virtualbox-host-modules-mainline' 'virtualbox-guest-modules-mainline')
 pkgver=5.0.20
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
-depends=('linux-mainline>=4.6rc1' 'linux-mainline<4.7rc1')
-makedepends=('dkms' 'linux-mainline-headers>=4.6rc1' 'linux-mainline-headers<4.7rc1' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver")
+depends=('linux-mainline>=4.7rc1' 'linux-mainline<4.8rc1')
+makedepends=('dkms' 'linux-mainline-headers>=4.7rc1' 'linux-mainline-headers<4.8rc1' "virtualbox-host-dkms>=$pkgver" "virtualbox-guest-dkms>=$pkgver")
 # remember to also adjust the .install files and the package deps below
-_extramodules=extramodules-4.6-mainline
+_extramodules=extramodules-4.7-mainline
 
 prepare() {
   _kernver=$(cat /usr/lib/modules/$_extramodules/version)
@@ -25,12 +25,18 @@ prepare() {
 
   echo "dkms_tree='$srcdir/dkms'" > dkms.conf
 
-  # workaround to patch for linux 4.6
+  # add patches here if needed
   rm -r $srcdir/dkms/vboxhost/${pkgver}_OSE/source
   cp -r /usr/src/vboxhost-${pkgver}_OSE $srcdir/dkms/vboxhost/${pkgver}_OSE/source
 
+  cp ../VBoxNetAdp-linux.c $srcdir/dkms/vboxhost/${pkgver}_OSE/source/vboxnetadp/linux/VBoxNetAdp-linux.c
+  
   rm -r $srcdir/dkms/vboxguest/${pkgver}_OSE/source
   cp -r /usr/src/vboxguest-${pkgver}_OSE $srcdir/dkms/vboxguest/${pkgver}_OSE/source
+
+  cp ../vbox_main.c $srcdir/dkms/vboxguest/${pkgver}_OSE/source/vboxvideo/vbox_main.c
+  cp ../vbox_mode.c $srcdir/dkms/vboxguest/${pkgver}_OSE/source/vboxvideo/vbox_mode.c
+  cp ../vbox_drv.h $srcdir/dkms/vboxguest/${pkgver}_OSE/source/vboxvideo/vbox_drv.h
 
   cd $srcdir
 }
@@ -48,7 +54,7 @@ build() {
 package_virtualbox-host-modules-mainline(){
   _kernver="$(cat /usr/lib/modules/$_extramodules/version)"
   pkgdesc='Host kernel modules for VirtualBox running under linux-mainline'
-  depends=('linux-mainline>=4.6rc1' 'linux-mainline<4.7rc1')
+  depends=('linux-mainline>=4.7rc1' 'linux-mainline<4.8rc1')
   provides=("virtualbox-host-modules")
   conflicts=('virtualbox-modules-mainline')
   install=virtualbox-host-modules-mainline.install
@@ -63,7 +69,7 @@ package_virtualbox-guest-modules-mainline(){
   _kernver="$(cat /usr/lib/modules/$_extramodules/version)"
   pkgdesc='Guest kernel modules for VirtualBox running under linux-mainline'
   license=('GPL')
-  depends=('linux-mainline>=4.6rc1' 'linux-mainline<4.7rc1')
+  depends=('linux-mainline>=4.7rc1' 'linux-mainline<4.8rc1')
   provides=("virtualbox-guest-modules")
   conflicts=('virtualbox-modules-mainline')
   install=virtualbox-guest-modules-mainline.install

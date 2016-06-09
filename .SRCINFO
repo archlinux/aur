@@ -1,23 +1,23 @@
 pkgbase = virtualbox-modules-mainline
 	pkgver = 5.0.20
-	pkgrel = 1
+	pkgrel = 2
 	url = http://virtualbox.org
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = dkms
-	makedepends = linux-mainline-headers>=4.6rc1
-	makedepends = linux-mainline-headers<4.7rc1
+	makedepends = linux-mainline-headers>=4.7rc1
+	makedepends = linux-mainline-headers<4.8rc1
 	makedepends = virtualbox-host-dkms>=5.0.20
 	makedepends = virtualbox-guest-dkms>=5.0.20
-	depends = linux-mainline>=4.6rc1
-	depends = linux-mainline<4.7rc1
+	depends = linux-mainline>=4.7rc1
+	depends = linux-mainline<4.8rc1
 
 pkgname = virtualbox-host-modules-mainline
 	pkgdesc = Host kernel modules for VirtualBox running under linux-mainline
 	install = virtualbox-host-modules-mainline.install
-	depends = linux-mainline>=4.6rc1
-	depends = linux-mainline<4.7rc1
+	depends = linux-mainline>=4.7rc1
+	depends = linux-mainline<4.8rc1
 	provides = virtualbox-host-modules
 	conflicts = virtualbox-modules-mainline
 
@@ -25,8 +25,8 @@ pkgname = virtualbox-guest-modules-mainline
 	pkgdesc = Guest kernel modules for VirtualBox running under linux-mainline
 	install = virtualbox-guest-modules-mainline.install
 	license = GPL
-	depends = linux-mainline>=4.6rc1
-	depends = linux-mainline<4.7rc1
+	depends = linux-mainline>=4.7rc1
+	depends = linux-mainline<4.8rc1
 	provides = virtualbox-guest-modules
 	conflicts = virtualbox-modules-mainline
 
