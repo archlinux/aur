@@ -61,11 +61,11 @@ then
     qemu_md5sums["x86"]='a7c2b6ca53fa166f0c06ec76cc5edd7d'
 fi
 
-source+=("$PROOT_LINK/proot-$NORM_ARCH")
-md5sums+=("${proot_md5sums[$NORM_ARCH]}")
-
 for archh in ${ARCH_LIST[@]}
 do
+    source+=("$PROOT_LINK/proot-$archh")
+    md5sums+=("${proot_md5sums[$archh]}")
+
     if [ "$archh" != "$NORM_ARCH" ]
     then
         source+=("${QEMU_LINK}/qemu-${NORM_ARCH}-static-$archh")
@@ -107,7 +107,10 @@ package() {
     echo "Installing proot static binaries"
     cd "$srcdir"
     install -d -m 755 "${pkgdir}/opt/proot"
-    install -m 755 proot-$NORM_ARCH ${pkgdir}/opt/proot/proot-$NORM_ARCH
+    for archh in ${ARCH_LIST[@]}
+    do
+        install -m 755 proot-$archh ${pkgdir}/opt/proot/proot-$archh
+    done
 
     echo "Installing qemu static binaries"
     install -d -m 755 "${pkgdir}/opt/qemu"
