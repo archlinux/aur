@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=halibut  
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="free document preparation system"
 url="http://www.chiark.greenend.org.uk/~sgtatham/halibut/"
 arch=('i686' 'x86_64')
@@ -9,7 +9,6 @@ license=('custom:MIT')
 depends=('glibc')
 source=(http://www.chiark.greenend.org.uk/~sgtatham/$pkgname/$pkgname-$pkgver.tar.gz)
 md5sums=('bd2821b7a124b4b9aa356e12f09c4cb2')
-install=halibut.install
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
