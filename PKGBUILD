@@ -1,4 +1,4 @@
-# Maintainer: Johann Weging
+# Maintainer: Johann Weging <johann@weging.com>
 
 pkgname=godef-git
 pkgver=330.20160527
