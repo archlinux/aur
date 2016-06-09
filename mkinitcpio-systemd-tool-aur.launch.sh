@@ -33,8 +33,7 @@ do_provision_proper() {
         chown -R nobody $location
         suno="sudo -u nobody"
     fi
-    $suno makepkg --log --cleanbuild --install --force
-    $suno makepkg --printsrcinfo > .SRCINFO
+    $suno makepkg --log --cleanbuild --force
 }
 
 do_provision_simple() {
@@ -79,7 +78,7 @@ do_version_proper() {
         suno="sudo -u $user"
     fi
   
-    $suno makepkg --cleanbuild --noarchive --force   --noconfirm
+    $suno makepkg --cleanbuild --noarchive --force
 
     $suno makepkg --printsrcinfo > .SRCINFO
                         
