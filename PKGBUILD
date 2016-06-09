@@ -3,7 +3,7 @@
 pkgname=emacs-identica-mode
 _realname=identica-mode
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Emacs mode for laconi.ca microblogging service."
 arch=('any')
 url="http://git.savannah.gnu.org/cgit/${_realname}.git"
@@ -12,7 +12,7 @@ depends=('emacs' 'curl' 'wget')
 makedepends=('texinfo')
 install=${_realname}.install
 source=("http://git.savannah.gnu.org/cgit/${_realname}.git/snapshot/${_realname}-$pkgver.tar.gz")
-md5sums=('cffea13b5e777319c5867f7800bcb36a')
+md5sums=('4811518cc475a114bc84b504c6ada34f')
 
 build() {
   cd $srcdir/${_realname}-$pkgver
