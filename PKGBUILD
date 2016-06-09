@@ -1,7 +1,9 @@
+# $Id: PKGBUILD 269142 2016-06-08 15:50:19Z andyrtr $
+# Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-lts-selinux
 _srcname=linux-4.4
-pkgver=4.4.12
+pkgver=4.4.13
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -19,7 +21,7 @@ source=(https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.{xz,sign}
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
             'SKIP'
-            '1eb89dddd7e89caf2df17470b4b15da451ef1aa97f8e1a88578a8ee2da75729a'
+            'be42ec5fecf89c6f730f4d7af7db1dac56ac8f6451aed9246a500302ad8f3899'
             'SKIP'
             'a77182fa8011f68567f857e88b140f0164c1c2fb8aae46e20f885a885e295079'
             '531d6394acb1c27e00ee74cbb62386a6d058f5381746b2b971da44cf7bb530bb'
