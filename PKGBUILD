@@ -1,11 +1,12 @@
-# Maintainer: AkiraYB <brunoyb!outlook,com>
+# Contributor: AkiraYB <brunoyb!outlook,com>
+# Maintainer: Stefan Husmann <Stefan-Husmann@t-online.de>
 
 pkgname=emacs-pov-mode
 pkgver=v3.3
 _pkgver=3.3
 _imname=povray-imenu
 _imver=3.6
-pkgrel=1
+pkgrel=3
 pkgdesc='POV-Ray mode for Emacs'
 arch=('any')
 url='http://xahlee.org/3d/povray_emacs.html'
@@ -13,9 +14,10 @@ license=('GPL3')
 depends=('emacs')
 install="${pkgname}.install"
 changelog="${pkgname}.changelog"
-source=("http://www.imagico.de/imenu/${_imname}-${_imver}.tar.gz" 'git://gitorious.org/pov-mode/pov-mode.git')
+source=("http://www.imagico.de/imenu/${_imname}-${_imver}.tar.gz" 'git+https://github.com/melmothx/pov-mode')
+sha256sums=('c99e00f3ba1de305b9859af43be4fbb4caf54426479461b9922dd7b2989c038b'
+            'SKIP')
 noextract=("${_imname}-${_imver}.tar.gz")
-sha256sums=('c99e00f3ba1de305b9859af43be4fbb4caf54426479461b9922dd7b2989c038b' 'SKIP')
 _gitname=pov-mode
 
 pkgver() {
