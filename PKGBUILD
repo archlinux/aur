@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=skribilo-git
 pkgver=v0.9.3_7_g3693635r985
-pkgrel=1
+pkgrel=2
 pkgdesc="The Ultimate Document Programming Framework from git"
 arch=('any')
 url="http://www.nongnu.org/skribilo/"
@@ -10,7 +10,6 @@ depends=('bash')
 makedepends=('git' 'guile-reader-git' 'ploticus')
 provides=('skribilo')
 conflicts=('skribilo')
-install=skribilo.install
 source=("git://git.sv.gnu.org/skribilo.git")
 _gitname="${pkgname%-git}"
 md5sums=('SKIP')
