@@ -3,26 +3,27 @@
 
 _pkgname=efl
 pkgname=$_pkgname-git
-pkgver=1.17.99.47591.gab23a53
+pkgver=1.17.99.48513.g1a34d89
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version"
 arch=('i686' 'x86_64')
 url="http://www.enlightenment.org"
 license=('BSD' 'LGPL2.1' 'GPL2' 'custom')
 depends=('avahi' 'bullet' 'curl' 'fontconfig' 'fribidi' 'gst-plugins-base-libs' 'luajit' 'libexif'
-         'libgl' 'libinput' 'libpulse' 'libwebp' 'libxcomposite' 'libxcursor' 'libxinerama'
-         'libxkbcommon' 'libxp' 'libxrandr' 'libxss' 'libunwind' 'openjpeg' 'wayland')
+         'libgl' 'libinput' 'libpulse' 'libspectre' 'libraw' 'librsvg' 'libwebp' 'libxcomposite'
+         'libxcursor' 'libxinerama' 'libxkbcommon' 'libxp' 'libxrandr' 'libxss' 'libunwind'
+         'openjpeg' 'poppler' 'wayland')
 makedepends=('git' 'python2')
-optdepends=('evas_generic_loaders-git: More video/graphic/icon loaders for Evas'
-            'geoclue: For elocation'
-            'gst-plugins-base: Access more types of video in Emotion'
-            'gst-plugins-good: Access more types of video in Emotion'
-            'gst-plugins-bad: Access more types of video in Emotion'
-            'gst-plugins-ugly: Access more types of video in Emotion'
-            'gst-libav: Access video with ffmpeg/libav in Emotion'
+optdepends=('geoclue: For elocation'
+            'gst-plugins-base: Video and thumbnail codecs'
+            'gst-plugins-good: Video and thumbnail codecs'
+            'gst-plugins-bad: Video and thumbnail codecs'
+            'gst-plugins-ugly: Video and thumbnail codecs'
+            'gst-libav: Video and thumbnails with ffmpeg/libav'
+            'libreoffice: Office document thumbnails'
             'python2: Compare Eina benchmarks')
-provides=("$_pkgname=$pkgver" "elementary=$pkgver" "elementary-git=$pkgver")
-conflicts=("$_pkgname" 'elementary' 'elementary-git' 'elementary_test' 'elementary_test-git')
+provides=("$_pkgname=$pkgver" elementary{,-git}=$pkgver "evas_generic_loaders=$pkgver")
+conflicts=("$_pkgname" elementary{,-git} elementary_test{,-git} evas_generic_loaders{,-git})
 options=('debug')
 source=("git://git.enlightenment.org/core/$_pkgname.git")
 sha256sums=('SKIP')
@@ -65,7 +66,13 @@ build() {
 package() {
   cd $_pkgname
 
+# Workaround for https://phab.enlightenment.org/T3778
+  install -d "$pkgdir/usr/lib/evas/utils/"
+
   make -j1 DESTDIR="$pkgdir" install
+
+# Workaround for https://phab.enlightenment.org/T3848
+  install -m755 src/generic/evas/pdf/evas_generic_pdf_loader.libreoffice "$pkgdir/usr/lib/evas/utils/"
 
 # compile python files
   python2 -m compileall -q "$pkgdir"

@@ -1,7 +1,7 @@
 pkgbase = efl-git
 	pkgdesc = Enlightenment Foundation Libraries - Development version
-	pkgver = 1.17.99.47007.gfa344ea
-	pkgrel = 2
+	pkgver = 1.17.99.48513.g1a34d89
+	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
 	arch = x86_64
@@ -22,6 +22,9 @@ pkgbase = efl-git
 	depends = libgl
 	depends = libinput
 	depends = libpulse
+	depends = libspectre
+	depends = libraw
+	depends = librsvg
 	depends = libwebp
 	depends = libxcomposite
 	depends = libxcursor
@@ -32,23 +35,27 @@ pkgbase = efl-git
 	depends = libxss
 	depends = libunwind
 	depends = openjpeg
+	depends = poppler
 	depends = wayland
-	optdepends = evas_generic_loaders-git: More video/graphic/icon loaders for Evas
 	optdepends = geoclue: For elocation
-	optdepends = gst-plugins-base: Access more types of video in Emotion
-	optdepends = gst-plugins-good: Access more types of video in Emotion
-	optdepends = gst-plugins-bad: Access more types of video in Emotion
-	optdepends = gst-plugins-ugly: Access more types of video in Emotion
-	optdepends = gst-libav: Access video with ffmpeg/libav in Emotion
+	optdepends = gst-plugins-base: Video and thumbnail codecs
+	optdepends = gst-plugins-good: Video and thumbnail codecs
+	optdepends = gst-plugins-bad: Video and thumbnail codecs
+	optdepends = gst-plugins-ugly: Video and thumbnail codecs
+	optdepends = gst-libav: Video and thumbnails with ffmpeg/libav
+	optdepends = libreoffice: Office document thumbnails
 	optdepends = python2: Compare Eina benchmarks
-	provides = efl=1.17.99.47007.gfa344ea
-	provides = elementary=1.17.99.47007.gfa344ea
-	provides = elementary-git=1.17.99.47007.gfa344ea
+	provides = efl=1.17.99.48513.g1a34d89
+	provides = elementary=1.17.99.48513.g1a34d89
+	provides = elementary-git=1.17.99.48513.g1a34d89
+	provides = evas_generic_loaders=1.17.99.48513.g1a34d89
 	conflicts = efl
 	conflicts = elementary
 	conflicts = elementary-git
 	conflicts = elementary_test
 	conflicts = elementary_test-git
+	conflicts = evas_generic_loaders
+	conflicts = evas_generic_loaders-git
 	options = debug
 	source = git://git.enlightenment.org/core/efl.git
 	sha256sums = SKIP
