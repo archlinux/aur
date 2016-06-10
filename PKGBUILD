@@ -2,16 +2,17 @@
 
 pkgname=rstudio-desktop-git
 _gitname=rstudio
-pkgver=0.99.849
+pkgver=0.99.1214
 _gwtver=2.7.0
 _ginver=1.5
+_clangver=3.8.0
 pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('i686' 'x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
-depends=('boost-libs>=1.5' 'r>=2.11.1' 'hicolor-icon-theme' 'shared-mime-info' 'qt5-webkit' 'hunspell-en' 'mathjax' 'pandoc')
-makedepends=('git' 'cmake>=2.8' 'boost>=1.5' 'java-runtime' 'apache-ant' 'unzip' 'openssl' 'pango' 'libcups' 'qt5-svg' 'pam' 'wget')
+depends=('boost-libs>=1.5' 'r>=2.11.1' 'hicolor-icon-theme' 'shared-mime-info' 'hunspell-en' 'mathjax' 'pandoc'  'qt5-webkit')
+makedepends=('git' 'cmake>=2.8' 'boost>=1.5' 'java-runtime' 'apache-ant' 'unzip' 'openssl' 'pango' 'libcups' 'pam' 'wget')
 optdepends=('git: for git support'
 	    'subversion: for subversion suuport'
 	    'openssh-askpass: for a git ssh access')
@@ -64,12 +65,15 @@ package() {
     # Install the license
     install -Dm 644 ../COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
     # Remove unnecessary directories
-    rm -rf "${pkgdir}/usr/lib/rstudio/resources/"{dictionaries,mathjax-23,libclang}
+    rm -rf "${pkgdir}/usr/lib/rstudio/resources/"{dictionaries,mathjax-23}
     # Creaate symlinks
     install -d "${pkgdir}/usr/bin"
     ln -sf /usr/lib/rstudio/bin/rstudio "${pkgdir}/usr/bin/rstudio"
     ln -sf /usr/share/myspell/dicts "${pkgdir}/usr/lib/rstudio/resources/dictionaries"
     ln -sf /usr/share/mathjax "${pkgdir}/usr/lib/rstudio/resources/mathjax-23"
+    install -d "${pkgdir}/usr/lib/rstudio/resources/libclang/3.5"
+    ln -sf /usr/lib/libclang.so "${pkgdir}/usr/lib/rstudio/resources/libclang/3.5/libclang.so"
+    ln -sf /usr/lib/clang/$_clangver/include "${pkgdir}/usr/lib/rstudio/resources/libclang/builtin-headers/3.5"
     install -d "${pkgdir}/usr/lib/rstudio/bin/pandoc"
     ln -sf /usr/bin/pandoc "${pkgdir}/usr/lib/rstudio/bin/pandoc/pandoc"
     ln -sf /usr/bin/pandoc-citeproc "${pkgdir}/usr/lib/rstudio/bin/pandoc/pandoc-citeproc"
