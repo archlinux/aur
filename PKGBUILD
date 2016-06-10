@@ -1,6 +1,6 @@
 # Maintainer: Thomas Wood <grand.edgemaster@gmail.com>
 pkgname=emojione-color-font
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc="A color and B&W emoji SVG-in-OpenType font with support for ZWJ, skin tone modifiers and country flags."
 arch=('any')
@@ -29,4 +29,4 @@ package() {
   install -Dm644 fontconfig/56-emojione-color.conf "$pkgdir"/etc/fonts/conf.avail/56-$pkgname.conf
 }
 
-md5sums=('92791292e93322c0126363f46a16d4bc')
+md5sums=('e778e8b9b7047ecc8d66010bead99ada')
