@@ -1,3 +1,6 @@
+2016-06-10 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.0.5.5:
+    Hopefully fixed another Windows false-positive introduced in 2.0.5.4.
 2016-06-09 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.0.5.4:
     [!] Added Steam Summer Sale 2016 with appID of 480730 to Blacklist and built-in GlobalBlacklist.
