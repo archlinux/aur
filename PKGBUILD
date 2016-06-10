@@ -6,7 +6,7 @@
 
 pkgname=xf86-video-vmware-git
 _realpkgname=xf86-video-vmware
-pkgver=13.0.2.r30.g1e443c4
+pkgver=13.0.2.r40.gd5550b7
 pkgrel=1
 pkgdesc="X.org vmware video driver. Git version"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ provides=("${_realpkgname}")
 depends=('libdrm>=2.4.41' 'systemd' 'mesa')
 optdepends=('vmwgfx-git: git version kernel module')
 makedepends=('xorg-server-devel' 'X-ABI-VIDEODRV_VERSION>=21.0'  )
-conflicts=('xorg-server<1.16.0' 'xf86-video-vmware' 'X-ABI-VIDEODRV_VERSION<20.0' 'X-ABI-VIDEODRV_VERSION>=22.0')
+conflicts=('xorg-server<1.16.0' 'xf86-video-vmware' 'X-ABI-VIDEODRV_VERSION<22.0' 'X-ABI-VIDEODRV_VERSION>=24.0')
 license=('custom')
 install=xf86-video-vmware-git.install
 
