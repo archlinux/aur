@@ -3,7 +3,7 @@
 
 pkgname=latex-mk
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="tool for managing LaTeX projects"
 arch=('any')
 url="http://latex-mk.sourceforge.net"
@@ -20,7 +20,6 @@ source=(http://downloads.sourceforge.net/latex-mk/$pkgname-$pkgver.tar.gz
         ${pkgname}.profile)
 md5sums=('6a9fd9ec2de0169297c1d0228a41fa2b'
          '3fb6cd18ba64619cfb658fc92d85db92')
-install=latex-mk.install
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
