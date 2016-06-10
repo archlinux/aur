@@ -2,17 +2,22 @@
 # namcap says dependency 'libibmad' is not needed, but without it, configure fails with "cannot find infiniband/mad.h", provided by libibmad, and mstflint-4.0.1/mtcr_ul/mtcr_ib_ofed.c does include "infiniband/mad.h"
 
 pkgname=mstflint
-pkgver=4.3.0
-_pkgver_subver=1.49
-_pkgver_commit=g9b9af70
+pkgver=4.4.0
 pkgrel=1
 pkgdesc='OpenFabrics Alliance firmware burning application for Mellanox HCA/NIC cards'
 arch=('x86_64' 'i686')
-url=('https://www.openfabrics.org/index.php/overview.html')
+url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('bash' 'zlib' 'libibmad')
-source=("https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}-${_pkgver_subver}.${_pkgver_commit}.tar.gz")
-md5sums=('65d0de5cacccf9ae76d3c1d650fe875b')
+source=("https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+        "c++11Compatibility.patch")
+md5sums=('8846152be0581c76396e60e94e953c59'
+         '140ded3004a700f0d59a9ecfea89ed0b')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p1 -i ${srcdir}/c++11Compatibility.patch
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
