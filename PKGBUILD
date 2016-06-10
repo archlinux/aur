@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=guile-xcb-git
 pkgver=r85.ec4712e
-pkgrel=3
+pkgrel=4
 pkgdesc="Windowmanagement environment for guile"
 arch=('any')
 url="http://www.markwitmer.com/guile-xcb/guile-wm.html"
@@ -9,7 +9,6 @@ license=('GPL')
 makedepends=('git')
 provides=('guile-xcb')
 conflicts=('guile-xcb')
-install=$pkgname.install
 source=("git+https://github.com/mwitmer/guile-xcb")
 md5sums=('SKIP')
 _gitname="guile-xcb"
