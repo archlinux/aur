@@ -1,0 +1,18 @@
+pkgbase = libcss-git
+	pkgdesc = CSS parser and selection engine
+	pkgver = 0.6.0.r0.gbced7d7
+	pkgrel = 1
+	url = http://www.netsurf-browser.org/projects/libcss/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = netsurf-buildsystem-git
+	depends = libparserutils-git
+	depends = libwapcaplet-git
+	provides = libcss
+	conflicts = libcss
+	source = git://git.netsurf-browser.org/libcss.git
+	sha256sums = SKIP
+
+pkgname = libcss-git
+
