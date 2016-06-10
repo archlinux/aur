@@ -1,0 +1,16 @@
+pkgbase = libutf8proc-git
+	pkgdesc = C library for processing UTF-8 encoded Unicode strings
+	pkgver = 1.3.1.2.r0.g81ce692
+	pkgrel = 1
+	url = http://git.netsurf-browser.org/libutf8proc.git/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = netsurf-buildsystem-git
+	provides = libutf8proc
+	conflicts = libutf8proc
+	source = git://git.netsurf-browser.org/libutf8proc.git
+	sha256sums = SKIP
+
+pkgname = libutf8proc-git
+
