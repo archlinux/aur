@@ -9,23 +9,12 @@ pkgname=(
 )
 pkgver=8.0.01
 pkgrel=1
-epoch=
 pkgdesc="A free bitmap font with wide Unicode support (split package with accompanying utilities, TrueType, PCF and BDF versions)"
 arch=(i686 x86_64)
 url="http://unifoundry.com/"
 license=('GPL2')
-groups=()
-depends=()
+groups=('unifont')
 makedepends=('perl')
-checkdepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=(
 	"http://unifoundry.com/pub/unifont-$pkgver/unifont-$pkgver.tar.gz"
 	"http://unifoundry.com/pub/unifont-$pkgver/unifont-$pkgver.tar.gz.sig"
@@ -39,7 +28,7 @@ sha512sums=('171b8caff9d2f821fa0759a55d102edcaf23be592c0619c8148c95aac353834bf09
             'cb3e2dd2a7811b5b45bc6c01248688325279ac098da3d4064fbcbf88b60008beaf0c8500a8629b1a71692c2da0bfedba943b59695b57a293537e66ca3deca424'
             '4eb2703bea9af264a8beac2f7605666f7a96a7a36a06dcd4357ad77c99378d99a266aeb54b79bd14a7718a3ceddd8a44b2d4d44e442c02ff4e6cb6f4035cd6a8'
             '408162c01ed2a0591ab81e1810db0c258a3b5db072ce7ea40924491797ddd0f15162b3ec01cfaa9e7adb901226610090cd5927738a1360ddadd572f7e732c0eb')
-validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33')
+validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy <com dot unifoundry at unifoundry>
 
 # _use_precompiled=1
 
@@ -98,7 +87,8 @@ build() {
 
 package_ttf-unifont() {
 	pkgdesc="A free bitmap font with wide Unicode support (TrueType version)"
-	provides=(ttf-unifont ttf-unifont-csur)
+	provides=(ttf-unifont-csur)
+	conflicts=(ttf-unifont-csur)
 	arch=(any)
 	install=ttf.install
 
@@ -125,7 +115,6 @@ package_ttf-unifont() {
 
 package_pcf-unifont() {
 	pkgdesc="A free bitmap font with wide Unicode support (PCF version)"
-	provides=(pcf-unifont)
 	arch=(any)
 
 	_pcfdir=/usr/share/fonts/misc
