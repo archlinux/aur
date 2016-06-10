@@ -9,9 +9,9 @@ url='http://www.netsurf-browser.org/'
 license=('MIT' 'GPL2')
 
 depends=('curl' 'desktop-file-utils' 'duktape' 'gtk3' 'lcms' 'libmng' 'librsvg' 
-	'libcss-git' 'libdom-git' 'libnsbmp-git' 'libnsgif-git' 'libnsutils-git'
+	'libcss-git' 'libdom-git' 'libnsbmp-git' 'libnsgif-git' 'libnsutils-git' 'libutf8proc-git'
 )
-makedepends=('inetutils' 'netsurf-buildsystem-git')
+makedepends=('inetutils' 'netsurf-buildsystem-git' 'nsgenbind-git')
 optdepends=('gstreamer0.10: In-browser video support')
 provides=('netsurf')
 conflicts=('netsurf')
