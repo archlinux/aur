@@ -2,7 +2,7 @@
 
 _pkgname=openbazaar
 pkgname=${_pkgname}-git
-pkgver=3473.b2bd4e8
+pkgver=3746.51b6d45
 pkgrel=1
 pkgdesc="Front-end Electron application for talking with the OpenBazaar daemon"
 arch=(any)
@@ -18,7 +18,7 @@ source=(
 install=${_pkgname}.install
 options=('!strip')
 provides=('openbazaar')
-replaces=('openbazaar')
+conflicts=('openbazaar')
 
 build(){
   cd $srcdir/${_pkgname}
