@@ -2,8 +2,8 @@
 # Contributor: Spider.007 <archPackage@spider007.net>
 packager="Spider.007 <archPackage@spider007.net>"
 pkgname=netatop
-pkgver=0.7
-pkgrel=2
+pkgver=1.0
+pkgrel=1
 pkgdesc="Atop network kernel module, enables network statistics in atop"
 url="http://www.atoptool.nl/"
 groups=('modules')
@@ -12,7 +12,7 @@ install='depmod.install'
 depends=('atop')
 makedepends=('linux-headers')
 source=("http://atoptool.nl/download/netatop-$pkgver.tar.gz")
-sha256sums=('d4c5a5d27e38b5a5b54b8e0dc73e6b6f75e8dea9b9279397e6f558a8e9a66987')
+sha256sums=('0bdde8315d2c6e4a1d87fd10d27659d76d07949b31f0dc5e81662e67e1d0fdd0')
 arch=('x86_64' 'i386')
 
 build() {
