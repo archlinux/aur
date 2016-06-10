@@ -1,4 +1,4 @@
-# Copied from Fedora's srptools-1.0.2-3.fc22.src.rpm
+# Copied from Fedora's srptools-1.0.3-1.fc23.src.rpm
 # Modified to follow Arch layout
 
 [Unit]
@@ -9,12 +9,12 @@ Conflicts=emergency.target emergency.service
 Requires=rdma.service
 Wants=opensm.service
 After=rdma.service opensm.service
-After=network.target remote-fs-pre.target
-Before=remote-fs.target
+After=network.target
+Before=remote-fs-pre.target
 
 [Service]
 Type=simple
 ExecStart=/usr/bin/srp_daemon.sh
 
 [Install]
-WantedBy=remote-fs.target
+WantedBy=remote-fs-pre.target
