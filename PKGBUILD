@@ -14,7 +14,7 @@ _language=Italian
 _url=https://ftp.mozilla.org/pub/firefox/releases
 
 pkgname=iceweasel-i18n-it
-pkgver=46.0.1
+pkgver=47.0
 pkgrel=1
 pkgdesc="$_language language pack for Iceweasel"
 arch=('any')
@@ -27,9 +27,9 @@ source=("$_url/$pkgver/linux-$CARCH/xpi/$_lang.xpi"
 		'brand.properties')
 
 if [ "$CARCH" = "x86_64" ]; then
-    sha512sums=('d547f53e6693e48c3ecba27e0fe4a56f552a69e12df37868e6e16d8f6b9e99dca936651ea828192bb3370685a00479eb8047300eb8b33b368e702eeb5b4400df')
+    sha512sums=('4a9e9527173e9a99462e421d5289a93df37d104863e0fd837fd7d7d8339dde3ec7f86972fc5b04469b8e15ead8c4f8e2d83e43e10dca21be86920cd7b769762e')
 else
-    sha512sums=('c1b29cdecebccda54a013d0d36c710836cf90616770bfadbb74640cae4c5c8e9c20260cfc15d1bb0d9d17257bbd85aa1ee5e4614e6d2a1b613087f3656f5a773')
+    sha512sums=('eef616b6da4ddea2e830952dd583edb1aaac5d798bb06bf45efb6c0fbfbadcb788be0341fd1c1c9ff4aee42c0e6934634c067434763ef629644090b85950e85e')
 fi
 
 sha512sums+=('ce454355d904384381e35c390dbad634d617d17387debeb00b4e737a7b4fa665b94d40762a415236519b7a44f8b2066aeab9a50a34f1155c4b272e263ce19027'
@@ -43,12 +43,17 @@ package() {
 	install -vDm644 "$srcdir/brand.properties" "$srcdir/browser/chrome/$_lang/locale/branding"
 	rm "$srcdir/brand.properties"
   
+	#sed -i -e 's/firefox/iceweasel/' "$srcdir/install.rdf"
+	#sed -i 's|Firefox|Iceweasel|
+    #     ' "$srcdir/browser/chrome/$_lang/locale/$_lang/devtools/client/sourceeditor.properties" \
+    #       "$srcdir/browser/chrome/$_lang/locale/$_lang/devtools/client/toolbox.dtd" \
+    #       "$srcdir/browser/chrome/$_lang/locale/$_lang/devtools/client/webide.dtd" \
+    #       "$srcdir/browser/chrome/$_lang/locale/$_lang/devtools/client/webide.properties"
+	#rm -rv "$srcdir/chrome/$_lang/locale/$_lang/global-platform"/{mac,win}
+
 	sed -i -e 's/firefox/iceweasel/' "$srcdir/install.rdf"
-	sed -i 's|Firefox|Iceweasel|
-         ' "$srcdir/browser/chrome/$_lang/locale/$_lang/devtools/client/sourceeditor.properties" \
-           "$srcdir/browser/chrome/$_lang/locale//$_lang/devtools/client/toolbox.dtd" \
-           "$srcdir/browser/chrome/$_lang/locale/$_lang/devtools/client/webide.dtd" \
-           "$srcdir/browser/chrome/$_lang/locale/$_lang/devtools/client/webide.properties"
+    sed -i 's|Firefox|Iceweasel|g' $(grep -rlI 'Firefox' "$srcdir")
+    sed -i 's|Iceweasel|Firefox|' "$srcdir/chrome/$_lang/locale/$_lang/global/aboutRights.dtd"
 	rm -rv "$srcdir/chrome/$_lang/locale/$_lang/global-platform"/{mac,win}
 
 	zip -r "langpack-$_lang@iceweasel.mozilla.org.xpi" .
