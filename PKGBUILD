@@ -2,7 +2,7 @@
 # Contributor: Testuser_01 <arch@nico-siebler.de>
 
 pkgname=lscolors-git
-pkgver=r194.06ccb64
+pkgver=r220.4d5aeed
 pkgrel=1
 pkgdesc="Colorize the output of the 'ls' shell command via LS_COLORS"
 url="https://github.com/trapd00r/LS_COLORS"
@@ -15,6 +15,7 @@ source=("git://github.com/trapd00r/$_repo.git")
 md5sums=("SKIP")
 
 pkgver() {
+  cd $_repo
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
