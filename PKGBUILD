@@ -9,7 +9,7 @@
 
 pkgname=popcorntime
 pkgver=0.3.9
-pkgrel=4
+pkgrel=5
 pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
 arch=('i686' 'x86_64')
 url="http://popcorntime.sh/"
@@ -34,7 +34,7 @@ optdepends=('net-tools: vpn.ht client')
 options=('!strip')
 #install="popcorntime.install"
 # Needed variables for sources downloads
-_commit_hash="4ba2060d19357ed85f16b862b70a0625b4286838"
+_commit_hash="65fc7c322bf92c5b526c1c1042e87ce0d0e6e085"
 _pkgname="popcorn-desktop"
 source=(
 	"${_pkgname}_${pkgver}::git+https://github.com/popcorn-official/popcorn-desktop/#commit=${_commit_hash}"
@@ -53,12 +53,11 @@ _bpath="${_srcdir}/build/Popcorn-Time/${_platform}"
 prepare() {
 	cd "${srcdir}/${_srcdir}"
 
-	msg2 "Fix missing gulp..."
-	npm install gulp
-	msg2 "Installing npm dependencies..."
+	msg2 "Installing npm and bower dependencies..."
 	npm install
-	msg2 "Installing bower dependencies..."
-	bower install
+
+	msg2 "Fixing wrong gulp installation issue..."
+	npm install gulp
 }
 
 build() {
