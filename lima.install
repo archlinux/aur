@@ -1,0 +1,11 @@
+post_install () {
+    echo "To start the Lima service, run \`systemctl --user start lima.service\`."
+    echo "To start automatically on login, run \`systemctl --user enable lima.service\`."
+    echo "For more information, run \`lima help\` and \`lima readme\`."
+}
+
+post_remove () {
+    echo "If you intend to purge all Lima user data from your system, please remove the"
+    echo "'~/.local/share/lima' directory. Note that you will lose local files that have"
+    echo "not been uploaded to your Lima yet."
+}

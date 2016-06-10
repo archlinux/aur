@@ -1,0 +1,18 @@
+pkgbase = lima
+	pkgdesc = Personal Cloud software
+	pkgver = 1.1.0beta
+	pkgrel = 1
+	url = https://meetlima.com
+	install = lima.install
+	arch = x86_64
+	license = custom
+	makedepends = prelink
+	depends = python2
+	depends = fuse
+	source = https://static.meetlima.com/linux-client/lima-1.1.0beta-amd64.tgz
+	source = lima.service
+	sha256sums = 1b845f976c127c9abe0f46c51347e9c74afd69a1cda35289f470c861ca92f8db
+	sha256sums = 68662c1437f88403f38b0e80da3b2b546512fe524b791cba27791cd2d5033e7c
+
+pkgname = lima
+

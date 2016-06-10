@@ -1,0 +1,10 @@
+[Unit]
+Description=Lima Personal Cloud
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/lima start nobg
+ExecStop=/usr/bin/lima stop
+
+[Install]
+WantedBy=default.target
