@@ -3,7 +3,7 @@
 # Contributor: Leo von Klenze <aur@leo.von-klenze.de>
 
 pkgname=jquery
-pkgver=2.2.4
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Cross-platform JavaScript library designed to simplify the client-side scripting of HTML"
 arch=('any')
