@@ -1,4 +1,6 @@
 # Maintainer: Ivy Foster <ivy.foster@gmail.com>
+# Contributor: Alexander Rodseth <rodseth@gmail.com>
+# Contributor: Torjus Haakestad <torjuspuz@gmail.com>
 
 pkgname='libhubbub-git'
 pkgver=0.3.3.r0.g73071c0
