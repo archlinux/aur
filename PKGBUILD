@@ -21,13 +21,13 @@ pkgver() {
 }
 
 build() {
-    cd $_pkgname
+	cd $_pkgname
 	./bootstrap.sh
-    ./configure --prefix=/usr --without-gtk --sbindir=/usr/bin
-    make
+	./configure --prefix=/usr --without-gtk --sbindir=/usr/bin
+	make
 }
 
 package() {
-    cd $_pkgname
-    make DESTDIR="$pkgdir" install
+	cd $_pkgname
+	make DESTDIR="$pkgdir" install
 }
