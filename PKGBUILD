@@ -32,11 +32,13 @@ build() {
 
   cd "$srcdir/$_srcname/build"
 
-  cmake .. \
+  cmake . \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DLIB_INSTALL_DIR=lib \
         -DBUILD_TESTING=off \
+        -DSTANDARD_CONFIG_FILE=/etc/fancontrol \
+        -DSTANDARD_SERVICE_NAME=fancontrol \
         -DBUILD_GUI=off \
         -DBUILD_KCM=on \
         -DBUILD_HELPER=off \
