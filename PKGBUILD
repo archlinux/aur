@@ -1,7 +1,7 @@
 # Maintainer: Romain Labolle <romain@labolle.eu>
 pkgname=libit
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy to use yet efficient tools for C for signal processing, coding, or scientific code in general"
 arch=(i686 x86_64)
 url="http://libit.sf.net/"
