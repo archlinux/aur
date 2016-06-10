@@ -1,6 +1,6 @@
 pkgbase = svfs
 	pkgdesc = The Swift Virtual File System for hubiC (ovh)
-	pkgver = 0.6.3
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/ovh/svfs
 	arch = i686
@@ -13,16 +13,16 @@ pkgbase = svfs
 	depends = ruby
 	provides = svfs
 	conflicts = svfs-git
-	source_i686 = https://github.com/ovh/svfs/releases/download/v0.6.3/svfs_0.6.3_386.deb
-	md5sums_i686 = ec3f7cd21590e650af53cbb6d93d8c6d
-	source_x86_64 = https://github.com/ovh/svfs/releases/download/v0.6.3/svfs_0.6.3_amd64.deb
-	md5sums_x86_64 = 581d67ee6a7464b1d112c0b6bfacef41
-	source_arm = https://github.com/ovh/svfs/releases/download/v0.6.3/svfs_0.6.3_armel.deb
-	md5sums_arm = 3f9f9de3553ead49794643432b38e56e
-	source_armv6h = https://github.com/ovh/svfs/releases/download/v0.6.3/svfs_0.6.3_armel.deb
-	md5sums_armv6h = 3f9f9de3553ead49794643432b38e56e
-	source_armv7h = https://github.com/ovh/svfs/releases/download/v0.6.3/svfs_0.6.3_armel.deb
-	md5sums_armv7h = 3f9f9de3553ead49794643432b38e56e
+	source_i686 = https://github.com/ovh/svfs/releases/download/v0.7.0/svfs_0.7.0_386.deb
+	md5sums_i686 = 47c446eaa1afc70c5185178190cc48e6
+	source_x86_64 = https://github.com/ovh/svfs/releases/download/v0.7.0/svfs_0.7.0_amd64.deb
+	md5sums_x86_64 = d602f527c74975c52059ee939aa11678
+	source_arm = https://github.com/ovh/svfs/releases/download/v0.7.0/svfs_0.7.0_armel.deb
+	md5sums_arm = 8c2ea8e68ace9ea2b321d63cc324f975
+	source_armv6h = https://github.com/ovh/svfs/releases/download/v0.7.0/svfs_0.7.0_armel.deb
+	md5sums_armv6h = 8c2ea8e68ace9ea2b321d63cc324f975
+	source_armv7h = https://github.com/ovh/svfs/releases/download/v0.7.0/svfs_0.7.0_armel.deb
+	md5sums_armv7h = 8c2ea8e68ace9ea2b321d63cc324f975
 
 pkgname = svfs
 
