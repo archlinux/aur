@@ -3,7 +3,7 @@
 pkgname='libnsgif-git'
 pkgver=0.1.3.r0.gee6294d
 pkgrel=1
-pkgdesc='Decoding library for BMP and ICO image file formats'
+pkgdesc='Decoding library for the gif image file format'
 url='http://www.netsurf-browser.org/projects/libnsgif/'
 license=('MIT')
 
