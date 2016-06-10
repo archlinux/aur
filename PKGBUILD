@@ -4,13 +4,13 @@
 # Maintainer: Thomas Baechler <thomas@archlinux.org>
 
 pkgbase=linux-userns
-_srcname=linux-4.5
-pkgver=4.5.4
+_srcname=linux-4.6
+pkgver=4.6.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
@@ -20,18 +20,20 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
+        'change-default-console-loglevel.patch'
         'ubuntu-unprivileged-overlayfs.patch'
-        'change-default-console-loglevel.patch')
+        '0001-linux-4.6-rtlwifi-fix-atomic.patch')
 
-sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
+sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            '6a9cfe691ac77346c48b7f83375a1880ebb379594de1000acad45da45d711e42'
+            '0dc509a19c68ab547a62158bf2017965b843854b63be46ae039c37724dccca21'
             'SKIP'
-            '2355efbab340d16c1b60a7805b987a78e57266809ba6c986ceef68ef7ce71db0'
-            'cee1781f96e55a909757c4533cdacb57c3ffe6f6f01f709e8a5a837dc4a68bba'
+            '02e8b02e8cd10aa059917a489a9663e7f66bdf12c5ae8a1e0369bb2862da6b68'
+            'd59014b8f887c6aa9488ef5ff9bc5d4357850a979f3ff90a2999bbe24e5c6e15'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
+            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '01a6d59a55df1040127ced0412f44313b65356e3c680980210593ee43f2495aa'
-            '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99')
+            'ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -52,6 +54,10 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  # fix rtlwifi atomic
+  # https://bugs.archlinux.org/task/49401
+  patch -p1 -i "${srcdir}/0001-linux-4.6-rtlwifi-fix-atomic.patch"
 
   # enable unprivileged overlayfs
   patch -p1 -i "${srcdir}/ubuntu-unprivileged-overlayfs.patch"
@@ -172,7 +178,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi sound trace uapi video xen; do
+    media net pcmcia scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
@@ -253,6 +259,12 @@ _package-headers() {
     mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
     cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
   done
+
+  # add objtool for external module building and enabled VALIDATION_STACK option
+  if [ -f tools/objtool/objtool ];  then
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+  fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
