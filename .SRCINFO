@@ -1,0 +1,16 @@
+pkgbase = libnsbmp-git
+	pkgdesc = Decoding library for BMP and ICO image file formats
+	pkgver = 0.1.3.r0.ga44819c
+	pkgrel = 1
+	url = http://www.netsurf-browser.org/projects/libnsbmp/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = netsurf-buildsystem-git
+	provides = libnsbmp
+	conflicts = libnsbmp
+	source = git://git.netsurf-browser.org/libnsbmp.git
+	sha256sums = SKIP
+
+pkgname = libnsbmp-git
+
