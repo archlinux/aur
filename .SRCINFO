@@ -1,0 +1,16 @@
+pkgbase = gajim-plugin-omemo-git
+	pkgdesc = Gajim plugin for OMEMO Multi-End Message and Object Encryption.
+	pkgver = 0.5.1.r12.g8220821
+	pkgrel = 1
+	url = https://github.com/omemo/gajim-omemo
+	arch = any
+	license = GPL
+	depends = gajim
+	depends = python2-axolotl-git
+	provides = gajim-plugin-omemo
+	conflicts = gajim-plugin-omemo
+	source = git://github.com/omemo/gajim-omemo
+	sha512sums = SKIP
+
+pkgname = gajim-plugin-omemo-git
+
