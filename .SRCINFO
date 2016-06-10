@@ -1,0 +1,19 @@
+pkgbase = cmpl-bin
+	pkgdesc = A mathematical programming language and a system for mathematical programming and optimisation of linear optimisation problems.
+	pkgver = 1.10.0
+	pkgrel = 1
+	url = https://projects.coin-or.org/Cmpl
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = java-runtime
+	depends = python2
+	depends = glpk
+	depends = coin-or-cbc
+	source_i686 = http://www.coliop.org/_download/Cmpl-1-10-0-linux32.tar.gz
+	sha256sums_i686 = 2f26a63da4b0bd9be21320c07f02c483961c1427cd87a960f5a75ab2021cbc09
+	source_x86_64 = http://www.coliop.org/_download/Cmpl-1-10-0-linux64.tar.gz
+	sha256sums_x86_64 = 3595425b4081c8316387572c8b2cceb2d663c6984e768a8bf7d951574e413daf
+
+pkgname = cmpl-bin
+
