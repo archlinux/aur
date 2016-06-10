@@ -4,7 +4,7 @@
 pkgbase=sentry
 pkgname=('sentry' 'sentry-dsym')
 pkgver=8.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Python-based realtime logging and aggregation server."
 arch=(any)
 url="http://pypi.python.org/pypi/sentry"
@@ -12,6 +12,9 @@ license=(BSD)
 makedepends=(
     'clang'
     'libjpeg-turbo'
+    'libxml2'
+    'libxslt'
+    'python2'
     'python2-pip'
     'python2-setuptools'
     'python2-virtualenv'
