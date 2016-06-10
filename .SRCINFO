@@ -1,0 +1,23 @@
+pkgbase = libgestures-bin
+	pkgdesc = Chromium OS gestures library (binary version)
+	pkgver = 2.1.14
+	pkgrel = 2
+	url = https://github.com/hugegreenbug/libgestures
+	arch = i686
+	arch = x86_64
+	license = custom:chromiumos
+	depends = jsoncpp
+	replaces = libgestures
+	noextract = libgestures-bin.deb
+	noextract = libgestures-bin-dev.deb
+	source_i686 = libgestures-bin.deb::https://launchpad.net/~eugenesan/+archive/ubuntu/ppa/+build/9682492/+files/libgestures_2.1.14-1ubuntu2~eugenesan~xenial3_i386.deb
+	source_i686 = libgestures-bin-dev.deb::https://launchpad.net/~eugenesan/+archive/ubuntu/ppa/+build/9682492/+files/libgestures-dev_2.1.14-1ubuntu2~eugenesan~xenial3_i386.deb
+	md5sums_i686 = SKIP
+	md5sums_i686 = SKIP
+	source_x86_64 = libgestures-bin.deb::https://launchpad.net/~eugenesan/+archive/ubuntu/ppa/+build/9682491/+files/libgestures_2.1.14-1ubuntu2~eugenesan~xenial3_amd64.deb
+	source_x86_64 = libgestures-bin-dev.deb::https://launchpad.net/~eugenesan/+archive/ubuntu/ppa/+build/9682491/+files/libgestures-dev_2.1.14-1ubuntu2~eugenesan~xenial3_amd64.deb
+	md5sums_x86_64 = SKIP
+	md5sums_x86_64 = SKIP
+
+pkgname = libgestures-bin
+
