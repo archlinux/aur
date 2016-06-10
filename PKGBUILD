@@ -1,20 +1,18 @@
-# Contributor: ReNoM <renom@list.ru>
+# Maintainer: ReNoM <renom@list.ru>
 pkgname=mednafen-server
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="Server for Mednafen network game."
 arch=(i686 x86_64)
 url="http://mednafen.sourceforge.net/"
-license="GPL"
-#depends=()
-#makedepends=()
-source=(http://downloads.sourceforge.net/mednafen/$pkgname-$pkgver.tar.gz)
-md5sums=('2a2106b795ec3dd99ed773bf830815ca')
+license=("GPL")
+source=(http://mednafen.fobby.net/releases/files/$pkgname-$pkgver.tar.gz)
+sha256sums=('4933e87e7072efa2ffa965dcc790080984523e83f49eeb49e20fadcca1a1ca19')
 
 build() {
 	cd "$srcdir/$pkgname"
 	./configure
-	make || return 1
+	make
 }
 
 package() {
@@ -22,7 +20,7 @@ package() {
 	mkdir -p $pkgdir/usr/share/mednafen-server
 	mkdir -p $pkgdir/usr/bin/
 	install -D -m 644 -t $pkgdir/usr/share/mednafen-server standard.conf
-	install -Dv -m644 $srcdir/mednafen-server/src/mednafen-server $pkgdir/usr/bin/mednafen-server
+	install -D -m 644 $srcdir/mednafen-server/src/mednafen-server $pkgdir/usr/bin/mednafen-server
 	chmod +x $pkgdir/usr/bin/mednafen-server
 }
 
