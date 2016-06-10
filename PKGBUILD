@@ -1,4 +1,4 @@
-# Maintainer: ewhal4 <ewhal4 at live dot com>
+# Maintainer: Eliot Whalan <ewhal at pantsu dot cat>
 # Contributor: Thiago Perrotta <echo dGhpYWdvcGVycm90dGE5NUBnbWFpbC5jb20K | base64 -d >
 _gitname=i3session
 pkgname=$_gitname-git
