@@ -1,4 +1,4 @@
-# Maintainer: Michael Duell <michael.duell@rub.de> PGP: 0xF32C939C5566FF77
+# Maintainer Eliot Whalan <ewhal at pantsu dot cat>:
 
 pkgname=python2-potr
 pkgver=1.0.1
