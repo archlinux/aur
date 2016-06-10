@@ -39,7 +39,7 @@ build() {
     cd "$_gitname" && git pull origin public
     msg "The local files are updated."
   else
-    git clone --depth=1 "$_gitroot" "$_gitname"
+    git clone --depth 1 "$_gitroot" "$_gitname"
   fi  
   
   msg "GIT checkout done or server timeout"
