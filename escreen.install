@@ -14,15 +14,3 @@ EOM
 post_upgrade() {
   post_install
 }
-
-## arg 1:  the old package version
-#pre_remove() {
-  # do something here
-#}
-
-## arg 1:  the old package version
-#post_remove() {
-  # do something here
-#}
-
-# vim:set ts=2 sw=2 et:
