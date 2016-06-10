@@ -1,6 +1,6 @@
 # $Id: bfc54885f6617a81b35939f12f0a9f02199bb6d8 $
 # Maintainer: Ido Rosen <ido@kernel.org>
-# Co-maintainer: Chris Fordham <chris at fordham-nagy dot id dot au> aka flaccid
+# Co-maintainer: Chris Fordham <chris [at] fordham-nagy [dot] [id] [dot] [au]> aka flaccid
 # Contributor: Sébastien "Seblu" Luttringer
 # Contributor: Marcel Wysocki <maci@satgnu.net>
 # Contributor: Daniel YC Lin <dlin.tw@gmail>
@@ -16,29 +16,26 @@
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md
 
 pkgname=docker-git
-pkgver=1.10.0.dev.21841.5f5a752
+_pkgname=docker
+pkgver=1.12.0.dev.24773.5bdc833
 pkgrel=1
 epoch=1
 pkgdesc='Pack, ship and run any application as a lightweight container.'
 arch=('i686' 'x86_64')
 url="https://github.com/docker/docker"
 license=('Apache License Version 2.0')
-depends=('bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd')
+depends=('runc-git' 'containerd-git' 'bridge-utils' 'iproute2' 'device-mapper' 'sqlite' 'systemd')
 makedepends=('git' 'go' 'btrfs-progs' 'go-md2man')
-backup=(etc/sysctl.d/docker.conf)
 provides=('docker')
 conflicts=('docker')
 # don't strip binaries! A sha1 is used to check binary consistency.
 options=('!strip')
 source=("git+https://github.com/docker/docker.git"
-        'docker.service'
         'docker.install'
-        docker.conf
         )
 md5sums=('SKIP'
-         'f95610c9cb86cb617371040dad5b95d3'
          '1a8e60447794b3c4f87a2272cc9f144f'
-         '9bce988683771fb8262197f2d8196202')
+        )
 install='docker.install'
 # magic harcoded path
 #_magic=src/github.com/dotcloud
@@ -77,15 +74,23 @@ package() {
   #cd "$_magic/docker"
   cd docker
   _dockerver="$(cat VERSION)"
-  install -Dm755 "bundles/$_dockerver/dynbinary/docker-$_dockerver" "$pkgdir/usr/bin/docker"
+  install -Dm755 "bundles/$_dockerver/dynbinary-client/docker-$_dockerver" "$pkgdir/usr/bin/docker"
+  install -Dm755 "bundles/$_dockerver/dynbinary-daemon/dockerd-$_dockerver" "$pkgdir/usr/bin/dockerd"
+
+  # symlink containerd/run (nice integration...)
+  ln -s containerd "$pkgdir/usr/bin/docker-containerd"
+  ln -s containerd-shim "$pkgdir/usr/bin/docker-containerd-shim"
+  ln -s ctr "$pkgdir/usr/bin/docker-containerd-ctr"
+  ln -s runc "$pkgdir/usr/bin/docker-runc"
 
   # completion
   install -Dm644 "contrib/completion/bash/docker" "$pkgdir/usr/share/bash-completion/completions/docker"
   install -Dm644 "contrib/completion/zsh/_docker" "$pkgdir/usr/share/zsh/site-functions/_docker"
 
   # systemd
-  install -Dm644 "$srcdir/docker.service" "$pkgdir/usr/lib/systemd/system/docker.service"
-  install -Dm644 "$srcdir/docker.conf" "$pkgdir/etc/sysctl.d/docker.conf"
+  install -Dm644 'contrib/init/systemd/docker.service' "$pkgdir/usr/lib/systemd/system/docker.service"
+  install -Dm644 'contrib/init/systemd/docker.socket' "$pkgdir/usr/lib/systemd/system/docker.socket"
+  install -Dm644 "$startdir/docker.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 
   cd man
   for section in 1 5; do
