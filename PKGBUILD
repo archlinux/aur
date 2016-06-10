@@ -2,16 +2,16 @@
 # Contributor: sxe <sxxe@gmx.de>
 
 pkgname=ffmpegthumbs-mattepaint
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="An alternative version of the standard KDE ffmpegthumbs."
 arch=('i686' 'x86_64')
 url="http://kde-look.org/content/show.php/FFMpegThumbs-MattePaint?content=153902"
 license=('GPL')
-depends=('ffmpeg2.8' 'kio' 'perl')
+depends=('ffmpeg' 'kio')
 makedepends=('extra-cmake-modules')
-source=("http://kde-look.org/CONTENT/content-files/153902-${pkgname}.tar.gz")
-sha256sums=('83e8a37ffd8a3b5d427a05b8500dbe4e206e30a5fccc3b52ca9e427ddab8b964')
+source=("${pkgname}-${pkgver}.tar.gz::http://kde-look.org/CONTENT/content-files/153902-Upload2016060900.tar.gz")
+sha256sums=('2e4c9fe5e85d9c14b1c468e0dcaecfd71b378ca38f051c0beea6a5f04b5c6cd4')
 
 prepare() {
   mkdir -p build
@@ -19,12 +19,10 @@ prepare() {
 
 build() {
   cd build
-  export PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig"
-  cmake ../${pkgname}/KF5/${pkgname} \
+  cmake ../Upload2016060900/KF5/"0.7 using ffmpeg-3.0"/${pkgname} \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib \
-    -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
+    -DCMAKE_INSTALL_LIBDIR=lib
   make
 }
 
