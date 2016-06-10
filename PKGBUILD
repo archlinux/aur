@@ -2,7 +2,7 @@
 
 _pkgname=shticker-book-rewritten
 pkgname=$_pkgname-git
-pkgver=v1.0.3.5.gcd33bc4
+pkgver=v1.0.3.14.g79ac20d
 pkgrel=1
 pkgdesc="Custom launcher and tool for the Toontown Rewritten MMORPG"
 url="https://github.com/madsciencecoder/Shticker-Book-Rewritten"
