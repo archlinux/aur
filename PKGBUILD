@@ -1,7 +1,7 @@
 # Maintainer: Thomas Wood <grand.edgemaster@gmail.com>
 pkgname=emojione-color-font
-pkgver=1.0
-pkgrel=2
+pkgver=1.1
+pkgrel=1
 pkgdesc="A color and B&W emoji SVG-in-OpenType font with support for ZWJ, skin tone modifiers and country flags."
 arch=('any')
 url="https://github.com/eosrei/emojione-color-font"
@@ -23,10 +23,10 @@ _srcdir=${pkgname}-${_pkgver}
 
 package() {
   cd ${_archive}
-  install -Dm644 EmojiOneColor-SVGinOT.ttf -t "$pkgdir"/usr/share/fonts/"Emoji One Color"/
+  install -Dm644 EmojiOneColor-SVGinOT.ttf -t "$pkgdir"/usr/share/fonts/"EmojiOne Color"/
   install -Dm644 LICENSE* -t "$pkgdir"/usr/share/licenses/$pkgname/
   install -Dm644 README.md -t "$pkgdir"/usr/share/doc/$pkgname/
   install -Dm644 fontconfig/56-emojione-color.conf "$pkgdir"/etc/fonts/conf.avail/56-$pkgname.conf
 }
 
-md5sums=('b958f6922c6bd1a50c6d741dfbe1dc60')
+md5sums=('92791292e93322c0126363f46a16d4bc')
