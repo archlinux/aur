@@ -8,7 +8,7 @@ pkgdesc="XMPP gateway to IRC"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://biboumi.louiz.org/"
 license=('ZLIB')
-depends=('expat' 'libidn' 'c-ares' 'botan' 'litesql')
+depends=('expat' 'libidn' 'c-ares' 'botan' 'litesql-git')
 makedepends=('git' 'cmake' 'pandoc')
 provides=("$_pkgname=1.99")
 conflicts=("$_pkgname")
