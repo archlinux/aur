@@ -1,0 +1,13 @@
+pkgbase = kyocera-ecosys-p6035cdn
+	pkgdesc = PPD file for Kyocera ECOSYS P6035cdn
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://kyocera.com
+	arch = any
+	license = other
+	depends = cups
+	source = Kyocera ECOSYS P6035cdn.PPD
+	md5sums = 8c5578248a2f6dfa39660934f9f2e6cc
+
+pkgname = kyocera-ecosys-p6035cdn
+
