@@ -1,13 +1,12 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=texi2latex  
 pkgver=0.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc="convert texinfo sources to LaTeX"
 url="http://savannah.nongnu.org/projects/texi2latex"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('gcc-libs' 'sh' 'java-saxon')
-install=$pkgname.install
 source=(http://mirrors.zerg.biz/nongnu/$pkgname/$pkgname-$pkgver.tar.bz2)
 md5sums=('73285a6f0bb988a6673b445a71bf94fd')
 build() {
