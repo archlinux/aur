@@ -39,8 +39,8 @@ build() {
         -DBUILD_TESTING=off \
         -DBUILD_GUI=off \
         -DBUILD_KCM=on \
-        -DINSTALL_SHARED=off \
-        -DINSTALL_HELPER=off
+        -DBUILD_HELPER=off \
+        -DINSTALL_SHARED=off
   make
 }
 
