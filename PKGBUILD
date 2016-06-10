@@ -3,8 +3,8 @@
 pkgbase=linux-dvb-dvr-buffer-size       # Build kernel with a different name
 pkgdesc="Patch the DVB DVR_BUFFER_SIZE 96256000 (500*188*1024)"
 _srcname=linux-4.6
-pkgver=4.6.1
-pkgrel=2
+pkgver=4.6.2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -19,19 +19,17 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-linux-4.6-drm-i915-psr.patch'
         '0001-linux-4.6-rtlwifi-fix-atomic.patch'
         'increase-dvr-buffer-size.patch')
 
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            '023d192ebb487657ce24cbd758c8a6cfcb66a26c61b4e0f2395528953c45da9b'
+            '0dc509a19c68ab547a62158bf2017965b843854b63be46ae039c37724dccca21'
             'SKIP'
             '02e8b02e8cd10aa059917a489a9663e7f66bdf12c5ae8a1e0369bb2862da6b68'
             'd59014b8f887c6aa9488ef5ff9bc5d4357850a979f3ff90a2999bbe24e5c6e15'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'b719c3bd58d71a9e0d76b3674e854419ebec4a3fa9f8a4823f23639720527e83'
             'ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98'
             '999704d9f156bcabbf9a7293938ed6cc18fba75a94724afa225f8f7c751262c8')
 validpgpkeys=(
@@ -57,10 +55,6 @@ prepare() {
 
   # Increase the DVB DVR buffer size
   patch -p1 -i "${srcdir}/increase-dvr-buffer-size.patch"
-
-  # fix flickering on 4.6
-  # reported from brain0 and heftig on IRC
-  patch -p1 -i "${srcdir}/0001-linux-4.6-drm-i915-psr.patch"
 
   # fix rtlwifi atomic
   # https://bugs.archlinux.org/task/49401
