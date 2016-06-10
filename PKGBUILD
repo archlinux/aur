@@ -6,14 +6,13 @@
 pkgname=arachnophilia
 _pkgname=Arachnophilia
 pkgver=5.5.2914
-pkgrel=1
+pkgrel=2
 pkgdesc="A web page development workshop and general programming tool"
 arch=('any')
 url="http://www.arachnoid.com/arachnophilia/index.php"
 license=('LGPL' 'custom:careware')
 depends=('java-environment' 'bash' 'desktop-file-utils')
 makedepends=('curl')
-install=$pkgname.install
 source=("http://www.arachnoid.com/$pkgname/$_pkgname.jar"
         "http://www.arachnoid.com/lutusp/old_articles/careware.rtf"
 	"http://www.arachnoid.com/arachnophilia/index.php"
