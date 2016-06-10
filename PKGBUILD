@@ -1,74 +1,56 @@
-# Maintainer: Alexander Rødseth <rodseth@gmail.com>
+# Maintainer: Ivy Foster <ivy.foster@gmail.com>
+# Contributor: Alexander Rødseth <rodseth@gmail.com>
 
-pkgname=netsurf-git
-pkgver=20120924
+pkgname='netsurf-git'
+pkgver=3.5.r164.g8fdf262
 pkgrel=1
 pkgdesc='Lightweight and fast web browser'
-arch=('x86_64' 'i686')
 url='http://www.netsurf-browser.org/'
-license=('GPL2')
-depends=('libmng' 'libglade' 'lcms' 'librsvg' 'lemon' 'cairo'
-         'desktop-file-utils')
-makedepends=('re2c' 'curl' 'libnsbmp' 'libnsgif' 'libcss' 'libhubbub-git'
-             'libparserutils' 'libdom-git>=20120924' 'netsurf-buildsystem-git'
-             'gendesk' 'nsgenbind')
+license=('MIT' 'GPL2')
+
+depends=('curl' 'desktop-file-utils' 'duktape' 'gtk3' 'lcms' 'libmng' 'librsvg' 
+	'libcss-git' 'libdom-git' 'libnsbmp-git' 'libnsgif-git' 'libnsutils-git'
+)
+makedepends=('inetutils' 'netsurf-buildsystem-git')
+optdepends=('gstreamer0.10: In-browser video support')
 provides=('netsurf')
 conflicts=('netsurf')
-replaces=('netsurf-svn')
-install=$pkgname.install
-source=("$pkgname.png::http://ubuntu.allmyapps.com/data/n/e/netsurf-netsurf-web-browser/icon_48x48_netsurf.png"
-        'netsurf::git://git.netsurf-browser.org/netsurf.git')
-sha256sums=('f0dbcc5d80bf03d706aa8b28a322aa7f169a40813848c2d1505691f6e2c7ef00'
-            'SKIP')
+
+arch=('x86_64' 'i686')
+source=('git://git.netsurf-browser.org/netsurf.git'
+	'Makefile.config' 'netsurf.sh'
+)
+sha256sums=('SKIP'
+	'057ec874491cb1f6354ae30a3caf75cc26987219d1ebc924c88b460c0e914503'
+	'70310682d1612457d7bb3096549110b6ec127f50e97853259fada6be0c52924b'
+)
 
 pkgver() {
-  cd "${pkgname%-git}"
-
-  git describe --always | sed 's|-|.|g'
+	cd netsurf
+	git describe --always | sed -e 's:release/::; s:-\([0-9]\+\)-:.r\1.:'
 }
 
 prepare() {
-  cd "${pkgname%-git}"
-
-  # Patching
-  sed -i 's:LOG((\"\[://:g' desktop/netsurf.c
-
-  # Creating wrapperscript
-  echo "#!/bin/sh" > netsurf.sh
-  echo "NETSURFRES=/usr/share/netsurf/res /usr/bin/nsgtk \$*" >> netsurf.sh
-
-  # Desktop shortcut
-  gendesk -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
-    --name 'Netsurf' --exec 'netsurf %U'
+	cp Makefile.config netsurf
+	sed '/BSD_SOURCE/d' -i netsurf/frontends/gtk/Makefile
 }
 
 build() {
-  cd "${pkgname%-git}"
-
-  make NSSHARED='/usr/share/netsurf-buildsystem' PREFIX=/usr
+	cd netsurf
+	make PREFIX=/usr TARGET=gtk 
 }
 
 package() {
-  cd "${pkgname%-git}"
+	cd netsurf
 
-  # Executables
-  install -d "$pkgdir/usr/bin"
-  install nsgtk "$pkgdir/usr/bin"
-  install -Dm755 netsurf.sh "$pkgdir/usr/bin/netsurf"
-  install -d "$pkgdir/usr/bin" "$pkgdir/usr/share/netsurf"
+	make PREFIX=/usr TARGET=gtk DESTDIR="$pkgdir" install
+	mv "$pkgdir/usr/bin/netsurf" "$pkgdir/usr/bin/netsurf.elf"
+	install ../netsurf.sh "$pkgdir/usr/bin/netsurf"
 
-  # Resources
-  rm -rf gtk/res/.svn gtk/res/docs/.svn
-  cp -RL gtk/res "$pkgdir/usr/share/netsurf"
-
-  # Application shortcut and icon
-  install -Dm644 "$pkgname.desktop" \
-    "$pkgdir/usr/share/applications/$pkgname.desktop"
-  install -Dm644 "../$pkgname.png" \
-    "$pkgdir/usr/share/pixmaps/$pkgname.png"
-
-  # Cleanup
-  find "$pkgdir" -name ".svn" -print0 | xargs -0 rm -rf
+	install -Dm644 'frontends/gtk/res/netsurf.xpm' \
+		"$pkgdir/usr/share/pixmaps/netsurf.xpm"
+	install -Dm644 'frontends/gtk/res/netsurf-gtk.desktop' \
+		"$pkgdir/usr/share/applications/netsurf.desktop"
+	install -Dm644 COPYING \
+		"$pkgdir/usr/share/licenses/netsurf/netsurf-gtk"
 }
-
-# vim:set ts=2 sw=2 et:
