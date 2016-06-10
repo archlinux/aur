@@ -4,6 +4,8 @@ pkgdesc='Provisioning tool for systemd in initramfs (systemd-tool)'
 pkgname=mkinitcpio-systemd-tool
 pkgver=3
 pkgrel=1
+url="https://github.com/random-archer/$pkgname"
+source=("git+${url}.git")
 depends=(
     'mkinitcpio' 
     'systemd'
@@ -37,14 +39,7 @@ arch=('any')
 md5sums=('SKIP')
 license=('Apache')
 
-url="https://github.com/random-archer/$pkgname"
-
-# switch between a release tag and a development branch
-#_fragment=$([[ $pkgver =~ ^[0-9]+$ ]] && printf "#tag=v$pkgver" || printf "#branch=master")
-#source=("git+${url}.git${_fragment}")
-source=("git+${url}.git")
-
-# select version depending on marker file presence:
+# select proper version depending on marker file presence:
 # * create .PKGDEV to use latest development version (from master branch)
 # * create .PKGREL to use latest release version (named with release tag vNNN)
 # * remove all markes and set pkgver=NNN above to use an existing vNNN release tag (the default)
@@ -68,20 +63,27 @@ pkgver() {
     fi
 }
 
-####
-
+# 1.
 prepare() {
-    echo "srcdir $srcdir"
+    local repo=$srcdir/$pkgname # working repo location
+    local version=$(pkgver) # proper version number or string
+    local target=$([[ $version =~ ^[0-9]+$ ]] && printf "v$version" || printf "master")
+    git -C $repo checkout --quiet "$target" # checkout proper version
+    git -C $repo status
+    true
 }
 
+# 2.
 build() {
     true
 }
 
+# 3.
 check() {
     true
 }
 
+# 4.
 package() {
     
     local hook="systemd-tool"
