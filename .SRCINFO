@@ -1,6 +1,6 @@
 pkgbase = android-studio-canary
 	pkgdesc = The Official Android IDE. Canary branch
-	pkgver = 2.2.0a2
+	pkgver = 2.2.0a3
 	pkgrel = 1
 	url = http://developer.android.com/sdk/installing/studio.html
 	install = android-studio-canary.install
@@ -14,17 +14,13 @@ pkgbase = android-studio-canary
 	depends = lib32-fontconfig
 	depends = lib32-libxrender
 	depends = lib32-mesa
-	optdepends = android-sdk
-	optdepends = android-sdk-platform-tools
-	optdepends = android-sdk-build-tools
-	provides = android-studio=2.2.0a2
 	conflicts = android-studio
 	conflicts = android-studio-beta
 	conflicts = android-studio-dev
 	options = !strip
-	source = https://dl.google.com/dl/android/studio/ide-zips/2.2.0.1/android-studio-ide-145.2915834-linux.zip
+	source = https://dl.google.com/dl/android/studio/ide-zips/2.2.0.2/android-studio-ide-145.2949926-linux.zip
 	source = android-studio.desktop
-	sha1sums = b7f0ab6583f9822a02f578ebe22f59cea99be397
+	sha1sums = 75816cb2e46574fc830f8cd3d8fc75f5441b69e8
 	sha1sums = baed66cebe2b372700f436b93022a52cbff313be
 
 pkgname = android-studio-canary
