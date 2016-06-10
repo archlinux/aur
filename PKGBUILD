@@ -195,26 +195,15 @@ build() {
 	done
 }
 
-_grub_vars=(
-	grub_modinfo_target_cpu grub_modinfo_platform grub_disk_cache_stats
-	grub_boot_time_stats grub_have_font_source grub_have_asm_uscore
-	grub_i8086_addr32 grub_i8086_data32 grub_bss_start_symbol
-	grub_end_symbol grub_target_cc grub_target_cc_version grub_target_cflags
-	grub_target_cppflags grub_target_ccasflags grub_target_ldflags
-	grub_target_strip grub_target_nm grub_target_ranlib grub_target_objconf
-	grub_target_obj2elf grub_version grub_package grub_package_string
-	grub_package_version grub_package_name grub_package_bugreport
-)
-
 _package_plat() {
 	depends+=("grub2-common-git=$pkgver")
 	optdepends+=()
 
-	local _plat "${_grub_vars[@]}"
-
 	cd "$srcdir/build-$1/grub-core"
-	. ./modinfo.sh
-	local _plat="${grub_modinfo_target_cpu}-${grub_modinfo_platform}"
+	eval "$(
+		. ./modinfo.sh
+		echo "local _plat=${grub_modinfo_target_cpu}-${grub_modinfo_platform}"
+	)"
 	make install DESTDIR="$pkgdir"
 
 	if check_option debug y; then
