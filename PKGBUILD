@@ -1,13 +1,12 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=thesis
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Two LaTeX classes for bigger, thesis-like documents"
 url="http://dante.ctan.org/CTAN/help/Catalogue/entries/thesis.html#Visit"
 arch=('any')
 license=('LPPL')
 depends=('texlive-core')
-install=thesis.install
 source=(http://dante.ctan.org/CTAN/macros/latex/contrib/$pkgname.zip)
 md5sums=('8c6e19dfbbd919c84abf939f12d8a8b9')
 
