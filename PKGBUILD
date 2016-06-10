@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('qt5-quickcontrols' 'qt5-declarative' 'lm_sensors' 'kdeclarative' 'kauth' 'kpackage' 'ki18n' 'kconfig' 'systemd')
 makedepends=('git' 'extra-cmake-modules' )
 provides=('fancontrol-gui')
-conflicts=('fancontrol-gui')
+conflicts=('fancontrol-gui' 'fancontrol-common')
 source=('git://github.com/Maldela/fancontrol-gui.git')
 md5sums=('SKIP')
 
