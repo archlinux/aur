@@ -3,13 +3,12 @@
 
 pkgname=glosstex
 pkgver=0.4
-pkgrel=5
+pkgrel=6
 pkgdesc="Prepare glossaries in LaTeX."
 arch=('i686' 'x86_64')
 url="http://www.dante.de/CTAN/help/Catalogue/entries/glosstex.html"
 depends=('texlive-core')
 makedepends=('make' 'unzip')
-install=glosstex.install
 license=('GPL')
 source=("http://mirror.ctan.org/support/$pkgname.zip" \
   docu.patch Makefile.patch)
