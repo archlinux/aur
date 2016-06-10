@@ -1,205 +1,70 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
-<head>
-<title>svntogit/packages.git - Git clone of the 'packages' repository
-</title>
-<meta name='generator' content='cgit '/>
-<meta name='robots' content='index, nofollow'/>
-<link rel='stylesheet' type='text/css' href='/cgit.css'/>
-<link rel='shortcut icon' href='/favicon.ico'/>
-<link rel='alternate' title='Atom feed' href='https://git.archlinux.org/svntogit/packages.git/atom/trunk/0001-linux-4.6-rtlwifi-fix-atomic.patch?h=packages/linux' type='application/atom+xml'/>
-<link rel='vcs-git' href='https://git.archlinux.org/svntogit/packages.git' title='svntogit/packages.git Git repository'/>
-<link rel='vcs-git' href='git://git.archlinux.org/svntogit/packages.git' title='svntogit/packages.git Git repository'/>
-<link rel='vcs-git' href='ssh://git.archlinux.org/srv/git/svntogit/packages.git' title='svntogit/packages.git Git repository'/>
-</head>
-<body>
-	<div id="archnavbar"><!-- Arch Linux global navigation bar -->
-		<div id="archnavbarlogo">
-			<p><a href="http://www.archlinux.org/" title="Arch news, packages, projects and more"></a></p>
-		</div>
-		<div id="archnavbarmenu">
-			<ul id="archnavbarlist">
-				<li id="anb-home"><a href="http://www.archlinux.org/" title="Arch news, packages, projects and more">Home</a></li>
-				<li id="anb-packages"><a href="http://www.archlinux.org/packages/" title="Arch Package Database">Packages</a></li>
-				<li id="anb-forums"><a href="https://bbs.archlinux.org/" title="Community forums">Forums</a></li>
-				<li id="anb-wiki"><a href="https://wiki.archlinux.org/" title="Community documentation">Wiki</a></li>
-				<li id="anb-bugs"><a href="https://bugs.archlinux.org/" title="Report and follow bugs">Bugs</a></li>
-				<li id="anb-aur"><a href="https://aur.archlinux.org/" title="Arch Linux User Repository">AUR</a></li>
-				<li id="anb-download"><a href="http://www.archlinux.org/download/" title="Get Arch Linux">Download</a></li>
-			</ul>
-		</div>
-	</div><!-- #archnavbar -->
-<div id='cgit'><table id='header'>
-<tr>
-<td class='main'><a href='/'>index</a> : <a title='svntogit/packages.git' href='/svntogit/packages.git/'>svntogit/packages.git</a></td></tr>
-<tr><td class='sub'>Git clone of the 'packages' repository
-</td><td class='sub right'>Evangelos Foutras</td></tr></table>
-<table class='tabs'><tr><td>
-<a href='/svntogit/packages.git/?h=packages/linux'>summary</a><a href='/svntogit/packages.git/refs/?h=packages/linux&amp;id=51ed6c29ca120a7cea19cc6a8657c1c11fa15b93'>refs</a><a href='/svntogit/packages.git/log/trunk/0001-linux-4.6-rtlwifi-fix-atomic.patch?h=packages/linux'>log</a><a class='active' href='/svntogit/packages.git/tree/trunk/0001-linux-4.6-rtlwifi-fix-atomic.patch?h=packages/linux&amp;id=51ed6c29ca120a7cea19cc6a8657c1c11fa15b93'>tree</a><a href='/svntogit/packages.git/commit/trunk/0001-linux-4.6-rtlwifi-fix-atomic.patch?h=packages/linux&amp;id=51ed6c29ca120a7cea19cc6a8657c1c11fa15b93'>commit</a><a href='/svntogit/packages.git/diff/trunk/0001-linux-4.6-rtlwifi-fix-atomic.patch?h=packages/linux&amp;id=51ed6c29ca120a7cea19cc6a8657c1c11fa15b93'>diff</a><a href='/svntogit/packages.git/stats/trunk/0001-linux-4.6-rtlwifi-fix-atomic.patch?h=packages/linux'>stats</a></td><td class='form'><form class='right' method='get' action='/svntogit/packages.git/log/trunk/0001-linux-4.6-rtlwifi-fix-atomic.patch'>
-<input type='hidden' name='h' value='packages/linux'/><input type='hidden' name='id' value='51ed6c29ca120a7cea19cc6a8657c1c11fa15b93'/><select name='qt'>
-<option value='grep'>log msg</option>
-<option value='author'>author</option>
-<option value='committer'>committer</option>
-<option value='range'>range</option>
-</select>
-<input class='txt' type='text' size='10' name='q' value=''/>
-<input type='submit' value='search'/>
-</form>
-</td></tr></table>
-<div class='path'>path: <a href='/svntogit/packages.git/tree/?h=packages/linux&amp;id=51ed6c29ca120a7cea19cc6a8657c1c11fa15b93'>root</a>/<a href='/svntogit/packages.git/tree/trunk?h=packages/linux&amp;id=51ed6c29ca120a7cea19cc6a8657c1c11fa15b93'>trunk</a>/<a href='/svntogit/packages.git/tree/trunk/0001-linux-4.6-rtlwifi-fix-atomic.patch?h=packages/linux&amp;id=51ed6c29ca120a7cea19cc6a8657c1c11fa15b93'>0001-linux-4.6-rtlwifi-fix-atomic.patch</a></div><div class='content'>blob: e514ec85f906cb83aa8c9abe0df5edcb10fb4e1f (<a href='/svntogit/packages.git/plain/trunk/0001-linux-4.6-rtlwifi-fix-atomic.patch?h=packages/linux&amp;id=51ed6c29ca120a7cea19cc6a8657c1c11fa15b93'>plain</a>)
-<table summary='blob content' class='blob'>
-<tr><td class='linenumbers'><pre><a id='n1' href='#n1'>1</a>
-<a id='n2' href='#n2'>2</a>
-<a id='n3' href='#n3'>3</a>
-<a id='n4' href='#n4'>4</a>
-<a id='n5' href='#n5'>5</a>
-<a id='n6' href='#n6'>6</a>
-<a id='n7' href='#n7'>7</a>
-<a id='n8' href='#n8'>8</a>
-<a id='n9' href='#n9'>9</a>
-<a id='n10' href='#n10'>10</a>
-<a id='n11' href='#n11'>11</a>
-<a id='n12' href='#n12'>12</a>
-<a id='n13' href='#n13'>13</a>
-<a id='n14' href='#n14'>14</a>
-<a id='n15' href='#n15'>15</a>
-<a id='n16' href='#n16'>16</a>
-<a id='n17' href='#n17'>17</a>
-<a id='n18' href='#n18'>18</a>
-<a id='n19' href='#n19'>19</a>
-<a id='n20' href='#n20'>20</a>
-<a id='n21' href='#n21'>21</a>
-<a id='n22' href='#n22'>22</a>
-<a id='n23' href='#n23'>23</a>
-<a id='n24' href='#n24'>24</a>
-<a id='n25' href='#n25'>25</a>
-<a id='n26' href='#n26'>26</a>
-<a id='n27' href='#n27'>27</a>
-<a id='n28' href='#n28'>28</a>
-<a id='n29' href='#n29'>29</a>
-<a id='n30' href='#n30'>30</a>
-<a id='n31' href='#n31'>31</a>
-<a id='n32' href='#n32'>32</a>
-<a id='n33' href='#n33'>33</a>
-<a id='n34' href='#n34'>34</a>
-<a id='n35' href='#n35'>35</a>
-<a id='n36' href='#n36'>36</a>
-<a id='n37' href='#n37'>37</a>
-<a id='n38' href='#n38'>38</a>
-<a id='n39' href='#n39'>39</a>
-<a id='n40' href='#n40'>40</a>
-<a id='n41' href='#n41'>41</a>
-<a id='n42' href='#n42'>42</a>
-<a id='n43' href='#n43'>43</a>
-<a id='n44' href='#n44'>44</a>
-<a id='n45' href='#n45'>45</a>
-<a id='n46' href='#n46'>46</a>
-<a id='n47' href='#n47'>47</a>
-<a id='n48' href='#n48'>48</a>
-<a id='n49' href='#n49'>49</a>
-<a id='n50' href='#n50'>50</a>
-<a id='n51' href='#n51'>51</a>
-<a id='n52' href='#n52'>52</a>
-<a id='n53' href='#n53'>53</a>
-<a id='n54' href='#n54'>54</a>
-<a id='n55' href='#n55'>55</a>
-<a id='n56' href='#n56'>56</a>
-<a id='n57' href='#n57'>57</a>
-<a id='n58' href='#n58'>58</a>
-<a id='n59' href='#n59'>59</a>
-<a id='n60' href='#n60'>60</a>
-<a id='n61' href='#n61'>61</a>
-<a id='n62' href='#n62'>62</a>
-<a id='n63' href='#n63'>63</a>
-<a id='n64' href='#n64'>64</a>
-<a id='n65' href='#n65'>65</a>
-<a id='n66' href='#n66'>66</a>
-<a id='n67' href='#n67'>67</a>
-<a id='n68' href='#n68'>68</a>
-<a id='n69' href='#n69'>69</a>
-<a id='n70' href='#n70'>70</a>
-</pre></td>
-<td class='lines'><pre><code>From de26859dcf363d520cc44e59f6dcaf20ebe0aadf Mon Sep 17 00:00:00 2001
-From: Larry Finger &lt;Larry.Finger&#64;lwfinger.net&gt;
+From de26859dcf363d520cc44e59f6dcaf20ebe0aadf Mon Sep 17 00:00:00 2001
+From: Larry Finger <Larry.Finger@lwfinger.net>
 Date: Sat, 21 May 2016 11:50:35 -0500
 Subject: rtlwifi: Fix scheduling while atomic error from commit 49f86ec21c01
 
-Commit 49f86ec21c01 (&quot;rtlwifi: Change long delays to sleeps&quot;) was correct
+Commit 49f86ec21c01 ("rtlwifi: Change long delays to sleeps") was correct
 for most cases; however, driver rtl8192ce calls the affected routines while
 in atomic context. The kernel bug output is as follows:
 
 BUG: scheduling while atomic: wpa_supplicant/627/0x00000002
 [...]
-  [&lt;ffffffff815c2b39&gt;] __schedule+0x899/0xad0
-  [&lt;ffffffff815c2dac&gt;] schedule+0x3c/0x90
-  [&lt;ffffffff815c5bb2&gt;] schedule_hrtimeout_range_clock+0xa2/0x120
-  [&lt;ffffffff810e8b80&gt;] ? hrtimer_init+0x120/0x120
-  [&lt;ffffffff815c5ba6&gt;] ? schedule_hrtimeout_range_clock+0x96/0x120
-  [&lt;ffffffff815c5c43&gt;] schedule_hrtimeout_range+0x13/0x20
-  [&lt;ffffffff815c568f&gt;] usleep_range+0x4f/0x70
-  [&lt;ffffffffa0667218&gt;] rtl_rfreg_delay+0x38/0x50 [rtlwifi]
-  [&lt;ffffffffa06dd0e7&gt;] rtl92c_phy_config_rf_with_headerfile+0xc7/0xe0 [rtl8192ce]
+  [<ffffffff815c2b39>] __schedule+0x899/0xad0
+  [<ffffffff815c2dac>] schedule+0x3c/0x90
+  [<ffffffff815c5bb2>] schedule_hrtimeout_range_clock+0xa2/0x120
+  [<ffffffff810e8b80>] ? hrtimer_init+0x120/0x120
+  [<ffffffff815c5ba6>] ? schedule_hrtimeout_range_clock+0x96/0x120
+  [<ffffffff815c5c43>] schedule_hrtimeout_range+0x13/0x20
+  [<ffffffff815c568f>] usleep_range+0x4f/0x70
+  [<ffffffffa0667218>] rtl_rfreg_delay+0x38/0x50 [rtlwifi]
+  [<ffffffffa06dd0e7>] rtl92c_phy_config_rf_with_headerfile+0xc7/0xe0 [rtl8192ce]
 
 To fix this bug, three of the changes from delay to sleep are reverted.
 Unfortunately, one of the changes involves a delay of 50 msec. The calling
 code will be modified so that this long delay can be avoided; however,
 this change is being pushed now to fix the problem in kernel 4.6.0.
 
-Fixes: 49f86ec21c01 (&quot;rtlwifi: Change long delays to sleeps&quot;)
-Reported-by: James Feeney &lt;james&#64;nurealm.net&gt;
-Signed-off-by: Larry Finger &lt;Larry.Finger&#64;lwfinger.net&gt;
-Cc: James Feeney &lt;james&#64;nurealm.net&gt;
-Cc: Stable &lt;stable&#64;vger.kernel.org&gt; [4.6+]
-Signed-off-by: Kalle Valo &lt;kvalo&#64;codeaurora.org&gt;
-<span class="hl kwb">---</span>
+Fixes: 49f86ec21c01 ("rtlwifi: Change long delays to sleeps")
+Reported-by: James Feeney <james@nurealm.net>
+Signed-off-by: Larry Finger <Larry.Finger@lwfinger.net>
+Cc: James Feeney <james@nurealm.net>
+Cc: Stable <stable@vger.kernel.org> [4.6+]
+Signed-off-by: Kalle Valo <kvalo@codeaurora.org>
+---
  drivers/net/wireless/realtek/rtlwifi/core.c | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/net/wireless/realtek/rtlwifi/core.c b/drivers/net/wireless/realtek/rtlwifi/core.c
 index 0f48048..3a0faa8 100644
-<span class="hl kwb">--- a/drivers/net/wireless/realtek/rtlwifi/core.c</span>
-<span class="hl kwa">+++ b/drivers/net/wireless/realtek/rtlwifi/core.c</span>
-&#64;&#64; -54,7 +54,7 &#64;&#64; EXPORT_SYMBOL(channel5g_80m);
+--- a/drivers/net/wireless/realtek/rtlwifi/core.c
++++ b/drivers/net/wireless/realtek/rtlwifi/core.c
+@@ -54,7 +54,7 @@ EXPORT_SYMBOL(channel5g_80m);
  void rtl_addr_delay(u32 addr)
  {
  	if (addr == 0xfe)
-<span class="hl kwb">-		msleep(50);</span>
-<span class="hl kwa">+		mdelay(50);</span>
+-		msleep(50);
++		mdelay(50);
  	else if (addr == 0xfd)
  		msleep(5);
  	else if (addr == 0xfc)
-&#64;&#64; -75,7 +75,7 &#64;&#64; void rtl_rfreg_delay(struct ieee80211_hw *hw, enum radio_path rfpath, u32 addr,
+@@ -75,7 +75,7 @@ void rtl_rfreg_delay(struct ieee80211_hw *hw, enum radio_path rfpath, u32 addr,
  		rtl_addr_delay(addr);
  	} else {
  		rtl_set_rfreg(hw, rfpath, addr, mask, data);
-<span class="hl kwb">-		usleep_range(1, 2);</span>
-<span class="hl kwa">+		udelay(1);</span>
+-		usleep_range(1, 2);
++		udelay(1);
  	}
  }
  EXPORT_SYMBOL(rtl_rfreg_delay);
-&#64;&#64; -86,7 +86,7 &#64;&#64; void rtl_bb_delay(struct ieee80211_hw *hw, u32 addr, u32 data)
+@@ -86,7 +86,7 @@ void rtl_bb_delay(struct ieee80211_hw *hw, u32 addr, u32 data)
  		rtl_addr_delay(addr);
  	} else {
  		rtl_set_bbreg(hw, addr, MASKDWORD, data);
-<span class="hl kwb">-		usleep_range(1, 2);</span>
-<span class="hl kwa">+		udelay(1);</span>
+-		usleep_range(1, 2);
++		udelay(1);
  	}
  }
  EXPORT_SYMBOL(rtl_bb_delay);
-<span class="hl kwb">-- </span>
+-- 
 cgit v0.12
 
-</code></pre></td></tr></table>
-</div> <!-- class=content -->
-<div class="foot" style="padding-left:1em;padding-right:1em;">
-<p>Copyright &copy; 2002-2016 <a href="mailto:jvinet@zeroflux.org"
-title="contact Judd Vinet">Judd Vinet</a> and <a href="mailto:aaron@archlinux.org"
-title="contact Aaron Griffin">Aaron Griffin</a>. The Arch Linux name and logo
-are recognized trademarks. Some rights reserved. The registered trademark
-Linux&reg; is used pursuant to a sublicense from LMI, the exclusive licensee
-of Linus Torvalds, owner of the mark on a world-wide basis.</p>
-</div>
-</div> <!-- id=cgit -->
-</body>
-</html>
