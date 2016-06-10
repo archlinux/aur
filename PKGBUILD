@@ -1,7 +1,7 @@
 # Maintainer: Lukas Werling <lukas.werling@gmail.com>
 pkgname=elm-platform
 pkgver=0.17
-pkgrel=1
+pkgrel=2
 pkgdesc="Bundle of all core development tools for the Elm language."
 arch=('i686' 'x86_64')
 url="http://elm-lang.org"
@@ -10,11 +10,11 @@ depends=('ncurses' 'gmp' 'libffi' 'zlib')
 makedepends=('ghc' 'cabal-install')
 conflicts=('nodejs-elm')
 source=(
-  elm-compiler.zip::https://github.com/elm-lang/elm-compiler/archive/${pkgver}.zip
-  elm-package.zip::https://github.com/elm-lang/elm-package/archive/${pkgver}.zip
-  elm-make.zip::https://github.com/elm-lang/elm-make/archive/${pkgver}.zip
-  elm-reactor.zip::https://github.com/elm-lang/elm-reactor/archive/${pkgver}.zip
-  elm-repl.zip::https://github.com/elm-lang/elm-repl/archive/${pkgver}.zip
+  elm-compiler-${pkgver}.zip::https://github.com/elm-lang/elm-compiler/archive/${pkgver}.zip
+  elm-package-${pkgver}.zip::https://github.com/elm-lang/elm-package/archive/${pkgver}.zip
+  elm-make-${pkgver}.zip::https://github.com/elm-lang/elm-make/archive/${pkgver}.zip
+  elm-reactor-${pkgver}.zip::https://github.com/elm-lang/elm-reactor/archive/${pkgver}.zip
+  elm-repl-${pkgver}.zip::https://github.com/elm-lang/elm-repl/archive/${pkgver}.zip
 )
 sha256sums=('1dc1a5fa5cd09936dee8fbba1f0197527bb988b2cc045919ce6bbb9a6706e122'
             'dc474d7192ecb440db279e142d0d1605bf8fc76ff0328088f8d931780b4c4f5c'
