@@ -5,12 +5,11 @@ _fusurl="https://github.com/fusion809"
 _language_patch2_url="${_fusurl}/language-patch2"
 
 # Module Versions
-_language_archlinux_ver=0.2.15
 _electron_ver=0.36.12
 
 pkgname=${_pkgname}-editor-${_version}
 _atomver=1.8.0
-pkgver=1.8.0.arch0.2.15.e0.36.12
+pkgver=1.8.0.arch0.2.20.e0.36.12
 pkgrel=1
 pkgdesc="Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed."
 arch=('x86_64' 'i686')
