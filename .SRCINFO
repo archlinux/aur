@@ -1,6 +1,6 @@
 pkgbase = jkazip
 	pkgdesc = A Package Wrapper - package wrapper for pacman (and more)
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 2
 	url = http://proyecto.jkanetwork.com
 	arch = any
@@ -15,8 +15,8 @@ pkgbase = jkazip
 	options = !emptydirs
 	source = https://gitlab.com/JKANetwork/jka-toolkit/raw/master/jka-toolkit/jkazip
 	source = https://gitlab.com/JKANetwork/jka-toolkit/raw/master/jka-toolkit/i18n/jkazip/es.mo
-	md5sums = 80c7390d98ce180aa246164ea6251a2b
-	md5sums = 4a66ec3ca747048b0dac61365330a385
+	md5sums = fb40e1f423357152cf423390e862a058
+	md5sums = 00f4d66914797abba37fdec272687d9e
 
 pkgname = jkazip
 
