@@ -1,4 +1,5 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
+
 pkgname=mingw-w64-kdreports-git
 pkgver=1.7.50.r132.049ff54
 pkgrel=1
@@ -24,13 +25,12 @@ pkgver() {
 
 build() {
   unset LDFLAGS
-  cd "$srcdir/KDReports/"
   for _arch in ${_architectures}; do
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-cmake \
       -DKDReports_TESTS=OFF \
       -DCMAKE_BUILD_TYPE=Release \
-      ..
+      ../KDReports
     make
     popd
   done
@@ -38,8 +38,8 @@ build() {
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}/KDReports/build-${_arch}"
+    cd KDReports/build-${_arch}
     make DESTDIR="${pkgdir}" install
-    rm -r "${pkgdir}/usr/${_arch}/share"
+    rm -r ${pkgdir}/usr/${_arch}/share
   done
 }
