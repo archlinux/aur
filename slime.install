@@ -1,6 +1,4 @@
 post_install() {
-echo "Adding Info-File"
-install-info /usr/share/info/slime.info.gz /usr/share/info/dir 2>/dev/null
 cat << EOF
 
 :: To make use of slime, add the following lines to your
@@ -17,11 +15,6 @@ EOF
 }
 
 post_upgrade() { post_install; }
-
-pre_remove() {
-echo "Removing Info-File"
-install-info --delete /usr/share/info/slime.info.gz /usr/share/info/dir 2>/dev/null
-}
 
 post_remove() {
 cat << EOF
