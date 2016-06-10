@@ -21,7 +21,7 @@ source=("jameica-start-script.patch"
         "jameica.install")
 sha1sums=('a6a696d465929f373d6c0d469463aa28b0f4c11f'
         '05ca5cf474523db10789eea9cb483cdf12d8549b'
-        '2076491611ac0bc99863fa3e5b0909ff961b7999')
+        '39c008050c7f90f3fde05b849cba80559207bdb5')
 
 prepare() {
     patch jameica/jameica.sh jameica-start-script.patch

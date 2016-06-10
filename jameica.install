@@ -6,8 +6,8 @@ It is thus adviced to change to the new Release 3, following advice at [0].
 To use the new MashUp plugin java-environment 8 and java-jce_ustrength is required.
 The jameica starter has been changed to start java 8. If you wish to continue
 using java 7, change the appropriate lines in /usr/bin/jameica and /usr/bin/jameicaserver.
-More information here [0].
+More information here [1].
 [0] http://scripting-forum.derrichter.de/viewtopic.php?f=34&t=192
-[] http://hibiscus-scripting.derrichter.de/
+[1] http://hibiscus-scripting.derrichter.de/
 here
 }
