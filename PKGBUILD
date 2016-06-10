@@ -3,7 +3,7 @@
 
 pkgname=geda-gaf-unstable
 _pkgname=geda-gaf
-pkgver=1.9.1
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="gEDA/gaf suite - contains gschem, gnetlist, gsymcheck, gattrib, utilities and documentation from the gEDA project"
 arch=('i686' 'x86_64')
@@ -14,9 +14,8 @@ optdepends=('python2: for two of the commands (garchive, tragesym)'
   'gawk: for sw2asc')
 conflicts=('geda-gaf')
 provides=('geda-gaf')
-install=geda-gaf.install
 source=(http://ftp.geda-project.org/geda-gaf/unstable/v1.9/$pkgver/${_pkgname}-$pkgver.tar.gz)
-md5sums=('bf8949956e18f34513e503fa1f11f3d5')
+md5sums=('ae99981f509dee0f9a6f7c7f51fcb652')
 
 prepare() {
   cd $srcdir/${_pkgname}-$pkgver
