@@ -1,4 +1,69 @@
-diff --git a/python/mozbuild/mozbuild/frontend/context.py b/python/mozbuild/mozbuild/frontend/context.py
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+<head>
+<title>abslibre.git - Libre Packages Build Scripts for the Parabola GNU/Linux-libre (Arch Build System Libre)
+</title>
+<meta name='generator' content='cgit v0.12'/>
+<meta name='robots' content='index, nofollow'/>
+<link rel='stylesheet' type='text/css' href='/cgit.css'/>
+<link rel='shortcut icon' href='/favicon.ico'/>
+<link rel='alternate' title='Atom feed' href='https://projects.parabola.nu/abslibre.git/atom/libre/iceweasel/enable-object-directory-paths.patch?h=master' type='application/atom+xml'/>
+<link rel='vcs-git' href='https://projects.parabola.nu/abslibre.git' title='abslibre.git Git repository'/>
+<link rel='vcs-git' href='git://projects.parabola.nu/abslibre.git' title='abslibre.git Git repository'/>
+<link rel='vcs-git' href='ssh://git@projects.parabola.nu/~git/abslibre.git' title='abslibre.git Git repository'/>
+</head>
+<body>
+    <div id="archnavbar" class="anb-projects">
+        <div id="archnavbarlogo"><h1><a href="/" title="Return to the main page">Parabola</a></h1></div>
+        <div id="archnavbarmenu">
+            <ul id="archnavbarlist">
+                <li id="anb-home"><a href="https://www.parabola.nu/" title="Parabola news, packages, projects and more">Home</a></li>
+                <li id="anb-packages"><a href="https://www.parabola.nu/packages/" title="Package Database">Packages</a></li>
+                <li id="anb-wiki"><a href="https://wiki.parabola.nu/" title="Community documentation">Wiki</a></li>
+                <li id="anb-bugs"><a href="https://labs.parabola.nu" title="Issue Tracker">Bugs</a></li>
+                <li id="anb-projects" class="anb-selected"><a href="https://projects.parabola.nu/" title="Our Code">Projects</a></li>
+                <li id="anb-download"><a href="https://wiki.parabola.nu/Get_Parabola" title="Get Parabola">Download</a></li>
+            </ul>
+        </div>
+    </div><!-- #archnavbar -->
+<div id='cgit'><table id='header'>
+<tr>
+<td class='main'><a href='/'>index</a> : <a title='abslibre.git' href='/abslibre.git/'>abslibre.git</a></td><td class='form'><form method='get' action=''>
+<input type='hidden' name='id' value='b4813d836177da0c3078914092a209416d472d10'/><select name='h' onchange='this.form.submit();'>
+<option value='master' selected='selected'>master</option>
+</select> <input type='submit' name='' value='switch'/></form></td></tr>
+<tr><td class='sub'>Libre Packages Build Scripts for the Parabola GNU/Linux-libre (Arch Build System Libre)
+</td><td class='sub right'>Parabola git</td></tr></table>
+<table class='tabs'><tr><td>
+<a href='/abslibre.git/'>summary</a><a href='/abslibre.git/refs/?id=b4813d836177da0c3078914092a209416d472d10'>refs</a><a href='/abslibre.git/log/libre/iceweasel/enable-object-directory-paths.patch'>log</a><a class='active' href='/abslibre.git/tree/libre/iceweasel/enable-object-directory-paths.patch?id=b4813d836177da0c3078914092a209416d472d10'>tree</a><a href='/abslibre.git/commit/libre/iceweasel/enable-object-directory-paths.patch?id=b4813d836177da0c3078914092a209416d472d10'>commit</a><a href='/abslibre.git/diff/libre/iceweasel/enable-object-directory-paths.patch?id=b4813d836177da0c3078914092a209416d472d10'>diff</a></td><td class='form'><form class='right' method='get' action='/abslibre.git/log/libre/iceweasel/enable-object-directory-paths.patch'>
+<input type='hidden' name='id' value='b4813d836177da0c3078914092a209416d472d10'/><select name='qt'>
+<option value='grep'>log msg</option>
+<option value='author'>author</option>
+<option value='committer'>committer</option>
+<option value='range'>range</option>
+</select>
+<input class='txt' type='text' size='10' name='q' value=''/>
+<input type='submit' value='search'/>
+</form>
+</td></tr></table>
+<div class='path'>path: <a href='/abslibre.git/tree/?id=b4813d836177da0c3078914092a209416d472d10'>root</a>/<a href='/abslibre.git/tree/libre?id=b4813d836177da0c3078914092a209416d472d10'>libre</a>/<a href='/abslibre.git/tree/libre/iceweasel?id=b4813d836177da0c3078914092a209416d472d10'>iceweasel</a>/<a href='/abslibre.git/tree/libre/iceweasel/enable-object-directory-paths.patch?id=b4813d836177da0c3078914092a209416d472d10'>enable-object-directory-paths.patch</a></div><div class='content'>blob: bc938c66ed954d1ea2c670e64cd8ec3373e61220 (<a href='/abslibre.git/plain/libre/iceweasel/enable-object-directory-paths.patch?id=b4813d836177da0c3078914092a209416d472d10'>plain</a>)
+<table summary='blob content' class='blob'>
+<tr><td class='linenumbers'><pre><a id='n1' href='#n1'>1</a>
+<a id='n2' href='#n2'>2</a>
+<a id='n3' href='#n3'>3</a>
+<a id='n4' href='#n4'>4</a>
+<a id='n5' href='#n5'>5</a>
+<a id='n6' href='#n6'>6</a>
+<a id='n7' href='#n7'>7</a>
+<a id='n8' href='#n8'>8</a>
+<a id='n9' href='#n9'>9</a>
+<a id='n10' href='#n10'>10</a>
+<a id='n11' href='#n11'>11</a>
+<a id='n12' href='#n12'>12</a>
+<a id='n13' href='#n13'>13</a>
+</pre></td>
+<td class='lines'><pre><code>diff --git a/python/mozbuild/mozbuild/frontend/context.py b/python/mozbuild/mozbuild/frontend/context.py
 index 41ae8ae..dcc3263 100644
 --- a/python/mozbuild/mozbuild/frontend/context.py
 +++ b/python/mozbuild/mozbuild/frontend/context.py
@@ -11,3 +76,9 @@ index 41ae8ae..dcc3263 100644
          if value.startswith('%'):
              raise ValueError('Filesystem absolute paths are not allowed')
          super(SourcePath, self).__init__(context, value)
+</code></pre></td></tr></table>
+</div> <!-- class=content -->
+<div class='footer'>generated by <a href='http://git.zx2c4.com/cgit/about/'>cgit v0.12</a> at 2016-06-10 15:30:20 (GMT)</div>
+</div> <!-- id=cgit -->
+</body>
+</html>

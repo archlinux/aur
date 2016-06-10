@@ -27,7 +27,7 @@ _pgo=false
 _debname=firefox
 _brandingver=45.0
 _brandingrel=2
-_debver=46.0.1
+_debver=47.0
 _debrel=1
 _debrepo=http://ftp.debian.org/debian/pool/main/f
 _parabolarepo=https://repo.parabola.nu/other/iceweasel
@@ -39,7 +39,7 @@ pkgdesc="Debian Browser based on Mozilla Firefox, with Parabola GNU/Linux-libre 
 arch=('i686' 'x86_64')
 license=('GPL' 'MPL' 'LGPL')
 depends=(alsa-lib dbus-glib ffmpeg gtk2 gtk3 hunspell icu=57.1 libevent libvpx=1.5.0 libxt mime-types mozilla-common nss sqlite startup-notification ttf-font)
-makedepends=(autoconf2.13 diffutils gconf imake inetutils libidl2 libpulse librsvg-stable libxslt mesa pkg-config python2 quilt unzip yasm zip nss imagemagick)
+makedepends=(autoconf2.13 diffutils gconf imake inetutils libidl2 libpulse librsvg libxslt mesa pkg-config python2 quilt unzip yasm zip nss imagemagick)
 options=(!emptydirs !makeflags debug)
 if $_pgo; then
   makedepends+=(xorg-server-xvfb)
@@ -60,17 +60,21 @@ source=("${_debrepo}/${_debname}/${_debname}_${_debver}.orig.tar.xz"
 		vendor.js
 		no-libnotify.patch
 		iceweasel-gtk3-20.patch
+		mozilla-1245076.patch
+		mozilla-1245076-1.patch
 		enable-object-directory-paths.patch)
-md5sums=('599fda5ead3f04e0cf50f582257d8f35'
-         '97ca2d7d0cd3bac0f13cbbea14b4abe2'
+md5sums=('d889e912716b7a05b86bcec44b75e159'
+         '080af93523f37cd885a0af191c71b339'
          '18ddaa5f1b70cbf12110471d50746339'
-         'c12060755cf7580e987144d5a4fea0df'
+         'c76cb41d436754382ef26f986d0e021f'
          '7b9e5996dd9fe0b186a43a297db1c6b5'
          '1c42509891cf6843660a5f3c69896e80'
          '35adf69c840aadeb138d1b0be3af63b5'
          'c4a7a21445579167bff3d787e887903e'
-         '4398feb7543ef216a9f4a3690ea97180'
-         'c1efa8d67e411ec0b23e6edbb69248b3')
+         'f6c4c052d5cf8b050f72e3db6677f176'
+         '43550e772f110a338d5a42914ee2c3a6'
+         '772aac58e3a7e8a32bedd898bc35dc90'
+         '0ee21722e64602526ebde2539fe3e9b6')
 
 prepare() {
   cd "$srcdir/$_debname-$_debver"
@@ -97,6 +101,10 @@ prepare() {
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1234158
   patch -Np1 -i "$srcdir/$pkgname-gtk3-20.patch"
 
+  # GCC 6
+  patch -Np1 -i ../mozilla-1245076.patch
+  patch -Np1 -i ../mozilla-1245076-1.patch
+
   # Notifications with libnotify are broken
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1236150
   patch -Np1 -i "$srcdir/no-libnotify.patch"
@@ -118,6 +126,13 @@ build() {
 
   # _FORTIFY_SOURCE causes configure failures
   CPPFLAGS+=" -O2"
+
+  # Hardening
+  LDFLAGS+=" -Wl,-z,now"
+
+  # GCC 6
+  CFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
+  CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
 
   export PATH="$srcdir/path:$PATH"
 
@@ -164,5 +179,5 @@ package() {
   
     
   # Add Debian searchplugin
-  install -Dm644 "$srcdir/$_debname-$_debver/debian/debsearch.xml" "${pkgdir}/usr/lib/$pkgname/distribution/searchplugins/common/"
+  #install -Dm644 "$srcdir/$_debname-$_debver/debian/debsearch.xml" "${pkgdir}/usr/lib/$pkgname/distribution/searchplugins/common/"
 }
