@@ -5,8 +5,8 @@
 
 pkgname=bbswitch-pf
 _pkgname=bbswitch
-_godver=4.5
-_badver=4.6
+_godver=4.6
+_badver=4.7
 pkgver=0.8
 _extramodules=extramodules-$_godver-pf # Don't forget to update bbswitch.install
 pkgrel=24
