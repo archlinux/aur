@@ -3,7 +3,7 @@
 pkgname=cpprestsdk
 pkgver=2.8.0
 pkgrel=2
-pkgdesc="a cross-platform, modern, and asynchronous library that enables developers to access and author connected applications"
+pkgdesc="A cross-platform, modern, and asynchronous library that enables developers to access and author connected applications"
 arch=('i686' 'x86_64')
 url="https://github.com/Microsoft/cpprestsdk/"
 license=('Apache')
