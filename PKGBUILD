@@ -6,15 +6,15 @@ _version=arch
 # Module Versions
 _about_arch_url="fusion809/about"
 _about_arch_ver=1.5.18
-_dark_bint_syntax_ver=0.8.6
-_fusion_ui_ver=0.10.5
-_language_archlinux_ver=0.2.1
+_dark_bint_syntax_ver=0.8.8
+_fusion_ui_ver=0.10.6
+_language_archlinux_ver=0.2.4
 _language_gfm2_ver=0.90.3
 _language_ini_desktop_ver=1.18.0
 _language_liquid_ver=0.5.1
 _language_patch2_url="fusion809/language-patch2"
 _language_patch2_ver=0.1.3
-_language_unix_shell_ver=0.29.1
+_language_unix_shell_ver=0.29.3
 
 pkgname=${_pkgname}-editor-${_version}
 _atomver=1.8.0
