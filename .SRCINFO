@@ -28,10 +28,8 @@ pkgbase = netsurf-git
 	conflicts = netsurf
 	source = git://git.netsurf-browser.org/netsurf.git
 	source = Makefile.config
-	source = netsurf.sh
 	sha256sums = SKIP
 	sha256sums = 057ec874491cb1f6354ae30a3caf75cc26987219d1ebc924c88b460c0e914503
-	sha256sums = 70310682d1612457d7bb3096549110b6ec127f50e97853259fada6be0c52924b
 
 pkgname = netsurf-git
 
