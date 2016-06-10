@@ -4,7 +4,7 @@
 pkgname=evilvte-git
 _pkgname=evilvte
 pkgver=150.8dfa41e
-pkgrel=4
+pkgrel=5
 pkgdesc='VTE based, highly customizable terminal emulator.'
 arch=('i686' 'x86_64')
 url="http://www.calno.com/evilvte/"
@@ -13,7 +13,6 @@ depends=('hicolor-icon-theme' 'vte')
 makedepends=('git' 'pkg-config')
 provides=('evilvte')
 conflicts=('evilvte')
-install=evilvte.install
 source=("$_pkgname::git://github.com/caleb-/evilvte.git#branch=master")
 sha256sums=('SKIP')
 
