@@ -2,22 +2,20 @@
 # based on firefox-noscript PKGBUILD
 
 pkgname=firefox-flashgot
-pkgver=1.5.6.12
-pkgrel=2
+pkgver=1.5.6.13
+pkgrel=1
 pkgdesc="Extension for firefox which download video"
 arch=('any')
 url="http://flashgot.net"
 license=('GPL2')
 depends=("firefox")
-#makedepends=('unzip')
-source=(https://secure.informaction.com/download/releases/flashgot-$pkgver.xpi)
-md5sums=('f8262859d8bba81d040a9d9bf1441578')
+source=(https://addons.mozilla.org/firefox/downloads/latest/220/addon-220-latest.xpi)
+md5sums=('07a1ca18fb67b3b7e8b5db01de8e3b7f')
 
 package() {
   cd $srcdir
-  local emid=$(sed -n -e '/<\?em:id>\?/!d; s/.*\([\"{].*[}\"]\).*/\1/; s/\"//g; p; q' install.rdf)
-  local dstdir=$pkgdir/usr/lib/firefox/browser/extensions/${emid}
+  emid="$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf)"
+  dstdir=$pkgdir/usr/lib/firefox/browser/extensions
   install -d $dstdir
-  cp -R * $dstdir
-  rm $dstdir/flashgot-$pkgver.xpi
+  cp *.xpi $dstdir/${emid}.xpi
 }
