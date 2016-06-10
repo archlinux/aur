@@ -3,7 +3,7 @@
 
 pkgname=emms-git
 pkgver=20160531
-pkgrel=1
+pkgrel=2
 pkgdesc="Emacs MultiMedia System -- git version"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/emms/"
@@ -16,7 +16,6 @@ optdepends=('vorbis-tools: ogg support'
             'mplayer: mplayer support'
             'xine: xine support')
 license=('GPL')
-install=emms.install
 conflicts=('emms')
 provides=('emms')
 source=('git://git.sv.gnu.org/emms.git')
