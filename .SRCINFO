@@ -1,0 +1,18 @@
+pkgbase = icqdesktop
+	pkgdesc = Official ICQ client for Linux. Binary version.
+	pkgver = 10.0.3010
+	pkgrel = 1
+	url = https://icq.com/linux/
+	arch = i686
+	arch = x86_64
+	license = APLv2
+	depends = qt5-base
+	source = https://r.mail.ru/clb20842175/storage.icq.com/pub/ICQ_Linux/x64/icq
+	source = https://raw.githubusercontent.com/mailru/icqdesktop/master/gui/resources/main_window/appicon.ico
+	source = icq.desktop
+	sha256sums = 686ead7d6a1bd15d7cb4b0b6d9654d112061fdd74d3ea8e38a85df28c2ad62f5
+	sha256sums = 8b304d3f11ee73aa288c61aba47c853d83a080286e60afdcbcca9cccba62c54c
+	sha256sums = 6c8d6e9481f5978038fc2bbd91c41bc831bebc3df87e9117d9571f39f1305c43
+
+pkgname = icqdesktop
+

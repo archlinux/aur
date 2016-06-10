@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=10.0.3010
+Name=ICQ
+Comment=Official ICQ client
+Path=/usr/bin
+Exec=icq
+Icon=/usr/share/pixmaps/icq.ico
+Terminal=false
+Categories=Network
+
