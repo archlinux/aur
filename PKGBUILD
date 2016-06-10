@@ -1,13 +1,12 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=quotepas  
 pkgver=1.0
-pkgrel=2
-pkgdesc="LaTeX style rhat can be used to insert passages from a database."
+pkgrel=3
+pkgdesc="LaTeX style that can be used to insert passages from a database."
 url="http://theoval.cmp.uea.ac.uk/~nlct/latex/packages"
 arch=('any')
 license=('LPPL')
 depends=('texlive-core' 'perl')
-install=$pkgname.install
 source=(http://theoval.cmp.uea.ac.uk/~nlct/latex/packages/quotepas/$pkgname.tar.gz)
 md5sums=('0c31eb7a8f1a2fcac2aa48ebd5cac034')
 build() {
