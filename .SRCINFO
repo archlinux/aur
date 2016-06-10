@@ -1,7 +1,7 @@
 pkgbase = geobases-git
 	pkgdesc = Tool and Python module to play with geographical and travel data, and some non-geographical data too.
 	pkgver = r3004.690ce9b
-	pkgrel = 6
+	pkgrel = 7
 	url = http://opentraveldata.github.com/geobases/
 	arch = any
 	license = CCPL:by-sa-3.0.txt

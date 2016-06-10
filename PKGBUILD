@@ -1,7 +1,7 @@
 # Maintainer:  Israel Herraiz <isra@herraiz.org>
 pkgname=geobases-git
 pkgver=r3004.690ce9b
-pkgrel=6
+pkgrel=7
 epoch=
 pkgdesc="Tool and Python module to play with geographical and travel data, and some non-geographical data too."
 arch=('any')
@@ -39,7 +39,7 @@ build() {
     cd "$_gitname" && git pull origin public
     msg "The local files are updated."
   else
-    git clone "$_gitroot" "$_gitname"
+    git clone --depth=1 "$_gitroot" "$_gitname"
   fi  
   
   msg "GIT checkout done or server timeout"
