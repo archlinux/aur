@@ -1,4 +1,5 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
+
 pkgname=kdreports-git
 pkgver=1.7.50.r130.a3210b5
 pkgrel=1
@@ -34,10 +35,10 @@ build() {
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir/" install
+  make -C build DESTDIR="${pkgdir}/" install
   cd KDReports
-  install -Dm644 LICENSE.txt $pkgdir/usr/share/licenses/kdreports/LICENSE.txt
-  install -Dm644 LICENSE.US.txt $pkgdir/usr/share/licenses/kdreports/LICENSE.US.txt
-  install -Dm644 LICENSE.GPL.txt $pkgdir/usr/share/licenses/kdreports/LICENSE.GPL.txt
-  install -Dm644 LICENSE.LGPL.txt $pkgdir/usr/share/licenses/kdreports/LICENSE.LGPL.txt
+  install -Dm644 LICENSE.txt ${pkgdir}/usr/share/licenses/kdreports/LICENSE.txt
+  install -Dm644 LICENSE.US.txt ${pkgdir}/usr/share/licenses/kdreports/LICENSE.US.txt
+  install -Dm644 LICENSE.GPL.txt ${pkgdir}/usr/share/licenses/kdreports/LICENSE.GPL.txt
+  install -Dm644 LICENSE.LGPL.txt ${pkgdir}/usr/share/licenses/kdreports/LICENSE.LGPL.txt
 }
