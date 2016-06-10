@@ -4,13 +4,13 @@
 # Some lines from  kernel26-bfs and kernel26-ck
 # Credits to respective maintainers
 _major=4
-_minor=5
+_minor=6
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
 _srcname=linux-${_major}.${_minor}
 pkgbase=linux-pf
-_pfrel=4
+_pfrel=1
 _kernelname=-pf
 _pfpatchhome="http://pf.natalenko.name/sources/${_basekernel}/"
 _pfpatchname="patch-${_basekernel}${_kernelname}${_pfrel}"
@@ -83,7 +83,9 @@ source=("ftp://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekernel}
 	'linux.preset'			        # standard config files for mkinitcpio ramdisk
 	'change-default-console-loglevel.patch'
 	"${_pfpatchhome}${_pfpatchname}.xz"	# the -pf patchset
-        "git+$_aufs3#branch=aufs4.5"
+        "git+$_aufs3#branch=aufs4.6"
+        'https://raw.githubusercontent.com/dolohow/uksm/master/uksm-4.6.patch'
+        '0001-linux-4.6-rtlwifi-fix-atomic.patch'
        )
 # 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'     
 
@@ -136,6 +138,10 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -Np1 -i "${srcdir}/change-default-console-loglevel.patch"
 
+  # fix rtlwifi atomic
+  # https://bugs.archlinux.org/task/49401
+  patch -p1 -i "${srcdir}/0001-linux-4.6-rtlwifi-fix-atomic.patch"
+
   # end linux-ARCH patches
 
 
@@ -144,6 +150,9 @@ prepare() {
 
   # fix ci  invalid PC card inserted issue hopefully
   #patch -Rp1 -i "${srcdir}/cx23885_move_CI_AC_registration_to_a_separate_function.patch" || true
+
+  # since linux-pf-4.6 uksm is seperate
+  patch -Np1 -i "$srcdir"/uksm-4.6.patch
   
   if [ "$CARCH" = "x86_64" ]; then
 	cat "${startdir}/config.x86_64" >| .config
@@ -333,7 +342,7 @@ build() {
 }
 
 package_linux-pf() {
- _pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ] and aufs3."
+ _pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ], uksm and aufs3."
  pkgdesc=${_pkgdesc}
  groups=('base')
  backup=(etc/mkinitcpio.d/${pkgbase}.preset)
@@ -577,7 +586,7 @@ package_linux-pf-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi sound trace uapi video xen; do
+    media net pcmcia scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
@@ -692,13 +701,15 @@ package_linux-pf-headers() {
 }
 
 # Work around the AUR parser
-pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ] and aufs3"
+pkgdesc="Linux kernel and modules with the pf-kernel patch [-ck patchset (BFS included), TuxOnIce, BFQ], uksm and aufs3"
 
 # makepkg -g >>PKGBUILD
-sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
-            '40955214cfe00b6dc217e9c517e0af07d90bfdb9e937238a4a569724a42c7e03'
-            '74f9b5717214b458aadd3cc7474d90a4bf0eb68f85813b3d8138b9285ea01b3b'
+sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
+            '606824b2b5bee79f1ae18b2946a4ef896b49d1015c4aba37676829ecc1a0e2ba'
+            '42321951511acc1ae2d7e121a78e7c42a683cdd812fcf97906a77967c7ad2aa5'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'd90f4d13bcbca5903b9a70ab653ac4446938961cc7b83b053824ed6afb557898'
-            'SKIP')
+            '322f524f6bb828903f352efc3f2602eb8caf2278aabbb4bb754bbc030d3f66c2'
+            'SKIP'
+            '83b450df0f2350f0539f515203b3be7ecf59b93c94016930c601745f86a871be'
+            'f99d6fcb0d1c21f00eae2fbd02d090cf111f5edecad4801b3d3f8c08f7892b73')
