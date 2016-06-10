@@ -1,0 +1,4 @@
+MidiJoystick/
+pkg/
+src/
+*.tar.xz
