@@ -3,10 +3,10 @@
 
 pkgname=perl-text-aspell
 pkgver=0.09
-pkgrel=2
+pkgrel=3
 pkgdesc="Perl interface to the GNU Aspell library"
 url="http://search.cpan.org/~hank/Text-Aspell/"
-license="GPL"
+license=("GPL")
 arch=('i686' 'x86_64')
 options=('!emptydirs')
 depends=('perl' 'aspell')
