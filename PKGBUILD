@@ -1,4 +1,4 @@
-# Maintainer: Michael Düll <mail@akurei.me> PGP-Key: C0DEA350
+# Maintainer: Eliot Whalan <ewhal at pantsu dot cat> 
 
 pkgname=python2-potr-git
 pkgver=20140219
