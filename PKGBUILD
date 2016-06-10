@@ -1,4 +1,5 @@
 # Maintainer: Ivy Foster <ivy.foster@gmail.com>
+# Contributor: Alexander Rødseth <rodseth@gmail.com>
 
 pkgname='netsurf-buildsystem-git'
 pkgver=1.5.r0.gbeca51c
