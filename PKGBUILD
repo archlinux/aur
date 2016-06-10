@@ -2,17 +2,17 @@
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 
 pkgname=bazel
-pkgver=0.2.3
-pkgrel=2
+pkgver=0.3.0
+pkgrel=1
 pkgdesc="Correct, reproducible, and fast builds for everyone"
 arch=('i686' 'x86_64')
 url="http://bazel.io/"
 license=('Apache')
-depends=('java-environment=8' 'libarchive' 'zip' 'unzip')
+depends=('java-environment>=8' 'libarchive' 'zip' 'unzip')
 makedepends=('git' 'protobuf')
 options=('!distcc' '!strip')
 source=("https://github.com/bazelbuild/bazel/archive/${pkgver}.tar.gz")
-sha256sums=('7e48bf3ef6da3afe619305708bfa09dde7f475ab8f1c3732faa0210a9b55c018')
+sha256sums=('2bb8e10018426c6bee415937612ba777b7a3779bc02a7dbb27b96a7440cc2a02')
 
 build() {
   cd ${pkgname}-${pkgver}
