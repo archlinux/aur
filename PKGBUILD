@@ -2,7 +2,7 @@
 
 pkgname=hidrd-git
 pkgver=r391.82c5cdd
-pkgrel=1
+pkgrel=2
 pkgdesc="HID report descriptor I/O library and conversion tool"
 arch=('i686' 'x86_64')
 url="https://github.com/DIGImend/hidrd/"
@@ -15,7 +15,7 @@ makedepends=('git')
 provides=('hidrd')
 conflicts=('hidrd')
 options=('!libtool')
-source=("$pkgname"::git://github.com/DIGImend/hidrd.git#branch=master)
+source=("$pkgname"::git+https://github.com/DIGImend/hidrd.git#branch=master)
 md5sums=('SKIP')
 
 pkgver() {
