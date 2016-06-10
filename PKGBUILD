@@ -3,7 +3,7 @@
 
 pkgname=firefox-download-youtube-videos-as-mp4
 _pkgname=download_youtube_videos_as_mp4
-pkgver=1.8.5
+pkgver=1.8.7
 pkgrel=1
 pkgdesc="Extension for firefox which download video"
 arch=('any')
@@ -11,12 +11,12 @@ url="https://addons.mozilla.org/es/firefox/addon/download-youtube"
 license=('GPL2')
 depends=("firefox")
 source=("https://addons.mozilla.org/firefox/downloads/latest/11869/addon-11869-latest.xpi")
-md5sums=('9a19cb4bbcb6e5cdb5e1106334ac6b96')
+md5sums=('f501d0e54f67778097af8b205dee7b2b')
 
 package() {
   cd $srcdir
-  local emid=$(sed -n -e '/<\?em:id>\?/!d; s/.*\([\"{].*[}\"]\).*/\1/; s/\"//g; p; q' install.rdf)
-  local dstdir=$pkgdir/usr/lib/firefox/browser/extensions/${emid}
+  emid="$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' install.rdf)"
+  dstdir=$pkgdir/usr/lib/firefox/browser/extensions
   install -d $dstdir
-  cp -R *[^xpi] $dstdir
+  cp *.xpi $dstdir/${emid}.xpi
 }
