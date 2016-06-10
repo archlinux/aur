@@ -5,13 +5,12 @@
 
 pkgname=autoconf2.13
 pkgver=2.13
-pkgrel=3
+pkgrel=4
 pkgdesc="A GNU tool for automatically configuring source code (Legacy 2.1x version)"
 arch=(any)
 url="http://www.gnu.org/software/autoconf/"
 license=('GPL2')
 depends=('perl')
-install=autoconf.install
 source=(http://ftpmirror.gnu.org/autoconf/autoconf-${pkgver}.tar.gz)
 md5sums=('9de56d4a161a723228220b0f425dc711')
 
