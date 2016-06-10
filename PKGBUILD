@@ -6,7 +6,7 @@
 
 pkgname=freeciv-sdl
 _pkgname=freeciv
-pkgver=2.5.3
+pkgver=2.5.4
 pkgrel=1
 pkgdesc="A multiuser clone of the famous Microprose game of Civilization - SDL Client"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ conflicts=('freeciv')
 options=('!libtool')
 install=$_pkgname.install
 source=(http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.bz2)
-sha512sums=('a3e1ee5f585be062ec5fc7783dfe24f4cd313bea016af47b868e01561fc3958a86ed310edd41130fc5ede6ca2547ca38198c8dbb18974db7d14defd103277b4b')
+md5sums=('f2b2e1f0afc7daecc9050bf6ceadb1d8')
 
 build() {
   cd "$srcdir"/$_pkgname-$pkgver
