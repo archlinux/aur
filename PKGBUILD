@@ -82,6 +82,13 @@ prepare() {
     svn export --force "${srcdir}/compiler-rt" projects/compiler-rt
 
     mkdir -p "${srcdir}/build"
+
+    # Somehow CMake finds the 64-bit library in /lib first,
+    # so let's preseed CMAKE_LIBRARY_PATH with /lib32.
+    sed -i \
+        '/^[[:blank:]]*find_library(FFI_LIBRARY_PATH/i\
+  list(INSERT CMAKE_LIBRARY_PATH 0 /usr/lib32)' \
+        "${srcdir}/llvm/cmake/config-ix.cmake"
 }
 
 build() {
