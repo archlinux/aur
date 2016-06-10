@@ -1,18 +1,20 @@
-# $Id: PKGBUILD 176107 2016-05-22 19:21:41Z jlichtblau $
+# $Id: PKGBUILD 178059 2016-06-06 21:17:57Z arojas $
 # Maintainer: Jaroslav Lichtblau <svetlemodry@archlinux.org>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 # Contributor: William Rea <sillywilly@gmail.com>
 
+#delete obsolete .patch file from svn
+
 pkgname=gdal-hdf4
 _pkgname=gdal
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A translator library for raster geospatial data formats, with support to HDF4 format (required to use MODIStsp tool: http://github.com/lbusett/MODIStsp)"
 arch=('i686' 'x86_64')
 url="http://www.gdal.org/"
 license=('custom')
-depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf'
-         'openjpeg2' 'poppler' 'python2' 'python2-numpy' 'cfitsio' 'sqlite' 'libmariadbclient' 'postgresql-libs' 'hdf4-nonetcdf')
+depends=('curl' 'geos' 'giflib' 'hdf5' 'libgeotiff' 'libjpeg-turbo' 'libpng' 'libspatialite' 'libtiff' 'netcdf' 'hdf4-nonetcdf'
+         'openjpeg2' 'poppler' 'python2' 'python2-numpy' 'cfitsio' 'sqlite' 'libmariadbclient' 'postgresql-libs')
 makedepends=('perl' 'swig' 'chrpath' 'doxygen')
 optdepends=('postgresql: postgresql database support'
             'mariadb: mariadb database support'
