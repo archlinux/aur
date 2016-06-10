@@ -1,0 +1,17 @@
+pkgbase = containerd-git
+	pkgdesc = A daemon to control runC, built for performance and density
+	pkgver = v0.2.0.r95.g3d90005
+	pkgrel = 1
+	url = https://containerd.tools/
+	arch = x86_64
+	license = APACHE
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	depends = runc-git
+	replaces = containerd
+	source = git+https://github.com/docker/containerd.git
+	md5sums = SKIP
+
+pkgname = containerd-git
+
