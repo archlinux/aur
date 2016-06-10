@@ -1,8 +1,9 @@
 # Maintainer: Michael Yang <ohmyarchlinux@gmail.com>
+
 pkgname=cpprestsdk-git
 pkgver=2.8.0.r1609.5abe0cb
 pkgrel=1
-pkgdesc="a cross-platform, modern, and asynchronous library that enables developers to access and author connected applications"
+pkgdesc="A cross-platform, modern, and asynchronous library that enables developers to access and author connected applications"
 arch=('i686' 'x86_64')
 url="https://github.com/Microsoft/cpprestsdk/"
 license=('Apache')
@@ -34,8 +35,8 @@ build() {
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir/" install
+  make -C build DESTDIR="${pkgdir}" install
   cd cpprestsdk
-  install -Dm644 license.txt $pkgdir/usr/share/licenses/cpprestsdk/LICENSE
-  install -Dm644 ThirdPartyNotices.txt $pkgdir/usr/share/licenses/cpprestsdk/ThirdPartyNotices
+  install -Dm644 license.txt ${pkgdir}/usr/share/licenses/cpprestsdk/LICENSE
+  install -Dm644 ThirdPartyNotices.txt ${pkgdir}/usr/share/licenses/cpprestsdk/ThirdPartyNotices
 }
