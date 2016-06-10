@@ -1,0 +1,8 @@
+--- ./systemd/clamav-unofficial-sigs.service	2016-05-14 10:16:19.000000000 +0900
++++ ./systemd/clamav-unofficial-sigs.service	2016-06-10 16:15:43.000000000 +0900
+@@ -27,4 +27,4 @@
+ Documentation=man:clamav-unofficial-sigs(8)
+ 
+ [Service]
+-ExecStart=/usr/local/bin/clamav-unofficial-sigs.sh
++ExecStart=/usr/bin/clamav-unofficial-sigs.sh

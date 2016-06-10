@@ -8,7 +8,7 @@ _install_cron_file=
 _install_logrotate_file="y"
 
 pkgname=clamav-unofficial-sigs
-pkgver=5.3.1
+pkgver=5.3.2
 pkgrel=1
 pkgdesc='ClamAV Unofficial Signatures Updater maintained by eXtremeSHOK.com'
 arch=('any')
@@ -16,17 +16,21 @@ url='https://github.com/extremeshok/clamav-unofficial-sigs'
 license=('BSD')
 depends=('clamav' 'rsync' 'bind-tools' 'gnupg' 'curl')
 source=("https://github.com/extremeshok/clamav-unofficial-sigs/archive/$pkgver.tar.gz"
-    "cron"
-    "logrotate"
-    "clamav-unofficial-sigs.8")
-sha256sums=('f2b613c8fdc5197ab73fa499d5a5a82cc68889bf3c8b45bd90363e6f21154599'
+    'cron'
+    'logrotate'
+    'clamav-unofficial-sigs.8'
+    'clamav-unofficial-sigs.service.patch')
+sha256sums=('3abe1c22133d879318cebc18d3224a820ea1747524425d4a2efd337749596589'
             '82d1db1f7f8400d4b5457343a6c6e1c32cffbee06b0f73104c5b11641b58fa74'
             'ad2dee4d8d21483f33f9e95a808c598c98c03014baffa12141ecaefcd2cc3a79'
-            '53fe3143db5d422e6306bc9c7ba400976328faaf79cade5f669b48bb1ce6f7bf')
-backup=("etc/clamav-unofficial-sigs/user.conf")
+            '53fe3143db5d422e6306bc9c7ba400976328faaf79cade5f669b48bb1ce6f7bf'
+            '227d4e6b7d3611765ed3d8cfdca902ff5a991139babfd4645bdacbb66d3fc416')
+backup=('etc/clamav-unofficial-sigs/user.conf')
 
 package() {
     cd "$pkgname-$pkgver"
+
+    patch -p0 < $srcdir/clamav-unofficial-sigs.service.patch
 
     install -Dm755 clamav-unofficial-sigs.sh "${pkgdir}/usr/bin/clamav-unofficial-sigs.sh"
     install -Dm644 "${srcdir}/clamav-unofficial-sigs.8" "${pkgdir}/usr/share/man/man8/clamav-unofficial-sigs.8"
