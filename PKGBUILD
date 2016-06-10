@@ -1,14 +1,14 @@
 #Maintainer wicast <wicastchen at hotmail>
 
 pkgname=glide-git
-pkgver=0.8.3.r0.g4662222
+pkgver=0.10.2.r47.ge73500c
 pkgrel=1
 pkgdesc="Simplified Go project management, dependency management, and vendoring."
 arch=('any')
-url=('https://github.com/Masterminds/glide')
+url='https://github.com/Masterminds/glide'
 licence=('MIT')
 makedepends=('git' 'go>=1.5')
-provides=('glide=0.6.1')
+provides=('glide')
 conflicts=('glide')
 source=(${pkgname}::git+https://github.com/Masterminds/glide.git)
 md5sums=('SKIP')
@@ -19,8 +19,10 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/$pkgname"
-    make bootstrap
+    cd "$srcdir/$pkgname"
+    export GOPATH="$srcdir"
+    go get ./... || true
+    make build
 }
 
 package() {
