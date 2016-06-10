@@ -1,0 +1,16 @@
+pkgbase = libparserutils-git
+	pkgdesc = Library for building efficient parsers
+	pkgver = 0.2.3.r0.ga191c15
+	pkgrel = 1
+	url = http://www.netsurf-browser.org/projects/libparserutils/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = netsurf-buildsystem-git
+	provides = libparserutils
+	conflicts = libparserutils
+	source = git://git.netsurf-browser.org/libparserutils.git
+	sha256sums = SKIP
+
+pkgname = libparserutils-git
+
