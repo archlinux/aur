@@ -1,6 +1,6 @@
 pkgbase = grub2-git
 	pkgdesc = GNU GRand Unified Bootloader: the ultimate package (git snapshot)
-	pkgver = 2.02+beta2+555+g6a46cbc
+	pkgver = 2.02+beta3+11+gf4d35d4
 	pkgrel = 1
 	url = http://gnu.org/software/grub/
 	arch = i686
@@ -14,13 +14,11 @@ pkgbase = grub2-git
 	source = grub-extras::git://git.savannah.nongnu.org/grub-extras.git
 	source = archlinux_grub_mkconfig_fixes.patch
 	source = i386_softdiv.patch
-	source = grub-doc.install
 	source = grub-notice.install
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 729168cd3df5b21cc613bf74a1f923bcf79ad3db99c1eb81e9be31aaf3211891
 	sha256sums = fb69d0e9d820365abd961e4c6b3d0e3b09e337f6a01c47ad67900708b5c9b598
-	sha256sums = 2723edf8401e45fc85fa94b57273ae5c9cf65d9ec531ddc616f3f3d87643e571
 	sha256sums = 90948b2035f806dc74fc878520e593a34f51e35e6f698391a6fe6eabf657bed2
 
 pkgname = grub2-x86_64-efi-git
@@ -28,7 +26,7 @@ pkgname = grub2-x86_64-efi-git
 	provides = 
 	provides = grub2-efi-x86_64
 	provides = grub2-modules
-	provides = grub2-modules-git=2.02+beta2+555+g6a46cbc
+	provides = grub2-modules-git=2.02+beta3+11+gf4d35d4
 	conflicts = 
 	conflicts = grub2-efi-x86_64
 
@@ -37,7 +35,7 @@ pkgname = grub2-i386-pc-git
 	provides = 
 	provides = grub2-bios
 	provides = grub2-modules
-	provides = grub2-modules-git=2.02+beta2+555+g6a46cbc
+	provides = grub2-modules-git=2.02+beta3+11+gf4d35d4
 	conflicts = 
 	conflicts = grub2-bios
 
@@ -45,7 +43,7 @@ pkgname = grub2-i386-efi-git
 	pkgdesc = GNU GRand Unified Bootloader: i386 EFI modules (git snapshot)
 	provides = grub2-efi-i386
 	provides = grub2-modules
-	provides = grub2-modules-git=2.02+beta2+555+g6a46cbc
+	provides = grub2-modules-git=2.02+beta3+11+gf4d35d4
 	conflicts = grub2-efi-i386
 
 pkgname = grub2-i386-qemu-git
@@ -77,6 +75,5 @@ pkgname = grub2-common-git
 
 pkgname = grub2-doc-git
 	pkgdesc = GNU GRand Unified Bootloader: documentation (git snapshot)
-	install = grub-doc.install
 	arch = any
 

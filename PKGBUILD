@@ -27,7 +27,7 @@ _conf_emu=(--with-bootdir='/usr/lib')
 source=(grub::'git://git.savannah.gnu.org/grub.git#branch=master')
 sha256sums=('SKIP')
 
-pkgver=2.02+beta2+555+g6a46cbc
+pkgver=2.02+beta3+11+gf4d35d4
 pkgrel=1
 pkgdesc="GNU GRand Unified Bootloader: the ultimate package (git snapshot)"
 arch=(i686 x86_64)
@@ -58,20 +58,18 @@ _wanted grub2-i386-qemu-git && makedepends+=('bdf-unifont')
 source+=(
 	archlinux_grub_mkconfig_fixes.patch
 	i386_softdiv.patch
-	grub-doc.install
 	grub-notice.install
 )
 
 sha256sums+=(
 	'729168cd3df5b21cc613bf74a1f923bcf79ad3db99c1eb81e9be31aaf3211891'
 	'fb69d0e9d820365abd961e4c6b3d0e3b09e337f6a01c47ad67900708b5c9b598'
-	'2723edf8401e45fc85fa94b57273ae5c9cf65d9ec531ddc616f3f3d87643e571'
 	'90948b2035f806dc74fc878520e593a34f51e35e6f698391a6fe6eabf657bed2'
 )
 
 pkgver() {
 	cd "$srcdir/grub"
-	git describe --tags | sed -e 's/^grub-//' | tr -- - +
+	git describe --tags | sed -e 's/^grub-//; y/-/+/'
 }
 
 prepare() {
@@ -274,7 +272,6 @@ package_grub2-common-git() {
 
 package_grub2-doc-git() {
 	pkgdesc="GNU GRand Unified Bootloader: documentation (git snapshot)"
-	install=grub-doc.install
 	arch=(any)
 
 	cd "$srcdir/build-none/docs"
