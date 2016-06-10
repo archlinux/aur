@@ -1,4 +1,4 @@
-#Maintainer: ewhal4 <ewhal4 at live dot com>
+#Maintainer: Eliot Whalan <ewhal at pantsu dot cat>
 #Contributor: Ng Oon-Ee <ngoonee.talk@gmail.com>
 pkgname=ladspa-bs2b
 pkgver=0.9.1
