@@ -1,24 +1,28 @@
-From 132daac42d49e14686b05e8dad64b3652084d240 Mon Sep 17 00:00:00 2001
-From: Shyouzou Sugitani <shy@users.sourceforge.jp>
-Date: Wed, 13 Jun 2012 23:44:11 +0900
-Subject: [PATCH] add a foreign type for cairo_region_t.
+From c63d34d666ef9dcf2024207e736f47a8791da486 Mon Sep 17 00:00:00 2001
+From: Christoph Reiter <creiter@src.gnome.org>
+Date: Mon, 6 Jun 2016 12:26:44 +0200
+Subject: [PATCH] Add a foreign type for cairo_region_t.
 
-* the patch in https://bugs.freedesktop.org/show_bug.cgi?id=44336
-  is required for pycairo
+Based on the patch at
+    https://bugzilla.gnome.org/show_bug.cgi?id=667959#c7
 
-Bug: https://bugzilla.gnome.org/show_bug.cgi?id=667959
-Bug-Ubuntu: https://launchpad.net/bugs/1028115
+* Rebased on master
+* Fixes the cairo_region_from_arg signature
+* Add some tests
+
+https://bugzilla.gnome.org/show_bug.cgi?id=667959
 ---
- gi/pygi-foreign-cairo.c |   44 ++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 44 insertions(+)
+ gi/pygi-foreign-cairo.c | 50 +++++++++++++++++++++++++++++++++++++++++++++++++
+ tests/test_cairo.py     | 28 +++++++++++++++++++++++++--
+ 2 files changed, 76 insertions(+), 2 deletions(-)
 
-Index: pygobject/gi/pygi-foreign-cairo.c
-===================================================================
---- pygobject.orig/gi/pygi-foreign-cairo.c
-+++ pygobject/gi/pygi-foreign-cairo.c
-@@ -368,6 +368,46 @@ cairo_pattern_from_gvalue (const GValue
+diff --git a/gi/pygi-foreign-cairo.c b/gi/pygi-foreign-cairo.c
+index 8e76529..ff29ee1 100644
+--- a/gi/pygi-foreign-cairo.c
++++ b/gi/pygi-foreign-cairo.c
+@@ -367,6 +367,48 @@ cairo_pattern_from_gvalue (const GValue *value)
+     return PycairoPattern_FromPattern (pattern, NULL);
  }
- 
  
 +#if PY_VERSION_HEX >= 0x03000000
 +static PyObject *
@@ -42,11 +46,14 @@ Index: pygobject/gi/pygi-foreign-cairo.c
 +}
 +
 +static PyObject *
-+cairo_region_from_arg (GIInterfaceInfo *interface_info, gpointer data)
++cairo_region_from_arg (GIInterfaceInfo *interface_info,
++                       GITransfer transfer,
++                       gpointer data)
 +{
 +    cairo_region_t *region = (cairo_region_t*) data;
 +
-+    cairo_region_reference (region);
++    if (transfer == GI_TRANSFER_NOTHING)
++        cairo_region_reference (region);
 +
 +    return PycairoRegion_FromRegion (region);
 +}
@@ -59,11 +66,10 @@ Index: pygobject/gi/pygi-foreign-cairo.c
 +    Py_RETURN_NONE;
 +}
 +#endif
-+
+ 
  static PyMethodDef _gi_cairo_functions[] = { {0,} };
  PYGLIB_MODULE_START(_gi_cairo, "_gi_cairo")
- {
-@@ -406,6 +446,14 @@ PYGLIB_MODULE_START(_gi_cairo, "_gi_cair
+@@ -406,6 +448,14 @@ PYGLIB_MODULE_START(_gi_cairo, "_gi_cairo")
                                    cairo_font_options_from_arg,
                                    cairo_font_options_release);
  
@@ -78,3 +84,55 @@ Index: pygobject/gi/pygi-foreign-cairo.c
      pyg_register_gtype_custom (CAIRO_GOBJECT_TYPE_CONTEXT,
                                 cairo_context_from_gvalue,
                                 cairo_context_to_gvalue);
+diff --git a/tests/test_cairo.py b/tests/test_cairo.py
+index fdf86a2..02049c0 100644
+--- a/tests/test_cairo.py
++++ b/tests/test_cairo.py
+@@ -14,11 +14,14 @@ try:
+ except ImportError:
+     has_cairo = False
+ 
++has_region = has_cairo and hasattr(cairo, "Region")
++
+ try:
+-    from gi.repository import Gtk
+-    Gtk  # pyflakes
++    from gi.repository import Gtk, Gdk
++    Gtk, Gdk  # pyflakes
+ except:
+     Gtk = None
++    Gdk = None
+ 
+ from gi.repository import GObject
+ 
+@@ -67,6 +70,27 @@ class Test(unittest.TestCase):
+ 
+ 
+ @unittest.skipUnless(has_cairo, 'built without cairo support')
++@unittest.skipUnless(has_region, 'built without cairo.Region support')
++@unittest.skipUnless(Gdk, 'Gdk not available')
++class TestRegion(unittest.TestCase):
++
++    def test_region_to_py(self):
++        surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, 10, 10)
++        context = cairo.Context(surface)
++        context.paint()
++        region = Gdk.cairo_region_create_from_surface(surface)
++        r = region.get_extents()
++        self.assertEqual((r.height, r.width), (10, 10))
++
++    def test_region_from_py(self):
++        surface = cairo.ImageSurface(cairo.FORMAT_ARGB32, 10, 10)
++        context = cairo.Context(surface)
++        region = cairo.Region(cairo.RectangleInt(0, 0, 42, 42))
++        Gdk.cairo_region(context, region)
++        self.assertTrue("42" in repr(list(context.copy_path())))
++
++
++@unittest.skipUnless(has_cairo, 'built without cairo support')
+ @unittest.skipUnless(Gtk, 'Gtk not available')
+ class TestPango(unittest.TestCase):
+     def test_cairo_font_options(self):
+-- 
+2.8.1
+

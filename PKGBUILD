@@ -5,15 +5,15 @@ _pkgbase=pygobject
 pkgbase=pygobject-patched
 pkgname=(python-gobject-patched python2-gobject-patched)
 pkgver=3.20.0
-pkgrel=1
+pkgrel=2
 arch=(i686 x86_64)
 url="https://live.gnome.org/PyGObject"
 license=(LGPL)
-makedepends=(python python2 python-cairo python2-cairo gobject-introspection)
+makedepends=(python python2 python-cairo-git python2-cairo gobject-introspection)
 source=("https://download.gnome.org/sources/${_pkgbase}/${pkgver:0:4}/${_pkgbase}-${pkgver}.tar.xz"
 		"01_cairo_region.patch")
 sha256sums=('31ab4701f40490082aa98af537ccddba889577abe66d242582f28577e8807f46'
-            '194fc7946beb01d02a3fba587a214f2f38da56e3b63ecc9b7de37da210488919')
+            'f6f57ccf195c0c8c654edaab0bf09940a15d14ac72bca0b6c1272a0e22792e8e')
 
 prepare() {
   mkdir -p build-py2 build-py3
