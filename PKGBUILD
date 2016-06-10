@@ -2,7 +2,7 @@
 
 _npmname=knex
 pkgname=nodejs-$_npmname
-pkgver=0.10.0
+pkgver=0.11.5
 pkgrel=1
 pkgdesc="A query builder for PostgreSQL, MySQL and SQLite3, designed to be flexible, portable, and fun to use."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs' 'npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('89f98ad003b6eceacbd4005b7e6f4ca5cb1cbd47610ed16665b7a4119340376e')
+sha256sums=('2585760c79b3b7ddb43016a96ba704ea6f2c794f4e25d649ec050c9d1a60625b')
 
 package() {
     cd "$srcdir"
