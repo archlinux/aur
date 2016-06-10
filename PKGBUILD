@@ -3,11 +3,11 @@
 
 pkgname=kde-cdemu-manager
 pkgver=0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="KDE CDEmu Manager is a simple frontend for CDEmu."
 arch=('i686' 'x86_64')
 url="http://www.kde-apps.org/content/show.php/KDE+CDEmu+Manager?content=99752"
-license="GPL"
+license=("GPL")
 depends=('kdelibs' 'cdemu-daemon>=2.0')
 makedepends=('cmake' 'automoc4')
 source=(http://www.kde-apps.org/CONTENT/content-files/99752-kde_cdemu-$pkgver.0.tar.bz2)
