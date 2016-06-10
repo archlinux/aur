@@ -9,14 +9,13 @@
 pkgname=stumpwm-git
 _pkgname=stumpwm
 pkgver=0.9.9.r144.g7d5b5eb
-pkgrel=1
+pkgrel=2
 pkgdesc="A tiling, keyboard-driven window manager written in common lisp"
 arch=('i686' 'x86_64')
 url="https://stumpwm.github.io"
 license=('GPL2')
 provides=('stumpwm')
 makedepends=('autoconf')
-install=stumpwm.install
 
 source=(${_pkgname}::git+https://github.com/stumpwm/stumpwm
         ${_pkgname}-contrib::git+https://github.com/stumpwm/stumpwm-contrib)
