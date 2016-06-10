@@ -4,28 +4,35 @@
 #    * /usr/lib/libinfinipath.so.4.0 has executable stack.  That's an upstream issue.
 
 pkgname=infinipath-psm
+_pkgname=psm
 pkgver=3.3
-_pkgver_subver=7
-_pkgver_commit=g05f6f14
-pkgrel=2
+_pkgver_subver=22
+_pkgver_commit=g4abbc60
+pkgrel=1
 pkgdesc='OpenFabrics Alliance Intel Performance Scaled Messaging library'
 arch=('x86_64' 'i686')
-url=('https://www.openfabrics.org/index.php/overview.html')
+url='https://www.openfabrics.org/index.php/overview.html'
 license=('GPL2' 'custom:"Open Fabrics Alliance BSD"')
 depends=('glibc' 'libutil-linux')
-source=("https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}-${_pkgver_subver}_${_pkgver_commit}_open.tar.gz")
-md5sums=('ad26294b2dc5d4769d7724db61de0c6c')
+makedepends=('git')
+# Latest more-official release at "https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}-${_pkgver_subver}_${_pkgver_commit}_open.tar.gz" is broken
+source=("git+https://github.com/01org/${_pkgname}"
+        "fixMisleadingIndentation.patch")
+md5sums=('SKIP'
+         'fc55d52e252217c264098d590663f95d')
 
 prepare() {
-  # v3.3-2_g6f42cdb uses /usr/lib64 without a proper way to override it
-  # Documentation claims make install supports LIBDIR=/lib overriding the default /lib64 for x86_64 architecture, but it doesn't
-  cd "${srcdir}/${pkgname}-${pkgver}-${_pkgver_subver}_${_pkgver_commit}_open"
-  sed -i 's|$(INSTALL_PREFIX)/lib64|$(INSTALL_PREFIX)/lib|' Makefile
+  cd "${srcdir}/psm"
+  # Latest more-official release at "https://www.openfabrics.org/downloads/${pkgname}/${pkgname}-${pkgver}-${_pkgver_subver}_${_pkgver_commit}_open.tar.gz" is broken
+  # This isn't a -git AUR package, so grab the latest known and tested commit, as of the last updating of PKGBUILD 
+  git checkout 4abbc60
+  # Newer GCC catches an unpatched error upstream
+  git apply "${srcdir}/fixMisleadingIndentation.patch"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}-${_pkgver_subver}_${_pkgver_commit}_open"
-  # infinipath-psm doesn't use configure, just make
+  cd "${srcdir}/psm"
+  # infinipath-psm doesn't use configure, just make.  And make without options fails.
   # And Makefile looks for "arch" environment variable to be x86_64 or i386, which is not set by default on arch linux
   if [[ "${CARCH}" == 'x86_64' ]]; then
     make arch="${CARCH}"
@@ -35,12 +42,13 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}-${_pkgver_subver}_${_pkgver_commit}_open"
+  cd "${srcdir}/psm"
   # Again, Makefile looks for "arch" environment variable to be x86_64 or i386, which is not set by default on arch linux
+  # Also note README specifies LIBDIR option is upper case, but it's lower case libdir
   if [[ "${CARCH}" == 'x86_64' ]]; then
-    make arch="${CARCH}" DESTDIR="${pkgdir}" LIBDIR=/usr/lib install
+    make arch="${CARCH}" DESTDIR="${pkgdir}" libdir=/usr/lib install
   elif [[ "${CARCH}" == 'i686' ]]; then
-    make arch='i386' DESTDIR="${pkgdir}" LIBDIR=/usr/lib install
+    make arch='i386' DESTDIR="${pkgdir}" libdir=/usr/lib install
   fi
   
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
