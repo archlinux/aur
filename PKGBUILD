@@ -11,7 +11,7 @@ pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=("i686" "x86_64")
 url="https://code.google.com/p/v8/"
 license=("BSD")
-depends=("readline" "icu" "libtinfo-5")
+depends=("readline" "icu" "libtinfo5")
 makedepends=("clang-tools-extra" "python2" "python2-virtualenv" "ninja" "git")
 source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot_tools.git"
         "gyp::git+https://chromium.googlesource.com/external/gyp"
