@@ -1,0 +1,19 @@
+pkgbase = libdom-git
+	pkgdesc = Implementation of the W3C DOM
+	pkgver = 0.3.0.r0.g54c4309
+	pkgrel = 1
+	url = http://www.netsurf-browser.org/projects/libdom/
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = netsurf-buildsystem-git
+	depends = libhubbub-git
+	depends = libwapcaplet-git
+	depends = wget
+	provides = libdom
+	conflicts = libdom
+	source = git://git.netsurf-browser.org/libdom.git
+	sha256sums = SKIP
+
+pkgname = libdom-git
+
