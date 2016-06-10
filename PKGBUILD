@@ -19,6 +19,7 @@ prepare() {
 
 build() {
     cd "$srcdir/${pkgname}-${pkgver}"
+    autoreconf -vfi
 	./autogen.sh
 	./configure --prefix=/usr
 	make
