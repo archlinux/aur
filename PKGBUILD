@@ -3,7 +3,7 @@
 pkgname=quickpaper-git
 pkgver=1.0.0.r12.040fcbb
 pkgrel=1
-pkgdesc="a set of QtQuick components extending QtQuick.Controls for building applications specifically designed with Material Design"
+pkgdesc="A set of QtQuick components extending QtQuick.Controls for building applications specifically designed with Material Design"
 arch=('i686' 'x86_64')
 url="https://github.com/iBeliever/quickpaper/"
 license=('MPL2')
