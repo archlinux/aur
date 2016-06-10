@@ -17,7 +17,7 @@ source=(
 install=$pkgname.install
 options=('!strip')
 provides=('openbazaar')
-replaces=('openbazaar-git')
+conflicts=('openbazaar-git')
 _srcfolder=OpenBazaar-Client-$pkgver
 
 build(){
