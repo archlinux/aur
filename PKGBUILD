@@ -1,18 +1,18 @@
 pkgname=numix-themes-electric
 pkgver=2.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A flat and light theme with a modern look using Arch Linux colors (GNOME, Openbox, Unity, Xfce)'
 arch=('any')
 url='http://numixproject.org/'
 license=('GPL3')
 depends=('gtk-engine-murrine')
 source=("numix-themes-${pkgver}.tar.gz::https://github.com/shimmerproject/Numix/archive/v${pkgver}.tar.gz")
-md5sums=('4468cb3f2fe0d01e823df7c310778787')
+md5sums=('f480ae44848186818a4c5a884c250388')
 
 prepare() {
     names='base_color bg_color text_color fg_color selected_bg_color selected_fg_color tooltip_bg_color tooltip_fg_color'
     
-    cd Numix-${pkgver}
+    cd numix-gtk-theme-${pkgver}
     
     for name in $names
     do
@@ -32,7 +32,7 @@ prepare() {
 }
 
 package() {
-    cd Numix-${pkgver}
+    cd numix-gtk-theme-${pkgver}
     
     install -dm 755 "${pkgdir}"/usr/share/themes/Numix-Electric
     rm -rf .git .gitignore CREDITS LICENSE README.md
