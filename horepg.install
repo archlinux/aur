@@ -1,0 +1,9 @@
+post_install() {
+cat << 'EOM'
+  ==> horepg has been installed.
+  ==>
+  ==> Please start with 'systemctl start horepgd.service' or enable it for startup at boot. 
+  ==>
+  ==> Please make sure that XMLTV external EPG grabber is enabled in TVHeadend.
+EOM
+}
