@@ -3,7 +3,7 @@ pkgname=(swift swift-lldb)
 _swiftver=2.2.1-RELEASE
 _swiftold=2.2-SNAPSHOT-2016-01-11-a
 pkgver=${_swiftver//-RELEASE/}
-pkgrel=3
+pkgrel=4
 pkgdesc="The Swift programming language and debugger"
 arch=('i686' 'x86_64')
 url="http://swift.org/"
@@ -19,14 +19,15 @@ source=(
     "swift-clang-${_swiftver}.tar.gz::https://github.com/apple/swift-clang/archive/swift-${_swiftver}.tar.gz"
     "swift-lldb-${_swiftver}.tar.gz::https://github.com/apple/swift-lldb/archive/swift-${_swiftver}.tar.gz"
     "swift-cmark-${_swiftver}.tar.gz::https://github.com/apple/swift-cmark/archive/swift-${_swiftver}.tar.gz"
-    "swift-sphinx2.patch"
+    "swift-sphinx2.patch" "pod2man_release.patch"
 )
 sha256sums=('e971e2287055da72564356f369bad97e95821afb1ef36157e954a04a7e90753a'
             'f7977e5bb275494b5dac4490afc5d634f894ba5f209f3b2dbd5b7e520fa5fce2'
             '40bdfa7eec0497ec69005d6a5d018b12c85aa2c0959d3408ecaaa9e34ff0415f'
             '2098043dbda98374e784d3357f71f8e931aea3ac958c042adf0df0fae7bc22a3'
             '254d3c02bf2b03ad456fa3ad27b4da854e36318fcaf6b6f199fdb3e978a90803'
-            '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f')
+            '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f'
+            '68fe01cac3bf796fd06a0d42ab97fcf3db9eba27e582dad06bde76a9992d7028')
 
 # Set this to 1 to enable the experimental parts (swiftpm, corelibs)
 # Otherwise, the standard libraries, llbuild, and swiftpm will NOT be available
@@ -79,6 +80,12 @@ prepare() {
     # Sphinx 1.3.5 raises a warning (promoted to error) when using an unknown
     # syntax highlighting language (like "swift").
     ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/swift-sphinx2.patch" )
+
+    # Recent versions of pod2man require an argument to --release.  If no
+    # argument is provided, it will treat the next option as its argument,
+    # thereby breaking all subsequent arguments.  So let's put something
+    # useful there instead :)
+    ( cd "${srcdir}/swift" && patch -p1 -i "${srcdir}/pod2man_release.patch" )
 }
 
 build() {
