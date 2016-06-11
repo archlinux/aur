@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Intercon NetTool
+GenericName=Print Server Manager
+Comment=Manage SEH-Intercon Print Servers
+Exec=nettool
+Terminal=false
+Type=System
+Icon=edb
+Categories=System;Internet
+MimeType=application/x-executable
