@@ -10,6 +10,7 @@ pkgver=${pkgver_base}.${pkgver_build}
 pkgrel=1
 arch=('x86_64')
 url="http://www.amd.com"
+license=('custom:AMD')
 
 url_ref="http://support.amd.com/en-us/kb-articles/Pages/AMDGPU-PRO-Beta-Driver-for-Vulkan-Release-Notes.aspx"
 DLAGENTS="https::/usr/bin/curl --referer ${url_ref} -o %o %u"
