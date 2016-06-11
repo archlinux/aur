@@ -12,12 +12,12 @@ makedepends=('unzip' 'gnome-common' 'intltool' 'itstool' 'vala' 'yelp-tools')
 source=(https://github.com/cybre/screenshot-applet/archive/${pkgver}.zip)
 
 build() {
-	cd "$srcdir/${pkgname}-{$pkgver}"
+	cd "$srcdir/${pkgname}-${pkgver}"
 	./autogen.sh --prefix=/usr  --disable-schemas-compile
 	make
 }
 
 package() {
-	cd "$srcdir/${pkgname}-{$pkgver}"
+	cd "$srcdir/${pkgname}-${pkgver}"
 	make DESTDIR="${pkgdir}" install
 }
