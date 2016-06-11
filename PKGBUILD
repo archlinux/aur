@@ -1,7 +1,7 @@
 # Maintainer: 2ion <dev@2ion.de>
 pkgname=uchardet-git
-pkgver=r28.84e292d
-pkgrel=2
+pkgver=r186.602c1ab
+pkgrel=1
 pkgdesc="Encoding detector library ported from Mozilla"
 arch=('i686' 'x86_64')
 url="https://github.com/BYVoid/uchardet"
@@ -20,7 +20,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .
+  cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr -DCMAKE_INSTALL_LIBDIR=lib .
   make
 }
 

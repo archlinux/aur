@@ -1,7 +1,7 @@
 pkgbase = uchardet-git
 	pkgdesc = Encoding detector library ported from Mozilla
-	pkgver = r28.84e292d
-	pkgrel = 2
+	pkgver = r186.602c1ab
+	pkgrel = 1
 	url = https://github.com/BYVoid/uchardet
 	arch = i686
 	arch = x86_64
