@@ -12,7 +12,6 @@ pkgbase = alphaplot
 	depends = gsl
 	depends = glu
 	depends = mesa
-	depends = muparser
 	depends = shared-mime-info
 	depends = qt4
 	depends = qwt5

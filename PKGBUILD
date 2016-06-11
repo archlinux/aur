@@ -10,8 +10,7 @@ license=('GPL2')
 
 # make dependancies
 makedepends=('boost' 'cmake')
-depends=('gsl' 'glu' 'mesa' 'muparser' 'shared-mime-info' 'qt4'
-         'qwt5' 'qwtplot3d')
+depends=('gsl' 'glu' 'mesa' 'shared-mime-info' 'qt4' 'qwt5' 'qwtplot3d')
 
 # source download from git repo & prepare
 source=(git+https://github.com/narunlifescience/alphaplot.git)
