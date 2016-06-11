@@ -7,7 +7,7 @@ set -u
 _gitauth='lavv17'
 _pkgname='le'
 pkgname="${_pkgname}"
-pkgver=1.16.1
+pkgver=1.16.3
 pkgrel=1
 pkgdesc='A text editor in memorial to Norton Editor with block and binary operations'
 arch=('i686' 'x86_64')
@@ -20,7 +20,7 @@ _srcdir="${_pkgname}-${pkgver}"
 #source=("http://lav.yar.ru/download/le/${_pkgname}-${pkgver}.tar.gz")
 source=('git://git.sv.gnu.org/gnulib' "${_pkgname}-${pkgver}.tar.gz::https://github.com/${_gitauth}/${_pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('SKIP'
-            '66ceb8a85f524366ca89c240ed44b46e328e5a8a46af04effaca02ce8a785495')
+            '23a826afdea4fd43167367c25625ca52aaa2c941c1710990a6dc59fac7eddaed')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   unset _verwatch
