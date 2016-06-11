@@ -1,3 +1,7 @@
+2016-06-11 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.0.5.6:
+    Added workaround for Mono bug 41701 affecting Mono runtimes 4.4+.
+    Misc code improvements, optimizations and bugfixes.
 2016-06-10 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.0.5.5:
     Hopefully fixed another Windows false-positive introduced in 2.0.5.4.
@@ -9,14 +13,14 @@
     Improved logic of restarting cards farming module on newly added games.
     Misc code improvements, optimizations and bugfixes.
 2016-06-06 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
-	* 2.0.5.2:
-	  Added IsBotAccount bot config property.
+  * 2.0.5.2:
+    Added IsBotAccount bot config property.
     Added !version command.
     Fixed ASF not always resetting games played when farming got interrupted (e.g. with !pause command).
     Misc code improvements, optimizations and bugfixes.
 2016-06-03 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
-	* 2.0.5.1:
-   	Fixed harmless error when account was not using SteamApiKey, introduced in 2.0.5.0.
+  * 2.0.5.1:
+    Fixed harmless error when account was not using SteamApiKey, introduced in 2.0.5.0.
   * 2.0.5.0:
     [!] Greatly improved primary accounts support and removed AccountPlayingDelay global config property.
     ASF will now ignore initial OnFarmingFinished() event when ShutdownOnFarmingFinished is set, and you've just !started this bot instance, allowing you to issue commands without much hassle. Every next event (including the one fired after IdleFarmingPeriod) will be honored.
@@ -26,26 +30,26 @@
     Fixed ASF accidentally dismissing notifications related to profile comments.
     Massive portion of code improvements, optimizations and bugfixes.
 2016-05-12 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
-	* 2.0.4.4:
+  * 2.0.4.4:
     ASF now allows only one trade to be sent in SendOnFarmingFinished when account did not farm anything - this cuts spam related to sending trade every IdleFarmingPeriod, while still sending initial trade after connect.
     ASF now allows overpaying when SteamTradeMatcher is enabled.
     ASF no longer replies to given bot commands when bot instance could not be found and user is not SteamOwnerID.
     Slightly improved logic of selecting optimal Steam CM server to minimize network latency and improve network communication.
     Fixed ASF crash when trying to add new ASF 2FA authenticator with null SteamPassword.
     Minor code improvements, optimizations and bugfixes.
- 	* 2.0.4.1:
+  * 2.0.4.1:
     ASF 2FA is now more resistant to steam quirks by implementing the same logic of try-retry as usual requests.
     Enhanced !status command which now also shows when bot is running in manual mode (such as !pause or !play).
     Enhanced !owns command which is now able to work also with private profiles, as long as you use SteamApiKey for given account.
     [ConfigGenerator] Graphical config generator now uses asterisks for hiding SteamPassword property.
     Major portion of code improvements, optimizations and bugfixes.
- 	* 2.0.4.0:
+  * 2.0.4.0:
     Added new bot config property called SteamTradeMatcher with default value of false. As always, you can find more information in the wiki.
     Improved keys-detecting algorithm, which should greatly decrease amount of false-positives causing bot to redeem invalid cd-keys.
     Improved logic of !loot. ASF will now loot only trading cards (including foils) and boosters, instead of all steam community items (such as emoticons or backgrounds).
     When SendOnFarmingFinished is enabled, ASF will now also send trades when bot has nothing to farm.
     Code improvements, optimizations and bugfixes.
- 	* 2.0.3.4:
+  * 2.0.3.4:
     Slightly modified logic of DistributeKeys, according to #199
     Added new global config property called AutoRestart with default value of true. As always, you can find more information in the wiki.
     Minor code improvements, optimizations and bugfixes.
