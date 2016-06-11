@@ -1,0 +1,27 @@
+pkgbase = dolphin-emu-debugfast-git
+	pkgdesc = A Gamecube / Wii / Triforce emulator, Git version with DebugFast
+	pkgver = 4.0.r9442.gb968a90
+	pkgrel = 1
+	url = http://dolphin-emu.org
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = bluez-libs
+	depends = enet
+	depends = ffmpeg
+	depends = libao
+	depends = libevdev
+	depends = miniupnpc
+	depends = portaudio
+	depends = sfml
+	depends = soundtouch
+	depends = xdg-utils
+	depends = wxgtk
+	optdepends = pulseaudio: PulseAudio backend
+	options = !emptydirs
+	source = git+https://github.com/dolphin-emu/dolphin.git
+	md5sums = SKIP
+
+pkgname = dolphin-emu-debugfast-git
+
