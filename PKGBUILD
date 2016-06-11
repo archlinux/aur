@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=('rust-nightly' 'rust-nightly-doc')
-pkgver=1.11.0_2016.06.09
+pkgver=1.11.0_2016.06.10
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A safe, concurrent, practical language'
@@ -12,7 +12,6 @@ depends=('shared-mime-info')
 makedepends=('libffi' 'perl' 'python2' 'curl' 'llvm' 'clang' 'haskell-pandoc' 'emacs')
 source=("http://static.rust-lang.org/dist/rustc-nightly-src.tar.gz")
 sha256sums=('SKIP')
-install=rust.install
 options=('!makeflags' 'staticlibs' '!strip' '!emptydirs')
 conflicts=('rust')
 provides=('rust')
@@ -33,8 +32,6 @@ package_rust-nightly() {
 	provides=('rust')
 	conflicts=('rust')
 	options=('staticlibs')
-	install=rust.install
-
 	cd rustc-nightly
 
 	make DESTDIR="$pkgdir" install
