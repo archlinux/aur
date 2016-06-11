@@ -5,7 +5,7 @@
 
 pkgname=('mysql' 'libmysqlclient' 'mysql-clients')
 pkgbase=mysql
-pkgver=5.7.12
+pkgver=5.7.13
 pkgrel=1
 pkgdesc="Fast SQL database server, community edition"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ source=("https://dev.mysql.com/get/Downloads/MySQL-5.7/${pkgbase}-${pkgver}.tar.
         "mysqld-post.sh"
         "mysqld-tmpfile.conf"
         "mysqld.service")
-sha256sums=('32843cb6d22ab22cd2340262b53c0d6009b5bd41b1fa4102beda19635a5c1c87'
+sha256sums=('50bf1a1635a61235fc43fd4876df2f77163de109372679e29c1ff8dbc38a0b87'
             '47f11c8844e579d02691a607fbd32540104a9ac7a2534a8ddaef50daf502baac'
             '368f9fd2454d80eb32abb8f29f703d1cf9553353fb9e1ae4529c4b851cb8c5dd'
             '2af318c52ae0fe5428e8a9245d1b0fc3bc5ce153842d1563329ceb1edfa83ddd'
@@ -64,7 +64,7 @@ build() {
     -DWITHOUT_EXAMPLE_STORAGE_ENGINE=ON \
     -DWITHOUT_FEDERATED_STORAGE_ENGINE=ON \
     -DCMAKE_C_FLAGS="-fPIC ${CFLAGS} -fno-strict-aliasing -DBIG_JOINS=1 -fomit-frame-pointer -fno-delete-null-pointer-checks" \
-    -DCMAKE_CXX_FLAGS="-fPIC ${CXXFLAGS} -fno-strict-aliasing -DBIG_JOINS=1 -felide-constructors -fno-delete-null-pointer-checks" \
+    -DCMAKE_CXX_FLAGS="-fPIC ${CXXFLAGS} -std=gnu++98 -fno-strict-aliasing -DBIG_JOINS=1 -felide-constructors -fno-delete-null-pointer-checks" \
     -DWITH_MYSQLD_LDFLAGS="-pie ${LDFLAGS},-z,now" \
     -DWITH_BOOST="../boost_${_boost_ver//./_}"
   make
