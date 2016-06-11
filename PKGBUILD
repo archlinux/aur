@@ -3,8 +3,8 @@
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 pkgname=cryptsetup-nuke-keys
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.7.2
+pkgrel=1
 pkgdesc="cryptsetup patched to nuke all keyslots given a certain passphrase"
 arch=(i686 x86_64)
 license=('GPL')
@@ -22,21 +22,17 @@ source=(https://www.kernel.org/pub/linux/utils/cryptsetup/v1.7/cryptsetup-${pkgv
         keymanage.c.patch
         libcryptsetup.h.patch
         libcryptsetup.h.patch.asc
-        setup.c.patch
-        0001-Set-skcipher-key-before-accept-call-in-kernel-crypto.patch
-        0002-Fix-kernel-crypto-backend-to-set-key-before-accept-c.patch)
-sha256sums=('075524a7cc0db36d12119fa79116750accb1c6c8825d5faa2534b74b8ce3d148'
+        setup.c.patch)
+sha256sums=('dbb35dbf5f0c1749168c86c913fe98e872247bfc8425314b494c2423e7e43342'
             'SKIP'
             '4406f8dc83f4f1b408e49d557515f721d91b358355c71fbe51f74ab27e5c84ff'
             'cfe465bdad3d958bb2332a05e04f2e1e884422a5714dfd1a0a3b9b74bf7dc6ae'
             'd442304e6a78b3513ebc53be3fe2f1276a7df470c8da701b3ece971d59979bdd'
             '64bc32c5771ab72484f267521354d16833f35b0dc5985279186a8bf2d7a51efb'
             '13545e49806f441c2a70513bc2449229c9905f20b933e17ba54078c0392f6d87'
-            'b877fbba63e59aaac3d8ee37789b5d1f497d133909b1d4148b7afb5e9dd4e565'
+            'a594beafd8f1d57aa455b30b88d38ea2349d4ff2a1d51bb48edaf8c4fdeab63d'
             'SKIP'
-            '257656034c2fda27e0711dc76142693519453812d2cd45248abe3ea2f3c60a80'
-            'c4fb5946ba1b48b5a2fdafa2c32748f205d83d4cc824ebdae2d2f30abfc31b07'
-            'f4074ddf3f494f7da09be6a4ab9d42d84cf2a7818a959c526849e1bb40dab54d')
+            '257656034c2fda27e0711dc76142693519453812d2cd45248abe3ea2f3c60a80')
 
 validpgpkeys=(
               '5F885602C7FD0951F565E27949F67298E6366A92' # Claire Farron
@@ -48,11 +44,6 @@ conflicts=('cryptsetup')
 
 prepare() {
   cd "${srcdir}"/${pkgname%-nuke*}-${pkgver}
-
-  # Workaround: FS48230 - https://bugs.archlinux.org/task/48230
-  # http://thread.gmane.org/gmane.linux.kernel.stable/165742
-  patch -p1 -i "${srcdir}"/0001-Set-skcipher-key-before-accept-call-in-kernel-crypto.patch
-  patch -p1 -i "${srcdir}"/0002-Fix-kernel-crypto-backend-to-set-key-before-accept-c.patch
 
   # luksAddNuke
   msg "Patching source to enable luksAddNuke"

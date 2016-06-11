@@ -1,9 +1,9 @@
---- ./lib/libcryptsetup.h	2015-02-25 09:54:58.000000000 +0000
-+++ ./lib/libcryptsetup.h	2015-08-07 20:27:32.613524387 +0100
-@@ -748,6 +748,8 @@
- #define CRYPT_ACTIVATE_SAME_CPU_CRYPT (1 << 6)
- /** use submit_from_crypt_cpus for dm-crypt */
- #define CRYPT_ACTIVATE_SUBMIT_FROM_CRYPT_CPUS (1 << 7)
+--- ./lib/libcryptsetup.h	2016-06-04 12:15:40.000000000 +0100
++++ ./lib/libcryptsetup.h.new	2016-06-11 14:40:35.406881058 +0100
+@@ -758,6 +758,8 @@
+ #define CRYPT_ACTIVATE_RESTART_ON_CORRUPTION (1 << 9)
+ /** dm-verity: ignore_zero_blocks - do not verify zero blocks */
+ #define CRYPT_ACTIVATE_IGNORE_ZERO_BLOCKS (1 << 10)
 +/** key slot is a nuke, will wipe all keyslots */
 +#define CRYPT_ACTIVATE_NUKE (1 << 30)
  
