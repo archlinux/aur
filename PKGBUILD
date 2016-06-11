@@ -6,7 +6,7 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'libsystemd-selinux' 'systemd-sysvcompat-selinux')
-pkgver=229
+pkgver=230
 pkgrel=3
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -25,29 +25,34 @@ source=("git://github.com/systemd/systemd.git#tag=v$pkgver"
         'initcpio-install-udev'
         'arch.conf'
         'loader.conf'
-        'splash-arch.bmp::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/splash-arch.bmp?h=packages/systemd&id=e43ddb71a5b1ab56e898347a63e54c5d5d07728a')
+        'splash-arch.bmp::https://projects.archlinux.org/svntogit/packages.git/plain/trunk/splash-arch.bmp?h=packages/systemd&id=e43ddb71a5b1ab56e898347a63e54c5d5d07728a'
+        'udev-hwdb.hook')
 md5sums=('SKIP'
          '90ea67a7bb237502094914622a39e281'
-         '976c5511b6493715e381f43f16cdb151'
+         'cfb3f8ea657ab24535cc061bb38ec4c1'
          '1b3aa3a0551b08af9305d33f85b5c2fc'
          '20ead378f5d6df4b2a3e670301510a7d'
          'ddaef54f68f6c86c6c07835fc668f62a'
-         '1e2f9a8b0fa32022bf0a8f39123e5f4e')
+         '1e2f9a8b0fa32022bf0a8f39123e5f4e'
+         'a475a5ed8f03fb0f6b58b4684998d05c')
+
+_backports=(
+  # Revert "rules: allow users to access frame buffer devices" (#3333)
+  e77813ca9f4e0735fd0e3e2caae4d7d1ee436011
+
+  # {machine,system}ctl: always pass &changes and &n_changes (#3350)
+  acc0269cad31d1aaef2034a055b34c07c88a353d
+
+  # systemctl: fix return values on success
+  5f056378b0ceffb6e6fba3513f7eae72e2d09dc8
+)
 
 prepare() {
   cd "${pkgbase/-selinux}"
 
-  # networkd: FIONREAD is not reliable on some sockets
-  git cherry-pick -n 4edc2c9b6b5b921873eb82e58719ed4d9e0d69bf
-
-  # fix assertion failure in src/core/timer.c on bootup (FS#48197)
-  git cherry-pick -n 3f51aec8647fe13f4b1e46b2f75ff635403adf91
-
-  # fix udevd error checking from cg_unified() (FS#48188)
-  git cherry-pick -n 6d2353394fc33e923d1ab464c8f88df2a5105ffb
-
-  # revert "core: resolve specifier in config_parse_exec()"
-  git cherry-pick -n bd1b973fb326e9b7587494fd6108e5ded46e9163
+  if (( ${#_backports[*]} > 0 )); then
+    git cherry-pick -n "${_backports[@]}"
+  fi
 
   ./autogen.sh
 }
@@ -57,18 +62,25 @@ build() {
 
   local timeservers=({0..3}.arch.pool.ntp.org)
 
-  ./configure \
-      --libexecdir=/usr/lib \
-      --localstatedir=/var \
-      --sysconfdir=/etc \
-      --enable-audit \
-      --enable-lz4 \
-      --enable-gnuefi \
-      --enable-selinux \
-      --disable-ima \
-      --with-sysvinit-path= \
-      --with-sysvrcnd-path= \
-      --with-ntp-servers="${timeservers[*]}"
+  local configure_options=(
+    --libexecdir=/usr/lib
+    --localstatedir=/var
+    --sysconfdir=/etc
+
+    --enable-audit
+    --enable-lz4
+    --enable-gnuefi
+    --enable-selinux
+    --disable-ima
+
+    --with-sysvinit-path=
+    --with-sysvrcnd-path=
+    --with-ntp-servers="${timeservers[*]}"
+    --with-default-dnssec=no
+    --without-kill-user-processes
+  )
+
+  ./configure "${configure_options[@]}"
 
   make
 }
@@ -98,7 +110,6 @@ package_systemd-selinux() {
           etc/dbus-1/system.d/org.freedesktop.import1.conf
           etc/dbus-1/system.d/org.freedesktop.network1.conf
           etc/pam.d/systemd-user
-          etc/systemd/bootchart.conf
           etc/systemd/coredump.conf
           etc/systemd/journald.conf
           etc/systemd/journal-remote.conf
@@ -159,6 +170,8 @@ package_systemd-selinux() {
   install -Dm644 "$srcdir/arch.conf" "$pkgdir"/usr/share/systemd/bootctl/arch.conf
   install -Dm644 "$srcdir/loader.conf" "$pkgdir"/usr/share/systemd/bootctl/loader.conf
   install -Dm644 "$srcdir/splash-arch.bmp" "$pkgdir"/usr/share/systemd/bootctl/splash-arch.bmp
+
+  install -Dm644 "$srcdir/udev-hwdb.hook" "$pkgdir/usr/share/libalpm/hooks/udev-hwdb.hook"
 }
 
 package_libsystemd-selinux() {
