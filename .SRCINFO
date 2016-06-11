@@ -1,6 +1,6 @@
 pkgbase = factorio-demo
 	pkgdesc = A 2D game about building and maintaining factories.
-	pkgver = 0.12.33
+	pkgver = 0.12.35
 	pkgrel = 1
 	url = http://www.factorio.com/
 	arch = i686
@@ -18,10 +18,10 @@ pkgbase = factorio-demo
 	source = LICENSE
 	sha256sums = 5f62aa7763f9ad367a051371bc16f3c174022bb3380eb221ba06bac395bf9815
 	sha256sums = 67ec2f88afff5d7e0ca5fd3301b5d98655269c161a394368fa0ec49fbc0c0e21
-	source_i686 = factorio_demo_i386_0.12.33.tar.gz::http://www.factorio.com/get-download/0.12.33/demo/linux32
-	sha256sums_i686 = c0a43869a0f6f4239ac57c97bb8d475fe28d8f7de90c552f634cb326d8c4feca
-	source_x86_64 = factorio_demo_x64_0.12.33.tar.gz::http://www.factorio.com/get-download/0.12.33/demo/linux64
-	sha256sums_x86_64 = 2badf451dacd635a9e2fe8131796f6efc7dc3068f64adcd342fbd78587e38b20
+	source_i686 = factorio_demo_i386_0.12.35.tar.gz::http://www.factorio.com/get-download/0.12.35/demo/linux32
+	sha256sums_i686 = c1db1cf27b5a8c6d9e863777e4fd62dde9acb1dc1c1ddac18380cbf2d9fa5a1
+	source_x86_64 = factorio_demo_x64_0.12.35.tar.gz::http://www.factorio.com/get-download/0.12.35/demo/linux64
+	sha256sums_x86_64 = c3fecde713b6c984723794092032f28edf5f0775375792c99ad55df8db8c90d
 
 pkgname = factorio-demo
 
