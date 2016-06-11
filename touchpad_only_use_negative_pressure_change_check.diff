@@ -1,0 +1,42 @@
+From 2f5231cc88fccf389a78270d827f6c9201b86794 Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Wed, 18 May 2016 07:35:36 +1000
+Subject: touchpad: only use negative pressure change check on Lenovo *50 and
+ *60 series
+
+This was introduced for bug 94379 - an X1 Carbon 3rd. Other touchpads have
+different pressure change ranges, causing this condition to trigger
+randomly and resulting in a jerky pointer motion.
+
+For now, reduce the check to the *50 and *60 series touchpads until we have
+data for more touchpads that we can add one-by-one.
+
+https://bugs.freedesktop.org/show_bug.cgi?id=95393
+
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+Reviewed-by: Hans de Goede <hdegoede@redhat.com>
+
+diff --git a/src/evdev-mt-touchpad.c b/src/evdev-mt-touchpad.c
+index 4c8c3a3..c854043 100644
+--- a/src/evdev-mt-touchpad.c
++++ b/src/evdev-mt-touchpad.c
+@@ -928,6 +928,7 @@ tp_detect_jumps(const struct tp_dispatch *tp, struct tp_touch *t)
+ static void
+ tp_process_state(struct tp_dispatch *tp, uint64_t time)
+ {
++	struct evdev_device *device = tp->device;
+ 	struct tp_touch *t;
+ 	unsigned int i;
+ 	bool restart_filter = false;
+@@ -953,7 +954,8 @@ tp_process_state(struct tp_dispatch *tp, uint64_t time)
+ 		if (!t->dirty)
+ 			continue;
+ 
+-		if (t->pressure_delta < -7)
++		if ((device->model_flags & EVDEV_MODEL_LENOVO_T450_TOUCHPAD) &&
++		    t->pressure_delta < -7)
+ 			tp_motion_history_reset(t);
+ 
+ 		if (tp_detect_jumps(tp, t)) {
+-- 
+cgit v0.10.2
