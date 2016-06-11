@@ -1,6 +1,6 @@
 pkgbase = keepass-zh-cn
 pkgdesc = Chinese Simplified locale for keepass
-pkgver = 2.32
+pkgver = 
 pkgrel = 1
 url = http://keepass.info/translations.html
 arch = any
@@ -8,7 +8,7 @@ license = GPL2
 makedepends = unzip
 depends = keepass
 depends = xdotool
-source = https://downloads.sourceforge.net/keepass/KeePass-2.32-Chinese_Simplified.zip
+source = 
 sha512sums = SKIP
 
 pkgname = keepass-zh-cn
