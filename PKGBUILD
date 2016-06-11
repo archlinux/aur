@@ -1,6 +1,6 @@
 # Maintainer: Lukas Jirkovsky <l.jirkovsky@gmail.com>
 pkgname=vogl-git
-pkgver=714.a7317fa
+pkgver=716.434dcc5
 pkgrel=1
 pkgdesc="An OpenGL debugger"
 arch=('i686' 'x86_64')
@@ -14,9 +14,9 @@ optdepends=('steam: trace games from Steam'
             'lib32-vogl-git: trace 32bit applications in 64bit Arch')
 #options=('!buildflags' '!makeflags')
 install=vogl.install
-source=('git+https://github.com/ValveSoftware/vogl.git' 'vogl.sh' '0001-fix-qt-5.5-build-error.patch')
+source=('git+https://github.com/ValveSoftware/vogl.git' 'vogl.sh')
 md5sums=('SKIP'
-         'c9e00b04f42f293c10cfe3622911d345' '14d358c27719a4c317f741118b8a23ab')
+         'c9e00b04f42f293c10cfe3622911d345')
 
 [[ $CARCH == 'x86_64' ]] && _EXTRAFLAGS="-DBUILD_X64=On" || _EXTRAFLAGS="-DBUILD_X64=Off"
 
@@ -27,7 +27,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/vogl"
-  patch -Np1 < "$srcdir/0001-fix-qt-5.5-build-error.patch"
   # disable building of glxspheres64 demo to keep the dependencies minimal
   sed -i 's|add_subdirectory.*glxspheres.*|#&|' CMakeLists.txt
   # disable tests
