@@ -1,0 +1,14 @@
+pkgbase = python-crossbar
+	pkgdesc = Crossbar.io - WAMP application router http://crossbar.io/
+	pkgver = 0.14.0
+	pkgrel = 1
+	url = https://github.com/crossbario/crossbar
+	arch = i386
+	arch = x86_64
+	license = AGPL
+	depends = python>=3.1
+	source = https://github.com/crossbario/crossbar/archive/v0.14.0.tar.gz
+	sha1sums = 5b630c20239eaf3132d1f290f209d7a5648d903e
+
+pkgname = python-crossbar
+
