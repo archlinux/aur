@@ -8,13 +8,13 @@
 
 pkgname=pd-l2ork
 pkgver=1680.a49a2bb
-pkgrel=2
+pkgrel=3
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData"
 url="http://l2ork.music.vt.edu/main/?page_id=56"
 arch=('i686' 'x86_64')
 license=('BSD')
 depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
-  'flite-fpic' 'fluidsynth' 'freeglut' 'ftgl' 'glew' 'gmerlin'
+  'flite1' 'fluidsynth' 'freeglut' 'ftgl' 'glew' 'gmerlin'
   'gsl' 'gsm' 'hicolor-icon-theme' 'imagemagick' 'jack' 'ladspa' 'lame'
   'libdc1394' 'libdv' 'libgl' 'libiec61883' 'libjpeg' 'libquicktime'
   'libxxf86vm' 'libtiff' 'libiec61883' 'libunicap' 'libraw1394'
