@@ -12,13 +12,3 @@ diff --git a/trunk/configure.ac b/trunk/configure.ac
  
  if test x$enable_warnings = xyes; then
    AM_CFLAGS="$AM_CFLAGS -Werror"
-Index: sword.pc.in
-===================================================================
-diff --git a/trunk/sword.pc.in b/trunk/sword.pc.in
---- a/trunk/sword.pc.in	(Revision 3420)
-+++ b/trunk/sword.pc.in	(Arbeitskopie)
-@@ -11,4 +11,3 @@
- @SHAREDLIB_FALSE@Libs: -L${libdir} -lsword @LIBS@
- Libs.private: -L${libdir} -lsword @LIBS@
- Cflags: -I${includedir}/sword 
--

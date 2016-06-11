@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 pkgname=sword-svn
 pkgver=3420
-pkgrel=2
+pkgrel=3
 pkgdesc="Libraries for Bible programs - svn-version"
 arch=('i686' 'x86_64')
 url="http://www.crosswire.org/sword/"
@@ -12,7 +12,7 @@ provides=('sword')
 conflicts=('sword')
 source=('sword::svn+https://www.crosswire.org/svn/sword/trunk/' template-depth.diff)
 md5sums=('SKIP'
-         '65e98f76aedd0829caed453cd50a6521')
+         '694aab1ea03c14f89101a0b98f5d50a4')
 options=('!makeflags')
 _svnmod=sword
 
@@ -24,7 +24,7 @@ pkgver() {
 
 prepare() {
   cd "${_svnmod}"
-  patch -p2 < "$srcdir"/template-depth.diff
+  patch -fp2 < "$srcdir"/template-depth.diff || true
 }
   
 build() {
