@@ -7,8 +7,8 @@ arch=('i686' 'x86_64')
 url="http://www.photofilmstrip.org/1-0-Home.html"
 license=('GPL2')
 depends=('python2-pip' 'wxpython')
-source=("http://downloads.sourceforge.net/project/photostoryx/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz?r=&ts=1465609365&use_mirror=liquidtelecom")
-noextract=('$pkgname-$pkgver.tar.gz?r=&ts=1465609365&use_mirror=liquidtelecom')
+source=("http://liquidtelecom.dl.sourceforge.net/project/photostoryx/$pkgname/$pkgver/$pkgname-$pkgver.tar.gz")
+noextract=('$pkgname-$pkgver.tar.gz')
 md5sums=('0488f7b9cf8f99cff5b161c1911d9588')
 install="${pkgname}.install"
 
