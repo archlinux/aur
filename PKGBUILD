@@ -2,17 +2,16 @@
 
 _name=girl
 pkgname=$_name-git
-pkgver=8.4.2.4.g2ccd5a4
+pkgver=9.0.0.5.g5db0b59
 pkgrel=1
 pkgdesc="GNOME Internet Radio Locator"
-arch=('i686' 'x86_64')
-url="https://wiki.gnome.org/Apps/Girl"
-license=('GPL')
-depends=('streamripper' 'totem' 'libgnomeui' 'desktop-file-utils')
-makedepends=('gtk-doc' 'gnome-common' 'intltool' 'git')
-options=(!libtool)
+arch=(i686 x86_64)
+license=(GPL)
+depends=(libgnomeui totem streamripper)
+makedepends=(intltool gtk-doc gnome-common git)
 provides=($_name)
 conflicts=($_name)
+url="https://wiki.gnome.org/Apps/Girl"
 source=(git://git.gnome.org/$_name)
 md5sums=('SKIP')
 
@@ -25,6 +24,11 @@ build() {
   cd "$srcdir/$_name"
   ./autogen.sh --prefix=/usr --with-recording --enable-gtk-doc
   make
+}
+
+check(){
+  cd "$srcdir/$_name"
+  make check
 }
 
 package() {
