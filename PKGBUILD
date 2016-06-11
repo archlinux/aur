@@ -4,14 +4,13 @@
 
 pkgname=mist-icon-theme
 pkgver=2.32.1
-pkgrel=4
+pkgrel=5
 pkgdesc="Mist icon theme"
 arch=('any')
 url="https://wiki.gnome.org/GnomeArt"
 license=('GPL')
 depends=('gtk-update-icon-cache')
 makedepends=('intltool' 'gtk-engines' 'icon-naming-utils')
-install="mist-icon-theme.install"
 source=("https://download.gnome.org/sources/gnome-themes/${pkgver%.*}/gnome-themes-${pkgver}.tar.bz2")
 sha256sums=('8601ee24c2e096593221cbd6ebdb6686042225a03c02a01c0d67c163f9febd1a')
 
