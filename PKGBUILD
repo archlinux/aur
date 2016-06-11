@@ -2,7 +2,7 @@
 
 _pkgname=biboumi
 pkgname="$_pkgname-git"
-pkgver=r583.199f010
+pkgver=r585.272c0e4
 pkgrel=1
 pkgdesc="XMPP gateway to IRC"
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,8 +13,11 @@ makedepends=('git' 'cmake' 'pandoc')
 provides=("$_pkgname=1.99")
 conflicts=("$_pkgname")
 backup=("etc/$_pkgname/$_pkgname.cfg")
-source=("$_pkgname::git://git.louiz.org/biboumi")
-md5sums=('SKIP')
+install="$_pkgname.install"
+source=("$_pkgname::git://git.louiz.org/biboumi"
+        'sysuser.conf')
+md5sums=('SKIP'
+         '07c92af3248861ce94d361e98cfb7f5c')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -28,7 +31,11 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname/build"
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ..
+  cmake .. \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DSERVICE_USER=biboumi \
+    -DSERVICE_GROUP=jabber
   make biboumi
 }
 
@@ -39,4 +46,7 @@ package() {
   cd ..
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
   install -Dm644 doc/biboumi.1.rst "$pkgdir/usr/share/doc/$_pkgname/$_pkgname.rst"
+
+  cd "$srcdir"
+  install -Dm644 sysuser.conf "$pkgdir/usr/lib/sysusers.d/biboumi.conf"
 }
