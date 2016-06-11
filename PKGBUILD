@@ -1,4 +1,4 @@
-# Maintainer: Rafael Ferreira <rafael.f.f1@gmail.com>
+# Maintainer: rafaelff <rafaelff@gnome.org>
 
 _name=girl
 pkgname=$_name-git
