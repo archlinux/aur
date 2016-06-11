@@ -2,28 +2,28 @@
 # Contributor: rtfreedman
 
 pkgname=csoundqt
-pkgver=0.9.0
-pkgrel=3
+pkgver=0.9.2.1
+pkgrel=1
 pkgdesc="A frontend for Csound featuring a highlighting editor with autocomplete, interactive widgets and integrated help"
 arch=('i686' 'x86_64')
 url="http://qutecsound.sourceforge.net/"
 license=('GPL3') # or, at your option, LGPL2
 depends=('csound' 'qt4' 'csound-doc')
 makedepends=('shared-mime-info')
-install="csoundqt.install"
 _rtmidi=rtmidi-2.1.0
-source=("http://sourceforge.net/projects/qutecsound/files/CsoundQt/${pkgver}/csoundqt-${pkgver}-src.tar.gz" 
+source=("https://github.com/CsoundQt/CsoundQt/archive/$pkgver.tar.gz" 
         "csoundqt.desktop"
         "http://www.music.mcgill.ca/~gary/rtmidi/release/${_rtmidi}.tar.gz"
         "csoundqt-mime.xml"
         "csoundqt-icons.tar.gz")
-sha256sums=('873c699091e28064bc25f45a1081d583b42c4927061174f76cd8231ef1394feb'
+sha256sums=('73b07f91c7b8371739a55f5ce7d9abd487f3df938d555c7b0966267d1dd3c419'
             '6d08233ee50eec15bbcb59f1edcee56626264fb37590603bc88af4764e8dda9d'
             'a0a59226614b878e7c32890cb7c38a6fe48a97082baf4913297d4c3958a9b3ac'
             '2d78945761ff6f673ac93f7d879a691eb77466e73a40ef77e4a8f3c3c374d599'
             'd2a7319315e77cd5f694a0d861772ea09d0a10cdcbaa9e0c6751b3b72fca5982')
 
 prepare() {
+mv "$srcdir/CsoundQt-$pkgver/"* .
 # tarball doesn't have a root dir, extracting to $srcdir
 # DEFAULT_HTML_DIR "/usr/share/doc/csound-doc/html"
   sed -e 's@"csdocdir", ""@"csdocdir", DEFAULT_HTML_DIR@' \
