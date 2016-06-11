@@ -1,26 +1,22 @@
-# Maintainer: <grawity@gmail.com>
+# Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=ectpping
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="'ping' type utilty for the Ethernet V2.0 Configuration Testing Protocol"
 arch=(i686 x86_64)
-url="http://developer.berlios.de/projects/ectpping/"
+url="https://sourceforge.net/projects/ectpping.berlios/"
 license=('GPL2')
-source=("http://download.berlios.de/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=(60634ee17f9a07691bb0b1ad2fa3ed92)
+source=("https://downloads.sourceforge.net/project/ectpping.berlios/ectpping-0.2.tar.gz")
+sha256sums=('ac3fb1f528b6c947f0a73fa397246438900b96855acf19c0bb854bce4154dcd3')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$pkgname"
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  install -Dm4755 "ectpping" "$pkgdir/usr/sbin/ectpping"
-  # recommended, but requires building w/o fakeroot,
-  # also not supported by .tar format
-  # should be moved to $install?
-  #setcap cap_net_raw=ep "$pkgdir/usr/sbin/ectpping"
+  cd "$pkgname"
+  install -Dm 755 "ectpping" "$pkgdir/usr/bin/ectpping"
 }
 
 # vim:set ts=2 sw=2 et:
