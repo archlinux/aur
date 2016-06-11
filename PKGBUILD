@@ -3,8 +3,8 @@
 _basename=graphene
 pkgname="lib32-$_basename"
 pkgver=1.4.0
-pkgrel=1
-pkgdesc="A thin layer of graphic data types"
+pkgrel=2
+pkgdesc="A thin layer of graphic data types (32-bit)"
 url="https://github.com/ebassi/graphene"
 arch=('x86_64')
 license=(MIT)
