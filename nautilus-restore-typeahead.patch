@@ -1,6 +1,6 @@
-diff -aur nautilus-3.20.0.old/data/org.gnome.nautilus.gschema.xml nautilus-3.20.0.new/data/org.gnome.nautilus.gschema.xml
---- nautilus-3.20.0.old/data/org.gnome.nautilus.gschema.xml	2016-03-03 03:31:41.000000000 -0600
-+++ nautilus-3.20.0.new/data/org.gnome.nautilus.gschema.xml	2016-04-10 22:25:44.327611023 -0500
+diff -aur nautilus-3.20.1.old/data/org.gnome.nautilus.gschema.xml nautilus-3.20.1.new/data/org.gnome.nautilus.gschema.xml
+--- nautilus-3.20.1.old/data/org.gnome.nautilus.gschema.xml	2016-06-10 23:45:47.086629574 -0500
++++ nautilus-3.20.1.new/data/org.gnome.nautilus.gschema.xml	2016-06-10 23:54:05.023013656 -0500
 @@ -199,6 +199,11 @@
        <summary>Bulk rename utility</summary>
        <description>If set, Nautilus will append URIs of selected files and treat the result as a command line for bulk renaming. Bulk rename applications can register themselves in this key by setting the key to a space-separated string of their executable name and any command line options. If the executable name is not set to a full path, it will be searched for in the search path.</description>
@@ -13,9 +13,9 @@ diff -aur nautilus-3.20.0.old/data/org.gnome.nautilus.gschema.xml nautilus-3.20.
      <key type="b" name="open-folder-on-dnd-hover">
        <default>true</default>
        <summary>Whether to open the hovered folder after a timeout when drag and drop operation</summary>
-diff -aur nautilus-3.20.0.old/libnautilus-private/nautilus-global-preferences.h nautilus-3.20.0.new/libnautilus-private/nautilus-global-preferences.h
---- nautilus-3.20.0.old/libnautilus-private/nautilus-global-preferences.h	2016-02-16 03:27:37.000000000 -0600
-+++ nautilus-3.20.0.new/libnautilus-private/nautilus-global-preferences.h	2016-04-10 22:25:44.327611023 -0500
+diff -aur nautilus-3.20.1.old/libnautilus-private/nautilus-global-preferences.h nautilus-3.20.1.new/libnautilus-private/nautilus-global-preferences.h
+--- nautilus-3.20.1.old/libnautilus-private/nautilus-global-preferences.h	2016-06-10 23:45:47.059962499 -0500
++++ nautilus-3.20.1.new/libnautilus-private/nautilus-global-preferences.h	2016-06-10 23:55:16.343228380 -0500
 @@ -148,6 +148,7 @@
  
  /* Recent files */
@@ -24,10 +24,10 @@ diff -aur nautilus-3.20.0.old/libnautilus-private/nautilus-global-preferences.h 
  
  /* Move to trash shorcut changed dialog */
  #define NAUTILUS_PREFERENCES_SHOW_MOVE_TO_TRASH_SHORTCUT_CHANGED_DIALOG "show-move-to-trash-shortcut-changed-dialog"
-diff -aur nautilus-3.20.0.old/src/nautilus-list-view.c nautilus-3.20.0.new/src/nautilus-list-view.c
---- nautilus-3.20.0.old/src/nautilus-list-view.c	2016-03-23 02:32:17.000000000 -0600
-+++ nautilus-3.20.0.new/src/nautilus-list-view.c	2016-04-10 22:25:44.330944375 -0500
-@@ -2391,6 +2391,7 @@
+diff -aur nautilus-3.20.1.old/src/nautilus-list-view.c nautilus-3.20.1.new/src/nautilus-list-view.c
+--- nautilus-3.20.1.old/src/nautilus-list-view.c	2016-06-10 23:45:47.053295731 -0500
++++ nautilus-3.20.1.new/src/nautilus-list-view.c	2016-06-11 00:04:30.524028845 -0500
+@@ -2392,6 +2392,7 @@
  	GList *node;
  	GList *iters, *l;
  	NautilusFile *file;
@@ -35,7 +35,7 @@ diff -aur nautilus-3.20.0.old/src/nautilus-list-view.c nautilus-3.20.0.new/src/n
  	
  	list_view = NAUTILUS_LIST_VIEW (view);
  	tree_selection = gtk_tree_view_get_selection (list_view->details->tree_view);
-@@ -2405,10 +2406,22 @@
+@@ -2406,10 +2407,21 @@
  		for (l = iters; l != NULL; l = l->next) {
  			gtk_tree_selection_select_iter (tree_selection,
  							(GtkTreeIter *)l->data);
@@ -47,18 +47,17 @@ diff -aur nautilus-3.20.0.old/src/nautilus-list-view.c nautilus-3.20.0.new/src/n
  
 +	if (path) {
 +		gtk_tree_view_set_cursor_on_cell (list_view->details->tree_view,
-+			  path,
-+			  list_view->details->file_name_column,
-+		  	GTK_CELL_RENDERER (list_view->details->file_name_cell),
++			path,
++			list_view->details->file_name_column,
++			GTK_CELL_RENDERER (list_view->details->file_name_cell),
 +		  	TRUE);
 +		gtk_tree_path_free (path);
 +	}
 +
-+
  	g_signal_handlers_unblock_by_func (tree_selection, list_selection_changed_callback, view);
  	nautilus_files_view_notify_selection_changed (view);
  }
-@@ -3219,3 +3232,9 @@
+@@ -3220,3 +3232,9 @@
  			     "window-slot", slot,
  			     NULL);
  }
@@ -66,21 +65,21 @@ diff -aur nautilus-3.20.0.old/src/nautilus-list-view.c nautilus-3.20.0.new/src/n
 +GtkTreeView *
 +nautilus_list_view_get_tree_view (NautilusListView *list_view)
 +{
-+   return list_view->details->tree_view;
++	return list_view->details->tree_view;
 +}
-diff -aur nautilus-3.20.0.old/src/nautilus-list-view.h nautilus-3.20.0.new/src/nautilus-list-view.h
---- nautilus-3.20.0.old/src/nautilus-list-view.h	2015-12-02 09:47:40.000000000 -0600
-+++ nautilus-3.20.0.new/src/nautilus-list-view.h	2016-04-10 22:25:44.330944375 -0500
-@@ -54,4 +54,6 @@
+diff -aur nautilus-3.20.1.old/src/nautilus-list-view.h nautilus-3.20.1.new/src/nautilus-list-view.h
+--- nautilus-3.20.1.old/src/nautilus-list-view.h	2016-06-10 23:45:47.053295731 -0500
++++ nautilus-3.20.1.new/src/nautilus-list-view.h	2016-06-11 00:05:09.874430207 -0500
+@@ -53,5 +53,6 @@
+ 
  GType nautilus_list_view_get_type (void);
  NautilusFilesView * nautilus_list_view_new (NautilusWindowSlot *slot);
- 
 +GtkTreeView * nautilus_list_view_get_tree_view (NautilusListView *list_view);
-+
+ 
  #endif /* NAUTILUS_LIST_VIEW_H */
-diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src/nautilus-window-slot.c
---- nautilus-3.20.0.old/src/nautilus-window-slot.c	2016-03-23 02:30:29.000000000 -0600
-+++ nautilus-3.20.0.new/src/nautilus-window-slot.c	2016-04-10 22:26:53.071285271 -0500
+diff -aur nautilus-3.20.1.old/src/nautilus-window-slot.c nautilus-3.20.1.new/src/nautilus-window-slot.c
+--- nautilus-3.20.1.old/src/nautilus-window-slot.c	2016-06-10 23:45:47.056629115 -0500
++++ nautilus-3.20.1.new/src/nautilus-window-slot.c	2016-06-11 00:46:39.476370591 -0500
 @@ -124,6 +124,17 @@
  	gboolean tried_mount;
          gint view_mode_before_search;
@@ -124,76 +123,76 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
 -                                                      (GdkEvent*) event);
 -	}
 +  if (slot->details->isearch_enable) {
-+         GdkEvent *new_event;
-+         char *old_text;
-+         const char *new_text;
-+         gboolean retval;
-+         GdkScreen *screen;
-+         gboolean text_modified;
-+         gulong popup_menu_id;
++        GdkEvent *new_event;
++        char *old_text;
++        const char *new_text;
++        gboolean retval;
++        GdkScreen *screen;
++        gboolean text_modified;
++        gulong popup_menu_id;
 +
-+         isearch_ensure (slot);
++        isearch_ensure (slot);
 +
-+         /* Make a copy of the current text */
-+         old_text = g_strdup (gtk_entry_get_text (GTK_ENTRY (slot->details->isearch_entry)));
-+         new_event = gdk_event_copy ((GdkEvent *) event);
-+         g_object_unref (((GdkEventKey *) new_event)->window);
-+         ((GdkEventKey *) new_event)->window = g_object_ref (gtk_widget_get_window (slot->details->isearch_window));
-+         gtk_widget_realize (slot->details->isearch_window);
++        /* Make a copy of the current text */
++        old_text = g_strdup (gtk_entry_get_text (GTK_ENTRY (slot->details->isearch_entry)));
++        new_event = gdk_event_copy ((GdkEvent *) event);
++        g_object_unref (((GdkEventKey *) new_event)->window);
++        ((GdkEventKey *) new_event)->window = g_object_ref (gtk_widget_get_window (slot->details->isearch_window));
++        gtk_widget_realize (slot->details->isearch_window);
 +
-+         popup_menu_id = g_signal_connect (slot->details->isearch_entry, 
-+             "popup-menu", G_CALLBACK (gtk_true),
-+             NULL);
++        popup_menu_id = g_signal_connect (slot->details->isearch_entry, 
++            "popup-menu", G_CALLBACK (gtk_true),
++            NULL);
 +
-+         /* Move the entry off screen */
-+         screen = gtk_widget_get_screen (GTK_WIDGET (slot));
-+         gtk_window_move (GTK_WINDOW (slot->details->isearch_window),
-+         gdk_screen_get_width (screen) + 1,
-+         gdk_screen_get_height (screen) + 1);
-+         gtk_widget_show (slot->details->isearch_window);
++        /* Move the entry off screen */
++        screen = gtk_widget_get_screen (GTK_WIDGET (slot));
++        gtk_window_move (GTK_WINDOW (slot->details->isearch_window),
++        gdk_screen_get_width (screen) + 1,
++        gdk_screen_get_height (screen) + 1);
++        gtk_widget_show (slot->details->isearch_window);
 +
-+         /* Send the event to the window.  If the preedit_changed signal is emitted
-+         * during this event, we will set priv->imcontext_changed  */
-+         slot->details->isearch_imcontext_changed = FALSE;
-+         retval = gtk_widget_event (slot->details->isearch_window, new_event);
-+         gdk_event_free (new_event);
-+         gtk_widget_hide (slot->details->isearch_window);
++        /* Send the event to the window.  If the preedit_changed signal is emitted
++        * during this event, we will set priv->imcontext_changed  */
++        slot->details->isearch_imcontext_changed = FALSE;
++        retval = gtk_widget_event (slot->details->isearch_window, new_event);
++        gdk_event_free (new_event);
++        gtk_widget_hide (slot->details->isearch_window);
++
++        g_signal_handler_disconnect (slot->details->isearch_entry, 
++            popup_menu_id);
++
++        /* We check to make sure that the entry tried to handle the text, and that
++        * the text has changed.
++        */
++        new_text = gtk_entry_get_text (GTK_ENTRY (slot->details->isearch_entry));
++        text_modified = strcmp (old_text, new_text) != 0;
++        g_free (old_text);
++        if (slot->details->isearch_imcontext_changed ||
++            (retval && text_modified))
++        {
++            if (isearch_start (slot,
++                    gdk_event_get_device ((GdkEvent *) event))) {
++                gtk_widget_grab_focus (GTK_WIDGET (slot));
++                return TRUE;
++            }
++            else {
++                gtk_entry_set_text (GTK_ENTRY (slot->details->isearch_entry), "");
++                return FALSE;
++            }
++        }
++    } else {
++        if (!NAUTILUS_IS_DESKTOP_WINDOW (window)) {
++            retval = gtk_search_bar_handle_event (GTK_SEARCH_BAR (slot->details->query_editor),
++                                                  (GdkEvent*) event);
++        }
  
 -	if (retval) {
 -		nautilus_window_slot_set_search_visible (slot, TRUE);
 -	}
-+         g_signal_handler_disconnect (slot->details->isearch_entry, 
-+             popup_menu_id);
-+
-+         /* We check to make sure that the entry tried to handle the text, and that
-+         * the text has changed.
-+         */
-+         new_text = gtk_entry_get_text (GTK_ENTRY (slot->details->isearch_entry));
-+         text_modified = strcmp (old_text, new_text) != 0;
-+         g_free (old_text);
-+         if (slot->details->isearch_imcontext_changed ||
-+             (retval && text_modified))
-+         {
-+             if (isearch_start (slot,
-+                     gdk_event_get_device ((GdkEvent *) event))) {
-+                 gtk_widget_grab_focus (GTK_WIDGET (slot));
-+                 return TRUE;
-+             }
-+             else {
-+                 gtk_entry_set_text (GTK_ENTRY (slot->details->isearch_entry), "");
-+                 return FALSE;
-+             }
-+         }
-+     } else {
-+         if (!NAUTILUS_IS_DESKTOP_WINDOW (window)) {
-+             retval = gtk_search_bar_handle_event (GTK_SEARCH_BAR (slot->details->query_editor),
-+                                                   (GdkEvent*) event);
-+         }
-+
-+         if (retval) {
-+             nautilus_window_slot_set_search_visible (slot, TRUE);
-+         }
-+     }
++        if (retval) {
++            nautilus_window_slot_set_search_visible (slot, TRUE);
++        }
++    }
  
  	return retval;
  }
@@ -203,8 +202,8 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
 +                    GdkEventConfigure *event,
 +                    NautilusWindowSlot *slot)
 +{
-+   isearch_hide (slot, NULL);
-+   return FALSE;
++  isearch_hide (slot, NULL);
++  return FALSE;
 +}
 +
  static void
@@ -216,10 +215,10 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
  	g_assert (slot == nautilus_window_get_active_slot (window));
 +  isearch_hide (slot, NULL);
 +  if (slot->details->isearch_configure_event_id != 0) {
-+      g_signal_handler_disconnect (GTK_WIDGET (slot->details->window),
-+          slot->details->isearch_configure_event_id);
-+      slot->details->isearch_configure_event_id = 0;
-+  }
++    g_signal_handler_disconnect (GTK_WIDGET (slot->details->window),
++      slot->details->isearch_configure_event_id);
++    slot->details->isearch_configure_event_id = 0;
++  }  
  
 -        gtk_widget_insert_action_group (GTK_WIDGET (window), "slot", NULL);
 +  gtk_widget_insert_action_group (GTK_WIDGET (window), "slot", NULL);
@@ -238,14 +237,14 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
 -        gtk_widget_insert_action_group (GTK_WIDGET (slot),
 -                                        "slot",
 -                                        G_ACTION_GROUP (slot->details->slot_action_group));
--        nautilus_application_add_accelerator (app, "slot.files-view-mode(1)", "<control>1");
--        nautilus_application_add_accelerator (app, "slot.files-view-mode(0)", "<control>2");
+-        nautilus_application_add_accelerator (app, "slot.files-view-mode(uint32 1)", "<control>1");
+-        nautilus_application_add_accelerator (app, "slot.files-view-mode(uint32 0)", "<control>2");
 -        nautilus_application_add_accelerator (app, "slot.search-visible", "<control>f");
 +  slot->details->slot_action_group = G_ACTION_GROUP (g_simple_action_group_new ());
 +  g_action_map_add_action_entries (G_ACTION_MAP (slot->details->slot_action_group),
-+                                   slot_entries,
-+                                   G_N_ELEMENTS (slot_entries),
-+                                   slot);
++                                  slot_entries,
++                                  G_N_ELEMENTS (slot_entries),
++                                  slot);
 +  gtk_widget_insert_action_group (GTK_WIDGET (slot),
 +                                  "slot",
 +                                  G_ACTION_GROUP (slot->details->slot_action_group));
@@ -255,8 +254,7 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
 +
 +  slot->details->isearch_enable =
 +  g_settings_get_boolean (nautilus_preferences, NAUTILUS_PREFERENCES_ENABLE_INTERACTIVE_SEARCH);
- 
--        slot->details->view_mode_before_search = NAUTILUS_VIEW_INVALID_ID;
++
 +  g_signal_connect_swapped (nautilus_preferences,
 +           "changed::" NAUTILUS_PREFERENCES_ENABLE_INTERACTIVE_SEARCH, 
 +           G_CALLBACK(isearch_enable_changed), slot);
@@ -266,14 +264,15 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
 +static void
 +nautilus_window_slot_finalize (GObject *object)
 +{
-+   NautilusWindowSlot *slot;
++  NautilusWindowSlot *slot;
+ 
+-        slot->details->view_mode_before_search = NAUTILUS_VIEW_INVALID_ID;
++  slot = NAUTILUS_WINDOW_SLOT (object);
 +
-+   slot = NAUTILUS_WINDOW_SLOT (object);
++  g_signal_handlers_disconnect_by_func (nautilus_preferences,
++                        isearch_enable_changed, slot);
 +
-+   g_signal_handlers_disconnect_by_func (nautilus_preferences,
-+                         isearch_enable_changed, slot);
-+
-+   G_OBJECT_CLASS (nautilus_window_slot_parent_class)->finalize (object);
++  G_OBJECT_CLASS (nautilus_window_slot_parent_class)->finalize (object);
  }
  
  #define DEBUG_FLAG NAUTILUS_DEBUG_WINDOW
@@ -293,7 +292,7 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
  
          widget_class->grab_focus = nautilus_window_slot_grab_focus;
  
-@@ -2625,3 +2741,761 @@
+@@ -2625,3 +2741,763 @@
  
          return slot->details->loading;
  }
@@ -467,22 +466,21 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
 +static void
 +isearch_timeout_destroy (gpointer user_data)
 +{
-+       NautilusWindowSlot *slot = NAUTILUS_WINDOW_SLOT (user_data);
-+
-+   slot->details->isearch_timeout_id = 0;
++  NautilusWindowSlot *slot = NAUTILUS_WINDOW_SLOT (user_data);
++  slot->details->isearch_timeout_id = 0;
 +}
 +
 +static void
 +isearch_timeout_restart (NautilusWindowSlot *slot)
 +{
-+       if (slot->details->isearch_timeout_id != 0) {
-+           g_source_remove (slot->details->isearch_timeout_id);
++   if (slot->details->isearch_timeout_id != 0) {
++       g_source_remove (slot->details->isearch_timeout_id);
 +
-+       slot->details->isearch_timeout_id = gdk_threads_add_timeout_full (
-+           G_PRIORITY_LOW, ISEARCH_TIMEOUT,
-+           isearch_timeout,
-+           slot,
-+           isearch_timeout_destroy);
++   slot->details->isearch_timeout_id = gdk_threads_add_timeout_full (
++       G_PRIORITY_LOW, ISEARCH_TIMEOUT,
++       isearch_timeout,
++       slot,
++       isearch_timeout_destroy);
 +   }
 +}
 +
@@ -491,7 +489,7 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
 +                  GdkEventAny *event,
 +                  NautilusWindowSlot *slot)
 +{
-+       g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
++   g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
 +
 +   isearch_hide (slot, NULL);
 +   return TRUE;
@@ -502,7 +500,7 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
 +                    GdkEventButton *event,
 +                    NautilusWindowSlot *slot)
 +{
-+       GdkDevice *keyb_device;
++   GdkDevice *keyb_device;
 +
 +   g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
 +
@@ -528,6 +526,7 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
 +
 +       return retval;
 +   }
++
 +   return TRUE;
 +}
 +
@@ -536,7 +535,7 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
 +                  GdkEventScroll *event,
 +                  NautilusWindowSlot *slot)
 +{
-+       gboolean retval = FALSE;
++   gboolean retval = FALSE;
 +
 +   if (event->direction == GDK_SCROLL_UP) {
 +           isearch_move_prev (slot);
@@ -555,7 +554,7 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
 +static void
 +isearch_activate_items_alternate (NautilusWindowSlot *slot)
 +{
-+       GList *file_list;
++   GList *file_list;
 +
 +   file_list = nautilus_view_get_selection (slot->details->content_view);
 +   nautilus_files_view_activate_files (NAUTILUS_VIEW (slot->details->content_view),
@@ -570,7 +569,7 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
 +                     GdkEventKey *event,
 +                     NautilusWindowSlot *slot)
 +{
-+       GdkModifierType default_accel;
++   GdkModifierType default_accel;
 +   gboolean        retval = FALSE;
 +
 +   g_return_val_if_fail (GTK_IS_WIDGET (widget), FALSE);
@@ -636,7 +635,7 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
 +                     GtkMenu  *menu,
 +                     gpointer  data)
 +{
-+       NautilusWindowSlot *slot = (NautilusWindowSlot *)data;
++   NautilusWindowSlot *slot = (NautilusWindowSlot *)data;
 +
 +   slot->details->isearch_disable_hide = 1;
 +   g_signal_connect (menu, "hide",
@@ -648,7 +647,7 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
 +                       gchar *preedit,
 +                       NautilusWindowSlot *slot)
 +{
-+       slot->details->isearch_imcontext_changed = 1;
++   slot->details->isearch_imcontext_changed = 1;
 +   isearch_timeout_restart (slot);
 +}
 +
@@ -656,7 +655,7 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
 +isearch_activate_event (GtkEntry    *entry,
 +                       NautilusWindowSlot *slot)
 +{
-+      GtkTreePath *path;
++  GtkTreePath *path;
 +
 +  isearch_hide (slot, gtk_get_current_event_device ());
 +  nautilus_files_view_activate_selection (slot->details->content_view);
@@ -665,7 +664,7 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
 +static gboolean
 +isearch_enable_hide_real (gpointer data)
 +{
-+       NautilusWindowSlot *slot = (NautilusWindowSlot *)data;
++   NautilusWindowSlot *slot = (NautilusWindowSlot *)data;
 +   slot->details->isearch_disable_hide = 0;
 +   return FALSE;
 +}
@@ -674,15 +673,17 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
 +isearch_enable_hide (GtkWidget *widget,
 +                    gpointer   data)
 +{
-+       gdk_threads_add_timeout_full (G_PRIORITY_HIGH, 200, isearch_enable_hide_real, g_object_ref (data), g_object_unref);
-+   }
++   gdk_threads_add_timeout_full (G_PRIORITY_HIGH, 200, 
++                                 isearch_enable_hide_real, g_object_ref (data),
++                                 g_object_unref);
++}
 +
 +static void
 +send_focus_change (GtkWidget *widget,
 +                   GdkDevice *device,
 +                   gboolean   in)
 +{
-+       GdkDeviceManager *device_manager;
++   GdkDeviceManager *device_manager;
 +   GList *devices, *d;
 +
 +   device_manager = gdk_display_get_device_manager (gtk_widget_get_display (widget));
@@ -727,7 +728,7 @@ diff -aur nautilus-3.20.0.old/src/nautilus-window-slot.c nautilus-3.20.0.new/src
 +isearch_hide (NautilusWindowSlot *slot,
 +           GdkDevice   *device)
 +{
-+       if (slot->details->isearch_disable_hide)
++   if (slot->details->isearch_disable_hide)
 +       return;
 +
 +   if (!slot->details->isearch_enable)
