@@ -1,0 +1,11 @@
+--- Makefile	2016-06-11 18:00:54.487191939 +0200
++++ Makefile1	2016-06-11 18:00:41.404433194 +0200
+@@ -156,7 +156,7 @@
+ 
+ endif
+ 
+-EXTRA_CFLAGS += -DOMNIBOOK_MODULE_NAME='"$(MODULE_NAME)"'
++EXTRA_CFLAGS += -DOMNIBOOK_MODULE_NAME='"$(MODULE_NAME)"' -Wno-incompatible-pointer-types
+ EXTRA_LDFLAGS +=  $(src)/sections.lds
+ 
+ obj-$(CONFIG_OMNIBOOK) += $(MODULE_NAME).o
