@@ -1,7 +1,7 @@
 _npmname=gitbook-cli
-_npmver=2.1.3
+_npmver=2.2.0
 pkgname=nodejs-gitbook-cli # All lowercase
-pkgver=2.1.3
+pkgver="$_npmver"
 pkgrel=1
 pkgdesc="CLI to generate books and documentation using gitbook"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs' 'npm' )
 optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(daf190535d43de8322e91255fa25c5ad02a20bf4)
+sha1sums=('c02697d85179df90d259050d949b57f03b631fbf')
 
 package() {
   cd $srcdir
