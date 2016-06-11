@@ -6,6 +6,7 @@ pkgrel=0.1
 pkgdesc="A Budgie applet for the haste service."
 arch=('i686' 'x86_64')
 license=('GPL3')
+url="https://github.com/cybre/${_gitname}"
 md5sums=('448c464008abf836ce3c6ea8ccb12cdb')
 depends=('libpeas' 'budgie-desktop' 'libsoup')
 makedepends=('unzip' 'gnome-common' 'intltool' 'itstool' 'vala' 'yelp-tools')
