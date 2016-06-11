@@ -21,7 +21,7 @@ prepare() {
   if [[ -d ${_cvsmod}/CVS ]]; then
     (cd ${_cvsmod} && cvs -z3 update -d)
   else
-    cvs -z3 -d ${_cvsroot} co -D ${pkgver} -f ${_cvsmod}
+    cvs -z3 -d ${_cvsroot} co -D echo ${pkgver} | grep -o "r.*" | sed 's/^r//;s/\./-/g' -f ${_cvsmod}
   fi
   msg "CVS checkout done or server timeout"
   msg "Starting make..."
