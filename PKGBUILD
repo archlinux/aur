@@ -10,7 +10,7 @@ arch=('any')
 url="http://jquery.com"
 license=('MIT' 'GPL2')
 source=("http://code.jquery.com/jquery-${pkgver}.min.js")
-sha256sums=('05b85d96f41fff14d8f608dad03ab71e2c1017c2da0914d7c59291bad7a54f8e')
+sha256sums=('266bcea0bb58b26aa5b16c5aee60d22ccc1ae9d67daeb21db6bad56119c3447d')
 
 package() {
     cd "${srcdir}"
