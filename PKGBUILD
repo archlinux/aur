@@ -5,7 +5,7 @@
 _pkgname=a52dec
 pkgname=lib32-a52dec
 pkgver=0.7.4
-pkgrel=7
+pkgrel=8
 pkgdesc="A free library for decoding ATSC A/52 streams"
 url="http://liba52.sourceforge.net/"
 arch=('x86_64')
@@ -14,9 +14,11 @@ depends=('lib32-glibc' $_pkgname)
 makedepends=('gcc-multilib')
 options=(!libtool)
 source=("http://liba52.sourceforge.net/files/${_pkgname}-${pkgver}.tar.gz"
-        'a52dec-0.7.4-build.patch')
+        'a52dec-0.7.4-build.patch'
+	'stderr.patch')
 md5sums=('caa9f5bc44232dc8aeea773fea56be80'
-         'fa16f224a7dceb7613824380abef0052')
+         'fa16f224a7dceb7613824380abef0052'
+         '52f57e003259a24516eaab08b64ae703')
 
 prepare() {
 cd "${srcdir}/${_pkgname}-${pkgver}"
