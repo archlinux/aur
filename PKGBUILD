@@ -2,7 +2,7 @@
 pkgname=gog-baldurs-gate-enhanced-edition
 _pkgname=baldurs-gate-enhanced-edition
 _original="Baldurs Gate Enhanced Edition"
-pkgver=2.1.0.4
+pkgver=2.4.0.6
 pkgrel=1
 pkgdesc="Chaos threatens to overwhelm the Sword Coast. GOG Version. Linux native."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=("gog://gog_baldur_s_gate_enhanced_edition_$pkgver.sh"
         "${pkgname}"
 	"$pkgname.desktop")
 PKGEXT=".pkg.tar"
-sha256sums=('bc93a0ba2077756fa34a02fb93ed62da36eb2956163756c2c235fc81c7fd425a'
+sha256sums=('de857797af2c1b0df589425c60a36fb956ee9322c96f2535eb52b98d0ae5ee5b'
             '7b037776cb5a87c26a827ef29bd87957d0fee670570a6f9e0383ec2d90f26040'
             'a1b677747360e37376da85ccc568463f9c0cb0d8a99a8e0be3655bf23473ccb7')
 package() {
