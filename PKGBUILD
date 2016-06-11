@@ -6,17 +6,18 @@
 pkgbase=nvidia-pae
 pkgname=(nvidia-pae nvidia-pae-dkms)
 pkgver=364.19
-_extramodules=extramodules-4.5-pae
+_extramodules=extramodules-4.6-pae
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux"
 arch=('i686')
 url="http://www.nvidia.com/"
-makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-pae' 'linux-pae-headers>=4.5' 'linux-pae-headers<4.6')
+makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-pae' 'linux-pae-headers>=4.6' 'linux-pae-headers<4.7')
 license=('custom')
 options=('!strip')
 # See nvidia-utils
-source=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
-md5sums=('8a4015213c4a8f1c80e9520d04a32a7b')
+source=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run" 'linux-4.6.patch')
+md5sums=('8a4015213c4a8f1c80e9520d04a32a7b'
+         '3064bd437b26adac246f301f54f2814c')
 
 _pkg="NVIDIA-Linux-x86-${pkgver}"
 
@@ -24,6 +25,7 @@ prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
     # patches here
+    patch -p1 --no-backup-if-mismatch -i ../linux-4.6.patch
 
     cp -a kernel kernel-dkms
     cd kernel-dkms
@@ -48,7 +50,7 @@ build() {
 
 package_nvidia-pae() {
     pkgdesc="NVIDIA drivers for linux"
-    depends=('linux-pae>=4.5' 'linux-pae<4.6' "nvidia-utils=${pkgver}" 'libgl')
+    depends=('linux-pae>=4.6' 'linux-pae<4.7' "nvidia-utils=${pkgver}" 'libgl')
     install=nvidia.install
 
     install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
