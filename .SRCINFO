@@ -1,0 +1,15 @@
+pkgbase = audiotag-thumbnailer
+	pkgdesc = A nautilus thumbnailer for MP3 and OGG files
+	pkgver = 0.1
+	pkgrel = 1
+	install = audiotag-thumbnailer.install
+	arch = any
+	license = custom:WTFPL
+	depends = mutagen
+	source = audiotag-thumbnailer
+	source = audiotag-thumbnailer.schemas
+	sha256sums = f58b15d8702b1fc0a91fe8e4949df7d23f85290b41c0004c490102b3593e339e
+	sha256sums = 978074b71b4a2ea9ad17890b23ef27733e2567414d6e87defdd562c1a36affbc
+
+pkgname = audiotag-thumbnailer
+

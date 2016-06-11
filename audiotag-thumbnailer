@@ -1,0 +1,74 @@
+#!/usr/bin/python
+
+#            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE 
+#                     Version 2, December 2004 
+# 
+#  Copyright (C) 2011 solsTiCe d'Hiver <solstice.dhiver@gmail.com>
+#  Copyright (C) 2004 Sam Hocevar <sam@hocevar.net> 
+# 
+#  Everyone is permitted to copy and distribute verbatim or modified 
+#  copies of this license document, and changing it is allowed as long 
+#  as the name is changed. 
+# 
+#             DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE 
+#    TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION 
+# 
+#   0. You just DO WHAT THE FUCK YOU WANT TO.
+
+import os
+import sys
+from PIL import Image
+from StringIO import StringIO
+import urllib
+import base64
+
+DEFAULT_SIZE = 192
+
+def get_img_ogg(filename, size=(DEFAULT_SIZE, DEFAULT_SIZE)):
+    from mutagen.oggvorbis import OggVorbis
+    ov = OggVorbis(filename)
+    pic = base64.b64decode(ov['coverart'][0])
+    #mimetype = ov['coverartmime']
+
+    img = Image.open(StringIO(pic))
+    img = img.resize(size, Image.ANTIALIAS)
+    return img
+
+def get_img_mp3(filename, size=(DEFAULT_SIZE, DEFAULT_SIZE)):
+    from mutagen.mp3 import MP3
+    mp3 = MP3(filename)
+    if mp3.has_key('APIC'):
+        apic = mp3.get('APIC')
+    else:
+        keys = mp3.keys()
+        found = False
+        for k in keys:
+            if k.startswith('APIC:'):
+                mykey = k
+                found = True
+                break
+        if found:
+            apic = mp3.get(mykey)
+        else:
+            sys.exit(1)
+    
+    mimetype = apic.mime
+    img = Image.open(StringIO(apic.data))
+    img = img.resize(size, Image.ANTIALIAS)
+    return img
+
+IMG_EXTRACTOR_FUNC = {'.mp3':get_img_mp3, '.ogg':get_img_ogg}
+
+def get_img(filename, size=(DEFAULT_SIZE, DEFAULT_SIZE)):
+    path, ext = os.path.splitext(filename)
+    return IMG_EXTRACTOR_FUNC[ext.lower()](filename, size)
+
+if __name__ == '__main__':
+    # If we have 2 args
+    if len(sys.argv) == 3:
+        INPUT_FILE = urllib.url2pathname(sys.argv[1]).replace('file://', '')
+        OUTPUT_FILE = urllib.url2pathname(sys.argv[2]).replace('file://', '')
+        get_img(INPUT_FILE).save(OUTPUT_FILE, 'png')
+    else:
+        # usage
+        sys.exit(1)
