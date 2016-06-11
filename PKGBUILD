@@ -17,7 +17,7 @@
 #
 pkgname="zfs-utils-linux-lts"
 pkgver=0.6.5.7_4.4.13_1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kernel module support files for the Zettabyte File System."
 depends=("spl-linux-lts" "linux-lts=4.4.13")
 makedepends=("linux-lts-headers=4.4.13")
