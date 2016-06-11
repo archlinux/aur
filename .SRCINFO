@@ -1,0 +1,24 @@
+pkgbase = hw-probe
+	pkgdesc = Tool to probe for hardware, check its operability and upload result to the Linux hardware DB: http://linux-hardware.org
+	pkgver = r3.0015b3d
+	pkgrel = 1
+	url = https://github.com/linuxhw/hw-probe
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = perl>=5
+	depends = hwinfo
+	depends = curl
+	depends = dmidecode
+	depends = pciutils
+	depends = usbutils
+	optdepends = hdparm
+	optdepends = smartmontools
+	optdepends = inxi
+	optdepends = pnputils
+	provides = hw-probe
+	source = https://github.com/linuxhw/hw-probe
+	md5sums = SKIP
+
+pkgname = hw-probe
+
