@@ -4,21 +4,19 @@
 # Contributor: Lars Boettcher
 
 pkgname=csound-doc
-pkgver=6.06
+pkgver=6.07.0
 pkgrel=1
 pkgdesc="The Canonical Csound Reference Manual"
 url="http://csound.github.io"
 arch=('any')
 license=('LGPL' 'GPL')
 depends=('csound')
-source=("https://github.com/csound/csound/releases/download/6.06.0/Csound${pkgver}_manual_html.zip")
-sha256sums=('c5dd68d5506837f152d672c96e45ab6c1a5141448a543dd656ad2b6b421959b8')
+source=("https://github.com/csound/csound/releases/download/$pkgver/Csound${pkgver:0:-2}_manual_html.zip")
+sha256sums=('e71f364aedf74f8fa3d9c4ba071326a630bfa8b408910ef7f9ac9f5347bf669c')
 
 package() {
-  # docs
   install -d "$pkgdir/usr/share/doc/csound-doc/html"
   cp -a "$srcdir"/html/* "$pkgdir/usr/share/doc/csound-doc/html"
 
-  # permissions
   find "$pkgdir" -type f -exec chmod 644 {} \;
 }
