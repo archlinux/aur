@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=python2-mnemonic
-pkgver=0.14
+pkgver=0.15
 pkgrel=1
 pkgdesc="Implementation of Bitcoin BIP-0039"
 arch=('any')
@@ -10,9 +10,9 @@ makedepends=('python2-setuptools')
 url="https://github.com/trezor/python-mnemonic"
 license=('MIT')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/8d/eb/92f9f2bd0c93cf378f3496c90c78336a07189635084c8d8134717f478318/mnemonic-0.14.tar.gz)
-md5sums=('bd663ebff3f524ae056e05cd4735f64b')
-sha256sums=('d7ad08f4a1e53114033fd05c33f8ba9f0e847f2890cf626ea93c9734f2460b6e')
+source=(https://pypi.python.org/packages/d2/07/0d21fc15549dcc916bb6ee3e52d5d18411a1a519d3b44a9ab4b52cabb45f/mnemonic-0.15.tar.gz)
+md5sums=('0ec276e73e7d06064ece8127296cbfef')
+sha256sums=('4c25f036742602181fa8c2deb5f000c7f2c5c3a169c5dd8af8ce1603dffb2652')
 
 build() {
   cd "$srcdir/${pkgname#python2-}-$pkgver"
