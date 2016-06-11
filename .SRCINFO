@@ -1,0 +1,14 @@
+pkgbase = perl-archive-zip-crc32
+	pkgdesc = Compute CRC-32 checksum
+	pkgver = 1.57
+	pkgrel = 1
+	url = https://packages.debian.org/sid/libarchive-zip-perl
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl-archive-zip
+	source = http://httpredir.debian.org/debian/pool/main/liba/libarchive-zip-perl/libarchive-zip-perl_1.57-1_all.deb
+	sha256sums = fc1cba1df9df9a53ddac264fbb281314814c6f9df17c67e924dd495afe1f3318
+
+pkgname = perl-archive-zip-crc32
+
