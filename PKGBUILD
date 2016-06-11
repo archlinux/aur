@@ -4,7 +4,7 @@ pkgver=2.2
 pkgrel=2
 pkgdesc='ICMP packet builder'
 arch=("i686" "x86_64")
-url="http://packages.debian.org/src:icmpush"
+url="https://packages.debian.org/src:icmpush"
 license=("GPL2")
 source=("http://ftp.de.debian.org/debian/pool/main/i/icmpush/icmpush_$pkgver.orig.tar.gz"
         "http://ftp.de.debian.org/debian/pool/main/i/icmpush/icmpush_2.2-6.diff.gz")
