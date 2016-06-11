@@ -1,0 +1,19 @@
+--- testgtk/testgtk.gpr
++++ testgtk/testgtk.gpr
+@@ -21,13 +21,13 @@
+ --                                                                          --
+ ------------------------------------------------------------------------------
+ 
+-with "gtkada";
++with "opengl/testgtk_opengl";
+ 
+ project TestGtk is
+ 
+    for Languages use ("Ada");
+    for Main use ("testgtk.adb", "test_rtree.adb");
+-   for Source_Dirs use ("./", "opengl");
++   for Source_Dirs use ("./");
+    for Object_Dir use "obj/";
+    for Exec_Dir use ".";
+ 
+

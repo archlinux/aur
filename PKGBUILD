@@ -17,11 +17,17 @@ makedepends=("gcc-ada")
 
 source=(http://mirrors.cdn.adacore.com/art/5739985fc7a447658e0affae
         patch-shared.gpr.in
-        patch-Makefile.in)
+        patch-Makefile.in
+        patch-aclocal.m4
+        patch-gtkglarea.c
+        patch-testgtk.gpr)
 
 sha1sums=('024aeb4e6a3d48059b5a80b90d606f760cc05e97'
           '5d165fac792018dceae026083f5c335738879c8d'
-          'a21e5671e0a9eb6e31cb14170676ee4382e32a45')
+          '237efb4ca634752fe21ce299b4261bb1fded2d52'
+          '5716bb623634c88e7e04849ca7fc000d76cb4882'
+          'cab6c699945ff8b5af0c5de0fd0f088012aba114'
+          '1a4069100cca7d2df9de23562f6ef0ede537b57a')
 
 
 
@@ -31,6 +37,9 @@ prepare()
 
   patch -Np0 -i "$srcdir/patch-shared.gpr.in"
   patch -Np0 -i "$srcdir/patch-Makefile.in"
+  patch -Np0 -i "$srcdir/patch-aclocal.m4"
+  patch -Np0 -i "$srcdir/patch-gtkglarea.c"
+  patch -Np0 -i "$srcdir/patch-testgtk.gpr"
 }
 
 
@@ -39,8 +48,9 @@ build()
 {
   cd "$srcdir/$pkgname-gpl-$pkgver-src"
 
-  ./configure --prefix=/usr --with-GL=no
-  DESTDIR=$pkgdir   make -j1  # It doesn't build with -jn where n>1
+  autoconf
+  ./configure --prefix=/usr
+  DESTDIR=$pkgdir  make -j1  # It doesn't build with -jn where n>1
 }
 
 

@@ -1,5 +1,5 @@
-*** Makefile.in	2016-06-03 08:00:16.667424520 +1000
---- Makefile.in-new	2016-06-03 07:58:24.034086565 +1000
+*** Makefile.in	2016-04-26 22:46:18.000000000 +1000
+--- Makefile.in-new	2016-06-11 20:11:44.708679466 +1000
 ***************
 *** 35,41 ****
   BUILD_STATIC=@BUILD_STATIC@
@@ -17,6 +17,23 @@
   prefix=@prefix@
   exec_prefix=@exec_prefix@
   libdir=@libdir@
+***************
+*** 93,99 ****
+  ifeq (${HAVE_OPENGL}, True)
+  	${GPRINSTALL_FULL} -XLIBRARY_TYPE=$(@F) --build-name=$(@F) \
+  		--sources-subdir=include/gtkada/gtkada_gl.$(@F) \
+! 		--lib-subdir=${libdir}/gtkada/gtkada_gl.$(@F) \
+  		-Psrc/opengl/gtkada_gl.gpr
+  endif
+  
+--- 93,99 ----
+  ifeq (${HAVE_OPENGL}, True)
+  	${GPRINSTALL_FULL} -XLIBRARY_TYPE=$(@F) --build-name=$(@F) \
+  		--sources-subdir=include/gtkada/gtkada_gl.$(@F) \
+! 		--lib-subdir=lib/gtkada/gtkada_gl.$(@F) \
+  		-Psrc/opengl/gtkada_gl.gpr
+  endif
+  
 ***************
 *** 107,113 ****
   	${GPRINSTALL_FULL} -XLIBRARY_TYPE=$(LIBRARY_TYPE_FOR_TOOLS) \
