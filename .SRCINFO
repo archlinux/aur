@@ -1,7 +1,7 @@
 pkgbase = photofilmstrip
 	pkgdesc = Create video clips from photos
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.photofilmstrip.org/1-0-Home.html
 	install = photofilmstrip.install
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = photofilmstrip
 	license = GPL2
 	depends = python2-pip
 	depends = wxpython
+	noextract = $pkgname-$pkgver.tar.gz
 	source = http://downloads.sourceforge.net/project/photostoryx/photofilmstrip/2.1.0/photofilmstrip-2.1.0.tar.gz?r=&ts=1465609365&use_mirror=liquidtelecom
 	md5sums = 0488f7b9cf8f99cff5b161c1911d9588
 
