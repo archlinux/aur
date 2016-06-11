@@ -16,7 +16,7 @@ source=(
 	${url}/releases/poco-${pkgver}/poco-${pkgver}.tar.gz
 #	RegularExpression.h.patch
 )
-sha256sums=('e91b5ba237c342bf7fa786a26fa5a022e385cb3b915794ea69ed7a7eb571df95')
+sha256sums=('8bf7d8fbdcb0cf893fdc0bb064dd0b23d4d7f2c8ca2e54f1bd184f0ee0a9dd5a')
 prepare() {
 	# apply patch for static build
 	cd poco-$pkgver
