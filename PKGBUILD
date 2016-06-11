@@ -2,7 +2,7 @@
 
 _pkgname=libqmlbind
 pkgname=$_pkgname-git
-pkgver=9242442
+pkgver=v0.2.0.r22.g7ca90d1
 pkgrel=1
 pkgdesc="libqmlbind is a C library for creating QML bindings."
 arch=('i686' 'x86_64')
@@ -21,7 +21,7 @@ prepare() {
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --always | sed 's|-|.|g'
+  git describe --long | sed 's/-/.r/;s/-/./'
 }
 
 build() {
