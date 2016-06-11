@@ -4,7 +4,7 @@
 
 set -u
 pkgname='miller'
-pkgver='4.0.0'
+pkgver='4.1.0'
 pkgrel='1'
 pkgdesc='sed, awk, cut, join, and sort for name-indexed data such as CSV and tabular JSON.'
 arch=('x86_64' 'i686')
@@ -15,7 +15,7 @@ makedepends=('make' 'gcc' 'flex' 'ctags' 'valgrind' 'asciidoc' 'autoconf')
 _verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
 _srcdir="${pkgname}-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('c702eb3423e96fb2f39d6339117fd7678ac1b63258d0bd9b8c76859993ec1a0c')
+sha256sums=('4c0144853e4645ec135e553b226cb648cd2edb84291f6b4dbc5ce0f72173feeb')
 
 prepare() {
   set -u
