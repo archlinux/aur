@@ -1,11 +1,12 @@
 pkgbase = netsurf-buildsystem-git
 	pkgdesc = The Netsurf buildsystem
 	pkgver = 1.5.r0.gbeca51c
-	pkgrel = 1
+	pkgrel = 2
 	url = http://source.netsurf-browser.org/buildsystem.git/
 	arch = x86_64
 	arch = i686
 	license = MIT
+	makedepends = git
 	provides = netsurf-buildsystem
 	conflicts = netsurf-buildsystem
 	source = git://git.netsurf-browser.org/buildsystem.git

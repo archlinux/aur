@@ -3,11 +3,12 @@
 
 pkgname='netsurf-buildsystem-git'
 pkgver=1.5.r0.gbeca51c
-pkgrel=1
+pkgrel=2
 pkgdesc='The Netsurf buildsystem'
 url='http://source.netsurf-browser.org/buildsystem.git/'
 license=('MIT')
 
+makedepends=('git')
 provides=('netsurf-buildsystem')
 conflicts=('netsurf-buildsystem')
 
