@@ -1,0 +1,9 @@
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Type=Package
+Target=numix-icon-theme-git
+
+[Action]
+Exec=/usr/bin/numix-folders -p
+When=PostTransaction
