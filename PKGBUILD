@@ -5,8 +5,8 @@
 
 pkgbase=linux-selinux
 _srcname=linux-4.6
-pkgver=4.6.1
-pkgrel=2
+pkgver=4.6.2
+pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -22,18 +22,16 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-linux-4.6-drm-i915-psr.patch'
         '0001-linux-4.6-rtlwifi-fix-atomic.patch')
 
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            '023d192ebb487657ce24cbd758c8a6cfcb66a26c61b4e0f2395528953c45da9b'
+            '0dc509a19c68ab547a62158bf2017965b843854b63be46ae039c37724dccca21'
             'SKIP'
             '78fbb1ba51ee45df79a31fc6bd252d4c1a287c2a6abe608c41c53ea1539da2c6'
             'a7289a03452dcc5e77cc845bebee589a59421c37ba2f84a08bc77e6dff6b6f3b'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'b719c3bd58d71a9e0d76b3674e854419ebec4a3fa9f8a4823f23639720527e83'
             'ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -55,10 +53,6 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
-
-  # fix flickering on 4.6
-  # reported from brain0 and heftig on IRC
-  patch -p1 -i "${srcdir}/0001-linux-4.6-drm-i915-psr.patch"
 
   # fix rtlwifi atomic
   # https://bugs.archlinux.org/task/49401
