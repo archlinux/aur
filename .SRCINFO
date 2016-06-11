@@ -1,11 +1,14 @@
 pkgbase = vulkan-caps-viewer
 	pkgdesc = Vulkan Hardware Capability Viewer
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://vulkan.gpuinfo.org/
 	arch = x86_64
 	license = GPL2
 	depends = vulkan-icd-loader
+	depends = qt5-base
+	source = vulkan-caps-viewer.desktop
+	sha1sums = 7ccdb4b4487b43bb428c32994092c00ca14f594a
 	source_x86_64 = http://vulkan.gpuinfo.org/downloads/vulkancapsviewer_1_1_linux64.tar.gz
 	sha1sums_x86_64 = 971bb05dcce1229d43112955243d9358a78ae1b3
 
