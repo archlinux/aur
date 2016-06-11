@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Q3Rally
+Comment=A car driving and car combat game
+Icon=quake3
+Exec=q3rally
+Terminal=false
+Categories=Game;
+StartupNotify=true

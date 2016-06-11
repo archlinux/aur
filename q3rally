@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec quake3 +set com_basegame baseq3r "$@"
