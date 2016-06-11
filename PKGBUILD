@@ -20,6 +20,7 @@ makedepends=(
 )
 backup=(
     'etc/mkinitcpio.d/crypttab'
+    'etc/mkinitcpio.d/fstab'
     'etc/systemd/network/initrd-network.network'
     'etc/systemd/system/initrd-build.sh'
     'etc/systemd/system/initrd-cryptsetup.service'
@@ -100,9 +101,10 @@ package() {
   
     local target="$pkgdir/etc/mkinitcpio.d/"
     install -D -m644 "$source/crypttab"                 "$target/crypttab"
-        
+    install -D -m644 "$source/fstab"                    "$target/fstab"
+                
     local target="$pkgdir/etc/systemd/network"
-    install -D -m644 "$source/initrd-network.network"    "$target/initrd-network.network"
+    install -D -m644 "$source/initrd-network.network"   "$target/initrd-network.network"
 
     local target="$pkgdir/etc/systemd/system"
     install -D -m644 "$source/initrd-build.sh"              "$target/initrd-build.sh"
