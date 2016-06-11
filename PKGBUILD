@@ -13,6 +13,6 @@ md5sums=('0488f7b9cf8f99cff5b161c1911d9588')
 install="${pkgname}.install"
 
 package (){
-	pip2 install image
-	pip2 install $pkgname-$pkgver.tar.gz
+	sudo pip2 install image
+	sudo pip2 install $pkgname-$pkgver.tar.gz
 }
