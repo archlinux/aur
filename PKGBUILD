@@ -1,11 +1,11 @@
-# Maintainer: Lev Lybin <lev.lybin@gmail.com>
+# Maintainer: Lev Lybin <aur@devtrue.net>
 # Contributor: Jamie Macdonald <jamie.alban@gmail.com>
 # Contributor: Alucryd <alucryd at gmail dot com>
 # Contributor: Paolo Stivanin <admin at polslinux dot it>
 
 pkgname=keepassx-git
 _gitname=keepassx
-pkgver=2.0.2.r64.g4eea7c8
+pkgver=2.0.2.r65.gd4ed4f9
 pkgrel=1
 pkgdesc="It is an OpenSource password safe which helps you to manage your passwords in an easy and secure way"
 arch=('i686' 'x86_64')
