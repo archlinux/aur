@@ -1,25 +1,40 @@
-# Contributor: Cyberpunk <aur_linuxero@outlook.com>
-# Maintainer: Cyberpunk <aur_linuxero@outlook.com>
+# Contributor: FixedTorres <aur_linuxero@outlook.com>
+# Maintainer: FixedTorres <aur_linuxero@outlook.com>
 
 _lang=ko
-_debver=44.0.2
 _debrel=1
-_debrepo=http://ftp.debian.org/debian/pool/main/i
 
-pkgname=iceweasel-i18n-ko
-pkgver=$_debver.deb$_debrel
+pkgname=iceweasel-i18n-${_lang}
+pkgver=47.0
 pkgrel=1
 pkgdesc="Korean language package for Iceweasel"
 arch=('any')
-url="http://www.mozilla.com/"
-license=('MPL' 'GPL' 'LGPL')
-depends=("iceweasel>=$_debver") 
-source=("${_debrepo}/iceweasel/iceweasel-l10n-${_lang}_${_debver}-${_debrel}_all.deb")
+url="https://wiki.debian.org/Iceweasel"
+license=('MPL' 'GPL')
+depends=("iceweasel>=$pkgver")
+makedepends=('unzip' 'zip')
+source=("http://ftp.debian.org/debian/pool/main/f/firefox/firefox-l10n-${_lang}_${pkgver}-${_debrel}_all.deb")
 
 package() {
-  msg2 "Installing Language Pack..."
-  tar Jxvf "${srcdir}"/data.tar.xz -C "${pkgdir}"/
-  msg2 "Cleaning unwanted files..."
-  rm -rv "${pkgdir}"/usr/share/
+	msg2 "Installing Language Pack..."
+	tar Jxvf "${srcdir}"/data.tar.xz -C "${srcdir}"/
+
+	cd "${srcdir}"/usr/lib/firefox/browser/extensions
+	unzip "langpack-${_lang}@firefox.mozilla.org.xpi"
+	rm "langpack-${_lang}@firefox.mozilla.org.xpi"
+	
+	sed -i -e 's/Mozilla Firefox/Iceweasel/' browser/chrome/${_lang}/locale/branding/brand.dtd
+	sed -i -e 's/Mozilla Firefox/Iceweasel/' browser/chrome/${_lang}/locale/branding/brand.properties
+	sed -i '9,$d' browser/chrome/${_lang}/locale/branding/brand.dtd
+	sed -i '9,$d' browser/chrome/${_lang}/locale/branding/brand.properties
+	sed -i -e 's/firefox/iceweasel/' install.rdf
+	sed -i 's|Firefox|Iceweasel|g' $(grep -rlI 'Firefox' "$srcdir")
+	sed -i 's|Iceweasel|Firefox|' chrome/$_lang/locale/$_lang/global/aboutRights.dtd
+	rm -rv chrome/${_lang}/locale/${_lang}/global-platform/{mac,win}
+	
+	zip -r langpack-${_lang}@iceweasel.mozilla.org.xpi .
+	install -vDm755 "langpack-${_lang}@iceweasel.mozilla.org.xpi" "$pkgdir/usr/lib/iceweasel/browser/extensions/langpack-${_lang}@iceweasel.mozilla.org.xpi"
+
+	
 }
-sha384sums=('e0ca306623f82f8e6c3b76e9517a6d2217c2158d3ae5f77105af85e06715e576a6eb2ebd3e388b01dfdb78613a12306d')
+sha512sums=('1b9981b65fa5f173b8a7530486b9e52c0303c461bd17950bfad0fd00b9930dbd095307a1f2690f0f1cd0b43b255dbc9a480cff65671fc103e6001da41cc69899')
