@@ -1,7 +1,7 @@
-From 73a8b317737700fde4c05fe8b6e2813e23ad81f8 Mon Sep 17 00:00:00 2001
+From cbc75f1bfcb3a25b119c408886517669ed3fd305 Mon Sep 17 00:00:00 2001
 From: wangjiezhe <wangjiezhe@gmail.com>
 Date: Mon, 23 May 2016 13:36:44 +0800
-Subject: [PATCH 1/2] R plugin: fix preprocessor
+Subject: [PATCH 1/4] R plugin: fix preprocessor
 
 ---
  plugins/r/src/tm_r.c | 3 ++-

@@ -4,7 +4,7 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20160607.10447
+pkgver=20160610.10459
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('i686' 'x86_64')
@@ -21,15 +21,15 @@ optdepends=('transfig: convert images using fig2ps'
 makedepends=('ghostscript')
 source=("${_pkgname}::svn://svn.savannah.gnu.org/texmacs/trunk/src"
         "0001-R-plugin-fix-preprocessor.patch"
-        "0002-Fix-macro-name-for-guile.patch"
-        "0003-Fix-mktemp-too-few-X-s-in-template-texmacs.patch"
-        "0004-Sage-plugin-fix-which-not-found.patch"
+        "0002-Sage-plugin-fix-which-not-found.patch"
+        "0003-Revert-Further-fixes-for-iconv.patch"
+        "0004-Fix-mktemp-too-few-X-s-in-template-texmacs.patch"
         )
 sha1sums=('SKIP'
-          '6fdcd7f01fc6ab3725b43ae96f673e87e4559600'
-          '2c548e064a7ffd767a81feeb05bbfb87c1948db1'
-          '32d2890347d498f02c2ab7ee74021ab62b099436'
-          'f1f0e5d53091cdfe74142f7dfb7180e20f3eb10d')
+          '064d0db04fdaace4e491a4e81ff894e713e173b3'
+          '95c28c40f2c44de40961dac434dcd4edae849823'
+          '207d4cf889046e57abfca4509fc0876491686ef9'
+          '73dd8e72f69fb7f5cbc8e25b000aa1f923ab21a6')
 options=('!emptydirs' '!ccache')
 provides=('texmacs')
 conflicts=('texmacs')
@@ -46,21 +46,15 @@ prepare() {
   cd "${srcdir}/${_pkgname}-build"
 
   patch -Np1 -i ../0001-R-plugin-fix-preprocessor.patch
-  patch -Np1 -i ../0002-Fix-macro-name-for-guile.patch
-  patch -Np1 -i ../0003-Fix-mktemp-too-few-X-s-in-template-texmacs.patch
-  patch -Np1 -i ../0004-Sage-plugin-fix-which-not-found.patch
+  patch -Np1 -i ../0002-Sage-plugin-fix-which-not-found.patch
+  patch -Np1 -i ../0003-Revert-Further-fixes-for-iconv.patch
+  patch -Np1 -i ../0004-Fix-mktemp-too-few-X-s-in-template-texmacs.patch
 
   sed -i 's/env python/env python2/' \
     plugins/{mathematica/bin/realpath.py,python/bin/tm_python,sage/bin/tm_sage} \
     TeXmacs/misc/inkscape_extension/texmacs_reedit.py
   sed -i 's/"python"/"python2"/' plugins/python/progs/init-python.scm
   sed -i '/^LDPATH/d' src/makefile.in
-
-  sed -e 's/GUILE_BIN="$GUILE_LIB"/GUILE_BIN="$GUILE_LIB$GUILE_VERSION"/g' \
-      -e 's/guile18-config/guile-config1.8/g' \
-      -i misc/m4/guile.m4
-  mv configure.in configure.ac
-  autoreconf
 
  # Don't generate icon-cache and mime-database (namcap tells that they should not be in a package)
   sed -i '/update-mime-database/d' Makefile.in
@@ -77,8 +71,9 @@ build() {
   ./configure --prefix=/usr \
               --mandir=/usr/share/man \
               --libexecdir=/usr/lib \
+              --with-guile="guile-config1.8" \
               LIBS="-ldl"
-  make -j8
+  make -j$(nproc)
 }
 
 package() {
