@@ -6,7 +6,7 @@ _debrel=1
 
 pkgname=iceweasel-i18n-${_lang}
 pkgver=47.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Esperanto language pack for Iceweasel"
 arch=('any')
 url="https://wiki.debian.org/Iceweasel"
