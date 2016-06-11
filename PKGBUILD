@@ -4,8 +4,8 @@
 # Contributor: Vadym Abramchuk <abramm@gmail.com>
 # Contributor: karol_007 <karol.blazewicz@gmail.com>
 
-pkgname=zabbix-proxy-sqlite
-pkgver=3.0.2
+pkgname=zabbix-proxy-sqlite-2.4
+pkgver=2.4.8
 pkgrel=1
 pkgdesc="Software for monitoring of your applications, network and servers."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -21,6 +21,12 @@ source=("http://downloads.sourceforge.net/project/zabbix/ZABBIX%20Latest%20Stabl
 	'zabbix-proxy.service'
 	'zabbix-proxy.sysusers'
 	'zabbix-proxy.tmpfiles')
+
+sha512sums=('bf0816279f771448076bd8d8f1efe65651e24964b402ba128aace3d5afc0333f808a9d48b5763e334a05bc9f53fa934d81cc1b90072a0e9ba74b29205ab2b300'
+            '78a0ff34910815eff8af5f2d66a650ae2e265c9a42e81b16bdf916f676861546e3fb915fe8b0841e95d674ff0bca3cbdb0ff6d00472448025110e215efa9a1a4'
+            '6e4e8f16e467afe472e958a3ca4246fd499d56c67544ee5b21fdf94cee698534f9bc3caedc49a207f652500e25d4251d6b708e098fa82858aeb385ab4fbba314'
+            'fa42d06ebf0ada6e80efa6479034afedf6ff6d2e8e6cb9e4bb34c682f438eb37c97a25eb76bf19576944781ff057603f851a0333109de065dec6feadb916228d'
+            '3c63a2791e6ac77cb3144eb47a275cc8748f5c8943a076052300d6964994b95b18d60f504584fdcb683739dc514261402895e3f30ae2fbdb218acbc42c3d72df')
 
 build() {
 	cd $srcdir/zabbix-$pkgver
@@ -57,9 +63,3 @@ package() {
 	# sysusers
 	install -D -m 0644 $srcdir/zabbix-proxy.sysusers $pkgdir/usr/lib/sysusers.d/zabbix-proxy.conf
 }
-
-sha512sums=('eca4fe8e5292680d965b7b7cea57c980941c413711c53b1d395062f95e71d1f57e976a0a8619fa00cdaacb193ab29c9aba6d13bb539a856c58293cc1768b5711'
-            '78a0ff34910815eff8af5f2d66a650ae2e265c9a42e81b16bdf916f676861546e3fb915fe8b0841e95d674ff0bca3cbdb0ff6d00472448025110e215efa9a1a4'
-            '6e4e8f16e467afe472e958a3ca4246fd499d56c67544ee5b21fdf94cee698534f9bc3caedc49a207f652500e25d4251d6b708e098fa82858aeb385ab4fbba314'
-            'fa42d06ebf0ada6e80efa6479034afedf6ff6d2e8e6cb9e4bb34c682f438eb37c97a25eb76bf19576944781ff057603f851a0333109de065dec6feadb916228d'
-            '3c63a2791e6ac77cb3144eb47a275cc8748f5c8943a076052300d6964994b95b18d60f504584fdcb683739dc514261402895e3f30ae2fbdb218acbc42c3d72df')
