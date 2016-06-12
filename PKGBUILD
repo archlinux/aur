@@ -2,7 +2,7 @@
 
 pkgname=feedthemonkey
 _name=FeedTheMonkey
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Desktop client for the TinyTinyRSS reader"
 arch=('i686' 'x86_64')
