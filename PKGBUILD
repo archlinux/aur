@@ -8,7 +8,7 @@ arch=(i686 x86_64)
 url='https://projects.kde.org/projects/frameworks/kwallet'
 license=(LGPL)
 depends=(knotifications-git kiconthemes-git kservice-git gpgmepp-git)
-makedepends=(extra-cmake-modules-git git python boost)
+makedepends=(extra-cmake-modules-git git python boost kdoctools-git)
 conflicts=(kwallet)
 provides=(kwallet)
 source=('git://anongit.kde.org/kwallet.git')
@@ -28,7 +28,7 @@ build() {
   cmake ../kwallet \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
