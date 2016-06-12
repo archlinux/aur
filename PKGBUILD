@@ -2,7 +2,7 @@
 
 pkgname='libutf8proc-git'
 pkgver=1.3.1.2.r0.g81ce692
-pkgrel=1
+pkgrel=2
 pkgdesc='C library for processing UTF-8 encoded Unicode strings'
 url='http://git.netsurf-browser.org/libutf8proc.git/'
 license=('MIT')
