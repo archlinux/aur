@@ -1,19 +1,21 @@
-# Maintainer: Hythlodaeus <matteodelseppiaomm@gmail.com>
-pkgname=unix-privesc-check
+# Maintainer: Christopher Loen <christopherloen at gmail dot com>
+pkgname=unix-privesc-check	
 pkgver=1.4
 pkgrel=1
-pkgdesc="A script to find misconfigurations that could allow user 
-privilege escalation in UNIX systems"
-arch=('any')
+pkgdesc="A script to find misconfigurations that could allow privilege escalation in UNIX systems"
+arch=(any)
 url="http://pentestmonkey.net/tools/audit/unix-privesc-check"
-license=('GPLv2')
-provides=('unix-privesc-check')
-install=.install
+license=('GPL2')
 source=("http://pentestmonkey.net/tools/unix-privesc-check/unix-privesc-check-1.4.tar.gz")
 md5sums=(SKIP)
 
 package() {
-	mkdir $pkgdir/usr && mkdir $pkgdir/usr/bin
-        cd "$pkgname-$pkgver"
-	sudo mv -v $pkgname $pkgdir/usr/bin/$pkgname 
+        cd "$srcdir/$pkgname-$pkgver/"
+	install -dm755 "$pkgdir/usr/share/$pkgname"
+        cp "$pkgname" "$pkgdir/usr/share/$pkgname/"
+        install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+        cp COPYING.GPL "$pkgdir/usr/share/licenses/$pkgname/"
+        cp COPYING.UNIX-PRIVESC-CHECK "$pkgdir/usr/share/licenses/$pkgname/"
+        install -dm755 "$pkgdir/usr/bin/"
+        ln -s "/usr/share/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
