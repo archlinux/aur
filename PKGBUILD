@@ -1,7 +1,7 @@
 pkgdesc='App Container Server Push Command'
 pkgname=acpush
 pkgver=0.0.0 # TODO pending release
-pkgrel=1
+pkgrel=2
 url="https://github.com/appc/$pkgname"
 source=("git+${url}.git")
 makedepends=('git' 'go')
@@ -34,5 +34,5 @@ check() {
 # 4.
 package() {
     cd "$pkgname"
-    install -D "./bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
+    install -D -m755 "./bin/acpush" "$pkgdir/usr/bin/acpush"
 }
