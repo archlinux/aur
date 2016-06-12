@@ -4,7 +4,7 @@ pkgdesc="ROS - robot_model contains packages for modeling various aspects of rob
 url='http://ros.org/wiki/robot_model'
 
 pkgname='ros-indigo-robot-model'
-pkgver='1.11.10'
+pkgver='1.11.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -33,7 +33,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="robot_model-release-release-indigo-robot_model-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/indigo/robot_model/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('2e035c2e28fcc15bcaf676b5e75dab1c5bf47dd6f1e4435ec4532485ba95799d')
+sha256sums=('fc131b3f6e9f110bd19c2af29843dfbdcc86d6a368d3593e08fea433486761b8')
 
 build() {
   # Use ROS environment variables
