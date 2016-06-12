@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kio'
 license=('LGPL')
 depends=('kbookmarks-git' 'kjobwidgets-git' 'kwallet-git' 'solid-git' 'libxslt' 'desktop-file-utils')
-makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git')
+makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'python')
 groups=('kf5')
 conflicts=(kio)
 provides=(kio)
@@ -31,8 +31,8 @@ build() {
   cmake ../kio \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DLIBEXEC_INSTALL_DIR=lib \
+    -DKDE_INSTALL_LIBDIR=lib \
+    -DKDE_INSTALL_LIBEXECDIR=lib \
     -DBUILD_TESTING=OFF \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON
   make
