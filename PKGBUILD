@@ -2,12 +2,12 @@
 
 pkgname='libwapcaplet-git'
 pkgver=0.3.0.r0.g894913a
-pkgrel=1
+pkgrel=2
 pkgdesc='String internment library with rapid string comparison'
 url='http://www.netsurf-browser.org/projects/libwapcaplet/'
 license=('MIT')
 
-makedepends=('netsurf-buildsystem-git')
+makedepends=('git' 'netsurf-buildsystem-git')
 checkdepends=('check')
 provides=('libwapcaplet')
 conflicts=('libwapcaplet')
