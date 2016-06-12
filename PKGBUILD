@@ -1,3 +1,4 @@
+# Maintainer: youngunix
 # Maintainer: holos
 
 pkgname=flycheck
