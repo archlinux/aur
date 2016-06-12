@@ -1,12 +1,12 @@
 # Maintainer: meepzh <meep.aur@meepzh.com>
 pkgname=partio-git
 pkgver=1.1.0.r73.g7f3e0d1
-pkgrel=1
+pkgrel=2
 pkgdesc="Particle IO and manipulation library (git version)"
 arch=(i686 x86_64)
 url="http://www.disneyanimation.com/technology/partio.html"
 license=('custom')
-depends=('glut glu seexpr')
+depends=('glut' 'glu' 'seexpr')
 optdepends=('python2: Python interface support',
             'swig: required for Python interface support',
             'zlib: file compression support')
