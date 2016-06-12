@@ -1,17 +1,23 @@
 # Maintainer: meepzh <meep.aur@meepzh.com>
 pkgname=seexpr-git
 pkgver=2.9.r0.g36ffb81
-pkgrel=1
+pkgrel=2
 pkgdesc="An embeddable expression evaluation engine"
 arch=(i686 x86_64)
 url="http://www.disneyanimation.com/technology/seexpr.html"
-license=('custom:SeExpr')
+license=('custom')
 optdepends=('python2-pyqt4: required for SeExpr editor')
 makedepends=('cmake>=2.4.6' 'git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git+https://github.com/wdas/SeExpr.git' 'build-info.patch' 'CMakeLists.txt.patch' 'Editor_CMakeLists.txt.patch')
-md5sums=('SKIP' 'bb56b587bca21debebf86b7adb6242f1' '0b04cc77edebf6d364767cad0a988ef2' '69721fc7e11747cfbc7f0712b4975f79')
+source=('git+https://github.com/wdas/SeExpr.git'
+        'build-info.patch'
+        'CMakeLists.txt.patch'
+        'Editor_CMakeLists.txt.patch')
+md5sums=('SKIP'
+         'bb56b587bca21debebf86b7adb6242f1'
+         '0b04cc77edebf6d364767cad0a988ef2'
+         '69721fc7e11747cfbc7f0712b4975f79')
 
 pkgver() {
   cd "$srcdir/SeExpr"
@@ -41,6 +47,5 @@ package() {
   cd "$srcdir/SeExpr/build"
   make DESTDIR="$pkgdir/" install
   # Copy custom Apache license
-  mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
-  cp "../LICENSE" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
