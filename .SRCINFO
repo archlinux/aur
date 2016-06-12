@@ -6,6 +6,7 @@ pkgbase = znapzend
 	arch = any
 	license = GPL
 	depends = perl
+	depends = zfs
 	source = https://github.com/oetiker/znapzend/releases/download/v0.15.7/znapzend-0.15.7.tar.gz
 	md5sums = c464e0799212f025c31859737c3ce4bc
 
