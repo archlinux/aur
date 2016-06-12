@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('hexchat' 'libxss')
 makedepends=('cmake')
 conflicts=('hexchat-autoaway-git')
-source=("https://github.com/andreyv/hexchat-autoaway/archive/v$pkgver.tar.gz")
+source=("https://github.com/andreyv/hexchat-autoaway/archive/v${pkgver}.tar.gz")
 sha256sums=('35367a4e0d6f1c83ec36f2ae11d9274cd874aa990f69c8b8690cca4045709e80')
 
 build() {
@@ -23,9 +23,9 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
 
-  install -D -m 644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -D -m 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
 
 # vim:set ts=2 sw=2 et:
