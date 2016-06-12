@@ -8,7 +8,7 @@ url="http://igordejanovic.net/textX/"
 license=('MIT')
 depends=('python')
 source=(https://github.com/igordejanovic/$_srcname/archive/v$pkgver.tar.gz)
-md5sums=('cb3de639d0150a044368041c5808d88e')
+md5sums=('57db7672b8c8e6f2e8ba1131e627760c')
 
 package() {
   cd "$srcdir/$_srcname-$pkgver"
@@ -16,4 +16,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('57db7672b8c8e6f2e8ba1131e627760c')
