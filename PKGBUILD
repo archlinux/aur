@@ -1,7 +1,7 @@
 # Maintainer: Mathias Bragagia <youremail@domain.com>
 pkgname=kana-p-dev
 pkgver=0.6
-pkgrel=5
+pkgrel=6
 pkgdesc="Lite desktop manager - use lightdm, awesome and compton - dev channel"
 arch=('any')
 url="https://github.com/bragagia/kana-p"
@@ -96,7 +96,6 @@ depends=(
 	'alsa-plugins'
 	'pulseaudio'
 	'pulseaudio-alsa'
-	'pulseaudio-ctl'
 	'bluez'
 	'bluez-utils'
 	'udevil'
@@ -160,6 +159,7 @@ depends=(
 	'dex'
 	'feh'
 	'most'
+	'pavucontrol'
 
 	'lib32-gtk-engines'
 	'gtk2'
