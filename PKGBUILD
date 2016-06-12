@@ -59,7 +59,7 @@ fi
 
 install=${pkgname}.install
 
-url_ref="http://support.amd.com/en-us/kb-articles/Pages/latest-linux-beta-driver.aspx"
+url_ref="http://support.amd.com/en-us/download/workstation?os=Linux+x86#catalyst-pro"
 DLAGENTS="http::/usr/bin/curl --referer ${url_ref} -o %o %u"
 
 source=(
