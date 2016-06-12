@@ -10,9 +10,8 @@ url='https://github.com/meriken/merikens-tripcode-engine-v3'
 license=('GPLv3')
 optdepends=(
     'cuda: Support for NVIDIA GPUs'
-    'amdapp-sdk: Support for AMD GPUs'
 )
-makedepends=('p7zip' 'cmake')
+makedepends=('p7zip' 'cmake' 'opencl-headers' 'opencl-icd')
 source=("git+$url")
 md5sums=('SKIP')
 
