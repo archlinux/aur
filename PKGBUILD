@@ -3,8 +3,8 @@
 
 pkgname=offlineimap-git
 _pkgname=offlineimap
-pkgver=7.0.0.rc1.1.ge34a64a
-pkgrel=3
+pkgver=7.0.0.rc2.0.g703ac77
+pkgrel=1
 pkgdesc="A powerful IMAP/Maildir synchronization tool"
 url="http://offlineimap.org/"
 arch=('any')
