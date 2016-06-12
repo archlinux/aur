@@ -4,13 +4,13 @@
 
 pkgname='libhubbub-git'
 pkgver=0.3.3.r0.g73071c0
-pkgrel=1
+pkgrel=2
 pkgdesc='HTML5 compliant parsing library'
 url='http://www.netsurf-browser.org/projects/hubbub/'
 license=('MIT')
 
 depends=('libparserutils-git' 'libxslt' 'wget')
-makedepends=('netsurf-buildsystem-git')
+makedepends=('git' 'netsurf-buildsystem-git')
 provides=('libhubbub')
 conflicts=('libhubbub')
 
