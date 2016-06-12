@@ -1,6 +1,6 @@
 # Maintainer: Jan Bader <c.arch@jan.javil.eu>
 pkgname="ynab4"
-pkgver="4.3.820"
+pkgver="4.3.857"
 pkgrel=1
 epoch=
 pkgdesc="You Need A Budget, installs with wine"
@@ -19,10 +19,10 @@ backup=()
 options=()
 install=
 changelog=
-source=(ynab4 "Setup.exe::http://s3.amazonaws.com/cf.download/${pkgname}/YNAB%204_${pkgver}_Setup.exe")
+source=(ynab4 "Setup.exe::http://classic.youneedabudget.com/CDNOrigin/download/${pkgname}/liveCaptive/Win/YNAB%204_${pkgver}_Setup.exe")
 noextract=("Setup.exe")
 md5sums=('75854469a4abb1132b93a80c2336d7c6'
-         '7b9fc27fb90761085b404cffc07c9de2')
+         'a25c0a73350a99559f1e30c2f86ad0b9')
 
 package() {
 	install -d -m755 "$pkgdir"/usr/share/ynab4
