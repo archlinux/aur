@@ -1,7 +1,7 @@
 # Maintainer: Lukas Werling <lukas.werling@gmail.com>
 pkgname=elm-platform
 pkgver=0.17
-pkgrel=2
+pkgrel=3
 pkgdesc="Bundle of all core development tools for the Elm language."
 arch=('i686' 'x86_64')
 url="http://elm-lang.org"
@@ -21,6 +21,13 @@ sha256sums=('1dc1a5fa5cd09936dee8fbba1f0197527bb988b2cc045919ce6bbb9a6706e122'
             '041c37f908272ac1e17c8aeaf09aac1e08404e8511ea7edb69c7899bd1291731'
             'f03b07018eb3c3c4cc4c8f311b8f33572371e20ae51f4eb4fb5247d98e5f51dc'
             'e4c7fa471cfc1b7fc37e38a4cdaffe90b3f06c5f52fc20e6e8167eb1ef8defe6')
+
+prepare() {
+  cd "$srcdir"
+
+  # This is currently necessary to build with GHC 8, see https://github.com/elm-lang/elm-compiler/issues/1397
+  echo 'allow-newer: aeson,base,HTTP,time,transformers' > cabal.config
+}
 
 # This does not actually use the build script in the elm-lang/elm-platform
 # repository, but the commands below are taken from there.
