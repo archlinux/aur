@@ -1,30 +1,24 @@
 # Maintainer: Mario Finelli <mario at finel dot li>
-# Contributor: Daniel Nagy <danielnagy at gmx de>
-# Contributor: Remy Sharp (http://github.com/remy)
-# Contributor: remy <remy@remysharp.com>
+# Contributor: Daniel Nagy <danielnagy at gmx dot de>
+# Contributor: Remy Sharp <remy at remysharp dot com>
 
 _npmname=nodemon
-_npmver=1.9.1
-pkgname=nodejs-nodemon # All lowercase
-pkgver=1.9.1
+pkgname=nodejs-$_npmname
+pkgver=1.9.2
 pkgrel=1
 pkgdesc="Simple monitor script for use during development of a node.js app."
-arch=(any)
+arch=('any')
 url="http://nodemon.io"
-license=(MIT)
+license=('MIT')
 depends=('nodejs' 'npm' )
-optdepends=()
-options=( '!strip' )
-source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
-noextract=($_npmname-$_npmver.tgz)
-sha1sums=('442071f88c39d801fb0bdfd209413da5dce6dad3')
+source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
+noextract=($_npmname-$pkgver.tgz)
+sha256sums=('752567058c0ff6640af065d1818dfa553069c8b55b437b28fcb443f957ab9a9e')
 
 package() {
   cd "$srcdir"
   local _npmdir="$pkgdir/usr/lib/node_modules/"
   mkdir -p "$_npmdir"
   cd "$_npmdir"
-  npm install -g --user root --prefix "$pkgdir/usr" $_npmname@$_npmver
+  npm install -g --user root --prefix "$pkgdir/usr" $_npmname@$pkgver
 }
-
-# vim:set ts=2 sw=2 et:
