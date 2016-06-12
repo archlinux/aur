@@ -2,13 +2,13 @@
 
 pkgname=volatility-git
 _gitname=volatility
-pkgver=2.5.2362.2033154
+pkgver=2.5.2461.5d89bdf
 pkgrel=1
 pkgdesc="Advanced memory forensics framework"
 url="https://github.com/volatilityfoundation/volatility/wiki"
 arch=('any')
 license=('GPL2')
-depends=('distorm' 'python2-crypto' 'python2-ujson')
+depends=('python2-distorm' 'python2-crypto' 'python2-ujson')
 optdepends=(
   'python2-yara: classify malware support'
   'python2-pillow: screenshots plugin support'
