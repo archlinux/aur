@@ -1,6 +1,6 @@
 pkgbase = emacs25-git
 	pkgdesc = GNU Emacs. Version 25 development and maintenance branch.
-	pkgver = 25.0.94.r124904
+	pkgver = 25.0.94.r124967
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = emacs25-git
 	depends = gtk3
 	provides = emacs
 	conflicts = emacs
-	source = emacs25-git::git+http://git.savannah.gnu.org/r/emacs.git#branch=emacs-25
+	source = emacs25-git::git://git.savannah.gnu.org/emacs.git#branch=emacs-25
 	md5sums = SKIP
 
 pkgname = emacs25-git

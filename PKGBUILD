@@ -38,7 +38,7 @@ DOCS_PDF=        # Generate and install pdf documentation.
 #######################################################################
 
 pkgname=emacs25-git
-pkgver=25.0.94.r124904
+pkgver=25.0.94.r124967
 pkgrel=1
 pkgdesc="GNU Emacs. Version 25 development and maintenance branch."
 arch=('i686' 'x86_64')
@@ -58,9 +58,9 @@ if [[ $DOCS_PDF = "YES" ]]; then makedepends+=('texlive-core'); fi
 #######################################################################
 conflicts=('emacs')
 provides=('emacs')
-#source=("$pkgname::git://git.savannah.gnu.org/emacs.git#branch=emacs-25")
+source=("$pkgname::git://git.savannah.gnu.org/emacs.git#branch=emacs-25")
 md5sums=('SKIP')
-source=("$pkgname::git+http://git.savannah.gnu.org/r/emacs.git#branch=emacs-25")
+#source=("$pkgname::git+http://git.savannah.gnu.org/r/emacs.git#branch=emacs-25")
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -81,6 +81,9 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
+
+  # Avoid hardening-wrapper (taken from emacs-pretest, thanks to Thomas Jost).
+  export PATH=$(echo "$PATH" | sed 's!/usr/lib/hardening-wrapper/bin!!g')
 
   local _conf=(
     --prefix=/usr 
