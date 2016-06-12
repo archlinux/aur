@@ -3,7 +3,7 @@
 pkgname=arc-dark-suite
 _commit=46068e6 # 7 digits
 pkgver=20160612
-pkgrel=1
+pkgrel=2
 pkgdesc='Arc-Dark customization for Plasma 5'
 arch=('any')
 url='https://github.com/varlesh/Arc-Dark-KDE'
@@ -16,7 +16,10 @@ optdepends=("gtk-theme-arc-git: A flat theme with transparent elements for GTK 3
             "papirus-icon-theme-kde-git: Papirus icon theme for KDE (git version)"
             "yakuake: A drop-down terminal emulator based on KDE konsole technology"
             "konsole: Terminal"
-            "qtcurve-utils: A configurable set of widget styles for KDE and Gtk")
+            "qtcurve-utils: A configurable set of widget styles for KDE and Gtk"
+            "qt4-style-kvantum-svn: SVG theme engine for Qt4"
+            "qt5-style-kvantum-svn: SVG theme engine for Qt5" 
+            "kvantum-tools-qt5-svn: Kvantum config tools build against Qt5")
 source=("${pkgname}::git+${url}.git#commit=${_commit}")
 sha256sums=('SKIP')
 install=INSTALL
@@ -27,6 +30,6 @@ pkgver(){
 }
 
 package() {
-    cd ${pkgname}
-    make install DESTDIR="$pkgdir"
+    make -C "${pkgname}" install DESTDIR="$pkgdir"
+    make -C "${pkgname}/Kvantum" install DESTDIR="$pkgdir"
 }
