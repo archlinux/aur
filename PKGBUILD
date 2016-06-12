@@ -38,7 +38,7 @@ DOCS_PDF=        # Generate and install pdf documentation.
 #######################################################################
 
 pkgname=emacs-git
-pkgver=25.1.50.r126117
+pkgver=25.1.50.r126330
 pkgrel=1
 pkgdesc="GNU Emacs. Master development branch."
 arch=('i686' 'x86_64')
@@ -81,6 +81,9 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
+
+  # Avoid hardening-wrapper (taken from emacs-pretest, thanks to Thomas Jost).
+  export PATH=$(echo "$PATH" | sed 's!/usr/lib/hardening-wrapper/bin!!g')
 
   local _conf=(
     --prefix=/usr 
