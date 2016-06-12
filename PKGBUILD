@@ -1,7 +1,7 @@
 # Maintainer: John Ramsden <streblo@ramsdenj.ca>
 pkgname=znapzend
 pkgver=0.15.7
-pkgrel=3
+pkgrel=4
 pkgdesc="ZnapZend is a ZFS centric backup tool. It relies on snapshot, send and receive todo its work. It has the built-in ability to manage both local snapshots as well as remote copies by thining them out as time progresses."
 arch=('any')
 url="http://www.znapzend.org/"
