@@ -11,7 +11,7 @@ _kde_backend=       # add support for KDE's secure storage of passwords
 
 pkgname=cryfs-gui-git
 _pkgname=cryfs-gui
-pkgver=1.2.0
+pkgver=1.2.05g4ae9a31
 pkgrel=1
 pkgdesc="A Qt/C++ front end to EncFS and CryFS (edit PKGBUILD to customize install options)"
 arch=('i686' 'x86_64')
