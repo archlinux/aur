@@ -1,0 +1,11 @@
+# eclipse meta data
+.project
+
+# generated resources
+/*/
+/*.xz
+/*.log
+
+# build resources
+gopath/
+bin/
