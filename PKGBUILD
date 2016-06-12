@@ -1,6 +1,6 @@
 # Maintainer: Kohei Suzuki <eagletmt@gmail.com>
 pkgname=envchain
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Set environment variables with D-Bus secret service'
 arch=('i686' 'x86_64')
@@ -8,7 +8,7 @@ url='https://github.com/sorah/envchain'
 license=('MIT')
 depends=('readline' 'libsecret')
 source=("https://github.com/sorah/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('cd190c8c9a86ebf0723491b5372051e84eaaf3252ccc9da6554caa45bd5eae20')
+sha256sums=('09af1fe1cfba3719418f90d59c29c081e1f22b38249f0110305b657bd306e9ae')
 
 build() {
   cd "$pkgname-$pkgver"
