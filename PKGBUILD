@@ -56,7 +56,7 @@ build() {
 }
 
 package() {
-    cd thunar
+    cd "$pkgname"
     make DESTDIR="$pkgdir" install
     sed -i ':x-directory/gnome-default-handler;:d' "$pkgdir"/usr/share/applications/Thunar-folder-handler.desktop
 }
