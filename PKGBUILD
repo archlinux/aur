@@ -6,7 +6,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=python-tdl
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Pythonic CFFI port of libtcod."
 arch=('any')
 url="https://pypi.python.org/pypi/tdl"
@@ -16,6 +16,6 @@ source=("https://github.com/HexDecimal/$pkgname/archive/v.$pkgver.tar.gz")
 md5sums=('b5b1bf0fd665587b3c20dc44aa5a3741')
 
 package() {
-	cd "tdl-$pkgver"
+	cd "python-tdl-v.$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
 }
