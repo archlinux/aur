@@ -7,7 +7,7 @@ arch=(any)
 url="http://pentestmonkey.net/tools/audit/unix-privesc-check"
 license=('GPL2')
 source=("http://pentestmonkey.net/tools/unix-privesc-check/unix-privesc-check-1.4.tar.gz")
-md5sums=(SKIP)
+md5sums=(b278797b8698160ca2d26425930ad13c)
 
 package() {
         cd "$srcdir/$pkgname-$pkgver/"

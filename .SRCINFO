@@ -6,7 +6,7 @@ pkgbase = unix-privesc-check
 	arch = any
 	license = GPL2
 	source = http://pentestmonkey.net/tools/unix-privesc-check/unix-privesc-check-1.4.tar.gz
-	md5sums = SKIP
+	md5sums = b278797b8698160ca2d26425930ad13c
 
 pkgname = unix-privesc-check
 
