@@ -7,7 +7,7 @@ pkgdesc='C library for processing UTF-8 encoded Unicode strings'
 url='http://git.netsurf-browser.org/libutf8proc.git/'
 license=('MIT')
 
-makedepends=('netsurf-buildsystem-git')
+makedepends=('git' 'netsurf-buildsystem-git')
 provides=('libutf8proc')
 conflicts=('libutf8proc')
 
@@ -25,8 +25,7 @@ prepare() {
 }
 
 build() {
-	cd libutf8proc
-	make PREFIX=/usr INCLUDEDIR=include \
+	make -C libutf8proc PREFIX=/usr INCLUDEDIR=include \
 		LIBDIR=lib COMPONENT_TYPE=lib-shared
 }
 

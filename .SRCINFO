@@ -6,6 +6,7 @@ pkgbase = libutf8proc-git
 	arch = x86_64
 	arch = i686
 	license = MIT
+	makedepends = git
 	makedepends = netsurf-buildsystem-git
 	provides = libutf8proc
 	conflicts = libutf8proc
