@@ -4,7 +4,7 @@ pkgdesc="ROS - This package contains a tool for setting and publishing joint sta
 url='http://www.ros.org/wiki/joint_state_publisher'
 
 pkgname='ros-indigo-joint-state-publisher'
-pkgver='1.11.10'
+pkgver='1.11.11'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -31,7 +31,7 @@ depends=(${ros_depends[@]}
 # Tarball version (faster download)
 _dir="robot_model-release-release-indigo-joint_state_publisher-${pkgver}-${_pkgver_patch}"
 source=("${pkgname}-${pkgver}-${_pkgver_patch}.tar.gz"::"https://github.com/ros-gbp/robot_model-release/archive/release/indigo/joint_state_publisher/${pkgver}-${_pkgver_patch}.tar.gz")
-sha256sums=('601e95e51312da49dbb6d18b60ae55258f5fdb30c6bebca5b1d878db54f8ba03')
+sha256sums=('78d20b71a9e186dc9074000d7059c7624776def282f723642665d7c0dc276103')
 
 build() {
   # Use ROS environment variables
