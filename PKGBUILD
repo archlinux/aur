@@ -2,13 +2,13 @@
 
 pkgname='libdom-git'
 pkgver=0.3.0.r0.g54c4309
-pkgrel=1
+pkgrel=2
 pkgdesc='Implementation of the W3C DOM'
 url='http://www.netsurf-browser.org/projects/libdom/'
 license=('MIT')
 
 depends=('libhubbub-git' 'libwapcaplet-git' 'wget')
-makedepends=('netsurf-buildsystem-git')
+makedepends=('git' 'netsurf-buildsystem-git')
 provides=('libdom')
 conflicts=('libdom')
 
