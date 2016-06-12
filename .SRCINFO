@@ -1,7 +1,7 @@
 pkgbase = acpush
 	pkgdesc = App Container Server Push Command
 	pkgver = 0.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/appc/acpush
 	arch = i686
 	arch = x86_64
