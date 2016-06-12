@@ -8,7 +8,7 @@ _minor_version=220
 
 pkgname=eclipse-clp
 pkgver=${_major_version}.${_minor_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="Constraint Logic Programming System"
 arch=('i686' 'x86_64')
 url="http://eclipseclp.org/"
@@ -25,11 +25,9 @@ elif [ "${CARCH}" = 'i686' ]; then
   MD5SUM='8935e236e0071f7bc283c84bffcb2b99'
 fi
 
-source=("http://eclipseclp.org/Distribution/${_major_version}_${_minor_version}/${ARCH}_linux/eclipse_basic.tgz"
-	'eclipse-clp.sh')
+source=("http://eclipseclp.org/Distribution/${_major_version}_${_minor_version}/${ARCH}_linux/eclipse_basic.tgz")
 
-md5sums=('7421c81daa18a6d38275e632e6de31f8'
-         '46d4d43af0d59ecec2401706714dad8f')
+md5sums=('7421c81daa18a6d38275e632e6de31f8')
 
 package() {
   cd ${srcdir}
@@ -42,6 +40,4 @@ package() {
   mkdir -p ${targetDir}
 
   cp -dR * ${targetDir}
-
-  install -Dm755 eclipse-clp.sh  ${pkgdir}/etc/profile.d/eclipse-clp.sh
 }

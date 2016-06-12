@@ -1,7 +1,5 @@
-. /etc/profile.d/eclipse-clp.sh
-
 post_install() {
-  cd $ECLIPSEDIR
+  cd /opt/eclipse-clp
   echo -e "\n\n\n\n${JAVA_HOME}\n" | ./RUNME
 }
 
@@ -15,6 +13,5 @@ post_remove() {
 
 op=$1
 shift
-
 $op $*
 
