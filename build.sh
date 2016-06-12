@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 set -e
 
-# see https://github.com/appc/acbuild/blob/master/build
+# TODO this file is to come from upstream
+# made after prototype https://github.com/appc/acbuild/blob/master/build
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 NAME="acserver"
 ORG_PATH="github.com/appc"
 REPO_PATH="${ORG_PATH}/${NAME}"
-VERSION=$(cd "${DIR}" && git describe --dirty)
+VERSION=$(cd "${DIR}" && git describe --always)
 GLDFLAGS="-X ${REPO_PATH}/lib.Version=${VERSION}"
 
 if [ ! -h gopath/src/${REPO_PATH} ]; then
@@ -24,4 +25,4 @@ export GOOS GOARCH
 export CGO_ENABLED=0
 
 echo "Building $NAME ..."
-go build -o ${GOBIN}/${NAME} -ldflags "${GLDFLAGS}" ${REPO_PATH}/${NAME}
+go build -o ${GOBIN}/${NAME} -ldflags "${GLDFLAGS}" ${REPO_PATH}

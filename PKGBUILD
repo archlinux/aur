@@ -1,6 +1,6 @@
 pkgdesc='App Container Server'
 pkgname=acserver
-pkgver=0.0.0
+pkgver=0.0.0 # TODO pending release
 pkgrel=1
 url="https://github.com/appc/$pkgname"
 source=("git+${url}.git")
@@ -10,20 +10,18 @@ md5sums=('SKIP')
 license=('Apache')
 
 # 1.
-prepare() {
+prepare() { # TODO pending release
     local base=$(cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd)
     local repo="$srcdir/$pkgname" # working repo location
     local target=$([[ $pkgver == "0.0.0" ]] && printf "master" || printf "v$version")
     git -C "$repo" checkout --quiet "$target" # checkout proper version
     git -C "$repo" status # verify working repo change
-    cp -f $base/build.sh $repo/build
-    true
+    cp -f $base/build.sh $repo/build # TODO this file is to come from upstream
 }
 
 # 2.
 build() {
     cd $pkgname
-    pwd
     ./build
 }
 
@@ -34,5 +32,6 @@ check() {
 
 # 4.
 package() {
-    true
+    cd "$pkgname"
+    install -D "./bin/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }

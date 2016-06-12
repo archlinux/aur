@@ -2,8 +2,6 @@
 
 # build package automation
 
-# create .PKGREL file to auto-bump PKGBUILD pkgver to latest release version 
-
 readonly location=$(cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd)
 source $location/PKGBUILD
 
@@ -108,6 +106,6 @@ do_provision
 
 #do_version
 
-#do_commit
+do_commit
 
-#do_clean
+do_clean
