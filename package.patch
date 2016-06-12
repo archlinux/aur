@@ -1,0 +1,366 @@
+diff -aur -bZwB -x .git CoCoALib-0.99543.old/configure CoCoALib-0.99543/configure
+--- CoCoALib-0.99543.old/configure	2016-06-12 09:04:54.466844119 -0400
++++ CoCoALib-0.99543/configure	2016-06-12 09:06:08.350123705 -0400
+@@ -441,10 +441,10 @@
+ # Assume that if "qmake" is available then all of QT is too.
+ # Also check that "qmake" actually runs (Ubuntu 14.04 can have a broken symlink)
+ HAVE_QMAKE=no
+-QMAKE=`which qmake 2>/dev/null`
++QMAKE=`which qmake-qt4 2>/dev/null`
+ if [ $? = 0 ]
+ then
+-  QMAKE=`[ -x "$QMAKE" ] && qmake -help 2>&1 >/dev/null`
++  QMAKE=`[ -x "$QMAKE" ] && qmake-qt4 -help 2>&1 >/dev/null`
+   if [ $? = 0 ]
+   then
+     HAVE_QMAKE=yes
+@@ -558,7 +558,7 @@
+ fi
+ echo
+ 
+-if [ $HAVE_BOOST = "yes" -a $HAVE_QMAKE = "no" ]
++if [ $HAVE_BOOST = "yes" -a $HAVE_qmake-qt4 = "no" ]
+ then
+   echo "Note: we will build CoCoA5 ***without*** GUI because \"qmake\" is absent"
+   echo
+@@ -1038,8 +1038,8 @@
+ then
+ ####  echo "GSL_INC_DIR=\"$GSL_INC_DIR\""                     >> "$CONFIG_FILE"
+ ####  echo "GSL_INCLUDE=-I \$(GSL_INC_DIR)"                   >> "$CONFIG_FILE"
+-  echo "GSL_LIBS=\$(EXTLIBS)/lib/libgsl-symlink.a"            >> "$CONFIG_FILE"
+-  echo "GSL_LDLIBS=-lgsl-symlink -lblas -llapack"             >> "$CONFIG_FILE"
++  echo "GSL_LIBS=\$(EXTLIBS)/lib/libgsl-symlink.so"            >> "$CONFIG_FILE"
++  echo "GSL_LDLIBS=-lgsl-symlink -lcblas -llapack"             >> "$CONFIG_FILE"
+   echo "GSL_VERSION="                                         >> "$CONFIG_FILE"
+ fi
+ echo                                                          >> "$CONFIG_FILE"
+@@ -1051,7 +1051,7 @@
+ if [ $HAVE_NORMALIZ = "yes" ]
+ then
+   # Recall that GMPXX_LIB is the libgmpxx.a library
+-  echo "NORMALIZ_LIBS=\$(EXTLIBS)/lib/libnormaliz-symlink.a \$(GMPXX_LIB)" >> "$CONFIG_FILE"
++  echo "NORMALIZ_LIBS=\$(EXTLIBS)/lib/libnormaliz-symlink.so \$(GMPXX_LIB)" >> "$CONFIG_FILE"
+ echo "NORMALIZ_LDLIBS=-lnormaliz-symlink" >> "$CONFIG_FILE"
+   echo "NORMALIZ_VERSION="                                    >> "$CONFIG_FILE"
+ fi
+diff -aur -bZwB -x .git CoCoALib-0.99543.old/doc/CoCoALib-tasks/HTMLTasks.C CoCoALib-0.99543/doc/CoCoALib-tasks/HTMLTasks.C
+--- CoCoALib-0.99543.old/doc/CoCoALib-tasks/HTMLTasks.C	2016-06-12 09:04:54.470177450 -0400
++++ CoCoALib-0.99543/doc/CoCoALib-tasks/HTMLTasks.C	2016-06-12 09:04:59.810175187 -0400
+@@ -190,7 +190,7 @@
+   index::index()
+   {
+     ifstream in(XMLFileName());
+-    if (in == 0)
++    if (in.fail())
+       throw "Cannot find input file `tasks.xml`";
+     index::entry LastEntry("AAAA");
+     string line="";
+@@ -1072,7 +1072,7 @@
+   // completed tasks
+   {
+     ofstream out("CoCoALib-CompletedTasks.html");
+-    if (out == 0)
++    if (out.fail())
+     {
+       std::cout << "Cannot use file `completed.html`.  Aborting." << endl;
+       abort();
+@@ -1085,7 +1085,7 @@
+   // HTML
+   {
+     ofstream out("CoCoALib-tasks.html");
+-    if (out == 0)
++    if (out.fail())
+     {
+       std::cout << "Cannot use file `CoCoALib-tasks.html`.  Aborting." << endl;
+       abort();
+diff -aur -bZwB -x .git CoCoALib-0.99543.old/examples/ex-PolyInput1.C CoCoALib-0.99543/examples/ex-PolyInput1.C
+--- CoCoALib-0.99543.old/examples/ex-PolyInput1.C	2016-06-12 09:04:54.480177446 -0400
++++ CoCoALib-0.99543/examples/ex-PolyInput1.C	2016-06-12 09:04:59.810175187 -0400
+@@ -70,7 +70,7 @@
+     // we can, at any time, change the default streams in, out, log, err like this:
+     const char* FileName = "ex-PolyInput1.in";
+     ifstream in(FileName);
+-    if (in == 0)
++    if (in.fail())
+     {
+       cerr << "Cannot find input file `" << FileName << "'.  Aborting." << endl;
+       abort();
+diff -aur -bZwB -x .git CoCoALib-0.99543.old/examples/ex-PolyInput2.C CoCoALib-0.99543/examples/ex-PolyInput2.C
+--- CoCoALib-0.99543.old/examples/ex-PolyInput2.C	2016-06-12 09:04:54.480177446 -0400
++++ CoCoALib-0.99543/examples/ex-PolyInput2.C	2016-06-12 09:04:59.810175187 -0400
+@@ -39,7 +39,7 @@
+ 
+     const char* FileName = "ex-PolyInput2.in";
+     ifstream in(FileName);
+-    if (in == 0)
++    if (in.fail())
+     {
+       cerr << "Cannot find input file `" << FileName << "'.  Aborting." << endl;
+       abort();
+diff -aur -bZwB -x .git CoCoALib-0.99543.old/src/CoCoA-5/BuiltInFunctions-Normaliz.C CoCoALib-0.99543/src/CoCoA-5/BuiltInFunctions-Normaliz.C
+--- CoCoALib-0.99543.old/src/CoCoA-5/BuiltInFunctions-Normaliz.C	2016-06-12 09:04:54.570177411 -0400
++++ CoCoALib-0.99543/src/CoCoA-5/BuiltInFunctions-Normaliz.C	2016-06-12 09:04:59.810175187 -0400
+@@ -198,7 +198,7 @@
+         break;
+       case libnormaliz::ConeProperty::ExtremeRays:
+         out->setField(libnormaliz::toString(prop_i), Value::from(ExtremeRays(C)), ARG(0).exp);
+-        out->setField("Rank", Value::from(rank(C)), ARG(0).exp);
++        out->setField("Rank", Value::from(Normaliz::rank(C)), ARG(0).exp);
+         break;
+       case libnormaliz::ConeProperty::VerticesOfPolyhedron:
+         out->setField(libnormaliz::toString(prop_i), Value::from(VerticesOfPolyhedron(C)), ARG(0).exp);
+diff -aur -bZwB -x .git CoCoALib-0.99543.old/src/CoCoA-5/C5.cygwin-debug.pro CoCoALib-0.99543/src/CoCoA-5/C5.cygwin-debug.pro
+--- CoCoALib-0.99543.old/src/CoCoA-5/C5.cygwin-debug.pro	2016-06-12 09:04:54.570177411 -0400
++++ CoCoALib-0.99543/src/CoCoA-5/C5.cygwin-debug.pro	2016-06-12 09:04:59.810175187 -0400
+@@ -14,7 +14,7 @@
+ MOC_DIR = 
+ UI_DIR =
+ OBJECTS_DIR = Debug
+-QT += xml
++QT += widgets printsupport xml
+ 
+ # Input
+ HEADERS += AST.H \
+diff -aur -bZwB -x .git CoCoALib-0.99543.old/src/CoCoA-5/C5.cygwin-release.pro CoCoALib-0.99543/src/CoCoA-5/C5.cygwin-release.pro
+--- CoCoALib-0.99543.old/src/CoCoA-5/C5.cygwin-release.pro	2016-06-12 09:04:54.570177411 -0400
++++ CoCoALib-0.99543/src/CoCoA-5/C5.cygwin-release.pro	2016-06-12 09:04:59.810175187 -0400
+@@ -14,7 +14,7 @@
+ MOC_DIR = 
+ UI_DIR =
+ OBJECTS_DIR = Debug
+-QT += xml
++QT += widgets printsupport xml
+ 
+ # Input
+ HEADERS += AST.H \
+diff -aur -bZwB -x .git CoCoALib-0.99543.old/src/CoCoA-5/C5.pro.in CoCoALib-0.99543/src/CoCoA-5/C5.pro.in
+--- CoCoALib-0.99543.old/src/CoCoA-5/C5.pro.in	2016-06-12 09:04:54.570177411 -0400
++++ CoCoALib-0.99543/src/CoCoA-5/C5.pro.in	2016-06-12 09:04:59.810175187 -0400
+@@ -16,7 +16,7 @@
+ MOC_DIR = 
+ UI_DIR =
+ OBJECTS_DIR = Debug
+-QT += xml
++QT += widgets printsupport xml
+ HEADERS += AST.H \
+            C5.H \
+ 	   CoCoALibSupplement.H \
+diff -aur -bZwB -x .git CoCoALib-0.99543.old/src/CoCoA-5/INSTALL CoCoALib-0.99543/src/CoCoA-5/INSTALL
+--- CoCoALib-0.99543.old/src/CoCoA-5/INSTALL	2016-06-12 09:04:54.570177411 -0400
++++ CoCoALib-0.99543/src/CoCoA-5/INSTALL	2016-06-12 09:04:59.810175187 -0400
+@@ -82,7 +82,7 @@
+ 
+ === on Linux ===
+   cd CoCoALib/src/CoCoA-5/QCodeEdit/
+-  qmake QCodeEdit.pro
++  qmake-qt4 QCodeEdit.pro
+   make
+ 
+   [If you get the error: 'uic: File generated with too recent version of Qt Designer (4.0 vs. 3.3.8b)']
+@@ -91,13 +91,13 @@
+   step (2) update your Qt installation, for instance
+     sudo update-alternatives --config qmake
+     [Select qmake-qt4]
+-    qmake QCodeEdit.pro
++    qmake-qt4 QCodeEdit.pro
+     make
+ 
+ === on Mac ===
+   cd CoCoALib/src/CoCoA-5/QCodeEdit/
+   *** uncomment line about ppc/x86_64 in QCodeEdit.pro ***
+-  qmake -spec macx-g++ QCodeEdit.pro
++  qmake-qt4 -spec macx-g++ QCodeEdit.pro
+   make -j2
+ 
+ ----------------------------------------------------------------------
+@@ -107,7 +107,7 @@
+ 
+ === on Linux ===
+   cd ..
+-  qmake C5.pro
++  qmake-qt4 C5.pro
+   make -f C5Makefile
+ 
+ === on Mac ===
+@@ -116,7 +116,7 @@
+   cd ..
+     *** if necessary (i.e. ppc) remove -arch 386 from C5.pro ***
+     *** if necessary add ppc/x86_64 in C5.pro ***
+-  qmake -spec macx-g++ C5.pro
++  qmake-qt4 -spec macx-g++ C5.pro
+   make -f C5Makefile clean
+   make -j2 -f C5Makefile 
+   mv C5.app/Contents/MacOS/C5 C5.app/Contents/MacOS/C5.bin
+diff -aur -bZwB -x .git CoCoALib-0.99543.old/src/CoCoA-5/make-c5makefile.sh CoCoALib-0.99543/src/CoCoA-5/make-c5makefile.sh
+--- CoCoALib-0.99543.old/src/CoCoA-5/make-c5makefile.sh	2016-06-12 09:04:54.570177411 -0400
++++ CoCoALib-0.99543/src/CoCoA-5/make-c5makefile.sh	2016-06-12 09:04:59.810175187 -0400
+@@ -2,7 +2,7 @@
+ 
+ # This script builds the CoCoA-5 GUI; it assumes that CoCoALib
+ # has already been built, and that the Qt libraries have been installed
+-# (and that the qmake command is available).
++# (and that the qmake-qt4 command is available).
+ 
+ # if [ $# -ne 5 ]
+ # then
+@@ -11,7 +11,7 @@
+ # fi
+ 
+ 
+-which qmake >/dev/null
++which qmake-qt4 >/dev/null
+ if [ $? -ne 0 ]
+ then
+   echo "ERROR: $0 failed because it cannot find qmake" >/dev/stderr
+@@ -104,9 +104,9 @@
+ then
+   DARWIN_OPTS="-spec macx-g++"
+ fi
+-qmake $DARWIN_OPTS C5.pro -o C5Makefile
++qmake-qt4 $DARWIN_OPTS C5.pro -o C5Makefile
+ if [ "$?" -ne 0 ]
+ then
+-  echo "ERROR: $0 failed because qmake failed for C5.pro"  >/dev/stderr
++  echo "ERROR: $0 failed because qmake-qt4 failed for C5.pro"  >/dev/stderr
+   exit 6
+ fi
+diff -aur -bZwB -x .git CoCoALib-0.99543.old/src/CoCoA-5/Makefile CoCoALib-0.99543/src/CoCoA-5/Makefile
+--- CoCoALib-0.99543.old/src/CoCoA-5/Makefile	2016-06-12 09:04:54.570177411 -0400
++++ CoCoALib-0.99543/src/CoCoA-5/Makefile	2016-06-12 09:04:59.810175187 -0400
+@@ -438,8 +438,8 @@
+ # Added wordlist.o to files to remove when cleaning.
+ #
+ # Revision 1.58  2012/08/06 09:14:53  abbott
+-# Added a check for HAVE_QMAKE so we give the user a helpful message instead of
+-# an error when trying to builf GUI but QMAKE is absent.
++# Added a check for HAVE_qmake-qt4 so we give the user a helpful message instead of
++# an error when trying to builf GUI but qmake-qt4 is absent.
+ #
+ # Revision 1.57  2012/08/05 12:26:03  abbott
+ # Added check-prerequisites and check-prerequisites-verbose targets
+diff -aur -bZwB -x .git CoCoALib-0.99543.old/src/CoCoA-5/make-qcodeeditmakefile.sh CoCoALib-0.99543/src/CoCoA-5/make-qcodeeditmakefile.sh
+--- CoCoALib-0.99543.old/src/CoCoA-5/make-qcodeeditmakefile.sh	2016-06-12 09:04:54.570177411 -0400
++++ CoCoALib-0.99543/src/CoCoA-5/make-qcodeeditmakefile.sh	2016-06-12 09:04:59.810175187 -0400
+@@ -2,7 +2,7 @@
+ 
+ # This script builds the CoCoA-5 GUI; it assumes that CoCoALib
+ # has already been built, and that the Qt libraries have been installed
+-# (and that the qmake command is available).
++# (and that the qmake-qt4 command is available).
+ 
+ if [ $# -ne 0 ]
+ then
+@@ -11,9 +11,9 @@
+ fi
+ 
+ ##################################################################
+-# Check for qmake program
++# Check for qmake-qt4 program
+ 
+-which qmake >/dev/null
++which qmake-qt4 >/dev/null
+ if [ $? -ne 0 ]
+ then
+   echo "ERROR: $0 failed because it cannot find qmake" >/dev/stderr
+@@ -83,9 +83,9 @@
+   DARWIN="-spec macx-g++"
+ fi
+ cd $QCE
+-qmake $DARWIN QCodeEdit.pro
++qmake-qt4 $DARWIN QCodeEdit.pro
+ if [ "$?" -ne 0 ]
+ then
+-  echo "ERROR: $0 failed because qmake failed for QCodeEdit"  >/dev/stderr
++  echo "ERROR: $0 failed because qmake-qt4 failed for QCodeEdit"  >/dev/stderr
+   exit 4
+ fi
+diff -aur -bZwB -x .git CoCoALib-0.99543.old/src/CoCoA-5/OnlineHelp.C CoCoALib-0.99543/src/CoCoA-5/OnlineHelp.C
+--- CoCoALib-0.99543.old/src/CoCoA-5/OnlineHelp.C	2016-06-12 09:04:54.570177411 -0400
++++ CoCoALib-0.99543/src/CoCoA-5/OnlineHelp.C	2016-06-12 09:04:59.810175187 -0400
+@@ -136,7 +136,7 @@
+   {
+     out << "Loading CoCoAManual index ..." << std::flush;
+     ifstream in(XMLFileName());
+-    if (in == 0)
++    if (in.fail())
+       CoCoA_ERROR("Cannot find input file `CoCoAHelp.xml`", "OnlineHelp::index()");
+     string line; // used only inside while loop
+     string LastCommand;
+@@ -426,7 +426,7 @@
+ void PrintSearchExact(std::string title, std::ostream &out)
+ {
+   ifstream in(XMLFileName());
+-  if (in == 0)
++  if (in.fail())
+   {
+     std::cout << "Cannot find input file `CoCoAHelp.xml`.  Aborting." << endl;
+     abort();
+@@ -560,7 +560,7 @@
+     SearchType(found, TypeLine);
+     for (size_t i=0; i<found.size(); ++i)
+     {
+-      ifstream in(XMLFileName());  // if (in == 0) ...
++      ifstream in(XMLFileName());  // if (in.fail()) ...
+       string s = SkipToStringInTag(in, "<title>");
+       while (!in.eof() && s != found[i])  s = SkipToStringInTag(in, "<title>");
+       if (in.eof())
+@@ -583,7 +583,7 @@
+     SearchRtnType(found, TypeLine);
+     for (size_t i=0; i<found.size(); ++i)
+     {
+-      ifstream in(XMLFileName());  // if (in == 0) ...
++      ifstream in(XMLFileName());  // if (in.fail()) ...
+       string s = SkipToStringInTag(in, "<title>");
+       while (!in.eof() && s != found[i])  s = SkipToStringInTag(in, "<title>");
+       if (in.eof())
+@@ -769,7 +769,7 @@
+ void PrintAllExamples(std::ostream &out)
+ {
+   ifstream in(XMLFileName());
+-  if (in == 0)
++  if (in.fail())
+   {
+     std::cout << "Cannot find input file `CoCoAHelp.xml`.  Aborting." << endl;
+     abort();
+@@ -798,7 +798,7 @@
+ void PrintAllExamplesWithoutOutput(std::ostream &out)
+ {
+   ifstream in(XMLFileName());
+-  if (in == 0)
++  if (in.fail())
+   {
+     std::cout << "Cannot find input file `CoCoAHelp.xml`.  Aborting." << endl;
+     abort();
+@@ -827,7 +827,7 @@
+ void PrintWordlist(std::ostream &out)
+ {
+   ifstream in(XMLFileName());
+-  if (in == 0)
++  if (in.fail())
+   {
+     std::cout << "Cannot find input file `CoCoAHelp.xml`.  Aborting." << endl;
+     abort();
+diff -aur -bZwB -x .git CoCoALib-0.99543.old/src/CoCoA-5/QCodeEdit/document/qdocumentline.cpp CoCoALib-0.99543/src/CoCoA-5/QCodeEdit/document/qdocumentline.cpp
+--- CoCoALib-0.99543.old/src/CoCoA-5/QCodeEdit/document/qdocumentline.cpp	2016-06-12 09:04:54.573510743 -0400
++++ CoCoALib-0.99543/src/CoCoA-5/QCodeEdit/document/qdocumentline.cpp	2016-06-12 09:04:59.810175187 -0400
+@@ -268,7 +268,7 @@
+ */
+ bool QDocumentLine::isValid() const
+ {
+-	return m_handle ? m_handle->document() : false;
++	return m_handle ? (bool)m_handle->document() : false;
+ }
+ 
+ /*!
+diff -aur -bZwB -x .git CoCoALib-0.99543.old/src/CoCoA-5/QCodeEdit/QCodeEdit.pro.in CoCoALib-0.99543/src/CoCoA-5/QCodeEdit/QCodeEdit.pro.in
+--- CoCoALib-0.99543.old/src/CoCoA-5/QCodeEdit/QCodeEdit.pro.in	2016-06-12 09:04:54.573510743 -0400
++++ CoCoALib-0.99543/src/CoCoA-5/QCodeEdit/QCodeEdit.pro.in	2016-06-12 09:04:59.810175187 -0400
+@@ -5,7 +5,7 @@
+ DEPENDPATH += . document images qnfa snippets widgets
+ INCLUDEPATH += . document widgets qnfa snippets
+ CONFIG += qt debug warn_off staticlib thread
+-QT += xml
++QT += widgets printsupport xml
+ UI_DIR = 
+ MOC_DIR = .build
+ OBJECTS_DIR = .build

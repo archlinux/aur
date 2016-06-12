@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec /usr/lib/CoCoA/bin/CoCoAInterpreter --packageDir /usr/lib/CoCoA/packages $*
