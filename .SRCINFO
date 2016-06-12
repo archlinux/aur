@@ -1,12 +1,13 @@
 pkgbase = netsurf-git
 	pkgdesc = Lightweight and fast web browser
-	pkgver = 3.5.r164.g8fdf262
+	pkgver = 3.5.r168.g22d84a5
 	pkgrel = 1
 	url = http://www.netsurf-browser.org/
 	arch = x86_64
 	arch = i686
 	license = MIT
 	license = GPL2
+	makedepends = git
 	makedepends = inetutils
 	makedepends = netsurf-buildsystem-git
 	makedepends = nsgenbind-git
@@ -28,8 +29,8 @@ pkgbase = netsurf-git
 	conflicts = netsurf
 	source = git://git.netsurf-browser.org/netsurf.git
 	source = Makefile.config
-	sha256sums = SKIP
-	sha256sums = 057ec874491cb1f6354ae30a3caf75cc26987219d1ebc924c88b460c0e914503
+	md5sums = SKIP
+	md5sums = 5a7d43ded6a37a02f8079c5ea3c49851
 
 pkgname = netsurf-git
 
