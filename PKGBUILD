@@ -5,15 +5,15 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=python-tdl
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 pkgdesc="Pythonic CFFI port of libtcod."
 arch=('any')
 url="https://pypi.python.org/pypi/tdl"
 license=('BSD')
-depends=('python' 'python-cffi' 'python-libtcod-cffi' 'unzip')
-source=("python-tdl-$pkgver.zip::https://pypi.python.org/packages/source/t/tdl/tdl-1.5.2.zip#md5=fb608df39249aa7e8fab0adbd909ba95")
-md5sums=('fb608df39249aa7e8fab0adbd909ba95')
+depends=('python' 'python-cffi' 'python-libtcod-cffi')
+source=("https://github.com/HexDecimal/$pkgname/archive/v.$pkgver.tar.gz")
+md5sums=('b5b1bf0fd665587b3c20dc44aa5a3741')
 
 package() {
 	cd "tdl-$pkgver"
