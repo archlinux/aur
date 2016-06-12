@@ -10,7 +10,6 @@ license=('GPL')
 # groups=('emacs-plugins')
 depends=('emacs' 'emacs-dash')
 makedepends=('emacs' 'texinfo')
-install=flycheck.install
 source=("https://github.com/flycheck/flycheck/archive/$pkgver.tar.gz")
 sha256sums=('dc85d1e67a83020aafc63df980aa6bbb07595f6ef32d8888089066b8f62ad34a')
 
