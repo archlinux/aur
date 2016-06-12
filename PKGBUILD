@@ -39,8 +39,8 @@ package() {
   cp -pr opt/bin "$pkgdir/opt/"
   cp -pr opt/lib/*.so "$pkgdir/opt/lib/"
   
-  install -D "sundtek.rules" "$pkgdir/usr/lib/udev/rules.d/sundtek.rules"
-  install -D "sundtek.service" "$pkgdir/usr/lib/systemd/system/sundtek.service"
-  install -D "sundtek-restart.service" "$pkgdir/usr/lib/systemd/system/sundtek-restart.service"
-  install -D "opt/doc/README" "$pkgdir/usr/share/licenses/sundtek/README"
+  install -m644 -D "sundtek.rules" "$pkgdir/usr/lib/udev/rules.d/sundtek.rules"
+  install -m644 -D "sundtek.service" "$pkgdir/usr/lib/systemd/system/sundtek.service"
+  install -m644 -D "sundtek-restart.service" "$pkgdir/usr/lib/systemd/system/sundtek-restart.service"
+  install -m644 -D "opt/doc/README" "$pkgdir/usr/share/licenses/sundtek/README"
 }
