@@ -2,7 +2,7 @@
 
 pkgname=guile-git
 _gitname=guile
-pkgver=2.1.2.198.gbe6194e
+pkgver=2.1.2.200.g7142005
 pkgrel=1
 pkgdesc="A portable, embeddable Scheme implementation (Git snapshot)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 makedepends=('git')
 optdepends=('texinfo: for using texinfo scheme sources')
 provides=('guile')
-depends=('gc' 'libtool' 'libffi' 'libunistring' 'gmp')
+depends=('gc' 'libtool' 'libffi' 'libunistring' 'gmp' 'readline')
 provides=('guile')
 options=('!strip' '!makeflags' 'libtool')
 source=("git://git.sv.gnu.org/$_gitname.git")
