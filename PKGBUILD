@@ -1,12 +1,13 @@
-# Mainteiner: Yurii Kolesnykov
+# Maintainer: Yurii Kolesnykov <yurikoles@gmai.com>
 # Credit: Dave Reisner <dreisner@archlinux.org>
 # Credit: Tom Gundersen <teg@jklm.no>
 
 pkgbase=systemd-git
 _realpkgname=systemd
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-sysvcompat-git')
+pkgdesc="systemd from git"
 pkgver=230.r197.g7f40134
-pkgrel=1
+pkgrel=2
 _branch='master'
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
