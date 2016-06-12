@@ -4,6 +4,8 @@ echo "5da725748a98681ea0dd5ee8eeeff730:65891c4ca7a95a2e96ec6f89c3dec30169961537a
 
 whisperer(){
     echo "----------------------------------------------------------------"
+    echo "Note: hook was replaced by dkms"
+    echo "----------------------------------------------------------------"
     echo "Add nomodeset to your kernel line in /boot/grub/menu.lst , ie.:"
     echo "kernel /boot/vmlinuz-linux root=/dev/sda1 ro nomodeset"
     echo "----------------------------------------------------------------"
@@ -16,52 +18,30 @@ whisperer(){
     echo "systemctl start atieventsd"
     echo "----------------------------------------------------------------"
     echo "For more info and troubleshooting visit:"
-    echo "http://wiki.archlinux.org/index.php/ATI_Catalyst"
+    echo "http://wiki.archlinux.org/index.php/AMD_Catalyst"
     echo "----------------------------------------------------------------"
-    echo -e '\E[37;44m'"\033[1m----------------------------------------------------------------\033[0m"
-    echo -e '\E[37;44m'"\033[1m				ATTENTION!\033[0m"
-    echo -e '\E[37;44m'"\033[1m----------------------------------------------------------------\033[0m"
-    echo "To enable 'automatic re-compilation while system shutdown/reboot' "
-    echo "testing feature run these commands as root:"
-    echo "systemctl enable catalyst-hook"
-    echo "systemctl start catalyst-hook"
-    echo ""
-    echo "More info here:"
-    echo "https://bbs.archlinux.org/viewtopic.php?pid=1255575#p1255575"
-    echo -e '\E[37;44m'"\033[1m----------------------------------------------------------------\033[0m"
 }
 
-captain_hook(){
-    # add hook fglrx to mkiniticpio
-    hooks=$(grep ^HOOKS etc/mkinitcpio.conf | grep fglrx)
-    if [ "$hooks" = "" ]; then
-        sed 's/^HOOKS="\([^"]*\)"/HOOKS="\1 fglrx"/' -i etc/mkinitcpio.conf
-    fi
+pre_upgrade(){
+    # remove hook fglrx
+    sed '/^HOOKS/s/ *fglrx//' -i etc/mkinitcpio.conf
+    systemctl stop catalyst-hook.service
+    systemctl disable catalyst-hook.service
+    # remove existing  fglrx modules
+    usr/bin/catalyst_build_module ra
 }
 
 post_install(){
-    captain_hook
-    usr/bin/catalyst_build_module ra
-    usr/bin/catalyst_build_module all
     no_testing
     whisperer
 }
 
 post_upgrade(){
-    usr/bin/catalyst_build_module ra
-    usr/bin/catalyst_build_module all
     no_testing
     whisperer
 }
 
-pre_remove(){
-    usr/bin/catalyst_build_module ra
-}
-
 post_remove(){
-    # remove hook fglrx
-    sed '/^HOOKS/s/ *fglrx//' -i etc/mkinitcpio.conf
-
     # remove log
     rm -f var/log/catalyst-install.log
 

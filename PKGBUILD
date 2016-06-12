@@ -20,26 +20,27 @@
 # Contributor: ubuntu (parts of 4.0, 4.1 and 4.2 kernel patches)
 # Contributor: kolasa (parts of 4.2 and 4.3 kernel patches)
 # Contributor: gentoo (patch for 3.10 + part of 4.3 kernel patches)
+# Contributor: 	aslmaswd (acpi main script)
 
 
 # PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
 
 pkgname=catalyst-total-hd234k
 pkgver=13.1
-pkgrel=34
-pkgdesc="AMD/ATI legacy drivers. catalyst-hook + catalyst-utils + lib32-catalyst-utils"
+pkgrel=36
+pkgdesc="AMD/ATI legacy drivers. catalyst-dkms+ catalyst-utils + lib32-catalyst-utils"
 arch=('i686' 'x86_64')
 url="http://www.amd.com"
 license=('custom')
 options=('staticlibs' 'libtool' '!strip' '!upx')
-depends=('linux>=3.0' 'linux<4.6' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.13.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
+depends=('dkms' 'linux>=3.0' 'linux<4.7' 'linux-headers' 'xorg-server>=1.7.0' 'xorg-server<1.13.0' 'libxrandr' 'libsm' 'fontconfig' 'libxcursor' 'libxi' 'gcc-libs' 'gcc>4.0.0' 'make' 'patch' 'libxinerama' 'mesa>=10.1.0-4')
 optdepends=('qt4: to run ATi Catalyst Control Center (amdcccle)'
 	    'libxxf86vm: to run ATi Catalyst Control Center (amdcccle)'
 	    'opencl-headers: headers necessary for OpenCL development'
 	    'acpid: acpi event support  / atieventsd'
 	    'linux-lts-headers: to build the fglrx module for the linux-lts kernel')
-conflicts=('libgl' 'xf86-video-ati' 'xf86-video-radeonhd' 'catalyst-test' 'nvidia-utils' 'nvidia' 'catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-hook' 'catalyst-utils' 'libcl')
-provides=('libgl' "libatical=${pkgver}" "catalyst=${pkgver}" "catalyst-utils=${pkgver}" "catalyst-hook=${pkgver}" "catalyst-libgl=${pkgver}" "opencl-catalyst=${pkgver}" 'libcl' 'dri' 'libtxc_dxtn')
+conflicts=('libgl' 'xf86-video-ati' 'xf86-video-radeonhd' 'catalyst-test' 'nvidia-utils' 'nvidia' 'catalyst' 'catalyst-daemon' 'catalyst-generator' 'catalyst-dkms' 'catalyst-utils' 'libcl')
+provides=('libgl' "libatical=${pkgver}" "catalyst=${pkgver}" "catalyst-utils=${pkgver}" "catalyst-dkms=${pkgver}" "catalyst-libgl=${pkgver}" "opencl-catalyst=${pkgver}" 'libcl' 'dri' 'libtxc_dxtn')
 
 if [ "${CARCH}" = "x86_64" ]; then
  warning "x86_64 system detected"
@@ -61,20 +62,15 @@ DLAGENTS="http::/usr/bin/curl --referer ${url_ref} -o %o %u"
 
 source=(
     http://www2.ati.com/drivers/legacy/amd-driver-installer-catalyst-${pkgver}-legacy-linux-x86.x86_64.zip
-    catalyst_build_module
     lib32-catalyst.sh
     catalyst.sh
     atieventsd.sh
     atieventsd.service
     ati-powermode.sh
-    a-ac-aticonfig
-    a-lid-aticonfig
+
     catalyst.conf
     arch-fglrx-authatieventsd_new.patch
-    hook-fglrx
-    ati_make.sh
     makefile_compat.patch
-    catalyst-hook.service
 
     3.5-do_mmap.patch
     arch-fglrx-3.7.patch
@@ -96,23 +92,23 @@ source=(
     4.3-gentoo-mtrr.patch
 
     gcc5-something_something_the_dark_side.patch
-    4.4-arch-block_signals.patch)
+    4.4-arch-block_signals.patch
+    4.6-arch-get_user_pages-page_cache_release.patch
+    
+    dkms.conf
+    makesh-dont-check-gcc-version.patch
+    makesh-src_file.patch)
 
 md5sums=('c07fd1332abe4c742a9a0d0e0d0a90de'
-	 '3c2ff823b56d16e8220d129726b43ff1'
 	 'af7fb8ee4fc96fd54c5b483e33dc71c4'
          'bdafe749e046bfddee2d1c5e90eabd83'
          '9d9ea496eadf7e883d56723d65e96edf'
 	 'b79e144932616221f6d01c4b05dc9306'
-	 '514899437eb209a1d4670df991cdfc10'
-	 '80fdfbff93d96a1dfca2c7f684be8cc1'
-	 '9054786e08cf3ea2a549fe22d7f2cd92'
+	 '9e2a7ded987b7d2b2cfffc7281ebd8a5'
+
 	 '3e19c2285c76f4cb92108435a1e9c302'
 	 'b3ceefeb97c609037845f65d0956c4f0'
-         '9126e1ef0c724f8b57d3ac0fe77efe2f'
-	 '62239156a9656c6f41e89a879578925c'
 	 '3e1b82bd69774ea808da69c983d6a43b'
-	 'a64e2eae5addc6d670911ccf94b8cda4'
 
 	 'a450e2e3db61994b09e9d99d95bee837'
 	 'ff60c162b46e21e9810a722718023451'
@@ -134,7 +130,12 @@ md5sums=('c07fd1332abe4c742a9a0d0e0d0a90de'
 	 '98828e3eeaec2b3795e584883cc1b746'
 
 	 'af80a9eb2016811ab79717c2bd370a25'
-	 'd200e156e941ec7b0227e399fd20a9c2')
+	 'd200e156e941ec7b0227e399fd20a9c2'
+	 'd98bb6d66520bdaeac42b60b75b01ab4'
+	 
+	 '23d569abfdd7de433d76e003e4b3ccf9'
+	 '10829e3b992b3e80a6e78c8e27748703'
+	 '6cdc15206cc61e3de456416a9011db07')
 
 
 build() {
@@ -257,11 +258,9 @@ package() {
     # ACPI example files
 #       install -m755 usr/share/doc/fglrx/examples/etc/acpi/*.sh ${pkgdir}/etc/acpi
 #       sed -i -e "s/usr\/X11R6/usr/g" ${pkgdir}/etc/acpi/ati-powermode.sh
-#       install -m644 usr/share/doc/fglrx/examples/etc/acpi/events/* ${pkgdir}/etc/acpi/events
-    # lets check our own files - V
+      install -m644 usr/share/doc/fglrx/examples/etc/acpi/events/* ${pkgdir}/etc/acpi/events
+    # put version modified by aslmaswd - V
       install -m755 ${srcdir}/ati-powermode.sh ${pkgdir}/etc/acpi
-      install -m644 ${srcdir}/a-ac-aticonfig ${pkgdir}/etc/acpi/events
-      install -m644 ${srcdir}/a-lid-aticonfig ${pkgdir}/etc/acpi/events
 
     # Add ATI Events Daemon launcher
       install -m755 ${srcdir}/atieventsd.sh ${pkgdir}/etc/rc.d/atieventsd
@@ -290,7 +289,7 @@ package() {
       install -m644 ${srcdir}/catalyst.conf ${pkgdir}/etc/modules-load.d
 
 
-##catalyst-hook section
+##catalyst-dkms section
       cd ${srcdir}/archive_files
       patch -Np1 -i ../makefile_compat.patch
       patch -Np1 -i ../3.5-do_mmap.patch
@@ -314,32 +313,30 @@ package() {
       patch -Np1 -i ../4.3-gentoo-mtrr.patch
       patch -Np1 -i ../gcc5-something_something_the_dark_side.patch
       patch -Np1 -i ../4.4-arch-block_signals.patch
+      patch -Np1 -i ../4.6-arch-get_user_pages-page_cache_release.patch
+      patch -Np1 -i ../makesh-dont-check-gcc-version.patch
+      patch -Np1 -i ../makesh-src_file.patch
+
 
     # Prepare modules source files
+      install -dm755 ${pkgdir}/usr/src/fglrx-${pkgver}/2.6.x
       _archdir=x86_64
       test "${CARCH}" = "i686" && _archdir=x86
-      install -m755 -d ${pkgdir}/usr/share/ati/build_mod
+      install -m755 -d ${pkgdir}/usr/src/fglrx-${pkgver}
       install -m644 common/lib/modules/fglrx/build_mod/*.c \
-                ${pkgdir}/usr/share/ati/build_mod
+                ${pkgdir}/usr/src/fglrx-${pkgver}
       install -m644 common/lib/modules/fglrx/build_mod/*.h \
-                ${pkgdir}/usr/share/ati/build_mod/
+                ${pkgdir}/usr/src/fglrx-${pkgver}
       install -m644 common/lib/modules/fglrx/build_mod/2.6.x/Makefile \
-                ${pkgdir}/usr/share/ati/build_mod/
+                ${pkgdir}/usr/src/fglrx-${pkgver}/2.6.x
+      install -m644 common/lib/modules/fglrx/build_mod/make.sh \
+                ${pkgdir}/usr/src/fglrx-${pkgver}
       install -m644 arch/${_archdir}/lib/modules/fglrx/build_mod/libfglrx_ip.a \
-                ${pkgdir}/usr/share/ati/build_mod/
-      install -m755 -d ${pkgdir}/usr/bin
-      install -m755 ${srcdir}/catalyst_build_module ${pkgdir}/usr/bin
+                ${pkgdir}/usr/src/fglrx-${pkgver}
 
-    # modified ati's make.sh script
-      install -m755 ${srcdir}/ati_make.sh ${pkgdir}/usr/share/ati/build_mod
-
-    # hook fglrx
-      install -m755 -d ${pkgdir}/usr/lib/initcpio/install
-      install -m644 ${srcdir}/hook-fglrx ${pkgdir}/usr/lib/initcpio/install/fglrx
-
-    # systemd service to perform fglrx module build at shutdown
-      install -m755 -d ${pkgdir}/usr/lib/systemd/system
-      install -m644 ${srcdir}/catalyst-hook.service ${pkgdir}/usr/lib/systemd/system
+    # copy dkms.conf and set version
+    cp ${srcdir}/dkms.conf ${pkgdir}/usr/src/fglrx-${pkgver}/
+    sed -i -e "s/@VERSION@/${pkgver}/" "${pkgdir}/usr/src/fglrx-${pkgver}/dkms.conf"
 
 
 ##lib32-catalyst-utils section

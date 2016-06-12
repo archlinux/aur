@@ -1,14 +1,15 @@
 pkgbase = catalyst-total-hd234k
-	pkgdesc = AMD/ATI legacy drivers. catalyst-hook + catalyst-utils + lib32-catalyst-utils
+	pkgdesc = AMD/ATI legacy drivers. catalyst-dkms+ catalyst-utils + lib32-catalyst-utils
 	pkgver = 13.1
-	pkgrel = 34
+	pkgrel = 36
 	url = http://www.amd.com
 	install = catalyst-total-hd234k.install
 	arch = i686
 	arch = x86_64
 	license = custom
+	depends = dkms
 	depends = linux>=3.0
-	depends = linux<4.6
+	depends = linux<4.7
 	depends = linux-headers
 	depends = xorg-server>=1.7.0
 	depends = xorg-server<1.13.0
@@ -32,7 +33,7 @@ pkgbase = catalyst-total-hd234k
 	provides = libatical=13.1
 	provides = catalyst=13.1
 	provides = catalyst-utils=13.1
-	provides = catalyst-hook=13.1
+	provides = catalyst-dkms=13.1
 	provides = catalyst-libgl=13.1
 	provides = opencl-catalyst=13.1
 	provides = libcl
@@ -47,7 +48,7 @@ pkgbase = catalyst-total-hd234k
 	conflicts = catalyst
 	conflicts = catalyst-daemon
 	conflicts = catalyst-generator
-	conflicts = catalyst-hook
+	conflicts = catalyst-dkms
 	conflicts = catalyst-utils
 	conflicts = libcl
 	options = staticlibs
@@ -55,20 +56,14 @@ pkgbase = catalyst-total-hd234k
 	options = !strip
 	options = !upx
 	source = http://www2.ati.com/drivers/legacy/amd-driver-installer-catalyst-13.1-legacy-linux-x86.x86_64.zip
-	source = catalyst_build_module
 	source = lib32-catalyst.sh
 	source = catalyst.sh
 	source = atieventsd.sh
 	source = atieventsd.service
 	source = ati-powermode.sh
-	source = a-ac-aticonfig
-	source = a-lid-aticonfig
 	source = catalyst.conf
 	source = arch-fglrx-authatieventsd_new.patch
-	source = hook-fglrx
-	source = ati_make.sh
 	source = makefile_compat.patch
-	source = catalyst-hook.service
 	source = 3.5-do_mmap.patch
 	source = arch-fglrx-3.7.patch
 	source = gentoo_linux-3.10-proc.diff
@@ -88,21 +83,19 @@ pkgbase = catalyst-total-hd234k
 	source = 4.3-gentoo-mtrr.patch
 	source = gcc5-something_something_the_dark_side.patch
 	source = 4.4-arch-block_signals.patch
+	source = 4.6-arch-get_user_pages-page_cache_release.patch
+	source = dkms.conf
+	source = makesh-dont-check-gcc-version.patch
+	source = makesh-src_file.patch
 	md5sums = c07fd1332abe4c742a9a0d0e0d0a90de
-	md5sums = 3c2ff823b56d16e8220d129726b43ff1
 	md5sums = af7fb8ee4fc96fd54c5b483e33dc71c4
 	md5sums = bdafe749e046bfddee2d1c5e90eabd83
 	md5sums = 9d9ea496eadf7e883d56723d65e96edf
 	md5sums = b79e144932616221f6d01c4b05dc9306
-	md5sums = 514899437eb209a1d4670df991cdfc10
-	md5sums = 80fdfbff93d96a1dfca2c7f684be8cc1
-	md5sums = 9054786e08cf3ea2a549fe22d7f2cd92
+	md5sums = 9e2a7ded987b7d2b2cfffc7281ebd8a5
 	md5sums = 3e19c2285c76f4cb92108435a1e9c302
 	md5sums = b3ceefeb97c609037845f65d0956c4f0
-	md5sums = 9126e1ef0c724f8b57d3ac0fe77efe2f
-	md5sums = 62239156a9656c6f41e89a879578925c
 	md5sums = 3e1b82bd69774ea808da69c983d6a43b
-	md5sums = a64e2eae5addc6d670911ccf94b8cda4
 	md5sums = a450e2e3db61994b09e9d99d95bee837
 	md5sums = ff60c162b46e21e9810a722718023451
 	md5sums = 5872d95907a93ada44982e355e91e59d
@@ -122,6 +115,10 @@ pkgbase = catalyst-total-hd234k
 	md5sums = 98828e3eeaec2b3795e584883cc1b746
 	md5sums = af80a9eb2016811ab79717c2bd370a25
 	md5sums = d200e156e941ec7b0227e399fd20a9c2
+	md5sums = d98bb6d66520bdaeac42b60b75b01ab4
+	md5sums = 23d569abfdd7de433d76e003e4b3ccf9
+	md5sums = 10829e3b992b3e80a6e78c8e27748703
+	md5sums = 6cdc15206cc61e3de456416a9011db07
 
 pkgname = catalyst-total-hd234k
 
