@@ -1,0 +1,14 @@
+pkgbase = python-static3
+	pkgdesc = This library provides an easy way to include static content in your WSGI applications.
+	pkgver = 0.7.0
+	pkgrel = 0
+	url = https://github.com/rmohr/static3
+	arch = any
+	license = LGPL2
+	depends = python
+	depends = python-pytest
+	source = python-static3-0.7.0.tar.gz::https://github.com/rmohr/static3/archive/v0.7.0.tar.gz
+	sha512sums = fbd1aa76496c928128c0099fc2cd1c8fff6a6db29c8e329c4414223876e529ce1fb6d47491e584f89cebba02c69463e9ba5f14848e1f12676eebd0ea7a7a2559
+
+pkgname = python-static3
+
