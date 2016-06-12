@@ -5,7 +5,7 @@
 
 pkgname=emacs-pretest
 _pkgname=emacs
-pkgver=25.0.94
+pkgver=25.0.95
 pkgrel=1
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ install=$pkgname.install
 provides=('emacs')
 conflicts=('emacs')
 source=(ftp://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$pkgver.tar.xz{,.sig})
-sha384sums=('ea0fb4408cc6f655b3df3ce78404f67d9691d9f397877bccf79c316515d8540dea3a329ae4dec83e72e158dcc2e5f9ba'
+sha384sums=('6d495bea229faa8858b26a3a0d7a4e5d0cd1b15414edf8db47e28f305d1f1d36f548fdd887cd41318883c72881f7e735'
             'SKIP')
 validpgkkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')
 
