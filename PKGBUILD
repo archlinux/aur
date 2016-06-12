@@ -21,14 +21,18 @@ sha256sums=('24d6383b64d1101423396647108a5f4ba32e8d797112ff9409c27b84d01778e3'
 backup=('var/lib/hass/configuration.yaml')
 install='hass.install'
 
+prepare() {
+  cd ${srcdir}/${_pkgname}-${pkgver}
+
+  # package for voluptuous is more recent on AUR
+  sed -i 's/voluptuous==0.8.9/voluptuous>=0.8.9,<1/' setup.py
+}
+
 package() {
   mkdir -p "${pkgdir}/usr/lib/systemd/system/"
   cp home-assistant.service "${pkgdir}/usr/lib/systemd/system/"
 
   cd ${srcdir}/${_pkgname}-${pkgver}
-
-  # package for voluptuous is more recent on AUR
-  sed -i 's/voluptuous==0.8.9/voluptuous>=0.8.9,<1/' setup.py
 
   python3 setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
