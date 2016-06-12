@@ -1,5 +1,5 @@
-pkgver=2.0.14
-pkgrel=17
+pkgver=2.0.15
+pkgrel=1
 echo "pkgname=whatsie
 pkgver=$pkgver
 pkgrel=$pkgrel
@@ -12,7 +12,7 @@ optdepends=('hunspell: spell check')
 options=('!docs' '!emptydirs')
 install=.INSTALL
 source=(\"whatsie-\$pkgver-linux-amd64.deb::https://github.com/Aluxian/Whatsie/releases/download/v\$pkgver/whatsie-\$pkgver-linux-amd64.deb\")
-md5sums=('a7e1cb4c020c98aa74cc75e1cac22014')
+md5sums=('caeedca3cc47ab414923c1ffa9ec9fca')
 package() {
   msg2 \"Extracting the data.tar.gz...\"
   bsdtar -xf data.tar.gz -C \"\$pkgdir/\"
@@ -24,7 +24,7 @@ package() {
 }" > PKGBUILD
 
 
-
+# wget "https://github.com/Aluxian/Whatsie/releases/download/v$pkgver/whatsie-$pkgver-linux-amd64.deb"
 
 makepkg --printsrcinfo > .SRCINFO
 chmod 755 .PKGINFO
