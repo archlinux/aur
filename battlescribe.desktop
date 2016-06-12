@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=BattleScribe Roster Editor
+Comment=Table-top army list builder
+Path=/opt/battlescribe
+Exec=/opt/battlescribe/BattleScribe.sh
+Icon=battlescribe
+Terminal=false
+Categories=Game;Java;
+X-Desktop-File-Install-Version=0.22
