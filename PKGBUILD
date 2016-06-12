@@ -1,7 +1,7 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=giada
-pkgver=0.12.1
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="A looper, drum machine, sequencer, live sampler and plugin host"
 arch=('i686' 'x86_64')
@@ -15,10 +15,10 @@ source=("${pkgname}-${pkgver}-src.tar.gz::http://www.giadamusic.com/download/gra
         "$pkgname.desktop"
         "$pkgname.png")
 install="$pkgname.install"
-md5sums=('faadb8cb08e88a836748e06bca65f7bf'
+md5sums=('cc0253ea3d0580d3e45ecb8db698e71b'
          '1ac422ebb4aa2e86061278412c347b55'
          '82d7d245c8048f124324be51ab806b36'
-         '4c2780e78f379348869bf4826017d283'
+         'a7fbba39f6fba5ff04c6048faa074571'
          '06238158680470ab01fbbeb33353e58e'
          'f9b6e4233890720af50c536c4b2c92c0')
 
