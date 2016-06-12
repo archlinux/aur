@@ -1,8 +1,8 @@
 # Maintainer: Yuexuan Gu <lastavengers@outlook.com>
 
 pkgname=srain-git
-pkgver=0.140.c6812d1
-pkgrel=2
+pkgver=0.213.bbe1855
+pkgrel=1
 pkgdesc="it does not look like a irc client"
 arch=('i686' 'x86_64')
 license=('GPL')
@@ -21,12 +21,14 @@ pkgver() {
 
 build() {
     cd ${pkgname%-git}
-    make init
-    make DESTDIR=/usr
+
+    mkdir build || true
+    ./configure --prefix=/usr --disable-debug
+    make
 }
 
 package() {
     cd ${pkgname%-git}
 
-    make DESTDIR=$pkgdir/usr install
+    make DESTDIR=$pkgdir install
 }
