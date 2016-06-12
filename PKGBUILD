@@ -2,28 +2,17 @@
 
 pkgname=arena-tracker
 pkgver=3.45
-pkgrel=2
+pkgrel=3
 pkgdesc="Tracks your Hearthstone Arena matches and cards"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
 url="https://github.com/supertriodo/Arena-Tracker/"
 license=('GPL')
 depends=('qt5-base' 'python-pyautogui' 'intel-tbb' 'xcb-util-renderutil' 'libpng12')
 provides=(arena-tracker)
-conflicts=('arena-tracker' 'arena-tracker-git')
+conflicts=('arena-tracker-git')
 source=("https://github.com/supertriodo/Arena-Tracker/releases/download/v$pkgver/Arena.Tracker.v$pkgver.Linux.zip"
 	"ArenaTracker.ico"
 	"arena-tracker.desktop")
-
-#prepare() {
-#	zip -xpf Arena.Tracker.v$pkgver.Linux.zip
-#}
-
-#build() {
-#	cd "Arena-Tracker"
-#	qmake ArenaTracker.pro
-#	make
-#}
-
 
 package() {
 	install -dm755 $pkgdir/opt/$pkgname
@@ -35,6 +24,7 @@ package() {
 	install -m755 $srcdir/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
 	ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
+
 md5sums=('f86124797ae57392b8a0d3031b614af3'
-	'81cbf4e6a4d8711ba29ad526b4c2c755'
+	'926afbd5024076726f89aa5eb8937a31'
 	'c81a05fdc3b96092fb363f841267e21f')
