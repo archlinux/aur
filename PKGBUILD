@@ -4,7 +4,7 @@
 # Contributor: Andrew Simmons <andrew.simmons@gmail.com>
 
 pkgname=thunar-git
-pkgver=1.6.10.r118.g82c6060
+pkgver=1.6.10.r140.g6b51ff3
 pkgrel=1
 pkgdesc='file manager for xfce'
 arch=('i686' 'x86_64')
@@ -20,23 +20,24 @@ provides=(thunar="${pkgver%%.r*}")
 conflicts=(thunar{,-extended})
 options=(!libtool)
 install=$pkgname.install
-source=('git://git.xfce.org/xfce/thunar'
+source=("$pkgname::git://git.xfce.org/xfce/thunar"
         '0001-Deactivate-SEND_MOVED-code-paths.patch::http://bug-attachment.xfce.org/attachment.cgi?id=6613')
 sha256sums=('SKIP'
             '2b7db92f86682b8178d3a51e268ace83ea7e3b39c082c9183618518f9daf2e58')
 
 prepare() {
+    cd "$pkgname"
     # https://bugzilla.xfce.org/show_bug.cgi?id=12264
     patch -p1 < "$srcdir"/0001-Deactivate-SEND_MOVED-code-paths.patch
 }
 
 pkgver() {
-    cd thunar
+    cd "$pkgname"
     git describe --long | sed -e 's/^thunar.//' -e 's/\([^-]*-g\)/r\1/' -e 's/-/./g'
 }
 
 build() {
-    cd thunar
+    cd "$pkgname"
     ./autogen.sh \
         --prefix=/usr \
         --sysconfdir=/etc \
