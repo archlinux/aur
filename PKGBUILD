@@ -5,8 +5,8 @@
 pkgbase=systemd-git
 _realpkgname=systemd
 pkgname=('systemd-git' 'libsystemd-git' 'systemd-sysvcompat-git')
-pkgver=230.r121.g592705f
-pkgrel=2
+pkgver=230.r197.g7f40134
+pkgrel=1
 _branch='master'
 arch=('i686' 'x86_64')
 url="http://www.freedesktop.org/wiki/Software/systemd"
@@ -79,7 +79,7 @@ package_systemd-git() {
   depends=('acl' 'bash' 'dbus' 'iptables' 'kbd' 'kmod' 'hwids' 'libcap'
            'libgcrypt' 'libsystemd' 'libidn' 'lz4' 'pam' 'libelf' 'libseccomp'
            'util-linux' 'xz')
-  provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver")
+  provides=('nss-myhostname' "systemd-tools=$pkgver" "udev=$pkgver" "systemd=$pkgver")
   replaces=('nss-myhostname' 'systemd-tools' 'udev')
   conflicts=('nss-myhostname' 'systemd-tools' 'udev')
   optdepends=('cryptsetup: required for encrypted block devices'
@@ -164,7 +164,8 @@ package_libsystemd-git() {
   pkgdesc="systemd client libraries"
   depends=('glibc' 'libcap' 'libgcrypt' 'lz4' 'xz')
   license=('GPL2')
-  provides=('libsystemd.so' 'libudev.so')
+  provides=('libsystemd.so' 'libudev.so' 'libsystemd')
+  conflicts=('libsystemd')
 
   make -C "$_realpkgname" DESTDIR="$pkgdir" install-libLTLIBRARIES
 }
@@ -173,8 +174,9 @@ package_systemd-sysvcompat-git() {
   pkgdesc="sysvinit compat for systemd"
   license=('GPL2')
   groups=('base')
-  conflicts=('sysvinit')
+  conflicts=('sysvinit' 'systemd-sysvcompat')
   depends=('systemd-git')
+  provides=('systemd-sysvcompat')
 
   install -dm755 "$pkgdir"/usr/share/man/man8
   cp -d --no-preserve=ownership,timestamp \

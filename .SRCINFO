@@ -1,6 +1,6 @@
 pkgbase = systemd-git
-	pkgver = 230.r121.g592705f
-	pkgrel = 2
+	pkgver = 230.r197.g7f40134
+	pkgrel = 1
 	url = http://www.freedesktop.org/wiki/Software/systemd
 	arch = i686
 	arch = x86_64
@@ -72,8 +72,9 @@ pkgname = systemd-git
 	optdepends = systemd-sysvcompat-git: symlink package to provide sysvinit binaries
 	optdepends = polkit: allow administration as unprivileged user
 	provides = nss-myhostname
-	provides = systemd-tools=230.r121.g592705f
-	provides = udev=230.r121.g592705f
+	provides = systemd-tools=230.r197.g7f40134
+	provides = udev=230.r197.g7f40134
+	provides = systemd=230.r197.g7f40134
 	conflicts = nss-myhostname
 	conflicts = systemd-tools
 	conflicts = udev
@@ -110,11 +111,15 @@ pkgname = libsystemd-git
 	depends = xz
 	provides = libsystemd.so
 	provides = libudev.so
+	provides = libsystemd
+	conflicts = libsystemd
 
 pkgname = systemd-sysvcompat-git
 	pkgdesc = sysvinit compat for systemd
 	groups = base
 	license = GPL2
 	depends = systemd-git
+	provides = systemd-sysvcompat
 	conflicts = sysvinit
+	conflicts = systemd-sysvcompat
 
