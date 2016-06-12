@@ -2,12 +2,12 @@
 
 pkgname='libparserutils-git'
 pkgver=0.2.3.r0.ga191c15
-pkgrel=1
+pkgrel=2
 pkgdesc='Library for building efficient parsers'
 url='http://www.netsurf-browser.org/projects/libparserutils/'
 license=('MIT')
 
-makedepends=('netsurf-buildsystem-git')
+makedepends=('git' 'netsurf-buildsystem-git')
 provides=('libparserutils')
 conflicts=('libparserutils')
 
@@ -25,8 +25,7 @@ prepare() {
 }
 
 build() {
-	cd libparserutils
-	make PREFIX=/usr INCLUDEDIR=include \
+	make -C libparserutils PREFIX=/usr INCLUDEDIR=include \
 		LIBDIR=lib COMPONENT_TYPE=lib-shared
 }
 
