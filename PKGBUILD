@@ -12,6 +12,7 @@ license=('custom:PublicDomain')
 depends=('curl')
 optdepends=('xsel: copy the URL to clipboard (or xclip)'
             'xclip: copy the URL to clipboard (or xsel)')
+conflicts=('imgurbash')
 replaces=('imgurbash')
 source=("https://github.com/tremby/imgur.sh/archive/v${pkgver}.tar.gz")
 sha256sums=('a4334d64b6e7cf3deb1f4a5091e9ef3da5539b158f6953b2379ded836b2930f6')
