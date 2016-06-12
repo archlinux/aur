@@ -1,6 +1,6 @@
 pkgbase = python2-tensorflow
 	pkgdesc = Open source software library for numerical computation using data flow graphs (Python 2)
-	pkgver = 0.8.0
+	pkgver = 0.9.0rc0
 	pkgrel = 1
 	url = http://tensorflow.org
 	arch = x86_64
@@ -15,13 +15,10 @@ pkgbase = python2-tensorflow
 	depends = python2-protobuf3
 	optdepends = cuda: GPU support
 	optdepends = cudnn: GPU support
-	conflicts = python2-tensorflow-cuda
 	conflicts = python2-tensorflow-git
-	source = https://github.com/tensorflow/tensorflow/archive/v0.8.0.tar.gz
-	source = https://github.com/google/protobuf/archive/fb714b3606bd663b823f6960a73d052f97283b74.tar.gz
+	source = https://github.com/tensorflow/tensorflow/archive/v0.9.0rc0.tar.gz
 	source = flags.patch
-	sha256sums = f201ba7fb7609a6416968d4e1920d87d67be693b5bc7d34b6b4a79860a9a8a4e
-	sha256sums = 87ec95e580ec315fdec2d8c1590c332e61486d387f0d6e6540e74a18e44fd2ab
+	sha256sums = 80321417caf8a0a8e40a568f99d453b1a3ae603464d147b76321b335783153bb
 	sha256sums = 513f634cc1cab44eb17204616617695ea23355462f918873678fcac1a95ae778
 
 pkgname = python2-tensorflow
