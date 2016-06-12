@@ -20,7 +20,7 @@ makedepends=('cmake' 'make')
 provides=('cryfs-gui')
 conflicts=('cryfs-gui-git')
 
-depends=('libgcrypt' 'pkg-config')
+depends=('cryfs' 'libgcrypt' 'pkg-config')
 
 if [ -n "${_qt5_enable}" ]
 then
