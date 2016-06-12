@@ -2,9 +2,13 @@
 
 pkgname=lima
 pkgver=1.1.0beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Personal Cloud software"
 depends=(python2 fuse)
+optdepends=(
+    "python2-gnomekeyring: Gnome Keyring support"
+    "kdebindings-python2: KWallet support"
+)
 makedepends=(prelink)
 arch=("x86_64")
 url="https://meetlima.com"
