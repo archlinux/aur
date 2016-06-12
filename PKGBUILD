@@ -38,6 +38,7 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_SKIP_RPATH=ON \
     -DCUDA_SDK_ROOT_DIR=/opt/cuda \
+    -DCUDA_NVCC_FLAGS='-std=c++11' \
     -DCMAKE_CXX_FLAGS="${CXXFLAGS} -I/opt/cuda/include" \
     -DINSTALL_MODELS=ON
   make
