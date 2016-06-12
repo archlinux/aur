@@ -20,7 +20,7 @@ Environment=ACI_DIRECTORY=/var/aci/store
 Environment=TEMPLATE_DIRECTORY=/var/aci/templates
 Environment=USERNAME=default
 Environment=PASSWORD=default
-Environment=FLAGS=""
+Environment=FLAGS=
 #
 ExecStartPre=/usr/bin/mkdir -p "$ACI_DIRECTORY"
 ExecStartPre=/usr/bin/mkdir -p "$TEMPLATE_DIRECTORY"

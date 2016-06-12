@@ -1,7 +1,7 @@
 pkgdesc='App Container Server'
 pkgname=acserver
 pkgver=0.0.0 # TODO pending release
-pkgrel=2
+pkgrel=3
 url="https://github.com/appc/$pkgname"
 source=("git+${url}.git")
 makedepends=('git' 'go')
