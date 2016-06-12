@@ -1,8 +1,8 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 
 pkgname=systemd-manager
-pkgver=0.4.6
-pkgrel=2
+pkgver=0.4.7
+pkgrel=1
 pkgdesc="GUI manager for systemd services, using GTK+3"
 arch=('i686' 'x86_64')
 url="https://github.com/mmstick/systemd-manager"
@@ -11,7 +11,7 @@ depends=('gtk3')
 makedepends=('cargo')
 conflicts=('systemd-manager-git')
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=('de14c40f5ac53caf2f06df8ad7c329101748c8082651e85bf612f3a65c1a4fef')
+sha256sums=('1134eef1bb1727c78ec0c805f17aeceea4fff2266f08a42be42ae93cc577e273')
 
 build() {
   cd "$pkgname-$pkgver"
