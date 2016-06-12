@@ -2,12 +2,12 @@
 
 pkgname='libnsgif-git'
 pkgver=0.1.3.r0.gee6294d
-pkgrel=1
+pkgrel=2
 pkgdesc='Decoding library for the gif image file format'
 url='http://www.netsurf-browser.org/projects/libnsgif/'
 license=('MIT')
 
-makedepends=('netsurf-buildsystem-git')
+makedepends=('git' 'netsurf-buildsystem-git')
 provides=('libnsgif')
 conflicts=('libnsgif')
 
@@ -25,8 +25,7 @@ prepare() {
 }
 
 build() {
-	cd libnsgif
-	make PREFIX=/usr INCLUDEDIR=include \
+	make -C libnsgif PREFIX=/usr INCLUDEDIR=include \
 		LIBDIR=lib COMPONENT_TYPE=lib-shared
 }
 
