@@ -24,8 +24,12 @@ prepare() {
   unrar x -o+ "${_srcname}.rar"
 }
 
+check() {
+  desktop-file-validate q3rally.desktop
+}
+
 package() {
-  pushd "${_srcname}"
+  cd "${_srcname}"
 
   # Remove unneeded files
   rm baseq3r/*.so
@@ -34,7 +38,7 @@ package() {
   mkdir -p "${pkgdir}/opt/quake3"
   cp -dR baseq3r "${pkgdir}/opt/quake3"
 
-  popd
+  cd "${srcdir}"
 
   # Install client launcher
   install -D -m 0755 q3rally "${pkgdir}/usr/bin/q3rally"
