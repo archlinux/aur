@@ -1,0 +1,22 @@
+pkgbase = simple-monitor-alert
+	pkgdesc = A simple monitor with alerts for Unix/Linux under the KISS philosophy.
+	pkgver = 0.2.5
+	pkgrel = 1
+	install = simple-monitor-alert.install
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-dateutil
+	depends = python-future
+	depends = python-requests
+	depends = python-six
+	depends = python-pip
+	depends = python-colorclass-git
+	depends = python-humanize
+	depends = python-terminaltables
+	options = !emptydirs
+	source = simple_monitor_alert::git+https://github.com/Nekmo/simple-monitor-alert.git#branch=v0.2.5
+	md5sums = SKIP
+
+pkgname = simple-monitor-alert
+

@@ -1,0 +1,4 @@
+function post_install(){
+    python -m simple_monitor_alert.install create-user-group
+    python -m simple_monitor_alert.install var-directory
+}
