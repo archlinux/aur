@@ -1,0 +1,13 @@
+pkgbase = python-arpeggio
+	pkgdesc = Recursive descent parser with memoization based on PEG grammars (aka Packrat parser).
+	pkgver = 1.5
+	pkgrel = 1
+	url = http://igordejanovic.net/Arpeggio/
+	arch = any
+	license = MIT
+	depends = python
+	source = https://github.com/igordejanovic/Arpeggio/archive/v1.5.tar.gz
+	md5sums = cb3de639d0150a044368041c5808d88e
+
+pkgname = python-arpeggio
+
