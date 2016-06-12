@@ -1,11 +1,12 @@
 pkgbase = nsgenbind-git
 	pkgdesc = Decoding library for BMP and ICO image file formats
 	pkgver = 0.3.r0.g93be211
-	pkgrel = 1
+	pkgrel = 2
 	url = http://git.netsurf-browser.org/nsgenbind.git/
 	arch = x86_64
 	arch = i686
 	license = MIT
+	makedepends = git
 	makedepends = netsurf-buildsystem-git
 	provides = nsgenbind
 	conflicts = nsgenbind

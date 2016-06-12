@@ -2,12 +2,12 @@
 
 pkgname='nsgenbind-git'
 pkgver=0.3.r0.g93be211
-pkgrel=1
+pkgrel=2
 pkgdesc='Decoding library for BMP and ICO image file formats'
 url='http://git.netsurf-browser.org/nsgenbind.git/'
 license=('MIT')
 
-makedepends=('netsurf-buildsystem-git')
+makedepends=('git' 'netsurf-buildsystem-git')
 provides=('nsgenbind')
 conflicts=('nsgenbind')
 
@@ -25,8 +25,7 @@ prepare() {
 }
 
 build() {
-	cd nsgenbind
-	make PREFIX=/usr INCLUDEDIR=include \
+	make -C nsgenbind PREFIX=/usr INCLUDEDIR=include \
 		LIBDIR=lib
 }
 
