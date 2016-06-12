@@ -2,13 +2,13 @@
 
 pkgname='libcss-git'
 pkgver=0.6.0.r0.gbced7d7
-pkgrel=1
+pkgrel=2
 pkgdesc='CSS parser and selection engine'
 url='http://www.netsurf-browser.org/projects/libcss/'
 license=('MIT')
 
 depends=('libparserutils-git' 'libwapcaplet-git')
-makedepends=('netsurf-buildsystem-git')
+makedepends=('git' 'netsurf-buildsystem-git')
 provides=('libcss')
 conflicts=('libcss')
 
