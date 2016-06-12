@@ -2,8 +2,8 @@
 # Contributer: Michael Taboada <michael@2mb.solutions>
 _pkgname=horseshoes
 pkgname=horseshoes-git
-pkgver=116
-pkgrel=3
+pkgver=4
+pkgrel=5
 pkgdesc="Audio only game of horseshoes."
 arch=('any')
 url="https://github.com/2mb-solutions/horseshoes"
@@ -21,6 +21,12 @@ install="${_pkgname}.install"
 md5sums=('7be0952ea7c4286f9f64d39bd98f1497'
          '8f6e9504843af79b9a3761d833c2fdb9')
 
+prepare()
+{
+  cd "$srcdir"
+  git clone --recursive ${url}.git
+}
+
 pkgver()
 {
   cd "$_pkgname"
@@ -30,7 +36,6 @@ pkgver()
 build()
 {
   cd "$_pkgname"
-git submodule update --init
 export LD_RUN_PATH='$ORIGIN/lib/'
 if [ $# -eq 0 ]; then
 g++ -static-libgcc -static-libstdc++ -O3 -I/usr/include/speech-dispatcher -I/usr/include -Igame-kit/allegro_stuff -Igame-kit/screen-reader -Igame-kit game-kit/allegro_stuff/sound.cpp game-kit/allegro_stuff/keyboard.cpp game-kit/screen-reader/screen_reader.cpp game-kit/allegro_stuff/dynamic_menu.cpp game-kit/menu_helper.cpp game-kit/misc.cpp game-kit/soundplayer.cpp play.cpp game.cpp -lallegro_ttf -lallegro_audio -lallegro_acodec -lallegro -lallegro_font -lspeechd -logg -lvorbis -lvorbisfile && mv a.out horseshoes
