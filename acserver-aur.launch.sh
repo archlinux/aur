@@ -43,7 +43,7 @@ do_provision_simple() {
 }
 
 do_version() {
-    echo "version $pkgver -> $(pkgver)"
+    #echo "version $pkgver -> $(pkgver)"
     if has_makepkg; then
         do_version_proper
     else
@@ -104,7 +104,7 @@ do_clean() {
 
 do_provision
 
-#do_version
+do_version
 
 do_commit
 
