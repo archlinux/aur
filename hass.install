@@ -10,7 +10,7 @@ post_upgrade() {
   post_install
   systemctl daemon-reload
   echo "Will now restart home-assistant (if started)"
-  systemctl is-active home-assistant.service && systemctl restart home-assistant.service
+  systemctl is-enabled home-assistant.service > /dev/null && systemctl restart home-assistant.service
 }
 
 post_remove() {
