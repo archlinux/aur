@@ -19,6 +19,11 @@ optdepends=('gnome-shell>=3.18: The GNOME Shell'
             'paper-icon-theme: A fitting icon theme'
             'gnome-tweak-tool: A graphical tool to tweak gnome settings'
             "unity>=7.4.0: Ubuntu's Unity desktop")
+makedepends=('glib2>=2.48.0'
+             'libxml2'
+             'ruby-bundler>=1.11.0'
+             'ruby-sass>=3.4.21'
+             'inkscape')
 _tri_fadeno="tri-fadeno.jpg"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${pkgver}-${_tri_fadeno}::${url}/raw/master/.github/img/${_tri_fadeno}")

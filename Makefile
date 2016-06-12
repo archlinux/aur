@@ -4,7 +4,7 @@
 
 package: PKGBUILD .SRCINFO
 	updpkgsums
-	makepkg --force --clean
+	makepkg --syncdeps --rmdeps --force --clean --noconfirm
 
 all: package
 
