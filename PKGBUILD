@@ -1,8 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
-# Contributor: Grigorii Horos <horosgrisa@gmail.com>
 
 pkgname=papirus
-pkgver=20160603
+pkgver=20160612
 pkgrel=1
 pkgdesc="Meta-package for modified and adaptive Papirus theme"
 arch=('any')
@@ -25,8 +24,9 @@ depends=(
              "papirus-k3b-theme: Papirus theme for K3B"
              "papirus-kmail-theme: Papirus theme for KMail"
              "papirus-qtcurve-theme: Papirus decorations for QtCurve"
+             "papirus-kvantum-theme: Papirus theme for Kvantum theme engine"
              "papirus-smplayer-theme: Papirus theme for SMPlayer"
-             "papirus-vlc-theme: Papirus theme for VLC Media Player" 
+             "papirus-vlc-theme: Papirus theme for VLC Media Player"
              "papirus-yakuake-theme: Papirus theme for Yakuake"
              "papirus-wallpapers: Papirus wallpapers suite"
              "arc-dark-suite: Arc-Dark customization for Plasma 5"
@@ -36,7 +36,6 @@ source=()
 sha256sums=()
 
 package ()
-{
-    return 0
-}
-
+    {
+        return 0
+    }
