@@ -1,0 +1,24 @@
+pkgbase = ohrrpgce
+	pkgdesc = A role playing game creation engine
+	pkgver = callipygous.r8062
+	pkgrel = 1
+	url = http://rpg.hamsterrepublic.com/ohrrpgce/Main_Page
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = subversion
+	makedepends = freebasic
+	makedepends = scons
+	makedepends = openeuphoria
+	makedepends = dos2unix
+	depends = sdl_mixer
+	depends = openeuphoria
+	depends = libxpm
+	depends = libxrandr
+	depends = ncurses
+	optdepends = timidity-freepats: midi music support
+	source = svn://gilgamesh.hamsterrepublic.com/ohrrpgce/rel/callipygous
+	md5sums = SKIP
+
+pkgname = ohrrpgce
+
