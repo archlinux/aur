@@ -2,11 +2,11 @@
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=geary-git
-pkgver=r1596.230c5ff
+pkgver=r2330.fcb4df2
 pkgrel=1
 pkgdesc="A new lightweight, easy-to-use, feature-rich email client (beta version)"
 arch=(i686 x86_64)
-url="http://redmine.yorba.org/projects/geary"
+url="https://wiki.gnome.org/Apps/Geary"
 license=('GPL')
 depends=('libcanberra' 'gmime' 'libunique3' 'webkitgtk3' 'libgnome-keyring' 'libnotify' 'libgee' 'hicolor-icon-theme' 'desktop-file-utils' 'gobject-introspection')
 makedepends=('cmake' 'vala' 'git' 'intltool' 'gnome-doc-utils')
