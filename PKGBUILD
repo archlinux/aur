@@ -4,12 +4,12 @@
 
 pkgname=yofrankie
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A 3D platform game based on the bully rodent in Big Buck Bunny"
 url="http://www.yofrankie.org/"
 license=("CCPL")
 arch=('any')
-depends=('libjpeg6=6b1-2' 'python2')
+depends=('libjpeg6-turbo' 'python2')
 conflicts=("yofrankie-demo-glsl")
 source=("yofrankie.desktop" \
 	"yofrankie.sh"
