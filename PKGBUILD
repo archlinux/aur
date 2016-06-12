@@ -1,7 +1,7 @@
 pkgname=python-textx
 _srcname=textX
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for building Domain-Specific Languages and parsers"
 arch=('any')
 url="http://igordejanovic.net/textX/"
