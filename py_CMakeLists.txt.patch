@@ -1,0 +1,18 @@
+--- src/partio/src/py/CMakeLists.txt	2016-06-12 02:23:34.116897808 -0400
++++ src/partio/src/py/CMakeLists2.txt	2016-06-12 02:23:05.430315202 -0400
+@@ -35,13 +35,14 @@
+ 
+ FIND_PACKAGE(SWIG)
+ #IF(SWIG_FOUND) 
++set(Python_ADDITIONAL_VERSIONS 2.7 2.6 2.5 2.4)
+ FIND_PACKAGE(PythonLibs)
+ SET(TEST1 "test1" CACHE STRING "test val 1" FORCE)
+ IF(PYTHONLIBS_FOUND)
+ 
+ INCLUDE(${SWIG_USE_FILE})
+ 
+-EXECUTE_PROCESS(COMMAND python -c "import sys;print('%s.%s'%sys.version_info[0:2])"
++EXECUTE_PROCESS(COMMAND python2 -c "import sys;print('%s.%s'%sys.version_info[0:2])"
+                 OUTPUT_VARIABLE PYTHON_VERSION OUTPUT_STRIP_TRAILING_WHITESPACE)
+ 
+ SET(TEST1 "test2" CACHE STRING "test val 2" FORCE)

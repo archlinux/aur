@@ -1,0 +1,19 @@
+--- /partio/CMakeLists.txt	2016-06-12 01:38:48.822497008 -0400
++++ /partio/CMakeLists.txt	2016-06-12 01:36:36.842253172 -0400
+@@ -103,7 +103,7 @@
+ # make it so partio can be found
+ INCLUDE_DIRECTORIES( ${CMAKE_SOURCE_DIR}/src/lib )
+ 
+-SET(SEEXPR_BASE "c:/aselle/seexpr-inst" CACHE STRING "path to SeExpr")
++SET(SEEXPR_BASE "/usr" CACHE STRING "path to SeExpr")
+ SET(SEEXPR_INCLUDE_PATH ${SEEXPR_BASE}/include)
+ SET(SEEXPR_LIBDIR ${CMAKE_INSTALL_LIBDIR})
+ SET(SEEXPR_LINK_PATH ${SEEXPR_BASE}/${SEEXPR_LIBDIR})
+@@ -114,7 +114,5 @@
+ ADD_SUBDIRECTORY (src/lib)
+ ADD_SUBDIRECTORY (src/tools)
+ ADD_SUBDIRECTORY (src/py)
+-ADD_SUBDIRECTORY (src/tests)
+-ADD_SUBDIRECTORY (src/doc)
+ 
+ 
