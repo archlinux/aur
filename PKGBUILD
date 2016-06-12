@@ -3,20 +3,20 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 pkgbase=linux-bld       # Build kernel with a different name
-_srcname=linux-4.5
+_srcname=linux-4.6
 pkgname=(linux-bld linux-bld-headers)
 _kernelname=-bld
-pkgver=4.5.7
+pkgver=4.6.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/rmullick/linux"
 license=('GPL2')
-makedepends=( 'kmod' 'inetutils' 'bc')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 _gcc_patch="enable_additional_cpu_optimizations_for_gcc_v4.9+_kernel_v3.15+.patch"
 _bfqversion=v7r11
 _bfqpath="http://algo.ing.unimo.it/people/paolo/disk_sched/patches/4.5.0-${_bfqversion}"
-_BLDpatch="BLD-4.5.patch"
+_BLDpatch="BLD-4.6.patch"
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
 	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
@@ -27,25 +27,27 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         # standard config files for mkinitcpio ramdisk
         'linux-bld.preset'
         'change-default-console-loglevel.patch'
-	"${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqversion}-4.5.0.patch"
-	"${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqversion}-I-O-sched-for-4.5.0.patch"
-	"${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqversion}-for.patch"
+        "${_bfqpath}/0001-block-cgroups-kconfig-build-bits-for-BFQ-${_bfqversion}-4.5.0.patch"
+        "${_bfqpath}/0002-block-introduce-the-BFQ-${_bfqversion}-I-O-sched-for-4.5.0.patch"
+        "${_bfqpath}/0003-block-bfq-add-Early-Queue-Merge-EQM-to-BFQ-${_bfqversion}-for.patch"
         "https://raw.githubusercontent.com/rmullick/bld-patches/master/${_BLDpatch}"
+        "0001-linux-4.6-rtlwifi-fix-atomic.patch"
         )
 
-sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
+sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            '8fc8b46b44e49d5472745484751ba653be0c0e04554749ad276f3d0bc56a9bb3'
+            '0dc509a19c68ab547a62158bf2017965b843854b63be46ae039c37724dccca21'
             'SKIP'
             'cf0f984ebfbb8ca8ffee1a12fd791437064b9ebe0712d6f813fd5681d4840791'
-            '2355efbab340d16c1b60a7805b987a78e57266809ba6c986ceef68ef7ce71db0'
-            'cee1781f96e55a909757c4533cdacb57c3ffe6f6f01f709e8a5a837dc4a68bba'
+            '02e8b02e8cd10aa059917a489a9663e7f66bdf12c5ae8a1e0369bb2862da6b68'
+            'd59014b8f887c6aa9488ef5ff9bc5d4357850a979f3ff90a2999bbe24e5c6e15'
             '8da1d80c0bd568781568da4f669f39fed94523312b9d37477836bfa6faa9527f'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '5d19ecb91320a64f0abb6c8e70205fef848ada967093faa94e4c0c39c340d0c8'
             '9c1e11772ff29d37dacc9246f63e24d5154eb61682ba2b7e175a9ccbdc7116e1'
             'e0c9474431b60ca9fc3da04e7610748219da143440f1d7f5152572c7c63b52e0'
-            'adf9a38282035ce3ab609ebac0e134aa4dac41d5189291b884156793d1cb295d')
+            'f7c6dead74777b8b3f2c229556265e01205a8ac5e49f92273169511842bf69be'
+            'ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -83,6 +85,10 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  # fix rtlwifi atomic
+  # https://bugs.archlinux.org/task/49401
+  patch -p1 -i "${srcdir}/0001-linux-4.6-rtlwifi-fix-atomic.patch"
 
   msg2 "BLD patches"
   patch -Np1 -i "${srcdir}/${_BLDpatch}"
@@ -254,7 +260,7 @@ package_linux-bld-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi sound trace uapi video xen; do
+    media net pcmcia scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
@@ -335,6 +341,12 @@ package_linux-bld-headers() {
     mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
     cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
   done
+
+  # add objtool for external module building and enabled VALIDATION_STACK option
+  if [ -f tools/objtool/objtool ];  then
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+  fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
