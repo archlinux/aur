@@ -3,7 +3,7 @@
 _pkgname=horseshoes
 pkgname=horseshoes-git
 pkgver=116
-pkgrel=2
+pkgrel=3
 pkgdesc="Audio only game of horseshoes."
 arch=('any')
 url="https://github.com/2mb-solutions/horseshoes"
@@ -15,12 +15,10 @@ optdepends=('espeak: TTS support'
 	'flite: TTS support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+${url}.git"
-        "$_pkgname.desktop"
+source=("$_pkgname.desktop"
         "$_pkgname.sh")
 install="${_pkgname}.install"
-md5sums=('SKIP'
-         '7be0952ea7c4286f9f64d39bd98f1497'
+md5sums=('7be0952ea7c4286f9f64d39bd98f1497'
          '8f6e9504843af79b9a3761d833c2fdb9')
 
 pkgver()
