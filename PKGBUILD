@@ -1,15 +1,15 @@
 # Maintainer: Daniel Haß <aur@hass.onl>
 pkgname=gtk-theme-numix-sx
-pkgver=20160514
+pkgver=20160612
 pkgrel=1
 pkgdesc="Gray variation of numix theme for Cinnamon/Gnome"
 arch=('any')
-url="http://gnome-look.org/content/show.php/Numix-SX?content=174348"
+url="https://www.gnome-look.org/p/1117412/"
 license=('GPL3')
 depends=('gtk-engine-murrine')
-conflicts=('gtk-theme-numix-sx-beta')
-source=('http://gnome-look.org/CONTENT/content-files/174348-Numix-SX.tar.gz')
-md5sums=('5aa8e8644996ebe38c4dd094097b1274')
+replaces=('gtk-theme-numix-sx-beta')
+source=('Numix-SX.tar.gz::https://www.ppload.com/api/files/download?id=1465521335')
+md5sums=('49d830e1f2997a31cedd53a06c1034d1')
 
 package() {
   install -d "$pkgdir/usr/share/themes"
