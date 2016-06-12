@@ -1,2 +1,3 @@
+d /run/pihole 0755 http root - -
 d /run/log/pihole 0755 dnsmasq root - -
 f /run/log/pihole/pihole.log 0644 dnsmasq root - -

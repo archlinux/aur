@@ -2,10 +2,10 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=2.6.3
-pkgrel=4
+pkgver=2.7
+pkgrel=1
 _wwwpkgname=AdminLTE
-_wwwpkgver=1.2
+_wwwpkgver=1.3
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch adaptation for lan wide DNS server.'
 arch=('any')
 license=('GPL2')
@@ -29,13 +29,13 @@ source=(https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 	whitelist.txt
 	blacklist.txt)
 
-md5sums=('abbae7fa93007970b32747dbf0f0318d'
-         '6daf833c014dc65812409a3685f90411'
+md5sums=('1caf939ad916be62b84890ca357389ec'
+         'e83a5207a711838186ae12c47643b4ed'
          '791c86996377ceca23d1459ea0fd5cd6'
          'cba1675593bb43c94a35aabe8a210efa'
          'fc7852b5deb952335c0ebbf4ee61cb8c'
-         'f5282a9dd44cc0090e4cf58190972139'
-         '008d6cb6a8ea389d22cbb969c62b0c80'
+         'a776c1a9393c14c51bde2c0a7901a91f'
+         '990b8abd0bfbba23a7ce82c59f2e3d64'
          '09a4bb7aef7bbe1a1f4c6c85c1fd48b4'
          'd42a864f88299998f8233c0bc0dd093d'
          '7b9925a4516d91cd4282f181a4b4e473'
@@ -53,7 +53,10 @@ prepare() {
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: undebianizing 2" && return 1 ; fi
   sed -i 's|\[\[ \$(dpkg-query -s sudo) \]\]|hash sudo 2\>\/dev\/null|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/whitelist.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: undebianizing 3" && return 1 ; fi
+  sed -i 's|\[\[ \$(dpkg-query -s sudo) \]\]|hash sudo 2\>\/dev\/null|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: undebianizing 4" && return 1 ; fi
 
+# -----------------
 
   # modify service management
   sed -i 's|\[\[ \$dnsmasqPid \]\]|systemctl is-active dnsmasq 2\>\&1 \>\/dev\/null|'"w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
@@ -83,27 +86,74 @@ prepare() {
   sed -i "s|\$SUDO service dnsmasq start|\$SUDO systemctl start dnsmasq|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/blacklist.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: modify service management 11" && return 1 ; fi
 
+# -----------------
+
+  # sudoers setup
+  sed -i "s/www-data/http/w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/pihole.sudo
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: sudoers setup 1" && return 1 ; fi
+  sed -i "s|/usr/local/bin|/usr/bin|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/pihole.sudo
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: sudoers setup 2" && return 1 ; fi
+
+# -----------------
+
+  # setting up and securing pihole wrapper script
+  sed -n "/function debugFunc {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 1" && return 1 ; fi
+  sed -i '/function debugFunc {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
+
+  sed -n "/function flushFunc {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 2" && return 1 ; fi
+  sed -i '/function flushFunc {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
+
+  sed -n "/function updateDashboardFunc {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 3" && return 1 ; fi
+  sed -i '/function updateDashboardFunc {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
+
+  sed -n "/function setupLCDFunction {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 4" && return 1 ; fi
+  sed -i '/function setupLCDFunction {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
+
+  sed -n "/function uninstallFunc {/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 5" && return 1 ; fi
+  sed -i '/function uninstallFunc {/,+4d' "$srcdir"/$_pkgname-$pkgver/pihole
+
+  sed -n "/\-[d,f,u,s]/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 6" && return 1 ; fi
+  sed -i '/\-[d,f,u,s]/d' "$srcdir"/$_pkgname-$pkgver/pihole
+
+  sed -n "/uninstall/w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 7" && return 1 ; fi
+  sed -i '/uninstall/d' "$srcdir"/$_pkgname-$pkgver/pihole
+
+  sed -i "s|/opt/pihole|/usr/bin|w $_ssc" "$srcdir"/$_pkgname-$pkgver/pihole
+  if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: setting up and securing pihole wrapper script 8" && return 1 ; fi
+
+# -----------------
 
   # gravity call paths changing
   sed -i "s|/opt/pihole/|/usr/bin/|w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: gravity call paths changing" && return 1 ; fi
 
+# -----------------
 
   # adlists.default is already there
   sed -i "s/\$SUDO cp \/etc\/.pihole\/adlists.default \/etc\/pihole\/adlists.default//w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: adlists.default is already there" && return 1 ; fi
 
+# -----------------
 
   # arch useless
   sed -n "/#ensure \/etc\/dnsmasq\.d\//w $_ssc" "$srcdir"/$_pkgname-$pkgver/gravity.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: arch useless" && return 1 ; fi
   sed -i '/#ensure \/etc\/dnsmasq\.d\//,+5d' "$srcdir"/$_pkgname-$pkgver/gravity.sh
 
+# -----------------
 
   # change log location to chronometer.sh
   sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log location to chronometer.sh" && return 1 ; fi
 
+# -----------------
 
   # little arch changes to chronometer.sh
   sed -i "s|.*ifconfig eth0.*|NICDEV=\$\(ip route get 8.8.8.8 \| awk '{for\(i=1;i<=NF;i++\)if\(\$\i~/dev/\)print $\(i+1\)}'\)\n&|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
@@ -113,27 +163,32 @@ prepare() {
   sed -i "s|/inet addr/|/inet /|w $_ssc" "$srcdir"/$_pkgname-$pkgver/advanced/Scripts/chronometer.sh
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: little arch changes to chronometer.sh 3" && return 1 ; fi
 
+# -----------------
 
   # change log location in admin php interface
   sed -i "s|/var/log/pihole.log|/run/log/pihole/pihole.log|w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/data.php
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: change log location in admin php interface" && return 1 ; fi
 
+# -----------------
 
   # since we don't directly install from git...
-  sed -n "/<b>Pi-hole Version <\/b> /w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/footer.php
+  sed -n "/\$piholeVersion =.*$/w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/footer.php
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 1" && return 1 ; fi
-  sed -i '/<b>Pi-hole Version <\/b> /,+1d' "$srcdir"/$_wwwpkgname-$_wwwpkgver/footer.php
-  sed -n "/<div class=\"pull-right hidden-xs\">/w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/footer.php
+  sed -i 's/\$piholeVersion =.*$/\$piholeVersion = "'"$pkgver"'";/' "$srcdir"/$_wwwpkgname-$_wwwpkgver/footer.php
+  sed -n "/\$webVersion =.*$/w $_ssc" "$srcdir"/$_wwwpkgname-$_wwwpkgver/footer.php
   if [ -s $_ssc ] ; then rm $_ssc ; else echo "   ==> Sed error: since we don't directly install from git... 2" && return 1 ; fi
-  sed -i '/<div class="pull-right hidden-xs">/a<b>Pi-hole Version </b> '"$pkgver"'\n<b> - Web Interface Version </b>'"$_wwwpkgver"'' "$srcdir"/$_wwwpkgname-$_wwwpkgver/footer.php
+  sed -i 's/\$webVersion =.*$/\$webVersion = "'"$_wwwpkgver"'";/' "$srcdir"/$_wwwpkgname-$_wwwpkgver/footer.php
 }
 
 package() {
   cd "$srcdir"
   install -Dm755 ./$_pkgname-$pkgver/gravity.sh "$pkgdir"/usr/bin/gravity.sh || return 1
+  install -Dm755 ./$_pkgname-$pkgver/pihole "$pkgdir"/usr/bin/pihole || return 1
   install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/chronometer.sh "$pkgdir"/usr/bin/chronometer.sh || return 1
   install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/blacklist.sh "$pkgdir"/usr/bin/blacklist.sh || return 1
   install -Dm755 ./$_pkgname-$pkgver/advanced/Scripts/whitelist.sh "$pkgdir"/usr/bin/whitelist.sh || return 1
+  install -dm750 "$pkgdir"/etc/sudoers.d
+  install -Dm644 ./$_pkgname-$pkgver/advanced/pihole.sudo "$pkgdir"/etc/sudoers.d/pihole || return 1
   install -Dm644 pi-hole.tmpfile "$pkgdir"/etc/tmpfiles.d/pi-hole.conf || return 1
 
   install -Dm644 "$_pkgname-gravity.timer" "$pkgdir/usr/lib/systemd/system/$_pkgname-gravity.timer"
