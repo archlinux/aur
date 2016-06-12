@@ -1,0 +1,33 @@
+
+#	Usage of /usr/bin/acserver:
+#	acserver SERVER_NAME ACI_DIRECTORY TEMPLATE_DIRECTORY USERNAME PASSWORD
+#	Flags:
+#	  -https
+#	        Whether or not to provide https URLs for meta discovery
+#	  -port int
+#	        The port to run the server on (default 3000)
+#	  -pubkeys string
+#	        Path to gpg public keys images will be signed with
+
+[Unit]
+Description=App Container Service
+Documentation=https://github.com/appc/acserver
+
+[Service]
+#
+Environment=SERVER_NAME=default
+Environment=ACI_DIRECTORY=/var/aci/store
+Environment=TEMPLATE_DIRECTORY=/var/aci/templates
+Environment=USERNAME=default
+Environment=PASSWORD=default
+Environment=FLAGS=""
+#
+ExecStartPre=/usr/bin/mkdir -p "$ACI_DIRECTORY"
+ExecStartPre=/usr/bin/mkdir -p "$TEMPLATE_DIRECTORY"
+ExecStart=/usr/bin/acserver "$SERVER_NAME" "$ACI_DIRECTORY" "$TEMPLATE_DIRECTORY" "$USERNAME" "$PASSWORD" $FLAGS
+#
+Restart=always
+RestartSec=1s
+
+[Install]
+WantedBy=multi-user.target
