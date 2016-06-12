@@ -1,6 +1,6 @@
 diff -urN mutt-1.6.1/commands.c mutt-1.6.1-trash/commands.c
---- mutt-1.6.1/commands.c	2016-05-30 14:49:21.083679691 +0100
-+++ mutt-1.6.1-trash/commands.c	2016-05-30 14:49:25.107742605 +0100
+--- mutt-1.6.1/commands.c	2016-06-12 18:43:00.397447512 +0100
++++ mutt-1.6.1-trash/commands.c	2016-06-12 18:43:04.892517610 +0100
 @@ -720,6 +720,7 @@
      if (option (OPTDELETEUNTAG))
        mutt_set_flag (Context, h, M_TAG, 0);
@@ -10,8 +10,8 @@ diff -urN mutt-1.6.1/commands.c mutt-1.6.1-trash/commands.c
    return 0;
  }
 diff -urN mutt-1.6.1/curs_main.c mutt-1.6.1-trash/curs_main.c
---- mutt-1.6.1/curs_main.c	2016-05-30 14:49:21.086679738 +0100
-+++ mutt-1.6.1-trash/curs_main.c	2016-05-30 14:49:25.109742636 +0100
+--- mutt-1.6.1/curs_main.c	2016-06-12 18:43:00.399447544 +0100
++++ mutt-1.6.1-trash/curs_main.c	2016-06-12 18:43:04.895517656 +0100
 @@ -1919,6 +1919,7 @@
  	MAYBE_REDRAW (menu->redraw);
  	break;
@@ -66,8 +66,8 @@ diff -urN mutt-1.6.1/curs_main.c mutt-1.6.1-trash/curs_main.c
  	  if (option (OPTRESOLVE))
  	  {
 diff -urN mutt-1.6.1/doc/manual.xml.head mutt-1.6.1-trash/doc/manual.xml.head
---- mutt-1.6.1/doc/manual.xml.head	2016-05-30 14:49:21.089679784 +0100
-+++ mutt-1.6.1-trash/doc/manual.xml.head	2016-05-30 14:49:25.111742667 +0100
+--- mutt-1.6.1/doc/manual.xml.head	2016-06-12 18:43:00.402447590 +0100
++++ mutt-1.6.1-trash/doc/manual.xml.head	2016-06-12 18:43:04.901517750 +0100
 @@ -7467,6 +7467,16 @@
  
  </sect2>
@@ -263,7 +263,7 @@ diff -urN mutt-1.6.1/doc/manual.xml.head mutt-1.6.1-trash/doc/manual.xml.head
  <chapter id="security">
 diff -urN mutt-1.6.1/doc/muttrc.trash mutt-1.6.1-trash/doc/muttrc.trash
 --- mutt-1.6.1/doc/muttrc.trash	1970-01-01 01:00:00.000000000 +0100
-+++ mutt-1.6.1-trash/doc/muttrc.trash	2016-05-30 14:49:25.022741276 +0100
++++ mutt-1.6.1-trash/doc/muttrc.trash	2016-06-12 18:43:04.768515676 +0100
 @@ -0,0 +1,16 @@
 +# Example Mutt config file for the 'trash' feature.
 +
@@ -283,7 +283,7 @@ diff -urN mutt-1.6.1/doc/muttrc.trash mutt-1.6.1-trash/doc/muttrc.trash
 +# vim: syntax=muttrc
 diff -urN mutt-1.6.1/doc/vimrc.trash mutt-1.6.1-trash/doc/vimrc.trash
 --- mutt-1.6.1/doc/vimrc.trash	1970-01-01 01:00:00.000000000 +0100
-+++ mutt-1.6.1-trash/doc/vimrc.trash	2016-05-30 14:49:25.023741291 +0100
++++ mutt-1.6.1-trash/doc/vimrc.trash	2016-06-12 18:43:04.769515692 +0100
 @@ -0,0 +1,7 @@
 +" Vim syntax file for the mutt trash patch
 +
@@ -293,8 +293,8 @@ diff -urN mutt-1.6.1/doc/vimrc.trash mutt-1.6.1-trash/doc/vimrc.trash
 +
 +" vim: syntax=vim
 diff -urN mutt-1.6.1/flags.c mutt-1.6.1-trash/flags.c
---- mutt-1.6.1/flags.c	2016-05-30 14:49:21.090679800 +0100
-+++ mutt-1.6.1-trash/flags.c	2016-05-30 14:49:25.111742667 +0100
+--- mutt-1.6.1/flags.c	2016-06-12 18:43:00.403447606 +0100
++++ mutt-1.6.1-trash/flags.c	2016-06-12 18:43:04.902517766 +0100
 @@ -65,7 +65,13 @@
        {
  	h->deleted = 0;
@@ -339,8 +339,8 @@ diff -urN mutt-1.6.1/flags.c mutt-1.6.1-trash/flags.c
  
        if (!mutt_bit_isset(ctx->rights,M_ACL_SEEN))
 diff -urN mutt-1.6.1/functions.h mutt-1.6.1-trash/functions.h
---- mutt-1.6.1/functions.h	2016-05-30 14:49:21.090679800 +0100
-+++ mutt-1.6.1-trash/functions.h	2016-05-30 14:49:25.111742667 +0100
+--- mutt-1.6.1/functions.h	2016-06-12 18:43:00.403447606 +0100
++++ mutt-1.6.1-trash/functions.h	2016-06-12 18:43:04.902517766 +0100
 @@ -121,6 +121,7 @@
    { "toggle-write",		OP_TOGGLE_WRITE,		"%" },
    { "next-thread",		OP_MAIN_NEXT_THREAD,		"\016" },
@@ -358,8 +358,8 @@ diff -urN mutt-1.6.1/functions.h mutt-1.6.1-trash/functions.h
    { "exit",		OP_EXIT,			"q" },
    { "reply",		OP_REPLY,			"r" },
 diff -urN mutt-1.6.1/globals.h mutt-1.6.1-trash/globals.h
---- mutt-1.6.1/globals.h	2016-05-30 14:49:21.090679800 +0100
-+++ mutt-1.6.1-trash/globals.h	2016-05-30 14:49:25.112742683 +0100
+--- mutt-1.6.1/globals.h	2016-06-12 18:43:00.403447606 +0100
++++ mutt-1.6.1-trash/globals.h	2016-06-12 18:43:04.903517781 +0100
 @@ -141,6 +141,7 @@
  WHERE char *Status;
  WHERE char *Tempdir;
@@ -369,8 +369,8 @@ diff -urN mutt-1.6.1/globals.h mutt-1.6.1-trash/globals.h
  WHERE char *TSIconFormat;
  WHERE short TSSupported;
 diff -urN mutt-1.6.1/imap/imap.c mutt-1.6.1-trash/imap/imap.c
---- mutt-1.6.1/imap/imap.c	2016-05-30 14:49:21.092679831 +0100
-+++ mutt-1.6.1-trash/imap/imap.c	2016-05-30 14:49:25.113742698 +0100
+--- mutt-1.6.1/imap/imap.c	2016-06-12 18:43:00.405447637 +0100
++++ mutt-1.6.1-trash/imap/imap.c	2016-06-12 18:43:04.905517812 +0100
 @@ -888,6 +888,12 @@
            if (hdrs[n]->deleted != HEADER_DATA(hdrs[n])->deleted)
              match = invert ^ hdrs[n]->deleted;
@@ -439,8 +439,8 @@ diff -urN mutt-1.6.1/imap/imap.c mutt-1.6.1-trash/imap/imap.c
 +	return 1;
 +}
 diff -urN mutt-1.6.1/imap/imap.h mutt-1.6.1-trash/imap/imap.h
---- mutt-1.6.1/imap/imap.h	2016-05-30 14:49:21.092679831 +0100
-+++ mutt-1.6.1-trash/imap/imap.h	2016-05-30 14:49:25.028741370 +0100
+--- mutt-1.6.1/imap/imap.h	2016-06-12 18:43:00.405447637 +0100
++++ mutt-1.6.1-trash/imap/imap.h	2016-06-12 18:43:04.774515769 +0100
 @@ -72,4 +72,7 @@
  
  int imap_account_match (const ACCOUNT* a1, const ACCOUNT* a2);
@@ -450,8 +450,8 @@ diff -urN mutt-1.6.1/imap/imap.h mutt-1.6.1-trash/imap/imap.h
 +
  #endif
 diff -urN mutt-1.6.1/imap/message.c mutt-1.6.1-trash/imap/message.c
---- mutt-1.6.1/imap/message.c	2016-05-30 14:49:21.093679847 +0100
-+++ mutt-1.6.1-trash/imap/message.c	2016-05-30 14:49:25.113742698 +0100
+--- mutt-1.6.1/imap/message.c	2016-06-12 18:43:00.406447652 +0100
++++ mutt-1.6.1-trash/imap/message.c	2016-06-12 18:43:04.906517828 +0100
 @@ -886,6 +886,7 @@
          if (ctx->hdrs[n]->tagged)
          {
@@ -469,8 +469,8 @@ diff -urN mutt-1.6.1/imap/message.c mutt-1.6.1-trash/imap/message.c
          mutt_set_flag (ctx, h, M_TAG, 0);
      }
 diff -urN mutt-1.6.1/init.h mutt-1.6.1-trash/init.h
---- mutt-1.6.1/init.h	2016-05-30 14:49:21.095679878 +0100
-+++ mutt-1.6.1-trash/init.h	2016-05-30 14:49:25.116742745 +0100
+--- mutt-1.6.1/init.h	2016-06-12 18:43:00.408447684 +0100
++++ mutt-1.6.1-trash/init.h	2016-06-12 18:43:04.909517875 +0100
 @@ -3419,6 +3419,16 @@
    ** provided that ``$$ts_enabled'' has been set. This string is identical in
    ** formatting to the one used by ``$$status_format''.
@@ -489,8 +489,8 @@ diff -urN mutt-1.6.1/init.h mutt-1.6.1-trash/init.h
    { "tunnel",            DT_STR, R_NONE, UL &Tunnel, UL 0 },
    /*
 diff -urN mutt-1.6.1/mutt.h mutt-1.6.1-trash/mutt.h
---- mutt-1.6.1/mutt.h	2016-05-30 14:49:21.098679925 +0100
-+++ mutt-1.6.1-trash/mutt.h	2016-05-30 14:49:25.118742777 +0100
+--- mutt-1.6.1/mutt.h	2016-06-12 18:43:00.410447715 +0100
++++ mutt-1.6.1-trash/mutt.h	2016-06-12 18:43:04.912517922 +0100
 @@ -182,6 +182,8 @@
    M_DELETE,
    M_UNDELETE,
@@ -518,8 +518,8 @@ diff -urN mutt-1.6.1/mutt.h mutt-1.6.1-trash/mutt.h
    int msgnotreadyet;		/* which msg "new" in pager, -1 if none */
  
 diff -urN mutt-1.6.1/muttlib.c mutt-1.6.1-trash/muttlib.c
---- mutt-1.6.1/muttlib.c	2016-05-30 14:49:21.099679941 +0100
-+++ mutt-1.6.1-trash/muttlib.c	2016-05-30 14:49:25.119742792 +0100
+--- mutt-1.6.1/muttlib.c	2016-06-12 18:43:00.411447731 +0100
++++ mutt-1.6.1-trash/muttlib.c	2016-06-12 18:43:04.913517937 +0100
 @@ -1511,7 +1511,9 @@
  
    if (magic > 0 && !mx_access (s, W_OK))
@@ -532,8 +532,8 @@ diff -urN mutt-1.6.1/muttlib.c mutt-1.6.1-trash/muttlib.c
        snprintf (tmp, sizeof (tmp), _("Append messages to %s?"), s);
        if ((rc = mutt_yesorno (tmp, M_YES)) == M_NO)
 diff -urN mutt-1.6.1/mx.c mutt-1.6.1-trash/mx.c
---- mutt-1.6.1/mx.c	2016-05-30 14:49:21.099679941 +0100
-+++ mutt-1.6.1-trash/mx.c	2016-05-30 14:49:25.119742792 +0100
+--- mutt-1.6.1/mx.c	2016-06-12 18:43:00.411447731 +0100
++++ mutt-1.6.1-trash/mx.c	2016-06-12 18:43:04.914517953 +0100
 @@ -776,6 +776,62 @@
    return rc;
  }
@@ -634,8 +634,8 @@ diff -urN mutt-1.6.1/mx.c mutt-1.6.1-trash/mx.c
    if (ctx->magic == M_IMAP)
      rc = imap_sync_mailbox (ctx, purge, index_hint);
 diff -urN mutt-1.6.1/OPS mutt-1.6.1-trash/OPS
---- mutt-1.6.1/OPS	2016-05-30 14:49:21.076679581 +0100
-+++ mutt-1.6.1-trash/OPS	2016-05-30 14:49:25.100742495 +0100
+--- mutt-1.6.1/OPS	2016-06-12 18:43:00.389447388 +0100
++++ mutt-1.6.1-trash/OPS	2016-06-12 18:43:04.883517469 +0100
 @@ -142,6 +142,7 @@
  OP_PREV_LINE "scroll up one line"
  OP_PREV_PAGE "move to the previous page"
@@ -645,8 +645,8 @@ diff -urN mutt-1.6.1/OPS mutt-1.6.1-trash/OPS
  OP_QUERY_APPEND "append new query results to current results"
  OP_QUIT "save changes to mailbox and quit"
 diff -urN mutt-1.6.1/pager.c mutt-1.6.1-trash/pager.c
---- mutt-1.6.1/pager.c	2016-05-30 14:49:21.100679956 +0100
-+++ mutt-1.6.1-trash/pager.c	2016-05-30 14:49:25.120742808 +0100
+--- mutt-1.6.1/pager.c	2016-06-12 18:43:00.412447746 +0100
++++ mutt-1.6.1-trash/pager.c	2016-06-12 18:43:04.915517968 +0100
 @@ -2351,6 +2351,7 @@
  	MAYBE_REDRAW (redraw);
  	break;
@@ -686,13 +686,13 @@ diff -urN mutt-1.6.1/pager.c mutt-1.6.1-trash/pager.c
  	  if (option (OPTRESOLVE))
  	  {
 diff -urN mutt-1.6.1/PATCHES mutt-1.6.1-trash/PATCHES
---- mutt-1.6.1/PATCHES	2016-05-30 14:49:21.081679659 +0100
-+++ mutt-1.6.1-trash/PATCHES	2016-05-30 14:49:25.105742573 +0100
+--- mutt-1.6.1/PATCHES	2016-06-12 18:43:00.395447481 +0100
++++ mutt-1.6.1-trash/PATCHES	2016-06-12 18:43:04.889517563 +0100
 @@ -0,0 +1 @@
-+patch-trash-neo-20160530
++patch-trash-neo-20160612
 diff -urN mutt-1.6.1/pattern.c mutt-1.6.1-trash/pattern.c
---- mutt-1.6.1/pattern.c	2016-05-30 14:49:21.100679956 +0100
-+++ mutt-1.6.1-trash/pattern.c	2016-05-30 14:49:25.120742808 +0100
+--- mutt-1.6.1/pattern.c	2016-06-12 18:43:00.413447762 +0100
++++ mutt-1.6.1-trash/pattern.c	2016-06-12 18:43:04.916517984 +0100
 @@ -1367,8 +1367,9 @@
        {
  	switch (op)
@@ -705,8 +705,8 @@ diff -urN mutt-1.6.1/pattern.c mutt-1.6.1-trash/pattern.c
  			  (op == M_DELETE));
  	    break;
 diff -urN mutt-1.6.1/postpone.c mutt-1.6.1-trash/postpone.c
---- mutt-1.6.1/postpone.c	2016-05-30 14:49:21.102679988 +0100
-+++ mutt-1.6.1-trash/postpone.c	2016-05-30 14:49:25.122742839 +0100
+--- mutt-1.6.1/postpone.c	2016-06-12 18:43:00.414447777 +0100
++++ mutt-1.6.1-trash/postpone.c	2016-06-12 18:43:04.917518000 +0100
 @@ -277,6 +277,9 @@
    /* finished with this message, so delete it. */
    mutt_set_flag (PostContext, h, M_DELETE, 1);
@@ -719,7 +719,7 @@ diff -urN mutt-1.6.1/postpone.c mutt-1.6.1-trash/postpone.c
  
 diff -urN mutt-1.6.1/README.trash mutt-1.6.1-trash/README.trash
 --- mutt-1.6.1/README.trash	1970-01-01 01:00:00.000000000 +0100
-+++ mutt-1.6.1-trash/README.trash	2016-05-30 14:49:25.008741057 +0100
++++ mutt-1.6.1-trash/README.trash	2016-06-12 18:43:04.748515364 +0100
 @@ -0,0 +1,74 @@
 +Trash Folder Patch
 +==================
