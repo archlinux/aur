@@ -1,11 +1,12 @@
 pkgbase = python-textx
 	pkgdesc = Python library for building Domain-Specific Languages and parsers
 	pkgver = 1.4
-	pkgrel = 2
+	pkgrel = 3
 	url = http://igordejanovic.net/textX/
 	arch = any
 	license = MIT
 	depends = python
+	depends = python-arpeggio
 	source = https://github.com/igordejanovic/textX/archive/v1.4.tar.gz
 	md5sums = 57db7672b8c8e6f2e8ba1131e627760c
 

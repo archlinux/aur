@@ -1,12 +1,12 @@
 pkgname=python-textx
 _srcname=textX
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Python library for building Domain-Specific Languages and parsers"
 arch=('any')
 url="http://igordejanovic.net/textX/"
 license=('MIT')
-depends=('python')
+depends=('python' 'python-arpeggio')
 source=(https://github.com/igordejanovic/$_srcname/archive/v$pkgver.tar.gz)
 md5sums=('57db7672b8c8e6f2e8ba1131e627760c')
 
