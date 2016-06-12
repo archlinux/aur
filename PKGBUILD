@@ -1,14 +1,14 @@
 # Maintainer: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=kxmlgui-git
-pkgver=r173.db71290
+pkgver=r286.e2cc82a
 pkgrel=1
 pkgdesc='KXmlGUI'
 arch=('i686' 'x86_64')
 url='https://projects.kde.org/projects/frameworks/kxmlgui'
 license=('LGPL')
 depends=('kglobalaccel-git' 'ktextwidgets-git' 'attica-git')
-makedepends=('extra-cmake-modules-git' 'git')
+makedepends=('extra-cmake-modules-git' 'git' 'python')
 groups=('kf5')
 conflicts=(kxmlgui)
 provides=(kxmlgui)
@@ -29,8 +29,8 @@ build() {
   cmake ../kxmlgui \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DLIB_INSTALL_DIR=lib \
-    -DLIBEXEC_INSTALL_DIR=lib \
+    -DKDE_LIB_INSTALL_DIR=lib \
+    -DKDE_LIBEXEC_INSTALL_DIR=lib \
     -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
     -DBUILD_TESTING=OFF
   make
