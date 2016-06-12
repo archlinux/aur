@@ -7,41 +7,42 @@
 
 #pkgbase=linux               # Build stock -ARCH kernel
 pkgbase=linux-rt             # Build kernel with a different name
-_srcname=linux-4.4
-_pkgver=4.4.12
-_rtpatchver=rt19
+_srcname=linux-4.6
+_pkgver=4.6.2
+_rtpatchver=rt5
 pkgver=${_pkgver}_${_rtpatchver}
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${_pkgver}.sign"
-        "https://www.kernel.org/pub/linux/kernel/projects/rt/4.4/older/patch-${_pkgver}-${_rtpatchver}.patch.xz"
-        "https://www.kernel.org/pub/linux/kernel/projects/rt/4.4/older/patch-${_pkgver}-${_rtpatchver}.patch.sign"
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/4.6/patch-${_pkgver}-${_rtpatchver}.patch.xz"
+        "https://www.kernel.org/pub/linux/kernel/projects/rt/4.6/patch-${_pkgver}-${_rtpatchver}.patch.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         "${pkgbase}.preset"
         'change-default-console-loglevel.patch'
-        '0001-sdhci-revert.patch'
+        '0001-linux-4.6-rtlwifi-fix-atomic.patch'
         'fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch')
 
-sha256sums=('401d7c8fef594999a460d10c72c5a94e9c2e1022f16795ec51746b0d165418b2'
+
+sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            '1eb89dddd7e89caf2df17470b4b15da451ef1aa97f8e1a88578a8ee2da75729a'
+            '0dc509a19c68ab547a62158bf2017965b843854b63be46ae039c37724dccca21'
             'SKIP'
-            '0fe3f95956b73d0682c44c0520eef11a9de067739d799c33eaf8bc1130331a1d'
+            '0f1318c689a5544c8fd41b3aa4393679602c4f0c8ed832d235014d3238343a8a'
             'SKIP'
-            'e3129f704cf59f4ba3ad074504b007e47a591b9b2a3b2a2869b7c381ff880afb'
-            'dd9e0be59672bba6e7a9572f6794139a19bf43d8e64785681a14cb2abea88a67'
+            '1b6af3386f3e2c31e847200d343a43679e2d39d4c69ed4c4eb931440587b6d52'
+            '63db5e7975054a40875c051eb1b1bc3fd2234e398d65c5cace9f64ef8c66bfd8'
             '2abb6e506e4a687723d6a6dc21703f5d2b42a8956fbc3313e3da2b03c718c80d'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '5313df7cb5b4d005422bd4cd0dae956b2dadba8f3db904275aaf99ac53894375'
+            'ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98'
             '85f7612edfa129210343d6a4fe4ba2a4ac3542d98b7e28c8896738e7e6541c06')
 
 validpgpkeys=('ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -66,21 +67,20 @@ prepare() {
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
-  # revert http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=9faac7b95ea4f9e83b7a914084cc81ef1632fd91
-  # fixes #47778 sdhci broken on some boards
-  # https://bugzilla.kernel.org/show_bug.cgi?id=106541
-  msg "0001-sdhci-revert.patch"
-  patch -Rp1 -i "${srcdir}/0001-sdhci-revert.patch"
-
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   msg "change-default-console-loglevel.patch"
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
+  # fix rtlwifi atomic
+  # https://bugs.archlinux.org/task/49401
+  msg "0001-linux-4.6-rtlwifi-fix-atomic.patch"
+  patch -p1 -i "${srcdir}/0001-linux-4.6-rtlwifi-fix-atomic.patch"
+
   # A patch to fix a problem that ought to be fixed in the NVIDIA source code.
   # Stops X from hanging on certain NVIDIA cards
-  msg "fix-race-in-PR-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"
+  msg "fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"
   patch -p1 -i "${srcdir}/fix-race-in-PRT-wait-for-completion-simple-wait-code_Nvidia-RT-160319.patch"
 
   msg "All patches have successfully been applied"
@@ -179,7 +179,7 @@ _package() {
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
   # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
+  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
 }
 
 _package-headers() {
@@ -198,7 +198,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
   for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi sound trace uapi video xen; do
+    media net pcmcia scsi soc sound trace uapi video xen; do
     cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
@@ -279,6 +279,12 @@ _package-headers() {
     mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
     cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
   done
+
+  # add objtool for external module building and enabled VALIDATION_STACK option
+  if [ -f tools/objtool/objtool ];  then
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+  fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
