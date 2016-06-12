@@ -17,10 +17,10 @@ package() {
   msg2 \"Extracting the data.tar.gz...\"
   bsdtar -xf data.tar.gz -C \"\$pkgdir/\"
 
-  msg2 \"Fixing permissions of documentation folder...\"
-  chmod -R 775 \"\$pkgdir/opt/\"
-  chmod -R 775 \"\$pkgdir/etc/\"
-  chmod -R 775 \"\$pkgdir/usr/\"
+  # msg2 \"Fixing permissions of documentation folder...\"
+  # chmod -R 775 \"\$pkgdir/opt/\"
+  # chmod -R 775 \"\$pkgdir/etc/\"
+  # chmod -R 775 \"\$pkgdir/usr/\"
 }" > PKGBUILD
 
 
