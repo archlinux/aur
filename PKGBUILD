@@ -11,7 +11,8 @@ license=('GPLv3')
 optdepends=(
     'cuda: Support for NVIDIA GPUs'
 )
-makedepends=('p7zip' 'cmake' 'opencl-headers' 'ocl-icd')
+makedepends=('p7zip' 'cmake' 'opencl-headers')
+makedepends=('ocl-icd')
 source=("git+$url")
 md5sums=('SKIP')
 
