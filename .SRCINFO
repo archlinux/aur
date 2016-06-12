@@ -1,6 +1,6 @@
 pkgbase = python-rjsmin
 	pkgdesc = rJSmin is a javascript minifier written in python
-	pkgver = 1.0.10
+	pkgver = 1.0.12
 	pkgrel = 1
 	url = https://github.com/ndparker/rjsmin
 	arch = i686
@@ -9,10 +9,8 @@ pkgbase = python-rjsmin
 	depends = python>=3.1
 	provides = python-rjsmin
 	conflicts = python-rjsmin
-	source = https://github.com/ndparker/rjsmin/archive/1.0.10.tar.gz
-	source = package.cfg.diff
-	md5sums = 2dfd534af5511a2629e40d515d718695
-	md5sums = c1b1135c5dfd0663d1389acbd2c1750d
+	source = https://github.com/ndparker/rjsmin/archive/1.0.12.tar.gz
+	md5sums = 224bc84decfe68db21ca275bd08ec45d
 
 pkgname = python-rjsmin
 
