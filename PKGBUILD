@@ -2,12 +2,12 @@
 
 pkgname='libnsbmp-git'
 pkgver=0.1.3.r0.ga44819c
-pkgrel=1
+pkgrel=2
 pkgdesc='Decoding library for BMP and ICO image file formats'
 url='http://www.netsurf-browser.org/projects/libnsbmp/'
 license=('MIT')
 
-makedepends=('netsurf-buildsystem-git')
+makedepends=('git' 'netsurf-buildsystem-git')
 provides=('libnsbmp')
 conflicts=('libnsbmp')
 
