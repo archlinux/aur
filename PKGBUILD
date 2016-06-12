@@ -1,7 +1,7 @@
 # Maintainer: Florijan Hamzic <florijanh at gmail dot com>
 _pypi_name='WeasyPrint'
-pkgver=0.23
-pkgrel=2
+pkgver=0.28
+pkgrel=1
 pkgdesc="Converts web documents (HTML, CSS, SVG, ...) to PDF."
 license=('BSD')
 arch=('any')
@@ -14,8 +14,8 @@ depends=('python' 'pango>=1.29.3' 'gdk-pixbuf2>=2.25' 'python-gobject'
 
 pkgname="python-weasyprint"
 _pypi_name_inital=$(echo ${_pypi_name}|cut -c1)
-source=("http://pypi.python.org/packages/source/${_pypi_name_inital}/${_pypi_name}/${_pypi_name}-${pkgver}.tar.gz")
-md5sums=('4b66302fa685f5e183a5f912eccb02e0')
+source=("https://github.com/Kozea/WeasyPrint/archive/v${pkgver}.tar.gz")
+md5sums=('5c085284675f49476e4acebe7b488f83')
 
 
 package() {
