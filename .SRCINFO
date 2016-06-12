@@ -1,7 +1,7 @@
 pkgbase = acserver
 	pkgdesc = App Container Server
 	pkgver = 0.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/appc/acserver
 	arch = i686
 	arch = x86_64
