@@ -1,6 +1,6 @@
 pkgname=python2-arpeggio
 _srcname=Arpeggio
-pkgver=1.3
+pkgver=1.5
 pkgrel=1
 pkgdesc="Recursive descent parser with memoization based on PEG grammars (aka Packrat parser)."
 arch=('any')
@@ -8,7 +8,7 @@ url="http://igordejanovic.net/Arpeggio/"
 license=('MIT')
 depends=('python2')
 source=(https://github.com/igordejanovic/$_srcname/archive/v$pkgver.tar.gz)
-md5sums=('55dce5414c782c8d81990c659554671e')
+md5sums=('cb3de639d0150a044368041c5808d88e')
 
 package() {
   cd "$srcdir/$_srcname-$pkgver"
