@@ -1,8 +1,9 @@
 # Contributor: Isak Karlsson <isak.karlsson@gmail.com>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
+pkgbase=rust-nightly
 pkgname=('rust-nightly' 'rust-nightly-doc')
-pkgver=1.11.0_2016.06.10
+pkgver=1.11.0_2016.06.12
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc='A safe, concurrent, practical language'
