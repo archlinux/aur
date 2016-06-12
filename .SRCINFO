@@ -1,15 +1,15 @@
 pkgbase = python-paypalrestsdk
 	pkgdesc = Python SDK for PayPal RESTful APIs https://developer.paypal.com
-	pkgver = 1.9.0
+	pkgver = 1.11.5
 	pkgrel = 1
 	url = https://github.com/paypal/PayPal-Python-SDK
 	arch = any
-	license = PAYPAL
+	license = SDK LICENSE
 	depends = python>=3.1
 	provides = python-paypalrestsdk
 	conflicts = python-paypalrestsdk
-	source = https://github.com/paypal/PayPal-Python-SDK/archive/v1.9.0.tar.gz
-	md5sums = 0c67e67a6fc20c6ef65ec08029706fb2
+	source = https://github.com/paypal/PayPal-Python-SDK/archive/v1.11.5.tar.gz
+	md5sums = a2480aba6b0ec2715440ff637c35b0f8
 
 pkgname = python-paypalrestsdk
 
