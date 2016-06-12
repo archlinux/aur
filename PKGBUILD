@@ -2,7 +2,7 @@
 
 _pkgname="python-pyphen"
 pkgname="${_pkgname}"
-pkgver=0.9.1
+pkgver=0.9.4
 pkgrel=1
 pkgdesc="Pyphen is a pure Python module to hyphenate text using existing Hunspell hyphenation dictionaries."
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python>=3.1')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=(https://github.com/Kozea/Pyphen/archive/${pkgver}.tar.gz)
-md5sums=('e874901a2df7bacbb0c89a10d45068bb')
+md5sums=('5b27217dde553bc0fdd3f7d3878e85a4')
 
 package() {
   cd "${srcdir}/Pyphen-${pkgver}"
