@@ -1,3 +1,7 @@
+# Maintainer: youngunix
+# Submitter: goetzc
+
+
 pkgname=smtube-qt4
 pkgver=16.3.0
 pkgrel=2
