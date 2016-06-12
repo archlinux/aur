@@ -13,7 +13,6 @@ makedepends=('extra-cmake-modules-git' 'git' 'kdoctools-git' 'python')
 groups=('kf5')
 conflicts=(kio)
 provides=(kio)
-install=$pkgname.install
 source=('git://anongit.kde.org/kio.git')
 md5sums=('SKIP')
 
