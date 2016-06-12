@@ -1,0 +1,21 @@
+pkgbase = cryfs-gui-git
+	pkgdesc = A Qt/C++ front end to EncFS and CryFS (edit PKGBUILD to customize install options)
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/mhogomchungu/cryfs-gui
+	arch = i686
+	arch = x86_64
+	license = LGPL3
+	makedepends = cmake
+	makedepends = make
+	depends = cryfs
+	depends = libgcrypt
+	depends = pkg-config
+	depends = qt4
+	provides = cryfs-gui
+	conflicts = cryfs-gui
+	source = cryfs-gui::git://github.com/mhogomchungu/cryfs-gui.git
+	sha256sums = SKIP
+
+pkgname = cryfs-gui-git
+
