@@ -10,7 +10,7 @@
 #	        Path to gpg public keys images will be signed with
 
 [Unit]
-Description=App Container Service
+Description=App Container Server
 Documentation=https://github.com/appc/acserver
 
 [Service]
