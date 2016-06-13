@@ -1,0 +1,35 @@
+pkgbase = cpp3ds-git
+	pkgdesc = Basic C++ gaming framework and library for Nintendo 3DS.
+	pkgver = v0.3.r12.gb36b425
+	pkgrel = 1
+	url = http://cpp3ds.github.io/
+	arch = x86_64
+	license = MIT
+	license = ZLIB
+	checkdepends = gtest
+	makedepends = git
+	depends = cmake
+	depends = devkitarm
+	depends = citro3d-git
+	depends = ctrulib-git
+	depends = libjpeg-turbo
+	depends = openssl
+	depends = zlib
+	depends = freetype2
+	depends = qt5-base
+	depends = python
+	depends = sfml
+	provides = cpp3ds
+	conflicts = cpp3ds
+	options = !strip
+	source = cpp3ds-git::git+https://github.com/cpp3ds/cpp3ds
+	source = https://github.com/cpp3ds/3ds_portlibs/releases/download/r3/portlibs-3ds-r3.tar.xz
+	source = https://github.com/cpp3ds/3ds-tools/releases/download/r4/3ds-tools-linux-r4.tar.gz
+	source = cpp3ds.sh
+	sha256sums = SKIP
+	sha256sums = 263ebbde3022d7dbc846b9cd289d01ba25f30534b6cd504b4380305f09b531b5
+	sha256sums = 35297910aa8b1c6e603d5b2c99440ba5c2a0292853a638804545adf3fc5bfe9c
+	sha256sums = df7e57eececa343212a7eb8ec6e9bda4d37c0c39bc30de8b621b47c2f8880837
+
+pkgname = cpp3ds-git
+
