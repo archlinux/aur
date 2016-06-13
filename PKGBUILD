@@ -1,7 +1,7 @@
 # Contributor: James Thomas <dairy_water at yahoo dot co dot uk>
 pkgname=epubcheck
 pkgver=4.0.1
-pkgrel=6
+pkgrel=7
 pkgdesc="A tool to validate epub files."
 arch=('any')
 url="https://github.com/IDPF/epubcheck"
@@ -19,7 +19,7 @@ package() {
     install -m644 "$srcdir/${pkgname}-${pkgver}"/*.txt "$pkgdir/usr/share/docs/${pkgname}"
     install -m644 "$srcdir/${pkgname}-${pkgver}/licenses/BSD-3-Clause.txt" "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
     
-    install -m644 "$srcdir/epubcheck.1" "$pkgdir/usr/share/man/man1/epubcheck.1"
+    install -D -m644 "$srcdir/epubcheck.1" "$pkgdir/usr/share/man/man1/epubcheck.1"
     
     mkdir -p "$pkgdir/usr/bin"
     
