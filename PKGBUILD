@@ -2,8 +2,8 @@
 # Contributor: Cvetoslav Ludmiloff <ludmiloff@gmail.com>
 
 pkgname=smokeqt-git
-pkgver=20150630
-pkgrel=2
+pkgver=20160613
+pkgrel=1
 pkgdesc="Language independent library for Qt bindings"
 url="http://kde.org/"
 arch=('i686' 'x86_64')
@@ -35,11 +35,11 @@ build() {
   cmake .. \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_CXX_STANDARD=98 \
     -DWITH_Qwt5=OFF
     
   #numprocs=`cat /proc/cpuinfo | grep processor | wc -l`
-  make
-  #-j `expr ${numprocs} + 1`
+  make #-j `expr ${numprocs} + 1`
 }
 
 package() {
