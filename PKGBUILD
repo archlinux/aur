@@ -3,9 +3,9 @@
 # Contributor: Thomas Baechler <thomas@archlinux.org>
 
 pkgname=nvidia-lqx
-pkgver=364.19
+pkgver=367.18
 _extramodules=extramodules-4.6-lqx
-pkgrel=2
+pkgrel=1
 pkgdesc="NVIDIA drivers for linux-lqx"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
@@ -17,10 +17,8 @@ install=nvidia-lqx.install
 options=(!strip)
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-source=('linux-4.6.patch')
-md5sums_i686=('8a4015213c4a8f1c80e9520d04a32a7b')
-md5sums_x86_64=('ad7a0b1855b3913390fb75b4cc3a26dc')
-md5sums=('3064bd437b26adac246f301f54f2814c')
+md5sums_i686=('9ae023927692dab99f23a006865fa966')
+md5sums_x86_64=('0e01ed625c26ad4e4b44a7b139a3e363')
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
 
@@ -28,7 +26,6 @@ prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
     # patches here
-    patch -p1 --no-backup-if-mismatch -i ../linux-4.6.patch
 }
 
 build() {
