@@ -1,0 +1,24 @@
+
+[Unit]
+Description=Zinc Server
+Documentation=https://github.com/typesafehub/zinc
+
+[Service]
+#
+Environment=ZINC_HOME=/opt/zinc
+Environment=ZINC_PORT=3030
+Environment=ZINC_TIMEOUT=0
+#
+Environment=JAVA_EXEC=java
+Environment=JAVA_META=512m
+Environment=JAVA_HEAP=1024m
+Environment=JAVA_CODE=256m
+Environment=JAVA_STACK=1m
+#
+ExecStart=/bin/bash ${ZINC_HOME}/zincer.sh
+#
+Restart=on-failure
+RestartSec=1s
+
+[Install]
+WantedBy=multi-user.target

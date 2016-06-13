@@ -1,0 +1,8 @@
+# eclipse meta data
+.project
+
+# generated resources
+/*/
+/*.xz
+/*.tgz
+/*.log
