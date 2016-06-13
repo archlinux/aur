@@ -19,7 +19,8 @@ _brotherlnd="${_brotherl//-/}" # mfc0000dw
 _brotherund="${_brotheru//-/}" # MFC0000DW
 pkgname="brother-${_brotherl}"
 pkgver='3.0.1'
-pkgrel='1'
+_brpkgrel='1'
+pkgrel='2'
 pkgdesc="LPR and CUPS driver for the Brother ${_brotheru} printer"
 arch=('i686' 'x86_64')
 url='http://solutions.brother.com/linux/en_us/'
@@ -35,13 +36,14 @@ depends_x86_64=('lib32-glibc')
 # sed grep awk
 # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=670055
 # Printing a text file fails when Liberation is the only TrueType font available
-optdepends=('ttf-dejavu: printing text files from lpr')
+optdepends=('ttf-dejavu: printing text files from lpr'
+            'brscan4: Scanner support')
 #install="${pkgname}.install"
 # The cups wrapper uses the lpr driver.
-_brsource="brother_${_brotherlnd}_GPL_source_${pkgver}-${pkgrel}"
+_brsource="brother_${_brotherlnd}_GPL_source_${pkgver}-${_brpkgrel}"
 source=(
-  "http://download.brother.com/welcome/dlf101196/${_brotherlnd}lpr-${pkgver}-${pkgrel}.i386.rpm"
-  "http://download.brother.com/welcome/dlf101197/${_brotherlnd}cupswrapper-${pkgver}-${pkgrel}.i386.rpm"
+  "http://download.brother.com/welcome/dlf101196/${_brotherlnd}lpr-${pkgver}-${_brpkgrel}.i386.rpm"
+  "http://download.brother.com/welcome/dlf101197/${_brotherlnd}cupswrapper-${pkgver}-${_brpkgrel}.i386.rpm"
   "http://download.brother.com/welcome/dlf101201/${_brsource}.tar.gz"
   'cupswrapper-license.txt'
   'lpr-license.txt'
@@ -76,7 +78,9 @@ build() {
   test -f "${_rcfile}" || echo "${}"
   local _bindir="$(find "`pwd`" -type d -name 'cupswrapper')"
   test -d "${_bindir}" || echo "${}" # die if blank or invalid before we rm something we don't want to
-  rm -f "${_bindir}"/* # We download the cups driver only to throw it all away. All I want is the dir name without hunting for it in the installer.
+  local _binname="$(find "${_bindir}/" -type 'f' -name 'brcupscon*' -print -quit)"
+  test -x "${_binname}" || echo "${}"
+  rm -f "${_bindir}"/* # We download the cups driver only to throw it all away. All I want is the dir and bin name without hunting for it in the installer.
   local _basedir="${srcdir}/${_brsource}"
   test -d "${_basedir}" || echo "${}"
   cd "${_basedir}/cupswrapper" 2>/dev/null || cd "${_basedir}/scripts" 2>/dev/null || cd "${_basedir}"
@@ -100,12 +104,12 @@ build() {
   cd "${_makedir}"
   if [ -s 'Makefile' ]; then
     make -s
-    cp -p 'brcupsconfig' "${_bindir}"
+    cp -p 'brcupsconfig' "${_binname}"
   else
     # Not sure why it's called brcupsconfig3 some places and brcupsconfig4 in others.
     # The version in their binary matches the version in the source so it looks good to me.
     # gcc options are pulled from other Brother makefiles.
-    gcc -pipe -Wall -W -O2 -s -o "${_bindir}/brcupsconfig3" "brcupsconfig.c"
+    gcc -pipe -Wall -W -O2 -s -o "${_binname}" 'brcupsconfig.c'
   fi
 
   cd "${_bindir}"
@@ -119,7 +123,7 @@ build() {
   mkdir -p "${srcdir}/var/tmp"
 
   # Fix any sbin reference in the lpr driver. The cups driver uses bin.
-  #sed -i -e 's:/sbin/:/bin/:g' $(find "${srcdir}/usr" -type f -name "psconvert2")
+  #sed -i -e 's:/sbin/:/bin/:g' $(find "${srcdir}/usr" -type f -name 'psconvert2')
 
   # Fix page shifted off center that affects some printers
   # Letter prints off center shifted down and right with PaperType=A4
@@ -151,7 +155,7 @@ build() {
   sed -i -e '# Remove the ${_srcdir} variety' \
          -e 's:${_srcdir}::' \
          -e '# Remove the /home/... variety' \
-         -e "s:${srcdir}::" "${srcdir}/usr/lib/cups/filter/"*lpdwrapper*
+         -e "s:${srcdir}::" "${srcdir}/usr/lib/cups/filter"/*lpdwrapper*
 
   # We did everything in the installer so we can get rid of it.
   rm -f "${_wrapper_source}"
@@ -162,7 +166,7 @@ package() {
   set -u
   local _dir
   # /var/spool is not used anywhere in this package. Maybe it's needed for non cups lprng.
-  for _dir in usr opt; do # var
+  for _dir in 'usr' 'opt'; do # 'var'
     if [ -d "${srcdir}/${_dir}" ]; then
       cp -pR "${srcdir}/${_dir}" "${pkgdir}"
     fi
@@ -176,8 +180,8 @@ package() {
   test "$(find "${pkgdir}/usr/lib/cups/filter/" -type f)"
 
   # Ensure there are no forbidden paths
-  grep -alqr "/sbin" "${pkgdir}" && echo "${}"
-  grep -alqr "/usr/tmp" "${pkgdir}" && echo "${}"
+  ! grep -alqr "/sbin" "${pkgdir}" || echo "${}"
+  ! grep -alqr "/usr/tmp" "${pkgdir}" || echo "${}"
 
   install -Dm644 'cupswrapper-license.txt' "${pkgdir}/usr/share/licenses/${pkgname}/cupswrapper-licence.txt"
   install -Dm644 'lpr-license.txt' "${pkgdir}/usr/share/licenses/${pkgname}/lpr-licence.txt"
