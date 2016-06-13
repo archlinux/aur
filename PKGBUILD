@@ -3,8 +3,9 @@
 
 _pkgname=libchewing
 pkgname=libchewing-git
-pkgver=1626.583bc02
+pkgver=0.5.1.r8.g583bc02
 pkgrel=1
+epoch=1
 pkgdesc='Intelligent Chinese phonetic input method'
 url='http://chewing.im/'
 arch=('i686' 'x86_64')
@@ -17,8 +18,11 @@ source=("git+https://github.com/chewing/libchewing/")
 md5sums=('SKIP')
 
 pkgver() {
-  cd ${_pkgname}
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  cd "${_pkgname}"
+  ( set -o pipefail
+    git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
