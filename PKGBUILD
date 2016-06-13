@@ -66,13 +66,7 @@ build() {
 package() {
   cd $_pkgname
 
-# Workaround for https://phab.enlightenment.org/T3778
-  install -d "$pkgdir/usr/lib/evas/utils/"
-
   make -j1 DESTDIR="$pkgdir" install
-
-# Workaround for https://phab.enlightenment.org/T3848
-  install -m755 src/generic/evas/pdf/evas_generic_pdf_loader.libreoffice "$pkgdir/usr/lib/evas/utils/"
 
 # compile python files
   python2 -m compileall -q "$pkgdir"
