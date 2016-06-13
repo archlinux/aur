@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-minion'
-pkgver='5.05'
+pkgver='5.08'
 pkgrel='1'
 pkgdesc="Job queue"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-mojolicious>=6.0' 'perl>=5.10.1')
 makedepends=()
 url='https://metacpan.org/release/Minion'
-source=('http://search.cpan.org/CPAN/authors/id/S/SR/SRI/Minion-5.05.tar.gz')
-md5sums=('f6a91a7afe4868ef842bb73e51a92abf')
-sha512sums=('fb56ef9b347c8520757276043bf5fcbdc75bf2de51d20aac4bda255cfcf43e6902842bd53cebad43a4c14f2fde0c673a985a95554327c8d1d484407ac20b1142')
-_distdir="Minion-5.05"
+source=('http://search.cpan.org/CPAN/authors/id/S/SR/SRI/Minion-5.08.tar.gz')
+md5sums=('b3e069ed5beaac0b3114e31e767185eb')
+sha512sums=('8fbb94b9f7e959fa2c6de5ccca98e8843577db81acc4c7816b7126b1871198426169479c4da42a62eb7b0af477b0fc2865dc782435d1d078e0bcb229221ba6a8')
+_distdir="Minion-5.08"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
