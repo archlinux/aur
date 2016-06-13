@@ -1,0 +1,11 @@
+--- CMakeLists.old.txt	2016-06-12 01:30:26.000000000 +0300
++++ CMakeLists.txt	2016-06-13 15:35:38.291572410 +0300
+@@ -17,7 +17,7 @@
+ 
+ # project
+ 
+-include(GetGitCommitHash)
++# include(GetGitCommitHash)
+ 
+ project(solvespace)
+ set(solvespace_VERSION_MAJOR 2)
