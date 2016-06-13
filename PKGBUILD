@@ -2,7 +2,7 @@
 
 pkgname=freeling
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Natural language analysis libraries"
 arch=(any)
 url="http://nlp.lsi.upc.edu/freeling"
@@ -21,7 +21,7 @@ prepare() {
 	cd "$srcdir/$pkgname"
 	autoreconf --install
 	./configure --prefix="$pkgdir/usr"
-#./configure --prefix="$pkgdir/usr" --enable-traces --enable-debug
+#	./configure --prefix="$pkgdir/usr" --enable-traces --enable-debug
 }
 
 build() {
@@ -32,5 +32,9 @@ build() {
 package() {
 	cd "$srcdir/$pkgname/"
 	make INSTALL_ROOT=$pkgdir install
-	cd ..
+	cd "$pkgdir/usr/bin"
+	# Prevent conflict with Hunspell
+	echo "Note that to prevent conflict with hunspell on /bin/analyze,"\
+		" FL's analyze executable is renamed to 'fl_analyze'"
+	mv "analyze" "fl_analyze"
 }
