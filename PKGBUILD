@@ -7,8 +7,8 @@
 pkgbase=nvidia-grsec
 pkgname=(nvidia-grsec nvidia-grsec-dkms)
 pkgver=364.19
-_extramodules=extramodules-4.5.5-grsec
-pkgrel=5
+_extramodules=extramodules-4.5.6-grsec
+pkgrel=6
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
