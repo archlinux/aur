@@ -1,17 +1,15 @@
 pkgbase = neovim-symlinks
-	pkgdesc = System-wide: Runs neovim if vi or vim is invoked.
-	pkgver = 1.0.1
-	pkgrel = 3
+	pkgdesc = Runs neovim if vi or vim is called
+	pkgver = 2
+	pkgrel = 1
 	arch = any
-	license = MIT
 	depends = neovim
+	depends = sh
 	provides = vim
 	provides = vi
 	conflicts = vim
 	conflicts = vi
 	conflicts = vi-vim-symlink
-	source = vimdiff
-	md5sums = 8ca45b6b93e6dab571f542ef262093e4
 
 pkgname = neovim-symlinks
 
