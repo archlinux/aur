@@ -33,10 +33,9 @@ check() {
 
 # 4.
 package() {
-    local source="$srcdir/$pkgname"
-    local target="$pkgdir"
-    install -D -m755 "$source/bin/acserver"           "$target/usr/bin/acserver"
-    install -d -m755                                  "$target/var/aci/store"
-    install -D -m644 "$source/templates/index.html"   "$target/var/aci/templates/index.html"
-    install -D -m644 "$source/acserver.service"       "$target/usr/lib/systemd/system/acserver.service"
+    cd "$pkgname"
+    install -D -m755 ./bin/acserver         "$pkgdir/usr/bin/acserver"
+    install -d -m755                        "$pkgdir/var/aci/store"
+    install -D -m644 ./templates/index.html "$pkgdir/var/aci/templates/index.html"
+    install -D -m644 ./acserver.service     "$pkgdir/usr/lib/systemd/system/acserver.service"
 }
