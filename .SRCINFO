@@ -1,0 +1,13 @@
+pkgbase = maltego-classic
+	pkgdesc = Classic Edition of Maltego Client
+	pkgver = 4.0.0.8846
+	pkgrel = 1
+	url = http://paterva.com/web7/buy/maltego-clients/maltego.php
+	arch = any
+	license = Commercial
+	depends = jre8-openjdk
+	source = http://paterva.com/malv4/classic/Maltego.v4.0.0.8846.deb
+	md5sums = f5f2a1b30b6fa4c7c6927c309edab44f
+
+pkgname = maltego-classic
+
