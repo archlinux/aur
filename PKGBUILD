@@ -68,7 +68,7 @@ source=(
 #     http://www2.ati.com/drivers/linux/amd-catalyst-${pkgver/./-}-linux-x86-x86-64.zip
 #     http://www2.ati.com/drivers/linux/amd-catalyst-omega-14.12-linux-run-installers.zip
 #     http://www2.ati.com/drivers/linux/amd-driver-installer-${_amdver}-x86.x86_64.zip
-    https://www2.ati.com/drivers/firepro/15.302.2001-linux-retail_end_user.zip
+    http://www2.ati.com/drivers/firepro/15.302.2001-linux-retail_end_user.zip
     lib32-catalyst.sh
     catalyst.sh
     atieventsd.sh
