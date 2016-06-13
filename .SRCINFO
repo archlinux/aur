@@ -1,0 +1,13 @@
+pkgbase = maltego-casefile
+	pkgdesc = A tool from Paterva to allow data analysts to examine links between data
+	pkgver = 2.1.1.8751
+	pkgrel = 1
+	url = http://paterva.com/web7/buy/maltego-clients/casefile.php
+	arch = any
+	license = Commercial
+	depends = jre8-openjdk
+	source = http://paterva.com/cf211/MaltegoCaseFile.v2.1.1.8751.deb
+	md5sums = ff46740d7574f368d5d83b81f8fa8edc
+
+pkgname = maltego-casefile
+
