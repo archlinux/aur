@@ -2,8 +2,8 @@
 
 pkgname=hfsutils
 pkgver=3.2.6
-pkgrel=6
-pkgdesc="A comprehensive software to permit manipulation of HFS volume"
+pkgrel=7
+pkgdesc="A comprehensive software to permit manipulation of HFS volumes"
 arch=("i686" "x86_64")
 url="http://www.mars.org/home/rob/proj/hfs/"
 license=("GPL")
@@ -17,17 +17,19 @@ source=("ftp://ftp.mars.org/pub/hfs/$pkgname-$pkgver.tar.gz"
         "hfsutils-3.2.6-fix-tcl-8.6.patch")
 
 prepare() {
+
+  # Upstream bug, need patch, not build with default cppflags
   unset CPPFLAGS
 
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  # Fixed Makefile @INSTALL@ feature
+  # Fixed Makefile @INSTALL@ path
   patch -Np0 -i "${srcdir}/Makefile-install.patch"
 
   # Fix the errno issue on glibc-2.3.2+
   patch -Np1 -i "${srcdir}/hfsutils-3.2.6-errno.patch"
 
-  # Add support for files larger than 2 GB, this is the 21 century
+  # Add support for files larger than 2 GB, like any dvd image
   patch -Np1 -i "${srcdir}/largerthan2gb.patch"
 
   # Fixed compilation with tcl-8.6+
@@ -36,28 +38,48 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr \
-  --mandir=/usr/share/man \
-  --without-tcl --without-tk
-  make
+  ./configure --prefix=${pkgdir}/usr \
+  	--sbindir=/usr/bin \
+  	--bindir=/usr/bin \
+	--mandir=/usr/share/man \
+	--without-tcl --without-tk
+
+  make prefix="${pkgdir}/usr" \
+  	MANDEST="${pkgdir}/usr/share/man" \
+  	DESTDIR="${pkgdir}/usr" \
+  	BINDEST=${pkgdir}/usr/bin \
+	SBINDEST=${pkgdir}/usr/bin
+  # change the without to with to add tcl and/or tk support
 
   cd "${srcdir}/${pkgname}-${pkgver}/hfsck"
-  make
+  make prefix="${pkgdir}/usr" \
+  	MANDEST="${pkgdir}/usr/share/man" \
+  	DESTDIR="${pkgdir}/usr" \
+  	BINDEST=${pkgdir}/usr/bin \
+	SBINDEST=${pkgdir}/usr/bin
 }
 
 #check() {
-#  cd "$srcdir/$pkgname-$pkgver"
+#  cd "${srcdir}/${pkgname}-${pkgver}"
 #  make -k check
 #}
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   msg "Installing to ${pkgdir}"
-  make prefix="${pkgdir}/usr" MANDEST="${pkgdir}/usr/share/man" install
+  
+  make prefix="${pkgdir}/usr" \
+  	MANDEST="${pkgdir}/usr/share/man" \
+  	DESTDIR="${pkgdir}/usr" \
+  	BINDEST=${pkgdir}/usr/bin \
+  	SBINDEST=${pkgdir}/usr/bin \
+  	install
 
   # Faulty makefile, install hfsck
   install -m 755 "${srcdir}/${pkgname}-${pkgver}/hfsck/hfsck" \
   	"${pkgdir}/usr/bin/hfsck"
+  cd "${pkgdir}/usr/bin"
+  ln -f "hfsck" "fsck.hfs"
 
 }
 
