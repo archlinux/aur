@@ -3,12 +3,14 @@
 
 pkgname=guayadeque-git
 _pkgname=guayadeque
-pkgver=0.4.1.r1938.35561f6
+pkgver=0.4.1.r1978.6028e45
 pkgrel=1
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
 url='http://guayadeque.org/'
 license=('GPL3')
+provides=(${pkgname%-*})
+conflicts=(${pkgname%-*})
 depends=('curl' 'desktop-file-utils' 'libgpod' 'taglib' 'wxgtk' 'gdk-pixbuf2' 'wxsqlite3')
 makedepends=('cmake')
 optdepends=('gstreamer0.10-good-plugins: Support for additional file formats'

@@ -1,4 +1,5 @@
 all:
+	makepkg --printsrcinfo > .SRCINFO
 	makepkg -f
 
 clean:

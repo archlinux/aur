@@ -1,6 +1,6 @@
 pkgbase = guayadeque-git
 	pkgdesc = Lightweight music player
-	pkgver = 0.4.1.r1938.35561f6
+	pkgver = 0.4.1.r1978.6028e45
 	pkgrel = 1
 	url = http://guayadeque.org/
 	arch = i686
@@ -18,6 +18,8 @@ pkgbase = guayadeque-git
 	optdepends = gstreamer0.10-bad-plugins: Support for additional file formats
 	optdepends = gstreamer0.10-ugly-plugins: Support for additional file formats
 	optdepends = gvfs: Support for external devices
+	provides = guayadeque
+	conflicts = guayadeque
 	source = git+https://github.com/anonbeat/guayadeque.git
 	source = 0001-use-cmake-lib-search-procedure-for-wxsqlite3-from-mu.patch
 	sha512sums = SKIP
