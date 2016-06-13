@@ -1,7 +1,7 @@
 pkgbase = froggix
 	pkgdesc = A clone of the classic arcade game Frogger
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sourceforge.net/projects/froggix
 	arch = any
 	license = GPL3
