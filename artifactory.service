@@ -6,9 +6,9 @@ After=network.target
 Type=forking
 ExecStart=/opt/artifactory/bin/artifactory.sh start
 ExecStop=/opt/artifactory/bin/artifactory.sh stop
-PIDFile=/run/artifactory/artifactory.pid
+PIDFile=/opt/artifactory/run/artifactory.pid
 Restart=no
-#TimeoutSec=30
+TimeoutSec=30
 RemainAfterExit=yes
 User=artifactory
 

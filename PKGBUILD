@@ -13,8 +13,8 @@ source=("jfrog-artifactory-oss-${pkgver}.zip::https://bintray.com/jfrog/artifact
         'artifactory.service'
         'artifactory.default')
 sha256sums=('2de13962ad1e6f4f1537e1fd86b6e70da6afae67a2449bf0cb369d3a84267647'
-            'a085978124b04a3576f6c670e3dee65b836298cb8bcb756dac6dd03f97954483'
-            'fa0bb817062ab6aac4c2a5f1e9f93887823a21e3c41e24bc77e9a521355eefc5')
+            '8ba1287f4d062f57a5cf9e5426d4affcfcc00ca2680cd603f41c603957a42c20'
+            '2b0ec5f2940498bfe72ecae5b66cd5ea5743df71ac0bf766fc7363bebf158883')
 options=('!strip')
 PKGEXT='.pkg.tar'
 
@@ -33,5 +33,5 @@ package() {
   cp -r "$pkgname-$pkgver"/* "$pkgdir$artDist"
   install -Dm755 "$srcdir/artifactory.default" "$pkgdir$artDist/bin"
   install -Dm755 "$srcdir/artifactory.service" "$pkgdir/usr/lib/systemd/system/artifactory.service"
-  install -d "$pkgdir/run/artifactory"
+  install -d "$pkgdir/opt/artifactory/run"
 }

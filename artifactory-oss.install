@@ -2,8 +2,7 @@ post_install() {
   echo "Creating user and group artifactory..."
   getent group artifactory &>/dev/null || groupadd -r artifactory >/dev/null
   getent passwd artifactory &>/dev/null || useradd -r -g artifactory -d /opt/artifactory artifactory >/dev/null
-  chown -R artifactory /opt/artifactory/etc /opt/artifactory/tomcat/webapps /opt/artifactory/logs
-  chown artifactory /opt/artifactory /opt/artifactory/tomcat /run/artifactory
+  chown -R artifactory /opt/artifactory
 
   echo
   echo 'For the Artifactory user guide and installation instructions please visit:'
@@ -13,6 +12,11 @@ post_install() {
   echo 'The default administrator user is:'
   echo '  username: admin'
   echo '  password: password'
+  echo
+  echo 'The default port is 8081'
+  echo
+  echo 'Please make sure to create softlinks from /opt/artifactory/{backup,data,support}'
+  echo 'to appropriate places, since by default Artifactory will write its data to /opt/artifactory'
   echo
 }
 
@@ -25,6 +29,11 @@ post_upgrade() {
   if [ -d /opt/artifactory/tomcat/webapps/artifactory ]; then
     echo "Removing Artifactory's exploded WAR directory"
     rm -rf /opt/artifactory/tomcat/webapps/artifactory
+  fi
+
+  if [ -f /opt/artifactory/run/artifactory.pid ]; then
+    echo "Removing Artifactory's PID file"
+    rm -f /opt/artifactory/run/artifactory.pid
   fi
 }
 
