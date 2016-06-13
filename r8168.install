@@ -1,5 +1,5 @@
 rebuild_module_dependencies() {
-	EXTRAMODULES='extramodules-4.5-pf'
+	EXTRAMODULES='extramodules-4.6-pf'
 	depmod $(cat /usr/lib/modules/$EXTRAMODULES/version)
 }
 
