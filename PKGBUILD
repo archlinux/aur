@@ -4,7 +4,7 @@
 # Contributor: damir <damir@archlinux.org>
 
 pkgname=x11vnc-git
-pkgver=0.9.14.r416.g6802261
+pkgver=0.9.14.r422.g31453a9
 pkgrel=1
 pkgdesc='VNC server for real X displays'
 url="https://LibVNC.github.io"
@@ -13,7 +13,7 @@ license=('GPL')
 options=('!emptydirs')
 provides=('x11vnc')
 conflicts=('x11vnc')
-depends=('cairo' 'libxcursor' 'libxcomposite' 'libvncserver' 'libxtst' 'libxinerama' 'libxdamage' 'libxrandr' 'avahi')
+depends=('cairo' 'libxcursor' 'libxcomposite' 'libvncserver-git' 'libxtst' 'libxinerama' 'libxdamage' 'libxrandr' 'avahi')
 makedepends=(autoconf-archive)
 optdepends=('tk: GUI support'
 	    'net-tools: -auth guess'
