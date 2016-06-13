@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-test-useallmodules'
-pkgver='0.14'
+pkgver='0.17'
 pkgrel='1'
 pkgdesc="do use_ok() for all the MANIFESTed modules"
 arch=('any')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/Test-UseAllModules'
-source=('http://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/Test-UseAllModules-0.14.tar.gz')
-md5sums=('6b108cc6ca4affe59cbd927e4c47162b')
-sha512sums=('41e8b9fb6a0926c504d372fc8c7965956af2da5a6affea9b27b06e102d661c8d64c3eaeb4dd5bbc384767dc6dfc54cb47c31badd7fd69b830dc7eb83420636b6')
-_distdir="Test-UseAllModules-0.14"
+url='https://metacpan.org/release/Test-UseAllModules'
+source=('http://search.cpan.org/CPAN/authors/id/I/IS/ISHIGAKI/Test-UseAllModules-0.17.tar.gz')
+md5sums=('aa7168526e2b3ec54fc705c6e260fbf6')
+sha512sums=('6aa768dded4b3ebe604bc616a8a1b09845c0dbd91fcdba2b10e787e5ba3604cb18d9dfcfb9f5e4fef0d3d5d44c8722d99394843e4a14e1bee4dbb1463ef4bcd8')
+_distdir="Test-UseAllModules-0.17"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
