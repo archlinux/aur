@@ -4,10 +4,10 @@
 
 pkgname=eclipse-i18n-es
 _pkgversion="4.5.0"
-_release="R0.13.0"
+_release="R0.13.1"
 _namerel="mars"
-_pkgbuild="v20150804081228"
-pkgver=${_pkgversion}.${_pkgbuild}
+_pkgbuild="v20151128060001"
+pkgver=${_pkgversion}.${_release}.${_pkgbuild}
 pkgrel=1
 pkgdesc="(Español) Spanish language pack for eclipse IDE"
 url="http://babel.eclipse.org/"
@@ -42,20 +42,19 @@ package() {
   cp -Rv "${srcdir}/org".* "${pkgdir}/usr/share/eclipse/plugins/"
 
 }
-
 # makepkg -g default to md5 so I do, blame Allan
-md5sums=('37c05158b202ac0c7f2cfee6ae66236b'
-         '242ed85e022b0d9180ec99ca621449d3'
-         '7751bf2afbb6e3d77baae89eee7371af'
-         'bb3e071a910a789acc22e7ab3def6ef3'
-         'b6f3893b6244ef4900e0309fbfeaa5e0'
-         'f7d680926f61978db34ea833476551c9'
-         '159f26934c3e4c820d9da46902d97d35'
-         '07096acf3c8eb5f53b3a8ea8ac284867'
-         '3f37cc936fd2818fcc2246eb94029264'
-         'f301ddd8f5580f3e5298d82884b326db'
-         'aa6f2c18aeec20779cefcb2086e412da'
-         '8081cd425d6c3c4857bfec0d95070219'
-         '7a6a532ab54afce7d017d5893b5e416b'
-         'f1d66d6e7daf3f6f15cc8cf4615deb0f'
-         '7c047fde40e2db6e2ad34c77c706d87e')
+md5sums=('5ee4fe03a796a5922e5dcc3c981a0029'
+         '76aa8f0d6695289b5b7d607802d01be0'
+         'ada8e0e9654fc38239198f2c22c059a4'
+         'f10c46a9ddec9fce9ed3b3c2fe68c255'
+         '7a9a41437fa57faa61f246589ca44462'
+         '0ca913ec467d70ebceda4757fe193a67'
+         'fdc51005c03d1964ffcedbb342ba70f0'
+         '0991a8df56e0f74b3e564422bc18dee1'
+         '571ebd81542773cd606ac791613e13e6'
+         'bc873be30d1a5db9c14fdffbd565b3d0'
+         '23f3c9c5a38aef247a004f4b624515fc'
+         '27be91d592793840f69f1cadeeb656b4'
+         '8e02624f50f3863779418918f27bf44c'
+         'e7b2edb3e3f0622a53c7c14ae42f6d4b'
+         'a8295691442b207b00309de46dc5e33b')
