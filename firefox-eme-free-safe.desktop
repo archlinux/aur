@@ -1,0 +1,13 @@
+[Desktop Entry]
+Name=Firefox EME free - Safe Mode
+GenericName=Web Browser - Safe Mode
+Icon=firefox-eme-free
+Type=Application
+Categories=Application;Network;
+MimeType=text/html
+Encoding=UTF-8
+Exec=/opt/firefox-eme-free/firefox -safe-mode %u
+Terminal=false
+MultipleArgs=false
+StartupNotify=false
+StartupWMClass=Firefox
