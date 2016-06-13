@@ -1,0 +1,13 @@
+pkgbase = mksend
+	pkgdesc = Tool to redirect, modify and send frames from a traffic active link.
+	pkgver = 0.5.6
+	pkgrel = 3
+	url = https://bitbucket.org/radare/mksend
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = mercurial
+	depends = libpcap
+
+pkgname = mksend
+
