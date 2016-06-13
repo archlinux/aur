@@ -4,10 +4,10 @@
 
 pkgname=gnome-shell-extension-maximus-two-git
 pkgver=5
-pkgrel=2
+pkgrel=3
 pkgdesc="Removes the title bar on maximised windows"
 arch=(any)
-url='https://github.com/dffischer/GnomeExtensionMaximusTwo'
+url='https://github.com/danielkza/GnomeExtensionMaximusTwo'
 license=(GPLv3)
 depends=('xorg-xprop' 'wmctrl')
 install=notice.install
