@@ -1,7 +1,7 @@
 pkgbase = manpages-es
 	pkgdesc = Ubuntu manpages translated to spanish
 	pkgver = 1.55
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/ubuntu/+source/manpages-es
 	arch = any
 	license = custom

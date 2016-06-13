@@ -1,7 +1,7 @@
 #PKGBUILD mantainer: JKA Network <contacto@jkanetwork.com>
 pkgname=manpages-es
 pkgver=1.55
-pkgrel=1
+pkgrel=2
 pkgdesc="Ubuntu manpages translated to spanish"
 arch=('any')
 url="https://launchpad.net/ubuntu/+source/manpages-es"
@@ -17,6 +17,6 @@ build(){
 }
 package(){
   cd "$srcdir/$pkgname-$pkgver.orig"
-  make prefix=$pkgdir  
+  make install prefix=$pkgdir
 }
 
