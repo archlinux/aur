@@ -8,14 +8,16 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
 
-pkgname='gcc48'
+set -u
 _pkgver='4.8'
+pkgname="gcc${_pkgver//\./}"
 pkgver="${_pkgver}.5"
 pkgrel='1'
 pkgdesc="The GNU Compiler Collection - C and C++ frontends (${_pkgver}.x)"
 arch=('i686' 'x86_64')
-url="http://gcc.gnu.org"
+url='http://gcc.gnu.org'
 license=('GPL' 'LGPL' 'FDL' 'custom')
+depends=('zlib')
 makedepends=('binutils>=2.24' 'libmpc' 'doxygen')
 makedepends+=('cloog')
 checkdepends=('dejagnu' 'inetutils')
@@ -33,6 +35,7 @@ PKGEXT='.pkg.tar.gz'
 #_libdir="usr/lib/gcc/${CHOST}/${pkgver}"
 
 prepare() {
+  set -u
   cd "${_basedir}"
 
   # Do not run fixincludes
@@ -55,11 +58,6 @@ prepare() {
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=56780#c6
   sed -i -e 's#@target_header_dir@#libiberty#' 'libiberty/Makefile.in'
 
-  mkdir "${srcdir}/gcc-build"
-
-  # build
-  cd "${srcdir}/gcc-build"
-
   # Doesn't like FORTIFY_SOURCE
   export CPPFLAGS="${CPPFLAGS//-D_FORTIFY_SOURCE=?/}"
 
@@ -72,8 +70,12 @@ prepare() {
   export CFLAGS="${CFLAGS/-pipe/}"
   export CXXFLAGS="${CXXFLAGS/-pipe/}"
 
+  rm -rf 'gcc-build'
+  mkdir 'gcc-build'
+  cd 'gcc-build'
+
   # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
-  "${srcdir}/${_basedir}/configure" \
+  ../configure \
     --build="${CHOST}" \
     --disable-libstdcxx-pch \
     --disable-libunwind-exceptions \
@@ -104,21 +106,25 @@ prepare() {
     --with-system-zlib \
     --prefix='/usr'
 #    CXX='g++-4.9' CC='gcc-4.9'
+  set +u
 }
 
 build() {
-  cd "${srcdir}/gcc-build"
+  set -u
+  cd "${_basedir}/gcc-build"
 
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  LD_PRELOAD='/usr/lib/libstdc++.so' \
+  # LD_PRELOAD='/usr/lib/libstdc++.so' \\
   make -s -j "${_nproc}"
 
   # make documentation
   make -s -j1 -C "${CHOST}/libstdc++-v3/doc" 'doc-man-doxygen'
+  set +u
 }
 
 _fn_check() {
-  cd "${srcdir}/gcc-build"
+  set -u
+  cd "${_basedir}/gcc-build"
 
   # increase stack size to prevent test failures
   # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=31827
@@ -127,11 +133,12 @@ _fn_check() {
   # do not abort on error as some are "expected"
   make -k check || :
   "${srcdir}/${_basedir}/contrib/test_summary"
+  set +u
 }
 
-package()
-{
-  cd "${srcdir}/gcc-build"
+package() {
+  set -u
+  cd "${_basedir}/gcc-build"
 
   make -s -j1 DESTDIR="${pkgdir}" install
 
@@ -140,9 +147,11 @@ package()
   find "${pkgdir}/" -name '*iberty*' | xargs rm
 
   # Move potentially conflicting stuff to version specific subdirectory
-  mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/"
+  mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/" || : # Not needed for 32 bit compile
 
   # Install Runtime Library Exception
-  install -Dm644 "${srcdir}/gcc-${pkgver}/COPYING.RUNTIME" \
-    "${pkgdir}/usr/share/licenses/${pkgname}/RUNTIME.LIBRARY.EXCEPTION"
+  install -Dpm644 '../COPYING.RUNTIME' \
+    "${pkgdir}/usr/share/licenses/${pkgname}/RUNTIME.LIBRARY.EXCEPTION" || :
+  set +u
 }
+set +u
