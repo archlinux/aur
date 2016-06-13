@@ -5,7 +5,7 @@ pkgrel=1
 url="https://github.com/typesafehub/zinc"
 arch=('any')
 license=('Apache')
-depends=('java-environment => 8')
+depends=('java-environment')
 provides=('zinc')
 conflicts=('zinc-git')
 source=(
