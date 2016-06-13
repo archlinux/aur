@@ -20,7 +20,7 @@
 # Contributor: solar (authatieventsd' patch s/-1/255)
 # Contributor: kolasa (part of 4.3 kernel patches)
 # Contributor: gentoo (part of 4.3 kernel patches)
-# Contributor: 	Philip Müller @ Manjaro (4.4 kernel patch)
+# Contributor: 	Philip Muller @ Manjaro (4.4 kernel patch)
 # Contributor: 	aslmaswd (acpi main script)
 
 # PKGEXT='.pkg.tar.gz' # imho time to pack this pkg into tar.xz is too long, unfortunatelly yaourt got problems when ext is different from .pkg.tar.xz - V
