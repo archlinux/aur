@@ -1,0 +1,13 @@
+pkgbase = goofile
+	pkgdesc = A tool to search for a specific file type in a given domain
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://code.google.com/archive/p/goofile/
+	arch = any
+	license = MIT
+	depends = python2
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/goofile/goofilev1.5.zip
+	md5sums = a32a5884501d289e633fe9103d6046da
+
+pkgname = goofile
+
