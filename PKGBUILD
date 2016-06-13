@@ -1,7 +1,7 @@
 # Maintainer: Stefan Tatschner <rumpelsepp@sevenbyte.org>
 
 pkgname='cpy'
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A replacement for [c]at with automatic syntax highlighting"
 arch=('any')
