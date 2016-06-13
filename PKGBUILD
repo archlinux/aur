@@ -3,7 +3,7 @@
 # Contributor: zhuqin <zhuqin83@gmail.com>
 
 pkgname=terminator-bzr
-pkgver=0.98.r1725
+pkgver=0.98.r1743
 pkgrel=1
 pkgdesc="A tool for arranging multiple terminals in a single window"
 arch=('i686' 'x86_64')
