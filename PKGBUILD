@@ -3,12 +3,12 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=firefox-extension-hide-tab-bar-with-one-tab
-pkgver=1.5.1.signed
-pkgrel=3
+pkgver=1.5.1.signed.1.signed
+pkgrel=1
 pkgdesc='Hide the tab bar if there is only one tab.'
 url='http://forums.mozillazine.org/viewtopic.php?f=48&t=2141579'
 license=('MPLv2')
-md5sums=('0177f69d998d66a9f181b5744bee21a1')
+md5sums=('70a2167b49c79ff8785fa26c391a530a')
 
 [ "$arch" ] || arch=('any')
 
