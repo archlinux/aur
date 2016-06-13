@@ -1,8 +1,13 @@
 # Maintainer: Piotr Rogoza <piotr.r.public at gmail dot com>
 
+pkgbase=sqlitestudio
 pkgname=sqlitestudio
+true && pkgname=(
+sqlitestudio
+sqlitestudio-plugins
+)
 _pkgname=SQLiteStudio
-pkgver=3.0.7
+pkgver=3.1.0
 _pkgver=3
 pkgrel=1
 pkgdesc='Database manager for SQLite'
@@ -14,7 +19,8 @@ termcap
 sqlite2
 tcl
 qt5-script
-libxkbcommon-x11
+#desktop-file-utils
+#gtk-update-icon-cache
 )
 makedepends=(
 chrpath
@@ -32,7 +38,7 @@ db.diff
 cli_config.diff
 dbandroid.diff
 )
-sha256sums=('b5ad7ac22a88eacb9404637ca6257934d0b1b59e16a182099bbdb158a7af55aa'
+sha256sums=('e36690e71825a21d4274de730932a05a029b01dad28728b2c45f9fce0cfe9894'
             'c5a26a9b9003b04274887a0e0febda13eea49bb46c618eaad0b5b5c88b1cc1d2'
             'f63b112d42bc670ab95a264ee1d82acdefad34733c18554b17801fa5c2f56bae'
             '10f8ed73488b30efbcce563fb8dc6bc8b11a6511f42e5e0f8c7f9cab360dd855'
@@ -42,9 +48,9 @@ sha256sums=('b5ad7ac22a88eacb9404637ca6257934d0b1b59e16a182099bbdb158a7af55aa'
 prepare(){
   cd "$srcdir"
   patch -p1 -i tclconfig.diff
-  patch -p1 -i utils.diff
-  patch -p1 -i db.diff
-  patch -p1 -i cli_config.diff
+#   patch -p1 -i utils.diff
+#   patch -p1 -i db.diff
+#   patch -p1 -i cli_config.diff
   patch -p1 -i dbandroid.diff
 
 }
@@ -52,21 +58,23 @@ build(){
   cd "$srcdir"
   install -dm755 "$srcdir"/output/build/Plugins
 
-  msg2 "Making sqlitestudio3"
+  msg2 "Making sqlitestudio3-main"
   cd "$srcdir"/output/build
   qmake ../../${_pkgname}${_pkgver}
   make
 
-  msg2 "Making plugins for sqlitestudio3"
+  msg2 "Making sqlitestudio3-plugins"
   cd "$srcdir"/output/build/Plugins
-  qmake ../../../Plugins
+  qmake ../../../Plugins "INCLUDEPATH += /usr/include/c++/6.1.1" "INCLUDEPATH += $srcdir/SQLiteStudio3/coreSQLiteStudio"
+  (
+    cd $srcdir/Plugins/DbSqliteCipher
+    ln -sf $srcdir/SQLiteStudio3/coreSQLiteStudio/plugins
+    ln -sf $srcdir/SQLiteStudio3/coreSQLiteStudio/db
+  )
   make
 }
-package(){
+package_sqlitestudio (){
   cd "$srcdir"/output/build
-  make INSTALL_ROOT="$pkgdir" install
-
-  cd $srcdir/output/build/Plugins
   make INSTALL_ROOT="$pkgdir" install
 
   install -Dm644 $srcdir/sqlitestudio.desktop \
@@ -77,4 +85,11 @@ package(){
   chrpath -d "$pkgdir"/usr/bin/sqlitestudiocli
 
   install -Dm755 "$srcdir"/SQLiteStudio3/guiSQLiteStudio/img/sqlitestudio.svg "$pkgdir"/usr/share/pixmaps/sqlitestudio.svg
+}
+package_sqlitestudio-plugins () {
+  true && pkgdesc='Official plugins for sqlitestudio'
+  true && depends=(sqlitestudio)
+
+  cd $srcdir/output/build/Plugins
+  make INSTALL_ROOT="$pkgdir" install
 }
