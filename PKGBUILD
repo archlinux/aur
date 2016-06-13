@@ -12,7 +12,7 @@ md5sums=(a32a5884501d289e633fe9103d6046da)
 
 prepare() {
         export v=v
-	cd "$pkgname"$v$pkgver"
+	cd "$pkgname"$v"$pkgver"
         sed -i '1c\#!/usr/bin/env python2' "$pkgname".py
 }
 
