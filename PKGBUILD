@@ -1,15 +1,14 @@
 # Maintainer: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=obfsproxy-git
-pkgver=20120210
+pkgver=20160613
 pkgrel=5
 pkgdesc="Tor project obfuscated proxy"
 arch=('any')
 url="https://www.torproject.org/projects/obfsproxy-instructions.html.en"
 license=('BSD')
 depends=('python2-crypto' 'python2-pyptlib' 'python2-twisted'
-         'python2-yaml' 'python2-setuptools')
-optdepends=('python2-gmpy2: speed up some cryptographic operations')
+         'python2-yaml' 'python2-setuptools' 'python2-gmpy2')
 conflicts=('pyobfsproxy' 'obfsproxy')
 makedepends=('git')
 source=("git+https://git.torproject.org/pluggable-transports/obfsproxy.git")
