@@ -4,7 +4,7 @@
 
 pkgname=waf
 pkgver=1.8.20
-pkgrel=1
+pkgrel=2
 pkgdesc='General-purpose build system modelled after Scons'
 url='http://waf.io/'
 arch=('any')
@@ -38,12 +38,15 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 waf "$pkgdir/usr/bin/waf"
 
-  local waflib="$pkgdir/usr/lib/waf3-$pkgver-$(grep -aPom1 '(?<=^REVISION=")[[:xdigit:]]*(?="$)' "$pkgdir/usr/bin/waf")"
-  install -dm755 "$waflib"
-  unzip -d "$waflib" zip/waflib.zip
+  local revision="waf3-$pkgver-$(grep -aPom1 '(?<=^REVISION=")[[:xdigit:]]*(?="$)' "$pkgdir/usr/bin/waf")"
+  local libdir="$pkgdir/usr/lib"
+  local wafdir="$libdir/waf"
+  install -dm755 "$libdir"/{waf,"$revision"}
+  ln -s ../waf "$libdir/$revision/waflib"
+  bsdtar -xf zip/waflib.zip -s '/^waflib.//' -C "$wafdir"
 
   # compile all python sources for once to be used after installation.
-  python -OOm compileall "$waflib"
+  python -OOm compileall "$wafdir"
 }
 
 # vim:set ts=2 sw=2 et:

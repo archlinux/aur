@@ -1,7 +1,7 @@
 pkgbase = waf
 	pkgdesc = General-purpose build system modelled after Scons
 	pkgver = 1.8.20
-	pkgrel = 1
+	pkgrel = 2
 	url = http://waf.io/
 	arch = any
 	license = BSD
