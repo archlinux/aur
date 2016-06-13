@@ -12,14 +12,14 @@ md5sums=(a32a5884501d289e633fe9103d6046da)
 
 prepare() {
         export v=v
-	cd $pkgname$v$pkgver
-        sed -i '1c\#!/usr/bin/env python2' "$pkgname.py"
+	cd "$pkgname"$v$pkgver"
+        sed -i '1c\#!/usr/bin/env python2' "$pkgname".py
 }
 
 package() {
-	install -dm755 "$pkgdir/usr/share/$pkgname"
-        install -dm755 "$pkgdir/usr/bin"
-	cp "$srcdir/$pkgname$v$pkgver/$pkgname.py" "$pkgdir/usr/share/$pkgname/"
-        chmod +x "$pkgdir/usr/share/$pkgname/$pkgname.py"
-        ln -s "/usr/share/$pkgname/$pkgname.py" "$pkgdir/usr/bin/$pkgname"
+	install -dm755 "$pkgdir"/usr/share/$pkgname
+        install -dm755 "$pkgdir"/usr/bin
+	cp "$srcdir"/"$pkgname$v$pkgver"/"$pkgname".py "$pkgdir"/usr/share/"$pkgname"/
+        chmod +x "$pkgdir"/usr/share/"$pkgname"/"$pkgname".py
+        ln -s /usr/share/$pkgname/"$pkgname".py "$pkgdir"/usr/bin/"$pkgname"
 }
