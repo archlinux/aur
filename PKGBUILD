@@ -3,7 +3,7 @@
 _pkgname=ocenaudio
 pkgname="$_pkgname-bin"
 pkgver=3.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Cross-platform, easy to use, fast and functional audio editor"
 arch=('i686' 'x86_64')
 url="http://www.ocenaudio.com.br/"
@@ -21,7 +21,7 @@ source_i686=("http://www.ocenaudio.com.br/downloads/ocenaudio_debian32.deb")
 source_x86_64=("http://www.ocenaudio.com.br/downloads/ocenaudio_debian64.deb")
 
 build() {
-  echo "ocenaudio 3.1"
+  echo "ocenaudio 3.1.1"
 }
 
 package() {
