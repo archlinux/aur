@@ -19,7 +19,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'linux.preset'
         'change-default-console-loglevel.patch'
         '0001-linux-4.6-rtlwifi-fix-atomic.patch'
-        'override_for_missing_acs_capabilities.patch'
+        '0001-Updated-ACS-override-patch-for-4.6.2.patch'
         '0001-Updated-i915-vga-arbiter-patch-for-4.6.2.patch')
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
@@ -30,7 +30,7 @@ sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98'
-            '975f79348119bfba8dd972a9fbfe6b38484c45bfd228f2f6d48a0c02426ba149'
+            '7568f319f0cffbf27e79a781e7a21cfe62771bd14ea09d671919368c4f3fcd2f'
             '6dc172c2ef277223aa59806a2edda7efc4f94d2bf68b6bf2b1d0413e84b9e260')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
@@ -69,7 +69,7 @@ prepare() {
 
   # Overrides for missing acs capabilities
   echo '==> Applying ACS override patch'
-  patch -p1 -i "${srcdir}/override_for_missing_acs_capabilities.patch"
+  patch -p1 -i "${srcdir}/0001-Updated-ACS-override-patch-for-4.6.2.patch"
 
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
