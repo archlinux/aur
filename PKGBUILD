@@ -1,20 +1,20 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-test-sharedfork'
-pkgver='0.34'
+pkgver='0.35'
 pkgrel='1'
 pkgdesc="fork test"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-test-requires' 'perl')
+depends=('perl-test-requires' 'perl>=5.008_001')
 makedepends=()
 url='https://metacpan.org/release/Test-SharedFork'
-source=('http://search.cpan.org/CPAN/authors/id/E/EX/EXODIST/Test-SharedFork-0.34.tar.gz')
-md5sums=('40b7dd32228f7e6c2e31c41fb863df16')
-sha512sums=('b88b5e5129e74e20886707408ecf913a8871c30f132d1430a356f747cee8895fac3cdec708ef954326d3f5cde8742f652fd4cd3863cc074480dfc2c9488f4b0a')
-_distdir="Test-SharedFork-0.34"
+source=('http://search.cpan.org/CPAN/authors/id/E/EX/EXODIST/Test-SharedFork-0.35.tar.gz')
+md5sums=('3101aea2e3ae41d48fd8874414430cef')
+sha512sums=('e5948dfb34cfaf35a2fb2783c726f1cea2ae2f4bbdc4cbb912f83c877422ceabb3e0323c8c669b3c3a08e6d2a12106309528f0f674657001e6aeb3cb3c1dfd9f')
+_distdir="Test-SharedFork-0.35"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
