@@ -11,7 +11,8 @@ depends=('postgresql' 'postgresql-client' 'python2'
      'python2-six' 'iso-codes' 'shared-mime-info' 'python2-beautifulsoup3'
      'python2-mechanize' 'python2-mock' 'python2-requests' 'python2-werkzeug'
      'python2-gevent' 'python2-coverage' 'libcgroup' 'texlive-core' 'asymptote'
-     'ghostscript' 'python2-yaml' 'patool-py2' 'jdk8-openjdk' 'zip'
+     'ghostscript' 'python2-yaml' 'patool-py2' 'jdk8-openjdk' 'zip' 'texlive-fontsextra'
+     'texlive-latexextra' 'texlive-pstricks'
 )
 optdepends=(
   'fpc: support for Pascal submissions'
@@ -39,10 +40,10 @@ pkgver() {
 
 package() {
   cd cms
-  
+
   git config submodule.isolate.url "$srcdir/isolate"
   git submodule update
-  
+
   mkdir -p "$pkgdir/"lib/python2.7/site-packages/
   export PYTHONPATH="$pkgdir"/lib/python2.7/site-packages/
 
