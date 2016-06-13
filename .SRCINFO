@@ -1,0 +1,20 @@
+pkgbase = php-ssh-unstable
+	pkgdesc = An SSH2 extension for PHP
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://pecl.php.net/package/ssh2
+	install = php-ssh.install
+	arch = i686
+	arch = x86_64
+	license = PHP
+	makedepends = php>=7.0.0
+	makedepends = git
+	depends = php>=7.0.0
+	depends = openssh
+	provides = php-ssh
+	conflicts = php-ssh
+	source = php-ssh-unstable::git+https://git.php.net/repository/pecl/networking/ssh2.git
+	sha512sums = SKIP
+
+pkgname = php-ssh-unstable
+
