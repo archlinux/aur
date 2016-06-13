@@ -1,7 +1,7 @@
 # Maintainer: Yuexuan Gu <lastavengers@outlook.com>
 
 pkgname=srain-git
-pkgver=0.213.bbe1855
+pkgver=0.214.8a54b29
 pkgrel=1
 pkgdesc="it does not look like a irc client"
 arch=('i686' 'x86_64')
