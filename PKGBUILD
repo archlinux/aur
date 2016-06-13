@@ -36,7 +36,7 @@ package() {
     local source="$srcdir/$pkgname"
     local target="$pkgdir"
     install -D -m755 "$source/bin/acserver"           "$target/usr/bin/acserver"
-    install -d -m644                                  "$target/var/aci/store"
+    install -d -m755                                  "$target/var/aci/store"
     install -D -m644 "$source/templates/index.html"   "$target/var/aci/templates/index.html"
     install -D -m644 "$source/acserver.service"       "$target/usr/lib/systemd/system/acserver.service"
 }
