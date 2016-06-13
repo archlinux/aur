@@ -8,7 +8,7 @@
 # https://github.com/techwiz24/aur-ghetto-skype
 
 pkgname=ghetto-skype
-pkgver=1.2.3
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Web Skype + Tray Icon + Notifications'
 arch=('x86_64')
@@ -18,7 +18,7 @@ depends=('libappindicator-gtk2' 'electron')
 makedepends=('npm')
 install=ghetto-skype.install
 source=("https://github.com/stanfieldr/ghetto-skype/archive/v${pkgver}.tar.gz")
-sha256sums=('fab4ad56875fe663ae7986e416c901b1dfecc94486f8e32904fc35f805025bdb')
+sha256sums=('806053e78d1f4e73a9815d0e3c4ec1615c3e0e84d796ccee2f333f977fb86a70')
 
 prepare() {
   cd "ghetto-skype-$pkgver"
