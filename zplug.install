@@ -1,0 +1,4 @@
+post_install() {
+    echo "To use zplug, include the following line in your .zshrc:
+    source /usr/share/zsh/scripts/zplug/zplug.zsh "
+}
