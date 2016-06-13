@@ -1,0 +1,14 @@
+pkgbase = manpages-es-extra
+	pkgdesc = manpages extras del sistema traducidas al castellano
+	pkgver = 0.8a
+	pkgrel = 1
+	url = https://launchpad.net/ubuntu/+source/manpages-es-extra
+	install = manpages-es-extra.install
+	arch = any
+	license = custom
+	options = !emptydirs
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/manpages-es-extra_0.8a.orig.tar.gz
+	sha256sums = 5d3831f2524a388790c267f2fb18278f5d90c416e5323f66e4c67e828a4b0072
+
+pkgname = manpages-es-extra
+

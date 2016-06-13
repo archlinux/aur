@@ -1,0 +1,6 @@
+post_install() {
+    echo ""
+    echo "Recomendamos instalar junto a este paquete manpages-es"
+    echo ""
+}
+
