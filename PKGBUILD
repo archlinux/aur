@@ -33,7 +33,7 @@ check() {
 
 # 4.
 package() {
-    local source="$srcdir/pkgname"
+    local source="$srcdir/$pkgname"
     local target="$pkgdir"
     install -D -m755 "$source/bin/acserver"           "$target/usr/bin/acserver"
     install -d -m644                                  "$target/var/aci/store"
