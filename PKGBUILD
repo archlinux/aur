@@ -10,7 +10,7 @@
 pkgbase=networkmanager-ifupdown
 pkgname=(networkmanager-ifupdown libnm-glib-ifupdown)
 pkgver=0.9.8.10
-pkgrel=5
+pkgrel=6
 pkgdesc="Network Management daemon"
 arch=(i686 x86_64)
 license=(GPL2 LGPL2.1)
@@ -52,7 +52,9 @@ build() {
     --enable-modify-system \
     --enable-doc \
     --enable-ifupdown \
-    --with-pppd-plugin-dir=/usr/lib/pppd/2.4.6
+    --with-pppd-plugin-dir=/usr/lib/pppd/2.4.6 \
+    SYSTEMD_LOGIN_LIBS="-lsystemd" \
+    SYSTEMD_LOGIN_CFLAGS=" "
 
   make V=0
 }
