@@ -1,4 +1,4 @@
-# Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
+# Maintainer: Ben Wolsieffer <benwolsieffer at gmail dot com>
 pkgname=qdriverstation
 _pkgver=16.06-beta
 pkgver=16.06
