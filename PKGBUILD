@@ -1,6 +1,6 @@
 # Maintainer: tritonas00 <tritonas00@gmail.com>
 pkgname=system-tar-and-restore
-pkgver=5.1
+pkgver=5.2
 pkgrel=1
 pkgdesc='Backup and Restore your system using tar or Transfer it with rsync'
 arch=('any')
@@ -12,7 +12,7 @@ optdepends=('dialog: Ncurses interface support' 'grub: Grub support' 'dosfstools
 url="https://github.com/tritonas00/system-tar-and-restore"
 source=("https://github.com/tritonas00/system-tar-and-restore/archive/$pkgver.tar.gz")
 
-md5sums=('e82bf89e27368d95293d929177a75b62')
+md5sums=('732c702a2e01128cc23aa1b514518e1e')
 
 install=readme.install
 
