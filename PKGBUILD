@@ -5,7 +5,7 @@
 
 pkgname=root
 pkgver=6.06.04
-pkgrel=1
+pkgrel=2
 pkgdesc='C++ data analysis framework and interpreter from CERN.'
 arch=('i686' 'x86_64')
 url='http://root.cern.ch'
@@ -64,7 +64,7 @@ build() {
 		sys_libs+="-Dbuiltin_${sys_lib}=ON "
 	done
 
-	CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" CFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" CPPFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" CLINGCXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" cmake ${srcdir}/${pkgname}-${pkgver} \
+	CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=1" CFLAGS="-D_GLIBCXX_USE_CXX11_ABI=1" CPPFLAGS="-D_GLIBCXX_USE_CXX11_ABI=1" CLINGCXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=1" cmake ${srcdir}/${pkgname}-${pkgver} \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-Dgnuinstall=ON \
@@ -73,7 +73,7 @@ build() {
 		-Dcastor=OFF \
 		${sys_libs}
 
-	CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" CFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" CPPFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" CLINGCXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" make
+	CXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=1" CFLAGS="-D_GLIBCXX_USE_CXX11_ABI=1" CPPFLAGS="-D_GLIBCXX_USE_CXX11_ABI=1" CLINGCXXFLAGS="-D_GLIBCXX_USE_CXX11_ABI=1" make
 }
 
 package() {
