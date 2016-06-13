@@ -1,0 +1,13 @@
+pkgbase = vim-theme-codeschool
+	pkgdesc = CodeSchool like theme for vim
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = http://astonj.com/tech/vim-for-ruby-rails-and-a-sexy-theme/
+	arch = any
+	groups = vim-plugins
+	license = unknown
+	source = codeschool.vim
+	sha256sums = 88b6c41f24edce1f2fab33bc6118cfc0f9bf6b04d890eef79731056b0e48c33d
+
+pkgname = vim-theme-codeschool
+
