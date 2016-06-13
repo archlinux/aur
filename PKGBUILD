@@ -12,7 +12,7 @@ depends=('minetest-common')
 makedepends=()
 provides=("$_gitname")
 conflicts=()
-source=("$pkgname::git+https://github.com/minetest-mods/moreblocks")
+source=("$_gitname::git+https://github.com/minetest-mods/moreblocks")
 sha512sums=('SKIP')
 
 pkgver() {

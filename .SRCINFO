@@ -7,7 +7,7 @@ pkgbase = minetest-mod-moreblocks-git
 	license = zlib
 	depends = minetest-common
 	provides = minetest-mod-moreblocks
-	source = minetest-mod-moreblocks-git::git+https://github.com/minetest-mods/moreblocks
+	source = minetest-mod-moreblocks::git+https://github.com/minetest-mods/moreblocks
 	sha512sums = SKIP
 
 pkgname = minetest-mod-moreblocks-git
