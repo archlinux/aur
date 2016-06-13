@@ -3,8 +3,8 @@
 # You may find it convenient to file issues and pull requests there.
 
 pkgname=firefox-extension-omnisidebar-git
-pkgver=1.6.12
-pkgrel=2
+pkgver=1.6.13
+pkgrel=1
 pkgdesc='A firefox add-on designed to provide more control over the behavior of the sidebar.'
 url='https://github.com/Quicksaver/OmniSidebar'
 arch=('any')
