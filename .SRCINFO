@@ -1,0 +1,13 @@
+pkgbase = javasnoop
+	pkgdesc = A tool to test the security of Java applications
+	pkgver = 1.1RC2
+	pkgrel = 1
+	url = https://code.google.com/archive/p/javasnoop/
+	arch = any
+	license = GPL3
+	depends = jre8-openjdk
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/javasnoop/JavaSnoop-1.1-RC2.zip
+	md5sums = f1960ef82c4b5c6a389e44915a9f1d3d
+
+pkgname = javasnoop
+
