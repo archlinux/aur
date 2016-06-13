@@ -1,20 +1,16 @@
 # Maintainer: Martchus <martchus@gmx.net>
+
+# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
+# you also find the URL of a binary repository.
+
 pkgname=blackwidowcontrol
 pkgver=1.0.0
-pkgrel=3
-pkgdesc="Python script to enable macro keys of the Razer BlackWidow keyboard under GNU/Linux"
+pkgrel=4
+pkgdesc='Python script to enable macro keys of the Razer BlackWidow keyboard under GNU/Linux'
 arch=('any')
 license=('GPL')
-groups=
-provides=
-depends=("python" "python-pyusb")
-makedepends=
-conflicts=
-replaces=
-backup=
-install=
+depends=('python-pyusb')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${pkgname}/archive/v${pkgver}.tar.gz")
-noextract=
 sha256sums=('b840f36debfdf7ce745105b2d187d643ac7588589aa7caf2a475af7da72ef362')
 
 package() {
