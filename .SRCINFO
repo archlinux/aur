@@ -1,0 +1,13 @@
+pkgbase = maltego-ce
+	pkgdesc = Community Edition of Maltego client
+	pkgver = 3.6.0.6640
+	pkgrel = 1
+	url = http://paterva.com/web6/products/maltego.php
+	arch = any
+	license = Commercial
+	depends = jre8-openjdk
+	source = http://paterva.com/malv36/community/MaltegoChlorineCE.3.6.0.6640.deb
+	md5sums = 7ff52656451d99fb1d52cc4e848dc2c9
+
+pkgname = maltego-ce
+
