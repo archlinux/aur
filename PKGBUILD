@@ -1,21 +1,20 @@
-# Contributor: John D Jones III <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.29
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-expect'
-pkgver='1.32'
+pkgver='1.33'
 pkgrel='1'
 pkgdesc="automate interactions with command line programs that expose a text terminal interface."
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-io-tty')
+depends=('perl-io-tty' 'perl>=5.6.0')
 makedepends=()
-checkdepends=('perl-test-exception>=0.32')
-url='http://search.mcpan.org/dist/Expect'
-source=('http://search.mcpan.org/CPAN/authors/id/S/SZ/SZABGAB/Expect-1.32.tar.gz')
-md5sums=('f71527a34d57f601d5047ad9aa98e4e4')
-sha512sums=('0281d1662a902b99b5131c017b50b0456c3461c176bf4485b4bb383cab009973605514256540c5ddc2e274b5dd92ece5555719f5527d3fb8c35e83f8dc038147')
-_distdir="Expect-1.32"
+url='https://metacpan.org/release/Expect'
+source=('http://search.cpan.org/CPAN/authors/id/J/JA/JACOBY/Expect-1.33.tar.gz')
+md5sums=('1fbb052de1383966a3be5f420a34e83c')
+sha512sums=('6351e681d813a98cf12a882cb135c6dc5f38beb72fb96efe13c690b26704acb9c5654b2f27dd833ad078de83cb4144fef4aea381a768c54f9817247210e6b5bf')
+_distdir="expect.pm-Expect-1.33"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
