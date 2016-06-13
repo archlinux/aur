@@ -1,0 +1,17 @@
+pkgbase = minetest-mod-technic-git
+	pkgdesc = Technic mod for Minetest
+	pkgver = 746.3226155
+	pkgrel = 1
+	url = https://forum.minetest.net/viewtopic.php?t=2538
+	arch = any
+	license = LGPLv2
+	depends = minetest-common>=0.4.14
+	depends = minetest-mod-moreblocks-git
+	depends = minetest-mod-pipeworks-git
+	optdepends = mesecons-git: required only for some recipes
+	provides = minetest-mod-technic
+	source = minetest-mod-technic-git::git+https://github.com/minetest-technic/technic
+	sha512sums = SKIP
+
+pkgname = minetest-mod-technic-git
+
