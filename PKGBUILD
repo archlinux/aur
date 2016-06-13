@@ -2,20 +2,19 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-rpc-xml'
-pkgver='0.79'
+pkgver='0.80'
 pkgrel='1'
 pkgdesc="A set of classes for core data, message and XML handling"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-xml-parser>=2.31' 'perl-libwww' 'perl' 'perl-xml-libxml')
+depends=('perl-xml-parser>=2.31' 'perl-libwww' 'perl>=5.8.8')
 makedepends=()
-optdepends=('perl-net-server: Net::Server support')
 url='https://metacpan.org/release/RPC-XML'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJRAY/RPC-XML-0.79.tar.gz')
-md5sums=('64fb3a4a597574b97ea5c989edffb21d')
-sha512sums=('541ee3abf4e44cff68a2b7b7c4f78095e8e4ec479d72b52d300503bc1688f64fd01a0ff3c2cdf8e18573d19af0bae467ac68befe7ad8756e6287ed494a50ce26')
-_distdir="RPC-XML-0.79"
+source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJRAY/RPC-XML-0.80.tar.gz')
+md5sums=('b3350083c139dcdcb2bde8644cc92179')
+sha512sums=('a91586ea903b3e633f85ca8d9048181a7c3aedcff6788c7ae5fb4971e8552c421c86f30254517c25caa35f1991146dcceb34301bb49002e4ec75a2ee9c195992')
+_distdir="RPC-XML-0.80"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -40,6 +39,7 @@ check() {
 package() {
   cd "$srcdir/$_distdir"
   make install
+
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
 
