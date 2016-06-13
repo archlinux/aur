@@ -3,7 +3,6 @@ pkgbase = messengerfordesktop-git
 	pkgver = 1.4.7.r67.g024028f
 	pkgrel = 1
 	url = http://messengerfordesktop.com/
-	install = messengerfordesktop-git.install
 	arch = i686
 	arch = x86_64
 	license = MIT

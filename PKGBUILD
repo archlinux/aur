@@ -11,7 +11,6 @@ conflicts=('messengerfordesktop' 'messengerfordesktop-bin')
 options=(!strip)
 depends=('libxtst' 'alsa-lib' 'gtk2' 'gconf' 'libnotify' 'nss' 'xorg-xprop' 'xorg-xwininfo')
 makedepends=('git' 'gulp' 'npm')
-install="$pkgname.install"
 source=("$pkgname::git+https://github.com/Aluxian/Facebook-Messenger-Desktop.git#branch=develop"
 		"start.sh")
 
