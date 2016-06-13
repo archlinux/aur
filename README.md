@@ -27,7 +27,7 @@ The GitHub repository is a mirror of the `aur.archlinux.org` repository.
 This was setup with the following commands:
 
 ```bash
-$ git remote set-url origin --add git+ssh://aur@aur.archlinux.org/tag-ag.git
+$ git clone git+ssh://aur@aur.archlinux.org/tag-ag.git
 $ git remote set-url origin --add git@github.com:dmarcoux/tag-ag.git
 ```
 
