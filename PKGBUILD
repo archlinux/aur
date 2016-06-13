@@ -2,7 +2,7 @@
 
 pkgname=froggix
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A clone of the classic arcade game Frogger"
 arch=('any')
 license=('GPL3' 'custom')
@@ -22,6 +22,6 @@ package() {
   install -m 644 froggix.py README "$pkgdir/usr/share/froggix/"
   install -m 644 data/* "$pkgdir/usr/share/froggix/data/"
   install -D -m 755 froggix "$pkgdir/usr/bin/froggix"
-  install -D -m 644 Credits_and_Licenses "$pkgdir/usr/share/licenses/froggix/LICENSE"
+  install -D -m 644 Credits_and_Licenses "$pkgdir/usr/share/licenses/froggix/Credits_and_Licenses"
   chmod 666 "$pkgdir/usr/share/froggix/data/highscores.dat"
 }
