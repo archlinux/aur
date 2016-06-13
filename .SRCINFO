@@ -26,9 +26,7 @@ pkgbase = ultrastardx-git
 	provides = ultrastardx
 	conflicts = ultrastardx
 	source = git://github.com/UltraStar-Deluxe/USDX.git
-	source = usdx.patch
 	sha256sums = SKIP
-	sha256sums = 2f0c8713230976e293b519db8c9058e7937e8be04d54de821067334f7481e533
 
 pkgname = ultrastardx-git
 

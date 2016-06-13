@@ -13,11 +13,9 @@ conflicts=('ultrastardx')
 groups=('usdx')
 source=(
 	"git://github.com/UltraStar-Deluxe/USDX.git"
-	"usdx.patch"
 )
 sha256sums=(
 	'SKIP'
-	'2f0c8713230976e293b519db8c9058e7937e8be04d54de821067334f7481e533'	
 )
 
 pkgver() {
@@ -34,7 +32,6 @@ cd "${srcdir}/USDX"
 build() {
   cd "${srcdir}/USDX"
   PKG_CONFIG_PATH="/usr/lib/ffmpeg2.8/pkgconfig" ./configure
-  patch "src/config-linux.inc" "${srcdir}/usdx.patch"
   make LDFLAGS="-O1 --sort-common --as-needed -z relro"
 }
 
