@@ -8,7 +8,7 @@ pkgdesc="Low-level access to the X11 library"
 arch=('i686' 'x86_64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl' 'libx11>=1.6.3' 'libxext>=1.3.3' 'libxtst>=1.2.2')
+depends=('perl' 'libx11>=1.6.3' 'libxext>=1.3.3' 'libxtst>=1.2.2' 'perl-devel-checklib')
 makedepends=()
 checkdepends=('ttf-dejavu' 'xorg-server-xvfb')
 url='https://metacpan.org/release/X11-Xlib'
