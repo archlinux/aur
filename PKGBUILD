@@ -17,8 +17,8 @@ makedepends=('binutils>=2.25' 'libmpc' 'doxygen')
 checkdepends=('dejagnu' 'inetutils')
 options=('!emptydirs')
 source=("ftp://gcc.gnu.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
-        "http://isl.gforge.inria.fr/isl-${_islver}.tar.bz2"
-        "http://www.bastoul.net/cloog/pages/download/cloog-${_cloogver}.tar.gz"
+        "ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
+        "ftp://gcc.gnu.org/pub/gcc/infrastructure/cloog-${_cloogver}.tar.gz"
         "gcc-4.9-fix-build-with-gcc-6.patch")
 md5sums=('6f831b4d251872736e8e9cc09746f327'
          'e039bfcfb6c2ab039b8ee69bf883e824'
