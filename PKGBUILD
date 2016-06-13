@@ -1,7 +1,7 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 
 pkgname=liggghts
-pkgver=3.3.1
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Open Source Discrete Element Method Particle Simulation Software"
 arch=('any')
@@ -45,12 +45,15 @@ build() {
   mkdir -p $pkgdir/usr/share/$pkgname
   mkdir -p $pkgdir/usr/share/doc/$pkgname
   mkdir -p $pkgdir/usr/share/$pkgname/examples
+  mkdir -p $pkgdir/usr/share/doc/$pkgname/PDF/
+  
   cd $srcdir/$_gitname-build
   install -Dm 755 src/lmp_openmpi $pkgdir/usr/bin/$pkgname
   
   cp -r --no-preserve='ownership' examples/LIGGGHTS/Tutorials_public/* $pkgdir/usr/share/$pkgname/examples
 #   install -Dm644 examples/LIGGGHTS/Tutorials_public/ $pkgdir/usr/share/$pkgname/examples
-  cp -r --no-preserve='ownership' doc/* $pkgdir/usr/share/doc/$pkgname
+  cp -r --no-preserve='ownership' doc/*.{html,pdf} $pkgdir/usr/share/doc/$pkgname/
+  cp -r --no-preserve='ownership' doc/PDF/*.pdf $pkgdir/usr/share/doc/$pkgname/PDF/
 #   install -Dm644 doc/* $pkgdir/usr/share/doc/$pkgname
 
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
