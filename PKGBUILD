@@ -31,6 +31,8 @@ build() {
   ./waf-light \
     configure --prefix=/usr \
     build --make-waf --tools='compat,compat15,ocaml,go,cython,scala,erlang,cuda,gcj,boost,pep8,eclipse'
+
+  sed -i "s/'%s-%s-%s' % (WAF, VERSION, REVISION)/WAF/" waf
 }
 
 package() {
