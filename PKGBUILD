@@ -16,20 +16,18 @@ source=(
   http://mosquitto.org/files/source/$pkgname-$pkgver.tar.gz{,.asc}
   "$pkgname.service"
   "$pkgname.install"
-  "usr_move.patch"
 )
 install=$pkgname.install
 backup=("etc/$pkgname/$pkgname.conf")
 sha256sums=('1df3ae07de40b80a74cd37a7b026895c544cdd3b42c9e0719ae91623aa98c58b'
             'SKIP'
             '3480aa1a9da543230fbbb0e7e11cde9db2736e486cd024fbd505f927188fa3a2'
-            '4eee01f9b95000e5f1964dd32856d9c4fb0bf3c64ebfce34967ce903bd37d820'
-            'c436bcc5a61d923ab36d5b3f24e5f628bf18ef14c2f351633d58ca983b5f655c')
+            '4eee01f9b95000e5f1964dd32856d9c4fb0bf3c64ebfce34967ce903bd37d820')
 validpgpkeys=('A0D6EEA1DCAE49A635A3B2F0779B22DFB3E717B7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  patch -p1 < ../usr_move.patch
+  sed -i 's|/sbin|/bin|' Makefile
   sed -i 's/WITH_WEBSOCKETS:=no/WITH_WEBSOCKETS:=yes/' config.mk
   make
 }
