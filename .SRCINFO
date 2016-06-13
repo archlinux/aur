@@ -1,7 +1,7 @@
 pkgbase = horizon-launcher-git
 	pkgdesc = A customizable, cross-platform and open-source launcher for launching all your games on Steam and other gaming services
-	pkgver = r781.e299c5b
-	pkgrel = 3
+	pkgver = r818.8f781d0
+	pkgrel = 1
 	url = http://launchhorizon.com
 	arch = x86_64
 	license = MIT
