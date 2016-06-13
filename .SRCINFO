@@ -9,6 +9,7 @@ pkgbase = photofilmstrip
 	depends = wxpython
 	depends = python2-pillow
 	depends = mencoder
+	depends = gstreamer0.10-python
 	source = http://liquidtelecom.dl.sourceforge.net/project/photostoryx/photofilmstrip/2.1.0/photofilmstrip-2.1.0.tar.gz
 	md5sums = 0488f7b9cf8f99cff5b161c1911d9588
 
