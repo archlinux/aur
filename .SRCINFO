@@ -1,0 +1,12 @@
+pkgbase = dgr
+	pkgdesc = dgr - container build and runtime tool
+	pkgver = 69
+	pkgrel = 1
+	url = https://github.com/blablacar/dgr
+	arch = x86_64
+	license = Apache
+	source = https://github.com/blablacar/dgr/releases/download/69/dgr-linux-amd64-69.tar.gz
+	md5sums = SKIP
+
+pkgname = dgr
+
