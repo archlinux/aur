@@ -10,12 +10,12 @@ source=("http://pentestmonkey.net/tools/unix-privesc-check/unix-privesc-check-1.
 md5sums=(b278797b8698160ca2d26425930ad13c)
 
 package() {
-        cd "$srcdir/$pkgname-$pkgver/"
-	install -dm755 "$pkgdir/usr/share/$pkgname"
-        cp "$pkgname" "$pkgdir/usr/share/$pkgname/"
-        install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-        cp COPYING.GPL "$pkgdir/usr/share/licenses/$pkgname/"
-        cp COPYING.UNIX-PRIVESC-CHECK "$pkgdir/usr/share/licenses/$pkgname/"
-        install -dm755 "$pkgdir/usr/bin/"
-        ln -s "/usr/share/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
+        cd "$srcdir"/"$pkgname"-"$pkgver"/
+	install -dm755 "$pkgdir"/usr/share/"$pkgname"
+        cp "$pkgname" "$pkgdir"/usr/share/"$pkgname"/
+        install -dm755 "$pkgdir"/usr/share/licenses/"$pkgname"
+        cp COPYING.GPL "$pkgdir"/usr/share/licenses/"$pkgname"/
+        cp COPYING.UNIX-PRIVESC-CHECK "$pkgdir"/usr/share/licenses/"$pkgname"/
+        install -dm755 "$pkgdir"/usr/bin/
+        ln -s /usr/share/"$pkgname"/"$pkgname" "$pkgdir"/usr/bin/"$pkgname"
 }
