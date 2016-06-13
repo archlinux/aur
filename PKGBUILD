@@ -20,7 +20,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'change-default-console-loglevel.patch'
         '0001-linux-4.6-rtlwifi-fix-atomic.patch'
         'override_for_missing_acs_capabilities.patch'
-        'i915_317.patch')
+        '0001-Updated-i915-vga-arbiter-patch-for-4.6.2.patch')
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
             '0dc509a19c68ab547a62158bf2017965b843854b63be46ae039c37724dccca21'
@@ -31,7 +31,7 @@ sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             'ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98'
             '975f79348119bfba8dd972a9fbfe6b38484c45bfd228f2f6d48a0c02426ba149'
-            'b5a8eebbe75e1801b35d2f5197eba6f57123c224e09e97a7eb526f1fa58ac918')
+            '6dc172c2ef277223aa59806a2edda7efc4f94d2bf68b6bf2b1d0413e84b9e260')
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -65,7 +65,7 @@ prepare() {
 
   # patches for vga arbiter fix in intel systems
   echo '==> Applying i915 VGA arbitration patch'
-  patch -Np1 -i "${srcdir}/i915_317.patch"
+  patch -p1 -i "${srcdir}/0001-Updated-i915-vga-arbiter-patch-for-4.6.2.patch"
 
   # Overrides for missing acs capabilities
   echo '==> Applying ACS override patch'
