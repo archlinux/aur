@@ -2,7 +2,7 @@
 
 pkgname=gjdoc
 pkgver=0.7.9
-pkgrel=4
+pkgrel=5
 pkgdesc="GNU Classpath JavaDoc implementation"
 arch=(i686 x86_64)
 license=('GPL')
