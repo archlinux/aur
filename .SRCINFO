@@ -1,7 +1,7 @@
 pkgbase = freeling
 	pkgdesc = Natural language analysis libraries
 	pkgver = 4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nlp.lsi.upc.edu/freeling
 	arch = any
 	license = AGPL
