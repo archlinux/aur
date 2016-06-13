@@ -1,7 +1,7 @@
 pkgbase = mosquitto
 	pkgdesc = An Open Source MQTT v3.1 Broker
 	pkgver = 1.4.9
-	pkgrel = 2
+	pkgrel = 3
 	url = http://mosquitto.org/
 	install = mosquitto.install
 	arch = i686
@@ -15,6 +15,7 @@ pkgbase = mosquitto
 	makedepends = c-ares
 	depends = openssl
 	depends = c-ares
+	depends = libwebsockets
 	backup = etc/mosquitto/mosquitto.conf
 	source = http://mosquitto.org/files/source/mosquitto-1.4.9.tar.gz
 	source = http://mosquitto.org/files/source/mosquitto-1.4.9.tar.gz.asc

@@ -5,11 +5,11 @@
 
 pkgname=mosquitto
 pkgver=1.4.9
-pkgrel=2
+pkgrel=3
 pkgdesc="An Open Source MQTT v3.1 Broker"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="http://mosquitto.org/"
-depends=('openssl' 'c-ares')
+depends=('openssl' 'c-ares' 'libwebsockets')
 makedepends=('python' 'docbook-xsl' 'c-ares')
 license=('BSD')
 source=(
@@ -30,6 +30,7 @@ validpgpkeys=('A0D6EEA1DCAE49A635A3B2F0779B22DFB3E717B7')
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   patch -p1 < ../usr_move.patch
+  sed -i 's/WITH_WEBSOCKETS:=no/WITH_WEBSOCKETS:=yes/' config.mk
   make
 }
 
