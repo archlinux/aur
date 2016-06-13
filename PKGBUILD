@@ -4,15 +4,15 @@
 
 _pkgname=compton-conf
 pkgname=${_pkgname}-git
-pkgver=0.1.0.32.gfc667eb
-pkgrel=3
+pkgver=0.1.0.38.g438435c
+pkgrel=2
 pkgdesc='A graphical configuration tool for Compton X composite manager. Qt5 UI. Development version.'
 arch=('i686' 'x86_64')
 url='https://github.com/lxde/compton-conf'
 license=('LGPL2.1')
 
 depends=('qt5-base' 'libconfig')
-makedepends=('cmake' 'git' 'qt5-tools')
+makedepends=('cmake' 'git' 'qt5-tools' 'liblxqt')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 
@@ -35,24 +35,17 @@ prepare() {
 	# Patch desktop entry
 	cd "${srcdir}"/${_pkgname}
 	patch -Np1 < ../desktop_entry.patch
-	
+
 	# Build directory
 	mkdir -p "${srcdir}"/build
 }
 
 build() {
-	# Number of jobs
-	declare -i njobs=$(nproc)
-	
-	if [[ ${njobs} -ge 8 ]]; then
-		njobs=$(( ${njobs} - 2 ))
-	fi
-
 	# Building package
 	cd "${srcdir}"/build
 	cmake ../${_pkgname} \
 		-DCMAKE_INSTALL_PREFIX=/usr
-	make -j${njobs}
+	make
 }
 
 package() {
