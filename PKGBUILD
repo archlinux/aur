@@ -27,24 +27,17 @@ prepare() {
 	# Patch desktop entry
 	cd "${srcdir}"/${pkgname}-${pkgver}
 	patch -p1 < ../desktop_entry.patch
-	
+
 	# Build directory
 	mkdir -p "${srcdir}"/build
 }
 
 build() {
-	# Number of jobs
-	declare -i njobs=$(nproc)
-	
-	if [[ ${njobs} -ge 8 ]]; then
-		njobs=$(( ${njobs} - 2 ))
-	fi
-
 	# Building package
 	cd "${srcdir}"/build
 	cmake ../${pkgname}-${pkgver} \
 		-DCMAKE_INSTALL_PREFIX=/usr
-	make -j${njobs}
+	make
 }
 
 package() {
