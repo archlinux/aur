@@ -1,7 +1,7 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 pkgname=nodejs-jscs
-pkgver=3.0.3
+pkgver=3.0.4
 pkgrel=1
 pkgdesc='JavaScript Code Style'
 arch=('any')
