@@ -2,30 +2,36 @@
 
 pkgbase=linux-vfio
 _srcname=linux-4.6
-pkgver=4.6
-pkgrel=1
+pkgver=4.6.1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'elfutils')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.sign"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-        #"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.sign"
         # the main kernel config files
         'config' 'config.x86_64'
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
+        '0001-linux-4.6-drm-i915-psr.patch'
+        '0001-linux-4.6-rtlwifi-fix-atomic.patch'
         'override_for_missing_acs_capabilities.patch'
         'i915_317.patch')
 sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
+            'SKIP'
+            '023d192ebb487657ce24cbd758c8a6cfcb66a26c61b4e0f2395528953c45da9b'
             'SKIP'
             '02e8b02e8cd10aa059917a489a9663e7f66bdf12c5ae8a1e0369bb2862da6b68'
             'd59014b8f887c6aa9488ef5ff9bc5d4357850a979f3ff90a2999bbe24e5c6e15'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
+            'b719c3bd58d71a9e0d76b3674e854419ebec4a3fa9f8a4823f23639720527e83'
+            'ae0d16e81a915fae130125ba9d0b6fd2427e06f50b8b9514abc4029efe61ee98'
             '975f79348119bfba8dd972a9fbfe6b38484c45bfd228f2f6d48a0c02426ba149'
             'b5a8eebbe75e1801b35d2f5197eba6f57123c224e09e97a7eb526f1fa58ac918')
 validpgpkeys=(
@@ -39,7 +45,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  #patch -p1 -i "${srcdir}/patch-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # add latest fixes from stable queue, if needed
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
@@ -48,6 +54,14 @@ prepare() {
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
+
+  # fix flickering on 4.6
+  # reported from brain0 and heftig on IRC
+  patch -p1 -i "${srcdir}/0001-linux-4.6-drm-i915-psr.patch"
+
+  # fix rtlwifi atomic
+  # https://bugs.archlinux.org/task/49401
+  patch -p1 -i "${srcdir}/0001-linux-4.6-rtlwifi-fix-atomic.patch"
 
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
