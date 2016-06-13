@@ -13,7 +13,7 @@ optdepends=('mesecons-git: required only for some recipes') # 'minetest-mod-more
 makedepends=()
 provides=("$_gitname")
 conflicts=()
-source=("$pkgname::git+https://github.com/minetest-technic/technic")
+source=("$_gitname::git+https://github.com/minetest-technic/technic")
 sha512sums=('SKIP')
 
 pkgver() {
