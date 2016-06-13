@@ -1,6 +1,6 @@
 # Maintainer: xpt <user.xpt@gmail.com>
 pkgname=prey-node-client
-pkgver=1.5.0
+pkgver=1.5.1
 pkgrel=1
 pkgdesc="Remote tracking and monitoring application for laptops, smartphones, and other electronic devices"
 url="https://preyproject.com/"
@@ -15,12 +15,12 @@ source=('prey-node-client.patch')
 source_x86_64=("https://s3.amazonaws.com/prey-releases/node-client/$pkgver/prey-linux-$pkgver-x64.zip")
 source_i686=("https://s3.amazonaws.com/prey-releases/node-client/$pkgver/prey-linux-$pkgver-x86.zip")
 sha256sums=('181785784b44de48ff8ad0601f2a88a00ff4c26fe95b2c075546f23dc54de8c5')
-sha256sums_x86_64=('aa62e9bf1af2f7f9176f2024704969d84ddbe9471b3a53e35d96a0daa3f5deb4')
-sha256sums_i686=('1e73f7d838fb654c0f45d6124152d7f49c18649b280a879fc33be09807530361')
+sha256sums_x86_64=('18e24115a59d2ca7b0b932b0448d961df4ff9a3d0c21b0b57222ca5a2ce100d0')
+sha256sums_i686=('c5c0d06240c400864baed3a2cc5924e78265e790303e9d2e486b3ea6595bd992')
 
 
 package() {
-  cd "$srcdir/prey-$pkgver"
+  cd "$srcdir/prey-$pkgver.$pkgrel"
 
   # We don't need the bundled node.js as we have it installed in the system.
   # Conveniently, the bash script probes for node.js and automatically uses
