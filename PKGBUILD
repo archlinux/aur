@@ -4,34 +4,39 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 
 set -u
-pkgname='gcc45'
-pkgver='4.5.4'
+_pkgver='4.5'
+pkgname="gcc${_pkgver//\./}"
+pkgver="${_pkgver}.4"
 pkgrel='3'
-pkgdesc='The GNU Compiler Collection (4.5.x)'
+pkgdesc="The GNU Compiler Collection (${_pkgver}.x)"
 arch=('i686' 'x86_64')
 url='http://gcc.gnu.org'
 license=('GPL' 'LGPL' 'custom')
 depends=('glibc' 'binutils' 'gmp' 'mpfr' 'libmpc' 'ppl' 'isl' 'cloog' 'elfutils')
-makedepends=('flex' 'bison' 'setconf' 'gcc49') # gcc48 also works if you change -4.9 below
+makedepends=('flex' 'bison' 'setconf') # 'gcc49') # gcc48 also works if you change -4.9 below
 conflicts=('gcc45-multilib')
-options=('!libtool' '!buildflags' 'staticlibs')
-source=("http://www.mirrorservice.org/sites/sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
-        'gcc-hash-style-both.patch'
-        'gcc_pure64.patch')
-
+options=('!buildflags' 'staticlibs' '!libtool')
+source=(
+  "http://www.mirrorservice.org/sites/sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.bz2"
+  'gcc-hash-style-both.patch'
+  'gcc_pure64.patch'
+)
 sha256sums=('eef3f0456db8c3d992cbb51d5d32558190bc14f3bc19383dd93acc27acc6befc'
             'a600550d3d2b2fb8ee6a547c68c3a08a2af7579290b340c35ee5598c9bb305a5'
             '2d369cf93c6e15c3559c3560bce581e0ae5f1f34dc86bca013ac67ef1c1a9ff9')
+PKGEXT='.pkg.tar.gz'
+
+  _basedir="gcc-${pkgver}"
 
 prepare() {
   set -u
-  cd "gcc-${pkgver}"
+  cd "${_basedir}"
 
   # Do not install libiberty
   sed -i -e 's:install_to_$(INSTALL_DEST) ::' 'libiberty/Makefile.in'
 
   # Do not run fixincludes
-  sed -i -e 's:\./fixinc\.sh:-c true:' 'gcc/Makefile.in'
+  sed -i -e 's@\./fixinc\.sh@-c true@' 'gcc/Makefile.in'
 
   patch -Np0 -i "${srcdir}/gcc-hash-style-both.patch"
 
@@ -43,60 +48,68 @@ prepare() {
 
   setconf 'gcc/configure' 'BUILD_INFO' ''
 
-  rm -rf 'build'
-  mkdir 'build'
-  cd 'build'
+  rm -rf 'gcc-build'
+  mkdir 'gcc-build'
+  cd 'gcc-build'
 
+  # The following options are one per line, mostly sorted so they are easy to diff compare to other gcc packages.
   ../configure \
-      --build="${CHOST}" \
-      --prefix='/usr' \
-      --mandir='/usr/share/man' \
-      --infodir='/usr/share/info' \
-      --libdir='/usr/lib' \
-      --libexecdir='/usr/lib' \
-      --program-suffix='-4.5' \
-      --enable-shared \
-      --enable-languages='c,c++,fortran,objc,obj-c++' \
-      --enable-__cxa_atexit \
-      --disable-libstdcxx-pch \
-      --disable-multilib \
-      --disable-libgomp \
-      --disable-libmudflap \
-      --disable-libssp \
-      --enable-clocale='gnu' \
-      --with-tune='generic' \
-      --with-cloog \
-      --with-ppl \
-      --with-system-zlib \
-      CXX='g++-4.9' CC='gcc-4.9'
+    --build="${CHOST}" \
+    --disable-libgomp \
+    --disable-libmudflap \
+    --disable-libssp \
+    --disable-libstdcxx-pch \
+    --disable-multilib \
+    --enable-__cxa_atexit \
+    --enable-clocale='gnu' \
+    --enable-languages='c,c++,fortran,objc,obj-c++' \
+    --enable-shared \
+    --infodir='/usr/share/info' \
+    --libdir='/usr/lib' \
+    --libexecdir='/usr/lib' \
+    --mandir='/usr/share/man' \
+    --program-suffix="-${_pkgver}" \
+    --with-cloog \
+    --with-ppl \
+    --with-system-zlib \
+    --with-tune='generic' \
+    --prefix='/usr'
+#    CXX='g++-4.9' CC='gcc-4.9'
+
   set +u
 }
 
 build() {
   set -u
-  cd "gcc-${pkgver}/build"
+  cd "${_basedir}/gcc-build"
+
   local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  make -j "${_nproc}"
+  #LD_PRELOAD='/usr/lib/libstdc++.so' \\
+  make -s -j "${_nproc}"
   set +u
 }
 
 package() {
   set -u
-  cd "gcc-${pkgver}/build"
+  cd "${_basedir}/gcc-build"
 
-  make install DESTDIR="${pkgdir}"
-  rm -rf "${pkgdir}/usr/share/man/man7"
-  rm -rf "${pkgdir}/usr/share/locale"
-  mv "${pkgdir}"/usr/lib/lib* "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/"
+  make -s -j1 DESTDIR="${pkgdir}" install
+
+  ## Lazy way of dealing with conflicting man and info pages and locales...
+  rm -rf "${pkgdir}/usr"/{share,include}/
+  #find "${pkgdir}/" -name '*iberty*' | xargs rm
+
+  # Move potentially conflicting stuff to version specific subdirectory
+  mv "${pkgdir}/usr/lib/gcc/${CHOST}"/lib*/ "${pkgdir}/usr/lib/gcc/${CHOST}/${pkgver}/" || : # Not needed for 32 bit compile
 
   # Install Runtime Library Exception
   install -Dpm644 '../COPYING.RUNTIME' \
-      "${pkgdir}/usr/share/licenses/${pkgname}/RUNTIME.LIBRARY.EXCEPTION"
+    "${pkgdir}/usr/share/licenses/${pkgname}/RUNTIME.LIBRARY.EXCEPTION" || :
 
-  # Create links for gcc-4.5 build environment (useful for CUDA)
-  mkdir -p "${pkgdir}/opt/gcc-4.5"
-  ln -s '/usr/bin/gcc-4.5' "${pkgdir}/opt/gcc-4.5/gcc"
-  ln -s '/usr/bin/g++-4.5' "${pkgdir}/opt/gcc-4.5/g++"
+  # Create links for gcc- build environment (useful for CUDA)
+  mkdir -p "${pkgdir}/opt/gcc-${_pkgver}"
+  ln -s "/usr/bin/gcc-${_pkgver}" "${pkgdir}/opt/gcc-${_pkgver}/gcc"
+  ln -s "/usr/bin/g++-${_pkgver}" "${pkgdir}/opt/gcc-${_pkgver}/g++"
   set +u
 }
 set +u
