@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-uri-encode'
-pkgver='1.0.1'
+pkgver='1.1.1'
 pkgrel='1'
 pkgdesc="Simple percent Encoding/Decoding"
 arch=('any')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl')
 makedepends=()
 url='https://metacpan.org/release/URI-Encode'
-source=('http://search.cpan.org/CPAN/authors/id/M/MI/MITHUN/URI-Encode-v1.0.1.tar.gz')
-md5sums=('2248e3dc1dec341247b16ddf9ead085e')
-sha512sums=('dab379ec6fd8e7f3571a02cad172577d1ed4d085401583f12bf4e4df7557dc822ed66f7d63659b10acc7137b4c874a2f833d2f6554995574f35a2e539b31c444')
-_distdir="URI-Encode-v1.0.1"
+source=('http://search.cpan.org/CPAN/authors/id/M/MI/MITHUN/URI-Encode-v1.1.1.tar.gz')
+md5sums=('54e0270f1d9ba1e2a3ed3698337114c6')
+sha512sums=('69290a8e2cea1bf3e826bf8686f642e73258d316371638f3dbb86abc4b8e4ed468b11e8c4219e79e13dbb5307a56a6f022b9c756b8dc75221f8d78734ddefff5')
+_distdir="URI-Encode-v1.1.1"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
