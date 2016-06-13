@@ -4,14 +4,14 @@
 
 pkgname=minetest-git-leveldb
 _pkgname=minetest
-pkgver=20150918.691eb2d
+pkgver=20160611.a39d536
 pkgrel=1
 pkgdesc='Infiniminer/Minecraft-inspired building game (with LuaJIT, LevelDB, and Redis support)'
 url='http://www.minetest.net/'
 license=('GPL')
 arch=('i686' 'x86_64')
 makedepends=('git' 'cmake' 'clang')
-depends=('bzip2' 'libpng' 'libjpeg' 'mesa' 'sqlite' 'openal' 'libvorbis' 'irrlicht' 'curl' 'freetype2' 'luajit' 'leveldb' 'gettext' 'hiredis' 'libspatialindex-git')
+depends=('bzip2' 'libpng' 'libjpeg' 'mesa' 'sqlite' 'openal' 'libvorbis' 'irrlicht' 'curl' 'freetype2' 'luajit' 'leveldb' 'gettext' 'hiredis' 'libspatialindex-git' 'gmp' 'postgresql')
 source=('git://github.com/minetest/'minetest{,_game}.git)
 sha1sums=('SKIP' 'SKIP')
 
@@ -33,7 +33,10 @@ prepare() {
 
 build() {
 	cd "${srcdir}/${_pkgname}"
-	CC=clang CXX=clang++ cmake . -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_FREETYPE=on -DENABLE_LEVELDB=on -DENABLE_CURL=on -DENABLE_GETTEXT=on -DENABLE_REDIS=on
+	CC=clang CXX=clang++ cmake . \
+		-DCMAKE_INSTALL_PREFIX=/usr -DENABLE_FREETYPE=on -DENABLE_LEVELDB=on \
+		-DENABLE_CURL=on -DENABLE_GETTEXT=on -DENABLE_REDIS=on \
+		-DENABLE_POSTGRESQL=on
 	make
 }
 
