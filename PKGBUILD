@@ -1,7 +1,7 @@
 # Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
 # Contributor: Julio Napurí <julionc@gmail.com>
 pkgname=webgrind
-pkgver=1.3
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Xdebug Profiling Web Frontend in PHP.'
 arch=('any')
@@ -9,8 +9,8 @@ url='https://github.com/jokkedk/webgrind'
 license=('BSD')
 depends=('php' 'xdebug')
 install="${pkgname}.install"
-source=("https://github.com/jokkedk/webgrind/archive/${pkgver}.zip")
-sha512sums=('4da3a9f717fc98786cdcd0fc254b578054209305f71c33bbba35c14ca4798b5bde9072c340cf3a80e0c9ab7584bcfba05d96ae0e5ed2d04f72e714be3fa5c517')
+source=("https://github.com/jokkedk/webgrind/archive/v${pkgver}.zip")
+sha512sums=('670d36d8b94959bc1592e0693c5d5e0b80003eeebdb639c001e2555f74ef94650d660daaca4237b56617c6ec2cc4ff01deae52a1e954d1e395e48cf1ed02a681')
 
 package() {
   mkdir -p "${pkgdir}/usr/share/webapps/webgrind"
