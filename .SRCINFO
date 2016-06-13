@@ -1,13 +1,14 @@
 pkgbase = manpages-es
-	pkgdesc = Ubuntu manpages translated to spanish
+	pkgdesc = manpages básicas del sistema traducidas al castellano
 	pkgver = 1.55
-	pkgrel = 2
+	pkgrel = 3
 	url = https://launchpad.net/ubuntu/+source/manpages-es
+	install = manpages-es.install
 	arch = any
 	license = custom
 	options = !emptydirs
 	source = https://launchpad.net/ubuntu/+archive/primary/+files/manpages-es_1.55.orig.tar.gz
-	md5sums = 13d8e00b7b88ac01d9aff3edbaa692b7
+	sha256sums = 5525558697463e107fa93e4a2275019966478dcae9f30a0f880537b9ee6de8b5
 
 pkgname = manpages-es
 
