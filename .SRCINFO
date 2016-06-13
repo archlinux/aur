@@ -1,0 +1,13 @@
+pkgbase = maltego-xl
+	pkgdesc = eXtra Large version of Maltego Client
+	pkgver = 4.0.0.8847
+	pkgrel = 1
+	url = http://paterva.com/web7/buy/maltego-clients/maltego-xl.php
+	arch = any
+	license = Commercial
+	depends = jre8-openjdk
+	source = http://paterva.com/malv4/xl/MaltegoXL.v4.0.0.8847.deb
+	md5sums = 300605a016b5e4e15f2ffb2a0c972043
+
+pkgname = maltego-xl
+
