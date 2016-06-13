@@ -1,7 +1,7 @@
 # Maintainer: Samuel Vincent Creshal <samuel@creshal.de>
 
 pkgname=yspave
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc='Simple scrypt-based CLI password manager'
 arch=('any')
@@ -13,11 +13,11 @@ optdepends=('xsel: access to X selection'
 makedepends=('python-setuptools')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/creshal/$pkgname/archive/$pkgver.tar.gz"
-	"$pkgname-$pkgver.tar.gz.asc::https://github.com/creshal/yspave/releases/download/0.1.0/0.1.0.tar.gz.asc"
+	"$pkgname-$pkgver.tar.gz.asc::https://github.com/creshal/yspave/releases/download/$pkgver/$pkgver.tar.gz.asc"
 )
 sha512sums=(
-	'66c34df6950a1f02d3b7c4c0f618e4a1b44355be25e64f8a8027ddcfc882015b9aa56cad573102840bb8969bf003d21ac00e1be04ff22f58d4a7ed580b14dad5'
-	'5a5f6f91aec011ca5a7a912a7d40843d18b83c004e5bb97b4e096597753f98e60d7d0b6af8fc1bee61be51ad6ca217f2eef5f11b8dd0d7036d50b085a92b2958'
+	'b3798231a8a5bbb8187f7b14b42c5e075d3c93cc0c77d3344ba8ffcb6516cc489e5715e5d38e8fc07d836c70391ec12d9a7b4df1db22ba63ce9c4e16912161f1'
+	'4fb4d6b71f9795e661418cf8dcb2d080ff657548d9a9f23e39c3e9e9a1af2439fd272be727ca69e7a1574ca3130fcc6e1afe6d82df43b684df230d20d02062c6'
 )
 validpgpkeys=('6992814F5117E21BB52A6C14D828F2B98DE7B0D6')
 
