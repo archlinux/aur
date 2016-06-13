@@ -1,23 +1,20 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=ocserv
-pkgver=0.11.1
+pkgver=0.11.2
 pkgrel=1
 pkgdesc="OpenConnect VPN Server"
 arch=('i686' 'x86_64')
 url="https://gitlab.com/ocserv/ocserv"
 license=('GPL2')
-depends=('autogen' 'libpcl' 'gnutls' 'http-parser' 'libnl' 'libsystemd' 'pam' 'protobuf-c' 'talloc' 'libseccomp' 'freeradius-client' 'libev')
+depends=('autogen' 'libpcl' 'gnutls' 'http-parser' 'libnl' 'libsystemd' 'pam' 'protobuf-c' 'talloc' 'libseccomp' 'freeradius-client' 'libev' 'oath-toolkit')
 makedepends=('freeradius' 'gperf')
 backup=('etc/ocserv.config' 'etc/ocserv-passwd')
-source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/ocserv/ocserv/repository/archive.tar.gz?ref=ocserv_0_11_1"
-	libs.patch)
-sha256sums=('c01a992c5bd945756fa1b11b8899bf2f42a70076ac76067243c4bd03d3552feb'
-            'ac600ec5bf93a677a5d28fc2492ecdf07b391bb4f30f88a1075024a755ffb308')
+source=("$pkgname-$pkgver.tar.gz::https://gitlab.com/ocserv/ocserv/repository/archive.tar.gz?ref=ocserv_0_11_2")
+sha256sums=('f78e2b866f0b883af8b55aa2f42d119d9adf914b0725c5c9a54ec85912713d72')
 
 prepare() {
   cd ${pkgname}-${pkgname}_*
-  patch -Np0 -b -z .orig < ../libs.patch
-  autoreconf -fiv
+  autoreconf -fi
 }
 
 build() {
