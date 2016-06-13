@@ -1,6 +1,6 @@
 # Maintainer: Anna Schumaker <anna@ocarinaproject.net>
 pkgname=ocarina
-pkgver=6.4.12
+pkgver=6.4.13
 pkgrel=1
 pkgdesc="A simple GTK+ and gstreamer based music player."
 url="http://www.ocarinaproject.net/"
@@ -13,7 +13,7 @@ conflicts=()
 replaces=()
 backup=()
 source=("http://ocarinaproject.net/wp-content/ocarina/${pkgname}-${pkgver}.tar.gz")
-sha1sums=('b7638bcb9b9acfdd21cd527644e038d79402defd')
+sha1sums=('5db8bd15b611af77ede8f350c80b3d42b496288c')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
