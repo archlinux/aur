@@ -1,7 +1,7 @@
 # Maintainer: Marcin Wieczorek <marcin@marcin.co>
 
 pkgname=messengerfordesktop-git
-pkgver=1.4.7.r67.g024028f
+pkgver=1.4.8.beta.0.r0.g78f966a
 pkgrel=1
 pkgdesc="Beautiful desktop client for Facebook Messenger. Sytten's fork"
 arch=('i686' 'x86_64')
