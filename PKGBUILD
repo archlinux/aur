@@ -18,13 +18,15 @@ install=broadcom-wl-dkms.install
 source=('broadcom-wl-dkms.conf'
         'dkms.conf.in'
         '001-null-pointer-fix.patch'
-        '002-rdtscl.patch')
+        '002-rdtscl.patch'
+        '003-linux47.patch')
 source_i686=("http://www.broadcom.com/docs/linux_sta/hybrid-v35-nodebug-pcoem-${pkgver//./_}.tar.gz")
 source_x86_64=("http://www.broadcom.com/docs/linux_sta/hybrid-v35_64-nodebug-pcoem-${pkgver//./_}.tar.gz")
 sha256sums=('b97bc588420d1542f73279e71975ccb5d81d75e534e7b5717e01d6e6adf6a283'
             'c59c3ccf5238fe93cc671e6fa2f6614c0bfec073dc79bfda4d14e3a5be96eac8'
             '32e505a651fdb9fd5e4870a9d6de21dd703dead768c2b3340a2ca46671a5852f'
-            '4ea03f102248beb8963ad00bd3e36e67519a90fa39244db065e74038c98360dd')
+            '4ea03f102248beb8963ad00bd3e36e67519a90fa39244db065e74038c98360dd'
+            'bce2bded5c3197bc9aa6a1cf19b84484ec5205ae222652b502716582dae4e18f')
 sha256sums_i686=('4f8b70b293ac8cc5c70e571ad5d1878d0f29d133a46fe7869868d9c19b5058cd')
 sha256sums_x86_64=('5f79774d5beec8f7636b59c0fb07a03108eef1e3fd3245638b20858c714144be')
 
@@ -33,6 +35,7 @@ prepare() {
 
   patch -p1 < 001-null-pointer-fix.patch
   patch -p1 < 002-rdtscl.patch
+  patch -p1 < 003-linux47.patch
 
   sed -e "s/@PACKAGE_VERSION@/${pkgver}/" dkms.conf.in > dkms.conf
 }
