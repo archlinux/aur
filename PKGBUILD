@@ -6,14 +6,14 @@
 # Contributor: Ben <ben@benmazer.net>
 
 pkgname=mpd-light
-pkgver=0.19.15
+pkgver=0.19.16
 pkgrel=1
-pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi, smbclient'
+pkgdesc='Flexible, powerful, server-side application for playing music. Light version without ao, ffmpeg, jack, modplug, pulse, shout, sidplay, soundcloud, wavpack, avahi, smbclient support.'
 url='http://www.musicpd.org/'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h')
 depends=('audiofile' 'libmad' 'curl' 'faad2' 'sqlite' 'libmms' 'libid3tag' 'libmpdclient'
-         'icu' 'libupnp' 'libnfs' 'libsamplerate' 'libsoxr')
+         'icu' 'libupnp' 'libnfs' 'libsamplerate' 'libsoxr' 'libcdio-paranoia')
 makedepends=('doxygen' 'boost')
 provides=("mpd=$pkgver")
 conflicts=('mpd')
@@ -21,7 +21,7 @@ replaces=('mpd')
 source=("http://www.musicpd.org/download/mpd/${pkgver%.*}/mpd-${pkgver}.tar.xz"
         'mpd.tmpfile'
         'mpd.conf')
-sha1sums=('5c32aff6ea3f031de5802a39a222efd7e4b1bafd'
+sha1sums=('2b110898c8365ce69a8cedd01db2404748c4c09c'
           'f4d5922abb69abb739542d8e93f4dfd748acdad7'
           'fd581b976f4931abf9b849224dcb38a73af14af0')
 backup=('etc/mpd.conf')
@@ -40,6 +40,7 @@ build() {
 	./configure \
 		--prefix=/usr \
 		--sysconfdir=/etc \
+		--enable-cdio-paranoia \
 		--enable-libmpdclient \
 		--disable-ao \
 		--disable-ffmpeg \
