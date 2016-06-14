@@ -1,8 +1,8 @@
 # Maintainer: Stefan Tatschner <rumpelsepp@sevenbyte.org>
 
 pkgname='pynote'
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Manage notes on the commandline"
 arch=('any')
 url="https://github.com/rumpelsepp/pynote"
