@@ -6,7 +6,7 @@
 # AND (!) the first line in the .install file!
 
 pkgname='tor-browser-ja'
-pkgver='5.5.2'
+pkgver='6.0.1'
 _language='ja'
 pkgrel=1
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
@@ -32,8 +32,8 @@ source+=("${pkgname}.desktop"
          "${pkgname}.png"
          "${pkgname}.sh")
 
-sha256sums_x86_64=('08dbae0a353239fad62638073f395b04d6ddf664f9de43148184389e4f9fe1c2' 'SKIP')
-sha256sums_i686=(  'adb02492193eec5a9ec3cff3724eb5e8f5a6115eb4cbb1d1127211685d8d2a62' 'SKIP')
+sha256sums_x86_64=('a7892832c6a145d8cf28398fb413b56aa6405f415bbed180dc37e55c60e8f6a1' 'SKIP')
+sha256sums_i686=(  '756a3d50e70d6de71cebd7be6f77e5e85ada4c7dd2a2571d667ecec85ffb549e' 'SKIP')
 sha256sums+=('3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7'
              '17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
              '89ed1cda6611abcbfdafef9aec78ada146643455d6675b22b72319ae286ea67e')
