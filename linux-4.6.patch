@@ -1,0 +1,14 @@
+--- setup/Linux/oss/build/pci_wrapper.inc	2014-08-31 19:40:14.000000000 +0100
++++ setup/Linux/oss/build/pci_wrapper.inc	2016-06-14 23:50:17.138446865 +0100
+@@ -71,8 +71,10 @@
+ 
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(3,8,0)
+  static int __devexit
+-#else
++#elif LINUX_VERSION_CODE < KERNEL_VERSION(4,6,0)
+  static int
++#else
++ void
+ #endif
+ osspci_remove (struct pci_dev *pcidev)
+ {
