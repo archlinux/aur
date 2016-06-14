@@ -1,0 +1,33 @@
+diff -Naupr quagga-CumulusNetworks-2.5.6_orig/configure.ac quagga-CumulusNetworks-2.5.6/configure.ac
+--- quagga-CumulusNetworks-2.5.6_orig/configure.ac	2016-02-19 07:25:28.000000000 +0600
++++ quagga-CumulusNetworks-2.5.6/configure.ac	2016-06-13 21:07:50.219963323 +0600
+@@ -49,7 +49,7 @@ dnl XXX add --pkgsrcrcdir to autoconf st
+ AC_SUBST(pkgsrcdir)
+ AC_SUBST(pkgsrcrcdir)
+ 
+-LIBS="$LIBS -L/usr/include/json/ -ljson"
++LIBS="$LIBS -L/usr/include/json-c/ -ljson-c"
+ 
+ dnl ------------
+ dnl Check CFLAGS
+diff -Naupr quagga-CumulusNetworks-2.5.6_orig/lib/json.h quagga-CumulusNetworks-2.5.6/lib/json.h
+--- quagga-CumulusNetworks-2.5.6_orig/lib/json.h	2016-02-19 07:25:28.000000000 +0600
++++ quagga-CumulusNetworks-2.5.6/lib/json.h	2016-06-13 21:07:35.103245812 +0600
+@@ -22,7 +22,7 @@
+ #ifndef _QUAGGA_JSON_H
+ #define _QUAGGA_JSON_H
+ 
+-#include <json/json.h>
++#include <json-c/json.h>
+ 
+ extern void json_object_string_add(struct json_object* obj, const char *key,
+                                    const char *s);
+diff -Naupr quagga-CumulusNetworks-2.5.6_orig/Makefile.am quagga-CumulusNetworks-2.5.6/Makefile.am
+--- quagga-CumulusNetworks-2.5.6_orig/Makefile.am	2016-02-19 07:25:28.000000000 +0600
++++ quagga-CumulusNetworks-2.5.6/Makefile.am	2016-06-13 21:07:58.493324483 +0600
+@@ -26,4 +26,4 @@ clean-local:
+ endif
+ 
+ ACLOCAL_AMFLAGS = -I m4
+-ACLOCAL_LDFLAGS = -ljson
++ACLOCAL_LDFLAGS = -ljson-c
