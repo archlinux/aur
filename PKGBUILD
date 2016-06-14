@@ -14,7 +14,7 @@ source=('http://www.media.mit.edu/quanta/qasm2circ/qasm2circ-v1.4.tgz'
         'qasm2png.patch')
 md5sums=('3621c141703beead2e5a8b007561bf75'
          '6c12a341aca1c1613ebd4c58e306ac44'
-         '689b8f2b26626cb2d14489ab872a29da'
+         'd6db4f9727b868bac962b53044c90704'
          'f6adb71b4a8ba1dfcd4572eee5a65c44')
 
 prepare() {
