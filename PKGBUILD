@@ -1,10 +1,11 @@
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=nmh-git
-pkgver=1.6+dev.r2608
+pkgver=1.6+dev.r2742
 pkgrel=1
 epoch=
 pkgdesc="Powerful electronic mail handling system, based on a set of command-line utilities."
 arch=('i686' 'x86_64')
+url="http://git.savannah.gnu.org/cgit/nmh.git"
 url="http://www.nongnu.org/nmh/"
 license=('BSD')
 groups=()
