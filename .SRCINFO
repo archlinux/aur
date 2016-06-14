@@ -1,0 +1,25 @@
+pkgbase = snapd
+	pkgdesc = Service and tools for management of snap packages.
+	pkgver = 2.0.8
+	pkgrel = 1
+	url = git://github.com/snapcore/snapd
+	install = snapd.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	makedepends = go-tools
+	makedepends = bzr
+	depends = glibc
+	depends = snap-confine
+	depends = squashfs-tools
+	options = !strip
+	options = !emptydirs
+	source = https://github.com/snapcore/snapd/archive/2.0.8.tar.gz
+	source = snapd.sh
+	md5sums = SKIP
+	md5sums = 1d841a1d09ba86945551dfc5c5658b2e
+
+pkgname = snapd
+

@@ -1,0 +1,58 @@
+## arg 1:  the new package version
+pre_install() {
+    :
+}
+
+## arg 1:  the new package version
+post_install() {
+    # We start and enable snapd.socket so it immediately is usable and the
+    # service is started on-demand on future boots. The timer is started so
+    # that snaps are automatically refreshed (updated) as new versions are
+    # published in the store.
+    systemctl enable snapd.refresh.timer
+    systemctl enable snapd.socket
+    systemctl start  snapd.refresh.timer
+    systemctl start  snapd.socket
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+pre_upgrade() {
+    :
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    :
+}
+
+## arg 1:  the old package version
+pre_remove() {
+    # We stop the socket and disable it to remove the symlink that would start
+    # it at boot.
+    systemctl stop    snapd.socket
+    systemctl disable snapd.socket
+    systemctl stop    snapd.refresh.timer
+    systemctl disable snapd.refresh.timer
+}
+
+## arg 1:  the old package version
+post_remove() {
+    # We clean up all the snap mounts created by snappy
+    find /etc/systemd/system -name "snap-*.mount" -delete
+    find /etc/systemd/system -name "snap*.service" -delete
+
+    # As well as their symlinks from the multi-user target
+    find /etc/systemd/system/multi-user.target.wants -name "snap-*.mount" -delete
+    find /etc/systemd/system/multi-user.target.wants -name "snap*.service" -delete
+
+    # We unmount all currently mounted snaps
+    if [ -n "$(mount | grep snap | awk '{print $3}')" ]; then
+        umount $(mount | grep snap | awk '{print $3}')
+    fi
+
+    # We remove the /snap directory as well as state of snappy and its snap cache
+    rm -rf /snap
+    rm -rf /var/lib/snapd
+}
