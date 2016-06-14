@@ -1,8 +1,8 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=arc-dark-suite
-_commit=6d349ec # 7 digits
-pkgver=20160613
+_commit=1edd906 # 7 digits
+pkgver=20160614
 pkgrel=1
 pkgdesc='Arc-Dark customization for Plasma 5'
 arch=('any')
@@ -30,5 +30,4 @@ pkgver(){
 
 package() {
     make -C "${pkgname}" install DESTDIR="$pkgdir"
-    make -C "${pkgname}/Kvantum" install DESTDIR="$pkgdir"
 }
