@@ -1,0 +1,12 @@
+# backup files
+*~
+*.swp
+
+# tags
+.tags*
+tags*
+
+# output
+bin/*
+build/*
+

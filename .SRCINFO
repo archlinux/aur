@@ -1,0 +1,16 @@
+pkgbase = sudodev-git
+	pkgdesc = Create your special device for a none-password sudo
+	pkgver = v0.27.r3.gf4ab7a8
+	pkgrel = 1
+	url = https://github.com/Arondight/sudodev.git
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	depends = sudo
+	source = sudodev::git+https://github.com/Arondight/sudodev.git#branch=master
+	sha256sums = SKIP
+
+pkgname = sudodev-git
+
