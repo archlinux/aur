@@ -1,9 +1,9 @@
 # Maintainer: Yen Chi Hsuan <yan12125 at gmail dot com>
 
-pkgname=jpexs-decompiler-git
 _pkgname=jpexs-decompiler
-_github_addr=jindrapetrik/jpexs-decompiler
-pkgver=20151127
+pkgname=$_pkgname-git
+pkgver=8.0.1.r232.g9b831b2
+epoch=1
 pkgrel=1
 pkgdesc="Opensource flash SWF decompiler and editor"
 arch=("any")
@@ -12,13 +12,11 @@ license=('GPL3')
 makedepends=('git' 'apache-ant' 'java-environment=8' 'python')
 depends=('java-runtime=8' 'bash') # bash for ffdec.sh
 source=(
-    "${_pkgname}"::"git+https://github.com/$_github_addr"
+    "git+https://github.com/jindrapetrik/jpexs-decompiler"
     'put_version_into_build_xml.py'
 )
-md5sums=(
-    'SKIP'
-    '7f20d8a7ae9e6fc17e9ac45d31802499'
-)
+md5sums=('SKIP'
+         '7f20d8a7ae9e6fc17e9ac45d31802499')
 
 java_8_home() {
     cd /usr/lib/jvm
@@ -28,7 +26,10 @@ java_8_home() {
 
 pkgver() {
     cd "${srcdir}/${_pkgname}"
-    git log -1 --format='%cd' --date=short | tr -d -- '-'
+    ( set -o pipefail
+      git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^version//' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    )
 }
 
 prepare() {
