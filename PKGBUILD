@@ -13,6 +13,10 @@ depends=('python-tornado' 'python-decorator' 'python3-kitchen' 'ncurses' 'python
 source=(https://github.com/michael-lazar/rtv/archive/v$pkgver.tar.gz)
 md5sums=('01b238367f6d75a7fd0eda453e272abe')
 
+build() {
+   cd "$srcdir/$pkgname-$pkgver"
+   sed -i -e 's/praw==3.4.0/praw==3.5.0/' setup.py
+}
 package() {
    cd "$srcdir/$pkgname-$pkgver"
    python setup.py install --root="$pkgdir/" --optimize=1
