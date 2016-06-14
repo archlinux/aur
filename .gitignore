@@ -7,6 +7,9 @@
 tags*
 
 # output
-bin/*
-build/*
+*.tar.xz
+/pkg/
+/src/
+/sudodev/
+
 
