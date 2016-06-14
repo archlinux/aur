@@ -34,7 +34,8 @@ source=("${_pkgname}-${_atomver}.tar.gz::${url}/archive/v${_atomver}.tar.gz"
 "git+${_fusurl}/terminal-fusion"
 "atom"
 "atom.desktop"
-"theme.patch")
+"theme.patch"
+"about-arch.patch")
 md5sums=('158c18d35d071403db18bdd85fa2e738'
          'SKIP'
          'SKIP'

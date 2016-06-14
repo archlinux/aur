@@ -32,7 +32,6 @@ linter
 *.xz
 *.gz
 *.log*
-about*
 dark-bint-syntax
 fusion-ui
 language-archlinux
@@ -45,4 +44,3 @@ mydict
 language-*
 terminal-*
 *-terminal
-atom-*
