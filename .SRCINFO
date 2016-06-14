@@ -1,0 +1,20 @@
+pkgbase = snmpsim-git
+	pkgdesc = a software that would act like a multitude of real physical devices from SNMP Manager's point of view
+	pkgver = 0.3.1.r421.7323ff1
+	pkgrel = 1
+	url = http://snmpsim.sourceforge.net/
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = python
+	depends = python-pysnmp
+	depends = python-pyasn1
+	optdepends = pycrypto: SNMPv3 support
+	provides = snmpsim
+	conflicts = snmpsim
+	options = !emptydirs
+	source = git+https://github.com/etingof/snmpsim.git
+	md5sums = SKIP
+
+pkgname = snmpsim-git
+
