@@ -1,13 +1,13 @@
 pkgbase = python-osdetect
 	pkgdesc = A Python module to detect the operating system.
-	pkgver = 1.1.0
-	pkgrel = 2
+	pkgver = 1.1.1
+	pkgrel = 1
 	url = http://malte70.github.com/OSDetect
 	arch = any
 	license = BSD
 	depends = python
-	source = python-osdetect-1.1.0.tar.gz::https://github.com/malte70/OSDetect/archive/1.1.0.tar.gz
-	sha256sums = 6a309bd13879442469d9d461f13b7824c259336879a51d0988136aac37ddf7d2
+	source = python-osdetect-1.1.1.tar.gz::https://github.com/malte70/OSDetect/archive/v1.1.1.tar.gz
+	sha256sums = fc3a3fc358b033d278123f11bad2f5ef3deb6e6943ee3ec312e646bad780cea6
 
 pkgname = python-osdetect
 
