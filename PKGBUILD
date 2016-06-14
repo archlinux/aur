@@ -31,6 +31,8 @@ package() {
   install -Dm 755 qasm2pdf "${pkgdir}/usr/bin/qasm2pdf"
 
   install -Dm 644 xyqcirc.tex "${pkgdir}/usr/share/qasm2circ/xyqcirc.tex"
+  install -Dm 644 meter.epsf "${pkgdir}/usr/share/qasm2circ/meter.epsf"
+  install -Dm 644 README "${pkgdir}/usr/share/qasm2circ/README"
 
   ## I didn't manage to make it work yet
   # install -Dm 755 qasm2png "${pkgdir}/usr/bin/qasm2png"
