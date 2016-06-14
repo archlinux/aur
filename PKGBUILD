@@ -1,7 +1,7 @@
 # Maintainer: Jenya Sovetkin <e.sovetkin at gmail com>
 pkgname=qasm2circ
 pkgver=1.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Quantum circuit viewer"
 arch=(any)
 license=('unknown')
@@ -14,7 +14,7 @@ source=('http://www.media.mit.edu/quanta/qasm2circ/qasm2circ-v1.4.tgz'
         'qasm2png.patch')
 md5sums=('3621c141703beead2e5a8b007561bf75'
          '6c12a341aca1c1613ebd4c58e306ac44'
-         'd6db4f9727b868bac962b53044c90704'
+         '8df8173de8761aba84dc3c44d8013d5c'
          'f6adb71b4a8ba1dfcd4572eee5a65c44')
 
 prepare() {
