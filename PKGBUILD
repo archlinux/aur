@@ -2,7 +2,7 @@
 
 _pkgname=sview
 pkgname=$_pkgname-git
-pkgver=15.10.r67.gd2e2ffd
+pkgver=15.11.r160.gc5122f2
 pkgrel=1
 pkgdesc="Stereoscopic 3D video player with OpenGL UI"
 arch=('i686' 'x86_64')
@@ -19,6 +19,19 @@ md5sums=('SKIP')
 pkgver() {
   cd $_pkgname
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g'
+}
+
+prepare() {
+    sed -i.bak 's/PixelFormat/AVPixelFormat/g;s/AVAVPixelFormat/AVPixelFormat/g' $srcdir/sview/include/StAV/stAV.h
+    sed -i.bak 's/PixelFormat/AVPixelFormat/g;s/AVAVPixelFormat/AVPixelFormat/g' $srcdir/sview/include/StAV/StAVFrame.h 
+    sed -i.bak 's/PixelFormat/AVPixelFormat/g;s/AVAVPixelFormat/AVPixelFormat/g' $srcdir/sview/StShared/StAVFrame.cpp 
+    sed -i.bak 's/PixelFormat/AVPixelFormat/g;s/AVAVPixelFormat/AVPixelFormat/g' $srcdir/sview/StShared/StAVImage.cpp
+    sed -i.bak 's/PixelFormat/AVPixelFormat/g;s/AVAVPixelFormat/AVPixelFormat/g' $srcdir/sview/StShared/stAV.cpp
+    sed -i.bak 's/PixelFormat/AVPixelFormat/g;s/AVAVPixelFormat/AVPixelFormat/g' $srcdir/sview/StMoviePlayer/StVideo/StAVPacketQueue.h
+    sed -i.bak 's/PixelFormat/AVPixelFormat/g;s/AVAVPixelFormat/AVPixelFormat/g' $srcdir/sview/StMoviePlayer/StVideo/StAVPacketQueue.cpp
+    sed -i.bak 's/PixelFormat/AVPixelFormat/g;s/AVAVPixelFormat/AVPixelFormat/g' $srcdir/sview/StMoviePlayer/StVideo/StVideoQueue.h
+    sed -i.bak 's/PixelFormat/AVPixelFormat/g;s/AVAVPixelFormat/AVPixelFormat/g' $srcdir/sview/StMoviePlayer/StVideo/StVideoQueue.cpp
+    sed -i.bak 's/PixelFormat/AVPixelFormat/g;s/AVAVPixelFormat/AVPixelFormat/g' $srcdir/sview/StMoviePlayer/StVideo/StVideo.cpp
 }
 
 build() {
