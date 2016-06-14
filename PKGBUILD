@@ -1,6 +1,6 @@
 # Maintainer: Zygmunt Krynicki <me at zygoon dot pl>
 pkgname=snapd
-pkgver=2.0.8
+pkgver=2.0.8.1
 pkgrel=1
 pkgdesc="Service and tools for management of snap packages."
 arch=('i686' 'x86_64')
