@@ -9,8 +9,8 @@ _electron_ver=0.36.12
 
 pkgname=${_pkgname}-editor-${_version}
 _atomver=1.8.0
-pkgver=1.8.0.arch0.2.20.e0.36.12
-pkgrel=1
+pkgver=1.8.0.arch0.2.21.e0.36.12
+pkgrel=2
 pkgdesc="Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed."
 arch=('x86_64' 'i686')
 url='https://github.com/atom/atom'
@@ -31,7 +31,7 @@ source=("${_pkgname}-${_atomver}.tar.gz::${url}/archive/v${_atomver}.tar.gz"
 "git+${_fusurl}/language-patch2"
 "language-unix-shell::git+${_fusurl}/language-shellscript"
 "git+${_fusurl}/mydict"
-"platformio-ide-terminal::git+https://github.com/platformio/platformio-atom-ide-terminal"
+"git+${_fusurl}/terminal-fusion"
 "atom"
 "atom.desktop"
 "theme.patch")
@@ -49,7 +49,8 @@ md5sums=('158c18d35d071403db18bdd85fa2e738'
          'SKIP'
          '74cc026d4104072dadb2733745f1b268'
          '367f71ad1cfc2e03e97a48d2e32995fb'
-         '23a0d25e1759dc5bd0e6f7101fd8ea70')
+         '23a0d25e1759dc5bd0e6f7101fd8ea70'
+         'd31a5fe8685a1886ffd7fcce2fd585e1')
 
 pkgver() {
   _language_archlinux_ver="$(sed -n "s/\"version\": //p" $srcdir/language-archlinux/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
@@ -68,20 +69,18 @@ prepare() {
   _language_liquid_ver="$(sed -n "s/\"version\": //p" $srcdir/language-liquid/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
   _language_patch2_ver="$(sed -n "s/\"version\": //p" $srcdir/language-patch2/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
   _language_unix_shell_ver="$(sed -n "s/\"version\": //p" $srcdir/language-unix-shell/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
-  _platformio_ide_terminal_ver="$(sed -n "s/\"version\": //p" $srcdir/platformio-ide-terminal/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
+  _terminal_fusion_ver="$(sed -n "s/\"version\": //p" $srcdir/terminal-fusion/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
 
   sed -i -e "/exception-reporting/d" \
          -e "/metrics/d" \
-         -e "/atom-dark/d" \
-         -e "/atom-light/d" \
-         -e "/base16/d" \
-         -e "/solarized/d" \
-         -e "/one/d" \
+         -e "/-ui/d" \
+         -e "/-syntax/d" \
+         -e "/-theme/d" \
          -e "s/0.36.8/${_electron_ver}/g" \
          -e "s/\"language-gfm\": \".*\",/\"language-gfm2\": \"${_language_gfm2_ver}\",\n    \"language-ini-desktop\": \"${_language_ini_desktop_ver}\",\n    \"language-liquid\": \"${_language_liquid_ver}\",\n    \"language-patch2\": \"${_language_patch2_ver}\",/g" \
          -e "/\"dependencies\": {/a \
                      \"language-patch2\": \"${_language_patch2_url}\"," \
-         -e "s/\"language-shellscript\": \".*\",/\"language-unix-shell\": \"${_language_unix_shell_ver}\",\n    \"language-archlinux\": \"${_language_archlinux_ver}\",/g" \
+         -e "s/\"language-shellscript\": \".*\",/\"language-unix-shell\": \"${_language_unix_shell_ver}\",\n    \"language-archlinux\": \"${_language_archlinux_ver}\",\n    \"terminal-fusion\": \"${_terminal_fusion_ver}\",/g" \
          -e "s/\"about\": \".*\"/\"about-arch\": \"${_about_arch_ver}\"/g" \
          -e "/\"packageDependencies\": {/a \
               \"dark-bint-syntax\": \"${_dark_bint_syntax_ver}\",\n    \"fusion-ui\": \"${_fusion_ui_ver}\"," package.json
