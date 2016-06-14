@@ -15,7 +15,7 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-install=
+install="${pkgname%-git}.install"
 source=("${pkgname%-git}::git+${url}#branch=master")
 noextract=()
 sha256sums=('SKIP')

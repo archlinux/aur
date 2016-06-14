@@ -1,0 +1,10 @@
+## arg 1:  the new package version
+post_install () {
+  echo 'Nouveau will disabled after reboot.'
+}
+
+## arg 1:  the new package version
+post_remove () {
+  echo 'Nouveau will load after reboot.'
+}
+
