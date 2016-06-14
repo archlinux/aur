@@ -6,6 +6,7 @@ pkgbase = xf86-video-nouveau-blacklist-git
 	arch = any
 	license = GPL
 	makedepends = git
+	depends = xf86-video-nouveau
 	source = xf86-video-nouveau-blacklist::git+https://github.com/Arondight/xf86-video-nouveau-blacklist.git#branch=master
 	sha256sums = SKIP
 

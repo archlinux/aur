@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/Arondight/xf86-video-nouveau-blacklist.git'
 license=('GPL')
 groups=()
-depends=()
+depends=('xf86-video-nouveau')
 makedepends=('git')
 provides=()
 conflicts=()
@@ -42,7 +42,6 @@ check() {
 
 package() {
   cd "${srcdir}/${pkgname%-git}"
-
   make install DESTDIR="${pkgdir}/"
 }
 
