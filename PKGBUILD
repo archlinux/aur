@@ -2,7 +2,7 @@
 # Contributor: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
 # Contributor: Pieter Robyns <pieter.robyns@uhasselt.be>
 pkgname=python2-tensorflow-git
-pkgver=0.8.0rc0.r419.g9e5ba83
+pkgver=0.8.0rc0.r1639.gbdc4373
 pkgrel=1
 url="http://tensorflow.org"
 license=('Apache')
@@ -13,13 +13,11 @@ optdepends=('cuda: GPU support'
             'cudnn: GPU support')
 makedepends=('python2-pip' 'python2-wheel' 'bazel' 'swig' 'git' 'rsync')
 source=("git+https://github.com/tensorflow/tensorflow.git"
-        "git+https://github.com/google/protobuf.git"
         "flags.patch")
 sha256sums=('SKIP'
-            'SKIP'
             '513f634cc1cab44eb17204616617695ea23355462f918873678fcac1a95ae778')
-provide=('python2-tensorflow')
-conflicts=('python2-tensorflow' 'python2-tensorflow-cuda')
+provides=('python2-tensorflow')
+conflicts=('python2-tensorflow')
 
 _build_opts=""
 
@@ -32,9 +30,6 @@ pkgver() {
 
 prepare() { 
   cd "${srcdir}/tensorflow"
-  git submodule init
-  git config submodule.google/protobuf.url ${srcdir}/protobuf
-  git submodule update
 
   # Set up some things for building
   mkdir -p "${srcdir}/tmp-${PYTHON}"
