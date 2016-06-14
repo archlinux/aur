@@ -2,7 +2,7 @@
 
 pkgbase=gridcoinresearch
 pkgname=('gridcoinresearch-daemon' 'gridcoinresearch-qt')
-pkgver=3.5.6.5
+pkgver=3.5.6.7
 pkgrel=1
 pkgdesc="Gridcoin P2P Cryptocurrency"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ makedepends=('boost' 'qt5-base' 'qt5-tools' 'openssl' 'libzip' 'qrencode' 'db' '
 source=("gridcoinresearch-${pkgver}.tar.gz::https://github.com/gridcoin/Gridcoin-Research/archive/${pkgver}.tar.gz"
         'gridcoinresearch-qt.desktop')
 
-sha256sums=('3e647538bae7cc814c77601115a9e6ed8f6ec7bdf13645ef0e5f63e638f523b3'
+sha256sums=('b9f626ac9903f7dfc5dac0d1b7213e0ddc2262e927643d374f8f8efa1a15c1fb'
           '1c547e531726d3172895683f9673379fc51639689989e49494aa0f40fc6cb053')
 
 prepare() {
