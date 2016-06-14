@@ -20,7 +20,7 @@ backup=('etc/hibernate/hibernate.conf' 'etc/hibernate/tuxonice.conf' \
         'etc/hibernate/ususpend-both.conf' 'etc/hibernate/sysfs-ram.conf' \
         'etc/hibernate/ususpend-ram.conf' 'etc/hibernate/sysfs-disk.conf' \
         'etc/hibernate/ususpend-disk.conf')
-source=(http://tuxonice.net/files/${pkgname}-${pkgver}.tar.gz
+source=(http://tuxonice.nigelcunningham.com.au/downloads/all/${pkgname}-${pkgver}.tar.gz
         hibernate-script-${pkgver}-arch.patch
         hibernate.rc
         pmutils_hook
