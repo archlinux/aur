@@ -1,5 +1,7 @@
 # Maintainer: Andrejs Mivreņiks <gim at fastmail dot fm>
 # Contributor: Janne Haapsaari <haaja@iki.fi>
+# Contributor: maus25 <mirko378@gmail.com>
+
 pkgname=gnome-shell-pomodoro
 pkgver=0.11.3
 pkgrel=1
