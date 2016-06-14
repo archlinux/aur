@@ -3,18 +3,20 @@ pkgname=systemsim-cell
 pkgver=3.1
 pkgrel=1
 pkgdesc="IBM Full-System Simulator for the Cell Broadband Engine Processor"
-arch=(x86_64)
+arch=(i686 x86_64)
 url="http://www.ibm.com/"
 license=("IBM Licensed Materials")
 groups=('Cell Simulator')
 depends=(gcc-libs perl tk)
 options=(!strip)
-source=(http://git.gitbrew.org/openclit/packages/CELL_EMULATOR/systemsim-cell-3.1-25.f9.x86_64.rpm
-        99-systemsim-cell.rules
+source_i686=(systemsim-cell-3.1-25.f9.i386.rpm)
+source_x86_64=(systemsim-cell-3.1-25.f9.x86_64.rpm)
+source=(99-systemsim-cell.rules
         systemsim-cell.sh)
-md5sums=('4b069cebf26bd16cec8e768d2c68e830'
-         'e470b6ef7d042cfe4ade6180b5c45cb8'
+md5sums=('e470b6ef7d042cfe4ade6180b5c45cb8'
          'bf46bc7b66e0aa4f3c8894a49bdbade8')
+md5sums_i686=('9acd01482d3e50163119a3791bdd4503')
+md5sums_x86_64=('4b069cebf26bd16cec8e768d2c68e830')
 
 package() {
   cp -r "${srcdir}"/opt "${pkgdir}"
