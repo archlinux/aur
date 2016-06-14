@@ -1,7 +1,12 @@
 Game Changelog
 http://pokemon-revolution-online.net/Forum/viewtopic.php?f=14&t=4563
 
-0.94.20160613-1
+0.95.2.20160614-3
+* new upstream version
+* move unzip to makedepends
+* now with install
+
+0.95.20160613-1
 * new version of PRO
 * added 'unzip' 'xdg-utils' 'desktop-file-utils' as dependency
 * using unzip as bsdtar also bsdtar: Invalid central directory signature ;; bsdtar: Error exit delayed from previous errors.

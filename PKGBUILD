@@ -1,18 +1,20 @@
 # Maintainer: Fabian <plusfabi[AT+thegoogleadress]>
 pkgname=pokemon-revolution-online-bin
-pkgver=0.95.20160613
-pkgrel=1
+pkgver=0.95.2.20160614
+pkgrel=3
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
 url="http://pokemon-revolution-online.net"
 license=('custom')
-depends=('gcc-libs-multilib' 'xdg-utils' 'desktop-file-utils' 'unzip')
+depends=('gcc-libs-multilib' 'xdg-utils' 'desktop-file-utils')
+makedepends=('unzip')
 optdepends=('gtk2: required for the Unity ScreenSelector plugin')
 conflicts=('pokemon-revolution-online')
 changelog="change.log"
+install="INSTALL"
 source=('net.pokemon-revolution-online.desktop' 'change.log' 'pokemonrevolution' 'copyright' 'pokemonrevolution.svg')
 md5sums=('3215173b6f1673d868e71f1d953ed9d2'
-         '4ada7224dfa493e7a50fe93b4605c944'
+         '03fa9c99e0c2730f6b618d4283a2c5dc'
          '1b667f450341675b6b2c1750e034516c'
          '0efcd0393015ff149217f9ced4670513'
          '8446ead3097e1b87e3a63b667d956569')
@@ -23,12 +25,12 @@ package() {
     # Variables
     ## i know this isnt a good thing and nobody wants to see this on aur, but itll make things easier for me #Fabian
     ## directory files naming is usually VNAMING_Date, binary VNAMING.x86_64 
-    __VNAMING="PROLinux64_95" 
+    __VNAMING="PROLinux64_952" 
     
     __DLDIR=$(xdg-user-dir DOWNLOAD)
     __DDLA="http://tiny.cc/PROLinux"
-    __DDLFN="PROLinux.zip"
-    __DDLFMD5="5babd90543bb77a80806dcd800c183b0"
+    __DDLFN="PRO952_Linux.zip"
+    __DDLFMD5="bd2be1a626b202b1df26398371de6693"
     
     ## "Something's missing"? -> No One Cares - Atreyu c;
     if [ ! -f ${__DLDIR}/${__DDLFN} ]; then
@@ -98,9 +100,4 @@ package() {
     ## move the copyright text
     install -D -m644 "${srcdir}/copyright" \
     "${pkgdir}/usr/share/licenses/pokemon-revolution-online-bin/copyright"
-}
-
-post_install() {
-    xdg-icon-resource forceupdate
-    update-desktop-database -q
 }
