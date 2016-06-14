@@ -21,6 +21,10 @@ md5sums_x86_64=('4b069cebf26bd16cec8e768d2c68e830')
 package() {
   cp -r "${srcdir}"/opt "${pkgdir}"
 
+  for f in systemsim-cell emitter/stripstats_live; do
+    sed -i 's/8\.5\.so/8.6.so/g' "${pkgdir}/opt/ibm/systemsim-cell/bin/${f}"
+  done
+
   chmod 4755 "${pkgdir}/opt/ibm/systemsim-cell/bin/snif"
 
   mkdir -p "${pkgdir}/usr/lib/udev/rules.d"
