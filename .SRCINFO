@@ -1,8 +1,7 @@
 pkgbase = lenovo-s20-30
 	pkgdesc = Configuration to support netbook Lenovo S20-30
 	pkgver = 0.1.2
-	pkgrel = 2
-	url = https://bitbucket.org/raimar/lenovo-s20-30
+	pkgrel = 3
 	install = install
 	arch = any
 	license = GPL2

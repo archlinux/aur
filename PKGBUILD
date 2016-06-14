@@ -2,9 +2,8 @@
 
 pkgname=lenovo-s20-30
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Configuration to support netbook Lenovo S20-30'
-url='https://bitbucket.org/raimar/lenovo-s20-30'
 arch=(any)
 license=('GPL2')
 depends=('bash')
