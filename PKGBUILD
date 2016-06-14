@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-git
-pkgver=20160612
+pkgver=20160614
 pkgrel=1
 pkgdesc="Meta-package for modified and adaptive Papirus theme (git version)"
 arch=('any')
@@ -24,7 +24,6 @@ depends=(
              "papirus-k3b-theme-git: Papirus theme for K3B (git version)"
              "papirus-kmail-theme-git: Papirus theme for KMail (git version)"
              "papirus-kvantum-theme-git: Papirus theme for Kvantum theme engine (git version)"
-             "papirus-qtcurve-theme-git: Papirus decorations for QtCurve (git version)"
              "papirus-smplayer-theme-git: Papirus theme for SMPlayer (git version)"
              "papirus-vlc-theme-git: Papirus theme for VLC Media Player (git version)"
              "papirus-yakuake-theme-git: Papirus theme for Yakuake (git version)"
