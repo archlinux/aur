@@ -11,17 +11,12 @@ source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 md5sums=(f1960ef82c4b5c6a389e44915a9f1d3d)
 validpgpkeys=()
 
-prepare() {
-             cd ~
-             echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/jre" >> .bash_profile	
-}
-
 package() {
              install -dm755 "$pkgdir"/usr/share/"$pkgname"
              install -dm755 "$pkgdir"/usr/bin
              cp -rf "$srcdir"/JavaSnoop/* "$pkgdir"/usr/share/"$pkgname"/
              chmod +x "$pkgdir"/usr/share/"$pkgname"/startup.sh
-             echo "source ~/.bash_profile && cd /usr/share/javasnoop/ && ./startup.sh" >> "$pkgname"
+             echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/jre && cd /usr/share/javasnoop/ && ./startup.sh" >> "$pkgname"
              chmod +x "$pkgname"
              cp "$pkgname" "$pkgdir"/usr/bin/"$pkgname"
 }
