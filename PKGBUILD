@@ -1,7 +1,7 @@
 # Maintainer: Mathias Bragagia <youremail@domain.com>
 pkgname=kana-p-dev
 pkgver=0.6
-pkgrel=6
+pkgrel=7
 pkgdesc="Lite desktop manager - use lightdm, awesome and compton - dev channel"
 arch=('any')
 url="https://github.com/bragagia/kana-p"
