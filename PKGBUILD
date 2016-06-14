@@ -11,7 +11,7 @@ pkgbase=oss-git
 pkgname=oss-git
 true && pkgname=(oss-git libflashsupport-oss-git)
 pkgver=ac48ed
-pkgrel=3
+pkgrel=4
 arch=(i686 x86_64)
 url="http://developer.opensound.com/"
 license=(GPL2)
@@ -19,6 +19,7 @@ makedepends=(gtk2 git)
 source=(oss::git://git.code.sourceforge.net/p/opensound/git
 	linux-4.0.patch::http://www.4front-tech.com/forum/download/file.php?id=164
 	gcc-5.patch
+	linux-4.6.patch
         oss.service
         remove-hal.patch
         rm-init-scripts.patch
@@ -28,6 +29,7 @@ source=(oss::git://git.code.sourceforge.net/p/opensound/git
 sha512sums=('SKIP'
 	    '504efe3af933af69e14408215a8a71d6b94d181e076f90be538f859f1d2c2ae6d2e8e49499c1e50ee3f074004e3f79c1da2b734c95cc666b98d566d404cfc7a5'
 	    '762a8e84d3106ae26ee50e4022c62bee551d2a46923945b291975d3c1ff7a87876ad4a94408fe1718a5dd4613d279a0f7a8820f8fcb0479ca1f210bc711ea835'
+	    'a9b97ff0884868a51d3a317d06b6e3df4ccd201d1284f8cd545252cebc6f20e9735a2768cb74bf74dc09cacbb4b3909341797e30d03804ab05a6b3b6e40484ec'
             '355e1380432947c0e9caa21114b2c3debeb162fb5abcf845125ec281ce52b437ad1ee1db04d37e9b7a5ac79816c4dcbc21b4ed4cf8191f71218d99acd7bab70e'
             '6956e5e2e9323b568bb18e80bbee591b0e5ffd3d4612a50df09879941b2733c31d6b3178dc9a46c283bd1629f76b7ff5e2b54893a42a47f6379eaee4731fd9be'
             '64e6d9d8eb5320f737d3a0698a245da2b2d141b68cfb2f02e448144d1c610aa8b8a6c38b56fcca364d63171a49afe93161a00545cdb90086b5328997b3096690'
@@ -51,6 +53,7 @@ prepare() {
   patch -p1 < "$srcdir/linux-4.0.patch"
   # - no longer required from build 2010
   # patch -p0 < "$srcdir/linux-3.14.0.patch"
+  patch -p0 < "$srcdir/linux-4.6.patch"
   patch -p0 < "$srcdir/ossvermagic.patch"
 
   # make OSS compile with gcc-5
