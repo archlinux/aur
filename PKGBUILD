@@ -2,7 +2,7 @@
 
 pkgname=tag-ag
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='tag: Instantly jump to your ag matches'
 arch=('i686' 'x86_64')
 url='https://github.com/aykamko/tag'

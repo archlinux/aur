@@ -37,3 +37,9 @@ It is as simple as running the following command in the repository's root direct
 ```bash
 $ mksrcinfo
 ```
+
+However, I prefer to use a git pre-commit hook ([pre-commit.sh](pre-commit.sh)) to do this automatically. Set it up with this command:
+
+```bash
+$ ln -s ../../pre-commit.sh .git/hooks/pre-commit
+```
