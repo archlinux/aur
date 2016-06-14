@@ -26,7 +26,7 @@ ExecStartPre=/usr/bin/mkdir -p "$ACI_DIRECTORY"
 ExecStartPre=/usr/bin/mkdir -p "$TEMPLATE_DIRECTORY"
 ExecStart=/usr/bin/acserver "$SERVER_NAME" "$ACI_DIRECTORY" "$TEMPLATE_DIRECTORY" "$USERNAME" "$PASSWORD" $FLAGS
 #
-Restart=always
+Restart=on-failure
 RestartSec=1s
 
 [Install]
