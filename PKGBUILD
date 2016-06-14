@@ -13,8 +13,8 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=46.0.1
-pkgrel=3
+pkgver=47.0
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -28,12 +28,12 @@ if [ $_gtk3 ] ; then
 fi
 
 makedepends=('unzip' 'zip' 'diffutils' 'python2' 'yasm' 'mesa' 'imake'
-             'xorg-server-xvfb' 'libpulse' 'inetutils')
+             'xorg-server-xvfb' 'libpulse' 'inetutils' 'autoconf2.13')
 optdepends=('networkmanager: Location detection via available WiFi networks'
 	    'upower: Battery API' )
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=32eafb4c7b34
+_patchrev=2f9f2e040647
 options=('!emptydirs'  'strip' )
 _patchurl=http://www.rosenauer.org/hg/mozilla/raw-file/$_patchrev
 source=(https://ftp.mozilla.org/pub/mozilla.org/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz
@@ -198,7 +198,7 @@ package() {
   #https://bugzilla.mozilla.org/show_bug.cgi?id=658850
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }
-md5sums=('3e3b90268b8a634f7c60a25eb3a04c8c'
+md5sums=('0bd5991a6c821dd1a34ead0f8bbb301a'
          '3bf79ce63bd0b0c11a9403ecc251c583'
          '9b02198df96be08f2a0a323ac2e6c2a2'
          'dbf14588e85812ee769bd735823a0146'
@@ -206,12 +206,12 @@ md5sums=('3e3b90268b8a634f7c60a25eb3a04c8c'
          '05bb69d25fb3572c618e3adf1ee7b670'
          '6e335a517c68488941340ee1c23f97b0'
          '121a0d61ebe994e69f4428c13a4a5549'
-         '3a99093ea0b694347b05a4c36e651381'
+         '04ff0dcb88fd94363f9936701a58925e'
          '6c9a8cb4bcaa71e5f98648b6baee9ccd'
-         'c6051dc51edf9e6af0270bc333d8a1c2'
+         '1a2454e6ae55b05b52a2f4fa15c74d32'
          '903307f923a459189a5a6062ff9df38c'
          '0c684360f1df4536512d51873c1d243d'
-         '06192dd34d7f6078353d4da5725d1d57'
+         'ca230419b22e31220f1278ef639db0dd'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3fa8bd22d97248de529780f5797178af'
          '43550e772f110a338d5a42914ee2c3a6'
