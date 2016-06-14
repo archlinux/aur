@@ -1,20 +1,22 @@
-# Maintainer: Michael Düll <mail@akurei.me> PGP-Key: C0DEA350
+# Maintainer: Quey-Liang Kao <s101062801@m101.nthu.edu.tw>
+# Contributor: Michael Düll <mail@akurei.me>
 # Contributor: sancspi <sancospi [at] gmail.com>
 # Contributor: tze <tze@datalove.me>
 
 pkgname=jcryptool
-pkgver=0.9.8
-pkgrel=1
-epoch=1
+pkgver=0.9.9
+pkgrel=2
 pkgdesc="A cryptographer's e-learning application. You can use it to apply and analyse cryptographic algorithms."
 arch=('i686' 'x86_64')
 license=('EPL')
 url="http://www.cryptool.org/en/jcryptool"
-depends=('java-environment' 'python2' 'libxext' 'libxrender' 'fontconfig')
+depends=('glibc' 'java-environment' 'python2' 'libxext' 'libxrender' 'fontconfig')
 install=jcryptool.install
 _arch='x86_64'
 [ "$CARCH" = 'i686' ] && _arch='x86'
-[ "$CARCH" = 'i686' ] && sha512sums[0]='5440c3072ca72474286a6b148db3366e356e4987e890c3f1ad8dd09390fbf16b1815f98ae9b8c714020d067a468ccaae42e17fce0007fc9932539b0a0a22d5ee'
+[ "$CARCH" = 'i686' ] && sha512sums[0]='44fd4bd14965a00901b30619ad2ca0b18b63d0bfc22d64a68a5a638ec9eb8091cc7c6217b368461b41215f08345825e87d5af84da46bea8927e6ec5a538f78b0'
+
+# Weekly build version keep us up-to-date 
 source=(
 http://www.cryptool.org/jctdownload/Builds/downloads/stable/${pkgname}-${pkgver}-linux.gtk.${_arch}.tar.gz
 jcryptool.install
