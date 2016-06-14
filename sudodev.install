@@ -1,0 +1,24 @@
+## arg 1:  the new package version
+post_install () {
+  systemctl daemon-reload
+  systemctl enable sudodevd.service
+  systemctl restart sudodevd.service
+}
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade () {
+  systemctl daemon-reload
+}
+
+## arg 1:  the new package version
+pre_remove () {
+  systemctl disable sudodevd.service
+  systemctl stop sudodevd.service
+}
+
+## arg 1:  the new package version
+post_remove () {
+  systemctl daemon-reload
+}
+
