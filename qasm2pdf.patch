@@ -1,8 +1,8 @@
 diff --git a/qasm2pdf b/qasm2pdf
-index 3ac2123..c3f1e1f 100755
+index 3ac2123..253685a 100755
 --- a/qasm2pdf
 +++ b/qasm2pdf
-@@ -1,26 +1,40 @@
+@@ -1,25 +1,39 @@
 -#!/bin/csh
 +#!/bin/bash
  #
@@ -16,15 +16,21 @@ index 3ac2123..c3f1e1f 100755
  # Shell script to convert qasm files to pdf, using the qasm2tex python script
  #
 -# Usage:  qasm2pdf foo.qasm
-+# Usage:  qasm2pdf foo1.qasm dir/foo2.qasm
++# Usage:  qasm2pdf foo.qasm (or several files)
  #
--# Produces: foo.pdf  (and also foo.tex, foo.epsf)
--
+ # Produces: foo.pdf  (and also foo.tex, foo.epsf)
+ 
 -foreach i ($*)
--
++for file in "$@"
++do
++    directory="$(dirname file)"
++    
++    filename="$(basename file)"
++    filename="${filename%.*}"
+ 
 -        set t = `echo $i | sed "s/.qasm//"`
-+# Produces: foo1.pdf and foo2.pdf in the correspoding directories (and
-+# also foo.tex, foo.epsf)
++    mkdir -p /tmp/qasm2pdf
++    cd /tmp/qasm2pdf
  
 -	python qasm2tex.py $i >! $t.tex
 -	if (-z $t.tex) then
@@ -35,17 +41,7 @@ index 3ac2123..c3f1e1f 100755
 -	    epstopdf $t.eps
 -	endif
 -end
-+for file in "$@"
-+do
-+   directory="$(dirname file)"
-+    
-+   filename="$(basename file)"
-+   filename="${filename%.*}"
-+
-+   mkdir -p /tmp/qasm2pdf
-+   cd /tmp/qasm2pdf
-+
-+   cp /usr/share/qasm2circ/xyqcirc.tex .
++    cp /usr/share/qasm2circ/xyqcirc.tex .
 +    
 +	  qasm2tex ${file} > ${filename}.tex
 +    
@@ -56,7 +52,7 @@ index 3ac2123..c3f1e1f 100755
 +	      latex ${filename}
 +	      dvips -D2400 -E -o ${filename}.eps ${filename}
 +	      epstopdf ${filename}.eps
-+       mv ${filename}.pdf ${directory}/.
++        mv ${filename}.pdf ${directory}/.
 +	  fi
 +done
 -- 
