@@ -2,7 +2,7 @@
 pkgname=adapta-gtk-theme
 _gtk3_version='3.21'
 _theme_name=Adapta
-pkgver="${_gtk3_version}.2.118"
+pkgver="${_gtk3_version}.2.122"
 pkgrel=1
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
@@ -27,7 +27,7 @@ makedepends=('glib2>=2.48.0'
 _tri_fadeno="tri-fadeno.jpg"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${pkgver}-${_tri_fadeno}::${url}/raw/master/.github/img/${_tri_fadeno}")
-sha256sums=('afaca359d9ca022fb6536b529e63d8bc62c996c46610c689a459476f5798b366'
+sha256sums=('bf4fdd993b1121cb6feed2433d2edbf35510c3582967f4d43126798eb4e2bc7c'
             '807bd3d99fb492569caf050cfa9b5c75d4e6a072007637fe8e583a3f5c0bea24')
 
 build() {
