@@ -5,7 +5,7 @@
 
 pkgname=git-crypt
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Transparent file encryption in Git"
 arch=('i686' 'x86_64')
 url="https://www.agwa.name/projects/${pkgname}/"
@@ -17,10 +17,10 @@ sha256sums=('5150144a528bc74eeb47a2884cf2fefe978a1d1dc0223bbfcac395fa6a73a410')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    make PREFIX=/usr
+    make ENABLE_MAN=yes PREFIX=/usr
 }
 
 package() {
     cd "${srcdir}/${pkgname}-${pkgver}"
-    make PREFIX=/usr DESTDIR="${pkgdir}" install
+    make ENABLE_MAN=yes PREFIX=/usr DESTDIR="${pkgdir}" install
 }
