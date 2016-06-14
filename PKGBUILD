@@ -2,7 +2,7 @@
 
 pkgname=simplicitystudio
 pkgver=3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Design tools, documentation, software and support resources for EFM32™, EFM8™, 8051, Wireless MCUs and Wireless SoCs.'
 arch=(i686 x86_64)
 url='https://www.silabs.com/products/mcu/Pages/simplicity-studio.aspx'
