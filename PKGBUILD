@@ -8,7 +8,7 @@
 # Contributor: Yen Chi Hsuan <yan12125@gmail.com>
 
 pkgname=depot-tools-git
-pkgver=r3326.0b67044
+pkgver=r3341.26f3e4e
 pkgrel=1
 pkgdesc='Build tools for working with Chromium development, include gclient'
 arch=('any')
@@ -28,7 +28,7 @@ install="depot_tools.install"
 sha512sums=('SKIP'
             'dbd6e66dce2b142830c7f22df79f6956f7f2aa762e80c1121f1a12599a8d98230d67404319c86549f52da7e736c56231d857a0f6a2dd5139b94bf70f5d7526fa'
             'bde33ffcad42a4d554d5490b6562981ef4b9f3abebadbed909749ee05ba391da4b5acb31b901e785b6f019b4ed3f9c740ab92623dd6a87e67b4b599a0010374b'
-            '1fb1cbca2540dfe98ad52fce493e6545e1c7803aaa6e83ce5cde1ffcb3ced9ad39d2ff1a7a6918e1f0c33e8260ea46c03692d276d1beea2bc96383f7061e8043')
+            '33d772f68deddefce985d2820d3ef60fa730a1f3bc404cef3c8b1b517369501b9c3a07bc7b1b3df4d0589b45cbe4850f935699676c3e10c437bceffb37eb8214')
 
 scripts_to_fix_exec=(
 	apply_issue

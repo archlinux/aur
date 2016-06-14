@@ -50,7 +50,7 @@ def check_files(arg, dirname, fnames):
         if fname.startswith("."):
             continue
         fpath = path.join(dirname, fname)
-        if not path.isfile(fpath):
+        if not path.isfile(fpath) or path.islink(fpath):
             continue
         with open(fpath, "rU") as fd:
             line = fd.readline().strip()
