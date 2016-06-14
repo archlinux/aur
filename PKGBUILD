@@ -2,17 +2,16 @@
 
 _pkgname=python-hashpumpy
 pkgname=$_pkgname-git
-_github_addr=bwall/HashPump
-pkgver=v1.2.0.r2.g484c538
+pkgver=v1.2.0.r4.g2d01d3b
 pkgrel=1
 pkgdesc=" A tool to exploit the hash length extension attack in various hashing algorithms"
 arch=("i686" "x86_64")
-url="https://github.com/$_github_addr"
+url="https://github.com/bwall/HashPump"
 license=('MIT')
 makedepends=('git')
-depends=('openssl')
+depends=('openssl' 'python')
 provides=("$_pkgname")
-source=("$_pkgname"::"git+https://github.com/$_github_addr")
+source=("$_pkgname"::"git+https://github.com/bwall/HashPump")
 md5sums=('SKIP')
 
 pkgver() {
@@ -28,5 +27,8 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}"
     python setup.py install --skip-build --root="${pkgdir}"
+
+    install -Dm755 -d "$pkgdir/usr/share/licenses/$pkgname/"
+    install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
