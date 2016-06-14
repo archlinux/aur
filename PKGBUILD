@@ -9,8 +9,8 @@ _electron_ver=0.36.12
 
 pkgname=${_pkgname}-editor-${_version}
 _atomver=1.8.0
-pkgver=1.8.0.arch0.2.21.e0.36.12
-pkgrel=2
+pkgver=1.8.0.arch0.3.0.e0.36.12
+pkgrel=1
 pkgdesc="Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed."
 arch=('x86_64' 'i686')
 url='https://github.com/atom/atom'
@@ -49,8 +49,7 @@ md5sums=('158c18d35d071403db18bdd85fa2e738'
          'SKIP'
          '74cc026d4104072dadb2733745f1b268'
          '367f71ad1cfc2e03e97a48d2e32995fb'
-         '23a0d25e1759dc5bd0e6f7101fd8ea70'
-         'd31a5fe8685a1886ffd7fcce2fd585e1')
+         '23a0d25e1759dc5bd0e6f7101fd8ea70')
 
 pkgver() {
   _language_archlinux_ver="$(sed -n "s/\"version\": //p" $srcdir/language-archlinux/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
