@@ -1,8 +1,8 @@
 # Maintainer: Mathias Bragagia <youremail@domain.com>
 pkgname=kana-p
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
-pkgdesc="Lite desktop manager - use lightdm, awesome and compton - BETA"
+pkgdesc="Lite desktop manager - use lightdm, awesome and compton"
 arch=('any')
 url="https://github.com/bragagia/kana-p"
 license=('GPL')
@@ -96,7 +96,6 @@ depends=(
 	'alsa-plugins'
 	'pulseaudio'
 	'pulseaudio-alsa'
-	'pulseaudio-ctl'
 	'bluez'
 	'bluez-utils'
 	'udevil'
@@ -104,6 +103,7 @@ depends=(
 	'gptfdisk'
 	'dosfstools'
 	'xsettingsd-git'
+	'polkit-gnome'
 
 	'ntp'
 	'networkmanager-dispatcher-ntpd'
@@ -143,10 +143,14 @@ depends=(
 
 	'compton'
 	'awesome'
+	'openbox'
 	'lain-git'
 	'eminent-git'
+	'openbox-arc-git'
 	'rofi'
+	'tint2'
 	'network-manager-applet'
+	'volumeicon'
 	'gnome-keyring'
 
 	'archlinux-xdg-menu'
@@ -155,6 +159,7 @@ depends=(
 	'dex'
 	'feh'
 	'most'
+	'pavucontrol'
 
 	'lib32-gtk-engines'
 	'gtk2'
@@ -164,13 +169,13 @@ depends=(
 	'numix-bevel-icon-theme-git'
 	'gtk-theme-arc-git'
 
-	'rxvt-unicode'
+	'rxvt-unicode-pixbuf'
 	'rxvt-unicode-terminfo'
 )
 makedepends=()
 optdepends=()
-provides=()
-conflicts=()
+provides=('kana-p')
+conflicts=('kana-p')
 replaces=()
 backup=()
 options=()
@@ -181,7 +186,7 @@ noextract=()
 md5sums=('SKIP')
 
 package() {
-	mv -T $srcdir/$pkgname-$pkgver $pkgdir
+	mv -T $srcdir/kana-p-$pkgver $pkgdir
 	rm -f $pkgdir/.gitignore
 	rm -f $pkgdir/LICENSE
 	rm -f $pkgdir/README.md
