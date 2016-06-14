@@ -19,6 +19,7 @@ pkgbase = gnome-shell-pomodoro
 	depends = gobject-introspection
 	depends = perl-xml-sax-expat
 	depends = telepathy-glib
+	depends = libpeas
 	conflicts = gnome-shell-pomodoro-git
 	source = gnome-shell-pomodoro-0.11.3.tar.gz::https://github.com/codito/gnome-pomodoro/archive/0.11.3.tar.gz
 	sha256sums = 4f1c9c42a11b9fdb6bac4d49773ec9717f9f2687c078d607b94d90a8f5f71fb6
