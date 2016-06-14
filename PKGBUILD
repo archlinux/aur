@@ -1,7 +1,7 @@
 # Maintainer: Daniel Haß <aur@hass.onl>
 pkgname=gtk-theme-numix-sx-beta
 pkgver=20160612
-pkgrel=1
+pkgrel=2
 pkgdesc="[OBSOLETE] Gray variation of numix theme for Cinnamon/Gnome - experimental GTK 3.2 version"
 arch=('any')
 url="https://www.gnome-look.org/p/1117412/"
