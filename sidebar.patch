@@ -3290,8 +3290,8 @@ diff -urN mutt-1.6.1/README.sidebar mutt-1.6.1-sidebar/README.sidebar
 +
 diff -urN mutt-1.6.1/sidebar.c mutt-1.6.1-sidebar/sidebar.c
 --- mutt-1.6.1/sidebar.c	1970-01-01 01:00:00.000000000 +0100
-+++ mutt-1.6.1-sidebar/sidebar.c	2016-06-12 18:43:03.967503185 +0100
-@@ -0,0 +1,1086 @@
++++ mutt-1.6.1-sidebar/sidebar.c	2016-06-14 18:46:00.000000000 +0100
+@@ -0,0 +1,1090 @@
 +/* Copyright (C) 2004 Justin Hibbits <jrh29@po.cwru.edu>
 + * Copyright (C) 2004 Thomer M. Gil <mutt@thomer.com>
 + * Copyright (C) 2015-2016 Richard Russon <rich@flatcap.org>
@@ -4120,6 +4120,9 @@ diff -urN mutt-1.6.1/sidebar.c mutt-1.6.1-sidebar/sidebar.c
 +  /* if (OldVisible == 0) */
 +  /* 	mutt_buffy_check (1); we probably have bad or no numbers */
 +
++  int x = getcurx (stdscr);
++  int y = getcury (stdscr);
++
 +  int first_row = 0;
 +  int num_rows  = LINES - 2;
 +
@@ -4144,6 +4147,7 @@ diff -urN mutt-1.6.1/sidebar.c mutt-1.6.1-sidebar/sidebar.c
 +    return;
 +
 +  draw_sidebar (first_row, num_rows, div_width);
++  move (y, x);
 +}
 +
 +/**
