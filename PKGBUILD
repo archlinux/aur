@@ -12,7 +12,7 @@ _build_voip=true
 
 pkgname=retroshare
 pkgver=0.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Serverless encrypted instant messenger with filesharing, chatgroups, e-mail."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://retroshare.sourceforge.net/"
@@ -27,12 +27,19 @@ optdepends=('tor: tor hidden node support'
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 
-source=("https://github.com/RetroShare/RetroShare/archive/v${pkgver}.tar.gz")
-sha256sums=('50b9157bbe407aaefcbf9af1f29392e63148dc060bf78a3b200c9bc09998cf7c')
+source=("https://github.com/RetroShare/RetroShare/archive/v${pkgver}.tar.gz"
+        'https://github.com/RetroShare/RetroShare/commit/aca88308eae16ab67627593c0df2fce7beb02e89.patch')
+sha256sums=('50b9157bbe407aaefcbf9af1f29392e63148dc060bf78a3b200c9bc09998cf7c'
+            '63948e67819c529999b93e2af089522e03491970894dbe922cd57730927cbd74')
 
 # Add missing dependencies if needed
 [[ $_build_voip == true ]] && depends=(${depends[@]} 'ffmpeg' 'opencv')
 [[ $_build_feedreader == true ]] && depends=(${depends[@]} 'curl' 'libxslt')
+
+prepare() {
+	cd "${srcdir}/RetroShare-${pkgver}"
+	git apply ../aca88308eae16ab67627593c0df2fce7beb02e89.patch
+}
 
 build() {
 	cd "${srcdir}/RetroShare-${pkgver}"
@@ -55,7 +62,7 @@ build() {
 	cd ../..
 
 	# qt4: qmake-qt4 -r ...
-	qmake   "CONFIG-=debug" "CONFIG+=release" "CONFIG-=c++11" \
+	qmake   "CONFIG-=debug" "CONFIG+=release"\
 		QMAKE_CFLAGS_RELEASE="${CFLAGS}"\
 		QMAKE_CXXFLAGS_RELEASE="${CXXFLAGS}"\
 		RetroShare.pro
