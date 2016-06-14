@@ -1,0 +1,15 @@
+post_install() {
+  echo "Please edit your config in /etc/webapps/nextcloud/news/nextcloud-news-updater.ini"
+  echo "Follow instructions on how to setup your ownCloud instance here: https://github.com/nextcloud/news-updater"
+  echo "To enable/ start the service, run:"
+  echo "    systemctl enable nextcloud-news-updater.service"
+  echo "    systemctl start nextcloud-news-updater.service"
+  echo "Reload after configuration changes:"
+  echo "    systemctl restart nextcloud-news-updater.service"
+  echo ""
+  echo "Note: Only use the nextcloud-news-updater.timer, if you have set testrun=true in your config!"
+  echo "To then enable/start it, run:"
+  echo "    systemctl enable nextcloud-news-updater.timer"
+  echo "    systemctl start nextcloud-news-updater.timer"
+}
+

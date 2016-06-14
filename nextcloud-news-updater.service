@@ -1,0 +1,10 @@
+[Unit]
+After=default.target
+
+[Service]
+Type=simple
+User=http
+ExecStart=/usr/bin/nextcloud-news-updater -c /etc/webapps/nextcloud/news/nextcloud-news-updater.ini
+
+[Install]
+WantedBy=default.target
