@@ -27,9 +27,8 @@ validpgpkeys=('A0D6EEA1DCAE49A635A3B2F0779B22DFB3E717B7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  sed -i 's|/sbin|/bin|' Makefile
-  sed -i 's/WITH_WEBSOCKETS:=no/WITH_WEBSOCKETS:=yes/' config.mk
-  make
+  sed -i 's|/sbin|/bin|g' src/Makefile
+  make WITH_WEBSOCKETS=yes
 }
 
 package() {
