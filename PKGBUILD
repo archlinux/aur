@@ -2,18 +2,18 @@
 # Git: https://github.com/nogo/archlinux-pkgbuild
 
 # Uncomment, if you want tha last release
-_version=2.2.0
+_version=2.2.1
 
 pkgname=owncloud-client-git
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="ownCloud client based on mirall"
 arch=('i686' 'x86_64')
 url="http://owncloud.org/"
 license=('GPL2')
-depends=('sqlite3' 'neon' 'qt5-base' 'qt5-tools' 'qt5-webkit' 'qtkeychain')
+depends=('qtkeychain' 'qt5-webkit' 'hicolor-icon-theme' 'xdg-utils')
 optdepends=()
-makedepends=('cmake')
+makedepends=('cmake' 'qt5-tools')
 provides=('mirall' 'mirall-git' 'owncloud-client')
 conflicts=('mirall-git' 'owncloud-client' 'owncloud-client-ngs')
 install=${pkgname}.install
@@ -48,6 +48,7 @@ build() {
         -DCMAKE_BUILD_TYPE="Release" \
         -DCMAKE_INSTALL_SYSCONFDIR=/etc/${pkgname} \
         -DWITH_DOC=FALSE \
+	-DQTKEYCHAIN_LIBRARY=/usr/lib/libqt5keychain.so \
         -DQTKEYCHAIN_INCLUDE_DIR=/usr/include/qt5keychain/ \
         ../${_client}
   make
