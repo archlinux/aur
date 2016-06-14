@@ -1,5 +1,14 @@
+From 5ca552ec34148f3e8df3f0b6b6b05e871ccd360d Mon Sep 17 00:00:00 2001
+From: Eugene Sovetkin <e.sovetkin@gmail.com>
+Date: Tue, 14 Jun 2016 19:50:53 +0200
+Subject: [PATCH] patching qasm2pdf
+
+---
+ qasm2pdf | 40 +++++++++++++++++++++++++++-------------
+ 1 file changed, 27 insertions(+), 13 deletions(-)
+
 diff --git a/qasm2pdf b/qasm2pdf
-index 3ac2123..253685a 100755
+index 3ac2123..00266c2 100755
 --- a/qasm2pdf
 +++ b/qasm2pdf
 @@ -1,25 +1,39 @@
@@ -21,11 +30,11 @@ index 3ac2123..253685a 100755
  # Produces: foo.pdf  (and also foo.tex, foo.epsf)
  
 -foreach i ($*)
++src_dir="$(pwd)"
++
 +for file in "$@"
 +do
-+    directory="$(dirname file)"
-+    
-+    filename="$(basename file)"
++    filename="$(basename ${file})"
 +    filename="${filename%.*}"
  
 -        set t = `echo $i | sed "s/.qasm//"`
@@ -43,17 +52,17 @@ index 3ac2123..253685a 100755
 -end
 +    cp /usr/share/qasm2circ/xyqcirc.tex .
 +    
-+	  qasm2tex ${file} > ${filename}.tex
++    qasm2tex "${src_dir}/${file}" > "${filename}.tex"
 +    
-+	  if [[ ! -f ${filename}.tex ]]
++    if [[ ! -f "${filename}.tex" ]]
 +    then
-+	      echo "error in qasm2tex on ${filename}.tex! aborting."
-+	  else
-+	      latex ${filename}
-+	      dvips -D2400 -E -o ${filename}.eps ${filename}
-+	      epstopdf ${filename}.eps
-+        mv ${filename}.pdf ${directory}/.
-+	  fi
++        echo "error in qasm2tex on ${filename}.tex! aborting."
++    else
++	      latex "${filename}.tex"
++	      dvips -D2400 -E -o "${filename}.eps" "${filename}"
++	      epstopdf "${filename}.eps"
++        mv "${filename}.pdf" "${src_dir}/."
++    fi
 +done
 -- 
 2.8.3
