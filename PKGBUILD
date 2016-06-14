@@ -3,16 +3,16 @@
 
 pkgname="movietitle"
 pkgver="0.0.2.2"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="An application to rename movie files."
 arch=('any')
 url="http://www.atareao.es/tag/movietitle/"
 license=('GPL3')
-depends=('python2-beautifulsoup4' 'python2-exiv2' 'python2-nautilus')
+depends=('python2-beautifulsoup4' 'python2-exiv2' 'python2-nautilus' 'python2-polib')
 makedepends=('python2-distutils-extra')
 provides=("${pkgname}")
 source=("https://launchpad.net/~atareao/+archive/ubuntu/nautilus-extensions/+files/${pkgname}_${pkgver}-1ubuntu0.tar.xz")
-md5sums=('1b53278359ed0ed5ce3f1822681173ff')
+sha256sums=('7595c0debc9f4731fc00fca66886b26f9a468094c8efa6ccfb8d94763a36ae4c')
 
 build() {
 	cd "${srcdir}/${pkgname}"
