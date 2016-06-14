@@ -7,7 +7,7 @@
 
 pkgbase=nvidia-mainline
 pkgname=(nvidia-mainline nvidia-mainline-dkms)
-pkgver=364.19
+pkgver=367.27
 _extramodules=extramodules-4.7-mainline
 pkgrel=1
 pkgdesc="NVIDIA drivers for linux-mainline"
@@ -22,8 +22,8 @@ source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-L
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
 md5sums=('3064bd437b26adac246f301f54f2814c'
          '0b68fdfd7b43a20e47a3ddb06004e820')
-md5sums_i686=('8a4015213c4a8f1c80e9520d04a32a7b')
-md5sums_x86_64=('ad7a0b1855b3913390fb75b4cc3a26dc')
+md5sums_i686=('f32b9ab673acce56990f2b5acdc1e77f')
+md5sums_x86_64=('cdf8a16c533382acc9f088bd8e689860')
 
 [[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
 [[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
@@ -32,7 +32,7 @@ prepare() {
     sh "${_pkg}.run" --extract-only
     cd "${_pkg}"
     # patches here
-    patch -p1 --no-backup-if-mismatch -i ../linux-4.6.patch
+    # patch -p1 --no-backup-if-mismatch -i ../linux-4.6.patch
     patch -p1 --no-backup-if-mismatch -i ../linux-4.7.patch
 
     cp -a kernel kernel-dkms
