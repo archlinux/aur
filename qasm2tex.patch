@@ -1,0 +1,13 @@
+diff --git a/qasm2tex.py b/qasm2tex.py
+index 422c3ff..9cf579b 100755
+--- a/qasm2tex.py
++++ b/qasm2tex.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/env python2.7
+ #
+ # File:   qasm2tex.py
+ # Date:   22-Mar-04
+-- 
+2.8.3
+

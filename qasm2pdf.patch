@@ -1,0 +1,56 @@
+diff --git a/qasm2pdf b/qasm2pdf
+index 3ac2123..c3f1e1f 100755
+--- a/qasm2pdf
++++ b/qasm2pdf
+@@ -1,25 +1,32 @@
+-#!/bin/csh
++#!/bin/bash
+ #
+ # File:   qasm2pdf
+ # Date:   23-Mar-04
+ # Author: I. Chuang <ichuang@mit.edu>
+ #
++# Date:   14-Jun-16
++# Edited: J. Sovetkin <e.sovetkin@gmail.com>
++#
+ # Shell script to convert qasm files to pdf, using the qasm2tex python script
+ #
+-# Usage:  qasm2pdf foo.qasm
++# Usage:  qasm2pdf foo1.qasm dir/foo2.qasm
+ #
+-# Produces: foo.pdf  (and also foo.tex, foo.epsf)
+-
+-foreach i ($*)
+-
+-        set t = `echo $i | sed "s/.qasm//"`
++# Produces: foo1.pdf and foo2.pdf in the correspoding directories (and
++# also foo.tex, foo.epsf)
+ 
+-	python qasm2tex.py $i >! $t.tex
+-	if (-z $t.tex) then
+-	    echo "error in qasm2tex on $t.tex! aborting."
+-	else
+-	    latex $t
+-	    dvips -D2400 -E -o $t.eps $t
+-	    epstopdf $t.eps
+-	endif
+-end
++for file in "$@"
++do
++    local filename
++    filename="${filename%.*}"
++    
++	  qasm2tex ${file} > ${filename}.tex
++    
++	  if [[ ! -f ${filename}.tex ]]
++    then
++	      echo "error in qasm2tex on ${filename}.tex! aborting."
++	  else
++	      latex ${filename}
++	      dvips -D2400 -E -o ${filename}.eps ${filename}
++	      epstopdf ${filename}.eps
++	  fi
++done
+-- 
+2.8.3
+
