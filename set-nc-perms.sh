@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# from https://doc.owncloud.org/server/9.0/admin_manual/installation/installation_wizard.html#strong-perms-label
+# from https://docs.nextcloud.org/server/9/admin_manual/installation/installation_wizard.html#strong-perms-label
 # run with the argument "runtime" to set the proper runtime permissions
 # run with the argument "upgrade" to set the proper upgrade permissions
 
@@ -27,7 +27,7 @@ runtime() {
   chown -R ${htuser}:${htgroup} ${ncpath}/themes/
   chown -R ${htuser}:${htgroup} ${ncpath}/updater/
 
-  chmod +x ${ncpath}/ncc
+  chmod +x ${ncpath}/occ
 
   printf "chmod/chown .htaccess\n"
   if [ -f ${ncpath}/.htaccess ]
