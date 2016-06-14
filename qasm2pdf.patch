@@ -2,7 +2,7 @@ diff --git a/qasm2pdf b/qasm2pdf
 index 3ac2123..c3f1e1f 100755
 --- a/qasm2pdf
 +++ b/qasm2pdf
-@@ -1,25 +1,32 @@
+@@ -1,26 +1,40 @@
 -#!/bin/csh
 +#!/bin/bash
  #
@@ -37,8 +37,15 @@ index 3ac2123..c3f1e1f 100755
 -end
 +for file in "$@"
 +do
-+    local filename
-+    filename="${filename%.*}"
++   directory="$(dirname file)"
++    
++   filename="$(basename file)"
++   filename="${filename%.*}"
++
++   mkdir -p /tmp/qasm2pdf
++   cd /tmp/qasm2pdf
++
++   cp /usr/share/qasm2circ/xyqcirc.tex .
 +    
 +	  qasm2tex ${file} > ${filename}.tex
 +    
@@ -49,6 +56,7 @@ index 3ac2123..c3f1e1f 100755
 +	      latex ${filename}
 +	      dvips -D2400 -E -o ${filename}.eps ${filename}
 +	      epstopdf ${filename}.eps
++       mv ${filename}.pdf ${directory}/.
 +	  fi
 +done
 -- 
