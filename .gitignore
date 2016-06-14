@@ -1,0 +1,4 @@
+pkg/
+src/
+systemsim-cell-*.pkg.tar.*
+systemsim-cell-*.rpm
