@@ -1,0 +1,17 @@
+pkgbase = acserver-blablacar
+	pkgdesc = App Container Server (blablacar fork)
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/blablacar/acserver
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/blablacar/acserver.git
+	source = acserver-blablacar.service
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = acserver-blablacar
+
