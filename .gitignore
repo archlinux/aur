@@ -4,6 +4,7 @@
 # generated resources
 /*/
 /*.xz
+/*.gz
 /*.log
 
 # build resources
