@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus
-pkgver=20160612
+pkgver=20160614
 pkgrel=1
 pkgdesc="Meta-package for modified and adaptive Papirus theme"
 arch=('any')
@@ -23,7 +23,6 @@ depends=(
              "papirus-libreoffice-theme: Papirus theme for LibreOffice"
              "papirus-k3b-theme: Papirus theme for K3B"
              "papirus-kmail-theme: Papirus theme for KMail"
-             "papirus-qtcurve-theme: Papirus decorations for QtCurve"
              "papirus-kvantum-theme: Papirus theme for Kvantum theme engine"
              "papirus-smplayer-theme: Papirus theme for SMPlayer"
              "papirus-vlc-theme: Papirus theme for VLC Media Player"
