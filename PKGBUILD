@@ -1,19 +1,18 @@
 # Maintainer: tjbp (archlinux@tjbp.net)
 
 pkgname='php-svn'
-pkgver='1.0.2'
-pkgrel='4'
+pkgver='1.0.3'
+pkgrel='1'
 pkgdesc='PHP PECL extension to provide bindings for the Subversion revision control system'
 arch=('i686' 'x86_64')
 url='https://pecl.php.net/package/svn'
 license=('PHP')
 depends=('php>=4.0' 'php<7.0' 'subversion')
 source=("http://pecl.php.net/get/svn-$pkgver.tgz")
-sha256sums=('ca0ea834e745a1aae65b456800bb5c5cfd7c4eceff281f7a8e317d30726e48cd')
+sha256sums=('8ccf1dd78b92649486d1875102ecb899c1e4e5ddf674f2d87adf611c16295089')
 
 build() {
     cd "$srcdir/svn-$pkgver"
-    patch -p1 < ../../support-subversion-1.9.x.patch.txt
     phpize
     ./configure \
     --prefix=/usr \
