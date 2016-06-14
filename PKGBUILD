@@ -3,7 +3,7 @@
 
 pkgname=openttd-jgrpp-git
 _installname=openttd
-pkgver=1.6.0+r27582+p0.13.2+r22.09291a3
+pkgver=1.6.1rc1+r27599+p0.13.3
 pkgrel=1
 pkgdesc="OpenTTD with JGR's patch pack"
 arch=('i686' 'x86_64')
