@@ -1,17 +1,6 @@
-From 5ca552ec34148f3e8df3f0b6b6b05e871ccd360d Mon Sep 17 00:00:00 2001
-From: Eugene Sovetkin <e.sovetkin@gmail.com>
-Date: Tue, 14 Jun 2016 19:50:53 +0200
-Subject: [PATCH] patching qasm2pdf
-
----
- qasm2pdf | 40 +++++++++++++++++++++++++++-------------
- 1 file changed, 27 insertions(+), 13 deletions(-)
-
-diff --git a/qasm2pdf b/qasm2pdf
-index 3ac2123..00266c2 100755
---- a/qasm2pdf
-+++ b/qasm2pdf
-@@ -1,25 +1,39 @@
+--- qasm2pdf	2004-03-24 05:38:37.000000000 +0100
++++ qasm2pdf_new	2016-06-14 20:24:58.887675003 +0200
+@@ -1,25 +1,40 @@
 -#!/bin/csh
 +#!/bin/bash
  #
@@ -51,10 +40,11 @@ index 3ac2123..00266c2 100755
 -	endif
 -end
 +    cp /usr/share/qasm2circ/xyqcirc.tex .
++    cp /usr/share/qasm2circ/meter.epsf .
 +    
 +    qasm2tex "${src_dir}/${file}" > "${filename}.tex"
 +    
-+    if [[ ! -f "${filename}.tex" ]]
++    if [[ $? -ne 0 ]]
 +    then
 +        echo "error in qasm2tex on ${filename}.tex! aborting."
 +    else
@@ -64,6 +54,3 @@ index 3ac2123..00266c2 100755
 +        mv "${filename}.pdf" "${src_dir}/."
 +    fi
 +done
--- 
-2.8.3
-
