@@ -2,10 +2,10 @@
 
 pkgname=keeweb-desktop
 pkgver=1.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="This webapp is a desktop password manager compatible with KeePass databases."
 arch=('x86_64')
-url="https://github.com/antelle/keeweb"
+url="https://github.com/keeweb/keeweb"
 license=('MIT')
 source=(
     "${url}/releases/download/v${pkgver}/KeeWeb.linux.x64.zip"
