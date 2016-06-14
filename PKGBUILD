@@ -7,12 +7,12 @@ _version=git
 # Module Versions
 _about_url="https://github.com/fusion809/about"
 _about_arch_ver=1.5.18
-_language_gfm2_ver=0.90.3
+_language_gfm2_ver=0.90.4
 _language_liquid_ver=0.5.1
 
 pkgname=${_pkgname}-editor-${_version}
 pkgver=1.10.0.dev.672cf6d
-pkgrel=1
+pkgrel=2
 pkgdesc='Hackable text editor for the 21st Century, based on web technologies and built from the latest git source code'
 arch=('x86_64' 'i686')
 url="https://github.com/${_pkgname}/${_pkgname}"
