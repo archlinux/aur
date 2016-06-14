@@ -3,14 +3,13 @@
 
 #Additional patches:
 # -Gallium Nine support
-# -Mip-Map fix (see https://bugs.winehq.org/show_bug.cgi?id=34480 )
 # -Keybind patch reversion
 # -Heap allocation perfomance improvement patch
 # -Wbemprox videocontroller query fix v2 (see https://bugs.winehq.org/show_bug.cgi?id=38879 )
 # -Steam patch, Crossover Hack version (see https://bugs.winehq.org/show_bug.cgi?id=39403 )
 
 pkgname=wine-gaming-nine
-pkgver=1.9.11
+pkgver=1.9.12
 pkgrel=1
 
 _pkgbasever=${pkgver/rc/-rc}
@@ -21,16 +20,14 @@ source=("https://github.com/wine-compholio/wine-patched/archive/staging-$_pkgbas
         30-win32-aliases.conf
         heap_perf.patch
         keybindings.patch
-        mipmap.patch
         steam.patch
         wbemprox_query_v2.patch
         )
-sha1sums=('edd6d15d2b75e8c4fb6a06094368cd9027bcbdc9'
-          '379daaea1830c5e2b8cfbfa01be62707109b8bae'
+sha1sums=('415d9e5716aed542157f0b1ec75cb19f9321d0d9'
+          '2f0f52edbd6d37212095d274e92ac3f05a5d9249'
           '023a5c901c6a091c56e76b6a62d141d87cce9fdb'
           '0f4ac455436d5714a2cf0b537ed25f4fa5c1a7fd'
           'f3febb8836f38320742a546c667106608d4c4395'
-          'c3096fccbac23e520d03f592db7f23350cbbc0bc'
           '74aae040fde9ff3c9e8da9c840557e87afdbc3a0'
           '644e141125a9f2407e64d23c85ec84a691c7caae'
           )
@@ -134,7 +131,6 @@ prepare()
     patch -p1 < "$srcdir/wine-d3d9-patches-wine-d3d9-$_pkgbasever/staging-helper.patch" #for wine-staging
     patch -p1 < "$srcdir/wine-d3d9-patches-wine-d3d9-$_pkgbasever/wine-d3d9.patch"
     patch -p1 < ../steam.patch
-    patch -p1 < ../mipmap.patch
     patch -p1 < ../heap_perf.patch
     patch -p1 < ../wbemprox_query_v2.patch
 
