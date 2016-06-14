@@ -1,6 +1,6 @@
 pkgbase = caffe-git
 	pkgdesc = A fast framework for deep learning built in C++ for speed with a Python 2 interface
-	pkgver = rc3.r166.ge79bc8f
+	pkgver = rc3.r184.gdf412ac
 	pkgrel = 1
 	url = https://github.com/BVLC/caffe
 	arch = x86_64

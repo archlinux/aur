@@ -1,7 +1,7 @@
 # Maintainer:  Drew Noel <drewmnoel@gmail.com>
 
 pkgname=caffe-git
-pkgver=rc3.r166.ge79bc8f
+pkgver=rc3.r184.gdf412ac
 pkgrel=1
 pkgdesc='A fast framework for deep learning built in C++ for speed with a Python 2 interface'
 arch=(x86_64)
@@ -50,19 +50,19 @@ sha256sums=('SKIP'
             '91ac4b31b72c9c6fb8b1242c945d8caf32f1876ef4befa3c81b7d19940b6a143')
 
 pkgver() {
-  cd caffe
+  cd $srcdir/caffe
   set -o pipefail
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
   # You can modify this file and do some stuff like turn off using the GPU etc
-  cp Makefile.config caffe
+  cp Makefile.config $srcdir/caffe
 
   # Modified classify.py for testing that will output results
-  cp classify-print-results.py caffe/python/
+  cp classify-print-results.py $srcdir/caffe/python/
 
-  cd caffe
+  cd $srcdir/caffe
 
   # Patch any #!/usr/bin/python to #!/usr/bin/python2
   for file in $(find . -name '*.py' -print); do
@@ -106,10 +106,7 @@ build() {
 # }
 
 package() {
-  cd caffe
-
-  # We don't need anything related to git in the package
-  rm -rf .git*
+  cd $srcdir/caffe
 
   # Setup Python by hand since no setup.py 
   mkdir -p $pkgdir/usr/lib/python2.7/site-packages/caffe/
@@ -149,12 +146,36 @@ package() {
   # install -D -m755 .build_release/tools/dump_network.bin "$pkgdir/usr/bin/dump_network"
   install -D -m755 .build_release/tools/extract_features.bin "$pkgdir/usr/bin/extract_features"
 
-  # clean up before copying over
-  rm -r .build_release
-  rm -r build
-
+  # Make main target dir
   mkdir -p $pkgdir/opt/caffe
-  cp -r . $pkgdir/opt/caffe
+
+  # Copy all source files over
+  cp .Doxyfile $pkgdir/opt/caffe/
+  cp .travis.yml $pkgdir/opt/caffe/
+  cp CMakeLists.txt $pkgdir/opt/caffe/
+  cp CONTRIBUTING.md $pkgdir/opt/caffe/
+  cp CONTRIBUTORS.md $pkgdir/opt/caffe/
+  cp INSTALL.md $pkgdir/opt/caffe/
+  cp LICENSE $pkgdir/opt/caffe/
+  cp Makefile $pkgdir/opt/caffe/
+  cp README.md $pkgdir/opt/caffe/
+  cp caffe.cloc $pkgdir/opt/caffe/
+  cp -r cmake $pkgdir/opt/caffe/
+  cp -r data $pkgdir/opt/caffe/
+  cp -r distribute $pkgdir/opt/caffe/
+  cp -r docker $pkgdir/opt/caffe/
+  cp -r docs $pkgdir/opt/caffe/
+  cp -r examples $pkgdir/opt/caffe/
+  cp -r include $pkgdir/opt/caffe/
+  cp -r matlab $pkgdir/opt/caffe/
+  cp -r models $pkgdir/opt/caffe/
+  cp -r python $pkgdir/opt/caffe/
+  cp -r scripts $pkgdir/opt/caffe/
+  cp -r src $pkgdir/opt/caffe/
+  cp -r tools $pkgdir/opt/caffe/
+
+  # Remove residual git files
+  find $pkgdir/opt/caffe/ -name .gitignore -delete
 
   # Install BSD2 License (not in common licenses so lets make it custom)
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
