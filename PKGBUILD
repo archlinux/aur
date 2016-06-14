@@ -2,13 +2,13 @@
 
 pkgname=mspgcc-ti
 pkgver=4.00.01.00
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU toolchain (as, gcc, g++, ld, gdb) for the TI MSP430 processor"
 arch=('i686' 'x86_64')
 url="http://software-dl.ti.com/msp430/msp430_public_sw/mcu/msp430/MSPGCC/latest/index_FDS.html"
 license=('GPL')
-depends=('elfutils' 'libmpc' 'zlib')
-[ $CARCH = x86_64 ] && depends+=('lib32-gcc-libs' 'lib32-glibc' 'lib32-libstdc++5' 'lib32-zlib')
+depends_i686=('elfutils' 'libmpc' 'zlib')
+depends_x86_64=('elfutils' 'libmpc' 'zlib' 'lib32-gcc-libs' 'lib32-glibc' 'lib32-libstdc++5' 'lib32-zlib' 'lib32-fakeroot')
 options=(!strip !emptydirs !libtool staticlibs !upx)
 PKGEXT=".pkg.tar"
 install=mspgcc-ti.install
