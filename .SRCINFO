@@ -1,6 +1,6 @@
 pkgbase = barvinok
 	pkgdesc = A library for counting the number of integer points in parametric and non-parametric polytopes
-	pkgver = 0.38
+	pkgver = 0.39
 	pkgrel = 1
 	url = http://freecode.com/projects/barvinok
 	arch = i686
@@ -10,9 +10,8 @@ pkgbase = barvinok
 	depends = isl
 	depends = polylib-gmp
 	depends = glpk>4.47
-	provides = barvinok=0.38
-	source = http://barvinok.gforge.inria.fr/barvinok-0.38.tar.xz
-	md5sums = 00c673f214b7262bc2d686143f0009c1
+	source = http://barvinok.gforge.inria.fr/barvinok-0.39.tar.xz
+	md5sums = d0b6165c4e92b253369f92e6e0be23ef
 
 pkgname = barvinok
 
