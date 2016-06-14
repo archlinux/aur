@@ -12,7 +12,6 @@ license=('GPL3')
 depends=('gnome-desktop' 'libcanberra' 'upower' 'gstreamer' 'gobject-introspection' 'perl-xml-sax-expat' 'telepathy-glib' 'libpeas')
 makedepends=('intltool' 'vala' 'gnome-common' 'docbook2x')
 conflicts=('gnome-shell-pomodoro-git')
-install='gschemas.install'
 changelog='NEWS'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/codito/gnome-pomodoro/archive/$pkgver.tar.gz")
 sha256sums=('4f1c9c42a11b9fdb6bac4d49773ec9717f9f2687c078d607b94d90a8f5f71fb6')
