@@ -3,13 +3,13 @@
 pkgname=389-admin-console
 pkgver=1.1.10
 _majorver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The Admin Server componenet of the 389 Directory Server console for install from the Admin Server.."
 arch=('any')
 url="http://port389.org"
 license=('GPL')
 depends=('389-admin')
-makedepends=('java-environment')
+makedepends=('apache-ant')
 source=(http://directory.fedoraproject.org/sources/$pkgname-$pkgver.tar.bz2)
 sha256sums=('b9d78d00f35f1d7072fe1060df77730d2ea09d5ebeb09e441b368dc33601e893')
 
