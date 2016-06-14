@@ -3,6 +3,6 @@ Name=Actor Messenger
 Version=0.9.4
 Comment=Actor Messenger
 Exec=actor
-Icon=/opt/actor-messenger/resources/app/icon.png
+Icon=/opt/actor/resources/app/icon.png
 Type=Application
 Categories=Network;
