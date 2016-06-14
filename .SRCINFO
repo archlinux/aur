@@ -1,14 +1,14 @@
 pkgbase = tsscreenlock
 	pkgdesc = Screen Locker for theShell
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 0
 	url = https://github.com/vicr123/tsscreenlock
 	arch = x86_64
-	license = GPL2
+	license = GPL3
 	makedepends = qtchooser
 	makedepends = git
 	depends = tscheckpass
-	source = tsscreenlock-1.0::git+https://github.com/vicr123/tsscreenlock#branch=master
+	source = tsscreenlock-1.1::git+https://github.com/vicr123/tsscreenlock#branch=master
 	md5sums = SKIP
 
 pkgname = tsscreenlock

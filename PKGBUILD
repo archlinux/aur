@@ -1,12 +1,12 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=tsscreenlock
-pkgver=1.0
+pkgver=1.1
 pkgrel=0
 pkgdesc="Screen Locker for theShell"
 arch=("x86_64")
 url="https://github.com/vicr123/tsscreenlock"
-license=('GPL2')
+license=('GPL3')
 depends=('tscheckpass')
 makedepends=('qtchooser' 'git')
 source=("$pkgname-$pkgver"::'git+https://github.com/vicr123/tsscreenlock#branch=master')
