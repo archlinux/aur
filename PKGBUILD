@@ -17,7 +17,7 @@ options=('!strip')
 source=(http://www.silabs.com/Support%20Documents/Software/SimplicityStudio.tgz
         simplicitystudio.patch
         simplicitystudio)
-sha256sums=('aec95fd1078c36b5d61cb6a21f7decda703df3c73d3c5fa30d47305d1fe4ebe1'
+sha256sums=('a06174c0a48e35999206100b4fc837ad38ea05e8bbf7928cd226606961bc53e8'
             '22dadf833916b51d85a04d50db595cb8446c9a9c1644e9dfab8e0875d8f9f906'
             'ad55e8352d5d3d9cba50553086ca6d8b1d5072dc87b2763a79f34210f7bc2b5d')
 
