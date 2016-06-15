@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-vlc-theme-git
-pkgver=20160603
+pkgver=20160606
 pkgrel=1
 pkgdesc="Papirus theme for VLC Media Player (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
@@ -20,6 +20,5 @@ pkgver() {
 }
 
 package() {
-    cd ${pkgname}
-    make install DESTDIR="$pkgdir"
+    make -C "${pkgname}" install DESTDIR="$pkgdir"
 }
