@@ -3,9 +3,6 @@ post_install() {
 You must register an account on the official Second Life website in
 order to use Second Life: https://secondlife.com/
 
-You must also add your user to the games group:
- su -c "gpasswd -a \$USER games"
-
 Remember to log out and back in for the change to take effect.
 EOF
 }

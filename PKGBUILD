@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=firestorm-bin
 pkgver=4.7.7.48706
-pkgrel=2
+pkgrel=3
 pkgdesc="Firestorm is a feature-packed third-party viewer for Second Life."
 url="http://www.firestormviewer.org/"
 license=('GPL')
@@ -21,23 +21,19 @@ install=firestorm.install
 if [ "$CARCH" = "i686" ]; then
   source=("http://downloads.firestormviewer.org/linux/Phoenix_FirestormOS-Release_i686_$pkgver.tar.xz"
           0001-firestorm-libgl-path.patch
-          firestorm.install
           firestorm.desktop
           firestorm.launcher)
   sha256sums=(b826d89dd2b98e90f26fd0ec7b63351c30e55d17dda7e68188f1258b725737a3
               619153f3540ad48ec31c702086883a6adccacc70b384b300edaa6f7957f27232
-              ed579cd61cadda55956e5dd8063a34f3c02b8263372e52e9312966a2bf79b55c
               6dffebc474fd98d23bf8d9f4a7592795642dbddf3a0b585f89d25ff11ae15cc1
               b2ce32d268f76f4324807d50c4098a3480b489ec447133ce8d9b9c4a7bc05530)
 else
   source=("http://downloads.firestormviewer.org/linux/Phoenix_FirestormOS-Releasex64_x86_64_$pkgver.tar.xz"
           0001-firestorm-libgl-path.patch
-          firestorm.install
           firestorm.desktop
           firestorm.launcher)
   sha256sums=(e90877eba293266701590e4c528ebf8684f751932307b14cf30da578246eae00
               619153f3540ad48ec31c702086883a6adccacc70b384b300edaa6f7957f27232
-              ed579cd61cadda55956e5dd8063a34f3c02b8263372e52e9312966a2bf79b55c
               6dffebc474fd98d23bf8d9f4a7592795642dbddf3a0b585f89d25ff11ae15cc1
               b2ce32d268f76f4324807d50c4098a3480b489ec447133ce8d9b9c4a7bc05530)
 fi
@@ -65,28 +61,22 @@ package() {
   # File modes fix.
   find -type d -execdir chmod 755 "{}" \;
   find -type f -execdir chmod 644 "{}" \;
-  chmod 754 bin/* firestorm
+  chmod 755 bin/* firestorm
 
   # Install Desktop File
-  install -D -m644 -g games ../firestorm.desktop \
+  install -D -m644 ../firestorm.desktop \
           "$pkgdir"/usr/share/applications/firestorm.desktop
 
   # Install Icon File
-  install -D -m644 -g games firestorm_icon.png \
+  install -D -m644 firestorm_icon.png \
           "$pkgdir"/usr/share/pixmaps/firestorm_icon.png
 
   # Install Launcher
-  install -D -m754 -g games ../firestorm.launcher \
+  install -D -m755 ../firestorm.launcher \
           "$pkgdir"/usr/bin/firestorm
 
   # Move Data to Destination Directory
   cd ..
   install -d "$pkgdir"/opt
   mv firestorm/ "$pkgdir"/opt
-
-  # Change Permissions of files to root:games
-  chown -R root:games "$pkgdir"/opt/firestorm
-
-  # Make Binary Group-Executable
-  chmod g+x "$pkgdir"/opt/firestorm/firestorm
 }
