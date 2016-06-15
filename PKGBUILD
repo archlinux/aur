@@ -3,7 +3,7 @@
 
 pkgname=freetype2-git
 epoch=1
-pkgver=2.6.3+p80+g01de37e
+pkgver=2.6.3+p104+g7f569f4
 pkgrel=1
 pkgdesc="TrueType font rendering library (from git)"
 arch=(i686 x86_64)
@@ -18,10 +18,12 @@ conflicts=('freetype2')
 install=freetype2.install
 source=(git://git.sv.gnu.org/freetype/freetype2.git
         0001-Enable-table-validation-modules.patch
-        0002-Enable-subpixel-rendering.patch)
+        0002-Enable-subpixel-rendering.patch
+        0003-Make-subpixel-hinting-mode-configurable.patch)
 sha1sums=('SKIP'
-          '1c7bc438df0428a63f881e7e4343b22c5b09ecb1'
-          'e2d2b8c4847ab9cfd497179c7140835e99ece711')
+          '045b1b6a56151ab46a8300e6fd09f24294258e97'
+          'afd6f9504516fa02e57890dde820f488e0df36bb'
+          '2a1d6e734001e196c7a7790c78165d9b9fe49f7f')
 validpgpkeys=('58E0C111E39F5408C5D3EC76C1A60EACE707FDA5')
 
 pkgver() {
@@ -38,6 +40,11 @@ prepare() {
   cd "${srcdir}/freetype2"
   patch -Np1 -i "${srcdir}/0001-Enable-table-validation-modules.patch"
   patch -Np1 -i "${srcdir}/0002-Enable-subpixel-rendering.patch"
+
+  # Provide a way to set the default subpixel hinting mode
+  # at runtime, without depending on the application to do so.
+  patch -Np1 -i "${srcdir}/0003-Make-subpixel-hinting-mode-configurable.patch"
+
   ./autogen.sh
 }
 

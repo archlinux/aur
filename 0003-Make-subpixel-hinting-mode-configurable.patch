@@ -1,0 +1,90 @@
+From d0d93c2496175aa42b4c4bb3a45e4f0a6d264112 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Wed, 15 Jun 2016 14:10:20 +0200
+Subject: [PATCH 3/3] Make subpixel hinting mode configurable
+
+---
+ include/freetype/config/ftoption.h |  4 ++--
+ src/truetype/ttobjs.c              | 37 +++++++++++++++++++++++++++++++++++++
+ 2 files changed, 39 insertions(+), 2 deletions(-)
+
+diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
+index 33d563c4e1e47228..a401fc8e9efbbd79 100644
+--- a/include/freetype/config/ftoption.h
++++ b/include/freetype/config/ftoption.h
+@@ -631,8 +631,8 @@ FT_BEGIN_HEADER
+   /* [1] http://www.microsoft.com/typography/cleartype/truetypecleartype.aspx */
+   /*                                                                       */
+ /* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  1     */
+-#define TT_CONFIG_OPTION_SUBPIXEL_HINTING     2
+-/* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  ( 1 | 2 ) */
++/* #define TT_CONFIG_OPTION_SUBPIXEL_HINTING  2     */
++#define TT_CONFIG_OPTION_SUBPIXEL_HINTING     ( 1 | 2 )
+ 
+ 
+   /*************************************************************************/
+diff --git a/src/truetype/ttobjs.c b/src/truetype/ttobjs.c
+index ed3be2dbee79427c..d89f92e94d0e816b 100644
+--- a/src/truetype/ttobjs.c
++++ b/src/truetype/ttobjs.c
+@@ -36,6 +36,9 @@
+ #include "ttgxvar.h"
+ #endif
+ 
++#include <stdlib.h>
++#include <errno.h>
++
+   /*************************************************************************/
+   /*                                                                       */
+   /* The macro FT_COMPONENT is used in trace mode.  It is an implicit      */
+@@ -1286,6 +1289,7 @@
+ #ifdef TT_USE_BYTECODE_INTERPRETER
+ 
+     TT_Driver  driver = (TT_Driver)ttdriver;
++    const char *envval;
+ 
+     driver->interpreter_version = TT_INTERPRETER_VERSION_35;
+ #ifdef TT_SUPPORT_SUBPIXEL_HINTING_INFINALITY
+@@ -1295,6 +1299,39 @@
+     driver->interpreter_version = TT_INTERPRETER_VERSION_40;
+ #endif
+ 
++    errno = 0;
++    envval = getenv( "FT2_SUBPIXEL_HINTING" );
++    if ( envval )
++    {
++      char *endptr = NULL;
++      unsigned long value = strtoul( envval, &endptr, 10 );
++
++      if ( !errno && endptr && !*endptr )
++      {
++        switch( value )
++        {
++        case 0:
++          driver->interpreter_version = TT_INTERPRETER_VERSION_35;
++          break;
++
++#ifdef TT_SUPPORT_SUBPIXEL_HINTING_INFINALITY
++        case 1:
++          driver->interpreter_version = TT_INTERPRETER_VERSION_38;
++          break;
++#endif
++
++#ifdef TT_SUPPORT_SUBPIXEL_HINTING_MINIMAL
++        case 2:
++          driver->interpreter_version = TT_INTERPRETER_VERSION_40;
++          break;
++#endif
++
++        default:
++          break;
++        }
++      }
++    }
++
+ #else /* !TT_USE_BYTECODE_INTERPRETER */
+ 
+     FT_UNUSED( ttdriver );
+-- 
+2.8.3
+
