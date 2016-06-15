@@ -1,33 +1,6 @@
 post_install() {
-  if [[ -n $(getent group 421) && $(getent group 421) != $(getent group plex) ]]; then
-    echo "GID 421 is already assigned to the $(getent group 421 | cut -d':' -f1) group, cannot create the plex group."
-  elif [[ -n $(getent passwd 421) && $(getent passwd 421) != $(getent passwd plex) ]]; then
-    echo "UID 421 is already assigned to the $(getent passwd 421 | cut -d':' -f1) user, cannot create the plex user."
-  else
-    if [[ -n $(getent passwd plex) && $(getent passwd plex) != 'plex:x:421:421:Plex User:/var/lib/plex:/usr/bin/nologin' ]]; then
-      echo "The plex user is outdated. It will be removed and recreated."
-      if [[ -z $(pidof "Plex Media Server") ]]; then
-        userdel plex
-        chown 421:421 -R /var/lib/plex
-      else
-        echo "Unable to update the plex user. Please stop plexmediaserver.service and reinstall the package."
-      fi
-    fi
-    if [[ -z $(getent group plex) ]]; then
-      groupadd -g 421 plex
-    fi
-    if [[ -z $(getent passwd plex) ]]; then
-      useradd -c 'Plex User' -u 421 -g plex -d /var/lib/plex -s /usr/bin/nologin plex
-    fi
-    passwd -l plex > /dev/null
-  fi
-}
-
-post_upgrade() {
-  post_install
-  if [[ $(vercmp 0.9.11.1.678-1 $2) == '1' ]]; then
-    echo "Plex' home is now located in '/var/lib/plex'. You will have to move the 'Plex Media Server' directory located in '/opt/plexmediserver/Library/Application Support' into the new home. Please refer to 'https://support.plex.tv/hc/en-us/articles/201370363-Move-an-Install-to-Another-System' for detailed instructions."
-  fi
+  systemd-sysusers plex.conf
+  [[ -d /var/lib/plex ]] || install -dm 750 -o plex -g plex /var/lib/plex
 }
 
 # vim: ts=2 sw=2 et:
