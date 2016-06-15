@@ -5,6 +5,7 @@ pkgbase = aesfix
 	url = https://citp.princeton.edu/research/memory/
 	arch = any
 	license = BSD
+	depends = gcc
 	source = http://citpsite.s3-website-us-east-1.amazonaws.com/oldsite-htdocs/memory-content/src/aesfix-1.0.1.tar.gz
 	md5sums = f89fb82b69475bfa31f1919aaca5a58b
 
