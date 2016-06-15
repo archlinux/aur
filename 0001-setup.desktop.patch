@@ -1,0 +1,15 @@
+diff --git a/src/setup/setup.desktop.in b/src/setup/setup.desktop.in
+index 2a5e71f..62bbd72 100644
+--- a/src/setup/setup.desktop.in
++++ b/src/setup/setup.desktop.in
+@@ -1,8 +1,8 @@
+ [Desktop Entry]
+ Name=@PACKAGE_SHORTNAME@ Setup
+-Exec=@PROGRAM_PREFIX@setup
++Exec=@PROGRAM_PREFIX@doom-setup
+ Icon=@PROGRAM_PREFIX@setup
+ Type=Application
+ Comment=Setup tool for @PACKAGE_SHORTNAME@
+ Categories=Settings;
+-Keywords=first;person;shooter;doom;heretic;hexen;strife;vanilla;
++Keywords=first;person;shooter;doom;vanilla;

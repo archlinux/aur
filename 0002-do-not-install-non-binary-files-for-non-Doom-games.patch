@@ -1,0 +1,148 @@
+From e56e1732d1b8bcd0f0ceb108cb28de12b3e0a648 Mon Sep 17 00:00:00 2001
+From: Fabian Greffrath <fabian@greffrath.com>
+Date: Mon, 13 Jun 2016 21:07:38 +0200
+Subject: [PATCH] do not install non-binary files for non-Doom games
+
+Fixes #111, thanks @chungy
+---
+ Makefile.am                     | 12 ++++++------
+ man/Makefile.am                 | 34 +++++++++++++++++-----------------
+ man/bash-completion/Makefile.am |  8 ++++----
+ src/Makefile.am                 | 16 ++++++++--------
+ 4 files changed, 35 insertions(+), 35 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 74ee60c..33f457a 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -59,14 +59,14 @@ EXTRA_DIST=                             \
+ doomdocsdir = ${docdir}/../${PROGRAM_PREFIX}doom
+ doomdocs_DATA = $(DOC_FILES) NOT-BUGS.md
+ 
+-hereticdocsdir = ${docdir}/../${PROGRAM_PREFIX}heretic
+-hereticdocs_DATA = $(DOC_FILES)
++#hereticdocsdir = ${docdir}/../${PROGRAM_PREFIX}heretic
++#hereticdocs_DATA = $(DOC_FILES)
+ 
+-hexendocsdir = ${docdir}/../${PROGRAM_PREFIX}hexen
+-hexendocs_DATA = $(DOC_FILES)
++#hexendocsdir = ${docdir}/../${PROGRAM_PREFIX}hexen
++#hexendocs_DATA = $(DOC_FILES)
+ 
+-strifedocsdir = ${docdir}/../${PROGRAM_PREFIX}strife
+-strifedocs_DATA = $(DOC_FILES) README.Strife.md
++#strifedocsdir = ${docdir}/../${PROGRAM_PREFIX}strife
++#strifedocs_DATA = $(DOC_FILES) README.Strife.md
+ 
+ MAINTAINERCLEANFILES =  $(AUX_DIST_GEN)
+ 
+diff --git a/man/Makefile.am b/man/Makefile.am
+index b92cf97..4739b82 100644
+--- a/man/Makefile.am
++++ b/man/Makefile.am
+@@ -20,22 +20,22 @@ if HAVE_PYTHON
+ GENERATED_MAN_PAGES =               \
+            @PROGRAM_PREFIX@doom.6         \
+            default.cfg.5            \
+-           @PROGRAM_PREFIX@doom.cfg.5     \
+-           @PROGRAM_PREFIX@heretic.6      \
+-           heretic.cfg.5            \
+-           @PROGRAM_PREFIX@heretic.cfg.5  \
+-           @PROGRAM_PREFIX@hexen.6        \
+-           hexen.cfg.5              \
+-           @PROGRAM_PREFIX@hexen.cfg.5    \
+-           @PROGRAM_PREFIX@strife.6       \
+-           strife.cfg.5             \
+-           @PROGRAM_PREFIX@strife.cfg.5
++           @PROGRAM_PREFIX@doom.cfg.5
++#          @PROGRAM_PREFIX@heretic.6      \
++#          heretic.cfg.5            \
++#          @PROGRAM_PREFIX@heretic.cfg.5  \
++#          @PROGRAM_PREFIX@hexen.6        \
++#          hexen.cfg.5              \
++#          @PROGRAM_PREFIX@hexen.cfg.5    \
++#          @PROGRAM_PREFIX@strife.6       \
++#          strife.cfg.5             \
++#          @PROGRAM_PREFIX@strife.cfg.5
+ 
+ SETUP_MAN_PAGES =                          \
+-           @PROGRAM_PREFIX@doom-setup.6    \
+-           @PROGRAM_PREFIX@heretic-setup.6 \
+-           @PROGRAM_PREFIX@hexen-setup.6   \
+-           @PROGRAM_PREFIX@strife-setup.6
++           @PROGRAM_PREFIX@doom-setup.6
++#          @PROGRAM_PREFIX@heretic-setup.6 \
++#          @PROGRAM_PREFIX@hexen-setup.6   \
++#          @PROGRAM_PREFIX@strife-setup.6
+ 
+ man_MANS = chocolate-server.6             \
+            chocolate-setup.6              \
+@@ -43,9 +43,9 @@ man_MANS = chocolate-server.6             \
+            $(SETUP_MAN_PAGES)
+ 
+ doomdocs_DATA    = INSTALL.doom    CMDLINE.doom
+-hereticdocs_DATA = INSTALL.heretic CMDLINE.heretic
+-hexendocs_DATA   = INSTALL.hexen   CMDLINE.hexen
+-strifedocs_DATA  = INSTALL.strife  CMDLINE.strife
++#hereticdocs_DATA = INSTALL.heretic CMDLINE.heretic
++#hexendocs_DATA   = INSTALL.hexen   CMDLINE.hexen
++#strifedocs_DATA  = INSTALL.strife  CMDLINE.strife
+ 
+ CLEANFILES = $(GENERATED_MAN_PAGES) $(SETUP_MAN_PAGES) \
+              $(doomdocs_DATA) $(hereticdocs_DATA) \
+diff --git a/man/bash-completion/Makefile.am b/man/bash-completion/Makefile.am
+index 7001aff..9ccc9ea 100644
+--- a/man/bash-completion/Makefile.am
++++ b/man/bash-completion/Makefile.am
+@@ -9,10 +9,10 @@ BASH_COMPLETION_TEMPLATES = \
+ if HAVE_PYTHON
+ 
+ BASH_COMPLETION_SCRIPTLETS = \
+-    @PROGRAM_PREFIX@doom \
+-    @PROGRAM_PREFIX@heretic \
+-    @PROGRAM_PREFIX@hexen \
+-    @PROGRAM_PREFIX@strife
++    @PROGRAM_PREFIX@doom
++#   @PROGRAM_PREFIX@heretic \
++#   @PROGRAM_PREFIX@hexen \
++#   @PROGRAM_PREFIX@strife
+ 
+ bashcompletion_DATA = $(BASH_COMPLETION_SCRIPTLETS)
+ CLEANFILES = $(BASH_COMPLETION_SCRIPTLETS)
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 7534fe1..59a8b3b 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -221,10 +221,10 @@ EXTRA_DIST =                        \
+ 
+ appdatadir = $(prefix)/share/appdata
+ appdata_DATA =                              \
+-        @PROGRAM_PREFIX@doom.appdata.xml    \
+-        @PROGRAM_PREFIX@heretic.appdata.xml \
+-        @PROGRAM_PREFIX@hexen.appdata.xml   \
+-        @PROGRAM_PREFIX@strife.appdata.xml
++        @PROGRAM_PREFIX@doom.appdata.xml
++#       @PROGRAM_PREFIX@heretic.appdata.xml \
++#       @PROGRAM_PREFIX@hexen.appdata.xml   \
++#       @PROGRAM_PREFIX@strife.appdata.xml
+ 
+ @PROGRAM_PREFIX@doom.appdata.xml : doom.appdata.xml
+ 	cp doom.appdata.xml $@
+@@ -240,10 +240,10 @@ appdata_DATA =                              \
+ 
+ appdir = $(prefix)/share/applications
+ app_DATA =                                 \
+-           @PROGRAM_PREFIX@doom.desktop    \
+-           @PROGRAM_PREFIX@heretic.desktop \
+-           @PROGRAM_PREFIX@hexen.desktop   \
+-           @PROGRAM_PREFIX@strife.desktop
++           @PROGRAM_PREFIX@doom.desktop
++#          @PROGRAM_PREFIX@heretic.desktop \
++#          @PROGRAM_PREFIX@hexen.desktop   \
++#          @PROGRAM_PREFIX@strife.desktop
+ 
+ @PROGRAM_PREFIX@doom.desktop : doom.desktop
+ 	cp doom.desktop $@
+-- 
+2.8.3
+
