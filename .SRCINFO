@@ -1,12 +1,12 @@
 pkgbase = ion3
 	pkgdesc = Tiling tabbed window manager designed with keyboard users in mind
 	pkgver = 20090110
-	pkgrel = 2
+	pkgrel = 3
 	url = http://modeemi.fi/~tuomov/ion/
 	arch = i686
 	arch = x86_64
 	license = custom
-	depends = lua>=5.1
+	depends = lua51
 	depends = libx11
 	depends = libxext
 	depends = libsm
@@ -16,8 +16,10 @@ pkgbase = ion3
 	depends = libxdmcp
 	source = http://tuomov.iki.fi/software/dl/ion-3-20090110.tar.gz
 	source = ion3.desktop
+	source = archlinux.patch
 	md5sums = 1f17be1e87187b4af7de047187cc4930
 	md5sums = ea0c20a78da0f60463632b1149fdfeb8
+	md5sums = b1b8f5e28108d1017baf5712ddfadf75
 
 pkgname = ion3
 

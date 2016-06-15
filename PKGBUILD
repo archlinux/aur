@@ -3,38 +3,36 @@
 
 pkgname=ion3
 pkgver=20090110
-pkgrel=2
+pkgrel=3
 pkgdesc="Tiling tabbed window manager designed with keyboard users in mind"
 arch=('i686' 'x86_64')
 url="http://modeemi.fi/~tuomov/ion/"
 license=('custom')
-depends=('lua>=5.1' 'libx11' 'libxext' 'libsm' 'libice' 'libxcb' 'libxau' 'libxdmcp')
-source=(http://tuomov.iki.fi/software/dl/ion-3-${pkgver}.tar.gz ion3.desktop)
+depends=('lua51' 'libx11' 'libxext' 'libsm' 'libice' 'libxcb' 'libxau' 'libxdmcp')
+source=(http://tuomov.iki.fi/software/dl/ion-3-${pkgver}.tar.gz
+	ion3.desktop
+	archlinux.patch)
 md5sums=('1f17be1e87187b4af7de047187cc4930'
-         'ea0c20a78da0f60463632b1149fdfeb8')
+         'ea0c20a78da0f60463632b1149fdfeb8'
+         'b1b8f5e28108d1017baf5712ddfadf75')
 
-build() {
+prepare() {
   cd ${srcdir}/ion-3-${pkgver}
-  cp system.mk system.mk.new
-  sed -e 's:PREFIX=/usr/local:PREFIX=/usr:' \
-      -e 's:ETCDIR=$(PREFIX)/etc:ETCDIR=/etc:' \
-      -e 's:$(PREFIX)/man:$(PREFIX)/share/man:' \
-      -e 's:$(PREFIX)/doc:$(PREFIX)/share/doc:' \
-      -e 's:#HAS_SYSTEM_ASPRINTF=1:HAS_SYSTEM_ASPRINTF=1:' \
-      -e 's:INSTALL=.*$:INSTALL=install:' \
-      -e 's:LUA_DIR=/usr/local:LUA_DIR=/usr:' \
-      system.mk.new > system.mk
-
+  patch -Np2 -b -z .orig <../archlinux.patch
   if [ -n "${CFLAGS}" ] ; then
     cp system.mk system.mk.new
     sed -e "s:CFLAGS=-Os:CFLAGS=${CFLAGS}:" system.mk.new > system.mk
   fi
 }
 
+build() {
+  cd ${srcdir}/ion-3-${pkgver}
+  make ${MAKEFLAGS}
+}
+
 package() {
   cd ${srcdir}/ion-3-${pkgver}
-  make ${MAKEFLAGS} || return 1
-  make PREFIX=${pkgdir}/usr ETCDIR=${pkgdir}/etc/ion3 install || return 1
-  install -D -m644 ${startdir}/ion3.desktop ${pkgdir}/etc/X11/sessions/ion3.desktop || return 1
+  make PREFIX=${pkgdir}/usr ETCDIR=${pkgdir}/etc/ion3 install
+  install -D -m644 ${startdir}/ion3.desktop ${pkgdir}/etc/X11/sessions/ion3.desktop
   install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
