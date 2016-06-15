@@ -12,8 +12,8 @@
 ### the software) then please do email me or post an AUR comment.
 
 pkgname=amanda
-pkgver=3.3.7p1
-pkgrel=2
+pkgver=3.3.9
+pkgrel=1
 pkgdesc="Advanced Maryland Automatic Network Disk Archiver"
 url="http://www.amanda.org"
 arch=('i686' 'x86_64')
@@ -25,8 +25,8 @@ optdepends=(
   )
 install="$pkgname.install"
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz" "xinetd.${pkgname}")
-md5sums=('621d39b5a328f465fece4653c170cf7f'
-         '910c9823073148c576b14d4a71bc6458')
+sha256sums=('2520b95ca96f1d521d582b7c94bd631486e7029eda1de8e1887d74b323549a41'
+            'f872bb0d1e35ecad0c9369b59f7a5061ba2711f8895b2d7a2684cd0079fa0420')
 
 # if you want to run amanda as a different user and/or group, change these
 # variables before running makepkg
