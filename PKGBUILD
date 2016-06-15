@@ -4,14 +4,13 @@
 pkgname=vivaldi-widevine
 pkgdesc='A browser plugin for the viewing of premium video content, standalone for vivaldi'
 pkgver=1.4.8.885
-pkgrel=1
+pkgrel=2
 epoch=1
 arch=('i686' 'x86_64')
 url='http://www.google.com/chrome'
 license=('custom:chrome')
 options=('!strip')
 _chrome_ver=51.0.2704.84
-depends=("vivaldi")
 conflicts=("google-chrome")
 source=('chrome-eula_text.html::https://www.google.com/chrome/intl/en/eula_text.html')
 source_i686=("http://mirror.retrosnub.co.uk/apt/google/pool/main/g/google-chrome-stable/google-chrome-stable_48.0.2564.116-1_i386.deb")
