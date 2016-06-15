@@ -4,7 +4,7 @@
 
 pkgname='brutessh'
 pkgver='0.6'
-pkgrel=5
+pkgrel=6
 pkgdesc="A simple multithreaded sshd password bruteforcer using a wordlist."
 url='http://www.edge-security.com/edge-soft.php'
 license=('GPL')
@@ -25,8 +25,7 @@ package() {
 
   cat > "$pkgdir/usr/bin/$pkgname" << EOF
 #!/bin/sh
-cd /usr/share/$pkgname
-exec python2 brutessh.py "\$@"
+python2 /usr/share/$pkgname/brutessh.py "\$@"
 EOF
 
   chmod +x "$pkgdir/usr/bin/$pkgname"
