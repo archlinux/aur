@@ -22,6 +22,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib -D_libdir_set=false \
     -DCMAKE_BUILD_TYPE=Release \
+    -DEXTRA_KERNEL_CXX_FLAGS='-std=c++11' \
     "$srcdir/$pkgname-$pkgver"
   make
 }
