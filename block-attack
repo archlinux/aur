@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /usr/share/games/block-attack
+/usr/lib/block-attack/blockattack "$@"
