@@ -5,11 +5,14 @@ pkgrel=1
 
 # we (currently) need to build using nightly
 # this can hopefully go away eventually
-# also doesn't build with current nightly:
-# https://github.com/rust-lang-nursery/rustup.rs/commit/76849ce0b78a67ba157eb18fe55e6ff49a380942
-rustv="nightly-2016-05-10"
+rustv="nightly"
 chn=$(echo "$rustv" | tr '-' ' ' | cut -d' ' -f1)
 date=$(echo "$rustv" | tr '-' ' ' | cut -d' ' -f2- | tr ' ' '-')
+sep="/"
+if [ "$date" == "$rustv" ]; then
+	date=""
+	sep=""
+fi
 if test -n "$date"; then
 	date="-$date"
 fi
@@ -26,13 +29,13 @@ replaces=('multirust' 'multirust-git')
 install='post.install'
 source=(
 	"${pkgname}-${pkgver}.tgz::https://github.com/rust-lang-nursery/rustup.rs/archive/${pkgver}.tar.gz"
-	"$target$date.tar.gz::https://static.rust-lang.org/dist/${date#-}/${target}.tar.gz"
-	"$target$date.tar.gz.asc::https://static.rust-lang.org/dist/${date#-}/${target}.tar.gz.asc"
+	"$target$date.tar.gz::https://static.rust-lang.org/dist/${date#-}${sep}${target}.tar.gz"
+	"$target$date.tar.gz.asc::https://static.rust-lang.org/dist/${date#-}${sep}${target}.tar.gz.asc"
 )
 # The Rust GPG Key: https://keybase.io/rust
 validpgpkeys=("108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE")
 md5sums=('22751775435b3a37f3893b130e5e5d49'
-         '009ccdef55366033a1db0f74762a7fa3'
+         '4fcae8ac4b3bc2adcba2e1f6f47544b9'
          'SKIP')
 
 build() {
