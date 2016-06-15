@@ -4,7 +4,7 @@
 pkgname=vivaldi-widevine
 pkgdesc='A browser plugin for the viewing of premium video content, standalone for vivaldi'
 pkgver=1.4.8.885
-pkgrel=2
+pkgrel=3
 epoch=1
 arch=('i686' 'x86_64')
 url='http://www.google.com/chrome'
@@ -21,10 +21,6 @@ sha256sums_x86_64=('7ed0c94309a09305dd649b3c3aa3a38cf8c45e7e419e665ad80f04dc0701
 
 prepare() {
   bsdtar -xf data.tar.xz opt/google/chrome/{chrome,libwidevinecdm.so}
-}
-
-pkgver() {
-  awk 'match($0,/\(version: \0?([0-9.]+)/,a) {print a[1];}' opt/google/chrome/chrome
 }
 
 package() {
