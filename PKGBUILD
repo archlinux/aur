@@ -3,7 +3,7 @@
 
 pkgname=jigdo
 pkgver=0.7.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Jigsaw Download, or short jigdo, is a tool designed to ease the distribution of very large files over the internet, for example CD or DVD images"
 url="http://atterer.org/jigdo/"
 license=("GPL2")
