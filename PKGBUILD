@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-libreoffice-theme-git
-pkgver=20160601
+pkgver=20160615
 pkgrel=1
 pkgdesc="Papirus theme for LibreOffice (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
@@ -21,6 +21,5 @@ pkgver() {
 }
 
 package() {
-    cd ${pkgname}
-    make install DESTDIR="$pkgdir"
+    make -C "${pkgname}" install DESTDIR="$pkgdir"
 }
