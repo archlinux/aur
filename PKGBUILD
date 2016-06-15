@@ -24,11 +24,6 @@ md5sums=(
   '1a376e2c49586016dc2cf67ac8a092d2'
 )
 
-pkgver() {
-  cd "${pkgname}"
-  git describe --tags --abbrev=0
-}
-
 build() {
   cd "${srcdir}/${pkgname}/linux"
   make
