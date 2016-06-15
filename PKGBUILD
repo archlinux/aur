@@ -1,7 +1,7 @@
 pkgdesc='App Container Server'
 pkgname=acserver
 pkgver=0.0.0 # TODO pending release
-pkgrel=6
+pkgrel=7
 url="https://github.com/appc/$pkgname"
 source=(
     "git+$url.git"
@@ -37,9 +37,9 @@ check() {
 
 # 4.
 package() {
+    install -D -m644 $pkgname.service     "$pkgdir/usr/lib/systemd/system/$pkgname.service"
     cd "$pkgname"
     install -D -m755 bin/$pkgname         "$pkgdir/usr/bin/$pkgname"
-    install -D -m644 $pkgname.service     "$pkgdir/usr/lib/systemd/system/$pkgname.service"
     install -d -m755                      "$pkgdir/var/aci/store"
     install -D -m644 templates/index.html "$pkgdir/var/aci/templates/index.html"
 }
