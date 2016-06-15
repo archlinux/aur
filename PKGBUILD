@@ -1,4 +1,4 @@
-# Maintainer: Samantha Baldwin <fuhsaz+aur 'at' gmail 'dot' com>
+# Maintainer: Samantha Baldwin <fuhsaz+aur 'at' cryptic 'dot' li>
 # Contributor: Paul Nicholson <brenix@gmail.com>
 # Contributor: Francesco Piccinno <stack.box@gmail.com>
 
