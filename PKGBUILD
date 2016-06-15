@@ -3,19 +3,20 @@
 
 pkgname=xneur
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc='X Neural Switcher detects the language of input and corrects keyboard layout if needed'
 url="http://www.xneur.ru"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=("gstreamer>=1.2.4" 'enchant' 'libnotify' 'gtk2')
-source=("https://launchpad.net/~andrew-crew-kuznetsov/+archive/ubuntu/xneur-stable/+files/xneur_${pkgver}+git5.orig.tar.gz")
+source=("https://raw.githubusercontent.com/AndrewCrewKuznetsov/xneur-devel/master/Launchpad/xneur_$pkgver+git27.orig.tar.gz")
 optdepends=('hunspell-<your_lang>: Dramatically improves heuristics quality')
-md5sums=('e236550817260e42650e551023732705')
+md5sums=('2850e1c66e8eba69e5a15bb952cc4b76')
 
 build() {
     cd $srcdir/$pkgname-$pkgver
 
+CPPFLAGS="-Wno-misleading-indentation -Wno-unused-variable" # For gcc6 compat
     ./configure --prefix=/usr --sysconfdir=/etc \
 	--without-xosd \
 	--with-gtk=gtk2 # Because gxneur still doesn't supports gtk3
@@ -24,5 +25,5 @@ build() {
 
 package() {
     cd $srcdir/$pkgname-$pkgver
-    make DESTDIR=${pkgdir} install
+    make DESTDIR=$pkgdir install
 }
