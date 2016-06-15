@@ -2,8 +2,8 @@
 
 pkgname=ipe
 _dirver=7.2
-pkgver=7.2.1
-pkgrel=2
+pkgver=7.2.3
+pkgrel=1
 pkgdesc="The extensible drawing editor"
 url="http://tclab.kaist.ac.kr/ipe/"
 depends=('lua52' 'qt5-base' 'freetype2' 'zlib' 'poppler' 'python2')
@@ -16,7 +16,7 @@ source=("http://dl.bintray.com/otfried/generic/$pkgname/$_dirver/$pkgname-$pkgve
         "ipe.bash-completion"
         "config.patch"
         )
-md5sums=('e1ad8facb3d56d9eaf5a6a925063c3bf'
+md5sums=('ad371b237417d7574b90bc68feed41f6'
          '95158c047f0a9b0916b688af1faed779'
          '694f0d5402655901be385647e5d8d6e3'
          '56c6de89f3def116fac7828f78834d37')
