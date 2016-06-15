@@ -1,8 +1,8 @@
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-sys-mmap'
-pkgver='0.16'
+pkgver='0.17'
 pkgrel='1'
 pkgdesc="uses mmap to map in a file as a Perl variable"
 arch=('i686' 'x86_64')
@@ -10,11 +10,11 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url='http://search.cpan.org/dist/Sys-Mmap'
-source=('http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/Sys-Mmap-0.16.tar.gz')
-md5sums=('faae869e876fa86f92e6de3f13af3aef')
-sha512sums=('9f533f8eaa2707a77fa69dc0163e5e55b13d6653ddb5f7850c3fcaa090c79069cccedb947c1b8cd5a125fd7b055803eff437697c120785f422bff0414be7cd05')
-_distdir="Sys-Mmap-0.16"
+url='https://metacpan.org/release/Sys-Mmap'
+source=('http://search.cpan.org/CPAN/authors/id/T/TO/TODDR/Sys-Mmap-0.17.tar.gz')
+md5sums=('1fc827d67d468c594ab486c58047d57c')
+sha512sums=('004d6160323bb185fe23295679dc0c1e8f2696ce3760c0ae6922e3a21ba7b5deb1893b2e65c5b83c6897060d589ed4bd6b5f3b703172f98a8ed57e99a0b2bad9')
+_distdir="Sys-Mmap-0.17"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
