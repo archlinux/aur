@@ -1,7 +1,7 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-gtk-theme-git
-pkgver=20160603
+pkgver=20160606
 pkgrel=1
 pkgdesc="Papirus GTK theme for KDE (git version)"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname%-git}"
@@ -21,6 +21,5 @@ pkgver() {
 }
 
 package() {
-    cd ${pkgname}
-    make install DESTDIR="$pkgdir"
+    make -C "${pkgname}" install DESTDIR="$pkgdir"
 }
