@@ -2,11 +2,11 @@
 pkgbase=uzbl-next-git
 pkgrel=1
 pkgname=("uzbl-core-next-git" "uzbl-browser-next-git" "uzbl-tabbed-next-git")
-pkgver=v0.9.0.28.g834f843
+pkgver=v0.9.0.88.g92257e2
 arch=("any")
 url="http://www.uzbl.org"
 license=("GPL3")
-depends=("webkitgtk" "cairo")
+depends=("webkitgtk" "webkit2gtk" "cairo")
 makedepends=("git")
 source=("git+https://github.com/uzbl/uzbl.git#branch=next")
 md5sums=("SKIP")
