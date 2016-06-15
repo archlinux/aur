@@ -15,7 +15,7 @@
 
 pkgname=jwhois
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An Internet Whois client"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/jwhois/"
@@ -23,8 +23,8 @@ license=('GPL3')
 depends=('gdbm' 'libidn')
 source=("ftp://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz"
         "$pkgname.patch")
-md5sums=('977d0ba90ee058a7998c94d933fc9546'
-         '7ce928db7ca3132bc97cadac6288a94e')
+sha256sums=('fa9bb86782b915c6d730bb723f876dc9b345a617db375aaf3416ec22553cd64e'
+            'ae79266541d18ba6a7ca9d5eef9f2187b179c4ad88921ee77c9d369d968d6e26')
 
 prepare() {
   cd "$srcdir"/$pkgname-$pkgver
