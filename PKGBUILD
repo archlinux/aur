@@ -2,7 +2,7 @@
 # Maintainer: Ivailo Monev <xakepa10@gmail.com>
 
 pkgname=copperspice-git
-pkgver=1.2.2.c36505f
+pkgver=1.3.0.c815432
 pkgrel=1
 pkgdesc='C++ library derived from the existing Qt 4.8 framework'
 arch=('i686' 'x86_64')
@@ -15,14 +15,14 @@ depends=('openssl' 'zlib' 'cups' 'alsa-lib' 'gtk2' 'nas' 'libgl' 'libice'
 makedepends=('cmake' 'git' 'postgresql' 'mariadb' 'mesa')
 optdepends=('postgresql-libs: PostgreSQL driver'
         'libmariadbclient: MariaDB driver')
-source=("git+https://github.com/copperspice/copperspice.git#branch=cs-1.2")
+source=("git+https://github.com/copperspice/copperspice.git")
 sha1sums=('SKIP')
 conflicts=('copperspice')
 options=('debug')
 
 pkgver() {
     cd copperspice
-    printf "1.2.2.%s" "$(git rev-parse --short HEAD)"
+    printf "1.3.0.%s" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
@@ -38,8 +38,7 @@ build() {
         -DCMAKE_INSTALL_SYSCONFDIR=/etc \
         -DCMAKE_INSTALL_INCLUDEDIR=include/copperspice \
         -DTOOLS_SUFFIX=-cs \
-        -DWITH_WEBKIT=ON \
-        -DFREETYPE_INCLUDES=/usr/include/freetype2/freetype
+        -DWITH_WEBKIT=ON
     make
 }
 
