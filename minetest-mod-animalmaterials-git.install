@@ -3,24 +3,24 @@ post_install() {
         echo
         echo '############################### NOTICE ! ###################################'
 	echo
-        echo ' You have to move the mod to your $HOME/.minetest/mods if it doesnt'
-	echo ' recognize the default install dir'
+        echo ' Mod will be installed to /usr/share/minetest/mods which is the default'
+	echo ' directory for mods. This is disabled by default though and thus needs' 
+	echo ' patching to work.'
+	echo ' You can install "minetest-usrdir_patch" which will enable this path. If'
+	echo ' you don't the mods will not be recognized and selactable in Minetest.'
 	echo
-        echo ' sudo mv /usr/share/minetest/mods/animalmaterials ~/.minetest/mods'
-        echo ' sudo chown -R <your user>:<your group> ~/.minetest/mods/animalmaterials'
 	echo
-        echo
 }
 
 post_upgrade() {
         echo
         echo '############################### NOTICE ! ###################################'
 	echo
-        echo ' You have to move the mod to your $HOME/.minetest/mods if it doesnt'
-	echo ' recognize the default install dir'
-	echo
-        echo ' sudo mv /usr/share/minetest/mods/animalmaterials ~/.minetest/mods'
-        echo ' sudo chown -R <your user>:<your group> ~/.minetest/mods/animalmaterials'
+        echo ' Mod will be installed to /usr/share/minetest/mods which is the default'
+	echo ' directory for mods. This is disabled by default though and thus needs' 
+	echo ' patching to work.'
+	echo ' You can install "minetest-usrdir_patch" which will enable this path. If'
+	echo ' you don't the mods will not be recognized and selactable in Minetest.'
 	echo
         echo
 }
