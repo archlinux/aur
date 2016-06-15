@@ -1,0 +1,14 @@
+pkgbase = against
+	pkgdesc = A very fast ssh attacking script
+	pkgver = 0.2
+	pkgrel = 1
+	url = http://nullsecurity.net/tools/cracker.html
+	arch = any
+	license = unknown
+	depends = python2
+	depends = python2-paramiko
+	source = https://raw.githubusercontent.com/nullsecuritynet/tools/master/cracker/against/release/against.py
+	md5sums = 97dcd3bfb5594579bb7552633ccc6d02
+
+pkgname = against
+
