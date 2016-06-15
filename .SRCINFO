@@ -1,0 +1,8 @@
+pkgbase = xen-4.6
+	pkgver = 4.6.1
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+
+pkgname = xen-4.6
+
