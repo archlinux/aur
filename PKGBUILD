@@ -13,12 +13,13 @@
 pkgname=plex-media-server-plexpass
 pkgver=0.9.17.2.2159
 _pkgsum=2bd156c
-pkgrel=1
+pkgrel=2
 pkgdesc='Plex Media Server (PlexPass version)'
 arch=('armv7h' 'i686' 'x86_64')
 url='https://plex.tv/'
 license=('custom')
 options=('!emptydirs')
+optdepends=('miniupnpc')
 provides=('plex-media-server')
 conflicts=('plex-media-server')
 backup=('etc/conf.d/plexmediaserver')
