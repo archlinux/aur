@@ -5,7 +5,7 @@
 pkgname='brutessh'
 pkgver='0.6'
 pkgrel=1
-pkgdesc="A simple sshd password bruteforcer using a wordlist, it's very fast for internal networks. It's multithreads."
+pkgdesc="A simple multithreaded sshd password bruteforcer using a wordlist."
 url='http://www.edge-security.com/edge-soft.php'
 license=('GPL')
 arch=('any')
