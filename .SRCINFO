@@ -1,0 +1,12 @@
+pkgbase = aesfix
+	pkgdesc = Error-correction for AES key schedules
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://citp.princeton.edu/research/memory/
+	arch = any
+	license = BSD
+	source = http://citpsite.s3-website-us-east-1.amazonaws.com/oldsite-htdocs/memory-content/src/aesfix-1.0.1.tar.gz
+	md5sums = f89fb82b69475bfa31f1919aaca5a58b
+
+pkgname = aesfix
+
