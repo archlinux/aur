@@ -2,7 +2,7 @@
 
 _gitname=ctroller
 pkgname=${_gitname}-git
-pkgver=r23.a8c5e89
+pkgver=r32.fb7aa2d
 pkgrel=1
 pkgdesc="Use your 3DS as a gamepad on your Linux PC"
 arch=('x86_64')
