@@ -1,14 +1,14 @@
 pkgbase = python-hjson
 	pkgdesc = JSON for Humans, allows comments and is less error prone.
-	pkgver = 1.2.0
-	pkgrel = 2
+	pkgver = 1.5.6
+	pkgrel = 1
 	url = https://github.com/laktak/hjson-py
 	arch = any
 	license = MIT
 	depends = python-setuptools
 	depends = python2-setuptools
-	source = https://pypi.python.org/packages/source/h/hjson/hjson-1.2.0.zip
-	md5sums = 572ca8e2af52d013e614f08ff808daaf
+	source = https://pypi.io/packages/source/h/hjson/hjson-1.5.6.zip
+	md5sums = 5e28eabb5e784629475756372edcdea3
 
 pkgname = python-hjson
 	provides = python-hjson

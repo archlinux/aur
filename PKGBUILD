@@ -1,15 +1,15 @@
 
 pkgname=('python-hjson' 'python2-hjson')
 _pkgname="hjson"
-pkgver=1.5.3
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="JSON for Humans, allows comments and is less error prone."
 arch=(any)
 url="https://github.com/laktak/hjson-py"
 license=('MIT')
 depends=('python-setuptools' 'python2-setuptools')
-source=("https://pypi.python.org/packages/source/h/${_pkgname}/${_pkgname}-${pkgver}.zip")
-md5sums=('9fee8f096a27b1c351877b466dfa27b3')
+source=("https://pypi.io/packages/source/h/${_pkgname}/${_pkgname}-${pkgver}.zip")
+md5sums=('5e28eabb5e784629475756372edcdea3')
 package_python-hjson() {
   provides=('python-hjson')
   cd "${srcdir}/${_pkgname}-${pkgver}"
