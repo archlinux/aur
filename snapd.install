@@ -1,9 +1,11 @@
 ## arg 1:  the new package version
 post_install() {
-    echo "##############################################"
-    echo "# To use snapd start/enable the snapd.socket.#"
-    echo "# If you want your apps to be automatically  #"
-    echo "# updated from the store start/enable the    #"
-    echo "# snapd.refresh.timer.                       #"  
-    echo "##############################################"
+    echo "#################################################"
+    echo "# To use snapd start/enable the snapd.socket.   #"
+    echo "# If you want your apps to be automatically     #"
+    echo "# updated from the store start/enable the       #"
+    echo "# snapd.refresh.timer.                          #"
+    echo "# NOTE: Desktop entries show up after logging in#"
+    echo "# again or rebooting after snapd installation.  #"  
+    echo "#################################################"
 }
