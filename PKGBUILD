@@ -48,13 +48,13 @@ package() {
   install -Dm644 -t "$pkgdir/usr/doc/$pkgname" building-waf.md
 
   cd "$pkgname-$pkgver"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm755 waf "$pkgdir/usr/bin/waf"
-  install -Dm644 wscript "$pkgdir/usr/share/$pkgname/wscript"
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
+  install -Dt "$pkgdir/usr/bin" waf
+  install -Dm644 -t "$pkgdir/usr/share/$pkgname" wscript
 
   # Place waf library and tools.
   local wafdir="$pkgdir/usr/lib/waf"
-  install -dm755 "$wafdir"
+  install -d "$wafdir"
   bsdtar -xf zip/waflib.zip -C "$wafdir"
 
   # compile all python sources for once to be used after installation.
