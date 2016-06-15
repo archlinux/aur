@@ -1,9 +1,10 @@
 # Maintainer: Andrey Vihrov <andrey.vihrov at gmail.com>
 # Contributor: Frank Vanderham <twelve.eighty (at) gmail.>
+# Contributor: USA-RedDragon (AUR)
 
 pkgname=broadcom-wl-dkms
 pkgver=6.30.223.271
-pkgrel=6
+pkgrel=7
 pkgdesc="Broadcom 802.11 Linux STA wireless driver"
 arch=('i686' 'x86_64')
 url="https://www.broadcom.com/support/802.11"
