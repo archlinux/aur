@@ -3,7 +3,7 @@
 _pkgname=goose-extractor
 pkgname=python2-goose
 pkgver=1.0.25
-pkgrel=1
+pkgrel=2
 pkgdesc="HTML content and article extractor for Python, based on the Java/Scala version"
 arch=('any')
 url="https://github.com/grangier/python-goose"
