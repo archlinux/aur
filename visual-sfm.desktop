@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Visual SFM
+Comment=Visual Structure from Motion System
+Exec=/usr/bin/VisualSFM %F
+Terminal=false
+Categories=Graphics;
+
