@@ -13,6 +13,7 @@ source=("https://pypi.python.org/packages/source/g/$_pkgname/$_pkgname-$pkgver.t
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
+  rm -rf "tests"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
 
