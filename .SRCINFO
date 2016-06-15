@@ -1,0 +1,13 @@
+pkgbase = infinitsh
+	pkgdesc = Decentralized Software-Based File Storage Platform
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = http://infinit.sh
+	arch = x86_64
+	license = GPL
+	depends = fuse
+	source = https://storage.googleapis.com/sh_infinit_releases/linux64/Infinit-x86_64-linux_debian_oldstable-gcc4-0.6.0.tbz
+	md5sums = 35a33301f78643b5a75bc00aaccd7dc6
+
+pkgname = infinitsh
+
