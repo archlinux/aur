@@ -30,7 +30,7 @@ source_armv7h=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}
 source_i686=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}/plexmediaserver-${pkgver}-${_pkgsum}.i386.rpm")
 source_x86_64=("https://downloads.plex.tv/plex-media-server/${pkgver}-${_pkgsum}/plexmediaserver-${pkgver}-${_pkgsum}.x86_64.rpm")
 sha256sums=('7ab1ee8da9012d257b7f473fb79d76b201ca592cbe3722f977a43b58bfad180e'
-            '8ebde75d5f03663f507d2709549b70007a9ba86bef13311e14fc22cbb870c9b7'
+            '9da45cc3951ae03086ec663e6273c2de0183495fd15dc34ddd9aa100346d4d3a'
             'ebf153d5789f9d24cb98ae607d227286e1da6ce54e149c8be4f47e08ee729573'
             '7bb97271eb2dc5d1dcb95f9763f505970d234df17f1b8d79b467b9020257915a')
 sha256sums_arm=('e960cb98191a39cbf4557c4dea0a75e638ad95415eb666c035132b6c67e45940')
