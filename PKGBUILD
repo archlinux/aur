@@ -1,7 +1,7 @@
 # Maintainer: Immae <ismael.bouya@normalesup.org>
 
 pkgname=python-pybtex
-pkgver=0.18
+pkgver=0.20.1
 pkgrel=1
 pkgdesc="A BibTeX-compatible bibliography processor in Python"
 arch=('any')
@@ -21,4 +21,4 @@ package(){
   python setup.py install --root="${pkgdir}"
 }
 
-md5sums=('306457c18eb861ec3f644a7e2df98ae4')
+md5sums=('7d7badd28afe6115feb45afefa2f9f8c')
