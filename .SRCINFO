@@ -1,0 +1,13 @@
+pkgbase = adfind
+	pkgdesc = Admin Panel Finder
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/sahakkhotsanyan/adfind
+	arch = any
+	license = GPL
+	depends = php
+	source = https://github.com/sahakkhotsanyan/adfind/archive/master.zip
+	md5sums = 170cf9815e0064902d442e1ba6e21d09
+
+pkgname = adfind
+
