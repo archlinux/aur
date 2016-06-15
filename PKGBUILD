@@ -22,7 +22,5 @@ package() {
            install -dm755 "$pkgdir"/usr/bin
            cp -rf 0d1n-master/*	"$pkgdir"/usr/share/"$pkgname"/
            mv "$pkgdir"/usr/share/"$pkgname"/LICENSE.txt "$pkgdir"/usr/share/licenses/"$pkgname"/
-           echo "cd /usr/share/0d1n && ./0d1n" >> "$pkgname"
-           chmod +x "$pkgname"
-           cp "$pkgname" "$pkgdir"/usr/bin/ 
+           ln -s /usr/share/"$pkgname"/"$pkgname" "$pkgdir"/usr/bin/"$pkgname" 
 }
