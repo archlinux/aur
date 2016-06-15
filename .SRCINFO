@@ -1,7 +1,7 @@
 pkgbase = acserver-blablacar
 	pkgdesc = App Container Server (blablacar fork)
 	pkgver = 0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/blablacar/acserver
 	arch = i686
 	arch = x86_64

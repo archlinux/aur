@@ -1,7 +1,7 @@
 pkgdesc='App Container Server (blablacar fork)'
 pkgname=acserver-blablacar
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 url="https://github.com/blablacar/acserver"
 source=(
     "git+$url.git"
@@ -37,8 +37,8 @@ check() {
 
 # 4.
 package() {
+    install -D -m644 $pkgname.service   "$pkgdir/usr/lib/systemd/system/$pkgname.service"
     cd acserver
     install -D -m755 bin/acserver       "$pkgdir/usr/bin/$pkgname"
-    install -D -m644 $pkgname.service   "$pkgdir/usr/lib/systemd/system/$pkgname.service"
     install -d -m755                    "$pkgdir/var/aci/store"
 }
