@@ -1,0 +1,16 @@
+diff --git a/waf-light b/waf-light
+index 308eaae..2c75d2e 100755
+--- a/waf-light
++++ b/waf-light
+@@ -146,8 +146,9 @@ def find_lib():
+ 
+ 	dirname = '%s-%s-%s' % (WAF, VERSION, REVISION)
+ 	for i in (INSTALL,'/usr','/usr/local','/opt'):
+-		w = test(i + '/lib/' + dirname)
+-		if w: return w
++		for wafdir in ('waf', dirname):
++			w = test(i + '/lib/' + wafdir)
++			if w: return w
+ 
+ 	#waf-local
+ 	dir = join(base, (sys.platform != 'win32' and '.' or '') + dirname)

@@ -1,7 +1,7 @@
 pkgbase = waf
 	pkgdesc = General-purpose build system modelled after Scons
 	pkgver = 1.8.21
-	pkgrel = 1
+	pkgrel = 2
 	url = http://waf.io/
 	arch = any
 	license = BSD
@@ -9,8 +9,11 @@ pkgbase = waf
 	depends = python
 	provides = python-waf
 	source = https://waf.io/waf-1.8.21.tar.bz2
+	source = wafdir.patch
 	md5sums = 14245fc1c3efc262cdec5f5b5a5010e7
+	md5sums = ff472805caa81e02cb15bcf87031f722
 	sha256sums = b14db0532c1ba9e89ae3aea53cb4b5c769b751952f1fc194dc1e306ac03794e2
+	sha256sums = 432fb8e21fe31047e16ac068b761961f1a3965785e570bf54aca1c4c07d253f4
 
 pkgname = waf
 
