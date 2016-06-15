@@ -3,10 +3,7 @@
 pkgname=madgraph-pythia-pgs
 pkgver=2.4.4
 pkgrel=20160610
-pkgdesc="Parton showering, hadronization and detector simulation.\n\n
-If the checksum does not work, it is most likely due to a new release of the
-same version.  Let me know in a comment about this, or flag the package as
-out-of-date."
+pkgdesc="Parton showering, hadronization and detector simulation."
 url="http://madgraph.hep.uiuc.edu/"
 arch=('i686' 'x86_64')
 license=('MIT')
