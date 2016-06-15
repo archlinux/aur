@@ -14,7 +14,7 @@ depends=('dconf' 'gtk3' 'libcanberra')
 makedepends=('intltool')
 groups=('gnome')
 install=gnome-screenshot.install
-source=('git+https://github.com/kalterfive/gnome-screenshot#branch=fix-sound')
+source=('git+https://github.com/gnome/gnome-screenshot#branch=master')
 sha256sums=('SKIP')
 
 build() {
