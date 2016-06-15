@@ -1,5 +1,5 @@
 pkgbase = brutessh
-	pkgdesc = A simple sshd password bruteforcer using a wordlist, it's very fast for internal networks. It's multithreads.
+	pkgdesc = A simple multithreaded sshd password bruteforcer using a wordlist.
 	pkgver = 0.6
 	pkgrel = 1
 	url = http://www.edge-security.com/edge-soft.php
