@@ -3,7 +3,7 @@
 pkgname=minetest-mod-homedecor_modpack-git
 _gitname=${pkgname%-git*}
 pkgver=1151.9b61d20
-pkgrel=1
+pkgrel=2
 pkgdesc='This mod adds a whole bunch of new items to minetest suitable for decorating inside and outside a home.'
 arch=('any')
 url="https://github.com/VanessaE/homedecor_modpack"
