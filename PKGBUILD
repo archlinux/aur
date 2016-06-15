@@ -1,13 +1,16 @@
 # Maintainer: <aggraef at gmail.com>
 # Contributor: <fero dot kiraly at gmail.com>
 
+# This always builds the latest stable upstream release of pd-l2ork. To build
+# the very latest git revision please use the pd-l2ork-git package instead.
+
 # This package can be installed along with pd or pd-extended. To avoid
 # conflicts with these, cyclist, pdsend and pdreceive can be found under
 # /usr/lib/pd-l2ork/bin instead. Likewise, the Gem include files get installed
 # under /usr/include/pd-l2ork.
 
 pkgname=pd-l2ork
-pkgver=1703.b64e49c
+pkgver=20160614.r1705.ea4eb01
 pkgrel=1
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData"
 url="http://l2ork.music.vt.edu/main/?page_id=56"
@@ -24,7 +27,7 @@ makedepends=('autoconf' 'automake' 'libtool' 'git')
 conflicts=('pd-l2ork')
 install=pd-l2ork.install
 options=('!makeflags')
-source=("$pkgname::git+https://github.com/pd-l2ork/pd.git"
+source=("$pkgname::git+https://github.com/pd-l2ork/pd.git#commit=ea4eb01884a2f5fbc5ff9dbdc7519feaa95c09ad"
 	"Gem-pix_colorclassify.patch"
 	"RTcmix-pd-LCPLAY-stabilize.patch")
 md5sums=('SKIP'
@@ -33,7 +36,7 @@ md5sums=('SKIP'
 
 pkgver() {
   cd $srcdir/$pkgname
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  printf "%s.r%s.%s" "$(git log -1 --format=%cd --date=short | sed -e 's/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
