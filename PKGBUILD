@@ -1,7 +1,7 @@
 # Maintainer: Dylan Ferris <dylan@psilly.com>
 
 pkgname='visual-sfm'
-pkgver=0.5
+pkgver=0.5.26
 pkgrel=1
 pkgdesc='A Visual Structure from Motion System; create 3d models from photos.'
 arch=('x86_64')
