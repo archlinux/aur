@@ -1,0 +1,8 @@
+*.swp
+*.tar.gz
+*.tar.xz
+*.deb
+pkg/
+src/
+deb/
+Makefile
