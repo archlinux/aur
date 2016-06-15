@@ -1,0 +1,14 @@
+pkgbase = 0d1n
+	pkgdesc = A web security tool to make fuzzing at HTTP inputs
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://github.com/CoolerVoid/0d1n/
+	arch = any
+	license = GPL3
+	depends = curl
+	depends = libcurl-compat
+	source = https://github.com/CoolerVoid/0d1n/archive/master.zip
+	md5sums = 822e01669bce3b7f6c9391837d1bc51e
+
+pkgname = 0d1n
+
