@@ -1,6 +1,6 @@
 # Maintainer: Jon Gjengset <jon@tsp.io>
 pkgname=rustup-git
-pkgver=0.1.11.r35.gba855de
+pkgver=0.1.12.r39.g80731d7
 pkgrel=1
 
 rustv="1.9.0"
@@ -17,7 +17,7 @@ fi
 target="rust-$chn-$CARCH-unknown-linux-gnu"
 
 pkgdesc="The Rust toolchain installer"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/rust-lang-nursery/rustup.rs"
 license=('MIT' 'Apache')
 makedepends=('git')

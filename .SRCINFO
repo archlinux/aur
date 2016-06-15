@@ -2,11 +2,12 @@
 # Wed Jun 15 01:13:05 UTC 2016
 pkgbase = rustup-git
 	pkgdesc = The Rust toolchain installer
-	pkgver = 0.1.11.r35.gba855de
+	pkgver = 0.1.12.r39.g80731d7
 	pkgrel = 1
 	url = https://github.com/rust-lang-nursery/rustup.rs
 	install = post.install
-	arch = any
+	arch = i686
+	arch = x86_64
 	license = MIT
 	license = Apache
 	makedepends = git
