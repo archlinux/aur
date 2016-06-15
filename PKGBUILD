@@ -1,6 +1,6 @@
 # Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 pkgname=telegram-desktop-light
-pkgver=0.9.51
+pkgver=0.9.52
 pkgrel=1
 _qtver=5.6.0
 pkgdesc='Official desktop version of Telegram messaging app. Uses system libraries.'
@@ -89,8 +89,8 @@ noextract=(
 sha256sums=('246c321c009f7eeb3b616503b19c270688a790bf691feac838b3d91bfd51c55b'
             '6efa8a5c559e92b2e526d48034e858023d5fd3c39115ac1bfd3bb65834dbd67a'
             '2c854275a689a513ba24f4266cc6017d76875336671c2c8801b4b7289081bada'
-            '31b30e416552b4aeb71b94436aaf9cd4386bce2e314c99b6a5355770f60841e2'
-            '83a2aeb492125e52bf0a7e69d560d125ba949cc0f5d65cb68a67076a52009111'
+            'SKIP'
+            'SKIP'
             'bfc45add9e72ecc8ad07e2b4fdb6a4f52eb1cf284f76c3379efd201e78def63a'
             'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb')
 
