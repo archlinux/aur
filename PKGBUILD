@@ -1,7 +1,7 @@
 # Contributor: Rasi <rasi@xssn.at>
 # Maintainer: aksr <aksr at t-com dot me>
 pkgname=ncmpc-git
-pkgver=0.24.2.g23c27e8
+pkgver=0.24.4.gd3fa466
 pkgrel=1
 pkgdesc="Fully featured MPD client using ncurses" 
 arch=('i686' 'x86_64')
@@ -20,6 +20,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$pkgname"
+  rm m4/glib-gettext.m4
   ./autogen.sh
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
