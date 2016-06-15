@@ -1,7 +1,7 @@
 pkgbase = photofilmstrip
 	pkgdesc = Create video clips from photos
 	pkgver = 2.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.photofilmstrip.org/1-0-Home.html
 	arch = i686
 	arch = x86_64
