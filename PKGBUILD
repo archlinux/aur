@@ -1,6 +1,6 @@
 # Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 pkgname=telegram-desktop-dev
-pkgver=0.9.49
+pkgver=0.9.51
 pkgrel=1
 _qtver=5.6.0
 pkgdesc='Official desktop version of Telegram messaging app. Development release.'
@@ -86,7 +86,7 @@ noextract=(
 	'breakpad.tar.gz'
 	'breakpad-lss.tar.gz'
 )
-sha256sums=('8566ad847091083d853dd2461d700ec9938bd8438b75c060a2fa4e3fc957bce7'
+sha256sums=('246c321c009f7eeb3b616503b19c270688a790bf691feac838b3d91bfd51c55b'
             '6efa8a5c559e92b2e526d48034e858023d5fd3c39115ac1bfd3bb65834dbd67a'
             '2c854275a689a513ba24f4266cc6017d76875336671c2c8801b4b7289081bada'
             'SKIP'
