@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Understand
+Version=1.0
+Exec=/usr/bin/understand
+Icon=understand
+Type=Application
+Terminal=false
+Comment=Analyze it, measure it, visualize it, maintain it - Understand it
+Comment[ru]=Статический анализатор кода
+GenericName=Static analysis tool
+Categories=Development;IDE;

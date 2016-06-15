@@ -1,0 +1,4 @@
+#!/bin/bash
+export LD_LIBRARY_PATH=/opt/scitools/bin/linux32
+unset QT_PLUGIN_PATH
+/opt/scitools/bin/linux32/understand.bin "$@"
