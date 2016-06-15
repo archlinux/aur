@@ -2,7 +2,7 @@
 
 pkgname=indicator-sysmonitor-bzr
 pkgver=0.8.1
-pkgrel=0
+pkgrel=1
 pkgdesc="Show cpu and memory usage and also various temperature sensors."
 arch=('i686' 'x86_64')
 url="https://launchpad.net/indicator-sysmonitor"
