@@ -1,0 +1,14 @@
+pkgbase = geckodriver
+	pkgdesc = Proxy for using W3C WebDriver-compatible clients to interact with Gecko-based browsers.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/mozilla/geckodriver
+	arch = x86_64
+	license = MPL
+	makedepends = rust
+	makedepends = cargo
+	source = https://github.com/mozilla/geckodriver/archive/v0.8.0.tar.gz
+	sha256sums = a3b2cc5fd48622cdc811f952565ab235e5b64b5776e1f03c889a5c5c02367e1a
+
+pkgname = geckodriver
+
