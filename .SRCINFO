@@ -1,13 +1,13 @@
 pkgbase = tabbed-git
 	pkgdesc = Simple generic tabbed fronted to xembed aware applications
-	pkgver = 0.6.16.g55dc32b
+	pkgver = 0.6.29.gbc23614
 	pkgrel = 1
 	url = http://tools.suckless.org/tabbed/
 	arch = i686
 	arch = x86_64
 	license = MIT/X
 	makedepends = git
-	depends = libx11
+	depends = libxft
 	provides = tabbed
 	conflicts = tabbed
 	source = tabbed::git+http://git.suckless.org/tabbed

@@ -1,13 +1,13 @@
 # Maintainer: Samantha Baldwin <fuhsaz 'plus' aur 'at' cryptic 'dot' li>
 pkgname=tabbed-git
 _pkgname=tabbed
-pkgver=0.6.16.g55dc32b
+pkgver=0.6.29.gbc23614
 pkgrel=1
 pkgdesc="Simple generic tabbed fronted to xembed aware applications"
 arch=('i686' 'x86_64')
 url="http://tools.suckless.org/tabbed/"
 license=('MIT/X')
-depends=('libx11')
+depends=('libxft')
 makedepends=('git')
 provides=('tabbed')
 conflicts=('tabbed')
