@@ -4,7 +4,7 @@
 
 pkgname=waf
 pkgver=1.8.21
-pkgrel=2
+pkgrel=3
 pkgdesc='General-purpose build system modelled after Scons'
 url='http://waf.io/'
 arch=('any')
@@ -13,11 +13,14 @@ depends=('python')
 makedepends=('unzip')
 provides=('python-waf')
 source=("https://waf.io/${pkgname}-${pkgver}.tar.bz2"
-        'wafdir.patch')
+        'wafdir.patch'
+        'building-waf.md')
 md5sums=('14245fc1c3efc262cdec5f5b5a5010e7'
-         'ff472805caa81e02cb15bcf87031f722')
+         'ff472805caa81e02cb15bcf87031f722'
+         '93fd94b3dc4616c35e9bf13adc63b23c')
 sha256sums=('b14db0532c1ba9e89ae3aea53cb4b5c769b751952f1fc194dc1e306ac03794e2'
-            '432fb8e21fe31047e16ac068b761961f1a3965785e570bf54aca1c4c07d253f4')
+            '432fb8e21fe31047e16ac068b761961f1a3965785e570bf54aca1c4c07d253f4'
+            '3103524b61ac3f3af9bb71f1ac8fcb836a1e67e2bfcf59150f08dbf70a595675')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -36,12 +39,18 @@ build() {
   ./waf-light \
     configure --prefix=/usr \
     build --make-waf --tools='compat,compat15,ocaml,go,cython,scala,erlang,cuda,gcj,boost,pep8,eclipse'
+
+  # Strip packed library from binary. The plain files are installed separately.
+  sed -i '/^#==>$/,/^#<==$/d' waf
 }
 
 package() {
+  install -Dm644 -t "$pkgdir/usr/doc/$pkgname" building-waf.md
+
   cd "$pkgname-$pkgver"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 waf "$pkgdir/usr/bin/waf"
+  install -Dm644 wscript "$pkgdir/usr/share/$pkgname/wscript"
 
   # Place waf library and tools.
   local wafdir="$pkgdir/usr/lib/waf"
