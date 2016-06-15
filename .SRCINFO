@@ -1,7 +1,7 @@
 pkgbase = python2-goose
 	pkgdesc = HTML content and article extractor for Python, based on the Java/Scala version
 	pkgver = 1.0.25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/grangier/python-goose
 	arch = any
 	license = Apache
