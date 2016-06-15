@@ -1,0 +1,15 @@
+pkgbase = armikrog-hib
+	pkgdesc = A unique stop motion clay animated point and click adventure game from the creators of Earthworm Jim and the Neverhood.
+	pkgver = 20160202
+	pkgrel = 1
+	url = http://www.armikrog.com/
+	arch = i686
+	arch = x86_64
+	license = custom: commercial
+	makedepends = hib-dlagent
+	makedepends = unrar
+	noextract = Armikrog_LinuxUniversal_feb2016.rar
+	source = hib://Armikrog_LinuxUniversal_feb2016.rar
+	md5sums = 4d5f5701dc79c9ed337c6ebf78bb1ad9
+
+pkgname = armikrog-hib
