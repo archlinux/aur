@@ -1,14 +1,16 @@
-# Maintainer: masutu <masutu dot arch at gmail dot com>
+# Maintainer: buckket <buckket@cock.li>
+# Contributors: masutu
+
 pkgname=ebumeter
-pkgver=0.2.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Loudness measurement according to EBU-R128."
 arch=('i686' 'x86_64')
 url="http://kokkinizita.linuxaudio.org/linuxaudio/"
 license=('GPL')
-depends=(clxclient jack libpng)
+depends=(clthreads clxclient jack)
 source=($url/downloads/$pkgname-$pkgver.tar.bz2)
-md5sums=('8cf935e3412119042dd3bf4bf87b8b72')
+md5sums=('802f1cab7984c2f2ec85594461620711')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"/source
