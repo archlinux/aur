@@ -1,14 +1,16 @@
 pkgbase = cubetwister
 	pkgdesc = Your companion to your Rubik's Cube, a highly configurable editor for cube scripts
 	pkgver = 2.0.155
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.randelshofer.ch/cubetwister
 	arch = any
 	license = CCPL:by-3.0
 	depends = bash
 	depends = java-runtime
 	source = https://www.randelshofer.ch/cubetwister/files/cubetwister-2.0.155.zip
+	source = cubetwister
 	sha1sums = 6eb906af88163fcc6675a1b7304d05f2f689a869
+	sha1sums = c61a4890127702f17411ba2adef0bec8ad1fd18f
 
 pkgname = cubetwister
 
