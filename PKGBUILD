@@ -27,18 +27,12 @@ build()
 	cd $srcdir
 	mkdir -p QMPlay2-build
 	cd QMPlay2-build
-	cmake ../QMPlay2 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
-	make
-
-# 	QT_SUFFIX=-qt5 SYSTEM_BUILD=1 ./compile_unix 0
+	time cmake ../QMPlay2 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
+	time make
 }
 
 package()
 {
 	cd $srcdir/QMPlay2-build
 	make DESTDIR=$pkgdir install
-
-# 	mv $srcdir/QMPlay2/app $pkgdir/usr
-# 	mkdir -p $pkgdir/usr/share/mime/packages
-# 	cp $srcdir/QMPlay2/src/gui/Unix/x-*.xml $pkgdir/usr/share/mime/packages
 }
