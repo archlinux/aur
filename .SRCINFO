@@ -1,0 +1,13 @@
+pkgbase = acccheck
+	pkgdesc = A password dictionary attack tool that targets windows authentication via the SMB protocol
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://labs.portcullis.co.uk/tools/acccheck/
+	arch = any
+	license = GPL
+	depends = perl
+	source = https://labs.portcullis.co.uk/download/acccheck-0-2-1.tar.gz
+	md5sums = ad14f58e04bc683fce5f72ef3cdb745d
+
+pkgname = acccheck
+
