@@ -1,6 +1,6 @@
 
 pkgname=mingw-w64-openmesh
-pkgver=6.0
+pkgver=6.1
 pkgrel=1
 pkgdesc="A generic and efficient data structure for representing and manipulating polygonal meshes (mingw-w64)"
 arch=('any')
@@ -10,18 +10,15 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://www.openmesh.org/media/Releases/${pkgver}/OpenMesh-${pkgver}.tar.bz2")
-sha1sums=('8b73075f151b1c63bd4c113f45c4a6c99740bd32')
+sha1sums=('f1a6e46ac5490bbed2c89312494366c43cf9edd3')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare () {
   cd "$srcdir"/OpenMesh-${pkgver}
 
-  # dont pass MSVC-specific flag /LARGEADDRESSAWARE
-  sed -i 's|NOT "\${CMAKE_GENERATOR}" MATCHES "MinGW Makefiles"|MSVC|g' cmake/ACGCompiler.cmake
-
-  # install dlls in the right location
-  sed -i 's|set (ACG_PROJECT_BINDIR ".")|set (ACG_PROJECT_BINDIR bin)|g' cmake/ACGCommon.cmake
+  # https://www.graphics.rwth-aachen.de:9000/OpenMesh/OpenMesh/merge_requests/72
+  sed -i "s|WIN32 AND NOT MINGW|WIN32|g" src/OpenMesh/Core/CMakeLists.txt
 }
 
 build() {
