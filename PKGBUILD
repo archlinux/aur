@@ -4,7 +4,7 @@
 
 pkgname=telegram-desktop-bin
 pkgver=0.9.51
-pkgrel=1
+pkgrel=2
 pkgdesc="Official desktop version of Telegram messaging app - Static binaries"
 arch=('i686' 'x86_64')
 url="https://desktop.telegram.org"
@@ -44,8 +44,8 @@ sha256sums=('32d1597d67a7ef519367e499fcc978da4cce104e370b3787853446d93b1533d6'
             '94e21d6e7c30ae4f09a42937c46836454b955944ca565e0427f6d7494d034f6d'
             '4226167b476a75e844ddf0d429068e7e901bbde516810a7d4ca90f8405c01eef'
             '2339e94c159975c81a14b6df67a5fad1be02cf032ffb953215d895d1343a3ecb')
-sha256sums_i686=('29471ad8521eeeb3da8bed7ab26f502159472525a91c9fdeb670731363b27b86')
-sha256sums_x86_64=('e1f9a43203ebb1313bd48746736241b48580e769dce715bf3ebea1dc7cfa710c')
+sha256sums_i686=('c66e3cbd176d60fde2533f351f1c4900798281068e3f49fedc2ec8b0926f7a9b')
+sha256sums_x86_64=('322ebb9885590258724d11c0d869298f15b11e5746b82b6c13266dfab59b5cf2')
 # Some installation information
 install="$pkgname.install"
 
