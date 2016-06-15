@@ -4,7 +4,7 @@
 
 pkgname='brutessh'
 pkgver='0.6'
-pkgrel=1
+pkgrel=5
 pkgdesc="A simple multithreaded sshd password bruteforcer using a wordlist."
 url='http://www.edge-security.com/edge-soft.php'
 license=('GPL')
