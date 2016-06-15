@@ -1,7 +1,7 @@
 # Maintainer: Carlos Henrique Merces Moreira "chmercesmoreira" <ch.mercesmoreira@gmail.com>
 pkgname=photofilmstrip
 pkgver=2.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Create video clips from photos"
 arch=('i686' 'x86_64')
 url="http://www.photofilmstrip.org/1-0-Home.html"
@@ -21,7 +21,7 @@ package () {
 
 	chmod 644 $pkgdir/usr/share/applications/photofilmstrip.desktop
 
-	find /usr/share/doc/photofilmstrip/ -type f -exec chmod 644 {} \;
+	find $pkgdir/usr/share/doc/photofilmstrip/ -type f -exec chmod 644 {} \;
 	
 	for size in 32x32 48x48 64x64 192x192
 	do
