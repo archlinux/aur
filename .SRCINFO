@@ -1,7 +1,7 @@
 pkgbase = perl-cache-cache
 	pkgdesc = Generic cache interface and implementations
-	pkgver = 1.06
-	pkgrel = 3
+	pkgver = 1.08
+	pkgrel = 1
 	url = http://search.cpan.org/~JSWARTZ/Cache-Cache
 	arch = any
 	license = GPL
@@ -10,8 +10,8 @@ pkgbase = perl-cache-cache
 	depends = perl-error>=0.15
 	depends = perl-ipc-sharelite>=0.09
 	options = !emptydirs
-	source = http://www.cpan.org/authors/id/J/JS/JSWARTZ/Cache-Cache-1.06.tar.gz
-	md5sums = 4425f44ddb138a799290802e5aad46ef
+	source = http://www.cpan.org/authors/id/R/RJ/RJBS/Cache-Cache-1.08.tar.gz
+	md5sums = c18bfc823055d1df5255ae834e161749
 
 pkgname = perl-cache-cache
 

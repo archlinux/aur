@@ -2,16 +2,16 @@
 
 pkgname=perl-cache-cache
 _cpanname=Cache-Cache
-pkgver=1.06
-pkgrel=3
+pkgver=1.08
+pkgrel=1
 pkgdesc="Generic cache interface and implementations"
 arch=('any')
 url="http://search.cpan.org/~JSWARTZ/${_cpanname}"
 license=('GPL' 'PerlArtistic')
 depends=('perl-digest-sha1>=2.02' 'perl-error>=0.15' 'perl-ipc-sharelite>=0.09')
 options=('!emptydirs')
-source=(http://www.cpan.org/authors/id/J/JS/JSWARTZ/${_cpanname}-${pkgver}.tar.gz) 
-md5sums=('4425f44ddb138a799290802e5aad46ef')
+source=(http://www.cpan.org/authors/id/R/RJ/RJBS/${_cpanname}-${pkgver}.tar.gz) 
+md5sums=('c18bfc823055d1df5255ae834e161749')
 build() {
   cd $srcdir/${_cpanname}-${pkgver}
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor || return 1 
