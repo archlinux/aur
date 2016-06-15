@@ -2,7 +2,7 @@
 # Contributor: Phillip Schichtel <phillip.public@schich.tel>
 
 pkgname=adapta-gtk-theme-git
-pkgver=3.21.1.173.r11.542d953
+pkgver=3.21.2.129
 pkgrel=1
 pkgdesc='An adaptive Gtk+ theme based on Material Design Guidelines'
 arch=('any')
@@ -15,6 +15,8 @@ optdepends=('gnome-shell: The GNOME Shell'
             'budgie-desktop: The Budgie desktop'
             'cinnamon: The Cinnamon desktop'
             'xfdesktop: The Xfce desktop')
+provides=('adapta-gtk-theme')
+conflicts=('adapta-gtk-theme')
 source=('adapta-gtk-theme::git+https://github.com/tista500/Adapta.git')
 sha256sums=('SKIP')
 
