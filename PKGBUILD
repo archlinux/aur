@@ -23,7 +23,7 @@ build() {
 
 package() {
   cd $srcdir/$pkgname-$pkgver
-  make prefix="$pkgdir/usr/" install
+  make DESTDIR="$pkgdir/" install
 }
 
 # vim:set ts=2 sw=2 et:
