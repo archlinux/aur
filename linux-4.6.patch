@@ -1,5 +1,5 @@
 --- setup/Linux/oss/build/pci_wrapper.inc	2014-08-31 19:40:14.000000000 +0100
-+++ setup/Linux/oss/build/pci_wrapper.inc	2016-06-14 23:50:17.138446865 +0100
++++ setup/Linux/oss/build/pci_wrapper.inc	2016-06-15 06:51:46.402770996 +0100
 @@ -71,8 +71,10 @@
  
  #if LINUX_VERSION_CODE < KERNEL_VERSION(3,8,0)
@@ -12,3 +12,23 @@
  #endif
  osspci_remove (struct pci_dev *pcidev)
  {
+@@ -88,11 +90,19 @@
+ 	pci_disable_device (dev_map[i].pcidev);
+ 	osdev_delete (osdev);
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,6,0)
+ 	return 0;
++#else
++	return;
++#endif
+       }
+ 
+   printk (KERN_ALERT DRIVER_NICK ": Can't find the PCI device to detach\n");
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4,6,0)
+   return -EIO;
++#else
++  return;
++#endif
+ }
+ 
+ void
