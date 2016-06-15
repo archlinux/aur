@@ -8,7 +8,8 @@ pkgdesc="Minetest mod that adds weather"
 arch=('any')
 url="https://forum.minetest.net/viewtopic.php?f=11&t=5245&sid=2e794f55767fd96363055597bd7998df"
 license=('custom')
-depends=('minetest')
+depends=()
+optdepends=('minetest-usrdir_patch')
 makedepends=('git')
 provides=("$_gitname")
 install=$pkgname.install
