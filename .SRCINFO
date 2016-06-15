@@ -1,0 +1,19 @@
+pkgbase = fightcade
+	pkgdesc = An online arcade gaming platform for netplay based on GGPO
+	pkgver = 42.1
+	pkgrel = 1
+	url = http://www.fightcade.com/
+	arch = any
+	license = GPLv2
+	depends = wine
+	depends = lib32-mpg123
+	depends = pyqt4-common
+	depends = python-pyqt4
+	depends = phonon-qt4
+	depends = python2-pyqt4
+	depends = python2-sip
+	source = http://www.fightcade.com/download/fightcade-linux-v042.1.tar.gz
+	md5sums = 54ce821aa84738ade05e3654446fd19a
+
+pkgname = fightcade
+
