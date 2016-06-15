@@ -1,0 +1,3 @@
+#!/bin/bash
+cd /usr/share/games/floodit
+./game.py "$@"
