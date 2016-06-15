@@ -2,24 +2,24 @@
 
 _realname=CPU-X
 pkgname=cpu-x-git
-pkgver=2.92.0.r127.ga575a95
+pkgver=3.0.0.r0.gc698ca3
 pkgrel=1
-pkgdesc="A Free software that gathers information on CPU, motherboard and more (like CPU-Z)"
+pkgdesc="A Free software that gathers information on CPU, motherboard and more"
 arch=('i686' 'x86_64')
-url="https://github.com/X0rg/CPU-X"
+url="http://X0rg.github.io/CPU-X/"
 license=('GPL3')
 depends=('gtk3' 'ncurses' 'libcpuid-git' 'pciutils' 'procps-ng')
 makedepends=('cmake' 'nasm')
+optdepends=('curl: check if CPU-X is up-to-date when using --version'
+	'wget: check if CPU-X is up-to-date when using --version if curl is missing')
 provides=('cpu-x')
 conflicts=('cpu-x')
-options=('debug')
 source=("git+https://github.com/X0rg/CPU-X.git")
 md5sums=('SKIP')
 
 pkgver() {
 	cd "$_realname"
-	v=$(grep "VERSION" CMakeLists.txt | sed -n 2p | awk '{ print $2 }')
-	git describe --long --tags | sed -e "s/^v//;s/2.2.2/$v/;s/\([^-]*-g\)/r\1/;s/-/./g"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
