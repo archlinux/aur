@@ -35,14 +35,32 @@ source=("neatmkfn::git://repo.or.cz/neatmkfn.git"
         "http://litcave.rudi.ir/neatroff.pdf"
         "http://litcave.rudi.ir/neateqn.pdf")
 noextract=()
-md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-         '25b2616080067796ff97d2283d03182d'
+md5sums=('SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         'SKIP'
+         '56e6abc4775a4b76ae4190cc5bae350b'
          '38ff8a13e7b1dbce1eb20f41139b8e16')
-sha1sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-          '83abac8919145551b250c523e0ddb05f7e40aa08'
+sha1sums=('SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'SKIP'
+          'fcd3f9735f5b189b64f8a644df3bbbcf32486c06'
           '3e7b33efbdb3a9f944fc16d3e0f97ebd8aca697c')
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-            '04403ed1fb552ff055374243fbcb6962ff3b24c47d51fef8c7ddbc2304999515'
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'efda96099607e73a5e46c590102f27f77a913e409731dc7c983327c98fea635b'
             '015589c6ceef39318d593dbc27cd19b307e536a2c18e4c44644e4d142ca92b9b')
 
 ## Ghostscript Fonts Location:
