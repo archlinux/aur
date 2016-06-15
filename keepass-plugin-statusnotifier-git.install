@@ -1,0 +1,17 @@
+## arg 1:  the new package version
+post_install() {
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+
+## arg 1:  the new package version
+## arg 2:  the old package version
+post_upgrade() {
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
+
+
+## arg 1:  the old package version
+post_remove() {
+    gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+}
