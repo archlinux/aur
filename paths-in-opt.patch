@@ -1,8 +1,8 @@
 diff --git a/include/ClientGUI.py b/include/ClientGUI.py
-index 1ca58f2..3394ced 100755
+index 56d31be..4644c4f 100755
 --- a/include/ClientGUI.py
 +++ b/include/ClientGUI.py
-@@ -156,7 +156,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
+@@ -154,7 +154,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
          aboutinfo.SetVersion( str( HC.SOFTWARE_VERSION ) + ', using network version ' + str( HC.NETWORK_VERSION ) )
          aboutinfo.SetDescription( CC.CLIENT_DESCRIPTION )
          
@@ -11,7 +11,7 @@ index 1ca58f2..3394ced 100755
          
          aboutinfo.SetLicense( license )
          
-@@ -312,7 +312,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
+@@ -310,7 +310,7 @@ class FrameGUI( ClientGUICommon.FrameThatResizes ):
                              server_executable = server_executable.replace( 'pythonw', 'python' )
                              
                          
@@ -21,10 +21,10 @@ index 1ca58f2..3394ced 100755
                      
                      time_waited = 0
 diff --git a/include/HydrusConstants.py b/include/HydrusConstants.py
-index 8627244..50dda3e 100755
+index 1bdb1e3..f09690e 100755
 --- a/include/HydrusConstants.py
 +++ b/include/HydrusConstants.py
-@@ -3,36 +3,25 @@ import sys
+@@ -3,33 +3,21 @@ import sys
  
  # dirs
  
@@ -51,23 +51,19 @@ index 8627244..50dda3e 100755
 +BIN_DIR = "/opt/hydrus/bin"
  DB_DIR = os.path.join( BASE_DIR, 'db' )
  SERVER_FILES_DIR = os.path.join( DB_DIR, 'server_files' )
- CLIENT_THUMBNAILS_DIR = os.path.join( DB_DIR, 'client_thumbnails' )
- SERVER_THUMBNAILS_DIR = os.path.join( DB_DIR, 'server_thumbnails' )
  CLIENT_UPDATES_DIR = os.path.join( DB_DIR, 'client_updates' )
  SERVER_UPDATES_DIR = os.path.join( DB_DIR, 'server_updates' )
 -HELP_DIR = os.path.join( BASE_DIR, 'help' )
 +HELP_DIR = "/opt/hydrus/help"
  INCLUDE_DIR = os.path.join( BASE_DIR, 'include' )
- LOGS_DIR = os.path.join( BASE_DIR, 'logs' )
 -STATIC_DIR = os.path.join( BASE_DIR, 'static' )
 +STATIC_DIR = "/opt/hydrus/static"
  
 -#
-+for dirs in [LOGS_DIR, DB_DIR]:
-+    try:
-+        os.makedirs(dirs)
-+    except os.error:
-+        pass
++try:
++    os.makedirs(DB_DIR)
++except os.error:
++    pass
  
  PLATFORM_WINDOWS = False
  PLATFORM_OSX  = False
