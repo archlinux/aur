@@ -1,0 +1,9 @@
+[Desktop Entry]
+
+Name=Intel® XDK IoT Edition
+Comment=JavaScript on-board app and HTML5 companion app development
+Icon=/opt/intel/XDK/xdk/public/images/iot-xdk_icon.png
+Type=Application
+Categories=Development
+Exec=/usr/bin/intel-xdk-iot
+Terminal=false
