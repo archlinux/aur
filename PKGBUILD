@@ -1,7 +1,7 @@
 pkgname=cgal-ipelets
-pkgver=4.7
+pkgver=4.8
 pkgrel=1
-ipever=7.2.1
+ipever=7.2.3
 pkgdesc="Ipelets from CGAL"
 arch=('i686' 'x86_64')
 url="http://www.cgal.org"
@@ -29,5 +29,5 @@ package() {
   cp "$srcdir/CGAL-$pkgver/demo/CGAL_ipelets/"*.so "$pkgdir/usr/lib/ipe/$ipever/ipelets/"
   cp "$srcdir/CGAL-$pkgver/demo/CGAL_ipelets/lua/"* "$pkgdir/usr/lib/ipe/$ipever/ipelets/"
 }
-md5sums=('623d91fb2ab0a35049dc6098a0f235cc'
+md5sums=('e31e7039b5cdc74ac7b106db8ba644f3'
          'f9e230e8c7f787f9eeccb2ed302dca66')
