@@ -19,7 +19,7 @@ fi
 target="rust-$chn-$CARCH-unknown-linux-gnu"
 
 pkgdesc="The Rust toolchain installer"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/rust-lang-nursery/rustup.rs"
 license=('MIT' 'Apache')
 makedepends=() #'cargo-nightly'
