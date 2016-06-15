@@ -5,6 +5,8 @@ post_install () {
   systemctl restart sudodevd.service
   echo "You should add current user to group sudodev, run:"
   echo -e "\tsudo gpasswd -a \$USER sudodev"
+  echo "Then reboot to accept new group, run:"
+  echo -e "\tsudo reboot"
 }
 
 ## arg 1:  the new package version

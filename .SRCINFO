@@ -1,6 +1,6 @@
 pkgbase = sudodev-git
 	pkgdesc = Create your special device for a none-password sudo
-	pkgver = v0.27.r4.g340b488
+	pkgver = v0.27.r7.g3e969b2
 	pkgrel = 1
 	url = https://github.com/Arondight/sudodev.git
 	install = sudodev.install
