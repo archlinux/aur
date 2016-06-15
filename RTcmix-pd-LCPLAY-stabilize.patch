@@ -1,0 +1,13 @@
+diff --git a/RTcmix-pd-4.0.1.6/insts/std/LPCPLAY/stabilize.cpp b/RTcmix-pd-4.0.1.6/insts/std/LPCPLAY/stabilize.cpp
+index 5753965..9cf85c4 100644
+--- a/RTcmix-pd-4.0.1.6/insts/std/LPCPLAY/stabilize.cpp
++++ b/RTcmix-pd-4.0.1.6/insts/std/LPCPLAY/stabilize.cpp
+@@ -29,7 +29,7 @@ stabilize(float *frameIn, int npoles)
+ static Complex jay(0., 1.);
+ static Complex tmp;
+ 
+-inline double abs(double x) { return (x >= 0.) ? x : -x; }
++//inline double abs(double x) { return (x >= 0.) ? x : -x; }
+ 
+ static int
+ factor(double *b, long *k4, double *rootr, double *rooti,
