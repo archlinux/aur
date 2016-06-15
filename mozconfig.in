@@ -2,8 +2,8 @@
 mk_add_options PYTHON=/usr/bin/python2
 ac_add_options --enable-official-branding
 export MOZILLA_OFFICIAL=1
-export CC=gcc
-export CXX=g++
+export CC=gcc-5
+export CXX=g++-5
 
 # number of cores your processor has
 mk_add_options MOZ_MAKE_FLAGS="-j8" 
@@ -67,7 +67,7 @@ ac_add_options --enable-startup-notification
 ac_add_options --enable-pulseaudio
 
 # You want to use gstreamer, or else h.264 html5 videos will not play
-ac_add_options --enable-gstreamer
+ac_add_options --enable-gstreamer=1.0
 
 # disable stuff we probably don't need or want
 ac_add_options --disable-parental-controls
