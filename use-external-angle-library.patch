@@ -1,7 +1,7 @@
 diff -U 3 -r a/src/gui/gui.pro b/src/gui/gui.pro
 --- a/src/gui/gui.pro	2015-06-29 14:04:55.000000000 -0600
 +++ b/src/gui/gui.pro	2015-07-18 10:50:02.228227482 -0600
-@@ -17,12 +17,6 @@
+@@ -17,10 +17,5 @@
      imageformats \
      egldeviceintegrations
  
@@ -10,8 +10,6 @@ diff -U 3 -r a/src/gui/gui.pro b/src/gui/gui.pro
 -    MODULE_AUX_INCLUDES = \
 -        \$\$QT_MODULE_INCLUDE_BASE/QtANGLE
 -}
--
- load(qt_module)
  
  # Code coverage with TestCocoon
 @@ -35,6 +29,10 @@

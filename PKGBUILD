@@ -16,8 +16,8 @@ isOpenGL() {
 }
 
 pkgname=mingw-w64-qt5-base
-pkgver=5.6.0
-pkgrel=3
+pkgver=5.6.1
+pkgrel=1
 pkgdesc="A cross-platform application and UI framework (mingw-w64)"
 ! isStatic && arch=('i686' 'x86_64')
 isStatic && arch=('any') # the static variant doesn't contain any executables which need to be executed on the host
@@ -62,12 +62,11 @@ source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/sub
         "qt5-use-system-zlib-in-host-libs.patch"
         "fix-opengl-to-many-sections.patch"
         "fix-static-psql-mysql.patch"
-        "qt5-fix-QSemaphore-problem.patch"
         "qtbase-1-fixes.patch"
         "qt5-fix-implib-ext.patch")
-md5sums=('d6b6cfd333c22829c6c85fc52ceed019'
+md5sums=('b23232190a3df61fe1ba81636987b036'
          'bab00ccc19d888997f323c80354a7c3f'
-         '9916ded318f21afbe8388f0b9822062b'
+         'f7e1487de6e85116d9c6bde2eac4fb73'
          'bc99c4cc6998295d76f37ed681c20d47'
          '4fe6523dd1c34398df3aa5a8763530cc'
          'f32a768e1acb9785c79c8e93aa266db2'
@@ -76,14 +75,13 @@ md5sums=('d6b6cfd333c22829c6c85fc52ceed019'
          '99bb9f51ec684803768f36e407baf486'
          '6a6bc88f35ac8080869de39bc128ce5b'
          '40de3aaf7d713034e06f4eece665b1ba'
-         'd0c7198115ff028188ed1759b70fd981'
-         'a265dea62755caf38187114143999224'
+         '0186761e13206a32b689f10898e0d536'
+         'c15d9f480d0248648fa52aeacb46e3c7'
          '612a4dfb9f1a3898a1920c28bb999159'
          'd0eb81aef1a21c65813fe4ddabbc4206'
-         '87cbd116c75ced1b075bf266f2455d50'
          '62d2977e57fccf1f16d7ea6bf06d3279'
          '83139869355c2d46921adb25e47cf0fa')
-_architectures="x86_64-w64-mingw32 i686-w64-mingw32"
+_architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 isStatic && depends+=("mingw-w64-qt5-base")
 ! isOpenGL && depends+=("mingw-w64-angleproject")
@@ -128,7 +126,7 @@ prepare() {
   patch -p1 -i ../qt5-fix-static-dbus-detection.patch
 
   # Patch the win32-g++ mkspecs profile to match our environment
-  patch -p1 -i ../qt5-use-win32-g++-mkspecs-profile.patch
+  patch -p0 -i ../qt5-use-win32-g++-mkspecs-profile.patch
 
   # The bundled pcre is built as static library by default
   # As we're not using the bundled copy but our own copy
@@ -157,12 +155,10 @@ prepare() {
 
   # Build host libs with system zlib. This patch cannot be upstreamed as-is
   # due to the other host-libs patches.
-  patch -p1 -i ../qt5-use-system-zlib-in-host-libs.patch
+  patch -p0 -i ../qt5-use-system-zlib-in-host-libs.patch
 
   # Fix qmake to append .dll.a extension to import libs
   patch -p1 -i ../qt5-fix-implib-ext.patch
-
-  patch configure ../qt5-fix-QSemaphore-problem.patch
 
   isStatic && patch -p0 -i ../fix-static-psql-mysql.patch
 
