@@ -1,46 +1,53 @@
-# Maintainer: Patrick McCarty <pnorcks at gmail dot com>
+# Contributor: Patrick McCarty <pnorcks at gmail dot com>
 
 pkgname=createrepo_c
 pkgver=0.10.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A C implementation of createrepo, a tool to create yum repositories"
 arch=('i686' 'x86_64')
 license=('GPL')
-url='https://fedorahosted.org/createrepo_c/'
-depends=('rpm-org' 'libxml2' 'curl' 'glib2' 'python2')
-makedepends=('cmake' 'doxygen' 'python2-nose' 'python2-sphinx' 'sqlite' 'zlib')
-source=("https://github.com/rpm-software-management/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('510d1006294c2cfc7e6e01a5ffa243ac8b8e8cdb045efadfebb5c03f0251adaa')
+url="https://github.com/rpm-software-management/$pkgname"
+depends=('curl' 'drpm' 'glib2' 'libxml2' 'rpm-org' 'sqlite' 'zlib')
+makedepends=('bash-completion' 'cmake' 'doxygen'
+             'python' 'python-sphinx')
+checkdepends=('python-nose')
+optdepends=('python: for python bindings')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+md5sums=('2e14b3e5d289875b894000ab1e54f1ec')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
-  msg2 "Fixing doc build: requires sphinx-build2 from python2-sphinx"
-  sed -i 's|\(sphinx-build\)|\12|' doc/python/CMakeLists.txt
-  msg2 "Fixing lib install: /usr/lib64 directory is not used in Arch"
-  sed -i 's|\${LIB_SUFFIX}||' src/CMakeLists.txt
+	cd "$pkgname-$pkgver"
+	rm -rf build
+	mkdir build
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+	cd "$pkgname-$pkgver"/build
 
-  cmake \
-    -DCMAKE_INSTALL_PREFIX:PATH=/usr \
-    -DLIB_INSTALL_DIR:PATH=/usr/lib \
-    .
+	cmake -DCMAKE_BUILD_TYPE=Release  \
+	      -DCMAKE_INSTALL_PREFIX=/usr \
+	      -DPYTHON_DESIRED=3          \
+	       ..
 
-  make
-  make doc
+	make
+	make doc
 }
 
 check() {
-  cd ${pkgname}-${pkgver}
-  make tests
-  make test
+	cd "$pkgname-$pkgver"/build
+	make tests
+	make ARGS="-V" test
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
-  make DESTDIR=${pkgdir} install
+	cd "$pkgname-$pkgver"/build
+	make DESTDIR="$pkgdir/" install
+	if [[ $CARCH == x86_64 ]]; then
+		mv "$pkgdir/"usr/lib64/* "$pkgdir/"usr/lib
+		rmdir "$pkgdir/"usr/lib64
+	fi
+
+	install -D -m644 ../README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
 
-# vi:set ts=2 sw=2 et:
+# vim: set ft=sh ts=4 sw=4 noet:
