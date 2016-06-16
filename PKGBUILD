@@ -7,18 +7,22 @@
 
 _qt_module=qtimageformats
 pkgname="mingw-w64-qt5-imageformats"
-pkgver=5.6.0
+pkgver=5.6.1
 pkgrel=1
 arch=('any')
 pkgdesc="Plugins for additional image formats: TIFF, MNG, TGA, WBMP (mingw-w64)"
 depends=('mingw-w64-qt5-base')
+# these dependencies will enable further functionality
+#depends+=('mingw-w64-jasper') # for JPEG-2000 Part-1
+#depends+=('mingw-w64-libmng') # for MNG
+#depends+=('mingw-w64-libwebp') # for WebP
 makedepends=('mingw-w64-gcc')
 options=('!strip' '!buildflags' 'staticlibs')
 license=('GPL3' 'LGPL')
 url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('bb57c1db37e89a47f3513859ef04ae97')
+md5sums=('3c96ea81db49132eaa4e0d9c9a9db0c2')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
