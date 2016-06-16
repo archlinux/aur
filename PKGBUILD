@@ -8,7 +8,8 @@ pkgdesc='A software for visualizing molecular interaction networks and integrati
 arch=('any')
 url=http://www.cytoscape.org
 license=('LGPL2')
-depends=('java-runtime>=8')
+depends=('java-runtime-headless>=8'
+         'java-environment>=8')
 source=("http://chianti.ucsd.edu/cytoscape-$pkgver/cytoscape-$pkgver.tar.gz" \
         'cytoscape.desktop' \
         'cytoscape.png' \
