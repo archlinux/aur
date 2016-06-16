@@ -1,7 +1,7 @@
 # Maintainer: wangjiezhe <wangjiezhe AT yandex DOT com>
 pkgname=baidupcs-git
 _pkgname=BaiduPCS
-pkgver=0.2.4.2.g63bb691
+pkgver=0.2.4.4.gc59187f
 pkgrel=1
 pkgdesc="The terminal utility for Baidu Network Disk"
 arch=('i686' 'x86_64')
