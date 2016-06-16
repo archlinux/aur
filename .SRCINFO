@@ -1,14 +1,13 @@
 pkgbase = ath10k-firmware-git
 	pkgdesc = Firmware for Atheros Ath10k devices not yet in kernel-firmware tree from kvalo repo
-	pkgver = 20160226_f428f53
-	pkgrel = 1
+	pkgver = 20160613_a5399f1
+	pkgrel = 2
 	url = https://github.com/kvalo/ath10k-firmware
 	arch = any
 	license = Custom
+	depends = linux-firmware>=20160516
 	source = git+git://github.com/kvalo/ath10k-firmware
 	sha256sums = SKIP
-
-pkgname = ath10k-firmware-qca9377-git
 
 pkgname = ath10k-firmware-qca9887-git
 
