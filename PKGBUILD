@@ -5,9 +5,9 @@
 
 _qt_module=qtmultimedia
 pkgname=mingw-w64-qt5-multimedia
-pkgver=5.6.0
+pkgver=5.6.1
 pkgrel=1
-arch=(any)
+arch=('any')
 pkgdesc="Classes for audio, video, radio and camera functionality (mingw-w64)"
 depends=(mingw-w64-qt5-base mingw-w64-qt5-declarative)
 makedepends=(mingw-w64-gcc)
@@ -18,7 +18,7 @@ url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         "qt5-qtmultimedia-mingw-w64-vsnprintf-workaround.patch")
-md5sums=('c66e500f6d5be693231718cccf997c30'
+md5sums=('01e90a2ba304625305170f04cf3e6704'
          'c21ff895212a17dc0a748aeadb67601d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
@@ -62,8 +62,8 @@ package() {
     # One copy of the .dll's is sufficient
     rm -f "${pkgdir}/usr/${_arch}/lib/"*.dll
     find "${pkgdir}/usr/${_arch}" -name "*.exe" -o -name "*.bat" -o -name "*.def" -o -name "*.exp" -o -name '*.prl' | xargs -rtl1 rm
-		find "${pkgdir}/usr/${_arch}" -name "*.dll" -exec ${_arch}-strip --strip-unneeded {} \;
-		find "${pkgdir}/usr/${_arch}" -name "*.a" -o -name "*.dll" | xargs -rtl1 ${_arch}-strip -g
+    find "${pkgdir}/usr/${_arch}" -name "*.dll" -exec ${_arch}-strip --strip-unneeded {} \;
+    find "${pkgdir}/usr/${_arch}" -name "*.a" -o -name "*.dll" | xargs -rtl1 ${_arch}-strip -g
     popd
   done
 }
