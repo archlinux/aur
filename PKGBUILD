@@ -10,7 +10,7 @@ pkgdesc="Mozilla Runtime Environment"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
 depends=('gtk2' 'gcc-libs' 'libidl2' 'mozilla-common' 'nss' 'libxt' 'hunspell' 'startup-notification' 'mime-types' 'dbus-glib' 'alsa-lib' 'libevent' 'sqlite>=3.7.4' 'libnotify>=0.4')
-makedepends=('zip' 'pkg-config' 'diffutils' 'libgnomeui' 'python2' 'wireless_tools' 'autoconf2.13')
+makedepends=('zip' 'pkg-config' 'diffutils' 'libgnomeui' 'python2' 'wireless_tools' 'autoconf2.13' 'gcc5')
 url="http://wiki.mozilla.org/XUL:Xul_Runner"
 
 source=(ftp://mirrors.kernel.org/slackware/slackware-13.1/patches/source/mozilla-firefox/firefox-${_ffoxver}.source.tar.bz2
@@ -94,6 +94,9 @@ prepare() {
 
   unset CFLAGS
   unset CXXFLAGS
+
+  export CC=gcc-5
+  export CXX=g++-5
 }
 
 build()
