@@ -1,0 +1,13 @@
+pkgbase = aranea
+	pkgdesc = A fast and clean dns spoofing tool
+	pkgver = 6.469b9ee
+	pkgrel = 1
+	url = https://github.com/TigerSecurity/aranea
+	arch = any
+	license = unknown
+	depends = libpcap
+	source = https://github.com/TigerSecurity/aranea/archive/master.zip
+	md5sums = 3fe6d9d19fa686f63ea79f31a2e7921f
+
+pkgname = aranea
+
