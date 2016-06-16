@@ -2,8 +2,8 @@
 
 pkgname=virtio-win
 _ver=0.1.118
-pkgver=${_ver}.1
-pkgver_=${_ver}-1
+pkgver=${_ver}.2
+pkgver_=${_ver}-2
 pkgrel=1
 pkgdesc="virtio drivers for Windows (2000, XP, Vista, 7, 8, 10) guests and floppy images for Windows XP"
 arch=('any')
@@ -17,9 +17,9 @@ source=("https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archiv
         "https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/${pkgname}-${pkgver_}/${pkgname}_amd64.vfd"
         "https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/${pkgname}-${pkgver_}/${pkgname}_x86.vfd")
 noextract=("${pkgname}.iso" "${pkgname}_amd64.vfd" "${pkgname}_x86.vfd")
-sha256sums=('06272cd48b2c504daf3d70b315933b456c2b954d936c3ac3f0f5cda9ba3b905d'
-            'b13eca0898538d7282321f8b07cc3f4ec00ac16a64ee8fdde9f8cc5c5e808b4d'
-            'e838d5f500e63a73e70e665c86117eac625c86db49a190e88978185fabe46e62')
+sha256sums=('1fcc4013272e7bdc36d074c9ee30f1eba291c7f822b7d04a2db9d1862d2f31bd'
+            'cbdaea2f00cd3b6eda32209ae6c9c2bb938dcc52ceb464ebf9ce9c0bd6f3fbf8'
+            'd505ebf5b7d2d5822a275faf4417d87f013909944d5293dcf4bc634e214adb67')
 
 package() {
   install -Dm 644 ${pkgname}.iso \
