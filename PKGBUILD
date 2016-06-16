@@ -21,11 +21,15 @@ sha512sums=('SKIP')
 build()
 {
   cd "${srcdir}/${pkgname#lib32-}"
-  export CC="gcc -m32"
-  export CXX="g++ -m32"
+
+  # Override the defaults with 32-bit options.
+  export CC='gcc -m32'
+  # GCC 6.1.1 introduced new behaviour that breaks things, using older standard allows successful build.
+  export CXX='g++ -m32 -std=gnu++03'
   export LDFLAGS='-m32'
+  export PKG_CONFIG_LIBDIR='/usr/lib32/pkgconfig'
+
   export LIBS="-lX11"
-  export PKG_CONFIG_PATH=/usr/lib32/pkgconfig
   ./autogen.sh
   ./configure --prefix=/usr --libdir=/usr/lib32  --disable-static
   make
