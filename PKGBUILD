@@ -6,7 +6,7 @@
 _with_usermode=0
 
 pkgname=mock
-pkgver=1.2.17
+pkgver=1.2.18
 pkgrel=1
 pkgdesc="A simple chroot build environment manager for building RPMs"
 url="http://fedoraproject.org/wiki/Projects/Mock"
@@ -15,14 +15,14 @@ license=('GPL2')
 depends=('python')
 ((_with_usermode)) && depends+=('usermode')
 optdepends=('createrepo_c: for mockchain command'
-            'dnf-plugins-core: to create RPMs for Fedora 24 and above'
+            'dnf-plugins-core: to create RPMs for Fedora >= 24 and for Mageia'
             'lvm2: for lvm_root plugin'
             'pigz: for parallel compression of chroot cache'
-            'yum-utils: to create RPMs for Fedora 23 and below (including EL5, EL6 and EL7)')
+            'yum-utils: to create RPMs for Fedora <= 23 (including EL5, EL6 and EL7)')
 install="$pkgname.install"
 backup=("etc/$pkgname/site-defaults.cfg")
 source=("https://git.fedorahosted.org/cgit/$pkgname.git/snapshot/$pkgname-$pkgver.tar.xz")
-md5sums=('4007839f329594f050329db6d4b75e14')
+md5sums=('e5694e97f4a7f06dd168f970aae87dd5')
 
 build() {
 	cd "$pkgname-$pkgver"
