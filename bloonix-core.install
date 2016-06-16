@@ -1,0 +1,16 @@
+post_install(){
+  groupadd bloonix &>/dev/null
+  useradd bloonix -g bloonix -s /sbin/nologin -d /var/run/bloonix -r  &>/dev/null
+
+
+}
+
+
+post_remove(){
+  if getent passwd bloonix >/dev/null 2>&1; then
+    userdel bloonix
+  fi
+  if getent group bloonix >/dev/null 2>&1; then
+    groupdel bloonix
+  fi
+}
