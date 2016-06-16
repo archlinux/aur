@@ -6,9 +6,9 @@
 
 _qt_module=qtlocation
 pkgname=mingw-w64-qt5-location
-pkgver=5.6.0
+pkgver=5.6.1
 pkgrel=1
-arch=(any)
+arch=('any')
 pkgdesc="Provides access to position, satellite and area monitoring classes (mingw-w64)"
 depends=(mingw-w64-qt5-base mingw-w64-qt5-declarative)
 makedepends=(mingw-w64-gcc mingw-w64-qt5-quick1)
@@ -18,7 +18,7 @@ license=("custom, FDL, GPL3, LGPL")
 url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('eee764d337854424a30f0356ba04ae6b')
+md5sums=('e985bfe7bd544bc7bb44221440f6eaa3')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
