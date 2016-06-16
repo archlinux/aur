@@ -3,7 +3,7 @@
 
 pkgname=cytoscape
 pkgver=3.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A software for visualizing molecular interaction networks and integration with gene expression profiles and other state data.'
 arch=('any')
 url=http://www.cytoscape.org
