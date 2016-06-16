@@ -2,10 +2,13 @@
 # Contributor: ant32 <antreimer@gmail.com>
 # Contributor: Filip Brcic <brcha@gna.org>
 
+# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
+# you also find the URL of a binary repository.
+
 _qt_module=qtquick1
 pkgname="mingw-w64-qt5-quick1"
 pkgver=5.5.1
-pkgrel=1
+pkgrel=1.1
 arch=('any')
 pkgdesc="Qt Declarative is provided for Qt 4 compatibility (mingw-w64)"
 depends=('mingw-w64-qt5-base' 'mingw-w64-qt5-script' 'mingw-w64-qt5-tools')
