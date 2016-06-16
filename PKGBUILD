@@ -3,7 +3,7 @@
 
 pkgname=dianara
 pkgver=1.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt pump.io client"
 arch=(i686 x86_64)
 url="http://dianara.nongnu.org/"
