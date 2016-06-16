@@ -1,0 +1,16 @@
+pkgbase = ppd-xerox-colorqube8700-8900
+	pkgdesc = Printer driver for Xerox ColorQube 8700/8900
+	pkgver = 5.360.0.0
+	pkgrel = 1
+	url = http://www.support.xerox.com/support/colorqube-8900/downloads/enus.html
+	arch = any
+	license = custom
+	makedepends = unrar
+	depends = cups
+	source = http://download.support.xerox.com/pub/drivers/CQ8700/drivers/win7x64/en_GB/CQ8700-8900_PPD_en.exe
+	source = LICENSE
+	sha256sums = 3409d49fea39b770d232ed5200639a121ea32a566095176fc4ff4c98869c0b27
+	sha256sums = af5852333e592a9782140397763e15cd1959f7248e74f6d3aa4c0f48120c2a6e
+
+pkgname = ppd-xerox-colorqube8700-8900
+
