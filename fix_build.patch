@@ -1,6 +1,6 @@
 diff -uprNEBZ --suppress-blank-empty a/build/python.prf b/build/python.prf
---- a/build/python.prf	2014-09-04 16:47:06.000000000 -0500
-+++ b/build/python.prf	2015-11-16 00:17:29.091059686 -0600
+--- a/build/python.prf	2016-06-09 06:10:35.000000000 -0500
++++ b/build/python.prf	2016-06-15 21:40:09.654136049 -0500
 @@ -36,6 +36,9 @@ macx {
    # on linux, python-config is used to autodetect Python.
    # make sure that you have installed a matching python-dev package.
@@ -14,8 +14,8 @@ diff -uprNEBZ --suppress-blank-empty a/build/python.prf b/build/python.prf
 +  unix:QMAKE_CXXFLAGS += $$system(python-config --includes)
  }
 diff -uprNEBZ --suppress-blank-empty a/build/PythonQt.prf b/build/PythonQt.prf
---- a/build/PythonQt.prf	2007-11-15 13:40:58.000000000 -0600
-+++ b/build/PythonQt.prf	2015-11-16 01:14:23.352022344 -0600
+--- a/build/PythonQt.prf	2007-11-15 06:40:56.000000000 -0600
++++ b/build/PythonQt.prf	2016-06-15 21:40:09.657469387 -0500
 @@ -12,4 +12,8 @@ CONFIG(debug, debug|release) {
  }
  
@@ -28,8 +28,8 @@ diff -uprNEBZ --suppress-blank-empty a/build/PythonQt.prf b/build/PythonQt.prf
 +unix::LIBS += -L$$PWD/../../build/lib -lPythonQt$${DEBUG_EXT}
 \ No newline at end of file
 diff -uprNEBZ --suppress-blank-empty a/build/PythonQt_QtAll.prf b/build/PythonQt_QtAll.prf
---- a/build/PythonQt_QtAll.prf	2009-04-09 09:39:56.000000000 -0500
-+++ b/build/PythonQt_QtAll.prf	2015-11-16 01:16:52.412398122 -0600
+--- a/build/PythonQt_QtAll.prf	2009-04-09 01:58:43.000000000 -0500
++++ b/build/PythonQt_QtAll.prf	2016-06-15 21:40:09.657469387 -0500
 @@ -1,6 +1,9 @@
  # profile for non-mevis users to link to PythonQt_QtAll
  
@@ -53,8 +53,8 @@ diff -uprNEBZ --suppress-blank-empty a/build/PythonQt_QtAll.prf b/build/PythonQt
 +unix::LIBS += -L$$PWD/../../build/lib -lPythonQt_QtAll$${DEBUG_EXT}
 \ No newline at end of file
 diff -uprNEBZ --suppress-blank-empty a/PythonQt.pro b/PythonQt.pro
---- a/PythonQt.pro	2009-04-09 11:32:54.000000000 -0500
-+++ b/PythonQt.pro	2015-11-16 01:47:25.109518403 -0600
+--- a/PythonQt.pro	2009-04-09 04:32:07.000000000 -0500
++++ b/PythonQt.pro	2016-06-15 21:40:09.657469387 -0500
 @@ -1,4 +1,7 @@
  TEMPLATE = subdirs
  
@@ -65,3 +65,15 @@ diff -uprNEBZ --suppress-blank-empty a/PythonQt.pro b/PythonQt.pro
 +# SUBDIRS = generator src extensions tests examples
 +SUBDIRS = generator src extensions
 \ No newline at end of file
+diff -uprNEBZ --suppress-blank-empty a/src/PythonQtConversion.cpp b/src/PythonQtConversion.cpp
+--- a/src/PythonQtConversion.cpp	2016-06-02 07:30:53.000000000 -0500
++++ b/src/PythonQtConversion.cpp	2016-06-15 21:41:55.117267231 -0500
+@@ -1504,7 +1504,7 @@ QByteArray PythonQtConv::getCPPTypeName(
+ bool PythonQtConv::isStringType(PyTypeObject* type)
+ {
+ #ifdef PY3K
+-  return type == &PyUnicode_Type
++  return type == &PyUnicode_Type;
+ #else
+   return type == &PyUnicode_Type || type == &PyString_Type;
+ #endif
