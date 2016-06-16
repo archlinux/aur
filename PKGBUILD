@@ -1,8 +1,8 @@
 # Maintainer: John Jenkins twodopeshaggy@gmail.com
 _npmname=speed-test
 pkgname=speed-test
-pkgver=1.6.0
-pkgrel=1
+pkgver=1.7.0
+pkgrel=0
 pkgdesc="Test your internet connection speed and ping using speedtest.net from the CLI"
 arch=(any)
 url="https://github.com/sindresorhus/speed-test/"
@@ -16,3 +16,4 @@ package() {
   cd "$_npmdir"
   npm install -g --prefix "$pkgdir/usr" $_npmname@$pkgver
 }
+
