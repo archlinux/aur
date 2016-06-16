@@ -3,7 +3,7 @@
 pkgname=retroarch-git
 _gitname=RetroArch
 epoch=2
-pkgver=1.3.1.r148.473e6ff
+pkgver=1.3.1.r2850.4feaeae
 pkgrel=1
 pkgdesc="Simple frontend for the Libretro API"
 arch=('i686' 'x86_64' 'arm' 'armv6h')
@@ -21,6 +21,13 @@ pkgver() {
   cd "$_gitname"
 
   printf "%s" "$(git describe --first-parent --long --tags | sed 's/v//g;s/\([^-]*-\)g/r\1/;s/-/./g')"
+}
+
+prepare() {
+  cd "$_gitname"
+
+  git submodule init
+  git submodule update
 }
 
 build() {
