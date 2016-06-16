@@ -1,7 +1,7 @@
 pkgbase = aspell-nn
 	pkgdesc = Norwegian Nynorsk dictionary for aspell
 	pkgver = 0.50.1
-	pkgrel = 2
+	pkgrel = 3
 	url = http://aspell.net/
 	arch = any
 	license = GPL

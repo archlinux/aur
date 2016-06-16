@@ -3,10 +3,10 @@
 
 pkgname=aspell-nn
 pkgver=0.50.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Norwegian Nynorsk dictionary for aspell"
 url="http://aspell.net/"
-license="GPL"
+license=('GPL')
 depends=('aspell')
 arch=('any')
 source=(ftp://ftp.gnu.org/gnu/aspell/dict/nn/${pkgname}-${pkgver}-1.tar.bz2)
