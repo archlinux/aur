@@ -1,0 +1,13 @@
+pkgbase = blindsql
+	pkgdesc = Set of bash scripts for blind SQL injection attacks
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.enye-sec.org/programas/blindsql-v1-0/
+	arch = any
+	license = unknown
+	depends = lynx
+	source = http://www.enye-sec.org/programas/blindsql.v1.0.tar.gz
+	md5sums = 151f778cc77c8462a1ea13a093b5030b
+
+pkgname = blindsql
+
