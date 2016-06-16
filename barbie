@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/share/games/barbie/run_game.py "$@"
