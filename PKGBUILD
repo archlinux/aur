@@ -6,19 +6,18 @@ pkgdesc="SQL Server injection & takeover tool"
 arch=('any')
 url="http://sqlninja.sourceforge.net/"
 license=('GPL3')
-depends=('perl-dbi' 'perl-io-socket-ssl' 'perl-netpacket' 'perl-net-pcap' 'perl-net-rawip')
+depends=(perl-dbi perl-io-socket-ssl perl-netpacket perl-net-pcap perl-net-rawip)
 optdepends=('metasploit-git')
-provides=('sqlninja')
 source=("http://downloads.sourceforge.net/project/sqlninja/sqlninja/0.2.6-rc1/sqlninja-0.2.6-rc1.tgz")
 md5sums=('ee0ceea3141a95967ce73417969decd8')
 
 package() {
-        install -dm777 "$pkgdir/usr/share/sqlninja"
-        sudo cp -r sqlninja-0.2.6-rc1/* "$pkgdir/usr/share/sqlninja"
-        echo Creating executable for sqlninja...
-        mkdir $pkgdir/usr/bin/
-        mv -v ../sqlninja.sh $pkgdir/usr/share/sqlninja.sh
-        chmod +x $pkgdir/usr/share/sqlninja.sh
-        ln -sv $pkgdir/usr/bin/sqlninja $pkgdir/usr/share/sqlninja/sqlninja.sh
+        cd "$srcdir"
+        install -dm755 "$pkgdir"/usr/share/"$pkgname"
+        cp -rf sqlninja-0.2.6-rc1/* "$pkgdir"/usr/share/"$pkgname"
+        install -dm755 "$pkgdir"/usr/bin
+        install -dm755 "$pkgdir"/usr/share/licenses/"$pkgname"
+        mv "$pkgdir"/usr/share/"$pkgname"/LICENSE "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
+        ln -s /usr/share/"$pkgname"/"$pkgname" "$pkgdir"/usr/bin/"$pkgname" 
 }
 
