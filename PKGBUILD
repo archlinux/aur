@@ -2,21 +2,19 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-virtualkeyboard
-#_qtver=5.6.0
-#pkgver=${_qtver/-/}
-pkgver=1.3.1
+_qtver=5.7.0
+pkgver=${_qtver/-/}
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
 pkgdesc='Virtual keyboard framework'
-depends=('qt5-declarative')
+depends=('qt5-declarative' 'qt5-svg')
 makedepends=()
-#groups=('qt' 'qt5')
-#_pkgfqn="${pkgname/5-/}-opensource-src-${_qtver}"
-#source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-source=("https://github.com/qtproject/qtvirtualkeyboard/archive/v$pkgver.tar.gz")
-md5sums=('18522377feb87ebad6455e4b504f23d3')
+groups=('qt' 'qt5')
+_pkgfqn="${pkgname/5-/}-opensource-src-${_qtver}"
+source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
+md5sums=('fa473ab9175483dd82aa4d27b9682715')
 
 prepare() {
   mkdir -p build
@@ -25,8 +23,7 @@ prepare() {
 build() {
   cd build
 
-#  qmake ../${_pkgfqn}
-  qmake ../qtvirtualkeyboard-$pkgver
+  qmake ../${_pkgfqn}
   make
 }
 
