@@ -1,9 +1,9 @@
 # Maintainer: tuxce <tuxce.net@gmail.com>
 pkgname=package-query-git
 pkgver=1.8.r23.gf3d29a1
-pkgrel=1
+pkgrel=2
 pkgdesc="Query ALPM and AUR"
-arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm')
+arch=('i686' 'x86_64' 'mips64el' 'armv6h' 'armv7h' 'arm' 'aarch64')
 url="http://github.com/archlinuxfr/package-query"
 license=('GPL')
 depends=('pacman>=5.0' 'yajl>=2.0')
