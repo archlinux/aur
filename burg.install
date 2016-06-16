@@ -1,0 +1,14 @@
+post_install() {
+
+ echo -e "\033[0;31m IMPORTANT"
+ echo -e "\033[0;0m  Run \033[0;32m 'burg-install /dev/sda' \033[0;0m as root for installing in MBR"
+ echo -e "\033[0;0m  Run \033[0;32m 'burg-mkconfig -o /boot/burg/burg.cfg' \033[0;0m as root for generating burg.cfg"
+ echo -e "\033[0;0m  Also you can run \033[0;32m 'update-burg' \033[0;0m as root for generating burg.cfg"
+}
+
+
+post_upgrade() {
+        post_install
+}
+
+

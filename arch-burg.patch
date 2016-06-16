@@ -1,0 +1,60 @@
+--- orig/util/grub.d/10_linux.in	2011-08-08 11:17:57.946312000 -0400
++++ new/util/grub.d/10_linux.in	2011-08-08 20:01:37.745654006 -0400
+@@ -51,7 +51,7 @@
+     || ! test -e "/dev/disk/by-uuid/${GRUB_DEVICE_UUID}" ; then
+   LINUX_ROOT_DEVICE=${GRUB_DEVICE}
+ else
+-  LINUX_ROOT_DEVICE=UUID=${GRUB_DEVICE_UUID}
++  LINUX_ROOT_DEVICE="/dev/disk/by-uuid/${GRUB_DEVICE_UUID}"
+ fi
+ 
+ linux_entry ()
+@@ -62,10 +62,8 @@
+   args="$4"
+   if ${recovery} ; then
+     title="$(gettext_quoted "%s, with Linux %s (recovery mode)")"
+-    auth_option=${AUTH_RESCUE}
+   else
+     title="$(gettext_quoted "%s, with Linux %s")"
+-    auth_option=${AUTH_NORMAL}
+   fi
+   printf "menuentry '${title}' ${CLASS} --group group_main ${auth_option}{\n" "${os}" "${version}"
+   save_default_entry | sed -e "s/^/\t/"
+@@ -104,7 +102,7 @@
+ EOF
+ }
+ 
+-list=`for i in /boot/vmlinu[xz]-* /vmlinu[xz]-* ; do
++list=`for i in $( find / /boot -maxdepth 1 -name 'vmlinu[xz]*' ! -type l ) ; do
+         if grub_file_is_not_garbage "$i" ; then echo -n "$i " ; fi
+       done`
+ prepare_boot_cache=
+@@ -116,14 +114,13 @@
+   dirname=`dirname $linux`
+   rel_dirname=`make_system_path_relative_to_its_root $dirname`
+   version=`echo $basename | sed -e "s,^[^0-9]*-,,g"`
+-  alt_version=`echo $version | sed -e "s,\.old$,,g"`
++  echo $basename | grep -q 'vmlinu[xz]26' && initname=kernel || initname=initramfs
++  base_init=`echo $basename | sed -e "s,vmlinu[xz],$initname,g"`
++  alt_version="${base_init}-fallback"
+   linux_root_device_thisversion="${LINUX_ROOT_DEVICE}"
+ 
+   initrd=
+-  for i in "initrd.img-${version}" "initrd-${version}.img" \
+-	   "initrd-${version}" "initramfs-${version}.img" \
+-	   "initrd.img-${alt_version}" "initrd-${alt_version}.img" \
+-	   "initrd-${alt_version}" "initramfs-${alt_version}.img"; do
++ for i in "${base_init}.img"; do
+     if test -e "${dirname}/${i}" ; then
+       initrd="$i"
+       break
+@@ -138,6 +135,9 @@
+ 
+   linux_entry "${OS}" "${version}" false \
+       "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
++  initrd="${alt_version}.img"
++  linux_entry "${OS}" "${version} Fallback" false \
++      "${GRUB_CMDLINE_LINUX} ${GRUB_CMDLINE_LINUX_DEFAULT}"
+   if [ "x${GRUB_DISABLE_LINUX_RECOVERY}" != "xtrue" ]; then
+     linux_entry "${OS}" "${version}" true \
+ 	"single ${GRUB_CMDLINE_LINUX}"
