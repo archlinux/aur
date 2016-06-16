@@ -3,7 +3,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-location
-_qtver=5.6.1
+_qtver=5.7.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('i686' 'x86_64')
@@ -12,11 +12,10 @@ license=('GPL3' 'LGPL' 'FDL' 'custom')
 pkgdesc='Provides access to position, satellite and area monitoring classes'
 depends=('qt5-declarative')
 makedepends=()
-conflicts=('qt')
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-opensource-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('e985bfe7bd544bc7bb44221440f6eaa3')
+md5sums=('645477ff5426f5213f3581625ea53aaa')
 
 prepare() {
   mkdir -p build
