@@ -1,0 +1,25 @@
+pkgbase = xfce4-terminal-git
+	pkgdesc = A modern terminal emulator primarly for the Xfce desktop environment - git checkout
+	pkgver = 0.6.3.r186.gbfbe3c3
+	pkgrel = 1
+	url = http://docs.xfce.org/apps/terminal/start
+	arch = i686
+	arch = x86_64
+	groups = xfce4
+	license = GPL2
+	makedepends = intltool
+	makedepends = git
+	makedepends = xfce4-dev-tools
+	depends = libxfce4ui
+	depends = vte3>=0.38
+	depends = hicolor-icon-theme
+	provides = xfce4-terminal
+	conflicts = xfce4-terminal
+	conflicts = terminal
+	replaces = xfce4-terminal
+	replaces = terminal
+	source = git://git.xfce.org/apps/xfce4-terminal
+	sha256sums = SKIP
+
+pkgname = xfce4-terminal-git
+
