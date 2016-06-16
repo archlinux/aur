@@ -25,7 +25,7 @@ _static_build=false
 _build_from_head=false
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 
-pkgrel=13
+pkgrel=14
 # 1 or 2 at present
 _piver=""
 
@@ -62,8 +62,14 @@ conflicts=("${pkgname}")
 _packaginguser=$(whoami)
 _libspkgname="${pkgname}-target-libs"
 _mkspec="linux-rpi${_piver}-g++"
+_release_type="development_releases"
 
-_pkgver=${pkgver}-rc
+# -{alpha/beta/rc}
+_pkgver=${pkgver}
+
+if [[ "${pkgver}" = "${_pkgver}" ]]; then
+  _release_type="official_releases"
+fi
 
 _baseprefix=/opt
 _installprefix=${_baseprefix}/${pkgname}
@@ -76,9 +82,9 @@ url="http://www.qt.io"
 license=("LGPL3" "GPL3")
 depends=("qpi-toolchain" "qtcreator")
 makedepends=("git" "pkgconfig" "gcc")
-source=("git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/development_releases/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.7z")
+source=("git://github.com/sirspudd/mkspecs.git" "https://download.qt.io/${_release_type}/qt/${_pkgvermajmin}/${_pkgver}/single/${_source_package_name}.7z")
 
-sha256sums=("SKIP" "d258b7cc0db37f9b5c61467862d4f4a5171bce7b8bbb718be95e02b9b7cdc44c")
+sha256sums=("SKIP" "04ca3b5cc26dfd7118052e33012e3ec5c27cecce202e00227f2c18b86523e650")
 
 options=('!strip')
 install=qpi.install
