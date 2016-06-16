@@ -1,5 +1,5 @@
---- qtbase-opensource-src-5.5.0/mkspecs/win32-g++/qmake.conf.orig	2015-06-29 22:05:10.000000000 +0200
-+++ qtbase-opensource-src-5.5.0/mkspecs/win32-g++/qmake.conf	2015-08-05 19:53:33.349194327 +0200
+--- mkspecs/win32-g++/qmake.conf.orig	2016-06-14 16:22:02.779947341 +0200
++++ mkspecs/win32-g++/qmake.conf	2016-06-14 16:38:56.298752668 +0200
 @@ -25,7 +25,7 @@
  QMAKE_LEXFLAGS          =
  QMAKE_YACC              = byacc
@@ -22,14 +22,14 @@
  QMAKE_LFLAGS_DEBUG      =
  QMAKE_LFLAGS_CONSOLE    = -Wl,-subsystem,console
  QMAKE_LFLAGS_WINDOWS    = -Wl,-subsystem,windows
-@@ -94,21 +94,26 @@
+@@ -95,21 +95,26 @@
  QMAKE_LIB_EXTENSIONS    = a dll.a
  
  QMAKE_LIBS              =
 -QMAKE_LIBS_CORE         = -lole32 -luuid -lws2_32 -ladvapi32 -lshell32 -luser32 -lkernel32
 -QMAKE_LIBS_GUI          = -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32
 -QMAKE_LIBS_NETWORK      = -lws2_32
-+QMAKE_LIBS_CORE         = -lole32 -luuid -lws2_32 -ladvapi32 -lshell32 -luser32 -lkernel32 -lz -lpcre16
++QMAKE_LIBS_CORE         = -lole32 -luuid -lws2_32 -ladvapi32 -lshell32 -luser32 -lkernel32 -lz -lpcre16 
 +QMAKE_LIBS_GUI          = -lgdi32 -lcomdlg32 -loleaut32 -limm32 -lwinmm -lws2_32 -lole32 -luuid -luser32 -ladvapi32 -ljpeg -lpng -lharfbuzz -lglib-2.0 -lintl -lwinmm
 +QMAKE_LIBS_NETWORK      = -lws2_32 -lcrypt32 -ldnsapi
  QMAKE_LIBS_OPENGL       = -lglu32 -lopengl32 -lgdi32 -luser32
@@ -42,9 +42,8 @@
 +QMAKE_LIBS_QT_ENTRY     = -lmingw32 -lqt5main
  
 -QMAKE_IDL               = midl
--QMAKE_LIB               = $${CROSS_COMPILE}ar -ru
 +QMAKE_IDL               = $${CROSS_COMPILE}widl
-+QMAKE_LIB               = $${CROSS_COMPILE}ar -rc 
+ QMAKE_LIB               = $${CROSS_COMPILE}ar -rc
  QMAKE_RC                = $${CROSS_COMPILE}windres
 +QMAKE_DLLTOOL           = $${CROSS_COMPILE}dlltool
 +QMAKE_LRELEASE          = $${CROSS_COMPILE}lrelease-qt5
