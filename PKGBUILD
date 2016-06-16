@@ -3,7 +3,7 @@
 
 pkgname=dub-git
 _gitname=dub
-pkgver=1.0.0.beta.1.r0.ffcd589
+pkgver=1.0.0.rc.1.r0.2bec3fa
 pkgrel=1
 pkgdesc="Package manager for D packages, git version"
 arch=('i686' 'x86_64')
@@ -14,7 +14,6 @@ makedepends=('git' 'dmd')
 provides=('dub')
 conflicts=('dub')
 source=('git+https://github.com/D-Programming-Language/dub')
-md5sums=('SKIP')
 sha256sums=('SKIP')
 
 pkgver() {
