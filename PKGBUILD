@@ -19,14 +19,15 @@ depends=('cinnamon-desktop'
 	'libexif'
 	'libnotify'
 	'libxml2'
-	'python2')
+	'python')
 makedepends=('git'
 	'gnome-common'
 	'gobject-introspection'
 	'gtk-doc'
 	'intltool'
+	'python-gobject'
 	'python2-gobject'
-	'python2-polib')
+	'python-polib')
 conflicts=('nemo')
 provides=('nemo')
 options=('!emptydirs')
@@ -42,8 +43,8 @@ pkgver() {
 prepare() {
   cd $srcdir/nemo
 
-  # Python2 fix
-  find -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
+  # Rename 'Files' app name to avoid having the same as nautilus
+  sed -i 's/^Name\(.*\)=.*/Name\1=Nemo/' data/nemo.desktop.in.in
 }
 
 build() {
