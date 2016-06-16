@@ -1,5 +1,5 @@
 pkgbase = snap-confine
-	pkgdesc = The snap-confine program helps to launch snappy applications
+	pkgdesc = Confinement system for snap applications
 	pkgver = 1.0.30
 	pkgrel = 1
 	url = git://github.com/snapcore/snap-confine

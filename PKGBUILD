@@ -2,7 +2,7 @@
 pkgname=snap-confine
 pkgver=1.0.30
 pkgrel=1
-pkgdesc="The snap-confine program helps to launch snappy applications"
+pkgdesc="Confinement system for snap applications"
 arch=('i686' 'x86_64')
 url="git://github.com/snapcore/snap-confine"
 license=('GPL3')
