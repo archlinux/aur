@@ -1,1 +1,26 @@
-/home/shellkr/Build/AUR/minetest-mod-template/minetest-mod-template-git.install
+
+post_install() {
+        echo
+        echo '############################### NOTICE ! ###################################'
+	echo
+        echo ' Mod will be installed to /usr/share/minetest/mods which is the default'
+	echo ' directory for mods on Linux. This is disabled by default though and thus' 
+	echo ' needs patching to work.'
+	echo ' You can install "minetest-usrdir_patch" which will enable this path. If'
+	echo ' you dont the mods will not be recognized and selactable in Minetest.'
+	echo
+	echo
+}
+
+post_upgrade() {
+        echo
+        echo '############################### NOTICE ! ###################################'
+	echo
+        echo ' Mod will be installed to /usr/share/minetest/mods which is the default'
+	echo ' directory for mods on Linux. This is disabled by default though and thus' 
+	echo ' needs patching to work.'
+	echo ' You can install "minetest-usrdir_patch" which will enable this path. If'
+	echo ' you dont the mods will not be recognized and selactable in Minetest.'
+	echo
+        echo
+}
