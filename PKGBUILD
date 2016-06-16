@@ -12,8 +12,8 @@ depends=(
 )
 optdepends=(
     'cryptsetup: required by initrd-cryptsetup.service' 
-    'dropbear: required by initrd-dropbear.service' 
-    'mc: required by initrd-debug-progs.service' 
+    'dropbear:   required by initrd-dropbear.service' 
+    'mc:         required by initrd-debug-progs.service' 
 )
 makedepends=(
     'git'
@@ -23,6 +23,7 @@ backup=(
     'etc/mkinitcpio.d/fstab'
     'etc/systemd/network/initrd-network.network'
     'etc/systemd/system/initrd-build.sh'
+    'etc/systemd/system/initrd-cryptsetup.path'
     'etc/systemd/system/initrd-cryptsetup.service'
     'etc/systemd/system/initrd-debug-progs.service'
     'etc/systemd/system/initrd-debug-shell.service'
@@ -91,30 +92,32 @@ package() {
     
     local source="$srcdir/$pkgname"
     
+    local target="$pkgdir/usr/lib/initcpio"
+    install -D -m644 "$source/mkinitcpio-hook.sh"       "$target/hooks/$hook"
+    install -D -m644 "$source/mkinitcpio-install.sh"    "$target/install/$hook"
+
     local target="$pkgdir/usr/share/$pkgname"
     install -D -m644 "$source/LICENSE.md"               "${target}/LICENSE.md"
     install -D -m644 "$source/README.md"                "${target}/README.md"
 
-    local target="$pkgdir/usr/lib/initcpio"
-    install -D -m644 "$source/mkinitcpio-hook.sh"       "$target/hooks/$hook"
-    install -D -m644 "$source/mkinitcpio-install.sh"    "$target/install/$hook"
-  
     local target="$pkgdir/etc/mkinitcpio.d/"
     install -D -m644 "$source/crypttab"                 "$target/crypttab"
     install -D -m644 "$source/fstab"                    "$target/fstab"
                 
     local target="$pkgdir/etc/systemd/network"
-    install -D -m644 "$source/initrd-network.network"   "$target/initrd-network.network"
+    local path= unit=
+    for path in $(ls "$source" | grep -E "[.](network)$") ; do
+        unit=$(basename $path)
+        install -D -m644 "$source/$unit"  "$target/$unit"
+    done
 
     local target="$pkgdir/etc/systemd/system"
+    local path= unit=
+    for path in $(ls "$source" | grep -E "[.](path|service|target)$") ; do
+        unit=$(basename $path)
+        install -D -m644 "$source/$unit"  "$target/$unit"
+    done
     install -D -m644 "$source/initrd-build.sh"              "$target/initrd-build.sh"
-    install -D -m644 "$source/initrd-cryptsetup.service"    "$target/initrd-cryptsetup.service"
-    install -D -m644 "$source/initrd-debug-progs.service"   "$target/initrd-debug-progs.service"
-    install -D -m644 "$source/initrd-debug-shell.service"   "$target/initrd-debug-shell.service"
-    install -D -m644 "$source/initrd-network.service"       "$target/initrd-network.service"
-    install -D -m644 "$source/initrd-dropbear.service"      "$target/initrd-dropbear.service"
-    install -D -m644 "$source/initrd-emergency.service"     "$target/initrd-emergency.service"
-    install -D -m644 "$source/initrd-shell.service"         "$target/initrd-shell.service"
     install -D -m644 "$source/initrd-shell.sh"              "$target/initrd-shell.sh"
-                                                                                                                                
+
 }

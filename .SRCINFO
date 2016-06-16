@@ -17,6 +17,7 @@ pkgbase = mkinitcpio-systemd-tool
 	backup = etc/mkinitcpio.d/fstab
 	backup = etc/systemd/network/initrd-network.network
 	backup = etc/systemd/system/initrd-build.sh
+	backup = etc/systemd/system/initrd-cryptsetup.path
 	backup = etc/systemd/system/initrd-cryptsetup.service
 	backup = etc/systemd/system/initrd-debug-progs.service
 	backup = etc/systemd/system/initrd-debug-shell.service
