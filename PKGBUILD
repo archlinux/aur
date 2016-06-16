@@ -2,6 +2,9 @@
 # Contributor: David Roheim < david dot roheim at gmail dot com >
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 
+# Set to 1 to enable usermode support
+_with_usermode=0
+
 pkgname=mock
 pkgver=1.2.17
 pkgrel=1
@@ -10,6 +13,7 @@ url="http://fedoraproject.org/wiki/Projects/Mock"
 arch=('any')
 license=('GPL2')
 depends=('python')
+((_with_usermode)) && depends+=('usermode')
 optdepends=('createrepo_c: for mockchain command'
             'dnf-plugins-core: to create RPMs for Fedora 23 and above'
             'lvm2: for lvm_root plugin'
@@ -35,6 +39,13 @@ build() {
 package() {
 	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir/" install
+
+	if ((_with_usermode)); then
+		mv "$pkgdir/usr/bin/$pkgname"{,.py}
+		sed -e "s|/usr/sbin/$pkgname|/usr/bin/$pkgname.py|" \
+		    -i "$pkgdir/etc/security/console.apps/$pkgname"
+		ln -s /usr/bin/consolehelper "$pkgdir/usr/bin/$pkgname"
+	fi
 }
 
 # vim: set ft=sh ts=4 sw=4 noet:
