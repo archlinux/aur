@@ -1,6 +1,6 @@
 pkgbase = jupyter-nbextensions-git
 	pkgdesc = Some extensions for Jupyter notebook
-	pkgver = 0.0.1165.bf217f9
+	pkgver = 0.0.1267.600d4da
 	pkgrel = 1
 	url = https://github.com/ipython-contrib/IPython-notebook-extensions
 	install = jupyter-nbextensions-git.install
@@ -12,7 +12,7 @@ pkgbase = jupyter-nbextensions-git
 	depends = jupyter-nbconvert
 	conflicts = jupyter-nbextensions
 	conflicts = python-jupyter-nbextensions
-	source = git://github.com/jcb91/IPython-notebook-extensions.git#branch=trav
+	source = git://github.com/jcb91/IPython-notebook-extensions.git
 	source = jupyter-nbextensions-git.install
 	md5sums = SKIP
 	md5sums = 4e48a57d9ec7eab953d62cb3a3cba951
