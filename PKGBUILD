@@ -8,7 +8,7 @@ pkgdesc="No binaries used. Open source fork of the Songbird Media Player with up
 arch=('i686' 'x86_64')
 url="http://getnightingale.com/"
 license=('GPL2' 'MPL' 'BSD')
-makedepends=('git' 'subversion' 'python' 'unzip' 'libidl2' 'zip' 'glib2' 'pkg-config' 'diffutils' 'libgnomeui' 'python2' 'autoconf2.13')
+makedepends=('git' 'subversion' 'python' 'unzip' 'libidl2' 'zip' 'glib2' 'pkg-config' 'diffutils' 'libgnomeui' 'python2' 'autoconf2.13' 'gcc5')
 depends=('gst-plugins-bad' 'gst-plugins-base' 'gst-plugins-base-libs' 'gst-plugins-good' 'gstreamer' 'gtk2' 'libxt' 'sqlite3' 'taglib'
 'gtk2' 'gcc-libs' 'libidl2' 'mozilla-common' 'nss' 'mime-types' 'dbus-glib' 'alsa-lib' 'libevent' 'libnotify>=0.4'
 )
@@ -49,6 +49,9 @@ build() {
 		export SB_VENDOR_BINARIES_CO_ROOT=${srcdir}
 		export SB_VENDOR_BUILD_ROOT=${srcdir}
 		export CXXFLAGS="$CXXFLAGS -fpermissive"
+
+		export CC=gcc-5
+		export CXX=g++-5
 
 		# fix mozilla freetype headers
 		#sed -i 's/freetype\///g' xulrunner-1.9.2/mozilla/config/system-headers
