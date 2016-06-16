@@ -1,0 +1,12 @@
+pkgbase = braa
+	pkgdesc = A mass snmp scanner
+	pkgver = 0.82
+	pkgrel = 1
+	url = http://s-tech.elsat.net.pl/braa/
+	arch = any
+	license = GPL2
+	source = http://s-tech.elsat.net.pl/braa/braa-0.82.tar.gz
+	md5sums = e28f8b0591672de9aaa7dcf54332f6ce
+
+pkgname = braa
+
