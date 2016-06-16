@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=mattermost
-pkgver=3.0.3
+pkgver=3.1.0
 _pkgver=${pkgver/rc/-rc}
 pkgrel=1
 pkgdesc="Open source Slack-alternative in Golang and React"
@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="http://mattermost.org"
 license=('MIT')
 depends=('glibc')
-makedepends=('go' 'godep' 'npm' 'python2' 'git' 'mercurial')
+makedepends=('go' 'npm' 'python2' 'git' 'mercurial')
 backup=('etc/webapps/mattermost/config.json')
 optdepends=('mariadb: SQL server storage'
             'percona-server: SQL server storage'
@@ -19,7 +19,7 @@ source=(https://github.com/mattermost/platform/archive/v$_pkgver/$pkgname-$_pkgv
         mattermost.service
         mattermost-user.conf
         mattermost.sh)
-sha256sums=('33ae98bc6fe83347f23ffd6c45292c310dbde0b8617d51c1016de41d8422d99d'
+sha256sums=('7974b6adab54e5fe229242446fa14d74d22d22becb41c01513fbc40d0c578cd1'
             'b3fbb2d04e72396677b2c8e34df089ff135796f7a0e8a42d45e989773d6d5b07'
             '7cd154ed034a09f6671cab68bc9c30a7fd84e777e801e2aaf93a567cfa0dccfd'
             '7f4993798d1a2ae9a78fed5fc3fe88d44a7a669e7ffefda7fa6a36c27c6c5840')
@@ -29,66 +29,47 @@ prepare() {
   cd src/github.com/mattermost
   rm -f platform
   ln -s "$srcdir"/platform-$_pkgver platform
+  cd platform
+
+  sed -n '1,/cp README.md/p;/^run-server:/,$p' -i Makefile
+  sed -r -i Makefile \
+    -e 's/^package: build build-client/package: build-linux build-client/' \
+    -e 's/GOARCH=amd64//' \
+    -e 's/^BUILD_HASH =.*/BUILD_HASH = none/'
 }
 
 build() {
-  export GOPATH="$srcdir"
-  export GOBIN="$GOPATH/bin"
-  export PATH="$PATH:$GOBIN"
-  GO_PLATFORM_DIR="$srcdir"/src/github.com/mattermost/platform
-  cd "$GO_PLATFORM_DIR"
-
-  go clean -x
-  godep get
-
-  msg2 "Building client"
-  make build-client
-
-  msg2 "Building go libraries"
-  godep go build
-
-  msg2 "Building mattermost"
-  godep go install -ldflags \
-    "-X 'github.com/mattermost/platform/model.BuildNumber=$pkgver-$pkgrel' \
-     -X 'github.com/mattermost/platform/model.BuildDate=$(date -u)' \
-     -X 'github.com/mattermost/platform/model.BuildHash=-' \
-     -X 'github.com/mattermost/platform/model.BuildEnterpriseReady=false'" \
-    mattermost.go
+  cd "$srcdir"/src/github.com/mattermost/platform
+  GOPATH="$srcdir" BUILD_NUMBER="$_pkgver-$pkgrel" make package
 }
 
 package() {
-  export GOPATH="$srcdir"
-  export PATH="$PATH:$GOPATH/bin"
-  GO_PLATFORM_DIR="$srcdir"/src/github.com/mattermost/platform
-  cd "$GO_PLATFORM_DIR"
+  cd "$srcdir"/src/github.com/mattermost/platform
 
-  DISTDIR="$pkgdir"/usr/share/webapps/$pkgname
-  install -dm755 "$DISTDIR"/{bin,config,webapp} "$pkgdir"/var/log/$pkgname "$pkgdir"/etc/webapps/mattermost
-  cd "$DISTDIR"
+  install -dm755 "$pkgdir"/usr/share/webapps \
+                 "$pkgdir"/var/log/$pkgname \
+                 "$pkgdir"/etc/webapps \
+                 "$pkgdir"/usr/share/{licenses,doc}/$pkgname
 
+  cp -a dist/mattermost "$pkgdir"/usr/share/webapps/$pkgname
+
+  cd "$pkgdir"/usr/share/webapps/$pkgname
+  rm -rf logs
   ln -s /var/log/$pkgname logs
 
-  cp -RL "$GO_PLATFORM_DIR"/webapp/dist webapp/
-  cp -RL "$GO_PLATFORM_DIR"/{fonts,templates,i18n} .
-  rm webapp/dist/*.map
-
-  mv webapp/dist/bundle{,-$pkgver}.js
-  sed "s#/bundle\.js#/bundle-$pkgver.js#" -i webapp/dist/root.html
+  mv config "$pkgdir"/etc/webapps/$pkgname
+  ln -s /etc/webapps/$pkgname config
 
   sed -e 's@"Directory": ".*"@"Directory": "/var/lib/mattermost/"@g' \
       -e 's@tcp(dockerhost:3306)@unix(/run/mysqld/mysqld.sock)@g' \
-      "$srcdir"/platform-$_pkgver/config/config.json > "$pkgdir"/etc/webapps/mattermost/config.json
+      -i "$pkgdir"/etc/webapps/"$pkgname"/config.json
 
-  ln -s /etc/webapps/mattermost/config.json config/config.json
+  mv MIT-COMPILED-LICENSE.md "$pkgdir"/usr/share/licenses/$pkgname
+  mv NOTICE.txt README.md "$pkgdir"/usr/share/doc/$pkgname
 
   cd "$srcdir"
+  install -Dm755 bin/platform "$pkgdir"/usr/share/webapps/$pkgname/bin/platform
   install -Dm755 mattermost.sh "$pkgdir"/usr/bin/mattermost
-  install -Dm755 bin/platform "$DISTDIR"/bin/platform
   install -Dm644 mattermost.service "$pkgdir"/usr/lib/systemd/system/mattermost.service
   install -Dm644 mattermost-user.conf "$pkgdir"/usr/lib/sysusers.d/mattermost.conf
-
-  cd "$srcdir"/platform-$_pkgver/
-  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.txt
-  install -Dm644 NOTICE.txt "$pkgdir"/usr/share/doc/$pkgname/NOTICE.txt
-  install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
 }
