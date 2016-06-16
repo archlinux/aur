@@ -1,4 +1,4 @@
-From a16fc15f9a4045e5c35878dd3daf56bc231db60b Mon Sep 17 00:00:00 2001
+From 22f3a160c30d473ae339ce4269e21083883e4a34 Mon Sep 17 00:00:00 2001
 From: wangjiezhe <wangjiezhe@gmail.com>
 Date: Sat, 11 Jun 2016 17:41:26 +0800
 Subject: [PATCH 4/4] Fix: `mktemp: too few X's in template 'texmacs'`
@@ -9,7 +9,7 @@ Subject: [PATCH 4/4] Fix: `mktemp: too few X's in template 'texmacs'`
  2 files changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/configure b/configure
-index 6b01ec5..da63a18 100755
+index 93f6484..c272115 100755
 --- a/configure
 +++ b/configure
 @@ -10045,7 +10045,7 @@ fi

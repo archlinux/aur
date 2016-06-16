@@ -1,4 +1,4 @@
-From 07b94ffd7cd0c842d5cb8991a2af29e8ecfe7c38 Mon Sep 17 00:00:00 2001
+From 92264b5e868fb8b8399dfbb78b714ae5cf38c24e Mon Sep 17 00:00:00 2001
 From: wangjiezhe <wangjiezhe@gmail.com>
 Date: Wed, 8 Jun 2016 11:20:42 +0800
 Subject: [PATCH 2/4] Sage plugin: fix `which` not found

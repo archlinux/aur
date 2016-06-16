@@ -4,7 +4,7 @@
 
 pkgname=texmacs-svn
 _pkgname=texmacs
-pkgver=20160610.10459
+pkgver=20160615.10471
 pkgrel=1
 pkgdesc="Free scientific text editor, inspired by TeX and GNU Emacs. WYSIWYG editor and CAS-interface."
 arch=('i686' 'x86_64')
@@ -26,10 +26,10 @@ source=("${_pkgname}::svn://svn.savannah.gnu.org/texmacs/trunk/src"
         "0004-Fix-mktemp-too-few-X-s-in-template-texmacs.patch"
         )
 sha1sums=('SKIP'
-          '064d0db04fdaace4e491a4e81ff894e713e173b3'
-          '95c28c40f2c44de40961dac434dcd4edae849823'
-          '207d4cf889046e57abfca4509fc0876491686ef9'
-          '73dd8e72f69fb7f5cbc8e25b000aa1f923ab21a6')
+          '72c9ed59808b1d43bdff98f6ce306a8752d08175'
+          'e977a4331ed8341e49adc924feeda054aab97836'
+          'c0417abbf2ac6b405dc6d2af63508ffde5255e59'
+          '947695826852e1885838b87945dd31177891fcd3')
 options=('!emptydirs' '!ccache')
 provides=('texmacs')
 conflicts=('texmacs')

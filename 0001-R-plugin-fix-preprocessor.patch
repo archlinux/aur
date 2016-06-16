@@ -1,4 +1,4 @@
-From cbc75f1bfcb3a25b119c408886517669ed3fd305 Mon Sep 17 00:00:00 2001
+From d53eff861354e6a626d2692fea2f24c9dc5ef965 Mon Sep 17 00:00:00 2001
 From: wangjiezhe <wangjiezhe@gmail.com>
 Date: Mon, 23 May 2016 13:36:44 +0800
 Subject: [PATCH 1/4] R plugin: fix preprocessor
