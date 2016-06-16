@@ -1,0 +1,21 @@
+pkgbase = ayat
+	pkgdesc = Holy Quran - KSU Electronic Moshaf project
+	pkgver = 1.4
+	pkgrel = 1
+	url = http://quran.ksu.edu.sa/
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = adobe-air-sdk
+	depends = lib32-libxt
+	depends = lib32-curl
+	noextract = Ayat-v1.4_linux.zip
+	source = http://cdn.ksu.edu.sa/quran/ayat/download/programs/Ayat-v1.4_linux.zip
+	source = ayat
+	source = ayat.desktop
+	md5sums = b1fa5ee55415ea3e9228e6f11599206a
+	md5sums = ad48120862e0767d15968a49420c1a27
+	md5sums = d374c9501d78ce6c9079c66aec4feb15
+
+pkgname = ayat
+

@@ -1,0 +1,2 @@
+#!/usr/bin/sh
+/opt/adobe-air-sdk/bin/adl -nodebug /opt/airapps/ayat/META-INF/AIR/application.xml /opt/airapps/ayat/

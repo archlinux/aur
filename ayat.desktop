@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.4
+Name=ayat
+Comment=Holy Quran - KSU Electronic Moshaf project
+Exec=ayat
+Icon=ayat
+Terminal=false
+Categories=Utility;Education;
