@@ -1,4 +1,4 @@
-# Maintainer:  jyantis <yantis@yantis.net>
+# Maintainer:  xF0E
 # Contributor: Sid Karunaratne <sid at karunaratne dot net>
 # Contributor: xF0E
 
