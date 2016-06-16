@@ -1,0 +1,15 @@
+pkgbase = apache-users
+	pkgdesc = Perl script to enumerate the usernames on a UNIX system that use the apache module UserDir
+	pkgver = 2.1
+	pkgrel = 1
+	url = https://labs.portcullis.co.uk/
+	arch = any
+	license = GPL2
+	depends = perl
+	depends = perl-parallel-forkmanager
+	depends = perl-lwp-protocol-https
+	source = https://labs.portcullis.co.uk/download/apache_users-2.1.tar.gz
+	md5sums = 2ca344133dc9c11e94d35656fb590ccb
+
+pkgname = apache-users
+
