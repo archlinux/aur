@@ -2,7 +2,7 @@
 pkgdesc="Icons for the X Desktop Environment (XDE)"
 pkgname=xde-icons
 pkgver=1.1.40
-pkgrel=1
+pkgrel=2
 arch=(any)
 license=(CCPL:by-sa)
 url="http://github.com/bbidulock/xde-icons"
@@ -12,7 +12,6 @@ source=("$pkgname::git://github.com/bbidulock/$pkgname.git")
 md5sums=('SKIP')
 makedepends=('librsvg' 'optipng')
 options=('optipng')
-install=xde-icons.install
 
 pkgver() {
   cd $pkgname

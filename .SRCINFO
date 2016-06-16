@@ -1,9 +1,8 @@
 pkgbase = xde-icons
 	pkgdesc = Icons for the X Desktop Environment (XDE)
 	pkgver = 1.1.40
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/bbidulock/xde-icons
-	install = xde-icons.install
 	arch = any
 	groups = xde
 	license = CCPL:by-sa
