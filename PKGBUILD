@@ -9,8 +9,8 @@
 
 _qt_module=qtwebkit
 pkgname=mingw-w64-qt5-webkit
-pkgver=5.6.0
-pkgrel=2
+pkgver=5.6.1
+pkgrel=1
 arch=('any')
 pkgdesc="Classes for a WebKit2 based implementation and a new QML API (mingw-w64)"
 depends=('mingw-w64-qt5-declarative'
@@ -45,10 +45,9 @@ source=("https://download.qt.io/community_releases/${pkgver:0:3}/${pkgver}/${_pk
         qtwebkit-dont-use-bundled-angle-libraries.patch
         qtwebkit-opensource-src-5.0.1-debuginfo.patch
         revert-qt4-unicode-removal.patch
-        webkit-commit-151422.patch
-        qt5-webkit-pthread.patch)
-md5sums=('b68565d18db63ee4db998bb8e37608a5'
-         'ce7d257e2b5b94fe3affd98f52d99d09'
+        webkit-commit-151422.patch)
+md5sums=('9ea7cb557375ba2fc7c62742c522d093'
+         '37dd6b694e1e178aa8b1815f7fe3537d'
          'ac574de962545d6a9e975b4db63c3e09'
          '4ad37c7d4dda8e77bb0a25c671f79adc'
          '228f28df2b10e417a325176f7878ebe1'
@@ -56,16 +55,12 @@ md5sums=('b68565d18db63ee4db998bb8e37608a5'
          'f452210683386f9c28f04d7dea0ecfc7'
          '6aba6468efafb64943887079e258b799'
          '4e374836f26853b4d82be0e87aa584a5'
-         'c36fe581e0f3b61cef19415782b257ca'
-         'f65286024f65ca87837171272fc8975d')
+         'c36fe581e0f3b61cef19415782b257ca')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd "${srcdir}/${_pkgfqn}"
-
-  # see description inside the patch file
-  patch -p1 -i ../qt5-webkit-pthread.patch
 
   # note: most patches are originally from http://pkgs.fedoraproject.org/git/rpms/mingw-qt5-qtwebkit.git
   # however, I needed to update most of them in order to update to 5.6.0 and to use the latest ANGLE
@@ -121,10 +116,6 @@ build() {
   unset PKG_CONFIG_PATH
   cd "${srcdir}/${_pkgfqn}"
   for _arch in ${_architectures}; do
-    # Generate headers
-    # seems like this has been fixed
-    #${_arch}-syncqt.pl-qt5 ./Source -version ${pkgver}
-
     mkdir -p build-${_arch} && pushd build-${_arch}
 
     # Since Source/ThirdParty/ANGLE has been removed ensure files
@@ -134,9 +125,13 @@ build() {
 
     # SH_GLSL_OUTPUT has been renamed to SH_GLSL_COMPATIBILITY_OUTPUT
     # in the latest ANGLE version so I just add a definition for backward compatibility
+
+    # intrin.h needs to be included otherwise declaration of _mm_mfence is missing
+
     ${_arch}-qmake-qt5 \
-      QMAKE_CXXFLAGS+=-Wno-c++0x-compat \
-      DEFINES+=SH_GLSL_OUTPUT=SH_GLSL_COMPATIBILITY_OUTPUT \
+      "QMAKE_CXXFLAGS+=-Wno-c++0x-compat" \
+      "QMAKE_CXXFLAGS+='-include /usr/i686-w64-mingw32/include/intrin.h'" \
+      "DEFINES+=SH_GLSL_OUTPUT=SH_GLSL_COMPATIBILITY_OUTPUT" \
       ../WebKit.pro
     make
     popd
