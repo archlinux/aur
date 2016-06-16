@@ -2,7 +2,7 @@
 
 pkgname=mist-git
 _pkgname=mist
-pkgver=0.7.3.r121.g5a95a0a
+pkgver=0.7.3.r152.g1ff2f1c
 pkgrel=1
 pkgdesc="Ethereum wallet for Ether accounts, wallets and smart contracts (includes Mist browser)."
 arch=('i686' 'x86_64')
@@ -70,10 +70,10 @@ build() {
   git pull
   git submodule update --init
   git apply "${srcdir}/mist-pathfix.patch"
-  npm install electron-prebuilt
   npm install meteor-build-client
   npm install gulp
   npm install
+  gulp update-nodes
   gulp wallet --platform linux
 }
 
