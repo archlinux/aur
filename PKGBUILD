@@ -13,7 +13,7 @@ install=keepassx.install
 makedepends=('git' 'intltool' 'cmake' 'qt5-base' 'qt5-tools' 'zlib' 'libgcrypt')
 conflicts=('keepassx-svn' 'keepassx' 'keepassx-git' 'keepassx2' 'keepassx2-git' 'keepassx2-yubikey-git')
 options=(!emptydirs)
-source=(git+https://github.com/droidmonkey/keepassx_http.git)
+source=(git+https://github.com/droidmonkey/keepassx_http.git#commit=cbb1269)
 md5sums=('SKIP')
 
 pkgver() {
