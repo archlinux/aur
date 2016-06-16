@@ -2,7 +2,7 @@
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname=owncloud-app-mail
-pkgver=0.5.1
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="An email app for ownCloud"
 arch=('any')
@@ -11,7 +11,7 @@ license=('AGPL')
 depends=('owncloud')
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/owncloud/mail/releases/download/v$pkgver/mail.tar.gz")
-sha512sums=("6a6f8a8eb5d373dc8c14d057a376569105044a29ea316df5383d1a6de59c7e61400ff7c8d044d26d8d37d7877f5cc9f65e00e912db3e303c2e51ab0be095bd1b")
+sha512sums=("deb77039b420a6272399bf89fe8215b1e9b7016eb2fb2175b10382d09a86bf569a546e26a144d9d2e85220674676461eb5cfb20f28e105e0a5759f1d1bfdecb3")
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/owncloud/apps"
