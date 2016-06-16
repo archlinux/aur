@@ -4,7 +4,7 @@
 # Contributor: Michael Hansen <zrax0111 gmail com>
 
 pkgname=qt5-doc
-_qtver=5.6.1
+_qtver=5.7.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('any')
@@ -13,11 +13,10 @@ license=('GPL3' 'LGPL' 'FDL' 'custom')
 pkgdesc='A cross-platform application and UI framework (Documentation)'
 depends=('qt5-base')
 makedepends=('qt5-tools' 'python2' 'pciutils' 'libxtst' 'libxcursor' 'libxrandr' 'libxss')
-conflicts=('qt')
 groups=('qt' 'qt5')
 _pkgfqn="qt-everywhere-opensource-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/single/${_pkgfqn}.tar.xz")
-md5sums=('d647574345c45b5ab8b41b2d46efffb9')
+md5sums=('63ec6b584757eef8cd713e4958297251')
 
 prepare() {
   cd ${_pkgfqn}
