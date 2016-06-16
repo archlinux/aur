@@ -2,7 +2,7 @@
 _gemname=svn2git
 pkgname=ruby-$_gemname-git
 _realver=2.2.2
-pkgver=3.50da658
+pkgver=232.526df23
 pkgrel=1
 epoch=1
 pkgdesc="Tool written in ruby to convert svn repos to git(git version)."
@@ -67,3 +67,4 @@ package() {
   gem install --ignore-dependencies --no-user-install \
     -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" "$_gemname"
 }
+
