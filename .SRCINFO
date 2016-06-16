@@ -1,0 +1,16 @@
+pkgbase = brutex
+	pkgdesc = Automatically brute force all services running on a target
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/1N3/BruteX
+	arch = any
+	license = unknown
+	depends = net-snmp
+	depends = nmap
+	depends = hydra
+	depends = dnsenum
+	source = https://github.com/1N3/BruteX/archive/master.zip
+	md5sums = 56021d41ba2370723352df1f6f1722b6
+
+pkgname = brutex
+
