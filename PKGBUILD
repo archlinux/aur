@@ -32,7 +32,6 @@ build() {
 	            --libdir=/usr/lib  \
 	            --sbindir=/usr/bin
 
-	sed -e "s|@VERSION@|$pkgver|" -i docs/${pkgname}{,chain}.1
 	make
 }
 
