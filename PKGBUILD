@@ -13,16 +13,15 @@ DLAGENTS=("http::/usr/bin/wget --user ${_username} --password ${_password} %u")
 
 pkgname=adom-restricted
 pkgver=65
-pkgrel=1
+pkgrel=2
 pkgdesc="A roguelike game with a quest-centric, plot driven structure"
 arch=("i686" "x86_64" "armv6h")
 conflicts=("adom")
-provides=("adom")
 depends=("ncurses5-compat-libs")
 url="http://www.adom.de/"
 license=('custom: "adom"')
 
-_source_url="http://www.ancardia.com/secure/download/current"
+_source_url="http://www.ancardia.com/secure/download/r${pkgver}"
 source=(LICENSE)
 source_i686=(${_source_url}/adom_linux_debian_32_r${pkgver}.tar.gz)
 source_x86_64=(${_source_url}/adom_linux_debian_64_r${pkgver}.tar.gz)
