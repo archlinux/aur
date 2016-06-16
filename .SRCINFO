@@ -6,6 +6,7 @@ pkgbase = molden
 	arch = i686
 	arch = x86_64
 	license = custom
+	makedepends = vi
 	makedepends = gcc-fortran
 	makedepends = xproto
 	makedepends = libx11

@@ -9,6 +9,7 @@ license=('custom')
 groups=()
 depends=('mesa' 'glu')
 makedepends=(
+    'vi'
     'gcc-fortran'
     'xproto'
     'libx11'
