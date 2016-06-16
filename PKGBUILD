@@ -7,13 +7,13 @@
 
 _pkgname=ibus-chewing
 pkgname=$_pkgname-git
-pkgver=1.5.0.r40.g13e45b4
+pkgver=1.5.1.r0.ge221ddd
 _cmakefedoraver=2.6.0
 pkgrel=1
 pkgdesc='Chinese Chewing Engine for IBus Framework'
 arch=('i686' 'x86_64')
 license=('GPL')
-url='https://github.com/ibus/ibus'
+url='https://github.com/definite/ibus-chewing'
 depends=('ibus' 'libchewing-git')
 makedepends=('gob2' 'cmake' 'git')
 source=("git+https://github.com/definite/ibus-chewing.git"
