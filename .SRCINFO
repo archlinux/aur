@@ -5,6 +5,7 @@ pkgbase = java-commons-math
 	url = http://commons.apache.org/math/
 	arch = any
 	license = APACHE
+	makedepends = maven
 	depends = java-runtime
 	source = http://www-eu.apache.org/dist//commons/math/source/commons-math3-3.6.1-src.tar.gz
 	md5sums = 9698be1b485d9ff35b7b23262cb42aee

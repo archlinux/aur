@@ -11,6 +11,7 @@ arch=(any)
 url='http://commons.apache.org/math/'
 license=('APACHE')
 depends=('java-runtime')
+makedepends=('maven')
 source=("http://www-eu.apache.org/dist//commons/math/source/commons-math3-${pkgver}-src.tar.gz")
 md5sums=('9698be1b485d9ff35b7b23262cb42aee')
 
