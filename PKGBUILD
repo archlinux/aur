@@ -15,10 +15,10 @@ license=('GPL2')
 depends=('python')
 ((_with_usermode)) && depends+=('usermode')
 optdepends=('createrepo_c: for mockchain command'
-            'dnf-plugins-core: to create RPMs for Fedora 23 and above'
+            'dnf-plugins-core: to create RPMs for Fedora 24 and above'
             'lvm2: for lvm_root plugin'
             'pigz: for parallel compression of chroot cache'
-            'yum-utils: to create RPMs for Fedora 22 and below (including EL5, EL6 and EL7)')
+            'yum-utils: to create RPMs for Fedora 23 and below (including EL5, EL6 and EL7)')
 install="$pkgname.install"
 backup=("etc/$pkgname/site-defaults.cfg")
 source=("https://git.fedorahosted.org/cgit/$pkgname.git/snapshot/$pkgname-$pkgver.tar.xz")
