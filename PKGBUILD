@@ -8,20 +8,17 @@ pkgbase=nvidia-grsec
 pkgname=(nvidia-grsec nvidia-grsec-dkms)
 pkgver=367.27
 _extramodules=extramodules-4.5.7-grsec
-pkgrel=1
+pkgrel=2
 pkgdesc="NVIDIA drivers for linux-grsec kernel"
 arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 makedepends=('nvidia-libgl' "nvidia-utils=${pkgver}" 'linux-grsec' 'linux-grsec-headers>=4.5' 'linux-grsec-headers<4.6')
 license=('custom')
 options=(!strip)
-#source=("https://www.grsecurity.net/~paxguy1/nvidia-drivers-364.12-pax.patch")
-#Current patch is ever-so-slightly off, and rather than requiring patchutils, here's an edited one
-#Credits to pipacs on OFTC for helping with the patch!
-source=("https://u.teknik.io/3xgS9.patch")
+source=("https://www.grsecurity.net/~paxguy1/nvidia-drivers-364.27-pax.patch")
 source_i686=("http://us.download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run")
 source_x86_64=("http://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
-sha512sums=('a5f825b672f14197a73fd2535086f91f5355de1b98497b0a74333d096c79c8b0a23f854b40575247f96e5adb38ccc09fefebf8e0313ca195be9194c27f894f7a')
+sha512sums=('b5565defe3ee85dd1329f37b0630363b787497bcbfed40d5909e9dba0281bf1ceb23929fb76331277653effca1bc64a944427cc6901a05a0c2f04af5aa3ad3b1')
 sha512sums_i686=('54302f0de936a859561b756989ff84f73afe41dfb89ed680ee3df3c46b0de9d57eaf2d07876dea0eb1154fbc1a716d4d3e693cb7eaa7ab325b4bbee569ddb709')
 sha512sums_x86_64=('bb1cdfb28cf2c2216b39380994aedd4c5568d83e759aeb588be0f4784475a34c23410c2d6076b05a8163cc6cd1428c6a79e172bb3327e0160c4adf34454d3968')
 
@@ -33,7 +30,7 @@ prepare() {
     cd "${_pkg}"
     # patches here
     # Using the updated grsecurity-provided patch
-    patch -Np1 -i "../3xgS9.patch"
+    patch -Np1 -i "../nvidia-drivers-364.27-pax.patch"
 
     cp -a kernel kernel-dkms
     cd kernel-dkms
