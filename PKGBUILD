@@ -25,7 +25,7 @@ _static_build=false
 _build_from_head=false
 _local_qt5_repo="/opt/dev/src/qtproject/qt5"
 
-pkgrel=12
+pkgrel=13
 # 1 or 2 at present
 _piver=""
 
@@ -248,6 +248,7 @@ fi
   local _libspkgdir="${_libsdir}/topkg"
   local _libspkgbuild="${_libsdir}/PKGBUILD"
   local _pkgprofiled=${_libspkgdir}/etc/profile.d
+  local _profiledfn=qpi${_piver}.sh
   rm -Rf ${_libspkgdir}
   mkdir -p ${_libspkgdir}
 
@@ -261,8 +262,8 @@ fi
 
   if ! ${_static_build}; then
     mkdir -p ${_pkgprofiled}
-    cp ${startdir}/qpi.sh ${_pkgprofiled} || exit 1
-    sed -i "s,localpiprefix,${_installprefix}," ${_pkgprofiled}/qpi.sh || exit 1
+    cp -L ${startdir}/${_profiledfn} ${_pkgprofiled} || exit 1
+    sed -i "s,localpiprefix,${_installprefix}," ${_pkgprofiled}/${_profiledfn} || exit 1
   fi
 
   cp ${_bindir}/qtbase/config.status ${_libspkgdir}/${_installprefix}
