@@ -20,14 +20,19 @@ source=(
 )
 md5sums=(
   'SKIP'
-  '7a2db62e8d0e8e6f26424768c412d356'
+  'c7fc35a7eb9e23c0a9b7c593f7f9878d'
 )
 options=(!strip staticlibs)
 
 build() {
   cd $srcdir/UnrealEngine
+
   ./Setup.sh
   ./GenerateProjectFiles.sh
+
+  # needed to build a different version in the same build dir
+  make ARGS=-clean
+
   make
 }
 
