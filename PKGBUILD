@@ -3,20 +3,19 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-3d
-_qtver=5.6.1
+_qtver=5.7.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
 pkgdesc='C++ and QML APIs for easy inclusion of 3D graphics'
-depends=('qt5-declarative')
+depends=('qt5-declarative' 'assimp')
 makedepends=()
-conflicts=('qt')
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-opensource-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('8227248e5800be8d684a2700fca143e6')
+md5sums=('3219ec1a97c155915b1f0f036f13854e')
 
 prepare() {
   mkdir -p build
