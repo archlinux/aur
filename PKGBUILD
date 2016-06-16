@@ -3,22 +3,20 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt5-connectivity
-_qtver=5.6.1
+_qtver=5.7.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=('i686' 'x86_64')
 url='http://qt-project.org/'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
 pkgdesc='Provides access to Bluetooth hardware'
-depends=('qt5-base')
-makedepends=('qt5-declarative' 'bluez-libs')
-optdepends=('qt5-declarative: QML bindings'
-            'bluez-libs: for sdpscanner')
-conflicts=('qt')
+depends=('qt5-base' 'bluez-libs')
+makedepends=('qt5-declarative')
+optdepends=('qt5-declarative: QML bindings')
 groups=('qt' 'qt5')
 _pkgfqn="${pkgname/5-/}-opensource-src-${_qtver}"
 source=("http://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('ad7b5e4e4c033c9d5adcd7a5c83b2007')
+md5sums=('56229b15e677ee98d56446519723fb3b')
 
 prepare() {
   mkdir -p build
