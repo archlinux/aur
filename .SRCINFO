@@ -1,13 +1,13 @@
 pkgbase = java-commons-math
 	pkgdesc = Apache Commons Mathematics Library
-	pkgver = 3.5
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = http://commons.apache.org/math/
 	arch = any
 	license = APACHE
 	depends = java-runtime
-	source = http://mirror.nyi.net/pub/apache/commons/math/binaries/commons-math3-3.5-bin.tar.gz
-	md5sums = d3e9e9a8d4b07d0894257cc6953cd2a1
+	source = http://www-eu.apache.org/dist//commons/math/source/commons-math3-3.6.1-src.tar.gz
+	md5sums = 9698be1b485d9ff35b7b23262cb42aee
 
 pkgname = java-commons-math
 
