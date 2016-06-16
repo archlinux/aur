@@ -1,6 +1,6 @@
 pkgbase = snap-confine
 	pkgdesc = The snap-confine program helps to launch snappy applications
-	pkgver = 1.0.29
+	pkgver = 1.0.30
 	pkgrel = 1
 	url = git://github.com/snapcore/snap-confine
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = snap-confine
 	makedepends = shellcheck
 	depends = glibc
 	depends = bash
-	source = https://github.com/snapcore/snap-confine/releases/download/1.0.29/snap-confine-1.0.29.tar.gz
+	source = https://github.com/snapcore/snap-confine/releases/download/1.0.30/snap-confine-1.0.30.tar.gz
 	md5sums = SKIP
 
 pkgname = snap-confine

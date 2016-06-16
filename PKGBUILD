@@ -1,6 +1,6 @@
 # Maintainer: Zygmunt Krynicki <me at zygoon dot pl>
 pkgname=snap-confine
-pkgver=1.0.29
+pkgver=1.0.30
 pkgrel=1
 pkgdesc="The snap-confine program helps to launch snappy applications"
 arch=('i686' 'x86_64')
