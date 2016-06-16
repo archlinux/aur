@@ -1,0 +1,7 @@
+# Generated package and directories
+*.pkg.tar.xz
+pkg/
+src/
+
+# VCS sources
+ttysys/

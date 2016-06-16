@@ -1,0 +1,15 @@
+pkgbase = ttysys
+	pkgdesc = A live ncurses cpu and memory usage graph
+	pkgver = 0.8.r0.g61c183d
+	pkgrel = 1
+	url = https://github.com/rigel314/ttysys
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = ncurses
+	source = git+https://github.com/rigel314/ttysys.git
+	md5sums = SKIP
+
+pkgname = ttysys
+
