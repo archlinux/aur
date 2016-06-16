@@ -1,0 +1,13 @@
+pkgbase = kanjitomo
+	pkgdesc = identify Japanese characters from images or screen
+	pkgver = 0.9.12
+	pkgrel = 1
+	url = http://kanjitomo.net
+	arch = any
+	license = custom
+	depends = java-environment
+	source = kanjitomo.zip::http://kanjitomo.net/download.php
+	md5sums = 2c639c31289e955810852963b4beff72
+
+pkgname = kanjitomo
+
