@@ -3,12 +3,12 @@
 
 pkgname=cytoscape
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A software for visualizing molecular interaction networks and integration with gene expression profiles and other state data.'
 arch=('any')
 url=http://www.cytoscape.org
 license=('LGPL2')
-depends=('java-runtime-common')
+depends=('java-runtime>=8')
 source=("http://chianti.ucsd.edu/cytoscape-$pkgver/cytoscape-$pkgver.tar.gz" \
         'cytoscape.desktop' \
         'cytoscape.png' \
