@@ -3,12 +3,12 @@
 # Contributor: Ner0
 
 pkgname=nemo-git
-pkgver=2.8.7.r0.gf1dfc68
+pkgver=3.0.5.r4.g8d897c6
 pkgrel=1
 pkgdesc="Cinnamon file manager, git-version"
 arch=('i686' 'x86_64')
 url="https://github.com/linuxmint/nemo"
-_branch='2.8-maintenance'
+_branch='master'
 license=('GPL')
 depends=('cinnamon-desktop'
 	'cinnamon-translations'
