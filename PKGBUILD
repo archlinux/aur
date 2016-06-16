@@ -17,7 +17,7 @@ url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 groups=(mingw-w64-qt mingw-w64-qt5)
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('1ba293366dcf67f8b8181be2682ee81a')
+md5sums=('beb03f280b0b58744713d309f1ceb542')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
