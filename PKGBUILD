@@ -1,7 +1,7 @@
 # Maintainer: 
 
 pkgname=python2-fedmsg
-pkgver=0.17.0
+pkgver=0.17.2
 pkgrel=1
 pkgdesc='Utilities used around Fedora Infrastructure to send and receive messages'
 arch=(any)
@@ -9,7 +9,7 @@ url='https://fedmsg.readthedocs.org/'
 license=(LGPLv2)
 depends=(python2)
 source=(http://pypi.python.org/packages/source/f/fedmsg/fedmsg-$pkgver.tar.gz)
-md5sums=('a56ffea38fd83d1f1c2592363e6f764b')
+sha256sums=('cbb458911c99ee9eacd251b44ee785362709b7070657b04f063e6f41a15e143c')
 
 package() {
   cd fedmsg-$pkgver
