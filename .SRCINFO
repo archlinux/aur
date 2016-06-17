@@ -1,9 +1,11 @@
 pkgbase = loomer-aspect
+	pkgdesc = A virtual analogue synthesizer.
 	pkgver = 1.7.19
 	pkgrel = 1
+	url = http://www.loomer.co.uk/
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = proprietary
 	source_i686 = http://www.loomer.co.uk/downloads/Aspect/Aspect.tar.gz
 	md5sums_i686 = 63b41713fa7226a1392a1c39a2bd70ec
 	source_x86_64 = http://www.loomer.co.uk/downloads/Aspect/Aspect_x86_64.tar.gz
