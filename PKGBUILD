@@ -2,18 +2,18 @@
 pkgname=jkazip
 pkgver=1.0.3
 pkgrel=2
-pkgdesc="A Package Wrapper - package wrapper for pacman (and more)"
+pkgdesc="A script which use the differents zip and unzip programs"
 arch=('any')
 url="http://proyecto.jkanetwork.com"
 license=('GPL3')
-depends=('p7zip' 'unrar' 'unzip' 'zip' 'lzip')
+depends=('p7zip' 'unrar' 'unzip' 'zip' 'lzip' 'tar')
 provides=('jkazip')
 groups=('jka-toolkit')
 options=(!emptydirs)
 source=("https://gitlab.com/JKANetwork/jka-toolkit/raw/master/jka-toolkit/jkazip"
 	"https://gitlab.com/JKANetwork/jka-toolkit/raw/master/jka-toolkit/i18n/jkazip/es.mo")
-md5sums=('fb40e1f423357152cf423390e862a058'
-         '00f4d66914797abba37fdec272687d9e')
+md5sums=('76bf3c5fc2632abcd47baf9e0901f4aa'
+         '60bb5d465748ace2b3db7a471d92a1d0')
 PKGEXT=".pkg.tar.xz"
 package() {
   install -Dm755 $srcdir/jkazip "$pkgdir/usr/bin/jkazip" 
