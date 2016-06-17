@@ -3,15 +3,16 @@
 pkgname=redo-sh
 _pkgname=redo
 pkgver=1.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Redo implementation in Bourne Shell."
 arch=("any")
-license=("GPL")
+license=("custom:AGPL")
 url="http://news.dieweltistgarnichtso.net/bin/redo-sh.html"
-depends=("bash")
+depends=("sh")
 conflicts=("redo-c-git" "redo-git")
-source=("http://daten.dieweltistgarnichtso.net/src/${_pkgname}-v${pkgver}.tar.gz")
-sha256sums=('68577c4e97b3707ab23999fa5d8886cbd509ea528a5becb40a8cc34528d7e8f5')
+source=("http://daten.dieweltistgarnichtso.net/src/${_pkgname}-v${pkgver}.tar.gz" "LICENSE")
+sha256sums=('68577c4e97b3707ab23999fa5d8886cbd509ea528a5becb40a8cc34528d7e8f5'
+            'a864db46c8406508b3cea76ab86431c56b553bac67a9df22614c3cf1dd7e734b')
 
 package() {
   mkdir -p ${pkgdir}/usr/bin
@@ -19,5 +20,7 @@ package() {
  
   mkdir -p ${pkgdir}/usr/share/man/man1
   install -Dm644 man/man1/* "${pkgdir}/usr/share/man/man1/"
+ 
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
