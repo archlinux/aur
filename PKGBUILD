@@ -6,7 +6,7 @@ pkgver=0.9.3
 pkgrel=1
 pkgdesc='Macaroon library for Python'
 license=('Apache')
-arch=('i686' 'x86_64')
+arch=('any')
 url='https://pypi.python.org/pypi/pymacaroons-pynacl/'
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("git://github.com/matrix-org/pymacaroons#tag=v$pkgver")
