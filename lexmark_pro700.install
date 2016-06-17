@@ -1,7 +1,6 @@
  #!/bin/bash
 
-check_cups
-{
+check_cups() {
 	echo ""
 	echo ""
 	echo ""
