@@ -4,7 +4,7 @@
 pkgbase=python-argcomplete
 pkgname=('python-argcomplete' 'python2-argcomplete')
 _pyname=argcomplete
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="easy, extensible command line tab completion of arguments for your Python script"
 url="https://github.com/kislyuk/argcomplete"
@@ -12,7 +12,7 @@ arch=('any')
 license=('Apache')
 makedepends=('python-distribute' 'python2-distribute')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/kislyuk/${_pyname}/archive/v${pkgver}.tar.gz)
-sha512sums=('96cf379a4cb2d278fd3a317f8f2919db519e3a5b98e093b665f02c2f3b843bea91bce5fcc57115df64f3f596bb4fa3b1a23ad7a71e350d50389308323c403084')
+sha512sums=('e04426327e9e54620fa272bfb9e018fbc803f0bcee7353866b1e64d01382179745feb7083f59d9bb12754fc8b858bf995000c4bc3be60a40dd946dc0aaa75cc0')
 
 package_python-argcomplete() {
   depends=('python')
