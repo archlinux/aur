@@ -9,10 +9,10 @@
 # Based on linux-rt package
 
 pkgbase=linux-libre-rt
-_pkgbasever=4.4-gnu
-_pkgver=4.4.9-gnu
-_rtbasever=4.4
-_rtpatchver=rt17
+_pkgbasever=4.6-gnu
+_pkgver=4.6.2-gnu
+_rtbasever=4.6
+_rtpatchver=rt5
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -22,14 +22,12 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}_${_rtpatchver}
 pkgver=${_pkgver//-/_}.${_rtpatchver}
 pkgrel=1
-rcnrel=armv7-x7
+rcnrel=armv7-x4
 arch=('i686' 'x86_64' 'armv7h')
 url="https://rt.wiki.kernel.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
-if [ "${CARCH}" = "armv7h" ]; then
-  makedepends+=('git')
-fi
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
+makedepends_armv7h=('git')
 options=('!strip')
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
@@ -48,12 +46,11 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
-        '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
-        '0003-fix-Atmel-maXTouch-touchscreen-support.patch'
+        '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
+        '0002-fix-Atmel-maXTouch-touchscreen-support.patch'
         # armv7h patches
-        "https://repo.parabola.nu/other/rcn-libre-rt/patches/${_pkgver%-*}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch"
-        "https://repo.parabola.nu/other/rcn-libre-rt/patches/${_pkgver%-*}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch.sig"
+        "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
+        "https://repo.parabola.nu/other/rcn-libre/patches/${_pkgver%-*}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch.sig"
         '0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch'
         '0002-ARM-atags-fdt-retrieve-MAC-addresses-from-Marvell-bo.patch'
         '0003-SMILE-Plug-device-tree-file.patch'
@@ -61,13 +58,12 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
-        '0008-USB-armory-support.patch'
-        '0009-ARM-dts-dove-add-Dove-divider-clocks.patch')
-sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
+        '0008-USB-armory-support.patch')
+sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
             'SKIP'
-            'e4a8cb532d778eb204e35e2b25e15d37852c2df07c610a94827ce8289dd595ab'
+            '1e5be661ba938c94b236f45c1f83e39d83a8c30e4a90c6896fc5ad8b3d29f329'
             'SKIP'
-            'ed338f3245c51b2e4499f9c705700cf428d57bdf6f255d70739007e337063357'
+            '0f1318c689a5544c8fd41b3aa4393679602c4f0c8ed832d235014d3238343a8a'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -75,25 +71,23 @@ sha256sums=('f53e99866c751f21412737d1f06b0721e207f495c8c64f97dffb681795ee69a0'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '395079cf7bdaef8fd80dbe8fd9e45d827d44b66f6eeaf87d57c25047a42efeae'
-            '93d8c9e4937e59b17336853afcf2ade326ab5182e7bef239b363ec963d698291'
-            '613cc56d4b27a50ae1631989fb9ed8222b68ffdf0df8dee983a69a5e8fdc71f6'
+            '544dea4e10a0a3dc59f8733bf8fca01815edba1e85949fd00a45f037a1553a1b'
+            'af06eef8b2bbe4b3e5403f88977f0a984d69568e4b0602fc4d8e1794566c3db6'
+            '166d6bd39b9b2e9ebd5e58c0c07b189f6961776b73862c5d8de7bfecaf53dd28'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            'f0a10ea9a669e5200aa33656565c209718b24ff1add03ac5279c4a1f46ab8798'
-            '96c6c7d4057b8d08238adae85d476c863c082770a182057163a45480511d35a8'
-            '2ca85ee212ef8d8aab3d3c2a0cef304a355d86e7aa520e19471f56ace68a0cf4'
-            'f965912299587a7fcf1ec4bc4fd89c6545c6e4a49144cdb50e074922eb8ee46c'
+            '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
+            '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25'
+            'f74b28e9e3b6434c1bb7803f9751a068299206953519a9e61162538f5dd8be7e'
             'SKIP'
-            'a851312b26800a7e189b34547d5d4b2b62a18874f07335ac6f426c32b47c3817'
-            '486976f36e1919eac5ee984cb9a8d23a972f23f22f8344eda47b487ea91047f4'
-            '6dadc17ea56d93ec0f1d0c3c98c25a7863e9ba3c4af50dc411d630a1bcc98f08'
-            '9c5d6d035c9a7103f19804c2284291d461d4b848cccd3ec07272bde68ba29513'
-            '6644705cd73c55056b5fed91cfb3199c1114b088d96dbd3c29358cd49863aeba'
-            '08d0aa76393ea2d1a853d0ea9b02aa616224ac915473ab057bb98285212bc994'
-            '1cb502674bf7a1ea79b359d1613fe891ba37f6aa64f5f5eca309d46ba01ab417'
-            '05bf1d8f94feab06bdd9fd958bc9bde4d1249a0cdeb8d3d3e16e6fac6dc5baed'
-            '5e1b8b1e9b3243a5ab315481c39b1b88f28923148659dcc0ac7ed78d9ba4f072')
+            '9fc2533ed95497583752c6eca931f24c159be956fcc49d39cac64da7298a9c88'
+            '909c046f6123ec81764fde5d9a78431a9dc3b206ce01119ae4d91be54d9471dd'
+            '11c63a0952293b4fee080c2c0faf8b08283282c0a50694e71cab0c2503478ac5'
+            '49a4fe309e71d3e8cbf4bd98a862c7fcf13cb96d1802dafa8138bbfcf8769725'
+            '586e9f30059534dc3b0e765cb78e52ce75c1a3ea23779a7b86045fac7cba2f65'
+            '9ade3a63d0d1b4004af3733b0853a4c4d6837d933f30a462045214e2a4354a7a'
+            'bd41dd7fa8241781c150f783d55317c2d6d7dd31834619b12504d7277fe91574'
+            'f9626d188c76f387da62c6294b09f5fa4d94f5b1534ce2891bef7a99c7b40d2b')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -126,11 +120,11 @@ prepare() {
   rm localversion-rt
 
   if [ "${CARCH}" = "armv7h" ]; then
-    # RCN patch (CM3 firmware deblobbed and AUFS removed)
-    # Note: AUFS was removed in the RCN patch since it are being supported by
-    # linux-libre-pck through PCK patch for all available architectures.
-    # See https://wiki.parabola.nu/PCK for further details.
-    git apply -v "${srcdir}/rcn-libre-rt-${_pkgver%-*}-${rcnrel}.patch"
+    # RCN patch (CM3 firmware deblobbed, AUFS and RT removed)
+    # Note: For stability reasons, AUFS and RT have been removed in the RCN patch.
+    # We are supporting AUFS in linux-libre-pck through PCK patch and RT through its official
+    # patch in linux-libre-rt. See https://wiki.parabola.nu/PCK for further details about PCK.
+    git apply -v "${srcdir}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
 
     # ALARM patches
     patch -p1 -i "${srcdir}/0001-ARM-atags-add-support-for-Marvell-s-u-boot.patch"
@@ -141,7 +135,6 @@ prepare() {
     patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
     patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
     patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
-    patch -p1 -i "${srcdir}/0009-ARM-dts-dove-add-Dove-divider-clocks.patch"
   fi
 
   # add freedo as boot logo
@@ -156,20 +149,14 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  # make the radeon driver load without the firmwares
-  # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
-  if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then ## This patch is only needed for x86 computers, so we disable it for others
-    patch -p1 -i "${srcdir}/0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch"
-  fi
-
   # maintain the TTY over USB disconnects
   # http://www.coreboot.org/EHCI_Gadget_Debug
-  patch -p1 -i "${srcdir}/0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch"
+  patch -p1 -i "${srcdir}/0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch"
 
   # fix Atmel maXTouch touchscreen support
   # https://labs.parabola.nu/issues/877
   # http://www.fsfla.org/pipermail/linux-libre/2015-November/003202.html
-  patch -p1 -i "${srcdir}/0003-fix-Atmel-maXTouch-touchscreen-support.patch"
+  patch -p1 -i "${srcdir}/0002-fix-Atmel-maXTouch-touchscreen-support.patch"
 
   cat "${srcdir}/config.${CARCH}" > ./.config
 
@@ -212,10 +199,10 @@ _package() {
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
-    depends+=('mkinitcpio>=0.7')
-    backup=("etc/mkinitcpio.d/${pkgbase}.preset")
-  fi
+  depends_i686=('mkinitcpio>=0.7')
+  depends_x86_64=('mkinitcpio>=0.7')
+  backup_i686=("etc/mkinitcpio.d/${pkgbase}.preset")
+  backup_x86_64=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
   cd "${srcdir}/${_srcname}"
@@ -303,7 +290,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}"
   cp -a arch/${KARCH}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/"
   if [ "${CARCH}" = "armv7h" ]; then
-    for i in dove exynos mvebu omap2 versatile; do
+    for i in dove exynos omap2; do
       mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-${i}"
       cp -a arch/${KARCH}/mach-${i}/include "${pkgdir}/usr/lib/modules/${_kernver}/build/arch/${KARCH}/mach-${i}/"
     done
@@ -386,6 +373,12 @@ _package-headers() {
     mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
     cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
   done
+
+  # add objtool for external module building and enabled VALIDATION_STACK option
+  if [ -f tools/objtool/objtool ];  then
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+  fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
