@@ -9,8 +9,8 @@
 # Based on linux package
 
 pkgbase=linux-libre-pck
-_pkgbasever=4.5-gnu
-_pkgver=4.5.4-gnu
+_pkgbasever=4.6-gnu
+_pkgver=4.6.2-gnu
 _pckpatchver=pck1
 
 _replacesarchkernel=('linux-zen')
@@ -21,14 +21,12 @@ _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}
 pkgver=${_pkgver//-/_}.${_pckpatchver}
 pkgrel=1
-rcnrel=armv7-x2
+rcnrel=armv7-x4
 arch=('i686' 'x86_64' 'armv7h')
 url="https://wiki.parabola.nu/PCK"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
-if [ "${CARCH}" = "armv7h" ]; then
-  makedepends+=('git')
-fi
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
+makedepends_armv7h=('git')
 options=('!strip')
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
@@ -57,14 +55,12 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0005-net-smsc95xx-Allow-mac-address-to-be-set-as-a-parame.patch'
         '0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch'
         '0007-set-default-cubietruck-led-triggers.patch'
-        '0008-USB-armory-support.patch'
-        '0009-Revert-stmmac-Fix-eth0-No-PHY-found-regression.patch'
-        '0010-stmmac-fix-MDIO-settings.patch')
-sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
+        '0008-USB-armory-support.patch')
+sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
             'SKIP'
-            '02e00521cf765da05692aea22262e05c96325562667b107be6289354c5eef3fa'
+            '1e5be661ba938c94b236f45c1f83e39d83a8c30e4a90c6896fc5ad8b3d29f329'
             'SKIP'
-            '3eda100956a1e12fc536c29ea7d32f253aa34eeedde044374e8fb853cfb69b46'
+            'b010218003db64ee50854b58c3c6a5a63e5663e709501a24d87cae6c125dafb4'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -72,23 +68,21 @@ sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '91158dfb35d93e63d3d3cec3dc723284fd217d53b84217f712c89617fdc33cfe'
-            '746418fa460f9cc68427ea4ce7d4309722e44ae2dc4d432cbf137033d440d63a'
-            '4028fbdd3ebe344c1030508d0320cdfa00ad6eaab824cef4f3ec4e02f76019ff'
+            '365299d0c75640ca61e1c3dab1601e20f19b59fd1eca5c0704024298c9f4f983'
+            '2cc1e73ad760f6f55c0b342e0d7ff35e8e996b758579046f890962084f6a6baf'
+            '38b2a0949fc815d83e3fba5773dae27c0837bec621fc2c22b579f4fa7d0d2e5a'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '832f80b991d3064ab9eea1327b222308f4617ce55e94ffaa28333b656dece4d2'
+            'f74b28e9e3b6434c1bb7803f9751a068299206953519a9e61162538f5dd8be7e'
             'SKIP'
-            'd09937cbca4f408dbcde270e465bdfe0589a0b41ed07d260a596a38fe6cca987'
-            'cc1f1b5026b373da4a5c2e8c82bc2b0f8a20e295353c201579140a04f2452545'
-            'f68d382f9d5b9948cc0e7062290e1b26d7c3c7e4ba270fda0bd632c24465a40b'
-            '658f619cd11676996919ef290934cfc809db5d0fa35a1ebc475d3ebb59253201'
-            'f7bf7a7cf676571f48c92fc858ddd67cc395105ae633c3d6e5386a4a5c848d81'
-            '939c11540b47f02706f3cff1b76b84a13b4dab9cae438632d4b685b16ed8249e'
-            'db830e53d451c54f84917b663671a6cc9414b043064cdf1a17369c198abee9dd'
-            'ef21f0524fdd559389529bd05b56a3b89642fb10b74de709153d1b3c2e21c126'
-            '9f915fedf2cf03eccfed9025d3883a1158531203a676060a2eae5809ec4989ce'
-            'bbbdd20f4a933ae988e713de5ac3ad08bd453e4e3dfa4cdac2da483dcf2454d8')
+            '9fc2533ed95497583752c6eca931f24c159be956fcc49d39cac64da7298a9c88'
+            '909c046f6123ec81764fde5d9a78431a9dc3b206ce01119ae4d91be54d9471dd'
+            '11c63a0952293b4fee080c2c0faf8b08283282c0a50694e71cab0c2503478ac5'
+            '49a4fe309e71d3e8cbf4bd98a862c7fcf13cb96d1802dafa8138bbfcf8769725'
+            '586e9f30059534dc3b0e765cb78e52ce75c1a3ea23779a7b86045fac7cba2f65'
+            '9ade3a63d0d1b4004af3733b0853a4c4d6837d933f30a462045214e2a4354a7a'
+            'bd41dd7fa8241781c150f783d55317c2d6d7dd31834619b12504d7277fe91574'
+            'f9626d188c76f387da62c6294b09f5fa4d94f5b1534ce2891bef7a99c7b40d2b')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               'C92BAA713B8D53D3CAE63FC9E6974752F9704456' # André Silva
@@ -114,10 +108,10 @@ prepare() {
   patch -p1 -i "${srcdir}/patch-${_pkgver}-${_pckpatchver}.patch"
 
   if [ "${CARCH}" = "armv7h" ]; then
-    # RCN patch (CM3 firmware deblobbed and AUFS removed)
-    # Note: AUFS was removed in the RCN patch since it are being supported by
-    # linux-libre-pck through PCK patch for all available architectures.
-    # See https://wiki.parabola.nu/PCK for further details.
+    # RCN patch (CM3 firmware deblobbed, AUFS and RT removed)
+    # Note: For stability reasons, AUFS and RT have been removed in the RCN patch.
+    # We are supporting AUFS in linux-libre-pck through PCK patch and RT through its official
+    # patch in linux-libre-rt. See https://wiki.parabola.nu/PCK for further details about PCK.
     git apply -v "${srcdir}/rcn-libre-${_pkgver%-*}-${rcnrel}.patch"
 
     # ALARM patches
@@ -129,8 +123,6 @@ prepare() {
     patch -p1 -i "${srcdir}/0006-ARM-TLV320AIC23-SoC-Audio-Codec-Fix-errors-reported-.patch"
     patch -p1 -i "${srcdir}/0007-set-default-cubietruck-led-triggers.patch"
     patch -p1 -i "${srcdir}/0008-USB-armory-support.patch"
-    patch -p1 -i "${srcdir}/0009-Revert-stmmac-Fix-eth0-No-PHY-found-regression.patch"
-    patch -p1 -i "${srcdir}/0010-stmmac-fix-MDIO-settings.patch"
   fi
 
   # add freedo as boot logo
@@ -188,10 +180,10 @@ _package() {
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
-    depends+=('mkinitcpio>=0.7')
-    backup=("etc/mkinitcpio.d/${pkgbase}.preset")
-  fi
+  depends_i686=('mkinitcpio>=0.7')
+  depends_x86_64=('mkinitcpio>=0.7')
+  backup_i686=("etc/mkinitcpio.d/${pkgbase}.preset")
+  backup_x86_64=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
   cd "${srcdir}/${_srcname}"
@@ -362,6 +354,12 @@ _package-headers() {
     mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
     cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
   done
+
+  # add objtool for external module building and enabled VALIDATION_STACK option
+  if [ -f tools/objtool/objtool ];  then
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+  fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
