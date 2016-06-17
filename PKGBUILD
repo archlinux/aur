@@ -31,7 +31,7 @@ build() {
   ./GenerateProjectFiles.sh
 
   # needed to build a different version in the same build dir
-  make ARGS=-clean
+  #make ARGS=-clean
 
   make
 }
