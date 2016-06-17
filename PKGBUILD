@@ -14,7 +14,8 @@ url="http://gnome-look.org/content/show.php/Arch+Cursor+Theme+(simple)?content=1
 license=('GPL')
 conflicts=($_pkgnbame)
 #source=("http://xfce-look.org/CONTENT/content-files/135902-ArchCursorTheme.tar.gz")
-source=('http://gnome-look.org/CONTENT/content-files/135902-ArchCursorTheme.tar.gz')
+#source=('http://gnome-look.org/CONTENT/content-files/135902-ArchCursorTheme.tar.gz')
+source=('135902-ArchCursorTheme.tar.gz::https://www.ppload.com/api/files/download?id=1462316425')
 md5sums=('ac2c9e3c6ddc46b36793007e6a5eeb48')
 
 build() {
