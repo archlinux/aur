@@ -1,4 +1,6 @@
 post_install() {
+      # update modulesets and defaults.jhbuildrc
+    usr/bin/update-jhbuild-cfgs
     echo 'Now, look at'
     echo
     echo '    http://git.gnome.org/browse/jhbuild/tree/examples/sample.jhbuildrc'
