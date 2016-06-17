@@ -10,9 +10,9 @@
 
 pkgbase=linux-libre-grsec
 _pkgbasever=4.5-gnu
-_pkgver=4.5.4-gnu
+_pkgver=4.5.7-gnu
 _grsecver=3.1
-_timestamp=201605131918
+_timestamp=201606080852
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -21,15 +21,13 @@ _replacesoldmodules=() # '%' gets replaced with _kernelname
 _srcname=linux-${_pkgbasever%-*}
 _archpkgver=${_pkgver%-*}.${_timestamp}
 pkgver=${_pkgver//-/_}.${_timestamp}
-pkgrel=1
+pkgrel=2
 rcnrel=armv7-x2
 arch=('i686' 'x86_64' 'armv7h')
 url="https://grsecurity.net/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
-if [ "${CARCH}" = "armv7h" ]; then
-  makedepends+=('git')
-fi
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
+makedepends_armv7h=('git')
 options=('!strip')
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
@@ -67,9 +65,9 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         '0010-stmmac-fix-MDIO-settings.patch')
 sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
-            '02e00521cf765da05692aea22262e05c96325562667b107be6289354c5eef3fa'
+            'eeb0df2627d7c26db930918d2d05d76fe0556f552531c2e56e892cb3b4a26ec7'
             'SKIP'
-            '44db1c514103e17efd1f6b0eb03662734baaed6a6bdcace1fc9136426a9d91c7'
+            '13f8fdb40ae19f5adbbd35a531dbee0c6a7c1b9d272252ea9050cfa318494dbf'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -77,15 +75,15 @@ sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '05a89944bad0294f5584a4675ea4f28637aa97e2265f947e654f473a52894eb7'
-            'd7fa86926b72270174d852aa39bb6ab7c645db3d38cfb4f1aae08ccb08f68174'
-            '39afc30b3643d0377213601c4e57156c58e1257fd6a15bcac1a9cd66965ca941'
+            '1ae794cd4d96c38e92bc140ec2b19125ccc886c672567b631ec57d7ec15b50b0'
+            '47376517bdfe42543379412bcb053c18537594320b63c6e7b7ad6b2d88fcc72d'
+            '279c89a42890586aaa62acc1fd66a7c38bf4abb17370b4317356eec0123702e4'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
             '91e087cddaf2149d050b90720d5b3004263ec3ab07dece0241551d045ff0a91f'
             '96c6c7d4057b8d08238adae85d476c863c082770a182057163a45480511d35a8'
             '2ca85ee212ef8d8aab3d3c2a0cef304a355d86e7aa520e19471f56ace68a0cf4'
-            '691d016ee1097843333b770b69d7788e6aa9c28a6d813a6b9c156c1e0f5032ca'
+            '8c62c5258503ce0926da9b52a1c56912167fa68adc08c95afeb1a90454c32288'
             'SKIP'
             '1fc7055041da895d5d023fcf0c5e06d00a3506ae98931138229dba7392e2c382'
             'd09937cbca4f408dbcde270e465bdfe0589a0b41ed07d260a596a38fe6cca987'
@@ -127,10 +125,10 @@ prepare() {
   rm localversion-grsec
 
   if [ "${CARCH}" = "armv7h" ]; then
-    # RCN patch (CM3 firmware deblobbed and AUFS removed)
-    # Note: AUFS was removed in the RCN patch since it are being supported by
-    # linux-libre-pck through PCK patch for all available architectures.
-    # See https://wiki.parabola.nu/PCK for further details.
+    # RCN patch (CM3 firmware deblobbed, AUFS and RT removed)
+    # Note: For stability reasons, AUFS and RT have been removed in the RCN patch.
+    # We are supporting AUFS in linux-libre-pck through PCK patch and RT through its official
+    # patch in linux-libre-rt. See https://wiki.parabola.nu/PCK for further details about PCK.
     git apply -v "${srcdir}/rcn-libre-grsec-${_pkgver%-*}-${rcnrel}.patch"
 
     # disable implicit function declaration error since grsecurity patches conflicts against some RCN modules
@@ -219,10 +217,10 @@ _package() {
   provides=("${_replacesarchkernel[@]/%/=${_archpkgver}}")
   conflicts=("${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
   replaces=("${_replacesarchkernel[@]}" "${_replacesoldkernels[@]}" "${_replacesoldmodules[@]}")
-  if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
-    depends+=('mkinitcpio>=0.7')
-    backup=("etc/mkinitcpio.d/${pkgbase}.preset")
-  fi
+  depends_i686=('mkinitcpio>=0.7')
+  depends_x86_64=('mkinitcpio>=0.7')
+  backup_i686=("etc/mkinitcpio.d/${pkgbase}.preset")
+  backup_x86_64=("etc/mkinitcpio.d/${pkgbase}.preset")
   install=linux.install
 
   cd "${srcdir}/${_srcname}"
@@ -280,20 +278,6 @@ _package() {
   if [ "${CARCH}" = "x86_64" ] || [ "${CARCH}" = "i686" ]; then
     # add vmlinux
     install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
-  fi
-
-  # add grsecurity gcc plugins
-  mkdir -p "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc"
-  cp -a tools/gcc/*.h "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
-  cp -a tools/gcc/Makefile "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
-  install -m644 tools/gcc/*.so "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/"
-  mkdir -p "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"
-  install -m644 tools/gcc/size_overflow_plugin/Makefile tools/gcc/size_overflow_plugin/size_overflow_plugin.so \
-    "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/size_overflow_plugin"
-  if [[ $CARCH == x86_64 ]]; then
-    mkdir -p "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/rap_plugin"
-    install -m644 tools/gcc/rap_plugin/Makefile tools/gcc/rap_plugin/rap_plugin.so \
-      "$pkgdir/usr/lib/modules/${_kernver}/build/tools/gcc/rap_plugin"
   fi
 }
 
