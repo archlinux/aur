@@ -18,8 +18,8 @@ prepare() {
 
 package() {
 	    install -dm755 "${pkgdir}/usr/share/${pkgname}"
-        install -dm755 "${pkgdir}/usr/bin"
-        cp "$srcdir/${pkgname}${v}${pkgver}/${pkgname}.py" "${pkgdir}/usr/share/${pkgname}/"
-        chmod +x "${pkgdir}/usr/share/${pkgname}/${pkgname}.py"
-        ln -s "/usr/share/${pkgname}/${pkgname}.py" "${pkgdir}/usr/bin/${pkgname}"
+            install -dm755 "${pkgdir}/usr/bin"
+            cp "$srcdir/${pkgname}${v}${pkgver}/${pkgname}.py" "${pkgdir}/usr/share/${pkgname}/"
+            chmod +x "${pkgdir}/usr/share/${pkgname}/${pkgname}.py"
+            ln -s "/usr/share/${pkgname}/${pkgname}.py" "${pkgdir}/usr/bin/${pkgname}"
 }
