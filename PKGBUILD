@@ -5,14 +5,14 @@
 pkgname=ran-git
 _pkgname=ran
 pkgver=6.f67d3cc 
-pkgrel=1
+pkgrel=2
 pkgdesc="record audio notes: a front end for sox written in bash"
 arch=('any')
 url="https://github.com/burt1iband/ran"
 license=('GPL')
 source=("git+${url}.git")
 depends=('bash' 'bc' 'sox')
-optdepends=('notification-daemon' 'orca' 'speakup')
+optdepends=('notification-daemon' 'fluxable-newmenu' 'orca' 'speakup')
 makedepends=('git')
 provides=('ran')
 conflicts=('ran')
