@@ -3,7 +3,7 @@
 
 _srcname=fancontrol-gui
 pkgname=${_srcname}-git
-pkgver=v0.4.1.r20.g106e09b
+pkgver=v0.4.1.r21.g5de7586
 pkgrel=1
 pkgdesc="GUI for the fancontrol script and systemd service"
 arch=('i686' 'x86_64')
@@ -32,7 +32,7 @@ build() {
 
   cd "$srcdir/$_srcname/build"
 
-  cmake . \
+  cmake .. \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DLIB_INSTALL_DIR=lib \
