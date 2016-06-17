@@ -4,10 +4,10 @@ pkgbase=python-endpoints
 pkgname=('python-endpoints' 'python2-endpoints')
 pkgname=python-endpoints
 pkgver=1.1.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Get an api up and running quickly."
 arch=(any)
-url="github.com/firstopinion/endpoints"
+url="http://github.com/firstopinion/endpoints"
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
@@ -15,7 +15,7 @@ source=("https://pypi.python.org/packages/31/0a/21fbf591a767faf484b83546b595ccb7
 sha256sums=('356bff15aff88249c8c8b9a07e5d42aee50378640dde5ace432c2703ec17b849')
 
 package_python2-endpoints() {
-  depends=('python2')
+  depends=('python2-decorators')
   pkgdesc="Get an api up and running quickly. (python2 version)"
   
   cd "${srcdir}/endpoints-${pkgver}"
@@ -26,7 +26,7 @@ package_python2-endpoints() {
 }
 
 package_python-endpoints() {
-  depends=('python')
+  depends=('python-decorators')
   pkgdesc="Get an api up and running quickly. (python3 version)"
 
   cd "${srcdir}/endpoints-${pkgver}"  
