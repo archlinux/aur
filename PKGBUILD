@@ -7,7 +7,7 @@ pkgdesc='QMPlay2 is a video and audio player which can play most formats and cod
 arch=('i686' 'x86_64' 'armv7' 'armv6' 'armv5')
 url='http://qt-apps.org/content/show.php/QMPlay2?content=153339'
 license=('LGPL')
-depends=('qt5-base' 'qt5-x11extras' 'ffmpeg' 'libass' 'libgl' 'libva' 'libxv' 'alsa-lib' 'libcdio' 'taglib' 'libcddb' 'libpulse' 'libgme' 'libsidplayfp' 'xdg-utils')
+depends=('qt5-base' 'qt5-x11extras' 'xdg-utils' 'ffmpeg' 'libass' 'libgl' 'libva' 'libxv' 'alsa-lib' 'libcdio' 'taglib' 'libcddb' 'libpulse' 'libgme' 'libsidplayfp')
 optdepends=('pulseaudio' 'youtube-dl')
 conflicts=('qmplay2')
 provides=('qmplay2')
@@ -24,10 +24,13 @@ pkgver()
 
 build()
 {
+	#Uncomment below line if you don't want to have 'libsidplayfp' dependency and remove it from 'depends' list
+	#USE_SIDPLAYFP='-DUSE_CHIPTUNE_SID=No'
+
 	cd $srcdir
 	mkdir -p QMPlay2-build
 	cd QMPlay2-build
-	time cmake ../QMPlay2 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
+	cmake ../QMPlay2 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib $USE_SIDPLAYFP
 	time make
 }
 

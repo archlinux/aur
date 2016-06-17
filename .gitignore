@@ -1,0 +1,4 @@
+*.tar*
+QMPlay2/
+pkg/
+src/
