@@ -1,6 +1,6 @@
 pkgbase = dataloader
 	pkgdesc = An easy to use graphical tool that helps you to get your data into Salesforce objects
-	pkgver = 36.0.0
+	pkgver = 37.0.0
 	pkgrel = 1
 	url = https://developer.salesforce.com/page/Data_Loader
 	install = dataloader.install
