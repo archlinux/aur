@@ -2,9 +2,9 @@
 # Contributor: Manuel Mendez <mmendez534 at gmail dot com>
 
 pkgname=lttng-ust
-pkgver=2.8.0
+pkgver=2.8.1
 pkgrel=1
-pkgdesc="LTTng user space tracing libraries and agents for LTTng"
+pkgdesc="LTTng user space tracing libraries for LTTng"
 arch=('i686' 'x86_64')
 url="http://lttng.org/"
 license=('LGPL2.1' 'GPL2' 'MIT')
@@ -16,7 +16,7 @@ optdepends=(
 options=('!libtool')
 source=(http://lttng.org/files/${pkgname}/${pkgname}-${pkgver}.tar.bz2)
 install='lttng-ust.install'
-sha1sums=('648e710683743969087e72faa5aa82697280729d')
+sha1sums=('8bebdcbcb453d2643fb226dbe92de61764f1ee3b')
 
 build()
 {
