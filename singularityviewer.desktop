@@ -1,10 +1,10 @@
 [Desktop Entry]
-Version=1.0
-Type=Application
-Name=Singularity Viewer
-GenericName=A third-party viewer for Second Life (C) and OpenSim grids
-Comment=A third-party viewer for Second Life (C) and OpenSim grids
+Name=Singularity
+Comment=Client for Online Virtual Worlds, such as Second Life (Testing Version)
 Exec=/usr/bin/singularityviewer
-Icon=/opt/singularityviewer/singularity_icon.png
+Icon=/usr/share/pixmaps/singularityviewer_icon.png
 Terminal=false
+Type=Application
 Categories=Game
+StartupNotify=true
+X-Desktop-File-Install-Version=3.0
