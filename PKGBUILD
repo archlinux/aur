@@ -2,14 +2,12 @@
 
 pkgbase=ropper-git
 pkgname=('ropper-git' 'python-ropper-git' 'python2-ropper-git')
-pkgver=1.9.5.383.2a40346
+pkgver=1.9.10.421.c9ded96
 pkgrel=1
 pkgdesc='Show information about binary files and find gadgets to build rop chains for different architectures'
 url='https://github.com/sashs/Ropper'
 arch=('any')
 license=('GPL2')
-optdepends=('sqlite: gadgets database support'
-            'python-keystone: assemble command support')
 makedepends=('git' 'python-setuptools' 'python-capstone' 'python-filebytes' 'python2-setuptools' 'python2-capstone' 'python2-filebytes')
 checkdepends=('sqlite')
 provides=('ropper')
@@ -49,6 +47,8 @@ package_ropper-git() {
   depends=('python' 'python-ropper')
   provides=('ropper')
   conflicts=('ropper')
+  optdepends=('sqlite: gadgets database support'
+              'python-keystone: assemble command support')
   cd ${pkgbase}
   python setup.py install -O1 --root="${pkgdir}" --skip-build
   install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
@@ -59,22 +59,26 @@ package_python-ropper-git() {
   depends=('python-capstone' 'python-filebytes')
   provides=('python-ropper')
   conflicts=('python-ropper')
+  optdepends=('sqlite: gadgets database support'
+              'python-keystone: assemble command support')
   cd ${pkgbase}
   python setup.py install -O1 --root="${pkgdir}" --skip-build
   install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm 644 sample.py "${pkgdir}/usr/share/doc/${pkgname}/sample.py"
-  rm "${pkgdir}/usr/bin/ropper"
+  rm -r "${pkgdir}/usr/bin"
 }
 
 package_python2-ropper-git() {
   depends=('python2-capstone' 'python2-filebytes')
   provides=('python2-ropper')
   conflicts=('python2-ropper')
+  optdepends=('sqlite: gadgets database support'
+              'python2-keystone: assemble command support')
   cd ${pkgbase}-py2
   python2 setup.py install -O1 --root="${pkgdir}" --skip-build
   install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm 644 sample.py "${pkgdir}/usr/share/doc/${pkgname}/sample.py"
-  rm "${pkgdir}/usr/bin/ropper"
+  rm -r "${pkgdir}/usr/bin"
 }
 
 # vim: ts=2 sw=2 et:
