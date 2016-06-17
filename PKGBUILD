@@ -5,7 +5,7 @@
 
 pkgname=r-mkl
 pkgver=3.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Language and environment for statistical computing and graphics, set up to use Intel's MKL by default."
 arch=('x86_64')
 license=('GPL')
@@ -13,6 +13,8 @@ url='http://www.r-project.org/'
 provides=("r=${pkgver}","r-mkl=${pkgver}")
 conflicts=('r')
 depends=('intel-mkl'
+        'intel-compiler-base'
+        'intel-fortran-compiler'
         'bzip2'
         'libpng'
         'libjpeg'
@@ -33,11 +35,7 @@ depends=('intel-mkl'
 makedepends=('jdk8-openjdk'
             'gcc-fortran'
             'tk')
-optdepends=('tk: tcl/tk interface'
-            'texlive-bin: LaTeX sty files'
-            'intel-compiler-base: Intel C/C++ compiler'
-            'intel-fortran-compiler: Intel Fortran compiler'
-            'intel-mpi: Intel MPI')
+optdepends=('texlive-bin: LaTeX sty files')
 backup=('etc/R/Makeconf'
         'etc/R/Renviron'
         'etc/R/ldpaths'
