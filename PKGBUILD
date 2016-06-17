@@ -16,7 +16,7 @@ optdepends=('c++utilities-doc: API documentation')
 makedepends=('mingw-w64-gcc' 'mingw-w64-cmake')
 url="https://github.com/Martchus/${_reponame}"
 source=("c++utilities-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('e7729ddf927096e5e18258749aae48934820487d5a4307c191afade5fd402895')
+sha256sums=('133fd8619d9ebb9c8f0d683856f55cd71e17cacee178600389140fad59eb8977')
 options=(!buildflags staticlibs !strip !emptydirs)
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
