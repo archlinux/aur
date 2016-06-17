@@ -32,7 +32,7 @@ build() {
 
   cd "$srcdir/$_srcname/build"
 
-  cmake . \
+  cmake .. \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DLIB_INSTALL_DIR=lib \
