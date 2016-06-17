@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 
 pkgname=adwm-git
-pkgver=0.5.9.r0.g3715002
+pkgver=0.5.9.r2.gb00f5a1
 pkgrel=1
 pkgdesc="Advanced dynamic window manager for X"
 arch=('i686' 'x86_64')
