@@ -17,7 +17,7 @@ options=()
 install=
 source=("https://github.com/snapcore/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('SKIP')
+md5sums=('accf394c4d56f6413c69dd5c2ff0e86d')
 
 prepare() {
 	cd "$pkgname-$pkgver"
