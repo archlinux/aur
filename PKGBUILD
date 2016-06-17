@@ -3,7 +3,7 @@
 
 pkgname=fair-coin
 pkgver=1.5.2
-pkgrel=4
+pkgrel=5
 pkgdesc="FairCoin Qt official client"
 arch=(i686 x86_64)
 url="https://fair-coin.org/"
@@ -11,10 +11,17 @@ license=('MIT')
 depends=('qt4' 'boost-libs' 'qrencode' 'protobuf')
 makedepends=('boost' 'imagemagick')
 source=("https://github.com/FairCoinTeam/fair-coin/archive/v$pkgver.tar.gz"
-        "$pkgname.desktop")
-install=("$pkgname.install")
+        "$pkgname.desktop"
+        "0001-fix-issue-14.patch")
+install="$pkgname.install"
 sha256sums=("72e512768f8307db5c2f1ae5513bf222835919268110db7361bab056ee44db5e"
-            "7bf32cef879eb08682d92cd8ee35d68b8e295030d2873dc6a3a95cd37b88612c")
+            "7bf32cef879eb08682d92cd8ee35d68b8e295030d2873dc6a3a95cd37b88612c"
+            "3742eb31eab4ab8a91ce975b03d56220638c4e926dea6f098e0a786407ec20c3")
+
+prepare() {
+    cd $pkgname-$pkgver
+    patch -p1 < ../0001-fix-issue-14.patch
+}
 
 build() {
     cd $pkgname-$pkgver

@@ -1,0 +1,26 @@
+From 761475dbe4c5cb8dcc2a99ee4f67271c4cb5c357 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Thomas=20K=C3=B6nig?= <tom@fair-coin.org>
+Date: Wed, 25 May 2016 10:14:53 +0200
+Subject: [PATCH] fixed issue #14: compiler error with newer versions the boost
+ library
+
+---
+ src/net.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/net.cpp b/src/net.cpp
+index 77d4783..4f19e29 100644
+--- a/src/net.cpp
++++ b/src/net.cpp
+@@ -61,7 +61,7 @@ static bool vfLimited[NET_MAX] = {};
+ static CNode* pnodeLocalHost = NULL;
+ CAddress addrSeenByPeer(CService("0.0.0.0", 0), nLocalServices);
+ uint64 nLocalHostNonce = 0;
+-array<int, THREAD_MAX> vnThreadsRunning;
++boost::array<int, THREAD_MAX> vnThreadsRunning;
+ static std::vector<SOCKET> vhListenSocket;
+ CAddrMan addrman;
+ 
+-- 
+2.8.3
+
