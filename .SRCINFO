@@ -1,0 +1,16 @@
+pkgbase = openbox-theme-arcbox
+	pkgdesc = Simple openbox theme for Arc GTK2/3 theme.
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/gcavallo/Arcbox
+	arch = any
+	license = GPL3
+	depends = openbox
+	optdepends = gtk-theme-arc: gtk theme
+	optdepends = arc-firefox-theme-git: firefox theme
+	noextract = Arcbox-0.1.2.tar.gz
+	source = Arcbox-0.1.2.tar.gz::https://github.com/gcavallo/Arcbox/archive/v0.1.2.tar.gz
+	sha256sums = f4e803e2457b68fd54f1d37a961e160fec39073efdcbf6f7af00619a17ddbe0a
+
+pkgname = openbox-theme-arcbox
+
