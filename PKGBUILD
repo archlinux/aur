@@ -4,7 +4,7 @@ pkgname=android-file-transfer-linux-git
 _pkgname="${pkgname/-git/}"
 _gitbranch=master
 _gitauthor=whoozle
-pkgver=v2.4.r175.g6eab331
+pkgver=2.4.r195.g52e1743
 pkgrel=1
 pkgdesc="An interactive MTP client implemented in C++ using Qt toolkit"
 arch=('i686' 'x86_64')
@@ -20,9 +20,13 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  # git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 
 }
+
+
+
 
 prepare() {
   cd "$_pkgname"
@@ -49,5 +53,6 @@ package() {
 
   install -Dm644 ../LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
+
 
 
