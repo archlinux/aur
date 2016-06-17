@@ -1,7 +1,7 @@
 # Maintainer: Samuel Walladge <samuel at swalladge dot id dot au>
 
 pkgname=tagspaces
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="TagSpaces is an open source personal data manager. It helps you organize files with tags on every platform."
 arch=("i686" "x86_64")
@@ -9,9 +9,8 @@ url="http://tagspaces.org"
 license=("AGPL")
 depends=("electron")
 makedepends=("bower" "gendesk")
-sha256sums=('b81ad0896c7c87eda2f924b830af0d657b962cc65c0d7f9d8a9c81d3e477a431')
+sha256sums=('06bae9e16b7198d96181a6418fc9b732d19e9a31f5173971a932561ed5ce5bd5')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
-
 prepare() {
   # create desktop file and run script
   gendesk -f -n --pkgname ${pkgname} --pkgdesc "${pkgdesc}" --exec="${pkgname}"
