@@ -6,7 +6,7 @@
 #  Just changed the name and other minor things. 
 pkgbase=pipelinedb
 pkgname=('pipelinedb' 'pipelinedb-libs')
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="The streaming SQL database"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ source=("https://github.com/pipelinedb/pipelinedb/archive/$pkgver.tar.gz"
 	pipelinedb.service 
 	pipelinedb.install)
 	
-md5sums=('d1393baf64099fc1abaf3f142973896f'
+md5sums=('51650fe51d0c39e93cf3e85998ac0ea6'
          '937eec7aabce171bc9d1eab65c560bcb'
          '75c579eed03ffb2312631f0b649175b4'
          '96f82c38f3f540b53f3e5144900acf17'
