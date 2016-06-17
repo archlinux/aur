@@ -13,7 +13,8 @@ md5sums=('f1960ef82c4b5c6a389e44915a9f1d3d')
 package() {
              install -dm755 "${pkgdir}/usr/share/${pkgname}"
              install -dm755 "${pkgdir}/usr/bin"
-             cp -rf "${srcdir}/JavaSnoop/*" "${pkgdir}/usr/share/${pkgname}/"
+             cd "JavaSnoop"
+             cp -rf * "${pkgdir}/usr/share/${pkgname}/"
              chmod +x "${pkgdir}/usr/share/${pkgname}/startup.sh"
              echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/jre && cd /usr/share/javasnoop/ && ./startup.sh" >> "${pkgname}"
              chmod +x "${pkgname}"
