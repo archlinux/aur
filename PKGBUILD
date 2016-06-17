@@ -1,26 +1,27 @@
 # Maintainer: Michael Straube <m.s.online gmx.de>
 # Contributor: FadeMind <fademind@gmail.com>
 
-_pkgname=grub2-theme-breeze
-pkgname="${_pkgname}-git"
+pkgname=grub2-theme-breeze-git
 pkgver=r17.9610d5b
 pkgrel=2
 pkgdesc="A minimalistic GRUB theme inspired by Breeze"
 arch=('any')
-url="https://github.com/gustawho/${_pkgname}"
+url="https://github.com/gustawho/grub2-theme-breeze"
 license=('CCPL:by-sa')
 depends=('grub')
 conflicts=('breeze-grub')
-install=${pkgname}.install
-source=("git+${url}.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/gustawho/grub2-theme-breeze.git")
+sha1sums=('SKIP')
 
 pkgver(){
-    cd "${srcdir}/${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd grub2-theme-breeze
+
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-    install -d "${pkgdir}/boot/grub/themes/"
-    cp -r "${srcdir}/${_pkgname}/breeze/" "${pkgdir}/boot/grub/themes/"
+  cd grub2-theme-breeze
+
+  install -d -m 755 "$pkgdir/boot/grub/themes"
+  cp -r breeze "$pkgdir/boot/grub/themes/"
 }
