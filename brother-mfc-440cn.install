@@ -1,0 +1,10 @@
+post_install() {
+	post_upgrade;
+}
+
+post_upgrade() {
+echo "Restart CUPS to load the new files"
+echo "You can now register your new printer using the web interface at:"
+echo "  http://localhost:631/"
+echo "For network printers, use lpd://<printer_ip>/binary_p1"
+}
