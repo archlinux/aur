@@ -9,7 +9,6 @@ arch=('any')
 url="https://github.com/woboq/verdigris"
 license=('LGPL3')
 depends=(qt5-base)
-makedepends=()
 provides=(verdigris)
 conflicts=(verdigris)
 source=("git+https://github.com/woboq/$_name.git")
