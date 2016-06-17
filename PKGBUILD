@@ -9,7 +9,7 @@ pkgver=1.0.0
 pkgrel=1
 pkgdesc='Canonical JSON'
 license=('Apache')
-arch=('i686' 'x86_64')
+arch=('any')
 url='https://pypi.python.org/pypi/canonicaljson/'
 #makedepends=('python-setuptools'
 #             'python2-setuptools')
