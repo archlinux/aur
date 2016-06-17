@@ -1,0 +1,101 @@
+From d6a67e5ff7d99af484a9ebf68d3fe2510bffd099 Mon Sep 17 00:00:00 2001
+From: Luke Shumaker <lukeshu@sbcglobal.net>
+Date: Wed, 25 May 2016 12:23:40 -0400
+Subject: [PATCH 2/6] FSDG: os-release: Default to PRETTY_NAME "GNU/Linux"
+ instead of "Linux".
+
+---
+ man/kernel-install.xml                    | 2 +-
+ man/os-release.xml                        | 2 +-
+ src/analyze/analyze.c                     | 2 +-
+ src/core/main.c                           | 4 +-
+ src/firstboot/firstboot.c                 | 2 +-
+ src/kernel-install/90-loaderentry.install | 2 +-
+ 6 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/man/kernel-install.xml b/man/kernel-install.xml
+index d7e27de..eb51918 100644
+--- a/man/kernel-install.xml
++++ b/man/kernel-install.xml
+@@ -106,7 +106,7 @@
+           <replaceable>PRETTY_NAME</replaceable> parameter specified
+           in <filename>/etc/os-release</filename> or
+           <filename>/usr/lib/os-release</filename> (if the former is
+-          missing), or "Linux
++          missing), or "GNU/Linux
+           <replaceable>KERNEL-VERSION</replaceable>", if unset.  If
+           the file <filename>initrd</filename> is found next to the
+           <filename>linux</filename> file, the initrd will be added to
+diff --git a/man/os-release.xml b/man/os-release.xml
+index 4557abc..767a1c7 100644
+--- a/man/os-release.xml
++++ b/man/os-release.xml
+@@ -194,7 +194,7 @@
+         suitable for presentation to the user. May or may not contain
+         a release code name or OS version of some kind, as suitable.
+         If not set, defaults to
+-        <literal>PRETTY_NAME="Linux"</literal>. Example:
++        <literal>PRETTY_NAME="GNU/Linux"</literal>. Example:
+         <literal>PRETTY_NAME="Fedora 17 (Beefy
+         Miracle)"</literal>.</para></listitem>
+       </varlistentry>
+diff --git a/src/analyze/analyze.c b/src/analyze/analyze.c
+index d621f66..53c97f9 100644
+--- a/src/analyze/analyze.c
++++ b/src/analyze/analyze.c
+@@ -653,7 +653,7 @@ static int analyze_plot(sd_bus *bus) {
+         svg("<rect class=\"background\" width=\"100%%\" height=\"100%%\" />\n");
+         svg("<text x=\"20\" y=\"50\">%s</text>", pretty_times);
+         svg("<text x=\"20\" y=\"30\">%s %s (%s %s %s) %s %s</text>",
+-            isempty(host->os_pretty_name) ? "Linux" : host->os_pretty_name,
++            isempty(host->os_pretty_name) ? "GNU/Linux" : host->os_pretty_name,
+             strempty(host->hostname),
+             strempty(host->kernel_name),
+             strempty(host->kernel_release),
+diff --git a/src/core/main.c b/src/core/main.c
+index 93098da..b9cac92 100644
+--- a/src/core/main.c
++++ b/src/core/main.c
+@@ -1238,11 +1238,11 @@ static int status_welcome(void) {
+                 return status_printf(NULL, false, false,
+                                      "\nWelcome to \x1B[%sm%s\x1B[0m!\n",
+                                      isempty(ansi_color) ? "1" : ansi_color,
+-                                     isempty(pretty_name) ? "Linux" : pretty_name);
++                                     isempty(pretty_name) ? "GNU/Linux" : pretty_name);
+         else
+                 return status_printf(NULL, false, false,
+                                      "\nWelcome to %s!\n",
+-                                     isempty(pretty_name) ? "Linux" : pretty_name);
++                                     isempty(pretty_name) ? "GNU/Linux" : pretty_name);
+ }
+ 
+ static int write_container_id(void) {
+diff --git a/src/firstboot/firstboot.c b/src/firstboot/firstboot.c
+index 3df7246..1e1a592 100644
+--- a/src/firstboot/firstboot.c
++++ b/src/firstboot/firstboot.c
+@@ -96,7 +96,7 @@ static void print_welcome(void) {
+                 log_warning_errno(r, "Failed to read os-release file: %m");
+ 
+         printf("\nWelcome to your new installation of %s!\nPlease configure a few basic system settings:\n\n",
+-               isempty(pretty_name) ? "Linux" : pretty_name);
++               isempty(pretty_name) ? "GNU/Linux" : pretty_name);
+ 
+         press_any_key();
+ 
+diff --git a/src/kernel-install/90-loaderentry.install b/src/kernel-install/90-loaderentry.install
+index 4c9b1f0..6e94e12 100644
+--- a/src/kernel-install/90-loaderentry.install
++++ b/src/kernel-install/90-loaderentry.install
+@@ -37,7 +37,7 @@ elif [[ -f /usr/lib/os-release ]]; then
+ fi
+ 
+ if ! [[ $PRETTY_NAME ]]; then
+-    PRETTY_NAME="Linux $KERNEL_VERSION"
++    PRETTY_NAME="GNU/Linux $KERNEL_VERSION"
+ fi
+ 
+ declare -a BOOT_OPTIONS
+-- 
+2.8.3
+

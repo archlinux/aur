@@ -1,0 +1,28 @@
+From 6f4e352372876053efb168e6dc9e74a57c8d6c2e Mon Sep 17 00:00:00 2001
+From: Luke Shumaker <lukeshu@sbcglobal.net>
+Date: Wed, 25 May 2016 12:28:30 -0400
+Subject: [PATCH 4/6] FSDG: os-release: Default ID to "gnu-linux" instead of
+ "linux".
+
+As far as I can tell, no code in this repository actually uses the ID
+field, so this is just a man page change.
+---
+ man/os-release.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/man/os-release.xml b/man/os-release.xml
+index f6787f9..79eb402 100644
+--- a/man/os-release.xml
++++ b/man/os-release.xml
+@@ -145,7 +145,7 @@
+         the operating system, excluding any version information and
+         suitable for processing by scripts or usage in generated
+         filenames. If not set, defaults to
+-        <literal>ID=linux</literal>. Example:
++        <literal>ID=gnu-linux</literal>. Example:
+         <literal>ID=fedora</literal> or
+         <literal>ID=debian</literal>.</para></listitem>
+       </varlistentry>
+-- 
+2.8.3
+

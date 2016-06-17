@@ -1,0 +1,40 @@
+From 20c90fb1a90a1702ce5e7d79dd16ee160640a1ee Mon Sep 17 00:00:00 2001
+From: Luke Shumaker <lukeshu@sbcglobal.net>
+Date: Wed, 25 May 2016 12:24:56 -0400
+Subject: [PATCH 3/6] FSDG: os-release: Default to NAME "GNU/Linux" instead of
+ "Linux".
+
+---
+ man/os-release.xml                    | 2 +-
+ src/journal-remote/journal-gatewayd.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/man/os-release.xml b/man/os-release.xml
+index 767a1c7..f6787f9 100644
+--- a/man/os-release.xml
++++ b/man/os-release.xml
+@@ -121,7 +121,7 @@
+         <listitem><para>A string identifying the operating system,
+         without a version component, and suitable for presentation to
+         the user. If not set, defaults to
+-        <literal>NAME=Linux</literal>. Example:
++        <literal>NAME=GNU/Linux</literal>. Example:
+         <literal>NAME=Fedora</literal> or <literal>NAME="Debian
+         GNU/Linux"</literal>.</para></listitem>
+       </varlistentry>
+diff --git a/src/journal-remote/journal-gatewayd.c b/src/journal-remote/journal-gatewayd.c
+index 60d8977..3b9adb5 100644
+--- a/src/journal-remote/journal-gatewayd.c
++++ b/src/journal-remote/journal-gatewayd.c
+@@ -799,7 +799,7 @@ static int request_handler_machine(
+                      SD_ID128_FORMAT_VAL(mid),
+                      SD_ID128_FORMAT_VAL(bid),
+                      hostname_cleanup(hostname),
+-                     os_name ? os_name : "Linux",
++                     os_name ? os_name : "GNU/Linux",
+                      v ? v : "bare",
+                      usage,
+                      cutoff_from,
+-- 
+2.8.3
+

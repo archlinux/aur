@@ -1,0 +1,80 @@
+From 64713f35b5a75b441ab300813ff5a48b0bffed92 Mon Sep 17 00:00:00 2001
+From: Luke Shumaker <lukeshu@sbcglobal.net>
+Date: Wed, 25 May 2016 12:19:20 -0400
+Subject: [PATCH 1/6] FSDG: man/: Refer to the operating system as GNU/Linux.
+
+This is not a blind replacement of "Linux" with "GNU/Linux".  In some
+cases, "Linux" is (correctly) used to refer to just the kernel.  In others,
+it is in a string for which code must also be adjusted; these instances
+are not included in this commit.
+---
+ man/daemon.xml               | 4 ++--
+ man/sd-bus-errors.xml        | 2 +-
+ man/sd_bus_error_add_map.xml | 2 +-
+ man/systemd.xml              | 2 +-
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/man/daemon.xml b/man/daemon.xml
+index b6125cb..f74fd35 100644
+--- a/man/daemon.xml
++++ b/man/daemon.xml
+@@ -168,7 +168,7 @@
+     <refsect2>
+       <title>New-Style Daemons</title>
+ 
+-      <para>Modern services for Linux should be implemented as
++      <para>Modern services for GNU/Linux should be implemented as
+       new-style daemons. This makes it easier to supervise and control
+       them at runtime and simplifies their implementation.</para>
+ 
+@@ -311,7 +311,7 @@
+       as detailed in the <ulink
+       url="http://refspecs.linuxbase.org/LSB_3.1.1/LSB-Core-generic/LSB-Core-generic/iniscrptact.html">LSB
+       Linux Standard Base Core Specification</ulink>. This method of
+-      activation is supported ubiquitously on Linux init systems, both
++      activation is supported ubiquitously on GNU/Linux init systems, both
+       old-style and new-style systems. Among other issues, SysV init
+       scripts have the disadvantage of involving shell scripts in the
+       boot process. New-style init systems generally employ updated
+diff --git a/man/sd-bus-errors.xml b/man/sd-bus-errors.xml
+index 055af7a..d2b81f4 100644
+--- a/man/sd-bus-errors.xml
++++ b/man/sd-bus-errors.xml
+@@ -126,7 +126,7 @@
+ 
+     <para>In addition to this list, in sd-bus, the special error
+     namespace <literal>System.Error.</literal> is used to map
+-    arbitrary Linux system errors (as defined by <citerefentry
++    arbitrary GNU/Linux system errors (as defined by <citerefentry
+     project='man-pages'><refentrytitle>errno</refentrytitle><manvolnum>3</manvolnum></citerefentry>)
+     to D-Bus errors and back. For example, the error
+     <constant>EUCLEAN</constant> is mapped to
+diff --git a/man/sd_bus_error_add_map.xml b/man/sd_bus_error_add_map.xml
+index 139bd77..7dc1ef6 100644
+--- a/man/sd_bus_error_add_map.xml
++++ b/man/sd_bus_error_add_map.xml
+@@ -82,7 +82,7 @@
+ 
+     <para>The <function>sd_bus_error_add_map()</function> call may be
+     used to register additional mappings for converting D-Bus errors
+-    to Linux <varname>errno</varname>-style errors. The mappings
++    to GNU/Linux <varname>errno</varname>-style errors. The mappings
+     defined with this call are consulted by calls such as
+     <citerefentry><refentrytitle>sd_bus_error_set</refentrytitle><manvolnum>3</manvolnum></citerefentry>
+     or
+diff --git a/man/systemd.xml b/man/systemd.xml
+index b8d91b8..e05a9d6 100644
+--- a/man/systemd.xml
++++ b/man/systemd.xml
+@@ -61,7 +61,7 @@
+   <refsect1>
+     <title>Description</title>
+ 
+-    <para>systemd is a system and service manager for Linux operating
++    <para>systemd is a system and service manager for GNU/Linux operating
+     systems. When run as first process on boot (as PID 1), it acts as
+     init system that brings up and maintains userspace
+     services.</para>
+-- 
+2.8.3
+

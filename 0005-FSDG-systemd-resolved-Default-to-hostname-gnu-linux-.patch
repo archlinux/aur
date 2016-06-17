@@ -1,0 +1,33 @@
+From 71b8c10050db1a16402e0600c9921b012c908b44 Mon Sep 17 00:00:00 2001
+From: Luke Shumaker <lukeshu@sbcglobal.net>
+Date: Wed, 25 May 2016 12:31:20 -0400
+Subject: [PATCH 5/6] FSDG: systemd-resolved: Default to hostname "gnu-linux"
+ instead of "linux"
+
+---
+ src/resolve/resolved-manager.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/resolve/resolved-manager.c b/src/resolve/resolved-manager.c
+index 7f90734..e82c6ec 100644
+--- a/src/resolve/resolved-manager.c
++++ b/src/resolve/resolved-manager.c
+@@ -429,12 +429,12 @@ static int manager_watch_hostname(Manager *m) {
+ 
+         r = determine_hostname(&m->llmnr_hostname, &m->mdns_hostname);
+         if (r < 0) {
+-                log_info("Defaulting to hostname 'linux'.");
+-                m->llmnr_hostname = strdup("linux");
++                log_info("Defaulting to hostname 'gnu-linux'.");
++                m->llmnr_hostname = strdup("gnu-linux");
+                 if (!m->llmnr_hostname)
+                         return log_oom();
+ 
+-                m->mdns_hostname = strdup("linux.local");
++                m->mdns_hostname = strdup("gnu-linux.local");
+                 if (!m->mdns_hostname)
+                         return log_oom();
+         } else
+-- 
+2.8.3
+

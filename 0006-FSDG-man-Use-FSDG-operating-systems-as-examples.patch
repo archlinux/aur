@@ -1,0 +1,199 @@
+From 566cac15ed36506e2bb766313a5d4e0825bc6499 Mon Sep 17 00:00:00 2001
+From: Luke Shumaker <lukeshu@sbcglobal.net>
+Date: Wed, 25 May 2016 12:32:21 -0400
+Subject: [PATCH 6/6] FSDG: man/: Use FSDG operating systems as examples.
+
+---
+ man/os-release.xml     | 49 +++++++++++++++++++++++++------------------------
+ man/systemd-nspawn.xml | 37 +++++++++++++------------------------
+ 2 files changed, 38 insertions(+), 48 deletions(-)
+
+diff --git a/man/os-release.xml b/man/os-release.xml
+index 79eb402..a70ba1a 100644
+--- a/man/os-release.xml
++++ b/man/os-release.xml
+@@ -122,7 +122,7 @@
+         without a version component, and suitable for presentation to
+         the user. If not set, defaults to
+         <literal>NAME=GNU/Linux</literal>. Example:
+-        <literal>NAME=Fedora</literal> or <literal>NAME="Debian
++        <literal>NAME=BLAG</literal> or <literal>NAME="gNewSense
+         GNU/Linux"</literal>.</para></listitem>
+       </varlistentry>
+ 
+@@ -133,8 +133,8 @@
+         version, excluding any OS name information, possibly including
+         a release code name, and suitable for presentation to the
+         user. This field is optional. Example:
+-        <literal>VERSION=17</literal> or <literal>VERSION="17 (Beefy
+-        Miracle)"</literal>.</para></listitem>
++        <literal>VERSION=210k</literal> or <literal>VERSION="210k
++        (Spartakus)"</literal>.</para></listitem>
+       </varlistentry>
+ 
+       <varlistentry>
+@@ -146,8 +146,8 @@
+         suitable for processing by scripts or usage in generated
+         filenames. If not set, defaults to
+         <literal>ID=gnu-linux</literal>. Example:
+-        <literal>ID=fedora</literal> or
+-        <literal>ID=debian</literal>.</para></listitem>
++        <literal>ID=blag</literal> or
++        <literal>ID=gnewsense</literal>.</para></listitem>
+       </varlistentry>
+ 
+       <varlistentry>
+@@ -168,9 +168,9 @@
+         should be listed in order of how closely the local operating
+         system relates to the listed ones, starting with the closest.
+         This field is optional. Example: for an operating system with
+-        <literal>ID=centos</literal>, an assignment of
++        <literal>ID=blag</literal>, an assignment of
+         <literal>ID_LIKE="rhel fedora"</literal> would be appropriate.
+-        For an operating system with <literal>ID=ubuntu</literal>, an
++        For an operating system with <literal>ID=gnewsense</literal>, an
+         assignment of <literal>ID_LIKE=debian</literal> is
+         appropriate.</para></listitem>
+       </varlistentry>
+@@ -183,8 +183,8 @@
+         identifying the operating system version, excluding any OS
+         name information or release code name, and suitable for
+         processing by scripts or usage in generated filenames. This
+-        field is optional. Example: <literal>VERSION_ID=17</literal>
+-        or <literal>VERSION_ID=11.04</literal>.</para></listitem>
++        field is optional. Example: <literal>VERSION_ID=210k</literal>
++        or <literal>VERSION_ID=7.0</literal>.</para></listitem>
+       </varlistentry>
+ 
+       <varlistentry>
+@@ -195,8 +195,8 @@
+         a release code name or OS version of some kind, as suitable.
+         If not set, defaults to
+         <literal>PRETTY_NAME="GNU/Linux"</literal>. Example:
+-        <literal>PRETTY_NAME="Fedora 17 (Beefy
+-        Miracle)"</literal>.</para></listitem>
++        <literal>PRETTY_NAME="BLAG 210k
++        (Spartakus)"</literal>.</para></listitem>
+       </varlistentry>
+ 
+       <varlistentry>
+@@ -219,7 +219,7 @@
+         <ulink url="http://scap.nist.gov/specifications/cpe/">Common
+         Platform Enumeration Specification</ulink> as proposed by the
+         NIST. This field is optional. Example:
+-        <literal>CPE_NAME="cpe:/o:fedoraproject:fedora:17"</literal>
++        <literal>CPE_NAME="cpe:/o:blagblagblag:blag:210k"</literal>
+         </para></listitem>
+       </varlistentry>
+ 
+@@ -254,8 +254,8 @@
+         one URL shall be listed in each setting. If multiple resources
+         need to be referenced, it is recommended to provide an online
+         landing page linking all available resources. Examples:
+-        <literal>HOME_URL="https://fedoraproject.org/"</literal> and
+-        <literal>BUG_REPORT_URL="https://bugzilla.redhat.com/"</literal></para></listitem>
++        <literal>HOME_URL="https://www.blagblagblag.org/"</literal> and
++        <literal>BUG_REPORT_URL="https://blag.fsf.org/"</literal></para></listitem>
+       </varlistentry>
+ 
+       <varlistentry>
+@@ -330,21 +330,22 @@
+     recommended to prefix new fields with an OS specific
+     name in order to avoid name clashes. Applications
+     reading this file must ignore unknown fields. Example:
+-    <literal>DEBIAN_BTS="debbugs://bugs.debian.org/"</literal></para>
++    <literal>DEBIAN_BTS="debbugs://bugs.gnewsense.org/"</literal></para>
+   </refsect1>
+ 
+   <refsect1>
+     <title>Example</title>
+ 
+-    <programlisting>NAME=Fedora
+-VERSION="17 (Beefy Miracle)"
+-ID=fedora
+-VERSION_ID=17
+-PRETTY_NAME="Fedora 17 (Beefy Miracle)"
+-ANSI_COLOR="0;34"
+-CPE_NAME="cpe:/o:fedoraproject:fedora:17"
+-HOME_URL="https://fedoraproject.org/"
+-BUG_REPORT_URL="https://bugzilla.redhat.com/"</programlisting>
++    <programlisting>NAME=Parabola
++VERSION="rolling-release"
++ID=parabola
++ID_LIKE=arch
++VERSION_ID=rolling-release
++PRETTY_NAME="Parabola GNU/Linux-libre"
++ANSI_COLOR="1;35"
++CPE_NAME="cpe:/o:parabola:parabola:rolling-release"
++HOME_URL="https://www.parabola.nu/"
++BUG_REPORT_URL="https://labs.parabola.nu/"</programlisting>
+   </refsect1>
+ 
+   <refsect1>
+diff --git a/man/systemd-nspawn.xml b/man/systemd-nspawn.xml
+index 86cdb4e..bd7392c 100644
+--- a/man/systemd-nspawn.xml
++++ b/man/systemd-nspawn.xml
+@@ -912,46 +912,35 @@
+     <title>Examples</title>
+ 
+     <example>
+-      <title>Download a Fedora image and start a shell in it</title>
++      <title>Build and boot a minimal BLAG distribution in a container</title>
+ 
+-      <programlisting># machinectl pull-raw --verify=no http://ftp.halifax.rwth-aachen.de/fedora/linux/releases/21/Cloud/Images/x86_64/Fedora-Cloud-Base-20141203-21.x86_64.raw.xz
+-# systemd-nspawn -M Fedora-Cloud-Base-20141203-21</programlisting>
+-
+-      <para>This downloads an image using
+-      <citerefentry><refentrytitle>machinectl</refentrytitle><manvolnum>1</manvolnum></citerefentry>
+-      and opens a shell in it.</para>
+-    </example>
+-
+-    <example>
+-      <title>Build and boot a minimal Fedora distribution in a container</title>
+-
+-      <programlisting># dnf -y --releasever=23 --installroot=/srv/mycontainer --disablerepo='*' --enablerepo=fedora --enablerepo=updates install systemd passwd dnf fedora-release vim-minimal
++      <programlisting># dnf -y --releasever=210k --installroot=/srv/mycontainer --disablerepo='*' --enablerepo=blag --enablerepo=updates install systemd passwd dnf blag-release vim-minimal
+ # systemd-nspawn -bD /srv/mycontainer</programlisting>
+ 
+-      <para>This installs a minimal Fedora distribution into the
++      <para>This installs a minimal BLAG distribution into the
+       directory <filename noindex='true'>/srv/mycontainer/</filename>
+       and then boots an OS in a namespace container in it.</para>
+     </example>
+ 
+     <example>
+-      <title>Spawn a shell in a container of a minimal Debian unstable distribution</title>
++      <title>Spawn a shell in a container of a minimal gNewSense unstable distribution</title>
+ 
+-      <programlisting># debootstrap --arch=amd64 unstable ~/debian-tree/
+-# systemd-nspawn -D ~/debian-tree/</programlisting>
++      <programlisting># debootstrap --arch=amd64 unstable ~/gnewsense-tree/
++# systemd-nspawn -D ~/gnewsense-tree/</programlisting>
+ 
+-      <para>This installs a minimal Debian unstable distribution into
+-      the directory <filename>~/debian-tree/</filename> and then
++      <para>This installs a minimal gNewSense unstable distribution into
++      the directory <filename>~/gnewsense-tree/</filename> and then
+       spawns a shell in a namespace container in it.</para>
+     </example>
+ 
+     <example>
+-      <title>Boot a minimal Arch Linux distribution in a container</title>
++      <title>Boot a minimal Parabola GNU/Linux-libre distribution in a container</title>
+ 
+-      <programlisting># pacstrap -c -d ~/arch-tree/ base
+-# systemd-nspawn -bD ~/arch-tree/</programlisting>
++      <programlisting># pacstrap -c -d ~/parabola-tree/ base
++# systemd-nspawn -bD ~/parabola-tree/</programlisting>
+ 
+-      <para>This installs a minimal Arch Linux distribution into the
+-      directory <filename>~/arch-tree/</filename> and then boots an OS
++      <para>This installs a minimal Parabola GNU/Linux-libre distribution into the
++      directory <filename>~/parabola-tree/</filename> and then boots an OS
+       in a namespace container in it.</para>
+     </example>
+ 
+-- 
+2.8.3
+
