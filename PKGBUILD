@@ -3,7 +3,7 @@
 # Contributor: quantax
 
 pkgname=ags
-pkgver=3.3.5.6
+pkgver=3.3.5.7
 pkgrel=3
 pkgdesc="A development tool that is primarily used to create graphical adventure games"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ optdepends=('wine: for installing and configuring the game')
 conflicts=('ags-git')
 install=ags.install
 source=("https://github.com/adventuregamestudio/ags/archive/v.${pkgver}.tar.gz")
-sha256sums=('3496f35b9799cff2e626a4049a6bd28145191fc9469c45b84d0cc04178963c34')
+sha256sums=('0ba36712fc4a92f02401c307574ed964b9ac19ed06c95fa98fb6af4e9b199df4')
 
 prepare() {
   cd "$srcdir/ags-v.${pkgver}"
