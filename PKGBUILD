@@ -7,8 +7,8 @@
 pkgname='mint-x-theme'
 _namegtk2='mint-themes'
 _namegtk3='mint-themes-gtk3'
-pkgver='1.5.1'
-_gtk3ver='3.18+5'
+pkgver='1.6'
+_gtk3ver='3.18+6'
 _gtk2ver='1.4.6'
 pkgrel='1'
 pkgdesc='A Linux Mint theme.  Includes GTK2, GTK3, Metacity and Xfce components.'
@@ -19,7 +19,7 @@ conflicts=('mint-themes')
 source=("${url}/pool/main/m/${_namegtk2}/${_namegtk2}_${_gtk2ver}.tar.gz"
         "${url}/pool/main/m/${_namegtk3}/${_namegtk3}_${_gtk3ver}.tar.xz")
 sha256sums=('49efc330923d4aef8d55ac589bca57882a9c52f69d8efa4c588863575b09e0d2'
-            'bb7bb28da18cf841ab8d02ae3b6215cf742640bf35e47da5cf35b5109390c619')
+            '643ea8b0f8171e5e6e565e3a305809620090f4e8c20e52d980a2decdf4cc2fcd')
 
 prepare() {
 	find ${srcdir} -name .gitkeep -type f -delete
