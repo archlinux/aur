@@ -11,7 +11,7 @@ url="http://cuberite.org/"
 license=('Apache')
 depends=('bash' 'lua')
 optdepends=("tar: needed in order to create backups")
-provides=("minecraft-server=${pkgver%_*}" "spigot=${pkgver%_*}" "craftbukkit=${pkgver%_*}")
+provides=("minecraft-server=${pkgver%_*}" "spigot=${pkgver%_*}")
 install="${pkgname}.install"
 source=("${pkgname}-backup.service"
 	"${pkgname}-backup.timer"
