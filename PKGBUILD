@@ -23,7 +23,7 @@ source=("https://git.gnome.org/browse/jhbuild/snapshot/jhbuild-$pkgver.tar.xz"
         'update-jhbuild-cfgs.sh')
 sha256sums=('c1be78139ee9d566a042a7b4c1d61ad435bc70b75d3f1b84de0a1038fc59cab6'
             '273d53cb976642692eb9ed8536a02b0fe677c47662bbef8b50d1a8bcb292665f'
-            '22a29eb56d0fc9efea1e02c5c134efa8cdcd0fa44037a42907f1f2faa727457b')
+            '0fc1dfe50076b266157d033efd971b2eb4871a3c1abc5d180afa4c353ca427ea')
 
 prepare() {
     cd $pkgname-$pkgver
