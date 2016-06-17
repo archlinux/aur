@@ -1,8 +1,8 @@
 pkgbase = snapd
 	pkgdesc = Service and tools for management of snap packages.
-	pkgver = 2.0.8.1
-	pkgrel = 2
-	url = git://github.com/snapcore/snapd
+	pkgver = 2.0.9
+	pkgrel = 1
+	url = https://github.com/snapcore/snapd
 	install = snapd.install
 	arch = i686
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = snapd
 	depends = squashfs-tools
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/snapcore/snapd/archive/2.0.8.1.tar.gz
+	source = https://github.com/snapcore/snapd/archive/2.0.9.tar.gz
 	source = snapd.sh
-	md5sums = SKIP
+	md5sums = 8aff95eed4ab350f1653d3b14856bb68
 	md5sums = 1d841a1d09ba86945551dfc5c5658b2e
 
 pkgname = snapd
