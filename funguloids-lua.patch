@@ -1,6 +1,6 @@
 --- configure.ac
 +++ configure.ac
-@@ -47,30 +47,11 @@
+@@ -47,30 +47,13 @@
  
  
  # LUA ----------------------------------------------------
@@ -20,10 +20,11 @@
 -	PKG_CHECK_MODULES(LUA, [lua >= 5.1],[],[
 -		PKG_CHECK_MODULES(LUA, [lua5.1 >= 5.1],[],[
 -			AC_MSG_ERROR(Lua 5.1 not found. You can specify its location with [[--with-lua=/path/to/include/lua51]])
--		])
 +PKG_CHECK_MODULES(LUA, [lua >= 5.1, lua < 5.2],[],[
 +	PKG_CHECK_MODULES(LUA, [lua5.1 >= 5.1],[],[
-+		AC_MSG_ERROR(Lua 5.1 not found)
++		PKG_CHECK_MODULES(LUA, [lua51 >= 5.1, lua51 < 5.2],[],[
++			AC_MSG_ERROR(Lua 5.1 not found)
+ 		])
  	])
 -else
 -	CFLAGS="$CFLAGS $FUNGU_FOUND_HEADER"

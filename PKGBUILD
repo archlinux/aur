@@ -1,10 +1,10 @@
-# Maintainer: Nicolas Iooss <nicolas.iooss_aur at m4x.org
+# Maintainer: Nicolas Iooss <nicolas.iooss_aur at m4x.org>
 # Contributor: Dany Martineau <dany.luc.martineau at gmail.com>
 
 pkgname=funguloids
 pkgver=1.06.4
 _realver=1.06-4
-pkgrel=7
+pkgrel=8
 pkgdesc="3D game about collecting mushrooms in outerspace"
 arch=('i686' 'x86_64')
 url="http://funguloids.sourceforge.net/"
@@ -31,7 +31,7 @@ sha256sums=('e9c9074a5d2de11690484a7e8eef7de9dd7d360ea72185ea35c54976646ef5cf'
             '107a0eec5efb2eea99c86d7dad91e28a20ca1f35d4f5eda067ae64c88c9d0304'
             'eb5c821adbc9e6d93f6a78cb40a661e97ffa67eb6ab346913318cbcf3bc66083'
             '12a8cd48b299d9a7de74a9bdae429a4a2489ee8357e9af935e89bf5f417ff157'
-            '2f184587b549315b5a76c77253366d6b4154bf25b8804056ec67736531d813a3'
+            '59de5a0e12cb6575facd0d13d6b28b2d2a1bbfdcdf32dadf0c962c276e961c01'
             'a70e2a40b19f3e0e3c44aa8fa41d866854ce21d111decce1d43f8fba04f7a16c'
             '334831c41160457a4b0162bab349ba77570bbcc0b8e8c63a8e01e8a50c40bd48'
             '4ed88c6502601d684fd7e85dbe33684e36669bdf65583f782b24ddd596dcaf3c'
