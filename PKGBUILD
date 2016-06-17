@@ -1,6 +1,6 @@
 # Maintainer: Christopher Loen <christopherloen at gmail dot com>
-pkgname=0d1n
-pkgver=2.1
+pkgname='0d1n'
+pkgver='2.1'
 pkgrel=1
 pkgdesc='A web security tool to make fuzzing at HTTP inputs'
 arch=('any')
