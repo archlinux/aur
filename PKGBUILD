@@ -13,9 +13,10 @@ optdepends=('qemu')
 # https://fedorapeople.org/groups/virt/virtio-win/CHANGELOG
 changelog="${pkgname}.changelog"
 # install="${pkgname}.install"
-source=("https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/${pkgname}-${pkgver_}/${pkgname}.iso"
-        "https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/${pkgname}-${pkgver_}/${pkgname}_amd64.vfd"
-        "https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/${pkgname}-${pkgver_}/${pkgname}_x86.vfd")
+_url=https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio
+source=("${_url}/${pkgname}-${pkgver_}/${pkgname}.iso"
+        "${_url}/${pkgname}-${pkgver_}/${pkgname}_amd64.vfd"
+        "${_url}/${pkgname}-${pkgver_}/${pkgname}_x86.vfd")
 noextract=("${pkgname}.iso" "${pkgname}_amd64.vfd" "${pkgname}_x86.vfd")
 sha256sums=('1fcc4013272e7bdc36d074c9ee30f1eba291c7f822b7d04a2db9d1862d2f31bd'
             'cbdaea2f00cd3b6eda32209ae6c9c2bb938dcc52ceb464ebf9ce9c0bd6f3fbf8'
