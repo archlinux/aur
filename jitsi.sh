@@ -11,7 +11,7 @@ fi
 
 SCDIR=/usr/lib/jitsi
 LIBPATH=$SCDIR/lib
-CLASSPATH=$LIBPATH/jdic_stub.jar:$LIBPATH/jdic-all.jar:$LIBPATH/felix.jar:$LIBPATH/bcprovider.jar:$SCDIR/sc-bundles/sc-launcher.jar:$SCDIR/sc-bundles/util.jar
+CLASSPATH=$LIBPATH/felix.jar:$SCDIR/sc-bundles/sc-launcher.jar:$SCDIR/sc-bundles/util.jar:$SCDIR/sc-bundles/dnsjava.jar:$LIBPATH
 FELIX_CONFIG=$LIBPATH/felix.client.run.properties
 LOG_CONFIG=$LIBPATH/logging.properties
 COMMAND="$javabin $CLIENTARGS -classpath $CLASSPATH -Djna.library.path=$LIBPATH/native -Dfelix.config.properties=file:$FELIX_CONFIG -Djava.util.logging.config.file=$LOG_CONFIG net.java.sip.communicator.launcher.SIPCommunicator"

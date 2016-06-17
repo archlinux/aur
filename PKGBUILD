@@ -7,12 +7,12 @@ _pkgname=jitsi
 # pkgvermajor needs manual increment
 _pkgvermajor=2.9
 # pkgver is determined automatically
-pkgver=2.9.20160414
+pkgver=2.9.20160617
 pkgrel=1
 pkgdesc="An audio/video SIP VoIP phone and instant messenger written in Java (formerly SIP-Communicator)"
 arch=('i686' 'x86_64')
 url="https://jitsi.org"
-license=('LGPL')
+license=('Apache')
 provides=(jitsi)
 conflicts=(jitsi jitsi-stable)
 depends=('java-environment' 'bash' 'gtk2' 'libxv' 'alsa-lib' 'libxss')
@@ -29,7 +29,7 @@ source=(
 md5sums=(
   'SKIP'
   'f5c21e511756458172dc0ae8020c7bd5'
-   'c73e041d22fd1df76b60002b148af988'
+  '800cb34c0d15f07c7e087ad0d83a39e3'
 )
 install=jitsi-nightly.install
 
