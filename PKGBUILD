@@ -8,8 +8,8 @@
 # Based on linux-pae package
 
 pkgbase=linux-libre-pae
-_pkgbasever=4.5-gnu
-_pkgver=4.5.4-gnu
+_pkgbasever=4.6-gnu
+_pkgver=4.6.2-gnu
 
 _replacesarchkernel=('linux%') # '%' gets replaced with _kernelname
 _replacesoldkernels=() # '%' gets replaced with _kernelname
@@ -22,7 +22,7 @@ pkgrel=1
 arch=('i686')
 url="http://linux-libre.fsfla.org/"
 license=('GPL2')
-makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc')
+makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'libelf')
 options=('!strip')
 source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz"
         "http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/linux-libre-${_pkgbasever}.tar.xz.sign"
@@ -39,12 +39,11 @@ source=("http://linux-libre.fsfla.org/pub/linux-libre/releases/${_pkgbasever}/li
         # standard config files for mkinitcpio ramdisk
         'linux.preset'
         'change-default-console-loglevel.patch'
-        '0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch'
-        '0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
-        '0003-fix-Atmel-maXTouch-touchscreen-support.patch')
-sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
+        '0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch'
+        '0002-fix-Atmel-maXTouch-touchscreen-support.patch')
+sha256sums=('c3726ad785b2f4534c78a2cff1dd09906dde8b82775e55860a6091b16bf62ef8'
             'SKIP'
-            '02e00521cf765da05692aea22262e05c96325562667b107be6289354c5eef3fa'
+            '1e5be661ba938c94b236f45c1f83e39d83a8c30e4a90c6896fc5ad8b3d29f329'
             'SKIP'
             'bfd4a7f61febe63c880534dcb7c31c5b932dde6acf991810b41a939a93535494'
             'SKIP'
@@ -52,12 +51,11 @@ sha256sums=('c37a135518d5a69b26bae8441bc20e5a5ea87d3228cfe72f75a714cff730a84e'
             'SKIP'
             '6de8a8319271809ffdb072b68d53d155eef12438e6d04ff06a5a4db82c34fa8a'
             'SKIP'
-            '35f27cd3f44676f83bda4507dadbdacc182f684639fc45ad2159079e48d8cba8'
+            'a052ef16010e67e1ccd6976737b10faebc2cc987ea52c0baa15fceaeb60dc57f'
             'f0d90e756f14533ee67afda280500511a62465b4f76adcc5effa95a40045179c'
             '1256b241cd477b265a3c2d64bdc19ffe3c9bbcee82ea3994c590c2c76e767d99'
-            '91e087cddaf2149d050b90720d5b3004263ec3ab07dece0241551d045ff0a91f'
-            '96c6c7d4057b8d08238adae85d476c863c082770a182057163a45480511d35a8'
-            '2ca85ee212ef8d8aab3d3c2a0cef304a355d86e7aa520e19471f56ace68a0cf4')
+            '0376bd5efa31d4e2a9d52558777cebd9f0941df8e1adab916c868bf0c05f2fc3'
+            '351fd96be8cd5ebd0435c0a8a978673fc023e3b1026085e67f86d815b2285e25')
 validpgpkeys=(
               '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
               '684D54A189305A9CC95446D36B888913DDB59515' # Márcio Silva
@@ -67,6 +65,8 @@ _kernelname=${pkgbase#linux-libre}
 _replacesarchkernel=("${_replacesarchkernel[@]/\%/${_kernelname}}")
 _replacesoldkernels=("${_replacesoldkernels[@]/\%/${_kernelname}}")
 _replacesoldmodules=("${_replacesoldmodules[@]/\%/${_kernelname}}")
+
+  KARCH=x86
 
 prepare() {
   cd "${srcdir}/${_srcname}"
@@ -88,18 +88,14 @@ prepare() {
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
   patch -p1 -i "${srcdir}/change-default-console-loglevel.patch"
 
-  # make the radeon driver load without the firmwares
-  # http://www.fsfla.org/pipermail/linux-libre/2015-August/003098.html
-  patch -p1 -i "${srcdir}/0001-drm-radeon-Make-the-driver-load-without-the-firmwares.patch"
-
   # maintain the TTY over USB disconnects
   # http://www.coreboot.org/EHCI_Gadget_Debug
-  patch -p1 -i "${srcdir}/0002-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch"
+  patch -p1 -i "${srcdir}/0001-usb-serial-gadget-no-TTY-hangup-on-USB-disconnect-WI.patch"
 
   # fix Atmel maXTouch touchscreen support
   # https://labs.parabola.nu/issues/877
   # http://www.fsfla.org/pipermail/linux-libre/2015-November/003202.html
-  patch -p1 -i "${srcdir}/0003-fix-Atmel-maXTouch-touchscreen-support.patch"
+  patch -p1 -i "${srcdir}/0002-fix-Atmel-maXTouch-touchscreen-support.patch"
 
   cat "${srcdir}/config" > ./.config # simpler
 
@@ -142,8 +138,6 @@ _package() {
   install=linux.install
 
   cd "${srcdir}/${_srcname}"
-
-  KARCH=x86
 
   # get kernel version
   _kernver="$(make LOCALVERSION= kernelrelease)"
@@ -292,6 +286,12 @@ _package-headers() {
     mkdir -p "${pkgdir}"/usr/lib/modules/${_kernver}/build/`echo ${i} | sed 's|/Kconfig.*||'`
     cp ${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/${i}"
   done
+
+  # add objtool for external module building and enabled VALIDATION_STACK option
+  if [ -f tools/objtool/objtool ];  then
+      mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool"
+      cp -a tools/objtool/objtool ${pkgdir}/usr/lib/modules/${_kernver}/build/tools/objtool/ 
+  fi
 
   chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
