@@ -1,7 +1,7 @@
 # Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
 
 pkgname=matrix-synapse
-_pkgver=0.16.0
+_pkgver=0.16.1-rc1
 pkgver="${_pkgver/-rc/rc}"
 pkgrel=1
 pkgdesc="Matrix reference homeserver"
