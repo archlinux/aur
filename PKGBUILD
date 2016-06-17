@@ -2,7 +2,7 @@
 
 pkgname=droopy-git
 _pkgname=droopy
-pkgver=135.fbe1ce5
+pkgver=137.a1204ca
 pkgrel=1
 pkgdesc="Mini Web server that let others upload files to your computer"
 url='https://github.com/stackp/Droopy'
