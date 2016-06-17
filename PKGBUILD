@@ -4,7 +4,7 @@
 pkgname="nightingale-git"
 pkgver=78bd501
 pkgrel=1
-pkgdesc="No binaries used. Open source fork of the Songbird Media Player with updates and fixes."
+pkgdesc="Open source fork of the Songbird Media Player. Uses prebuilt xulrunner and sqlite."
 arch=('i686' 'x86_64')
 url="http://getnightingale.com/"
 license=('GPL2' 'MPL' 'BSD')
@@ -16,10 +16,10 @@ conflicts=('nightingale')
 provides=('nightingale')
 install="nightingale.install"
 source=("nightingale-hacking::git://github.com/nightingale-media-player/nightingale-hacking.git#branch=gstreamer-1.0"
-		"nightingale-deps::git://github.com/nightingale-media-player/nightingale-deps.git#branch=xul-192-new"
+		"https://bitbucket.org/nightingale-media-player/nightingale-deps/downloads/linux-${CARCH}-1.12-20130316-release-final.tar.lzma"
         "Nightingale.desktop")
 md5sums=('SKIP'
-		 'SKIP'
+         'a9b47ef0b21106f6b51231046e1758d1'
          '7741cc247648e95dd9dad8c953616757')
 
 pkgver() {
@@ -33,49 +33,17 @@ prepare() {
    echo 'ac_add_options --with-gstreamer-1.0' >> "${srcdir}/nightingale-hacking/nightingale.config"
    echo 'ac_add_options --with-taglib-source=system' >> "${srcdir}/nightingale-hacking/nightingale.config"
    echo 'ac_add_options --enable-official' >> "${srcdir}/nightingale-hacking/nightingale.config"
+   
+   cd "${srcdir}/nightingale-hacking/dependencies"
+   ln -sf "${srcdir}/linux-${CARCH}" ./
 }
 
-build() {
-	
-	if [ ! -d "${srcdir}/linux-${CARCH}" ]; then
-		msg "Building static dependencies xulrunner and sqlite..."
-		
-		mkdir "${srcdir}/linux-${CARCH}"
-		cd "${srcdir}/nightingale-deps"
-		
-		# xul 1.9.2 won't build without this
-		unset CPPFLAGS
-		
-		export SB_VENDOR_BINARIES_CO_ROOT=${srcdir}
-		export SB_VENDOR_BUILD_ROOT=${srcdir}
-		export CXXFLAGS="$CXXFLAGS -fpermissive"
-
-		export CC=gcc-5
-		export CXX=g++-5
-
-		# fix mozilla freetype headers
-		#sed -i 's/freetype\///g' xulrunner-1.9.2/mozilla/config/system-headers
-		#sed -i 's/freetype\///g' xulrunner-1.9.2/mozilla/gfx/thebes/src/gfxPangoFonts.cpp
-		
-		msg2 "Building xulrunner 1.9.2...\n"
-		make -C xulrunner-1.9.2 -f Makefile.songbird xr-clean xr-build-release xr-packaging-release
-
-		msg2 "Building sqlite...\n"
-		cd sqlite
-		autoreconf --force --install
-		cd ..
-		make -C sqlite -f Makefile.songbird
-	else
-		msg "Using existing dependencies. If you haven't rebuilt in a while please rm -rf pkg and src and start over."
-	fi
-	
-	if [ ! -d "${srcdir}/nightingale-hacking/dependencies/linux-${CARCH}" ]; then
-		# link our hopefully fresh compiled deps (no more bins!)
-		ln -s "${srcdir}/linux-${CARCH}" "${srcdir}/nightingale-hacking/dependencies/linux-${CARCH}"
-	fi
-	
+build() {	
 	cd "${srcdir}/nightingale-hacking"
 	
+	export CC=gcc-5
+	export CXX=g++-5
+		
 	make
 	
 	# copy the add-ons first
