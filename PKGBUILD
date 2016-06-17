@@ -4,21 +4,20 @@
 
 pkgname=('php7-homegear')
 pkgdesc='Patched version of PHP for homegear'
-pkgver=7.0.3
-_pthreadversion=3.1.5
-_pgkbase=php
+pkgver=7.0.7
+_pthreadversion=3.1.6
+_pkgbase=php
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('PHP')
 url='http://www.php.net'
 makedepends=()
-depends=('gmp' 'enchant' 'libmcrypt' 'libedit openssl' 'libxml2')
-source=("http://www.php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"{,.asc}
+depends=('gmp' 'enchant' 'libmcrypt' 'libedit' 'openssl' 'libxml2')
+source=("http://www.php.net/distributions/${_pkgbase}-${pkgver}.tar.xz"
         "https://github.com/krakjoe/pthreads/archive/v${_pthreadversion}.tar.gz"
        )
-sha256sums=('3af2b62617a0e46214500fc3e7f4a421067224913070844d3665d6cc925a1cca'
-            'SKIP'
-            'c6cf9457e9b7524a77b7767e59a918da1f63cc17428fa0d6f7fdab55fa5f37ed'
+sha256sums=('9cc64a7459242c79c10e79d74feaf5bae3541f604966ceb600c3d2e8f5fe4794'
+            'acf8e3e4540dc3e14a6fc26fa7f253b8732e1eb5b0b2f126338f9718f5867097'
             )
 
 prepare() {
