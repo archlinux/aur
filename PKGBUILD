@@ -17,7 +17,15 @@ url="http://gnutls.org/"
 depends=('zlib' 'nettle' 'p11-kit' 'libtasn1' 'libidn')
 provides=('libgnutls28')
 conflicts=('libgnutls28')
-_downloadUrl="ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3/${_pkgbasename}-${pkgver}.tar.xz"
+# Upstream
+#_mirror="ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3"
+# Mirror: Sweden
+_mirror="https://mirror.se.partyvan.eu/pub/ftp.gnupg.org/gcrypt/gnutls/v3.3"
+# Mirror: Denmark
+#_mirror="http://mirrors.dotsrc.org/gcrypt/gnutls/v3.3"
+# Mirror: Hungary
+#_mirror="ftp://ftp.crysys.hu/pub/gnupg/gnutls/v3.3"
+_downloadUrl="${_mirror}/${_pkgbasename}-${pkgver}.tar.xz"
 source=("${_downloadUrl}"
         "${_downloadUrl}.sig"
         'fix-ocsp-test.patch')
