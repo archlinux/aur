@@ -2,16 +2,16 @@
 # Previously contributed by StormBlast and Vyazovoi
 
 pkgname=xneur
-pkgver=0.18.0
-pkgrel=2
+pkgver=0.19.0
+pkgrel=1
 pkgdesc='X Neural Switcher detects the language of input and corrects keyboard layout if needed'
 url="http://www.xneur.ru"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=("gstreamer>=1.2.4" 'enchant' 'libnotify' 'gtk2')
-source=("https://raw.githubusercontent.com/AndrewCrewKuznetsov/xneur-devel/master/Launchpad/xneur_$pkgver+git27.orig.tar.gz")
+source=("https://raw.githubusercontent.com/AndrewCrewKuznetsov/xneur-devel/master/dists/$pkgver/xneur_$pkgver.orig.tar.gz")
 optdepends=('hunspell-<your_lang>: Dramatically improves heuristics quality')
-md5sums=('2850e1c66e8eba69e5a15bb952cc4b76')
+md5sums=('34087b0a2dde6bcd639236474c06467f')
 
 build() {
     cd $srcdir/$pkgname-$pkgver
