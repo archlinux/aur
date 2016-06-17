@@ -1,10 +1,11 @@
-diff -ur a/python-package/setup.py b/python-package/setup.py
---- a/python-package/setup.py	2016-02-14 19:00:06.781604229 +0300
-+++ b/python-package/setup.py	2016-02-14 19:17:42.078239558 +0300
-@@ -5,19 +5,9 @@
+diff --git a/python-package/setup.py b/python-package/setup.py
+index 5b66a09..b643550 100644
+--- a/python-package/setup.py
++++ b/python-package/setup.py
+@@ -5,19 +5,9 @@ import sys
  import os
  from setuptools import setup, find_packages
- #import subprocess
+ # import subprocess
 -sys.path.insert(0, '.')
  
  CURRENT_DIR = os.path.dirname(__file__)
@@ -18,19 +19,20 @@ diff -ur a/python-package/setup.py b/python-package/setup.py
 -
 -LIB_PATH = libpath['find_lib_path']()
 -print("Install libxgboost from: %s" % LIB_PATH)
- #Please use setup_pip.py for generating and deploying pip installation
- #detailed instruction in setup_pip.py
+ # Please use setup_pip.py for generating and deploying pip installation
+ # detailed instruction in setup_pip.py
  setup(name='xgboost',
-@@ -35,5 +25,4 @@
-       #this will use MANIFEST.in during install where we specify additional files,
-       #this is the golden line
+@@ -36,5 +26,4 @@ setup(name='xgboost',
+       # this will use MANIFEST.in during install where we specify additional files,
+       # this is the golden line
        include_package_data=True,
 -      data_files=[('xgboost', LIB_PATH)],
        url='https://github.com/dmlc/xgboost')
-diff -ur a/python-package/xgboost/libpath.py b/python-package/xgboost/libpath.py
---- a/python-package/xgboost/libpath.py	2016-02-14 15:42:15.705290125 +0300
-+++ b/python-package/xgboost/libpath.py	2016-02-14 19:18:32.578238059 +0300
-@@ -20,7 +20,8 @@
+diff --git a/python-package/xgboost/libpath.py b/python-package/xgboost/libpath.py
+index 2d69bda..d3ee109 100644
+--- a/python-package/xgboost/libpath.py
++++ b/python-package/xgboost/libpath.py
+@@ -20,7 +20,8 @@ def find_lib_path():
      """
      curr_path = os.path.dirname(os.path.abspath(os.path.expanduser(__file__)))
      # make pythonpack hack: copy this directory one level upper for setup.py

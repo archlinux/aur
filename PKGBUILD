@@ -5,7 +5,7 @@ pkgbase=xgboost-git
 pkgname=('xgboost-git'
          'python-xgboost-git'
          'python2-xgboost-git')
-pkgver=r2571.3ce3356
+pkgver=r2737.c9a73fe
 pkgrel=1
 url='https://github.com/dmlc/xgboost'
 license=('APACHE')
@@ -18,7 +18,7 @@ arch=('x86_64')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
-            'bf7dddaaf6f6074a0d089c987876bd71961a637e40dae658fc04324153dfa568')
+            'fd317b9708da75b4e2e304b5c2eacbb4b766bb38044e3a26ce55d077c2e13048')
 
 pkgver() {
   cd "${_name}"
