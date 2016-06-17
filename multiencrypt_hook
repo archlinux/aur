@@ -41,24 +41,28 @@ EOF
         fi
 
         while ! [ -e "/dev/mapper/${cryptname}" ]; do
-            eval cryptsetup open --type luks --test-passphrase ${resolved} ${cryptname} ${cryptargs} >/dev/null 2>/dev/null <<EOF
+            #eval cryptsetup open --type luks --test-passphrase ${resolved} ${cryptname} ${cryptargs} >/dev/null 2>/dev/null <<EOF
+#${pw}
+#EOF
+            if [ -z "$pw" ]; then
+                echo -n "Enter password for ${cryptname}: "
+                read -r -s pw
+                echo ""
+            fi
+
+            eval cryptsetup open --type luks ${resolved} ${cryptname} ${cryptargs} ${CSQUIET} <<EOF
 ${pw}
 EOF
             if [ $? -eq 0 ]; then
                 break
             else
-                echo -n "Enter password for ${cryptname}: "
-                read -r -s pw
-		echo ""
+                pw=""
             fi
         done
 
-        eval cryptsetup open --type luks ${resolved} ${cryptname} ${cryptargs} ${CSQUIET} <<EOF
-${pw}
-EOF
         if ! [ -e "/dev/mapper/${cryptname}" ]; then
-            err "Password succeeded, but ${cryptname} creation failed, aborting..."
-            exit 1
+            err "Password succeeded, but ${cryptname} creation failed, skipping..."
+            continue
         fi
     done
 }
