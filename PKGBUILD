@@ -6,7 +6,7 @@ pkgver=1.1.0
 pkgrel=1
 pkgdesc='Unpadded Base64'
 license=('Apache')
-arch=('i686' 'x86_64')
+arch=('any')
 url='https://pypi.python.org/pypi/unpaddedbase64/'
 makedepends=('python-setuptools'
              'python2-setuptools')
