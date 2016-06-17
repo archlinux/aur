@@ -1,0 +1,15 @@
+pkgbase = xfce4-genmon-plugin-git
+	pkgdesc = plugin that monitors customizable programs stdout for the Xfce4 panel
+	pkgver = r317.1c5524c
+	pkgrel = 1
+	arch = any
+	license = LGPL2
+	makedepends = git
+	makedepends = xfce4-dev-tools
+	provides = xfce4-genmon-plugin
+	conflicts = xfce4-genmon-plugin
+	source = git+git://git.xfce.org/panel-plugins/xfce4-genmon-plugin
+	md5sums = SKIP
+
+pkgname = xfce4-genmon-plugin-git
+
