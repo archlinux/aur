@@ -4,8 +4,8 @@
 
 pkgname='mint-x-icons'
 pkgver='1.3.7'
-pkgrel='1'
-pkgdesc='Mint-X Icon themes.  A mint/metal theme based on mintified versions of Clearlooks Revamp, Elementary and Faenza.'
+pkgrel='2'
+pkgdesc='Icon theme for Linux Mint. Based on mintified versions of Clearlooks Revamp, Elementary and Faenza.'
 arch=('any')
 url="http://packages.linuxmint.com/pool/main/m/${pkgname}"
 license=('GPL3')
