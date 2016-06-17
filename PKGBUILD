@@ -1,7 +1,7 @@
 # Maintainer: JKA Network (JoseluCross, Kprkpr, Yukialba) <contacto@jkanetwork.com>
 pkgname=jkazip
-pkgver=1.0.3
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="A script which use the differents zip and unzip programs"
 arch=('any')
 url="http://proyecto.jkanetwork.com"
