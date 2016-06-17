@@ -18,7 +18,15 @@ depends=("${_pkgbasename}28" 'lib32-zlib' 'lib32-nettle' 'lib32-p11-kit'
 provides=('lib32-libgnutls28')
 conflicts=('lib32-libgnutls28')
 makedepends=('gcc-multilib' 'lib32-libidn')
-_downloadUrl="ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3/${_pkgbasename}-${pkgver}.tar.xz"
+# Upstream
+#_mirror="ftp://ftp.gnutls.org/gcrypt/gnutls/v3.3"
+# Mirror: Sweden
+_mirror="https://mirror.se.partyvan.eu/pub/ftp.gnupg.org/gcrypt/gnutls/v3.3"
+# Mirror: Denmark
+#_mirror="http://mirrors.dotsrc.org/gcrypt/gnutls/v3.3"
+# Mirror: Hungary
+#_mirror="ftp://ftp.crysys.hu/pub/gnupg/gnutls/v3.3"
+_downloadUrl="${_mirror}/${_pkgbasename}-${pkgver}.tar.xz"
 source=("${_downloadUrl}"
         "${_downloadUrl}.sig"
         'fix-ocsp-test.patch')
