@@ -13,6 +13,6 @@ md5sums=('e8ff26d71a588523ef46d5b85d440883')
 package() {
 	cd "${srcdir}"
 	install -dm755 "${pkgdir}/usr/bin/"
-    cp bsqlbf-v2-7.pl "${pkgdir}/usr/bin/${pkgname}"
-    chmod +x "${pkgdir}/usr/bin/${pkgname}"
+        cp bsqlbf-v2-7.pl "${pkgdir}/usr/bin/${pkgname}"
+        chmod +x "${pkgdir}/usr/bin/${pkgname}"
 }
