@@ -1,0 +1,15 @@
+pkgbase = cewl
+	pkgdesc = A custom word list generator
+	pkgver = 5.1
+	pkgrel = 1
+	url = https://digi.ninja/projects/cewl.php
+	arch = any
+	license = GPL3
+	depends = ruby
+	depends = ruby2.1-bundler
+	depends = perl-image-exiftool
+	source = https://digi.ninja/files/cewl_5.1.tar.bz2
+	md5sums = ff40c1a4eb67c4169c5ec80e1489bee4
+
+pkgname = cewl
+
