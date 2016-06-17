@@ -1,0 +1,13 @@
+pkgbase = loomer-aspect
+	pkgver = 1.7.19
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL
+	source_i686 = http://www.loomer.co.uk/downloads/Aspect/Aspect.tar.gz
+	md5sums_i686 = 63b41713fa7226a1392a1c39a2bd70ec
+	source_x86_64 = http://www.loomer.co.uk/downloads/Aspect/Aspect_x86_64.tar.gz
+	md5sums_x86_64 = 79f986b54b12a3fc23757b2983e46f91
+
+pkgname = loomer-aspect
+
