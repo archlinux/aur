@@ -2,7 +2,7 @@
 
 pkgname=livestreamer-gtkmm3-git
 pkgver=r21.f5c1e8f
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTKMM3 UI for livestreamer"
 arch=('i686' 'x86_64')
 url="https://github.com/vitorhnn/livestreamer-gtkmm3"
@@ -11,7 +11,6 @@ depends=('gtkmm3' 'desktop-file-utils' 'livestreamer')
 makedepends=('git' 'cmake')
 provides=('livestreamer-gtkmm3')
 conflicts=('livestreamer-gtkmm3')
-install=$pkgname.install
 source=('git+https://github.com/vitorhnn/livestreamer-gtkmm3#branch=master')
 md5sums=('SKIP')
 
