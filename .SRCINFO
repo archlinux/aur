@@ -5,11 +5,14 @@ pkgbase = anonsurf
 	url = https://www.parrotsec.org
 	arch = any
 	license = GPL
-	makedepends = wget
 	depends = tor
 	depends = iptables
-	source = http://downloads.sourceforge.net/project/aur-anonsurf/aur-anonsurf/anonsurf.tar?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Faur-anonsurf%2Ffiles%2Faur-anonsurf%2F&ts=1465421554&use_mirror=master
-	md5sums = 901b5aa3848cd442269873e265699222
+	depends = resolvconf
+	depends = dnsmasq
+	source = https://raw.githubusercontent.com/ParrotSec/anonsurf/master/anonsurf_2.0%2Bparrot3_all.deb
+	source = https://raw.githubusercontent.com/ParrotSec/anonsurf/master/anonsurf/torrc
+	md5sums = f26d3de73b7da4164ee00347c6d44c5d
+	md5sums = 60129a23feb63567b11ad21179303d6b
 
 pkgname = anonsurf
 
