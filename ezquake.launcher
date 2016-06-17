@@ -1,10 +1,5 @@
 #!/bin/bash
 
 cd "/opt/quake"
-if [[ "$(uname -m)" == 'x86_64' ]];
-then
-	/ezquake-gl_linux-x64.glx +cfg_use_home 1 "$@"
-else
-	./ezquake-linux +cfg_use_home 1 "$@"
-fi
+./ezquake-linux +cfg_use_home 1 "$@"
 exit $?
