@@ -8,8 +8,8 @@
 
 _pkgbasename=gnutls
 pkgname=${_pkgbasename}28
-pkgver=3.3.22
-pkgrel=3
+pkgver=3.3.23
+pkgrel=1
 pkgdesc="A library which provides a secure layer over a reliable transport layer (legacy version)"
 arch=('i686' 'x86_64')
 license=('GPL3' 'LGPL2.1')
@@ -26,19 +26,15 @@ _mirror="https://mirror.se.partyvan.eu/pub/ftp.gnupg.org/gcrypt/gnutls/v3.3"
 # Mirror: Hungary
 #_mirror="ftp://ftp.crysys.hu/pub/gnupg/gnutls/v3.3"
 _downloadUrl="${_mirror}/${_pkgbasename}-${pkgver}.tar.xz"
-source=("${_downloadUrl}"
-        "${_downloadUrl}.sig"
-        'fix-ocsp-test.patch')
-sha256sums=('0ffa233e022e851f3f5f7811ac9223081a0870d5a05a7cf35a9f22e173c7b009'
-            'SKIP'
-            '1cd916ca3e6b8261df8d1869138aa0b15fe700d650020fd914980e96dafb6dc4')
+source=(
+    "${_downloadUrl}"
+    "${_downloadUrl}.sig"
+)
+sha256sums=(
+    'f53453857e369d66d665c40389201c0b9dacb7ccda560fd21b20b798687a4239'
+    'SKIP'
+)
 validpgpkeys=(1F42418905D8206AA754CCDC29EE58B996865171)
-
-prepare() {
-    cd "${srcdir}/${_pkgbasename}-${pkgver}"
-
-    patch -p1 -i "${srcdir}/fix-ocsp-test.patch"
-}
 
 build() {
   cd "${srcdir}/${_pkgbasename}-${pkgver}"
