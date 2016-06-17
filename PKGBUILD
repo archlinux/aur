@@ -26,11 +26,14 @@ options=(!strip staticlibs)
 
 build() {
   cd $srcdir/UnrealEngine
+  
+  # clean up old build, otherwise there are errors building a new version in same dir
+  git clean -xdf
 
   ./Setup.sh
   ./GenerateProjectFiles.sh
 
-  # needed to build a different version in the same build dir
+  # this should work instead of "git clean", but something leftover causes crashes
   #make ARGS=-clean
 
   make
