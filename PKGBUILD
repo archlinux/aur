@@ -1,7 +1,7 @@
 
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=tscheckpass
-pkgver=1.0
+pkgver=1.2
 pkgrel=0
 pkgdesc="User Password Checking for tsscreenlock"
 arch=("x86_64")
