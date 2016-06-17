@@ -11,7 +11,7 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=pd-l2ork-git
-pkgver=r1705.ea4eb01
+pkgver=r1707.e12842b
 pkgrel=1
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData (git version)"
 url="http://l2ork.music.vt.edu/main/?page_id=56"
@@ -64,7 +64,7 @@ package() {
   mv usr "$pkgdir"
   # Extra L2Ork-specific stuff that doesn't get installed automatically.
   cd "$srcdir/$pkgname"
-  cp -Rf l2ork_addons/K12 "$pkgdir/usr/lib/pd-l2ork/extra"
+  cp -Rf l2ork_addons/K12 externals/hardware/arduino "$pkgdir/usr/lib/pd-l2ork/extra"
   install -d "$pkgdir/etc/bash_completion.d"
   cp -f scripts/bash_completion/pd-l2ork "$pkgdir/etc/bash_completion.d"
   # Remove extra packaging files.
