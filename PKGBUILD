@@ -1,7 +1,7 @@
 # Maintainer: Jeandre Le Roux <theblazehen@theblazehen.com>
 pkgname=linx-client
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 pkgdesc=" Simple client for linx-server  "
 arch=('x86_64')
 url="https://github.com/andreimarcu/linx-client"
