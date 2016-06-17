@@ -434,6 +434,23 @@ post_install() {
 	   ls /usr/share/applications | grep desktop | grep cache | xargs -ti cp /tmp/app /usr/share/applications/{} > /dev/null 2>&1
 	   rm /tmp/app
 	fi
+	echo ""
+	echo ""
+	echo ""
+	echo "==============================================================================="
+	echo "==   Check cups is started :                                                 =="
+	echo "==           systemctl status org.cups.cupsd.service                         =="
+	echo "==                                                                           =="
+	echo "==   If not, start cups :                                                    =="
+	echo "==           sudo systemctl start org.cups.cupsd.service                     =="
+	echo "==   For start cups at boot :                                                =="
+	echo "==           sudo systemctl enable org.cups.cupsd.service                    =="
+	echo "==                                                                           =="
+	echo "==   Install your printer with cups : http://localhost:631                   =="
+	echo "==   Select ppd file in                                                      =="
+	echo "==           /usr/share/cups/model/Lexmark                                   =="
+	echo "==           /usr/share/ppd/Lexmark                                          =="
+	echo "==============================================================================="
 }
 
 #post_upgrade() {
