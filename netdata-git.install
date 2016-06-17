@@ -3,6 +3,7 @@ chown_netdata() {
 	chown --recursive netdata:netdata /var/cache/netdata
 	chown --recursive netdata:netdata /usr/share/netdata/web
 	chown --recursive netdata:netdata /etc/netdata
+	chown --recursive netdata:netdata /var/lib/netdata
 }
 
 post_install() {
