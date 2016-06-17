@@ -1,0 +1,181 @@
+Index: linux-pm/arch/x86/power/hibernate_64.c
+===================================================================
+--- linux-pm.orig/arch/x86/power/hibernate_64.c
++++ linux-pm/arch/x86/power/hibernate_64.c
+@@ -27,7 +27,8 @@  extern asmlinkage __visible int restore_
+  * Address to jump to in the last phase of restore in order to get to the image
+  * kernel's text (this value is passed in the image header).
+  */
+-unsigned long restore_jump_address __visible;
++void *restore_jump_address __visible;
++unsigned long jump_address_phys;
+ 
+ /*
+  * Value of the cr3 register from before the hibernation (this value is passed
+@@ -37,8 +38,51 @@  unsigned long restore_cr3 __visible;
+ 
+ pgd_t *temp_level4_pgt __visible;
+ 
++void *restore_pgd_addr __visible;
++pgd_t restore_pgd __visible;
++
+ void *relocated_restore_code __visible;
+ 
++static int prepare_temporary_text_mapping(void)
++{
++	unsigned long vaddr = (unsigned long)restore_jump_address;
++	unsigned long paddr = jump_address_phys & PMD_MASK;
++	pmd_t *pmd;
++	pud_t *pud;
++
++	/*
++	 * The new mapping only has to cover the page containing the image
++	 * kernel's entry point (jump_address_phys), because the switch over to
++	 * it is carried out by relocated code running from a page allocated
++	 * specifically for this purpose and covered by the identity mapping, so
++	 * the temporary kernel text mapping is only needed for the final jump.
++	 * However, in that mapping the virtual address of the image kernel's
++	 * entry point must be the same as its virtual address in the image
++	 * kernel (restore_jump_address), so the image kernel's
++	 * restore_registers() code doesn't find itself in a different area of
++	 * the virtual address space after switching over to the original page
++	 * tables used by the image kernel.
++	 */
++	pud = (pud_t *)get_safe_page(GFP_ATOMIC);
++	if (!pud)
++		return -ENOMEM;
++
++	restore_pgd = __pgd(__pa(pud) | _KERNPG_TABLE);
++
++	pud += pud_index(vaddr);
++	pmd = (pmd_t *)get_safe_page(GFP_ATOMIC);
++	if (!pmd)
++		return -ENOMEM;
++
++	set_pud(pud, __pud(__pa(pmd) | _KERNPG_TABLE));
++
++	pmd += pmd_index(vaddr);
++	set_pmd(pmd, __pmd(paddr | __PAGE_KERNEL_LARGE_EXEC));
++
++	restore_pgd_addr = temp_level4_pgt + pgd_index(vaddr);
++	return 0;
++}
++
+ static void *alloc_pgt_page(void *context)
+ {
+ 	return (void *)get_safe_page(GFP_ATOMIC);
+@@ -59,10 +103,19 @@  static int set_up_temporary_mappings(voi
+ 	if (!temp_level4_pgt)
+ 		return -ENOMEM;
+ 
+-	/* It is safe to reuse the original kernel mapping */
++	/* Re-use the original kernel text mapping for now */
+ 	set_pgd(temp_level4_pgt + pgd_index(__START_KERNEL_map),
+ 		init_level4_pgt[pgd_index(__START_KERNEL_map)]);
+ 
++	/*
++	 * Prepare a temporary mapping for the kernel text, but don't use it
++	 * just yet, we'll switch over to it later.  It only has to cover one
++	 * piece of code: the page containing the image kernel's entry point.
++	 */
++	result = prepare_temporary_text_mapping();
++	if (result)
++		return result;
++
+ 	/* Set up the direct mapping from scratch */
+ 	for (i = 0; i < nr_pfn_mapped; i++) {
+ 		mstart = pfn_mapped[i].start << PAGE_SHIFT;
+@@ -108,12 +161,13 @@  int pfn_is_nosave(unsigned long pfn)
+ }
+ 
+ struct restore_data_record {
+-	unsigned long jump_address;
++	void *jump_address;
++	unsigned long jump_address_phys;
+ 	unsigned long cr3;
+ 	unsigned long magic;
+ };
+ 
+-#define RESTORE_MAGIC	0x0123456789ABCDEFUL
++#define RESTORE_MAGIC	0x123456789ABCDEF0UL
+ 
+ /**
+  *	arch_hibernation_header_save - populate the architecture specific part
+@@ -126,7 +180,8 @@  int arch_hibernation_header_save(void *a
+ 
+ 	if (max_size < sizeof(struct restore_data_record))
+ 		return -EOVERFLOW;
+-	rdr->jump_address = restore_jump_address;
++	rdr->jump_address = &restore_registers;
++	rdr->jump_address_phys = __pa_symbol(&restore_registers);
+ 	rdr->cr3 = restore_cr3;
+ 	rdr->magic = RESTORE_MAGIC;
+ 	return 0;
+@@ -142,6 +197,7 @@  int arch_hibernation_header_restore(void
+ 	struct restore_data_record *rdr = addr;
+ 
+ 	restore_jump_address = rdr->jump_address;
++	jump_address_phys = rdr->jump_address_phys;
+ 	restore_cr3 = rdr->cr3;
+ 	return (rdr->magic == RESTORE_MAGIC) ? 0 : -EINVAL;
+ }
+Index: linux-pm/arch/x86/power/hibernate_asm_64.S
+===================================================================
+--- linux-pm.orig/arch/x86/power/hibernate_asm_64.S
++++ linux-pm/arch/x86/power/hibernate_asm_64.S
+@@ -44,9 +44,6 @@  ENTRY(swsusp_arch_suspend)
+ 	pushfq
+ 	popq	pt_regs_flags(%rax)
+ 
+-	/* save the address of restore_registers */
+-	movq	$restore_registers, %rax
+-	movq	%rax, restore_jump_address(%rip)
+ 	/* save cr3 */
+ 	movq	%cr3, %rax
+ 	movq	%rax, restore_cr3(%rip)
+@@ -72,8 +69,10 @@  ENTRY(restore_image)
+ 	movq	%rax, %cr4;  # turn PGE back on
+ 
+ 	/* prepare to jump to the image kernel */
+-	movq	restore_jump_address(%rip), %rax
+ 	movq	restore_cr3(%rip), %rbx
++	movq	restore_jump_address(%rip), %r10
++	movq	restore_pgd(%rip), %r8
++	movq	restore_pgd_addr(%rip), %r9
+ 
+ 	/* prepare to copy image data to their original locations */
+ 	movq	restore_pblist(%rip), %rdx
+@@ -96,20 +95,22 @@  ENTRY(core_restore_code)
+ 	/* progress to the next pbe */
+ 	movq	pbe_next(%rdx), %rdx
+ 	jmp	.Lloop
++
+ .Ldone:
++	/* switch over to the temporary kernel text mapping */
++	movq	%r8, (%r9)
++	/* flush TLB */
++	movq	%rax, %rdx
++	andq	$~(X86_CR4_PGE), %rdx
++	movq	%rdx, %cr4;  # turn off PGE
++	movq	%cr3, %rcx;  # flush TLB
++	movq	%rcx, %cr3;
++	movq	%rax, %cr4;  # turn PGE back on
+ 	/* jump to the restore_registers address from the image header */
+-	jmpq	*%rax
+-	/*
+-	 * NOTE: This assumes that the boot kernel's text mapping covers the
+-	 * image kernel's page containing restore_registers and the address of
+-	 * this page is the same as in the image kernel's text mapping (it
+-	 * should always be true, because the text mapping is linear, starting
+-	 * from 0, and is supposed to cover the entire kernel text for every
+-	 * kernel).
+-	 *
+-	 * code below belongs to the image kernel
+-	 */
++	jmpq	*%r10
+ 
++	 /* code below belongs to the image kernel */
++	.align PAGE_SIZE
+ ENTRY(restore_registers)
+ 	FRAME_BEGIN
+ 	/* go back to the original page tables */
