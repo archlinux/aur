@@ -30,9 +30,9 @@ prepare() {
 build() {
   msg "Starting build..."
 
-  cd "$srcdir/$_srcname/build"
+  cd "$srcdir/$_srcname"
 
-  cmake .. \
+  cmake . \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
         -DLIB_INSTALL_DIR=lib \
