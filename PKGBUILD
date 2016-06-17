@@ -12,6 +12,6 @@ md5sums=('73abab25c8eab14b0d8e9dad3acae9ea')
 
 package() {
     mkdir -p $pkgdir/usr/bin/
-    cp -a ./linx-client-v${pkgver}_linux-amd64 $pkgdir/usr/bin/linx-client
+    cp -a $srcdir/linx-client-v${pkgver}_linux-amd64 $pkgdir/usr/bin/linx-client
     chmod a+x $pkgdir/usr/bin/linx-client
 }
