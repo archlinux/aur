@@ -1,6 +1,6 @@
 pkgbase = ckb-git
 	pkgdesc = Corsair Keyboard and Mouse Input Driver
-	pkgver = v0.2.5.r7.g7eaf1ae
+	pkgver = v0.2.5.r12.g0cd9b5d
 	pkgrel = 1
 	url = https://github.com/ccMSC/ckb
 	install = ckb-git.install
