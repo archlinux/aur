@@ -2,15 +2,15 @@
 # Previously contributed by StormBlast and Vyazovoi
 
 pkgname=gxneur
-pkgver=0.18.0
-pkgrel=2
+pkgver=0.19.0
+pkgrel=1
 pkgdesc='GTK frontend for XNeur'
 url="http://www.xneur.ru"
 arch=('i686' 'x86_64')
 license=('GPL')
 depends=('libglade' "xneur>=$pkgver" 'gconf')
-source=("https://raw.githubusercontent.com/AndrewCrewKuznetsov/xneur-devel/master/Launchpad/gxneur_$pkgver+git28.orig.tar.gz")
-md5sums=('f828c255b2ab057d97534e2cf633d12d')
+source=("https://raw.githubusercontent.com/AndrewCrewKuznetsov/xneur-devel/master/dists/$pkgver/gxneur_$pkgver.orig.tar.gz")
+md5sums=('42f43cdc16517c84ef1b6ac64b8b9fb3')
 
 build() {
    cd $srcdir/$pkgname-$pkgver
