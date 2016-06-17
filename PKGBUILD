@@ -6,7 +6,7 @@ pkgver=4.0.5
 pkgrel=2
 pkgdesc='Python implementation of SAML Version 2'
 license=('Apache')
-arch=('i686' 'x86_64')
+arch=('any')
 url='https://pypi.python.org/pypi/pysaml2'
 makedepends=('python-setuptools'
              'python2-setuptools')
