@@ -2,13 +2,14 @@
 # Contributor: K0n24d <konrad AT knauber DOT net>
 pkgname=urbackup-server
 pkgver=1.4.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Client Server backup system"
 arch=('i686' 'x86_64' 'armv5' 'armv6h' 'armv6' 'armv7h' 'armv7' 'aarch64')
 url="http://www.urbackup.org/"
 license=('GPL')
 makedepends=('gcc-libs' 'gcc' 'make')
 depends=('crypto++' 'fuse')
+conflicts=('urbackup2-server')
 source=("https://hndl.urbackup.org/Server/${pkgver}/urbackup-server-${pkgver}.tar.gz")
 install='urbackup.install'
 md5sums=('ae98252bf0a2afa1bd0d96abb715fea2')
