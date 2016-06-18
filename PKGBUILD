@@ -6,15 +6,17 @@ pkgver=1.6
 pkgrel=1
 pkgdesc='A tool for checking common errors in rpm packages.'
 arch=('any')
-url="http://$pkgname.sourceforge.net/"
+url="https://github.com/rpm-software-management/$pkgname"
 license=('GPL2')
 depends=('cpio' 'desktop-file-utils' 'python2>=2.6' 'rpm-org')
 makedepends=('bash-completion')
 checkdepends=('python2-pytest')
-source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.xz")
-sha256sums=('a0dae71a3fed413ee5c47bd04f393cd6598c68c0dcf1504fa020d62814ff674b')
+source=("$url/archive/$pkgname-$pkgver.tar.gz")
+md5sums=('8e36e776d7f2aa00afe19157f5c38b54')
 
 prepare() {
+	mv "$pkgname-$pkgname-$pkgver" "$pkgname-$pkgver"
+
 	cd "$pkgname-$pkgver"
 
 	for file in "$pkgname" rpmdiff tools/generate-isocodes.py; do
