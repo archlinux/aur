@@ -1,8 +1,8 @@
 # Maintainer: Luca Corbatto <luca-arch@corbatto.de>
 _pkgname=evolution-rss
 pkgname=$_pkgname-git
-pkgver=0.3.95.r26.ga6fe830
-pkgrel=2
+pkgver=0.3.95.r32.g17c65fe
+pkgrel=1
 pkgdesc="RSS-Plugin for evolution"
 arch=(i686 x86_64)
 url="http://gnome.eu.org/evo/index.php/Evolution_RSS_Reader_Plugin"
