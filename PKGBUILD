@@ -30,8 +30,8 @@ sha256sums=('3e377d93d667d81efbbfb456760d4ce0f1b207085788693099839e6fcf26bca0'
             '88ee3daafe792a9eb9d6c2b8cb4429dd5da3b18737a0eae54d64296a6a878332')
 
 package() {
-  install -Dm 755 steam-native "${pkgdir}"/usr/bin/
-  install -Dm 644 steam-native.desktop "${pkgdir}"/usr/share/applications
+  install -Dm 755 steam-native -t "${pkgdir}"/usr/bin/
+  install -Dm 644 steam-native.desktop -t "${pkgdir}"/usr/share/applications/
 }
 
 # vim: ts=2 sw=2 et:
