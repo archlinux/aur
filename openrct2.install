@@ -14,5 +14,9 @@ For example:
 
   [general]
   game_path = "/path/to/RCT2"
+
+Alternatively, run:
+
+  openrct2 set-rct2 /path/to/RCT2/
 EOF
 }
