@@ -1,24 +1,23 @@
-# $Id$
-# Maintainer: Scott Furry <scott.wl.furry@gmail.com>
+# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Contributor: Scott Furry <scott.wl.furry@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Sial <sial@cpan.org>
 # Contributor: Martin Herndl <martin.herndl@gmail.com>
 
 pkgname=guayadeque
 pkgver=0.3.7
-pkgrel=7
+pkgrel=8
 pkgdesc='Lightweight music player'
 arch=('i686' 'x86_64')
 url='http://guayadeque.org/'
 license=('GPL3')
-depends=('curl' 'desktop-file-utils' 'libgpod' 'taglib' 'wxgtk' 'gdk-pixbuf2')
+depends=('curl' 'libgpod' 'taglib' 'wxgtk')
 makedepends=('cmake')
 optdepends=('gstreamer0.10-good-plugins: Support for additional file formats'
 			'gstreamer0.10-bad-plugins: Support for additional file formats'
 			'gstreamer0.10-ugly-plugins: Support for additional file formats'
 			'gvfs: Support for external devices')
-install='guayadeque.install'
-source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2"
+source=("https://github.com/anonbeat/guayadeque/archive/v${pkgver}.tar.gz"
         'guayadeque_01a_rev1891.patch'
         'guayadeque_01b_rev1892.patch'
         'guayadeque_01c_rev1893.patch'
@@ -31,7 +30,7 @@ source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}/${pkgve
         'guayadeque_07_player_display_fix.patch'
         'guayadeque_08_EditCrash.patch'
         'guayadeque_09_gstreamer_deprecated.patch')
-sha256sums=('d23eb1247add0bef8d5fef834294d7cb3d7c5fc20db9022b86f618a13d359938'
+sha256sums=('b56e924de172652ed7c1fb7b0551609567d36bdcf1938c68226d5acde1fc5169'
             '56ff5fae064fa421cb951a7c664550861e04ae4df8b692044e2a4785f238ce24'
             '15b49c58be40a57ecb1d38e7055c1edc5aaf71e0164062cc5f2b8fb589530377'
             '11f51be56bff7b3f1572df9e701ae4ee0c9f7d6324b9b78e0ab93da185eefad2'
@@ -64,7 +63,7 @@ prepare() {
 
 build() {
   cd guayadeque-${pkgver}
-  mkdir ${BUILDFLDR}
+  mkdir -p ${BUILDFLDR}
   cd ${BUILDFLDR}
 
   cmake .. \
