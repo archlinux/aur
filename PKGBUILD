@@ -2,7 +2,7 @@
 
 pkgname=ezquake
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="One of the most Popular QuakeWorld clients for Linux/BSD/OSX/Win32. You need the retail pak files to play."
 url="http://ezquake.sourceforge.net/"
 license=('GPL')
@@ -18,7 +18,7 @@ source=("https://github.com/ezQuake/ezquake-source/archive/v${pkgver}.tar.gz"
 noextract=("ezquake_linux64_${pkgver}-full.tar.gz")
 sha256sums=('825ffbdb5a2aaea321350a500af488ca9d842423e6798b252966b89b83ad59f2'
             '5ac53c8317eb878dbb3ac33da8fa6572f02aee3302ac0fab03e7f1cdf3d4575f'
-            'bc512722c0143139a8dad77beac3ef260f00bc20e7f36e083cdd5870e71a90b6'
+            'aa59da4a296a43af8ea8c5670cef5980a15407124b3e53f3cf805ceb6126e6ed'
             'e92b9cdeac5eadced50a6167eb53b1343b0772d3bf8afa310eb281b88bf7e677'
             '2a6a5484ddb4cfaf8518b51df39ffd1fa8ce768402eab6401415bececb8e8ab2')
 
