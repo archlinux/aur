@@ -3,7 +3,7 @@
 
 _pkgname=john
 pkgname=john-git
-pkgver=r11924.53acc74
+pkgver=1.8.0.jumbo.1.r4934.ge4a65c7
 pkgrel=1
 pkgdesc="fast password cracker (using the git repository of the jumbo patch)"
 arch=('i686' 'x86_64')
@@ -25,12 +25,14 @@ options=('!strip')
 source=("$_pkgname::git+https://github.com/magnumripper/JohnTheRipper.git"
         "params.h.patch")
 md5sums=('SKIP'
-        'f69ed632eba8fb9e45847a4b4a323787')
-
+         'f69ed632eba8fb9e45847a4b4a323787')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  ( set -o pipefail
+    git describe --long --tag 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
