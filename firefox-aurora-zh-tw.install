@@ -13,15 +13,5 @@ post_remove() {
 }
 
 repo_notify(){
-    ARCH=$(uname -m)
-    if [[ $ARCH -eq "x86_64" ]]; then
-        echo "!!!=== You may also use repo with prepared package: ===!!!"
-        echo "Just append the lines to your '/etc/pacman.conf':"
-        echo
-        echo "[alextalker]"
-        echo "SigLevel = Optional TrustAll"
-        echo "Server = http://alextalker.ho.ua/aurrepo/"
-        echo
-        echo "=========================================================="
-    fi
+
 }
