@@ -18,7 +18,7 @@ depends=('gtk3' 'libxt' 'startup-notification' 'mime-types' 'dbus-glib'
 install="${pkgname}.install"
 
 _baseurl="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-aurora-l10n"
-_filename="${_name}-${_milestone}.${_lang}.linux-${CARCH}"
+_filename="${_name}-${_milestone}.zh-TW.linux-${CARCH}"
 _sha512sum="$(curl -vs "${_baseurl}/${_filename}.checksums" 2>&1 | grep "${_filename}.tar.bz2" | grep sha512 | cut -d " " -f1)"
 source=("${pkgname}.desktop"
 	"${pkgname}-safe.desktop"
