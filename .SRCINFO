@@ -1,6 +1,6 @@
 pkgbase = python-ldif3
 	pkgdesc = generate and parse LDIF data
-	pkgver = 3.1.1
+	pkgver = 3.2.0
 	pkgrel = 1
 	url = https://github.com/xi/ldif3
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = python-ldif3
 	makedepends = python-setuptools
 	depends = python
 	options = !emptydirs
-	source = https://github.com/xi/ldif3/archive/3.1.1.tar.gz
-	md5sums = a701eba7e927613b8f81c87d6385a409
+	source = https://github.com/xi/ldif3/archive/3.2.0.tar.gz
+	md5sums = 69543c97c8f833cb8639a2fa51ad21be
 
 pkgname = python-ldif3
 
