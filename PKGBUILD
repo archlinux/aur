@@ -4,7 +4,7 @@
 # Contributor: Dr.Egg <rwhite@archlinux.us>
 
 pkgname=musescore-git
-pkgver=r10506.f2da1f2
+pkgver=r10696.bed9e2a
 _branch=master
 pkgrel=1
 pkgdesc='Latest git-version of the sheet music editor MuseScore'
@@ -41,8 +41,8 @@ build() {
 	-DMUSESCORE_LABEL="Git Build" \
 	-DBUILD_LAME="ON" \
 	-DCMAKE_SKIP_RPATH="FALSE" \
-	-DBUILD_JACK=OFF \
-	-DBUILD_PORTAUDIO=OFF .
+	-DBUILD_JACK=ON \
+	-DBUILD_PORTAUDIO=ON .
   make lrelease
   make
 }
