@@ -2,4 +2,5 @@ pkg/
 src/
 ocenaudio_debian*.deb
 ocenaudio-*.pkg.tar.xz
+ocenaudio_*.tar.xz
 .AURINFO
