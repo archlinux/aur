@@ -1,0 +1,26 @@
+pkgbase = openssl-static
+	pkgdesc = The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (static library)
+	pkgver = 1.0.2.h
+	pkgrel = 1
+	url = https://www.openssl.org
+	arch = i686
+	arch = x86_64
+	license = custom:BSD
+	depends = perl
+	optdepends = openssl: headers and pkg-config files
+	options = !makeflags
+	options = staticlibs
+	source = https://www.openssl.org/source/openssl-1.0.2h.tar.gz
+	source = https://www.openssl.org/source/openssl-1.0.2h.tar.gz.asc
+	source = no-rpath.patch
+	source = ssl3-test-failure.patch
+	source = ca-dir.patch
+	validpgpkeys = 8657ABB260F056B1E5190839D9C4D26D0E604491
+	md5sums = 9392e65072ce4b614c1392eefc1f23d0
+	md5sums = SKIP
+	md5sums = dc78d3d06baffc16217519242ce92478
+	md5sums = 62fc492252edd3283871632bb77fadbe
+	md5sums = 3bf51be3a1bbd262be46dc619f92aa90
+
+pkgname = openssl-static
+
