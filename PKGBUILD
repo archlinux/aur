@@ -24,8 +24,8 @@ source=("${pkgname}.desktop"
 	"${pkgname}-safe.desktop"
 	"${_baseurl}/${_filename}.tar.bz2")
 
-sha512sums=('f790fea8ae8fb0201a36ef8600f1ec2319b5a574192d510d5c981b20c0082e1be6d9bad7491ad4fc51e26193da22ea894365cbbbe26810e0921a7c07691ea39c'
-            '0248804f539d8733658e68d2eba6ab51d886e4cb30a72da63b14a6277d950dc43ca8c12952e8612fb527b03cc31d9d05211010202ede432a9b17e6e18883111c'
+sha512sums=('4c1284e97f26c7ad7b8e39f32bb82c015ac3c7dbaf3b96192dc40d95994a5602cf4c449fd4becfaed75f6e00e0af3db226d318625e95030ae9d9ddcc86ee45f7'
+            '53756ab2a009a96585fd7b2131bb7fddaef112da9af84da4513ed7f3cf507cee5571ccbba7efa3ef1c027c06d5c6d5f16612f7ec536791e828d68098a1413fcb'
             "${_sha512sum}")
 pkgver() {
        cd "${_name}"

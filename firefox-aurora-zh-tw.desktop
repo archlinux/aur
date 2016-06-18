@@ -1,11 +1,11 @@
 [Desktop Entry]
 Name=Aurora
 GenericName=Web Browser
-Icon=firefox-aurora-zh-TW-icon
+Icon=firefox-aurora-zh-tw-icon
 Type=Application
 Categories=Application;Network;
 Encoding=UTF-8
-Exec=firefox-aurora-zh-TW %u
+Exec=firefox-aurora-zh-tw %u
 Terminal=false
 MultipleArgs=false
 StartupNotify=false
