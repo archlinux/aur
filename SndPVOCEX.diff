@@ -1,0 +1,9 @@
+Index: src/SndPVOCEX.h
+===================================================================
+RCS file: /cvsroot/sndobj/sndobj/src/SndPVOCEX.h,v
+retrieving revision 1.4
+diff -r1.4 SndPVOCEX.h
+70c70
+<   0x8312b9c2,
+---
+>   (int)0x8312b9c2,
