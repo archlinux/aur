@@ -3,8 +3,8 @@
 ## Contributor StormDragon <stormdragon2976@gmail.com>
 pkgname=fluxable-newmenu
 _pkgname=fluxable-newmenu
-pkgver=0.5.5.1
-pkgrel=1
+pkgver=0.5.5.2
+pkgrel=2
 pkgdesc="provides categorized apps menus similar to those found in Mate or XFCE"
 arch=('any')
 url="https://github.com/burt1iband/fluxable-newmenu"
@@ -25,6 +25,7 @@ cd "${srcdir}/${_pkgname}"
      install -d "$pkgdir/usr/share/applications"
           install -m 644 fluxable-newmenu.desktop "$pkgdir/usr/share/applications/"
      install -d "$pkgdir/usr/share/doc/fluxable-newmenu"
+          install -m 644 change.log ${pkgdir}/usr/share/doc/fluxable-newmenu
           install -m 644 fluxable.conf.org ${pkgdir}/usr/share/doc/fluxable-newmenu
      install -d "$pkgdir/usr/share/man/man1"
           install -m 644 fluxable-newmenu.1.gz $pkgdir/usr/share/man/man1/
