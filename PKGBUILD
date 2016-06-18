@@ -59,8 +59,6 @@ package() {
   make DESTDIR="${pkgdir}" install
   install -Dm644 ../LICENSE_LGPL_21.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 ../OCCT_LGPL_EXCEPTION.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
-  #install -Dm644 ${srcdir}/opencascade-${pkgver}/LICENSE_LGPL_21.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE_LGPL_21.txt"
-  #install -Dm644 ${srcdir}/opencascade-${pkgver}/OCCT_LGPL_EXCEPTION.txt "$pkgdir/usr/share/licenses/$pkgname/OCCT_LGPL_EXCEPTION.txt"
   
   #install -m644 -D "${srcdir}/99_oce.conf" -t "${pkgdir}/etc/ld.so.conf.d"
   #install -m755 -D "${srcdir}/opencascade-${pkgver}/build/env.sh" -t "${pkgdir}/etc/profile.d"
