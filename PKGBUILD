@@ -16,7 +16,8 @@ source=("http://downloads.sourceforge.net/sourceforge/squashfs/squashfs${pkgver}
 	 "patch0.txt.gz"
 	 "Makefile")
 md5sums=('d92ab59aabf5173f2a59089531e30dbf'
-	'SKIP' 'SKIP')
+	'SKIP'
+	 'SKIP')
 
 prepare() {
     cp Makefile ${srcdir}/squashfs${pkgver}/${_origpkgname}/Makefile.tmp
