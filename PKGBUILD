@@ -14,8 +14,8 @@ optdepends=('pulseaudio: PulseAudio support'
 conflicts=('qmplay2')
 provides=('qmplay2')
 makedepends=('make' 'gcc' 'git' 'pkg-config' 'qt5-tools' 'cmake')
-source=('git+https://github.com/zaps166/QMPlay2')
-sha256sums=('SKIP')
+source=('git+https://github.com/zaps166/QMPlay2' 'no-cmake-x11extras.patch')
+sha256sums=('SKIP' '3ea8d7bb627f0fec5d91d573be7d44430f0053e869442ba4b58b1e54b494cfd6')
 install=$pkgname.install
 
 pkgver()
@@ -28,6 +28,9 @@ build()
 {
 	#Uncomment below line if you don't want to have 'libsidplayfp' dependency and remove it from 'depends' list
 	#USE_SIDPLAYFP='-DUSE_CHIPTUNE_SID=No'
+
+	cd $srcdir/QMPlay2
+	patch -p1 < ../no-cmake-x11extras.patch
 
 	cd $srcdir
 	mkdir -p QMPlay2-build
