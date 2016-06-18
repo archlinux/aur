@@ -2,8 +2,8 @@
 
 pkgname=nextcloud
 pkgver=9.0.50
-pkgrel=1
-pkgdesc="nextcloud: A safe home for all your data. Secure, under your control and developed in an open, transparent and trustworthy way"
+pkgrel=2
+pkgdesc="A safe home for all your data. Secure, under your control and developed in an open, transparent and trustworthy way"
 url="https://nextcloud.com"
 arch=('any')
 license=('AGPL')
@@ -22,13 +22,13 @@ optdepends=('php-apache: to use the Apache web server'
       'libreoffice: file preview')
 options=('!strip')
 install=${pkgname}.install
-#validpgpkeys=('2880 6A87 8AE4 23A2 8372  792E D758 99B9 A724 937A')
+validpgpkeys=('28806A878AE423A28372792ED75899B9A724937A')
 source=("apache.example.conf"
-  "https://download.nextcloud.com/server/releases/nextcloud-${pkgver}.tar.bz2"
-#  "https://download.nextcloud.com/server/releases/nextcloud-${pkgver}.tar.bz2"{,.asc}
+  "https://download.nextcloud.com/server/releases/nextcloud-${pkgver}.tar.bz2"{,.asc}
   "set-nc-perms.sh")
 md5sums=('bc2b02b0562b7a58e660e33acd4202bc'
          '83cdce392a8520869933ccf75addb836'
+         'SKIP'
          '0c996a76cf39b2bccde8d74ac062895e')
 
 options=(!strip emptydirs)
