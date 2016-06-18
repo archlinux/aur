@@ -12,7 +12,7 @@ pkgdesc="Tools for squashfs, a highly compressed read-only filesystem for Linux.
 url="https://github.com/devttys0/sasquatch"
 license=("GPL")
 arch=('i686' 'x86_64')
-depends=('zlib' 'lzo' 'xz' 'lz4')
+depends=('gzip' 'zlib' 'lzo' 'xz' 'lz4')
 source=("http://downloads.sourceforge.net/sourceforge/squashfs/squashfs${pkgver}.tar.gz"
 	 "patch0.txt.gz"
 	 "Makefile")
