@@ -6,6 +6,7 @@ pkgbase = sasquatch
 	arch = i686
 	arch = x86_64
 	license = GPL
+	depends = gzip
 	depends = zlib
 	depends = lzo
 	depends = xz
