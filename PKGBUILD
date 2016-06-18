@@ -2,7 +2,7 @@
 
 pkgname=h5ai
 pkgver=0.28.1
-pkgrel=1
+pkgrel=3
 arch=(any)
 pkgdesc="A modern file indexer for HTTP web servers with focus on your files"
 url="http://larsjung.de/h5ai/"
@@ -26,7 +26,6 @@ package() {
     cd $srcdir/
     mkdir -p $pkgdir/$webapps
     cp -r _${pkgname} ${pkgdir}/$webapps/${pkgname}
-    chmod 777 -R ${pkgdir}/$webapps/${pkgname}/cache
 }
 
 md5sums=('d99b2d43102e23f52eb0c645a5a3b3dc')
