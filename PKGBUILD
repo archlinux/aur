@@ -2,8 +2,8 @@
 # Maintainer: Daniele Bartolini <qonegbyvav.nn [4G] tznvy [Q0G] pbz>
 
 pkgname=pepper
-pkgver=0.0.22
-pkgrel=2
+pkgver=0.0.23
+pkgrel=1
 pkgdesc="The Flexible Game Engine"
 arch=(x86_64)
 url="https://github.com/taylor001/crown"
@@ -19,7 +19,7 @@ source=("https://github.com/taylor001/crown/releases/download/v$pkgver/$pkgname-
         "pepper.sh"
         "pepper.desktop"
         )
-md5sums=('4517f5018c9dad27ca666d1418a3be3f'
+md5sums=('c55d4235bb481f6bb7301b3bc151972c'
          '8fca300dce4e3858e34e7a2d550a3728'
          '7424db2a97c159d516cfa813be148966')
 
