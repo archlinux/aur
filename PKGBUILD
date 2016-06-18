@@ -2,14 +2,14 @@
 
 _pkgname=qotd
 pkgname=$_pkgname-git
-pkgver=0.4.0_21_g355d2d1.355d2d1
+pkgver=0.4.0_30_g813627a.813627a
 pkgrel=1
 pkgdesc="A simple QOTD (quote of the day) daemon."
 arch=('any')
 url="https://gitlab.com/ammongit/$_pkgname"
 license=('GPL')
 depends=()
-makedepends=('git' 'gcc') # Also compatible with clang. Change CC in src/Makefile.
+makedepends=('git' 'gcc')
 optdepends=()
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -32,7 +32,7 @@ build() {
 
 package() {
     cd "$srcdir/$_pkgname"
-	make DEST_DIR="$pkgdir" install
+	make ROOT="$pkgdir" install
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/qotd/LICENSE"
 }
 
