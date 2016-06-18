@@ -12,7 +12,7 @@ makedepends=('cmake')
 depends=('flex' 'bison' 'gl2ps' 'freeimage' 'tk' 'ftgl' 'libxmu' 'vtk' 'mesa')
 optdepends=('intel-tbb')
 source=("http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=${_short_commit_hash};sf=tgz")
-md5sums=('02312185686664f97baba7a5d220139b')
+md5sums=('37c2d80374e9052e8cec55ed1d71b709')
 
 prepare(){
   cd occt-${_short_commit_hash}
