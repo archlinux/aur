@@ -12,5 +12,5 @@ post_remove() {
 }
 
 repo_notify(){
-
+    echo "done!"
 }
