@@ -4,11 +4,13 @@ pkgbase = rpmlint
 	pkgrel = 1
 	url = http://rpmlint.sourceforge.net/
 	arch = any
-	license = GPL
-	depends = python2>=2.6
-	depends = rpm-org
+	license = GPL2
+	checkdepends = python2-pytest
+	makedepends = bash-completion
 	depends = cpio
 	depends = desktop-file-utils
+	depends = python2>=2.6
+	depends = rpm-org
 	source = http://downloads.sourceforge.net/project/rpmlint/rpmlint-1.6.tar.xz
 	sha256sums = a0dae71a3fed413ee5c47bd04f393cd6598c68c0dcf1504fa020d62814ff674b
 
