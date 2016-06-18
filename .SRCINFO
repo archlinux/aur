@@ -1,0 +1,18 @@
+pkgbase = mingw-w64-libev
+	pkgdesc = A full-featured and high-performance event loop (mingw-w64)
+	pkgver = 4.22
+	pkgrel = 1
+	url = http://software.schmorp.de/pkg/libev.html
+	arch = any
+	license = BSD
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-configure
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://dist.schmorp.de/libev/libev-4.22.tar.gz
+	sha1sums = 4affcba78dc17239f2ccd84d6e3e6dec2bd1f8ba
+
+pkgname = mingw-w64-libev
+
