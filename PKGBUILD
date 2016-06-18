@@ -45,13 +45,13 @@ package() {
   local dest="${pkgdir}/usr/src/${pkgname/-dkms/}-${pkgver}"
 
   mkdir -p "${dest}"
-  cp -RL src lib Makefile dkms.conf "${dest}"
+  cp -a src lib Makefile dkms.conf "${dest}"
   chmod a-x "${dest}/lib/LICENSE.txt" # Ships with executable bits set
 
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   ln -rs "${dest}/lib/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  install -D -m 644 broadcom-wl-dkms.conf "${pkgdir}/usr/lib/modprobe.d/broadcom-wl-dkms.conf"
+  install -D -m 0644 broadcom-wl-dkms.conf "${pkgdir}/usr/lib/modprobe.d/broadcom-wl-dkms.conf"
 }
 
 # vim:set ts=2 sw=2 et:
