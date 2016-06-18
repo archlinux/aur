@@ -9,7 +9,7 @@ url="https://fedorahosted.org/$pkgname/"
 source=("https://fedorahosted.org/released/$pkgname/$pkgname-$pkgver.tar.xz")
 license=('GPL2')
 depends=('python' 'rpm-org')
-makedepends=('help2man')
+makedepends=('bash-completion' 'help2man')
 md5sums=('daee90323a325efee01257c1e9c6aced')
 
 build() {

@@ -5,6 +5,7 @@ pkgbase = rpmdevtools
 	url = https://fedorahosted.org/rpmdevtools/
 	arch = any
 	license = GPL2
+	makedepends = bash-completion
 	makedepends = help2man
 	depends = python
 	depends = rpm-org
