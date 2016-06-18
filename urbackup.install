@@ -1,0 +1,10 @@
+post_install() {
+	_urbackup_user="urbackup"
+	_urbackup_group="urbackup"
+
+	getent group $_urbackup_group > /dev/null || groupadd -r $_urbackup_group > /dev/null
+	getent passwd $_urbackup_user > /dev/null || useradd -r -g $_urbackup_group \
+		-d /dev/null -s /bin/false $_urbackup_user > /dev/null	
+
+	chown -hR --preserve-root $_urbackup_user:$_urbackup_group /var/urbackup
+}
