@@ -1,0 +1,102 @@
+diff --git a/graphic.cc b/graphic.cc
+index 419d7df..ec5acf1 100644
+--- a/graphic.cc
++++ b/graphic.cc
+@@ -55,7 +55,7 @@ Graphic& Graphic::Equalize() {
+     return std::min(255, std::max(0, static_cast<int>(v * kBins)));
+   };
+ 
+-  // Count the occurrence of each color into bins.
++  // Count the occurence of each color into bins.
+   for (int y = 0; y < height_; ++y) {
+     for (int x = 0; x < width_; ++x) {
+       const Pixel& pixel = Get(x, y);
+diff --git a/hiptext.cc b/hiptext.cc
+index a23fa02..f21c483 100644
+--- a/hiptext.cc
++++ b/hiptext.cc
+@@ -250,12 +250,13 @@ int main(int argc, char** argv) {
+   }
+   string path = argv[1];
+   string extension = GetExtension(path);
++  string uri_sig = "://"; // Given this string signature, assume that it's a video stream
+   if (extension == "png") {
+     artiste.PrintImage(LoadPNG(path));
+   } else if (extension == "jpg" || extension == "jpeg") {
+     artiste.PrintImage(LoadJPEG(path));
+   } else if (extension == "mov" || extension == "mp4" || extension == "flv" ||
+-             extension == "avi" || extension == "mkv") {
++             extension == "avi" || extension == "mkv" || path.find(uri_sig) != string::npos) {
+     artiste.PrintMovie(Movie(path));
+   } else {
+     fprintf(stderr, "Unknown Filetype: %s\n", extension.data());
+diff --git a/macterm.cc b/macterm.cc
+index 1042a9a..20ba55f 100644
+--- a/macterm.cc
++++ b/macterm.cc
+@@ -99,7 +99,7 @@ MactermColor::MactermColor(const Pixel& top, const Pixel& bot) {
+ // Terminal.app on Mac OS X is interesting. First of all, it doesn't follow the
+ // xterm-256color standard, but that's probably for the best since xterm's
+ // palette was obviously chosen by engineers rather than designers. The problem
+-// is I'm not quite sure what Terminal.app is doing. It slightly adjusts the
++// is I'm not quite sure what Terminal.app is doing. It slightly ajusts the
+ // color when displaying foregrounds and backgrounds but I'm not sure what
+ // formula they're using to do it. They also seem to slightly alter colors
+ // depending on the terminal theme. The following colors are what I scraped
+diff --git a/movie.cc b/movie.cc
+index 9ad9368..4fb6b73 100644
+--- a/movie.cc
++++ b/movie.cc
+@@ -53,7 +53,7 @@ void Movie::PrepareRGB(int width, int height) {
+ 
+   // Prepare context for scaling and converting to RGB.
+   sws_ = sws_getContext(context_->width, context_->height, context_->pix_fmt,
+-                        width_, height_, PIX_FMT_RGB24, SWS_FAST_BILINEAR,
++                        width_, height_, AV_PIX_FMT_RGB24, SWS_FAST_BILINEAR,
+                         nullptr, nullptr, nullptr);
+   CHECK(codec_ = avcodec_find_decoder(context_->codec_id))
+       << "Unsupported codec.\n";
+@@ -61,13 +61,13 @@ void Movie::PrepareRGB(int width, int height) {
+       << "Could not open codec.\n";
+ 
+   // Allocate Raw + RGB frame buffers.
+-  CHECK(frame_ = avcodec_alloc_frame());
+-  CHECK(frame_rgb_ = avcodec_alloc_frame());
+-  int rgb_bytes = avpicture_get_size(PIX_FMT_RGB24, width_, height_);
++  CHECK(frame_ = av_frame_alloc());
++  CHECK(frame_rgb_ = av_frame_alloc());
++  int rgb_bytes = avpicture_get_size(AV_PIX_FMT_RGB24, width_, height_);
+   buffer_ = static_cast<uint8_t*>(av_malloc(rgb_bytes));
+   LOG(INFO) << "RGB Buffer: " << rgb_bytes << " bytes.";
+   int prep = avpicture_fill(reinterpret_cast<AVPicture*>(frame_rgb_),
+-                            buffer_, PIX_FMT_RGB24, width_, height_);
++                            buffer_, AV_PIX_FMT_RGB24, width_, height_);
+   CHECK_GE(prep, 0) << "Failed to prepare RGB buffer.";
+   LOG(INFO) << "RGB dimensions: " << width_  << "x" << height_;
+ }
+diff --git a/pixel.cc b/pixel.cc
+index eb52f61..2a6ecdf 100644
+--- a/pixel.cc
++++ b/pixel.cc
+@@ -166,7 +166,7 @@ Pixel& Pixel::Mix(const Pixel& other) {
+ 
+ // http://www.springerreference.com/docs/html/chapterdbid/212829.html
+ static double A(double c) {
+-  // This is K/S part of the equations on that website.
++  // This is K/S part of the the equations on that website.
+   // a = (1 - c)^2 / (2c)
+   return std::pow(1.0 - c, 2.0) / (2.0 * max(c, 1e-6));
+ }
+diff --git a/xterm256.cc b/xterm256.cc
+index 0db765e..1622255 100644
+--- a/xterm256.cc
++++ b/xterm256.cc
+@@ -6,7 +6,7 @@
+ #include <glog/logging.h>
+ #include "pixel.h"
+ 
+-DEFINE_bool(fast, false, "Use O(1) xterm256 approximate color quantizer.");
++DEFINE_bool(fast, false, "Use O(1) xterm256 aproximate color quantizer.");
+ 
+ static const uint8_t g_cube_steps[] = {0, 95, 135, 175, 215, 255};
+ 
