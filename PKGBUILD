@@ -4,7 +4,7 @@
 
 pkgname=jquery
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform JavaScript library designed to simplify the client-side scripting of HTML"
 arch=('any')
 url="http://jquery.com"
@@ -14,6 +14,6 @@ sha256sums=('266bcea0bb58b26aa5b16c5aee60d22ccc1ae9d67daeb21db6bad56119c3447d')
 
 package() {
     cd "${srcdir}"
-    mkdir -p "${pkgdir}/usr/share/${pkgname}"
-    install -m644 "jquery-${pkgver}.min.js" "${pkgdir}/usr/share/jquery/jquery.min.js"
+    mkdir -p "${pkgdir}/usr/share/javascript/${pkgname}"
+    install -m644 "jquery-${pkgver}.min.js" "${pkgdir}/usr/share/javascript/jquery/jquery.min.js"
 }
