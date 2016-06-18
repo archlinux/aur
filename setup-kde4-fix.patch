@@ -1,0 +1,11 @@
+--- setup.py	2016-06-18 12:47:26.959381545 +0500
++++ setup.py.1	2016-06-18 12:47:36.672853442 +0500
+@@ -52,7 +52,7 @@
+                 ("share/icons/ubuntu-mono-light/apps/48", ["config/ubuntu-mono-light/autokey-status.svg", "config/ubuntu-mono-light/autokey-status-error.svg"]),
+                   ("share/applications", ["config/autokey-qt.desktop", "config/autokey-gtk.desktop"]),
+                   ('share/man/man1/', ['doc/man/autokey-qt.1', 'doc/man/autokey-gtk.1', 'doc/man/autokey-run.1']),
+-                  ('share/kde4/apps/autokey' , ['config/autokeyui.rc'])],
++                  ('share/apps/autokey' , ['config/autokeyui.rc'])],
+       scripts=['autokey-qt', 'autokey-gtk', 'autokey-run', 'autokey-shell'],
+       classifiers = [
+           'Development Status :: 4 - Beta',
