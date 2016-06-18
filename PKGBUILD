@@ -32,7 +32,7 @@ build() {
 
 package() {
     cd "$srcdir/$_pkgname"
-	make ROOT="$pkgdir" install
+	make ROOT="$pkgdir" SYSTEMD=1 install
 	install -D -m644 "doc/$_pkgname.pdf" "$pkgdir/usr/share/doc/$_pkgname/$_pkgname.pdf"
     install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
