@@ -3,17 +3,17 @@
 # Contributor: Daniel Wallace <daniel.wallace@gatech.edu>
 
 pkgname=openpht
-pkgver=1.5.2.514
-_pkghash=310d4f7e
-pkgrel=4
+pkgver=1.6.1.120
+_pkghash=4ab39d17
+pkgrel=1
 pkgdesc='OpenPHT is a community driven fork of Plex Home Theater '
 arch=('i686' 'x86_64')
 url='https://github.com/RasPlex/OpenPHT/'
 license=('GPL2')
 conflicts=("plex-home-theater")
-depends=('alsa-lib' 'avahi' 'boost-libs' 'curl' 'expat' 'freetype2' 'fribidi'
-         'gcc-libs<=5.3.0' 'glew' 'glibc<=2.23-1' 'glu' 'libcdio' 'libgl' 'libjpeg' 'libmad'
-         'libmicrohttpd' 'libmpeg2' 'libpng' 'libpulse' 'libsamplerate' 'llvm-libs<=3.7.1'
+depends=('openpht-ffmpeg' 'alsa-lib' 'avahi' 'boost-libs' 'curl' 'expat' 'freetype2' 'fribidi'
+         'gcc-libs' 'glew' 'glibc' 'glu' 'libcdio' 'libgl' 'libjpeg' 'libmad'
+         'libmicrohttpd' 'libmpeg2' 'libpng' 'libpulse' 'libsamplerate' 'llvm-libs'
          'libssh' 'libtiff' 'libusb-compat' 'libva' 'libvdpau' 'libx11'
          'libxext' 'libxrandr' 'lzo' 'pcre' 'python2' 'sdl' 'sdl_image'
          'sdl_mixer' 'sqlite' 'smbclient' 'taglib' 'tinyxml' 'yajl' 'zlib')
@@ -25,7 +25,7 @@ optdepends=('libplist: AirPlay support'
 source=("https://github.com/RasPlex/OpenPHT/archive/v${pkgver}-${_pkghash}.tar.gz"
         'plexhometheater.sh'
 	'fribidi.patch')
-sha256sums=('137da57bf9a0ad9f2b464cae327c85f2842a04d00f2adfa12616c3f22cbcf19f'
+sha256sums=('a537af170dd03a9b4e094cb99b787237ae003f839e267072b3e6e3dbc9335f8a'
             'dc6bd394c07a2ececbb2f8c53cb54afd5d78f7c00a0b34acab3e71217da085fb'
 	    '966edfa84fa09cf9c54281dff2adfd6fad41309b17893511e7cf01dc85def1ea')
 prepare() {
@@ -43,14 +43,7 @@ build() {
 
   cmake .. \
     -DCMAKE_INSTALL_PREFIX='/usr' \
-    -DCMAKE_C_FLAGS="$CMAKE_C_FLAGS -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include" \
-    -DCMAKE_CXX_FLAGS="$CMAKE_CXX_FLAGS -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include" \
-    -DCREATE_BUNDLE='FALSE' \
-    -DDUMP_SYMBOLS='FALSE' \
-    -DENABLE_AUTOUPDATE='FALSE' \
-    -DENABLE_PYTHON='TRUE' \
-    -DPYTHON_EXEC='/usr/bin/python2' \
-    -DUSE_INTERNAL_FFMPEG='TRUE'
+    -DUSE_INTERNAL_FFMPEG='OFF'
   make
 }
 
