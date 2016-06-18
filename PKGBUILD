@@ -1,12 +1,12 @@
 # Maintainer: Douglas Creager <dcreager@dcreager.net>
 pkgname=fdr
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Refinement checker for CSP"
 arch=('x86_64')
 url="https://www.cs.ox.ac.uk/projects/fdr/"
 license=('custom')
-depends=('libtinfo')
+depends=('libtinfo5')
 source=("https://www.cs.ox.ac.uk/projects/fdr/downloads/fdr3-3702-linux-x86_64.tar.gz")
 md5sums=('6dc3f8ee5fad19ae595c0d0dc9097026')
 sha1sums=('abb58025b91d04d7425b9a9d05244116c255df29')
