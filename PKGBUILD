@@ -2,7 +2,7 @@
 
 _pkgname=qotd
 pkgname=$_pkgname-git
-pkgver=0.4.0_30_g813627a.813627a
+pkgver=0.4.0_33_g82d4b2b.82d4b2b
 pkgrel=1
 pkgdesc="A simple QOTD (quote of the day) daemon."
 arch=('any')
@@ -33,6 +33,7 @@ build() {
 package() {
     cd "$srcdir/$_pkgname"
 	make ROOT="$pkgdir" install
-    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/qotd/LICENSE"
+	install -D -m644 "doc/$_pkgname.pdf" "$pkgdir/usr/share/doc/$_pkgname/$_pkgname.pdf"
+    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
 
