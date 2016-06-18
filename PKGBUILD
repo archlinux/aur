@@ -2,49 +2,68 @@
 
 pkgname=opencascade7
 pkgver=7.0.0
-pkgrel=1
+_short_commit_hash=1d505bb
+pkgrel=2
 pkgdesc="Open CASCADE Technology, 3D modeling & numerical simulation, version 7"
 url="http://www.opencascade.org"
 arch=('i686' 'x86_64')
 license=('custom')
 makedepends=('cmake')
-depends=('gl2ps' 'freeimage' 'tk' 'ftgl' 'libxmu' 'vtk' 'mesa')
+depends=('flex' 'bison' 'gl2ps' 'freeimage' 'tk' 'ftgl' 'libxmu' 'vtk' 'mesa')
 optdepends=('intel-tbb')
-source=(https://dl.dropboxusercontent.com/u/333226/opencascade-7.0.0.tgz)
-md5sums=('fa1458aba1ce96c85d7876b35a04af6c')
-provides=('opencascade')
-conflicts=('opencascade' 'oce')
+source=("http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=${_short_commit_hash};sf=tgz")
+md5sums=('02312185686664f97baba7a5d220139b')
 
 prepare(){
-  cd opencascade-${pkgver}
+  cd occt-${_short_commit_hash}
   mkdir -p build
   cd build
   flags=""
   flags="$flags -DCMAKE_BUILD_TYPE=Release"
-  flags="$flags 3RDPARTY_VTK_INCLUDE_DIR=/opt/vtk6/include"
-  flags="$flags 3RDPARTY_VTK_LIBRARY_DIR=/opt/vtk6/lib"
-  #flags="$flags -DUSE_GL2PS=ON"
-  #flags="$flags -DUSE_FREEIMAGE=ON"
-  #flags="$flags -DUSE_TBB=ON"
-  #flags="$flags -DUSE_VTK=ON"
+  #flags="$flags -D3RDPARTY_VTK_DIR=/opt/vtk6"
+  #flags="$flags -D3RDPARTY_VTK_INCLUDE_DIR=/opt/vtk6/include"
+  #flags="$flags -D3RDPARTY_VTK_LIBRARY_DIR=/opt/vtk6/lib"
+  #flags="$flags -D3RDPARTY_VTK_BIN_DIR=/opt/vtk6/bin"
+  flags="$flags -DCMAKE_INSTALL_PREFIX=/opt"
+  flags="$flags -DUSE_GL2PS=ON"
+  flags="$flags -D3RDPARTY_GL2PS_DIR="
+  flags="$flags -DUSE_FREEIMAGE=ON"
+  flags="$flags -DUSE_TBB=ON"
+  flags="$flags -DUSE_VTK=ON"
+  #flags="$flags -DBUILD_LIBRARY_TYPE=Static"
+  #flags="$flags -DBUILD_YACCLEX=ON"
+  #flags="$flags -D3RDPARTY_BISON_EXECUTABLE=bison"
+  #flags="$flags -D3RDPARTY_FLEX_EXECUTABLE=flex"
+  if pacman -T intel-tbb > /dev/null 2>/dev/null; then
+    flags="$flags -DUSE_TBB=ON"
+  else
+    flags="$flags -DUSE_TBB=OFF"
+  fi
   #flags="$flags -DUSE_TBB=OFF"
-  #flags="$flags -DUSE_TBB=ON"
   cmake $flags ..
+
+  # this allows USE_VTK=ON to build
+  sed -i 's/-lvtkRenderingOpenGL/-lvtkRenderingOpenGL2/g' src/TKIVtk/CMakeFiles/TKIVtk.dir/link.txt
+  sed -i 's/-lvtkRenderingOpenGL/-lvtkRenderingOpenGL2/g' src/TKIVtkDraw/CMakeFiles/TKIVtkDraw.dir/link.txt
+  sed -i 's/-lvtkRenderingFreeTypeOpenGL/-lvtkRenderingFreeTypeTCL/g' src/TKIVtk/CMakeFiles/TKIVtk.dir/link.txt
+  sed -i 's/-lvtkRenderingFreeTypeOpenGL/-lvtkRenderingFreeTypeTCL/g' src/TKIVtkDraw/CMakeFiles/TKIVtkDraw.dir/link.txt
 }
 
 build() {
-  cd opencascade-${pkgver}/build
+  cd occt-${_short_commit_hash}/build
   make
 }
 
 package() {
-  cd opencascade-${pkgver}/build
+  cd occt-${_short_commit_hash}/build
   make DESTDIR="${pkgdir}" install
-  install -Dm644 ${srcdir}/opencascade-${pkgver}/LICENSE_LGPL_21.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE_LGPL_21.txt"
-  install -Dm644 ${srcdir}/opencascade-${pkgver}/OCCT_LGPL_EXCEPTION.txt "$pkgdir/usr/share/licenses/$pkgname/OCCT_LGPL_EXCEPTION.txt"
+  install -Dm644 ../LICENSE_LGPL_21.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 ../OCCT_LGPL_EXCEPTION.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
+  #install -Dm644 ${srcdir}/opencascade-${pkgver}/LICENSE_LGPL_21.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE_LGPL_21.txt"
+  #install -Dm644 ${srcdir}/opencascade-${pkgver}/OCCT_LGPL_EXCEPTION.txt "$pkgdir/usr/share/licenses/$pkgname/OCCT_LGPL_EXCEPTION.txt"
   
   #install -m644 -D "${srcdir}/99_oce.conf" -t "${pkgdir}/etc/ld.so.conf.d"
-  install -m755 -D "${srcdir}/opencascade-${pkgver}/build/env.sh" -t "${pkgdir}/etc/profile.d"
+  #install -m755 -D "${srcdir}/opencascade-${pkgver}/build/env.sh" -t "${pkgdir}/etc/profile.d"
 }
 
 # vim:set ts=2 sw=2 et:
