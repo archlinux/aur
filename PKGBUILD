@@ -50,7 +50,8 @@ md5sums=('158c18d35d071403db18bdd85fa2e738'
          'SKIP'
          '74cc026d4104072dadb2733745f1b268'
          '367f71ad1cfc2e03e97a48d2e32995fb'
-         '23a0d25e1759dc5bd0e6f7101fd8ea70')
+         '23a0d25e1759dc5bd0e6f7101fd8ea70'
+         'ae16bb627ec10bde20c7093d4be18131')
 
 pkgver() {
   _language_archlinux_ver="$(sed -n "s/\"version\": //p" $srcdir/language-archlinux/package.json | sed 's/"//g' | sed 's/,//g' | sed 's/ //g')"
