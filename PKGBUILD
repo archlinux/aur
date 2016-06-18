@@ -8,7 +8,9 @@ arch=('i686' 'x86_64' 'armv7' 'armv6' 'armv5')
 url='http://qt-apps.org/content/show.php/QMPlay2?content=153339'
 license=('LGPL')
 depends=('qt5-base' 'xdg-utils' 'ffmpeg' 'libass' 'libgl' 'libva' 'libxv' 'alsa-lib' 'libcdio' 'taglib' 'libcddb' 'libpulse' 'libgme' 'libsidplayfp')
-optdepends=('pulseaudio' 'youtube-dl')
+optdepends=('pulseaudio: PulseAudio support'
+            'youtube-dl: Better YouTube support'
+            'game_music_emu-kode54-git: Better chiptune support (less bugs in sound, AUR package)')
 conflicts=('qmplay2')
 provides=('qmplay2')
 makedepends=('make' 'gcc' 'git' 'pkg-config' 'qt5-tools' 'cmake')
