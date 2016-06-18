@@ -10,8 +10,8 @@ pkgbase = jdk-devel-docs
 	source = http://www.java.net/download/java/jdk9/archive/123/binaries/jdk-9_doc-api-spec.tar.gz
 	source = http://www.java.net/download/java/jdk9/archive/123/binaries/javafx-9_doc.zip
 	source = LICENSE
-	md5sums = 9e0665c5a9b1cf34a965a81c33253a96
-	md5sums = 3bd10416f04e8824306e573760af3d80
+	md5sums = 5735f3fed29234d7c87d160dbd64f3fe
+	md5sums = 09838a655488ab7f342a1afd86a270ca
 	md5sums = f09947a67691a2d78d20a3885889981c
 
 pkgname = jdk-devel-docs
