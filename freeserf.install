@@ -1,0 +1,11 @@
+post_install() {
+  /usr/bin/printf "-----------------------------------------------\n"
+  /usr/bin/printf " You must place the original game's asset file\n"
+  /usr/bin/printf "  (e.g. SPAE.PA, SPAF.PA, SPAD.PA, or SPAU.PA\n"
+  /usr/bin/printf "  depending on your version's language)\n"
+  /usr/bin/printf " in one of the following places:\n"
+  /usr/bin/printf "     \$HOME/.local/share/freeserf/\n"
+  /usr/bin/printf "     /usr/share/freeserf/\n"
+  /usr/bin/printf "     /usr/local/share/freeserf/\n"
+  /usr/bin/printf "-----------------------------------------------\n"
+}

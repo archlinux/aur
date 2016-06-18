@@ -1,0 +1,17 @@
+pkgbase = freeserf-git
+	pkgdesc = Opensource Settlers 1 clone (requires original game file)
+	pkgver = 0.1.1_228_g3895cc6
+	pkgrel = 1
+	url = http://jonls.dk/freeserf/
+	install = freeserf.install
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = sdl2
+	depends = sdl2_mixer
+	source = git+https://github.com/freeserf/freeserf.git
+	md5sums = SKIP
+
+pkgname = freeserf-git
+
