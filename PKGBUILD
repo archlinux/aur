@@ -3,14 +3,14 @@
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 
 pkgname=lbzip2-git
-pkgver=2.5.r19.gce96731
+pkgver=2.5.r36.g8702655
 pkgrel=1
 pkgdesc="A parallel, SMP-based, bzip2-compatible compression utility"
 arch=('i686' 'x86_64')
 url="http://lbzip2.org/"
 license=('GPL3')
 depends=('glibc')
-makedepends=('perl' 'gnulib')
+makedepends=('perl' 'gnulib' 'git')
 provides=('lbzip2')
 conflicts=('lbzip2')
 
