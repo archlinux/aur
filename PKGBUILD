@@ -33,7 +33,7 @@ source=("hiptext::git://github.com/jart/hiptext.git"
 noextract=()
 md5sums=('SKIP'
          '86ade16ec71e7a49cb6136973419547f'
-         'f2e8f04076e10dbbaf13118d44998a9d')
+         '29c7c80e4c783406948a51034d15076c')
 
 pkgver() {
   cd "$pkgname"
