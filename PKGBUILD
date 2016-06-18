@@ -2,7 +2,7 @@
 # Contributor: Thomas Dziedzic < gostrc at gmail >
 
 pkgname=rpmlint
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc='A tool for checking common errors in rpm packages.'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('cpio' 'desktop-file-utils' 'python' 'rpm-org')
 makedepends=('bash-completion')
 checkdepends=('python-pytest')
 source=("$url/archive/$pkgname-$pkgver.tar.gz")
-md5sums=('3741c0c8345da4f3c633328fa7b35c9c')
+md5sums=('f168dc8e190c25dc1f409abb3ef47b86')
 
 prepare() {
 	mv "$pkgname-$pkgname-$pkgver" "$pkgname-$pkgver"
@@ -24,12 +24,12 @@ build() {
 	make COMPILE_PYC=1
 }
 
-# Tests need a non-empty RPM database on the system
+# Tests work better with a non-empty RPM database on the system
 # It may be created using "rpm --initdb"
-#check() {
-#	cd "$pkgname-$pkgver"
-#	make check
-#}
+check() {
+	cd "$pkgname-$pkgver"
+	make check
+}
 
 package() {
 	cd "$pkgname-$pkgver"
