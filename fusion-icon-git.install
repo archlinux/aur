@@ -1,0 +1,26 @@
+post_install() {
+  gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+  cat <<EOF
+Before you run this, make sure to install the listed optional dependencies
+depending on the interface you want to use. After you've installed the
+appropriate dependencies for the interfaces you want to use, take note of the
+following below.
+
+If you want to use the Qt Interface, use:
+	fusion-icon -i qt
+
+If you want to use the GTK+ Interface, use:
+	fusion-icon -i gtk
+
+Otherwise, fusion-icon will attempt to use the first interface it can find,
+with GTK+ taking higher priority.
+EOF
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  post_install
+}
