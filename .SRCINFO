@@ -1,0 +1,15 @@
+pkgbase = jid3-bzr
+	pkgdesc = Java library for manipulating ID3v1 and v2 tags on MP3 files.
+	pkgver = r9
+	pkgrel = 1
+	url = https://code.launchpad.net/~eythian/+junk/jid3
+	arch = any
+	license = LGPL
+	makedepends = bzr
+	makedepends = java-environment
+	depends = java-runtime
+	source = bzr+lp:~eythian/+junk/jid3
+	md5sums = SKIP
+
+pkgname = jid3-bzr
+
