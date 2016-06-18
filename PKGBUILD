@@ -1,7 +1,7 @@
 # Maintainer: synapse84 <synapse84 at gmail dot com>
 
 pkgname=mumble-snapshot
-pkgver=1.3.0_1324_g04b2635
+pkgver=1.3.0_1326_gf4ca0cf
 pkgrel=1
 pkgdesc="A high quality voice chat program."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=('mumble')
 conflicts=('mumble')
 install=mumble.install
 source=("http://mumble.info/snapshot/mumble-${pkgver//_/\~}~snapshot.tar.gz")
-sha256sums=('a1b4e23964c6a33443525dc539c339c081367bedd11be0573dc37690b6e2789f')
+sha256sums=('85d1983aa8037813b62478a8aade7bb057d2142933afa18af25444ceaeabe678')
 
 build() {
     cd $srcdir/mumble-${pkgver//_/\~}~snapshot
