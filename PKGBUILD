@@ -15,8 +15,10 @@ depends_x86_64=('lib32-sdl2' 'lib32-sdl2_ttf' 'lib32-curl' 'lib32-jansson'
                 'lib32-openssl')
 makedepends=('git' 'cmake')
 makedepends_x86_64=('gcc-multilib')
-optdepends=('lib32-alsa-lib: ALSA audio support'
+optdepends_i686=('lib32-alsa-lib: ALSA audio support'
             'lib32-libpulse: PulseAudio audio support')
+optdepends_x86_64=('alsa-lib: ALSA audio support'
+                   'libpulse: PulseAudio audio support')
 conflicts=('openrct2')
 provides=('openrct2')
 options=('!buildflags')
