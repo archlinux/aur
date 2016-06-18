@@ -2,7 +2,7 @@
 pkgname=libressl-netcat
 pkgver=2.4.1
 pkgrel=1
-arch=('x86_64' 'i386')
+arch=('x86_64' 'i686')
 pkgdesc="Low level UDP/TCP connection tool with support for TLS protocol"
 url=http://www.libressl.org
 license=('bsd' 'custom:Openssl')
@@ -16,18 +16,26 @@ validpgpkeys=('A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5') # Brent Cook <bcook@op
 
 build() {
 cd $srcdir/libressl-${pkgver}/
-./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-nc --enable-static --with-pic=nc
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-nc --enable-static --with-pic=yes
 make
+}
+
+check() {
+cd $srcdir/libressl-${pkgver}/
+make check
 }
 
 package() {
 cd $srcdir/libressl-${pkgver}
 mkdir -p $pkgdir/usr/bin
 install -m 755 ./apps/nc/.libs/nc $pkgdir/usr/bin/nc
+ln -s nc $pkgdir/usr/bin/netcat
 mkdir -p $pkgdir/usr/lib
 install -m 644 ./tls/.libs/libtls.so.11 $pkgdir/usr/lib/libtls.so.11
 install -m 644 ./crypto/.libs/libcrypto.so.38 $pkgdir/usr/lib/libcrypto.so.38
 mkdir -p $pkgdir/usr/share/man/man1
-gzip -c ./apps/nc/nc.1 > $pkgdir/usr/share/man/man1/nc.1.gz
+install -m 644 ./apps/nc/nc.1 $pkgdir/usr/share/man/man1/nc.1
+mkdir -p $pkgdir/usr/share/licenses/$pkgname
+install -m 644 ./COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
