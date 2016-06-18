@@ -1,7 +1,7 @@
 # Maintainer: JKA Network (JoseluCross, Kprkpr, Yukialba) <contacto@jkanetwork.com>
 pkgname=apw
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A Package Wrapper - package wrapper for pacman (and more)"
 arch=('any')
 url="http://proyecto.jkanetwork.com"
@@ -11,7 +11,7 @@ options=(!emptydirs)
 source=("https://gitlab.com/JKANetwork/jka-toolkit/raw/master/jka-toolkit/apw"
 	"https://gitlab.com/JKANetwork/jka-toolkit/raw/master/jka-toolkit/i18n/apw/es.mo"
 	"https://gitlab.com/JKANetwork/jka-toolkit/raw/master/manpages/apw.1")
-md5sums=('73286a862ee8c70481a738c3abd4b944'
+md5sums=('638e7219ef4dee4a9a76bac203034d5f'
          '8cad0d2577eeff99548833e52e00435e'
          'edbb53af2fb22cb5ba90bb57291a6995')
 
