@@ -3,7 +3,7 @@
 
 pkgname=saxon-he
 _major=9.7
-_minor=0.5
+_minor=0.6
 pkgver=${_major}.${_minor}
 _pkgver=$(echo $pkgver | tr . -)
 pkgrel=1
@@ -17,7 +17,7 @@ conflicts=('java-saxon')
 source=("http://sourceforge.net/projects/saxon/files/Saxon-HE/${_major}/SaxonHE${_pkgver}J.zip"
         saxon-xslt.sh
         saxon-xquery.sh)
-md5sums=('c768f54495cc621cd39381d51063ae4c'
+md5sums=('f6171ba5d4204bfddb20536918d51a22'
          '4197e2b5278a02e0aa7d383d9dc4f11d'
          '1a37078990f913ce7c37eb3a1bd39283')
 
