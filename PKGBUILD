@@ -1,8 +1,7 @@
 # $Id$
 # Maintainer: Timo Sarawinski <timo@muhviehstarr.de>
 # Original TU: Jeff Mickey <j@codemac.net>
-# Patch by devttys0
-# Contributor: ciccio.a
+# Contributor: Patch by devttys0 https://github.com/devttys0/sasquatch 
 
 pkgname=sasquatch
 _origpkgname=squashfs-tools
@@ -33,8 +32,5 @@ build() {
 
 package() {
     cd ${srcdir}/squashfs${pkgver}/${_origpkgname}
-   # install -Dm755 mksquashfs ${pkgdir}/usr/bin/mksquashfs
-   # install -m755 unsquashfs ${pkgdir}/usr/bin/unsquashfs
-   # make DESTDIR="$pkgdir/" install
    make INSTALL_DIR="${pkgdir}"/usr/bin install
 }
