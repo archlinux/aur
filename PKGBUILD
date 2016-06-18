@@ -1,16 +1,16 @@
 # Maintainer: Christopher Loen <christopherloen at gmail dot com>
-pkgname=anonsurf	
-pkgver=2.0
+pkgname='anonsurf'	
+pkgver='2.0'
 pkgrel=1
-pkgdesc="A script from ParrotSec that provides a strong system-wide anonymization module"
-arch=(any)
-url="https://www.parrotsec.org"
-license=(GPL)
-depends=(tor iptables resolvconf dnsmasq)
-source=("https://raw.githubusercontent.com/ParrotSec/anonsurf/master/anonsurf_2.0%2Bparrot3_all.deb"
-        "https://raw.githubusercontent.com/ParrotSec/anonsurf/master/anonsurf/torrc")
-md5sums=(f26d3de73b7da4164ee00347c6d44c5d
-         60129a23feb63567b11ad21179303d6b)
+pkgdesc='A script from ParrotSec that provides a strong system-wide anonymization module'
+arch=('any')
+url='https://www.parrotsec.org'
+license=('GPL')
+depends=('tor' 'iptables' 'resolvconf' 'dnsmasq')
+source=('https://raw.githubusercontent.com/ParrotSec/anonsurf/master/anonsurf_2.0%2Bparrot3_all.deb'
+        'https://raw.githubusercontent.com/ParrotSec/anonsurf/master/anonsurf/torrc')
+md5sums=('f26d3de73b7da4164ee00347c6d44c5d'
+         '60129a23feb63567b11ad21179303d6b')
 prepare(){
            cd "${srcdir}"
            tar xf "data.tar.xz"
