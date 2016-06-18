@@ -7,12 +7,12 @@ _upstream="compizconfig-python"
 
 pkgname=compizconfig-python-git
 pkgver=0.8.12.r3.g80d28f3
-pkgrel=1
+pkgrel=2
 pkgdesc="Compizconfig bindings for python"
 arch=('i686' 'x86_64')
 url="https://github.com/compiz-reloaded/${_upstream}"
 license=('GPL')
-depends=("compiz-core-git" 'libcompizconfig-git' 'glib2' 'python2' 'libxrandr' 'libsm' 'libxdamage')
+depends=("compiz-core-git" 'libcompizconfig-git' 'glib2' 'python' 'libxrandr' 'libsm' 'libxdamage')
 makedepends=('intltool' 'pkgconfig' 'cython')
 options=('!libtool')
 conflicts=('compizconfig-python')
@@ -31,7 +31,7 @@ build()
 {
 	cd "${srcdir}/${_upstream}"
 	NOCONFIGURE=1 ./autogen.sh
-	PYTHON=python2 ./configure --prefix=/usr
+	PYTHON=python ./configure --prefix=/usr
 	make
 }
 
