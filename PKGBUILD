@@ -2,8 +2,7 @@
 
 pkgname=opencascade7
 pkgver=7.0.0
-_short_commit_hash=1d505bb
-pkgrel=2
+pkgrel=3
 pkgdesc="Open CASCADE Technology, 3D modeling & numerical simulation, version 7"
 url="http://www.opencascade.org"
 arch=('i686' 'x86_64')
@@ -11,11 +10,14 @@ license=('custom')
 makedepends=('cmake')
 depends=('flex' 'bison' 'gl2ps' 'freeimage' 'tk' 'ftgl' 'libxmu' 'vtk' 'mesa')
 optdepends=('intel-tbb')
-source=("http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=${_short_commit_hash};sf=tgz")
-md5sums=('37c2d80374e9052e8cec55ed1d71b709')
+_short_commit_hash=1d505bb
+#source=("http://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=${_short_commit_hash};sf=tgz")
+source=("https://sources.archlinux.org/other/community/opencascade/opencascade-$pkgver.tgz")
+md5sums=('fa1458aba1ce96c85d7876b35a04af6c')
 
 prepare(){
-  cd occt-${_short_commit_hash}
+  cd opencascade-${pkgver}
+  #cd occt-${_short_commit_hash}
   mkdir -p build
   cd build
   flags=""
@@ -50,12 +52,14 @@ prepare(){
 }
 
 build() {
-  cd occt-${_short_commit_hash}/build
+  cd opencascade-${pkgver}/build
+  #cd occt-${_short_commit_hash}/build
   make
 }
 
 package() {
-  cd occt-${_short_commit_hash}/build
+  cd opencascade-${pkgver}/build
+  #cd occt-${_short_commit_hash}/build
   make DESTDIR="${pkgdir}" install
   install -Dm644 ../LICENSE_LGPL_21.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -Dm644 ../OCCT_LGPL_EXCEPTION.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
