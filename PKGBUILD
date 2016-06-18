@@ -2,7 +2,7 @@
 # Contributor: Dave Reisner <d@falconindy.com>
 
 pkgname=jmeter
-pkgver=2.13
+pkgver=3.0
 pkgrel=1
 arch=('any')
 pkgdesc="A Java desktop application designed to load test functional behavior and measure performance"
@@ -12,7 +12,7 @@ depends=("java-environment>=6")
 options=('!strip')
 
 source=("http://www.us.apache.org/dist//jmeter/binaries/apache-${pkgname}-${pkgver}.tgz"{,.asc})
-sha256sums=('9fe33d3d6e381103d3ced2962cdef5c164a06fc58c55e247eadf5a5dbcd4d8fe'
+sha256sums=('f5350a02c2abb0fd2273c9913d851719100be83a7e67a46efbe951f7764fdf03'
             'SKIP')
 validpgpkeys=('C4923F9ABFB2F1A06F08E88BAC214CAA0612B399')
 build() {
