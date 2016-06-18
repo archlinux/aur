@@ -1,0 +1,17 @@
+pkgbase = mingw-w64-libsodium
+	pkgdesc = P(ortable|ackageable) NaCl-based crypto library (mingw-w64)
+	pkgver = 1.0.10
+	pkgrel = 1
+	url = https://github.com/jedisct1/libsodium
+	arch = any
+	license = custom:ISC
+	makedepends = mingw-w64-gcc
+	depends = mingw-w64-crt
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = http://download.dnscrypt.org/libsodium/releases/libsodium-1.0.10.tar.gz
+	sha512sums = ff52e7f25787cc858e8d26be10913c689bd3dd394c8e163133920141be67a292a1dba066a1037e83cf0ced155a1554f07f24c2f33a7a6aa52521d39f537cd515
+
+pkgname = mingw-w64-libsodium
+
