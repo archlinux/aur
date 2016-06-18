@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=EMusicJ
+Comment=Download manager for the eMusic.com music service
+Exec=/usr/bin/emusicj
+Icon=emusicj.xpm
+Type=Application
+Categories=AudioVideo;Audio
