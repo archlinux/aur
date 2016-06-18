@@ -1,8 +1,8 @@
 # Maintainer: Vyacheslav Konovalov <vyachkonovalov@gmail.com>
 
 pkgname=redis-desktop-manager
-pkgver=0.8.3
-pkgrel=2
+pkgver=0.8.4
+pkgrel=1
 pkgdesc='Cross-platform open source Redis DB management tool'
 arch=('x86_64')
 url="http://redisdesktop.com/"
@@ -10,7 +10,7 @@ license=('LGPLv2.1')
 depends=('qt5-base' 'qt5-imageformats' 'qt5-tools' 'qt5-declarative' 'qt5-quickcontrols' 'qt5-graphicaleffects' 'qt5-svg' 'libssh2')
 makedepends=('git' 'gcc')
 conflicts=('redis-desktop-manager-bin')
-source=('rdm::git://github.com/uglide/RedisDesktopManager.git#tag=0.8.3'
+source=('rdm::git://github.com/uglide/RedisDesktopManager.git#tag=0.8.4'
         'rdm.sh'
         'rdm.desktop')
 sha256sums=('SKIP'
