@@ -1,4 +1,5 @@
-# Maintainer: Sirat18 <aur@sirat18.de>
+# Maintainer: Christopher Loen <christopherloen at gmail dot com>
+# Contributor: Sirat18 <aur@sirat18.de>
 # Contributor: Alex Cartwright (alexc223@googlemail.com)
 # Contributor: CRT <crt.011@gmail.com>
 pkgname=skipfish
@@ -14,7 +15,6 @@ source=("http://skipfish.googlecode.com/files/${pkgname}-${pkgver}.tgz"
 
 md5sums=('8edf6092f3d1835cb4a381b7a723db8a'
          '640b24c2989f2316ac5e0926bba3b226')
-
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
@@ -25,16 +25,17 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	install -d -Dm 0755 "${pkgdir}"/usr/share/"${pkgname}"
-	install -d -Dm 0755 "${pkgdir}"/usr/share/"${pkgname}"/dictionaries
-	install -Dm 0644 dictionaries/* "${pkgdir}"/usr/share/"${pkgname}"/dictionaries/
-	install -d -Dm 0755 assets "${pkgdir}"/usr/share/"${pkgname}"/assets 
-	install -Dm 0644 assets/* "${pkgdir}"/usr/share/"${pkgname}"/assets/
-	install -d -Dm 0755 "${pkgdir}"/usr/share/"${pkgname}"/signatures
-	install -Dm 0644 signatures/* "${pkgdir}"/usr/share/"${pkgname}"/signatures/
-	install -d -Dm 0755 "${pkgdir}"/usr/bin
-	install -Dm 0755 skipfish tools/* "${pkgdir}"/usr/bin/
-	install -d -Dm 0755 "${pkgdir}"/usr/share/licenses/"${pkgname}"
-	install -Dm 0644 COPYING "${pkgdir}"/usr/share/licenses/"${pkgname}"/COPYING
-	install -Dm 0644 doc/skipfish.1 "${pkgdir}"/usr/share/man/man1/skipfish.1
+	install -dm755 "${pkgdir}/usr/share/${pkgname}"
+	install -dm755 "${pkgdir}/usr/share/${pkgname}/dictionaries"
+        cp -rf  dictionaries/* "${pkgdir}/usr/share/${pkgname}/dictionaries/"
+	install -dm755 "${pkgdir}/usr/share/${pkgname}/assets" 
+	cp -rf  assets/* "${pkgdir}/usr/share/${pkgname}/assets/"
+	install -dm755 "${pkgdir}/usr/share/${pkgname}/signatures/"
+	cp signatures/* "${pkgdir}/usr/share/${pkgname}/signatures/"
+	install -dm755 "${pkgdir}/usr/bin"
+	cp -rf  skipfish tools/* "${pkgdir}/usr/bin/"
+	install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+	cp COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+	install -dm755 "${pkgdir}/usr/share/man/man1/"
+        cp doc/skipfish.1 "${pkgdir}/usr/share/man/man1/skipfish.1"
 }
