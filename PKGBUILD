@@ -1,7 +1,7 @@
 # Maintainer: David Vilar <davvil@gmail.com>
 pkgname=vassal
 pkgver=3.2.16
-pkgrel=2
+pkgrel=3
 pkgdesc="Game engine for building and playing online adaptations of board games and card games."
 arch=('i686' 'x86_64')
 url="http://www.vassalengine.org/"
@@ -31,8 +31,6 @@ package() {
   destdir=$pkgdir/usr/share/java/$pkgname
 
   mkdir -p $destdir
-  
-  jar xf lib/Vengine.jar images/VASSAL-256x256.png
   
   cp -r doc lib $destdir
 
