@@ -9,31 +9,29 @@ license=('bsd' 'custom:Openssl')
 depends=('glibc' 'ca-certificates')
 provides=('netcat')
 conflicts=('openbsd-netcat' 'gnu-netcat')
-source=("http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz" "http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz.asc")
+source=("http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz"
+	"http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${pkgver}.tar.gz.asc")
 sha256sums=('121922b13169cd47a85e3e77f0bc129f8d04247193b42491cb1fab9074e80477'
             'SKIP')
 validpgpkeys=('A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5') # Brent Cook <bcook@openbsd.org>
 
 build() {
 cd $srcdir/libressl-${pkgver}/
-./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-nc --enable-static --with-pic=yes
+./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-nc --disable-static \
+	--disable-shared --with-pic=yes
 make
 }
 
 check() {
 cd $srcdir/libressl-${pkgver}/
-make check
+make -k check
 }
 
 package() {
 cd $srcdir/libressl-${pkgver}
 mkdir -p $pkgdir/usr/bin
-install -m 755 ./apps/nc/.libs/nc $pkgdir/usr/bin/nc
+install -m 755 ./apps/nc/nc $pkgdir/usr/bin/nc
 ln -s nc $pkgdir/usr/bin/netcat
-mkdir -p $pkgdir/usr/lib
-install -m 644 ./tls/.libs/libtls.so.11 $pkgdir/usr/lib/libtls.so.11
-install -m 644 ./crypto/.libs/libcrypto.so.38 $pkgdir/usr/lib/libcrypto.so.38
-install -m 644 ./ssl/.libs/libssl.so.39 $pkgdir/usr/lib/libssl.so.39
 mkdir -p $pkgdir/usr/share/man/man1
 install -m 644 ./apps/nc/nc.1 $pkgdir/usr/share/man/man1/nc.1
 mkdir -p $pkgdir/usr/share/licenses/$pkgname
