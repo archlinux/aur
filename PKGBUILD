@@ -33,6 +33,7 @@ ln -s nc $pkgdir/usr/bin/netcat
 mkdir -p $pkgdir/usr/lib
 install -m 644 ./tls/.libs/libtls.so.11 $pkgdir/usr/lib/libtls.so.11
 install -m 644 ./crypto/.libs/libcrypto.so.38 $pkgdir/usr/lib/libcrypto.so.38
+install -m 644 ./ssl/.libs/libssl.so.39 $pkgdir/usr/lib/libssl.so.39
 mkdir -p $pkgdir/usr/share/man/man1
 install -m 644 ./apps/nc/nc.1 $pkgdir/usr/share/man/man1/nc.1
 mkdir -p $pkgdir/usr/share/licenses/$pkgname
