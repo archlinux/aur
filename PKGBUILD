@@ -5,7 +5,7 @@
 pkgname=ran-git
 _pkgname=ran
 pkgver=6.f67d3cc 
-pkgrel=2
+pkgrel=3
 pkgdesc="record audio notes: a front end for sox written in bash"
 arch=('any')
 url="https://github.com/burt1iband/ran"
@@ -31,7 +31,7 @@ cd "${srcdir}/${_pkgname}"
      install -d "$pkgdir/etc/fluxable"
           install -m 644 fluxable.conf.org ${pkgdir}/etc/fluxable/
      install -d "$pkgdir/usr/share/doc/ran"
-          install -m 644 change-log.txt $pkgdir/usr/share/doc/ran/
+          install -m 644 change.log $pkgdir/usr/share/doc/ran/
      install -d "$pkgdir/usr/share/man/man1"
           install -m 644 ran.1.gz $pkgdir/usr/share/man/man1/
 }
