@@ -1,17 +1,17 @@
 pkgbase = valentina-studio
 	pkgdesc = MySQL, MariaDB, PostgreSQL, MS SQL Server, Valentina DB and SQLite GUI Admin Tool
-	pkgver = 6.5.6
+	pkgver = 6.5.7
 	pkgrel = 1
 	url = http://www.valentina-db.com
 	arch = i686
 	arch = x86_64
 	license = custom
 	makedepends = rpmextract
-	noextract = valentina-studio-6.5.6-x86_64.rpm
-	source_i686 = valentina-studio-6.5.6-x86_64.rpm::http://www.valentina-db.com/en/studio/download/current/vstudio_lin_32_rpm?format=raw
-	sha256sums_i686 = d6fecb319b09e37eaa12f1ae5da3e43ae4ce0a0a6657b765a2f9f6f87b3fc301
-	source_x86_64 = valentina-studio-6.5.6-x86_64.rpm::http://www.valentina-db.com/en/studio/download/current/vstudio_x64_lin-rpm?format=raw
-	sha256sums_x86_64 = 629cb4062c49625169a58d99cd128d6833c20a12808e616a00af40c002e220db
+	noextract = valentina-studio-6.5.7-x86_64.rpm
+	source_i686 = valentina-studio-6.5.7-x86_64.rpm::http://www.valentina-db.com/en/studio/download/current/vstudio_lin_32_rpm?format=raw
+	sha256sums_i686 = 444cd362de4170ab43fa0ba5d4f497bcb373b3e52f8d20436d8e72cae12e136b
+	source_x86_64 = valentina-studio-6.5.7-x86_64.rpm::http://www.valentina-db.com/en/studio/download/current/vstudio_x64_lin-rpm?format=raw
+	sha256sums_x86_64 = 1bd1462061b05180f99336122d5e9ab41c0003264fb9540329ba23eb9714f680
 
 pkgname = valentina-studio
 
