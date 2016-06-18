@@ -1,8 +1,8 @@
 # Contributor: orumin <dev@orum.in>
 
 pkgname=ttf-oradano-mincho
-upstream_name=Oradano2016-0427t
-pkgver=0.2016.0427
+upstream_name=OradanoGSRR-2016-0612
+pkgver=0.2016.0612
 pkgrel=1
 pkgdesc="Japanese Serif font from letterpress printing glyph"
 arch=('any')
@@ -12,13 +12,13 @@ depends=('fontconfig' 'xorg-font-utils')
 makedepends=('unzip')
 install=ttf.install
 source=("${pkgname}.zip::${url}${upstream_name}.zip")
-md5sums=('bd5ad559afb50c525c1f698631945e11')
+md5sums=('c7c8f7c35e3f39f64b07c19fd52cb48b')
 
 package() {
-    cd "${srcdir}/${upstream_name}"
+    cd "${srcdir}"
 
     install -d "${pkgdir}/usr/share/fonts/Oradano-Mincho/"
-    install -m644 "Oradano-mincho-t.ttf" "${pkgdir}/usr/share/fonts/Oradano-Mincho/"
+    install -m644 "OradanoGSRR.ttf" "${pkgdir}/usr/share/fonts/Oradano-Mincho/"
 
     install -d "${pkgdir}/usr/share/licenses/${pkgname}"
     install -m644 "README.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
