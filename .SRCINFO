@@ -1,0 +1,16 @@
+pkgbase = libev-static
+	pkgdesc = A full-featured and high-performance event loop (static library)
+	pkgver = 4.22
+	pkgrel = 1
+	url = http://software.schmorp.de/pkg/libev.html
+	arch = i686
+	arch = x86_64
+	license = BSD
+	depends = glibc
+	optdepends = libev: headers and pkg-config files
+	options = staticlibs
+	source = http://dist.schmorp.de/libev/libev-4.22.tar.gz
+	sha1sums = 4affcba78dc17239f2ccd84d6e3e6dec2bd1f8ba
+
+pkgname = libev-static
+
