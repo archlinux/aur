@@ -1,0 +1,21 @@
+pkgbase = createrepo
+	pkgdesc = Create rpm-metadata formatted package repositories
+	pkgver = 0.10.4
+	pkgrel = 1
+	url = https://github.com/rpm-software-management/createrepo
+	arch = any
+	license = GPL
+	checkdepends = pychecker
+	makedepends = bash-completion
+	depends = deltarpm
+	depends = libxml2
+	depends = python2
+	depends = python2-pyliblzma
+	depends = rpm-org
+	depends = yum
+	depends = yum-metadata-parser
+	source = https://github.com/rpm-software-management/createrepo/archive/createrepo-0-10-4.tar.gz
+	md5sums = d5a31a4a075010d5c2e51fbf631a368f
+
+pkgname = createrepo
+
