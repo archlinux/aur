@@ -1,77 +1,12 @@
---- bombono-dvd-1.2.2/src/mgui/dvdimport.cpp	2015-11-20 18:22:23.123778752 +0330
-+++ new/src/mgui/dvdimport.cpp	2015-11-20 18:22:11.813779436 +0330
+diff -ruN old/src/mgui/dvdimport.cpp new/src/mgui/dvdimport.cpp
+--- old/src/mgui/dvdimport.cpp	2016-04-10 15:15:39.000000000 +0430
++++ new/src/mgui/dvdimport.cpp	2016-06-18 10:52:35.713230871 +0430
 @@ -275,7 +275,7 @@
          id.errLbl.hide();
  
      id.reader = rd;
 -    SetCurPageComplete(id.ast, id.reader);
-+    SetCurPageComplete(id.ast, id.reader != nullptr);
++    SetCurPageComplete(id.ast, bool(id.reader));
  
      return rd;
  }
---- bombono-dvd-1.2.2/src/mgui/author/script.cpp	2013-03-08 00:50:45.000000000 +0330
-+++ new/src/mgui/author/script.cpp	2015-11-20 18:29:40.877085620 +0330
-@@ -279,7 +279,7 @@
- 
-     ASSERT_RTL( vi || mn );
-     // VTS domain
--    bool is_video = vi;
-+    bool is_video = vi != nullptr;
-     const PostAction& pa = is_video ? vi->PAction() : mn->MtnData().pAct ;
- 
-     std::string jnt_cmd;
---- bombono-dvd-1.2.2/src/mgui/project/add.cpp	2013-03-08 00:50:45.000000000 +0330
-+++ new/src/mgui/project/add.cpp	2015-11-20 18:40:01.493714764 +0330
-@@ -415,7 +415,7 @@
- {
-     std::string err_str;
-     Gtk::TreePath pth;
--    bool res = TryAddMedia(fname.c_str(), pth, err_str);
-+    bool res = TryAddMedia(fname.c_str(), pth, err_str) != nullptr;
-     if( !res )
-     {    
-         LOG_ERR << "TryAddMediaQuiet error (" << desc << "): " << err_str << io::endl;
-@@ -538,7 +538,7 @@
-             continue;
-         }
- 
--        bool res = TryAddMedia(fpath.c_str(), brw_pth, err_str, insert_after);
-+        bool res = TryAddMedia(fpath.c_str(), brw_pth, err_str, insert_after) != nullptr;
-         if( res )
-         {
-             insert_after = true; // вставляем друг за другом
---- bombono-dvd-1.2.2/src/mgui/project/media-browser.cpp	2013-03-08 00:50:45.000000000 +0330
-+++ new/src/mgui/project/media-browser.cpp	2015-11-20 19:06:49.926950853 +0330
-@@ -854,7 +854,7 @@
-     Gtk::MenuItem& ea_itm = AppendMI(mn, NewManaged<Gtk::MenuItem>(_("End Action")));
-     // только видео
-     VideoItem vi = IsVideo(mi);
--    if( SetEnabled(ea_itm, vi) )
-+    if( SetEnabled(ea_itm, vi != nullptr) )
-         ea_itm.set_submenu(EndActionMenuBld(vi->PAction(), boost::function_identity,
-                                             VideoAddConstantChoice).Create());
- 
-@@ -863,10 +863,10 @@
-     // калькулятор
-     AddDialogItem(mn, DialogParams(_("Bitrate Calculator"), bb::bind(&RunBitrateCalc, vi, _1, b::ref(brw)), 
-                                    350, &brw), tr_enabled);
--    AddEnabledItem(mn, _("Reason For Transcoding"), bb::bind(&ShowDVDCompliantStatus, vi), vi);
-+    AddEnabledItem(mn, _("Reason For Transcoding"), bb::bind(&ShowDVDCompliantStatus, vi), vi != nullptr);
-     AppendSeparator(mn);
- 
--    AddDialogItem(mn, SubtitlesDialog(vi, &brw), vi);
-+    AddDialogItem(mn, SubtitlesDialog(vi, &brw), vi != nullptr);
- 
-     Popup(mn, event, true);
- }
---- bombono-dvd-1.2.2/src/mgui/project/thumbnail.cpp	2013-03-08 00:50:45.000000000 +0330
-+++ new/src/mgui/project/thumbnail.cpp	2015-11-20 19:22:23.963561051 +0330
-@@ -410,7 +410,7 @@
- {
-     if( AData().FirstPlayItem() != mi )
-         return;
--    bool is_menu = IsMenu(mi);
-+    bool is_menu = IsMenu(mi) != nullptr;
-     RefPtr<Gdk::Pixbuf> emblem = GetCheckEmblem(pix, is_menu 
-                                                 ? "copy-n-paste/HelixPlayer_Activity-watch-listen/28.png" 
-                                                 : "copy-n-paste/HelixPlayer_Activity-watch-listen/16.png");

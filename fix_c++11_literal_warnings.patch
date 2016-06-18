@@ -1,5 +1,6 @@
---- bombono-dvd-1.2.2/src/mlib/regex.h	2013-03-08 00:50:45.000000000 +0330
-+++ new/src/mlib/regex.h	2015-11-20 18:37:26.167057488 +0330
+diff -ruN old/src/mlib/regex.h new/src/mlib/regex.h
+--- old/src/mlib/regex.h	2016-04-10 15:15:39.000000000 +0430
++++ new/src/mlib/regex.h	2016-06-18 11:02:30.666528235 +0430
 @@ -185,7 +185,7 @@
  #define RG_EW "\\>"           // конец  слова
  #define RG_SPS "[[:space:]]*" // пробелы
@@ -9,8 +10,9 @@
  #define RG_CMD_BEG RG_BW // "^"RG_SPS  // начало команды
  
  bool ExtractDouble(double& val, const re::match_results& what, int idx = 1);
---- bombono-dvd-1.2.2/src/mgui/author/burn.cpp	2013-03-08 00:50:45.000000000 +0330
-+++ new/src/mgui/author/burn.cpp	2015-11-20 18:44:47.940364110 +0330
+diff -ruN old/src/mgui/author/burn.cpp new/src/mgui/author/burn.cpp
+--- old/src/mgui/author/burn.cpp	2016-04-10 15:15:39.000000000 +0430
++++ new/src/mgui/author/burn.cpp	2016-06-18 11:04:08.113189012 +0430
 @@ -85,7 +85,7 @@
      return bd;
  }
@@ -38,8 +40,9 @@
              bool is_found = re::search(out_info, what, media_status_re);
              ASSERT_RTL( is_found );
  
---- bombono-dvd-1.2.2/src/mgui/author/execute.cpp	2013-03-08 00:50:45.000000000 +0330
-+++ new/src/mgui/author/execute.cpp	2015-11-20 18:47:25.260354601 +0330
+diff -ruN old/src/mgui/author/execute.cpp new/src/mgui/author/execute.cpp
+--- old/src/mgui/author/execute.cpp	2016-04-10 15:15:39.000000000 +0430
++++ new/src/mgui/author/execute.cpp	2016-06-18 11:07:03.359845082 +0430
 @@ -64,9 +64,9 @@
      tag->property_foreground() = "darkgreen";
  }
@@ -82,8 +85,9 @@
      if( re::search(line, what, ch_error_re) )
      {
          std::string& err_str = of.firstError;
---- bombono-dvd-1.2.2/src/mgui/author/render.cpp	2013-03-08 00:50:45.000000000 +0330
-+++ new/src/mgui/author/render.cpp	2015-11-20 18:50:40.550342794 +0330
+diff -ruN old/src/mgui/author/render.cpp new/src/mgui/author/render.cpp
+--- old/src/mgui/author/render.cpp	2016-04-10 15:15:39.000000000 +0430
++++ new/src/mgui/author/render.cpp	2016-06-18 11:08:43.919839004 +0430
 @@ -866,7 +866,7 @@
              // 
              // :KLUDGE: (только) в ffmpeg, avformat 53.13.0, поменяли . на : => надо
@@ -123,8 +127,9 @@
          % avlib_name % bf::stop;
      re::pattern avfilter_version(reg_str.c_str());
      return FindVersion(conts, avfilter_version, AVCnvBin(), avlib_name);
---- bombono-dvd-1.2.2/src/mgui/author/script.cpp	2015-11-20 18:40:35.770379359 +0330
-+++ new/src/mgui/author/script.cpp	2015-11-20 19:02:42.020299175 +0330
+diff -ruN old/src/mgui/author/script.cpp new/src/mgui/author/script.cpp
+--- old/src/mgui/author/script.cpp	2016-04-10 15:15:39.000000000 +0430
++++ new/src/mgui/author/script.cpp	2016-06-18 11:09:54.899834712 +0430
 @@ -755,9 +755,9 @@
  // ffmpeg выводит статистику первого создаваемого файла каждые полсекунды,
  // см. print_report() (при verbose=1, по умолчанию)
@@ -155,8 +160,9 @@
              if( IsVersionGE(FindVersion(help_str, spumux_version, "spumux"), TripleVersion(0, 7, 0)) )
                  AddFormatAttr(sp);
  
---- bombono-dvd-1.2.2/src/mgui/project/browser.cpp	2013-03-08 00:50:45.000000000 +0330
-+++ new/src/mgui/project/browser.cpp	2015-11-20 19:03:52.983628220 +0330
+diff -ruN old/src/mgui/project/browser.cpp new/src/mgui/project/browser.cpp
+--- old/src/mgui/project/browser.cpp	2016-04-10 15:15:39.000000000 +0430
++++ new/src/mgui/project/browser.cpp	2016-06-18 11:10:21.113166461 +0430
 @@ -328,7 +328,7 @@
      return hb;
  }

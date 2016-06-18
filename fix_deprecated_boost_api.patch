@@ -1,6 +1,6 @@
-diff -ru bombono-dvd-1.2.2/src/mbase/project/table.cpp new/src/mbase/project/table.cpp
---- bombono-dvd-1.2.2/src/mbase/project/table.cpp	2013-03-08 00:50:45.000000000 +0330
-+++ new/src/mbase/project/table.cpp	2016-01-19 13:02:00.117338769 +0330
+diff -ruN old/src/mbase/project/table.cpp new/src/mbase/project/table.cpp
+--- old/src/mbase/project/table.cpp	2016-06-18 11:19:57.649798271 +0430
++++ new/src/mbase/project/table.cpp	2016-06-18 11:26:53.226439812 +0430
 @@ -154,7 +154,7 @@
  void SerializePath(Archieve& ar, const char* tag_name, std::string& fpath)
  {
@@ -10,69 +10,6 @@ diff -ru bombono-dvd-1.2.2/src/mbase/project/table.cpp new/src/mbase/project/tab
      if( ar.IsLoad() )
      {
          ar >> NameValue(tag_name, fpath);
-diff -ru bombono-dvd-1.2.2/src/mgui/author/script.cpp new/src/mgui/author/script.cpp
---- bombono-dvd-1.2.2/src/mgui/author/script.cpp	2016-01-19 12:54:07.640700667 +0330
-+++ new/src/mgui/author/script.cpp	2016-01-19 12:59:52.407346489 +0330
-@@ -676,7 +676,7 @@
-     if( !fs::exists(font_path) )
-     {
-         std::string err_str;
--        if( !CreateDirs(font_path.branch_path(), err_str) )
-+        if( !CreateDirs(font_path.parent_path(), err_str) )
-             Error(err_str.c_str());
-         fs::copy_file(DataDirPath("copy-n-paste/FreeSans.ttf"), font_path);
-     }
-diff -ru bombono-dvd-1.2.2/src/mgui/mux.cpp new/src/mgui/mux.cpp
---- bombono-dvd-1.2.2/src/mgui/mux.cpp	2013-03-08 00:50:45.000000000 +0330
-+++ new/src/mgui/mux.cpp	2016-01-19 12:58:22.840685236 +0330
-@@ -162,7 +162,7 @@
-     fs::path pth = GetFilename(v_btn);
-     if( pth.empty() )
-         return;
--    std::string folder = pth.branch_path().string();
-+    std::string folder = pth.parent_path().string();
- 
-     if( a_btn.get_filename().empty() )
-         a_btn.set_current_folder(folder);
-diff -ru bombono-dvd-1.2.2/src/mgui/project/add.cpp new/src/mgui/project/add.cpp
---- bombono-dvd-1.2.2/src/mgui/project/add.cpp	2016-01-19 12:54:07.634034002 +0330
-+++ new/src/mgui/project/add.cpp	2016-01-19 13:00:49.220676388 +0330
-@@ -479,7 +479,7 @@
-                 MessageBox(BF_("The file \"%1%\" looks like VOB from DVD.\nRun import?") % leaf % bf::stop,
-                            Gtk::MESSAGE_QUESTION, Gtk::BUTTONS_OK_CANCEL) == Gtk::RESPONSE_OK )
-             {
--                DVD::RunImport(*GetTopWindow(brw), pth.branch_path().string());
-+                DVD::RunImport(*GetTopWindow(brw), pth.parent_path().string());
-                 return;
-             }
-         }
-diff -ru bombono-dvd-1.2.2/src/mgui/project/serialize.cpp new/src/mgui/project/serialize.cpp
---- bombono-dvd-1.2.2/src/mgui/project/serialize.cpp	2013-03-08 00:50:45.000000000 +0330
-+++ new/src/mgui/project/serialize.cpp	2016-01-19 13:00:29.230677594 +0330
-@@ -73,7 +73,7 @@
-     fs::path full_path(db.GetProjectFName());
-     std::string res_str = fs::name_str(full_path);
-     if( with_path_breakdown )
--        res_str += " (" + full_path.branch_path().string() + ")";
-+        res_str += " (" + full_path.parent_path().string() + ")";
-     return res_str;
- }
- 
-diff -ru bombono-dvd-1.2.2/src/mgui/timeline/select.cpp new/src/mgui/timeline/select.cpp
---- bombono-dvd-1.2.2/src/mgui/timeline/select.cpp	2013-03-08 00:50:45.000000000 +0330
-+++ new/src/mgui/timeline/select.cpp	2016-01-19 12:59:12.187348923 +0330
-@@ -152,7 +152,7 @@
- 
-         mon.FramePixbuf()->save(fnam, ext);
- 
--        SaveFrameDir() = fs::path(fnam).branch_path().string();
-+        SaveFrameDir() = fs::path(fnam).parent_path().string();
-         if( add_btn.get_active() )
-             Project::TryAddMediaQuiet(fnam, "SaveFrame");
-     }
-diff -ru bombono-dvd-1.2.2/src/mbase/project/table.cpp new/src/mbase/project/table.cpp
---- bombono-dvd-1.2.2/src/mbase/project/table.cpp	2016-01-19 13:11:42.883970202 +0330
-+++ new/src/mbase/project/table.cpp	2016-01-19 13:42:58.317190146 +0330
 @@ -162,7 +162,7 @@
          if( !fpath.empty() )
          {
@@ -82,9 +19,69 @@ diff -ru bombono-dvd-1.2.2/src/mbase/project/table.cpp new/src/mbase/project/tab
                  fpath = (rel_to_dir/fpath).string();
          }
      }
-diff -ru bombono-dvd-1.2.2/src/mbase/project/tests/test_table.cpp new/src/mbase/project/tests/test_table.cpp
---- bombono-dvd-1.2.2/src/mbase/project/tests/test_table.cpp	2013-03-08 00:50:45.000000000 +0330
-+++ new/src/mbase/project/tests/test_table.cpp	2016-01-19 13:42:16.977192649 +0330
+diff -ruN old/src/mgui/author/script.cpp new/src/mgui/author/script.cpp
+--- old/src/mgui/author/script.cpp	2016-06-18 11:19:57.656464937 +0430
++++ new/src/mgui/author/script.cpp	2016-06-18 11:24:46.063114167 +0430
+@@ -676,7 +676,7 @@
+     if( !fs::exists(font_path) )
+     {
+         std::string err_str;
+-        if( !CreateDirs(font_path.branch_path(), err_str) )
++        if( !CreateDirs(font_path.parent_path(), err_str) )
+             Error(err_str.c_str());
+         fs::copy_file(DataDirPath("copy-n-paste/FreeSans.ttf"), font_path);
+     }
+diff -ruN old/src/mgui/mux.cpp new/src/mgui/mux.cpp
+--- old/src/mgui/mux.cpp	2016-06-18 11:19:57.653131605 +0430
++++ new/src/mgui/mux.cpp	2016-06-18 11:25:09.986446054 +0430
+@@ -162,7 +162,7 @@
+     fs::path pth = GetFilename(v_btn);
+     if( pth.empty() )
+         return;
+-    std::string folder = pth.branch_path().string();
++    std::string folder = pth.parent_path().string();
+ 
+     if( a_btn.get_filename().empty() )
+         a_btn.set_current_folder(folder);
+diff -ruN old/src/mgui/project/add.cpp new/src/mgui/project/add.cpp
+--- old/src/mgui/project/add.cpp	2016-06-18 11:19:57.656464937 +0430
++++ new/src/mgui/project/add.cpp	2016-06-18 11:25:30.836444794 +0430
+@@ -479,7 +479,7 @@
+                 MessageBox(BF_("The file \"%1%\" looks like VOB from DVD.\nRun import?") % leaf % bf::stop,
+                            Gtk::MESSAGE_QUESTION, Gtk::BUTTONS_OK_CANCEL) == Gtk::RESPONSE_OK )
+             {
+-                DVD::RunImport(*GetTopWindow(brw), pth.branch_path().string());
++                DVD::RunImport(*GetTopWindow(brw), pth.parent_path().string());
+                 return;
+             }
+         }
+diff -ruN old/src/mgui/project/serialize.cpp new/src/mgui/project/serialize.cpp
+--- old/src/mgui/project/serialize.cpp	2016-06-18 11:19:57.656464937 +0430
++++ new/src/mgui/project/serialize.cpp	2016-06-18 11:25:56.913109885 +0430
+@@ -73,7 +73,7 @@
+     fs::path full_path(db.GetProjectFName());
+     std::string res_str = fs::name_str(full_path);
+     if( with_path_breakdown )
+-        res_str += " (" + full_path.branch_path().string() + ")";
++        res_str += " (" + full_path.parent_path().string() + ")";
+     return res_str;
+ }
+ 
+diff -ruN old/src/mgui/timeline/select.cpp new/src/mgui/timeline/select.cpp
+--- old/src/mgui/timeline/select.cpp	2016-06-18 11:19:57.659798271 +0430
++++ new/src/mgui/timeline/select.cpp	2016-06-18 11:26:26.869774739 +0430
+@@ -152,7 +152,7 @@
+ 
+         mon.FramePixbuf()->save(fnam, ext);
+ 
+-        SaveFrameDir() = fs::path(fnam).branch_path().string();
++        SaveFrameDir() = fs::path(fnam).parent_path().string();
+         if( add_btn.get_active() )
+             Project::TryAddMediaQuiet(fnam, "SaveFrame");
+     }
+diff -ruN old/src/mbase/project/tests/test_table.cpp new/src/mbase/project/tests/test_table.cpp
+--- old/src/mbase/project/tests/test_table.cpp	2016-06-18 11:19:57.649798271 +0430
++++ new/src/mbase/project/tests/test_table.cpp	2016-06-18 11:27:15.263105145 +0430
 @@ -129,7 +129,7 @@
          // проверка чтения/записи путей
          boost::intrusive_ptr<StillImageMD> pict2 = ptr::dynamic_pointer_cast<StillImageMD>(ml[2]);
@@ -94,9 +91,9 @@ diff -ru bombono-dvd-1.2.2/src/mbase/project/tests/test_table.cpp new/src/mbase/
          BOOST_CHECK( fs::exists(pth) );
  
          // проверка ссылок
-diff -ru bombono-dvd-1.2.2/src/mlib/tests/test_utils.cpp new/src/mlib/tests/test_utils.cpp
---- bombono-dvd-1.2.2/src/mlib/tests/test_utils.cpp	2013-03-08 00:50:45.000000000 +0330
-+++ new/src/mlib/tests/test_utils.cpp	2016-01-19 13:23:58.830592369 +0330
+diff -ruN old/src/mlib/tests/test_utils.cpp new/src/mlib/tests/test_utils.cpp
+--- old/src/mlib/tests/test_utils.cpp	2016-06-18 11:19:57.663131604 +0430
++++ new/src/mlib/tests/test_utils.cpp	2016-06-18 11:28:13.619768287 +0430
 @@ -139,17 +139,17 @@
  #endif
      }
@@ -120,9 +117,9 @@ diff -ru bombono-dvd-1.2.2/src/mlib/tests/test_utils.cpp new/src/mlib/tests/test
      }
  
      // MakeRelativeToDir
-diff -ru bombono-dvd-1.2.2/src/mlib/filesystem.cpp new/src/mlib/filesystem.cpp
---- bombono-dvd-1.2.2/src/mlib/filesystem.cpp	2013-03-08 00:50:45.000000000 +0330
-+++ new/src/mlib/filesystem.cpp	2016-01-19 14:02:05.303787474 +0330
+diff -ruN old/src/mlib/filesystem.cpp new/src/mlib/filesystem.cpp
+--- old/src/mlib/filesystem.cpp	2016-06-18 11:19:57.659798271 +0430
++++ new/src/mlib/filesystem.cpp	2016-06-18 11:30:15.303094263 +0430
 @@ -161,25 +161,16 @@
  
  fs::path MakeAbsolutePath(const fs::path& pth, const fs::path& cur_dir)

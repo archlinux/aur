@@ -2,8 +2,8 @@
 # Contributor: Sirocco <sirocco at ngs dot ru>
 
 pkgname=bombono-dvd
-pkgver=1.2.2
-pkgrel=8
+pkgver=1.2.4
+pkgrel=1
 pkgdesc="DVD authoring program with nice and clean GUI"
 arch=('i686' 'x86_64')
 url="http://www.bombono.org"
@@ -13,32 +13,28 @@ depends=('gtk2' 'gtkmm' 'mjpegtools' 'ffmpeg' 'libdvdread' 'dvdauthor' \
 makedepends=('scons')
 optdepends=('gvfs: web browser integration')
 conflicts=('bombono-dvd-git')
-source=(http://downloads.sourceforge.net/bombono/$pkgname-$pkgver.tar.bz2
-        fix_ffmpeg_codecid.patch bombono-dvd-1.2.2-ffmpeg26.patch
-        fix_ptr2bool_cast.patch fix_c++11_literal_warnings.patch fix_crefoftemp_bug.patch
-        autoptr2uniqueptr.patch stream_bool_cast.patch
-        fix_deprecated_boost_api.patch fix_ffmpeg30.patch)
+source=("https://github.com/muravjov/${pkgname}/archive/${pkgver}.tar.gz"
+        "fix_ffmpeg_codecid.patch"
+        "fix_ptr2bool_cast.patch"
+        "fix_c++11_literal_warnings.patch"
+        "autoptr2uniqueptr.patch"
+        "fix_deprecated_boost_api.patch"
+        "fix_ffmpeg30.patch")
 install=bombono-dvd.install
-sha256sums=('3ffaadc803dc2526d2805629ee928800ce150cb2e6a40b6724d898c76366f68b'
-            'decc8f9261b0fcd18780080438c9fc4297d56a281355f195a5dee9a92abf474a'
-            'ee89adeff7bd19d731eac96c180d5d59766bb3a68f3b21b898199e1cb6c5639e'
-            '9471454c97d8b91b4234085f1eabc625d9e23e76a91266b205dc3f79553322b9'
-            '31dfc5400d450490a53bbd386bafb59d68a9a2d6f9036755419d3be035aa87be'
-            '0ea8ad5ccf64d30d0463e9bde5b07abdedd00e2da2fa7f3f72de99aa3915a64c'
-            '9214f838377cdf35bf1f151e4eaac10952049ccff4d74ca485fc8b6f05bc8ba4'
-            '62d0f56ab4c2512bf004756426da6bf63cc0bd134ae6bc60304cc20116277e27'
-            '8abd4e79a34a4d919060443439127cca95412d79534eef6554c300f55a0425ed'
-            'e345c0788991e6c6b5eaf0f271db4b0d9c0c0ff42757a4d67ebc023d352acc15')
+sha256sums=('4f8c882a0c359ca8c182a627885c64aa271820eead2f9a64b34f1625c3b0a9d7'
+            '63e47ffb812acb33a4d1f5d7f421eb2ccdf3ee1ce1b7f75267c32079dbc9dea1'
+            'b0ff83b2fad27e39dfd77d12e00c25e554fe86ee1894c2f8fbe1915a2c46dd88'
+            '28be98eb36eb6422717df7048c8ee74927495e7d7829e17cb54d746befc238c4'
+            '4c29e9b19ba3bcf8c42c46aaea6c1411580629e581307a91f4d085fcdaa6eab6'
+            'a69f51f9d5bd6ebe26c13abeece9de012d110dcec944c76efbab59b6bc0ef915'
+            'f6fd3a309987ac08b6f70132686c5a06bc7496fb6e1097539d6348f558d09502')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
   patch -Np1 -i "${srcdir}/fix_ffmpeg_codecid.patch"
-  patch -Np1 -i "${srcdir}/bombono-dvd-1.2.2-ffmpeg26.patch"
   patch -Np1 -i "${srcdir}/fix_ptr2bool_cast.patch"
   patch -Np1 -i "${srcdir}/fix_c++11_literal_warnings.patch"
-  patch -Np1 -i "${srcdir}/fix_crefoftemp_bug.patch"
   patch -Np1 -i "${srcdir}/autoptr2uniqueptr.patch"
-  patch -Np1 -i "${srcdir}/stream_bool_cast.patch"
   patch -Np1 -i "${srcdir}/fix_deprecated_boost_api.patch"
   patch -Np1 -i "${srcdir}/fix_ffmpeg30.patch"
   # python2 fix
@@ -63,7 +59,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  scons  PREFIX="/usr" DESTDIR="$pkgdir" CPPFLAGS="-std=c++11 -DBOOST_SYSTEM_NO_DEPRECATED -DBOOST_FILESYSTEM_NO_DEPRECATED -DBOOST_FILESYSTEM_VERSION=3" USE_EXT_BOOST=1
+  scons  PREFIX="/usr" DESTDIR="$pkgdir" CPPFLAGS="-std=c++14 -DBOOST_SYSTEM_NO_DEPRECATED -DBOOST_FILESYSTEM_NO_DEPRECATED -DBOOST_FILESYSTEM_VERSION=3" USE_EXT_BOOST=1
 }
 
 package() {

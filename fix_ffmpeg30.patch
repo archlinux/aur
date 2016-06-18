@@ -1,6 +1,6 @@
-diff -ruN bombono-dvd-1.2.2.orig/src/mgui/ffviewer.cpp bombono-dvd-1.2.2/src/mgui/ffviewer.cpp
---- bombono-dvd-1.2.2.orig/src/mgui/ffviewer.cpp	2016-03-12 08:58:15.027051299 +0330
-+++ bombono-dvd-1.2.2/src/mgui/ffviewer.cpp	2016-03-12 10:47:50.869987067 +0330
+diff -ruN old/src/mgui/ffviewer.cpp new/src/mgui/ffviewer.cpp
+--- old/src/mgui/ffviewer.cpp	2016-06-18 11:37:10.409735832 +0430
++++ new/src/mgui/ffviewer.cpp	2016-06-18 11:45:40.343038336 +0430
 @@ -36,6 +36,10 @@
  #define AVFORMAT_54
  #endif
@@ -12,39 +12,7 @@ diff -ruN bombono-dvd-1.2.2.orig/src/mgui/ffviewer.cpp bombono-dvd-1.2.2/src/mgu
  // разрабы libav считают себя самыми умными и потому решили
  // закрыть простым смертным доступ к ffurl_register_protocol() 
  // (бывшая av_register_protocol2()),- https://bugzilla.libav.org/show_bug.cgi?id=224
-@@ -639,7 +643,9 @@
-         // лучшая оптимизация выбирается на этапе выполнения, а не сборке; однако для 0.6 времени
-         // maverick оно еще не доделано, см. http://ffmpeg.arrozcru.org/forum/viewtopic.php?f=1&t=1185
-         // :KLUDGE: потому добавляем явно
--        sws_flags |= SWS_CPU_CAPS_MMX|SWS_CPU_CAPS_MMX2;
-+
-+        // CPU_CAPS are now auto-detected
-+        //sws_flags |= SWS_CPU_CAPS_MMX|SWS_CPU_CAPS_MMX2;
- 
-         // :TRICKY: почему-то ffmpeg'у "нравится" BGR24 и не нравиться RGB24 в плане использования
-         // MMX (ускорения); цена по времени неизвестна,- используем только ради того, чтобы не было 
-@@ -647,15 +653,16 @@
-         // Другой вариант - PIX_FMT_RGB32, но там зависимый порядок байтов (в GdkPixbuf - нет) и
-         // мы нацелены на RGB24
-         // :TODO: с версии LIBSWSCALE_VERSION_INT >= 0.8.11 появился прямой yuv -> rgb24, поправить
--        PixelFormat dst_pf = PIX_FMT_BGR24; // PIX_FMT_RGB24;
-+        AVPixelFormat dst_pf = AV_PIX_FMT_BGR24; // PIX_FMT_RGB24;
-         rgbCnvCtx = sws_getContext(sz.x, sz.y, GetVideoCtx(*this)->pix_fmt, sz.x, sz.y,
-             dst_pf, sws_flags, 0, 0, 0);
-         ASSERT( rgbCnvCtx );
-     
-         Point dst_sz(sz);
--        rgbBuf = (uint8_t*)av_malloc(avpicture_get_size(dst_pf, dst_sz.x, dst_sz.y) * sizeof(uint8_t));
--        avcodec_get_frame_defaults(&rgbFrame); // не помешает
--        avpicture_fill((AVPicture*)&rgbFrame, rgbBuf, dst_pf, dst_sz.x, dst_sz.y);
-+        rgbBuf = (uint8_t*)av_malloc (av_image_get_buffer_size (dst_pf, dst_sz.x, dst_sz.y, 1));
-+        av_frame_unref (&rgbFrame);
-+        av_image_fill_arrays (rgbFrame.data, rgbFrame.linesize,
-+            rgbBuf, dst_pf, dst_sz.x, dst_sz.y, 1);
-     }
-     else
-         // защита от неполных открытий
-@@ -765,7 +772,7 @@
+@@ -807,7 +811,7 @@
  #ifdef AVFRAME_INIT_CHANGE
      // avcodec_get_frame_defaults() перенесли в avcodec_decode_video2()
  #else
@@ -53,16 +21,3 @@ diff -ruN bombono-dvd-1.2.2.orig/src/mgui/ffviewer.cpp bombono-dvd-1.2.2/src/mgu
  #endif
  
  #if LIBAVCODEC_VERSION_INT >= AV_VERSION_INT(52,25,00)
-@@ -841,7 +848,11 @@
-             
-             DoVideoDecode(ffv, got_picture, &pkt);
-         }
--        av_free_packet(&pkt);
-+        if (pkt.buf)
-+          av_buffer_unref (&pkt.buf);
-+        pkt.data = nullptr;
-+        pkt.size = 0;
-+        av_packet_free_side_data (&pkt);
-     }
-     else if( av_res == (int)AVERROR_EOF ) // для mpegts также -EIO приходит
-     {

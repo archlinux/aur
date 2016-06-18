@@ -1,7 +1,7 @@
 diff -u -r -N old/src/mgui/ffviewer.cpp new/src/mgui/ffviewer.cpp
---- old/src/mgui/ffviewer.cpp   2013-03-07 22:20:45.000000000 +0100
-+++ new/src/mgui/ffviewer.cpp   2013-08-14 08:56:12.917285000 +0200
-@@ -62,7 +62,7 @@
+--- old/src/mgui/ffviewer.cpp	2016-04-10 15:15:39.000000000 +0430
++++ new/src/mgui/ffviewer.cpp	2016-06-18 10:40:26.789941610 +0430
+@@ -74,7 +74,7 @@
  
  typedef struct AVCodecTag {
  #if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(52,39,00)
@@ -10,7 +10,7 @@ diff -u -r -N old/src/mgui/ffviewer.cpp new/src/mgui/ffviewer.cpp
  #else
      int id;
  #endif
-@@ -70,14 +70,14 @@
+@@ -82,14 +82,14 @@
  } AVCodecTag;
  
  #if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(52,34,00)
@@ -27,7 +27,7 @@ diff -u -r -N old/src/mgui/ffviewer.cpp new/src/mgui/ffviewer.cpp
  {
      unsigned int codec_get_tag(const AVCodecTag *tags, int id);
      extern const AVCodecTag codec_bmp_tags[];
-@@ -388,7 +388,7 @@
+@@ -400,7 +400,7 @@
      return (tag>>bit_begin) & 0xFF;
  }
  
@@ -36,12 +36,3 @@ diff -u -r -N old/src/mgui/ffviewer.cpp new/src/mgui/ffviewer.cpp
  {
  #ifdef _MSC_VER
      std::string tag_str = boost::format("%1%") % codec_id % bf::stop;
-@@ -406,7 +406,7 @@
- 
- #else // CALC_FF_TAG
- 
--static std::string CodecID2Str(CodecID codec_id)
-+static std::string CodecID2Str(AVCodecID codec_id)
- {
-     return Int2Str(codec_id);
- }

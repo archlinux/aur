@@ -1,5 +1,6 @@
---- bombono-dvd-1.2.2/libs/boost-logging/boost/logging/detail/tss/tss_impl_pthread.hpp	2013-03-08 00:50:45.000000000 +0330
-+++ new/libs/boost-logging/boost/logging/detail/tss/tss_impl_pthread.hpp	2015-11-26 20:06:48.693423531 +0330
+diff -ruN old/libs/boost-logging/boost/logging/detail/tss/tss_impl_pthread.hpp new/libs/boost-logging/boost/logging/detail/tss/tss_impl_pthread.hpp
+--- old/libs/boost-logging/boost/logging/detail/tss/tss_impl_pthread.hpp	2016-04-10 15:15:39.000000000 +0430
++++ new/libs/boost-logging/boost/logging/detail/tss/tss_impl_pthread.hpp	2016-06-18 11:18:42.736469469 +0430
 @@ -39,7 +39,7 @@
      slots = static_cast<tss_slots*>( pthread_getspecific(tss_data_native_key()));
      if (slots == 0)
