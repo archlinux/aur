@@ -1,0 +1,21 @@
+--- Makefile.orig	2016-06-22 10:28:31.839738730 +0200
++++ Makefile	2016-06-22 10:29:10.636809346 +0200
+@@ -65,7 +65,6 @@
+ 	ln -sf ../share/monkeysphere/keytrans $(DESTDIR)$(PREFIX)/bin/openpgp2ssh
+ 	ln -sf ../share/monkeysphere/keytrans $(DESTDIR)$(PREFIX)/bin/openpgp2pem
+ 	ln -sf ../share/monkeysphere/keytrans $(DESTDIR)$(PREFIX)/bin/openpgp2spki
+-	install -m 0755 src/agent-transfer/agent-transfer $(DESTDIR)$(PREFIX)/bin
+ 	install -m 0744 src/transitions/* $(DESTDIR)$(PREFIX)/share/monkeysphere/transitions
+ 	sed -i 's:__SYSSHAREDIR_PREFIX__:$(PREFIX):' $(DESTDIR)$(PREFIX)/share/monkeysphere/transitions/0.23
+ 	sed -i 's:__SYSSHAREDIR_PREFIX__:$(PREFIX):' $(DESTDIR)$(PREFIX)/share/monkeysphere/transitions/0.28
+@@ -83,7 +82,9 @@
+ installman:
+ 	mkdir -p $(DESTDIR)$(MANPREFIX)/man1 $(DESTDIR)$(MANPREFIX)/man7 $(DESTDIR)$(MANPREFIX)/man8
+ 	gzip -n man/*/*
+-	install man/man1/* $(DESTDIR)$(MANPREFIX)/man1
++	install man/man1/monkeysphere.1.gz $(DESTDIR)$(MANPREFIX)/man1
++	install man/man1/openpgp2ssh.1.gz $(DESTDIR)$(MANPREFIX)/man1
++	install man/man1/openpgp2ssh.1.gz $(DESTDIR)$(MANPREFIX)/man1
+ 	install man/man7/* $(DESTDIR)$(MANPREFIX)/man7
+ 	install man/man8/* $(DESTDIR)$(MANPREFIX)/man8
+ 	ln -s openpgp2ssh.1.gz $(DESTDIR)$(MANPREFIX)/man1/openpgp2pem.1.gz

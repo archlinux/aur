@@ -5,22 +5,20 @@
 # arg 1:  the new package version
 post_install() {
   echo ">>> Creating monkeysphere user and group and setting permissions..."
-  getent group monkeysphere >/dev/null || groupadd monkeysphere
-  getent passwd monkeysphere >/dev/null ||useradd -c 'Monkeysphere WoT server identification tool' -g monkeysphere -d '/var/lib/monkeysphere' -s /bin/bash monkeysphere
+    getent group monkeysphere >/dev/null || groupadd -r monkeysphere
+    getent passwd monkeysphere >/dev/null ||useradd -r -c 'Monkeysphere WoT server identification tool' -g monkeysphere -d '/var/lib/monkeysphere' -s /bin/bash monkeysphere
+	echo ">>> Trying all available transitions..."
+    for trans in 0.23 0.28 ; do
+        /usr/share/monkeysphere/transitions/$trans || { \
+            RET=$?
+            echo "Failed running transition script /usr/share/monkeysphere/transitions/$trans" >&2
+            exit $RET
+        }
+    done
 
-# Should be root:root for sshd to work
-  chown root:root /var/lib/monkeysphere
 }
 
-# arg 1:  the new package version
-# arg 2:  the old package version
-post_upgrade() {
-# Should be root:root for sshd to work
-  chown root:root /var/lib/monkeysphere
-}
-
-# arg 1:  the old package version
 pre_remove() {
-  userdel monkeysphere &>/dev/null
-  (getent group monkeysphere >/dev/null && groupdel monkeysphere &>/dev/null) || /bin/true
-}
+  echo ">>> /var/lib/monkeysphere files and folder will be left in place,
+    remove any reference to them from openssh-server config file to avoid being locked outside"
+ }
