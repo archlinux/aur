@@ -11,7 +11,7 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=pd-l2ork-git
-pkgver=r1707.e12842b
+pkgver=r1709.9726363
 pkgrel=1
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData (git version)"
 url="http://l2ork.music.vt.edu/main/?page_id=56"
@@ -22,7 +22,7 @@ depends=('bluez-libs' 'desktop-file-utils' 'dssi' 'fftw'
   'gsl' 'gsm' 'hicolor-icon-theme' 'imagemagick' 'jack' 'ladspa' 'lame'
   'libdc1394' 'libdv' 'libgl' 'libiec61883' 'libjpeg' 'libquicktime'
   'libxxf86vm' 'libtiff' 'libiec61883' 'libunicap' 'libraw1394'
-  'libsndobj-cvs' 'libv4l' 'libvorbis' 'lua51' 'portaudio'
+  'libsndobj-git' 'libv4l' 'libvorbis' 'lua51' 'portaudio'
   'smpeg' 'speex' 'stk' 'tk' 'tkpng' 'vlc' 'xapian-tcl-bindings' 'zlib')
 makedepends=('autoconf' 'automake' 'libtool' 'git')
 provides=('pd-l2ork')
