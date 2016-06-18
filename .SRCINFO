@@ -1,0 +1,34 @@
+pkgbase = firefox-aurora-zh-tw
+	pkgdesc = Chinese Traditional For Firefox Developer (Aurora-l10n)
+	pkgver = 49.0a2.20160617004051
+	pkgrel = 1
+	url = http://www.mozilla.org/zh-TW/firefox/aurora/
+	install = firefox-aurora-zh-tw.install
+	arch = i686
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = gtk3
+	depends = libxt
+	depends = startup-notification
+	depends = mime-types
+	depends = dbus-glib
+	depends = alsa-lib
+	depends = dbus-glib
+	depends = libnotify
+	depends = desktop-file-utils
+	depends = hicolor-icon-theme
+	depends = libvpx
+	depends = libevent
+	depends = nss>=3.14.1
+	depends = hunspell
+	source = firefox-aurora-zh-tw.desktop
+	source = firefox-aurora-zh-tw-safe.desktop
+	source = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-aurora-l10n/firefox-49.0a2.zh-tw.linux-x86_64.tar.bz2
+	sha512sums = f790fea8ae8fb0201a36ef8600f1ec2319b5a574192d510d5c981b20c0082e1be6d9bad7491ad4fc51e26193da22ea894365cbbbe26810e0921a7c07691ea39c
+	sha512sums = 0248804f539d8733658e68d2eba6ab51d886e4cb30a72da63b14a6277d950dc43ca8c12952e8612fb527b03cc31d9d05211010202ede432a9b17e6e18883111c
+	sha512sums = 
+
+pkgname = firefox-aurora-zh-tw
+

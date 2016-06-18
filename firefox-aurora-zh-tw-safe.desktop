@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=Aurora - Safe Mode
+GenericName=Web Browser - Safe Mode
+Icon=firefox-aurora-zh-TW-icon
+Type=Application
+Categories=Application;Network;
+MimeType=text/html
+Encoding=UTF-8
+Exec=firefox-aurora-zh-TW -safe-mode %u
+Terminal=false
+MultipleArgs=false
+StartupNotify=false
+StartupWMClass=Firefox
+Name[zh_TW]=firefox-aurora-zh-TW-safe
