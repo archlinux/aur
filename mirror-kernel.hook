@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = linux
+
+[Action]
+Depends = rsync
+When = PostTransaction
+Exec = /usr/bin/boot-mirror.sh
+

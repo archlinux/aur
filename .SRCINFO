@@ -1,0 +1,15 @@
+pkgbase = boot-mirror
+	pkgdesc = Mirror /boot directory on kernel upgrades
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://wiki.archlinux.org/index.php/User:Allan/Pacman_Hooks
+	arch = any
+	license = GPL
+	depends = rsync
+	source = boot-mirror.sh
+	source = mirror-kernel.hook
+	sha256sums = b97d290f26268acbb925a1f699bb0f692c4a511d04d0898b88564196fdfeb7b7
+	sha256sums = 7b7646179a215721a3c69449e20fc108aa91e97398346761fdd95af2e75fda86
+
+pkgname = boot-mirror
+
