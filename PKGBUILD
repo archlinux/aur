@@ -2,15 +2,15 @@
 # based on firefox-noscript PKGBUILD
 
 pkgname=firefox-onetab
-pkgver=1.9.1
-pkgrel=2
+pkgver=1.17.0
+pkgrel=1
 pkgdesc="Extension for firefox which convert tabs to a list and reduce browser memory"
 arch=('any')
 url="http://www.one-tab.com/"
 license=('custom')
 depends=("firefox")
 source=(https://addons.mozilla.org/firefox/downloads/latest/525044/addon-525044-latest.xpi)
-md5sums=('8efa7cf2db6a472c6284d14a5f00891b')
+md5sums=('2b9f61d241eb7d21b376058e760c9765')
 
 pkgver() {
     sed -n '/.*<em:version>\(.*\)<\/em:version>.*/{s//\1/p;q}' install.rdf | cut -f 1 -d-
