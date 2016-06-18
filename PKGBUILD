@@ -14,7 +14,7 @@ _pgo=true
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
 pkgver=47.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
 license=('MPL' 'GPL' 'LGPL')
@@ -148,9 +148,11 @@ build() {
   CFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
   CXXFLAGS+=" -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns2"
 
+  # Hardening
+  LDFLAGS+=" -Wl,-z,now"
 
   if [[ -n $_lowmem || $CARCH == i686 ]]; then
-    LDFLAGS+="--no-keep-memory"
+    LDFLAGS+=" -Xlinker --no-keep-memory"
   fi
 
   if [[ -n $_pgo ]]; then
@@ -199,7 +201,7 @@ package() {
   ln -sf firefox "$pkgdir/usr/lib/firefox/firefox-bin"
 }
 md5sums=('0bd5991a6c821dd1a34ead0f8bbb301a'
-         '3bf79ce63bd0b0c11a9403ecc251c583'
+         '90a94e20dc3bb447d420225c005faa10'
          '9b02198df96be08f2a0a323ac2e6c2a2'
          'dbf14588e85812ee769bd735823a0146'
          '0d053487907de4376d67d8f499c5502b'
