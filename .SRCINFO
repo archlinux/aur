@@ -1,0 +1,15 @@
+pkgbase = pacsize-git
+	pkgdesc = Utility that gets the installed size of pacman packages.
+	pkgver = r2.70aab34
+	pkgrel = 1
+	url = https://github.com/TorinCooperBennun/pacsize
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = python
+	depends = python-hurry-filesize
+	source = git+https://github.com/TorinCooperBennun/pacsize.git
+	md5sums = SKIP
+
+pkgname = pacsize-git
+
