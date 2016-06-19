@@ -1,8 +1,8 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-look-and-feel
-_commit=a9fd844
-pkgver=20160603
+_commit=4721958 # 7 digits
+pkgver=20160618
 pkgrel=1
 pkgdesc="Look-and-feel package for modified and adaptive Papirus theme for KDE"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname}"
@@ -21,6 +21,5 @@ pkgver() {
 }
 
 package() {
-    cd ${pkgname}
-    make install DESTDIR="$pkgdir"
+    make -C "${pkgname}" install DESTDIR="$pkgdir"
 }
