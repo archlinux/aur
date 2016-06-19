@@ -7,7 +7,7 @@ pkgdesc="A TV series renaming application written in the Rust that supports addi
 interface"
 arch=('i686' 'x86_64')
 url="https://github.com/mmstick/tv-renamer/"
-license=('GPL3')
+license=('MIT')
 depends=('gtk3')
 makedepends=('cargo' 'git' 'gzip')
 provides=("${pkgname%-git*}-gtk")
