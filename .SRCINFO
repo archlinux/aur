@@ -1,21 +1,19 @@
 pkgbase = haskell-ghc-exactprint
 	pkgdesc = GHC version of haskell-src-exts exactPrint
-	pkgver = 0.5.0.1
+	pkgver = 0.5.1.1
 	pkgrel = 1
 	epoch = 0
 	url = https://hackage.haskell.org/package/ghc-exactprint
-	install = haskell-ghc-exactprint.install
 	arch = i686
 	arch = x86_64
 	license = custom:BSD3
-	depends = ghc=7.10.3
+	depends = ghc=8.0.1
 	depends = haskell-ghc-paths
 	depends = haskell-mtl
 	depends = haskell-syb
 	depends = haskell-free
-	options = staticlibs
-	source = http://hackage.haskell.org/packages/archive/ghc-exactprint/0.5.0.1/ghc-exactprint-0.5.0.1.tar.gz
-	sha256sums = ecdae12d521d0997a48a91507f241f80532df468f09095a50cc6f1629cd43ce8
+	source = http://hackage.haskell.org/packages/archive/ghc-exactprint/0.5.1.1/ghc-exactprint-0.5.1.1.tar.gz
+	sha256sums = ab88a158b659641a1a940b1ebeaeefe8d41e53f1da2bee139914bbad21f15d8a
 
 pkgname = haskell-ghc-exactprint
 
