@@ -1,4 +1,4 @@
-# Contributor: Aashik S  aashiks at gmail dot com
+# Contributor: Aashik S  ashik at inflo dot ws
 # Maintainer: http://smc.org.in
 # Contributor: Akshay S Dinesh asdofindia at gmail dot com
 
@@ -13,7 +13,7 @@ url="http://smc.org.in/fonts/"
 depends=(fontconfig xorg-font-utils)
 source=("http://smc.org.in/downloads/fonts/keraleeyam/Keraleeyam.ttf"
         "https://gitlab.com/smc/keraleeyam/raw/master/67-smc-keraleeyam.conf")
-md5sums=('0c3651bb646b4af3c2ff1b30e2e5f809'
+md5sums=('235523cf1e67c8b9d60581ae27f9f500'
          '37d7da81268fa7cf4a9702d241c7ea1c')
 install=ttf-malayalam-fonts.install
 
