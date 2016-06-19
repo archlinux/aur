@@ -7,7 +7,7 @@
 # AUR dependencies
 # ----------------
 # libilbc kvazaar chromaprint-fftw libbs2b openh264 shine vo-amrwbenc
-# nut-multimedia-git xavs libutvideo-asm-git flite-fpic
+# nut-multimedia-git xavs libutvideo-asm-git flite-fpic libmfx-git
 # blackmagic-decklink-sdk nvidia-sdk libebur128
 
 # AUR optional dependency
@@ -15,14 +15,14 @@
 # intel-media-sdk (experimental Intel QSV support only for x86_64)
 
 pkgname=ffmpeg-full-git
-pkgver=N.80385.gc3afe64
+pkgver=N.80386.g5f5a97d
 pkgrel=1
 pkgdesc="Record, convert and stream audio and video (Git version with all possible libs)"
 arch=('i686' 'x86_64')
 url="http://www.ffmpeg.org/"
 license=('GPL3' 'custom:UNREDISTRIBUTABLE')
 depends=(
-    'nvidia-sdk' 'libomxil-bellagio' 'blackmagic-decklink-sdk'
+    'libmfx-git' 'nvidia-sdk' 'libomxil-bellagio' 'blackmagic-decklink-sdk'
     'alsa-lib' 'zlib' 'bzip2' 'libpng' 'sdl' 'chromaprint-fftw' 'fontconfig' 'frei0r-plugins'
     'libgcrypt' 'gmp' 'gnutls' 'glibc' 'ladspa' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt'
     'libcdio-paranoia' 'libdc1394' 'libebur128' 'faac' 'libfdk-aac' 'flite-fpic' 'freetype2'
@@ -107,6 +107,7 @@ build() {
 	        \
 	        $_cuda \
 	        $_cuvid \
+	        --enable-libmfx \
 	        --enable-nvenc \
 	        --enable-omx \
 	        --enable-omx-rpi \
