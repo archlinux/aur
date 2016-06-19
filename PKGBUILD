@@ -18,6 +18,9 @@ prepare() {
   sed -i "s|COMMAND eLut >|COMMAND touch|g" Half/CMakeLists.txt
   sed -i "s|COMMAND toFloat >|COMMAND touch|g" Half/CMakeLists.txt
 
+  # useless test, besides g++ segfaults at testeuler.cpp
+  sed -i "/ADD_SUBDIRECTORY ( ImathTest )/d" CMakeLists.txt
+
   # no clue how to fix this one properly
   grep -lr LDBL_EPSILON Imath | xargs sed -i "s|LDBL_EPSILON|1.08420217248550443401e-19L|g"
   grep -lr DBL_EPSILON Imath | xargs sed -i "s|DBL_EPSILON|2.2204460492503131E-16|g"
