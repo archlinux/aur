@@ -1,6 +1,6 @@
 
 pkgname=tribler
-pkgver=6.5.1
+pkgver=6.5.2
 pkgrel=1
 pkgdesc="Privacy with BitTorrent and resilient to shut down"
 url="http://www.tribler.org/"
@@ -11,7 +11,7 @@ depends=('python2-cryptography' 'python2-feedparser' 'python2-apsw' 'python2-che
 optdepends=('vlc: for internal video player')
 makedepends=('python2-setuptools')
 source=("https://github.com/Tribler/tribler/releases/download/v${pkgver}/Tribler-v${pkgver}.tar.xz")
-sha1sums=('dc6246f89a6350b0fb400c66898b0885b7ec2f81')
+sha1sums=('7cab5f39486aef1cb170bde37213972ed6485093')
 
 prepare()
 {
