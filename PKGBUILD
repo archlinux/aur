@@ -7,12 +7,12 @@ pkgver=0.9.3
 pkgrel=3
 pkgdesc="GTK run dialog"
 arch=('i686' 'x86_64')
-url="http://code.google.com/p/$pkgname"
+url="https://github.com/lrgc/grun"
 license=('GPL2')
 depends=('gtk2')
 backup=('etc/consfile' 'etc/gassoc')
-source=("http://$pkgname.googlecode.com/files/$pkgname-$pkgver.tar.gz")
-md5sums=('7788783e5a18221ae591606075d3a8ee')
+source=($pkgname-$pkgver.tar.gz::$url/archive/release_0_9_3.tar.gz)
+md5sums=('dd221f689c211e2ccfacf06bf24b14bc')
 
 build() {
   cd "$pkgname-$pkgver"
