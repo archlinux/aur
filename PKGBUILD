@@ -11,7 +11,7 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=pd-l2ork-git
-pkgver=r1709.9726363
+pkgver=r1714.22edd36
 pkgrel=1
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData (git version)"
 url="http://l2ork.music.vt.edu/main/?page_id=56"
@@ -56,21 +56,17 @@ build() {
   unset INCLUDES
 
   cd $srcdir/$pkgname/l2ork_addons
-  inst_dir=/usr ./tar_em_up.sh -F -n
+  ./tar_em_up.sh -B -n
 }
 
 package() {
   cd "$srcdir/$pkgname/packages/linux_make/build"
-  mv usr "$pkgdir"
-  # Extra L2Ork-specific stuff that doesn't get installed automatically.
-  cd "$srcdir/$pkgname"
-  cp -Rf l2ork_addons/K12 externals/hardware/arduino "$pkgdir/usr/lib/pd-l2ork/extra"
-  install -d "$pkgdir/etc/bash_completion.d"
-  cp -f scripts/bash_completion/pd-l2ork "$pkgdir/etc/bash_completion.d"
-  # Remove extra packaging files.
-  cd "$pkgdir/usr"
-  rm -f Makefile README.txt
+  cp -a * "$pkgdir"
+  # Remove init.d-related stuff.
+  cd "$pkgdir/etc"
+  rm -rf default init.d
   # Move pdsend and pdreceive to avoid conflicts with other Pd versions.
+  cd "$pkgdir/usr"
   mv bin/cyclist bin/pdreceive bin/pdsend lib/pd-l2ork/bin
   # Get rid of the corresponding manpages
   rm -f share/man/man1/pdreceive.* share/man/man1/pdsend.*
@@ -83,21 +79,13 @@ package() {
   #rm -f lib/pd-l2ork/doc/manuals/StartHere/+ここからスタート.pd
   # Remove libtool archives and extra object files.
   rm -f lib/pd-l2ork/extra/*/*.la lib/pd-l2ork/extra/*/*.pd_linux_o
-  # Extra icons, desktop files and mime types.
-  cd "$srcdir/$pkgname/packages/linux_make"
-  cp -f pd-l2ork.gif "$pkgdir/usr/lib/pd-l2ork"
-  install -d "$pkgdir/usr/share/icons/hicolor/128x128/apps"
-  cp -f pd-l2ork*.png "$pkgdir/usr/share/icons/hicolor/128x128/apps/"
-  install -d "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes"
-  cp -f text-x-pd-l2ork.png "$pkgdir/usr/share/icons/hicolor/128x128/mimetypes/"
-  install -d "$pkgdir/usr/share/applications"
-  cp -f pd-l2ork*.desktop "$pkgdir/usr/share/applications/"
-  install -d "$pkgdir/usr/share/mime/packages"
-  cp -f pd-l2ork.xml "$pkgdir/usr/share/mime/packages/"
-  # Default prefs file.
-  install -d "$pkgdir/etc/pd-l2ork"
-  ln -s -f /usr/lib/pd-l2ork/default.settings "$pkgdir/etc/pd-l2ork/default.settings"
-  cp -f default.settings "$pkgdir/usr/lib/pd-l2ork"
+  # Sanitize permissions.
+  cd "$pkgdir"
+  chmod -R go-w *
+  chmod -R a+r *
+  chmod a-x usr/lib/pd-l2ork/default.settings
+  find . -name '*.pd' | xargs chmod a-x
+  find . -type d | xargs chmod a+x
 }
 
 # vim:set ts=2 sw=2 et:
