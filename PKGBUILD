@@ -3,12 +3,11 @@
 pkgname=netatop-dkms
 _pkgname=netatop
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Atop network kernel module, enables network statistics in atop"
 url="http://www.atoptool.nl/"
 groups=('modules')
 license=('GPL')
-install='netatop-dkms.install'
 depends=('atop' 'dkms')
 conflicts=('netatop')
 makedepends=('linux-headers')
@@ -50,6 +49,7 @@ package() {
 	cd $srcdir/$_pkgname-$pkgver
 	cp -L *.h ${pkgdir}/usr/src/${_pkgname}-${pkgver}
 	# copy dkms.conf
+	sed -i "s|PACKAGE_VERSION=\"0.5\"|PACKAGE_VERSION=\"${pkgver}\"|g" "${srcdir}/netatop-dkms.conf"
 	install -D -m 644 "${srcdir}/netatop-dkms.conf" "${pkgdir}/usr/src/${_pkgname}-${pkgver}/dkms.conf"
 
 	# package remaining stuff
