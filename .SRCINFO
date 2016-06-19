@@ -1,7 +1,7 @@
 pkgbase = stardict-tools
 	pkgdesc = Stardict tools
 	pkgver = 3.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://code.google.com/p/stardict-3
 	arch = i686
 	arch = x86_64
