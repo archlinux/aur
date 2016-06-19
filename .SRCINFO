@@ -1,0 +1,28 @@
+pkgbase = bluegriffon2
+	pkgdesc = The next-generation Web Editor based on the rendering engine of Firefox
+	pkgver = 2.1.1
+	pkgrel = 1
+	url = http://www.bluegriffon.com
+	arch = x86_64
+	license = MPL
+	license = GPL
+	license = LGPL
+	depends = alsa-lib
+	depends = desktop-file-utils
+	depends = dbus-glib
+	depends = gtk2
+	depends = hunspell
+	depends = mozilla-common
+	depends = nss
+	depends = libevent
+	depends = libvpx
+	depends = libxt
+	depends = python2
+	depends = startup-notification
+	source = http://bluegriffon.org/freshmeat/2.1.1/bluegriffon-2.1.1.Ubuntu16.04-x86_64.tar.bz2
+	source = bluegriffon.desktop
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = bluegriffon2
+
