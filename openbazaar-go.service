@@ -1,0 +1,18 @@
+[Unit]
+Description=Openbazaar Marketplace Server
+After=network.target
+
+[Service]
+Type=forking
+User=openbazaar
+TimeoutSec=0
+ExecStart=/usr/bin/openbazaar-go start
+ExecStop=/usr/bin/openbazaar-go stop
+ExecReload=/usr/bin/openbazaar-go restart
+
+## Security
+#InaccessibleDirectories=/home
+
+[Install]
+WantedBy=multi-user.target
+
