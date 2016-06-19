@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .vscode
 *.7z
 *.zip
@@ -44,3 +43,4 @@ mydict
 language-*
 terminal-*
 *-terminal
+about-arch

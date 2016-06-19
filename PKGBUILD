@@ -101,10 +101,10 @@ prepare() {
   pushd $srcdir/about-arch
   git fetch -p
   git checkout -q $(git describe --tags `git rev-list --tags --max-count=1`)
+  patch -Np1 -i $srcdir/about-arch.patch
   popd
   cp -a $srcdir/about-arch node_modules/about-arch
 
-  sed -i -e "s/atom-editor/atom-editor-${_version}/g" node_modules/about-arch/lib/about-view.coffee
   sed -i -e "s/<%=Desc=%>/$pkgdesc/g" ${srcdir}/${_pkgname}.desktop
 
   patch -Np1 -i $srcdir/theme.patch
