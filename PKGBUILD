@@ -3,14 +3,14 @@ pkgname=freetype2-ubuntu
 pkgver=2.6.3
 _ubver=2.6.3-3ubuntu1
 _ubrel=utopic
-pkgrel=1
+pkgrel=3
 pkgdesc="TrueType font rendering library, with Ubuntu's LCD rendering patches"
 arch=('i686' 'x86_64')
 url="https://launchpad.net/ubuntu/+source/freetype"
 license=('GPL')
 depends=('zlib' 'bzip2' 'sh')
 conflicts=('freetype2' 'freetype2-cleartype' 'freetype2-lcd')
-provides=("freetype2=$pkgver")
+provides=("freetype2=$pkgver" "libfreetype.so")
 options=('!libtool')
 source=(http://downloads.sourceforge.net/sourceforge/freetype/freetype-${pkgver}.tar.bz2
 		https://launchpad.net/ubuntu/+archive/primary/+files/freetype_${_ubver}.diff.gz
