@@ -5,8 +5,8 @@
 
 pkgbase=virtualbox-modules-mainline
 pkgname=('virtualbox-host-modules-mainline' 'virtualbox-guest-modules-mainline')
-pkgver=5.0.20
-pkgrel=2
+pkgver=5.0.22
+pkgrel=1
 arch=('i686' 'x86_64')
 url='http://virtualbox.org'
 license=('GPL')
@@ -29,14 +29,8 @@ prepare() {
   rm -r $srcdir/dkms/vboxhost/${pkgver}_OSE/source
   cp -r /usr/src/vboxhost-${pkgver}_OSE $srcdir/dkms/vboxhost/${pkgver}_OSE/source
 
-  cp ../VBoxNetAdp-linux.c $srcdir/dkms/vboxhost/${pkgver}_OSE/source/vboxnetadp/linux/VBoxNetAdp-linux.c
-  
   rm -r $srcdir/dkms/vboxguest/${pkgver}_OSE/source
   cp -r /usr/src/vboxguest-${pkgver}_OSE $srcdir/dkms/vboxguest/${pkgver}_OSE/source
-
-  cp ../vbox_main.c $srcdir/dkms/vboxguest/${pkgver}_OSE/source/vboxvideo/vbox_main.c
-  cp ../vbox_mode.c $srcdir/dkms/vboxguest/${pkgver}_OSE/source/vboxvideo/vbox_mode.c
-  cp ../vbox_drv.h $srcdir/dkms/vboxguest/${pkgver}_OSE/source/vboxvideo/vbox_drv.h
 
   cd $srcdir
 }
