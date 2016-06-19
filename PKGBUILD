@@ -5,8 +5,8 @@
 
 pkgname=flexget
 _pkgname=FlexGet
-pkgver=1.2.491
-pkgrel=2
+pkgver=2.0.48
+pkgrel=1
 
 pkgdesc="Automate downloading or processing content (torrents, podcasts, etc.) from different sources like RSS-feeds, html-pages, various sites and more."
 
@@ -23,17 +23,15 @@ depends=('python2'
          'python2-html5lib'
          'python2-pyrss2gen' #AUR#
          'python2-pynzb' #AUR#
-         'python2-progressbar'
          'python2-rpyc' #AUR#
          'python2-jinja'
          'python2-requests'
          'python2-dateutil'
          'python2-jsonschema'
-#         'python2-tmdb3' #AUR#
          'python2-path' #AUR#
          'python2-guessit>=2.0.3'
-         'python2-apscheduler' #AUR#
-         'python2-pytvmaze>=1.4.5' #AUR#
+         'python2-apscheduler>=3.2.0' #AUR#
+         'python2-pytvmaze>=1.4.8' #AUR#
          'python2-ordereddict'
          'python2-cherrypy>=3.7.0'
          'python2-flask'
@@ -44,6 +42,7 @@ depends=('python2'
          'python2-flask-cors>=2.1.2'
          'python2-pyparsing>=2.0.3'
          'python2-safe'
+         'python2-future'
          )
 optdepends=('python2-guppy: for memusage plugin' #AUR#
             'python2-transmissionrpc: Transmission support' #AUR#
@@ -53,14 +52,14 @@ makedepends=('python2-paver'
              'python2-setuptools'
              )
 
-source=("https://pypi.python.org/packages/source/F/FlexGet/${_pkgname}-${pkgver}.tar.gz"
+source=("https://pypi.python.org/packages/73/3f/326847ced17dd1f3ad2e3cd2019be43ff22f1c5f19b32295f776be1eb4a8/${_pkgname}-${pkgver}.tar.gz"
         'flexget.service'
         "http://download.flexget.com/ChangeLog"
         )
 
 changelog=ChangeLog
 
-sha256sums=('16fb4d7b3c0cb58c0dd13c62d1b4d0314a4eb3cd1491e7a8b199977b98bf494c'
+sha256sums=('48062be611ebcc6882d7e2e9055a6ba333c996979239e58417a45fe877636269'
             'e2c3a958ed0c286337cd37fba1d6cbdf4306c57fcddf2b9cc43615ce80ae83aa'
             'dcc1bc676b8c2b798fa9a7e0ed2b6853323e9e9d8ff696696dddeaf29cbc13d6')
 
