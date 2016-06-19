@@ -3,13 +3,14 @@
 pkgname=lpclic
 _pkgname=lpclic
 pkgver=0.4.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Optimizes the command history for the linphonec CLI for linphone"
 arch=('any')
 url="https://github.com/burt1iband/lpclic"
 license=('GPL')
 source=("git+${url}.git")
 depends=('bash' 'sed' 'linphone')
+optdepends=('bash-completion')
 provides=('lpclic')
 conflicts=('lpclic')
 md5sums=('SKIP')
