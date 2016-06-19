@@ -1,7 +1,7 @@
 pkgbase = openpht-ffmpeg
 	pkgdesc = FFMPEG modified for OpenPHT 1.6
 	pkgver = 2.8.7
-	pkgrel = 1
+	pkgrel = 2
 	url = http://ffmpeg.org
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = openpht-ffmpeg
 	makedepends = boost
 	makedepends = cmake
 	makedepends = doxygen
-	makedepends = ffmpeg-compat
 	makedepends = git
 	makedepends = java-environment
 	makedepends = libcec
@@ -67,11 +66,13 @@ pkgbase = openpht-ffmpeg
 	source = ffmpeg-2.8-Resolve-plex-direct-domains.patch
 	source = ffmpeg-99.0011-mpeg4video-Signal-unsupported-GMC-with-more-than-one.patch
 	source = ffmpeg-Speed_up_wtv_index_creation.patch
+	source = openpht.conf
 	sha256sums = 8777ce4a335640fdd13680ba423ef6da330ff5071bfbe27cdbb452379167efe5
 	sha256sums = f89a26cb409bab1ac00106db008eccf72c6390e04d7cde2a63fbb1f2e9fbc669
 	sha256sums = ca7eca1b9476c93efbdea457b64b0e5d925ad437f79168112aae52319d59d155
 	sha256sums = fa78aa79ff861edbb8b6443978a0da60c4241f7a7f3888b242031ba916fa7514
 	sha256sums = d1191e3e3fc980535e4835b5ef9b52fd15a14b58ef56ac6d2710bd589ce94b40
+	sha256sums = 290ab6ad8ad388b0911e2aad4a5b297d273616698065f47ee70e66358405ba8f
 
 pkgname = openpht-ffmpeg
 
