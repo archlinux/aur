@@ -10,7 +10,7 @@ pkgbase = eid-viewer
 	depends = java-runtime
 	depends = gsettings-desktop-schemas
 	depends = eid-mw
-	source = https://dist.eid.belgium.be/continuous/sources/eid-viewer-4.1.13-v4.1.13.src.tar.gz
+	source = https://dist.eid.belgium.be/continuous/sources/eid-viewer-4.1.18-v4.1.18.src.tar.gz
 	sha256sums = 00946bef872457d31543a0c0a608b3e99148dcfe0e2e0bcbbf9a420a5beaa9ab
 
 pkgname = eid-viewer
