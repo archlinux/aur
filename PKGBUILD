@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 url="https://launchpad.net/ubuntu/+source/freetype"
 license=('GPL')
 depends=('zlib' 'bzip2' 'sh')
-conflicts=('freetype2-cleartype' 'freetype2-lcd')
+conflicts=('freetype2' 'freetype2-cleartype' 'freetype2-lcd')
 provides=("freetype2=$pkgver")
 options=('!libtool')
 source=(http://downloads.sourceforge.net/sourceforge/freetype/freetype-${pkgver}.tar.bz2
