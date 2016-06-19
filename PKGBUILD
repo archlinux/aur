@@ -23,6 +23,11 @@ prepare() {
   # https://github.com/openexr/openexr/pull/159
   sed -i "s|COMMAND \${CMAKE_CURRENT_BINARY_DIR}/\${CMAKE_CFG_INTDIR}/b44ExpLogTable >|COMMAND wine \${CMAKE_CURRENT_BINARY_DIR}/\${CMAKE_CFG_INTDIR}/b44ExpLogTable.exe >|g" IlmImf/CMakeLists.txt
   sed -i "s|COMMAND \${CMAKE_CURRENT_BINARY_DIR}/\${CMAKE_CFG_INTDIR}/dwaLookups >|COMMAND wine \${CMAKE_CURRENT_BINARY_DIR}/\${CMAKE_CFG_INTDIR}/dwaLookups.exe >|g" IlmImf/CMakeLists.txt
+
+
+  sed -i "/ADD_SUBDIRECTORY ( IlmImfTest )/d" CMakeLists.txt
+  sed -i "/ADD_SUBDIRECTORY ( IlmImfUtilTest )/d" CMakeLists.txt
+  sed -i "/ADD_SUBDIRECTORY ( IlmImfFuzzTest )/d" CMakeLists.txt
 }
 
 build() {
