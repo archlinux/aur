@@ -1,7 +1,7 @@
 # Maintainer: Elena ``of Valhalla'' Grandi <elena.valhalla@gmail.com>
 pkgname=python2-caldav
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a caldav client library"
 arch=('any')
 url="https://bitbucket.org/cyrilrbt/caldav/wiki/Home"
@@ -15,7 +15,8 @@ source=(http://pypi.python.org/packages/source/c/caldav/caldav-${pkgver}.tar.gz)
 
 package() {
   cd "$srcdir/caldav-$pkgver"
-  python2 setup.py install --root=$pkgdir/ --optimize=1
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+  rm -r "$pkgdir/usr/lib/python2.7/site-packages/tests"
 }
 
 # vim:set ts=2 sw=2 et:
