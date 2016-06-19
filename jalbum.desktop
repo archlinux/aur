@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Name=jAlbum
+Comment=Make web photo albums with thumbnail pages and slide shows
+Exec=/usr/lib/jvm/java-8-openjdk/jre/bin/java -Xmx1200m -DuseDesktop=true -jar /usr/lib/jalbum/JAlbum.jar
+Path=/usr/lib/jalbum/
+Icon=/usr/lib/jalbum/icons/JalbumApp48.png
+Categories=Graphics;Java
+MimeType=application/x-jalbum-jaskin;application/x-extension-jap;application/x-extension-jaskin;application/x-extension-jaextension

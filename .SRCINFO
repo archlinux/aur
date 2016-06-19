@@ -1,0 +1,18 @@
+pkgbase = jalbum
+	pkgdesc = free web photo album software and photo gallery software
+	pkgver = 13.2
+	pkgrel = 1
+	url = http://jalbum.net/
+	arch = any
+	license = custom
+	license = lgpl
+	depends = jre8-openjdk
+	source = http://download.jalbum.net/download/13.2/jAlbum.zip
+	source = jalbum.desktop
+	source = jalbum.sh
+	sha256sums = 2eb97c55d6a1cc686f8f94e1e0c88a2cf3239544e9d362e0a1f76afedefd31fe
+	sha256sums = 9679ab294b5c5e0ad343b8a12026073fd2f622320d636cc05facaa2ff5b15825
+	sha256sums = f4aec4248de127251fc32571732e91fd860f1954c650650a965bf77759cd85fc
+
+pkgname = jalbum
+
