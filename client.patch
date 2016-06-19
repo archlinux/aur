@@ -1,11 +1,10 @@
---- src/jira/client.py	2016-01-08 11:50:20.760876262 +0100
-+++ src/jira/client.py	2016-01-08 11:51:58.297811399 +0100
-
-@@ -288,6 +288,7 @@
+--- src/jira-1.0.7.dev20160607111203/jira/client.py	2016-06-19 22:38:03.084330638 +0200
++++ src/jira-1.0.7.dev20160607111203/jira/client.py	2016-06-19 22:39:39.548288776 +0200
+@@ -334,6 +334,7 @@
      def __del__(self):
          session = getattr(self, "_session", None)
          if session is not None:
 +            import sys
-             if sys.version_info < (3, 4, 0):  # workaround for https://github.com/kennethreitz/requests/issues/2303
-                 session.close()
- 
+             if self.sys_version_info < (3, 4, 0):  # workaround for https://github.com/kennethreitz/requests/issues/2303
+                 try:
+                     session.close()

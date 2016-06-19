@@ -5,47 +5,42 @@ pkgbase=python-jira
 pkgname=('python-jira'
   'python2-jira')
 pkgdesc="Python library for interacting with JIRA via REST APIs"
-pkgver=1.0.3
-pkgrel=4
+pkgver="1.0.7.dev20160607111203"
+pkgrel=1
 url="https://pypi.python.org/pypi/jira"
 license=('BSD')
 arch=('any')
-source=("https://pypi.python.org/packages/2.7/j/jira/jira-${pkgver}-py2.py3-none-any.whl"
+source=("https://pypi.python.org/packages/27/b9/29ec48d8d5c010335cfc9bc492ec601fc3cbbf95e223e8e5cd9994ad9455/jira-${pkgver}.tar.gz"
   'client.patch')
-makedepends=('python-pip'
-  'python2-pip')
-md5sums=('a4eb7a250cd8fc2adb00e2245a68a528'
-  'cad99b6b79027699605b3a626e49f085')
+md5sums=('57774afc6133bc3565cee0362e3c7840'
+         'db49a4545cf5e2b987ffadadcbfedb4f')
 
 prepare(){
   patch -p1 -i "${srcdir}/client.patch"
-  cd "${srcdir}"
-  mv jira-${pkgver}.dist-info jira_patched-${pkgver}.dist-info
-  zip jira_patched-${pkgver}-py2.py3-none-any.whl jira/* jira_patched-${pkgver}.dist-info/*
 }
 
 package_python-jira(){
-makedepends=('python-pip')
-  depends=('python'
+depends=('python'
   'python-requests'
   'python-six'
   #'python-tlslite'
   'python-requests-toolbelt'
   'python-requests-oauthlib'
   'python-oauthlib')
-  pip install --no-deps --target "${pkgdir}/usr/lib/python3.5/site-packages" "${srcdir}/jira_patched-${pkgver}-py2.py3-none-any.whl"
+  cd "${srcdir}/jira-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1
 }
 
 
 package_python2-jira(){
-  makedepends=('python2-pip')
-  depends=('python2'
+depends=('python2'
   'python2-requests'
   'python2-six'
   'python2-tlslite'
   'python2-requests-toolbelt'
   'python2-requests-oauthlib'
   'python2-oauthlib')
-  pip2 install --no-deps --target "${pkgdir}/usr/lib/python2.7/site-packages" "${srcdir}/jira_patched-${pkgver}-py2.py3-none-any.whl"
+  cd "${srcdir}/jira-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" --optimize=1
 }
 
