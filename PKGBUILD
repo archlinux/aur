@@ -1,5 +1,5 @@
 pkgname=cen64-git
-pkgver=r677.80e43ef
+pkgver=r702.61afc41
 pkgrel=1
 epoch=1
 pkgdesc="Cycle-accurate Nintendo 64 emulator"
@@ -8,7 +8,7 @@ url="http://www.cen64.com/"
 license=('BSD')
 depends=('mesa' 'openal')
 makedepends=('cmake')
-source=("git://git.cen64.com/cen64.git#branch=angrylion-rdp")
+source=("git://git.cen64.com/cen64.git")
 sha256sums=('SKIP')
 
 pkgver() {
