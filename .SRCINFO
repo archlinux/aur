@@ -1,7 +1,7 @@
 pkgbase = openpht-ffmpeg
 	pkgdesc = FFMPEG modified for OpenPHT 1.6
 	pkgver = 2.8.7
-	pkgrel = 2
+	pkgrel = 3
 	url = http://ffmpeg.org
 	arch = i686
 	arch = x86_64

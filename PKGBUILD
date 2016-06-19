@@ -2,7 +2,7 @@
 
 pkgname=openpht-ffmpeg
 pkgver=2.8.7
-pkgrel=2
+pkgrel=3
 pkgdesc='FFMPEG modified for OpenPHT 1.6'
 arch=('i686' 'x86_64')
 url='http://ffmpeg.org'
@@ -37,9 +37,10 @@ build() {
 }
 
 package() {
+  cp openpht.conf /etc/ld.so.conf.d
+  ldconfig
   cd ffmpeg-2.8.7
   make DESTDIR="${pkgdir}" install
-  cp openpht.conf /etc/ld.so.conf.d
 }
 sha256sums=('8777ce4a335640fdd13680ba423ef6da330ff5071bfbe27cdbb452379167efe5'
 'f89a26cb409bab1ac00106db008eccf72c6390e04d7cde2a63fbb1f2e9fbc669'
