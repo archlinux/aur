@@ -2,7 +2,7 @@
 
 _pkgbase="protobuf"
 pkgname=('protobuf3-coex' 'python2-protobuf3-coex' 'python-protobuf3-coex')
-pkgver=3.0.0_beta_3
+pkgver=3.0.0_beta_3.1
 _pkgver=$(echo $pkgver | tr _ -)
 pkgrel=1
 pkgdesc="Protocol Buffers - Google's data interchange format (it coexists with protobuf pkg)"
@@ -59,4 +59,4 @@ package_python-protobuf3-coex() {
   find . -type f -name "*.py" -exec sed -i 's/google.protobuf/google.protobuf3/g' {} + 
 }
 
-md5sums=('89afd3855f2d4782e59c09e07d9efa67')
+md5sums=('a8360bfdb1fa8e5195341bb814fdf835')
