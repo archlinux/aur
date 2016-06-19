@@ -8,8 +8,8 @@ pkgbase = virtualbox-modules-mainline
 	makedepends = dkms
 	makedepends = linux-mainline-headers>=4.7rc1
 	makedepends = linux-mainline-headers<4.8rc1
-	makedepends = virtualbox-host-dkms>=5.0.20
-	makedepends = virtualbox-guest-dkms>=5.0.20
+	makedepends = virtualbox-host-dkms>=5.0.22
+	makedepends = virtualbox-guest-dkms>=5.0.22
 	depends = linux-mainline>=4.7rc1
 	depends = linux-mainline<4.8rc1
 
