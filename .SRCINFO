@@ -1,6 +1,6 @@
 pkgbase = firefox-aurora-zh-tw
 	pkgdesc = Chinese Traditional For Firefox Developer (Aurora-l10n)
-	pkgver = 49.0a2.20160619
+	pkgver = 49.0a2.20160619004049
 	pkgrel = 1
 	url = http://www.mozilla.org/zh-TW/firefox/aurora/
 	install = firefox-aurora-zh-tw.install
