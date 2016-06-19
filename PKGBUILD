@@ -13,7 +13,7 @@ _language_liquid_ver=0.5.1
 pkgname=${_pkgname}-editor-${_version}
 _pkgrel=0
 _pkgver=1.9.0
-pkgver="${_pkgver}.${_pkgrel}"
+pkgver="${_pkgver}.${_pkgrel}.m${_language_gfm2_ver}"
 pkgrel=1
 pkgdesc='Hackable text editor for the 21st Century, built using web technologies on the Electron framework - Beta channel.'
 arch=('x86_64' 'i686')
@@ -27,11 +27,13 @@ install=atom.install
 source=("$url/archive/v${_pkgver}-${_version}${_pkgrel}.tar.gz"
 "about-arch-${_about_arch_ver}.tar.gz::$_about_url/archive/v${_about_arch_ver}.tar.gz"
 "${_pkgname}-${_version}.desktop"
-"${_pkgname}-${_version}")
+"${_pkgname}-${_version}"
+"about-beta.patch")
 sha256sums=('794ee5c9cc46e9568150db3cb6e2a0791a0cd4e9c243f29d65616adf5e15a210'
             '1fd7f3e1336820b8243241dd34bc0783d20e14652e40494453d3997f2b46541a'
             'c62faaf2f50cddb1a834ccb33c95724076d2859c88baac7d9d676bc9c3afc8c6'
-            '230563ed327833351d448e152ab8b146d2d2b7bdac42c7d39eef966b96b862fc')
+            '230563ed327833351d448e152ab8b146d2d2b7bdac42c7d39eef966b96b862fc'
+            'f0af112075822a7163a5f9be7a096524fbdd4c39f1c56c6913b3f9f99aea0491')
 
 prepare() {
 	cd "$srcdir/${_pkgname}-${_pkgver}-${_version}${_pkgrel}"
@@ -55,7 +57,9 @@ prepare() {
 
   mv $srcdir/about-${_about_arch_ver} $srcdir/about-arch
   mv $srcdir/about-arch node_modules
-  sed -i -e "s/atom-editor/atom-editor-${_version}/g" node_modules/about-arch/lib/about-view.coffee
+  cd node_modules/about-arch
+  patch -Np1 -i $srcdir/about-beta.patch
+  cd -
 
 	sed -i -e "s/<%=Desc=%>/$pkgdesc/g" ${srcdir}/${_pkgname}-${_version}.desktop
 }
