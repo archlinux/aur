@@ -1,4 +1,4 @@
-# Maintainer: oi_wtf <brainpower at mailbox dot org>
+# Maintainer: farenjihn <valentin@finini.ch>
 
 pkgname=thor-git
 pkgver=v2.0.r14.g3aee360
@@ -43,5 +43,3 @@ package() {
     install -Dm644 ./License.txt ${pkgdir}/usr/share/licenses/${pkgname}/License.txt
 
 }
-
-# vim:set ts=2 sw=2 et:
