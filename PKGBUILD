@@ -7,8 +7,8 @@
 # Contributor: Simon Zilliken <simon____AT____zilliken____DOT____name>
 
 pkgname=paraview
-pkgver=5.0.1
-pkgrel=4
+pkgver=5.1.0
+pkgrel=1
 pkgdesc='Parallel Visualization Application using VTK'
 arch=('i686' 'x86_64')
 url='http://www.paraview.org'
@@ -18,21 +18,17 @@ depends=('qt5-tools' 'openmpi' 'python2' 'ffmpeg' 'boost' 'glew'
 makedepends=('cmake' 'mesa' 'gcc-fortran')
 optdepends=('python2-matplotlib: Needed to support equation rendering using MathText markup language'
 	        'python2-numpy: Needed for using some filters such as "Python Calculator"')
-source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}-source.tar.gz"
+source=("http://paraview.org/files/v${pkgver:0:3}/ParaView-v${pkgver}.tar.gz"
 	    'paraview_32bit.patch'
 	    '0001-find_hdf5.patch'
-	    'ffmpeg3_compat.patch'
-	    'vtk-gcc6.patch'
 	    'paraview-desktop.patch')
-sha1sums=('3d72635df84421c2bc4d59ec4a121348966ec28f'
+sha1sums=('1076c189f07308fe11f82079c07a0771542c5ff7'
 	  'c25134330c582371e1009b51445cdb435144b53f'
 	  '3f8701c349194cff12f5d1104fbc070a52dd3da1'
-	  'a78177f8dd6dedd9ad189fa12730ec53c7d02508'
-	  'b9f32419d0d0b1c03dc99eae932ec1c03a936cf0'
 	  'd7da23daca34cd015294c4d2f702cdc4a81f0853')
 
 prepare() {
-  cd "${srcdir}/ParaView-v${pkgver}-source"
+  cd "${srcdir}/ParaView-v${pkgver}"
   patch -p1 -i ../paraview_32bit.patch
   
   patch -p1 -i ../paraview-desktop.patch
@@ -40,13 +36,6 @@ prepare() {
   # Find HDF before the check (for NetCDF)
   patch "VTK/ThirdParty/netcdf/vtknetcdf/CMakeLists.txt" \
     "../0001-find_hdf5.patch"
-    
-  cd "${srcdir}/ParaView-v${pkgver}-source/VTK"
-  
-  patch -p1 -i ../../ffmpeg3_compat.patch
-  
-  patch -p1 -i ../../vtk-gcc6.patch
-
   
   rm -rf "${srcdir}/build"
   mkdir "${srcdir}/build"
@@ -98,7 +87,7 @@ build() {
    ${cmake_system_flags} \
    ${cmake_system_python_flags} \
    ${ffmpeg_compat_flags} \
-   ../ParaView-v${pkgver}-source
+   ../ParaView-v${pkgver}
 
    make
 }
@@ -109,5 +98,5 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   #Install license
-  install -Dm644 "${srcdir}/ParaView-v${pkgver}-source/License_v1.2.txt" "${pkgdir}/usr/share/licenses/paraview/LICENSE"
+  install -Dm644 "${srcdir}/ParaView-v${pkgver}/License_v1.2.txt" "${pkgdir}/usr/share/licenses/paraview/LICENSE"
 }
