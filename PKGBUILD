@@ -25,7 +25,7 @@ package() {
 
   make DESTDIR="${pkgdir}" install
 
-  install -D -m 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -D -m 0644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
 
 # vim:set ts=2 sw=2 et:
