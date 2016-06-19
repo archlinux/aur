@@ -26,8 +26,11 @@ _folder="$_repo-$_tag"
 build() {
   cd $_folder
   
-  # Patch (TODO: remove post-1.002)
+  # Patch (TODO: remove post 1.002, it's already fixed in master)
   awk -i inplace '{ print (102 == NR ? "// " : ""), $0; }' Aquaria/Main.cpp
+  
+  # Make it compile with GCC 6.x
+  export CXXFLAGS="$CXXFLAGS -fpermissive"
   
   # Compile
   cmake -DAQUARIA_DEFAULT_DATA_DIR=/usr/share/aquaria \
