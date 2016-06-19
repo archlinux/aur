@@ -62,13 +62,6 @@ prepare() {
 }
 
 build() {
-	# Number of jobs
-	declare -i njobs=$(nproc)
-	
-	if [[ ${njobs} -ge 8 ]]; then
-		njobs=$(( ${njobs} - 2 ))
-	fi
-
 	# Building package
 	cd "${srcdir}"/build
 	cmake ../${_pkgname} \
@@ -78,7 +71,7 @@ build() {
 		-DRUN_IN_PLACE=0 \
 		-DENABLE_SYSTEM_JSONCPP=1 \
 		-DENABLE_SYSTEM_MSGPACK=1
-	make -j${njobs}
+	make
 }
 
 package() {
