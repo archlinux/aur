@@ -23,8 +23,7 @@ package() {
   mkdir -p "${pkgdir}/usr/share/themes/Clearlooks-Phenix"
   cp -a !(doc|*.md|COPYING) "${pkgdir}/usr/share/themes/Clearlooks-Phenix"
 
-  mkdir -p "${pkgdir}/usr/share/doc/${pkgname}"
-  install -m 0644 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/* *.md
+  install -D -m 0644 -t "${pkgdir}/usr/share/doc/${pkgname}" doc/* *.md
 }
 
 # vim:set ts=2 sw=2 et:
