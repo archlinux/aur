@@ -10,7 +10,7 @@
 
 pkgname=cairo-ubuntu
 _name=cairo
-pkgver=1.14.2
+pkgver=1.14.6
 pkgrel=1
 pkgdesc="Cairo vector graphics library"
 arch=(i686 x86_64)
@@ -66,7 +66,7 @@ package() {
   cd $_name-$pkgver
   make DESTDIR="$pkgdir" install
 }
-md5sums=('e1cdfaf1c6c995c4d4c54e07215b0118'
+md5sums=('23a0b2f0235431d35238df1d3a517fdb'
          '080eac1ce1b2fa2beb550555d31d29b8'
          '4ffec1c86085da11bf9f56d6bf88fbdf'
          '6080d20e289f5e75cc013e8f40710aa3')
