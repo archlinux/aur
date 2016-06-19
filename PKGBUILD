@@ -28,7 +28,10 @@ package() {
 	install -m644 "${srcdir}"/adobe-flashplugin-${_rel}/${_arch}/{manifest.json,libpepflashplayer.so} "${pkgdir}"/usr/lib/PepperFlash
 
 	cp -dr --preserve=mode,timestamp "${srcdir}"/adobe-flashplugin-${_rel}/${_arch}/usr/* "${pkgdir}"/usr
-	rm -rf "${pkgdir}"/usr/lib/kde4
-	mv "${pkgdir}"/usr/lib64/* "${pkgdir}"/usr/lib
-	rm -r "${pkgdir}"/usr/lib64
+
+	if [ "$CARCH" = x86_64 ]; then
+		rm -rf "${pkgdir}"/usr/lib/kde4
+		mv "${pkgdir}"/usr/lib64/* "${pkgdir}"/usr/lib
+		rm -r "${pkgdir}"/usr/lib64
+	fi
 }
