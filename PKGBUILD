@@ -1,5 +1,5 @@
 pkgname=psi-plus-plugins-qt5-git
-pkgver=20160322
+pkgver=20160602
 pkgrel=2
 pkgdesc="Additional plugins for Psi+ (built with Qt 5.x)"
 arch=('i686' 'x86_64')
@@ -29,17 +29,21 @@ build() {
     cd psi-plus-plugins
 
     for plugin in generic/* unix/*; do
-        cd "$srcdir/psi-plus-plugins/$plugin"
-        qmake-qt5 PREFIX="/usr" QMAKE_STRIP=
-        make
+        if [ "$plugin" != "generic/generic.pro" ]; then
+            cd "$srcdir/psi-plus-plugins/$plugin"
+            qmake-qt5 PREFIX="/usr" QMAKE_STRIP=
+            make
+        fi
     done
 }
 
 package() {
     cd psi-plus-plugins
     for plugin in generic/* unix/*; do
-        cd "$srcdir/psi-plus-plugins/$plugin"
-        make INSTALL_ROOT="$pkgdir" install
+        if [ "$plugin" != "generic/generic.pro" ]; then
+            cd "$srcdir/psi-plus-plugins/$plugin"
+            make INSTALL_ROOT="$pkgdir" install
+        fi
     done
 }
 
