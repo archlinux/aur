@@ -1,6 +1,6 @@
 # Maintainer: Edison Ibañez <edison@opmbx.org>
 pkgname=sqlectron-gui
-pkgver=1.10.0
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="A simple and lightweight SQL client desktop with cross database and platform support."
 arch=("any")
@@ -9,8 +9,9 @@ license=("MIT")
 
 source=("https://github.com/sqlectron/$pkgname/releases/download/v$pkgver/Sqlectron-$pkgver.deb"
         "Sqlectron.sh")
-md5sums=('19e592a74ecc6031e898af4757310055'
+md5sums=('98d393328a4b7a0871a8a5e2762d4465'
          'f0770e47e7ad5926d24cf9953c1ceb71')
+
 
 depends=('libnotify')
 
