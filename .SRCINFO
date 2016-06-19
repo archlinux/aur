@@ -1,0 +1,18 @@
+pkgbase = stardict-tools-git
+	pkgdesc = Stardict tools
+	pkgver = 3.0.6.r653.c00d1e9
+	pkgrel = 1
+	url = http://stardict.org/
+	arch = i686
+	arch = x86_64
+	license = GPLv3
+	makedepends = intltool
+	depends = gtk3
+	depends = glib2
+	provides = stardict-tools=3.0.6.r653.c00d1e9
+	conflicts = stardict-tools
+	source = stardict-3::git://github.com/huzheng001/stardict-3.git
+	sha256sums = SKIP
+
+pkgname = stardict-tools-git
+
