@@ -1,7 +1,7 @@
 # Installation order:  freetype2-ubuntu fontconfig-ubuntu libxft cairo-ubuntu
 pkgname=freetype2-ubuntu
-pkgver=2.6.1
-_ubver=2.6.1-0.1ubuntu1
+pkgver=2.6.3
+_ubver=2.6.3-3ubuntu1
 _ubrel=utopic
 pkgrel=1
 pkgdesc="TrueType font rendering library, with Ubuntu's LCD rendering patches"
@@ -65,8 +65,8 @@ package() {
   cd ${srcdir}/freetype-${pkgver}
   make DESTDIR=${pkgdir} install
 }
-md5sums=('35cb8f4d9e5906847901bb39324c2f80'
-         '87fbeb58aebcaf6d5df9006750efb414'
+md5sums=('0037b25a8c090bc8a1218e867b32beb1'
+         '161e88978b77ee9be913b98f33fb9a23'
          '214119610444c9b02766ccee5e220680'
          '38765b5cc604179bf3afe33671d8ae37'
          '4d4a0caad7aa5e09bea0719cd80681bf')
