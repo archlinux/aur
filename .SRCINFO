@@ -1,0 +1,17 @@
+pkgbase = ttf-typopro
+	pkgdesc = TypoPRO fonts from http://typopro.org/
+	pkgver = 3.4.4
+	pkgrel = 1
+	install = ttf-typopro.install
+	arch = any
+	license = MIT
+	license = Apache
+	license = OFL
+	license = CC0
+	depends = fontconfig
+	depends = xorg-font-utils
+	source = https://github.com/rse/typopro-web/archive/3.4.4.zip
+	sha256sums = d64e34001bceda14868d5e1e021b77e55ee78451eef23db1506318df52e032fd
+
+pkgname = ttf-typopro
+
