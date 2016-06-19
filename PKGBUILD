@@ -2,7 +2,7 @@
 
 pkgname=aquaria-ose-git
 _installname=aquaria-ose
-pkgver=1.1.3+o1.002+g610.6971e78
+pkgver=1.1.3+o1.002+g611.96206dd
 _osever=1.002
 _basever=1.1.3+o$_osever
 pkgrel=1
@@ -31,6 +31,10 @@ pkgver() {
 build() {
   cd $_gitname
   _ver="$_osever revision $(git rev-parse --short HEAD)"
+  
+  # Make it compile with GCC 6.x
+  export CXXFLAGS="$CXXFLAGS -fpermissive"
+  
   cmake -DAQUARIA_DEFAULT_DATA_DIR=/usr/share/aquaria \
         -DAQUARIA_EXTRA_DATA_DIR=/usr/share/aquaria/override \
         -DAQUARIA_OVERRIDE_VERSION_STRING="Aquaria OSE $_ver (based on Aquaria v1.1.3)" \
