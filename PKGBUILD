@@ -11,7 +11,7 @@ depends=()
 makedepends=('go')
 
 _gitname='servedir'
-_gitroot='git@github.com:mikolajb/servedir.git'
+_gitroot='https://github.com/mikolajb/servedir.git'
 prepare() {
   cd "$srcdir"
 
