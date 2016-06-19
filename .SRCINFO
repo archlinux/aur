@@ -1,6 +1,6 @@
 pkgbase = firefox-aurora-zh-tw
 	pkgdesc = Chinese Traditional For Firefox Developer (Aurora-l10n)
-	pkgver = 49.0a2.20160617004051
+	pkgver = 49.0a2.20160619
 	pkgrel = 1
 	url = http://www.mozilla.org/zh-TW/firefox/aurora/
 	install = firefox-aurora-zh-tw.install
@@ -28,7 +28,7 @@ pkgbase = firefox-aurora-zh-tw
 	source = https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-aurora-l10n/firefox-49.0a2.zh-TW.linux-x86_64.tar.bz2
 	sha512sums = 4c1284e97f26c7ad7b8e39f32bb82c015ac3c7dbaf3b96192dc40d95994a5602cf4c449fd4becfaed75f6e00e0af3db226d318625e95030ae9d9ddcc86ee45f7
 	sha512sums = 53756ab2a009a96585fd7b2131bb7fddaef112da9af84da4513ed7f3cf507cee5571ccbba7efa3ef1c027c06d5c6d5f16612f7ec536791e828d68098a1413fcb
-	sha512sums = c3d4142a72f1a9616085bb10dd10974b82814e852afdde497dfcd635c83bd591aec5a5929cf19f2eace1a2455587d56b97c861659cdbae5746dfdd8471f03e52
+	sha512sums = 78c294c90204e25018a12a15d202eef1f9ed307db3c11362f733e44a0859d1bb4c180cc995525226a5195333e1663f2a91c16d533535d7f614754492393f643b
 
 pkgname = firefox-aurora-zh-tw
 
