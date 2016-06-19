@@ -2,13 +2,13 @@
 
 pkgname=gnome-twofactorauth-git
 _gitname=Gnome-TwoFactorAuth
-pkgver=v0.1beta2.r1.g6be480f
+pkgver=v0.1beta2.r35.g206db96
 pkgrel=1
 pkgdesc='Two-Factor Authentication code generator for Gnome'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/bil-elmoussaoui/${_gitname}"
-depends=('desktop-file-utils' 'gobject-introspection' 'gtk3' 'python-gobject' 'python-cairo' 'python-pyotp')
+depends=('desktop-file-utils' 'gobject-introspection' 'gtk3' 'python-gobject' 'python-cairo' 'python-pyotp' 'python-zbarlight')
 makedepends=('git' 'gnome-common' 'intltool' 'itstool' 'python' 'yelp-tools')
 
 options=('!emptydirs')
