@@ -1,62 +1,117 @@
 # Maintainer: Lukasz Pozarlik <lpozarlik@gmail.com>
 
+### BUILD OPTIONS
+# Set these variables to ANYTHING that is not null to enable them
+
+# Tweak kernel options prior to a build via nconfig
+_makenconfig=
+
+### Do not disable NUMA until CK figures out why doing so causes panics for
+### some users!
+# NUMA is optimized for multi-socket motherboards.
+# A single multi-core CPU actually runs slower with NUMA enabled.
+# See, https://bugs.archlinux.org/task/31187
+_NUMAdisable=y
+
+# Compile ONLY probed modules
+# As of mainline 2.6.32, running with this option will only build the modules
+# that you currently have probed in your system VASTLY reducing the number of
+# modules built and the build time to do it.
+#
+# WARNING - ALL modules must be probed BEFORE you begin making the pkg!
+#
+# To keep track of which modules are needed for your specific system/hardware,
+# give module_db script a try: https://aur.archlinux.org/packages/modprobed-db
+# This PKGBUILD will call it directly to probe all the modules you have logged!
+#
+# More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
+#_localmodcfg=y
+
+# Use the current kernel's .config file
+# Enabling this option will use the .config of the RUNNING kernel rather than
+# the ARCH defaults. Useful when the package gets updated and you already went
+# through the trouble of customizing your config options.  NOT recommended when
+# a new kernel is released, but again, convenient for package bumps.
+#_use_current=y
+
+### Do no edit below this line unless you know what you're doing
+
 pkgbase=linux-think
 pkgdesc="Linux kernel with patches for Lenovo Think T530. It contains fbcondecor patch and changes required for VGA passthrough - for experiments"
 _srcname=linux-4.6
+_ckpatchname="patch-4.6-ck1"
 pkgver=4.6.2
 pkgrel=1
-arch=('i686' 'x86_64')
+arch=("i686" "x86_64")
 url="http://www.kernel.org/"
-license=('GPL2')
-makedepends=('xmlto' 
-	     'docbook-xsl' 
-	     'kmod' 
-	     'inetutils' 
-	     'bc')
-optdepends=('nvidia-think: nvidia drivers'
-	    'bbswitch-think: optimus support'
-	    'linux-think-firmware: BRCM bluetooth firmware')
-options=('!strip')
+license=("GPL2")
+makedepends=("xmlto" 
+"docbook-xsl" 
+"kmod" 
+"inetutils" 
+"bc")
+optdepends=("nvidia-think: nvidia drivers"
+"bbswitch-think: optimus support"
+"linux-think-firmware: BRCM bluetooth firmware")
+options=("!strip")
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-        "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
-	'001-change_default_console_loglevel.patch'
-	'002-i915.patch'
-	'003-override_for_missing_acs_capabilities.patch'
-	'004-enable_additional_cpu_optimizations_for_gcc_v4.9+.patch'
-	'005-intel_fifo_underrun_error_to_debug.patch'
-	'006-microphone_mute_light.patch'
-	'007-fbcondecor.patch'
-	#'008-e1000e_fix_tight_loop_implementation_of_systime_read.patch'
-	#'009-fix_bridge_regression.patch'
-	#'010-netfilter_conntrack_use_nf_ct_tmpl_free_in_CT_synpro.patch'
-        # the main kernel config files
-        'config' 
-	'config.x86_64'
-        # standard config files for mkinitcpio ramdisk
-        'linux.preset'
-        )
+"https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+"http://ck.kolivas.org/patches/4.0/4.6/4.6-ck1/${_ckpatchname}.xz"
+"001-change_default_console_loglevel.patch"
+"002-i915_vga_arbiter-4.6.2.patch"
+"003-acs_override-4.6.2.patch"
+"004-enable_additional_cpu_optimizations_for_gcc_v4.9+.patch"
+"005-intel_fifo_underrun_error_to_debug.patch"
+"006-microphone_mute_light.patch"
+"007-fbcondecor.patch"
+# the main kernel config files
+"config" 
+"config.x86_64"
+# standard config files for mkinitcpio ramdisk
+"linux.preset")
+
+md5sums=('d2927020e24a76da4ab482a8bc3e9ef3'
+         'c064bbe8108b8e5304f3db2130a96845'
+         '69281829b5135f1a34ccd393159c74e9'
+         'df7fceae6ee5d7e7be7b60ecd7f6bb35'
+         'b65081ff1ace9b352f80b23093e79397'
+         'c30fe04a9ba0a7c652cecac9320bbb4c'
+         '4675e1fe4bd326a50f168c5674bab13c'
+         '64c87cfec450389cc158ba0cf6fe7a1e'
+         'c96372203aec1ebc0fd8404bdddcc0b8'
+         '8b7ca23aa660578023a0a244ae235888'
+         'ed1d392d9feb77674e7a71c3eda060e6'
+         '2a8d43290cca1297a5f421b58b7c4058'
+         'eb14dcfd80c00852ef81ded6e826826a')
 
 _kernelname=${pkgbase#linux}
 
 prepare() {
   cd "${srcdir}/${_srcname}"
 
-  # add upstream patch
+  # Add upstream patch
+  msg "Patching upstream"
   patch -p1 -i "${srcdir}/patch-${pkgver}"
 
-  # add latest fixes from stable queue, if needed
+  # Add latest fixes from stable queue, if needed
+  # 
   # http://git.kernel.org/?p=linux/kernel/git/stable/stable-queue.git
 
   # set DEFAULT_CONSOLE_LOGLEVEL to 4 (same value as the 'quiet' kernel param)
   # remove this when a Kconfig knob is made available by upstream
   # (relevant patch sent upstream: https://lkml.org/lkml/2011/7/26/227)
+  msg "Patching default console loglevel"
   patch -p1 -i "${srcdir}/001-change_default_console_loglevel.patch"
 
+  # Patch source with ck patchset with BFS
+  msg "Patching source with ck1 including BFS v0.470"
+  patch -Np1 -i "${srcdir}/${_ckpatchname}"
+
   # Patches for vga arbiter fix in intel systems
-  patch -p1 -i "${srcdir}/002-i915.patch"
+  patch -p1 -i "${srcdir}/002-i915_vga_arbiter-4.6.2.patch"
 
   # Overrides for missing acs capabilities
-  patch -p1 -i "${srcdir}/003-override_for_missing_acs_capabilities.patch"
+  patch -p1 -i "${srcdir}/003-acs_override-4.6.2.patch"
 
   # Extra GCC optimizations
   patch -p1 -i "${srcdir}/004-enable_additional_cpu_optimizations_for_gcc_v4.9+.patch"
@@ -70,24 +125,29 @@ prepare() {
   # Enabling fbcondecor
   patch -p1 -i "${srcdir}/007-fbcondecor.patch"
 
-  # fix hard lockup in e1000e_cyclecounter_read() after 4 hours of uptime
-  # https://lkml.org/lkml/2015/8/18/292
-  #patch -p1 -i "${srcdir}/008-e1000e_fix_tight_loop_implementation_of_systime_read.patch"
-
-  # add not-yes-mainlined patch to fix bridge code
-  # https://bugzilla.kernel.org/show_bug.cgi?id=104161
-  #patch -p1 -i "${srcdir}/009-fix_bridge_regression.patch"
-
-  # add not-yet-mainlined patch to fix network unavailability when iptables
-  # rules are applied during startup - happened with Shorewall; journal had
-  # many instances of this error: nf_conntrack: table full, dropping packet
-  #patch -p1 -i "${srcdir}/010-netfilter_conntrack_use_nf_ct_tmpl_free_in_CT_synpro.patch"
-
-
+  # Copy the default config depanding on architecture
+  msg "Copying config..."
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
     cat "${srcdir}/config" > ./.config
+  fi
+
+  # Optionally disable NUMA since >99% of users have mono-socket systems.
+  if [ -n "$_NUMAdisable" ]; then
+    if [ "${CARCH}" = "x86_64" ]; then
+      msg "Disabling NUMA from kernel config..."
+      sed -i -e 's/CONFIG_NUMA=y/# CONFIG_NUMA is not set/' \
+        -i -e '/CONFIG_AMD_NUMA=y/d' \
+        -i -e '/CONFIG_X86_64_ACPI_NUMA=y/d' \
+        -i -e '/CONFIG_NODES_SPAN_OTHER_NODES=y/d' \
+        -i -e '/# CONFIG_NUMA_EMU is not set/d' \
+        -i -e '/CONFIG_NODES_SHIFT=6/d' \
+        -i -e '/CONFIG_NEED_MULTIPLE_NODES=y/d' \
+        -i -e '/# CONFIG_MOVABLE_NODE is not set/d' \
+        -i -e '/CONFIG_USE_PERCPU_NUMA_NODE_ID=y/d' \
+        -i -e '/CONFIG_ACPI_NUMA=y/d' ./.config
+    fi
   fi
 
   if [ "${_kernelname}" != "" ]; then
@@ -95,17 +155,29 @@ prepare() {
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
   fi
 
-  # set extraversion to pkgrel
+  # Set extraversion to pkgrel
   sed -ri "s|^(EXTRAVERSION =).*|\1 -${pkgrel}|" Makefile
 
-  # don't run depmod on 'make install'. We'll do this ourselves in packaging
+  # Don't run depmod on 'make install'. We'll do this ourselves in packaging
   sed -i '2iexit 0' scripts/depmod.sh
 
-  # load configuration
+  ### Optionally load needed modules for the make localmodconfig
+  # See https://aur.archlinux.org/packages/modprobed-db
+    if [ -n "$_localmodcfg" ]; then
+    msg "If you have modprobed-db installed, running it in recall mode now"
+    if [ -e /usr/bin/modprobed-db ]; then
+      [[ ! -x /usr/bin/sudo ]] && echo "Cannot call modprobe with sudo.  Install via pacman -S sudo and configure to work with this user." && exit 1
+      sudo /usr/bin/modprobed-db recall
+    fi
+    msg "Running Steven Rostedt's make localmodconfig now"
+    make localmodconfig
+  fi
+
+  # Load configuration
   make olddefconfig
   make menuconfig
 
-  # rewrite configuration
+  # Rewrite configuration
   yes "" | make config >/dev/null
 }
 
@@ -177,23 +249,23 @@ _package() {
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
+pkgdesc="Header files and scripts for building modules for ${pkgbase/linux/Linux} kernel"
 
-  install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
+install -dm755 "${pkgdir}/usr/lib/modules/${_kernver}"
 
-  cd "${srcdir}/${_srcname}"
-  install -D -m644 Makefile \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
-  install -D -m644 kernel/Makefile \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/kernel/Makefile"
-  install -D -m644 .config \
-    "${pkgdir}/usr/lib/modules/${_kernver}/build/.config"
+cd "${srcdir}/${_srcname}"
+install -D -m644 Makefile \
+  "${pkgdir}/usr/lib/modules/${_kernver}/build/Makefile"
+install -D -m644 kernel/Makefile \
+  "${pkgdir}/usr/lib/modules/${_kernver}/build/kernel/Makefile"
+install -D -m644 .config \
+  "${pkgdir}/usr/lib/modules/${_kernver}/build/.config"
 
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
+mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/include"
 
-  for i in acpi asm-generic config crypto drm generated keys linux math-emu \
-    media net pcmcia scsi sound trace uapi video xen; do
-    cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
+for i in acpi asm-generic config crypto drm generated keys linux math-emu \
+  media net pcmcia scsi sound trace uapi video xen; do
+cp -a include/${i} "${pkgdir}/usr/lib/modules/${_kernver}/build/include/"
   done
 
   # copy arch includes for external modules
@@ -279,51 +351,38 @@ _package-headers() {
 
   # strip scripts directory
   find "${pkgdir}/usr/lib/modules/${_kernver}/build/scripts" -type f -perm -u+w 2>/dev/null | while read binary ; do
-    case "$(file -bi "${binary}")" in
-      *application/x-sharedlib*) # Libraries (.so)
-        /usr/bin/strip ${STRIP_SHARED} "${binary}";;
-      *application/x-archive*) # Libraries (.a)
-        /usr/bin/strip ${STRIP_STATIC} "${binary}";;
-      *application/x-executable*) # Binaries
-        /usr/bin/strip ${STRIP_BINARIES} "${binary}";;
-    esac
-  done
+  case "$(file -bi "${binary}")" in
+    *application/x-sharedlib*) # Libraries (.so)
+      /usr/bin/strip ${STRIP_SHARED} "${binary}";;
+    *application/x-archive*) # Libraries (.a)
+      /usr/bin/strip ${STRIP_STATIC} "${binary}";;
+    *application/x-executable*) # Binaries
+      /usr/bin/strip ${STRIP_BINARIES} "${binary}";;
+  esac
+done
 
-  # remove unneeded architectures
-  rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
+# remove unneeded architectures
+rm -rf "${pkgdir}"/usr/lib/modules/${_kernver}/build/arch/{alpha,arc,arm,arm26,arm64,avr32,blackfin,c6x,cris,frv,h8300,hexagon,ia64,m32r,m68k,m68knommu,metag,mips,microblaze,mn10300,openrisc,parisc,powerpc,ppc,s390,score,sh,sh64,sparc,sparc64,tile,unicore32,um,v850,xtensa}
 }
 
 _package-docs() {
-  pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
+pkgdesc="Kernel hackers manual - HTML documentation that comes with the ${pkgbase/linux/Linux} kernel"
 
-  cd "${srcdir}/${_srcname}"
+cd "${srcdir}/${_srcname}"
 
-  mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
-  find "${pkgdir}" -type f -exec chmod 444 {} \;
-  find "${pkgdir}" -type d -exec chmod 755 {} \;
+mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build"
+cp -al Documentation "${pkgdir}/usr/lib/modules/${_kernver}/build"
+find "${pkgdir}" -type f -exec chmod 444 {} \;
+find "${pkgdir}" -type d -exec chmod 755 {} \;
 
-  # remove a file already in linux package
-  rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
+# remove a file already in linux package
+rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
 
 pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
 for _p in ${pkgname[@]}; do
   eval "package_${_p}() {
-    $(declare -f "_package${_p#${pkgbase}}")
-    _package${_p#${pkgbase}}
-  }"
+  $(declare -f "_package${_p#${pkgbase}}")
+  _package${_p#${pkgbase}}
+}"
 done
-
-md5sums=('d2927020e24a76da4ab482a8bc3e9ef3'
-         'c064bbe8108b8e5304f3db2130a96845'
-         'df7fceae6ee5d7e7be7b60ecd7f6bb35'
-         '78b2df2478ca805a233a19fe367e4fcc'
-         'be91dd41334c87c68ed0e730846b8192'
-         '4675e1fe4bd326a50f168c5674bab13c'
-         '64c87cfec450389cc158ba0cf6fe7a1e'
-         'c96372203aec1ebc0fd8404bdddcc0b8'
-         '8b7ca23aa660578023a0a244ae235888'
-         'ed1d392d9feb77674e7a71c3eda060e6'
-         '2a8d43290cca1297a5f421b58b7c4058'
-         'eb14dcfd80c00852ef81ded6e826826a')
