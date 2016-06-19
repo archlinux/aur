@@ -21,12 +21,15 @@ optdepends=('libplist: AirPlay support'
 source=("http://ffmpeg.org/releases/ffmpeg-2.8.7.tar.bz2"
 	'ffmpeg-2.8-kodi.patch'
 	'ffmpeg-2.8-Resolve-plex-direct-domains.patch'
-'ffmpeg-99.0011-mpeg4video-Signal-unsupported-GMC-with-more-than-one.patch'
-'ffmpeg-Speed_up_wtv_index_creation.patch'
-'openpht.conf'
+	'ffmpeg-99.0011-mpeg4video-Signal-unsupported-GMC-with-more-than-one.patch'
+	'ffmpeg-Speed_up_wtv_index_creation.patch'
+	'openpht.conf'
 )
 prepare() {
-  install -D -m 644 *.patch ffmpeg-2.8.7/patches/
+  install -D -m 644 "${srcdir}"/ffmpeg-2.8-kodi.patch "${srcdir}"/ffmpeg-2.8.7/patches/ffmpeg-2.8-kodi.patch
+  install -D -m 644 "${srcdir}"/ffmpeg-2.8-Resolve-plex-direct-domains.patch "${srcdir}"/ffmpeg-2.8.7/patches/ffmpeg-2.8-Resolve-plex-direct-domains.patch
+  install -D -m 644 "${srcdir}"/ffmpeg-99.0011-mpeg4video-Signal-unsupported-GMC-with-more-than-one.patch "${srcdir}"/ffmpeg-2.8.7/patches/ffmpeg-99.011-mpeg4video-Signal-unsupported-GMC-with-more-than-one.patch
+  install -D -m 644 "${srcdir}"/ffmpeg-Speed_up_wtv_index_creation.patch "${srcdir}"/ffmpeg-2.8.7/patches/ffmpeg-Speed_up_wtv_index_creation.patch
 }
 
 build() {
@@ -41,8 +44,8 @@ package() {
   install -D -m 644 "${srcdir}"/openpht.conf "${pkgdir}"/etc/ld.so.conf.d/openpht.conf
 }
 sha256sums=('8777ce4a335640fdd13680ba423ef6da330ff5071bfbe27cdbb452379167efe5'
-'f89a26cb409bab1ac00106db008eccf72c6390e04d7cde2a63fbb1f2e9fbc669'
-'ca7eca1b9476c93efbdea457b64b0e5d925ad437f79168112aae52319d59d155'
-'fa78aa79ff861edbb8b6443978a0da60c4241f7a7f3888b242031ba916fa7514'
-'d1191e3e3fc980535e4835b5ef9b52fd15a14b58ef56ac6d2710bd589ce94b40'
-'290ab6ad8ad388b0911e2aad4a5b297d273616698065f47ee70e66358405ba8f')
+	'f89a26cb409bab1ac00106db008eccf72c6390e04d7cde2a63fbb1f2e9fbc669'
+	'ca7eca1b9476c93efbdea457b64b0e5d925ad437f79168112aae52319d59d155'
+	'fa78aa79ff861edbb8b6443978a0da60c4241f7a7f3888b242031ba916fa7514'
+	'd1191e3e3fc980535e4835b5ef9b52fd15a14b58ef56ac6d2710bd589ce94b40'
+	'290ab6ad8ad388b0911e2aad4a5b297d273616698065f47ee70e66358405ba8f')
