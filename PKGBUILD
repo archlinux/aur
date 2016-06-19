@@ -6,7 +6,7 @@
 pkgname=afterstep
 _name=AfterStep
 pkgver=2.2.12
-pkgrel=4
+pkgrel=5
 pkgdesc="A Window Manager based on NextStep Interface"
 arch=('i686' 'x86_64')
 url="http://www.afterstep.org"
