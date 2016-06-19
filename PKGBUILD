@@ -3,11 +3,11 @@
 pkgname=butter-desktop-git
 _pkgname=butter-desktop
 _gitname=butter-desktop
-pkgver=r5917.daeab75
+pkgver=r5919.e3da517
 pkgrel=1
 pkgdesc="Stream movies and TV shows from torrents"
 arch=('i686' 'x86_64')
-url="https://butter-desktop.sh"
+url="https://butterproject.org"
 license=('GPL3')
 depends=('alsa-lib' 'gconf' 'gtk2' 'nss' 'ttf-font' 'libxtst' 'libnotify' 'desktop-file-utils')
 makedepends=('git' 'npm' 'bower' 'nodejs-grunt-cli' 'gulp')
