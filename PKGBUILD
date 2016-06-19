@@ -2,15 +2,15 @@
 
 _pkgrname=ThePEG
 pkgname=thepeg
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="Toolkit for High Energy Physics Event Generation"
 arch=("i686" "x86_64")
 url="http://thepeg.hepforge.org"
 license=('GPL2')
 depends=("gsl" "lhapdf" "hepmc" "rivet" "zlib" "fastjet" "boost")
 source=("http://www.hepforge.org/archive/thepeg/${_pkgrname}-$pkgver.tar.bz2")
-sha256sums=('ec284abdc82ceaf10a8736f908e7955f49f872b79aaa62d22aa33bc5c7679bdb')
+sha256sums=('d4249e019543d5c7520733292d2edfb0bdd9733177200a63837781ed6194789b')
 
 build() {
   cd "${_pkgrname}-$pkgver"
