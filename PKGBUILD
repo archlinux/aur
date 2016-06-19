@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 package() {
 
   install -dm 755 "${pkgdir}/usr/share/icons"
-  cp -r ${srcdir}/${pkgname}-${pkgver}-${pkgrel}/* ${pkgdir}/usr/share/icons/
+  cp -r ${srcdir}/* ${pkgdir}/usr/share/icons/
   find "${pkgdir}/usr/share/icons" -type d -exec chmod 755 '{}' \;
   find "${pkgdir}/usr/share/icons" -type f -exec chmod 644 '{}' \;
 }
