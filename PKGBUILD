@@ -26,8 +26,7 @@ source=("http://ffmpeg.org/releases/ffmpeg-2.8.7.tar.bz2"
 'openpht.conf'
 )
 prepare() {
-  mkdir ffmpeg-2.8.7/patches
-  cp *.patch ffmpeg-2.8.7/patches
+  install -D -m 644 *.patch ffmpeg-2.8.7/patches/
 }
 
 build() {
@@ -37,10 +36,9 @@ build() {
 }
 
 package() {
-  cp openpht.conf /etc/ld.so.conf.d
-  ldconfig
   cd ffmpeg-2.8.7
   make DESTDIR="${pkgdir}" install
+  install -D -m 644 "${srcdir}"/openpht.conf "${pkgdir}"/etc/ld.so.conf.d/openpht.conf
 }
 sha256sums=('8777ce4a335640fdd13680ba423ef6da330ff5071bfbe27cdbb452379167efe5'
 'f89a26cb409bab1ac00106db008eccf72c6390e04d7cde2a63fbb1f2e9fbc669'
