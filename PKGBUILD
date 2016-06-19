@@ -1,8 +1,8 @@
 # Maintainer: Zachary Jaggi <feilen1000@gmail.com>
 
 pkgbase=dolphin-emu-osvr-git
-pkgname=('dolphin-emu-osvr-git' 'dolphin-emu-osvr-cli-git' 'dolphin-emu-osvr-qt-git')
-pkgver=4.0.2.r6333.58c706e
+pkgname=('dolphin-emu-osvr-git' 'dolphin-emu-osvr-cli-git')
+pkgver=4.0.2.r8742.5b7c294
 pkgrel=1
 pkgdesc='A GameCube / Wii / Triforce emulator, with OSVR cross-HMD support'
 arch=('x86_64')
@@ -10,7 +10,7 @@ url='http://www.dolphin-emu.org/'
 license=('GPL2')
 depends=('bluez-libs' 'ffmpeg' 'libao' 'mbedtls' 'miniupnpc' 'portaudio'
          'sdl2' 'sfml' 'soundtouch' 'xdg-utils' 'wxgtk' 'osvr-core-git' 'osvr-libfunctionality-git')
-makedepends=('cmake' 'git' 'qt5-base')
+makedepends=('cmake' 'git')
 optdepends=('pulseaudio: PulseAudio backend')
 options=('!emptydirs')
 source=('dolphin-emu::git+https://github.com/feilen/dolphin.git#branch=osvr')
@@ -35,8 +35,7 @@ build() {
   cmake .. \
     -DCMAKE_INSTALL_PREFIX='/usr' \
     -DCMAKE_CXX_FLAGS='-fno-inline-functions -fpermissive' \
-    -DENABLE_LTO='TRUE' \
-    -DENABLE_QT='TRUE'
+    -DENABLE_LTO='TRUE'
   make
 }
 
@@ -51,21 +50,12 @@ package_dolphin-emu-osvr-git() {
 }
 
 package_dolphin-emu-osvr-cli-git() {
-  depends=('dolphin-emu-git')
+  depends=('dolphin-emu-osvr-git')
 
   cd dolphin-emu/build
 
   install -dm 755 "${pkgdir}"/usr/bin
   install -m 755 Binaries/dolphin-emu-nogui "${pkgdir}"/usr/bin/dolphin-emu-cli
-}
-
-package_dolphin-emu-osvr-qt-git() {
-  depends=('dolphin-emu-git' 'qt5-base')
-
-  cd dolphin-emu/build
-
-  install -dm 755 "${pkgdir}"/usr/bin
-  install -m 755 Binaries/dolphin-emu-qt "${pkgdir}"/usr/bin/
 }
 
 # vim: ts=2 sw=2 et:
