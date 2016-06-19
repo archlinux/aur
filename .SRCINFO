@@ -1,6 +1,6 @@
 pkgbase = python-acme-git
 	pkgdesc = ACME protocol implementation for Python
-	pkgver = 0.7.0.r37.g28c24e6
+	pkgver = 0.8.1.r25.gaa4a263
 	pkgrel = 1
 	url = https://github.com/certbot/certbot
 	arch = any
@@ -43,7 +43,7 @@ pkgname = python-acme-git
 	depends = python-six
 	depends = python-werkzeug
 	depends = python-mock
-	provides = python-acme=0.7.0.r37.g28c24e6
+	provides = python-acme=0.8.1.r25.gaa4a263
 	conflicts = python-acme
 
 pkgname = python2-acme-git
@@ -58,5 +58,5 @@ pkgname = python2-acme-git
 	depends = python2-six
 	depends = python2-werkzeug
 	depends = python2-mock
-	provides = python2-acme=0.7.0.r37.g28c24e6
+	provides = python2-acme=0.8.1.r25.gaa4a263
 	conflicts = python2-acme
