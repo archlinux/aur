@@ -3,12 +3,12 @@
 pkgname=jalbum
 _basedir=/usr/lib/$pkgname
 pkgver=13.2
-pkgrel=1
+pkgrel=2
 pkgdesc="free web photo album software and photo gallery software"
 arch=('any')
 url="http://jalbum.net/"
 license=('custom' 'lgpl')
-depends=('jre8-openjdk')
+depends=('java-openjfx')
 source=("http://download.jalbum.net/download/$pkgver/${pkgname/a/A}.zip"
 "$pkgname.desktop"
 "$pkgname.sh")
