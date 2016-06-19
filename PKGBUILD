@@ -25,6 +25,12 @@ prepare() {
   #fix some problems about the launcher (Slim)
   patch -p0 -i ${srcdir}/desktop_entry.patch
 
+  #porting to gcc 5
+  #see:
+  #	https://gcc.gnu.org/gcc-5/porting_to.html
+  #	https://gcc.gnu.org/onlinedocs/gcc/C-Dialect-Options.html
+  export CFLAGS+=" -fgnu89-inline"
+  
   ./configure --prefix=/usr --mandir=/usr/share/man
 }
 
