@@ -1,13 +1,14 @@
 pkgbase = wallpaper-switch
 	pkgdesc = Runs in backgroud and changes Gnome backgroud to NASA picture of the day.
-	pkgver = 0.1
+	pkgver = 0.2.r0.g42536ed
 	pkgrel = 1
 	url = https://github.com/mikolajb/wallpaper-switch
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = go
-	source = wallpaper-switch-git::git+http://github.com/mikolajb/wallpaper-switch
+	source = wallpaper-switch::git+http://github.com/mikolajb/wallpaper-switch
 	sha256sums = SKIP
 
-pkgname = wallpaper-switch-git
+pkgname = wallpaper-switch
+

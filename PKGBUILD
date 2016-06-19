@@ -1,7 +1,7 @@
 # Maintainer: Mikołaj Baranowski <mikolajb@gmail.com>
 
 pkgname=wallpaper-switch
-pkgver=0.1
+pkgver=0.2.r0.g42536ed
 pkgrel=1
 pkgdesc='Runs in backgroud and changes Gnome backgroud to NASA picture of the day.'
 license=('MIT')
@@ -16,8 +16,8 @@ _gogouuid=github.com/nu7hatch/gouuid
 _gohtml=golang.org/x/net/html
 
 pkgver() {
-  cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd ${srcdir}/${pkgname}/
+  git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
