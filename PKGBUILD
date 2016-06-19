@@ -23,12 +23,14 @@ build()
     patch -p1 < ../fix-typo.patch
     patch -p1 < ../fix-zlib.patch
 
-    ./autogen.sh --prefix=/usr
+    CXXFLAGS=-Wno-narrowing ./autogen.sh --prefix=/usr
+    sed -i 's/\(bin_PROGRAMS = .*\)/\1 tabfile$(EXEEXT)/' src/Makefile
     make
 }
 
 package() {
     cd "$srcdir/${pkgname}-$pkgver"
+    mv "$pkgdir"/usr/bin/tabfile "$pkgdir"/usr/bin/stardict-tabfile 
     make DESTDIR="$pkgdir" install
 }
 md5sums=('56762aa24df6c985c44e893c56bdd5d6'
