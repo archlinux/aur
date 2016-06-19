@@ -11,7 +11,7 @@
 # under /usr/include/pd-l2ork.
 
 pkgname=pd-l2ork-git
-pkgver=r1714.22edd36
+pkgver=r1716.a1424f0
 pkgrel=1
 pkgdesc="L2Ork (Linux Laptop Orchestra) version of PureData (git version)"
 url="http://l2ork.music.vt.edu/main/?page_id=56"
@@ -84,7 +84,10 @@ package() {
   chmod -R go-w *
   chmod -R a+r *
   chmod a-x usr/lib/pd-l2ork/default.settings
-  find . -name '*.pd' | xargs chmod a-x
+  #find . -executable -name '*.pd_linux' | xargs chmod a-x
+  find . -executable -name '*.pd' | xargs chmod a-x
+  find . -executable -name '*.txt' | xargs chmod a-x
+  find . -executable -name '*.aif*' | xargs chmod a-x
   find . -type d | xargs chmod a+x
 }
 
