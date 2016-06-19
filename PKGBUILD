@@ -4,7 +4,7 @@
 pkgname="nightingale-git"
 pkgver=78bd501
 pkgrel=1
-pkgdesc="No binaries used. Open source fork of the Songbird Media Player with updates and fixes."
+pkgdesc="Open source fork of the Songbird Media Player. Uses prebuilt xulrunner and sqlite."
 arch=('i686' 'x86_64')
 url="http://getnightingale.com/"
 license=('GPL2' 'MPL' 'BSD')
@@ -16,10 +16,10 @@ conflicts=('nightingale')
 provides=('nightingale')
 install="nightingale.install"
 source=("nightingale-hacking::git://github.com/nightingale-media-player/nightingale-hacking.git#branch=gstreamer-1.0"
-		"nightingale-deps::git://github.com/nightingale-media-player/nightingale-deps.git#branch=xul-192-new"
+		"https://bitbucket.org/nightingale-media-player/nightingale-deps/downloads/linux-${CARCH}-1.12-20130316-release-final.tar.lzma"
         "Nightingale.desktop")
 md5sums=('SKIP'
-		 'SKIP'
+         'a9b47ef0b21106f6b51231046e1758d1'
          '7741cc247648e95dd9dad8c953616757')
 
 pkgver() {
@@ -33,63 +33,19 @@ prepare() {
    echo 'ac_add_options --with-gstreamer-1.0' >> "${srcdir}/nightingale-hacking/nightingale.config"
    echo 'ac_add_options --with-taglib-source=system' >> "${srcdir}/nightingale-hacking/nightingale.config"
    echo 'ac_add_options --enable-official' >> "${srcdir}/nightingale-hacking/nightingale.config"
+   
+   cd "${srcdir}/nightingale-hacking/dependencies"
+   ln -sf "${srcdir}/linux-${CARCH}" ./
 }
 
-build() {
-	msg "Building static dependencies xulrunner and sqlite..."
+build() {	
+	cd "${srcdir}/nightingale-hacking"
 	
-	# it makes more sense to me to force a fresh build of everything
-	# so i am now
-	if [ -d "${srcdir}/linux-${CARCH}" ]; then
-		rm -rf "${srcdir}/linux-${CARCH}"
-	fi
-	
-	if [ -d "${srcdir}/nightingale-hacking/dependencies/linux-${CARCH}" ]; then
-		rm -rf "${srcdir}/nightingale-hacking/dependencies/linux-${CARCH}"
-	fi
-	
-	mkdir "${srcdir}/linux-${CARCH}"
-	
-	# for whatever reason the lack of the below broke sqlite
-	# it for whatever reason builds both versions without a make target for release only
-	mkdir -p "${srcdir}/linux-${CARCH}/sqlite/debug"
-	mkdir -p "${srcdir}/linux-${CARCH}/sqlite/release"
-	mkdir -p "${srcdir}/linux-${CARCH}/xulrunner-1.9.2/release"
-	
-	cd "${srcdir}/nightingale-deps"
-	
-	# xul 1.9.2 won't build without this
-	unset CPPFLAGS
-	
-	export SB_VENDOR_BINARIES_CO_ROOT=${srcdir}
-	export SB_VENDOR_BUILD_ROOT=${srcdir}
-	export CXXFLAGS="$CXXFLAGS -fpermissive"
-
-	# gcc6 and higher doesn't play nice with ngale and deps
 	export CC=gcc-5
 	export CXX=g++-5
-	
-	echo "export CC=gcc-5" >> "${srcdir}/nightingale-deps/xulrunner-1.9.2/mozconfigs/xulrunner.linux.release.${CARCH}.mozconfig"
-	echo "export CXX=g++-5" >> "${srcdir}/nightingale-deps/xulrunner-1.9.2/mozconfigs/xulrunner.linux.release.${CARCH}.mozconfig" 
-	
-	msg2 "Building xulrunner 1.9.2...\n"
-	make -C xulrunner-1.9.2 -f Makefile.songbird xr-build-release 
-	make -C xulrunner-1.9.2 -f Makefile.songbird xr-packaging-release
-	
-	msg2 "Building sqlite...\n"
-	cd sqlite
-	autoreconf --force --install
-	cd ..
-	make -C sqlite -f Makefile.songbird
-	strip --strip-all "${srcdir}/linux-$(uname -m)/sqlite/release/bin/sqlite3"
-	strip --strip-debug "${srcdir}/linux-$(uname -m)/sqlite/release/lib/libsqlite3.a"
-
-	mv "${srcdir}/linux-${CARCH}" "${srcdir}/nightingale-hacking/dependencies/"
-	
-	msg2 "Building Nightingale...\n"
-	cd "${srcdir}/nightingale-hacking"
+		
 	make
-			
+	
 	# copy the add-ons first
 	[ -d ../xpi-stage ] && rm -rf ../xpi-stage 
 	cp -a "${srcdir}/nightingale-hacking/compiled/xpi-stage" "${srcdir}"
