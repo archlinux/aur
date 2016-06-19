@@ -31,16 +31,13 @@ check() {
 package() {
   cd "${_srcname}"
 
-  # Remove unneeded files
-  rm baseq3r/*.so
+  rm -f baseq3r/*.so
 
-  # Copy mod files
   mkdir -p "${pkgdir}/opt/quake3"
-  cp -dR baseq3r "${pkgdir}/opt/quake3"
-
-  cd "${srcdir}"
+  cp -a baseq3r "${pkgdir}/opt/quake3"
 
   # Install client launcher
+  cd "${srcdir}"
   install -D -m 0755 q3rally "${pkgdir}/usr/bin/q3rally"
   install -D -m 0644 q3rally.desktop "${pkgdir}/usr/share/applications/q3rally.desktop"
 }
