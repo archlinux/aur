@@ -10,17 +10,18 @@ _electron_ver=0.36.12
 pkgname=${_pkgname}-editor-${_version}
 _atomver=1.8.0
 pkgver=1.8.0.arch0.3.0.e0.36.12
-pkgrel=1
+pkgrel=2
 pkgdesc="Hackable text editor for the 21st Century, built using web technologies, with some extra packages for Arch Linux package development pre-installed."
 arch=('x86_64' 'i686')
-url='https://github.com/atom/atom'
+_url='https://github.com/atom/atom'
+url='https://fusion809.github.io/atom-editor-arch/'
 license=('MIT')
 depends=('namcap' 'pkgbuild-introspection' 'alsa-lib' 'desktop-file-utils' 'gconf' 'gtk2' 'libgnome-keyring' 'libnotify' 'libxtst' 'nodejs' 'nss' 'python2')
 optdepends=('gvfs: file deletion support')
 makedepends=('git' 'npm' 'hunspell-en')
 conflicts=('atom-editor-bin' 'atom-editor-beta')
 install=${_pkgname}-${_version}.install
-source=("${_pkgname}-${_atomver}.tar.gz::${url}/archive/v${_atomver}.tar.gz"
+source=("${_pkgname}-${_atomver}.tar.gz::${_url}/archive/v${_atomver}.tar.gz"
 "about-arch::git+${_fusurl}/about"
 "git+https://github.com/Murriouz/dark-bint-syntax"
 "git+${_fusurl}/fusion-ui"
