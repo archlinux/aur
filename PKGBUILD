@@ -21,9 +21,9 @@ package() {
 
   cd "${srcdir}"
   mkdir -p "${pkgdir}/opt/quake3"
-  cp -dR edawn "${pkgdir}/opt/quake3"
+  cp -a edawn "${pkgdir}/opt/quake3"
 
-  install -D -m 644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m 0644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
