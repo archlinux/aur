@@ -11,7 +11,7 @@ _language_gfm2_ver=0.90.4
 _language_liquid_ver=0.5.1
 
 pkgname=${_pkgname}-editor-${_version}
-pkgver=1.10.0.dev.0.90.4.e5a3c9e
+pkgver=1.10.0.dev.m0.90.4.r1.e5a3c9e
 pkgrel=1
 pkgdesc='Hackable text editor for the 21st Century, based on web technologies and built from the latest git source code'
 arch=('x86_64' 'i686')
@@ -34,7 +34,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd $srcdir/$_pkgname
-  git describe --long | sed "s/v1.6.0-beta0/1.10.0.dev.${_language_gfm2_ver}./g" | sed 's/-[0-9]*-//g' | sed 's/g//g'
+  git describe --long | sed "s|v1.6.0-beta0|1.10.0.dev.m${_language_gfm2_ver}.r1.|g" | sed 's/-[0-9]*-//g' | sed 's/g//g'
 }
 
 prepare() {
