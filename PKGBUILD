@@ -14,8 +14,7 @@ arch=(any)
 url=http://www.eclipse.org/gef/
 license=(EPL)
 depends=(eclipse)
-_mirror="http://www.eclipse.org/downloads/download.php?r=1&file="
-source=($_mirror/tools/gef/gef4/downloads/drops/$pkgver/R$_reldate/GEF4-Update-$pkgver.zip)
+source=("http://archive.eclipse.org/tools/gef/downloads/drops/3.10.1/R201509250000/GEF4-Update-3.10.1.zip")
 sha256sums=('8ec17bf698d71a22453de05d10108b59580c722e394da0d5dc99f809548c94f0')
 
 package() {
