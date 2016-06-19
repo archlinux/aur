@@ -1,8 +1,9 @@
-# Maintainer: fsckd <fsckdaemon@gmail.com>
+# Maintainer: thr <r at sledinmay dot com>
+# Contributor: fsckd <fsckdaemon@gmail.com>
 
 pkgname=burg-themes-extras
 pkgver=2
-pkgrel=3
+pkgrel=4
 pkgdesc="Extra Themes for Burg Bootloader"
 arch=('any')
 url="https://launchpad.net/burg"
@@ -10,11 +11,11 @@ license=('GPL')
 depends=('burg-bzr')
 backup=('boot/burg/gui.cfg' 'boot/burg/burgenv')
 
-source=('http://ompldr.org/vYjlqNA/168681d1282146464-need-somebody-test-my-burg-theme-fortune-burg-v03.tar.gz'
+source=('http://dl.dropbox.com/u/10014823/burg/168681d1282146464-need-somebody-test-my-burg-theme-fortune-burg-v03.tar.gz'
         'http://dl.dropbox.com/u/10014823/burg/Autumn-Refined.tar.gz'
-        'http://gnome-look.org/CONTENT/content-files/124143-vitruvio.tar.gz'
+        'https://www.ppload.com/api/files/download?id=1465382471'
         'http://dl.dropbox.com/u/10014823/burg/minimal_burg_theme_by_sir_nimaj-d2xhk79.zip'
-        'http://gnome-look.org/CONTENT/content-files/126560-radianceblack.tar.gz'
+        'https://www.ppload.com/api/files/download?id=1465390934'
        )
 sha256sums=('b6cc96fdb58bffebb11e28fd52b1555486323cfacc6a5153258986825dfdc391' # fortune
             '03bc0adc8fc1d3a62116b0ec6a43738373ea2898f40ed8a7a0860fc6b40a019b' # autumn
@@ -24,7 +25,7 @@ sha256sums=('b6cc96fdb58bffebb11e28fd52b1555486323cfacc6a5153258986825dfdc391' #
            )
 install='burg-themes.install'
 
-build() {
+package() {
   mkdir -p "${pkgdir}/boot/burg/themes"
   # install fortune
   cp -rip "${srcdir}/fortune" "${pkgdir}/boot/burg/themes"
@@ -32,10 +33,12 @@ build() {
   # install autumn
   cp -rip "${srcdir}/Autumn-Refined" "${pkgdir}/boot/burg/themes"
   # install vitruvio
+  mv "${srcdir}/download?id=1465382471" "${srcdir}/vitruvio.tar.gz"
   cp -rip "${srcdir}/vitruvio" "${pkgdir}/boot/burg/themes"
   # install minimal
   cp -rip "${srcdir}/minimal" "${pkgdir}/boot/burg/themes"
   # install radianceblack
+  mv "${srcdir}/download?id=1465390934" "${srcdir}/radianceblack.tar.gz"
   cp -rip "${srcdir}/radianceblack" "${pkgdir}/boot/burg/themes"
 }
 
