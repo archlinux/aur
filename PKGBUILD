@@ -1,4 +1,4 @@
-# $Id: PKGBUILD 259907 2016-02-17 16:23:50Z anatolik $
+# $Id: PKGBUILD 269112 2016-06-08 06:44:42Z heftig $
 # Maintainer: Tobias Powalowski <tpowa@archlinux.org>
 # Contributor: Sébastien "Seblu" Luttringer <seblu@seblu.net>
 #pkgbase=qemu
@@ -9,27 +9,33 @@
 #         'qemu-block-gluster'
 #         'qemu-guest-agent')
 pkgname='qemu-minimal'
-pkgver=2.5.0
-pkgrel=1.1
+#pkgdesc='A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation'
+pkgdesc='A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation. This is a stripped-down version of the official package and requires only the bare essentials for running on a headless server.'
+pkgver=2.6.0
+pkgrel=1
 arch=('i686' 'x86_64')
 license=('GPL2' 'LGPL2.1')
 url='http://wiki.qemu.org/'
-#makedepends=('pixman' 'libjpeg' 'libpng' 'sdl' 'alsa-lib' 'nss' 'glib2'
-#             'gnutls' 'bluez-libs' 'vde2' 'util-linux' 'curl' 'libsasl'
-#             'libgl' 'libpulse' 'seabios' 'libcap-ng' 'libaio' 'libseccomp'
-#             'libiscsi' 'libcacard' 'spice' 'spice-protocol' 'python2'
-#             'usbredir' 'ceph' 'glusterfs' 'libssh2' 'lzo' 'snappy')
-makedepends=('pixman' 'libjpeg' 'glib2'
-             'util-linux' 'curl' 'libsasl'
-             'seabios' 'libcap-ng' 'libaio' 'libseccomp'
-             'python2'
-             'libssh2' 'lzo' 'snappy')
+#depends=('pixman' 'libjpeg' 'libpng' 'sdl2' 'alsa-lib' 'nss' 'glib2'
+#         'gnutls' 'bluez-libs' 'vde2' 'util-linux' 'libsasl' 'libgl'
+#         'seabios' 'libcap' 'libcap-ng' 'libaio' 'libseccomp' 'libcacard'
+#         'spice' 'usbredir' 'lzo' 'snappy' 'gcc-libs' 'zlib' 'bzip2' 'nspr'
+#         'ncurses' 'libx11' 'libusb' 'libpulse' 'libssh2' 'curl' 'vte3'
+#         'virglrenderer' 'jemalloc')
+#makedepends=('curl' 'libiscsi' 'spice-protocol' 'python2' 'ceph' 'glusterfs')
+depends=('pixman' 'libjpeg' 'glib2'
+         'util-linux' 'libsasl'
+         'seabios' 'libcap' 'libcap-ng' 'libaio' 'libseccomp'
+         'lzo' 'snappy' 'gcc-libs' 'zlib' 'bzip2' 'nspr'
+         'ncurses' 'libssh2' 'curl'
+         'jemalloc')
+makedepends=('curl' 'python2')
 conflicts=('qemu')
 source=(http://wiki.qemu.org/download/${pkgname:0:-8}-${pkgver}.tar.bz2
         qemu.sysusers
         qemu-ga.service
         65-kvm.rules)
-md5sums=('f469f2330bbe76e3e39db10e9ac4f8db'
+md5sums=('ca3f70b43f093e33e9e014f144067f13'
          '49778d11c28af170c4bebcc648b0ace1'
          '44ee242d758f9318c6a1ea1dae96aa3a'
          '33ab286a20242dda7743a900f369d68a')
@@ -39,7 +45,7 @@ mips64 mips64el mipsel mipsn32 mipsn32el or32 ppc ppc64 ppc64abi32 ppc64le s390x
 sh4 sh4eb sparc sparc32plus sparc64 moxie ppcemb tricore unicore32 xtensa xtensaeb)
 _extra_blob=(QEMU,cgthree.bin QEMU,tcx.bin bamboo.dtb openbios-ppc
 openbios-sparc32 openbios-sparc64 palcode-clipper petalogix-ml605.dtb
-petalogix-s3adsp1800.dtb ppc_rom.bin s390-ccw.img s390-zipl.rom slof.bin
+petalogix-s3adsp1800.dtb ppc_rom.bin s390-ccw.img slof.bin
 spapr-rtas.bin u-boot.e500)
 
 prepare() {
@@ -48,6 +54,7 @@ prepare() {
     msg2 "Patching $_p"
     patch -p1 -d ${pkgname:0:-8}-${pkgver} < "$_p"
   done
+  sed -i 's/vte-2\.90/vte-2.91/g' ${pkgname:0:-8}-${pkgver}/configure
 }
 
 build ()
@@ -61,33 +68,23 @@ build ()
 #  ./configure --prefix=/usr --sysconfdir=/etc --audio-drv-list='pa alsa sdl' \
 #              --python=/usr/bin/python2 --smbd=/usr/bin/smbd \
 #              --enable-docs --libexecdir=/usr/lib/qemu \
-#              --disable-gtk --enable-linux-aio --enable-seccomp \
+#              --enable-gtk --enable-linux-aio --enable-seccomp \
 #              --enable-spice --localstatedir=/var \
-#              --enable-tpm \
+#              --with-gtkabi=3.0 --with-sdlabi=2.0 --enable-vte \
+#              --enable-tpm --enable-jemalloc --enable-opengl \
 #              --enable-modules --enable-{rbd,glusterfs,libiscsi,curl}
   ./configure --prefix=/usr --sysconfdir=/etc --audio-drv-list='' \
               --python=/usr/bin/python2 --smbd=/usr/bin/smbd \
               --enable-docs --libexecdir=/usr/lib/qemu \
               --disable-gtk --enable-linux-aio --enable-seccomp \
               --disable-spice --localstatedir=/var \
-              --enable-tpm \
+              --disable-vte \
+              --enable-tpm --enable-jemalloc --disable-opengl \
               --enable-modules --enable-curl
   make V=99
 }
 
 package() {
-  pkgdesc='A generic and open source processor emulator which achieves a good emulation speed by using dynamic translation. This is a stripped-down version of the official package and requires only the bare essentials for running on a headless server.'
-#  depends=('glibc' 'pixman' 'libjpeg' 'libpng' 'sdl' 'alsa-lib' 'nss' 'glib2'
-#           'gnutls' 'bluez-libs' 'vde2' 'util-linux' 'libsasl' 'libgl'
-#           'seabios' 'libcap' 'libcap-ng' 'libaio' 'libseccomp' 'libcacard'
-#           'spice' 'usbredir' 'lzo' 'snappy' 'gcc-libs' 'zlib' 'bzip2' 'nspr'
-#           'ncurses' 'libx11' 'libusb' 'libpulse' 'libssh2' 'curl')
-  depends=('glibc' 'pixman' 'libjpeg' 'glib2'
-         'util-linux' 'libsasl'
-         'seabios' 'libcap' 'libcap-ng' 'libaio' 'libseccomp'
-         'lzo' 'snappy' 'gcc-libs' 'zlib' 'bzip2' 'nspr'
-         'ncurses' 'libssh2' 'curl'
-         )
   replaces=('qemu-kvm')
 #  optdepends=('samba: SMB/CIFS server support'
 #              'qemu-arch-extra: extra architectures support'
@@ -105,7 +102,6 @@ package() {
   # provided by seabios package
   rm usr/share/qemu/bios.bin
   rm usr/share/qemu/acpi-dsdt.aml
-  rm usr/share/qemu/q35-acpi-dsdt.aml
   rm usr/share/qemu/bios-256k.bin
   rm usr/share/qemu/vgabios-cirrus.bin
   rm usr/share/qemu/vgabios-qxl.bin
@@ -140,7 +136,7 @@ package() {
 
 package_qemu-arch-extra() {
   pkgdesc='QEMU with full support for non x86 architectures'
-  depends=('glibc' 'gcc-libs' 'glib2' 'qemu')
+  depends=('qemu')
   options=(!strip)
 
   cd qemu-${pkgver}
@@ -160,28 +156,28 @@ package_qemu-arch-extra() {
 
 package_qemu-block-iscsi() {
   pkgdesc='QEMU iSCSI block module'
-  depends=('glibc' 'glib2' 'libiscsi')
+  depends=('glib2' 'libiscsi' 'jemalloc')
 
   install -D qemu-${pkgver}/block-iscsi.so "${pkgdir}"/usr/lib/qemu/block-iscsi.so
 }
 
 package_qemu-block-rbd() {
   pkgdesc='QEMU RBD block module'
-  depends=('glibc' 'glib2' 'ceph')
+  depends=('glib2' 'ceph')
 
   install -D qemu-${pkgver}/block-rbd.so "${pkgdir}"/usr/lib/qemu/block-rbd.so
 }
 
 package_qemu-block-gluster() {
   pkgdesc='QEMU GlusterFS block module'
-  depends=('glibc' 'glib2' 'glusterfs')
+  depends=('glib2' 'glusterfs')
 
   install -D qemu-${pkgver}/block-gluster.so "${pkgdir}"/usr/lib/qemu/block-gluster.so
 }
 
 package_qemu-guest-agent() {
   pkgdesc='QEMU Guest Agent'
-  depends=('glibc' 'gcc-libs' 'glib2')
+  depends=('gcc-libs' 'glib2')
 
   install -D qemu-${pkgver}/qemu-ga "${pkgdir}"/usr/bin/qemu-ga
   install -Dm644 qemu-ga.service "${pkgdir}"/usr/lib/systemd/system/qemu-ga.service
