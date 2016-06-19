@@ -29,13 +29,6 @@ prepare() {
 }
 
 build() {
-	# Number of jobs
-	declare -i njobs=$(nproc)
-	
-	if [[ ${njobs} -ge 8 ]]; then
-		njobs=$(( ${njobs} - 2 ))
-	fi
-	
 	# Building package
 	cd "${srcdir}"/build
 	cmake ../${_pkgname} \
@@ -43,7 +36,7 @@ build() {
 		-DLIB_INSTALL_DIR=/usr/lib \
 		-DUSE_QT5=ON \
 		-DUSE_ENCA=ON
-	make -j${njobs}
+	make
 }
 
 package() {
