@@ -1,15 +1,15 @@
 # Maintainer: Chan Beom Park <cbpark@gmail.com>
 
 pkgname=softsusy
-pkgver=3.7.1
+pkgver=3.7.3
 pkgrel=1
-pkgdesc="package to provide a SUSY spectrum."
+pkgdesc="This program provides a SUSY spectrum in the NMSSM, or the MSSM including flavour violation and with or without R-parity consistent with input Standard Model fermion mass/mixings and electroweak/strong coupling data."
 arch=("i686" "x86_64")
 url="http://softsusy.hepforge.org"
 license=('GPL')
 depends=("gcc-fortran")
 source=("http://www.hepforge.org/archive/softsusy/$pkgname-$pkgver.tar.gz")
-sha256sums=('6811c4e167c0f832477e20755ecbddb30711d1d1a53267646715221e1d3de585')
+sha256sums=('eeb9d9ae37bb9f0ecbf23d57bf6bc35770885293f08342ffe837735b8491d457')
 
 build() {
   cd "$pkgname-$pkgver"
