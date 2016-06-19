@@ -2,13 +2,14 @@
 
 pkgname=pycharm-community
 pkgver=2016.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Powerful Python and Django IDE. Community edition."
 arch=('any')
 options=('!strip')
 url="http://www.jetbrains.com/pycharm/"
 license=('Apache')
 depends=('giflib' 'ttf-font')
+makedepends=('python2-setuptools' 'python-setuptools')
 conflicts=('pycharm' 'pycharm-professional')
 provides=('pycharm')
 source=(https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz
