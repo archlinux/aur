@@ -28,7 +28,7 @@ package() {
   make DESTDIR="${pkgdir}" install
 
   # Install the license
-  install -D -m 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m 0644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
