@@ -1,6 +1,6 @@
 # Maintainer: Erik Dubois <erik.dubois@gmail.com>
 pkgname=yltra-flat-icons-git
-pkgver=2.5
+pkgver=2.6
 pkgrel=0
 pkgdesc="Yltra Flat is an icon theme build upon Ultra Flat icons"
 arch=('any')
