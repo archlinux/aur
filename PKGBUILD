@@ -5,15 +5,15 @@
 pkgname=openpht
 pkgver=1.6.1.120
 _pkghash=4ab39d17
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenPHT is a community driven fork of Plex Home Theater '
 arch=('i686' 'x86_64')
 url='https://github.com/RasPlex/OpenPHT/'
 license=('GPL2')
 conflicts=("plex-home-theater")
 depends=('openpht-ffmpeg' 'alsa-lib' 'avahi' 'boost-libs' 'curl' 'expat' 'freetype2' 'fribidi'
-         'gcc-libs' 'glew' 'glibc' 'glu' 'libcdio' 'libgl' 'libjpeg' 'libmad'
-         'libmicrohttpd' 'libmpeg2' 'libpng' 'libpulse' 'libsamplerate' 'llvm-libs'
+         'gcc-libs<=5.3.0' 'glew' 'glibc<=2.23-1' 'glu' 'libcdio' 'libgl' 'libjpeg' 'libmad'
+         'libmicrohttpd' 'libmpeg2' 'libpng' 'libpulse' 'libsamplerate' 'llvm-libs<=3.7.1'
          'libssh' 'libtiff' 'libusb-compat' 'libva' 'libvdpau' 'libx11'
          'libxext' 'libxrandr' 'lzo' 'pcre' 'python2' 'sdl' 'sdl_image'
          'sdl_mixer' 'sqlite' 'smbclient' 'taglib' 'tinyxml' 'yajl' 'zlib')
