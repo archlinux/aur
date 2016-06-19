@@ -1,8 +1,8 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-icon-theme-gtk
-_commit=63309fa # 7 digits
-pkgver=20160612
+_commit=4348b11 # 7 digits
+pkgver=20160618
 pkgrel=1
 pkgdesc="Papirus icon theme for GTK"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname}"
@@ -21,6 +21,5 @@ pkgver() {
 }
 
 package() {
-    cd ${pkgname}
-    make install DESTDIR="$pkgdir"
+    make -C "${pkgname}" install DESTDIR="$pkgdir"
 }
