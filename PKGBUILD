@@ -2,13 +2,13 @@
 
 pkgname=cgterm
 pkgver=1.6
-pkgrel=2
+pkgrel=3
 pkgdesc="C/G telnet client that lets you connect to C64 telnet BBS"
 arch=('i686' 'x86_64')
 url="http://www.paradroid.net/cgterm/"
 license=('custom:cgterm')
 depends=('sdl')
-source=( http://www.paradroid.net/$pkgname/$pkgname-$pkgver.tar.gz
+source=( http://paradroid.automac.se/$pkgname/$pkgname-$pkgver.tar.gz
   LICENSE)
 md5sums=('5b8f81ea8a2c0612d2998f05fd87ec40'
          'f616779bd95231a09e3eab03e2f0d3c4')
