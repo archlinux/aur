@@ -1,0 +1,14 @@
+reverted:
+--- CMakeLists.txt.orig	2016-06-19 17:26:23.132310788 +0200
++++ CMakeLists.txt	2016-06-19 17:30:51.779511122 +0200
+@@ -164,8 +164,9 @@
+ install(DIRECTORY include
+ 		DESTINATION .)
+ 
++set(CMAKE_VERSION ${CMAKE_MAJOR_VERSION}.${CMAKE_MINOR_VERSION})
+ install(FILES cmake/Modules/FindThor.cmake
++        DESTINATION share/cmake-${CMAKE_VERSION}/Modules/)
+-		DESTINATION ./cmake/Modules/)
+ 
+ install(FILES License.txt
+ 		RENAME LicenseThor.txt

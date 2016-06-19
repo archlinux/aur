@@ -1,0 +1,20 @@
+pkgbase = thor-git
+	pkgdesc = Thor, SFML based library
+	pkgver = v2.0.r14.g3aee360
+	pkgrel = 1
+	url = http://www.bromeon.ch/libraries/thor/index.html
+	arch = i686
+	arch = x86_64
+	license = zlib
+	makedepends = cmake
+	makedepends = git
+	depends = sfml-git
+	provides = thor-sfml
+	options = debug
+	source = git+https://github.com/Bromeon/Thor.git
+	source = 0001-cmake_install_module.patch
+	sha256sums = SKIP
+	sha256sums = ef23db1723fbcf1cc9eb5e0180e86826a79cc1fbac93a5790149de1aab27fbba
+
+pkgname = thor-git
+
