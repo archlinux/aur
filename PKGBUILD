@@ -4,8 +4,8 @@
 # Contributor: Jakub Schmidtke <sjakub-at-gmail-dot-com>
 # Package Repository: https://github.com/mij-aur-packages/android-platform
 
-_rev=r03
-_apilevel=23
+_rev=r01
+_apilevel=24
 pkgname=android-platform
 pkgver=${_apilevel}_${_rev}
 pkgrel=1
@@ -17,8 +17,8 @@ depends=('android-sdk' 'android-sdk-platform-tools')
 provides=("${pkgname}-${_apilevel}")
 conflicts=("${pkgname}-${_apilevel}")
 options=('!strip')
-source=("https://dl-ssl.google.com/android/repository/platform-23_r03.zip")
-sha1sums=('027fede3de6aa1649115bbd0bffff30ccd51c9a0')
+source=("https://dl-ssl.google.com/android/repository/platform-24_r01.zip")
+sha1sums=('b58f5dd3f60ee0fbaa09cce6372157c36c688075')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/platforms/"
