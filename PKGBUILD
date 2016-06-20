@@ -7,14 +7,14 @@ _mk_burg_emu=${_mk_burg_emu:-n}        # enable burg emu
 
 pkgname=burg-bzr
 pkgver=1844
-pkgrel=5
+pkgrel=6
 pkgdesc="Brand-new Universal loadeR from GRUB"
 url="http://code.google.com/p/burg/"
 license=('GPL3')
 arch=('i686' 'x86_64')
 makedepends=('gcc47' 'bzr' 'python2')
 depends=('ruby' 'gettext' 'freetype2' 'sdl')
-optdepends=('os-prober' 'memtest86+' 'burg-themes: Extra themes')
+optdepends=('os-prober: Detect other installed OSes' 'memtest86+: Memory tester' 'burg-themes: BURG Themes' 'burg-themes-extras: Extra BURG themes')
 conflicts=('burg' 'burg-bios' 'burg-bzr' 'burg-emu')
 provides=('burg' 'burg-bios' 'burg-bzr' 'burg-emu')
 backup=('etc/default/burg' 'etc/burg.d/40_custom')
@@ -51,6 +51,10 @@ build() {
 
 package() {
     cd "${srcdir}/burg"
+
+    ## Fix bootloader write permissions
+    sed -i '92s/o /w /g' 1*
+
     make DESTDIR="${pkgdir}/" install
 
     ## Delete deprecated burg-mkconfig helper file
