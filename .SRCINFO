@@ -1,0 +1,15 @@
+pkgbase = openshift-origin-git
+	pkgdesc = OpenShift Origin is a platform for developing, building, and deploying containerized applications. See https://docs.openshift.org/latest for more on running OpenShift Origin.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/openshift/origin
+	install = install.sh
+	arch = x86_64
+	license = Apache
+	depends = docker
+	optdepends = zfs-dkms: zfs support
+	source = https://github.com/openshift/origin/archive/master.zip
+	sha256sums = SKIP
+
+pkgname = openshift-origin-git
+
