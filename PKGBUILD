@@ -2,12 +2,12 @@
 
 pkgname=worksnaps
 pkgver=1.1.20150618
-pkgrel=2
+pkgrel=3
 pkgdesc="Time Tracking with Screenshots for Remote Teams"
 arch=('any')
 url="http://www.worksnaps.com/www/download.shtml"
 license=('unknown')
-depends=('jre7-openjdk')
+depends=('java-runtime')
 source=("http://worksnaps-download.s3.amazonaws.com/WSClient-linux-$pkgver.zip")
 md5sums=('7bc4f74ac3d7ed0e889172596c32eff7')
 
@@ -23,7 +23,7 @@ exec "$script"'
     chmod a+rx "$filename"
     # make sure everybody has access to the files
     chmod a+r "$srcdir" --recursive
-    # worksnaps requires write access to the sh filesi, thats unsafe but otherwise an java exception is thrown
+    # worksnaps requires write access to the sh files, thats unsafe but otherwise an java exception is thrown
     find "$srcdir" -type f -name "*.sh" -exec chmod a+rwx {} \; 
 }
 
