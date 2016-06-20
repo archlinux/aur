@@ -1,10 +1,9 @@
-# Maintainer: George Eleftheriou <eleftg>
-# Contributor: eolianoe <eolianoe>
+# Maintainer: Samuel Williams <ioquatix>
  
 pkgname=scotch
 pkgver=6.0.4
 _downloadnum=34618  # gforge is insane
-pkgrel=1
+pkgrel=2
 pkgdesc="Software package and libraries for graph, mesh and hypergraph partitioning, static mapping, and sparse matrix block ordering. This is the all-inclusive version (MPI/serial/esmumps)."
 url="http://www.labri.fr/perso/pelegrin/scotch/"
 license=("custom:CeCILL-C")
@@ -17,6 +16,9 @@ sha256sums=('f53f4d71a8345ba15e2dd4e102a35fd83915abf50ea73e1bf6efe1bc2b4220c7')
  
 prepare() {
   cd "${srcdir}/${pkgname}_${pkgver}/src"
+
+  # Apply patch to fix shared library ldflags
+  sed -i 's/$(AR) $(ARFLAGS) $(@) $(?)/$(AR) $(ARFLAGS) $(@) $(?) $(LDFLAGS)/g' libscotch/Makefile
  
   [ -e Makefile.inc ] && rm Makefile.inc
   cp "Make.inc/Makefile.inc.${CARCH/_/-}_pc_linux2.shlib" Makefile.inc
