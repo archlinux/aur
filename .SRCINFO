@@ -1,0 +1,21 @@
+pkgbase = monoprog
+	pkgdesc = Mono device programmer - This is a tool for transferring applications to a Mono device.
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/getopenmono/monoprog
+	arch = i686
+	arch = x86_64
+	arch = armv5
+	arch = armv6h
+	arch = armv6
+	arch = armv7h
+	arch = armv7
+	arch = aarch64
+	license = MIT
+	depends = libusb
+	depends = qt5-base
+	source = monoprog-0.7.0.tar.gz::https://github.com/getopenmono/monoprog/archive/v0.7.0.tar.gz
+	md5sums = 66b5cdc94799a8ba0d16d3cf4db8db69
+
+pkgname = monoprog
+
