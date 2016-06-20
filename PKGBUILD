@@ -1,4 +1,4 @@
-pkgdesc="App Container Images Build Command"
+pkgdesc="App Container Image Build Command"
 pkgname=acbuild
 pkgver=0.3.1
 pkgrel=1
