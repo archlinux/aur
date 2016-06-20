@@ -1,13 +1,13 @@
 # Maintainer: nic96
 pkgname=python2-leveldb_mcpe
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A python wrapper for leveldb_mcpe"
 arch=("any")
 url="https://github.com/Mojang/leveldb-mcpe"
 license=('BSD')
 depends=('leveldb-mcpe')
-makedepends=('python2' 'python2-setuptools')
+makedepends=('python2' 'python2-setuptools' 'boost')
 source=(setup.py
        leveldb_mcpe.cpp)
 
