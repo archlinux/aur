@@ -21,7 +21,7 @@ source=(http://download.bitdefender.com/repos/rpm/bitdefender/i586/bitdefender-s
         bitdefender.sh
         bitdefender.conf
         http://download.bitdefender.com/updates/update_av32bit/cumulative.zip)
-md5sums=('9d90c7b4133ae6648e4371f4e92d7853'
+md5sums=('SKIP'
          'd7812ffcc01137a41d738170a28be8a1'
          'f74775c74b44ceabafcc0dbab0ff2318'
          '6df89a673aec1ad103745da47c50dc46'
