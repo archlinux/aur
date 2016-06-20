@@ -2,7 +2,7 @@
 
 pkgname=openvpn-xor-patched
 pkgver=2.3.11
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenVPN obfuscated with xor-patch which can bypass internet censoring"
 arch=(i686 x86_64)
 url="https://github.com/clayface/openvpn_xorpatch"
@@ -11,8 +11,10 @@ optdepends=('easy-rsa: for easy key management')
 conflicts=('openvpn' 'openvpn-dev')
 provides=('openvpn=2.3.11' 'openvpn-dev')
 license=('custom')
-source=(https://github.com/OpenVPN/openvpn/archive/v${pkgver}.tar.gz git://github.com/clayface/openvpn_xorpatch.git)
-sha256sums=('ffab2e2fb50a4b65fc4b2d1ae972f52b2e5f91467af88349e2a5d27afd2d2846' 'SKIP')
+source=(https://github.com/OpenVPN/openvpn/archive/v${pkgver}.tar.gz openvpn@.service git://github.com/clayface/openvpn_xorpatch.git)
+sha256sums=('ffab2e2fb50a4b65fc4b2d1ae972f52b2e5f91467af88349e2a5d27afd2d2846'
+            '47a4ee993f8aaa7370e9a84384fcfc993fd76aa4db11c46629b156d0c5fad49a'
+            'SKIP')
 
 prepare() {
     cp openvpn_xorpatch/openvpn_xor.patch openvpn-2.3.11/
@@ -60,7 +62,7 @@ package() {
 	cp -r contrib ${pkgdir}/usr/share/openvpn
 
 	# Install systemd unit files
-	install -D -m0644 distro/systemd/openvpn-client@.service ${pkgdir}/usr/lib/systemd/system/openvpn-client@.service
-	install -D -m0644 distro/systemd/openvpn-server@.service ${pkgdir}/usr/lib/systemd/system/openvpn-server@.service
+	cd ..
+	install -D -m0644 openvpn@.service ${pkgdir}/usr/lib/systemd/system/openvpn@.service
 }
 
