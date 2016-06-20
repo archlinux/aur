@@ -18,17 +18,18 @@ license=('AGPL2.1' 'Apache')
 groups=('kimchi-project')
 
 # Dependencies
-depends=('libvirt-python'
-         'python2-augeas'
-         'python2-netaddr'
-         'python2-ethtool'
-         'python2-pyparted'
-         'python2-magic'
-         'python2-ipaddr'
+depends=('ginger-base'
          'hddtemp'
-         'ginger-base')
-optdepends=('lm_sensors'
-            'tuned')
+         'libuser'
+         'lm_sensors'
+         'python2-augeas'
+         'python2-ethtool'
+         'python2-ipaddr'
+         'python2-magic'
+         'python2-netaddr'
+         'tuned'
+         'wok')
+#optdepends=()
 makedepends=('git')
 #checkdepends=()
 
