@@ -4,7 +4,7 @@
 pkgname=brackets-bin
 _pkgname=brackets
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A code editor for HTML, CSS and JavaScript. "
 arch=("i686" "x86_64")
 url="http://brackets.io"
