@@ -2,25 +2,27 @@
 #Maintainer: float <flo.at at gmx dot de>
 
 pkgname=s25rttr
-pkgver=20160401
-build=5958e266ec4095bf96a7662cd8ff6df3a5f17af8
+pkgver=20160610
+build=76957e2b4be12a2cfb4aa904fa18a394aa324af8
 pkgrel=1
-pkgdesc="Return to the Roots. A free clone of The Settlers II from 1996"
+pkgdesc="Return to the Roots. A free clone of The Settlers II from 1996 (Original copy required)"
 arch=('i686' 'x86_64')
 url="http://www.siedler25.org/"
 license=('GPL3')
 depends=('sdl>=1.2.0' 'sdl_mixer>=1.2.0')
-source=($pkgname $pkgname.desktop $pkgname.xpm)
+install="s25rttr.install"
+source=($pkgname $pkgname.desktop $pkgname.xpm $pkgname.install)
 md5sums=('ccb9c1d1a579c6d8490589a84b068e90'
          '8c486f63efb1c9bec6d50306270f1b4c'
-         'a7bf0908aac3dbfaed837c19695ca362')
+         'a7bf0908aac3dbfaed837c19695ca362'
+         'fee67afa40320ae75d9e0b376b843b24')
 
 if [[ $CARCH == 'i686' ]]; then
     source+=("http://www.siedler25.org/uploads/nightly/$pkgver/${pkgname}_${pkgver}-${build}_linux.i386.tar.bz2")
-    md5sums+=('c43cb6dccd1aba262c09d9caa77d7570')
+    md5sums+=('f6ac173f923e94c7f02a7ee68e7da937')
 elif [[ $CARCH == 'x86_64' ]]; then
     source+=("http://www.siedler25.org/uploads/nightly/${pkgname}_${pkgver}-${build}_linux.x86_64.tar.bz2")
-    md5sums+=('88d7b3ff3c5f5e65b1d9b636d2f4b285')
+    md5sums+=('958a8527abf1d427820803c4e693eb7e')
 fi
 
 package() {
@@ -37,3 +39,4 @@ package() {
 
     return 0
 }
+

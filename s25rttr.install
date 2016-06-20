@@ -1,0 +1,8 @@
+post_install() {
+    echo ">> Place a copy of the original Settlers II"
+    echo ">> in /usr/share/s25rttr/S2/"
+}
+
+post_upgrade() {
+    post_install
+}
