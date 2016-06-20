@@ -4,7 +4,7 @@
 pkgname=s25rttr
 pkgver=20160610
 build=76957e2b4be12a2cfb4aa904fa18a394aa324af8
-pkgrel=1
+pkgrel=2
 pkgdesc="Return to the Roots. A free clone of The Settlers II from 1996 (Original copy required)"
 arch=('i686' 'x86_64')
 url="http://www.siedler25.org/"
@@ -15,7 +15,7 @@ source=($pkgname $pkgname.desktop $pkgname.xpm $pkgname.install)
 md5sums=('ccb9c1d1a579c6d8490589a84b068e90'
          '8c486f63efb1c9bec6d50306270f1b4c'
          'a7bf0908aac3dbfaed837c19695ca362'
-         'fee67afa40320ae75d9e0b376b843b24')
+         'f51bc71ef665266ae68ce134892ca612')
 
 if [[ $CARCH == 'i686' ]]; then
     source+=("http://www.siedler25.org/uploads/nightly/$pkgver/${pkgname}_${pkgver}-${build}_linux.i386.tar.bz2")
