@@ -1,7 +1,7 @@
 #Maintainer: Onishin <onishin at onishin dot org>
 pkgname='bitmonero-git'
 _gitname='bitmonero'
-pkgver=0.9.1
+pkgver=0.9.4
 pkgrel=2
 arch=('x86_64')
 url="https://getmonero.org/"
