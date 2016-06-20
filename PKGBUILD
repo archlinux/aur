@@ -7,8 +7,8 @@
 
 pkgname=rubymine
 _pkgname=RubyMine
-pkgver=2016.1.1b
-pkgrel=2
+pkgver=2016.1.2
+pkgrel=1
 pkgdesc="Ruby and Rails IDE with the full stack of essential developer tools."
 arch=('i686' 'x86_64')
 options=(!strip)
@@ -20,13 +20,12 @@ install=rubymine.install
 source=(https://download.jetbrains.com/ruby/${_pkgname}-${pkgver}.tar.gz
         rubymine.desktop
         rubymine.install)
-sha256sums=('5c926e56a28485442520bc4337b8d540288ec6028634c1d26d00ac9ed88fe7dc'
+sha256sums=('72c34d48a3094343e086da52090bc2dbf6148d822407b24596118bc3b21a6f8b'
             '72df0e7c605caf7b6c98e9335f4eee9c8bfe8fcc24523634fd8c1ebe019534d6'
             '7ecadddf2b315b22df3a5c7b90e18be7ea69e2a0d869ee18bf0e031b2c508f76')
 
 prepare() {
-    # cd "${srcdir}/${_pkgname}-${pkgver}"
-    cd "${srcdir}/RubyMine-2016.1.1"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
 
     # Remove junk
     rm "build.txt"
@@ -59,7 +58,7 @@ package() {
 
     #Pre-packaged program files
     install -d -m 755 "${pkgdir}/usr/share"
-    cp -a "${srcdir}/RubyMine-2016.1.1" "${pkgdir}/usr/share/${pkgname}"
+    cp -a "${srcdir}/${_pkgname}-${pkgver}" "${pkgdir}/usr/share/${pkgname}"
 
     #Desktop application
     install -Dm644 "${pkgdir}/usr/share/${pkgname}/bin/RMlogo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
@@ -69,8 +68,8 @@ package() {
 
     #License
     #install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/license/${_pkgname}_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/license.txt"
-    install -Dm644 "${srcdir}/RubyMine-2016.1.1/license/debug-commons_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/debug-commons_license.txt"
-    install -Dm644 "${srcdir}/RubyMine-2016.1.1/license/LLDB-license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LLDB-license.txt"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/license/debug-commons_license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/debug-commons_license.txt"
+    install -Dm644 "${srcdir}/${_pkgname}-${pkgver}/license/LLDB-license.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LLDB-license.txt"
 
     #Java config
     sed -i 's/lcd/on/' "${pkgdir}/usr/share/rubymine/bin/rubymine${SUFFIX}.vmoptions"
