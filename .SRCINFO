@@ -1,6 +1,6 @@
 pkgbase = mesa-git
 	pkgdesc = an open-source implementation of the OpenGL specification, git version
-	pkgver = 11.3.0_devel.81775.e79aa19
+	pkgver = 12.1.0_devel.82587.154c0a4
 	pkgrel = 1
 	url = http://mesa3d.sourceforge.net
 	arch = i686
@@ -33,11 +33,12 @@ pkgbase = mesa-git
 	makedepends = libxvmc
 	makedepends = vulkan-icd-loader
 	makedepends = libgcrypt
-	makedepends = libpthread-stubs
 	source = mesa::git://anongit.freedesktop.org/mesa/mesa#branch=master
 	source = LICENSE
+	source = remove-libpthread-stubs.patch
 	md5sums = SKIP
 	md5sums = 5c65a0fe315dd347e09b1f2826a1df5a
+	md5sums = e417399ed46be7f61da7246503965b13
 
 pkgname = opencl-mesa-git
 	pkgdesc = OpenCL support for AMD/ATI Radeon Mesa drivers
@@ -46,9 +47,9 @@ pkgname = opencl-mesa-git
 	depends = libcl
 	depends = libclc
 	depends = nettle
-	depends = mesa-git=11.3.0_devel.81775.e79aa19
+	depends = mesa-git=12.1.0_devel.82587.154c0a4
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = opencl-mesa=11.3.0-devel
+	provides = opencl-mesa=12.1.0-devel
 	conflicts = opencl-mesa
 	replaces = opencl-mesa
 
@@ -58,7 +59,7 @@ pkgname = mesa-vulkan-intel-git
 	depends = libgcrypt
 	depends = wayland
 	depends = libxcb
-	depends = mesa-git=11.3.0_devel.81775.e79aa19
+	depends = mesa-git=12.1.0_devel.82587.154c0a4
 	provides = vulkan-intel
 	conflicts = vulkan-intel
 	replaces = vulkan-intel
@@ -66,23 +67,23 @@ pkgname = mesa-vulkan-intel-git
 pkgname = libva-mesa-driver-git
 	pkgdesc = VA-API implementation for gallium
 	depends = nettle
-	depends = mesa-git=11.3.0_devel.81775.e79aa19
-	provides = libva-mesa-driver=11.3.0-devel
+	depends = mesa-git=12.1.0_devel.82587.154c0a4
+	provides = libva-mesa-driver=12.1.0-devel
 	conflicts = libva-mesa-driver
 
 pkgname = mesa-vdpau-git
 	pkgdesc = Mesa VDPAU drivers
 	depends = nettle
-	depends = mesa-git=11.3.0_devel.81775.e79aa19
-	provides = mesa-vdpau=11.3.0-devel
+	depends = mesa-git=12.1.0_devel.82587.154c0a4
+	provides = mesa-vdpau=12.1.0-devel
 	conflicts = mesa-vdpau
 	replaces = mesa-vdpau
 
 pkgname = mesa-libgl-git
 	pkgdesc = Mesa 3-D graphics library
-	depends = mesa-git=11.3.0_devel.81775.e79aa19
-	provides = mesa-libgl=11.3.0-devel
-	provides = libgl=11.3.0-devel
+	depends = mesa-git=12.1.0_devel.82587.154c0a4
+	provides = mesa-libgl=12.1.0-devel
+	provides = libgl=12.1.0-devel
 	conflicts = mesa-libgl
 	replaces = mesa-libgl
 
@@ -102,7 +103,7 @@ pkgname = mesa-git
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	optdepends = mesa-vdpau-git: for accelerated video playback
 	optdepends = libva-mesa-driver-git: for accelerated video playback
-	provides = mesa=11.3.0-devel
+	provides = mesa=12.1.0-devel
 	provides = mesa-r300-r600-radeonsi-git
 	provides = mesa-dri
 	conflicts = mesa

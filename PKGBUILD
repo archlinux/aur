@@ -12,21 +12,27 @@
 pkgbase=mesa-git
 pkgname=('opencl-mesa-git' 'mesa-vulkan-intel-git' 'libva-mesa-driver-git' 'mesa-vdpau-git' 'mesa-libgl-git' 'mesa-git')
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=11.3.0_devel.81775.e79aa19
+pkgver=12.1.0_devel.82587.154c0a4
 pkgrel=1
 arch=('i686' 'x86_64')
 makedepends=('python2-mako' 'libxml2' 'libx11' 'glproto' 'libdrm>=2.4.66' 'dri2proto' 'dri3proto' 'presentproto' 
              'libxshmfence' 'libxxf86vm'  'libxdamage' 'libvdpau' 'libva' 'wayland' 'elfutils' 'llvm-svn'
              'libomxil-bellagio' 'libcl' 'libclc' 'clang-svn' 'git' 'nettle' 'libtxc_dxtn' 'ocl-icd'
-             'libxvmc' 'vulkan-icd-loader' 'libgcrypt' 'libpthread-stubs')
+             'libxvmc' 'vulkan-icd-loader' 'libgcrypt')
 url="http://mesa3d.sourceforge.net"
 license=('custom')
 source=('mesa::git://anongit.freedesktop.org/mesa/mesa#branch=master'
-        'LICENSE')
+        'LICENSE'
+        'remove-libpthread-stubs.patch')
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
-         )
+         'e417399ed46be7f61da7246503965b13')
 
+prepare() {
+    cd ${srcdir}/mesa
+    patch -Np1 -i ../remove-libpthread-stubs.patch
+}         
+         
 pkgver() {
     cd mesa
     echo $(cat VERSION | tr "-" "_").$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
