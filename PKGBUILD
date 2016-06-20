@@ -1,8 +1,8 @@
-# Maintainer: boenki <boenki at gmx dot de>
+# Maintainer: Steffen Weber <boenki-gmx-de>
 
 pkgname=ffdiaporama
 pkgver=2.2.D759
-pkgrel=2
+pkgrel=3
 pkgdesc="Movie creator from photos and video clips"
 arch=('i686' 'x86_64')
 url="http://ffdiaporama.tuxfamily.org"
@@ -25,7 +25,7 @@ prepare() {
 
 build() {
   cd ffDiaporama
-  qmake-qt5 ffDiaporama.pro
+  qmake-qt5 QMAKE_CFLAGS_ISYSTEM= ffDiaporama.pro
   make
 
   cd ../ffDiaporama_rsc
