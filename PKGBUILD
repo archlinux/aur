@@ -17,7 +17,7 @@ optdepends=('ffmpeg: additional video and audio decoders'
 makedepends=('pacman>=4.2.0')
 provides=("firefox=$pkgver")
 install=$pkgname.install
-_baseurl="http://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/"
+_baseurl="https://ftp.mozilla.org/pub/firefox/nightly/latest-mozilla-central-l10n/"
 _filename="firefox-${pkgver}.zh-CN.linux-${CARCH}"
 _sha512sum="$(curl -s "${_baseurl}${_filename}.checksums" | grep "${_filename}.tar.bz2" | grep sha512 | cut -d " " -f1)"
 source=("$pkgname.desktop"
