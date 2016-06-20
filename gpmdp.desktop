@@ -6,5 +6,5 @@ Exec=gpmdp %U
 Icon=gpmdp
 Type=Application
 StartupNotify=true
-Categories=GNOME;GTK;Multimedia;
+Categories=AudioVideo;Player;Audio;
 StartupWMClass=Google Play Music Desktop Player
