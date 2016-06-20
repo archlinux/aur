@@ -4,7 +4,7 @@
 # If you exprerience any troubles, try to uncomment
 # the following line        
 
-export LD_LIBRARY_PATH="/opt/pt/lib" 
+export LD_LIBRARY_PATH="/usr/share/packettracer/lib" 
 
-/opt/pt/bin/linguist "$@"
+/usr/share/packettracer/bin/linguist "$@"
 

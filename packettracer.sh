@@ -1,1 +1,1 @@
-export PT_HOME=/opt/pt
+export PT_HOME=/usr/share/packettracer

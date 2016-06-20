@@ -6,7 +6,7 @@
 # If you exprerience any troubles, try to uncomment
 # the following line
 
-export LD_LIBRARY_PATH="/opt/pt/lib"
+export LD_LIBRARY_PATH="/usr/share/packettracer/lib"
 
-exec /opt/pt/bin/PacketTracer6 "$@"
+exec /usr/share/packettracer/bin/PacketTracer6 "$@"
 
