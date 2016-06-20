@@ -2,8 +2,8 @@
 
 _pyname=conda-env
 pkgname=python-${_pyname}
-pkgver=2.4.5
-pkgrel=2
+pkgver=2.5.1
+pkgrel=1
 pkgdesc="Provides a unified interface to dealing with Conda environments"
 arch=('any')
 url="http://conda.pydata.org/docs/using/envs.html"
@@ -11,14 +11,14 @@ license=('BSD')
 groups=()
 depends=('python' 'python-conda')
 makedepends=()
-provides=("$_pyname" 'activate' 'deactivate')
+provides=("$_pyname")
 conflicts=()
 replaces=()
 backup=()
 options=(!emptydirs)
 install=
 source=(https://github.com/conda/$_pyname/archive/v$pkgver.tar.gz)
-sha512sums=('4390491085c482991b7d9db643e8e7865863a7529d98770e89f4cdae20e989e84a473c7a49fdf75b7d6fdee6998ef37946254a66e31fcd61b90395d9abb6a903')
+sha512sums=('a6101763064cf4033dcf21959dbba3f1ec9f078c5dca31bf2d9877d09738a0f5bc8bfd0b83f57d49b2361ecffa0031caa48eed9971fb3b13b6e8c41ac0574a9b')
 
 package() {
   cd "$srcdir/${_pyname}-$pkgver"
