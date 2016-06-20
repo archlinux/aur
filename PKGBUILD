@@ -2,7 +2,7 @@
 
 pkgname=pycharm-community
 pkgver=2016.1.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Powerful Python and Django IDE. Community edition."
 arch=('any')
 options=('!strip')
@@ -19,12 +19,8 @@ sha256sums=('bc548a200022111e741604e76b579e71e5a75d23c2bbb9c4cb9ed88b18a3d622'
 
 package() {
   # compile PyDev debugger used by PyCharm to speedup debugging
-  python2 $srcdir/$pkgname-$pkgver/helpers/pydev/setup_cython.py build_ext --inplace &
-  python3 $srcdir/$pkgname-$pkgver/helpers/pydev/setup_cython.py build_ext --inplace &
-  for job in `jobs -p`
-  do
-      wait $job
-  done
+  python2 $srcdir/$pkgname-$pkgver/helpers/pydev/setup_cython.py build_ext --inplace
+  python3 $srcdir/$pkgname-$pkgver/helpers/pydev/setup_cython.py build_ext --inplace
 
   cd $srcdir
   mkdir -p $pkgdir/opt/$pkgname
