@@ -17,6 +17,7 @@ pkgbase = gnome-twofactorauth-git
 	depends = gobject-introspection
 	depends = gtk3
 	depends = python-gobject
+	depends = python-yaml
 	depends = python-cairo
 	depends = python-pyotp
 	depends = python-zbarlight

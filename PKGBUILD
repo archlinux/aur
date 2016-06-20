@@ -8,7 +8,7 @@ pkgdesc='Two-Factor Authentication code generator for Gnome'
 arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/bil-elmoussaoui/${_gitname}"
-depends=('desktop-file-utils' 'gobject-introspection' 'gtk3' 'python-gobject' 'python-cairo' 'python-pyotp' 'python-zbarlight')
+depends=('desktop-file-utils' 'gobject-introspection' 'gtk3' 'python-gobject' 'python-yaml' 'python-cairo' 'python-pyotp' 'python-zbarlight')
 makedepends=('git' 'gnome-common' 'intltool' 'itstool' 'python' 'yelp-tools')
 
 options=('!emptydirs')
