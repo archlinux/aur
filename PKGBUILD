@@ -7,7 +7,7 @@
 pkgname=nas
 pkgver=1.9.4
 pkgrel=3
-pkgdesc='Network Audio System is a network transparent, client/server audio transport system'
+pkgdesc='Network Audio System is a network transparent, client/server audio transport system. Provides libaudio2.so.'
 arch=('i686' 'x86_64')
 url='http://radscan.com/nas.html'
 license=('MIT')
