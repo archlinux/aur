@@ -1,7 +1,7 @@
 # Maintainer: Kevin Houdebert <kevin@qwazerty.eu>
 # Maintainer: Guillaume Brogi <gui-gui@netcourrier.com>
 
-pkgname=(python-pywinrm python2-pywinrm)
+pkgname=(python2-pywinrm python-pywinrm)
 _realname=pywinrm
 pkgver=0.2.0
 pkgrel=3
