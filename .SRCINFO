@@ -1,0 +1,14 @@
+pkgbase = uniscan
+	pkgdesc = A remote file include, local file include and remote command execution vulnerability scanner
+	pkgver = 6.2
+	pkgrel = 1
+	url = https://sourceforge.net/projects/uniscan/
+	arch = any
+	license = GPL2
+	depends = perl-moose
+	optdepends = perl-tk
+	source = http://http.kali.org/kali/pool/main/u/uniscan/uniscan_6.2-1kali0_all.deb
+	sha256sums = 84501cd894b89cb70c42edb32a27c4b19fba1b1044e8332a8fdddc3bada29ec4
+
+pkgname = uniscan
+
