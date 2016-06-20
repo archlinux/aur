@@ -18,18 +18,21 @@ license=('AGPL2.1' 'Apache')
 groups=('kimchi-project')
 
 # Dependencies
-depends=('python2-cherrypy'
-         'python2-cheetah'
-         'python2-pam'
-         'python2-m2crypto'
-         'python2-jsonschema'
-         'python2-psutil'
-         'python2-ldap'
-         'python2-lxml'
+depends=('logrotate'
          'nginx'
          'openssl'
-         'logrotate')
-optdepends=('python2-ordereddict')
+         'python2-cherrypy'
+         'python2-cheetah'
+         'python2-jsonschema'
+         'python2-ldap'
+         'python2-lxml'
+         'python2-m2crypto'
+         'python2-ordereddict'
+         'python2-pam'
+         'python2-psutil'
+         'ttf-font-awesome'
+         'ttf-opensans')
+#optdepends=()
 makedepends=('git')
 #checkdepends=()
 
