@@ -2,7 +2,7 @@
 
 pkgname='mcedit'
 reponame='MCEdit-Unified'
-pkgver='1.5.1.0'
+pkgver='1.5.3.0'
 pkgrel=1
 pkgdesc='Minecraft world editor'
 arch=('any')
@@ -11,7 +11,7 @@ license=('BSD')
 
 makedepends=('cython2')
 depends=('python2' 'python2-opengl' 'python2-numpy' 'python2-pygame'
-         'python2-yaml' 'python2-pillow' 'python2-ftputil' 'xclip')
+         'python2-yaml' 'python2-pillow' 'python2-ftputil' 'python2-xlib' 'xclip')
 optdepends=('python2-leveldb_mcpe: for MCPE support')
 conflicts=('mcedit-git' 'pymclevel-git')
 
@@ -70,5 +70,5 @@ package() {
 
 md5sums=('b08f609c8923067b13a9bd462999a6f4'
          '53fe3c41d58fd1f6429f90ba0b1831ac'
-         '329f0dbdedd309e4dc121ad3d728e608'
-         'e3951e6905104351a53b0e45bc17aa00')
+         '34f209ecd6f0898f91fb5ddce02a0c4c'
+         '06055ce96c3091fd858eefde75228977')

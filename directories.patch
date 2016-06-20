@@ -39,45 +39,6 @@
      logfile = os.path.join(os.getcwdu(), logfile)
  fh = logging.FileHandler(logfile, mode="w")
 
---- resource_packs.py.orig	2015-08-12 07:12:26.000000000 -0600
-+++ resource_packs.py	2015-12-24 21:13:54.257356703 -0700
-@@ -537,7 +537,7 @@
- 
-     def __init__(self):
-         self.__stop = False
--        texture_path = os.path.join(directories.parentDir, "textures", self._pack_name)
-+        texture_path = os.path.join(directories.getDocumentsFolder(), "textures", self._pack_name)
-         self.texture_path = texture_path
-         self._isEmpty = False
-         self._too_big = False
-@@ -727,7 +727,7 @@
-         self._pack_name = self._folder.replace(" ", "_")
-         IResourcePack.__init__(self)
-         self._full_path = os.path.join(directories.getMinecraftProfileDirectory(directories.getSelectedProfile()), "resourcepacks", self._folder)
--        self.texture_path = os.path.join(directories.parentDir, "textures", self._pack_name)
-+        self.texture_path = os.path.join(directories.getDocumentsFolder(), "textures", self._pack_name)
-         if not os.path.exists(self._terrain_path):
-             self.add_textures()
- 
-@@ -837,7 +837,7 @@
-         if not os.path.exists(pack.terrain_path()):
-             del terrains[tex]
-     try:
--        shutil.rmtree(os.path.join(directories.parentDir, "textures"))
-+        shutil.rmtree(os.path.join(directories.getDocumentsFolder(), "textures"))
-     except:
-         print "Could not remove \"textures\" directory"
-         pass
-@@ -851,7 +851,7 @@
- 
-     def __init__(self):
-         try:
--            os.mkdir(os.path.join(directories.parentDir, "textures"))
-+            os.mkdir(os.path.join(directories.getDocumentsFolder(), "textures"))
-         except OSError:
-             pass
-         self._resource_packs = setup_resource_packs()
-
 --- splash.py.orig	2016-01-03 17:30:26.530655811 -0600
 +++ splash.py	2016-01-03 17:32:52.887326839 -0600
 @@ -26,7 +26,7 @@
