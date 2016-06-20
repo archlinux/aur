@@ -2,12 +2,12 @@
 
 pkgname=xcursor-openzone
 pkgver=1.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenZone X11 cursor theme"
-url="http://opendesktop.org/content/show.php/OpenZone?content=111343"
+url='https://www.opendesktop.org/p/999999/'
 arch=('any')
 license=('custom:xcursor-openzone')
-source=("http://opendesktop.org/CONTENT/content-files/111343-OpenZone-${pkgver}.tar.xz")
+source=('https://dl.opendesktop.org/api/files/download?id=1462316428')
 md5sums=('4bb8b3e96d3c7be22db383977a758498')
 
 package() {
