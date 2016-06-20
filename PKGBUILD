@@ -1,6 +1,6 @@
 # Maintainer: Zygmunt Krynicki <me at zygoon dot pl>
 pkgname=snap-confine
-pkgver=1.0.30
+pkgver=1.0.32
 pkgrel=1
 pkgdesc="Confinement system for snap applications"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ options=()
 install=
 source=("https://github.com/snapcore/$pkgname/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
 noextract=()
-md5sums=('accf394c4d56f6413c69dd5c2ff0e86d')
+md5sums=('9f75a54de6f91496ee29951a18ec4b3d')
 
 prepare() {
 	cd "$pkgname-$pkgver"
