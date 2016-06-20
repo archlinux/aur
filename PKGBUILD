@@ -1,22 +1,20 @@
 # Maintainer: knightzx <cuongvdtz@gmail.com>
 
 pkgname=hakuneko
-pkgver=1.3.12
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Manga Downloader for Linux and Windows"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/projects/hakuneko/"
 license=('MIT')
-depends=('wxgtk2.8' 'curl')
+depends=('wxgtk' 'curl' 'webkitgtk2')
 install=hakuneko.install
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgname}_${pkgver}_src.tar.gz)
-md5sums=('378399cdbe8b0142383a94d08644cdc0')
+md5sums=('5b246230a3231f9774d5613d86310968')
 
 build() {
   cd ${srcdir}/${pkgname}_${pkgver}_src
 
-  # Use wxgtk2.8
-  sed -i 's/wx-config /wx-config-2.8 /' config_default.sh
   ./configure --prefix=/usr 
   make
 }
