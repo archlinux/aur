@@ -1,7 +1,7 @@
 pkgbase = lpclic
 	pkgdesc = Optimizes the command history for the linphonec CLI for linphone
-	pkgver = 0.4.0.2
-	pkgrel = 2
+	pkgver = 0.4.0.3
+	pkgrel = 1
 	url = https://github.com/burt1iband/lpclic
 	arch = any
 	license = GPL
