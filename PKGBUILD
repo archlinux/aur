@@ -1,7 +1,7 @@
 pkgdesc='App Container Server'
 pkgname=acserver
-pkgver=0.0.0 # TODO pending release
-pkgrel=7
+pkgver=0.1.0
+pkgrel=1
 url="https://github.com/appc/$pkgname"
 source=(
     "git+$url.git"
@@ -16,7 +16,7 @@ arch=('i686' 'x86_64')
 license=('Apache')
 
 # 1.
-prepare() { # TODO pending release
+prepare() {
     local base=$(cd "$(dirname "${BASH_SOURCE[0]}" )" && pwd)
     local repo="$srcdir/$pkgname" # working repo location
     local target=$([[ $pkgver == "0.0.0" ]] && printf "master" || printf "v$pkgver")
