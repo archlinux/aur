@@ -16,11 +16,10 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>
 #
+####
 #
-#
-# Use this script to make sure your default.jhbuildrc (default JHBuild
-# settings) and modulesets are up-to-date, which is important to achieve
-# a proper GNOME environment.
+# Use this script to make sure your default.jhbuildrc and modulesets are
+# up-to-date, which is important to achieve a proper GNOME environment.
 #
 # jhbuild-src/ = Directory containing a clone of the JHBuild's git repository.
 #                  The idea is to not remove this folder, and keep updating in
@@ -33,6 +32,13 @@ if [ $EUID -ne 0 ]; then
    echo "This script must be run as root" 2>&1
    exit 1
 fi
+
+for bin in sed git; do
+   if [ ! `which $bin 2> /dev/null` ]; then
+      echo "Command '$bin' not found" 2>&1
+      exit 1
+   fi
+done
 
 datadir=/usr/share/jhbuild
 
@@ -58,3 +64,11 @@ cp -dr $datadir/jhbuild-src/modulesets/* $datadir/modulesets
 echo "`basename $0`: Installing newest defaults.jhbuildrc..."
 cp $datadir/jhbuild-src/jhbuild/defaults.jhbuildrc /usr/lib/python2.7/site-packages/jhbuild/defaults.jhbuildrc
 
+echo "`basename $0`: Patching defaults.jhbuildrc with python2 fixes..."
+sed -i "/^module_autogenargs = {/c\
+  # Arch-specific setting: python2 is required when building some modules.\n\
+module_autogenargs = {\n\
+    'itstool': autogenargs + ' PYTHON=/usr/bin/python2',\n\
+    'telepathy-mission-control': autogenargs + ' PYTHON=/usr/bin/python2',\n\
+    'WebKit': autogenargs + ' PYTHON=/usr/bin/python2',\n\
+}"  /usr/lib/python2.7/site-packages/jhbuild/defaults.jhbuildrc
