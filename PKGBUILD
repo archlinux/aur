@@ -1,4 +1,5 @@
-# Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
+# Maintainer: FennecTECH <fennectech@gmail.com>
+# Based uppon the script for radegast written by Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=radegast-git
 pkgver=master
 pkgrel=1
