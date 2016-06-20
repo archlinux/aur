@@ -7,7 +7,7 @@ pkgdesc='A free online multiplayer real-time roguelike game, derived from the si
 arch=('i686' 'x86_64')
 url='http://www.mangband.org/'
 license=('GPL' 'custom')
-depends=('ncurses5-compat-libs' 'libtinfo-5')
+depends=('ncurses5-compat-libs')
 
 source=("http://mangband.org/download/${pkgname}-${pkgver}.tar.gz")
 md5sums=('f1cc146cc1cddcfb09c2a30f7936c165')
