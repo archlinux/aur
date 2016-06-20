@@ -19,11 +19,7 @@ groups=('kimchi-project')
 
 # Dependencies
 depends=('python2-configobj'
-         'python2-psutil'
-         'python2-lxml'
          'python2-pyparted'
-         'python2-cherrypy'
-         'python2-jsonschema'
          'wok')
 #optdepends=()
 makedepends=('git')
