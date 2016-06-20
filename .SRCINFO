@@ -1,0 +1,14 @@
+pkgbase = vim-sneak-git
+	pkgdesc = VIM plugin for jumping to a location specified by two characters
+	pkgver = r293.5cd2642
+	pkgrel = 1
+	url = http://www.vim.org/scripts/script.php?script_id=4809
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = vim
+	source = git+https://github.com/justinmk/vim-sneak
+	md5sums = SKIP
+
+pkgname = vim-sneak-git
+
