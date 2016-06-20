@@ -1,0 +1,18 @@
+pkgbase = brother-mfc-260c
+	pkgdesc = Brother MFC-260C CUPS driver
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = http://www.brother.com
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = lib32-glibc
+	source = LICENSE
+	source = http://download.brother.com/welcome/dlf006075/mfc260clpr-1.0.1-1.i386.rpm
+	source = http://download.brother.com/welcome/dlf006077/mfc260ccupswrapper-1.0.1-1.i386.rpm
+	sha256sums = 87ffb791ce57bd1d82a6cd6829af151a764ebff658f1ad37184929aae912ee1e
+	sha256sums = ab5c5457316e02f3eb12741144a9c5cf416b02f0c0d5c796ea43905114a35172
+	sha256sums = 73a2ad91c59275267598755d5b44a72668cefd77a91315aa3f051fc7af4c7d95
+
+pkgname = brother-mfc-260c
+
