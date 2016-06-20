@@ -1,0 +1,38 @@
+--- Makefile.orig	2016-06-20 17:14:40.364448700 +0000
++++ Makefile	2016-06-20 17:15:21.541539200 +0000
+@@ -21,7 +21,7 @@
+ include build_config.mk
+ 
+ TESTS = \
+-	db/autocompact_test \
++#	db/autocompact_test \
+ 	db/c_test \
+ 	db/corruption_test \
+ 	db/db_test \
+@@ -48,7 +48,7 @@
+ 	util/hash_test
+ 
+ UTILS = \
+-	db/db_bench \
++#	db/db_bench \
+ 	db/leveldbutil
+ 
+ # Put the object files in a subdirectory, but the application at the top of the object dir.
+@@ -60,7 +60,7 @@
+ 	doc/bench/db_bench_tree_db
+ 
+ CFLAGS += -I. -I./include $(PLATFORM_CCFLAGS) $(OPT)
+-CXXFLAGS += --std=c++11 -DDLLX= -I. -I./include $(PLATFORM_CXXFLAGS) $(OPT)
++CXXFLAGS += --std=c++11 -fno-builtin-memcmp -pthread -DDLLX= -fPIC -DLINUX -D_LINUX -DLEVELDB_PLATFORM_POSIX -DOS_LINUX -DLEVELDB_ATOMIC_PRESENT -DSNAPPY -I ./ -I include/ $(OPT)
+ 
+ LDFLAGS += $(PLATFORM_LDFLAGS)
+ LIBS += $(PLATFORM_LIBS) -lz
+@@ -80,7 +80,7 @@
+ STATIC_OUTDIR=out-static
+ SHARED_OUTDIR=out-shared
+ STATIC_PROGRAMS := $(addprefix $(STATIC_OUTDIR)/, $(PROGNAMES))
+-SHARED_PROGRAMS := $(addprefix $(SHARED_OUTDIR)/, db_bench)
++#SHARED_PROGRAMS := $(addprefix $(SHARED_OUTDIR)/, db_bench)
+ endif
+ 
+ STATIC_LIBOBJECTS := $(addprefix $(STATIC_OUTDIR)/, $(SOURCES:.cc=.o))
