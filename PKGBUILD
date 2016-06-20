@@ -3,7 +3,7 @@
 
 pkgbase=spectacle
 pkgname=spectacle-light
-pkgver=16.04.1
+pkgver=16.04.2
 pkgrel=1
 pkgdesc="KDE screenshot capture utility, without purpose"
 arch=(i686 x86_64)
@@ -16,7 +16,7 @@ replaces=(kdegraphics-ksnapshot kscreengenie)
 provides=(spectacle)
 groups=(kde-applications kdegraphics)
 source=("http://download.kde.org/stable/applications/${pkgver}/src/${pkgbase}-${pkgver}.tar.xz")
-sha256sums=('e6ddbbb84cefcbe10eda2ff67cd5ade82b9bfe516474e97603c033aed385c3b5')
+sha256sums=('72df758b48eaedd119b8dfcf5fe644d4f4ae3f493b02fb74c7dd90d30d7fe77b')
 
 prepare() {
     mkdir -p build

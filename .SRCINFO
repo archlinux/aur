@@ -1,6 +1,6 @@
 pkgbase = spectacle
 	pkgdesc = KDE screenshot capture utility, without purpose
-	pkgver = 16.04.1
+	pkgver = 16.04.2
 	pkgrel = 1
 	url = https://www.kde.org/applications/graphics/
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = spectacle
 	conflicts = spectacle
 	replaces = kdegraphics-ksnapshot
 	replaces = kscreengenie
-	source = http://download.kde.org/stable/applications/16.04.1/src/spectacle-16.04.1.tar.xz
-	sha256sums = e6ddbbb84cefcbe10eda2ff67cd5ade82b9bfe516474e97603c033aed385c3b5
+	source = http://download.kde.org/stable/applications/16.04.2/src/spectacle-16.04.2.tar.xz
+	sha256sums = 72df758b48eaedd119b8dfcf5fe644d4f4ae3f493b02fb74c7dd90d30d7fe77b
 
 pkgname = spectacle-light
 
