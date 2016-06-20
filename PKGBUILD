@@ -10,6 +10,7 @@ license=("MIT")
 depends=("bup" "gtk3" "gobject-introspection")
 optdepends=("cifs-utils: samba filesystems support"
             "encfs: encryption support"
+            "x11-ssh-askpass: encryption support"
             "sshfs: ssh filesystems support"
             "google-drive-ocamlfuse: google drive support"
             "systemd: backup scheduling support")
