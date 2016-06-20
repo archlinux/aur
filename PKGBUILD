@@ -1,7 +1,7 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 
 pkgname=midifilter.lv2-git
-pkgver=0.4.3.r13.g4f5ae5c
+pkgver=0.4.4.r0.gb09dfa0
 pkgrel=1
 pkgdesc="LV2 plugins to filter MIDI events"
 arch=('i686' 'x86_64')
@@ -29,7 +29,6 @@ package() {
 	cd "$srcdir/${pkgname%-*}"
 	make DESTDIR="$pkgdir/" install PREFIX=/usr
 	mkdir -p "$pkgdir/usr/share/doc/${pkgname%-*}"
-    cp ChangeLog "$pkgdir/usr/share/doc/${pkgname%-*}/"
     cp COPYING "$pkgdir/usr/share/doc/${pkgname%-*}/"
     cp README.md  "$pkgdir/usr/share/doc/${pkgname%-*}/"
     cp AUTHORS "$pkgdir/usr/share/doc/${pkgname%-*}/"
