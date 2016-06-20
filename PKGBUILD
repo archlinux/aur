@@ -2,8 +2,8 @@
 
 pkgname=fromscratch-bin
 _binname=FromScratch
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="A simple but smart note-taking app"
 arch=('i686' 'x86_64')
 url="https://fromscratch.rocks"
@@ -18,8 +18,8 @@ source_x86_64=("https://github.com/Kilian/${_binname}/releases/download/v${pkgve
 sha256sums=('8393225b48095d8ba6e01e1e78f37494843c6db929dacf87457b4ca1616deab8'
             '6588f5c6eca8ba660ac66977a904c0c6e2bfcdde94593c267d918fee0043d796'
             'cc984639b604c8f442b28b5bfb8481a61634fcc48e06c460036694ee47c0ed54')
-sha256sums_i686=('5952ce291c0dddaccc9439edf083305b7447d880262c817dc339742106e0d4a2')
-sha256sums_x86_64=('f1157417350368302792b850d593e6cb87296dd90424a52317daf4808e763e67')
+sha256sums_i686=('215207ab1017e098071c87a5e9d93aaef1053b18bfc55b694165f77f04c6d4f2')
+sha256sums_x86_64=('318dc70a60438c5f34c12d32d66df206472d50d3220682818475b2cea97074a7')
 
 package() {
   cd "${srcdir}/${_binname}-linux-"*
