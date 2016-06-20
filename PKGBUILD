@@ -1,6 +1,6 @@
 
 pkgname=nginx-mainline-passenger
-pkgver=1.9.15
+pkgver=1.11.1
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release, including support for Phusion Passenger as a static module.'
 arch=('i686' 'x86_64')
@@ -8,6 +8,7 @@ url='http://nginx.org'
 license=('custom')
 depends=('pcre' 'zlib' 'openssl' 'geoip' 'passenger-nginx-module')
 optdepends=('logrotate: rotate nginx/passenger logs.')
+makedepends=('hardening-wrapper')
 backup=('etc/nginx/fastcgi.conf'
         'etc/nginx/fastcgi_params'
         'etc/nginx/koi-win'
@@ -25,7 +26,7 @@ source=($url/download/nginx-$pkgver.tar.gz
         service
         logrotate
         nginx.conf)
-md5sums=('13cd38e9da3789035750dd45882c4a26'
+md5sums=('0f3900165b11c417854535f3538913cb'
          'ce9a06bcaf66ec4a3c4eb59b636e0dfd'
          '3441ce77cdd1aab6f0ab7e212698a8a7'
          '929c2b1278c96058bb91b822c55933be')
@@ -48,15 +49,15 @@ _common_flags=(
   --with-http_ssl_module
   --with-http_stub_status_module
   --with-http_sub_module
-)
-
-_mainline_flags=(
   --with-http_v2_module
   --with-mail
   --with-mail_ssl_module
   --with-stream
   --with-stream_ssl_module
   --with-threads
+)
+
+_mainline_flags=(
 )
 
 _passenger_flags=(
@@ -121,5 +122,4 @@ package() {
     install -Dm644 contrib/vim/${i}/nginx.vim \
       "${pkgdir}/usr/share/vim/vimfiles/${i}/nginx.vim"
   done
-
 }
