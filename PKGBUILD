@@ -1,7 +1,7 @@
 
 pkgname=sway
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="i3 compatible window manager for Wayland"
 arch=("i686" "x86_64")
 url="http://swaywm.org"
