@@ -1,4 +1,8 @@
 2016-06-20 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.1.0.6:
+    Fixed !2faok confirming only one confirmation at a time (2.1.0.5 regression)
+    Divided !pause command into !pause and !resume
+2016-06-20 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.1.0.5:
     [!] Incompatibility with previous versions of ASF - Bot's database will be converted from old V1 into new V2 format, which means that newly generated Bot's database will not run correctly with previous versions of ASF.
     [!] Removed support for linking new authenticator and delinking existing ones, effectively removing UseAsfAsMobileAuthenticator Bot config property and !2faoff command.
