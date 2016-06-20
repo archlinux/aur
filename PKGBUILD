@@ -1,5 +1,5 @@
 pkgname=mingw-w64-kwidgetsaddons
-pkgver=5.22.0
+pkgver=5.23.0
 pkgrel=1
 arch=(any)
 pkgdesc="Addons to QtWidgets (mingw-w64)"
@@ -10,7 +10,7 @@ makedepends=(mingw-w64-cmake mingw-w64-extra-cmake-modules mingw-w64-qt5-tools)
 options=(staticlibs !strip !buildflags)
 url="https://projects.kde.org/projects/frameworks/kwidgetsaddons"
 source=("http://download.kde.org/stable/frameworks/${pkgver%.*}/kwidgetsaddons-${pkgver}.tar.xz")
-md5sums=('29512139354cbfcad8d6bd34db59c2ea')
+md5sums=('d218ec2b2e7264fbd0cb631f77bbd70f')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
