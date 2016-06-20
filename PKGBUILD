@@ -1,6 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
+
 pkgname=dhewm3-git
-pkgver=1.4.0.r7.9958e38
+pkgver=1.4.1
 pkgrel=1
 epoch=1
 pkgdesc="Doom 3 engine with native 64-bit support, SDL, and OpenAL"
@@ -47,5 +48,5 @@ package() {
   cd "${pkgname/-git/}/neo"
 
   make DESTDIR="$pkgdir" libdir="$pkgdir/usr/lib" install
-  install -Dm644 "$srcdir"/dhewm3.desktop "$pkgdir/usr/share/applications/dhewm3.desktop"
+  install -Dm644 ../../dhewm3.desktop "$pkgdir/usr/share/applications/dhewm3.desktop"
 }
