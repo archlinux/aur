@@ -1,128 +1,21 @@
-diff -Naur neo4j-community-2.3.3-orig/bin/neo4j neo4j-community-2.3.3-mod/bin/neo4j
---- neo4j-community-2.3.3-orig/bin/neo4j	2016-01-12 21:01:31.000000000 -0200
-+++ neo4j-community-2.3.3-mod/bin/neo4j	2016-01-26 10:38:34.784729340 -0200
-@@ -33,24 +33,13 @@
- LAUNCHD_NAME="org.neo4j.server"
- 
- function findBaseDirAndCdThere {
--# This seems to not be safe to run at any time. If that
--# is the case, it should be fixed to be so, if possible.
--  SCRIPT=$0
--
--  cd "`dirname "$SCRIPT"`"
--  SCRIPT=`basename "$SCRIPT"`
--
--  while [ -L "$SCRIPT" ]
--  do
--    SCRIPT=$( readlink "$SCRIPT" )
--    cd "$(dirname "$SCRIPT")"
--    SCRIPT=`basename "$SCRIPT"`
--  done
--  NEO4J_HOME=`cd $( dirname "$SCRIPT" )/.. && dirs -l +0`
--  NEO4J_INSTANCE=$NEO4J_HOME
--  [ -n "$NEO4J_CONFIG" ] || NEO4J_CONFIG=$NEO4J_HOME/conf
--  [ -n "$NEO4J_LOG" ] || NEO4J_LOG=$NEO4J_HOME/data/log
--  [ -n "$NEO4J_PIDFILE" ] || NEO4J_PIDFILE=$NEO4J_HOME/data/neo4j-service.pid
-+  NEO4J_HOME=/usr/share/java/neo4j
-+  NEO4J_SHARE=/usr/share/neo4j
-+  NEO4J_CONFIG=/etc/neo4j
-+  NEO4J_INSTANCE=/var/lib/neo4j
-+  NEO4J_LOG=/var/log/neo4j
-+  NEO4J_RUNDIR=/run/neo4j
-+  NEO4J_PIDFILE=${NEO4J_RUNDIR}/neo4j-service.pid
- 
-   cd "$NEO4J_HOME"
- }
-@@ -68,7 +57,7 @@
- }
- 
- findBaseDirAndCdThere
--source bin/utils
-+source ${NEO4J_SHARE}/bin/utils
- parseConfig
- 
- JAVA_OPTS="-server -XX:+DisableExplicitGC ${wrapper_java_additional}"
-@@ -91,7 +80,7 @@
- # Username to propose for neo4j user, can be overridden by -u USERNAME option
- DEFAULT_USER='neo4j'
- 
--SCRIPT_NAME="${NEO4J_HOME}/bin/neo4j"
-+SCRIPT_NAME="${NEO4J_SHARE}/bin/neo4j"
- SERVICE_NAME=${wrapper_ntservice_name:=neo4j-service}
- LAUNCHD_DIR=~/Library/LaunchAgents/
- 
-@@ -100,7 +89,7 @@
- PID_FILE=${NEO4J_PIDFILE}
- buildclasspath() {
-   # confirm library jars
--  LIBDIR="$NEO4J_HOME"/lib
-+  LIBDIR="$NEO4J_HOME"
-   if [ ! -e "$LIBDIR" ] ; then
-     echo "Error: missing Neo4j Library, expected at $LIBDIR"
-     exit 1
-diff -Naur neo4j-community-2.3.3-orig/bin/neo4j-import neo4j-community-2.3.3-mod/bin/neo4j-import
---- neo4j-community-2.3.3-orig/bin/neo4j-import	2016-01-12 21:01:31.000000000 -0200
-+++ neo4j-community-2.3.3-mod/bin/neo4j-import	2016-01-26 10:38:34.784729340 -0200
-@@ -21,19 +21,7 @@
- #Remember where we started from so that working dir is set correctly
- RUN_FROM=`pwd`
- 
--SCRIPT_LOCATION="$0"
--
--cd "`dirname "$SCRIPT_LOCATION"`"
--SCRIPT_LOCATION=`basename "$SCRIPT_LOCATION"`
--
--while [ -L "$SCRIPT_LOCATION" ]
--do
--  SCRIPT_LOCATION=$( readlink $SCRIPT_LOCATION )
--  cd "`dirname "$SCRIPT_LOCATION"`"
--  SCRIPT_LOCATION="`basename "$SCRIPT_LOCATION"`"
--done
--
--BASEDIR=`cd "$( dirname $SCRIPT_LOCATION )"/.. && dirs -l +0`
-+BASEDIR=/usr/share/java/neo4j
- 
- # OS specific support.  $var _must_ be set to either true or false.
- cygwin=false;
-@@ -86,7 +74,7 @@
- 
- if [ -z "$REPO" ]
- then
--  REPO="$BASEDIR"/lib
-+  REPO="$BASEDIR"
- fi
- 
- LIBRARY_JARS=""
-diff -Naur neo4j-community-2.3.3-orig/bin/neo4j-shell neo4j-community-2.3.3-mod/bin/neo4j-shell
---- neo4j-community-2.3.3-orig/bin/neo4j-shell	2016-01-12 21:01:31.000000000 -0200
-+++ neo4j-community-2.3.3-mod/bin/neo4j-shell	2016-01-26 10:38:34.784729340 -0200
-@@ -21,19 +21,7 @@
- #Remember where we started from so that working dir is set correctly
- RUN_FROM=`pwd`
- 
--SHELL_SCRIPT="$0"
--
--cd "`dirname "$SHELL_SCRIPT"`"
--SHELL_SCRIPT=`basename "$SHELL_SCRIPT"`
--
--while [ -L "$SHELL_SCRIPT" ]
--do
--  SHELL_SCRIPT=$( readlink $SHELL_SCRIPT )
--  cd "`dirname "$SHELL_SCRIPT"`"
--  SHELL_SCRIPT="`basename "$SHELL_SCRIPT"`"
--done
--
--BASEDIR=`cd "$( dirname $SHELL_SCRIPT )"/.. && dirs -l +0`
-+BASEDIR=/usr/share/java/neo4j
- 
- # OS specific support.  $var _must_ be set to either true or false.
- cygwin=false;
-@@ -86,7 +74,7 @@
- 
- if [ -z "$REPO" ]
- then
--  REPO="$BASEDIR"/lib
-+  REPO="$BASEDIR"
- fi
- 
- LIBRARY_JARS=""
+diff -au0r neo4j-community-3.0.3-orig/bin/neo4j-admin neo4j-community-3.0.3-mod/bin/neo4j-admin
+--- neo4j-community-3.0.3-orig/bin/neo4j-admin	2016-06-10 00:01:59.000000000 -0300
++++ neo4j-community-3.0.3-mod/bin/neo4j-admin	2016-06-20 03:29:19.203468569 -0300
+@@ -21,0 +22,3 @@
++NEO4J_CONF=/etc/neo4j
++NEO4J_HOME=/usr/share/neo4j
++
+diff -au0r neo4j-community-3.0.3-orig/bin/neo4j-import neo4j-community-3.0.3-mod/bin/neo4j-import
+--- neo4j-community-3.0.3-orig/bin/neo4j-import	2016-06-10 00:01:59.000000000 -0300
++++ neo4j-community-3.0.3-mod/bin/neo4j-import	2016-06-20 03:29:19.203468569 -0300
+@@ -23,0 +24,3 @@
++NEO4J_CONF=/etc/neo4j
++NEO4J_HOME=/usr/share/neo4j
++
+diff -au0r neo4j-community-3.0.3-orig/bin/neo4j-shell neo4j-community-3.0.3-mod/bin/neo4j-shell
+--- neo4j-community-3.0.3-orig/bin/neo4j-shell	2016-06-10 00:01:59.000000000 -0300
++++ neo4j-community-3.0.3-mod/bin/neo4j-shell	2016-06-20 03:29:19.203468569 -0300
+@@ -23,0 +24,3 @@
++NEO4J_CONF=/etc/neo4j
++NEO4J_HOME=/usr/share/neo4j
++
