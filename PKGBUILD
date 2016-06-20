@@ -2,7 +2,7 @@
 
 pkgname=makemkv
 pkgver=1.9.10
-pkgrel=1
+pkgrel=2
 pkgdesc="DVD and Blu-ray to MKV converter and network streamer"
 arch=('i686' 'x86_64')
 url="http://www.makemkv.com"
@@ -31,7 +31,7 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-oss-${pkgver}"
-  make DESTDIR="${pkgdir}" install
+  make DESTDIR=\""${pkgdir}"\" install
 
   cd "${srcdir}/${pkgname}-bin-${pkgver}"
   install -d "${pkgdir}/usr/bin/"
