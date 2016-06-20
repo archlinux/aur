@@ -1,15 +1,18 @@
-# Maintainer: Andy Kluger <AndyKluger@gmail.com>
+pkgdesc="Command line utility to build and modify App Container Images (ACI)"
 pkgname=acbuild
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
-pkgdesc="Command line utility to build and modify App Container Images (ACIs), the container image format defined in the App Container (appc) spec implemented by rkt."
 arch=('i686' 'x86_64')
 url="https://github.com/appc/acbuild"
-license=('Apache')
-depends=('gnupg')
-makedepends=('git' 'go')
-source=("git+https://github.com/appc/acbuild.git#tag=v$pkgver")
+source=(
+    "git+$url.git#tag=v$pkgver"
+)
 md5sums=('SKIP')
+makedepends=('git' 'go')
+optdepends=(
+    'gnupg: required to sign container images'
+)
+license=('Apache')
 
 build() {
   cd "$pkgname"
@@ -18,7 +21,5 @@ build() {
 
 package() {
   cd "$pkgname"
-  install -D ./bin/acbuild "$pkgdir/usr/bin/acbuild"
+  install -D -m755 bin/$pkgname "$pkgdir/usr/bin/$pkgname"
 }
-
-# vim:set ts=2 sw=2 et:
