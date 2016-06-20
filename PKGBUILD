@@ -1,7 +1,7 @@
 # Maintainer: emersion
 
 pkgname="bups"
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=2
 pkgdesc="Simple GUI for Bup, a very efficient backup system."
 arch=("any")
@@ -17,7 +17,7 @@ optdepends=("cifs-utils: samba filesystems support"
 makedepends=()
 source=(
   "https://github.com/emersion/bups/archive/v$pkgver.tar.gz")
-sha256sums=('f14a9e63121a3b060a9de102577f69a37abb1333c67fd3b9c669df3a875fa291')
+sha256sums=('2ae93998f8e5a2e4dc4fddf2e5662017f563c56a2a0d87b10533dd97600b35c7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
