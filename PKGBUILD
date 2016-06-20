@@ -1,7 +1,7 @@
 # Maintainer: Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=dhewm3
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="Doom 3 engine with native 64-bit support, SDL, and OpenAL"
 arch=('i686' 'x86_64')
 url="https://github.com/dhewm/dhewm3"
@@ -11,7 +11,7 @@ makedepends=('cmake')
 source=("$url/archive/$pkgver.tar.gz"
         'dhewm3.desktop'
         '0001-game_data_location.patch')
-sha256sums=('b579cd2d07d4efc0ebb536c933857ee28a302d9e9484ebd5bda9b40f8da17f88'
+sha256sums=('587586142d863ff98051619f0d49c056c5302e919c655a50af69a8293bc3ae08'
             '7c9ae892c6cf0453fcd57731689ccedac8f8ce10f33043f7dd5fb66bd73d1287'
             'dbbb0607a92482a1b753cf9cac97dcc57345b92ee43449c9826f5b23af7624f9')
 
@@ -38,5 +38,5 @@ package() {
   cd "$pkgname-$pkgver/neo"
 
   make DESTDIR="$pkgdir" libdir="$pkgdir/usr/lib" install
-  install -Dm644 "$srcdir"/dhewm3.desktop "$pkgdir/usr/share/applications/dhewm3.desktop"
+  install -Dm644 ../../dhewm3.desktop "$pkgdir/usr/share/applications/dhewm3.desktop"
 }
