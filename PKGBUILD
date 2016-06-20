@@ -1,4 +1,4 @@
-pkgdesc="Command line utility to build and modify App Container Images (ACI)"
+pkgdesc="App Container Images Build Command"
 pkgname=acbuild
 pkgver=0.3.1
 pkgrel=1

@@ -1,5 +1,5 @@
 pkgbase = acbuild
-	pkgdesc = Command line utility to build and modify App Container Images (ACI)
+	pkgdesc = App Container Images Build Command
 	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://github.com/appc/acbuild
