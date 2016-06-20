@@ -5,7 +5,7 @@
 # Contributor: wido <widomaker2k7@gmail.com>
 
 pkgname=bitdefender
-pkgver=7.6
+pkgver=7.7.1
 pkgrel=12.1
 _build=3
 _guiver=1.0
@@ -16,25 +16,25 @@ url="http://www.bitdefender.com/"
 depends=('gtk2' 'libstdc++5' 'atk' 'fontconfig' 'libxext' 'libxrender' 'libxrandr' 'libxi' 'libxcursor' 'libxfixes' 'pango' 'glib2' 'libxinerama' 'libsm')
 install=bitdefender.install
 license=('custom')
-source=(http://download.bitdefender.com/repos/rpm/bitdefender/i586/bitdefender-scanner-$pkgver-$_build.i586.rpm
-        http://download.bitdefender.com/repos/rpm/bitdefender/i586/bitdefender-scanner-gui-$_guiver-$_guibuild.i586.rpm
+source=(http://dl.dropboxusercontent.com/s/x02eivja50i1k20/bitdefender-scanner-7.7.1-1809.i586.rpm?dl=0
+        http://dl.dropboxusercontent.com/s/a8klp4coaax7os4/bitdefender-scanner-gui-7.7.1-1809.i586.rpm?dl=0
         bitdefender.sh
         bitdefender.conf
         http://download.bitdefender.com/updates/update_av32bit/cumulative.zip)
 md5sums=('SKIP'
-         'd7812ffcc01137a41d738170a28be8a1'
+         'SKIP'
          'f74775c74b44ceabafcc0dbab0ff2318'
          '6df89a673aec1ad103745da47c50dc46'
          'SKIP')
          
-[ "$CARCH" = "x86_64" ] && source=(http://download.bitdefender.com/repos/rpm/bitdefender/x86_64/bitdefender-scanner-$pkgver-$_build.x86_64.rpm
-                                   http://download.bitdefender.com/repos/rpm/bitdefender/x86_64/bitdefender-scanner-gui-$_guiver-$_guibuild.x86_64.rpm
+[ "$CARCH" = "x86_64" ] && source=(http://dl.dropboxusercontent.com/s/4730ybtsz2t2z1l/bitdefender-scanner-7.7.1-1809.x86_64.rpm?dl=0
+                                   http://dl.dropboxusercontent.com/s/lembl9kgbqh2xir/bitdefender-scanner-gui-7.7.1-1809.x86_64.rpm?dl=0
                                    bitdefender.sh
                                    bitdefender.conf
                                    http://download.bitdefender.com/updates/update_av64bit/cumulative.zip)
          
-[ "$CARCH" = "x86_64" ] && md5sums=('3da9c645fc7e3f1b2b02e5906dc362b1'
-                                    'a752eb979172de0f7cfa21d723b806d1'
+[ "$CARCH" = "x86_64" ] && md5sums=('SKIP'
+                                    'SKIP'
                                     'f74775c74b44ceabafcc0dbab0ff2318'
                                     '6df89a673aec1ad103745da47c50dc46'
                                     'SKIP')
@@ -42,7 +42,7 @@ md5sums=('SKIP'
 package() {
     cd $srcdir
     cp -r $srcdir/opt $pkgdir
-    cp -r $srcdir/usr $pkgdir
+#    cp -r $srcdir/usr $pkgdir
 
     # generate configuration
     sed -i 's|\$\$DIR|/opt/BitDefender-scanner|g' $pkgdir/opt/BitDefender-scanner/etc/bdscan.conf.dist 
@@ -87,7 +87,7 @@ package() {
     # fix segfaulting
     #  - http://unices.bitdefender.com/2011/11/01/bitdefender-antivirus-scanner-for-unices/    
     if [ "$CARCH" = "x86_64" ]; then
-        rm $pkgdir/opt/BitDefender-scanner/var/lib/scan/bdcore.so
+#        rm $pkgdir/opt/BitDefender-scanner/var/lib/scan/bdcore.so
         install -Dm644 $srcdir/bdcore.so.linux-x86_64 $pkgdir/opt/BitDefender-scanner/var/lib/scan/bdcore.so.linux-x86_64
         ln -sf /opt/BitDefender-scanner/var/lib/scan/bdcore.so.linux-x86_64 $pkgdir/opt/BitDefender-scanner/var/lib/scan/bdcore.so
     else
