@@ -21,10 +21,10 @@ conflicts=('brackets' 'brackets-git')
 install=$pkgname.install
 
 source_i686=("https://github.com/adobe/$_pkgname/releases/download/release-$pkgver/Brackets.Release.$pkgver.32-bit.deb")
-sha512sums_i686=('a121aaef840ad52c6fe7f5068e5d4079490977baf23faa2d8b7adcb174df5674f7df43ad210ad4b9b00cca1889933383779e99c74e4d5b689658e66a7cad355a')
+md5sums_i686=('1c8b9546d9f05ca7a3a2c1ab32937d17')
+md5sums_x86_64=('40ff70501e1673b0e6d6868d267b0432')
 
 source_x86_64=("https://github.com/adobe/$_pkgname/releases/download/release-$pkgver/Brackets.Release.$pkgver.64-bit.deb")
-sha512sums_x86_64=('33fa6bf08f2fb69a1ac5b8c2ca958384774083d749f5281444697a20048e771427999119ffc8665129486eff25f0be81f322a58d334d0a328086d121ad1a560e')
  
 prepare() {
   cd $srcdir
