@@ -9,7 +9,7 @@ license=('GPL')
 depends=('gmime' 'libsoup' 'libarchive' 'libquvi')
 makedepends=('git' 'gnome-common' 'gtk-doc' 'gobject-introspection')
 provides=($_pkgname)
-conflicts=('xplayer-plparser' $_pkgname)
+conflicts=('xplayer-plparser')
 url='https://github.com/linuxmint/xplayer-plparser'
 
 source=('xplayer-plparser-git::git+https://github.com/linuxmint/xplayer-plparser.git')
