@@ -4,8 +4,8 @@
 # Maintainer: Tony Lambiris <tony@critialstack.com>
 
 pkgbase=linux-macbook-pro       # Build kernel with a different name
-_srcname=linux-4.5
-pkgver=4.5.6
+_srcname=linux-4.6
+pkgver=4.6.2
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.kernel.org/"
@@ -24,12 +24,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
         'macbook-suspend.patch'
         'change-default-console-loglevel.patch')
 
-sha256sums=('a40defb401e01b37d6b8c8ad5c1bbab665be6ac6310cdeed59950c96b31a519c'
+
+sha256sums=('a93771cd5a8ad27798f22e9240538dfea48d3a2bf2a6a6ab415de3f02d25d866'
             'SKIP'
-            'b178f252af7459cfa6be435620f932e4ac99f7542b195ccdf34051db31e313ba'
+            '0dc509a19c68ab547a62158bf2017965b843854b63be46ae039c37724dccca21'
             'SKIP'
-            '2355efbab340d16c1b60a7805b987a78e57266809ba6c986ceef68ef7ce71db0'
-            'cee1781f96e55a909757c4533cdacb57c3ffe6f6f01f709e8a5a837dc4a68bba'
+            '02e8b02e8cd10aa059917a489a9663e7f66bdf12c5ae8a1e0369bb2862da6b68'
+            'd59014b8f887c6aa9488ef5ff9bc5d4357850a979f3ff90a2999bbe24e5c6e15'
             '2f904d9e7e5f6965178562cfb411ffe370688f40f6f80ab550763dd3bee21e90'
             'bb8af32880059e681396a250d8e78f600f248da8ad4f0e76d7923badb5ee8b42'
             '103cac598bf92519d6c0b04ca729565bad75015daade422c81225e399c967b4c'
