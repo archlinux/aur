@@ -1,7 +1,7 @@
 # Maintainer: Arondight <shell_way@foxmail.com>
 
 pkgname='sudodev-git'
-pkgver='v0.27.r7.g3e969b2'
+pkgver='v0.28.r0.gac970ce'
 pkgrel=1
 pkgdesc='Create your special device for a none-password sudo'
 arch=('any')

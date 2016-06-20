@@ -8,6 +8,8 @@ tags*
 
 # output
 *.tar.xz
+/bin/
+/build/
 /pkg/
 /src/
 /sudodev/
