@@ -10,7 +10,7 @@ url="http://isl.gforge.inria.fr/"
 depends=('gmp')
 license=('MIT')
 options=('!libtool')
-provides=('isl')
+provides=("isl=${pkgver}")
 conflicts=('isl-git' 'isl')
 source=('http://isl.gforge.inria.fr/isl-0.15.tar.gz')
 md5sums=('ca0e2d172ff0b57764b10867c8fc762f')
