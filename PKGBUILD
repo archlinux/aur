@@ -1,6 +1,6 @@
 # Maintainer: Hexchain Tong <i@hexchain.org>
 pkgname=git-credential-gnome-keyring
-pkgver=2.8.3
+pkgver=2.9.0
 pkgrel=1
 pkgdesc="Git credential helper using GNOME Keyring"
 arch=(i686 x86_64)
