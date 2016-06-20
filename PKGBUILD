@@ -2,7 +2,7 @@
 pkgname=passenger-nginx-module
 pkgver=5.0.28
 pkgrel=1
-pkgdesc="Passenger configured for use as a static nginx module."
+pkgdesc="Phusion Passenger configured for use as a static nginx module."
 arch=('i686' 'x86_64')
 url="https://www.phusionpassenger.com/"
 _watch="https://www.phusionpassenger.com/file_releases"
