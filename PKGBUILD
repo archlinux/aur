@@ -8,7 +8,7 @@ url='https://github.com/christopherloen/integaur'
 license=('GPL3')
 depends=('curl' 'wget')
 source=('https://github.com/christopherloen/integaur/archive/master.zip')
-sha256sums=('410a53e6f3a13d53e183735ed93dfa69b9383da51695293ce2a74624a88e41fc')
+sha256sums=('0d8330ec8a3c82815e39110e439995c57aabcbe04267a65699fbadce6f84d614')
 
 package() {
 	cd "${srcdir}/${pkgname}-master"
