@@ -75,7 +75,7 @@ package() {
 
   # Desktop File
   install -D -m644 ./bin/Cisco-PacketTracer.desktop ${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop
-  sed 's/\/usr\/local\/PacketTracer6/\/opt\/pt/' -i ${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop 
+  sed 's/\/usr\/local\/PacketTracer6/\/usr\/share\/packettracer/' -i ${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop 
   rm ${pkgdir}/usr/share/packettracer/bin/Cisco-PacketTracer.desktop
 }
 
