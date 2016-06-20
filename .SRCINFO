@@ -1,7 +1,7 @@
 pkgbase = bitdefender
 	pkgdesc = BitDefender's Personal UNIX Workstation Antivirus
 	pkgver = 7.7.1
-	pkgrel = 12.1
+	pkgrel = 42
 	url = http://www.bitdefender.com/
 	install = bitdefender.install
 	arch = i686
