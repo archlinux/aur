@@ -18,14 +18,16 @@ license=('AGPL2.1' 'Apache')
 groups=('kimchi-project')
 
 # Dependencies
-depends=('wok'
+depends=('dnsmasq'
+         'ebtables'
          'ginger-base'
          'libguestfs'
          'libvirt-python'
-         'qemu'
+         'nfs-utils'
+         'novnc'
+         'open-iscsi'
          'python2-configobj'
          'python2-ethtool'
-         'python2-imaging'
          'python2-ipaddr'
          'python2-lxml'
          'python2-magic'
@@ -34,17 +36,12 @@ depends=('wok'
          'python2-pillow'
          'python2-pyparted'
          'python2-websocket-client'
-         'nfs-utils'
-         'novnc'
-         'open-iscsi'
+         'qemu'
          'spice-html5'
-         'ttf-opensans'
          'ttf-font-awesome'
-         'ebtables'
-         'dnsmasq')
-optdepends=('python-ordereddict'
-            'python2-unittest2'
-            'websockify')
+         'ttf-opensans'
+         'wok')
+#optdepends=()
 makedepends=('git')
 #checkdepends=()
 
