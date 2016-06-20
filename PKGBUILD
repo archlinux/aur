@@ -1,7 +1,7 @@
 # Maintainer: Alex Mekkering <amekkering at gmail dot com>
 
 pkgname=horepg
-pkgver=r53.1b3d213
+pkgver=r61.77c04a8
 pkgrel=1
 pkgdesc="Parses EPG data from the service at horizon.tv for usage in TVHeadend."
 arch=('any')
@@ -9,10 +9,14 @@ url="https://github.com/beralt/horepg"
 license=('MIT')
 depends=('python-requests' 'tvheadend')
 makedepends=('python-setuptools')
-source=('git+https://github.com/beralt/horepg.git'
-        'horepgd.service')
-sha512sums=('SKIP'
-            '3edcb62b46fa6087fe69191d34bfa4452a8745a7de32d92605d43deb9bf07107c7250dffb56933f4d7f6afe66bab1ecb1c6c97c2c31861ab99bfe76d4f8b3f89')
+
+###################################
+# Use a specific commit for stability reasons
+source=('git+https://github.com/beralt/horepg.git#commit=77c04a8')
+###################################
+# Enable the following line (& disable the previous one) to build using the most recent commit
+# source=('git+https://github.com/beralt/horepg.git')
+
 install=horepg.install
 
 pkgver() {
@@ -24,7 +28,8 @@ package() {
     cd "${srcdir}/${pkgname}"
     python setup.py install --root="${pkgdir}/"
 
-    install -D -m 644 "../../horepgd.service" \
-        "$pkgdir/usr/lib/systemd/system/horepgd.service"
+    install -D -m 644 "dist/systemd/horepgd.service" "$pkgdir/usr/lib/systemd/system/horepgd.service"
+    install -D -m 644 "dist/systemd/horepgd.timer" "$pkgdir/usr/lib/systemd/system/horepgd.timer"
 }
 
+md5sums=('SKIP')
