@@ -1,11 +1,11 @@
-pkgdesc='dgr - container build and runtime tool'
+pkgdesc="App Container Image Build and Runtime Tool"
 pkgname=dgr
 pkgver=69
 pkgrel=1
 url="https://github.com/blablacar/$pkgname"
 source=("$url/releases/download/$pkgver/$pkgname-linux-amd64-$pkgver.tar.gz")
-arch=('x86_64')
 md5sums=('SKIP')
+arch=('x86_64')
 license=('Apache')
 
 # 1.
@@ -25,5 +25,5 @@ check() {
 
 # 4.
 package() {
-    install -D -m755 dgr "$pkgdir/usr/bin/dgr"
+    install -D -m755 $pkgname "$pkgdir/usr/bin/$pkgname"
 }

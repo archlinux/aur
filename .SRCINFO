@@ -1,5 +1,5 @@
 pkgbase = dgr
-	pkgdesc = dgr - container build and runtime tool
+	pkgdesc = App Container Image Build and Runtime Tool
 	pkgver = 69
 	pkgrel = 1
 	url = https://github.com/blablacar/dgr
