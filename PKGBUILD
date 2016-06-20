@@ -21,6 +21,16 @@ pkgver() {
 
 package() {
   cd "$srcdir/$_pkgname"
+  _create_package_envs
   make -e package_linux
   cp -a "$srcdir/$_pkgname/package/v$pkgver/." "$pkgdir/"
+}
+
+_create_package_envs() {
+  AZK_LAST_COMMIT_ID=$(git rev-parse HEAD | cut -c 1-7)
+  AZK_LAST_COMMIT_DATE=$(git log -1 --format=%cd --date=short)
+  (
+    echo "export AZK_LAST_COMMIT_ID=${AZK_LAST_COMMIT_ID}"
+    echo "export AZK_LAST_COMMIT_DATE=${AZK_LAST_COMMIT_DATE}"
+  ) > .package-envs
 }
