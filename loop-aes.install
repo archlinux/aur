@@ -2,13 +2,7 @@ EXTRADIR=/usr/lib/modules/$(uname -r)/$(readlink /usr/lib/modules/$(uname -r)/ex
 KERNELDIR=/usr/lib/modules/$(uname -r)/kernel
 
 post_install () {
-     # removal of debris from the previous version,sorry
-     if [ -f $EXTRADIR/loop-def.ko.gz ]
-     then
-     mv $EXTRADIR/loop-def.ko.gz $KERNELDIR/drivers/block/loop.ko.gz
-     rm $KERNELDIR/drivers/block/loop.ko.gz.backup
-     fi
-     
+
      #Disable old cryptoloop module
      if [ -f /etc/modules-load.d/util-linux-aes.conf ]
      then
