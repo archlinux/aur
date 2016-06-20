@@ -2,14 +2,14 @@
 
 _pkgname=qotd
 pkgname=$_pkgname-git
-pkgver=0.4.0_33_g82d4b2b.82d4b2b
+pkgver=0.4.0_35_g483137e.483137e
 pkgrel=1
-pkgdesc="A simple RFC 865-compliant QOTD (quote of the day) daemon."
+pkgdesc="A simple RFC 865-compliant QOTD (quote of the day) daemon. (git version)"
 arch=('any')
 url="https://gitlab.com/ammongit/$_pkgname"
 license=('GPL')
-depends=()
-makedepends=('git' 'gcc')
+depends=('glibc')
+makedepends=('git' 'gcc' 'ghostscript' 'gzip')
 optdepends=()
 provides=("$_pkgname")
 conflicts=("$_pkgname")
