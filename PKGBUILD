@@ -1,7 +1,8 @@
 # Maintainer: Guillaume Brogi <gui-gui@netcourrier.com>
 # Based on python2-pywinrm package by: Kevin Houdebert <kevin@qwazerty.eu>
 
-pkgname=python-pywinrm
+pkgbase=python-pywinrm
+pkgname=python-pywinrm-old
 _realname=pywinrm
 pkgver=0.2.0
 pkgrel=3
