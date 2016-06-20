@@ -1,5 +1,5 @@
 pkgbase = passenger-nginx-module
-	pkgdesc = passenger configured for use as a dynamic nginx module
+	pkgdesc = Phusion Passenger configured for use as a static nginx module.
 	pkgver = 5.0.28
 	pkgrel = 1
 	url = https://www.phusionpassenger.com/
@@ -9,6 +9,7 @@ pkgbase = passenger-nginx-module
 	depends = ruby
 	depends = ruby-rack
 	depends = curl
+	optdepends = nginx-mainline-passenger: web server.
 	provides = passenger
 	conflicts = passenger
 	options = !emptydirs
