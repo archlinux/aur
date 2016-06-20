@@ -8,7 +8,7 @@ url='https://github.com/sahakkhotsanyan/adfind'
 license=('GPL')
 depends=('php')
 source=('https://github.com/sahakkhotsanyan/adfind/archive/master.zip')
-md5sums=('170cf9815e0064902d442e1ba6e21d09')
+md5sums=('c1d42e84cb061eb4f000ff2b6d108e04')
 
 package() {
 	cd "${srcdir}/${pkgname}-master"
