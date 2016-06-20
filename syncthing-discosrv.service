@@ -5,7 +5,8 @@ After=network.target
 [Service]
 User=syncthing
 Group=syncthing
-ExecStart=/bin/sh -c "/usr/bin/syncthing-discosrv -db-dsn='file:///var/discosrv/discosrv.db'"
+WorkingDirectory=/var/discosrv
+ExecStart=/usr/bin/syncthing-discosrv -db-dsn='file:///var/discosrv/discosrv.db'
 Restart=on-failure
 SuccessExitStatus=2
 

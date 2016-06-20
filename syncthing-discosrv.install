@@ -10,6 +10,9 @@ post_install() {
 
   # Setup the systemd tmpfiles
   systemd-tmpfiles --create syncthing-discosrv.conf
+
+  printf '\n%s\n' 'Syncthing expects an SSL certificate and key located at'
+  printf '%s\n' '/var/discosrv/cert.pem and /var/discosrv/key.pem'
 }
 
 post_upgrade() {
