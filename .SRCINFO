@@ -1,0 +1,14 @@
+pkgbase = crawl
+	pkgdesc = Craw stonesoup, curses version
+	pkgver = 0.18.1
+	pkgrel = 1
+	url = http://crawl.develz.org/
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = ncurses
+	source = git://github.com/crawl/crawl.git#tag=0.18.1
+	md5sums = SKIP
+
+pkgname = crawl
+
