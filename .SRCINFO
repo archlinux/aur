@@ -1,6 +1,6 @@
 pkgbase = soci
 	pkgdesc = Database access library for C++
-	pkgver = 3.2.2
+	pkgver = 3.2.3
 	pkgrel = 1
 	url = http://soci.sf.net
 	arch = i686
@@ -18,8 +18,8 @@ pkgbase = soci
 	optdepends = sqlite3: support for sqlite databases
 	optdepends = unixodbc: support for ODBC databases
 	optdepends = boost
-	source = http://downloads.sourceforge.net/project/soci/soci/soci-3.2.2/soci-3.2.2.zip
-	sha1sums = 2e7075e570e94f1f0b3adb28614558dd053c8f86
+	source = http://downloads.sourceforge.net/project/soci/soci/soci-3.2.3/soci-3.2.3.zip
+	sha1sums = 805fcfc6f1199b9a7f8832d63bc9b0ac9da22507
 
 pkgname = soci
 

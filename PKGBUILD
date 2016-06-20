@@ -1,8 +1,9 @@
-# Maintainer: Daniel Nagy <danielnagy at gmx de>
+# Maintainer:  Marcin (CTRL) Wieczorek <marcin@marcin.co>
+# Contributor: Daniel Nagy <danielnagy at gmx de>
 # Contributor: Mika Fischer <mika.fischer@zoopnet.de>
 
 pkgname=soci
-pkgver=3.2.2
+pkgver=3.2.3
 pkgrel=1
 pkgdesc="Database access library for C++"
 arch=('i686' 'x86_64')
@@ -17,7 +18,7 @@ optdepends=('instantclient-basic: support for oracle databases'
             'unixodbc: support for ODBC databases'
             'boost')
 source=("http://downloads.sourceforge.net/project/soci/soci/${pkgname}-${pkgver}/${pkgname}-${pkgver}.zip")
-sha1sums=('2e7075e570e94f1f0b3adb28614558dd053c8f86')
+sha1sums=('805fcfc6f1199b9a7f8832d63bc9b0ac9da22507')
 
 build() {
     rm -rf "${srcdir}/${pkgname}-${pkgver}-build"
