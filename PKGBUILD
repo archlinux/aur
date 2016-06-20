@@ -1,10 +1,11 @@
 # Maintainer: WorMzy Tykashi <wormzy.tykashi@gmail.com>
 # Contributor: Stefan Karner <stefan.karner at student.tuwien.ac.at>
+# Contributor: Drenn
 
 pkgbase=openxcom-git
 pkgname=('openxcom-git' 'openxcom-docs-git')
 _gitname=OpenXcom
-pkgver=1.0_1977_gbe78b8a
+pkgver=1.0_2177_gacd4eb3
 pkgrel=1
 pkgdesc="An open-source reimplementation of the famous X-COM game (git-version)"
 arch=('i686' 'x86_64')
@@ -23,7 +24,7 @@ pkgver() {
 
 build() {
   cd $_gitname
-  cmake -DCMAKE_INSTALL_PREFIX="/usr"
+  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="Release" -DDEV_BUILD="Off"
   make
 
   # Make documentation
