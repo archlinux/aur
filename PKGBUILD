@@ -2,7 +2,7 @@
 
 pkgname="bups"
 pkgver=0.8.1
-pkgrel=2
+pkgrel=1
 pkgdesc="Simple GUI for Bup, a very efficient backup system."
 arch=("any")
 url="https://github.com/emersion/bups"
