@@ -2,37 +2,50 @@
 _pkgname=SimpleITK
 pkgname=simpleitk
 pkgver=0.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A simplified layer built on top of ITK, intended to facilitate its use in rapid prototyping, education, interpreted languages."
 arch=('i686' 'x86_64')
 url="http://www.simpleitk.org/"
 license=('Apache')
 depends=('insight-toolkit')
-makedepends=('cmake' 'git' 'mono' 'python' 'python-pip' 'python-virtualenv' 'swig' 'tcl' 'tk')
+makedepends=('cmake' 'git' 'java-environment' 'mono' 'python' 'python-pip' 'python-virtualenv' 'r' 'ruby' 'swig' 'tcl' 'tk')
 optdepends=(
+    'java-runtime: Java bindings'
     'mono: C# bindings'
     'python: Python bindings'
+    'r: R bindings'
+    'ruby: Ruby bindings'
     'tcl: Tcl/TK bindings'
     'tk: Tcl/TK bindings'
 )
 source=(
     "https://sourceforge.net/projects/$pkgname/files/$_pkgname/$pkgver/Source/$_pkgname-$pkgver.tar.xz"
     'python-package.patch'
+    'Rlib.patch'
+    "cthead1.png"::"http://midas3.kitware.com/midas/api/rest?method=midas.bitstream.download&checksum=b23198c9e44a48edfd5b83f075eb455c&algorithm=md5"
+    "cthead1-Float.mha"::"http://midas3.kitware.com/midas/api/rest?method=midas.bitstream.download&checksum=25de5707b18c0c684fd5fa30351bf787&algorithm=md5"
 )
 md5sums=('3b759cf21b89e213343ac6a4e616cd45'
-         '1c97647461d932ca2e672606d1687f77')
+         '1c97647461d932ca2e672606d1687f77'
+         '3b6569561ed5047f3232b4f96ae98d74'
+         'b23198c9e44a48edfd5b83f075eb455c'
+         '25de5707b18c0c684fd5fa30351bf787')
 
 prepare() {
     cd "$_pkgname-$pkgver"
 
+    mkdir -p build/ExternalData/Testing/Data/Input/
+
+    cp ../{cthead1.png,cthead1-Float.mha} build/ExternalData/Testing/Data/Input/
+
     patch -Np1 -i ../python-package.patch
+    patch -Np1 -i ../Rlib.patch
 }
 
 build() {
-    cd "$_pkgname-$pkgver"
+    cd "$_pkgname-$pkgver/build"
 
-    mkdir -p build && cd build
-
+    env JAVA_HOME=/usr/lib/jvm/default \
     cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_SKIP_RPATH:BOOL=ON \
@@ -42,7 +55,7 @@ build() {
         -DSimpleITK_PYTHON_WHEEL:BOOL=ON \
         ..
 
-    make all dist.Python
+    make all dist
 }
 
 package() {
@@ -59,4 +72,10 @@ package() {
     install -Dm755 "$_builddir/bin/SimpleITKTclsh" "$pkgdir/usr/bin/SimpleITKTclsh"
     install -Dm755 "$_builddir/Wrapping/CSharpBinaries/libSimpleITKCSharpNative.so" "$pkgdir/usr/lib/libSimpleITKCSharpNative.so"
     install -Dm755 "$_builddir/Wrapping/CSharpBinaries/SimpleITKCSharpManaged.dll" "$pkgdir/usr/lib/SimpleITKCSharpManaged.dll"
+
+    install -d -Dm755 "$pkgdir/usr/lib/R/library/"
+    cp -dr --no-preserve=ownership "$_builddir/Wrapping/Rpackaging/$_pkgname" "$pkgdir/usr/lib/R/library/"
+
+    install -d -Dm755 "$pkgdir/usr/share/java/$_pkgname"
+    cp -d --no-preserve=ownership "$_builddir/Wrapping/dist/$_pkgname-$pkgver-"*"-Java-"*/* "$pkgdir/usr/share/java/$_pkgname/"
 }
