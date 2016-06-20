@@ -1,8 +1,8 @@
 # Maintainer: FadeMind <fademind@gmail.com>
 
 pkgname=papirus-plasma-theme
-_commit=f88f002 # 7 digits
-pkgver=20160603
+_commit=26ae988 # 7 digits
+pkgver=20160617
 pkgrel=1
 pkgdesc="Papirus plasma theme for KDE"
 url="https://github.com/PapirusDevelopmentTeam/${pkgname}"
@@ -22,6 +22,5 @@ pkgver() {
 }
 
 package() {
-    cd ${pkgname}
-    make install DESTDIR="$pkgdir"
+    make -C "${pkgname}" install DESTDIR="$pkgdir"
 }
