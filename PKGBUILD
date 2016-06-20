@@ -1,5 +1,5 @@
 # Maintainer: Marcel Campello Ferreira <marcel.campello.ferreira@gmail.com>
-pkgname=neo4j-community
+pkgname=neo4j2-community
 pkgver=2.3.3
 pkgrel=1
 pkgdesc="A fully transactional graph database implemented in Java"
@@ -8,7 +8,7 @@ url="http://neo4j.org/"
 license=(GPL)
 makedepends=(patch)
 depends=(bash lsof java-runtime-headless)
-conflicts=(neo4j-enterprise)
+conflicts=(neo4j2-enterprise neo4j-community neo4j-enterprise)
 backup=(etc/neo4j/neo4j-http-logging.xml
         etc/neo4j/neo4j-server.properties
         etc/neo4j/neo4j-wrapper.conf

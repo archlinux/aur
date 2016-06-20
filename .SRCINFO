@@ -1,4 +1,4 @@
-pkgbase = neo4j-community
+pkgbase = neo4j2-community
 	pkgdesc = A fully transactional graph database implemented in Java
 	pkgver = 2.3.3
 	pkgrel = 1
@@ -10,6 +10,8 @@ pkgbase = neo4j-community
 	depends = bash
 	depends = lsof
 	depends = java-runtime-headless
+	conflicts = neo4j2-enterprise
+	conflicts = neo4j-community
 	conflicts = neo4j-enterprise
 	options = !strip
 	backup = etc/neo4j/neo4j-http-logging.xml
@@ -29,5 +31,5 @@ pkgbase = neo4j-community
 	sha256sums = ee451a5b4ac3f733ab725bb3babeefc4d852115fe24ee29a3060922716212ad7
 	sha256sums = e9ecbf86072ca92129ab1889b5f91e2494b86e84248bd15a37681a3997892d7d
 
-pkgname = neo4j-community
+pkgname = neo4j2-community
 
