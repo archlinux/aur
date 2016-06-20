@@ -1,7 +1,7 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname="asf"
-pkgver="2.0.5.6"
+pkgver="2.1.0.5"
 pkgrel=1
 pkgdesc="Steam cards farmer."
 arch=('any')

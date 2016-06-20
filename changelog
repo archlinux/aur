@@ -1,3 +1,13 @@
+2016-06-20 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 2.1.0.5:
+    [!] Incompatibility with previous versions of ASF - Bot's database will be converted from old V1 into new V2 format, which means that newly generated Bot's database will not run correctly with previous versions of ASF.
+    [!] Removed support for linking new authenticator and delinking existing ones, effectively removing UseAsfAsMobileAuthenticator Bot config property and !2faoff command.
+    Added support for SteamParental in 2FA sessions. New ASF 2FA uses existing ASF mechanism of SteamParentalPIN to unlock and operate on such accounts, no action is needed.
+    Improved security of ASF 2FA - 2FA module will now only accept confirmations ASF directly creates, and not all of them. !2faok command is not affected and still accepts everything.
+    Many internal optimizations, bugfixes, improvements and general code review of ASF 2FA.
+    [!] Fixed a Steam issue that could lead to ASF not detecting that all cards were dropped already.
+    ASF will now state current status of card drops (aka "X card drops remaining") when farming in solo mode.
+    Massive portion of code improvements, optimizations and bugfixes.
 2016-06-11 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 2.0.5.6:
     Added workaround for Mono bug 41701 affecting Mono runtimes 4.4+.
