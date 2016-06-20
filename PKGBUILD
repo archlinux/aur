@@ -1,6 +1,7 @@
-# Maintainer: Wijnand Modderman-Lenstra <maze@pyth0n.org>
+# Maintainer: Carsten Feuls <archlinux@carstenfeuls.de>
+
 pkgname=linrad
-pkgver=04.06
+pkgver=04.10
 pkgrel=1
 pkgdesc="Software defined radio receiver for x11"
 arch=('i686' 'x86_64')
@@ -13,19 +14,19 @@ provides=('linrad', 'linrad-svga')
 source=(http://www.sm5bsz.com/linuxdsp/archive/lir${pkgver/./-}.tbz
               $pkgname.png
               $pkgname.desktop)
-md5sums=('a3866d9041cb7fe19dc7a4b142cb61cd'
-         '9e25fa8914f415a1d9f6d60801752b6a'
-         '47578a7ca15fb9ab6e931f018c0db0ca')
-sha1sums=('3d71170e8d14aeaef384eb1a63ad6f602aaf9df4'
-          '6a39ed2cb87309c4810acb943ab4de6dc1512708'
-          '517451f795e7ae45a073800fa04367ffec91ebc9')
+sha512sums=('98e986fe61a238d2b9a67f09176ad649129f1d9c740807d49be7cb848c79ec9ced78d57f1ba7ac39a6037efe89afbf6593206d006f1e0443ae496464668ed936'
+            '463d107e1732a35c53d23da32af93e1c18fa2e04d7977a1649ee06ac6a8ea5c11191102e51d124afc033ee038e63fdca2756e42de72b56b567b6b47a7b4e350f'
+            'f89ad218e4e02dd6502397509da443a44a51689078587913898de29d392e32b33348536fab09a23c7964abdc9349b146ef24b699f3d5d9a457a9a5eec4906f16')
+
+prepare() {
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    ./clean
+    autoreconf
+    ./configure --prefix=${pkgdir} --datadir=/usr/share/${pkgname}
+}
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
-    ./clean
-    autoreconf
-    ./configure --prefix=/usr --datadir=/usr/share/$pkgname
-
     if [ "$(uname -m)" = "x86_64" ]; then
         make linrad64
         mv linrad64 linrad
@@ -49,4 +50,5 @@ package(){
     install -Dm644 $pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
     install -Dm644  $pkgname.png $pkgdir/usr/share/pixmaps/$pkgname.png
 }
+
 # vim:set ts=2 sw=2 et:
