@@ -2,8 +2,8 @@
 
 pkgname=firefox-beta-zh-cn
 _pkgname=firefox-beta
-pkgver=48.0b1
-pkgrel=2
+pkgver=48.0b2
+pkgrel=1
 pkgdesc="Chinese Simplified For Firefox Beta"
 arch=('i686' 'x86_64')
 url="https://www.mozilla.org/zh-CN/firefox/channel/#beta"
@@ -18,7 +18,7 @@ makedepends=('pacman>=4.2.0')
 provides=("firefox=$pkgver")
 conflicts=("firefox-beta-bin-zh")
 install=$pkgname.install
-_baseurl="http://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/build$pkgrel/linux-${CARCH}/zh-CN/"
+_baseurl="https://ftp.mozilla.org/pub/firefox/candidates/$pkgver-candidates/build$pkgrel/linux-${CARCH}/zh-CN/"
 _filename="firefox-$pkgver"
 _sha512sum="$(curl -s "${_baseurl}${_filename}.checksums" | grep ".tar.bz2" | grep sha512 | cut -d " " -f1)"
 source=("$pkgname.desktop"
