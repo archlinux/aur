@@ -27,7 +27,7 @@ install=pt.install
 package() {
   cd ${srcdir}/PacketTracer63
 
-  mkdir -p ${pkgdir}usr/share/packettracer/{art,backgrounds,bin,extensions,help,LANGUAGES,lib,saves,sounds,templates}
+  mkdir -p ${pkgdir}/usr/share/packettracer/{art,backgrounds,bin,extensions,help,LANGUAGES,lib,saves,sounds,templates}
 
   cp -r ./art/* ${pkgdir}/usr/share/packettracer/art
   cp -r ./backgrounds/* ${pkgdir}/usr/share/packettracer/backgrounds
