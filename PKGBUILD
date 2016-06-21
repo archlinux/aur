@@ -2,7 +2,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgname="cups-nosystemd"
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="The CUPS Printing System - daemon package"
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ backup=(etc/cups/cupsd.conf
         etc/logrotate.d/cups
 	etc/pam.d/cups)
 	#etc/xinetd.d/cups-lpd)
-source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.bz2
+source=(https://github.com/apple/cups/releases/download/release-${pkgver}/cups-${pkgver}-source.tar.gz
         cups cups.logrotate cups.pam
         # improve build and linking
         cups-no-export-ssllibs.patch
@@ -38,7 +38,7 @@ source=(http://www.cups.org/software/${pkgver}/cups-${pkgver}-source.tar.bz2
 	cups-1.6.0-fix-install-perms.patch
 	cups-1.6.2-statedir.patch
 	)
-md5sums=('62b8fafd590e75f72316915790b0850a'
+md5sums=('9f9bf6e3b9c20a3519b4dc409666d6e7'
          '9657daa21760bb0b5fa3d8b51d5e01a1'
          'fc8286f185e2cc5f7e1f6843bf193e2b'
          '96f82c38f3f540b53f3e5144900acf17'
