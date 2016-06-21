@@ -1,4 +1,5 @@
-# Mantainer:   Thomas Kuther <archlinux@kuther.net>
+# Maintainer:  Marcin Wieczorek <marcin@marcin.co>
+# Contributor: Thomas Kuther <archlinux@kuther.net>
 # Contributor: Gianni Vialetto <gianni at rootcube dot net>
 # Contributor: Paul N. Maxwell <msg dot maxwel at gmail dot com>
 # Contributor: Thomas Mudrunka <harvie@@email..cz>
@@ -6,25 +7,29 @@
 
 pkgbase=apparmor
 pkgname=($pkgbase apparmor-parser apparmor-libapparmor apparmor-utils apparmor-profiles apparmor-pam apparmor-vim)
-pkgver=2.10
+pkgver=2.10.1
 #_majorver=${pkgver%.*}  # bleh, AUR...
 _majorver=2.10
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux application security framework - mandatory access control for programs'
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://wiki.apparmor.net/index.php/Main_Page'
 makedepends=('bzr' 'flex' 'swig' 'perl' 'python' 'perl-locale-gettext' 'perl-rpc-xml' 'audit')
 
-source=("https://launchpad.net/$pkgname/${_majorver}/$pkgver/+download/$pkgname-$pkgver.tar.gz"
+source=(https://launchpad.net/$pkgname/${_majorver}/$pkgver/+download/$pkgname-$pkgver.tar.gz{,.asc}
         "apparmor_load.sh"
         "apparmor_unload.sh"
         "apparmor.service")
 
-sha256sums=('4d0e224257a29671b694bd9054edf0dd213aa690fd02844ecf3329b86ac506f4'
+sha256sums=('07a76f338304baadc4ad69d025fe000b1ab4779a251ae8f338afdc13ef1e0f24'
+            'SKIP'
             'd2fea5a62bacae350cfe56bad1b293c12afe803bec10e546b901324e582e89af'
             '076aebfa815543f85d26215056a921996fbff14d1678ddfa07ab50dbfda94ba1'
             'eea47ec2a3fb0c1104193bed91586cfccda745f2e0a473f6d1d2a0d2fe42c413')
+
+# 3D3664BB: AppArmor Development Team (AppArmor signing key) <apparmor@lists.ubuntu.com>
+validpgpkeys=('3ECDCBA5FB34D254961CC53F6689E64E3D3664BB')
 
 #Configuration
 core_perl_dir='/usr/bin/core_perl'
@@ -52,7 +57,7 @@ prepare() {
   cd "${srcdir}/${pkgbase}-${pkgver}/profiles/apparmor.d"
   # /usr merge vs. profiles
   for i in `find . -name "*sbin*"`; do sed -i -e 's@sbin@bin@g' ${i} && mv ${i} ${i/sbin/bin}; done
-  for i in klogd ping syslog-ng syslogd; do 
+  for i in klogd ping syslog-ng syslogd; do
     sed -e "s@/bin/${i}@/usr/bin/${i}@g" \
         -e "s@bin\.${i}@usr\.bin\.${i}@g" \
         -i bin.${i} && \
@@ -114,7 +119,7 @@ package_apparmor-libapparmor() {
 
 package_apparmor-utils() {
   pkgdesc='AppArmor userspace utilities'
-  depends=('perl' 'perl-locale-gettext' 'perl-term-readkey' 
+  depends=('perl' 'perl-locale-gettext' 'perl-term-readkey'
     'perl-file-tail' 'perl-rpc-xml' 'python' 'bash')
   install='apparmor-utils.install'
 
