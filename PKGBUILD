@@ -3,7 +3,7 @@
 
 _hkgname=hint
 pkgname=haskell-hint
-pkgver=0.5.2
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Runtime Haskell interpreter (GHC API wrapper)"
 url="https://github.com/mvdan/$_hkgname"
