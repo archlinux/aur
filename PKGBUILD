@@ -9,7 +9,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 url="https://github.com/bil-elmoussaoui/${_gitname}"
 depends=('desktop-file-utils' 'gobject-introspection' 'gtk3' 'gnome-screenshot' 'python-gobject' 'python-yaml' 'python-cairo' 'python-pyotp' 'python-zbarlight')
-makedepends=('unzip''gnome-common' 'intltool' 'itstool' 'python' 'yelp-tools')
+makedepends=('unzip' 'gnome-common' 'intltool' 'itstool' 'python' 'yelp-tools')
 
 
 options=('!emptydirs')
