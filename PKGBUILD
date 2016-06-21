@@ -11,11 +11,11 @@ source=("Tangiers_Normal.ttf::http://www.fontsner.com/download/32393")
 md5sums=('27581eea27909741e2411bbf4e26c236')
 install=$pkgname.install
 
-build() {
-	cd $srcdir
-	mkdir -p $pkgdir/usr/share/fonts/TTF
+package() {
+	cd "$srcdir"
+	mkdir -p "$pkgdir/usr/share/fonts/TTF"
 	chmod -x ./*.ttf
-	cp -Lr ./*.ttf $pkgdir/usr/share/fonts/TTF
+	cp -Lr ./*.ttf "$pkgdir/usr/share/fonts/TTF"
 }
 
 # vim:set ts=2 sw=2 et:
