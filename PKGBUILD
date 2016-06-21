@@ -1,8 +1,8 @@
 # Maintainer: Maxim Kraev <maxim.kraev@gmail.com>
 
 pkgname=chef-dk
-pkgver=0.14.25
-pkgrel=2
+pkgver=0.15.15
+pkgrel=1
 _ubuntuver=raring
 _ubunturel=4
 pkgdesc="The Chef Development Kit contains everything you need to start using Chef along with the tools essential to managing the code that runs your business."
@@ -12,7 +12,7 @@ license=('Apache')
 depends=()
 conflicts=( chef chef-solo )
 source=("https://packages.chef.io/stable/ubuntu/12.04/chefdk_${pkgver}-1_amd64.deb")
-sha512sums=('beee927374aafd257d9c25db77743fc414f6f1cdb98d9bb5990a413e4bf86cf8bd52acc081339c4c5933a8f0a68d0ec0973599f6313cc2d0ad1d581f7ff16304')
+sha512sums=('39e71f3924e03e5f1083a5e3d43b387eda4be9a399f4715fc09cbefe61f230d497b097a95b896d4197f73745b30b9ec25acdba2673102def07a1f38310c24c2d')
 
 package() {
   cd "$srcdir"
