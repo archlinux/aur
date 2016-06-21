@@ -5,7 +5,7 @@
 pkgname=perl-unicode-string
 _realname=Unicode-String
 pkgver=2.09
-pkgrel=9
+pkgrel=10
 pkgdesc="String of Unicode characters for perl (UCS2/UTF16)"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
 license=('PerlArtistic')
