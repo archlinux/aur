@@ -4,7 +4,7 @@
 
 _pkgname='utop'
 pkgname="ocaml-${_pkgname}"
-pkgver=1.18.2
+pkgver=1.19.2
 pkgrel=1
 pkgdesc='A toplevel for OCaml that supports completion, colors, and parenthesis matching'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('BSD')
 depends=('ocaml' 'cppo' 'ocaml-lambda-term' 'ocaml-lwt' 'ocaml-findlib' 'ocaml-react' 'camlp4')
 source=("https://github.com/diml/utop/archive/${pkgver}.tar.gz")
 options=('!strip')
-md5sums=('f2e548251fa888df8fbbd4921d3bf465')
+md5sums=('0f65ab4a47cb200da4491e5866a53e4e')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
