@@ -6,7 +6,7 @@ diff -aur ngs-1.2.3.pristine/Makefile ngs-1.2.3.new/Makefile
  	ngs-sdk \
  	ngs-java \
 -	ngs-python \
- 	ngs-bam
+
  
  SUBDIRS_CLN = \
 diff -aur ngs-1.2.3.pristine/ngs-bam/setup/install.perl ngs-1.2.3.new/ngs-bam/setup/install.perl

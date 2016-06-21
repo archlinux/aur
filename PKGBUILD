@@ -2,7 +2,7 @@
 # Maintainer: Aaron Baker <aa{last name}99{at}gmail{dt}org>
 
 pkgname=ngs
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc="A new, domain-specific API for accessing reads, alignments and pileups produced from Next Generation Sequencing."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('java-environment' 'perl-file-copy-recursive' 'zlib')
 provides=('ngs')
 license=('custom:PublicDomain')
 source=("https://github.com/ncbi/ngs/archive/$pkgver.tar.gz" "$pkgname.patch")
-sha256sums=('625ec04737dea787f3800744f1d5fddb4d83b21013c281bcbc8691149b230794' '9e4356666dbe7fc01dfcfaad914b108777164c464a77776742fae78da369a352')
+sha256sums=('6c7a2a2e3659c46a511f9c16f29fde413b388aa0dc5b15324dc631bddd49ee86' 'e40cb6963e3dc07fcd66ed35730193c6f1a448d8a446d243038f7ebbd62f739f')
 
 prepare(){
   cd "${pkgname}-${pkgver}"
@@ -24,11 +24,6 @@ build(){
   cd "${pkgname}-${pkgver}"
   ./configure --prefix="$pkgdir/usr/"
   cd "ngs-java"
-  ./configure --prefix="$pkgdir/usr/"
-  cd ".."
-  make || echo "hack: cannot configure ngs-bam until the rest is compiled; but make fails because ngs-bam is not configured"
-
-  cd "ngs-bam"
   ./configure --prefix="$pkgdir/usr/"
   cd ".."
   make
