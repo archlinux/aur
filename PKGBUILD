@@ -3,15 +3,18 @@ pkgname=adapta-gtk-theme
 _gtk3_min='3.18'
 _gtk3_max='3.21'
 _theme_name=Adapta
-pkgver="${_gtk3_max}.3.1"
+_gtk2_min='2.24.30'
+pkgver="${_gtk3_max}.3.6"
 pkgrel=1
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
 url="https://github.com/tista500/${_theme_name}"
 license=('GPL2' 'CCPL')
-depends=('gtk2>=2.24.29'
+depends=("gtk2>=${_gtk2_min}"
          "gtk3>=${_gtk3_min}"
-         "gtk3<=${_gtk3_max}.99")
+         "gtk3<=${_gtk3_max}.99"
+         'gtk-engines>=2.21.0'
+         'gtk-engine-murrine>=0.98.2')
 optdepends=("gnome-shell>=${_gtk3_min}: The GNOME Shell"
             "gnome-flashback>=${_gtk3_min}: The GNOME flashback shell"
             'budgie-desktop>=10.2.4: The Budgie desktop'
@@ -28,7 +31,7 @@ makedepends=('glib2>=2.48.0'
 _tri_fadeno="tri-fadeno.jpg"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${pkgver}-${_tri_fadeno}::${url}/raw/master/.github/img/${_tri_fadeno}")
-sha256sums=('b2b16a81d06790c1927573f9f60a069c1ae918933ef9ce4ccf5fe09890bba1c5'
+sha256sums=('2ae1388ce6d75ff48b030bb7ba54fd38d526186229b2f8703a7071b8f9fda221'
             '807bd3d99fb492569caf050cfa9b5c75d4e6a072007637fe8e583a3f5c0bea24')
 
 build() {
