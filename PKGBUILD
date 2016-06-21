@@ -1,6 +1,6 @@
 # Maintainer: Baptiste Jonglez <baptiste--aur at jonglez dot org>
 pkgname=ring-gnome-git
-pkgver=20160426
+pkgver=20160620
 pkgrel=1
 pkgdesc="The GNOME client for Ring (formerly known as SFLphone)"
 arch=("i686" "x86_64")
@@ -27,7 +27,10 @@ build() {
   msg2 'Building...'
   mkdir -p build
   cd build
-  cmake .. -DCMAKE_INSTALL_PREFIX=/usr
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DUSE_APPINDICATOR=off
   make
 }
 
