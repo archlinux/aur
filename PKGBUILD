@@ -5,7 +5,7 @@ _npmname=azure-cli
 _npmver=0.10.1
 pkgname=nodejs-${_npmname} # All lowercase
 pkgver=${_npmver}
-pkgrel=1
+pkgrel=2
 pkgdesc="Windows Azure Cross Platform Command Line tool"
 arch=(any)
 url="https://github.com/Azure/azure-xplat-cli"
@@ -19,9 +19,13 @@ md5sums=('b398a2f5804ed6297cf516acac569dc4')
 package() {
   cd $srcdir
   local _npmdir="$pkgdir/usr/lib/node_modules/"
-  mkdir -p $_npmdir
-  cd $_npmdir
+  mkdir -p "$_npmdir"
+  cd "$_npmdir"
   npm install -g --prefix "$pkgdir/usr" $_npmname@$_npmver
+  cd $srcdir
+  mkdir -p "$pkgdir/usr/share/bash-completion/completions"
+  "$pkgdir/usr/bin/azure" --completion > ./bash.completion
+  install -D -m644 ./bash.completion "$pkgdir/usr/share/bash-completion/completions/$_npmname"
 }
 
 # vim:set ts=2 sw=2 et:
