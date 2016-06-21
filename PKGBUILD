@@ -2,25 +2,38 @@
 
 pkgname=timekpr
 pkgver=0.3.2
-pkgrel=11
-pkgdesc="Control the computer usage of your user accounts. You can limit their daily usage based on a timed access duration and configure periods of day when they can log in."
+pkgrel=12
+pkgdesc="Control the computer usage of your users. You can limit daily usage based on a timed access duration and configure periods of day when they can log in."
 arch=('i686' 'x86_64')
 url=https://launchpad.net/timekpr
 license=('GPL')
 depends=('python2')
-source=(http://launchpad.net/$pkgname/trunk/$pkgver/+download/${pkgname}_${pkgver}~ppa1~ubuntu2.tar.gz
-	timekpr.service
-	Initializes_lastNotified_before_it_is_used.patch)
+optdepends=('gksu: run with root privileges'
+            'kdesu: run with root privileges'
+            'kdesudo: run with root privileges')
+source=("http://launchpad.net/$pkgname/trunk/$pkgver/+download/${pkgname}_${pkgver}~ppa1~ubuntu2.tar.gz"
+	"timekpr.service"
+	"Initializes_lastNotified_before_it_is_used.patch")
 backup=('etc/timekpr.conf')
 install='timekpr.install'
 md5sums=('0626ee6b6b6d218dfdd6e79331f789a2'
          '9e88ee02b5b8cb6b5e0730e3847c4217'
          '23848ef2578571d7dc4871fbd15f41ed')
 
-build() {
+prepare() {
 	cd "$srcdir"/stable/gui/client
 	# https://bugs.launchpad.net/timekpr/+bug/761647
 	patch -p1 < "$srcdir"/Initializes_lastNotified_before_it_is_used.patch
+
+	for su_cmd in "/usr/bin/kdesudo" "/usr/bin/kdesu"
+	do
+		if [ -f $su_cmd ];
+		then
+			# Prefer KDE su over GTK one:
+			sed -i "s#gksu#$su_cmd#" "$srcdir/stable/debian/timekpr.desktop"
+			break
+		fi
+	done
 }
 
 package() {
