@@ -2,32 +2,30 @@
 
 _pkgname=fb-adb
 pkgname=$_pkgname-git
-pkgver=20160514.r338.5e970a4
+pkgver=20160606.r344.84abb4d
 pkgrel=1
 pkgdesc='A better shell to use in place of adb when connecting to Android devices'
 url='https://github.com/facebook/fb-adb'
 license=('GPL3')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 depends=('android-tools')
 makedepends=('git' 'vim' 'android-sdk-build-tools')
 options=('!strip' '!buildflags')
 source=("git+$url.git")
 sha512sums=('SKIP')
 sha512sums=('SKIP')
-_ndkver=10e
+_ndkver=12
 _sdkver=24.4.1
 
-[[ -z "$ANDROID_NDK" ]] && {
-  source_i686+=("android-ndk-r$_ndkver-linux-i686.bin::http://dl.google.com/android/ndk/android-ndk-r$_ndkver-linux-x86.bin")
-  source_x86_64+=("http://dl.google.com/android/ndk/android-ndk-r$_ndkver-linux-$CARCH.bin")
-  sha512sums_i686+=('8d66229f6f07d6fba00650a96267c3c4a8308d296d9f13aa359af34ad49f57ba3a02e39f14d2b04609816e5f28ed939e71024043a0f08dc3711895a42e39f771')
-  sha512sums_x86_64+=('b2ba10d7757ed7189b4e6dc2ecd38fce0c32dc6701151542b9e225e890faee84dded30dd4e907b0e42473e2a6df8ef4d46f37514edc270a04e1129d9c9e677fa')
-}
+if [[ -z "$ANDROID_NDK" ]]; then
+  source_x86_64+=("http://dl.google.com/android/repository/android-ndk-r$_ndkver-linux-x86_64.zip")
+  sha512sums_x86_64+=('1c47dcdc2c4ae1c0e5dd5c1ac349e043fa186f238c9cbfed567dcc9deb0b1d597c985611303f688f7c561144c26cdc9e471fb20c5447cd799ec883ba63aa2472')
+fi
 
-[[ -z "$ANDROID_SDK" ]] && {
+if [[ -z "$ANDROID_SDK" ]]; then
   source+=("https://dl.google.com/android/android-sdk_r$_sdkver-linux.tgz")
   sha512sums+=('96fb71d78a8c2833afeba6df617edcd6cc4e37ecd0c3bec38c39e78204ed3c2bd54b138a56086bf5ccd95e372e3c36e72c1550c13df8232ec19537da93049284')
-}
+fi
 
 pkgver() {
   cd $_pkgname
@@ -35,19 +33,21 @@ pkgver() {
 }
 
 prepare() {
-  [[ -z "$ANDROID_SDK" ]] && {
+  if [[ -z "$ANDROID_SDK" ]]; then
     cd android-sdk-linux
     ln -sf /opt/android-sdk/build-tools build-tools
-    printf '%s\n' 'y' | ./tools/android update sdk --no-ui
-  }
+    (while :; do printf '%s\n' 'y'; sleep 2; done) | ./tools/android update sdk --no-ui
+  fi
 }
 
 build() {
-  [[ -z "$ANDROID_NDK" ]] \
-    && export ANDROID_NDK="$srcdir/android-ndk-r$_ndkver"
+  if [[ -z "$ANDROID_NDK" ]]; then
+    export ANDROID_NDK="$srcdir/android-ndk-r$_ndkver"
+  fi
 
-  [[ -z "$ANDROID_SDK" ]] \
-    && export ANDROID_SDK="$srcdir/android-sdk-linux"
+  if [[ -z "$ANDROID_SDK" ]]; then
+    export ANDROID_SDK="$srcdir/android-sdk-linux"
+  fi
 
   # configure
   cd $_pkgname
