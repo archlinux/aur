@@ -1,11 +1,5 @@
-info_dir=/usr/share/info
-info_files=('vice.info')
-
 post_install() {
-    for f in ${info_files[@]}; do
-        install-info ${info_dir}/$f.gz ${info_dir}/dir 2> /dev/null
-    done
-    fc-cache
+  fc-cache
 }
 
 post_upgrade() {
@@ -13,8 +7,5 @@ post_upgrade() {
 }
 
 pre_remove() {
-    for f in ${info_files[@]}; do
-        install-info --delete ${info_dir}/$f.gz ${info_dir}/dir 2> /dev/null
-    done
-    fc-cache
+  post_install
 }
