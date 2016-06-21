@@ -1,7 +1,7 @@
 pkgbase = firefox-gtk2
 	pkgdesc = Standalone web browser from mozilla.org
 	pkgver = 47.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.mozilla.org/firefox/
 	arch = i686
 	arch = x86_64
@@ -37,7 +37,7 @@ pkgbase = firefox-gtk2
 	depends = icu
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = upower: Battery API
-	provides = firefox=47.0-1
+	provides = firefox=47.0-2
 	conflicts = firefox
 	options = !emptydirs
 	options = !makeflags
