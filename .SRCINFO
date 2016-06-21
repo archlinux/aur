@@ -1,0 +1,15 @@
+pkgbase = php56-twig
+	pkgdesc = PHP Twig extension.
+	pkgver = 1.24.1
+	pkgrel = 1
+	url = http://github.com/twigphp/Twig
+	arch = any
+	license = BSD
+	makedepends = php56
+	depends = php56
+	backup = etc/php56/conf.d/twig.ini
+	source = https://github.com/twigphp/Twig/tarball/v1.24.1
+	md5sums = db94a7202f268c26efb2721cda984d95
+
+pkgname = php56-twig
+
