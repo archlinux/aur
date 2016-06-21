@@ -8,6 +8,7 @@ pkgbase = zinc
 	depends = java-environment
 	provides = zinc
 	conflicts = zinc-git
+	options = !strip
 	source = http://downloads.typesafe.com/zinc/0.3.9/zinc-0.3.9.tgz
 	source = zincer.sh
 	source = zincer.service

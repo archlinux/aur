@@ -18,6 +18,7 @@ md5sums=(
     'SKIP'
     'SKIP'
 )
+options=('!strip')
 
 # 1.
 prepare() {
