@@ -1,6 +1,6 @@
 pkgbase = openwsman
 	pkgdesc = Opensource Implementation of WS-Management
-	pkgver = 2.6.2
+	pkgver = 2.6.3
 	pkgrel = 1
 	url = https://openwsman.github.io/
 	arch = i686
@@ -21,8 +21,8 @@ pkgbase = openwsman
 	backup = etc/openwsman/openwsman_client.conf
 	backup = etc/openwsman/ssleay.cnf
 	backup = etc/pam.d/openwsman
-	source = openwsman-2.6.2.tar.gz::https://github.com/Openwsman/openwsman/archive/v2.6.2.tar.gz
-	md5sums = 221163800046cca5ddb38868d3f82d7e
+	source = openwsman-2.6.3.tar.gz::https://github.com/Openwsman/openwsman/archive/v2.6.3.tar.gz
+	md5sums = a14cec2a892a30e055edac36071d8972
 
 pkgname = openwsman
 
