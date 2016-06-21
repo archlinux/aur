@@ -1,7 +1,7 @@
 pkgdesc='App Container Server'
 pkgname=acserver
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 url="https://github.com/appc/$pkgname"
 source=(
     "git+$url.git"
@@ -12,6 +12,7 @@ md5sums=(
     'SKIP'
 )
 makedepends=('git' 'go')
+options=('!strip')
 arch=('i686' 'x86_64')
 license=('Apache')
 
