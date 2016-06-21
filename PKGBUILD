@@ -12,7 +12,7 @@ source=("Lightfoot.zip::http://www.fontstock.net/download/download.ashx?d=317207
 md5sums=('156dc4742da480f262dbc631429baa9f'
          '028d66e0970500f1bdc6e52b446ab0ec')
 
-build() {
+package() {
 	mkdir -p $pkgdir/usr/share/fonts/TTF
 	cd $srcdir
 	cp -r ./*/*.ttf $pkgdir/usr/share/fonts/TTF/
