@@ -22,9 +22,6 @@ conflicts=('v8')
 build() {
   cd v8-$pkgver
 
-  # Fetch gyp
-  make dependencies
-
   # The world isn't ready for python2
   export PYTHON=python2
   find build/ test/ tools/ src/ -type f \
@@ -37,7 +34,7 @@ build() {
   # -Werror causes errors with newer versions of GCC
   sed -i 's/-Werror//' build/standalone.gypi build/common.gypi
 
-  make $ARCH.release library=shared console=readline
+  make $ARCH.release library=shared console=readline snapshot=off
 }
 
 package() {
