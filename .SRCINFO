@@ -21,14 +21,7 @@ pkgbase = bitdefender
 	depends = glib2
 	depends = libxinerama
 	depends = libsm
-	source = http://download.bitdefender.com/repos/rpm/bitdefender/i586/bitdefender-scanner-7.6-3.i586.rpm
-	source = http://download.bitdefender.com/repos/rpm/bitdefender/i586/bitdefender-scanner-gui-1.0-3.i586.rpm
 	source = bitdefender.sh
 	source = bitdefender.conf
-	md5sums = 9d90c7b4133ae6648e4371f4e92d7853
-	md5sums = d7812ffcc01137a41d738170a28be8a1
-	md5sums = f74775c74b44ceabafcc0dbab0ff2318
-	md5sums = 6df89a673aec1ad103745da47c50dc46
-
 pkgname = bitdefender
 
