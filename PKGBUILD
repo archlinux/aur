@@ -1,7 +1,7 @@
 # Maintainer: Alexandr Boiko <brdcom@ya.ru>
 pkgname=accel-ppp-git
-pkgver=r1350.d682a0a
-pkgrel=1
+pkgver=r1361.2d10076
+pkgrel=2
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
@@ -60,7 +60,7 @@ build() {
 		-DLOG_PGSQL=FALSE \
 		-DSHAPER=TRUE \
 		-DRADIUS=TRUE \
-		-DNETSNMP=TRUE \
+		-DNETSNMP=FALSE \
 		-DLUA=TRUE \
 		-DLUA_INCLUDE_DIR="/usr/include/lua5.1" \
         "$srcdir/${pkgname%-git}"
