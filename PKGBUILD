@@ -2,7 +2,7 @@
 ## Maintainer: B.H. <es_vinux@vinuxproject.org>
 pkgname=lpclic
 _pkgname=lpclic
-pkgver=0.4.0.3
+pkgver=0.4.0.4
 pkgrel=1
 pkgdesc="Optimizes the command history for the linphonec CLI for linphone"
 arch=('any')
