@@ -1,7 +1,7 @@
 pkgbase = ipt_netflow-git
 	pkgdesc = Netflow capture module for iptables (netfilter). GIT version.
 	pkgver = r310.fc4f5f3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/aabc/ipt-netflow
 	install = ipt_netflow.install
 	arch = i686
