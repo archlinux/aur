@@ -1,13 +1,14 @@
 pkgbase = acpush
 	pkgdesc = App Container Server Push Command
 	pkgver = 0.0.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/appc/acpush
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = git
 	makedepends = go
+	options = !strip
 	source = git+https://github.com/appc/acpush.git
 	md5sums = SKIP
 

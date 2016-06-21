@@ -1,10 +1,11 @@
 pkgdesc='App Container Server Push Command'
 pkgname=acpush
 pkgver=0.0.0 # TODO pending release
-pkgrel=4
+pkgrel=5
 url="https://github.com/appc/$pkgname"
 source=("git+${url}.git")
 makedepends=('git' 'go')
+options=('!strip')
 arch=('i686' 'x86_64')
 md5sums=('SKIP')
 license=('Apache')
