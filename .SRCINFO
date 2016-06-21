@@ -1,6 +1,6 @@
 pkgbase = snap-confine
 	pkgdesc = Confinement system for snap applications
-	pkgver = 1.0.32
+	pkgver = 1.0.33
 	pkgrel = 1
 	url = git://github.com/snapcore/snap-confine
 	arch = i686
@@ -10,8 +10,8 @@ pkgbase = snap-confine
 	makedepends = shellcheck
 	depends = glibc
 	depends = bash
-	source = https://github.com/snapcore/snap-confine/releases/download/1.0.32/snap-confine-1.0.32.tar.gz
-	md5sums = 9f75a54de6f91496ee29951a18ec4b3d
+	source = https://github.com/snapcore/snap-confine/releases/download/1.0.33/snap-confine-1.0.33.tar.gz
+	md5sums = 27c870922ba78b4902b2d9a66187433e
 
 pkgname = snap-confine
 
