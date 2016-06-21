@@ -1,0 +1,14 @@
+pkgbase = cloudget
+	pkgdesc = A python script to bypass cloudflare from command line built upon cfscrape module
+	pkgver = 0.72
+	pkgrel = 1
+	url = https://github.com/eudemonics/cloudget
+	arch = x86_64
+	license = unknown
+	depends = python2-beautifulsoup4
+	depends = cfscrape
+	source = https://raw.githubusercontent.com/eudemonics/cloudget/master/cloudget.py
+	sha256sums = c3d00412b9217d81deb9d35b56d02abec5566ad3489c0cbde85567a4be133a53
+
+pkgname = cloudget
+
