@@ -2,7 +2,7 @@
 # Maintainer: Aaron Baker <aa{last name}99{at}gmail{dt}org>
 
 pkgname=ncbi-vdb
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="The SRA Toolkit and SDK from NCBI is a collection of tools and libraries for using data in the INSDC Sequence Read Archives."
 arch=('x86_64')
@@ -10,13 +10,14 @@ url="https://github.com/ncbi/ncbi-vdb"
 depends=('libxml2' 'ngs' 'hdf5')
 provides=('ncbi-vdb')
 license=('custom:PublicDomain')
-source=("https://github.com/ncbi/ncbi-vdb/archive/$pkgver.tar.gz" "$pkgname-$pkgver.patch")
-sha256sums=('c310edacd1a4f98a5cfab702f3eede98977ef64831f002fddd7728ed7e2034f4' '4062cc8018e26192eaaff6d27205a3854e223f2e9c75b2d935a283bf85e1f99c')
+source=("https://github.com/ncbi/ncbi-vdb/archive/$pkgver.tar.gz" "$pkgname.patch")
+sha256sums=('49bb251207b22d3136129f7f718985e0a9acb2e08d382d52e3ab7400544202a6' 'db379579bae63b67d1a58ead406e39123374d6f5ff195a7ab41bb4e10d6f98fb')
 
 prepare(){
   cd "${pkgname}-${pkgver}"
-  # stop NCBI root checks for great good
-  patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
+  # ncbi build process frequently checks if we are root user which interferes 
+  #   with makepkg use of fakeroot
+  patch -p1 -i $srcdir/$pkgname.patch 
 }
 
 build(){

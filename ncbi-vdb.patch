@@ -1,0 +1,16 @@
+diff -aur ncbi-vdb-2.6.3.pristine/build/Makefile.install ncbi-vdb-2.6.3.new/build/Makefile.install
+--- ncbi-vdb-2.6.3.pristine/build/Makefile.install	2016-06-21 18:44:24.984945996 +0000
++++ ncbi-vdb-2.6.3.new/build/Makefile.install	2016-06-21 18:44:47.754945183 +0000
+@@ -66,11 +66,7 @@
+ PROFILE_FILE = $(ROOT)/etc/profile.d/ncbi-vdb
+ KONFIG_DIR = $(ROOT)/etc/ncbi/
+ 
+-ifeq (linux, $(OS))
+-    ifeq (0, $(shell id -u))
+-        LINUX_ROOT = true
+-    endif
+-endif
++LINUX_ROOT = false
+ 
+ install: copylibs copyincludes 
+ ifeq (true, $(LINUX_ROOT))
