@@ -2,7 +2,7 @@
 
 pkgname=nextcloud-daily
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Daily build -- A safe home for all your data. Secure, under your control and developed in an open, transparent and trustworthy way"
 url="https://nextcloud.com"
 arch=('any')
@@ -41,6 +41,11 @@ package() {
 
   mkdir -p "${pkgdir}/usr/share/webapps"
   cp -a nextcloud "${pkgdir}/usr/share/webapps/."
+
+  find ${pkgdir}/usr/share/webapps/nextcloud/ -type f -print0 | xargs -0 chmod 0640
+  find ${pkgdir}/usr/share/webapps/nextcloud/ -type d -print0 | xargs -0 chmod 0750
+  chmod 0664 "${pkgdir}/usr/share/webapps/nextcloud/.user.ini"
+  chmod 0664 "${pkgdir}/usr/share/webapps/nextcloud/.htaccess"
  
   install -D -m755 "${srcdir}/set-nc-perms.sh" "${pkgdir}/usr/bin/set-nc-perms"
   install -m644 -D "${srcdir}/apache.example.conf" -t "${pkgdir}/etc/webapps/nextcloud"
