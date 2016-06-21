@@ -1,7 +1,7 @@
 pkgbase = zplug
 	pkgdesc = A next-generation plugin manager for zsh
 	pkgver = 2.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://zplug.sh
 	install = zplug.install
 	arch = any

@@ -1,7 +1,7 @@
 # Maintainer: Bryn Edwards <bryn at openmailbox dot org>
 pkgname=zplug
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A next-generation plugin manager for zsh"
 arch=('any')
 url="http://zplug.sh"
@@ -15,7 +15,7 @@ install='zplug.install'
 package() {
     cd $srcdir/$pkgname-$pkgver/
     mkdir -p $pkgdir/usr/share/zsh/scripts/$pkgname/
-    cp -R ./{autoload,base,init.zsh,misc,zplug} $pkgdir/usr/share/zsh/scripts/$pkgname/
+    cp -R ./{autoload,base,bin,init.zsh,misc,zplug} $pkgdir/usr/share/zsh/scripts/$pkgname/
 
     mkdir -p $pkgdir/usr/share/man
     cp -R ./doc/man/* $pkgdir/usr/share/man/
