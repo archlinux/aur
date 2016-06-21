@@ -1,7 +1,7 @@
 pkgdesc="App Container Image Build Command"
 pkgname=acbuild
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://github.com/appc/acbuild"
 source=(
@@ -9,6 +9,7 @@ source=(
 )
 md5sums=('SKIP')
 makedepends=('git' 'go')
+options=('!strip')
 optdepends=(
     'gnupg: required to sign container images'
 )
