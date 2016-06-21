@@ -12,7 +12,7 @@ source=("http://www.fontsaddict.com/download/enochian-plain.ttf")
 md5sums=('bec37d31ac381a1ecda9975711503237')
 install=$pkgname.install
 
-build() {
+package() {
 	install -Dm644 "$srcdir/enochian-plain.ttf" "$pkgdir/usr/share/fonts/TTF/enochian-plain.ttf"
 }
 
