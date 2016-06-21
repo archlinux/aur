@@ -6,7 +6,7 @@ pkgdesc='A python script to bypass cloudflare from command line built upon cfscr
 arch=('x86_64')
 url='https://github.com/eudemonics/cloudget'
 license=('unknown')
-depends=('python2-beautifulsoup4' 'cfscrape')
+depends=('python2' 'python2-beautifulsoup4' 'python2-cfscrape')
 source=('https://raw.githubusercontent.com/eudemonics/cloudget/master/cloudget.py')
 sha256sums=('c3d00412b9217d81deb9d35b56d02abec5566ad3489c0cbde85567a4be133a53')
 
