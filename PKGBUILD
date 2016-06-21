@@ -4,7 +4,7 @@
 _npmname=brunch
 pkgname=nodejs-$_npmname
 pkgver=2.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight approach to building HTML5 applications with emphasis on elegance and simplicity."
 arch=('any')
 url="http://brunch.io/"
@@ -16,7 +16,7 @@ source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz
         'LICENSE')
 noextract=($_npmname-$pkgver.tgz)
 sha1sums=('a79983cbec22ba17af4fb91e70907b8748bead8e'
-          'f77cebcadce4e7669b28a8f7dd9b002fdfe43299')
+          'c9085a362f482eb4d820575f2b713a1183465d94')
 
 package() {
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
