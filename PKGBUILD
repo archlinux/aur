@@ -2,10 +2,10 @@
 
 pkgname=ocaml-taglib
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 license=('LGPL2.1')
 arch=('i686' 'x86_64')
-pkgdesc=("OCaml bindings to taglib")
+pkgdesc="OCaml bindings to taglib"
 url="https://github.com/savonet/ocaml-taglib"
 depends=('ocaml' 'taglib')
 makedepends=('ocaml-findlib')
