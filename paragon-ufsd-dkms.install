@@ -1,0 +1,22 @@
+post_install() {
+	dkms install -m paragon-ufsd/${1%%-*}
+
+	depmod -a &> /dev/null
+	modprobe ufsd &> /dev/null
+}
+
+pre_upgrade() {
+	pre_remove ${2}
+}
+
+post_upgrade() {
+	post_install ${1}
+}
+
+pre_remove() {
+	rmmod ufsd &> /dev/null
+
+	dkms remove -m paragon-ufsd/${1%%-*} --all
+
+	depmod -a &> /dev/null
+}

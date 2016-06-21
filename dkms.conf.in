@@ -1,0 +1,8 @@
+PACKAGE_NAME="paragon-ufsd"
+PACKAGE_VERSION="@PACKAGE_VERSION@"
+AUTOINSTALL="yes"
+MAKE="./configure --with-kb-dir=$kernel_source_dir --with-kernelversion=$kernelver && make driver"
+BUILT_MODULE_NAME[0]="ufsd"
+BUILT_MODULE_NAME[1]="jnl"
+DEST_MODULE_LOCATION[0]="/kernel/fs/ufsd"
+DEST_MODULE_LOCATION[1]="/kernel/fs/ufsd"
