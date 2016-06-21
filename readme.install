@@ -58,7 +58,7 @@ post_remove() {
 }
 
 pre_install() {
-	if [ -f /usr/lib/systemd/system/xbmc.service]; then
+	if [ -f /usr/lib/systemd/system/xbmc.service ]; then
 		/usr/bin/systemctl status xbmc.service &>/dev/null
 		if [[ $? -eq 0 ]]; then
 			# xbmc is running via this service
@@ -70,7 +70,7 @@ pre_install() {
 		/bin/true
 	fi
 
-	if [ -f /usr/lib/systemd/system/kodi.service]; then
+	if [ -f /usr/lib/systemd/system/kodi.service ]; then
 		/usr/bin/systemctl status kodi.service &>/dev/null
 		if [[ $? -eq 0 ]]; then
 			# kodi is running via this service
