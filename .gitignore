@@ -1,0 +1,4 @@
+pkg
+src
+ghc7.10-7.10.*-*-*.pkg.tar.xz
+ghc-7.10.*-src.tar.xz
