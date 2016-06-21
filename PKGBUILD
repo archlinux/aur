@@ -1,6 +1,6 @@
 pkgbase=swift-development
 pkgname=(swift-development swift-lldb-development)
-_swiftver=DEVELOPMENT-SNAPSHOT-2016-06-06-a
+_swiftver=DEVELOPMENT-SNAPSHOT-2016-06-20-a
 pkgver=${_swiftver//-/.}
 pkgrel=1
 pkgdesc="The Swift programming language and debugger - latest development snapshot"
@@ -24,16 +24,16 @@ source=(
     "swift-integration-tests-${_swiftver}.tar.gz::https://github.com/apple/swift-integration-tests/archive/swift-${_swiftver}.tar.gz"
     "swift-sphinx2.patch" "pod2man_release.patch"
 )
-sha256sums=('3f7d217ca2f36bfe730e00d3ca2a8c63228c9ddc89204540bbdb8742e1a63c72'
-            'dab946e2bbf97e9667e2ac84cbbb4aba1eb4ae617eaa32f6f96f8d4bbb2ff698'
-            '2537fce8af3d45846fd0ee016ce29a6a3c6198999a8393ddb0554ba1ec460d4a'
-            'b244f767c4764d8ed82b59723148e198e30985f26f9f57f7c01dc1e09b88d4b5'
-            '036e17bbab5f198d6106b72f03c38d4727015d4678690f1f77010df20b57d39b'
-            'e10173a95cf1ea3601d82838feb852413814473a963f1bfa63f593e909dc0186'
-            '78ed41acc5e5c5528d547599f7614acaa01b23637ac097e3010a90fec1c47368'
-            '50393861c1700f12f83228193098c987f8b647755b5682f9a16f5db428f88a32'
-            '8a716b5c16f02b225ec0f3e1624f13a07f26452972cfc66a3e77cb8469d96895'
-            '861d5d3c48a989f4776e234d2e8fc6b7e78cfe2731252bec9cb00d94a0e29d62'
+sha256sums=('c6955802307395f97abebf7a1e206999394e940900ebb6ec602f085722140f2d'
+            'e7b6118869ab5c58730fc88c7971cdbfd908b2ab6754d16a0d9ea27c52fa7a6f'
+            'dbeb97a9b2543b921aadf23930005f30fe727e3e73c1df48177c8d5df19f9b1b'
+            'bb60bbbee0609453c0f5b21fdfc902b10c20f3d13d4921baa283403c34e0d642'
+            'fd58632c893e1f493f88664d4bcb08029edf39024b15bfdb17a22ed5e4230d58'
+            '793c2355dfce50a02d888ae40095ecdb29b12c66e02a9fb225226ba7f6fef812'
+            'd35ab5a671f21d7179c56ae07ce0e8e96d030445a0cc8ec65457a850e1ebd57e'
+            'beb32972e5f5f53b1d6069b46e10146932792ac6275f26308660624173d8324b'
+            '16a593b8bf918e379338c51d6856316c384ed401def2284008a7a28de173dbc9'
+            '9c3a782da48bd2bcac4ca104c05445a083a85c256c94fe784075f5fc9432feb0'
             '93bbe769666aab15b15d12e2423f213b39d6c47237eafc781569698c8367535f'
             'f09977247fa2fcfa306b491523146c8772b38fa007cc1530f4169413fe7c7f3a')
 
