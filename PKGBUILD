@@ -44,8 +44,8 @@ package() {
   mkdir -p "${pkgdir}/usr/share/webapps"
   cp -a nextcloud "${pkgdir}/usr/share/webapps/."
   
-  find ${pkgdir}/usr/share/webapps/ -type f -print0 | xargs -0 chmod 0640
-  find ${pkgdir}/usr/share/webapps/ -type d -print0 | xargs -0 chmod 0750
+  find ${pkgdir}/usr/share/webapps/nextcloud/ -type f -print0 | xargs -0 chmod 0640
+  find ${pkgdir}/usr/share/webapps/nextcloud/ -type d -print0 | xargs -0 chmod 0750
  
   install -D -m755 "${srcdir}/set-nc-perms.sh" "${pkgdir}/usr/bin/set-nc-perms"
   install -m644 -D "${srcdir}/apache.example.conf" -t "${pkgdir}/etc/webapps/nextcloud"
