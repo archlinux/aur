@@ -8,5 +8,5 @@
 
 export LD_LIBRARY_PATH="/usr/share/packettracer/lib"
 
-exec /usr/share/packettracer/bin/PacketTracer6 "$@"
+exec /usr/share/packettracer/bin/PacketTracer7 "$@"
 

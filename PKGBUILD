@@ -6,8 +6,8 @@
 # Contributor: z3ntu <WEI16416@spengergasse.at>
 
 pkgname=packettracer
-pkgver=6.3
-pkgrel=2
+pkgver=7.0
+pkgrel=1
 pkgdesc="Network design and emulation software for Cisco's Networking Academy instructors and students."
 arch=( 'i686' 'x86_64' )
 depends_x86_64=('lib32-openssl' 'lib32-qt4' 'lib32-libpng') && makedepends_x86_64=('gcc-multilib')
@@ -15,9 +15,14 @@ depends_i686=('qtwebkit' 'libpng')
 url="http://www.netacad.com/about-networking-academy/packet-tracer"
 license=('custom')
 
-source=( 'http://PacketTracer63_linux.tar.gz' 'packettracer' 'linguist' 'packettracer.sh')
-sha512sums=('f9c8f5d661d7b812f53e83d87b3cb9d486d51c009c8b840a1dadcf3953b777234af4e243a22b603e6dda42a3961259bd130807fa3f8e9703838b77285f3a5fe6' '8798b38d02268805554e019984418578d7ec94b727f9261b1abbc57651b8d9108414b19fb0b59aa7dd4764c5ca269e5fb30465162ed8e6debf1efab5a868ab24' 'bd800d5335e54436f760e4a21a381c5cca4752c864c559ebc302bdcfc9819a3cf76fecc3b1490fdfd18d0f98e14c0886d8c6b7776dd3814af7ade17b9c85d80a'
+source=('packettracer' 'linguist' 'packettracer.sh')
+source_i686=('http://PacketTracer70_32bit_linux.tar.gz')
+source_x86_64=('http://PacketTracer70_64bit_linux.tar.gz')
+sha512sums=(
+'3fb22457ae4901bd22a8d984da6ae61354fa0c8a1be972a7ab0b48afcb3933bb8c0625dbd4f370fd4da394c8b043724e32ccced93c76f3536fac9defb941ac17' 'bd800d5335e54436f760e4a21a381c5cca4752c864c559ebc302bdcfc9819a3cf76fecc3b1490fdfd18d0f98e14c0886d8c6b7776dd3814af7ade17b9c85d80a'
 '3f4732213a9ca7c95f742edbdccf4d84c95e1c9e00d3dfa72e79b8039ef86bed29bc5b76586402a233ce3af409c0a56c759c2554e17962c292a6bd333654ce71')
+sha512sums_i686=('2ec0c7c3c6e5c9f95baf39cabb48bb6e5e19423310010f20b295efff09255cbda02b0c165894820f96da554b0d91ed30b54a5a5690baca9d36e90b10dd6a33fd')
+sha512sums_x86_64=('fc97ffd272269baf8f2fde3f7a545d07c1913507d0a6013dc862f20fdb3baffe4ebef7c0a0d6faa926daf7ee06ca5acfe15143018b8ee76f3a0b4d3d23ec3b9b')
 
 # We don't want to strip anything from the static libraries
 # We want to keep all binaries orginal (Cisco is goofy)
@@ -25,17 +30,17 @@ options=(!strip)
 install=pt.install
 
 package() {
-  cd ${srcdir}/PacketTracer63
+  cd ${srcdir}/PacketTracer70
 
-  mkdir -p ${pkgdir}/usr/share/packettracer/{art,backgrounds,bin,extensions,help,LANGUAGES,lib,saves,sounds,templates}
+  mkdir -p ${pkgdir}/usr/share/packettracer/{art,backgrounds,bin,extensions,help,languages,lib,saves,Sounds,templates}
 
   cp -r ./art/* ${pkgdir}/usr/share/packettracer/art
   cp -r ./backgrounds/* ${pkgdir}/usr/share/packettracer/backgrounds
   cp -r ./bin/* ${pkgdir}//usr/share/packettracer/bin
   cp -r ./extensions/* ${pkgdir}/usr/share/packettracer/extensions
-  cp -r ./LANGUAGES/* ${pkgdir}/usr/share/packettracer/LANGUAGES
+  cp -r ./languages/* ${pkgdir}/usr/share/packettracer/languages
   cp -r ./saves/* ${pkgdir}/usr/share/packettracer/saves
-  cp -r ./sounds/* ${pkgdir}/usr/share/packettracer/sounds
+  cp -r ./Sounds/* ${pkgdir}/usr/share/packettracer/Sounds
   cp -r ./templates/* ${pkgdir}/usr/share/packettracer/templates
   cp -r ./lib/* ${pkgdir}/usr/share/packettracer/lib
 
@@ -75,7 +80,7 @@ package() {
 
   # Desktop File
   install -D -m644 ./bin/Cisco-PacketTracer.desktop ${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop
-  sed 's/\/usr\/local\/PacketTracer6/\/usr\/share\/packettracer/' -i ${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop 
+  sed 's/\/usr\/local\/PacketTracer7/\/usr\/share\/packettracer/' -i ${pkgdir}/usr/share/applications/Cisco-PacketTracer.desktop 
   rm ${pkgdir}/usr/share/packettracer/bin/Cisco-PacketTracer.desktop
 }
 
