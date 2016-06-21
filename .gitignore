@@ -2,4 +2,5 @@
 *.gz
 pkg
 src
-vcs-repository
+/redshift-scheduler
+
