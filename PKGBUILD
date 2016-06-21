@@ -7,7 +7,7 @@
 pkgname=onedrive-d-systemtray
 _pkgname=onedrive-d-systemtray
 pkgver=20151103.gfee6133
-pkgrel=1
+pkgrel=2
 pkgdesc="System tray icon for Microsoft OneDrive service (onedrive-d)"
 url="https://gitlab.com/rich4rd.macwan/onedrive-d-systemtray"
 license=('LGPL')
