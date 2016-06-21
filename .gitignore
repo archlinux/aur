@@ -1,0 +1,4 @@
+src/
+pkg/
+ghc-7.10.*-*-deb8-linux.tar.xz
+*.pkg.tar.xz
