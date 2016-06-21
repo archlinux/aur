@@ -2,10 +2,10 @@
 
 pkgname=firefox-tabgroups
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="This add-on aims to fully replace Tab Groups in Firefox, providing a similar and hopefully even enhanced experience."
 arch=('any')
-url="https://addons.mozilla.org/es/firefox/addon/download-youtube"
+url="https://addons.mozilla.org/es/firefox/addon/tab-groups-panorama"
 license=('GPL2')
 depends=("firefox")
 source=('https://addons.mozilla.org/firefox/downloads/latest/tab-groups-panorama/addon-671381-latest.xpi')
@@ -18,4 +18,3 @@ package() {
   install -d $dstdir
   cp *.xpi $dstdir/${emid}.xpi
 }
-    
