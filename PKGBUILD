@@ -1,5 +1,5 @@
 pkgname=mingw-w64-giflib
-pkgver=5.1.2
+pkgver=5.1.4
 pkgrel=1
 pkgdesc="A library for reading and writing gif images (mingw-w64)"
 arch=(any)
@@ -10,7 +10,7 @@ depends=(mingw-w64-crt)
 options=(staticlibs !strip !buildflags)
 source=("http://downloads.sourceforge.net/sourceforge/giflib/${pkgname#mingw-w64-}-${pkgver}.tar.bz2"
 "giflib-5.0.4-include-stddef.patch")
-md5sums=('323a9f11ab56c8a2d1715376410ce376'
+md5sums=('2c171ced93c0e83bb09e6ccad8e3ba2b'
          'e39b98822334f2bd2009469e5dea65c5')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
