@@ -2,7 +2,7 @@
 
 pkgname='webvirtmgr-git'
 pkgdesc='Web front-end for KVM virtual machines'
-pkgver=v4.8.8.r147.g64528fa
+pkgver=v4.8.9.r22.g79c8a8b
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://www.webvirtmgr.net/'
@@ -14,11 +14,12 @@ options=('!strip' '!emptydirs')
 install="${pkgname}.install"
 source=('git+https://github.com/retspen/webvirtmgr.git'
         'webvirtmgr.ini'
-        'webvirtmgr-novnc.service')
+        'webvirtmgr-novnc.service'
+        'webvirtmgr.nginx.conf.sample')
 sha512sums=('SKIP'
-            'a8a64325750a1a6815c1ff9222373682f2300d0d636bb88675ae113b027a0e6d058e949344ae22357ff1258025ec0d32ca32a4383a37cadb88c9e5d180d2d147'
-            '78ae3aef65e4c362a7d70ff3a44d1c3ccd489ed7b77311d0ecb4d795aa587dc75e43356f56e4afbb180e0558859b64cbe78ca45bb234920ff3302b01e59716db')
-PKGEXT='.pkg.tar.gz'
+            '09469b807ab79177220f62316c2cbb7da72b4577f17c5a104d106a2392090753422740dc9dfb4f952e2d40e74ca7209ece911f7993dae0720659239d25c28d01'
+            '9c7398213e13f7568bac5dbe996ee4ad0608d851612b2664d923cd82b109bcd4ae93ac7419e031c53f919c440f1fb5beaa7142e684007452f3950bfd0a812499'
+            'a81460d838ccefadbd3758fff492b6048c48dfd8d66be4494d91af5ebe8a0ab64627abac4ab83a3dfa541223120159cb79afee642fcf72f91f688729de6bff27')
 
 pkgver() {
   cd 'webvirtmgr'
@@ -35,4 +36,7 @@ package() {
 
   cd "${outputdir}"
   pip2 install -r 'requirements.txt' -t "${outputdir}/lib"
+
+  install -dm0755 "${pkgdir}/etc/nginx/conf.d"
+  install -Dm0644 "${srcdir}/webvirtmgr.nginx.conf.sample" "${pkgdir}/etc/nginx/conf.d/webvirtmgr.nginx.conf.sample"
 }

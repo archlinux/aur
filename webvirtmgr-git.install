@@ -7,9 +7,9 @@ post_install() {
   cat <<- EOF
     To finalize the installation you need to run:
 
-    # sudo python2 /usr/lib/webvirtmgr/manage.py syncdb
-    # chown webvirtmgr:webvirtmgr /usr/lib/webvirtmgr/webvirtmgr/local/.secret_key_store /usr/lib/webvirtmgr/webvirtmgr.sqlite3 /usr/lib/webvirtmgr # temporary, see https://github.com/retspen/webvirtmgr/issues/391
-    # sudo python2 /usr/lib/webvirtmgr/manage.py collectstatic
+    # sudo PYTHONPATH=/usr/lib/webvirtmgr/lib python2 /usr/lib/webvirtmgr/manage.py syncdb
+    # sudo chown webvirtmgr:webvirtmgr /usr/lib/webvirtmgr/webvirtmgr/local/.secret_key_store /usr/lib/webvirtmgr/webvirtmgr.sqlite3 /usr/lib/webvirtmgr # temporary, see https://github.com/retspen/webvirtmgr/issues/391
+    # sudo PYTHONPATH=/usr/lib/webvirtmgr/lib python2 /usr/lib/webvirtmgr/manage.py collectstatic
 
     WebVirtMgr daemon is managed by Supervisord.
     # systemctl enable supervisord

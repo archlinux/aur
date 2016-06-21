@@ -1,7 +1,7 @@
 pkgbase = webvirtmgr-git
 	pkgdesc = Web front-end for KVM virtual machines
-	pkgver = 4.8.7.r0.g05ff41c
-	pkgrel = 2
+	pkgver = v4.8.9.r22.g79c8a8b
+	pkgrel = 1
 	url = https://www.webvirtmgr.net/
 	install = webvirtmgr-git.install
 	arch = i686
@@ -19,11 +19,16 @@ pkgbase = webvirtmgr-git
 	depends = python2
 	depends = supervisor
 	depends = websockify
+	options = !strip
+	options = !emptydirs
 	source = git+https://github.com/retspen/webvirtmgr.git
 	source = webvirtmgr.ini
 	source = webvirtmgr-novnc.service
-	options = !strip
-	options = !emptydirs
+	source = webvirtmgr.nginx.conf.sample
+	sha512sums = SKIP
+	sha512sums = 09469b807ab79177220f62316c2cbb7da72b4577f17c5a104d106a2392090753422740dc9dfb4f952e2d40e74ca7209ece911f7993dae0720659239d25c28d01
+	sha512sums = 9c7398213e13f7568bac5dbe996ee4ad0608d851612b2664d923cd82b109bcd4ae93ac7419e031c53f919c440f1fb5beaa7142e684007452f3950bfd0a812499
+	sha512sums = a81460d838ccefadbd3758fff492b6048c48dfd8d66be4494d91af5ebe8a0ab64627abac4ab83a3dfa541223120159cb79afee642fcf72f91f688729de6bff27
 
 pkgname = webvirtmgr-git
 
