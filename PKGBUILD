@@ -3,7 +3,7 @@
 
 _npmname=brunch
 pkgname=nodejs-$_npmname
-pkgver=2.8.0
+pkgver=2.8.2
 pkgrel=1
 pkgdesc="A lightweight approach to building HTML5 applications with emphasis on elegance and simplicity."
 arch=('any')
@@ -15,8 +15,8 @@ optdepends=()
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz
         'LICENSE')
 noextract=($_npmname-$pkgver.tgz)
-sha1sums=('34761851ffa236907552b68df2730acc03698fc3'
-          '33743a055a6ce2165bde37eebca24f3c05ad9583')
+sha1sums=('a79983cbec22ba17af4fb91e70907b8748bead8e'
+          'f77cebcadce4e7669b28a8f7dd9b002fdfe43299')
 
 package() {
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
