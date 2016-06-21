@@ -4,7 +4,7 @@
 
 pkgname=v8-3.14
 pkgver=3.14.5
-pkgrel=1
+pkgrel=2
 pkgdesc='A fast and modern javascript engine (old 3.14 version required for plv8)'
 arch=('i686' 'x86_64')
 url='http://code.google.com/p/v8'
