@@ -20,7 +20,7 @@ md5sums=('SKIP'
          '0e3c6d2164bd07a2603f0ad123ac68a8')
 
 _extramodules='extramodules-4.4-lts'
-#_extramodules='extramodules-4.5-ARCH'
+#_extramodules='extramodules-4.6-ARCH'
 
 pkgver() {
     cd "${srcdir}/${_pkgname%-git}"
