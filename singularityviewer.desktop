@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Singularity Test
+Comment=Client for Online Virtual Worlds, such as Second Life (Testing Version)
+Exec=/usr/bin/singularityviewer
+Icon=/usr/share/pixmaps/singularityviewer_icon.png
+Terminal=false
+Type=Application
+Categories=Game
+StartupNotify=true
+X-Desktop-File-Install-Version=3.0
