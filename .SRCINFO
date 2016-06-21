@@ -1,0 +1,17 @@
+pkgbase = rabbitvcs-caja
+	pkgdesc = Caja front-end for RabbitVCS
+	pkgver = 0.16
+	pkgrel = 1
+	url = http://rabbitvcs.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = caja
+	depends = python2-caja
+	depends = dbus-python>=0.80
+	depends = rabbitvcs>=0.16
+	source = https://github.com/rabbitvcs/rabbitvcs/archive/v0.16.tar.gz
+	md5sums = 25376cff136ad2fac901ff88e07893ef
+
+pkgname = rabbitvcs-caja
+
