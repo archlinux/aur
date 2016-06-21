@@ -9,7 +9,7 @@
 pkgname='tor-browser-en'
 pkgver='6.0.2'
 _language='en-US'
-pkgrel=1
+pkgrel=2
 pkgdesc='Tor Browser Bundle: Anonymous browsing using firefox and tor'
 url='https://www.torproject.org/projects/torbrowser.html.en'
 arch=('x86_64' 'i686')
@@ -33,10 +33,10 @@ source+=("${pkgname}.desktop"
          "${pkgname}.png"
          "${pkgname}.sh")
 
-sha256sums_x86_64=('6142299446cf8ad2cd8edb3d8f9dba8a97118cf2d845ff5a0eb2ae2ae10273d8' 'SKIP')
-sha256sums_i686=(  'ea7ff6c550429f1b20c65a8d80ceddf89530e735f9c3d512c697500738482e99' 'SKIP')
-sha256sums+=('dd805f7cfcba18624ed1d70529c8e850b58cd66b4c7bc259a16ce6d0a298f123'
-             '8f75481ca5dbe93b25a9eac3d3d3cecd0b1dc3c2566ecb244cf2af065d6c4d18'
+sha256sums_x86_64=('dd805f7cfcba18624ed1d70529c8e850b58cd66b4c7bc259a16ce6d0a298f123' 'SKIP')
+sha256sums_i686=(  '8f75481ca5dbe93b25a9eac3d3d3cecd0b1dc3c2566ecb244cf2af065d6c4d18' 'SKIP')
+sha256sums+=('3d5fc01f2cfbae0a00b7117b0b0a24028d1686e6f81a347809f74de2d8522ff7'
+             '17fc2f5784d080233aca16e788d62ab6fe3e57cf781b123cfe32767de97d6d3b'
              '89ed1cda6611abcbfdafef9aec78ada146643455d6675b22b72319ae286ea67e')
 
 noextract_x86_64=("tor-browser-linux64-${pkgver}_${_language}.tar.xz")
