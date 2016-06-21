@@ -13,12 +13,12 @@ noextract=("DasRoy_Small_Caps.zip")
 md5sums=('4c2f2807db71a554471d627d8f963a3b')
 install=$pkgname.install
 
-build() {
-	cd $srcdir
-	unzip ${noextract[0]}
-	mkdir -p $pkgdir/usr/share/fonts/TTF
+package() {
+	cd "$srcdir"
+	unzip "${noextract[0]}"
+	mkdir -p "$pkgdir/usr/share/fonts/TTF"
 	chmod -x ./*.ttf
-	cp -r ./*.ttf $pkgdir/usr/share/fonts/TTF
+	cp -r ./*.ttf "$pkgdir/usr/share/fonts/TTF"
 }
 
 # vim:set ts=2 sw=2 et:
