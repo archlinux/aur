@@ -1,6 +1,6 @@
 pkgbase = emacs-xwidget-git
 	pkgdesc = The famous editor from xwidget_mvp branch
-	pkgver = 25.1.50.r126401
+	pkgver = 25.1.50.r126402
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = i686
