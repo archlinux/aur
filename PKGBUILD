@@ -1,9 +1,10 @@
-# Maintainer: wenLiangcan <boxeed at gmail dot com>
+# Maintainer: Jakob Gahde <j5lx@fmail.co.uk>
+# Contributor: wenLiangcan <boxeed at gmail dot com>
 # Contributor: Taylor Venable <taylor@metasyntax.net>
 
-srcname='lambda-term'
-pkgname="ocaml-${srcname}"
-pkgver='1.9'
+_pkgname="lambda-term"
+pkgname="ocaml-${_pkgname}"
+pkgver=1.10
 pkgrel=1
 pkgdesc='A cross-platform library for manipulating the terminal'
 arch=('i686' 'x86_64')
@@ -13,10 +14,10 @@ depends=('ocaml' 'ocaml-lwt' 'ocaml-react' 'ocaml-zed')
 makedepends=('ocaml-findlib')
 source=("https://github.com/diml/lambda-term/archive/${pkgver}.tar.gz")
 options=('!strip')
-md5sums=('17a9f8b56f9a10a7ed4cfa48ae6c3e39')
+md5sums=('ce9cc6503a01f327d414988f97343635')
 
 build() {
-    cd "$srcdir/${srcname}-${pkgver}"
+    cd "$srcdir/${_pkgname}-${pkgver}"
     ./configure --prefix /usr --destdir "$pkgdir"
 
     env DESTDIR="$pkgdir" \
@@ -28,7 +29,7 @@ build() {
 package() {
     install -dm755 "$pkgdir/$(ocamlfind printconf destdir)"
     install -dm755 "$pkgdir/$(ocamlfind printconf destdir)/stublibs"
-    cd "$srcdir/${srcname}-${pkgver}"
+    cd "$srcdir/${_pkgname}-${pkgver}"
     env DESTDIR="$pkgdir" \
         OCAMLFIND_DESTDIR="$pkgdir/$(ocamlfind printconf destdir)" \
         make install
