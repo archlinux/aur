@@ -1,4 +1,4 @@
-#Maintainer for the system tray: rich4rd.macwan@gmail.com
+#Maintainer for the system tray: georgo10@gmail.com
 #Original creators of onedrive-d
 # Maintainer: Vlad M. <vlad@archlinux.net>
 # Contributor: Pietro Brenna <pietrobrenna@zoho.com>
@@ -6,14 +6,14 @@
 
 pkgname=onedrive-d-systemtray
 _pkgname=onedrive-d-systemtray
-pkgver=20150827.g212c478
+pkgver=20151103.gfee6133
 pkgrel=1
 pkgdesc="System tray icon for Microsoft OneDrive service (onedrive-d)"
 url="https://gitlab.com/rich4rd.macwan/onedrive-d-systemtray"
 license=('LGPL')
 arch=('i686' 'x86_64')
-provides='onedrive-d-systemtray'
-depends=('onedrive-d-git')
+provides=('onedrive-d-systemtray')
+depends=('onedrive-d-git' 'python-pyqt4')
 makedepends=('git')
 _gitname="onedrive-d-systemtray"
 source=("${_pkgname}::git+https://gitlab.com/rich4rd.macwan/onedrive-d-systemtray.git")
