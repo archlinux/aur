@@ -2,7 +2,7 @@
 # Maintainer: Alexandr Boiko <brdcom@ya.ru>
 pkgname=accel-ppp
 pkgver=1.10.2
-pkgrel=5
+pkgrel=6
 pkgdesc="High performance PPTP/L2TP/PPPoE/IPoE server"
 arch=('i686' 'x86_64')
 url="http://sourceforge.net/apps/trac/accel-ppp/"
@@ -52,7 +52,7 @@ build() {
 		-DLOG_PGSQL=FALSE \
 		-DSHAPER=TRUE \
 		-DRADIUS=TRUE \
-		-DNETSNMP=TRUE \
+		-DNETSNMP=FALSE \
 		-DLUA=TRUE \
 		-DLUA_INCLUDE_DIR="/usr/include/lua5.1" \
 		"$srcdir/$pkgname-$pkgver"
