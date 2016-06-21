@@ -1,7 +1,7 @@
 pkgbase = gnome-twofactorauth-git
 	pkgdesc = Two-Factor Authentication code generator for Gnome
-	pkgver = v0.1beta2.r35.g206db96
-	pkgrel = 1
+	pkgver = v0.1beta4.r35.g206db96
+	pkgrel = 0
 	url = https://github.com/bil-elmoussaoui/Gnome-TwoFactorAuth
 	install = gnome-twofactorauth.install
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = gnome-twofactorauth-git
 	depends = python-cairo
 	depends = python-pyotp
 	depends = python-zbarlight
-	provides = gnome-twofactorauth=v0.1beta2.r35.g206db96
+	provides = gnome-twofactorauth=v0.1beta4.r35.g206db96
 	conflicts = gnome-twofactorauth
 	options = !emptydirs
 	source = git://github.com/bil-elmoussaoui/Gnome-TwoFactorAuth.git
