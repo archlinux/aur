@@ -1,22 +1,21 @@
 # Maintainer: ShadowKyogre <shadowkyogre@aim.com>
 pkgname=ttf-masterforce-solid
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Masterforce Solid font"
 arch=('any')
-url="http://www.allfreefonts.com/font-4313-masterforce_solid.html"
+url="https://www.searchfreefonts.com/free/masterforce-solid.htm"
 license=('freeware')
 makedepends=('unzip')
 depends=(fontconfig xorg-font-utils)
-source=("http://www.allfreefonts.com/download-4313-masterforce_solid-font.zip")
-md5sums=('9e6b00117aec82dc212ea755ddbb1a96')
+source=("ttf-masterforce-solid.zip::https://www.searchfreefonts.com/download/download.ashx?d=208751")
 install=$pkgname.install
 
-build() {
-	cd $srcdir
-	mkdir -p $pkgdir/usr/share/fonts/TTF
-	chmod -x ./*.TTF
-	cp -r ./*.TTF $pkgdir/usr/share/fonts/TTF
+package() {
+	cd "$srcdir"
+	mkdir -p "$pkgdir/usr/share/fonts/TTF"
+	cp ./*.ttf "$pkgdir/usr/share/fonts/TTF"
 }
 
 # vim:set ts=2 sw=2 et:
+sha256sums=('bf29eb83c3dcb30d87c4fab3ef4f4c8ce1fb1b686d62c5595960b5d001559e97')
