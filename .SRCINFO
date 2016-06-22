@@ -7,10 +7,8 @@ pkgbase = places-git
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = enlightenment>=0.19.99
+	depends = enlightenment
 	depends = udisks
-	provides = places=0.20.r215.2115f5a
-	conflicts = places
 	source = git://git.enlightenment.org/enlightenment/modules/places.git
 	sha256sums = SKIP
 
