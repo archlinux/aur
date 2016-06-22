@@ -1,7 +1,7 @@
 # Maintainer=rafaelsoaresbr <rafaelsoaresbr@gmail.com>
 # ginger-git
-# Contributing: https://github.com/rafaelsoaresbr/ginger-git.git
-# Builds: https://gitlab.com/rafaelsoaresbr/ginger-git/builds
+# Contributing: https://github.com/rafaelsoaresbr/pkgbuild
+# Builds: https://gitlab.com/rafaelsoaresbr/pkgbuild/builds
 #pkgbase=()
 pkgname=('ginger-git')
 
