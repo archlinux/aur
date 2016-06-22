@@ -130,7 +130,7 @@ prepare() {
 	
 	# Patch source to enable frame buffer decorations.
 	msg "Patching source with fbcondecor patch."
-	patch -Np1 -i "${srcdir}/fbcondecor-4.4.patch"
+	patch -Np1 -i "${srcdir}/fbcondecor-4.5.patch"
 
 	# Clean tree and copy ARCH config over
 	msg "Running make mrproper to clean source tree"
