@@ -1,7 +1,7 @@
 pkgbase = sickgear-git
 	pkgdesc = Provides management of TV shows and/or Anime, detects new episodes, links to downloader apps, and more.
 	pkgver = 0.11.12.r0.g9198eb6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/SickGear/SickGear
 	install = sickgear.install
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = sickgear-git
 	sha256sums = 76108d56417bc6e5352db779c7e74812eda07b440cc293547809aa9504e10209
 	sha256sums = 5c7a327168f2b2d361eeaa9e9f82e79a87381908d8ba6b1d1eb90ac64ad38ac2
 	sha256sums = 54873ee12aa334a0c0830dbe48251f994d8ae851ae0b55250c098ff9f7f9ea60
-	sha256sums = fae4616bf9dbf19d5bb2fcc89abd49b27db9f1f0181589a60bbcde07b840ae99
+	sha256sums = 8da4938dbba87fbb7c88715d03ceff51544ed79cff3c8ea0ed31866a7d345083
 	sha256sums = SKIP
 
 pkgname = sickgear-git
