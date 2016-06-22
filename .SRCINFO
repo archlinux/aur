@@ -6,8 +6,8 @@ pkgbase = python2-elmextensions
 	arch = any
 	license = BSD
 	depends = python2-efl
-	source = https://github.com/JeffHoogland/python-elm-extensions/archive/0.2.0.tar.gz
-	sha256sums = bdda3b8ca9fc9aca43dcd8a65372d0903b28999fd2c4d8a36110dc77ddf0e6be
+	source = http://packages.bodhilinux.com/bodhi/pool/main/p/python-elm-extensions/python-elm-extensions_0.2.0bodhi3_all.deb
+	sha256sums = 26dfa2fbc6aa4024cea9053dcb7e3db652d9df1528fd9aa428c2109a2c0f1843
 
 pkgname = python2-elmextensions
 
