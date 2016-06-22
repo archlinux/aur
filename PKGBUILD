@@ -4,7 +4,7 @@
 _debname=iceweasel
 _debver=47.0
 _debrel=1
-_parrel=1
+_parrel=2
 _parepoch=1
 _parrepo=https://repo.parabola.nu/libre/os
  
@@ -28,9 +28,9 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
 install=iceweasel.install
  
  if [ "$CARCH" = "x86_64" ]; then
-    sha1sums=('3c6a0b4a1f6bf799d12c409d0aefebaa2c860664')
+    sha1sums=('77d521568a65cb4a18a952dd4a8332b1b9420b8d')
  else
-    sha1sums=('43d32ea6223e4894dc26a4dfe42f11929c7c0dc1')
+    sha1sums=('02e52b7ade69a42b54e9637a3a88c16c8e997455')
  fi
  
 source=("${_parrepo}/${CARCH}/${_debname}-${_parepoch}:${_debver}.deb${_debrel}-${_parrel}-${CARCH}.pkg.tar.xz")
