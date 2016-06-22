@@ -1,7 +1,7 @@
 pkgbase = dnstop
 	pkgdesc = displays various tables of DNS traffic on your network
 	pkgver = 20140915
-	pkgrel = 1
+	pkgrel = 2
 	url = http://dns.measurement-factory.com/tools/dnstop
 	arch = i686
 	arch = x86_64
