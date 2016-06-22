@@ -18,7 +18,7 @@ license=('GPL3' 'LGPL')
 url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz")
-md5sums=('631d38f242295dd026541c31d15e3bae')
+md5sums=('75108b6bab35c0eb7fb6152fbf971ab8')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
