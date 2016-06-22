@@ -1,7 +1,6 @@
-
 # Maintainer: Victor Tran <vicr12345 at gmail dot com>
 pkgname=thepackage
-pkgver=2.1
+pkgver=2.2
 pkgrel=0
 pkgdesc="Simple Package Manager that invokes Pacman directly"
 arch=("x86_64")
