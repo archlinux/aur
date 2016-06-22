@@ -3,7 +3,7 @@
 _pkgname=ocenaudio
 pkgname="$_pkgname-bin"
 pkgver=3.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform, easy to use, fast and functional audio editor"
 arch=('i686' 'x86_64')
 url="http://www.ocenaudio.com.br/"
@@ -30,11 +30,12 @@ package() {
 
     install -dm755 "${pkgdir}/usr/bin"
     ln -sf "/opt/$_pkgname/bin/${_pkgname}" "${pkgdir}/usr/bin"
-    install -Dm644 "${srcdir}/LICENSE.txt" \
-      "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
     rm -rf "${pkgdir}/var"
   else
     cp -rLnf ${srcdir}/* ${pkgdir}/
     rm -f ${pkgdir}/ocenaudio_archlinux.pkg.tar.xz
   fi
+  install -Dm644 "${srcdir}/LICENSE.txt" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  rm "${pkgdir}/LICENSE.txt"
 }
