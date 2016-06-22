@@ -1,9 +1,0 @@
-diff -rupN a/src/kimchi/proxy.py b/src/kimchi/proxy.py
---- a/src/kimchi/proxy.py	2015-03-25 18:48:41.000000000 +0100
-+++ b/src/kimchi/proxy.py	2015-04-23 11:27:20.091685650 +0200
-@@ -1,4 +1,4 @@
--#!/usr/bin/python
-+#!/usr/bin/env python2
- #
- # Project Kimchi
- #
