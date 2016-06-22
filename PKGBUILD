@@ -1,13 +1,5 @@
 # Maintainer: Brent Saner <r00t (at) square-r00t (dot) net>
 validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
-# Contributor: TJ Vanderpoel <tj@rubyists.com>
-
-## MAINTAINER NOTE BEGIN
-# Most (like, ~80%) of this is taken verbatim from the freeswitch AUR package currently (as of 02.28.2014) maintained by bougyman.
-# https://aur.archlinux.org/packages/freeswitch/
-# However, it's horribly out of date and doesn't seem to be actively maintained anymore.
-## MAINTAINER NOTE END
-
 
 # This builds the FreeSWITCH open source telephone engine
 # from the freeswitch git.  It enables the following modules
@@ -23,7 +15,6 @@ validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 
 # BUILD CONFIGURATION BEGINS #
-
 # SET THIS TO GET HIGHER QUALITY SOUNDFILES
 # Value can be "hd-", "uhd-", or "cd-" to get 16k, 32k, or 48k sounds.
 # By default we only download the 8k sounds. If you only use g711 or
@@ -55,22 +46,11 @@ _enabled_modules=(xml_int/mod_xml_curl
 _disabled_modules=(languages/mod_spidermonkey
                    say/mod_say_ru
                    dialplans/mod_dialplan_asterisk)
-
-# CONCURRENT BOOTSTRAP
-# Uncomment this to enable backgrounded concurrent bootstrap operations.
-# You will suffer a lot of autotools scroll from this, Fair Warning.
-
-#_concurrent="-j"
-
 # BUILD CONFIGURATION ENDS                     #
-#                                              #
-# CHANGE ANYTHING BELOW HERE AT YOUR OWN RISK! #
-#                                              #
-
 
 pkgname='freeswitch-git'
-pkgver=1.5.final.r2628.g8b6f40f
-pkgrel=4
+pkgver=1.7.0.r31054.841e202
+pkgrel=1
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk (git version)."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
@@ -144,7 +124,10 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --long | sed -r 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  pkgver_maj=$(git for-each-ref refs/tags --sort=-taggerdate --format='%(refname)' --count=1 | sed -e 's@refs/tags/v@@')
+  revcount=$(git rev-list --count HEAD)
+  lastcommit=$(git rev-parse --short HEAD)
+  echo "${pkgver_maj}.r${revcount}.${lastcommit}"
 }
 
 
@@ -181,10 +164,6 @@ build() {
 
   msg "Module Configuration Complete, Stop Now with Ctrl-C if the above is not correct"
   sleep 5
-
-  # SED FIXES
-   #sed -i -e '/if\ test\ "\$ac_cv_gcc_supports_w_no_unused_result"\ =\ yes;\ then/,+2d' configure.ac
-   #sed -i -e '/\ _BSD_SOURCE$/d' src/include/switch.h
 
   # CONFIGURE
   ./configure --prefix=/var/lib/freeswitch --with-python=/usr/bin/python2 \
@@ -227,17 +206,10 @@ disable_mod_xml() {
 }
 
 package() {
-  # per upstream, shouldn't be necessary with newer versions. 06.22.2016
-  #mkdir -p /var/tmp/bin
-  #ln -sf /usr/bin/python2 /var/tmp/bin/python
-  #PATH="/var/tmp/bin:${PATH}"
   cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}/" install
   make DESTDIR="${pkgdir}/" ${_sounds}moh-install
   make DESTDIR="${pkgdir}/" ${_sounds}sounds-install
-  #PATH=${_pathorig}
-  #rm -rf /var/tmp/bin/python
-  #rmdir /var/tmp/bin
 
   cd ${pkgdir} # MUY IMPORTANT, $PWD is $pkgdir from here on out
   # Mangle freeswitch's installed dirs into a more compliant structure,
@@ -279,7 +251,7 @@ package() {
 
   mv etc/freeswitch/* usr/share/doc/freeswitch/examples/conf.archlinux/
   rmdir etc/freeswitch
-  install -D -m0755 -d usr/share/freeswitch/conf
+  install -D -m 0755 -d usr/share/freeswitch/conf
   install -D -m 0755 "${srcdir}/run.freeswitch" usr/share/freeswitch/run
   install -D -m 0755 "${srcdir}/run_log.freeswitch" usr/share/freeswitch/log/run
   install -D -m 0644 "${srcdir}/conf_log.freeswitch" usr/share/freeswitch/log/conf
