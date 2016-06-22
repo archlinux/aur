@@ -2,15 +2,14 @@
 ## Maintainer: B.H. <es_vinux@vinuxproject.org>
 pkgname=lpclic
 _pkgname=lpclic
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="Optimizes the command history for the linphonec CLI for linphone"
 arch=('any')
 url="https://github.com/burt1iband/lpclic"
 license=('GPL')
 source=("git+${url}.git")
-depends=('bash' 'sed' 'linphone')
-optdepends=('bash-completion')
+depends=('bash' 'bash-completion' 'sed' 'linphone')
 provides=('lpclic')
 conflicts=('lpclic')
 md5sums=('SKIP')
