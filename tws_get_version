@@ -20,32 +20,27 @@ cd "${TDIR}" || exit 1
 
 rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts
 chmod +x ${ARG1}
-
-# as of 954.2o the installer runs TWS, even after unattended install!
-# so we need to install, wait to kill off the nuisance process, and continue
 ${ARG1} -q &> /dev/null
-while true
-do
-    pkill -f $HOME/Jts
-    if [ $? -eq 0 ]; then
-        break
-    fi
-done
-
 
 MAJORVER=`find $HOME/Jts -maxdepth 1 -type d -regex '.*/[0-9]*' -printf '%f'`
 
 TWS_HOME="${TDIR}/twshome"
 mkdir "${TWS_HOME}" || exit 1
-LOG_FIFO="${TDIR}/twslogpipe"
-mkfifo "${LOG_FIFO}" || exit 1
+LOG="${TWS_HOME}/launcher.log"
 
 TWS_CP=`find ${HOME}/Jts/${MAJORVER}/jars -type f -name \*.jar -printf '%p:'`
-java -cp "${TWS_CP}" jclient.LoginFrame "${TWS_HOME}" &>"${LOG_FIFO}" &
+java -cp "${TWS_CP}" jclient.LoginFrame "${TWS_HOME}" &
 disown
 TWS_PID="$!"
 
-VERSION_LINE="$(timeout --preserve-status "${TWS_TIMEOUT}" grep -m1 --line-buffered ": Build" "${LOG_FIFO}")"
+# give TWS JVM chance to start writing to $LOG
+x=0
+while [ "$x" -lt 50 -a ! -e /path/to/the/file_name ]; do
+    x=$((x+1))
+    sleep .1
+done
+
+VERSION_LINE="$(timeout --preserve-status "${TWS_TIMEOUT}" grep -m1 --line-buffered " - Build" "${LOG}")"
 kill -9 "${TWS_PID}" &>/dev/null
 
 rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts
