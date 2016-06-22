@@ -1,0 +1,25 @@
+pkgbase = cvs-feature
+	pkgdesc = Concurrent Versions System - a source control system ("feature" release series, with Debian patches)
+	pkgver = 1.12.13
+	pkgrel = 1
+	url = http://cvs.nongnu.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = krb5
+	depends = zlib
+	depends = libbsd
+	optdepends = openssh: for using cvs over ssh
+	optdepends = inetutils: for using cvs over rsh
+	provides = cvs
+	conflicts = cvs
+	source = ftp://ftp.gnu.org/non-gnu/cvs/source/feature/1.12.13/cvs-1.12.13.tar.bz2
+	source = ftp://ftp.gnu.org/non-gnu/cvs/source/feature/1.12.13/cvs-1.12.13.tar.bz2.sig
+	source = http://http.debian.net/debian/pool/main/c/cvs/cvs_1.12.13+real-15.diff.gz
+	validpgpkeys = CB6A07CA90C54234E8A3C8D02C3D4E4C17F231A4
+	sha512sums = 7d10f808de62190b18d4f706d2d03ab218a508bfb52047ff3e830e293ec40c5e8bf6cc743ef72a5c24be5aa867c9e4892d7d475a026a98b296a3764b4bd0f4d8
+	sha512sums = SKIP
+	sha512sums = 3e305ebaa8c00b6d50281568f6402240feee5fe8e32b16100036017e0c5f27ceb7260762f4e9e907c7fa1c16d5112b8e7a0ef3c66b8345e533c65c5a803222ad
+
+pkgname = cvs-feature
+
