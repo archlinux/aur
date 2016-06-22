@@ -1,6 +1,6 @@
 pkgbase = rust-racer-git
 	pkgdesc = Code completion for Rust
-	pkgver = 1.2.5.r88.g3ac365e
+	pkgver = 1.2.5.r90.g2071d12
 	pkgrel = 1
 	url = https://github.com/phildawes/racer
 	install = rust-racer-git.install
