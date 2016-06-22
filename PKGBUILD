@@ -2,7 +2,7 @@
 
 pkgname=gnome-twofactorauth
 _gitname=Gnome-TwoFactorAuth
-pkgver=0.1beta4
+pkgver=0.1.0
 pkgrel=0
 pkgdesc='Two-Factor Authentication code generator for Gnome'
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('unzip' 'gnome-common' 'intltool' 'itstool' 'python' 'yelp-tools')
 options=('!emptydirs')
 install=gnome-twofactorauth.install
 source=("https://github.com/bil-elmoussaoui/${_gitname}/archive/v${pkgver}.zip")
-md5sums=('9b7d2031c8f60b0663a7124e462c9d06')
+md5sums=('f77324cb7431bdc98a8c990f0307ef8b')
 conflicts=('gnome-twofactorauth-git')
 provides=("gnome-twofactorauth=$pkgver")
 
