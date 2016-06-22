@@ -4,7 +4,7 @@ _gtk3_min='3.18'
 _gtk3_max='3.21'
 _theme_name=Adapta
 _gtk2_min='2.24.30'
-pkgver="${_gtk3_max}.3.12"
+pkgver="${_gtk3_max}.3.17"
 pkgrel=1
 pkgdesc="An adaptive Gtk+ theme based on Material Design Guidelines."
 arch=(any)
@@ -30,7 +30,7 @@ makedepends=('glib2>=2.48.0'
 _tri_fadeno="tri-fadeno.jpg"
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz"
         "${pkgver}-${_tri_fadeno}::${url}/raw/master/.github/img/${_tri_fadeno}")
-sha256sums=('5a8e0a2f718663619c2308969e49aec69e1851288885c95a2b6539dbf13c9eae'
+sha256sums=('272b1ca932818f21cae2c63e6321c1084293405efc506878d612fee6df5b33de'
             '807bd3d99fb492569caf050cfa9b5c75d4e6a072007637fe8e583a3f5c0bea24')
 
 _bundle="ruby-bundle"
@@ -38,13 +38,7 @@ _bundle="ruby-bundle"
 prepare() {
     cd "${_theme_name}-${pkgver}"
     export BUNDLE_PATH="${srcdir}/${_bundle}"
-
-    for d in gtk shell
-    do
-        pushd "${d}/sass"
-        bundle install
-        popd
-    done
+    bundle install
 }
 
 build() {
