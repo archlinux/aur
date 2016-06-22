@@ -1,0 +1,11 @@
+post_install() {
+  # Make data writable by webserver
+  chown -R http:http /usr/share/webapps/freshrss/data
+  echo 'You can now configure your (PHP compatible) web server to run FreshRSS'
+}
+
+post_upgrade() {
+  post_install
+}
+
+# vim:set ts=2 sw=2 et:
