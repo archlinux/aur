@@ -70,7 +70,7 @@ _disabled_modules=(languages/mod_spidermonkey
 
 pkgname='freeswitch-git'
 pkgver=1.5.final.r2628.g8b6f40f
-pkgrel=3
+pkgrel=4
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk (git version)."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
@@ -231,7 +231,7 @@ package() {
   #mkdir -p /var/tmp/bin
   #ln -sf /usr/bin/python2 /var/tmp/bin/python
   #PATH="/var/tmp/bin:${PATH}"
-  #cd "${srcdir}/${_pkgname}"
+  cd "${srcdir}/${_pkgname}"
   make DESTDIR="${pkgdir}/" install
   make DESTDIR="${pkgdir}/" ${_sounds}moh-install
   make DESTDIR="${pkgdir}/" ${_sounds}sounds-install
