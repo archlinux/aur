@@ -1,7 +1,7 @@
 # Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
 pkgname=telegram-desktop-light
 pkgver=0.9.51
-pkgrel=2
+pkgrel=3
 _qtver=5.6.0
 pkgdesc='Official desktop version of Telegram messaging app. Uses system libraries.'
 arch=('i686' 'x86_64')
@@ -72,8 +72,12 @@ optdepends=(
 	'libappindicator-sharp: to hide Telegram in the tray bar (Unity-based desktop environment)'
 	'pulseaudio-jack: JACK support behind PulseAudio'
 )
+# Name of the archive. To use in case of broken things.
+_commit_hash="a058b6e3a6a99e3815d2cbfecce96b32307bb90d"
+_archive="${_commit_hash}"
+#_archive="v$pkgver"
 source=(
-	"tdesktop-${pkgver}.tar.gz::https://github.com/telegramdesktop/tdesktop/archive/v$pkgver.tar.gz"
+	"tdesktop-${pkgver}.tar.gz::https://github.com/telegramdesktop/tdesktop/archive/${_archive}.tar.gz"
 	#"http://download.qt.io/official_releases/qt/${_qtver%.*}/$_qtver/submodules/qt5-opensource-src-$_qtver.tar.xz"
 	"http://download.qt.io/official_releases/qt/${_qtver%.*}/$_qtver/submodules/qtbase-opensource-src-$_qtver.tar.xz"
 	"http://download.qt.io/official_releases/qt/${_qtver%.*}/$_qtver/submodules/qtimageformats-opensource-src-$_qtver.tar.xz"
@@ -86,16 +90,17 @@ noextract=(
 	'breakpad.tar.gz'
 	'breakpad-lss.tar.gz'
 )
-sha256sums=('246c321c009f7eeb3b616503b19c270688a790bf691feac838b3d91bfd51c55b'
+sha256sums=('d341f26f4109951cfbd05db516385e721b87f7357d750d0475b8744789258799'
             '6efa8a5c559e92b2e526d48034e858023d5fd3c39115ac1bfd3bb65834dbd67a'
             '2c854275a689a513ba24f4266cc6017d76875336671c2c8801b4b7289081bada'
-            'SKIP'
-            'SKIP'
+            '5610b4425696d44a68e7bd7438ad2321fec04e1760927d391c515575ae2b0689'
+            'ed8d89d3267bd7bc5cd9617ab6ea171ad726201beac4b89f77e88ddf4e1dbf88'
             'bfc45add9e72ecc8ad07e2b4fdb6a4f52eb1cf284f76c3379efd201e78def63a'
             'd4cdad0d091c7e47811d8a26d55bbee492e7845e968c522e86f120815477e9eb')
 
 prepare() {
-	ln -sf "$srcdir/tdesktop-$pkgver" "$srcdir/tdesktop"
+	#ln -sf "$srcdir/tdesktop-$pkgver" "$srcdir/tdesktop"
+	ln -sf "$srcdir/tdesktop-${_commit_hash}" "$srcdir/tdesktop"
 	cd "$srcdir/tdesktop"
 
 	mkdir -p "$srcdir/Libraries"
@@ -176,19 +181,24 @@ build() {
 	# Build codegen_style
 	mkdir -p "$srcdir/tdesktop/Linux/obj/codegen_style/Debug"
 	cd "$srcdir/tdesktop/Linux/obj/codegen_style/Debug"
-	qmake CONFIG+=debug ../../../../Telegram/build/qmake/codegen_style/codegen_style.pro
+	qmake QT_TDESKTOP_PATH=${srcdir}/qt QT_TDESKTOP_VERSION=${_qtver} \
+		CONFIG+=debug \
+		../../../../Telegram/build/qmake/codegen_style/codegen_style.pro
 	make
 
 	# Build codegen_numbers
 	mkdir -p "$srcdir/tdesktop/Linux/obj/codegen_numbers/Debug"
 	cd "$srcdir/tdesktop/Linux/obj/codegen_numbers/Debug"
-	qmake CONFIG+=debug ../../../../Telegram/build/qmake/codegen_numbers/codegen_numbers.pro
+	qmake QT_TDESKTOP_PATH=${srcdir}/qt QT_TDESKTOP_VERSION=${_qtver} \
+		CONFIG+=debug \
+		../../../../Telegram/build/qmake/codegen_numbers/codegen_numbers.pro
 	make
 
 	# Build MetaLang
 	mkdir -p "$srcdir/tdesktop/Linux/DebugIntermediateLang"
 	cd "$srcdir/tdesktop/Linux/DebugIntermediateLang"
-	qmake CONFIG+=debug "../../Telegram/MetaLang.pro"
+	qmake QT_TDESKTOP_PATH=${srcdir}/qt QT_TDESKTOP_VERSION=${_qtver} \
+		CONFIG+=debug "../../Telegram/MetaLang.pro"
 	make
 
 	# Prepare for Telegram Desktop
@@ -210,7 +220,8 @@ build() {
 		-lang_out ./../../Telegram/GeneratedFiles/lang_auto
 
 	# Finally, build Telegram
-	qmake CONFIG+=release "../../Telegram/Telegram.pro"
+	qmake QT_TDESKTOP_PATH=${srcdir}/qt QT_TDESKTOP_VERSION=${_qtver} \
+		CONFIG+=release "../../Telegram/Telegram.pro"
 	make
 }
 
