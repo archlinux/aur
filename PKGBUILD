@@ -5,8 +5,8 @@
 
 pkgname=xlockmore-blank
 _pkgname=xlockmore
-pkgver=5.46
-pkgrel=2
+pkgver=5.47
+pkgrel=1
 pkgdesc="screen saver / locker for the X Window System - blank only"
 arch=(i686 x86_64)
 license=('BSD')
@@ -18,7 +18,7 @@ url="http://www.tux.org/~bagleyd/xlockmore.html"
 options=('!makeflags')
 source=(http://www.tux.org/~bagleyd/xlock/xlockmore-$pkgver.tar.xz
 	LICENSE)
-md5sums=('068b9c2bfbcdd02461edbac4d729cd27'
+md5sums=('d059df32d1673ce5a434a98a49606f3b'
          'a64afab4283f53972a6702c2e59850d7')
 
 build() {
