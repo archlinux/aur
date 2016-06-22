@@ -11,7 +11,8 @@ pkgdesc='C-based metadata parser to quickly parse xml metadata into sqlite datab
 arch=('i686' 'x86_64')
 license=('GPL')
 url='http://yum.baseurl.org/download/yum-metadata-parser/'
-depends=('python2' 'libxml2'  'glib2' 'python2-pip')
+depends=('python2' 'libxml2'  'glib2')
+makedepends=('python2-pip')
 source=('http://yum.baseurl.org/download/yum-metadata-parser/yum-metadata-parser-1.1.4.tar.gz')
 sha256sums=('f1560a284541feb720c3ae35b6b31f80c2be5cb9ca86b3a1ee9459846f821ada')
 
