@@ -7,8 +7,9 @@ url="https://github.com/OSVR/OSVR-Vive"
 #license=('GPL')
 makedepends=('git' 'cmake')
 depends=('osvr-core-git' 'openvr-git') #TODO: add more deps
-source=("osvr-vive::git+https://github.com/lubosz/OSVR-Vive.git#branch=linux")
+source=("osvr-vive::git+file:///home/bmonkey/workspace/vr/OSVR/OSVR-Vive-Libre")
 md5sums=('SKIP')
+options=(debug !strip)
 
 pkgver() {
   cd "$srcdir/osvr-vive"
@@ -28,7 +29,7 @@ prepare() {
 
 build() {
   cd osvr-vive-build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=Release ../osvr-vive
+  cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=Debug ../osvr-vive
   make
 }
 
@@ -42,7 +43,7 @@ package() {
   rm $pkgdir/usr/LICENSE
 
   mkdir -p $pkgdir/usr/share/osvrcore/sample-configs
-  mv $pkgdir/usr/osvr_server_config.vive.sample.json $pkgdir/usr/share/osvrcore/sample-configs
+  mv $pkgdir/usr/osvr_server_config.vive_libre.sample.json $pkgdir/usr/share/osvrcore/sample-configs
 }
 
 
