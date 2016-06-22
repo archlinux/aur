@@ -1,4 +1,4 @@
-From d3e6a867453fdaf2fe39d4dad71b0fa916da6a98 Mon Sep 17 00:00:00 2001
+From 98839f02b90416cba7e44d1d6861740cc191d923 Mon Sep 17 00:00:00 2001
 From: Benjamin Kaduk <kaduk@mit.edu>
 Date: Mon, 7 Apr 2014 21:54:46 -0400
 Subject: [PATCH 3/3] Do not install kauth manpages when kauth is disabled
@@ -109,5 +109,5 @@ index 1eed6a1..ee6bb15 100644
  	test -h $(DESTDIR)/$(mandir)/man8/dafssync-debug.8 \
  	    || ln -s fssync-debug.8 $(DESTDIR)/$(mandir)/man8/dafssync-debug.8
 -- 
-2.8.2
+2.9.0
 
