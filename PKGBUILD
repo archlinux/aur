@@ -3,11 +3,14 @@
 ### BUILD OPTIONS
 # Set these variables to ANYTHING that is not null to enable them
 
-# Tweak kernel options prior to a build via nconfig
-_makenconfig=
 
-### Do not disable NUMA until CK figures out why doing so causes panics for
-### some users!
+# Running with a 1000 Hz tick rate is recommanded 
+# http://ck.kolivas.org/patches/bfs/bfs-faq.txt
+_1k_Hz_ticks=y
+
+# Tweak kernel options prior to a build via nconfig
+#_makenconfig=
+
 # NUMA is optimized for multi-socket motherboards.
 # A single multi-core CPU actually runs slower with NUMA enabled.
 # See, https://bugs.archlinux.org/task/31187
@@ -34,14 +37,20 @@ _NUMAdisable=y
 # a new kernel is released, but again, convenient for package bumps.
 #_use_current=y
 
+# Alternative I/O scheduler by Paolo Valente
+# Set this if you want it enabled globally i.e. for all devices in your system
+# If you want it enabled on a device-by-device basis, leave this unset and see:
+# https://wiki.archlinux.org/index.php/Linux-ck#How_to_Enable_the_BFQ_I.2FO_Scheduler
+_BFQ_enable_=y
+
 ### Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-think
-pkgdesc="Linux kernel with patches for Lenovo Think T530. It contains fbcondecor patch and changes required for VGA passthrough - for experiments"
+pkgdesc="Linux kernel with patches for Lenovo Think T530. It contains: ck, fbcondecor patch and changes required for VGA passthrough (for experiments)"
 _srcname=linux-4.6
 _ckpatchname="patch-4.6-ck1"
 pkgver=4.6.2
-pkgrel=1
+pkgrel=3
 arch=("i686" "x86_64")
 url="http://www.kernel.org/"
 license=("GPL2")
@@ -56,6 +65,7 @@ optdepends=("nvidia-think: nvidia drivers"
 options=("!strip")
 source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "https://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+# ck1 patchset
 "http://ck.kolivas.org/patches/4.0/4.6/4.6-ck1/${_ckpatchname}.xz"
 "001-change_default_console_loglevel.patch"
 "002-i915_vga_arbiter-4.6.2.patch"
@@ -64,10 +74,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 "005-intel_fifo_underrun_error_to_debug.patch"
 "006-microphone_mute_light.patch"
 "007-fbcondecor.patch"
-# the main kernel config files
+# BFQ
+"008-cgroups_kconfig_build_bits_for_BFQ-4.5.0.patch"
+"009-introduce_the_BFQ-4.5.0.patch"
+"010-add_Early_Queue_Merge_to_BFQ-4.5.0.patch"
+# The main kernel config files
 "config" 
 "config.x86_64"
-# standard config files for mkinitcpio ramdisk
+# Standard config files for mkinitcpio ramdisk
 "linux.preset")
 
 md5sums=('d2927020e24a76da4ab482a8bc3e9ef3'
@@ -80,8 +94,11 @@ md5sums=('d2927020e24a76da4ab482a8bc3e9ef3'
          '64c87cfec450389cc158ba0cf6fe7a1e'
          'c96372203aec1ebc0fd8404bdddcc0b8'
          '8b7ca23aa660578023a0a244ae235888'
-         'ed1d392d9feb77674e7a71c3eda060e6'
-         '2a8d43290cca1297a5f421b58b7c4058'
+         'b3b845477eb2e62e745803685bde9057'
+         '7e50b0145ed002319a8fb651b72f7cd0'
+         'a873c975acf24c3ef0225b9fcd3f3e1e'
+         'd122753e36b01f3c4cc614b764fa2777'
+         '802a62b556c6f0715fe3eb0933fa7d3b'
          'eb14dcfd80c00852ef81ded6e826826a')
 
 _kernelname=${pkgbase#linux}
@@ -125,12 +142,37 @@ prepare() {
   # Enabling fbcondecor
   patch -p1 -i "${srcdir}/007-fbcondecor.patch"
 
+  # BFQ patch
+  msg "Patching source with BFQ patches"
+  patch -p1 -i "${srcdir}/008-cgroups_kconfig_build_bits_for_BFQ-4.5.0.patch"
+  patch -p1 -i "${srcdir}/009-introduce_the_BFQ-4.5.0.patch"
+  patch -p1 -i "${srcdir}/010-add_Early_Queue_Merge_to_BFQ-4.5.0.patch"
+
+  # Clean tree and copy ARCH config over
+  msg "Running make mrproper to clean source tree"
+  make mrproper
+
   # Copy the default config depanding on architecture
   msg "Copying config..."
   if [ "${CARCH}" = "x86_64" ]; then
     cat "${srcdir}/config.x86_64" > ./.config
   else
     cat "${srcdir}/config" > ./.config
+  fi
+
+  ### Optionally set tickrate to 1000 
+  if [ -n "$_1k_Hz_ticks" ]; then
+    msg "Setting tick rate to 1k..."
+    sed -i -e 's/^CONFIG_HZ_300=y/# CONFIG_HZ_300 is not set/' \
+      -i -e 's/^# CONFIG_HZ_1000 is not set/CONFIG_HZ_1000=y/' \
+      -i -e 's/^CONFIG_HZ=300/CONFIG_HZ=1000/' .config
+  fi
+
+  ### Optionally enable BFQ as the default I/O scheduler
+  if [ -n "$_BFQ_enable_" ]; then
+    msg "Setting BFQ as default I/O scheduler..."
+    sed -i -e '/CONFIG_DEFAULT_IOSCHED/ s,cfq,bfq,' \
+      -i -e s'/CONFIG_DEFAULT_CFQ=y/# CONFIG_DEFAULT_CFQ is not set\nCONFIG_DEFAULT_BFQ=y/' ./.config
   fi
 
   # Optionally disable NUMA since >99% of users have mono-socket systems.
