@@ -1,6 +1,6 @@
 # Maintainer: Alexander Minges <alexander.minges@gmail.com>
 pkgname=python-yapf
-pkgver=0.8.2
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="A formatter for Python code."
 url="https://github.com/google/yapf"
@@ -8,7 +8,7 @@ depends=('python' )
 license=('Apache')
 arch=('any')
 source=("https://github.com/google/yapf/archive/v$pkgver.tar.gz")
-sha256sums=('c9bda991644f6e08274ef7b4083be7f3677cf96d6fbf21e1541c909d26b5ac32')
+sha256sums=('528ed8c886041d4e72fa08e5f5fc8c0938c670d07086a4ac893d5ae415eac982')
 
 build() {
     cd $srcdir/yapf-$pkgver
