@@ -5,7 +5,7 @@
 
 pkgname=dvb-usb-rtl2832u-openpli
 pkgver=20130918
-pkgrel=4
+pkgrel=5
 pkgdesc="Linux module for the RTL2832U DVB-T USB2.0 device"
 arch=('i686' 'x86_64')
 url="http://openpli.org/forums/topic/20899-rtl2832u-chipset-support-proposal"
