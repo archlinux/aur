@@ -2,7 +2,7 @@
 
 pkgname=cruiser
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Map and navigation application using offline vector maps"
 arch=('any')
 url="http://wiki.openstreetmap.org/wiki/Cruiser"
@@ -13,9 +13,20 @@ replaces=('atlas-maps' 'atlas-maps-bin' 'atlas-maps-beta-bin')
 source=("http://www.talent.gr/public/cruiser/cruiser-${pkgver}.zip"
         "cruiser.sh")
 md5sums=('67b41ec4c00d1c1b79910c5425fc0c9c'
-         'ab6112f9530a64b9ac8706ab7057cc8c')
+         '6c23697fc0421c752227dd1e1f29245f')
+
+build () {
+    sed 's/cruiser.jar/cruiser-gl.jar/' cruiser.sh > cruiser-gl.sh
+}
 
 package() {
-    install -Dm644 "cruiser/cruiser.jar" "$pkgdir/usr/share/java/cruiser/cruiser.jar"
-    install -Dm755 cruiser.sh "$pkgdir/usr/bin/cruiser"
+    for _f in cruiser{,-gl}; do
+        install -Dm644 "cruiser/$_f.jar" "$pkgdir/usr/share/java/cruiser/$_f.jar"
+        install -Dm755 "$_f.sh" "$pkgdir/usr/bin/$_f"
+    done
+
+    cd cruiser/lib
+    for _f in *.jar; do
+        install -Dm644 "$_f" "$pkgdir/usr/share/java/cruiser/lib/$_f"
+    done
 }

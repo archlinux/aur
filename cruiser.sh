@@ -1,2 +1,3 @@
 #!/bin/sh
-java -jar /usr/share/java/cruiser/cruiser.jar
+cd /usr/share/java/cruiser
+java -Xmx1024M -jar cruiser.jar
