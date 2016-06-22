@@ -14,7 +14,7 @@ depends=()
 provides=('adapta-gtk-theme')
 conflicts=('adapta-gtk-theme')
 makedepends=(dpkg)
-optsdepends=()
+optdepends=()
 source=("https://launchpad.net/~tista/+archive/ubuntu/adapta/+files/adapta-gtk-theme_${_package_version}ubuntu1~yakkety1_all.deb")
 md5sums=('c19f596f4d499a7bdf4fbc14892f74eb')
 
