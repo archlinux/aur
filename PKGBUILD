@@ -2,13 +2,13 @@
 pkgname=pinta-git
 pkgver=1.7
 pkgrel=1
-pkgdesc="The game 2048 for your Linux terminal"
+pkgdesc="Drawing/editing program modeled after Paint.NET. It's goal is to provide a simplified alternative to GIMP for casual users"
 arch=('x86_64' 'i686')
 url="https://pinta-project.com"
 license=('MIT')
 depends=('mono' 'gtk-sharp-2' 'mono-addins' 'yelp-tools')
 makedepends=('git')
-provides=('pinta' 'pinta-git')
+provides=('pinta')
 conflicts=('pinta')
 options=('!makeflags')
 source=(git+https://github.com/PintaProject/Pinta.git)
