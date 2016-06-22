@@ -4,7 +4,7 @@ _version=DEVELOPMENT-SNAPSHOT-2016-06-20-a
 
 pkgname=swift-development-bin
 pkgver=${_version//-/.}
-pkgrel=0
+pkgrel=1
 pkgdesc="The Swift programming language, the development snapshot binary drops from the official website"
 arch=('x86_64')
 url="https://swift.org"
