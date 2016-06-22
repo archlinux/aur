@@ -1,5 +1,5 @@
 post_install() {
-    EXTRAMODULES='extramodules-4.0-ARCH'
+    EXTRAMODULES='extramodules-4.6-ARCH'
     depmod $(cat /lib/modules/$EXTRAMODULES/version)
 }
 

@@ -1,0 +1,18 @@
+diff -ur a/rtl2832u_fe.c b/rtl2832u_fe.c
+--- a/rtl2832u_fe.c	2016-06-22 12:58:24.918063020 +0100
++++ b/rtl2832u_fe.c	2016-06-22 13:10:09.319010799 +0100
+@@ -2117,8 +2117,14 @@
+ }
+ 
+ static int 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(4, 6, 0)
+ rtl2832_get_parameters(
+ 	struct dvb_frontend*	fe)
++#else
++rtl2832_get_parameters(
++    struct dvb_frontend*    fe,
++    struct dtv_frontend_properties *props)
++#endif
+ {
+ 	struct dtv_frontend_properties	*param = &fe->dtv_property_cache;
+ 	struct rtl2832_state* p_state = fe->demodulator_priv;

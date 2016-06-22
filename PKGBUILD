@@ -17,11 +17,13 @@ provides=('dvb-usb-rtl2832u')
 source=('dvb-usb-rtl2832u.patch::https://github.com/Xtrend-Official/meta-xtrend/raw/master/recipes-bsp/linux/linux-etxx00/dvb-usb-rtl2832.patch'
         'Makefile'
         'dvb-usb-rtl28xxu.conf'
-        'linux42.patch')
+        'linux42.patch'
+        'rtl2832-get-parameters.patch')
 md5sums=('263f5060ff7ef969ecaad1494700230a'
          'b91ef30d49fc0e7d8e76b39c98cf3ff6'
          '063be4e255e010899574fc3cdec67120'
-         'bc75fc1f5a9030d6545c66642612ef3d')
+         'bc75fc1f5a9030d6545c66642612ef3d'
+         '4e5b15eee3f6206a415fb441f799d566')
 PKGEXT='.pkg.tar'
 
 _extramodules="extramodules-$(uname -r | cut -f-2 -d.)-$(uname -r | cut -f3- -d-)"
@@ -42,6 +44,7 @@ build() {
 
   ## Patches go here ##
   patch -p1 < "$srcdir/linux42.patch"
+  patch -p1 < "$srcdir/rtl2832-get-parameters.patch"
 
   # Build module
   export KBUILD_SRC="/usr/lib/modules/${_kernver}/build"
