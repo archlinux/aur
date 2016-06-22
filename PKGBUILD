@@ -1,8 +1,8 @@
 # Maintainer: Adrián Pérez de Castro <aperez@igalia.com>
 pkgname='ttf-monoid-git'
 pkgdesc='Open Source coding font'
-pkgver=r355.7d9f767
-pkgrel=2
+pkgver=r421.cebcdd6
+pkgrel=1
 arch=('any')
 license=('custom:MIT')
 url='http://larsenwork.github.io/monoid/'
