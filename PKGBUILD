@@ -16,7 +16,7 @@ isOpenGL() {
 }
 
 pkgname=mingw-w64-qt5-base
-pkgver=5.6.1
+pkgver=5.7.0
 pkgrel=1
 pkgdesc="A cross-platform application and UI framework (mingw-w64)"
 ! isStatic && arch=('i686' 'x86_64')
@@ -64,7 +64,7 @@ source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/sub
         "fix-static-psql-mysql.patch"
         "qtbase-1-fixes.patch"
         "qt5-fix-implib-ext.patch")
-md5sums=('b23232190a3df61fe1ba81636987b036'
+md5sums=('184f9460b40752d71b15b827260580c2'
          'bab00ccc19d888997f323c80354a7c3f'
          'f7e1487de6e85116d9c6bde2eac4fb73'
          'bc99c4cc6998295d76f37ed681c20d47'
@@ -79,7 +79,7 @@ md5sums=('b23232190a3df61fe1ba81636987b036'
          'c15d9f480d0248648fa52aeacb46e3c7'
          '612a4dfb9f1a3898a1920c28bb999159'
          'd0eb81aef1a21c65813fe4ddabbc4206'
-         '62d2977e57fccf1f16d7ea6bf06d3279'
+         '42c4968a0bd29856b683ad1b5d2b2a75'
          '83139869355c2d46921adb25e47cf0fa')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -204,7 +204,6 @@ build() {
       -openssl \
       -dbus-linked \
       -no-glib \
-      -no-gtkstyle \
       -no-icu \
       -release \
       -nomake examples \
@@ -253,7 +252,7 @@ build() {
     #sed -e "s|^QT_LFLAGS_MYSQL_R=.*$|QT_LFLAGS_MYSQL_R=\"${QT_LFLAGS_MYSQL_R}\"|g" -i "${srcdir}/${_pkgfqn}/configure"
     qt_configure_args_mysql="-mysql_config /this/file/should/not/exist"
 
-    mkdir ../build-${_arch} && pushd ../build-${_arch}
+    mkdir -p ../build-${_arch} && pushd ../build-${_arch}
 
     if isStatic; then
       ../${_pkgfqn}/configure -static $qt_configure_args $qt_configure_args_mysql
@@ -263,7 +262,7 @@ build() {
       # libraries which various compiled tools (like moc) use. As the libQt5Bootstrap*
       # libraries aren't installed at this point yet, we have to workaround this
       ../${_pkgfqn}/configure -shared $qt_configure_args $qt_configure_args_mysql
-      LD_LIBRARY_PATH="$PWD/lib" make
+      LD_LIBRARY_PATH="$PWD/lib" LDFLAGS="-L$PWD/lib" make
     fi
 
     popd
