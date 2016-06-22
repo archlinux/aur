@@ -2,7 +2,7 @@
 # Based uppon the script for radegast written by Mike Swanson <mikeonthecomputer@gmail.com>
 pkgname=radegast-git
 pkgver=master
-pkgrel=1
+pkgrel=42
 pkgdesc="Lightweight client for connecting to Second Life and OpenSim worlds"
 arch=('i686' 'x86_64')
 url="http://radegast.org"
