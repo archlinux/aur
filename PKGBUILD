@@ -1,6 +1,10 @@
 # Maintainer = rafaelsoaresbr <rafaelsoaresbr@gmail.com>
+# Contributing: https://github.com/rafaelsoaresbr/pkgbuild
+# Builds: https://gitlab.com/rafaelsoaresbr/pkgbuild/builds
+
 # Contributor: Dis McCarthy <aurarch@sigkill.net>
 # Contributor: Stephan Conrad <stephan.conrad@gmail.com
+
 pkgname=kimchi
 pkgver=2.1.0
 pkgrel=1
