@@ -3,7 +3,7 @@
 
 pkgbase=mint-artwork-common
 pkgname=mint-sounds
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc='Common artwork used in Linux Mint.'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL')
 url='http://linuxmint.com'
 source=("https://ftp.fau.de/mint/packages/pool/main/m/${pkgbase}/${pkgbase}_${pkgver}.tar.gz"
 	"${pkgname}.gschema.override")
-sha256sums=('6c889b9b4eec9d2a8542d547d8700503435b9aefae2a6ba4046f0e596f663c0d'
+sha256sums=('9d696a5dbf15b0673e3d67ae432803af39b22cb7908bfb08c1b06a84793f4c4a'
 	'7535f178ef948cdc11a24dfa2d1a7e2ddb1b1b8d8e4be93f52fe286c536ae178')
 
 package_mint-sounds() {
