@@ -1,7 +1,7 @@
 #AUR Maintainter: JKA Network <contacto@jkanetwork.com>
 pkgname=pinta-git
 pkgver=1.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Drawing/editing program modeled after Paint.NET. It's goal is to provide a simplified alternative to GIMP for casual users"
 arch=('x86_64' 'i686')
 url="https://pinta-project.com"
@@ -19,8 +19,7 @@ pkgver() {
 }
 build() {
 	cd "Pinta"
-	./autogen.sh
-	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+	./autogen.sh --prefix=/usr --sysconfdir=/etc --localstatedir=/var
 	make
 }
 package() {
