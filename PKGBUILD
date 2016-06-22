@@ -69,8 +69,8 @@ _disabled_modules=(languages/mod_spidermonkey
 
 
 pkgname='freeswitch'
-pkgver='1.6.8'
-pkgrel='2'
+pkgver='1.6.9'
+pkgrel='1'
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
