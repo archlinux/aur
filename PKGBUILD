@@ -6,7 +6,7 @@
 pkgname=('ginger-git')
 
 # Version
-pkgver=2.1.0.r141.g2e2e2c0
+pkgver=2.1.0.r153.g63b5258
 pkgrel=1
 #epoch=
 
@@ -28,6 +28,7 @@ depends=('ginger-base'
          'python2-magic'
          'python2-netaddr'
          'tuned'
+         'dbus-glib'
          'wok')
 #optdepends=()
 makedepends=('git')
@@ -39,13 +40,13 @@ conflicts=('ginger')
 #replaces=()
 
 # Others
-#backup=()
+backup=('etc/wok/plugins.d/ginger.conf')
 #options=()
 #install=
 #changelog=
 
 # Sources
-source=('git+https://github.com/kimchi-project/ginger.git')
+source=('git+https://github.com/kimchi-project/ginger.git' 'ginger-git.install')
 #source_i686=("")
 #source_x86_64=("")
 #noextract=()
@@ -56,7 +57,8 @@ source=('git+https://github.com/kimchi-project/ginger.git')
 #md5sums_i686=()
 #md5sums_x86_64=()
 #sha1sums=()
-sha256sums=('SKIP')
+sha256sums=('SKIP'
+            '5f66fd556907c8d3bf917742ced53cc198b03c579dd0f0870859f2db81f63684')
 
 pkgver() {
   cd $srcdir/ginger

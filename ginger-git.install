@@ -1,0 +1,24 @@
+## arg 1:  the new package version
+## arg 2:  the old package version
+
+#pre_install() {
+}
+
+post_install() {
+  echo
+  echo Start/enable tuned.service
+  echo
+}
+
+#pre_upgrade() {
+#}
+
+
+#post_upgrade() {
+#}
+
+#pre_remove() {
+#}
+
+#post_remove() {
+#}
