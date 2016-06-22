@@ -1,10 +1,10 @@
 # Maintainer: Ashley Towns <mail(at)ashleytowns(dot)id(dot)au>
 
-_version=DEVELOPMENT-SNAPSHOT-2016-05-31-a
+_version=DEVELOPMENT-SNAPSHOT-2016-06-20-a
 
 pkgname=swift-development-bin
 pkgver=${_version//-/.}
-pkgrel=3
+pkgrel=0
 pkgdesc="The Swift programming language, the development snapshot binary drops from the official website"
 arch=('x86_64')
 url="https://swift.org"
@@ -21,7 +21,7 @@ source=(
   "https://swift.org/builds/development/ubuntu1510/swift-${_version}/swift-${_version}-ubuntu15.10.tar.gz.sig"
   "swift.conf"
 )
-sha256sums=('254d32a74419b043b9b1a63bc1403c22ec16771ea594095a098c19433e06874a'
+sha256sums=('f56dcd24ce77923c0b297dd8477013cc7466895102445bede4d4dd1e49efcde4'
             'SKIP'
             'c93a77b3a9b2647266a5ccdbe77f47d51cb7051d23ee7cca6258564daf713f35')
 
