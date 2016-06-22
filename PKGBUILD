@@ -1,4 +1,5 @@
-# Maintainer: Doug Newgard <scimmia at archlinux dot info>
+# Maintainer: Christopher Loen <christopherloen at gmail dot com>
+# Contributor: Doug Newgard <scimmia at archlinux dot info>
 pkgname='python2-elmextensions'
 pkgdesc='Python2 library that contains a few more complex elementary objects for easy importing/usage'
 pkgver='0.2.0'
