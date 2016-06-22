@@ -1,13 +1,13 @@
 pkgbase = pymonopoly-git
-	pkgdesc = Famous monopoly board game (russian variation - 'Manager'). In active development, so currently there's no ability to play
-	pkgver = 0.205.fc13402
+	pkgdesc = Famous monopoly board game (russian variation - 'Manager'). In active development
+	pkgver = 0.249.c148629
 	pkgrel = 1
-	url = https://bitbucket.org/Kycok/pymonopoly-rewrite
+	url = https://github.com/Kycko/PyMonopoly
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = python2-pygame
-	source = pymonopoly-git::git+https://bitbucket.org/Kycok/pymonopoly-rewrite.git
+	source = pymonopoly-git::git+https://github.com/Kycko/PyMonopoly.git
 	md5sums = SKIP
 
 pkgname = pymonopoly-git
