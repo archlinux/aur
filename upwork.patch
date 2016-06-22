@@ -1,0 +1,11 @@
+--- upwork.desktop	2016-06-22 14:26:16.234433109 -0500
++++ upwork-patched.desktop	2016-06-22 14:26:46.838061553 -0500
+@@ -1,7 +1,7 @@
+ [Desktop Entry]
+ Encoding=UTF-8
+ Name=Upwork
+-Exec=upwork
++Exec=/opt/appimages/Upwork.AppImage
+ Icon=upwork.png
+ Terminal=false
+ Type=Application
