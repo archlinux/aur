@@ -19,7 +19,8 @@ source=("https://launchpad.net/~tista/+archive/ubuntu/adapta/+files/adapta-gtk-t
 md5sums=('c19f596f4d499a7bdf4fbc14892f74eb')
 
 package() {
-    dpkg -x $srcdir/adapta-gtk-theme_${_package_version}ubuntu1~yakkety1_all.deb $pkgdir
-    rm -r $pkgdir/usr/share/doc
+    bsdtar -Oxf $srcdir/adapta-gtk-theme_${_package_version}ubuntu1~yakkety1_all.deb --include data.tar.xz  | tar -C $pkgdir -Jxf -
     install -m 755 -d $pkdir/usr/share /usr/share
+    install -D -m644 ${pkgdir}/usr/share/themes/Adapta/LICENSE_CC_BY_SA3 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    rm -r $pkgdir/usr/share/doc
 }
