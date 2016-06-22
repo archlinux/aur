@@ -1,6 +1,6 @@
 pkgbase = messengerfordesktop-git
-	pkgdesc = Beautiful desktop client for Facebook Messenger. Sytten's fork
-	pkgver = 1.4.8.r0.g44b6eae
+	pkgdesc = Beautiful desktop client for Facebook Messenger. Git version.
+	pkgver = 1.5.0.beta.0.r0.g225a528
 	pkgrel = 1
 	url = http://messengerfordesktop.com/
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = messengerfordesktop-git
 	conflicts = messengerfordesktop
 	conflicts = messengerfordesktop-bin
 	options = !strip
-	source = messengerfordesktop-git::git+https://github.com/Aluxian/Facebook-Messenger-Desktop.git#branch=V1.4.X
+	source = messengerfordesktop-git::git+https://github.com/Aluxian/Facebook-Messenger-Desktop.git#branch=V1.5.X
 	source = start.sh
 	md5sums = SKIP
 	md5sums = 31abbecf99328b1b77ee1bdb1e2d981f

@@ -1,9 +1,9 @@
 # Maintainer: Marcin Wieczorek <marcin@marcin.co>
 
 pkgname=messengerfordesktop-git
-pkgver=1.4.8.r0.g44b6eae
+pkgver=1.5.0.beta.0.r0.g225a528
 pkgrel=1
-pkgdesc="Beautiful desktop client for Facebook Messenger. Sytten's fork"
+pkgdesc="Beautiful desktop client for Facebook Messenger. Git version."
 arch=('i686' 'x86_64')
 url="http://messengerfordesktop.com/"
 license=('MIT')
@@ -11,7 +11,7 @@ conflicts=('messengerfordesktop' 'messengerfordesktop-bin')
 options=(!strip)
 depends=('libxtst' 'alsa-lib' 'gtk2' 'gconf' 'libnotify' 'nss' 'xorg-xprop' 'xorg-xwininfo')
 makedepends=('git' 'gulp' 'npm')
-source=("$pkgname::git+https://github.com/Aluxian/Facebook-Messenger-Desktop.git#branch=V1.4.X"
+source=("$pkgname::git+https://github.com/Aluxian/Facebook-Messenger-Desktop.git#branch=V1.5.X"
 		"start.sh")
 
 md5sums=('SKIP'
