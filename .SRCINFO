@@ -1,7 +1,7 @@
 pkgbase = yum-metadata-parser
 	pkgdesc = C-based metadata parser to quickly parse xml metadata into sqlite databases.
 	pkgver = 1.1.4
-	pkgrel = 8
+	pkgrel = 9
 	url = http://yum.baseurl.org/download/yum-metadata-parser/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = yum-metadata-parser
 	depends = python2
 	depends = libxml2
 	depends = glib2
+	depends = python2-pip
 	source = http://yum.baseurl.org/download/yum-metadata-parser/yum-metadata-parser-1.1.4.tar.gz
 	sha256sums = f1560a284541feb720c3ae35b6b31f80c2be5cb9ca86b3a1ee9459846f821ada
 
