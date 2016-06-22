@@ -2,7 +2,7 @@
 ## Maintainer: B.H. <es_vinux@vinuxproject.org>
 pkgname=lpclic
 _pkgname=lpclic
-pkgver=0.4.0.4
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Optimizes the command history for the linphonec CLI for linphone"
 arch=('any')
@@ -22,6 +22,8 @@ cd "${srcdir}/${_pkgname}"
      install -d "$pkgdir/etc/lpclic"
           install -m 644 lpc_favorites "$pkgdir/etc/lpclic/"
           install -m 644 lpc.conf ${pkgdir}/etc/lpclic/
+     install -d "$pkgdir/usr/share/bash-completion/"
+          cp -r completions ${pkgdir}/usr/share/bash-completion/
      install -d "$pkgdir/usr/share/doc/lpclic"
           install -m 644 change.log ${pkgdir}/usr/share/doc/lpclic
           install -m 644 lpc.conf ${pkgdir}/usr/share/doc/lpclic
