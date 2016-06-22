@@ -2,14 +2,14 @@
 
 pkgname="firefox-vacuum-places"
 pkgver='1.2.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Defragments your Firefox "Places" database (history/bookmarks). This greatly reduces the lag while typing in the address bar and the start-up time.'
 arch=('any')
 url="https://addons.mozilla.org/en-US/firefox/addon/vacuum-places-improved"
 license=('MPL')
 depends=('firefox')
 source=("${pkgname}.xpi::https://addons.mozilla.org/firefox/downloads/latest/13878/addon-13878-latest.xpi")
-sha256sums=('7a1194150eaa2aea530cba4532ad8db32bf9c617f1d18a4bca19f89b7c455a21')
+sha256sums=('a8cb81e734d3cdd9ec06df205faec8e09effe9d073b442bfcdedf9555eec9e11')
 noextract=(${source[@]%%::*})
 
 package() {
