@@ -1,7 +1,7 @@
 pkgname=sunflower-git
 _gitname=Sunflower
-pkgver=0.2.59
-pkgrel=0
+pkgver=0.3.61.r185.gf7b602d
+pkgrel=1
 pkgdesc="Small and highly customizable twin-panel file manager for Linux with support for plugins"
 arch=('any')
 url="https://github.com/MeanEYE/Sunflower"
@@ -18,7 +18,7 @@ conflicts=('sunflower')
 source=('git://github.com/MeanEYE/Sunflower.git'
 'sunflower.desktop')
 md5sums=('SKIP'
-'9cfbe8c2075b39b9d62242ef48598105')
+         '9cfbe8c2075b39b9d62242ef48598105')
 pkgver() {
 	cd "${srcdir}/${_gitname}"
 	git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
