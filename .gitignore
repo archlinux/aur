@@ -1,0 +1,10 @@
+# makepkg folders
+src/
+pkg/
+
+# built packages
+*.pkg.*
+
+# sources 
+*.jar
+*.zip
