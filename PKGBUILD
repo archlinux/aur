@@ -1,19 +1,19 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=nfs2se-git
-pkgver=1.0.1
-pkgrel=4
-pkgdesc='Need For Speed™ II SE - Cross-platform port with 3D acceleration and TCP protocol!'
+pkgver=1.0.2
+pkgrel=1
+pkgdesc='Cross-platform wrapper for the Need For Speed™ II SE game with 3D acceleration and TCP protocol!'
 arch=('i686' 'x86_64')
 url='https://github.com/zaps166/NFSIISE'
-license=('GPL')
+license=('MIT')
 
 if [ $(uname -m) == "x86_64" ]; then
 	depends=('lib32-sdl2' 'lib32-libgl')
-	makedepends=('gcc-multilib' 'yasm')
+	makedepends=('gcc-multilib' 'curl')
 else
 	depends=('sdl2' 'libgl')
-	makedepends=('gcc' 'yasm')
+	makedepends=('gcc' 'curl')
 fi
 
 source=('git+https://github.com/zaps166/NFSIISE'
