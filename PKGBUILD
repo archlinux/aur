@@ -13,7 +13,7 @@ arch=('i686' 'x86_64')
 depends=(fuse gconf)
 makedepends=(go npm git rsync)
 # keybase-release is a deprecated AUR package
-conflicts=(keybase keybase-release)
+conflicts=(keybase keybase-release keybase-bin)
 source=(
   'git+https://github.com/keybase/client'
   'git+https://github.com/keybase/kbfs'
