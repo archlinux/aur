@@ -32,16 +32,6 @@ build() {
   rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts/${majorVer}
   ./tws-latest-standalone-linux-x64.sh -q
 
-  # as of 954.2o the installer runs TWS, even after unattended install!
-  # so we need to install, wait to kill off the nuisance process, and continue
-  while true
-  do
-    pkill -f $HOME/Jts
-    if [ $? -eq 0 ]; then
-      break
-    fi
-  done
-
   mv ${HOME}/Jts/${majorVer}/jars/*.jar ${srcdir}
   rm -rf $HOME/.install4j $HOME/.i4j_jres $HOME/Jts/${majorVer}
   cd ${srcdir}
