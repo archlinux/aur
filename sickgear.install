@@ -1,64 +1,69 @@
 post_install() {
-	systemd-sysusers sickgear.conf
-	systemd-tmpfiles --create sickgear.conf
+  systemd-sysusers sickgear.conf
+  systemd-tmpfiles --create sickgear.conf
 
-	if [ ! -d /opt/sickgear/data ]; then
-		mkdir -p -m 755 /opt/sickgear/data &> /dev/null
+  if [ ! -d /opt/sickgear/data ]; then
+    mkdir -p -m 755 /opt/sickgear/data &> /dev/null
 
 cat << 'EOM'
 
 ==> In order to start SickGear, you must issue the following command:
 
-	systemctl start sickgear.service
+  systemctl start sickgear.service
 
 ==> To have SickGear start automatically on system startup and after
 ==> version upgrades, also issue the following command:
-	
-	systemctl enable sickgear.service
+
+  systemctl enable sickgear.service
 
 ==> Once started, SickGear can be accessed by navigating your browser to:
 
-	http://localhost:8081/
+  http://localhost:8081/
 
 EOM
-	fi
+  fi
 
-	chown -R sickgear:sickgear /opt/sickgear &> /dev/null
+  chown -R sickgear:sickgear /opt/sickgear &> /dev/null
 }
 
 pre_upgrade() {
-	if systemctl is-active sickgear.service &> /dev/null; then
-		systemctl stop sickgear.service &> /dev/null
-	fi
+  if systemctl is-active sickgear.service &> /dev/null; then
+    systemctl stop sickgear.service &> /dev/null
+  fi
 }
 
 post_upgrade() {
-	post_install
-	systemctl daemon-reload &> /dev/null
+  post_install
+  systemctl daemon-reload &> /dev/null
 
-	if systemctl is-enabled sickgear.service &> /dev/null; then
-		systemctl start sickgear.service
-	fi
+  if systemctl is-enabled sickgear.service &> /dev/null; then
+    systemctl start sickgear.service
+  fi
 }
 
 pre_remove() {
-	pre_upgrade
+  pre_upgrade
 
-	if systemctl is-enabled sickgear.service &> /dev/null; then
-		systemctl disable sickgear.service &> /dev/null
-	fi
+  if systemctl is-enabled sickgear.service &> /dev/null; then
+    systemctl disable sickgear.service &> /dev/null
+  fi
 }
 
 post_remove() {
-	if ! rmdir /opt/sickgear/data &> /dev/null; then
+  # Clean up leftovers (cached python files)
+  if [ -d /opt/sickgear/app ]; then
+    rm -fR /opt/sickgear/app &> /dev/null
+  fi
+
+  if ! rmdir /opt/sickgear/data &> /dev/null; then
 cat << 'EOM'
 
 ==> Data directory has not been removed since it contains files.
-==> If you no longer want your show data, you may removing it by issuing 
-==> the following command:
+==> If you no longer want your show data, you may removing it by issuing
+==> the following command as root:
 
-	rm -rf /opt/sickgear
+  rm -rf /opt/sickgear
 
 EOM
-	fi
+  fi
 }
