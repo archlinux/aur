@@ -1,0 +1,11 @@
+--- TextSuggest-orig.py	2016-06-22 07:13:54.566518200 +0200
++++ TextSuggest.py	2016-06-22 07:14:19.063184795 +0200
+@@ -34,7 +34,7 @@
+ 
+ 	suggest_method = 'replace'
+ 
+-script_cwd = os.path.abspath(os.path.join(__file__, os.pardir))
++script_cwd = os.path.abspath(os.path.join(__file__, '/usr/lib/python3.5/site-packages/textsuggest/'))
+ 
+ dict_dir = os.path.join(script_cwd, 'EnglishOpenWordList')
+ 
