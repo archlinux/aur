@@ -1,8 +1,8 @@
 # Maintainer: Christopher Loen <christopherloen at gmail dot com>
 # Contributor: Doug Newgard <scimmia at archlinux dot info>
-pkgname=('python-elmextensions')
-pkgdesc="Python library that contains a few more complex elementary objects for easy importing/usage"
-pkgver=0.2.0
+pkgname='python-elmextensions'
+pkgdesc='Python library that contains a few more complex elementary objects for easy importing/usage'
+pkgver='0.2.0'
 pkgrel=1
 arch=('any')
 url='https://github.com/JeffHoogland/python-elm-extensions'
