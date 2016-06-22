@@ -1,7 +1,7 @@
 # Maintainer=rafaelsoaresbr <rafaelsoaresbr@gmail.com>
 # wok-git
-# Contributing: https://github.com/rafaelsoaresbr/wok-git.git
-# Builds: https://gitlab.com/rafaelsoaresbr/wok-git/builds
+# Contributing: https://github.com/rafaelsoaresbr/pkgbuild
+# Builds: https://gitlab.com/rafaelsoaresbr/pkgbuild/builds
 #pkgbase=()
 pkgname=('wok-git')
 
