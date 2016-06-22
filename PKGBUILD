@@ -6,6 +6,7 @@
 
 pkgname=bitdefender
 pkgver=7.7.1
+pkgrel=42
 _build=3
 _guiver=1.0
 _guibuild=3
