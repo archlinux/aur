@@ -2,7 +2,7 @@
 
 _pkgbase=fuse
 pkgname=lib32-${_pkgbase}
-pkgver=2.9.6
+pkgver=2.9.7
 pkgrel=1
 pkgdesc="A library that makes it possible to implement a filesystem in a userspace program (32 bit)"
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('lib32-glibc' "${_pkgbase}")
 makedepends=('gcc-multilib')
 source=("${url}/releases/download/${_pkgbase}-${pkgver}/${_pkgbase}-${pkgver}.tar.gz")
 options=(!libtool)
-sha256sums=('0cb48bbc7106632d15a0c6bb582496c9884b869e329428891fe075a9e916f16b')
+sha256sums=('832432d1ad4f833c20e13b57cf40ce5277a9d33e483205fc63c78111b3358874')
 
 prepare() {
   cd ${_pkgbase}-${pkgver}
