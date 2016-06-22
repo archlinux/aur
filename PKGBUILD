@@ -2,15 +2,22 @@
 # Maintainer: Roberto Calabrese <robertocalabrese75@gmail.com>
 pkgname=hotshots
 pkgver=2.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Screenshot tool with some editing features."
 url="http://thehive.xbee.net"
 arch=('x86_64' 'i686')
 license=('GPL2')
 depends=('libqxt' 'shared-mime-info')
 makedepends=('cmake')
-source=("http://sourceforge.net/projects/hotshots/files/${pkgver}/HotShots-${pkgver}-src.zip")
-md5sums=('e36dcaaad8ab94adfff13e551adc053f')
+source=("http://sourceforge.net/projects/hotshots/files/${pkgver}/HotShots-${pkgver}-src.zip"
+	'fix_std_cmath.patch')
+md5sums=('e36dcaaad8ab94adfff13e551adc053f'
+         'b00ceebcb98d2495fa5431abcecf11ba')
+
+prepare() {
+    cd "${srcdir}/HotShots-${pkgver}-src"
+    patch -p0 -i ../fix_std_cmath.patch
+}
 
 build() {
     cd "${srcdir}/HotShots-${pkgver}-src/src"
