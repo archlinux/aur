@@ -5,10 +5,10 @@
 #
 pkgname="calendar-indicator"
 pkgver="0.3.4"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="An indicator for google calendar."
 arch=('i686' 'x86_64')
-url="http://www.atareao.es/tag/calendar-indicator/"
+url="http://www.atareao.es/apps/calendar-indicator-o-google-calendar-en-ubuntu/"
 license=('GPL3')
 depends=('libappindicator-gtk3' 'python' 'shared-mime-info' 'python-beautifulsoup4' 'python-dateutil' 'python-jinja' 'python-requests')
 makedepends=('python2-distutils-extra' 'python2-polib')
