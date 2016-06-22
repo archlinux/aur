@@ -2,7 +2,7 @@
 # Contributor: Rene Schoebel (wesley) <schoebel.r at gmail dot com>
 
 pkgname=openjk-git
-pkgver=3296.ff3fc25
+pkgver=3303.2764ebc
 pkgrel=1
 pkgdesc="Open Source Jedi Knight II + III Engine"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/JACoders/OpenJK"
 license=('GPL')
 depends=('libgl' 'openal' 'zlib' 'sdl2' 'libjpeg' 'glu')
 optdepends=('libpng')
-makedepends=('cmake' 'yasm')
+makedepends=('cmake' 'yasm' 'git')
 provides=(openjk)
 conflicts=(openjk)
 source=("openjk::git+https://github.com/JACoders/OpenJK.git"
