@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Shalygin <k0ste@cn.ru>
 
 pkgname="firefox-jsprintsetup"
-pkgver='0.9.5.1'
+pkgver='0.9.5.3'
 pkgrel='1'
 pkgdesc='Client side Javascript printer settings. This extension implements print setup from CS Javascript'
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/edabg/jsprintsetup"
 license=('MPL')
 depends=('firefox')
 source=("${pkgname}.xpi::https://addons.mozilla.org/firefox/downloads/latest/8966/addon-8966-latest.xpi?src=dp-btn-primary")
-sha256sums=('d485f5a3413f4f806f0c27f8e4e417b0ebd7ff91ade8ec2c0e4d2c7e1feefb81')
+sha256sums=('1ce31dd3451b4fa5e616d16e8cbdae8fa00dbf1b21c1c14ded9cdf0d542e2664')
 noextract=(${source[@]%%::*})
 
 package() {
