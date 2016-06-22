@@ -20,8 +20,8 @@ noextract=('Upwork.AppImage')
 install=upwork-appimage.install
 options=('!strip')
 
-source_x86_64=('https://github.com/regeya/upwork-appimage/releases/download/v4.1.321.0.1/Upwork.AppImage')
-md5sums_x86_64=('9489ed398f0dabc64a2b6952091bf0b8')
+source_x86_64=('https://github.com/regeya/upwork-appimage/releases/download/v4.1.321.0.2/Upwork.AppImage')
+md5sums_x86_64=('43af230938d5e3f85081b668cf2822d3')
 
 prepare() {
     cd "${srcdir}"
