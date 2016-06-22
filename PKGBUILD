@@ -50,7 +50,7 @@ _disabled_modules=(languages/mod_spidermonkey
 
 pkgname='freeswitch-git'
 pkgver=1.7.0.r31054.841e202
-pkgrel=1
+pkgrel=2
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk (git version)."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
@@ -168,7 +168,7 @@ build() {
   # CONFIGURE
   ./configure --prefix=/var/lib/freeswitch --with-python=/usr/bin/python2 \
     --bindir=/usr/bin --sbindir=/usr/sbin --localstatedir=/var \
-    --sysconfdir=/etc/ --datarootdir=/usr/share \
+    --sysconfdir=/etc --datarootdir=/usr/share \
     --libexecdir=/usr/lib/freeswitch --libdir=/usr/lib/freeswitch \
     --includedir=/usr/include/freeswitch --enable-core-odbc-support \
     --with-recordingsdir=/var/spool/freeswitch/recordings \
