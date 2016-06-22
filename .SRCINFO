@@ -1,10 +1,15 @@
 pkgbase = dico
-	pkgdesc = GNU Dico is a flexible modular implementation of DICT server (RFC 2229).
+	pkgdesc = GNU Dico is a flexible modular implementation of DICT server (RFC 2229). In contrast to another implementations, it does not depend on particular database format. GNU Dico handles database accesses using loadable modules.
 	pkgver = 2.2
 	pkgrel = 1
 	url = ftp://download.gnu.org.ua/pub/release/dico
 	arch = any
 	license = GPLv3
+	depends = libtool>=2.4.6
+	depends = pcre>=8.38
+	depends = guile>=2.0
+	depends = python2>=2.7.11
+	depends = gettext>=0.19.7
 	source = ftp://download.gnu.org.ua/pub/release/dico/dico-2.2.tar.gz
 	md5sums = 45145e4790ce64332b2d8e842ce5f957
 
