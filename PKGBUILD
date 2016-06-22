@@ -6,7 +6,7 @@
 pkgname=('kimchi-git')
 
 # Version
-pkgver=2.1.0.r107.gbc6e7c5
+pkgver=2.1.0.r113.gbcb8917
 pkgrel=1
 #epoch=
 
@@ -18,7 +18,8 @@ license=('AGPL2.1' 'Apache')
 groups=('kimchi-project')
 
 # Dependencies
-depends=('dnsmasq'
+depends=('bridge-utils'
+         'dnsmasq'
          'ebtables'
          'ginger-base'
          'libguestfs'
@@ -35,11 +36,11 @@ depends=('dnsmasq'
          'python2-paramiko'
          'python2-pillow'
          'python2-pyparted'
-         'python2-websocket-client'
          'qemu'
          'spice-html5'
          'ttf-font-awesome'
          'ttf-opensans'
+         'websockify'
          'wok')
 #optdepends=()
 makedepends=('git')
@@ -51,7 +52,7 @@ conflicts=('kimchi')
 #replaces=()
 
 # Others
-#backup=()
+backup=('etc/wok/plugins.d/kimchi.conf')
 #options=()
 #install=
 #changelog=
