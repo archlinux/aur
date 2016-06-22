@@ -31,7 +31,7 @@ conflicts=('ginger-base')
 #replaces=()
 
 # Others
-#backup=()
+backup=('etc/wok/plugins.d/gingerbase.conf')
 #options=()
 #install=
 #changelog=
