@@ -7,7 +7,7 @@ pkgbase = bluto
 	license = GPL3
 	depends = python2-pip
 	source = https://github.com/RandomStorm/Bluto/archive/master.zip
-	md5sums = 8740193b31086bdf7e75a4a5bc27e4be
+	sha256sums = 64618514df610cc71a3e1e5c81a06e94f6534dcc1bd869a8e6687b05ad8e3935
 
 pkgname = bluto
 
