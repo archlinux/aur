@@ -1,0 +1,15 @@
+[Unit]
+Description=SickGear Daemon
+After=network.target
+
+[Service]
+Restart=on-success
+User=sickgear
+Group=sickgear
+Type=forking
+ExecStart=/usr/bin/env python2 /opt/%p/app/SickBeard.py -q -d --nolaunch --pidfile=%t/%p/%p.pid --datadir=/opt/%p/data
+ExecStartPost=/usr/bin/chmod 644 %t/%p/%p.pid
+PIDFile=%t/%p/%p.pid
+
+[Install]
+WantedBy=multi-user.target
