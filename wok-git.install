@@ -1,0 +1,28 @@
+## arg 1:  the new package version
+## arg 2:  the old package version
+
+#pre_install() {
+}
+
+post_install() {
+  echo
+  echo Start both libvirtd.service and virtlogd.service. Optionally enable
+  echo libvirtd.service. There is no need to enable virtlogd.service, since
+  echo libvirtd.service, when enabled, also enables the virtlogd.socket and
+  echo virtlockd.socket units. Then start/enable wokd.service and connect your
+  echo browser to https://localhost:8001
+  echo
+}
+
+#pre_upgrade() {
+#}
+
+
+#post_upgrade() {
+#}
+
+#pre_remove() {
+#}
+
+#post_remove() {
+#}

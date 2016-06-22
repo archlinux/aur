@@ -6,7 +6,7 @@
 pkgname=('wok-git')
 
 # Version
-pkgver=2.1.0.r77.ga9986f5
+pkgver=2.1.0.r81.g0e57dfe
 pkgrel=1
 #epoch=
 
@@ -28,8 +28,8 @@ depends=('logrotate'
          'python2-lxml'
          'python2-m2crypto'
          'python2-ordereddict'
-         'python2-pam'
          'python2-psutil'
+         'pypam2-bzr'
          'ttf-font-awesome'
          'ttf-opensans')
 #optdepends=()
@@ -42,13 +42,13 @@ conflicts=('wok')
 #replaces=()
 
 # Others
-#backup=()
+backup=('etc/wok/wok.conf')
 #options=()
-#install=
+install=wok-git.install
 #changelog=
 
 # Sources
-source=('git+https://github.com/kimchi-project/wok.git' 'python.patch')
+source=('git+https://github.com/kimchi-project/wok.git' 'python.patch' 'wok-git.install')
 #source_i686=("")
 #source_x86_64=("")
 #noextract=()
@@ -59,7 +59,9 @@ source=('git+https://github.com/kimchi-project/wok.git' 'python.patch')
 #md5sums_i686=()
 #md5sums_x86_64=()
 #sha1sums=()
-sha256sums=('SKIP' '808dcc04b66dd241eb1c434f75221e1c3762f65ed5beec77407bd123b965ee62')
+sha256sums=('SKIP'
+            '808dcc04b66dd241eb1c434f75221e1c3762f65ed5beec77407bd123b965ee62'
+            '85564b38bb8957773f2bb5379296d3a4ea3555a1d063a2c177232e301de81ee6')
 
 pkgver() {
   cd $srcdir/wok
