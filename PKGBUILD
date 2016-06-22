@@ -1,15 +1,15 @@
 # Maintainer: Daniel Nagy <danielnagy at gmx de>
 
 pkgname=plustache
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Basic port of mustache templating to C++"
 url="https://github.com/mrtazz/plustache"
 arch=( 'i686' 'x86_64' )
 license=( 'MIT' )
 depends=( 'boost' )
-source=( "$pkgname-$pkgver.tar.gz::https://github.com/mrtazz/plustache/archive/v$pkgver.tar.gz" )
-md5sums=('6162946bdb3dccf3b2185fcf149671ee')
+source=( "$pkgname-$pkgver.tar.gz::https://github.com/mrtazz/plustache/archive/$pkgver.tar.gz" )
+md5sums=('e22a8d53650776ade11b7b0ed71258bc')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
