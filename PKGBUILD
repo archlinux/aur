@@ -30,16 +30,16 @@ validpgpkeys=('CB6A07CA90C54234E8A3C8D02C3D4E4C17F231A4') # Derek R. Price <moc 
 prepare() {
   cd "${srcdir}/cvs-${pkgver}"
   patch -Np1 < ../cvs_1.12.13+real-15.diff
+  sed -i -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' configure.in
+  find . -name Makefile.am | xargs sed -i -e 's/^INCLUDES/AM_CPPFLAGS/'
 }
 
 build() {
   cd "${srcdir}/cvs-${pkgver}"
   unset EDITOR VISUAL
 
-  sed -i -e 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/' configure.in
-  find . -name Makefile.am | xargs sed -i -e 's/^INCLUDES/AM_CPPFLAGS/'
   AUTOMAKE='automake --add-missing' autoreconf
-  ./configure --prefix=/usr LIBS="-lbsd"
+  ./configure LIBS="-lbsd" --prefix=/usr
   make
 }
 
