@@ -3,10 +3,10 @@
 
 pkgname="movietitle"
 pkgver="0.0.2.2"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="An application to rename movie files."
 arch=('any')
-url="http://www.atareao.es/tag/movietitle/"
+url="http://www.atareao.es/apps/limpiar-los-titulos-de-las-peliculas-en-ubuntu-con-movietitle/"
 license=('GPL3')
 depends=('python2-beautifulsoup4' 'python2-exiv2' 'python2-nautilus' 'python2-polib')
 makedepends=('python2-distutils-extra')

@@ -1,8 +1,8 @@
 pkgbase = movietitle
 	pkgdesc = An application to rename movie files.
 	pkgver = 0.0.2.2
-	pkgrel = 2
-	url = http://www.atareao.es/tag/movietitle/
+	pkgrel = 3
+	url = http://www.atareao.es/apps/limpiar-los-titulos-de-las-peliculas-en-ubuntu-con-movietitle/
 	arch = any
 	license = GPL3
 	makedepends = python2-distutils-extra
