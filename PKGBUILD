@@ -70,7 +70,7 @@ _disabled_modules=(languages/mod_spidermonkey
 
 pkgname='freeswitch'
 pkgver='1.6.9'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
 url="http://freeswitch.org/"
@@ -181,7 +181,8 @@ build() {
   sleep 5
 
   # SED FIXES
-   sed -i -e '/if\ test\ "\$ac_cv_gcc_supports_w_no_unused_result"\ =\ yes;\ then/,+2d' configure.ac
+   # per upstream, NO, BAD DOG, NO BISCUIT!
+   #sed -i -e '/if\ test\ "\$ac_cv_gcc_supports_w_no_unused_result"\ =\ yes;\ then/,+2d' configure.ac
    #sed -i -e '/\ _BSD_SOURCE$/d' src/include/switch.h
 
   # CONFIGURE
