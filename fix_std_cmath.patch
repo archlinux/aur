@@ -1,0 +1,11 @@
+--- src/editor/items/BaseItem.cpp.org	2014-03-14 23:52:28.000000000 +0100
++++ src/editor/items/BaseItem.cpp	2016-06-22 16:25:33.976238867 +0200
+@@ -259,7 +259,7 @@
+         if ( !QRectF(line[i1],line[i2]).normalized().contains(newPos) )
+             continue;
+ 
+-        if (abs( distancePointToLine(newPos, line[i1],line[i2]) ) < minDist)
++        if (std::abs( distancePointToLine(newPos, line[i1],line[i2]) ) < minDist)
+         {
+             insertPoint(i2,newPos,line);
+             return true;
