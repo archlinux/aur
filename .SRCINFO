@@ -1,0 +1,22 @@
+pkgbase = pinta-git
+	pkgdesc = The game 2048 for your Linux terminal
+	pkgver = 1.7
+	pkgrel = 1
+	url = https://pinta-project.com
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = git
+	depends = mono
+	depends = gtk-sharp-2
+	depends = mono-addins
+	depends = yelp-tools
+	provides = pinta
+	provides = pinta-git
+	conflicts = pinta
+	options = !makeflags
+	source = git+https://github.com/PintaProject/Pinta.git
+	md5sums = SKIP
+
+pkgname = pinta-git
+
