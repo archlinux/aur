@@ -7,9 +7,9 @@
 
 _qt_module=qtdeclarative
 pkgname=mingw-w64-qt5-declarative
-pkgver=5.6.1
+pkgver=5.7.0
 pkgrel=1
-arch=('any')
+arch=('i686' 'x86_64')
 pkgdesc="Classes for QML and JavaScript languages (mingw-w64)"
 depends=(mingw-w64-qt5-base)
 makedepends=(mingw-w64-gcc python)
@@ -20,8 +20,8 @@ url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         "qt5-build-qmldevtools-as-shared-library.patch")
-md5sums=('ea2a2602b8a91f2618a36be09bcd79e9'
-         '6c445ba7713b69d90f52bb2242303853')
+md5sums=('0d9e461aa54dba4793253fa2eb501f9b'
+         '8f90ec8c2379b85de0b04847865b230c')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -36,12 +36,13 @@ build() {
     mkdir -p build-${_arch} && pushd build-${_arch}
     ${_arch}-qmake-qt5 ../${_qt_module}.pro
 
-    # Something is messed up with Qt5Bootstrap
+    # search paths for host standard library (/usr/lib) and for Qt5Bootstrap (/usr/$_arch/lib) are not set correctly by qmake
+    # hence we need insert those paths manually
     make qmake_all
-    find ./src -type f -exec sed -i "s|-L/usr/${_arch}/lib -lQt5Bootstrap|/usr/lib/libstdc++.so.6 /usr/lib/libm.so -L/usr/${_arch}/lib -lQt5Bootstrap|g" {} \;
-    find . -type f -exec sed -i "s|-L/usr/${_arch}/lib -lQt5Bootstrap|/usr/lib/libstdc++.so.6 /usr/lib/libm.so -L/usr/${_arch}/lib -lQt5Bootstrap|g" {} \;
-    find ./src -type f -exec sed -i "s|-L/usr/${_arch}/lib -lQt5QmlDevTools|/usr/lib/libstdc++.so.6 -L/usr/${_arch}/lib -lQt5QmlDevTools|g" {} \;
-    find ./tools -type f -exec sed -i "s|-L/usr/${_arch}/lib -lQt5Bootstrap|/usr/lib/libstdc++.so.6 /usr/lib/libm.so -L/usr/${_arch}/lib -lQt5Bootstrap|g" {} \;
+    find ./src/qmldevtools -type f -iname 'Makefile' -exec sed -i "s|-lQt5Bootstrap|-L/usr/lib -L/usr/$_arch/lib -lQt5Bootstrap|g" {} \;
+    find . -type f -iname 'Makefile' -exec sed -i "s|-L$PWD/lib -lQt5Bootstrap|-L/usr/lib -L$PWD/lib -L/usr/$_arch/lib -lQt5Bootstrap|g" {} \;
+    find . -type f -iname 'Makefile' -exec sed -i "s|-L$PWD/lib -lQt5QmlDevTools -lQt5Bootstrap|-L/usr/lib -L$PWD/lib -L/usr/$_arch/lib -lQt5QmlDevTools -lQt5Bootstrap|g" {} \;
+
     make
     popd
   done
@@ -58,6 +59,8 @@ package() {
     find "${pkgdir}/usr/${_arch}" -name "*.exe" -o -name "*.bat" -o -name "*.def" -o -name "*.exp" -o -name '*.prl' | xargs -rtl1 rm
     find "${pkgdir}/usr/${_arch}" -name "*.dll" -exec ${_arch}-strip --strip-unneeded {} \;
     find "${pkgdir}/usr/${_arch}" -name "*.a" -o -name "*.dll" | xargs -rtl1 ${_arch}-strip -g
+    strip --strip-all "${pkgdir}/usr/${_arch}/lib/qt/bin/"*
+    strip --strip-unneeded "${pkgdir}/usr/${_arch}/lib/"*.so.$pkgver
     popd
   done
 }

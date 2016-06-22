@@ -3,7 +3,7 @@
 @@ -1,7 +1,7 @@
  option(host_build)
  TARGET     = QtQmlDevTools
- QT         = core
+ QT         = core-private
 -CONFIG += static internal_module qmldevtools_build
 +CONFIG += internal_module qmldevtools_build
  
