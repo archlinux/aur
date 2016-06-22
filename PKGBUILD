@@ -1,15 +1,13 @@
-# See http://wiki.archlinux.org/index.php/VCS_PKGBUILD_Guidelines
-# for more information on packaging from GIT sources.
-
-# Maintainer: Andrew Smith <ChucklesTheBeard@gmail.com>
-# Contributer: Patrik Plihal <patrik.plihal@gmail.com>
+# Maintainer: Lari Tikkanen <lartza@wippies.com>
+# Contributor: Andrew Smith <ChucklesTheBeard@gmail.com>
+# Contributor: Patrik Plihal <patrik.plihal@gmail.com>
 
 pkgname=ckan-git
-pkgver=v1.16.0.r2.g73206fc
+pkgver=1.18.0.r5.g0ab70f4
 pkgrel=1
 pkgdesc="A metadata repository and associated tools for searching, installing, and managing mods for Kerbal Space Program (KSP)"
 arch=('any')
-url="http://forum.kerbalspaceprogram.com/threads/100067-"
+url="https://github.com/KSP-CKAN/CKAN"
 license=('MIT')
 provides=('ckan')
 conflicts=('ckan')
@@ -22,11 +20,11 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$srcdir/CKAN"
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  
+
   # ignore certain version checks that return "inconclusive" exceptions for development builds
   cd "$srcdir/CKAN/"
   git apply $srcdir/disable_version_checks.diff
@@ -64,5 +62,3 @@ package() {
   mkdir -p "$pkgdir/usr/bin/"
   cp $srcdir/ckan.exe "$pkgdir/usr/bin/ckan"
 }
-
-# vim:set ts=2 sw=2 et:
