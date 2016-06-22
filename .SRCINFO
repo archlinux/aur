@@ -1,7 +1,7 @@
 pkgbase = 2048-cli-git
 	pkgdesc = The game 2048 for your Linux terminal
-	pkgver = 20160529
-	pkgrel = 2
+	pkgver = 20160621
+	pkgrel = 1
 	url = https://github.com/tiehuis/2048-cli
 	arch = x86_64
 	arch = i686

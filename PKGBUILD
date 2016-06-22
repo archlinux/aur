@@ -3,8 +3,8 @@
 pkgname=2048-cli-git
 _pkgname=2048-cli
 _pkgname2=2048
-pkgver=20160529
-pkgrel=2
+pkgver=20160621
+pkgrel=1
 pkgdesc="The game 2048 for your Linux terminal"
 arch=('x86_64' 'i686')
 url="https://github.com/tiehuis/2048-cli"
