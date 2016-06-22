@@ -5,7 +5,7 @@
 
 _qt_module=qtmultimedia
 pkgname=mingw-w64-qt5-multimedia
-pkgver=5.6.1
+pkgver=5.7.0
 pkgrel=1
 arch=('any')
 pkgdesc="Classes for audio, video, radio and camera functionality (mingw-w64)"
@@ -18,7 +18,7 @@ url="https://www.qt.io/"
 _pkgfqn="${_qt_module}-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver:0:3}/${pkgver}/submodules/${_pkgfqn}.tar.xz"
         "qt5-qtmultimedia-mingw-w64-vsnprintf-workaround.patch")
-md5sums=('01e90a2ba304625305170f04cf3e6704'
+md5sums=('44c1b9a1dfb0e8b13f2d9571829500ee'
          'c21ff895212a17dc0a748aeadb67601d')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
