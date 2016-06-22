@@ -4,15 +4,15 @@
 
 _pkgname=testng
 pkgname=java-${_pkgname}-doc
-pkgver=6.9.11
-pkgrel=2
+pkgver=6.9.12
+pkgrel=1
 pkgdesc='Documentation for TestNG'
 arch=('any')
 url='http://testng.org/doc/index.html'
 license=('APACHE')
 makedepends=("maven" "java-environment")
 source=("https://github.com/cbeust/testng/archive/${pkgver}.zip")
-sha1sums=('d3e0677587f173b232321c0e165d8cd0fa57a573')
+sha1sums=('e8d6efff6e536d972da79ebba5d2bd4a4cf073c7')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
